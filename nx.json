@@ -39,6 +39,13 @@
 		},
 		"promotion": {
 			"tags": []
+		},
+		"goal123": {
+			"tags": []
+		},
+		"goal123-e2e": {
+			"tags": [],
+			"implicitDependencies": ["goal123"]
 		}
 	}
 }
