@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
-import { api_ResetPassword } from "../../service/api/accountStrict";
+import { api_accountStrict_ResetPassword } from "@ailab-mobile/api";
 import { api_CheckResetPwdToken } from "../../service/api/site";
 import Inputbox from "../common/inputbox.password";
 import { getUrlParameter } from "../common/common";
@@ -111,7 +111,7 @@ export default () => {
 		if (newPsw === "") {
 			setWarning({ status: true, msg: i18n.msg_PasswordVaildate });
 		} else if (warning.status === false) {
-			api_ResetPassword({ NewPassword: newPsw }).then(
+			api_accountStrict_ResetPassword({ NewPassword: newPsw }).then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode !== 0) {

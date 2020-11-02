@@ -13,7 +13,7 @@ import {
 	api_GetBanner,
 	api_ExistsPhoneNo
 } from "../../service/api/site";
-import { api_GetCustProfile } from "../../service/api/accountStrict";
+import { api_accountStrict_GetCustProfile } from "@ailab-mobile/api";
 import { getUrlParameter } from "../common/common";
 import { getCookie } from "../common/cookie";
 import {
@@ -403,7 +403,7 @@ const Join = () => {
 						const errorCode = response.data.errorCode;
 						const message = response.data.message;
 						if (errorCode === 0) {
-							api_GetCustProfile().then(
+							api_accountStrict_GetCustProfile().then(
 								res_custInfo => {
 									if (isMountedRef.current) {
 										let _user = {

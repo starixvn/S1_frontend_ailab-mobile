@@ -2,7 +2,7 @@ import {
 	api_account_UserLogin,
 	api_account_UserLogout
 } from "@ailab-mobile/api";
-import { api_GetCustProfile } from "../service/api/accountStrict";
+import { api_accountStrict_GetCustProfile } from "@ailab-mobile/api";
 import { api_CheckSignIn } from "../service/api/site";
 
 export const IS_LOGGED_IN = async () => {
@@ -41,7 +41,7 @@ export const LOGIN = async ({ userName, password }, CallbackLogin) => {
 			if (res.data.errorCode === 0) {
 				let userlangId = res.data.message.replace("/", "");
 
-				api_GetCustProfile().then(res_custInfo => {
+				api_accountStrict_GetCustProfile().then(res_custInfo => {
 					let _loginUser = {
 						userName: userName,
 						langId: userlangId,

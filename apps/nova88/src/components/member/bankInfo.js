@@ -2,9 +2,9 @@ import React, { useState, useContext, useEffect, useRef } from "react";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import { api_GetBankInfoSysList } from "../../service/api/payment";
 import {
-	api_SetCustBankInfo,
-	api_DelCustBankInfo
-} from "../../service/api/accountStrict";
+	api_accountStrict_SetCustBankInfo,
+	api_accountStrict_DelCustBankInfo
+} from "@ailab-mobile/api";
 import { api_account_GetCustBankInfo } from "@ailab-mobile/api";
 import Inputbox from "../common/inputbox";
 import Dropdown from "../common/dropdown.image";
@@ -247,7 +247,7 @@ const BankInfo = () => {
 				SysId: val.SysId
 			};
 			setPopBox({ isOpen: false });
-			api_DelCustBankInfo(removeAccountData).then(
+			api_accountStrict_DelCustBankInfo(removeAccountData).then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
@@ -370,7 +370,7 @@ const BankInfo = () => {
 					SysId: siteBankInfoState[bankSelectedIdx].id
 				};
 				setLoading(true);
-				api_SetCustBankInfo(bankInfoData).then(
+				api_accountStrict_SetCustBankInfo(bankInfoData).then(
 					response => {
 						if (isMountedRef.current) {
 							const errorCode = response.data.errorCode;

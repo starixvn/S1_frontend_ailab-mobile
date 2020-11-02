@@ -1,6 +1,9 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
-import { api_SendOTPSMS, api_VerifyOTP } from "../../service/api/accountStrict";
+import {
+	api_accountStrict_SendOTPSMS,
+	api_accountStrict_VerifyOTP
+} from "@ailab-mobile/api";
 import moment from "moment";
 import { redirectToPrev } from "../member/profile.redirect";
 
@@ -23,7 +26,7 @@ const Panel = ({ ClosePopbox }) => {
 
 	useEffect(() => {
 		if (isMountedRef.current) {
-			api_SendOTPSMS().then(
+			api_accountStrict_SendOTPSMS().then(
 				response => {
 					if (isMountedRef.current) {
 						if (response.data.errorCode === 0) {
@@ -75,7 +78,7 @@ const Panel = ({ ClosePopbox }) => {
 	};
 
 	const clickSubmit = async otpCode => {
-		await api_VerifyOTP({
+		await api_accountStrict_VerifyOTP({
 			inputOTPcode: otpCode
 		}).then(
 			res => {
@@ -127,7 +130,7 @@ const Panel = ({ ClosePopbox }) => {
 
 	const clickResend = () => {
 		setLoading(true);
-		api_SendOTPSMS().then(
+		api_accountStrict_SendOTPSMS().then(
 			response => {
 				if (isMountedRef.current) {
 					if (response.data.errorCode === 0) {

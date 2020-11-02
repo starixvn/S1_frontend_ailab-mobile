@@ -6,9 +6,9 @@ import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import areaCode from "../../datas/areaCode";
 import moment from "moment";
 import {
-	api_SetProfile,
-	api_GetCustProfile
-} from "../../service/api/accountStrict";
+	api_accountStrict_SetProfile,
+	api_accountStrict_GetCustProfile
+} from "@ailab-mobile/api";
 import { api_ExistsPhoneNo } from "../../service/api/site";
 import path from "../../path";
 import { monthOptions, initStatus, initValue } from "./profile.def";
@@ -286,14 +286,14 @@ const Panel = () => {
 					PhoneNo: userInfo.phoneNo ?? userValue.phoneNo
 				};
 
-				api_SetProfile(profileData).then(
+				api_accountStrict_SetProfile(profileData).then(
 					response => {
 						if (isMountedRef.current) {
 							const errorCode = response.data.errorCode;
 							const message = response.data.message;
 
 							if (errorCode === 0) {
-								api_GetCustProfile().then(
+								api_accountStrict_GetCustProfile().then(
 									res => {
 										if (isMountedRef.current) {
 											if (res.data.errorCode === 0) {

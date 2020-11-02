@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import * as ct from "../common/context";
 import { api_GetTranslationData } from "../../service/api/site";
-import { api_GetCustProfile } from "../../service/api/accountStrict";
+import { api_accountStrict_GetCustProfile } from "@ailab-mobile/api";
 import {
 	api_account_GetBalnace,
 	api_account_onlineCheck,
@@ -120,7 +120,7 @@ export const Wrapper = ({ children }) => {
 	useEffect(() => {
 		if (userInfo.isLogin) {
 			if (!userInfo.regTime) {
-				api_GetCustProfile().then(res_custInfo => {
+				api_accountStrict_GetCustProfile().then(res_custInfo => {
 					if (
 						res_custInfo.data.errorCode === 0 &&
 						isMountedRef.current
