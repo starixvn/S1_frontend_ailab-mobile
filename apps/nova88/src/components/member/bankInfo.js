@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
-import { api_GetBankInfoSysList } from "../../service/api/payment";
+import { api_payment_GetAnnouncement } from "@ailab-mobile/api";
 import {
 	api_accountStrict_SetCustBankInfo,
 	api_accountStrict_DelCustBankInfo
@@ -96,7 +96,7 @@ const BankInfo = () => {
 
 	const toAddBankAccount = () => {
 		setLoading(true);
-		api_GetBankInfoSysList().then(
+		api_payment_GetAnnouncement().then(
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {

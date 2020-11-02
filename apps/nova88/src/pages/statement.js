@@ -4,7 +4,7 @@ import {
 	popBoxContext,
 	userInfoContext
 } from "../components/common/context";
-import { api_GetStatement } from "../service/api/payment";
+import { api_payment_GetStatement } from "@ailab-mobile/api";
 import { number_format, isConvert } from "../components/common/common";
 import moment from "moment";
 import HistoryFilter from "../components/common/historyFilter";
@@ -45,7 +45,7 @@ const IndexPage = () => {
 	}, [userInfo.isLogin, setRedirectPath]);
 
 	AUTO_FETCHING_DATA(
-		api_GetStatement,
+		api_payment_GetStatement,
 		filterData,
 		pageInfo,
 		setGetHistoryState,
@@ -71,7 +71,7 @@ const IndexPage = () => {
 			}
 
 			setClickSubmit(true);
-			api_GetStatement({
+			api_payment_GetStatement({
 				...transactionData,
 				PageNumber: 1
 			}).then(
