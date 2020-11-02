@@ -3,10 +3,10 @@ import {
 	api_account_UserLogout
 } from "@ailab-mobile/api";
 import { api_accountStrict_GetCustProfile } from "@ailab-mobile/api";
-import { api_CheckSignIn } from "../service/api/site";
+import { api_site_CheckSignIn } from "@ailab-mobile/api";
 
 export const IS_LOGGED_IN = async () => {
-	return await api_CheckSignIn().then(res => res.data.errorCode === 0);
+	return await api_site_CheckSignIn().then(res => res.data.errorCode === 0);
 };
 
 const isBrowser = typeof window !== `undefined`;

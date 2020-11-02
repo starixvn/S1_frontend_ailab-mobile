@@ -9,7 +9,7 @@ import {
 import productList from "../../datas/productList";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { Redirect, Link } from "@reach/router";
-import { api_GetTpIds } from "../../service/api/site";
+import { api_site_GetTpIds } from "@ailab-mobile/api";
 import path from "../../path";
 
 const Category = props => {
@@ -47,7 +47,7 @@ const Category = props => {
 		let mounted = true;
 
 		if (userInfo.isLogin) {
-			api_GetTpIds().then(
+			api_site_GetTpIds().then(
 				res => {
 					if (res.data.errorCode === 0 && mounted) {
 						setCasinoTpIds(res.data.data);

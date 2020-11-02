@@ -6,7 +6,7 @@
 // 	popBoxContext
 // } from "../common/context";
 // import LangDropdown from "../common/dropdown.icon";
-// import { api_GetSiteLangList } from "../../service/api/site";
+// import { api_site_GetSiteLangList } from "@ailab-mobile/api";
 // import { GET_LANG_ID } from "../../service/language";
 // import { api_SetLanguage, api_account_GetBalnace } from "@ailab-mobile/api";
 // import { number_format, isConvert } from "../common/common";
@@ -28,7 +28,7 @@
 // 	});
 
 // 	useEffect(() => {
-// 		api_GetSiteLangList().then(
+// 		api_site_GetSiteLangList().then(
 // 			res => {
 // 				if (isMountedRef.current) {
 // 					if (res.data.errorCode === 0) {

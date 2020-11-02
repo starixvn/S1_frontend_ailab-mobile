@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
-import { api_ForgetPwd } from "../../service/api/site";
+import { api_site_ForgetPwd } from "@ailab-mobile/api";
 import Inputbox from "../common/inputbox";
 import { Redirect } from "@reach/router";
 import path from "../../path";
@@ -52,7 +52,10 @@ export default () => {
 		if (userEmail === "") {
 			setWarning({ status: true, msg: i18n.msg_MailWrongFormat });
 		} else if (!warning.status) {
-			api_ForgetPwd({ langId: userInfo.langId, Email: userEmail }).then(
+			api_site_ForgetPwd({
+				langId: userInfo.langId,
+				Email: userEmail
+			}).then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode !== 0) {

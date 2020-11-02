@@ -7,9 +7,9 @@ import areaCode from "../../datas/areaCode";
 import moment from "moment";
 import {
 	api_accountStrict_SetProfile,
-	api_accountStrict_GetCustProfile
+	api_accountStrict_GetCustProfile,
+	api_site_ExistsPhoneNo
 } from "@ailab-mobile/api";
-import { api_ExistsPhoneNo } from "../../service/api/site";
 import path from "../../path";
 import { monthOptions, initStatus, initValue } from "./profile.def";
 import { defPopBoxType } from "../common/popbox";
@@ -151,7 +151,7 @@ const Panel = () => {
 			checked = false;
 			tip = i18n.lbl_PhoneRequired;
 		} else {
-			api_ExistsPhoneNo({
+			api_site_ExistsPhoneNo({
 				AreaCode: _areaCode,
 				Phone: val
 			}).then(

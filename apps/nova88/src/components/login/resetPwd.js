@@ -1,7 +1,9 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
-import { api_accountStrict_ResetPassword } from "@ailab-mobile/api";
-import { api_CheckResetPwdToken } from "../../service/api/site";
+import {
+	api_accountStrict_ResetPassword,
+	api_site_CheckResetPwdToken
+} from "@ailab-mobile/api";
 import Inputbox from "../common/inputbox.password";
 import { getUrlParameter } from "../common/common";
 import { Redirect } from "@reach/router";
@@ -33,7 +35,7 @@ export default () => {
 
 		if (key) {
 			if (userInfo.isLogin === false) {
-				api_CheckResetPwdToken(key).then(
+				api_site_CheckResetPwdToken(key).then(
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 1) {
