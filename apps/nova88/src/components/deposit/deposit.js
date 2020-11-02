@@ -7,7 +7,7 @@ import {
 	popBoxContext,
 	bankSlipPopBoxContext,
 	userInfoContext
-} from "../common/context";
+} from "@ailab-mobile/context";
 import { Link, Redirect } from "@reach/router";
 import {
 	api_payment_GetOnlinePaymentList,

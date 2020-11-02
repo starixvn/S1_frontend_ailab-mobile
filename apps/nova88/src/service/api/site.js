@@ -31,17 +31,6 @@ export const api_ForgetPwd = ({ langId, Email }) =>
 
 export const api_GetTpIds = () => siteRequest.post(`/GetTpIds`);
 
-export const api_GetBanner = (
-	FolderName,
-	refId,
-	lang,
-	filterHideInHome = false
-) =>
-	siteRequest.post(
-		`/GetBanner/${lang}`,
-		`FolderName=${FolderName}&refId=${refId}&filterHideInHome=${filterHideInHome}`
-	);
-
 export const api_CheckResetPwdToken = key =>
 	siteRequest.post(`/CheckResetPwdToken`, `key=${key}`);
 

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { i18nContext, userInfoContext } from "../common/context";
+import { i18nContext, userInfoContext } from "@ailab-mobile/context";
 import { Link } from "@reach/router";
 import ProfileDetail from "./profile.detail";
 import path from "../../path";

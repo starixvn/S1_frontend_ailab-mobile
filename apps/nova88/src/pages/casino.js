@@ -4,17 +4,18 @@ import defNav from "../components/casino/defNav";
 import Nav from "../components/casino/nav";
 import SearchBox from "../components/casino/searchBox";
 import {
+	i18nContext,
+	userInfoContext,
+	navContext,
+	defNavPanel
+} from "@ailab-mobile/context";
+import {
 	api_site_GetGamelist,
 	api_account_SetFavoriteGame,
 	api_account_GetFavoriteGame
 } from "@ailab-mobile/api";
 import Games from "../components/casino/games";
-import {
-	i18nContext,
-	userInfoContext,
-	navContext,
-	defNavPanel
-} from "../components/common/context";
+
 import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
 
 const eachPageItem = 20;

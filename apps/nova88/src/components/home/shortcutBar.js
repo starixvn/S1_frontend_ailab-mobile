@@ -4,7 +4,7 @@ import {
 	navContext,
 	defNavPanel,
 	userInfoContext
-} from "../common/context";
+} from "@ailab-mobile/context";
 import { Link } from "@reach/router";
 import path from "../../path";
 

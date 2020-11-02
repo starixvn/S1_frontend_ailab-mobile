@@ -2,7 +2,11 @@ import React, { useState, useContext, useRef, useEffect } from "react";
 import { Redirect } from "@reach/router";
 import Inputbox from "../common/inputbox";
 import Dropdown from "../common/dropdown.icon";
-import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
+import {
+	i18nContext,
+	userInfoContext,
+	popBoxContext
+} from "@ailab-mobile/context";
 import areaCode from "../../datas/areaCode";
 import moment from "moment";
 import {

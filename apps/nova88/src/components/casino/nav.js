@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import defNav from "./defNav";
-import { i18nContext } from "../common/context";
+import { i18nContext } from "@ailab-mobile/context";
 
 const Nav = props => {
 	const { i18n } = useContext(i18nContext);

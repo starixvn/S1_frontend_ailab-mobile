@@ -5,7 +5,7 @@ import {
 	i18nContext,
 	userInfoContext,
 	popBoxContext
-} from "../../components/common/context";
+} from "@ailab-mobile/context";
 import {
 	api_payment_GetMobilePayGroupList,
 	api_payment_GetMobilePayInfoList

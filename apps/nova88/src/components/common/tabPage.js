@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Redirect, Link, useMatch } from "@reach/router";
-import { i18nContext, userInfoContext } from "./context";
+import { i18nContext, userInfoContext } from "@ailab-mobile/context";
 
 const IndexPage = ({ defTabs, children, beforeLogin }) => {
 	const { userInfo } = useContext(userInfoContext);

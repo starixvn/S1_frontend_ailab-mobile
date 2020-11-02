@@ -1,10 +1,14 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
 import {
 	api_accountStrict_UploadCustPhotoId,
 	api_account_GetCustBankInfo,
 	api_payment_KycCheck
 } from "@ailab-mobile/api";
+import {
+	i18nContext,
+	popBoxContext,
+	userInfoContext
+} from "@ailab-mobile/context";
 import { Redirect } from "@reach/router";
 import path from "../../path";
 import Loading from "../common/loading";

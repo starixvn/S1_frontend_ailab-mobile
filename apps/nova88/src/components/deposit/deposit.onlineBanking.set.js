@@ -1,6 +1,10 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import Step from "./step";
-import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
+import {
+	i18nContext,
+	userInfoContext,
+	popBoxContext
+} from "@ailab-mobile/context";
 import { Link, Redirect } from "@reach/router";
 import {
 	api_payment_GetOnlineBankInfoSysList,

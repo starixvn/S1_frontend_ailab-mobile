@@ -3,7 +3,7 @@ import {
 	i18nContext,
 	popBoxContext,
 	userInfoContext
-} from "../components/common/context";
+} from "@ailab-mobile/context";
 import { api_payment_GetStatement } from "@ailab-mobile/api";
 import { number_format, isConvert } from "../components/common/common";
 import moment from "moment";

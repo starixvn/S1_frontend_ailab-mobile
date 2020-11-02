@@ -1,6 +1,10 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
-import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
 import { api_tp_GetTransferHistory } from "@ailab-mobile/api";
+import {
+	i18nContext,
+	popBoxContext,
+	userInfoContext
+} from "@ailab-mobile/context";
 import { number_format, isConvert } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
 import moment from "moment";

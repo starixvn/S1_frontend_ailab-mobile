@@ -1,5 +1,9 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
-import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
+import {
+	i18nContext,
+	userInfoContext,
+	popBoxContext
+} from "@ailab-mobile/context";
 import {
 	api_payment_GetBankInfoSysList,
 	api_accountStrict_SetCustBankInfo,

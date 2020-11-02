@@ -1,5 +1,9 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
-import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
+import {
+	i18nContext,
+	popBoxContext,
+	userInfoContext
+} from "@ailab-mobile/context";
 import {
 	api_payment_GetWithdrawalInfoHistory,
 	api_payment_SetWithdrawalCancel

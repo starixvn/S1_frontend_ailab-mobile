@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
-import { i18nContext, userInfoContext } from "../common/context";
+import { i18nContext, userInfoContext } from "@ailab-mobile/context";
 import {
 	api_payment_KycCheck,
 	api_account_GetCustBankInfo

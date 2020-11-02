@@ -3,7 +3,7 @@ import {
 	i18nContext,
 	userInfoContext,
 	popBoxContext
-} from "../../components/common/context";
+} from "@ailab-mobile/context";
 import Step from "./step";
 import config from "../../config";
 import LimitTip from "./limitTip";
