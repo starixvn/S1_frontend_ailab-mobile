@@ -5,7 +5,7 @@ import {
 	i18nContext,
 	userInfoContext,
 	popBoxContext
-} from "../../components/common/context";
+} from "@ailab-mobile/context";
 import { api_payment_GetCryptoPayInfoList } from "../../service/api/payment";
 import path from "../../path";
 import PageVerify from "./deposit.pageVerify";

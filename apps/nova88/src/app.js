@@ -1,5 +1,5 @@
 import React from "react";
-import path from "./path";
+import path from "@ailab-mobile/routingPath";
 import langKeys from "./datas/langKeys";
 import { Wrapper } from "./components/common/wrapper";
 import PopBox from "./components/common/popbox";

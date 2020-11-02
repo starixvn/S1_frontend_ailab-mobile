@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from "react";
 import Dropdown from "../common/dropdown";
-import { i18nContext, userInfoContext } from "../common/context";
+import { i18nContext, userInfoContext } from "@ailab-mobile/context";
 import { api_promotion_GetCanJoinPromotionList } from "../../service/api/promotion";
 import config from "../../config";
 

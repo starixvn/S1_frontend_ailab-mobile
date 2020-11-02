@@ -7,7 +7,7 @@ import {
 	i18nContext,
 	userInfoContext,
 	popBoxContext
-} from "../components/common/context";
+} from "@ailab-mobile/context";
 import { readCookie, setCookie } from "../components/common/common";
 import path from "../path";
 import { Redirect } from "@reach/router";

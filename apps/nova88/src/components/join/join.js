@@ -12,7 +12,7 @@ import {
 	api_GetSiteCurrencyList,
 	api_GetBanner,
 	api_ExistsPhoneNo
-} from "../../service/api/site";
+} from "@ailab-mobile/api";
 import { api_GetCustProfile } from "../../service/api/accountStrict";
 import { getUrlParameter } from "../common/common";
 import { getCookie } from "../common/cookie";
@@ -22,7 +22,7 @@ import {
 	navContext,
 	defNavPanel,
 	popBoxContext
-} from "../common/context";
+} from "@ailab-mobile/context";
 import { GET_LANG_ID } from "../../service/language";
 import TandC from "../../service/t_and_c";
 import { useMatch, Redirect } from "@reach/router";

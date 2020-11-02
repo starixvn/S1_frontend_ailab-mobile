@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { userInfoContext, i18nContext } from "../common/context";
+import { userInfoContext, i18nContext } from "@ailab-mobile/context";
 import TandC from "../../service/t_and_c";
 import { siteInfo } from "../../config";
 

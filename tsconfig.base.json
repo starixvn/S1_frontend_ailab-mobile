@@ -17,7 +17,10 @@
 		"baseUrl": ".",
 		"paths": {
 			"@ailab-mobile/promotion": ["libs/promotion/src/index.js"],
-			"@ailab-mobile/api": ["libs/api/src/index.js"]
+			"@ailab-mobile/api": ["libs/api/src/index.js"],
+			"@ailab-mobile/routingPath": ["libs/routingPath/src/index.js"],
+			"@ailab-mobile/common": ["libs/common/src/index.js"],
+			"@ailab-mobile/context": ["libs/context/src/index.js"]
 		}
 	},
 	"exclude": ["node_modules", "tmp"]

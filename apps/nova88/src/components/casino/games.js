@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import config from "../../config";
-import { userInfoContext } from "../common/context";
+import { userInfoContext } from "@ailab-mobile/context";
 import Loading from "../common/loading";
 
 const Games = props => {

@@ -2,7 +2,7 @@ import React, { useContext, Component } from "react";
 import PropTypes from "prop-types";
 import Footer from "./footer";
 import Header from "./header";
-import { navContext, i18nContext, defNavPanel } from "../common/context";
+import { navContext, i18nContext, defNavPanel } from "@ailab-mobile/context";
 import { useMatch, useLocation } from "@reach/router";
 import path from "../../path";
 

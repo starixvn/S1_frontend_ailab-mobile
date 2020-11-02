@@ -7,7 +7,7 @@ import {
 	i18nContext,
 	navContext,
 	defNavPanel
-} from "../common/context";
+} from "@ailab-mobile/context";
 import { useMatch, Redirect } from "@reach/router";
 import path from "../../path";
 import config, { siteInfo } from "../../config";

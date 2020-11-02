@@ -3,7 +3,7 @@ import {
 	bankSlipPopBoxContext,
 	i18nContext,
 	popBoxContext
-} from "../common/context";
+} from "@ailab-mobile/context";
 import moment from "moment";
 import ClipboardJS from "../../lib/clipboard.min";
 import {

@@ -8,7 +8,7 @@ import {
 	userInfoContext,
 	popBoxContext,
 	bankSlipPopBoxContext
-} from "../common/context";
+} from "@ailab-mobile/context";
 import LimitTip from "./limitTip";
 import { isConvert, checkAmount, number_format } from "../common/common";
 import InputBox from "../common/inputbox";

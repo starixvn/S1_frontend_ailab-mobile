@@ -1,5 +1,9 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
-import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
+import {
+	i18nContext,
+	popBoxContext,
+	userInfoContext
+} from "@ailab-mobile/context";
 import { api_SendOTPSMS, api_VerifyOTP } from "../../service/api/accountStrict";
 import moment from "moment";
 import { redirectToPrev } from "../member/profile.redirect";

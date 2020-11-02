@@ -4,7 +4,7 @@ import {
 	popBoxContext,
 	userInfoContext,
 	bankSlipPopBoxContext
-} from "../common/context";
+} from "@ailab-mobile/context";
 import {
 	api_GetDepositInfoHistory,
 	api_SetDepositCancel

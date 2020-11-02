@@ -10,7 +10,7 @@ import {
 	userInfoContext,
 	navContext,
 	defNavPanel
-} from "../components/common/context";
+} from "@ailab-mobile/context";
 import {
 	api_SetFavoriteGame,
 	api_GetFavoriteGame

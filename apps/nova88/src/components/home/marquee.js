@@ -7,7 +7,7 @@ import {
 	navContext,
 	defNavPanel,
 	i18nContext
-} from "../common/context";
+} from "@ailab-mobile/context";
 import { GET_LANG_ID } from "../../service/language";
 import path from "../../path";
 import { Redirect } from "@reach/router";

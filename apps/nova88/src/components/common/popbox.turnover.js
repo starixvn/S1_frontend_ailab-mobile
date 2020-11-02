@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { i18nContext } from "../common/context";
+import { i18nContext } from "@ailab-mobile/context";
 import { number_format } from "../common/common";
 
 export default ({ currencyId, turnover, rollover }) => {

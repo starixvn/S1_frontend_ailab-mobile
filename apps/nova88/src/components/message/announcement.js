@@ -1,5 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { userInfoContext, popBoxContext, i18nContext } from "../common/context";
+import {
+	userInfoContext,
+	popBoxContext,
+	i18nContext
+} from "@ailab-mobile/context";
 import { api_GetAnnouncement } from "../../service/api/message";
 import moment from "moment";
 import Loading from "../common/loading";

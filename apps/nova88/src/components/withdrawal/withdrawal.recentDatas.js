@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { i18nContext, userInfoContext } from "../common/context";
+import { i18nContext, userInfoContext } from "@ailab-mobile/context";
 import { isConvert } from "../common/common";
 import { Link } from "@reach/router";
 import path from "../../path";

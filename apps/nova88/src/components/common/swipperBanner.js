@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
 import Swiper from "react-id-swiper";
 import config from "../../config";
-import { api_GetBanner } from "../../service/api/site";
+import { api_GetBanner } from "@ailab-mobile/api";
 import {
 	userInfoContext,
 	navContext,
 	defNavPanel
-} from "../../components/common/context";
+} from "@ailab-mobile/context";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import path from "../../path";
 import { Link } from "@reach/router";
