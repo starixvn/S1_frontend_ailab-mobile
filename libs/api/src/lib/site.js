@@ -1,11 +1,4 @@
 import { siteRequest } from "./base";
-// import langKeys from "../../datas/langKeys";
-
-// export const api_GetTranslationData = (langId, data) =>
-// 	siteRequest.post(
-// 		`/GetTranslationData${langId ? `/${langId}` : ""}`,
-// 		data ? data : langKeys
-// 	);
 
 export const api_ExistsUserName = ({ UserName }) =>
 	siteRequest.post(`/ExistsUserName`, { UserName: UserName });
@@ -45,7 +38,7 @@ export const api_GetBanner = (
 export const api_CheckResetPwdToken = key =>
 	siteRequest.post(`/CheckResetPwdToken`, `key=${key}`);
 
-export const api_WhoAMI = ({ apiURL }) => siteRequest(apiURL).post(`/WhoAMI`);
+export const api_WhoAMI = key => siteRequest.post(`/WhoAMI`);
 
 export const api_ExistsPhoneNo = ({ AreaCode, Phone }) =>
 	siteRequest.post(`/ExistsPhoneNo`, { AreaCode, PhoneNo: Phone });

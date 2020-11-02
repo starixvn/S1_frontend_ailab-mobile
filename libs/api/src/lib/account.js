@@ -1,13 +1,12 @@
 import { loginRequest } from "./base";
 import { accountRequest } from "./base";
 
-export const api_SetLanguage = ({ apiURL, lang }) =>
-	accountRequest(apiURL).post("/SetLanguage", { LangId: lang });
+export const api_SetLanguage = lang =>
+	accountRequest.post("/SetLanguage", { LangId: lang });
 
-export const api_UserLogout = ({ apiURL }) =>
-	accountRequest(apiURL).post("/SignOut");
+export const api_UserLogout = () => accountRequest.post("/SignOut");
 
-export const api_UserLogin = ({ data }) => loginRequest.post("/SignIn", data);
+export const api_UserLogin = data => loginRequest.post("/SignIn", data);
 
 export const api_onlineCheck = () => accountRequest.post("/onlineCheck");
 
@@ -24,7 +23,7 @@ export const api_GetMsgContent = MsgId =>
 		MsgId: MsgId
 	});
 
-export const api_DelMsg = ({ MsgIds }) =>
+export const api_DelMsg = MsgIds =>
 	accountRequest.post("/DelMsg", { MsgIds: MsgIds });
 
 export const api_GetWalletInfo = () => accountRequest.post("/GetWalletInfo");
