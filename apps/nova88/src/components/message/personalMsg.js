@@ -230,7 +230,7 @@ const Panel = () => {
 
 	const delMsg = () => {
 		const DelMsg = () => {
-			api_DelMsg(checkboxListState).then(
+			api_DelMsg({ MsgIds: checkboxListState }).then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {

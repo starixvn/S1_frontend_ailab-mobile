@@ -16,7 +16,8 @@
 		"skipDefaultLibCheck": true,
 		"baseUrl": ".",
 		"paths": {
-			"@ailab-mobile/promotion": ["libs/promotion/src/index.js"]
+			"@ailab-mobile/promotion": ["libs/promotion/src/index.js"],
+			"@ailab-mobile/api": ["libs/api/src/index.js"]
 		}
 	},
 	"exclude": ["node_modules", "tmp"]
