@@ -7,9 +7,9 @@ import {
 } from "../common/context";
 import { number_format, isConvert } from "../common/common";
 import {
-	api_GetWalletInfo,
+	api_account_GetWalletInfo,
 	api_account_GetCustBonusWallet
-} from "../../service/api/account";
+} from "@ailab-mobile/api";
 import ReloadSpin from "../common/reloadSpin";
 import BonusWallet from "./profile.wallet.bonus";
 
@@ -32,7 +32,7 @@ export default () => {
 	}, []);
 
 	const GetBalance = () => {
-		api_GetWalletInfo().then(
+		api_account_GetWalletInfo().then(
 			res => {
 				if (res.data.errorCode === 0) {
 					let data = res.data.data;

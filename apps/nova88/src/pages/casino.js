@@ -12,9 +12,9 @@ import {
 	defNavPanel
 } from "../components/common/context";
 import {
-	api_SetFavoriteGame,
-	api_GetFavoriteGame
-} from "../service/api/account";
+	api_account_SetFavoriteGame,
+	api_account_GetFavoriteGame
+} from "@ailab-mobile/api";
 import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
 
 const eachPageItem = 20;
@@ -144,7 +144,7 @@ class Panel extends React.Component {
 		});
 
 		if (this.props.userInfo.isLogin) {
-			api_GetFavoriteGame().then(res => {
+			api_account_GetFavoriteGame().then(res => {
 				if (res.data.errorCode === 0 && res.data.data) {
 					let fav = res.data.data.map(f => {
 						return `${f.providerId}_${f.gameId}`;
@@ -172,7 +172,7 @@ class Panel extends React.Component {
 			this.setState({ favorite: newFav, displayGames: displayGames });
 		}
 		if (this.props.userInfo.isLogin) {
-			api_SetFavoriteGame(tpId, gameId, isRemove);
+			api_account_SetFavoriteGame(tpId, gameId, isRemove);
 		}
 	};
 

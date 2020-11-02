@@ -11,7 +11,7 @@ import {
 import { readCookie, setCookie } from "../components/common/common";
 import path from "../path";
 import { Redirect } from "@reach/router";
-import { api_GetWalletInfo } from "../service/api/account";
+import { api_account_GetWalletInfo } from "@ailab-mobile/api";
 
 const IndexPage = () => {
 	const _shortcutBar = useRef(null);
@@ -41,7 +41,7 @@ const IndexPage = () => {
 			readCookie(cookieName) !== "1"
 		) {
 			setCookie(cookieName, "1", 1);
-			api_GetWalletInfo().then(res => {
+			api_account_GetWalletInfo().then(res => {
 				if (res.data.errorCode === 0) {
 					let data = res.data.data;
 					let mainWallet = {

@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
 import { api_UploadCustPhotoId } from "../../service/api/accountStrict";
-import { api_GetCustBankInfo } from "../../service/api/account";
+import { api_account_GetCustBankInfo } from "@ailab-mobile/api";
 import { api_KycCheck } from "../../service/api/payment";
 import { Redirect } from "@reach/router";
 import path from "../../path";
@@ -37,7 +37,7 @@ export default () => {
 	useEffect(() => {
 		if (userInfo.isLogin) {
 			const CheckBankInfo = async () => {
-				let result = await api_GetCustBankInfo().then(res => {
+				let result = await api_account_GetCustBankInfo().then(res => {
 					let hasBankInfo = false;
 					if (res.data.errorCode === 0) {
 						if (res.data.data?.bankInfoDetail) {

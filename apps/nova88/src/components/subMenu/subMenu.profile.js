@@ -8,7 +8,7 @@
 // import LangDropdown from "../common/dropdown.icon";
 // import { api_GetSiteLangList } from "../../service/api/site";
 // import { GET_LANG_ID } from "../../service/language";
-// import { api_SetLanguage, api_GetBalnace } from "../../service/api/account";
+// import { api_SetLanguage, api_account_GetBalnace } from "@ailab-mobile/api";
 // import { number_format, isConvert } from "../common/common";
 // import ReloadSpin from "../common/reloadSpin";
 
@@ -74,7 +74,7 @@
 // 		if (!processing) {
 // 			setProcessing(true);
 
-// 			api_GetBalnace().then(
+// 			api_account_GetBalnace().then(
 // 				res => {
 // 					if (isMountedRef.current) {
 // 						if (res.data.errorCode === 0) {

@@ -5,7 +5,7 @@ import {
 	popBoxContext,
 	walletInfoContext
 } from "../common/context";
-import { api_GetWalletInfo } from "../../service/api/account";
+import { api_account_GetWalletInfo } from "@ailab-mobile/api";
 import { api_Transfer, api_GetTransferRecent } from "../../service/api/tp";
 import { isConvert, checkAmount, number_format } from "../common/common";
 import RecentDatas from "./transfer.recentDatas";
@@ -37,7 +37,7 @@ const Panel = () => {
 	});
 
 	useEffect(() => {
-		api_GetWalletInfo().then(
+		api_account_GetWalletInfo().then(
 			res => {
 				if (res.data.errorCode === 0) {
 					let data = res.data.data;
@@ -80,7 +80,7 @@ const Panel = () => {
 	}, [setWalletInfo]);
 
 	const GetWalletInfo = () => {
-		api_GetWalletInfo().then(
+		api_account_GetWalletInfo().then(
 			res => {
 				if (res.data.errorCode === 0) {
 					let data = res.data.data;

@@ -5,7 +5,7 @@ import {
 	api_SetCustBankInfo,
 	api_DelCustBankInfo
 } from "../../service/api/accountStrict";
-import { api_GetCustBankInfo } from "../../service/api/account";
+import { api_account_GetCustBankInfo } from "@ailab-mobile/api";
 import Inputbox from "../common/inputbox";
 import Dropdown from "../common/dropdown.image";
 import config from "../../config";
@@ -48,7 +48,7 @@ const BankInfo = () => {
 	useEffect(() => {
 		if (userInfo.isLogin) {
 			setLoading(true);
-			api_GetCustBankInfo().then(
+			api_account_GetCustBankInfo().then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
@@ -194,7 +194,7 @@ const BankInfo = () => {
 	const GetCustBankInfo = () => {
 		setLoading(true);
 
-		api_GetCustBankInfo().then(
+		api_account_GetCustBankInfo().then(
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {

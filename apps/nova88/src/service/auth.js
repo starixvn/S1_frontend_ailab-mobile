@@ -1,4 +1,7 @@
-import { api_UserLogin, api_UserLogout } from "../service/api/account";
+import {
+	api_account_UserLogin,
+	api_account_UserLogout
+} from "@ailab-mobile/api";
 import { api_GetCustProfile } from "../service/api/accountStrict";
 import { api_CheckSignIn } from "../service/api/site";
 
@@ -24,7 +27,7 @@ export const LOGIN = async ({ userName, password }, CallbackLogin) => {
 		di = document.getElementById("__di").value;
 	}
 
-	await api_UserLogin({
+	await api_account_UserLogin({
 		UserName: userName,
 		Userpwd: password,
 		isPersistent: true,
@@ -69,7 +72,7 @@ export const LOGIN = async ({ userName, password }, CallbackLogin) => {
 
 export const LOGOUT = callback => {
 	if (!isBrowser) return;
-	api_UserLogout().then(
+	api_account_UserLogout().then(
 		res => {
 			if (res.data.errorCode === 0) {
 				callback();

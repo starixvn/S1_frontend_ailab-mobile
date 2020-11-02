@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import { number_format, isConvert, checkAmount } from "../common/common";
 import {
-	api_GetWithdrawalAvailableBalance,
-	api_GetCustBankInfo
-} from "../../service/api/account";
+	api_account_GetWithdrawalAvailableBalance,
+	api_account_GetCustBankInfo
+} from "@ailab-mobile/api";
 import {
 	api_WithdrawalReq,
 	api_GetWithdrawalInfoRecent,
@@ -85,7 +85,7 @@ const Panel = () => {
 			}
 		} else if (userInfo.isLogin) {
 			const CheckBankInfo = async () => {
-				let result = await api_GetCustBankInfo().then(res => {
+				let result = await api_account_GetCustBankInfo().then(res => {
 					let hasBankInfo = false;
 					if (res.data.errorCode === 0) {
 						if (
@@ -145,7 +145,7 @@ const Panel = () => {
 					KycCheck(true).then(kycProcess => {
 						if (!kycProcess) {
 							if (userInfo.isLogin) {
-								api_GetWithdrawalAvailableBalance().then(
+								api_account_GetWithdrawalAvailableBalance().then(
 									res => {
 										if (
 											res.data.errorCode === 0 &&
@@ -209,7 +209,7 @@ const Panel = () => {
 
 	const GetBalance = () => {
 		if (pageVerify) {
-			api_GetWithdrawalAvailableBalance().then(res => {
+			api_account_GetWithdrawalAvailableBalance().then(res => {
 				if (res.data.errorCode === 0 && isMountedRef.current) {
 					setBalanceInfo(res.data.data);
 				}

@@ -3,10 +3,10 @@ import * as ct from "../common/context";
 import { api_GetTranslationData } from "../../service/api/site";
 import { api_GetCustProfile } from "../../service/api/accountStrict";
 import {
-	api_GetBalnace,
-	api_onlineCheck,
-	api_GetMsgCount
-} from "../../service/api/account";
+	api_account_GetBalnace,
+	api_account_onlineCheck,
+	api_account_GetMsgCount
+} from "@ailab-mobile/api";
 import { IS_LOGGED_IN } from "../../service/auth";
 import { GET_LANG_ID } from "../../service/language";
 import themeList from "../../datas/theme";
@@ -92,7 +92,7 @@ export const Wrapper = ({ children }) => {
 
 	useInterval(
 		() => {
-			api_onlineCheck().then(
+			api_account_onlineCheck().then(
 				res => {
 					var result = res.data;
 					if (
@@ -134,14 +134,14 @@ export const Wrapper = ({ children }) => {
 				});
 			}
 
-			api_GetMsgCount().then(res => {
+			api_account_GetMsgCount().then(res => {
 				if (res.data.errorCode === 0 && isMountedRef.current) {
 					setMsgCount(res.data.data);
 				}
 			});
 
 			if (userInfo.userName) {
-				api_GetBalnace().then(res => {
+				api_account_GetBalnace().then(res => {
 					if (res.data.errorCode === 0 && isMountedRef.current) {
 						setWalletInfo(prevState => ({
 							...prevState,

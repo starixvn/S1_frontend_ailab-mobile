@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import { i18nContext, popBoxContext, msgCountContext } from "../common/context";
 import {
-	api_GetMsgList,
-	api_GetMsgContent,
-	api_DelMsg,
-	api_GetMsgCount
-} from "../../service/api/account";
+	api_account_GetMsgList,
+	api_account_GetMsgContent,
+	api_account_DelMsg,
+	api_account_GetMsgCount
+} from "@ailab-mobile/api";
 import moment from "moment";
 import ReloadSpin from "../common/reloadSpin";
 import Loading from "../common/loading";
@@ -27,7 +27,7 @@ const Panel = () => {
 	const isMountedRef = useRef(null);
 
 	AUTO_FETCHING_DATA(
-		api_GetMsgList,
+		api_account_GetMsgList,
 		{},
 		pageInfo,
 		setGetMsgList,
@@ -46,7 +46,7 @@ const Panel = () => {
 	useEffect(() => {
 		isMountedRef.current = true;
 		setLoading(true);
-		api_GetMsgList({ PageNumber: 1 }).then(
+		api_account_GetMsgList({ PageNumber: 1 }).then(
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
@@ -87,7 +87,7 @@ const Panel = () => {
 	const GetMsgList = () => {
 		if (!processing) {
 			setProcessing(true);
-			api_GetMsgList({ PageNumber: 1 }).then(
+			api_account_GetMsgList({ PageNumber: 1 }).then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
@@ -135,7 +135,7 @@ const Panel = () => {
 				setOpenContentState(null);
 				setProcessing(false);
 			} else {
-				api_GetMsgContent(id).then(
+				api_account_GetMsgContent(id).then(
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 0) {
@@ -152,7 +152,7 @@ const Panel = () => {
 										});
 									});
 
-									api_GetMsgCount().then(
+									api_account_GetMsgCount().then(
 										res => {
 											if (isMountedRef.current) {
 												if (res.data.errorCode === 0) {
@@ -230,7 +230,7 @@ const Panel = () => {
 
 	const delMsg = () => {
 		const DelMsg = () => {
-			api_DelMsg(checkboxListState).then(
+			api_account_DelMsg(checkboxListState).then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
