@@ -8,7 +8,7 @@ export const Iov_GetBlackBox = async () => {
 			let result = await window.IGLOO.getBlackbox();
 			blackBox = result?.blackbox || "";
 		} catch (e) {
-			return blackBox;
+			blackBox = "";
 		}
 	}
 

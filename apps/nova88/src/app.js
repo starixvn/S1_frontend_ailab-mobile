@@ -1,4 +1,4 @@
-import React, { Children } from "react";
+import React from "react";
 import path from "./path";
 import langKeys from "./datas/langKeys";
 import { Wrapper } from "./components/common/wrapper";
