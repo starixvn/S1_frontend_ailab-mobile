@@ -1,6 +1,6 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
-import { api_GetTransferHistory } from "../../service/api/tp";
+import { api_tp_GetTransferHistory } from "@ailab-mobile/api";
 import { number_format, isConvert } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
 import moment from "moment";
@@ -41,7 +41,7 @@ const Panel = () => {
 	});
 
 	AUTO_FETCHING_DATA(
-		api_GetTransferHistory,
+		api_tp_GetTransferHistory,
 		filterData,
 		pageInfo,
 		setGetHistoryState,
@@ -66,7 +66,7 @@ const Panel = () => {
 				setFilterData(transactionData);
 			}
 			setClickSubmit(true);
-			api_GetTransferHistory({
+			api_tp_GetTransferHistory({
 				...transactionData,
 				PageNumber: 1
 			}).then(

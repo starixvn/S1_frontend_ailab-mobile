@@ -5,8 +5,11 @@ import {
 	popBoxContext,
 	walletInfoContext
 } from "../common/context";
-import { api_account_GetWalletInfo } from "@ailab-mobile/api";
-import { api_Transfer, api_GetTransferRecent } from "../../service/api/tp";
+import {
+	api_account_GetWalletInfo,
+	api_tp_Transfer,
+	api_tp_GetTransferRecent
+} from "@ailab-mobile/api";
 import { isConvert, checkAmount, number_format } from "../common/common";
 import RecentDatas from "./transfer.recentDatas";
 import InputBox from "../common/inputbox";
@@ -72,7 +75,7 @@ const Panel = () => {
 			}
 		);
 
-		api_GetTransferRecent().then(res => {
+		api_tp_GetTransferRecent().then(res => {
 			if (res.data.errorCode === 0 && isMountedRef.current) {
 				setRecentDatas(res.data.data);
 			}
@@ -121,7 +124,7 @@ const Panel = () => {
 	};
 
 	const GetTransferRecent = () => {
-		api_GetTransferRecent().then(res => {
+		api_tp_GetTransferRecent().then(res => {
 			if (res.data.errorCode === 0 && isMountedRef.current) {
 				setRecentDatas(res.data.data);
 			}
@@ -191,7 +194,7 @@ const Panel = () => {
 				: Number(amount);
 
 			setLoading(true);
-			api_Transfer({
+			api_tp_Transfer({
 				TpId: 1,
 				amount: real_amount,
 				direction: direction
