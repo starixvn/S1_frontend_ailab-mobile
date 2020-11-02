@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { userInfoContext, i18nContext } from "../components/common/context";
 import config, { siteInfo } from "../config";
-import { api_promotion_GetPromotionListV2 } from "../service/api/promotion";
+import { api_promotion_GetPromotionListV2 } from "@ailab-mobile/api";
 import path from "../path";
 import { Link } from "@reach/router";
 import JoinBtn from "../components/promotion/promotion.joinBtn";

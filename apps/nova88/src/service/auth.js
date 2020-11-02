@@ -1,9 +1,9 @@
 import {
 	api_account_UserLogin,
-	api_account_UserLogout
+	api_account_UserLogout,
+	api_accountStrict_GetCustProfile,
+	api_site_CheckSignIn
 } from "@ailab-mobile/api";
-import { api_accountStrict_GetCustProfile } from "@ailab-mobile/api";
-import { api_site_CheckSignIn } from "@ailab-mobile/api";
 
 export const IS_LOGGED_IN = async () => {
 	return await api_site_CheckSignIn().then(res => res.data.errorCode === 0);

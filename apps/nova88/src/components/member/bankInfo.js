@@ -1,11 +1,11 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
-import { api_payment_GetBankInfoSysList } from "@ailab-mobile/api";
 import {
+	api_payment_GetBankInfoSysList,
 	api_accountStrict_SetCustBankInfo,
-	api_accountStrict_DelCustBankInfo
+	api_accountStrict_DelCustBankInfo,
+	api_account_GetCustBankInfo
 } from "@ailab-mobile/api";
-import { api_account_GetCustBankInfo } from "@ailab-mobile/api";
 import Inputbox from "../common/inputbox";
 import Dropdown from "../common/dropdown.image";
 import config from "../../config";

@@ -6,9 +6,8 @@
 // 	popBoxContext
 // } from "../common/context";
 // import LangDropdown from "../common/dropdown.icon";
-// import { api_site_GetSiteLangList } from "@ailab-mobile/api";
 // import { GET_LANG_ID } from "../../service/language";
-// import { api_SetLanguage, api_account_GetBalnace } from "@ailab-mobile/api";
+// import { api_site_GetSiteLangList, api_SetLanguage, api_account_GetBalnace } from "@ailab-mobile/api";
 // import { number_format, isConvert } from "../common/common";
 // import ReloadSpin from "../common/reloadSpin";
 

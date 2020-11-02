@@ -3,7 +3,11 @@ import Slider from "../components/casino/slider";
 import defNav from "../components/casino/defNav";
 import Nav from "../components/casino/nav";
 import SearchBox from "../components/casino/searchBox";
-import { api_site_GetGamelist } from "@ailab-mobile/api";
+import {
+	api_site_GetGamelist,
+	api_account_SetFavoriteGame,
+	api_account_GetFavoriteGame
+} from "@ailab-mobile/api";
 import Games from "../components/casino/games";
 import {
 	i18nContext,
@@ -11,10 +15,6 @@ import {
 	navContext,
 	defNavPanel
 } from "../components/common/context";
-import {
-	api_account_SetFavoriteGame,
-	api_account_GetFavoriteGame
-} from "@ailab-mobile/api";
 import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
 
 const eachPageItem = 20;

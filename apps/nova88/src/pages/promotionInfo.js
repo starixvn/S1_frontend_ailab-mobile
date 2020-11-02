@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { userInfoContext, i18nContext } from "../components/common/context";
 import { getUrlParameter, number_format } from "../components/common/common";
-import { api_promotion_GetPromotionDetail } from "../service/api/promotion";
-import { api_account_GetCustSpecificBonus } from "../service/api/account";
+import {
+	api_promotion_GetPromotionDetail,
+	api_account_GetCustSpecificBonus
+} from "@ailab-mobile/api";
 import { Link, Redirect } from "@reach/router";
 import path from "../path";
 import ReloadSpin from "../components/common/reloadSpin";

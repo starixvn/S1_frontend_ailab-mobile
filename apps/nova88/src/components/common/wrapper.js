@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import * as ct from "../common/context";
-import { api_GetTranslationData } from "../../service/api/site";
-import { api_accountStrict_GetCustProfile } from "@ailab-mobile/api";
 import {
+	api_accountStrict_GetCustProfile,
 	api_account_GetBalnace,
 	api_account_onlineCheck,
 	api_account_GetMsgCount

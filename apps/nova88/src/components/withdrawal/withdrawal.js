@@ -3,9 +3,7 @@ import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import { number_format, isConvert, checkAmount } from "../common/common";
 import {
 	api_account_GetWithdrawalAvailableBalance,
-	api_account_GetCustBankInfo
-} from "@ailab-mobile/api";
-import {
+	api_account_GetCustBankInfo,
 	api_payment_WithdrawalReq,
 	api_payment_GetWithdrawalInfoRecent,
 	api_payment_SetWithdrawalCancel,

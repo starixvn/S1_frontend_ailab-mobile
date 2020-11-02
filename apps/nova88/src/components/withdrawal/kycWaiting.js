@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { i18nContext, userInfoContext } from "../common/context";
-import { api_payment_KycCheck } from "@ailab-mobile/api";
-import { api_account_GetCustBankInfo } from "@ailab-mobile/api";
+import {
+	api_payment_KycCheck,
+	api_account_GetCustBankInfo
+} from "@ailab-mobile/api";
 import { Redirect } from "@reach/router";
 import path from "../../path";
 import Loading from "../common/loading";
