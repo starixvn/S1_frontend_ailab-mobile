@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { Redirect, Link } from "@reach/router";
-// import SubMenu from "../subMenu/subMenu";
 import {
 	userInfoContext,
 	i18nContext,
@@ -16,7 +15,12 @@ import { number_format, isConvert } from "./common";
 import path from "../../path";
 import { siteInfo } from "../../config";
 
-const HeaderTitle = ({ title }) => <div className="title">{title}</div>;
+const HeaderTitle = ({ title }) => (
+	<>
+		<div className="title">{title}</div>
+		<LoginPanel hideBtn={true} />
+	</>
+);
 
 const Header = ({ title, hideLogo }) => {
 	return (
@@ -27,12 +31,11 @@ const Header = ({ title, hideLogo }) => {
 				</a>
 			)}
 			{title ? <HeaderTitle title={title} /> : <HeaderBtn />}
-			{/* <SubMenu /> */}
 		</header>
 	);
 };
 
-const HeaderBtn = props => {
+const HeaderBtn = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { msgCount } = useContext(msgCountContext);
