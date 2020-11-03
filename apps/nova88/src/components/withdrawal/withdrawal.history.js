@@ -5,9 +5,9 @@ import {
 	userInfoContext
 } from "@ailab-mobile/context";
 import {
-	api_GetWithdrawalInfoHistory,
-	api_SetWithdrawalCancel
-} from "../../service/api/payment";
+	api_payment_GetWithdrawalInfoHistory,
+	api_payment_SetWithdrawalCancel
+} from "@ailab-mobile/api";
 import { number_format, isConvert } from "../common/common";
 import moment from "moment";
 import HistoryFilter from "../common/historyFilter";
@@ -33,7 +33,7 @@ const Panel = () => {
 		return () => (isMountedRef.current = false);
 	});
 	AUTO_FETCHING_DATA(
-		api_GetWithdrawalInfoHistory,
+		api_payment_GetWithdrawalInfoHistory,
 		filterData,
 		pageInfo,
 		setGetHistoryState,
@@ -59,7 +59,7 @@ const Panel = () => {
 			}
 
 			setClickSubmit(true);
-			api_GetWithdrawalInfoHistory({
+			api_payment_GetWithdrawalInfoHistory({
 				...transactionData,
 				PageNumber: 1
 			}).then(
@@ -106,7 +106,7 @@ const Panel = () => {
 	const ClickCancel = transId => {
 		const ClickSubmit = () => {
 			setPopBox({ isOpen: false });
-			api_SetWithdrawalCancel(transId).then(
+			api_payment_SetWithdrawalCancel(transId).then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {

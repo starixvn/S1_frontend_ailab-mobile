@@ -6,7 +6,7 @@ import {
 	userInfoContext
 } from "@ailab-mobile/context";
 import { Link, Redirect } from "@reach/router";
-import { api_GetOnlinePaymentList } from "../../service/api/payment";
+import { api_payment_GetOnlinePaymentList } from "@ailab-mobile/api";
 import PageVerify from "./deposit.pageVerify";
 import path from "../../path";
 import Loading from "../common/loading";
@@ -45,7 +45,7 @@ export const Main = props => {
 		} else {
 			if (userInfo.isLogin) {
 				setLoading(true);
-				api_GetOnlinePaymentList().then(
+				api_payment_GetOnlinePaymentList().then(
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 0) {

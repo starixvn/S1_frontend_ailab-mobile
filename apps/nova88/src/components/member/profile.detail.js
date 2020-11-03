@@ -10,10 +10,10 @@ import {
 import areaCode from "../../datas/areaCode";
 import moment from "moment";
 import {
-	api_SetProfile,
-	api_GetCustProfile
-} from "../../service/api/accountStrict";
-import { api_ExistsPhoneNo } from "../../service/api/site";
+	api_accountStrict_SetProfile,
+	api_accountStrict_GetCustProfile,
+	api_site_ExistsPhoneNo
+} from "@ailab-mobile/api";
 import path from "../../path";
 import { monthOptions, initStatus, initValue } from "./profile.def";
 import { defPopBoxType } from "../common/popbox";
@@ -155,7 +155,7 @@ const Panel = () => {
 			checked = false;
 			tip = i18n.lbl_PhoneRequired;
 		} else {
-			api_ExistsPhoneNo({
+			api_site_ExistsPhoneNo({
 				AreaCode: _areaCode,
 				Phone: val
 			}).then(
@@ -290,14 +290,14 @@ const Panel = () => {
 					PhoneNo: userInfo.phoneNo ?? userValue.phoneNo
 				};
 
-				api_SetProfile(profileData).then(
+				api_accountStrict_SetProfile(profileData).then(
 					response => {
 						if (isMountedRef.current) {
 							const errorCode = response.data.errorCode;
 							const message = response.data.message;
 
 							if (errorCode === 0) {
-								api_GetCustProfile().then(
+								api_accountStrict_GetCustProfile().then(
 									res => {
 										if (isMountedRef.current) {
 											if (res.data.errorCode === 0) {

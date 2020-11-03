@@ -6,7 +6,7 @@ import {
 	userInfoContext,
 	popBoxContext
 } from "@ailab-mobile/context";
-import { api_payment_GetCryptoPayInfoList } from "../../service/api/payment";
+import { api_payment_GetCryptoPayInfoList } from "@ailab-mobile/api";
 import path from "../../path";
 import PageVerify from "./deposit.pageVerify";
 import Loading from "../common/loading";

@@ -7,7 +7,7 @@ import {
 } from "@ailab-mobile/context";
 import { Redirect } from "@reach/router";
 import { LOGOUT } from "../../service/auth";
-import { api_SetLanguage } from "../../service/api/account";
+import { api_account_SetLanguage } from "@ailab-mobile/api";
 import ThemeMode from "../member/profile.themeMode";
 import path from "../../path";
 import { siteInfo } from "../../config";
@@ -56,7 +56,7 @@ export default () => {
 			setUserLanguage(language);
 
 			if (userInfo.isLogin) {
-				api_SetLanguage(langId).then(
+				api_account_SetLanguage(langId).then(
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 0) {

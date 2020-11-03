@@ -3,8 +3,6 @@ import Slider from "../components/casino/slider";
 import defNav from "../components/casino/defNav";
 import Nav from "../components/casino/nav";
 import SearchBox from "../components/casino/searchBox";
-import { api_GetGamelist } from "../service/api/site";
-import Games from "../components/casino/games";
 import {
 	i18nContext,
 	userInfoContext,
@@ -12,9 +10,12 @@ import {
 	defNavPanel
 } from "@ailab-mobile/context";
 import {
-	api_SetFavoriteGame,
-	api_GetFavoriteGame
-} from "../service/api/account";
+	api_site_GetGamelist,
+	api_account_SetFavoriteGame,
+	api_account_GetFavoriteGame
+} from "@ailab-mobile/api";
+import Games from "../components/casino/games";
+
 import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
 
 const eachPageItem = 20;
@@ -87,7 +88,7 @@ class Panel extends React.Component {
 		window.addEventListener("touchmove", this.ScrollBarListener, {
 			passive: false
 		});
-		api_GetGamelist().then(res => {
+		api_site_GetGamelist().then(res => {
 			if (res.data.errorCode === 0) {
 				let _tpList = {};
 				let games = [];
@@ -144,7 +145,7 @@ class Panel extends React.Component {
 		});
 
 		if (this.props.userInfo.isLogin) {
-			api_GetFavoriteGame().then(res => {
+			api_account_GetFavoriteGame().then(res => {
 				if (res.data.errorCode === 0 && res.data.data) {
 					let fav = res.data.data.map(f => {
 						return `${f.providerId}_${f.gameId}`;
@@ -172,7 +173,7 @@ class Panel extends React.Component {
 			this.setState({ favorite: newFav, displayGames: displayGames });
 		}
 		if (this.props.userInfo.isLogin) {
-			api_SetFavoriteGame(tpId, gameId, isRemove);
+			api_account_SetFavoriteGame(tpId, gameId, isRemove);
 		}
 	};
 

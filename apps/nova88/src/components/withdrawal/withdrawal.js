@@ -6,15 +6,13 @@ import {
 } from "@ailab-mobile/context";
 import { number_format, isConvert, checkAmount } from "../common/common";
 import {
-	api_GetWithdrawalAvailableBalance,
-	api_GetCustBankInfo
-} from "../../service/api/account";
-import {
-	api_WithdrawalReq,
-	api_GetWithdrawalInfoRecent,
-	api_SetWithdrawalCancel,
-	api_KycCheck
-} from "../../service/api/payment";
+	api_account_GetWithdrawalAvailableBalance,
+	api_account_GetCustBankInfo,
+	api_payment_WithdrawalReq,
+	api_payment_GetWithdrawalInfoRecent,
+	api_payment_SetWithdrawalCancel,
+	api_payment_KycCheck
+} from "@ailab-mobile/api";
 import InputBox from "../common/inputbox";
 import config from "../../config";
 import RecentDatas from "./withdrawal.recentDatas";
@@ -89,7 +87,7 @@ const Panel = () => {
 			}
 		} else if (userInfo.isLogin) {
 			const CheckBankInfo = async () => {
-				let result = await api_GetCustBankInfo().then(res => {
+				let result = await api_account_GetCustBankInfo().then(res => {
 					let hasBankInfo = false;
 					if (res.data.errorCode === 0) {
 						if (
@@ -149,7 +147,7 @@ const Panel = () => {
 					KycCheck(true).then(kycProcess => {
 						if (!kycProcess) {
 							if (userInfo.isLogin) {
-								api_GetWithdrawalAvailableBalance().then(
+								api_account_GetWithdrawalAvailableBalance().then(
 									res => {
 										if (
 											res.data.errorCode === 0 &&
@@ -166,14 +164,16 @@ const Panel = () => {
 									}
 								);
 
-								api_GetWithdrawalInfoRecent().then(res => {
-									if (
-										res.data.errorCode === 0 &&
-										isMountedRef.current
-									) {
-										setRecentDatas(res.data.data);
+								api_payment_GetWithdrawalInfoRecent().then(
+									res => {
+										if (
+											res.data.errorCode === 0 &&
+											isMountedRef.current
+										) {
+											setRecentDatas(res.data.data);
+										}
 									}
-								});
+								);
 							}
 						}
 					});
@@ -192,7 +192,7 @@ const Panel = () => {
 	]);
 
 	const KycCheck = async UpdatePageVerify => {
-		let executeKycProcess = await api_KycCheck().then(res => {
+		let executeKycProcess = await api_payment_KycCheck().then(res => {
 			if (isMountedRef.current) {
 				if (res.data.errorCode === 1) {
 					setRedirectPath(`/${path.kyc.root}`);
@@ -213,7 +213,7 @@ const Panel = () => {
 
 	const GetBalance = () => {
 		if (pageVerify) {
-			api_GetWithdrawalAvailableBalance().then(res => {
+			api_account_GetWithdrawalAvailableBalance().then(res => {
 				if (res.data.errorCode === 0 && isMountedRef.current) {
 					setBalanceInfo(res.data.data);
 				}
@@ -265,7 +265,7 @@ const Panel = () => {
 					sysId
 				) => {
 					let blackbox = await Iov_GetBlackBox();
-					api_WithdrawalReq(
+					api_payment_WithdrawalReq(
 						accountNo,
 						_real_amount,
 						sysId,
@@ -280,7 +280,7 @@ const Panel = () => {
 									let kycProcess = KycCheck(false);
 									if (!kycProcess) {
 										setAmount("");
-										api_GetWithdrawalInfoRecent().then(
+										api_payment_GetWithdrawalInfoRecent().then(
 											res => {
 												if (
 													res.data.errorCode === 0 &&
@@ -409,15 +409,17 @@ const Panel = () => {
 		if (pageVerify) {
 			const ClickSubmit = () => {
 				setPopBox({ isOpen: false });
-				api_SetWithdrawalCancel(transId).then(
+				api_payment_SetWithdrawalCancel(transId).then(
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 0) {
-								api_GetWithdrawalInfoRecent().then(res => {
-									if (res.data.errorCode === 0) {
-										setRecentDatas(res.data.data);
+								api_payment_GetWithdrawalInfoRecent().then(
+									res => {
+										if (res.data.errorCode === 0) {
+											setRecentDatas(res.data.data);
+										}
 									}
-								});
+								);
 							} else {
 								this.props.setPopBox({
 									isOpen: true,

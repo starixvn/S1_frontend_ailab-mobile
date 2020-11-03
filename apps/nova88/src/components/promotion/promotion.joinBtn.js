@@ -1,12 +1,12 @@
 import React, { useContext, useRef, useEffect, useState } from "react";
 import { Link, Redirect } from "@reach/router";
 import path from "../../path";
+import { api_promotion_SetClaimPromotion } from "@ailab-mobile/api";
 import {
 	userInfoContext,
 	popBoxContext,
 	i18nContext
 } from "@ailab-mobile/context";
-import { api_promotion_SetClaimPromotion } from "../../service/api/promotion";
 import { isExpiry } from "./promotion.common";
 
 export default ({ promotionInfo, func_GetPromotionDetail, func_CallBack }) => {

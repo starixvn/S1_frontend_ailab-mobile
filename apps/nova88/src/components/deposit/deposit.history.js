@@ -6,9 +6,9 @@ import {
 	bankSlipPopBoxContext
 } from "@ailab-mobile/context";
 import {
-	api_GetDepositInfoHistory,
-	api_SetDepositCancel
-} from "../../service/api/payment";
+	api_payment_GetDepositInfoHistory,
+	api_payment_SetDepositCancel
+} from "@ailab-mobile/api";
 import { number_format, isConvert } from "../common/common";
 import moment from "moment";
 import HistoryFilter from "../common/historyFilter";
@@ -36,7 +36,7 @@ const Panel = () => {
 	});
 
 	AUTO_FETCHING_DATA(
-		api_GetDepositInfoHistory,
+		api_payment_GetDepositInfoHistory,
 		filterData,
 		pageInfo,
 		setGetHistoryState,
@@ -63,7 +63,7 @@ const Panel = () => {
 
 			setFilterData(transactionData);
 			setClickSubmit(true);
-			api_GetDepositInfoHistory({
+			api_payment_GetDepositInfoHistory({
 				...transactionData,
 				PageNumber: 1
 			}).then(
@@ -115,7 +115,7 @@ const Panel = () => {
 	const ClickCancel = transId => {
 		const ClickSubmit = () => {
 			setPopBox({ isOpen: false });
-			api_SetDepositCancel(transId).then(
+			api_payment_SetDepositCancel(transId).then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {

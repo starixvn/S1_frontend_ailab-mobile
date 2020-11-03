@@ -7,9 +7,9 @@ import {
 	popBoxContext
 } from "@ailab-mobile/context";
 import {
-	api_GetMobilePayGroupList,
-	api_GetMobilePayInfoList
-} from "../../service/api/payment";
+	api_payment_GetMobilePayGroupList,
+	api_payment_GetMobilePayInfoList
+} from "@ailab-mobile/api";
 import config from "../../config";
 import LimitTip from "./limitTip";
 import { isConvert } from "../common/common";
@@ -56,7 +56,7 @@ export const Main = props => {
 		} else {
 			if (userInfo.isLogin) {
 				setLoading(true);
-				api_GetMobilePayGroupList().then(
+				api_payment_GetMobilePayGroupList().then(
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 0) {
@@ -100,7 +100,7 @@ export const Main = props => {
 		if (pageVerify && selGroupId !== groupId) {
 			setSelGroupId(() => groupId);
 			setLoading(true);
-			api_GetMobilePayInfoList(groupId).then(
+			api_payment_GetMobilePayInfoList(groupId).then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {

@@ -10,13 +10,13 @@ import {
 } from "@ailab-mobile/context";
 import { Link, Redirect } from "@reach/router";
 import {
-	api_GetOnlinePaymentList,
-	api_GetBankInfoOffList,
-	api_GetMobilePayGroupList,
-	api_GetDepositInfoRecent,
-	api_SetDepositCancel,
+	api_payment_GetOnlinePaymentList,
+	api_payment_GetBankInfoOffList,
+	api_payment_GetMobilePayGroupList,
+	api_payment_GetDepositInfoRecent,
+	api_payment_SetDepositCancel,
 	api_payment_GetCryptoPayInfoList
-} from "../../service/api/payment";
+} from "@ailab-mobile/api";
 import RecentDatas from "./deposit.recentDatas";
 import Loading from "../common/loading";
 import PageVerify from "./deposit.pageVerify";
@@ -96,7 +96,7 @@ const Panel = () => {
 		if (userInfo.isLogin) {
 			setLoading(true);
 
-			api_GetOnlinePaymentList().then(
+			api_payment_GetOnlinePaymentList().then(
 				res => {
 					if (res.data.errorCode === 0 && isMountedRef.current) {
 						setOnlineBankingList(res.data.data);
@@ -115,7 +115,7 @@ const Panel = () => {
 				}
 			);
 
-			api_GetBankInfoOffList().then(
+			api_payment_GetBankInfoOffList().then(
 				res => {
 					if (res.data.errorCode === 0 && isMountedRef.current) {
 						setLocalBankList(res.data.data);
@@ -134,7 +134,7 @@ const Panel = () => {
 				}
 			);
 
-			api_GetMobilePayGroupList().then(
+			api_payment_GetMobilePayGroupList().then(
 				res => {
 					if (res.data.errorCode === 0 && isMountedRef.current) {
 						setMobilePayList(res.data.data);
@@ -172,7 +172,7 @@ const Panel = () => {
 				}
 			);
 
-			api_GetDepositInfoRecent().then(res => {
+			api_payment_GetDepositInfoRecent().then(res => {
 				if (res.data.errorCode === 0 && isMountedRef.current) {
 					setRecentDatas(res.data.data);
 				}
@@ -212,11 +212,11 @@ const Panel = () => {
 		if (pageVerify) {
 			const ClickSubmit = () => {
 				setPopBox({ isOpen: false });
-				api_SetDepositCancel(transId).then(
+				api_payment_SetDepositCancel(transId).then(
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 0) {
-								api_GetDepositInfoRecent().then(res => {
+								api_payment_GetDepositInfoRecent().then(res => {
 									if (res.data.errorCode === 0) {
 										setRecentDatas(res.data.data);
 									}
@@ -302,7 +302,7 @@ const Panel = () => {
 		: null;
 
 	const GetDepositInfoRecent = () => {
-		api_GetDepositInfoRecent().then(
+		api_payment_GetDepositInfoRecent().then(
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
