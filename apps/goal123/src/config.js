@@ -23,29 +23,24 @@ export const siteInfo = langId => {
 	};
 };
 
-const SiteURL =
-	process.env.NODE_ENV === "production"
-		? {
-				siteName,
-				apiURL: "",
-				openURL: "",
-				imgUrl: "",
-				t_and_cURL: ""
-		  }
-		: {
-				siteName,
-				appURL: "http://localhost:3000",
-				// apiURL: "http://localhost:60930",
-				// imgUrl: "http://localhost:60930",
-				// t_and_cURL: "http://localhost:60930",
-				// openURL: "http://localhost:60930"
+export default process.env.NODE_ENV === "production"
+	? {
+			siteName,
+			apiURL: "",
+			openURL: "",
+			imgUrl: "",
+			t_and_cURL: ""
+	  }
+	: {
+			siteName,
+			appURL: "http://localhost:3000",
+			// apiURL: "http://localhost:60930",
+			// imgUrl: "http://localhost:60930",
+			// t_and_cURL: "http://localhost:60930",
+			// openURL: "http://localhost:60930"
 
-				apiURL: "http://www.n88dev.com",
-				imgUrl: "http://www.n88dev.com",
-				t_and_cURL: "http://www.n88dev.com",
-				openURL: "http://www.n88dev.com"
-		  };
-
-axios.defaults.baseURL = SiteURL.apiURL;
-
-export default SiteURL;
+			apiURL: "http://stag.goal123.com",
+			imgUrl: "http://stag.goal123.com",
+			t_and_cURL: "http://stag.goal123.com",
+			openURL: "http://stag.goal123.com"
+	  };
