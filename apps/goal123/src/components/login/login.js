@@ -39,7 +39,7 @@ const warningLangKey = {
 	Password: "msg_PasswordReq"
 };
 
-const LoginPage = ({ ButtonTitle }) => {
+const LoginPage = ({ ButtonTitle, hideBtn }) => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { nav, setNav } = useContext(navContext);
@@ -169,9 +169,11 @@ const LoginPage = ({ ButtonTitle }) => {
 
 	return redirectPath === null ? (
 		<>
-			<button onClick={handleloginPanel.bind(this, showPanel)}>
-				{ButtonTitle}
-			</button>
+			{hideBtn ? null : (
+				<button onClick={handleloginPanel.bind(this, showPanel)}>
+					{ButtonTitle}
+				</button>
+			)}
 			<div className={`Login${showPanel ? " open" : ""}`}>
 				<div
 					className={`close${showPanel ? " open" : ""}`}

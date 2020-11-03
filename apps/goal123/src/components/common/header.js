@@ -16,7 +16,12 @@ import { number_format } from "./common";
 import path from "../../path";
 import Logo from "../../styles/img/logo.png";
 
-const HeaderTitle = ({ title }) => <div className="title">{title}</div>;
+const HeaderTitle = ({ title }) => (
+	<>
+		<div className="title">{title}</div>
+		<LoginPanel hideBtn={true} />
+	</>
+);
 
 const Header = ({ title, hideLogo }) => {
 	return (
