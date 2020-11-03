@@ -3,9 +3,9 @@ import { bankSlipPopBoxContext, i18nContext, popBoxContext } from "Context";
 import moment from "moment";
 import ClipboardJS from "../../lib/clipboard.min";
 import {
-	api_UploadReceipt,
-	api_SetDepositReceipt
-} from "../../service/api/payment";
+	api_payment_UploadReceipt,
+	api_payment_SetDepositReceipt
+} from "@ailab-mobile/api";
 
 const GetUploadFileName = files => {
 	let fullPath = files[0].name;
@@ -52,7 +52,7 @@ class Modal extends Component {
 			let formData = new FormData();
 			formData.append("TransId", this.props.bankSlipPopBox.transId);
 			formData.append("Receipt", files[0]);
-			api_UploadReceipt(formData).then(
+			api_payment_UploadReceipt(formData).then(
 				response => {
 					if (this.isMountedRef) {
 						let result = response.data;
@@ -84,7 +84,7 @@ class Modal extends Component {
 		if (!this.state.processing) {
 			this.setState({ processing: true });
 			let bankSlipPopBox = this.props.bankSlipPopBox;
-			api_SetDepositReceipt(
+			api_payment_SetDepositReceipt(
 				bankSlipPopBox.transId,
 				moment(bankSlipPopBox.depositTime).unix(),
 				bankSlipPopBox.refId

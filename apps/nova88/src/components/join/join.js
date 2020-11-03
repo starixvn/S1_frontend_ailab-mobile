@@ -5,15 +5,15 @@ import Dropdown from "../common/dropdown";
 import Checkbox from "../common/checkbox";
 import Tips from "./tips";
 import {
-	api_ExistsUserName,
-	api_ExistsEmail,
-	// api_Register,
-	api_Signup,
-	api_GetSiteCurrencyList,
-	api_GetBanner,
-	api_ExistsPhoneNo
+	api_site_ExistsUserName,
+	api_site_ExistsEmail,
+	// api_site_Register,
+	api_site_Signup,
+	api_site_GetSiteCurrencyList,
+	api_site_GetBanner,
+	api_site_ExistsPhoneNo,
+	api_accountStrict_GetCustProfile
 } from "@ailab-mobile/api";
-import { api_GetCustProfile } from "../../service/api/accountStrict";
 import { getUrlParameter } from "../common/common";
 import { getCookie } from "../common/cookie";
 import {
@@ -64,14 +64,16 @@ const Join = () => {
 		let showBylink = window.location.pathname === `/${path.join.root}`;
 		let openPanel = showBylink || nav === defNavPanel.join;
 		if (refId && openPanel) {
-			api_GetBanner("Promotion", refId, userInfo.langId).then(res => {
-				if (res.data.errorCode === 0 && isMountedRef.current) {
-					if (res.data.data.length > 0) {
-						setBanner(res.data.data);
-						setPromoPopup(true);
+			api_site_GetBanner("Promotion", refId, userInfo.langId).then(
+				res => {
+					if (res.data.errorCode === 0 && isMountedRef.current) {
+						if (res.data.data.length > 0) {
+							setBanner(res.data.data);
+							setPromoPopup(true);
+						}
 					}
 				}
-			});
+			);
 		}
 	}, [nav, userInfo.langId]);
 
@@ -89,7 +91,7 @@ const Join = () => {
 	}, [redirectPath]);
 
 	useEffect(() => {
-		api_GetSiteCurrencyList().then(
+		api_site_GetSiteCurrencyList().then(
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
@@ -204,7 +206,7 @@ const Join = () => {
 			checked = false;
 			msg = "msg_UsernameLength";
 		} else {
-			const res = await api_ExistsUserName({ UserName: val });
+			const res = await api_site_ExistsUserName({ UserName: val });
 
 			if (res.data.errorCode === 0 && res.data.data === true) {
 				checked = false;
@@ -243,7 +245,7 @@ const Join = () => {
 			checked = false;
 			msg = "msg_MailWrongFormat";
 		} else {
-			const res = await api_ExistsEmail({ Email: val });
+			const res = await api_site_ExistsEmail({ Email: val });
 			if (res.data.errorCode === 0 && res.data.data === true) {
 				checked = false;
 				msg = "msg_MailExisted";
@@ -265,7 +267,7 @@ const Join = () => {
 			checked = false;
 			msg = "lbl_PhoneTooltip";
 		} else {
-			const res = await api_ExistsPhoneNo({
+			const res = await api_site_ExistsPhoneNo({
 				AreaCode: _areaCode,
 				Phone: val
 			});
@@ -397,13 +399,13 @@ const Join = () => {
 			regData["Aff"] = getUrlParameter("Aff") || getCookie("Aff");
 			regData["blackbox"] = await Iov_GetBlackBox();
 
-			api_Signup(regData, defaultLangId).then(
+			api_site_Signup(regData, defaultLangId).then(
 				response => {
 					if (isMountedRef.current) {
 						const errorCode = response.data.errorCode;
 						const message = response.data.message;
 						if (errorCode === 0) {
-							api_GetCustProfile().then(
+							api_accountStrict_GetCustProfile().then(
 								res_custInfo => {
 									if (isMountedRef.current) {
 										let _user = {

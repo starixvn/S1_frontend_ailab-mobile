@@ -1,7 +1,9 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
+import {
+	api_accountStrict_ResetPassword,
+	api_site_CheckResetPwdToken
+} from "@ailab-mobile/api";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
-import { api_ResetPassword } from "../../service/api/accountStrict";
-import { api_CheckResetPwdToken } from "../../service/api/site";
 import Inputbox from "../common/inputbox.password";
 import { getUrlParameter } from "../common/common";
 import { Redirect } from "@reach/router";
@@ -33,7 +35,7 @@ export default () => {
 
 		if (key) {
 			if (userInfo.isLogin === false) {
-				api_CheckResetPwdToken(key).then(
+				api_site_CheckResetPwdToken(key).then(
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 1) {
@@ -111,7 +113,7 @@ export default () => {
 		if (newPsw === "") {
 			setWarning({ status: true, msg: i18n.msg_PasswordVaildate });
 		} else if (warning.status === false) {
-			api_ResetPassword({ NewPassword: newPsw }).then(
+			api_accountStrict_ResetPassword({ NewPassword: newPsw }).then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode !== 0) {

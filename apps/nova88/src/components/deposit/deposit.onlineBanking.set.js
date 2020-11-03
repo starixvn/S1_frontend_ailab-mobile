@@ -3,9 +3,9 @@ import Step from "./step";
 import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import { Link, Redirect } from "@reach/router";
 import {
-	api_GetOnlineBankInfoSysList,
-	api_GetOnlineBankInfo
-} from "../../service/api/payment";
+	api_payment_GetOnlineBankInfoSysList,
+	api_payment_GetOnlineBankInfo
+} from "@ailab-mobile/api";
 import DropdownIMG from "../common/dropdown.image";
 import config from "../../config";
 import { number_format, isConvert, checkAmount } from "../common/common";
@@ -57,7 +57,7 @@ const SetPayment = props => {
 		} else {
 			if (userInfo.isLogin && props.location.state.selBank) {
 				setLoading(true);
-				api_GetOnlineBankInfoSysList({
+				api_payment_GetOnlineBankInfoSysList({
 					payId: props.location.state.payId
 				}).then(
 					res => {
@@ -118,7 +118,7 @@ const SetPayment = props => {
 
 	const SelectBank = idx => {
 		if (pageVerify) {
-			api_GetOnlineBankInfo({
+			api_payment_GetOnlineBankInfo({
 				payId: props.location.state.payId,
 				sysId: bankList[idx].id
 			}).then(

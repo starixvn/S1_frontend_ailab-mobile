@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { i18nContext, userInfoContext } from "Context";
-import { api_KycCheck } from "../../service/api/payment";
-import { api_GetCustBankInfo } from "../../service/api/account";
+import {
+	api_payment_KycCheck,
+	api_account_GetCustBankInfo
+} from "@ailab-mobile/api";
 import { Redirect } from "@reach/router";
-import path from "../../path";
+import path from "Path";
 import Loading from "../common/loading";
 
 export default () => {
@@ -33,7 +35,7 @@ export default () => {
 	useEffect(() => {
 		if (userInfo.isLogin) {
 			const CheckBankInfo = async () => {
-				let result = await api_GetCustBankInfo().then(res => {
+				let result = await api_account_GetCustBankInfo().then(res => {
 					let hasBankInfo = false;
 					if (res.data.errorCode === 0) {
 						if (res.data.data?.bankInfoDetail) {
@@ -51,7 +53,7 @@ export default () => {
 
 			CheckBankInfo().then(hasBankInfo => {
 				if (hasBankInfo) {
-					api_KycCheck().then(
+					api_payment_KycCheck().then(
 						res => {
 							if (isMountedRef.current) {
 								if (res.data.errorCode === 1) {

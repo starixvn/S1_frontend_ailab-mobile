@@ -8,7 +8,7 @@ import {
 	msgCountContext,
 	walletInfoContext
 } from "Context";
-import { api_GetWalletInfo } from "../../service/api/account";
+import { api_account_GetWalletInfo } from "@ailab-mobile/api";
 import JoinPanel from "../join/join";
 import LoginPanel from "../login/login";
 import ReloadSpin from "./reloadSpin";
@@ -63,7 +63,7 @@ const HeaderBtn = props => {
 		if (!processing) {
 			setProcessing(true);
 
-			api_GetWalletInfo().then(
+			api_account_GetWalletInfo().then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {

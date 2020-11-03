@@ -1,5 +1,5 @@
 import React, { Component, useContext, createRef } from "react";
-import { api_GetAnnouncement } from "../../service/api/message";
+import { api_message_GetAnnouncement } from "@ailab-mobile/api";
 import PropTypes from "prop-types";
 import {
 	popBoxContext,
@@ -105,7 +105,7 @@ class Marquee extends Component {
 		}
 	};
 	GetAnnouncement = langId => {
-		api_GetAnnouncement(langId).then(
+		api_message_GetAnnouncement(langId).then(
 			res => {
 				if (res.data.errorCode === 0) {
 					let resData = res.data.data;

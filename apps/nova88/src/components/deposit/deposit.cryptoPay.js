@@ -2,8 +2,8 @@ import React, { useContext, useState, useEffect, useRef } from "react";
 import Step from "./step";
 import { Link, Redirect } from "@reach/router";
 import { i18nContext, userInfoContext, popBoxContext } from "Context";
-import { api_payment_GetCryptoPayInfoList } from "../../service/api/payment";
-import path from "../../path";
+import { api_payment_GetCryptoPayInfoList } from "@ailab-mobile/api";
+import path from "Path";
 import PageVerify from "./deposit.pageVerify";
 import Loading from "../common/loading";
 

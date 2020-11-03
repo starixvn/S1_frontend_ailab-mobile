@@ -1,10 +1,12 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
+import {
+	api_accountStrict_UploadCustPhotoId,
+	api_account_GetCustBankInfo,
+	api_payment_KycCheck
+} from "@ailab-mobile/api";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
-import { api_UploadCustPhotoId } from "../../service/api/accountStrict";
-import { api_GetCustBankInfo } from "../../service/api/account";
-import { api_KycCheck } from "../../service/api/payment";
 import { Redirect } from "@reach/router";
-import path from "../../path";
+import path from "Path";
 import Loading from "../common/loading";
 
 export default () => {
@@ -37,7 +39,7 @@ export default () => {
 	useEffect(() => {
 		if (userInfo.isLogin) {
 			const CheckBankInfo = async () => {
-				let result = await api_GetCustBankInfo().then(res => {
+				let result = await api_account_GetCustBankInfo().then(res => {
 					let hasBankInfo = false;
 					if (res.data.errorCode === 0) {
 						if (res.data.data?.bankInfoDetail) {
@@ -54,7 +56,7 @@ export default () => {
 
 			CheckBankInfo().then(hasBankInfo => {
 				if (hasBankInfo) {
-					api_KycCheck().then(
+					api_payment_KycCheck().then(
 						res => {
 							if (isMountedRef.current) {
 								if (res.data.errorCode === 2) {
@@ -88,7 +90,7 @@ export default () => {
 			setProcessing(true);
 			let formData = new FormData();
 			formData.append("PhotoId", file);
-			api_UploadCustPhotoId(formData).then(
+			api_accountStrict_UploadCustPhotoId(formData).then(
 				response => {
 					if (isMountedRef.current) {
 						let res = response.data;

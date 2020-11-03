@@ -1,14 +1,14 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { i18nContext, userInfoContext, popBoxContext } from "Context";
-import { api_GetBankInfoSysList } from "../../service/api/payment";
 import {
-	api_SetCustBankInfo,
-	api_DelCustBankInfo
-} from "../../service/api/accountStrict";
-import { api_GetCustBankInfo } from "../../service/api/account";
+	api_payment_GetBankInfoSysList,
+	api_accountStrict_SetCustBankInfo,
+	api_accountStrict_DelCustBankInfo,
+	api_account_GetCustBankInfo
+} from "@ailab-mobile/api";
 import Inputbox from "../common/inputbox";
 import Dropdown from "../common/dropdown.image";
-import config from "../../config";
+import config from "Config";
 import Loading from "../common/loading";
 
 const initWarningState = {
@@ -48,7 +48,7 @@ const BankInfo = () => {
 	useEffect(() => {
 		if (userInfo.isLogin) {
 			setLoading(true);
-			api_GetCustBankInfo().then(
+			api_account_GetCustBankInfo().then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
@@ -96,7 +96,7 @@ const BankInfo = () => {
 
 	const toAddBankAccount = () => {
 		setLoading(true);
-		api_GetBankInfoSysList().then(
+		api_payment_GetBankInfoSysList().then(
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
@@ -194,7 +194,7 @@ const BankInfo = () => {
 	const GetCustBankInfo = () => {
 		setLoading(true);
 
-		api_GetCustBankInfo().then(
+		api_account_GetCustBankInfo().then(
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
@@ -247,7 +247,7 @@ const BankInfo = () => {
 				SysId: val.SysId
 			};
 			setPopBox({ isOpen: false });
-			api_DelCustBankInfo(removeAccountData).then(
+			api_accountStrict_DelCustBankInfo(removeAccountData).then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
@@ -370,7 +370,7 @@ const BankInfo = () => {
 					SysId: siteBankInfoState[bankSelectedIdx].id
 				};
 				setLoading(true);
-				api_SetCustBankInfo(bankInfoData).then(
+				api_accountStrict_SetCustBankInfo(bankInfoData).then(
 					response => {
 						if (isMountedRef.current) {
 							const errorCode = response.data.errorCode;

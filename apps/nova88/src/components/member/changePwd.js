@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { Link, Redirect } from "@reach/router";
+import { api_account_ChangePassword } from "@ailab-mobile/api";
 import { i18nContext, popBoxContext } from "Context";
-import { api_ChangePassword } from "../../service/api/account";
-import path from "../../path";
+import path from "Path";
 import Inputbox from "../common/inputbox.password";
 
 const initState = {
@@ -112,7 +112,7 @@ export default () => {
 				}
 			};
 
-			api_ChangePassword({
+			api_account_ChangePassword({
 				OldPassword: userValueState.oldPsw,
 				NewPassword: userValueState.newPsw
 			}).then(

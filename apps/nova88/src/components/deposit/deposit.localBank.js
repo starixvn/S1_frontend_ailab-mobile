@@ -13,9 +13,9 @@ import LimitTip from "./limitTip";
 import { isConvert, checkAmount, number_format } from "../common/common";
 import InputBox from "../common/inputbox";
 import {
-	api_DepositReqWireTransfer,
-	api_GetBankInfoOffList
-} from "../../service/api/payment";
+	api_payment_DepositReqWireTransfer,
+	api_payment_GetBankInfoOffList
+} from "@ailab-mobile/api";
 import moment from "moment";
 import PageVerify from "./deposit.pageVerify";
 import path from "../../path";
@@ -79,7 +79,7 @@ export const Main = props => {
 		} else {
 			if (userInfo.isLogin) {
 				setLoading(true);
-				api_GetBankInfoOffList().then(
+				api_payment_GetBankInfoOffList().then(
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 0) {
@@ -157,7 +157,7 @@ export const Main = props => {
 			let result = VaildAmount(amount) && selBank.bank;
 			if (result && pageVerify) {
 				const RedirectToNext = (real_amount, sysId) => {
-					api_DepositReqWireTransfer({
+					api_payment_DepositReqWireTransfer({
 						amount: real_amount,
 						sysId: sysId
 					}).then(
