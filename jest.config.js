@@ -7,6 +7,7 @@ module.exports = {
 		"<rootDir>/apps/bwing",
 		"<rootDir>/libs/api",
 		"<rootDir>/libs/common",
-		"<rootDir>/libs/service"
+		"<rootDir>/libs/service",
+		"<rootDir>/libs/casino"
 	]
 };

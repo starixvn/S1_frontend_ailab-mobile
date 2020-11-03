@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { i18nContext } from "Context";
 
-export default () => {
+export const Loading = () => {
 	const { i18n } = useContext(i18nContext);
 
 	let loadingDisplayText = i18n.lbl_Loading;

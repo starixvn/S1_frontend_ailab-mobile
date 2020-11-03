@@ -62,6 +62,9 @@
 		},
 		"service": {
 			"tags": []
+		},
+		"casino": {
+			"tags": []
 		}
 	}
 }

@@ -19,7 +19,8 @@
 			"@ailab-mobile/promotion": ["libs/promotion/src/index.js"],
 			"@ailab-mobile/api": ["libs/api/src/index.js"],
 			"@ailab-mobile/common": ["libs/common/src/index.js"],
-			"@ailab-mobile/service": ["libs/service/src/index.js"]
+			"@ailab-mobile/service": ["libs/service/src/index.js"],
+			"@ailab-mobile/casino": ["libs/casino/src/index.js"]
 		}
 	},
 	"exclude": ["node_modules", "tmp"]

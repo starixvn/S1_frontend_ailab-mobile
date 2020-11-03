@@ -1,7 +1,7 @@
 import React, { Component, createRef } from "react";
 import PropTypes from "prop-types";
 
-export class DropdownBox extends Component {
+export class Dropdown extends Component {
 	constructor(props) {
 		super(props);
 		document.addEventListener("mousedown", this.handleClickOutside);
@@ -80,12 +80,10 @@ const Item = props => {
 	);
 };
 
-DropdownBox.propTypes = {
+Dropdown.propTypes = {
 	colName: PropTypes.string,
 	onSelectItem: PropTypes.func,
 	options: PropTypes.array,
 	selectedIdx: PropTypes.number,
 	mainKey: PropTypes.string
 };
-
-export default DropdownBox;

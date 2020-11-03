@@ -1,12 +1,12 @@
 import {
-	api_UserLogin,
-	api_UserLogout,
-	api_GetCustProfile,
-	api_CheckSignIn
+	api_account_UserLogin,
+	api_account_UserLogout,
+	api_accountStrict_GetCustProfile,
+	api_site_CheckSignIn
 } from "@ailab-mobile/api";
 
 export const IS_LOGGED_IN = async () => {
-	return await api_CheckSignIn().then(res => res.data.errorCode === 0);
+	return await api_site_CheckSignIn().then(res => res.data.errorCode === 0);
 };
 
 const isBrowser = typeof window !== `undefined`;
@@ -27,7 +27,7 @@ export const LOGIN = async ({ userName, password }, CallbackLogin) => {
 		di = document.getElementById("__di").value;
 	}
 
-	await api_UserLogin({
+	await api_account_UserLogin({
 		UserName: userName,
 		Userpwd: password,
 		isPersistent: true,
@@ -41,7 +41,7 @@ export const LOGIN = async ({ userName, password }, CallbackLogin) => {
 			if (res.data.errorCode === 0) {
 				let userlangId = res.data.message.replace("/", "");
 
-				api_GetCustProfile().then(res_custInfo => {
+				api_accountStrict_GetCustProfile().then(res_custInfo => {
 					let _loginUser = {
 						userName: userName,
 						langId: userlangId,
@@ -72,7 +72,7 @@ export const LOGIN = async ({ userName, password }, CallbackLogin) => {
 
 export const LOGOUT = callback => {
 	if (!isBrowser) return;
-	api_UserLogout().then(
+	api_account_UserLogout().then(
 		res => {
 			if (res.data.errorCode === 0) {
 				callback();

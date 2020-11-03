@@ -1,6 +1,6 @@
 import React, { Component, createRef } from "react";
 
-export class IconDropdown extends Component {
+export class DropdownIcon extends Component {
 	constructor(props) {
 		super(props);
 		document.addEventListener("mousedown", this.handleClickOutside);
@@ -79,4 +79,3 @@ const Item = props => {
 		</div>
 	);
 };
-export default IconDropdown;

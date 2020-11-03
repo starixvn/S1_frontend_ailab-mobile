@@ -1,7 +1,7 @@
 import React, { Component, createRef } from "react";
 import PropTypes from "prop-types";
 
-export class DropdownBox extends Component {
+export class DropdownIMG extends Component {
 	constructor(props) {
 		super(props);
 		document.addEventListener("mousedown", this.handleClickOutside);
@@ -89,7 +89,7 @@ const Item = props => {
 	);
 };
 
-DropdownBox.propTypes = {
+DropdownIMG.propTypes = {
 	colName: PropTypes.string,
 	onSelectItem: PropTypes.func.isRequired,
 	options: PropTypes.array.isRequired,
@@ -99,5 +99,3 @@ DropdownBox.propTypes = {
 	ImgURL: PropTypes.string.isRequired,
 	className: PropTypes.string.isRequired
 };
-
-export default DropdownBox;

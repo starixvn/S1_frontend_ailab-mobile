@@ -1,15 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
 import Swiper from "react-id-swiper";
-import { api_GetBanner } from "@ailab-mobile/api";
-import {
-	userInfoContext,
-	navContext,
-	defNavPanel,
-	configContext
-} from "Context";
+import { api_site_GetBanner } from "@ailab-mobile/api";
+import { userInfoContext, navContext, defNavPanel } from "Context";
 import { GET_ENTER_PAGE } from "@ailab-mobile/service";
 import path from "Path";
 import { Link } from "@reach/router";
+import config from "Config";
 
 export const ClickLink = (
 	tpId,
@@ -21,7 +17,6 @@ export const ClickLink = (
 	isLogin,
 	setNav
 ) => {
-	const { config } = useContext(configContext);
 	if (href === "Casino/Lobby") {
 		window.location.href = `/${path.casino.root}${tpId ? `/${tpId}` : ""}`;
 	} else if (tpId === null) {
@@ -53,20 +48,23 @@ export const ClickLink = (
 	}
 };
 
-const Panel = ({ ImgFolder, filterHideInHome = false, config }) => {
+export const SwipperBanner = ({ ImgFolder, filterHideInHome = false }) => {
 	const [banner, setBanner] = useState([]);
 	const { userInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
 
 	useEffect(() => {
 		let mounted = true;
-		api_GetBanner(ImgFolder, "", userInfo.langId, filterHideInHome).then(
-			res => {
-				if (res.data.errorCode === 0 && mounted) {
-					setBanner(res.data.data);
-				}
+		api_site_GetBanner(
+			ImgFolder,
+			"",
+			userInfo.langId,
+			filterHideInHome
+		).then(res => {
+			if (res.data.errorCode === 0 && mounted) {
+				setBanner(res.data.data);
 			}
-		);
+		});
 
 		return () => (mounted = false);
 	}, [userInfo, ImgFolder, filterHideInHome]);
@@ -145,5 +143,3 @@ const Autoplay = props => {
 
 	return <Swiper {...params}>{props.Rows}</Swiper>;
 };
-
-export default Panel;

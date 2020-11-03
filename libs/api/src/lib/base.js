@@ -1,46 +1,49 @@
 import axios from "axios";
+import config from "Config";
+
+const rootURL = config.apiURL;
 
 export const loginRequest = axios.create({
 	withCredentials: true,
-	baseURL: `${axios.defaults.baseURL}/api/Site`
+	baseURL: `${rootURL}/api/Site`
 });
 
 export const siteRequest = axios.create({
 	withCredentials: true,
-	baseURL: `${axios.defaults.baseURL}/api/Site`
+	baseURL: `${rootURL}/api/Site`
 });
 
 export const accountStrictRequest = axios.create({
 	withCredentials: true,
-	baseURL: `${axios.defaults.baseURL}/api/AccountStrict`
+	baseURL: `${rootURL}/api/AccountStrict`
 });
 
 export const accountRequest = axios.create({
 	withCredentials: true,
-	baseURL: `${axios.defaults.baseURL}/api/Account`
+	baseURL: `${rootURL}/api/Account`
 });
 
 export const messageRequest = axios.create({
 	withCredentials: true,
-	baseURL: `${axios.defaults.baseURL}/api/Message`
+	baseURL: `${rootURL}/api/Message`
 });
 
 export const entPageRequest = axios.create({
 	withCredentials: true,
-	baseURL: `${axios.defaults.baseURL}/api/entPage`
+	baseURL: `${rootURL}/api/entPage`
 });
 
 export const paymentRequest = axios.create({
 	withCredentials: true,
-	baseURL: `${axios.defaults.baseURL}/api/Payment`
+	baseURL: `${rootURL}/api/Payment`
 });
 
 export const tpRequest = axios.create({
 	withCredentials: true,
-	baseURL: `${axios.defaults.baseURL}/api/Tp`
+	baseURL: `${rootURL}/api/Tp`
 });
 
 export const promotionRequest = axios.create({
 	withCredentials: true,
-	baseURL: `${axios.defaults.baseURL}/api/Promotion`
+	baseURL: `${rootURL}/api/Promotion`
 });
