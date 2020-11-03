@@ -1,10 +1,5 @@
 import React, { useContext } from "react";
-import {
-	i18nContext,
-	navContext,
-	defNavPanel,
-	userInfoContext
-} from "@ailab-mobile/context";
+import { i18nContext, navContext, defNavPanel, userInfoContext } from "Context";
 import { Link } from "@reach/router";
 import path from "../../path";
 

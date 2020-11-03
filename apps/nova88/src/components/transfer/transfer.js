@@ -4,7 +4,7 @@ import {
 	userInfoContext,
 	popBoxContext,
 	walletInfoContext
-} from "@ailab-mobile/context";
+} from "Context";
 import { api_GetWalletInfo } from "../../service/api/account";
 import { api_Transfer, api_GetTransferRecent } from "../../service/api/tp";
 import { isConvert, checkAmount, number_format } from "../common/common";

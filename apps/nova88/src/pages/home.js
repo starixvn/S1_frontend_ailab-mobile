@@ -3,11 +3,7 @@ import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
 import Category from "../components/home/category";
 import ShortcutBar from "../components/home/shortcutBar";
-import {
-	i18nContext,
-	userInfoContext,
-	popBoxContext
-} from "@ailab-mobile/context";
+import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import { readCookie, setCookie } from "../components/common/common";
 import path from "../path";
 import { Redirect } from "@reach/router";

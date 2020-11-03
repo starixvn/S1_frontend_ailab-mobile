@@ -6,9 +6,9 @@ import {
 	navContext,
 	defNavPanel,
 	configContext
-} from "@ailab-mobile/context";
+} from "Context";
 import { GET_ENTER_PAGE } from "@ailab-mobile/service";
-import path from "@ailab-mobile/routingPath";
+import path from "Path";
 import { Link } from "@reach/router";
 
 export const ClickLink = (

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { i18nContext } from "@ailab-mobile/context";
+import { i18nContext } from "Context";
 import moment from "moment";
 import Dropdown from "../common/dropdown.icon";
 import Inputbox from "../common/inputbox";

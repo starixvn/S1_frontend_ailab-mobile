@@ -6,9 +6,7 @@ module.exports = {
 		"<rootDir>/apps/goal123",
 		"<rootDir>/apps/bwing",
 		"<rootDir>/libs/api",
-		"<rootDir>/libs/routingPath",
 		"<rootDir>/libs/common",
-		"<rootDir>/libs/context",
 		"<rootDir>/libs/service"
 	]
 };

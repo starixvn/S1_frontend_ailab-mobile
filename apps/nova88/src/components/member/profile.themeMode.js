@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { themeContext, i18nContext } from "@ailab-mobile/context";
+import { themeContext, i18nContext } from "Context";
 import themeList from "../../datas/theme";
 
 const Panel = () => {

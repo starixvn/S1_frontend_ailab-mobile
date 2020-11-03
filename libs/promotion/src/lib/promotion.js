@@ -5,9 +5,9 @@ import React, {
 	useCallback,
 	useRef
 } from "react";
-import { userInfoContext, i18nContext } from "@ailab-mobile/context";
+import { userInfoContext, i18nContext } from "Context";
 import { api_promotion_GetPromotionListV2 } from "@ailab-mobile/api";
-import path from "@ailab-mobile/routingPath";
+import path from "Path";
 import { Link } from "@reach/router";
 import JoinBtn from "./components/promotion.joinBtn";
 import RemainTime from "./components/promotion.remainTime";
@@ -17,6 +17,7 @@ import {
 	defPromotionNav
 } from "./components/promotion.def";
 import { isExpiry, isClaimed, isNew } from "./components/promotion.common";
+import config from "Config";
 
 const defTabs = {
 	Processing: {
@@ -29,7 +30,7 @@ const defTabs = {
 	}
 };
 
-export const Promotion = ({ staticList, config, siteInfo }) => {
+export const Promotion = ({ staticList }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const [promotion, setPromotion] = useState([]);

@@ -1,10 +1,6 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import Step from "./step";
-import {
-	i18nContext,
-	popBoxContext,
-	userInfoContext
-} from "@ailab-mobile/context";
+import { i18nContext, popBoxContext, userInfoContext } from "Context";
 import { Link, Redirect } from "@reach/router";
 import { api_GetOnlinePaymentList } from "../../service/api/payment";
 import PageVerify from "./deposit.pageVerify";

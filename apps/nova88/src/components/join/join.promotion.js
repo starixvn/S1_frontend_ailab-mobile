@@ -1,9 +1,5 @@
 import React, { useContext } from "react";
-import {
-	userInfoContext,
-	i18nContext,
-	navContext
-} from "@ailab-mobile/context";
+import { userInfoContext, i18nContext, navContext } from "Context";
 import Swiper from "react-id-swiper";
 import { ClickLink } from "../common/swipperBanner";
 import config, { siteInfo } from "../../config";

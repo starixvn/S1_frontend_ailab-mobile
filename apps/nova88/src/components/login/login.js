@@ -2,12 +2,7 @@ import React, { useState, useContext, useEffect, useRef } from "react";
 import Inputbox from "../common/inputbox";
 import InputboxPWD from "../common/inputbox.password";
 import { LOGIN } from "../../service/auth";
-import {
-	userInfoContext,
-	i18nContext,
-	navContext,
-	defNavPanel
-} from "@ailab-mobile/context";
+import { userInfoContext, i18nContext, navContext, defNavPanel } from "Context";
 import { useMatch, Redirect } from "@reach/router";
 import path from "../../path";
 import config, { siteInfo } from "../../config";

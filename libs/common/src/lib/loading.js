@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { i18nContext } from "@ailab-mobile/context";
+import { i18nContext } from "Context";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);

@@ -7,7 +7,7 @@ import {
 	popBoxContext,
 	msgCountContext,
 	walletInfoContext
-} from "@ailab-mobile/context";
+} from "Context";
 import { api_GetWalletInfo } from "../../service/api/account";
 import JoinPanel from "../join/join";
 import LoginPanel from "../login/login";

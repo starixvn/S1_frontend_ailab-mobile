@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link, Match } from "@reach/router";
-import { userInfoContext, i18nContext } from "@ailab-mobile/context";
+import { userInfoContext, i18nContext } from "Context";
 import path from "../../path";
 
 const defChatLangSubUrl = {

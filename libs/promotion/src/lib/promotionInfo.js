@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
-import { userInfoContext, i18nContext } from "@ailab-mobile/context";
+import { userInfoContext, i18nContext } from "Context";
 import {
 	api_promotion_GetPromotionDetail,
 	api_account_GetCustSpecificBonus
 } from "@ailab-mobile/api";
 import { Link, Redirect } from "@reach/router";
-import path from "@ailab-mobile/routingPath";
+import path from "Path";
 import {
 	getUrlParameter,
 	number_format,

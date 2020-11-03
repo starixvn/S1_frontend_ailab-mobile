@@ -1,9 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import {
-	i18nContext,
-	userInfoContext,
-	popBoxContext
-} from "@ailab-mobile/context";
+import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import Step from "./step";
 import config from "../../config";
 import LimitTip from "./limitTip";

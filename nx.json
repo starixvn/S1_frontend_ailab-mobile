@@ -57,13 +57,7 @@
 		"api": {
 			"tags": []
 		},
-		"routingPath": {
-			"tags": []
-		},
 		"common": {
-			"tags": []
-		},
-		"context": {
 			"tags": []
 		},
 		"service": {

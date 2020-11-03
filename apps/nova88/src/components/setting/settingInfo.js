@@ -4,7 +4,7 @@ import {
 	userInfoContext,
 	navContext,
 	popBoxContext
-} from "@ailab-mobile/context";
+} from "Context";
 import { Redirect } from "@reach/router";
 import { LOGOUT } from "../../service/auth";
 import { api_SetLanguage } from "../../service/api/account";

@@ -1,4 +1,4 @@
-import path from "@ailab-mobile/routingPath";
+import path from "Path";
 
 export const _ACTION_TYPE = {
 	blank: 1,

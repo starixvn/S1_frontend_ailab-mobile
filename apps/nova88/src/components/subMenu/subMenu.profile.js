@@ -4,7 +4,7 @@
 // 	i18nContext,
 // 	walletInfoContext,
 // 	popBoxContext
-// } from "@ailab-mobile/context";
+// } from "Context";
 // import LangDropdown from "../common/dropdown.icon";
 // import { api_GetSiteLangList } from "../../service/api/site";
 // import { GET_LANG_ID } from "../../service/language";

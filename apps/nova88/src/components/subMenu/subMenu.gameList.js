@@ -4,7 +4,7 @@
 // 	navContext,
 // 	defNavPanel,
 // 	userInfoContext
-// } from "@ailab-mobile/context";
+// } from "Context";
 // import gameList from "../../datas/gameList";
 // import { GET_ENTER_PAGE } from "../../service/enterPage";
 // import { Redirect } from "@reach/router";

@@ -1,9 +1,5 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
-import {
-	i18nContext,
-	popBoxContext,
-	msgCountContext
-} from "@ailab-mobile/context";
+import { i18nContext, popBoxContext, msgCountContext } from "Context";
 import {
 	api_GetMsgList,
 	api_GetMsgContent,

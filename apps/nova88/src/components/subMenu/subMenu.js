@@ -6,7 +6,7 @@
 // 	i18nContext,
 // 	userInfoContext,
 // 	msgCountContext
-// } from "@ailab-mobile/context";
+// } from "Context";
 // import SubGameList from "./subMenu.gameList";
 // import { Link } from "@reach/router";
 // import path from "../../path";

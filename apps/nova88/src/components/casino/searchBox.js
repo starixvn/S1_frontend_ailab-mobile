@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { i18nContext } from "@ailab-mobile/context";
+import { i18nContext } from "Context";
 import GameTypes from "./defGameType";
 import Dropdown from "../common/dropdown";
 

@@ -5,7 +5,7 @@ import {
 	defNavPanel,
 	userInfoContext,
 	popBoxContext
-} from "@ailab-mobile/context";
+} from "Context";
 import productList from "../../datas/productList";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { Redirect, Link } from "@reach/router";

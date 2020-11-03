@@ -1,9 +1,5 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
-import {
-	i18nContext,
-	popBoxContext,
-	userInfoContext
-} from "@ailab-mobile/context";
+import { i18nContext, popBoxContext, userInfoContext } from "Context";
 import { api_ForgetPwd } from "../../service/api/site";
 import Inputbox from "../common/inputbox";
 import { Redirect } from "@reach/router";

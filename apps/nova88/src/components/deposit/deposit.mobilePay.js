@@ -1,11 +1,7 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import Step from "./step";
 import { Link, Redirect } from "@reach/router";
-import {
-	i18nContext,
-	userInfoContext,
-	popBoxContext
-} from "@ailab-mobile/context";
+import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import {
 	api_GetMobilePayGroupList,
 	api_GetMobilePayInfoList

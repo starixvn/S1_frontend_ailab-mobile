@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "@reach/router";
 import { isConvert } from "../common/common";
-import { i18nContext, userInfoContext } from "@ailab-mobile/context";
+import { i18nContext, userInfoContext } from "Context";
 import { TransactionHistory } from "./deposit.history";
 import ReloadSpin from "../common/reloadSpin";
 import path from "../../path";

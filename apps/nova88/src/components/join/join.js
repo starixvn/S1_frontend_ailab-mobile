@@ -22,7 +22,7 @@ import {
 	navContext,
 	defNavPanel,
 	popBoxContext
-} from "@ailab-mobile/context";
+} from "Context";
 import { GET_LANG_ID } from "../../service/language";
 import TandC from "../../service/t_and_c";
 import { useMatch, Redirect } from "@reach/router";

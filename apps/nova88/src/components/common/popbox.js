@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { popBoxContext, i18nContext } from "@ailab-mobile/context";
+import { popBoxContext, i18nContext } from "Context";
 import TurnoverAccumulated from "./popbox.turnover";
 import Otp from "./popbox.otp";
 

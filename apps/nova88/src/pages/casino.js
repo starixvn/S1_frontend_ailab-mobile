@@ -5,12 +5,7 @@ import Nav from "../components/casino/nav";
 import SearchBox from "../components/casino/searchBox";
 import { api_GetGamelist } from "../service/api/site";
 import Games from "../components/casino/games";
-import {
-	i18nContext,
-	userInfoContext,
-	navContext,
-	defNavPanel
-} from "@ailab-mobile/context";
+import { i18nContext, userInfoContext, navContext, defNavPanel } from "Context";
 import {
 	api_SetFavoriteGame,
 	api_GetFavoriteGame

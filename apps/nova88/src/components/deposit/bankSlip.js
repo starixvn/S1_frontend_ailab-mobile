@@ -1,9 +1,5 @@
 import React, { useContext, Component, useEffect, useRef } from "react";
-import {
-	bankSlipPopBoxContext,
-	i18nContext,
-	popBoxContext
-} from "@ailab-mobile/context";
+import { bankSlipPopBoxContext, i18nContext, popBoxContext } from "Context";
 import moment from "moment";
 import ClipboardJS from "../../lib/clipboard.min";
 import {

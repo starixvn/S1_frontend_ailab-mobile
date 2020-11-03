@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TabPage from "../components/common/tabPage";
 import path from "../path";
 import BankSlip from "../components/deposit/bankSlip";
-import { bankSlipPopBoxContext } from "@ailab-mobile/context";
+import { bankSlipPopBoxContext } from "Context";
 
 const defTabs = {
 	default: {

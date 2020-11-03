@@ -1,9 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
-import {
-	i18nContext,
-	userInfoContext,
-	popBoxContext
-} from "@ailab-mobile/context";
+import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import { number_format, isConvert, checkAmount } from "../common/common";
 import {
 	api_GetWithdrawalAvailableBalance,

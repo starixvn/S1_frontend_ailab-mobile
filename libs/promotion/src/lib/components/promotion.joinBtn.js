@@ -1,11 +1,7 @@
 import React, { useContext, useRef, useEffect, useState } from "react";
 import { Link, Redirect } from "@reach/router";
-import path from "@ailab-mobile/routingPath";
-import {
-	userInfoContext,
-	popBoxContext,
-	i18nContext
-} from "@ailab-mobile/context";
+import path from "Path";
+import { userInfoContext, popBoxContext, i18nContext } from "Context";
 import { api_promotion_SetClaimPromotion } from "@ailab-mobile/api";
 import { isExpiry } from "./promotion.common";
 
