@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useContext } from "react";
 import Swiper from "react-id-swiper";
-import config from "../../config";
 import { api_GetBanner } from "@ailab-mobile/api";
 import {
 	userInfoContext,
 	navContext,
-	defNavPanel
+	defNavPanel,
+	configContext
 } from "@ailab-mobile/context";
-import { GET_ENTER_PAGE } from "../../service/enterPage";
+import { GET_ENTER_PAGE } from "@ailab-mobile/service";
 import path from "@ailab-mobile/routingPath";
 import { Link } from "@reach/router";
 
@@ -21,6 +21,7 @@ export const ClickLink = (
 	isLogin,
 	setNav
 ) => {
+	const { config } = useContext(configContext);
 	if (href === "Casino/Lobby") {
 		window.location.href = `/${path.casino.root}${tpId ? `/${tpId}` : ""}`;
 	} else if (tpId === null) {
@@ -46,12 +47,13 @@ export const ClickLink = (
 			isLogin: isLogin === true,
 			loginCallback: () => {
 				setNav(defNavPanel.login);
-			}
+			},
+			openURL: config.openURL
 		});
 	}
 };
 
-const Panel = ({ ImgFolder, filterHideInHome = false }) => {
+const Panel = ({ ImgFolder, filterHideInHome = false, config }) => {
 	const [banner, setBanner] = useState([]);
 	const { userInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);

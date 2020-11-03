@@ -8,6 +8,7 @@ module.exports = {
 		"<rootDir>/libs/api",
 		"<rootDir>/libs/routingPath",
 		"<rootDir>/libs/common",
-		"<rootDir>/libs/context"
+		"<rootDir>/libs/context",
+		"<rootDir>/libs/service"
 	]
 };

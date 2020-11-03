@@ -9,14 +9,14 @@ import { userInfoContext, i18nContext } from "@ailab-mobile/context";
 import { api_promotion_GetPromotionListV2 } from "@ailab-mobile/api";
 import path from "@ailab-mobile/routingPath";
 import { Link } from "@reach/router";
-import JoinBtn from "./component/promotion.joinBtn";
-import RemainTime from "./component/promotion.remainTime";
+import JoinBtn from "./components/promotion.joinBtn";
+import RemainTime from "./components/promotion.remainTime";
 import {
 	defFilterType,
 	defPromotionType,
 	defPromotionNav
-} from "./component/promotion.def";
-import { isExpiry, isClaimed, isNew } from "./component/promotion.common";
+} from "./components/promotion.def";
+import { isExpiry, isClaimed, isNew } from "./components/promotion.common";
 
 const defTabs = {
 	Processing: {

@@ -12,6 +12,7 @@ import themeList from "../../datas/theme";
 import useInterval from "../hook/useInterval";
 import { getUrlParameter, setCookie, deleteCookie } from "../common/common";
 import i18nConfig from "../../i18n/config";
+import config, { siteInfo } from "../../config";
 
 export const Wrapper = ({ children }) => {
 	const [i18n, seti18n] = useState(i18nConfig());
@@ -159,23 +160,25 @@ export const Wrapper = ({ children }) => {
 	}, [userInfo.langId]);
 
 	return (
-		<ct.userInfoContext.Provider value={{ userInfo, setUserInfo }}>
-			<ct.i18nContext.Provider value={{ i18n, seti18n }}>
-				<ct.walletInfoContext.Provider
-					value={{ walletInfo, setWalletInfo }}>
-					<ct.themeContext.Provider value={{ theme, setTheme }}>
-						<ct.popBoxContext.Provider
-							value={{ popBox, setPopBox }}>
-							<ct.navContext.Provider value={{ nav, setNav }}>
-								<ct.msgCountContext.Provider
-									value={{ msgCount, setMsgCount }}>
-									{children}
-								</ct.msgCountContext.Provider>
-							</ct.navContext.Provider>
-						</ct.popBoxContext.Provider>
-					</ct.themeContext.Provider>
-				</ct.walletInfoContext.Provider>
-			</ct.i18nContext.Provider>
-		</ct.userInfoContext.Provider>
+		<ct.configContext.Provider value={{ config, siteInfo }}>
+			<ct.userInfoContext.Provider value={{ userInfo, setUserInfo }}>
+				<ct.i18nContext.Provider value={{ i18n, seti18n }}>
+					<ct.walletInfoContext.Provider
+						value={{ walletInfo, setWalletInfo }}>
+						<ct.themeContext.Provider value={{ theme, setTheme }}>
+							<ct.popBoxContext.Provider
+								value={{ popBox, setPopBox }}>
+								<ct.navContext.Provider value={{ nav, setNav }}>
+									<ct.msgCountContext.Provider
+										value={{ msgCount, setMsgCount }}>
+										{children}
+									</ct.msgCountContext.Provider>
+								</ct.navContext.Provider>
+							</ct.popBoxContext.Provider>
+						</ct.themeContext.Provider>
+					</ct.walletInfoContext.Provider>
+				</ct.i18nContext.Provider>
+			</ct.userInfoContext.Provider>
+		</ct.configContext.Provider>
 	);
 };

@@ -1,19 +1,22 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { userInfoContext, i18nContext } from "@ailab-mobile/context";
-import { getUrlParameter, number_format } from "../components/common/common";
 import {
 	api_promotion_GetPromotionDetail,
 	api_account_GetCustSpecificBonus
 } from "@ailab-mobile/api";
 import { Link, Redirect } from "@reach/router";
 import path from "@ailab-mobile/routingPath";
-import ReloadSpin from "./components/common/reloadSpin";
+import {
+	getUrlParameter,
+	number_format,
+	ReloadSpin
+} from "@ailab-mobile/common";
 import JoinBtn from "./components/promotion.joinBtn";
 import { defPromotionType } from "./components/promotion.def";
 import RemainTime from "./components/promotion.remainTime";
 import { isClaimed, isNew, isExpiry } from "./components/promotion.common";
 
-export default () => {
+export const PromotionInfo = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const [redirectPath, setRedirectPath] = useState(null);

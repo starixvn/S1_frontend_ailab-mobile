@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 
-export default props => {
+export const ReloadSpin = props => {
 	const [spin, setSpin] = useState(false);
 	const isMountedRef = useRef(null);
 

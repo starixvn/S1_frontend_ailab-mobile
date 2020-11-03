@@ -65,6 +65,9 @@
 		},
 		"context": {
 			"tags": []
+		},
+		"service": {
+			"tags": []
 		}
 	}
 }
