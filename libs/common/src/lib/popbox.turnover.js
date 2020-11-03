@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { i18nContext } from "Context";
-import { number_format } from "../common/common";
+import { number_format } from "./common";
 
 export default ({ currencyId, turnover, rollover }) => {
 	const { i18n } = useContext(i18nContext);
