@@ -3,6 +3,7 @@ export const initValue = {
 	Password: "",
 	Email: "",
 	Currency: null,
+	AffiliateId: "",
 	Checkbox: false
 };
 
@@ -20,6 +21,10 @@ export const initStatus = {
 		msg: ""
 	},
 	Currency: {
+		checked: null,
+		msg: ""
+	},
+	AffiliateId: {
 		checked: null,
 		msg: ""
 	},

@@ -47,6 +47,7 @@ const Join = () => {
 	const [redirectPath, setRedirectPath] = useState(null);
 	const [banner, setBanner] = useState([]);
 	const [hideCurrency, setHideCurrency] = useState(false);
+	const [affiliateidExist, setAffiliateidExist] = useState("");
 	const [defaultOption, setDefaultOption] = useState(
 		i18n.lbl_PrefferedCurrency
 	);
@@ -79,8 +80,13 @@ const Join = () => {
 
 	useEffect(() => {
 		let AffId = getUrlParameter("AffId") || getCookie("AffId");
+		let affiliateid =
+			getUrlParameter("affiliateid") || getCookie("affiliateid");
+
 		if (AffId && isMountedRef) {
 			setHideCurrency(true);
+		} else if (affiliateid && isMountedRef) {
+			setAffiliateidExist(affiliateid);
 		}
 	}, []);
 
@@ -144,6 +150,8 @@ const Join = () => {
 			msg = "lbl_UsernameTooltip";
 		} else if (col === "Password") {
 			msg = "lbl_PasswordTooltip";
+		} else if (col === "AffiliateId") {
+			msg = `lbl_Please_enter_Affiliate_ID`;
 		} else if (col === "Email") {
 			msg = "lbl_EmailToolTip";
 		} else if (col === "Phone") {
@@ -397,6 +405,8 @@ const Join = () => {
 			regData["RefId"] = getUrlParameter("RefId") || getCookie("RefId");
 			regData["AffId"] = getUrlParameter("AffId") || getCookie("AffId");
 			regData["Aff"] = getUrlParameter("Aff") || getCookie("Aff");
+			regData["affiliateid"] =
+				getUrlParameter("affiliateid") || getCookie("affiliateid");
 			regData["blackbox"] = await Iov_GetBlackBox();
 
 			api_site_Signup(regData, defaultLangId).then(
@@ -596,6 +606,21 @@ const Join = () => {
 				) : (
 					<></>
 				)}
+
+				<Inputbox
+					icon="icon-affiliate"
+					ClassName="JoinRule"
+					placeholder={i18n["lbl_Affiliate_ID"]}
+					value={
+						affiliateidExist !== ""
+							? affiliateidExist
+							: userValue.AffiliateId
+					}
+					onFocus={showOnFocusTip.bind(null, "AffiliateId")}
+					onChange={EditField.bind(null, "AffiliateId")}
+					checked={status.AffiliateId.checked}
+					tip={status.AffiliateId.msg}
+					disabled={affiliateidExist}></Inputbox>
 
 				<Checkbox
 					Checked={userValue.Checkbox}
