@@ -65,6 +65,9 @@
 		},
 		"casino": {
 			"tags": []
+		},
+		"history": {
+			"tags": []
 		}
 	}
 }
