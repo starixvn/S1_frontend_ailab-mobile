@@ -3,9 +3,14 @@ import { Link, Redirect } from "@reach/router";
 import path from "Path";
 import { userInfoContext, popBoxContext, i18nContext } from "Context";
 import { api_promotion_SetClaimPromotion } from "@ailab-mobile/api";
-import { isExpiry } from "./promotion.common";
+import { isExpiry } from "../common/common";
 
-export default ({ promotionInfo, func_GetPromotionDetail, func_CallBack }) => {
+export default ({
+	promotionInfo,
+	func_GetPromotionDetail,
+	func_CallBack,
+	class_JoinNowBtn
+}) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { i18n } = useContext(i18nContext);
@@ -190,12 +195,14 @@ export default ({ promotionInfo, func_GetPromotionDetail, func_CallBack }) => {
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
 	) : userInfo.isLogin === false && !_isExpiry ? (
-		<Link className="btn-check" to={`/${path.login.root}`}>
+		<Link
+			className={class_JoinNowBtn ?? "btn-check"}
+			to={`/${path.login.root}`}>
 			{i18n.lbl_PromoJoinNow}
 		</Link>
 	) : userInfo.isLogin && !promotionInfo.isJoin && !_isExpiry ? (
 		<button
-			className="btn-check"
+			className={class_JoinNowBtn ?? "btn-check"}
 			onClick={onJoinPromotion.bind(this, promotionInfo)}>
 			{i18n.lbl_PromoJoinNow}
 		</button>

@@ -7,28 +7,16 @@ import React, {
 } from "react";
 import { userInfoContext, i18nContext } from "Context";
 import { api_promotion_GetPromotionListV2 } from "@ailab-mobile/api";
-import path from "Path";
-import { Link } from "@reach/router";
-import JoinBtn from "./components/promotion.joinBtn";
-import RemainTime from "./components/promotion.remainTime";
-import {
-	defFilterType,
-	defPromotionType,
-	defPromotionNav
-} from "./components/promotion.def";
-import { isExpiry, isClaimed, isNew } from "./components/promotion.common";
+import { defFilterType, defPromotionType, defTabs } from "./common/def";
+import { isExpiry, isClaimed, isNew } from "./common/common";
 import config from "Config";
-
-const defTabs = {
-	Processing: {
-		key: "Processing",
-		displayKey: "lbl_Processing"
-	},
-	Expired: {
-		key: "Expired",
-		displayKey: "lbl_Expired"
-	}
-};
+import Card, {
+	CardForStatic,
+	CardWithoutRule
+} from "./components/promotionCard";
+import Nav from "./components/nav";
+import Tab from "./components/tab";
+import { NoData } from "@ailab-mobile/common";
 
 export const Promotion = ({ staticList }) => {
 	const { userInfo } = useContext(userInfoContext);
@@ -123,21 +111,13 @@ export const Promotion = ({ staticList }) => {
 					  }/Promotion/${lang}/${p.img}`;
 
 				return (
-					<div
+					<CardWithoutRule
+						key={`promotion-${langId}-${promotion.bonusCode}`}
 						href={href}
-						className="promodule"
-						target="_blank"
-						rel="noopener noreferrer"
-						key={`promotion-${userInfo.langId}-${p.bonusCode}`}>
-						<img src={imgSRC} alt={p.imgName ?? ""} />
-						<div className="protitle">{p.title}</div>
-						<div className="text">{p.description}</div>
-						<div className="btn-group">
-							<button className="white">
-								{i18n.lbl_Details}
-							</button>
-						</div>
-					</div>
+						promotion={p}
+						imgSRC={imgSRC}
+						detailsDisplayText={i18n.lbl_Details}
+					/>
 				);
 			} else {
 				let imgSRC = p.banner;
@@ -145,49 +125,17 @@ export const Promotion = ({ staticList }) => {
 				let _isNew = _isClaimed ? false : isNew(p);
 				let _isExpiry = tab === defTabs.Expired.key;
 				return (
-					<div
-						className={`promodule${p.isJoin ? " open" : ""}${
-							_isExpiry ? " Expired" : ""
-						}`}
-						key={`promotion-${userInfo.langId}-${p.bonusCode}`}>
-						{_isClaimed ? (
-							<div className="claimed"></div>
-						) : _isNew ? (
-							<div className="new active"></div>
-						) : null}
-						<img src={imgSRC} alt={p.imgName ?? ""} />
-						<div className="protitle">{p.title}</div>
-						<div className="text">{p.description}</div>
-						<div className="rollover">
-							<div>
-								<div className="icon icon-icon32px_time">
-									{i18n.lbl_RemainingTime}
-								</div>
-								<div>
-									{RemainTime({
-										promotionInfo: p,
-										i18n,
-										isLogin: userInfo.isLogin
-									})}
-								</div>
-								<div className="icon icon-icon32px_">
-									{i18n.lbl_RollOver}
-								</div>
-								<div>{p.rollOver}X</div>
-							</div>
-						</div>
-						<div className="btn-group">
-							<Link
-								to={`/${path.promotionInfo.root}?BonusCode=${p.bonusCode}`}
-								className="white">
-								{i18n.lbl_Details}
-							</Link>
-							<JoinBtn
-								promotionInfo={p}
-								func_CallBack={getPromotionListV2}
-							/>
-						</div>
-					</div>
+					<Card
+						key={`promotion-${userInfo.langId}-${p.bonusCode}`}
+						p={p}
+						userInfo={userInfo}
+						_isExpiry={_isExpiry}
+						_isClaimed={_isClaimed}
+						_isNew={_isNew}
+						imgSRC={imgSRC}
+						getPromotionListV2={getPromotionListV2}
+						i18n={i18n}
+					/>
 				);
 			}
 		});
@@ -196,36 +144,19 @@ export const Promotion = ({ staticList }) => {
 		tab === defTabs.Processing.key && filterType === defFilterType.all
 			? staticList?.map(p => {
 					return (
-						<div
-							className="promodule"
-							key={`static-promotion-${userInfo.langId}-${p.bonusCode}`}>
-							<img
-								src={p.imgUrl?.[userInfo.langId]}
-								alt={p.bonusCode ?? ""}
-							/>
-							<div className="protitle">
-								{p.title?.[userInfo.langId]}
-							</div>
-							<div className="text">
-								{p.description?.[userInfo.langId]}
-							</div>
-							<div className="btn-group">
-								<a
-									className="white"
-									href={p.bannerLink?.[userInfo.langId]}
-									target="_blank"
-									rel="noopener noreferrer">
-									{i18n.lbl_Details}
-								</a>
-							</div>
-						</div>
+						<CardForStatic
+							key={`static-promotion-${userInfo.langId}-${p.bonusCode}`}
+							userInfo={userInfo}
+							p={p}
+							i18n={i18n}
+						/>
 					);
 			  })
 			: null;
 
 	let noData =
 		!rows?.length && !staticRows ? (
-			<div className="not-found">{i18n.msg_NoData}</div>
+			<NoData displayText={i18n.msg_NoData} />
 		) : null;
 	return (
 		<>
@@ -241,35 +172,4 @@ export const Promotion = ({ staticList }) => {
 			{noData}
 		</>
 	);
-};
-
-const Tab = ({ i18n, tab, onClickTab }) => {
-	let rows = Object.values(defTabs).map(t => {
-		return (
-			<a
-				key={`promo-tab-${t.key}`}
-				onClick={onClickTab.bind(this, t.key)}
-				className={tab === t.key ? "open" : ""}>
-				{i18n[t.displayKey]}
-			</a>
-		);
-	});
-	return <div className="tag">{rows}</div>;
-};
-
-const Nav = ({ i18n, filterType, onClickFilter, tab }) => {
-	let rows =
-		tab === defTabs.Expired.key
-			? null
-			: defPromotionNav.map(n => {
-					return (
-						<button
-							key={`promo-nav-${n.value}`}
-							className={filterType === n.value ? "open" : ""}
-							onClick={onClickFilter.bind(this, n.value)}>
-							{i18n[n.displayKey]}
-						</button>
-					);
-			  });
-	return <div className="inputBox filterBtn">{rows}</div>;
 };

@@ -292,7 +292,7 @@ class CateGoryContent extends Component {
 const CategoryItem = props => {
 	return (
 		<button className={props.isOpen} onClick={props.onClick}>
-			<div>{props.translation}</div>
+			<div>{props.translation?.toUpperCase()}</div>
 		</button>
 	);
 };

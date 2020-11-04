@@ -1,7 +1,10 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { userInfoContext, i18nContext } from "../components/common/context";
 import { getUrlParameter, number_format } from "../components/common/common";
-import { api_promotion_GetPromotionDetail, api_account_GetCustSpecificBonus } from "@ailab-mobile/api";
+import {
+	api_promotion_GetPromotionDetail,
+	api_account_GetCustSpecificBonus
+} from "@ailab-mobile/api";
 import { Link, Redirect } from "@reach/router";
 import path from "Path";
 import ReloadSpin from "../components/common/reloadSpin";
@@ -79,21 +82,19 @@ export default () => {
 			BonusCode: bonusCode,
 			TpId: tpId,
 			PromoCategoryId: categoryId
-		}).then(
-			res => {
-				if (
-					isMountedRef.current &&
-					res.data.errorCode === 0 &&
-					res.data.data
-				) {
-					setPromotionInfo(prevS => ({
-						...prevS,
-						custRollOver: res.data.data.rollover,
-						custTurnOver: res.data.data.turnover
-					}));
-				}
+		}).then(res => {
+			if (
+				isMountedRef.current &&
+				res.data.errorCode === 0 &&
+				res.data.data
+			) {
+				setPromotionInfo(prevS => ({
+					...prevS,
+					custRollOver: res.data.data.rollover,
+					custTurnOver: res.data.data.turnover
+				}));
 			}
-		);
+		});
 	};
 
 	if (promotionInfo === null) return null;
@@ -104,8 +105,9 @@ export default () => {
 
 	return redirectPath === null ? (
 		<div
-			className={`promodule${promotionInfo.isJoin ? " open" : ""}${_isExpiry ? " Expired" : ""
-				}`}>
+			className={`promodule${promotionInfo.isJoin ? " open" : ""}${
+				_isExpiry ? " Expired" : ""
+			}`}>
 			{_isClaimed ? (
 				<div className="claimed"></div>
 			) : _isNew ? (
@@ -181,8 +183,8 @@ export default () => {
 				}}></div>
 		</div>
 	) : (
-			<Redirect to={redirectPath} noThrow />
-		);
+		<Redirect to={redirectPath} noThrow />
+	);
 };
 
 const DepositRecord = ({
@@ -198,22 +200,22 @@ const DepositRecord = ({
 		!isJoin &&
 		(promotionType === defPromotionType.reDeposit ||
 			promotionType === defPromotionType.firstDeposit) ? (
-			<div className="minAmount">
-				<div>
-					<div>{i18n.lbl_ID}</div>
-					<div>{depositId}</div>
-				</div>
-				<div>
-					<div>{i18n.lbl_DepositAmount}</div>
-					<div>{`${i18n[`Currency_${currencyId}`]} ${number_format(
-						depositAmount,
-						false
-					)}`}</div>
-				</div>
+		<div className="minAmount">
+			<div>
+				<div>{i18n.lbl_ID}</div>
+				<div>{depositId}</div>
 			</div>
-		) : (
-			<></>
-		);
+			<div>
+				<div>{i18n.lbl_DepositAmount}</div>
+				<div>{`${i18n[`Currency_${currencyId}`]} ${number_format(
+					depositAmount,
+					false
+				)}`}</div>
+			</div>
+		</div>
+	) : (
+		<></>
+	);
 };
 
 const ProcessBar = ({

@@ -19,6 +19,17 @@ module.exports = {
 			})
 		);
 
+		config.resolve.alias = {
+			...config.resolve.alias,
+			Config: path.resolve(__dirname, "src/config.js"),
+			Path: path.resolve(__dirname, "src/path.js"),
+			Context: path.resolve(
+				__dirname,
+				"src/components/common/context.js"
+			),
+			UISetting: path.resolve(__dirname, "src/uiSetting.js")
+		};
+
 		// Replace include option for babel loader with exclude
 		// so babel will handle workspace projects as well.
 		config.module.rules.forEach(r => {

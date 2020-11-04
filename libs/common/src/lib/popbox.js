@@ -31,7 +31,7 @@ const PopUp = () => {
 			content = (
 				<div className="popTxt">
 					{popBox.content}
-					{popBox.hasBtn === true ? popBox.btnBar : <></>}
+					{popBox.hasBtn === true ? popBox.btnBar : null}
 				</div>
 			);
 			break;
