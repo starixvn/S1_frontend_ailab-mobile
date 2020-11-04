@@ -401,7 +401,7 @@ const Join = () => {
 			regData["RefId"] = getUrlParameter("RefId") || getCookie("RefId");
 			regData["AffId"] = getUrlParameter("AffId") || getCookie("AffId");
 			regData["Aff"] = getUrlParameter("Aff") || getCookie("Aff");
-			regData["affiliateid"] =
+			regData["AffiliateId"] =
 				getUrlParameter("affiliateid") || getCookie("affiliateid");
 			regData["blackbox"] = await Iov_GetBlackBox();
 
