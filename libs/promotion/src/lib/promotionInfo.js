@@ -4,17 +4,10 @@ import {
 	api_promotion_GetPromotionDetail,
 	api_account_GetCustSpecificBonus
 } from "@ailab-mobile/api";
-import { Link, Redirect } from "@reach/router";
-import path from "Path";
-import {
-	getUrlParameter,
-	number_format,
-	ReloadSpin
-} from "@ailab-mobile/common";
-import JoinBtn from "./components/promotion.joinBtn";
-import { defPromotionType } from "./components/promotion.def";
-import RemainTime from "./components/promotion.remainTime";
-import { isClaimed, isNew, isExpiry } from "./components/promotion.common";
+import { Redirect } from "@reach/router";
+import { getUrlParameter } from "@ailab-mobile/common";
+import { isClaimed, isNew, isExpiry } from "./common/common";
+import PromotionContent from "./components/promotionContent";
 
 export const PromotionInfo = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -103,159 +96,17 @@ export const PromotionInfo = () => {
 	let _isExpiry = isExpiry({ ...promotionInfo, isLogin: userInfo.isLogin });
 
 	return redirectPath === null ? (
-		<div
-			className={`promodule${promotionInfo.isJoin ? " open" : ""}${
-				_isExpiry ? " Expired" : ""
-			}`}>
-			{_isClaimed ? (
-				<div className="claimed"></div>
-			) : _isNew ? (
-				<div className="new active"></div>
-			) : null}
-			<img src={promotionInfo.banner} alt={promotionInfo.title} />
-			<Link className="btn-cancel" to={`/${path.promotion.root}`}>
-				{i18n.lbl_Back}
-			</Link>
-
-			<JoinBtn
-				promotionInfo={promotionInfo}
-				func_GetPromotionDetail={GetPromotionDetail}
-			/>
-
-			<div className="protitle">{promotionInfo.title}</div>
-			<div className="text">{promotionInfo.description}</div>
-
-			<DepositRecord
-				i18n={i18n}
-				{...promotionInfo}
-				currencyId={userInfo.currencyId}
-			/>
-
-			{promotionInfo.isJoin ? (
-				<ProcessBar
-					i18n={i18n}
-					currencyId={userInfo.currencyId}
-					{...promotionInfo}
-					RefreshProcessBar={RefreshProcessBar.bind(
-						this,
-						promotionInfo
-					)}
-				/>
-			) : null}
-
-			<div className="info">
-				<ul>
-					<li>
-						<span className="title">
-							{i18n.lbl_RollOver?.toUpperCase()}
-						</span>
-						<span>{promotionInfo.rollOver}x</span>
-					</li>
-					<li>
-						<span className="title">
-							{i18n.lbl_RemainingTime?.toUpperCase()}
-						</span>
-						<span>
-							{RemainTime({
-								promotionInfo,
-								i18n,
-								isLogin: userInfo.isLogin
-							})}
-						</span>
-					</li>
-					{promotionInfo.requiredAmount > 0 ? (
-						<li>
-							<span className="title">
-								{i18n.lbl_MinAmount?.toUpperCase()}
-							</span>
-							<span>
-								{number_format(promotionInfo.requiredAmount)}
-							</span>
-						</li>
-					) : null}
-				</ul>
-			</div>
-			<div
-				className="text"
-				dangerouslySetInnerHTML={{
-					__html: `<pre>${promotionInfo.details}</pre>`
-				}}></div>
-		</div>
+		<PromotionContent
+			promotionInfo={promotionInfo}
+			i18n={i18n}
+			userInfo={userInfo}
+			_isExpiry={_isExpiry}
+			_isClaimed={_isClaimed}
+			_isNew={_isNew}
+			GetPromotionDetail={GetPromotionDetail}
+			RefreshProcessBar={RefreshProcessBar}
+		/>
 	) : (
 		<Redirect to={redirectPath} noThrow />
 	);
-};
-
-const DepositRecord = ({
-	i18n,
-	depositId,
-	depositAmount,
-	canJoin,
-	isJoin,
-	currencyId,
-	promotionType
-}) => {
-	return canJoin &&
-		!isJoin &&
-		(promotionType === defPromotionType.reDeposit ||
-			promotionType === defPromotionType.firstDeposit) ? (
-		<div className="minAmount">
-			<div>
-				<div>{i18n.lbl_ID}</div>
-				<div>{depositId}</div>
-			</div>
-			<div>
-				<div>{i18n.lbl_DepositAmount}</div>
-				<div>{`${i18n[`Currency_${currencyId}`]} ${number_format(
-					depositAmount,
-					false
-				)}`}</div>
-			</div>
-		</div>
-	) : (
-		<></>
-	);
-};
-
-const ProcessBar = ({
-	i18n,
-	currencyId,
-	custTurnOver,
-	custRollOver,
-	RefreshProcessBar,
-	promotionType
-}) => {
-	if (
-		promotionType !== defPromotionType.cashback &&
-		promotionType !== defPromotionType.rebate
-	) {
-		let percentage =
-			custTurnOver > custRollOver
-				? 100
-				: ((custTurnOver / custRollOver) * 100).toFixed(2);
-		return (
-			<div className="progressBarModule">
-				<div className="bounsName">{i18n.lbl_TurnoverAccumulated}</div>
-				<div className="turnover">
-					<span>
-						{i18n[`Currency_${currencyId}`]}{" "}
-						{number_format(custTurnOver, false)}
-					</span>{" "}
-					/ ({i18n.lbl_Req} {i18n[`Currency_${currencyId}`]}{" "}
-					{number_format(custRollOver, false)})
-					<ReloadSpin func={RefreshProcessBar} />
-				</div>
-				<div className="progressBar">
-					<div className="bar">
-						<div
-							className="progress"
-							style={{ width: `${percentage}%` }}></div>
-					</div>
-					<div className="percentage">{percentage}%</div>
-				</div>
-			</div>
-		);
-	} else {
-		return <></>;
-	}
 };

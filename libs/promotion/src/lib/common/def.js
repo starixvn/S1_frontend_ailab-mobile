@@ -34,3 +34,14 @@ export const defPromotionNav = [
 		value: defFilterType.freeBet
 	}
 ];
+
+export const defTabs = {
+	Processing: {
+		key: "Processing",
+		displayKey: "lbl_Processing"
+	},
+	Expired: {
+		key: "Expired",
+		displayKey: "lbl_Expired"
+	}
+};

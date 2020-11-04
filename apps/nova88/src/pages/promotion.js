@@ -117,13 +117,15 @@ const IndexPage = () => {
 					? actionLinkByLang.link
 					: p.actionLink;
 
-				let href = `${config.t_and_cURL}${p.urlWithLang || p.fromDB ? `/${lang}` : ""
-					}/${actionLink}`;
+				let href = `${config.t_and_cURL}${
+					p.urlWithLang || p.fromDB ? `/${lang}` : ""
+				}/${actionLink}`;
 
 				let imgSRC = p.fromDB
 					? p.imgURL
-					: `${config.imgUrl}/CMS/${siteInfo().siteName
-					}/Promotion/${lang}/${p.img}`;
+					: `${config.imgUrl}/CMS/${
+							siteInfo().siteName
+					  }/Promotion/${lang}/${p.img}`;
 
 				return (
 					<div
@@ -149,8 +151,9 @@ const IndexPage = () => {
 				let _isExpiry = tab === defTabs.Expired.key;
 				return (
 					<div
-						className={`promodule${p.isJoin ? " open" : ""}${_isExpiry ? " Expired" : ""
-							}`}
+						className={`promodule${p.isJoin ? " open" : ""}${
+							_isExpiry ? " Expired" : ""
+						}`}
 						key={`promotion-${userInfo.langId}-${p.bonusCode}`}>
 						{_isClaimed ? (
 							<div className="claimed"></div>
@@ -197,32 +200,32 @@ const IndexPage = () => {
 	let staticRows =
 		tab === defTabs.Processing.key && filterType === defFilterType.all
 			? staticList.map(p => {
-				return (
-					<div
-						className="promodule"
-						key={`static-promotion-${userInfo.langId}-${p.bonusCode}`}>
-						<img
-							src={p.imgUrl?.[userInfo.langId]}
-							alt={p.bonusCode ?? ""}
-						/>
-						<div className="protitle">
-							{p.title?.[userInfo.langId]}
+					return (
+						<div
+							className="promodule"
+							key={`static-promotion-${userInfo.langId}-${p.bonusCode}`}>
+							<img
+								src={p.imgUrl?.[userInfo.langId]}
+								alt={p.bonusCode ?? ""}
+							/>
+							<div className="protitle">
+								{p.title?.[userInfo.langId]}
+							</div>
+							<div className="text">
+								{p.description?.[userInfo.langId]}
+							</div>
+							<div className="btn-group">
+								<a
+									className="white"
+									href={p.bannerLink?.[userInfo.langId]}
+									target="_blank"
+									rel="noopener noreferrer">
+									{i18n.lbl_Details}
+								</a>
+							</div>
 						</div>
-						<div className="text">
-							{p.description?.[userInfo.langId]}
-						</div>
-						<div className="btn-group">
-							<a
-								className="white"
-								href={p.bannerLink?.[userInfo.langId]}
-								target="_blank"
-								rel="noopener noreferrer">
-								{i18n.lbl_Details}
-							</a>
-						</div>
-					</div>
-				);
-			})
+					);
+			  })
 			: null;
 
 	let noData =
@@ -264,15 +267,15 @@ const Nav = ({ i18n, filterType, onClickFilter, tab }) => {
 		tab === defTabs.Expired.key
 			? null
 			: defPromotionNav.map(n => {
-				return (
-					<button
-						key={`promo-nav-${n.value}`}
-						className={filterType === n.value ? "open" : ""}
-						onClick={onClickFilter.bind(this, n.value)}>
-						{i18n[n.displayKey]}
-					</button>
-				);
-			});
+					return (
+						<button
+							key={`promo-nav-${n.value}`}
+							className={filterType === n.value ? "open" : ""}
+							onClick={onClickFilter.bind(this, n.value)}>
+							{i18n[n.displayKey]}
+						</button>
+					);
+			  });
 	return <div className="inputBox filterBtn">{rows}</div>;
 };
 
