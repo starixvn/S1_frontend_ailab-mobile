@@ -533,8 +533,10 @@ const Join = () => {
 			regData["RefId"] = getUrlParameter("RefId") || getCookie("RefId");
 			regData["AffId"] = getUrlParameter("AffId") || getCookie("AffId");
 			regData["Aff"] = getUrlParameter("Aff") || getCookie("Aff");
-			regData["affiliateid"] =
-				getUrlParameter("affiliateid") || getCookie("affiliateid");
+			regData["AffiliateId"] =
+				getUrlParameter("affiliateid") ||
+				getCookie("affiliateid") ||
+				userValueState.AffiliateId;
 
 			api_Register(regData).then(
 				response => {
