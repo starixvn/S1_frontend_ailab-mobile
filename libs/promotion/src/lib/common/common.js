@@ -1,5 +1,5 @@
 import moment from "moment";
-import { defPromotionType } from "./promotion.def";
+import { defPromotionType } from "./def";
 
 const promoStatus = {
 	running: 1,

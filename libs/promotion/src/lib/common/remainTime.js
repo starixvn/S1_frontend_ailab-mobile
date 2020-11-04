@@ -1,6 +1,6 @@
 import moment from "moment";
-import { defPromoStatus } from "./promotion.def";
-import { isExpiry } from "./promotion.common";
+import { defPromoStatus } from "./def";
+import { isExpiry } from "./common";
 
 export default ({ promotionInfo, i18n, isLogin }) => {
 	let expiryTime = moment.duration(

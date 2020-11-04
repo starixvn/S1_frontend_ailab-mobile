@@ -178,7 +178,7 @@ const SubMenuList = ({
 						key={`${key}-${c.displayKey}`}
 						onClick={clickGame.bind(this, c)}>
 						<button>
-							{i18n[c.displayKey] ?? c.displayKey}
+							{i18n[c.displayKey]?.toUpperCase() ?? c.displayKey}
 							{_subItems}
 						</button>
 					</li>
@@ -209,7 +209,7 @@ const SubMenuList = ({
 					onClick={closeNavPanel}
 					key={key}
 					className={s.icon}>
-					{i18n[s.displayKey] ?? s.displayKey}
+					{i18n[s.displayKey]?.toUpperCase() ?? s.displayKey}
 					{_subItems}
 				</Link>
 			);
@@ -219,7 +219,7 @@ const SubMenuList = ({
 					key={key}
 					onClick={handleSubMenu.bind(this, s.displayKey)}
 					className={s.icon}>
-					{i18n[s.displayKey] ?? s.displayKey}
+					{i18n[s.displayKey]?.toUpperCase() ?? s.displayKey}
 					{_subItems}
 				</div>
 			) : (
@@ -227,7 +227,7 @@ const SubMenuList = ({
 					key={key}
 					onClick={clickGame.bind(this, s)}
 					className={s.icon}>
-					{i18n[s.displayKey] ?? s.displayKey}
+					{i18n[s.displayKey]?.toUpperCase() ?? s.displayKey}
 				</button>
 			);
 		}
