@@ -402,7 +402,9 @@ const Join = () => {
 			regData["AffId"] = getUrlParameter("AffId") || getCookie("AffId");
 			regData["Aff"] = getUrlParameter("Aff") || getCookie("Aff");
 			regData["AffiliateId"] =
-				getUrlParameter("affiliateid") || getCookie("affiliateid");
+				getUrlParameter("affiliateid") ||
+				getCookie("affiliateid") ||
+				userValue.AffiliateId;
 			regData["blackbox"] = await Iov_GetBlackBox();
 
 			api_site_Signup(regData, defaultLangId).then(
