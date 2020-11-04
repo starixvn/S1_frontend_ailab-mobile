@@ -328,7 +328,8 @@
 	"lbl_GoPromotionPage":"ไปที่เข้าร่วมกิจกรรม",
 	"lbl_ExchangeRate":"อัตราแลกเปลี่ยน",
 	"lbl_ExchangeRateReferenceOnly":"อัตรานี้ใช้สำหรับการอ้างอิงเท่านั้น",
-	"lbl_ExchangeAmount":"จำนวนเงินแลกเปลี่ยน"
-
+	"lbl_ExchangeAmount":"จำนวนเงินแลกเปลี่ยน",
+	"lbl_Affiliate_ID":"ไอดีพันธมิตร/รหัสอ้างอิง",
+	"lbl_Please_enter_Affiliate_ID":"กรุณากรอก ไอดีผู้ใช้ของพันธมิตร(ไม่บังคับ) ไม่สามารถเปลี่ยนภายหลังได้!"
 	
 }
