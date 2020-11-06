@@ -70,29 +70,14 @@ const gameList = ({ langId }) => [
 		comingSoonImg: Coming_soon,
 		items: [
 			{
-				gameId: 4,
-				tpId: 4,
-				img: LIVEcasino_DG
-			},
-			{
-				gameId: 101,
-				tpId: 5,
-				img: LIVEcasino_PP
-			},
-			{
-				gameId: 15,
-				tpId: 15,
-				img: LIVEcasino_AE
-			},
-			{
-				gameId: 3,
-				tpId: 3,
-				img: LIVEcasino_AG
-			},
-			{
 				gameId: 12,
 				tpId: 12,
 				img: LIVEcasino_AB
+			},
+			{
+				gameId: 18,
+				tpId: 18,
+				img: LIVEcasino_EB
 			},
 			{
 				gameId: 2,
@@ -100,9 +85,24 @@ const gameList = ({ langId }) => [
 				img: LIVEcasino_SA
 			},
 			{
-				gameId: 18,
-				tpId: 18,
-				img: LIVEcasino_EB
+				gameId: 3,
+				tpId: 3,
+				img: LIVEcasino_AG
+			},
+			{
+				gameId: 101,
+				tpId: 5,
+				img: LIVEcasino_PP
+			},
+			{
+				gameId: 4,
+				tpId: 4,
+				img: LIVEcasino_DG
+			},
+			{
+				gameId: 15,
+				tpId: 15,
+				img: LIVEcasino_AE
 			}
 		]
 	},
