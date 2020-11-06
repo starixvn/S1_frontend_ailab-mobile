@@ -58,12 +58,64 @@
   font-size: 4vw !important;
 }
 
+.icon-nodata:before {
+  content: "\e9a7";
+}
+
+.icon-USDC:before {
+  content: "\e9a3";
+}
+
+.icon-USDT:before {
+  content: "\e9a4";
+}
+
+.icon-deposit1:before {
+  content: "\e99e";
+}
+
+.icon-FAQS:before {
+  content: "\e99f";
+}
+
+.icon-play:before {
+  content: "\e9a0";
+}
+
+.icon-register:before {
+  content: "\e9a1";
+}
+
+.icon-withdrawal1:before {
+  content: "\e9a2";
+}
+
+.icon-MangoPay:before {
+  content: "\e99c";
+}
+
+.icon-icon32px_Double-arrow:before {
+  content: "\e99a";
+}
+
 .icon-affiliate:before {
+  content: "\e99b";
+}
+
+.icon-icon_1_affiliate:before {
   content: "\e997";
 }
 
 .icon-icon_1_cop:before {
   content: "\e996";
+}
+
+.icon-ethereum:before {
+  content: "\e9a5";
+}
+
+.icon-bitcoin:before {
+  content: "\e9a6";
 }
 
 .icon-line:before {
@@ -474,6 +526,10 @@
   content: "\e910";
 }
 
+.icon-broken_image:before {
+  content: "\e998";
+}
+
 .icon-keyboard_arrow_up:before {
   content: "\e95b";
 }
@@ -598,6 +654,10 @@
   content: "\e942";
 }
 
+.icon-map2:before {
+  content: "\e99d";
+}
+
 .icon-history:before {
   content: "\e94d";
 }
@@ -702,6 +762,10 @@
   content: "\ea14";
 }
 
+.icon-loop:before {
+  content: "\ea2d";
+}
+
 .icon-arrow-up-left2:before {
   content: "\ea39";
 }
@@ -766,6 +830,10 @@
   content: "\ea92";
 }
 
+.icon-whatsapp:before {
+  content: "\ea93";
+}
+
 .icon-telegram:before {
   content: "\ea95";
 }
@@ -820,6 +888,10 @@
 
 .icon-conversation:before {
   content: "\e935";
+}
+
+.icon-mail-envelope-open:before {
+  content: "\e999";
 }
 
 .icon-moon:before {
