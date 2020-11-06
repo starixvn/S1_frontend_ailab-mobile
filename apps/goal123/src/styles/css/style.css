@@ -227,18 +227,19 @@ header .Join > .close, header .Login > .close {
 
 header .Join > img, header .Login > img {
   width: 40vw;
-  margin: 3vw auto;
+  margin: 0 auto 2vw;
 }
 
 header .Join .title, header .Login .title {
   text-align: center;
   font-size: 6vw;
-  margin: 2vw auto;
+  margin: 1vw auto;
   font-weight: bold;
 }
 
 header .Join .inputBox, header .Login .inputBox {
   position: relative;
+  margin: 1vw 0;
 }
 
 header .Join .inputBox > input, header .Login .inputBox > input {
@@ -265,6 +266,7 @@ header .Join .inputBox .JoinRule, header .Login .inputBox .JoinRule {
   height: 0;
   visibility: hidden;
   opacity: 0;
+  font-size: 12px;
 }
 
 header .Join .inputBox .JoinRule.open, header .Login .inputBox .JoinRule.open {
@@ -324,7 +326,7 @@ header .Join button, header .Login button {
 }
 
 header .Join .Terms, header .Login .Terms {
-  margin: 3vw auto;
+  margin: 1vw auto 2vw;
   line-height: 26px;
 }
 
@@ -590,7 +592,15 @@ main .sideBar button {
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
   margin: 0 2vw;
-  height: 10vw;
+  height: 9vw;
+}
+
+main .sideBar button.open {
+  background: #1E85EC;
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+  padding: 1vw;
 }
 
 main .sideBar button.icon:before {
@@ -1788,6 +1798,7 @@ footer > a.open .circleAnimation + span {
       -ms-flex-pack: center;
           justify-content: center;
   background: white;
+  overflow: hidden;
 }
 
 .depositType div a img, .depositType div button img {
@@ -3777,5 +3788,27 @@ span.important {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.nodata {
+  text-align: center;
+  padding: 10vw 0;
+  color: #1E85EC;
+}
+
+.nodata.icon:before {
+  font-size: 15vw;
+}
+
+.nodata div {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 3vw;
+  border-radius: 5px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  margin: auto;
+  margin-top: 3vw;
+  color: white;
 }
 /*# sourceMappingURL=style.css.map */

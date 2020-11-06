@@ -17,6 +17,9 @@ import Cockfighting from "../styles/img/cockfighting.jpg";
 import Casino from "../styles/img/casino.jpg";
 import Affiliate from "../styles/img/affiliate.jpg";
 import { siteInfo } from "../config";
+import fish_GG from "../styles/img/fish_GG.jpg";
+import fish_SG from "../styles/img/fish_SG.jpg";
+import fish_SGW from "../styles/img/fish_SGW.jpg";
 
 export const defGameInfo = {
 	Sports: { tpId: 1, gameId: 1 },
@@ -39,6 +42,8 @@ export const defGameInfo = {
 	Casino_YGG: { tpId: 8 },
 	Casino_GPI: { tpId: 6 },
 	Fishing: { gameId: 10, tpId: 7 },
+	FishingSG: { gameId: "F-SF01", tpId: 10 },
+	FishingSGW: { gameId: "F-SF02", tpId: 10 },
 	Indo4d: { gameId: 223, tpId: 1 },
 	Keno: { gameId: 202, tpId: 1 },
 	lottery: { gameId: 220, tpId: 1 },
@@ -93,12 +98,12 @@ const gameList = langId => [
 				img: SabaClub,
 				spanTextKey: "lbl_SabaClub"
 			},
-			{
-				...defGameInfo.Fishing,
-				icon: "game",
-				img: Fish,
-				spanTextKey: "lbl_Fishing"
-			},
+			// {
+			// 	...defGameInfo.Fishing,
+			// 	icon: "game",
+			// 	img: Fish,
+			// 	spanTextKey: "lbl_Fishing"
+			// },
 			{
 				...defGameInfo.Keno,
 				icon: "keno",
@@ -110,6 +115,27 @@ const gameList = langId => [
 				icon: "lottery",
 				img: Lottery,
 				spanTextKey: "lbl_Lottery"
+			}
+		]
+	},
+	{
+		category: "fishing",
+		categoryIcon: "game",
+		className: "casinoList",
+		translateKey: "lbl_Fishing",
+		comingSoonImg: Coming_soon,
+		items: [
+			{
+				...defGameInfo.Fishing,
+				img: fish_GG
+			},
+			{
+				...defGameInfo.FishingSG,
+				img: fish_SG
+			},
+			{
+				...defGameInfo.FishingSGW,
+				img: fish_SGW
 			}
 		]
 	},
