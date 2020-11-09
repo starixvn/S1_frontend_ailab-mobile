@@ -304,10 +304,7 @@ const Panel = () => {
 				</button>
 			</div>
 
-			<RecentDatas
-				datas={recentDatas}
-				GetRecentDatas={GetTransferRecent}
-			/>
+			<RecentDatas Datas={recentDatas} ReloadFunc={GetTransferRecent} />
 		</>
 	);
 };
