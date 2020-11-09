@@ -16,13 +16,15 @@ import casino_PG from "../styles/img/casino_PG.jpg";
 import casino_JOKER from "../styles/img/casino_JOKER.jpg";
 import casino_YGG from "../styles/img/casino_YGG.jpg";
 import casino_GPI from "../styles/img/casino_GPI.jpg";
-import Fish from "../styles/img/fish.jpg";
 import id4d from "../styles/img/id4d.jpg";
 import Keno from "../styles/img/keno.jpg";
 import Lottery from "../styles/img/lottery.jpg";
 import number_game from "../styles/img/number_game.jpg";
 import affiliate from "../styles/img/affiliate.jpg";
 import { siteInfo } from "../config";
+import fish_GG from "../styles/img/fish_GG.jpg";
+import fish_SG from "../styles/img/fish_SG.jpg";
+import fish_SGW from "../styles/img/fish_SGW.jpg";
 
 const gameList = ({ langId }) => [
 	{
@@ -68,29 +70,14 @@ const gameList = ({ langId }) => [
 		comingSoonImg: Coming_soon,
 		items: [
 			{
-				gameId: 4,
-				tpId: 4,
-				img: LIVEcasino_DG
-			},
-			{
-				gameId: 101,
-				tpId: 5,
-				img: LIVEcasino_PP
-			},
-			{
-				gameId: 15,
-				tpId: 15,
-				img: LIVEcasino_AE
-			},
-			{
-				gameId: 3,
-				tpId: 3,
-				img: LIVEcasino_AG
-			},
-			{
 				gameId: 12,
 				tpId: 12,
 				img: LIVEcasino_AB
+			},
+			{
+				gameId: 18,
+				tpId: 18,
+				img: LIVEcasino_EB
 			},
 			{
 				gameId: 2,
@@ -98,9 +85,24 @@ const gameList = ({ langId }) => [
 				img: LIVEcasino_SA
 			},
 			{
-				gameId: 18,
-				tpId: 18,
-				img: LIVEcasino_EB
+				gameId: 3,
+				tpId: 3,
+				img: LIVEcasino_AG
+			},
+			{
+				gameId: 101,
+				tpId: 5,
+				img: LIVEcasino_PP
+			},
+			{
+				gameId: 4,
+				tpId: 4,
+				img: LIVEcasino_DG
+			},
+			{
+				gameId: 15,
+				tpId: 15,
+				img: LIVEcasino_AE
 			}
 		]
 	},
@@ -151,14 +153,24 @@ const gameList = ({ langId }) => [
 	{
 		category: "game",
 		categoryIcon: "game",
+		className: "casinoList",
 		translateKey: "lbl_Fishing",
+		comingSoonImg: Coming_soon,
 		items: [
 			{
-				icon: "game",
 				gameId: 10,
 				tpId: 7,
-				img: Fish,
-				spanTextKey: "lbl_Fishing"
+				img: fish_GG
+			},
+			{
+				gameId: "F-SF01",
+				tpId: 10,
+				img: fish_SG
+			},
+			{
+				gameId: "F-SF02",
+				tpId: 10,
+				img: fish_SGW
 			}
 		]
 	},
