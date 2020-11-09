@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Inputbox = props => {
+export const Inputbox = props => {
 	return (
 		<div className="inputBox">
 			<i className={`icon ${props.icon}`}></i>
