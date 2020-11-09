@@ -3,24 +3,25 @@ import { defPromoStatus } from "./promotion.def";
 import { isExpiry } from "./promotion.common";
 
 export default ({ promotionInfo, i18n, isLogin }) => {
-	let expiryTime = moment.duration(
-		moment
-			.unix(
-				promotionInfo.isJoin &&
-					promotionInfo.status === defPromoStatus.running &&
-					promotionInfo.custExpiryTime
-					? moment(promotionInfo.custExpiryTime).unix()
-					: promotionInfo.periodTo
-			)
-			.diff(new Date())
+	let _expiryTime = moment.unix(
+		promotionInfo.isJoin &&
+			promotionInfo.status === defPromoStatus.running &&
+			promotionInfo.custExpiryTime
+			? moment(promotionInfo.custExpiryTime).unix()
+			: promotionInfo.periodTo
 	);
 
+	var diffDays = Math.ceil(
+		moment.duration(_expiryTime.diff(moment())).asDays() - 1
+	);
+
+	let expiryTime = moment.duration(_expiryTime.diff(new Date()));
 	return isExpiry({
 		...promotionInfo,
 		isLogin: isLogin
 	})
 		? "-"
-		: `${expiryTime.days()} ${i18n.lbl_Days} ${expiryTime.hours()} ${
+		: `${diffDays} ${i18n.lbl_Days} ${expiryTime.hours()} ${
 				i18n.lbl_Hours
 		  }`;
 };

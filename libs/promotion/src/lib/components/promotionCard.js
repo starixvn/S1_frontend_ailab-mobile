@@ -1,7 +1,7 @@
 import React from "react";
 import JoinBtn from "./joinBtn";
 import RemainTime from "../common/remainTime";
-import { number_format } from "@ailab-mobile/common";
+import { number_format, isConvert } from "@ailab-mobile/common";
 import DetailBtn from "./detailBtn";
 import { Promotion as UIPromotion } from "UISetting";
 
