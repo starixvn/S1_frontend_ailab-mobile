@@ -45,3 +45,8 @@ export const defTabs = {
 		displayKey: "lbl_Expired"
 	}
 };
+
+export const defBonusType = {
+	Percentage: 1,
+	Amount: 2
+};

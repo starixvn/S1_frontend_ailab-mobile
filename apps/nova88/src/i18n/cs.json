@@ -330,6 +330,7 @@
 	"lbl_ExchangeRateReferenceOnly":"汇率仅供参考",
 	"lbl_ExchangeAmount":"换算金额",
 	"lbl_Affiliate_ID":"代理商 ID/参照号",
-    "lbl_Please_enter_Affiliate_ID":"请填入代理商 ID（可不填）, 填入后无法更换！"
-
+	"lbl_Please_enter_Affiliate_ID":"请填入代理商 ID（可不填）, 填入后无法更换！",
+	"lbl_ClaimAmountRange":"领取金额范围",
+	"lbl_PleaseEnterClaimAmount":"请填入您欲用于领取优惠的金额"
 }

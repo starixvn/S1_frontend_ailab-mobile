@@ -3594,6 +3594,36 @@ span.important {
   font-size: 12px;
 }
 
+.promotions div.promodule > button.ViewAllAmount {
+  padding: 5px 10px;
+  background: #F77A00;
+  margin-left: 0;
+  margin-top: -1px;
+  width: 100%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.promotions div.promodule > button.ViewAllAmount span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.promotions div.promodule > button.ViewAllAmount span.open {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
 .promotions div.promodule .protitle {
   margin-top: 1vw;
   color: #F77A00;
@@ -4003,25 +4033,47 @@ span.important {
   display: flex;
   font-size: 12px;
   border-radius: 3px;
-  overflow: hidden;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .minAmount > div {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  display: none;
+  width: 100%;
+  font-weight: bold;
 }
 
-.minAmount > div > div {
-  border: 1px solid #F77A00;
-  padding: 5px 10px;
-  background: rgba(247, 122, 0, 0.3);
+.minAmount > div:nth-child(n+3), .minAmount > div:nth-child(1) {
+  display: none;
+}
+
+.minAmount > div:nth-child(n+3).open, .minAmount > div:nth-child(1).open {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.minAmount > div:first-child > div {
   color: #F77A00;
 }
 
-.minAmount > div > div:last-child {
+.minAmount > div:last-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.minAmount > div > div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border: 1px solid #F77A00;
+  padding: 5px 10px;
   color: white;
-  background: rgba(0, 0, 0, 0.3);
+}
+
+.minAmount > div > div:last-child {
+  text-align: right;
 }
 
 .new {
