@@ -3,7 +3,7 @@ import { Link, Redirect } from "@reach/router";
 import path from "Path";
 import { userInfoContext, popBoxContext, i18nContext } from "Context";
 import { api_promotion_SetClaimPromotion } from "@ailab-mobile/api";
-import { Inputbox } from "@ailab-mobile/common";
+import { Inputbox, number_format } from "@ailab-mobile/common";
 import { isExpiry } from "../common/common";
 import { defBonusType, defPromotionType } from "../common/def";
 
@@ -288,7 +288,9 @@ const ClaimWithLockedAmount = ({
 				Warning={warning}
 			/>
 			<div className="text-org">
-				{`${i18n.lbl_ClaimAmountRange} : ${promotionInfo.requiredAmount} ~ ${promotionInfo.maxAmount}`}
+				{`${i18n.lbl_ClaimAmountRange} : ${number_format(
+					promotionInfo.requiredAmount
+				)} ~ ${number_format(promotionInfo.maxAmount)}`}
 			</div>
 			<div className="btn-group">
 				<button className="white" onClick={ClosePopBox}>
