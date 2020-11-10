@@ -8,9 +8,14 @@ export const api_promotion_GetPromotionDetail = ({ langId, BonusCode }) =>
 		BonusCode
 	});
 
-export const api_promotion_SetClaimPromotion = ({ langId, BonusCode }) =>
+export const api_promotion_SetClaimPromotion = ({
+	langId,
+	BonusCode,
+	LockedAmount
+}) =>
 	promotionRequest.post(`/SetClaimPromotion/${langId}`, {
-		BonusCode
+		BonusCode,
+		LockedAmount
 	});
 
 export const api_promotion_GetPromotionListV2 = ({ langId }) =>

@@ -28,7 +28,5 @@ export default ({
 				)}`}</div>
 			</div>
 		</div>
-	) : (
-		<></>
-	);
+	) : null;
 };

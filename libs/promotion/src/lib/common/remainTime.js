@@ -11,7 +11,7 @@ export default ({ promotionInfo, i18n, isLogin }) => {
 			: promotionInfo.periodTo
 	);
 
-	var diffDays = Math.ceil(
+	let diffDays = Math.ceil(
 		moment.duration(_expiryTime.diff(moment())).asDays() - 1
 	);
 

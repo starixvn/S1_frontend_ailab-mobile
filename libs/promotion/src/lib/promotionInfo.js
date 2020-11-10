@@ -4,7 +4,6 @@ import {
 	api_promotion_GetPromotionDetail,
 	api_account_GetCustSpecificBonus
 } from "@ailab-mobile/api";
-import { Redirect } from "@reach/router";
 import { getUrlParameter } from "@ailab-mobile/common";
 import { isClaimed, isNew, isExpiry } from "./common/common";
 import PromotionContent from "./components/promotionContent";
@@ -12,7 +11,6 @@ import PromotionContent from "./components/promotionContent";
 export const PromotionInfo = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
-	const [redirectPath, setRedirectPath] = useState(null);
 	const [promotionInfo, setPromotionInfo] = useState(null);
 	const isMountedRef = useRef(null);
 
@@ -95,7 +93,7 @@ export const PromotionInfo = () => {
 	let _isNew = _isClaimed ? false : isNew(promotionInfo);
 	let _isExpiry = isExpiry({ ...promotionInfo, isLogin: userInfo.isLogin });
 
-	return redirectPath === null ? (
+	return (
 		<PromotionContent
 			promotionInfo={promotionInfo}
 			i18n={i18n}
@@ -106,7 +104,5 @@ export const PromotionInfo = () => {
 			GetPromotionDetail={GetPromotionDetail}
 			RefreshProcessBar={RefreshProcessBar}
 		/>
-	) : (
-		<Redirect to={redirectPath} noThrow />
 	);
 };
