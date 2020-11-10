@@ -334,6 +334,7 @@
 	"lbl_ClaimAmountRange":"ขอรับโบนัสตามลำดับที่กำหนด",
 	"lbl_PleaseEnterClaimAmount":"กรุณาใส่จำนวนเงินที่คุณต้องการขอรับโปรโมชั่น",
 	"lbl_ViewAll":"ดูทั้งหมด",
-	"lbl_Total":"จำนวนเงินทั้งหมด"
+	"lbl_Total":"จำนวนเงินทั้งหมด",
+	"lbl_CockFighting":"ไก่ชน"
 	
 }
