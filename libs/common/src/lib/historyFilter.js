@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { i18nContext } from "Context";
 import moment from "moment";
 import Dropdown from "./dropdown.icon";
-import Inputbox from "./inputbox";
+import { Inputbox } from "./inputbox";
 
 const quickPickList = [
 	{ displayKey: "lbl_Today" },
