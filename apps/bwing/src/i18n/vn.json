@@ -332,6 +332,16 @@
 	"lbl_VertifyContactConfirm": "Vui lòng xác minh số điện thoại của bạn để được hưởng các chương trình khuyến mãi hấp dẫn?",
 	"lbl_VerifyNow": "Xác minh ngay bây giờ",
 	"lbl_Hi": "Hi!",
-	"lbl_Expired":"Hết hạn"
+	"lbl_Expired":"Hết hạn",
+	"lbl_Saba1Club1":"Xóc Đĩa",
+	"lbl_Saba1Club2":"Xóc Đĩa Siêu Tốc",
+	"lbl_Saba1Club3":"Tài Xỉu",
+	"lbl_Saba1Club5":"Bầu Cua",
+	"lbl_FishingGG": "Thế giới bắn cá",
+	"lbl_JoinUsNow": "JOIN US NOW",
+	"lbl_UserGuide": "User Guide",
+	"lbl_HowToDepoist": "CÁCH GỬI TIỀN",
+	"lbl_HowToWithdrawal": "CÁCH RÚT TIỀN",
+	"lbl_HowToPlay": "CÁCH ĐẶT CƯỢC"
 
 }
