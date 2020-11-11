@@ -39,11 +39,7 @@ export default ({
 		<div className="protitle">{promotionInfo.title}</div>
 		<div className="text">{promotionInfo.description}</div>
 
-		<DepositRecord
-			{...promotionInfo}
-			i18n={i18n}
-			currencyId={userInfo.currencyId}
-		/>
+		<DepositRecord promotionInfo={promotionInfo} i18n={i18n} />
 
 		<ProcessBar
 			i18n={i18n}

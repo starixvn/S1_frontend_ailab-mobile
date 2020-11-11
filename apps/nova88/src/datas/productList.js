@@ -8,6 +8,7 @@ import LIVEcasino_AG from "../styles/img/LIVEcasino_AG.jpg";
 import LIVEcasino_AB from "../styles/img/LIVEcasino_AB.jpg";
 import LIVEcasino_SA from "../styles/img/LIVEcasino_SA.jpg";
 import LIVEcasino_EB from "../styles/img/LIVEcasino_EB.jpg";
+import LIVEcasino_MW from "../styles/img/LIVEcasino_MW.jpg";
 import Coming_soon from "../styles/img/coming_soon.jpg";
 import casino_ow from "../styles/img/casino_ow.jpg";
 import casino_PP from "../styles/img/casino_PP.jpg";
@@ -25,6 +26,7 @@ import { siteInfo } from "../config";
 import fish_GG from "../styles/img/fish_GG.jpg";
 import fish_SG from "../styles/img/fish_SG.jpg";
 import fish_SGW from "../styles/img/fish_SGW.jpg";
+import Cockfighting from "../styles/img/cockfighting.jpg";
 
 const gameList = ({ langId }) => [
 	{
@@ -62,6 +64,20 @@ const gameList = ({ langId }) => [
 			}
 		]
 	},
+	// {
+	// 	category: "cockFighting",
+	// 	categoryIcon: "cock",
+	// 	translateKey: "lbl_CockFighting",
+	// 	items: [
+	// 		{
+	// 			tpId: 19,
+	// 			gameId: 19,
+	// 			icon: "cock",
+	// 			img: Cockfighting,
+	// 			spanTextKey: "lbl_CockFighting"
+	// 		}
+	// 	]
+	// },
 	{
 		category: "livecasino",
 		categoryIcon: "livecasino",
@@ -69,6 +85,11 @@ const gameList = ({ langId }) => [
 		translateKey: "lbl_LiveCasino",
 		comingSoonImg: Coming_soon,
 		items: [
+			{
+				tpId: 5,
+				gameId: 105,
+				img: LIVEcasino_MW
+			},
 			{
 				gameId: 12,
 				tpId: 12,

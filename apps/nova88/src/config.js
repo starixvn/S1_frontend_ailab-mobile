@@ -1,10 +1,6 @@
 import axios from "axios";
 
-export const sites = {
-	Nova88: "Nova88"
-};
-
-export const siteName = sites.Nova88;
+export const siteName = "Nova88";
 
 const getAffiliate = langId => {
 	if (typeof window === `undefined`) return "";
@@ -21,7 +17,7 @@ const getAffiliate = langId => {
 
 export const siteInfo = langId => {
 	return {
-		siteName: "Nova88",
+		siteName,
 		affiliateLink: getAffiliate(langId),
 		siteDefaultLang: "en",
 		siteLangList: ["en", "cs", "th", "id"],

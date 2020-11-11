@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 export const Inputbox = props => {
 	return (
 		<div className="inputBox">
-			<i className={`icon ${props.icon}`}></i>
+			{props.icon ? <i className={`icon ${props.icon}`}></i> : null}
 			<input
 				type={props.inputType ?? "text"}
 				placeholder={props.placeholder}
@@ -48,7 +48,7 @@ export const Inputbox = props => {
 };
 
 Inputbox.propTypes = {
-	icon: PropTypes.string.isRequired,
+	icon: PropTypes.string,
 	value: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number,
@@ -62,5 +62,3 @@ Inputbox.propTypes = {
 	Warning: PropTypes.object,
 	showTips: PropTypes.bool
 };
-
-export default Inputbox;

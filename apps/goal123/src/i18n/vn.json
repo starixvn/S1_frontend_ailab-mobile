@@ -334,7 +334,11 @@
 	"lbl_Hi": "Hi!",
 	"lbl_Affiliate_ID":"ID Đại lý/ Người giới thiệu",
     "lbl_Please_enter_Affiliate_ID":"Vui lòng nhập ID Đại lý (tùy chọn), thông tin không thể thay đổi sau khi đã nhập!",
-	"lbl_Expired":"Hết hạn"
+	"lbl_Expired":"Hết hạn",
+	"lbl_ClaimAmountRange":"Khoảng tiền nạp",
+	"lbl_PleaseEnterClaimAmount":"Vui lòng nhập số tiền bạn muốn để nhận khuyến mãi",
+	"lbl_ViewAll":"Xem Thêm",
+	"lbl_Total":"Tổng Cộng"
 
 
 }
