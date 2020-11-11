@@ -13,6 +13,8 @@ import path from "../path";
 import { Redirect } from "@reach/router";
 import { api_GetWalletInfo } from "../service/api/account";
 import Submenu from "../components/home/submenu";
+import GameArea from "../components/home/gameArea";
+import LinksPanel from "../components/home/links";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -114,6 +116,8 @@ const IndexPage = () => {
 		<>
 			<Slider />
 			<Marquee />
+			<GameArea i18n={i18n} userInfo={userInfo} />
+			<LinksPanel i18n={i18n} langId={userInfo.langId} />
 		</>
 	);
 };

@@ -12,6 +12,9 @@ export default langId => {
 		FAQ: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/FAQ.html`,
 		AboutUs: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/AboutUs.html`,
 		Terms: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/Terms.html`,
-		ContactUs: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/ContactUs.html`
+		ContactUs: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/ContactUs.html`,
+		HowToDeposit: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/HowToDeposit.html`,
+		HowToPlay: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/HowToPlay.html`,
+		HowToWithdrawal: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/HowToWithdrawal.html`
 	};
 };
