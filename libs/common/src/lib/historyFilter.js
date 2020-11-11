@@ -13,7 +13,7 @@ const quickPickList = [
 	{ displayKey: "lbl_LastMonth" }
 ];
 
-const Panel = props => {
+export const HistoryFilter = props => {
 	const { i18n } = useContext(i18nContext);
 	const [quickPickSelectedIdx, setquickPickSelectedIdx] = useState(0);
 
@@ -114,5 +114,3 @@ const Panel = props => {
 		</>
 	);
 };
-
-export default Panel;

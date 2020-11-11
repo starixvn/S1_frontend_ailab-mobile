@@ -79,3 +79,5 @@ const Item = props => {
 		</div>
 	);
 };
+
+export default DropdownIcon;

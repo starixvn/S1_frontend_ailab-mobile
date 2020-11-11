@@ -8,6 +8,7 @@ module.exports = {
 		"<rootDir>/libs/api",
 		"<rootDir>/libs/common",
 		"<rootDir>/libs/service",
-		"<rootDir>/libs/casino"
+		"<rootDir>/libs/casino",
+		"<rootDir>/libs/history"
 	]
 };
