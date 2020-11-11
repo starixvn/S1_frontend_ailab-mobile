@@ -46,7 +46,7 @@ module.exports = {
 	},
 	paths: paths => {
 		// Rewrite dist folder to where Nx expects it to be.
-		paths.appBuild = path.resolve(__dirname, "../../dist/apps/goal123");
+		paths.appBuild = path.resolve(__dirname, "../../dist/apps/bwing");
 		return paths;
 	},
 	jest: config => {
