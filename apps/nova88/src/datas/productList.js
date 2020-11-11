@@ -87,7 +87,7 @@ const gameList = ({ langId }) => [
 		items: [
 			{
 				tpId: 5,
-				gameId: 801,
+				gameId: 105,
 				img: LIVEcasino_MW
 			},
 			{
