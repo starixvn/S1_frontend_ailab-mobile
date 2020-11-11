@@ -1,4 +1,4 @@
-export const siteName = "Goal123";
+export const siteName = "Bwing";
 
 const getAffiliate = langId => {
 	if (typeof window === `undefined`) return "";
@@ -15,7 +15,7 @@ const getAffiliate = langId => {
 
 export const siteInfo = langId => {
 	return {
-		siteName: "Goal123",
+		siteName: "Bwing",
 		affiliateLink: getAffiliate(langId),
 		siteDefaultLang: "vn",
 		siteLangList: ["en", "vn"],
@@ -39,8 +39,8 @@ export default process.env.NODE_ENV === "production"
 			// t_and_cURL: "http://localhost:60930",
 			// openURL: "http://localhost:60930"
 
-			apiURL: "http://www.n88dev.com",
-			imgUrl: "http://www.n88dev.com",
-			t_and_cURL: "http://www.n88dev.com",
-			openURL: "http://www.n88dev.com"
+			apiURL: "http://stag.bwing.com",
+			imgUrl: "http://stag.bwing.com",
+			t_and_cURL: "http://stag.bwing.com",
+			openURL: "http://stag.bwing.com"
 	  };

@@ -11,13 +11,14 @@ import themeList from "../../datas/theme";
 import useInterval from "../hook/useInterval";
 import { getUrlParameter, setCookie, deleteCookie } from "../common/common";
 import i18nConfig from "../../i18n/config";
+import { GET_LANG_ID } from "../../service/language";
 
 export const Wrapper = ({ children }) => {
 	const [i18n, seti18n] = useState(i18nConfig());
 
 	const [userInfo, setUserInfo] = useState({
 		isLogin: null,
-		langId: "vn",
+		langId: GET_LANG_ID(),
 		userName: i18n.lbl_Guest
 	});
 	const [popBox, setPopBox] = useState({

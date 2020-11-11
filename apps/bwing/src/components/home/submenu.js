@@ -128,7 +128,7 @@ export default () => {
 				<span></span>
 				<span></span>
 			</div>
-			<img src={Logo} alt="Goal123" />
+			<img src={Logo} alt="Bwing" />
 			{userInfo.isLogin ? (
 				<>
 					<WalletInfo i18n={i18n} userInfo={userInfo} />

@@ -25,9 +25,9 @@ export const GET_LANG_ID = userLangId => {
 			browserDefLang.startsWith("zh-tw") ||
 			browserDefLang.startsWith("zh-hk")
 		) {
-			langId = "cs";
+			langId = "en";
 		} else if (browserDefLang.startsWith("zh")) {
-			langId = "cs";
+			langId = "en";
 		} else if (browserDefLang.startsWith("th")) {
 			langId = "th";
 		} else if (browserDefLang.startsWith("vi")) {
