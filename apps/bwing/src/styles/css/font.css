@@ -1,10 +1,11 @@
+@charset "UTF-8";
 @font-face {
-  font-family: 'icomoon';
+  font-family: "icomoon";
   src: url("../fonts/icomoon.woff?v=202003") format("woff");
 }
-
-.icon:before, .icon:after {
-  font-family: 'icomoon';
+.icon:before,
+.icon:after {
+  font-family: "icomoon";
   font-size: 5vw;
 }
 
@@ -12,817 +13,1094 @@
   font-size: 14vw;
 }
 
-.icon-CirclePay:before {
-  font-size: 12vw !important;
+.icon-nodata:before {
+  content: "";
 }
 
-.icon-Eeziepay:before {
-  font-size: 7vw !important;
+.icon-USDC:before {
+  content: "";
 }
 
-.icon-OneClickPay:before {
-  font-size: 14vw !important;
+.icon-USDT:before {
+  content: "";
 }
 
-.icon-VNPay:before {
-  font-size: 3vw !important;
+.icon-deposit1:before {
+  content: "";
 }
 
-.icon-equalizer:before {
-  font-size: 6vw;
+.icon-FAQS:before {
+  content: "";
 }
 
-.icon-search {
-  -webkit-transform: translateY(35%) !important;
-          transform: translateY(35%) !important;
+.icon-play:before {
+  content: "";
 }
 
-.icon-hockey:before {
-  font-size: 3vw;
-  margin-bottom: 1vw;
+.icon-register:before {
+  content: "";
 }
 
-.icon-member:before {
-  font-size: 6.3vw !important;
+.icon-withdrawal1:before {
+  content: "";
 }
 
-.icon-cog:before {
-  font-size: 6.3vw !important;
+.icon-MangoPay:before {
+  content: "";
 }
 
-.icon-paytrust88:before {
-  font-size: 5vw !important;
-}
-
-.icon-JDpay:before {
-  font-size: 4vw !important;
+.icon-icon32px_Double-arrow:before {
+  content: "";
 }
 
 .icon-affiliate:before {
-  content: "\e997";
+  content: "";
+}
+
+.icon-icon_1_affiliate:before {
+  content: "";
 }
 
 .icon-icon_1_cop:before {
-  content: "\e996";
+  content: "";
+}
+
+.icon-ETH:before {
+  content: "";
+}
+
+.icon-BTC:before {
+  content: "";
 }
 
 .icon-line:before {
-  content: "\e993";
+  content: "";
 }
 
 .icon-EB:before {
-  content: "\e990";
+  content: "";
 }
 
 .icon-VNPay:before {
-  content: "\e991";
+  content: "";
 }
 
 .icon-saba:before {
-  content: "\e98c";
+  content: "";
 }
 
 .icon-cock:before {
-  content: "\e988";
+  content: "";
 }
 
 .icon-balance:before {
-  content: "\e989";
+  content: "";
 }
 
 .icon-icon_777:before {
-  content: "\e985";
+  content: "";
 }
 
 .icon-icon_service:before {
-  content: "\e987";
+  content: "";
 }
 
 .icon-AE:before {
-  content: "\e983";
+  content: "";
 }
 
 .icon-icon32px_:before {
-  content: "\e95f";
+  content: "";
 }
 
 .icon-icon32px_1:before {
-  content: "\e960";
+  content: "";
 }
 
 .icon-icon32px_ALL:before {
-  content: "\e961";
+  content: "";
 }
 
 .icon-icon32px_attachment:before {
-  content: "\e962";
+  content: "";
 }
 
 .icon-icon32px_award:before {
-  content: "\e963";
+  content: "";
 }
 
 .icon-icon32px_bank-account:before {
-  content: "\e964";
+  content: "";
 }
 
 .icon-icon32px_books:before {
-  content: "\e965";
+  content: "";
 }
 
 .icon-icon32px_check:before {
-  content: "\e966";
+  content: "";
 }
 
 .icon-icon32px_checked:before {
-  content: "\e967";
+  content: "";
 }
 
 .icon-icon32px_deposit:before {
-  content: "\e968";
+  content: "";
 }
 
 .icon-icon32px_Funds-transfer:before {
-  content: "\e969";
+  content: "";
 }
 
 .icon-icon32px_hide:before {
-  content: "\e96a";
+  content: "";
 }
 
 .icon-icon32px_History:before {
-  content: "\e96b";
+  content: "";
 }
 
 .icon-icon32px_ig:before {
-  content: "\e96c";
+  content: "";
 }
 
 .icon-icon32px_keno-14:before {
-  content: "\e96d";
+  content: "";
 }
 
 .icon-icon32px_LIVEcasino:before {
-  content: "\e96e";
+  content: "";
 }
 
 .icon-icon32px_Main-Wallet:before {
-  content: "\e96f";
+  content: "";
 }
 
 .icon-icon32px_microphone:before {
-  content: "\e970";
+  content: "";
 }
 
 .icon-icon32px_money:before {
-  content: "\e971";
+  content: "";
 }
 
 .icon-icon32px_notification:before {
-  content: "\e972";
+  content: "";
 }
 
 .icon-icon32px_openmail:before {
-  content: "\e974";
+  content: "";
 }
 
 .icon-icon32px_password:before {
-  content: "\e975";
+  content: "";
 }
 
 .icon-icon32px_pic:before {
-  content: "\e976";
+  content: "";
 }
 
 .icon-icon32px_Profile:before {
-  content: "\e977";
+  content: "";
 }
 
 .icon-icon32px_receipt:before {
-  content: "\e978";
+  content: "";
 }
 
 .icon-icon32px_see:before {
-  content: "\e979";
+  content: "";
 }
 
 .icon-icon32px_service-70:before {
-  content: "\e97a";
+  content: "";
 }
 
 .icon-icon32px_spin:before {
-  content: "\e97b";
+  content: "";
 }
 
 .icon-icon32px_Sportsbook-Wallet:before {
-  content: "\e97c";
+  content: "";
 }
 
 .icon-icon32px_time:before {
-  content: "\e97d";
+  content: "";
 }
 
 .icon-icon32px_timer:before {
-  content: "\e97e";
+  content: "";
 }
 
 .icon-icon32px_top:before {
-  content: "\e97f";
+  content: "";
 }
 
 .icon-icon32px_uplock:before {
-  content: "\e980";
+  content: "";
 }
 
 .icon-icon32px_wallet:before {
-  content: "\e981";
+  content: "";
 }
 
 .icon-icon32px_Withdraw:before {
-  content: "\e982";
+  content: "";
 }
 
 .icon-icon32px_worker:before {
-  content: "\e91e";
+  content: "";
 }
 
 .icon-Unionpay:before {
-  content: "\e93d";
+  content: "";
 }
 
 .icon-Alipay:before {
-  content: "\e93e";
+  content: "";
 }
 
 .icon-JDpay:before {
-  content: "\e940";
+  content: "";
 }
 
 .icon-ThaiQR:before {
-  content: "\e941";
+  content: "";
 }
 
 .icon-WeChatPay:before {
-  content: "\e943";
+  content: "";
 }
 
 .icon-virtual-sports:before {
-  content: "\e93a";
+  content: "";
 }
 
 .icon-statement1:before {
-  content: "\e938";
+  content: "";
 }
 
 .icon-GPI:before {
-  content: "\e945";
+  content: "";
 }
 
 .icon-JOKER:before {
-  content: "\e946";
+  content: "";
 }
 
 .icon-OW:before {
-  content: "\e947";
+  content: "";
 }
 
 .icon-PG:before {
-  content: "\e948";
+  content: "";
 }
 
 .icon-SG:before {
-  content: "\e949";
+  content: "";
 }
 
 .icon-YGG:before {
-  content: "\e94a";
+  content: "";
 }
 
 .icon-statement:before {
-  content: "\e937";
+  content: "";
 }
 
 .icon-kelo:before {
-  content: "\e931";
+  content: "";
 }
 
 .icon-lottery:before {
-  content: "\e932";
+  content: "";
 }
 
 .icon-AB:before {
-  content: "\e92b";
+  content: "";
 }
 
 .icon-AG:before {
-  content: "\e92c";
+  content: "";
 }
 
 .icon-DG:before {
-  content: "\e92d";
+  content: "";
 }
 
 .icon-PP:before {
-  content: "\e92e";
+  content: "";
 }
 
 .icon-SA:before {
-  content: "\e92f";
+  content: "";
 }
 
 .icon-hockey:before {
-  content: "\e930";
+  content: "";
 }
 
 .icon-nova-casino:before {
-  content: "\e929";
+  content: "";
 }
 
 .icon-ow-casino:before {
-  content: "\e92a";
+  content: "";
 }
 
 .icon-CirclePay:before {
-  content: "\e91f";
+  content: "";
 }
 
 .icon-Eeziepay:before {
-  content: "\e920";
+  content: "";
 }
 
 .icon-Help2Pay:before {
-  content: "\e922";
+  content: "";
 }
 
 .icon-OneClickPay:before {
-  content: "\e923";
+  content: "";
 }
 
 .icon-VN:before {
-  content: "\e924";
+  content: "";
 }
 
 .icon-paytrust88:before {
-  content: "\e93c";
+  content: "";
 }
 
 .icon-MOMO:before {
-  content: "\e926";
+  content: "";
 }
 
 .icon-VIETTELPAY:before {
-  content: "\e927";
+  content: "";
 }
 
 .icon-ZALO:before {
-  content: "\e928";
+  content: "";
 }
 
 .icon-member:before {
-  content: "\e90a";
+  content: "";
 }
 
 .icon-esport:before {
-  content: "\e911";
+  content: "";
 }
 
 .icon-F1:before {
-  content: "\e912";
+  content: "";
 }
 
 .icon-football:before {
-  content: "\e913";
+  content: "";
 }
 
 .icon-badminton:before {
-  content: "\e914";
+  content: "";
 }
 
 .icon-baseball:before {
-  content: "\e915";
+  content: "";
 }
 
 .icon-basketball:before {
-  content: "\e916";
+  content: "";
 }
 
 .icon-soccer:before {
-  content: "\e917";
+  content: "";
 }
 
 .icon-tennis:before {
-  content: "\e918";
+  content: "";
 }
 
 .icon-balance1:before {
-  content: "\e901";
+  content: "";
 }
 
 .icon-casino:before {
-  content: "\e902";
+  content: "";
 }
 
 .icon-contact:before {
-  content: "\e903";
+  content: "";
 }
 
 .icon-deposit:before {
-  content: "\e904";
+  content: "";
 }
 
 .icon-email:before {
-  content: "\e905";
+  content: "";
 }
 
 .icon-game:before {
-  content: "\e906";
+  content: "";
 }
 
 .icon-keno:before {
-  content: "\e907";
+  content: "";
 }
 
 .icon-livecasino:before {
-  content: "\e908";
+  content: "";
 }
 
 .icon-marquee:before {
-  content: "\e909";
+  content: "";
 }
 
 .icon-promotion:before {
-  content: "\e90b";
+  content: "";
 }
 
 .icon-sports:before {
-  content: "\e90c";
+  content: "";
 }
 
 .icon-transfer:before {
-  content: "\e90d";
+  content: "";
 }
 
 .icon-vip:before {
-  content: "\e90e";
+  content: "";
 }
 
 .icon-e-sports:before {
-  content: "\e90f";
+  content: "";
 }
 
 .icon-withdrawal:before {
-  content: "\e910";
+  content: "";
+}
+
+.icon-bankIcon:before {
+  content: "";
+  color: #58cdff;
+}
+
+.icon-updateIcon:before {
+  content: "";
+  color: #58cdff;
+}
+
+.icon-wifiIcon:before {
+  content: "";
+  color: #58cdff;
+}
+
+.icon-phoneIcon:before {
+  content: "";
+  color: #58cdff;
+}
+
+.icon-united-kingdom .path1:before {
+  content: "";
+  color: #f0f0f0;
+}
+
+.icon-united-kingdom .path2:before {
+  content: "";
+  margin-left: -1em;
+  color: #0052b4;
+}
+
+.icon-united-kingdom .path3:before {
+  content: "";
+  margin-left: -1em;
+  color: #0052b4;
+}
+
+.icon-united-kingdom .path4:before {
+  content: "";
+  margin-left: -1em;
+  color: #0052b4;
+}
+
+.icon-united-kingdom .path5:before {
+  content: "";
+  margin-left: -1em;
+  color: #0052b4;
+}
+
+.icon-united-kingdom .path6:before {
+  content: "";
+  margin-left: -1em;
+  color: #0052b4;
+}
+
+.icon-united-kingdom .path7:before {
+  content: "";
+  margin-left: -1em;
+  color: #0052b4;
+}
+
+.icon-united-kingdom .path8:before {
+  content: "";
+  margin-left: -1em;
+  color: #0052b4;
+}
+
+.icon-united-kingdom .path9:before {
+  content: "";
+  margin-left: -1em;
+  color: #0052b4;
+}
+
+.icon-united-kingdom .path10:before {
+  content: "";
+  margin-left: -1em;
+  color: #d80027;
+}
+
+.icon-united-kingdom .path11:before {
+  content: "";
+  margin-left: -1em;
+  color: #d80027;
+}
+
+.icon-united-kingdom .path12:before {
+  content: "";
+  margin-left: -1em;
+  color: #d80027;
+}
+
+.icon-united-kingdom .path13:before {
+  content: "";
+  margin-left: -1em;
+  color: #d80027;
+}
+
+.icon-united-kingdom .path14:before {
+  content: "";
+  margin-left: -1em;
+  color: #d80027;
+}
+
+.icon-vietnam .path1:before {
+  content: "";
+  color: white;
+}
+
+.icon-vietnam .path2:before {
+  content: "";
+  margin-left: -1em;
+  color: #e12a28;
+}
+
+.icon-vietnam .path3:before {
+  content: "";
+  margin-left: -1em;
+  color: #ed3432;
+}
+
+.icon-vietnam .path4:before {
+  content: "";
+  margin-left: -1em;
+  color: #fdce0c;
+}
+
+.icon-userIcon2:before {
+  content: "";
+  color: #fff;
+}
+
+.icon-wallteIcon:before {
+  content: "";
+  color: #fff;
+}
+
+.icon-mailIcon:before {
+  content: "";
+  color: #fff;
+}
+
+.icon-contactIcon:before {
+  content: "";
+  color: #fff;
+}
+
+.icon-userIcon:before {
+  content: "";
+  color: #fff;
+}
+
+.icon-homeIcon:before {
+  content: "";
+  color: #fff;
+}
+
+.icon-giftIcon:before {
+  content: "";
+  color: #fff;
+}
+
+.icon-contactUS1:before {
+  content: "";
+  color: #fff;
+}
+
+.icon-contactUS2:before {
+  content: "";
+  color: #fff;
+}
+
+.icon-contactUS3:before {
+  content: "";
+  color: #fff;
+}
+
+.icon-contactUS4:before {
+  content: "";
+  color: #fff;
+}
+
+.icon-contactUS5:before {
+  content: "";
+  color: #fff;
+}
+
+.icon-contactUS6:before {
+  content: "";
+  color: #fff;
+}
+
+.icon-affiliatesBtnIcon:before {
+  content: "";
+  color: #fff;
+}
+
+.icon-GUIDE1:before {
+  content: "";
+  color: #58cdff;
+}
+
+.icon-GUIDE2:before {
+  content: "";
+  color: #58cdff;
+}
+
+.icon-GUIDE3:before {
+  content: "";
+  color: #58cdff;
+}
+
+.icon-GUIDE4:before {
+  content: "";
+  color: #58cdff;
+}
+
+.icon-cloud_upload:before {
+  content: "";
+}
+
+.icon-backup:before {
+  content: "";
+}
+
+.icon-last_page:before {
+  content: "";
+}
+
+.icon-first_page:before {
+  content: "";
+}
+
+.icon-arrow_right:before {
+  content: "";
+}
+
+.icon-arrow_left:before {
+  content: "";
+}
+
+.icon-arrow_drop_up:before {
+  content: "";
+}
+
+.icon-arrow_drop_down:before {
+  content: "";
+}
+
+.icon-broken_image:before {
+  content: "";
 }
 
 .icon-keyboard_arrow_up:before {
-  content: "\e95b";
+  content: "";
 }
 
 .icon-keyboard_arrow_right1:before {
-  content: "\e95c";
+  content: "";
 }
 
 .icon-keyboard_arrow_left:before {
-  content: "\e95d";
+  content: "";
 }
 
 .icon-keyboard_arrow_down:before {
-  content: "\e95e";
+  content: "";
 }
 
 .icon-error_outline:before {
-  content: "\e94c";
+  content: "";
 }
 
 .icon-error:before {
-  content: "\e952";
+  content: "";
 }
 
 .icon-keyboard_arrow_right:before {
-  content: "\e954";
+  content: "";
 }
 
 .icon-cake:before {
-  content: "\e959";
+  content: "";
 }
 
 .icon-calculator1:before {
-  content: "\e957";
+  content: "";
 }
 
 .icon-message-typing:before {
-  content: "\e933";
+  content: "";
 }
 
 .icon-close:before {
-  content: "\e98a";
+  content: "";
 }
 
 .icon-checkmark:before {
-  content: "\e98b";
+  content: "";
 }
 
 .icon-information-solid:before {
-  content: "\e951";
+  content: "";
 }
 
 .icon-cake1:before {
-  content: "\e95a";
+  content: "";
 }
 
 .icon-minus:before {
-  content: "\e94e";
+  content: "";
 }
 
 .icon-plus:before {
-  content: "\e94f";
+  content: "";
 }
 
 .icon-alarm:before {
-  content: "\e950";
+  content: "";
 }
 
 .icon-bell:before {
-  content: "\e950";
+  content: "";
 }
 
 .icon-home:before {
-  content: "\e900";
+  content: "";
 }
 
 .icon-newspaper:before {
-  content: "\e91a";
+  content: "";
 }
 
 .icon-pencil:before {
-  content: "\e91b";
+  content: "";
 }
 
 .icon-camera:before {
-  content: "\e919";
+  content: "";
 }
 
 .icon-connection:before {
-  content: "\e91c";
+  content: "";
 }
 
 .icon-books:before {
-  content: "\e94b";
+  content: "";
 }
 
 .icon-library:before {
-  content: "\e921";
+  content: "";
 }
 
 .icon-files-empty:before {
-  content: "\e925";
+  content: "";
 }
 
 .icon-folder-upload:before {
-  content: "\e934";
+  content: "";
 }
 
 .icon-coin-dollar:before {
-  content: "\e93b";
+  content: "";
 }
 
 .icon-credit-card:before {
-  content: "\e93f";
+  content: "";
 }
 
 .icon-calculator:before {
-  content: "\e955";
+  content: "";
 }
 
 .icon-phone:before {
-  content: "\e942";
+  content: "";
+}
+
+.icon-map2:before {
+  content: "";
 }
 
 .icon-history:before {
-  content: "\e94d";
+  content: "";
 }
 
 .icon-calendar:before {
-  content: "\e953";
+  content: "";
 }
 
 .icon-mobile:before {
-  content: "\e958";
+  content: "";
 }
 
 .icon-user-plus:before {
-  content: "\e973";
+  content: "";
 }
 
 .icon-spinner11:before {
-  content: "\e984";
+  content: "";
 }
 
 .icon-search:before {
-  content: "\e986";
+  content: "";
 }
 
 .icon-key:before {
-  content: "\e98d";
+  content: "";
 }
 
 .icon-key2:before {
-  content: "\e98e";
+  content: "";
 }
 
 .icon-lock:before {
-  content: "\e98f";
+  content: "";
 }
 
 .icon-equalizer:before {
-  content: "\e992";
+  content: "";
 }
 
 .icon-cog:before {
-  content: "\e994";
+  content: "";
 }
 
 .icon-cogs:before {
-  content: "\e995";
+  content: "";
 }
 
 .icon-bin:before {
-  content: "\e9ac";
+  content: "";
 }
 
 .icon-sphere:before {
-  content: "\e9c9";
+  content: "";
 }
 
 .icon-eye:before {
-  content: "\e9ce";
+  content: "";
 }
 
 .icon-eye-blocked:before {
-  content: "\e9d1";
+  content: "";
 }
 
 .icon-sun:before {
-  content: "\e9d4";
+  content: "";
 }
 
 .icon-contrast:before {
-  content: "\e9d5";
+  content: "";
 }
 
 .icon-star-empty:before {
-  content: "\e9d7";
+  content: "";
 }
 
 .icon-star-full:before {
-  content: "\e9d9";
+  content: "";
 }
 
 .icon-warning:before {
-  content: "\ea07";
+  content: "";
 }
 
 .icon-plus1:before {
-  content: "\ea0a";
+  content: "";
 }
 
 .icon-cancel-circle:before {
-  content: "\ea0d";
+  content: "";
 }
 
 .icon-cross:before {
-  content: "\ea0f";
+  content: "";
 }
 
 .icon-checkmark1:before {
-  content: "\ea10";
+  content: "";
 }
 
 .icon-exit:before {
-  content: "\ea14";
+  content: "";
+}
+
+.icon-loop:before {
+  content: "";
 }
 
 .icon-arrow-up-left2:before {
-  content: "\ea39";
+  content: "";
 }
 
 .icon-arrow-up2:before {
-  content: "\ea3a";
+  content: "";
 }
 
 .icon-arrow-up-right2:before {
-  content: "\ea3b";
+  content: "";
 }
 
 .icon-arrow-right2:before {
-  content: "\ea3c";
+  content: "";
 }
 
 .icon-arrow-down-right2:before {
-  content: "\ea3d";
+  content: "";
 }
 
 .icon-arrow-down2:before {
-  content: "\ea3e";
+  content: "";
 }
 
 .icon-arrow-down-left2:before {
-  content: "\ea3f";
+  content: "";
 }
 
 .icon-arrow-left2:before {
-  content: "\ea40";
+  content: "";
 }
 
 .icon-circle-right:before {
-  content: "\ea42";
+  content: "";
 }
 
 .icon-checkbox-checked:before {
-  content: "\ea52";
+  content: "";
 }
 
 .icon-checkbox-unchecked:before {
-  content: "\ea53";
+  content: "";
 }
 
 .icon-radio-unchecked:before {
-  content: "\ea56";
+  content: "";
 }
 
 .icon-new-tab:before {
-  content: "\ea7e";
+  content: "";
 }
 
 .icon-facebook:before {
-  content: "\ea90";
+  content: "";
 }
 
 .icon-facebook2:before {
-  content: "\ea91";
+  content: "";
 }
 
 .icon-instagram:before {
-  content: "\ea92";
+  content: "";
+}
+
+.icon-whatsapp:before {
+  content: "";
 }
 
 .icon-telegram:before {
-  content: "\ea95";
+  content: "";
 }
 
 .icon-twitter:before {
-  content: "\ea96";
+  content: "";
 }
 
 .icon-IcoMoon:before {
-  content: "\eaea";
+  content: "";
+}
+
+.icon-volume-medium:before {
+  content: "";
 }
 
 .icon-home1:before {
-  content: "\e956";
+  content: "";
 }
 
 .icon-QQpay:before {
-  content: "\e944";
+  content: "";
 }
 
 .icon-gift:before {
-  content: "\e939";
+  content: "";
 }
 
 .icon-like:before {
-  content: "\e936";
+  content: "";
 }
 
 .icon-thumbs-up:before {
-  content: "\e936";
+  content: "";
 }
 
 .icon-approve:before {
-  content: "\e936";
+  content: "";
 }
 
 .icon-chat:before {
-  content: "\e935";
+  content: "";
 }
 
 .icon-bubbles:before {
-  content: "\e935";
+  content: "";
 }
 
 .icon-talk:before {
-  content: "\e935";
+  content: "";
 }
 
 .icon-message:before {
-  content: "\e935";
+  content: "";
 }
 
 .icon-conversation:before {
-  content: "\e935";
+  content: "";
+}
+
+.icon-mail-envelope-open:before {
+  content: "";
 }
 
 .icon-moon:before {
-  content: "\e91d";
+  content: "";
 }
-/*# sourceMappingURL=font.css.map */

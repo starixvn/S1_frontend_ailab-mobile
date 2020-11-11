@@ -18,6 +18,7 @@ const getAffiliate = langId => {
 export const siteInfo = langId => {
 	return {
 		siteName,
+		siteId: 1,
 		affiliateLink: getAffiliate(langId),
 		siteDefaultLang: "en",
 		siteLangList: ["en", "cs", "th", "id"],
