@@ -20,12 +20,12 @@ const Affiliates = ({ i18n, langId }) => {
 			<p className="affiliates__title lightBTitle">
 				{i18n.lbl_Affiliates}
 			</p>
-			<button
+			<a
 				href={siteInfo(langId).affiliateLink}
 				target="_blank"
 				className="icon icon-affiliatesBtnIcon">
 				<span>{i18n.lbl_JoinUsNow}</span>
-			</button>
+			</a>
 		</div>
 	);
 };
@@ -73,12 +73,14 @@ const ContactUs = () => {
 		<div className="contact">
 			<p className="contact__title lightBTitle">CONTACT US</p>
 			<div className="contact-box">
-				<a className="icon icon-contactUS1"></a>
-				<a className="icon icon-contactUS2"></a>
-				<a className="icon icon-contactUS3"></a>
-				<a className="icon icon-contactUS4"></a>
-				<a className="icon icon-contactUS5"></a>
-				<a className="icon icon-contactUS6"></a>
+				<a
+					href="https://www.facebook.com/Bwingtttt/"
+					target="_blank"
+					className="icon icon-contactUS1"></a>
+				<a
+					href="https://twitter.com/bwingofficial"
+					target="_blank"
+					className="icon icon-contactUS2"></a>
 			</div>
 		</div>
 	);
