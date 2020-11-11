@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
 import Category from "../components/home/category";
-import ShortcutBar from "../components/home/shortcutBar";
 import {
 	i18nContext,
 	userInfoContext,
@@ -12,7 +11,6 @@ import { readCookie, setCookie } from "../components/common/common";
 import path from "../path";
 import { Redirect } from "@reach/router";
 import { api_GetWalletInfo } from "../service/api/account";
-import Submenu from "../components/home/submenu";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);

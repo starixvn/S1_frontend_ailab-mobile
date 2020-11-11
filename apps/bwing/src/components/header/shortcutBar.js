@@ -8,7 +8,7 @@ import {
 import { Link } from "@reach/router";
 import path from "../../path";
 
-const ShortcutBar = props => {
+const ShortcutBar = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setNav } = useContext(navContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -23,27 +23,20 @@ const ShortcutBar = props => {
 			passProps = { ...passProps, to: "/", onClick: ShowLogin };
 		}
 
-		return <Link {...passProps} />;
+		return <Link {...passProps} onClick={() => setNav(null)} />;
 	};
 
 	return (
-		<div className="thBar">
-			<NavLink
-				to={`/${path.deposit.root}`}
-				className="icon icon-deposit"
-				checkProfile={true}>
-				<span>{i18n.lbl_Deposit}</span>
+		<div className="depositArea">
+			<NavLink to={`/${path.deposit.root}`} checkProfile={true}>
+				{i18n.lbl_Deposit}
 			</NavLink>
-			<NavLink
-				to={`/${path.transfer.root}`}
-				className="icon icon-transfer">
-				<span>{i18n.lbl_Transfer}</span>
+			<NavLink to={`/${path.transfer.root}`}>{i18n.lbl_Transfer}</NavLink>
+			<NavLink to={`/${path.statement.root}`}>
+				{i18n.lbl_Statement}
 			</NavLink>
-			<NavLink
-				to={`/${path.withdrawal.root}`}
-				className="icon icon-withdrawal"
-				checkProfile={true}>
-				<span>{i18n.lbl_Withdrawal}</span>
+			<NavLink to={`/${path.withdrawal.root}`} checkProfile={true}>
+				{i18n.lbl_Withdrawal}
 			</NavLink>
 		</div>
 	);
