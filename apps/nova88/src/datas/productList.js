@@ -86,8 +86,8 @@ const gameList = ({ langId }) => [
 		comingSoonImg: Coming_soon,
 		items: [
 			{
-				gameId: 20,
-				tpId: 20,
+				tpId: 5,
+				gameId: 801,
 				img: LIVEcasino_MW
 			},
 			{
