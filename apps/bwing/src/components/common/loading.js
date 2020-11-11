@@ -14,16 +14,16 @@ const Loading = ({ loadingDisplayText }) => {
 			<div className="container">
 				<div>
 					<div>
-						<img src={LoadingLogo} alt="Goal123" />
+						<img src={LoadingLogo} alt="Bwing" />
 					</div>
 					<div>
-						<img src={LoadingLogo} alt="Goal123" />
+						<img src={LoadingLogo} alt="Bwing" />
 					</div>
 					<div>
-						<img src={LoadingLogo} alt="Goal123" />
+						<img src={LoadingLogo} alt="Bwing" />
 					</div>
 					<div>
-						<img src={LoadingLogo} alt="Goal123" />
+						<img src={LoadingLogo} alt="Bwing" />
 					</div>
 				</div>
 				<div className="text">{loadingDisplayText}...</div>

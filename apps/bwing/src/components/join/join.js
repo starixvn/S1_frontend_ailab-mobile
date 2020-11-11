@@ -649,7 +649,7 @@ const Join = () => {
 					<span></span>
 					<span></span>
 				</div>
-				<img src={Logo} alt="Goal123" />
+				<img src={Logo} alt="Bwing" />
 				<div className="title">{i18n.lbl_JoinNow}</div>
 
 				<Inputbox
