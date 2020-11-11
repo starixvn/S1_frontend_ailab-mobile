@@ -110,7 +110,12 @@ const IndexPage = () => {
 
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
-	) : null;
+	) : (
+		<>
+			<Slider />
+			<Marquee />
+		</>
+	);
 };
 
 export default IndexPage;
