@@ -1034,16 +1034,19 @@ footer > a.open .circleAnimation + span {
   width: 100%;
   margin-left: -1px;
   left: 0;
-  top: 10vw;
+  top: 11vw;
   max-height: 45vw;
   overflow-y: scroll;
 }
 
 .dropdown > .dropdown-container .dropdown-item {
-  padding: 2vw;
+  padding: 0 2vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .dropdown > .dropdown-container .dropdown-item .bankLogo {
@@ -1056,6 +1059,10 @@ footer > a.open .circleAnimation + span {
   -webkit-box-flex: 0;
       -ms-flex: none;
           flex: none;
+}
+
+.dropdown > .dropdown-container .dropdown-item .bankLogo.icon img {
+  width: 15vw;
 }
 
 .dropdown > .dropdown-container .dropdown-item .bankLogo img {
@@ -1092,6 +1099,10 @@ footer > a.open .circleAnimation + span {
   -webkit-box-flex: 0;
       -ms-flex: none;
           flex: none;
+}
+
+.dropdown > .btn .bankLogo.icon img {
+  width: 15vw;
 }
 
 .dropdown > .btn .bankLogo img {
@@ -1843,6 +1854,13 @@ footer > a.open .circleAnimation + span {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  background: white;
+  color: #F77A00;
+  overflow: hidden;
+}
+
+.depositType div a img {
+  width: 20vw;
 }
 
 .depositType div button {
@@ -1860,6 +1878,13 @@ footer > a.open .circleAnimation + span {
       -ms-flex-pack: center;
           justify-content: center;
   color: #fff;
+  background: white;
+  color: #F77A00;
+  overflow: hidden;
+}
+
+.depositType div button img {
+  width: 20vw;
 }
 
 .depositType div button.open {
