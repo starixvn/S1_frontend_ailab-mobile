@@ -1,26 +1,16 @@
 import React, { useContext } from "react";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
-import { defPopBoxType } from "../common/popbox";
-import { popBoxContext, navContext, defNavPanel } from "../common/context";
-import productList from "../../datas/productList";
+import { navContext, defNavPanel } from "../common/context";
+import { defGameInfo } from "../../datas/productList";
 import img1 from "../../styles/img/game1.png";
 import img2 from "../../styles/img/game2.png";
 import img3 from "../../styles/img/game3.png";
 
-const defLinkType = {
-	default: "default",
-	casino: "casino",
-	sports: "sports"
-};
-
 const defGameList = [
 	{
-		...productList.soccer,
+		...defGameInfo.Sports,
 		img: img1,
-		displayKey: "lbl_Soccer",
-		linkType: defLinkType.sports,
-		tpId: 1,
-		gameId: 1
+		displayKey: "lbl_Soccer"
 	},
 	{
 		img: img2,
@@ -101,43 +91,19 @@ const defGameList = [
 ];
 
 export default ({ i18n, userInfo }) => {
-	const { setPopBox } = useContext(popBoxContext);
 	const { setNav } = useContext(navContext);
 
-	const ClickGame = (tpId, gameId, betType, linkType, name) => {
-		const LoginPopBox = () => {
-			setPopBox({
-				isOpen: true,
-				popBoxType: defPopBoxType.Login
-			});
-		};
-
-		if (linkType === defLinkType.casino) {
-			if (userInfo.isLogin !== true) {
-				LoginPopBox();
+	const ClickGame = (tpId, gameId, betType) => {
+		GET_ENTER_PAGE({
+			langId: userInfo.langId,
+			tpId: tpId,
+			gameId: gameId,
+			isLogin: userInfo.isLogin,
+			betType: betType,
+			loginCallback: () => {
+				setNav(defNavPanel.login);
 			}
-		} else if (linkType === defLinkType.sports) {
-			GET_ENTER_PAGE({
-				langId: userInfo.langId,
-				tpId,
-				gameId,
-				isLogin: true,
-				loginCallback: () => {
-					setNav(defNavPanel.login);
-				}
-			});
-		} else {
-			GET_ENTER_PAGE({
-				langId: userInfo.langId,
-				tpId: tpId,
-				gameId: gameId,
-				isLogin: userInfo.isLogin,
-				betType: betType,
-				loginCallback: () => {
-					setNav(defNavPanel.login);
-				}
-			});
-		}
+		});
 	};
 
 	let rows = defGameList.map(g => {
@@ -146,14 +112,7 @@ export default ({ i18n, userInfo }) => {
 			<div
 				className="gameArea-box"
 				key={`promoGameList-${g.displayKey}`}
-				onClick={ClickGame.bind(
-					this,
-					g.tpId,
-					g.gameId,
-					g.betType,
-					g.linkType,
-					g.name
-				)}>
+				onClick={ClickGame.bind(this, g.tpId, g.gameId, g.betType)}>
 				<img src={g.img} alt={displayText} />
 				<div className="gameArea-box-text">
 					<p>{displayText}</p>
