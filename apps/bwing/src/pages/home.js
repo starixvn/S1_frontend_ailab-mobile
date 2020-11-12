@@ -11,10 +11,10 @@ import { readCookie, setCookie } from "../components/common/common";
 import path from "../path";
 import { Redirect } from "@reach/router";
 import { api_GetWalletInfo } from "../service/api/account";
-import Submenu from "../components/home/submenu";
 import GamePanel from "../components/home/gamePanel";
 import LinksPanel from "../components/home/links";
 import MidBanner from "../components/home/banner";
+import EventSwipper from "../components/home/eventSwipper";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -116,6 +116,7 @@ const IndexPage = () => {
 		<>
 			<Slider />
 			<Marquee />
+			<EventSwipper />
 			<MidBanner />
 			<GamePanel i18n={i18n} userInfo={userInfo} />
 			<LinksPanel i18n={i18n} langId={userInfo.langId} />
