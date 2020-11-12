@@ -525,7 +525,7 @@ main .swiper-container .swiper-slide.swiper-slide-active {
 
 main .banner {
   background: #fff;
-  height: 37.5vw;
+  width: 100%;
   display: block;
   top: 12vw;
   z-index: 3;
@@ -4127,114 +4127,6 @@ span.important {
   font-size: 12px;
 }
 
-.badgArea {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  width: 100%;
-  height: 35vw;
-  border-bottom: 1px solid #101d41;
-}
-
-.badgArea .badgBox {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  position: relative;
-  width: calc(100% - 8vw);
-  height: 19vw;
-  background: url(../img/badgBox.png) no-repeat center;
-  background-size: contain;
-  margin: 0 0 10px 0;
-}
-
-.badgArea .badgBox .badgContent {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  position: relative;
-  width: 45%;
-}
-
-.badgArea .badgBox .badgContent .badgImg {
-  width: 12vw;
-  height: 12vw;
-}
-
-.badgArea .badgBox .badgContent .teamName {
-  position: relative;
-  font-size: 4vw;
-  font-weight: bold;
-  color: #011e46;
-  margin: 18px 0 1vw 0;
-  width: 30vw;
-}
-
-.badgArea .badgBox .badgContent .teamName__left {
-  text-align: right;
-}
-
-.badgArea .badgBox .badgContent .teamName__left .fas {
-  position: absolute;
-  top: 3px;
-  left: -5px;
-}
-
-.badgArea .badgBox .badgContent .teamName__right {
-  text-align: left;
-}
-
-.badgArea .badgBox .badgContent .teamName__right .fas {
-  position: absolute;
-  top: 3px;
-  right: -5px;
-}
-
-.badgArea .badgBox .badgContent .odds {
-  font-size: 1vw;
-}
-
-.badgArea .badgBox .betText {
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  top: 0.3vw;
-  font-size: 4vw;
-  font-weight: bold;
-}
-
-.badgArea .badgBox .date {
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  font-size: 0.5vw;
-  color: #011e46;
-}
-
 .bannerS {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4615,25 +4507,12 @@ span.important {
   font-size: 4vw;
 }
 
-.menu .menuContent .language > input {
-  display: none;
+.menu .menuContent .language img {
+  width: 5vw;
+  border-radius: 100%;
 }
 
-.menu .menuContent .language .languageText {
-  position: relative;
-}
-
-.menu .menuContent .language .languageText::before {
-  content: "▼";
-  position: absolute;
-  top: 0.5vw;
-  left: 22vw;
-  font-size: 1vw;
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
-}
-
-.menu .menuContent .language .languageText .text {
+.menu .menuContent .language .text {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4647,12 +4526,28 @@ span.important {
   font-size: 4vw;
 }
 
-.menu .menuContent .language .languageText .text img {
-  width: 4vw;
+.menu .menuContent .language .text span {
+  margin-left: 5px;
 }
 
-.menu .menuContent .language .languageText .text span {
-  margin-left: 5px;
+.menu .menuContent .language .icon-arrow_drop_down {
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+.menu .menuContent .language.open .languageOption {
+  display: block;
+}
+
+.menu .menuContent .language.open .icon-arrow_drop_down {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+.menu .menuContent .language > input {
+  display: none;
 }
 
 .menu .menuContent .language .languageOption {
@@ -4753,23 +4648,37 @@ span.important {
   border: 0;
 }
 
+.menu .menuNav .menuNavTitle .menuNavText {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.menu .menuNav .menuNavTitle .menuNavText .icon-arrow_drop_down {
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+.menu .menuNav .menuNavTitle .menuNavText.open {
+  color: #58CDFF;
+}
+
+.menu .menuNav .menuNavTitle .menuNavText.open .icon-arrow_drop_down {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+.menu .menuNav .menuNavTitle .menuNavText.open + .menuNavOption {
+  display: block;
+}
+
 .menu .menuNav .menuNavTitle .menuNavDrop {
   position: relative;
-}
-
-.menu .menuNav .menuNavTitle .menuNavDrop .menuNavText {
-  width: 100%;
-}
-
-.menu .menuNav .menuNavTitle .menuNavDrop .menuNavText::before {
-  content: "▼";
-  position: absolute;
-  left: 85vw;
-  font-size: 1vw;
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
-  -webkit-transform: rotate(-90deg);
-          transform: rotate(-90deg);
 }
 
 .menu .menuNav .menuNavTitle .menuNavOption {

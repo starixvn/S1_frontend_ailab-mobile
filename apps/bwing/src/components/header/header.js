@@ -24,6 +24,7 @@ import path from "../../path";
 import Logo from "../../styles/img/logo.png";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import Menu from "./header.menu";
+import SubMenu from "./submenu";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
@@ -105,11 +106,15 @@ export default () => {
 		});
 	};
 
+	const onClickSubMenu = () => {
+		setNav(() => defNavPanel.subMenu);
+	};
+
 	return userInfo.isLogin === null ? null : (
 		<header id="header">
 			<div className="headerT">
 				<div className="headerTLogout">
-					<div className="close noPos">
+					<div className="close noPos" onClick={onClickSubMenu}>
 						<span></span>
 						<span></span>
 						<span></span>
@@ -127,7 +132,9 @@ export default () => {
 						currencyId={userInfo.currencyId}
 						userName={userInfo.userName}
 						allBalance={
-							!walletInfo.allBalance ? 0 : walletInfo.allBalance
+							!walletInfo.allBalance
+								? 0
+								: number_format(walletInfo.allBalance, false)
 						}
 					/>
 				) : (
@@ -139,6 +146,7 @@ export default () => {
 				OnClickProduct={OnClickProduct}
 				userInfo={userInfo}
 			/>
+			<SubMenu />
 		</header>
 	);
 };
