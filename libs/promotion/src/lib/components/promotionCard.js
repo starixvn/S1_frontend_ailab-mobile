@@ -76,7 +76,7 @@ export default ({
 					})}
 				</div>
 				<div className="icon icon-icon32px_">{i18n.lbl_RollOver}</div>
-				<div>{p.rollOver ? p.rollOver : 1}X</div>
+				<div>{p.rollOver}X</div>
 			</div>
 		</div>
 		<div className="btn-group">
