@@ -48,6 +48,8 @@ export const siteInfo = langId => {
 	};
 };
 
+const cloudImgURL = "https://image.n88media.com";
+
 const SiteURL =
 	process.env.NODE_ENV === "production"
 		? {
@@ -55,7 +57,8 @@ const SiteURL =
 				apiURL: "",
 				openURL: "",
 				imgUrl: "",
-				t_and_cURL: ""
+				t_and_cURL: "",
+				cloudImgURL
 		  }
 		: {
 				siteName,
@@ -65,15 +68,11 @@ const SiteURL =
 				// t_and_cURL: "http://localhost:60930",
 				// openURL: "http://localhost:60930"
 
-				// apiURL: "http://52.77.157.115:5068",
-				// imgUrl: "http://52.77.157.115:5068",
-				// t_and_cURL: "http://52.77.157.115:5068",
-				// openURL: "http://52.77.157.115:5068"
-
 				apiURL: "http://www.n88dev.com",
 				imgUrl: "http://www.n88dev.com",
 				t_and_cURL: "http://www.n88dev.com",
-				openURL: "http://www.n88dev.com"
+				openURL: "http://www.n88dev.com",
+				cloudImgURL
 		  };
 
 axios.defaults.baseURL = SiteURL.apiURL;

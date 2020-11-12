@@ -6,6 +6,7 @@ import { api_payment_GetCryptoPayInfoList } from "@ailab-mobile/api";
 import path from "Path";
 import PageVerify from "./deposit.pageVerify";
 import Loading from "../common/loading";
+import config from "../../config";
 
 export const Panel = props => props.children;
 
@@ -84,10 +85,12 @@ export const Main = props => {
 	let rows = paymentList?.map(p => {
 		return (
 			<div key={`deposit-cryptoPay-${p.groupId}-${p.channelId}`}>
-				<Link
-					className={`icon icon-${p.groupName}`}
-					state={p}
-					to={p.channelName.replace(" ", "")}></Link>
+				<Link state={p} to={p.channelName.replace(" ", "")}>
+					<img
+						src={`${config.cloudImgURL}/SiteSkin/img/Payment/${p.groupName}.png`}
+						alt={p.groupName}
+					/>
+				</Link>
 				<span>{p.groupName}</span>
 			</div>
 		);

@@ -6,6 +6,7 @@ import { api_payment_GetOnlinePaymentList } from "@ailab-mobile/api";
 import PageVerify from "./deposit.pageVerify";
 import path from "../../path";
 import Loading from "../common/loading";
+import config from "../../config";
 
 export const Panel = props => props.children;
 
@@ -89,9 +90,12 @@ export const Main = props => {
 					to={`${p.payName}`}
 					state={{
 						...p
-					}}
-					className={`icon icon-${p.payName}`}
-				/>
+					}}>
+					<img
+						src={`${config.cloudImgURL}/SiteSkin/img/Payment/${p.payName}.png`}
+						alt={p.payName}
+					/>
+				</Link>
 				<span>{p.payName}</span>
 			</div>
 		);
