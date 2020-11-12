@@ -43,18 +43,18 @@ const UserGuide = ({ i18n, langId }) => {
 						<span>{i18n.lbl_HowToDepoist}</span>
 					</a>
 					<a
-						href={TandC(langId).HowToPlay}
+						href={TandC(langId).HowToWithdrawal}
 						target="_blank"
 						className="icon icon-GUIDE2">
-						<span>{i18n.lbl_HowToPlay}</span>
+						<span>{i18n.lbl_HowToWithdrawal}</span>
 					</a>
 				</div>
 				<div className="userGuide-box__top userGuide-box__bottom">
 					<a
-						href={TandC(langId).HowToWithdrawal}
+						href={TandC(langId).HowToPlay}
 						target="_blank"
 						className="icon icon-GUIDE3">
-						<span>{i18n.lbl_HowToWithdrawal}</span>
+						<span>{i18n.lbl_HowToPlay}</span>
 					</a>
 					<a
 						href={TandC(langId).FAQ}
