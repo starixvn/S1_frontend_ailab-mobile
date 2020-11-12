@@ -1,10 +1,8 @@
 import React, { useContext } from "react";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { defPopBoxType } from "../common/popbox";
-import { popBoxContext } from "../common/context";
+import { popBoxContext, navContext, defNavPanel } from "../common/context";
 import productList from "../../datas/productList";
-import path from "../../path";
-import { navigate } from "@reach/router";
 import img1 from "../../styles/img/game1.png";
 import img2 from "../../styles/img/game2.png";
 import img3 from "../../styles/img/game3.png";
@@ -20,7 +18,9 @@ const defGameList = [
 		...productList.soccer,
 		img: img1,
 		displayKey: "lbl_Soccer",
-		linkType: defLinkType.sports
+		linkType: defLinkType.sports,
+		tpId: 1,
+		gameId: 1
 	},
 	{
 		img: img2,
@@ -102,6 +102,7 @@ const defGameList = [
 
 export default ({ i18n, userInfo }) => {
 	const { setPopBox } = useContext(popBoxContext);
+	const { setNav } = useContext(navContext);
 
 	const ClickGame = (tpId, gameId, betType, linkType, name) => {
 		const LoginPopBox = () => {
@@ -116,7 +117,15 @@ export default ({ i18n, userInfo }) => {
 				LoginPopBox();
 			}
 		} else if (linkType === defLinkType.sports) {
-			navigate(`/${userInfo.langId}/${path.sports.root}?game=${name}`);
+			GET_ENTER_PAGE({
+				langId: userInfo.langId,
+				tpId,
+				gameId,
+				isLogin: true,
+				loginCallback: () => {
+					setNav(defNavPanel.login);
+				}
+			});
 		} else {
 			GET_ENTER_PAGE({
 				langId: userInfo.langId,
@@ -124,7 +133,9 @@ export default ({ i18n, userInfo }) => {
 				gameId: gameId,
 				isLogin: userInfo.isLogin,
 				betType: betType,
-				loginCallback: LoginPopBox
+				loginCallback: () => {
+					setNav(defNavPanel.login);
+				}
 			});
 		}
 	};
