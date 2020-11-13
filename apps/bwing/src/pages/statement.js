@@ -128,6 +128,7 @@ const IndexPage = () => {
 				direction={item.direction === 1 ? "+" : "-"}
 				refTransId={item.refTransId}
 				i18n={i18n}
+				className="info infoBlack"
 			/>
 		);
 	});
@@ -135,51 +136,49 @@ const IndexPage = () => {
 	return redirectPath !== null ? (
 		<Redirect to="/" noThrow />
 	) : (
-		<>
+		<div className="depositBox">
 			<HistoryFilter submitHandler={submitHandler} />
 			{loading ? (
 				<Loading />
 			) : (
 				<>
 					{getHistoryState ? (
-						<div className="recent open">
-							<div className="recentTransactions">
-								<div className="smallTitle">
-									<i className="icon icon-history"></i>
-									{i18n["lbl_TransactionHistory"]}
-								</div>
-								<ReloadSpin
-									func={submitHandler.bind(
-										this,
-										filterData?.StartDate,
-										filterData?.EndDate,
-										true
-									)}
-								/>
+						<>
+							<div
+								className="textArea"
+								style={{ padding: "2vw 0 4vw 2vw" }}>
+								{i18n["msg_AmountFormatTip"]}
 							</div>
-							{getHistoryState.length > 0 ? (
-								<>
-									<div className="txt-blue2">
-										{i18n["msg_AmountFormatTip"]}
-									</div>
-									<div className="infoList">{arr}</div>
-								</>
-							) : (
-								<div className="not-found">
-									{i18n["msg_NoData"]}
+							<div className="recent open">
+								<div className="recentTransactions">
+									<ReloadSpin
+										func={submitHandler.bind(
+											this,
+											filterData?.StartDate,
+											filterData?.EndDate,
+											true
+										)}
+									/>
 								</div>
-							)}{" "}
-						</div>
+								{getHistoryState.length > 0 ? (
+									<div className="infoList">{arr}</div>
+								) : (
+									<div className="not-found">
+										{i18n["msg_NoData"]}
+									</div>
+								)}
+							</div>
+						</>
 					) : null}
 				</>
 			)}
-		</>
+		</div>
 	);
 };
 
 const TransactionHistory = props => {
 	return (
-		<div className="info">
+		<div className={props.className}>
 			<ul>
 				<li>
 					<span className="title">{props.i18n["lbl_Date"]}</span>

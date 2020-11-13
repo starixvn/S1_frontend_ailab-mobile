@@ -239,7 +239,7 @@ const Panel = () => {
 									<div className="not-found">
 										{i18n["msg_NoData"]}
 									</div>
-								)}{" "}
+								)}
 							</div>
 						</>
 					) : null}
