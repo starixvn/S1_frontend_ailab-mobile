@@ -64,20 +64,20 @@ const gameList = ({ langId }) => [
 			}
 		]
 	},
-	// {
-	// 	category: "cockFighting",
-	// 	categoryIcon: "cock",
-	// 	translateKey: "lbl_CockFighting",
-	// 	items: [
-	// 		{
-	// 			tpId: 19,
-	// 			gameId: 19,
-	// 			icon: "cock",
-	// 			img: Cockfighting,
-	// 			spanTextKey: "lbl_CockFighting"
-	// 		}
-	// 	]
-	// },
+	{
+		category: "cockFighting",
+		categoryIcon: "cock",
+		translateKey: "lbl_CockFighting",
+		items: [
+			{
+				tpId: 19,
+				gameId: 19,
+				icon: "cock",
+				img: Cockfighting,
+				spanTextKey: "lbl_CockFighting"
+			}
+		]
+	},
 	{
 		category: "livecasino",
 		categoryIcon: "livecasino",
