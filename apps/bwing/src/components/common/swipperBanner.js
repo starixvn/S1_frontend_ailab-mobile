@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
 import Swiper from "react-id-swiper";
 import config from "../../config";
 import { api_GetBanner } from "../../service/api/site";
@@ -10,6 +10,15 @@ import {
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import path from "../../path";
 import { Link } from "@reach/router";
+import productList from "../../datas/productList";
+
+export const defBannerFolder = {
+	Sports: "Sports"
+};
+
+export const defSpecialActionLink = {
+	SportsIndex: "Sports/Index"
+};
 
 export const ClickLink = (
 	tpId,
@@ -53,7 +62,12 @@ export const ClickLink = (
 	}
 };
 
-const Panel = ({ ImgFolder, filterHideInHome = false }) => {
+const Panel = ({
+	ImgFolder,
+	withBtn,
+	openInBlank,
+	filterHideInHome = false
+}) => {
 	const [banner, setBanner] = useState([]);
 	const { userInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
@@ -137,25 +151,71 @@ const Panel = ({ ImgFolder, filterHideInHome = false }) => {
 		}
 	});
 
-	return <Autoplay Rows={rows} />;
+	return withBtn ? <AutoplayWithBtn Rows={rows} /> : <Autoplay Rows={rows} />;
+};
+
+const defSwipperConfig = {
+	spaceBetween: 30,
+	centeredSlides: true,
+	loop: true,
+	autoplay: {
+		delay: 2500,
+		disableOnInteraction: false
+	},
+	pagination: {
+		el: ".swiper-pagination",
+		clickable: true
+	},
+	rebuildOnUpdate: true
 };
 
 const Autoplay = props => {
+	const params = defSwipperConfig;
+	return <Swiper {...params}>{props.Rows}</Swiper>;
+};
+
+const AutoplayWithBtn = ({ Rows }) => {
 	const params = {
-		spaceBetween: 30,
-		centeredSlides: true,
-		autoplay: {
-			delay: 2500,
-			disableOnInteraction: false
+		...defSwipperConfig,
+		navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev"
 		},
-		pagination: {
-			el: ".swiper-pagination",
-			clickable: true
+		getSwiper: obj => {
+			ref.current = obj;
 		},
-		rebuildOnUpdate: true
+		renderPrevButton: () => (
+			<div className="swiper-button-prev" onClick={goPrev}></div>
+		),
+		renderNextButton: () => (
+			<div className="swiper-button-next" onClick={goNext}></div>
+		)
+	};
+	const ref = useRef(null);
+
+	const goNext = () => {
+		if (ref.current !== null) {
+			ref.current.slideNext();
+		}
 	};
 
-	return <Swiper {...params}>{props.Rows}</Swiper>;
+	const goPrev = () => {
+		if (ref.current !== null) {
+			ref.current.slidePrev();
+		}
+	};
+
+	return Rows && Rows.length > 0 ? (
+		<>
+			<div className="swiper-container">
+				<div className="swiper-wrapper">
+					<Swiper {...params}>{Rows}</Swiper>
+				</div>
+			</div>
+		</>
+	) : (
+		<></>
+	);
 };
 
 export default Panel;

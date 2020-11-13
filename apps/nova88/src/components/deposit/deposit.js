@@ -339,7 +339,7 @@ const Panel = () => {
 					Datas={recentDatas}
 					SubmitProof={SubmitProof}
 					ClickCancel={ClickCancel}
-					GetDepositInfoRecent={GetDepositInfoRecent}
+					ReloadFunc={GetDepositInfoRecent}
 				/>
 			</>
 		)
