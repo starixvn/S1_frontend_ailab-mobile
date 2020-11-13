@@ -8,7 +8,7 @@ export default ({ i18n, langId }) => {
 		<>
 			<Affiliates i18n={i18n} langId={langId} />
 			<UserGuide i18n={i18n} langId={langId} />
-			<ContactUs />
+			<ContactUs i18n={i18n} />
 			<Platforms i18n={i18n} />
 		</>
 	);
@@ -18,7 +18,7 @@ const Affiliates = ({ i18n, langId }) => {
 	return (
 		<div className="affiliates">
 			<p className="affiliates__title lightBTitle">
-				{i18n.lbl_Affiliates}
+				{i18n.lbl_Affiliates?.toUpperCase()}
 			</p>
 			<a
 				href={siteInfo(langId).affiliateLink}
@@ -33,7 +33,9 @@ const Affiliates = ({ i18n, langId }) => {
 const UserGuide = ({ i18n, langId }) => {
 	return (
 		<div className="userGuide">
-			<p className="userGuide__title lightBTitle">{i18n.lbl_UserGuide}</p>
+			<p className="userGuide__title lightBTitle">
+				{i18n.lbl_UserGuide?.toUpperCase()}
+			</p>
 			<div className="userGuide-box">
 				<div className="userGuide-box__top">
 					<a
@@ -68,10 +70,12 @@ const UserGuide = ({ i18n, langId }) => {
 	);
 };
 
-const ContactUs = () => {
+const ContactUs = ({ i18n }) => {
 	return (
 		<div className="contact">
-			<p className="contact__title lightBTitle">CONTACT US</p>
+			<p className="contact__title lightBTitle">
+				{i18n.lbl_ContactUs?.toUpperCase()}
+			</p>
 			<div className="contact-box">
 				<a
 					href="https://www.facebook.com/Bwingtttt/"
@@ -115,7 +119,7 @@ const Platforms = ({ i18n }) => {
 		<>
 			<div className="partner">
 				<div className="partner-bar">{platformRows}</div>
-				<span>{i18n.lbl_PoweredBy}</span>
+				<span>{i18n.lbl_PoweredBy?.toUpperCase()}</span>
 				<img src={Bong88} alt="" />
 			</div>
 			<div className="copyright">
