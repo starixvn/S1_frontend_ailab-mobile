@@ -70,40 +70,48 @@ const Panel = props => {
 
 	return (
 		<>
+			<div className="input-title">{i18n.lbl_QuickPick}</div>
 			<div className="inputBox">
 				<Dropdown
 					i18n={i18n}
 					mainKey="deposit-history-quickPick"
 					options={quickPickList}
 					selectedIdx={quickPickSelectedIdx}
-					icon="icon icon-calendar"
 					onSelectItem={dropdownStateHandler}
 				/>
 			</div>
 
-			<div className="inputBox parts">
-				<Inputbox
-					icon="icon-calendar"
-					inputType="date"
-					onChange={EditField.bind(null, "startDay")}
-					value={startDayState}
-					max={moment().format("YYYY-MM-DD")}
-					label={true}
-				/>
+			<div
+				className="inputBox parts"
+				style={{ justifyContent: "space-between" }}>
+				<div style={{ width: "48%" }}>
+					<div className="input-title">{i18n.lbl_From}</div>
+					<Inputbox
+						className="inputBoxText"
+						inputType="date"
+						onChange={EditField.bind(null, "startDay")}
+						value={startDayState}
+						max={moment().format("YYYY-MM-DD")}
+						iconModuleName="icon-calendar"
+					/>
+				</div>
 
-				<Inputbox
-					icon="icon-calendar"
-					inputType="date"
-					onChange={EditField.bind(null, "endDay")}
-					value={endDayState}
-					max={moment().format("YYYY-MM-DD")}
-					label={true}
-				/>
+				<div style={{ width: "48%" }}>
+					<div className="input-title">{i18n.lbl_To}</div>
+					<Inputbox
+						className="inputBoxText"
+						inputType="date"
+						onChange={EditField.bind(null, "endDay")}
+						value={endDayState}
+						max={moment().format("YYYY-MM-DD")}
+						iconModuleName="icon-calendar"
+					/>
+				</div>
 			</div>
 
 			<div className="btn-group">
 				<button
-					className="orange switch"
+					className="blue"
 					onClick={props.submitHandler.bind(
 						this,
 						startDayState,
