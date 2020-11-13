@@ -16,6 +16,7 @@ import { isConvert } from "../common/common";
 import path from "../../path";
 import PageVerify from "./deposit.pageVerify";
 import Loading from "../common/loading";
+import Title from "./deposit.mobilePay.title";
 
 export const Panel = props => props.children;
 
@@ -132,15 +133,15 @@ export const Main = props => {
 	let rows = paymentList?.map(p => {
 		return (
 			<div key={`deposit-mobilepay-${p.groupId}`}>
-				<button
+				<div
 					className={`${selGroupId === p.groupId ? "open" : ""}`}
 					onClick={SelectPayment.bind(this, p.groupId)}>
 					<img
+						className="switch"
 						src={`${config.imgUrl}/common/images/MobilePay/${p.groupName}.png`}
 						alt={p.groupName}
 					/>
-				</button>
-				<span>{p.groupName}</span>
+				</div>
 			</div>
 		);
 	});
@@ -185,8 +186,11 @@ export const Main = props => {
 			<Redirect to={redirectPath} noThrow />
 		) : pageVerify ? (
 			<>
-				<Step step={2} />
-				<div className="depositType">{rows}</div>
+				<Step step={2} i18n={i18n} />
+				<div className="depositInBox">
+					<Title i18n={i18n} />
+					<div className="depositImgArea">{rows}</div>
+				</div>
 				<div
 					className={`inputBox channel${
 						selGroupId !== null ? " open" : ""
@@ -194,13 +198,18 @@ export const Main = props => {
 					{channels}
 				</div>
 				<div className="btn-group">
-					<Link to="../" className="white">
+					<Link to={`/${path.deposit.root}`} className="left">
+						<span
+							style={{
+								transform: "rotate(180deg)",
+								marginRight: "5px"
+							}}>
+							→
+						</span>
 						{i18n.lbl_Back}
 					</Link>
 				</div>
 			</>
-		) : (
-			<></>
-		);
+		) : null;
 	}
 };

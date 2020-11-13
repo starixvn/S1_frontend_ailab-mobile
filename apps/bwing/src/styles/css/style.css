@@ -1850,7 +1850,7 @@ footer > a.open {
 }
 
 .processArea .process.process1 {
-  background: url(../img/process1.png) no-repeat center;
+  /* background: url(../img/process1.png) no-repeat center; */
   background-size: 100%;
   width: 29vw;
   height: 7vh;
@@ -1858,7 +1858,7 @@ footer > a.open {
 }
 
 .processArea .process.process2 {
-  background: url(../img/process2.png) no-repeat center;
+  /* background: url(../img/process2.png) no-repeat center; */
   background-size: 100%;
   width: 20.7vw;
   height: 7vh;
@@ -1866,12 +1866,12 @@ footer > a.open {
 }
 
 .processArea .process.process2.open {
-  background: url(../img/processH2.png) no-repeat center;
+  /* background: url(../img/processH2.png) no-repeat center; */
   background-size: 100%;
 }
 
 .processArea .process.process3 {
-  background: url(../img/process3.png) no-repeat center;
+  /* background: url(../img/process3.png) no-repeat center; */
   background-size: 100%;
   width: 24vw;
   height: 7vh;
@@ -1879,12 +1879,12 @@ footer > a.open {
 }
 
 .processArea .process.process3.open {
-  background: url(../img/processH3.png) no-repeat center;
+  /* background: url(../img/processH3.png) no-repeat center; */
   background-size: 100%;
 }
 
 .processArea .process.process4 {
-  background: url(../img/process4.png) no-repeat center;
+  /* background: url(../img/process4.png) no-repeat center; */
   background-size: 100%;
   width: 19.5vw;
   height: 7vh;

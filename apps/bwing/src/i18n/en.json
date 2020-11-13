@@ -343,7 +343,12 @@
 	"lbl_HowToDepoist": "HOW TO DEPOSIT",
 	"lbl_HowToWithdraw": "HOW TO WITHDRAW",
 	"lbl_HowToPlay": "HOW TO PLAY",
-	"lbl_PoweredBy": "Powered by"
+	"lbl_PoweredBy": "Powered by",
+	
+	"lbl_DepositOptionHint": "You can choose the most suitable deposit option from the ones provided below:",
+	"lbl_SelectPaymentMethods": "Select Payment Methods",
+	"lbl_EnterAmount": "Enter Amount",
+	"lbl_Step_SelectBank":"Select Bank"
 
 
 }

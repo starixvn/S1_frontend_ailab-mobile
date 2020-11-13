@@ -12,6 +12,7 @@ import { Link, Redirect } from "@reach/router";
 import InputBox from "../common/inputbox";
 import path from "../../path";
 import PageVerify from "./deposit.pageVerify";
+import Title, { OneLineTitle } from "./deposit.mobilePay.title";
 
 const SetMobilePay = props => {
 	const { i18n } = useContext(i18nContext);
@@ -169,59 +170,55 @@ const SetMobilePay = props => {
 		<Redirect to={redirectPath} noThrow />
 	) : (
 		<>
-			<Step step={3} />
-			<div className="inputBox">
-				<div className="account">
-					<div className="bankLogo">
+			<Step step={3} i18n={i18n} />
+			<div className="depositInBox">
+				<Title i18n={i18n} />
+				<div className="depositImgArea">
+					<div className="bankBox">
 						<img
 							src={`${config.imgUrl}/common/images/MobilePay/${paymentInfo.groupName}.png`}
 							alt={paymentInfo.groupName}
 						/>
-					</div>
-					<div className="info">
-						<ul>
-							<li>
-								<span className="title">
-									{paymentInfo.groupName}
-								</span>
-								<LimitTip
-									minAmount={paymentInfo.minAmount}
-									maxAmount={paymentInfo.maxAmount}
-									displayTextLimit={i18n.lbl_Unlimited}
-									displayTextUnLimit={i18n.lbl_Limit}
-									_isConvert={_isConvert}
-								/>
-							</li>
-						</ul>
+						<OneLineTitle i18n={i18n} />
 					</div>
 				</div>
+
+				{amountBtn &&
+				amountBtn.length > 0 &&
+				paymentInfo.amountRule === 3 ? (
+					<>
+						<span className="infoStates">
+							{number_format(amount, _isConvert)}
+						</span>
+						<div className="buttonBox">{amountBtn}</div>
+					</>
+				) : (
+					<InputBox
+						icon="icon-pencil"
+						placeholder={i18n["lbl_Amount"]}
+						value={amount}
+						inputType="tel"
+						onChange={EditAmount}
+						Warning={warning}
+					/>
+				)}
+				<div className="btn-group">
+					<button className="orange" onClick={ClickSubmit}>
+						{i18n.lbl_Submit}
+					</button>
+				</div>
 			</div>
-			{amountBtn &&
-			amountBtn.length > 0 &&
-			paymentInfo.amountRule === 3 ? (
-				<>
-					<span className="infoStates">
-						{number_format(amount, _isConvert)}
-					</span>
-					<div className="buttonBox">{amountBtn}</div>
-				</>
-			) : (
-				<InputBox
-					icon="icon-pencil"
-					placeholder={i18n["lbl_Amount"]}
-					value={amount}
-					inputType="tel"
-					onChange={EditAmount}
-					Warning={warning}
-				/>
-			)}
 			<div className="btn-group">
-				<Link to="../" className="white">
+				<Link to="../" className="left">
+					<span
+						style={{
+							transform: "rotate(180deg)",
+							marginRight: "5px"
+						}}>
+						→
+					</span>
 					{i18n.lbl_Back}
 				</Link>
-				<button className="orange" onClick={ClickSubmit}>
-					{i18n.lbl_Submit}
-				</button>
 			</div>
 		</>
 	);

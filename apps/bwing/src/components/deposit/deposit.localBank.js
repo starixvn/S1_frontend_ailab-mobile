@@ -394,7 +394,7 @@ export const Main = props => {
 			<Redirect to={redirectPath} noThrow />
 		) : pageVerify ? (
 			<>
-				<Step step={3} total={2} />
+				<Step step={3} total={2} i18n={i18n} />
 				<div className="inputBox">
 					<DropdownIMG
 						mainKey={"localBank-bankList"}

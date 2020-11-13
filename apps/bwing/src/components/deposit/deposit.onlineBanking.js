@@ -7,6 +7,9 @@ import PageVerify from "./deposit.pageVerify";
 import path from "../../path";
 import Loading from "../common/loading";
 import config from "../../config";
+import Title from "./deposit.onlineBanking.title";
+import { isConvert, number_format } from "../common/common";
+import BackBtn from "./backBtn";
 
 export const Panel = props => props.children;
 
@@ -91,7 +94,13 @@ export const Main = props => {
 						src={`${config.imgUrl}/common/images/Payment/${p.payName}.png`}
 						alt={p.payName}></img>
 				</Link>
-				<span>{p.payName}</span>
+				<span>{`${i18n.lbl_Limit} ${number_format(
+					p.minAmount,
+					isConvert(userInfo.currencyId)
+				)} ~ ${number_format(
+					p.maxAmount,
+					isConvert(userInfo.currencyId)
+				)}`}</span>
 			</div>
 		);
 	});
@@ -102,16 +111,13 @@ export const Main = props => {
 			<Redirect to={redirectPath} noThrow />
 		) : pageVerify ? (
 			<>
-				<Step step={2} />
-				<div className="depositType">{rows}</div>
-				<div className="btn-group">
-					<Link to="/deposit" className="white">
-						{i18n.lbl_Back}
-					</Link>
+				<Step step={2} i18n={i18n} />
+				<div className="depositInBox">
+					<Title i18n={i18n} />
+					<div className="depositImgArea">{rows}</div>
 				</div>
+				<BackBtn i18n={i18n} to={`/${path.deposit.root}`} />
 			</>
-		) : (
-			<></>
-		);
+		) : null;
 	}
 };
