@@ -24,7 +24,7 @@
 		"workspace-schematic": "nx workspace-schematic",
 		"dep-graph": "nx dep-graph",
 		"help": "nx help",
-		"upd":"updStyles.cmd"
+		"upd": "updStyles.cmd"
 	},
 	"private": true,
 	"dependencies": {
@@ -37,7 +37,7 @@
 		"react-helmet": "^6.1.0",
 		"react-id-swiper": "^4.0.0",
 		"react-router-dom": "5.2.0",
-		"swiper": "^6.3.4",
+		"swiper": "5.4.1",
 		"webpack": "^4.44.2"
 	},
 	"devDependencies": {

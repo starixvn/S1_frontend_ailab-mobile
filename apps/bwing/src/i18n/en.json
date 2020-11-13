@@ -332,5 +332,18 @@
 	"lbl_VertifyContactConfirm": "Verify your contact number to enjoy our promotions?",
 	"lbl_VerifyNow": "Vertify Now",
 	"lbl_Hi": "Hi!",
-	"lbl_Expired":"Expired"
+	"lbl_Expired": "Expired",
+	"lbl_Saba1Club1": "Se Die",
+	"lbl_Saba1Club2": "Mini Se Die",
+	"lbl_Saba1Club3": "Big Small",
+	"lbl_Saba1Club5": "Fish Prawn Crab",
+	"lbl_FishingGG": "Fishing World",
+	"lbl_JoinUsNow": "JOIN US NOW",
+	"lbl_UserGuide": "User Guide",
+	"lbl_HowToDepoist": "HOW TO DEPOSIT",
+	"lbl_HowToWithdraw": "HOW TO WITHDRAW",
+	"lbl_HowToPlay": "HOW TO PLAY",
+	"lbl_PoweredBy": "Powered by"
+
+
 }
