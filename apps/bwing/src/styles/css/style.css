@@ -1116,7 +1116,7 @@ footer > a.open {
 }
 
 #popup > div {
-  border: 1px solid #f77a00;
+  border: 1px solid #0c1a3f;
   padding: 2vw 4vw;
 }
 
@@ -1127,7 +1127,6 @@ footer > a.open {
 }
 
 #popup .popTit {
-  background: #f77a00;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   position: relative;
@@ -1143,11 +1142,17 @@ footer > a.open {
   padding: 0 9vw 1vw 4vw;
 }
 
+#popup .popTit .text-org {
+  font-weight: bold;
+  font-size: 4vw;
+}
+
 #popup .popTxt {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   line-height: 6vw;
   width: calc(100% - 8vw - 2px);
+  text-align: center;
 }
 
 #popup .popTxt > div.icon {
@@ -1176,6 +1181,10 @@ footer > a.open {
 
 #popup .popTxt > div {
   margin: 2vw 0 4vw;
+}
+
+#popup .popTxt > div.account {
+  background: transparent;
 }
 
 #popup .popTxt > div li {
@@ -1448,6 +1457,7 @@ footer > a.open {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   position: relative;
+  margin-top: 2vw;
 }
 
 .inputBoxText input {
@@ -1485,6 +1495,17 @@ footer > a.open {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.inputBox.parts > div {
+  width: 49%;
+}
+
+.inputBox.parts > div.errortip {
+  width: 100%;
 }
 
 .inputBox.parts .dropdown {
@@ -1618,6 +1639,14 @@ footer > a.open {
   font-weight: bold;
   font-size: 4vw;
   border-radius: 3px;
+}
+
+.btn-group button span.icon-arrow-left2,
+.btn-group a span.icon-arrow-left2 {
+  margin-right: 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .btn-group button.left,
@@ -1908,11 +1937,12 @@ footer > a.open {
 }
 
 .depositInBox {
-  width: 100%;
+  width: calc(100% - 4vw);
   background-color: #0c1a3f;
   border: 1px solid #1d2f62;
   border-radius: 5px;
   margin-top: 2vw;
+  padding: 0 2vw;
 }
 
 .depositTitle {
@@ -1928,6 +1958,14 @@ footer > a.open {
   color: #58cdff;
   font-size: 4vw;
   font-weight: bold;
+}
+
+.depositTitle h1.text-org {
+  color: #f77a00;
+}
+
+.depositTitle.borderBottom h1.text-org {
+  text-align: left;
 }
 
 .depositImgArea {
@@ -2254,9 +2292,14 @@ footer > a.open {
   margin-left: 2vw;
 }
 
+.account .info ul {
+  margin-top: 0;
+}
+
 .account .info ul li {
   width: 100%;
   line-height: 16px;
+  display: block;
 }
 
 .account .tip span {
@@ -2300,6 +2343,10 @@ footer > a.open {
 .text-org {
   color: #f77a00;
   text-align: center;
+}
+
+.text-lightBlue {
+  color: #58cdff;
 }
 
 .txt-lightgray {
@@ -2351,6 +2398,7 @@ footer > a.open {
 
 .icon-pencil + input {
   text-align: right;
+  padding-right: 2vw;
 }
 
 input {
@@ -2955,8 +3003,17 @@ button.clickBtn:before {
   resize: none;
   border: 0;
   padding: 0;
-  width: 22vw;
   font-size: 12px;
+}
+
+.inputdate input[type="date"] ~ .iconModule {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.inputdate input[type="date"] ~ .iconModule .icon {
+  margin-right: 0;
 }
 
 .inputdate .text {
@@ -4381,6 +4438,7 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: auto;
 }
 
 .affiliate {
@@ -5130,11 +5188,6 @@ span.important {
   background: rgba(0, 25, 66, 0.95);
   padding: 20vw 8vw;
   overflow: auto;
-  display: none;
-}
-
-#depostiPopup .open {
-  display: block;
 }
 
 .depostiImgText {
@@ -5305,6 +5358,10 @@ span.important {
   padding: 0 2vw;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+.restoreBox-left .depositInBox:first-child {
+  margin-top: 0;
 }
 
 .restoreBox-left .depositInBox .text {

@@ -42,7 +42,7 @@ export default ({ userInfo, i18n, p, GetPromotion, isList, setPopBox }) => {
 					hasBtn: true,
 					btnBar: (
 						<div className="btn-group">
-							<button className="blue" onClick={ClosePopBox}>
+							<button className="cancel" onClick={ClosePopBox}>
 								{i18n.lbl_Cancel}
 							</button>
 							<button

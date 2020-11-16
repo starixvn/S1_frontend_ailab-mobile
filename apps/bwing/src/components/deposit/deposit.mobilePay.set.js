@@ -4,15 +4,16 @@ import {
 	userInfoContext,
 	popBoxContext
 } from "../../components/common/context";
-import Step from "./step";
 import config from "../../config";
 import LimitTip from "./limitTip";
 import { isConvert, number_format, checkAmount } from "../common/common";
-import { Link, Redirect } from "@reach/router";
-import InputBox from "../common/inputbox";
+import { Redirect } from "@reach/router";
+import InputBox, { defIptStatus } from "../common/inputbox.hint";
 import path from "../../path";
 import PageVerify from "./deposit.pageVerify";
 import Title, { OneLineTitle } from "./deposit.mobilePay.title";
+import DepositWrapper from "./deposit.wrapper";
+import BackBtn from "./backBtn";
 
 const SetMobilePay = props => {
 	const { i18n } = useContext(i18nContext);
@@ -22,7 +23,10 @@ const SetMobilePay = props => {
 	const [amount, setAmount] = useState(() => {
 		return props.location.state?.amountRule === 3 ? 0 : "";
 	});
-	const [warning, setWarning] = useState({ status: false, msg: "" });
+	const [warning, setWarning] = useState({
+		status: defIptStatus.default,
+		msg: ""
+	});
 	const [redirectPath, setRedirectPath] = useState(null);
 
 	const _isConvert = isConvert(userInfo.currencyId);
@@ -47,7 +51,7 @@ const SetMobilePay = props => {
 
 	useEffect(() => {
 		if (isMountedRef.current && props.location.state === null) {
-			redirectPath(`/${path.deposit.root}`);
+			setRedirectPath(`/${path.deposit.root}`);
 		}
 	}, [props.location.state, redirectPath]);
 
@@ -61,12 +65,12 @@ const SetMobilePay = props => {
 		);
 		if (result.status !== 0) {
 			setWarning({
-				status: true,
+				status: defIptStatus.warning,
 				msg: result.msg
 			});
 		} else {
 			setWarning({
-				status: false,
+				status: defIptStatus.verified,
 				msg: ""
 			});
 		}
@@ -114,9 +118,15 @@ const SetMobilePay = props => {
 								src={`${config.imgUrl}/common/images/MobilePay/${paymentInfo.groupName}.png`}
 								alt={paymentInfo.groupName}
 							/>
-							<div className="tip">
-								<span>{i18n.lbl_DepositAmount} :</span>{" "}
-								{number_format(real_amount, _isConvert)}
+							<div>
+								<ul>
+									<li className="text-lightBlue">
+										{i18n.lbl_DepositAmount} :
+									</li>
+									<li>
+										{number_format(real_amount, _isConvert)}
+									</li>
+								</ul>
 							</div>
 						</>
 					),
@@ -124,7 +134,7 @@ const SetMobilePay = props => {
 					btnBar: (
 						<div className="btn-group">
 							<button
-								className="blue"
+								className="cancel"
 								onClick={() =>
 									setPopBox(prevState => ({
 										...prevState,
@@ -134,7 +144,7 @@ const SetMobilePay = props => {
 								{i18n["lbl_Cancel"]}
 							</button>
 							<button
-								className="orange"
+								className="submit"
 								onClick={RedirectToNext.bind(
 									this,
 									real_amount
@@ -154,6 +164,8 @@ const SetMobilePay = props => {
 		}
 	};
 
+	if (!paymentInfo) return null;
+
 	let amountBtn = paymentInfo?.amountList?.map(a => {
 		return (
 			<button
@@ -169,17 +181,33 @@ const SetMobilePay = props => {
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
 	) : (
-		<>
-			<Step step={3} i18n={i18n} />
+		<DepositWrapper step={3} i18n={i18n}>
 			<div className="depositInBox">
 				<Title i18n={i18n} />
-				<div className="depositImgArea">
-					<div className="bankBox">
-						<img
-							src={`${config.imgUrl}/common/images/MobilePay/${paymentInfo.groupName}.png`}
-							alt={paymentInfo.groupName}
-						/>
-						<OneLineTitle i18n={i18n} />
+				<div className="inputBox">
+					<div className="account">
+						<div className="bankLogo">
+							<img
+								src={`${config.imgUrl}/common/images/MobilePay/${paymentInfo.groupName}.png`}
+								alt={paymentInfo.groupName}
+							/>
+						</div>
+						<div className="info">
+							<ul>
+								<li>
+									<span className="title">
+										{paymentInfo.groupName}
+									</span>
+									<LimitTip
+										minAmount={paymentInfo.minAmount}
+										maxAmount={paymentInfo.maxAmount}
+										displayTextLimit={i18n.lbl_Unlimited}
+										displayTextUnLimit={i18n.lbl_Limit}
+										_isConvert={_isConvert}
+									/>
+								</li>
+							</ul>
+						</div>
 					</div>
 				</div>
 
@@ -194,33 +222,24 @@ const SetMobilePay = props => {
 					</>
 				) : (
 					<InputBox
-						icon="icon-pencil"
-						placeholder={i18n["lbl_Amount"]}
+						title={i18n["lbl_Amount"]}
 						value={amount}
+						numberConvert={isConvert(userInfo.currencyId)}
 						inputType="tel"
 						onChange={EditAmount}
-						Warning={warning}
+						showTips={warning.status}
+						tipDisplayText={warning.msg}
+						btnStatus={warning.status}
 					/>
 				)}
 				<div className="btn-group">
-					<button className="orange" onClick={ClickSubmit}>
+					<button className="submit" onClick={ClickSubmit}>
 						{i18n.lbl_Submit}
 					</button>
 				</div>
 			</div>
-			<div className="btn-group">
-				<Link to="../" className="left">
-					<span
-						style={{
-							transform: "rotate(180deg)",
-							marginRight: "5px"
-						}}>
-						→
-					</span>
-					{i18n.lbl_Back}
-				</Link>
-			</div>
-		</>
+			<BackBtn i18n={i18n} to={`../`} />
+		</DepositWrapper>
 	);
 };
 

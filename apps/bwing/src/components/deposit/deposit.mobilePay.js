@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import Step from "./step";
 import { Link, Redirect } from "@reach/router";
 import {
 	i18nContext,
@@ -17,6 +16,7 @@ import path from "../../path";
 import PageVerify from "./deposit.pageVerify";
 import Loading from "../common/loading";
 import Title from "./deposit.mobilePay.title";
+import DepositWrapper from "./deposit.wrapper";
 
 export const Panel = props => props.children;
 
@@ -185,8 +185,7 @@ export const Main = props => {
 		return redirectPath !== null ? (
 			<Redirect to={redirectPath} noThrow />
 		) : pageVerify ? (
-			<>
-				<Step step={2} i18n={i18n} />
+			<DepositWrapper step={2} i18n={i18n}>
 				<div className="depositInBox">
 					<Title i18n={i18n} />
 					<div className="depositImgArea">{rows}</div>
@@ -209,7 +208,7 @@ export const Main = props => {
 						{i18n.lbl_Back}
 					</Link>
 				</div>
-			</>
+			</DepositWrapper>
 		) : null;
 	}
 };

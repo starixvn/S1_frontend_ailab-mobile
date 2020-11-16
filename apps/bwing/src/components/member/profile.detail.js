@@ -485,10 +485,10 @@ const Panel = () => {
 				hasBtn: true,
 				btnBar: (
 					<div className="btn-group">
-						<button className="blue" onClick={closePopbox}>
+						<button className="cancel" onClick={closePopbox}>
 							{i18n["lbl_Cancel"]}
 						</button>
-						<button className="orange" onClick={setProfile}>
+						<button className="submit" onClick={setProfile}>
 							{i18n["lbl_Submit"]}
 						</button>
 					</div>
@@ -606,7 +606,7 @@ const Panel = () => {
 			!userInfo.phoneNo ||
 			!userInfo.email ? (
 				<div className="btn-group">
-					<button className="orange" onClick={checkSubmitHandler}>
+					<button className="submit" onClick={checkSubmitHandler}>
 						{i18n["lbl_Submit"]}
 					</button>
 				</div>

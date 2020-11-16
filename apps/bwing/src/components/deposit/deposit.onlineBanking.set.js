@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
-import Step from "./step";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
-import { Link, Redirect } from "@reach/router";
+import { Redirect } from "@reach/router";
 import {
 	api_GetOnlineBankInfoSysList,
 	api_GetOnlineBankInfo
@@ -16,6 +15,7 @@ import PageVerify from "./deposit.pageVerify";
 import Loading from "../common/loading";
 import Title, { OneLineTitle } from "./deposit.onlineBanking.title";
 import BackBtn from "./backBtn";
+import DepositWrapper from "./deposit.wrapper";
 
 const SetPayment = props => {
 	const { setPopBox } = useContext(popBoxContext);
@@ -234,12 +234,18 @@ const SetPayment = props => {
 						{_selBank ? (
 							<img
 								src={`${config.imgUrl}/common/images/BankLogo/${selBank.bank?.bankLogo}`}
-								alt={selBank.bank?.bankName}
+								alt={selBank.bank?.bankName ?? ""}
 							/>
 						) : null}
-						<div className="tip">
-							<span>{i18n.lbl_DepositAmount} :</span>{" "}
-							{number_format(real_amount, _isConvert)}
+						<div>
+							<ul>
+								<li className="text-lightBlue">
+									{i18n.lbl_DepositAmount} :
+								</li>
+								<li>
+									{number_format(real_amount, _isConvert)}
+								</li>
+							</ul>
 						</div>
 					</>
 				),
@@ -247,7 +253,7 @@ const SetPayment = props => {
 				btnBar: (
 					<div className="btn-group">
 						<button
-							className="blue"
+							className="cancel"
 							onClick={() =>
 								setPopBox(prevState => ({
 									...prevState,
@@ -257,7 +263,7 @@ const SetPayment = props => {
 							{i18n["lbl_Cancel"]}
 						</button>
 						<button
-							className="orange"
+							className="submit"
 							onClick={RedirectToNext.bind(this, real_amount)}>
 							{i18n["lbl_Submit"]}
 						</button>
@@ -273,8 +279,7 @@ const SetPayment = props => {
 		return redirectPath !== null ? (
 			<Redirect to={redirectPath} noThrow />
 		) : pageVerify ? (
-			<>
-				<Step step={3} i18n={i18n} />
+			<DepositWrapper step={3} i18n={i18n}>
 				<div className="depositInBox">
 					<Title i18n={i18n} />
 					<div className="depositImgArea">
@@ -325,13 +330,13 @@ const SetPayment = props => {
 						btnStatus={warning.status}
 					/>
 					<div className="btn-group">
-						<button className="blue" onClick={ClickSubmit}>
+						<button className="submit" onClick={ClickSubmit}>
 							{i18n.lbl_Submit}
 						</button>
 					</div>
 				</div>
 				<BackBtn i18n={i18n} to={`../`} />
-			</>
+			</DepositWrapper>
 		) : null;
 	}
 };

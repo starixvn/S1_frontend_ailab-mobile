@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import moment from "moment";
 import { number_format, isConvert } from "../common/common";
-import Step from "./step";
 import {
 	i18nContext,
 	popBoxContext,
@@ -19,6 +18,7 @@ import {
 import RecentDatas from "./deposit.recentDatas";
 import Loading from "../common/loading";
 import PageVerify from "./deposit.pageVerify";
+import DepositWrapper from "./deposit.wrapper";
 
 const defPayType = {
 	onlineBank: "onlineBank",
@@ -226,10 +226,10 @@ const Panel = () => {
 				hasBtn: true,
 				btnBar: (
 					<div className="btn-group">
-						<button className="blue" onClick={ClickCancel}>
+						<button className="cancel" onClick={ClickCancel}>
 							{i18n["lbl_Cancel"]}
 						</button>
-						<button className="orange" onClick={ClickSubmit}>
+						<button className="submit" onClick={ClickSubmit}>
 							{i18n["lbl_Submit"]}
 						</button>
 					</div>
@@ -303,9 +303,7 @@ const Panel = () => {
 		loading ? (
 			<Loading />
 		) : (
-			<div className="depositBox">
-				<p className="depositBox-text">{i18n.lbl_DepositOptionHint}</p>
-				<Step step={1} i18n={i18n} />
+			<DepositWrapper step={1} i18n={i18n}>
 				<div className="depositType">{paymentList}</div>
 				<RecentDatas
 					Datas={recentDatas}
@@ -313,7 +311,7 @@ const Panel = () => {
 					ClickCancel={ClickCancel}
 					GetDepositInfoRecent={GetDepositInfoRecent}
 				/>
-			</div>
+			</DepositWrapper>
 		)
 	) : (
 		<Redirect to={redirectPath} noThrow />

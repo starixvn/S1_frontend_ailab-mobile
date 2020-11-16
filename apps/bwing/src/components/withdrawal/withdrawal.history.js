@@ -145,10 +145,10 @@ const Panel = () => {
 			hasBtn: true,
 			btnBar: (
 				<div className="btn-group">
-					<button className="blue" onClick={ClickCancel}>
+					<button className="cancel" onClick={ClickCancel}>
 						{i18n["lbl_Cancel"]}
 					</button>
-					<button className="orange" onClick={ClickSubmit}>
+					<button className="submit" onClick={ClickSubmit}>
 						{i18n["lbl_Submit"]}
 					</button>
 				</div>
@@ -219,7 +219,7 @@ export const TransactionHistory = props => {
 	if (props.status === 1) {
 		btnGroup = (
 			<div className="btn-group">
-				<button className="blue" onClick={props.ClickCancel}>
+				<button className="cancel" onClick={props.ClickCancel}>
 					{i18n.lbl_Cancel}
 				</button>
 			</div>
