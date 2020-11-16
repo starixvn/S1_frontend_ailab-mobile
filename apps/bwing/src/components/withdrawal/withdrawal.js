@@ -18,6 +18,8 @@ import ReloadSpin from "../common/reloadSpin";
 import path from "../../path";
 import { Redirect } from "@reach/router";
 import Loading from "../common/loading";
+import WalletPanel from "./withdrawal.showWallet";
+import BankCardPanel from "./withdrawal.bankCard";
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
@@ -384,6 +386,41 @@ const Panel = () => {
 		}
 	};
 
+	const GetCustBankInfo = () => {
+		api_GetCustBankInfo().then(
+			res => {
+				if (isMountedRef.current) {
+					if (res.data.errorCode === 0) {
+						let datas = res.data.data;
+						let _custBankInfo =
+							datas === null ? [] : datas.bankInfoDetail;
+						setbankInfo(() => ({
+							accountName: datas?.accountName,
+							bankList: _custBankInfo
+						}));
+					} else {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: res.data.message
+						});
+					}
+					setLoading(false);
+				}
+			},
+			err => {
+				if (isMountedRef.current) {
+					setPopBox({
+						isOpen: true,
+						title: i18n.lbl_ImportantNote,
+						content: i18n.msg_ApiServerError
+					});
+					setLoading(false);
+				}
+			}
+		);
+	};
+
 	const SelectBank = b => {
 		if (b.sysId !== selBank?.sysId) {
 			setSelBank(b);
@@ -475,7 +512,202 @@ const Panel = () => {
 				<Loading />
 			) : (
 				<>
-					<div className="avatar"></div>
+					<section className="withdrawalBox">
+						<WalletPanel
+							i18n={i18n}
+							availableBalance={_availableBalance}
+							GetWithdrawalAvailableBalance={GetBalance}
+						/>
+						<BankCardPanel
+							i18n={i18n}
+							accountName={userInfo.accountName}
+							custBankInfo={bankInfo?.bankList}
+							selBank={selBank}
+							setRedirectPath={setRedirectPath}
+							GetCustBankInfo={GetCustBankInfo}
+							SelectBank={SelectBank}
+						/>
+						<div class="subModuleList">
+							<div class="subModule">
+								<div class="subModuleBody">
+									<div class="calculation">
+										<div>
+											<div>Balance</div>
+											<div>
+												VND <div>8,790('000')</div>
+											</div>
+										</div>
+										<div>-</div>
+										<div>
+											<div>
+												Offset rollover difference
+												amount
+											</div>
+											<div>
+												VND <div>8,790('000')</div>
+											</div>
+										</div>
+										<div>=</div>
+										<div>
+											<div>
+												Your eligible Withdrawal amount
+											</div>
+											<div>
+												VND{" "}
+												<div>
+													<span>300</span>('000')
+												</div>
+											</div>
+										</div>
+									</div>
+									{/* <div class="cashBar">
+										<div
+											class="cashLine"
+											style="width: 30%;">
+											<div class="cashPoint">
+												<span>$50</span>
+											</div>
+										</div>
+									</div> */}
+									<div class="inputModuleRow">
+										<div class="inputBox">
+											<input
+												class=""
+												placeholder="Amount"
+											/>
+											<div class="iconModule">
+												<i>('000)</i>
+											</div>
+										</div>
+										<div class="btn-group">
+											<button class="submit">
+												SUBMIT
+											</button>
+										</div>
+									</div>
+									<div class="tip active">
+										Preferred currency can not be changed
+										after registration.
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="btn-group">
+							<button class="switch left">
+								RECENT TRANSACTIONS
+								<i class="icon icon-circle-right"></i>
+							</button>
+						</div>
+						<div class="recent">
+							<div class="recentTransactions">
+								<button class="icon icon-spinner11 clickBtn"></button>
+							</div>
+							<div class="info infoBlack">
+								<ul>
+									<li>
+										<span class="title">
+											Date & Time (+08:00)
+										</span>
+										<span>2020/06/15 04:17:56 PM</span>
+									</li>
+									<li>
+										<span class="title">ID</span>
+										<span>DD1120</span>
+									</li>
+									<li>
+										<span class="title">Amount</span>
+										<span>30 ('000)</span>
+									</li>
+									<li>
+										<span class="title">Status</span>
+										<span class="textYellow">Pending</span>
+									</li>
+								</ul>
+								<div class="btn-group">
+									<button class="blue">
+										Submit Bank Slip
+									</button>
+									<button class="gray openPopup">
+										Cancel
+									</button>
+								</div>
+							</div>
+							<div class="info infoBlack">
+								<ul>
+									<li>
+										<span class="title">
+											Date & Time (+08:00)
+										</span>
+										<span>2020/06/15 04:17:56 PM</span>
+									</li>
+									<li>
+										<span class="title">ID</span>
+										<span>DD1120</span>
+									</li>
+									<li>
+										<span class="title">Amount</span>
+										<span>30 ('000)</span>
+									</li>
+									<li>
+										<span class="title">Status</span>
+										<span class="textRed">Reject</span>
+									</li>
+								</ul>
+							</div>
+							<div class="info infoBlack">
+								<ul>
+									<li>
+										<span class="title">
+											Date & Time (+08:00)
+										</span>
+										<span>2020/06/15 04:17:56 PM</span>
+									</li>
+									<li>
+										<span class="title">ID</span>
+										<span>DD1120</span>
+									</li>
+									<li>
+										<span class="title">Amount</span>
+										<span>30 ('000)</span>
+									</li>
+									<li>
+										<span class="title">Status</span>
+										<span class="textGreen">Approved</span>
+									</li>
+								</ul>
+							</div>
+							<div class="info infoBlack">
+								<ul>
+									<li>
+										<span class="title">
+											Date & Time (+08:00)
+										</span>
+										<span>2020/06/15 04:17:56 PM</span>
+									</li>
+									<li>
+										<span class="title">ID</span>
+										<span>DD1120</span>
+									</li>
+									<li>
+										<span class="title">Amount</span>
+										<span>30 ('000)</span>
+									</li>
+									<li>
+										<span class="title">Status</span>
+										<span class="textGray">Canceled</span>
+									</li>
+								</ul>
+							</div>
+							<div class="btn-group">
+								<a
+									href="deposithistory.html"
+									class="blue recentBtn">
+									All Transactions
+								</a>
+							</div>
+						</div>
+					</section>
+					{/* <div className="avatar"></div>
 					<div className="name">{userInfo.userName}</div>
 					<div className="text-org">
 						{i18n.lbl_EligibleWithdrawalAmount}
@@ -499,7 +731,7 @@ const Panel = () => {
 						<button className="orange" onClick={ClickSubmit}>
 							{i18n.lbl_Submit}
 						</button>
-					</div>
+					</div> */}
 					<RecentDatas
 						Datas={recentDatas}
 						ClickCancel={ClickCancel}
