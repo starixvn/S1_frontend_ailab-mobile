@@ -165,51 +165,61 @@ const Panel = () => {
 				amount={item.amount}
 				status={item.status}
 				ClickCancel={ClickCancel.bind(this, item.transId)}
+				className="info infoBlack"
 			/>
 		);
 	});
 
 	return (
-		<>
+		<div className="depositBox">
 			<HistoryFilter submitHandler={submitHandler} />
 			{loading ? (
 				<Loading />
 			) : (
 				<>
 					{getHistoryState ? (
-						<div className="recent open">
-							<div className="recentTransactions">
-								<div className="smallTitle">
-									<i className="icon icon-history"></i>
-									{i18n["lbl_TransactionHistory"]}
-								</div>
-								<ReloadSpin
-									func={submitHandler.bind(
-										this,
-										filterData?.StartDate,
-										filterData?.EndDate,
-										true
-									)}
-								/>
+						<>
+							<div
+								className="textArea"
+								style={{ padding: "2vw 0 4vw 2vw" }}>
+								{i18n["msg_AmountFormatTip"]}
 							</div>
-							{getHistoryState.length > 0 ? (
-								<>
-									<div className="txt-blue2">
-										{i18n["msg_AmountFormatTip"]}
-									</div>
-									<div className="infoList">{arr}</div>
-								</>
-							) : (
-								<div className="not-found">
-									{i18n["msg_NoData"]}
+							<div className="recent open">
+								<div className="recentTransactions">
+									<ReloadSpin
+										func={submitHandler.bind(
+											this,
+											filterData?.StartDate,
+											filterData?.EndDate,
+											true
+										)}
+									/>
 								</div>
-							)}{" "}
-						</div>
+								{getHistoryState.length > 0 ? (
+									<div className="infoList">{arr}</div>
+								) : (
+									<div className="not-found">
+										{i18n["msg_NoData"]}
+									</div>
+								)}
+							</div>
+						</>
 					) : null}
 				</>
 			)}
-		</>
+		</div>
 	);
+};
+
+const statusClassName = {
+	1: "textYellow",
+	2: "textYellow",
+	3: "textYellow",
+	4: "textYellow",
+	5: "textGray",
+	6: "textGreen",
+	7: "textRed",
+	8: "textYellow"
 };
 
 export const TransactionHistory = props => {
@@ -219,14 +229,14 @@ export const TransactionHistory = props => {
 	if (props.status === 1) {
 		btnGroup = (
 			<div className="btn-group">
-				<button className="blue" onClick={props.ClickCancel}>
+				<button className="gray" onClick={props.ClickCancel}>
 					{i18n.lbl_Cancel}
 				</button>
 			</div>
 		);
 	}
 	return (
-		<div className="info">
+		<div className={props.className}>
 			<ul>
 				<li>
 					<span className="title">{i18n["lbl_Date"]}</span>
@@ -248,7 +258,9 @@ export const TransactionHistory = props => {
 				</li>
 				<li>
 					<span className="title">{i18n["lbl_Status"]}</span>
-					<span>{i18n[`lbl_WithdrawalStatus${props.status}`]}</span>
+					<span className={statusClassName[props.status]}>
+						{i18n[`lbl_WithdrawalStatus${props.status}`]}
+					</span>
 				</li>
 			</ul>
 			{btnGroup}

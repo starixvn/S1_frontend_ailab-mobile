@@ -74,7 +74,9 @@ export class IconDropdown extends Component {
 const Item = props => {
 	return (
 		<div className="dropdown-item" onClick={props.onClick}>
-			<i className={props.iconClassName}></i>
+			{props.iconClassName ? (
+				<i className={props.iconClassName}></i>
+			) : null}
 			<span className="text">{props.displayText}</span>
 		</div>
 	);

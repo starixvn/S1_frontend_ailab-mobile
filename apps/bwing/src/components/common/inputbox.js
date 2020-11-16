@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const Inputbox = props => {
 	return (
-		<div className="inputBox">
+		<div className={props.className ? props.className : "inputBox"}>
 			{props.label ? (
 				<label className="inputdate">
 					{props.icon ? (
