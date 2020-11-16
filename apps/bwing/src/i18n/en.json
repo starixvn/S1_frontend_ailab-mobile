@@ -345,6 +345,8 @@
 	"lbl_HowToPlay": "HOW TO PLAY",
 	"lbl_PoweredBy": "Powered by",
 	"lbl_AddBankAccount": "Add Bank Account",
-	"lbl_NumberOfBankAccounts": "Number of bank accounts"
+	"lbl_NumberOfBankAccounts": "Number of bank accounts",
+	"lbl_Unverified": "Unverified",
+	"lbl_Verified": "Verified"
 
 }

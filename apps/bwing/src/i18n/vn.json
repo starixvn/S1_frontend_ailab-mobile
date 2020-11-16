@@ -345,7 +345,8 @@
 	"lbl_HowToPlay": "CÁCH ĐẶT CƯỢC",
 	"lbl_PoweredBy": "Một sản phẩm của",
 	"lbl_AddBankAccount": "Thêm Tài Khoản",
-	"lbl_NumberOfBankAccounts": "Số lượng tài khoản Ngân hàng"
-
+	"lbl_NumberOfBankAccounts": "Số lượng tài khoản Ngân hàng",
+	"lbl_Unverified": "Chưa được xác minh",
+	"lbl_Verified": "Đã xác minh"
 
 }

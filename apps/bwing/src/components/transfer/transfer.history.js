@@ -129,55 +129,57 @@ const Panel = () => {
 				endWallet={_transferDirection.endWallet}
 				i18n={i18n}
 				className="info transfer"
-				memo={item.memo}
+				status={item.status}
 			/>
 		);
 	});
 
 	return (
-		<>
+		<div className="depositBox">
 			<HistoryFilter submitHandler={submitHandler} />
 			{loading ? (
 				<Loading />
 			) : (
 				<>
 					{getHistoryState ? (
-						<div className="recent open">
-							<div className="recentTransactions">
-								<div className="smallTitle">
-									<i className="icon icon-history"></i>
-									{i18n["lbl_TransactionHistory"]}
-								</div>
-								<ReloadSpin
-									func={submitHandler.bind(
-										this,
-										filterData?.StartDate,
-										filterData?.EndDate,
-										true
-									)}
-								/>
+						<>
+							<div
+								className="textArea"
+								style={{ padding: "2vw 0 4vw 2vw" }}>
+								{i18n["msg_AmountFormatTip"]}
 							</div>
-							{getHistoryState.length > 0 ? (
-								<>
-									<div className="txt-blue2">
-										{i18n["msg_AmountFormatTip"]}
-									</div>
-									<div className="infoList">{arr}</div>
-								</>
-							) : (
-								<div className="not-found">
-									{i18n["msg_NoData"]}
+							<div className="recent open">
+								<div className="recentTransactions">
+									<ReloadSpin
+										func={submitHandler.bind(
+											this,
+											filterData?.StartDate,
+											filterData?.EndDate,
+											true
+										)}
+									/>
 								</div>
-							)}{" "}
-						</div>
+								{getHistoryState.length > 0 ? (
+									<div className="infoList">{arr}</div>
+								) : (
+									<div className="not-found">
+										{i18n["msg_NoData"]}
+									</div>
+								)}
+							</div>
+						</>
 					) : null}
 				</>
 			)}
-		</>
+		</div>
 	);
 };
 
 export const TransactionHistory = props => {
+	const _status =
+		props.status === 0 ? props.i18n["lbl_Success"] : props.i18n["lbl_Fail"];
+	const _statusColor = props.status === 0 ? "textGreen" : "textGray";
+
 	return (
 		<div className={props.className}>
 			<ul>
@@ -200,16 +202,14 @@ export const TransactionHistory = props => {
 					<span>{number_format(props.amount, false)}</span>
 				</li>
 				<li>
-					<span className="title">{props.i18n["lbl_Direction"]}</span>
-					<span>
-						<span>{props.startWallet}</span>
-						<span>{props.endWallet}</span>
-					</span>
+					<span className="title">{props.i18n["lbl_Status"]}</span>
+					<span className={_statusColor}>{_status}</span>
 				</li>
 				<li>
-					<span className="title">{props.i18n["lbl_Memo"]}</span>
+					<span className="title">{props.i18n["lbl_Direction"]}</span>
 					<span>
-						<span>{props.memo}</span>
+						<span>{`${props.startWallet}  >`}</span>
+						<span>{props.endWallet}</span>
 					</span>
 				</li>
 			</ul>
