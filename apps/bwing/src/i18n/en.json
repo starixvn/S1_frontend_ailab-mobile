@@ -343,7 +343,8 @@
 	"lbl_HowToDepoist": "HOW TO DEPOSIT",
 	"lbl_HowToWithdraw": "HOW TO WITHDRAW",
 	"lbl_HowToPlay": "HOW TO PLAY",
-	"lbl_PoweredBy": "Powered by"
-
+	"lbl_PoweredBy": "Powered by",
+	"lbl_Unverified": "Unverified",
+	"lbl_Verified": "Verified"
 
 }

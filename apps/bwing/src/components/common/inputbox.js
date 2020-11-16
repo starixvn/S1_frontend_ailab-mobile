@@ -6,7 +6,9 @@ const Inputbox = props => {
 		<div className={props.className ? props.className : "inputBox"}>
 			{props.label ? (
 				<label className="inputdate">
-					<i className={`icon ${props.icon}`}></i>
+					{props.icon ? (
+						<i className={`icon ${props.icon}`}></i>
+					) : null}
 					<input
 						type={props.inputType ?? "text"}
 						placeholder={props.placeholder}
@@ -20,6 +22,15 @@ const Inputbox = props => {
 						}
 						max={props.max ? props.max : null}
 					/>
+					{props.iconModuleName ? (
+						<div className="iconModule">
+							<span
+								className={`icon ${props.iconModuleName}`}></span>
+							{props.iconModuleWarning ? (
+								<i className="icon icon-warning"></i>
+							) : null}
+						</div>
+					) : null}
 				</label>
 			) : (
 				<>
