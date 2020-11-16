@@ -1116,7 +1116,7 @@ footer > a.open {
 }
 
 #popup > div {
-  border: 1px solid #f77a00;
+  border: 1px solid #0c1a3f;
   padding: 2vw 4vw;
 }
 
@@ -1127,7 +1127,6 @@ footer > a.open {
 }
 
 #popup .popTit {
-  background: #f77a00;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   position: relative;
@@ -1143,11 +1142,17 @@ footer > a.open {
   padding: 0 9vw 1vw 4vw;
 }
 
+#popup .popTit .text-org {
+  font-weight: bold;
+  font-size: 4vw;
+}
+
 #popup .popTxt {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   line-height: 6vw;
   width: calc(100% - 8vw - 2px);
+  text-align: center;
 }
 
 #popup .popTxt > div.icon {
@@ -1176,6 +1181,10 @@ footer > a.open {
 
 #popup .popTxt > div {
   margin: 2vw 0 4vw;
+}
+
+#popup .popTxt > div.account {
+  background: transparent;
 }
 
 #popup .popTxt > div li {
@@ -1448,6 +1457,7 @@ footer > a.open {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   position: relative;
+  margin-top: 2vw;
 }
 
 .inputBoxText input {
@@ -1485,6 +1495,17 @@ footer > a.open {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.inputBox.parts > div {
+  width: 49%;
+}
+
+.inputBox.parts > div.errortip {
+  width: 100%;
 }
 
 .inputBox.parts .dropdown {
@@ -1618,6 +1639,14 @@ footer > a.open {
   font-weight: bold;
   font-size: 4vw;
   border-radius: 3px;
+}
+
+.btn-group button span.icon-arrow-left2,
+.btn-group a span.icon-arrow-left2 {
+  margin-right: 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .btn-group button.left,
@@ -1826,69 +1855,76 @@ footer > a.open {
 }
 
 .processArea {
-  position: relative;
   width: 100%;
   height: 7vh;
-  margin-top: 2px;
-}
-
-.processArea .process {
+  margin-top: 2vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+}
+
+.processArea .process {
+  position: relative;
+  height: 12vw;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border: 1px solid #F85B05;
+  border-left: 0;
+  border-right: 0;
+  padding-left: 2.9vw;
+  margin-left: 3px;
+}
+
+.processArea .process:last-child {
+  border-right: 1px solid #F85B05;
+}
+
+.processArea .process:last-child:after {
+  display: none;
+}
+
+.processArea .process:before {
+  content: '';
   position: absolute;
-  top: 0;
-  height: 12vw;
-  font-size: 1vw;
-  text-align: center;
-}
-
-.processArea .process.process1 {
-  background: url(../img/process1.png) no-repeat center;
-  background-size: 100%;
-  width: 29vw;
-  height: 7vh;
+  width: 2.9vw;
+  height: calc(100% + 2px);
   left: 0;
+  background: url(../img/stepAfter.png) no-repeat center/cover;
 }
 
-.processArea .process.process2 {
-  background: url(../img/process2.png) no-repeat center;
-  background-size: 100%;
-  width: 20.7vw;
-  height: 7vh;
-  left: 30.5%;
+.processArea .process:after {
+  content: '';
+  position: absolute;
+  width: 2.9vw;
+  height: calc(100% + 2px);
+  right: -2.9vw;
+  background: url(../img/stepAfter.png) no-repeat center/cover;
 }
 
-.processArea .process.process2.open {
-  background: url(../img/processH2.png) no-repeat center;
-  background-size: 100%;
+.processArea .process.active {
+  background: -webkit-gradient(linear, left bottom, left top, from(#f20c05), to(#F85F05));
+  background: linear-gradient(to top, #f20c05, #F85F05);
 }
 
-.processArea .process.process3 {
-  background: url(../img/process3.png) no-repeat center;
-  background-size: 100%;
-  width: 24vw;
-  height: 7vh;
-  left: 52%;
+.processArea .process.active:first-child:before {
+  background: none;
 }
 
-.processArea .process.process3.open {
-  background: url(../img/processH3.png) no-repeat center;
-  background-size: 100%;
-}
-
-.processArea .process.process4 {
-  background: url(../img/process4.png) no-repeat center;
-  background-size: 100%;
-  width: 19.5vw;
-  height: 7vh;
-  left: 77.5%;
+.processArea .process.active:after {
+  content: '';
+  background: url(../img/stepAfter_a.png) no-repeat center/cover;
+  z-index: 1;
 }
 
 .depositBox, .withdrawalBox {
@@ -1901,11 +1937,12 @@ footer > a.open {
 }
 
 .depositInBox {
-  width: 100%;
+  width: calc(100% - 4vw);
   background-color: #0c1a3f;
   border: 1px solid #1d2f62;
   border-radius: 5px;
   margin-top: 2vw;
+  padding: 0 2vw;
 }
 
 .depositTitle {
@@ -1923,6 +1960,14 @@ footer > a.open {
   font-weight: bold;
 }
 
+.depositTitle h1.text-org {
+  color: #f77a00;
+}
+
+.depositTitle.borderBottom h1.text-org {
+  text-align: left;
+}
+
 .depositImgArea {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1934,6 +1979,10 @@ footer > a.open {
 
 .depositImgArea .icon:before {
   font-size: 6vw;
+}
+
+.depositImgArea + .inputBox {
+  padding: 2vw;
 }
 
 .depositImgArea .localBank {
@@ -1977,6 +2026,18 @@ footer > a.open {
           justify-content: space-evenly;
 }
 
+.depositImgArea div.bankBox .bankCredit {
+  text-align: left;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.depositImgArea div.bankBox .bankCredit p {
+  width: 100%;
+  padding: 0;
+}
+
 .depositImgArea div.bankBox img {
   width: 40%;
   height: 60px;
@@ -2013,6 +2074,44 @@ footer > a.open {
   color: #070e22;
   padding: 2vw;
   border-top: 1px solid #070e22;
+}
+
+.bankCard {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 2vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.bankCard img {
+  height: 10vh;
+}
+
+.bankCard p {
+  padding-top: 2vw;
+  color: #000;
+}
+
+.bankCard button {
+  position: absolute;
+  top: 2vw;
+  right: 2vw;
+}
+
+.bankCard button::before {
+  color: #333;
+}
+
+.bankCard button.clickBtn {
+  background: transparent;
+  border: 0;
+}
+
+.bankCard button.clickBtn:before {
+  font-size: 4vw;
 }
 
 .depositType {
@@ -2153,7 +2252,7 @@ footer > a.open {
 }
 
 .account {
-  background: rgba(0, 0, 0, 0.3);
+  background: #0c1a41;
   border-radius: 5px;
   margin: 2vw 0;
   padding: 4vw;
@@ -2193,9 +2292,14 @@ footer > a.open {
   margin-left: 2vw;
 }
 
+.account .info ul {
+  margin-top: 0;
+}
+
 .account .info ul li {
   width: 100%;
   line-height: 16px;
+  display: block;
 }
 
 .account .tip span {
@@ -2239,6 +2343,10 @@ footer > a.open {
 .text-org {
   color: #f77a00;
   text-align: center;
+}
+
+.text-lightBlue {
+  color: #58cdff;
 }
 
 .txt-lightgray {
@@ -2290,6 +2398,7 @@ footer > a.open {
 
 .icon-pencil + input {
   text-align: right;
+  padding-right: 2vw;
 }
 
 input {
@@ -2586,24 +2695,19 @@ button.clickBtn:before {
 }
 
 .functionList {
-  padding: 4vw 12vw 2vw;
+  width: 100%;
+  padding: 2vw 4vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: calc(100% - 24vw);
-  position: fixed;
-  background: #001942;
-  left: 0;
-  z-index: 2;
-  top: calc(24vw + 1px);
-  border-bottom: 1px solid #f77a00;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 3px;
 }
 
 .functionList.ann {
@@ -2619,8 +2723,13 @@ button.clickBtn:before {
   float: left;
 }
 
-.functionList ~ .account:nth-child(even) {
-  background: rgba(247, 122, 0, 0.3);
+.functionList .smallBtn-group button.clickBtn {
+  background: transparent;
+  border: 0;
+}
+
+.functionList .smallBtn-group button.clickBtn.icon-spinner11 {
+  color: white;
 }
 
 .functionList ~ .account {
@@ -2645,7 +2754,7 @@ button.clickBtn:before {
 }
 
 .functionList ~ .account .info .title {
-  color: #f77a00;
+  color: #fff;
 }
 
 .functionList ~ .account.read:before {
@@ -2657,7 +2766,7 @@ button.clickBtn:before {
 }
 
 .functionList ~ .account .icon-circle-right {
-  color: #f77a00;
+  color: #fff;
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
   -webkit-transition: 0.7s;
@@ -2689,7 +2798,7 @@ button.clickBtn:before {
   transition: 0.7s;
   opacity: 1;
   height: auto;
-  border-top: 1px solid #f77a00;
+  border-top: 1px solid #182342;
   padding-top: 2vw;
   line-height: normal;
 }
@@ -2746,7 +2855,7 @@ button.clickBtn:before {
 }
 
 .checkbox .icon {
-  color: #458A00;
+  color: #58cdff;
   margin-right: 2vw;
 }
 
@@ -2894,8 +3003,17 @@ button.clickBtn:before {
   resize: none;
   border: 0;
   padding: 0;
-  width: 22vw;
   font-size: 12px;
+}
+
+.inputdate input[type="date"] ~ .iconModule {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.inputdate input[type="date"] ~ .iconModule .icon {
+  margin-right: 0;
 }
 
 .inputdate .text {
@@ -4244,11 +4362,11 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #F94D4D;
+  background: #f94d4d;
   border-radius: 3px;
   padding: 0 2vw;
   margin-left: 3vw;
-  color: #0A1533;
+  color: #0a1533;
 }
 
 .otpBtn span {
@@ -4260,7 +4378,7 @@ span.important {
 }
 
 .otpBtn.ver {
-  background: #2CA12A;
+  background: #2ca12a;
 }
 
 .otpBtn.ver .icon {
@@ -4320,6 +4438,7 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: auto;
 }
 
 .affiliate {
@@ -4986,7 +5105,7 @@ span.important {
 }
 
 .menu .menuNav .menuNavTitle .menuNavText.open {
-  color: #58CDFF;
+  color: #58cdff;
 }
 
 .menu .menuNav .menuNavTitle .menuNavText.open .icon-arrow_drop_down {
@@ -5069,11 +5188,6 @@ span.important {
   background: rgba(0, 25, 66, 0.95);
   padding: 20vw 8vw;
   overflow: auto;
-  display: none;
-}
-
-#depostiPopup .open {
-  display: block;
 }
 
 .depostiImgText {
@@ -5192,6 +5306,138 @@ span.important {
   width: 60%;
 }
 
+.textFlex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.textFlex p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.textFlex p span {
+  margin: 0 4vw;
+}
+
+.restoreBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.restoreBox-left {
+  width: 83%;
+}
+
+.restoreBox-left .depositInBox {
+  height: 10vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 2vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.restoreBox-left .depositInBox:first-child {
+  margin-top: 0;
+}
+
+.restoreBox-left .depositInBox .text {
+  width: 70%;
+}
+
+.restoreBox-left .depositInBox .text p:nth-child(1) {
+  font-size: 1vw;
+}
+
+.restoreBox-left .depositInBox .text p span {
+  margin-right: 5px;
+}
+
+.restoreBox-left .depositInBox .btn-group {
+  width: 40%;
+}
+
+.restoreBox-left .depositInBox .btn-group button {
+  font-size: 1vw;
+}
+
+.restoreBox-right {
+  width: 15%;
+}
+
+.restoreBox-right button {
+  width: 100%;
+  height: 21vh;
+  border-radius: 5px;
+  color: #58cdff;
+}
+
+.restoreBox-right button.clickBtn {
+  margin: 0;
+}
+
+.swapBox {
+  background-color: #3a4d80;
+  border: 1px solid #4d5e8e;
+  margin: 2vw;
+  padding: 2vw;
+  border-radius: 3px;
+}
+
+.swapBox span:nth-child(1) {
+  float: left;
+}
+
+.swapIcon {
+  color: #f85605;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.inputBoxLevel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 2vw;
+}
+
+.inputBoxLevel .left {
+  width: 73%;
+}
+
+.inputBoxLevel .right {
+  width: 25%;
+}
+
 .textArea {
   padding: 2vw;
 }
@@ -5210,6 +5456,10 @@ span.important {
 
 .textRight {
   text-align: right;
+}
+
+.textCenter {
+  text-align: center;
 }
 
 .walletModule {
@@ -5628,6 +5878,13 @@ span.important {
   padding-bottom: 3vw;
   margin-bottom: 3vw;
   border-bottom: 1px solid #1a2b58;
+}
+
+.subModuleList .subModule .subModuleBody .txt-lightgray li {
+  width: 100%;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .subModuleList .subModule .subModuleBody .uploadBox {
