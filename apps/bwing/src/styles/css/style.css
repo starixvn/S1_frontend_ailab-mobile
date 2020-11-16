@@ -1659,16 +1659,16 @@ footer > a.open {
   margin-left: 0.5vw;
 }
 
-.btn-group button.gray, .btn-group button .cancel,
+.btn-group button.gray, .btn-group button.cancel,
 .btn-group a.gray,
-.btn-group a .cancel {
+.btn-group a.cancel {
   background: #AFAFAF;
   color: #070e22;
 }
 
-.btn-group button.blue, .btn-group button .submit,
+.btn-group button.blue, .btn-group button.submit,
 .btn-group a.blue,
-.btn-group a .submit {
+.btn-group a.submit {
   background: -webkit-gradient(linear, left top, left bottom, from(#71D3FB), to(#3FB1E0));
   background: linear-gradient(180deg, #71D3FB, #3FB1E0);
   color: #070e22;
@@ -1826,72 +1826,79 @@ footer > a.open {
 }
 
 .processArea {
-  position: relative;
   width: 100%;
   height: 7vh;
-  margin-top: 2px;
-}
-
-.processArea .process {
+  margin-top: 2vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+}
+
+.processArea .process {
+  position: relative;
+  height: 12vw;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border: 1px solid #F85B05;
+  border-left: 0;
+  border-right: 0;
+  padding-left: 2.9vw;
+  margin-left: 3px;
+}
+
+.processArea .process:last-child {
+  border-right: 1px solid #F85B05;
+}
+
+.processArea .process:last-child:after {
+  display: none;
+}
+
+.processArea .process:before {
+  content: '';
   position: absolute;
-  top: 0;
-  height: 12vw;
-  font-size: 1vw;
-  text-align: center;
-}
-
-.processArea .process.process1 {
-  /* background: url(../img/process1.png) no-repeat center; */
-  background-size: 100%;
-  width: 29vw;
-  height: 7vh;
+  width: 2.9vw;
+  height: calc(100% + 2px);
   left: 0;
+  background: url(../img/stepAfter.png) no-repeat center/cover;
 }
 
-.processArea .process.process2 {
-  /* background: url(../img/process2.png) no-repeat center; */
-  background-size: 100%;
-  width: 20.7vw;
-  height: 7vh;
-  left: 30.5%;
+.processArea .process:after {
+  content: '';
+  position: absolute;
+  width: 2.9vw;
+  height: calc(100% + 2px);
+  right: -2.9vw;
+  background: url(../img/stepAfter.png) no-repeat center/cover;
 }
 
-.processArea .process.process2.open {
-  /* background: url(../img/processH2.png) no-repeat center; */
-  background-size: 100%;
+.processArea .process.active {
+  background: -webkit-gradient(linear, left bottom, left top, from(#f20c05), to(#F85F05));
+  background: linear-gradient(to top, #f20c05, #F85F05);
 }
 
-.processArea .process.process3 {
-  /* background: url(../img/process3.png) no-repeat center; */
-  background-size: 100%;
-  width: 24vw;
-  height: 7vh;
-  left: 52%;
+.processArea .process.active:first-child:before {
+  background: none;
 }
 
-.processArea .process.process3.open {
-  /* background: url(../img/processH3.png) no-repeat center; */
-  background-size: 100%;
+.processArea .process.active:after {
+  content: '';
+  background: url(../img/stepAfter_a.png) no-repeat center/cover;
+  z-index: 1;
 }
 
-.processArea .process.process4 {
-  /* background: url(../img/process4.png) no-repeat center; */
-  background-size: 100%;
-  width: 19.5vw;
-  height: 7vh;
-  left: 77.5%;
-}
-
-.depositBox {
+.depositBox, .withdrawalBox {
   padding: 10px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -1936,6 +1943,10 @@ footer > a.open {
   font-size: 6vw;
 }
 
+.depositImgArea + .inputBox {
+  padding: 2vw;
+}
+
 .depositImgArea .localBank {
   width: 100%;
   margin: auto;
@@ -1977,6 +1988,18 @@ footer > a.open {
           justify-content: space-evenly;
 }
 
+.depositImgArea div.bankBox .bankCredit {
+  text-align: left;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.depositImgArea div.bankBox .bankCredit p {
+  width: 100%;
+  padding: 0;
+}
+
 .depositImgArea div.bankBox img {
   width: 40%;
   height: 60px;
@@ -2013,6 +2036,44 @@ footer > a.open {
   color: #070e22;
   padding: 2vw;
   border-top: 1px solid #070e22;
+}
+
+.bankCard {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 2vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.bankCard img {
+  height: 10vh;
+}
+
+.bankCard p {
+  padding-top: 2vw;
+  color: #000;
+}
+
+.bankCard button {
+  position: absolute;
+  top: 2vw;
+  right: 2vw;
+}
+
+.bankCard button::before {
+  color: #333;
+}
+
+.bankCard button.clickBtn {
+  background: transparent;
+  border: 0;
+}
+
+.bankCard button.clickBtn:before {
+  font-size: 4vw;
 }
 
 .depositType {
@@ -2153,7 +2214,7 @@ footer > a.open {
 }
 
 .account {
-  background: rgba(0, 0, 0, 0.3);
+  background: #0c1a41;
   border-radius: 5px;
   margin: 2vw 0;
   padding: 4vw;
@@ -2239,6 +2300,10 @@ footer > a.open {
 .text-org {
   color: #f77a00;
   text-align: center;
+}
+
+.txt-lightgray {
+  color: #aeb2bc;
 }
 
 .input-title {
@@ -2582,24 +2647,19 @@ button.clickBtn:before {
 }
 
 .functionList {
-  padding: 4vw 12vw 2vw;
+  width: 100%;
+  padding: 2vw 4vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: calc(100% - 24vw);
-  position: fixed;
-  background: #001942;
-  left: 0;
-  z-index: 2;
-  top: calc(24vw + 1px);
-  border-bottom: 1px solid #f77a00;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 3px;
 }
 
 .functionList.ann {
@@ -2615,8 +2675,13 @@ button.clickBtn:before {
   float: left;
 }
 
-.functionList ~ .account:nth-child(even) {
-  background: rgba(247, 122, 0, 0.3);
+.functionList .smallBtn-group button.clickBtn {
+  background: transparent;
+  border: 0;
+}
+
+.functionList .smallBtn-group button.clickBtn.icon-spinner11 {
+  color: white;
 }
 
 .functionList ~ .account {
@@ -2641,7 +2706,7 @@ button.clickBtn:before {
 }
 
 .functionList ~ .account .info .title {
-  color: #f77a00;
+  color: #fff;
 }
 
 .functionList ~ .account.read:before {
@@ -2653,7 +2718,7 @@ button.clickBtn:before {
 }
 
 .functionList ~ .account .icon-circle-right {
-  color: #f77a00;
+  color: #fff;
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
   -webkit-transition: 0.7s;
@@ -2685,7 +2750,7 @@ button.clickBtn:before {
   transition: 0.7s;
   opacity: 1;
   height: auto;
-  border-top: 1px solid #f77a00;
+  border-top: 1px solid #182342;
   padding-top: 2vw;
   line-height: normal;
 }
@@ -2708,12 +2773,41 @@ button.clickBtn:before {
           align-items: center;
 }
 
-.checkbox input {
+.checkbox input[type="checkbox"] {
   display: none;
 }
 
+.checkbox input[type="checkbox"] + label {
+  border: 1px solid #001942;
+  border-radius: 3px;
+  width: 13px;
+  height: 13px;
+  background: transparent;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  cursor: pointer;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.checkbox label.icon:before {
+  display: none;
+  font-size: 4vw;
+  margin-left: -0.5px;
+}
+
+.checkbox input[type="checkbox"]:checked + label.icon {
+  background: transparent;
+}
+
+.checkbox input[type="checkbox"]:checked + label.icon.icon:before {
+  display: block;
+}
+
 .checkbox .icon {
-  color: #f77a00;
+  color: #58cdff;
   margin-right: 2vw;
 }
 
@@ -3944,11 +4038,6 @@ span.important {
   padding: 0 2vw;
 }
 
-.kyc ul li {
-  list-style: decimal;
-  margin-left: 4vw;
-}
-
 .kyc .icon-like {
   color: #fff;
   margin: 2vw auto;
@@ -4216,11 +4305,11 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #F94D4D;
+  background: #f94d4d;
   border-radius: 3px;
   padding: 0 2vw;
   margin-left: 3vw;
-  color: #0A1533;
+  color: #0a1533;
 }
 
 .otpBtn span {
@@ -4232,7 +4321,7 @@ span.important {
 }
 
 .otpBtn.ver {
-  background: #2CA12A;
+  background: #2ca12a;
 }
 
 .otpBtn.ver .icon {
@@ -4958,7 +5047,7 @@ span.important {
 }
 
 .menu .menuNav .menuNavTitle .menuNavText.open {
-  color: #58CDFF;
+  color: #58cdff;
 }
 
 .menu .menuNav .menuNavTitle .menuNavText.open .icon-arrow_drop_down {
@@ -5164,6 +5253,134 @@ span.important {
   width: 60%;
 }
 
+.textFlex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.textFlex p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.textFlex p span {
+  margin: 0 4vw;
+}
+
+.restoreBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.restoreBox-left {
+  width: 83%;
+}
+
+.restoreBox-left .depositInBox {
+  height: 10vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 2vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.restoreBox-left .depositInBox .text {
+  width: 70%;
+}
+
+.restoreBox-left .depositInBox .text p:nth-child(1) {
+  font-size: 1vw;
+}
+
+.restoreBox-left .depositInBox .text p span {
+  margin-right: 5px;
+}
+
+.restoreBox-left .depositInBox .btn-group {
+  width: 40%;
+}
+
+.restoreBox-left .depositInBox .btn-group button {
+  font-size: 1vw;
+}
+
+.restoreBox-right {
+  width: 15%;
+}
+
+.restoreBox-right button {
+  width: 100%;
+  height: 21vh;
+  border-radius: 5px;
+  color: #58cdff;
+}
+
+.restoreBox-right button.clickBtn {
+  margin: 0;
+}
+
+.swapBox {
+  background-color: #3a4d80;
+  border: 1px solid #4d5e8e;
+  margin: 2vw;
+  padding: 2vw;
+  border-radius: 3px;
+}
+
+.swapBox span:nth-child(1) {
+  float: left;
+}
+
+.swapIcon {
+  color: #f85605;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.inputBoxLevel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 2vw;
+}
+
+.inputBoxLevel .left {
+  width: 73%;
+}
+
+.inputBoxLevel .right {
+  width: 25%;
+}
+
 .textArea {
   padding: 2vw;
 }
@@ -5182,5 +5399,797 @@ span.important {
 
 .textRight {
   text-align: right;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.walletModule {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 2vw 0;
+}
+
+.walletModule .walletBalanceModule {
+  padding: 2vw;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+  background: #0C1A3F;
+  border-radius: 5px;
+  border: 1px solid #1a2b58;
+  margin-bottom: 2vw;
+}
+
+.walletModule .walletBalanceModule span {
+  margin-right: 2vw;
+}
+
+.walletModule .walletBalanceModule span.icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.walletModule .walletBalanceModule span.icon.icon:before {
+  color: white;
+  margin-right: 2vw;
+  font-size: 24px;
+}
+
+.walletModule .walletBalanceModule + .icon-spinner11 {
+  width: 61px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #0C1A3F;
+  border-radius: 5px;
+  border: 1px solid #1a2b58;
+  color: #58cdff;
+}
+
+.walletModule .walletBalanceModule + .icon-spinner11:before {
+  font-size: 28px;
+}
+
+.walletModule .walletBalanceModule + .icon-spinner11.open:before {
+  -webkit-animation: rotate .7s linear 2;
+          animation: rotate .7s linear 2;
+}
+
+.walletModule .walletBalanceModule .icon-error {
+  font-size: 16px;
+}
+
+.walletModule .walletBalanceModule .btnGroup {
+  margin: 0;
+}
+
+.walletModule .walletBalanceModule .btnGroup button, .walletModule .walletBalanceModule .btnGroup a {
+  margin-bottom: 0;
+}
+
+.walletModule .icon {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  color: white;
+}
+
+.remainder {
+  color: #aeb2bc;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.addBank {
+  background: #0C1A3F;
+  padding: 2vw;
+  border-radius: 5px;
+  border: 1px solid #1a2b58;
+  margin: 2vw 0;
+}
+
+.addBank.bankselect {
+  width: 100%;
+}
+
+.addBank.bankselect .icon-arrow-left2 {
+  color: #58cdff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.addBank.bankselect .icon-arrow-left2:before {
+  font-size: 18px;
+  margin-right: 5px;
+}
+
+.addBank.bankselect .btnGroup {
+  width: calc(100% / 6 - 10px);
+  margin-left: 0;
+}
+
+.addBank.bankselect .subModuleList {
+  margin: 0;
+}
+
+.addBank.bankselect .subModuleList .subModule {
+  border: 0;
+}
+
+.addBank.bankselect .subModuleList .subModule .subModuleBody {
+  padding: 0;
+}
+
+.addBank.bankselect .subModuleList .subModule .subModuleBody li {
+  width: calc(100% / 6 - 10px);
+  margin: 10px 10px 10px 0;
+}
+
+.addBank .addBankName {
+  background: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.addBank .addBankName.noBank {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  cursor: pointer;
+  min-height: auto;
+  background: #3A4D80;
+  border: 1px solid #4D5E8E;
+}
+
+.addBank .addBankName .addBankInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  min-width: 100%;
+}
+
+.addBank .addBankName .addBankInfo:last-child {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  color: black;
+}
+
+.addBank .addBankName .addBankInfo:last-child span {
+  margin-right: 5px;
+}
+
+.addBank .addBankName .addBankInfo .bankName + div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.addBank .addBankName .addBankInfo .bankName img {
+  width: 30vw;
+}
+
+.addBank .addBankName .addBankInfo .icon-bin {
+  font-size: 24px;
+  color: #56607B;
+  position: static;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 17px;
+  margin-right: 15px;
+}
+
+.addBank .addBankName button.icon, .addBank .addBankName a.icon {
+  font-size: 24px;
+  position: absolute;
+  right: 0;
+  bottom: -40px;
+  color: #58cdff;
+}
+
+.addBank .addBankName .icon-plus {
+  font-size: 18px;
+}
+
+.addBank + div.subModuleList {
+  margin: 2vw 0;
+}
+
+.addBank + div.subModuleList .subModuleBody {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.addBank + div.subModuleList .subModuleBody > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.addBank + div.subModuleList .subModuleBody > div.txt-lightgray {
+  margin: 20px 0;
+}
+
+.addBank + div.subModuleList .subModuleBody > div > .bankName {
+  margin-right: 10px;
+  margin-top: 0;
+}
+
+.addBank + div.subModuleList .subModuleBody > div.calculation {
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.addBank + div.subModuleList .subModuleBody > div.inputBtn {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 20px 0;
+}
+
+.addBank + div.subModuleList .subModuleBody > div.inputBtn .btnGroup {
+  margin: 10px 0 5px;
+}
+
+.addBank + div.subModuleList .subModuleBody > div.smallList {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.addBank + div.subModuleList .subModuleBody > div.smallList li {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin: auto 10px auto;
+}
+
+.addBank + div.subModuleList .subModuleBody > div.smallList li:first-child {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.addBank + div.subModuleList .subModuleBody > div.smallList li.accountNumber {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.addBank + div.subModuleList .subModuleBody > div.smallList li.accountNumber span {
+  margin-right: 5px;
+  background: none;
+  color: white;
+}
+
+.addBank + div.subModuleList .subModuleBody ul li {
+  width: calc(25% - 20px);
+}
+
+.addBank + div.subModuleList .subModuleBody ul li a, .addBank + div.subModuleList .subModuleBody ul li button {
+  padding: 5px 10px;
+  width: calc(100% - 20px);
+}
+
+.subModuleList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 30px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.subModuleList .subModule {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background: #0C1A3F;
+  border-radius: 5px;
+  border: 1px solid #1a2b58;
+}
+
+.subModuleList .subModule:nth-child(2) {
+  margin: 0 40px;
+}
+
+.subModuleList .subModule .subModuleTitle {
+  border-bottom: 1px solid #001942;
+  padding: 20px 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.subModuleList .subModule .subModuleTitle div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 5px;
+  color: #000;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: bold;
+}
+
+.subModuleList .subModule .subModuleTitle div span {
+  white-space: nowrap;
+  color: white;
+  font-weight: normal;
+}
+
+.subModuleList .subModule .subModuleTitle div span:first-child {
+  color: #001942;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.subModuleList .subModule .subModuleTitle div span:last-child {
+  font-size: 12px;
+}
+
+.subModuleList .subModule .subModuleBody {
+  padding: 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.subModuleList .subModule .subModuleBody.column {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.subModuleList .subModule .subModuleBody .txt-lightgray {
+  padding-bottom: 3vw;
+  margin-bottom: 3vw;
+  border-bottom: 1px solid #1a2b58;
+}
+
+.subModuleList .subModule .subModuleBody .txt-lightgray li {
+  width: 100%;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.subModuleList .subModule .subModuleBody .uploadBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.subModuleList .subModule .subModuleBody .uploadBox .directions {
+  margin-top: 2vw;
+}
+
+.subModuleList .subModule .subModuleBody .uploadBox .directions li {
+  display: list-item;
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  color: #aeb2bc;
+}
+
+.subModuleList .subModule .subModuleBody .upload_img {
+  border: 2px dashed #58cdff;
+  background: #010E33;
+  width: 100%;
+  height: 120px;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #58cdff;
+}
+
+.subModuleList .subModule .subModuleBody .upload_img .icon {
+  color: #58cdff;
+  font-size: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+  float: left;
+}
+
+.subModuleList .subModule .subModuleBody .upload_img .icon:before {
+  font-size: 36px;
+  margin-right: 10px;
+}
+
+.subModuleList .subModule .subModuleBody ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+}
+
+.subModuleList .subModule .subModuleBody ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 5px;
+  width: calc(50% - 10px);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: 76px;
+}
+
+.subModuleList .subModule .subModuleBody ul li a, .subModuleList .subModule .subModuleBody ul li button {
+  border-radius: 5px;
+  padding: 5px;
+  text-align: center;
+  height: 54px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: calc(100% - 10px);
+  overflow: hidden;
+  background: white;
+}
+
+.subModuleList .subModule .subModuleBody ul li a.icon-library, .subModuleList .subModule .subModuleBody ul li button.icon-library {
+  color: #001942;
+  font-size: 44px;
+}
+
+.subModuleList .subModule .subModuleBody ul li a img, .subModuleList .subModule .subModuleBody ul li button img {
+  width: auto;
+  height: 100%;
+}
+
+.subModuleList .subModule .subModuleBody ul li span {
+  width: 100%;
+  padding: 5px 0;
+  color: #AFAFAF;
+  font-size: 12px;
+  text-align: center;
+  margin-top: -3px;
+  background: white;
+  color: #0C1A3F;
+  border-top: 1px solid #0C1A3F;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.calculation {
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.calculation > div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+  border-radius: 3px;
+  word-break: break-all;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.calculation > div:nth-child(odd) {
+  background: #3A4D80;
+  border: 1px solid #4D5E8E;
+}
+
+.calculation > div:nth-child(even) {
+  font-size: 14vw;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.calculation > div:nth-child(4) {
+  font-size: 8vw;
+}
+
+.calculation > div > div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 5px;
+}
+
+.calculation > div > div:first-child {
+  border-bottom: 1px solid #4D5E8E;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: normal;
+}
+
+.calculation > div > div > div span {
+  color: #fab617;
+}
+
+.cashBar {
+  background: #3B4D80;
+  height: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 30px;
+  position: relative;
+  margin: 40px 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: calc(100% - 80px);
+}
+
+.cashBar:before {
+  content: "Min";
+  position: absolute;
+  left: -40px;
+}
+
+.cashBar:after {
+  content: "Max";
+  position: absolute;
+  right: -40px;
+}
+
+.cashBar .cashLine {
+  background: #58cdff;
+  position: absolute;
+  height: 100%;
+  border-radius: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cashBar .cashLine input {
+  height: 10px;
+  background: #58cdff;
+  border-radius: 30px;
+  border: 0;
+  position: absolute;
+  padding: 0;
+}
+
+.cashBar .cashLine .cashPoint {
+  width: 15px;
+  height: 15px;
+  border-radius: 20px;
+  background: #58cdff;
+  border: 2px solid #0C1A3F;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.cashBar .cashLine .cashPoint span {
+  margin-top: -24px;
+  font-size: 12px;
+}
+
+.inputModuleRow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 47px;
+  position: relative;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  z-index: 2;
+}
+
+.inputModuleRow input {
+  padding: 1vw;
+  height: 100%;
+}
+
+.inputModuleRow .inputBox {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  margin: 0 2vw 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.inputModuleRow .inputBox .input-title {
+  margin-top: 0;
+}
+
+.inputModuleRow .inputBox .iconModule {
+  position: absolute;
+  right: 1vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.inputModuleRow .inputBox .iconModule i.icon {
+  position: unset;
+}
+
+.inputModuleRow .btn-group {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin: 0;
+}
+
+.withdrawalBox > .btn-group + .info {
+  padding: 3vw;
+}
+
+.withdrawalBox > .btn-group + .info ul {
+  margin: 0;
+}
+
+.withdrawalBox > .btn-group + .info ul li {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+}
+
+.withdrawalBox > .btn-group + .info ul li span:nth-child(1) {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.withdrawalBox > .btn-group + .info ul li span:nth-child(2) {
+  -webkit-box-flex: 1.5;
+      -ms-flex: 1.5;
+          flex: 1.5;
+}
+
+.gear {
+  margin: auto;
 }
 /*# sourceMappingURL=style.css.map */
