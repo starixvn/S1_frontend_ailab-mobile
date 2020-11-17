@@ -160,10 +160,10 @@ const Panel = () => {
 			hasBtn: true,
 			btnBar: (
 				<div className="btn-group">
-					<button className="cancel" onClick={ClickCancel}>
+					<button className="blue" onClick={ClickCancel}>
 						{i18n["lbl_Cancel"]}
 					</button>
-					<button className="submit" onClick={ClickSubmit}>
+					<button className="orange" onClick={ClickSubmit}>
 						{i18n["lbl_Submit"]}
 					</button>
 				</div>
@@ -190,8 +190,7 @@ const Panel = () => {
 			accountNo: accountNo,
 			accountName: accountName,
 			isOpen: true,
-			amount: amount,
-			_isConvert: _isConvert,
+			amount: number_format(amount, _isConvert),
 			picFileName: picFileName,
 			refId: refId
 		}));
@@ -202,7 +201,7 @@ const Panel = () => {
 			<TransactionHistory
 				key={`depositHistory-${item.transId}`}
 				{...item}
-				className="info"
+				className="info infoBlack"
 				ClickCancel={ClickCancel.bind(this, item.transId)}
 				SubmitProof={SubmitProof.bind(this, { ...item })}
 			/>
@@ -210,40 +209,51 @@ const Panel = () => {
 	});
 
 	return (
-		<>
+		<div className="depositBox">
 			<HistoryFilter submitHandler={submitHandler} />
 			{loading ? (
 				<Loading />
-			) : getHistoryState ? (
-				<div className="recent open">
-					<div className="recentTransactions">
-						<div className="smallTitle">
-							<i className="icon icon-history"></i>
-							{i18n["lbl_TransactionHistory"]}
-						</div>
-						<ReloadSpin
-							func={submitHandler.bind(
-								this,
-								filterData?.StartDate,
-								filterData?.EndDate,
-								true
-							)}
-						/>
-					</div>
-					{getHistoryState.length > 0 ? (
+			) : (
+				<>
+					{getHistoryState ? (
 						<>
-							<div className="txt-blue2">
+							<div
+								className="textArea"
+								style={{ padding: "2vw 0 4vw 2vw" }}>
 								{i18n["msg_AmountFormatTip"]}
 							</div>
-							<div className="infoList">{arr}</div>
+							<div className="recent open">
+								<div className="recentTransactions">
+									<ReloadSpin
+										func={submitHandler.bind(
+											this,
+											filterData?.StartDate,
+											filterData?.EndDate,
+											true
+										)}
+									/>
+								</div>
+								{getHistoryState.length > 0 ? (
+									<div className="infoList">{arr}</div>
+								) : (
+									<div className="not-found">
+										{i18n["msg_NoData"]}
+									</div>
+								)}
+							</div>
 						</>
-					) : (
-						<div className="not-found">{i18n["msg_NoData"]}</div>
-					)}{" "}
-				</div>
-			) : null}
-		</>
+					) : null}
+				</>
+			)}
+		</div>
 	);
+};
+
+const statusClassName = {
+	1: "textYellow",
+	3: "textGreen",
+	4: "textRed",
+	5: "textGray"
 };
 
 export const TransactionHistory = props => {
@@ -253,13 +263,11 @@ export const TransactionHistory = props => {
 	if (props.depositType === 3 && (props.status === 1 || props.status === 7)) {
 		btnGroup = (
 			<div className="btn-group">
-				<button className="cancel" onClick={props.ClickCancel}>
-					{i18n.lbl_Cancel}
-				</button>
-				<button
-					className="submit openPopup"
-					onClick={props.SubmitProof}>
+				<button className="blue" onClick={props.SubmitProof}>
 					{i18n.lbl_SubmitProof}
+				</button>
+				<button className="gray openPopup" onClick={props.ClickCancel}>
+					{i18n.lbl_Cancel}
 				</button>
 			</div>
 		);
@@ -292,7 +300,9 @@ export const TransactionHistory = props => {
 				</li>
 				<li>
 					<span className="title">{i18n["lbl_Status"]}</span>
-					<span>{i18n[`lbl_DepositStatus${props.status}`]}</span>
+					<span className={statusClassName[props.status]}>
+						{i18n[`lbl_DepositStatus${props.status}`]}
+					</span>
 				</li>
 			</ul>
 			{btnGroup}

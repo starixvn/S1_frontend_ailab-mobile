@@ -344,6 +344,10 @@
 	"lbl_HowToWithdrawal": "CÁCH RÚT TIỀN",
 	"lbl_HowToPlay": "CÁCH ĐẶT CƯỢC",
 	"lbl_PoweredBy": "Một sản phẩm của",
+	"lbl_Unverified": "Chưa được xác minh",
+	"lbl_Verified": "Đã xác minh",
+	"lbl_Affiliate_ID": "ID Đại lý/ Người giới thiệu",
+	"lbl_Please_enter_Affiliate_ID": "Vui lòng nhập ID Đại lý (tùy chọn), Thông tin không thể thay đổi sau khi đã nhập!",
 
 	"lbl_DepositOptionHint": "Bạn có thể chọn mục nạp tiền phù hợp nhất từ những lựa chọn bên dưới:",
 	"lbl_SelectPaymentMethods": "Lựa Chọn Phương Thức",
