@@ -350,6 +350,8 @@
 	"lbl_Verified": "Đã xác minh",
 	"lbl_Balance": "Số dư",
 	"lbl_Deduction": "khấu trừ doanh số",
-	"lbl_SelectBank_Required": "Xin lựa chọn tài khoản ngân hàng"
+	"lbl_SelectBank_Required": "Xin lựa chọn tài khoản ngân hàng",
+	"lbl_KycHint": "Vui lòng gửi ảnh CMND của bạn trước khi rút tiền!"
+
 
 }

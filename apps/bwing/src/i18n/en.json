@@ -350,6 +350,7 @@
 	"lbl_Verified": "Verified",
 	"lbl_Balance": "Balance",
 	"lbl_Deduction": "Offset rollover difference amount",
-	"lbl_SelectBank_Required": "Please select bank accounts"
+	"lbl_SelectBank_Required": "Please select bank accounts",
+	"lbl_KycHint": "To fulfilled withdrawal, a verification is required to complete with a government-issued documents:"
 
 }
