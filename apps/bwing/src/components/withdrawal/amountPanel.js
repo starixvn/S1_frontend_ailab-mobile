@@ -1,7 +1,7 @@
 import React from "react";
 import { number_format } from "../common/common";
 import Inputbox from "../common/inputbox";
-import CashBar from "./cashBar";
+// import CashBar from "./cashBar";
 
 export default ({
 	i18n,
@@ -57,12 +57,12 @@ export default ({
 						</div>
 					</div>
 				</div>
-				<CashBar
+				{/* <CashBar
 					onChangeAmount={EditAmount}
 					amountValue={amount ?? 0}
 					availableBalance={balanceInfo?.availableBalance}
 					_isConvert={_isConvert}
-				/>
+				/> */}
 				<div className="inputModuleRow">
 					<Inputbox
 						placeholder={i18n["lbl_Amount"]}

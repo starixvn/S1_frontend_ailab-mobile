@@ -5,6 +5,7 @@ import { api_GetCustBankInfo } from "../../service/api/account";
 import { Redirect } from "@reach/router";
 import path from "../../path";
 import Loading from "../common/loading";
+import kycProgressingImg from "../../styles/img/gear.png";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
@@ -78,24 +79,14 @@ export default () => {
 	) : loading ? (
 		<Loading />
 	) : (
-		<>
-			<div className="step">
-				<div className="stepLine">
-					<div className="stepBar100"></div>
-				</div>
-				<div className="circle">
-					<div>
-						<div className="icon icon-checkmark"></div>
-					</div>
-				</div>
-				<div className="circle">
-					<div>
-						<div className="icon icon-checkmark"></div>
-					</div>
+		<div className="subModuleList">
+			<div className="subModule">
+				<div className="subModuleBody column">
+					<span className="title text-org">{i18n.lbl_WaitKYC}</span>
+					<div className="txt-lightgray">{i18n.lbl_WaitKYCHint}</div>
+					<img src={kycProgressingImg} className="gear" />
 				</div>
 			</div>
-			<div className="icon icon-like"></div>
-			<span className="text-center">{i18n.lbl_WaitKYCHint}</span>
-		</>
+		</div>
 	);
 };
