@@ -12,7 +12,7 @@ export const redirectToPrev = (i18n, setPopBox, closePopbox) => {
 			hasBtn: true,
 			btnBar: (
 				<div className="btn-group">
-					<button className="blue" onClick={closePopbox}>
+					<button className="cancel" onClick={closePopbox}>
 						{i18n["lbl_Cancel"]}
 					</button>
 					<button
@@ -33,7 +33,7 @@ export const redirectToPrev = (i18n, setPopBox, closePopbox) => {
 			hasBtn: true,
 			btnBar: (
 				<div className="btn-group">
-					<button className="blue" onClick={closePopbox}>
+					<button className="cancel" onClick={closePopbox}>
 						{i18n["lbl_Cancel"]}
 					</button>
 					<button
@@ -56,7 +56,7 @@ export const redirectToPrev = (i18n, setPopBox, closePopbox) => {
 			hasBtn: true,
 			btnBar: (
 				<div className="btn-group">
-					<button className="blue" onClick={closePopbox}>
+					<button className="cancel" onClick={closePopbox}>
 						{i18n["lbl_Cancel"]}
 					</button>
 					<button

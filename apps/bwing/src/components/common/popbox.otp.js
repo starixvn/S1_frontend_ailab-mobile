@@ -103,7 +103,7 @@ const Panel = ({ ClosePopbox }) => {
 							btnBar: (
 								<div className="btn-group">
 									<button
-										className="blue"
+										className="cancel"
 										onClick={closePopbox}>
 										{i18n["lbl_Cancel"]}
 									</button>
@@ -174,7 +174,7 @@ const Panel = ({ ClosePopbox }) => {
 				<>
 					{errorMsg}
 					<div className="btn-group">
-						<button className="blue" onClick={closePopbox}>
+						<button className="cancel" onClick={closePopbox}>
 							{i18n.lbl_Cancel}
 						</button>
 					</div>
@@ -188,7 +188,7 @@ const Panel = ({ ClosePopbox }) => {
 							onChange={editInput.bind(this)}
 							onBlur={e => checkValue(e.target.value)}
 						/>
-						<button className="orange" onClick={checkSubmit}>
+						<button className="submit" onClick={checkSubmit}>
 							{i18n.lbl_Submit}
 						</button>
 					</div>

@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
-import Step from "./step";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
-import { Link, Redirect } from "@reach/router";
+import { Redirect } from "@reach/router";
 import {
 	api_GetOnlineBankInfoSysList,
 	api_GetOnlineBankInfo
@@ -9,11 +8,14 @@ import {
 import DropdownIMG from "../common/dropdown.image";
 import config from "../../config";
 import { number_format, isConvert, checkAmount } from "../common/common";
-import InputBox from "../common/inputbox";
+import InputBox, { defIptStatus } from "../common/inputbox.hint";
 import LimitTip from "./limitTip";
 import path from "../../path";
 import PageVerify from "./deposit.pageVerify";
 import Loading from "../common/loading";
+import Title, { OneLineTitle } from "./deposit.onlineBanking.title";
+import BackBtn from "./backBtn";
+import DepositWrapper from "./deposit.wrapper";
 
 const SetPayment = props => {
 	const { setPopBox } = useContext(popBoxContext);
@@ -27,7 +29,10 @@ const SetPayment = props => {
 		bank: null
 	});
 	const [amount, setAmount] = useState("");
-	const [warning, setWarning] = useState({ status: false, msg: "" });
+	const [warning, setWarning] = useState({
+		status: defIptStatus.default,
+		msg: ""
+	});
 	const _isConvert = isConvert(userInfo.currencyId);
 
 	const [pageVerify, setPageVerify] = useState(true);
@@ -168,12 +173,12 @@ const SetPayment = props => {
 		);
 		if (result.status !== 0) {
 			setWarning({
-				status: true,
+				status: defIptStatus.warning,
 				msg: result.msg
 			});
 		} else {
 			setWarning({
-				status: false,
+				status: defIptStatus.verified,
 				msg: ""
 			});
 		}
@@ -188,7 +193,7 @@ const SetPayment = props => {
 			setAmount(value);
 		} else {
 			setWarning({
-				status: true,
+				status: defIptStatus.warning,
 				msg: i18n.lbl_SelectBank
 			});
 		}
@@ -229,12 +234,18 @@ const SetPayment = props => {
 						{_selBank ? (
 							<img
 								src={`${config.imgUrl}/common/images/BankLogo/${selBank.bank?.bankLogo}`}
-								alt={selBank.bank?.bankName}
+								alt={selBank.bank?.bankName ?? ""}
 							/>
 						) : null}
-						<div className="tip">
-							<span>{i18n.lbl_DepositAmount} :</span>{" "}
-							{number_format(real_amount, _isConvert)}
+						<div>
+							<ul>
+								<li className="text-lightBlue">
+									{i18n.lbl_DepositAmount} :
+								</li>
+								<li>
+									{number_format(real_amount, _isConvert)}
+								</li>
+							</ul>
 						</div>
 					</>
 				),
@@ -242,7 +253,7 @@ const SetPayment = props => {
 				btnBar: (
 					<div className="btn-group">
 						<button
-							className="blue"
+							className="cancel"
 							onClick={() =>
 								setPopBox(prevState => ({
 									...prevState,
@@ -252,7 +263,7 @@ const SetPayment = props => {
 							{i18n["lbl_Cancel"]}
 						</button>
 						<button
-							className="orange"
+							className="submit"
 							onClick={RedirectToNext.bind(this, real_amount)}>
 							{i18n["lbl_Submit"]}
 						</button>
@@ -268,58 +279,64 @@ const SetPayment = props => {
 		return redirectPath !== null ? (
 			<Redirect to={redirectPath} noThrow />
 		) : pageVerify ? (
-			<>
-				<Step step={3} />
-
-				<div className="inputBox">
-					{_selBank ? (
-						<DropdownIMG
-							mainKey={"onlineBanking-bankList"}
-							onSelectItem={SelectBank}
-							options={bankList}
-							selectedIdx={selBank?.idx}
-							i18n={i18n}
-							ImgURL={`${config.imgUrl}/common/images/BankLogo/`}
-							className="bankLogo"
+			<DepositWrapper step={3} i18n={i18n}>
+				<div className="depositInBox">
+					<Title i18n={i18n} />
+					<div className="depositImgArea">
+						<div className="bankBox">
+							<img
+								src={`${config.imgUrl}/common/images/Payment/${props.payName}.png`}
+								alt={props.payName}
+							/>
+							<OneLineTitle i18n={i18n} />
+						</div>
+					</div>
+					<div className="inputBox">
+						{_selBank ? (
+							<DropdownIMG
+								mainKey={"onlineBanking-bankList"}
+								onSelectItem={SelectBank}
+								options={bankList}
+								selectedIdx={selBank?.idx}
+								i18n={i18n}
+								ImgURL={`${config.imgUrl}/common/images/BankLogo/`}
+								className="bankLogo"
+							/>
+						) : null}
+						<LimitTip
+							displayTextLimit={i18n.lbl_Limit}
+							displayTextUnLimit={i18n.lbl_Unlimited}
+							_isConvert={_isConvert}
+							minAmount={
+								_selBank
+									? selBank?.bank?.minAmount
+									: props.location.state?.minAmount
+							}
+							maxAmount={
+								_selBank
+									? selBank?.bank?.maxAmount
+									: props.location.state?.maxAmount
+							}
 						/>
-					) : null}
-					<LimitTip
-						displayTextLimit={i18n.lbl_Limit}
-						displayTextUnLimit={i18n.lbl_Unlimited}
-						_isConvert={_isConvert}
-						minAmount={
-							_selBank
-								? selBank?.bank?.minAmount
-								: props.location.state?.minAmount
-						}
-						maxAmount={
-							_selBank
-								? selBank?.bank?.maxAmount
-								: props.location.state?.maxAmount
-						}
+					</div>
+					<InputBox
+						title={i18n["lbl_Amount"]}
+						value={amount}
+						numberConvert={isConvert(userInfo.currencyId)}
+						inputType="tel"
+						onChange={EditAmount}
+						tipDisplayText={warning.msg}
+						btnStatus={warning.status}
 					/>
+					<div className="btn-group">
+						<button className="submit" onClick={ClickSubmit}>
+							{i18n.lbl_Submit}
+						</button>
+					</div>
 				</div>
-
-				<InputBox
-					icon="icon-pencil"
-					value={amount}
-					placeholder={i18n["lbl_Amount"]}
-					inputType="tel"
-					onChange={EditAmount}
-					Warning={warning}
-				/>
-				<div className="btn-group">
-					<Link to="../" className="white">
-						{i18n.lbl_Back}
-					</Link>
-					<button className="orange" onClick={ClickSubmit}>
-						{i18n.lbl_Submit}
-					</button>
-				</div>
-			</>
-		) : (
-			<></>
-		);
+				<BackBtn i18n={i18n} to={`../`} />
+			</DepositWrapper>
+		) : null;
 	}
 };
 

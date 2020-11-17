@@ -347,7 +347,15 @@
 	"lbl_Unverified": "Chưa được xác minh",
 	"lbl_Verified": "Đã xác minh",
 	"lbl_Affiliate_ID": "ID Đại lý/ Người giới thiệu",
-	"lbl_Please_enter_Affiliate_ID": "Vui lòng nhập ID Đại lý (tùy chọn), Thông tin không thể thay đổi sau khi đã nhập!"
+	"lbl_Please_enter_Affiliate_ID": "Vui lòng nhập ID Đại lý (tùy chọn), Thông tin không thể thay đổi sau khi đã nhập!",
 
-
+	"lbl_DepositOptionHint": "Bạn có thể chọn mục nạp tiền phù hợp nhất từ những lựa chọn bên dưới:",
+	"lbl_SelectPaymentMethods": "Lựa Chọn Phương Thức",
+	"lbl_EnterAmount": "Nhập số tiền",
+	"lbl_Step_SelectBank":"Chọn ngân hàng",
+	"lbl_Transaction":"Giao Dịch",
+	"msg_DepositTransferHint":"Please make a fund transfer to the receiving account below",
+	"lbl_AlmostDone":"Almost Done!",
+	"lbl_UploadBankSlip":"Upload Bank Slip",
+	"lbl_Refno":"Số tham chiếu"
 }

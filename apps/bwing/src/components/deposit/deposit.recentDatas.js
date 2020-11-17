@@ -43,7 +43,7 @@ const RecentDatas = props => {
 	return (
 		<>
 			<div className="btn-group">
-				<button className="orange switch" onClick={HandleOpen}>
+				<button className="switch left" onClick={HandleOpen}>
 					{i18n.lbl_RecentTransactions}
 					<i
 						className={

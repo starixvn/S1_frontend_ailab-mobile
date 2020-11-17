@@ -37,41 +37,31 @@ const PopUp = () => {
 			content = (
 				<div className="popTxt">
 					{popBox.content}
-					{popBox.hasBtn === true ? popBox.btnBar : <></>}
+					{popBox.hasBtn === true ? popBox.btnBar : null}
 				</div>
 			);
 			break;
 	}
 
-	return (
-		<>
-			{popBox.isOpen ? (
-				<>
-					<div
-						id="popup"
-						className={`${popBox.isOpen ? "show" : ""}`}>
-						<div className="popTit">
-							{popBox.hideCloseBtn === true ? null : (
-								<div
-									className={`close open`}
-									onClick={handlePopBox}>
-									<span></span>
-									<span></span>
-									<span></span>
-									<span></span>
-									<span></span>
-									<span></span>
-								</div>
-							)}
-							{popBox.title ?? i18n.lbl_ImportantNote}
-						</div>
-						{content}
+	return popBox.isOpen ? (
+		<div id="popup" style={popBox.isOpen ? { display: "block" } : {}}>
+			<div className="popTit">
+				{popBox.hideCloseBtn === true ? null : (
+					<div className={`close open`} onClick={handlePopBox}>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
 					</div>
-				</>
-			) : (
-				<></>
-			)}
-		</>
-	);
+				)}
+				<h1 className="text-org">
+					{popBox.title ?? i18n.lbl_ImportantNote}
+				</h1>
+			</div>
+			{content}
+		</div>
+	) : null;
 };
 export default PopUp;

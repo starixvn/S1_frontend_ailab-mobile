@@ -10,6 +10,8 @@ import {
 	api_UploadReceipt,
 	api_SetDepositReceipt
 } from "../../service/api/payment";
+import config from "../../config";
+import { number_format } from "../common/common";
 
 const GetUploadFileName = files => {
 	let fullPath = files[0].name;
@@ -24,7 +26,7 @@ const GetUploadFileName = files => {
 	return filename;
 };
 
-class Modal extends Component {
+class Content extends Component {
 	state = { processing: false };
 	isMountedRef = false;
 	filebox = React.createRef();
@@ -50,6 +52,7 @@ class Modal extends Component {
 		}
 	};
 	onUploadFile = () => {
+		console.log("go");
 		let files = this.filebox.current.files;
 		if (files.length > 0) {
 			this.setState({ UploadDisabled: false });
@@ -123,122 +126,166 @@ class Modal extends Component {
 		let i18n = this.props.i18n;
 		return (
 			<div
-				className={`bankSlip popUp${
-					bankSlipPopBox.isOpen ? " open" : ""
-				}`}>
-				<div className="info infoAccount">
-					<ul>
-						<li>
-							<div>
-								<div className="bankLogo acb"></div>
+				id="popup"
+				style={bankSlipPopBox.isOpen ? { display: "block" } : {}}>
+				<div className="popTit">
+					<div
+						className="close open"
+						onClick={this.props.handlePopBox}>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+					<h1 className="text-org">{i18n.lbl_SubmitProof}</h1>
+				</div>
+				<section className="depositBox">
+					<div className="depositInBox">
+						<div className="depositTitle textLeft borderBottom">
+							<h1 className="text-org">{i18n.lbl_Transaction}</h1>
+							<p>{i18n.lbl_AlmostDone}</p>
+							<p>{i18n.msg_DepositTransferHint}</p>
+						</div>
+						<div className="depostiImgText">
+							<div
+								className="bankinfo icon icon-new-tab"
+								onClick={() =>
+									window.open(
+										bankSlipPopBox.bankSite,
+										"_blank"
+									)
+								}>
+								<img
+									src={`${config.imgUrl}/common/images/BankLogo/${bankSlipPopBox.bankLogo}`}
+									alt={bankSlipPopBox.bankName}
+								/>
 								<span>{bankSlipPopBox.bankName}</span>
 							</div>
-							<a
-								className="icon icon-new-tab clickBtn"
-								target="_blank"
-								rel="noreferrer noopener"
-								href={bankSlipPopBox.bankSite}></a>
-						</li>
-						<li>
 							<div>
-								<span className="title">
-									{i18n.lbl_BankAccountName}
-								</span>
-								<span>{bankSlipPopBox.accountName}</span>
+								<h1>{i18n.lbl_ID}</h1>
+								<p>{bankSlipPopBox.transId}</p>
+								<h1>{i18n.lbl_BankAccountName}</h1>
+								<p>
+									{bankSlipPopBox.accountName}
+									<span
+										className="icon icon-files-empty clickBtn copyBtn"
+										data-clipboard-text={
+											bankSlipPopBox.accountName
+										}></span>
+								</p>
+								<h1>{i18n.lbl_BankNumber}</h1>
+								<p>
+									{bankSlipPopBox.accountNo}
+									<span
+										className="icon icon-files-empty clickBtn copyBtn"
+										data-clipboard-text={
+											bankSlipPopBox.accountNo
+										}></span>
+								</p>
+								<h1>{i18n.lbl_DepositAmount}</h1>
+								<p>
+									{number_format(
+										bankSlipPopBox.amount,
+										bankSlipPopBox._isConvert
+									)}
+									<span
+										className="icon icon-files-empty clickBtn copyBtn"
+										data-clipboard-text={
+											bankSlipPopBox.amount
+										}></span>
+								</p>
 							</div>
-							<button
-								className="icon icon-files-empty clickBtn copyBtn"
-								data-clipboard-text={
-									bankSlipPopBox.accountName
-								}></button>
-						</li>
-						<li>
+						</div>
+					</div>
+
+					<div className="depositInBox">
+						<div className="depositTitle textLeft borderBottom">
+							<h1 className="text-org">
+								{i18n.lbl_UploadBankSlip}
+							</h1>
+						</div>
+						<div
+							className="depositImgUpload"
+							onClick={this.onUploadFile}>
 							<div>
-								<span className="title">
-									{i18n.lbl_BankNumber}
-								</span>
-								<span>{bankSlipPopBox.accountNo}</span>
+								<input
+									type="file"
+									ref={this.filebox}
+									accept="image/*"
+									onChange={this.onCheckUpload}
+									id="bankSlip"
+								/>
+								<label htmlFor="bankSlip">
+									<p>
+										<span className="icon icon-cloud_upload"></span>
+										{i18n.lbl_UploadFile}
+									</p>
+								</label>
 							</div>
-							<button
-								className="icon icon-files-empty clickBtn copyBtn"
-								data-clipboard-text={
-									bankSlipPopBox.accountNo
-								}></button>
-						</li>
-						<li>
-							<div>
-								<span className="title">
-									{i18n.lbl_DepositAmount}
-								</span>
-								<span>{bankSlipPopBox.amount}</span>
+						</div>
+						<div className="textArea borderBottom">
+							<ul>
+								<li>Maximum file size 4MB each.</li>
+								<li>Maximum number of files: 1</li>
+								<li>
+									Accepted file types: JPG, JPEG, PNG, GIF
+								</li>
+							</ul>
+						</div>
+						<div className="inputBox">
+							<span>{`${i18n.lbl_DepositTime} (${moment().format(
+								"Z"
+							)})`}</span>
+							<div className="inputBoxText">
+								<input
+									placeholder={i18n.msg_SubmitDepositTime}
+									type="datetime-local"
+									value={
+										this.props.bankSlipPopBox.depositTime ??
+										""
+									}
+									onChange={this.EditField.bind(
+										this,
+										"depositTime"
+									)}
+								/>
+								<div className="iconModule">
+									<span className="icon icon-calendar"></span>
+									{/* <span className="icon icon-information-solid textBlue"></span> */}
+								</div>
 							</div>
-							<button
-								className="icon icon-files-empty clickBtn copyBtn"
-								data-clipboard-text={
-									bankSlipPopBox.amount
-								}></button>
-						</li>
-					</ul>
-				</div>
-				<span className="text">{i18n.lbl_AttachFile}</span>
-				<div className="btn-group">
-					<label className="fileUpload">
-						<input
-							type="file"
-							ref={this.filebox}
-							accept="image/*"
-							onChange={this.onCheckUpload}
-						/>
-						<i className="icon icon-folder-upload"></i>
-						{` ${
-							this.props.bankSlipPopBox.picFileName ??
-							i18n.msg_SelectFile
-						} `}
-					</label>
-					<button className="orange" onClick={this.onUploadFile}>
-						{i18n.lbl_UploadFile}
-					</button>
-				</div>
-				<span className="text">
-					{i18n.lbl_DepositTime}{" "}
-					<span className="text-org">({moment().format("Z")})</span>
-				</span>
-				<div className="inputBox">
-					<i className="icon icon-calendar"></i>
-					<input
-						placeholder={i18n.msg_SubmitDepositTime}
-						type="datetime-local"
-						value={this.props.bankSlipPopBox.depositTime ?? ""}
-						onChange={this.EditField.bind(this, "depositTime")}
-					/>
-				</div>
-				<span className="text">{i18n.lbl_RefnoToolTip}</span>
-				<div className="inputBox">
-					<i className="icon icon-pencil"></i>
-					<input
-						placeholder={i18n.msg_ReferenceNumber}
-						value={this.props.bankSlipPopBox.refId ?? ""}
-						onChange={this.EditField.bind(this, "refId")}
-					/>
-				</div>
-				<div className="btn-group">
-					<button
-						className="blue closePopup"
-						onClick={this.props.handlePopBox}>
-						{i18n.lbl_Cancel}
-					</button>
-					<button
-						className="orange closePopup"
-						onClick={this.SeReceipt}>
-						{i18n.lbl_Submit}
-					</button>
-				</div>
+							<span>{i18n.lbl_Refno}</span>
+							<div className="inputBoxText">
+								<input
+									placeholder={i18n.msg_ReferenceNumber}
+									value={
+										this.props.bankSlipPopBox.refId ?? ""
+									}
+									onChange={this.EditField.bind(
+										this,
+										"refId"
+									)}
+								/>
+								{/* <div className="iconModule">
+									<span className="icon icon-information-solid textBlue"></span>
+								</div> */}
+							</div>
+						</div>
+						<div className="btn-group">
+							<button className="blue" onClick={this.SeReceipt}>
+								{i18n.lbl_Submit}
+							</button>
+						</div>
+					</div>
+				</section>
 			</div>
 		);
 	}
 }
 
-const Panel = () => {
+export default () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { bankSlipPopBox, setbankSlipPopBox } = useContext(
@@ -264,15 +311,13 @@ const Panel = () => {
 		setbankSlipPopBox(prevState => ({ ...prevState, [column]: value }));
 	};
 
-	return (
-		<Modal
+	return bankSlipPopBox.isOpen ? (
+		<Content
 			i18n={i18n}
 			bankSlipPopBox={bankSlipPopBox}
 			handlePopBox={handlePopBox}
 			EditField={EditField}
 			setPopBox={setPopBox}
 		/>
-	);
+	) : null;
 };
-
-export default Panel;

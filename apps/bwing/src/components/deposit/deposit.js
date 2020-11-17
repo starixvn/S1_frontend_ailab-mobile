@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import moment from "moment";
 import { number_format, isConvert } from "../common/common";
-import Step from "./step";
 import {
 	i18nContext,
 	popBoxContext,
@@ -19,6 +18,7 @@ import {
 import RecentDatas from "./deposit.recentDatas";
 import Loading from "../common/loading";
 import PageVerify from "./deposit.pageVerify";
+import DepositWrapper from "./deposit.wrapper";
 
 const defPayType = {
 	onlineBank: "onlineBank",
@@ -27,19 +27,19 @@ const defPayType = {
 };
 
 const defPayment = {
+	[defPayType.mobilePay]: {
+		icon: "icon icon-phoneIcon",
+		displayKey: "lbl_MobileDeposit",
+		creditTimeKey: "lbl_5mins"
+	},
 	[defPayType.onlineBank]: {
-		icon: "icon icon-connection",
+		icon: "icon icon-wifiIcon",
 		displayKey: "lbl_OnlineBanking",
 		creditTimeKey: "lbl_Instant"
 	},
 	[defPayType.localBank]: {
-		icon: "icon icon-credit-card",
+		icon: "icon icon-bankIcon",
 		displayKey: "lbl_WireTransfers",
-		creditTimeKey: "lbl_5mins"
-	},
-	[defPayType.mobilePay]: {
-		icon: "icon icon-mobile",
-		displayKey: "lbl_MobileDeposit",
 		creditTimeKey: "lbl_5mins"
 	}
 };
@@ -174,7 +174,8 @@ const Panel = () => {
 				accountNo: accountNo,
 				accountName: accountName,
 				isOpen: true,
-				amount: number_format(amount, _isConvert),
+				amount: amount,
+				_isConvert: _isConvert,
 				picFileName: picFileName,
 				refId: refId
 			}));
@@ -226,10 +227,10 @@ const Panel = () => {
 				hasBtn: true,
 				btnBar: (
 					<div className="btn-group">
-						<button className="blue" onClick={ClickCancel}>
+						<button className="cancel" onClick={ClickCancel}>
 							{i18n["lbl_Cancel"]}
 						</button>
-						<button className="orange" onClick={ClickSubmit}>
+						<button className="submit" onClick={ClickSubmit}>
 							{i18n["lbl_Submit"]}
 						</button>
 					</div>
@@ -262,7 +263,7 @@ const Panel = () => {
 									paymentList: list
 								}}
 							/>
-							<span>{i18n[item.displayKey]}</span>
+							<h1>{i18n[item.displayKey].toUpperCase()}</h1>
 							<span className="title">{i18n.lbl_CreditTime}</span>
 							<span className="creditTime">
 								{i18n[item.creditTimeKey]}
@@ -303,8 +304,7 @@ const Panel = () => {
 		loading ? (
 			<Loading />
 		) : (
-			<>
-				<Step step={1} />
+			<DepositWrapper step={1} i18n={i18n}>
 				<div className="depositType">{paymentList}</div>
 				<RecentDatas
 					Datas={recentDatas}
@@ -312,7 +312,7 @@ const Panel = () => {
 					ClickCancel={ClickCancel}
 					GetDepositInfoRecent={GetDepositInfoRecent}
 				/>
-			</>
+			</DepositWrapper>
 		)
 	) : (
 		<Redirect to={redirectPath} noThrow />
