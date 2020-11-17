@@ -129,10 +129,9 @@ const Join = () => {
 	}, [nav, userInfo.langId]);
 
 	useEffect(() => {
-		let affiliateid =
-			getUrlParameter("affiliateid") || getCookie("affiliateid");
-		if (affiliateid && isMountedRef) {
-			setAffiliateidExist(affiliateid);
+		let Aff = getUrlParameter("Aff") || getCookie("Aff");
+		if (Aff && isMountedRef) {
+			setAffiliateidExist(Aff);
 		}
 	}, []);
 
@@ -532,10 +531,9 @@ const Join = () => {
 
 			regData["RefId"] = getUrlParameter("RefId") || getCookie("RefId");
 			regData["AffId"] = getUrlParameter("AffId") || getCookie("AffId");
-			regData["Aff"] = getUrlParameter("Aff") || getCookie("Aff");
-			regData["AffiliateId"] =
-				getUrlParameter("affiliateid") ||
-				getCookie("affiliateid") ||
+			regData["Aff"] =
+				getUrlParameter("Aff") ||
+				getCookie("Aff") ||
 				userValueState.AffiliateId;
 
 			api_Register(regData).then(

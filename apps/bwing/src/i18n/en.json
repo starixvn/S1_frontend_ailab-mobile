@@ -353,7 +353,8 @@
 	"lbl_SelectBank_Required": "Please select bank accounts",
 	"lbl_KycHint": "To fulfilled withdrawal, a verification is required to complete with a government-issued documents:",
 	"lbl_ImageUploadWarning": "Upload a color image of the entire document.Screenshots are not allowed.",
-	"lbl_ImageJpgPngOnly": "JPG orPNG only."
-
+	"lbl_ImageJpgPngOnly": "JPG orPNG only.",
+	"lbl_Affiliate_ID": "Affiliate ID/Referral",
+	"lbl_Please_enter_Affiliate_ID": "Please enter Affiliate ID (Optional), It can not change once enter!"
 
 }
