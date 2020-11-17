@@ -18,8 +18,8 @@ import ReloadSpin from "../common/reloadSpin";
 import path from "../../path";
 import { Redirect } from "@reach/router";
 import Loading from "../common/loading";
-import WalletPanel from "./withdrawal.showWallet";
-import BankCardPanel from "./withdrawal.bankCard";
+import WalletPanel from "./walletPanel";
+import BankCardPanel from "./bankCardPanel";
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
@@ -592,121 +592,13 @@ const Panel = () => {
 								</div>
 							</div>
 						</div>
-						<div class="btn-group">
-							<button class="switch left">
-								RECENT TRANSACTIONS
-								<i class="icon icon-circle-right"></i>
-							</button>
-						</div>
-						<div class="recent">
-							<div class="recentTransactions">
-								<button class="icon icon-spinner11 clickBtn"></button>
-							</div>
-							<div class="info infoBlack">
-								<ul>
-									<li>
-										<span class="title">
-											Date & Time (+08:00)
-										</span>
-										<span>2020/06/15 04:17:56 PM</span>
-									</li>
-									<li>
-										<span class="title">ID</span>
-										<span>DD1120</span>
-									</li>
-									<li>
-										<span class="title">Amount</span>
-										<span>30 ('000)</span>
-									</li>
-									<li>
-										<span class="title">Status</span>
-										<span class="textYellow">Pending</span>
-									</li>
-								</ul>
-								<div class="btn-group">
-									<button class="blue">
-										Submit Bank Slip
-									</button>
-									<button class="gray openPopup">
-										Cancel
-									</button>
-								</div>
-							</div>
-							<div class="info infoBlack">
-								<ul>
-									<li>
-										<span class="title">
-											Date & Time (+08:00)
-										</span>
-										<span>2020/06/15 04:17:56 PM</span>
-									</li>
-									<li>
-										<span class="title">ID</span>
-										<span>DD1120</span>
-									</li>
-									<li>
-										<span class="title">Amount</span>
-										<span>30 ('000)</span>
-									</li>
-									<li>
-										<span class="title">Status</span>
-										<span class="textRed">Reject</span>
-									</li>
-								</ul>
-							</div>
-							<div class="info infoBlack">
-								<ul>
-									<li>
-										<span class="title">
-											Date & Time (+08:00)
-										</span>
-										<span>2020/06/15 04:17:56 PM</span>
-									</li>
-									<li>
-										<span class="title">ID</span>
-										<span>DD1120</span>
-									</li>
-									<li>
-										<span class="title">Amount</span>
-										<span>30 ('000)</span>
-									</li>
-									<li>
-										<span class="title">Status</span>
-										<span class="textGreen">Approved</span>
-									</li>
-								</ul>
-							</div>
-							<div class="info infoBlack">
-								<ul>
-									<li>
-										<span class="title">
-											Date & Time (+08:00)
-										</span>
-										<span>2020/06/15 04:17:56 PM</span>
-									</li>
-									<li>
-										<span class="title">ID</span>
-										<span>DD1120</span>
-									</li>
-									<li>
-										<span class="title">Amount</span>
-										<span>30 ('000)</span>
-									</li>
-									<li>
-										<span class="title">Status</span>
-										<span class="textGray">Canceled</span>
-									</li>
-								</ul>
-							</div>
-							<div class="btn-group">
-								<a
-									href="deposithistory.html"
-									class="blue recentBtn">
-									All Transactions
-								</a>
-							</div>
-						</div>
+						<RecentDatas
+							Datas={recentDatas}
+							ClickCancel={ClickCancel}
+							GetRecentDatas={GetWithdrawalInfoRecent}
+						/>
 					</section>
+
 					{/* <div className="avatar"></div>
 					<div className="name">{userInfo.userName}</div>
 					<div className="text-org">
@@ -732,11 +624,6 @@ const Panel = () => {
 							{i18n.lbl_Submit}
 						</button>
 					</div> */}
-					<RecentDatas
-						Datas={recentDatas}
-						ClickCancel={ClickCancel}
-						GetRecentDatas={GetWithdrawalInfoRecent}
-					/>
 				</>
 			)
 		) : null

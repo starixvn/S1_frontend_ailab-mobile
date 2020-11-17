@@ -34,8 +34,8 @@ const RecentDatas = props => {
 	return (
 		<>
 			<div className="btn-group">
-				<button className="orange switch" onClick={HandleOpen}>
-					{i18n.lbl_RecentTransactions}
+				<button className="switch left" onClick={HandleOpen}>
+					{i18n.lbl_RecentTransactions.toUpperCase()}
 					<i
 						className={
 							"icon icon-circle-right" + (isOpen ? " open" : "")
