@@ -11,15 +11,13 @@ import {
 	api_SetWithdrawalCancel,
 	api_KycCheck
 } from "../../service/api/payment";
-import InputBox from "../common/inputbox";
-import config from "../../config";
 import RecentDatas from "./withdrawal.recentDatas";
-import ReloadSpin from "../common/reloadSpin";
 import path from "../../path";
 import { Redirect } from "@reach/router";
 import Loading from "../common/loading";
 import WalletPanel from "./walletPanel";
 import BankCardPanel from "./bankCardPanel";
+import AmountPanel from "./amountPanel";
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
@@ -246,15 +244,14 @@ const Panel = () => {
 		return result.status === 0;
 	};
 
-	const EditAmount = e => {
-		let value = e.target.value;
+	const EditAmount = value => {
 		VaildAmount(value);
 		setAmount(value);
 	};
 
 	const ClickSubmit = () => {
 		if (pageVerify) {
-			let result = VaildAmount(amount);
+			let result = VaildAmount(amount) && selBank;
 			if (result) {
 				const RedirectToNext = (accountNo, _real_amount, sysId) => {
 					api_WithdrawalReq(accountNo, _real_amount, sysId).then(
@@ -382,6 +379,13 @@ const Panel = () => {
 						</div>
 					)
 				});
+			} else if (!selBank) {
+				setPopBox({
+					isOpen: true,
+					title: i18n.lbl_ImportantNote,
+					content: i18n.lbl_SelectBank_Required,
+					hasBtn: false
+				});
 			}
 		}
 	};
@@ -492,139 +496,46 @@ const Panel = () => {
 		});
 	};
 
-	let banks = bankInfo?.bankList?.map(b => {
-		return (
-			<button
-				className={selBank?.sysId === b.sysId ? "open" : ""}
-				key={`withdrawal-bank-${b.sysId}`}
-				onClick={SelectBank.bind(this, b)}>
-				<img
-					src={`${config.imgUrl}/common/images/BankLogo/${b.bankLogo}`}
-					alt={b.bankName}
-				/>
-			</button>
-		);
-	});
-
 	return redirectPath === null ? (
 		pageVerify ? (
 			loading ? (
 				<Loading />
 			) : (
-				<>
-					<section className="withdrawalBox">
-						<WalletPanel
-							i18n={i18n}
-							availableBalance={_availableBalance}
-							GetWithdrawalAvailableBalance={GetBalance}
-						/>
-						<BankCardPanel
-							i18n={i18n}
-							accountName={userInfo.accountName}
-							custBankInfo={bankInfo?.bankList}
-							selBank={selBank}
-							setRedirectPath={setRedirectPath}
-							GetCustBankInfo={GetCustBankInfo}
-							SelectBank={SelectBank}
-						/>
-						<div class="subModuleList">
-							<div class="subModule">
-								<div class="subModuleBody">
-									<div class="calculation">
-										<div>
-											<div>Balance</div>
-											<div>
-												VND <div>8,790('000')</div>
-											</div>
-										</div>
-										<div>-</div>
-										<div>
-											<div>
-												Offset rollover difference
-												amount
-											</div>
-											<div>
-												VND <div>8,790('000')</div>
-											</div>
-										</div>
-										<div>=</div>
-										<div>
-											<div>
-												Your eligible Withdrawal amount
-											</div>
-											<div>
-												VND{" "}
-												<div>
-													<span>300</span>('000')
-												</div>
-											</div>
-										</div>
-									</div>
-									{/* <div class="cashBar">
-										<div
-											class="cashLine"
-											style="width: 30%;">
-											<div class="cashPoint">
-												<span>$50</span>
-											</div>
-										</div>
-									</div> */}
-									<div class="inputModuleRow">
-										<div class="inputBox">
-											<input
-												class=""
-												placeholder="Amount"
-											/>
-											<div class="iconModule">
-												<i>('000)</i>
-											</div>
-										</div>
-										<div class="btn-group">
-											<button class="submit">
-												SUBMIT
-											</button>
-										</div>
-									</div>
-									<div class="tip active">
-										Preferred currency can not be changed
-										after registration.
-									</div>
-								</div>
-							</div>
-						</div>
-						<RecentDatas
-							Datas={recentDatas}
-							ClickCancel={ClickCancel}
-							GetRecentDatas={GetWithdrawalInfoRecent}
-						/>
-					</section>
-
-					{/* <div className="avatar"></div>
-					<div className="name">{userInfo.userName}</div>
-					<div className="text-org">
-						{i18n.lbl_EligibleWithdrawalAmount}
-					</div>
-					<div className="balance">
-						{i18n[`Currency_${userInfo.currencyId}`]}{" "}
-						{number_format(_availableBalance, _isConvert)}
-						<ReloadSpin func={GetBalance} />
-					</div>
-					<InputBox
-						icon="icon-pencil"
-						value={amount}
-						inputType="tel"
-						onChange={EditAmount}
-						Warning={warning}
+				<section className="withdrawalBox">
+					<WalletPanel
+						i18n={i18n}
+						availableBalance={_availableBalance}
+						GetWithdrawalAvailableBalance={GetBalance}
 					/>
-					<div className="inputBox">
-						<div className="selectBank">{banks}</div>
+					<BankCardPanel
+						i18n={i18n}
+						accountName={userInfo.accountName}
+						custBankInfo={bankInfo?.bankList}
+						selBank={selBank}
+						setSelBank={setSelBank}
+						setRedirectPath={setRedirectPath}
+						GetCustBankInfo={GetCustBankInfo}
+						SelectBank={SelectBank}
+					/>
+					<div className="subModuleList">
+						<AmountPanel
+							i18n={i18n}
+							_isConvert={_isConvert}
+							amount={amount}
+							balanceInfo={balanceInfo}
+							EditAmount={EditAmount}
+							ClickSubmit={ClickSubmit}
+							VaildAmount={VaildAmount}
+							currencyId={userInfo.currencyId}
+							warning={warning}
+						/>
 					</div>
-					<div className="btn-group">
-						<button className="orange" onClick={ClickSubmit}>
-							{i18n.lbl_Submit}
-						</button>
-					</div> */}
-				</>
+					<RecentDatas
+						Datas={recentDatas}
+						ClickCancel={ClickCancel}
+						GetRecentDatas={GetWithdrawalInfoRecent}
+					/>
+				</section>
 			)
 		) : null
 	) : (

@@ -9,6 +9,7 @@ export default ({
 	accountName,
 	custBankInfo,
 	selBank,
+	setSelBank,
 	setRedirectPath,
 	GetCustBankInfo,
 	SelectBank
@@ -42,6 +43,12 @@ export default ({
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
 							GetCustBankInfo();
+							if (
+								accountNo === selBank.accountNo &&
+								sysId === selBank.sysId
+							) {
+								setSelBank(null);
+							}
 							setPopBox({ isOpen: false });
 						} else {
 							setPopBox({
