@@ -117,6 +117,13 @@ export default () => {
 					}
 				}
 			);
+		} else {
+			setPopBox({
+				isOpen: true,
+				title: i18n.lbl_ImportantNote,
+				content: i18n.lbl_SubmitPhotoIdHint
+			});
+			setLoading(false);
 		}
 	};
 
@@ -171,30 +178,6 @@ export default () => {
 					</div>
 				</div>
 			</div>
-
-			{/* <div className="btn-group">
-				<label className="fileUpload">
-					<input
-						type="file"
-						accept="image/*"
-						onChange={onChangeUpload}
-					/>
-					<i className="icon icon-folder-upload"></i>{" "}
-					{`${file ? file.name : i18n.msg_SelectFile}`}
-				</label>
-				<button className="orange" onClick={onUploadFile}>
-					{i18n.lbl_UploadPhotoId}
-				</button>
-			</div>
-			<span className="text">{i18n.lbl_KYCSubmitHint}</span>
-			<div className="text">
-				<ul>
-					<li>{i18n.lbl_NationalIdentityCard}</li>
-					<li>{i18n.lbl_Passport}</li>
-					<li>{i18n.lbl_DrivingLicense}</li>
-					<li>{i18n.lbl_BirthCertificate}</li>
-				</ul>
-			</div> */}
 		</section>
 	);
 };

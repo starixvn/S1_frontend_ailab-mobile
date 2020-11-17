@@ -96,7 +96,6 @@ const Panel = () => {
 									accountName: res.data.data.accountName,
 									bankList: res.data.data.bankInfoDetail
 								}));
-								setSelBank(res.data.data.bankInfoDetail?.[0]);
 								if (!pageVerify) {
 									setPageVerify(true);
 								}
@@ -264,6 +263,7 @@ const Panel = () => {
 									KycCheck(false).then(kycProcess => {
 										if (!kycProcess) {
 											setAmount("");
+											setSelBank(null);
 											api_GetWithdrawalAvailableBalance().then(
 												res => {
 													if (
