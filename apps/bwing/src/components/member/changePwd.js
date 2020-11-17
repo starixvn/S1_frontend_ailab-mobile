@@ -208,10 +208,10 @@ export default () => {
 				value={userValueState.newPsw}
 			/>
 			<div className="btn-group">
-				<Link className="white" to={`/${path.member.root}`}>
+				<Link className="cancel" to={`/${path.member.root}`}>
 					{i18n.lbl_Back}
 				</Link>
-				<button className="orange" onClick={clickSubmit}>
+				<button className="submit" onClick={clickSubmit}>
 					{i18n.lbl_Submit}
 				</button>
 			</div>

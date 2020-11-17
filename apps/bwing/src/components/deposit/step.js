@@ -1,37 +1,32 @@
 import React from "react";
 
-const totalStep = 3;
-const Panel = ({ step, total = totalStep }) => {
-	let processBar =
-		step === 1 ? (
-			<div></div>
-		) : step === 2 ? (
-			<div className="stepBar50"></div>
-		) : (
-			<div className="stepBar100"></div>
-		);
+const stepDesc = [
+	{
+		descriptionKey: "lbl_SelectPaymentMethods"
+	},
+	{
+		descriptionKey: "lbl_Step_SelectBank"
+	},
+	{
+		descriptionKey: "lbl_EnterAmount"
+	},
+	{
+		descriptionKey: "lbl_Confirm"
+	}
+];
 
-	let rows = [];
-	for (let s = 1; s <= total; s++) {
-		rows.push(
-			<div key={`step-${s}`} className="circle">
-				<div>
-					{s <= step ? (
-						<div className="icon icon-checkmark"></div>
-					) : (
-						<div>{s}</div>
-					)}
-				</div>
+const Panel = ({ step, i18n }) => {
+	let rows = stepDesc.map((s, idx) => {
+		return (
+			<div
+				key={`step-${idx}`}
+				className={`process${idx + 1 <= step ? " active" : ""}`}>
+				<span>{i18n[s.descriptionKey]}</span>
 			</div>
 		);
-	}
+	});
 
-	return (
-		<div className="step">
-			<div className="stepLine">{processBar}</div>
-			{rows}
-		</div>
-	);
+	return <div className="processArea">{rows}</div>;
 };
 
 export default Panel;

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
-import Step from "./step";
-import { Link, Redirect } from "@reach/router";
+import { Redirect } from "@reach/router";
 import DropdownIMG from "../common/dropdown.image";
 import config from "../../config";
 import {
@@ -11,7 +10,7 @@ import {
 } from "../common/context";
 import LimitTip from "./limitTip";
 import { isConvert, checkAmount, number_format } from "../common/common";
-import InputBox from "../common/inputbox";
+import InputBox, { defIptStatus } from "../common/inputbox.hint";
 import {
 	api_DepositReqWireTransfer,
 	api_GetBankInfoOffList
@@ -20,8 +19,9 @@ import moment from "moment";
 import PageVerify from "./deposit.pageVerify";
 import path from "../../path";
 import Loading from "../common/loading";
-import Promotion from "./deposit.promotion";
 import { api_SetAccountName } from "../../service/api/accountStrict";
+import DepositWrapper from "./deposit.wrapper";
+import BackBtn from "./backBtn";
 
 export const Panel = props => props.children;
 
@@ -39,8 +39,8 @@ export const Main = props => {
 	const [amount, setAmount] = useState("");
 	const [accountName, setAccountName] = useState(userInfo.accountName);
 	const [warning, setWarning] = useState({
-		accountName: { status: false, msg: "" },
-		amount: { status: false, msg: "" }
+		accountName: { status: defIptStatus.default, msg: "" },
+		amount: { status: defIptStatus.default, msg: "" }
 	});
 
 	const _isConvert = isConvert(userInfo.currencyId);
@@ -141,7 +141,7 @@ export const Main = props => {
 			setWarning(prev => ({
 				...prev,
 				amount: {
-					status: true,
+					status: defIptStatus.warning,
 					msg: result.msg
 				}
 			}));
@@ -149,7 +149,7 @@ export const Main = props => {
 			setWarning(prev => ({
 				...prev,
 				amount: {
-					status: false,
+					status: defIptStatus.verified,
 					msg: ""
 				}
 			}));
@@ -168,20 +168,28 @@ export const Main = props => {
 				setWarning(prev => ({
 					...prev,
 					amount: {
-						status: true,
+						status: defIptStatus.warning,
 						msg: i18n.lbl_SelectBank
 					}
 				}));
 			}
 		} else {
 			setAccountName(value);
-			setWarning(prev => ({
-				...prev,
-				accountName: {
-					status: false,
-					msg: ""
+			setWarning(prev => {
+				let msg = "";
+				let status = defIptStatus.verified;
+				if (!value) {
+					status = defIptStatus.warning;
+					msg = i18n.msg_RealnameTip;
 				}
-			}));
+				return {
+					...prev,
+					accountName: {
+						status: status,
+						msg: msg
+					}
+				};
+			});
 		}
 	};
 
@@ -205,10 +213,8 @@ export const Main = props => {
 											"yyyy-MM-DDT"
 										)}${moment().format("HH:mm")}`,
 										isOpen: true,
-										amount: number_format(
-											real_amount,
-											_isConvert
-										),
+										amount: real_amount,
+										_isConvert: _isConvert,
 										closeCallBack: () =>
 											setRedirectPath(
 												`/${path.deposit.root}`
@@ -254,9 +260,18 @@ export const Main = props => {
 									src={`${config.imgUrl}/common/images/BankLogo/${selBank.bank.image}`}
 									alt={selBank.bank.bankName}
 								/>
-								<div className="tip">
-									<span>{i18n.lbl_DepositAmount} :</span>{" "}
-									{number_format(real_amount, _isConvert)}
+								<div>
+									<ul>
+										<li className="text-lightBlue">
+											{i18n.lbl_DepositAmount} :
+										</li>
+										<li>
+											{number_format(
+												real_amount,
+												_isConvert
+											)}
+										</li>
+									</ul>
 								</div>
 							</>
 						),
@@ -264,7 +279,7 @@ export const Main = props => {
 						btnBar: (
 							<div className="btn-group">
 								<button
-									className="blue"
+									className="cancel"
 									onClick={() =>
 										setPopBox(prevState => ({
 											...prevState,
@@ -274,7 +289,7 @@ export const Main = props => {
 									{i18n["lbl_Cancel"]}
 								</button>
 								<button
-									className="orange"
+									className="submit"
 									onClick={RedirectToNext.bind(
 										this,
 										real_amount,
@@ -313,7 +328,7 @@ export const Main = props => {
 										btnBar: (
 											<div className="btn-group">
 												<button
-													className="blue"
+													className="cancel"
 													onClick={() =>
 														setPopBox(
 															prevState => ({
@@ -351,7 +366,7 @@ export const Main = props => {
 						btnBar: (
 							<div className="btn-group">
 								<button
-									className="blue"
+									className="cancel"
 									onClick={() =>
 										setPopBox(prevState => ({
 											...prevState,
@@ -361,7 +376,7 @@ export const Main = props => {
 									{i18n["lbl_Cancel"]}
 								</button>
 								<button
-									className="orange"
+									className="submit"
 									onClick={setAccountName}>
 									{i18n["lbl_Submit"]}
 								</button>
@@ -374,11 +389,15 @@ export const Main = props => {
 			} else {
 				setWarning({
 					accountName: {
-						status: !accountName,
+						status: !accountName
+							? defIptStatus.warning
+							: defIptStatus.verified,
 						msg: !accountName ? i18n.msg_EnterRealName : ""
 					},
 					amount: {
-						status: !amount,
+						status: !amount
+							? defIptStatus.warning
+							: defIptStatus.verified,
 						msg: !amount ? i18n.lbl_AmountTooltip : ""
 					}
 				});
@@ -393,62 +412,52 @@ export const Main = props => {
 		return redirectPath !== null ? (
 			<Redirect to={redirectPath} noThrow />
 		) : pageVerify ? (
-			<>
-				<Step step={3} total={2} />
-				<div className="inputBox">
-					<DropdownIMG
-						mainKey={"localBank-bankList"}
-						onSelectItem={SelectBank}
-						options={bankList}
-						selectedIdx={selBank?.idx}
-						i18n={i18n}
-						ImgURL={`${config.imgUrl}/common/images/BankLogo/`}
-						className="bankLogo"
-					/>
-					<LimitTip
-						displayTextLimit={i18n.lbl_Limit}
-						displayTextUnLimit={i18n.lbl_Unlimited}
-						minAmount={selBank?.bank?.minAmount}
-						maxAmount={selBank?.bank?.maxAmount}
-						_isConvert={_isConvert}
-					/>
-				</div>
-				{!userInfo.accountName ? (
-					<>
+			<DepositWrapper step={3} total={2} i18n={i18n}>
+				<div className="depositInBox">
+					<div className="inputBox">
+						<DropdownIMG
+							mainKey={"localBank-bankList"}
+							onSelectItem={SelectBank}
+							options={bankList}
+							selectedIdx={selBank?.idx}
+							i18n={i18n}
+							ImgURL={`${config.imgUrl}/common/images/BankLogo/`}
+							className="bankLogo"
+						/>
+						<LimitTip
+							displayTextLimit={i18n.lbl_Limit}
+							displayTextUnLimit={i18n.lbl_Unlimited}
+							minAmount={selBank?.bank?.minAmount}
+							maxAmount={selBank?.bank?.maxAmount}
+							_isConvert={_isConvert}
+						/>
+					</div>
+					{!userInfo.accountName ? (
 						<InputBox
-							icon="icon-member"
-							placeholder={i18n["lbl_RealName"]}
+							title={i18n["lbl_RealName"]}
 							value={accountName}
 							onChange={EditField.bind(this, "accountName")}
-							Warning={warning.accountName}
+							tipDisplayText={warning.accountName.msg}
+							btnStatus={warning.accountName.status}
 						/>
-						<div className="info">
-							<div className="open">{i18n.msg_RealnameTip}</div>
-						</div>
-					</>
-				) : (
-					<></>
-				)}
-				<InputBox
-					icon="icon-pencil"
-					placeholder={i18n["lbl_Amount"]}
-					value={amount}
-					inputType="tel"
-					onChange={EditField.bind(this, "amount")}
-					Warning={warning.amount}
-				/>
-				<Promotion />
-				<div className="btn-group">
-					<Link to="../" className="white">
-						{i18n.lbl_Back}
-					</Link>
-					<button className="orange" onClick={ClickSubmit}>
-						{i18n.lbl_Submit}
-					</button>
+					) : null}
+					<InputBox
+						title={i18n["lbl_Amount"]}
+						value={amount}
+						numberConvert={isConvert(userInfo.currencyId)}
+						inputType="tel"
+						onChange={EditField.bind(this, "amount")}
+						tipDisplayText={warning.amount.msg}
+						btnStatus={warning.amount.status}
+					/>
+					<div className="btn-group">
+						<button className="submit" onClick={ClickSubmit}>
+							{i18n.lbl_Submit}
+						</button>
+					</div>
 				</div>
-			</>
-		) : (
-			<></>
-		);
+				<BackBtn i18n={i18n} to={`../`} />
+			</DepositWrapper>
+		) : null;
 	}
 };
