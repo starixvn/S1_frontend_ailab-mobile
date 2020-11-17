@@ -1457,7 +1457,7 @@ footer > a.open {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   position: relative;
-  margin-top: 2vw;
+  margin-bottom: 2vw;
 }
 
 .inputBoxText input {
@@ -1943,6 +1943,10 @@ footer > a.open {
   border-radius: 5px;
   margin-top: 2vw;
   padding: 0 2vw;
+}
+
+.depositInBox > p {
+  padding-top: 2vw;
 }
 
 .depositTitle {
@@ -5221,6 +5225,48 @@ span.important {
   margin: 0 2vw;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+.depostiImgText div.bankinfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: white;
+  border-radius: 3px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  color: black;
+  padding: 2vw 1vw;
+  margin: 0 0.5vw 0 0;
+  position: relative;
+  -ms-flex-item-align: baseline;
+      align-self: baseline;
+}
+
+.depostiImgText div.bankinfo + div {
+  margin-right: 0;
+  width: 50%;
+}
+
+.depostiImgText div.bankinfo:before {
+  position: absolute;
+  right: 2vw;
+  top: 2vw;
+  color: #1F419B;
+}
+
+.depostiImgText div.bankinfo span {
+  padding: 0 3vw;
+}
+
+.depostiImgText div.bankinfo img {
+  width: 20vw;
+  height: auto;
+  padding: 0;
+  margin: 0;
 }
 
 .depostiImgText div h1 {

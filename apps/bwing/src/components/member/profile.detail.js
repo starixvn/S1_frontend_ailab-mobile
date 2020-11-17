@@ -380,10 +380,10 @@ const Panel = () => {
 					hasBtn: true,
 					btnBar: (
 						<div className="btn-group">
-							<button className="blue" onClick={closePopbox}>
+							<button className="cancel" onClick={closePopbox}>
 								{i18n["lbl_Later"]}
 							</button>
-							<button className="orange" onClick={clickOtp}>
+							<button className="submit" onClick={clickOtp}>
 								{i18n["lbl_VerifyNow"]}
 							</button>
 						</div>

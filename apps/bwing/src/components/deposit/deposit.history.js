@@ -190,7 +190,8 @@ const Panel = () => {
 			accountNo: accountNo,
 			accountName: accountName,
 			isOpen: true,
-			amount: number_format(amount, _isConvert),
+			amount: amount,
+			_isConvert: _isConvert,
 			picFileName: picFileName,
 			refId: refId
 		}));
@@ -213,40 +214,34 @@ const Panel = () => {
 			<HistoryFilter submitHandler={submitHandler} />
 			{loading ? (
 				<Loading />
-			) : (
-				<>
-					{getHistoryState ? (
-						<div className="recent open">
-							<div className="recentTransactions">
-								<div className="smallTitle">
-									<i className="icon icon-history"></i>
-									{i18n["lbl_TransactionHistory"]}
-								</div>
-								<ReloadSpin
-									func={submitHandler.bind(
-										this,
-										filterData?.StartDate,
-										filterData?.EndDate,
-										true
-									)}
-								/>
-							</div>
-							{getHistoryState.length > 0 ? (
-								<>
-									<div className="txt-blue2">
-										{i18n["msg_AmountFormatTip"]}
-									</div>
-									<div className="infoList">{arr}</div>
-								</>
-							) : (
-								<div className="not-found">
-									{i18n["msg_NoData"]}
-								</div>
-							)}{" "}
+			) : getHistoryState ? (
+				<div className="recent open">
+					<div className="recentTransactions">
+						<div className="smallTitle">
+							<i className="icon icon-history"></i>
+							{i18n["lbl_TransactionHistory"]}
 						</div>
-					) : null}
-				</>
-			)}
+						<ReloadSpin
+							func={submitHandler.bind(
+								this,
+								filterData?.StartDate,
+								filterData?.EndDate,
+								true
+							)}
+						/>
+					</div>
+					{getHistoryState.length > 0 ? (
+						<>
+							<div className="txt-blue2">
+								{i18n["msg_AmountFormatTip"]}
+							</div>
+							<div className="infoList">{arr}</div>
+						</>
+					) : (
+						<div className="not-found">{i18n["msg_NoData"]}</div>
+					)}{" "}
+				</div>
+			) : null}
 		</>
 	);
 };

@@ -12,7 +12,6 @@ const Inputbox = ({
 	onChange,
 	value,
 	numberConvert = false,
-	showTips = false,
 	tipDisplayText = "",
 	inputType = "text",
 	btnStatus = defIptStatus.default
@@ -32,12 +31,9 @@ const Inputbox = ({
 					<IptStatus btnStatus={btnStatus} />
 				</div>
 			</div>
-
-			{showTips ? (
-				<div className={`tip${showTips ? " open" : ""}`}>
-					{tipDisplayText}
-				</div>
-			) : null}
+			<div className={`tip${tipDisplayText ? " open" : ""}`}>
+				{tipDisplayText}
+			</div>
 		</>
 	);
 };

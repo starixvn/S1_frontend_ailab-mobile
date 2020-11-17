@@ -174,7 +174,8 @@ const Panel = () => {
 				accountNo: accountNo,
 				accountName: accountName,
 				isOpen: true,
-				amount: number_format(amount, _isConvert),
+				amount: amount,
+				_isConvert: _isConvert,
 				picFileName: picFileName,
 				refId: refId
 			}));

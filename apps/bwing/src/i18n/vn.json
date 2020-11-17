@@ -348,5 +348,10 @@
 	"lbl_DepositOptionHint": "Bạn có thể chọn mục nạp tiền phù hợp nhất từ những lựa chọn bên dưới:",
 	"lbl_SelectPaymentMethods": "Lựa Chọn Phương Thức",
 	"lbl_EnterAmount": "Nhập số tiền",
-	"lbl_Step_SelectBank":"Chọn ngân hàng"
+	"lbl_Step_SelectBank":"Chọn ngân hàng",
+	"lbl_Transaction":"Giao Dịch",
+	"msg_DepositTransferHint":"Please make a fund transfer to the receiving account below",
+	"lbl_AlmostDone":"Almost Done!",
+	"lbl_UploadBankSlip":"Upload Bank Slip",
+	"lbl_Refno":"Số tham chiếu"
 }

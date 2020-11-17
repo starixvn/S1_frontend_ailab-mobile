@@ -325,7 +325,6 @@ const SetPayment = props => {
 						numberConvert={isConvert(userInfo.currencyId)}
 						inputType="tel"
 						onChange={EditAmount}
-						showTips={warning.status}
 						tipDisplayText={warning.msg}
 						btnStatus={warning.status}
 					/>

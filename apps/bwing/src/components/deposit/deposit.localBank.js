@@ -22,7 +22,6 @@ import Loading from "../common/loading";
 import { api_SetAccountName } from "../../service/api/accountStrict";
 import DepositWrapper from "./deposit.wrapper";
 import BackBtn from "./backBtn";
-import { stat } from "fs";
 
 export const Panel = props => props.children;
 
@@ -214,10 +213,8 @@ export const Main = props => {
 											"yyyy-MM-DDT"
 										)}${moment().format("HH:mm")}`,
 										isOpen: true,
-										amount: number_format(
-											real_amount,
-											_isConvert
-										),
+										amount: real_amount,
+										_isConvert: _isConvert,
 										closeCallBack: () =>
 											setRedirectPath(
 												`/${path.deposit.root}`
@@ -440,7 +437,6 @@ export const Main = props => {
 							title={i18n["lbl_RealName"]}
 							value={accountName}
 							onChange={EditField.bind(this, "accountName")}
-							showTips={warning.accountName.status}
 							tipDisplayText={warning.accountName.msg}
 							btnStatus={warning.accountName.status}
 						/>
@@ -451,7 +447,6 @@ export const Main = props => {
 						numberConvert={isConvert(userInfo.currencyId)}
 						inputType="tel"
 						onChange={EditField.bind(this, "amount")}
-						showTips={warning.amount.status}
 						tipDisplayText={warning.amount.msg}
 						btnStatus={warning.amount.status}
 					/>

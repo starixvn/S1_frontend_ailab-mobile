@@ -11,7 +11,7 @@ import { Redirect } from "@reach/router";
 import InputBox, { defIptStatus } from "../common/inputbox.hint";
 import path from "../../path";
 import PageVerify from "./deposit.pageVerify";
-import Title, { OneLineTitle } from "./deposit.mobilePay.title";
+import Title from "./deposit.mobilePay.title";
 import DepositWrapper from "./deposit.wrapper";
 import BackBtn from "./backBtn";
 
@@ -227,7 +227,6 @@ const SetMobilePay = props => {
 						numberConvert={isConvert(userInfo.currencyId)}
 						inputType="tel"
 						onChange={EditAmount}
-						showTips={warning.status}
 						tipDisplayText={warning.msg}
 						btnStatus={warning.status}
 					/>
