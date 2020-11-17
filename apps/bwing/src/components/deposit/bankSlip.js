@@ -27,7 +27,7 @@ const GetUploadFileName = files => {
 };
 
 class Content extends Component {
-	state = { processing: false };
+	state = { processing: false, disableUpload: false };
 	isMountedRef = false;
 	filebox = React.createRef();
 	componentDidMount() {
@@ -45,17 +45,14 @@ class Content extends Component {
 	onCheckUpload = () => {
 		let files = this.filebox.current.files;
 		if (files[0]) {
-			this.setState({
-				UploadDisabled: files.length <= 0
-			});
 			this.props.EditField("picFileName", GetUploadFileName(files));
+			this.onUploadFile();
 		}
 	};
 	onUploadFile = () => {
-		console.log("go");
 		let files = this.filebox.current.files;
 		if (files.length > 0) {
-			this.setState({ UploadDisabled: false });
+			this.setState({ disableUpload: true });
 			let formData = new FormData();
 			formData.append("TransId", this.props.bankSlipPopBox.transId);
 			formData.append("Receipt", files[0]);
@@ -80,8 +77,6 @@ class Content extends Component {
 					}
 				}
 			);
-		} else {
-			this.setState({ UploadDisabled: true });
 		}
 	};
 	EditField = (column, e) => {
@@ -120,6 +115,9 @@ class Content extends Component {
 				}
 			);
 		}
+	};
+	HandleUploadAgain = () => {
+		this.setState({ disableUpload: false });
 	};
 	render() {
 		let bankSlipPopBox = this.props.bankSlipPopBox;
@@ -200,84 +198,95 @@ class Content extends Component {
 						</div>
 					</div>
 
-					<div className="depositInBox">
-						<div className="depositTitle textLeft borderBottom">
-							<h1 className="text-org">
-								{i18n.lbl_UploadBankSlip}
-							</h1>
-						</div>
-						<div
-							className="depositImgUpload"
-							onClick={this.onUploadFile}>
-							<div>
-								<input
-									type="file"
-									ref={this.filebox}
-									accept="image/*"
-									onChange={this.onCheckUpload}
-									id="bankSlip"
-								/>
-								<label htmlFor="bankSlip">
-									<p>
-										<span className="icon icon-cloud_upload"></span>
-										{i18n.lbl_UploadFile}
-									</p>
-								</label>
+					{this.props.bankSlipPopBox.picFileName &&
+					this.state.disableUpload ? (
+						<div className="depositInBox">
+							<p>{i18n.lbl_HaveUploadedFile}</p>
+							<p>
+								<span className="icon icon-icon32px_attachment"></span>
+								{this.props.bankSlipPopBox.picFileName}
+							</p>
+							<div className="btn-group">
+								<button
+									className="blue"
+									onClick={this.HandleUploadAgain}>
+									{i18n.lbl_BankSlipUploadAgain}
+								</button>
 							</div>
 						</div>
-						<div className="textArea borderBottom">
-							<ul>
-								<li>Maximum file size 4MB each.</li>
-								<li>Maximum number of files: 1</li>
-								<li>
-									Accepted file types: JPG, JPEG, PNG, GIF
-								</li>
-							</ul>
-						</div>
-						<div className="inputBox">
-							<span>{`${i18n.lbl_DepositTime} (${moment().format(
-								"Z"
-							)})`}</span>
-							<div className="inputBoxText">
-								<input
-									placeholder={i18n.msg_SubmitDepositTime}
-									type="datetime-local"
-									value={
-										this.props.bankSlipPopBox.depositTime ??
-										""
-									}
-									onChange={this.EditField.bind(
-										this,
-										"depositTime"
-									)}
-								/>
-								<div className="iconModule">
-									<span className="icon icon-calendar"></span>
-									{/* <span className="icon icon-information-solid textBlue"></span> */}
+					) : (
+						<div className="depositInBox">
+							<div className="depositTitle textLeft borderBottom">
+								<h1 className="text-org">
+									{i18n.lbl_UploadBankSlip}
+								</h1>
+							</div>
+							<div className="depositImgUpload">
+								<div>
+									<input
+										type="file"
+										ref={this.filebox}
+										accept="image/*"
+										onChange={this.onCheckUpload}
+										id="bankSlip"
+									/>
+									<label htmlFor="bankSlip">
+										<p>
+											<span className="icon icon-cloud_upload"></span>
+											{i18n.lbl_UploadFile}
+										</p>
+									</label>
 								</div>
 							</div>
-							<span>{i18n.lbl_Refno}</span>
-							<div className="inputBoxText">
-								<input
-									placeholder={i18n.msg_ReferenceNumber}
-									value={
-										this.props.bankSlipPopBox.refId ?? ""
-									}
-									onChange={this.EditField.bind(
-										this,
-										"refId"
-									)}
-								/>
-								{/* <div className="iconModule">
-									<span className="icon icon-information-solid textBlue"></span>
-								</div> */}
+							<div className="textArea borderBottom">
+								<ul>
+									<li>Maximum file size 4MB each.</li>
+									<li>Maximum number of files: 1</li>
+									<li>
+										Accepted file types: JPG, JPEG, PNG, GIF
+									</li>
+								</ul>
 							</div>
 						</div>
-						<div className="btn-group">
-							<button className="blue" onClick={this.SeReceipt}>
-								{i18n.lbl_Submit}
-							</button>
+					)}
+
+					<div className="inputBox">
+						<span>{`${i18n.lbl_DepositTime} (${moment().format(
+							"Z"
+						)})`}</span>
+						<div className="inputBoxText">
+							<input
+								placeholder={i18n.msg_SubmitDepositTime}
+								type="datetime-local"
+								value={
+									this.props.bankSlipPopBox.depositTime ?? ""
+								}
+								onChange={this.EditField.bind(
+									this,
+									"depositTime"
+								)}
+							/>
+							<div className="iconModule">
+								<span className="icon icon-calendar"></span>
+								{/* <span className="icon icon-information-solid textBlue"></span> */}
+							</div>
 						</div>
+						<span>{i18n.lbl_Refno}</span>
+						<div className="inputBoxText">
+							<input
+								placeholder={i18n.msg_ReferenceNumber}
+								value={this.props.bankSlipPopBox.refId ?? ""}
+								onChange={this.EditField.bind(this, "refId")}
+							/>
+							{/* <div className="iconModule">
+									<span className="icon icon-information-solid textBlue"></span>
+								</div> */}
+						</div>
+					</div>
+					<div className="btn-group">
+						<button className="blue" onClick={this.SeReceipt}>
+							{i18n.lbl_Submit}
+						</button>
 					</div>
 				</section>
 			</div>
