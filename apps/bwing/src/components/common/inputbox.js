@@ -21,6 +21,7 @@ const Inputbox = props => {
 								: props.value
 						}
 						max={props.max ? props.max : null}
+						disabled={props.disabled ? props.disabled : null}
 					/>
 					{props.iconModuleName ? (
 						<div className="iconModule">
@@ -49,6 +50,7 @@ const Inputbox = props => {
 								: props.value
 						}
 						max={props.max ? props.max : null}
+						disabled={props.disabled ? props.disabled : null}
 					/>
 					{props.iconModuleName ? (
 						<div className="iconModule">
