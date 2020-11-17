@@ -49,6 +49,7 @@ const PopUp = () => {
 				<>
 					<div
 						id="popup"
+						style={{ display: "block" }}
 						className={`${popBox.isOpen ? "show" : ""}`}>
 						<div className="popTit">
 							{popBox.hideCloseBtn === true ? null : (
@@ -63,7 +64,9 @@ const PopUp = () => {
 									<span></span>
 								</div>
 							)}
-							{popBox.title ?? i18n.lbl_ImportantNote}
+							<h1 className="text-org">
+								{popBox.title ?? i18n.lbl_ImportantNote}
+							</h1>
 						</div>
 						{content}
 					</div>
