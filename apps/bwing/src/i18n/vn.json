@@ -351,7 +351,9 @@
 	"lbl_Balance": "Số dư",
 	"lbl_Deduction": "khấu trừ doanh số",
 	"lbl_SelectBank_Required": "Xin lựa chọn tài khoản ngân hàng",
-	"lbl_KycHint": "Vui lòng gửi ảnh CMND của bạn trước khi rút tiền!"
+	"lbl_KycHint": "Gửi giấy tờ tuỳ thân có dán ảnh ",
+	"lbl_ImageUploadWarning": "Lưu ý: ảnh chụp màn hình không được chấp nhận.",
+	"lbl_ImageJpgPngOnly": "Căn cước công dân"
 
 
 }
