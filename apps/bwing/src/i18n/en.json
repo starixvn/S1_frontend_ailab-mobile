@@ -347,6 +347,9 @@
 	"lbl_AddBankAccount": "Add Bank Account",
 	"lbl_NumberOfBankAccounts": "Number of bank accounts",
 	"lbl_Unverified": "Unverified",
-	"lbl_Verified": "Verified"
+	"lbl_Verified": "Verified",
+	"lbl_Balance": "Balance",
+	"lbl_Deduction": "Offset rollover difference amount",
+	"lbl_SelectBank_Required": "Please select bank accounts"
 
 }

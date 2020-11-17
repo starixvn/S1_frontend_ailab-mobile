@@ -347,6 +347,9 @@
 	"lbl_AddBankAccount": "Thêm Tài Khoản",
 	"lbl_NumberOfBankAccounts": "Số lượng tài khoản Ngân hàng",
 	"lbl_Unverified": "Chưa được xác minh",
-	"lbl_Verified": "Đã xác minh"
+	"lbl_Verified": "Đã xác minh",
+	"lbl_Balance": "Số dư",
+	"lbl_Deduction": "khấu trừ doanh số",
+	"lbl_SelectBank_Required": "Xin lựa chọn tài khoản ngân hàng"
 
 }
