@@ -41,6 +41,7 @@ const initState = {
 	Password: "",
 	// Email: "",
 	Currency: null,
+	AffiliateId: "",
 	Checkbox: false
 };
 
@@ -59,6 +60,10 @@ const initWarningState = {
 	// },
 	Currency: {
 		status: false
+	},
+	AffiliateId: {
+		status: false,
+		msg: ""
 	},
 	Checkbox: {
 		status: false,
@@ -89,12 +94,13 @@ const Join = () => {
 	const [redirectPath, setRedirectPath] = useState(null);
 	const [banner, setBanner] = useState([]);
 
-	const [hideCurrency, setHideCurrency] = useState(false);
+	const [affiliateidExist, setAffiliateidExist] = useState("");
 
 	const [showTipsState, setShowTipsState] = useState({
 		UserName: false,
 		Password: false,
 		// Email: false,
+		AffiliateId: false,
 		Currency: false
 	});
 
@@ -124,9 +130,9 @@ const Join = () => {
 	}, [nav, userInfo.langId]);
 
 	useEffect(() => {
-		let AffId = getUrlParameter("AffId") || getCookie("AffId");
-		if (AffId && isMountedRef) {
-			setHideCurrency(true);
+		let Aff = getUrlParameter("Aff") || getCookie("Aff");
+		if (Aff && isMountedRef) {
+			setAffiliateidExist(Aff);
 		}
 	}, []);
 
@@ -526,7 +532,10 @@ const Join = () => {
 
 			regData["RefId"] = getUrlParameter("RefId") || getCookie("RefId");
 			regData["AffId"] = getUrlParameter("AffId") || getCookie("AffId");
-			regData["Aff"] = getUrlParameter("Aff") || getCookie("Aff");
+			regData["Aff"] =
+				getUrlParameter("Aff") ||
+				getCookie("Aff") ||
+				userValueState.AffiliateId;
 
 			api_Register(regData).then(
 				response => {
@@ -693,28 +702,39 @@ const Join = () => {
 					Warning={warningState.Email}
 					value={userValueState.Email}></Inputbox> */}
 
-				{hideCurrency ? null : (
-					<div className="inputBox">
-						<Dropdown
-							mainKey="join-curr"
-							colName={colName[3]}
-							selectedIdx={currencyState}
-							options={siteCurrencyState}
-							clickDropdown={showTipsHandler.bind(
-								null,
-								"Currency"
-							)}
-							onSelectItem={dropdownStateHandler}
-							value={userValueState.Currency}
-							i18n={i18n}></Dropdown>
-						<Tips
-							Icon="icon-coin-dollar"
-							IsOpen={showTipsState.Currency}
-							ClassName="JoinRule">
-							{i18n["lbl_PreferredCurrencyToolTip"]}
-						</Tips>
-					</div>
-				)}
+				<div className="inputBox">
+					<Dropdown
+						mainKey="join-curr"
+						colName={colName[3]}
+						selectedIdx={currencyState}
+						options={siteCurrencyState}
+						clickDropdown={showTipsHandler.bind(null, "Currency")}
+						onSelectItem={dropdownStateHandler}
+						value={userValueState.Currency}
+						i18n={i18n}></Dropdown>
+					<Tips
+						Icon="icon-coin-dollar"
+						IsOpen={showTipsState.Currency}
+						ClassName="JoinRule">
+						{i18n["lbl_PreferredCurrencyToolTip"]}
+					</Tips>
+				</div>
+
+				<Inputbox
+					icon="icon-affiliate"
+					ClassName="JoinRule"
+					placeholder={i18n["lbl_Affiliate_ID"]}
+					value={
+						affiliateidExist !== ""
+							? affiliateidExist
+							: userValueState.AffiliateId
+					}
+					onFocus={showTipsHandler.bind(null, "AffiliateId")}
+					onChange={EditField.bind(null, "AffiliateId")}
+					showTips={showTipsState.AffiliateId}
+					Tips={i18n["lbl_Please_enter_Affiliate_ID"]}
+					Warning={warningState.AffiliateId}
+					disabled={affiliateidExist}></Inputbox>
 
 				<Checkbox
 					Checked={checkboxState}
