@@ -359,6 +359,7 @@
 	"lbl_Refno":"Số tham chiếu",
 	"lbl_BankSlipUploadAgain":"Upload file again",
 	"lbl_HaveUploadedFile":"You've uploaded file",
-	"lbl_RestoreAll": "Khôi phục Tất cả"
+	"lbl_RestoreAll": "Khôi phục Tất cả",
+	"msg_InsufficientFund": "Không đủ tiền!"
 
 }

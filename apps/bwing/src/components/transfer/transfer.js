@@ -7,13 +7,25 @@ import {
 } from "../common/context";
 import { api_GetWalletInfo } from "../../service/api/account";
 import { api_Transfer, api_GetTransferRecent } from "../../service/api/tp";
-import { isConvert, checkAmount, number_format } from "../common/common";
+import { isConvert, checkAmount } from "../common/common";
 import RecentDatas from "./transfer.recentDatas";
-import InputBox from "../common/inputbox";
-import Dropdown from "../common/dropdown";
-import ReloadSpin from "../common/reloadSpin";
+import { defIptStatus } from "../common/inputbox.hint";
 import Loading from "../common/loading";
 import { defPopBoxType } from "../common/popbox";
+import WalletPanel from "./walletPanel";
+import AmountPanel from "./amountPanel";
+
+const defDirection = {
+	MainToTp: 1,
+	TpToMain: 2
+};
+
+const initDirection = {
+	transferFrom: "lbl_MainWallet",
+	transferTo: "lbl_TpWallet_1"
+};
+
+const initWarning = { status: defIptStatus.default, msg: "" };
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
@@ -21,12 +33,10 @@ const Panel = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { setWalletInfo } = useContext(walletInfoContext);
 	const _isConvert = isConvert(userInfo.currencyId);
-
 	const [getWalletInfo, setGetWalletInfo] = useState([]);
 	const [amount, setAmount] = useState("");
-	const [warning, setWarning] = useState({ status: false, msg: "" });
-	const [fromSelectedIdx, setFromSelectedIdx] = useState(0);
-	const [toSelectedIdx, setToSelectedIdx] = useState(1);
+	const [warning, setWarning] = useState(initWarning);
+	const [direction, setDirection] = useState(initDirection);
 	const [recentDatas, setRecentDatas] = useState([]);
 	const [loading, setLoading] = useState(true);
 
@@ -130,7 +140,11 @@ const Panel = () => {
 
 	const VaildAmount = _amount => {
 		const minAmount = 1;
-		const maxAmount = getWalletInfo[fromSelectedIdx]?.balance;
+		const _transferFrom = getWalletInfo.find(item => {
+			return item.displayKey === direction.transferFrom;
+		});
+		const maxAmount = _transferFrom.balance;
+
 		if (maxAmount === null || maxAmount === undefined) {
 			return false;
 		} else {
@@ -143,12 +157,12 @@ const Panel = () => {
 			);
 			if (result.status !== 0) {
 				setWarning({
-					status: true,
+					status: defIptStatus.warning,
 					msg: result.msg
 				});
 			} else {
 				setWarning({
-					status: false,
+					status: defIptStatus.verified,
 					msg: ""
 				});
 			}
@@ -174,251 +188,128 @@ const Panel = () => {
 		if (startWallet.balance === 0) {
 			setPopBox({
 				isOpen: true,
-				popBoxType: defPopBoxType.ErrorMsg,
-				message: t("msg_InsufficientFund"),
-				btnBar: (
-					<div className="btnGroup">
-						<button className="btn-cancel" onClick={ClickClose}>
-							{t("lbl_Close")}
-						</button>
-					</div>
-				)
+				title: i18n["lbl_ImportantNote"],
+				content: i18n["msg_InsufficientFund"]
 			});
 		} else {
 			Transfer(startWallet.id, startWallet.balance, _direction);
 		}
 	};
 
-	const setMaxAmount = () => {
-		const balance = getWalletInfo[fromSelectedIdx]?.balance;
-		let _balance = _isConvert ? Number(balance) / 1000 : Number(balance);
-		_balance > 0 ? setAmount(`${_balance}`) : setAmount("1");
+	const changeDirection = () => {
+		direction.transferFrom === "lbl_MainWallet"
+			? setDirection({
+					transferFrom: "lbl_TpWallet_1",
+					transferTo: "lbl_MainWallet"
+			  })
+			: setDirection({
+					transferFrom: "lbl_MainWallet",
+					transferTo: "lbl_TpWallet_1"
+			  });
 	};
 
-	const selectItem = (i, col) => {
-		if (
-			(i === 0 && col === "transferFrom") ||
-			(i === 1 && col === "transferTo")
-		) {
-			setFromSelectedIdx(0);
-			setToSelectedIdx(1);
-		} else {
-			setFromSelectedIdx(1);
-			setToSelectedIdx(0);
-		}
+	const Transfer = (_tpId, _amount, _direction) => {
+		setLoading(true);
+
+		api_Transfer({
+			TpId: _tpId === 0 ? 1 : _tpId,
+			amount: _amount,
+			direction: _direction
+		}).then(
+			res => {
+				if (isMountedRef.current) {
+					if (res.data.errorCode === 9) {
+						setLoading(false);
+						setPopBox({
+							isOpen: true,
+							popBoxType: defPopBoxType.TurnoverAccumulated,
+							currencyId: userInfo.currencyId,
+							turnover: res.data.data.turnover,
+							rollover: res.data.data.rollover
+						});
+					} else if (res.data.errorCode !== 0) {
+						setLoading(false);
+						setPopBox({
+							isOpen: true,
+							title: i18n["lbl_ImportantNote"],
+							content: res.data.message
+						});
+					} else {
+						GetWalletInfo();
+						setAmount("");
+						GetTransferRecent();
+					}
+				}
+			},
+			err => {
+				if (isMountedRef.current) {
+					setLoading(false);
+					setPopBox({
+						isOpen: true,
+						title: i18n["lbl_ImportantNote"],
+						content: i18n["msg_ApiServerError"]
+					});
+				}
+			}
+		);
 	};
 
 	const clickSubmit = () => {
 		let result = VaildAmount(amount);
-		let direction = fromSelectedIdx === 0 ? 1 : 2;
+		let _direction =
+			direction.transferFrom === "lbl_MainWallet"
+				? defDirection.MainToTp
+				: defDirection.TpToMain;
 
 		if (result) {
 			let real_amount = _isConvert
 				? Number(amount) * 1000
 				: Number(amount);
 
-			setLoading(true);
-			api_Transfer({
-				TpId: 1,
-				amount: real_amount,
-				direction: direction
-			}).then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 9) {
-							setLoading(false);
-							setPopBox({
-								isOpen: true,
-								popBoxType: defPopBoxType.TurnoverAccumulated,
-								currencyId: userInfo.currencyId,
-								turnover: res.data.data.turnover,
-								rollover: res.data.data.rollover
-							});
-						} else if (res.data.errorCode !== 0) {
-							setLoading(false);
-							setPopBox({
-								isOpen: true,
-								title: i18n["lbl_ImportantNote"],
-								content: res.data.message
-							});
-						} else {
-							GetWalletInfo();
-							setAmount("1");
-							GetTransferRecent();
-						}
-					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setLoading(false);
-					}
-				}
-			);
+			let _wallet = getWalletInfo.find(item => {
+				return item.displayKey === direction.transferFrom;
+			});
+
+			if (_wallet.balance < real_amount) {
+				setPopBox({
+					isOpen: true,
+					title: i18n["lbl_ImportantNote"],
+					content: i18n["msg_InsufficientFund"]
+				});
+			} else {
+				Transfer(_wallet.id, real_amount, _direction);
+			}
+			setWarning(initWarning);
+			setAmount("");
+			setDirection(initDirection);
 		}
 	};
 
 	return loading ? (
 		<Loading />
 	) : (
-		<>
-			<div className="depositBox">
-				<div className="restoreBox">
-					<div className="restoreBox-left">
-						<div className="depositInBox">
-							<div className="text">
-								<p>
-									<span className="icon icon-icon32px_Main-Wallet"></span>
-									{i18n["lbl_MainWallet"].toUpperCase()}
-								</p>
-								<p>
-									{number_format(
-										getWalletInfo[0]?.balance,
-										true
-									)}
-								</p>
-							</div>
-							<div className="btn-group">
-								<button className="blue">
-									{i18n["lbl_RestoreAll"]}
-								</button>
-							</div>
-						</div>
-						<div className="depositInBox">
-							<div className="text">
-								<p>
-									<span className="icon icon-icon32px_Sportsbook-Wallet"></span>
-									{i18n["lbl_Wallet_Saba"].toUpperCase()}
-								</p>
-								<p>
-									{number_format(
-										getWalletInfo[1]?.balance === undefined
-											? 0
-											: getWalletInfo[1]?.balance,
-										true
-									)}
-								</p>
-							</div>
-							<div className="btn-group">
-								<button className="blue">
-									{i18n["lbl_RestoreAll"]}
-								</button>
-							</div>
-						</div>
-					</div>
-					<div className="restoreBox-right">
-						<ReloadSpin func={GetWalletInfo} />
-					</div>
-				</div>
-				<div className="depositInBox textCenter">
-					<div className="swapBox">
-						<span>{i18n["lbl_From"]}</span>
-						<span>{i18n["lbl_MainWallet"].toUpperCase()}</span>
-					</div>
-					<button className="icon icon-icon32px_Double-arrow swapIcon"></button>
-					<div className="swapBox">
-						<span>{i18n["lbl_To"]}</span>
-						<span>{i18n["lbl_Wallet_Saba"].toUpperCase()}</span>
-					</div>
-					<div className="inputBoxLevel">
-						<div className="left">
-							<div className="inputBoxText">
-								<InputBox
-									placeholder={i18n["lbl_Amount"]}
-									value={amount}
-									inputType="tel"
-									onChange={EditAmount}
-									Warning={warning}
-								/>
-
-								{/* <p className="txt-blue12">Amount</p>
-								<div className="iconModule">('000)</div> */}
-							</div>
-						</div>
-						<div className="right">
-							<div className="btn-group">
-								<button className="blue" onClick={clickSubmit}>
-									{i18n["lbl_Submit"]}
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<RecentDatas
-					datas={recentDatas}
-					GetRecentDatas={GetTransferRecent}
-				/>
-			</div>
-
-			{/* <div className="account">
-				<div className="info">
-					<span className="title">{i18n["lbl_MainWallet"]}</span>
-					<div>{number_format(getWalletInfo[0]?.balance, false)}</div>
-				</div>
-				<ReloadSpin func={GetWalletInfo} />
-			</div>
-			<div className="account">
-				<div className="info">
-					<span className="title">{i18n["lbl_Wallet_Saba"]}</span>
-					<div>
-						{number_format(
-							getWalletInfo[1]?.balance === undefined
-								? 0
-								: getWalletInfo[1]?.balance,
-							false
-						)}
-					</div>
-				</div>
-				<ReloadSpin func={GetWalletInfo} />
-			</div>
-
-			<div className="inputBox">
-				<Dropdown
-					mainKey="transfer-From"
-					options={getWalletInfo}
-					placeholder={i18n["lbl_TransferFrom"]}
-					selectedIdx={fromSelectedIdx}
-					i18n={i18n}
-					onSelectItem={selectItem}
-					colName="transferFrom"
-				/>
-			</div>
-
-			<div className="inputBox">
-				<Dropdown
-					mainKey="transfer-To"
-					options={getWalletInfo}
-					placeholder={i18n["lbl_TransferTo"]}
-					selectedIdx={toSelectedIdx}
-					onSelectItem={selectItem}
-					i18n={i18n}
-					colName="transferTo"
-				/>
-			</div>
-
-			<div className="inputBox">
-				<InputBox
-					icon="icon-pencil"
-					value={amount}
-					inputType="tel"
-					onChange={EditAmount}
-					Warning={warning}
-				/>
-			</div>
-
-			<div className="btn-group">
-				<button className="blue" onClick={setMaxAmount}>
-					{i18n["lbl_MaxAmount"]}
-				</button>
-				<button className="orange" onClick={clickSubmit}>
-					{i18n["lbl_Transfer"]}
-				</button>
-			</div>
-
+		<div className="depositBox">
+			<WalletPanel
+				i18n={i18n}
+				walletInfo={getWalletInfo}
+				restoreAll={restoreAll}
+				GetWalletInfo={GetWalletInfo}
+			/>
+			<AmountPanel
+				i18n={i18n}
+				amount={amount}
+				changeDirection={changeDirection}
+				transferFrom={direction.transferFrom}
+				transferTo={direction.transferTo}
+				EditAmount={EditAmount}
+				warning={warning}
+				clickSubmit={clickSubmit}
+			/>
 			<RecentDatas
 				datas={recentDatas}
 				GetRecentDatas={GetTransferRecent}
-			/> */}
-		</>
+			/>
+		</div>
 	);
 };
 
