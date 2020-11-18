@@ -23,6 +23,7 @@ const Affiliates = ({ i18n, langId }) => {
 			<a
 				href={siteInfo(langId).affiliateLink}
 				target="_blank"
+				rel="noreferrer"
 				className="icon icon-affiliatesBtnIcon">
 				<span>{i18n.lbl_JoinUsNow}</span>
 			</a>

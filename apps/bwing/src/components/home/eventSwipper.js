@@ -5,7 +5,7 @@ export default () => {
 	return (
 		<SwipperBanner
 			ImgFolder={["Sports"]}
-			withBtn={true}
+			withBtn={false}
 			openInBlank={true}
 		/>
 	);

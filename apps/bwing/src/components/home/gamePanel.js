@@ -2,9 +2,18 @@ import React, { useContext } from "react";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { navContext, defNavPanel } from "../common/context";
 import { defGameInfo } from "../../datas/productList";
-import img1 from "../../styles/img/game1.png";
-import img2 from "../../styles/img/game2.png";
-import img3 from "../../styles/img/game3.png";
+import img1 from "../../styles/img/GameList1.png";
+import img2 from "../../styles/img/GameList2.png";
+import img3 from "../../styles/img/GameList3.png";
+import img4 from "../../styles/img/GameList4.png";
+import img5 from "../../styles/img/GameList5.png";
+import img6 from "../../styles/img/GameList6.png";
+import img7 from "../../styles/img/GameList7.png";
+import img8 from "../../styles/img/GameList8.png";
+import img9 from "../../styles/img/GameList9.png";
+import img10 from "../../styles/img/GameList10.png";
+import img11 from "../../styles/img/GameList11.png";
+import img12 from "../../styles/img/GameList12.png";
 
 const defGameList = [
 	{
@@ -27,56 +36,56 @@ const defGameList = [
 		betType: 1620
 	},
 	{
-		img: img2,
+		img: img4,
 		displayKey: "lbl_Saba1Club3",
 		tpId: 1,
 		gameId: 200,
 		betType: 1612
 	},
 	{
-		img: img3,
+		img: img5,
 		displayKey: "lbl_Saba1Club5",
 		tpId: 1,
 		gameId: 200,
 		betType: 1614
 	},
 	{
-		img: img2,
+		img: img6,
 		displayKey: "AE Baccarat",
 		tpId: 15,
 		gameId: 15
 	},
 	{
-		img: img2,
+		img: img7,
 		displayKey: "Dream Gaming Se die",
 		tpId: 4
 	},
 	{
-		img: img3,
+		img: img8,
 		displayKey: "lbl_eSports",
 		tpId: 1,
 		gameId: 43
 	},
 	{
-		img: img2,
+		img: img9,
 		displayKey: "lbl_FishingGG",
 		tpId: 7,
 		gameId: 10
 	},
 	{
-		img: img2,
+		img: img10,
 		displayKey: "lbl_VirtualSports",
 		tpId: 1,
 		gameId: 180
 	},
 	{
-		img: img3,
+		img: img11,
 		displayKey: "lbl_Keno",
 		tpId: 1,
 		gameId: 202
 	},
 	{
-		img: img2,
+		img: img12,
 		displayKey: "lbl_Lottery",
 		tpId: 1,
 		gameId: 220

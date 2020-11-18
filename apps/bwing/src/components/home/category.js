@@ -11,7 +11,6 @@ import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { Redirect, Link } from "@reach/router";
 import { api_GetTpIds } from "../../service/api/site";
 import path from "../../path";
-import { siteInfo } from "../../config";
 
 const Category = props => {
 	const { i18n } = useContext(i18nContext);
