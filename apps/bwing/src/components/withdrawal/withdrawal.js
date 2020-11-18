@@ -1,6 +1,10 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
-import { number_format, isConvert, checkAmount } from "../common/common";
+import {
+	number_format,
+	isConvert,
+	checkWithdrawalAmount
+} from "../common/common";
 import {
 	api_GetWithdrawalAvailableBalance,
 	api_GetCustBankInfo
@@ -226,10 +230,9 @@ const Panel = () => {
 			: 0;
 
 	const VaildAmount = _amount => {
-		let result = checkAmount(
+		let result = checkWithdrawalAmount(
 			_amount,
-			selBank?.minAmount,
-			selBank?.maxAmount,
+			balanceInfo?.availableBalance,
 			_isConvert,
 			i18n
 		);
