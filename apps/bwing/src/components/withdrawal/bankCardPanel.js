@@ -78,10 +78,10 @@ export default ({
 			hasBtn: true,
 			btnBar: (
 				<div className="btn-group">
-					<button className="blue" onClick={ClosePopBox}>
+					<button className="gray" onClick={ClosePopBox}>
 						{i18n["lbl_Cancel"]}
 					</button>
-					<button className="orange" onClick={delBankInfo}>
+					<button className="blue" onClick={delBankInfo}>
 						{i18n["lbl_Submit"]}
 					</button>
 				</div>
