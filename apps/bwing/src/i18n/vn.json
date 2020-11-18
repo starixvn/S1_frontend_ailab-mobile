@@ -365,5 +365,7 @@
 	"msg_DepositTransferHint":"Please make a fund transfer to the receiving account below",
 	"lbl_AlmostDone":"Almost Done!",
 	"lbl_UploadBankSlip":"Upload Bank Slip",
-	"lbl_Refno":"Số tham chiếu"
+	"lbl_Refno":"Số tham chiếu",
+	"lbl_BankSlipUploadAgain":"Upload file again",
+	"lbl_HaveUploadedFile":"You've uploaded file"
 }

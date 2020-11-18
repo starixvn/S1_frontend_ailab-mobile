@@ -100,7 +100,9 @@ const Panel = ({
 					}
 				});
 
-				setBanner(result);
+				if (mounted) {
+					setBanner(result);
+				}
 			});
 		}
 
