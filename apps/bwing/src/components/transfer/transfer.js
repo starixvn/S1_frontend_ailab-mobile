@@ -162,6 +162,33 @@ const Panel = () => {
 		setAmount(value);
 	};
 
+	const restoreAll = idx => {
+		let _direction =
+			getWalletInfo[idx].id === 0
+				? defDirection.TpToMain
+				: defDirection.MainToTp;
+
+		let startId = idx === 0 ? 1 : 0;
+		let startWallet = getWalletInfo[startId];
+
+		if (startWallet.balance === 0) {
+			setPopBox({
+				isOpen: true,
+				popBoxType: defPopBoxType.ErrorMsg,
+				message: t("msg_InsufficientFund"),
+				btnBar: (
+					<div className="btnGroup">
+						<button className="btn-cancel" onClick={ClickClose}>
+							{t("lbl_Close")}
+						</button>
+					</div>
+				)
+			});
+		} else {
+			Transfer(startWallet.id, startWallet.balance, _direction);
+		}
+	};
+
 	const setMaxAmount = () => {
 		const balance = getWalletInfo[fromSelectedIdx]?.balance;
 		let _balance = _isConvert ? Number(balance) / 1000 : Number(balance);
@@ -246,9 +273,8 @@ const Panel = () => {
 								<p>
 									{number_format(
 										getWalletInfo[0]?.balance,
-										false
+										true
 									)}
-									('000)
 								</p>
 							</div>
 							<div className="btn-group">
@@ -263,7 +289,14 @@ const Panel = () => {
 									<span className="icon icon-icon32px_Sportsbook-Wallet"></span>
 									{i18n["lbl_Wallet_Saba"].toUpperCase()}
 								</p>
-								<p>('000)</p>
+								<p>
+									{number_format(
+										getWalletInfo[1]?.balance === undefined
+											? 0
+											: getWalletInfo[1]?.balance,
+										true
+									)}
+								</p>
 							</div>
 							<div className="btn-group">
 								<button className="blue">
@@ -273,7 +306,7 @@ const Panel = () => {
 						</div>
 					</div>
 					<div className="restoreBox-right">
-						<button className="icon icon-spinner11 clickBtn"></button>
+						<ReloadSpin func={GetWalletInfo} />
 					</div>
 				</div>
 				<div className="depositInBox textCenter">
@@ -303,7 +336,7 @@ const Panel = () => {
 						</div>
 						<div className="right">
 							<div className="btn-group">
-								<button className="blue">
+								<button className="blue" onClick={clickSubmit}>
 									{i18n["lbl_Submit"]}
 								</button>
 							</div>
