@@ -19,7 +19,7 @@ export const siteInfo = langId => {
 		affiliateLink: getAffiliate(langId),
 		siteDefaultLang: "vn",
 		siteLangList: ["en", "vn"],
-		liveChatId: 12171870
+		liveChatId: 12145020
 	};
 };
 
