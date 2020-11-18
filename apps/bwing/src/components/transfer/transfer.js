@@ -23,7 +23,7 @@ const Panel = () => {
 	const _isConvert = isConvert(userInfo.currencyId);
 
 	const [getWalletInfo, setGetWalletInfo] = useState([]);
-	const [amount, setAmount] = useState("1");
+	const [amount, setAmount] = useState("");
 	const [warning, setWarning] = useState({ status: false, msg: "" });
 	const [fromSelectedIdx, setFromSelectedIdx] = useState(0);
 	const [toSelectedIdx, setToSelectedIdx] = useState(1);
@@ -234,7 +234,89 @@ const Panel = () => {
 		<Loading />
 	) : (
 		<>
-			<div className="account">
+			<div className="depositBox">
+				<div className="restoreBox">
+					<div className="restoreBox-left">
+						<div className="depositInBox">
+							<div className="text">
+								<p>
+									<span className="icon icon-icon32px_Main-Wallet"></span>
+									{i18n["lbl_MainWallet"].toUpperCase()}
+								</p>
+								<p>
+									{number_format(
+										getWalletInfo[0]?.balance,
+										false
+									)}
+									('000)
+								</p>
+							</div>
+							<div className="btn-group">
+								<button className="blue">
+									{i18n["lbl_RestoreAll"]}
+								</button>
+							</div>
+						</div>
+						<div className="depositInBox">
+							<div className="text">
+								<p>
+									<span className="icon icon-icon32px_Sportsbook-Wallet"></span>
+									{i18n["lbl_Wallet_Saba"].toUpperCase()}
+								</p>
+								<p>('000)</p>
+							</div>
+							<div className="btn-group">
+								<button className="blue">
+									{i18n["lbl_RestoreAll"]}
+								</button>
+							</div>
+						</div>
+					</div>
+					<div className="restoreBox-right">
+						<button className="icon icon-spinner11 clickBtn"></button>
+					</div>
+				</div>
+				<div className="depositInBox textCenter">
+					<div className="swapBox">
+						<span>{i18n["lbl_From"]}</span>
+						<span>{i18n["lbl_MainWallet"].toUpperCase()}</span>
+					</div>
+					<button className="icon icon-icon32px_Double-arrow swapIcon"></button>
+					<div className="swapBox">
+						<span>{i18n["lbl_To"]}</span>
+						<span>{i18n["lbl_Wallet_Saba"].toUpperCase()}</span>
+					</div>
+					<div className="inputBoxLevel">
+						<div className="left">
+							<div className="inputBoxText">
+								<InputBox
+									placeholder={i18n["lbl_Amount"]}
+									value={amount}
+									inputType="tel"
+									onChange={EditAmount}
+									Warning={warning}
+								/>
+
+								{/* <p className="txt-blue12">Amount</p>
+								<div className="iconModule">('000)</div> */}
+							</div>
+						</div>
+						<div className="right">
+							<div className="btn-group">
+								<button className="blue">
+									{i18n["lbl_Submit"]}
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<RecentDatas
+					datas={recentDatas}
+					GetRecentDatas={GetTransferRecent}
+				/>
+			</div>
+
+			{/* <div className="account">
 				<div className="info">
 					<span className="title">{i18n["lbl_MainWallet"]}</span>
 					<div>{number_format(getWalletInfo[0]?.balance, false)}</div>
@@ -302,7 +384,7 @@ const Panel = () => {
 			<RecentDatas
 				datas={recentDatas}
 				GetRecentDatas={GetTransferRecent}
-			/>
+			/> */}
 		</>
 	);
 };
