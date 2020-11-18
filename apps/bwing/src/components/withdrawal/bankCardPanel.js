@@ -90,13 +90,15 @@ export default ({
 	};
 
 	let arr = custBankInfo?.map(item => {
-		let _key = `withdrawal-bankCard-${item.accountNo}`;
-		let _checked = item.accountNo === selBank?.accountNo;
+		let _key = `withdrawal-bankCard-${item.sysId}-${item.accountNo}`;
+		let _checked =
+			item.accountNo === selBank?.accountNo &&
+			item.sysId === selBank?.sysId;
 
 		return (
 			<BankCard
 				key={_key}
-				checkKey={item.accountNo}
+				checkKey={`${item.sysId}-${item.accountNo}`}
 				{...item}
 				selectAccount={SelectBank.bind(this, item)}
 				checked={_checked}

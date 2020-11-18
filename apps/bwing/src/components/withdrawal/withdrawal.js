@@ -547,7 +547,6 @@ const Panel = () => {
 							balanceInfo={balanceInfo}
 							EditAmount={EditAmount}
 							ClickSubmit={ClickSubmit}
-							VaildAmount={VaildAmount}
 							currencyId={userInfo.currencyId}
 							warning={warning}
 						/>

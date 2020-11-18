@@ -10,7 +10,6 @@ export default ({
 	balanceInfo,
 	EditAmount,
 	ClickSubmit,
-	VaildAmount,
 	currencyId,
 	warning
 }) => {
