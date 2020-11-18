@@ -44,8 +44,8 @@ export default ({
 						if (res.data.errorCode === 0) {
 							GetCustBankInfo();
 							if (
-								accountNo === selBank.accountNo &&
-								sysId === selBank.sysId
+								accountNo === selBank?.accountNo &&
+								sysId === selBank?.sysId
 							) {
 								setSelBank(null);
 							}
