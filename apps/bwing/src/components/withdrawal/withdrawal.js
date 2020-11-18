@@ -18,6 +18,7 @@ import Loading from "../common/loading";
 import WalletPanel from "./walletPanel";
 import BankCardPanel from "./bankCardPanel";
 import AmountPanel from "./amountPanel";
+import { defIptStatus } from "../common/inputbox.hint";
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
@@ -26,7 +27,10 @@ const Panel = () => {
 	const [balanceInfo, setBalanceInfo] = useState(null);
 	const _isConvert = isConvert(userInfo.currencyId);
 	const [amount, setAmount] = useState("");
-	const [warning, setWarning] = useState({ status: false, msg: "" });
+	const [warning, setWarning] = useState({
+		status: defIptStatus.default,
+		msg: ""
+	});
 	const [selBank, setSelBank] = useState(null);
 	const [bankInfo, setbankInfo] = useState({
 		accountName: "",
@@ -231,12 +235,12 @@ const Panel = () => {
 		);
 		if (result.status !== 0) {
 			setWarning({
-				status: true,
+				status: defIptStatus.warning,
 				msg: result.msg
 			});
 		} else {
 			setWarning({
-				status: false,
+				status: defIptStatus.verified,
 				msg: ""
 			});
 		}

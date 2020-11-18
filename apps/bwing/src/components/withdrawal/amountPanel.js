@@ -1,6 +1,6 @@
 import React from "react";
 import { number_format } from "../common/common";
-import Inputbox from "../common/inputbox";
+import Inputbox from "../common/inputbox.hint";
 // import CashBar from "./cashBar";
 
 export default ({
@@ -65,13 +65,12 @@ export default ({
 				/> */}
 				<div className="inputModuleRow">
 					<Inputbox
-						placeholder={i18n["lbl_Amount"]}
+						title={i18n["lbl_Amount"]}
 						value={amount}
+						numberConvert={_isConvert}
+						inputType="tel"
 						onChange={e => EditAmount(e.target.value)}
-						_isConvert={_isConvert}
-						onBlur={VaildAmount.bind(this, amount)}
-						isAmount={true}
-						Warning={warning}
+						btnStatus={warning.status}
 					/>
 					<div className="btn-group">
 						<button className="submit" onClick={ClickSubmit}>
@@ -79,6 +78,11 @@ export default ({
 						</button>
 					</div>
 				</div>
+				{warning.msg ? (
+					<div className={`tip${warning.msg ? " open" : ""}`}>
+						{warning.msg}
+					</div>
+				) : null}
 			</div>
 		</div>
 	);
