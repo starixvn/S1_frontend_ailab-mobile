@@ -237,6 +237,8 @@ const Panel = () => {
 					} else {
 						GetWalletInfo();
 						setAmount("");
+						setWarning(initWarning);
+						setDirection(initDirection);
 						GetTransferRecent();
 					}
 				}
