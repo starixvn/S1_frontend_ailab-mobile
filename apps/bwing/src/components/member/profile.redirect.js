@@ -16,7 +16,7 @@ export const redirectToPrev = (i18n, setPopBox, closePopbox) => {
 						{i18n["lbl_Cancel"]}
 					</button>
 					<button
-						className="orange"
+						className="blue"
 						onClick={closePopbox.bind(null, {
 							_redirectPath: `/${path.withdrawal.root}`
 						})}>
@@ -37,7 +37,7 @@ export const redirectToPrev = (i18n, setPopBox, closePopbox) => {
 						{i18n["lbl_Cancel"]}
 					</button>
 					<button
-						className="orange"
+						className="blue"
 						onClick={closePopbox.bind(null, {
 							_redirectPath: `/${
 								path.promotionInfo.root
@@ -60,7 +60,7 @@ export const redirectToPrev = (i18n, setPopBox, closePopbox) => {
 						{i18n["lbl_Cancel"]}
 					</button>
 					<button
-						className="orange"
+						className="blue"
 						onClick={closePopbox.bind(null, {
 							_redirectPath: `/${path.deposit.root}`
 						})}>

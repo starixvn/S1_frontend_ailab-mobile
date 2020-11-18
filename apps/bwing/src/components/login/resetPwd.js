@@ -143,7 +143,7 @@ export default () => {
 								btnBar: (
 									<div className="btn-group">
 										<button
-											className="orange"
+											className="blue"
 											onClick={RedirectToHome}>
 											OK
 										</button>

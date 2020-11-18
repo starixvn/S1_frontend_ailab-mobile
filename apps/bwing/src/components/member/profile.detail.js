@@ -256,10 +256,10 @@ const Panel = () => {
 					hasBtn: true,
 					btnBar: (
 						<div className="btn-group">
-							<button className="blue" onClick={closePopbox}>
+							<button className="gary" onClick={closePopbox}>
 								{i18n["lbl_Later"]}
 							</button>
-							<button className="orange" onClick={clickOtp}>
+							<button className="blue" onClick={clickOtp}>
 								{i18n["lbl_VerifyNow"]}
 							</button>
 						</div>
@@ -362,10 +362,10 @@ const Panel = () => {
 				hasBtn: true,
 				btnBar: (
 					<div className="btn-group">
-						<button className="blue" onClick={closePopbox}>
+						<button className="cancel" onClick={closePopbox}>
 							{i18n["lbl_Cancel"]}
 						</button>
-						<button className="orange" onClick={setProfile}>
+						<button className="submit" onClick={setProfile}>
 							{i18n["lbl_Submit"]}
 						</button>
 					</div>

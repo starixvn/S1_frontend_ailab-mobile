@@ -92,13 +92,13 @@ const IndexPage = () => {
 							btnBar: (
 								<div className="btn-group">
 									<button
-										className="blue"
+										className="cancel"
 										onClick={ClosePopUp}>
 										{i18n["lbl_Later"]}
 									</button>
 									<button
 										onClick={RedirectToDeposit}
-										className="orange">
+										className="submit">
 										{i18n["lbl_DepositNow"]}
 									</button>
 								</div>

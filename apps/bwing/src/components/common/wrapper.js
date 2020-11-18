@@ -88,7 +88,7 @@ export const Wrapper = ({ children }) => {
 				hasBtn: true,
 				btnBar: (
 					<div className="btn-group">
-						<button className="orange" onClick={clickClose}>
+						<button className="blue" onClick={clickClose}>
 							OK
 						</button>
 					</div>
