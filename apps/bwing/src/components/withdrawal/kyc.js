@@ -117,6 +117,13 @@ export default () => {
 					}
 				}
 			);
+		} else {
+			setPopBox({
+				isOpen: true,
+				title: i18n.lbl_ImportantNote,
+				content: i18n.lbl_SubmitPhotoIdHint
+			});
+			setLoading(false);
 		}
 	};
 
@@ -125,46 +132,52 @@ export default () => {
 	) : loading ? (
 		<Loading />
 	) : (
-		<>
-			<div className="step">
-				<div className="stepLine">
-					<div></div>
-				</div>
-				<div className="circle">
-					<div>
-						<div className="icon icon-checkmark"></div>
+		<section className="withdrawalBox">
+			<div>{i18n.lbl_KycHint}</div>
+			<div className="subModuleList">
+				<div className="subModule">
+					<div className="subModuleBody column">
+						<span className="title text-org">
+							{i18n.lbl_SubmitPhotoId}
+						</span>
+						<div className="txt-lightgray">
+							<ul>
+								<li>{i18n.lbl_KYCSubmitHint}</li>
+								<li>
+									{`${i18n.lbl_ImageUploadWarning} ${i18n.lbl_ImageJpgPngOnly}`}
+								</li>
+							</ul>
+						</div>
+						<div className="uploadBox">
+							<label className="upload_img">
+								<input
+									type="file"
+									accept="image/*"
+									onChange={onChangeUpload}
+								/>
+
+								{!file ? (
+									<i className="icon icon-cloud_upload"></i>
+								) : null}
+								{`${file ? file.name : i18n.msg_SelectFile}`}
+							</label>
+							<div className="directions">
+								<ul>
+									<li>{i18n.lbl_NationalIdentityCard}</li>
+									<li>{i18n.lbl_Passport}</li>
+									<li>{i18n.lbl_DrivingLicense}</li>
+									<li>{i18n.lbl_BirthCertificate}</li>
+								</ul>
+							</div>
+						</div>
+						<div className="btn-group">
+							<button className="submit" onClick={onUploadFile}>
+								{i18n.lbl_Submit}
+							</button>
+						</div>
 					</div>
 				</div>
-				<div className="circle">
-					<div>
-						<div>2</div>
-					</div>
-				</div>
 			</div>
-			<span className="text-org">{i18n.lbl_SubmitPhotoIdHint}</span>
-			<div className="btn-group">
-				<label className="fileUpload">
-					<input
-						type="file"
-						accept="image/*"
-						onChange={onChangeUpload}
-					/>
-					<i className="icon icon-folder-upload"></i>{" "}
-					{`${file ? file.name : i18n.msg_SelectFile}`}
-				</label>
-				<button className="orange" onClick={onUploadFile}>
-					{i18n.lbl_UploadPhotoId}
-				</button>
-			</div>
-			<span className="text">{i18n.lbl_KYCSubmitHint}</span>
-			<div className="text">
-				<ul>
-					<li>{i18n.lbl_NationalIdentityCard}</li>
-					<li>{i18n.lbl_Passport}</li>
-					<li>{i18n.lbl_DrivingLicense}</li>
-					<li>{i18n.lbl_BirthCertificate}</li>
-				</ul>
-			</div>
-		</>
+		</section>
 	);
 };
