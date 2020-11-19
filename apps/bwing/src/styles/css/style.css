@@ -2483,7 +2483,7 @@ button.clickBtn {
   width: 8vw;
   height: 8vw;
   border: 1px solid #1d2f62;
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
 button.clickBtn.icon-spinner11 {
@@ -2905,9 +2905,9 @@ button.clickBtn:before {
 }
 
 .casino {
-  width: calc(100% - 8vw);
+  width: 100%;
   min-height: calc(100% - 71vw);
-  padding: 47vw 4vw 24vw;
+  padding: 0vw 4vw 24vw;
   position: relative;
   -webkit-box-pack: normal;
       -ms-flex-pack: normal;
@@ -2915,9 +2915,8 @@ button.clickBtn:before {
 }
 
 .casino .swiper-container {
-  position: absolute;
   left: 0;
-  top: 12vw;
+  top: 2vw;
 }
 
 .casino .slotList {
@@ -2950,7 +2949,7 @@ button.clickBtn:before {
   content: "";
   border-style: solid;
   border-width: 6vw 9vw;
-  border-color: #f77a00 transparent transparent #f77a00;
+  border-color: #58cdff transparent transparent #58cdff;
   border-top-left-radius: 5px;
   position: absolute;
   left: 0;
@@ -2958,6 +2957,7 @@ button.clickBtn:before {
 }
 
 .casino .slotList .info span {
+  color: #070e22;
   position: absolute;
   left: 1.5vw;
   top: 1.5vw;
@@ -2969,6 +2969,7 @@ button.clickBtn:before {
 .casino .slotList .info span.icon {
   right: 1vw;
   left: initial;
+  color: #fff;
 }
 
 .casino .slotList .info img {
@@ -3046,8 +3047,8 @@ button.clickBtn:before {
   color: #fff;
   text-align: right;
   float: right;
-  background: #f77a00;
-  padding: 1vw;
+  background: #58cdff;
+  padding: 1.5vw;
   border-radius: 3px;
 }
 
@@ -3086,8 +3087,8 @@ button.clickBtn:before {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  color: #fff;
-  border: 1px solid #f77a00;
+  color: #58cdff;
+  border: 1px solid #1d2f62;
   border-radius: 3px;
   padding: 1vw 0;
   margin-right: 2vw;
@@ -3098,7 +3099,8 @@ button.clickBtn:before {
 }
 
 .filterBtn button.open {
-  background: #f77a00;
+  background: #58cdff;
+  color: #070e22;
 }
 
 .search {
@@ -3109,13 +3111,11 @@ button.clickBtn:before {
 .slotFunction {
   position: fixed;
   bottom: 0;
-  -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
-          box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
   padding: 2vw 2vw 20vw;
   border-radius: 10px;
   width: calc(100% - 4vw);
   left: 0;
-  background: #f3f3f3;
+  background: #1d2f62;
   visibility: hidden;
   -webkit-transition: 0.7s;
   transition: 0.7s;
@@ -3127,10 +3127,11 @@ button.clickBtn:before {
   position: absolute;
   right: 2vw;
   top: 2vw;
-  color: #333;
+  color: #fff;
 }
 
-.slotFunction .text-org {
+.slotFunction .text-blue {
+  color: #58cdff;
   font-size: 5vw;
   margin: 2vw 0 3vw;
 }
@@ -3143,7 +3144,7 @@ button.clickBtn:before {
 }
 
 .slotFunction .white {
-  border: 1px solid #f77a00;
+  border: 1px solid #58cdff;
 }
 
 .not-found {
@@ -3897,20 +3898,16 @@ span.important {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  width: calc(100% - 6vw);
+  width: 100%;
   height: auto;
   min-height: calc(100% - 39vw);
-  padding: 15vw 3vw 24vw;
+  padding: 0vw 3vw 24vw;
 }
 
 .promotions img {
   width: 100%;
   -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
           box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
-}
-
-.promotions .filterBtn {
-  margin: 14vw 0 3vw;
 }
 
 .promotions .claimed {
@@ -3930,8 +3927,8 @@ span.important {
           align-items: center;
   font-size: 3vw;
   color: white;
-  top: -3vw;
-  left: -3vw;
+  top: 2vw;
+  left: 2vw;
   z-index: 1;
 }
 
@@ -3941,7 +3938,7 @@ span.important {
 
 .promotions .tag ~ div.promodule {
   padding: 3vw;
-  border: 1px dotted #f77a00;
+  border: 1px dotted #58cdff;
   margin-bottom: 3vw;
   background: rgba(0, 0, 0, 0.3);
   display: -webkit-box;
@@ -3955,7 +3952,7 @@ span.important {
 }
 
 .promotions .tag ~ div.promodule.open {
-  background: #AFAFAF;
+  background: #797d86;
 }
 
 .promotions .tag ~ div.promodule.open .claimed {
@@ -3970,7 +3967,7 @@ span.important {
 
 .promotions .tag ~ div.promodule .protitle {
   margin-top: 1vw;
-  color: #f77a00;
+  color: #58cdff;
   font-weight: bold;
   padding-left: 1vw;
   overflow: hidden;
@@ -4010,7 +4007,6 @@ span.important {
 }
 
 .promotions div.promodule .btn-cancel {
-  background: white;
   padding: 0 2vw;
   border-radius: 3px;
   display: -webkit-inline-box;
@@ -4019,11 +4015,13 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #f77a00;
+  background: #AFAFAF;
+  color: #070e22;
 }
 
 .promotions div.promodule .btn-check {
-  background: #f77a00;
+  background: #58cdff;
+  color: #070e22;
   padding: 0 2vw;
   border-radius: 3px;
   display: -webkit-inline-box;
@@ -4037,15 +4035,46 @@ span.important {
 
 .promotions div.promodule > button {
   line-height: 24px;
-  color: white;
+  color: #58cdff;
   vertical-align: bottom;
   margin-left: 1vw;
   font-size: 12px;
 }
 
+.promotions div.promodule > button.ViewAllAmount {
+  padding: 5px 10px;
+  background: #58cdff;
+  margin-left: 0;
+  margin-top: -1px;
+  width: 100%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: white;
+}
+
+.promotions div.promodule > button.ViewAllAmount span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.promotions div.promodule > button.ViewAllAmount span.open {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
 .promotions div.promodule .protitle {
   margin-top: 1vw;
-  color: #f77a00;
+  color: #58cdff;
   font-weight: bold;
   padding-left: 1vw;
 }
@@ -4056,24 +4085,21 @@ span.important {
   word-wrap: break-word;
 }
 
-.promotions div.promodule .text .text-link {
-  color: #f77a00 !important;
-}
-
-.promotions div.promodule .text ol {
+.promotions div.promodule .text ul {
   padding-left: 5vw;
 }
 
-.promotions div.promodule .text ol li {
+.promotions div.promodule .text ul li {
   list-style: decimal;
 }
 
-.promotions div.promodule .text ol li a {
+.promotions div.promodule .text ul li a {
   text-decoration: underline;
+  display: unset;
 }
 
 .promotions div.promodule .info {
-  border-bottom: 1px dotted #f77a00;
+  border-bottom: 1px dotted #58cdff;
   padding-bottom: 3vw;
   margin-bottom: 5vw;
 }
@@ -4303,7 +4329,7 @@ span.important {
 .progressBarModule {
   width: calc(100% - 4vw);
   margin-top: 2vw;
-  background: rgba(0, 0, 0, 0.3);
+  background: #1d2f62;
   padding: 2vw;
   border-radius: 5px;
   color: #fff;
@@ -4325,7 +4351,7 @@ span.important {
 
 .progressBarModule .progressBar .bar {
   height: 1vw;
-  border: 1px solid #f77a00;
+  border: 1px solid #58cdff;
   border-radius: 10px;
   margin-top: 2vw;
   -webkit-box-flex: 1;
@@ -4334,13 +4360,13 @@ span.important {
 }
 
 .progressBarModule .progressBar .bar .progress {
-  background: #f77a00;
+  background: #58cdff;
   height: 100%;
 }
 
 .progressBarModule .progressBar .percentage {
   text-align: right;
-  color: #f77a00;
+  color: #58cdff;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
@@ -4354,8 +4380,12 @@ span.important {
   display: flex;
 }
 
+.progressBarModule .turnover .clickBtn {
+  background: none;
+}
+
 .progressBarModule .turnover span {
-  color: #f77a00;
+  color: #58cdff;
 }
 
 .otp {
@@ -4438,7 +4468,7 @@ span.important {
 }
 
 .rollover .icon {
-  color: #f77a00;
+  color: #58cdff;
 }
 
 .resend {
@@ -4473,32 +4503,55 @@ span.important {
   display: flex;
   font-size: 12px;
   border-radius: 3px;
-  overflow: hidden;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .minAmount > div {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  display: none;
+  width: 100%;
+  font-weight: bold;
+}
+
+.minAmount > div:nth-child(n+3), .minAmount > div:nth-child(1) {
+  display: none;
+}
+
+.minAmount > div:nth-child(n+3).open, .minAmount > div:nth-child(1).open {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.minAmount > div:first-child > div {
+  color: #58cdff;
+}
+
+.minAmount > div:last-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .minAmount > div > div {
-  border: 1px solid #f77a00;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border: 1px solid #58cdff;
   padding: 5px 10px;
-  background: rgba(247, 122, 0, 0.3);
-  color: #f77a00;
+  color: white;
 }
 
 .minAmount > div > div:last-child {
-  color: white;
-  background: rgba(0, 0, 0, 0.3);
+  text-align: right;
 }
 
 .new {
   position: absolute;
   top: 5px;
   left: 5px;
-  background: #f77a00;
+  background: -webkit-gradient(linear, left top, left bottom, from(#71d3fb), to(#3fb1e0));
+  background: linear-gradient(180deg, #71d3fb, #3fb1e0);
   border-radius: 100%;
   width: 40px;
   height: 40px;
@@ -4528,7 +4581,7 @@ span.important {
 .nodata {
   text-align: center;
   padding: 10vw 0;
-  color: #f77a00;
+  color: #58cdff;
 }
 
 .nodata.icon:before {
