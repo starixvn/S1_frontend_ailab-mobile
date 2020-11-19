@@ -68,7 +68,7 @@ const Index = () => {
 		<Wrapper>
 			<LocationProvider history={history}>
 				<Layout>
-					<Router>
+					<Router primary={false}>
 						<Home path={path.home.root} default />
 						<ForgetPwd path={path.forgetPassword.root} />
 						<ResetPwd path={path.resetPassword.root} />
