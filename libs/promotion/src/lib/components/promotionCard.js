@@ -43,7 +43,7 @@ export default ({
 		}`}>
 		{_isClaimed ? (
 			<div className="claimed"></div>
-		) : _isNew ? (
+		) : _isNew && !_isExpiry ? (
 			<div className="new active"></div>
 		) : null}
 		<img src={imgSRC} alt={p.bonusCode ?? ""} />
