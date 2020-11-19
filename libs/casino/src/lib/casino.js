@@ -160,11 +160,12 @@ class Panel extends React.Component {
 		let newFav = isRemove
 			? this.state.favorite?.filter(f => f !== key)
 			: [...this.state.favorite, key];
-		let displayGames = isRemove
-			? this.state.displayGames.filter(
-					g => !(g.tpId === tpId && g.gameId === gameId)
-			  )
-			: this.state.displayGames;
+		let displayGames =
+			isRemove && this.state.selNav === defNav.FAVOURITE.key
+				? this.state.displayGames.filter(
+						g => !(g.tpId === tpId && g.gameId === gameId)
+				  )
+				: this.state.displayGames;
 		if (this.mounted) {
 			this.setState({ favorite: newFav, displayGames: displayGames });
 		}
