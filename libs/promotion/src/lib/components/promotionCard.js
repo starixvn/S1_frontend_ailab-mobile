@@ -3,7 +3,7 @@ import JoinBtn from "./joinBtn";
 import RemainTime from "../common/remainTime";
 import { number_format, isConvert } from "@ailab-mobile/common";
 import DetailBtn from "./detailBtn";
-import { Promotion as UIPromotion } from "UISetting";
+import { Promotion as uiSetting } from "UISetting";
 
 export const CardWithoutRule = ({
 	href,
@@ -20,8 +20,7 @@ export const CardWithoutRule = ({
 		<div className="protitle">{promotion.title}</div>
 		<div className="text">{promotion.description}</div>
 		<div className="btn-group">
-			<button
-				className={UIPromotion?.promotionCard?.detailBtn ?? "white"}>
+			<button className={uiSetting?.detailBtn ?? "white"}>
 				{detailsDisplayText}
 			</button>
 		</div>
@@ -83,12 +82,11 @@ export default ({
 			<DetailBtn
 				displayText_Detail={i18n.lbl_Details}
 				bonusCode={p.bonusCode}
-				class_DetailBtn={UIPromotion?.promotionCard?.detailBtn}
 			/>
 			<JoinBtn
 				promotionInfo={p}
 				func_CallBack={getPromotionListV2}
-				class_JoinNowBtn={UIPromotion?.promotionCard?.joinNow}
+				uiSetting={uiSetting}
 			/>
 		</div>
 	</div>
@@ -101,8 +99,8 @@ export const CardForStatic = ({ userInfo, p, i18n }) => (
 		<div className="text">{p.description?.[userInfo.langId]}</div>
 		<div className="btn-group">
 			<a
-				className={UIPromotion?.promotionCard?.detailBtn ?? "white"}
-				href={p.bannerLink?.[userInfo.langId]}
+				className={uiSetting?.detailBtn ?? "white"}
+				href={p.bannerLink?.[userInfo.langId] ?? ""}
 				target="_blank"
 				rel="noopener noreferrer">
 				{i18n.lbl_Details}

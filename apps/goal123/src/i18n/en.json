@@ -327,7 +327,7 @@
 	"lbl_PromotionCategory1":"First Deposit",
 	"lbl_FreeBet": "Free Bet",
 	"lbl_MinAmount": "Min Amount",
-	"lbl_RequireMinAmountHint_Front": "The minimum amount of deposit are required to be at least ",
+	"lbl_RequireMinAmountHint": "The minimum amount of deposit are required to be at least ",
 	"lbl_RequireMinAmountHint_Back": "Deposit now?",
 	"lbl_VertifyContactConfirm": "Verify your contact number to enjoy our promotions?",
 	"lbl_VerifyNow": "Vertify Now",

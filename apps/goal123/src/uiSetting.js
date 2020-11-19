@@ -1,6 +1,4 @@
 export const Promotion = {
-	promotionCard: {
-		detailBtn: "orange",
-		joinNow: "yellow"
-	}
+	joinBtn: "yellow",
+	detailBtn: "orange"
 };
