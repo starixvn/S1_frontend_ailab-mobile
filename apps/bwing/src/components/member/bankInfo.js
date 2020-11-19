@@ -10,6 +10,7 @@ import Inputbox from "../common/inputbox";
 import Dropdown from "../common/dropdown.image";
 import config from "../../config";
 import Loading from "../common/loading";
+import Step from "./bankInfo.step";
 
 const initWarningState = {
 	RealName: {
@@ -28,7 +29,6 @@ const BankInfo = () => {
 	const { i18n } = useContext(i18nContext);
 	const [siteBankInfoState, setSiteBankInfoState] = useState([]);
 	const [getBankInfo, setGetBankInfo] = useState([]);
-	const [status, setStatus] = useState(true);
 	const [userValueState, setUserValueState] = useState({});
 	const [bankSelectedIdx, setBankSelectedIdx] = useState(0);
 	const [warningState, setWarningState] = useState(initWarningState);
@@ -38,12 +38,6 @@ const BankInfo = () => {
 		isMountedRef.current = true;
 		return () => (isMountedRef.current = false);
 	});
-
-	useEffect(() => {
-		if (!userInfo.accountName && isMountedRef.current) {
-			setStatus(true);
-		}
-	}, [userInfo.accountName]);
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
@@ -112,7 +106,6 @@ const BankInfo = () => {
 						});
 
 						setSiteBankInfoState(() => bankInfoArr);
-						setStatus(false);
 						setBankSelectedIdx(0);
 						setWarningState(initWarningState);
 						setUserValueState({});
@@ -142,7 +135,6 @@ const BankInfo = () => {
 
 	const toShowBankAccount = () => {
 		setLoading(false);
-		setStatus(true);
 		setPopBox({ isOpen: false });
 	};
 
@@ -399,44 +391,37 @@ const BankInfo = () => {
 						}
 					}
 				);
-				setStatus(true);
 			}
 		};
 
-		if (status === false) {
-			if (!userInfo.accountName) {
-				checked = realNameCheck() && bankAccountCheck();
+		if (!userInfo.accountName) {
+			checked = realNameCheck() && bankAccountCheck();
 
-				const closePopbox = status => {
-					setPopBox({ isOpen: false });
-				};
+			const closePopbox = status => {
+				setPopBox({ isOpen: false });
+			};
 
-				setPopBox({
-					isOpen: true,
-					title: i18n.lbl_ImportantNote,
-					content: i18n.msg_ConfirmRealNameAlert,
-					hasBtn: true,
-					btnBar: (
-						<div className="btn-group">
-							<button className="cancel" onClick={closePopbox}>
-								{i18n["lbl_Cancel"]}
-							</button>
-							<button
-								className="submit"
-								onClick={SetCustBankInfo.bind(
-									this,
-									checked,
-									true
-								)}>
-								{i18n["lbl_Submit"]}
-							</button>
-						</div>
-					)
-				});
-			} else {
-				checked = bankAccountCheck();
-				SetCustBankInfo(checked, false);
-			}
+			setPopBox({
+				isOpen: true,
+				title: i18n.lbl_ImportantNote,
+				content: i18n.msg_ConfirmRealNameAlert,
+				hasBtn: true,
+				btnBar: (
+					<div className="btn-group">
+						<button className="cancel" onClick={closePopbox}>
+							{i18n["lbl_Cancel"]}
+						</button>
+						<button
+							className="submit"
+							onClick={SetCustBankInfo.bind(this, checked, true)}>
+							{i18n["lbl_Submit"]}
+						</button>
+					</div>
+				)
+			});
+		} else {
+			checked = bankAccountCheck();
+			SetCustBankInfo(checked, false);
 		}
 	};
 
@@ -460,77 +445,65 @@ const BankInfo = () => {
 		<>
 			<div className="avatar"></div>
 			<div className="name">{userInfo.accountName}</div>
-			{status === true ? (
-				<>
-					{userInfo.accountName ? (
-						<div className="text-org">{i18n["lbl_ContactCSD"]}</div>
-					) : null}
-					{getBankInfo && getBankInfo.length < 3 ? (
-						<div className="btn-group">
-							<button
-								className="orange"
-								onClick={toAddBankAccount}>
-								<i className="icon icon-user-plus"></i>
-								{i18n["lbl_AddNewAccount"]}
-							</button>
-						</div>
-					) : null}
-				</>
-			) : (
-				<>
-					{" "}
-					<div className="inputBox">
-						<Dropdown
-							mainKey="bankInfo-bankList"
-							options={siteBankInfoState}
-							colName="getBankInfo"
-							className="bankLogo"
-							ImgURL={`${config.imgUrl}/common/images/BankLogo/`}
-							selectedIdx={bankSelectedIdx}
-							onSelectItem={dropdownStateHandler}
-						/>
-					</div>
-					{!userInfo.accountName ? (
-						<Inputbox
-							icon="icon-member"
-							inputType="text"
-							value={userValueState.RealName}
-							placeholder={i18n["lbl_RealName"]}
-							onBlur={checkInputboxHandler.bind(null, "RealName")}
-							onChange={EditField.bind(null, "RealName")}
-							Warning={warningState.RealName}
-						/>
-					) : null}
-					<Inputbox
-						icon="icon-newspaper"
-						Warning={warningState.BankAccount}
-						inputType="tel"
-						value={userValueState.BankAccount}
-						placeholder={i18n["lbl_BankNumber"]}
-						onBlur={checkInputboxHandler.bind(null, "BankAccount")}
-						onChange={EditField.bind(null, "BankAccount")}
-					/>
+			<>
+				{userInfo.accountName ? (
+					<div className="text-org">{i18n["lbl_ContactCSD"]}</div>
+				) : null}
+				{getBankInfo && getBankInfo.length < 3 ? (
 					<div className="btn-group">
-						<button className="cancel" onClick={toShowBankAccount}>
-							{i18n["lbl_Cancel"]}
-						</button>
-						<button className="submit" onClick={checkSubmitHandler}>
-							{i18n["lbl_Submit"]}
+						<button className="orange" onClick={toAddBankAccount}>
+							<i className="icon icon-user-plus"></i>
+							{i18n["lbl_AddNewAccount"]}
 						</button>
 					</div>
-				</>
-			)}
-			{status === true ? (
-				<>
-					{getBankInfo && getBankInfo.length > 0 ? (
-						<div className="smallTitle">
-							<i className="icon icon-library"></i>
-							{i18n["lbl_BankAccount"]}
-						</div>
-					) : null}
-					<div className="bankAccount">{arr}</div>
-				</>
-			) : null}
+				) : null}
+				<div className="inputBox">
+					<Dropdown
+						mainKey="bankInfo-bankList"
+						options={siteBankInfoState}
+						colName="getBankInfo"
+						className="bankLogo"
+						ImgURL={`${config.imgUrl}/common/images/BankLogo/`}
+						selectedIdx={bankSelectedIdx}
+						onSelectItem={dropdownStateHandler}
+					/>
+				</div>
+				{!userInfo.accountName ? (
+					<Inputbox
+						icon="icon-member"
+						inputType="text"
+						value={userValueState.RealName}
+						placeholder={i18n["lbl_RealName"]}
+						onBlur={checkInputboxHandler.bind(null, "RealName")}
+						onChange={EditField.bind(null, "RealName")}
+						Warning={warningState.RealName}
+					/>
+				) : null}
+				<Inputbox
+					icon="icon-newspaper"
+					Warning={warningState.BankAccount}
+					inputType="tel"
+					value={userValueState.BankAccount}
+					placeholder={i18n["lbl_BankNumber"]}
+					onBlur={checkInputboxHandler.bind(null, "BankAccount")}
+					onChange={EditField.bind(null, "BankAccount")}
+				/>
+				<div className="btn-group">
+					<button className="cancel" onClick={toShowBankAccount}>
+						{i18n["lbl_Cancel"]}
+					</button>
+					<button className="submit" onClick={checkSubmitHandler}>
+						{i18n["lbl_Submit"]}
+					</button>
+				</div>
+				{getBankInfo && getBankInfo.length > 0 ? (
+					<div className="smallTitle">
+						<i className="icon icon-library"></i>
+						{i18n["lbl_BankAccount"]}
+					</div>
+				) : null}
+				<div className="bankAccount">{arr}</div>
+			</>
 		</>
 	);
 };
