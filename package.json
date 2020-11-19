@@ -23,8 +23,7 @@
 		"update": "nx migrate latest",
 		"workspace-schematic": "nx workspace-schematic",
 		"dep-graph": "nx dep-graph",
-		"help": "nx help",
-		"upd": "updStyles.cmd"
+		"help": "nx help"
 	},
 	"private": true,
 	"dependencies": {

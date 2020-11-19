@@ -77,7 +77,7 @@ export default ({ userInfo, i18n, p, GetPromotion, isList, setPopBox }) => {
 					title: i18n.lbl_ImportantNote,
 					content: (
 						<div class="info">
-							{i18n.lbl_RequireMinAmountHint_Front}{" "}
+							{i18n.lbl_RequireMinAmountHint}{" "}
 							<span class="text-org">
 								{_currency} ${_requiredAmount}
 							</span>

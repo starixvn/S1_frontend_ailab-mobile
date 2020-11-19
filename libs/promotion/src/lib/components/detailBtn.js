@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "@reach/router";
 import path from "Path";
+import { Promotion as uiSetting } from "UISetting";
 
-export default ({ class_DetailBtn, bonusCode, displayText_Detail }) => (
+export default ({ bonusCode, displayText_Detail }) => (
 	<Link
 		to={`/${path.promotionInfo.root}?BonusCode=${bonusCode}`}
-		className={class_DetailBtn ?? "white"}>
+		className={uiSetting.detailBtn ?? "white"}>
 		{displayText_Detail}
 	</Link>
 );

@@ -3,15 +3,15 @@ import { Link, Redirect } from "@reach/router";
 import path from "Path";
 import { userInfoContext, popBoxContext, i18nContext } from "Context";
 import { api_promotion_SetClaimPromotion } from "@ailab-mobile/api";
-import { Inputbox, number_format } from "@ailab-mobile/common";
 import { isExpiry } from "../common/common";
 import { defBonusType, defPromotionType } from "../common/def";
+import ClaimWithLockedAmount from "./joinBtn.claimWithLockedAmount";
 
 export default ({
+	uiSetting = {},
 	promotionInfo,
 	func_GetPromotionDetail,
-	func_CallBack,
-	class_JoinNowBtn
+	func_CallBack
 }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -54,7 +54,10 @@ export default ({
 							<div className="btn-group">
 								<button
 									onClick={ClosePopBox}
-									className="btn-check">
+									className={
+										uiSetting.popBox?.submitBtn ??
+										"btn-check"
+									}>
 									OK
 								</button>
 							</div>
@@ -74,12 +77,19 @@ export default ({
 						hasBtn: true,
 						btnBar: (
 							<div className="btn-group">
-								<button className="blue" onClick={ClosePopBox}>
+								<button
+									className={
+										uiSetting.popBox?.cancelBtn ?? "blue"
+									}
+									onClick={ClosePopBox}>
 									{i18n.lbl_Later}
 								</button>
 								<button
 									onClick={RedirectToProfile}
-									className="btn-check">
+									className={
+										uiSetting.popBox?.submitBtn ??
+										"btn-check"
+									}>
 									{i18n.lbl_GoNow}
 								</button>
 							</div>
@@ -101,7 +111,10 @@ export default ({
 							<div className="btn-group">
 								<button
 									onClick={ClosePopBox}
-									className="btn-check">
+									className={
+										uiSetting.popBox?.submitBtn ??
+										"btn-check"
+									}>
 									{i18n.lbl_Close}
 								</button>
 							</div>
@@ -131,12 +144,18 @@ export default ({
 					hasBtn: true,
 					btnBar: (
 						<div className="btn-group">
-							<button className="blue" onClick={ClosePopBox}>
+							<button
+								className={
+									uiSetting.popBox?.cancelBtn ?? "blue"
+								}
+								onClick={ClosePopBox}>
 								{i18n.lbl_Cancel}
 							</button>
 							<button
 								onClick={RedirectToProfile}
-								className="btn-check">
+								className={
+									uiSetting.popBox?.submitBtn ?? "btn-check"
+								}>
 								{i18n.lbl_GoNow}
 							</button>
 						</div>
@@ -166,12 +185,18 @@ export default ({
 					hasBtn: true,
 					btnBar: (
 						<div className="btn-group">
-							<button className="blue" onClick={ClosePopBox}>
+							<button
+								className={
+									uiSetting.popBox?.cancelBtn ?? "blue"
+								}
+								onClick={ClosePopBox}>
 								{i18n.lbl_Later}
 							</button>
 							<Link
 								to={`/${path.deposit.root}`}
-								className="btn-check">
+								className={
+									uiSetting.popBox?.submitBtn ?? "btn-check"
+								}>
 								{i18n.lbl_DepositNow}
 							</Link>
 						</div>
@@ -216,95 +241,15 @@ export default ({
 		<Redirect to={redirectPath} noThrow />
 	) : userInfo.isLogin === false && !_isExpiry ? (
 		<Link
-			className={class_JoinNowBtn ?? "btn-check"}
+			className={uiSetting.joinBtn ?? "btn-check"}
 			to={`/${path.login.root}`}>
 			{i18n.lbl_PromoJoinNow}
 		</Link>
 	) : userInfo.isLogin && !promotionInfo.isJoin && !_isExpiry ? (
 		<button
-			className={class_JoinNowBtn ?? "btn-check"}
+			className={uiSetting.joinBtn ?? "btn-check"}
 			onClick={onJoinPromotion.bind(this, promotionInfo)}>
 			{i18n.lbl_PromoJoinNow}
 		</button>
 	) : null;
-};
-
-const ClaimWithLockedAmount = ({
-	i18n,
-	promotionInfo,
-	ClosePopBox,
-	SetClaimPromotion
-}) => {
-	const [warning, setWarning] = useState({ status: false, msg: "" });
-	const [claimAmount, setClaimAmount] = useState("");
-
-	const OnChangeClaimAmount = e => {
-		setClaimAmount(e.target.value);
-		if (warning.status) {
-			setWarning({ status: false, msg: "" });
-		}
-	};
-
-	const checkClaimAmount = ({ _claimAmount, requiredAmount, maxAmount }) => {
-		if (_claimAmount === "" || isNaN(_claimAmount)) {
-			return false;
-		} else {
-			let num_claimAmount = Number(_claimAmount);
-			return (
-				num_claimAmount >= requiredAmount &&
-				num_claimAmount <= maxAmount
-			);
-		}
-	};
-
-	const onJoinPromotion = ({
-		_claimAmount,
-		bonusCode,
-		requiredAmount,
-		maxAmount
-	}) => {
-		if (checkClaimAmount({ _claimAmount, requiredAmount, maxAmount })) {
-			SetClaimPromotion({
-				bonusCode: bonusCode,
-				LockedAmount: _claimAmount
-			});
-		} else {
-			setWarning({
-				status: true,
-				msg: `${_claimAmount} ${i18n.lbl_NotinLimit}`
-			});
-		}
-	};
-
-	return (
-		<>
-			<div className="txt-lightgray text-center">
-				{i18n.lbl_PleaseEnterClaimAmount}
-			</div>
-			<Inputbox
-				value={claimAmount}
-				onChange={OnChangeClaimAmount}
-				inputType="tel"
-				Warning={warning}
-			/>
-			<div className="text-org">
-				{`${i18n.lbl_ClaimAmountRange} : ${number_format(
-					promotionInfo.requiredAmount
-				)} ~ ${number_format(promotionInfo.maxAmount)}`}
-			</div>
-			<div className="btn-group">
-				<button className="white" onClick={ClosePopBox}>
-					{i18n.lbl_Cancel}
-				</button>
-				<button
-					className="orange"
-					onClick={onJoinPromotion.bind(this, {
-						...promotionInfo,
-						_claimAmount: claimAmount
-					})}>
-					{i18n.lbl_PromoJoinNow}
-				</button>
-			</div>
-		</>
-	);
 };

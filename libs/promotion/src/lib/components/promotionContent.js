@@ -23,7 +23,7 @@ export default ({
 		}`}>
 		{_isClaimed ? (
 			<div className="claimed"></div>
-		) : _isNew ? (
+		) : _isNew && !_isExpiry ? (
 			<div className="new active"></div>
 		) : null}
 		<img src={promotionInfo.banner} alt={promotionInfo.title} />

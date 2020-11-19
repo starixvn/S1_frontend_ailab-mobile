@@ -327,7 +327,7 @@
 	"lbl_PromotionCategory1": "Nạp Lần Đầu",
 	"lbl_FreeBet": "Cược Miễn Phí",
 	"lbl_MinAmount": "Số tiền tối thiểu",
-	"lbl_RequireMinAmountHint_Front": "Tiền gửi tối thiểu là: ",
+	"lbl_RequireMinAmountHint": "Tiền gửi tối thiểu là: ",
 	"lbl_RequireMinAmountHint_Back":"Nạp tiền ngay??",
 	"lbl_VertifyContactConfirm": "Vui lòng xác minh số điện thoại của bạn để được hưởng các chương trình khuyến mãi hấp dẫn?",
 	"lbl_VerifyNow": "Xác minh ngay bây giờ",
