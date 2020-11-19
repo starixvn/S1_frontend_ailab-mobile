@@ -2079,7 +2079,7 @@ footer > a.open {
 }
 
 .depositImgArea div img {
-  height: 10vh;
+  height: 18vw;
   background-size: 100%;
 }
 
@@ -2098,6 +2098,7 @@ footer > a.open {
   padding: 2vw;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  margin-bottom: 3vw;
 }
 
 .bankCard img {
