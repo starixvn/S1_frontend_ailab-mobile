@@ -2421,7 +2421,7 @@ button.clickBtn:before {
 .casino {
   width: calc(100% - 8vw);
   min-height: calc(100% - 71vw);
-  padding: 47vw 4vw 24vw;
+  padding: 35vw 4vw 24vw;
   position: relative;
   -webkit-box-pack: normal;
       -ms-flex-pack: normal;
