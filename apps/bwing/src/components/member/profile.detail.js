@@ -256,7 +256,7 @@ const Panel = () => {
 					hasBtn: true,
 					btnBar: (
 						<div className="btn-group">
-							<button className="gary" onClick={closePopbox}>
+							<button className="gray" onClick={closePopbox}>
 								{i18n["lbl_Later"]}
 							</button>
 							<button className="blue" onClick={clickOtp}>

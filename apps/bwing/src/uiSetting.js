@@ -1,6 +1,8 @@
 export const Promotion = {
-	promotionCard: {
-		detailBtn: "orange",
-		joinNow: "yellow"
-	}
+	popBox: {
+		submitBtn: "blue",
+		cancelBtn: "gray"
+	},
+	joinBtn: "blue",
+	detailBtn: "gray"
 };
