@@ -367,6 +367,8 @@
 	"lbl_Refno":"Số tham chiếu",
 	"lbl_BankSlipUploadAgain":"Upload file again",
 	"lbl_HaveUploadedFile":"You've uploaded file",
-	"lbl_EnterAccountNumber": "Nhập số tài khoản"
+	"lbl_EnterAccountNumber": "Nhập số tài khoản",
+	"lbl_Yes": "Đồng Ý",
+	"lbl_No": "Số"
 
 }

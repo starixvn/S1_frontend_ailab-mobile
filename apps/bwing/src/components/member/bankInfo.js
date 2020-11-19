@@ -11,6 +11,8 @@ import Dropdown from "../common/dropdown.image";
 import config from "../../config";
 import Loading from "../common/loading";
 import Step from "./bankInfo.step";
+import AddCardPanel from "./bankInfo.addCard";
+import ShowCardPanel from "./bankInfo.showCard";
 
 const initWarningState = {
 	RealName: {
@@ -28,11 +30,12 @@ const BankInfo = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { i18n } = useContext(i18nContext);
 	const [siteBankInfoState, setSiteBankInfoState] = useState([]);
-	const [getBankInfo, setGetBankInfo] = useState([]);
-	const [userValueState, setUserValueState] = useState({});
+	const [custBankInfo, setCustBankInfo] = useState([]);
+	const [userValue, setUserValue] = useState({});
 	const [bankSelectedIdx, setBankSelectedIdx] = useState(0);
 	const [warningState, setWarningState] = useState(initWarningState);
 	const [loading, setLoading] = useState(true);
+	const [step, setStep] = useState(1);
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -57,7 +60,7 @@ const BankInfo = () => {
 										SysId: i.sysId
 									};
 								});
-								setGetBankInfo(() => getBankInfoArr);
+								setCustBankInfo(() => getBankInfoArr);
 							}
 						} else {
 							setPopBox({
@@ -108,7 +111,7 @@ const BankInfo = () => {
 						setSiteBankInfoState(() => bankInfoArr);
 						setBankSelectedIdx(0);
 						setWarningState(initWarningState);
-						setUserValueState({});
+						setUserValue({});
 					} else {
 						setPopBox({
 							isOpen: true,
@@ -159,7 +162,7 @@ const BankInfo = () => {
 			}
 		}
 
-		setUserValueState(prevState => ({
+		setUserValue(prevState => ({
 			...prevState,
 			[col]: val
 		}));
@@ -177,7 +180,7 @@ const BankInfo = () => {
 
 	const EditField = (col, e) => {
 		let val = e.target.value;
-		setUserValueState(prevState => ({
+		setUserValue(prevState => ({
 			...prevState,
 			[col]: val
 		}));
@@ -201,7 +204,7 @@ const BankInfo = () => {
 									SysId: i.sysId
 								};
 							});
-							setGetBankInfo(preV => getBankInfoArr);
+							setCustBankInfo(preV => getBankInfoArr);
 							setUserInfo(prevState => ({
 								...prevState,
 								accountName: data.accountName
@@ -287,10 +290,7 @@ const BankInfo = () => {
 
 	const realNameCheck = () => {
 		let checked = true;
-		if (
-			userValueState.RealName === "" ||
-			userValueState.RealName === undefined
-		) {
+		if (userValue.RealName === "" || userValue.RealName === undefined) {
 			checked = false;
 			setWarningState(prevState => {
 				return {
@@ -318,8 +318,8 @@ const BankInfo = () => {
 	const bankAccountCheck = () => {
 		let checked = true;
 		if (
-			userValueState.BankAccount === "" ||
-			userValueState.BankAccount === undefined
+			userValue.BankAccount === "" ||
+			userValue.BankAccount === undefined
 		) {
 			checked = false;
 			setWarningState(prevState => {
@@ -356,9 +356,8 @@ const BankInfo = () => {
 
 			if (checked) {
 				let bankInfoData = {
-					AccountName:
-						userInfo.accountName ?? userValueState.RealName,
-					AccountNo: userValueState.BankAccount,
+					AccountName: userInfo.accountName ?? userValue.RealName,
+					AccountNo: userValue.BankAccount,
 					SysId: siteBankInfoState[bankSelectedIdx].id
 				};
 				setLoading(true);
@@ -425,7 +424,7 @@ const BankInfo = () => {
 		}
 	};
 
-	let arr = getBankInfo.map(item => {
+	let arr = custBankInfo.map(item => {
 		return (
 			<BankAccountItem
 				key={`bankAccount-${item.accountNo}`}
@@ -443,13 +442,45 @@ const BankInfo = () => {
 		<Loading />
 	) : (
 		<>
-			<div className="avatar"></div>
+			<section className="depositBox">
+				<p className="depositBox-text">
+					Distinguished guest with withdrawal requirements please
+					create your bank cards.
+				</p>
+				<Step i18n={i18n} step={step} />
+				<div className="depositInBox">
+					<div className="textFlex textArea">
+						<p>
+							<span className="icon icon-icon32px_Profile"></span>
+							Account Name
+						</p>
+						<p>
+							Tsen Ying Chuang
+							<span className="icon icon-information-solid"></span>
+						</p>
+					</div>
+				</div>
+				<div className="btn-group">
+					<a href="deposithistory.html" className="blue recentBtn">
+						Add New Bank Account
+					</a>
+				</div>
+
+				<ShowCardPanel
+					i18n={i18n}
+					custBankList={custBankInfo}
+					accountName={userInfo.accountName}
+					reload={GetCustBankInfo}
+				/>
+			</section>
+
+			{/* <div className="avatar"></div>
 			<div className="name">{userInfo.accountName}</div>
 			<>
 				{userInfo.accountName ? (
 					<div className="text-org">{i18n["lbl_ContactCSD"]}</div>
 				) : null}
-				{getBankInfo && getBankInfo.length < 3 ? (
+				{custBankInfo && custBankInfo.length < 3 ? (
 					<div className="btn-group">
 						<button className="orange" onClick={toAddBankAccount}>
 							<i className="icon icon-user-plus"></i>
@@ -461,7 +492,7 @@ const BankInfo = () => {
 					<Dropdown
 						mainKey="bankInfo-bankList"
 						options={siteBankInfoState}
-						colName="getBankInfo"
+						colName="custBankInfo"
 						className="bankLogo"
 						ImgURL={`${config.imgUrl}/common/images/BankLogo/`}
 						selectedIdx={bankSelectedIdx}
@@ -472,7 +503,7 @@ const BankInfo = () => {
 					<Inputbox
 						icon="icon-member"
 						inputType="text"
-						value={userValueState.RealName}
+						value={userValue.RealName}
 						placeholder={i18n["lbl_RealName"]}
 						onBlur={checkInputboxHandler.bind(null, "RealName")}
 						onChange={EditField.bind(null, "RealName")}
@@ -483,7 +514,7 @@ const BankInfo = () => {
 					icon="icon-newspaper"
 					Warning={warningState.BankAccount}
 					inputType="tel"
-					value={userValueState.BankAccount}
+					value={userValue.BankAccount}
 					placeholder={i18n["lbl_BankNumber"]}
 					onBlur={checkInputboxHandler.bind(null, "BankAccount")}
 					onChange={EditField.bind(null, "BankAccount")}
@@ -496,14 +527,14 @@ const BankInfo = () => {
 						{i18n["lbl_Submit"]}
 					</button>
 				</div>
-				{getBankInfo && getBankInfo.length > 0 ? (
+				{custBankInfo && custBankInfo.length > 0 ? (
 					<div className="smallTitle">
 						<i className="icon icon-library"></i>
 						{i18n["lbl_BankAccount"]}
 					</div>
 				) : null}
 				<div className="bankAccount">{arr}</div>
-			</>
+			</> */}
 		</>
 	);
 };
