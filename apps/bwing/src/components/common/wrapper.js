@@ -62,7 +62,7 @@ export const Wrapper = ({ children }) => {
 			deleteCookie("AffId");
 			deleteCookie("RefId");
 			deleteCookie("AffCode");
-		} else {
+		} else if (AffCode) {
 			setCookie("AffCode", AffCode, 7);
 			deleteCookie("AffId");
 			deleteCookie("RefId");
