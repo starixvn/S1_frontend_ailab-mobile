@@ -366,6 +366,8 @@
 	"lbl_Affiliate_ID": "Affiliate ID/Referral",
 	"lbl_Please_enter_Affiliate_ID": "Please enter Affiliate ID (Optional), It can not change once enter!",
 	"lbl_BankSlipUploadAgain":"Upload file again",
-	"lbl_HaveUploadedFile":"You've uploaded file"
+	"lbl_HaveUploadedFile":"You've uploaded file",
+	"lbl_RestoreAll": "Restore All",
+	"msg_InsufficientFund": "Insufficient Fund!"
 
 }

@@ -356,7 +356,6 @@
 	"lbl_ImageJpgPngOnly": "Căn cước công dân",
 	"lbl_Affiliate_ID": "ID Đại lý/ Người giới thiệu",
 	"lbl_Please_enter_Affiliate_ID": "Vui lòng nhập ID Đại lý (tùy chọn), Thông tin không thể thay đổi sau khi đã nhập!",
-
 	"lbl_DepositOptionHint": "Bạn có thể chọn mục nạp tiền phù hợp nhất từ những lựa chọn bên dưới:",
 	"lbl_SelectPaymentMethods": "Lựa Chọn Phương Thức",
 	"lbl_EnterAmount": "Nhập số tiền",
@@ -367,5 +366,8 @@
 	"lbl_UploadBankSlip":"Upload Bank Slip",
 	"lbl_Refno":"Số tham chiếu",
 	"lbl_BankSlipUploadAgain":"Upload file again",
-	"lbl_HaveUploadedFile":"You've uploaded file"
+	"lbl_HaveUploadedFile":"You've uploaded file",
+	"lbl_RestoreAll": "Khôi phục Tất cả",
+	"msg_InsufficientFund": "Không đủ tiền!"
+
 }
