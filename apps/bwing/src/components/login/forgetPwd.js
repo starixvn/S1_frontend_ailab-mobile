@@ -74,7 +74,7 @@ export default () => {
 								btnBar: (
 									<div className="btn-group">
 										<button
-											className="orange"
+											className="submit"
 											onClick={clickClose}>
 											OK
 										</button>

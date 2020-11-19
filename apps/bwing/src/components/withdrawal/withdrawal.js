@@ -1,6 +1,10 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
-import { number_format, isConvert, checkAmount } from "../common/common";
+import {
+	number_format,
+	isConvert,
+	checkWithdrawalAmount
+} from "../common/common";
 import {
 	api_GetWithdrawalAvailableBalance,
 	api_GetCustBankInfo
@@ -11,13 +15,14 @@ import {
 	api_SetWithdrawalCancel,
 	api_KycCheck
 } from "../../service/api/payment";
-import InputBox from "../common/inputbox";
-import config from "../../config";
 import RecentDatas from "./withdrawal.recentDatas";
-import ReloadSpin from "../common/reloadSpin";
 import path from "../../path";
 import { Redirect } from "@reach/router";
 import Loading from "../common/loading";
+import WalletPanel from "./walletPanel";
+import BankCardPanel from "./bankCardPanel";
+import AmountPanel from "./amountPanel";
+import { defIptStatus } from "../common/inputbox.hint";
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
@@ -26,7 +31,10 @@ const Panel = () => {
 	const [balanceInfo, setBalanceInfo] = useState(null);
 	const _isConvert = isConvert(userInfo.currencyId);
 	const [amount, setAmount] = useState("");
-	const [warning, setWarning] = useState({ status: false, msg: "" });
+	const [warning, setWarning] = useState({
+		status: defIptStatus.default,
+		msg: ""
+	});
 	const [selBank, setSelBank] = useState(null);
 	const [bankInfo, setbankInfo] = useState({
 		accountName: "",
@@ -96,7 +104,6 @@ const Panel = () => {
 									accountName: res.data.data.accountName,
 									bankList: res.data.data.bankInfoDetail
 								}));
-								setSelBank(res.data.data.bankInfoDetail?.[0]);
 								if (!pageVerify) {
 									setPageVerify(true);
 								}
@@ -223,36 +230,34 @@ const Panel = () => {
 			: 0;
 
 	const VaildAmount = _amount => {
-		let result = checkAmount(
+		let result = checkWithdrawalAmount(
 			_amount,
-			selBank?.minAmount,
-			selBank?.maxAmount,
+			balanceInfo?.availableBalance,
 			_isConvert,
 			i18n
 		);
 		if (result.status !== 0) {
 			setWarning({
-				status: true,
+				status: defIptStatus.warning,
 				msg: result.msg
 			});
 		} else {
 			setWarning({
-				status: false,
+				status: defIptStatus.verified,
 				msg: ""
 			});
 		}
 		return result.status === 0;
 	};
 
-	const EditAmount = e => {
-		let value = e.target.value;
+	const EditAmount = value => {
 		VaildAmount(value);
 		setAmount(value);
 	};
 
 	const ClickSubmit = () => {
 		if (pageVerify) {
-			let result = VaildAmount(amount);
+			let result = VaildAmount(amount) && selBank;
 			if (result) {
 				const RedirectToNext = (accountNo, _real_amount, sysId) => {
 					api_WithdrawalReq(accountNo, _real_amount, sysId).then(
@@ -262,22 +267,38 @@ const Panel = () => {
 									res.data.errorCode === 0 ||
 									res.data.errorCode === 2
 								) {
-									let kycProcess = KycCheck(false);
-									if (!kycProcess) {
-										setAmount("");
-										api_GetWithdrawalInfoRecent().then(
-											res => {
-												if (
-													res.data.errorCode === 0 &&
-													isMountedRef.current
-												) {
-													setRecentDatas(
-														res.data.data
-													);
+									KycCheck(false).then(kycProcess => {
+										if (!kycProcess) {
+											setAmount("");
+											setSelBank(null);
+											api_GetWithdrawalAvailableBalance().then(
+												res => {
+													if (
+														res.data.errorCode ===
+															0 &&
+														isMountedRef.current
+													) {
+														setBalanceInfo(
+															res.data.data
+														);
+													}
 												}
-											}
-										);
-									}
+											);
+											api_GetWithdrawalInfoRecent().then(
+												res => {
+													if (
+														res.data.errorCode ===
+															0 &&
+														isMountedRef.current
+													) {
+														setRecentDatas(
+															res.data.data
+														);
+													}
+												}
+											);
+										}
+									});
 									setPopBox({ isOpen: false });
 								} else {
 									let content = res.data.message;
@@ -380,8 +401,50 @@ const Panel = () => {
 						</div>
 					)
 				});
+			} else if (!selBank) {
+				setPopBox({
+					isOpen: true,
+					title: i18n.lbl_ImportantNote,
+					content: i18n.lbl_SelectBank_Required,
+					hasBtn: false
+				});
 			}
 		}
+	};
+
+	const GetCustBankInfo = () => {
+		api_GetCustBankInfo().then(
+			res => {
+				if (isMountedRef.current) {
+					if (res.data.errorCode === 0) {
+						let datas = res.data.data;
+						let _custBankInfo =
+							datas === null ? [] : datas.bankInfoDetail;
+						setbankInfo(() => ({
+							accountName: datas?.accountName,
+							bankList: _custBankInfo
+						}));
+					} else {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: res.data.message
+						});
+					}
+					setLoading(false);
+				}
+			},
+			err => {
+				if (isMountedRef.current) {
+					setPopBox({
+						isOpen: true,
+						title: i18n.lbl_ImportantNote,
+						content: i18n.msg_ApiServerError
+					});
+					setLoading(false);
+				}
+			}
+		);
 	};
 
 	const SelectBank = b => {
@@ -455,57 +518,45 @@ const Panel = () => {
 		});
 	};
 
-	let banks = bankInfo?.bankList?.map(b => {
-		return (
-			<button
-				className={selBank?.sysId === b.sysId ? "open" : ""}
-				key={`withdrawal-bank-${b.sysId}`}
-				onClick={SelectBank.bind(this, b)}>
-				<img
-					src={`${config.imgUrl}/common/images/BankLogo/${b.bankLogo}`}
-					alt={b.bankName}
-				/>
-			</button>
-		);
-	});
-
 	return redirectPath === null ? (
 		pageVerify ? (
 			loading ? (
 				<Loading />
 			) : (
-				<>
-					<div className="avatar"></div>
-					<div className="name">{userInfo.userName}</div>
-					<div className="text-org">
-						{i18n.lbl_EligibleWithdrawalAmount}
-					</div>
-					<div className="balance">
-						{i18n[`Currency_${userInfo.currencyId}`]}{" "}
-						{number_format(_availableBalance, _isConvert)}
-						<ReloadSpin func={GetBalance} />
-					</div>
-					<InputBox
-						icon="icon-pencil"
-						value={amount}
-						inputType="tel"
-						onChange={EditAmount}
-						Warning={warning}
+				<section className="withdrawalBox">
+					<WalletPanel
+						i18n={i18n}
+						availableBalance={_availableBalance}
+						GetWithdrawalAvailableBalance={GetBalance}
 					/>
-					<div className="inputBox">
-						<div className="selectBank">{banks}</div>
-					</div>
-					<div className="btn-group">
-						<button className="submit" onClick={ClickSubmit}>
-							{i18n.lbl_Submit}
-						</button>
+					<BankCardPanel
+						i18n={i18n}
+						accountName={userInfo.accountName}
+						custBankInfo={bankInfo?.bankList}
+						selBank={selBank}
+						setSelBank={setSelBank}
+						setRedirectPath={setRedirectPath}
+						GetCustBankInfo={GetCustBankInfo}
+						SelectBank={SelectBank}
+					/>
+					<div className="subModuleList">
+						<AmountPanel
+							i18n={i18n}
+							_isConvert={_isConvert}
+							amount={amount}
+							balanceInfo={balanceInfo}
+							EditAmount={EditAmount}
+							ClickSubmit={ClickSubmit}
+							currencyId={userInfo.currencyId}
+							warning={warning}
+						/>
 					</div>
 					<RecentDatas
 						Datas={recentDatas}
 						ClickCancel={ClickCancel}
 						GetRecentDatas={GetWithdrawalInfoRecent}
 					/>
-				</>
+				</section>
 			)
 		) : null
 	) : (

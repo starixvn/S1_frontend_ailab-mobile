@@ -76,6 +76,16 @@ a {
   color: #58cdff;
 }
 
+a, button {
+  font-family: "Microsoft YaHei", sans-serif;
+  text-align: center;
+  font-size: 3vw;
+}
+
+a {
+  display: block;
+}
+
 body,
 html {
   width: 100%;
@@ -4861,6 +4871,7 @@ span.important {
   background: -webkit-gradient(linear, left top, left bottom, from(#f85f05), to(#f20505));
   background: linear-gradient(180deg, #f85f05, #f20505);
   color: #fff;
+  line-height: 30px;
 }
 
 .headerT .headerTLogin .login a {
@@ -5080,10 +5091,15 @@ span.important {
           box-sizing: border-box;
 }
 
+.menu .menuNav button.menuNavTitle {
+  width: 100%;
+}
+
 .menu .menuNav .menuNavTitle {
   padding: 15px 10px;
   font-size: 4vw;
   border-bottom: 1px solid #101d41;
+  color: white;
 }
 
 .menu .menuNav .menuNavTitle > input {
@@ -5136,6 +5152,7 @@ span.important {
   font-size: 4vw;
   border-bottom: 1px solid #101d41;
   font-weight: lighter;
+  text-align: left;
 }
 
 .menu .menuNav .menuNavTitle .menuNavOption ul li:nth-last-child(1) {

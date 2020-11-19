@@ -78,10 +78,10 @@ const Join = () => {
 	}, [nav, userInfo.langId]);
 
 	useEffect(() => {
-		let Aff = getUrlParameter("Aff") || getCookie("Aff");
+		let AffCode = getUrlParameter("AffCode") || getCookie("AffCode");
 
-		if (Aff && isMountedRef) {
-			setAffiliateidExist(Aff);
+		if (AffCode && isMountedRef) {
+			setAffiliateidExist(AffCode);
 		}
 	}, []);
 
@@ -399,9 +399,10 @@ const Join = () => {
 
 			regData["RefId"] = getUrlParameter("RefId") || getCookie("RefId");
 			regData["AffId"] = getUrlParameter("AffId") || getCookie("AffId");
-			regData["Aff"] =
-				getUrlParameter("Aff") ||
-				getCookie("Aff") ||
+			regData["Aff"] = getUrlParameter("Aff") || getCookie("Aff");
+			regData["AffCode"] =
+				getUrlParameter("AffCode") ||
+				getCookie("AffCode") ||
 				userValue.AffiliateId;
 			regData["blackbox"] = await Iov_GetBlackBox();
 

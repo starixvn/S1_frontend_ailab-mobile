@@ -39,7 +39,7 @@ const defPageInfo = {
 	},
 	message: {
 		titleKey: "lbl_Message",
-		className: "main Message",
+		className: "main",
 		hideLogo: true
 	},
 	[`/message/announcement`]: {

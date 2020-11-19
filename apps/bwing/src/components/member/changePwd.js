@@ -127,7 +127,7 @@ export default () => {
 								btnBar: (
 									<div className="btn-group">
 										<button
-											className="orange"
+											className="blue"
 											onClick={closePopbox.bind(
 												null,
 												"success"
@@ -146,7 +146,7 @@ export default () => {
 								btnBar: (
 									<div className="btn-group">
 										<button
-											className="orange"
+											className="blue"
 											onClick={closePopbox}>
 											{i18n["lbl_Confirm"]}
 										</button>

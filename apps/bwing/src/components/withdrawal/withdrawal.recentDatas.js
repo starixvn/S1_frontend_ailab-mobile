@@ -34,8 +34,8 @@ const RecentDatas = props => {
 	return (
 		<>
 			<div className="btn-group">
-				<button className="orange switch" onClick={HandleOpen}>
-					{i18n.lbl_RecentTransactions}
+				<button className="switch left" onClick={HandleOpen}>
+					{i18n.lbl_RecentTransactions.toUpperCase()}
 					<i
 						className={
 							"icon icon-circle-right" + (isOpen ? " open" : "")
@@ -46,11 +46,6 @@ const RecentDatas = props => {
 				<>
 					<div className={`recent${isOpen ? " open" : ""}`}>
 						<div className="recentTransactions">
-							<div className="smallTitle">
-								<i className="icon icon-history">
-									{i18n.lbl_RecentTransactions}
-								</i>
-							</div>
 							<ReloadSpin func={props.GetRecentDatas} />
 						</div>
 						<div className="txt-blue2">

@@ -55,11 +55,6 @@ const RecentDatas = props => {
 				<>
 					<div className={`recent${isOpen ? " open" : ""}`}>
 						<div className="recentTransactions">
-							<div className="smallTitle">
-								<i className="icon icon-history">
-									{i18n.lbl_RecentTransactions}
-								</i>
-							</div>
 							<ReloadSpin func={props.GetDepositInfoRecent} />
 						</div>
 						<div className="txt-blue2">

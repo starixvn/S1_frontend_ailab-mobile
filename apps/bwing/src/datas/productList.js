@@ -1,21 +1,3 @@
-import Sport from "../styles/img/sport.jpg";
-import Virtual_sports from "../styles/img/virtual_sports.jpg";
-import Esports from "../styles/img/e-sports.jpg";
-import LIVEcasino_DG from "../styles/img/LIVEcasino_DG.jpg";
-import LIVEcasino_PP from "../styles/img/LIVEcasino_PP.jpg";
-import LIVEcasino_AE from "../styles/img/LIVEcasino_AE.jpg";
-import LIVEcasino_AG from "../styles/img/LIVEcasino_AG.jpg";
-import LIVEcasino_AB from "../styles/img/LIVEcasino_AB.jpg";
-import LIVEcasino_SA from "../styles/img/LIVEcasino_SA.jpg";
-import LIVEcasino_EB from "../styles/img/LIVEcasino_EB.jpg";
-import Coming_soon from "../styles/img/coming_soon.jpg";
-import Fish from "../styles/img/fish.jpg";
-import Keno from "../styles/img/keno.jpg";
-import Lottery from "../styles/img/lottery.jpg";
-import SabaClub from "../styles/img/saba.jpg";
-import Cockfighting from "../styles/img/cockfighting.jpg";
-import Casino from "../styles/img/casino.jpg";
-import Affiliate from "../styles/img/affiliate.jpg";
 import { siteInfo } from "../config";
 
 export const defGameInfo = {
@@ -58,13 +40,11 @@ const gameList = langId => [
 			{
 				...defGameInfo.Sports,
 				icon: "soccer",
-				img: Sport,
 				spanTextKey: "lbl_Sports"
 			},
 			{
 				...defGameInfo.VirtualSports,
 				icon: "virtual-sports",
-				img: Virtual_sports,
 				spanTextKey: "lbl_VirtualSports"
 			}
 		]
@@ -77,7 +57,6 @@ const gameList = langId => [
 			{
 				...defGameInfo.CockFighting,
 				icon: "e-sports",
-				img: Cockfighting,
 				spanTextKey: "lbl_CockFighting"
 			}
 		]
@@ -90,25 +69,21 @@ const gameList = langId => [
 			{
 				...defGameInfo.sabaClub,
 				icon: "game",
-				img: SabaClub,
 				spanTextKey: "lbl_SabaClub"
 			},
 			{
 				...defGameInfo.Fishing,
 				icon: "game",
-				img: Fish,
 				spanTextKey: "lbl_Fishing"
 			},
 			{
 				...defGameInfo.Keno,
 				icon: "keno",
-				img: Keno,
 				spanTextKey: "lbl_Keno"
 			},
 			{
 				...defGameInfo.lottery,
 				icon: "lottery",
-				img: Lottery,
 				spanTextKey: "lbl_Lottery"
 			}
 		]
@@ -121,7 +96,6 @@ const gameList = langId => [
 			{
 				...defGameInfo.eSports,
 				icon: "e-sports",
-				img: Esports,
 				spanTextKey: "lbl_eSports"
 			}
 		]
@@ -133,8 +107,7 @@ const gameList = langId => [
 		items: [
 			{
 				...defGameInfo.Casino_All,
-				parameter: { tpId: defGameInfo.Casino_All.tpId },
-				img: Casino
+				parameter: { tpId: defGameInfo.Casino_All.tpId }
 			}
 		]
 	},
@@ -143,35 +116,27 @@ const gameList = langId => [
 		categoryIcon: "livecasino",
 		className: "casinoList",
 		translateKey: "lbl_LiveCasino",
-		comingSoonImg: Coming_soon,
 		items: [
 			{
-				...defGameInfo.LIVEcasinoDG,
-				img: LIVEcasino_DG
+				...defGameInfo.LIVEcasinoDG
 			},
 			{
-				...defGameInfo.LIVEcasinoPP,
-				img: LIVEcasino_PP
+				...defGameInfo.LIVEcasinoPP
 			},
 			{
-				...defGameInfo.LIVEcasinoAE,
-				img: LIVEcasino_AE
+				...defGameInfo.LIVEcasinoAE
 			},
 			{
-				...defGameInfo.LIVEcasinoAG,
-				img: LIVEcasino_AG
+				...defGameInfo.LIVEcasinoAG
 			},
 			{
-				...defGameInfo.LIVEcasinoAB,
-				img: LIVEcasino_AB
+				...defGameInfo.LIVEcasinoAB
 			},
 			{
-				...defGameInfo.LIVEcasinoSA,
-				img: LIVEcasino_SA
+				...defGameInfo.LIVEcasinoSA
 			},
 			{
-				...defGameInfo.LIVEcasinoEB,
-				img: LIVEcasino_EB
+				...defGameInfo.LIVEcasinoEB
 			}
 		]
 	},
@@ -183,7 +148,6 @@ const gameList = langId => [
 		items: [
 			{
 				icon: "affiliate",
-				img: Affiliate,
 				spanTextKey: "lbl_Affiliates"
 			}
 		]
