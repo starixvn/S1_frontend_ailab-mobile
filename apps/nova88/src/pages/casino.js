@@ -4,13 +4,12 @@ import defNav from "../components/casino/defNav";
 import Nav from "../components/casino/nav";
 import SearchBox from "../components/casino/searchBox";
 import Games from "../components/casino/games";
+import { i18nContext, userInfoContext, navContext, defNavPanel } from "Context";
 import {
-	i18nContext,
-	userInfoContext,
-	navContext,
-	defNavPanel
-} from "Context";
-import { api_account_SetFavoriteGame, api_account_GetFavoriteGame, api_site_GetGamelist } from '@ailab-mobile/api';
+	api_account_SetFavoriteGame,
+	api_account_GetFavoriteGame,
+	api_site_GetGamelist
+} from "@ailab-mobile/api";
 import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
 
 const eachPageItem = 20;
@@ -159,11 +158,12 @@ class Panel extends React.Component {
 		let newFav = isRemove
 			? this.state.favorite?.filter(f => f !== key)
 			: [...this.state.favorite, key];
-		let displayGames = isRemove
-			? this.state.displayGames.filter(
-				g => !(g.tpId === tpId && g.gameId === gameId)
-			)
-			: this.state.displayGames;
+		let displayGames =
+			isRemove && this.state.selNav === defNav.FAVOURITE.key
+				? this.state.displayGames.filter(
+						g => !(g.tpId === tpId && g.gameId === gameId)
+				  )
+				: this.state.displayGames;
 		if (this.mounted) {
 			this.setState({ favorite: newFav, displayGames: displayGames });
 		}

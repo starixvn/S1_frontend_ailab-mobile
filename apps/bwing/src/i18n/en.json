@@ -369,5 +369,8 @@
 	"lbl_HaveUploadedFile":"You've uploaded file",
 	"lbl_EnterAccountNumber": "Enter Account Number",
 	"lbl_Yes": "Yes",
-	"lbl_No": "No"
+	"lbl_No": "No",
+	"lbl_RestoreAll": "Restore All",
+	"msg_InsufficientFund": "Insufficient Fund!"
+
 }

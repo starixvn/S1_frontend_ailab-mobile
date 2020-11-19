@@ -166,8 +166,8 @@ const AfterLogin = ({ i18n, currencyId, userName, allBalance }) => {
 					{i18n.lbl_Deposit}
 				</Link>
 				<button className="icon icon-wallteIcon">
-					<span>{i18n[`Currency_${currencyId}`]}</span>
-					<span>{number_format(allBalance, false)}</span>
+					<span>{i18n[`Currency_${currencyId}`]} </span>
+					<span>{allBalance}</span>
 				</button>
 				<Link
 					to={`/${path.member.root}`}

@@ -163,11 +163,12 @@ class Panel extends React.Component {
 		let newFav = isRemove
 			? this.state.favorite?.filter(f => f !== key)
 			: [...this.state.favorite, key];
-		let displayGames = isRemove
-			? this.state.displayGames.filter(
-					g => !(g.tpId === tpId && g.gameId === gameId)
-			  )
-			: this.state.displayGames;
+		let displayGames =
+			isRemove && this.state.selNav === defNav.FAVOURITE.key
+				? this.state.displayGames.filter(
+						g => !(g.tpId === tpId && g.gameId === gameId)
+				  )
+				: this.state.displayGames;
 		if (this.mounted) {
 			this.setState({ favorite: newFav, displayGames: displayGames });
 		}
@@ -361,7 +362,7 @@ class Panel extends React.Component {
 
 				{this.state.selGameInfo === null ? null : (
 					<div className="slotFunction open">
-						<div className="title text-org">
+						<div className="title text-blue">
 							{this.state.selGameInfo.name[
 								this.props.userInfo.langId
 							] ?? this.state.selGameInfo.name.en}
@@ -376,7 +377,7 @@ class Panel extends React.Component {
 								{this.props.i18n.lbl_Free}
 							</button>
 							<button
-								className="orange"
+								className="blue"
 								onClick={this.ClickPlay.bind(this, false)}>
 								{this.props.i18n.lbl_PlayNow}
 							</button>
