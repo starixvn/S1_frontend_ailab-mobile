@@ -371,6 +371,8 @@
 	"lbl_Yes": "Yes",
 	"lbl_No": "No",
 	"lbl_RestoreAll": "Restore All",
-	"msg_InsufficientFund": "Insufficient Fund!"
+	"msg_InsufficientFund": "Insufficient Fund!",
+	"lbl_Please_update_your_bank_account_details": "Please update your bank account details before making a withdrawal. Please note that you should input your real name as in your ID to avoid delay in your transactions. Your account name should be the same with your profile name.",
+	"lbl_BankInfo_Hint": "Distinguished guest with withdrawal requirements please create your bank cards."
 
 }

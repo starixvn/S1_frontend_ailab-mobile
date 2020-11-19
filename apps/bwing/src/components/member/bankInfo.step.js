@@ -1,5 +1,11 @@
 import React from "react";
 
+export const defStep = {
+	initPanel: 1,
+	bankPanel: 2,
+	accountPanel: 3
+};
+
 const stepDesc = [
 	{
 		descriptionKey: "lbl_AddBankAccount"
