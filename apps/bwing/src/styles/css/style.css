@@ -541,7 +541,7 @@ main.stopScroll {
 
 main .swiper-container {
   z-index: 4;
-  background: #fff;
+  background: transparent;
 }
 
 main .swiper-container .swiper-slide.swiper-slide-active {
@@ -554,8 +554,7 @@ main .swiper-container .swiper-slide.swiper-slide-active {
 }
 
 main .banner {
-  background: #fff;
-  width: 100%;
+  width: 95%;
   display: block;
   top: 12vw;
   z-index: 3;
@@ -577,7 +576,7 @@ main #Marquee {
 }
 
 main #Marquee button {
-  color: #5e5e5e;
+  color: white;
 }
 
 main #Marquee .icon {
@@ -2349,6 +2348,10 @@ footer > a.open {
       -ms-flex: 1;
           flex: 1;
   background: #010e33;
+}
+
+.countryCode + .inputBox {
+  margin: 0;
 }
 
 .text {
@@ -4256,7 +4259,7 @@ span.important {
   border-bottom: 1px solid #101d41;
 }
 
-.affiliates button {
+.affiliates button, .affiliates a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4276,7 +4279,7 @@ span.important {
   color: #fff;
 }
 
-.affiliates button span {
+.affiliates button span, .affiliates a span {
   font-size: 4vw;
   font-weight: bold;
   margin-left: 5px;
@@ -4419,6 +4422,18 @@ span.important {
   width: 100%;
 }
 
+.headerT .headerTLogout .icon-exit {
+  font-size: 5vw;
+  color: #58cdff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: -0.5vw;
+}
+
 .headerT .headerTLogout a {
   margin: 0 auto;
 }
@@ -4483,15 +4498,16 @@ span.important {
   line-height: 30px;
 }
 
-.headerT .headerTLogin .login a {
+.headerT .headerTLogin .login a, .headerT .headerTLogin .login button {
   text-decoration: none;
 }
 
-.headerT .headerTLogin .login a::before {
+.headerT .headerTLogin .login a::before, .headerT .headerTLogin .login button::before {
   font-size: 4vw;
+  margin-right: 2vw;
 }
 
-.headerT .headerTLogin .login a span {
+.headerT .headerTLogin .login a span, .headerT .headerTLogin .login button span {
   font-size: 3vw;
   color: #fff;
   margin-left: 5px;
@@ -4515,6 +4531,7 @@ span.important {
   display: inline-block;
   vertical-align: middle;
   margin: 0 10px;
+  color: white;
 }
 
 .headerB .nav.active {
@@ -4571,6 +4588,10 @@ span.important {
   text-decoration: none;
   color: #fff;
   font-size: 4vw;
+}
+
+.menu .menuContent .icon-wallteIcon:before {
+  margin-right: 2vw;
 }
 
 .menu .menuContent .language img {
@@ -4679,7 +4700,7 @@ span.important {
   box-sizing: border-box;
 }
 
-.menu .depositArea button {
+.menu .depositArea button, .menu .depositArea a {
   border: 0;
   width: 100px;
   height: 30px;
@@ -4689,6 +4710,15 @@ span.important {
   height: 35px;
   background-color: #1d2f62;
   font-size: 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .menu .menuNav {
@@ -4709,6 +4739,7 @@ span.important {
   font-size: 4vw;
   border-bottom: 1px solid #101d41;
   color: white;
+  text-align: left;
 }
 
 .menu .menuNav .menuNavTitle > input {
