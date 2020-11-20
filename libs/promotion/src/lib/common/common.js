@@ -9,7 +9,7 @@ const promoStatus = {
 };
 
 export const isArrayNotEmpty = arr => {
-	return Array.isArray(arr) && arr.length;
+	return Array.isArray(arr) && arr.length !== 0;
 };
 
 export const isExpiry = ({

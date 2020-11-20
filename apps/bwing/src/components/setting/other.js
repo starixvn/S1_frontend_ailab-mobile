@@ -101,12 +101,33 @@ export default () => {
 					{i18n.lbl_ContactUs}
 				</a>
 			</div>
-			{socialMedia && socialMedia.length > 0 ? (
-				<div>
-					<span>{i18n.lbl_SocialMedia}</span>
-					{socialMedia}
-				</div>
-			) : null}
+			<div>
+				<span>{i18n.lbl_SocialMedia}</span>
+				<a
+					className="icon icon-facebook"
+					href="https://www.facebook.com/Bwingtttt"
+					target="_blank">
+					{i18n.lbl_Facebook}
+				</a>
+				<a
+					className="icon icon-youtube"
+					href="https://www.youtube.com/channel/UCDvFS9eTrOEYuVjb3BNQ3bg/featured"
+					target="_blank">
+					Youtube
+				</a>
+				<a
+					className="icon icon-twitter"
+					href="https://twitter.com/bwingofficial"
+					target="_blank">
+					{i18n.lbl_Twitter}
+				</a>
+				<a
+					className="icon icon-tiktok"
+					href="https://www.tiktok.com/@bwingpro"
+					target="_blank">
+					Tiktok
+				</a>
+			</div>
 		</div>
 	);
 };
