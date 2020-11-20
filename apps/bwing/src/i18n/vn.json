@@ -367,8 +367,13 @@
 	"lbl_Refno":"Số tham chiếu",
 	"lbl_BankSlipUploadAgain":"Upload file again",
 	"lbl_HaveUploadedFile":"You've uploaded file",
+	"lbl_EnterAccountNumber": "Nhập số tài khoản",
+	"lbl_Yes": "Đồng Ý",
+	"lbl_No": "Số",
 	"lbl_RestoreAll": "Khôi phục Tất cả",
 	"msg_InsufficientFund": "Không đủ tiền!",
+	"lbl_Please_update_your_bank_account_details": "Vui lòng cập nhật thông tin tài khoản ngân hàng trước khi rút tiền. Lưu ý rằng bạn nên điền đúng tên thật như trong CMND để giao dịch được suôn sẻ. Tên tài khoản phải giống với tên trong hồ sơ của bạn.",
+	"lbl_BankInfo_Hint": "Distinguished guest with withdrawal requirements please create your bank cards.",
 	"lbl_ClaimAmountRange":"Khoảng tiền nạp",
 	"lbl_PleaseEnterClaimAmount":"Vui lòng nhập số tiền bạn muốn để nhận khuyến mãi",
 	"lbl_ViewAll":"Xem Thêm",
@@ -377,7 +382,10 @@
 	"lbl_BankSlipRequirement2":"Maximum number of files: 1",
 	"lbl_BankSlipRequirement3":"Accepted file types: JPG, JPEG, PNG, GIF",
 	"lbl_RemindForName": "Tên đầy đủ của bạn phải đúng với tên trên tài khoản Ngân hàng để thực hiện việc nạp/ rút tiền nhanh",
-	"lbl_PhoneTooltip": "Vui lòng nhập số điện thoại của bạn. Lưu ý: số điện thoại này sẽ không thể thay đổi!"
-
+	"lbl_PhoneTooltip": "Vui lòng nhập số điện thoại của bạn. Lưu ý: số điện thoại này sẽ không thể thay đổi!",
+	"lbl_Bank_Step_1": "Add New Account",
+	"lbl_Bank_Step_2": "Choose Bank Name",
+	"lbl_Bank_Step_3": "Bound Bank Card",
+	"lbl_Please_input_your_real_name_as_in_your_ID": "Lưu ý rằng bạn nên điền đúng tên thật như trong CMND để giao dịch được suôn sẻ. Tên tài khoản phải giống với tên trong hồ sơ của bạn."
 
 }

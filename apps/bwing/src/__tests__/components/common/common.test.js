@@ -1,4 +1,4 @@
-import { number_format, isConvert } from "./common";
+import { number_format, isConvert } from "../../../components/common/common";
 
 describe("number_format", () => {
 	test("Test can return expect format", () => {

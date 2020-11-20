@@ -46,6 +46,7 @@ import Message from "./pages/message";
 import PersonalMsg from "./components/message/personalMsg";
 import Announcement from "./components/message/announcement";
 
+import Other from "./components/setting/other";
 import Casino from "./pages/casino";
 import ForgetPwd from "./components/login/forgetPwd";
 import ResetPwd from "./components/login/resetPwd";
@@ -129,6 +130,7 @@ const Index = () => {
 								path={path.message.sub.announcement.root}
 							/>
 						</Message>
+						<Other path={`${path.other.root}`} />
 						<Casino path={`${path.casino.root}`} />
 						<Casino path={`${path.casino.root}/:tpId`} />
 						<Whoami path={path.whoami.root} />
