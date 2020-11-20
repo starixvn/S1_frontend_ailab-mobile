@@ -46,23 +46,23 @@ const UserGuide = ({ i18n, langId }) => {
 						<span>{i18n.lbl_HowToDepoist}</span>
 					</a>
 					<a
+						href={TandC(langId).HowToBet}
+						target="_blank"
+						className="icon icon-GUIDE4">
+						<span>{i18n.lbl_HowToPlay}</span>
+					</a>
+				</div>
+				<div className="userGuide-box__top userGuide-box__bottom">
+					<a
 						href={TandC(langId).HowToWithdraw}
 						target="_blank"
 						className="icon icon-GUIDE2">
 						<span>{i18n.lbl_HowToWithdraw}</span>
 					</a>
-				</div>
-				<div className="userGuide-box__top userGuide-box__bottom">
-					<a
-						href={TandC(langId).HowToBet}
-						target="_blank"
-						className="icon icon-GUIDE3">
-						<span>{i18n.lbl_HowToPlay}</span>
-					</a>
 					<a
 						href={TandC(langId).FAQ}
 						target="_blank"
-						className="icon icon-GUIDE4">
+						className="icon icon-GUIDE3">
 						<span>{i18n.lbl_FAQ}</span>
 					</a>
 				</div>
