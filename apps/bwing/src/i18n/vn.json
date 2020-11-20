@@ -372,6 +372,9 @@
 	"lbl_ClaimAmountRange":"Khoảng tiền nạp",
 	"lbl_PleaseEnterClaimAmount":"Vui lòng nhập số tiền bạn muốn để nhận khuyến mãi",
 	"lbl_ViewAll":"Xem Thêm",
-	"lbl_Total":"Tổng Cộng"
+	"lbl_Total":"Tổng Cộng",
+	"lbl_BankSlipRequirement1":"Maximum file size 4MB each.",
+	"lbl_BankSlipRequirement2":"Maximum number of files: 1",
+	"lbl_BankSlipRequirement3":"Accepted file types: JPG, JPEG, PNG, GIF"
 
 }

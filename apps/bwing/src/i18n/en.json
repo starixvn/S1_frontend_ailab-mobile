@@ -372,6 +372,9 @@
 	"lbl_ClaimAmountRange":"Claim Amount Range",
 	"lbl_PleaseEnterClaimAmount":"Please enter your prefer amount to claim promotion",
 	"lbl_ViewAll":"View All",
-	"lbl_Total":"Total"
+	"lbl_Total":"Total",
+	"lbl_BankSlipRequirement1":"Maximum file size 4MB each.",
+	"lbl_BankSlipRequirement2":"Maximum number of files: 1",
+	"lbl_BankSlipRequirement3":"Accepted file types: JPG, JPEG, PNG, GIF"
 
 }
