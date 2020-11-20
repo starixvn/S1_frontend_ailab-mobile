@@ -8,13 +8,13 @@ export const defStep = {
 
 const stepDesc = [
 	{
-		descriptionKey: "lbl_AddBankAccount"
+		descriptionKey: "lbl_Bank_Step_1"
 	},
 	{
-		descriptionKey: "lbl_Step_SelectBank"
+		descriptionKey: "lbl_Bank_Step_2"
 	},
 	{
-		descriptionKey: "lbl_EnterAccountNumber"
+		descriptionKey: "lbl_Bank_Step_3"
 	}
 ];
 

@@ -113,7 +113,7 @@ export default ({ i18n, accountName, custBankList, reload }) => {
 					{custBankList?.length ?? 0}/3
 				</p>
 			</div>
-			{custBankList?.length > 0 ? <>{arr}</> : null}
+			{custBankList?.length > 0 ? arr : null}
 		</>
 	);
 };
