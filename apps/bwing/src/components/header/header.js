@@ -135,28 +135,25 @@ export default () => {
 						<img src={Logo} alt="logo" />
 					</Link>
 					{userInfo.isLogin === true ? (
-						<>
-							<button
-								className="icon icon-exit"
-								onClick={handleLogout}></button>
-							<AfterLogin
-								i18n={i18n}
-								currencyId={userInfo.currencyId}
-								userName={userInfo.userName}
-								allBalance={
-									!walletInfo.allBalance
-										? 0
-										: number_format(
-												walletInfo.allBalance,
-												false
-										  )
-								}
-							/>
-						</>
+						<button
+							className="icon icon-exit"
+							onClick={handleLogout}></button>
 					) : (
 						<BeforeLogin i18n={i18n} />
 					)}
 				</div>
+				{userInfo.isLogin === true ? (
+					<AfterLogin
+						i18n={i18n}
+						currencyId={userInfo.currencyId}
+						userName={userInfo.userName}
+						allBalance={
+							!walletInfo.allBalance
+								? 0
+								: number_format(walletInfo.allBalance, false)
+						}
+					/>
+				) : null}
 			</div>
 			<Menu
 				i18n={i18n}
