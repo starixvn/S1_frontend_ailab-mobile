@@ -81,11 +81,19 @@ const ContactUs = ({ i18n }) => {
 				<a
 					href="https://www.facebook.com/Bwingtttt/"
 					target="_blank"
-					className="icon icon-contactUS1"></a>
+					className="icon icon-facebook"></a>
+				<a
+					href="https://www.youtube.com/channel/UCDvFS9eTrOEYuVjb3BNQ3bg/featured"
+					target="_blank"
+					className="icon icon-youtube"></a>
 				<a
 					href="https://twitter.com/bwingofficial"
 					target="_blank"
-					className="icon icon-contactUS2"></a>
+					className="icon icon-twitter"></a>
+				<a
+					href="https://www.tiktok.com/@bwingpro"
+					target="_blank"
+					className="icon icon-tiktok"></a>
 			</div>
 		</div>
 	);
