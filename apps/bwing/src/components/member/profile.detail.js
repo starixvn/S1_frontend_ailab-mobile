@@ -13,13 +13,13 @@ import { defPopBoxType } from "../common/popbox";
 import path from "../../path";
 import { Link } from "@reach/router";
 import { redirectToPrev } from "./profile.redirect";
-import { initWarningState, infoList, initUserValue } from "./profile.def";
+import { initWarning, infoList, initUserValue } from "./profile.def";
 
 const Panel = () => {
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
-	const [warningState, setWarningState] = useState(initWarningState);
+	const [warning, setWarning] = useState(initWarning);
 	const _initUserValue = initUserValue(userInfo);
 	const [userValue, setuserValue] = useState(_initUserValue);
 	const country = userInfo.country ? userInfo.country : userInfo.perCountry;
@@ -117,7 +117,7 @@ const Panel = () => {
 						const res = response.data;
 						if (res.errorCode === 0) {
 							if (res.data === true) {
-								setWarningState(prevState => {
+								setWarning(prevState => {
 									return {
 										...prevState,
 										Email: {
@@ -190,7 +190,7 @@ const Panel = () => {
 			msg = result.message;
 		}
 
-		setWarningState(prevState => {
+		setWarning(prevState => {
 			return {
 				...prevState,
 				[col]: {
@@ -214,7 +214,7 @@ const Panel = () => {
 			_birthCheck.checked;
 
 		if (!checked) {
-			setWarningState(prev => ({
+			setWarning(prev => ({
 				...prev,
 				AccountName: {
 					status: !_accountNameCheck.checked,
@@ -323,7 +323,7 @@ const Panel = () => {
 
 								redirectToPrev(i18n, setPopBox, closePopbox);
 							} else if (errorCode === 21) {
-								setWarningState(prevState => ({
+								setWarning(prevState => ({
 									...prevState,
 									Phone: { status: true, msg: message }
 								}));
@@ -427,7 +427,7 @@ const Panel = () => {
 					<Inputbox
 						onBlur={checkInputboxHandler.bind(null, "AccountName")}
 						onChange={EditField.bind(null, "AccountName")}
-						Warning={warningState.AccountName}
+						Warning={warning.AccountName}
 						value={userValue.AccountName}
 					/>
 				</>
@@ -440,7 +440,7 @@ const Panel = () => {
 						onBlur={checkInputboxHandler.bind(null, "Email")}
 						onChange={EditField.bind(null, "Email")}
 						Tips={i18n["lbl_EmailToolTip"]}
-						Warning={warningState.Email}
+						Warning={warning.Email}
 						value={userValue.Email}
 					/>
 				</>
@@ -456,15 +456,15 @@ const Panel = () => {
 						onBlur={checkInputboxHandler.bind(null, "Birthday")}
 						value={userValue.Birthday}
 						max={moment(legalDate).format("YYYY-MM-DD")}
-						iconModuleWarning={warningState.Birthday.status}
+						iconModuleWarning={warning.Birthday.status}
 						label={true}
 						ClassName="errortip"
 					/>
 					<div
 						className={`errortip ${
-							warningState.Birthday.status ? "open" : ""
+							warning.Birthday.status ? "open" : ""
 						}`}>
-						{warningState.Birthday.msg}
+						{warning.Birthday.msg}
 					</div>
 				</>
 			) : null}
@@ -480,13 +480,13 @@ const Panel = () => {
 							onBlur={checkInputboxHandler.bind(null, "PhoneNo")}
 							onChange={EditField.bind(null, "PhoneNo")}
 							value={userValue.PhoneNo}
-							WarningIcon={warningState.PhoneNo.status}
+							WarningIcon={warning.PhoneNo.status}
 						/>
 						<div
 							className={`errortip ${
-								warningState.PhoneNo.status ? "open" : ""
+								warning.PhoneNo.status ? "open" : ""
 							}`}>
-							{warningState.PhoneNo.msg}
+							{warning.PhoneNo.msg}
 						</div>
 					</div>
 				</>

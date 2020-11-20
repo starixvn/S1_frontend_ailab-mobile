@@ -10,7 +10,7 @@ export const initUserValue = userInfo => {
 	};
 };
 
-export const initWarningState = {
+export const initWarning = {
 	AccountName: {
 		status: false,
 		msg: ""
