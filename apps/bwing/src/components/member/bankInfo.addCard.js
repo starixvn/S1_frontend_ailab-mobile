@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState, useContext } from "react";
-import { api_GetBankInfoSysList } from "../../service/api/payment";
 import { api_SetCustBankInfo } from "../../service/api/accountStrict";
 import { popBoxContext } from "../common/context";
 import config from "../../config";
@@ -22,12 +21,13 @@ export default ({
 	step,
 	setStep,
 	accountName,
-	setLoading,
-	GetCustBankInfo
+	siteBankList,
+	bankSelectedIdx,
+	setBankSelectedIdx,
+	GetCustBankInfo,
+	GetBankInfoSysList
 }) => {
 	const { setPopBox } = useContext(popBoxContext);
-	const [siteBankList, setSiteBankList] = useState([]);
-	const [bankSelectedIdx, setBankSelectedIdx] = useState(0);
 	const [userValue, setUserValue] = useState({});
 	const [warning, setWarning] = useState(initWarning);
 	const isMountedRef = useRef(null);
@@ -39,32 +39,7 @@ export default ({
 
 	const clickAddBtn = () => {
 		setStep(defStep.bankPanel);
-		api_GetBankInfoSysList().then(
-			res => {
-				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
-						setSiteBankList(res.data.data);
-					} else {
-						setPopBox({
-							isOpen: true,
-							title: i18n["lbl_ImportantNote"],
-							content: res.data.message
-						});
-					}
-					setLoading(false);
-				}
-			},
-			err => {
-				if (isMountedRef.current) {
-					setPopBox({
-						isOpen: true,
-						title: i18n["lbl_ImportantNote"],
-						content: i18n["msg_ApiServerError"]
-					});
-					setLoading(false);
-				}
-			}
-		);
+		GetBankInfoSysList();
 	};
 
 	const toPrevStep = () => {
@@ -82,6 +57,11 @@ export default ({
 
 	const editField = (col, e) => {
 		let val = e.target.value;
+
+		if (col === "accountNo") {
+			val = val.replace(/[^0-9,.]+/g, "");
+		}
+
 		setUserValue(prev => ({
 			...prev,
 			[col]: val
@@ -104,6 +84,26 @@ export default ({
 			[col]: {
 				status: _status,
 				msg: _msg !== "" ? i18n[_msg] : ""
+			}
+		}));
+	};
+
+	const clickInfo = col => {
+		let _msg = "";
+
+		if (warning[col].msg === "") {
+			if (col === "accountName") {
+				_msg = i18n["lbl_Please_input_your_real_name_as_in_your_ID"];
+			} else {
+				_msg = i18n["lbl_EnterAccountNumber"];
+			}
+		}
+
+		setWarning(prev => ({
+			...prev,
+			[col]: {
+				status: false,
+				msg: _msg
 			}
 		}));
 	};
@@ -208,6 +208,7 @@ export default ({
 								{i18n["lbl_RealName"]}
 							</div>
 							<Inputbox
+								className="inputBoxText"
 								value={userValue.accountName}
 								onChange={editField.bind(this, "accountName")}
 								onBlur={checkInput.bind(
@@ -215,22 +216,44 @@ export default ({
 									userValue.accountName,
 									"accountName"
 								)}
-								Warning={warning.accountName}
+								WarningIcon={warning.accountName.status}
+								placeholder={i18n["msg_EnterRealName"]}
+								iconModuleName={
+									!warning.accountName.status
+										? "icon-information-solid"
+										: null
+								}
+								clickInfo={clickInfo.bind(this, "accountName")}
 							/>
+							{warning.accountName.msg ? (
+								<div>{warning.accountName.msg}</div>
+							) : null}
 						</>
 					)}
 
 					<div className="input-title">{i18n["lbl_BankNumber"]}</div>
 					<Inputbox
 						value={userValue.accountNo}
+						className="inputBoxText"
 						onChange={editField.bind(this, "accountNo")}
 						onBlur={checkInput.bind(
 							this,
 							userValue.accountNo,
 							"accountNo"
 						)}
-						Warning={warning.accountNo}
+						WarningIcon={warning.accountNo.status}
+						placeholder="1111 2222 3333 4444"
+						iconModuleName={
+							!warning.accountNo.status
+								? "icon-information-solid"
+								: null
+						}
+						clickInfo={clickInfo.bind(this, "accountNo")}
 					/>
+					{warning.accountNo.msg ? (
+						<div>{warning.accountNo.msg}</div>
+					) : null}
+
 					<div className="btn-group">
 						<button className="blue" onClick={clickSubmit}>
 							{i18n["lbl_Submit"].toUpperCase()}

@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import { api_GetCustBankInfo } from "../../service/api/account";
+import { api_GetBankInfoSysList } from "../../service/api/payment";
 import Loading from "../common/loading";
 import Step, { defStep } from "./bankInfo.step";
 import AddCardPanel from "./bankInfo.addCard";
@@ -11,6 +12,8 @@ const BankInfo = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { i18n } = useContext(i18nContext);
 	const [custBankInfo, setCustBankInfo] = useState([]);
+	const [siteBankList, setSiteBankList] = useState([]);
+	const [bankSelectedIdx, setBankSelectedIdx] = useState(0);
 	const [loading, setLoading] = useState(true);
 	const [step, setStep] = useState(defStep.initPanel);
 	const [tip, setTip] = useState("");
@@ -116,6 +119,35 @@ const BankInfo = () => {
 		);
 	};
 
+	const GetBankInfoSysList = () => {
+		api_GetBankInfoSysList().then(
+			res => {
+				if (isMountedRef.current) {
+					if (res.data.errorCode === 0) {
+						setSiteBankList(res.data.data);
+					} else {
+						setPopBox({
+							isOpen: true,
+							title: i18n["lbl_ImportantNote"],
+							content: res.data.message
+						});
+					}
+					setLoading(false);
+				}
+			},
+			err => {
+				if (isMountedRef.current) {
+					setPopBox({
+						isOpen: true,
+						title: i18n["lbl_ImportantNote"],
+						content: i18n["msg_ApiServerError"]
+					});
+					setLoading(false);
+				}
+			}
+		);
+	};
+
 	const showTip = () => {
 		let _tip = tip === "" ? i18n["lbl_ContactCSD"] : "";
 		setTip(_tip);
@@ -153,8 +185,11 @@ const BankInfo = () => {
 					step={step}
 					setStep={setStep}
 					accountName={userInfo?.accountName}
-					setLoading={setLoading}
+					siteBankList={siteBankList}
+					bankSelectedIdx={bankSelectedIdx}
+					setBankSelectedIdx={setBankSelectedIdx}
 					GetCustBankInfo={GetCustBankInfo}
+					GetBankInfoSysList={GetBankInfoSysList}
 				/>
 			) : null}
 
