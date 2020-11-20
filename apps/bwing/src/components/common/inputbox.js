@@ -55,7 +55,8 @@ const Inputbox = props => {
 					{props.iconModuleName ? (
 						<div className="iconModule">
 							<span
-								className={`icon ${props.iconModuleName}`}></span>
+								className={`icon ${props.iconModuleName}`}
+								onClick={props.clickInfo ?? null}></span>
 						</div>
 					) : null}
 				</>

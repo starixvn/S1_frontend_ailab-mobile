@@ -375,6 +375,9 @@
 	"lbl_Total":"Tổng Cộng",
 	"lbl_BankSlipRequirement1":"Maximum file size 4MB each.",
 	"lbl_BankSlipRequirement2":"Maximum number of files: 1",
-	"lbl_BankSlipRequirement3":"Accepted file types: JPG, JPEG, PNG, GIF"
+	"lbl_BankSlipRequirement3":"Accepted file types: JPG, JPEG, PNG, GIF",
+	"lbl_RemindForName": "Tên đầy đủ của bạn phải đúng với tên trên tài khoản Ngân hàng để thực hiện việc nạp/ rút tiền nhanh",
+	"lbl_PhoneTooltip": "Vui lòng nhập số điện thoại của bạn. Lưu ý: số điện thoại này sẽ không thể thay đổi!"
+
 
 }

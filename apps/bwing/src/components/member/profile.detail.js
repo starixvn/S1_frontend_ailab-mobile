@@ -389,6 +389,26 @@ const Panel = () => {
 		});
 	};
 
+	const clickInfo = col => {
+		let _msg = "";
+
+		if (warning[col].msg === "") {
+			if (col === "AccountName") {
+				_msg = i18n["lbl_RemindForName"];
+			} else if (col === "PhoneNo") {
+				_msg = i18n["lbl_PhoneTooltip"];
+			}
+		}
+
+		setWarning(prev => ({
+			...prev,
+			[col]: {
+				status: false,
+				msg: _msg
+			}
+		}));
+	};
+
 	let arr = _infoList
 		.filter(item => {
 			return (
@@ -425,11 +445,21 @@ const Panel = () => {
 				<>
 					<div className="input-title">{i18n["lbl_RealName"]}</div>
 					<Inputbox
+						className="inputBoxText"
 						onBlur={checkInputboxHandler.bind(null, "AccountName")}
 						onChange={EditField.bind(null, "AccountName")}
-						Warning={warning.AccountName}
+						WarningIcon={warning.AccountName.status}
 						value={userValue.AccountName}
+						iconModuleName={
+							!warning.AccountName.status
+								? "icon-information-solid"
+								: null
+						}
+						clickInfo={clickInfo.bind(this, "AccountName")}
 					/>
+					{warning.AccountName.msg ? (
+						<div>{warning.AccountName.msg}</div>
+					) : null}
 				</>
 			) : null}
 
@@ -437,11 +467,14 @@ const Panel = () => {
 				<>
 					<div className="input-title">{i18n["lbl_Email"]}</div>
 					<Inputbox
+						className="inputBoxText"
+						iconModuleName="icon-information-solid"
 						onBlur={checkInputboxHandler.bind(null, "Email")}
 						onChange={EditField.bind(null, "Email")}
 						Tips={i18n["lbl_EmailToolTip"]}
 						Warning={warning.Email}
 						value={userValue.Email}
+						clickInfo={clickInfo.bind(this, "Email")}
 					/>
 				</>
 			) : null}
@@ -481,10 +514,17 @@ const Panel = () => {
 							onChange={EditField.bind(null, "PhoneNo")}
 							value={userValue.PhoneNo}
 							WarningIcon={warning.PhoneNo.status}
+							className="inputBoxText"
+							iconModuleName={
+								!warning.PhoneNo.status
+									? "icon-information-solid"
+									: null
+							}
+							clickInfo={clickInfo.bind(this, "PhoneNo")}
 						/>
 						<div
 							className={`errortip ${
-								warning.PhoneNo.status ? "open" : ""
+								warning.PhoneNo.msg ? "open" : ""
 							}`}>
 							{warning.PhoneNo.msg}
 						</div>
