@@ -96,14 +96,8 @@ export default {
 		root: "resetPassword"
 	},
 	changePassword: { root: "changePassword" },
-	setting: {
-		root: "setting",
-		sub: {
-			root: "/",
-			other: {
-				root: "other"
-			}
-		}
+	other: {
+		root: "other"
 	},
 	kyc: {
 		root: "kyc"

@@ -18,18 +18,17 @@ import {
 import { api_GetWalletInfo } from "../../service/api/account";
 import JoinPanel from "../join/join";
 import LoginPanel from "../login/login";
-import ReloadSpin from "../common/reloadSpin";
 import { number_format } from "../common/common";
 import path from "../../path";
 import Logo from "../../styles/img/logo.png";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import Menu from "./header.menu";
 import SubMenu from "./submenu";
+import { LOGOUT } from "../../service/auth";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
-	const { userInfo } = useContext(userInfoContext);
-	const { msgCount } = useContext(msgCountContext);
+	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { walletInfo, setWalletInfo } = useContext(walletInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setNav } = useContext(navContext);
@@ -110,6 +109,16 @@ export default () => {
 		setNav(() => defNavPanel.subMenu);
 	};
 
+	const handleLogout = () => {
+		LOGOUT(() => {
+			setUserInfo(prevState => ({
+				isLogin: false,
+				langId: prevState.langId
+			}));
+			setNav(() => null);
+		});
+	};
+
 	return userInfo.isLogin === null ? null : (
 		<header id="header">
 			<div className="headerT">
@@ -126,19 +135,24 @@ export default () => {
 						<img src={Logo} alt="logo" />
 					</Link>
 					{userInfo.isLogin === true ? (
-						<AfterLogin
-							i18n={i18n}
-							currencyId={userInfo.currencyId}
-							userName={userInfo.userName}
-							allBalance={
-								!walletInfo.allBalance
-									? 0
-									: number_format(
-											walletInfo.allBalance,
-											false
-									  )
-							}
-						/>
+						<>
+							<button
+								className="icon icon-exit"
+								onClick={handleLogout}></button>
+							<AfterLogin
+								i18n={i18n}
+								currencyId={userInfo.currencyId}
+								userName={userInfo.userName}
+								allBalance={
+									!walletInfo.allBalance
+										? 0
+										: number_format(
+												walletInfo.allBalance,
+												false
+										  )
+								}
+							/>
+						</>
 					) : (
 						<BeforeLogin i18n={i18n} />
 					)}
