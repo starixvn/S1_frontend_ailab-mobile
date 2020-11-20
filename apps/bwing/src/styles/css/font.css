@@ -1,16 +1,60 @@
 @font-face {
-  font-family: "icomoon";
+  font-family: 'icomoon';
   src: url("../fonts/icomoon.woff?v=202003") format("woff");
 }
 
-.icon:before,
-.icon:after {
-  font-family: "icomoon";
-  font-size: 5vw;
+.icon:before {
+  font-family: 'icomoon';
 }
 
-.icon-moon:before {
-  font-size: 14vw;
+.casinoList .icon-GPI::before {
+  font-size: 20px !important;
+}
+
+.casinoList .icon-YGG::before {
+  font-size: 18px !important;
+}
+
+.casinoList .icon-JOKER::before {
+  font-size: 12px !important;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+}
+
+.casinoList .icon-SG::before {
+  font-size: 18px !important;
+}
+
+.casinoList .icon-PG::before {
+  font-size: 12px !important;
+}
+
+.casinoList .icon-OW::before {
+  font-size: 18px !important;
+}
+
+.livecasinoList .icon-DG:before {
+  font-size: 22px !important;
+}
+
+.livecasinoList .icon-AB:before {
+  font-size: 38px !important;
+}
+
+.livecasinoList .icon-AG:before {
+  font-size: 24px !important;
+}
+
+.livecasinoList .icon-PP:before {
+  font-size: 42px !important;
+}
+
+.livecasinoList .icon-SA:before {
+  font-size: 36px !important;
+}
+
+.icon-WM:before {
+  content: "\e9df";
 }
 
 .icon-nodata:before {
@@ -63,6 +107,10 @@
 
 .icon-icon_1_cop:before {
   content: "\e9b9";
+}
+
+.icon-tiktok:before {
+  content: "\e9e0";
 }
 
 .icon-ETH:before {
@@ -1051,6 +1099,10 @@
 
 .icon-volume-medium:before {
   content: "\ea27";
+}
+
+.icon-youtube:before {
+  content: "\ea9d";
 }
 
 .icon-home1:before {
