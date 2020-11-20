@@ -143,8 +143,8 @@ export default () => {
 			</div>
 
 			<div className="menuContent">
-				<div className="userText" href="">
-					<span>{i18n.lbl_Welcome}</span>
+				<div className="userText">
+					<span>{i18n.lbl_Welcome} </span>
 					<span>{userInfo.isLogin ? userInfo.userName : ""}</span>
 				</div>
 				{userInfo.isLogin ? (

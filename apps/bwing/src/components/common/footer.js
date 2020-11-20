@@ -60,26 +60,6 @@ const Footer = () => {
 					</div>
 					<span>{i18n.lbl_LiveChat}</span>
 				</a>
-
-				<Match path={path.setting.root}>
-					{props => {
-						let isMatch =
-							props.location.pathname ===
-								`/${path.setting.root}` ||
-							props.location.pathname ===
-								`/${path.setting.root}/${path.setting.sub.other.root}`;
-						return (
-							<Link
-								to={path.setting.root}
-								className={isMatch ? "open" : ""}>
-								<div className="circleAnimation">
-									<div className="icon icon-cog"></div>
-								</div>
-								<span>{i18n.lbl_Setting}</span>
-							</Link>
-						);
-					}}
-				</Match>
 			</footer>
 		);
 	} else {
@@ -160,25 +140,6 @@ const Footer = () => {
 									<div className="icon icon-member"></div>
 								</div>
 								<span>{i18n.lbl_Me}</span>
-							</Link>
-						);
-					}}
-				</Match>
-				<Match path={path.setting.root}>
-					{props => {
-						let isMatch =
-							props.location.pathname ===
-								`/${path.setting.root}` ||
-							props.location.pathname ===
-								`/${path.setting.root}/${path.setting.sub.other.root}`;
-						return (
-							<Link
-								to={path.setting.root}
-								className={isMatch ? "open" : ""}>
-								<div className="circleAnimation">
-									<div className="icon icon-cog"></div>
-								</div>
-								<span>{i18n.lbl_Setting}</span>
 							</Link>
 						);
 					}}
