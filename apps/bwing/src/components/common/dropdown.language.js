@@ -55,7 +55,10 @@ export class DropdownBox extends Component {
 				ref={this.wrapper}
 				className={`language${this.state.isOpen ? " open" : ""}`}
 				onClick={this.ClickDropdown}>
-				<label className="languageText">{currentSelect}</label>
+				<div className="text">
+					{currentSelect}
+					<i className="icon icon-arrow_drop_down"></i>
+				</div>
 				<div className="languageOption">
 					<ul>{rows}</ul>
 				</div>
