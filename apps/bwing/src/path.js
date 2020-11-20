@@ -11,9 +11,6 @@ export default {
 	wallet: {
 		root: "wallet"
 	},
-	livechat: {
-		root: "livechat"
-	},
 	member: {
 		root: "member",
 		sub: {

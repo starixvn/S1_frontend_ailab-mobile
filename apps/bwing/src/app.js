@@ -6,7 +6,6 @@ import { Router, createHistory, LocationProvider } from "@reach/router";
 import Home from "./pages/home";
 import Promotion from "./pages/promotion";
 import Wallet from "./pages/wallet";
-import LiveChat from "./pages/livechat";
 import Layout from "./components/common/layout";
 import Profile from "./components/member/profile";
 import BankInfo from "./components/member/bankInfo";
@@ -77,7 +76,6 @@ const Index = () => {
 
 						<PromotionInfo path={path.promotionInfo.root} />
 						<Wallet path={path.wallet.root} />
-						<LiveChat path={path.livechat.root} />
 						<Member path={path.member.root}>
 							<Profile path={path.member.sub.root} />
 							<BankInfo path={path.member.sub.bankInfo.root} />
