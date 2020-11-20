@@ -1,21 +1,12 @@
 import { siteInfo } from "../config";
-const GetCookie = name => {
-	if (typeof document !== `undefined`) {
-		let match = document.cookie.match(
-			new RegExp("(^| )" + name + "=([^;]+)")
-		);
-		return match ? match[2] : null;
-	} else {
-		return null;
-	}
-};
+import { readCookie } from "../components/common/common";
 
 export const GET_LANG_ID = userLangId => {
 	let _siteInfo = siteInfo();
 	let siteDefLangId = _siteInfo.siteDefaultLang;
 	let siteLangList = _siteInfo.siteLangList;
 
-	let langId = userLangId ? userLangId : GetCookie("LangId");
+	let langId = userLangId ? userLangId : readCookie("LangId");
 	let browserDefLang =
 		typeof window !== `undefined` ? navigator.language.toLowerCase() : null;
 
