@@ -4419,6 +4419,18 @@ span.important {
   width: 100%;
 }
 
+.headerT .headerTLogout .icon-exit {
+  font-size: 5vw;
+  color: #58cdff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: -0.5vw;
+}
+
 .headerT .headerTLogout a {
   margin: 0 auto;
 }
@@ -4573,6 +4585,10 @@ span.important {
   font-size: 4vw;
 }
 
+.menu .menuContent .icon-wallteIcon:before {
+  margin-right: 1vw;
+}
+
 .menu .menuContent .language img {
   width: 5vw;
   border-radius: 100%;
@@ -4679,7 +4695,7 @@ span.important {
   box-sizing: border-box;
 }
 
-.menu .depositArea button {
+.menu .depositArea button, .menu .depositArea a {
   border: 0;
   width: 100px;
   height: 30px;
@@ -4689,6 +4705,15 @@ span.important {
   height: 35px;
   background-color: #1d2f62;
   font-size: 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .menu .menuNav {
