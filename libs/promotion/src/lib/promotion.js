@@ -1,15 +1,13 @@
 import React, {
 	useEffect,
 	useState,
-	useContext,
 	useCallback,
-	useRef
+	useRef,
+	useContext
 } from "react";
-import { userInfoContext, i18nContext } from "Context";
 import { api_promotion_GetPromotionListV2 } from "@ailab-mobile/api";
 import { defFilterType, defPromotionType, defTabs } from "./common/def";
 import { isExpiry, isClaimed, isNew } from "./common/common";
-import config from "Config";
 import Card, {
 	CardForStatic,
 	CardWithoutRule
@@ -17,10 +15,20 @@ import Card, {
 import Nav from "./components/nav";
 import Tab from "./components/tab";
 import { NoData } from "@ailab-mobile/common";
+import Wrapper from "./common/wrapper";
+import { configContext } from "./common/context";
 
-export const Promotion = ({ staticList }) => {
-	const { userInfo } = useContext(userInfoContext);
-	const { i18n } = useContext(i18nContext);
+export const Promotion = props => {
+	const { staticList, ...rest } = props;
+	return (
+		<Wrapper {...rest}>
+			<PromotionContent staticList={staticList} />
+		</Wrapper>
+	);
+};
+
+const PromotionContent = ({ staticList }) => {
+	const { config, uiSetting, userInfo, i18n } = useContext(configContext);
 	const [promotion, setPromotion] = useState([]);
 	const [tab, setTab] = useState(defTabs.Processing.key);
 	const [filterType, setFilterType] = useState(defFilterType.all);
@@ -33,17 +41,17 @@ export const Promotion = ({ staticList }) => {
 	});
 
 	const getPromotionListV2 = useCallback(() => {
-		api_promotion_GetPromotionListV2({ langId: userInfo.langId }).then(
-			res => {
-				if (res.data.errorCode === 0 && isMountedRef.current) {
-					let result = res.data.data.sort((a, b) => {
-						return a.periodFrom > b.periodFrom ? -1 : 1;
-					});
+		api_promotion_GetPromotionListV2({
+			langId: userInfo.langId
+		}).then(res => {
+			if (res.data.errorCode === 0 && isMountedRef.current) {
+				let result = res.data.data.sort((a, b) => {
+					return a.periodFrom > b.periodFrom ? -1 : 1;
+				});
 
-					setPromotion(result);
-				}
+				setPromotion(result);
 			}
-		);
+		});
 	}, [userInfo.langId]);
 
 	useEffect(() => {
@@ -70,7 +78,10 @@ export const Promotion = ({ staticList }) => {
 		?.filter(p => {
 			if (tab === defTabs.Processing.key) {
 				if (filterType === defFilterType.all) {
-					return !isExpiry({ ...p, isLogin: userInfo.isLogin });
+					return !isExpiry({
+						...p,
+						isLogin: userInfo.isLogin
+					});
 				} else if (filterType === defFilterType.firstDeposit) {
 					return (
 						(p.promotionType === filterType ||
@@ -117,6 +128,7 @@ export const Promotion = ({ staticList }) => {
 						promotion={p}
 						imgSRC={imgSRC}
 						detailsDisplayText={i18n.lbl_Details}
+						uiSetting={uiSetting}
 					/>
 				);
 			} else {
@@ -135,6 +147,7 @@ export const Promotion = ({ staticList }) => {
 						imgSRC={imgSRC}
 						getPromotionListV2={getPromotionListV2}
 						i18n={i18n}
+						uiSetting={uiSetting}
 					/>
 				);
 			}
@@ -149,6 +162,7 @@ export const Promotion = ({ staticList }) => {
 							userInfo={userInfo}
 							p={p}
 							i18n={i18n}
+							uiSetting={uiSetting}
 						/>
 					);
 			  })

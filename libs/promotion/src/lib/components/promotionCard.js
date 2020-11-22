@@ -3,9 +3,9 @@ import JoinBtn from "./joinBtn";
 import RemainTime from "../common/remainTime";
 import { number_format, isConvert } from "@ailab-mobile/common";
 import DetailBtn from "./detailBtn";
-import { Promotion as uiSetting } from "UISetting";
 
 export const CardWithoutRule = ({
+	uiSetting,
 	href,
 	promotion,
 	imgSRC,
@@ -35,7 +35,8 @@ export default ({
 	_isNew,
 	imgSRC,
 	getPromotionListV2,
-	i18n
+	i18n,
+	uiSetting
 }) => (
 	<div
 		className={`promodule${_isClaimed ? " open" : ""}${
@@ -92,7 +93,7 @@ export default ({
 	</div>
 );
 
-export const CardForStatic = ({ userInfo, p, i18n }) => (
+export const CardForStatic = ({ userInfo, p, i18n, uiSetting }) => (
 	<div className="promodule">
 		<img src={p.imgUrl?.[userInfo.langId]} alt={p.bonusCode ?? ""} />
 		<div className="protitle">{p.title?.[userInfo.langId]}</div>

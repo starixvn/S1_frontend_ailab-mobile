@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly renders correctly 1`] = `
+<div
+  className="tag"
+>
+  <a
+    className="open"
+    onClick={[Function]}
+  >
+    lbl_Processing
+  </a>
+  <a
+    className=""
+    onClick={[Function]}
+  >
+    lbl_Expired
+  </a>
+</div>
+`;
+
+exports[`renders correctly renders correctly 2`] = `
+<div
+  className="tag"
+>
+  <a
+    className=""
+    onClick={[Function]}
+  >
+    lbl_Processing
+  </a>
+  <a
+    className="open"
+    onClick={[Function]}
+  >
+    lbl_Expired
+  </a>
+</div>
+`;
+
+exports[`tab renders correctly 1`] = `
+<div
+  className="tag"
+>
+  <a
+    className="open"
+    onClick={[Function]}
+  >
+    lbl_Processing
+  </a>
+  <a
+    className=""
+    onClick={[Function]}
+  >
+    lbl_Expired
+  </a>
+</div>
+`;
+
+exports[`tab renders correctly 2`] = `
+<div
+  className="tag"
+>
+  <a
+    className=""
+    onClick={[Function]}
+  >
+    lbl_Processing
+  </a>
+  <a
+    className="open"
+    onClick={[Function]}
+  >
+    lbl_Expired
+  </a>
+</div>
+`;

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Inputbox, number_format } from "@ailab-mobile/common";
-import { Promotion as uiSetting } from "UISetting";
+import { configContext } from "../common/context";
 
 export default ({ i18n, promotionInfo, ClosePopBox, SetClaimPromotion }) => {
+	const { uiSetting } = useContext(configContext);
 	const [warning, setWarning] = useState({ status: false, msg: "" });
 	const [claimAmount, setClaimAmount] = useState("");
 

@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "@reach/router";
-import path from "Path";
 import { number_format } from "@ailab-mobile/common";
 import RemainTime from "../common/remainTime";
 import JoinBtn from "./joinBtn";
@@ -8,6 +7,7 @@ import DepositRecord from "./depositRecord";
 import ProcessBar from "./processBar";
 
 export default ({
+	path,
 	promotionInfo,
 	i18n,
 	userInfo,

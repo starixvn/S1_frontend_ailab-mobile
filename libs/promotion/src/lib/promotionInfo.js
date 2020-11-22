@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
-import { userInfoContext, i18nContext } from "Context";
 import {
 	api_promotion_GetPromotionDetail,
 	api_account_GetCustSpecificBonus
@@ -7,10 +6,17 @@ import {
 import { getUrlParameter } from "@ailab-mobile/common";
 import { isClaimed, isNew, isExpiry } from "./common/common";
 import PromotionContent from "./components/promotionContent";
+import Wrapper from "./common/wrapper";
+import { configContext } from "./common/context";
 
-export const PromotionInfo = () => {
-	const { userInfo } = useContext(userInfoContext);
-	const { i18n } = useContext(i18nContext);
+export const PromotionInfo = props => (
+	<Wrapper {...props}>
+		<PromotionInfoContent />
+	</Wrapper>
+);
+
+const PromotionInfoContent = () => {
+	const { path, userInfo, i18n } = useContext(configContext);
 	const [promotionInfo, setPromotionInfo] = useState(null);
 	const isMountedRef = useRef(null);
 
@@ -95,6 +101,7 @@ export const PromotionInfo = () => {
 
 	return (
 		<PromotionContent
+			path={path}
 			promotionInfo={promotionInfo}
 			i18n={i18n}
 			userInfo={userInfo}

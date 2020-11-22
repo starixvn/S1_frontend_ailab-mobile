@@ -1,11 +1,10 @@
 import React, { useContext, useRef, useEffect, useState } from "react";
 import { Link, Redirect } from "@reach/router";
-import path from "Path";
-import { userInfoContext, popBoxContext, i18nContext } from "Context";
 import { api_promotion_SetClaimPromotion } from "@ailab-mobile/api";
 import { isExpiry } from "../common/common";
 import { defBonusType, defPromotionType } from "../common/def";
 import ClaimWithLockedAmount from "./joinBtn.claimWithLockedAmount";
+import { configContext } from "../common/context";
 
 export default ({
 	uiSetting = {},
@@ -13,9 +12,7 @@ export default ({
 	func_GetPromotionDetail,
 	func_CallBack
 }) => {
-	const { userInfo } = useContext(userInfoContext);
-	const { setPopBox } = useContext(popBoxContext);
-	const { i18n } = useContext(i18nContext);
+	const { path, userInfo, setPopBox, i18n } = useContext(configContext);
 	const isMountedRef = useRef(null);
 	const [redirectPath, setRedirectPath] = useState(null);
 
