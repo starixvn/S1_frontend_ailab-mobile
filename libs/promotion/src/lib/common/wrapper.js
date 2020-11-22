@@ -4,9 +4,9 @@ import { configContext } from "./context";
 export default ({
 	config,
 	path,
-	uiSetting,
+	uiSetting = {},
 	children,
-	i18n,
+	i18n = {},
 	userInfo,
 	setPopBox
 }) => (
