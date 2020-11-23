@@ -162,7 +162,6 @@ export default () => {
 					<li>{i18n.lbl_NationalIdentityCard}</li>
 					<li>{i18n.lbl_Passport}</li>
 					<li>{i18n.lbl_DrivingLicense}</li>
-					<li>{i18n.lbl_BirthCertificate}</li>
 				</ul>
 			</div>
 		</>
