@@ -282,26 +282,6 @@ header .Login .inputBox {
   margin: 2vw 0 0;
 }
 
-header .Join .inputBox > input::-webkit-input-placeholder,
-header .Login .inputBox > input::-webkit-input-placeholder {
-  color: #fff;
-}
-
-header .Join .inputBox > input:-ms-input-placeholder,
-header .Login .inputBox > input:-ms-input-placeholder {
-  color: #fff;
-}
-
-header .Join .inputBox > input::-ms-input-placeholder,
-header .Login .inputBox > input::-ms-input-placeholder {
-  color: #fff;
-}
-
-header .Join .inputBox > input::placeholder,
-header .Login .inputBox > input::placeholder {
-  color: #fff;
-}
-
 header .Join .inputBox .JoinRule,
 header .Login .inputBox .JoinRule {
   height: 0;
@@ -390,6 +370,7 @@ header .Login .Terms.error {
 header .Join .Terms a,
 header .Login .Terms a {
   color: #f77a00;
+  display: unset;
 }
 
 header .Join .Terms input[type="checkbox"],
@@ -1958,6 +1939,10 @@ footer > a.open {
   padding-top: 2vw;
 }
 
+.depositInBox .inputBoxText p.txt-blue12 {
+  width: inherit;
+}
+
 .depositTitle {
   width: 100%;
   text-align: center;
@@ -2431,19 +2416,19 @@ input {
 }
 
 input::-webkit-input-placeholder {
-  color: #fff;
+  color: #BAC2D2;
 }
 
 input:-ms-input-placeholder {
-  color: #fff;
+  color: #BAC2D2;
 }
 
 input::-ms-input-placeholder {
-  color: #fff;
+  color: #BAC2D2;
 }
 
 input::placeholder {
-  color: #fff;
+  color: #BAC2D2;
 }
 
 input[type="file"] {
