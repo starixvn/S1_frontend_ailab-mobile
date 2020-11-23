@@ -57,7 +57,7 @@ const RecentDatas = props => {
 						<div className="btn-group">
 							<Link
 								to={path.withdrawal.sub.history.root}
-								className="orange recentBtn">
+								className="blue recentBtn">
 								{i18n.lbl_AllTranscations}
 							</Link>
 						</div>
