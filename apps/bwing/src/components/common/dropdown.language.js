@@ -34,7 +34,7 @@ export class DropdownBox extends Component {
 			let content = (
 				<>
 					<img src={item.img} alt={item.value} />
-					<span>{item.displayText}</span>
+					<span>{item.displayText.toUpperCase()}</span>
 				</>
 			);
 

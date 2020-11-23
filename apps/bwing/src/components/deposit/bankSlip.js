@@ -210,7 +210,7 @@ class Content extends Component {
 								<button
 									className="blue"
 									onClick={this.HandleUploadAgain}>
-									{i18n.lbl_BankSlipUploadAgain}
+									{i18n.lbl_BankSlipUploadAgain.toUpperCase()}
 								</button>
 							</div>
 						</div>

@@ -209,7 +209,7 @@ export default () => {
 			/>
 			<div className="btn-group">
 				<Link className="cancel" to={`/${path.member.root}`}>
-					{i18n.lbl_Back}
+					{i18n.lbl_Back.toUpperCase()}
 				</Link>
 				<button className="submit" onClick={clickSubmit}>
 					{i18n.lbl_Submit}

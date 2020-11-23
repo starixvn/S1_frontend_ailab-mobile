@@ -266,7 +266,7 @@ const Panel = () => {
 							<h1>{i18n[item.displayKey].toUpperCase()}</h1>
 							<span className="title">{i18n.lbl_CreditTime}</span>
 							<span className="creditTime">
-								{i18n[item.creditTimeKey]}
+								{i18n[item.creditTimeKey].toUpperCase()}
 							</span>
 						</div>
 					);

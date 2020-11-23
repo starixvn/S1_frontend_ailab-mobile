@@ -500,7 +500,7 @@ const Panel = () => {
 					<Link
 						className="purple"
 						to={`/${path.changePassword.root}`}>
-						{i18n.lbl_ChangePassword}
+						{i18n.lbl_ChangePassword.toUpperCase()}
 					</Link>
 					<button className="blue" onClick={checkSubmitHandler}>
 						{i18n["lbl_Submit"]}

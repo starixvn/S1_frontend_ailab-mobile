@@ -83,7 +83,7 @@ const ReacentDatas = props => {
 						<div className="btn-group">
 							<Link
 								to={path.transfer.sub.history.root}
-								className="orange recentBtn">
+								className="blue recentBtn">
 								{i18n["lbl_AllTranscations"]}
 							</Link>
 						</div>

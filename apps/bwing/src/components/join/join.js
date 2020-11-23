@@ -640,7 +640,7 @@ const Join = () => {
 	return redirectPath === null ? (
 		<>
 			<button onClick={handleJoinPanel.bind(this, openPanel)}>
-				{i18n.lbl_JoinNow}
+				{i18n.lbl_JoinNow.toUpperCase()}
 			</button>
 			<div className={`Join${openPanel ? " open" : ""}`}>
 				<div

@@ -149,6 +149,7 @@ export default () => {
 				</div>
 				{userInfo.isLogin ? (
 					<div className="icon icon-wallteIcon" href="">
+						<span>{i18n[`Currency_${userInfo.currencyId}`]} </span>
 						<span>
 							{!walletInfo.allBalance
 								? 0
@@ -223,7 +224,8 @@ const SubMenuList = ({
 				_subItems = (
 					<>
 						<div className={`menuNavText${isOpen ? " open" : ""}`}>
-							{i18n[s.displayKey] ?? s.displayKey}
+							{i18n[s.displayKey].toUpperCase() ??
+								s.displayKey.toUpperCase()}
 							<i
 								onClick={handleSubMenu.bind(this, s.displayKey)}
 								className={`icon icon-arrow_drop_down${
@@ -245,7 +247,8 @@ const SubMenuList = ({
 					onClick={closeNavPanel}
 					key={key}
 					className="menuNavTitle">
-					{i18n[s.displayKey] ?? s.displayKey}
+					{i18n[s.displayKey].toUpperCase() ??
+						s.displayKey.toUpperCase()}
 					{_subItems}
 				</Link>
 			);
@@ -256,7 +259,8 @@ const SubMenuList = ({
 					key={key}
 					onClick={openLink.bind(this, s.href)}>
 					<div className="menuNavText">
-						{i18n[s.displayKey] ?? s.displayKey}
+						{i18n[s.displayKey].toUpperCase() ??
+							s.displayKey.toUpperCase()}
 					</div>
 				</div>
 			);
@@ -270,7 +274,8 @@ const SubMenuList = ({
 					key={key}
 					onClick={clickGame.bind(this, s)}
 					className="menuNavTitle">
-					{i18n[s.displayKey] ?? s.displayKey}
+					{i18n[s.displayKey].toUpperCase() ??
+						s.displayKey.toUpperCase()}
 				</button>
 			);
 		}
