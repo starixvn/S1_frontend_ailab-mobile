@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ClaimWithLockedAmount renders correctly 1`] = `
+Array [
+  <div
+    className="txt-lightgray text-center"
+  />,
+  <div
+    className="inputBox"
+  >
+    <input
+      max={null}
+      onChange={[Function]}
+      type="tel"
+      value=""
+    />
+  </div>,
+  <div
+    className="text-org"
+  >
+    undefined : 1.00 ~ 20.00
+  </div>,
+  <div
+    className="btn-group"
+  >
+    <button
+      className="orange"
+      onClick={[Function]}
+    />
+    <button
+      className="orange"
+      onClick={[Function]}
+    />
+  </div>,
+]
+`;

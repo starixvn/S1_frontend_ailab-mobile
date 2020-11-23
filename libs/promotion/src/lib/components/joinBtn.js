@@ -210,6 +210,7 @@ export default ({
 						title: i18n.lbl_ImportantNote,
 						content: (
 							<ClaimWithLockedAmount
+								uiSetting={uiSetting}
 								i18n={i18n}
 								promotionInfo={promotionInfo}
 								ClosePopBox={ClosePopBox}

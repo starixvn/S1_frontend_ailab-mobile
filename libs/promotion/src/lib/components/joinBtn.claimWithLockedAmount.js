@@ -1,9 +1,22 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Inputbox, number_format } from "@ailab-mobile/common";
-import { configContext } from "../common/context";
 
-export default ({ i18n, promotionInfo, ClosePopBox, SetClaimPromotion }) => {
-	const { uiSetting } = useContext(configContext);
+export const checkClaimAmount = ({
+	_claimAmount,
+	requiredAmount,
+	maxAmount
+}) => {
+	if (_claimAmount === "" || isNaN(_claimAmount)) {
+		return false;
+	} else {
+		let num_claimAmount = Number(_claimAmount);
+		return (
+			num_claimAmount >= requiredAmount && num_claimAmount <= maxAmount
+		);
+	}
+};
+
+export const useJoinPromotion = ({ i18n, SetClaimPromotion }) => {
 	const [warning, setWarning] = useState({ status: false, msg: "" });
 	const [claimAmount, setClaimAmount] = useState("");
 
@@ -11,18 +24,6 @@ export default ({ i18n, promotionInfo, ClosePopBox, SetClaimPromotion }) => {
 		setClaimAmount(e.target.value);
 		if (warning.status) {
 			setWarning({ status: false, msg: "" });
-		}
-	};
-
-	const checkClaimAmount = ({ _claimAmount, requiredAmount, maxAmount }) => {
-		if (_claimAmount === "" || isNaN(_claimAmount)) {
-			return false;
-		} else {
-			let num_claimAmount = Number(_claimAmount);
-			return (
-				num_claimAmount >= requiredAmount &&
-				num_claimAmount <= maxAmount
-			);
 		}
 	};
 
@@ -45,12 +46,38 @@ export default ({ i18n, promotionInfo, ClosePopBox, SetClaimPromotion }) => {
 		}
 	};
 
+	return { warning, claimAmount, OnChangeClaimAmount, onJoinPromotion };
+};
+
+export const Button = ({ uiSetting, onClick, displayText }) => (
+	<button
+		className={uiSetting.popBox?.submitBtn ?? "orange"}
+		onClick={onClick}>
+		{displayText}
+	</button>
+);
+
+export default ({
+	uiSetting,
+	i18n,
+	promotionInfo,
+	ClosePopBox,
+	SetClaimPromotion
+}) => {
+	const {
+		warning,
+		claimAmount,
+		OnChangeClaimAmount,
+		onJoinPromotion
+	} = useJoinPromotion({ i18n, SetClaimPromotion });
+
 	return (
 		<>
 			<div className="txt-lightgray text-center">
 				{i18n.lbl_PleaseEnterClaimAmount}
 			</div>
 			<Inputbox
+				data-testid="amount"
 				value={claimAmount}
 				onChange={OnChangeClaimAmount}
 				inputType="tel"
@@ -62,19 +89,19 @@ export default ({ i18n, promotionInfo, ClosePopBox, SetClaimPromotion }) => {
 				)} ~ ${number_format(promotionInfo.maxAmount)}`}
 			</div>
 			<div className="btn-group">
-				<button
-					className={uiSetting.popBox?.cancelBtn ?? "white"}
-					onClick={ClosePopBox}>
-					{i18n.lbl_Cancel}
-				</button>
-				<button
-					className={uiSetting.popBox?.submitBtn ?? "orange"}
+				<Button
+					uiSetting={uiSetting}
+					onClick={ClosePopBox}
+					displayText={i18n.lbl_Cancel}
+				/>
+				<Button
+					uiSetting={uiSetting}
 					onClick={onJoinPromotion.bind(this, {
 						...promotionInfo,
 						_claimAmount: claimAmount
-					})}>
-					{i18n.lbl_PromoJoinNow}
-				</button>
+					})}
+					displayText={i18n.lbl_PromoJoinNow}
+				/>
 			</div>
 		</>
 	);

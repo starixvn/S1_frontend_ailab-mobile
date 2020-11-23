@@ -8,6 +8,7 @@ import ProcessBar from "./processBar";
 
 export default ({
 	path,
+	uiSetting = {},
 	promotionInfo,
 	i18n,
 	userInfo,
@@ -34,6 +35,7 @@ export default ({
 		<JoinBtn
 			promotionInfo={promotionInfo}
 			func_GetPromotionDetail={GetPromotionDetail}
+			uiSetting={uiSetting}
 		/>
 
 		<div className="protitle">{promotionInfo.title}</div>

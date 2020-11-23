@@ -16,7 +16,7 @@ export const PromotionInfo = props => (
 );
 
 const PromotionInfoContent = () => {
-	const { path, userInfo, i18n } = useContext(configContext);
+	const { path, userInfo, i18n, uiSetting } = useContext(configContext);
 	const [promotionInfo, setPromotionInfo] = useState(null);
 	const isMountedRef = useRef(null);
 
@@ -42,7 +42,7 @@ const PromotionInfoContent = () => {
 						}
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						alert(i18n.msg_ApiServerError);
 					}
@@ -94,14 +94,14 @@ const PromotionInfoContent = () => {
 	};
 
 	if (promotionInfo === null) return null;
-
+	const { popBox } = uiSetting;
 	let _isClaimed = isClaimed(promotionInfo);
 	let _isNew = _isClaimed ? false : isNew(promotionInfo);
 	let _isExpiry = isExpiry({ ...promotionInfo, isLogin: userInfo.isLogin });
-
 	return (
 		<PromotionContent
 			path={path}
+			uiSetting={{ popBox }}
 			promotionInfo={promotionInfo}
 			i18n={i18n}
 			userInfo={userInfo}
