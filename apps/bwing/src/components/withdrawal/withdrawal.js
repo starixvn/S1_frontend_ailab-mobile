@@ -24,6 +24,11 @@ import BankCardPanel from "./bankCardPanel";
 import AmountPanel from "./amountPanel";
 import { defIptStatus } from "../common/inputbox.hint";
 
+const initWarning = {
+	status: defIptStatus.default,
+	msg: ""
+};
+
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -31,10 +36,7 @@ const Panel = () => {
 	const [balanceInfo, setBalanceInfo] = useState(null);
 	const _isConvert = isConvert(userInfo.currencyId);
 	const [amount, setAmount] = useState("");
-	const [warning, setWarning] = useState({
-		status: defIptStatus.default,
-		msg: ""
-	});
+	const [warning, setWarning] = useState(initWarning);
 	const [selBank, setSelBank] = useState(null);
 	const [bankInfo, setbankInfo] = useState({
 		accountName: "",
@@ -270,6 +272,7 @@ const Panel = () => {
 									KycCheck(false).then(kycProcess => {
 										if (!kycProcess) {
 											setAmount("");
+											setWarning(initWarning);
 											setSelBank(null);
 											api_GetWithdrawalAvailableBalance().then(
 												res => {
@@ -464,6 +467,7 @@ const Panel = () => {
 								api_GetWithdrawalInfoRecent().then(res => {
 									if (res.data.errorCode === 0) {
 										setRecentDatas(res.data.data);
+										GetBalance();
 									}
 								});
 							} else {

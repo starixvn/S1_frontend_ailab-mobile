@@ -208,16 +208,12 @@ const AutoplayWithBtn = ({ Rows }) => {
 	};
 
 	return Rows && Rows.length > 0 ? (
-		<>
-			<div className="swiper-container">
-				<div className="swiper-wrapper">
-					<Swiper {...params}>{Rows}</Swiper>
-				</div>
+		<div className="swiper-container">
+			<div className="swiper-wrapper">
+				<Swiper {...params}>{Rows}</Swiper>
 			</div>
-		</>
-	) : (
-		<></>
-	);
+		</div>
+	) : null;
 };
 
 export default Panel;

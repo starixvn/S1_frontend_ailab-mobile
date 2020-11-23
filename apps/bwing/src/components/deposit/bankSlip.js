@@ -210,7 +210,7 @@ class Content extends Component {
 								<button
 									className="blue"
 									onClick={this.HandleUploadAgain}>
-									{i18n.lbl_BankSlipUploadAgain}
+									{i18n.lbl_BankSlipUploadAgain.toUpperCase()}
 								</button>
 							</div>
 						</div>
@@ -240,11 +240,9 @@ class Content extends Component {
 							</div>
 							<div className="textArea borderBottom">
 								<ul>
-									<li>Maximum file size 4MB each.</li>
-									<li>Maximum number of files: 1</li>
-									<li>
-										Accepted file types: JPG, JPEG, PNG, GIF
-									</li>
+									<li>{i18n.lbl_BankSlipRequirement1}</li>
+									<li>{i18n.lbl_BankSlipRequirement2}</li>
+									<li>{i18n.lbl_BankSlipRequirement3}</li>
 								</ul>
 							</div>
 						</div>

@@ -12,8 +12,7 @@ import {
 	api_GetBanner
 } from "../../service/api/site";
 import { api_GetCustProfile } from "../../service/api/accountStrict";
-import { getUrlParameter } from "../common/common";
-import { getCookie } from "../common/cookie";
+import { getUrlParameter, readCookie } from "../common/common";
 import {
 	userInfoContext,
 	i18nContext,
@@ -114,7 +113,7 @@ const Join = () => {
 	});
 
 	useEffect(() => {
-		let refId = getCookie("RefId");
+		let refId = readCookie("RefId");
 		let showBylink = window.location.pathname === `/${path.join.root}`;
 		let openPanel = showBylink || nav === defNavPanel.join;
 		if (refId && openPanel) {
@@ -130,7 +129,7 @@ const Join = () => {
 	}, [nav, userInfo.langId]);
 
 	useEffect(() => {
-		let AffCode = getUrlParameter("AffCode") || getCookie("AffCode");
+		let AffCode = getUrlParameter("AffCode") || readCookie("AffCode");
 		if (AffCode && isMountedRef) {
 			setAffiliateidExist(AffCode);
 		}
@@ -530,12 +529,12 @@ const Join = () => {
 				UserLang: defaultLangId
 			};
 
-			regData["RefId"] = getUrlParameter("RefId") || getCookie("RefId");
-			regData["AffId"] = getUrlParameter("AffId") || getCookie("AffId");
-			regData["Aff"] = getUrlParameter("Aff") || getCookie("Aff");
+			regData["RefId"] = getUrlParameter("RefId") || readCookie("RefId");
+			regData["AffId"] = getUrlParameter("AffId") || readCookie("AffId");
+			regData["Aff"] = getUrlParameter("Aff") || readCookie("Aff");
 			regData["AffCode"] =
 				getUrlParameter("AffCode") ||
-				getCookie("AffCode") ||
+				readCookie("AffCode") ||
 				userValueState.AffiliateId;
 
 			api_Register(regData).then(
@@ -641,7 +640,7 @@ const Join = () => {
 	return redirectPath === null ? (
 		<>
 			<button onClick={handleJoinPanel.bind(this, openPanel)}>
-				{i18n.lbl_JoinNow}
+				{i18n.lbl_JoinNow.toUpperCase()}
 			</button>
 			<div className={`Join${openPanel ? " open" : ""}`}>
 				<div

@@ -2,7 +2,7 @@ import React from "react";
 
 export default ({ i18n }) => (
 	<div className="depositTitle">
-		<h1>{i18n.lbl_MobileDeposit}</h1>
+		<h1>{i18n.lbl_MobileDeposit.toUpperCase()}</h1>
 		<p>{`${i18n.lbl_CreditTime}: ${i18n.lbl_5mins}`}</p>
 	</div>
 );

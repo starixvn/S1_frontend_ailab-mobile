@@ -46,23 +46,23 @@ const UserGuide = ({ i18n, langId }) => {
 						<span>{i18n.lbl_HowToDepoist}</span>
 					</a>
 					<a
+						href={TandC(langId).HowToBet}
+						target="_blank"
+						className="icon icon-GUIDE4">
+						<span>{i18n.lbl_HowToPlay}</span>
+					</a>
+				</div>
+				<div className="userGuide-box__top userGuide-box__bottom">
+					<a
 						href={TandC(langId).HowToWithdraw}
 						target="_blank"
 						className="icon icon-GUIDE2">
 						<span>{i18n.lbl_HowToWithdraw}</span>
 					</a>
-				</div>
-				<div className="userGuide-box__top userGuide-box__bottom">
-					<a
-						href={TandC(langId).HowToBet}
-						target="_blank"
-						className="icon icon-GUIDE3">
-						<span>{i18n.lbl_HowToPlay}</span>
-					</a>
 					<a
 						href={TandC(langId).FAQ}
 						target="_blank"
-						className="icon icon-GUIDE4">
+						className="icon icon-GUIDE3">
 						<span>{i18n.lbl_FAQ}</span>
 					</a>
 				</div>
@@ -81,11 +81,19 @@ const ContactUs = ({ i18n }) => {
 				<a
 					href="https://www.facebook.com/Bwingtttt/"
 					target="_blank"
-					className="icon icon-contactUS1"></a>
+					className="icon icon-facebook"></a>
+				<a
+					href="https://www.youtube.com/channel/UCDvFS9eTrOEYuVjb3BNQ3bg/featured"
+					target="_blank"
+					className="icon icon-youtube"></a>
 				<a
 					href="https://twitter.com/bwingofficial"
 					target="_blank"
-					className="icon icon-contactUS2"></a>
+					className="icon icon-twitter"></a>
+				<a
+					href="https://www.tiktok.com/@bwingpro"
+					target="_blank"
+					className="icon icon-tiktok"></a>
 			</div>
 		</div>
 	);
@@ -102,7 +110,9 @@ const defPlatform = [
 	"yg",
 	"pp",
 	"sg",
-	"pg"
+	"pg",
+	"ae",
+	"wm"
 ];
 
 const Platforms = ({ i18n }) => {

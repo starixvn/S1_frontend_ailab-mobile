@@ -61,21 +61,18 @@ const Footer = () => {
 					<span>{i18n.lbl_LiveChat}</span>
 				</a>
 
-				<Match path={path.setting.root}>
+				<Match path={path.other.root}>
 					{props => {
 						let isMatch =
-							props.location.pathname ===
-								`/${path.setting.root}` ||
-							props.location.pathname ===
-								`/${path.setting.root}/${path.setting.sub.other.root}`;
+							props.location.pathname === `/${path.other.root}`;
 						return (
 							<Link
-								to={path.setting.root}
+								to={path.other.root}
 								className={isMatch ? "open" : ""}>
 								<div className="circleAnimation">
-									<div className="icon icon-cog"></div>
+									<div className="icon icon-other"></div>
 								</div>
-								<span>{i18n.lbl_Setting}</span>
+								<span>{i18n.lbl_Other}</span>
 							</Link>
 						);
 					}}
@@ -164,21 +161,19 @@ const Footer = () => {
 						);
 					}}
 				</Match>
-				<Match path={path.setting.root}>
+
+				<Match path={path.other.root}>
 					{props => {
 						let isMatch =
-							props.location.pathname ===
-								`/${path.setting.root}` ||
-							props.location.pathname ===
-								`/${path.setting.root}/${path.setting.sub.other.root}`;
+							props.location.pathname === `/${path.other.root}`;
 						return (
 							<Link
-								to={path.setting.root}
+								to={path.other.root}
 								className={isMatch ? "open" : ""}>
 								<div className="circleAnimation">
-									<div className="icon icon-cog"></div>
+									<div className="icon icon-other"></div>
 								</div>
-								<span>{i18n.lbl_Setting}</span>
+								<span>{i18n.lbl_Other}</span>
 							</Link>
 						);
 					}}

@@ -37,7 +37,7 @@ export const Main = props => {
 		bank: null
 	});
 	const [amount, setAmount] = useState("");
-	const [accountName, setAccountName] = useState(userInfo.accountName);
+	const [accountName, setAccountName] = useState(userInfo.accountName ?? "");
 	const [warning, setWarning] = useState({
 		accountName: { status: defIptStatus.default, msg: "" },
 		amount: { status: defIptStatus.default, msg: "" }

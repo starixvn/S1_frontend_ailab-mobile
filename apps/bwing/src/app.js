@@ -6,7 +6,6 @@ import { Router, createHistory, LocationProvider } from "@reach/router";
 import Home from "./pages/home";
 import Promotion from "./pages/promotion";
 import Wallet from "./pages/wallet";
-import LiveChat from "./pages/livechat";
 import Layout from "./components/common/layout";
 import Profile from "./components/member/profile";
 import BankInfo from "./components/member/bankInfo";
@@ -47,14 +46,11 @@ import Message from "./pages/message";
 import PersonalMsg from "./components/message/personalMsg";
 import Announcement from "./components/message/announcement";
 
+import Other from "./components/setting/other";
 import Casino from "./pages/casino";
 import ForgetPwd from "./components/login/forgetPwd";
 import ResetPwd from "./components/login/resetPwd";
 import ChangePwd from "./components/member/changePwd";
-
-import Setting from "./pages/setting.js";
-import SettingInfo from "./components/setting/settingInfo";
-import Other from "./components/setting/other";
 
 import Kyc from "./components/withdrawal/kyc";
 import KycWaiting from "./components/withdrawal/kycWaiting";
@@ -77,7 +73,6 @@ const Index = () => {
 
 						<PromotionInfo path={path.promotionInfo.root} />
 						<Wallet path={path.wallet.root} />
-						<LiveChat path={path.livechat.root} />
 						<Member path={path.member.root}>
 							<Profile path={path.member.sub.root} />
 							<BankInfo path={path.member.sub.bankInfo.root} />
@@ -135,12 +130,9 @@ const Index = () => {
 								path={path.message.sub.announcement.root}
 							/>
 						</Message>
+						<Other path={`${path.other.root}`} />
 						<Casino path={`${path.casino.root}`} />
 						<Casino path={`${path.casino.root}/:tpId`} />
-						<Setting path={path.setting.root}>
-							<SettingInfo path={path.setting.sub.root} />
-							<Other path={path.setting.sub.other.root} />
-						</Setting>
 						<Whoami path={path.whoami.root} />
 					</Router>
 				</Layout>

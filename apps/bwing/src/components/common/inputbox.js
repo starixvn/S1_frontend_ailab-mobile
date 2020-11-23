@@ -55,7 +55,8 @@ const Inputbox = props => {
 					{props.iconModuleName ? (
 						<div className="iconModule">
 							<span
-								className={`icon ${props.iconModuleName}`}></span>
+								className={`icon ${props.iconModuleName}`}
+								onClick={props.clickInfo ?? null}></span>
 						</div>
 					) : null}
 				</>
@@ -100,7 +101,12 @@ Inputbox.propTypes = {
 	onBlur: PropTypes.func,
 	onChange: PropTypes.func,
 	Warning: PropTypes.object,
-	showTips: PropTypes.bool
+	showTips: PropTypes.bool,
+	ClassName: PropTypes.string
+};
+
+Inputbox.defaultProps = {
+	ClassName: "tip"
 };
 
 export default Inputbox;

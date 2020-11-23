@@ -11,9 +11,6 @@ export default {
 	wallet: {
 		root: "wallet"
 	},
-	livechat: {
-		root: "livechat"
-	},
 	member: {
 		root: "member",
 		sub: {
@@ -99,14 +96,8 @@ export default {
 		root: "resetPassword"
 	},
 	changePassword: { root: "changePassword" },
-	setting: {
-		root: "setting",
-		sub: {
-			root: "/",
-			other: {
-				root: "other"
-			}
-		}
+	other: {
+		root: "other"
 	},
 	kyc: {
 		root: "kyc"

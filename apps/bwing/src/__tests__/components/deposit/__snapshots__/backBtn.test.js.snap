@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`en renders correctly 1`] = `
+<div
+  className="btn-group"
+>
+  <a
+    aria-current="page"
+    className="left"
+    href="/"
+    onClick={[Function]}
+  >
+    <span
+      style={
+        Object {
+          "marginRight": "5px",
+          "transform": "rotate(180deg)",
+        }
+      }
+    >
+      →
+    </span>
+    Back
+  </a>
+</div>
+`;
+
+exports[`vn renders correctly 1`] = `
+<div
+  className="btn-group"
+>
+  <a
+    aria-current="page"
+    className="left"
+    href="/"
+    onClick={[Function]}
+  >
+    <span
+      style={
+        Object {
+          "marginRight": "5px",
+          "transform": "rotate(180deg)",
+        }
+      }
+    >
+      →
+    </span>
+    Quay lại
+  </a>
+</div>
+`;
