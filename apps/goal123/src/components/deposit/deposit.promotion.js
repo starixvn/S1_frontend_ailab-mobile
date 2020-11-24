@@ -42,9 +42,7 @@ export default () => {
 		}
 	};
 
-	return promoList === null ? (
-		<></>
-	) : (
+	return promoList === null ? null : (
 		<>
 			<div className="inputBox">
 				<Dropdown

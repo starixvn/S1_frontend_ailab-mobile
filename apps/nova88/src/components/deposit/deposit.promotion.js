@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from "react";
 import Dropdown from "../common/dropdown";
 import { api_promotion_GetCanJoinPromotionList } from "@ailab-mobile/api";
 import { i18nContext, userInfoContext } from "Context";
+import { PromotionAPI } from "@ailab-mobile/api";
 import config from "Config";
 
 export default () => {
@@ -13,7 +14,8 @@ export default () => {
 	useEffect(() => {
 		let mounted = true;
 		if (userInfo.isLogin === true) {
-			api_promotion_GetCanJoinPromotionList(userInfo.langId).then(res => {
+			let api = new PromotionAPI(config);
+			api.promotion_GetCanJoinPromotionList(userInfo.langId).then(res => {
 				if (mounted) {
 					if (res.data.errorCode === 0) {
 						setPromoList(() => {
@@ -42,9 +44,7 @@ export default () => {
 		}
 	};
 
-	return promoList === null ? (
-		<></>
-	) : (
+	return promoList === null ? null : (
 		<>
 			<div className="inputBox">
 				<Dropdown

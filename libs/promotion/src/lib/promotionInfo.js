@@ -1,8 +1,4 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
-import {
-	api_promotion_GetPromotionDetail,
-	api_account_GetCustSpecificBonus
-} from "@ailab-mobile/api";
 import { getUrlParameter } from "@ailab-mobile/common";
 import { isClaimed, isNew, isExpiry } from "./common/common";
 import PromotionContent from "./components/promotionContent";
@@ -16,7 +12,7 @@ export const PromotionInfo = props => (
 );
 
 const PromotionInfoContent = () => {
-	const { path, userInfo, i18n, uiSetting } = useContext(configContext);
+	const { path, userInfo, i18n, uiSetting, api } = useContext(configContext);
 	const [promotionInfo, setPromotionInfo] = useState(null);
 	const isMountedRef = useRef(null);
 
@@ -29,7 +25,7 @@ const PromotionInfoContent = () => {
 		if (userInfo.isLogin !== null) {
 			let _bonusCode = getUrlParameter("bonusCode");
 
-			api_promotion_GetPromotionDetail({
+			api.promotion_GetPromotionDetail({
 				langId: userInfo.langId,
 				BonusCode: _bonusCode
 			}).then(
@@ -52,7 +48,7 @@ const PromotionInfoContent = () => {
 	}, [userInfo.isLogin, userInfo.langId, i18n.msg_ApiServerError]);
 
 	const GetPromotionDetail = (langId, _bonusCode) => {
-		api_promotion_GetPromotionDetail({
+		api.promotion_GetPromotionDetail({
 			langId: langId,
 			BonusCode: _bonusCode
 		}).then(
@@ -74,7 +70,7 @@ const PromotionInfoContent = () => {
 	};
 
 	const RefreshProcessBar = ({ bonusCode, tpId, categoryId }) => {
-		api_account_GetCustSpecificBonus({
+		api.account_GetCustSpecificBonus({
 			BonusCode: bonusCode,
 			TpId: tpId,
 			PromoCategoryId: categoryId

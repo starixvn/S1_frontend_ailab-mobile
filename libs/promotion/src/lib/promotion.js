@@ -5,7 +5,6 @@ import React, {
 	useRef,
 	useContext
 } from "react";
-import { api_promotion_GetPromotionListV2 } from "@ailab-mobile/api";
 import { defFilterType, defPromotionType, defTabs } from "./common/def";
 import { isExpiry, isClaimed, isNew } from "./common/common";
 import Card, {
@@ -28,7 +27,9 @@ export const Promotion = props => {
 };
 
 const PromotionContent = ({ staticList }) => {
-	const { config, uiSetting, userInfo, i18n } = useContext(configContext);
+	const { config, uiSetting, userInfo, i18n, api } = useContext(
+		configContext
+	);
 	const [promotion, setPromotion] = useState([]);
 	const [tab, setTab] = useState(defTabs.Processing.key);
 	const [filterType, setFilterType] = useState(defFilterType.all);
@@ -41,7 +42,7 @@ const PromotionContent = ({ staticList }) => {
 	});
 
 	const getPromotionListV2 = useCallback(() => {
-		api_promotion_GetPromotionListV2({
+		api.promotion_GetPromotionListV2({
 			langId: userInfo.langId
 		}).then(res => {
 			if (res.data.errorCode === 0 && isMountedRef.current) {
