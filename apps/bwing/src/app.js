@@ -58,6 +58,10 @@ import KycWaiting from "./components/withdrawal/kycWaiting";
 import Whoami from "./pages/whoami";
 import PromotionInfo from "./pages/promotionInfo";
 
+import Games from "./pages/games";
+import Fishing from "./pages/fishing";
+import LiveCasino from "./pages/liveCasino";
+
 const Index = () => {
 	let history = createHistory(window);
 	return (
@@ -134,6 +138,9 @@ const Index = () => {
 						<Casino path={`${path.casino.root}`} />
 						<Casino path={`${path.casino.root}/:tpId`} />
 						<Whoami path={path.whoami.root} />
+						<Games path={path.games.root} />
+						<Fishing path={path.fishing.root} />
+						<LiveCasino path={path.liveCasino.root} />
 					</Router>
 				</Layout>
 			</LocationProvider>
