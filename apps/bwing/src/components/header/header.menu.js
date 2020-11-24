@@ -16,7 +16,13 @@ export default ({ i18n, OnClickProduct, userInfo }) => {
 				className="nav">
 				{i18n.lbl_Sports.toUpperCase()}
 			</button>
-			<div className="nav">{i18n.lbl_Games.toUpperCase()}</div>
+			<Link
+				to={`/${path.games.root}`}
+				className={`nav${
+					useMatch(`/${path.games.root}`) !== null ? " active" : ""
+				}`}>
+				{i18n.lbl_Games.toUpperCase()}
+			</Link>
 			<button
 				onClick={OnClickProduct.bind(this, {
 					...defGameInfo.eSports,
@@ -33,7 +39,22 @@ export default ({ i18n, OnClickProduct, userInfo }) => {
 				}`}>
 				{i18n.lbl_Slots.toUpperCase()}
 			</Link>
-			<div className="nav">{i18n.lbl_LiveCasino.toUpperCase()}</div>
+			<Link
+				to={`/${path.liveCasino.root}`}
+				className={`nav${
+					useMatch(`/${path.liveCasino.root}`) !== null
+						? " active"
+						: ""
+				}`}>
+				{i18n.lbl_LiveCasino.toUpperCase()}
+			</Link>
+			<Link
+				to={`/${path.fishing.root}`}
+				className={`nav${
+					useMatch(`/${path.fishing.root}`) !== null ? " active" : ""
+				}`}>
+				{i18n.lbl_Fishing.toUpperCase()}
+			</Link>
 			<Link
 				to={`/${path.promotion.root}`}
 				className={`nav${
