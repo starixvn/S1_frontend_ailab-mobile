@@ -262,22 +262,26 @@ const Panel = () => {
 									res.data.errorCode === 0 ||
 									res.data.errorCode === 2
 								) {
-									let kycProcess = KycCheck(false);
-									if (!kycProcess) {
-										setAmount("");
-										api_GetWithdrawalInfoRecent().then(
-											res => {
-												if (
-													res.data.errorCode === 0 &&
-													isMountedRef.current
-												) {
-													setRecentDatas(
-														res.data.data
-													);
+									KycCheck(false).then(kycProcess => {
+										if (!kycProcess) {
+											setAmount("");
+											GetBalance();
+											api_GetWithdrawalInfoRecent().then(
+												res => {
+													if (
+														res.data.errorCode ===
+															0 &&
+														isMountedRef.current
+													) {
+														setRecentDatas(
+															res.data.data
+														);
+													}
 												}
-											}
-										);
-									}
+											);
+										}
+									});
+
 									setPopBox({ isOpen: false });
 								} else {
 									let content = res.data.message;
@@ -401,6 +405,7 @@ const Panel = () => {
 								api_GetWithdrawalInfoRecent().then(res => {
 									if (res.data.errorCode === 0) {
 										setRecentDatas(res.data.data);
+										GetBalance();
 									}
 								});
 							} else {

@@ -51,7 +51,7 @@ const RecentDatas = props => {
 									{i18n.lbl_RecentTransactions}
 								</i>
 							</div>
-							<ReloadSpin func={props.submitHandler} />
+							<ReloadSpin func={props.ReloadFunc} />
 						</div>
 						{rows}
 					</div>
