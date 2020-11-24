@@ -44,7 +44,7 @@ const RecentDatas = props => {
 		<>
 			<div className="btn-group">
 				<button className="switch left" onClick={HandleOpen}>
-					{i18n.lbl_RecentTransactions}
+					{i18n.lbl_RecentTransactions.toUpperCase()}
 					<i
 						className={
 							"icon icon-circle-right" + (isOpen ? " open" : "")
@@ -66,7 +66,7 @@ const RecentDatas = props => {
 						<div className="btn-group">
 							<Link
 								to={path.deposit.sub.history.root}
-								className="orange recentBtn">
+								className="blue recentBtn">
 								{i18n.lbl_AllTranscations}
 							</Link>
 						</div>

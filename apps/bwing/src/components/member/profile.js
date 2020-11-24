@@ -24,7 +24,7 @@ const Panel = () => {
 					<Link
 						className="purple"
 						to={`/${path.changePassword.root}`}>
-						{i18n.lbl_ChangePassword}
+						{i18n.lbl_ChangePassword.toUpperCase()}
 					</Link>
 				</div>
 			) : null}

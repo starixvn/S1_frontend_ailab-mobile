@@ -30,24 +30,7 @@ const defSubMenus = langId => [
 	// },
 	{
 		displayKey: "lbl_Games",
-		subItems: [
-			{
-				...defGameInfo.sabaClub,
-				displayKey: "lbl_SabaClub"
-			},
-			{
-				...defGameInfo.Fishing,
-				displayKey: "lbl_Fishing"
-			},
-			{
-				...defGameInfo.Keno,
-				displayKey: "lbl_Keno"
-			},
-			{
-				...defGameInfo.lottery,
-				displayKey: "lbl_Lottery"
-			}
-		]
+		path: `/${path.games.root}`
 	},
 	{
 		...defGameInfo.eSports,
@@ -59,32 +42,11 @@ const defSubMenus = langId => [
 	},
 	{
 		displayKey: "lbl_LiveCasino",
-		subItems: [
-			{
-				...defGameInfo.LIVEcasinoDG,
-				displayKey: "DG"
-			},
-			{
-				...defGameInfo.LIVEcasinoAB,
-				displayKey: "AB"
-			},
-			{
-				...defGameInfo.LIVEcasinoAG,
-				displayKey: "AG"
-			},
-			{
-				...defGameInfo.LIVEcasinoPP,
-				displayKey: "PP"
-			},
-			{
-				...defGameInfo.LIVEcasinoSA,
-				displayKey: "SA"
-			},
-			{
-				...defGameInfo.LIVEcasinoAE,
-				displayKey: "AE"
-			}
-		]
+		path: `/${path.liveCasino.root}`
+	},
+	{
+		displayKey: "lbl_Fishing",
+		path: `/${path.fishing.root}`
 	},
 	{
 		displayKey: "lbl_Promotions",
@@ -149,6 +111,7 @@ export default () => {
 				</div>
 				{userInfo.isLogin ? (
 					<div className="icon icon-wallteIcon" href="">
+						<span>{i18n[`Currency_${userInfo.currencyId}`]} </span>
 						<span>
 							{!walletInfo.allBalance
 								? 0
@@ -223,7 +186,8 @@ const SubMenuList = ({
 				_subItems = (
 					<>
 						<div className={`menuNavText${isOpen ? " open" : ""}`}>
-							{i18n[s.displayKey] ?? s.displayKey}
+							{i18n[s.displayKey].toUpperCase() ??
+								s.displayKey.toUpperCase()}
 							<i
 								onClick={handleSubMenu.bind(this, s.displayKey)}
 								className={`icon icon-arrow_drop_down${
@@ -245,7 +209,8 @@ const SubMenuList = ({
 					onClick={closeNavPanel}
 					key={key}
 					className="menuNavTitle">
-					{i18n[s.displayKey] ?? s.displayKey}
+					{i18n[s.displayKey].toUpperCase() ??
+						s.displayKey.toUpperCase()}
 					{_subItems}
 				</Link>
 			);
@@ -256,7 +221,8 @@ const SubMenuList = ({
 					key={key}
 					onClick={openLink.bind(this, s.href)}>
 					<div className="menuNavText">
-						{i18n[s.displayKey] ?? s.displayKey}
+						{i18n[s.displayKey].toUpperCase() ??
+							s.displayKey.toUpperCase()}
 					</div>
 				</div>
 			);
@@ -270,7 +236,8 @@ const SubMenuList = ({
 					key={key}
 					onClick={clickGame.bind(this, s)}
 					className="menuNavTitle">
-					{i18n[s.displayKey] ?? s.displayKey}
+					{i18n[s.displayKey].toUpperCase() ??
+						s.displayKey.toUpperCase()}
 				</button>
 			);
 		}

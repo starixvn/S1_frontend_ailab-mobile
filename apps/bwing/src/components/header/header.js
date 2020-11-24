@@ -11,7 +11,6 @@ import {
 	i18nContext,
 	walletInfoContext,
 	popBoxContext,
-	msgCountContext,
 	defNavPanel,
 	navContext
 } from "../common/context";
@@ -167,8 +166,8 @@ export default () => {
 
 const BeforeLogin = ({ i18n }) => (
 	<div className="headerButton">
+		<LoginPanel ButtonTitle={i18n.lbl_Login.toUpperCase()} />
 		<JoinPanel />
-		<LoginPanel ButtonTitle={i18n.lbl_Login} />
 	</div>
 );
 
@@ -177,7 +176,7 @@ const AfterLogin = ({ i18n, currencyId, userName, allBalance }) => {
 		<div className="headerTLogin">
 			<div className="login">
 				<Link to={`/${path.deposit.root}`} className="login-btn">
-					{i18n.lbl_Deposit}
+					{i18n.lbl_Deposit.toUpperCase()}
 				</Link>
 				<button className="icon icon-wallteIcon">
 					<span>{i18n[`Currency_${currencyId}`]} </span>

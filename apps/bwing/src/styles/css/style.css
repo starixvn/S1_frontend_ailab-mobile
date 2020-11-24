@@ -76,7 +76,8 @@ a {
   color: #58cdff;
 }
 
-a, button {
+a,
+button {
   font-family: "Microsoft YaHei", sans-serif;
   text-align: center;
   font-size: 3vw;
@@ -282,26 +283,6 @@ header .Login .inputBox {
   margin: 2vw 0 0;
 }
 
-header .Join .inputBox > input::-webkit-input-placeholder,
-header .Login .inputBox > input::-webkit-input-placeholder {
-  color: #fff;
-}
-
-header .Join .inputBox > input:-ms-input-placeholder,
-header .Login .inputBox > input:-ms-input-placeholder {
-  color: #fff;
-}
-
-header .Join .inputBox > input::-ms-input-placeholder,
-header .Login .inputBox > input::-ms-input-placeholder {
-  color: #fff;
-}
-
-header .Join .inputBox > input::placeholder,
-header .Login .inputBox > input::placeholder {
-  color: #fff;
-}
-
 header .Join .inputBox .JoinRule,
 header .Login .inputBox .JoinRule {
   height: 0;
@@ -390,6 +371,7 @@ header .Login .Terms.error {
 header .Join .Terms a,
 header .Login .Terms a {
   color: #f77a00;
+  display: unset;
 }
 
 header .Join .Terms input[type="checkbox"],
@@ -1707,8 +1689,8 @@ footer > a.open {
 .btn-group button.blue, .btn-group button.submit,
 .btn-group a.blue,
 .btn-group a.submit {
-  background: -webkit-gradient(linear, left top, left bottom, from(#71D3FB), to(#3FB1E0));
-  background: linear-gradient(180deg, #71D3FB, #3FB1E0);
+  background: -webkit-gradient(linear, left top, left bottom, from(#71d3fb), to(#3fb1e0));
+  background: linear-gradient(180deg, #71d3fb, #3fb1e0);
   color: #070e22;
 }
 
@@ -1721,7 +1703,7 @@ footer > a.open {
 
 .btn-group button.purple,
 .btn-group a.purple {
-  background: #5C6E9E;
+  background: #5c6e9e;
   color: #010e33;
 }
 
@@ -1888,7 +1870,7 @@ footer > a.open {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  border: 1px solid #F85B05;
+  border: 1px solid #f85b05;
   border-left: 0;
   border-right: 0;
   padding-left: 2.9vw;
@@ -1896,7 +1878,7 @@ footer > a.open {
 }
 
 .processArea .process:last-child {
-  border-right: 1px solid #F85B05;
+  border-right: 1px solid #f85b05;
 }
 
 .processArea .process:last-child:after {
@@ -1904,7 +1886,7 @@ footer > a.open {
 }
 
 .processArea .process:before {
-  content: '';
+  content: "";
   position: absolute;
   width: 2.9vw;
   height: calc(100% + 2px);
@@ -1913,7 +1895,7 @@ footer > a.open {
 }
 
 .processArea .process:after {
-  content: '';
+  content: "";
   position: absolute;
   width: 2.9vw;
   height: calc(100% + 2px);
@@ -1922,8 +1904,8 @@ footer > a.open {
 }
 
 .processArea .process.active {
-  background: -webkit-gradient(linear, left bottom, left top, from(#f20c05), to(#F85F05));
-  background: linear-gradient(to top, #f20c05, #F85F05);
+  background: -webkit-gradient(linear, left bottom, left top, from(#f20c05), to(#f85f05));
+  background: linear-gradient(to top, #f20c05, #f85f05);
 }
 
 .processArea .process.active:first-child:before {
@@ -1931,12 +1913,13 @@ footer > a.open {
 }
 
 .processArea .process.active:after {
-  content: '';
+  content: "";
   background: url(../img/stepAfter_a.png) no-repeat center/cover;
   z-index: 1;
 }
 
-.depositBox, .withdrawalBox {
+.depositBox,
+.withdrawalBox {
   padding: 10px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -1956,6 +1939,10 @@ footer > a.open {
 
 .depositInBox > p {
   padding-top: 2vw;
+}
+
+.depositInBox .inputBoxText p.txt-blue12 {
+  width: inherit;
 }
 
 .depositTitle {
@@ -2431,19 +2418,19 @@ input {
 }
 
 input::-webkit-input-placeholder {
-  color: #fff;
+  color: #BAC2D2;
 }
 
 input:-ms-input-placeholder {
-  color: #fff;
+  color: #BAC2D2;
 }
 
 input::-ms-input-placeholder {
-  color: #fff;
+  color: #BAC2D2;
 }
 
 input::placeholder {
-  color: #fff;
+  color: #BAC2D2;
 }
 
 input[type="file"] {
@@ -4072,11 +4059,11 @@ span.important {
   font-weight: bold;
 }
 
-.minAmount > div:nth-child(n+3), .minAmount > div:nth-child(1) {
+.minAmount > div:nth-child(n + 3), .minAmount > div:nth-child(1) {
   display: none;
 }
 
-.minAmount > div:nth-child(n+3).open, .minAmount > div:nth-child(1).open {
+.minAmount > div:nth-child(n + 3).open, .minAmount > div:nth-child(1).open {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4259,7 +4246,8 @@ span.important {
   border-bottom: 1px solid #101d41;
 }
 
-.affiliates button, .affiliates a {
+.affiliates button,
+.affiliates a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4279,7 +4267,8 @@ span.important {
   color: #fff;
 }
 
-.affiliates button span, .affiliates a span {
+.affiliates button span,
+.affiliates a span {
   font-size: 4vw;
   font-weight: bold;
   margin-left: 5px;
@@ -4498,16 +4487,19 @@ span.important {
   line-height: 30px;
 }
 
-.headerT .headerTLogin .login a, .headerT .headerTLogin .login button {
+.headerT .headerTLogin .login a,
+.headerT .headerTLogin .login button {
   text-decoration: none;
 }
 
-.headerT .headerTLogin .login a::before, .headerT .headerTLogin .login button::before {
+.headerT .headerTLogin .login a::before,
+.headerT .headerTLogin .login button::before {
   font-size: 4vw;
   margin-right: 2vw;
 }
 
-.headerT .headerTLogin .login a span, .headerT .headerTLogin .login button span {
+.headerT .headerTLogin .login a span,
+.headerT .headerTLogin .login button span {
   font-size: 3vw;
   color: #fff;
   margin-left: 5px;
@@ -4700,7 +4692,8 @@ span.important {
   box-sizing: border-box;
 }
 
-.menu .depositArea button, .menu .depositArea a {
+.menu .depositArea button,
+.menu .depositArea a {
   border: 0;
   width: 100px;
   height: 30px;
@@ -4912,7 +4905,7 @@ span.important {
   position: absolute;
   right: 2vw;
   top: 2vw;
-  color: #1F419B;
+  color: #1f419b;
 }
 
 .depostiImgText div.bankinfo span {
@@ -5189,7 +5182,7 @@ span.important {
       -ms-flex-pack: justify;
           justify-content: space-between;
   position: relative;
-  background: #0C1A3F;
+  background: #0c1a3f;
   border-radius: 5px;
   border: 1px solid #1a2b58;
   margin-bottom: 2vw;
@@ -5229,7 +5222,7 @@ span.important {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background: #0C1A3F;
+  background: #0c1a3f;
   border-radius: 5px;
   border: 1px solid #1a2b58;
   color: #58cdff;
@@ -5240,8 +5233,8 @@ span.important {
 }
 
 .walletModule .walletBalanceModule + .icon-spinner11.open:before {
-  -webkit-animation: rotate .7s linear 2;
-          animation: rotate .7s linear 2;
+  -webkit-animation: rotate 0.7s linear 2;
+          animation: rotate 0.7s linear 2;
 }
 
 .walletModule .walletBalanceModule .icon-error {
@@ -5252,7 +5245,8 @@ span.important {
   margin: 0;
 }
 
-.walletModule .walletBalanceModule .btnGroup button, .walletModule .walletBalanceModule .btnGroup a {
+.walletModule .walletBalanceModule .btnGroup button,
+.walletModule .walletBalanceModule .btnGroup a {
   margin-bottom: 0;
 }
 
@@ -5270,7 +5264,7 @@ span.important {
 }
 
 .addBank {
-  background: #0C1A3F;
+  background: #0c1a3f;
   padding: 2vw;
   border-radius: 5px;
   border: 1px solid #1a2b58;
@@ -5342,8 +5336,8 @@ span.important {
           justify-content: space-evenly;
   cursor: pointer;
   min-height: auto;
-  background: #3A4D80;
-  border: 1px solid #4D5E8E;
+  background: #3a4d80;
+  border: 1px solid #4d5e8e;
 }
 
 .addBank .addBankName .addBankInfo {
@@ -5382,7 +5376,7 @@ span.important {
 
 .addBank .addBankName .addBankInfo .icon-bin {
   font-size: 24px;
-  color: #56607B;
+  color: #56607b;
   position: static;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5391,7 +5385,8 @@ span.important {
   margin-right: 15px;
 }
 
-.addBank .addBankName button.icon, .addBank .addBankName a.icon {
+.addBank .addBankName button.icon,
+.addBank .addBankName a.icon {
   font-size: 24px;
   position: absolute;
   right: 0;
@@ -5487,7 +5482,8 @@ span.important {
   width: calc(25% - 20px);
 }
 
-.addBank + div.subModuleList .subModuleBody ul li a, .addBank + div.subModuleList .subModuleBody ul li button {
+.addBank + div.subModuleList .subModuleBody ul li a,
+.addBank + div.subModuleList .subModuleBody ul li button {
   padding: 5px 10px;
   width: calc(100% - 20px);
 }
@@ -5505,7 +5501,7 @@ span.important {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  background: #0C1A3F;
+  background: #0c1a3f;
   border-radius: 5px;
   border: 1px solid #1a2b58;
 }
@@ -5613,7 +5609,7 @@ span.important {
 
 .subModuleList .subModule .subModuleBody .upload_img {
   border: 2px dashed #58cdff;
-  background: #010E33;
+  background: #010e33;
   width: 100%;
   height: 120px;
   border-radius: 5px;
@@ -5672,7 +5668,8 @@ span.important {
   min-width: 76px;
 }
 
-.subModuleList .subModule .subModuleBody ul li a, .subModuleList .subModule .subModuleBody ul li button {
+.subModuleList .subModule .subModuleBody ul li a,
+.subModuleList .subModule .subModuleBody ul li button {
   border-radius: 5px;
   padding: 5px;
   text-align: center;
@@ -5691,12 +5688,14 @@ span.important {
   background: white;
 }
 
-.subModuleList .subModule .subModuleBody ul li a.icon-library, .subModuleList .subModule .subModuleBody ul li button.icon-library {
+.subModuleList .subModule .subModuleBody ul li a.icon-library,
+.subModuleList .subModule .subModuleBody ul li button.icon-library {
   color: #001942;
   font-size: 44px;
 }
 
-.subModuleList .subModule .subModuleBody ul li a img, .subModuleList .subModule .subModuleBody ul li button img {
+.subModuleList .subModule .subModuleBody ul li a img,
+.subModuleList .subModule .subModuleBody ul li button img {
   width: auto;
   height: 100%;
 }
@@ -5709,8 +5708,8 @@ span.important {
   text-align: center;
   margin-top: -3px;
   background: white;
-  color: #0C1A3F;
-  border-top: 1px solid #0C1A3F;
+  color: #0c1a3f;
+  border-top: 1px solid #0c1a3f;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -5742,8 +5741,8 @@ span.important {
 }
 
 .calculation > div:nth-child(odd) {
-  background: #3A4D80;
-  border: 1px solid #4D5E8E;
+  background: #3a4d80;
+  border: 1px solid #4d5e8e;
 }
 
 .calculation > div:nth-child(even) {
@@ -5771,7 +5770,7 @@ span.important {
 }
 
 .calculation > div > div:first-child {
-  border-bottom: 1px solid #4D5E8E;
+  border-bottom: 1px solid #4d5e8e;
   -webkit-box-flex: 2;
       -ms-flex: 2;
           flex: 2;
@@ -5792,7 +5791,7 @@ span.important {
 }
 
 .cashBar {
-  background: #3B4D80;
+  background: #3b4d80;
   height: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5851,7 +5850,7 @@ span.important {
   height: 15px;
   border-radius: 20px;
   background: #58cdff;
-  border: 2px solid #0C1A3F;
+  border: 2px solid #0c1a3f;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5952,5 +5951,46 @@ span.important {
 
 .gear {
   margin: auto;
+}
+
+.gameBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+}
+
+.gameInBox {
+  position: relative;
+  width: calc(100% / 2 - 1vw);
+  background-color: #0c1a3f;
+  border: 1px solid #1d2f62;
+  border-radius: 5px;
+  padding: 2vw 0;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 2vw;
+}
+
+.gameInBox img {
+  width: 100%;
+}
+
+.gameInBox p {
+  font-size: 4vw;
+}
+
+.gameInBox p span {
+  color: #58cdff;
+  font-size: 3vw;
+  margin-right: 5px;
 }
 /*# sourceMappingURL=style.css.map */
