@@ -42,17 +42,19 @@ const PromotionContent = ({ staticList }) => {
 	});
 
 	const getPromotionListV2 = useCallback(() => {
-		api.promotion_GetPromotionListV2({
-			langId: userInfo.langId
-		}).then(res => {
-			if (res.data.errorCode === 0 && isMountedRef.current) {
-				let result = res.data.data.sort((a, b) => {
-					return a.periodFrom > b.periodFrom ? -1 : 1;
-				});
+		api.promotion
+			.GetPromotionListV2({
+				langId: userInfo.langId
+			})
+			.then(res => {
+				if (res.data.errorCode === 0 && isMountedRef.current) {
+					let result = res.data.data.sort((a, b) => {
+						return a.periodFrom > b.periodFrom ? -1 : 1;
+					});
 
-				setPromotion(result);
-			}
-		});
+					setPromotion(result);
+				}
+			});
 	}, [userInfo.langId]);
 
 	useEffect(() => {

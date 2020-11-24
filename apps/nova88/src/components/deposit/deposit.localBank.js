@@ -12,15 +12,12 @@ import {
 import LimitTip from "./limitTip";
 import { isConvert, checkAmount, number_format } from "../common/common";
 import InputBox from "../common/inputbox";
-import {
-	api_payment_DepositReqWireTransfer,
-	api_payment_GetBankInfoOffList
-} from "@ailab-mobile/api";
 import moment from "moment";
 import PageVerify from "./deposit.pageVerify";
 import path from "../../path";
 import Loading from "../common/loading";
 import Promotion from "./deposit.promotion";
+import api from "../../service/api";
 
 export const Panel = props => props.children;
 
@@ -79,7 +76,7 @@ export const Main = props => {
 		} else {
 			if (userInfo.isLogin) {
 				setLoading(true);
-				api_payment_GetBankInfoOffList().then(
+				api.payment.GetBankInfoOffList().then(
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 0) {
@@ -157,53 +154,55 @@ export const Main = props => {
 			let result = VaildAmount(amount) && selBank.bank;
 			if (result && pageVerify) {
 				const RedirectToNext = (real_amount, sysId) => {
-					api_payment_DepositReqWireTransfer({
-						amount: real_amount,
-						sysId: sysId
-					}).then(
-						res => {
-							if (isMountedRef.current) {
-								if (res.data.errorCode === 0) {
-									setbankSlipPopBox(prevState => ({
-										...prevState,
-										...res.data.data,
-										depositTime: `${moment().format(
-											"yyyy-MM-DDT"
-										)}${moment().format("HH:mm")}`,
-										isOpen: true,
-										amount: number_format(
-											real_amount,
-											_isConvert
-										),
-										closeCallBack: () =>
-											setRedirectPath(
-												`/${path.deposit.root}`
-											)
-									}));
+					api.payment
+						.DepositReqWireTransfer({
+							amount: real_amount,
+							sysId: sysId
+						})
+						.then(
+							res => {
+								if (isMountedRef.current) {
+									if (res.data.errorCode === 0) {
+										setbankSlipPopBox(prevState => ({
+											...prevState,
+											...res.data.data,
+											depositTime: `${moment().format(
+												"yyyy-MM-DDT"
+											)}${moment().format("HH:mm")}`,
+											isOpen: true,
+											amount: number_format(
+												real_amount,
+												_isConvert
+											),
+											closeCallBack: () =>
+												setRedirectPath(
+													`/${path.deposit.root}`
+												)
+										}));
 
-									setPopBox(prevState => ({
-										...prevState,
-										isOpen: false
-									}));
-								} else {
-									setPopBox(prevState => ({
-										...prevState,
+										setPopBox(prevState => ({
+											...prevState,
+											isOpen: false
+										}));
+									} else {
+										setPopBox(prevState => ({
+											...prevState,
+											title: i18n.lbl_ImportantNote,
+											content: i18n.msg_WrongAmount
+										}));
+									}
+								}
+							},
+							err => {
+								if (isMountedRef.current) {
+									setPopBox({
+										isOpen: true,
 										title: i18n.lbl_ImportantNote,
-										content: i18n.msg_WrongAmount
-									}));
+										content: i18n.msg_ApiServerError
+									});
 								}
 							}
-						},
-						err => {
-							if (isMountedRef.current) {
-								setPopBox({
-									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: i18n.msg_ApiServerError
-								});
-							}
-						}
-					);
+						);
 				};
 
 				let real_amount = _isConvert

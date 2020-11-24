@@ -1,9 +1,8 @@
 import React, { useEffect, useContext, useState } from "react";
 import Dropdown from "../common/dropdown";
-import { api_promotion_GetCanJoinPromotionList } from "@ailab-mobile/api";
 import { i18nContext, userInfoContext } from "Context";
-import { PromotionAPI } from "@ailab-mobile/api";
 import config from "Config";
+import api from "../../service/api";
 
 export default () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -14,8 +13,7 @@ export default () => {
 	useEffect(() => {
 		let mounted = true;
 		if (userInfo.isLogin === true) {
-			let api = new PromotionAPI(config);
-			api.promotion_GetCanJoinPromotionList(userInfo.langId).then(res => {
+			api.promotion.GetCanJoinPromotionList(userInfo.langId).then(res => {
 				if (mounted) {
 					if (res.data.errorCode === 0) {
 						setPromoList(() => {

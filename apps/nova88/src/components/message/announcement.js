@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import { api_message_GetAnnouncement } from "@ailab-mobile/api";
 import { userInfoContext, popBoxContext, i18nContext } from "Context";
 import moment from "moment";
 import Loading from "../common/loading";
+import api from "../../service/api";
 
 const Panel = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -18,7 +18,7 @@ const Panel = () => {
 			setLoading(true);
 		}
 
-		api_message_GetAnnouncement(userInfo.langId).then(
+		api.message.GetAnnouncement(userInfo.langId).then(
 			res => {
 				if (res.data.errorCode === 0) {
 					const data = res.data.data;

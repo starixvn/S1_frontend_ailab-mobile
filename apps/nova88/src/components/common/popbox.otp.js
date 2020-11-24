@@ -1,11 +1,8 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
-import {
-	api_accountStrict_SendOTPSMS,
-	api_accountStrict_VerifyOTP
-} from "@ailab-mobile/api";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
 import moment from "moment";
 import { redirectToPrev } from "../member/profile.redirect";
+import api from "../../service/api";
 
 const Panel = ({ ClosePopbox }) => {
 	const { i18n } = useContext(i18nContext);
@@ -26,7 +23,7 @@ const Panel = ({ ClosePopbox }) => {
 
 	useEffect(() => {
 		if (isMountedRef.current) {
-			api_accountStrict_SendOTPSMS().then(
+			api.accountStrict.SendOTPSMS().then(
 				response => {
 					if (isMountedRef.current) {
 						if (response.data.errorCode === 0) {
@@ -78,59 +75,61 @@ const Panel = ({ ClosePopbox }) => {
 	};
 
 	const clickSubmit = async otpCode => {
-		await api_accountStrict_VerifyOTP({
-			inputOTPcode: otpCode
-		}).then(
-			res => {
-				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
-						setUserInfo(prev => ({
-							...prev,
-							phoneVerified: true
-						}));
+		await api
+			.accountStrict_VerifyOTP({
+				inputOTPcode: otpCode
+			})
+			.then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							setUserInfo(prev => ({
+								...prev,
+								phoneVerified: true
+							}));
 
-						setLoading(false);
-						setPopBox({ isOpen: false });
+							setLoading(false);
+							setPopBox({ isOpen: false });
 
-						redirectToPrev(i18n, setPopBox, ClosePopbox);
-					} else if (res.data.errorCode === 1000) {
-						setLoading(false);
-						setWarning(i18n.msg_OTP_Invalid);
-					} else {
+							redirectToPrev(i18n, setPopBox, ClosePopbox);
+						} else if (res.data.errorCode === 1000) {
+							setLoading(false);
+							setWarning(i18n.msg_OTP_Invalid);
+						} else {
+							setLoading(false);
+							setPopBox({
+								isOpen: true,
+								content: res.data.message,
+								hasBtn: true,
+								btnBar: (
+									<div className="btn-group">
+										<button
+											className="blue"
+											onClick={closePopbox}>
+											{i18n["lbl_Cancel"]}
+										</button>
+									</div>
+								)
+							});
+						}
+					}
+				},
+				err => {
+					if (isMountedRef.current) {
 						setLoading(false);
 						setPopBox({
 							isOpen: true,
-							content: res.data.message,
-							hasBtn: true,
-							btnBar: (
-								<div className="btn-group">
-									<button
-										className="blue"
-										onClick={closePopbox}>
-										{i18n["lbl_Cancel"]}
-									</button>
-								</div>
-							)
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
 						});
 					}
 				}
-			},
-			err => {
-				if (isMountedRef.current) {
-					setLoading(false);
-					setPopBox({
-						isOpen: true,
-						title: i18n.lbl_ImportantNote,
-						content: i18n.msg_ApiServerError
-					});
-				}
-			}
-		);
+			);
 	};
 
 	const clickResend = () => {
 		setLoading(true);
-		api_accountStrict_SendOTPSMS().then(
+		api.accountStrict.SendOTPSMS().then(
 			response => {
 				if (isMountedRef.current) {
 					if (response.data.errorCode === 0) {

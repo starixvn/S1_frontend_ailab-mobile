@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { api_site_WhoAMI } from "@ailab-mobile/api";
 import config from "../config";
+import api from "../service/api";
 
 const IndexPage = () => {
 	const [datas, setDatas] = useState(null);
 	useEffect(() => {
 		let mounted = true;
-		api_site_WhoAMI({ apiURL: config.apiURL }).then(res => {
+		api.site.WhoAMI({ apiURL: config.apiURL }).then(res => {
 			if (mounted) {
 				setDatas(res.data.data);
 			}

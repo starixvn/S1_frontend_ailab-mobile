@@ -1,14 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import { number_format, isConvert, checkAmount } from "../common/common";
-import {
-	api_account_GetWithdrawalAvailableBalance,
-	api_account_GetCustBankInfo,
-	api_payment_WithdrawalReq,
-	api_payment_GetWithdrawalInfoRecent,
-	api_payment_SetWithdrawalCancel,
-	api_payment_KycCheck
-} from "@ailab-mobile/api";
 import InputBox from "../common/inputbox";
 import config from "../../config";
 import RecentDatas from "./withdrawal.recentDatas";
@@ -17,6 +9,7 @@ import path from "../../path";
 import { Redirect } from "@reach/router";
 import Loading from "../common/loading";
 import { Iov_GetBlackBox } from "../common/iovation";
+import api from "../../service/api";
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
@@ -83,7 +76,7 @@ const Panel = () => {
 			}
 		} else if (userInfo.isLogin) {
 			const CheckBankInfo = async () => {
-				let result = await api_account_GetCustBankInfo().then(res => {
+				let result = await api.account.GetCustBankInfo().then(res => {
 					let hasBankInfo = false;
 					if (res.data.errorCode === 0) {
 						if (
@@ -143,33 +136,35 @@ const Panel = () => {
 					KycCheck(true).then(kycProcess => {
 						if (!kycProcess) {
 							if (userInfo.isLogin) {
-								api_account_GetWithdrawalAvailableBalance().then(
-									res => {
-										if (
-											res.data.errorCode === 0 &&
-											isMountedRef.current
-										) {
-											setBalanceInfo(res.data.data);
-											setLoading(false);
+								api.account
+									.GetWithdrawalAvailableBalance()
+									.then(
+										res => {
+											if (
+												res.data.errorCode === 0 &&
+												isMountedRef.current
+											) {
+												setBalanceInfo(res.data.data);
+												setLoading(false);
+											}
+										},
+										err => {
+											if (isMountedRef.current) {
+												setLoading(false);
+											}
 										}
-									},
-									err => {
-										if (isMountedRef.current) {
-											setLoading(false);
-										}
-									}
-								);
+									);
 
-								api_payment_GetWithdrawalInfoRecent().then(
-									res => {
+								api.payment
+									.GetWithdrawalInfoRecent()
+									.then(res => {
 										if (
 											res.data.errorCode === 0 &&
 											isMountedRef.current
 										) {
 											setRecentDatas(res.data.data);
 										}
-									}
-								);
+									});
 							}
 						}
 					});
@@ -188,7 +183,7 @@ const Panel = () => {
 	]);
 
 	const KycCheck = async UpdatePageVerify => {
-		let executeKycProcess = await api_payment_KycCheck().then(res => {
+		let executeKycProcess = await api.payment.KycCheck().then(res => {
 			if (isMountedRef.current) {
 				if (res.data.errorCode === 1) {
 					setRedirectPath(`/${path.kyc.root}`);
@@ -209,7 +204,7 @@ const Panel = () => {
 
 	const GetBalance = () => {
 		if (pageVerify) {
-			api_account_GetWithdrawalAvailableBalance().then(res => {
+			api.account.GetWithdrawalAvailableBalance().then(res => {
 				if (res.data.errorCode === 0 && isMountedRef.current) {
 					setBalanceInfo(res.data.data);
 				}
@@ -261,82 +256,82 @@ const Panel = () => {
 					sysId
 				) => {
 					let blackbox = await Iov_GetBlackBox();
-					api_payment_WithdrawalReq(
-						accountNo,
-						_real_amount,
-						sysId,
-						blackbox
-					).then(
-						res => {
-							if (isMountedRef.current) {
-								if (
-									res.data.errorCode === 0 ||
-									res.data.errorCode === 2
-								) {
-									KycCheck(false).then(kycProcess => {
-										if (!kycProcess) {
-											setAmount("");
-											api_payment_GetWithdrawalInfoRecent().then(
-												res => {
-													if (
-														res.data.errorCode ===
-															0 &&
-														isMountedRef.current
-													) {
-														GetBalance();
-														setRecentDatas(
-															res.data.data
-														);
-													}
-												}
-											);
-										}
-									});
+					api.payment
+						.WithdrawalReq(accountNo, _real_amount, sysId, blackbox)
+						.then(
+							res => {
+								if (isMountedRef.current) {
+									if (
+										res.data.errorCode === 0 ||
+										res.data.errorCode === 2
+									) {
+										KycCheck(false).then(kycProcess => {
+											if (!kycProcess) {
+												setAmount("");
+												api.payment
+													.GetWithdrawalInfoRecent()
+													.then(res => {
+														if (
+															res.data
+																.errorCode ===
+																0 &&
+															isMountedRef.current
+														) {
+															GetBalance();
+															setRecentDatas(
+																res.data.data
+															);
+														}
+													});
+											}
+										});
 
-									setPopBox({ isOpen: false });
-								} else {
-									let content = res.data.message;
-									if (res.data.errorCode === -1) {
-										content = `${
-											i18n.lbl_RolloverOver
-										}: ${number_format(
-											parseFloat(res.data.message),
-											_isConvert
-										)}`;
-									} else if (res.data.errorCode === -2) {
-										content = `${
-											i18n.lbl_DepositOver
-										}: ${number_format(
-											parseFloat(res.data.message),
-											_isConvert
-										)}`;
-									} else if (res.data.errorCode === -3) {
-										content = `${
-											i18n.lbl_WithdrawalOver
-										}: ${number_format(
-											parseFloat(res.data.message),
-											_isConvert
-										)}`;
+										setPopBox({ isOpen: false });
+									} else {
+										let content = res.data.message;
+										if (res.data.errorCode === -1) {
+											content = `${
+												i18n.lbl_RolloverOver
+											}: ${number_format(
+												parseFloat(res.data.message),
+												_isConvert
+											)}`;
+										} else if (res.data.errorCode === -2) {
+											content = `${
+												i18n.lbl_DepositOver
+											}: ${number_format(
+												parseFloat(res.data.message),
+												_isConvert
+											)}`;
+										} else if (res.data.errorCode === -3) {
+											content = `${
+												i18n.lbl_WithdrawalOver
+											}: ${number_format(
+												parseFloat(res.data.message),
+												_isConvert
+											)}`;
+										}
+										setPopBox({
+											isOpen: true,
+											title: i18n.lbl_ImportantNote,
+											content: content,
+											hasBtn: false
+										});
 									}
-									setPopBox({
+								}
+							},
+							err => {
+								if (isMountedRef.current) {
+									this.props.setPopBox({
 										isOpen: true,
-										title: i18n.lbl_ImportantNote,
-										content: content,
-										hasBtn: false
+										title: this.props.i18n
+											.lbl_ImportantNote,
+										content: this.props.i18n
+											.msg_ApiServerError
 									});
 								}
 							}
-						},
-						err => {
-							if (isMountedRef.current) {
-								this.props.setPopBox({
-									isOpen: true,
-									title: this.props.i18n.lbl_ImportantNote,
-									content: this.props.i18n.msg_ApiServerError
-								});
-							}
-						}
-					);
+						);
 				};
 
 				let real_amount = _isConvert
@@ -409,18 +404,18 @@ const Panel = () => {
 		if (pageVerify) {
 			const ClickSubmit = () => {
 				setPopBox({ isOpen: false });
-				api_payment_SetWithdrawalCancel(transId).then(
+				api.payment.SetWithdrawalCancel(transId).then(
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 0) {
-								api_payment_GetWithdrawalInfoRecent().then(
-									res => {
+								api.payment
+									.GetWithdrawalInfoRecent()
+									.then(res => {
 										if (res.data.errorCode === 0) {
 											GetBalance();
 											setRecentDatas(res.data.data);
 										}
-									}
-								);
+									});
 							} else {
 								this.props.setPopBox({
 									isOpen: true,
@@ -466,7 +461,7 @@ const Panel = () => {
 	};
 
 	const GetWithdrawalInfoRecent = () => {
-		api_payment_GetWithdrawalInfoRecent().then(res => {
+		api.payment.GetWithdrawalInfoRecent().then(res => {
 			if (res.data.errorCode === 0 && isMountedRef.current) {
 				setRecentDatas(res.data.data);
 			}

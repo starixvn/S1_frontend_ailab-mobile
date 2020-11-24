@@ -1,15 +1,12 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
-import {
-	api_payment_GetWithdrawalInfoHistory,
-	api_payment_SetWithdrawalCancel
-} from "@ailab-mobile/api";
 import { number_format, isConvert } from "../common/common";
 import moment from "moment";
 import HistoryFilter from "../common/historyFilter";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import ReloadSpin from "../common/reloadSpin";
 import Loading from "../common/loading";
+import api from "../../service/api";
 
 const Panel = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -29,7 +26,7 @@ const Panel = () => {
 		return () => (isMountedRef.current = false);
 	});
 	AUTO_FETCHING_DATA(
-		api_payment_GetWithdrawalInfoHistory,
+		api.payment.GetWithdrawalInfoHistory,
 		filterData,
 		pageInfo,
 		setGetHistoryState,
@@ -55,54 +52,56 @@ const Panel = () => {
 			}
 
 			setClickSubmit(true);
-			api_payment_GetWithdrawalInfoHistory({
-				...transactionData,
-				PageNumber: 1
-			}).then(
-				response => {
-					if (isMountedRef.current) {
-						const errorCode = response.data.errorCode;
-						if (errorCode !== 0) {
+			api.payment
+				.GetWithdrawalInfoHistory({
+					...transactionData,
+					PageNumber: 1
+				})
+				.then(
+					response => {
+						if (isMountedRef.current) {
+							const errorCode = response.data.errorCode;
+							if (errorCode !== 0) {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content: response.data.message
+								});
+							} else {
+								setGetHistoryState(response.data.data);
+								if (
+									response.data.totalPages >=
+									response.data.pageNumber
+								) {
+									setPageInfo(() => ({
+										totalPages: response.data.totalPages,
+										pageNumber: response.data.pageNumber
+									}));
+								}
+							}
+							setProcessing(false);
+							setLoading(false);
+						}
+					},
+					err => {
+						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
-								content: response.data.message
+								content: i18n.msg_ApiServerError
 							});
-						} else {
-							setGetHistoryState(response.data.data);
-							if (
-								response.data.totalPages >=
-								response.data.pageNumber
-							) {
-								setPageInfo(() => ({
-									totalPages: response.data.totalPages,
-									pageNumber: response.data.pageNumber
-								}));
-							}
+							setProcessing(false);
+							setLoading(false);
 						}
-						setProcessing(false);
-						setLoading(false);
 					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-						setProcessing(false);
-						setLoading(false);
-					}
-				}
-			);
+				);
 		}
 	};
 
 	const ClickCancel = transId => {
 		const ClickSubmit = () => {
 			setPopBox({ isOpen: false });
-			api_payment_SetWithdrawalCancel(transId).then(
+			api.payment.SetWithdrawalCancel(transId).then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {

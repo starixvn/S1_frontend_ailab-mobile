@@ -2,16 +2,13 @@ import React, { useContext, useState, useEffect, useRef } from "react";
 import Step from "./step";
 import { Link, Redirect } from "@reach/router";
 import { i18nContext, userInfoContext, popBoxContext } from "Context";
-import {
-	api_payment_GetMobilePayGroupList,
-	api_payment_GetMobilePayInfoList
-} from "@ailab-mobile/api";
 import config from "../../config";
 import LimitTip from "./limitTip";
 import { isConvert } from "../common/common";
 import path from "../../path";
 import PageVerify from "./deposit.pageVerify";
 import Loading from "../common/loading";
+import api from "../../service/api";
 
 export const Panel = props => props.children;
 
@@ -52,7 +49,7 @@ export const Main = props => {
 		} else {
 			if (userInfo.isLogin) {
 				setLoading(true);
-				api_payment_GetMobilePayGroupList().then(
+				api.payment.GetMobilePayGroupList().then(
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 0) {
@@ -96,7 +93,7 @@ export const Main = props => {
 		if (pageVerify && selGroupId !== groupId) {
 			setSelGroupId(() => groupId);
 			setLoading(true);
-			api_payment_GetMobilePayInfoList(groupId).then(
+			api.payment.GetMobilePayInfoList(groupId).then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {

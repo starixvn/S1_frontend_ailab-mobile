@@ -2,11 +2,11 @@ import React, { useContext, useState, useEffect, useRef } from "react";
 import Step from "./step";
 import { Link, Redirect } from "@reach/router";
 import { i18nContext, userInfoContext, popBoxContext } from "Context";
-import { api_payment_GetCryptoPayInfoList } from "@ailab-mobile/api";
 import path from "Path";
 import PageVerify from "./deposit.pageVerify";
 import Loading from "../common/loading";
 import config from "../../config";
+import api from "../../service/api";
 
 export const Panel = props => props.children;
 
@@ -43,7 +43,7 @@ export const Main = props => {
 			}
 		} else if (userInfo.isLogin) {
 			setLoading(true);
-			api_payment_GetCryptoPayInfoList().then(
+			api.payment.GetCryptoPayInfoList().then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {

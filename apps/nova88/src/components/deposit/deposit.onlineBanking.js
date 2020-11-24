@@ -2,11 +2,11 @@ import React, { useEffect, useState, useContext, useRef } from "react";
 import Step from "./step";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
 import { Link, Redirect } from "@reach/router";
-import { api_payment_GetOnlinePaymentList } from "@ailab-mobile/api";
 import PageVerify from "./deposit.pageVerify";
 import path from "../../path";
 import Loading from "../common/loading";
 import config from "../../config";
+import api from "../../service/api";
 
 export const Panel = props => props.children;
 
@@ -42,7 +42,7 @@ export const Main = props => {
 		} else {
 			if (userInfo.isLogin) {
 				setLoading(true);
-				api_payment_GetOnlinePaymentList().then(
+				api.payment.GetOnlinePaymentList().then(
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 0) {

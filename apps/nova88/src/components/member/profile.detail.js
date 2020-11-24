@@ -5,15 +5,11 @@ import Dropdown from "../common/dropdown.icon";
 import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import areaCode from "../../datas/areaCode";
 import moment from "moment";
-import {
-	api_accountStrict_SetProfile,
-	api_accountStrict_GetCustProfile,
-	api_site_ExistsPhoneNo
-} from "@ailab-mobile/api";
 import path from "../../path";
 import { monthOptions, initStatus, initValue } from "./profile.def";
 import { defPopBoxType } from "../common/popbox";
 import { redirectToPrev } from "./profile.redirect";
+import api from "../../service/api";
 
 const Panel = () => {
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -151,43 +147,45 @@ const Panel = () => {
 			checked = false;
 			tip = i18n.lbl_PhoneRequired;
 		} else {
-			api_site_ExistsPhoneNo({
-				AreaCode: _areaCode,
-				Phone: val
-			}).then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							if (res.data.data) {
-								setStatus(prev => ({
-									...prev,
-									phoneNo: {
-										checked: false,
-										msg: i18n.msg_PhoneExisted
-									}
-								}));
-							} else {
-								setStatus(prev => ({
-									...prev,
-									phoneNo: {
-										checked: true,
-										msg: ""
-									}
-								}));
+			api.site
+				.ExistsPhoneNo({
+					AreaCode: _areaCode,
+					Phone: val
+				})
+				.then(
+					res => {
+						if (isMountedRef.current) {
+							if (res.data.errorCode === 0) {
+								if (res.data.data) {
+									setStatus(prev => ({
+										...prev,
+										phoneNo: {
+											checked: false,
+											msg: i18n.msg_PhoneExisted
+										}
+									}));
+								} else {
+									setStatus(prev => ({
+										...prev,
+										phoneNo: {
+											checked: true,
+											msg: ""
+										}
+									}));
+								}
 							}
 						}
+					},
+					err => {
+						if (isMountedRef.current) {
+							setPopBox({
+								isOpen: true,
+								title: i18n.lbl_ImportantNote,
+								content: i18n.msg_ApiServerError
+							});
+						}
 					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-					}
-				}
-			);
+				);
 		}
 
 		setStatus(prev => ({
@@ -286,14 +284,14 @@ const Panel = () => {
 					PhoneNo: userInfo.phoneNo ?? userValue.phoneNo
 				};
 
-				api_accountStrict_SetProfile(profileData).then(
+				api.accountStrict.SetProfile(profileData).then(
 					response => {
 						if (isMountedRef.current) {
 							const errorCode = response.data.errorCode;
 							const message = response.data.message;
 
 							if (errorCode === 0) {
-								api_accountStrict_GetCustProfile().then(
+								api.accountStrict.GetCustProfile().then(
 									res => {
 										if (isMountedRef.current) {
 											if (res.data.errorCode === 0) {

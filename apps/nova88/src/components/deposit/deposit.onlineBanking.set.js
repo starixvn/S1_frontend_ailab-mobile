@@ -2,10 +2,6 @@ import React, { useEffect, useState, useContext, useRef } from "react";
 import Step from "./step";
 import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import { Link, Redirect } from "@reach/router";
-import {
-	api_payment_GetOnlineBankInfoSysList,
-	api_payment_GetOnlineBankInfo
-} from "@ailab-mobile/api";
 import DropdownIMG from "../common/dropdown.image";
 import config from "../../config";
 import { number_format, isConvert, checkAmount } from "../common/common";
@@ -14,6 +10,7 @@ import LimitTip from "./limitTip";
 import path from "../../path";
 import PageVerify from "./deposit.pageVerify";
 import Loading from "../common/loading";
+import api from "../../service/api";
 
 const SetPayment = props => {
 	const { setPopBox } = useContext(popBoxContext);
@@ -57,53 +54,62 @@ const SetPayment = props => {
 		} else {
 			if (userInfo.isLogin && props.location.state.selBank) {
 				setLoading(true);
-				api_payment_GetOnlineBankInfoSysList({
-					payId: props.location.state.payId
-				}).then(
-					res => {
-						if (res.data.errorCode === 0) {
-							let datas = res.data.data.map(b => {
-								let { bankLogo, sysId, bankName, ...rest } = b;
-								return {
-									...rest,
-									image: bankLogo,
-									id: sysId,
-									displayText: bankName
-								};
-							});
+				api.payment
+					.GetOnlineBankInfoSysList({
+						payId: props.location.state.payId
+					})
+					.then(
+						res => {
+							if (res.data.errorCode === 0) {
+								let datas = res.data.data.map(b => {
+									let {
+										bankLogo,
+										sysId,
+										bankName,
+										...rest
+									} = b;
+									return {
+										...rest,
+										image: bankLogo,
+										id: sysId,
+										displayText: bankName
+									};
+								});
 
-							if (isMountedRef.current) {
-								if (datas.length > 0) {
-									setBankList(datas);
-								} else {
-									setRedirectPath(`/${path.deposit.root}`);
+								if (isMountedRef.current) {
+									if (datas.length > 0) {
+										setBankList(datas);
+									} else {
+										setRedirectPath(
+											`/${path.deposit.root}`
+										);
+									}
+								}
+							} else {
+								if (isMountedRef.current) {
+									setPopBox({
+										isOpen: true,
+										title: i18n.lbl_ImportantNote,
+										content: res.data.message
+									});
 								}
 							}
-						} else {
+
+							if (isMountedRef.current) {
+								setLoading(false);
+							}
+						},
+						err => {
 							if (isMountedRef.current) {
 								setPopBox({
 									isOpen: true,
 									title: i18n.lbl_ImportantNote,
-									content: res.data.message
+									content: i18n.msg_ApiServerError
 								});
+								setLoading(false);
 							}
 						}
-
-						if (isMountedRef.current) {
-							setLoading(false);
-						}
-					},
-					err => {
-						if (isMountedRef.current) {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: i18n.msg_ApiServerError
-							});
-							setLoading(false);
-						}
-					}
-				);
+					);
 			} else {
 				setLoading(false);
 			}
@@ -118,36 +124,38 @@ const SetPayment = props => {
 
 	const SelectBank = idx => {
 		if (pageVerify) {
-			api_payment_GetOnlineBankInfo({
-				payId: props.location.state.payId,
-				sysId: bankList[idx].id
-			}).then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							setSelBank({
-								idx: idx,
-								bank: res.data.data
-							});
-						} else {
+			api.payment
+				.GetOnlineBankInfo({
+					payId: props.location.state.payId,
+					sysId: bankList[idx].id
+				})
+				.then(
+					res => {
+						if (isMountedRef.current) {
+							if (res.data.errorCode === 0) {
+								setSelBank({
+									idx: idx,
+									bank: res.data.data
+								});
+							} else {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content: res.data.message
+								});
+							}
+						}
+					},
+					err => {
+						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
-								content: res.data.message
+								content: i18n.msg_ApiServerError
 							});
 						}
 					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-					}
-				}
-			);
+				);
 		}
 	};
 

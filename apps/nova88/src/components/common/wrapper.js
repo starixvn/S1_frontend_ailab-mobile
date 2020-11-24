@@ -1,17 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import * as ct from "Context";
-import {
-	api_accountStrict_GetCustProfile,
-	api_account_GetBalnace,
-	api_account_onlineCheck,
-	api_account_GetMsgCount
-} from "@ailab-mobile/api";
 import { IS_LOGGED_IN } from "../../service/auth";
 import { GET_LANG_ID } from "../../service/language";
 import themeList from "../../datas/theme";
 import useInterval from "../hook/useInterval";
 import { getUrlParameter, setCookie, deleteCookie } from "../common/common";
 import i18nConfig from "../../i18n/config";
+import api from "../../service/api";
 
 export const Wrapper = ({ children }) => {
 	const [i18n, seti18n] = useState(i18nConfig());
@@ -100,7 +95,7 @@ export const Wrapper = ({ children }) => {
 
 	useInterval(
 		() => {
-			api_account_onlineCheck().then(
+			api.account.onlineCheck().then(
 				res => {
 					var result = res.data;
 					if (
@@ -128,7 +123,7 @@ export const Wrapper = ({ children }) => {
 	useEffect(() => {
 		if (userInfo.isLogin) {
 			if (!userInfo.regTime) {
-				api_accountStrict_GetCustProfile().then(res_custInfo => {
+				api.accountStrict.GetCustProfile().then(res_custInfo => {
 					if (
 						res_custInfo.data.errorCode === 0 &&
 						isMountedRef.current
@@ -142,14 +137,14 @@ export const Wrapper = ({ children }) => {
 				});
 			}
 
-			api_account_GetMsgCount().then(res => {
+			api.account.GetMsgCount().then(res => {
 				if (res.data.errorCode === 0 && isMountedRef.current) {
 					setMsgCount(res.data.data);
 				}
 			});
 
 			if (userInfo.userName) {
-				api_account_GetBalnace().then(res => {
+				api.account.GetBalnace().then(res => {
 					if (res.data.errorCode === 0 && isMountedRef.current) {
 						setWalletInfo(prevState => ({
 							...prevState,

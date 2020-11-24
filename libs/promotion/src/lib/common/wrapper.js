@@ -1,6 +1,6 @@
 import React from "react";
 import { configContext } from "./context";
-import { PromotionAPI } from "@ailab-mobile/api";
+import { promotionAPI } from "@ailab-mobile/api";
 
 export default ({
 	config,
@@ -19,7 +19,7 @@ export default ({
 			i18n,
 			userInfo,
 			setPopBox,
-			api: new PromotionAPI({ apiURL: config.apiURL })
+			api: { promotion: new promotionAPI({ apiURL: config.apiURL }) }
 		}}>
 		{children}
 	</configContext.Provider>

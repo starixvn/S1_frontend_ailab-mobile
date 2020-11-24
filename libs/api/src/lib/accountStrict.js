@@ -1,18 +1,9 @@
-import { accountStrictRequest } from "./base";
+import BaseAPI from "./base";
 
-export const api_accountStrict_GetCustProfile = () =>
-	accountStrictRequest.post("/GetCustProfile");
+export class accountStrictAPI extends BaseAPI {
+	GetCustProfile = () => this.accountStrictRequest.post("/GetCustProfile");
 
-export const api_accountStrict_SetProfile = ({
-	AccountName,
-	Birth_d,
-	Birth_m,
-	Birth_y,
-	CountryCode,
-	AreaCode,
-	PhoneNo
-}) =>
-	accountStrictRequest.post("/SetProfile", {
+	SetProfile = ({
 		AccountName,
 		Birth_d,
 		Birth_m,
@@ -20,46 +11,47 @@ export const api_accountStrict_SetProfile = ({
 		CountryCode,
 		AreaCode,
 		PhoneNo
-	});
+	}) =>
+		this.accountStrictRequest.post("/SetProfile", {
+			AccountName,
+			Birth_d,
+			Birth_m,
+			Birth_y,
+			CountryCode,
+			AreaCode,
+			PhoneNo
+		});
 
-export const api_accountStrict_SetCustBankInfo = ({
-	AccountName,
-	AccountNo,
-	SysId
-}) =>
-	accountStrictRequest.post("/SetCustBankInfo", {
-		AccountName,
-		AccountNo,
-		SysId
-	});
+	SetCustBankInfo = ({ AccountName, AccountNo, SysId }) =>
+		this.accountStrictRequest.post("/SetCustBankInfo", {
+			AccountName,
+			AccountNo,
+			SysId
+		});
 
-export const api_accountStrict_DelCustBankInfo = ({
-	AccountName,
-	AccountNo,
-	SysId
-}) =>
-	accountStrictRequest.post("/DelCustBankInfo", {
-		AccountName,
-		AccountNo,
-		SysId
-	});
+	DelCustBankInfo = ({ AccountName, AccountNo, SysId }) =>
+		this.accountStrictRequest.post("/DelCustBankInfo", {
+			AccountName,
+			AccountNo,
+			SysId
+		});
 
-export const api_accountStrict_ResetPassword = ({ NewPassword }) =>
-	accountStrictRequest.post("/ResetPassword", {
-		NewPassword
-	});
+	ResetPassword = ({ NewPassword }) =>
+		this.accountStrictRequest.post("/ResetPassword", {
+			NewPassword
+		});
 
-export const api_accountStrict_UploadCustPhotoId = formData =>
-	accountStrictRequest.post("/UploadCustPhotoId", formData, {
-		headers: {
-			"Content-Type": "multipart/form-data"
-		}
-	});
+	UploadCustPhotoId = formData =>
+		this.accountStrictRequest.post("/UploadCustPhotoId", formData, {
+			headers: {
+				"Content-Type": "multipart/form-data"
+			}
+		});
 
-export const api_accountStrict_SendOTPSMS = () =>
-	accountStrictRequest.post("/SendOTPSMS");
+	SendOTPSMS = () => this.accountStrictRequest.post("/SendOTPSMS");
 
-export const api_accountStrict_VerifyOTP = ({ inputOTPcode }) =>
-	accountStrictRequest.post("/VerifyOTP", {
-		inputOTPcode
-	});
+	VerifyOTP = ({ inputOTPcode }) =>
+		this.accountStrictRequest.post("/VerifyOTP", {
+			inputOTPcode
+		});
+}

@@ -2,10 +2,7 @@ import React, { useContext, Component, useEffect, useRef } from "react";
 import { bankSlipPopBoxContext, i18nContext, popBoxContext } from "Context";
 import moment from "moment";
 import ClipboardJS from "../../lib/clipboard.min";
-import {
-	api_payment_UploadReceipt,
-	api_payment_SetDepositReceipt
-} from "@ailab-mobile/api";
+import api from "../../service/api";
 
 const GetUploadFileName = files => {
 	let fullPath = files[0].name;
@@ -52,7 +49,7 @@ class Modal extends Component {
 			let formData = new FormData();
 			formData.append("TransId", this.props.bankSlipPopBox.transId);
 			formData.append("Receipt", files[0]);
-			api_payment_UploadReceipt(formData).then(
+			api.payment.UploadReceipt(formData).then(
 				response => {
 					if (this.isMountedRef) {
 						let result = response.data;
@@ -84,34 +81,36 @@ class Modal extends Component {
 		if (!this.state.processing) {
 			this.setState({ processing: true });
 			let bankSlipPopBox = this.props.bankSlipPopBox;
-			api_payment_SetDepositReceipt(
-				bankSlipPopBox.transId,
-				moment(bankSlipPopBox.depositTime).unix(),
-				bankSlipPopBox.refId
-			).then(
-				res => {
-					if (this.isMountedRef) {
-						if (res.data.errorCode === 0) {
-							this.props.handlePopBox();
-						} else {
-							alert(res.message);
+			api.payment
+				.SetDepositReceipt(
+					bankSlipPopBox.transId,
+					moment(bankSlipPopBox.depositTime).unix(),
+					bankSlipPopBox.refId
+				)
+				.then(
+					res => {
+						if (this.isMountedRef) {
+							if (res.data.errorCode === 0) {
+								this.props.handlePopBox();
+							} else {
+								alert(res.message);
+							}
+
+							this.setState({ processing: false });
 						}
+					},
+					err => {
+						if (this.isMountedRef) {
+							this.props.setPopBox({
+								isOpen: true,
+								title: this.props.i18n.lbl_ImportantNote,
+								content: "API Server Error."
+							});
 
-						this.setState({ processing: false });
+							this.setState({ processing: false });
+						}
 					}
-				},
-				err => {
-					if (this.isMountedRef) {
-						this.props.setPopBox({
-							isOpen: true,
-							title: this.props.i18n.lbl_ImportantNote,
-							content: "API Server Error."
-						});
-
-						this.setState({ processing: false });
-					}
-				}
-			);
+				);
 		}
 	};
 	render() {

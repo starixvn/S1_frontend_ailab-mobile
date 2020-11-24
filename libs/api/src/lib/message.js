@@ -1,4 +1,6 @@
-import { messageRequest } from "./base";
+import BaseAPI from "./base";
 
-export const api_message_GetAnnouncement = langId =>
-	messageRequest.post(`/GetAnnouncement/${langId}`);
+export class messageAPI extends BaseAPI {
+	GetAnnouncement = langId =>
+		this.messageRequest.post(`/GetAnnouncement/${langId}`);
+}

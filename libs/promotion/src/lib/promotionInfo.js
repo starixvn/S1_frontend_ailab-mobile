@@ -25,10 +25,37 @@ const PromotionInfoContent = () => {
 		if (userInfo.isLogin !== null) {
 			let _bonusCode = getUrlParameter("bonusCode");
 
-			api.promotion_GetPromotionDetail({
-				langId: userInfo.langId,
+			api.promotion
+				.GetPromotionDetail({
+					langId: userInfo.langId,
+					BonusCode: _bonusCode
+				})
+				.then(
+					res => {
+						if (isMountedRef.current) {
+							if (res.data.errorCode === 0) {
+								setPromotionInfo(res.data.data);
+							} else {
+								alert(res.data.message);
+							}
+						}
+					},
+					() => {
+						if (isMountedRef.current) {
+							alert(i18n.msg_ApiServerError);
+						}
+					}
+				);
+		}
+	}, [userInfo.isLogin, userInfo.langId, i18n.msg_ApiServerError]);
+
+	const GetPromotionDetail = (langId, _bonusCode) => {
+		api.promotion
+			.GetPromotionDetail({
+				langId: langId,
 				BonusCode: _bonusCode
-			}).then(
+			})
+			.then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
@@ -38,55 +65,34 @@ const PromotionInfoContent = () => {
 						}
 					}
 				},
-				() => {
+				err => {
 					if (isMountedRef.current) {
 						alert(i18n.msg_ApiServerError);
 					}
 				}
 			);
-		}
-	}, [userInfo.isLogin, userInfo.langId, i18n.msg_ApiServerError]);
-
-	const GetPromotionDetail = (langId, _bonusCode) => {
-		api.promotion_GetPromotionDetail({
-			langId: langId,
-			BonusCode: _bonusCode
-		}).then(
-			res => {
-				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
-						setPromotionInfo(res.data.data);
-					} else {
-						alert(res.data.message);
-					}
-				}
-			},
-			err => {
-				if (isMountedRef.current) {
-					alert(i18n.msg_ApiServerError);
-				}
-			}
-		);
 	};
 
 	const RefreshProcessBar = ({ bonusCode, tpId, categoryId }) => {
-		api.account_GetCustSpecificBonus({
-			BonusCode: bonusCode,
-			TpId: tpId,
-			PromoCategoryId: categoryId
-		}).then(res => {
-			if (
-				isMountedRef.current &&
-				res.data.errorCode === 0 &&
-				res.data.data
-			) {
-				setPromotionInfo(prevS => ({
-					...prevS,
-					custRollOver: res.data.data.rollover,
-					custTurnOver: res.data.data.turnover
-				}));
-			}
-		});
+		api.promotion
+			.GetCustSpecificBonus({
+				BonusCode: bonusCode,
+				TpId: tpId,
+				PromoCategoryId: categoryId
+			})
+			.then(res => {
+				if (
+					isMountedRef.current &&
+					res.data.errorCode === 0 &&
+					res.data.data
+				) {
+					setPromotionInfo(prevS => ({
+						...prevS,
+						custRollOver: res.data.data.rollover,
+						custTurnOver: res.data.data.turnover
+					}));
+				}
+			});
 	};
 
 	if (promotionInfo === null) return null;

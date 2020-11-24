@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { Link, Redirect } from "@reach/router";
-import { api_account_ChangePassword } from "@ailab-mobile/api";
 import { i18nContext, popBoxContext } from "Context";
 import path from "Path";
 import Inputbox from "../common/inputbox.password";
+import api from "../../service/api";
 
 const initState = {
 	oldPsw: "",
@@ -112,60 +112,62 @@ export default () => {
 				}
 			};
 
-			api_account_ChangePassword({
-				OldPassword: userValueState.oldPsw,
-				NewPassword: userValueState.newPsw
-			}).then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
+			api.account
+				.ChangePassword({
+					OldPassword: userValueState.oldPsw,
+					NewPassword: userValueState.newPsw
+				})
+				.then(
+					res => {
+						if (isMountedRef.current) {
+							if (res.data.errorCode === 0) {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content: res.data.message,
+									hasBtn: true,
+									btnBar: (
+										<div className="btn-group">
+											<button
+												className="orange"
+												onClick={closePopbox.bind(
+													null,
+													"success"
+												)}>
+												{i18n["lbl_Confirm"]}
+											</button>
+										</div>
+									)
+								});
+							} else {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content: res.data.message,
+									hasBtn: true,
+									btnBar: (
+										<div className="btn-group">
+											<button
+												className="orange"
+												onClick={closePopbox}>
+												{i18n["lbl_Confirm"]}
+											</button>
+										</div>
+									)
+								});
+							}
+						}
+					},
+					err => {
+						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
-								content: res.data.message,
-								hasBtn: true,
-								btnBar: (
-									<div className="btn-group">
-										<button
-											className="orange"
-											onClick={closePopbox.bind(
-												null,
-												"success"
-											)}>
-											{i18n["lbl_Confirm"]}
-										</button>
-									</div>
-								)
-							});
-						} else {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: res.data.message,
-								hasBtn: true,
-								btnBar: (
-									<div className="btn-group">
-										<button
-											className="orange"
-											onClick={closePopbox}>
-											{i18n["lbl_Confirm"]}
-										</button>
-									</div>
-								)
+								content: i18n.msg_ApiServerError
 							});
 						}
 					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-					}
-				}
-			);
+				);
 		} else {
 			setWarningState(prevState => {
 				return {

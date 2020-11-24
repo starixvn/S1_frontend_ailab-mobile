@@ -1,9 +1,9 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
-import { api_site_ForgetPwd } from "@ailab-mobile/api";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
 import Inputbox from "../common/inputbox";
 import { Redirect } from "@reach/router";
 import path from "Path";
+import api from "../../service/api";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
@@ -52,37 +52,39 @@ export default () => {
 		if (userEmail === "") {
 			setWarning({ status: true, msg: i18n.msg_MailWrongFormat });
 		} else if (!warning.status) {
-			api_site_ForgetPwd({
-				langId: userInfo.langId,
-				Email: userEmail
-			}).then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode !== 0) {
+			api.site
+				.ForgetPwd({
+					langId: userInfo.langId,
+					Email: userEmail
+				})
+				.then(
+					res => {
+						if (isMountedRef.current) {
+							if (res.data.errorCode !== 0) {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content: res.data.message
+								});
+							} else {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content: res.data.message
+								});
+							}
+						}
+					},
+					err => {
+						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
-								content: res.data.message
-							});
-						} else {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: res.data.message
+								content: i18n.msg_ApiServerError
 							});
 						}
 					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-					}
-				}
-			);
+				);
 		}
 	};
 

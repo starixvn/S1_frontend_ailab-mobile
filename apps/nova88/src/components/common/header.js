@@ -7,7 +7,7 @@ import {
 	msgCountContext,
 	walletInfoContext
 } from "Context";
-import { api_account_GetWalletInfo } from "@ailab-mobile/api";
+import api from "../../service/api";
 import JoinPanel from "../join/join";
 import LoginPanel from "../login/login";
 import ReloadSpin from "./reloadSpin";
@@ -26,7 +26,7 @@ const Header = ({ title, hideLogo }) => {
 	return (
 		<header className={title ? "header" : ""} id="header">
 			{hideLogo ? null : (
-				<a href="#">
+				<a href="/">
 					<img src={siteInfo().logo} alt="logo" />
 				</a>
 			)}
@@ -66,7 +66,7 @@ const HeaderBtn = () => {
 		if (!processing) {
 			setProcessing(true);
 
-			api_account_GetWalletInfo().then(
+			api.account.GetWalletInfo().then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
