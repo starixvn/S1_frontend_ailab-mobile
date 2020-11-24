@@ -1,6 +1,6 @@
 import React from "react";
 import SingleRecord from "../../../lib/components/depositRecord.singleRecord";
-import { render, cleanup } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { defPromotionType } from "../../../lib/common/def";
 
@@ -16,8 +16,6 @@ describe("SingleRecord", () => {
 		lbl_DepositAmount: "DepositAmount",
 		[`lbl_Currency_${fakeData.currencyId}`]: "MYR"
 	};
-
-	afterEach(cleanup);
 
 	Object.keys(defPromotionType).forEach(key => {
 		let type = defPromotionType[key];
