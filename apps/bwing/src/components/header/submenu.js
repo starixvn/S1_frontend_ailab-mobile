@@ -30,24 +30,7 @@ const defSubMenus = langId => [
 	// },
 	{
 		displayKey: "lbl_Games",
-		subItems: [
-			{
-				...defGameInfo.sabaClub,
-				displayKey: "lbl_SabaClub"
-			},
-			{
-				...defGameInfo.Fishing,
-				displayKey: "lbl_Fishing"
-			},
-			{
-				...defGameInfo.Keno,
-				displayKey: "lbl_Keno"
-			},
-			{
-				...defGameInfo.lottery,
-				displayKey: "lbl_Lottery"
-			}
-		]
+		path: `/${path.games.root}`
 	},
 	{
 		...defGameInfo.eSports,
@@ -59,32 +42,11 @@ const defSubMenus = langId => [
 	},
 	{
 		displayKey: "lbl_LiveCasino",
-		subItems: [
-			{
-				...defGameInfo.LIVEcasinoDG,
-				displayKey: "DG"
-			},
-			{
-				...defGameInfo.LIVEcasinoAB,
-				displayKey: "AB"
-			},
-			{
-				...defGameInfo.LIVEcasinoAG,
-				displayKey: "AG"
-			},
-			{
-				...defGameInfo.LIVEcasinoPP,
-				displayKey: "PP"
-			},
-			{
-				...defGameInfo.LIVEcasinoSA,
-				displayKey: "SA"
-			},
-			{
-				...defGameInfo.LIVEcasinoAE,
-				displayKey: "AE"
-			}
-		]
+		path: `/${path.liveCasino.root}`
+	},
+	{
+		displayKey: "lbl_Fishing",
+		path: `/${path.fishing.root}`
 	},
 	{
 		displayKey: "lbl_Promotions",
