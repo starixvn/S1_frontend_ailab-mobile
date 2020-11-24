@@ -79,7 +79,7 @@ const ReacentDatas = props => {
 									{i18n["lbl_RecentTransactions"]}
 								</i>
 							</div>
-							<ReloadSpin func={props.GetRecentDatas} />
+							<ReloadSpin func={props.ReloadFunc} />
 						</div>
 						<div className="infoList">{arr}</div>
 					</div>
