@@ -127,6 +127,11 @@ const gameList = ({ langId }) => [
 		comingSoonImg: Coming_soon,
 		items: [
 			{
+				tpId: 9,
+				parameter: { tpId: 9 },
+				img: casino_JOKER
+			},
+			{
 				gameId: 208,
 				tpId: 1,
 				img: casino_ow
@@ -145,11 +150,6 @@ const gameList = ({ langId }) => [
 				tpId: 14,
 				parameter: { tpId: 14 },
 				img: casino_PG
-			},
-			{
-				tpId: 9,
-				parameter: { tpId: 9 },
-				img: casino_JOKER
 			},
 			{
 				tpId: 8,
