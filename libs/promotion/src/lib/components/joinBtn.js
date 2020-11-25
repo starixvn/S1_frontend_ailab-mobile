@@ -1,11 +1,9 @@
 import React, { useContext, useRef, useEffect, useState } from "react";
 import { Link, Redirect } from "@reach/router";
-import path from "Path";
-import { userInfoContext, popBoxContext, i18nContext } from "Context";
-import { api_promotion_SetClaimPromotion } from "@ailab-mobile/api";
 import { isExpiry } from "../common/common";
 import { defBonusType, defPromotionType } from "../common/def";
 import ClaimWithLockedAmount from "./joinBtn.claimWithLockedAmount";
+import { configContext } from "../common/context";
 
 export default ({
 	uiSetting = {},
@@ -13,9 +11,7 @@ export default ({
 	func_GetPromotionDetail,
 	func_CallBack
 }) => {
-	const { userInfo } = useContext(userInfoContext);
-	const { setPopBox } = useContext(popBoxContext);
-	const { i18n } = useContext(i18nContext);
+	const { path, userInfo, setPopBox, i18n, api } = useContext(configContext);
 	const isMountedRef = useRef(null);
 	const [redirectPath, setRedirectPath] = useState(null);
 
@@ -31,98 +27,103 @@ export default ({
 	};
 
 	const SetClaimPromotion = ({ bonusCode, LockedAmount = 0 }) => {
-		api_promotion_SetClaimPromotion({
-			langId: userInfo.langId,
-			BonusCode: bonusCode,
-			LockedAmount:
-				LockedAmount && !isNaN(LockedAmount) ? Number(LockedAmount) : 0
-		}).then(res => {
-			if (isMountedRef.current) {
-				if (res.data.errorCode === 0) {
-					if (func_GetPromotionDetail) {
-						func_GetPromotionDetail(userInfo.langId, bonusCode);
-					} else if (func_CallBack) {
-						func_CallBack();
-					}
+		api.promotion
+			.SetClaimPromotion({
+				langId: userInfo.langId,
+				BonusCode: bonusCode,
+				LockedAmount:
+					LockedAmount && !isNaN(LockedAmount)
+						? Number(LockedAmount)
+						: 0
+			})
+			.then(res => {
+				if (isMountedRef.current) {
+					if (res.data.errorCode === 0) {
+						if (func_GetPromotionDetail) {
+							func_GetPromotionDetail(userInfo.langId, bonusCode);
+						} else if (func_CallBack) {
+							func_CallBack();
+						}
 
-					setPopBox({
-						isOpen: true,
-						title: i18n.lbl_ImportantNote,
-						content: <p>{i18n.msg_Updatesuccessful}</p>,
-						hasBtn: true,
-						btnBar: (
-							<div className="btn-group">
-								<button
-									onClick={ClosePopBox}
-									className={
-										uiSetting.popBox?.submitBtn ??
-										"btn-check"
-									}>
-									OK
-								</button>
-							</div>
-						)
-					});
-				} else if (res.data.errorCode === -5) {
-					const RedirectToProfile = () => {
-						setRedirectPath(
-							`/${path.member.root}?prevPage=${path.promotionInfo.root}&BonusCode=${bonusCode}`
-						);
-						ClosePopBox();
-					};
-					setPopBox({
-						isOpen: true,
-						title: i18n.lbl_ImportantNote,
-						content: <p>{i18n.msg_OTPHint}</p>,
-						hasBtn: true,
-						btnBar: (
-							<div className="btn-group">
-								<button
-									className={
-										uiSetting.popBox?.cancelBtn ?? "blue"
-									}
-									onClick={ClosePopBox}>
-									{i18n.lbl_Later}
-								</button>
-								<button
-									onClick={RedirectToProfile}
-									className={
-										uiSetting.popBox?.submitBtn ??
-										"btn-check"
-									}>
-									{i18n.lbl_GoNow}
-								</button>
-							</div>
-						)
-					});
-				} else {
-					setPopBox({
-						isOpen: true,
-						title: i18n.lbl_ImportantNote,
-						content: (
-							<p>
-								{res.data.message
-									? res.data.message
-									: `[${res.data.errorCode}] ${i18n.msg_ApiServerError}`}
-							</p>
-						),
-						hasBtn: true,
-						btnBar: (
-							<div className="btn-group">
-								<button
-									onClick={ClosePopBox}
-									className={
-										uiSetting.popBox?.submitBtn ??
-										"btn-check"
-									}>
-									{i18n.lbl_Close}
-								</button>
-							</div>
-						)
-					});
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: <p>{i18n.msg_Updatesuccessful}</p>,
+							hasBtn: true,
+							btnBar: (
+								<div className="btn-group">
+									<button
+										onClick={ClosePopBox}
+										className={
+											uiSetting.popBox?.submitBtn ??
+											"btn-check"
+										}>
+										OK
+									</button>
+								</div>
+							)
+						});
+					} else if (res.data.errorCode === -5) {
+						const RedirectToProfile = () => {
+							setRedirectPath(
+								`/${path.member.root}?prevPage=${path.promotionInfo.root}&BonusCode=${bonusCode}`
+							);
+							ClosePopBox();
+						};
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: <p>{i18n.msg_OTPHint}</p>,
+							hasBtn: true,
+							btnBar: (
+								<div className="btn-group">
+									<button
+										className={
+											uiSetting.popBox?.cancelBtn ??
+											"blue"
+										}
+										onClick={ClosePopBox}>
+										{i18n.lbl_Later}
+									</button>
+									<button
+										onClick={RedirectToProfile}
+										className={
+											uiSetting.popBox?.submitBtn ??
+											"btn-check"
+										}>
+										{i18n.lbl_GoNow}
+									</button>
+								</div>
+							)
+						});
+					} else {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: (
+								<p>
+									{res.data.message
+										? res.data.message
+										: `[${res.data.errorCode}] ${i18n.msg_ApiServerError}`}
+								</p>
+							),
+							hasBtn: true,
+							btnBar: (
+								<div className="btn-group">
+									<button
+										onClick={ClosePopBox}
+										className={
+											uiSetting.popBox?.submitBtn ??
+											"btn-check"
+										}>
+										{i18n.lbl_Close}
+									</button>
+								</div>
+							)
+						});
+					}
 				}
-			}
-		});
+			});
 	};
 
 	const onJoinPromotion = _promo => {
@@ -213,6 +214,7 @@ export default ({
 						title: i18n.lbl_ImportantNote,
 						content: (
 							<ClaimWithLockedAmount
+								uiSetting={uiSetting}
 								i18n={i18n}
 								promotionInfo={promotionInfo}
 								ClosePopBox={ClosePopBox}

@@ -1,18 +1,19 @@
-import { tpRequest } from "./base";
+import BaseAPI from "./base";
 
-export const api_tp_GetTransferHistory = ({ StartDate, EndDate, PageNumber }) =>
-	tpRequest.post("/GetTransferHistory", {
-		StartDate,
-		EndDate,
-		PageNumber
-	});
+export class tpAPI extends BaseAPI {
+	GetTransferHistory = ({ StartDate, EndDate, PageNumber }) =>
+		this.tpRequest.post("/GetTransferHistory", {
+			StartDate,
+			EndDate,
+			PageNumber
+		});
 
-export const api_tp_GetTransferRecent = () =>
-	tpRequest.post("/GetTransferRecent");
+	GetTransferRecent = () => this.tpRequest.post("/GetTransferRecent");
 
-export const api_tp_Transfer = ({ TpId, amount, direction }) =>
-	tpRequest.post("/Transfer", {
-		TpId,
-		amount,
-		direction
-	});
+	Transfer = ({ TpId, amount, direction }) =>
+		this.tpRequest.post("/Transfer", {
+			TpId,
+			amount,
+			direction
+		});
+}

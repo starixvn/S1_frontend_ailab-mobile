@@ -1,95 +1,87 @@
-import { paymentRequest } from "./base";
+import BaseAPI from "./base";
 
-export const api_payment_GetBankInfoSysList = () =>
-	paymentRequest.post("/GetBankInfoSysList");
+export class paymentAPI extends BaseAPI {
+	GetBankInfoSysList = () => this.paymentRequest.post("/GetBankInfoSysList");
 
-export const api_payment_GetDepositInfoHistory = ({
-	StartDate,
-	EndDate,
-	PageNumber
-}) =>
-	paymentRequest.post("/GetDepositInfoHistory", {
-		StartDate,
-		EndDate,
-		PageNumber
-	});
+	GetDepositInfoHistory = ({ StartDate, EndDate, PageNumber }) =>
+		this.paymentRequest.post("/GetDepositInfoHistory", {
+			StartDate,
+			EndDate,
+			PageNumber
+		});
 
-export const api_payment_GetOnlinePaymentList = () =>
-	paymentRequest.post("/GetOnlinePaymentList");
+	GetOnlinePaymentList = () =>
+		this.paymentRequest.post("/GetOnlinePaymentList");
 
-export const api_payment_GetOnlineBankInfoSysList = ({ payId }) =>
-	paymentRequest.post("/GetOnlineBankInfoSysList", { payId });
+	GetOnlineBankInfoSysList = ({ payId }) =>
+		this.paymentRequest.post("/GetOnlineBankInfoSysList", { payId });
 
-export const api_payment_GetOnlineBankInfo = ({ payId, sysId }) =>
-	paymentRequest.post("/GetOnlineBankInfo", { payId, sysId });
+	GetOnlineBankInfo = ({ payId, sysId }) =>
+		this.paymentRequest.post("/GetOnlineBankInfo", { payId, sysId });
 
-export const api_payment_GetWithdrawalInfoHistory = ({
-	StartDate,
-	EndDate,
-	PageNumber
-}) =>
-	paymentRequest.post("/GetWithdrawalInfoHistory", {
-		StartDate,
-		EndDate,
-		PageNumber
-	});
+	GetWithdrawalInfoHistory = ({ StartDate, EndDate, PageNumber }) =>
+		this.paymentRequest.post("/GetWithdrawalInfoHistory", {
+			StartDate,
+			EndDate,
+			PageNumber
+		});
 
-export const api_payment_GetStatement = ({ StartDate, EndDate, PageNumber }) =>
-	paymentRequest.post("/GetStatement", {
-		StartDate,
-		EndDate,
-		PageNumber
-	});
+	GetStatement = ({ StartDate, EndDate, PageNumber }) =>
+		this.paymentRequest.post("/GetStatement", {
+			StartDate,
+			EndDate,
+			PageNumber
+		});
 
-export const api_payment_GetBankInfoOffList = () =>
-	paymentRequest.post("/GetBankInfoOffList");
+	GetBankInfoOffList = () => this.paymentRequest.post("/GetBankInfoOffList");
 
-export const api_payment_GetMobilePayGroupList = () =>
-	paymentRequest.post("/GetMobilePayGroupList");
+	GetMobilePayGroupList = () =>
+		this.paymentRequest.post("/GetMobilePayGroupList");
 
-export const api_payment_DepositReqWireTransfer = ({ amount, sysId }) =>
-	paymentRequest.post("/DepositReqWireTransfer", { amount, sysId });
+	DepositReqWireTransfer = ({ amount, sysId }) =>
+		this.paymentRequest.post("/DepositReqWireTransfer", { amount, sysId });
 
-export const api_payment_GetDepositInfoRecent = () =>
-	paymentRequest.post("/GetDepositInfoRecent");
+	GetDepositInfoRecent = () =>
+		this.paymentRequest.post("/GetDepositInfoRecent");
 
-export const api_payment_SetDepositCancel = TransId =>
-	paymentRequest.post("/SetDepositCancel", { TransId: TransId });
+	SetDepositCancel = TransId =>
+		this.paymentRequest.post("/SetDepositCancel", { TransId: TransId });
 
-export const api_payment_UploadReceipt = formData =>
-	paymentRequest.post("/UploadReceipt", formData, {
-		headers: {
-			"Content-Type": "multipart/form-data"
-		}
-	});
+	UploadReceipt = formData =>
+		this.paymentRequest.post("/UploadReceipt", formData, {
+			headers: {
+				"Content-Type": "multipart/form-data"
+			}
+		});
 
-export const api_payment_SetDepositReceipt = (TransId, DepositTime, RefNo) =>
-	paymentRequest.post("/SetDepositReceipt", {
-		TransId: TransId,
-		DepositTime: DepositTime,
-		RefNo: RefNo
-	});
+	SetDepositReceipt = (TransId, DepositTime, RefNo) =>
+		this.paymentRequest.post("/SetDepositReceipt", {
+			TransId: TransId,
+			DepositTime: DepositTime,
+			RefNo: RefNo
+		});
 
-export const api_payment_GetMobilePayInfoList = GroupId =>
-	paymentRequest.post("/GetMobilePayInfoList", {
-		GroupId: GroupId
-	});
+	GetMobilePayInfoList = GroupId =>
+		this.paymentRequest.post("/GetMobilePayInfoList", {
+			GroupId: GroupId
+		});
 
-export const api_payment_WithdrawalReq = (AccountNo, amount, sysId, blackbox) =>
-	paymentRequest.post("/WithdrawalReq", {
-		AccountNo,
-		amount,
-		sysId,
-		blackbox
-	});
+	WithdrawalReq = (AccountNo, amount, sysId, blackbox) =>
+		this.paymentRequest.post("/WithdrawalReq", {
+			AccountNo,
+			amount,
+			sysId,
+			blackbox
+		});
 
-export const api_payment_GetWithdrawalInfoRecent = () =>
-	paymentRequest.post("/GetWithdrawalInfoRecent");
+	GetWithdrawalInfoRecent = () =>
+		this.paymentRequest.post("/GetWithdrawalInfoRecent");
 
-export const api_payment_SetWithdrawalCancel = TransId =>
-	paymentRequest.post("/SetWithdrawalCancel", { TransId });
+	SetWithdrawalCancel = TransId =>
+		this.paymentRequest.post("/SetWithdrawalCancel", { TransId });
 
-export const api_payment_KycCheck = () => paymentRequest.post("/KycCheck");
+	KycCheck = () => this.paymentRequest.post("/KycCheck");
 
-export const api_payment_GetCryptoPayInfoList = () =>
-	paymentRequest.post("/GetCryptoPayInfoList");
+	GetCryptoPayInfoList = () =>
+		this.paymentRequest.post("/GetCryptoPayInfoList");
+}

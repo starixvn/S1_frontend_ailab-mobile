@@ -9,8 +9,8 @@ import {
 import productList from "../../datas/productList";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { Redirect, Link } from "@reach/router";
-import { api_site_GetTpIds } from "@ailab-mobile/api";
 import path from "../../path";
+import api from "../../service/api";
 
 const Category = props => {
 	const { i18n } = useContext(i18nContext);
@@ -47,7 +47,7 @@ const Category = props => {
 		let mounted = true;
 
 		if (userInfo.isLogin) {
-			api_site_GetTpIds().then(
+			api.site.GetTpIds().then(
 				res => {
 					if (res.data.errorCode === 0 && mounted) {
 						setCasinoTpIds(res.data.data);

@@ -9,9 +9,10 @@ export const transferDirection = (
 	if (direction === 1) {
 		startWallet = displayMainWallet;
 		endWallet = displaySabaWallet;
-	} else {
+	} else if (direction === 2) {
 		startWallet = displaySabaWallet;
 		endWallet = displayMainWallet;
 	}
+
 	return { startWallet, endWallet };
 };

@@ -1,22 +1,28 @@
-import { promotionRequest } from "./base";
+import BaseAPI from "./base";
 
-export const api_promotion_GetCanJoinPromotionList = langId =>
-	promotionRequest.post(`/GetCanJoinPromotionList/${langId}`);
+export class promotionAPI extends BaseAPI {
+	GetCanJoinPromotionList = langId => {
+		return this.promotionRequest.post(`/GetCanJoinPromotionList/${langId}`);
+	};
 
-export const api_promotion_GetPromotionDetail = ({ langId, BonusCode }) =>
-	promotionRequest.post(`/GetPromotionDetail/${langId}`, {
-		BonusCode
-	});
+	GetPromotionDetail = ({ langId, BonusCode }) =>
+		this.promotionRequest.post(`/GetPromotionDetail/${langId}`, {
+			BonusCode
+		});
 
-export const api_promotion_SetClaimPromotion = ({
-	langId,
-	BonusCode,
-	LockedAmount
-}) =>
-	promotionRequest.post(`/SetClaimPromotion/${langId}`, {
-		BonusCode,
-		LockedAmount
-	});
+	SetClaimPromotion = ({ langId, BonusCode, LockedAmount }) =>
+		this.promotionRequest.post(`/SetClaimPromotion/${langId}`, {
+			BonusCode,
+			LockedAmount
+		});
 
-export const api_promotion_GetPromotionListV2 = ({ langId }) =>
-	promotionRequest.post(`/GetPromotionListV2/${langId}`);
+	GetPromotionListV2 = ({ langId }) =>
+		this.promotionRequest.post(`/GetPromotionListV2/${langId}`);
+
+	GetCustSpecificBonus = ({ BonusCode, TpId, PromoCategoryId }) =>
+		this.accountRequest.post("/GetCustSpecificBonus", {
+			BonusCode,
+			TpId,
+			PromoCategoryId
+		});
+}

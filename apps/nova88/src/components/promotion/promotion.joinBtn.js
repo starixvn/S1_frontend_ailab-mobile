@@ -1,9 +1,9 @@
 import React, { useContext, useRef, useEffect, useState } from "react";
 import { Link, Redirect } from "@reach/router";
 import path from "Path";
-import { api_promotion_SetClaimPromotion } from "@ailab-mobile/api";
 import { userInfoContext, popBoxContext, i18nContext } from "Context";
 import { isExpiry } from "./promotion.common";
+import api from "../../service/api";
 
 export default ({ promotionInfo, func_GetPromotionDetail, func_CallBack }) => {
 	const { userInfo } = useContext(userInfoContext);
@@ -91,93 +91,97 @@ export default ({ promotionInfo, func_GetPromotionDetail, func_CallBack }) => {
 					)
 				});
 			} else {
-				api_promotion_SetClaimPromotion({
-					langId: userInfo.langId,
-					BonusCode: _promo.bonusCode
-				}).then(
-					res => {
-						if (isMountedRef.current) {
-							if (res.data.errorCode === 0) {
-								if (func_GetPromotionDetail) {
-									func_GetPromotionDetail(
-										userInfo.langId,
-										_promo.bonusCode
-									);
-								} else if (func_CallBack) {
-									func_CallBack();
-								}
+				api.promotion
+					.SetClaimPromotion({
+						langId: userInfo.langId,
+						BonusCode: _promo.bonusCode
+					})
+					.then(
+						res => {
+							if (isMountedRef.current) {
+								if (res.data.errorCode === 0) {
+									if (func_GetPromotionDetail) {
+										func_GetPromotionDetail(
+											userInfo.langId,
+											_promo.bonusCode
+										);
+									} else if (func_CallBack) {
+										func_CallBack();
+									}
 
-								setPopBox({
-									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: <p>{i18n.msg_Updatesuccessful}</p>,
-									hasBtn: true,
-									btnBar: (
-										<div className="btn-group">
-											<button
-												onClick={ClosePopBox}
-												className="btn-check">
-												OK
-											</button>
-										</div>
-									)
-								});
-							} else if (res.data.errorCode === -5) {
-								const RedirectToProfile = () => {
-									setRedirectPath(
-										`/${path.member.root}?prevPage=${path.promotionInfo.root}&BonusCode=${_promo.bonusCode}`
-									);
-									ClosePopBox();
-								};
-								setPopBox({
-									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: <p>{i18n.msg_OTPHint}</p>,
-									hasBtn: true,
-									btnBar: (
-										<div className="btn-group">
-											<button
-												className="blue"
-												onClick={ClosePopBox}>
-												{i18n.lbl_Later}
-											</button>
-											<button
-												onClick={RedirectToProfile}
-												className="btn-check">
-												{i18n.lbl_GoNow}
-											</button>
-										</div>
-									)
-								});
-							} else {
-								setPopBox({
-									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: (
-										<p>
-											{res.data.message
-												? res.data.message
-												: `[${res.data.errorCode}] ${i18n.msg_ApiServerError}`}
-										</p>
-									),
-									hasBtn: true,
-									btnBar: (
-										<div className="btn-group">
-											<button
-												onClick={ClosePopBox}
-												className="btn-check">
-												{i18n.lbl_Close}
-											</button>
-										</div>
-									)
-								});
+									setPopBox({
+										isOpen: true,
+										title: i18n.lbl_ImportantNote,
+										content: (
+											<p>{i18n.msg_Updatesuccessful}</p>
+										),
+										hasBtn: true,
+										btnBar: (
+											<div className="btn-group">
+												<button
+													onClick={ClosePopBox}
+													className="btn-check">
+													OK
+												</button>
+											</div>
+										)
+									});
+								} else if (res.data.errorCode === -5) {
+									const RedirectToProfile = () => {
+										setRedirectPath(
+											`/${path.member.root}?prevPage=${path.promotionInfo.root}&BonusCode=${_promo.bonusCode}`
+										);
+										ClosePopBox();
+									};
+									setPopBox({
+										isOpen: true,
+										title: i18n.lbl_ImportantNote,
+										content: <p>{i18n.msg_OTPHint}</p>,
+										hasBtn: true,
+										btnBar: (
+											<div className="btn-group">
+												<button
+													className="blue"
+													onClick={ClosePopBox}>
+													{i18n.lbl_Later}
+												</button>
+												<button
+													onClick={RedirectToProfile}
+													className="btn-check">
+													{i18n.lbl_GoNow}
+												</button>
+											</div>
+										)
+									});
+								} else {
+									setPopBox({
+										isOpen: true,
+										title: i18n.lbl_ImportantNote,
+										content: (
+											<p>
+												{res.data.message
+													? res.data.message
+													: `[${res.data.errorCode}] ${i18n.msg_ApiServerError}`}
+											</p>
+										),
+										hasBtn: true,
+										btnBar: (
+											<div className="btn-group">
+												<button
+													onClick={ClosePopBox}
+													className="btn-check">
+													{i18n.lbl_Close}
+												</button>
+											</div>
+										)
+									});
+								}
 							}
+						},
+						err => {
+							alert(i18n.msg_ApiServerError);
 						}
-					},
-					err => {
-						alert(i18n.msg_ApiServerError);
-					}
-				);
+					);
 			}
 		}
 	};

@@ -51,6 +51,7 @@ const Inputbox = props => {
 						}
 						max={props.max ? props.max : null}
 						disabled={props.disabled ? props.disabled : null}
+						maxLength={props.maxLength ?? null}
 					/>
 					{props.iconModuleName ? (
 						<div className="iconModule">

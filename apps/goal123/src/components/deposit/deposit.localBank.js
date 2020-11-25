@@ -426,9 +426,7 @@ export const Main = props => {
 							<div className="open">{i18n.msg_RealnameTip}</div>
 						</div>
 					</>
-				) : (
-					<></>
-				)}
+				) : null}
 				<InputBox
 					icon="icon-pencil"
 					placeholder={i18n["lbl_Amount"]}
@@ -447,8 +445,6 @@ export const Main = props => {
 					</button>
 				</div>
 			</>
-		) : (
-			<></>
-		);
+		) : null;
 	}
 };

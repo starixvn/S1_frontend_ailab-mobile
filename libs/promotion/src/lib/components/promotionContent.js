@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "@reach/router";
-import path from "Path";
 import { number_format } from "@ailab-mobile/common";
 import RemainTime from "../common/remainTime";
 import JoinBtn from "./joinBtn";
@@ -8,6 +7,8 @@ import DepositRecord from "./depositRecord";
 import ProcessBar from "./processBar";
 
 export default ({
+	path,
+	uiSetting = {},
 	promotionInfo,
 	i18n,
 	userInfo,
@@ -34,6 +35,7 @@ export default ({
 		<JoinBtn
 			promotionInfo={promotionInfo}
 			func_GetPromotionDetail={GetPromotionDetail}
+			uiSetting={uiSetting}
 		/>
 
 		<div className="protitle">{promotionInfo.title}</div>

@@ -5,11 +5,6 @@ import {
 	popBoxContext,
 	walletInfoContext
 } from "Context";
-import {
-	api_account_GetWalletInfo,
-	api_tp_Transfer,
-	api_tp_GetTransferRecent
-} from "@ailab-mobile/api";
 import { isConvert, checkAmount, number_format } from "../common/common";
 import RecentDatas from "./transfer.recentDatas";
 import InputBox from "../common/inputbox";
@@ -17,6 +12,7 @@ import Dropdown from "../common/dropdown";
 import ReloadSpin from "../common/reloadSpin";
 import Loading from "../common/loading";
 import { defPopBoxType } from "../common/popbox";
+import api from "../../service/api";
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
@@ -40,7 +36,7 @@ const Panel = () => {
 	});
 
 	useEffect(() => {
-		api_account_GetWalletInfo().then(
+		api.account.GetWalletInfo().then(
 			res => {
 				if (res.data.errorCode === 0) {
 					let data = res.data.data;
@@ -75,7 +71,7 @@ const Panel = () => {
 			}
 		);
 
-		api_tp_GetTransferRecent().then(res => {
+		api.tp.GetTransferRecent().then(res => {
 			if (res.data.errorCode === 0 && isMountedRef.current) {
 				setRecentDatas(res.data.data);
 			}
@@ -83,7 +79,7 @@ const Panel = () => {
 	}, [setWalletInfo]);
 
 	const GetWalletInfo = () => {
-		api_account_GetWalletInfo().then(
+		api.account.GetWalletInfo().then(
 			res => {
 				if (res.data.errorCode === 0) {
 					let data = res.data.data;
@@ -124,7 +120,7 @@ const Panel = () => {
 	};
 
 	const GetTransferRecent = () => {
-		api_tp_GetTransferRecent().then(res => {
+		api.tp.GetTransferRecent().then(res => {
 			if (res.data.errorCode === 0 && isMountedRef.current) {
 				setRecentDatas(res.data.data);
 			}
@@ -194,42 +190,45 @@ const Panel = () => {
 				: Number(amount);
 
 			setLoading(true);
-			api_tp_Transfer({
-				TpId: 1,
-				amount: real_amount,
-				direction: direction
-			}).then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 9) {
+			api.tp
+				.Transfer({
+					TpId: 1,
+					amount: real_amount,
+					direction: direction
+				})
+				.then(
+					res => {
+						if (isMountedRef.current) {
+							if (res.data.errorCode === 9) {
+								setLoading(false);
+								setPopBox({
+									isOpen: true,
+									popBoxType:
+										defPopBoxType.TurnoverAccumulated,
+									currencyId: userInfo.currencyId,
+									turnover: res.data.data.turnover,
+									rollover: res.data.data.rollover
+								});
+							} else if (res.data.errorCode !== 0) {
+								setLoading(false);
+								setPopBox({
+									isOpen: true,
+									title: i18n["lbl_ImportantNote"],
+									content: res.data.message
+								});
+							} else {
+								GetWalletInfo();
+								setAmount("1");
+								GetTransferRecent();
+							}
+						}
+					},
+					err => {
+						if (isMountedRef.current) {
 							setLoading(false);
-							setPopBox({
-								isOpen: true,
-								popBoxType: defPopBoxType.TurnoverAccumulated,
-								currencyId: userInfo.currencyId,
-								turnover: res.data.data.turnover,
-								rollover: res.data.data.rollover
-							});
-						} else if (res.data.errorCode !== 0) {
-							setLoading(false);
-							setPopBox({
-								isOpen: true,
-								title: i18n["lbl_ImportantNote"],
-								content: res.data.message
-							});
-						} else {
-							GetWalletInfo();
-							setAmount("1");
-							GetTransferRecent();
 						}
 					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setLoading(false);
-					}
-				}
-			);
+				);
 		}
 	};
 

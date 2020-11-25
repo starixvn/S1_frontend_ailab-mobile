@@ -19,7 +19,7 @@ export default ({ promotionInfo, i18n, isLogin }) => {
 
 	return isExpiry({
 		...promotionInfo,
-		isLogin: isLogin
+		isLogin
 	})
 		? "-"
 		: `${diffDays} ${i18n.lbl_Days} ${expiryTime.hours()} ${

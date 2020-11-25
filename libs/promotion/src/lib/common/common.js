@@ -10,28 +10,19 @@ export const isExpiry = ({
 	custExpiryTime,
 	isLogin,
 	isJoin,
-	status,
 	promotionType
 }) => {
-	if (
-		isLogin &&
+	return isLogin &&
 		isJoin &&
 		promotionType !== defPromotionType.rebate &&
 		promotionType !== defPromotionType.cashback
-	) {
-		return (
-			moment(moment.unix(custExpiryTime)).isBefore(new moment()) ||
-			(status !== defPromoStatus.running &&
-				status !== defPromoStatus.TransferOut)
-		);
-	} else {
-		return moment(moment.unix(periodTo)).isBefore(new moment());
-	}
+		? moment(moment.unix(custExpiryTime)).isBefore(new moment())
+		: moment(moment.unix(periodTo)).isBefore(new moment());
 };
 
 export const isNew = ({ periodFrom }) => {
 	return moment(moment.unix(periodFrom)).isAfter(
-		new moment().add(-14, "days")
+		new moment().add(-15, "days")
 	);
 };
 

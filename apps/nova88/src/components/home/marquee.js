@@ -1,5 +1,4 @@
 import React, { Component, useContext, createRef } from "react";
-import { api_message_GetAnnouncement } from "@ailab-mobile/api";
 import PropTypes from "prop-types";
 import {
 	popBoxContext,
@@ -11,6 +10,7 @@ import {
 import { GET_LANG_ID } from "../../service/language";
 import path from "../../path";
 import { Redirect } from "@reach/router";
+import api from "../../service/api";
 
 const Panel = () => {
 	const { nav, setNav } = useContext(navContext);
@@ -105,7 +105,7 @@ class Marquee extends Component {
 		}
 	};
 	GetAnnouncement = langId => {
-		api_message_GetAnnouncement(langId).then(
+		api.message.GetAnnouncement(langId).then(
 			res => {
 				if (res.data.errorCode === 0) {
 					let resData = res.data.data;

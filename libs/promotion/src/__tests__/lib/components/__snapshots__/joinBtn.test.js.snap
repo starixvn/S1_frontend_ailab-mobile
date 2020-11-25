@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JoinBtn after login and already join, renders correctly 1`] = `null`;
+
+exports[`JoinBtn after login, renders correctly 1`] = `
+<button
+  className="btn-check"
+  onClick={[Function]}
+/>
+`;
+
+exports[`JoinBtn before login, renders correctly 1`] = `
+<a
+  className="btn-check"
+  href="/login"
+  onClick={[Function]}
+/>
+`;

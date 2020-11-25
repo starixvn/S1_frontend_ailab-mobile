@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
 import Swiper from "react-id-swiper";
 import config from "../../config";
-import { api_site_GetBanner } from "@ailab-mobile/api";
 import { userInfoContext, navContext, defNavPanel } from "Context";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import path from "Path";
 import { Link } from "@reach/router";
+import api from "../../service/api";
 
 export const ClickLink = (
 	tpId,
@@ -54,16 +54,13 @@ const Panel = ({ ImgFolder, filterHideInHome = false }) => {
 
 	useEffect(() => {
 		let mounted = true;
-		api_site_GetBanner(
-			ImgFolder,
-			"",
-			userInfo.langId,
-			filterHideInHome
-		).then(res => {
-			if (res.data.errorCode === 0 && mounted) {
-				setBanner(res.data.data);
-			}
-		});
+		api.site
+			.GetBanner(ImgFolder, "", userInfo.langId, filterHideInHome)
+			.then(res => {
+				if (res.data.errorCode === 0 && mounted) {
+					setBanner(res.data.data);
+				}
+			});
 
 		return () => (mounted = false);
 	}, [userInfo, ImgFolder, filterHideInHome]);

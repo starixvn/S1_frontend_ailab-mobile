@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MultiRecord > Record renders correctly 1`] = `
+<div
+  className="open"
+>
+  <div>
+    DD0001
+  </div>
+  <div>
+    12,345.00
+  </div>
+</div>
+`;
+
+exports[`MultiRecord > Record when click view all, renders correctly 1`] = `
+<div
+  className="open"
+>
+  <div>
+    DD0001
+  </div>
+  <div>
+    12,345.00
+  </div>
+</div>
+`;
+
+exports[`MultiRecord > Record when not click view all, renders correctly 1`] = `
+<div
+  className=""
+>
+  <div>
+    DD0001
+  </div>
+  <div>
+    12,345.00
+  </div>
+</div>
+`;
+
+exports[`MultiRecord renders correctly 1`] = `
+Array [
+  <div
+    className="minAmount"
+  >
+    <div
+      className=""
+    >
+      <div />
+      <div />
+    </div>
+    <div>
+      <div />
+      <div />
+    </div>
+    <div
+      className=""
+    >
+      <div>
+        DD0001
+      </div>
+      <div>
+        200.00
+      </div>
+    </div>
+    <div
+      className=""
+    >
+      <div>
+        DD0002
+      </div>
+      <div>
+        300.00
+      </div>
+    </div>
+    <div
+      className=""
+    >
+      <div>
+        DD0003
+      </div>
+      <div>
+        1,000.00
+      </div>
+    </div>
+    <div
+      className=""
+    >
+      <div />
+      <div>
+        1,500.00
+      </div>
+    </div>
+  </div>,
+  <button
+    className="ViewAllAmount"
+    onClick={[Function]}
+  >
+    <span
+      className="icon icon-keyboard_arrow_down"
+    />
+  </button>,
+]
+`;

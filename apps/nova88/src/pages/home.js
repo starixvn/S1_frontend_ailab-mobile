@@ -7,7 +7,7 @@ import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import { readCookie, setCookie } from "../components/common/common";
 import path from "../path";
 import { Redirect } from "@reach/router";
-import { api_account_GetWalletInfo } from "@ailab-mobile/api";
+import api from "../service/api";
 
 const IndexPage = () => {
 	const _shortcutBar = useRef(null);
@@ -37,7 +37,7 @@ const IndexPage = () => {
 			readCookie(cookieName) !== "1"
 		) {
 			setCookie(cookieName, "1", 1);
-			api_account_GetWalletInfo().then(res => {
+			api.account.GetWalletInfo().then(res => {
 				if (res.data.errorCode === 0) {
 					let data = res.data.data;
 					let mainWallet = {

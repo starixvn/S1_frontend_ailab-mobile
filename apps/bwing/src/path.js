@@ -107,5 +107,14 @@ export default {
 	},
 	whoami: {
 		root: "whoami"
+	},
+	games: {
+		root: "games"
+	},
+	liveCasino: {
+		root: "liveCasino"
+	},
+	fishing: {
+		root: "fishing"
 	}
 };

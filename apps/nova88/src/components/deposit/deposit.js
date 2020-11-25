@@ -9,17 +9,10 @@ import {
 	userInfoContext
 } from "Context";
 import { Link, Redirect } from "@reach/router";
-import {
-	api_payment_GetOnlinePaymentList,
-	api_payment_GetBankInfoOffList,
-	api_payment_GetMobilePayGroupList,
-	api_payment_GetDepositInfoRecent,
-	api_payment_SetDepositCancel,
-	api_payment_GetCryptoPayInfoList
-} from "@ailab-mobile/api";
 import RecentDatas from "./deposit.recentDatas";
 import Loading from "../common/loading";
 import PageVerify from "./deposit.pageVerify";
+import api from "../../service/api";
 
 const defPayType = {
 	onlineBank: "onlineBank",
@@ -96,7 +89,7 @@ const Panel = () => {
 		if (userInfo.isLogin) {
 			setLoading(true);
 
-			api_payment_GetOnlinePaymentList().then(
+			api.payment.GetOnlinePaymentList().then(
 				res => {
 					if (res.data.errorCode === 0 && isMountedRef.current) {
 						setOnlineBankingList(res.data.data);
@@ -115,7 +108,7 @@ const Panel = () => {
 				}
 			);
 
-			api_payment_GetBankInfoOffList().then(
+			api.payment.GetBankInfoOffList().then(
 				res => {
 					if (res.data.errorCode === 0 && isMountedRef.current) {
 						setLocalBankList(res.data.data);
@@ -134,7 +127,7 @@ const Panel = () => {
 				}
 			);
 
-			api_payment_GetMobilePayGroupList().then(
+			api.payment.GetMobilePayGroupList().then(
 				res => {
 					if (res.data.errorCode === 0 && isMountedRef.current) {
 						setMobilePayList(res.data.data);
@@ -153,7 +146,7 @@ const Panel = () => {
 				}
 			);
 
-			api_payment_GetCryptoPayInfoList().then(
+			api.payment.GetCryptoPayInfoList().then(
 				res => {
 					if (res.data.errorCode === 0 && isMountedRef.current) {
 						setCryptoPayList(res.data.data);
@@ -172,7 +165,7 @@ const Panel = () => {
 				}
 			);
 
-			api_payment_GetDepositInfoRecent().then(res => {
+			api.payment.GetDepositInfoRecent().then(res => {
 				if (res.data.errorCode === 0 && isMountedRef.current) {
 					setRecentDatas(res.data.data);
 				}
@@ -212,11 +205,11 @@ const Panel = () => {
 		if (pageVerify) {
 			const ClickSubmit = () => {
 				setPopBox({ isOpen: false });
-				api_payment_SetDepositCancel(transId).then(
+				api.payment.SetDepositCancel(transId).then(
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 0) {
-								api_payment_GetDepositInfoRecent().then(res => {
+								api.payment.GetDepositInfoRecent().then(res => {
 									if (res.data.errorCode === 0) {
 										setRecentDatas(res.data.data);
 									}
@@ -302,7 +295,7 @@ const Panel = () => {
 		: null;
 
 	const GetDepositInfoRecent = () => {
-		api_payment_GetDepositInfoRecent().then(
+		api.payment.GetDepositInfoRecent().then(
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {

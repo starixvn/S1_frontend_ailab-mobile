@@ -5,16 +5,13 @@ import {
 	userInfoContext,
 	bankSlipPopBoxContext
 } from "Context";
-import {
-	api_payment_GetDepositInfoHistory,
-	api_payment_SetDepositCancel
-} from "@ailab-mobile/api";
 import { number_format, isConvert } from "../common/common";
 import moment from "moment";
 import HistoryFilter from "../common/historyFilter";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import ReloadSpin from "../common/reloadSpin";
 import Loading from "../common/loading";
+import api from "../../service/api";
 
 const Panel = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -36,7 +33,7 @@ const Panel = () => {
 	});
 
 	AUTO_FETCHING_DATA(
-		api_payment_GetDepositInfoHistory,
+		api.payment.GetDepositInfoHistory,
 		filterData,
 		pageInfo,
 		setGetHistoryState,
@@ -63,59 +60,63 @@ const Panel = () => {
 
 			setFilterData(transactionData);
 			setClickSubmit(true);
-			api_payment_GetDepositInfoHistory({
-				...transactionData,
-				PageNumber: 1
-			}).then(
-				response => {
-					if (isMountedRef.current) {
-						const errorCode = response.data.errorCode;
-						if (errorCode !== 0) {
+			api.payment
+				.GetDepositInfoHistory({
+					...transactionData,
+					PageNumber: 1
+				})
+				.then(
+					response => {
+						if (isMountedRef.current) {
+							const errorCode = response.data.errorCode;
+							if (errorCode !== 0) {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content: response.data.message
+								});
+							} else {
+								if (isMountedRef.current) {
+									setGetHistoryState(response.data.data);
+									if (
+										response.data.totalPages >=
+										response.data.pageNumber
+									) {
+										setPageInfo(() => ({
+											totalPages:
+												response.data.totalPages,
+											pageNumber:
+												response.data.pageNumber,
+											donePage: [1]
+										}));
+									}
+								}
+							}
+
+							setProcessing(false);
+							setLoading(false);
+						}
+					},
+					err => {
+						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
-								content: response.data.message
+								content: i18n.msg_ApiServerError
 							});
-						} else {
-							if (isMountedRef.current) {
-								setGetHistoryState(response.data.data);
-								if (
-									response.data.totalPages >=
-									response.data.pageNumber
-								) {
-									setPageInfo(() => ({
-										totalPages: response.data.totalPages,
-										pageNumber: response.data.pageNumber,
-										donePage: [1]
-									}));
-								}
-							}
+
+							setProcessing(false);
+							setLoading(false);
 						}
-
-						setProcessing(false);
-						setLoading(false);
 					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-
-						setProcessing(false);
-						setLoading(false);
-					}
-				}
-			);
+				);
 		}
 	};
 
 	const ClickCancel = transId => {
 		const ClickSubmit = () => {
 			setPopBox({ isOpen: false });
-			api_payment_SetDepositCancel(transId).then(
+			api.payment.SetDepositCancel(transId).then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
