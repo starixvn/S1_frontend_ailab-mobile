@@ -591,6 +591,7 @@ const Panel = () => {
 						onChange={EditField.bind(null, "Phone")}
 						value={userValue.Phone}
 						WarningIcon={warningState.Phone.status}
+						maxLength="10"
 					/>
 					<div
 						className={`errortip ${
