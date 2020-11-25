@@ -20,7 +20,6 @@ import moment from "moment";
 import PageVerify from "./deposit.pageVerify";
 import path from "../../path";
 import Loading from "../common/loading";
-import Promotion from "./deposit.promotion";
 import { api_SetAccountName } from "../../service/api/accountStrict";
 
 export const Panel = props => props.children;
@@ -435,7 +434,6 @@ export const Main = props => {
 					onChange={EditField.bind(this, "amount")}
 					Warning={warning.amount}
 				/>
-				<Promotion />
 				<div className="btn-group">
 					<Link to="../" className="white">
 						{i18n.lbl_Back}
