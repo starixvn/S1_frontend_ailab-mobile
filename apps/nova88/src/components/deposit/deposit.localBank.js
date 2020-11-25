@@ -16,7 +16,6 @@ import moment from "moment";
 import PageVerify from "./deposit.pageVerify";
 import path from "../../path";
 import Loading from "../common/loading";
-import Promotion from "./deposit.promotion";
 import api from "../../service/api";
 
 export const Panel = props => props.children;
@@ -286,7 +285,6 @@ export const Main = props => {
 					onChange={EditAmount}
 					Warning={warning}
 				/>
-				<Promotion />
 				<div className="btn-group">
 					<Link to="../" className="white">
 						{i18n.lbl_Back}
@@ -296,8 +294,6 @@ export const Main = props => {
 					</button>
 				</div>
 			</>
-		) : (
-			<></>
-		);
+		) : null;
 	}
 };
