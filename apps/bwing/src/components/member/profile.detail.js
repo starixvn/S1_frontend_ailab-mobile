@@ -521,6 +521,7 @@ const Panel = () => {
 									: null
 							}
 							clickInfo={clickInfo.bind(this, "PhoneNo")}
+							maxLength="10"
 						/>
 						<div
 							className={`errortip ${
