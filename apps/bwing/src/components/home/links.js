@@ -79,17 +79,29 @@ const ContactUs = ({ i18n }) => {
 			</p>
 			<div className="contact-box">
 				<a
+					href="skype:live:.cid.ae9eac1a78556dc6?chat"
+					target="_blank"
+					className="icon icon-contactUS6"></a>
+				<a
+					href="https://t.me/Bwingcsd"
+					target="_blank"
+					className="icon icon-contactUS3"></a>
+				<a
+					href="https://zalo.me/Bwingcsd"
+					target="_blank"
+					className="icon icon-contactUS5"></a>
+				<a
 					href="https://www.facebook.com/Bwingtttt/"
 					target="_blank"
-					className="icon icon-facebook"></a>
+					className="icon icon-contactUS1"></a>
+				<a
+					href="https://twitter.com/bwingofficial"
+					target="_blank"
+					className="icon icon-contactUS2"></a>
 				<a
 					href="https://www.youtube.com/channel/UCDvFS9eTrOEYuVjb3BNQ3bg/featured"
 					target="_blank"
 					className="icon icon-youtube"></a>
-				<a
-					href="https://twitter.com/bwingofficial"
-					target="_blank"
-					className="icon icon-twitter"></a>
 				<a
 					href="https://www.tiktok.com/@bwingpro"
 					target="_blank"
