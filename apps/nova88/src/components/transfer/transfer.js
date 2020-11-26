@@ -5,7 +5,7 @@ import {
 	popBoxContext,
 	walletInfoContext
 } from "Context";
-import { isConvert, checkAmount, number_format } from "../common/common";
+import { isConvert, number_format } from "../common/common";
 import RecentDatas from "./transfer.recentDatas";
 import InputBox from "../common/inputbox";
 import Dropdown from "../common/dropdown";
@@ -13,6 +13,11 @@ import ReloadSpin from "../common/reloadSpin";
 import Loading from "../common/loading";
 import { defPopBoxType } from "../common/popbox";
 import api from "../../service/api";
+
+const initSelectedIdx = {
+	transferFrom: null,
+	transferTo: null
+};
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
@@ -24,8 +29,8 @@ const Panel = () => {
 	const [getWalletInfo, setGetWalletInfo] = useState([]);
 	const [amount, setAmount] = useState("1");
 	const [warning, setWarning] = useState({ status: false, msg: "" });
-	const [fromSelectedIdx, setFromSelectedIdx] = useState(0);
-	const [toSelectedIdx, setToSelectedIdx] = useState(1);
+	const [selectedIdx, setSelectedIdx] = useState(initSelectedIdx);
+	const [transferOptions, setTransferOptions] = useState([]);
 	const [recentDatas, setRecentDatas] = useState([]);
 	const [loading, setLoading] = useState(true);
 
@@ -36,31 +41,23 @@ const Panel = () => {
 	});
 
 	useEffect(() => {
-		api.account.GetWalletInfo().then(
+		api.account.GetTpWalletList({ ListType: 0 }).then(
 			res => {
-				if (res.data.errorCode === 0) {
-					let data = res.data.data;
-					if (data !== null) {
-						let mainWallet = {
-							id: 0,
-							displayKey: "lbl_MainWallet",
-							balance: data.balance
-						};
-						let tpWalletsArr = data.tpWallets.map(i => {
-							return {
-								id: i.tpId,
-								displayKey: i.displayKey,
-								balance: i.balance
-							};
-						});
-
-						if (isMountedRef.current) {
-							setGetWalletInfo([mainWallet, ...tpWalletsArr]);
-						}
-					}
-				}
-
 				if (isMountedRef.current) {
+					if (res.data.errorCode === 0) {
+						let data = res.data.data;
+						if (data !== null) {
+							data.tpWalletList.map(i => {
+								GetTpWalletBalance(i.tpId);
+							});
+						}
+					} else {
+						setPopBox({
+							isOpen: true,
+							title: i18n["lbl_ImportantNote"],
+							content: res.data.message
+						});
+					}
 					setLoading(false);
 				}
 			},
@@ -70,6 +67,7 @@ const Panel = () => {
 				}
 			}
 		);
+		GetBalnace();
 
 		api.tp.GetTransferRecent().then(res => {
 			if (res.data.errorCode === 0 && isMountedRef.current) {
@@ -78,37 +76,67 @@ const Panel = () => {
 		});
 	}, [setWalletInfo]);
 
-	const GetWalletInfo = () => {
-		api.account.GetWalletInfo().then(
+	console.log(selectedIdx, getWalletInfo);
+
+	const GetBalnace = () => {
+		api.account.GetBalnace().then(
 			res => {
-				if (res.data.errorCode === 0) {
-					let data = res.data.data;
-					if (data !== null) {
-						let mainWallet = {
+				if (isMountedRef.current) {
+					if (res.data.errorCode === 0) {
+						let mainWalletData = {
 							id: 0,
 							displayKey: "lbl_MainWallet",
-							balance: data.balance
+							balance: res.data.data
 						};
-						let tpWalletsArr = data.tpWallets.map(i => {
-							return {
-								id: i.tpId,
-								displayKey: i.displayKey,
-								balance: i.balance
-							};
-						});
 
-						if (isMountedRef.current) {
-							setGetWalletInfo([mainWallet, ...tpWalletsArr]);
-							setWalletInfo(prevState => ({
-								...prevState,
-								main: data.balance
-							}));
+						let mainWalletIdx = getWalletInfo.findIndex(wallet => {
+							return wallet.id === 0;
+						});
+						if (mainWalletIdx !== -1) {
+							let _arr = [...getWalletInfo];
+							_arr.splice(mainWalletIdx, 1, mainWalletData);
+							setGetWalletInfo(_arr);
+						} else {
+							setGetWalletInfo(prev => [...prev, mainWalletData]);
 						}
+					} else {
+						setPopBox({
+							isOpen: true,
+							title: i18n["lbl_ImportantNote"],
+							content: res.data.message
+						});
 					}
 				}
-
+			},
+			err => {
 				if (isMountedRef.current) {
 					setLoading(false);
+				}
+			}
+		);
+	};
+
+	const GetTpWalletBalance = tpId => {
+		api.account.GetTpWalletBalance({ TpId: tpId }).then(
+			res => {
+				if (res.data.errorCode === 0) {
+					let _datas = res.data.data;
+					let tpWalletData = {
+						id: _datas.tpId,
+						displayKey: `lbl_TpWallet_${_datas.tpId}`,
+						balance: _datas.balance
+					};
+
+					let tpWalletIdx = getWalletInfo.findIndex(wallet => {
+						return wallet.id === tpId;
+					});
+					if (tpWalletIdx !== -1) {
+						let _arr = [...getWalletInfo];
+						_arr.splice(tpWalletIdx, 1, tpWalletData);
+						setGetWalletInfo(_arr);
+					} else {
+						setGetWalletInfo(prev => [...prev, tpWalletData]);
+					}
 				}
 			},
 			err => {
@@ -128,31 +156,19 @@ const Panel = () => {
 	};
 
 	const VaildAmount = _amount => {
-		const minAmount = 1;
-		const maxAmount = getWalletInfo[fromSelectedIdx]?.balance;
-		if (maxAmount === null || maxAmount === undefined) {
-			return false;
+		let checked = _amount > 0 && _amount !== "";
+		if (!checked) {
+			setWarning({
+				status: true,
+				msg: i18n["lbl_AmountTooltip"]
+			});
 		} else {
-			let result = checkAmount(
-				_amount,
-				minAmount,
-				maxAmount,
-				_isConvert,
-				i18n
-			);
-			if (result.status !== 0) {
-				setWarning({
-					status: true,
-					msg: result.msg
-				});
-			} else {
-				setWarning({
-					status: false,
-					msg: ""
-				});
-			}
-			return result.status === 0;
+			setWarning({
+				status: false,
+				msg: ""
+			});
 		}
+		return checked;
 	};
 
 	const EditAmount = e => {
@@ -167,32 +183,41 @@ const Panel = () => {
 		_balance > 0 ? setAmount(`${_balance}`) : setAmount("1");
 	};
 
-	const selectItem = (i, col) => {
-		if (
-			(i === 0 && col === "transferFrom") ||
-			(i === 1 && col === "transferTo")
-		) {
-			setFromSelectedIdx(0);
-			setToSelectedIdx(1);
-		} else {
-			setFromSelectedIdx(1);
-			setToSelectedIdx(0);
+	const selectItem = (col, i) => {
+		if (col === "transferFrom") {
+			let _arr = [...getWalletInfo];
+
+			if (i === 0) {
+				_arr.splice(i, 1);
+			} else {
+				_arr.splice(1, getWalletInfo.length - 1);
+			}
+
+			setTransferOptions(_arr);
 		}
+
+		setSelectedIdx(prev => ({
+			...prev,
+			[col]: i
+		}));
 	};
 
 	const clickSubmit = () => {
-		let result = VaildAmount(amount);
-		let direction = fromSelectedIdx === 0 ? 1 : 2;
+		let checked = VaildAmount(amount);
+		let direction = selectedIdx.transferFrom === 0 ? 1 : 2;
+		let _tpId =
+			selectedIdx.transferFrom === 0
+				? transferOptions[selectedIdx.transferTo].id
+				: getWalletInfo[selectedIdx.transferFrom].id;
 
-		if (result) {
+		if (checked && _tpId) {
 			let real_amount = _isConvert
 				? Number(amount) * 1000
 				: Number(amount);
-
 			setLoading(true);
 			api.tp
 				.Transfer({
-					TpId: 1,
+					TpId: _tpId,
 					amount: real_amount,
 					direction: direction
 				})
@@ -217,9 +242,11 @@ const Panel = () => {
 									content: res.data.message
 								});
 							} else {
-								GetWalletInfo();
+								GetBalnace();
+								GetTpWalletBalance(_tpId);
 								setAmount("1");
 								GetTransferRecent();
+								setLoading(false);
 							}
 						}
 					},
@@ -232,42 +259,42 @@ const Panel = () => {
 		}
 	};
 
+	let arr = getWalletInfo
+		.sort((a, b) => {
+			return a.id - b.id;
+		})
+		.map(wallet => {
+			return (
+				<div className="account" key={wallet.id}>
+					<div className="info">
+						<span className="title">{i18n[wallet.displayKey]}</span>
+						<div>{number_format(wallet.balance, _isConvert)}</div>
+					</div>
+					<ReloadSpin
+						func={
+							wallet.id !== 0
+								? GetTpWalletBalance.bind(this, wallet.id)
+								: GetBalnace
+						}
+					/>
+				</div>
+			);
+		});
+
 	return loading ? (
 		<Loading />
 	) : (
 		<>
-			<div className="account">
-				<div className="info">
-					<span className="title">{i18n["lbl_MainWallet"]}</span>
-					<div>
-						{number_format(getWalletInfo[0]?.balance, _isConvert)}
-					</div>
-				</div>
-				<ReloadSpin func={GetWalletInfo} />
-			</div>
-			<div className="account">
-				<div className="info">
-					<span className="title">{i18n["lbl_Wallet_Saba"]}</span>
-					<div>
-						{number_format(
-							getWalletInfo[1]?.balance === undefined
-								? 0
-								: getWalletInfo[1]?.balance,
-							_isConvert
-						)}
-					</div>
-				</div>
-				<ReloadSpin func={GetWalletInfo} />
-			</div>
+			<>{arr}</>
 
 			<div className="inputBox">
 				<Dropdown
 					mainKey="transfer-From"
 					options={getWalletInfo}
 					placeholder={i18n["lbl_TransferFrom"]}
-					selectedIdx={fromSelectedIdx}
+					selectedIdx={selectedIdx.transferFrom}
 					i18n={i18n}
-					onSelectItem={selectItem}
+					onSelectItem={selectItem.bind(this, "transferFrom")}
 					colName="transferFrom"
 				/>
 			</div>
@@ -275,10 +302,10 @@ const Panel = () => {
 			<div className="inputBox">
 				<Dropdown
 					mainKey="transfer-To"
-					options={getWalletInfo}
+					options={transferOptions}
 					placeholder={i18n["lbl_TransferTo"]}
-					selectedIdx={toSelectedIdx}
-					onSelectItem={selectItem}
+					selectedIdx={selectedIdx.transferTo}
+					onSelectItem={selectItem.bind(this, "transferTo")}
 					i18n={i18n}
 					colName="transferTo"
 				/>
