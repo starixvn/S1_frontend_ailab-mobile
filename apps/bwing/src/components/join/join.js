@@ -70,6 +70,11 @@ const initWarningState = {
 	}
 };
 
+const initCheckboxVal = {
+	termsCheck: false,
+	ageCheck: false
+};
+
 const initChecklistState = {
 	UserName: false,
 	Password: false,
@@ -89,7 +94,7 @@ const Join = () => {
 	const [siteCurrencyState, setSiteCurrencyState] = useState([]);
 	const [warningState, setWarningState] = useState(initWarningState);
 	const [pswState, setPswState] = useState(false);
-	const [checkboxState, setCheckboxState] = useState(false);
+	const [checkboxState, setCheckboxState] = useState(initCheckboxVal);
 	const [redirectPath, setRedirectPath] = useState(null);
 	const [banner, setBanner] = useState([]);
 
@@ -102,7 +107,6 @@ const Join = () => {
 		AffiliateId: false,
 		Currency: false
 	});
-
 	const [checklistState, setChecklistState] = useState(initChecklistState);
 	const [promoPopup, setPromoPopup] = useState(false);
 
@@ -470,25 +474,22 @@ const Join = () => {
 		}));
 	};
 
-	const checkboxHandler = () => {
-		let checked = !checkboxState;
-		setCheckboxState(checked);
-		setChecklistState(prevState => {
-			return { ...prevState, Checkbox: checked };
-		});
-		setUserValueState(prevState => ({
-			...prevState,
-			Checkbox: checked
+	const checkboxHandler = col => {
+		let checked = !checkboxState[col];
+		setCheckboxState(prev => ({
+			...prev,
+			[col]: checked
 		}));
-		setWarningState(prevState => {
-			return {
+
+		if (checkboxState.termsCheck && checkboxState.ageCheck) {
+			setChecklistState(prevState => {
+				return { ...prevState, Checkbox: true };
+			});
+			setUserValueState(prevState => ({
 				...prevState,
-				Checkbox: {
-					status: !checked,
-					msg: i18n.lbl_Check18TCTooltip
-				}
-			};
-		});
+				Checkbox: true
+			}));
+		}
 	};
 
 	const checklistHandler = () => {
@@ -497,7 +498,7 @@ const Join = () => {
 		let UserName = usernameCheck(userValueState.UserName);
 		let Password = passwordCheck(userValueState.Password);
 		// let Email = emailCheck(userValueState.Email);
-		let Checkbox = checkboxState;
+		let Checkbox = checkboxState.termsCheck && checkboxState.ageCheck;
 
 		checked =
 			UserName.checked &&
@@ -602,8 +603,14 @@ const Join = () => {
 			setWarningState(prevState => ({
 				...prevState,
 				UserName: { status: !UserName.checked, msg: UserName.message },
-				Password: { status: !Password.checked, msg: Password.message }
+				Password: { status: !Password.checked, msg: Password.message },
 				// Email: { status: !Email.checked, msg: Email.message }
+				Checkbox: {
+					status: !(
+						checkboxState.termsCheck && checkboxState.ageCheck
+					),
+					msg: i18n.lbl_Check18TCTooltip
+				}
 			}));
 		}
 	};
@@ -616,7 +623,7 @@ const Join = () => {
 			});
 			setWarningState(initWarningState);
 			setcurrencyState(currencyDefaultSelectIdx);
-			setCheckboxState(false);
+			setCheckboxState(initCheckboxVal);
 			setChecklistState(initChecklistState);
 		}
 
@@ -736,30 +743,33 @@ const Join = () => {
 					Warning={warningState.AffiliateId}
 					disabled={affiliateidExist}></Inputbox>
 
-				<Checkbox
-					Checked={checkboxState}
-					className={`Terms${
-						warningState.Checkbox.status ? " error" : ""
-					}`}
-					checkboxHandler={checkboxHandler}
-					id="c1">
-					{i18n["lbl_Check18TC1"]} &nbsp;
-					<a target="_blank" href={TandC(userInfo.langId).terms}>
-						{i18n["lbl_TermsConditions"]}
-					</a>
-					&nbsp; {i18n["lbl_Check18TC2"]}&nbsp;
-					<a target="_blank" href={TandC(userInfo.langId).rule}>
-						{i18n["lbl_RuleRegulations"]}
-					</a>
-					&nbsp; {i18n["lbl_Check18TC3"]}&nbsp;{config.siteName}
-					.&nbsp;
-					{i18n["lbl_Check18TC4"]}
-				</Checkbox>
-				{warningState.Checkbox.status ? (
-					<div className="JoinRule open">
-						{i18n.lbl_Check18TCTooltip}
-					</div>
-				) : null}
+				<div className="Terms">
+					<Checkbox
+						checked={checkboxState.termsCheck}
+						onChange={checkboxHandler.bind(this, "termsCheck")}
+						id="joinTermsCheck">
+						{i18n["lbl_Check18TC1"]} &nbsp;
+						<a target="_blank" href={TandC(userInfo.langId).terms}>
+							{i18n["lbl_TermsConditions"]}
+						</a>
+						&nbsp; {i18n["lbl_Check18TC2"]}&nbsp;
+						<a target="_blank" href={TandC(userInfo.langId).rule}>
+							{i18n["lbl_RuleRegulations"]}
+						</a>
+						&nbsp; {i18n["lbl_Check18TC3"]}&nbsp;{config.siteName}
+					</Checkbox>
+					<Checkbox
+						id="joinAgeCheck"
+						checked={checkboxState.ageCheck}
+						onChange={checkboxHandler.bind(this, "ageCheck")}>
+						{i18n["lbl_Check18TC4"]}
+					</Checkbox>
+					{warningState.Checkbox.status ? (
+						<div className="JoinRule open">
+							{i18n.lbl_Check18TCTooltip}
+						</div>
+					) : null}
+				</div>
 				<div className="btn-group">
 					<button onClick={checklistHandler}>
 						{i18n["lbl_JoinNow"]}

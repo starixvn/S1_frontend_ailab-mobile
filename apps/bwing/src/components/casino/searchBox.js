@@ -69,7 +69,7 @@ const SearchBox = props => {
 				<i className="icon icon-search"></i>
 				<input
 					className="search"
-					placeholder="Search"
+					placeholder={i18n.lbl_Search}
 					value={props.searchText}
 					onChange={EditField.bind(this, "searchText")}
 				/>

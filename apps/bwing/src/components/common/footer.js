@@ -161,23 +161,6 @@ const Footer = () => {
 						);
 					}}
 				</Match>
-
-				<Match path={path.other.root}>
-					{props => {
-						let isMatch =
-							props.location.pathname === `/${path.other.root}`;
-						return (
-							<Link
-								to={path.other.root}
-								className={isMatch ? "open" : ""}>
-								<div className="circleAnimation">
-									<div className="icon icon-other"></div>
-								</div>
-								<span>{i18n.lbl_Other}</span>
-							</Link>
-						);
-					}}
-				</Match>
 			</footer>
 		);
 	}
