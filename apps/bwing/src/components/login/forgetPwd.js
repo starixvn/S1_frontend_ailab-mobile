@@ -15,6 +15,12 @@ export default () => {
 	const [redirectPath, setRedirectPath] = useState(null);
 
 	useEffect(() => {
+		if (userInfo.isLogin) {
+			setRedirectPath(`/`);
+		}
+	}, [userInfo.isLogin]);
+
+	useEffect(() => {
 		if (isMountedRef.current && redirectPath !== null) {
 			setRedirectPath(null);
 		}
