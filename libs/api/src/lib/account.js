@@ -54,4 +54,14 @@ export class accountAPI extends BaseAPI {
 			TpId,
 			PromoCategoryId
 		});
+
+	GetTpWalletList = ({ ListType }) =>
+		this.accountRequest.post("/GetTpWalletList", {
+			ListType
+		});
+
+	GetTpWalletBalance = ({ TpId }) =>
+		this.accountRequest.post("/GetTpWalletBalance", {
+			TpId
+		});
 }
