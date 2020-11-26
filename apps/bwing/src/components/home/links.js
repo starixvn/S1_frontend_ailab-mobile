@@ -89,7 +89,7 @@ const ContactUs = ({ i18n }) => {
 				<a
 					href="https://zalo.me/Bwingcsd"
 					target="_blank"
-					className="icon icon-contactUS5"></a>
+					className="icon icon-zalo"></a>
 				<a
 					href="https://www.facebook.com/Bwingtttt/"
 					target="_blank"
