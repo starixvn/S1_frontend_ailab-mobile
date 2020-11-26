@@ -55,6 +55,10 @@ const defSubMenus = langId => [
 	{
 		displayKey: "lbl_Affiliates",
 		href: siteInfo(langId).affiliateLink
+	},
+	{
+		displayKey: "lbl_Other",
+		path: `/${path.other.root}`
 	}
 ];
 
