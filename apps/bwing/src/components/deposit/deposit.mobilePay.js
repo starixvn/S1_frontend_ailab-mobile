@@ -168,8 +168,8 @@ export const Main = props => {
 							<LimitTip
 								minAmount={c.minAmount}
 								maxAmount={c.maxAmount}
-								displayTextLimit={i18n.lbl_Unlimited}
-								displayTextUnLimit={i18n.lbl_Limit}
+								displayTextLimit={i18n.lbl_Limit}
+								displayTextUnLimit={i18n.lbl_Unlimited}
 								_isConvert={_isConvert}
 							/>
 						</li>
