@@ -30,12 +30,9 @@ export default () => {
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
-						let data = res.data.data;
-						if (data !== null) {
-							data.map(i => {
-								GetTpWalletBalance(i.tpId);
-							});
-						}
+						res.data.data?.forEach(i => {
+							GetTpWalletBalance(i.tpId);
+						});
 					} else {
 						setPopBox({
 							isOpen: true,
@@ -62,13 +59,11 @@ export default () => {
 			res => {
 				if (res.data.errorCode === 0) {
 					let data = res.data.data;
-					if (data !== null) {
-						if (isMountedRef.current) {
-							setWalletInfo(prevState => ({
-								...prevState,
-								main: data
-							}));
-						}
+					if (data !== null && isMountedRef.current) {
+						setWalletInfo(prevState => ({
+							...prevState,
+							main: data
+						}));
 					}
 				}
 			},
@@ -82,7 +77,10 @@ export default () => {
 				}
 			}
 		);
+		GetBonusWallet();
+	};
 
+	const GetBonusWallet = () => {
 		api.account.GetCustBonusWallet().then(res => {
 			if (res.data.errorCode === 0 && isMountedRef.current) {
 				let result = {};
@@ -114,10 +112,12 @@ export default () => {
 					let tpWalletIdx = tpWalletList.findIndex(wallet => {
 						return wallet.id === tpId;
 					});
+
 					if (tpWalletIdx !== -1) {
-						let _arr = [...tpWalletList];
-						_arr[tpWalletIdx] = tpWalletData;
-						setTpWalletList(_arr);
+						setTpWalletList(prev => {
+							prev[tpWalletIdx] = tpWalletData;
+							return prev;
+						});
 					} else {
 						setTpWalletList(prev => [...prev, tpWalletData]);
 					}
@@ -133,6 +133,7 @@ export default () => {
 				}
 			}
 		);
+		GetBonusWallet();
 	};
 
 	let _tpWalletArrs = tpWalletList.map(t => {

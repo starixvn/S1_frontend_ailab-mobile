@@ -46,12 +46,9 @@ const Panel = () => {
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
-						let data = res.data.data;
-						if (data !== null) {
-							data.map(i => {
-								GetTpWalletBalance(i.tpId);
-							});
-						}
+						res.data.data?.forEach(i => {
+							GetTpWalletBalance(i.tpId);
+						});
 					} else {
 						setPopBox({
 							isOpen: true,
@@ -281,8 +278,7 @@ const Panel = () => {
 		<Loading />
 	) : (
 		<>
-			<>{arr}</>
-
+			{arr}
 			<div className="inputBox">
 				<Dropdown
 					mainKey="transfer-From"

@@ -71,11 +71,9 @@ const HeaderBtn = () => {
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
-							let mainWalletBalance = res.data.data;
-
 							setWalletInfo(prevState => ({
 								...prevState,
-								main: mainWalletBalance
+								main: res.data.data
 							}));
 						} else {
 							setPopBox({
@@ -103,64 +101,55 @@ const HeaderBtn = () => {
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
-							let data = res.data.data;
-							if (data !== null) {
-								data.map(i => {
-									api.account
-										.GetTpWalletBalance({ TpId: i.tpId })
-										.then(
-											res => {
-												if (res.data.errorCode === 0) {
-													let _datas = res.data.data;
-													let tpWalletData = {
-														id: _datas.tpId,
-														balance: _datas.balance
-													};
+							res.data.data?.forEach(i => {
+								api.account
+									.GetTpWalletBalance({ TpId: i.tpId })
+									.then(
+										res => {
+											if (res.data.errorCode === 0) {
+												let data = res.data.data;
+												let tpWalletData = {
+													id: data.tpId,
+													balance: data.balance
+												};
 
-													let tpWalletIdx = tpWalletsList.findIndex(
-														wallet => {
-															return (
-																wallet.id ===
-																i.tpId
-															);
-														}
-													);
-													if (tpWalletIdx !== -1) {
-														let _arr = [
-															...tpWalletsList
-														];
-														_arr[
+												let tpWalletIdx = tpWalletsList.findIndex(
+													wallet =>
+														wallet.id === i.tpId
+												);
+
+												if (tpWalletIdx !== -1) {
+													setTpWalletsList(prev => {
+														prev[
 															tpWalletIdx
 														] = tpWalletData;
-														setTpWalletsList(_arr);
-													} else {
-														setTpWalletsList(
-															prev => [
-																...prev,
-																tpWalletData
-															]
-														);
-													}
-												}
-											},
-											err => {
-												if (isMountedRef.current) {
-													setPopBox({
-														isOpen: true,
-														title:
-															i18n[
-																"lbl_ImportantNote"
-															],
-														content:
-															i18n[
-																"msg_ApiServerError"
-															]
+														return prev;
 													});
+												} else {
+													setTpWalletsList(prev => [
+														...prev,
+														tpWalletData
+													]);
 												}
 											}
-										);
-								});
-							}
+										},
+										err => {
+											if (isMountedRef.current) {
+												setPopBox({
+													isOpen: true,
+													title:
+														i18n[
+															"lbl_ImportantNote"
+														],
+													content:
+														i18n[
+															"msg_ApiServerError"
+														]
+												});
+											}
+										}
+									);
+							});
 						} else {
 							setPopBox({
 								isOpen: true,
