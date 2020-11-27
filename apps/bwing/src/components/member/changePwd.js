@@ -48,7 +48,7 @@ export default () => {
 	}, [redirectPath]);
 
 	useEffect(() => {
-		if (!userInfo.isLogin) {
+		if (userInfo.isLogin === false) {
 			setRedirectPath(`/`);
 		}
 	}, [userInfo.isLogin]);
