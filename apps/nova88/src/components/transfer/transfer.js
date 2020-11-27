@@ -227,7 +227,6 @@ const Panel = () => {
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 9) {
-								setLoading(false);
 								setPopBox({
 									isOpen: true,
 									popBoxType:
@@ -237,7 +236,6 @@ const Panel = () => {
 									rollover: res.data.data.rollover
 								});
 							} else if (res.data.errorCode !== 0) {
-								setLoading(false);
 								setPopBox({
 									isOpen: true,
 									title: i18n["lbl_ImportantNote"],
@@ -248,8 +246,8 @@ const Panel = () => {
 								GetBalnace();
 								setAmount("1");
 								GetTransferRecent();
-								setLoading(false);
 							}
+							setLoading(false);
 						}
 					},
 					err => {
