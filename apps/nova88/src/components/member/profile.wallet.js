@@ -32,7 +32,7 @@ export default () => {
 					if (res.data.errorCode === 0) {
 						let data = res.data.data;
 						if (data !== null) {
-							data.tpWalletList.map(i => {
+							data.map(i => {
 								GetTpWalletBalance(i.tpId);
 							});
 						}
