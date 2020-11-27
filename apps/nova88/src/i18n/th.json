@@ -335,6 +335,10 @@
 	"lbl_PleaseEnterClaimAmount":"กรุณาใส่จำนวนเงินที่คุณต้องการขอรับโปรโมชั่น",
 	"lbl_ViewAll":"ดูทั้งหมด",
 	"lbl_Total":"จำนวนเงินทั้งหมด",
-	"lbl_CockFighting":"ไก่ชน"
+	"lbl_CockFighting":"ไก่ชน",
+
+	"lbl_Download":"Download",
+	"lbl_918KissMobileApp":"918KISS MOBILE APP",
+	"lbl_IOSInstallGuide":"iOS 9+ Installation Guide"
 	
 }
