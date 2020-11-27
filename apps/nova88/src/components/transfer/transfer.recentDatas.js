@@ -16,20 +16,13 @@ const ReacentDatas = props => {
 		setOpen(prevState => !prevState);
 	};
 
-	const transferDirection = (
-		_direction,
-		displayMainWallet,
-		displaySabaWallet
-	) => {
-		let startWallet = "";
-		let endWallet = "";
+	const transferDirection = (_direction, tpName) => {
+		let startWallet = i18n.lbl_MainWallet;
+		let endWallet = tpName;
 
-		if (_direction === 1) {
-			startWallet = displayMainWallet;
-			endWallet = displaySabaWallet;
-		} else {
-			startWallet = displaySabaWallet;
-			endWallet = displayMainWallet;
+		if (_direction !== 1) {
+			startWallet = tpName;
+			endWallet = i18n.lbl_MainWallet;
 		}
 		return { startWallet, endWallet };
 	};
@@ -40,8 +33,7 @@ const ReacentDatas = props => {
 		props.datas?.map(item => {
 			const _transferDirection = transferDirection(
 				item.direction,
-				i18n.lbl_MainWallet,
-				i18n.lbl_Wallet_Saba
+				item.tpName
 			);
 			return (
 				<TransactionHistory
