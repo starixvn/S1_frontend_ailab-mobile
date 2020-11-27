@@ -43,6 +43,7 @@ const HeaderBtn = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const [redirectPath, setRedirectPath] = useState(null);
 	const [processing, setProcessing] = useState(false);
+	const [tpWalletsList, setTpWalletsList] = useState([]);
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -66,29 +67,20 @@ const HeaderBtn = () => {
 		if (!processing) {
 			setProcessing(true);
 
-			api.account.GetWalletInfo().then(
+			api.account.GetBalnace().then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
-							let _data = res.data.data;
-							let mainWalletBalance = _data.balance;
-
-							let otherWalletBalance = _data.tpWallets?.reduce(
-								(prev, curr) => {
-									return prev + curr.balance;
-								},
-								0
-							);
+							let mainWalletBalance = res.data.data;
 
 							setWalletInfo(prevState => ({
 								...prevState,
-								allBalance:
-									mainWalletBalance + otherWalletBalance
+								main: mainWalletBalance
 							}));
 						} else {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
+								title: i18n["lbl_ImportantNote"],
 								content: res.data.message
 							});
 						}
@@ -99,19 +91,106 @@ const HeaderBtn = () => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
+							title: i18n["lbl_ImportantNote"],
+							content: i18n["msg_ApiServerError"]
 						});
 						setProcessing(false);
+					}
+				}
+			);
+
+			api.account.GetTpWalletList({ ListType: 0 }).then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							let data = res.data.data;
+							if (data !== null) {
+								data.map(i => {
+									api.account
+										.GetTpWalletBalance({ TpId: i.tpId })
+										.then(
+											res => {
+												if (res.data.errorCode === 0) {
+													let _datas = res.data.data;
+													let tpWalletData = {
+														id: _datas.tpId,
+														balance: _datas.balance
+													};
+
+													let tpWalletIdx = tpWalletsList.findIndex(
+														wallet => {
+															return (
+																wallet.id ===
+																i.tpId
+															);
+														}
+													);
+													if (tpWalletIdx !== -1) {
+														let _arr = [
+															...tpWalletsList
+														];
+														_arr[
+															tpWalletIdx
+														] = tpWalletData;
+														setTpWalletsList(_arr);
+													} else {
+														setTpWalletsList(
+															prev => [
+																...prev,
+																tpWalletData
+															]
+														);
+													}
+												}
+											},
+											err => {
+												if (isMountedRef.current) {
+													setPopBox({
+														isOpen: true,
+														title:
+															i18n[
+																"lbl_ImportantNote"
+															],
+														content:
+															i18n[
+																"msg_ApiServerError"
+															]
+													});
+												}
+											}
+										);
+								});
+							}
+						} else {
+							setPopBox({
+								isOpen: true,
+								title: i18n["lbl_ImportantNote"],
+								content: res.data.message
+							});
+						}
+					}
+				},
+				err => {
+					if (isMountedRef.current) {
+						setPopBox({
+							isOpen: true,
+							title: i18n["lbl_ImportantNote"],
+							content: i18n["msg_ApiServerError"]
+						});
 					}
 				}
 			);
 		}
 	};
 
-	let balance = !walletInfo.allBalance
+	let otherWalletBalance = tpWalletsList?.reduce((prev, curr) => {
+		return prev + curr.balance;
+	}, 0);
+	let allWalletBalance = walletInfo.main + otherWalletBalance;
+
+	let balance = !allWalletBalance
 		? 0
-		: number_format(walletInfo.allBalance, isConvert(userInfo.currencyId));
+		: number_format(allWalletBalance, isConvert(userInfo.currencyId));
 
 	return redirectPath === null ? (
 		userInfo?.isLogin ? (
