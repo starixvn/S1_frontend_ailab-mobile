@@ -77,10 +77,7 @@ export default () => {
 				}
 			}
 		);
-		GetBonusWallet();
-	};
 
-	const GetBonusWallet = () => {
 		api.account.GetCustBonusWallet().then(res => {
 			if (res.data.errorCode === 0 && isMountedRef.current) {
 				let result = {};
@@ -133,7 +130,6 @@ export default () => {
 				}
 			}
 		);
-		GetBonusWallet();
 	};
 
 	let _tpWalletArrs = tpWalletList.map(t => {
