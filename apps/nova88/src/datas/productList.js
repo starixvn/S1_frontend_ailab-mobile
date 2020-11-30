@@ -256,3 +256,38 @@ const gameList = ({ langId }) => [
 ];
 
 export default gameList;
+
+export const defGameInfo = {
+	Sports: { tpId: 1, gameId: 1 },
+	CockFighting: { tpId: 17 },
+	VirtualSports: { tpId: 1, gameId: 180 },
+	eSports: { tpId: 1, gameId: 43 },
+	LIVEcasinoDG: { tpId: 4, gameId: 4 },
+	LIVEcasinoPP: { gameId: 101, tpId: 5 },
+	LIVEcasinoAE: { gameId: 15, tpId: 15 },
+	LIVEcasinoAG: { gameId: 3, tpId: 3 },
+	LIVEcasinoAB: { gameId: 12, tpId: 12 },
+	LIVEcasinoSA: { gameId: 2, tpId: 2 },
+	LIVEcasinoEB: { gameId: 18, tpId: 18 },
+	LIVEcasinoMW: { gameId: 105, tpId: 5 },
+	LIVEcasinoWM: { gameId: 20, tpId: 20 },
+	Casino_ow: { gameId: 208, tpId: 1 },
+	Casino_All: { tpId: 0 },
+	Casino_PP: { tpId: 5 },
+	Casino_SG: { tpId: 10 },
+	Casino_PG: { tpId: 14 },
+	Casino_JOKER: { tpId: 9 },
+	Casino_YGG: { tpId: 8 },
+	Casino_GPI: { tpId: 6 },
+	Fishing: { gameId: 10, tpId: 7 },
+	FishingSG: { gameId: "F-SF01", tpId: 10 },
+	FishingSGW: { gameId: "F-SF02", tpId: 10 },
+	Indo4d: { gameId: 223, tpId: 1 },
+	Keno: { gameId: 202, tpId: 1 },
+	lottery: { gameId: 220, tpId: 1 },
+	NumberGame: { gameId: 161, tpId: 1 },
+	sabaClub: {
+		tpId: 1,
+		gameId: 200
+	}
+};
