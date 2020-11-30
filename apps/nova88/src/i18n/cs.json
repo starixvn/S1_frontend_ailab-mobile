@@ -336,5 +336,6 @@
 	"lbl_ViewAll":"查看全部",
 	"lbl_Total":"总金额",
 	"lbl_CockFighting":"斗鸡",
-	"lbl_TpWallet_21": "918 Wallet"
+	"lbl_TpWallet_21": "918 Wallet",
+	"lbl_Transfer_Wallet_Hint": "Please select the wallet to transfer"
 }

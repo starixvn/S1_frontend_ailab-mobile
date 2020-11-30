@@ -336,6 +336,7 @@
 	"lbl_ViewAll":"Lihat semua",
 	"lbl_Total":"Jumlah total",
 	"lbl_CockFighting":"Sabung Ayam",
-	"lbl_TpWallet_21": "918 Wallet"
+	"lbl_TpWallet_21": "918 Wallet",
+	"lbl_Transfer_Wallet_Hint": "Please select the wallet to transfer"
 
 }
