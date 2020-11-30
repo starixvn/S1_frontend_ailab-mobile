@@ -201,8 +201,8 @@ const SetMobilePay = props => {
 									<LimitTip
 										minAmount={paymentInfo.minAmount}
 										maxAmount={paymentInfo.maxAmount}
-										displayTextLimit={i18n.lbl_Unlimited}
-										displayTextUnLimit={i18n.lbl_Limit}
+										displayTextLimit={i18n.lbl_Limit}
+										displayTextUnLimit={i18n.lbl_Unlimited}
 										_isConvert={_isConvert}
 									/>
 								</li>
