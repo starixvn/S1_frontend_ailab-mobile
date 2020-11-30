@@ -4264,4 +4264,10 @@ span.important {
   text-align: center;
   margin: 1vw 0;
 }
+
+.partner img {
+  max-width: calc(100% / 3);
+  margin: 2vw 1vw;
+  vertical-align: middle;
+}
 /*# sourceMappingURL=style.css.map */
