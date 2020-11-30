@@ -249,7 +249,7 @@ export default [
 	// 	}
 	// }
 	{
-		bonusCode: "VKNGamesUnlimitedRebate15",
+		bonusCode: "1212SpecialPromo",
 		bannerLink: {
 			en:
 				"https://image.n88media.com/NovaPromotion/1212SpecialPromo/EN.html",
