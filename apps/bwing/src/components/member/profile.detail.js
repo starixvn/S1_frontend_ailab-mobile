@@ -397,6 +397,8 @@ const Panel = () => {
 				_msg = i18n["lbl_RemindForName"];
 			} else if (col === "PhoneNo") {
 				_msg = i18n["lbl_PhoneTooltip"];
+			} else if (col === "Email") {
+				_msg = i18n["lbl_EmailToolTip"];
 			}
 		}
 
@@ -471,11 +473,16 @@ const Panel = () => {
 						iconModuleName="icon-information-solid"
 						onBlur={checkInputboxHandler.bind(null, "Email")}
 						onChange={EditField.bind(null, "Email")}
-						Tips={i18n["lbl_EmailToolTip"]}
-						Warning={warning.Email}
+						WarningIcon={warning.Email.status}
 						value={userValue.Email}
+						iconModuleName={
+							!warning.Email.status
+								? "icon-information-solid"
+								: null
+						}
 						clickInfo={clickInfo.bind(this, "Email")}
 					/>
+					{warning.Email.msg ? <div>{warning.Email.msg}</div> : null}
 				</>
 			) : null}
 

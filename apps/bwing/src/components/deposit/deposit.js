@@ -30,7 +30,7 @@ const defPayment = {
 	[defPayType.mobilePay]: {
 		icon: "icon icon-phoneIcon",
 		displayKey: "lbl_MobileDeposit",
-		creditTimeKey: "lbl_5mins"
+		creditTimeKey: "lbl_Instant"
 	},
 	[defPayType.onlineBank]: {
 		icon: "icon icon-wifiIcon",

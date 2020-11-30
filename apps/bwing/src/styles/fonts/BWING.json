@@ -2,9 +2,99 @@
   "metadata": {
     "name": "BWING",
     "lastOpened": 0,
-    "created": 1605067972739
+    "created": 1606372633307
   },
   "iconSets": [
+    {
+      "selection": [
+        {
+          "order": 0,
+          "id": 2,
+          "name": "tiktop",
+          "prevSize": 32,
+          "code": 59874,
+          "tempChar": ""
+        },
+        {
+          "order": 322,
+          "id": 1,
+          "name": "zalo",
+          "prevSize": 32,
+          "code": 59875,
+          "tempChar": ""
+        },
+        {
+          "order": 0,
+          "id": 0,
+          "name": "yo",
+          "prevSize": 32,
+          "code": 59876,
+          "tempChar": ""
+        }
+      ],
+      "id": 45,
+      "metadata": {
+        "name": "Untitled Set 25",
+        "importSize": {
+          "width": 66,
+          "height": 66
+        }
+      },
+      "height": 1024,
+      "prevSize": 32,
+      "icons": [
+        {
+          "id": 2,
+          "paths": [
+            "M512 0c-282.726 0-512 229.274-512 512s229.274 512 512 512c282.726 0 512-229.274 512-512s-229.274-512-512-512zM768.86 391.746v69.326c-32.69 0.012-64.452-6.394-94.408-19.032-19.262-8.132-37.208-18.61-53.622-31.272l0.492 213.386c-0.206 48.050-19.216 93.196-53.622 127.202-28 27.68-63.48 45.282-101.936 50.98-9.036 1.338-18.232 2.024-27.532 2.024-41.166 0-80.248-13.336-112.218-37.94-6.016-4.632-11.77-9.654-17.248-15.064-37.288-36.854-56.516-86.802-53.278-139.348 2.47-39.998 18.484-78.144 45.18-108.042 35.32-39.564 84.732-61.524 137.564-61.524 9.3 0 18.496 0.698 27.532 2.036v96.936c-8.568-2.826-17.718-4.38-27.246-4.38-48.268 0-87.318 39.38-86.596 87.684 0.458 30.906 17.34 57.922 42.24 72.814 11.702 7 25.164 11.336 39.53 12.124 11.256 0.618 22.064-0.95 32.072-4.254 34.486-11.392 59.364-43.784 59.364-81.988l0.114-142.894v-260.88h95.472c0.092 9.46 1.052 18.69 2.836 27.634 7.206 36.202 27.612 67.61 56.012 89.022 24.764 18.678 55.6 29.75 89.022 29.75 0.022 0 0.298 0 0.276-0.022v25.722z"
+          ],
+          "attrs": [
+            {}
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "3116491"
+          ]
+        },
+        {
+          "id": 1,
+          "paths": [
+            "M512 0c282.77 0 512 229.23 512 512s-229.23 512-512 512c-282.77 0-512-229.23-512-512s229.23-512 512-512zM494.933 546.133h-256v256h256v-256zM682.671 546.133h-153.605v256h51.204v-153.601h51.191v51.205h153.605v-153.605h-51.2v51.204h-51.196v-51.204zM682.667 733.867h-51.2v51.2h51.2v-51.2zM785.067 733.867h-51.2v51.2h51.2v-51.2zM443.732 597.337v153.203h-153.602v-153.203h153.602zM392.533 648.533h-51.2v51.2h51.2v-51.2zM494.933 221.867h-256v256h256v-256zM785.067 221.867h-256v256h256v-256zM443.732 273.062v153.599h-153.602v-153.599h153.602zM733.864 273.062v153.599h-153.594v-153.599h153.594zM392.533 324.267h-51.2v51.2h51.2v-51.2zM682.667 324.267h-51.2v51.2h51.2v-51.2z"
+          ],
+          "attrs": [
+            {}
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "Combined Shape"
+          ]
+        },
+        {
+          "id": 0,
+          "paths": [
+            "M438.857 612.571l164.571-100.571-164.571-100.571z",
+            "M502.857 9.143c-277.678 0-502.857 225.179-502.857 502.857s225.179 502.857 502.857 502.857c277.678 0 502.857-225.179 502.857-502.857s-225.179-502.857-502.857-502.857zM817.069 512.514c0 0 0 101.982-12.939 151.158-7.251 26.917-28.474 48.14-55.391 55.384-49.176 12.944-245.881 12.944-245.881 12.944s-196.191 0-245.881-13.458c-26.917-7.243-48.14-28.474-55.391-55.391-12.944-48.654-12.944-151.15-12.944-151.15s0-101.974 12.944-151.15c7.243-26.917 28.989-48.662 55.391-55.905 49.176-12.944 245.881-12.944 245.881-12.944s196.705 0 245.881 13.458c26.917 7.243 48.14 28.474 55.391 55.391 13.458 49.176 12.939 151.664 12.939 151.664v0z"
+          ],
+          "attrs": [
+            {},
+            {}
+          ],
+          "width": 1006,
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "1384012"
+          ]
+        }
+      ],
+      "invisible": false,
+      "colorThemes": []
+    },
     {
       "selection": [
         {
@@ -13,7 +103,7 @@
           "name": "other",
           "prevSize": 24,
           "code": 59873,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 44,
@@ -60,7 +150,7 @@
           "name": "WM",
           "prevSize": 32,
           "code": 59871,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 43,
@@ -103,7 +193,7 @@
           "name": "nodata",
           "prevSize": 32,
           "code": 59847,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 42,
@@ -148,7 +238,7 @@
           "name": "USDC",
           "prevSize": 32,
           "code": 59846,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 315,
@@ -156,7 +246,7 @@
           "name": "USDT",
           "prevSize": 32,
           "code": 59845,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 41,
@@ -213,7 +303,7 @@
           "name": "deposit1",
           "prevSize": 32,
           "code": 59840,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 309,
@@ -221,7 +311,7 @@
           "name": "FAQS",
           "prevSize": 32,
           "code": 59841,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 310,
@@ -229,7 +319,7 @@
           "name": "play",
           "prevSize": 32,
           "code": 59842,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 311,
@@ -237,7 +327,7 @@
           "name": "register",
           "prevSize": 32,
           "code": 59843,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 312,
@@ -245,7 +335,7 @@
           "name": "withdrawal1",
           "prevSize": 32,
           "code": 59844,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 40,
@@ -352,7 +442,7 @@
           "name": "MangoPay",
           "prevSize": 32,
           "code": 59838,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 39,
@@ -450,7 +540,7 @@
           "name": "icon32px_Double-arrow",
           "prevSize": 32,
           "code": 59836,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 38,
@@ -493,7 +583,7 @@
           "name": "affiliate",
           "prevSize": 32,
           "code": 59837,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 299,
@@ -501,7 +591,7 @@
           "name": "icon_1_affiliate",
           "prevSize": 32,
           "code": 59834,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 298,
@@ -509,7 +599,7 @@
           "name": "icon_1_cop",
           "prevSize": 32,
           "code": 59833,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 37,
@@ -602,7 +692,7 @@
           "name": "tiktok",
           "prevSize": 32,
           "code": 59872,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 1,
@@ -610,7 +700,7 @@
           "name": "ETH",
           "prevSize": 32,
           "code": 59813,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 1,
@@ -618,7 +708,7 @@
           "name": "BTC",
           "prevSize": 32,
           "code": 59814,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 1,
@@ -626,7 +716,7 @@
           "name": "line",
           "prevSize": 32,
           "code": 59795,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 36,
@@ -716,7 +806,7 @@
           "name": "EB",
           "prevSize": 32,
           "code": 59832,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 35,
@@ -774,7 +864,7 @@
             59802,
             59803
           ],
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 34,
@@ -822,7 +912,7 @@
           "name": "saba",
           "prevSize": 32,
           "code": 59830,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 33,
@@ -873,7 +963,7 @@
           "name": "cock",
           "prevSize": 32,
           "code": 59828,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 32,
@@ -915,7 +1005,7 @@
           "name": "balance",
           "prevSize": 32,
           "code": 59829,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 287,
@@ -923,7 +1013,7 @@
           "name": "icon_777",
           "prevSize": 32,
           "code": 59827,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 286,
@@ -931,7 +1021,7 @@
           "name": "icon_service",
           "prevSize": 32,
           "code": 59826,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 31,
@@ -1002,7 +1092,7 @@
           "name": "AE",
           "prevSize": 32,
           "code": 59825,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 30,
@@ -1062,7 +1152,7 @@
           "name": "icon32px_",
           "prevSize": 32,
           "code": 59768,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 252,
@@ -1070,7 +1160,7 @@
           "name": "icon32px_1",
           "prevSize": 32,
           "code": 59770,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 254,
@@ -1078,7 +1168,7 @@
           "name": "icon32px_ALL",
           "prevSize": 32,
           "code": 59772,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 256,
@@ -1086,7 +1176,7 @@
           "name": "icon32px_attachment",
           "prevSize": 32,
           "code": 59774,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 258,
@@ -1094,7 +1184,7 @@
           "name": "icon32px_award",
           "prevSize": 32,
           "code": 59776,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 260,
@@ -1102,7 +1192,7 @@
           "name": "icon32px_bank-account",
           "prevSize": 32,
           "code": 59778,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 262,
@@ -1110,7 +1200,7 @@
           "name": "icon32px_books",
           "prevSize": 32,
           "code": 59781,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 264,
@@ -1118,7 +1208,7 @@
           "name": "icon32px_check",
           "prevSize": 32,
           "code": 59784,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 266,
@@ -1126,7 +1216,7 @@
           "name": "icon32px_checked",
           "prevSize": 32,
           "code": 59788,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 268,
@@ -1134,7 +1224,7 @@
           "name": "icon32px_deposit",
           "prevSize": 32,
           "code": 59793,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 270,
@@ -1142,7 +1232,7 @@
           "name": "icon32px_Funds-transfer",
           "prevSize": 32,
           "code": 59799,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 272,
@@ -1150,7 +1240,7 @@
           "name": "icon32px_hide",
           "prevSize": 32,
           "code": 59802,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 274,
@@ -1158,7 +1248,7 @@
           "name": "icon32px_History",
           "prevSize": 32,
           "code": 59804,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 277,
@@ -1166,7 +1256,7 @@
           "name": "icon32px_ig",
           "prevSize": 32,
           "code": 59807,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 278,
@@ -1174,7 +1264,7 @@
           "name": "icon32px_keno-14",
           "prevSize": 32,
           "code": 59808,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 281,
@@ -1182,7 +1272,7 @@
           "name": "icon32px_LIVEcasino",
           "prevSize": 32,
           "code": 59811,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 282,
@@ -1190,7 +1280,7 @@
           "name": "icon32px_Main-Wallet",
           "prevSize": 32,
           "code": 59812,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 284,
@@ -1198,7 +1288,7 @@
           "name": "icon32px_microphone",
           "prevSize": 32,
           "code": 59824,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 251,
@@ -1206,7 +1296,7 @@
           "name": "icon32px_money",
           "prevSize": 32,
           "code": 59769,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 253,
@@ -1214,7 +1304,7 @@
           "name": "icon32px_notification",
           "prevSize": 32,
           "code": 59771,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 255,
@@ -1222,7 +1312,7 @@
           "name": "icon32px_openmail",
           "prevSize": 32,
           "code": 59773,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 257,
@@ -1230,7 +1320,7 @@
           "name": "icon32px_password",
           "prevSize": 32,
           "code": 59775,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 259,
@@ -1238,7 +1328,7 @@
           "name": "icon32px_pic",
           "prevSize": 32,
           "code": 59777,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 261,
@@ -1246,7 +1336,7 @@
           "name": "icon32px_Profile",
           "prevSize": 32,
           "code": 59779,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 263,
@@ -1254,7 +1344,7 @@
           "name": "icon32px_receipt",
           "prevSize": 32,
           "code": 59783,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 265,
@@ -1262,7 +1352,7 @@
           "name": "icon32px_see",
           "prevSize": 32,
           "code": 59785,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 267,
@@ -1270,7 +1360,7 @@
           "name": "icon32px_service-70",
           "prevSize": 32,
           "code": 59792,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 269,
@@ -1278,7 +1368,7 @@
           "name": "icon32px_spin",
           "prevSize": 32,
           "code": 59798,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 271,
@@ -1286,7 +1376,7 @@
           "name": "icon32px_Sportsbook-Wallet",
           "prevSize": 32,
           "code": 59800,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 273,
@@ -1294,7 +1384,7 @@
           "name": "icon32px_time",
           "prevSize": 32,
           "code": 59803,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 275,
@@ -1302,7 +1392,7 @@
           "name": "icon32px_timer",
           "prevSize": 32,
           "code": 59805,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 276,
@@ -1310,7 +1400,7 @@
           "name": "icon32px_top",
           "prevSize": 32,
           "code": 59806,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 279,
@@ -1318,7 +1408,7 @@
           "name": "icon32px_uplock",
           "prevSize": 32,
           "code": 59809,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 280,
@@ -1326,7 +1416,7 @@
           "name": "icon32px_wallet",
           "prevSize": 32,
           "code": 59810,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 283,
@@ -1334,7 +1424,7 @@
           "name": "icon32px_Withdraw",
           "prevSize": 32,
           "code": 59815,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 29,
@@ -2025,7 +2115,7 @@
           "name": "cloud_upload, backup",
           "prevSize": 24,
           "code": 59823,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 1,
@@ -2033,7 +2123,7 @@
           "name": "last_page",
           "prevSize": 24,
           "code": 59821,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 2,
@@ -2041,7 +2131,7 @@
           "name": "first_page",
           "prevSize": 24,
           "code": 59822,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 1,
@@ -2049,7 +2139,7 @@
           "name": "arrow_right",
           "prevSize": 24,
           "code": 59816,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 2,
@@ -2057,7 +2147,7 @@
           "name": "arrow_left",
           "prevSize": 24,
           "code": 59817,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 3,
@@ -2065,7 +2155,7 @@
           "name": "arrow_drop_up",
           "prevSize": 24,
           "code": 59818,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 4,
@@ -2073,7 +2163,7 @@
           "name": "arrow_drop_down",
           "prevSize": 24,
           "code": 59819,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 301,
@@ -2081,7 +2171,7 @@
           "name": "broken_image",
           "prevSize": 24,
           "code": 59835,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 1,
@@ -2089,7 +2179,7 @@
           "name": "keyboard_arrow_up",
           "prevSize": 24,
           "code": 59739,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 2,
@@ -2097,7 +2187,7 @@
           "name": "keyboard_arrow_right1",
           "prevSize": 24,
           "code": 59740,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 3,
@@ -2105,7 +2195,7 @@
           "name": "keyboard_arrow_left",
           "prevSize": 24,
           "code": 59741,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 4,
@@ -2113,7 +2203,7 @@
           "name": "keyboard_arrow_down",
           "prevSize": 24,
           "code": 59742,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 1,
@@ -2121,7 +2211,7 @@
           "name": "error_outline",
           "prevSize": 24,
           "code": 59724,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 2,
@@ -2129,7 +2219,7 @@
           "name": "error",
           "prevSize": 24,
           "code": 59730,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 1,
@@ -2137,7 +2227,7 @@
           "name": "keyboard_arrow_right",
           "prevSize": 24,
           "code": 59732,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 1,
@@ -2145,7 +2235,7 @@
           "name": "cake",
           "prevSize": 24,
           "code": 59737,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 28,
@@ -2417,7 +2507,7 @@
           "name": "icon32px_worker",
           "prevSize": 32,
           "code": 59767,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 27,
@@ -2467,7 +2557,7 @@
           "name": "close",
           "prevSize": 20,
           "code": 59786,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 1,
@@ -2475,7 +2565,7 @@
           "name": "checkmark",
           "prevSize": 20,
           "code": 59787,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 1,
@@ -2483,7 +2573,7 @@
           "name": "information-solid",
           "prevSize": 20,
           "code": 59729,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 26,
@@ -2559,7 +2649,7 @@
           "name": "alarm, bell",
           "prevSize": 32,
           "code": 59728,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 25,
@@ -2606,7 +2696,7 @@
           "name": "cake1",
           "prevSize": 20,
           "code": 59738,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 1,
@@ -2614,7 +2704,7 @@
           "name": "minus",
           "prevSize": 20,
           "code": 59726,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 2,
@@ -2622,7 +2712,7 @@
           "name": "plus",
           "prevSize": 20,
           "code": 59727,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 24,
@@ -2698,7 +2788,7 @@
           "name": "Unionpay",
           "prevSize": 32,
           "code": 59757,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 23,
@@ -2753,7 +2843,7 @@
           "name": "Alipay",
           "prevSize": 32,
           "code": 59753,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 152,
@@ -2761,7 +2851,7 @@
           "name": "JDpay",
           "prevSize": 32,
           "code": 59754,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 153,
@@ -2769,7 +2859,7 @@
           "name": "ThaiQR",
           "prevSize": 32,
           "code": 59755,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 154,
@@ -2777,7 +2867,7 @@
           "name": "WeChatPay",
           "prevSize": 32,
           "code": 59756,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 22,
@@ -2872,7 +2962,7 @@
           "name": "virtual-sports",
           "prevSize": 32,
           "code": 59747,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 21,
@@ -2917,7 +3007,7 @@
           "name": "statement1",
           "prevSize": 32,
           "code": 59748,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 20,
@@ -2958,7 +3048,7 @@
           "name": "home1",
           "prevSize": 28,
           "code": 59734,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 1,
@@ -2966,7 +3056,7 @@
           "name": "QQpay",
           "prevSize": 28,
           "code": 59716,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 145,
@@ -2974,7 +3064,7 @@
           "name": "gift",
           "prevSize": 28,
           "code": 59749,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 19,
@@ -3052,7 +3142,7 @@
           "name": "like, thumbs-up, approve",
           "prevSize": 32,
           "code": 59750,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 18,
@@ -3100,7 +3190,7 @@
           "name": "chat, bubbles, talk, message, conversation",
           "prevSize": 32,
           "code": 59751,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 17,
@@ -3151,7 +3241,7 @@
           "name": "calculator1",
           "prevSize": 24,
           "code": 59735,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 1,
@@ -3159,7 +3249,7 @@
           "name": "message-typing",
           "prevSize": 24,
           "code": 59699,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 16,
@@ -3246,7 +3336,7 @@
           "name": "GPI",
           "prevSize": 32,
           "code": 59764,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 160,
@@ -3254,7 +3344,7 @@
           "name": "JOKER",
           "prevSize": 32,
           "code": 59762,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 159,
@@ -3262,7 +3352,7 @@
           "name": "OW",
           "prevSize": 32,
           "code": 59761,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 158,
@@ -3270,7 +3360,7 @@
           "name": "PG",
           "prevSize": 32,
           "code": 59760,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 157,
@@ -3278,7 +3368,7 @@
           "name": "SG",
           "prevSize": 32,
           "code": 59759,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 156,
@@ -3286,7 +3376,7 @@
           "name": "YGG",
           "prevSize": 32,
           "code": 59758,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 134,
@@ -3294,7 +3384,7 @@
           "name": "statement",
           "prevSize": 32,
           "code": 59746,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 123,
@@ -3302,7 +3392,7 @@
           "name": "kelo",
           "prevSize": 32,
           "code": 59745,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 122,
@@ -3310,7 +3400,7 @@
           "name": "lottery",
           "prevSize": 32,
           "code": 59744,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 108,
@@ -3318,7 +3408,7 @@
           "name": "AB",
           "prevSize": 32,
           "code": 59720,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 109,
@@ -3326,7 +3416,7 @@
           "name": "AG",
           "prevSize": 32,
           "code": 59721,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 110,
@@ -3334,7 +3424,7 @@
           "name": "DG",
           "prevSize": 32,
           "code": 59722,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 111,
@@ -3342,7 +3432,7 @@
           "name": "PP",
           "prevSize": 32,
           "code": 59723,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 115,
@@ -3350,7 +3440,7 @@
           "name": "SA",
           "prevSize": 32,
           "code": 59743,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 15,
@@ -3983,7 +4073,7 @@
           "name": "hockey",
           "prevSize": 32,
           "code": 59733,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 106,
@@ -3991,7 +4081,7 @@
           "name": "nova-casino",
           "prevSize": 32,
           "code": 59719,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 105,
@@ -3999,7 +4089,7 @@
           "name": "ow-casino",
           "prevSize": 32,
           "code": 59718,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 14,
@@ -4109,7 +4199,7 @@
           "name": "CirclePay",
           "prevSize": 32,
           "code": 59710,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 91,
@@ -4117,7 +4207,7 @@
           "name": "Eeziepay",
           "prevSize": 32,
           "code": 59712,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 92,
@@ -4125,7 +4215,7 @@
           "name": "Help2Pay",
           "prevSize": 32,
           "code": 59713,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 93,
@@ -4133,7 +4223,7 @@
           "name": "OneClickPay",
           "prevSize": 32,
           "code": 59715,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 94,
@@ -4141,7 +4231,7 @@
           "name": "VN",
           "prevSize": 32,
           "code": 59717,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 13,
@@ -4311,7 +4401,7 @@
           "name": "paytrust88",
           "prevSize": 32,
           "code": 59752,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 12,
@@ -4367,7 +4457,7 @@
           "name": "MOMO",
           "prevSize": 32,
           "code": 59706,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 88,
@@ -4375,7 +4465,7 @@
           "name": "VIETTELPAY",
           "prevSize": 32,
           "code": 59708,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 89,
@@ -4383,7 +4473,7 @@
           "name": "ZALO",
           "prevSize": 32,
           "code": 59709,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 11,
@@ -4505,7 +4595,7 @@
           "name": "mail-envelope-open",
           "prevSize": 32,
           "code": 59801,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 1,
@@ -4513,7 +4603,7 @@
           "name": "moon",
           "prevSize": 32,
           "code": 59677,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 10,
@@ -4574,7 +4664,7 @@
           "name": "member",
           "prevSize": 32,
           "code": 59696,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 36,
@@ -4582,7 +4672,7 @@
           "name": "esport",
           "prevSize": 32,
           "code": 59695,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 35,
@@ -4590,7 +4680,7 @@
           "name": "F1",
           "prevSize": 32,
           "code": 59694,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 34,
@@ -4598,7 +4688,7 @@
           "name": "football",
           "prevSize": 32,
           "code": 59693,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 33,
@@ -4606,7 +4696,7 @@
           "name": "badminton",
           "prevSize": 32,
           "code": 59692,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 32,
@@ -4614,7 +4704,7 @@
           "name": "baseball",
           "prevSize": 32,
           "code": 59690,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 31,
@@ -4622,7 +4712,7 @@
           "name": "basketball",
           "prevSize": 32,
           "code": 59688,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 30,
@@ -4630,7 +4720,7 @@
           "name": "soccer",
           "prevSize": 32,
           "code": 59687,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 29,
@@ -4638,7 +4728,7 @@
           "name": "tennis",
           "prevSize": 32,
           "code": 59685,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 22,
@@ -4646,7 +4736,7 @@
           "name": "balance1",
           "prevSize": 32,
           "code": 59678,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 5,
@@ -4654,7 +4744,7 @@
           "name": "casino",
           "prevSize": 32,
           "code": 59650,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 6,
@@ -4662,7 +4752,7 @@
           "name": "contact",
           "prevSize": 32,
           "code": 59651,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 7,
@@ -4670,7 +4760,7 @@
           "name": "deposit",
           "prevSize": 32,
           "code": 59653,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 8,
@@ -4678,7 +4768,7 @@
           "name": "email",
           "prevSize": 32,
           "code": 59655,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 9,
@@ -4686,7 +4776,7 @@
           "name": "game",
           "prevSize": 32,
           "code": 59657,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 10,
@@ -4694,7 +4784,7 @@
           "name": "keno",
           "prevSize": 32,
           "code": 59658,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 11,
@@ -4702,7 +4792,7 @@
           "name": "livecasino",
           "prevSize": 32,
           "code": 59659,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 12,
@@ -4710,7 +4800,7 @@
           "name": "marquee",
           "prevSize": 32,
           "code": 59660,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 14,
@@ -4718,7 +4808,7 @@
           "name": "promotion",
           "prevSize": 32,
           "code": 59663,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 15,
@@ -4726,7 +4816,7 @@
           "name": "sports",
           "prevSize": 32,
           "code": 59665,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 16,
@@ -4734,7 +4824,7 @@
           "name": "transfer",
           "prevSize": 32,
           "code": 59667,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 17,
@@ -4742,7 +4832,7 @@
           "name": "vip",
           "prevSize": 32,
           "code": 59669,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 18,
@@ -4750,7 +4840,7 @@
           "name": "e-sports",
           "prevSize": 32,
           "code": 59671,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 19,
@@ -4758,7 +4848,7 @@
           "name": "withdrawal",
           "prevSize": 32,
           "code": 59673,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 9,
@@ -5247,7 +5337,7 @@
           "id": 0,
           "prevSize": 32,
           "code": 59697,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "home2, house2",
@@ -5274,7 +5364,7 @@
           "id": 4,
           "prevSize": 32,
           "code": 59702,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "pencil, write",
@@ -5283,7 +5373,7 @@
           "id": 5,
           "prevSize": 32,
           "code": 59700,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "pencil2, write2",
@@ -5346,7 +5436,7 @@
           "id": 15,
           "prevSize": 32,
           "code": 59698,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "headphones, headset",
@@ -5421,7 +5511,7 @@
           "id": 27,
           "prevSize": 32,
           "code": 59703,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "podcast, broadcast",
@@ -5454,7 +5544,7 @@
           "id": 32,
           "prevSize": 32,
           "code": 59765,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "library2, bank",
@@ -5463,7 +5553,7 @@
           "id": 33,
           "prevSize": 32,
           "code": 59701,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "file-text, file",
@@ -5490,7 +5580,7 @@
           "id": 37,
           "prevSize": 32,
           "code": 59704,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "file-text2, file4",
@@ -5583,7 +5673,7 @@
           "id": 52,
           "prevSize": 32,
           "code": 59705,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "price-tag",
@@ -5628,7 +5718,7 @@
           "id": 59,
           "prevSize": 32,
           "code": 59707,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "coin-euro, money2",
@@ -5655,7 +5745,7 @@
           "id": 63,
           "prevSize": 32,
           "code": 59711,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "calculator, compute",
@@ -5664,7 +5754,7 @@
           "id": 64,
           "prevSize": 32,
           "code": 59766,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "lifebuoy, support",
@@ -5679,7 +5769,7 @@
           "id": 66,
           "prevSize": 32,
           "code": 59714,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "phone-hang-up, telephone2",
@@ -5742,7 +5832,7 @@
           "id": 76,
           "prevSize": 32,
           "code": 59839,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "history, time",
@@ -5751,7 +5841,7 @@
           "id": 77,
           "prevSize": 32,
           "code": 59725,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "clock, time2",
@@ -5790,7 +5880,7 @@
           "id": 83,
           "prevSize": 32,
           "code": 59731,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "printer, print",
@@ -5823,7 +5913,7 @@
           "id": 88,
           "prevSize": 32,
           "code": 59736,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "mobile2, cell-phone2",
@@ -5988,7 +6078,7 @@
           "id": 115,
           "prevSize": 32,
           "code": 59763,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "user-minus, user3",
@@ -6093,7 +6183,7 @@
           "id": 132,
           "prevSize": 32,
           "code": 59780,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "binoculars, lookup",
@@ -6108,7 +6198,7 @@
           "id": 134,
           "prevSize": 32,
           "code": 59782,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "zoom-in, magnifier2",
@@ -6153,7 +6243,7 @@
           "id": 141,
           "prevSize": 32,
           "code": 59789,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "key2, password2",
@@ -6162,7 +6252,7 @@
           "id": 142,
           "prevSize": 32,
           "code": 59790,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "lock, secure",
@@ -6171,7 +6261,7 @@
           "id": 143,
           "prevSize": 32,
           "code": 59791,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "unlocked, lock-open",
@@ -6192,7 +6282,7 @@
           "id": 146,
           "prevSize": 32,
           "code": 59794,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "equalizer2, sliders2",
@@ -6207,7 +6297,7 @@
           "id": 148,
           "prevSize": 32,
           "code": 59796,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "cogs, gears",
@@ -6216,7 +6306,7 @@
           "id": 149,
           "prevSize": 32,
           "code": 59797,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "hammer, tool2",
@@ -6357,7 +6447,7 @@
           "id": 172,
           "prevSize": 32,
           "code": 59820,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "bin2, trashcan2",
@@ -6534,7 +6624,7 @@
           "id": 201,
           "prevSize": 32,
           "code": 59849,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "earth, globe2",
@@ -6567,7 +6657,7 @@
           "id": 206,
           "prevSize": 32,
           "code": 59854,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "eye-plus, views2",
@@ -6588,7 +6678,7 @@
           "id": 209,
           "prevSize": 32,
           "code": 59857,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "bookmark, ribbon",
@@ -6609,7 +6699,7 @@
           "id": 212,
           "prevSize": 32,
           "code": 59860,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "contrast",
@@ -6618,7 +6708,7 @@
           "id": 213,
           "prevSize": 32,
           "code": 59861,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "brightness-contrast",
@@ -6633,7 +6723,7 @@
           "id": 215,
           "prevSize": 32,
           "code": 59863,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "star-half, rate2",
@@ -6648,7 +6738,7 @@
           "id": 217,
           "prevSize": 32,
           "code": 59865,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "heart, like",
@@ -6927,7 +7017,7 @@
           "id": 263,
           "prevSize": 32,
           "code": 59911,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "notification, warning2",
@@ -6948,7 +7038,7 @@
           "id": 266,
           "prevSize": 32,
           "code": 59914,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "minus, subtract",
@@ -6969,7 +7059,7 @@
           "id": 269,
           "prevSize": 32,
           "code": 59917,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "blocked, forbidden",
@@ -6984,7 +7074,7 @@
           "id": 271,
           "prevSize": 32,
           "code": 59919,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "checkmark, tick",
@@ -6993,7 +7083,7 @@
           "id": 272,
           "prevSize": 32,
           "code": 59920,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "checkmark2, tick2",
@@ -7020,7 +7110,7 @@
           "id": 276,
           "prevSize": 32,
           "code": 59924,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "play2, player",
@@ -7173,7 +7263,7 @@
           "id": 301,
           "prevSize": 32,
           "code": 59949,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "loop2, repeat2",
@@ -7248,7 +7338,7 @@
           "id": 313,
           "prevSize": 32,
           "code": 59961,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "arrow-up2, up2",
@@ -7257,7 +7347,7 @@
           "id": 314,
           "prevSize": 32,
           "code": 59962,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "arrow-up-right2, up-right2",
@@ -7266,7 +7356,7 @@
           "id": 315,
           "prevSize": 32,
           "code": 59963,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "arrow-right2, right4",
@@ -7275,7 +7365,7 @@
           "id": 316,
           "prevSize": 32,
           "code": 59964,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "arrow-down-right2, down-right2",
@@ -7284,7 +7374,7 @@
           "id": 317,
           "prevSize": 32,
           "code": 59965,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "arrow-down2, down2",
@@ -7293,7 +7383,7 @@
           "id": 318,
           "prevSize": 32,
           "code": 59966,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "arrow-down-left2, down-left2",
@@ -7302,7 +7392,7 @@
           "id": 319,
           "prevSize": 32,
           "code": 59967,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "arrow-left2, left4",
@@ -7311,7 +7401,7 @@
           "id": 320,
           "prevSize": 32,
           "code": 59968,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "circle-up, up3",
@@ -7326,7 +7416,7 @@
           "id": 322,
           "prevSize": 32,
           "code": 59970,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "circle-down, down3",
@@ -7425,7 +7515,7 @@
           "id": 338,
           "prevSize": 32,
           "code": 59986,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "checkbox-unchecked, checkbox2",
@@ -7434,7 +7524,7 @@
           "id": 339,
           "prevSize": 32,
           "code": 59987,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "radio-checked, radio-button",
@@ -7455,7 +7545,7 @@
           "id": 342,
           "prevSize": 32,
           "code": 59990,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "crop, resize",
@@ -7698,7 +7788,7 @@
           "id": 382,
           "prevSize": 32,
           "code": 60030,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "embed, code",
@@ -7809,7 +7899,7 @@
           "id": 400,
           "prevSize": 32,
           "code": 60048,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "facebook2, brand11",
@@ -7818,7 +7908,7 @@
           "id": 401,
           "prevSize": 32,
           "code": 60049,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "instagram, brand12",
@@ -7827,7 +7917,7 @@
           "id": 402,
           "prevSize": 32,
           "code": 60050,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "whatsapp",
@@ -7836,7 +7926,7 @@
           "id": 403,
           "prevSize": 32,
           "code": 60051,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "spotify",
@@ -7851,7 +7941,7 @@
           "id": 405,
           "prevSize": 32,
           "code": 60053,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "twitter, brand16",
@@ -7860,7 +7950,7 @@
           "id": 406,
           "prevSize": 32,
           "code": 60054,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "vine",
@@ -8373,7 +8463,7 @@
           "id": 490,
           "prevSize": 32,
           "code": 60138,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 8,
@@ -16856,7 +16946,7 @@
           "name": "bankIcon",
           "prevSize": 32,
           "code": 59684,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 29,
@@ -16864,7 +16954,7 @@
           "name": "updateIcon",
           "prevSize": 32,
           "code": 59686,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 32,
@@ -16872,7 +16962,7 @@
           "name": "wifiIcon",
           "prevSize": 32,
           "code": 59691,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 31,
@@ -16880,7 +16970,7 @@
           "name": "phoneIcon",
           "prevSize": 32,
           "code": 59689,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 7,
@@ -17015,20 +17105,20 @@
             59867
           ],
           "tempChar": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
           ]
         },
         {
@@ -17044,10 +17134,10 @@
             59870
           ],
           "tempChar": [
-            "",
-            "",
-            "",
-            ""
+            "",
+            "",
+            "",
+            ""
           ]
         }
       ],
@@ -17279,7 +17369,7 @@
           "name": "userIcon2",
           "prevSize": 32,
           "code": 59679,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 23,
@@ -17287,7 +17377,7 @@
           "name": "wallteIcon",
           "prevSize": 32,
           "code": 59680,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 24,
@@ -17295,7 +17385,7 @@
           "name": "mailIcon",
           "prevSize": 32,
           "code": 59681,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 5,
@@ -17373,7 +17463,7 @@
           "name": "contactIcon",
           "prevSize": 32,
           "code": 59672,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 19,
@@ -17381,7 +17471,7 @@
           "name": "userIcon",
           "prevSize": 32,
           "code": 59674,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 20,
@@ -17389,7 +17479,7 @@
           "name": "homeIcon",
           "prevSize": 32,
           "code": 59675,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 21,
@@ -17397,7 +17487,7 @@
           "name": "giftIcon",
           "prevSize": 32,
           "code": 59676,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 4,
@@ -17503,7 +17593,7 @@
           "name": "contactUS1",
           "prevSize": 32,
           "code": 59661,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 13,
@@ -17511,7 +17601,7 @@
           "name": "contactUS2",
           "prevSize": 32,
           "code": 59662,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 14,
@@ -17519,7 +17609,7 @@
           "name": "contactUS3",
           "prevSize": 32,
           "code": 59664,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 15,
@@ -17527,7 +17617,7 @@
           "name": "contactUS4",
           "prevSize": 32,
           "code": 59666,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 16,
@@ -17535,7 +17625,7 @@
           "name": "contactUS5",
           "prevSize": 32,
           "code": 59668,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 17,
@@ -17543,7 +17633,7 @@
           "name": "contactUS6",
           "prevSize": 32,
           "code": 59670,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 3,
@@ -17671,7 +17761,7 @@
           "name": "affiliatesBtnIcon",
           "prevSize": 32,
           "code": 59648,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 2,
@@ -17727,7 +17817,7 @@
           "name": "GUIDE1",
           "prevSize": 32,
           "code": 59649,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 8,
@@ -17735,7 +17825,7 @@
           "name": "GUIDE2",
           "prevSize": 32,
           "code": 59656,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 7,
@@ -17743,7 +17833,7 @@
           "name": "GUIDE3",
           "prevSize": 32,
           "code": 59654,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 6,
@@ -17751,7 +17841,7 @@
           "name": "GUIDE4",
           "prevSize": 32,
           "code": 59652,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 1,
@@ -19639,7 +19729,7 @@
           "id": 295,
           "prevSize": 32,
           "code": 59943,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "volume-low, volume3",
@@ -20350,7 +20440,7 @@
           "id": 413,
           "prevSize": 32,
           "code": 60061,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "youtube2, brand22",
@@ -29294,7 +29384,6 @@
       ]
     }
   ],
-  "uid": -1,
   "preferences": {
     "showGlyphs": true,
     "showCodes": true,
@@ -29318,8 +29407,11 @@
       "png": true,
       "useClassSelector": true,
       "color": 0,
-      "bgColor": 16777215
+      "bgColor": 16777215,
+      "name": "icomoon",
+      "classSelector": ".icon"
     },
     "historySize": 50
-  }
+  },
+  "uid": -1
 }

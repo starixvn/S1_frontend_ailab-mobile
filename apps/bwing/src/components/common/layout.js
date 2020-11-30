@@ -10,7 +10,8 @@ const defPageInfo = {
 	default: {
 		titleKey: "",
 		className: "",
-		hideLogo: false
+		hideLogo: false,
+		showMenuBar: true
 	},
 	member: {
 		titleKey: "lbl_MyAccount",
@@ -91,6 +92,11 @@ const defPageInfo = {
 		titleKey: "Who AM I",
 		className: "main",
 		hideLogo: true
+	},
+	other: {
+		titleKey: "lbl_Other",
+		className: "main",
+		hideLogo: true
 	}
 };
 
@@ -109,13 +115,7 @@ const GetPageInfo = locationPath => {
 
 		pageInfoKey = pageInfoKey?.length > 0 ? pageInfoKey[0] : null;
 		let pageInfo = defPageInfo[pageInfoKey] ?? null;
-		return pageInfoKey && pageInfo
-			? {
-					titleKey: pageInfo.titleKey,
-					className: pageInfo.className,
-					hideLogo: pageInfo.hideLogo
-			  }
-			: defPageInfo.default;
+		return pageInfoKey && pageInfo ? { ...pageInfo } : defPageInfo.default;
 	}
 };
 
@@ -137,6 +137,7 @@ const Layout = ({ children }) => {
 			<Header
 				title={i18n[pageInfo.titleKey] ?? pageInfo.titleKey}
 				hideLogo={pageInfo.hideLogo}
+				showMenuBar={pageInfo.showMenuBar === true}
 			/>
 			<main style={position} className={pageInfo.className ?? ""}>
 				{children}

@@ -6,8 +6,8 @@ const Checkbox = props => {
 			<input
 				type="checkbox"
 				id={props.id}
-				checked={props.Checked}
-				onChange={props.checkboxHandler}
+				checked={props.checked}
+				onChange={props.onChange}
 			/>
 			<label htmlFor={props.id}>
 				<div></div>

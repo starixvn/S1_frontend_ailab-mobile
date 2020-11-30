@@ -84,7 +84,9 @@ export default ({ i18n, accountName, custBankList, reload }) => {
 
 	let arr = custBankList?.map(item => {
 		return (
-			<div className="bankCard" key={`bankCard-${item.accountNo}`}>
+			<div
+				className="bankCard"
+				key={`bankCard-${item.SysId}-${item.accountNo}`}>
 				<img
 					alt="BankLogo"
 					src={`${config.imgUrl}/common/images/BankLogo/${item.image}`}

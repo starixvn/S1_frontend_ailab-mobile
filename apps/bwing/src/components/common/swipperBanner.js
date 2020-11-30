@@ -10,7 +10,6 @@ import {
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import path from "../../path";
 import { Link } from "@reach/router";
-import productList from "../../datas/productList";
 
 export const defBannerFolder = {
 	Sports: "Sports"
@@ -125,9 +124,20 @@ const Panel = ({
 			? b.imgURL
 			: `${config.imgUrl}/CMS/${config.siteName}/${_imgFolder}/${lang}/${b.img}`;
 
-		if (actionLink?.startsWith("promotion/promotionInfo?BonusCode=")) {
+		let promotionUrl = "";
+
+		if (actionLink?.startsWith("Promotion/Bonus?")) {
+			let promoUrlParam = actionLink.split("?")?.[1];
+			promotionUrl = `/${path.promotionInfo.root}?${promoUrlParam}`;
+		} else if (
+			actionLink?.startsWith("promotion/promotionInfo?BonusCode=")
+		) {
+			promotionUrl = actionLink;
+		}
+
+		if (promotionUrl) {
 			return (
-				<Link key={`${lang}-${b.img}-${b_idx}`} to={actionLink}>
+				<Link key={`${lang}-${b.img}-${b_idx}`} to={promotionUrl}>
 					<img src={imgSRC} className="banner" alt={b.img ?? ""} />
 				</Link>
 			);
@@ -143,8 +153,7 @@ const Panel = ({
 						b.outerLink === true,
 						b.urlWithLang,
 						userInfo.isLogin,
-						setNav,
-						b.matchid
+						setNav
 					)}
 					key={`${lang}-${b.img}-${b_idx}`}>
 					<img src={imgSRC} className="banner" alt={b.img ?? ""} />

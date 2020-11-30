@@ -1,10 +1,4 @@
-import React, {
-	useContext,
-	useState,
-	useEffect,
-	useRef,
-	useCallback
-} from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { Link } from "@reach/router";
 import {
 	userInfoContext,
@@ -25,13 +19,9 @@ import Menu from "./header.menu";
 import SubMenu from "./submenu";
 import { LOGOUT } from "../../service/auth";
 
-export default () => {
-	const { i18n } = useContext(i18nContext);
-	const { userInfo, setUserInfo } = useContext(userInfoContext);
-	const { walletInfo, setWalletInfo } = useContext(walletInfoContext);
+const useGetBalance = ({ isLogin }) => {
 	const { setPopBox } = useContext(popBoxContext);
-	const { setNav } = useContext(navContext);
-	const [processing, setProcessing] = useState(false);
+	const { walletInfo, setWalletInfo } = useContext(walletInfoContext);
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -39,10 +29,8 @@ export default () => {
 		return () => (isMountedRef.current = false);
 	});
 
-	const GetBalance = useCallback(() => {
-		if (!processing) {
-			setProcessing(true);
-
+	useEffect(() => {
+		if (isLogin) {
 			api_GetWalletInfo().then(
 				res => {
 					if (isMountedRef.current) {
@@ -69,7 +57,6 @@ export default () => {
 								content: res.data.message
 							});
 						}
-						setProcessing(false);
 					}
 				},
 				err => {
@@ -79,18 +66,20 @@ export default () => {
 							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
-						setProcessing(false);
 					}
 				}
 			);
 		}
-	}, []);
+	}, [isLogin, setPopBox, setWalletInfo]);
 
-	useEffect(() => {
-		if (userInfo.isLogin) {
-			GetBalance();
-		}
-	}, [userInfo.isLogin, GetBalance]);
+	return { walletInfo };
+};
+
+export default ({ hideLogo, title, showMenuBar }) => {
+	const { i18n } = useContext(i18nContext);
+	const { userInfo, setUserInfo } = useContext(userInfoContext);
+	const { setNav } = useContext(navContext);
+	const { walletInfo } = useGetBalance(userInfo);
 
 	const OnClickProduct = ({ tpId, gameId, langId, isLogin }) => {
 		return GET_ENTER_PAGE({
@@ -118,6 +107,18 @@ export default () => {
 		});
 	};
 
+	const menu = showMenuBar ? (
+		<Menu i18n={i18n} OnClickProduct={OnClickProduct} userInfo={userInfo} />
+	) : null;
+
+	const headerTitleBar = hideLogo ? (
+		<div className="title">{title}</div>
+	) : (
+		<Link to="/">
+			<img src={Logo} alt="logo" />
+		</Link>
+	);
+
 	return userInfo.isLogin === null ? null : (
 		<header id="header">
 			<div className="headerT">
@@ -130,9 +131,7 @@ export default () => {
 						<span></span>
 						<span></span>
 					</div>
-					<Link to="/">
-						<img src={Logo} alt="logo" />
-					</Link>
+					{headerTitleBar}
 					{userInfo.isLogin === true ? (
 						<button
 							className="icon icon-exit"
@@ -141,24 +140,19 @@ export default () => {
 						<BeforeLogin i18n={i18n} />
 					)}
 				</div>
-				{userInfo.isLogin === true ? (
-					<AfterLogin
-						i18n={i18n}
-						currencyId={userInfo.currencyId}
-						userName={userInfo.userName}
-						allBalance={
-							!walletInfo.allBalance
-								? 0
-								: number_format(walletInfo.allBalance, false)
-						}
-					/>
-				) : null}
+				<AfterLogin
+					isShow={userInfo.isLogin === true && !hideLogo}
+					i18n={i18n}
+					currencyId={userInfo.currencyId}
+					userName={userInfo.userName}
+					allBalance={
+						!walletInfo.allBalance
+							? 0
+							: number_format(walletInfo.allBalance, false)
+					}
+				/>
 			</div>
-			<Menu
-				i18n={i18n}
-				OnClickProduct={OnClickProduct}
-				userInfo={userInfo}
-			/>
+			{menu}
 			<SubMenu />
 		</header>
 	);
@@ -171,8 +165,8 @@ const BeforeLogin = ({ i18n }) => (
 	</div>
 );
 
-const AfterLogin = ({ i18n, currencyId, userName, allBalance }) => {
-	return (
+const AfterLogin = ({ i18n, currencyId, userName, allBalance, isShow }) =>
+	isShow ? (
 		<div className="headerTLogin">
 			<div className="login">
 				<Link to={`/${path.deposit.root}`} className="login-btn">
@@ -193,5 +187,4 @@ const AfterLogin = ({ i18n, currencyId, userName, allBalance }) => {
 				/>
 			</div>
 		</div>
-	);
-};
+	) : null;
