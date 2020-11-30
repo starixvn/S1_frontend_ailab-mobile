@@ -24,6 +24,8 @@ export const ClickLink = (
 			window.location.href = `/${path.promotion.root}`;
 		} else if (href === "Home/Register") {
 			return;
+		} else if (href === "918kiss") {
+			window.location.href = `/${path.kiss918.root}`;
 		} else {
 			window.open(
 				isOuterLink

@@ -9,7 +9,7 @@ import React, {
 import kiss from "../../styles/img/kiss.jpg";
 import { popBoxContext, userInfoContext, i18nContext } from "../common/context";
 import api from "../../service/api";
-import productList from "../../datas/productList";
+import { productList } from "../../datas/productList";
 import AppDownload from "./appDownload";
 
 const useGotoGame = ({ isLogin, langId, tpId }) => {
@@ -82,7 +82,7 @@ const Kiss918 = () => {
 	const { data } = useGotoGame({
 		isLogin: userInfo.isLogin,
 		langId: userInfo.langId,
-		tpId: productList.kiss918
+		tpId: productList.kiss918.tpId
 	});
 	const { InstallGuide } = GetImageContent(userInfo);
 

@@ -29,6 +29,13 @@ import fish_SG from "../styles/img/fish_SG.jpg";
 import fish_SGW from "../styles/img/fish_SGW.jpg";
 import Cockfighting from "../styles/img/cockfighting.jpg";
 
+export const productList = {
+	kiss918: {
+		tpId: 21,
+		gameId: 21
+	}
+};
+
 const gameList = ({ langId }) => [
 	{
 		category: "sports",

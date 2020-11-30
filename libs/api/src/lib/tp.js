@@ -24,7 +24,7 @@ export class tpAPI extends BaseAPI {
 		});
 
 	GotoGame = ({ GameId = null, TpId, LangId }) =>
-		tpRequest.post("/GotoGame", {
+		this.tpRequest.post("/GotoGame", {
 			GameId,
 			TpId,
 			LangId,
