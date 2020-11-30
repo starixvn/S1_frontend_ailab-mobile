@@ -81,23 +81,27 @@ const defPlatfrom = [
 	{
 		...defGameInfo.LIVEcasinoWM,
 		imgName: "wm"
+	},
+	{
+		...defGameInfo.Casino_918Kiss,
+		imgName: "kiss",
+		path: path.kiss918.root
 	}
-	// {
-	// 	imgName: "kiss"
-	// }
 ];
 
 export default ({ langId, isLogin }) => {
 	const { setNav } = useContext(navContext);
 	const [redirectPath, setRedirectPath] = useState(null);
 
-	const ClickItem = ({ path, urlParams, tpId, gameId }) => {
+	const ClickItem = ({ path, urlParams, tpId, gameId, needLogin }) => {
 		const loginCallback = () => {
 			setNav(defNavPanel.login);
 		};
 
 		if (path) {
-			setRedirectPath(`/${path}${urlParams}`);
+			return !isLogin && needLogin
+				? loginCallback()
+				: setRedirectPath(`/${path}${urlParams}`);
 		} else {
 			GET_ENTER_PAGE({
 				isLogin,
@@ -125,6 +129,7 @@ export default ({ langId, isLogin }) => {
 				key={key}
 				src={`${config.imgUrl}/common/images/logo/${p.imgName}.png`}
 				onClick={ClickItem.bind(this, { ...p, urlParams: _urlParams })}
+				alt={p.imgName}
 			/>
 		);
 	});
