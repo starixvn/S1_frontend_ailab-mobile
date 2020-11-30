@@ -12,17 +12,18 @@ export const number_format = (n, IsConvertRequired = false) => {
 		n /= 1000;
 	}
 
+	n += "";
+	let arr = n.split(".");
+	let re = /(\d{1,3})(?=(\d{3})+$)/g;
+
 	if (IsConvertRequired) {
-		n += "";
-		let arr = n.split(".");
-		let re = /(\d{1,3})(?=(\d{3})+$)/g;
 		return (
 			arr[0].replace(re, "$1,") +
 			(arr.length === 2 ? "." + arr[1] : "") +
 			(IsConvertRequired ? " ('000)" : "")
 		);
 	} else {
-		return n;
+		return arr[0].replace(re, "$1,");
 	}
 };
 
