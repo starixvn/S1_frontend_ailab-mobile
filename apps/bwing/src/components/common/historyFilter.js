@@ -118,7 +118,7 @@ const Panel = props => {
 						endDayState,
 						false
 					)}>
-					{i18n["lbl_Submit"]}
+					{i18n["lbl_history_submit"]}
 				</button>
 			</div>
 		</>

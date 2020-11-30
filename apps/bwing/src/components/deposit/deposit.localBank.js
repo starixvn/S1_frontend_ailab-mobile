@@ -295,7 +295,7 @@ export const Main = props => {
 										real_amount,
 										selBank.bank.id
 									)}>
-									{i18n["lbl_Submit"]}
+									{i18n["lbl_Confirm"]}
 								</button>
 							</div>
 						)
@@ -378,7 +378,7 @@ export const Main = props => {
 								<button
 									className="submit"
 									onClick={setAccountName}>
-									{i18n["lbl_Submit"]}
+									{i18n["lbl_Confirm"]}
 								</button>
 							</div>
 						)
@@ -452,7 +452,7 @@ export const Main = props => {
 					/>
 					<div className="btn-group">
 						<button className="submit" onClick={ClickSubmit}>
-							{i18n.lbl_Submit}
+							{i18n.lbl_deposit_submit}
 						</button>
 					</div>
 				</div>

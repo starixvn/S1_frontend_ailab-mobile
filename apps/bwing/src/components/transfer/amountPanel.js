@@ -37,7 +37,7 @@ export default ({
 				<div className="right">
 					<div className="btn-group">
 						<button className="blue" onClick={clickSubmit}>
-							{i18n["lbl_Submit"]}
+							{i18n["lbl_transfer_submit"]}
 						</button>
 					</div>
 				</div>

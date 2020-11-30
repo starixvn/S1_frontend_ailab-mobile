@@ -366,7 +366,7 @@ const Panel = () => {
 							{i18n["lbl_Cancel"]}
 						</button>
 						<button className="submit" onClick={setProfile}>
-							{i18n["lbl_Submit"]}
+							{i18n["lbl_Confirm"]}
 						</button>
 					</div>
 				)

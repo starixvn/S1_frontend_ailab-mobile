@@ -389,5 +389,11 @@
 	"lbl_Please_input_your_real_name_as_in_your_ID": "Please input your real name as in your ID. Your account name should be the same with your profile name.",
 	"lbl_FishingSG1": "Fishing God",
 	"lbl_FishingSG2": "Fishing War",
-	"lbl_Search":"Search"
+	"lbl_Search":"Search",
+	"lbl_history_submit": "Submit",
+	"lbl_transfer_submit": "Submit",
+	"lbl_add_bank_submit": "Submit",
+	"lbl_deposit_submit": "Submit",
+	"lbl_change_password_submit": "Submit",
+	"lbl_withdraw_submit": "Submit"
 }

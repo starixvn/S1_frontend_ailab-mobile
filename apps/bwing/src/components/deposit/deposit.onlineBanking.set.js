@@ -265,7 +265,7 @@ const SetPayment = props => {
 						<button
 							className="submit"
 							onClick={RedirectToNext.bind(this, real_amount)}>
-							{i18n["lbl_Submit"]}
+							{i18n["lbl_Confirm"]}
 						</button>
 					</div>
 				)

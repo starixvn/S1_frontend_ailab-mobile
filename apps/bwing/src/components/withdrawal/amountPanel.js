@@ -73,7 +73,7 @@ export default ({
 					/>
 					<div className="btn-group">
 						<button className="submit" onClick={ClickSubmit}>
-							{i18n["lbl_Submit"]}
+							{i18n["lbl_withdraw_submit"]}
 						</button>
 					</div>
 				</div>
