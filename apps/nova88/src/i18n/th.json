@@ -337,7 +337,10 @@
 	"lbl_Total":"จำนวนเงินทั้งหมด",
 	"lbl_CockFighting":"ไก่ชน",
 	"lbl_TpWallet_21": "918 Wallet",
-	"lbl_Transfer_Wallet_Hint": "Please select the wallet to transfer"
+	"lbl_Transfer_Wallet_Hint": "Please select the wallet to transfer",
 
+	"lbl_Download":"Download",
+	"lbl_918KissMobileApp":"918KISS MOBILE APP",
+	"lbl_IOSInstallGuide":"iOS 9+ Installation Guide"
 	
 }

@@ -54,6 +54,22 @@
   font-size: 4vw !important;
 }
 
+.icon-nodata2:before {
+  content: "\e9b4";
+}
+
+.icon-new:before {
+  content: "\e9b2";
+}
+
+.icon-WM:before {
+  content: "\e9b1";
+}
+
+.icon-MW:before {
+  content: "\e9b0";
+}
+
 .icon-nodata:before {
   content: "\e9a7";
 }
@@ -104,6 +120,10 @@
 
 .icon-icon_1_cop:before {
   content: "\e996";
+}
+
+.icon-tiktok:before {
+  content: "\e9b3";
 }
 
 .icon-ETH:before {
@@ -230,7 +250,7 @@
   content: "\e972";
 }
 
-.icon-icon32px_openmail:before {
+.icon-mail-envelope-open:before {
   content: "\e974";
 }
 
@@ -520,6 +540,38 @@
 
 .icon-withdrawal:before {
   content: "\e910";
+}
+
+.icon-cloud_upload:before {
+  content: "\e9af";
+}
+
+.icon-backup:before {
+  content: "\e9af";
+}
+
+.icon-last_page:before {
+  content: "\e9ad";
+}
+
+.icon-first_page:before {
+  content: "\e9ae";
+}
+
+.icon-arrow_right:before {
+  content: "\e9a8";
+}
+
+.icon-arrow_left:before {
+  content: "\e9a9";
+}
+
+.icon-arrow_drop_up:before {
+  content: "\e9aa";
+}
+
+.icon-arrow_drop_down:before {
+  content: "\e9ab";
 }
 
 .icon-broken_image:before {
@@ -838,6 +890,14 @@
   content: "\ea96";
 }
 
+.icon-appleinc:before {
+  content: "\eabe";
+}
+
+.icon-android:before {
+  content: "\eac0";
+}
+
 .icon-IcoMoon:before {
   content: "\eaea";
 }
@@ -886,7 +946,7 @@
   content: "\e935";
 }
 
-.icon-mail-envelope-open:before {
+.icon-icon32px_openmail:before {
   content: "\e999";
 }
 

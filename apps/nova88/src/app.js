@@ -68,6 +68,7 @@ import KycWaiting from "./components/withdrawal/kycWaiting";
 
 import Whoami from "./pages/whoami";
 import PromotionInfo from "./pages/promotionInfo";
+import Kiss918 from "./pages/918kiss";
 
 const Index = () => {
 	let history = createHistory(window);
@@ -159,6 +160,7 @@ const Index = () => {
 							<Other path={path.setting.sub.other.root} />
 						</Setting>
 						<Whoami path={path.whoami.root} />
+						<Kiss918 path={path.kiss918.root} />
 					</Router>
 				</Layout>
 			</LocationProvider>
