@@ -253,6 +253,19 @@ const Panel = () => {
 						}
 					}
 				);
+		} else if (
+			selectedIdx.transferFrom === null ||
+			selectedIdx.transferTo === null
+		) {
+			let direction =
+				selectedIdx.transferFrom === null ? "lbl_From" : "lbl_To";
+			setPopBox({
+				isOpen: true,
+				title: i18n["lbl_ImportantNote"],
+				content: `${i18n["lbl_Transfer_Wallet_Hint"]} ${i18n[
+					direction
+				].toLowerCase()}`
+			});
 		}
 	};
 
