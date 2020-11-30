@@ -335,6 +335,10 @@
 	"lbl_PleaseEnterClaimAmount":"Harap masukkan jumlah yang Anda inginkan untuk mengklaim promosi",
 	"lbl_ViewAll":"Lihat semua",
 	"lbl_Total":"Jumlah total",
-	"lbl_CockFighting":"Sabung Ayam"
+	"lbl_CockFighting":"Sabung Ayam",
+
+	"lbl_Download":"Download",
+	"lbl_918KissMobileApp":"918KISS MOBILE APP",
+	"lbl_IOSInstallGuide":"iOS 9+ Installation Guide"
 
 }

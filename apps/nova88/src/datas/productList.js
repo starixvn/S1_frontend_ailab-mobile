@@ -18,6 +18,7 @@ import casino_PG from "../styles/img/casino_PG.jpg";
 import casino_JOKER from "../styles/img/casino_JOKER.jpg";
 import casino_YGG from "../styles/img/casino_YGG.jpg";
 import casino_GPI from "../styles/img/casino_GPI.jpg";
+import casino_KISS from "../styles/img/casino_KISS.jpg";
 import id4d from "../styles/img/id4d.jpg";
 import Keno from "../styles/img/keno.jpg";
 import Lottery from "../styles/img/lottery.jpg";
@@ -28,6 +29,14 @@ import fish_GG from "../styles/img/fish_GG.jpg";
 import fish_SG from "../styles/img/fish_SG.jpg";
 import fish_SGW from "../styles/img/fish_SGW.jpg";
 import Cockfighting from "../styles/img/cockfighting.jpg";
+import path from "../path";
+
+export const productList = {
+	kiss918: {
+		tpId: 21,
+		gameId: 21
+	}
+};
 
 const gameList = ({ langId }) => [
 	{
@@ -132,24 +141,9 @@ const gameList = ({ langId }) => [
 				img: casino_JOKER
 			},
 			{
-				gameId: 208,
-				tpId: 1,
-				img: casino_ow
-			},
-			{
-				tpId: 5,
-				parameter: { tpId: 5 },
-				img: casino_PP
-			},
-			{
-				tpId: 10,
-				parameter: { tpId: 10 },
-				img: casino_SG
-			},
-			{
-				tpId: 14,
-				parameter: { tpId: 14 },
-				img: casino_PG
+				tpId: 6,
+				parameter: { tpId: 6 },
+				img: casino_GPI
 			},
 			{
 				tpId: 8,
@@ -157,9 +151,30 @@ const gameList = ({ langId }) => [
 				img: casino_YGG
 			},
 			{
-				tpId: 6,
-				parameter: { tpId: 6 },
-				img: casino_GPI
+				tpId: 10,
+				parameter: { tpId: 10 },
+				img: casino_SG
+			},
+			{
+				tpId: 5,
+				parameter: { tpId: 5 },
+				img: casino_PP
+			},
+			{
+				tpId: 14,
+				parameter: { tpId: 14 },
+				img: casino_PG
+			},
+			{
+				tpId: 21,
+				img: casino_KISS,
+				path: path.kiss918.root,
+				needLogin: true
+			},
+			{
+				gameId: 208,
+				tpId: 1,
+				img: casino_ow
 			}
 		]
 	},
