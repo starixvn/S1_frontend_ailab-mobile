@@ -8,7 +8,7 @@ export default ({ i18n, langId }) => {
 		<>
 			<Affiliates i18n={i18n} langId={langId} />
 			<UserGuide i18n={i18n} langId={langId} />
-			<ContactUs i18n={i18n} />
+			<ContactUs i18n={i18n} langId={langId} />
 			<Platforms i18n={i18n} />
 		</>
 	);
@@ -71,7 +71,7 @@ const UserGuide = ({ i18n, langId }) => {
 	);
 };
 
-const ContactUs = ({ i18n }) => {
+const ContactUs = ({ i18n, langId }) => {
 	return (
 		<div className="contact">
 			<p className="contact__title lightBTitle">
@@ -79,19 +79,31 @@ const ContactUs = ({ i18n }) => {
 			</p>
 			<div className="contact-box">
 				<a
-					href="https://www.facebook.com/Bwingtttt/"
+					href={siteInfo(langId).skypeId}
 					target="_blank"
-					className="icon icon-facebook"></a>
+					className="icon icon-contactUS6"></a>
 				<a
-					href="https://www.youtube.com/channel/UCDvFS9eTrOEYuVjb3BNQ3bg/featured"
+					href={siteInfo(langId).telegramId}
+					target="_blank"
+					className="icon icon-contactUS3"></a>
+				<a
+					href={siteInfo(langId).zaloId}
+					target="_blank"
+					className="icon icon-zalo"></a>
+				<a
+					href={siteInfo(langId).facebookId}
+					target="_blank"
+					className="icon icon-contactUS1"></a>
+				<a
+					href={siteInfo(langId).twitterId}
+					target="_blank"
+					className="icon icon-contactUS2"></a>
+				<a
+					href={siteInfo(langId).youtubeId}
 					target="_blank"
 					className="icon icon-youtube"></a>
 				<a
-					href="https://twitter.com/bwingofficial"
-					target="_blank"
-					className="icon icon-twitter"></a>
-				<a
-					href="https://www.tiktok.com/@bwingpro"
+					href={siteInfo(langId).tiktokId}
 					target="_blank"
 					className="icon icon-tiktok"></a>
 			</div>

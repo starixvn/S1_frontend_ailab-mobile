@@ -55,9 +55,9 @@ class Panel extends React.Component {
 			document.body.clientHeight;
 
 		let window_scrollTop =
+			document.body.scrollTop ||
 			window.pageYOffset ||
-			document.documentElement.scrollTop ||
-			document.body.scrollTop;
+			document.documentElement.scrollTop;
 
 		let body = document.body;
 		let html = document.documentElement;

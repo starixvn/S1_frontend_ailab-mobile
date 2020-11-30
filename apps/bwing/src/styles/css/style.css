@@ -465,7 +465,7 @@ header .headerButton {
 header .headerButton > button {
   border-radius: 3px;
   color: #000;
-  width: 75px;
+  width: 90px;
   height: 30px;
   background: #58cdff;
   margin-left: 5px;
@@ -510,7 +510,7 @@ header .headerButton .icon-chat .amount {
 main {
   width: 100%;
   position: initial;
-  margin-bottom: 70px;
+  padding-bottom: 100px;
 }
 
 main.login {
@@ -1274,6 +1274,7 @@ footer > a.open {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding-bottom: 100px;
 }
 
 .balance {
@@ -1448,7 +1449,6 @@ footer > a.open {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   position: relative;
-  margin-bottom: 2vw;
 }
 
 .inputBoxText input {
@@ -1460,6 +1460,14 @@ footer > a.open {
   border: 0;
   padding: 2vw 0;
   outline: none;
+}
+
+.inputBoxText input ::-webkit-datetime-edit {
+  overflow: visible;
+}
+
+.inputBoxText input ::-webkit-calendar-picker-indicator {
+  background-image: -webkit-linear-gradient(top, transparent, transparent);
 }
 
 .inputBoxText .iconModule span {
@@ -1682,7 +1690,7 @@ footer > a.open {
 .btn-group button.gray, .btn-group button.cancel,
 .btn-group a.gray,
 .btn-group a.cancel {
-  background: #AFAFAF;
+  background: #afafaf;
   color: #070e22;
 }
 
@@ -2119,6 +2127,9 @@ footer > a.open {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
   padding: 5px;
   margin-top: 2vw;
 }
@@ -2189,10 +2200,20 @@ footer > a.open {
 }
 
 .depositType div h1 {
-  font-size: 4vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 3.5vw;
   color: #58cdff;
   font-weight: bold;
   text-align: center;
+  height: 16vw;
 }
 
 .depositType div span {
@@ -2201,17 +2222,22 @@ footer > a.open {
 
 .depositType div .title {
   color: #fff;
+  font-size: 3vw;
 }
 
 .depositType div .creditTime {
   border: 0;
-  width: 70px;
-  line-height: 25px;
+  min-width: 80px;
+  padding: 1.5vw 2vw;
+  white-space: nowrap;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   border-radius: 3px;
   background-color: rgba(255, 255, 255, 0.2);
   color: #fff;
   margin-top: 5px;
   text-align: center;
+  font-size: 3vw;
 }
 
 .recent {
@@ -2359,7 +2385,7 @@ footer > a.open {
 }
 
 .input-title {
-  color: #BAC2D2;
+  color: #bac2d2;
   margin-top: 2vw;
 }
 
@@ -2418,19 +2444,19 @@ input {
 }
 
 input::-webkit-input-placeholder {
-  color: #BAC2D2;
+  color: #bac2d2;
 }
 
 input:-ms-input-placeholder {
-  color: #BAC2D2;
+  color: #bac2d2;
 }
 
 input::-ms-input-placeholder {
-  color: #BAC2D2;
+  color: #bac2d2;
 }
 
 input::placeholder {
-  color: #BAC2D2;
+  color: #bac2d2;
 }
 
 input[type="file"] {
@@ -2893,6 +2919,7 @@ button.clickBtn:before {
   position: absolute;
   right: 2vw;
   bottom: 1.5vw;
+  font-size: 5vw;
 }
 
 .casino {
@@ -3498,7 +3525,7 @@ span.important {
 }
 
 .promotions .tag ~ div.promodule.open {
-  background: #797d86;
+  background: #959595;
 }
 
 .promotions .tag ~ div.promodule.open .claimed {
@@ -3561,8 +3588,9 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #AFAFAF;
+  background: #afafaf;
   color: #070e22;
+  vertical-align: middle;
 }
 
 .promotions div.promodule .btn-check {
@@ -3577,6 +3605,7 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
   margin-left: 1vw;
+  vertical-align: middle;
 }
 
 .promotions div.promodule > button {
@@ -4224,14 +4253,14 @@ span.important {
 }
 
 .gameArea-box img {
-  width: 100%;
+  width: 80%;
 }
 
 .gameArea-box-text {
   width: 100%;
   height: 30px;
   text-align: center;
-  font-size: 1vw;
+  font-size: 3vw;
 }
 
 .gameArea-box-text p {
@@ -4317,7 +4346,7 @@ span.important {
 }
 
 .userGuide-box__top a span {
-  font-size: 1vw;
+  font-size: 3vw;
   white-space: nowrap;
   margin-left: 5px;
 }
@@ -4387,7 +4416,7 @@ span.important {
   border-top: 1px solid #101d41;
   padding: 10px 0;
   text-align: center;
-  font-size: 1vw;
+  font-size: 3vw;
 }
 
 .headerT {
@@ -4425,6 +4454,7 @@ span.important {
 
 .headerT .headerTLogout a {
   margin: 0 auto;
+  font-size: 5vw;
 }
 
 .headerT .headerTLogout img {
@@ -4495,14 +4525,12 @@ span.important {
 .headerT .headerTLogin .login a::before,
 .headerT .headerTLogin .login button::before {
   font-size: 4vw;
-  margin-right: 2vw;
 }
 
 .headerT .headerTLogin .login a span,
 .headerT .headerTLogin .login button span {
   font-size: 3vw;
   color: #fff;
-  margin-left: 5px;
 }
 
 .headerB {
@@ -4702,7 +4730,7 @@ span.important {
   width: 24%;
   height: 35px;
   background-color: #1d2f62;
-  font-size: 2vw;
+  font-size: 3vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5041,6 +5069,7 @@ span.important {
 }
 
 .restoreBox-left .depositInBox {
+  width: auto;
   height: 10vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5065,7 +5094,7 @@ span.important {
 }
 
 .restoreBox-left .depositInBox .text p:nth-child(1) {
-  font-size: 1vw;
+  font-size: 3vw;
 }
 
 .restoreBox-left .depositInBox .text p span {
@@ -5077,7 +5106,7 @@ span.important {
 }
 
 .restoreBox-left .depositInBox .btn-group button {
-  font-size: 1vw;
+  font-size: 3.5vw;
 }
 
 .restoreBox-right {
@@ -5089,6 +5118,10 @@ span.important {
   height: 21vh;
   border-radius: 5px;
   color: #58cdff;
+}
+
+.restoreBox-right button::before {
+  font-size: 5vw;
 }
 
 .restoreBox-right button.clickBtn {
@@ -5111,6 +5144,7 @@ span.important {
   color: #f85605;
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
+  font-size: 5vw;
 }
 
 .inputBoxLevel {
@@ -5120,9 +5154,9 @@ span.important {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
   padding: 0 2vw;
 }
 
@@ -5132,6 +5166,12 @@ span.important {
 
 .inputBoxLevel .right {
   width: 25%;
+}
+
+.inputBoxLevel .right .btn-group {
+  margin: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .textArea {
@@ -5186,7 +5226,6 @@ span.important {
   border-radius: 5px;
   border: 1px solid #1a2b58;
   margin-bottom: 2vw;
-  min-width: 100%;
 }
 
 .walletModule .walletBalanceModule span {
@@ -5338,6 +5377,12 @@ span.important {
   min-height: auto;
   background: #3a4d80;
   border: 1px solid #4d5e8e;
+  position: relative;
+}
+
+.addBank .addBankName.noBank .icon-plus {
+  position: absolute;
+  left: 10px;
 }
 
 .addBank .addBankName .addBankInfo {
@@ -5703,7 +5748,7 @@ span.important {
 .subModuleList .subModule .subModuleBody ul li span {
   width: 100%;
   padding: 5px 0;
-  color: #AFAFAF;
+  color: #afafaf;
   font-size: 12px;
   text-align: center;
   margin-top: -3px;
@@ -5746,7 +5791,7 @@ span.important {
 }
 
 .calculation > div:nth-child(even) {
-  font-size: 14vw;
+  font-size: 10vw;
   -webkit-box-flex: 0;
       -ms-flex: none;
           flex: none;
@@ -5759,7 +5804,7 @@ span.important {
 }
 
 .calculation > div:nth-child(4) {
-  font-size: 8vw;
+  font-size: 10vw;
 }
 
 .calculation > div > div {
@@ -5886,7 +5931,7 @@ span.important {
   -webkit-box-flex: 2;
       -ms-flex: 2;
           flex: 2;
-  margin: 0 2vw 0 0;
+  margin-right: 2vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5918,7 +5963,7 @@ span.important {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  margin: 0;
+  margin: auto;
 }
 
 .withdrawalBox > .btn-group + .info {

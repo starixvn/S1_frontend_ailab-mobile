@@ -19,7 +19,15 @@ export const siteInfo = langId => {
 		affiliateLink: getAffiliate(langId),
 		siteDefaultLang: "vn",
 		siteLangList: ["en", "vn"],
-		liveChatId: 12145020
+		liveChatId: 12145020,
+		skypeId: "skype:live:.cid.ae9eac1a78556dc6?chat",
+		telegramId: "https://t.me/Bwingcsd",
+		zaloId: "https://zalo.me/Bwingcsd",
+		facebookId: "https://www.facebook.com/Bwingtttt/",
+		twitterId: "https://twitter.com/bwingofficial",
+		youtubeId:
+			"https://www.youtube.com/channel/UCDvFS9eTrOEYuVjb3BNQ3bg/featured",
+		tiktokId: "https://www.tiktok.com/@bwingpro"
 	};
 };
 
