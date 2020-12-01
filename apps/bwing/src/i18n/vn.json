@@ -395,7 +395,8 @@
 	"lbl_add_bank_submit": "THÊM TÀI KHOẢN",
 	"lbl_deposit_submit": "NẠP TIỀN",
 	"lbl_change_password_submit": "LƯU MẬT KHẨU",
-	"lbl_withdraw_submit": "RÚT TIỀN"
-
+	"lbl_withdraw_submit": "RÚT TIỀN",
+	"lbl_UpdateSuccessWillProcess": "Cập nhật thành công. Chúng tôi sẽ xử lý yêu cầu của bạn nhanh nhất có thể!",
+	"lbl_RemindForRefNum": "Vui lòng nhập mã tham chiếu!"
 
 }
