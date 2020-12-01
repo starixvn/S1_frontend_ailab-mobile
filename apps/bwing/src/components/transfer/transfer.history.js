@@ -124,7 +124,7 @@ const Panel = () => {
 				createTime={item.createTime}
 				transId={item.transId}
 				_isConvert={_isConvert}
-				amount={item.amount}
+				amount={number_format(item.amount, false)}
 				startWallet={_transferDirection.startWallet}
 				endWallet={_transferDirection.endWallet}
 				i18n={i18n}
@@ -199,7 +199,7 @@ export const TransactionHistory = props => {
 				</li>
 				<li>
 					<span className="title">{props.i18n["lbl_Amount"]}</span>
-					<span>{number_format(props.amount, false)}</span>
+					<span>{props.amount}</span>
 				</li>
 				<li>
 					<span className="title">{props.i18n["lbl_Status"]}</span>

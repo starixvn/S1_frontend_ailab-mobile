@@ -389,5 +389,7 @@
 	"lbl_Please_input_your_real_name_as_in_your_ID": "Please input your real name as in your ID. Your account name should be the same with your profile name.",
 	"lbl_FishingSG1": "Fishing God",
 	"lbl_FishingSG2": "Fishing War",
-	"lbl_Search":"Search"
+	"lbl_Search":"Search",
+	"lbl_UpdateSuccessWillProcess": "Update Successful. We will process your request ASAP!",
+	"lbl_RemindForRefNum": "Reference Number is required."
 }
