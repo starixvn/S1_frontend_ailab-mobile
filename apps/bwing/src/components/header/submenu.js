@@ -17,6 +17,7 @@ import { GET_ENTER_PAGE } from "../../service/enterPage";
 import ShortcutBar from "./shortcutBar";
 import LangDropdown from "../common/dropdown.language";
 import { siteInfo } from "../../config";
+import { api_SetLanguage } from "../../service/api/account";
 
 const defSubMenus = langId => [
 	{
@@ -85,6 +86,7 @@ export default () => {
 	const SetLanguage = langId => {
 		if (langId !== userInfo.langId) {
 			setUserInfo(prev => ({ ...prev, langId }));
+			api_SetLanguage(langId);
 		}
 	};
 
