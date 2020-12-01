@@ -345,7 +345,7 @@
 	"lbl_HowToPlay": "Cách đặt cược",
 	"lbl_PoweredBy": "Một sản phẩm của",
 	"lbl_AddBankAccount": "Thêm Tài Khoản",
-	"lbl_NumberOfBankAccounts": "Số lượng tài khoản Ngân hàng",
+	"lbl_NumberOfBankAccounts": "Số lượng tài khoản",
 	"lbl_Unverified": "Chưa được xác minh",
 	"lbl_Verified": "Đã xác minh",
 	"lbl_Balance": "Số dư",
@@ -396,6 +396,7 @@
 	"lbl_deposit_submit": "NẠP TIỀN",
 	"lbl_change_password_submit": "LƯU MẬT KHẨU",
 	"lbl_withdraw_submit": "RÚT TIỀN",
+	"lbl_statement_submit": "Xem sao kê",
 	"lbl_UpdateSuccessWillProcess": "Cập nhật thành công. Chúng tôi sẽ xử lý yêu cầu của bạn nhanh nhất có thể!",
 	"lbl_RemindForRefNum": "Vui lòng nhập mã tham chiếu!"
 

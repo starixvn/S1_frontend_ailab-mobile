@@ -20,7 +20,6 @@ export default ({
 					<div>
 						<div>{i18n["lbl_Balance"]}</div>
 						<div>
-							{i18n[`Currency_${currencyId}`]}
 							<div>
 								{number_format(
 									balanceInfo?.balance,
@@ -33,7 +32,6 @@ export default ({
 					<div>
 						<div>{i18n["lbl_Deduction"]}</div>
 						<div>
-							{i18n[`Currency_${currencyId}`]}
 							<div>
 								{number_format(
 									balanceInfo?.deduction,
@@ -46,7 +44,6 @@ export default ({
 					<div>
 						<div>{i18n["lbl_EligibleWithdrawalAmount"]}</div>
 						<div>
-							{i18n[`Currency_${currencyId}`]}
 							<span>
 								{number_format(
 									balanceInfo?.availableBalance,

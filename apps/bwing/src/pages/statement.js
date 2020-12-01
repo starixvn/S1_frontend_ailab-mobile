@@ -137,7 +137,7 @@ const IndexPage = () => {
 		<Redirect to="/" noThrow />
 	) : (
 		<div className="depositBox">
-			<HistoryFilter submitHandler={submitHandler} />
+			<HistoryFilter submitHandler={submitHandler} statement={true} />
 			{loading ? (
 				<Loading />
 			) : (
