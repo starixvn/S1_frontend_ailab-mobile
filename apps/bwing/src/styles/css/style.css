@@ -1468,19 +1468,27 @@ footer > a.open {
   outline: none;
 }
 
-.inputBoxText input ::-webkit-datetime-edit {
+.inputBoxText input::-webkit-datetime-edit {
   overflow: visible;
 }
 
-.inputBoxText input ::-webkit-calendar-picker-indicator {
+.inputBoxText input::-webkit-calendar-picker-indicator {
   background-image: -webkit-linear-gradient(top, transparent, transparent);
 }
 
-.inputBoxText .iconModule span {
+.inputBoxText::-webkit-datetime-edit {
+  overflow: visible;
+}
+
+.inputBoxText::-webkit-calendar-picker-indicator {
+  background-image: -webkit-linear-gradient(top, transparent, transparent);
+}
+
+.iconModule span {
   margin-left: 5px;
 }
 
-.inputBoxText .iconModule span::before {
+.iconModule span::before {
   font-size: 3vw;
 }
 
@@ -1525,7 +1533,6 @@ footer > a.open {
 }
 
 .inputBox.parts .inputBox {
-  width: 100%;
   -webkit-box-flex: 2.5;
       -ms-flex: 2.5;
           flex: 2.5;
@@ -1536,7 +1543,7 @@ footer > a.open {
 }
 
 .inputBox.parts .inputBox input[type="date"] {
-  padding: 3vw 1vw 3vw 9vw;
+  padding: 3vw 0vw;
 }
 
 .inputBox .dropdown i.icon {
@@ -3013,7 +3020,7 @@ button.clickBtn:before {
           flex: 1;
   border: 1px solid #7789bd;
   border-radius: 3px;
-  padding: 2vw;
+  padding: 0 2vw;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
