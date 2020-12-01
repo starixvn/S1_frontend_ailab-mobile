@@ -257,14 +257,14 @@ const Panel = () => {
 			selectedIdx.transferFrom === null ||
 			selectedIdx.transferTo === null
 		) {
-			let direction =
-				selectedIdx.transferFrom === null ? "lbl_From" : "lbl_To";
+			let msg =
+				selectedIdx.transferFrom === null
+					? "lbl_please_select_from_wallet"
+					: "lbl_please_select_to_wallet";
 			setPopBox({
 				isOpen: true,
 				title: i18n["lbl_ImportantNote"],
-				content: `${i18n["lbl_Transfer_Wallet_Hint"]} ${i18n[
-					direction
-				].toLowerCase()}`
+				content: i18n[msg]
 			});
 		}
 	};

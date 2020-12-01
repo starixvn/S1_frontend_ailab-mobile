@@ -336,10 +336,11 @@
 	"lbl_ViewAll":"View All",
 	"lbl_Total":"Total",
 	"lbl_CockFighting":"Cock Fighting",
-	"lbl_TpWallet_21": "918 Wallet",
-	"lbl_Transfer_Wallet_Hint": "Please select the wallet to transfer",
-
+	"lbl_TpWallet_21": "918Kiss Wallet",
 	"lbl_Download":"Download",
 	"lbl_918KissMobileApp":"918KISS MOBILE APP",
-	"lbl_IOSInstallGuide":"iOS 9+ Installation Guide"
+	"lbl_IOSInstallGuide":"iOS 9+ Installation Guide",
+	"lbl_please_select_from_wallet": "Kindly select preferable fund out wallet",
+	"lbl_please_select_to_wallet": "Kindly select preferable fund in wallet"
+
 }
