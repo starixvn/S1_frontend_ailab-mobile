@@ -256,7 +256,7 @@ export default ({
 
 					<div className="btn-group">
 						<button className="blue" onClick={clickSubmit}>
-							{i18n["lbl_Submit"].toUpperCase()}
+							{i18n["lbl_add_bank_submit"].toUpperCase()}
 						</button>
 					</div>
 				</div>

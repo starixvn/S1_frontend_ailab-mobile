@@ -390,6 +390,12 @@
 	"lbl_FishingSG1": "Thánh bắn cá",
 	"lbl_FishingSG2": "Bắn cá giao đấu",
 	"lbl_Search":"Tìm kiếm",
+	"lbl_history_submit": "Xem lịch sử",
+	"lbl_transfer_submit": "CHUYỂN QUỸ",
+	"lbl_add_bank_submit": "THÊM TÀI KHOẢN",
+	"lbl_deposit_submit": "NẠP TIỀN",
+	"lbl_change_password_submit": "LƯU MẬT KHẨU",
+	"lbl_withdraw_submit": "RÚT TIỀN",
 	"lbl_UpdateSuccessWillProcess": "Cập nhật thành công. Chúng tôi sẽ xử lý yêu cầu của bạn nhanh nhất có thể!",
 	"lbl_RemindForRefNum": "Vui lòng nhập mã tham chiếu!"
 

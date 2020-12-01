@@ -149,7 +149,7 @@ const SetMobilePay = props => {
 									this,
 									real_amount
 								)}>
-								{i18n["lbl_Submit"]}
+								{i18n["lbl_Confirm"]}
 							</button>
 						</div>
 					)
@@ -233,7 +233,7 @@ const SetMobilePay = props => {
 				)}
 				<div className="btn-group">
 					<button className="submit" onClick={ClickSubmit}>
-						{i18n.lbl_Submit}
+						{i18n.lbl_deposit_submit}
 					</button>
 				</div>
 			</div>

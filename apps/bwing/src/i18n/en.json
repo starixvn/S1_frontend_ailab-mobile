@@ -390,6 +390,12 @@
 	"lbl_FishingSG1": "Fishing God",
 	"lbl_FishingSG2": "Fishing War",
 	"lbl_Search":"Search",
+	"lbl_history_submit": "Submit",
+	"lbl_transfer_submit": "Submit",
+	"lbl_add_bank_submit": "Submit",
+	"lbl_deposit_submit": "Submit",
+	"lbl_change_password_submit": "Submit",
+	"lbl_withdraw_submit": "Submit",
 	"lbl_UpdateSuccessWillProcess": "Update Successful. We will process your request ASAP!",
 	"lbl_RemindForRefNum": "Reference Number is required."
 }

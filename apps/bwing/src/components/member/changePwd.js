@@ -219,7 +219,7 @@ export default () => {
 					{i18n.lbl_Back.toUpperCase()}
 				</Link>
 				<button className="submit" onClick={clickSubmit}>
-					{i18n.lbl_Submit}
+					{i18n.lbl_change_password_submit}
 				</button>
 			</div>
 		</>
