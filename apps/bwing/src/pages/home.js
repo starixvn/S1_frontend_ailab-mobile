@@ -117,7 +117,7 @@ const IndexPage = () => {
 			<Slider />
 			<Marquee />
 			<EventSwipper />
-			<MidBanner />
+			<MidBanner langId={userInfo.langId} />
 			<GamePanel i18n={i18n} userInfo={userInfo} />
 			<LinksPanel i18n={i18n} langId={userInfo.langId} />
 		</>

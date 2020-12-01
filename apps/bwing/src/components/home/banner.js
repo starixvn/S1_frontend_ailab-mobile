@@ -1,12 +1,13 @@
 import React from "react";
-import banner from "../../styles/img/BannerS.png";
+import banner_en from "../../styles/img/Daily rebate.png";
+import banner_vn from "../../styles/img/Daily rebate vn.png";
 
-export default () => {
+export default ({ langId }) => {
 	return (
 		<div className="bannerS">
 			<img
-				src={banner}
-				alt="Cash Back 30% Of Weekly Total Loss & 3% Of Every Losing Ticket"
+				src={langId === "vn" ? banner_vn : banner_en}
+				alt="Daily Rebate"
 			/>
 		</div>
 	);
