@@ -4,6 +4,46 @@ import RemainTime from "../common/remainTime";
 import { number_format, isConvert } from "@ailab-mobile/common";
 import DetailBtn from "./detailBtn";
 
+const defRuleCols = {
+	minAmount: "minAmount",
+	requiredAmount: "requiredAmount",
+	rollOver: "rollOver"
+};
+
+export const PromoRule = ({ promotionInfo, i18n, isLogin, currencyId }) => {
+	return (
+		<div className="rollover">
+			<div>
+				{promotionInfo.requiredAmount > 0 ? (
+					<>
+						<div className="icon icon-icon32px_money">
+							{i18n.lbl_MinAmount}
+						</div>
+						<div>
+							{number_format(
+								promotionInfo.requiredAmount,
+								isConvert(currencyId)
+							)}
+						</div>
+					</>
+				) : null}
+				<div className="icon icon-icon32px_time">
+					{i18n.lbl_RemainingTime}
+				</div>
+				<div>
+					{RemainTime({
+						promotionInfo,
+						i18n,
+						isLogin
+					})}
+				</div>
+				<div className="icon icon-icon32px_">{i18n.lbl_RollOver}</div>
+				<div>{promotionInfo.rollOver}X</div>
+			</div>
+		</div>
+	);
+};
+
 export const CardWithoutRule = ({
 	uiSetting,
 	href,
@@ -50,35 +90,12 @@ export default ({
 		<img src={imgSRC} alt={p.bonusCode ?? ""} />
 		<div className="protitle">{p.title}</div>
 		<div className="text">{p.description}</div>
-		<div className="rollover">
-			<div>
-				{p.requiredAmount > 0 ? (
-					<>
-						<div className="icon icon-icon32px_money">
-							{i18n.lbl_MinAmount}
-						</div>
-						<div>
-							{number_format(
-								p.requiredAmount,
-								isConvert(userInfo.currencyId)
-							)}
-						</div>
-					</>
-				) : null}
-				<div className="icon icon-icon32px_time">
-					{i18n.lbl_RemainingTime}
-				</div>
-				<div>
-					{RemainTime({
-						promotionInfo: p,
-						i18n,
-						isLogin: userInfo.isLogin
-					})}
-				</div>
-				<div className="icon icon-icon32px_">{i18n.lbl_RollOver}</div>
-				<div>{p.rollOver}X</div>
-			</div>
-		</div>
+		<PromoRule
+			promotionInfo={p}
+			i18n={i18n}
+			isLogin={userInfo.isLogin}
+			currencyId={userInfo.currencyId}
+		/>
 		<div className="btn-group">
 			<DetailBtn
 				displayText_Detail={i18n.lbl_Details}

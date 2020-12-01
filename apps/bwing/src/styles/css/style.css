@@ -372,6 +372,7 @@ header .Join .Terms a,
 header .Login .Terms a {
   color: #f77a00;
   display: unset;
+  font-size: 3vw;
 }
 
 header .Join .Terms input[type="checkbox"],
@@ -469,7 +470,7 @@ header .headerButton > button {
   height: 30px;
   background: #58cdff;
   margin-left: 5px;
-  font-size: 2vw;
+  font-size: 3vw;
 }
 
 header .headerButton > button:nth-child(3) {
@@ -1136,6 +1137,11 @@ footer > a.open {
 #popup .popTit .text-org {
   font-weight: bold;
   font-size: 4vw;
+  color: #58cdff;
+}
+
+#popup .popTit .text-org .icon {
+  font-size: 10vw;
 }
 
 #popup .popTxt {
@@ -1622,7 +1628,7 @@ footer > a.open {
   width: 100%;
   color: #58cdff;
   border-radius: 3px;
-  padding: 2vw 0;
+  height: 35px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2131,7 +2137,7 @@ footer > a.open {
       -ms-flex-align: start;
           align-items: start;
   padding: 5px;
-  margin-top: 2vw;
+  margin-top: 5vw;
 }
 
 .depositType .icon:before {
@@ -2213,7 +2219,7 @@ footer > a.open {
   color: #58cdff;
   font-weight: bold;
   text-align: center;
-  height: 16vw;
+  height: 25vw;
 }
 
 .depositType div span {
@@ -2227,8 +2233,8 @@ footer > a.open {
 
 .depositType div .creditTime {
   border: 0;
-  min-width: 80px;
-  padding: 1.5vw 2vw;
+  min-width: 85px;
+  padding: 1.5vw 1vw;
   white-space: nowrap;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -4221,13 +4227,17 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 100%;
-  height: 30vw;
   border-bottom: 1px solid #101d41;
 }
 
 .bannerS img {
   width: calc(100% - 8vw);
+  margin: 2vw 0;
 }
 
 .gameArea {
@@ -4452,7 +4462,7 @@ span.important {
   margin-right: -0.5vw;
 }
 
-.headerT .headerTLogout a {
+.headerT .headerTLogout .heardTitle {
   margin: 0 auto;
   font-size: 5vw;
 }
@@ -4544,6 +4554,12 @@ span.important {
   -webkit-backdrop-filter: blur(20px);
           backdrop-filter: blur(20px);
   border-top: 1px solid #101d41;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .headerB .nav {
@@ -4564,7 +4580,7 @@ span.important {
   top: 0px;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
   background-color: #010e33;
   z-index: 10;
 }
@@ -4744,8 +4760,6 @@ span.important {
 
 .menu .menuNav {
   width: 100%;
-  height: calc(100vh - 165px);
-  overflow: auto;
   padding: 0 10px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -4888,7 +4902,6 @@ span.important {
 
 .depostiImgText img {
   width: 40%;
-  height: 60px;
   background-color: #fff;
   color: #fff;
   padding: 2vw;
@@ -4942,7 +4955,8 @@ span.important {
 
 .depostiImgText div.bankinfo img {
   width: 20vw;
-  height: auto;
+  height: 10vw;
+  max-height: 10vw;
   padding: 0;
   margin: 0;
 }
@@ -5204,6 +5218,10 @@ span.important {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin: 2vw 0;
 }
 
@@ -5914,11 +5932,10 @@ span.important {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  height: 47px;
   position: relative;
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   z-index: 2;
 }
 
@@ -5938,6 +5955,7 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  height: 35px;
 }
 
 .inputModuleRow .inputBox .input-title {
@@ -5960,10 +5978,15 @@ span.important {
 }
 
 .inputModuleRow .btn-group {
+  height: 35px;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   margin: auto;
+}
+
+.inputModuleRow .btn-group button {
+  padding: 0 2vw;
 }
 
 .withdrawalBox > .btn-group + .info {
