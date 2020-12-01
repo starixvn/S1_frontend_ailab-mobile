@@ -1466,22 +1466,7 @@ footer > a.open {
   border: 0;
   padding: 2vw 0;
   outline: none;
-}
-
-.inputBoxText input::-webkit-datetime-edit {
-  overflow: visible;
-}
-
-.inputBoxText input::-webkit-calendar-picker-indicator {
-  background-image: -webkit-linear-gradient(top, transparent, transparent);
-}
-
-.inputBoxText::-webkit-datetime-edit {
-  overflow: visible;
-}
-
-.inputBoxText::-webkit-calendar-picker-indicator {
-  background-image: -webkit-linear-gradient(top, transparent, transparent);
+  -webkit-appearance: inherit !important;
 }
 
 .iconModule span {
