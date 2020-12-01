@@ -75,6 +75,9 @@ const Panel = () => {
 	}, []);
 
 	let allWalletsList = [mainWalletInfo, ...tpWalletsList];
+	allWalletsList.sort((a, b) => {
+		return a.id - b.id;
+	});
 
 	const GetBalnace = () => {
 		api.account.GetBalnace().then(
