@@ -395,5 +395,6 @@
 	"lbl_add_bank_submit": "Submit",
 	"lbl_deposit_submit": "Submit",
 	"lbl_change_password_submit": "Submit",
-	"lbl_withdraw_submit": "Submit"
+	"lbl_withdraw_submit": "Submit",
+	"lbl_statement_submit": "Submit"
 }
