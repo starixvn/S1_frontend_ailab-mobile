@@ -5,6 +5,7 @@ import RemainTime from "../common/remainTime";
 import JoinBtn from "./joinBtn";
 import DepositRecord from "./depositRecord";
 import ProcessBar from "./processBar";
+import PromoRule from "./promotionContent.promoRule";
 
 export default ({
 	path,
@@ -16,7 +17,8 @@ export default ({
 	_isClaimed,
 	_isNew,
 	GetPromotionDetail,
-	RefreshProcessBar
+	RefreshProcessBar,
+	ruleCols
 }) => (
 	<div
 		className={`promodule${promotionInfo.isJoin ? " open" : ""}${
@@ -50,38 +52,13 @@ export default ({
 			RefreshProcessBar={RefreshProcessBar.bind(this, promotionInfo)}
 		/>
 
-		<div className="info">
-			<ul>
-				<li>
-					<span className="title">
-						{i18n.lbl_RollOver?.toUpperCase()}
-					</span>
-					<span>{promotionInfo.rollOver}x</span>
-				</li>
-				<li>
-					<span className="title">
-						{i18n.lbl_RemainingTime?.toUpperCase()}
-					</span>
-					<span>
-						{RemainTime({
-							promotionInfo,
-							i18n,
-							isLogin: userInfo.isLogin
-						})}
-					</span>
-				</li>
-				{promotionInfo.requiredAmount > 0 ? (
-					<li>
-						<span className="title">
-							{i18n.lbl_MinAmount?.toUpperCase()}
-						</span>
-						<span>
-							{number_format(promotionInfo.requiredAmount)}
-						</span>
-					</li>
-				) : null}
-			</ul>
-		</div>
+		<PromoRule
+			promotionInfo={promotionInfo}
+			i18n={i18n}
+			isLogin={userInfo.isLogin}
+			currencyId={userInfo.currencyId}
+			ruleCols={ruleCols}
+		/>
 		<div
 			className="text"
 			dangerouslySetInnerHTML={{

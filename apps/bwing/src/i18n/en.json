@@ -38,7 +38,7 @@
 	"lbl_BeforeAmount": "Before Amount",
 	"lbl_BirthCertificate": "Birth Certificate",
 	"lbl_Birthday": "Birthday",
-	"lbl_Bonus": "BONUS",
+	"lbl_Bonus": "Bonus",
 	"lbl_Cancel": "CANCEL",
 	"lbl_CancelConfirm": "Are you sure you want to cancel? It cannot restore after cancellation!",
 	"lbl_Cash": "Cash",
@@ -398,5 +398,6 @@
 	"lbl_withdraw_submit": "Submit",
 	"lbl_statement_submit": "Submit",
 	"lbl_UpdateSuccessWillProcess": "Update Successful. We will process your request ASAP!",
-	"lbl_RemindForRefNum": "Reference Number is required."
+	"lbl_RemindForRefNum": "Reference Number is required.",
+	"lbl_MaxBonusAmount":"Max Bonus Amount"
 }

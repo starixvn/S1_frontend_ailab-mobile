@@ -38,7 +38,7 @@
 	"lbl_BeforeAmount": "Số dư trước",
 	"lbl_BirthCertificate": "Giấy Khai Sinh",
 	"lbl_Birthday": "Ngày sinh",
-	"lbl_Bonus": "KHUYẾN MÃI",
+	"lbl_Bonus": "Khuyến Mãi",
 	"lbl_Cancel": "HỦY",
 	"lbl_CancelConfirm": "Bạn có chắc muốn hủy? Không thể khôi phục lại sau khi hủy!",
 	"lbl_Cash": "Cash",
@@ -398,6 +398,6 @@
 	"lbl_withdraw_submit": "RÚT TIỀN",
 	"lbl_statement_submit": "Xem sao kê",
 	"lbl_UpdateSuccessWillProcess": "Cập nhật thành công. Chúng tôi sẽ xử lý yêu cầu của bạn nhanh nhất có thể!",
-	"lbl_RemindForRefNum": "Vui lòng nhập mã tham chiếu!"
-
+	"lbl_RemindForRefNum": "Vui lòng nhập mã tham chiếu!",
+	"lbl_MaxBonusAmount":"Tiền Khuyến Mãi Tối Đa"
 }

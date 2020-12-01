@@ -27,7 +27,7 @@ export const Promotion = props => {
 };
 
 const PromotionContent = ({ staticList }) => {
-	const { config, uiSetting, userInfo, i18n, api } = useContext(
+	const { config, uiSetting, userInfo, i18n, api, ruleCols } = useContext(
 		configContext
 	);
 	const [promotion, setPromotion] = useState([]);
@@ -151,6 +151,7 @@ const PromotionContent = ({ staticList }) => {
 						getPromotionListV2={getPromotionListV2}
 						i18n={i18n}
 						uiSetting={uiSetting}
+						ruleCols={ruleCols}
 					/>
 				);
 			}

@@ -50,3 +50,11 @@ export const defBonusType = {
 	Percentage: 1,
 	Amount: 2
 };
+
+export const defRuleCols = {
+	minAmount: "minAmount",
+	rollOver: "rollOver",
+	remainingTime: "remainingTime",
+	bonus: "bonus",
+	maxBonus: "maxBonus"
+};

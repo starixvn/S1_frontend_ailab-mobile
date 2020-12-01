@@ -12,7 +12,9 @@ export const PromotionInfo = props => (
 );
 
 const PromotionInfoContent = () => {
-	const { path, userInfo, i18n, uiSetting, api } = useContext(configContext);
+	const { path, userInfo, i18n, uiSetting, api, ruleCols } = useContext(
+		configContext
+	);
 	const [promotionInfo, setPromotionInfo] = useState(null);
 	const isMountedRef = useRef(null);
 
@@ -112,6 +114,7 @@ const PromotionInfoContent = () => {
 			_isNew={_isNew}
 			GetPromotionDetail={GetPromotionDetail}
 			RefreshProcessBar={RefreshProcessBar}
+			ruleCols={ruleCols}
 		/>
 	);
 };

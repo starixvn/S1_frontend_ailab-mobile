@@ -1,48 +1,7 @@
 import React from "react";
 import JoinBtn from "./joinBtn";
-import RemainTime from "../common/remainTime";
-import { number_format, isConvert } from "@ailab-mobile/common";
 import DetailBtn from "./detailBtn";
-
-const defRuleCols = {
-	minAmount: "minAmount",
-	requiredAmount: "requiredAmount",
-	rollOver: "rollOver"
-};
-
-export const PromoRule = ({ promotionInfo, i18n, isLogin, currencyId }) => {
-	return (
-		<div className="rollover">
-			<div>
-				{promotionInfo.requiredAmount > 0 ? (
-					<>
-						<div className="icon icon-icon32px_money">
-							{i18n.lbl_MinAmount}
-						</div>
-						<div>
-							{number_format(
-								promotionInfo.requiredAmount,
-								isConvert(currencyId)
-							)}
-						</div>
-					</>
-				) : null}
-				<div className="icon icon-icon32px_time">
-					{i18n.lbl_RemainingTime}
-				</div>
-				<div>
-					{RemainTime({
-						promotionInfo,
-						i18n,
-						isLogin
-					})}
-				</div>
-				<div className="icon icon-icon32px_">{i18n.lbl_RollOver}</div>
-				<div>{promotionInfo.rollOver}X</div>
-			</div>
-		</div>
-	);
-};
+import PromoRule from "./promotionCard.promoRule";
 
 export const CardWithoutRule = ({
 	uiSetting,
@@ -76,7 +35,8 @@ export default ({
 	imgSRC,
 	getPromotionListV2,
 	i18n,
-	uiSetting
+	uiSetting,
+	ruleCols
 }) => (
 	<div
 		className={`promodule${_isClaimed ? " open" : ""}${
@@ -95,6 +55,7 @@ export default ({
 			i18n={i18n}
 			isLogin={userInfo.isLogin}
 			currencyId={userInfo.currencyId}
+			ruleCols={ruleCols}
 		/>
 		<div className="btn-group">
 			<DetailBtn

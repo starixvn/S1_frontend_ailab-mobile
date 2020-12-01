@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Promotion } from "@ailab-mobile/promotion";
+import { Promotion, defRuleCols } from "@ailab-mobile/promotion";
 import config from "Config";
 import path from "Path";
 import { Promotion as uiSetting } from "UISetting";
@@ -17,6 +17,12 @@ export default () => {
 			userInfo={userInfo}
 			i18n={i18n}
 			setPopBox={setPopBox}
+			ruleCols={[
+				defRuleCols.bonus,
+				defRuleCols.maxBonus,
+				defRuleCols.rollOver,
+				defRuleCols.remainingTime
+			]}
 		/>
 	);
 };
