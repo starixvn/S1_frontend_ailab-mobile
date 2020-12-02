@@ -89,7 +89,7 @@ const ContactUs = ({ i18n, langId }) => {
 				<a
 					href={siteInfo(langId).zaloId}
 					target="_blank"
-					className="icon icon-zalo"></a>
+					className="icon icon-Zalo"></a>
 				<a
 					href={siteInfo(langId).facebookId}
 					target="_blank"
