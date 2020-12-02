@@ -536,7 +536,7 @@ const Join = () => {
 									if (isMountedRef.current) {
 										let _user = {
 											isLogin: true,
-											langId: defaultLangId,
+											langId: userInfo.langId,
 											userName: userValueState.UserName
 										};
 										if (res_custInfo.data.errorCode === 0) {
