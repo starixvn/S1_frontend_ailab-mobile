@@ -18,11 +18,11 @@ export default () => {
 			i18n={i18n}
 			setPopBox={setPopBox}
 			ruleCols={[
-				defRuleCols.bonus,
 				defRuleCols.maxBonus,
 				defRuleCols.rollOver,
 				defRuleCols.remainingTime
 			]}
+			divisionBy1000={true}
 		/>
 	);
 };
