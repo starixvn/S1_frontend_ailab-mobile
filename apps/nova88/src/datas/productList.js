@@ -98,9 +98,9 @@ const gameList = ({ langId }) => [
 				img: LIVEcasino_SA
 			},
 			{
-				gameId: 3,
-				tpId: 3,
-				img: LIVEcasino_AG
+				gameId: 15,
+				tpId: 15,
+				img: LIVEcasino_AE
 			},
 			{
 				gameId: 101,
@@ -113,9 +113,9 @@ const gameList = ({ langId }) => [
 				img: LIVEcasino_DG
 			},
 			{
-				gameId: 15,
-				tpId: 15,
-				img: LIVEcasino_AE
+				gameId: 3,
+				tpId: 3,
+				img: LIVEcasino_AG
 			}
 		]
 	},
