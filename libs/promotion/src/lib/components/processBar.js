@@ -9,7 +9,8 @@ export default ({
 	custRollOver,
 	RefreshProcessBar,
 	promotionType,
-	isJoin
+	isJoin,
+	divisionBy1000
 }) => {
 	if (
 		isJoin &&
@@ -26,10 +27,10 @@ export default ({
 				<div className="turnover">
 					<span>
 						{i18n[`Currency_${currencyId}`]}{" "}
-						{number_format(custTurnOver, false)}
+						{number_format(custTurnOver, false, divisionBy1000)}
 					</span>{" "}
 					/ ({i18n.lbl_Req} {i18n[`Currency_${currencyId}`]}{" "}
-					{number_format(custRollOver, false)})
+					{number_format(custRollOver, false, divisionBy1000)})
 					<ReloadSpin func={RefreshProcessBar} />
 				</div>
 				<div className="progressBar">

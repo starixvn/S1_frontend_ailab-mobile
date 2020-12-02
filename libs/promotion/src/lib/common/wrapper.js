@@ -10,7 +10,8 @@ export default ({
 	i18n = {},
 	userInfo,
 	setPopBox,
-	ruleCols
+	ruleCols,
+	divisionBy1000
 }) => (
 	<configContext.Provider
 		value={{
@@ -21,7 +22,8 @@ export default ({
 			userInfo,
 			setPopBox,
 			api: { promotion: new promotionAPI({ apiURL: config.apiURL }) },
-			ruleCols
+			ruleCols,
+			divisionBy1000
 		}}>
 		{children}
 	</configContext.Provider>

@@ -62,7 +62,8 @@ export default ({
 	i18n,
 	promotionInfo,
 	ClosePopBox,
-	SetClaimPromotion
+	SetClaimPromotion,
+	divisionBy1000
 }) => {
 	const {
 		warning,
@@ -86,7 +87,11 @@ export default ({
 			<div className="text-org">
 				{`${i18n.lbl_ClaimAmountRange} : ${number_format(
 					promotionInfo.requiredAmount
-				)} ~ ${number_format(promotionInfo.maxAmount)}`}
+				)} ~ ${number_format(
+					promotionInfo.maxAmount,
+					false,
+					divisionBy1000
+				)}`}
 			</div>
 			<div className="btn-group">
 				<Button

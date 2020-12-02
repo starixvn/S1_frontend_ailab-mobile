@@ -12,9 +12,16 @@ export const PromotionInfo = props => (
 );
 
 const PromotionInfoContent = () => {
-	const { path, userInfo, i18n, uiSetting, api, ruleCols } = useContext(
-		configContext
-	);
+	const {
+		path,
+		userInfo,
+		i18n,
+		uiSetting,
+		api,
+		ruleCols,
+		divisionBy1000
+	} = useContext(configContext);
+
 	const [promotionInfo, setPromotionInfo] = useState(null);
 	const isMountedRef = useRef(null);
 
@@ -115,6 +122,7 @@ const PromotionInfoContent = () => {
 			GetPromotionDetail={GetPromotionDetail}
 			RefreshProcessBar={RefreshProcessBar}
 			ruleCols={ruleCols}
+			divisionBy1000={divisionBy1000}
 		/>
 	);
 };

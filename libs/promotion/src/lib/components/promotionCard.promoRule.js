@@ -10,11 +10,18 @@ export const defRuleCols = {
 	maxBonus: "maxBonus"
 };
 
-const MinAmount = ({ requiredAmount, displayText, _isConvert }) =>
+const MinAmount = ({
+	requiredAmount,
+	displayText,
+	_isConvert,
+	divisionBy1000
+}) =>
 	requiredAmount > 0 ? (
 		<>
 			<div className="icon icon-icon32px_money">{displayText}</div>
-			<div>{number_format(requiredAmount, _isConvert)}</div>
+			<div>
+				{number_format(requiredAmount, _isConvert, divisionBy1000)}
+			</div>
 		</>
 	) : null;
 
@@ -45,7 +52,13 @@ const KeyValue = ({ value, displayText, icon }) => (
 	</>
 );
 
-const defElems = ({ promotionInfo, i18n, isLogin, currencyId }) => {
+const defElems = ({
+	promotionInfo,
+	i18n,
+	isLogin,
+	currencyId,
+	divisionBy1000
+}) => {
 	let _isConvert = isConvert(currencyId);
 	return {
 		[defRuleCols.minAmount]: (
@@ -54,6 +67,7 @@ const defElems = ({ promotionInfo, i18n, isLogin, currencyId }) => {
 				requiredAmount={promotionInfo.requiredAmount}
 				displayText={i18n.lbl_MinAmount}
 				_isConvert={_isConvert}
+				divisionBy1000={divisionBy1000}
 			/>
 		),
 		[defRuleCols.remainingTime]: (
@@ -76,7 +90,11 @@ const defElems = ({ promotionInfo, i18n, isLogin, currencyId }) => {
 			<KeyValue
 				key={`promo-rule-${defRuleCols.bonus}`}
 				displayText={i18n.lbl_Bonus}
-				value={number_format(promotionInfo.bonus, _isConvert)}
+				value={number_format(
+					promotionInfo.bonus,
+					_isConvert,
+					divisionBy1000
+				)}
 				icon="icon icon-promotion"
 			/>
 		),
@@ -84,7 +102,11 @@ const defElems = ({ promotionInfo, i18n, isLogin, currencyId }) => {
 			<KeyValue
 				key={`promo-rule-${defRuleCols.maxBonus}`}
 				displayText={i18n.lbl_MaxBonusAmount}
-				value={number_format(promotionInfo.maxBonus, _isConvert)}
+				value={number_format(
+					promotionInfo.maxBonus,
+					_isConvert,
+					divisionBy1000
+				)}
 				icon="icon icon-icon32px_money"
 			/>
 		)
@@ -100,9 +122,16 @@ const PromoRule = ({
 	promotionInfo,
 	i18n,
 	isLogin,
-	currencyId
+	currencyId,
+	divisionBy1000
 }) => {
-	const allElems = defElems({ promotionInfo, i18n, isLogin, currencyId });
+	const allElems = defElems({
+		promotionInfo,
+		i18n,
+		isLogin,
+		currencyId,
+		divisionBy1000
+	});
 
 	let rows = ruleCols.map(col => {
 		return allElems[col];

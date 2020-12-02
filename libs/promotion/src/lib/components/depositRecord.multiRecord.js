@@ -27,10 +27,10 @@ export default ({ i18n, refList, depositAmount }) => {
 	) : null;
 };
 
-export const Record = ({ isOpen, depositId, amount }) => (
+export const Record = ({ isOpen, depositId, amount, divisionBy1000 }) => (
 	<div className={isOpen ? "open" : ""}>
 		<div>{depositId}</div>
-		<div>{number_format(amount, false)}</div>
+		<div>{number_format(amount, false, divisionBy1000)}</div>
 	</div>
 );
 
@@ -39,7 +39,8 @@ export const Content = ({
 	children,
 	depositAmount,
 	handleOpen,
-	isOpen
+	isOpen,
+	divisionBy1000
 }) => (
 	<>
 		<div className="minAmount">
@@ -54,7 +55,7 @@ export const Content = ({
 			{children}
 			<div className={isOpen ? "open" : ""}>
 				<div>{i18n.lbl_Total}</div>
-				<div>{number_format(depositAmount, false)}</div>
+				<div>{number_format(depositAmount, false, divisionBy1000)}</div>
 			</div>
 		</div>
 		<button

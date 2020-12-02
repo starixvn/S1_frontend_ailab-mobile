@@ -3,11 +3,18 @@ import RemainTime from "../common/remainTime";
 import { number_format, isConvert } from "@ailab-mobile/common";
 import { defRuleCols } from "../common/def";
 
-const MinAmount = ({ requiredAmount, displayText, _isConvert }) =>
+const MinAmount = ({
+	requiredAmount,
+	displayText,
+	_isConvert,
+	divisionBy1000
+}) =>
 	requiredAmount > 0 ? (
 		<li>
 			<span className="title">{displayText?.toUpperCase()}</span>
-			<span>{number_format(requiredAmount, _isConvert)}</span>
+			<span>
+				{number_format(requiredAmount, _isConvert, divisionBy1000)}
+			</span>
 		</li>
 	) : null;
 
@@ -31,7 +38,13 @@ const KeyValue = ({ value, displayText }) => (
 	</li>
 );
 
-const defElems = ({ promotionInfo, i18n, isLogin, currencyId }) => {
+const defElems = ({
+	promotionInfo,
+	i18n,
+	isLogin,
+	currencyId,
+	divisionBy1000
+}) => {
 	let _isConvert = isConvert(currencyId);
 	return {
 		[defRuleCols.minAmount]: (
@@ -40,6 +53,7 @@ const defElems = ({ promotionInfo, i18n, isLogin, currencyId }) => {
 				requiredAmount={promotionInfo.requiredAmount}
 				displayText={i18n.lbl_MinAmount}
 				_isConvert={_isConvert}
+				divisionBy1000={divisionBy1000}
 			/>
 		),
 		[defRuleCols.remainingTime]: (
@@ -61,14 +75,22 @@ const defElems = ({ promotionInfo, i18n, isLogin, currencyId }) => {
 			<KeyValue
 				key={`promo-rule-${defRuleCols.bonus}`}
 				displayText={i18n.lbl_Bonus}
-				value={number_format(promotionInfo.bonus, _isConvert)}
+				value={number_format(
+					promotionInfo.bonus,
+					_isConvert,
+					divisionBy1000
+				)}
 			/>
 		),
 		[defRuleCols.maxBonus]: (
 			<KeyValue
 				key={`promo-rule-${defRuleCols.maxBonus}`}
 				displayText={i18n.lbl_MaxBonusAmount}
-				value={number_format(promotionInfo.maxBonus, _isConvert)}
+				value={number_format(
+					promotionInfo.maxBonus,
+					_isConvert,
+					divisionBy1000
+				)}
 			/>
 		)
 	};
@@ -83,9 +105,16 @@ const PromoRule = ({
 	promotionInfo,
 	i18n,
 	isLogin,
-	currencyId
+	currencyId,
+	divisionBy1000
 }) => {
-	const allElems = defElems({ promotionInfo, i18n, isLogin, currencyId });
+	const allElems = defElems({
+		promotionInfo,
+		i18n,
+		isLogin,
+		currencyId,
+		divisionBy1000
+	});
 
 	let rows = ruleCols.map(col => {
 		return allElems[col];

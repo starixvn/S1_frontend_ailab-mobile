@@ -9,7 +9,8 @@ export default ({
 	canJoin,
 	isJoin,
 	currencyId,
-	promotionType
+	promotionType,
+	divisionBy1000
 }) => {
 	return canJoin &&
 		!isJoin &&
@@ -24,7 +25,8 @@ export default ({
 				<div>{i18n.lbl_DepositAmount}</div>
 				<div>{`${i18n[`Currency_${currencyId}`]} ${number_format(
 					depositAmount,
-					false
+					false,
+					divisionBy1000
 				)}`}</div>
 			</div>
 		</div>

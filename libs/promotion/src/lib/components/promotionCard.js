@@ -36,7 +36,8 @@ export default ({
 	getPromotionListV2,
 	i18n,
 	uiSetting,
-	ruleCols
+	ruleCols,
+	divisionBy1000
 }) => (
 	<div
 		className={`promodule${_isClaimed ? " open" : ""}${
@@ -56,6 +57,7 @@ export default ({
 			isLogin={userInfo.isLogin}
 			currencyId={userInfo.currencyId}
 			ruleCols={ruleCols}
+			divisionBy1000={divisionBy1000}
 		/>
 		<div className="btn-group">
 			<DetailBtn

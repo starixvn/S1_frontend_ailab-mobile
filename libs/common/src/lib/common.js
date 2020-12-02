@@ -7,22 +7,51 @@ export const getUrlParameter = name => {
 		: decodeURIComponent(results[1].replace(/\+/g, " "));
 };
 
-export const number_format = (n, IsConvertRequired = false) => {
-	if (!isNaN(n)) {
-		if (IsConvertRequired) {
-			n /= 1000;
+export const number_format = (
+	n,
+	IsConvertRequired = false,
+	divisionBy1000 = false
+) => {
+	if (divisionBy1000)
+		return number_format_divisionBy1000(n, IsConvertRequired);
+	else {
+		if (!isNaN(n)) {
+			if (IsConvertRequired) {
+				n /= 1000;
+			}
+			n = Number(n).toFixed(2);
 		}
-		n = Number(n).toFixed(2);
+
+		n += "";
+		var arr = n.split(".");
+		var re = /(\d{1,3})(?=(\d{3})+$)/g;
+		return (
+			arr[0].replace(re, "$1,") +
+			(arr.length == 2 ? "." + arr[1] : "") +
+			(IsConvertRequired ? " ('000)" : "")
+		);
+	}
+};
+
+const number_format_divisionBy1000 = (n, IsConvertRequired = false) => {
+	console.log("go");
+	if (!isNaN(n)) {
+		n /= 1000;
 	}
 
 	n += "";
-	var arr = n.split(".");
-	var re = /(\d{1,3})(?=(\d{3})+$)/g;
-	return (
-		arr[0].replace(re, "$1,") +
-		(arr.length == 2 ? "." + arr[1] : "") +
-		(IsConvertRequired ? " ('000)" : "")
-	);
+	let arr = n.split(".");
+	let re = /(\d{1,3})(?=(\d{3})+$)/g;
+
+	if (IsConvertRequired) {
+		return (
+			arr[0].replace(re, "$1,") +
+			(arr.length === 2 ? "." + arr[1] : "") +
+			(IsConvertRequired ? " ('000)" : "")
+		);
+	} else {
+		return arr[0].replace(re, "$1,");
+	}
 };
 
 const _isConvertList = {

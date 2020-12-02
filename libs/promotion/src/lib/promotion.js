@@ -27,9 +27,15 @@ export const Promotion = props => {
 };
 
 const PromotionContent = ({ staticList }) => {
-	const { config, uiSetting, userInfo, i18n, api, ruleCols } = useContext(
-		configContext
-	);
+	const {
+		config,
+		uiSetting,
+		userInfo,
+		i18n,
+		api,
+		ruleCols,
+		divisionBy1000
+	} = useContext(configContext);
 	const [promotion, setPromotion] = useState([]);
 	const [tab, setTab] = useState(defTabs.Processing.key);
 	const [filterType, setFilterType] = useState(defFilterType.all);
@@ -152,6 +158,7 @@ const PromotionContent = ({ staticList }) => {
 						i18n={i18n}
 						uiSetting={uiSetting}
 						ruleCols={ruleCols}
+						divisionBy1000={divisionBy1000}
 					/>
 				);
 			}

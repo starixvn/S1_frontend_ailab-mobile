@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "@reach/router";
-import { number_format } from "@ailab-mobile/common";
-import RemainTime from "../common/remainTime";
 import JoinBtn from "./joinBtn";
 import DepositRecord from "./depositRecord";
 import ProcessBar from "./processBar";
@@ -18,7 +16,8 @@ export default ({
 	_isNew,
 	GetPromotionDetail,
 	RefreshProcessBar,
-	ruleCols
+	ruleCols,
+	divisionBy1000
 }) => (
 	<div
 		className={`promodule${promotionInfo.isJoin ? " open" : ""}${
@@ -58,6 +57,7 @@ export default ({
 			isLogin={userInfo.isLogin}
 			currencyId={userInfo.currencyId}
 			ruleCols={ruleCols}
+			divisionBy1000={divisionBy1000}
 		/>
 		<div
 			className="text"
