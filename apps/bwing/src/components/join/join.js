@@ -80,7 +80,6 @@ const initChecklistState = {
 	// Email: false,
 };
 
-const defaultLangId = GET_LANG_ID();
 const currencyDefaultSelectIdx = 0;
 
 const Join = () => {
@@ -515,7 +514,7 @@ const Join = () => {
 				Userpwd: userValueState.Password,
 				// Email: userValueState.Email,
 				CurrencyId: userValueState.Currency.id,
-				UserLang: defaultLangId
+				UserLang: userInfo.langId
 			};
 
 			regData["RefId"] = getUrlParameter("RefId") || readCookie("RefId");
