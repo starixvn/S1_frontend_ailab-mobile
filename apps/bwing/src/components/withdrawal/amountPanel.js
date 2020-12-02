@@ -59,19 +59,23 @@ export default ({
 					availableBalance={balanceInfo?.availableBalance}
 					_isConvert={_isConvert}
 				/> */}
-				<div className="inputModuleRow">
-					<Inputbox
-						title={i18n["lbl_Amount"]}
-						value={amount}
-						numberConvert={_isConvert}
-						inputType="tel"
-						onChange={e => EditAmount(e.target.value)}
-						btnStatus={warning.status}
-					/>
-					<div className="btn-group">
-						<button className="submit" onClick={ClickSubmit}>
-							{i18n["lbl_withdraw_submit"]}
-						</button>
+				<div className="inputBoxLevel">
+					<div className="left">
+						<Inputbox
+							title={i18n["lbl_Amount"]}
+							value={amount}
+							numberConvert={_isConvert}
+							inputType="tel"
+							onChange={e => EditAmount(e.target.value)}
+							btnStatus={warning.status}
+						/>
+					</div>
+					<div className="right">
+						<div className="btn-group">
+							<button className="submit" onClick={ClickSubmit}>
+								{i18n["lbl_withdraw_submit"]}
+							</button>
+						</div>
 					</div>
 				</div>
 				{warning.msg ? (
