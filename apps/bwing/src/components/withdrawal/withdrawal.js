@@ -451,7 +451,9 @@ const Panel = () => {
 	};
 
 	const SelectBank = b => {
-		if (b.sysId !== selBank?.sysId) {
+		if (
+			!(b.sysId === selBank?.sysId && b.accountNo === selBank?.accountNo)
+		) {
 			setSelBank(b);
 		}
 	};
