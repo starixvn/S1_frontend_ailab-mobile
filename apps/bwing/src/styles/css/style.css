@@ -539,6 +539,7 @@ main .swiper-container .swiper-slide.swiper-slide-active {
 
 main .banner {
   width: 95%;
+  height: 37.5vw;
   display: block;
   top: 12vw;
   z-index: 3;
@@ -5795,7 +5796,7 @@ span.important {
           flex: 1;
   text-align: center;
   border-radius: 3px;
-  word-break: break-all;
+  word-break: break-word;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
