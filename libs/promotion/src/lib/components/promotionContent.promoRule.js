@@ -115,9 +115,7 @@ const PromoRule = ({
 		divisionBy1000
 	});
 
-	let rows = ruleCols.map(col => {
-		return allElems[col];
-	});
+	let rows = ruleCols.map(col => allElems[col]);
 	return (
 		<div className="info">
 			<ul>{rows}</ul>

@@ -1,14 +1,7 @@
 import React from "react";
 import RemainTime from "../common/remainTime";
 import { number_format } from "@ailab-mobile/common";
-
-export const defRuleCols = {
-	minAmount: "minAmount",
-	rollOver: "rollOver",
-	remainingTime: "remainingTime",
-	bonus: "bonus",
-	maxBonus: "maxBonus"
-};
+import { defRuleCols } from "../common/def";
 
 const MinAmount = ({
 	requiredAmount,
@@ -132,9 +125,7 @@ const PromoRule = ({
 		divisionBy1000
 	});
 
-	let rows = ruleCols.map(col => {
-		return allElems[col];
-	});
+	let rows = ruleCols.map(col => allElems[col]);
 	return (
 		<div className="rollover">
 			<div>{rows}</div>
