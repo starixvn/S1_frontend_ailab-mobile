@@ -602,6 +602,10 @@ main #Marquee > div.open {
           animation-iteration-count: infinite;
 }
 
+main #Marquee + div .banner {
+  height: auto;
+}
+
 main .sideBar {
   background: #001942;
   width: 19vw;
