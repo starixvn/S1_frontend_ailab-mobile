@@ -1,6 +1,6 @@
 import React from "react";
 import RemainTime from "../common/remainTime";
-import { number_format, isConvert } from "@ailab-mobile/common";
+import { number_format } from "@ailab-mobile/common";
 
 export const defRuleCols = {
 	minAmount: "minAmount",
@@ -13,14 +13,14 @@ export const defRuleCols = {
 const MinAmount = ({
 	requiredAmount,
 	displayText,
-	_isConvert,
+	isConvert,
 	divisionBy1000
 }) =>
 	requiredAmount > 0 ? (
 		<>
 			<div className="icon icon-icon32px_money">{displayText}</div>
 			<div>
-				{number_format(requiredAmount, _isConvert, divisionBy1000)}
+				{number_format(requiredAmount, isConvert, divisionBy1000)}
 			</div>
 		</>
 	) : null;
@@ -56,17 +56,16 @@ const defElems = ({
 	promotionInfo,
 	i18n,
 	isLogin,
-	currencyId,
+	isConvert,
 	divisionBy1000
 }) => {
-	let _isConvert = isConvert(currencyId);
 	return {
 		[defRuleCols.minAmount]: (
 			<MinAmount
 				key={`promo-rule-${defRuleCols.minAmount}`}
 				requiredAmount={promotionInfo.requiredAmount}
 				displayText={i18n.lbl_MinAmount}
-				_isConvert={_isConvert}
+				isConvert={isConvert}
 				divisionBy1000={divisionBy1000}
 			/>
 		),
@@ -92,7 +91,7 @@ const defElems = ({
 				displayText={i18n.lbl_Bonus}
 				value={number_format(
 					promotionInfo.bonus,
-					_isConvert,
+					isConvert,
 					divisionBy1000
 				)}
 				icon="icon icon-promotion"
@@ -104,7 +103,7 @@ const defElems = ({
 				displayText={i18n.lbl_MaxBonusAmount}
 				value={number_format(
 					promotionInfo.maxBonus,
-					_isConvert,
+					isConvert,
 					divisionBy1000
 				)}
 				icon="icon icon-icon32px_money"
@@ -122,14 +121,14 @@ const PromoRule = ({
 	promotionInfo,
 	i18n,
 	isLogin,
-	currencyId,
+	isConvert,
 	divisionBy1000
 }) => {
 	const allElems = defElems({
 		promotionInfo,
 		i18n,
 		isLogin,
-		currencyId,
+		isConvert,
 		divisionBy1000
 	});
 

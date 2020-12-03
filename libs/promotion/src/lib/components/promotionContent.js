@@ -17,6 +17,7 @@ export default ({
 	GetPromotionDetail,
 	RefreshProcessBar,
 	ruleCols,
+	isConvert,
 	divisionBy1000
 }) => (
 	<div
@@ -57,6 +58,7 @@ export default ({
 			isLogin={userInfo.isLogin}
 			currencyId={userInfo.currencyId}
 			ruleCols={ruleCols}
+			isConvert={isConvert}
 			divisionBy1000={divisionBy1000}
 		/>
 		<div

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { number_format } from "@ailab-mobile/common";
+import PropTypes from "prop-types";
 
 export default ({ i18n, refList, depositAmount }) => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -27,12 +28,22 @@ export default ({ i18n, refList, depositAmount }) => {
 	) : null;
 };
 
-export const Record = ({ isOpen, depositId, amount, divisionBy1000 }) => (
+export const Record = ({
+	isOpen,
+	depositId,
+	amount,
+	isConvert,
+	divisionBy1000
+}) => (
 	<div className={isOpen ? "open" : ""}>
 		<div>{depositId}</div>
-		<div>{number_format(amount, false, divisionBy1000)}</div>
+		<div>{number_format(amount, isConvert, divisionBy1000)}</div>
 	</div>
 );
+
+Record.propTypes = {
+	isConvert: PropTypes.bool.isRequired
+};
 
 export const Content = ({
 	i18n,
@@ -40,6 +51,7 @@ export const Content = ({
 	depositAmount,
 	handleOpen,
 	isOpen,
+	isConvert,
 	divisionBy1000
 }) => (
 	<>
@@ -55,7 +67,9 @@ export const Content = ({
 			{children}
 			<div className={isOpen ? "open" : ""}>
 				<div>{i18n.lbl_Total}</div>
-				<div>{number_format(depositAmount, false, divisionBy1000)}</div>
+				<div>
+					{number_format(depositAmount, isConvert, divisionBy1000)}
+				</div>
 			</div>
 		</div>
 		<button
@@ -69,3 +83,7 @@ export const Content = ({
 		</button>
 	</>
 );
+
+Content.propTypes = {
+	isConvert: PropTypes.bool.isRequired
+};

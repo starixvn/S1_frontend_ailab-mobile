@@ -1,19 +1,19 @@
 import React from "react";
 import RemainTime from "../common/remainTime";
-import { number_format, isConvert } from "@ailab-mobile/common";
+import { number_format } from "@ailab-mobile/common";
 import { defRuleCols } from "../common/def";
 
 const MinAmount = ({
 	requiredAmount,
 	displayText,
-	_isConvert,
+	isConvert,
 	divisionBy1000
 }) =>
 	requiredAmount > 0 ? (
 		<li>
 			<span className="title">{displayText?.toUpperCase()}</span>
 			<span>
-				{number_format(requiredAmount, _isConvert, divisionBy1000)}
+				{number_format(requiredAmount, isConvert, divisionBy1000)}
 			</span>
 		</li>
 	) : null;
@@ -42,17 +42,16 @@ const defElems = ({
 	promotionInfo,
 	i18n,
 	isLogin,
-	currencyId,
+	isConvert,
 	divisionBy1000
 }) => {
-	let _isConvert = isConvert(currencyId);
 	return {
 		[defRuleCols.minAmount]: (
 			<MinAmount
 				key={`promo-rule-${defRuleCols.minAmount}`}
 				requiredAmount={promotionInfo.requiredAmount}
 				displayText={i18n.lbl_MinAmount}
-				_isConvert={_isConvert}
+				isConvert={isConvert}
 				divisionBy1000={divisionBy1000}
 			/>
 		),
@@ -77,7 +76,7 @@ const defElems = ({
 				displayText={i18n.lbl_Bonus}
 				value={number_format(
 					promotionInfo.bonus,
-					_isConvert,
+					isConvert,
 					divisionBy1000
 				)}
 			/>
@@ -88,7 +87,7 @@ const defElems = ({
 				displayText={i18n.lbl_MaxBonusAmount}
 				value={number_format(
 					promotionInfo.maxBonus,
-					_isConvert,
+					isConvert,
 					divisionBy1000
 				)}
 			/>
@@ -105,14 +104,14 @@ const PromoRule = ({
 	promotionInfo,
 	i18n,
 	isLogin,
-	currencyId,
+	isConvert,
 	divisionBy1000
 }) => {
 	const allElems = defElems({
 		promotionInfo,
 		i18n,
 		isLogin,
-		currencyId,
+		isConvert,
 		divisionBy1000
 	});
 

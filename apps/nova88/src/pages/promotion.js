@@ -22,3 +22,14 @@ export default () => {
 		/>
 	);
 };
+
+//region fetch static promotion datas from cloud.
+// const [staticList, setStaticList] = useState([]);
+// fetch(siteInfo().staticPromotions)
+// 	.then(res => {
+// 		return res.json();
+// 	})
+// 	.then(data => {
+// 		setStaticList(data);
+// 	});
+//endregion

@@ -1,8 +1,9 @@
 import React from "react";
 import { defPromotionType } from "../common/def";
 import { number_format, ReloadSpin } from "@ailab-mobile/common";
+import PropTypes from "prop-types";
 
-export default ({
+const ProcessBar = ({
 	i18n,
 	currencyId,
 	custTurnOver,
@@ -10,6 +11,7 @@ export default ({
 	RefreshProcessBar,
 	promotionType,
 	isJoin,
+	isConvert,
 	divisionBy1000
 }) => {
 	if (
@@ -27,10 +29,10 @@ export default ({
 				<div className="turnover">
 					<span>
 						{i18n[`Currency_${currencyId}`]}{" "}
-						{number_format(custTurnOver, false, divisionBy1000)}
+						{number_format(custTurnOver, isConvert, divisionBy1000)}
 					</span>{" "}
 					/ ({i18n.lbl_Req} {i18n[`Currency_${currencyId}`]}{" "}
-					{number_format(custRollOver, false, divisionBy1000)})
+					{number_format(custRollOver, isConvert, divisionBy1000)})
 					<ReloadSpin func={RefreshProcessBar} />
 				</div>
 				<div className="progressBar">
@@ -44,6 +46,12 @@ export default ({
 			</div>
 		);
 	} else {
-		return <></>;
+		return null;
 	}
 };
+
+ProcessBar.propTypes = {
+	isConvert: PropTypes.bool.isRequired
+};
+
+export default ProcessBar;

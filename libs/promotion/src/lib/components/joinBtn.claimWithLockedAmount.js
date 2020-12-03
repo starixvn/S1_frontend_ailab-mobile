@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Inputbox, number_format } from "@ailab-mobile/common";
+import PropTypes from "prop-types";
 
 export const checkClaimAmount = ({
 	_claimAmount,
@@ -57,12 +58,13 @@ export const Button = ({ uiSetting, onClick, displayText }) => (
 	</button>
 );
 
-export default ({
+const ClaimWithLockedAmount = ({
 	uiSetting,
 	i18n,
 	promotionInfo,
 	ClosePopBox,
 	SetClaimPromotion,
+	isConvert,
 	divisionBy1000
 }) => {
 	const {
@@ -86,10 +88,12 @@ export default ({
 			/>
 			<div className="text-org">
 				{`${i18n.lbl_ClaimAmountRange} : ${number_format(
-					promotionInfo.requiredAmount
+					promotionInfo.requiredAmount,
+					isConvert,
+					divisionBy1000
 				)} ~ ${number_format(
 					promotionInfo.maxAmount,
-					false,
+					isConvert,
 					divisionBy1000
 				)}`}
 			</div>
@@ -111,3 +115,9 @@ export default ({
 		</>
 	);
 };
+
+ClaimWithLockedAmount.propTypes = {
+	isConvert: PropTypes.bool.isRequired
+};
+
+export default ClaimWithLockedAmount;

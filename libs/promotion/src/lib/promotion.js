@@ -34,13 +34,13 @@ const PromotionContent = ({ staticList }) => {
 		i18n,
 		api,
 		ruleCols,
+		isConvert,
 		divisionBy1000
 	} = useContext(configContext);
 	const [promotion, setPromotion] = useState([]);
 	const [tab, setTab] = useState(defTabs.Processing.key);
 	const [filterType, setFilterType] = useState(defFilterType.all);
 	const isMountedRef = useRef(null);
-	// const [staticList, setStaticList] = useState([]);
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -65,14 +65,6 @@ const PromotionContent = ({ staticList }) => {
 
 	useEffect(() => {
 		getPromotionListV2();
-
-		// fetch(siteInfo().staticPromotions)
-		// 	.then(res => {
-		// 		return res.json();
-		// 	})
-		// 	.then(data => {
-		// 		setStaticList(data);
-		// 	});
 	}, [getPromotionListV2]);
 
 	const onClickTab = tabKey => {
@@ -158,6 +150,7 @@ const PromotionContent = ({ staticList }) => {
 						i18n={i18n}
 						uiSetting={uiSetting}
 						ruleCols={ruleCols}
+						isConvert={isConvert}
 						divisionBy1000={divisionBy1000}
 					/>
 				);

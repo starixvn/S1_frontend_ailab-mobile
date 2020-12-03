@@ -19,6 +19,7 @@ const PromotionInfoContent = () => {
 		uiSetting,
 		api,
 		ruleCols,
+		isConvert,
 		divisionBy1000
 	} = useContext(configContext);
 
@@ -122,6 +123,7 @@ const PromotionInfoContent = () => {
 			GetPromotionDetail={GetPromotionDetail}
 			RefreshProcessBar={RefreshProcessBar}
 			ruleCols={ruleCols}
+			isConvert={isConvert}
 			divisionBy1000={divisionBy1000}
 		/>
 	);
