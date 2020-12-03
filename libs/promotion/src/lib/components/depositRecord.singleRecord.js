@@ -1,7 +1,6 @@
 import React from "react";
 import { defPromotionType } from "../common/def";
 import { number_format } from "@ailab-mobile/common";
-import PropTypes from "prop-types";
 
 const SingleRecord = ({
 	i18n,
@@ -11,7 +10,7 @@ const SingleRecord = ({
 	isJoin,
 	currencyId,
 	promotionType,
-	isConvert,
+	isConvert = false,
 	divisionBy1000
 }) => {
 	return canJoin &&
@@ -33,10 +32,6 @@ const SingleRecord = ({
 			</div>
 		</div>
 	) : null;
-};
-
-SingleRecord.propTypes = {
-	isConvert: PropTypes.bool.isRequired
 };
 
 export default SingleRecord;

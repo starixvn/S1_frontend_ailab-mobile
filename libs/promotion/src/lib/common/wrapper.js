@@ -9,7 +9,7 @@ export default ({
 	uiSetting = {},
 	children,
 	i18n = {},
-	userInfo,
+	userInfo = {},
 	setPopBox,
 	ruleCols,
 	divisionBy1000 = false
@@ -22,7 +22,7 @@ export default ({
 			i18n,
 			userInfo,
 			setPopBox,
-			api: { promotion: new promotionAPI({ apiURL: config.apiURL }) },
+			api: { promotion: new promotionAPI({ apiURL: config?.apiURL }) },
 			ruleCols,
 			divisionBy1000,
 			isConvert: isConvert(userInfo.currencyId)

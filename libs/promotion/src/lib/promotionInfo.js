@@ -4,6 +4,7 @@ import { isClaimed, isNew, isExpiry } from "./common/common";
 import PromotionContent from "./components/promotionContent";
 import Wrapper from "./common/wrapper";
 import { configContext } from "./common/context";
+import { useHandlePopBox } from "./hook/useHandlePopBox";
 
 export const PromotionInfo = props => (
 	<Wrapper {...props}>
@@ -12,17 +13,10 @@ export const PromotionInfo = props => (
 );
 
 const PromotionInfoContent = () => {
-	const {
-		path,
-		userInfo,
-		i18n,
-		uiSetting,
-		api,
-		ruleCols,
-		isConvert,
-		divisionBy1000
-	} = useContext(configContext);
-
+	const { path, userInfo, i18n, uiSetting, api, ruleCols } = useContext(
+		configContext
+	);
+	const { handleErrorPopBox } = useHandlePopBox();
 	const [promotionInfo, setPromotionInfo] = useState(null);
 	const isMountedRef = useRef(null);
 
@@ -46,13 +40,13 @@ const PromotionInfoContent = () => {
 							if (res.data.errorCode === 0) {
 								setPromotionInfo(res.data.data);
 							} else {
-								alert(res.data.message);
+								handleErrorPopBox({ ...res.data, uiSetting });
 							}
 						}
 					},
 					() => {
 						if (isMountedRef.current) {
-							alert(i18n.msg_ApiServerError);
+							handleErrorPopBox({ uiSetting });
 						}
 					}
 				);
@@ -71,13 +65,13 @@ const PromotionInfoContent = () => {
 						if (res.data.errorCode === 0) {
 							setPromotionInfo(res.data.data);
 						} else {
-							alert(res.data.message);
+							handleErrorPopBox({ ...res.data, uiSetting });
 						}
 					}
 				},
 				err => {
 					if (isMountedRef.current) {
-						alert(i18n.msg_ApiServerError);
+						handleErrorPopBox({ uiSetting });
 					}
 				}
 			);
@@ -116,15 +110,12 @@ const PromotionInfoContent = () => {
 			uiSetting={{ popBox }}
 			promotionInfo={promotionInfo}
 			i18n={i18n}
-			userInfo={userInfo}
 			_isExpiry={_isExpiry}
 			_isClaimed={_isClaimed}
 			_isNew={_isNew}
 			GetPromotionDetail={GetPromotionDetail}
 			RefreshProcessBar={RefreshProcessBar}
 			ruleCols={ruleCols}
-			isConvert={isConvert}
-			divisionBy1000={divisionBy1000}
 		/>
 	);
 };

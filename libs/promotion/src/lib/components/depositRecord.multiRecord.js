@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { number_format } from "@ailab-mobile/common";
-import PropTypes from "prop-types";
 
 export default ({ i18n, refList, depositAmount }) => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +31,7 @@ export const Record = ({
 	isOpen,
 	depositId,
 	amount,
-	isConvert,
+	isConvert = false,
 	divisionBy1000
 }) => (
 	<div className={isOpen ? "open" : ""}>
@@ -41,17 +40,13 @@ export const Record = ({
 	</div>
 );
 
-Record.propTypes = {
-	isConvert: PropTypes.bool.isRequired
-};
-
 export const Content = ({
 	i18n,
 	children,
 	depositAmount,
 	handleOpen,
 	isOpen,
-	isConvert,
+	isConvert = false,
 	divisionBy1000
 }) => (
 	<>
@@ -83,7 +78,3 @@ export const Content = ({
 		</button>
 	</>
 );
-
-Content.propTypes = {
-	isConvert: PropTypes.bool.isRequired
-};

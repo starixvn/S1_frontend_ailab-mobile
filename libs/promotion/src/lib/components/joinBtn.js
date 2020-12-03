@@ -4,6 +4,7 @@ import { isExpiry } from "../common/common";
 import { defBonusType, defPromotionType } from "../common/def";
 import ClaimWithLockedAmount from "./joinBtn.claimWithLockedAmount";
 import { configContext } from "../common/context";
+import { useHandlePopBox } from "../hook/useHandlePopBox";
 
 export default ({
 	uiSetting = {},
@@ -11,7 +12,8 @@ export default ({
 	func_GetPromotionDetail,
 	func_CallBack
 }) => {
-	const { path, userInfo, setPopBox, i18n, api } = useContext(configContext);
+	const { path, userInfo, i18n, api } = useContext(configContext);
+	const { handlePopBox, handleErrorPopBox, clickClose } = useHandlePopBox();
 	const isMountedRef = useRef(null);
 	const [redirectPath, setRedirectPath] = useState(null);
 
@@ -19,12 +21,6 @@ export default ({
 		isMountedRef.current = true;
 		return () => (isMountedRef.current = false);
 	});
-
-	const ClosePopBox = () => {
-		setPopBox({
-			isOpen: false
-		});
-	};
 
 	const SetClaimPromotion = ({ bonusCode, LockedAmount = 0 }) => {
 		api.promotion
@@ -45,15 +41,12 @@ export default ({
 							func_CallBack();
 						}
 
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
+						handlePopBox({
 							content: <p>{i18n.msg_Updatesuccessful}</p>,
-							hasBtn: true,
 							btnBar: (
 								<div className="btn-group">
 									<button
-										onClick={ClosePopBox}
+										onClick={clickClose}
 										className={
 											uiSetting.popBox?.submitBtn ??
 											"btn-check"
@@ -68,13 +61,11 @@ export default ({
 							setRedirectPath(
 								`/${path.member.root}?prevPage=${path.promotionInfo.root}&BonusCode=${bonusCode}`
 							);
-							ClosePopBox();
+							clickClose();
 						};
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
+
+						handlePopBox({
 							content: <p>{i18n.msg_OTPHint}</p>,
-							hasBtn: true,
 							btnBar: (
 								<div className="btn-group">
 									<button
@@ -82,7 +73,7 @@ export default ({
 											uiSetting.popBox?.cancelBtn ??
 											"blue"
 										}
-										onClick={ClosePopBox}>
+										onClick={clickClose}>
 										{i18n.lbl_Later}
 									</button>
 									<button
@@ -97,30 +88,7 @@ export default ({
 							)
 						});
 					} else {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: (
-								<p>
-									{res.data.message
-										? res.data.message
-										: `[${res.data.errorCode}] ${i18n.msg_ApiServerError}`}
-								</p>
-							),
-							hasBtn: true,
-							btnBar: (
-								<div className="btn-group">
-									<button
-										onClick={ClosePopBox}
-										className={
-											uiSetting.popBox?.submitBtn ??
-											"btn-check"
-										}>
-										{i18n.lbl_Close}
-									</button>
-								</div>
-							)
-						});
+						handleErrorPopBox({ ...res.data, uiSetting });
 					}
 				}
 			});
@@ -136,20 +104,17 @@ export default ({
 					setRedirectPath(
 						`/${path.member.root}?prevPage=${path.promotionInfo.root}&BonusCode=${_promo.bonusCode}`
 					);
-					ClosePopBox();
+					clickClose();
 				};
-				setPopBox({
-					isOpen: true,
-					title: i18n.lbl_ImportantNote,
+				handlePopBox({
 					content: <p>{i18n.lbl_UpdatePersonalInfoPromotion}</p>,
-					hasBtn: true,
 					btnBar: (
 						<div className="btn-group">
 							<button
 								className={
 									uiSetting.popBox?.cancelBtn ?? "blue"
 								}
-								onClick={ClosePopBox}>
+								onClick={clickClose}>
 								{i18n.lbl_Cancel}
 							</button>
 							<button
@@ -168,9 +133,7 @@ export default ({
 				_promo.result === 1 &&
 				_promo.requiredAmount > 0
 			) {
-				setPopBox({
-					isOpen: true,
-					title: i18n.lbl_ImportantNote,
+				handlePopBox({
 					content: (
 						<div className="info">
 							{i18n.lbl_RequireMinAmountHint}
@@ -183,14 +146,13 @@ export default ({
 							{i18n.msg_GoToDepositPage}
 						</div>
 					),
-					hasBtn: true,
 					btnBar: (
 						<div className="btn-group">
 							<button
 								className={
 									uiSetting.popBox?.cancelBtn ?? "blue"
 								}
-								onClick={ClosePopBox}>
+								onClick={clickClose}>
 								{i18n.lbl_Later}
 							</button>
 							<Link
@@ -209,14 +171,12 @@ export default ({
 				_promo.promotionType === defPromotionType.reDeposit
 			) {
 				if (_promo.bonusType === defBonusType.Percentage) {
-					setPopBox({
-						isOpen: true,
-						title: i18n.lbl_ImportantNote,
+					handlePopBox({
 						content: (
 							<ClaimWithLockedAmount
 								uiSetting={uiSetting}
 								promotionInfo={promotionInfo}
-								ClosePopBox={ClosePopBox}
+								ClosePopBox={clickClose}
 								SetClaimPromotion={SetClaimPromotion}
 							/>
 						)
