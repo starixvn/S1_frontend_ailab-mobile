@@ -23,11 +23,17 @@ export const number_format = (
 	let arr = n.split(".");
 	let re = /(\d{1,3})(?=(\d{3})+$)/g;
 
-	return formatRequired
-		? arr[0].replace(re, "$1,") +
-				(arr.length === 2 ? "." + arr[1] : "") +
-				" ('000)"
-		: arr[0].replace(re, "$1,");
+	return (
+		arr[0].replace(re, "$1,") +
+		(arr.length === 2 ? "." + arr[1] : "") +
+		(formatRequired ? " ('000)" : "")
+	);
+
+	// return formatRequired
+	// 	? arr[0].replace(re, "$1,") +
+	// 			(arr.length === 2 ? "." + arr[1] : "") +
+	// 			" ('000)"
+	// 	: arr[0].replace(re, "$1,");
 };
 
 const _isConvertList = {
