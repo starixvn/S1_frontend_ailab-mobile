@@ -3,32 +3,8 @@ import JoinBtn from "./joinBtn";
 import DetailBtn from "./detailBtn";
 import PromoRule from "./promotionCard.promoRule";
 
-export const CardWithoutRule = ({
-	uiSetting,
-	href,
-	promotion,
-	imgSRC,
-	detailsDisplayText
-}) => (
-	<div
-		href={href}
-		className="promodule"
-		target="_blank"
-		rel="noopener noreferrer">
-		<img src={imgSRC} alt={promotion.imgName ?? ""} />
-		<div className="protitle">{promotion.title}</div>
-		<div className="text">{promotion.description}</div>
-		<div className="btn-group">
-			<button className={uiSetting?.detailBtn ?? "white"}>
-				{detailsDisplayText}
-			</button>
-		</div>
-	</div>
-);
-
 export default ({
 	p,
-	userInfo,
 	_isExpiry,
 	_isClaimed,
 	_isNew,
@@ -36,8 +12,7 @@ export default ({
 	getPromotionListV2,
 	i18n,
 	uiSetting,
-	ruleCols,
-	divisionBy1000
+	ruleCols
 }) => (
 	<div
 		className={`promodule${_isClaimed ? " open" : ""}${
@@ -51,14 +26,7 @@ export default ({
 		<img src={imgSRC} alt={p.bonusCode ?? ""} />
 		<div className="protitle">{p.title}</div>
 		<div className="text">{p.description}</div>
-		<PromoRule
-			promotionInfo={p}
-			i18n={i18n}
-			isLogin={userInfo.isLogin}
-			currencyId={userInfo.currencyId}
-			ruleCols={ruleCols}
-			divisionBy1000={divisionBy1000}
-		/>
+		<PromoRule promotionInfo={p} ruleCols={ruleCols} />
 		<div className="btn-group">
 			<DetailBtn
 				displayText_Detail={i18n.lbl_Details}
@@ -73,15 +41,15 @@ export default ({
 	</div>
 );
 
-export const CardForStatic = ({ userInfo, p, i18n, uiSetting }) => (
+export const CardForStatic = ({ userInfo: { langId }, p, i18n, uiSetting }) => (
 	<div className="promodule">
-		<img src={p.imgUrl?.[userInfo.langId]} alt={p.bonusCode ?? ""} />
-		<div className="protitle">{p.title?.[userInfo.langId]}</div>
-		<div className="text">{p.description?.[userInfo.langId]}</div>
+		<img src={p.imgUrl?.[langId]} alt={p.bonusCode ?? ""} />
+		<div className="protitle">{p.title?.[langId]}</div>
+		<div className="text">{p.description?.[langId]}</div>
 		<div className="btn-group">
 			<a
 				className={uiSetting?.detailBtn ?? "white"}
-				href={p.bannerLink?.[userInfo.langId] ?? ""}
+				href={p.bannerLink?.[langId] ?? ""}
 				target="_blank"
 				rel="noopener noreferrer">
 				{i18n.lbl_Details}

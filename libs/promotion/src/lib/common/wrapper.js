@@ -12,7 +12,7 @@ export default ({
 	userInfo,
 	setPopBox,
 	ruleCols,
-	divisionBy1000
+	divisionBy1000 = false
 }) => (
 	<configContext.Provider
 		value={{

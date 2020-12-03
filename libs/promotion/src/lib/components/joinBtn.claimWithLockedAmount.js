@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Inputbox, number_format } from "@ailab-mobile/common";
-import PropTypes from "prop-types";
+import { configContext } from "../common/context";
 
 export const checkClaimAmount = ({
 	_claimAmount,
@@ -58,15 +58,13 @@ export const Button = ({ uiSetting, onClick, displayText }) => (
 	</button>
 );
 
-const ClaimWithLockedAmount = ({
+export default ({
 	uiSetting,
-	i18n,
 	promotionInfo,
 	ClosePopBox,
-	SetClaimPromotion,
-	isConvert,
-	divisionBy1000
+	SetClaimPromotion
 }) => {
+	const { i18n, isConvert, divisionBy1000 } = useContext(configContext);
 	const {
 		warning,
 		claimAmount,
@@ -115,9 +113,3 @@ const ClaimWithLockedAmount = ({
 		</>
 	);
 };
-
-ClaimWithLockedAmount.propTypes = {
-	isConvert: PropTypes.bool.isRequired
-};
-
-export default ClaimWithLockedAmount;

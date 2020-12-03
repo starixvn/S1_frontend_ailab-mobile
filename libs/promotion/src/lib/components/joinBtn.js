@@ -215,7 +215,6 @@ export default ({
 						content: (
 							<ClaimWithLockedAmount
 								uiSetting={uiSetting}
-								i18n={i18n}
 								promotionInfo={promotionInfo}
 								ClosePopBox={ClosePopBox}
 								SetClaimPromotion={SetClaimPromotion}

@@ -1,19 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { defPromotionType } from "../common/def";
 import { number_format, ReloadSpin } from "@ailab-mobile/common";
-import PropTypes from "prop-types";
+import { configContext } from "../common/context";
 
-const ProcessBar = ({
-	i18n,
-	currencyId,
+export default ({
 	custTurnOver,
 	custRollOver,
 	RefreshProcessBar,
 	promotionType,
-	isJoin,
-	isConvert,
-	divisionBy1000
+	isJoin
 }) => {
+	const {
+		i18n,
+		userInfo: { currencyId },
+		isConvert,
+		divisionBy1000
+	} = useContext(configContext);
+
 	if (
 		isJoin &&
 		promotionType !== defPromotionType.cashback &&
@@ -49,9 +52,3 @@ const ProcessBar = ({
 		return null;
 	}
 };
-
-ProcessBar.propTypes = {
-	isConvert: PropTypes.bool.isRequired
-};
-
-export default ProcessBar;

@@ -10,15 +10,12 @@ export default ({
 	uiSetting = {},
 	promotionInfo,
 	i18n,
-	userInfo,
 	_isExpiry,
 	_isClaimed,
 	_isNew,
 	GetPromotionDetail,
 	RefreshProcessBar,
-	ruleCols,
-	isConvert,
-	divisionBy1000
+	ruleCols
 }) => (
 	<div
 		className={`promodule${promotionInfo.isJoin ? " open" : ""}${
@@ -33,34 +30,19 @@ export default ({
 		<Link className="btn-cancel" to={`/${path.promotion.root}`}>
 			{i18n.lbl_Back}
 		</Link>
-
 		<JoinBtn
 			promotionInfo={promotionInfo}
 			func_GetPromotionDetail={GetPromotionDetail}
 			uiSetting={uiSetting}
 		/>
-
 		<div className="protitle">{promotionInfo.title}</div>
 		<div className="text">{promotionInfo.description}</div>
-
 		<DepositRecord promotionInfo={promotionInfo} i18n={i18n} />
-
 		<ProcessBar
-			i18n={i18n}
-			currencyId={userInfo.currencyId}
 			{...promotionInfo}
 			RefreshProcessBar={RefreshProcessBar.bind(this, promotionInfo)}
 		/>
-
-		<PromoRule
-			promotionInfo={promotionInfo}
-			i18n={i18n}
-			isLogin={userInfo.isLogin}
-			currencyId={userInfo.currencyId}
-			ruleCols={ruleCols}
-			isConvert={isConvert}
-			divisionBy1000={divisionBy1000}
-		/>
+		<PromoRule promotionInfo={promotionInfo} ruleCols={ruleCols} />
 		<div
 			className="text"
 			dangerouslySetInnerHTML={{

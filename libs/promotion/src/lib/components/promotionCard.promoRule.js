@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import RemainTime from "../common/remainTime";
 import { number_format } from "@ailab-mobile/common";
 import { defRuleCols } from "../common/def";
+import { configContext } from "../common/context";
 
 const MinAmount = ({
 	requiredAmount,
@@ -105,18 +106,21 @@ const defElems = ({
 	};
 };
 
-const PromoRule = ({
+export default ({
 	ruleCols = [
 		defRuleCols.minAmount,
 		defRuleCols.rollOver,
 		defRuleCols.remainingTime
 	],
-	promotionInfo,
-	i18n,
-	isLogin,
-	isConvert,
-	divisionBy1000
+	promotionInfo
 }) => {
+	const {
+		isConvert,
+		divisionBy1000,
+		userInfo: { isLogin },
+		i18n
+	} = useContext(configContext);
+
 	const allElems = defElems({
 		promotionInfo,
 		i18n,
@@ -132,5 +136,3 @@ const PromoRule = ({
 		</div>
 	);
 };
-
-export default PromoRule;
