@@ -9,6 +9,11 @@ import Loading from "../common/loading";
 import { defPopBoxType } from "../common/popbox";
 import api from "../../service/api";
 
+export const tpWalletsListType = {
+	allWallets: 0,
+	afterTransWallets: 1
+};
+
 const initSelectedIdx = {
 	transferFrom: null,
 	transferTo: null
@@ -42,29 +47,31 @@ const Panel = () => {
 	});
 
 	useEffect(() => {
-		api.account.GetTpWalletList({ ListType: 0 }).then(
-			res => {
-				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
-						res.data.data?.forEach(i => {
-							GetTpWalletBalance(i.tpId);
-						});
-					} else {
-						setPopBox({
-							isOpen: true,
-							title: i18n["lbl_ImportantNote"],
-							content: res.data.message
-						});
+		api.account
+			.GetTpWalletList({ ListType: tpWalletsListType.allWallets })
+			.then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							res.data.data?.forEach(i => {
+								GetTpWalletBalance(i.tpId);
+							});
+						} else {
+							setPopBox({
+								isOpen: true,
+								title: i18n["lbl_ImportantNote"],
+								content: res.data.message
+							});
+						}
+						setLoading(false);
 					}
-					setLoading(false);
+				},
+				err => {
+					if (isMountedRef.current) {
+						setLoading(false);
+					}
 				}
-			},
-			err => {
-				if (isMountedRef.current) {
-					setLoading(false);
-				}
-			}
-		);
+			);
 		GetBalnace();
 
 		api.tp.GetTransferRecent().then(res => {

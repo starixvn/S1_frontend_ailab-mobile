@@ -9,6 +9,7 @@ import { number_format, isConvert } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
 import BonusWallet from "./profile.wallet.bonus";
 import api from "../../service/api";
+import { tpWalletsListType } from "../transfer/transfer";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
@@ -26,32 +27,34 @@ export default () => {
 
 	useEffect(() => {
 		GetBalance();
-		api.account.GetTpWalletList({ ListType: 0 }).then(
-			res => {
-				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
-						res.data.data?.forEach(i => {
-							GetTpWalletBalance(i.tpId);
-						});
-					} else {
+		api.account
+			.GetTpWalletList({ ListType: tpWalletsListType.afterTransWallets })
+			.then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							res.data.data?.forEach(i => {
+								GetTpWalletBalance(i.tpId);
+							});
+						} else {
+							setPopBox({
+								isOpen: true,
+								title: i18n["lbl_ImportantNote"],
+								content: res.data.message
+							});
+						}
+					}
+				},
+				err => {
+					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
 							title: i18n["lbl_ImportantNote"],
-							content: res.data.message
+							content: i18n["msg_ApiServerError"]
 						});
 					}
 				}
-			},
-			err => {
-				if (isMountedRef.current) {
-					setPopBox({
-						isOpen: true,
-						title: i18n["lbl_ImportantNote"],
-						content: i18n["msg_ApiServerError"]
-					});
-				}
-			}
-		);
+			);
 	}, []);
 
 	const GetBalance = () => {
