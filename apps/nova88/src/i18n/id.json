@@ -163,7 +163,7 @@
 	"lbl_CancelConfirm": "Apakah anda yakin untuk membatalkannya ? Jika sudah batal maka tidak bisa kembali lagi",
 	"lbl_UploadSuccess": "File Anda terlah berhasil diunggah.",
 	"lbl_AllTranscations": "Semua Transaksi",
-	"msg_NoData": "Tidak ada data",
+	"msg_NoData": "Tidak Ada Informasi Yang Tersedia",
 	"lbl_MaxAmount": "Jumlah Maksimal",
 	"lbl_TransferTo": "Transfer kepada",
 	"lbl_TransferFrom": "Transfer dari",
