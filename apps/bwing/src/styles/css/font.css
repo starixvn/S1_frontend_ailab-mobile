@@ -18,7 +18,7 @@
 .casinoList .icon-JOKER::before {
   font-size: 12px !important;
   -webkit-transform: scale(0.8);
-  transform: scale(0.8);
+          transform: scale(0.8);
 }
 
 .casinoList .icon-SG::before {
@@ -509,8 +509,8 @@
   content: "\e93c";
 }
 
-.icon-ZALO:before {
-  content: "\e93d";
+.icon-Zalo:before {
+  content: "\e9e2";
 }
 
 .icon-member:before {

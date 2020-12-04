@@ -281,6 +281,7 @@ header .Join .inputBox,
 header .Login .inputBox {
   position: relative;
   margin: 2vw 0 0;
+  font-size: 3.5vw;
 }
 
 header .Join .inputBox .JoinRule,
@@ -355,7 +356,7 @@ header .Login button {
 
 header .Join .Terms,
 header .Login .Terms {
-  margin: 1vw auto 0;
+  margin: 1vw auto;
   line-height: 26px;
 }
 
@@ -372,6 +373,7 @@ header .Join .Terms a,
 header .Login .Terms a {
   color: #f77a00;
   display: unset;
+  font-size: 3vw;
 }
 
 header .Join .Terms input[type="checkbox"],
@@ -469,7 +471,7 @@ header .headerButton > button {
   height: 30px;
   background: #58cdff;
   margin-left: 5px;
-  font-size: 2vw;
+  font-size: 3vw;
 }
 
 header .headerButton > button:nth-child(3) {
@@ -537,6 +539,7 @@ main .swiper-container .swiper-slide.swiper-slide-active {
 
 main .banner {
   width: 95%;
+  height: 37.5vw;
   display: block;
   top: 12vw;
   z-index: 3;
@@ -597,6 +600,10 @@ main #Marquee > div.open {
           animation-duration: 4600ms;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
+}
+
+main #Marquee + div .banner {
+  height: auto;
 }
 
 main .sideBar {
@@ -1136,6 +1143,11 @@ footer > a.open {
 #popup .popTit .text-org {
   font-weight: bold;
   font-size: 4vw;
+  color: #58cdff;
+}
+
+#popup .popTit .text-org .icon {
+  font-size: 10vw;
 }
 
 #popup .popTxt {
@@ -1449,6 +1461,7 @@ footer > a.open {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   position: relative;
+  height: 35px;
 }
 
 .inputBoxText input {
@@ -1460,21 +1473,14 @@ footer > a.open {
   border: 0;
   padding: 2vw 0;
   outline: none;
+  -webkit-appearance: inherit !important;
 }
 
-.inputBoxText input ::-webkit-datetime-edit {
-  overflow: visible;
-}
-
-.inputBoxText input ::-webkit-calendar-picker-indicator {
-  background-image: -webkit-linear-gradient(top, transparent, transparent);
-}
-
-.inputBoxText .iconModule span {
+.iconModule span {
   margin-left: 5px;
 }
 
-.inputBoxText .iconModule span::before {
+.iconModule span::before {
   font-size: 3vw;
 }
 
@@ -1519,7 +1525,6 @@ footer > a.open {
 }
 
 .inputBox.parts .inputBox {
-  width: 100%;
   -webkit-box-flex: 2.5;
       -ms-flex: 2.5;
           flex: 2.5;
@@ -1530,7 +1535,7 @@ footer > a.open {
 }
 
 .inputBox.parts .inputBox input[type="date"] {
-  padding: 3vw 1vw 3vw 9vw;
+  padding: 3vw 0vw;
 }
 
 .inputBox .dropdown i.icon {
@@ -1622,7 +1627,7 @@ footer > a.open {
   width: 100%;
   color: #58cdff;
   border-radius: 3px;
-  padding: 2vw 0;
+  height: 35px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1636,7 +1641,7 @@ footer > a.open {
       -ms-flex-align: center;
           align-items: center;
   font-weight: bold;
-  font-size: 4vw;
+  font-size: 3vw;
   border-radius: 3px;
 }
 
@@ -1942,7 +1947,7 @@ footer > a.open {
   border: 1px solid #1d2f62;
   border-radius: 5px;
   margin-top: 2vw;
-  padding: 0 2vw;
+  padding: 2vw;
 }
 
 .depositInBox > p {
@@ -1951,6 +1956,12 @@ footer > a.open {
 
 .depositInBox .inputBoxText p.txt-blue12 {
   width: inherit;
+}
+
+p.txt-blue12 {
+  width: inherit;
+  white-space: nowrap;
+  text-align: left;
 }
 
 .depositTitle {
@@ -2131,7 +2142,7 @@ footer > a.open {
       -ms-flex-align: start;
           align-items: start;
   padding: 5px;
-  margin-top: 2vw;
+  margin-top: 5vw;
 }
 
 .depositType .icon:before {
@@ -2213,7 +2224,7 @@ footer > a.open {
   color: #58cdff;
   font-weight: bold;
   text-align: center;
-  height: 16vw;
+  height: 25vw;
 }
 
 .depositType div span {
@@ -2227,8 +2238,8 @@ footer > a.open {
 
 .depositType div .creditTime {
   border: 0;
-  min-width: 80px;
-  padding: 1.5vw 2vw;
+  min-width: 85px;
+  padding: 1.5vw 1vw;
   white-space: nowrap;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -2441,6 +2452,7 @@ input {
   color: #fff;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  font-size: 3.5vw;
 }
 
 input::-webkit-input-placeholder {
@@ -3007,7 +3019,7 @@ button.clickBtn:before {
           flex: 1;
   border: 1px solid #7789bd;
   border-radius: 3px;
-  padding: 2vw;
+  padding: 0 2vw;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -3036,6 +3048,7 @@ button.clickBtn:before {
   resize: none;
   border: 0;
   padding: 0;
+  -webkit-appearance: inherit !important;
   font-size: 12px;
 }
 
@@ -4221,13 +4234,17 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 100%;
-  height: 30vw;
   border-bottom: 1px solid #101d41;
 }
 
 .bannerS img {
   width: calc(100% - 8vw);
+  margin: 2vw 0;
 }
 
 .gameArea {
@@ -4452,7 +4469,7 @@ span.important {
   margin-right: -0.5vw;
 }
 
-.headerT .headerTLogout a {
+.headerT .headerTLogout .heardTitle {
   margin: 0 auto;
   font-size: 5vw;
 }
@@ -4544,6 +4561,12 @@ span.important {
   -webkit-backdrop-filter: blur(20px);
           backdrop-filter: blur(20px);
   border-top: 1px solid #101d41;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .headerB .nav {
@@ -4564,7 +4587,7 @@ span.important {
   top: 0px;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
+  overflow-y: auto;
   background-color: #010e33;
   z-index: 10;
 }
@@ -4744,9 +4767,7 @@ span.important {
 
 .menu .menuNav {
   width: 100%;
-  height: calc(100vh - 165px);
-  overflow: auto;
-  padding: 0 10px;
+  padding: 0 10px 80px 10px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -4888,7 +4909,6 @@ span.important {
 
 .depostiImgText img {
   width: 40%;
-  height: 60px;
   background-color: #fff;
   color: #fff;
   padding: 2vw;
@@ -4942,7 +4962,8 @@ span.important {
 
 .depostiImgText div.bankinfo img {
   width: 20vw;
-  height: auto;
+  height: 10vw;
+  max-height: 10vw;
   padding: 0;
   margin: 0;
 }
@@ -5131,7 +5152,6 @@ span.important {
 .swapBox {
   background-color: #3a4d80;
   border: 1px solid #4d5e8e;
-  margin: 2vw;
   padding: 2vw;
   border-radius: 3px;
 }
@@ -5154,18 +5174,22 @@ span.important {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
-  padding: 0 2vw;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 2vw;
 }
 
 .inputBoxLevel .left {
-  width: 73%;
+  width: 60%;
+}
+
+.inputBoxLevel .left .inputBoxText {
+  height: 35px;
 }
 
 .inputBoxLevel .right {
-  width: 25%;
+  width: 39%;
 }
 
 .inputBoxLevel .right .btn-group {
@@ -5204,6 +5228,10 @@ span.important {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin: 2vw 0;
 }
 
@@ -5772,7 +5800,7 @@ span.important {
           flex: 1;
   text-align: center;
   border-radius: 3px;
-  word-break: break-all;
+  word-break: break-word;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5914,11 +5942,10 @@ span.important {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  height: 47px;
   position: relative;
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   z-index: 2;
 }
 
@@ -5938,6 +5965,7 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  height: 35px;
 }
 
 .inputModuleRow .inputBox .input-title {
@@ -5960,10 +5988,15 @@ span.important {
 }
 
 .inputModuleRow .btn-group {
+  height: 35px;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   margin: auto;
+}
+
+.inputModuleRow .btn-group button {
+  padding: 0 2vw;
 }
 
 .withdrawalBox > .btn-group + .info {

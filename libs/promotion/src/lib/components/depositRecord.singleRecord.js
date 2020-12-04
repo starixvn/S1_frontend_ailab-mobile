@@ -1,15 +1,16 @@
 import React from "react";
 import { defPromotionType } from "../common/def";
-import { number_format } from "@ailab-mobile/common";
+import { number_format } from "../common/common";
 
-export default ({
+const SingleRecord = ({
 	i18n,
 	depositId,
 	depositAmount,
 	canJoin,
 	isJoin,
 	currencyId,
-	promotionType
+	promotionType,
+	formatSetting
 }) => {
 	return canJoin &&
 		!isJoin &&
@@ -24,9 +25,11 @@ export default ({
 				<div>{i18n.lbl_DepositAmount}</div>
 				<div>{`${i18n[`Currency_${currencyId}`]} ${number_format(
 					depositAmount,
-					false
+					formatSetting
 				)}`}</div>
 			</div>
 		</div>
 	) : null;
 };
+
+export default SingleRecord;

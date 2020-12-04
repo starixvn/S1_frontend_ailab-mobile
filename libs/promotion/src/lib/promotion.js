@@ -7,18 +7,15 @@ import React, {
 } from "react";
 import { defFilterType, defPromotionType, defTabs } from "./common/def";
 import { isExpiry, isClaimed, isNew } from "./common/common";
-import Card, {
-	CardForStatic,
-	CardWithoutRule
-} from "./components/promotionCard";
+import Card, { CardForStatic } from "./components/promotionCard";
 import Nav from "./components/nav";
 import Tab from "./components/tab";
 import { NoData } from "@ailab-mobile/common";
 import Wrapper from "./common/wrapper";
 import { configContext } from "./common/context";
+import PropTypes from "prop-types";
 
-export const Promotion = props => {
-	const { staticList, ...rest } = props;
+export const Promotion = ({ staticList, ...rest }) => {
 	return (
 		<Wrapper {...rest}>
 			<PromotionContent staticList={staticList} />
@@ -26,15 +23,16 @@ export const Promotion = props => {
 	);
 };
 
-const PromotionContent = ({ staticList }) => {
-	const { config, uiSetting, userInfo, i18n, api } = useContext(
-		configContext
-	);
+Promotion.propTypes = {
+	formatSetting: PropTypes.shape({
+		isConvertRequired: PropTypes.bool,
+		digits: PropTypes.number
+	})
+};
+
+const useGetPromotions = ({ api, userInfo: { langId } }) => {
 	const [promotion, setPromotion] = useState([]);
-	const [tab, setTab] = useState(defTabs.Processing.key);
-	const [filterType, setFilterType] = useState(defFilterType.all);
 	const isMountedRef = useRef(null);
-	// const [staticList, setStaticList] = useState([]);
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -42,40 +40,54 @@ const PromotionContent = ({ staticList }) => {
 	});
 
 	const getPromotionListV2 = useCallback(() => {
-		api.promotion
-			.GetPromotionListV2({
-				langId: userInfo.langId
-			})
-			.then(res => {
-				if (res.data.errorCode === 0 && isMountedRef.current) {
-					let result = res.data.data.sort((a, b) => {
-						return a.periodFrom > b.periodFrom ? -1 : 1;
-					});
+		api.promotion.GetPromotionListV2({ langId }).then(res => {
+			if (res.data.errorCode === 0 && isMountedRef.current) {
+				let result = res.data.data.sort((a, b) =>
+					a.periodFrom > b.periodFrom ? -1 : 1
+				);
 
-					setPromotion(result);
-				}
-			});
-	}, [userInfo.langId]);
+				setPromotion(result);
+			}
+		});
+	}, [langId]);
 
 	useEffect(() => {
 		getPromotionListV2();
-
-		// fetch(siteInfo().staticPromotions)
-		// 	.then(res => {
-		// 		return res.json();
-		// 	})
-		// 	.then(data => {
-		// 		setStaticList(data);
-		// 	});
 	}, [getPromotionListV2]);
+
+	return { promotion, getPromotionListV2 };
+};
+
+const useHandleTab = () => {
+	const [tab, setTab] = useState(defTabs.Processing.key);
 
 	const onClickTab = tabKey => {
 		setTab(tabKey);
 	};
 
+	return { tab, onClickTab };
+};
+
+const useHandleNav = () => {
+	const [filterType, setFilterType] = useState(defFilterType.all);
+
 	const onClickFilter = value => {
 		setFilterType(value);
 	};
+
+	return { filterType, onClickFilter };
+};
+
+const PromotionContent = ({ staticList }) => {
+	const { uiSetting, userInfo, i18n, api, ruleCols } = useContext(
+		configContext
+	);
+	const { tab, onClickTab } = useHandleTab();
+	const { filterType, onClickFilter } = useHandleNav();
+	const { promotion, getPromotionListV2 } = useGetPromotions({
+		api,
+		userInfo
+	});
 
 	let rows = promotion
 		?.filter(p => {
@@ -102,58 +114,24 @@ const PromotionContent = ({ staticList }) => {
 			}
 		})
 		.map(p => {
-			if (p.actionLink?.startsWith("Promotion/Bonus?")) {
-				let lang =
-					p.fromDB || p.lang.includes(userInfo.langId)
-						? userInfo.langId
-						: "en";
-				let actionLinkByLang = p.fromDB
-					? null
-					: p.actionLinkByLang?.find(a => a.lang === userInfo.langId);
-				let actionLink = actionLinkByLang
-					? actionLinkByLang.link
-					: p.actionLink;
-
-				let href = `${config.t_and_cURL}${
-					p.urlWithLang || p.fromDB ? `/${lang}` : ""
-				}/${actionLink}`;
-
-				let imgSRC = p.fromDB
-					? p.imgURL
-					: `${config.imgUrl}/CMS/${
-							siteInfo().siteName
-					  }/Promotion/${lang}/${p.img}`;
-
-				return (
-					<CardWithoutRule
-						key={`promotion-${langId}-${promotion.bonusCode}`}
-						href={href}
-						promotion={p}
-						imgSRC={imgSRC}
-						detailsDisplayText={i18n.lbl_Details}
-						uiSetting={uiSetting}
-					/>
-				);
-			} else {
-				let imgSRC = p.banner;
-				let _isClaimed = isClaimed(p);
-				let _isNew = _isClaimed ? false : isNew(p);
-				let _isExpiry = tab === defTabs.Expired.key;
-				return (
-					<Card
-						key={`promotion-${userInfo.langId}-${p.bonusCode}`}
-						p={p}
-						userInfo={userInfo}
-						_isExpiry={_isExpiry}
-						_isClaimed={_isClaimed}
-						_isNew={_isNew}
-						imgSRC={imgSRC}
-						getPromotionListV2={getPromotionListV2}
-						i18n={i18n}
-						uiSetting={uiSetting}
-					/>
-				);
-			}
+			let imgSRC = p.banner;
+			let _isClaimed = isClaimed(p);
+			let _isNew = _isClaimed ? false : isNew(p);
+			let _isExpiry = tab === defTabs.Expired.key;
+			return (
+				<Card
+					key={`promotion-${userInfo.langId}-${p.bonusCode}`}
+					p={p}
+					_isExpiry={_isExpiry}
+					_isClaimed={_isClaimed}
+					_isNew={_isNew}
+					imgSRC={imgSRC}
+					getPromotionListV2={getPromotionListV2}
+					i18n={i18n}
+					uiSetting={uiSetting}
+					ruleCols={ruleCols}
+				/>
+			);
 		});
 
 	let staticRows =

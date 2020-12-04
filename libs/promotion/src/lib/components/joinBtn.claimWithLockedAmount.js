@@ -1,5 +1,7 @@
-import React, { useState } from "react";
-import { Inputbox, number_format } from "@ailab-mobile/common";
+import React, { useState, useContext } from "react";
+import { number_format } from "../common/common";
+import { Inputbox } from "@ailab-mobile/common";
+import { configContext } from "../common/context";
 
 export const checkClaimAmount = ({
 	_claimAmount,
@@ -59,11 +61,11 @@ export const Button = ({ uiSetting, onClick, displayText }) => (
 
 export default ({
 	uiSetting,
-	i18n,
 	promotionInfo,
 	ClosePopBox,
 	SetClaimPromotion
 }) => {
+	const { i18n, formatSetting } = useContext(configContext);
 	const {
 		warning,
 		claimAmount,
@@ -85,8 +87,9 @@ export default ({
 			/>
 			<div className="text-org">
 				{`${i18n.lbl_ClaimAmountRange} : ${number_format(
-					promotionInfo.requiredAmount
-				)} ~ ${number_format(promotionInfo.maxAmount)}`}
+					promotionInfo.requiredAmount,
+					formatSetting
+				)} ~ ${number_format(promotionInfo.maxAmount, formatSetting)}`}
 			</div>
 			<div className="btn-group">
 				<Button

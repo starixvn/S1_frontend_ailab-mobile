@@ -2,7 +2,7 @@
 	"lbl_Sports": "กีฬา",
 	"lbl_VirtualSports": "กีฬาจำลอง",
 	"lbl_LiveCasino": "Live Casino",
-	"lbl_Casino": "คาสิโน",
+	"lbl_Casino": "เกมอิเล็กทรอนิกส์",
 	"lbl_Games": "Games",
 	"lbl_KenoAndLottery": "คีโนและล็อตเตอรี่",
 	"lbl_Home": "หน้าแรก",
@@ -342,6 +342,7 @@
 	"lbl_IOSInstallGuide":"iOS 9+ Installation Guide",
 	"lbl_please_select_from_wallet": "กรุณาเลือกกระเป๋าเงินที่ต้องการโอนออก",
 	"lbl_please_select_to_wallet": "กรุณาเลือกกระเป๋าเงินที่ต้องการโอนเข้า",
-	"lbl_TpWallet_22":"Mega วอลเล็ท"
+	"lbl_TpWallet_22":"Mega วอลเล็ท",
+	"msg_OTPHint":"กรุณากรอกข้อมูลส่วนตัวและยืนยันหมายเลขโทรศัพท์ก่อนเข้าร่วมกิจกรรม"
 	
 }

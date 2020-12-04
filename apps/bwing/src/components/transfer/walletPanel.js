@@ -14,7 +14,7 @@ export default ({ i18n, walletInfo, restoreAll, GetWalletInfo }) => {
 							}`}></span>
 						{i18n[item.displayKey].toUpperCase()}
 					</p>
-					<p>{number_format(item.balance, true)}</p>
+					<p>{number_format(item.balance, false)}</p>
 				</div>
 				<div className="btn-group">
 					<button

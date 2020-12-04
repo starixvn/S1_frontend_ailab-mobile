@@ -1,42 +1,18 @@
 import React from "react";
 import JoinBtn from "./joinBtn";
-import RemainTime from "../common/remainTime";
-import { number_format, isConvert } from "@ailab-mobile/common";
 import DetailBtn from "./detailBtn";
-
-export const CardWithoutRule = ({
-	uiSetting,
-	href,
-	promotion,
-	imgSRC,
-	detailsDisplayText
-}) => (
-	<div
-		href={href}
-		className="promodule"
-		target="_blank"
-		rel="noopener noreferrer">
-		<img src={imgSRC} alt={promotion.imgName ?? ""} />
-		<div className="protitle">{promotion.title}</div>
-		<div className="text">{promotion.description}</div>
-		<div className="btn-group">
-			<button className={uiSetting?.detailBtn ?? "white"}>
-				{detailsDisplayText}
-			</button>
-		</div>
-	</div>
-);
+import PromoRule from "./promotionCard.promoRule";
 
 export default ({
 	p,
-	userInfo,
 	_isExpiry,
 	_isClaimed,
 	_isNew,
 	imgSRC,
 	getPromotionListV2,
 	i18n,
-	uiSetting
+	uiSetting,
+	ruleCols
 }) => (
 	<div
 		className={`promodule${_isClaimed ? " open" : ""}${
@@ -50,35 +26,7 @@ export default ({
 		<img src={imgSRC} alt={p.bonusCode ?? ""} />
 		<div className="protitle">{p.title}</div>
 		<div className="text">{p.description}</div>
-		<div className="rollover">
-			<div>
-				{p.requiredAmount > 0 ? (
-					<>
-						<div className="icon icon-icon32px_money">
-							{i18n.lbl_MinAmount}
-						</div>
-						<div>
-							{number_format(
-								p.requiredAmount,
-								isConvert(userInfo.currencyId)
-							)}
-						</div>
-					</>
-				) : null}
-				<div className="icon icon-icon32px_time">
-					{i18n.lbl_RemainingTime}
-				</div>
-				<div>
-					{RemainTime({
-						promotionInfo: p,
-						i18n,
-						isLogin: userInfo.isLogin
-					})}
-				</div>
-				<div className="icon icon-icon32px_">{i18n.lbl_RollOver}</div>
-				<div>{p.rollOver}X</div>
-			</div>
-		</div>
+		<PromoRule promotionInfo={p} ruleCols={ruleCols} />
 		<div className="btn-group">
 			<DetailBtn
 				displayText_Detail={i18n.lbl_Details}
@@ -93,15 +41,15 @@ export default ({
 	</div>
 );
 
-export const CardForStatic = ({ userInfo, p, i18n, uiSetting }) => (
+export const CardForStatic = ({ userInfo: { langId }, p, i18n, uiSetting }) => (
 	<div className="promodule">
-		<img src={p.imgUrl?.[userInfo.langId]} alt={p.bonusCode ?? ""} />
-		<div className="protitle">{p.title?.[userInfo.langId]}</div>
-		<div className="text">{p.description?.[userInfo.langId]}</div>
+		<img src={p.imgUrl?.[langId]} alt={p.bonusCode ?? ""} />
+		<div className="protitle">{p.title?.[langId]}</div>
+		<div className="text">{p.description?.[langId]}</div>
 		<div className="btn-group">
 			<a
 				className={uiSetting?.detailBtn ?? "white"}
-				href={p.bannerLink?.[userInfo.langId] ?? ""}
+				href={p.bannerLink?.[langId] ?? ""}
 				target="_blank"
 				rel="noopener noreferrer">
 				{i18n.lbl_Details}

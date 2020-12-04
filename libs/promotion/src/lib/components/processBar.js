@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { defPromotionType } from "../common/def";
-import { number_format, ReloadSpin } from "@ailab-mobile/common";
+import { number_format } from "../common/common";
+import { ReloadSpin } from "@ailab-mobile/common";
+import { configContext } from "../common/context";
 
 export default ({
-	i18n,
-	currencyId,
 	custTurnOver,
 	custRollOver,
 	RefreshProcessBar,
 	promotionType,
 	isJoin
 }) => {
+	const {
+		i18n,
+		userInfo: { currencyId },
+		formatSetting
+	} = useContext(configContext);
+
 	if (
 		isJoin &&
 		promotionType !== defPromotionType.cashback &&
@@ -26,10 +32,10 @@ export default ({
 				<div className="turnover">
 					<span>
 						{i18n[`Currency_${currencyId}`]}{" "}
-						{number_format(custTurnOver, false)}
+						{number_format(custTurnOver, formatSetting)}
 					</span>{" "}
 					/ ({i18n.lbl_Req} {i18n[`Currency_${currencyId}`]}{" "}
-					{number_format(custRollOver, false)})
+					{number_format(custRollOver, formatSetting)})
 					<ReloadSpin func={RefreshProcessBar} />
 				</div>
 				<div className="progressBar">
@@ -43,6 +49,6 @@ export default ({
 			</div>
 		);
 	} else {
-		return <></>;
+		return null;
 	}
 };

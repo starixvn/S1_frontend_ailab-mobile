@@ -10,11 +10,11 @@ export default ({ i18n, promotionInfo }) => {
 		(promotionInfo.promotionType === defPromotionType.reDeposit ||
 			promotionInfo.promotionType === defPromotionType.firstDeposit)
 	) {
-		if (promotionInfo.promotionType === defPromotionType.reDeposit) {
-			return <MultipleRecord i18n={i18n} {...promotionInfo} />;
-		} else {
-			return <SingleRecord i18n={i18n} {...promotionInfo} />;
-		}
+		return promotionInfo.promotionType === defPromotionType.reDeposit ? (
+			<MultipleRecord i18n={i18n} {...promotionInfo} />
+		) : (
+			<SingleRecord i18n={i18n} {...promotionInfo} />
+		);
 	} else {
 		return null;
 	}

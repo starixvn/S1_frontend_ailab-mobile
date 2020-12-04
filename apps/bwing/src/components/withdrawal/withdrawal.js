@@ -399,7 +399,7 @@ const Panel = () => {
 									real_amount,
 									selBank.sysId
 								)}>
-								{i18n["lbl_Submit"]}
+								{i18n["lbl_Confirm"]}
 							</button>
 						</div>
 					)
@@ -451,7 +451,9 @@ const Panel = () => {
 	};
 
 	const SelectBank = b => {
-		if (b.sysId !== selBank?.sysId) {
+		if (
+			!(b.sysId === selBank?.sysId && b.accountNo === selBank?.accountNo)
+		) {
 			setSelBank(b);
 		}
 	};
@@ -502,11 +504,11 @@ const Panel = () => {
 				hasBtn: true,
 				btnBar: (
 					<div className="btn-group">
-						<button className="cancel" onClick={ClickCancel}>
-							{i18n["lbl_Cancel"]}
+						<button className="cancel" onClick={ClickSubmit}>
+							{i18n["lbl_Yes"]}
 						</button>
-						<button className="submit" onClick={ClickSubmit}>
-							{i18n["lbl_Submit"]}
+						<button className="submit" onClick={ClickCancel}>
+							{i18n["lbl_No"]}
 						</button>
 					</div>
 				)

@@ -27,7 +27,7 @@ const GetUploadFileName = files => {
 };
 
 class Content extends Component {
-	state = { processing: false, disableUpload: false };
+	state = { processing: false, disableUpload: false, refIdTip: "" };
 	isMountedRef = false;
 	filebox = React.createRef();
 	componentDidMount() {
@@ -83,37 +83,48 @@ class Content extends Component {
 		this.props.EditField(column, e.target.value);
 	};
 	SeReceipt = () => {
-		if (!this.state.processing) {
-			this.setState({ processing: true });
-			let bankSlipPopBox = this.props.bankSlipPopBox;
-			api_SetDepositReceipt(
-				bankSlipPopBox.transId,
-				moment(bankSlipPopBox.depositTime).unix(),
-				bankSlipPopBox.refId
-			).then(
-				res => {
-					if (this.isMountedRef) {
-						if (res.data.errorCode === 0) {
-							this.props.handlePopBox();
-						} else {
-							alert(res.message);
+		if (!this.props.bankSlipPopBox.refId) {
+			this.setState({ refIdTip: this.props.i18n.lbl_RemindForRefNum });
+		} else {
+			if (!this.state.processing) {
+				this.setState({ processing: true });
+				let bankSlipPopBox = this.props.bankSlipPopBox;
+				api_SetDepositReceipt(
+					bankSlipPopBox.transId,
+					moment(bankSlipPopBox.depositTime).unix(),
+					bankSlipPopBox.refId
+				).then(
+					res => {
+						if (this.isMountedRef) {
+							if (res.data.errorCode === 0) {
+								this.setState({ processing: false });
+								this.props.handlePopBox();
+
+								this.props.setPopBox({
+									isOpen: true,
+									title: this.props.i18n.lbl_ImportantNote,
+									content: this.props.i18n
+										.lbl_UpdateSuccessWillProcess
+								});
+							} else {
+								alert(res.message);
+								this.setState({ processing: false });
+							}
 						}
+					},
+					err => {
+						if (this.isMountedRef) {
+							this.props.setPopBox({
+								isOpen: true,
+								title: this.props.i18n.lbl_ImportantNote,
+								content: this.props.i18n.msg_ApiServerError
+							});
 
-						this.setState({ processing: false });
+							this.setState({ processing: false });
+						}
 					}
-				},
-				err => {
-					if (this.isMountedRef) {
-						this.props.setPopBox({
-							isOpen: true,
-							title: this.props.i18n.lbl_ImportantNote,
-							content: "API Server Error."
-						});
-
-						this.setState({ processing: false });
-					}
-				}
-			);
+				);
+			}
 		}
 	};
 	HandleUploadAgain = () => {
@@ -279,6 +290,9 @@ class Content extends Component {
 							{/* <div className="iconModule">
 									<span className="icon icon-information-solid textBlue"></span>
 								</div> */}
+						</div>
+						<div className="tip open">
+							{this.state.refIdTip ?? ""}
 						</div>
 					</div>
 					<div className="btn-group">

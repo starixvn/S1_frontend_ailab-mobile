@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { number_format } from "@ailab-mobile/common";
+import { number_format } from "../common/common";
 
 export default ({ i18n, refList, depositAmount }) => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -27,10 +27,10 @@ export default ({ i18n, refList, depositAmount }) => {
 	) : null;
 };
 
-export const Record = ({ isOpen, depositId, amount }) => (
+export const Record = ({ isOpen, depositId, amount, formatSetting }) => (
 	<div className={isOpen ? "open" : ""}>
 		<div>{depositId}</div>
-		<div>{number_format(amount, false)}</div>
+		<div>{number_format(amount, formatSetting)}</div>
 	</div>
 );
 
@@ -39,7 +39,8 @@ export const Content = ({
 	children,
 	depositAmount,
 	handleOpen,
-	isOpen
+	isOpen,
+	formatSetting
 }) => (
 	<>
 		<div className="minAmount">
@@ -54,7 +55,7 @@ export const Content = ({
 			{children}
 			<div className={isOpen ? "open" : ""}>
 				<div>{i18n.lbl_Total}</div>
-				<div>{number_format(depositAmount, false)}</div>
+				<div>{number_format(depositAmount, formatSetting)}</div>
 			</div>
 		</div>
 		<button

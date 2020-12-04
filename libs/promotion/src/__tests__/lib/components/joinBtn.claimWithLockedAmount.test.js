@@ -7,6 +7,7 @@ import ClaimWithLockedAmount, {
 import { renderHook, act } from "@testing-library/react-hooks";
 import renderer from "react-test-renderer";
 import { render, cleanup, fireEvent } from "@testing-library/react";
+import Wrapper from "../../../lib/common/wrapper";
 
 describe("ClaimWithLockedAmount > checkClaimAmount", () => {
 	test(`check return value to be false, _claimAmount:""`, () => {
@@ -172,8 +173,13 @@ describe("ClaimWithLockedAmount", () => {
 			ClosePopBox: () => ({}),
 			SetClaimPromotion: () => ({})
 		};
+
 		const tree = renderer
-			.create(<ClaimWithLockedAmount {...fakeData} />)
+			.create(
+				<Wrapper formatSetting={{ digits: 2 }}>
+					<ClaimWithLockedAmount {...fakeData} />
+				</Wrapper>
+			)
 			.toJSON();
 		expect(tree).toMatchSnapshot();
 	});

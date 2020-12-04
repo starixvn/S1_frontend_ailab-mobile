@@ -149,7 +149,7 @@ const SetMobilePay = props => {
 									this,
 									real_amount
 								)}>
-								{i18n["lbl_Submit"]}
+								{i18n["lbl_Confirm"]}
 							</button>
 						</div>
 					)
@@ -201,8 +201,8 @@ const SetMobilePay = props => {
 									<LimitTip
 										minAmount={paymentInfo.minAmount}
 										maxAmount={paymentInfo.maxAmount}
-										displayTextLimit={i18n.lbl_Unlimited}
-										displayTextUnLimit={i18n.lbl_Limit}
+										displayTextLimit={i18n.lbl_Limit}
+										displayTextUnLimit={i18n.lbl_Unlimited}
 										_isConvert={_isConvert}
 									/>
 								</li>
@@ -233,7 +233,7 @@ const SetMobilePay = props => {
 				)}
 				<div className="btn-group">
 					<button className="submit" onClick={ClickSubmit}>
-						{i18n.lbl_Submit}
+						{i18n.lbl_deposit_submit}
 					</button>
 				</div>
 			</div>

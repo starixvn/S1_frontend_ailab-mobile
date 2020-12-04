@@ -57,7 +57,7 @@ const UserGuide = ({ i18n, langId }) => {
 						href={TandC(langId).HowToWithdraw}
 						target="_blank"
 						className="icon icon-GUIDE2">
-						<span>{i18n.lbl_HowToWithdraw}</span>
+						<span>{i18n.lbl_HowToWithdrawal}</span>
 					</a>
 					<a
 						href={TandC(langId).FAQ}
@@ -89,7 +89,7 @@ const ContactUs = ({ i18n, langId }) => {
 				<a
 					href={siteInfo(langId).zaloId}
 					target="_blank"
-					className="icon icon-zalo"></a>
+					className="icon icon-Zalo"></a>
 				<a
 					href={siteInfo(langId).facebookId}
 					target="_blank"

@@ -2,7 +2,7 @@
 	"lbl_Sports": "Sports",
 	"lbl_VirtualSports": "Virtual Sports",
 	"lbl_LiveCasino": "Live Casino",
-	"lbl_Casino": "Casino",
+	"lbl_Casino": "Slots",
 	"lbl_Games": "Games",
 	"lbl_KenoAndLottery": "Keno & Lottery",
 	"lbl_Home": "Home",
@@ -163,7 +163,7 @@
 	"lbl_CancelConfirm": "Are you sure you want to cancel? It cannot restore after cancellation!",
 	"lbl_UploadSuccess": "Your file was uploaded successfully.",
 	"lbl_AllTranscations": "All Transactions",
-	"msg_NoData": "No Data",
+	"msg_NoData": "No information is available now. ",
 	"lbl_MaxAmount": "Max Amount",
 	"lbl_TransferTo": "Transfer To",
 	"lbl_TransferFrom": "Transfer From",
@@ -342,6 +342,7 @@
 	"lbl_IOSInstallGuide":"iOS 9+ Installation Guide",
 	"lbl_please_select_from_wallet": "Kindly select preferable fund out wallet",
 	"lbl_please_select_to_wallet": "Kindly select preferable fund in wallet",
-	"lbl_TpWallet_22":"Mega Wallet"
+	"lbl_TpWallet_22":"Mega Wallet",
 
+	"msg_OTPHint":"Please complete your profile and verify your phone number to enjoy our promotions."
 }

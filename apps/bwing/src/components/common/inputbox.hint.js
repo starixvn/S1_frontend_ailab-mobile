@@ -18,7 +18,7 @@ const Inputbox = ({
 }) => {
 	return (
 		<>
-			<div className="inputBoxText" style={{ marginTop: "4vw" }}>
+			<div className="inputBoxText">
 				<p className="txt-blue12">{title}</p>
 				<input
 					type={inputType}

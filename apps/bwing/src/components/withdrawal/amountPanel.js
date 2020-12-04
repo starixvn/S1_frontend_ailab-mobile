@@ -20,7 +20,6 @@ export default ({
 					<div>
 						<div>{i18n["lbl_Balance"]}</div>
 						<div>
-							{i18n[`Currency_${currencyId}`]}
 							<div>
 								{number_format(
 									balanceInfo?.balance,
@@ -33,7 +32,6 @@ export default ({
 					<div>
 						<div>{i18n["lbl_Deduction"]}</div>
 						<div>
-							{i18n[`Currency_${currencyId}`]}
 							<div>
 								{number_format(
 									balanceInfo?.deduction,
@@ -46,7 +44,6 @@ export default ({
 					<div>
 						<div>{i18n["lbl_EligibleWithdrawalAmount"]}</div>
 						<div>
-							{i18n[`Currency_${currencyId}`]}
 							<span>
 								{number_format(
 									balanceInfo?.availableBalance,
@@ -62,19 +59,23 @@ export default ({
 					availableBalance={balanceInfo?.availableBalance}
 					_isConvert={_isConvert}
 				/> */}
-				<div className="inputModuleRow">
-					<Inputbox
-						title={i18n["lbl_Amount"]}
-						value={amount}
-						numberConvert={_isConvert}
-						inputType="tel"
-						onChange={e => EditAmount(e.target.value)}
-						btnStatus={warning.status}
-					/>
-					<div className="btn-group">
-						<button className="submit" onClick={ClickSubmit}>
-							{i18n["lbl_Submit"]}
-						</button>
+				<div className="inputBoxLevel">
+					<div className="left">
+						<Inputbox
+							title={i18n["lbl_Amount"]}
+							value={amount}
+							numberConvert={_isConvert}
+							inputType="tel"
+							onChange={e => EditAmount(e.target.value)}
+							btnStatus={warning.status}
+						/>
+					</div>
+					<div className="right">
+						<div className="btn-group">
+							<button className="submit" onClick={ClickSubmit}>
+								{i18n["lbl_withdraw_submit"]}
+							</button>
+						</div>
 					</div>
 				</div>
 				{warning.msg ? (

@@ -40,8 +40,7 @@ const initState = {
 	Password: "",
 	// Email: "",
 	Currency: null,
-	AffiliateId: "",
-	Checkbox: false
+	AffiliateId: ""
 };
 
 const initWarningState = {
@@ -77,12 +76,10 @@ const initCheckboxVal = {
 
 const initChecklistState = {
 	UserName: false,
-	Password: false,
+	Password: false
 	// Email: false,
-	Checkbox: false
 };
 
-const defaultLangId = GET_LANG_ID();
 const currencyDefaultSelectIdx = 0;
 
 const Join = () => {
@@ -480,16 +477,6 @@ const Join = () => {
 			...prev,
 			[col]: checked
 		}));
-
-		if (checkboxState.termsCheck && checkboxState.ageCheck) {
-			setChecklistState(prevState => {
-				return { ...prevState, Checkbox: true };
-			});
-			setUserValueState(prevState => ({
-				...prevState,
-				Checkbox: true
-			}));
-		}
 	};
 
 	const checklistHandler = () => {
@@ -527,7 +514,7 @@ const Join = () => {
 				Userpwd: userValueState.Password,
 				// Email: userValueState.Email,
 				CurrencyId: userValueState.Currency.id,
-				UserLang: defaultLangId
+				UserLang: userInfo.langId
 			};
 
 			regData["RefId"] = getUrlParameter("RefId") || readCookie("RefId");
@@ -549,7 +536,7 @@ const Join = () => {
 									if (isMountedRef.current) {
 										let _user = {
 											isLogin: true,
-											langId: defaultLangId,
+											langId: userInfo.langId,
 											userName: userValueState.UserName
 										};
 										if (res_custInfo.data.errorCode === 0) {
