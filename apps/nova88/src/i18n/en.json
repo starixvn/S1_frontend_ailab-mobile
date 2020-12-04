@@ -163,7 +163,7 @@
 	"lbl_CancelConfirm": "Are you sure you want to cancel? It cannot restore after cancellation!",
 	"lbl_UploadSuccess": "Your file was uploaded successfully.",
 	"lbl_AllTranscations": "All Transactions",
-	"msg_NoData": "No Data",
+	"msg_NoData": "No information is available now. ",
 	"lbl_MaxAmount": "Max Amount",
 	"lbl_TransferTo": "Transfer To",
 	"lbl_TransferFrom": "Transfer From",
