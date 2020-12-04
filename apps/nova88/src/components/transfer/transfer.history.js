@@ -163,8 +163,10 @@ const Panel = () => {
 							{getHistoryState.length > 0 ? (
 								<div className="infoList">{arr}</div>
 							) : (
-								<div className="not-found">
-									{i18n["msg_NoData"]}
+								<div className="nodata icon icon-nodata">
+									<div className="txt-white">
+										{i18n["msg_NoData"]}
+									</div>
 								</div>
 							)}{" "}
 						</div>
