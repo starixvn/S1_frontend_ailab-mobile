@@ -13,6 +13,7 @@ import Tab from "./components/tab";
 import { NoData } from "@ailab-mobile/common";
 import Wrapper from "./common/wrapper";
 import { configContext } from "./common/context";
+import PropTypes from "prop-types";
 
 export const Promotion = ({ staticList, ...rest }) => {
 	return (
@@ -20,6 +21,13 @@ export const Promotion = ({ staticList, ...rest }) => {
 			<PromotionContent staticList={staticList} />
 		</Wrapper>
 	);
+};
+
+Promotion.propTypes = {
+	formatSetting: PropTypes.shape({
+		isConvertRequired: PropTypes.bool,
+		digits: PropTypes.number
+	})
 };
 
 const useGetPromotions = ({ api, userInfo: { langId } }) => {

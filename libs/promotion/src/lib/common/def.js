@@ -58,3 +58,11 @@ export const defRuleCols = {
 	bonus: "bonus",
 	maxBonus: "maxBonus"
 };
+
+export const defWrapperCol = {
+	formatSetting: {
+		isConvertRequired: "isConvertRequired",
+		formatRequired: "formatRequired",
+		digits: "digits"
+	}
+};

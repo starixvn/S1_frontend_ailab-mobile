@@ -22,7 +22,7 @@ export default () => {
 				defRuleCols.rollOver,
 				defRuleCols.remainingTime
 			]}
-			divisionBy1000={true}
+			formatSetting={{ isConvertRequired: true, digits: 0 }}
 		/>
 	);
 };

@@ -21,7 +21,9 @@ describe("MultiRecord", () => {
 			i18n: {}
 		};
 
-		const tree = renderer.create(<MultiRecord {...fakeData} />).toJSON();
+		const tree = renderer
+			.create(<MultiRecord {...fakeData} formatSetting={{ digits: 2 }} />)
+			.toJSON();
 		expect(tree).toMatchSnapshot();
 	});
 

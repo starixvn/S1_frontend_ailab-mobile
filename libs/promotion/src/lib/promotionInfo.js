@@ -5,12 +5,20 @@ import PromotionContent from "./components/promotionContent";
 import Wrapper from "./common/wrapper";
 import { configContext } from "./common/context";
 import { useHandlePopBox } from "./hook/useHandlePopBox";
+import PropTypes from "prop-types";
 
 export const PromotionInfo = props => (
 	<Wrapper {...props}>
 		<PromotionInfoContent />
 	</Wrapper>
 );
+
+PromotionInfo.propTypes = {
+	formatSetting: PropTypes.shape({
+		isConvertRequired: PropTypes.bool,
+		digits: PropTypes.number
+	})
+};
 
 const PromotionInfoContent = () => {
 	const { path, userInfo, i18n, uiSetting, api, ruleCols } = useContext(

@@ -176,7 +176,7 @@ describe("ClaimWithLockedAmount", () => {
 
 		const tree = renderer
 			.create(
-				<Wrapper>
+				<Wrapper formatSetting={{ digits: 2 }}>
 					<ClaimWithLockedAmount {...fakeData} />
 				</Wrapper>
 			)

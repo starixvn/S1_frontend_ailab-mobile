@@ -1,6 +1,6 @@
 import React from "react";
 import { defPromotionType } from "../common/def";
-import { number_format } from "@ailab-mobile/common";
+import { number_format } from "../common/common";
 
 const SingleRecord = ({
 	i18n,
@@ -10,8 +10,7 @@ const SingleRecord = ({
 	isJoin,
 	currencyId,
 	promotionType,
-	isConvert = false,
-	divisionBy1000
+	formatSetting
 }) => {
 	return canJoin &&
 		!isJoin &&
@@ -26,8 +25,7 @@ const SingleRecord = ({
 				<div>{i18n.lbl_DepositAmount}</div>
 				<div>{`${i18n[`Currency_${currencyId}`]} ${number_format(
 					depositAmount,
-					isConvert,
-					divisionBy1000
+					formatSetting
 				)}`}</div>
 			</div>
 		</div>

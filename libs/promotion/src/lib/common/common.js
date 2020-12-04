@@ -1,5 +1,7 @@
 import moment from "moment";
 import { defPromotionType, defPromoStatus } from "./def";
+import { number_format as lib_number_foramt } from "@ailab-mobile/common";
+import { defWrapperCol } from "../common/def";
 
 export const isArrayNotEmpty = arr => {
 	return Array.isArray(arr) && arr.length !== 0;
@@ -32,4 +34,15 @@ export const isClaimed = ({ isJoin, status }) => {
 		status === defPromoStatus.running ||
 		status === defPromoStatus.TransferOut
 	);
+};
+
+export const number_format = (number, formatSetting = {}) => {
+	return lib_number_foramt({
+		number,
+		formatRequired:
+			formatSetting[defWrapperCol.formatSetting.formatRequired],
+		isConvertRequired:
+			formatSetting[defWrapperCol.formatSetting.isConvertRequired],
+		digits: formatSetting[defWrapperCol.formatSetting.digits]
+	});
 };

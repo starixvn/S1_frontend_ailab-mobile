@@ -1,21 +1,14 @@
 import React, { useContext } from "react";
 import RemainTime from "../common/remainTime";
-import { number_format } from "@ailab-mobile/common";
+import { number_format } from "../common/common";
 import { defRuleCols } from "../common/def";
 import { configContext } from "../common/context";
 
-const MinAmount = ({
-	requiredAmount,
-	displayText,
-	isConvert,
-	divisionBy1000
-}) =>
+const MinAmount = ({ requiredAmount, displayText, formatSetting }) =>
 	requiredAmount > 0 ? (
 		<>
 			<div className="icon icon-icon32px_money">{displayText}</div>
-			<div>
-				{number_format(requiredAmount, isConvert, divisionBy1000)}
-			</div>
+			<div>{number_format(requiredAmount, formatSetting)}</div>
 		</>
 	) : null;
 
@@ -46,21 +39,14 @@ const KeyValue = ({ value, displayText, icon }) => (
 	</>
 );
 
-const defElems = ({
-	promotionInfo,
-	i18n,
-	isLogin,
-	isConvert,
-	divisionBy1000
-}) => {
+const defElems = ({ promotionInfo, i18n, isLogin, formatSetting }) => {
 	return {
 		[defRuleCols.minAmount]: (
 			<MinAmount
 				key={`promo-rule-${defRuleCols.minAmount}`}
 				requiredAmount={promotionInfo.requiredAmount}
 				displayText={i18n.lbl_MinAmount}
-				isConvert={isConvert}
-				divisionBy1000={divisionBy1000}
+				formatSetting={formatSetting}
 			/>
 		),
 		[defRuleCols.remainingTime]: (
@@ -83,11 +69,7 @@ const defElems = ({
 			<KeyValue
 				key={`promo-rule-${defRuleCols.bonus}`}
 				displayText={i18n.lbl_Bonus}
-				value={number_format(
-					promotionInfo.bonus,
-					isConvert,
-					divisionBy1000
-				)}
+				value={number_format(promotionInfo.bonus, formatSetting)}
 				icon="icon icon-promotion"
 			/>
 		),
@@ -95,11 +77,7 @@ const defElems = ({
 			<KeyValue
 				key={`promo-rule-${defRuleCols.maxBonus}`}
 				displayText={i18n.lbl_MaxBonusAmount}
-				value={number_format(
-					promotionInfo.maxBonus,
-					isConvert,
-					divisionBy1000
-				)}
+				value={number_format(promotionInfo.maxBonus, formatSetting)}
 				icon="icon icon-icon32px_money"
 			/>
 		)
@@ -115,8 +93,7 @@ export default ({
 	promotionInfo
 }) => {
 	const {
-		isConvert,
-		divisionBy1000,
+		formatSetting,
 		userInfo: { isLogin },
 		i18n
 	} = useContext(configContext);
@@ -125,8 +102,7 @@ export default ({
 		promotionInfo,
 		i18n,
 		isLogin,
-		isConvert,
-		divisionBy1000
+		formatSetting
 	});
 
 	let rows = ruleCols.map(col => allElems[col]);

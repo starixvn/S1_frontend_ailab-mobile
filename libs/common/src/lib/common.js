@@ -7,33 +7,29 @@ export const getUrlParameter = name => {
 		: decodeURIComponent(results[1].replace(/\+/g, " "));
 };
 
-export const number_format = (
-	n,
+export const number_format = ({
+	number,
 	formatRequired = false, //display('000)
-	IsConvertRequired = false //division by 1000
-) => {
-	if (!isNaN(n)) {
-		if (IsConvertRequired || formatRequired) {
-			n /= 1000;
+	isConvertRequired = false, //division by 1000,
+	digits = 2
+}) => {
+	if (!isNaN(number)) {
+		if (isConvertRequired || formatRequired) {
+			number /= 1000;
 		}
-		n = Number(n).toFixed(2);
+
+		if (digits > 0) {
+			number = Number(number).toFixed(digits);
+		}
 	}
 
-	n += "";
-	let arr = n.split(".");
+	number += "";
+	let arr = number.split(".");
 	let re = /(\d{1,3})(?=(\d{3})+$)/g;
 
-	return (
-		arr[0].replace(re, "$1,") +
-		(arr.length === 2 ? "." + arr[1] : "") +
-		(formatRequired ? " ('000)" : "")
-	);
-
-	// return formatRequired
-	// 	? arr[0].replace(re, "$1,") +
-	// 			(arr.length === 2 ? "." + arr[1] : "") +
-	// 			" ('000)"
-	// 	: arr[0].replace(re, "$1,");
+	return `${arr[0].replace(re, "$1,")}${
+		digits > 0 && arr.length === 2 ? "." + arr[1] : ""
+	}${formatRequired ? " ('000)" : ""}`;
 };
 
 const _isConvertList = {
