@@ -2,6 +2,8 @@ import React from "react";
 import config, { siteInfo } from "../../config";
 import TandC from "../../service/t_and_c";
 import Bong88 from "../../styles/img/bong88.png";
+import { Link } from "@reach/router";
+import path from "../../path";
 
 export default ({ i18n, langId }) => {
 	return (
@@ -39,26 +41,21 @@ const UserGuide = ({ i18n, langId }) => {
 			</p>
 			<div className="userGuide-box">
 				<div className="userGuide-box__top">
-					<a
-						href={TandC(langId).HowToDeposit}
-						target="_blank"
-						className="icon icon-GUIDE1">
+					<Link
+						className="icon icon-GUIDE1"
+						to={path.howToDeposit.root}>
 						<span>{i18n.lbl_HowToDepoist}</span>
-					</a>
-					<a
-						href={TandC(langId).HowToBet}
-						target="_blank"
-						className="icon icon-GUIDE4">
+					</Link>
+					<Link className="icon icon-GUIDE4" to={path.howToPlay.root}>
 						<span>{i18n.lbl_HowToPlay}</span>
-					</a>
+					</Link>
 				</div>
 				<div className="userGuide-box__top userGuide-box__bottom">
-					<a
-						href={TandC(langId).HowToWithdraw}
-						target="_blank"
-						className="icon icon-GUIDE2">
+					<Link
+						className="icon icon-GUIDE2"
+						to={path.howToWithdraw.root}>
 						<span>{i18n.lbl_HowToWithdrawal}</span>
-					</a>
+					</Link>
 					<a
 						href={TandC(langId).FAQ}
 						target="_blank"
