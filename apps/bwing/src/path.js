@@ -116,5 +116,14 @@ export default {
 	},
 	fishing: {
 		root: "fishing"
+	},
+	howToDeposit: {
+		root: "howToDeposit"
+	},
+	howToWithdraw: {
+		root: "howToWithdraw"
+	},
+	howToPlay: {
+		root: "howToPlay"
 	}
 };
