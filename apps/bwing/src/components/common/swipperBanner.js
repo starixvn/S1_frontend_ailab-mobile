@@ -153,7 +153,8 @@ const Panel = ({
 						b.outerLink === true,
 						b.urlWithLang,
 						userInfo.isLogin,
-						setNav
+						setNav,
+						b.matchid
 					)}
 					key={`${lang}-${b.img}-${b_idx}`}>
 					<img src={imgSRC} className="banner" alt={b.img ?? ""} />

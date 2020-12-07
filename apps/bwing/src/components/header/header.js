@@ -22,6 +22,7 @@ import { LOGOUT } from "../../service/auth";
 const useGetBalance = ({ isLogin }) => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { walletInfo, setWalletInfo } = useContext(walletInfoContext);
+	const { i18n } = useContext(i18nContext);
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
