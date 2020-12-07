@@ -1415,6 +1415,15 @@ footer > a.open {
   width: 100%;
 }
 
+.info.infoBlack ul li button {
+  width: 90%;
+  padding: 2vw 0;
+  border-radius: 20px;
+  background-color: #58cdff;
+  display: block;
+  margin-bottom: 1vw;
+}
+
 .info.infoAccount li {
   width: 100%;
   display: -webkit-box;
@@ -1462,12 +1471,14 @@ footer > a.open {
           box-sizing: border-box;
   position: relative;
   height: 35px;
+  margin: 2vw 0;
 }
 
 .inputBoxText input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  background: transparent;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border: 0;
@@ -2281,12 +2292,18 @@ p.txt-blue12 {
 
 .recent.open .info {
   display: block;
-  padding: 4vw;
+  padding: 0 2vw;
   margin: 2vw 0;
 }
 
 .recent .info {
   display: none;
+}
+
+.recent .total {
+  text-align: right;
+  margin-top: 3vw;
+  font-size: 4.5vw;
 }
 
 .account {
@@ -3050,6 +3067,7 @@ button.clickBtn:before {
   padding: 0;
   -webkit-appearance: inherit !important;
   font-size: 12px;
+  padding: 2vw 0;
 }
 
 .inputdate input[type="date"] ~ .iconModule {
@@ -5178,6 +5196,7 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
   margin-top: 2vw;
+  width: 100%;
 }
 
 .inputBoxLevel .left {
@@ -6070,5 +6089,120 @@ span.important {
   color: #58cdff;
   font-size: 3vw;
   margin-right: 5px;
+}
+
+.guided {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 2vw;
+  border-radius: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  white-space: nowrap;
+  overflow-y: auto;
+}
+
+.guided span {
+  opacity: 0.5;
+  cursor: pointer;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.guided span.guidedText:hover {
+  color: #58cdff;
+  opacity: 1;
+}
+
+.guided span:nth-child(even) {
+  margin: 0 5px;
+}
+
+.guided span:nth-child(even)::after {
+  font-family: "icomoon";
+  content: "\e954";
+  font-size: 16px;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+.guided span:nth-last-child(1) {
+  padding-right: 10px;
+}
+
+.guided span.active {
+  color: #58cdff;
+  opacity: 1;
+}
+
+.essayPage {
+  margin: 0 auto;
+  width: 100%;
+  padding-bottom: 2vw;
+}
+
+.essayPage .title {
+  color: #58cdff;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2vw;
+}
+
+.essayPage p {
+  width: 90%;
+  position: relative;
+  color: #fff;
+  margin: 20px auto 10px auto;
+}
+
+.essayPage p::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: -20px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 0 5px 10px;
+  border-color: transparent transparent transparent #fff;
+  -webkit-animation: qwe 1s linear infinite;
+          animation: qwe 1s linear infinite;
+}
+
+@-webkit-keyframes qwe {
+  0% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+  }
+  100% {
+    -webkit-transform: rotateX(360deg);
+            transform: rotateX(360deg);
+  }
+}
+
+@keyframes qwe {
+  0% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+  }
+  100% {
+    -webkit-transform: rotateX(360deg);
+            transform: rotateX(360deg);
+  }
+}
+
+.essayPage img {
+  width: 100%;
+  margin: 10px 0;
 }
 /*# sourceMappingURL=style.css.map */
