@@ -62,6 +62,10 @@ import Games from "./pages/games";
 import Fishing from "./pages/fishing";
 import LiveCasino from "./pages/liveCasino";
 
+import HowToDeposit from "./pages/howToDeposit";
+import HowToWithdraw from "./pages/howToWithdraw";
+import HowToPlay from "./pages/howToPlay";
+
 const Index = () => {
 	let history = createHistory(window);
 	return (
@@ -141,6 +145,9 @@ const Index = () => {
 						<Games path={path.games.root} />
 						<Fishing path={path.fishing.root} />
 						<LiveCasino path={path.liveCasino.root} />
+						<HowToDeposit path={path.howToDeposit.root} />
+						<HowToWithdraw path={path.howToWithdraw.root} />
+						<HowToPlay path={path.howToPlay.root} />
 					</Router>
 				</Layout>
 			</LocationProvider>

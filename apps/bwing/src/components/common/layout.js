@@ -97,6 +97,21 @@ const defPageInfo = {
 		titleKey: "lbl_Other",
 		className: "main",
 		hideLogo: true
+	},
+	howToDeposit: {
+		titleKey: "lbl_HowToDepoist",
+		className: "main",
+		hideLogo: true
+	},
+	howToWithdraw: {
+		titleKey: "lbl_HowToWithdrawal",
+		className: "main",
+		hideLogo: true
+	},
+	howToPlay: {
+		titleKey: "lbl_HowToPlay",
+		className: "main",
+		hideLogo: true
 	}
 };
 
