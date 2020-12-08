@@ -9,11 +9,14 @@
   "ignorePatterns": ["**/*"],
   "plugins": ["@typescript-eslint", "@nrwl/nx"],
   "extends": [
+    "airbnb", 
+    "airbnb/hooks",
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier",
-    "prettier/@typescript-eslint"
+    "prettier/@typescript-eslint",
+    "plugin:import/typescript"
   ],
   "rules": {
     "@typescript-eslint/explicit-member-accessibility": "off",
@@ -29,7 +32,13 @@
           { "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] }
         ]
       }
-    ]
+    ],
+
+    "import/no-unresolved": "off",
+    "react/jsx-indent": "off",
+    "react/jsx-indent-props":"off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-closing-bracket-location": "off"
   },
   "overrides": [
     {
