@@ -168,7 +168,7 @@ header {
 }
 
 header > a > img {
-  width: 22vw;
+  width: 27vw;
 }
 
 header .Join, header .Login {
@@ -2022,6 +2022,10 @@ footer > a.open .circleAnimation + span {
           flex: 1;
 }
 
+.countryCode + .inputBox {
+  margin: 0;
+}
+
 .text {
   color: #fff;
 }
@@ -2725,7 +2729,7 @@ button.clickBtn:before {
 
 .not-found {
   color: #fff;
-  margin-top: 10vw;
+  margin: 5vw 0;
   text-align: center;
 }
 
@@ -4152,5 +4156,167 @@ span.important {
   margin: auto;
   margin-top: 3vw;
   color: white;
+}
+
+.kiss {
+  width: calc(100% - 8vw);
+  min-height: calc(100% - 71vw);
+  padding: 47vw 4vw 24vw;
+  position: relative;
+  -webkit-box-pack: normal;
+      -ms-flex-pack: normal;
+          justify-content: normal;
+  padding-top: 15vw;
+}
+
+.kiss .banner {
+  width: 100%;
+  height: auto;
+}
+
+.kiss .btn-group.open {
+  display: none;
+}
+
+.kissinfo {
+  margin-top: 2vw;
+}
+
+.kissinfo > div {
+  width: 100%;
+  margin-bottom: 3vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.kissinfo > div input {
+  padding: 3vw;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.kissinfo > div button {
+  background: #F77A00;
+  padding: 1vw;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.kisstitle {
+  color: #F77A00;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 3vw;
+}
+
+.installGuide {
+  text-align: center;
+  font-size: 5vw;
+  color: white;
+  margin: 5vw 0 2vw;
+}
+
+.installGuide img {
+  margin: 2vw auto;
+}
+
+.kissdoanload {
+  display: none;
+  margin-top: 3vw;
+}
+
+.kissdoanload > div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.kissdoanload > div .icon {
+  margin-right: 2vw;
+  color: #F77A00;
+}
+
+.kissdoanload > div .btn-group {
+  width: 100%;
+}
+
+.kissdoanload.open {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.kissdoanload .sysName {
+  width: 100%;
+  color: white;
+  text-align: center;
+  margin: 1vw 0;
+}
+
+.partner img {
+  max-width: calc(100% / 3);
+  margin: 2vw 1vw;
+  vertical-align: middle;
+}
+
+.breadcrumb {
+  text-transform: capitalize;
+}
+
+.breadcrumb ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.breadcrumb ul .breadcrumb-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.breadcrumb ul .breadcrumb-item a {
+  color: #F77A00;
+}
+
+.breadcrumb ul .breadcrumb-item.open a {
+  color: white;
+}
+
+.breadcrumb ul .breadcrumb-item + .breadcrumb-item::before {
+  content: '\e95c';
+  color: white;
+}
+
+.page .dropdown-container {
+  top: 7vw;
+  padding-bottom: 2vw;
+}
+
+.total {
+  color: #F77A00;
+  font-weight: bold;
+  font-size: 5vw;
+  padding: 2vw;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.3);
+  text-align: right;
 }
 /*# sourceMappingURL=style.css.map */
