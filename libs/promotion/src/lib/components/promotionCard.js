@@ -10,7 +10,7 @@ export default ({
 	_isNew,
 	imgSRC,
 	getPromotionListV2,
-	i18n,
+	i18n = {},
 	uiSetting,
 	ruleCols
 }) => (
@@ -29,7 +29,7 @@ export default ({
 		<PromoRule promotionInfo={p} ruleCols={ruleCols} />
 		<div className="btn-group">
 			<DetailBtn
-				displayText_Detail={i18n.lbl_Details}
+				displayText_Detail={i18n?.lbl_Details}
 				bonusCode={p.bonusCode}
 			/>
 			<JoinBtn
@@ -41,7 +41,12 @@ export default ({
 	</div>
 );
 
-export const CardForStatic = ({ userInfo: { langId }, p, i18n, uiSetting }) => (
+export const CardForStatic = ({
+	userInfo: { langId },
+	p,
+	i18n = {},
+	uiSetting
+}) => (
 	<div className="promodule">
 		<img src={p.imgUrl?.[langId]} alt={p.bonusCode ?? ""} />
 		<div className="protitle">{p.title?.[langId]}</div>
@@ -52,7 +57,7 @@ export const CardForStatic = ({ userInfo: { langId }, p, i18n, uiSetting }) => (
 				href={p.bannerLink?.[langId] ?? ""}
 				target="_blank"
 				rel="noopener noreferrer">
-				{i18n.lbl_Details}
+				{i18n?.lbl_Details}
 			</a>
 		</div>
 	</div>
