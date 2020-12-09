@@ -121,8 +121,9 @@ export const deleteCookie = cookieName => {
 
 export const isEventPeriod = () => {
 	// xmas end date is 2021/01/04 11:00:00
-	let startDate = new Date(new Date(2020, 11, 10, 11, 0).toUTCString());
-	let endDate = new Date(new Date(2021, 0, 4, 11, 0).toUTCString());
-	let now = new Date().getTime();
-	return now - startDate.getTime() >= 0 && now - endDate.getTime() <= 0;
+	const startDate = new Date("12 10 2020 11:00:00 GMT+0800");
+	const endDate = new Date("1 4 2021 11:00:00 GMT+0800");
+	const now = new Date();
+
+	return now > startDate && now < endDate;
 };
