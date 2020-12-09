@@ -12,7 +12,9 @@ export default ({
 	func_GetPromotionDetail,
 	func_CallBack
 }) => {
-	const { path, userInfo, i18n, api } = useContext(configContext);
+	const { path, userInfo, i18n, api, formatSetting } = useContext(
+		configContext
+	);
 	const { handlePopBox, handleErrorPopBox, clickClose } = useHandlePopBox();
 	const isMountedRef = useRef(null);
 	const [redirectPath, setRedirectPath] = useState(null);
@@ -42,7 +44,7 @@ export default ({
 						}
 
 						handlePopBox({
-							content: <p>{i18n.msg_Updatesuccessful}</p>,
+							content: <p>{i18n?.msg_Updatesuccessful}</p>,
 							btnBar: (
 								<div className="btn-group">
 									<button
@@ -65,7 +67,7 @@ export default ({
 						};
 
 						handlePopBox({
-							content: <p>{i18n.msg_OTPHint}</p>,
+							content: <p>{i18n?.msg_OTPHint}</p>,
 							btnBar: (
 								<div className="btn-group">
 									<button
@@ -74,7 +76,7 @@ export default ({
 											"blue"
 										}
 										onClick={clickClose}>
-										{i18n.lbl_Later}
+										{i18n?.lbl_Later}
 									</button>
 									<button
 										onClick={RedirectToProfile}
@@ -82,7 +84,7 @@ export default ({
 											uiSetting.popBox?.submitBtn ??
 											"btn-check"
 										}>
-										{i18n.lbl_GoNow}
+										{i18n?.lbl_GoNow}
 									</button>
 								</div>
 							)
@@ -107,7 +109,7 @@ export default ({
 					clickClose();
 				};
 				handlePopBox({
-					content: <p>{i18n.lbl_UpdatePersonalInfoPromotion}</p>,
+					content: <p>{i18n?.lbl_UpdatePersonalInfoPromotion}</p>,
 					btnBar: (
 						<div className="btn-group">
 							<button
@@ -115,14 +117,14 @@ export default ({
 									uiSetting.popBox?.cancelBtn ?? "blue"
 								}
 								onClick={clickClose}>
-								{i18n.lbl_Cancel}
+								{i18n?.lbl_Cancel}
 							</button>
 							<button
 								onClick={RedirectToProfile}
 								className={
 									uiSetting.popBox?.submitBtn ?? "btn-check"
 								}>
-								{i18n.lbl_GoNow}
+								{i18n?.lbl_GoNow}
 							</button>
 						</div>
 					)
@@ -136,14 +138,14 @@ export default ({
 				handlePopBox({
 					content: (
 						<div className="info">
-							{i18n.lbl_RequireMinAmountHint}
+							{i18n?.lbl_RequireMinAmountHint}
 							<span className="text-org">
-								{` ${i18n[`Currency_${userInfo.currencyId}`]} ${
-									_promo.requiredAmount
-								}`}
+								{` ${
+									i18n?.[`Currency_${userInfo.currencyId}`]
+								} ${_promo.requiredAmount}`}
 							</span>
 							<br />
-							{i18n.msg_GoToDepositPage}
+							{i18n?.msg_GoToDepositPage}
 						</div>
 					),
 					btnBar: (
@@ -153,14 +155,14 @@ export default ({
 									uiSetting.popBox?.cancelBtn ?? "blue"
 								}
 								onClick={clickClose}>
-								{i18n.lbl_Later}
+								{i18n?.lbl_Later}
 							</button>
 							<Link
 								to={`/${path.deposit.root}`}
 								className={
 									uiSetting.popBox?.submitBtn ?? "btn-check"
 								}>
-								{i18n.lbl_DepositNow}
+								{i18n?.lbl_DepositNow}
 							</Link>
 						</div>
 					)
@@ -178,6 +180,8 @@ export default ({
 								promotionInfo={promotionInfo}
 								ClosePopBox={clickClose}
 								SetClaimPromotion={SetClaimPromotion}
+								i18n={i18n}
+								formatSetting={formatSetting}
 							/>
 						)
 					});
@@ -204,13 +208,13 @@ export default ({
 		<Link
 			className={uiSetting.joinBtn ?? "btn-check"}
 			to={`/${path.login.root}`}>
-			{i18n.lbl_PromoJoinNow}
+			{i18n?.lbl_PromoJoinNow}
 		</Link>
 	) : userInfo.isLogin && !promotionInfo.isJoin && !_isExpiry ? (
 		<button
 			className={uiSetting.joinBtn ?? "btn-check"}
 			onClick={onJoinPromotion.bind(this, promotionInfo)}>
-			{i18n.lbl_PromoJoinNow}
+			{i18n?.lbl_PromoJoinNow}
 		</button>
 	) : null;
 };

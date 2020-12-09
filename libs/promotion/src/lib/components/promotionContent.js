@@ -9,7 +9,7 @@ export default ({
 	path,
 	uiSetting = {},
 	promotionInfo,
-	i18n,
+	i18n = {},
 	_isExpiry,
 	_isClaimed,
 	_isNew,
@@ -28,7 +28,7 @@ export default ({
 		) : null}
 		<img src={promotionInfo.banner} alt={promotionInfo.title} />
 		<Link className="btn-cancel" to={`/${path.promotion.root}`}>
-			{i18n.lbl_Back}
+			{i18n?.lbl_Back}
 		</Link>
 		<JoinBtn
 			promotionInfo={promotionInfo}

@@ -35,7 +35,7 @@ export const Record = ({ isOpen, depositId, amount, formatSetting }) => (
 );
 
 export const Content = ({
-	i18n,
+	i18n = {},
 	children,
 	depositAmount,
 	handleOpen,
@@ -45,8 +45,8 @@ export const Content = ({
 	<>
 		<div className="minAmount">
 			<div className={isOpen ? "open" : ""}>
-				<div>{i18n.lbl_ID}</div>
-				<div>{i18n.lbl_Amount}</div>
+				<div>{i18n?.lbl_ID}</div>
+				<div>{i18n?.lbl_Amount}</div>
 			</div>
 			<div>
 				<div></div>
@@ -54,14 +54,14 @@ export const Content = ({
 			</div>
 			{children}
 			<div className={isOpen ? "open" : ""}>
-				<div>{i18n.lbl_Total}</div>
+				<div>{i18n?.lbl_Total}</div>
 				<div>{number_format(depositAmount, formatSetting)}</div>
 			</div>
 		</div>
 		<button
 			className="ViewAllAmount"
 			onClick={handleOpen.bind(this, !isOpen)}>
-			{i18n.lbl_ViewAll}
+			{i18n?.lbl_ViewAll}
 			<span
 				className={`icon icon-keyboard_arrow_down${
 					isOpen ? " open" : ""
