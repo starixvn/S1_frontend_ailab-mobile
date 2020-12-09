@@ -118,3 +118,11 @@ export const readCookie = cookieName => {
 export const deleteCookie = cookieName => {
 	document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
 };
+
+export const isEventPeriod = () => {
+	// xmas end date is 2021/01/04 11:00:00
+	let startDate = new Date(new Date(2020, 11, 10, 11, 0).toUTCString());
+	let endDate = new Date(new Date(2021, 0, 4, 11, 0).toUTCString());
+	let now = new Date().getTime();
+	return now - startDate.getTime() >= 0 && now - endDate.getTime() <= 0;
+};
