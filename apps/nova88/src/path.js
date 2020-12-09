@@ -125,5 +125,8 @@ export default {
 	},
 	whoami: {
 		root: "whoami"
+	},
+	kiss918: {
+		root: "918kiss"
 	}
 };
