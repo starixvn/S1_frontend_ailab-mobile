@@ -18,7 +18,7 @@ import casino_PG from "../styles/img/casino_PG.jpg";
 import casino_JOKER from "../styles/img/casino_JOKER.jpg";
 import casino_YGG from "../styles/img/casino_YGG.jpg";
 import casino_GPI from "../styles/img/casino_GPI.jpg";
-import casino_KISS from "../styles/img/casino_KISS.jpg";
+// import casino_KISS from "../styles/img/casino_KISS.jpg";
 import id4d from "../styles/img/id4d.jpg";
 import Keno from "../styles/img/keno.jpg";
 import Lottery from "../styles/img/lottery.jpg";
@@ -165,12 +165,12 @@ const gameList = ({ langId }) => [
 				parameter: { tpId: 14 },
 				img: casino_PG
 			},
-			{
-				tpId: 21,
-				img: casino_KISS,
-				path: path.kiss918.root,
-				needLogin: true
-			},
+			// {
+			// 	tpId: 21,
+			// 	img: casino_KISS,
+			// 	path: path.kiss918.root,
+			// 	needLogin: true
+			// },
 			{
 				gameId: 208,
 				tpId: 1,
@@ -294,7 +294,7 @@ export const defGameInfo = {
 	Casino_JOKER: { tpId: 9 },
 	Casino_YGG: { tpId: 8 },
 	Casino_GPI: { tpId: 6 },
-	Casino_918Kiss: { tpId: 21, needLogin: true },
+	// Casino_918Kiss: { tpId: 21, needLogin: true },
 	Fishing: { gameId: 10, tpId: 7 },
 	FishingSG: { gameId: "F-SF01", tpId: 10 },
 	FishingSGW: { gameId: "F-SF02", tpId: 10 },

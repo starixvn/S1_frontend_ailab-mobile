@@ -81,12 +81,12 @@ const defPlatfrom = [
 	{
 		...defGameInfo.LIVEcasinoWM,
 		imgName: "wm"
-	},
-	{
-		...defGameInfo.Casino_918Kiss,
-		imgName: "kiss",
-		path: path.kiss918.root
 	}
+	// {
+	// 	...defGameInfo.Casino_918Kiss,
+	// 	imgName: "kiss",
+	// 	path: path.kiss918.root
+	// }
 ];
 
 export default ({ langId, isLogin }) => {
