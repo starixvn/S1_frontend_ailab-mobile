@@ -17,6 +17,9 @@ export const ClickLink = (
 	isLogin,
 	setNav
 ) => {
+	const HandleLogin = () => {
+		setNav(defNavPanel.login);
+	};
 	if (href === "Casino/Lobby") {
 		window.location.href = `/${path.casino.root}${tpId ? `/${tpId}` : ""}`;
 	} else if (tpId === null) {
@@ -24,6 +27,12 @@ export const ClickLink = (
 			window.location.href = `/${path.promotion.root}`;
 		} else if (href === "Home/Register") {
 			return;
+		} else if (href === "918kiss") {
+			if (isLogin) {
+				window.location.href = `/${path.kiss918.root}`;
+			} else {
+				HandleLogin();
+			}
 		} else {
 			window.open(
 				isOuterLink
@@ -40,9 +49,7 @@ export const ClickLink = (
 			tpId,
 			gameId,
 			isLogin: isLogin === true,
-			loginCallback: () => {
-				setNav(defNavPanel.login);
-			}
+			loginCallback: HandleLogin
 		});
 	}
 };

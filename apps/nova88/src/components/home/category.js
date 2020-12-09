@@ -24,21 +24,24 @@ const Category = props => {
 	const { setPopBox } = useContext(popBoxContext);
 	const [casinoTpIds, setCasinoTpIds] = useState(null);
 
-	const clickGame = ({ tpId, gameId, path }) => {
+	const clickGame = ({ tpId, gameId, path, needLogin }) => {
+		const HandleLogin = () => {
+			setNav(defNavPanel.login);
+		};
 		if (path) {
-			setRedirect({
-				redirect: true,
-				path: path
-			});
+			return needLogin && !userInfo.isLogin
+				? HandleLogin()
+				: setRedirect({
+						redirect: true,
+						path: path
+				  });
 		} else {
-			GET_ENTER_PAGE({
+			return GET_ENTER_PAGE({
 				langId: userInfo.langId,
 				tpId,
 				gameId,
 				isLogin: userInfo.isLogin === true,
-				loginCallback: () => {
-					setNav(defNavPanel.login);
-				}
+				loginCallback: HandleLogin
 			});
 		}
 	};
