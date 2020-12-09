@@ -4,7 +4,8 @@ import {
 	tpAPI,
 	siteAPI,
 	messageAPI,
-	paymentAPI
+	paymentAPI,
+	eventsAPI
 } from "@ailab-mobile/api";
 
 import config from "Config";
@@ -15,5 +16,6 @@ export default {
 	tp: new tpAPI(config),
 	site: new siteAPI(config),
 	message: new messageAPI(config),
-	payment: new paymentAPI(config)
+	payment: new paymentAPI(config),
+	events: new eventsAPI(config)
 };

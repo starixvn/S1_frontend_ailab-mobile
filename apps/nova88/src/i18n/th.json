@@ -336,6 +336,18 @@
 	"lbl_ViewAll":"ดูทั้งหมด",
 	"lbl_Total":"จำนวนเงินทั้งหมด",
 	"lbl_CockFighting":"ไก่ชน",
-	"msg_OTPHint":"กรุณากรอกข้อมูลส่วนตัวและยืนยันหมายเลขโทรศัพท์ก่อนเข้าร่วมกิจกรรม"
-	
+	"msg_OTPHint":"กรุณากรอกข้อมูลส่วนตัวและยืนยันหมายเลขโทรศัพท์ก่อนเข้าร่วมกิจกรรม",
+
+	"lbl_Event":"Event",
+	"lbl_Records":"Records",
+	"lbl_Ranking":"Ranking",
+	"lbl_last_2_day":"Last 2 Day",
+	"lbl_last_3_day":"Last 3 Day",
+	"lbl_Game_type":"Game Type",
+	"lbl_Points":"Points",
+	"lbl_LastUpdTime":"Last Update On {{time}} (Update Every 30 Minutes)",
+	"lbl_Ranking_Top10":"TOP 10 WINNING",
+	"lbl_Top":"TOP",
+	"lbl_Rewards":"Rewards",
+	"lbl_MoreDetails":"MORE DETAILS"
 }

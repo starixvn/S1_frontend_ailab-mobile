@@ -91,6 +91,11 @@ const defPageInfo = {
 		titleKey: "Who AM I",
 		className: "main",
 		hideLogo: true
+	},
+	ranking: {
+		titleKey: "lbl_Ranking",
+		className: "main ranking",
+		hideLogo: true
 	}
 };
 

@@ -336,6 +336,18 @@
 	"lbl_ViewAll":"Lihat semua",
 	"lbl_Total":"Jumlah total",
 	"lbl_CockFighting":"Sabung Ayam",
-	"msg_OTPHint":"Harap lengkapi profil Anda dan verifikasi ponsel Anda untuk menikmati promosi kami."
+	"msg_OTPHint":"Harap lengkapi profil Anda dan verifikasi ponsel Anda untuk menikmati promosi kami.",
 
+	"lbl_Event":"Event",
+	"lbl_Records":"Records",
+	"lbl_Ranking":"Ranking",
+	"lbl_last_2_day":"Last 2 Day",
+	"lbl_last_3_day":"Last 3 Day",
+	"lbl_Game_type":"Game Type",
+	"lbl_Points":"Points",
+	"lbl_LastUpdTime":"Last Update On {{time}} (Update Every 30 Minutes)",
+	"lbl_Ranking_Top10":"TOP 10 WINNING",
+	"lbl_Top":"TOP",
+	"lbl_Rewards":"Rewards",
+	"lbl_MoreDetails":"MORE DETAILS"
 }

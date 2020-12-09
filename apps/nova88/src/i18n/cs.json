@@ -336,5 +336,18 @@
 	"lbl_ViewAll":"查看全部",
 	"lbl_Total":"总金额",
 	"lbl_CockFighting":"斗鸡",
-	"msg_OTPHint":"请完成您的个人资料并验证您的手机以享受我们的促销。"
+	"msg_OTPHint":"请完成您的个人资料并验证您的手机以享受我们的促销。",
+
+	"lbl_Event":"Event",
+	"lbl_Records":"Records",
+	"lbl_Ranking":"Ranking",
+	"lbl_last_2_day":"Last 2 Day",
+	"lbl_last_3_day":"Last 3 Day",
+	"lbl_Game_type":"Game Type",
+	"lbl_Points":"Points",
+	"lbl_LastUpdTime":"Last Update On {{time}} (Update Every 30 Minutes)",
+	"lbl_Ranking_Top10":"TOP 10 WINNING",
+	"lbl_Top":"TOP",
+	"lbl_Rewards":"Rewards",
+	"lbl_MoreDetails":"MORE DETAILS"
 }
