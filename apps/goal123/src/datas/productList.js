@@ -164,7 +164,9 @@ const gameList = langId => [
 			{
 				...defGameInfo.Casino_All,
 				parameter: { tpId: defGameInfo.Casino_All.tpId },
-				img: Casino
+				img: Casino,
+				icon: "casino",
+				spanTextKey: "lbl_Slots"
 			}
 		]
 	},
