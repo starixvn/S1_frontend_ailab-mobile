@@ -345,16 +345,17 @@
 	"lbl_please_select_to_wallet": "กรุณาเลือกกระเป๋าเงินที่ต้องการโอนเข้า",
 	"lbl_TpWallet_22":"Mega วอลเล็ท",
 
-	"lbl_Event":"Event",
-	"lbl_Records":"Records",
-	"lbl_Ranking":"Ranking",
-	"lbl_last_2_day":"Last 2 Day",
-	"lbl_last_3_day":"Last 3 Day",
-	"lbl_Game_type":"Game Type",
-	"lbl_Points":"Points",
-	"lbl_LastUpdTime":"Last Update On {{time}} (Update Every 30 Minutes)",
-	"lbl_Ranking_Top10":"TOP 10 WINNING",
+	"lbl_Event":"กิจกรรม",
+	"lbl_Records":"บันทึก",
+	"lbl_Ranking":"การจัดอันดับ",
+	"lbl_last_2_day":"2 วันสุดท้าย",
+	"lbl_last_3_day":"3 วันสุดท้าย",
+	"lbl_Game_type":"ประเภทเกม",
+	"lbl_Points":"คะแนน",
+	"lbl_LastUpdTime":"อัปเดตล่าสุดเมื่อ {{time}} (อัปเดตทุก 30 นาที)",
+	"lbl_Ranking_Top10":"ชนะ 10 อันดับแรก",
 	"lbl_Top":"TOP",
-	"lbl_Rewards":"Rewards",
-	"lbl_MoreDetails":"MORE DETAILS"
+	"lbl_Rewards":"รางวัล",
+	"lbl_MoreDetails":"รายละเอียดเพิ่มเติม",
+	"lbl_EventTitle":"ชื่อกิจกรรม"
 }
