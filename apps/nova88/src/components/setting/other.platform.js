@@ -81,6 +81,12 @@ const defPlatfrom = [
 	{
 		...defGameInfo.LIVEcasinoWM,
 		imgName: "wm"
+	},
+	{
+		...defGameInfo.Casino_CQ9,
+		path: path.casino.root,
+		parameter: { ...defGameInfo.Casino_CQ9 },
+		imgName: "cq9"
 	}
 	// {
 	// 	...defGameInfo.Casino_918Kiss,
