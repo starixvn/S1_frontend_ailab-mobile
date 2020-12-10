@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { userInfoContext, i18nContext } from "../common/context";
 import TandC from "../../service/t_and_c";
 import { siteInfo } from "../../config";
+import Platform from "./other.platform";
 
 export default () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -107,6 +108,9 @@ export default () => {
 					{socialMedia}
 				</div>
 			) : null}
+			<div className="partner">
+				<Platform langId={userInfo.langId} isLogin={userInfo.isLogin} />
+			</div>
 		</div>
 	);
 };

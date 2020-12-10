@@ -9,6 +9,7 @@ import { number_format, isConvert } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
 import BonusWallet from "./profile.wallet.bonus";
 import api from "../../service/api";
+import { tpWalletsListType } from "../transfer/transfer";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
@@ -16,7 +17,7 @@ export default () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { walletInfo, setWalletInfo } = useContext(walletInfoContext);
 	const isMountedRef = useRef(null);
-	const [tpWallet, setTpWallet] = useState([]);
+	const [tpWalletList, setTpWalletList] = useState([]);
 	const [bonusWallet, setBonusWallet] = useState({});
 
 	useEffect(() => {
@@ -26,33 +27,46 @@ export default () => {
 
 	useEffect(() => {
 		GetBalance();
+		api.account
+			.GetTpWalletList({ ListType: tpWalletsListType.afterTransWallets })
+			.then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							res.data.data?.forEach(i => {
+								GetTpWalletBalance(i.tpId);
+							});
+						} else {
+							setPopBox({
+								isOpen: true,
+								title: i18n["lbl_ImportantNote"],
+								content: res.data.message
+							});
+						}
+					}
+				},
+				err => {
+					if (isMountedRef.current) {
+						setPopBox({
+							isOpen: true,
+							title: i18n["lbl_ImportantNote"],
+							content: i18n["msg_ApiServerError"]
+						});
+					}
+				}
+			);
 	}, []);
 
 	const GetBalance = () => {
-		api.account.GetWalletInfo().then(
+		api.account.GetBalnace().then(
 			res => {
 				if (res.data.errorCode === 0) {
 					let data = res.data.data;
-					if (data !== null) {
-						if (isMountedRef.current) {
-							setWalletInfo(prevState => ({
-								...prevState,
-								main: data.balance
-							}));
-
-							if (data.tpWallets.length > 0) {
-								let tpWalletsArr = data.tpWallets.map(t => {
-									let balance = t.balance;
-									return {
-										tpId: t.tpId,
-										displayKey: t.displayKey,
-										balance: balance
-									};
-								});
-
-								setTpWallet(tpWalletsArr);
-							}
-						}
+					if (data !== null && isMountedRef.current) {
+						setWalletInfo(prevState => ({
+							...prevState,
+							main: data
+						}));
 					}
 				}
 			},
@@ -60,8 +74,8 @@ export default () => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
-						content: i18n.msg_ApiServerError
+						title: i18n["lbl_ImportantNote"],
+						content: i18n["msg_ApiServerError"]
 					});
 				}
 			}
@@ -84,16 +98,53 @@ export default () => {
 		});
 	};
 
-	let _tpWallets = tpWallet.map(t => {
+	const GetTpWalletBalance = tpId => {
+		api.account.GetTpWalletBalance({ TpId: tpId }).then(
+			res => {
+				if (res.data.errorCode === 0) {
+					let _datas = res.data.data;
+					let tpWalletData = {
+						id: _datas.tpId,
+						displayKey: `lbl_TpWallet_${_datas.tpId}`,
+						balance: _datas.balance
+					};
+
+					let tpWalletIdx = tpWalletList.findIndex(wallet => {
+						return wallet.id === tpId;
+					});
+
+					if (tpWalletIdx !== -1) {
+						setTpWalletList(prev => {
+							prev[tpWalletIdx] = tpWalletData;
+							return prev;
+						});
+					} else {
+						setTpWalletList(prev => [...prev, tpWalletData]);
+					}
+				}
+			},
+			err => {
+				if (isMountedRef.current) {
+					setPopBox({
+						isOpen: true,
+						title: i18n["lbl_ImportantNote"],
+						content: i18n["msg_ApiServerError"]
+					});
+				}
+			}
+		);
+	};
+
+	let _tpWalletArrs = tpWalletList.map(t => {
 		return (
 			<Wallet
-				key={`profile-tpWallet-${t.tpId}`}
+				key={`profile-tpWalletArr-${t.id}`}
 				i18n={i18n}
-				titleKey={`lbl_TpWallet_${t.tpId}`}
+				titleKey={t.displayKey}
 				currencyId={userInfo.currencyId}
 				balance={t.balance}
-				func_GetBalance={GetBalance}
-				bonusWallet={bonusWallet[t.tpId]}
+				func_GetBalance={GetTpWalletBalance.bind(this, t.id)}
+				bonusWallet={bonusWallet[t.id]}
 			/>
 		);
 	});
@@ -108,7 +159,7 @@ export default () => {
 				func_GetBalance={GetBalance}
 				bonusWallet={bonusWallet[0]}
 			/>
-			{_tpWallets}
+			{_tpWalletArrs}
 		</>
 	);
 };

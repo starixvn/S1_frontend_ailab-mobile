@@ -49,6 +49,10 @@
   font-size: 4vw !important;
 }
 
+.icon-cq9:before {
+  content: "\e9b9";
+}
+
 .icon-kiss:before {
   content: "\e9b8";
 }

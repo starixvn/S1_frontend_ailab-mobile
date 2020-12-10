@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import Logo from "../../styles/img/logo.png";
+import Logo from "../img/logo";
 import {
 	userInfoContext,
 	i18nContext,
@@ -107,7 +107,7 @@ export default () => {
 					<span></span>
 					<span></span>
 				</div>
-				<img src={Logo} alt="Bwing" className="logoImg" />
+				<Logo />
 			</div>
 
 			<div className="menuContent">

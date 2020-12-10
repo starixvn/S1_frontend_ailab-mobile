@@ -94,7 +94,11 @@ const defPageInfo = {
 	},
 	ranking: {
 		titleKey: "lbl_Ranking",
-		className: "main ranking",
+		className: "main ranking"
+	},
+	"/918kiss": {
+		titleKey: "918 Kiss",
+		className: "main casino kiss",
 		hideLogo: true
 	}
 };
