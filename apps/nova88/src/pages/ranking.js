@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { i18nContext } from "../components/common/context";
 import Event from "../components/ranking/event";
-import Ranking from "../components/ranking/ranking";
+import RankingByCategory from "../components/ranking/rankByCategory";
 import Record from "../components/ranking/records";
 import { defBtns, defElemType } from "../components/ranking/def";
 import { useHandleSelect } from "../components/ranking/hook";
@@ -27,7 +27,7 @@ export default () => {
 				isOpen={defBtns[selected].elemType === defElemType.Event}
 				i18n={i18n}
 			/>
-			<Ranking
+			<RankingByCategory
 				isOpen={defBtns[selected].elemType === defElemType.Ranking}
 				selected={selected}
 				i18n={i18n}

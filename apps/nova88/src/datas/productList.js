@@ -29,6 +29,7 @@ import fish_GG from "../styles/img/fish_GG.jpg";
 import fish_SG from "../styles/img/fish_SG.jpg";
 import fish_SGW from "../styles/img/fish_SGW.jpg";
 import Cockfighting from "../styles/img/cockfighting.jpg";
+import ranking from "../styles/img/ranking.jpg";
 import path from "../path";
 
 export const productList = {
@@ -263,7 +264,20 @@ const gameList = ({ langId }) => [
 				img: affiliate,
 				spanTextKey: "lbl_SiteAffiliate",
 				descTextKey: "lbl_AffiliateDesc",
-				descClassName: "affiliate",
+				descClassName: "affiliate"
+			}
+		]
+	},
+	{
+		category: "ranking",
+		categoryIcon: "icon32px_top",
+		translateKey: "lbl_Ranking",
+		items: [
+			{
+				icon: "icon32px_top",
+				path: path.ranking.root,
+				img: ranking,
+				spanTextKey: "lbl_Ranking",
 				addSpaceInBelow: true
 			}
 		]

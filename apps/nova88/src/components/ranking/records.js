@@ -1,10 +1,9 @@
 import React from "react";
 import champion from "../../styles/img/champion.png";
-import RankItems from "./rankItems";
+import RankList from "./rankList";
 import { useGetRanking, useHandleSelect, useHandleSelectDay } from "./hook";
 import { defBtnsOfCategory, defDayBtns } from "./def";
 import BtnBar from "./btnBar";
-import moment from "moment";
 
 const Records = ({ isOpen, i18n }) => {
 	const { selected, handleSelect } = useHandleSelect({
@@ -44,20 +43,12 @@ const Records = ({ isOpen, i18n }) => {
 					<div className="text-org">MYR 10,000,000.00</div>
 				</div> */}
 			</div>
-			<div className="rankList">
-				<ul>
-					<li>{i18n.lbl_Ranking}</li>
-					<li>{i18n.lbl_Username}</li>
-					<li>{i18n.lbl_Points}</li>
-				</ul>
-				<RankItems datas={datas} selected={selected} i18n={i18n} />
-			</div>
-			<div className="text">
-				{i18n.lbl_LastUpdTime?.replace(
-					"{{time}}",
-					moment(lastUpdTime).format("YYYY-MM-DD H:mm:ss")
-				)}
-			</div>
+			<RankList
+				i18n={i18n}
+				datas={datas}
+				selected={selected}
+				lastUpdTime={lastUpdTime}
+			/>
 		</div>
 	);
 };

@@ -3,6 +3,7 @@ import no1 from "../../styles/img/no1.png";
 import no2 from "../../styles/img/no2.png";
 import no3 from "../../styles/img/no3.png";
 import { number_format } from "../common/common";
+import moment from "moment";
 
 const Top3Img = ({ Ranking }) => {
 	let img = null;
@@ -38,4 +39,25 @@ const RankItems = ({ i18n: { lbl_Top }, datas, selected }) =>
 		);
 	});
 
-export default RankItems;
+const RankList = ({ i18n = {}, datas, selected, lastUpdTime }) => {
+	return (
+		<>
+			<div className="rankList">
+				<ul>
+					<li>{i18n.lbl_Ranking}</li>
+					<li>{i18n.lbl_Username}</li>
+					<li>{i18n.lbl_Points}</li>
+				</ul>
+				<RankItems datas={datas} selected={selected} i18n={i18n} />
+			</div>
+			<div className="text">
+				{i18n.lbl_LastUpdTime?.replace(
+					"{{time}}",
+					moment(lastUpdTime).format("YYYY-MM-DD H:mm:ss")
+				)}
+			</div>
+		</>
+	);
+};
+
+export default RankList;

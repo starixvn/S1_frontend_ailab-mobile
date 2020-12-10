@@ -4526,4 +4526,36 @@ span.important {
 .rankEvent.open, .champion.open, .records.open {
   display: block;
 }
+
+button.icon.icon-icon32px_top, span.icon.icon-icon32px_top {
+  position: relative;
+}
+
+button.icon.icon-icon32px_top:after, span.icon.icon-icon32px_top:after {
+  content: "Live";
+  font-family: 'Microsoft YaHei',sans-serif;
+  position: absolute;
+  bottom: -3vw;
+  right: 5.4vw;
+  color: white;
+  font-size: 3vw;
+  font-weight: bold;
+  background: #F77A00;
+  border-radius: 3px;
+  padding: 0 1vw;
+}
+
+span.icon.icon-icon32px_top {
+  position: absolute;
+}
+
+span.icon.icon-icon32px_top:after {
+  content: "Live";
+  font-family: 'Microsoft YaHei',sans-serif;
+  top: 50%;
+  right: 0;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+}
 /*# sourceMappingURL=style.css.map */
