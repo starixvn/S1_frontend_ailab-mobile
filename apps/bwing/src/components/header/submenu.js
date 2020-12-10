@@ -86,7 +86,7 @@ export default () => {
 	const SetLanguage = langId => {
 		if (langId !== userInfo.langId) {
 			setUserInfo(prev => ({ ...prev, langId }));
-			api_SetLanguage(langId);
+			if (userInfo.isLogin) api_SetLanguage(langId);
 		}
 	};
 
