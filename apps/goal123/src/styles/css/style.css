@@ -695,6 +695,10 @@ main .gameList .casinoList a {
           flex: 0 0 calc(50% - 1.5vw);
 }
 
+main.statementPage {
+  padding-top: 20vw;
+}
+
 .thBar {
   position: fixed;
   bottom: 15vw;
@@ -1406,6 +1410,14 @@ footer > a.open .circleAnimation + span {
   font-size: 12px;
 }
 
+.info ul li.total span {
+  color: #f77900;
+}
+
+.info ul li.total span:nth-child(2) {
+  font-weight: bold;
+}
+
 .info.infoBlack {
   background: rgba(0, 0, 0, 0.3);
   border-radius: 5px;
@@ -1605,6 +1617,23 @@ footer > a.open .circleAnimation + span {
 .btn-group button.yellow, .btn-group a.yellow {
   background: #fab617;
   color: white;
+}
+
+.statementPage a.blue {
+  background-color: #1E85EC;
+}
+
+.statementPage .total {
+  display: block;
+  color: #f77900;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.statementPage .total .title {
+  color: #f77900;
 }
 
 .bankAccount {
@@ -3872,5 +3901,35 @@ span.important {
   max-width: calc(100% / 3);
   margin: 2vw 1vw;
   vertical-align: middle;
+}
+
+.breadcrumb ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: calc(100% - 10px) s;
+  margin: 10px auto;
+  padding: 10px;
+  background-color: #030c1b;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.breadcrumb ul .breadcrumb-item a {
+  color: #1E85EC;
+  text-transform: capitalize;
+}
+
+.breadcrumb ul .breadcrumb-item + .breadcrumb-item::before {
+  content: '\e95c';
+  color: white;
+  margin: 0 5px;
+  font-size: 13px;
+}
+
+.breadcrumb ul .breadcrumb-item.active a {
+  color: white;
 }
 /*# sourceMappingURL=style.css.map */
