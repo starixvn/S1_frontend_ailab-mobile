@@ -94,7 +94,8 @@ const defPageInfo = {
 	},
 	ranking: {
 		titleKey: "lbl_Ranking",
-		className: "main ranking"
+		className: "main ranking",
+		hideLogo: true
 	},
 	"/918kiss": {
 		titleKey: "918 Kiss",
