@@ -45,6 +45,7 @@ export const defGameInfo = {
 	Casino_JOKER: { tpId: 9 },
 	Casino_YGG: { tpId: 8 },
 	Casino_GPI: { tpId: 6 },
+	Casino_CQ9: { tpId: 16 },
 	Fishing: { gameId: 10, tpId: 7 },
 	FishingSG: { gameId: "F-SF01", tpId: 10 },
 	FishingSGW: { gameId: "F-SF02", tpId: 10 },
@@ -164,7 +165,9 @@ const gameList = langId => [
 			{
 				...defGameInfo.Casino_All,
 				parameter: { tpId: defGameInfo.Casino_All.tpId },
-				img: Casino
+				img: Casino,
+				icon: "casino",
+				spanTextKey: "lbl_Slots"
 			}
 		]
 	},

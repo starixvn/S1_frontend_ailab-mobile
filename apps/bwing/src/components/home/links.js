@@ -121,7 +121,8 @@ const defPlatform = [
 	"sg",
 	"pg",
 	"ae",
-	"wm"
+	"wm",
+	"cq9"
 ];
 
 const Platforms = ({ i18n }) => {
