@@ -7,7 +7,7 @@ const useHandleBreadcrumb = ({ locationInfo = {}, skipLink = [], root }) => {
 
 	useEffect(() => {
 		const { path } = locationInfo;
-		let beforeRootPath = path.split(root);
+		const beforeRootPath = path.split(root);
 		let urlParams =
 			beforeRootPath.length > 1
 				? beforeRootPath[1].split("/:")
@@ -23,7 +23,7 @@ const useHandleBreadcrumb = ({ locationInfo = {}, skipLink = [], root }) => {
 					const link = {
 						urlParam: u,
 						path: prevPath,
-						displayKey: u
+						displayKey: `lbl_${u}`
 					};
 					return link;
 				});
@@ -39,7 +39,8 @@ export const Breadcrumbs = ({
 	root,
 	mainKey,
 	locationInfo = {},
-	skipLink = []
+	skipLink = [],
+	i18n = {}
 }) => {
 	const { linkList } = useHandleBreadcrumb({ locationInfo, skipLink, root });
 	const rows = linkList.map((l, lidx) => {
@@ -49,7 +50,7 @@ export const Breadcrumbs = ({
 				className={`icon breadcrumb-item${
 					lidx === linkList.length - 1 ? " open" : ""
 				}`}>
-				<Link to={l.path}>{l.displayKey}</Link>
+				<Link to={l.path}>{i18n[l.displayKey] ?? l.displayKey}</Link>
 			</li>
 		);
 	});
