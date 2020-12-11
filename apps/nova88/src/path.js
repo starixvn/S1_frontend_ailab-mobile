@@ -125,5 +125,8 @@ export default {
 	},
 	whoami: {
 		root: "whoami"
+	},
+	betList: {
+		root: "betList"
 	}
 };

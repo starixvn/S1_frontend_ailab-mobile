@@ -91,6 +91,11 @@ const defPageInfo = {
 		titleKey: "Who AM I",
 		className: "main",
 		hideLogo: true
+	},
+	betList: {
+		titleKey: "Bet List",
+		className: "main",
+		hideLogo: true
 	}
 };
 

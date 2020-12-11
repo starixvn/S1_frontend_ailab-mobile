@@ -69,6 +69,12 @@ import KycWaiting from "./components/withdrawal/kycWaiting";
 import Whoami from "./pages/whoami";
 import PromotionInfo from "./pages/promotionInfo";
 
+import BetList from "./pages/betList";
+import BetDateRange from "./components/betList/betByDateRange";
+import BetOneDay from "./components/betList/betByDay";
+import BetByCategory from "./components/betList/betByCategory";
+import BetDetail from "./components/betList/betDetail";
+
 const Index = () => {
 	let history = createHistory(window);
 	return (
@@ -159,6 +165,16 @@ const Index = () => {
 							<Other path={path.setting.sub.other.root} />
 						</Setting>
 						<Whoami path={path.whoami.root} />
+						<BetList path={`${path.betList.root}`} />
+						{/* <BetList path={`${path.betList.root}`}>
+							<BetDateRange path={`/:timePeriod`}>
+								<BetOneDay path={`/:date`}>
+									<BetByCategory path={`/:category`}>
+										<BetDetail path={`/:game`} />
+									</BetByCategory>
+								</BetOneDay>
+							</BetDateRange>
+						</BetList> */}
 					</Router>
 				</Layout>
 			</LocationProvider>

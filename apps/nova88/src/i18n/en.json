@@ -336,5 +336,17 @@
 	"lbl_ViewAll":"View All",
 	"lbl_Total":"Total",
 	"lbl_CockFighting":"Cock Fighting",
-	"msg_OTPHint":"Please complete your profile and verify your phone number to enjoy our promotions."
+	"msg_OTPHint":"Please complete your profile and verify your phone number to enjoy our promotions.",
+	"lbl_SettledDate":"Settled Date",
+	"lbl_Turnover":"Turnover",
+	"lbl_ValidBet":"Valid Bet",
+	"lbl_WinLoss":"Win Loss",
+	"lbl_Action":"Action",
+	"lbl_TransTime":"Trans Time",
+	"lbl_TransId":"Trans Id",
+	"lbl_BonusCode":"Bonus Code",
+	"lbl_SettledTime":"Settled Time",
+	"lbl_ByDay":"By Day",
+	"lbl_Category":"Category"
+
 }
