@@ -127,7 +127,8 @@ export default {
 		root: "whoami"
 	},
 	betList: {
-		root: "betList",
+		root: "betList"
+	},
 	kiss918: {
 		root: "918kiss"
 	}
