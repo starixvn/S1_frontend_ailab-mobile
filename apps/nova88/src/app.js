@@ -49,6 +49,12 @@ import TransferHome from "./components/transfer/transfer";
 import TransferHistory from "./components/transfer/transfer.history";
 
 import Statement from "./pages/statement";
+import StatementList from "./components/statement/statement";
+import BetDateRange from "./components/statement/byDateRange";
+import BetOneDay from "./components/statement/byDay";
+import BetByCategory from "./components/statement/byCategory";
+import BetDetail from "./components/statement/detail";
+import FinancialLog from "./components/statement/financialLog";
 
 import Message from "./pages/message";
 import PersonalMsg from "./components/message/personalMsg";
@@ -69,12 +75,6 @@ import KycWaiting from "./components/withdrawal/kycWaiting";
 import Whoami from "./pages/whoami";
 import PromotionInfo from "./pages/promotionInfo";
 // import Kiss918 from "./pages/918kiss";
-
-import BetList from "./pages/betList";
-import BetDateRange from "./components/betList/betByDateRange";
-import BetOneDay from "./components/betList/betByDay";
-import BetByCategory from "./components/betList/betByCategory";
-import BetDetail from "./components/betList/betDetail";
 
 const Index = () => {
 	let history = createHistory(window);
@@ -152,7 +152,26 @@ const Index = () => {
 								path={path.transfer.sub.history.root}
 							/>
 						</Transfer>
-						<Statement path={path.statement.root} />
+						<Statement path={path.statement.root}>
+							<StatementList
+								path={`${path.statement.sub.root}`}
+							/>
+							<BetDateRange
+								path={`${path.statement.sub.root}/:timePeriod`}
+							/>
+							<BetOneDay
+								path={`${path.statement.sub.root}/:timePeriod/:date`}
+							/>
+							<BetByCategory
+								path={`${path.statement.sub.root}/:timePeriod/:date/:category`}
+							/>
+							<BetDetail
+								path={`${path.statement.sub.root}/:timePeriod/:date/:category/:game`}
+							/>
+							<FinancialLog
+								path={path.statement.sub.financialLog.root}
+							/>
+						</Statement>
 						<Message path={path.message.root}>
 							<PersonalMsg path={path.message.sub.root} />
 							<Announcement
@@ -166,19 +185,7 @@ const Index = () => {
 							<Other path={path.setting.sub.other.root} />
 						</Setting>
 						<Whoami path={path.whoami.root} />
-						<BetList path={`${path.betList.root}`} />
-						<BetDateRange
-							path={`${path.betList.root}/:timePeriod`}
-						/>
-						<BetOneDay
-							path={`${path.betList.root}/:timePeriod/:date`}
-						/>
-						<BetByCategory
-							path={`${path.betList.root}/:timePeriod/:date/:category`}
-						/>
-						<BetDetail
-							path={`${path.betList.root}/:timePeriod/:date/:category/:game`}
-						/>
+
 						{/* <Kiss918 path={path.kiss918.root} /> */}
 					</Router>
 				</Layout>

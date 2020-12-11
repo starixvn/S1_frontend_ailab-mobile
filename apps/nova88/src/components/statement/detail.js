@@ -4,7 +4,7 @@ import moment from "moment";
 import Dropdown from "../common/dropdown";
 import { number_format, isConvert } from "../common/common";
 import { Breadcrumbs } from "../common/breadcrumb";
-import { getDateRange } from "../betList/filter";
+import { getDateRange } from "./filter";
 import { Redirect } from "@reach/router";
 import path from "../../path";
 
@@ -123,10 +123,10 @@ export default props => {
 		<>
 			<Breadcrumbs
 				locationInfo={props}
-				root={path.betList.root}
+				root={path.statement.root}
 				i18n={i18n}
 				customDisplayKey={{
-					[path.betList.root]: "lbl_QuickPick",
+					[path.statement.root]: "lbl_QuickPick",
 					timePeriod: dateRange,
 					date: "lbl_ByDay",
 					category: "lbl_Category",

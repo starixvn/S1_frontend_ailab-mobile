@@ -360,6 +360,8 @@
 	"lbl_IOSInstallGuide":"iOS 9+ Installation Guide",
 	"lbl_please_select_from_wallet": "กรุณาเลือกกระเป๋าเงินที่ต้องการโอนออก",
 	"lbl_please_select_to_wallet": "กรุณาเลือกกระเป๋าเงินที่ต้องการโอนเข้า",
-	"lbl_TpWallet_22":"Mega วอลเล็ท"
+	"lbl_TpWallet_22":"Mega วอลเล็ท",
+	"lbl_financialLog":"Financial Log"
+
 	
 }

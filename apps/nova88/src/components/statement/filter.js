@@ -11,7 +11,7 @@ const quickPickList = [
 	{ displayKey: "lbl_LastMonth" }
 ];
 
-const Panel = props => {
+export const Filter = props => {
 	const { i18n } = useContext(i18nContext);
 	const [quickPickSelectedIdx, setquickPickSelectedIdx] = useState(0);
 
@@ -90,8 +90,6 @@ const Panel = props => {
 		</>
 	);
 };
-
-export default Panel;
 
 export const getDateRange = (startDate, endDate) => {
 	const today = moment().format("YYYY-MM-DD");

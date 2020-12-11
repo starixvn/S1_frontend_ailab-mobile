@@ -360,5 +360,7 @@
 	"lbl_IOSInstallGuide":"iOS 9+ Installation Guide",
 	"lbl_please_select_from_wallet": "Silakan pilih dompet keluar dana yang lebih disukai",
 	"lbl_please_select_to_wallet": "Silakan pilih dompet masuk dana yang lebih disukai",
-	"lbl_TpWallet_22":"Dompet Mega"
+	"lbl_TpWallet_22":"Dompet Mega",
+	"lbl_financialLog":"Financial Log"
+
 }

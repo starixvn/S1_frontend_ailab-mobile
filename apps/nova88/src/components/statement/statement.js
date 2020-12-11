@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useContext, useState } from "react";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
 import { useNavigate, Redirect } from "@reach/router";
-import Filter from "../components/betList/filter";
-import api from "../service/api";
-import { Breadcrumbs } from "../components/common/breadcrumb";
-import path from "../path";
+import { Filter } from "./filter";
+import api from "../../service/api";
+import { Breadcrumbs } from "../common/breadcrumb";
+import path from "../../path";
 
 export default props => {
 	const { i18n } = useContext(i18nContext);
@@ -53,7 +53,7 @@ export default props => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
 							navigate(
-								`/${path.betList.root}/${startDay}to${endDay}`,
+								`/${path.statement.root}/${startDay}to${endDay}`,
 								{
 									state: {
 										datas: res.data.data,
@@ -83,7 +83,7 @@ export default props => {
 	};
 
 	const GetRecordListOneDay = ({ selDate }) => {
-		navigate(`/${path.betList.root}/${selDate}`);
+		navigate(`/${path.statement.root}/${selDate}`);
 	};
 
 	return redirectPath !== null ? (
@@ -94,10 +94,10 @@ export default props => {
 				<>
 					<Breadcrumbs
 						locationInfo={props}
-						root={path.betList.root}
+						root={path.statement.root}
 						i18n={i18n}
 						customDisplayKey={{
-							[path.betList.root]: "lbl_QuickPick"
+							[path.statement.root]: "lbl_QuickPick"
 						}}
 					/>
 					<Filter submitHandler={submitFilter} />

@@ -92,11 +92,6 @@ const defPageInfo = {
 		className: "main",
 		hideLogo: true
 	},
-	betList: {
-		titleKey: "Bet List",
-		className: "main",
-		hideLogo: true
-	},
 	"/918kiss": {
 		titleKey: "918 Kiss",
 		className: "main casino kiss",

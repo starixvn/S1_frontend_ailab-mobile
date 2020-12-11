@@ -360,5 +360,6 @@
 	"lbl_IOSInstallGuide":"iOS 9+ Installation Guide",
 	"lbl_please_select_from_wallet": "请选择转出钱包",
 	"lbl_please_select_to_wallet": "请选择转入钱包",
-	"lbl_TpWallet_22":"Mega钱包"
+	"lbl_TpWallet_22":"Mega钱包",
+	"lbl_financialLog":"Financial Log"
 }
