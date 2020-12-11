@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link } from "@reach/router";
 import PropTypes from "prop-types";
 
-const useHandleBreadcrumb = ({ locationInfo = {}, skipLink = [], root }) => {
+const useHandleBreadcrumb = ({
+	locationInfo = {},
+	skipLink = [],
+	root,
+	customDisplayKey = {}
+}) => {
 	const [linkList, setLinkList] = useState([]);
 
 	useEffect(() => {
@@ -23,14 +28,14 @@ const useHandleBreadcrumb = ({ locationInfo = {}, skipLink = [], root }) => {
 					const link = {
 						urlParam: u,
 						path: prevPath,
-						displayKey: `lbl_${u}`
+						displayKey: customDisplayKey[u] ?? `lbl_${u}`
 					};
 					return link;
 				});
 
 			setLinkList(result);
 		}
-	}, [locationInfo, skipLink, root]);
+	}, [locationInfo, skipLink, root, customDisplayKey]);
 
 	return { linkList };
 };
@@ -40,9 +45,15 @@ export const Breadcrumbs = ({
 	mainKey,
 	locationInfo,
 	skipLink,
-	i18n
+	i18n,
+	customDisplayKey
 }) => {
-	const { linkList } = useHandleBreadcrumb({ locationInfo, skipLink, root });
+	const { linkList } = useHandleBreadcrumb({
+		locationInfo,
+		skipLink,
+		root,
+		customDisplayKey
+	});
 	const rows = linkList.map((l, lidx) => {
 		return (
 			<li
@@ -68,5 +79,7 @@ Breadcrumbs.propTypes = {
 Breadcrumbs.defaultProps = {
 	skipLink: [],
 	locationInfo: {},
-	i18n: {}
+	i18n: {},
+	root: "",
+	customDisplayKey: {}
 };

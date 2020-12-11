@@ -3,10 +3,11 @@ import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import moment from "moment";
 import Dropdown from "../common/dropdown";
 import { number_format, isConvert } from "../common/common";
-import { useNavigate, Link } from "@reach/router";
+import { useNavigate } from "@reach/router";
+import { Breadcrumbs } from "../common/breadcrumb";
+import { getDateRange } from "../betList/filter";
 import api from "../../service/api";
 import path from "../../path";
-import BreadCrumb from "./breadCrumb";
 
 export default props => {
 	const { i18n } = useContext(i18nContext);
@@ -15,7 +16,6 @@ export default props => {
 	const [selectedPage, setSelectedPage] = useState(0);
 	const [totalPages, setTotalPages] = useState(1);
 	const [datas, setDatas] = useState(null);
-	const [nextPage, setNextPage] = useState(false);
 	const _isConvert = isConvert(userInfo.currencyId);
 	const navigate = useNavigate();
 	const isMountedRef = useRef(null);
@@ -24,6 +24,7 @@ export default props => {
 	const _startDay = timePeriod.substr(0, timePeriod.indexOf("to"));
 	const _endDay = timePeriod.split("to").pop();
 	const _selDate = props.date;
+	let dateRange = getDateRange(_startDay, _endDay);
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -32,13 +33,12 @@ export default props => {
 
 	useEffect(() => {
 		if (isMountedRef.current) {
-			if (props.location.state.datas) {
+			if (props?.location.state.datas) {
 				setDatas(props?.location.state.datas);
 				setTotalPages(props?.location.state.totalPages);
 			} else {
 				GetRecordListOneDay({ pageNumber: 1 });
 			}
-			setNextPage(false);
 		}
 	}, []);
 
@@ -67,7 +67,7 @@ export default props => {
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
-							setNextPage(true);
+							setDatas(null);
 							navigate(
 								`/${path.betList.root}/${_startDay}to${_endDay}/${_selDate}/${CategoryId}`,
 								{
@@ -156,28 +156,24 @@ export default props => {
 		);
 	});
 
-	// const breadCrumb = (
-	// 	<BreadCrumb>
-	// 		<BreadCrumb.Item isOpen={false}>
-	// 			<Link to={`/${path.betList.root}`}>{i18n.lbl_QuickPick}</Link>
-	// 		</BreadCrumb.Item>
-	// 		<BreadCrumb.Item isOpen={false}>
-	// 			<Link to={`/${path.betList.root}/${state?.dateRangePath.path}`}>
-	// 				{i18n[state?.dateRangePath.displayKey]}
-	// 			</Link>
-	// 		</BreadCrumb.Item>
-	// 		<BreadCrumb.Item isOpen={true}>
-	// 			<Link
-	// 				to={`/${path.betList.root}/${state?.dateRangePath.path}/${state?.selDate}`}>
-	// 				{i18n.lbl_ByDay}
-	// 			</Link>
-	// 		</BreadCrumb.Item>
-	// 	</BreadCrumb>
-	// );
+	const getSkipLink = ({ dateRange }) => {
+		return dateRange === "lbl_YesterDay" ? ["date"] : [];
+	};
+	const skipLink = getSkipLink({ dateRange });
 
-	return datas !== null && nextPage === false ? (
+	return datas !== null && !props.path.includes("/:category") ? (
 		<>
-			{/* {breadCrumb} */}
+			<Breadcrumbs
+				locationInfo={props}
+				root={path.betList.root}
+				i18n={i18n}
+				customDisplayKey={{
+					[path.betList.root]: "lbl_QuickPick",
+					timePeriod: dateRange,
+					date: "lbl_ByDay"
+				}}
+				skipLink={skipLink}
+			/>
 			{datas?.length !== 0 ? (
 				<>
 					<div className="inputBox page">
@@ -194,11 +190,11 @@ export default props => {
 					</div>
 
 					<div className="total">
-						{`${i18n.lbl_Total} ${i18n.lbl_Turnover}`}：
+						{i18n.lbl_TurnoverTotal}：
 						{number_format(totalTurnover, _isConvert)}
 					</div>
 					<div className="total">
-						{`${i18n.lbl_Total} ${i18n.lbl_WinLoss}`}：
+						{i18n.lbl_WinlostAmountTotal}：
 						{number_format(totalWinLoss, _isConvert)}
 					</div>
 
@@ -253,7 +249,7 @@ const Detail = ({
 					<span>{number_format(validBet, _isConvert)}</span>
 				</li>
 				<li>
-					<span className="title">{i18n.lbl_WinLoss}</span>
+					<span className="title">{i18n.lbl_WinlostAmount}</span>
 					<span>{number_format(winlostAmount, _isConvert)}</span>
 				</li>
 				<li>

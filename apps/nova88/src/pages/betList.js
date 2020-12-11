@@ -1,29 +1,29 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { i18nContext, popBoxContext } from "Context";
-import { Link, useNavigate } from "@reach/router";
+import { useNavigate } from "@reach/router";
 import Filter from "../components/betList/filter";
 import api from "../service/api";
 import { Breadcrumbs } from "../components/common/breadcrumb";
 import path from "../path";
 
 export default props => {
-	// console.log(props);
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const isMountedRef = useRef(null);
 	const navigate = useNavigate();
-	const [nextPage, setNextPage] = useState(false);
+	const currentLocation = window.location.pathname;
 
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => (isMountedRef.current = false);
 	});
 
-	const submitFilter = (startDay, endDay) => {
+	const submitFilter = (startDay, endDay, dateRangeDisplayKey) => {
 		if (startDay !== endDay) {
 			GetBetRecordListDateRange({
 				startDay: startDay,
 				endDay: endDay,
+				dateRangeDisplayKey: dateRangeDisplayKey,
 				pageNumber: 1
 			});
 		} else {
@@ -33,7 +33,12 @@ export default props => {
 		}
 	};
 
-	const GetBetRecordListDateRange = ({ startDay, endDay, pageNumber }) => {
+	const GetBetRecordListDateRange = ({
+		startDay,
+		endDay,
+		dateRangeDisplayKey,
+		pageNumber
+	}) => {
 		api.payment
 			.CustTpBetRecordListDateRange({
 				StartDate: startDay,
@@ -45,15 +50,13 @@ export default props => {
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
-							setNextPage(true);
 							navigate(
 								`/${path.betList.root}/${startDay}to${endDay}`,
 								{
 									state: {
 										datas: res.data.data,
-										totalPages: res.data.totalPages
-										// startDay: startDay,
-										// endDay: endDay
+										totalPages: res.data.totalPages,
+										dateRangeDisplayKey: dateRangeDisplayKey
 									}
 								}
 							);
@@ -79,18 +82,21 @@ export default props => {
 	};
 
 	const GetRecordListOneDay = ({ selDate }) => {
-		navigate(`/${path.betList.root}/${selDate}-${selDate}`);
+		navigate(`/${path.betList.root}/${selDate}`);
 	};
 
 	return (
 		<>
-			<Breadcrumbs
-				locationInfo={props}
-				root={path.betList.root}
-				i18n={i18n}
-			/>
-			{nextPage === false ? (
+			{props.uri === currentLocation ? (
 				<>
+					<Breadcrumbs
+						locationInfo={props}
+						root={path.betList.root}
+						i18n={i18n}
+						customDisplayKey={{
+							[path.betList.root]: "lbl_QuickPick"
+						}}
+					/>
 					<Filter
 						onlyQuickPick={true}
 						submitHandler={submitFilter}

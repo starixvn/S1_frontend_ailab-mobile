@@ -166,15 +166,18 @@ const Index = () => {
 						</Setting>
 						<Whoami path={path.whoami.root} />
 						<BetList path={`${path.betList.root}`} />
-						{/* <BetList path={`${path.betList.root}`}>
-							<BetDateRange path={`/:timePeriod`}>
-								<BetOneDay path={`/:date`}>
-									<BetByCategory path={`/:category`}>
-										<BetDetail path={`/:game`} />
-									</BetByCategory>
-								</BetOneDay>
-							</BetDateRange>
-						</BetList> */}
+						<BetDateRange
+							path={`${path.betList.root}/:timePeriod`}
+						/>
+						<BetOneDay
+							path={`${path.betList.root}/:timePeriod/:date`}
+						/>
+						<BetByCategory
+							path={`${path.betList.root}/:timePeriod/:date/:category`}
+						/>
+						<BetDetail
+							path={`${path.betList.root}/:timePeriod/:date/:category/:game`}
+						/>
 					</Router>
 				</Layout>
 			</LocationProvider>

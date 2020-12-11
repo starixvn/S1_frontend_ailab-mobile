@@ -3,8 +3,8 @@ import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import moment from "moment";
 import Dropdown from "../common/dropdown";
 import { number_format, isConvert } from "../common/common";
-import { Link } from "@reach/router";
-import BreadCrumb from "./breadCrumb";
+import { Breadcrumbs } from "../common/breadcrumb";
+import { getDateRange } from "../betList/filter";
 import path from "../../path";
 
 export default props => {
@@ -17,11 +17,15 @@ export default props => {
 	const state = props?.location.state;
 	const isMountedRef = useRef(null);
 
+	const timePeriod = props.timePeriod;
+	const _startDay = timePeriod.substr(0, timePeriod.indexOf("to"));
+	const _endDay = timePeriod.split("to").pop();
+	let dateRange = getDateRange(_startDay, _endDay);
+
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => (isMountedRef.current = false);
 	});
-	console.log("detail", props);
 
 	useEffect(() => {
 		if (isMountedRef.current && props.location.state !== null) {
@@ -94,12 +98,31 @@ export default props => {
 				_isConvert={_isConvert}
 				bonusCode={data.bonusCode}
 				settledTime={data.settledTime}
+				bonusId={data.bonusId}
 			/>
 		);
 	});
 
+	const getSkipLink = ({ dateRange }) => {
+		return dateRange === "lbl_YesterDay" ? ["date"] : [];
+	};
+	const skipLink = getSkipLink({ dateRange });
+
 	return datas !== null ? (
 		<>
+			<Breadcrumbs
+				locationInfo={props}
+				root={path.betList.root}
+				i18n={i18n}
+				customDisplayKey={{
+					[path.betList.root]: "lbl_QuickPick",
+					timePeriod: dateRange,
+					date: "lbl_ByDay",
+					category: "lbl_Category",
+					game: "lbl_Detail"
+				}}
+				skipLink={skipLink}
+			/>
 			{datas?.length !== 0 ? (
 				<>
 					<div className="inputBox page">
@@ -116,11 +139,11 @@ export default props => {
 					</div>
 
 					<div className="total">
-						{`${i18n.lbl_Total} ${i18n.lbl_Turnover}`}：
+						{i18n.lbl_TurnoverTotal}：
 						{number_format(totalTurnover, _isConvert)}
 					</div>
 					<div className="total">
-						{`${i18n.lbl_Total} ${i18n.lbl_WinLoss}`}：
+						{i18n.lbl_WinlostAmountTotal}：
 						{number_format(totalWinLoss, _isConvert)}
 					</div>
 
@@ -151,7 +174,8 @@ const Detail = ({
 	winlostAmount,
 	_isConvert,
 	bonusCode,
-	settledTime
+	settledTime,
+	bonusId
 }) => {
 	return (
 		<div className="info">
@@ -175,12 +199,16 @@ const Detail = ({
 					<span>{number_format(validBet, _isConvert)}</span>
 				</li>
 				<li>
-					<span className="title">{i18n.lbl_WinLoss}</span>
+					<span className="title">{i18n.lbl_WinlostAmount}</span>
 					<span>{number_format(winlostAmount, _isConvert)}</span>
 				</li>
 				<li>
 					<span className="title">{i18n.lbl_BonusCode}</span>
 					<span>{bonusCode ?? "-"}</span>
+				</li>
+				<li>
+					<span className="title">{i18n.lbl_BonusId}</span>
+					<span>{bonusId}</span>
 				</li>
 				<li>
 					<span className="title">{i18n.lbl_SettledTime}</span>

@@ -340,13 +340,19 @@
 	"lbl_SettledDate":"Settled Date",
 	"lbl_Turnover":"Turnover",
 	"lbl_ValidBet":"Valid Bet",
-	"lbl_WinLoss":"Win Loss",
+	"lbl_WinlostAmount":"Winlost Amount",
 	"lbl_Action":"Action",
 	"lbl_TransTime":"Trans Time",
 	"lbl_TransId":"Trans Id",
 	"lbl_BonusCode":"Bonus Code",
 	"lbl_SettledTime":"Settled Time",
 	"lbl_ByDay":"By Day",
-	"lbl_Category":"Category"
+	"lbl_CategoryName":"Category Name",
+	"lbl_GameTypeName":"Game Type Name",
+	"lbl_BonusId":"Bonus Id",
+	"lbl_Category":"By Category",
+	"lbl_Detail":"By Detail",
+	"lbl_TurnoverTotal":"Turnover Total",
+	"lbl_WinlostAmountTotal":"Winlost Amount Total"
 
 }

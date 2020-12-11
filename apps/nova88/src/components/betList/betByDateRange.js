@@ -4,8 +4,9 @@ import moment from "moment";
 import { number_format, isConvert } from "../common/common";
 import Dropdown from "../common/dropdown";
 import api from "../../service/api";
-import { useNavigate, Link } from "@reach/router";
-import BreadCrumb from "./breadCrumb";
+import { Breadcrumbs } from "../common/breadcrumb";
+import { useNavigate } from "@reach/router";
+import { getDateRange } from "../betList/filter";
 import path from "../../path";
 
 export default props => {
@@ -15,7 +16,6 @@ export default props => {
 	const [selectedPage, setSelectedPage] = useState(0);
 	const [totalPages, setTotalPages] = useState(1);
 	const [datas, setDatas] = useState(null);
-	const [nextPage, setNextPage] = useState(false);
 	const navigate = useNavigate();
 	const _isConvert = isConvert(userInfo.currencyId);
 	const isMountedRef = useRef(null);
@@ -23,6 +23,7 @@ export default props => {
 	const timePeriod = props.timePeriod;
 	const _startDay = timePeriod.substr(0, timePeriod.indexOf("to"));
 	const _endDay = timePeriod.split("to").pop();
+	let dateRange = getDateRange(_startDay, _endDay);
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -31,13 +32,14 @@ export default props => {
 
 	useEffect(() => {
 		if (isMountedRef.current) {
-			if (props.location.state.datas) {
+			if (!timePeriod.includes("to")) {
+				GetRecordListOneDay({ selDate: timePeriod });
+			} else if (props.location.state.datas) {
 				setDatas(props?.location.state.datas);
 				setTotalPages(props?.location.state.totalPages);
 			} else {
 				GetRecordListDateRange({ pageNumber: 1 });
 			}
-			setNextPage(false);
 		}
 	}, []);
 
@@ -57,10 +59,13 @@ export default props => {
 
 	const clickDetail = selDate => {
 		GetRecordListOneDay({ selDate: selDate });
-		setNextPage(true);
 	};
 
 	const GetRecordListOneDay = ({ selDate }) => {
+		let _path = !timePeriod.includes("to")
+			? `${selDate}to${selDate}`
+			: `${_startDay}to${_endDay}`;
+
 		api.payment
 			.GetCustTpBetRecordListOneDay({
 				SelDate: selDate,
@@ -73,7 +78,7 @@ export default props => {
 						if (res.data.errorCode === 0) {
 							setDatas(null);
 							navigate(
-								`/${path.betList.root}/${_startDay}to${_endDay}/${selDate}`,
+								`/${path.betList.root}/${_path}/${selDate}`,
 								{
 									state: {
 										datas: res.data.data,
@@ -159,24 +164,18 @@ export default props => {
 		);
 	});
 
-	// const breadCrumb = (
-	// 	<BreadCrumb>
-	// 		<BreadCrumb.Item isOpen={false}>
-	// 			<Link to={`/${path.betList.root}`}>{i18n.lbl_QuickPick}</Link>
-	// 		</BreadCrumb.Item>
-	// 		<BreadCrumb.Item isOpen={true}>
-	// 			<Link
-	// 				to={`/${path.betList.root}/${prevState?.dateRangePath.path}`}>
-	// 				{i18n[prevState?.dateRangePath.displayKey]}
-	// 			</Link>
-	// 		</BreadCrumb.Item>
-	// 	</BreadCrumb>
-	// );
-
-	return datas !== null && nextPage === false ? (
+	return datas !== null && !props.path.includes("/:date") ? (
 		<>
-			{/* {breadCrumb} */}
-			{datas.length !== 0 ? (
+			<Breadcrumbs
+				locationInfo={props}
+				root={path.betList.root}
+				i18n={i18n}
+				customDisplayKey={{
+					[path.betList.root]: "lbl_QuickPick",
+					timePeriod: dateRange
+				}}
+			/>
+			{datas?.length !== 0 ? (
 				<>
 					<div className="inputBox page">
 						<Dropdown
@@ -191,6 +190,15 @@ export default props => {
 						<div className="infoList">{detailArr}</div>
 					</div>
 
+					<div className="total">
+						{i18n.lbl_TurnoverTotal}：
+						{number_format(totalTurnover, _isConvert)}
+					</div>
+					<div className="total">
+						{i18n.lbl_WinlostAmountTotal}：
+						{number_format(totalWinLoss, _isConvert)}
+					</div>
+
 					<div className="inputBox page">
 						<Dropdown
 							options={pageOptions}
@@ -198,15 +206,6 @@ export default props => {
 							onSelectItem={selectPage}
 							selectedIdx={selectedPage}
 						/>
-					</div>
-
-					<div className="total">
-						{`${i18n.lbl_Total} ${i18n.lbl_Turnover}`}：
-						{number_format(totalTurnover, _isConvert)}
-					</div>
-					<div className="total">
-						{`${i18n.lbl_Total} ${i18n.lbl_WinLoss}`}：
-						{number_format(totalWinLoss, _isConvert)}
 					</div>
 				</>
 			) : (
@@ -245,7 +244,7 @@ const Detail = ({
 					<span>{number_format(validBet, _isConvert)}</span>
 				</li>
 				<li>
-					<span className="title">{i18n.lbl_WinLoss}</span>
+					<span className="title">{i18n.lbl_WinlostAmount}</span>
 					<span>{number_format(winlostAmount, _isConvert)}</span>
 				</li>
 				<li>

@@ -18,14 +18,12 @@ const Panel = props => {
 	const today = moment().format("YYYY-MM-DD");
 	const [startDayState, setStartDayState] = useState(today);
 	const [endDayState, setEndDatyState] = useState(today);
-	const [dateRange, setDateRange] = useState({
-		displayKey: quickPickList[0].displayKey,
-		path: `TimePeriod=${startDayState}To${endDayState}`
-	});
+	const [dateRangeDisplayKey, setDateRangeDisplayKey] = useState(
+		quickPickList[0].displayKey
+	);
 
 	let startDate = "";
 	let endDate = "";
-	let betListPath = "";
 
 	const dropdownStateHandler = i => {
 		setquickPickSelectedIdx(i);
@@ -61,9 +59,7 @@ const Panel = props => {
 
 		setStartDayState(startDate);
 		setEndDatyState(endDate);
-		setDateRange({
-			displayKey: quickPickList[i].displayKey
-		});
+		setDateRangeDisplayKey(quickPickList[i].displayKey);
 	};
 
 	return (
@@ -86,7 +82,7 @@ const Panel = props => {
 						this,
 						startDayState,
 						endDayState,
-						dateRange
+						dateRangeDisplayKey
 					)}>
 					{i18n["lbl_Submit"]}
 				</button>
@@ -96,3 +92,52 @@ const Panel = props => {
 };
 
 export default Panel;
+
+export const getDateRange = (startDate, endDate) => {
+	const today = moment().format("YYYY-MM-DD");
+	const thisWeekStart = moment().startOf("week").format("YYYY-MM-DD");
+	const lastWeekStart = moment()
+		.subtract(1, "weeks")
+		.startOf("week")
+		.format("YYYY-MM-DD");
+	const lastWeekEnd = moment()
+		.subtract(1, "weeks")
+		.endOf("week")
+		.format("YYYY-MM-DD");
+	let idx = 0;
+
+	if (startDate === endDate) {
+		idx = startDate === today ? 0 : 1;
+	} else {
+		if (
+			moment(startDate).isBetween(
+				thisWeekStart,
+				today,
+				undefined,
+				"[]"
+			) &&
+			moment(endDate).isBetween(thisWeekStart, today, undefined, "[]")
+		) {
+			idx = 2;
+		} else if (
+			moment(startDate).isBetween(
+				lastWeekStart,
+				lastWeekEnd,
+				undefined,
+				"[]"
+			) &&
+			moment(endDate).isBetween(
+				lastWeekStart,
+				lastWeekEnd,
+				undefined,
+				"[]"
+			)
+		) {
+			idx = 3;
+		} else {
+			idx = 4;
+		}
+	}
+
+	return quickPickList[idx].displayKey;
+};
