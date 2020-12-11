@@ -16,8 +16,10 @@ import casino_PP from "../styles/img/casino_PP.jpg";
 import casino_SG from "../styles/img/casino_SG.jpg";
 import casino_PG from "../styles/img/casino_PG.jpg";
 import casino_JOKER from "../styles/img/casino_JOKER.jpg";
+import casino_CQ9 from "../styles/img/casino_CQ9.jpg";
 import casino_YGG from "../styles/img/casino_YGG.jpg";
 import casino_GPI from "../styles/img/casino_GPI.jpg";
+// import casino_KISS from "../styles/img/casino_KISS.jpg";
 import id4d from "../styles/img/id4d.jpg";
 import Keno from "../styles/img/keno.jpg";
 import Lottery from "../styles/img/lottery.jpg";
@@ -28,6 +30,14 @@ import fish_GG from "../styles/img/fish_GG.jpg";
 import fish_SG from "../styles/img/fish_SG.jpg";
 import fish_SGW from "../styles/img/fish_SGW.jpg";
 import Cockfighting from "../styles/img/cockfighting.jpg";
+import path from "../path";
+
+export const productList = {
+	kiss918: {
+		tpId: 21,
+		gameId: 21
+	}
+};
 
 const gameList = ({ langId }) => [
 	{
@@ -132,24 +142,14 @@ const gameList = ({ langId }) => [
 				img: casino_JOKER
 			},
 			{
-				gameId: 208,
-				tpId: 1,
-				img: casino_ow
+				...defGameInfo.Casino_CQ9,
+				parameter: { tpId: defGameInfo.Casino_CQ9.tpId },
+				img: casino_CQ9
 			},
 			{
-				tpId: 5,
-				parameter: { tpId: 5 },
-				img: casino_PP
-			},
-			{
-				tpId: 10,
-				parameter: { tpId: 10 },
-				img: casino_SG
-			},
-			{
-				tpId: 14,
-				parameter: { tpId: 14 },
-				img: casino_PG
+				tpId: 6,
+				parameter: { tpId: 6 },
+				img: casino_GPI
 			},
 			{
 				tpId: 8,
@@ -157,9 +157,30 @@ const gameList = ({ langId }) => [
 				img: casino_YGG
 			},
 			{
-				tpId: 6,
-				parameter: { tpId: 6 },
-				img: casino_GPI
+				tpId: 10,
+				parameter: { tpId: 10 },
+				img: casino_SG
+			},
+			{
+				tpId: 5,
+				parameter: { tpId: 5 },
+				img: casino_PP
+			},
+			{
+				tpId: 14,
+				parameter: { tpId: 14 },
+				img: casino_PG
+			},
+			// {
+			// 	tpId: 21,
+			// 	img: casino_KISS,
+			// 	path: path.kiss918.root,
+			// 	needLogin: true
+			// },
+			{
+				gameId: 208,
+				tpId: 1,
+				img: casino_ow
 			}
 		]
 	},
@@ -256,3 +277,40 @@ const gameList = ({ langId }) => [
 ];
 
 export default gameList;
+
+export const defGameInfo = {
+	Sports: { tpId: 1, gameId: 1 },
+	CockFighting: { tpId: 17 },
+	VirtualSports: { tpId: 1, gameId: 180 },
+	eSports: { tpId: 1, gameId: 43 },
+	LIVEcasinoDG: { tpId: 4, gameId: 4 },
+	LIVEcasinoPP: { gameId: 101, tpId: 5 },
+	LIVEcasinoAE: { gameId: 15, tpId: 15 },
+	LIVEcasinoAG: { gameId: 3, tpId: 3 },
+	LIVEcasinoAB: { gameId: 12, tpId: 12 },
+	LIVEcasinoSA: { gameId: 2, tpId: 2 },
+	LIVEcasinoEB: { gameId: 18, tpId: 18 },
+	LIVEcasinoMW: { gameId: 105, tpId: 5 },
+	LIVEcasinoWM: { gameId: 20, tpId: 20 },
+	Casino_ow: { gameId: 208, tpId: 1 },
+	Casino_All: { tpId: 0 },
+	Casino_PP: { tpId: 5 },
+	Casino_SG: { tpId: 10 },
+	Casino_PG: { tpId: 14 },
+	Casino_JOKER: { tpId: 9 },
+	Casino_YGG: { tpId: 8 },
+	Casino_GPI: { tpId: 6 },
+	Casino_CQ9: { tpId: 16 },
+	// Casino_918Kiss: { tpId: 21, needLogin: true },
+	Fishing: { gameId: 10, tpId: 7 },
+	FishingSG: { gameId: "F-SF01", tpId: 10 },
+	FishingSGW: { gameId: "F-SF02", tpId: 10 },
+	Indo4d: { gameId: 223, tpId: 1 },
+	Keno: { gameId: 202, tpId: 1 },
+	lottery: { gameId: 220, tpId: 1 },
+	NumberGame: { gameId: 161, tpId: 1 },
+	sabaClub: {
+		tpId: 1,
+		gameId: 200
+	}
+};

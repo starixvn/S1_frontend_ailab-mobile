@@ -28,13 +28,13 @@ export default ({
 				: ((custTurnOver / custRollOver) * 100).toFixed(2);
 		return (
 			<div className="progressBarModule">
-				<div className="bounsName">{i18n.lbl_TurnoverAccumulated}</div>
+				<div className="bounsName">{i18n?.lbl_TurnoverAccumulated}</div>
 				<div className="turnover">
 					<span>
-						{i18n[`Currency_${currencyId}`]}{" "}
+						{i18n?.[`Currency_${currencyId}`]}{" "}
 						{number_format(custTurnOver, formatSetting)}
 					</span>{" "}
-					/ ({i18n.lbl_Req} {i18n[`Currency_${currencyId}`]}{" "}
+					/ ({i18n?.lbl_Req} {i18n?.[`Currency_${currencyId}`]}{" "}
 					{number_format(custRollOver, formatSetting)})
 					<ReloadSpin func={RefreshProcessBar} />
 				</div>

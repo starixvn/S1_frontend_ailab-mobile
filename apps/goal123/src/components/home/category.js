@@ -232,6 +232,8 @@ class CateGoryContent extends Component {
 								to={path.casino.root}
 								parameter={subItem.parameter}
 								img={subItem.img}
+								spanText={this.props.i18n[subItem.spanTextKey]}
+								icon={subItem.icon}
 							/>
 						);
 					} else {
@@ -323,6 +325,11 @@ const ProductLinkItem = props => {
 			ref={props._ref}
 			className={props.isShow ? "open" : ""}>
 			<img src={props.img} alt={props.icon ?? ""} />
+			{props.spanText ? (
+				<span className={`icon icon-${props.icon}`}>
+					{props.spanText}
+				</span>
+			) : null}
 		</Link>
 	);
 };

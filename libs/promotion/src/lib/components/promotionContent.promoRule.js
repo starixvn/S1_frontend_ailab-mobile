@@ -12,9 +12,9 @@ const MinAmount = ({ requiredAmount, displayText, formatSetting }) =>
 		</li>
 	) : null;
 
-const RemainingTime = ({ promotionInfo, i18n, isLogin }) => (
+const RemainingTime = ({ promotionInfo, i18n = {}, isLogin }) => (
 	<li>
-		<span className="title">{i18n.lbl_RemainingTime?.toUpperCase()}</span>
+		<span className="title">{i18n?.lbl_RemainingTime?.toUpperCase()}</span>
 		<span>
 			{RemainTime({
 				promotionInfo,
@@ -32,13 +32,13 @@ const KeyValue = ({ value, displayText }) => (
 	</li>
 );
 
-const defElems = ({ promotionInfo, i18n, isLogin, formatSetting }) => {
+const defElems = ({ promotionInfo, i18n = {}, isLogin, formatSetting }) => {
 	return {
 		[defRuleCols.minAmount]: (
 			<MinAmount
 				key={`promo-rule-${defRuleCols.minAmount}`}
 				requiredAmount={promotionInfo.requiredAmount}
-				displayText={i18n.lbl_MinAmount}
+				displayText={i18n?.lbl_MinAmount}
 				formatSetting={formatSetting}
 			/>
 		),
@@ -54,20 +54,20 @@ const defElems = ({ promotionInfo, i18n, isLogin, formatSetting }) => {
 			<KeyValue
 				key={`promo-rule-${defRuleCols.rollOver}`}
 				value={`${promotionInfo.rollOver}x`}
-				displayText={i18n.lbl_RollOver}
+				displayText={i18n?.lbl_RollOver}
 			/>
 		),
 		[defRuleCols.bonus]: (
 			<KeyValue
 				key={`promo-rule-${defRuleCols.bonus}`}
-				displayText={i18n.lbl_Bonus}
+				displayText={i18n?.lbl_Bonus}
 				value={number_format(promotionInfo.bonus, formatSetting)}
 			/>
 		),
 		[defRuleCols.maxBonus]: (
 			<KeyValue
 				key={`promo-rule-${defRuleCols.maxBonus}`}
-				displayText={i18n.lbl_MaxBonusAmount}
+				displayText={i18n?.lbl_MaxBonusAmount}
 				value={number_format(promotionInfo.maxBonus, formatSetting)}
 			/>
 		)

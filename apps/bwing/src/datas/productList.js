@@ -21,6 +21,7 @@ export const defGameInfo = {
 	Casino_JOKER: { tpId: 9 },
 	Casino_YGG: { tpId: 8 },
 	Casino_GPI: { tpId: 6 },
+	Casino_CQ9: { tpId: 16 },
 	Fishing: { gameId: 10, tpId: 7 },
 	Fishing_SG: { gameId: "F-SF01", tpId: 10 },
 	Fishing_SGW: { gameId: "F-SF02", tpId: 10 },

@@ -68,6 +68,7 @@ import KycWaiting from "./components/withdrawal/kycWaiting";
 
 import Whoami from "./pages/whoami";
 import PromotionInfo from "./pages/promotionInfo";
+// import Kiss918 from "./pages/918kiss";
 
 import BetList from "./pages/betList";
 import BetDateRange from "./components/betList/betByDateRange";
@@ -178,6 +179,7 @@ const Index = () => {
 						<BetDetail
 							path={`${path.betList.root}/:timePeriod/:date/:category/:game`}
 						/>
+						{/* <Kiss918 path={path.kiss918.root} /> */}
 					</Router>
 				</Layout>
 			</LocationProvider>

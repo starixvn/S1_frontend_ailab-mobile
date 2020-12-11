@@ -4319,4 +4319,243 @@ span.important {
   background: rgba(0, 0, 0, 0.3);
   text-align: right;
 }
+
+.ranking {
+  width: calc(100% - 8vw);
+  padding: 15vw 4vw 24vw;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.ranking .filterBtn {
+  margin-top: 1vw;
+}
+
+.ranking .title {
+  color: #F77A00;
+  font-size: 5vw;
+  border-bottom: 1px solid #F77A00;
+  margin: 5vw 0 3vw 0;
+  position: relative;
+  padding-bottom: 1vw;
+}
+
+.ranking .title:before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 30px;
+  display: block;
+  background: #F77A00;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+}
+
+.ranking .title:after {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 30px;
+  display: block;
+  background: #F77A00;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+}
+
+.ranking .eventTitle {
+  color: white;
+  font-weight: bold;
+  font-size: 8vw;
+  text-align: center;
+}
+
+.ranking .tagBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.ranking .tagBtn button {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  color: #fff;
+  border: 1px solid #F77A00;
+  border-radius: 3px;
+  padding: 1vw;
+  margin-right: 1vw;
+}
+
+.ranking .tagBtn button:last-child {
+  margin-right: 0;
+}
+
+.ranking .tagBtn button.open {
+  background: #F77A00;
+}
+
+.ranking .highest {
+  text-align: center;
+}
+
+.ranking .highest .text-org {
+  font-size: 6vw;
+}
+
+.ranking .mwt_border {
+  position: relative;
+  border: solid 3px #F77A00;
+  margin-top: 4vw;
+  padding: 2vw;
+  color: #f3f3f3;
+  line-height: normal;
+  font-weight: bold;
+}
+
+.ranking .mwt_border .arrow_t_int {
+  width: 0px;
+  height: 0px;
+  border-width: 15px;
+  border-style: solid;
+  border-color: transparent transparent #F77A00 transparent;
+  position: absolute;
+  top: -33px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.ranking .mwt_border .arrow_t_out {
+  width: 0px;
+  height: 0px;
+  border-width: 15px;
+  border-style: solid;
+  border-color: transparent transparent #001942 transparent;
+  position: absolute;
+  top: -29px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.ranking .rankList {
+  color: white;
+  margin: 3vw 0;
+}
+
+.ranking .rankList img {
+  width: 10vw;
+  margin-right: 1vw;
+}
+
+.ranking .rankList ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.ranking .rankList ul li {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 4vw;
+  height: 10vw;
+}
+
+.ranking .rankList ul li:last-child {
+  text-align: right;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding-right: 2vw;
+}
+
+.ranking .rankList ul:nth-child(2) li {
+  color: #F77A00;
+}
+
+.ranking .rankList ul:nth-child(n+3):nth-child(-n+5) li {
+  font-weight: bold;
+}
+
+.ranking .rankList ul:nth-child(n+2) {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid transparent;
+  border-width: 0 0 1px 0;
+  -o-border-image: linear-gradient(to right, #f5a14f, #F77A00);
+     border-image: -webkit-gradient(linear, left top, right top, from(#f5a14f), to(#F77A00));
+     border-image: linear-gradient(to right, #f5a14f, #F77A00);
+  border-image-slice: 1;
+}
+
+.ranking .rankList ul:nth-child(n+2) li {
+  height: 15vw;
+}
+
+.ranking .rankEvent .rankList ul:nth-child(2) li {
+  font-weight: bold;
+}
+
+.ranking .rankEvent .rankList ul:nth-child(5) li {
+  font-weight: normal;
+}
+
+.rankEvent, .champion, .records {
+  display: none;
+}
+
+.rankEvent.open, .champion.open, .records.open {
+  display: block;
+}
+
+button.icon.icon-icon32px_top, span.icon.icon-icon32px_top {
+  position: relative;
+}
+
+button.icon.icon-icon32px_top:after, span.icon.icon-icon32px_top:after {
+  content: "Live";
+  font-family: 'Microsoft YaHei',sans-serif;
+  position: absolute;
+  bottom: -3vw;
+  right: 5.4vw;
+  color: white;
+  font-size: 3vw;
+  font-weight: bold;
+  background: #F77A00;
+  border-radius: 3px;
+  padding: 0 1vw;
+}
+
+span.icon.icon-icon32px_top {
+  position: absolute;
+}
+
+span.icon.icon-icon32px_top:after {
+  content: "Live";
+  font-family: 'Microsoft YaHei',sans-serif;
+  top: 50%;
+  right: 0;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+}
 /*# sourceMappingURL=style.css.map */
