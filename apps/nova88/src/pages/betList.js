@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
-import { i18nContext, popBoxContext } from "Context";
-import { useNavigate } from "@reach/router";
+import React, { useEffect, useRef, useContext, useState } from "react";
+import { i18nContext, popBoxContext, userInfoContext } from "Context";
+import { useNavigate, Redirect } from "@reach/router";
 import Filter from "../components/betList/filter";
 import api from "../service/api";
 import { Breadcrumbs } from "../components/common/breadcrumb";
@@ -9,36 +9,38 @@ import path from "../path";
 export default props => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const { userInfo } = useContext(userInfoContext);
 	const isMountedRef = useRef(null);
 	const navigate = useNavigate();
 	const currentLocation = window.location.pathname;
+	const [redirectPath, setRedirectPath] = useState(null);
 
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => (isMountedRef.current = false);
 	});
 
-	const submitFilter = (startDay, endDay, dateRangeDisplayKey) => {
+	useEffect(() => {
+		if (isMountedRef.current && userInfo.isLogin === false) {
+			setRedirectPath("/");
+		}
+	}, [userInfo.isLogin]);
+
+	const submitFilter = (startDay, endDay) => {
 		if (startDay !== endDay) {
 			GetBetRecordListDateRange({
 				startDay: startDay,
 				endDay: endDay,
-				dateRangeDisplayKey: dateRangeDisplayKey,
 				pageNumber: 1
 			});
 		} else {
 			GetRecordListOneDay({
-				selDate: "2020-11-16"
+				selDate: startDay
 			});
 		}
 	};
 
-	const GetBetRecordListDateRange = ({
-		startDay,
-		endDay,
-		dateRangeDisplayKey,
-		pageNumber
-	}) => {
+	const GetBetRecordListDateRange = ({ startDay, endDay, pageNumber }) => {
 		api.payment
 			.CustTpBetRecordListDateRange({
 				StartDate: startDay,
@@ -55,8 +57,7 @@ export default props => {
 								{
 									state: {
 										datas: res.data.data,
-										totalPages: res.data.totalPages,
-										dateRangeDisplayKey: dateRangeDisplayKey
+										totalPages: res.data.totalPages
 									}
 								}
 							);
@@ -85,7 +86,9 @@ export default props => {
 		navigate(`/${path.betList.root}/${selDate}`);
 	};
 
-	return (
+	return redirectPath !== null ? (
+		<Redirect to={redirectPath} noThrow />
+	) : (
 		<>
 			{props.uri === currentLocation ? (
 				<>
@@ -97,11 +100,7 @@ export default props => {
 							[path.betList.root]: "lbl_QuickPick"
 						}}
 					/>
-					<Filter
-						onlyQuickPick={true}
-						submitHandler={submitFilter}
-						optionsLength={4}
-					/>
+					<Filter submitHandler={submitFilter} />
 				</>
 			) : (
 				<>{props.children}</>

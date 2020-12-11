@@ -5,6 +5,7 @@ import Dropdown from "../common/dropdown";
 import { number_format, isConvert } from "../common/common";
 import { Breadcrumbs } from "../common/breadcrumb";
 import { getDateRange } from "../betList/filter";
+import { Redirect } from "@reach/router";
 import path from "../../path";
 
 export default props => {
@@ -13,6 +14,8 @@ export default props => {
 	const { setPopBox } = useContext(popBoxContext);
 	const [selectedPage, setSelectedPage] = useState(0);
 	const [datas, setDatas] = useState(null);
+	const [redirectPath, setRedirectPath] = useState(null);
+
 	const _isConvert = isConvert(userInfo.currencyId);
 	const state = props?.location.state;
 	const isMountedRef = useRef(null);
@@ -26,6 +29,12 @@ export default props => {
 		isMountedRef.current = true;
 		return () => (isMountedRef.current = false);
 	});
+
+	useEffect(() => {
+		if (isMountedRef.current && userInfo.isLogin === false) {
+			setRedirectPath("/");
+		}
+	}, [userInfo.isLogin]);
 
 	useEffect(() => {
 		if (isMountedRef.current && props.location.state !== null) {
@@ -108,7 +117,9 @@ export default props => {
 	};
 	const skipLink = getSkipLink({ dateRange });
 
-	return datas !== null ? (
+	return redirectPath !== null ? (
+		<Redirect to={redirectPath} noThrow />
+	) : datas !== null ? (
 		<>
 			<Breadcrumbs
 				locationInfo={props}

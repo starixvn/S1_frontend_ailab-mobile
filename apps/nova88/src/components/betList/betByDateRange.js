@@ -5,7 +5,7 @@ import { number_format, isConvert } from "../common/common";
 import Dropdown from "../common/dropdown";
 import api from "../../service/api";
 import { Breadcrumbs } from "../common/breadcrumb";
-import { useNavigate } from "@reach/router";
+import { useNavigate, Redirect } from "@reach/router";
 import { getDateRange } from "../betList/filter";
 import path from "../../path";
 
@@ -16,6 +16,8 @@ export default props => {
 	const [selectedPage, setSelectedPage] = useState(0);
 	const [totalPages, setTotalPages] = useState(1);
 	const [datas, setDatas] = useState(null);
+	const [redirectPath, setRedirectPath] = useState(null);
+
 	const navigate = useNavigate();
 	const _isConvert = isConvert(userInfo.currencyId);
 	const isMountedRef = useRef(null);
@@ -31,10 +33,16 @@ export default props => {
 	});
 
 	useEffect(() => {
+		if (isMountedRef.current && userInfo.isLogin === false) {
+			setRedirectPath("/");
+		}
+	}, [userInfo.isLogin]);
+
+	useEffect(() => {
 		if (isMountedRef.current) {
 			if (!timePeriod.includes("to")) {
 				GetRecordListOneDay({ selDate: timePeriod });
-			} else if (props.location.state.datas) {
+			} else if (props.location.state?.datas) {
 				setDatas(props?.location.state.datas);
 				setTotalPages(props?.location.state.totalPages);
 			} else {
@@ -164,7 +172,9 @@ export default props => {
 		);
 	});
 
-	return datas !== null && !props.path.includes("/:date") ? (
+	return redirectPath !== null ? (
+		<Redirect to={redirectPath} noThrow />
+	) : datas !== null && !props.path.includes("/:date") ? (
 		<>
 			<Breadcrumbs
 				locationInfo={props}

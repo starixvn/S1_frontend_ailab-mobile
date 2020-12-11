@@ -3,7 +3,7 @@ import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import moment from "moment";
 import Dropdown from "../common/dropdown";
 import { number_format, isConvert } from "../common/common";
-import { useNavigate } from "@reach/router";
+import { useNavigate, Redirect } from "@reach/router";
 import { Breadcrumbs } from "../common/breadcrumb";
 import { getDateRange } from "../betList/filter";
 import api from "../../service/api";
@@ -16,6 +16,8 @@ export default props => {
 	const [selectedPage, setSelectedPage] = useState(0);
 	const [totalPages, setTotalPages] = useState(1);
 	const [datas, setDatas] = useState(null);
+	const [redirectPath, setRedirectPath] = useState(null);
+
 	const _isConvert = isConvert(userInfo.currencyId);
 	const navigate = useNavigate();
 	const isMountedRef = useRef(null);
@@ -32,8 +34,14 @@ export default props => {
 	});
 
 	useEffect(() => {
+		if (isMountedRef.current && userInfo.isLogin === false) {
+			setRedirectPath("/");
+		}
+	}, [userInfo.isLogin]);
+
+	useEffect(() => {
 		if (isMountedRef.current) {
-			if (props?.location.state.datas) {
+			if (props?.location.state?.datas) {
 				setDatas(props?.location.state.datas);
 				setTotalPages(props?.location.state.totalPages);
 			} else {
@@ -161,7 +169,9 @@ export default props => {
 	};
 	const skipLink = getSkipLink({ dateRange });
 
-	return datas !== null && !props.path.includes("/:category") ? (
+	return redirectPath !== null ? (
+		<Redirect to={redirectPath} noThrow />
+	) : datas !== null && !props.path.includes("/:category") ? (
 		<>
 			<Breadcrumbs
 				locationInfo={props}
