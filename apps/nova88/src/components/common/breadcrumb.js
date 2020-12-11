@@ -35,7 +35,7 @@ const useHandleBreadcrumb = ({
 		if (urlParams.length > 0) {
 			let prevPath = "";
 			let result = urlParams
-				.filter(u => u && !skipLink.includes(u))
+				.filter(u => u && u !== "/" && !skipLink.includes(u))
 				.map(u => {
 					const currentPath = specialLink[u]
 						? specialLink[u]

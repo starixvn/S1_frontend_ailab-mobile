@@ -5,11 +5,10 @@ import path from "../path";
 const defTabs = {
 	default: {
 		to: `/${path.statement.root}`,
-		displayKey: "lbl_Statement",
-		excludeMath: path.statement.sub.financialLog.root
+		displayKey: "lbl_Statement"
 	},
 	FinancialLog: {
-		to: path.statement.sub.financialLog.root,
+		to: `/${path.financialLog.root}`,
 		displayKey: "lbl_financialLog"
 	}
 };

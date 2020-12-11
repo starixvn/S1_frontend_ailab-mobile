@@ -54,7 +54,8 @@ import BetDateRange from "./components/statement/byDateRange";
 import BetOneDay from "./components/statement/byDay";
 import BetByCategory from "./components/statement/byCategory";
 import BetDetail from "./components/statement/detail";
-import FinancialLog from "./components/statement/financialLog";
+import FinancialLog from "./pages/financialLog";
+import FinancialLogHome from "./components/statement/financialLog";
 
 import Message from "./pages/message";
 import PersonalMsg from "./components/message/personalMsg";
@@ -153,25 +154,19 @@ const Index = () => {
 							/>
 						</Transfer>
 						<Statement path={path.statement.root}>
-							<StatementList
-								path={`${path.statement.sub.root}`}
-							/>
-							<BetDateRange
-								path={`${path.statement.sub.root}/:timePeriod`}
-							/>
-							<BetOneDay
-								path={`${path.statement.sub.root}/:timePeriod/:date`}
-							/>
+							<StatementList path="/" />
+							<BetDateRange path={`/:timePeriod`} />
+							<BetOneDay path={`/:timePeriod/:date`} />
 							<BetByCategory
-								path={`${path.statement.sub.root}/:timePeriod/:date/:category`}
+								path={`/:timePeriod/:date/:category`}
 							/>
 							<BetDetail
-								path={`${path.statement.sub.root}/:timePeriod/:date/:category/:game`}
-							/>
-							<FinancialLog
-								path={path.statement.sub.financialLog.root}
+								path={`/:timePeriod/:date/:category/:game`}
 							/>
 						</Statement>
+						<FinancialLog path={path.financialLog.root}>
+							<FinancialLogHome path="/" />{" "}
+						</FinancialLog>
 						<Message path={path.message.root}>
 							<PersonalMsg path={path.message.sub.root} />
 							<Announcement

@@ -96,6 +96,11 @@ const defPageInfo = {
 		titleKey: "918 Kiss",
 		className: "main casino kiss",
 		hideLogo: true
+	},
+	financialLog: {
+		titleKey: "lbl_financialLog",
+		className: "main",
+		hideLogo: true
 	}
 };
 
