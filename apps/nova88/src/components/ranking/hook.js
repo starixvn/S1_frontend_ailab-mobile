@@ -16,12 +16,17 @@ const SetUpdTime = () => {
 	);
 };
 
-export const useGetRanking = ({ isOpen, selected, BeforeDays = 1 }) => {
+export const useGetRanking = ({
+	isOpen,
+	selected,
+	BeforeDays = 1,
+	isLogin
+}) => {
 	const [datas, setDatas] = useState([]);
 	const [lastUpdTime, setLastUpdTime] = useState(SetUpdTime());
 
 	useEffect(() => {
-		if (isOpen) {
+		if (isOpen && isLogin) {
 			const lBCategoryId = defBtns[selected]?.lBCategoryId;
 			api.events
 				.GetLeaderboardList({
@@ -36,16 +41,30 @@ export const useGetRanking = ({ isOpen, selected, BeforeDays = 1 }) => {
 					}
 				});
 		}
-	}, [isOpen, selected, setDatas, BeforeDays]);
+	}, [isOpen, selected, setDatas, BeforeDays, isLogin]);
 
 	return { datas, lastUpdTime };
 };
 
-export const useHandleSelect = ({ defaultSelect }) => {
+export const useHandleSelect = ({
+	defaultSelect,
+	handleLogin,
+	isLogin = false
+}) => {
 	const [selected, setSelected] = useState(defaultSelect);
 
-	const handleSelect = e => {
-		setSelected(e.target.value);
+	useEffect(() => {
+		if (isLogin === false) {
+			setSelected(defaultSelect);
+		}
+	}, [defaultSelect, isLogin]);
+
+	const handleSelect = (value, isLogin, beforeLogin) => {
+		if (isLogin || beforeLogin || !handleLogin) {
+			setSelected(value);
+		} else {
+			handleLogin();
+		}
 	};
 
 	return { selected, handleSelect };
@@ -54,8 +73,8 @@ export const useHandleSelect = ({ defaultSelect }) => {
 export const useHandleSelectDay = () => {
 	const [selectedDay, setSelectedDay] = useState("1");
 
-	const handleSelectDay = e => {
-		setSelectedDay(e.target.value);
+	const handleSelectDay = value => {
+		setSelectedDay(value);
 	};
 
 	return { selectedDay, handleSelectDay };

@@ -4,8 +4,8 @@ import { defBtns } from "./def";
 import { useGetRanking } from "./hook";
 import RankList from "./rankList";
 
-const Ranking = ({ isOpen, selected, i18n = {} }) => {
-	const { datas, lastUpdTime } = useGetRanking({ isOpen, selected });
+const Ranking = ({ isOpen, selected, i18n = {}, isLogin }) => {
+	const { datas, lastUpdTime } = useGetRanking({ isOpen, selected, isLogin });
 	const title = i18n[defBtns[selected]?.displayKey];
 
 	return (

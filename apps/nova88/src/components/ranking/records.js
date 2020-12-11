@@ -5,15 +5,17 @@ import { useGetRanking, useHandleSelect, useHandleSelectDay } from "./hook";
 import { defBtnsOfCategory, defDayBtns } from "./def";
 import BtnBar from "./btnBar";
 
-const Records = ({ isOpen, i18n }) => {
+const Records = ({ isOpen, i18n, isLogin }) => {
 	const { selected, handleSelect } = useHandleSelect({
-		defaultSelect: defBtnsOfCategory.Sports.value
+		defaultSelect: defBtnsOfCategory.Sports.value,
+		isLogin
 	});
 	const { selectedDay, handleSelectDay } = useHandleSelectDay();
 	const { datas, lastUpdTime } = useGetRanking({
 		isOpen,
 		selected,
-		BeforeDays: selectedDay
+		BeforeDays: selectedDay,
+		isLogin
 	});
 
 	return (
@@ -26,6 +28,7 @@ const Records = ({ isOpen, i18n }) => {
 				handleSelect={handleSelect}
 				mainKey="leader-board-records-btnsOfCategory"
 				defBtns={defBtnsOfCategory}
+				isLogin={isLogin}
 			/>
 			<div className="text">{i18n.lbl_Date}</div>
 			<BtnBar

@@ -31,7 +31,8 @@ export const defBtns = {
 	Event: {
 		displayKey: "lbl_Event",
 		value: "Event",
-		elemType: defElemType.Event
+		elemType: defElemType.Event,
+		beforeLogin: true
 	},
 	...defBtnsOfCategory,
 	Records: {
