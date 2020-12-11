@@ -19,12 +19,28 @@ const useHandleBreadcrumb = ({
 				: path?.split("/:");
 		urlParams = urlParams ? [root, ...urlParams] : [root];
 
+		const specialLink = {};
+		if (skipLink.length > 0) {
+			skipLink.forEach(skip => {
+				let specialIdx = urlParams?.findIndex(u => u === skip);
+				if (specialIdx > 0) {
+					const specialItem = urlParams[specialIdx - 1];
+					specialLink[
+						specialItem
+					] = `${locationInfo[specialItem]}/${locationInfo[skip]}`;
+				}
+			});
+		}
+
 		if (urlParams.length > 0) {
 			let prevPath = "";
 			let result = urlParams
 				.filter(u => u && !skipLink.includes(u))
 				.map(u => {
-					prevPath += `/${locationInfo[u] ?? u}`;
+					const currentPath = specialLink[u]
+						? specialLink[u]
+						: locationInfo[u] ?? u;
+					prevPath += `/${currentPath}`;
 					const link = {
 						urlParam: u,
 						path: prevPath,
