@@ -101,6 +101,11 @@ const defPageInfo = {
 		titleKey: "918 Kiss",
 		className: "main casino kiss",
 		hideLogo: true
+	},
+	rankingTNC: {
+		titleKey: "lbl_Details",
+		className: "main tnc",
+		hideLogo: true
 	}
 };
 
@@ -119,6 +124,7 @@ const GetPageInfo = locationPath => {
 
 		pageInfoKey = pageInfoKey?.length > 0 ? pageInfoKey[0] : null;
 		let pageInfo = defPageInfo[pageInfoKey] ?? null;
+
 		return pageInfoKey && pageInfo
 			? {
 					titleKey: pageInfo.titleKey,

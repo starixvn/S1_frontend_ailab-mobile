@@ -12,4 +12,10 @@ export class eventsAPI extends BaseAPI {
 			TopNum,
 			BeforeDays
 		});
+
+	GetCustRank = ({ LBCategoryId, BeforeDays = 1 }) =>
+		this.evnetsRequest.post(`/GetCustRank/`, {
+			LBCategoryId,
+			BeforeDays
+		});
 }

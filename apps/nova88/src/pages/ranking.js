@@ -15,9 +15,8 @@ import BtnBar from "../components/ranking/btnBar";
 export default () => {
 	const { i18n } = useContext(i18nContext);
 	const { setNav } = useContext(navContext);
-	const {
-		userInfo: { isLogin }
-	} = useContext(userInfoContext);
+	const { userInfo } = useContext(userInfoContext);
+	const { isLogin } = userInfo;
 
 	const handleLogin = () => {
 		setNav(defNavPanel.login);
@@ -25,7 +24,7 @@ export default () => {
 	const { selected, handleSelect } = useHandleSelect({
 		defaultSelect: defBtns.Event.value,
 		handleLogin: handleLogin,
-		isLogin: isLogin
+		isLogin
 	});
 
 	return (
@@ -42,17 +41,18 @@ export default () => {
 			<Event
 				isOpen={defBtns[selected].elemType === defElemType.Event}
 				i18n={i18n}
+				userInfo={userInfo}
 			/>
 			<RankingByCategory
 				isOpen={defBtns[selected].elemType === defElemType.Ranking}
 				selected={selected}
 				i18n={i18n}
-				isLogin={isLogin}
+				userInfo={userInfo}
 			/>
 			<Record
 				isOpen={defBtns[selected].elemType === defElemType.Record}
 				i18n={i18n}
-				isLogin={isLogin}
+				userInfo={userInfo}
 			/>
 		</>
 	);

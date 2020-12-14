@@ -129,6 +129,9 @@ export default {
 	ranking: {
 		root: "ranking"
 	},
+	rankingTNC: {
+		root: "rankTNC"
+	},
 	kiss918: {
 		root: "918kiss"
 	}

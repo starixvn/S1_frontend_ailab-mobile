@@ -5,7 +5,7 @@ import { useGetRanking, useHandleSelect, useHandleSelectDay } from "./hook";
 import { defBtnsOfCategory, defDayBtns } from "./def";
 import BtnBar from "./btnBar";
 
-const Records = ({ isOpen, i18n, isLogin }) => {
+const Records = ({ isOpen, i18n, userInfo: { isLogin, userName } }) => {
 	const { selected, handleSelect } = useHandleSelect({
 		defaultSelect: defBtnsOfCategory.Sports.value,
 		isLogin
@@ -15,7 +15,8 @@ const Records = ({ isOpen, i18n, isLogin }) => {
 		isOpen,
 		selected,
 		BeforeDays: selectedDay,
-		isLogin
+		isLogin,
+		userName
 	});
 
 	return (

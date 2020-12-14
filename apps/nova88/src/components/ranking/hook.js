@@ -20,7 +20,8 @@ export const useGetRanking = ({
 	isOpen,
 	selected,
 	BeforeDays = 1,
-	isLogin
+	isLogin,
+	userName
 }) => {
 	const [datas, setDatas] = useState([]);
 	const [lastUpdTime, setLastUpdTime] = useState(SetUpdTime());
@@ -28,11 +29,12 @@ export const useGetRanking = ({
 	useEffect(() => {
 		if (isOpen && isLogin) {
 			const lBCategoryId = defBtns[selected]?.lBCategoryId;
+			const beforeDays = isNaN(BeforeDays) ? 1 : Number(BeforeDays);
 			api.events
 				.GetLeaderboardList({
 					lBCategoryId,
 					TopNum: 10,
-					BeforeDays: isNaN(BeforeDays) ? 1 : Number(BeforeDays)
+					BeforeDays: beforeDays
 				})
 				.then(res => {
 					if (res.data.errorCode === 0) {
@@ -40,8 +42,29 @@ export const useGetRanking = ({
 						setLastUpdTime(SetUpdTime());
 					}
 				});
+
+			api.events
+				.GetCustRank({
+					LBCategoryId: lBCategoryId,
+					BeforeDays: beforeDays
+				})
+				.then(res => {
+					if (res.data.errorCode === 0) {
+						const { custRank, point } = res.data.data;
+						if (custRank > 10) {
+							setDatas(prev => [
+								...prev,
+								{
+									userName,
+									wTurnover: point,
+									rank: custRank > 999 ? "999+" : custRank
+								}
+							]);
+						}
+					}
+				});
 		}
-	}, [isOpen, selected, setDatas, BeforeDays, isLogin]);
+	}, [isOpen, selected, setDatas, BeforeDays, isLogin, userName]);
 
 	return { datas, lastUpdTime };
 };
