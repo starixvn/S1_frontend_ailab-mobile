@@ -177,15 +177,6 @@ export default props => {
 						{i18n.lbl_WinlostAmountTotal}：
 						{number_format(totalWinLoss, _isConvert)}
 					</div>
-
-					<div className="inputBox page">
-						<Dropdown
-							options={pageOptions}
-							mainKey="betList-By-GameType"
-							onSelectItem={selectPage}
-							selectedIdx={selectedPage}
-						/>
-					</div>
 				</>
 			) : (
 				<div className="nodata icon icon-nodata">

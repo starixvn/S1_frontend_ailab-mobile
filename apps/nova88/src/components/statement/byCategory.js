@@ -107,14 +107,6 @@ export default props => {
 			);
 	};
 
-	let totalTurnover = datas?.reduce((prev, curr) => {
-		return prev + curr.turnOver;
-	}, 0);
-
-	let totalWinLoss = datas?.reduce((prev, curr) => {
-		return prev + curr.winlostAmount;
-	}, 0);
-
 	let detailArr = datas?.map(data => {
 		return (
 			<Detail
@@ -171,24 +163,6 @@ export default props => {
 
 					<div className="recent open">
 						<div className="infoList">{detailArr}</div>
-					</div>
-
-					<div className="total">
-						{i18n.lbl_TurnoverTotal}：
-						{number_format(totalTurnover, _isConvert)}
-					</div>
-					<div className="total">
-						{i18n.lbl_WinlostAmountTotal}：
-						{number_format(totalWinLoss, _isConvert)}
-					</div>
-
-					<div className="inputBox page">
-						<Dropdown
-							options={pageOptions}
-							mainKey="betList-By-Category"
-							onSelectItem={selectPage}
-							selectedIdx={selectedPage}
-						/>
 					</div>
 				</>
 			) : (
