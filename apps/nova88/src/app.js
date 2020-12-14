@@ -71,7 +71,6 @@ import PromotionInfo from "./pages/promotionInfo";
 // import Kiss918 from "./pages/918kiss";
 
 import Ranking from "./pages/ranking";
-import RankingTandC from "./pages/rankingTandC";
 
 const Index = () => {
 	let history = createHistory(window);
@@ -164,7 +163,6 @@ const Index = () => {
 						</Setting>
 						<Whoami path={path.whoami.root} />
 						<Ranking path={path.ranking.root} />
-						<RankingTandC path={path.rankingTNC.root} />
 						{/* <Kiss918 path={path.kiss918.root} /> */}
 					</Router>
 				</Layout>

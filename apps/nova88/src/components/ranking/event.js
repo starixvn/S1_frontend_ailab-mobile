@@ -3,8 +3,7 @@ import { defBtnsOfCategory } from "./def";
 import BtnBar from "./btnBar";
 import { useHandleSelect } from "./hook";
 import PrizeList from "./prize";
-import { Link } from "@reach/router";
-import path from "../../path";
+import config from "../../config";
 
 const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
 	const { selected, handleSelect } = useHandleSelect({
@@ -24,11 +23,13 @@ const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
 			/>
 			<PrizeList userInfo={userInfo} category={selected} i18n={i18n} />
 			<div className="btn-group">
-				<Link
-					to={`/${path.rankingTNC.root}`}
+				<a
+					href={`${config.cloudImgURL}`}
+					target="_blank"
+					rel="noreferrer"
 					className="orange openPopup">
 					{i18n.lbl_MoreDetails}
-				</Link>
+				</a>
 			</div>
 		</div>
 	);

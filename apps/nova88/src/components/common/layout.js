@@ -101,11 +101,6 @@ const defPageInfo = {
 		titleKey: "918 Kiss",
 		className: "main casino kiss",
 		hideLogo: true
-	},
-	rankingTNC: {
-		titleKey: "lbl_Details",
-		className: "main tnc",
-		hideLogo: true
 	}
 };
 
