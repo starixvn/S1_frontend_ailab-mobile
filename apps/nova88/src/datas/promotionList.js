@@ -212,7 +212,7 @@ export default [
 			id: "Daftar & Nikmati Bonus Anda Sekarang!",
 			th: "สมัครและร่วมสนุกไปกับโบนัสของเราตอนนี้!!"
 		}
-	},
+	}
 	// {
 	// 	bonusCode: "1111SPORTSBOOKATTENDANCE",
 	// 	bannerLink: {
@@ -248,39 +248,4 @@ export default [
 	// 		th: "สมัครและร่วมสนุกไปกับโบนัสของเราตอนนี้!!"
 	// 	}
 	// }
-	{
-		bonusCode: "1212SpecialPromo",
-		bannerLink: {
-			en:
-				"https://image.n88media.com/NovaPromotion/1212SpecialPromo/EN.html",
-			cs:
-				"https://image.n88media.com/NovaPromotion/1212SpecialPromo/CS.html",
-			id:
-				"https://image.n88media.com/NovaPromotion/1212SpecialPromo/ID.html",
-			th:
-				"https://image.n88media.com/NovaPromotion/1212SpecialPromo/TH.html"
-		},
-		imgUrl: {
-			en:
-				"https://image.n88media.com/NovaPromotion/1212SpecialPromo/en/12PlayWin1212.jpg",
-			cs:
-				"https://image.n88media.com/NovaPromotion/1212SpecialPromo/cs/12PlayWin1212.jpg",
-			id:
-				"https://image.n88media.com/NovaPromotion/1212SpecialPromo/id/12PlayWin1212.jpg",
-			th:
-				"https://image.n88media.com/NovaPromotion/1212SpecialPromo/th/12PlayWin1212.jpg"
-		},
-		title: {
-			en: "One2 PLAY, One2 WIN 12.12",
-			cs: "再次狂欢，狂欢到底 !! 12.12",
-			id: "1212 MAIN & MENANG",
-			th: "12.12 ยิ่งเล่น ยิ่งรวย"
-		},
-		description: {
-			en: "JOIN NOW & WIN 1212",
-			cs: "立即加入并赢取12.12",
-			id: "DAFTAR SEKARANG & MENANGKAN 1212",
-			th: "โปร 12.12 ร่วมสนุกตอนนี้"
-		}
-	}
 ];
