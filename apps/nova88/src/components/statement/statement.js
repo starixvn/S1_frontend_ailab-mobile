@@ -1,19 +1,19 @@
 import React, { useEffect, useRef, useContext, useState } from "react";
-import { i18nContext, popBoxContext, userInfoContext } from "Context";
+import { i18nContext, userInfoContext } from "Context";
 import { useNavigate, Redirect } from "@reach/router";
 import { Filter } from "./filter";
-import api from "../../service/api";
 import { Breadcrumbs } from "../common/breadcrumb";
 import path from "../../path";
+import Loading from "../common/loading";
 
 export default props => {
 	const { i18n } = useContext(i18nContext);
-	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
 	const isMountedRef = useRef(null);
 	const navigate = useNavigate();
 	const currentLocation = window.location.pathname;
 	const [redirectPath, setRedirectPath] = useState(null);
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -28,66 +28,31 @@ export default props => {
 
 	const submitFilter = (startDay, endDay) => {
 		if (startDay !== endDay) {
-			GetBetRecordListDateRange({
+			GetDateRangeList({
 				startDay: startDay,
 				endDay: endDay,
 				pageNumber: 1
 			});
 		} else {
-			GetRecordListOneDay({
+			setLoading(true);
+			toByDayPage({
 				selDate: startDay
 			});
 		}
 	};
 
-	const GetBetRecordListDateRange = ({ startDay, endDay, pageNumber }) => {
-		api.payment
-			.CustTpBetRecordListDateRange({
-				StartDate: startDay,
-				EndDate: endDay,
-				PageNumber: pageNumber,
-				PageSize: 10
-			})
-			.then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							navigate(
-								`/${path.statement.root}/${startDay}to${endDay}`,
-								{
-									state: {
-										datas: res.data.data,
-										totalPages: res.data.totalPages
-									}
-								}
-							);
-						} else {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: res.data.message
-							});
-						}
-					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-					}
-				}
-			);
+	const GetDateRangeList = ({ startDay, endDay }) => {
+		navigate(`/${path.statement.root}/${startDay}to${endDay}`);
 	};
 
-	const GetRecordListOneDay = ({ selDate }) => {
+	const toByDayPage = ({ selDate }) => {
 		navigate(`/${path.statement.root}/${selDate}`);
 	};
 
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
+	) : loading ? (
+		<Loading />
 	) : (
 		<>
 			{props.uri === currentLocation ? (

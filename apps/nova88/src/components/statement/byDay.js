@@ -8,6 +8,7 @@ import { Breadcrumbs } from "../common/breadcrumb";
 import { getDateRange } from "./filter";
 import api from "../../service/api";
 import path from "../../path";
+import Loading from "../common/loading";
 
 export default props => {
 	const { i18n } = useContext(i18nContext);
@@ -17,6 +18,7 @@ export default props => {
 	const [totalPages, setTotalPages] = useState(1);
 	const [datas, setDatas] = useState(null);
 	const [redirectPath, setRedirectPath] = useState(null);
+	const [loading, setLoading] = useState(true);
 
 	const _isConvert = isConvert(userInfo.currencyId);
 	const navigate = useNavigate();
@@ -41,12 +43,7 @@ export default props => {
 
 	useEffect(() => {
 		if (isMountedRef.current) {
-			if (props?.location.state?.datas) {
-				setDatas(props?.location.state.datas);
-				setTotalPages(props?.location.state.totalPages);
-			} else {
-				GetRecordListOneDay({ pageNumber: 1 });
-			}
+			GetListByDay({ pageNumber: 1 });
 		}
 	}, []);
 
@@ -59,54 +56,19 @@ export default props => {
 		if (i !== selectedPage) {
 			setSelectedPage(i);
 			let _selectedPage = i + 1;
-			GetRecordListOneDay({ pageNumber: _selectedPage });
+			GetListByDay({ pageNumber: _selectedPage });
 		}
 	};
 
-	const clickDetail = CategoryId => {
-		api.payment
-			.GetCustTpBetRecordListbyCategoryId({
-				SelDate: _selDate,
-				CategoryId: CategoryId,
-				PageNumber: 1,
-				PageSize: 10
-			})
-			.then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							setDatas(null);
-							navigate(
-								`/${path.statement.root}/${_startDay}to${_endDay}/${_selDate}/${CategoryId}`,
-								{
-									state: {
-										datas: res.data.data,
-										totalPages: res.data.totalPages
-									}
-								}
-							);
-						} else {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: res.data.message
-							});
-						}
-					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-					}
-				}
-			);
+	const toByCategoryPage = ({ CategoryId }) => {
+		navigate(
+			`/${path.statement.root}/${_startDay}to${_endDay}/${_selDate}/${CategoryId}`
+		);
 	};
 
-	const GetRecordListOneDay = ({ pageNumber }) => {
+	const GetListByDay = ({ pageNumber }) => {
+		setLoading(true);
+
 		api.payment
 			.GetCustTpBetRecordListOneDay({
 				SelDate: _selDate,
@@ -118,6 +80,7 @@ export default props => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
 							setDatas(res.data.data);
+							setTotalPages(res.data.totalPages);
 						} else {
 							setPopBox({
 								isOpen: true,
@@ -125,6 +88,7 @@ export default props => {
 								content: res.data.message
 							});
 						}
+						setLoading(false);
 					}
 				},
 				err => {
@@ -134,6 +98,7 @@ export default props => {
 							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
+						setLoading(false);
 					}
 				}
 			);
@@ -157,7 +122,7 @@ export default props => {
 				validBet={data.validBet}
 				winlostAmount={data.winlostAmount}
 				_isConvert={_isConvert}
-				clickDetail={clickDetail}
+				toByCategoryPage={toByCategoryPage}
 				categoryName={data.categoryName}
 				categoryId={data.categoryId}
 			/>
@@ -165,12 +130,17 @@ export default props => {
 	});
 
 	const getSkipLink = ({ dateRange }) => {
-		return dateRange === "lbl_YesterDay" ? ["date"] : [];
+		return (dateRange =
+			dateRange === "lbl_YesterDay" || dateRange === "lbl_Today"
+				? ["date"]
+				: []);
 	};
 	const skipLink = getSkipLink({ dateRange });
 
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
+	) : loading ? (
+		<Loading />
 	) : datas !== null && !props.path.includes("/:category") ? (
 		<>
 			<Breadcrumbs
@@ -235,7 +205,7 @@ const Detail = ({
 	validBet,
 	winlostAmount,
 	_isConvert,
-	clickDetail,
+	toByCategoryPage,
 	categoryName,
 	categoryId
 }) => {
@@ -267,7 +237,9 @@ const Detail = ({
 					<div className="btn-group">
 						<button
 							className="orange openPopup"
-							onClick={clickDetail.bind(this, categoryId)}>
+							onClick={toByCategoryPage.bind(this, {
+								CategoryId: categoryId
+							})}>
 							{i18n.lbl_Details}
 						</button>
 					</div>

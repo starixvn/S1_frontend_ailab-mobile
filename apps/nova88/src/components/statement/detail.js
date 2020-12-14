@@ -7,22 +7,28 @@ import { Breadcrumbs } from "../common/breadcrumb";
 import { getDateRange } from "./filter";
 import { Redirect } from "@reach/router";
 import path from "../../path";
+import api from "../../service/api";
+import Loading from "../common/loading";
 
 export default props => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const [selectedPage, setSelectedPage] = useState(0);
+	const [totalPages, setTotalPages] = useState(1);
 	const [datas, setDatas] = useState(null);
 	const [redirectPath, setRedirectPath] = useState(null);
+	const [loading, setLoading] = useState(true);
 
 	const _isConvert = isConvert(userInfo.currencyId);
-	const state = props?.location.state;
 	const isMountedRef = useRef(null);
 
 	const timePeriod = props.timePeriod;
 	const _startDay = timePeriod.substr(0, timePeriod.indexOf("to"));
 	const _endDay = timePeriod.split("to").pop();
+	const _selDate = props.date;
+	const _gameId = props.game;
+
 	let dateRange = getDateRange(_startDay, _endDay);
 
 	useEffect(() => {
@@ -37,13 +43,13 @@ export default props => {
 	}, [userInfo.isLogin]);
 
 	useEffect(() => {
-		if (isMountedRef.current && props.location.state !== null) {
-			setDatas(props?.location.state.datas);
+		if (isMountedRef.current) {
+			GetListbyGameType({ pageNumber: 1 });
 		}
-	}, [props?.location.state]);
+	}, []);
 
 	let pageOptions = [];
-	for (let i = 1; i <= state?.totalPages; i++) {
+	for (let i = 1; i <= totalPages; i++) {
 		pageOptions.push({ displayText: i, id: i });
 	}
 
@@ -52,38 +58,47 @@ export default props => {
 			setSelectedPage(i);
 			let _selectedPage = i + 1;
 
-			api.payment
-				.GetCustTpBetRecordDetailListbyGameType({
-					SelDate: state.selDate,
-					gameTypeId: state?.gameTypeId,
-					PageNumber: _selectedPage,
-					PageSize: 10
-				})
-				.then(
-					res => {
-						if (isMountedRef.current) {
-							if (res.data.errorCode === 0) {
-								setDatas(res.data.data);
-							} else {
-								setPopBox({
-									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: res.data.message
-								});
-							}
-						}
-					},
-					err => {
-						if (isMountedRef.current) {
+			GetListbyGameType({ pageNumber: _selectedPage });
+		}
+	};
+
+	const GetListbyGameType = ({ pageNumber }) => {
+		setLoading(true);
+
+		api.payment
+			.GetCustTpBetRecordDetailListbyGameType({
+				SelDate: _selDate,
+				gameTypeId: Number(_gameId),
+				PageNumber: pageNumber,
+				PageSize: 10
+			})
+			.then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							setDatas(res.data.data);
+							setTotalPages(res.data.totalPages);
+						} else {
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
-								content: i18n.msg_ApiServerError
+								content: res.data.message
 							});
 						}
+						setLoading(false);
 					}
-				);
-		}
+				},
+				err => {
+					if (isMountedRef.current) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
+						});
+						setLoading(false);
+					}
+				}
+			);
 	};
 
 	let totalTurnover = datas?.reduce((prev, curr) => {
@@ -113,12 +128,17 @@ export default props => {
 	});
 
 	const getSkipLink = ({ dateRange }) => {
-		return dateRange === "lbl_YesterDay" ? ["date"] : [];
+		return (dateRange =
+			dateRange === "lbl_Today" || dateRange === "lbl_YesterDay"
+				? ["date"]
+				: []);
 	};
 	const skipLink = getSkipLink({ dateRange });
 
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
+	) : loading ? (
+		<Loading />
 	) : datas !== null ? (
 		<>
 			<Breadcrumbs

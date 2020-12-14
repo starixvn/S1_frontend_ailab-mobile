@@ -7,8 +7,7 @@ const quickPickList = [
 	{ displayKey: "lbl_Today" },
 	{ displayKey: "lbl_YesterDay" },
 	{ displayKey: "lbl_ThisWeek" },
-	{ displayKey: "lbl_LastWeek" },
-	{ displayKey: "lbl_LastMonth" }
+	{ displayKey: "lbl_LastWeek" }
 ];
 
 export const Filter = props => {
@@ -133,7 +132,7 @@ export const getDateRange = (startDate, endDate) => {
 		) {
 			idx = 3;
 		} else {
-			idx = 4;
+			return "lbl_Other";
 		}
 	}
 

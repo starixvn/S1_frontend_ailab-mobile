@@ -8,6 +8,7 @@ import { Breadcrumbs } from "../common/breadcrumb";
 import { useNavigate, Redirect } from "@reach/router";
 import { getDateRange } from "./filter";
 import path from "../../path";
+import Loading from "../common/loading";
 
 export default props => {
 	const { i18n } = useContext(i18nContext);
@@ -17,6 +18,7 @@ export default props => {
 	const [totalPages, setTotalPages] = useState(1);
 	const [datas, setDatas] = useState(null);
 	const [redirectPath, setRedirectPath] = useState(null);
+	const [loading, setLoading] = useState(true);
 
 	const navigate = useNavigate();
 	const _isConvert = isConvert(userInfo.currencyId);
@@ -41,12 +43,9 @@ export default props => {
 	useEffect(() => {
 		if (isMountedRef.current) {
 			if (!timePeriod.includes("to")) {
-				GetRecordListOneDay({ selDate: timePeriod });
-			} else if (props.location.state?.datas) {
-				setDatas(props?.location.state.datas);
-				setTotalPages(props?.location.state.totalPages);
+				toByDayPage({ selDate: timePeriod });
 			} else {
-				GetRecordListDateRange({ pageNumber: 1 });
+				GetListByDateRange({ pageNumber: 1 });
 			}
 		}
 	}, []);
@@ -61,61 +60,21 @@ export default props => {
 			setSelectedPage(i);
 			let _selectedPage = i + 1;
 
-			GetRecordListDateRange({ pageNumber: _selectedPage });
+			GetListByDateRange({ pageNumber: _selectedPage });
 		}
 	};
 
-	const clickDetail = selDate => {
-		GetRecordListOneDay({ selDate: selDate });
-	};
-
-	const GetRecordListOneDay = ({ selDate }) => {
+	const toByDayPage = ({ selDate }) => {
 		let _path = !timePeriod.includes("to")
 			? `${selDate}to${selDate}`
 			: `${_startDay}to${_endDay}`;
 
-		api.payment
-			.GetCustTpBetRecordListOneDay({
-				SelDate: selDate,
-				PageNumber: 1,
-				PageSize: 10
-			})
-			.then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							setDatas(null);
-							navigate(
-								`/${path.statement.root}/${_path}/${selDate}`,
-								{
-									state: {
-										datas: res.data.data,
-										totalPages: res.data.totalPages
-									}
-								}
-							);
-						} else {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: res.data.message
-							});
-						}
-					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-					}
-				}
-			);
+		navigate(`/${path.statement.root}/${_path}/${selDate}`);
 	};
 
-	const GetRecordListDateRange = ({ pageNumber }) => {
+	const GetListByDateRange = ({ pageNumber }) => {
+		setLoading(true);
+
 		api.payment
 			.CustTpBetRecordListDateRange({
 				StartDate: _startDay,
@@ -128,6 +87,7 @@ export default props => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
 							setDatas(res.data.data);
+							setTotalPages(res.data.totalPages);
 						} else {
 							setPopBox({
 								isOpen: true,
@@ -135,6 +95,7 @@ export default props => {
 								content: res.data.message
 							});
 						}
+						setLoading(false);
 					}
 				},
 				err => {
@@ -144,6 +105,7 @@ export default props => {
 							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
+						setLoading(false);
 					}
 				}
 			);
@@ -167,13 +129,15 @@ export default props => {
 				validBet={data.validBet}
 				winlostAmount={data.winlostAmount}
 				_isConvert={_isConvert}
-				clickDetail={clickDetail}
+				toByDayPage={toByDayPage}
 			/>
 		);
 	});
 
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
+	) : loading ? (
+		<Loading />
 	) : datas !== null && !props.path.includes("/:date") ? (
 		<>
 			<Breadcrumbs
@@ -236,7 +200,7 @@ const Detail = ({
 	validBet,
 	winlostAmount,
 	_isConvert,
-	clickDetail
+	toByDayPage
 }) => {
 	return (
 		<div className="info">
@@ -262,10 +226,11 @@ const Detail = ({
 					<div className="btn-group">
 						<button
 							className="orange openPopup"
-							onClick={clickDetail.bind(
-								this,
-								moment(settledDate).format("YYYY-MM-DD")
-							)}>
+							onClick={toByDayPage.bind(this, {
+								selDate: moment(settledDate).format(
+									"YYYY-MM-DD"
+								)
+							})}>
 							{i18n.lbl_Details}
 						</button>
 					</div>

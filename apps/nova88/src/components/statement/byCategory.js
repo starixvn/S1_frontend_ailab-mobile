@@ -8,6 +8,7 @@ import { Breadcrumbs } from "../common/breadcrumb";
 import { getDateRange } from "./filter";
 import api from "../../service/api";
 import path from "../../path";
+import Loading from "../common/loading";
 
 export default props => {
 	const { i18n } = useContext(i18nContext);
@@ -17,6 +18,7 @@ export default props => {
 	const [totalPages, setTotalPages] = useState(1);
 	const [datas, setDatas] = useState(null);
 	const [redirectPath, setRedirectPath] = useState(null);
+	const [loading, setLoading] = useState(true);
 
 	const navigate = useNavigate();
 	const _isConvert = isConvert(userInfo.currencyId);
@@ -42,12 +44,7 @@ export default props => {
 
 	useEffect(() => {
 		if (isMountedRef.current) {
-			if (props?.location.state?.datas) {
-				setDatas(props?.location.state.datas);
-				setTotalPages(props?.location.state.totalPages);
-			} else {
-				GetRecordListbyCategoryId({ pageNumber: 1 });
-			}
+			GetListByCategoryId({ pageNumber: 1 });
 		}
 	}, []);
 
@@ -61,54 +58,19 @@ export default props => {
 			setSelectedPage(i);
 			let _selectedPage = i + 1;
 
-			GetRecordListbyCategoryId({ pageNumber: _selectedPage });
+			GetListByCategoryId({ pageNumber: _selectedPage });
 		}
 	};
 
-	const clickDetail = gameTypeId => {
-		api.payment
-			.GetCustTpBetRecordDetailListbyGameType({
-				SelDate: _selDate,
-				gameTypeId: gameTypeId,
-				PageNumber: 1,
-				PageSize: 10
-			})
-			.then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							setDatas(null);
-							navigate(
-								`/${path.statement.root}/${_startDay}to${_endDay}/${_selDate}/${_categoryId}/${gameTypeId}`,
-								{
-									state: {
-										datas: res.data.data,
-										totalPages: res.data.totalPages
-									}
-								}
-							);
-						} else {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: res.data.message
-							});
-						}
-					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-					}
-				}
-			);
+	const toDetailPage = ({ gameTypeId }) => {
+		navigate(
+			`/${path.statement.root}/${_startDay}to${_endDay}/${_selDate}/${_categoryId}/${gameTypeId}`
+		);
 	};
 
-	const GetRecordListbyCategoryId = ({ pageNumber }) => {
+	const GetListByCategoryId = ({ pageNumber }) => {
+		setLoading(true);
+
 		api.payment
 			.GetCustTpBetRecordListbyCategoryId({
 				SelDate: _selDate,
@@ -121,6 +83,7 @@ export default props => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
 							setDatas(res.data.data);
+							setTotalPages(res.data.totalPages);
 						} else {
 							setPopBox({
 								isOpen: true,
@@ -128,6 +91,7 @@ export default props => {
 								content: res.data.message
 							});
 						}
+						setLoading(false);
 					}
 				},
 				err => {
@@ -137,6 +101,7 @@ export default props => {
 							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
+						setLoading(false);
 					}
 				}
 			);
@@ -160,7 +125,7 @@ export default props => {
 				validBet={data.validBet}
 				winlostAmount={data.winlostAmount}
 				_isConvert={_isConvert}
-				clickDetail={clickDetail}
+				toDetailPage={toDetailPage}
 				gameTypeName={data.gameTypeName}
 				gameTypeID={data.gameTypeID}
 			/>
@@ -168,12 +133,17 @@ export default props => {
 	});
 
 	const getSkipLink = ({ dateRange }) => {
-		return dateRange === "lbl_YesterDay" ? ["date"] : [];
+		return (dateRange =
+			dateRange === "lbl_Today" || dateRange === "lbl_YesterDay"
+				? ["date"]
+				: []);
 	};
 	const skipLink = getSkipLink({ dateRange });
 
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
+	) : loading ? (
+		<Loading />
 	) : datas !== null && !props.path.includes("/:game") ? (
 		<>
 			<Breadcrumbs
@@ -239,7 +209,7 @@ const Detail = ({
 	validBet,
 	winlostAmount,
 	_isConvert,
-	clickDetail,
+	toDetailPage,
 	gameTypeName,
 	gameTypeID
 }) => {
@@ -271,7 +241,9 @@ const Detail = ({
 					<div className="btn-group">
 						<button
 							className="orange openPopup"
-							onClick={clickDetail.bind(this, gameTypeID)}>
+							onClick={toDetailPage.bind(this, {
+								gameTypeId: gameTypeID
+							})}>
 							{i18n.lbl_Details}
 						</button>
 					</div>
