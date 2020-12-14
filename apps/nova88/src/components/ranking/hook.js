@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../../service/api";
-import { defBtns } from "./def";
+import { defBtns, defDayBtns } from "./def";
 
 const SetUpdTime = () => {
 	const now = new Date();
@@ -19,7 +19,7 @@ const SetUpdTime = () => {
 export const useGetRanking = ({
 	isOpen,
 	selected,
-	BeforeDays = 0,
+	BeforeDays = defDayBtns.Yesterday,
 	isLogin,
 	userName
 }) => {
@@ -29,7 +29,9 @@ export const useGetRanking = ({
 	useEffect(() => {
 		if (isOpen && isLogin) {
 			const lBCategoryId = defBtns[selected]?.lBCategoryId;
-			const beforeDays = isNaN(BeforeDays) ? 0 : Number(BeforeDays);
+			const beforeDays = isNaN(BeforeDays)
+				? Number(defDayBtns.Yesterday)
+				: Number(BeforeDays);
 			api.events
 				.GetLeaderboardList({
 					lBCategoryId,
@@ -94,7 +96,7 @@ export const useHandleSelect = ({
 };
 
 export const useHandleSelectDay = () => {
-	const [selectedDay, setSelectedDay] = useState("1");
+	const [selectedDay, setSelectedDay] = useState(defDayBtns.Yesterday.value);
 
 	const handleSelectDay = value => {
 		setSelectedDay(value);

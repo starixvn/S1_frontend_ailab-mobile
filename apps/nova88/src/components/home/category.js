@@ -74,7 +74,7 @@ const Category = props => {
 	}, [userInfo.isLogin, i18n, setPopBox]);
 
 	return redirect.redirect ? (
-		<Redirect to={redirect.path} noThrow />
+		<Redirect to={`/${redirect.path}`} noThrow />
 	) : (
 		<CateGoryContent
 			clickGame={clickGame}
