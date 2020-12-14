@@ -45,15 +45,15 @@ export const defBtns = {
 export const defDayBtns = {
 	Yesterday: {
 		displayKey: "lbl_YesterDay",
-		value: "1"
+		value: "0"
 	},
 	Last2Day: {
 		displayKey: "lbl_last_2_day",
-		value: "2"
+		value: "1"
 	},
 	Last3Day: {
 		displayKey: "lbl_last_3_day",
-		value: "3"
+		value: "2"
 	}
 };
 
