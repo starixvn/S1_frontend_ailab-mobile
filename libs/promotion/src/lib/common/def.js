@@ -2,6 +2,7 @@ export const defPromoStatus = {
 	running: 1,
 	Canceled: 2,
 	Expiry: 3,
+	Fulfill: 4,
 	TransferOut: 5
 };
 

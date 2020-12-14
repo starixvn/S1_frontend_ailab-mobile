@@ -82,11 +82,11 @@ const gameList = ({ langId }) => [
 		translateKey: "lbl_LiveCasino",
 		comingSoonImg: Coming_soon,
 		items: [
-			{
-				tpId: 5,
-				gameId: 105,
-				img: LIVEcasino_MW
-			},
+			// {
+			// 	tpId: 5,
+			// 	gameId: 105,
+			// 	img: LIVEcasino_MW
+			// },
 			{
 				tpId: 20,
 				gameId: 20,

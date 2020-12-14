@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { defPromotionType } from "../common/def";
+import { defPromotionType, defPromoStatus } from "../common/def";
 import { number_format } from "../common/common";
 import { ReloadSpin } from "@ailab-mobile/common";
 import { configContext } from "../common/context";
@@ -9,7 +9,8 @@ export default ({
 	custRollOver,
 	RefreshProcessBar,
 	promotionType,
-	isJoin
+	isJoin,
+	status
 }) => {
 	const {
 		i18n,
@@ -23,7 +24,7 @@ export default ({
 		promotionType !== defPromotionType.rebate
 	) {
 		let percentage =
-			custTurnOver >= custRollOver
+			status === defPromoStatus.Fulfill || custTurnOver >= custRollOver
 				? 100
 				: ((custTurnOver / custRollOver) * 100).toFixed(2);
 		return (
