@@ -46,5 +46,10 @@ export default class BaseAPI {
 			withCredentials: true,
 			baseURL: `${apiUrl}/api/Account`
 		});
+
+		this.evnetsRequest = axios.create({
+			withCredentials: true,
+			baseURL: `${apiUrl}/api/events`
+		});
 	}
 }

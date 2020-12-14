@@ -336,6 +336,7 @@
 	"lbl_ViewAll":"Lihat semua",
 	"lbl_Total":"Jumlah total",
 	"lbl_CockFighting":"Sabung Ayam",
+	"msg_OTPHint":"Harap lengkapi profil Anda dan verifikasi ponsel Anda untuk menikmati promosi kami.",
 	"lbl_TpWallet_21": "Dompet 918Kiss",
 	"lbl_Download":"Download",
 	"lbl_918KissMobileApp":"918KISS MOBILE APP",
@@ -343,6 +344,18 @@
 	"lbl_please_select_from_wallet": "Silakan pilih dompet keluar dana yang lebih disukai",
 	"lbl_please_select_to_wallet": "Silakan pilih dompet masuk dana yang lebih disukai",
 	"lbl_TpWallet_22":"Dompet Mega",
-	"msg_OTPHint":"Harap lengkapi profil Anda dan verifikasi ponsel Anda untuk menikmati promosi kami."
 
+	"lbl_Event":"Pertandingan",
+	"lbl_Records":"Rekaman",
+	"lbl_Ranking":"Peringkat",
+	"lbl_last_2_day":"2 Hari Terakhir",
+	"lbl_last_3_day":"3 Hari Terakhir",
+	"lbl_Game_type":"Tipe permainan",
+	"lbl_Points":"Poin",
+	"lbl_LastUpdTime":"Pembaruan Terakhir Pada {{time}} (Perbarui Setiap 30 Menit)",
+	"lbl_Ranking_Top10":"Pemenang 10 Teratas",
+	"lbl_Top":"Teratas",
+	"lbl_Rewards":"Penghargaan",
+	"lbl_MoreDetails":"KETERANGAN LEBIH LANJUT",
+	"lbl_EventTitle":"HADIAH iPHONE 12 NATAL & TAHUN BARU"
 }

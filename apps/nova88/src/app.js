@@ -1,5 +1,5 @@
 import React from "react";
-import path from "Path";
+import path from "./path";
 import langKeys from "./datas/langKeys";
 import { Wrapper } from "./components/common/wrapper";
 import PopBox from "./components/common/popbox";
@@ -69,6 +69,8 @@ import KycWaiting from "./components/withdrawal/kycWaiting";
 import Whoami from "./pages/whoami";
 import PromotionInfo from "./pages/promotionInfo";
 // import Kiss918 from "./pages/918kiss";
+
+import Ranking from "./pages/ranking";
 
 const Index = () => {
 	let history = createHistory(window);
@@ -160,6 +162,7 @@ const Index = () => {
 							<Other path={path.setting.sub.other.root} />
 						</Setting>
 						<Whoami path={path.whoami.root} />
+						<Ranking path={path.ranking.root} />
 						{/* <Kiss918 path={path.kiss918.root} /> */}
 					</Router>
 				</Layout>

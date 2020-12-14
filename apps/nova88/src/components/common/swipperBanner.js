@@ -3,7 +3,7 @@ import Swiper from "react-id-swiper";
 import config from "../../config";
 import { userInfoContext, navContext, defNavPanel } from "Context";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
-import path from "Path";
+import path from "../../path";
 import { Link } from "@reach/router";
 import api from "../../service/api";
 
@@ -33,6 +33,8 @@ export const ClickLink = (
 			} else {
 				HandleLogin();
 			}
+		} else if (href === "leaderBoard") {
+			window.location.href = `/${path.ranking.root}`;
 		} else {
 			window.open(
 				isOuterLink

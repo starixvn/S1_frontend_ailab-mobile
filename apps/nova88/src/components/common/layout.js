@@ -92,6 +92,11 @@ const defPageInfo = {
 		className: "main",
 		hideLogo: true
 	},
+	ranking: {
+		titleKey: "lbl_Ranking",
+		className: "main ranking",
+		hideLogo: true
+	},
 	"/918kiss": {
 		titleKey: "918 Kiss",
 		className: "main casino kiss",
@@ -114,6 +119,7 @@ const GetPageInfo = locationPath => {
 
 		pageInfoKey = pageInfoKey?.length > 0 ? pageInfoKey[0] : null;
 		let pageInfo = defPageInfo[pageInfoKey] ?? null;
+
 		return pageInfoKey && pageInfo
 			? {
 					titleKey: pageInfo.titleKey,
