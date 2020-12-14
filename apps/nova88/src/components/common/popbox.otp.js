@@ -75,8 +75,8 @@ const Panel = ({ ClosePopbox }) => {
 	};
 
 	const clickSubmit = async otpCode => {
-		await api
-			.accountStrict_VerifyOTP({
+		await api.accountStrict
+			.VerifyOTP({
 				inputOTPcode: otpCode
 			})
 			.then(
