@@ -11,19 +11,22 @@ export const defBtnsOfCategory = {
 		displayKey: "lbl_Sports",
 		value: "Sports",
 		elemType: defElemType.Ranking,
-		lBCategoryId: api.events.deflBCategoryId.sport
+		lBCategoryId: api.events.deflBCategoryId.sport,
+		titleKey: "lbl_Ranking_Sports"
 	},
 	LiveCasino: {
 		displayKey: "lbl_LiveCasino",
 		value: "LiveCasino",
 		elemType: defElemType.Ranking,
-		lBCategoryId: api.events.deflBCategoryId.liveCasino
+		lBCategoryId: api.events.deflBCategoryId.liveCasino,
+		titleKey: "lbl_Ranking_LiveCasino"
 	},
 	Slots: {
 		displayKey: "lbl_Slots",
 		value: "Slots",
 		elemType: defElemType.Ranking,
-		lBCategoryId: api.events.deflBCategoryId.casino
+		lBCategoryId: api.events.deflBCategoryId.casino,
+		titleKey: "lbl_Ranking_Slots"
 	}
 };
 

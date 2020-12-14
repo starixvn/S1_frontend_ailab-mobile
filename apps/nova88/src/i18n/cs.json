@@ -163,7 +163,7 @@
 	"lbl_CancelConfirm": "确定取消？取消后将无法还原！",
 	"lbl_UploadSuccess": "档案上传成功",
 	"lbl_AllTranscations": "所有交易",
-	"msg_NoData": "无信息",
+	"msg_NoData": "目前没有可用的信息。",
 	"lbl_MaxAmount": "总金额",
 	"lbl_TransferTo": "转账至",
 	"lbl_TransferFrom": "转帐从",
@@ -357,5 +357,8 @@
 	"lbl_Top":"最高",
 	"lbl_Rewards":"奖励",
 	"lbl_MoreDetails":"更多详情",
-	"lbl_EventTitle":"圣诞快乐 & 新年如意 送出 IPhone 12"
+	"lbl_EventTitle":"圣诞快乐 & 新年如意 送出 IPhone 12",
+	"lbl_Ranking_Sports":"体育排行榜",
+	"lbl_Ranking_LiveCasino":"真人排行榜",
+	"lbl_Ranking_Slots":"老虎机排行榜"
 }

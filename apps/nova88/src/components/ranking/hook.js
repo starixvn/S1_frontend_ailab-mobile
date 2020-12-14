@@ -19,7 +19,7 @@ const SetUpdTime = () => {
 export const useGetRanking = ({
 	isOpen,
 	selected,
-	BeforeDays = defDayBtns.Yesterday,
+	BeforeDays = 0,
 	isLogin,
 	userName
 }) => {
@@ -30,7 +30,7 @@ export const useGetRanking = ({
 		if (isOpen && isLogin) {
 			const lBCategoryId = defBtns[selected]?.lBCategoryId;
 			const beforeDays = isNaN(BeforeDays)
-				? Number(defDayBtns.Yesterday)
+				? Number(defDayBtns.Yesterday.value)
 				: Number(BeforeDays);
 			api.events
 				.GetLeaderboardList({

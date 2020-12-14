@@ -17,7 +17,7 @@ const Ranking = ({
 		isLogin,
 		userName
 	});
-	const title = i18n[defBtns[selected]?.displayKey];
+	const title = i18n[defBtns[selected]?.titleKey];
 	const currencyName =
 		currCustomMapping[currencyId] ?? i18n[`Currency_${currencyId}`];
 	const prize = defPrize?.[currencyName]?.[selected]?.[1];
@@ -25,9 +25,7 @@ const Ranking = ({
 	return (
 		<div className={`champion${isOpen ? " open" : ""}`}>
 			<div className="title">{title}</div>
-			<div className="eventTitle">
-				{title} {i18n.lbl_Ranking_Top10}
-			</div>
+			<div className="eventTitle">{i18n.lbl_Ranking_Top10}</div>
 			<div className="highest">
 				<img src={champion} alt="champion" />
 				<div className="mwt_border">
