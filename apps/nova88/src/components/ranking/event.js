@@ -24,7 +24,9 @@ const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
 			<PrizeList userInfo={userInfo} category={selected} i18n={i18n} />
 			<div className="btn-group">
 				<a
-					href={`${config.cloudImgURL}`}
+					href={`${
+						config.cloudImgURL
+					}/NovaPromotion/iPhone12Giveaway/${userInfo.langId?.toUpperCase()}.html`}
 					target="_blank"
 					rel="noreferrer"
 					className="orange openPopup">
