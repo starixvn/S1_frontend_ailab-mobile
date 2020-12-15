@@ -4632,7 +4632,7 @@ span.important {
   color: #58cdff;
 }
 
-.headerB .nav::before {
+.headerB .nav.icon::before {
   content: "\e9e5";
   position: absolute;
   top: -10px;
@@ -4640,6 +4640,17 @@ span.important {
   -webkit-transform: rotate(-25deg);
           transform: rotate(-25deg);
   color: #56ceff;
+  -webkit-animation: newicon 0.5s linear infinite alternate;
+          animation: newicon 0.5s linear infinite alternate;
+}
+
+.headerB .nav:nth-last-child(1)::before {
+  content: "LIVE";
+  position: absolute;
+  top: -10px;
+  left: -15px;
+  font-weight: bold;
+  font-size: 12px;
   -webkit-animation: newicon 0.5s linear infinite alternate;
           animation: newicon 0.5s linear infinite alternate;
 }
@@ -6447,5 +6458,14 @@ span.important {
   text-align: center;
   color: rgba(255, 255, 255, 0.5);
   font-size: 12px;
+}
+
+.ranking .ranInBox .remind.btn {
+  width: 100%;
+  height: 35px;
+  color: #fff;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f85f05), to(#f20505));
+  background: linear-gradient(180deg, #f85f05, #f20505);
+  border-radius: 3px;
 }
 /*# sourceMappingURL=style.css.map */

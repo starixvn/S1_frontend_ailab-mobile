@@ -399,5 +399,23 @@
 	"lbl_statement_submit": "Submit",
 	"lbl_UpdateSuccessWillProcess": "Update Successful. We will process your request ASAP!",
 	"lbl_RemindForRefNum": "Reference Number is required.",
-	"lbl_MaxBonusAmount":"Max Bonus Amount"
+	"lbl_MaxBonusAmount":"Max Bonus Amount",
+
+	"lbl_Ranking":"Ranking",
+	"lbl_NoOfWinners":"No Of Winners",
+	"lbl_Rewards":"Prizes",
+	"lbl_Event":"Event",
+	"lbl_Records":"Records",
+	"lbl_last_2_day":"Last 2 Day",
+	"lbl_last_3_day":"Last 3 Day",
+	"lbl_Game_type":"Game Type",
+	"lbl_Points":"Points",
+	"lbl_LastUpdTime":"Last Update On {{time}} (Update Every 30 Minutes)",
+	"lbl_Ranking_Top10":"TOP 10 WINNING",
+	"lbl_Top":"TOP",
+	"lbl_MoreDetails":"MORE DETAILS",
+	"lbl_EventTitle":"Christmas & New Year IPhone 12 Giveaway",
+	"lbl_Ranking_Sports":"Sports Ranking",
+	"lbl_Ranking_LiveCasino":"Live Casino Ranking",
+	"lbl_Ranking_Slots":"Slots Ranking"
 }
