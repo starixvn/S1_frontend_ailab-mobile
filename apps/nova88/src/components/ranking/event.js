@@ -1,6 +1,6 @@
 import React from "react";
 import { defBtnsOfCategory } from "./def";
-import BtnBar from "./btnBar";
+import BtnBar from "../common/btnBar";
 import { useHandleSelect } from "./hook";
 import PrizeList from "./prize";
 import config from "../../config";

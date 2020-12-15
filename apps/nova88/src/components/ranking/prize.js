@@ -2,6 +2,7 @@ import React from "react";
 import no1 from "../../styles/img/no1.png";
 import no2 from "../../styles/img/no2.png";
 import no3 from "../../styles/img/no3.png";
+import champion from "../../styles/img/champion.png";
 import { defPrize } from "./def";
 
 const langMappingCurr = {
@@ -53,6 +54,23 @@ const PrizeList = ({ userInfo, category, i18n }) => {
 				<li>{i18n.lbl_Rewards}</li>
 			</ul>
 			{rows}
+		</div>
+	);
+};
+
+export const HighestReward = ({ i18n, currencyId, selected }) => {
+	const currencyName =
+		currCustomMapping[currencyId] ?? i18n[`Currency_${currencyId}`];
+	const prize = defPrize({ i18n })?.[currencyName]?.[selected]?.[1];
+
+	return (
+		<div className="highest">
+			<img src={champion} alt="champion" />
+			<div className="mwt_border">
+				<span className="arrow_t_int"></span>
+				<span className="arrow_t_out"></span>
+				<div className="text-org">{prize}</div>
+			</div>
 		</div>
 	);
 };

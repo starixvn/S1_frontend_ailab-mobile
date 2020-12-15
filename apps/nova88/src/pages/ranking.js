@@ -10,7 +10,7 @@ import RankingByCategory from "../components/ranking/rankByCategory";
 import Record from "../components/ranking/records";
 import { defBtns, defElemType } from "../components/ranking/def";
 import { useHandleSelect } from "../components/ranking/hook";
-import BtnBar from "../components/ranking/btnBar";
+import BtnBar from "../components/common/btnBar";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);

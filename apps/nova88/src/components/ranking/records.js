@@ -1,9 +1,8 @@
 import React from "react";
-import champion from "../../styles/img/champion.png";
 import RankList from "./rankList";
 import { useGetRanking, useHandleSelect, useHandleSelectDay } from "./hook";
 import { defBtnsOfCategory, defDayBtns } from "./def";
-import BtnBar from "./btnBar";
+import BtnBar from "../common/btnBar";
 
 const Records = ({ isOpen, i18n, userInfo: { isLogin, userName } }) => {
 	const { selected, handleSelect } = useHandleSelect({
@@ -39,14 +38,6 @@ const Records = ({ isOpen, i18n, userInfo: { isLogin, userName } }) => {
 				mainKey="leader-board-records-dayBtnBar"
 				defBtns={defDayBtns}
 			/>
-			<div className="highest">
-				<img src={champion} alt="champion" />
-				{/* <div className="mwt_border">
-					<span className="arrow_t_int"></span>
-					<span className="arrow_t_out"></span>
-					<div className="text-org">MYR 10,000,000.00</div>
-				</div> */}
-			</div>
 			<RankList
 				i18n={i18n}
 				datas={datas}
