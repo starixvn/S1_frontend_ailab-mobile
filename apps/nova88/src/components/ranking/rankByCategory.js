@@ -23,7 +23,6 @@ const Ranking = ({
 	return (
 		<div className={`champion${isOpen ? " open" : ""}`}>
 			<div className="title">{title}</div>
-			<div className="eventTitle">{i18n.lbl_Ranking_Top10}</div>
 			<RankList
 				loading={loading}
 				i18n={i18n}
