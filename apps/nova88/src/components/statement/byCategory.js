@@ -1,24 +1,28 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import { i18nContext, userInfoContext, popBoxContext } from "Context";
+import {
+	i18nContext,
+	userInfoContext,
+	popBoxContext,
+	loadingContext
+} from "Context";
 import moment from "moment";
 import Dropdown from "../common/dropdown";
 import { number_format, isConvert } from "../common/common";
-import { useNavigate, Redirect } from "@reach/router";
+import { useNavigate } from "@reach/router";
 import { Breadcrumbs } from "../common/breadcrumb";
-import { getDateRange } from "./filter";
+import { getDateRange, getSkipLink, defStatement } from "./common";
 import api from "../../service/api";
 import path from "../../path";
-import Loading from "../common/loading";
 
 export default props => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const { setLoading } = useContext(loadingContext);
+
 	const [selectedPage, setSelectedPage] = useState(0);
 	const [totalPages, setTotalPages] = useState(1);
 	const [datas, setDatas] = useState(null);
-	const [redirectPath, setRedirectPath] = useState(null);
-	const [loading, setLoading] = useState(true);
 
 	const navigate = useNavigate();
 	const _isConvert = isConvert(userInfo.currencyId);
@@ -29,7 +33,9 @@ export default props => {
 	const _endDay = timePeriod.split("to").pop();
 	const _selDate = props.date;
 	const _categoryId = props.category;
-	let dateRange = getDateRange(_startDay, _endDay);
+
+	let dateRange = getDateRange({ startDate: _startDay, endDate: _endDay });
+	const skipLink = getSkipLink({ dateRange });
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -37,14 +43,8 @@ export default props => {
 	});
 
 	useEffect(() => {
-		if (isMountedRef.current && userInfo.isLogin === false) {
-			setRedirectPath("/");
-		}
-	}, [userInfo.isLogin]);
-
-	useEffect(() => {
 		if (isMountedRef.current) {
-			GetListByCategoryId({ pageNumber: 1 });
+			getListByCategoryId({ pageNumber: 1 });
 		}
 	}, []);
 
@@ -58,7 +58,7 @@ export default props => {
 			setSelectedPage(i);
 			let _selectedPage = i + 1;
 
-			GetListByCategoryId({ pageNumber: _selectedPage });
+			getListByCategoryId({ pageNumber: _selectedPage });
 		}
 	};
 
@@ -68,7 +68,7 @@ export default props => {
 		);
 	};
 
-	const GetListByCategoryId = ({ pageNumber }) => {
+	const getListByCategoryId = ({ pageNumber }) => {
 		setLoading(true);
 
 		api.payment
@@ -76,7 +76,7 @@ export default props => {
 				SelDate: _selDate,
 				CategoryId: Number(_categoryId),
 				PageNumber: pageNumber,
-				PageSize: 10
+				PageSize: defStatement.pageSize
 			})
 			.then(
 				res => {
@@ -124,19 +124,7 @@ export default props => {
 		);
 	});
 
-	const getSkipLink = ({ dateRange }) => {
-		return (dateRange =
-			dateRange === "lbl_Today" || dateRange === "lbl_YesterDay"
-				? ["date"]
-				: []);
-	};
-	const skipLink = getSkipLink({ dateRange });
-
-	return redirectPath !== null ? (
-		<Redirect to={redirectPath} noThrow />
-	) : loading ? (
-		<Loading />
-	) : datas !== null && !props.path.includes("/:game") ? (
+	return datas !== null && !props.path.includes("/:game") ? (
 		<>
 			<Breadcrumbs
 				locationInfo={props}
@@ -171,9 +159,7 @@ export default props => {
 				</div>
 			)}
 		</>
-	) : (
-		<>{props.children}</>
-	);
+	) : null;
 };
 
 const Detail = ({

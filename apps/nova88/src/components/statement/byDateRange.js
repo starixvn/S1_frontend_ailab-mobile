@@ -1,24 +1,28 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import { i18nContext, userInfoContext, popBoxContext } from "Context";
+import {
+	i18nContext,
+	userInfoContext,
+	popBoxContext,
+	loadingContext
+} from "Context";
 import moment from "moment";
 import { number_format, isConvert } from "../common/common";
 import Dropdown from "../common/dropdown";
 import api from "../../service/api";
 import { Breadcrumbs } from "../common/breadcrumb";
-import { useNavigate, Redirect } from "@reach/router";
-import { getDateRange } from "./filter";
+import { useNavigate } from "@reach/router";
+import { getDateRange, defStatement } from "./common";
 import path from "../../path";
-import Loading from "../common/loading";
 
 export default props => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const { setLoading } = useContext(loadingContext);
+
 	const [selectedPage, setSelectedPage] = useState(0);
 	const [totalPages, setTotalPages] = useState(1);
 	const [datas, setDatas] = useState(null);
-	const [redirectPath, setRedirectPath] = useState(null);
-	const [loading, setLoading] = useState(true);
 
 	const navigate = useNavigate();
 	const _isConvert = isConvert(userInfo.currencyId);
@@ -27,7 +31,7 @@ export default props => {
 	const timePeriod = props.timePeriod;
 	const _startDay = timePeriod.substr(0, timePeriod.indexOf("to"));
 	const _endDay = timePeriod.split("to").pop();
-	let dateRange = getDateRange(_startDay, _endDay);
+	let dateRange = getDateRange({ startDate: _startDay, endDate: _endDay });
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -35,17 +39,11 @@ export default props => {
 	});
 
 	useEffect(() => {
-		if (isMountedRef.current && userInfo.isLogin === false) {
-			setRedirectPath("/");
-		}
-	}, [userInfo.isLogin]);
-
-	useEffect(() => {
 		if (isMountedRef.current) {
-			if (!timePeriod.includes("to")) {
-				toByDayPage({ selDate: timePeriod });
+			if (timePeriod.includes("to")) {
+				getListByDateRange({ pageNumber: 1 });
 			} else {
-				GetListByDateRange({ pageNumber: 1 });
+				toByDayPage({ selDate: timePeriod });
 			}
 		}
 	}, []);
@@ -58,21 +56,21 @@ export default props => {
 	const selectPage = i => {
 		if (i !== selectedPage) {
 			setSelectedPage(i);
-			let _selectedPage = i + 1;
 
-			GetListByDateRange({ pageNumber: _selectedPage });
+			let _selectedPage = i + 1;
+			getListByDateRange({ pageNumber: _selectedPage });
 		}
 	};
 
 	const toByDayPage = ({ selDate }) => {
-		let _path = !timePeriod.includes("to")
-			? `${selDate}to${selDate}`
-			: `${_startDay}to${_endDay}`;
+		let _path = timePeriod.includes("to")
+			? `${_startDay}to${_endDay}`
+			: `${selDate}to${selDate}`;
 
 		navigate(`/${path.statement.root}/${_path}/${selDate}`);
 	};
 
-	const GetListByDateRange = ({ pageNumber }) => {
+	const getListByDateRange = ({ pageNumber }) => {
 		setLoading(true);
 
 		api.payment
@@ -80,7 +78,7 @@ export default props => {
 				StartDate: _startDay,
 				EndDate: _endDay,
 				PageNumber: pageNumber,
-				PageSize: 10
+				PageSize: defStatement.pageSize
 			})
 			.then(
 				res => {
@@ -126,11 +124,7 @@ export default props => {
 		);
 	});
 
-	return redirectPath !== null ? (
-		<Redirect to={redirectPath} noThrow />
-	) : loading ? (
-		<Loading />
-	) : datas !== null && !props.path.includes("/:date") ? (
+	return datas !== null && !props.path.includes("/:date") ? (
 		<>
 			<Breadcrumbs
 				locationInfo={props}
@@ -162,9 +156,7 @@ export default props => {
 				</div>
 			)}
 		</>
-	) : (
-		<>{props.children}</>
-	);
+	) : null;
 };
 
 const Detail = ({
