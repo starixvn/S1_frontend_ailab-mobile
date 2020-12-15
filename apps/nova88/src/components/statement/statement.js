@@ -30,11 +30,9 @@ export default props => {
 		if (startDay !== endDay) {
 			GetDateRangeList({
 				startDay: startDay,
-				endDay: endDay,
-				pageNumber: 1
+				endDay: endDay
 			});
 		} else {
-			setLoading(true);
 			toByDayPage({
 				selDate: startDay
 			});
