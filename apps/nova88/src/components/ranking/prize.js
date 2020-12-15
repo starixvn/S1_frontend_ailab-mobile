@@ -20,7 +20,7 @@ const Prize = ({ currencyId, category, langId, i18n }) => {
 		? currCustomMapping[currencyId] ?? i18n[`Currency_${currencyId}`]
 		: langMappingCurr[langId];
 
-	return defPrize[currency][category];
+	return defPrize({ i18n })[currency][category];
 };
 
 const PrizeList = ({ userInfo, category, i18n }) => {

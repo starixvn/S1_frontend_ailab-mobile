@@ -20,7 +20,7 @@ const Ranking = ({
 	const title = i18n[defBtns[selected]?.titleKey];
 	const currencyName =
 		currCustomMapping[currencyId] ?? i18n[`Currency_${currencyId}`];
-	const prize = defPrize?.[currencyName]?.[selected]?.[1];
+	const prize = defPrize({ i18n })?.[currencyName]?.[selected]?.[1];
 
 	return (
 		<div className={`champion${isOpen ? " open" : ""}`}>
