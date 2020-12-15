@@ -74,7 +74,7 @@ const Category = props => {
 	}, [userInfo.isLogin, i18n, setPopBox]);
 
 	return redirect.redirect ? (
-		<Redirect to={redirect.path} noThrow />
+		<Redirect to={`/${redirect.path}`} noThrow />
 	) : (
 		<CateGoryContent
 			clickGame={clickGame}
@@ -218,7 +218,10 @@ class CateGoryContent extends Component {
 								: idx === item.items.length - 1
 								? this.RefItems[item.category].Last
 								: null;
-						let key = `product-tpId_${subItem.tpId}-gameId_${subItem.gameId}`;
+						let key = subItem.tpId
+							? `home-category-product-tpId_${subItem.tpId}-gameId_${subItem.gameId}`
+							: `home-category-${subItem.spanTextKey}`;
+
 						if (subItem.parameter) {
 							return (
 								<ProductLinkItem
@@ -298,25 +301,23 @@ const CategoryItem = props => {
 };
 
 const ProductItem = props => {
-	return props.href ? (
-		<>
-			<a
-				href={props.href}
-				target="_blank"
-				ref={props._ref}
-				className={props.isShow ? "open" : ""}>
-				<img src={props.img} alt={props.icon ?? ""} />
-				{props.spanText ? (
-					<span className={`icon icon-${props.icon}`}>
-						{props.spanText}
-					</span>
-				) : null}
-				{props.descText ? (
-					<div className={props.descClassName}>{props.descText}</div>
-				) : null}
-			</a>
-			{props.addSpaceInBelow ? <a href="" className="space"></a> : null}
-		</>
+	const content = props.href ? (
+		<a
+			href={props.href}
+			target="_blank"
+			rel="noreferrer"
+			ref={props._ref}
+			className={props.isShow ? "open" : ""}>
+			<img src={props.img} alt={props.icon ?? ""} />
+			{props.spanText ? (
+				<span className={`icon icon-${props.icon}`}>
+					{props.spanText}
+				</span>
+			) : null}
+			{props.descText ? (
+				<div className={props.descClassName}>{props.descText}</div>
+			) : null}
+		</a>
 	) : (
 		<a
 			onClick={props.clickGame}
@@ -332,6 +333,13 @@ const ProductItem = props => {
 				<div className={props.descClassName}>{props.descText}</div>
 			) : null}
 		</a>
+	);
+
+	return (
+		<>
+			{content}
+			{props.addSpaceInBelow ? <a href="" className="space"></a> : null}
+		</>
 	);
 };
 

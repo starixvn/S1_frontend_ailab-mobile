@@ -601,6 +601,21 @@ main .gameList {
       flex-wrap: wrap;
 }
 
+main .gameList .icon-new {
+  padding: 0 1vw;
+  background: #F77A00;
+  position: absolute;
+  right: 1vw;
+  bottom: 1vw;
+  border-radius: 5px;
+}
+
+main .gameList .icon-new:before {
+  content: "\e9b2";
+  color: white;
+  font-size: 3vw;
+}
+
 main .gameList a {
   margin: 1vw auto;
   background: #fff;
@@ -1231,6 +1246,42 @@ footer > a.open .circleAnimation + span {
 
 #popup .popTxt .btn-group {
   margin-top: 5vw;
+}
+
+#popup.ErrorPage {
+  background: url(../img/errorBG.jpg) no-repeat center/cover;
+}
+
+#popup.ErrorPage .icon-close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 16px;
+}
+
+#popup.ErrorPage .errorInfo {
+  border: 0;
+  text-align: center;
+  margin-top: 20vw;
+}
+
+#popup.ErrorPage .errorInfo .title {
+  font-size: 10vw;
+  font-weight: bold;
+  margin: 3vw 0;
+  text-transform: uppercase;
+}
+
+#popup.ErrorPage .errorInfo .stitle {
+  font-size: 6vw;
+  font-weight: bold;
+  color: #1e85ec;
+  margin: 5vw 0;
+}
+
+#popup.ErrorPage .errorInfo a img {
+  width: 30vw;
 }
 
 .header {
@@ -2531,6 +2582,20 @@ button.clickBtn:before {
   line-height: 0;
 }
 
+.casino .slotList .info .icon-new {
+  position: absolute;
+  background: #F77A00;
+  padding: 0 1vw;
+  border-radius: 5px;
+  bottom: 3vw;
+  right: 1vw;
+  line-height: 6vw;
+}
+
+.casino .slotList .info .icon-new:before {
+  font-size: 3vw;
+}
+
 .casino .slotList .info:nth-child(odd) {
   margin-right: 1vw;
 }
@@ -2670,7 +2735,7 @@ button.clickBtn:before {
   color: #fff;
   border: 1px solid #F77A00;
   border-radius: 3px;
-  padding: 1vw 0;
+  padding: 1vw;
   margin-right: 2vw;
 }
 
@@ -3473,7 +3538,7 @@ span.important {
   border-radius: 100%;
 }
 
-.promotions {
+.promotions, .tnc {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -3483,17 +3548,17 @@ span.important {
   padding: 15vw 3vw 24vw;
 }
 
-.promotions img {
+.promotions img, .tnc img {
   width: 100%;
   -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
           box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
 }
 
-.promotions .filterBtn {
+.promotions .filterBtn, .tnc .filterBtn {
   margin: 14vw 0 3vw;
 }
 
-.promotions .claimed {
+.promotions .claimed, .tnc .claimed {
   position: absolute;
   background: rgba(233, 37, 41, 0.8);
   width: 17vw;
@@ -3515,11 +3580,11 @@ span.important {
   z-index: 1;
 }
 
-.promotions .claimed:before {
+.promotions .claimed:before, .tnc .claimed:before {
   content: "CLAIMED";
 }
 
-.promotions .tag ~ div.promodule {
+.promotions .tag ~ div.promodule, .tnc .tag ~ div.promodule {
   padding: 3vw;
   border: 1px dotted #F77A00;
   margin-bottom: 3vw;
@@ -3534,21 +3599,21 @@ span.important {
   position: relative;
 }
 
-.promotions .tag ~ div.promodule.open {
+.promotions .tag ~ div.promodule.open, .tnc .tag ~ div.promodule.open {
   background: #666;
 }
 
-.promotions .tag ~ div.promodule.open .claimed {
+.promotions .tag ~ div.promodule.open .claimed, .tnc .tag ~ div.promodule.open .claimed {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.promotions .tag ~ div.promodule.open .btn-group button:nth-child(2) {
+.promotions .tag ~ div.promodule.open .btn-group button:nth-child(2), .tnc .tag ~ div.promodule.open .btn-group button:nth-child(2) {
   display: none;
 }
 
-.promotions .tag ~ div.promodule .protitle {
+.promotions .tag ~ div.promodule .protitle, .tnc .tag ~ div.promodule .protitle {
   margin-top: 1vw;
   color: #F77A00;
   font-weight: bold;
@@ -3558,7 +3623,7 @@ span.important {
   white-space: nowrap;
 }
 
-.promotions .tag ~ div.promodule .text {
+.promotions .tag ~ div.promodule .text, .tnc .tag ~ div.promodule .text {
   max-width: calc(100% - 1vw);
   padding-left: 1vw;
   overflow: hidden;
@@ -3566,11 +3631,11 @@ span.important {
   white-space: nowrap;
 }
 
-.promotions .tag ~ div.promodule .text + .btn-group button {
+.promotions .tag ~ div.promodule .text + .btn-group button, .tnc .tag ~ div.promodule .text + .btn-group button {
   padding: 1vw;
 }
 
-.promotions div.promodule {
+.promotions div.promodule, .tnc div.promodule {
   padding: 3vw;
   border: 0;
   background: transparent;
@@ -3578,18 +3643,18 @@ span.important {
   position: relative;
 }
 
-.promotions div.promodule.open img {
+.promotions div.promodule.open img, .tnc div.promodule.open img {
   -webkit-filter: grayscale(1);
           filter: grayscale(1);
 }
 
-.promotions div.promodule.open .claimed {
+.promotions div.promodule.open .claimed, .tnc div.promodule.open .claimed {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.promotions div.promodule .btn-cancel {
+.promotions div.promodule .btn-cancel, .tnc div.promodule .btn-cancel {
   background: white;
   padding: 0 2vw;
   border-radius: 3px;
@@ -3602,7 +3667,7 @@ span.important {
   color: #F77A00;
 }
 
-.promotions div.promodule .btn-check {
+.promotions div.promodule .btn-check, .tnc div.promodule .btn-check {
   background: #F77A00;
   padding: 0 2vw;
   border-radius: 3px;
@@ -3615,7 +3680,7 @@ span.important {
   margin-left: 1vw;
 }
 
-.promotions div.promodule > button {
+.promotions div.promodule > button, .tnc div.promodule > button {
   line-height: 24px;
   color: white;
   vertical-align: bottom;
@@ -3623,7 +3688,7 @@ span.important {
   font-size: 12px;
 }
 
-.promotions div.promodule > button.ViewAllAmount {
+.promotions div.promodule > button.ViewAllAmount, .tnc div.promodule > button.ViewAllAmount {
   padding: 5px 10px;
   background: #F77A00;
   margin-left: 0;
@@ -3639,7 +3704,7 @@ span.important {
           justify-content: center;
 }
 
-.promotions div.promodule > button.ViewAllAmount span {
+.promotions div.promodule > button.ViewAllAmount span, .tnc div.promodule > button.ViewAllAmount span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3648,53 +3713,53 @@ span.important {
           align-items: center;
 }
 
-.promotions div.promodule > button.ViewAllAmount span.open {
+.promotions div.promodule > button.ViewAllAmount span.open, .tnc div.promodule > button.ViewAllAmount span.open {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
 }
 
-.promotions div.promodule .protitle {
+.promotions div.promodule .protitle, .tnc div.promodule .protitle {
   margin-top: 1vw;
   color: #F77A00;
   font-weight: bold;
   padding-left: 1vw;
 }
 
-.promotions div.promodule .text {
+.promotions div.promodule .text, .tnc div.promodule .text {
   max-width: calc(100% - 1vw);
   padding-left: 1vw;
   word-wrap: break-word;
 }
 
-.promotions div.promodule .text .text-link {
+.promotions div.promodule .text .text-link, .tnc div.promodule .text .text-link {
   color: #F77A00 !important;
 }
 
-.promotions div.promodule .text ol {
+.promotions div.promodule .text ol, .tnc div.promodule .text ol {
   padding-left: 5vw;
 }
 
-.promotions div.promodule .text ol li {
+.promotions div.promodule .text ol li, .tnc div.promodule .text ol li {
   list-style: decimal;
 }
 
-.promotions div.promodule .text ol li a {
+.promotions div.promodule .text ol li a, .tnc div.promodule .text ol li a {
   text-decoration: underline;
 }
 
-.promotions div.promodule .info {
+.promotions div.promodule .info, .tnc div.promodule .info {
   border-bottom: 1px dotted #F77A00;
   padding-bottom: 3vw;
   margin-bottom: 5vw;
 }
 
-.promotions div.promodule .info ul li {
+.promotions div.promodule .info ul li, .tnc div.promodule .info ul li {
   float: none;
   width: 100%;
   padding-left: 1vw;
 }
 
-.promotions div.promodule .info .title {
+.promotions div.promodule .info .title, .tnc div.promodule .info .title {
   font-weight: normal;
 }
 
@@ -4372,8 +4437,9 @@ span.important {
 .ranking .eventTitle {
   color: white;
   font-weight: bold;
-  font-size: 8vw;
+  font-size: 5vw;
   text-align: center;
+  margin-bottom: 5vw;
 }
 
 .ranking .tagBtn {

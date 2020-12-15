@@ -129,8 +129,8 @@ export default {
 	whoami: {
 		root: "whoami"
 	},
-	betList: {
-		root: "betList"
+	ranking: {
+		root: "ranking"
 	},
 	kiss918: {
 		root: "918kiss"

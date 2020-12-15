@@ -282,7 +282,7 @@
 	"lbl_RotationHint_3": "หมุนโทรศัพท์ของท่านในแนวตั้ง เพื่อประสบการณ์การเล่นเกมที่ดีมากขึ้นกว่าเดิม",
 	"lbl_RotationHint_4": "และเราต้องขออภัยในความไม่สะดวกที่อาจเกิดขึ้นและหวังว่าท่านจะเข้าใจ ขอขอบคุณ!",
 	"lbl_Bonus": "โบนัส",
-	"lbl_Cash": null,
+	"lbl_Cash": "เงินสด",
 	"lbl_Close": "ปิด",
 	"msg_CreditSignUpHint_1": "เรียนลูกค้าที่เคารพรัก,\r\n",
 	"msg_CreditSignUpHint_2": "ยินดีต้อนรับสู่ {0},  หลังจากทะเบียนแล้วคุณสามารถเข้าสู่เว็บไซต์เราเพื่อเพลิดเพลินและสนุกสนานกับทั้งหมดของเรา",
@@ -361,7 +361,21 @@
 	"lbl_please_select_from_wallet": "กรุณาเลือกกระเป๋าเงินที่ต้องการโอนออก",
 	"lbl_please_select_to_wallet": "กรุณาเลือกกระเป๋าเงินที่ต้องการโอนเข้า",
 	"lbl_TpWallet_22":"Mega วอลเล็ท",
-	"lbl_financialLog":"บันทึกทางการเงิน"
-
-	
+	"lbl_financialLog":"บันทึกทางการเงิน",
+	"lbl_Event":"กิจกรรม",
+	"lbl_Records":"บันทึก",
+	"lbl_Ranking":"การจัดอันดับ",
+	"lbl_last_2_day":"2 วันสุดท้าย",
+	"lbl_last_3_day":"3 วันสุดท้าย",
+	"lbl_Game_type":"ประเภทเกม",
+	"lbl_Points":"คะแนน",
+	"lbl_LastUpdTime":"อัปเดตล่าสุดเมื่อ {{time}} (อัปเดตทุก 30 นาที)",
+	"lbl_Ranking_Top10":"ชนะ 10 อันดับแรก",
+	"lbl_Top":"TOP",
+	"lbl_Rewards":"รางวัล",
+	"lbl_MoreDetails":"รายละเอียดเพิ่มเติม",
+	"lbl_EventTitle":"ลุ้นรับ IPHONE 12 ในวันคริสต์มาส & ปีใหม่",
+	"lbl_Ranking_Sports":"กีฬา อันดับที่",
+	"lbl_Ranking_LiveCasino":"คาสิโนสด อันดับที่",
+	"lbl_Ranking_Slots":"สล็อต อันดับที่"
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import * as ct from "Context";
+import * as ct from "../common/context";
 import { IS_LOGGED_IN } from "../../service/auth";
 import { GET_LANG_ID } from "../../service/language";
 import themeList from "../../datas/theme";
@@ -10,6 +10,7 @@ import api from "../../service/api";
 
 export const Wrapper = ({ children }) => {
 	const [i18n, seti18n] = useState(i18nConfig());
+	const [loading, setLoading] = useState(false);
 
 	const [userInfo, setUserInfo] = useState({
 		isLogin: null,
@@ -173,7 +174,10 @@ export const Wrapper = ({ children }) => {
 							<ct.navContext.Provider value={{ nav, setNav }}>
 								<ct.msgCountContext.Provider
 									value={{ msgCount, setMsgCount }}>
-									{children}
+									<ct.loadingContext.Provider
+										value={{ loading, setLoading }}>
+										{children}
+									</ct.loadingContext.Provider>
 								</ct.msgCountContext.Provider>
 							</ct.navContext.Provider>
 						</ct.popBoxContext.Provider>

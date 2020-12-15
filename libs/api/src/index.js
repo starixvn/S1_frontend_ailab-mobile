@@ -5,3 +5,4 @@ export * from "./lib/payment";
 export * from "./lib/promotion";
 export * from "./lib/site";
 export * from "./lib/tp";
+export * from "./lib/event";
