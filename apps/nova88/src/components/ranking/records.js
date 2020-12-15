@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import RankList from "./rankList";
 import { useGetRanking, useHandleSelect, useHandleSelectDay } from "./hook";
 import { defBtnsOfCategory, defDayBtns } from "./def";
 import BtnBar from "../common/btnBar";
+import { loadingContext } from "../common/context";
 
 const Records = ({ isOpen, i18n, userInfo: { isLogin, userName } }) => {
+	const { loading, setLoading } = useContext(loadingContext);
 	const { selected, handleSelect } = useHandleSelect({
 		defaultSelect: defBtnsOfCategory.Sports.value,
 		isLogin
@@ -15,14 +17,15 @@ const Records = ({ isOpen, i18n, userInfo: { isLogin, userName } }) => {
 		selected,
 		BeforeDays: selectedDay,
 		isLogin,
-		userName
+		userName,
+		setLoading
 	});
 
 	return (
 		<div className={`records${isOpen ? " open" : ""}`}>
 			<div className="title">{i18n.lbl_Records}</div>
-			<div className="text">{i18n.lbl_Game_type}</div>
 			<BtnBar
+				title={i18n.lbl_Game_type}
 				i18n={i18n}
 				selected={selected}
 				handleSelect={handleSelect}
@@ -30,8 +33,8 @@ const Records = ({ isOpen, i18n, userInfo: { isLogin, userName } }) => {
 				defBtns={defBtnsOfCategory}
 				isLogin={isLogin}
 			/>
-			<div className="text">{i18n.lbl_Date}</div>
 			<BtnBar
+				title={i18n.lbl_Date}
 				i18n={i18n}
 				selected={selectedDay}
 				handleSelect={handleSelectDay}
@@ -39,6 +42,7 @@ const Records = ({ isOpen, i18n, userInfo: { isLogin, userName } }) => {
 				defBtns={defDayBtns}
 			/>
 			<RankList
+				loading={loading}
 				i18n={i18n}
 				datas={datas}
 				selected={selected}

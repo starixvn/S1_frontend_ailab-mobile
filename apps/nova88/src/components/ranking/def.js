@@ -62,72 +62,72 @@ export const defDayBtns = {
 
 export const defPrize = ({ i18n: { lbl_Cash = "Cash" } }) => ({
 	MYR: {
-		[defBtnsOfCategory.Sports.value]: {
-			1: "iPhone 12 (64GB)",
-			2: `888 MYR (${lbl_Cash})`,
-			3: `788 MYR (${lbl_Cash})`,
-			4: `688 MYR (${lbl_Cash})`,
-			5: `588 MYR (${lbl_Cash})`
-		},
-		[defBtnsOfCategory.LiveCasino.value]: {
-			1: "iPhone 12 (64GB)",
-			2: `888 MYR (${lbl_Cash})`,
-			3: `788 MYR (${lbl_Cash})`,
-			4: `688 MYR (${lbl_Cash})`,
-			5: `588 MYR (${lbl_Cash})`
-		},
-		[defBtnsOfCategory.Slots.value]: {
-			1: "iPhone 12 (64GB)",
-			2: `888 MYR (${lbl_Cash})`,
-			3: `788 MYR (${lbl_Cash})`,
-			4: `688 MYR (${lbl_Cash})`,
-			5: `588 MYR (${lbl_Cash})`
-		}
+		[defBtnsOfCategory.Sports.value]: [
+			{ rank: "1", prize: "iPhone 12 (64GB)" },
+			{ rank: "2", prize: `888 MYR (${lbl_Cash})` },
+			{ rank: "3", prize: `788 MYR (${lbl_Cash})` },
+			{ rank: "4", prize: `688 MYR (${lbl_Cash})` },
+			{ rank: "5", prize: `588 MYR (${lbl_Cash})` }
+		],
+		[defBtnsOfCategory.LiveCasino.value]: [
+			{ rank: "1", prize: "iPhone 12 (64GB)" },
+			{ rank: "2", prize: `888 MYR (${lbl_Cash})` },
+			{ rank: "3", prize: `788 MYR (${lbl_Cash})` },
+			{ rank: "4", prize: `688 MYR (${lbl_Cash})` },
+			{ rank: "5", prize: `588 MYR (${lbl_Cash})` }
+		],
+		[defBtnsOfCategory.Slots.value]: [
+			{ rank: "1", prize: "iPhone 12 (64GB)" },
+			{ rank: "2", prize: `888 MYR (${lbl_Cash})` },
+			{ rank: "3", prize: `788 MYR (${lbl_Cash})` },
+			{ rank: "4", prize: `688 MYR (${lbl_Cash})` },
+			{ rank: "5", prize: `588 MYR (${lbl_Cash})` }
+		]
 	},
 	IDR: {
-		[defBtnsOfCategory.Sports.value]: {
-			1: "iPhone 12 (64GB)",
-			2: `3,000,000 IDR (${lbl_Cash})`,
-			3: `2,688,000 IDR (${lbl_Cash})`,
-			4: `2,388,000 IDR (${lbl_Cash})`,
-			5: `1,388,000 IDR (${lbl_Cash})`
-		},
-		[defBtnsOfCategory.LiveCasino.value]: {
-			1: `iPhone 12 (64GB)`,
-			2: `3,000,000 IDR (${lbl_Cash})`,
-			3: `2,688,000 IDR (${lbl_Cash})`,
-			4: `2,388,000 IDR (${lbl_Cash})`,
-			5: `1,388,000 IDR (${lbl_Cash})`
-		},
-		[defBtnsOfCategory.Slots.value]: {
-			1: "iPhone 12 (64GB)",
-			2: `3,000,000 IDR (${lbl_Cash})`,
-			3: `2,688,000 IDR (${lbl_Cash})`,
-			4: `2,388,000 IDR (${lbl_Cash})`,
-			5: `1,388,000 IDR (${lbl_Cash})`
-		}
+		[defBtnsOfCategory.Sports.value]: [
+			{ rank: "1", prize: "iPhone 12 (64GB)" },
+			{ rank: "2", prize: `3,000,000 IDR (${lbl_Cash})` },
+			{ rank: "3", prize: `2,688,000 IDR (${lbl_Cash})` },
+			{ rank: "4", prize: `2,388,000 IDR (${lbl_Cash})` },
+			{ rank: "5", prize: `1,388,000 IDR (${lbl_Cash})` }
+		],
+		[defBtnsOfCategory.LiveCasino.value]: [
+			{ rank: "1", prize: "iPhone 12 (64GB)" },
+			{ rank: "2", prize: `3,000,000 IDR (${lbl_Cash})` },
+			{ rank: "3", prize: `2,688,000 IDR (${lbl_Cash})` },
+			{ rank: "4", prize: `2,388,000 IDR (${lbl_Cash})` },
+			{ rank: "5", prize: `1,388,000 IDR (${lbl_Cash})` }
+		],
+		[defBtnsOfCategory.Slots.value]: [
+			{ rank: "1", prize: "iPhone 12 (64GB)" },
+			{ rank: "2", prize: `3,000,000 IDR (${lbl_Cash})` },
+			{ rank: "3", prize: `2,688,000 IDR (${lbl_Cash})` },
+			{ rank: "4", prize: `2,388,000 IDR (${lbl_Cash})` },
+			{ rank: "5", prize: `1,388,000 IDR (${lbl_Cash})` }
+		]
 	},
 	THB: {
-		[defBtnsOfCategory.Sports.value]: {
-			1: "iPhone 12 (64GB)",
-			2: `6,588 THB (${lbl_Cash})`,
-			3: `5,588 THB (${lbl_Cash})`,
-			4: `5,088 THB (${lbl_Cash})`,
-			5: `4,088 THB (${lbl_Cash})`
-		},
-		[defBtnsOfCategory.LiveCasino.value]: {
-			1: "iPhone 12 (64GB)",
-			2: `6,588 THB (${lbl_Cash})`,
-			3: `5,588 THB (${lbl_Cash})`,
-			4: `5,088 THB (${lbl_Cash})`,
-			5: `4,088 THB (${lbl_Cash})`
-		},
-		[defBtnsOfCategory.Slots.value]: {
-			1: "iPhone 12 (64GB)",
-			2: `6,588 THB (${lbl_Cash})`,
-			3: `5,588 THB (${lbl_Cash})`,
-			4: `5,088 THB (${lbl_Cash})`,
-			5: `4,088 THB (${lbl_Cash})`
-		}
+		[defBtnsOfCategory.Sports.value]: [
+			{ rank: "1", prize: "iPhone 12 (64GB)" },
+			{ rank: "2", prize: `6,588 THB (${lbl_Cash})` },
+			{ rank: "3", prize: `5,588 THB (${lbl_Cash})` },
+			{ rank: "4", prize: `5,088 THB (${lbl_Cash})` },
+			{ rank: "5", prize: `4,088 THB (${lbl_Cash})` }
+		],
+		[defBtnsOfCategory.LiveCasino.value]: [
+			{ rank: "1", prize: "iPhone 12 (64GB)" },
+			{ rank: "2", prize: `6,588 THB (${lbl_Cash})` },
+			{ rank: "3", prize: `5,588 THB (${lbl_Cash})` },
+			{ rank: "4", prize: `5,088 THB (${lbl_Cash})` },
+			{ rank: "5", prize: `4,088 THB (${lbl_Cash})` }
+		],
+		[defBtnsOfCategory.Slots.value]: [
+			{ rank: "1", prize: "iPhone 12 (64GB)" },
+			{ rank: "2", prize: `6,588 THB (${lbl_Cash})` },
+			{ rank: "3", prize: `5,588 THB (${lbl_Cash})` },
+			{ rank: "4", prize: `5,088 THB (${lbl_Cash})` },
+			{ rank: "5", prize: `4,088 THB (${lbl_Cash})` }
+		]
 	}
 });

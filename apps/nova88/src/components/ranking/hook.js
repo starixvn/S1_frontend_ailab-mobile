@@ -21,7 +21,8 @@ export const useGetRanking = ({
 	selected,
 	BeforeDays = 0,
 	isLogin,
-	userName
+	userName,
+	setLoading
 }) => {
 	const [datas, setDatas] = useState([]);
 	const [lastUpdTime, setLastUpdTime] = useState(SetUpdTime());
@@ -32,18 +33,24 @@ export const useGetRanking = ({
 			const beforeDays = isNaN(BeforeDays)
 				? Number(defDayBtns.Yesterday.value)
 				: Number(BeforeDays);
+
+			setLoading(true);
 			api.events
 				.GetLeaderboardList({
 					lBCategoryId,
 					TopNum: 10,
 					BeforeDays: beforeDays
 				})
-				.then(res => {
-					if (res.data.errorCode === 0) {
-						setDatas(res.data.data);
-						setLastUpdTime(SetUpdTime());
-					}
-				});
+				.then(
+					res => {
+						if (res.data.errorCode === 0) {
+							setDatas(res.data.data);
+							setLastUpdTime(SetUpdTime());
+							setLoading(false);
+						}
+					},
+					() => setLoading(false)
+				);
 
 			api.events
 				.GetCustRank({

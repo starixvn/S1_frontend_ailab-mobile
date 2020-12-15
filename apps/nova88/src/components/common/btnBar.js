@@ -13,7 +13,8 @@ const BtnBar = ({
 	selected,
 	handleSelect,
 	mainKey,
-	isLogin
+	isLogin,
+	title
 }) => {
 	const rows = Object.values(defBtns).map(item => (
 		<Btn
@@ -28,7 +29,17 @@ const BtnBar = ({
 			)}
 		/>
 	));
-	return <div className={btnListClass}>{rows}</div>;
+
+	const btnList = <div className={btnListClass}>{rows}</div>;
+
+	return title ? (
+		<>
+			<div className="text">{title}</div>
+			{btnList}
+		</>
+	) : (
+		btnList
+	);
 };
 
 export default BtnBar;
