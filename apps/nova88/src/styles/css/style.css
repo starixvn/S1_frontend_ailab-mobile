@@ -4577,6 +4577,10 @@ span.important {
   height: 15vw;
 }
 
+.ranking .rankList ul.userRank {
+  background: rgba(247, 122, 0, 0.5);
+}
+
 .ranking .rankEvent .rankList ul:nth-child(2) li {
   font-weight: bold;
 }
