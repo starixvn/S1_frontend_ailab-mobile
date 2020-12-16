@@ -338,5 +338,19 @@
 	"lbl_ClaimAmountRange":"Claim Amount Range",
 	"lbl_PleaseEnterClaimAmount":"Please enter your prefer amount to claim promotion",
 	"lbl_ViewAll":"View All",
-	"lbl_Total":"Total"
+	"lbl_Total":"Total",
+
+	"lbl_EventTitle":"Christmas & New Year",
+	"lbl_Rank":"Rank",
+	"lbl_Awards":"Awards",
+	"lbl_TotalValue":"Total Value",
+	"lbl_Ranking":"Ranking",
+	"lbl_Event":"Event",
+	"lbl_Records":"Records",
+	"lbl_MoreDetails":"MORE DETAILS",
+	"lbl_Top":"Top",
+	"lbl_Points":"Points",
+	"lbl_last_2_day":"Last 2 Day",
+	"lbl_last_3_day":"Last 3 Day",
+	"lbl_LastUpdTime":"Last Update On {{time}} (Update Every 30 Minutes)"
 }
