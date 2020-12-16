@@ -20,15 +20,17 @@ const Records = ({ isOpen, i18n, userInfo: { isLogin, userName } }) => {
 		return { key: k, ...defDayBtns[k] };
 	});
 
+	const selectedIdx = dayPickerOpts.findIndex(x => x.value === selectedDay);
+
 	return (
-		<div className={`ranInBox${isOpen ? " open" : ""}`}>
+		<div className={`rankInBox${isOpen ? " open" : ""}`}>
 			<div className="title">{i18n.lbl_Records?.toUpperCase()}</div>
 			<div className="inputBox">
 				<Dropdown
 					i18n={i18n}
 					mainKey="ranking-record-datepicker"
 					options={dayPickerOpts}
-					selectedIdx={selectedDay}
+					selectedIdx={selectedIdx}
 					onSelectItem={handleSelectDay}
 				/>
 			</div>

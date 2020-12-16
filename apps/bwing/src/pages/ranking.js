@@ -30,6 +30,7 @@ export default () => {
 	return (
 		<>
 			<BtnBar
+				btnListClass="rankBotton"
 				i18n={i18n}
 				selected={selected}
 				handleSelect={handleSelect}

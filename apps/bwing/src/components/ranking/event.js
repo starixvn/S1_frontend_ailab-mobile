@@ -6,7 +6,7 @@ import config from "../../config";
 
 const Event = ({ userInfo = {}, i18n = {}, isOpen }) => {
 	return (
-		<div className={`ranInBox${isOpen ? " open" : ""}`}>
+		<div className={`rankInBox${isOpen ? " open" : ""}`}>
 			<div className="title">{i18n.lbl_Event}</div>
 			<div className="textBox">
 				<h1>{i18n.lbl_No1_Reward}</h1>

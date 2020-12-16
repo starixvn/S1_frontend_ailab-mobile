@@ -7,7 +7,7 @@ const Btn = ({ isOpen, displayText, onClick, value }) => (
 );
 
 const BtnBar = ({
-	btnListClass = "ranBotton",
+	btnListClass = "",
 	defBtns,
 	i18n = {},
 	selected,

@@ -21,7 +21,7 @@ const PrizeList = ({ userInfo, i18n }) => {
 	});
 
 	return (
-		<div className="ranlist">
+		<div className="ranklist">
 			<ul>
 				<li className="listTitle">
 					<div>{i18n.lbl_Ranking}</div>

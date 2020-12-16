@@ -14,7 +14,7 @@ const Ranking = ({ isOpen, i18n = {}, userInfo: { isLogin, userName } }) => {
 	});
 
 	return (
-		<div className={`ranInBox${isOpen ? " open" : ""}`}>
+		<div className={`rankInBox${isOpen ? " open" : ""}`}>
 			<div className="title">{i18n.lbl_Ranking?.toUpperCase()}</div>
 			<RankList
 				loading={loading}
