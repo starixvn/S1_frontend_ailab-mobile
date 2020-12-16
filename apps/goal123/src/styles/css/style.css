@@ -4192,6 +4192,7 @@ span.important {
   color: #fff;
   border: 1px solid #fab715;
   margin-top: 10px;
+  display: block;
 }
 
 .topInfo {
