@@ -37,50 +37,56 @@ export const useGetRanking = ({
 			const GetRankingDatas = async () => {
 				setLoading(true);
 				try {
+					const TopNum = 10;
 					const res = await api.events.GetLeaderboardList({
 						lBCategoryId,
-						TopNum: 20,
+						TopNum,
 						BeforeDays: beforeDays
 					});
 
 					if (res.data.errorCode === 0) {
-						const custRankRes = await api.events.GetCustRank({
-							LBCategoryId: lBCategoryId,
-							BeforeDays: beforeDays
-						});
-
-						if (custRankRes.data.errorCode === 0) {
-							const rankDatas = res.data.data;
-							const { custRank, point } = custRankRes.data.data;
-							setDatas(() => {
-								let rank =
-									custRank > 999 || custRank === 0
-										? "999+"
-										: custRank;
-								let custRankIdx = rankDatas.findIndex(
-									x => x.rank === rank
-								);
-
-								let result = [];
-								if (custRankIdx === -1) {
-									result = [
-										...rankDatas,
-										{
-											userName,
-											wTurnover: point,
-											rank
-										}
-									];
-								} else {
-									rankDatas[custRankIdx] = {
-										...rankDatas,
-										rank: custRank
-									};
-									result = rankDatas;
-								}
-
-								return result;
+						const rankDatas = res.data.data;
+						if (rankDatas?.length > 0) {
+							const custRankRes = await api.events.GetCustRank({
+								LBCategoryId: lBCategoryId,
+								BeforeDays: beforeDays
 							});
+
+							if (custRankRes.data.errorCode === 0) {
+								const {
+									custRank,
+									point
+								} = custRankRes.data.data;
+
+								setDatas(() => {
+									let rank =
+										custRank > 999 || custRank === 0
+											? "999+"
+											: custRank;
+
+									let result = [];
+									if (custRank <= TopNum && custRank !== 0) {
+										rankDatas[custRank - 1] = {
+											...rankDatas[custRank - 1],
+											rank
+										};
+										result = rankDatas;
+									} else {
+										result = [
+											...rankDatas,
+											{
+												userName,
+												wTurnover: point,
+												rank
+											}
+										];
+									}
+
+									return result;
+								});
+							}
+						} else {
+							setDatas([]);
 						}
 					}
 					setLoading(false);

@@ -402,7 +402,7 @@
 	"lbl_MaxBonusAmount":"Tiền Khuyến Mãi Tối Đa",
 
 	"lbl_Ranking":"Thứ hạng",
-	"lbl_NoOfWinners":"No. of Winners",
+	"lbl_NoOfWinners":"Số người chiến thắng",
 	"lbl_Event":"Sự kiện",
 	"lbl_Records":"Báo cáo",
 	"lbl_last_2_day":"2 ngày qua",
@@ -411,6 +411,6 @@
 	"lbl_LastUpdTime":"Cập nhật vào lúc {{time}  (Cập nhật mỗi 30 phút)",
 	"lbl_Top":"Người đứng đầu",
 	"lbl_MoreDetails":"Chi tiết",
-	"lbl_No1_Reward":"NO.1 REWARD",
-	"lbl_Prizes":"Prizes"
+	"lbl_No1_Reward":"Phần thưởng cho người đứng đầu",
+	"lbl_Prizes":"Giải thưởng"
 }

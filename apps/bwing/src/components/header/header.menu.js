@@ -73,7 +73,7 @@ export default ({ i18n, OnClickProduct, userInfo }) => {
 			</a>
 			<Link
 				to={`/${path.ranking.root}`}
-				className={`nav${
+				className={`nav liveIcon${
 					useMatch(`/${path.ranking.root}`) !== null ? " active" : ""
 				}`}>
 				{i18n.lbl_Ranking.toUpperCase()}
