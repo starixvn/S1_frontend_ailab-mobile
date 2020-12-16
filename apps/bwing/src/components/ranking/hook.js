@@ -37,40 +37,63 @@ export const useGetRanking = ({
 				? Number(defDayBtns.Yesterday.value)
 				: Number(BeforeDays);
 
-			setLoading(true);
-			api_events_GetLeaderboardList({
-				lBCategoryId,
-				TopNum: 20,
-				BeforeDays: beforeDays
-			}).then(
-				res => {
-					if (res.data.errorCode === 0) {
-						setDatas(res.data.data);
-						setLastUpdTime(SetUpdTime());
-						setLoading(false);
-					}
-				},
-				() => setLoading(false)
-			);
+			const GetRankingDatas = async () => {
+				setLoading(true);
+				try {
+					const res = await api_events_GetLeaderboardList({
+						lBCategoryId,
+						TopNum: 20,
+						BeforeDays: beforeDays
+					});
 
-			api_events_GetCustRank({
-				LBCategoryId: lBCategoryId,
-				BeforeDays: beforeDays
-			}).then(res => {
-				if (res.data.errorCode === 0) {
-					const { custRank, point } = res.data.data;
-					if (custRank > 10) {
-						setDatas(prev => [
-							...prev,
-							{
-								userName,
-								wTurnover: point,
-								rank: custRank > 999 ? "999+" : custRank
-							}
-						]);
+					if (res.data.errorCode === 0) {
+						const custRankRes = await api_events_GetCustRank({
+							LBCategoryId: lBCategoryId,
+							BeforeDays: beforeDays
+						});
+
+						if (custRankRes.data.errorCode === 0) {
+							const rankDatas = res.data.data;
+							const { custRank, point } = custRankRes.data.data;
+							setDatas(() => {
+								let rank =
+									custRank > 999 || custRank === 0
+										? "999+"
+										: custRank;
+								let custRankIdx = rankDatas.findIndex(
+									x => x.rank === rank
+								);
+
+								let result = [];
+								if (custRankIdx === -1) {
+									result = [
+										...rankDatas,
+										{
+											userName,
+											wTurnover: point,
+											rank
+										}
+									];
+								} else {
+									rankDatas[custRankIdx] = {
+										...rankDatas,
+										rank: custRank
+									};
+									result = rankDatas;
+								}
+
+								return result;
+							});
+						}
 					}
+					setLoading(false);
+					setLastUpdTime(SetUpdTime());
+				} catch (error) {
+					setLoading(false);
 				}
-			});
+			};
+
+			GetRankingDatas();
 		}
 	}, [isOpen, selected, setDatas, BeforeDays, isLogin, userName]);
 

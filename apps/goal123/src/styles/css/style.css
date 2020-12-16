@@ -4078,6 +4078,9 @@ span.important {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .topBtn button {
@@ -4085,6 +4088,14 @@ span.important {
   padding: 10px;
   border: 1px solid #fab715;
   text-transform: uppercase;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-right: 1vw;
+}
+
+.topBtn button:last-child {
+  margin: 0;
 }
 
 .topBtn button.open {
@@ -4134,12 +4145,13 @@ span.important {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding-left: 10px;
 }
 
 .rankContent .rankList ul li:last-child {
@@ -4147,6 +4159,13 @@ span.important {
       -ms-flex-pack: end;
           justify-content: flex-end;
   font-weight: bold;
+  padding-right: 10px;
+}
+
+.rankContent .rankList ul li img {
+  width: auto;
+  height: 30px;
+  margin-right: 5px;
 }
 
 .rankContent .rankList ul:nth-child(n+2) {

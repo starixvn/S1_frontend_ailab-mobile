@@ -9,7 +9,7 @@ import moment from "moment";
 export const RankImg = ({ Ranking }) => {
 	let img = <img src={gold} alt="gold" />;
 	const rank = Number(Ranking);
-	if (isNaN(Ranking)) {
+	if (isNaN(Ranking) && Ranking !== "999+") {
 		img = Ranking;
 	} else if (rank === 1) img = <img src={no1} alt="no1" />;
 	else if (rank === 2) img = <img src={no2} alt="no2" />;
