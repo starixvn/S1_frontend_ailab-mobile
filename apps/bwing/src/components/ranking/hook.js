@@ -40,7 +40,7 @@ export const useGetRanking = ({
 			setLoading(true);
 			api_events_GetLeaderboardList({
 				lBCategoryId,
-				TopNum: 10,
+				TopNum: 20,
 				BeforeDays: beforeDays
 			}).then(
 				res => {
