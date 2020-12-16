@@ -25,7 +25,7 @@ const PrizeList = ({ userInfo, i18n }) => {
 			<ul>
 				<li className="listTitle">
 					<div>{i18n.lbl_Ranking}</div>
-					<div>{i18n.lbl_Rewards}</div>
+					<div>{i18n.lbl_Prizes}</div>
 					<div>{i18n.lbl_NoOfWinners}</div>
 				</li>
 				{rows}
