@@ -50,5 +50,5 @@ export const promotionRequest = axios.create({
 
 export const eventRequest = axios.create({
 	withCredentials: true,
-	baseURL: `${rootURL}/api/event`
+	baseURL: `${rootURL}/api/events`
 });

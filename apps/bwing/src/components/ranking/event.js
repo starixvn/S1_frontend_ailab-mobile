@@ -8,7 +8,7 @@ const Event = ({ userInfo = {}, i18n = {}, isOpen }) => {
 		<div className={`ranInBox${isOpen ? " open" : ""}`}>
 			<div className="title">EVENT</div>
 			<div className="textBox">
-				<h1>NO.1 REWARD</h1>
+				<h1>{i18n.lbl_No1_Reward}</h1>
 				<p>{defPrize[0]?.prize}</p>
 			</div>
 			<img src={iphone} alt="iphone" />

@@ -403,13 +403,14 @@
 
 	"lbl_Ranking":"Thứ hạng",
 	"lbl_NoOfWinners":"No. of Winners",
-	"lbl_Rewards":"Prizes",
-	"lbl_Event":"Event",
-	"lbl_Records":"Records",
-	"lbl_last_2_day":"Last 2 Day",
-	"lbl_last_3_day":"Last 3 Day",
-	"lbl_Points":"Points",
-	"lbl_LastUpdTime":"Last Update On {{time}} (Update Every 30 Minutes)",
-	"lbl_Top":"TOP",
-	"lbl_MoreDetails":"MORE DETAILS"
+	"lbl_Rewards":"Giải thưởng",
+	"lbl_Event":"Sự kiện",
+	"lbl_Records":"Báo cáo",
+	"lbl_last_2_day":"2 ngày qua",
+	"lbl_last_3_day":"3 ngày qua",
+	"lbl_Points":"Điểm số",
+	"lbl_LastUpdTime":"Cập nhật vào lúc {{time}  (Cập nhật mỗi 30 phút)",
+	"lbl_Top":"Người đứng đầu",
+	"lbl_MoreDetails":"Chi tiết",
+	"lbl_No1_Reward":"NO.1 REWARD"
 }

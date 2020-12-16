@@ -24,8 +24,9 @@ const RankItem = ({
 	turnover,
 	isCurrentUser
 }) => {
+	let className = Ranking <= 3 ? `no${Ranking}` : "";
 	return (
-		<li className={isCurrentUser ? "myRan" : ""}>
+		<li className={isCurrentUser ? `${className} myRan` : className}>
 			<div>
 				<RankImg Ranking={Ranking} />
 				{`${lbl_Top} ${Ranking}`}
@@ -59,7 +60,7 @@ const RankList = ({ loading, i18n = {}, datas, lastUpdTime }) => {
 					<div className="txt-white">{i18n.msg_NoData}</div>
 				</div>
 			) : (
-				<div className="ranklist">
+				<div className="ranlist">
 					<ul>
 						<li className="listTitle">
 							<div>{i18n.lbl_Ranking}</div>

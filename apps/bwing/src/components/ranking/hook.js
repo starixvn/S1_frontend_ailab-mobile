@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import {
-	api_event_GetLeaderboardList,
-	api_event_GetCustRank
-} from "../../service/api/event";
+	api_events_GetLeaderboardList,
+	api_events_GetCustRank
+} from "../../service/api/events";
 import { defBtns, defDayBtns } from "./def";
 
 const SetUpdTime = () => {
@@ -38,7 +38,7 @@ export const useGetRanking = ({
 				: Number(BeforeDays);
 
 			setLoading(true);
-			api_event_GetLeaderboardList({
+			api_events_GetLeaderboardList({
 				lBCategoryId,
 				TopNum: 10,
 				BeforeDays: beforeDays
@@ -53,7 +53,7 @@ export const useGetRanking = ({
 				() => setLoading(false)
 			);
 
-			api_event_GetCustRank({
+			api_events_GetCustRank({
 				LBCategoryId: lBCategoryId,
 				BeforeDays: beforeDays
 			}).then(res => {
