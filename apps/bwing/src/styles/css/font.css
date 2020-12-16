@@ -53,6 +53,10 @@
   font-size: 36px !important;
 }
 
+.icon-other:before {
+  content: "\e9e1";
+}
+
 .icon-WM:before {
   content: "\e9df";
 }
