@@ -11,7 +11,7 @@ const Event = ({ userInfo = {}, i18n = {}, isOpen }) => {
 				<img src={coins} alt="coins" />
 				<div className="highest">
 					{i18n.lbl_TotalValue}
-					<span>VND 127,992,000</span>
+					<span>VND 161,000,000</span>
 				</div>
 			</div>
 			<PrizeList userInfo={userInfo} i18n={i18n} />
