@@ -338,7 +338,24 @@
 	"lbl_ClaimAmountRange":"Khoảng tiền nạp",
 	"lbl_PleaseEnterClaimAmount":"Vui lòng nhập số tiền bạn muốn để nhận khuyến mãi",
 	"lbl_ViewAll":"Xem Thêm",
-	"lbl_Total":"Tổng Cộng"
-
+	"lbl_Total":"Tổng Cộng",
+	"lbl_FinancialLog":"Chi tiết Giao dịch",
+	"lbl_SettledDate":"Ngày thanh toán",
+	"lbl_CategoryName":"Tên danh mục",
+	"lbl_Turnover":"Doanh thu",
+	"lbl_ValidBet":"Cược hợp lệ",
+	"lbl_WinlostAmount":"Doanh số Thắng - Thua",
+	"lbl_Financial":"Tiền vốn",
+	"lbl_GameTypeName":"Tên loại trò chơi",
+	"lbl_TransId":"ID giao dịch",
+	"lbl_BonusId":"ID khuyến mại",
+	"lbl_BonusCode":"Mã khuyến mại",
+	"lbl_TransTime":"Thời gian giao dịch",
+	"lbl_SettledTime":"Thời gian thanh toán",
+	"lbl_ByDay":"Theo ngày",
+	"lbl_Category":"Theo Loại (Trò chơi)",
+	"lbl_Detail":"Chi tiết",
+	"lbl_TurnoverTotal":"Tổng Doanh thu",
+	"lbl_WinlostAmountTotal":"Tổng Doanh số Thắng - Thua"
 
 }
