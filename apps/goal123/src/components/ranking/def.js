@@ -41,38 +41,38 @@ export const defDayBtns = {
 export const defPrize = [
 	{
 		rank: "1",
-		prize: "VND 38,888"
+		prize: "VND 38,888,000"
 	},
 	{
 		rank: "2",
-		prize: "VND 28,888"
+		prize: "VND 28,888,000"
 	},
 	{
 		rank: "3",
-		prize: "VND 18,888"
+		prize: "VND 18,888,000"
 	},
 	{
 		rank: "4",
-		prize: "VND 12,888"
+		prize: "VND 12,888,000"
 	},
 	{
 		rank: "5",
-		prize: "VND 8,888"
+		prize: "VND 8,888,000"
 	},
 	{
 		rank: "6",
-		prize: "VND 6,888"
+		prize: "VND 6,888,000"
 	},
 	{
 		rank: "7",
-		prize: "VND 5,888"
+		prize: "VND 5,888,000"
 	},
 	{
 		rank: "8-10",
-		prize: "VND 3,888"
+		prize: "VND 3,888,000"
 	},
 	{
 		rank: "11-20",
-		prize: "VND 2,888"
+		prize: "VND 2,888,000"
 	}
 ];
