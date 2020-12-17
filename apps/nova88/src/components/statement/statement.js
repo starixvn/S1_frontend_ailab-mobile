@@ -16,7 +16,6 @@ export default props => {
 	});
 
 	const submitFilter = (startDay, endDay) => {
-		console.log("startDay", startDay, "endDay", endDay);
 		if (startDay !== endDay) {
 			toDateRangePage({
 				startDay: startDay,

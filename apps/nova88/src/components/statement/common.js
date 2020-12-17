@@ -55,8 +55,7 @@ export const getDateRange = ({ startDate, endDate }) => {
 };
 
 export const getSkipLink = ({ dateRange }) => {
-	return (dateRange =
-		dateRange === "lbl_Today" || dateRange === "lbl_YesterDay"
-			? ["date"]
-			: []);
+	return dateRange === "lbl_Today" || dateRange === "lbl_YesterDay"
+		? ["date"]
+		: [];
 };

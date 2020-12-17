@@ -12,6 +12,7 @@ import { Breadcrumbs } from "../common/breadcrumb";
 import { getDateRange, getSkipLink, defStatement } from "./common";
 import path from "../../path";
 import api from "../../service/api";
+import { useHandlePage } from "./hook";
 
 export default props => {
 	const { i18n } = useContext(i18nContext);
@@ -19,18 +20,15 @@ export default props => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { setLoading } = useContext(loadingContext);
 
-	const [selectedPage, setSelectedPage] = useState(0);
 	const [totalPages, setTotalPages] = useState(1);
 	const [datas, setDatas] = useState(null);
 
 	const _isConvert = isConvert(userInfo.currencyId);
 	const isMountedRef = useRef(null);
 
-	const timePeriod = props.timePeriod;
+	const { timePeriod, date: _selDate, game: _gameId } = props;
 	const _startDay = timePeriod.substr(0, timePeriod.indexOf("to"));
 	const _endDay = timePeriod.split("to").pop();
-	const _selDate = props.date;
-	const _gameId = props.game;
 
 	let dateRange = getDateRange({ startDate: _startDay, endDate: _endDay });
 	const skipLink = getSkipLink({ dateRange });
@@ -45,20 +43,6 @@ export default props => {
 			getListbyGameType({ pageNumber: 1 });
 		}
 	}, []);
-
-	let pageOptions = [];
-	for (let i = 1; i <= totalPages; i++) {
-		pageOptions.push({ displayText: i, id: i });
-	}
-
-	const selectPage = i => {
-		if (i !== selectedPage) {
-			setSelectedPage(i);
-			let _selectedPage = i + 1;
-
-			getListbyGameType({ pageNumber: _selectedPage });
-		}
-	};
 
 	const getListbyGameType = ({ pageNumber }) => {
 		setLoading(true);
@@ -80,7 +64,7 @@ export default props => {
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
-								content: res.data.message
+								content: `[${res.data.errorCode}]${res.data.message}`
 							});
 						}
 						setLoading(false);
@@ -98,6 +82,11 @@ export default props => {
 				}
 			);
 	};
+
+	const { selectedPage, pageOptions, onSelectPage } = useHandlePage({
+		totalPages,
+		func_getDatas: getListbyGameType
+	});
 
 	let totalTurnover = datas?.reduce((prev, curr) => {
 		return prev + curr.turnOver;
@@ -146,7 +135,7 @@ export default props => {
 						<Dropdown
 							options={pageOptions}
 							mainKey="betList-By-GameType"
-							onSelectItem={selectPage}
+							onSelectItem={onSelectPage}
 							selectedIdx={selectedPage}
 						/>
 					</div>

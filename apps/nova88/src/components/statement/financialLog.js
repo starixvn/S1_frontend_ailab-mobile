@@ -139,37 +139,33 @@ const IndexPage = () => {
 			<HistoryFilter submitHandler={submitHandler} />
 			{loading ? (
 				<Loading />
-			) : (
-				<>
-					{getHistoryState ? (
-						<div className="recent open">
-							<div className="recentTransactions">
-								<div className="smallTitle">
-									<i className="icon icon-history"></i>
-									{i18n["lbl_TransactionHistory"]}
-								</div>
-								<ReloadSpin
-									func={submitHandler.bind(
-										this,
-										filterData?.StartDate,
-										filterData?.EndDate,
-										true
-									)}
-								/>
-							</div>
-							{getHistoryState.length > 0 ? (
-								<div className="infoList">{arr}</div>
-							) : (
-								<div className="nodata icon icon-nodata">
-									<div className="txt-white">
-										{i18n["msg_NoData"]}
-									</div>
-								</div>
-							)}{" "}
+			) : getHistoryState ? (
+				<div className="recent open">
+					<div className="recentTransactions">
+						<div className="smallTitle">
+							<i className="icon icon-history"></i>
+							{i18n["lbl_TransactionHistory"]}
 						</div>
-					) : null}
-				</>
-			)}
+						<ReloadSpin
+							func={submitHandler.bind(
+								this,
+								filterData?.StartDate,
+								filterData?.EndDate,
+								true
+							)}
+						/>
+					</div>
+					{getHistoryState.length > 0 ? (
+						<div className="infoList">{arr}</div>
+					) : (
+						<div className="nodata icon icon-nodata">
+							<div className="txt-white">
+								{i18n["msg_NoData"]}
+							</div>
+						</div>
+					)}{" "}
+				</div>
+			) : null}
 		</>
 	);
 };

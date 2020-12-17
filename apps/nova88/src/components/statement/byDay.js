@@ -13,6 +13,7 @@ import { Breadcrumbs } from "../common/breadcrumb";
 import { getDateRange, getSkipLink, defStatement } from "./common";
 import api from "../../service/api";
 import path from "../../path";
+import { useHandlePage } from "./hook";
 
 export default props => {
 	const { i18n } = useContext(i18nContext);
@@ -20,7 +21,6 @@ export default props => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { setLoading } = useContext(loadingContext);
 
-	const [selectedPage, setSelectedPage] = useState(0);
 	const [totalPages, setTotalPages] = useState(1);
 	const [datas, setDatas] = useState(null);
 
@@ -28,10 +28,9 @@ export default props => {
 	const navigate = useNavigate();
 	const isMountedRef = useRef(null);
 
-	const timePeriod = props.timePeriod;
+	const { timePeriod, date: _selDate } = props;
 	const _startDay = timePeriod.substr(0, timePeriod.indexOf("to"));
 	const _endDay = timePeriod.split("to").pop();
-	const _selDate = props.date;
 
 	let dateRange = getDateRange({ startDate: _startDay, endDate: _endDay });
 	const skipLink = getSkipLink({ dateRange });
@@ -46,19 +45,6 @@ export default props => {
 			getListByDay({ pageNumber: 1 });
 		}
 	}, []);
-
-	let pageOptions = [];
-	for (let i = 1; i <= totalPages; i++) {
-		pageOptions.push({ displayText: i, id: i });
-	}
-
-	const selectPage = i => {
-		if (i !== selectedPage) {
-			setSelectedPage(i);
-			let _selectedPage = i + 1;
-			getListByDay({ pageNumber: _selectedPage });
-		}
-	};
 
 	const toByCategoryPage = ({ CategoryId }) => {
 		navigate(
@@ -85,7 +71,7 @@ export default props => {
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
-								content: res.data.message
+								content: `[${res.data.errorCode}]${res.data.message}`
 							});
 						}
 						setLoading(false);
@@ -104,6 +90,11 @@ export default props => {
 			);
 	};
 
+	const { selectedPage, pageOptions, onSelectPage } = useHandlePage({
+		totalPages,
+		func_getDatas: getListByDay
+	});
+
 	let detailArr = datas?.map(data => {
 		return (
 			<Detail
@@ -121,7 +112,7 @@ export default props => {
 		);
 	});
 
-	return datas !== null && !props.path.includes("/:category") ? (
+	return datas !== null ? (
 		<>
 			<Breadcrumbs
 				locationInfo={props}
@@ -140,7 +131,7 @@ export default props => {
 						<Dropdown
 							options={pageOptions}
 							mainKey="betList-By-Day"
-							onSelectItem={selectPage}
+							onSelectItem={onSelectPage}
 							selectedIdx={selectedPage}
 						/>
 					</div>

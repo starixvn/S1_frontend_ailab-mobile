@@ -13,6 +13,7 @@ import { Breadcrumbs } from "../common/breadcrumb";
 import { useNavigate } from "@reach/router";
 import { getDateRange, defStatement } from "./common";
 import path from "../../path";
+import { useHandlePage } from "./hook";
 
 export default props => {
 	const { i18n } = useContext(i18nContext);
@@ -20,7 +21,6 @@ export default props => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { setLoading } = useContext(loadingContext);
 
-	const [selectedPage, setSelectedPage] = useState(0);
 	const [totalPages, setTotalPages] = useState(1);
 	const [datas, setDatas] = useState(null);
 
@@ -28,7 +28,7 @@ export default props => {
 	const _isConvert = isConvert(userInfo.currencyId);
 	const isMountedRef = useRef(null);
 
-	const timePeriod = props.timePeriod;
+	const { timePeriod } = props;
 	const _startDay = timePeriod.substr(0, timePeriod.indexOf("to"));
 	const _endDay = timePeriod.split("to").pop();
 	let dateRange = getDateRange({ startDate: _startDay, endDate: _endDay });
@@ -47,20 +47,6 @@ export default props => {
 			}
 		}
 	}, []);
-
-	let pageOptions = [];
-	for (let i = 1; i <= totalPages; i++) {
-		pageOptions.push({ displayText: i, id: i });
-	}
-
-	const selectPage = i => {
-		if (i !== selectedPage) {
-			setSelectedPage(i);
-
-			let _selectedPage = i + 1;
-			getListByDateRange({ pageNumber: _selectedPage });
-		}
-	};
 
 	const toByDayPage = ({ selDate }) => {
 		let _path = timePeriod.includes("to")
@@ -90,7 +76,7 @@ export default props => {
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
-								content: res.data.message
+								content: `[${res.data.errorCode}]${res.data.message}`
 							});
 						}
 						setLoading(false);
@@ -109,6 +95,11 @@ export default props => {
 			);
 	};
 
+	const { selectedPage, pageOptions, onSelectPage } = useHandlePage({
+		totalPages,
+		func_getDatas: getListByDateRange
+	});
+
 	let detailArr = datas?.map(data => {
 		return (
 			<Detail
@@ -124,7 +115,7 @@ export default props => {
 		);
 	});
 
-	return datas !== null && !props.path.includes("/:date") ? (
+	return datas !== null ? (
 		<>
 			<Breadcrumbs
 				locationInfo={props}
@@ -141,7 +132,7 @@ export default props => {
 						<Dropdown
 							options={pageOptions}
 							mainKey="betList-Date-Range"
-							onSelectItem={selectPage}
+							onSelectItem={onSelectPage}
 							selectedIdx={selectedPage}
 						/>
 					</div>
