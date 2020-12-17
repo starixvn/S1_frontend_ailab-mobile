@@ -6401,21 +6401,21 @@ span.important {
   border: 1px solid #ffdd33;
   background-color: rgba(255, 216, 100, 0.1);
   height: 50px;
-  line-height: 50;
+  line-height: 50px;
 }
 
 .ranking .rankInBox .ranklist ul li.no2 {
   border: 1px solid #cbe5ff;
   background-color: rgba(203, 229, 255, 0.1);
   height: 50px;
-  line-height: 50;
+  line-height: 50px;
 }
 
 .ranking .rankInBox .ranklist ul li.no3 {
   border: 1px solid #ffa64d;
   background-color: rgba(255, 166, 77, 0.1);
   height: 50px;
-  line-height: 50;
+  line-height: 50px;
 }
 
 .ranking .rankInBox .ranklist ul li.myRank {
