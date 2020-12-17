@@ -897,4 +897,16 @@
 .icon-moon:before {
   content: "\e91d";
 }
+
+.icon-new:before {
+  content: "\e9b2";
+}
+
+.icon-trophy:before {
+  content: "\e9b7";
+}
+
+.icon-live:before {
+  content: "\e9b6";
+}
 /*# sourceMappingURL=font.css.map */
