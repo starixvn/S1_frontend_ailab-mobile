@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { i18nContext, userInfoContext } from "Context";
+import { i18nContext } from "Context";
 import { Link } from "@reach/router";
 import ProfileDetail from "./profile.detail";
 import path from "../../path";
@@ -7,7 +7,6 @@ import ProfileWallet from "./profile.wallet";
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
-	const { userInfo } = useContext(userInfoContext);
 
 	return (
 		<>
@@ -18,11 +17,9 @@ const Panel = () => {
 			<ProfileWallet />
 			<ProfileDetail />
 			<div className="btn-group">
-				<button className="blue">
-					<Link to={`/${path.changePassword.root}`}>
-						{i18n.lbl_ChangePassword}
-					</Link>
-				</button>
+				<Link to={`/${path.changePassword.root}`}>
+					{i18n.lbl_ChangePassword}
+				</Link>
 			</div>
 		</>
 	);
