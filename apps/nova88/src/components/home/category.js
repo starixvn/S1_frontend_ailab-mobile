@@ -33,7 +33,7 @@ const Category = props => {
 				? HandleLogin()
 				: setRedirect({
 						redirect: true,
-						path: path
+						path: `/${path}`
 				  });
 		} else {
 			return GET_ENTER_PAGE({

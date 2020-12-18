@@ -71,6 +71,13 @@ export default ({ i18n, OnClickProduct, userInfo }) => {
 				className="nav">
 				{i18n.lbl_Affiliates.toUpperCase()}
 			</a>
+			<Link
+				to={`/${path.ranking.root}`}
+				className={`nav liveIcon${
+					useMatch(`/${path.ranking.root}`) !== null ? " active" : ""
+				}`}>
+				{i18n.lbl_Ranking.toUpperCase()}
+			</Link>
 		</div>
 	);
 };

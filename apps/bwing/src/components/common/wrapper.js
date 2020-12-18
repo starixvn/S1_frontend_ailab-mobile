@@ -14,6 +14,7 @@ import i18nConfig from "../../i18n/config";
 
 export const Wrapper = ({ children }) => {
 	const [i18n, seti18n] = useState(i18nConfig());
+	const [loading, setLoading] = useState(false);
 
 	const [userInfo, setUserInfo] = useState({
 		isLogin: null,
@@ -185,7 +186,10 @@ export const Wrapper = ({ children }) => {
 							<ct.navContext.Provider value={{ nav, setNav }}>
 								<ct.msgCountContext.Provider
 									value={{ msgCount, setMsgCount }}>
-									{children}
+									<ct.loadingContext.Provider
+										value={{ loading, setLoading }}>
+										{children}
+									</ct.loadingContext.Provider>
 								</ct.msgCountContext.Provider>
 							</ct.navContext.Provider>
 						</ct.popBoxContext.Provider>

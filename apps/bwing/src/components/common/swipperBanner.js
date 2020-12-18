@@ -37,6 +37,8 @@ export const ClickLink = (
 			window.location.href = `/${path.promotion.root}`;
 		} else if (href === "Home/Register") {
 			return;
+		} else if (href === "leaderBoard") {
+			window.location.href = `/${path.ranking.root}`;
 		} else {
 			window.open(
 				isOuterLink
