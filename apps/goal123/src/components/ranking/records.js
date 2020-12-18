@@ -1,0 +1,40 @@
+import React, { useContext } from "react";
+import RankList from "./rankList";
+import { useGetRanking, useHandleSelectDay } from "./hook";
+import { defDayBtns } from "./def";
+import { loadingContext } from "../common/context";
+import BtnBar from "../common/btnBar";
+
+const Records = ({ isOpen, i18n, userInfo: { isLogin, userName } }) => {
+	const { loading, setLoading } = useContext(loadingContext);
+	const { selectedDay, handleSelectDay } = useHandleSelectDay();
+	const { datas, lastUpdTime } = useGetRanking({
+		isOpen,
+		BeforeDays: selectedDay,
+		isLogin,
+		userName,
+		setLoading
+	});
+
+	return (
+		<div className={`rankContent${isOpen ? " open" : ""}`}>
+			<div className="title">{i18n.lbl_Records?.toUpperCase()}</div>
+			<BtnBar
+				i18n={i18n}
+				selected={selectedDay}
+				handleSelect={handleSelectDay}
+				mainKey="leader-board-records-dayBtnBar"
+				defBtns={defDayBtns}
+				btnListClass="dateSelector"
+			/>
+			<RankList
+				loading={loading}
+				i18n={i18n}
+				datas={datas}
+				lastUpdTime={lastUpdTime}
+			/>
+		</div>
+	);
+};
+
+export default Records;

@@ -73,6 +73,8 @@ import HowToDeposit from "./pages/howToDeposit";
 import HowToWithdraw from "./pages/howToWithdraw";
 import HowToPlay from "./pages/howToPlay";
 
+import Ranking from "./pages/ranking";
+
 const Index = () => {
 	let history = createHistory(window);
 	return (
@@ -168,6 +170,7 @@ const Index = () => {
 						<HowToDeposit path={path.howToDeposit.root} />
 						<HowToWithdraw path={path.howToWithdraw.root} />
 						<HowToPlay path={path.howToPlay.root} />
+						<Ranking path={path.ranking.root} />
 					</Router>
 				</Layout>
 			</LocationProvider>

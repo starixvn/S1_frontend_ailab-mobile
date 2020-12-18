@@ -259,7 +259,7 @@
 	"lbl_WithdrawalStatus7": "Từ chối",
 	"lbl_WithdrawalStatus8": "",
 	"lbl_WithdrawalTo": "Rút tiền về",
-	"lbl_YesterDay": "Hom qua",
+	"lbl_YesterDay": "Hôm qua",
 	"lbl_badminton": "Cầu lông",
 	"lbl_eSports": "Thể thao điện tử",
 	"lbl_eSportsBetting": "Cá cược eSports",
@@ -338,7 +338,19 @@
 	"lbl_ClaimAmountRange":"Khoảng tiền nạp",
 	"lbl_PleaseEnterClaimAmount":"Vui lòng nhập số tiền bạn muốn để nhận khuyến mãi",
 	"lbl_ViewAll":"Xem Thêm",
-	"lbl_Total":"Tổng Cộng"
+	"lbl_Total":"Tổng Cộng",
 
-
+	"lbl_EventTitle":"ĐUA TOP GIÁNG SINH TRÚNG TIỀN MAY MẮN",
+	"lbl_Rank":"Thứ Hạng",
+	"lbl_Awards":"Phần Thưởng",
+	"lbl_TotalValue":"Tổng Giải Thưởng",
+	"lbl_Ranking":"THỨ HẠNG",
+	"lbl_Event":"SỰ KIỆN",
+	"lbl_Records":"THÀNH TÍCH",
+	"lbl_MoreDetails":"XEM CHI TIẾT",
+	"lbl_Top":"TOP",
+	"lbl_Points":"Điểm Số",
+	"lbl_last_2_day":"2 ngày qua",
+	"lbl_last_3_day":"3 ngày qua",
+	"lbl_LastUpdTime":"Cập nhật vào lúc {{time}}  (Cập nhật mỗi 30 phút)"
 }

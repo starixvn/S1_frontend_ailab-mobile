@@ -418,6 +418,17 @@
 	"lbl_Detail":"Chi tiết",
 	"lbl_TurnoverTotal":"Tổng Doanh thu",
 	"lbl_WinlostAmountTotal":"Tổng Doanh số Thắng - Thua",
-	"lbl_Action":"Thao tác"
-
+	"lbl_Action":"Thao tác",
+	"lbl_Ranking":"THỨ HẠNG",
+	"lbl_NoOfWinners":"Người Chiến Thắng",
+	"lbl_Event":"SỰ KIỆN",
+	"lbl_Records":"THÀNH TÍCH",
+	"lbl_last_2_day":"2 ngày qua",
+	"lbl_last_3_day":"3 ngày qua",
+	"lbl_Points":"Điểm Số",
+	"lbl_LastUpdTime":"Cập nhật vào lúc {{time}}  (Cập nhật mỗi 30 phút)",
+	"lbl_Top":"TOP",
+	"lbl_MoreDetails":"XEM CHI TIẾT",
+	"lbl_No1_Reward":"GIẢI NHẤT",
+	"lbl_Prizes":"Giải thưởng"
 }

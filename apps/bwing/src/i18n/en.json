@@ -418,5 +418,17 @@
 	"lbl_Detail":"By Detail",
 	"lbl_TurnoverTotal":"Turnover Total",
 	"lbl_WinlostAmountTotal":"Winlost Amount Total",
-	"lbl_Action":"Action"
+	"lbl_Action":"Action",
+	"lbl_Ranking":"Ranking",
+	"lbl_NoOfWinners":"No. of Winners",
+	"lbl_Prizes":"Prizes",
+	"lbl_Event":"Event",
+	"lbl_Records":"Records",
+	"lbl_last_2_day":"Last 2 Day",
+	"lbl_last_3_day":"Last 3 Day",
+	"lbl_Points":"Points",
+	"lbl_LastUpdTime":"Last Update On {{time}} (Update Every 30 Minutes)",
+	"lbl_Top":"TOP",
+	"lbl_MoreDetails":"MORE DETAILS",
+	"lbl_No1_Reward":"NO.1 REWARD"
 }

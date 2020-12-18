@@ -15,18 +15,12 @@ export const RankImg = ({ Ranking }) => {
 	return img;
 };
 
-const RankItem = ({
-	i18n: { lbl_Top },
-	Ranking,
-	userName,
-	turnover,
-	isCurrentUser
-}) => {
+const RankItem = ({ Ranking, userName, turnover, isCurrentUser }) => {
 	return (
 		<ul className={isCurrentUser ? "userRank" : ""}>
 			<li>
 				<RankImg Ranking={Ranking} />
-				{`${lbl_Top} ${Ranking}`}
+				{Ranking}
 			</li>
 			<li>{userName}</li>
 			<li>{number_format(turnover)}</li>
@@ -34,7 +28,7 @@ const RankItem = ({
 	);
 };
 
-const RankItems = ({ i18n, datas, selected }) =>
+const RankItems = ({ datas, selected }) =>
 	datas?.map((data, idx) => {
 		const { userName, wTurnover, rank } = data;
 		return (
@@ -43,7 +37,6 @@ const RankItems = ({ i18n, datas, selected }) =>
 				Ranking={rank ?? idx + 1}
 				userName={userName}
 				turnover={wTurnover}
-				i18n={i18n}
 				isCurrentUser={Boolean(rank)}
 			/>
 		);
@@ -63,7 +56,7 @@ const RankList = ({ loading, i18n = {}, datas, selected, lastUpdTime }) => {
 						<li>{i18n.lbl_Username}</li>
 						<li>{i18n.lbl_Points}</li>
 					</ul>
-					<RankItems datas={datas} selected={selected} i18n={i18n} />
+					<RankItems datas={datas} selected={selected} />
 				</div>
 			)}
 			<div className="text">

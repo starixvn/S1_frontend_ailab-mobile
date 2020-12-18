@@ -128,5 +128,8 @@ export default {
 	},
 	howToPlay: {
 		root: "howToPlay"
+	},
+	ranking: {
+		root: "ranking"
 	}
 };

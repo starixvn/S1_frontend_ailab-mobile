@@ -29,7 +29,7 @@ const Category = props => {
 		if (path) {
 			setRedirect({
 				redirect: true,
-				path: path
+				path: `/${path}`
 			});
 		} else {
 			GET_ENTER_PAGE({
@@ -194,6 +194,7 @@ class CateGoryContent extends Component {
 					}
 					isOpen={`${_open ? " open" : ""}`}
 					translation={this.props.i18n[item.translateKey]}
+					iconClassName={item.iconClassName}
 				/>
 			);
 
@@ -222,7 +223,9 @@ class CateGoryContent extends Component {
 							: idx === item.items.length - 1
 							? this.RefItems[item.category].Last
 							: null;
-					let key = `product-tpId_${subItem.tpId}-gameId_${subItem.gameId}`;
+					let key = subItem.tpId
+						? `home-category-product-tpId_${subItem.tpId}-gameId_${subItem.gameId}`
+						: `home-category-${subItem.spanTextKey}`;
 					if (subItem.parameter) {
 						return (
 							<ProductLinkItem
@@ -291,53 +294,68 @@ class CateGoryContent extends Component {
 	}
 }
 
-const CategoryItem = props => {
+const CategoryItem = ({ iconClassName, isOpen, onClick, translation }) => {
 	return (
-		<button className={props.isOpen} onClick={props.onClick}>
-			<div>{props.translation?.toUpperCase()}</div>
+		<button
+			className={`${iconClassName}${isOpen ? " open" : ""}`}
+			onClick={onClick}>
+			<div>{translation?.toUpperCase()}</div>
 		</button>
 	);
 };
 
-const ProductItem = props => {
+const ProductItem = ({
+	href,
+	clickGame,
+	_ref,
+	isShow,
+	img,
+	icon,
+	spanText
+}) => {
 	return (
 		<a
-			href={props.href}
-			target={props.href ? "_blank" : null}
-			onClick={!props.href ? props.clickGame : null}
-			ref={props._ref}
-			className={props.isShow ? "open" : ""}>
-			<img src={props.img} alt={props.icon ?? ""} />
-			{props.spanText ? (
-				<span className={`icon icon-${props.icon}`}>
-					{props.spanText}
-				</span>
+			href={href}
+			target={href ? "_blank" : null}
+			onClick={!href ? clickGame : null}
+			ref={_ref}
+			className={isShow ? "open" : ""}>
+			<img src={img} alt={icon ?? ""} />
+			{spanText ? (
+				<span className={`icon icon-${icon}`}>{spanText}</span>
 			) : null}
 		</a>
 	);
 };
 
-const ProductLinkItem = props => {
+const ProductLinkItem = ({
+	to,
+	parameter,
+	_ref,
+	isShow,
+	img,
+	icon,
+	spanText,
+	className
+}) => {
 	return (
 		<Link
-			to={`/${props.to}`}
-			state={props.parameter}
-			ref={props._ref}
-			className={props.isShow ? "open" : ""}>
-			<img src={props.img} alt={props.icon ?? ""} />
-			{props.spanText ? (
-				<span className={`icon icon-${props.icon}`}>
-					{props.spanText}
-				</span>
+			to={`/${to}`}
+			state={parameter}
+			ref={_ref}
+			className={`${className}${isShow ? " open" : ""}`}>
+			<img src={img} alt={icon ?? ""} />
+			{spanText ? (
+				<span className={`icon icon-${icon}`}>{spanText}</span>
 			) : null}
 		</Link>
 	);
 };
 
-const ComingSoonItem = props => {
+const ComingSoonItem = ({ isShow, img }) => {
 	return (
-		<a className={props.isShow ? "open" : ""}>
-			<img src={props.img} alt="Coming Soon" />
+		<a className={isShow ? "open" : ""}>
+			<img src={img} alt="Coming Soon" />
 		</a>
 	);
 };

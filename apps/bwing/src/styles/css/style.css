@@ -6191,29 +6191,37 @@ span.important {
   overflow-y: auto;
 }
 
-.guided a {
-  color: #fff;
+.guided span {
   opacity: 0.5;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  cursor: pointer;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
-.guided a.icon::before {
+.guided span.guidedText:hover {
+  color: #58cdff;
+  opacity: 1;
+}
+
+.guided span:nth-child(even) {
+  margin: 0 5px;
+}
+
+.guided span:nth-child(even)::after {
   font-family: "icomoon";
   content: "\e954";
-  margin: 0 5px;
   font-size: 16px;
-  -webkit-transform: rotate(0deg);
-          transform: rotate(0deg);
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
   -webkit-transition: 0.7s;
   transition: 0.7s;
 }
 
-.guided a.active {
+.guided span:nth-last-child(1) {
+  padding-right: 10px;
+}
+
+.guided span.active {
   color: #58cdff;
   opacity: 1;
 }
@@ -6346,14 +6354,6 @@ span.important {
   width: 100%;
 }
 
-.ranking .rankInBox .icon-nodata {
-  width: 100%;
-  line-height: 400px;
-  text-align: center;
-  color: #ff5722;
-  font-size: 20px;
-}
-
 .ranking .rankInBox .ranklist {
   width: 100%;
   margin: 20px 0;
@@ -6401,21 +6401,21 @@ span.important {
   border: 1px solid #ffdd33;
   background-color: rgba(255, 216, 100, 0.1);
   height: 50px;
-  line-height: 50;
+  line-height: 50px;
 }
 
 .ranking .rankInBox .ranklist ul li.no2 {
   border: 1px solid #cbe5ff;
   background-color: rgba(203, 229, 255, 0.1);
   height: 50px;
-  line-height: 50;
+  line-height: 50px;
 }
 
 .ranking .rankInBox .ranklist ul li.no3 {
   border: 1px solid #ffa64d;
   background-color: rgba(255, 166, 77, 0.1);
   height: 50px;
-  line-height: 50;
+  line-height: 50px;
 }
 
 .ranking .rankInBox .ranklist ul li.myRank {
