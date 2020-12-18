@@ -112,6 +112,11 @@ const defPageInfo = {
 		titleKey: "lbl_HowToPlay",
 		className: "main",
 		hideLogo: true
+	},
+	financialLog: {
+		titleKey: "lbl_FinancialLog",
+		className: "main",
+		hideLogo: true
 	}
 };
 

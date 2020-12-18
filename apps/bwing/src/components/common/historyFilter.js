@@ -15,57 +15,31 @@ const quickPickList = [
 
 const Panel = props => {
 	const { i18n } = useContext(i18nContext);
-	const [quickPickSelectedIdx, setquickPickSelectedIdx] = useState(0);
-
+	const [selectedIdx, setSelectedIdx] = useState(0);
 	const today = moment().format("YYYY-MM-DD");
-	const [startDayState, setStartDayState] = useState(today);
-	const [endDayState, setEndDatyState] = useState(today);
+	const [dateRange, setDateRange] = useState({
+		startDate: today,
+		endDate: today
+	});
 
-	let startDate = "";
-	let endDate = "";
+	const dropdownHandler = idx => {
+		setSelectedIdx(idx);
 
-	const dropdownStateHandler = i => {
-		setquickPickSelectedIdx(i);
-
-		if (i === 0) {
-			startDate = moment().format("YYYY-MM-DD");
-			endDate = moment().format("YYYY-MM-DD");
-		} else if (i === 1) {
-			startDate = moment().subtract(1, "days").format("YYYY-MM-DD");
-			endDate = moment().subtract(1, "days").format("YYYY-MM-DD");
-		} else if (i === 2) {
-			startDate = moment().startOf("week").format("YYYY-MM-DD");
-			endDate = moment().format("YYYY-MM-DD");
-		} else if (i === 3) {
-			startDate = moment()
-				.subtract(1, "weeks")
-				.startOf("week")
-				.format("YYYY-MM-DD");
-			endDate = moment()
-				.subtract(1, "weeks")
-				.endOf("week")
-				.format("YYYY-MM-DD");
-		} else if (i === 4) {
-			startDate = moment().startOf("month").format("YYYY-MM-DD");
-			endDate = moment().format("YYYY-MM-DD");
-		} else {
-			startDate = moment()
-				.subtract(1, "months")
-				.startOf("month")
-				.format("YYYY-MM-DD");
-			endDate = moment()
-				.subtract(1, "months")
-				.endOf("month")
-				.format("YYYY-MM-DD");
+		if (selectedIdx !== idx) {
+			let result = selectDateRange({ idx: idx });
+			setDateRange({
+				startDate: result.startDate,
+				endDate: result.endDate
+			});
 		}
-
-		setStartDayState(startDate);
-		setEndDatyState(endDate);
 	};
 
 	const EditField = (col, e) => {
 		let val = e.target.value;
-		col === "startDay" ? setStartDayState(val) : setEndDatyState(val);
+		setDateRange(prev => ({
+			...prev,
+			[col]: val
+		}));
 	};
 
 	return (
@@ -76,8 +50,8 @@ const Panel = props => {
 					i18n={i18n}
 					mainKey="deposit-history-quickPick"
 					options={quickPickList}
-					selectedIdx={quickPickSelectedIdx}
-					onSelectItem={dropdownStateHandler}
+					selectedIdx={selectedIdx}
+					onSelectItem={dropdownHandler}
 				/>
 			</div>
 
@@ -89,8 +63,8 @@ const Panel = props => {
 					<Inputbox
 						className="inputBoxText"
 						inputType="date"
-						onChange={EditField.bind(null, "startDay")}
-						value={startDayState}
+						onChange={EditField.bind(null, "startDate")}
+						value={dateRange.startDate}
 						max={moment().format("YYYY-MM-DD")}
 						iconModuleName="icon-calendar"
 					/>
@@ -101,8 +75,8 @@ const Panel = props => {
 					<Inputbox
 						className="inputBoxText"
 						inputType="date"
-						onChange={EditField.bind(null, "endDay")}
-						value={endDayState}
+						onChange={EditField.bind(null, "endDate")}
+						value={dateRange.endDate}
 						max={moment().format("YYYY-MM-DD")}
 						iconModuleName="icon-calendar"
 					/>
@@ -114,8 +88,8 @@ const Panel = props => {
 					className="blue"
 					onClick={props.submitHandler.bind(
 						this,
-						startDayState,
-						endDayState,
+						dateRange.startDate,
+						dateRange.endDate,
 						false
 					)}>
 					{props.statement
@@ -128,3 +102,44 @@ const Panel = props => {
 };
 
 export default Panel;
+
+export const selectDateRange = ({ idx }) => {
+	let _displayKey = quickPickList[idx].displayKey;
+
+	let startDate = "";
+	let endDate = "";
+
+	if (_displayKey === "lbl_Today") {
+		startDate = moment().format("YYYY-MM-DD");
+		endDate = moment().format("YYYY-MM-DD");
+	} else if (_displayKey === "lbl_YesterDay") {
+		startDate = moment().subtract(1, "days").format("YYYY-MM-DD");
+		endDate = moment().subtract(1, "days").format("YYYY-MM-DD");
+	} else if (_displayKey === "lbl_ThisWeek") {
+		startDate = moment().startOf("week").format("YYYY-MM-DD");
+		endDate = moment().format("YYYY-MM-DD");
+	} else if (_displayKey === "lbl_LastWeek") {
+		startDate = moment()
+			.subtract(1, "weeks")
+			.startOf("week")
+			.format("YYYY-MM-DD");
+		endDate = moment()
+			.subtract(1, "weeks")
+			.endOf("week")
+			.format("YYYY-MM-DD");
+	} else if (_displayKey === "lbl_ThisMonth") {
+		startDate = moment().startOf("month").format("YYYY-MM-DD");
+		endDate = moment().format("YYYY-MM-DD");
+	} else {
+		startDate = moment()
+			.subtract(1, "months")
+			.startOf("month")
+			.format("YYYY-MM-DD");
+		endDate = moment()
+			.subtract(1, "months")
+			.endOf("month")
+			.format("YYYY-MM-DD");
+	}
+
+	return { startDate, endDate };
+};

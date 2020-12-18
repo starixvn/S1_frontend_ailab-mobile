@@ -41,6 +41,13 @@ import TransferHome from "./components/transfer/transfer";
 import TransferHistory from "./components/transfer/transfer.history";
 
 import Statement from "./pages/statement";
+import StatementList from "./components/statement/statement";
+import BetDateRange from "./components/statement/byDateRange";
+import BetOneDay from "./components/statement/byDay";
+import BetByCategory from "./components/statement/byCategory";
+import BetDetail from "./components/statement/detail";
+import FinancialLog from "./pages/financialLog";
+import FinancialLogHome from "./components/statement/financialLog";
 
 import Message from "./pages/message";
 import PersonalMsg from "./components/message/personalMsg";
@@ -131,7 +138,20 @@ const Index = () => {
 								path={path.transfer.sub.history.root}
 							/>
 						</Transfer>
-						<Statement path={path.statement.root} />
+						<Statement path={path.statement.root}>
+							<StatementList path="/" />
+							<BetDateRange path={"/:timePeriod"} />
+							<BetOneDay path={`/:timePeriod/:date`} />
+							<BetByCategory
+								path={`/:timePeriod/:date/:category`}
+							/>
+							<BetDetail
+								path={`/:timePeriod/:date/:category/:game`}
+							/>
+						</Statement>
+						<FinancialLog path={path.financialLog.root}>
+							<FinancialLogHome path="/" />
+						</FinancialLog>
 						<Message path={path.message.root}>
 							<PersonalMsg path={path.message.sub.root} />
 							<Announcement
