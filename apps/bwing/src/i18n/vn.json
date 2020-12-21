@@ -400,7 +400,6 @@
 	"lbl_UpdateSuccessWillProcess": "Cập nhật thành công. Chúng tôi sẽ xử lý yêu cầu của bạn nhanh nhất có thể!",
 	"lbl_RemindForRefNum": "Vui lòng nhập mã tham chiếu!",
 	"lbl_MaxBonusAmount":"Tiền Khuyến Mãi Tối Đa",
-
 	"lbl_Ranking":"THỨ HẠNG",
 	"lbl_NoOfWinners":"Người Chiến Thắng",
 	"lbl_Event":"SỰ KIỆN",
@@ -412,5 +411,7 @@
 	"lbl_Top":"TOP",
 	"lbl_MoreDetails":"XEM CHI TIẾT",
 	"lbl_No1_Reward":"GIẢI NHẤT",
-	"lbl_Prizes":"Giải thưởng"
+	"lbl_Prizes":"Giải thưởng",
+	"msg_PhoneExisted":"Số điện thoại này đã được sử dụng."
+
 }
