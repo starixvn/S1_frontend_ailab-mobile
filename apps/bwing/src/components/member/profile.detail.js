@@ -70,14 +70,19 @@ const Panel = () => {
 			checked = false;
 			message = i18n["msg_EnterPhoneNumber"];
 		} else {
-			const res = await api_account_ExistsPhoneNo({
-				AreaCode: _areaCode,
-				Phone: val
-			});
+			try {
+				const res = await api_account_ExistsPhoneNo({
+					AreaCode: _areaCode,
+					Phone: val
+				});
 
-			if (res.data.errorCode === 0 && res.data.data === true) {
+				if (res.data.errorCode === 0 && res.data.data === true) {
+					checked = false;
+					message = i18n["msg_PhoneExisted"];
+				}
+			} catch (error) {
 				checked = false;
-				message = i18n["msg_PhoneExisted"];
+				message = i18n.msg_ApiServerError;
 			}
 		}
 
@@ -120,10 +125,15 @@ const Panel = () => {
 		}
 
 		if (checked) {
-			const res = await api_ExistsEmail({ Email: val });
-			if (res.data.errorCode === 0 && res.data.data === true) {
+			try {
+				const res = await api_ExistsEmail({ Email: val });
+				if (res.data.errorCode === 0 && res.data.data === true) {
+					checked = false;
+					message = i18n["msg_MailExisted"];
+				}
+			} catch (error) {
 				checked = false;
-				message = i18n["msg_MailExisted"];
+				message = i18n.msg_ApiServerError;
 			}
 		}
 
