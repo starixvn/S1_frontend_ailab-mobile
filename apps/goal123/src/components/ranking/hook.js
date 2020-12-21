@@ -12,7 +12,7 @@ const SetUpdTime = () => {
 	return new Date(
 		now.getFullYear(),
 		now.getMonth(),
-		now.getDay(),
+		now.getDate(),
 		now.getHours(),
 		minutes,
 		0

@@ -5,11 +5,10 @@ import { defBtns, defDayBtns } from "./def";
 const SetUpdTime = () => {
 	const now = new Date();
 	const minutes = now.getMinutes() > 30 ? 30 : 0;
-
 	return new Date(
 		now.getFullYear(),
 		now.getMonth(),
-		now.getDay(),
+		now.getDate(),
 		now.getHours(),
 		minutes,
 		0

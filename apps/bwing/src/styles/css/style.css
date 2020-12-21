@@ -2382,16 +2382,20 @@ p.txt-blue12 {
       -ms-flex-align: center;
           align-items: center;
   margin-right: 1vw;
-  padding: 2vw;
   border-radius: 3px;
   border: 1px solid #7789bd;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   background: #010e33;
+  padding: 0 2vw;
 }
 
 .countryCode + .inputBox {
+  margin: 0;
+}
+
+.countryCode + .inputBoxText {
   margin: 0;
 }
 
@@ -3075,7 +3079,6 @@ button.clickBtn:before {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 2vw 0;
 }
 
 .inputdate:first-child {
