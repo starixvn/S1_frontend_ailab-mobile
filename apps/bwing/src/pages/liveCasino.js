@@ -1,5 +1,10 @@
 import React, { useContext } from "react";
-import { i18nContext, userInfoContext } from "../components/common/context";
+import {
+	i18nContext,
+	userInfoContext,
+	navContext,
+	defNavPanel
+} from "../components/common/context";
 import { defGameInfo } from "../datas/productList";
 import { GET_ENTER_PAGE } from "../service/enterPage";
 import LinksPanel from "../components/home/links";
@@ -13,6 +18,11 @@ import img7 from "../styles/img/liveGame/liveGame7.png";
 import img8 from "../styles/img/liveGame/liveGame8.png";
 
 const defGames = [
+	{
+		...defGameInfo.LIVEcasinoOne789,
+		displayKey: "lbl_liveCasino_789SeDie",
+		img: img1
+	},
 	{
 		...defGameInfo.LIVEcasinoWM,
 		displayKey: "WM",
@@ -58,6 +68,7 @@ const defGames = [
 export default () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
+	const { setNav } = useContext(navContext);
 
 	const ClickGame = (tpId, gameId, betType) => {
 		GET_ENTER_PAGE({
@@ -89,7 +100,7 @@ export default () => {
 						className={`icon icon-${
 							game.displayKey !== "eBET" ? game.displayKey : "EB"
 						}`}></span>
-					{game.displayKey}
+					{i18n[game.displayKey] ?? game.displayKey}
 				</p>
 			</button>
 		);
