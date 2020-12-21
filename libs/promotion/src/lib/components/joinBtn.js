@@ -42,7 +42,6 @@ export default ({
 						} else if (func_CallBack) {
 							func_CallBack();
 						}
-
 						handlePopBox({
 							content: <p>{i18n?.msg_Updatesuccessful}</p>,
 							btnBar: (
@@ -65,7 +64,6 @@ export default ({
 							);
 							clickClose();
 						};
-
 						handlePopBox({
 							content: <p>{i18n?.msg_OTPHint}</p>,
 							btnBar: (

@@ -1,5 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { defTabs } from "../common/def";
+
+export const useHandleTab = () => {
+	const [tab, setTab] = useState(defTabs.Processing.key);
+
+	const onClickTab = tabKey => {
+		setTab(tabKey);
+	};
+
+	return { tab, onClickTab };
+};
 
 export default ({ i18n, tab, onClickTab }) => {
 	let rows = Object.values(defTabs).map(t => (

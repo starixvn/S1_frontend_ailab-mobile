@@ -18,7 +18,8 @@ export const defPromotionType = {
 export const defFilterType = {
 	all: 0,
 	firstDeposit: 1,
-	freeBet: 3
+	freeBet: 3,
+	specialBonus: "specialBonus"
 };
 
 export const defPromotionNav = [
@@ -33,6 +34,11 @@ export const defPromotionNav = [
 	{
 		displayKey: "lbl_FreeBet",
 		value: defFilterType.freeBet
+	},
+	{
+		displayKey: "lbl_SpecialBonus",
+		value: defFilterType.specialBonus,
+		afterLogin: true
 	}
 ];
 

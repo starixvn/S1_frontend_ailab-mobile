@@ -8,12 +8,14 @@ import React, {
 import { defFilterType, defPromotionType, defTabs } from "./common/def";
 import { isExpiry, isClaimed, isNew } from "./common/common";
 import Card, { CardForStatic } from "./components/promotionCard";
-import Nav from "./components/nav";
-import Tab from "./components/tab";
+import Nav, { useHandleNav } from "./components/nav";
+import Tab, { useHandleTab } from "./components/tab";
 import { NoData } from "@ailab-mobile/common";
 import Wrapper from "./common/wrapper";
 import { configContext } from "./common/context";
 import PropTypes from "prop-types";
+import SpecialBonusCodeInputBox from "./components/specialBonusCodeInputBox";
+import { useHandleSpecialBonus } from "./hook/useHandleSpecialBonus";
 
 export const Promotion = ({ staticList, ...rest }) => {
 	return (
@@ -58,24 +60,35 @@ const useGetPromotions = ({ api, userInfo: { langId } }) => {
 	return { promotion, getPromotionListV2 };
 };
 
-const useHandleTab = () => {
-	const [tab, setTab] = useState(defTabs.Processing.key);
-
-	const onClickTab = tabKey => {
-		setTab(tabKey);
-	};
-
-	return { tab, onClickTab };
-};
-
-const useHandleNav = () => {
-	const [filterType, setFilterType] = useState(defFilterType.all);
-
-	const onClickFilter = value => {
-		setFilterType(value);
-	};
-
-	return { filterType, onClickFilter };
+const getPromotionCards = ({
+	datas,
+	tab,
+	userInfo,
+	i18n,
+	uiSetting,
+	ruleCols,
+	func_CallBack
+}) => {
+	return datas.map(p => {
+		let imgSRC = p.banner;
+		let _isClaimed = isClaimed(p);
+		let _isNew = _isClaimed ? false : isNew(p);
+		let _isExpiry = tab === defTabs.Expired.key;
+		return (
+			<Card
+				key={`promotion-${userInfo.langId}-${p.bonusCode}`}
+				p={p}
+				_isExpiry={_isExpiry}
+				_isClaimed={_isClaimed}
+				_isNew={_isNew}
+				imgSRC={imgSRC}
+				func_CallBack={func_CallBack}
+				i18n={i18n}
+				uiSetting={uiSetting}
+				ruleCols={ruleCols}
+			/>
+		);
+	});
 };
 
 const PromotionContent = ({ staticList }) => {
@@ -89,8 +102,27 @@ const PromotionContent = ({ staticList }) => {
 		userInfo
 	});
 
-	let rows = promotion
-		?.filter(p => {
+	const {
+		onChangeSpecialCode,
+		specialCode,
+		onSubmitSpecialCode,
+		specialBonusDatas,
+		GetSpecialBonusList
+	} = useHandleSpecialBonus({ api, langId: userInfo.langId, filterType });
+
+	let rows = [];
+	if (filterType === defFilterType.specialBonus) {
+		rows = getPromotionCards({
+			datas: specialBonusDatas,
+			tab,
+			userInfo,
+			i18n,
+			uiSetting,
+			ruleCols,
+			func_CallBack: GetSpecialBonusList
+		});
+	} else {
+		const datas = promotion?.filter(p => {
 			if (tab === defTabs.Processing.key) {
 				if (filterType === defFilterType.all) {
 					return !isExpiry({
@@ -101,40 +133,39 @@ const PromotionContent = ({ staticList }) => {
 					return (
 						(p.promotionType === filterType ||
 							p.promotionType === defPromotionType.walletBonus) &&
-						!isExpiry({ ...p, isLogin: userInfo.isLogin })
+						!isExpiry({
+							...p,
+							isLogin: userInfo.isLogin
+						})
 					);
 				} else {
 					return (
 						p.promotionType === filterType &&
-						!isExpiry({ ...p, isLogin: userInfo.isLogin })
+						!isExpiry({
+							...p,
+							isLogin: userInfo.isLogin
+						})
 					);
 				}
 			} else {
-				return isExpiry({ ...p, isLogin: userInfo.isLogin });
+				return isExpiry({
+					...p,
+					isLogin: userInfo.isLogin
+				});
 			}
-		})
-		.map(p => {
-			let imgSRC = p.banner;
-			let _isClaimed = isClaimed(p);
-			let _isNew = _isClaimed ? false : isNew(p);
-			let _isExpiry = tab === defTabs.Expired.key;
-			return (
-				<Card
-					key={`promotion-${userInfo.langId}-${p.bonusCode}`}
-					p={p}
-					_isExpiry={_isExpiry}
-					_isClaimed={_isClaimed}
-					_isNew={_isNew}
-					imgSRC={imgSRC}
-					getPromotionListV2={getPromotionListV2}
-					i18n={i18n}
-					uiSetting={uiSetting}
-					ruleCols={ruleCols}
-				/>
-			);
 		});
 
-	let staticRows =
+		getPromotionCards({
+			datas,
+			tab,
+			userInfo,
+			i18n,
+			uiSetting,
+			ruleCols,
+			func_CallBack: getPromotionListV2
+		});
+	}
+	const staticRows =
 		tab === defTabs.Processing.key && filterType === defFilterType.all
 			? staticList?.map(p => {
 					return (
@@ -153,6 +184,7 @@ const PromotionContent = ({ staticList }) => {
 		!rows?.length && !staticRows ? (
 			<NoData displayText={i18n.msg_NoData} />
 		) : null;
+
 	return (
 		<>
 			<Tab i18n={i18n} tab={tab} onClickTab={onClickTab} />
@@ -161,6 +193,15 @@ const PromotionContent = ({ staticList }) => {
 				tab={tab}
 				filterType={filterType}
 				onClickFilter={onClickFilter}
+				isLogin={userInfo.isLogin}
+			/>
+			<SpecialBonusCodeInputBox
+				filterType={filterType}
+				i18n={i18n}
+				onChange={onChangeSpecialCode}
+				value={specialCode}
+				onSubmit={onSubmitSpecialCode}
+				isLogin={userInfo.isLogin}
 			/>
 			{rows}
 			{staticRows}

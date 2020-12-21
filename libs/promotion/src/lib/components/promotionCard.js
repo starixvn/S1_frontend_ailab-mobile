@@ -9,7 +9,7 @@ export default ({
 	_isClaimed,
 	_isNew,
 	imgSRC,
-	getPromotionListV2,
+	func_CallBack,
 	i18n = {},
 	uiSetting,
 	ruleCols
@@ -34,7 +34,7 @@ export default ({
 			/>
 			<JoinBtn
 				promotionInfo={p}
-				func_CallBack={getPromotionListV2}
+				func_CallBack={func_CallBack}
 				uiSetting={uiSetting}
 			/>
 		</div>

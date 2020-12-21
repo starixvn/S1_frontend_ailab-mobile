@@ -2752,6 +2752,24 @@ button.clickBtn:before {
   padding: 2vw 0 2vw 8vw;
 }
 
+.specialBonus {
+  margin-top: -2vw;
+}
+
+.specialBonus input {
+  width: calc(100% - 19vw - 1px);
+  padding: 2vw;
+}
+
+.specialBonus input + .btn-group {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+}
+
 .slotFunction {
   position: fixed;
   bottom: 0;
