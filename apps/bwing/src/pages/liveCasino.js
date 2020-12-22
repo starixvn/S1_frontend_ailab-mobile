@@ -8,6 +8,7 @@ import {
 import { defGameInfo } from "../datas/productList";
 import { GET_ENTER_PAGE } from "../service/enterPage";
 import LinksPanel from "../components/home/links";
+import liveCasino_One789 from "../styles/img/liveGame/liveGame9.png";
 import img1 from "../styles/img/liveGame/liveGame1.png";
 import img2 from "../styles/img/liveGame/liveGame2.png";
 import img3 from "../styles/img/liveGame/liveGame3.png";
@@ -21,45 +22,54 @@ const defGames = [
 	{
 		...defGameInfo.LIVEcasinoOne789,
 		displayKey: "lbl_liveCasino_789SeDie",
-		img: img1
+		icon: "icon icon-one789",
+		img: liveCasino_One789
 	},
 	{
 		...defGameInfo.LIVEcasinoWM,
+		icon: "icon icon-WM",
 		displayKey: "WM",
 		img: img1
 	},
 	{
 		...defGameInfo.LIVEcasinoAG,
+		icon: "icon icon-AG",
 		displayKey: "AG",
 		img: img2
 	},
 	{
 		...defGameInfo.LIVEcasinoPP,
+		icon: "icon icon-PP",
 		displayKey: "PP",
 		img: img3
 	},
 	{
 		...defGameInfo.LIVEcasinoAE,
+		icon: "icon icon-AE",
 		displayKey: "AE",
 		img: img4
 	},
 	{
 		...defGameInfo.LIVEcasinoDG,
+		icon: "icon icon-DG",
 		displayKey: "DG",
 		img: img5
 	},
 	{
 		...defGameInfo.LIVEcasinoAB,
+		icon: "icon icon-AB",
 		displayKey: "AB",
 		img: img6
 	},
 	{
 		...defGameInfo.LIVEcasinoEB,
+		icon: "icon icon-EB",
 		displayKey: "eBET",
 		img: img7
 	},
 	{
 		...defGameInfo.LIVEcasinoSA,
+		icon: "icon icon-SA",
 		displayKey: "SA",
 		img: img8
 	}
@@ -96,10 +106,7 @@ export default () => {
 				)}>
 				<img src={game.img} alt={game.displayKey} />
 				<p>
-					<span
-						className={`icon icon-${
-							game.displayKey !== "eBET" ? game.displayKey : "EB"
-						}`}></span>
+					<span className={`icon icon-${game.icon}`}></span>
 					{i18n[game.displayKey] ?? game.displayKey}
 				</p>
 			</button>

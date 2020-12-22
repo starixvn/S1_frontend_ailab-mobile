@@ -11,17 +11,19 @@ import LinksPanel from "../components/home/links";
 import sabaClubImg from "../styles/img/sabaclub.png";
 import KenoImg from "../styles/img/keno.png";
 import LotteryImg from "../styles/img/Lottery.png";
+import One789Lottery from "../styles/img/one789.png";
+import One789LotteryTra from "../styles/img/lotteryTra.png";
 
 const defGames = [
 	{
 		...defGameInfo.One789_lottery,
 		displayKey: "lbl_TraditionalLottery",
-		img: LotteryImg
+		img: One789LotteryTra
 	},
 	{
 		...defGameInfo.One789_lottery_789,
 		displayKey: "lbl_789Lottery",
-		img: KenoImg
+		img: One789Lottery
 	},
 	{
 		...defGameInfo.sabaClub,
