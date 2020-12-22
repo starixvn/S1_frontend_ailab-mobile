@@ -53,10 +53,6 @@
   font-size: 36px !important;
 }
 
-.icon-other:before {
-  content: "\e9e1";
-}
-
 .icon-WM:before {
   content: "\e9df";
 }
@@ -1171,5 +1167,9 @@
 
 .icon-newicon:before {
   content: "\e9e5";
+}
+
+.icon-one789:before {
+  content: "\e9e6";
 }
 /*# sourceMappingURL=font.css.map */

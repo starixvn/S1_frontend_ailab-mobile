@@ -412,6 +412,9 @@
 	"lbl_MoreDetails":"XEM CHI TIẾT",
 	"lbl_No1_Reward":"GIẢI NHẤT",
 	"lbl_Prizes":"Giải thưởng",
-	"msg_PhoneExisted":"Số điện thoại này đã được sử dụng."
+	"msg_PhoneExisted":"Số điện thoại này đã được sử dụng.",
 
+	"lbl_TraditionalLottery":"Xổ Số Truyền thống",
+	"lbl_789Lottery":"Xổ số tự quay 789",
+	"lbl_liveCasino_789SeDie":"Xóc Đĩa 789"
 }
