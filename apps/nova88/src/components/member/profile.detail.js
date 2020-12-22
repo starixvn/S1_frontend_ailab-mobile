@@ -170,9 +170,7 @@ const Panel = () => {
 		if (userInfo.phoneNo) {
 			phoneCheck = true;
 		} else {
-			await checkPhone(userValue.phoneNo).then(res => {
-				phoneCheck = res;
-			});
+			phoneCheck = await checkPhone(userValue.phoneNo);
 		}
 
 		let checked = accountNameCheck && birthCheck && phoneCheck;
