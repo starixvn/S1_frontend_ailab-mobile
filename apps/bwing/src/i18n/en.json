@@ -430,5 +430,6 @@
 	"lbl_LastUpdTime":"Last Update On {{time}} (Update Every 30 Minutes)",
 	"lbl_Top":"TOP",
 	"lbl_MoreDetails":"MORE DETAILS",
-	"lbl_No1_Reward":"NO.1 REWARD"
+	"lbl_No1_Reward":"NO.1 REWARD",
+	"msg_PhoneExisted":"Phone number already exists."
 }
