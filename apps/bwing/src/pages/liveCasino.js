@@ -23,7 +23,8 @@ const defGames = [
 		...defGameInfo.LIVEcasinoOne789,
 		displayKey: "lbl_liveCasino_789SeDie",
 		icon: "icon icon-one789",
-		img: liveCasino_One789
+		img: liveCasino_One789,
+		isNew: true
 	},
 	{
 		...defGameInfo.LIVEcasinoWM,
@@ -96,7 +97,7 @@ export default () => {
 	let arr = defGames.map(game => {
 		return (
 			<button
-				className="gameInBox"
+				className={`gameInBox${game.isNew ? " newicon" : ""}`}
 				key={`liveCasinoPanel-${game.displayKey}`}
 				onClick={ClickGame.bind(
 					this,
