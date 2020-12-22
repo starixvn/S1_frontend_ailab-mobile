@@ -4,9 +4,13 @@ import Inputbox from "../common/inputbox";
 import Dropdown from "../common/dropdown.icon";
 import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import areaCode from "../../datas/areaCode";
-import moment from "moment";
 import path from "../../path";
-import { monthOptions, initStatus, initValue } from "./profile.def";
+import {
+	monthOptions,
+	initWarning,
+	initValue,
+	infoList
+} from "./profile.detail.def";
 import { defPopBoxType } from "../common/popbox";
 import { redirectToPrev } from "./profile.redirect";
 import api from "../../service/api";
@@ -16,7 +20,7 @@ const Panel = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const [userValue, setUserValue] = useState(initValue);
-	const [status, setStatus] = useState(initStatus);
+	const [warning, setWarning] = useState(initWarning);
 	const [yearSelectedIdx, setYearSelectedIdx] = useState();
 	const [monthSelectedIdx, setMonthSelectedIdx] = useState();
 	const [daySelectedIdx, setDaySelectedIdx] = useState();
@@ -40,58 +44,7 @@ const Panel = () => {
 	}, [redirectPath]);
 
 	let _areaCode = country ? areaCode[country].AreaCode : "";
-	let infoList = [
-		{
-			infoTitle: "accountName",
-			colTitle: i18n["lbl_RealName"],
-			content: userInfo.accountName
-		},
-		{
-			infoTitle: "birth",
-			colTitle: i18n["lbl_Birthday"],
-			content: `${userInfo.birth_m}/${userInfo.birth_d}/${userInfo.birth_y}`,
-			birth_d: userInfo.birth_d,
-			birth_m: userInfo.birth_m,
-			birth_y: userInfo.birth_y
-		},
-		{
-			infoTitle: "phoneNo",
-			colTitle: i18n["lbl_Phone"],
-			content: `(${_areaCode})${userInfo.phoneNo}`,
-			isVerified: userInfo.phoneVerified
-		},
-		{
-			infoTitle: "userName",
-			colTitle: i18n["lbl_Username"],
-			content: userInfo.userName
-		},
-		{
-			infoTitle:
-				userInfo.country && userInfo.country !== "null"
-					? "country"
-					: "perCountry",
-			colTitle: i18n["lbl_Country"],
-			content:
-				userInfo.country && userInfo.country !== "null"
-					? i18n[`lbl_Country${userInfo.country}`]
-					: i18n[`lbl_Country${userInfo.perCountry}`]
-		},
-		{
-			infoTitle: "email",
-			colTitle: i18n["lbl_Email"],
-			content: userInfo.email
-		},
-		{
-			infoTitle: "regTime",
-			colTitle: i18n["lbl_RegisterTime"],
-			content: date_format(userInfo.regTime)
-		},
-		{
-			infoTitle: "lastLogin",
-			colTitle: i18n["lbl_LastLogin"],
-			content: date_format(userInfo.lastLogin)
-		}
-	];
+	let _infoList = infoList({ i18n, userInfo, _areaCode });
 
 	let yearOptions = [];
 	let dateOptions = [];
@@ -128,7 +81,7 @@ const Panel = () => {
 		let checked = !!val;
 		let message = !val ? i18n["msg_EnterRealName"] : "";
 
-		setStatus(prevState => ({
+		setWarning(prevState => ({
 			...prevState,
 			accountName: {
 				checked: checked,
@@ -139,7 +92,7 @@ const Panel = () => {
 		return checked;
 	};
 
-	const checkPhone = val => {
+	const checkPhone = async val => {
 		let checked = true;
 		let tip = "";
 
@@ -147,48 +100,23 @@ const Panel = () => {
 			checked = false;
 			tip = i18n.lbl_PhoneRequired;
 		} else {
-			api.site
-				.ExistsPhoneNo({
+			try {
+				const res = await api.site.ExistsPhoneNo({
 					AreaCode: _areaCode,
 					Phone: val
-				})
-				.then(
-					res => {
-						if (isMountedRef.current) {
-							if (res.data.errorCode === 0) {
-								if (res.data.data) {
-									setStatus(prev => ({
-										...prev,
-										phoneNo: {
-											checked: false,
-											msg: i18n.msg_PhoneExisted
-										}
-									}));
-								} else {
-									setStatus(prev => ({
-										...prev,
-										phoneNo: {
-											checked: true,
-											msg: ""
-										}
-									}));
-								}
-							}
-						}
-					},
-					err => {
-						if (isMountedRef.current) {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: i18n.msg_ApiServerError
-							});
-						}
-					}
-				);
+				});
+
+				if (res.data.errorCode === 0 && res.data.data === true) {
+					checked = false;
+					tip = i18n.msg_PhoneExisted;
+				}
+			} catch (error) {
+				checked = false;
+				tip = i18n.msg_ApiServerError;
+			}
 		}
 
-		setStatus(prev => ({
+		setWarning(prev => ({
 			...prev,
 			phoneNo: {
 				checked: checked,
@@ -208,7 +136,7 @@ const Panel = () => {
 			message = i18n["msg_SelectBirthDay"];
 		}
 
-		setStatus(prevState => ({
+		setWarning(prevState => ({
 			...prevState,
 			birth: {
 				checked: checked,
@@ -227,7 +155,7 @@ const Panel = () => {
 		}));
 	};
 
-	const clickSubmit = () => {
+	const checkAll = async () => {
 		let year = yearOptions[yearSelectedIdx]?.value;
 		let month = monthOptions[monthSelectedIdx]?.value;
 		let day = daySelectedIdx + 1;
@@ -238,16 +166,31 @@ const Panel = () => {
 
 		let birthCheck = userInfo.birth_d ? true : checkBirth(day, month, year);
 
-		let phoneCheck = userInfo.phoneNo
-			? true
-			: checkPhone(userValue.phoneNo);
+		let phoneCheck = false;
+		if (userInfo.phoneNo) {
+			phoneCheck = true;
+		} else {
+			await checkPhone(userValue.phoneNo).then(res => {
+				phoneCheck = res;
+			});
+		}
 
-		if (accountNameCheck && birthCheck && phoneCheck) {
+		let checked = accountNameCheck && birthCheck && phoneCheck;
+
+		if (checked) {
 			setUserValue(prevState => ({
 				...prevState,
 				Birth: `${year} / ${month} / ${day}`
 			}));
+		}
 
+		return checked;
+	};
+
+	const clickSubmit = async () => {
+		let checked = await checkAll();
+
+		if (checked) {
 			const closePopbox = ({ _redirectPath }) => {
 				setPopBox({ isOpen: false });
 				if (_redirectPath) {
@@ -273,12 +216,17 @@ const Panel = () => {
 					)
 				});
 			};
+
 			const setProfile = () => {
 				let profileData = {
 					AccountName: userInfo.accountName ?? userValue.accountName,
-					Birth_d: userInfo.birth_d ?? `${day}`,
-					Birth_m: userInfo.birth_m ?? `${month}`,
-					Birth_y: userInfo.birth_y ?? `${year}`,
+					Birth_d: userInfo.birth_d ?? `${daySelectedIdx + 1}`,
+					Birth_m:
+						userInfo.birth_m ??
+						`${monthOptions[monthSelectedIdx]?.value}`,
+					Birth_y:
+						userInfo.birth_y ??
+						`${yearOptions[yearSelectedIdx]?.value}`,
 					CountryCode: country,
 					AreaCode: userInfo.areaCode ?? _areaCode,
 					PhoneNo: userInfo.phoneNo ?? userValue.phoneNo
@@ -327,7 +275,7 @@ const Panel = () => {
 
 								redirectToPrev(i18n, setPopBox, closePopbox);
 							} else if (errorCode === 21) {
-								setStatus(prevState => ({
+								setWarning(prevState => ({
 									...prevState,
 									phoneNo: { checked: false, msg: message }
 								}));
@@ -388,7 +336,7 @@ const Panel = () => {
 		});
 	};
 
-	let arr = infoList
+	let arr = _infoList
 		.filter(item => {
 			return (
 				userInfo[item.infoTitle] ||
@@ -422,8 +370,8 @@ const Panel = () => {
 					placeholder={i18n["lbl_RealName"]}
 					onBlur={e => checkAccountName(e.target.value)}
 					onChange={EditField.bind(null, "accountName")}
-					checked={status.accountName.checked}
-					tip={status.accountName.msg}
+					checked={warning.accountName.checked}
+					tip={warning.accountName.msg}
 					value={userValue.accountName}
 				/>
 			) : null}
@@ -438,8 +386,8 @@ const Panel = () => {
 					yearSelectedIdx={yearSelectedIdx}
 					monthSelectedIdx={monthSelectedIdx}
 					daySelectedIdx={daySelectedIdx}
-					checked={status.birth.checked}
-					tip={status.birth.msg}
+					checked={warning.birth.checked}
+					tip={warning.birth.msg}
 					dropdownStateHandler={dropdownStateHandler}></Birthday>
 			) : null}
 
@@ -452,14 +400,14 @@ const Panel = () => {
 						placeholder={i18n["lbl_Phone"]}
 						onBlur={e => checkPhone(e.target.value)}
 						onChange={EditField.bind(null, "phoneNo")}
-						checked={status.phoneNo.checked}
+						checked={warning.phoneNo.checked}
 						value={userValue.phoneNo}
 					/>
 					<div
 						className={`errortip ${
-							status.phoneNo.msg ? "open" : ""
+							warning.phoneNo.msg ? "open" : ""
 						}`}>
-						{status.phoneNo.msg}
+						{warning.phoneNo.msg}
 					</div>
 				</div>
 			) : null}
@@ -531,12 +479,10 @@ const ColumnItem = props => {
 			</span>
 			<span>{props.content}</span>
 			{props.infoTitle === "phoneNo" && !props.isVerified ? (
-				<>
-					<button className="otpBtn" onClick={props.clickOtp}>
-						<span className="icon icon-mobile"></span>
-						<span>{props.i18n.lbl_MobileVerify}</span>
-					</button>
-				</>
+				<button className="otpBtn" onClick={props.clickOtp}>
+					<span className="icon icon-mobile"></span>
+					<span>{props.i18n.lbl_MobileVerify}</span>
+				</button>
 			) : null}
 		</li>
 	);
@@ -549,10 +495,6 @@ const GetYear = () => {
 const GetDayOfMonth = (year, month) => {
 	let d = new Date(year, month, 0);
 	return d.getDate();
-};
-
-const date_format = v => {
-	return moment(new Date(v)).format("lll");
 };
 
 export default Panel;
