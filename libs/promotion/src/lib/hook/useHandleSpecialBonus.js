@@ -24,7 +24,6 @@ export const useHandleSpecialBonus = ({ api, langId, filterType }) => {
 			});
 
 			if (res.data.errorCode === 0) {
-				GetSpecialBonusList(specialCode);
 				setSpecialCode("");
 			} else {
 				handleErrorPopBox({
@@ -32,6 +31,7 @@ export const useHandleSpecialBonus = ({ api, langId, filterType }) => {
 					errorCode: res.data.errorCode
 				});
 			}
+			GetSpecialBonusList(specialCode);
 		} catch (error) {
 			setSpecialCode("");
 		}
