@@ -56,3 +56,6 @@ export const api_account_GetCustSpecificBonus = ({
 		TpId,
 		PromoCategoryId
 	});
+
+export const api_account_ExistsPhoneNo = ({ AreaCode, Phone }) =>
+	accountRequest.post(`/ExistsPhoneNo`, { AreaCode, PhoneNo: Phone });

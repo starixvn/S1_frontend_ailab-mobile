@@ -97,9 +97,12 @@ const Footer = () => {
 					}}
 				</Match>
 
-				<Match path={path.statement.root}>
+				<Match path={`${path.statement.root}/*`}>
 					{props => {
-						let isMatch = props.match !== null;
+						let isMatch =
+							props.match !== null ||
+							props.location.pathname ===
+								`/${path.financialLog.root}`;
 						return (
 							<Link
 								to={path.statement.root}

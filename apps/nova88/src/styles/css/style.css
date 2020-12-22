@@ -3981,11 +3981,15 @@ span.important {
 
 .progressBarModule {
   width: calc(100% - 4vw);
-  margin-top: 2vw;
   background: rgba(0, 0, 0, 0.3);
+  margin-top: 2vw;
   padding: 2vw;
   border-radius: 5px;
   color: #fff;
+}
+
+.progressBarModule ~ .progressBarModule {
+  margin-top: 0;
 }
 
 .progressBarModule .bounsName {
@@ -4023,7 +4027,7 @@ span.important {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
-  min-width: 11vw;
+  min-width: 12vw;
 }
 
 .progressBarModule .turnover {
@@ -4521,7 +4525,8 @@ span.important {
 
 .ranking .rankList img {
   width: 10vw;
-  margin-right: 1vw;
+  min-width: 40px;
+  margin: 0 1vw;
 }
 
 .ranking .rankList ul {
@@ -4545,6 +4550,13 @@ span.important {
           align-items: center;
   font-size: 4vw;
   height: 10vw;
+}
+
+.ranking .rankList ul li:first-child {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding-left: 2vw;
 }
 
 .ranking .rankList ul li:last-child {

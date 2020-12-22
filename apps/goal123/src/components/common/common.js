@@ -8,21 +8,23 @@ export const getUrlParameter = name => {
 };
 
 export const number_format = (n, IsConvertRequired = false) => {
-	if (!isNaN(n) && IsConvertRequired) {
+	if (!isNaN(n)) {
 		n /= 1000;
-	} else if (!isNaN(n) && !IsConvertRequired) {
-		n /= 1000;
-		return n;
 	}
 
 	n += "";
-	var arr = n.split(".");
-	var re = /(\d{1,3})(?=(\d{3})+$)/g;
-	return (
-		arr[0].replace(re, "$1,") +
-		(arr.length == 2 ? "." + arr[1] : "") +
-		(IsConvertRequired ? " ('000)" : "")
-	);
+	let arr = n.split(".");
+	let re = /(\d{1,3})(?=(\d{3})+$)/g;
+
+	if (IsConvertRequired) {
+		return (
+			arr[0].replace(re, "$1,") +
+			(arr.length === 2 ? "." + arr[1] : "") +
+			(IsConvertRequired ? " ('000)" : "")
+		);
+	} else {
+		return arr[0].replace(re, "$1,");
+	}
 };
 
 const _isConvertList = {

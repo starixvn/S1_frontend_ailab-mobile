@@ -119,5 +119,8 @@ export default {
 	},
 	whoami: {
 		root: "whoami"
+	},
+	ranking: {
+		root: "ranking"
 	}
 };

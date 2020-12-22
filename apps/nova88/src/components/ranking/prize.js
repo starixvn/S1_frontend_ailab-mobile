@@ -31,7 +31,7 @@ const PrizeList = ({ userInfo, category, i18n }) => {
 			<ul key={`prize-${category}-${currencyId}-${langId}-${rank}`}>
 				<li>
 					<RankImg Ranking={rank} />
-					{`${i18n.lbl_Top} ${rank}`}
+					{rank}
 				</li>
 				<li>{prize}</li>
 			</ul>

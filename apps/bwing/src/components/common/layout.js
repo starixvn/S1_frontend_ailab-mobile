@@ -2,9 +2,15 @@ import React, { useContext, Component } from "react";
 import PropTypes from "prop-types";
 import Footer from "./footer";
 import Header from "../header/header";
-import { navContext, i18nContext, defNavPanel } from "../common/context";
+import {
+	navContext,
+	i18nContext,
+	defNavPanel,
+	loadingContext
+} from "../common/context";
 import { useMatch, useLocation } from "@reach/router";
 import path from "../../path";
+import Loading from "./loading";
 
 const defPageInfo = {
 	default: {
@@ -112,6 +118,11 @@ const defPageInfo = {
 		titleKey: "lbl_HowToPlay",
 		className: "main",
 		hideLogo: true
+	},
+	ranking: {
+		titleKey: "lbl_Ranking",
+		className: "main ranking",
+		hideLogo: true
 	}
 };
 
@@ -137,6 +148,7 @@ const GetPageInfo = locationPath => {
 const Layout = ({ children }) => {
 	const { i18n } = useContext(i18nContext);
 	const { nav } = useContext(navContext);
+	const { loading } = useContext(loadingContext);
 	const location = useLocation();
 	let pageInfo = GetPageInfo(location.pathname);
 
@@ -156,6 +168,7 @@ const Layout = ({ children }) => {
 			/>
 			<main style={position} className={pageInfo.className ?? ""}>
 				{children}
+				{loading ? <Loading /> : null}
 			</main>
 			<Footer />
 		</>

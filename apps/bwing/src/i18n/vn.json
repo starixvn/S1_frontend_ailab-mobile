@@ -399,5 +399,19 @@
 	"lbl_statement_submit": "Xem sao kê",
 	"lbl_UpdateSuccessWillProcess": "Cập nhật thành công. Chúng tôi sẽ xử lý yêu cầu của bạn nhanh nhất có thể!",
 	"lbl_RemindForRefNum": "Vui lòng nhập mã tham chiếu!",
-	"lbl_MaxBonusAmount":"Tiền Khuyến Mãi Tối Đa"
+	"lbl_MaxBonusAmount":"Tiền Khuyến Mãi Tối Đa",
+	"lbl_Ranking":"THỨ HẠNG",
+	"lbl_NoOfWinners":"Người Chiến Thắng",
+	"lbl_Event":"SỰ KIỆN",
+	"lbl_Records":"THÀNH TÍCH",
+	"lbl_last_2_day":"2 ngày qua",
+	"lbl_last_3_day":"3 ngày qua",
+	"lbl_Points":"Điểm Số",
+	"lbl_LastUpdTime":"Cập nhật vào lúc {{time}}  (Cập nhật mỗi 30 phút)",
+	"lbl_Top":"TOP",
+	"lbl_MoreDetails":"XEM CHI TIẾT",
+	"lbl_No1_Reward":"GIẢI NHẤT",
+	"lbl_Prizes":"Giải thưởng",
+	"msg_PhoneExisted":"Số điện thoại này đã được sử dụng."
+
 }
