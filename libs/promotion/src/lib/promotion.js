@@ -1,10 +1,4 @@
-import React, {
-	useEffect,
-	useState,
-	useCallback,
-	useRef,
-	useContext
-} from "react";
+import React, { useContext } from "react";
 import { defFilterType, defPromotionType, defTabs } from "./common/def";
 import { isExpiry, isClaimed, isNew } from "./common/common";
 import Card, { CardForStatic } from "./components/promotionCard";
@@ -16,6 +10,7 @@ import { configContext } from "./common/context";
 import PropTypes from "prop-types";
 import SpecialBonusCodeInputBox from "./components/specialBonusCodeInputBox";
 import { useHandleSpecialBonus } from "./hook/useHandleSpecialBonus";
+import { useGetPromotions } from "./hook/useGetPromotions";
 
 export const Promotion = ({ staticList, ...rest }) => {
 	return (
@@ -32,35 +27,7 @@ Promotion.propTypes = {
 	})
 };
 
-const useGetPromotions = ({ api, userInfo: { langId } }) => {
-	const [promotion, setPromotion] = useState([]);
-	const isMountedRef = useRef(null);
-
-	useEffect(() => {
-		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
-	});
-
-	const getPromotionListV2 = useCallback(() => {
-		api.promotion.GetPromotionListV2({ langId }).then(res => {
-			if (res.data.errorCode === 0 && isMountedRef.current) {
-				let result = res.data.data.sort((a, b) =>
-					a.periodFrom > b.periodFrom ? -1 : 1
-				);
-
-				setPromotion(result);
-			}
-		});
-	}, [langId]);
-
-	useEffect(() => {
-		getPromotionListV2();
-	}, [getPromotionListV2]);
-
-	return { promotion, getPromotionListV2 };
-};
-
-const getPromotionCards = ({
+const setPromotionCards = ({
 	datas,
 	tab,
 	userInfo,
@@ -112,7 +79,7 @@ const PromotionContent = ({ staticList }) => {
 
 	let rows = [];
 	if (filterType === defFilterType.specialBonus) {
-		rows = getPromotionCards({
+		rows = setPromotionCards({
 			datas: specialBonusDatas,
 			tab,
 			userInfo,
@@ -155,7 +122,7 @@ const PromotionContent = ({ staticList }) => {
 			}
 		});
 
-		getPromotionCards({
+		rows = setPromotionCards({
 			datas,
 			tab,
 			userInfo,
