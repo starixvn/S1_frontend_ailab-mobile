@@ -4,63 +4,41 @@ import Inputbox from "../common/inputbox";
 import Dropdown from "../common/dropdown.icon";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import areaCode from "../../datas/areaCode";
-import moment from "moment";
 import {
 	api_SetProfile,
 	api_GetCustProfile
 } from "../../service/api/accountStrict";
 import { api_ExistsEmail } from "../../service/api/site";
+import { api_account_ExistsPhoneNo } from "../../service/api/account";
 import { defPopBoxType } from "../common/popbox";
 import path from "../../path";
-import { getUrlParameter } from "../common/common";
 import { redirectToPrev } from "./profile.redirect";
-
-const monthOptions = [
-	{ value: 1, id: 0, displayKey: "lbl_Month1" },
-	{ value: 2, id: 1, displayKey: "lbl_Month2" },
-	{ value: 3, id: 2, displayKey: "lbl_Month3" },
-	{ value: 4, id: 3, displayKey: "lbl_Month4" },
-	{ value: 5, id: 4, displayKey: "lbl_Month5" },
-	{ value: 6, id: 5, displayKey: "lbl_Month6" },
-	{ value: 7, id: 6, displayKey: "lbl_Month7" },
-	{ value: 8, id: 7, displayKey: "lbl_Month8" },
-	{ value: 9, id: 8, displayKey: "lbl_Month9" },
-	{ value: 10, id: 9, displayKey: "lbl_Month10" },
-	{ value: 11, id: 10, displayKey: "lbl_Month11" },
-	{ value: 12, id: 11, displayKey: "lbl_Month12" }
-];
-
-const initWarningState = {
-	AccountName: {
-		status: false,
-		msg: ""
-	},
-	Birthday: {
-		status: false,
-		msg: ""
-	},
-	Phone: {
-		status: false,
-		msg: ""
-	},
-	Email: {
-		status: false,
-		msg: ""
-	}
-};
+import {
+	monthOptions,
+	initWarning,
+	initUserValue,
+	infoList
+} from "./profile.def";
 
 const Panel = () => {
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
-	const [warningState, setWarningState] = useState(initWarningState);
-	const [yearSelectedIdx, setYearSelectedIdx] = useState();
-	const [monthSelectedIdx, setMonthSelectedIdx] = useState();
-	const [daySelectedIdx, setDaySelectedIdx] = useState();
+	const [warning, setWarning] = useState(initWarning);
+	const [birthIdx, setBirthIdx] = useState({
+		year: null,
+		month: null,
+		day: null
+	});
+	const [redirectPath, setRedirectPath] = useState(null);
+
+	const _initUserValue = initUserValue(userInfo);
+	const [userValue, setuserValue] = useState(_initUserValue);
 
 	const country = userInfo.country ? userInfo.country : userInfo.perCountry;
+	let _areaCode = country ? areaCode[country].AreaCode : "";
+	let _infoList = infoList({ i18n, userInfo, _areaCode });
 	const isMountedRef = useRef(null);
-	const [redirectPath, setRedirectPath] = useState(null);
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -73,81 +51,17 @@ const Panel = () => {
 		}
 	}, [redirectPath]);
 
-	const initUserValue = {
-		AccountName: userInfo.accountName ?? "",
-		Birth_d: userInfo.Birth_d ?? "",
-		Birth_m: userInfo.Birth_m ?? "",
-		Birth_y: userInfo.Birth_y ?? "",
-		PhoneNo: userInfo.phoneNo ?? "",
-		Email: userInfo.email ?? ""
-	};
-
-	const [userValue, setuserValue] = useState(initUserValue);
-
-	let aCode = country ? areaCode[country].AreaCode : "";
-
-	let infoList = [
-		{
-			infoTitle: "accountName",
-			colTitle: i18n["lbl_RealName"],
-			content: userInfo.accountName
-		},
-		{
-			infoTitle: "birth",
-			colTitle: i18n["lbl_Birthday"],
-			content: `${userInfo.birth_m}/${userInfo.birth_d}/${userInfo.birth_y}`,
-			birth_d: userInfo.birth_d,
-			birth_m: userInfo.birth_m,
-			birth_y: userInfo.birth_y
-		},
-		{
-			infoTitle: "phoneNo",
-			colTitle: i18n["lbl_Phone"],
-			content: `(${aCode})${userInfo.phoneNo}`,
-			isVerified: userInfo.phoneVerified
-		},
-		{
-			infoTitle: "userName",
-			colTitle: i18n["lbl_Username"],
-			content: userInfo.userName
-		},
-		{
-			infoTitle: "country",
-			colTitle: i18n["lbl_Country"],
-			content: i18n[`lbl_Country${userInfo.country}`]
-		},
-		{
-			infoTitle: "email",
-			colTitle: i18n["lbl_Email"],
-			content: userInfo.email
-		},
-		{
-			infoTitle: "regTime",
-			colTitle: i18n["lbl_RegisterTime"],
-			content: date_format(userInfo.regTime)
-		},
-		{
-			infoTitle: "lastLogin",
-			colTitle: i18n["lbl_LastLogin"],
-			content: date_format(userInfo.lastLogin)
-		}
-	];
-
 	let yearOptions = [];
 	let dateOptions = [];
 
 	let startYear = GetYear();
-	let month =
-		monthSelectedIdx === undefined
-			? ""
-			: monthOptions[monthSelectedIdx].value;
+	let month = birthIdx.month ? monthOptions[birthIdx.month].value : "";
 
 	let _startYear = startYear - 59;
 	for (let i = startYear; i >= _startYear; i--) {
 		yearOptions.push({ value: i, id: i, displayText: i });
 	}
-	let year =
-		yearSelectedIdx === undefined ? "" : yearOptions[yearSelectedIdx].value;
+	let year = birthIdx.year ? yearOptions[birthIdx.year].value : "";
 
 	let days = GetDayOfMonth(year, month);
 	for (let i = 1; i <= days; i++) {
@@ -155,16 +69,13 @@ const Panel = () => {
 	}
 
 	const dropdownStateHandler = (col, i) => {
-		if (col === "bday_year") {
-			setYearSelectedIdx(i);
-		} else if (col === "bday_month") {
-			setMonthSelectedIdx(i);
-		} else {
-			setDaySelectedIdx(i);
-		}
+		setBirthIdx(prev => ({
+			...prev,
+			[col]: i
+		}));
 	};
 
-	const checkPhone = val => {
+	const checkPhone = async val => {
 		let checked = true;
 		let message = "";
 
@@ -175,6 +86,20 @@ const Panel = () => {
 		if (val === "" || isNaN(val)) {
 			checked = false;
 			message = i18n["msg_EnterPhoneNumber"];
+		} else {
+			try {
+				const res = await api_account_ExistsPhoneNo({
+					AreaCode: _areaCode,
+					Phone: val
+				});
+				if (res.data.errorCode === 0 && res.data.data === true) {
+					checked = false;
+					message = i18n["msg_PhoneExisted"];
+				}
+			} catch (error) {
+				checked = false;
+				message = i18n["msg_ApiServerError"];
+			}
 		}
 
 		return { checked, message };
@@ -184,10 +109,6 @@ const Panel = () => {
 		let checked = true;
 		let message = "";
 
-		if (userInfo.accountName) {
-			return { checked, message };
-		}
-
 		if (val === "" || val === null || val === undefined) {
 			checked = false;
 			message = i18n["msg_EnterRealName"];
@@ -196,7 +117,7 @@ const Panel = () => {
 		return { checked, message };
 	};
 
-	const checkEmail = val => {
+	const checkEmail = async val => {
 		let checked = true;
 		let message = "";
 		const regx = /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
@@ -208,51 +129,21 @@ const Panel = () => {
 		if (val === "" || val === null) {
 			checked = false;
 			message = i18n["msg_MailWrongFormat"];
+		} else if (!regx.test(val)) {
+			checked = false;
+			message = i18n["msg_MailWrongFormat"];
 		} else {
-			if (!regx.test(val)) {
-				checked = false;
-				message = i18n["msg_MailWrongFormat"];
-			}
-		}
+			try {
+				const res = await api_ExistsEmail({ Email: val });
 
-		if (checked) {
-			api_ExistsEmail({
-				Email: val
-			}).then(
-				response => {
-					if (isMountedRef.current) {
-						const res = response.data;
-						if (res.errorCode === 0) {
-							if (res.data === true) {
-								setWarningState(prevState => {
-									return {
-										...prevState,
-										Email: {
-											status: true,
-											msg: i18n["msg_MailExisted"]
-										}
-									};
-								});
-							}
-						} else {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: response.data.message
-							});
-						}
-					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-					}
+				if (res.data.errorCode === 0 && res.data.data === true) {
+					checked = false;
+					message = i18n["msg_MailExisted"];
 				}
-			);
+			} catch (error) {
+				checked = false;
+				message = i18n.msg_ApiServerError;
+			}
 		}
 
 		return { checked, message };
@@ -266,9 +157,9 @@ const Panel = () => {
 			return { checked, message };
 		}
 
-		let year = yearOptions[yearSelectedIdx]?.value;
-		let month = monthOptions[monthSelectedIdx]?.value;
-		let day = daySelectedIdx + 1;
+		let year = yearOptions[birthIdx.year]?.value;
+		let month = monthOptions[birthIdx.month]?.value;
+		let day = birthIdx.day + 1;
 
 		if (!year || !month || !day) {
 			checked = false;
@@ -278,7 +169,7 @@ const Panel = () => {
 		return { checked, message };
 	};
 
-	const checkInputboxHandler = (col, e) => {
+	const checkInputboxHandler = async (col, e) => {
 		const val = e.target.value;
 		let checked = true;
 		let msg = "";
@@ -288,24 +179,22 @@ const Panel = () => {
 			checked = result.checked;
 			msg = result.message;
 		} else if (col === "Email") {
-			let result = checkEmail(val);
+			let result = await checkEmail(val);
 			checked = result.checked;
 			msg = result.message;
 		} else {
-			let result = checkPhone(val);
+			let result = await checkPhone(val);
 			checked = result.checked;
 			msg = result.message;
 		}
 
-		setWarningState(prevState => {
-			return {
-				...prevState,
-				[col]: {
-					status: !checked,
-					msg: msg
-				}
-			};
-		});
+		setWarning(prevState => ({
+			...prevState,
+			[col]: {
+				status: !checked,
+				msg: msg
+			}
+		}));
 	};
 
 	const EditField = (col, e) => {
@@ -313,7 +202,7 @@ const Panel = () => {
 
 		if (col === "AccountName") {
 			val = val.replace(/[^a-zA-Z\s]/g, "");
-		} else if (col === "Phone") {
+		} else if (col === "PhoneNo") {
 			val = val.replace(/^(0+)|[^\d]+/g, "");
 		}
 
@@ -323,46 +212,54 @@ const Panel = () => {
 		}));
 	};
 
-	const checkAll = () => {
-		let _accountNameCheck = checkAccountName(
-			userInfo.accountName ?? userValue.AccountName
-		);
-		let _emailCheck = checkEmail(userValue.Email);
-		let _phoneCheck = checkPhone(userValue.Phone);
-		let _birthCheck = checkBirth();
+	const checkAll = async () => {
+		return await Promise.all([
+			checkPhone(userValue.PhoneNo),
+			checkEmail(userValue.Email)
+		]).then(
+			res => {
+				let _accountNameCheck = checkAccountName(userValue.AccountName);
+				let _phoneCheck = res[0];
+				let _emailCheck = res[1];
+				let _birthCheck = checkBirth();
 
-		let checked =
-			_accountNameCheck.checked &&
-			_emailCheck.checked &&
-			_phoneCheck.checked &&
-			_birthCheck.checked;
+				let checked =
+					_accountNameCheck.checked &&
+					_emailCheck.checked &&
+					_phoneCheck.checked &&
+					_birthCheck.checked;
 
-		if (!checked) {
-			setWarningState(prev => ({
-				...prev,
-				AccountName: {
-					status: !_accountNameCheck.checked,
-					msg: _accountNameCheck.message
-				},
-				Birthday: {
-					status: !_birthCheck.checked,
-					msg: _birthCheck.message
-				},
-				Phone: {
-					status: !_phoneCheck.checked,
-					msg: _phoneCheck.message
-				},
-				Email: {
-					status: !_emailCheck.checked,
-					msg: _emailCheck.message
+				if (!checked) {
+					setWarning(prev => ({
+						...prev,
+						AccountName: {
+							status: !_accountNameCheck.checked,
+							msg: _accountNameCheck.message
+						},
+						Birthday: {
+							status: !_birthCheck.checked,
+							msg: _birthCheck.message
+						},
+						PhoneNo: {
+							status: !_phoneCheck.checked,
+							msg: _phoneCheck.message
+						},
+						Email: {
+							status: !_emailCheck.checked,
+							msg: _emailCheck.message
+						}
+					}));
 				}
-			}));
-		}
-		return checked;
+				return checked;
+			},
+			err => {
+				return false;
+			}
+		);
 	};
 
-	const checkSubmitHandler = () => {
-		let checked = checkAll();
+	const checkSubmitHandler = async () => {
+		let checked = await checkAll();
 
 		if (checked) {
 			const closePopbox = ({ _redirectPath }) => {
@@ -393,14 +290,14 @@ const Panel = () => {
 
 			const setProfile = () => {
 				let profileData = {
-					AccountName: userValue.AccountName ?? userInfo.accountName,
-					Birth_d: `${daySelectedIdx + 1}`,
-					Birth_m: `${monthOptions[monthSelectedIdx]?.value}`,
-					Birth_y: `${yearOptions[yearSelectedIdx]?.value}`,
+					AccountName: userInfo.accountName ?? userValue.AccountName,
+					Birth_d: `${birthIdx.day + 1}`,
+					Birth_m: `${monthOptions[birthIdx.month]?.value}`,
+					Birth_y: `${yearOptions[birthIdx.year]?.value}`,
 					CountryCode: country,
-					AreaCode: aCode,
-					PhoneNo: userValue.Phone ?? userInfo.phoneNo,
-					Email: userValue.Email ?? userInfo.email
+					AreaCode: _areaCode,
+					PhoneNo: userInfo.phoneNo ?? userValue.PhoneNo,
+					Email: userInfo.email ?? userValue.Email
 				};
 
 				api_SetProfile(profileData).then(
@@ -446,7 +343,7 @@ const Panel = () => {
 
 								redirectToPrev(i18n, setPopBox, closePopbox);
 							} else if (errorCode === 21) {
-								setWarningState(prevState => ({
+								setWarning(prevState => ({
 									...prevState,
 									Phone: { status: true, msg: message }
 								}));
@@ -512,7 +409,7 @@ const Panel = () => {
 		});
 	};
 
-	let arr = infoList
+	let arr = _infoList
 		.filter(item => {
 			return (
 				userInfo[item.infoTitle] ||
@@ -541,28 +438,43 @@ const Panel = () => {
 	) : (
 		<>
 			{!userInfo.accountName ? (
-				<Inputbox
-					icon="icon-member"
-					inputType="text"
-					placeholder={i18n["lbl_RealName"]}
-					onBlur={checkInputboxHandler.bind(null, "AccountName")}
-					onChange={EditField.bind(null, "AccountName")}
-					Warning={warningState.AccountName}
-					value={userValue.AccountName}
-				/>
+				<>
+					<Inputbox
+						icon="icon-member"
+						inputType="text"
+						placeholder={i18n["lbl_RealName"]}
+						onBlur={checkInputboxHandler.bind(null, "AccountName")}
+						onChange={EditField.bind(null, "AccountName")}
+						WarningIcon={warning.AccountName.status}
+						value={userValue.AccountName}
+					/>
+					<div
+						className={`errortip ${
+							warning.AccountName.status ? "open" : ""
+						}`}>
+						{warning.AccountName.msg}
+					</div>
+				</>
 			) : null}
 
 			{!userInfo.email ? (
-				<Inputbox
-					icon="icon-email"
-					inputType="text"
-					placeholder={i18n["lbl_Email"]}
-					onBlur={checkInputboxHandler.bind(null, "Email")}
-					onChange={EditField.bind(null, "Email")}
-					Tips={i18n["lbl_EmailToolTip"]}
-					Warning={warningState.Email}
-					value={userValue.Email}
-				/>
+				<>
+					<Inputbox
+						icon="icon-email"
+						inputType="text"
+						placeholder={i18n["lbl_Email"]}
+						onBlur={checkInputboxHandler.bind(null, "Email")}
+						onChange={EditField.bind(null, "Email")}
+						WarningIcon={warning.Email.status}
+						value={userValue.Email}
+					/>
+					<div
+						className={`errortip ${
+							warning.Email.status ? "open" : ""
+						}`}>
+						{warning.Email.msg}
+					</div>
+				</>
 			) : null}
 
 			{!userInfo.birth_d || !userInfo.birth_m || !userInfo.birth_y ? (
@@ -572,32 +484,32 @@ const Panel = () => {
 					monthOptions={monthOptions}
 					dateOptions={dateOptions}
 					yearOptions={yearOptions}
-					yearSelectedIdx={yearSelectedIdx}
-					monthSelectedIdx={monthSelectedIdx}
-					daySelectedIdx={daySelectedIdx}
-					Warning={warningState.Birthday}
+					yearSelectedIdx={birthIdx.year}
+					monthSelectedIdx={birthIdx.month}
+					daySelectedIdx={birthIdx.day}
+					Warning={warning.Birthday}
 					dropdownStateHandler={dropdownStateHandler}></Birthday>
 			) : null}
 
 			{!userInfo.phoneNo ? (
 				<div className="inputBox parts">
-					<span className="countryCode">{aCode}</span>
+					<span className="countryCode">{_areaCode}</span>
 
 					<Inputbox
 						icon="icon-phone"
 						inputType="tel"
 						placeholder={i18n["lbl_Phone"]}
-						onBlur={checkInputboxHandler.bind(null, "Phone")}
-						onChange={EditField.bind(null, "Phone")}
-						value={userValue.Phone}
-						WarningIcon={warningState.Phone.status}
+						onBlur={checkInputboxHandler.bind(null, "PhoneNo")}
+						onChange={EditField.bind(null, "PhoneNo")}
+						value={userValue.PhoneNo}
+						WarningIcon={warning.PhoneNo.status}
 						maxLength="10"
 					/>
 					<div
 						className={`errortip ${
-							warningState.Phone.status ? "open" : ""
+							warning.PhoneNo.status ? "open" : ""
 						}`}>
-						{warningState.Phone.msg}
+						{warning.PhoneNo.msg}
 					</div>
 				</div>
 			) : null}
@@ -628,10 +540,7 @@ const Birthday = props => {
 				mainKey="profile-month"
 				options={props.monthOptions}
 				colName="bday_month"
-				onSelectItem={props.dropdownStateHandler.bind(
-					null,
-					"bday_month"
-				)}
+				onSelectItem={props.dropdownStateHandler.bind(null, "month")}
 				selectedIdx={props.monthSelectedIdx}
 				icon="icon icon-cake"
 			/>
@@ -639,17 +548,14 @@ const Birthday = props => {
 				mainKey="profile-day"
 				options={props.dateOptions}
 				colName="bday_day"
-				onSelectItem={props.dropdownStateHandler.bind(null, "bday_day")}
+				onSelectItem={props.dropdownStateHandler.bind(null, "day")}
 				selectedIdx={props.daySelectedIdx}
 			/>
 			<Dropdown
 				mainKey="profile-year"
 				options={props.yearOptions}
 				colName="bday_year"
-				onSelectItem={props.dropdownStateHandler.bind(
-					null,
-					"bday_year"
-				)}
+				onSelectItem={props.dropdownStateHandler.bind(null, "year")}
 				selectedIdx={props.yearSelectedIdx}
 			/>
 			<div className={`errortip${props.Warning.status ? " open" : ""}`}>
@@ -670,12 +576,10 @@ const ColumnItem = props => {
 			</span>
 			<span>{props.content}</span>
 			{props.infoTitle === "phoneNo" && !props.isVerified ? (
-				<>
-					<button className="otpBtn" onClick={props.clickOtp}>
-						<span className="icon icon-mobile"></span>
-						<span>{props.i18n.lbl_MobileVerify}</span>
-					</button>
-				</>
+				<button className="otpBtn" onClick={props.clickOtp}>
+					<span className="icon icon-mobile"></span>
+					<span>{props.i18n.lbl_MobileVerify}</span>
+				</button>
 			) : null}
 		</li>
 	);
@@ -688,10 +592,6 @@ const GetYear = () => {
 const GetDayOfMonth = (year, month) => {
 	let d = new Date(year, month, 0);
 	return d.getDate();
-};
-
-const date_format = v => {
-	return moment(new Date(v)).format("lll");
 };
 
 export default Panel;
