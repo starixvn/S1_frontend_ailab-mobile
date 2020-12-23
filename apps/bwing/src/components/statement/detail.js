@@ -174,12 +174,6 @@ const Detail = ({
 		<div className="info infoBlack">
 			<ul>
 				<li>
-					<span className="title">{i18n.lbl_TransTime}</span>
-					<span>
-						{moment(transTime).format("YYYY/MM/DD hh:mm:ss")}
-					</span>
-				</li>
-				<li>
 					<span className="title">{i18n.lbl_TransId}</span>
 					<span>{transId}</span>
 				</li>
