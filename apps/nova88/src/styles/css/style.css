@@ -1049,13 +1049,13 @@ footer > a.open .circleAnimation + span {
   width: 100%;
   margin-left: -1px;
   left: 0;
-  top: 11vw;
+  top: 8vw;
   max-height: 45vw;
   overflow-y: scroll;
 }
 
 .dropdown > .dropdown-container .dropdown-item {
-  padding: 0 2vw;
+  padding: 3vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2752,6 +2752,24 @@ button.clickBtn:before {
   padding: 2vw 0 2vw 8vw;
 }
 
+.specialBonus {
+  margin-top: -2vw;
+}
+
+.specialBonus input {
+  width: calc(100% - 19vw - 1px);
+  padding: 2vw;
+}
+
+.specialBonus input + .btn-group {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+}
+
 .slotFunction {
   position: fixed;
   bottom: 0;
@@ -4227,7 +4245,7 @@ span.important {
   color: white;
 }
 
-.kiss {
+.kiss, .mega {
   width: calc(100% - 8vw);
   min-height: calc(100% - 71vw);
   padding: 47vw 4vw 24vw;
@@ -4238,13 +4256,17 @@ span.important {
   padding-top: 15vw;
 }
 
-.kiss .banner {
+.kiss .banner, .mega .banner {
   width: 100%;
   height: auto;
 }
 
-.kiss .btn-group.open {
+.kiss .btn-group.open, .mega .btn-group.open {
   display: none;
+}
+
+.kiss .title, .mega .title {
+  font-size: 16px;
 }
 
 .kissinfo {
@@ -4288,6 +4310,44 @@ span.important {
 
 .installGuide img {
   margin: 2vw auto;
+}
+
+.installGuide .downloadItem {
+  padding-top: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.installGuide .downloadItem .title {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.installGuide .downloadItem a.downloadBtn, .installGuide .downloadItem button.downloadBtn {
+  display: block;
+  width: 90%;
+  background: #1E85EC;
+  background: linear-gradient(140deg, #453deb 0%, #2626c7 50%, #00d4ff 100%);
+  border: 1px solid #1EECBB;
+  border-radius: 50px;
+  color: #fff;
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-weight: bold;
+  margin: 0 auto;
+}
+
+.installGuide .downloadItem a.downloadBtn:hover, .installGuide .downloadItem button.downloadBtn:hover {
+  background: #0a3561;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.installGuide .downloadItem .icon-android {
+  color: #4bad30;
 }
 
 .kissdoanload {
