@@ -378,5 +378,8 @@
 	"lbl_Ranking_Sports":"Peringkat Sports",
 	"lbl_Ranking_LiveCasino":"Peringkat Live Casino",
 	"lbl_Ranking_Slots":"Peringkat Slot Mesin",
-	"lbl_friendReferral":"Friend Referral"
+	"lbl_friendReferral":"Friend Referral",
+	"lbl_ReferralHistory":"Referral History",
+	"lbl_ReferFriends":"Refer Friends",
+	"lbl_Referral":"Referral"
 }

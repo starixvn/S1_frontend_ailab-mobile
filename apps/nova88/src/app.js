@@ -12,7 +12,6 @@ import Layout from "./components/common/layout";
 import Profile from "./components/member/profile";
 import BankInfo from "./components/member/bankInfo";
 import Member from "./pages/member";
-import FriendReferral from "./components/member/friendReferral";
 
 import Deposit from "./pages/deposit";
 import DepositHome from "./components/deposit/deposit";
@@ -80,6 +79,10 @@ import PromotionInfo from "./pages/promotionInfo";
 
 import Ranking from "./pages/ranking";
 
+import FriendReferral from "./pages/referral";
+import ReferFriends from "./components/referral/referFriends";
+import ReferralHistory from "./components/referral/referral.history";
+
 const Index = () => {
 	let history = createHistory(window);
 	return (
@@ -99,7 +102,12 @@ const Index = () => {
 							<Profile path={path.member.sub.root} />
 							<BankInfo path={path.member.sub.bankInfo.root} />
 						</Member>
-						<FriendReferral path={path.friendReferral.root} />
+						<FriendReferral path={path.referral.root}>
+							<ReferFriends path={path.referral.sub.root} />
+							<ReferralHistory
+								path={path.referral.sub.history.root}
+							/>
+						</FriendReferral>
 
 						<Deposit path={path.deposit.root}>
 							<DepositHome path={path.deposit.sub.root} />

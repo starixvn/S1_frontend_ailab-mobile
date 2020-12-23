@@ -378,5 +378,8 @@
 	"lbl_Ranking_Sports":"Sports Ranking",
 	"lbl_Ranking_LiveCasino":"Live Casino Ranking",
 	"lbl_Ranking_Slots":"Slots Ranking",
-	"lbl_friendReferral":"Friend Referral"
+	"lbl_friendReferral":"Friend Referral",
+	"lbl_ReferralHistory":"Referral History",
+	"lbl_ReferFriends":"Refer Friends",
+	"lbl_Referral":"Referral"
 }

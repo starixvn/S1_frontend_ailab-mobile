@@ -378,6 +378,9 @@
 	"lbl_Ranking_Sports":"体育排行榜",
 	"lbl_Ranking_LiveCasino":"真人排行榜",
 	"lbl_Ranking_Slots":"老虎机排行榜",
-	"lbl_friendReferral":"Friend Referral"
+	"lbl_friendReferral":"Friend Referral",
+	"lbl_ReferralHistory":"Referral History",
+	"lbl_ReferFriends":"Refer Friends",
+	"lbl_Referral":"Referral"
 
 }

@@ -378,6 +378,8 @@
 	"lbl_Ranking_Sports":"กีฬา อันดับที่",
 	"lbl_Ranking_LiveCasino":"คาสิโนสด อันดับที่",
 	"lbl_Ranking_Slots":"สล็อต อันดับที่",
-	"lbl_friendReferral":"Friend Referral"
-
+	"lbl_friendReferral":"Friend Referral",
+	"lbl_ReferralHistory":"Referral History",
+	"lbl_ReferFriends":"Refer Friends",
+	"lbl_Referral":"Referral"
 }

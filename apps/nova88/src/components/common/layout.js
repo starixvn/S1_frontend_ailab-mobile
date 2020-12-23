@@ -113,7 +113,7 @@ const defPageInfo = {
 		className: "main",
 		hideLogo: true
 	},
-	friendReferral: {
+	referral: {
 		titleKey: "lbl_friendReferral",
 		className: "main",
 		hideLogo: true
