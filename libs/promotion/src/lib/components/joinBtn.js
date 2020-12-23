@@ -134,6 +134,10 @@ export default ({
 				_promo.result === 1 &&
 				_promo.requiredAmount > 0
 			) {
+				const RedirectToDeposit = () => {
+					setRedirectPath(`/${path.deposit.root}`);
+					clickClose();
+				};
 				handlePopBox({
 					content: (
 						<div className="info">
@@ -156,13 +160,13 @@ export default ({
 								onClick={clickClose}>
 								{i18n?.lbl_Later}
 							</button>
-							<Link
-								to={`/${path.deposit.root}`}
+							<button
+								onClick={RedirectToDeposit}
 								className={
 									uiSetting.popBox?.submitBtn ?? "btn-check"
 								}>
 								{i18n?.lbl_DepositNow}
-							</Link>
+							</button>
 						</div>
 					)
 				});
