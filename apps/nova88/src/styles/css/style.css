@@ -4698,24 +4698,8 @@ span.icon.icon-icon32px_top:after {
   height: max-content;
 }
 
-.refstep {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  color: #F77A00;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 3vw;
-  border: 1px dotted #f77a00;
-  margin: 5vw 0;
-}
-
-.refstep > div {
+.refbanner {
   margin-bottom: 2vw;
-  line-height: 5vw;
 }
 
 .refShare .title {
@@ -4742,6 +4726,11 @@ span.icon.icon-icon32px_top:after {
   border: 1px solid #F77A00;
   border-radius: 15px;
   padding: 3vw;
+}
+
+.refShare .refBox > div.open {
+  background: rgba(30, 133, 236, 0.5);
+  border-color: #1E85EC;
 }
 
 .refShare .refBox > div span {
