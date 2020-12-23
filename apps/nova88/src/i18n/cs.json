@@ -218,7 +218,7 @@
 	"msg_ApiServerError": "糟糕！出现错误，请再尝试。",
 	"msg_SubmitDepositTime": "请提交您存款时间",
 	"msg_SelectFile": "选择文档",
-	"msg_ReferenceNumber": "参照好吗",
+	"msg_ReferenceNumber": "参照号码",
 	"msg_WrongAmount": "金额错误",
 	"lbl_Me": "我",
 	"lbl_MyAccount": "我的账户",
