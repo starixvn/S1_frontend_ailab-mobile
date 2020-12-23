@@ -112,6 +112,11 @@ const defPageInfo = {
 		titleKey: "lbl_financialLog",
 		className: "main",
 		hideLogo: true
+	},
+	friendReferral: {
+		titleKey: "lbl_friendReferral",
+		className: "main",
+		hideLogo: true
 	}
 };
 

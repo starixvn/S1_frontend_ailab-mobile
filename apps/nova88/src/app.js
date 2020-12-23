@@ -12,6 +12,7 @@ import Layout from "./components/common/layout";
 import Profile from "./components/member/profile";
 import BankInfo from "./components/member/bankInfo";
 import Member from "./pages/member";
+import FriendReferral from "./components/member/friendReferral";
 
 import Deposit from "./pages/deposit";
 import DepositHome from "./components/deposit/deposit";
@@ -98,6 +99,8 @@ const Index = () => {
 							<Profile path={path.member.sub.root} />
 							<BankInfo path={path.member.sub.bankInfo.root} />
 						</Member>
+						<FriendReferral path={path.friendReferral.root} />
+
 						<Deposit path={path.deposit.root}>
 							<DepositHome path={path.deposit.sub.root} />
 							<OnlineBanking

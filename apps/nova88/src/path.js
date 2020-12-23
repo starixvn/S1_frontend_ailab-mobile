@@ -134,5 +134,8 @@ export default {
 	},
 	kiss918: {
 		root: "918kiss"
+	},
+	friendReferral: {
+		root: "friendReferral"
 	}
 };
