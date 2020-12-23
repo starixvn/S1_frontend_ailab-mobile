@@ -1,10 +1,11 @@
 import React from "react";
-import { defPromotionType } from "../common/def";
+import { defPromotionType, defFilterType } from "../common/def";
 import SingleRecord from "./depositRecord.singleRecord";
 import MultipleRecord from "./depositRecord.multiRecord";
 
-export default ({ i18n = {}, promotionInfo, currencyId }) => {
+export default ({ i18n = {}, promotionInfo, currencyId, filterType }) => {
 	if (
+		filterType !== defFilterType.specialBonus &&
 		promotionInfo.canJoin &&
 		!promotionInfo.isJoin &&
 		(promotionInfo.promotionType === defPromotionType.reDeposit ||

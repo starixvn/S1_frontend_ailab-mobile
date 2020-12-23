@@ -119,7 +119,11 @@ const PromotionInfoContent = () => {
 		.split("&")
 		.forEach(u => {
 			const pattern = u.split("=");
-			urlParams[pattern[0]] = pattern[1];
+			if (pattern.length >= 2) {
+				urlParams[pattern[0]] = isNaN(pattern[1])
+					? pattern[1]
+					: Number(pattern[1]);
+			}
 		});
 
 	return (

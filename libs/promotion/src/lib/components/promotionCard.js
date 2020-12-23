@@ -43,6 +43,7 @@ export default ({
 				promotionInfo={p}
 				func_CallBack={func_CallBack}
 				uiSetting={uiSetting}
+				filterType={urlParameters?.[defUrlParamCols.filterType]}
 			/>
 		</div>
 	</div>

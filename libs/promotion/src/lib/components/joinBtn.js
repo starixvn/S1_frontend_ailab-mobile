@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useEffect, useState } from "react";
 import { Link, Redirect } from "@reach/router";
 import { isExpiry } from "../common/common";
-import { defBonusType, defPromotionType } from "../common/def";
+import { defBonusType, defPromotionType, defFilterType } from "../common/def";
 import ClaimWithLockedAmount from "./joinBtn.claimWithLockedAmount";
 import { configContext } from "../common/context";
 import { useHandlePopBox } from "../hook/useHandlePopBox";
@@ -10,7 +10,8 @@ export default ({
 	uiSetting = {},
 	promotionInfo,
 	func_GetPromotionDetail,
-	func_CallBack
+	func_CallBack,
+	filterType
 }) => {
 	const { path, userInfo, i18n, api, formatSetting } = useContext(
 		configContext
@@ -168,7 +169,9 @@ export default ({
 			} else if (
 				userInfo.isLogin &&
 				_promo.canJoin &&
-				_promo.promotionType === defPromotionType.reDeposit
+				(_promo.promotionType === defPromotionType.reDeposit ||
+					(filterType === defFilterType.specialBonus &&
+						_promo.promotionType === defPromotionType.firstDeposit))
 			) {
 				if (_promo.bonusType === defBonusType.Percentage) {
 					handlePopBox({

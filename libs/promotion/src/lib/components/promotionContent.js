@@ -44,6 +44,7 @@ export default ({
 			promotionInfo={promotionInfo}
 			func_GetPromotionDetail={GetPromotionDetail}
 			uiSetting={uiSetting}
+			filterType={urlParameters?.[defUrlParamCols.filterType]}
 		/>
 		<div className="protitle">{promotionInfo.title}</div>
 		<div className="text">{promotionInfo.description}</div>
@@ -51,6 +52,7 @@ export default ({
 			promotionInfo={promotionInfo}
 			i18n={i18n}
 			currencyId={currencyId}
+			filterType={urlParameters?.[defUrlParamCols.filterType]}
 		/>
 		<ProcessBar
 			{...promotionInfo}
