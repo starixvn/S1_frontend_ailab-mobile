@@ -565,7 +565,7 @@ main .sideBar {
   overflow-y: scroll;
 }
 
-main .sideBar button {
+main .sideBar button, main .sideBar a {
   -webkit-transition: 0.7s;
   transition: 0.7s;
   color: #fff;
@@ -574,7 +574,7 @@ main .sideBar button {
   min-height: 15vw;
 }
 
-main .sideBar button.open {
+main .sideBar button.open, main .sideBar a.open {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   background: #F77A00;
@@ -582,7 +582,7 @@ main .sideBar button.open {
   transition: 0.7s;
 }
 
-main .sideBar button.icon:before {
+main .sideBar button.icon:before, main .sideBar a.icon:before {
   width: 100%;
   font-size: 8vw;
   text-align: center;
@@ -1049,13 +1049,13 @@ footer > a.open .circleAnimation + span {
   width: 100%;
   margin-left: -1px;
   left: 0;
-  top: 11vw;
+  top: 8vw;
   max-height: 45vw;
   overflow-y: scroll;
 }
 
 .dropdown > .dropdown-container .dropdown-item {
-  padding: 0 2vw;
+  padding: 3vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2765,9 +2765,7 @@ button.clickBtn:before {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  width: -webkit-min-content;
-  width: -moz-min-content;
-  width: min-content;
+  width: 18vw;
 }
 
 .slotFunction {
@@ -4245,7 +4243,7 @@ span.important {
   color: white;
 }
 
-.kiss {
+.kiss, .mega {
   width: calc(100% - 8vw);
   min-height: calc(100% - 71vw);
   padding: 47vw 4vw 24vw;
@@ -4256,13 +4254,17 @@ span.important {
   padding-top: 15vw;
 }
 
-.kiss .banner {
+.kiss .banner, .mega .banner {
   width: 100%;
   height: auto;
 }
 
-.kiss .btn-group.open {
+.kiss .btn-group.open, .mega .btn-group.open {
   display: none;
+}
+
+.kiss .title, .mega .title {
+  font-size: 16px;
 }
 
 .kissinfo {
@@ -4306,6 +4308,69 @@ span.important {
 
 .installGuide img {
   margin: 2vw auto;
+}
+
+.installGuide .downloadItem {
+  padding-top: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.installGuide .downloadItem .title {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.installGuide .downloadItem a.downloadBtn, .installGuide .downloadItem button.downloadBtn {
+  display: block;
+  width: 90%;
+  background: #1E85EC;
+  background: linear-gradient(140deg, #453deb 0%, #2626c7 50%, #00d4ff 100%);
+  border: 1px solid #1EECBB;
+  border-radius: 50px;
+  color: #fff;
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-weight: bold;
+  margin: 0 auto;
+}
+
+.installGuide .downloadItem a.downloadBtn:hover, .installGuide .downloadItem button.downloadBtn:hover {
+  background: #0a3561;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.installGuide .downloadItem .icon-android {
+  color: #4bad30;
+}
+
+.installGuide .guides .step {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.installGuide .guides .step .content {
+  font-weight: bold;
+  color: #F77A00;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.installGuide .guides .step .content span {
+  font-size: 14px;
+  display: block;
+  color: #fff;
+  font-weight: normal;
 }
 
 .kissdoanload {
@@ -4634,9 +4699,6 @@ button.icon.icon-icon32px_top, span.icon.icon-icon32px_top {
 button.icon.icon-icon32px_top:after, span.icon.icon-icon32px_top:after {
   content: "Live";
   font-family: 'Microsoft YaHei',sans-serif;
-  position: absolute;
-  bottom: -3vw;
-  right: 5.4vw;
   color: white;
   font-size: 3vw;
   font-weight: bold;
@@ -4657,5 +4719,98 @@ span.icon.icon-icon32px_top:after {
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
+}
+
+.refbanner {
+  margin-bottom: 2vw;
+}
+
+.refShare .title {
+  margin-bottom: 2vw;
+  padding-left: 1vw;
+}
+
+.refShare .refBox {
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.refShare .refBox > div {
+  width: calc(50% - 8vw - 2px);
+  margin: 2vw 0;
+  margin-left: 0;
+  border: 1px solid #F77A00;
+  border-radius: 15px;
+  padding: 3vw;
+}
+
+.refShare .refBox > div.open {
+  background: rgba(30, 133, 236, 0.5);
+  border-color: #1E85EC;
+}
+
+.refShare .refBox > div span {
+  color: #F77A00;
+}
+
+.refShare .refBox > div a {
+  color: #F77A00;
+  text-decoration: underline;
+  font-size: 12px;
+}
+
+.refLink {
+  color: white;
+  margin-top: 3vw;
+}
+
+.refLink .refBox {
+  margin-top: 3vw;
+}
+
+.refLink .refBox .icon:before {
+  margin-left: 2vw;
+}
+
+.refLink .refBox .refMedia {
+  margin-top: 5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.refLink .refBox .refMedia a {
+  width: calc(50% - 2vw);
+  margin-bottom: 3vw;
+  margin-right: 2vw;
+}
+
+.refLink .refBox .refMedia a:nth-child(even) {
+  margin-right: 0;
+}
+
+.refLink .refBox .refMedia a.icon:before {
+  margin-right: 2vw;
+  margin-left: 0;
+}
+
+.refLink .text-org {
+  text-align: left;
+}
+
+.refLink .icon {
+  color: white;
 }
 /*# sourceMappingURL=style.css.map */

@@ -19,7 +19,7 @@ export const defFilterType = {
 	all: 0,
 	firstDeposit: 1,
 	freeBet: 3,
-	specialBonus: "specialBonus"
+	specialBonus: 9991
 };
 
 export const defPromotionNav = [
@@ -72,4 +72,9 @@ export const defWrapperCol = {
 		formatRequired: "formatRequired",
 		digits: "digits"
 	}
+};
+
+export const defUrlParamCols = {
+	tab: "tab",
+	filterType: "filterType"
 };

@@ -3192,6 +3192,24 @@ button.clickBtn:before {
   padding: 2vw 0 2vw 8vw;
 }
 
+.specialBonus input {
+  width: calc(100% - 20vw + 1px);
+  padding: 2vw;
+}
+
+.specialBonus input + .btn-group {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+}
+
+.specialBonus input + .btn-group button {
+  padding: 0 2vw;
+}
+
 .slotFunction {
   position: fixed;
   bottom: 0;
@@ -4654,20 +4672,20 @@ span.important {
   left: -15px;
   font-weight: bold;
   font-size: 12px;
-  -webkit-animation: newicon 0.5s linear infinite alternate;
-          animation: newicon 0.5s linear infinite alternate;
+  -webkit-animation: newicon 0.8s linear infinite alternate;
+          animation: newicon 0.8s linear infinite alternate;
 }
 
 @-webkit-keyframes newicon {
   0% {
     -webkit-transform: scale(1) rotate(-25deg);
             transform: scale(1) rotate(-25deg);
-    color: #f85f05;
+    color: #56ceff;
   }
   100% {
-    -webkit-transform: scale(1.15) rotate(-25deg);
-            transform: scale(1.15) rotate(-25deg);
-    color: #ffa571;
+    -webkit-transform: scale(1.13) rotate(-25deg);
+            transform: scale(1.13) rotate(-25deg);
+    color: #ade8ff;
   }
 }
 
@@ -4675,12 +4693,12 @@ span.important {
   0% {
     -webkit-transform: scale(1) rotate(-25deg);
             transform: scale(1) rotate(-25deg);
-    color: #f85f05;
+    color: #56ceff;
   }
   100% {
-    -webkit-transform: scale(1.15) rotate(-25deg);
-            transform: scale(1.15) rotate(-25deg);
-    color: #ffa571;
+    -webkit-transform: scale(1.13) rotate(-25deg);
+            transform: scale(1.13) rotate(-25deg);
+    color: #ade8ff;
   }
 }
 
@@ -6160,6 +6178,19 @@ span.important {
   text-align: center;
   color: #fff;
   margin-bottom: 2vw;
+}
+
+.gameInBox.newicon::before {
+  content: "NEW";
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 3px 5px;
+  background-color: #58cdff;
+  color: #0c1a3f;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .gameInBox img {

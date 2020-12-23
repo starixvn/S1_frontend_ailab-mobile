@@ -4,6 +4,9 @@ import JoinBtn from "./joinBtn";
 import DepositRecord from "./depositRecord";
 import ProcessBar from "./processBar";
 import PromoRule from "./promotionContent.promoRule";
+import { Stamp } from "./stamp";
+import { canJoin } from "../common/common";
+import { defUrlParamCols } from "../common/def";
 
 export default ({
 	path,
@@ -15,19 +18,26 @@ export default ({
 	_isNew,
 	GetPromotionDetail,
 	RefreshProcessBar,
-	ruleCols
+	ruleCols,
+	currencyId,
+	urlParameters = {}
 }) => (
 	<div
 		className={`promodule${promotionInfo.isJoin ? " open" : ""}${
-			_isExpiry ? " Expired" : ""
+			canJoin({
+				_isExpiry,
+				canJoin: promotionInfo.canJoin,
+				filterType: urlParameters?.[defUrlParamCols.filterType]
+			})
+				? ""
+				: " Expired"
 		}`}>
-		{_isClaimed ? (
-			<div className="claimed"></div>
-		) : _isNew && !_isExpiry ? (
-			<div className="new active"></div>
-		) : null}
+		<Stamp _isClaimed={_isClaimed} _isNew={_isNew} _isExpiry={_isExpiry} />
 		<img src={promotionInfo.banner} alt={promotionInfo.title} />
-		<Link className="btn-cancel" to={`/${path.promotion.root}`}>
+		<Link
+			className="btn-cancel"
+			to={`/${path.promotion.root}`}
+			state={urlParameters}>
 			{i18n?.lbl_Back}
 		</Link>
 		<JoinBtn
@@ -37,7 +47,11 @@ export default ({
 		/>
 		<div className="protitle">{promotionInfo.title}</div>
 		<div className="text">{promotionInfo.description}</div>
-		<DepositRecord promotionInfo={promotionInfo} i18n={i18n} />
+		<DepositRecord
+			promotionInfo={promotionInfo}
+			i18n={i18n}
+			currencyId={currencyId}
+		/>
 		<ProcessBar
 			{...promotionInfo}
 			RefreshProcessBar={RefreshProcessBar.bind(this, promotionInfo)}

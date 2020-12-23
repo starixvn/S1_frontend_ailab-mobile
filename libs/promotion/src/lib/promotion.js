@@ -1,5 +1,10 @@
 import React, { useContext } from "react";
-import { defFilterType, defPromotionType, defTabs } from "./common/def";
+import {
+	defFilterType,
+	defPromotionType,
+	defTabs,
+	defUrlParamCols
+} from "./common/def";
 import { isExpiry, isClaimed, isNew } from "./common/common";
 import Card, { CardForStatic } from "./components/promotionCard";
 import Nav, { useHandleNav } from "./components/nav";
@@ -12,10 +17,10 @@ import SpecialBonusCodeInputBox from "./components/specialBonusCodeInputBox";
 import { useHandleSpecialBonus } from "./hook/useHandleSpecialBonus";
 import { useGetPromotions } from "./hook/useGetPromotions";
 
-export const Promotion = ({ staticList, ...rest }) => {
+export const Promotion = ({ staticList, location, ...rest }) => {
 	return (
 		<Wrapper {...rest}>
-			<PromotionContent staticList={staticList} />
+			<PromotionContent staticList={staticList} location={location} />
 		</Wrapper>
 	);
 };
@@ -34,7 +39,8 @@ const setPromotionCards = ({
 	i18n,
 	uiSetting,
 	ruleCols,
-	func_CallBack
+	func_CallBack,
+	urlParameters
 }) => {
 	return datas.map(p => {
 		let imgSRC = p.banner;
@@ -53,17 +59,34 @@ const setPromotionCards = ({
 				i18n={i18n}
 				uiSetting={uiSetting}
 				ruleCols={ruleCols}
+				urlParameters={urlParameters}
 			/>
 		);
 	});
 };
 
-const PromotionContent = ({ staticList }) => {
+const getFilterType = ({ location, column }) => {
+	const state = location?.state;
+	return state?.[column]
+		? isNaN(state?.[column])
+			? state?.[column]
+			: Number(state?.[column])
+		: undefined;
+};
+
+const PromotionContent = ({ staticList, location }) => {
 	const { uiSetting, userInfo, i18n, api, ruleCols } = useContext(
 		configContext
 	);
-	const { tab, onClickTab } = useHandleTab();
-	const { filterType, onClickFilter } = useHandleNav();
+	const { tab, onClickTab } = useHandleTab({
+		defaultValue: getFilterType({ location, column: defUrlParamCols.tab })
+	});
+	const { filterType, onClickFilter } = useHandleNav({
+		defaultValue: getFilterType({
+			location,
+			column: defUrlParamCols.filterType
+		})
+	});
 	const { promotion, getPromotionListV2 } = useGetPromotions({
 		api,
 		userInfo
@@ -77,6 +100,10 @@ const PromotionContent = ({ staticList }) => {
 		GetSpecialBonusList
 	} = useHandleSpecialBonus({ api, langId: userInfo.langId, filterType });
 
+	const urlParameters = {
+		[defUrlParamCols.tab]: tab,
+		[defUrlParamCols.filterType]: filterType
+	};
 	let rows = [];
 	if (filterType === defFilterType.specialBonus) {
 		rows = setPromotionCards({
@@ -86,7 +113,8 @@ const PromotionContent = ({ staticList }) => {
 			i18n,
 			uiSetting,
 			ruleCols,
-			func_CallBack: GetSpecialBonusList
+			func_CallBack: GetSpecialBonusList,
+			urlParameters
 		});
 	} else {
 		const datas = promotion?.filter(p => {
@@ -129,7 +157,8 @@ const PromotionContent = ({ staticList }) => {
 			i18n,
 			uiSetting,
 			ruleCols,
-			func_CallBack: getPromotionListV2
+			func_CallBack: getPromotionListV2,
+			urlParameters
 		});
 	}
 	const staticRows =
@@ -163,12 +192,14 @@ const PromotionContent = ({ staticList }) => {
 				isLogin={userInfo.isLogin}
 			/>
 			<SpecialBonusCodeInputBox
+				tab={tab}
 				filterType={filterType}
 				i18n={i18n}
 				onChange={onChangeSpecialCode}
 				value={specialCode}
 				onSubmit={onSubmitSpecialCode}
 				isLogin={userInfo.isLogin}
+				uiSetting={uiSetting}
 			/>
 			{rows}
 			{staticRows}

@@ -2,8 +2,8 @@ import { defPromotionNav, defTabs } from "../common/def";
 import React, { useState } from "react";
 import { defFilterType } from "../common/def";
 
-export const useHandleNav = () => {
-	const [filterType, setFilterType] = useState(defFilterType.all);
+export const useHandleNav = ({ defaultValue = defFilterType.all }) => {
+	const [filterType, setFilterType] = useState(defaultValue);
 
 	const onClickFilter = value => {
 		setFilterType(value);

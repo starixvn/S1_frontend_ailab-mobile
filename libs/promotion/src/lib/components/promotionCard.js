@@ -2,6 +2,9 @@ import React from "react";
 import JoinBtn from "./joinBtn";
 import DetailBtn from "./detailBtn";
 import PromoRule from "./promotionCard.promoRule";
+import { Stamp } from "./stamp";
+import { canJoin } from "../common/common";
+import { defUrlParamCols } from "../common/def";
 
 export default ({
 	p,
@@ -12,17 +15,20 @@ export default ({
 	func_CallBack,
 	i18n = {},
 	uiSetting,
-	ruleCols
+	ruleCols,
+	urlParameters
 }) => (
 	<div
 		className={`promodule${_isClaimed ? " open" : ""}${
-			_isExpiry ? " Expired" : ""
+			canJoin({
+				_isExpiry,
+				canJoin: p.canJoin,
+				filterType: urlParameters?.[defUrlParamCols.filterType]
+			})
+				? ""
+				: " Expired"
 		}`}>
-		{_isClaimed ? (
-			<div className="claimed"></div>
-		) : _isNew && !_isExpiry ? (
-			<div className="new active"></div>
-		) : null}
+		<Stamp _isClaimed={_isClaimed} _isNew={_isNew} _isExpiry={_isExpiry} />
 		<img src={imgSRC} alt={p.bonusCode ?? ""} />
 		<div className="protitle">{p.title}</div>
 		<div className="text">{p.description}</div>
@@ -31,6 +37,7 @@ export default ({
 			<DetailBtn
 				displayText_Detail={i18n?.lbl_Details}
 				bonusCode={p.bonusCode}
+				urlParameters={urlParameters}
 			/>
 			<JoinBtn
 				promotionInfo={p}

@@ -3,7 +3,7 @@ import { defPromotionType } from "../common/def";
 import SingleRecord from "./depositRecord.singleRecord";
 import MultipleRecord from "./depositRecord.multiRecord";
 
-export default ({ i18n = {}, promotionInfo }) => {
+export default ({ i18n = {}, promotionInfo, currencyId }) => {
 	if (
 		promotionInfo.canJoin &&
 		!promotionInfo.isJoin &&
@@ -13,7 +13,11 @@ export default ({ i18n = {}, promotionInfo }) => {
 		return promotionInfo.promotionType === defPromotionType.reDeposit ? (
 			<MultipleRecord i18n={i18n} {...promotionInfo} />
 		) : (
-			<SingleRecord i18n={i18n} {...promotionInfo} />
+			<SingleRecord
+				i18n={i18n}
+				{...promotionInfo}
+				currencyId={currencyId}
+			/>
 		);
 	} else {
 		return null;

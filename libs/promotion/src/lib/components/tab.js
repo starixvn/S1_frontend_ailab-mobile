@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { defTabs } from "../common/def";
 
-export const useHandleTab = () => {
-	const [tab, setTab] = useState(defTabs.Processing.key);
+export const useHandleTab = ({ defaultValue = defTabs.Processing.key }) => {
+	const [tab, setTab] = useState(defaultValue);
 
 	const onClickTab = tabKey => {
 		setTab(tabKey);

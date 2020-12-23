@@ -354,5 +354,6 @@
 	"lbl_last_3_day":"Last 3 Day",
 	"lbl_LastUpdTime":"Last Update On {{time}} (Update Every 30 Minutes)",
 	
-	"lbl_SpecialBonus":"Special Bonus"
+	"lbl_SpecialBonus":"Special Bonus",
+	"lbl_SpecialBonusCode":"Special Bonus Code"
 }

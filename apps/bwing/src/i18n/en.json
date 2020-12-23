@@ -414,5 +414,6 @@
 	"lbl_No1_Reward":"NO.1 REWARD",
 	"msg_PhoneExisted":"Phone number already exists.",
 	
-	"lbl_SpecialBonus":"Special Bonus"
+	"lbl_SpecialBonus":"Special Bonus",
+	"lbl_SpecialBonusCode":"Special Bonus Code"
 }

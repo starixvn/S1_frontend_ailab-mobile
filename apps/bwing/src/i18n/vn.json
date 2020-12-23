@@ -412,6 +412,8 @@
 	"lbl_MoreDetails":"XEM CHI TIẾT",
 	"lbl_No1_Reward":"GIẢI NHẤT",
 	"lbl_Prizes":"Giải thưởng",
-	"msg_PhoneExisted":"Số điện thoại này đã được sử dụng."
+	"msg_PhoneExisted":"Số điện thoại này đã được sử dụng.",
 
+	"lbl_SpecialBonus":"Special Bonus",
+	"lbl_SpecialBonusCode":"Special Bonus Code"
 }
