@@ -6,6 +6,7 @@ export const useHandleSpecialBonus = ({ api, langId, filterType }) => {
 	const [specialBonusDatas, setSpecialBonusDatas] = useState([]);
 	const [specialCode, setSpecialCode] = useState("");
 	const { handleErrorPopBox } = useHandlePopBox();
+
 	useEffect(() => {
 		if (filterType === defFilterType.specialBonus) {
 			GetSpecialBonusList();
@@ -18,20 +19,22 @@ export const useHandleSpecialBonus = ({ api, langId, filterType }) => {
 
 	const onSubmitSpecialCode = async () => {
 		try {
-			const res = await api.promotion.SetSpecialCode({
-				SpecialCode: specialCode,
-				langId
-			});
-
-			if (res.data.errorCode === 0) {
-				setSpecialCode("");
-			} else {
-				handleErrorPopBox({
-					message: res.data.message,
-					errorCode: res.data.errorCode
+			if (specialCode !== "") {
+				const res = await api.promotion.SetSpecialCode({
+					SpecialCode: specialCode,
+					langId
 				});
+
+				if (res.data.errorCode === 0) {
+					setSpecialCode("");
+				} else {
+					handleErrorPopBox({
+						message: res.data.message,
+						errorCode: res.data.errorCode
+					});
+				}
+				GetSpecialBonusList(specialCode);
 			}
-			GetSpecialBonusList(specialCode);
 		} catch (error) {
 			setSpecialCode("");
 		}
