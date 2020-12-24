@@ -381,5 +381,9 @@
 	"lbl_friendReferral":"Friend Referral",
 	"lbl_ReferralHistory":"Referral History",
 	"lbl_ReferFriends":"Refer Friends",
-	"lbl_Referral":"Referral"
+	"lbl_Referral":"Referral",
+	"lbl_Share_with_friend":"Share your favorite offers with friend!",
+	"lbl_Your_link_invite":"Your unique link invite",
+	"lbl_Copy_to_clipboard":"Copy to Clipboard"
+
 }

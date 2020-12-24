@@ -378,9 +378,12 @@
 	"lbl_Ranking_Sports":"体育排行榜",
 	"lbl_Ranking_LiveCasino":"真人排行榜",
 	"lbl_Ranking_Slots":"老虎机排行榜",
-	"lbl_friendReferral":"Friend Referral",
-	"lbl_ReferralHistory":"Referral History",
-	"lbl_ReferFriends":"Refer Friends",
-	"lbl_Referral":"Referral"
+	"lbl_friendReferral":"朋友推荐",
+	"lbl_ReferralHistory":"推荐历史",
+	"lbl_ReferFriends":"推荐朋友",
+	"lbl_Referral":"推荐",
+	"lbl_Share_with_friend":"与朋友分享您最喜欢的优惠！",
+	"lbl_Your_link_invite":"您的专属邀请连结",
+	"lbl_Copy_to_clipboard":"复制到剪贴板"
 
 }
