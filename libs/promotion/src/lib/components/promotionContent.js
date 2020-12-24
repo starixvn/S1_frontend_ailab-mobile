@@ -32,7 +32,13 @@ export default ({
 				? ""
 				: " Expired"
 		}`}>
-		<Stamp _isClaimed={_isClaimed} _isNew={_isNew} _isExpiry={_isExpiry} />
+		<Stamp
+			_isClaimed={_isClaimed}
+			_isNew={_isNew}
+			_isExpiry={_isExpiry}
+			filterType={urlParameters?.[defUrlParamCols.filterType]}
+			canJoin={promotionInfo.canJoin}
+		/>
 		<img src={promotionInfo.banner} alt={promotionInfo.title} />
 		<Link
 			className="btn-cancel"

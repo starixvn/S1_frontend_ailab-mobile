@@ -207,6 +207,11 @@ export default ({
 		isLogin: userInfo.isLogin
 	});
 
+	let _canJoin =
+		filterType === defFilterType.specialBonus && !promotionInfo.canJoin
+			? false
+			: true;
+
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
 	) : userInfo.isLogin === false && !_isExpiry ? (
@@ -215,7 +220,7 @@ export default ({
 			to={`/${path.login.root}`}>
 			{i18n?.lbl_PromoJoinNow}
 		</Link>
-	) : userInfo.isLogin && !promotionInfo.isJoin && !_isExpiry ? (
+	) : _canJoin && userInfo.isLogin && !promotionInfo.isJoin && !_isExpiry ? (
 		<button
 			className={uiSetting.joinBtn ?? "btn-check"}
 			onClick={onJoinPromotion.bind(this, promotionInfo)}>

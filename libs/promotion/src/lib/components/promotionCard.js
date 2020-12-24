@@ -28,7 +28,13 @@ export default ({
 				? ""
 				: " Expired"
 		}`}>
-		<Stamp _isClaimed={_isClaimed} _isNew={_isNew} _isExpiry={_isExpiry} />
+		<Stamp
+			_isClaimed={_isClaimed}
+			_isNew={_isNew}
+			_isExpiry={_isExpiry}
+			filterType={urlParameters?.[defUrlParamCols.filterType]}
+			canJoin={p.canJoin}
+		/>
 		<img src={imgSRC} alt={p.bonusCode ?? ""} />
 		<div className="protitle">{p.title}</div>
 		<div className="text">{p.description}</div>
