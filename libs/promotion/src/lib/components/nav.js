@@ -1,13 +1,21 @@
 import { defPromotionNav, defTabs } from "../common/def";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { defFilterType } from "../common/def";
 
-export const useHandleNav = ({ defaultValue = defFilterType.all }) => {
+export const useHandleNav = ({ defaultValue = defFilterType.all, isLogin }) => {
 	const [filterType, setFilterType] = useState(defaultValue);
 
 	const onClickFilter = value => {
 		setFilterType(value);
 	};
+
+	useEffect(() => {
+		const afterLogin = defPromotionNav.find(n => n.value === filterType)
+			?.afterLogin;
+		if (afterLogin && !isLogin) {
+			setFilterType(defFilterType.all);
+		}
+	}, [filterType, isLogin]);
 
 	return { filterType, onClickFilter };
 };

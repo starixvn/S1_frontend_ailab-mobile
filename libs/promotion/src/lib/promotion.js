@@ -85,7 +85,8 @@ const PromotionContent = ({ staticList, location }) => {
 		defaultValue: getFilterType({
 			location,
 			column: defUrlParamCols.filterType
-		})
+		}),
+		isLogin: userInfo.isLogin
 	});
 	const { promotion, getPromotionListV2 } = useGetPromotions({
 		api,
