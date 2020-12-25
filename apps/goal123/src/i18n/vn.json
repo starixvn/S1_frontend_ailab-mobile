@@ -352,6 +352,8 @@
 	"lbl_last_2_day":"2 ngày qua",
 	"lbl_last_3_day":"3 ngày qua",
 	"lbl_LastUpdTime":"Cập nhật vào lúc {{time}}  (Cập nhật mỗi 30 phút)",
-	"msg_PhoneExisted":"Số điện thoại này đã được sử dụng."
+	"msg_PhoneExisted":"Số điện thoại này đã được sử dụng.",
+	"lbl_BonusWallet_1": "Ví tiền thưởng Casino Slots",
+	"lbl_BonusWallet_2": "Ví tiền thưởng Casino Trực Tuyế"
 
 }
