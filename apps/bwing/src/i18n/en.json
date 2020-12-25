@@ -413,8 +413,9 @@
 	"lbl_MoreDetails":"MORE DETAILS",
 	"lbl_No1_Reward":"NO.1 REWARD",
 	"msg_PhoneExisted":"Phone number already exists.",
-
 	"lbl_TraditionalLottery":"Traditional Lottery",
 	"lbl_789Lottery":"789 Lottery",
-	"lbl_liveCasino_789SeDie":"789 Se Die"
+	"lbl_liveCasino_789SeDie":"789 Se Die",
+	"lbl_BonusWallet_1": "Casino Bonus Wallet",
+	"lbl_BonusWallet_2": "Live Casino Bonus Wallet"
 }
