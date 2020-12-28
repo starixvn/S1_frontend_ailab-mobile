@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "@reach/router";
 import {
 	userInfoContext,
@@ -8,7 +8,11 @@ import {
 	defNavPanel,
 	navContext
 } from "../common/context";
-import { api_GetWalletInfo } from "../../service/api/account";
+import {
+	api_GetBalnace,
+	api_account_GetTpWalletList,
+	api_account_GetTpWalletBalance
+} from "../../service/api/account";
 import JoinPanel from "../join/join";
 import LoginPanel from "../login/login";
 import { number_format } from "../common/common";
@@ -18,11 +22,13 @@ import Menu from "./header.menu";
 import SubMenu from "./submenu";
 import { LOGOUT } from "../../service/auth";
 import Logo from "../img/logo";
+import { tpWalletsListType } from "../transfer/transfer";
 
-const useGetBalance = ({ isLogin }) => {
+export const useGetBalance = ({ isLogin }) => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { walletInfo, setWalletInfo } = useContext(walletInfoContext);
 	const { i18n } = useContext(i18nContext);
+	const [tpWalletsList, setTpWalletsList] = useState([]);
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -32,55 +38,125 @@ const useGetBalance = ({ isLogin }) => {
 
 	useEffect(() => {
 		if (isLogin) {
-			api_GetWalletInfo().then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							let _data = res.data.data;
-							let mainWalletBalance = _data.balance;
+			GetBalance();
+		}
+	}, [isLogin]);
 
-							let otherWalletBalance = _data.tpWallets?.reduce(
-								(prev, curr) => {
-									return prev + curr.balance;
-								},
-								0
-							);
-
-							setWalletInfo(prevState => ({
-								...prevState,
-								allBalance:
-									mainWalletBalance + otherWalletBalance
-							}));
-						} else {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: res.data.message
-							});
-						}
-					}
-				},
-				err => {
-					if (isMountedRef.current) {
+	const GetBalance = () => {
+		api_GetBalnace().then(
+			res => {
+				if (isMountedRef.current) {
+					if (res.data.errorCode === 0) {
+						setWalletInfo(prevState => ({
+							...prevState,
+							main: res.data.data
+						}));
+					} else {
 						setPopBox({
 							isOpen: true,
 							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
+							content: `[${res.data.errorCode}]${res.data.message}`
 						});
 					}
 				}
-			);
-		}
-	}, [isLogin, setPopBox, setWalletInfo]);
+			},
+			err => {
+				if (isMountedRef.current) {
+					setPopBox({
+						isOpen: true,
+						title: i18n.lbl_ImportantNote,
+						content: i18n.msg_ApiServerError
+					});
+				}
+			}
+		);
 
-	return { walletInfo };
+		api_account_GetTpWalletList({
+			ListType: tpWalletsListType.allWallets
+		}).then(
+			res => {
+				if (isMountedRef.current) {
+					if (res.data.errorCode === 0) {
+						res.data.data?.forEach(i => {
+							api_account_GetTpWalletBalance({
+								TpId: i.tpId
+							}).then(
+								res => {
+									if (res.data.errorCode === 0) {
+										let data = res.data.data;
+										let tpWalletData = {
+											id: data.tpId,
+											balance: data.balance
+										};
+
+										let tpWalletIdx = tpWalletsList.findIndex(
+											wallet => wallet.id === i.tpId
+										);
+
+										if (tpWalletIdx !== -1) {
+											setTpWalletsList(prev => {
+												prev[
+													tpWalletIdx
+												] = tpWalletData;
+												return prev;
+											});
+										} else {
+											setTpWalletsList(prev => [
+												...prev,
+												tpWalletData
+											]);
+										}
+									}
+								},
+								err => {
+									if (isMountedRef.current) {
+										setPopBox({
+											isOpen: true,
+											title: i18n.lbl_ImportantNote,
+											content: i18n.msg_ApiServerError
+										});
+									}
+								}
+							);
+						});
+					} else {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: `[${res.data.errorCode}]${res.data.message}`
+						});
+					}
+				}
+			},
+			err => {
+				if (isMountedRef.current) {
+					setPopBox({
+						isOpen: true,
+						title: i18n.lbl_ImportantNote,
+						content: i18n.msg_ApiServerError
+					});
+				}
+			}
+		);
+	};
+
+	let otherWalletBalance = tpWalletsList?.reduce((prev, curr) => {
+		return prev + curr.balance;
+	}, 0);
+	let allWalletBalance = walletInfo.main + otherWalletBalance;
+
+	let allBalance = !allWalletBalance
+		? 0
+		: number_format(allWalletBalance, false);
+
+	return { allBalance };
 };
 
 export default ({ hideLogo, title, showMenuBar }) => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
-	const { walletInfo } = useGetBalance(userInfo);
+	const { allBalance } = useGetBalance({ isLogin: userInfo.isLogin });
 
 	const OnClickProduct = ({ tpId, gameId, langId, isLogin }) => {
 		return GET_ENTER_PAGE({
@@ -146,11 +222,7 @@ export default ({ hideLogo, title, showMenuBar }) => {
 					i18n={i18n}
 					currencyId={userInfo.currencyId}
 					userName={userInfo.userName}
-					allBalance={
-						!walletInfo.allBalance
-							? 0
-							: number_format(walletInfo.allBalance, false)
-					}
+					allBalance={allBalance}
 				/>
 			</div>
 			{menu}

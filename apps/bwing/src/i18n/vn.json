@@ -413,8 +413,10 @@
 	"lbl_No1_Reward":"GIẢI NHẤT",
 	"lbl_Prizes":"Giải thưởng",
 	"msg_PhoneExisted":"Số điện thoại này đã được sử dụng.",
-
 	"lbl_TraditionalLottery":"Xổ Số Truyền thống",
 	"lbl_789Lottery":"Xổ số tự quay 789",
-	"lbl_liveCasino_789SeDie":"Xóc Đĩa 789"
+	"lbl_liveCasino_789SeDie":"Xóc Đĩa 789",
+	"lbl_please_select_from_wallet":"Vui lòng chọn ví tiền phù hợp",
+	"lbl_please_select_to_wallet":"Vui lòng chọn quỹ phù hợp"
+
 }

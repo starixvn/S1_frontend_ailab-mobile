@@ -3,14 +3,11 @@ import Logo from "../img/logo";
 import {
 	userInfoContext,
 	i18nContext,
-	walletInfoContext,
 	navContext,
 	defNavPanel
 } from "../common/context";
 import { Link } from "@reach/router";
 import path from "../../path";
-// import { api_GetWalletInfo } from "../../service/api/account";
-import { number_format } from "../common/common";
 // import ReloadSpin from "../common/reloadSpin";
 import { defGameInfo } from "../../datas/productList";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
@@ -18,6 +15,7 @@ import ShortcutBar from "./shortcutBar";
 import LangDropdown from "../common/dropdown.language";
 import { siteInfo } from "../../config";
 import { api_SetLanguage } from "../../service/api/account";
+import { useGetBalance } from "./header";
 
 const defSubMenus = langId => [
 	{
@@ -67,8 +65,9 @@ export default () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { nav, setNav } = useContext(navContext);
-	const { walletInfo } = useContext(walletInfoContext);
 	const [isOpenSubMenu, setIsOpenSubMenu] = useState([]);
+
+	const { allBalance } = useGetBalance({ isLogin: userInfo.isLogin });
 
 	const handleSubMenu = displayKey => {
 		if (isOpenSubMenu.includes(displayKey)) {
@@ -118,11 +117,7 @@ export default () => {
 				{userInfo.isLogin ? (
 					<div className="icon icon-wallteIcon" href="">
 						<span>{i18n[`Currency_${userInfo.currencyId}`]} </span>
-						<span>
-							{!walletInfo.allBalance
-								? 0
-								: number_format(walletInfo.allBalance, false)}
-						</span>
+						<span>{allBalance}</span>
 					</div>
 				) : null}
 				<LangDropdown
