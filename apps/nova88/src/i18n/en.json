@@ -384,6 +384,9 @@
 	"lbl_Referral":"Referral",
 	"lbl_Share_with_friend":"Share your favorite offers with friend!",
 	"lbl_Your_link_invite":"Your unique link invite",
-	"lbl_Copy_to_clipboard":"Copy to Clipboard"
+	"lbl_Copy_to_clipboard":"Copy to Clipboard",
+	"lbl_Referral_code":"Referral Code",
+	"lbl_Referral_link":"Referral Link",
+	"lbl_Downloads":"Downloads"
 
 }

@@ -384,6 +384,9 @@
 	"lbl_Referral":"推荐",
 	"lbl_Share_with_friend":"与朋友分享您最喜欢的优惠！",
 	"lbl_Your_link_invite":"您的专属邀请连结",
-	"lbl_Copy_to_clipboard":"复制到剪贴板"
+	"lbl_Copy_to_clipboard":"复制到剪贴板",
+	"lbl_Referral_code":"Referral Code",
+	"lbl_Referral_link":"Referral Link",
+	"lbl_Downloads":"下载"
 
 }

@@ -1,25 +1,56 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState, useContext, useRef } from "react";
-import { i18nContext } from "../common/context";
+import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
 import stepImg from "../../styles/img/refbanner.png";
 import ReacentDatas from "./referral.recentDatas";
 import MediaLinks, { text_welCome } from "./links";
+import api from "../../service/api";
+import path from "../../path";
+import QRCode from "qrcode.react";
 
-const fakeData = {
-	referralCode: "xxxReferralCodexxxxxx",
-	refId: "xxx"
-};
-
-const currentLocation = window.location.hostname;
+const currentLocation = window.location.origin;
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
-	const [data, setData] = useState(fakeData);
+	const { userInfo } = useContext(userInfoContext);
+	const { setPopBox } = useContext(popBoxContext);
+	const [referralCode, setReferralCode] = useState("");
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => (isMountedRef.current = false);
 	});
+
+	useEffect(() => {
+		api.account.GetReferralCode().then(
+			res => {
+				if (isMountedRef.current) {
+					if (res.data.errorCode === 0) {
+						setReferralCode(res.data.data);
+					} else {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: `[${res.data.errorCode}]${res.data.message}`
+						});
+					}
+				}
+			},
+			err => {
+				if (isMountedRef.current) {
+					setPopBox({
+						isOpen: true,
+						title: i18n.lbl_ImportantNote,
+						content: i18n.msg_ApiServerError
+					});
+				}
+			}
+		);
+	}, []);
+
+	const refLink = `${currentLocation}/${path.join.root}/?AffId=${referralCode}`;
+	// const refLink = `m.nova88.net/${path.join.root}/?AffId=${referralCode}`;
 
 	const copyText = colName => {
 		if (colName === "copyToClipboard") {
@@ -34,6 +65,17 @@ export default () => {
 			window.getSelection().selectAllChildren(copyCol);
 			document.execCommand("Copy");
 		}
+	};
+
+	const clickDownload = () => {
+		const canvas = document.getElementById("refQRcode");
+		const imgUrl = canvas.toDataURL("image/png", "image/octet-stream");
+		let downloadLink = document.createElement("a");
+		downloadLink.href = imgUrl;
+		downloadLink.download = "refImage.png";
+		document.body.appendChild(downloadLink);
+		downloadLink.click();
+		document.body.removeChild(downloadLink);
 	};
 
 	return (
@@ -58,38 +100,14 @@ export default () => {
 						</div>
 						<a>More Details</a>
 					</div>
-					<div>
-						<div>
-							FREE <span>MYR 88</span>
-						</div>
-						<div>
-							Turn <span>8x</span>
-						</div>
-						<div>
-							Deposit <span>888</span>
-						</div>
-						<a>More Details</a>
-					</div>
-					<div>
-						<div>
-							FREE <span>MYR 88</span>
-						</div>
-						<div>
-							Turn <span>8x</span>
-						</div>
-						<div>
-							Deposit <span>888</span>
-						</div>
-						<a>More Details</a>
-					</div>
 				</div>
 			</div>
 			<div className="refLink">
 				<div className="title">{i18n.lbl_Your_link_invite}</div>
 				<div className="refBox">
-					<div>Referral Code:</div>
+					<div>{i18n.lbl_Referral_code}:</div>
 					<div className="text-org" id="referralCode">
-						{data.referralCode}
+						{referralCode}
 						<button
 							className="icon icon-files-empty"
 							onClick={copyText.bind(
@@ -97,10 +115,9 @@ export default () => {
 								"referralCode"
 							)}></button>
 					</div>
-					<div>Referral Link:</div>
+					<div>{i18n.lbl_Referral_link}:</div>
 					<div className="text-org" id="referralLink">
-						{`${currentLocation}/?refid=${fakeData.refId}`}
-						{/* https://www.nova88.net/?refid=xxxx */}
+						{refLink}
 						<button
 							className="icon icon-files-empty"
 							onClick={copyText.bind(
@@ -110,20 +127,26 @@ export default () => {
 					</div>
 
 					<div className="refMedia">
-						<button
+						<a
 							className="icon icon-files-empty"
 							onClick={copyText.bind(this, "copyToClipboard")}>
 							{i18n.lbl_Copy_to_clipboard}
-						</button>
-						<a className="icon icon-download2">QRCode</a>
-						<MediaLinks />
+						</a>
+						<a
+							className="icon icon-download2"
+							onClick={clickDownload}>
+							{i18n.lbl_Downloads}
+						</a>
+						<MediaLinks
+							refLink={refLink}
+							langId={userInfo.langId}
+						/>
 					</div>
+					<QRCode id="refQRcode" value={refLink} />
 				</div>
 			</div>
 
-			<ReacentDatas />
+			{/* <ReacentDatas /> */}
 		</>
 	);
 };
-
-// const
