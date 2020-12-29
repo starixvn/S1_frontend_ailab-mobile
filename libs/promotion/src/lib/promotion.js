@@ -17,10 +17,14 @@ import SpecialBonusCodeInputBox from "./components/specialBonusCodeInputBox";
 import { useHandleSpecialBonus } from "./hook/useHandleSpecialBonus";
 import { useGetPromotions } from "./hook/useGetPromotions";
 
-export const Promotion = ({ staticList, location, ...rest }) => {
+export const Promotion = ({ staticList, location, navBar, ...rest }) => {
 	return (
 		<Wrapper {...rest}>
-			<PromotionContent staticList={staticList} location={location} />
+			<PromotionContent
+				staticList={staticList}
+				location={location}
+				navBar={navBar}
+			/>
 		</Wrapper>
 	);
 };
@@ -74,7 +78,7 @@ const getFilterType = ({ location, column }) => {
 		: undefined;
 };
 
-const PromotionContent = ({ staticList, location }) => {
+const PromotionContent = ({ staticList, location, navBar }) => {
 	const { uiSetting, userInfo, i18n, api, ruleCols } = useContext(
 		configContext
 	);
@@ -187,6 +191,7 @@ const PromotionContent = ({ staticList, location }) => {
 		<>
 			<Tab i18n={i18n} tab={tab} onClickTab={onClickTab} />
 			<Nav
+				navBar={navBar}
 				i18n={i18n}
 				tab={tab}
 				filterType={filterType}

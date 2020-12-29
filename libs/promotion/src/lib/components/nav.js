@@ -4,7 +4,8 @@ import React, { useState, useEffect } from "react";
 export const useHandleNav = ({
 	defaultValue = defFilterType.all,
 	isLogin,
-	tab
+	tab,
+	navBar = defPromotionNav
 }) => {
 	const [filterType, setFilterType] = useState(defaultValue);
 
@@ -19,21 +20,27 @@ export const useHandleNav = ({
 	}, [tab]);
 
 	useEffect(() => {
-		const afterLogin = defPromotionNav.find(n => n.value === filterType)
-			?.afterLogin;
+		const afterLogin = navBar.find(n => n.value === filterType)?.afterLogin;
 		if (afterLogin && !isLogin) {
 			setFilterType(defFilterType.all);
 		}
-	}, [filterType, isLogin]);
+	}, [filterType, isLogin, navBar]);
 
 	return { filterType, onClickFilter };
 };
 
-export default ({ i18n = {}, filterType, onClickFilter, tab, isLogin }) => {
+export default ({
+	i18n = {},
+	filterType,
+	onClickFilter,
+	tab,
+	isLogin,
+	navBar = defPromotionNav
+}) => {
 	let rows =
 		tab === defTabs.Expired.key
 			? null
-			: defPromotionNav
+			: navBar
 					.filter(n => !n.afterLogin || (n.afterLogin && isLogin))
 					.map(n => {
 						return (

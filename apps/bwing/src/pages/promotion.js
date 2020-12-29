@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Promotion, defRuleCols } from "@ailab-mobile/promotion";
+import { Promotion, defRuleCols, defNav } from "@ailab-mobile/promotion";
 import config from "Config";
 import path from "Path";
 import { Promotion as uiSetting } from "UISetting";
@@ -22,6 +22,7 @@ export default ({ location }) => {
 				defRuleCols.rollOver,
 				defRuleCols.remainingTime
 			]}
+			navBar={[defNav.All, defNav.FirstDeposit, defNav.FreeBet]}
 			formatSetting={{ isConvertRequired: true, digits: 0 }}
 			location={location}
 		/>

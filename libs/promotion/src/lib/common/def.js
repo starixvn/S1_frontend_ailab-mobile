@@ -22,24 +22,31 @@ export const defFilterType = {
 	specialBonus: 9991
 };
 
-export const defPromotionNav = [
-	{
+export const defNav = {
+	All: {
 		displayKey: "lbl_All",
 		value: defFilterType.all
 	},
-	{
+	FirstDeposit: {
 		displayKey: "lbl_PromotionCategory1",
 		value: defFilterType.firstDeposit
 	},
-	{
+	FreeBet: {
 		displayKey: "lbl_FreeBet",
 		value: defFilterType.freeBet
 	},
-	{
+	SpecialBonus: {
 		displayKey: "lbl_SpecialBonus",
 		value: defFilterType.specialBonus,
 		afterLogin: true
 	}
+};
+
+export const defPromotionNav = [
+	defNav.All,
+	defNav.FirstDeposit,
+	defNav.FreeBet,
+	defNav.SpecialBonus
 ];
 
 export const defTabs = {
