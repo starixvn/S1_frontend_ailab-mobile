@@ -4744,7 +4744,6 @@ span.icon.icon-icon32px_top:after {
 
 .refShare .title {
   margin-bottom: 2vw;
-  padding-left: 1vw;
 }
 
 .refShare .refBox {
@@ -4760,7 +4759,7 @@ span.icon.icon-icon32px_top:after {
 }
 
 .refShare .refBox > div {
-  width: calc(50% - 8vw - 2px);
+  width: 100%;
   margin: 2vw 0;
   margin-left: 0;
   border: 1px solid #F77A00;
@@ -4829,5 +4828,16 @@ span.icon.icon-icon32px_top:after {
 
 .refLink .icon {
   color: white;
+}
+
+.achievement {
+  color: white;
+  margin: 2vw 0;
+  font-weight: bold;
+}
+
+.achievement span {
+  margin-left: 2vw;
+  color: #F77A00;
 }
 /*# sourceMappingURL=style.css.map */
