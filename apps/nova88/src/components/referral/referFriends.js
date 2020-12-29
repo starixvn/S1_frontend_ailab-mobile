@@ -7,6 +7,7 @@ import MediaLinks, { text_welCome } from "./links";
 import api from "../../service/api";
 import path from "../../path";
 import QRCode from "qrcode.react";
+import TandC from "../../service/t_and_c";
 
 const currentLocation = window.location.origin;
 
@@ -90,15 +91,17 @@ export default () => {
 				<div className="refBox">
 					<div className="open">
 						<div>
-							FREE <span>MYR 88</span>
+							{i18n.lbl_Bonus} <span>MYR 88</span>
 						</div>
 						<div>
-							Turn <span>8x</span>
+							{i18n.lbl_ValidBet} <span>8x</span>
 						</div>
 						<div>
-							Deposit <span>888</span>
+							{i18n.lbl_Deposit} <span>888</span>
 						</div>
-						<a>More Details</a>
+						<a href={TandC(userInfo.langId).Referral}>
+							{i18n.lbl_Details}
+						</a>
 					</div>
 				</div>
 			</div>
