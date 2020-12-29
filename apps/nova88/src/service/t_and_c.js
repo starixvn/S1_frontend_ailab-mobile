@@ -13,6 +13,6 @@ export default langId => {
 		AboutUs: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/AboutUs.html`,
 		Terms: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/Terms.html`,
 		ContactUs: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/ContactUs.html`,
-		Referral: `${config.t_and_cURL}/SiteSkin/${config.siteName}/referral/${langId}.html`
+		Referral: `${config.cloudImgURL}/NovaPromotion/referral/${langId}.html`
 	};
 };
