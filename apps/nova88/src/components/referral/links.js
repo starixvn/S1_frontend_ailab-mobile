@@ -35,21 +35,29 @@ export default ({ refLink, langId }) => {
 		<>
 			<a
 				className="icon icon-facebook2"
+				target="_blank"
+				rel="noreferrer"
 				href={_socialLink({ socialMedia: "fb" })}>
 				Facebook
 			</a>
 			<a
 				className="icon icon-whatsapp"
+				target="_blank"
+				rel="noreferrer"
 				href={_socialLink({ socialMedia: "whatsapp" })}>
 				Whatsapp
 			</a>
 			<a
 				className="icon icon-line"
+				target="_blank"
+				rel="noreferrer"
 				href={_socialLink({ socialMedia: "line" })}>
 				Line
 			</a>
 			<a
 				className="icon icon-telegram"
+				target="_blank"
+				rel="noreferrer"
 				href={_socialLink({ socialMedia: "telegram" })}>
 				Telegram
 			</a>

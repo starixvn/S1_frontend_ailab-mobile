@@ -8,6 +8,7 @@ import api from "../../service/api";
 import path from "../../path";
 import QRCode from "qrcode.react";
 import TandC from "../../service/t_and_c";
+import { number_format, isConvert } from "../common/common";
 
 const currentLocation = window.location.origin;
 
@@ -16,6 +17,8 @@ export default () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const [referralCode, setReferralCode] = useState("");
+	const [referralData, setReferralData] = useState({});
+	const _isConvert = isConvert(userInfo.currencyId);
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -50,13 +53,39 @@ export default () => {
 		);
 	}, []);
 
+	useEffect(() => {
+		api.account.GetReferralSetting().then(
+			res => {
+				if (isMountedRef.current) {
+					if (res.data.errorCode === 0) {
+						setReferralData(res.data.data[0]);
+					} else {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: `[${res.data.errorCode}]${res.data.message}`
+						});
+					}
+				}
+			},
+			err => {
+				if (isMountedRef.current) {
+					setPopBox({
+						isOpen: true,
+						title: i18n.lbl_ImportantNote,
+						content: i18n.msg_ApiServerError
+					});
+				}
+			}
+		);
+	}, []);
+
 	const refLink = `${currentLocation}/${path.join.root}/?AffId=${referralCode}`;
-	// const refLink = `m.nova88.net/${path.join.root}/?AffId=${referralCode}`;
 
 	const copyText = colName => {
 		if (colName === "copyToClipboard") {
 			let virtualInput = document.createElement("input");
-			virtualInput.value = text_welCome;
+			virtualInput.value = text_welCome[userInfo.langId];
 			document.body.appendChild(virtualInput);
 			virtualInput.select();
 			document.execCommand("copy");
@@ -71,12 +100,19 @@ export default () => {
 	const clickDownload = () => {
 		const canvas = document.getElementById("refQRcode");
 		const imgUrl = canvas.toDataURL("image/png", "image/octet-stream");
-		let downloadLink = document.createElement("a");
-		downloadLink.href = imgUrl;
-		downloadLink.download = "refImage.png";
-		document.body.appendChild(downloadLink);
-		downloadLink.click();
-		document.body.removeChild(downloadLink);
+
+		setPopBox({
+			isOpen: true,
+			title: `${i18n.lbl_Referral_code}: ${referralCode}`,
+			content: <img src={imgUrl} alt={referralCode} />
+		});
+
+		// let downloadLink = document.createElement("a");
+		// downloadLink.href = imgUrl;
+		// downloadLink.download = "refImage.png";
+		// document.body.appendChild(downloadLink);
+		// downloadLink.click();
+		// document.body.removeChild(downloadLink);
 	};
 
 	return (
@@ -89,17 +125,48 @@ export default () => {
 			<div className="refShare">
 				<div className="title">{i18n.lbl_Share_with_friend}</div>
 				<div className="refBox">
-					<div className="open">
+					<div>
 						<div>
-							{i18n.lbl_Bonus} <span>MYR 88</span>
+							{i18n.lbl_Bonus}
+							<span>
+								{` ${
+									i18n[`Currency_${userInfo.currencyId}`]
+								} ${number_format(
+									referralData.bonusAmount,
+									_isConvert
+								)}`}
+							</span>
 						</div>
 						<div>
-							{i18n.lbl_ValidBet} <span>8x</span>
+							{i18n.lbl_ValidBet}
+							<span>
+								{` ${
+									i18n[`Currency_${userInfo.currencyId}`]
+								} ${number_format(
+									referralData.vaildBet,
+									_isConvert
+								)}`}
+							</span>
 						</div>
 						<div>
-							{i18n.lbl_Deposit} <span>888</span>
+							{i18n.lbl_Deposit}
+							<span>
+								{` ${
+									i18n[`Currency_${userInfo.currencyId}`]
+								} ${number_format(
+									referralData.deposit,
+									_isConvert
+								)}`}
+							</span>
 						</div>
-						<a href={TandC(userInfo.langId).Referral}>
+						<div>
+							{i18n.lbl_ValidPeriod}
+							<span>{` ${referralData.periodDays} ${i18n.lbl_Days}`}</span>
+						</div>
+						<a
+							href={TandC(userInfo.langId).Referral}
+							target="_blank"
+							rel="noreferrer">
 							{i18n.lbl_Details}
 						</a>
 					</div>
@@ -108,16 +175,6 @@ export default () => {
 			<div className="refLink">
 				<div className="title">{i18n.lbl_Your_link_invite}</div>
 				<div className="refBox">
-					<div>{i18n.lbl_Referral_code}:</div>
-					<div className="text-org" id="referralCode">
-						{referralCode}
-						<button
-							className="icon icon-files-empty"
-							onClick={copyText.bind(
-								this,
-								"referralCode"
-							)}></button>
-					</div>
 					<div>{i18n.lbl_Referral_link}:</div>
 					<div className="text-org" id="referralLink">
 						{refLink}
@@ -135,17 +192,19 @@ export default () => {
 							onClick={copyText.bind(this, "copyToClipboard")}>
 							{i18n.lbl_Copy_to_clipboard}
 						</a>
-						<a
-							className="icon icon-download2"
-							onClick={clickDownload}>
-							{i18n.lbl_Downloads}
+						<a className="icon icon-qrcode" onClick={clickDownload}>
+							QR Code
 						</a>
 						<MediaLinks
 							refLink={refLink}
 							langId={userInfo.langId}
 						/>
 					</div>
-					<QRCode id="refQRcode" value={refLink} />
+					<QRCode
+						id="refQRcode"
+						value={refLink}
+						style={{ display: "none" }}
+					/>
 				</div>
 			</div>
 

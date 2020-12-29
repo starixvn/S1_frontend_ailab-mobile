@@ -387,6 +387,7 @@
 	"lbl_Copy_to_clipboard":"Copy to Clipboard",
 	"lbl_Referral_code":"Referral Code",
 	"lbl_Referral_link":"Referral Link",
-	"lbl_Downloads":"Dowload"
+	"lbl_Downloads":"Dowload",
+	"lbl_ValidPeriod":"Valid Period"
 
 }
