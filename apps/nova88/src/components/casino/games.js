@@ -28,7 +28,7 @@ const Games = props => {
 					{g.new ? <i className="icon icon-new"></i> : null}
 					<img
 						onClick={SelectGame.bind(this, t.value, g)}
-						src={`${imgUrl}/${
+						src={`${imgUrl}/${TpList[g.tpId]?.name}/${
 							g.imgName[userInfo.langId] ?? g.imgName.en
 						}`}
 						alt={g.name[userInfo.langId] ?? g.name.en}

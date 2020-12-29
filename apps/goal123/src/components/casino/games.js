@@ -27,7 +27,7 @@ const Games = props => {
 					key={`casino-game-${t.value}-${g.gameId}`}>
 					<img
 						onClick={SelectGame.bind(this, t.value, g)}
-						src={`${imgUrl}/${
+						src={`${imgUrl}/${TpList[g.tpId]?.name}/${
 							g.imgName[userInfo.langId] ?? g.imgName.en
 						}`}
 						alt={g.name[userInfo.langId] ?? g.name.en}
