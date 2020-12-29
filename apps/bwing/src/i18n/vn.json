@@ -354,7 +354,7 @@
 	"lbl_KycHint": "Gửi giấy tờ tuỳ thân có dán ảnh ",
 	"lbl_ImageUploadWarning": "Lưu ý: ảnh chụp màn hình không được chấp nhận.",
 	"lbl_ImageJpgPngOnly": "Căn cước công dân",
-	"lbl_Affiliate_ID": "ID Đại lý/ Người giới thiệu",
+	"lbl_Affiliate_ID": "ID đại lý/ Người giới thiệu (nếu có)",
 	"lbl_Please_enter_Affiliate_ID": "Vui lòng nhập ID Đại lý (tùy chọn), thông tin không thể thay đổi sau khi đã nhập!",
 	"lbl_DepositOptionHint": "Bạn có thể chọn phương thức nạp tiền phù hợp nhất bên dưới:",
 	"lbl_SelectPaymentMethods": "Lựa Chọn Phương Thức",

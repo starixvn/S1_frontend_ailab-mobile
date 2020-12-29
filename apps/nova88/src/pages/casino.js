@@ -87,7 +87,7 @@ class Panel extends React.Component {
 				// let hasFeature = false;
 				res.data.data.forEach(t => {
 					_tpList[t.value] = { ...t };
-					if (t.gameList.data) {
+					if (t.gameList?.data) {
 						t.gameList.data.forEach(g => {
 							// if (t.value === this.props.tpId) {
 							// 	hasPromo =

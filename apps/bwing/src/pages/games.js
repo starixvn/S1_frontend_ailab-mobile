@@ -18,12 +18,14 @@ const defGames = [
 	{
 		...defGameInfo.One789_lottery,
 		displayKey: "lbl_TraditionalLottery",
-		img: One789LotteryTra
+		img: One789LotteryTra,
+		isNew: true
 	},
 	{
 		...defGameInfo.One789_lottery_789,
 		displayKey: "lbl_789Lottery",
-		img: One789Lottery
+		img: One789Lottery,
+		isNew: true
 	},
 	{
 		...defGameInfo.sabaClub,
@@ -63,7 +65,7 @@ export default () => {
 	let arr = defGames.map(game => {
 		return (
 			<button
-				className="gameInBox"
+				className={`gameInBox${game.isNew ? " newicon" : ""}`}
 				key={`gamesPanel-${game.displayKey}`}
 				onClick={ClickGame.bind(
 					this,

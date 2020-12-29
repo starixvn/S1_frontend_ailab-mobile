@@ -1172,4 +1172,8 @@
 .icon-one789:before {
   content: "\e9e6";
 }
+
+.icon-other:before {
+  content: "\e9e1";
+}
 /*# sourceMappingURL=font.css.map */

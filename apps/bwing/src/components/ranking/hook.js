@@ -40,7 +40,7 @@ export const useGetRanking = ({
 			const GetRankingDatas = async () => {
 				setLoading(true);
 				try {
-					const TopNum = 20;
+					const TopNum = 16;
 					const res = await api_events_GetLeaderboardList({
 						lBCategoryId,
 						TopNum,
