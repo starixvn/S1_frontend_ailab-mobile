@@ -28,7 +28,8 @@ class Panel extends React.Component {
 				gameType: { idx: 0, value: null }
 			},
 			favorite: [],
-			selNav: Object.keys(defNav)?.[0]
+			selNav: Object.keys(defNav)?.[0],
+			imgUrl: ""
 		};
 	}
 	componentWillUnmount = () => {
@@ -78,12 +79,13 @@ class Panel extends React.Component {
 		window.addEventListener("touchmove", this.ScrollBarListener, {
 			passive: false
 		});
-		api.site.GetGamelist().then(res => {
+		api.site.GetGamelistV2().then(res => {
 			if (res.data.errorCode === 0) {
 				let _tpList = {};
 				let games = [];
 
-				res.data.data.forEach(t => {
+				const { imgUrl, providerList } = res.data.data;
+				providerList.forEach(t => {
 					_tpList[t.value] = { ...t };
 					if (t.gameList?.data) {
 						t.gameList.data.forEach(g => {
@@ -112,7 +114,8 @@ class Panel extends React.Component {
 						{
 							tpList: _tpList,
 							gameDatas: games,
-							selNav: nav
+							selNav: nav,
+							imgUrl: imgUrl
 						},
 						() => {
 							this.SetMoreItems();
@@ -338,6 +341,7 @@ class Panel extends React.Component {
 					SetFavorite={this.SetFavorite}
 					TpList={this.state.tpList}
 					i18n={this.props.i18n}
+					imgUrl={this.state.imgUrl}
 				/>
 
 				{this.state.selGameInfo === null ? null : (
