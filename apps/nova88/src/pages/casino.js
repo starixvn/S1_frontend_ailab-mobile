@@ -85,7 +85,7 @@ class Panel extends React.Component {
 				let games = [];
 
 				const { imgUrl, providerList } = res.data.data;
-				providerList.forEach(t => {
+				providerList?.forEach(t => {
 					_tpList[t.value] = { ...t };
 					if (t.gameList?.data) {
 						t.gameList.data.forEach(g => {

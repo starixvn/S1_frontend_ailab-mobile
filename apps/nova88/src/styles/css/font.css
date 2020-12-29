@@ -49,6 +49,10 @@
   font-size: 4vw !important;
 }
 
+.icon-friend:before {
+  content: "\e9ba";
+}
+
 .icon-cq9:before {
   content: "\e9b9";
 }
@@ -61,8 +65,8 @@
   content: "\e9b7";
 }
 
-.icon-nodata2:before {
-  content: "\e9a7";
+.icon-nodata:before {
+  content: "\e9b4";
 }
 
 .icon-new:before {
@@ -77,8 +81,8 @@
   content: "\e9b0";
 }
 
-.icon-nodata:before {
-  content: "\e9b4";
+.icon-nodata1:before {
+  content: "\e9a7";
 }
 
 .icon-USDC:before {
@@ -769,6 +773,10 @@
   content: "\e9ac";
 }
 
+.icon-download2:before {
+  content: "\e9c5";
+}
+
 .icon-sphere:before {
   content: "\e9c9";
 }
@@ -907,6 +915,10 @@
 
 .icon-android:before {
   content: "\eac0";
+}
+
+.icon-skype:before {
+  content: "\eac5";
 }
 
 .icon-IcoMoon:before {
