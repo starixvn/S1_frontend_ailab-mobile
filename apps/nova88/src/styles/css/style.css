@@ -588,6 +588,21 @@ main .sideBar button.icon:before, main .sideBar a.icon:before {
   text-align: center;
 }
 
+main .sideBar button .icon-new, main .sideBar a .icon-new {
+  background: #F77A00;
+  background: #F77A00;
+  border-radius: 3px;
+  padding: 0 1vw;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  margin: auto;
+}
+
+main .sideBar button .icon-new:before, main .sideBar a .icon-new:before {
+  font-size: 3vw;
+}
+
 main .gameList {
   width: calc(100% - 21vw);
   position: absolute;
@@ -2765,9 +2780,7 @@ button.clickBtn:before {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  width: -webkit-min-content;
-  width: -moz-min-content;
-  width: min-content;
+  width: 18vw;
 }
 
 .slotFunction {
@@ -4350,6 +4363,31 @@ span.important {
   color: #4bad30;
 }
 
+.installGuide .guides .step {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.installGuide .guides .step .content {
+  font-weight: bold;
+  color: #F77A00;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.installGuide .guides .step .content span {
+  font-size: 14px;
+  display: block;
+  color: #fff;
+  font-weight: normal;
+}
+
 .kissdoanload {
   display: none;
   margin-top: 3vw;
@@ -4700,6 +4738,8 @@ span.icon.icon-icon32px_top:after {
 
 .refbanner {
   margin-bottom: 2vw;
+  width: 100%;
+  height: auto;
 }
 
 .refShare .title {
