@@ -355,6 +355,7 @@
 	"msg_PhoneExisted":"Phone number already exists.",
 
 	"lbl_New":"New",
-	"lbl_AllProvider":"All Provider",
-	"lbl_AllGameType":"All Game Type"
+	"lbl_AllProvider":"All Platform",
+	"lbl_AllGameType":"All Categories",
+	"lbl_SearchGames":"Search Games"
 }

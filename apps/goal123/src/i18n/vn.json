@@ -354,7 +354,8 @@
 	"lbl_LastUpdTime":"Cập nhật vào lúc {{time}}  (Cập nhật mỗi 30 phút)",
 	"msg_PhoneExisted":"Số điện thoại này đã được sử dụng.",
 
-	"lbl_New":"New",
-	"lbl_AllProvider":"All Provider",
-	"lbl_AllGameType":"All Game Type"
+	"lbl_New":"Mới",
+	"lbl_AllProvider":"Tất cả nền tảng",
+	"lbl_AllGameType":"Tất cả thể loại",
+	"lbl_SearchGames":"Tìm kiếm trò chơi"
 }

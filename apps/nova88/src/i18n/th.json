@@ -379,7 +379,8 @@
 	"lbl_Ranking_LiveCasino":"คาสิโนสด อันดับที่",
 	"lbl_Ranking_Slots":"สล็อต อันดับที่",
 
-	"lbl_New":"New",
-	"lbl_AllProvider":"All Provider",
-	"lbl_AllGameType":"All Game Type"
+	"lbl_New":"ใหม่",
+	"lbl_AllProvider":"แพลตฟอร์มทั้งหมด",
+	"lbl_AllGameType":"ทุกหมวดหมู่",
+	"lbl_SearchGames":"ค้นหาเกมส์"
 }

@@ -379,7 +379,8 @@
 	"lbl_Ranking_LiveCasino":"真人排行榜",
 	"lbl_Ranking_Slots":"老虎机排行榜",
 
-	"lbl_New":"New",
-	"lbl_AllProvider":"All Provider",
-	"lbl_AllGameType":"All Game Type"
+	"lbl_New":"新游戏",
+	"lbl_AllProvider":"所有平台",
+	"lbl_AllGameType":"所有类型",
+	"lbl_SearchGames":"搜索游戏"
 }

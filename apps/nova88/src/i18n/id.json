@@ -379,7 +379,8 @@
 	"lbl_Ranking_LiveCasino":"Peringkat Live Casino",
 	"lbl_Ranking_Slots":"Peringkat Slot Mesin",
 
-	"lbl_New":"New",
-	"lbl_AllProvider":"All Provider",
-	"lbl_AllGameType":"All Game Type"
+	"lbl_New":"Baru",
+	"lbl_AllProvider":"Semua Platform",
+	"lbl_AllGameType":"Semua Kategori",
+	"lbl_SearchGames":"Cari Permainan"
 }
