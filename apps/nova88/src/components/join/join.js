@@ -70,9 +70,12 @@ const Join = () => {
 
 	useEffect(() => {
 		let AffCode = getUrlParameter("AffCode") || getCookie("AffCode");
+		let AffId = getUrlParameter("AffId") || getCookie("AffId");
 
-		if (AffCode && isMountedRef) {
+		if (AffCode) {
 			setAffiliateidExist(AffCode);
+		} else if (AffId) {
+			setAffiliateidExist(AffId);
 		}
 	}, []);
 
