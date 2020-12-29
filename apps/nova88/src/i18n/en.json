@@ -377,5 +377,9 @@
 	"lbl_EventTitle":"Christmas & New Year IPhone 12 Giveaway",
 	"lbl_Ranking_Sports":"Sports Ranking",
 	"lbl_Ranking_LiveCasino":"Live Casino Ranking",
-	"lbl_Ranking_Slots":"Slots Ranking"
+	"lbl_Ranking_Slots":"Slots Ranking",
+
+	"lbl_New":"New",
+	"lbl_AllProvider":"All Provider",
+	"lbl_AllGameType":"All Game Type"
 }

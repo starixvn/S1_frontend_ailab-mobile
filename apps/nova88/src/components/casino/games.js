@@ -17,6 +17,7 @@ const Games = props => {
 				<div
 					className="info"
 					key={`casino-game-${t.value}-${g.gameId}`}>
+					{g.new ? <i className="icon icon-new"></i> : null}
 					<img
 						onClick={props.SelectGame.bind(this, t.value, g)}
 						src={`${config.imgUrl}/common/images/Casino/${t.name}/${

@@ -377,5 +377,9 @@
 	"lbl_EventTitle":"圣诞快乐 & 新年如意 送出 IPhone 12",
 	"lbl_Ranking_Sports":"体育排行榜",
 	"lbl_Ranking_LiveCasino":"真人排行榜",
-	"lbl_Ranking_Slots":"老虎机排行榜"
+	"lbl_Ranking_Slots":"老虎机排行榜",
+
+	"lbl_New":"New",
+	"lbl_AllProvider":"All Provider",
+	"lbl_AllGameType":"All Game Type"
 }
