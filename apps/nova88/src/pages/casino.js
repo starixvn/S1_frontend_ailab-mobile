@@ -355,11 +355,13 @@ class Panel extends React.Component {
 							className="icon icon-cancel-circle"
 							onClick={this.CloseSelGame}></button>
 						<div className="btn-group">
-							<button
-								className="white"
-								onClick={this.ClickPlay.bind(this, true)}>
-								{this.props.i18n.lbl_Free}
-							</button>
+							{this.state.selGameInfo.playFree ? (
+								<button
+									className="white"
+									onClick={this.ClickPlay.bind(this, true)}>
+									{this.props.i18n.lbl_Free}
+								</button>
+							) : null}
 							<button
 								className="orange"
 								onClick={this.ClickPlay.bind(this, false)}>
