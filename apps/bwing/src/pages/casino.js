@@ -252,6 +252,7 @@ class Panel extends React.Component {
 
 		const matchFilter = (tpId, g) => {
 			let matchNav =
+				(_nav === defNav.NEW.key && g.new === true) ||
 				(_nav === defNav.PROMO.key && g.promotion === 1) ||
 				(_nav === defNav.FEATURED.key && g.featured === true) ||
 				(_nav === defNav.FAVOURITE.key &&

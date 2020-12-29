@@ -416,5 +416,9 @@
 
 	"lbl_TraditionalLottery":"Traditional Lottery",
 	"lbl_789Lottery":"789 Lottery",
-	"lbl_liveCasino_789SeDie":"789 Se Die"
+	"lbl_liveCasino_789SeDie":"789 Se Die",
+
+	"lbl_New":"New",
+	"lbl_AllProvider":"All Provider",
+	"lbl_AllGameType":"All Game Type"
 }

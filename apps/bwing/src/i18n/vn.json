@@ -416,5 +416,9 @@
 
 	"lbl_TraditionalLottery":"Xổ Số Truyền thống",
 	"lbl_789Lottery":"Xổ số tự quay 789",
-	"lbl_liveCasino_789SeDie":"Xóc Đĩa 789"
+	"lbl_liveCasino_789SeDie":"Xóc Đĩa 789",
+
+	"lbl_New":"New",
+	"lbl_AllProvider":"All Provider",
+	"lbl_AllGameType":"All Game Type"
 }

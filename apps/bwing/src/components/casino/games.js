@@ -34,6 +34,7 @@ const Games = props => {
 						className={`icon icon-star-${
 							_isFavorite ? "full" : "empty"
 						}`}></span>
+					{g.new ? <div className="newTag">NEW</div> : null}
 				</div>
 			);
 		});
