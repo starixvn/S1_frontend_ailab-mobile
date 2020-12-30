@@ -25,4 +25,14 @@ export class promotionAPI extends BaseAPI {
 			TpId,
 			PromoCategoryId
 		});
+
+	GetSpecialPromotionList = ({ langId, SpecialCode }) =>
+		this.promotionRequest.post(`/GetSpecialPromotionList/${langId}`, {
+			SpecialCode
+		});
+
+	SetSpecialCode = ({ langId, SpecialCode }) =>
+		this.promotionRequest.post(`/SetSpecialCode/${langId}`, {
+			SpecialCode
+		});
 }
