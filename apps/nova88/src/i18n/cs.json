@@ -218,7 +218,7 @@
 	"msg_ApiServerError": "糟糕！出现错误，请再尝试。",
 	"msg_SubmitDepositTime": "请提交您存款时间",
 	"msg_SelectFile": "选择文档",
-	"msg_ReferenceNumber": "参照好吗",
+	"msg_ReferenceNumber": "参照号码",
 	"msg_WrongAmount": "金额错误",
 	"lbl_Me": "我",
 	"lbl_MyAccount": "我的账户",
@@ -382,5 +382,9 @@
 	"lbl_New":"新游戏",
 	"lbl_AllProvider":"所有平台",
 	"lbl_AllGameType":"所有类型",
-	"lbl_SearchGames":"搜索游戏"
+	"lbl_SearchGames":"搜索游戏",
+	"lbl_BonusWallet_1": "电子游戏红利钱包",
+	"lbl_BonusWallet_2": "真人娱乐红利钱包",
+	"lbl_SpecialBonus":"特别优惠",
+	"lbl_SpecialBonusCode":"特别优惠代码"
 }

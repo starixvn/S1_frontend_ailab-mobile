@@ -382,5 +382,9 @@
 	"lbl_New":"ใหม่",
 	"lbl_AllProvider":"แพลตฟอร์มทั้งหมด",
 	"lbl_AllGameType":"ทุกหมวดหมู่",
-	"lbl_SearchGames":"ค้นหาเกมส์"
+	"lbl_SearchGames":"ค้นหาเกมส์",
+	"lbl_BonusWallet_1": "กระเป๋าเงินโบนัสคาสิโน",
+	"lbl_BonusWallet_2": "กระเป๋าเงินโบนัสคาสิโนสด",
+	"lbl_SpecialBonus":"โบนัสพิเศษ",
+	"lbl_SpecialBonusCode":"รหัสโบนัสพิเศษ"
 }

@@ -412,7 +412,8 @@
 	"lbl_No1_Reward":"GIẢI NHẤT",
 	"lbl_Prizes":"Giải thưởng",
 	"msg_PhoneExisted":"Số điện thoại này đã được sử dụng.",
-
+	"lbl_SpecialBonus":"Khuyến mãi đặc biệt",
+	"lbl_SpecialBonusCode":"Code khuyến mãi đặc biệt",
 	"lbl_TraditionalLottery":"Xổ Số Truyền thống",
 	"lbl_789Lottery":"Xổ số tự quay 789",
 	"lbl_liveCasino_789SeDie":"Xóc Đĩa 789",
@@ -420,5 +421,7 @@
 	"lbl_New":"Mới",
 	"lbl_AllProvider":"Tất cả nền tảng",
 	"lbl_AllGameType":"Tất cả thể loại",
-	"lbl_SearchGames":"Tìm kiếm trò chơi"
+	"lbl_SearchGames":"Tìm kiếm trò chơi",
+	"lbl_BonusWallet_1": "Ví thưởng quay hũ",
+	"lbl_BonusWallet_2": "Ví thưởng sòng bài"
 }

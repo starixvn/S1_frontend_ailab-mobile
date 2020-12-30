@@ -357,5 +357,9 @@
 	"lbl_New":"Mới",
 	"lbl_AllProvider":"Tất cả nền tảng",
 	"lbl_AllGameType":"Tất cả thể loại",
-	"lbl_SearchGames":"Tìm kiếm trò chơi"
+	"lbl_SearchGames":"Tìm kiếm trò chơi",
+	"lbl_BonusWallet_1": "Ví thưởng quay hũ",
+	"lbl_BonusWallet_2": "Ví thưởng sòng bài",
+	"lbl_SpecialBonus":"Khuyến mãi đặc biệt",
+	"lbl_SpecialBonusCode":"Code khuyến mãi đặc biệt"
 }
