@@ -12,7 +12,7 @@ export default ({ i18n, walletInfo, restoreAll, GetWalletInfo }) => {
 							className={`icon icon-icon32px_${
 								idx === 0 ? "Main-Wallet" : "Sportsbook-Wallet"
 							}`}></span>
-						{i18n[item.displayKey].toUpperCase()}
+						{i18n[item.displayKey]?.toUpperCase()}
 					</p>
 					<p>{number_format(item.balance, false)}</p>
 				</div>
