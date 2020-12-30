@@ -115,7 +115,11 @@ const Panel = () => {
 			},
 			err => {
 				if (isMountedRef.current) {
-					setLoading(false);
+					setPopBox({
+						isOpen: true,
+						title: i18n.lbl_ImportantNote,
+						content: i18n.msg_ApiServerError
+					});
 				}
 			}
 		);
@@ -146,7 +150,11 @@ const Panel = () => {
 			},
 			err => {
 				if (isMountedRef.current) {
-					setLoading(false);
+					setPopBox({
+						isOpen: true,
+						title: i18n.lbl_ImportantNote,
+						content: i18n.msg_ApiServerError
+					});
 				}
 			}
 		);
@@ -236,6 +244,7 @@ const Panel = () => {
 						});
 					} else {
 						GetTpWalletBalance(_tpId);
+						GetBalnace();
 						setAmount("");
 						setWarning(initWarning);
 						GetTransferRecent();
@@ -295,7 +304,12 @@ const Panel = () => {
 		<Loading />
 	) : (
 		<div className="depositBox">
-			<WalletPanel i18n={i18n} walletInfo={allWalletsList} />
+			<WalletPanel
+				i18n={i18n}
+				walletInfo={allWalletsList}
+				GetBalnace={GetBalnace}
+				GetTpWalletBalance={GetTpWalletBalance}
+			/>
 			<AmountPanel
 				i18n={i18n}
 				amount={amount}

@@ -2,7 +2,7 @@ import React from "react";
 import { number_format } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
 
-export default ({ i18n, walletInfo }) => {
+export default ({ i18n, walletInfo, GetBalnace, GetTpWalletBalance }) => {
 	let arr = walletInfo.map((item, idx) => {
 		return (
 			<div className="depositInBox" key={`wallets-${item.id}`}>
@@ -18,7 +18,11 @@ export default ({ i18n, walletInfo }) => {
 				</div>
 				<div className="btn-group">
 					<ReloadSpin
-						// func={GetWalletInfo}
+						func={
+							item.id === 0
+								? GetBalnace
+								: GetTpWalletBalance.bind(this, item.id)
+						}
 						className="blue icon icon-spinner11 clickBtn"
 					/>
 				</div>

@@ -3,7 +3,6 @@ import { Link } from "@reach/router";
 import {
 	userInfoContext,
 	i18nContext,
-	walletInfoContext,
 	popBoxContext,
 	defNavPanel,
 	navContext
@@ -26,8 +25,8 @@ import { tpWalletsListType } from "../transfer/transfer";
 
 export const useGetBalance = ({ isLogin }) => {
 	const { setPopBox } = useContext(popBoxContext);
-	const { walletInfo, setWalletInfo } = useContext(walletInfoContext);
 	const { i18n } = useContext(i18nContext);
+	const [mainWalletBalance, setMainWalletBalance] = useState(0);
 	const [tpWalletsList, setTpWalletsList] = useState([]);
 	const isMountedRef = useRef(null);
 
@@ -47,10 +46,7 @@ export const useGetBalance = ({ isLogin }) => {
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
-						setWalletInfo(prevState => ({
-							...prevState,
-							main: res.data.data
-						}));
+						setMainWalletBalance(res.data.data);
 					} else {
 						setPopBox({
 							isOpen: true,
@@ -143,7 +139,7 @@ export const useGetBalance = ({ isLogin }) => {
 	let otherWalletBalance = tpWalletsList?.reduce((prev, curr) => {
 		return prev + curr.balance;
 	}, 0);
-	let allWalletBalance = walletInfo.main + otherWalletBalance;
+	let allWalletBalance = mainWalletBalance + otherWalletBalance;
 
 	let allBalance = !allWalletBalance
 		? 0
