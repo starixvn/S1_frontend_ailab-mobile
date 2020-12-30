@@ -1,13 +1,32 @@
 import React, { useContext } from "react";
-import { i18nContext, userInfoContext } from "../components/common/context";
+import {
+	i18nContext,
+	userInfoContext,
+	navContext,
+	defNavPanel
+} from "../components/common/context";
 import { defGameInfo } from "../datas/productList";
 import { GET_ENTER_PAGE } from "../service/enterPage";
 import LinksPanel from "../components/home/links";
 import sabaClubImg from "../styles/img/sabaclub.png";
 import KenoImg from "../styles/img/keno.png";
 import LotteryImg from "../styles/img/Lottery.png";
+import One789Lottery from "../styles/img/one789.png";
+import One789LotteryTra from "../styles/img/lotteryTra.png";
 
 const defGames = [
+	{
+		...defGameInfo.One789_lottery,
+		displayKey: "lbl_TraditionalLottery",
+		img: One789LotteryTra,
+		isNew: true
+	},
+	{
+		...defGameInfo.One789_lottery_789,
+		displayKey: "lbl_789Lottery",
+		img: One789Lottery,
+		isNew: true
+	},
 	{
 		...defGameInfo.sabaClub,
 		displayKey: "lbl_SabaClub",
@@ -28,6 +47,7 @@ const defGames = [
 export default () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
+	const { setNav } = useContext(navContext);
 
 	const ClickGame = (tpId, gameId, betType) => {
 		GET_ENTER_PAGE({
@@ -45,7 +65,7 @@ export default () => {
 	let arr = defGames.map(game => {
 		return (
 			<button
-				className="gameInBox"
+				className={`gameInBox${game.isNew ? " newicon" : ""}`}
 				key={`gamesPanel-${game.displayKey}`}
 				onClick={ClickGame.bind(
 					this,

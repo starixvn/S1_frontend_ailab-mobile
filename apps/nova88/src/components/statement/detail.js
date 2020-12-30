@@ -178,14 +178,10 @@ const Detail = ({
 		<div className="info">
 			<ul>
 				<li>
-					<span className="title">{i18n.lbl_TransTime}</span>
+					<span className="title">{i18n.lbl_SettledTime}</span>
 					<span>
-						{moment(transTime).format("YYYY/MM/DD hh:mm:ss")}
+						{moment(settledTime).format("YYYY/MM/DD hh:mm:ss")}
 					</span>
-				</li>
-				<li>
-					<span className="title">{i18n.lbl_TransId}</span>
-					<span>{transId}</span>
 				</li>
 				<li>
 					<span className="title">{i18n.lbl_Turnover}</span>
@@ -208,10 +204,8 @@ const Detail = ({
 					<span>{bonusId}</span>
 				</li>
 				<li>
-					<span className="title">{i18n.lbl_SettledTime}</span>
-					<span>
-						{moment(settledTime).format("YYYY/MM/DD hh:mm:ss")}
-					</span>
+					<span className="title">{i18n.lbl_TransId}</span>
+					<span>{transId}</span>
 				</li>
 			</ul>
 		</div>

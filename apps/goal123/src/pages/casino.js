@@ -3,7 +3,7 @@ import Slider from "../components/casino/slider";
 import defNav from "../components/casino/defNav";
 import Nav from "../components/casino/nav";
 import SearchBox from "../components/casino/searchBox";
-import { api_GetGamelist } from "../service/api/site";
+import { api_Site_GetGamelistV2 } from "../service/api/site";
 import Games from "../components/casino/games";
 import {
 	i18nContext,
@@ -37,7 +37,8 @@ class Panel extends React.Component {
 				gameType: { idx: 0, value: null }
 			},
 			favorite: [],
-			selNav: Object.keys(defNav)?.[0]
+			selNav: Object.keys(defNav)?.[0],
+			imgUrl: ""
 		};
 	}
 	componentWillUnmount = () => {
@@ -87,27 +88,16 @@ class Panel extends React.Component {
 		window.addEventListener("touchmove", this.ScrollBarListener, {
 			passive: false
 		});
-		api_GetGamelist().then(res => {
+		api_Site_GetGamelistV2().then(res => {
 			if (res.data.errorCode === 0) {
 				let _tpList = {};
 				let games = [];
 
-				// let hasPromo = false;
-				// let hasFeature = false;
-				res.data.data.forEach(t => {
+				const { imgUrl, providerList } = res.data.data;
+				providerList?.forEach(t => {
 					_tpList[t.value] = { ...t };
-					if (t.gameList.data) {
+					if (t.gameList?.data) {
 						t.gameList.data.forEach(g => {
-							// if (t.value === this.props.tpId) {
-							// 	hasPromo =
-							// 		hasPromo === false
-							// 			? g.promotion === 1
-							// 			: hasPromo;
-							// 	hasFeature =
-							// 		hasFeature === false
-							// 			? g.featured === true
-							// 			: hasFeature;
-							// }
 							games.push({
 								tpId: t.value,
 								...g
@@ -133,7 +123,8 @@ class Panel extends React.Component {
 						{
 							tpList: _tpList,
 							gameDatas: games,
-							selNav: nav
+							selNav: nav,
+							imgUrl
 						},
 						() => {
 							this.SetMoreItems();
@@ -252,6 +243,7 @@ class Panel extends React.Component {
 
 		const matchFilter = (tpId, g) => {
 			let matchNav =
+				(_nav === defNav.NEW.key && g.new === true) ||
 				(_nav === defNav.PROMO.key && g.promotion === 1) ||
 				(_nav === defNav.FEATURED.key && g.featured === true) ||
 				(_nav === defNav.FAVOURITE.key &&
@@ -358,6 +350,7 @@ class Panel extends React.Component {
 					SetFavorite={this.SetFavorite}
 					TpList={this.state.tpList}
 					i18n={this.props.i18n}
+					imgUrl={this.state.imgUrl}
 				/>
 
 				{this.state.selGameInfo === null ? null : (
@@ -371,11 +364,13 @@ class Panel extends React.Component {
 							className="icon icon-cancel-circle"
 							onClick={this.CloseSelGame}></button>
 						<div className="btn-group">
-							<button
-								className="white"
-								onClick={this.ClickPlay.bind(this, true)}>
-								{this.props.i18n.lbl_Free}
-							</button>
+							{this.state.selGameInfo.playFree ? (
+								<button
+									className="white"
+									onClick={this.ClickPlay.bind(this, true)}>
+									{this.props.i18n.lbl_Free}
+								</button>
+							) : null}
 							<button
 								className="orange"
 								onClick={this.ClickPlay.bind(this, false)}>
