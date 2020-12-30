@@ -49,6 +49,34 @@
   font-size: 4vw !important;
 }
 
+.icon-cockFight:before {
+  content: "\e9a7";
+}
+
+.icon-jump:before {
+  content: "\e9bd";
+}
+
+.icon-livechat:before {
+  content: "\e9be";
+}
+
+.icon-run:before {
+  content: "\e9bf";
+}
+
+.icon-trophy:before {
+  content: "\e9c0";
+}
+
+.icon-visit:before {
+  content: "\e9c1";
+}
+
+.icon-friend:before {
+  content: "\e9ba";
+}
+
 .icon-cq9:before {
   content: "\e9b9";
 }
@@ -61,8 +89,8 @@
   content: "\e9b7";
 }
 
-.icon-nodata2:before {
-  content: "\e9a7";
+.icon-nodata:before {
+  content: "\e9b4";
 }
 
 .icon-new:before {
@@ -77,8 +105,8 @@
   content: "\e9b0";
 }
 
-.icon-nodata:before {
-  content: "\e9b4";
+.icon-nodata1:before {
+  content: "\e9a7";
 }
 
 .icon-USDC:before {
@@ -697,6 +725,10 @@
   content: "\e934";
 }
 
+.icon-qrcode:before {
+  content: "\e9c2";
+}
+
 .icon-coin-dollar:before {
   content: "\e93b";
 }
@@ -767,6 +799,10 @@
 
 .icon-bin:before {
   content: "\e9ac";
+}
+
+.icon-download2:before {
+  content: "\e9c5";
 }
 
 .icon-sphere:before {
@@ -907,6 +943,10 @@
 
 .icon-android:before {
   content: "\eac0";
+}
+
+.icon-skype:before {
+  content: "\eac5";
 }
 
 .icon-IcoMoon:before {
