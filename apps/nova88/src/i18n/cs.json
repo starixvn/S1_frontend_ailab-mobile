@@ -378,7 +378,13 @@
 	"lbl_Ranking_Sports":"体育排行榜",
 	"lbl_Ranking_LiveCasino":"真人排行榜",
 	"lbl_Ranking_Slots":"老虎机排行榜",
-	
+
+	"lbl_New":"新游戏",
+	"lbl_AllProvider":"所有平台",
+	"lbl_AllGameType":"所有类型",
+	"lbl_SearchGames":"搜索游戏",
+	"lbl_BonusWallet_1": "电子游戏红利钱包",
+	"lbl_BonusWallet_2": "真人娱乐红利钱包",
 	"lbl_SpecialBonus":"特别优惠",
 	"lbl_SpecialBonusCode":"特别优惠代码"
 }
