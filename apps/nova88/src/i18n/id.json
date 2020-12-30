@@ -388,6 +388,7 @@
 	"lbl_Referral_code":"Referral Code",
 	"lbl_Referral_link":"Referral Link",
 	"lbl_Downloads":"Dowload",
-	"lbl_ValidPeriod":"Valid Period"
-
+	"lbl_ValidPeriod":"Valid Period",
+	"lbl_SpecialBonus":"Bonus Khusus",
+	"lbl_SpecialBonusCode":"Kode Bonus Khusus"
 }
