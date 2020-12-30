@@ -378,6 +378,11 @@
 	"lbl_Ranking_Sports":"กีฬา อันดับที่",
 	"lbl_Ranking_LiveCasino":"คาสิโนสด อันดับที่",
 	"lbl_Ranking_Slots":"สล็อต อันดับที่",
+
+	"lbl_New":"ใหม่",
+	"lbl_AllProvider":"แพลตฟอร์มทั้งหมด",
+	"lbl_AllGameType":"ทุกหมวดหมู่",
+	"lbl_SearchGames":"ค้นหาเกมส์",
 	"lbl_BonusWallet_1": "กระเป๋าเงินโบนัสคาสิโน",
 	"lbl_BonusWallet_2": "กระเป๋าเงินโบนัสคาสิโนสด",
 	"lbl_SpecialBonus":"โบนัสพิเศษ",

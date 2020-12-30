@@ -389,7 +389,6 @@
 	"lbl_Please_input_your_real_name_as_in_your_ID": "Please input your real name as in your ID. Your account name should be the same with your profile name.",
 	"lbl_FishingSG1": "Fishing God",
 	"lbl_FishingSG2": "Fishing War",
-	"lbl_Search":"Search",
 	"lbl_history_submit": "Submit",
 	"lbl_transfer_submit": "Submit",
 	"lbl_add_bank_submit": "Submit",
@@ -418,6 +417,11 @@
 	"lbl_TraditionalLottery":"Traditional Lottery",
 	"lbl_789Lottery":"789 Lottery",
 	"lbl_liveCasino_789SeDie":"789 Se Die",
+
+	"lbl_New":"New",
+	"lbl_AllProvider":"All Platform",
+	"lbl_AllGameType":"All Categories",
+	"lbl_SearchGames":"Search Games",
 	"lbl_BonusWallet_1": "Casino Bonus Wallet",
 	"lbl_BonusWallet_2": "Live Casino Bonus Wallet"
 }

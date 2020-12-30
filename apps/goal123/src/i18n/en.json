@@ -358,4 +358,8 @@
 	"lbl_SpecialBonus":"Special Bonus",
 	"lbl_SpecialBonusCode":"Special Bonus Code",
 
+	"lbl_New":"New",
+	"lbl_AllProvider":"All Platform",
+	"lbl_AllGameType":"All Categories",
+	"lbl_SearchGames":"Search Games"
 }
