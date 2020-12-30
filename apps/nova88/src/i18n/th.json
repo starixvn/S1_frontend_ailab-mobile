@@ -377,5 +377,8 @@
 	"lbl_EventTitle":"ลุ้นรับ IPHONE 12 ในวันคริสต์มาส & ปีใหม่",
 	"lbl_Ranking_Sports":"กีฬา อันดับที่",
 	"lbl_Ranking_LiveCasino":"คาสิโนสด อันดับที่",
-	"lbl_Ranking_Slots":"สล็อต อันดับที่"
+	"lbl_Ranking_Slots":"สล็อต อันดับที่",
+
+	"lbl_SpecialBonus":"โบนัสพิเศษ",
+	"lbl_SpecialBonusCode":"รหัสโบนัสพิเศษ"
 }
