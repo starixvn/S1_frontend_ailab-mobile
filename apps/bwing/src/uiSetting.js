@@ -4,5 +4,6 @@ export const Promotion = {
 		cancelBtn: "gray"
 	},
 	joinBtn: "blue",
-	detailBtn: "gray"
+	detailBtn: "gray",
+	submitBtn: "blue"
 };

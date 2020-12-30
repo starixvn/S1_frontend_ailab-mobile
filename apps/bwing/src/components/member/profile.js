@@ -3,6 +3,7 @@ import { i18nContext, userInfoContext } from "../common/context";
 import { Link } from "@reach/router";
 import ProfileDetail from "./profile.detail";
 import path from "../../path";
+import ProfileWallet from "./profile.wallet";
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
@@ -14,6 +15,7 @@ const Panel = () => {
 			{/* <div className="viplv">
 				<i className="icon icon-vip"></i>VIP Lv{userInfo.userLevel}
 			</div> */}
+			<ProfileWallet />
 			<ProfileDetail />
 
 			{userInfo.accountName &&

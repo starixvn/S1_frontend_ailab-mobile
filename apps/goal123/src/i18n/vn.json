@@ -352,6 +352,14 @@
 	"lbl_last_2_day":"2 ngày qua",
 	"lbl_last_3_day":"3 ngày qua",
 	"lbl_LastUpdTime":"Cập nhật vào lúc {{time}}  (Cập nhật mỗi 30 phút)",
-	"msg_PhoneExisted":"Số điện thoại này đã được sử dụng."
+	"msg_PhoneExisted":"Số điện thoại này đã được sử dụng.",
 
+	"lbl_New":"Mới",
+	"lbl_AllProvider":"Tất cả nền tảng",
+	"lbl_AllGameType":"Tất cả thể loại",
+	"lbl_SearchGames":"Tìm kiếm trò chơi",
+	"lbl_BonusWallet_1": "Ví thưởng quay hũ",
+	"lbl_BonusWallet_2": "Ví thưởng sòng bài",
+	"lbl_SpecialBonus":"Khuyến mãi đặc biệt",
+	"lbl_SpecialBonusCode":"Code khuyến mãi đặc biệt"
 }

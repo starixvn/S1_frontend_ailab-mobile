@@ -352,6 +352,14 @@
 	"lbl_last_2_day":"Last 2 Day",
 	"lbl_last_3_day":"Last 3 Day",
 	"lbl_LastUpdTime":"Last Update On {{time}} (Update Every 30 Minutes)",
-	"msg_PhoneExisted":"Phone number already exists."
+	"msg_PhoneExisted":"Phone number already exists.",
+	"lbl_BonusWallet_1": "Casino Bonus Wallet",
+	"lbl_BonusWallet_2": "Live Casino Bonus Wallet",	
+	"lbl_SpecialBonus":"Special Bonus",
+	"lbl_SpecialBonusCode":"Special Bonus Code",
 
+	"lbl_New":"New",
+	"lbl_AllProvider":"All Platform",
+	"lbl_AllGameType":"All Categories",
+	"lbl_SearchGames":"Search Games"
 }

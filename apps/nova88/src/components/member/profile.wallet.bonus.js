@@ -14,7 +14,7 @@ export default ({
 	return (
 		<div className="progressBarModule">
 			<div className="bounsName">
-				{i18n[`lbl_PromoCategory_${promoCategoryId}`]}
+				{i18n[`lbl_BonusWallet_${promoCategoryId}`]}
 			</div>
 			<div>
 				<span className="text-org">
