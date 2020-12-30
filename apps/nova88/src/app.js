@@ -1,5 +1,5 @@
 import React from "react";
-import path from "Path";
+import path from "./path";
 import langKeys from "./datas/langKeys";
 import { Wrapper } from "./components/common/wrapper";
 import PopBox from "./components/common/popbox";
@@ -49,6 +49,13 @@ import TransferHome from "./components/transfer/transfer";
 import TransferHistory from "./components/transfer/transfer.history";
 
 import Statement from "./pages/statement";
+import StatementList from "./components/statement/statement";
+import BetDateRange from "./components/statement/byDateRange";
+import BetOneDay from "./components/statement/byDay";
+import BetByCategory from "./components/statement/byCategory";
+import BetDetail from "./components/statement/detail";
+import FinancialLog from "./pages/financialLog";
+import FinancialLogHome from "./components/statement/financialLog";
 
 import Message from "./pages/message";
 import PersonalMsg from "./components/message/personalMsg";
@@ -68,6 +75,9 @@ import KycWaiting from "./components/withdrawal/kycWaiting";
 
 import Whoami from "./pages/whoami";
 import PromotionInfo from "./pages/promotionInfo";
+// import Kiss918 from "./pages/918kiss";
+
+import Ranking from "./pages/ranking";
 
 const Index = () => {
 	let history = createHistory(window);
@@ -145,7 +155,20 @@ const Index = () => {
 								path={path.transfer.sub.history.root}
 							/>
 						</Transfer>
-						<Statement path={path.statement.root} />
+						<Statement path={path.statement.root}>
+							<StatementList path="/" />
+							<BetDateRange path={`/:timePeriod`} />
+							<BetOneDay path={`/:timePeriod/:date`} />
+							<BetByCategory
+								path={`/:timePeriod/:date/:category`}
+							/>
+							<BetDetail
+								path={`/:timePeriod/:date/:category/:game`}
+							/>
+						</Statement>
+						<FinancialLog path={path.financialLog.root}>
+							<FinancialLogHome path="/" />{" "}
+						</FinancialLog>
 						<Message path={path.message.root}>
 							<PersonalMsg path={path.message.sub.root} />
 							<Announcement
@@ -159,6 +182,8 @@ const Index = () => {
 							<Other path={path.setting.sub.other.root} />
 						</Setting>
 						<Whoami path={path.whoami.root} />
+						<Ranking path={path.ranking.root} />
+						{/* <Kiss918 path={path.kiss918.root} /> */}
 					</Router>
 				</Layout>
 			</LocationProvider>

@@ -2,6 +2,7 @@ export const defPromoStatus = {
 	running: 1,
 	Canceled: 2,
 	Expiry: 3,
+	Fulfill: 4,
 	TransferOut: 5
 };
 
@@ -17,22 +18,35 @@ export const defPromotionType = {
 export const defFilterType = {
 	all: 0,
 	firstDeposit: 1,
-	freeBet: 3
+	freeBet: 3,
+	specialBonus: 9991
 };
 
-export const defPromotionNav = [
-	{
+export const defNav = {
+	All: {
 		displayKey: "lbl_All",
 		value: defFilterType.all
 	},
-	{
+	FirstDeposit: {
 		displayKey: "lbl_PromotionCategory1",
 		value: defFilterType.firstDeposit
 	},
-	{
+	FreeBet: {
 		displayKey: "lbl_FreeBet",
 		value: defFilterType.freeBet
+	},
+	SpecialBonus: {
+		displayKey: "lbl_SpecialBonus",
+		value: defFilterType.specialBonus,
+		afterLogin: true
 	}
+};
+
+export const defPromotionNav = [
+	defNav.All,
+	defNav.FirstDeposit,
+	defNav.FreeBet,
+	defNav.SpecialBonus
 ];
 
 export const defTabs = {
@@ -65,4 +79,9 @@ export const defWrapperCol = {
 		formatRequired: "formatRequired",
 		digits: "digits"
 	}
+};
+
+export const defUrlParamCols = {
+	tab: "tab",
+	filterType: "filterType"
 };

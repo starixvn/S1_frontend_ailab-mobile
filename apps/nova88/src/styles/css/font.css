@@ -32,11 +32,6 @@
   font-size: 6vw;
 }
 
-.icon-search {
-  -webkit-transform: translateY(35%) !important;
-          transform: translateY(35%) !important;
-}
-
 .icon-hockey:before {
   font-size: 3vw;
   margin-bottom: 1vw;
@@ -54,7 +49,63 @@
   font-size: 4vw !important;
 }
 
+.icon-cockFight:before {
+  content: "\e9a7";
+}
+
+.icon-jump:before {
+  content: "\e9bd";
+}
+
+.icon-livechat:before {
+  content: "\e9be";
+}
+
+.icon-run:before {
+  content: "\e9bf";
+}
+
+.icon-trophy:before {
+  content: "\e9c0";
+}
+
+.icon-visit:before {
+  content: "\e9c1";
+}
+
+.icon-friend:before {
+  content: "\e9ba";
+}
+
+.icon-cq9:before {
+  content: "\e9b9";
+}
+
+.icon-kiss:before {
+  content: "\e9b8";
+}
+
+.icon-marquee:before {
+  content: "\e9b7";
+}
+
 .icon-nodata:before {
+  content: "\e9b4";
+}
+
+.icon-new:before {
+  content: "\e9b2";
+}
+
+.icon-WM:before {
+  content: "\e9b1";
+}
+
+.icon-MW:before {
+  content: "\e9b0";
+}
+
+.icon-nodata1:before {
   content: "\e9a7";
 }
 
@@ -64,6 +115,10 @@
 
 .icon-USDT:before {
   content: "\e9a4";
+}
+
+.icon-home:before {
+  content: "\e9b5";
 }
 
 .icon-deposit1:before {
@@ -104,6 +159,10 @@
 
 .icon-icon_1_cop:before {
   content: "\e996";
+}
+
+.icon-tiktok:before {
+  content: "\e9b3";
 }
 
 .icon-ETH:before {
@@ -230,7 +289,7 @@
   content: "\e972";
 }
 
-.icon-icon32px_openmail:before {
+.icon-mail-envelope-open:before {
   content: "\e974";
 }
 
@@ -494,7 +553,7 @@
   content: "\e908";
 }
 
-.icon-marquee:before {
+.icon-marquee123:before {
   content: "\e909";
 }
 
@@ -520,6 +579,38 @@
 
 .icon-withdrawal:before {
   content: "\e910";
+}
+
+.icon-cloud_upload:before {
+  content: "\e9af";
+}
+
+.icon-backup:before {
+  content: "\e9af";
+}
+
+.icon-last_page:before {
+  content: "\e9ad";
+}
+
+.icon-first_page:before {
+  content: "\e9ae";
+}
+
+.icon-arrow_right:before {
+  content: "\e9a8";
+}
+
+.icon-arrow_left:before {
+  content: "\e9a9";
+}
+
+.icon-arrow_drop_up:before {
+  content: "\e9aa";
+}
+
+.icon-arrow_drop_down:before {
+  content: "\e9ab";
 }
 
 .icon-broken_image:before {
@@ -598,7 +689,7 @@
   content: "\e950";
 }
 
-.icon-home:before {
+.icon-home123:before {
   content: "\e900";
 }
 
@@ -632,6 +723,10 @@
 
 .icon-folder-upload:before {
   content: "\e934";
+}
+
+.icon-qrcode:before {
+  content: "\e9c2";
 }
 
 .icon-coin-dollar:before {
@@ -704,6 +799,10 @@
 
 .icon-bin:before {
   content: "\e9ac";
+}
+
+.icon-download2:before {
+  content: "\e9c5";
 }
 
 .icon-sphere:before {
@@ -838,8 +937,24 @@
   content: "\ea96";
 }
 
+.icon-appleinc:before {
+  content: "\eabe";
+}
+
+.icon-android:before {
+  content: "\eac0";
+}
+
+.icon-skype:before {
+  content: "\eac5";
+}
+
 .icon-IcoMoon:before {
   content: "\eaea";
+}
+
+.icon-tree:before {
+  content: "\e9b6";
 }
 
 .icon-home1:before {
@@ -886,7 +1001,7 @@
   content: "\e935";
 }
 
-.icon-mail-envelope-open:before {
+.icon-icon32px_openmail:before {
   content: "\e999";
 }
 

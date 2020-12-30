@@ -10,21 +10,18 @@ export const getUrlParameter = name => {
 export const number_format = (n, IsConvertRequired = false) => {
 	if (!isNaN(n)) {
 		n /= 1000;
+		n = Number(n).toFixed(2);
 	}
 
 	n += "";
 	let arr = n.split(".");
 	let re = /(\d{1,3})(?=(\d{3})+$)/g;
 
-	if (IsConvertRequired) {
-		return (
-			arr[0].replace(re, "$1,") +
-			(arr.length === 2 ? "." + arr[1] : "") +
-			(IsConvertRequired ? " ('000)" : "")
-		);
-	} else {
-		return arr[0].replace(re, "$1,");
-	}
+	return (
+		arr[0].replace(re, "$1,") +
+		(arr.length === 2 ? "." + arr[1] : "") +
+		(IsConvertRequired ? " ('000)" : "")
+	);
 };
 
 const _isConvertList = {
@@ -117,4 +114,14 @@ export const readCookie = cookieName => {
 
 export const deleteCookie = cookieName => {
 	document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+};
+
+export const isEventPeriod = () => {
+	return true;
+	// xmas end date is 2021/01/04 11:00:00
+	// const startDate = new Date("12 10 2020 11:00:00 GMT+0800");
+	// const endDate = new Date("1 4 2021 11:00:00 GMT+0800");
+	// const now = new Date();
+
+	// return now > startDate && now < endDate;
 };

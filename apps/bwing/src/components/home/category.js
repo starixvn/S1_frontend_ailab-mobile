@@ -28,7 +28,7 @@ const Category = props => {
 		if (path) {
 			setRedirect({
 				redirect: true,
-				path: path
+				path: `/${path}`
 			});
 		} else {
 			GET_ENTER_PAGE({

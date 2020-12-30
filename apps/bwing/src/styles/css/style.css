@@ -538,7 +538,6 @@ main .swiper-container .swiper-slide.swiper-slide-active {
 }
 
 main .banner {
-  width: 95%;
   height: 37.5vw;
   display: block;
   top: 12vw;
@@ -603,6 +602,7 @@ main #Marquee > div.open {
 }
 
 main #Marquee + div .banner {
+  width: 95%;
   height: auto;
 }
 
@@ -2382,16 +2382,20 @@ p.txt-blue12 {
       -ms-flex-align: center;
           align-items: center;
   margin-right: 1vw;
-  padding: 2vw;
   border-radius: 3px;
   border: 1px solid #7789bd;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   background: #010e33;
+  padding: 0 2vw;
 }
 
 .countryCode + .inputBox {
+  margin: 0;
+}
+
+.countryCode + .inputBoxText {
   margin: 0;
 }
 
@@ -3026,6 +3030,38 @@ button.clickBtn:before {
           box-shadow: 2px 2px 5px -2px rgba(0, 0, 0, 0.9);
 }
 
+.casino .slotList .info .newTag {
+  position: absolute;
+  right: 1vw;
+  bottom: 1.5vw;
+  padding: 10px 10px;
+  background-color: rgba(244, 43, 7, 0.3);
+  border: 1px solid #f42b07;
+  color: #ffffff;
+  border-radius: 15px;
+  font-weight: bold;
+  -webkit-animation: newTag 1s linear infinite alternate;
+          animation: newTag 1s linear infinite alternate;
+}
+
+@-webkit-keyframes newTag {
+  0% {
+    background-color: rgba(244, 43, 7, 0.2);
+  }
+  100% {
+    background-color: rgba(244, 43, 7, 0.6);
+  }
+}
+
+@keyframes newTag {
+  0% {
+    background-color: rgba(244, 43, 7, 0.2);
+  }
+  100% {
+    background-color: rgba(244, 43, 7, 0.6);
+  }
+}
+
 .inputdate {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3043,7 +3079,6 @@ button.clickBtn:before {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 2vw 0;
 }
 
 .inputdate:first-child {
@@ -3155,6 +3190,24 @@ button.clickBtn:before {
 .search {
   width: calc(100% - 10vw);
   padding: 2vw 0 2vw 8vw;
+}
+
+.specialBonus input {
+  width: calc(100% - 20vw + 1px);
+  padding: 2vw;
+}
+
+.specialBonus input + .btn-group {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+}
+
+.specialBonus input + .btn-group button {
+  padding: 0 2vw;
 }
 
 .slotFunction {
@@ -4588,6 +4641,7 @@ span.important {
 }
 
 .headerB .nav {
+  position: relative;
   font-size: 13px;
   display: inline-block;
   vertical-align: middle;
@@ -4597,6 +4651,55 @@ span.important {
 
 .headerB .nav.active {
   color: #58cdff;
+}
+
+.headerB .nav.icon::before {
+  content: "\e9e5";
+  position: absolute;
+  top: -10px;
+  left: -15px;
+  -webkit-transform: rotate(-25deg);
+          transform: rotate(-25deg);
+  color: #56ceff;
+  -webkit-animation: newicon 0.5s linear infinite alternate;
+          animation: newicon 0.5s linear infinite alternate;
+}
+
+.headerB .nav.liveIcon::before {
+  content: "LIVE";
+  position: absolute;
+  top: -10px;
+  left: -15px;
+  font-weight: bold;
+  font-size: 12px;
+  -webkit-animation: newicon 0.8s linear infinite alternate;
+          animation: newicon 0.8s linear infinite alternate;
+}
+
+@-webkit-keyframes newicon {
+  0% {
+    -webkit-transform: scale(1) rotate(-25deg);
+            transform: scale(1) rotate(-25deg);
+    color: #56ceff;
+  }
+  100% {
+    -webkit-transform: scale(1.13) rotate(-25deg);
+            transform: scale(1.13) rotate(-25deg);
+    color: #ade8ff;
+  }
+}
+
+@keyframes newicon {
+  0% {
+    -webkit-transform: scale(1) rotate(-25deg);
+            transform: scale(1) rotate(-25deg);
+    color: #56ceff;
+  }
+  100% {
+    -webkit-transform: scale(1.13) rotate(-25deg);
+            transform: scale(1.13) rotate(-25deg);
+    color: #ade8ff;
+  }
 }
 
 .menu {
@@ -5104,12 +5207,11 @@ span.important {
 }
 
 .restoreBox-left {
-  width: 83%;
+  width: 100%;
 }
 
 .restoreBox-left .depositInBox {
   width: auto;
-  height: 10vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5141,30 +5243,12 @@ span.important {
 }
 
 .restoreBox-left .depositInBox .btn-group {
-  width: 40%;
+  width: 15%;
 }
 
 .restoreBox-left .depositInBox .btn-group button {
   font-size: 3.5vw;
-}
-
-.restoreBox-right {
-  width: 15%;
-}
-
-.restoreBox-right button {
-  width: 100%;
-  height: 21vh;
-  border-radius: 5px;
-  color: #58cdff;
-}
-
-.restoreBox-right button::before {
-  font-size: 5vw;
-}
-
-.restoreBox-right button.clickBtn {
-  margin: 0;
+  color: #070e22;
 }
 
 .swapBox {
@@ -6077,6 +6161,19 @@ span.important {
   margin-bottom: 2vw;
 }
 
+.gameInBox.newicon::before {
+  content: "NEW";
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 3px 5px;
+  background-color: #58cdff;
+  color: #0c1a3f;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
 .gameInBox img {
   width: 100%;
 }
@@ -6109,37 +6206,29 @@ span.important {
   overflow-y: auto;
 }
 
-.guided span {
+.guided a {
+  color: #fff;
   opacity: 0.5;
-  cursor: pointer;
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.guided span.guidedText:hover {
-  color: #58cdff;
-  opacity: 1;
-}
-
-.guided span:nth-child(even) {
-  margin: 0 5px;
-}
-
-.guided span:nth-child(even)::after {
+.guided a.icon::before {
   font-family: "icomoon";
   content: "\e954";
+  margin: 0 5px;
   font-size: 16px;
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
   -webkit-transition: 0.7s;
   transition: 0.7s;
 }
 
-.guided span:nth-last-child(1) {
-  padding-right: 10px;
-}
-
-.guided span.active {
+.guided a.active {
   color: #58cdff;
   opacity: 1;
 }
@@ -6204,5 +6293,318 @@ span.important {
 .essayPage img {
   width: 100%;
   margin: 10px 0;
+}
+
+.dd {
+  position: absolute;
+}
+
+.ranking .rankBotton {
+  margin-top: 4vw;
+}
+
+.ranking .rankBotton button {
+  padding: 2vw 4vw;
+  border: 1px solid #58cdff;
+  color: #58cdff;
+  border-radius: 5px;
+  margin-right: 5px;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+
+.ranking .rankBotton button.open {
+  background-color: #58cdff;
+  color: #070e22;
+  font-weight: bold;
+  -webkit-box-shadow: 0px 0px 5px rgba(88, 205, 255, 0.5);
+          box-shadow: 0px 0px 5px rgba(88, 205, 255, 0.5);
+}
+
+.ranking .rankInBox {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: none;
+}
+
+.ranking .rankInBox.open {
+  display: block;
+}
+
+.ranking .rankInBox .title {
+  width: 100%;
+  color: #58cdff;
+  font-size: 5vw;
+  border-bottom: 1px solid #58cdff;
+  margin: 5vw 0 3vw 0;
+  position: relative;
+  padding-bottom: 2vw;
+  text-align: left;
+}
+
+.ranking .rankInBox .textBox {
+  text-align: center;
+}
+
+.ranking .rankInBox .textBox p {
+  font-size: 14px;
+}
+
+.ranking .rankInBox .textBox h1 {
+  color: #ffd13c;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.ranking .rankInBox img {
+  width: 100%;
+}
+
+.ranking .rankInBox .icon-nodata {
+  width: 100%;
+  line-height: 400px;
+  text-align: center;
+  color: #ff5722;
+  font-size: 20px;
+}
+
+.ranking .rankInBox .ranklist {
+  width: 100%;
+  margin: 20px 0;
+  position: relative;
+}
+
+.ranking .rankInBox .ranklist ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ranking .rankInBox .ranklist ul li {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: transparent;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 30px;
+  min-height: auto;
+  margin-bottom: 10px;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #58cdff;
+  border-radius: 5px;
+}
+
+.ranking .rankInBox .ranklist ul li.listTitle {
+  border: 0;
+  margin: 0;
+  height: 30px;
+}
+
+.ranking .rankInBox .ranklist ul li.no1 {
+  border: 1px solid #ffdd33;
+  background-color: rgba(255, 216, 100, 0.1);
+  height: 50px;
+  line-height: 50;
+}
+
+.ranking .rankInBox .ranklist ul li.no2 {
+  border: 1px solid #cbe5ff;
+  background-color: rgba(203, 229, 255, 0.1);
+  height: 50px;
+  line-height: 50;
+}
+
+.ranking .rankInBox .ranklist ul li.no3 {
+  border: 1px solid #ffa64d;
+  background-color: rgba(255, 166, 77, 0.1);
+  height: 50px;
+  line-height: 50;
+}
+
+.ranking .rankInBox .ranklist ul li.myRank {
+  background-color: #58cdff;
+  color: #070e22;
+  -webkit-box-shadow: 0 0 8px rgba(88, 205, 255, 0.5);
+          box-shadow: 0 0 8px rgba(88, 205, 255, 0.5);
+}
+
+.ranking .rankInBox .ranklist ul li div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+  padding: 0 10px;
+  height: 40px;
+  white-space: nowrap;
+}
+
+.ranking .rankInBox .ranklist ul li div:nth-last-child(1) {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding-right: 15px;
+}
+
+.ranking .rankInBox .ranklist ul li div:nth-child(1) {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding-left: 15px;
+}
+
+.ranking .rankInBox .ranklist ul li div img {
+  width: 30%;
+  margin-right: 10px;
+}
+
+.ranking .rankInBox .remind {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+}
+
+.ranking .rankInBox .remind.btn {
+  width: 100%;
+  height: 35px;
+  line-height: 35px;
+  color: #fff;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f85f05), to(#f20505));
+  background: linear-gradient(180deg, #f85f05, #f20505);
+  border-radius: 3px;
+}
+
+.errorPage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  background: url(../img/Bwing-404M.jpg) no-repeat center;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.errorPage .Close {
+  position: absolute;
+  right: 5vw;
+  top: 5vw;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.3);
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.errorPage .Close:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.errorPage .Close::before {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 2px;
+  background-color: #3398ff;
+  top: calc(50% - 1px);
+  left: calc(50% - 7.5px);
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.errorPage .Close::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 2px;
+  background-color: #3398ff;
+  top: calc(50% - 1px);
+  left: calc(50% - 7.5px);
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.errorPage .textBox {
+  margin-top: 30vw;
+}
+
+.errorPage .textBox .textTitle span {
+  font-size: 24px;
+  color: #3398ff;
+}
+
+.errorPage .textBox .textTitle h1 {
+  color: #3398ff;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.errorPage .textBox .textTitle p {
+  font-size: 20px;
+}
+
+.errorPage .textBox p {
+  font-size: 14px;
+  text-align: left;
+}
+
+.errorPage .textBox .btnArea button {
+  position: relative;
+  width: 120px;
+  height: 35px;
+  font-size: 14px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffde33), to(#ffb219));
+  background: linear-gradient(180deg, #ffde33, #ffb219);
+  border-radius: 50px;
+  color: #333029;
+  overflow: hidden;
+  outline: none;
+  margin-top: 20px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.errorPage .textBox .btnArea button:hover {
+  -webkit-filter: brightness(0.8);
+          filter: brightness(0.8);
+}
+
+.errorPage .textBox .btnArea button:nth-child(2) {
+  margin-left: 10px;
+  background: -webkit-gradient(linear, left bottom, left top, from(#f20c05), to(#f85f05));
+  background: linear-gradient(0deg, #f20c05, #f85f05);
+  color: #fff;
 }
 /*# sourceMappingURL=style.css.map */

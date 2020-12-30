@@ -84,4 +84,50 @@ export class paymentAPI extends BaseAPI {
 
 	GetCryptoPayInfoList = () =>
 		this.paymentRequest.post("/GetCryptoPayInfoList");
+
+	CustTpBetRecordListDateRange = ({
+		StartDate,
+		EndDate,
+		PageNumber,
+		PageSize
+	}) =>
+		this.paymentRequest.post("/CustTpBetRecordListDateRange", {
+			StartDate,
+			EndDate,
+			PageNumber,
+			PageSize
+		});
+
+	GetCustTpBetRecordListOneDay = ({ SelDate, PageNumber, PageSize }) =>
+		this.paymentRequest.post("/GetCustTpBetRecordListOneDay", {
+			SelDate,
+			PageNumber,
+			PageSize
+		});
+
+	GetCustTpBetRecordListbyCategoryId = ({
+		SelDate,
+		CategoryId,
+		PageNumber,
+		PageSize
+	}) =>
+		this.paymentRequest.post("/GetCustTpBetRecordListbyCategoryId", {
+			SelDate,
+			CategoryId,
+			PageNumber,
+			PageSize
+		});
+
+	GetCustTpBetRecordDetailListbyGameType = ({
+		SelDate,
+		gameTypeId,
+		PageNumber,
+		PageSize
+	}) =>
+		this.paymentRequest.post("/GetCustTpBetRecordDetailListbyGameType", {
+			SelDate,
+			gameTypeId,
+			PageNumber,
+			PageSize
+		});
 }

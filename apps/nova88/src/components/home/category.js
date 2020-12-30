@@ -24,21 +24,24 @@ const Category = props => {
 	const { setPopBox } = useContext(popBoxContext);
 	const [casinoTpIds, setCasinoTpIds] = useState(null);
 
-	const clickGame = ({ tpId, gameId, path }) => {
+	const clickGame = ({ tpId, gameId, path, needLogin }) => {
+		const HandleLogin = () => {
+			setNav(defNavPanel.login);
+		};
 		if (path) {
-			setRedirect({
-				redirect: true,
-				path: path
-			});
+			return needLogin && !userInfo.isLogin
+				? HandleLogin()
+				: setRedirect({
+						redirect: true,
+						path: `/${path}`
+				  });
 		} else {
-			GET_ENTER_PAGE({
+			return GET_ENTER_PAGE({
 				langId: userInfo.langId,
 				tpId,
 				gameId,
 				isLogin: userInfo.isLogin === true,
-				loginCallback: () => {
-					setNav(defNavPanel.login);
-				}
+				loginCallback: HandleLogin
 			});
 		}
 	};
@@ -71,7 +74,7 @@ const Category = props => {
 	}, [userInfo.isLogin, i18n, setPopBox]);
 
 	return redirect.redirect ? (
-		<Redirect to={redirect.path} noThrow />
+		<Redirect to={`/${redirect.path}`} noThrow />
 	) : (
 		<CateGoryContent
 			clickGame={clickGame}
@@ -215,7 +218,10 @@ class CateGoryContent extends Component {
 								: idx === item.items.length - 1
 								? this.RefItems[item.category].Last
 								: null;
-						let key = `product-tpId_${subItem.tpId}-gameId_${subItem.gameId}`;
+						let key = subItem.tpId
+							? `home-category-product-tpId_${subItem.tpId}-gameId_${subItem.gameId}`
+							: `home-category-${subItem.spanTextKey}`;
+
 						if (subItem.parameter) {
 							return (
 								<ProductLinkItem
@@ -295,25 +301,23 @@ const CategoryItem = props => {
 };
 
 const ProductItem = props => {
-	return props.href ? (
-		<>
-			<a
-				href={props.href}
-				target="_blank"
-				ref={props._ref}
-				className={props.isShow ? "open" : ""}>
-				<img src={props.img} alt={props.icon ?? ""} />
-				{props.spanText ? (
-					<span className={`icon icon-${props.icon}`}>
-						{props.spanText}
-					</span>
-				) : null}
-				{props.descText ? (
-					<div className={props.descClassName}>{props.descText}</div>
-				) : null}
-			</a>
-			{props.addSpaceInBelow ? <a href="" className="space"></a> : null}
-		</>
+	const content = props.href ? (
+		<a
+			href={props.href}
+			target="_blank"
+			rel="noreferrer"
+			ref={props._ref}
+			className={props.isShow ? "open" : ""}>
+			<img src={props.img} alt={props.icon ?? ""} />
+			{props.spanText ? (
+				<span className={`icon icon-${props.icon}`}>
+					{props.spanText}
+				</span>
+			) : null}
+			{props.descText ? (
+				<div className={props.descClassName}>{props.descText}</div>
+			) : null}
+		</a>
 	) : (
 		<a
 			onClick={props.clickGame}
@@ -329,6 +333,13 @@ const ProductItem = props => {
 				<div className={props.descClassName}>{props.descText}</div>
 			) : null}
 		</a>
+	);
+
+	return (
+		<>
+			{content}
+			{props.addSpaceInBelow ? <a href="" className="space"></a> : null}
+		</>
 	);
 };
 

@@ -2,9 +2,15 @@ import React, { useContext, Component } from "react";
 import PropTypes from "prop-types";
 import Footer from "./footer";
 import Header from "./header";
-import { navContext, i18nContext, defNavPanel } from "Context";
+import {
+	navContext,
+	i18nContext,
+	defNavPanel,
+	loadingContext
+} from "../common/context";
 import { useMatch, useLocation } from "@reach/router";
 import path from "../../path";
+import Loading from "../common/loading";
 
 const defPageInfo = {
 	default: {
@@ -91,6 +97,21 @@ const defPageInfo = {
 		titleKey: "Who AM I",
 		className: "main",
 		hideLogo: true
+	},
+	ranking: {
+		titleKey: "lbl_Ranking",
+		className: "main ranking",
+		hideLogo: true
+	},
+	"/918kiss": {
+		titleKey: "918 Kiss",
+		className: "main casino kiss",
+		hideLogo: true
+	},
+	financialLog: {
+		titleKey: "lbl_financialLog",
+		className: "main",
+		hideLogo: true
 	}
 };
 
@@ -109,6 +130,7 @@ const GetPageInfo = locationPath => {
 
 		pageInfoKey = pageInfoKey?.length > 0 ? pageInfoKey[0] : null;
 		let pageInfo = defPageInfo[pageInfoKey] ?? null;
+
 		return pageInfoKey && pageInfo
 			? {
 					titleKey: pageInfo.titleKey,
@@ -122,6 +144,7 @@ const GetPageInfo = locationPath => {
 const Layout = ({ children }) => {
 	const { i18n } = useContext(i18nContext);
 	const { nav } = useContext(navContext);
+	const { loading } = useContext(loadingContext);
 	const location = useLocation();
 	let pageInfo = GetPageInfo(location.pathname);
 
@@ -140,6 +163,7 @@ const Layout = ({ children }) => {
 			/>
 			<main style={position} className={pageInfo.className ?? ""}>
 				{children}
+				{loading ? <Loading /> : null}
 			</main>
 			<Footer />
 		</>

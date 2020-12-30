@@ -1,7 +1,7 @@
 import moment from "moment";
 import { defPromotionType, defPromoStatus } from "./def";
 import { number_format as lib_number_foramt } from "@ailab-mobile/common";
-import { defWrapperCol } from "../common/def";
+import { defWrapperCol, defFilterType } from "../common/def";
 
 export const isArrayNotEmpty = arr => {
 	return Array.isArray(arr) && arr.length !== 0;
@@ -45,4 +45,10 @@ export const number_format = (number, formatSetting = {}) => {
 			formatSetting[defWrapperCol.formatSetting.isConvertRequired],
 		digits: formatSetting[defWrapperCol.formatSetting.digits]
 	});
+};
+
+export const canJoin = ({ _isExpiry, canJoin, filterType }) => {
+	return _isExpiry || (!canJoin && filterType == defFilterType.specialBonus)
+		? false
+		: true;
 };

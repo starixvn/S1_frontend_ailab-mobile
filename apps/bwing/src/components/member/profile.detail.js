@@ -9,6 +9,7 @@ import {
 	api_GetCustProfile
 } from "../../service/api/accountStrict";
 import { api_ExistsEmail } from "../../service/api/site";
+import { api_account_ExistsPhoneNo } from "../../service/api/account";
 import { defPopBoxType } from "../common/popbox";
 import path from "../../path";
 import { Link } from "@reach/router";
@@ -21,7 +22,7 @@ const Panel = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const [warning, setWarning] = useState(initWarning);
 	const _initUserValue = initUserValue(userInfo);
-	const [userValue, setuserValue] = useState(_initUserValue);
+	const [userValue, setUserValue] = useState(_initUserValue);
 	const country = userInfo.country ? userInfo.country : userInfo.perCountry;
 	let _areaCode = country ? areaCode[country].AreaCode : "";
 
@@ -51,13 +52,13 @@ const Panel = () => {
 			val = val.replace(/^[^\d]+/g, "");
 		}
 
-		setuserValue(prevState => ({
+		setUserValue(prevState => ({
 			...prevState,
 			[col]: val
 		}));
 	};
 
-	const checkPhone = val => {
+	const checkPhone = async val => {
 		let checked = true;
 		let message = "";
 
@@ -68,6 +69,21 @@ const Panel = () => {
 		if (val === "" || isNaN(val)) {
 			checked = false;
 			message = i18n["msg_EnterPhoneNumber"];
+		} else {
+			try {
+				const res = await api_account_ExistsPhoneNo({
+					AreaCode: _areaCode,
+					Phone: val
+				});
+
+				if (res.data.errorCode === 0 && res.data.data === true) {
+					checked = false;
+					message = i18n["msg_PhoneExisted"];
+				}
+			} catch (error) {
+				checked = false;
+				message = i18n.msg_ApiServerError;
+			}
 		}
 
 		return { checked, message };
@@ -89,7 +105,7 @@ const Panel = () => {
 		return { checked, message };
 	};
 
-	const checkEmail = val => {
+	const checkEmail = async val => {
 		let checked = true;
 		let message = "";
 		const regx = /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
@@ -109,43 +125,16 @@ const Panel = () => {
 		}
 
 		if (checked) {
-			api_ExistsEmail({
-				Email: val
-			}).then(
-				response => {
-					if (isMountedRef.current) {
-						const res = response.data;
-						if (res.errorCode === 0) {
-							if (res.data === true) {
-								setWarning(prevState => {
-									return {
-										...prevState,
-										Email: {
-											status: true,
-											msg: i18n["msg_MailExisted"]
-										}
-									};
-								});
-							}
-						} else {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: response.data.message
-							});
-						}
-					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-					}
+			try {
+				const res = await api_ExistsEmail({ Email: val });
+				if (res.data.errorCode === 0 && res.data.data === true) {
+					checked = false;
+					message = i18n["msg_MailExisted"];
 				}
-			);
+			} catch (error) {
+				checked = false;
+				message = i18n.msg_ApiServerError;
+			}
 		}
 
 		return { checked, message };
@@ -167,7 +156,7 @@ const Panel = () => {
 		return { checked, message };
 	};
 
-	const checkInputboxHandler = (col, e) => {
+	const checkInputboxHandler = async (col, e) => {
 		const val = e.target.value;
 		let checked = true;
 		let msg = "";
@@ -177,11 +166,11 @@ const Panel = () => {
 			checked = result.checked;
 			msg = result.message;
 		} else if (col === "Email") {
-			let result = checkEmail(val);
+			let result = await checkEmail(val);
 			checked = result.checked;
 			msg = result.message;
 		} else if (col === "PhoneNo") {
-			let result = checkPhone(val);
+			let result = await checkPhone(val);
 			checked = result.checked;
 			msg = result.message;
 		} else {
@@ -190,55 +179,63 @@ const Panel = () => {
 			msg = result.message;
 		}
 
-		setWarning(prevState => {
-			return {
-				...prevState,
-				[col]: {
-					status: !checked,
-					msg: msg
-				}
-			};
-		});
+		setWarning(prev => ({
+			...prev,
+			[col]: {
+				status: !checked,
+				msg: msg
+			}
+		}));
 	};
 
-	const checkAll = () => {
-		let _accountNameCheck = checkAccountName(userValue.AccountName);
-		let _emailCheck = checkEmail(userValue.Email);
-		let _phoneCheck = checkPhone(userValue.PhoneNo);
-		let _birthCheck = checkBirth(userValue.Birthday);
+	const checkAll = async () => {
+		return await Promise.all([
+			checkPhone(userValue.PhoneNo),
+			checkEmail(userValue.Email)
+		]).then(
+			res => {
+				let _accountNameCheck = checkAccountName(userValue.AccountName);
+				let _phoneCheck = res[0];
+				let _emailCheck = res[1];
+				let _birthCheck = checkBirth(userValue.Birthday);
 
-		let checked =
-			_accountNameCheck.checked &&
-			_emailCheck.checked &&
-			_phoneCheck.checked &&
-			_birthCheck.checked;
+				let checked =
+					_accountNameCheck.checked &&
+					_phoneCheck.checked &&
+					_emailCheck.checked &&
+					_birthCheck.checked;
 
-		if (!checked) {
-			setWarning(prev => ({
-				...prev,
-				AccountName: {
-					status: !_accountNameCheck.checked,
-					msg: _accountNameCheck.message
-				},
-				Birthday: {
-					status: !_birthCheck.checked,
-					msg: _birthCheck.message
-				},
-				PhoneNo: {
-					status: !_phoneCheck.checked,
-					msg: _phoneCheck.message
-				},
-				Email: {
-					status: !_emailCheck.checked,
-					msg: _emailCheck.message
+				if (!checked) {
+					setWarning(prev => ({
+						...prev,
+						AccountName: {
+							status: !_accountNameCheck.checked,
+							msg: _accountNameCheck.message
+						},
+						Birthday: {
+							status: !_birthCheck.checked,
+							msg: _birthCheck.message
+						},
+						PhoneNo: {
+							status: !_phoneCheck.checked,
+							msg: _phoneCheck.message
+						},
+						Email: {
+							status: !_emailCheck.checked,
+							msg: _emailCheck.message
+						}
+					}));
 				}
-			}));
-		}
-		return checked;
+				return checked;
+			},
+			err => {
+				return false;
+			}
+		);
 	};
 
-	const checkSubmitHandler = () => {
-		let checked = checkAll();
+	const checkSubmitHandler = async () => {
+		let checked = await checkAll();
 
 		if (checked) {
 			const closePopbox = ({ _redirectPath }) => {
@@ -470,7 +467,6 @@ const Panel = () => {
 					<div className="input-title">{i18n["lbl_Email"]}</div>
 					<Inputbox
 						className="inputBoxText"
-						iconModuleName="icon-information-solid"
 						onBlur={checkInputboxHandler.bind(null, "Email")}
 						onChange={EditField.bind(null, "Email")}
 						WarningIcon={warning.Email.status}

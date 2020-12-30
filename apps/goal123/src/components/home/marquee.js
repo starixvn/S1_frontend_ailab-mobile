@@ -105,65 +105,54 @@ class Marquee extends Component {
 		}
 	};
 	GetAnnouncement = langId => {
-		api_GetAnnouncement(langId).then(
-			res => {
-				if (res.data.errorCode === 0) {
-					let resData = res.data.data;
-					let stateData = this.state.datas;
-					let upd = false;
-					if (resData.length !== 0 && stateData.length !== 0) {
-						for (let d in resData) {
-							let find = stateData.find(
-								x =>
-									x.id === resData[d].id &&
-									x.subject === resData[d].subject &&
-									x.content === resData[d].content
-							);
+		api_GetAnnouncement(langId).then(res => {
+			if (res.data.errorCode === 0) {
+				let resData = res.data.data;
+				let stateData = this.state.datas;
+				let upd = false;
+				if (resData.length !== 0 && stateData.length !== 0) {
+					for (let d in resData) {
+						let find = stateData.find(
+							x =>
+								x.id === resData[d].id &&
+								x.subject === resData[d].subject &&
+								x.content === resData[d].content
+						);
 
-							if (!find) {
-								upd = true;
-								break;
-							}
-						}
-					} else {
-						upd = true;
-					}
-
-					if (upd) {
-						if (this.intervalId_Pos === undefined) {
-							this.intervalId_Pos = setInterval(this.SetPos, 25);
-						}
-
-						if (this.isMountedRef) {
-							this.setState({
-								datas: res.data.data.map(item => {
-									return {
-										...item,
-										subject: item.subject,
-										content: item.content
-									};
-								})
-							});
+						if (!find) {
+							upd = true;
+							break;
 						}
 					}
-				} else if (this.isMountedRef) {
-					this.props.setPopBox({
-						isOpen: true,
-						title: this.props.i18n.lbl_ImportantNote,
-						content: res.data.message
-					});
+				} else {
+					upd = true;
 				}
-			},
-			err => {
-				if (this.isMountedRef) {
-					this.props.setPopBox({
-						isOpen: true,
-						title: this.props.i18n.lbl_ImportantNote,
-						content: this.props.i18n.msg_ApiServerError
-					});
+
+				if (upd) {
+					if (this.intervalId_Pos === undefined) {
+						this.intervalId_Pos = setInterval(this.SetPos, 25);
+					}
+
+					if (this.isMountedRef) {
+						this.setState({
+							datas: res.data.data.map(item => {
+								return {
+									...item,
+									subject: item.subject,
+									content: item.content
+								};
+							})
+						});
+					}
 				}
+			} else if (this.isMountedRef) {
+				this.props.setPopBox({
+					isOpen: true,
+					title: this.props.i18n.lbl_ImportantNote,
+					content: res.data.message
+				});
 			}
-		);
+		});
 	};
 	ClickMarquee = item => {
 		if (this.props.userIsLogin) {

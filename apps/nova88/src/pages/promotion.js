@@ -6,7 +6,7 @@ import { Promotion as uiSetting } from "UISetting";
 import { userInfoContext, i18nContext, popBoxContext } from "Context";
 import staticList from "../datas/promotionList";
 
-export default () => {
+export default ({ location }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -19,6 +19,7 @@ export default () => {
 			userInfo={userInfo}
 			i18n={i18n}
 			setPopBox={setPopBox}
+			location={location}
 		/>
 	);
 };

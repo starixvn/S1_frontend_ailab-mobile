@@ -18,7 +18,7 @@ export default ({ i18n, OnClickProduct, userInfo }) => {
 			</button>
 			<Link
 				to={`/${path.games.root}`}
-				className={`nav${
+				className={`nav icon icon-newicon${
 					useMatch(`/${path.games.root}`) !== null ? " active" : ""
 				}`}>
 				{i18n.lbl_Games.toUpperCase()}
@@ -41,7 +41,7 @@ export default ({ i18n, OnClickProduct, userInfo }) => {
 			</Link>
 			<Link
 				to={`/${path.liveCasino.root}`}
-				className={`nav${
+				className={`nav icon icon-newicon${
 					useMatch(`/${path.liveCasino.root}`) !== null
 						? " active"
 						: ""
@@ -71,6 +71,13 @@ export default ({ i18n, OnClickProduct, userInfo }) => {
 				className="nav">
 				{i18n.lbl_Affiliates.toUpperCase()}
 			</a>
+			<Link
+				to={`/${path.ranking.root}`}
+				className={`nav liveIcon${
+					useMatch(`/${path.ranking.root}`) !== null ? " active" : ""
+				}`}>
+				{i18n.lbl_Ranking.toUpperCase()}
+			</Link>
 		</div>
 	);
 };

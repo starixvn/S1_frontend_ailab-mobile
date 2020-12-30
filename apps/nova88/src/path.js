@@ -89,6 +89,9 @@ export default {
 	statement: {
 		root: "statement"
 	},
+	financialLog: {
+		root: "financialLog"
+	},
 	message: {
 		root: "message",
 		sub: {
@@ -125,5 +128,11 @@ export default {
 	},
 	whoami: {
 		root: "whoami"
+	},
+	ranking: {
+		root: "ranking"
+	},
+	kiss918: {
+		root: "918kiss"
 	}
 };

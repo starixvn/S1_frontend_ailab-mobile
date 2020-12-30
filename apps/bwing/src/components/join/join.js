@@ -26,7 +26,7 @@ import { useMatch, Redirect } from "@reach/router";
 import path from "../../path";
 import config from "../../config";
 import PromoPopup from "./join.promotion";
-import Logo from "../../styles/img/logo.png";
+import Logo from "../img/logo";
 
 const colName = [
 	"UserName",
@@ -652,7 +652,7 @@ const Join = () => {
 					<span></span>
 					<span></span>
 				</div>
-				<img src={Logo} alt="Bwing" />
+				<Logo />
 				<div className="title">{i18n.lbl_JoinNow}</div>
 
 				<Inputbox

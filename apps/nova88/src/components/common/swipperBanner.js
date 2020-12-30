@@ -3,7 +3,7 @@ import Swiper from "react-id-swiper";
 import config from "../../config";
 import { userInfoContext, navContext, defNavPanel } from "Context";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
-import path from "Path";
+import path from "../../path";
 import { Link } from "@reach/router";
 import api from "../../service/api";
 
@@ -17,6 +17,9 @@ export const ClickLink = (
 	isLogin,
 	setNav
 ) => {
+	const HandleLogin = () => {
+		setNav(defNavPanel.login);
+	};
 	if (href === "Casino/Lobby") {
 		window.location.href = `/${path.casino.root}${tpId ? `/${tpId}` : ""}`;
 	} else if (tpId === null) {
@@ -24,6 +27,14 @@ export const ClickLink = (
 			window.location.href = `/${path.promotion.root}`;
 		} else if (href === "Home/Register") {
 			return;
+		} else if (href === "918kiss") {
+			if (isLogin) {
+				window.location.href = `/${path.kiss918.root}`;
+			} else {
+				HandleLogin();
+			}
+		} else if (href === "leaderBoard") {
+			window.location.href = `/${path.ranking.root}`;
 		} else {
 			window.open(
 				isOuterLink
@@ -40,9 +51,7 @@ export const ClickLink = (
 			tpId,
 			gameId,
 			isLogin: isLogin === true,
-			loginCallback: () => {
-				setNav(defNavPanel.login);
-			}
+			loginCallback: HandleLogin
 		});
 	}
 };

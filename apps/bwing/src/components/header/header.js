@@ -13,11 +13,11 @@ import JoinPanel from "../join/join";
 import LoginPanel from "../login/login";
 import { number_format } from "../common/common";
 import path from "../../path";
-import Logo from "../../styles/img/logo.png";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import Menu from "./header.menu";
 import SubMenu from "./submenu";
 import { LOGOUT } from "../../service/auth";
+import Logo from "../img/logo";
 
 const useGetBalance = ({ isLogin }) => {
 	const { setPopBox } = useContext(popBoxContext);
@@ -116,7 +116,7 @@ export default ({ hideLogo, title, showMenuBar }) => {
 		<div className="title">{title}</div>
 	) : (
 		<Link to="/">
-			<img src={Logo} alt="logo" />
+			<Logo />
 		</Link>
 	);
 

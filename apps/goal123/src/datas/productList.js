@@ -11,7 +11,6 @@ import LIVEcasino_EB from "../styles/img/LIVEcasino_EB.jpg";
 // import LIVEcasino_MW from "../styles/img/LIVEcasino_MW.jpg";
 import LIVEcasino_WM from "../styles/img/LIVEcasino_WM.jpg";
 import Coming_soon from "../styles/img/coming_soon.jpg";
-import Fish from "../styles/img/fish.jpg";
 import Keno from "../styles/img/keno.jpg";
 import Lottery from "../styles/img/lottery.jpg";
 import SabaClub from "../styles/img/saba.jpg";
@@ -22,6 +21,8 @@ import { siteInfo } from "../config";
 import fish_GG from "../styles/img/fish_GG.jpg";
 import fish_SG from "../styles/img/fish_SG.jpg";
 import fish_SGW from "../styles/img/fish_SGW.jpg";
+import path from "../path";
+import ranking from "../styles/img/ranking.jpg";
 
 export const defGameInfo = {
 	Sports: { tpId: 1, gameId: 1 },
@@ -45,6 +46,7 @@ export const defGameInfo = {
 	Casino_JOKER: { tpId: 9 },
 	Casino_YGG: { tpId: 8 },
 	Casino_GPI: { tpId: 6 },
+	Casino_CQ9: { tpId: 16 },
 	Fishing: { gameId: 10, tpId: 7 },
 	FishingSG: { gameId: "F-SF01", tpId: 10 },
 	FishingSGW: { gameId: "F-SF02", tpId: 10 },
@@ -164,7 +166,9 @@ const gameList = langId => [
 			{
 				...defGameInfo.Casino_All,
 				parameter: { tpId: defGameInfo.Casino_All.tpId },
-				img: Casino
+				img: Casino,
+				icon: "casino",
+				spanTextKey: "lbl_Slots"
 			}
 		]
 	},
@@ -219,6 +223,20 @@ const gameList = langId => [
 				icon: "affiliate",
 				img: Affiliate,
 				spanTextKey: "lbl_Affiliates"
+			}
+		]
+	},
+	{
+		category: "ranking",
+		categoryIcon: "icon32px_top",
+		translateKey: "lbl_Ranking",
+		iconClassName: "icon icon-live RANKING",
+		items: [
+			{
+				icon: "icon32px_top",
+				path: path.ranking.root,
+				img: ranking,
+				spanTextKey: "lbl_Ranking"
 			}
 		]
 	}
