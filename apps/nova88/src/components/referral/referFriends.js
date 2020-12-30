@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext, useRef } from "react";
 import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
 import stepImg from "../../styles/img/refbanner.png";
 import ReacentDatas from "./referral.recentDatas";
-import MediaLinks, { text_welCome } from "./links";
+import MediaLinks from "./links";
 import api from "../../service/api";
 import path from "../../path";
 import QRCode from "qrcode.react";
@@ -85,7 +85,7 @@ export default () => {
 	const copyText = colName => {
 		if (colName === "copyToClipboard") {
 			let virtualInput = document.createElement("input");
-			virtualInput.value = text_welCome[userInfo.langId];
+			virtualInput.value = i18n.lbl_Referral_Welcome;
 			document.body.appendChild(virtualInput);
 			virtualInput.select();
 			document.execCommand("copy");
@@ -195,10 +195,7 @@ export default () => {
 						<a className="icon icon-qrcode" onClick={clickDownload}>
 							QR Code
 						</a>
-						<MediaLinks
-							refLink={refLink}
-							langId={userInfo.langId}
-						/>
+						<MediaLinks refLink={refLink} i18n={i18n} />
 					</div>
 					<QRCode
 						id="refQRcode"
