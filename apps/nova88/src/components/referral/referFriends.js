@@ -12,6 +12,7 @@ import path from "../../path";
 import QRCode from "qrcode.react";
 import TandC from "../../service/t_and_c";
 import { number_format, isConvert } from "../common/common";
+import { Redirect } from "@reach/router";
 
 const currentLocation = window.location.origin;
 
@@ -23,6 +24,7 @@ export default () => {
 	const [referralData, setReferralData] = useState({});
 	const _isConvert = isConvert(userInfo.currencyId);
 	const isMountedRef = useRef(null);
+	const [redirectPath, setRedirectPath] = useState(null);
 
 	let _stepImg;
 	switch (userInfo.langId) {
@@ -46,57 +48,67 @@ export default () => {
 	});
 
 	useEffect(() => {
-		api.account.GetReferralCode().then(
-			res => {
-				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
-						setReferralCode(res.data.data);
-					} else {
+		if (isMountedRef.current && userInfo.isLogin === false) {
+			setRedirectPath("/");
+		}
+	}, [userInfo.isLogin, setRedirectPath]);
+
+	useEffect(() => {
+		if (userInfo.isLogin === true && isMountedRef.current) {
+			api.account.GetReferralCode().then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							setReferralCode(res.data.data);
+						} else {
+							setPopBox({
+								isOpen: true,
+								title: i18n.lbl_ImportantNote,
+								content: `[${res.data.errorCode}]${res.data.message}`
+							});
+						}
+					}
+				},
+				err => {
+					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
 							title: i18n.lbl_ImportantNote,
-							content: `[${res.data.errorCode}]${res.data.message}`
+							content: i18n.msg_ApiServerError
 						});
 					}
 				}
-			},
-			err => {
-				if (isMountedRef.current) {
-					setPopBox({
-						isOpen: true,
-						title: i18n.lbl_ImportantNote,
-						content: i18n.msg_ApiServerError
-					});
-				}
-			}
-		);
+			);
+		}
 	}, []);
 
 	useEffect(() => {
-		api.account.GetReferralSetting().then(
-			res => {
-				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
-						setReferralData(res.data.data[0]);
-					} else {
+		if (userInfo.isLogin === true && isMountedRef.current) {
+			api.account.GetReferralSetting().then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							setReferralData(res.data.data[0]);
+						} else {
+							setPopBox({
+								isOpen: true,
+								title: i18n.lbl_ImportantNote,
+								content: `[${res.data.errorCode}]${res.data.message}`
+							});
+						}
+					}
+				},
+				err => {
+					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
 							title: i18n.lbl_ImportantNote,
-							content: `[${res.data.errorCode}]${res.data.message}`
+							content: i18n.msg_ApiServerError
 						});
 					}
 				}
-			},
-			err => {
-				if (isMountedRef.current) {
-					setPopBox({
-						isOpen: true,
-						title: i18n.lbl_ImportantNote,
-						content: i18n.msg_ApiServerError
-					});
-				}
-			}
-		);
+			);
+		}
 	}, []);
 
 	const refLink = `${currentLocation}/${path.join.root}/?AffId=${referralCode}`;
@@ -134,7 +146,9 @@ export default () => {
 		// document.body.removeChild(downloadLink);
 	};
 
-	return (
+	return redirectPath !== null ? (
+		<Redirect to="/" noThrow />
+	) : (
 		<>
 			<img
 				className="refbanner"
