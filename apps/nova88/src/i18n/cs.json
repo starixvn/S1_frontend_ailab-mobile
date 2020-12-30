@@ -391,6 +391,12 @@
 	"lbl_Referral_Welcome":"欢迎来到Nova88，您已被邀请加入我们。我们将提供各种奖励与优惠予新会员。只需点击并注册便能加入我们，帮助您和您的朋友获得奖励！*标准规则和条款适用",
 	"lbl_Downloads":"下载",
 	"lbl_ValidPeriod":"有效期限",
+	"lbl_New":"新游戏",
+	"lbl_AllProvider":"所有平台",
+	"lbl_AllGameType":"所有类型",
+	"lbl_SearchGames":"搜索游戏",
+	"lbl_BonusWallet_1": "电子游戏红利钱包",
+	"lbl_BonusWallet_2": "真人娱乐红利钱包",
 	"lbl_SpecialBonus":"特别优惠",
 	"lbl_SpecialBonusCode":"特别优惠代码"
 }

@@ -389,7 +389,6 @@
 	"lbl_Please_input_your_real_name_as_in_your_ID": "Lưu ý họ tên đăng ký tài khoản phải trùng với họ tên trong CMND và trên tài khoản ngân hàng của bạn. Giao dịch rút tiền có thể bị từ chối nếu họ tên không trùng khớp.",
 	"lbl_FishingSG1": "Thánh bắn cá",
 	"lbl_FishingSG2": "Bắn cá giao đấu",
-	"lbl_Search":"Tìm kiếm",
 	"lbl_history_submit": "Xem lịch sử",
 	"lbl_transfer_submit": "CHUYỂN QUỸ",
 	"lbl_add_bank_submit": "THÊM TÀI KHOẢN",
@@ -413,11 +412,16 @@
 	"lbl_No1_Reward":"GIẢI NHẤT",
 	"lbl_Prizes":"Giải thưởng",
 	"msg_PhoneExisted":"Số điện thoại này đã được sử dụng.",
-
 	"lbl_SpecialBonus":"Khuyến mãi đặc biệt",
 	"lbl_SpecialBonusCode":"Code khuyến mãi đặc biệt",
-	
 	"lbl_TraditionalLottery":"Xổ Số Truyền thống",
 	"lbl_789Lottery":"Xổ số tự quay 789",
-	"lbl_liveCasino_789SeDie":"Xóc Đĩa 789"
+	"lbl_liveCasino_789SeDie":"Xóc Đĩa 789",
+
+	"lbl_New":"Mới",
+	"lbl_AllProvider":"Tất cả nền tảng",
+	"lbl_AllGameType":"Tất cả thể loại",
+	"lbl_SearchGames":"Tìm kiếm trò chơi",
+	"lbl_BonusWallet_1": "Ví thưởng quay hũ",
+	"lbl_BonusWallet_2": "Ví thưởng sòng bài"
 }

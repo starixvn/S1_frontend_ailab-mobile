@@ -784,7 +784,7 @@ main.statementPage {
 
 @-webkit-keyframes flash {
   0% {
-    opacity: .6;
+    opacity: .7;
   }
   100% {
     opacity: 1;
@@ -793,7 +793,7 @@ main.statementPage {
 
 @keyframes flash {
   0% {
-    opacity: .6;
+    opacity: .7;
   }
   100% {
     opacity: 1;
@@ -2648,6 +2648,20 @@ button.clickBtn:before {
   right: 1vw;
   left: initial;
   color: white;
+}
+
+.casino .slotList .info span.new-icon::before {
+  content: "NEW";
+  display: block;
+  position: absolute;
+  left: 28vw;
+  top: 34vw;
+  background-color: #f72626;
+  padding: 2px 5px;
+  border-radius: 5px;
+  color: #fff;
+  -webkit-animation: flash linear infinite alternate 1s;
+          animation: flash linear infinite alternate 1s;
 }
 
 .casino .slotList .info img {

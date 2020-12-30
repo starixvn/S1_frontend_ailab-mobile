@@ -391,6 +391,12 @@
 	"lbl_Referral_Welcome":"Welcome to Nova88, you are invited to join us. There are a lot of rewarding program offer for NEW MEMBER. Simply click and sign up with us to get yourself and help your friend to be rewarded! Terms and Conditions apply.",
 	"lbl_Downloads":"Downloads",
 	"lbl_ValidPeriod":"Valid Period",
+	"lbl_New":"New",
+	"lbl_AllProvider":"All Platform",
+	"lbl_AllGameType":"All Categories",
+	"lbl_SearchGames":"Search Games",
+	"lbl_BonusWallet_1": "Casino Bonus Wallet",
+	"lbl_BonusWallet_2": "Live Casino Bonus Wallet",
 	"lbl_SpecialBonus":"Special Bonus",
 	"lbl_SpecialBonusCode":"Special Bonus Code"
 }
