@@ -339,7 +339,6 @@
 	"lbl_PleaseEnterClaimAmount":"Vui lòng nhập số tiền bạn muốn để nhận khuyến mãi",
 	"lbl_ViewAll":"Xem Thêm",
 	"lbl_Total":"Tổng Cộng",
-
 	"lbl_EventTitle":"ĐUA TOP GIÁNG SINH TRÚNG TIỀN MAY MẮN",
 	"lbl_Rank":"Thứ Hạng",
 	"lbl_Awards":"Phần Thưởng",
@@ -355,5 +354,7 @@
 	"lbl_LastUpdTime":"Cập nhật vào lúc {{time}}  (Cập nhật mỗi 30 phút)",
 
 	"lbl_SpecialBonus":"Khuyến mãi đặc biệt",
-	"lbl_SpecialBonusCode":"Code khuyến mãi đặc biệt"
+	"lbl_SpecialBonusCode":"Code khuyến mãi đặc biệt",
+	"msg_PhoneExisted":"Số điện thoại này đã được sử dụng."
+
 }

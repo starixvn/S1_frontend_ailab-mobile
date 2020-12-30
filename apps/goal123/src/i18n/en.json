@@ -339,7 +339,6 @@
 	"lbl_PleaseEnterClaimAmount":"Please enter your prefer amount to claim promotion",
 	"lbl_ViewAll":"View All",
 	"lbl_Total":"Total",
-
 	"lbl_EventTitle":"Xmas Tournament Win Cash Prizes",
 	"lbl_Rank":"Rank",
 	"lbl_Awards":"Awards",
@@ -355,5 +354,7 @@
 	"lbl_LastUpdTime":"Last Update On {{time}} (Update Every 30 Minutes)",
 	
 	"lbl_SpecialBonus":"Special Bonus",
-	"lbl_SpecialBonusCode":"Special Bonus Code"
+	"lbl_SpecialBonusCode":"Special Bonus Code",
+	"msg_PhoneExisted":"Phone number already exists."
+
 }

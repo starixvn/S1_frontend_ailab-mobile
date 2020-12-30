@@ -49,9 +49,7 @@ const RankList = ({ loading, i18n = {}, datas, lastUpdTime }) => {
 	return (
 		<>
 			{!loading && (!datas || datas.length === 0) ? (
-				<div className="nodata icon icon-nodata">
-					<div className="txt-white">{i18n.msg_NoData}</div>
-				</div>
+				<div className="nodata icon icon-nodata">{i18n.msg_NoData}</div>
 			) : (
 				<div className="ranklist">
 					<ul>

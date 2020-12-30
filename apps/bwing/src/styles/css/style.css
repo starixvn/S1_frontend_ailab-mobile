@@ -5207,12 +5207,11 @@ span.important {
 }
 
 .restoreBox-left {
-  width: 83%;
+  width: 100%;
 }
 
 .restoreBox-left .depositInBox {
   width: auto;
-  height: 10vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5244,30 +5243,12 @@ span.important {
 }
 
 .restoreBox-left .depositInBox .btn-group {
-  width: 40%;
+  width: 15%;
 }
 
 .restoreBox-left .depositInBox .btn-group button {
   font-size: 3.5vw;
-}
-
-.restoreBox-right {
-  width: 15%;
-}
-
-.restoreBox-right button {
-  width: 100%;
-  height: 21vh;
-  border-radius: 5px;
-  color: #58cdff;
-}
-
-.restoreBox-right button::before {
-  font-size: 5vw;
-}
-
-.restoreBox-right button.clickBtn {
-  margin: 0;
+  color: #070e22;
 }
 
 .swapBox {

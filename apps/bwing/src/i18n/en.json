@@ -415,5 +415,9 @@
 	"msg_PhoneExisted":"Phone number already exists.",
 	
 	"lbl_SpecialBonus":"Special Bonus",
-	"lbl_SpecialBonusCode":"Special Bonus Code"
+	"lbl_SpecialBonusCode":"Special Bonus Code",
+
+	"lbl_TraditionalLottery":"Traditional Lottery",
+	"lbl_789Lottery":"789 Lottery",
+	"lbl_liveCasino_789SeDie":"789 Se Die"
 }
