@@ -46,7 +46,7 @@ const ReacentDatas = props => {
 					key={`transferRecent-${item.transId}`}
 					createTime={item.createTime}
 					transId={item.transId}
-					amount={number_format(item.amount, false)}
+					amount={item.amount}
 					startWallet={_transferDirection.startWallet}
 					endWallet={_transferDirection.endWallet}
 					i18n={i18n}

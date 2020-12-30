@@ -354,6 +354,8 @@
 	"lbl_LastUpdTime":"Last Update On {{time}} (Update Every 30 Minutes)",
 	"msg_PhoneExisted":"Phone number already exists.",
 	"lbl_BonusWallet_1": "Casino Bonus Wallet",
-	"lbl_BonusWallet_2": "Live Casino Bonus Wallet"
+	"lbl_BonusWallet_2": "Live Casino Bonus Wallet",	
+	"lbl_SpecialBonus":"Special Bonus",
+	"lbl_SpecialBonusCode":"Special Bonus Code",
 
 }

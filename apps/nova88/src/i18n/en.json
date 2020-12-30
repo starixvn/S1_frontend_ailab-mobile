@@ -379,6 +379,7 @@
 	"lbl_Ranking_LiveCasino":"Live Casino Ranking",
 	"lbl_Ranking_Slots":"Slots Ranking",
 	"lbl_BonusWallet_1": "Casino Bonus Wallet",
-	"lbl_BonusWallet_2": "Live Casino Bonus Wallet"
-
+	"lbl_BonusWallet_2": "Live Casino Bonus Wallet",
+	"lbl_SpecialBonus":"Special Bonus",
+	"lbl_SpecialBonusCode":"Special Bonus Code"
 }
