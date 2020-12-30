@@ -1,7 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState, useContext, useRef } from "react";
 import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
-import stepImg from "../../styles/img/refbanner.png";
+import stepImg_en from "../../styles/img/refbanner-en.png";
+import stepImg_cs from "../../styles/img/refbanner-cs.png";
+import stepImg_th from "../../styles/img/refbanner-th.png";
+import stepImg_id from "../../styles/img/refbanner-id.png";
 import ReacentDatas from "./referral.recentDatas";
 import MediaLinks from "./links";
 import api from "../../service/api";
@@ -20,6 +23,22 @@ export default () => {
 	const [referralData, setReferralData] = useState({});
 	const _isConvert = isConvert(userInfo.currencyId);
 	const isMountedRef = useRef(null);
+
+	let _stepImg;
+	switch (userInfo.langId) {
+		case "cs":
+			_stepImg = stepImg_cs;
+			break;
+		case "th":
+			_stepImg = stepImg_th;
+			break;
+		case "id":
+			_stepImg = stepImg_id;
+			break;
+		default:
+			_stepImg = stepImg_en;
+			break;
+	}
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -119,7 +138,7 @@ export default () => {
 		<>
 			<img
 				className="refbanner"
-				src={stepImg}
+				src={_stepImg}
 				alt="referral step banner"
 			/>
 			<div className="refShare">
