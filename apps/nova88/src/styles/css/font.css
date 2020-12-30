@@ -49,6 +49,30 @@
   font-size: 4vw !important;
 }
 
+.icon-cockFight:before {
+  content: "\e9a7";
+}
+
+.icon-jump:before {
+  content: "\e9bd";
+}
+
+.icon-livechat:before {
+  content: "\e9be";
+}
+
+.icon-run:before {
+  content: "\e9bf";
+}
+
+.icon-trophy:before {
+  content: "\e9c0";
+}
+
+.icon-visit:before {
+  content: "\e9c1";
+}
+
 .icon-friend:before {
   content: "\e9ba";
 }
@@ -699,6 +723,10 @@
 
 .icon-folder-upload:before {
   content: "\e934";
+}
+
+.icon-qrcode:before {
+  content: "\e9c2";
 }
 
 .icon-coin-dollar:before {
