@@ -16,8 +16,8 @@ export default ({ i18n, cookieName, langId, setAppHint }) => {
 					onClick={handleDownloadHint}></button>
 				<img src={appIng} alt="APP Download icon" />
 				<div>
-					{i18n.lbl_NewRelease}
-					<span>Goal123 APP</span>
+					{i18n.lbl_DownloadApp}
+					<span>{i18n.lbl_DownloadAppHint}</span>
 				</div>
 			</div>
 			<a
@@ -26,7 +26,7 @@ export default ({ i18n, cookieName, langId, setAppHint }) => {
 				rel="noreferrer"
 				onClick={handleDownloadHint}
 				href={TandC(langId).AppDownload}>
-				{i18n.lbl_DownloadNow}
+				{i18n.lbl_Downloads}
 			</a>
 		</div>
 	);

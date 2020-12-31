@@ -379,6 +379,7 @@
 	"lbl_BonusWallet_2": "Ví thưởng sòng bài",
 	"lbl_SpecialBonus":"Khuyến mãi đặc biệt",
 	"lbl_SpecialBonusCode":"Code khuyến mãi đặc biệt",
-	"lbl_NewRelease":"New Release",
-	"lbl_DownloadNow":"TẢI XUỐNG"
+	"lbl_DownloadApp":"Tải App",
+	"lbl_DownloadAppHint":"Cược mọi lúc mọi nơi",
+	"lbl_Downloads":"Tải về"
 }

@@ -379,6 +379,7 @@
 	"lbl_AllProvider":"All Platform",
 	"lbl_AllGameType":"All Categories",
 	"lbl_SearchGames":"Search Games",
-	"lbl_NewRelease":"New Release",
-	"lbl_DownloadNow":"Download Now"
+	"lbl_DownloadApp":"Download App",
+	"lbl_DownloadAppHint":"Bet anytime anywhere",
+	"lbl_Downloads":"Download"
 }
