@@ -718,6 +718,20 @@ main .gameList .casinoList a {
           flex: 0 0 calc(50% - 1.5vw);
 }
 
+main .gameList .casinoList a.icon-new::before {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  display: block;
+  color: #ffffff;
+  background-color: #ff0c0c;
+  font-size: 14px;
+  padding: 1px 3px 5px 3px;
+  border-radius: 2px;
+  -webkit-animation: flash linear infinite alternate 1s;
+          animation: flash linear infinite alternate 1s;
+}
+
 main .gameList .icon-casino {
   position: absolute;
 }
@@ -1147,6 +1161,10 @@ footer > a.open .circleAnimation + span {
           flex: 4;
   text-align: left;
   margin-left: 2vw;
+}
+
+.dropdown > .dropdown-container .dropdown-item.selected {
+  background: #1e85ec;
 }
 
 .dropdown > .btn {
@@ -4333,7 +4351,7 @@ span.important {
   display: block;
   padding: 2%;
   color: #fff;
-  font-size: .9vw;
+  font-size: 13px;
 }
 
 .appDownload .left {
