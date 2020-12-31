@@ -4,14 +4,16 @@ import { setCookie } from "../common/common";
 import TandC from "../../service/t_and_c";
 
 export default ({ i18n, cookieName, langId, setAppHint }) => {
-	const clickBtn = () => {
+	const handleDownloadHint = () => {
 		setCookie(cookieName, "1", 1);
 		setAppHint(false);
 	};
 	return (
 		<div className="appDownload">
 			<div className="left">
-				<button className="icon icon-close" onClick={clickBtn}></button>
+				<button
+					className="icon icon-close"
+					onClick={handleDownloadHint}></button>
 				<img src={appIng} alt="APP Download icon" />
 				<div>
 					{i18n.lbl_NewRelease}
@@ -22,7 +24,7 @@ export default ({ i18n, cookieName, langId, setAppHint }) => {
 				className="download-btn"
 				target="_blank"
 				rel="noreferrer"
-				onClick={clickBtn}
+				onClick={handleDownloadHint}
 				href={TandC(langId).AppDownload}>
 				{i18n.lbl_DownloadNow}
 			</a>

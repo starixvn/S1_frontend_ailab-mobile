@@ -111,7 +111,7 @@ const IndexPage = () => {
 	}, [i18n, setPopBox, userInfo.currencyId, userInfo.userName]);
 
 	useEffect(() => {
-		let cookieName = `appDownloadHint${userInfo.userName}`;
+		const cookieName = `appDownloadHint${userInfo.userName}`;
 
 		if (
 			userInfo.currencyId &&
