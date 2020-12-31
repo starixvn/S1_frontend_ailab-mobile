@@ -423,5 +423,10 @@
 	"lbl_AllGameType":"Tất cả thể loại",
 	"lbl_SearchGames":"Tìm kiếm trò chơi",
 	"lbl_BonusWallet_1": "Ví thưởng quay hũ",
-	"lbl_BonusWallet_2": "Ví thưởng sòng bài"
+	"lbl_BonusWallet_2": "Ví thưởng sòng bài",
+	
+	"lbl_Game_ICG_DRAGONBALL_FISHING":"NGỌC RỒNG BẮN CÁ",
+	"lbl_Game_ICG_FISHING_OF_SAVIORS":"THẦN BẮN CÁ",
+	"lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS":"THE TYRANT AND THE PRINCESS",
+	"lbl_Game_ICG_TOWER_OF_SAVIORS":"THÁP PHÒNG THỦ"
 }

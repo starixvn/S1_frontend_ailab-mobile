@@ -190,6 +190,7 @@ class CateGoryContent extends Component {
 						}
 						isOpen={`${_open ? " open" : ""}`}
 						translation={this.props.i18n[item.translateKey]}
+						isNew={item.isNew}
 					/>
 				);
 
@@ -231,6 +232,7 @@ class CateGoryContent extends Component {
 									to={path.casino.root}
 									parameter={subItem.parameter}
 									img={subItem.img}
+									isNew={subItem.isNew}
 								/>
 							);
 						} else {
@@ -296,6 +298,7 @@ const CategoryItem = props => {
 			className={`icon icon-${props.categoryIcon}${props.isOpen}`}
 			onClick={props.onClick}>
 			<div>{props.translation}</div>
+			{props.isNew ? <div className="icon icon-new" /> : null}
 		</button>
 	);
 };
@@ -308,6 +311,7 @@ const ProductItem = props => {
 			rel="noreferrer"
 			ref={props._ref}
 			className={props.isShow ? "open" : ""}>
+			{props.isNew ? <i className="icon icon-new" /> : null}
 			<img src={props.img} alt={props.icon ?? ""} />
 			{props.spanText ? (
 				<span className={`icon icon-${props.icon}`}>
@@ -323,6 +327,7 @@ const ProductItem = props => {
 			onClick={props.clickGame}
 			ref={props._ref}
 			className={props.isShow ? "open" : ""}>
+			{props.isNew ? <i className="icon icon-new" /> : null}
 			<img src={props.img} alt={props.icon ?? ""} />
 			{props.spanText ? (
 				<span className={`icon icon-${props.icon}`}>
@@ -350,6 +355,7 @@ const ProductLinkItem = props => {
 			state={props.parameter}
 			ref={props._ref}
 			className={props.isShow ? "open" : ""}>
+			{props.isNew ? <i className="icon icon-new" /> : null}
 			<img src={props.img} alt={props.icon ?? ""} />
 		</Link>
 	);

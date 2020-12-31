@@ -8,7 +8,7 @@ import LIVEcasino_AG from "../styles/img/LIVEcasino_AG.jpg";
 import LIVEcasino_AB from "../styles/img/LIVEcasino_AB.jpg";
 import LIVEcasino_SA from "../styles/img/LIVEcasino_SA.jpg";
 import LIVEcasino_EB from "../styles/img/LIVEcasino_EB.jpg";
-import LIVEcasino_MW from "../styles/img/LIVEcasino_MW.jpg";
+// import LIVEcasino_MW from "../styles/img/LIVEcasino_MW.jpg";
 import LIVEcasino_WM from "../styles/img/LIVEcasino_WM.jpg";
 import Coming_soon from "../styles/img/coming_soon.jpg";
 import casino_ow from "../styles/img/casino_ow.jpg";
@@ -32,6 +32,11 @@ import fish_SGW from "../styles/img/fish_SGW.jpg";
 import Cockfighting from "../styles/img/cockfighting.jpg";
 import ranking from "../styles/img/ranking.jpg";
 import path from "../path";
+import casino_ICG from "../styles/img/casino_ICG.jpg";
+import fish_DBF from "../styles/img/fish_DBF.jpg";
+import fish_FOS from "../styles/img/fish_FOS.jpg";
+import fish_TAP from "../styles/img/fish_TAP.jpg";
+import fish_TOS from "../styles/img/fish_TOS.jpg";
 
 export const productList = {
 	kiss918: {
@@ -135,8 +140,15 @@ const gameList = ({ langId }) => [
 		categoryIcon: "casino",
 		className: "casinoList",
 		translateKey: "lbl_Casino",
+		isNew: true,
 		comingSoonImg: Coming_soon,
 		items: [
+			{
+				...defGameInfo.casino_ICG,
+				parameter: { tpId: defGameInfo.casino_ICG.tpId },
+				img: casino_ICG,
+				isNew: true
+			},
 			{
 				tpId: 9,
 				parameter: { tpId: 9 },
@@ -191,7 +203,28 @@ const gameList = ({ langId }) => [
 		className: "casinoList",
 		translateKey: "lbl_Fishing",
 		comingSoonImg: Coming_soon,
+		isNew: true,
 		items: [
+			{
+				...defGameInfo.ICG_DRAGONBALL_FISHING,
+				img: fish_DBF,
+				isNew: true
+			},
+			{
+				...defGameInfo.ICG_FISHING_OF_SAVIORS,
+				img: fish_FOS,
+				isNew: true
+			},
+			{
+				...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
+				img: fish_TAP,
+				isNew: true
+			},
+			{
+				...defGameInfo.ICG_TOWER_OF_SAVIORS,
+				img: fish_TOS,
+				isNew: true
+			},
 			{
 				gameId: 10,
 				tpId: 7,
@@ -326,5 +359,24 @@ export const defGameInfo = {
 	sabaClub: {
 		tpId: 1,
 		gameId: 200
+	},
+	casino_ICG: {
+		tpId: 24
+	},
+	ICG_DRAGONBALL_FISHING: {
+		tpId: 24,
+		gameId: "cmf0001"
+	},
+	ICG_FISHING_OF_SAVIORS: {
+		tpId: 24,
+		gameId: "cmf0002"
+	},
+	ICG_THE_TYRANT_AND_THE_PRINCESS: {
+		tpId: 24,
+		gameId: "cmf0003"
+	},
+	ICG_TOWER_OF_SAVIORS: {
+		tpId: 24,
+		gameId: "cmt0001"
 	}
 };

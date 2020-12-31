@@ -6155,7 +6155,7 @@ span.important {
   background-color: #0c1a3f;
   border: 1px solid #1d2f62;
   border-radius: 5px;
-  padding: 2vw 0;
+  padding: 2vw;
   text-align: center;
   color: #fff;
   margin-bottom: 2vw;
@@ -6180,6 +6180,10 @@ span.important {
 
 .gameInBox p {
   font-size: 4vw;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
 }
 
 .gameInBox p span {
