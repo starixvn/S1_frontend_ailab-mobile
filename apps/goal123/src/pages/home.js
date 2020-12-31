@@ -113,11 +113,7 @@ const IndexPage = () => {
 	useEffect(() => {
 		const cookieName = `appDownloadHint${userInfo.userName}`;
 
-		if (
-			userInfo.currencyId &&
-			userInfo.userName &&
-			readCookie(cookieName) !== "1"
-		) {
+		if (userInfo.userName && readCookie(cookieName) !== "1") {
 			setAppHint(true);
 		}
 	}, [userInfo.currencyId, userInfo.userName]);
