@@ -16,6 +16,7 @@ import ReloadSpin from "../common/reloadSpin";
 import { defGameInfo } from "../../datas/productList";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import ShortcutBar from "./shortcutBar";
+import TandC from "../../service/t_and_c";
 
 const defSubMenus = [
 	{
@@ -94,6 +95,11 @@ const defSubMenus = [
 		displayKey: "lbl_Promotions",
 		path: `/${path.promotion.root}`,
 		icon: "icon icon-gift"
+	},
+	{
+		displayKey: "APP Download",
+		TandCLink: "AppDownload",
+		icon: "icon icon-mobile"
 	}
 ];
 
@@ -212,6 +218,17 @@ const SubMenuList = ({
 					{i18n[s.displayKey]?.toUpperCase() ?? s.displayKey}
 					{_subItems}
 				</Link>
+			);
+		} else if (s.TandCLink) {
+			return (
+				<a
+					key={key}
+					className={s.icon}
+					href={TandC(userInfo.langId)[s.TandCLink]}
+					target="_blank"
+					rel="noreferrer">
+					{i18n[s.displayKey]?.toUpperCase() ?? s.displayKey}
+				</a>
 			);
 		} else {
 			return hasSubItem ? (
