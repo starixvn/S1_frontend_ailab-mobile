@@ -4294,4 +4294,58 @@ span.important {
   font-size: 18px;
   font-weight: bold;
 }
+
+.appDownload {
+  position: fixed;
+  z-index: 99;
+  background: #f5ac23;
+  top: 0;
+  width: 100%;
+  padding: 5px 10px;
+  color: #fff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.appDownload span {
+  font-weight: bold;
+  display: block;
+}
+
+.appDownload img {
+  max-width: 40px;
+  display: block;
+  margin: 0 5px 0 20px;
+}
+
+.appDownload .download-btn {
+  border: 1px solid #fff;
+  display: block;
+  padding: 2%;
+  color: #fff;
+  font-size: .9vw;
+}
+
+.appDownload .left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.appDownload .left button, .appDownload .left a {
+  color: #000;
+}
 /*# sourceMappingURL=style.css.map */
