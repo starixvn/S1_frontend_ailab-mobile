@@ -8,6 +8,10 @@ export default {
 		displayKey: "lbl_Promo",
 		hot: true
 	},
+	NEW: {
+		key: "NEW",
+		displayKey: "lbl_New"
+	},
 	FEATURED: {
 		key: "FEATURED",
 		displayKey: "lbl_Feature"

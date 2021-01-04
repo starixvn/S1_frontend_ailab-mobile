@@ -112,6 +112,20 @@ const PromotionInfoContent = () => {
 	let _isClaimed = isClaimed(promotionInfo);
 	let _isNew = _isClaimed ? false : isNew(promotionInfo);
 	let _isExpiry = isExpiry({ ...promotionInfo, isLogin: userInfo.isLogin });
+
+	let urlParams = {};
+	window.location.search
+		?.substring(1)
+		.split("&")
+		.forEach(u => {
+			const pattern = u.split("=");
+			if (pattern.length >= 2) {
+				urlParams[pattern[0]] = isNaN(pattern[1])
+					? pattern[1]
+					: Number(pattern[1]);
+			}
+		});
+
 	return (
 		<PromotionContent
 			path={path}
@@ -124,6 +138,8 @@ const PromotionInfoContent = () => {
 			GetPromotionDetail={GetPromotionDetail}
 			RefreshProcessBar={RefreshProcessBar}
 			ruleCols={ruleCols}
+			currencyId={userInfo.currencyId}
+			urlParameters={urlParams}
 		/>
 	);
 };

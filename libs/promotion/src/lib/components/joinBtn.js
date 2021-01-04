@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useEffect, useState } from "react";
 import { Link, Redirect } from "@reach/router";
 import { isExpiry } from "../common/common";
-import { defBonusType, defPromotionType } from "../common/def";
+import { defBonusType, defPromotionType, defFilterType } from "../common/def";
 import ClaimWithLockedAmount from "./joinBtn.claimWithLockedAmount";
 import { configContext } from "../common/context";
 import { useHandlePopBox } from "../hook/useHandlePopBox";
@@ -10,7 +10,8 @@ export default ({
 	uiSetting = {},
 	promotionInfo,
 	func_GetPromotionDetail,
-	func_CallBack
+	func_CallBack,
+	filterType
 }) => {
 	const { path, userInfo, i18n, api, formatSetting } = useContext(
 		configContext
@@ -42,7 +43,6 @@ export default ({
 						} else if (func_CallBack) {
 							func_CallBack();
 						}
-
 						handlePopBox({
 							content: <p>{i18n?.msg_Updatesuccessful}</p>,
 							btnBar: (
@@ -65,7 +65,6 @@ export default ({
 							);
 							clickClose();
 						};
-
 						handlePopBox({
 							content: <p>{i18n?.msg_OTPHint}</p>,
 							btnBar: (
@@ -135,6 +134,10 @@ export default ({
 				_promo.result === 1 &&
 				_promo.requiredAmount > 0
 			) {
+				const RedirectToDeposit = () => {
+					setRedirectPath(`/${path.deposit.root}`);
+					clickClose();
+				};
 				handlePopBox({
 					content: (
 						<div className="info">
@@ -157,20 +160,22 @@ export default ({
 								onClick={clickClose}>
 								{i18n?.lbl_Later}
 							</button>
-							<Link
-								to={`/${path.deposit.root}`}
+							<button
+								onClick={RedirectToDeposit}
 								className={
 									uiSetting.popBox?.submitBtn ?? "btn-check"
 								}>
 								{i18n?.lbl_DepositNow}
-							</Link>
+							</button>
 						</div>
 					)
 				});
 			} else if (
 				userInfo.isLogin &&
 				_promo.canJoin &&
-				_promo.promotionType === defPromotionType.reDeposit
+				(_promo.promotionType === defPromotionType.reDeposit ||
+					(filterType === defFilterType.specialBonus &&
+						_promo.promotionType === defPromotionType.firstDeposit))
 			) {
 				if (_promo.bonusType === defBonusType.Percentage) {
 					handlePopBox({
@@ -202,6 +207,11 @@ export default ({
 		isLogin: userInfo.isLogin
 	});
 
+	let _canJoin =
+		filterType === defFilterType.specialBonus && !promotionInfo.canJoin
+			? false
+			: true;
+
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
 	) : userInfo.isLogin === false && !_isExpiry ? (
@@ -210,7 +220,7 @@ export default ({
 			to={`/${path.login.root}`}>
 			{i18n?.lbl_PromoJoinNow}
 		</Link>
-	) : userInfo.isLogin && !promotionInfo.isJoin && !_isExpiry ? (
+	) : _canJoin && userInfo.isLogin && !promotionInfo.isJoin && !_isExpiry ? (
 		<button
 			className={uiSetting.joinBtn ?? "btn-check"}
 			onClick={onJoinPromotion.bind(this, promotionInfo)}>

@@ -1176,4 +1176,8 @@
 .icon-other:before {
   content: "\e9e1";
 }
+
+.icon-ICG:before {
+  content: "\e9e7";
+}
 /*# sourceMappingURL=font.css.map */

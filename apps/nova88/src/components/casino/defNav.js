@@ -1,4 +1,3 @@
-import GameTypes from "./defGameType";
 export default {
 	ALLGAMES: {
 		key: "ALLGAMES",
@@ -8,6 +7,10 @@ export default {
 		key: "PROMO",
 		displayKey: "lbl_Promo",
 		hot: true
+	},
+	NEW: {
+		key: "NEW",
+		displayKey: "lbl_New"
 	},
 	FEATURED: {
 		key: "FEATURED",

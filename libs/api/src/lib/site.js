@@ -18,6 +18,8 @@ export class siteAPI extends BaseAPI {
 
 	GetGamelist = () => this.siteRequest.post(`/GetGamelist`);
 
+	GetGamelistV2 = () => this.siteRequest.post(`/GetGamelistV2`);
+
 	ForgetPwd = ({ langId, Email }) =>
 		this.siteRequest.post(`/ForgetPwdV2/${langId}`, {
 			Email: Email,
