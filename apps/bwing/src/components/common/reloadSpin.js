@@ -23,7 +23,7 @@ export default props => {
 
 	return (
 		<button
-			className={`icon icon-spinner11${
+			className={`${props.className ?? "icon icon-spinner11"}${
 				props.btnActive !== false ? " clickBtn" : ""
 			}${spin ? " open" : ""}`}
 			onClick={clickSpin}></button>
