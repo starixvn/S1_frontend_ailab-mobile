@@ -378,6 +378,11 @@
 	"lbl_Ranking_Sports":"Peringkat Sports",
 	"lbl_Ranking_LiveCasino":"Peringkat Live Casino",
 	"lbl_Ranking_Slots":"Peringkat Slot Mesin",
+
+	"lbl_New":"Baru",
+	"lbl_AllProvider":"Semua Platform",
+	"lbl_AllGameType":"Semua Kategori",
+	"lbl_SearchGames":"Cari Permainan",
 	"lbl_BonusWallet_1": "Dompet Bonus Kasino",
 	"lbl_BonusWallet_2": "Dompet Bonus Live Kasino",
 	"lbl_SpecialBonus":"Bonus Khusus",

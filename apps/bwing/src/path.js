@@ -77,6 +77,9 @@ export default {
 	statement: {
 		root: "statement"
 	},
+	financialLog: {
+		root: "financialLog"
+	},
 	message: {
 		root: "message",
 		sub: {
