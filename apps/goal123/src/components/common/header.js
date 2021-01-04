@@ -8,13 +8,18 @@ import {
 	popBoxContext,
 	msgCountContext
 } from "../common/context";
-import { api_GetWalletInfo } from "../../service/api/account";
+import {
+	api_GetBalnace,
+	api_account_GetTpWalletList,
+	api_account_GetTpWalletBalance
+} from "../../service/api/account";
 import JoinPanel from "../join/join";
 import LoginPanel from "../login/login";
 import ReloadSpin from "./reloadSpin";
 import { number_format } from "./common";
 import path from "../../path";
 import Logo from "../../styles/img/logo.png";
+import { tpWalletsListType } from "../transfer/transfer.def";
 
 const HeaderTitle = ({ title }) => (
 	<>
@@ -37,7 +42,7 @@ const Header = ({ title, hideLogo }) => {
 	);
 };
 
-const HeaderBtn = props => {
+const HeaderBtn = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { msgCount } = useContext(msgCountContext);
@@ -45,6 +50,7 @@ const HeaderBtn = props => {
 	const { setPopBox } = useContext(popBoxContext);
 	const [redirectPath, setRedirectPath] = useState(null);
 	const [processing, setProcessing] = useState(false);
+	const [tpWalletsList, setTpWalletsList] = useState([]);
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -68,30 +74,19 @@ const HeaderBtn = props => {
 		if (!processing) {
 			setProcessing(true);
 
-			api_GetWalletInfo().then(
+			api_GetBalnace().then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
-							let _data = res.data.data;
-							let mainWalletBalance = _data.balance;
-
-							let otherWalletBalance = _data.tpWallets?.reduce(
-								(prev, curr) => {
-									return prev + curr.balance;
-								},
-								0
-							);
-
 							setWalletInfo(prevState => ({
 								...prevState,
-								allBalance:
-									mainWalletBalance + otherWalletBalance
+								main: res.data.data
 							}));
 						} else {
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
-								content: res.data.message
+								content: `[${res.data.errorCode}]${res.data.message}`
 							});
 						}
 						setProcessing(false);
@@ -108,12 +103,85 @@ const HeaderBtn = props => {
 					}
 				}
 			);
+
+			api_account_GetTpWalletList({
+				ListType: tpWalletsListType.allWallets
+			}).then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							res.data.data?.forEach(i => {
+								api_account_GetTpWalletBalance({
+									TpId: i.tpId
+								}).then(
+									res => {
+										if (res.data.errorCode === 0) {
+											let data = res.data.data;
+											let tpWalletData = {
+												id: data.tpId,
+												balance: data.balance
+											};
+
+											let tpWalletIdx = tpWalletsList.findIndex(
+												wallet => wallet.id === i.tpId
+											);
+
+											if (tpWalletIdx !== -1) {
+												setTpWalletsList(prev => {
+													prev[
+														tpWalletIdx
+													] = tpWalletData;
+													return prev;
+												});
+											} else {
+												setTpWalletsList(prev => [
+													...prev,
+													tpWalletData
+												]);
+											}
+										}
+									},
+									err => {
+										if (isMountedRef.current) {
+											setPopBox({
+												isOpen: true,
+												title: i18n.lbl_ImportantNote,
+												content: i18n.msg_ApiServerError
+											});
+										}
+									}
+								);
+							});
+						} else {
+							setPopBox({
+								isOpen: true,
+								title: i18n.lbl_ImportantNote,
+								content: res.data.message
+							});
+						}
+					}
+				},
+				err => {
+					if (isMountedRef.current) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
+						});
+					}
+				}
+			);
 		}
 	};
 
-	let balance = !walletInfo.allBalance
+	let otherWalletBalance = tpWalletsList?.reduce((prev, curr) => {
+		return prev + curr.balance;
+	}, 0);
+	let allWalletBalance = walletInfo.main + otherWalletBalance;
+
+	let balance = !allWalletBalance
 		? 0
-		: number_format(walletInfo.allBalance, false);
+		: number_format(allWalletBalance, false);
 
 	const ClickUserName = () => {
 		if (userInfo.isLogin) {
