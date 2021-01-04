@@ -4,7 +4,8 @@ import {
 	userInfoContext,
 	i18nContext,
 	navContext,
-	defNavPanel
+	defNavPanel,
+	popBoxContext
 } from "../common/context";
 import { Link } from "@reach/router";
 import path from "../../path";
@@ -66,8 +67,13 @@ export default () => {
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { nav, setNav } = useContext(navContext);
 	const [isOpenSubMenu, setIsOpenSubMenu] = useState([]);
+	const { setPopBox } = useContext(popBoxContext);
 
-	const { allBalance } = useGetBalance({ isLogin: userInfo.isLogin });
+	const { allBalance } = useGetBalance({
+		isLogin: userInfo.isLogin,
+		i18n,
+		setPopBox
+	});
 
 	const handleSubMenu = displayKey => {
 		if (isOpenSubMenu.includes(displayKey)) {

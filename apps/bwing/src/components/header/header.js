@@ -23,9 +23,7 @@ import { LOGOUT } from "../../service/auth";
 import Logo from "../img/logo";
 import { tpWalletsListType } from "../transfer/transfer";
 
-export const useGetBalance = ({ isLogin }) => {
-	const { setPopBox } = useContext(popBoxContext);
-	const { i18n } = useContext(i18nContext);
+export const useGetBalance = ({ isLogin, i18n, setPopBox }) => {
 	const [mainWalletBalance, setMainWalletBalance] = useState(0);
 	const [tpWalletsList, setTpWalletsList] = useState([]);
 	const isMountedRef = useRef(null);
@@ -152,7 +150,12 @@ export default ({ hideLogo, title, showMenuBar }) => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
-	const { allBalance } = useGetBalance({ isLogin: userInfo.isLogin });
+	const { setPopBox } = useContext(popBoxContext);
+	const { allBalance } = useGetBalance({
+		isLogin: userInfo.isLogin,
+		i18n,
+		setPopBox
+	});
 
 	const OnClickProduct = ({ tpId, gameId, langId, isLogin }) => {
 		return GET_ENTER_PAGE({
