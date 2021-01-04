@@ -31,3 +31,6 @@ export default ({ i18n, cookieName, langId, setAppHint }) => {
 		</div>
 	);
 };
+
+export const isIOS =
+	/iPad|iPhone/.test(navigator.userAgent) && !window.MSStream;

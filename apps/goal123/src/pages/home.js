@@ -13,7 +13,7 @@ import path from "../path";
 import { Redirect } from "@reach/router";
 import { api_GetWalletInfo } from "../service/api/account";
 import Submenu from "../components/home/submenu";
-import AppDownloadHint from "../components/home/appDownload";
+import AppDownloadHint, { isIOS } from "../components/home/appDownload";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -127,7 +127,7 @@ const IndexPage = () => {
 			<Category />
 			{userInfo.isLogin ? <ShortcutBar /> : null}
 			<Submenu />
-			{appHint ? (
+			{!isIOS && appHint ? (
 				<AppDownloadHint
 					i18n={i18n}
 					cookieName={`appDownloadHint${userInfo.userName}`}
