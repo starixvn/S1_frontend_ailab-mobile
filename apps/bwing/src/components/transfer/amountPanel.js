@@ -1,29 +1,66 @@
 import React from "react";
 import InputBox from "../common/inputbox.hint";
+import Dropdown from "../common/dropdown";
+import { defIptStatus } from "../common/inputbox.hint";
 
 export default ({
 	i18n,
-	changeDirection,
 	amount,
-	transferFrom,
-	transferTo,
 	EditAmount,
 	warning,
-	clickSubmit
+	clickSubmit,
+	selectedIdx,
+	transferOptions,
+	selectItem,
+	allWalletsList
 }) => {
+	let _btnStatus = defIptStatus.default;
+	if (warning.status === true) {
+		_btnStatus = defIptStatus.warning;
+	} else if (warning.status === false) {
+		_btnStatus = defIptStatus.verified;
+	}
+
 	return (
-		<div className="depositInBox textCenter">
-			<div className="swapBox">
-				<span>{i18n["lbl_From"]}</span>
-				<span>{i18n[transferFrom].toUpperCase()}</span>
+		<div className="depositInBox">
+			<div>
+				<div className="input-title">{i18n["lbl_From"]}</div>
+				<div className="inputBox">
+					<Dropdown
+						mainKey="transfer-From"
+						options={
+							selectedIdx.transferTo === null
+								? allWalletsList
+								: transferOptions.transferFrom
+						}
+						placeholder={i18n["lbl_TransferFrom"]}
+						selectedIdx={selectedIdx.transferFrom}
+						i18n={i18n}
+						onSelectItem={selectItem.bind(this, "transferFrom")}
+						colName="transferFrom"
+					/>
+				</div>
 			</div>
-			<button
-				className="icon icon-icon32px_Double-arrow swapIcon"
-				onClick={changeDirection}></button>
-			<div className="swapBox">
-				<span>{i18n["lbl_To"]}</span>
-				<span>{i18n[transferTo].toUpperCase()}</span>
+
+			<div>
+				<div className="input-title">{i18n["lbl_To"]}</div>
+				<div className="inputBox">
+					<Dropdown
+						mainKey="transfer-To"
+						options={
+							selectedIdx.transferFrom === null
+								? allWalletsList
+								: transferOptions.transferTo
+						}
+						placeholder={i18n["lbl_TransferTo"]}
+						selectedIdx={selectedIdx.transferTo}
+						onSelectItem={selectItem.bind(this, "transferTo")}
+						i18n={i18n}
+						colName="transferTo"
+					/>
+				</div>
 			</div>
+
 			<div className="inputBoxLevel">
 				<div className="left">
 					<InputBox
@@ -31,7 +68,7 @@ export default ({
 						value={amount}
 						inputType="tel"
 						onChange={EditAmount}
-						btnStatus={warning.status}
+						btnStatus={_btnStatus}
 					/>
 				</div>
 				<div className="right">
