@@ -78,11 +78,7 @@ const Join = () => {
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
-							const currencyId = res.data.data.currencyId;
-							setUserValue(prev => ({
-								...prev,
-								Currency: 0
-							}));
+							const { currencyId } = res.data.data;
 							setSiteCurrencyState([
 								{
 									id: currencyId,
@@ -137,7 +133,7 @@ const Join = () => {
 					}
 				}
 			},
-			err => {
+			() => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
