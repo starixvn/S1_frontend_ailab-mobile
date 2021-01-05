@@ -38,7 +38,7 @@ export default ({ isLogin, i18n, setPopBox, _isConvert }) => {
 				}
 			);
 		}
-	}, []);
+	}, [isLogin, i18n, setPopBox]);
 
 	return (
 		<>
