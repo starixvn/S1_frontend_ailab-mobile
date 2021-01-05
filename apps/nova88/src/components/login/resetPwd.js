@@ -5,6 +5,7 @@ import { getUrlParameter } from "../common/common";
 import { Redirect } from "@reach/router";
 import { LOGOUT } from "../../service/auth";
 import api from "../../service/api";
+import { passwordCheck } from "../common/common";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
@@ -73,7 +74,7 @@ export default () => {
 				setRedirectPath("/");
 			}
 		}
-	}, [redirectPath, userInfo.isLogin, setPopBox, setUserInfo]);
+	}, [redirectPath, userInfo.isLogin, setPopBox, setUserInfo, i18n]);
 
 	const showPswHandler = () => {
 		setPswState(!pswState);
@@ -85,25 +86,9 @@ export default () => {
 	};
 
 	const checkPswHandler = e => {
-		let val = e.target.value;
-		let checked = true;
-		let message = "";
-		const regx = /^[a-zA-Z0-9@$*!%#?&]*$/;
-
-		if (val === "") {
-			checked = false;
-			message = i18n.msg_PasswordReq;
-		} else if (val != null) {
-			if (val.length < 6 || val.length > 18) {
-				checked = false;
-				message = i18n.msg_PasswordLength;
-			} else if (!regx.test(val)) {
-				checked = false;
-				message = i18n.msg_PasswordVaildate;
-			}
-		}
-
-		setWarning({ status: !checked, msg: message });
+		const val = e.target.value;
+		let result = passwordCheck({ val });
+		setWarning({ status: !result.checked, msg: i18n[result.msg] });
 	};
 
 	const clickSubmit = () => {

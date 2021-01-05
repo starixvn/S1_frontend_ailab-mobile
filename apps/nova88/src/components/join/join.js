@@ -4,7 +4,7 @@ import InputboxPWD from "../common/inputbox.password";
 import Dropdown from "../common/dropdown";
 import Checkbox from "../common/checkbox";
 import Tips from "./tips";
-import { getUrlParameter } from "../common/common";
+import { getUrlParameter, passwordCheck } from "../common/common";
 import { getCookie } from "../common/cookie";
 import {
 	userInfoContext,
@@ -135,7 +135,7 @@ const Join = () => {
 		if (col === "UserName") {
 			msg = "lbl_UsernameTooltip";
 		} else if (col === "Password") {
-			msg = "lbl_PasswordTooltip";
+			msg = "msg_PasswordVaildate";
 		} else if (col === "AffiliateId") {
 			msg = `lbl_Please_enter_Affiliate_ID`;
 		} else if (col === "Email") {
@@ -163,7 +163,7 @@ const Join = () => {
 			checked = result.checked;
 			msg = result.msg;
 		} else if (col === "Password") {
-			let result = passwordCheck(val);
+			let result = passwordCheck({ val });
 			checked = result.checked;
 			msg = result.msg;
 		} else if (col === "Email") {
@@ -206,25 +206,6 @@ const Join = () => {
 				checked = false;
 				msg = "msg_UsernameNotAvailable";
 			}
-		}
-
-		return { checked, msg };
-	};
-
-	const passwordCheck = val => {
-		let checked = true;
-		let msg = "";
-		const regx = /^[a-zA-Z0-9@$*!%#?&]*$/;
-
-		if (!val) {
-			checked = false;
-			msg = "msg_PasswordReq";
-		} else if (val.length < 6 || val.length > 18) {
-			checked = false;
-			msg = "msg_PasswordLength";
-		} else if (!regx.test(val)) {
-			checked = false;
-			msg = "msg_PasswordVaildate";
 		}
 
 		return { checked, msg };
@@ -321,7 +302,7 @@ const Join = () => {
 				let _usernameCheck = res[0];
 				let _phoneCheck = res[1];
 				let _emailCheck = res[2];
-				let _passwordCheck = passwordCheck(userValue.Password);
+				let _passwordCheck = passwordCheck({ val: userValue.Password });
 				let _currencyCheck = currencyCheck();
 				let _checkboxCheck = userValue.Checkbox;
 
