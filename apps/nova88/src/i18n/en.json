@@ -378,7 +378,6 @@
 	"lbl_Ranking_Sports":"Sports Ranking",
 	"lbl_Ranking_LiveCasino":"Live Casino Ranking",
 	"lbl_Ranking_Slots":"Slots Ranking",
-
 	"lbl_New":"New",
 	"lbl_AllProvider":"All Platform",
 	"lbl_AllGameType":"All Categories",
@@ -386,5 +385,6 @@
 	"lbl_BonusWallet_1": "Casino Bonus Wallet",
 	"lbl_BonusWallet_2": "Live Casino Bonus Wallet",
 	"lbl_SpecialBonus":"Special Bonus",
-	"lbl_SpecialBonusCode":"Special Bonus Code"
+	"lbl_SpecialBonusCode":"Special Bonus Code",
+	"lbl_TurnoverAccmulateHint":"Your Fund are locked to transfer out due to Rollover requirement is not fulfils."
 }
