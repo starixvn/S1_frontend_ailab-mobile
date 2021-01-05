@@ -3,9 +3,9 @@ import React from "react";
 const socialLink = ({ text, socialMedia, refLink }) => {
 	const links = {
 		fb: `https://www.facebook.com/sharer/sharer.php?u=${refLink}&quote=${text}`,
-		whatsapp: `https://wa.me/?text=${text}`,
+		whatsapp: `https://wa.me/?text=${text} ${refLink}`,
 		line: `http://line.naver.jp/R/msg/text/?${text}%0D%0A${refLink}`,
-		telegram: `https://t.me/share/url?url=${refLink}.'&text=${text}`
+		telegram: `https://t.me/share/url?url=${refLink}&text=${text}`
 	};
 
 	return links[socialMedia];
