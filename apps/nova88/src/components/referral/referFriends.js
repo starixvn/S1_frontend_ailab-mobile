@@ -5,7 +5,6 @@ import stepImg_en from "../../styles/img/refbanner-en.png";
 import stepImg_cs from "../../styles/img/refbanner-cs.png";
 import stepImg_th from "../../styles/img/refbanner-th.png";
 import stepImg_id from "../../styles/img/refbanner-id.png";
-import ReacentDatas from "./referral.recentDatas";
 import MediaLinks from "./links";
 import api from "../../service/api";
 import path from "../../path";
@@ -13,6 +12,7 @@ import QRCode from "qrcode.react";
 import TandC from "../../service/t_and_c";
 import { number_format, isConvert } from "../common/common";
 import { Redirect } from "@reach/router";
+import Summary from "./referral.summary";
 
 const currentLocation = window.location.origin;
 
@@ -150,6 +150,12 @@ export default () => {
 		<Redirect to="/" noThrow />
 	) : (
 		<>
+			<Summary
+				isLogin={userInfo.isLogin}
+				i18n={i18n}
+				setPopBox={setPopBox}
+				_isConvert={_isConvert}
+			/>
 			<img
 				className="refbanner"
 				src={_stepImg}
@@ -237,8 +243,6 @@ export default () => {
 					/>
 				</div>
 			</div>
-
-			{/* <ReacentDatas /> */}
 		</>
 	);
 };
