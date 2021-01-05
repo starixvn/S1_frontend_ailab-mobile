@@ -1,6 +1,6 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
-import { number_format, isConvert } from "../common/common";
+import { number_format } from "../common/common";
 import moment from "moment";
 import HistoryFilter from "../common/historyFilter";
 import ReloadSpin from "../common/reloadSpin";
@@ -13,7 +13,6 @@ const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
-	const _isConvert = isConvert(userInfo.currencyId);
 	const [getHistoryState, setGetHistoryState] = useState(null);
 	const [filterData, setFilterData] = useState(null);
 	const [pageInfo, setPageInfo] = useState({ pageNumber: 0, totalPages: 0 });
@@ -119,7 +118,6 @@ const IndexPage = () => {
 				key={`statementHistory-${item.refTransId}-${item.direction}`}
 				createTime={item.createTime}
 				typeName={item.typeName}
-				_isConvert={_isConvert}
 				changeAmount={item.changeAmount}
 				beforeAmount={item.beforeAmount}
 				afterAmount={item.afterAmount}
@@ -154,7 +152,12 @@ const IndexPage = () => {
 						/>
 					</div>
 					{getHistoryState.length > 0 ? (
-						<div className="infoList">{arr}</div>
+						<>
+							<div className="txt-blue2">
+								{i18n["msg_AmountFormatTip"]}
+							</div>
+							<div className="infoList">{arr}</div>
+						</>
 					) : (
 						<div className="nodata icon icon-nodata">
 							<div className="txt-white">
@@ -192,24 +195,20 @@ const TransactionHistory = props => {
 					</span>
 					<span>
 						{props.direction}
-						{number_format(props.changeAmount, props._isConvert)}
+						{number_format(props.changeAmount)}
 					</span>
 				</li>
 				<li>
 					<span className="title">
 						{props.i18n["lbl_BeforeAmount"]}
 					</span>
-					<span>
-						{number_format(props.beforeAmount, props._isConvert)}
-					</span>
+					<span>{number_format(props.beforeAmount)}</span>
 				</li>
 				<li>
 					<span className="title">
 						{props.i18n["lbl_AfterAmount"]}
 					</span>
-					<span>
-						{number_format(props.afterAmount, props._isConvert)}
-					</span>
+					<span>{number_format(props.afterAmount)}</span>
 				</li>
 				<li>
 					<span className="title">

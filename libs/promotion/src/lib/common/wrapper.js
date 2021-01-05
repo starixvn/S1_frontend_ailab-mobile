@@ -15,7 +15,8 @@ export default ({
 	ruleCols,
 	formatSetting = {
 		isConvertRequired: false,
-		digits: undefined
+		digits: undefined,
+		formatRequired: undefined
 	}
 }) => (
 	<configContext.Provider
@@ -31,9 +32,10 @@ export default ({
 			formatSetting: {
 				[defWrapperCol.formatSetting.isConvertRequired]:
 					formatSetting.isConvertRequired,
-				[defWrapperCol.formatSetting.formatRequired]: isConvert(
-					userInfo.currencyId
-				),
+				[defWrapperCol.formatSetting.formatRequired]:
+					formatSetting.formatRequired === undefined
+						? isConvert(userInfo.currencyId)
+						: formatSetting.formatRequired,
 				[defWrapperCol.formatSetting.digits]: formatSetting.digits
 			}
 		}}>

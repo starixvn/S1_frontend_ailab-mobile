@@ -100,7 +100,8 @@ const defPageInfo = {
 	},
 	financialLog: {
 		titleKey: "lbl_FinancialLog",
-		className: "main"
+		className: "main",
+		hideLogo: true
 	},
 	ranking: {
 		titleKey: "lbl_Ranking",
