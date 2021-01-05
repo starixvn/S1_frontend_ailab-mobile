@@ -43,13 +43,13 @@ export default ({ isLogin, i18n, setPopBox, _isConvert }) => {
 	return (
 		<>
 			<div className="achievement">
-				Achievement Rate
+				{i18n.lbl_Achievement}
 				<span>
 					{summary.amountCount}/{summary.referralCount}
 				</span>
 			</div>
 			<div className="achievement">
-				Amount
+				{i18n.lbl_Referral_rewards}
 				<span>{number_format(summary.amountSum, _isConvert)}</span>
 			</div>
 		</>

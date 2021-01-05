@@ -398,5 +398,7 @@
 	"lbl_BonusWallet_1": "Casino Bonus Wallet",
 	"lbl_BonusWallet_2": "Live Casino Bonus Wallet",
 	"lbl_SpecialBonus":"Special Bonus",
-	"lbl_SpecialBonusCode":"Special Bonus Code"
+	"lbl_SpecialBonusCode":"Special Bonus Code",
+	"lbl_Achievement":"Achievement",
+	"lbl_Referral_rewards":"Rewards"
 }

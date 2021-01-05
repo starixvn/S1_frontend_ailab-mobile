@@ -398,5 +398,8 @@
 	"lbl_BonusWallet_1": "Dompet Bonus Kasino",
 	"lbl_BonusWallet_2": "Dompet Bonus Live Kasino",
 	"lbl_SpecialBonus":"Bonus Khusus",
-	"lbl_SpecialBonusCode":"Kode Bonus Khusus"
+	"lbl_SpecialBonusCode":"Kode Bonus Khusus",
+	"lbl_Achievement":"Prestasi",
+	"lbl_Referral_rewards":"Hadiah"
+
 }
