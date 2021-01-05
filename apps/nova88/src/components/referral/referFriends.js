@@ -85,7 +85,7 @@ export default () => {
 				}
 			);
 		}
-	}, []);
+	}, [userInfo.isLogin, i18n, setPopBox]);
 
 	useEffect(() => {
 		if (userInfo.isLogin === true && isMountedRef.current) {
@@ -115,7 +115,7 @@ export default () => {
 				}
 			);
 		}
-	}, []);
+	}, [userInfo.isLogin, i18n, setPopBox]);
 
 	const refLink = `${currentLocation}/${path.join.root}/?AffId=${referralCode}`;
 
