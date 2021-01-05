@@ -88,7 +88,9 @@ export default () => {
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
-							setReferralData(res.data.data[0]);
+							setReferralData(prev =>
+								res.data.data.length > 0 ? res.data.data[0] : {}
+							);
 						} else {
 							setPopBox({
 								isOpen: true,
