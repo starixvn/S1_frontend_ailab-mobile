@@ -19,6 +19,28 @@ import {
 	initTransferOptions
 } from "./transfer.def";
 
+const updateTpWalletsList = ({ prev, tpId, balance }) => {
+	let tpWalletData = {
+		id: tpId,
+		displayKey: `lbl_TpWallet_${tpId}`,
+		balance: balance ?? null
+	};
+
+	let tpWalletIdx = prev.findIndex(wallet => {
+		return wallet.id === tpId;
+	});
+
+	if (tpWalletIdx !== -1) {
+		prev[tpWalletIdx] = tpWalletData;
+	} else {
+		prev.push(tpWalletData);
+	}
+
+	return [...prev].sort((a, b) => {
+		return a.id - b.id;
+	});
+};
+
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -27,7 +49,6 @@ const Panel = () => {
 
 	const [mainWalletInfo, setMainWalletInfo] = useState({});
 	const [tpWalletsList, setTpWalletsList] = useState([]);
-	const [tpBalanceList, setTpBalanceList] = useState([]);
 	const [selectedIdx, setSelectedIdx] = useState(initSelectedIdx);
 	const [transferOptions, setTransferOptions] = useState(initTransferOptions);
 
@@ -48,15 +69,16 @@ const Panel = () => {
 		}).then(
 			res => {
 				if (res.data.errorCode === 0) {
-					let _arr = [];
 					res.data.data?.forEach(i => {
 						GetTpWalletBalance(i.tpId);
-						_arr.push({
-							id: i.tpId,
-							displayKey: `lbl_TpWallet_${i.tpId}`
-						});
+						setTpWalletsList(prev =>
+							updateTpWalletsList({
+								prev: prev,
+								tpId: i.tpId,
+								balance: null
+							})
+						);
 					});
-					setTpWalletsList(_arr);
 				} else {
 					setPopBox({
 						isOpen: true,
@@ -81,15 +103,7 @@ const Panel = () => {
 		});
 	}, []);
 
-	let allWalletsList = [
-		{ id: 0, displayKey: "lbl_MainWallet" },
-		...tpWalletsList
-	];
-	let allBalanceList = [mainWalletInfo, ...tpBalanceList];
-
-	allWalletsList.sort((a, b) => {
-		return a.id - b.id;
-	});
+	let allWalletsList = [mainWalletInfo, ...tpWalletsList];
 
 	const GetBalnace = () => {
 		api_GetBalnace().then(
@@ -124,22 +138,13 @@ const Panel = () => {
 			res => {
 				if (res.data.errorCode === 0) {
 					let _datas = res.data.data;
-					let tpWalletData = {
-						id: _datas.tpId,
-						displayKey: `lbl_TpWallet_${_datas.tpId}`,
-						balance: _datas.balance
-					};
-					let tpWalletIdx = tpBalanceList.findIndex(wallet => {
-						return wallet.id === tpId;
-					});
-
-					if (tpWalletIdx !== -1) {
-						let _arr = [...tpBalanceList];
-						_arr[tpWalletIdx] = tpWalletData;
-						setTpBalanceList(_arr);
-					} else {
-						setTpBalanceList(prev => [...prev, tpWalletData]);
-					}
+					setTpWalletsList(prev =>
+						updateTpWalletsList({
+							prev: prev,
+							tpId: _datas.tpId,
+							balance: _datas.balance
+						})
+					);
 				}
 			},
 			err => {
@@ -281,23 +286,27 @@ const Panel = () => {
 		}
 	};
 
-	let arr = allBalanceList.map(wallet => {
-		return (
-			<div className="account" key={`transfer-wallet-${wallet.id}`}>
-				<div className="info">
-					<span className="title">{i18n[wallet.displayKey]}</span>
-					<div>{number_format(wallet.balance, _isConvert)}</div>
+	let arr = allWalletsList
+		.filter(wallet => {
+			return wallet.balance !== null;
+		})
+		.map(wallet => {
+			return (
+				<div className="account" key={`transfer-wallet-${wallet.id}`}>
+					<div className="info">
+						<span className="title">{i18n[wallet.displayKey]}</span>
+						<div>{number_format(wallet.balance, _isConvert)}</div>
+					</div>
+					<ReloadSpin
+						func={
+							wallet.id !== 0
+								? GetTpWalletBalance.bind(this, wallet.id)
+								: GetBalnace
+						}
+					/>
 				</div>
-				<ReloadSpin
-					func={
-						wallet.id !== 0
-							? GetTpWalletBalance.bind(this, wallet.id)
-							: GetBalnace
-					}
-				/>
-			</div>
-		);
-	});
+			);
+		});
 
 	return loading ? (
 		<Loading />
