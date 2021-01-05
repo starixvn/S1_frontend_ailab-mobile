@@ -21,7 +21,12 @@ export default () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const [referralCode, setReferralCode] = useState("");
-	const [referralData, setReferralData] = useState({});
+	const [referralData, setReferralData] = useState({
+		bonusAmount: 0,
+		vaildBet: 0,
+		deposit: 0,
+		periodDays: 0
+	});
 	const _isConvert = isConvert(userInfo.currencyId);
 	const isMountedRef = useRef(null);
 	const [redirectPath, setRedirectPath] = useState(null);
@@ -88,9 +93,8 @@ export default () => {
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
-							setReferralData(prev =>
-								res.data.data.length > 0 ? res.data.data[0] : {}
-							);
+							if (res.data.data.length > 0)
+								setReferralData(res.data.data[0]);
 						} else {
 							setPopBox({
 								isOpen: true,
