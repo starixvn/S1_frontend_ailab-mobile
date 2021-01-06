@@ -11,13 +11,14 @@ const IndexPage = ({ defTabs, children, beforeLogin }) => {
 		beforeLogin
 	});
 
-	const CheckMatch = path => {
-		return useMatch(path) !== null;
-	};
-
-	if (redirectPath !== null) {
+	if (userInfo.isLogin === null) return null;
+	else if (redirectPath !== null) {
 		return <Redirect to="/" noThrow />;
 	} else {
+		const CheckMatch = path => {
+			return useMatch(path) !== null;
+		};
+
 		let items = Object.keys(defTabs).map(key => {
 			let tabItem = defTabs[key];
 			let match =

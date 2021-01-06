@@ -68,11 +68,43 @@ const Join = () => {
 		}
 	}, [nav, userInfo.langId]);
 
+	let AffId = getUrlParameter("AffId") || getCookie("AffId");
 	useEffect(() => {
 		let AffCode = getUrlParameter("AffCode") || getCookie("AffCode");
 
-		if (AffCode && isMountedRef) {
-			setAffiliateidExist(AffCode);
+		if (AffId) {
+			setAffiliateidExist(AffId);
+			api.site.GetAffiliateAgent({ AffId }).then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							const { currencyId } = res.data.data;
+							setSiteCurrencyState([
+								{
+									id: currencyId,
+									displayKey: `Currency_${currencyId}`
+								}
+							]);
+						} else {
+							GetSiteCurrencyList();
+						}
+					}
+				},
+				err => {
+					if (isMountedRef.current) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
+						});
+					}
+				}
+			);
+		} else {
+			if (AffCode) {
+				setAffiliateidExist(AffCode);
+			}
+			GetSiteCurrencyList();
 		}
 	}, []);
 
@@ -82,7 +114,7 @@ const Join = () => {
 		}
 	}, [redirectPath]);
 
-	useEffect(() => {
+	const GetSiteCurrencyList = () => {
 		api.site.GetSiteCurrencyList().then(
 			res => {
 				if (isMountedRef.current) {
@@ -101,7 +133,7 @@ const Join = () => {
 					}
 				}
 			},
-			err => {
+			() => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
@@ -111,7 +143,7 @@ const Join = () => {
 				}
 			}
 		);
-	}, [i18n.lbl_ImportantNote, i18n.msg_ApiServerError, setPopBox]);
+	};
 
 	let _currencyId = siteCurrency[userValue.Currency]?.id;
 
@@ -388,8 +420,15 @@ const Join = () => {
 				AreaCode: _areaCode
 			};
 
+			if (AffId) {
+				const res = await api.site.GetAffiliateAgent({ AffId });
+				if (res.data.errorCode === 0) {
+					regData["AffId"] =
+						getUrlParameter("AffId") || getCookie("AffId");
+				}
+			}
+
 			regData["RefId"] = getUrlParameter("RefId") || getCookie("RefId");
-			regData["AffId"] = getUrlParameter("AffId") || getCookie("AffId");
 			regData["Aff"] = getUrlParameter("Aff") || getCookie("Aff");
 			regData["AffCode"] =
 				getUrlParameter("AffCode") ||

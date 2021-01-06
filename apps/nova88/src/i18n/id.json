@@ -378,6 +378,19 @@
 	"lbl_Ranking_Sports":"Peringkat Sports",
 	"lbl_Ranking_LiveCasino":"Peringkat Live Casino",
 	"lbl_Ranking_Slots":"Peringkat Slot Mesin",
+	"lbl_friendReferral":"Referral Teman",
+	"lbl_ReferralHistory":"Riwayat Referral",
+	"lbl_ReferFriends":"Referensikan Teman",
+	"lbl_Referral":"Referral Teman",
+	"lbl_MyReferralBonus":"Bonus Referral Saya",
+	"lbl_Share_with_friend":"Pilih penawaran favorit Anda untuk Referensikan Teman Anda Sekarang!",
+	"lbl_Your_link_invite":"Bagikan tautan / kode unik Anda",
+	"lbl_Copy_to_clipboard":"Salin ke clipboard",
+	"lbl_Referral_code":"Kode Referensi",
+	"lbl_Referral_link":"Tautan Referensi",
+	"lbl_Referral_Welcome":"Selamat datang di Nova88, Anda diundang untuk bergabung dengan kami. Ada banyak sekali penawaran program bermanfaat bagi MEMBER BARU. Cukup klik dan daftar dengan kami untuk membantu Anda dan teman Anda mendapatkan hadiah! *Syarat dan ketentuan berlaku.",
+	"lbl_Downloads":"Dowload",
+	"lbl_ValidPeriod":"Waktu berlaku",
 	"lbl_New":"Baru",
 	"lbl_AllProvider":"Semua Platform",
 	"lbl_AllGameType":"Semua Kategori",
@@ -386,5 +399,8 @@
 	"lbl_BonusWallet_2": "Dompet Bonus Live Kasino",
 	"lbl_SpecialBonus":"Bonus Khusus",
 	"lbl_SpecialBonusCode":"Kode Bonus Khusus",
-	"lbl_TurnoverAccmulateHint":"Dana Anda terkunci untuk ditransfer karena persyaratan Rollover belum terpenuhi."
+	"lbl_TurnoverAccmulateHint":"Dana Anda terkunci untuk ditransfer karena persyaratan Rollover belum terpenuhi.",
+	"lbl_Achievement":"Prestasi",
+	"lbl_Referral_rewards":"Hadiah"
+
 }

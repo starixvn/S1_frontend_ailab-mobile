@@ -131,6 +131,7 @@ const Join = () => {
 
 	useEffect(() => {
 		let AffCode = getUrlParameter("AffCode") || readCookie("AffCode");
+
 		if (AffCode && isMountedRef) {
 			setAffiliateidExist(AffCode);
 		}
