@@ -85,8 +85,8 @@ export const deleteCookie = cookieName => {
 export const passwordCheck = ({ val }) => {
 	let checked = true;
 	let msg = "";
-	const regx = /^(?=.{6,15}$)(?=.*[a-zA-Z0-9])(?=.*[!@#$%^&*]).*$/;
 
+	const regx = /^(?=.{6,15}$)(?=.*[a-zA-Z0-9])(?=.*[!@#$%^&*]).*$/;
 	if (!val) {
 		checked = false;
 		msg = "msg_PasswordReq";
