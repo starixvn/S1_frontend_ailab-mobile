@@ -399,6 +399,7 @@
 	"lbl_BonusWallet_2": "กระเป๋าเงินโบนัสคาสิโนสด",
 	"lbl_SpecialBonus":"โบนัสพิเศษ",
 	"lbl_SpecialBonusCode":"รหัสโบนัสพิเศษ",
+	"lbl_TurnoverAccmulateHint":"เงินของคุณถูกล็อคไม่ให้โอนออกเนื่องจากข้อกำหนดโรลโอเวอร์ไม่เป็นไปตามข้อกำหนด",
 	"lbl_Achievement":"ความสำเร็จ",
 	"lbl_Referral_rewards":"รางวัล"
 }
