@@ -399,6 +399,7 @@
 	"lbl_BonusWallet_2": "Live Casino Bonus Wallet",
 	"lbl_SpecialBonus":"Special Bonus",
 	"lbl_SpecialBonusCode":"Special Bonus Code",
+	"lbl_TurnoverAccmulateHint":"Your Fund are locked to transfer out due to Rollover requirement is not fulfils.",
 	"lbl_Achievement":"Achievement",
 	"lbl_Referral_rewards":"Rewards"
 }

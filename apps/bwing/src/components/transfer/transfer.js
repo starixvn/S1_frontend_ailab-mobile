@@ -31,6 +31,20 @@ const initTransferOptions = {
 
 const initWarning = { status: defIptStatus.default, msg: "" };
 
+const updateTpWalletsList = ({ prev, tpId, balance = null }) => {
+	let tpWalletIdx = prev.findIndex(wallet => wallet.id === tpId);
+	if (tpWalletIdx !== -1) {
+		prev[tpWalletIdx].balance = balance;
+	} else {
+		prev.push({
+			id: tpId,
+			displayKey: `lbl_TpWallet_${tpId}`,
+			balance: balance
+		});
+	}
+	return [...prev].sort((a, b) => a.id - b.id);
+};
+
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -62,6 +76,13 @@ const Panel = () => {
 					if (res.data.errorCode === 0) {
 						res.data.data?.forEach(i => {
 							GetTpWalletBalance(i.tpId);
+							setTpWalletsList(prev =>
+								updateTpWalletsList({
+									prev: prev,
+									tpId: i.tpId,
+									balance: null
+								})
+							);
 						});
 					} else {
 						setPopBox({
@@ -89,9 +110,6 @@ const Panel = () => {
 	}, []);
 
 	let allWalletsList = [mainWalletInfo, ...tpWalletsList];
-	allWalletsList.sort((a, b) => {
-		return a.id - b.id;
-	});
 
 	const GetBalnace = () => {
 		api_GetBalnace().then(
@@ -130,22 +148,13 @@ const Panel = () => {
 			res => {
 				if (res.data.errorCode === 0) {
 					let _datas = res.data.data;
-					let tpWalletData = {
-						id: _datas.tpId,
-						displayKey: `lbl_TpWallet_${_datas.tpId}`,
-						balance: _datas.balance
-					};
-					let tpWalletIdx = tpWalletsList.findIndex(wallet => {
-						return wallet.id === tpId;
-					});
-
-					if (tpWalletIdx !== -1) {
-						let _arr = [...tpWalletsList];
-						_arr[tpWalletIdx] = tpWalletData;
-						setTpWalletsList(_arr);
-					} else {
-						setTpWalletsList(prev => [...prev, tpWalletData]);
-					}
+					setTpWalletsList(prev =>
+						updateTpWalletsList({
+							prev: prev,
+							tpId: _datas.tpId,
+							balance: _datas.balance
+						})
+					);
 				}
 			},
 			err => {

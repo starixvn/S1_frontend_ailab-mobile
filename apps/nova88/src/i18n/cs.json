@@ -399,6 +399,7 @@
 	"lbl_BonusWallet_2": "真人娱乐红利钱包",
 	"lbl_SpecialBonus":"特别优惠",
 	"lbl_SpecialBonusCode":"特别优惠代码",
+	"lbl_TurnoverAccmulateHint":"由于未达要求流水金额故余额无法转出",
 	"lbl_Achievement":"绩效",
 	"lbl_Referral_rewards":"奖励"
 }

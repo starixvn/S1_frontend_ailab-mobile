@@ -438,12 +438,12 @@
 	"lbl_liveCasino_789SeDie":"Xóc Đĩa 789",
 	"lbl_please_select_from_wallet":"Vui lòng chọn ví tiền phù hợp",
 	"lbl_please_select_to_wallet":"Vui lòng chọn quỹ phù hợp",
-
 	"lbl_New":"Mới",
 	"lbl_AllProvider":"Tất cả nền tảng",
 	"lbl_AllGameType":"Tất cả thể loại",
 	"lbl_SearchGames":"Tìm kiếm trò chơi",
 	"lbl_BonusWallet_1": "Ví thưởng quay hũ",
 	"lbl_BonusWallet_2": "Ví thưởng sòng bài",
-	"lbl_dream_gaming_se_die": "Xóc đĩa live"
+	"lbl_dream_gaming_se_die": "Xóc đĩa live",
+	"lbl_TurnoverAccmulateHint":"Bạn cần hoành thành doanh thu cược yêu cầu của khuyến mãi để thực hiện chuyển quỹ"
 }
