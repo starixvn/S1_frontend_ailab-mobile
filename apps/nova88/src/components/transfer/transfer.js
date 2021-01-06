@@ -24,26 +24,18 @@ const initTransferOptions = {
 	transferTo: []
 };
 
-const updateTpWalletsList = ({ prev, tpId, balance }) => {
-	let tpWalletData = {
-		id: tpId,
-		displayKey: `lbl_TpWallet_${tpId}`,
-		balance: balance ?? null
-	};
-
-	let tpWalletIdx = prev.findIndex(wallet => {
-		return wallet.id === tpId;
-	});
-
+const updateTpWalletsList = ({ prev, tpId, balance = null }) => {
+	let tpWalletIdx = prev.findIndex(wallet => wallet.id === tpId);
 	if (tpWalletIdx !== -1) {
-		prev[tpWalletIdx] = tpWalletData;
+		prev[tpWalletIdx].balance = balance;
 	} else {
-		prev.push(tpWalletData);
+		prev.push({
+			id: tpId,
+			displayKey: `lbl_TpWallet_${tpId}`,
+			balance: balance
+		});
 	}
-
-	return [...prev].sort((a, b) => {
-		return a.id - b.id;
-	});
+	return [...prev].sort((a, b) => a.id - b.id);
 };
 
 const Panel = () => {
@@ -144,12 +136,12 @@ const Panel = () => {
 		api.account.GetTpWalletBalance({ TpId: tpId }).then(
 			res => {
 				if (res.data.errorCode === 0) {
-					let _datas = res.data.data;
+					let { tpId, balance } = res.data.data;
 					setTpWalletsList(prev =>
 						updateTpWalletsList({
 							prev: prev,
-							tpId: _datas.tpId,
-							balance: _datas.balance
+							tpId: tpId,
+							balance: balance
 						})
 					);
 				}

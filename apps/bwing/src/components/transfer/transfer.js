@@ -31,26 +31,18 @@ const initTransferOptions = {
 
 const initWarning = { status: defIptStatus.default, msg: "" };
 
-const updateTpWalletsList = ({ prev, tpId, balance }) => {
-	let tpWalletData = {
-		id: tpId,
-		displayKey: `lbl_TpWallet_${tpId}`,
-		balance: balance ?? null
-	};
-
-	let tpWalletIdx = prev.findIndex(wallet => {
-		return wallet.id === tpId;
-	});
-
+const updateTpWalletsList = ({ prev, tpId, balance = null }) => {
+	let tpWalletIdx = prev.findIndex(wallet => wallet.id === tpId);
 	if (tpWalletIdx !== -1) {
-		prev[tpWalletIdx] = tpWalletData;
+		prev[tpWalletIdx].balance = balance;
 	} else {
-		prev.push(tpWalletData);
+		prev.push({
+			id: tpId,
+			displayKey: `lbl_TpWallet_${tpId}`,
+			balance: balance
+		});
 	}
-
-	return [...prev].sort((a, b) => {
-		return a.id - b.id;
-	});
+	return [...prev].sort((a, b) => a.id - b.id);
 };
 
 const Panel = () => {
