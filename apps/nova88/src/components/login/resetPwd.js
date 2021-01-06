@@ -93,7 +93,7 @@ export default () => {
 
 	const clickSubmit = () => {
 		if (newPsw === "") {
-			setWarning({ status: true, msg: i18n.msg_PasswordVaildate });
+			setWarning({ status: true, msg: i18n.msg_PasswordReq });
 		} else if (warning.status === false) {
 			api.accountStrict.ResetPassword({ NewPassword: newPsw }).then(
 				res => {
