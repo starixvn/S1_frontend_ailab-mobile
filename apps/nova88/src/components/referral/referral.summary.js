@@ -27,7 +27,7 @@ export default ({ isLogin, i18n, setPopBox, _isConvert }) => {
 						}
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,

@@ -1,23 +1,15 @@
 import React from "react";
 
-const socialLink = ({ text, socialMedia, refLink }) => {
-	const links = {
-		fb: `https://www.facebook.com/sharer/sharer.php?u=${refLink}&quote=${text}`,
-		whatsapp: `https://wa.me/?text=${text} ${refLink}`,
-		line: `http://line.naver.jp/R/msg/text/?${text}%0D%0A${refLink}`,
-		telegram: `https://t.me/share/url?url=${refLink}&text=${text}`
-	};
-
-	return links[socialMedia];
-};
-
 export default ({ refLink, i18n }) => {
-	const _socialLink = ({ socialMedia }) => {
-		return socialLink({
-			text: i18n.lbl_Referral_Welcome,
-			socialMedia: socialMedia,
-			refLink: refLink
-		});
+	const socialLink = ({ socialMedia }) => {
+		const links = {
+			fb: `https://www.facebook.com/sharer/sharer.php?u=${refLink}&quote=${i18n.lbl_Referral_Welcome}`,
+			whatsapp: `https://wa.me/?text=${i18n.lbl_Referral_Welcome} ${refLink}`,
+			line: `http://line.naver.jp/R/msg/text/?${i18n.lbl_Referral_Welcome}%0D%0A${refLink}`,
+			telegram: `https://t.me/share/url?url=${refLink}&text=${i18n.lbl_Referral_Welcome}`
+		};
+
+		return links[socialMedia];
 	};
 
 	return (
@@ -26,28 +18,28 @@ export default ({ refLink, i18n }) => {
 				className="icon icon-facebook2"
 				target="_blank"
 				rel="noreferrer"
-				href={_socialLink({ socialMedia: "fb" })}>
+				href={socialLink({ socialMedia: "fb" })}>
 				Facebook
 			</a>
 			<a
 				className="icon icon-whatsapp"
 				target="_blank"
 				rel="noreferrer"
-				href={_socialLink({ socialMedia: "whatsapp" })}>
+				href={socialLink({ socialMedia: "whatsapp" })}>
 				Whatsapp
 			</a>
 			<a
 				className="icon icon-line"
 				target="_blank"
 				rel="noreferrer"
-				href={_socialLink({ socialMedia: "line" })}>
+				href={socialLink({ socialMedia: "line" })}>
 				Line
 			</a>
 			<a
 				className="icon icon-telegram"
 				target="_blank"
 				rel="noreferrer"
-				href={_socialLink({ socialMedia: "telegram" })}>
+				href={socialLink({ socialMedia: "telegram" })}>
 				Telegram
 			</a>
 		</>

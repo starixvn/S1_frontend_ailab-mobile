@@ -11,7 +11,6 @@ import path from "../../path";
 import QRCode from "qrcode.react";
 import TandC from "../../service/t_and_c";
 import { number_format, isConvert } from "../common/common";
-import { Redirect } from "@reach/router";
 import Summary from "./referral.summary";
 
 const currentLocation = window.location.origin;
@@ -29,7 +28,6 @@ export default () => {
 	});
 	const _isConvert = isConvert(userInfo.currencyId);
 	const isMountedRef = useRef(null);
-	const [redirectPath, setRedirectPath] = useState(null);
 
 	let _stepImg;
 	switch (userInfo.langId) {
@@ -53,12 +51,6 @@ export default () => {
 	});
 
 	useEffect(() => {
-		if (isMountedRef.current && userInfo.isLogin === false) {
-			setRedirectPath("/");
-		}
-	}, [userInfo.isLogin, setRedirectPath]);
-
-	useEffect(() => {
 		if (userInfo.isLogin === true && isMountedRef.current) {
 			api.account.GetReferralCode().then(
 				res => {
@@ -74,7 +66,7 @@ export default () => {
 						}
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
@@ -84,11 +76,7 @@ export default () => {
 					}
 				}
 			);
-		}
-	}, [userInfo.isLogin, i18n, setPopBox]);
 
-	useEffect(() => {
-		if (userInfo.isLogin === true && isMountedRef.current) {
 			api.account.GetReferralSetting().then(
 				res => {
 					if (isMountedRef.current) {
@@ -104,7 +92,7 @@ export default () => {
 						}
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
@@ -152,9 +140,7 @@ export default () => {
 		// document.body.removeChild(downloadLink);
 	};
 
-	return redirectPath !== null ? (
-		<Redirect to="/" noThrow />
-	) : (
+	return (
 		<>
 			<Summary
 				isLogin={userInfo.isLogin}
