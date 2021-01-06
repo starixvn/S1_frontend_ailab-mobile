@@ -59,3 +59,9 @@ export const api_account_GetCustSpecificBonus = ({
 
 export const api_account_ExistsPhoneNo = ({ AreaCode, Phone }) =>
 	accountRequest.post(`/ExistsPhoneNo`, { AreaCode, PhoneNo: Phone });
+
+export const api_account_GetTpWalletList = ({ ListType }) =>
+	accountRequest.post(`/GetTpWalletList`, { ListType });
+
+export const api_account_GetTpWalletBalance = ({ TpId }) =>
+	accountRequest.post(`/GetTpWalletBalance`, { TpId });

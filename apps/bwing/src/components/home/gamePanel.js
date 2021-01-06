@@ -7,19 +7,38 @@ import img2 from "../../styles/img/GameList2.png";
 import img3 from "../../styles/img/GameList3.png";
 import img4 from "../../styles/img/GameList4.png";
 import img5 from "../../styles/img/GameList5.png";
-import img6 from "../../styles/img/GameList6.png";
+import img6 from "../../styles/img/GameList15.png";
 import img7 from "../../styles/img/GameList7.png";
 import img8 from "../../styles/img/GameList8.png";
 import img9 from "../../styles/img/GameList9.png";
 import img10 from "../../styles/img/GameList10.png";
 import img11 from "../../styles/img/GameList11.png";
 import img12 from "../../styles/img/GameList12.png";
+import one789_TraditionalLottery from "../../styles/img/GameList16.png";
+import one789_LiveCasino from "../../styles/img/GameList13.png";
+import one789_Lottery from "../../styles/img/GameList14.png";
 
 const defGameList = [
 	{
 		...defGameInfo.Sports,
 		img: img1,
 		displayKey: "lbl_Soccer"
+	},
+	{
+		...defGameInfo.One789_lottery,
+		img: one789_TraditionalLottery,
+		displayKey: "lbl_TraditionalLottery"
+	},
+
+	{
+		...defGameInfo.One789_lottery_789,
+		img: one789_Lottery,
+		displayKey: "lbl_789Lottery"
+	},
+	{
+		...defGameInfo.LIVEcasinoOne789,
+		img: one789_LiveCasino,
+		displayKey: "lbl_liveCasino_789SeDie"
 	},
 	{
 		img: img2,
@@ -57,7 +76,7 @@ const defGameList = [
 	},
 	{
 		img: img7,
-		displayKey: "Dream Gaming Se die",
+		displayKey: "lbl_dream_gaming_se_die",
 		tpId: 4
 	},
 	{
