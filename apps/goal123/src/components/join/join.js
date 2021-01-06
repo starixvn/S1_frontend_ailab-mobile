@@ -12,7 +12,7 @@ import {
 	api_GetBanner
 } from "../../service/api/site";
 import { api_GetCustProfile } from "../../service/api/accountStrict";
-import { getUrlParameter } from "../common/common";
+import { getUrlParameter, passwordCheck } from "../common/common";
 import { getCookie } from "../common/cookie";
 import {
 	userInfoContext,
@@ -303,38 +303,16 @@ const Join = () => {
 		}
 	};
 
-	const passwordCheck = val => {
-		let checked = false;
-		let message = "";
-
-		const regx = /^[a-zA-Z0-9@$*!%#?&]*$/;
-		if (val === "") {
-			checked = false;
-			message = i18n["msg_PasswordReq"];
-		} else if (val != null) {
-			if (val.length < 6 || val.length > 18) {
-				checked = false;
-				message = i18n["msg_PasswordLength"];
-			} else if (!regx.test(val)) {
-				checked = false;
-				message = i18n["msg_PasswordVaildate"];
-			} else {
-				checked = true;
-			}
-		}
-		return { checked, message };
-	};
-
 	const checkPasswordHandler = (colName, e) => {
 		const val = e.target.value;
 
-		let result = passwordCheck(val);
+		let result = passwordCheck({ val });
 		setWarningState(prevState => {
 			return {
 				...prevState,
 				[colName]: {
 					status: !result.checked,
-					msg: result.message
+					msg: i18n[result.message]
 				}
 			};
 		});
@@ -685,7 +663,7 @@ const Join = () => {
 					showPswHandler={showPswHandler}
 					ClassName="JoinRule"
 					showTips={showTipsState.Password}
-					Tips={i18n["lbl_PasswordTooltip"]}
+					Tips={i18n["msg_PasswordVaildate"]}
 					Warning={warningState.Password}
 					value={userValueState.Password}></InputboxPWD>
 				{/* 
