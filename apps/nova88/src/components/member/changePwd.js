@@ -93,8 +93,8 @@ export default () => {
 	};
 
 	const clickSubmit = () => {
-		let oldPsw = passwordCheck({ val: userValueState.oldPsw });
-		let newPsw = pwdEmptyCheck({ val: userValueState.newPsw });
+		let oldPsw = pwdEmptyCheck({ val: userValueState.oldPsw });
+		let newPsw = passwordCheck({ val: userValueState.newPsw });
 
 		if (oldPsw.checked && newPsw.checked) {
 			const closePopbox = status => {

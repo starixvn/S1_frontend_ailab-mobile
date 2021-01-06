@@ -85,12 +85,12 @@ export const deleteCookie = cookieName => {
 export const passwordCheck = ({ val }) => {
 	let checked = true;
 	let msg = "";
-	const regx = /^(?=.{8,20}$)(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*]).*$/;
+	const regx = /^(?=.{6,15}$)(?=.*[a-zA-Z0-9])(?=.*[!@#$%^&*]).*$/;
 
 	if (!val) {
 		checked = false;
 		msg = "msg_PasswordReq";
-	} else if (val.length < 8 || val.length > 20) {
+	} else if (val.length < 6 || val.length > 15) {
 		checked = false;
 		msg = "msg_PasswordLength";
 	} else if (!regx.test(val)) {
