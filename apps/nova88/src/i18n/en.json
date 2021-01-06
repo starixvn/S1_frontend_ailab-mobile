@@ -378,7 +378,19 @@
 	"lbl_Ranking_Sports":"Sports Ranking",
 	"lbl_Ranking_LiveCasino":"Live Casino Ranking",
 	"lbl_Ranking_Slots":"Slots Ranking",
-
+	"lbl_friendReferral":"Friend Referral",
+	"lbl_ReferralHistory":"Referral History",
+	"lbl_ReferFriends":"Refer Friends",
+	"lbl_Referral":"Referral",
+	"lbl_MyReferralBonus":"My Referral Bonus",
+	"lbl_Share_with_friend":"Choose your favorite offers to Refer Your Friends Now!",
+	"lbl_Your_link_invite":"Share your unique link/code",
+	"lbl_Copy_to_clipboard":"Copy to Clipboard",
+	"lbl_Referral_code":"Referral Code",
+	"lbl_Referral_link":"Referral Link",
+	"lbl_Referral_Welcome":"Welcome to Nova88, you are invited to join us. There are a lot of rewarding program offer for NEW MEMBER. Simply click and sign up with us to get yourself and help your friend to be rewarded! Terms and Conditions apply.",
+	"lbl_Downloads":"Downloads",
+	"lbl_ValidPeriod":"Valid Period",
 	"lbl_New":"New",
 	"lbl_AllProvider":"All Platform",
 	"lbl_AllGameType":"All Categories",
@@ -386,5 +398,7 @@
 	"lbl_BonusWallet_1": "Casino Bonus Wallet",
 	"lbl_BonusWallet_2": "Live Casino Bonus Wallet",
 	"lbl_SpecialBonus":"Special Bonus",
-	"lbl_SpecialBonusCode":"Special Bonus Code"
+	"lbl_SpecialBonusCode":"Special Bonus Code",
+	"lbl_Achievement":"Achievement",
+	"lbl_Referral_rewards":"Rewards"
 }

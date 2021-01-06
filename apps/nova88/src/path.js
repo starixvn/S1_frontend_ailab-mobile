@@ -134,5 +134,14 @@ export default {
 	},
 	kiss918: {
 		root: "918kiss"
+	},
+	referral: {
+		root: "referral",
+		sub: {
+			root: "/",
+			history: {
+				root: "history"
+			}
+		}
 	}
 };

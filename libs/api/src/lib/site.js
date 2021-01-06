@@ -41,4 +41,9 @@ export class siteAPI extends BaseAPI {
 
 	ExistsPhoneNo = ({ AreaCode, Phone }) =>
 		this.siteRequest.post(`/ExistsPhoneNo`, { AreaCode, PhoneNo: Phone });
+
+	GetAffiliateAgent = ({ AffId }) =>
+		this.siteRequest.post(`/GetAffiliateAgent`, {
+			AffId
+		});
 }

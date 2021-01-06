@@ -64,4 +64,10 @@ export class accountAPI extends BaseAPI {
 		this.accountRequest.post("/GetTpWalletBalance", {
 			TpId
 		});
+
+	GetReferralCode = () => this.accountRequest.post("/GetReferralCode");
+
+	GetReferralSetting = () => this.accountRequest.post("/GetReferralSetting");
+
+	GetReferralSummary = () => this.accountRequest.post("/GetReferralSummary");
 }
