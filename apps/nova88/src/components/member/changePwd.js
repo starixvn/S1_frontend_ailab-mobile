@@ -54,17 +54,8 @@ export default () => {
 		}));
 	};
 
-	const checkPswHandler = (colName, e, isSubmit) => {
+	const checkPswHandler = (colName, e) => {
 		const _val = e.target.value;
-		const pwdEmptyCheck = ({ val }) => {
-			let checked = true;
-			let msg = "";
-			if (!val) {
-				checked = false;
-				msg = "msg_PasswordReq";
-			}
-			return { checked, msg };
-		};
 
 		let result =
 			colName === "oldPsw"
@@ -82,6 +73,16 @@ export default () => {
 		});
 	};
 
+	const pwdEmptyCheck = ({ val }) => {
+		let checked = true;
+		let msg = "";
+		if (!val) {
+			checked = false;
+			msg = "msg_PasswordReq";
+		}
+		return { checked, msg };
+	};
+
 	const EditField = (colName, e) => {
 		let value = e.target.value;
 
@@ -92,8 +93,8 @@ export default () => {
 	};
 
 	const clickSubmit = () => {
-		let oldPsw = checkPswHandler({ val: userValueState.oldPsw });
-		let newPsw = checkPswHandler({ val: userValueState.newPsw });
+		let oldPsw = passwordCheck({ val: userValueState.oldPsw });
+		let newPsw = pwdEmptyCheck({ val: userValueState.newPsw });
 
 		if (oldPsw.checked && newPsw.checked) {
 			const closePopbox = status => {
@@ -160,14 +161,12 @@ export default () => {
 					}
 				);
 		} else {
-			setWarningState(prevState => {
-				return {
-					oldPsw: {
-						status: !oldPsw.checked,
-						msg: oldPsw.message
-					},
-					newPsw: { status: !newPsw.checked, msg: newPsw.message }
-				};
+			setWarningState({
+				oldPsw: {
+					status: !oldPsw.checked,
+					msg: i18n[oldPsw.msg]
+				},
+				newPsw: { status: !newPsw.checked, msg: i18n[newPsw.msg] }
 			});
 		}
 	};
