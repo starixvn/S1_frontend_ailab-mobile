@@ -12,7 +12,7 @@ import {
 	api_GetBanner
 } from "../../service/api/site";
 import { api_GetCustProfile } from "../../service/api/accountStrict";
-import { getUrlParameter, readCookie } from "../common/common";
+import { getUrlParameter, readCookie, passwordCheck } from "../common/common";
 import {
 	userInfoContext,
 	i18nContext,
@@ -20,7 +20,6 @@ import {
 	defNavPanel,
 	popBoxContext
 } from "../common/context";
-import { GET_LANG_ID } from "../../service/language";
 import TandC from "../../service/t_and_c";
 import { useMatch, Redirect } from "@reach/router";
 import path from "../../path";
@@ -305,38 +304,16 @@ const Join = () => {
 		}
 	};
 
-	const passwordCheck = val => {
-		let checked = false;
-		let message = "";
-
-		const regx = /^[a-zA-Z0-9@$*!%#?&]*$/;
-		if (val === "") {
-			checked = false;
-			message = i18n["msg_PasswordReq"];
-		} else if (val != null) {
-			if (val.length < 6 || val.length > 18) {
-				checked = false;
-				message = i18n["msg_PasswordLength"];
-			} else if (!regx.test(val)) {
-				checked = false;
-				message = i18n["msg_PasswordVaildate"];
-			} else {
-				checked = true;
-			}
-		}
-		return { checked, message };
-	};
-
 	const checkPasswordHandler = (colName, e) => {
 		const val = e.target.value;
 
-		let result = passwordCheck(val);
+		let result = passwordCheck({ val });
 		setWarningState(prevState => {
 			return {
 				...prevState,
 				[colName]: {
 					status: !result.checked,
-					msg: result.message
+					msg: i18n[result.message]
 				}
 			};
 		});
@@ -484,7 +461,7 @@ const Join = () => {
 		let checked = true;
 
 		let UserName = usernameCheck(userValueState.UserName);
-		let Password = passwordCheck(userValueState.Password);
+		let Password = passwordCheck({ val: userValueState.Password });
 		// let Email = emailCheck(userValueState.Email);
 		let Checkbox = checkboxState.termsCheck && checkboxState.ageCheck;
 
@@ -588,10 +565,12 @@ const Join = () => {
 				}
 			);
 		} else {
-			setWarningState(prevState => ({
-				...prevState,
+			setWarningState({
 				UserName: { status: !UserName.checked, msg: UserName.message },
-				Password: { status: !Password.checked, msg: Password.message },
+				Password: {
+					status: !Password.checked,
+					msg: i18n[Password.message]
+				},
 				// Email: { status: !Email.checked, msg: Email.message }
 				Checkbox: {
 					status: !(
@@ -599,7 +578,7 @@ const Join = () => {
 					),
 					msg: i18n.lbl_Check18TCTooltip
 				}
-			}));
+			});
 		}
 	};
 
@@ -680,7 +659,7 @@ const Join = () => {
 					showPswHandler={showPswHandler}
 					ClassName="JoinRule"
 					showTips={showTipsState.Password}
-					Tips={i18n["lbl_PasswordTooltip"]}
+					Tips={i18n["msg_PasswordVaildate"]}
 					Warning={warningState.Password}
 					value={userValueState.Password}></InputboxPWD>
 				{/* 

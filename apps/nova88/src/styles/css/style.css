@@ -1631,13 +1631,11 @@ footer > a.open .circleAnimation + span {
 }
 
 .inputBox i.icon.icon-eye {
-  display: inline-block;
   position: initial;
   margin-right: 2vw;
 }
 
 .inputBox i.icon.icon-eye-blocked {
-  display: inline-block;
   position: initial;
   margin-right: 2vw;
 }
