@@ -49,8 +49,16 @@
   font-size: 4vw !important;
 }
 
-.icon-cockFight:before {
-  content: "\e9a7";
+.icon-mega:before {
+  content: "\e9c3";
+}
+
+.icon-ICG:before {
+  content: "\e9c4";
+}
+
+.icon-cock:before {
+  content: "\e988";
 }
 
 .icon-jump:before {
@@ -85,10 +93,6 @@
   content: "\e9b8";
 }
 
-.icon-marquee:before {
-  content: "\e9b7";
-}
-
 .icon-nodata:before {
   content: "\e9b4";
 }
@@ -105,10 +109,6 @@
   content: "\e9b0";
 }
 
-.icon-nodata1:before {
-  content: "\e9a7";
-}
-
 .icon-USDC:before {
   content: "\e9a3";
 }
@@ -117,8 +117,8 @@
   content: "\e9a4";
 }
 
-.icon-home:before {
-  content: "\e9b5";
+.icon-home123:before {
+  content: "\e900";
 }
 
 .icon-deposit1:before {
@@ -189,8 +189,8 @@
   content: "\e98c";
 }
 
-.icon-cock:before {
-  content: "\e988";
+.icon-cockFight:before {
+  content: "\e9a7";
 }
 
 .icon-balance:before {
@@ -333,7 +333,7 @@
   content: "\e97e";
 }
 
-.icon-icon32px_top:before {
+.icon-ranking:before {
   content: "\e97f";
 }
 
@@ -538,7 +538,7 @@
 }
 
 .icon-email:before {
-  content: "\e905";
+  content: "\e9bc";
 }
 
 .icon-game:before {
@@ -553,11 +553,11 @@
   content: "\e908";
 }
 
-.icon-marquee123:before {
-  content: "\e909";
+.icon-marquee:before {
+  content: "\e9b7";
 }
 
-.icon-promotion:before {
+.icon-gift:before {
   content: "\e90b";
 }
 
@@ -657,6 +657,14 @@
   content: "\e933";
 }
 
+.icon-envelope:before {
+  content: "\e905";
+}
+
+.icon-menu:before {
+  content: "\e9bb";
+}
+
 .icon-close:before {
   content: "\e98a";
 }
@@ -665,7 +673,7 @@
   content: "\e98b";
 }
 
-.icon-information-solid:before {
+.icon-information:before {
   content: "\e951";
 }
 
@@ -689,8 +697,8 @@
   content: "\e950";
 }
 
-.icon-home123:before {
-  content: "\e900";
+.icon-home:before {
+  content: "\e956";
 }
 
 .icon-newspaper:before {
@@ -857,6 +865,10 @@
   content: "\ea14";
 }
 
+.icon-volume-medium:before {
+  content: "\ea27";
+}
+
 .icon-loop:before {
   content: "\ea2d";
 }
@@ -958,14 +970,14 @@
 }
 
 .icon-home1:before {
-  content: "\e956";
+  content: "\e9b5";
 }
 
 .icon-QQpay:before {
   content: "\e944";
 }
 
-.icon-gift:before {
+.icon-promotion:before {
   content: "\e939";
 }
 
