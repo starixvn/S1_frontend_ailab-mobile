@@ -473,7 +473,7 @@ const Join = () => {
 		let checked = true;
 
 		let UserName = usernameCheck(userValueState.UserName);
-		let Password = passwordCheck(userValueState.Password);
+		let Password = passwordCheck({ val: userValueState.Password });
 		// let Email = emailCheck(userValueState.Email);
 		let Checkbox = checkboxState;
 
@@ -580,7 +580,10 @@ const Join = () => {
 			setWarningState(prevState => ({
 				...prevState,
 				UserName: { status: !UserName.checked, msg: UserName.message },
-				Password: { status: !Password.checked, msg: Password.message }
+				Password: {
+					status: !Password.checked,
+					msg: i18n[Password.message]
+				}
 				// Email: { status: !Email.checked, msg: Email.message }
 			}));
 		}
