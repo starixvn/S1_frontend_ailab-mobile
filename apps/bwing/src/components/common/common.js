@@ -125,3 +125,26 @@ export const isEventPeriod = () => {
 
 	// return now > startDate && now < endDate;
 };
+
+export const passwordCheck = ({ val }) => {
+	let checked = false;
+	let message = "";
+
+	const regx = /^(?=.{6,15}$)(?=.*[a-zA-Z0-9])(?=.*[!@#$%^&*]).*$/;
+	if (val === "") {
+		checked = false;
+		message = "msg_PasswordReq";
+	} else if (val !== null) {
+		if (val.length < 6 || val.length > 15) {
+			checked = false;
+			message = "msg_PasswordLength";
+		} else if (!regx.test(val)) {
+			checked = false;
+			message = "msg_PasswordVaildate";
+		} else {
+			checked = true;
+		}
+	}
+
+	return { checked, message };
+};

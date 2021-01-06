@@ -3,7 +3,7 @@ import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
 import { api_ResetPassword } from "../../service/api/accountStrict";
 import { api_CheckResetPwdToken } from "../../service/api/site";
 import Inputbox from "../common/inputbox.password";
-import { getUrlParameter } from "../common/common";
+import { getUrlParameter, passwordCheck } from "../common/common";
 import { Redirect } from "@reach/router";
 
 export default () => {
@@ -90,29 +90,14 @@ export default () => {
 
 	const checkPswHandler = e => {
 		let val = e.target.value;
-		let checked = true;
-		let message = "";
-		const regx = /^[a-zA-Z0-9@$*!%#?&]*$/;
+		const result = passwordCheck({ val });
 
-		if (val === "") {
-			checked = false;
-			message = i18n.msg_PasswordReq;
-		} else if (val != null) {
-			if (val.length < 6 || val.length > 18) {
-				checked = false;
-				message = i18n.msg_PasswordLength;
-			} else if (!regx.test(val)) {
-				checked = false;
-				message = i18n.msg_PasswordVaildate;
-			}
-		}
-
-		setWarning({ status: !checked, msg: message });
+		setWarning({ status: !result.checked, msg: i18n[result.message] });
 	};
 
 	const clickSubmit = () => {
 		if (newPsw === "") {
-			setWarning({ status: true, msg: i18n.msg_PasswordVaildate });
+			setWarning({ status: true, msg: i18n.msg_PasswordReq });
 		} else if (warning.status === false) {
 			api_ResetPassword({ NewPassword: newPsw }).then(
 				res => {
