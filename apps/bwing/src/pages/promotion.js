@@ -23,7 +23,11 @@ export default ({ location }) => {
 				defRuleCols.remainingTime
 			]}
 			navBar={[defNav.All, defNav.FirstDeposit, defNav.FreeBet]}
-			formatSetting={{ isConvertRequired: true, digits: 0 }}
+			formatSetting={{
+				isConvertRequired: true,
+				digits: 2,
+				formatRequired: false
+			}}
 			location={location}
 		/>
 	);
