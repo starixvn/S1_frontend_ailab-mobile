@@ -117,11 +117,29 @@ export const deleteCookie = cookieName => {
 };
 
 export const isEventPeriod = () => {
-	return true;
 	// xmas end date is 2021/01/04 11:00:00
-	// const startDate = new Date("12 10 2020 11:00:00 GMT+0800");
-	// const endDate = new Date("1 4 2021 11:00:00 GMT+0800");
-	// const now = new Date();
+	const startDate = new Date("2020/12/10 11:00:00 GMT+0800"); //yyyy/mm/dd hh:mm:ss
+	const endDate = new Date("2021/01/04 11:00:00 GMT+0800"); //yyyy/mm/dd hh:mm:ss
+	const now = new Date();
 
-	// return now > startDate && now < endDate;
+	return now > startDate && now < endDate;
+};
+
+export const passwordCheck = ({ val }) => {
+	let checked = true;
+	let message = "";
+
+	const regx = /^(?=.{6,15}$)(?=.*[a-zA-Z0-9])(?=.*[!@#$%^&*]).*$/;
+	if (!val) {
+		checked = false;
+		message = "msg_PasswordReq";
+	} else if (val.length < 6 || val.length > 15) {
+		checked = false;
+		message = "msg_PasswordLength";
+	} else if (!regx.test(val)) {
+		checked = false;
+		message = "msg_PasswordVaildate";
+	}
+
+	return { checked, message };
 };

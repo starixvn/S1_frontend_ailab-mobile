@@ -81,3 +81,22 @@ export const readCookie = cookieName => {
 export const deleteCookie = cookieName => {
 	document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
 };
+
+export const passwordCheck = ({ val }) => {
+	let checked = true;
+	let msg = "";
+
+	const regx = /^(?=.{6,15}$)(?=.*[a-zA-Z0-9])(?=.*[!@#$%^&*]).*$/;
+	if (!val) {
+		checked = false;
+		msg = "msg_PasswordReq";
+	} else if (val.length < 6 || val.length > 15) {
+		checked = false;
+		msg = "msg_PasswordLength";
+	} else if (!regx.test(val)) {
+		checked = false;
+		msg = "msg_PasswordVaildate";
+	}
+
+	return { checked, msg };
+};
