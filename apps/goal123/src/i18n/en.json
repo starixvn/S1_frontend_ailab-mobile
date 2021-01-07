@@ -379,6 +379,7 @@
 	"lbl_AllProvider":"All Platform",
 	"lbl_AllGameType":"All Categories",
 	"lbl_SearchGames":"Search Games",
-	"lbl_TurnoverAccmulateHint":"Your Fund are locked to transfer out due to Rollover requirement is not fulfils."
-
+	"lbl_TurnoverAccmulateHint":"Your Fund are locked to transfer out due to Rollover requirement is not fulfils.",
+	"lbl_please_select_from_wallet":"Kindly select preferable fund out wallet",
+	"lbl_please_select_to_wallet":"Kindly select preferable fund in wallet"
 }
