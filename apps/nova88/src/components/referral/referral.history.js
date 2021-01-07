@@ -1,33 +1,20 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
-import { number_format, isConvert } from "../common/common";
+import { isConvert } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
 import moment from "moment";
 import HistoryFilter from "../common/historyFilter";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import Loading from "../common/loading";
 import api from "../../service/api";
-
-const transferDirection = (direction, displayMainWallet, displaySabaWallet) => {
-	let startWallet = "";
-	let endWallet = "";
-
-	if (direction === 1) {
-		startWallet = displayMainWallet;
-		endWallet = displaySabaWallet;
-	} else {
-		startWallet = displaySabaWallet;
-		endWallet = displayMainWallet;
-	}
-	return { startWallet, endWallet };
-};
+import Detail from "./referral.history.detail";
 
 const Panel = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const _isConvert = isConvert(userInfo.currencyId);
-	const [getHistoryState, setGetHistoryState] = useState(null);
+	const [history, setHistory] = useState(null);
 	const [filterData, setFilterData] = useState(null);
 	const [pageInfo, setPageInfo] = useState({ pageNumber: 0, totalPages: 0 });
 	const [processing, setProcessing] = useState(false);
@@ -41,10 +28,10 @@ const Panel = () => {
 	});
 
 	AUTO_FETCHING_DATA(
-		api.tp.GetTransferHistory,
+		api.account.GetRefFriendList,
 		filterData,
 		pageInfo,
-		setGetHistoryState,
+		setHistory,
 		setPageInfo,
 		setPopBox,
 		processing,
@@ -66,10 +53,11 @@ const Panel = () => {
 				setFilterData(transactionData);
 			}
 			setClickSubmit(true);
-			api.tp
-				.GetTransferHistory({
+			api.account
+				.GetRefFriendList({
 					...transactionData,
-					PageNumber: 1
+					PageNumber: 1,
+					PageSize: 10
 				})
 				.then(
 					response => {
@@ -83,7 +71,7 @@ const Panel = () => {
 								});
 							} else {
 								if (isMountedRef.current) {
-									setGetHistoryState(response.data.data);
+									setHistory(response.data.data);
 									if (
 										response.data.totalPages >=
 										response.data.pageNumber
@@ -115,24 +103,13 @@ const Panel = () => {
 		}
 	};
 
-	let arr = getHistoryState?.map(item => {
-		const _transferDirection = transferDirection(
-			item.direction,
-			i18n.lbl_MainWallet,
-			i18n.lbl_Wallet_Saba
-		);
+	let arr = history?.map(data => {
 		return (
-			<TransactionHistory
-				key={`transferHistory-${item.transId}`}
-				createTime={item.createTime}
-				transId={item.transId}
-				_isConvert={_isConvert}
-				amount={item.amount}
-				startWallet={_transferDirection.startWallet}
-				endWallet={_transferDirection.endWallet}
+			<Detail
+				key={`referral-history-${data.custId}`}
 				i18n={i18n}
-				className="info transfer"
-				memo={item.memo}
+				_isConvert={_isConvert}
+				{...data}
 			/>
 		);
 	});
@@ -142,7 +119,7 @@ const Panel = () => {
 			<HistoryFilter submitHandler={submitHandler} />
 			{loading ? (
 				<Loading />
-			) : getHistoryState ? (
+			) : history ? (
 				<div className="recent open">
 					<div className="recentTransactions">
 						<div className="smallTitle">
@@ -158,7 +135,7 @@ const Panel = () => {
 							)}
 						/>
 					</div>
-					{getHistoryState.length > 0 ? (
+					{history.length > 0 ? (
 						<div className="infoList">{arr}</div>
 					) : (
 						<div className="nodata icon icon-nodata">
@@ -170,48 +147,6 @@ const Panel = () => {
 				</div>
 			) : null}
 		</>
-	);
-};
-
-export const TransactionHistory = props => {
-	return (
-		<div className={props.className}>
-			<ul>
-				<li>
-					<span className="title">{props.i18n["lbl_Date"]}</span>
-					<span>
-						{moment(props.createTime).format("MM/DD/YYYY(Z)")}
-					</span>
-				</li>
-				<li>
-					<span className="title">{props.i18n["lbl_Time"]}</span>
-					<span>{moment(props.createTime).format("hh:mm:ss A")}</span>
-				</li>
-				<li>
-					<span className="title">{props.i18n["lbl_ID"]}</span>
-					<span>{props.transId}</span>
-				</li>
-				<li>
-					<span className="title">{props.i18n["lbl_Amount"]}</span>
-					<span>{number_format(props.amount, props._isConvert)}</span>
-				</li>
-				<li>
-					<span className="title">{props.i18n["lbl_Direction"]}</span>
-					<span>
-						<span>{props.startWallet}</span>
-						{`>`}
-						<span>{props.endWallet}</span>
-					</span>
-				</li>
-				<li>
-					<span className="title">{props.i18n["lbl_Memo"]}</span>
-					<span>
-						<span>{props.memo}</span>
-					</span>
-				</li>
-			</ul>
-			<div className="btn-group"></div>
-		</div>
 	);
 };
 

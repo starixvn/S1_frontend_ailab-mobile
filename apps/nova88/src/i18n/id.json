@@ -401,6 +401,14 @@
 	"lbl_SpecialBonusCode":"Kode Bonus Khusus",
 	"lbl_TurnoverAccmulateHint":"Dana Anda terkunci untuk ditransfer karena persyaratan Rollover belum terpenuhi.",
 	"lbl_Achievement":"Prestasi",
-	"lbl_Referral_rewards":"Hadiah"
+	"lbl_Referral_rewards":"Hadiah",
+	"lbl_RegisterDate":"Register Date",
+	"lbl_Currency":"Currency",
+	"lbl_TotalDeposit":"Total Deposit",
+	"lbl_TotalBet":"Total Bet",
+	"lbl_BonusAmount":"Jumlah Bonus",
+	"lbl_ReferralStatus0":"Disetujui",
+	"lbl_ReferralStatus1":"Sedang diproses",
+	"lbl_ReferralStatus2":"Masa kadaluarsa"
 
 }

@@ -401,5 +401,13 @@
 	"lbl_SpecialBonusCode":"รหัสโบนัสพิเศษ",
 	"lbl_TurnoverAccmulateHint":"เงินของคุณถูกล็อคไม่ให้โอนออกเนื่องจากข้อกำหนดโรลโอเวอร์ไม่เป็นไปตามข้อกำหนด",
 	"lbl_Achievement":"ความสำเร็จ",
-	"lbl_Referral_rewards":"รางวัล"
+	"lbl_Referral_rewards":"รางวัล",
+	"lbl_RegisterDate":"Register Date",
+	"lbl_Currency":"Currency",
+	"lbl_TotalDeposit":"Total Deposit",
+	"lbl_TotalBet":"Total Bet",
+	"lbl_BonusAmount":"จำนวนโบนัส",
+	"lbl_ReferralStatus0":"ยืนยัน",
+	"lbl_ReferralStatus1":"กำลังดำเนินการ",
+	"lbl_ReferralStatus2":"หมดเวลา"
 }

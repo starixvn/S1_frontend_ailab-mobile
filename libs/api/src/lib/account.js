@@ -70,4 +70,12 @@ export class accountAPI extends BaseAPI {
 	GetReferralSetting = () => this.accountRequest.post("/GetReferralSetting");
 
 	GetReferralSummary = () => this.accountRequest.post("/GetReferralSummary");
+
+	GetRefFriendList = ({ StartDate, EndDate, PageNumber, PageSize }) =>
+		this.accountRequest.post("/GetRefFriendList", {
+			StartDate,
+			EndDate,
+			PageNumber,
+			PageSize
+		});
 }
