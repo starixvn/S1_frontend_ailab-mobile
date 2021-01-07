@@ -15,22 +15,26 @@ const defGames = [
 	{
 		...defGameInfo.ICG_DRAGONBALL_FISHING,
 		displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
-		img: fishingICG_DB
+		img: fishingICG_DB,
+		isNew: true
 	},
 	{
 		...defGameInfo.ICG_FISHING_OF_SAVIORS,
 		displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS",
-		img: fishingICG_FOS
+		img: fishingICG_FOS,
+		isNew: true
 	},
 	{
 		...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
 		displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS",
-		img: fishingICG_TTATP
+		img: fishingICG_TTATP,
+		isNew: true
 	},
 	{
 		...defGameInfo.ICG_TOWER_OF_SAVIORS,
 		displayKey: "lbl_Game_ICG_TOWER_OF_SAVIORS",
-		img: fishingICG_TOS
+		img: fishingICG_TOS,
+		isNew: true
 	},
 	{
 		...defGameInfo.Fishing,
@@ -69,7 +73,7 @@ export default () => {
 	let arr = defGames.map(game => {
 		return (
 			<button
-				className="gameInBox"
+				className={`gameInBox${game.isNew ? " newicon" : ""}`}
 				key={`fishingPanel-${game.displayKey}`}
 				onClick={ClickGame.bind(
 					this,
