@@ -42,7 +42,7 @@ export default ({ userInfo, i18n, setPopBox, _isConvert }) => {
 
 	return (
 		<>
-			<div className="achievement">{i18n.lbl_ReferralStatus}</div>
+			<div className="title">{i18n.lbl_ReferralStatus}</div>
 			<div className="achievement">
 				{i18n.lbl_InvitationAccepted}
 				<span>{summary.conditionCount}</span>
