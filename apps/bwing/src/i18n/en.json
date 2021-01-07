@@ -444,6 +444,11 @@
 	"lbl_SearchGames":"Search Games",
 	"lbl_BonusWallet_1": "Casino Bonus Wallet",
 	"lbl_BonusWallet_2": "Live Casino Bonus Wallet",
+	
+	"lbl_Game_ICG_DRAGONBALL_FISHING":"Dragonball Fishing",
+	"lbl_Game_ICG_FISHING_OF_SAVIORS":"Fishing Of Saviors",
+	"lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS":"The Tyrant And The Princess",
+	"lbl_Game_ICG_TOWER_OF_SAVIORS":"Tower Of Saviors",
 	"lbl_dream_gaming_se_die": "Dream Gaming Se die",
 	"lbl_TurnoverAccmulateHint":"Your Fund are locked to transfer out due to Rollover requirement is not fulfils."
 }
