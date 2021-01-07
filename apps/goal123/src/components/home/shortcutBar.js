@@ -23,7 +23,11 @@ const ShortcutBar = props => {
 			passProps = { ...passProps, to: "/", onClick: ShowLogin };
 		}
 
-		return <Link {...passProps} />;
+		const onClick = () => {
+			setNav(() => null);
+		};
+
+		return <Link {...passProps} onClick={onClick} />;
 	};
 
 	return (

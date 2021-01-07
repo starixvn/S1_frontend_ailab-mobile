@@ -4,6 +4,7 @@ import { i18nContext, popBoxContext } from "Context";
 import path from "Path";
 import Inputbox from "../common/inputbox.password";
 import api from "../../service/api";
+import { passwordCheck } from "../common/common";
 
 const initState = {
 	oldPsw: "",
@@ -53,42 +54,33 @@ export default () => {
 		}));
 	};
 
-	const passwordCheck = val => {
-		let checked = false;
-		let message = "";
-
-		const regx = /^[a-zA-Z0-9@$*!%#?&]*$/;
-		if (val === "") {
-			checked = false;
-			message = i18n.msg_PasswordReq;
-		} else if (val !== null) {
-			if (val.length < 6 || val.length > 18) {
-				checked = false;
-				message = i18n["msg_PasswordLength"];
-			} else if (!regx.test(val)) {
-				checked = false;
-				message = i18n["msg_PasswordVaildate"];
-			} else {
-				checked = true;
-			}
-		}
-
-		return { checked, message };
-	};
-
 	const checkPswHandler = (colName, e) => {
-		const val = e.target.value;
-		let result = passwordCheck(val);
+		const _val = e.target.value;
+
+		let result =
+			colName === "oldPsw"
+				? pwdEmptyCheck({ val: _val })
+				: passwordCheck({ val: _val });
 
 		setWarningState(prevState => {
 			return {
 				...prevState,
 				[colName]: {
 					status: !result.checked,
-					msg: result.message
+					msg: i18n[result.msg]
 				}
 			};
 		});
+	};
+
+	const pwdEmptyCheck = ({ val }) => {
+		let checked = true;
+		let msg = "";
+		if (!val) {
+			checked = false;
+			msg = "msg_PasswordReq";
+		}
+		return { checked, msg };
 	};
 
 	const EditField = (colName, e) => {
@@ -101,8 +93,8 @@ export default () => {
 	};
 
 	const clickSubmit = () => {
-		let oldPsw = passwordCheck(userValueState.oldPsw);
-		let newPsw = passwordCheck(userValueState.newPsw);
+		let oldPsw = pwdEmptyCheck({ val: userValueState.oldPsw });
+		let newPsw = passwordCheck({ val: userValueState.newPsw });
 
 		if (oldPsw.checked && newPsw.checked) {
 			const closePopbox = status => {
@@ -169,14 +161,12 @@ export default () => {
 					}
 				);
 		} else {
-			setWarningState(prevState => {
-				return {
-					oldPsw: {
-						status: !oldPsw.checked,
-						msg: oldPsw.message
-					},
-					newPsw: { status: !newPsw.checked, msg: newPsw.message }
-				};
+			setWarningState({
+				oldPsw: {
+					status: !oldPsw.checked,
+					msg: i18n[oldPsw.msg]
+				},
+				newPsw: { status: !newPsw.checked, msg: i18n[newPsw.msg] }
 			});
 		}
 	};

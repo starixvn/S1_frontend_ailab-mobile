@@ -33,6 +33,12 @@ export const ClickLink = (
 			} else {
 				HandleLogin();
 			}
+		} else if (href === "referral") {
+			if (isLogin) {
+				window.location.href = `/${path.referral.root}`;
+			} else {
+				HandleLogin();
+			}
 		} else if (href === "leaderBoard") {
 			window.location.href = `/${path.ranking.root}`;
 		} else {

@@ -7,20 +7,23 @@ import {
 } from "../common/context";
 import { number_format } from "../common/common";
 import {
-	api_GetWalletInfo,
+	api_GetBalnace,
+	api_account_GetTpWalletList,
+	api_account_GetTpWalletBalance,
 	api_account_GetCustBonusWallet
 } from "../../service/api/account";
 import ReloadSpin from "../common/reloadSpin";
 import BonusWallet from "./profile.wallet.bonus";
+import { tpWalletsListType } from "../transfer/transfer";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { walletInfo, setWalletInfo } = useContext(walletInfoContext);
-	const isMountedRef = useRef(null);
-	const [tpWallet, setTpWallet] = useState([]);
+	const [tpWalletList, setTpWalletList] = useState([]);
 	const [bonusWallet, setBonusWallet] = useState({});
+	const isMountedRef = useRef(null);
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -29,10 +32,38 @@ export default () => {
 
 	useEffect(() => {
 		GetBalance();
+		api_account_GetTpWalletList({
+			ListType: tpWalletsListType.afterTransWallets
+		}).then(
+			res => {
+				if (isMountedRef.current) {
+					if (res.data.errorCode === 0) {
+						res.data.data?.forEach(i => {
+							GetTpWalletBalance(i.tpId);
+						});
+					} else {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: `[${res.data.errorCode}]${res.data.message}`
+						});
+					}
+				}
+			},
+			err => {
+				if (isMountedRef.current) {
+					setPopBox({
+						isOpen: true,
+						title: i18n.lbl_ImportantNote,
+						content: i18n.msg_ApiServerError
+					});
+				}
+			}
+		);
 	}, []);
 
 	const GetBalance = () => {
-		api_GetWalletInfo().then(
+		api_GetBalnace().then(
 			res => {
 				if (res.data.errorCode === 0) {
 					let data = res.data.data;
@@ -40,21 +71,8 @@ export default () => {
 						if (isMountedRef.current) {
 							setWalletInfo(prevState => ({
 								...prevState,
-								main: data.balance
+								main: data
 							}));
-
-							if (data.tpWallets.length > 0) {
-								let tpWalletsArr = data.tpWallets.map(t => {
-									let balance = t.balance;
-									return {
-										tpId: t.tpId,
-										displayKey: t.displayKey,
-										balance: balance
-									};
-								});
-
-								setTpWallet(tpWalletsArr);
-							}
 						}
 					}
 				}
@@ -87,15 +105,52 @@ export default () => {
 		});
 	};
 
-	let _tpWallets = tpWallet.map(t => {
+	const GetTpWalletBalance = tpId => {
+		api_account_GetTpWalletBalance({ TpId: tpId }).then(
+			res => {
+				if (res.data.errorCode === 0) {
+					let _datas = res.data.data;
+					let tpWalletData = {
+						id: _datas.tpId,
+						displayKey: `lbl_TpWallet_${_datas.tpId}`,
+						balance: _datas.balance
+					};
+
+					let tpWalletIdx = tpWalletList.findIndex(wallet => {
+						return wallet.id === tpId;
+					});
+
+					if (tpWalletIdx !== -1) {
+						setTpWalletList(prev => {
+							prev[tpWalletIdx] = tpWalletData;
+							return prev;
+						});
+					} else {
+						setTpWalletList(prev => [...prev, tpWalletData]);
+					}
+				}
+			},
+			err => {
+				if (isMountedRef.current) {
+					setPopBox({
+						isOpen: true,
+						title: i18n.lbl_ImportantNote,
+						content: i18n.msg_ApiServerError
+					});
+				}
+			}
+		);
+	};
+
+	let _tpWalletArrs = tpWalletList.map(t => {
 		return (
 			<Wallet
 				key={`profile-tpWallet-${t.tpId}`}
 				i18n={i18n}
-				titleKey={`lbl_TpWallet_${t.tpId}`}
+				titleKey={t.displayKey}
 				currencyId={userInfo.currencyId}
 				balance={t.balance}
-				func_GetBalance={GetBalance}
+				func_GetBalance={GetTpWalletBalance.bind(this, t.id)}
 				bonusWallet={bonusWallet[t.tpId]}
 			/>
 		);
@@ -111,7 +166,7 @@ export default () => {
 				func_GetBalance={GetBalance}
 				bonusWallet={bonusWallet[0]}
 			/>
-			{_tpWallets}
+			{_tpWalletArrs}
 		</>
 	);
 };

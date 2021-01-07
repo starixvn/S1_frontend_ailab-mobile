@@ -3031,9 +3031,12 @@ button.clickBtn:before {
 }
 
 .casino .slotList .info .newTag {
-  position: absolute;
   right: 1vw;
   bottom: 1.5vw;
+}
+
+.newTag {
+  position: absolute;
   padding: 10px 10px;
   background-color: rgba(244, 43, 7, 0.3);
   border: 1px solid #f42b07;
@@ -6172,6 +6175,12 @@ span.important {
   border-radius: 3px;
   font-size: 12px;
   font-weight: bold;
+}
+
+.gameInBox .newTag {
+  top: 1vw;
+  right: 1.5vw;
+  padding: 5px 10px;
 }
 
 .gameInBox img {
