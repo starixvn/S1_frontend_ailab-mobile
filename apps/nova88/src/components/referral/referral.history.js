@@ -1,11 +1,15 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
-import { i18nContext, popBoxContext, userInfoContext } from "Context";
+import {
+	i18nContext,
+	popBoxContext,
+	userInfoContext,
+	loadingContext
+} from "Context";
 import { isConvert } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
 import moment from "moment";
 import HistoryFilter from "../common/historyFilter";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
-import Loading from "../common/loading";
 import api from "../../service/api";
 import Detail from "./referral.history.detail";
 
@@ -13,12 +17,12 @@ const Panel = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const { setLoading } = useContext(loadingContext);
 	const _isConvert = isConvert(userInfo.currencyId);
 	const [history, setHistory] = useState(null);
 	const [filterData, setFilterData] = useState(null);
 	const [pageInfo, setPageInfo] = useState({ pageNumber: 0, totalPages: 0 });
 	const [processing, setProcessing] = useState(false);
-	const [loading, setLoading] = useState(false);
 	const [clickSubmit, setClickSubmit] = useState(false);
 	const isMountedRef = useRef(null);
 
@@ -70,25 +74,22 @@ const Panel = () => {
 									content: response.data.message
 								});
 							} else {
-								if (isMountedRef.current) {
-									setHistory(response.data.data);
-									if (
-										response.data.totalPages >=
-										response.data.pageNumber
-									) {
-										setPageInfo(() => ({
-											totalPages:
-												response.data.totalPages,
-											pageNumber: response.data.pageNumber
-										}));
-									}
+								setHistory(response.data.data);
+								if (
+									response.data.totalPages >=
+									response.data.pageNumber
+								) {
+									setPageInfo(() => ({
+										totalPages: response.data.totalPages,
+										pageNumber: response.data.pageNumber
+									}));
 								}
 							}
 							setProcessing(false);
 							setLoading(false);
 						}
 					},
-					err => {
+					() => {
 						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
@@ -117,9 +118,7 @@ const Panel = () => {
 	return (
 		<>
 			<HistoryFilter submitHandler={submitHandler} />
-			{loading ? (
-				<Loading />
-			) : history ? (
+			{history ? (
 				<div className="recent open">
 					<div className="recentTransactions">
 						<div className="smallTitle">

@@ -42,17 +42,22 @@ export default ({ userInfo, i18n, setPopBox, _isConvert }) => {
 
 	return (
 		<>
-			<div className="achievement">{i18n.lbl_ReferralStatus}:</div>
+			<div className="achievement">{i18n.lbl_ReferralStatus}</div>
 			<div className="achievement">
-				{`${i18n.lbl_InvitationAccepted} / ${i18n.lbl_MissionCompleted}: `}
-				<span>
-					{summary.conditionCount} / {summary.amountCount}
-				</span>
+				{i18n.lbl_InvitationAccepted}
+				<span>{summary.conditionCount}</span>
 			</div>
 			<div className="achievement">
-				{`${i18n.lbl_NoOfAchievements} / ${i18n.lbl_RewardAmount}: `}
+				{i18n.lbl_MissionCompleted}
+				<span>{summary.amountCount}</span>
+			</div>
+			<div className="achievement">
+				{i18n.lbl_NoOfAchievements}
+				<span>{summary.referralCount}</span>
+			</div>
+			<div className="achievement">
+				{i18n.lbl_RewardAmount}
 				<span>
-					{summary.referralCount} /{" "}
 					{i18n[`Currency_${userInfo.currencyId}`]}{" "}
 					{number_format(summary.amountSum, _isConvert)}
 				</span>
