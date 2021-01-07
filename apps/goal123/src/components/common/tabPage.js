@@ -7,10 +7,6 @@ const IndexPage = ({ defTabs, children, beforeLogin }) => {
 	const { i18n } = useContext(i18nContext);
 	const [redirectPath, setRedirectPath] = useState(null);
 
-	const CheckMatch = path => {
-		return useMatch(path) !== null;
-	};
-
 	useEffect(() => {
 		let mounted = true;
 		if (mounted && redirectPath !== null) {
