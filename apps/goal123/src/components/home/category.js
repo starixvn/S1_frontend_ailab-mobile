@@ -237,6 +237,7 @@ class CateGoryContent extends Component {
 								img={subItem.img}
 								spanText={this.props.i18n[subItem.spanTextKey]}
 								icon={subItem.icon}
+								isNew={subItem.isNew}
 							/>
 						);
 					} else {
@@ -252,6 +253,7 @@ class CateGoryContent extends Component {
 								spanText={this.props.i18n[subItem.spanTextKey]}
 								icon={subItem.icon}
 								href={item.href}
+								isNew={subItem.isNew}
 							/>
 						);
 					}
@@ -294,7 +296,7 @@ class CateGoryContent extends Component {
 	}
 }
 
-const CategoryItem = ({ iconClassName, isOpen, onClick, translation }) => {
+const CategoryItem = ({ iconClassName = "", isOpen, onClick, translation }) => {
 	return (
 		<button
 			className={`${iconClassName}${isOpen ? " open" : ""}`}
@@ -311,7 +313,8 @@ const ProductItem = ({
 	isShow,
 	img,
 	icon,
-	spanText
+	spanText,
+	isNew
 }) => {
 	return (
 		<a
@@ -319,7 +322,9 @@ const ProductItem = ({
 			target={href ? "_blank" : null}
 			onClick={!href ? clickGame : null}
 			ref={_ref}
-			className={isShow ? "open" : ""}>
+			className={`${isShow ? "open" : ""}${
+				isNew ? " icon icon-new" : ""
+			}`}>
 			<img src={img} alt={icon ?? ""} />
 			{spanText ? (
 				<span className={`icon icon-${icon}`}>{spanText}</span>
@@ -336,14 +341,17 @@ const ProductLinkItem = ({
 	img,
 	icon,
 	spanText,
-	className
+	className = "",
+	isNew
 }) => {
 	return (
 		<Link
 			to={`/${to}`}
 			state={parameter}
 			ref={_ref}
-			className={`${className}${isShow ? " open" : ""}`}>
+			className={`${className}${isShow ? " open" : ""}${
+				isNew ? " icon icon-new" : ""
+			}`}>
 			<img src={img} alt={icon ?? ""} />
 			{spanText ? (
 				<span className={`icon icon-${icon}`}>{spanText}</span>

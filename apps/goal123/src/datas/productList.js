@@ -23,6 +23,10 @@ import fish_SG from "../styles/img/fish_SG.jpg";
 import fish_SGW from "../styles/img/fish_SGW.jpg";
 import path from "../path";
 import ranking from "../styles/img/ranking.jpg";
+import fish_DBF from "../styles/img/fish_ICG_DB.jpg";
+import fish_FOS from "../styles/img/fish_ICG_FOS.jpg";
+import fish_TAP from "../styles/img/fish_ICG_TTAT.jpg";
+import fish_TOS from "../styles/img/fish_ICG_TOS.jpg";
 
 export const defGameInfo = {
 	Sports: { tpId: 1, gameId: 1 },
@@ -57,6 +61,25 @@ export const defGameInfo = {
 	sabaClub: {
 		tpId: 1,
 		gameId: 200
+	},
+	casino_ICG: {
+		tpId: 24
+	},
+	ICG_DRAGONBALL_FISHING: {
+		tpId: 24,
+		gameId: "cmf0001"
+	},
+	ICG_FISHING_OF_SAVIORS: {
+		tpId: 24,
+		gameId: "cmf0002"
+	},
+	ICG_THE_TYRANT_AND_THE_PRINCESS: {
+		tpId: 24,
+		gameId: "cmf0003"
+	},
+	ICG_TOWER_OF_SAVIORS: {
+		tpId: 24,
+		gameId: "cmt0001"
 	}
 };
 
@@ -125,12 +148,33 @@ const gameList = langId => [
 		]
 	},
 	{
+		iconClassName: "icon icon-new",
 		category: "fishing",
 		categoryIcon: "game",
 		className: "casinoList",
 		translateKey: "lbl_Fishing",
 		comingSoonImg: Coming_soon,
 		items: [
+			{
+				...defGameInfo.ICG_DRAGONBALL_FISHING,
+				img: fish_DBF,
+				isNew: true
+			},
+			{
+				...defGameInfo.ICG_FISHING_OF_SAVIORS,
+				img: fish_FOS,
+				isNew: true
+			},
+			{
+				...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
+				img: fish_TAP,
+				isNew: true
+			},
+			{
+				...defGameInfo.ICG_TOWER_OF_SAVIORS,
+				img: fish_TOS,
+				isNew: true
+			},
 			{
 				...defGameInfo.Fishing,
 				img: fish_GG
@@ -159,6 +203,7 @@ const gameList = langId => [
 		]
 	},
 	{
+		iconClassName: "icon icon-new",
 		category: "slots",
 		categoryIcon: "casino",
 		translateKey: "lbl_Slots",
