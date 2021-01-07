@@ -34,7 +34,7 @@ export default () => {
 	return (
 		<>
 			<Summary
-				isLogin={userInfo.isLogin}
+				userInfo={userInfo}
 				i18n={i18n}
 				setPopBox={setPopBox}
 				_isConvert={_isConvert}

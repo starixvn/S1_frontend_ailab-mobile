@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { number_format } from "../common/common";
 import api from "../../service/api";
 
-export default ({ isLogin, i18n, setPopBox, _isConvert }) => {
+export default ({ userInfo, i18n, setPopBox, _isConvert }) => {
 	const isMountedRef = useRef(null);
 	const [summary, setSummary] = useState({});
 
@@ -12,7 +12,7 @@ export default ({ isLogin, i18n, setPopBox, _isConvert }) => {
 	});
 
 	useEffect(() => {
-		if (isLogin === true && isMountedRef.current) {
+		if (userInfo.isLogin === true && isMountedRef.current) {
 			api.account.GetReferralSummary().then(
 				res => {
 					if (isMountedRef.current) {
@@ -38,19 +38,24 @@ export default ({ isLogin, i18n, setPopBox, _isConvert }) => {
 				}
 			);
 		}
-	}, [isLogin, i18n, setPopBox]);
+	}, [userInfo.isLogin, i18n, setPopBox]);
 
 	return (
 		<>
+			<div className="achievement">{i18n.lbl_ReferralStatus}:</div>
 			<div className="achievement">
-				{i18n.lbl_Achievement}
+				{`${i18n.lbl_InvitationAccepted} / ${i18n.lbl_MissionCompleted}: `}
 				<span>
-					{summary.amountCount}/{summary.referralCount}
+					{summary.conditionCount} / {summary.amountCount}
 				</span>
 			</div>
 			<div className="achievement">
-				{i18n.lbl_Referral_rewards}
-				<span>{number_format(summary.amountSum, _isConvert)}</span>
+				{`${i18n.lbl_NoOfAchievements} / ${i18n.lbl_RewardAmount}: `}
+				<span>
+					{summary.referralCount} /{" "}
+					{i18n[`Currency_${userInfo.currencyId}`]}{" "}
+					{number_format(summary.amountSum, _isConvert)}
+				</span>
 			</div>
 		</>
 	);

@@ -400,8 +400,6 @@
 	"lbl_SpecialBonus":"Bonus Khusus",
 	"lbl_SpecialBonusCode":"Kode Bonus Khusus",
 	"lbl_TurnoverAccmulateHint":"Dana Anda terkunci untuk ditransfer karena persyaratan Rollover belum terpenuhi.",
-	"lbl_Achievement":"Prestasi",
-	"lbl_Referral_rewards":"Hadiah",
 	"lbl_RegisterDate":"Tanggal pendaftaran",
 	"lbl_Currency":"Mata uang",
 	"lbl_TotalDeposit":"Total Deposit",
@@ -409,6 +407,10 @@
 	"lbl_BonusAmount":"Jumlah Bonus",
 	"lbl_ReferralStatus0":"Disetujui",
 	"lbl_ReferralStatus1":"Sedang diproses",
-	"lbl_ReferralStatus2":"Masa kadaluarsa"
-
+	"lbl_ReferralStatus2":"Masa kadaluarsa",
+	"lbl_ReferralStatus":"Status Referensi Anda",
+	"lbl_InvitationAccepted":"Undangan Diterima",
+	"lbl_MissionCompleted":"Misi selesai",
+	"lbl_NoOfAchievements":"Jumlah Pencapaian",
+	"lbl_RewardAmount":"Hadiah"
 }

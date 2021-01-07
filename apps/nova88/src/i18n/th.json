@@ -400,8 +400,6 @@
 	"lbl_SpecialBonus":"โบนัสพิเศษ",
 	"lbl_SpecialBonusCode":"รหัสโบนัสพิเศษ",
 	"lbl_TurnoverAccmulateHint":"เงินของคุณถูกล็อคไม่ให้โอนออกเนื่องจากข้อกำหนดโรลโอเวอร์ไม่เป็นไปตามข้อกำหนด",
-	"lbl_Achievement":"ความสำเร็จ",
-	"lbl_Referral_rewards":"รางวัล",
 	"lbl_RegisterDate":"วันที่ลงทะเบียน",
 	"lbl_Currency":"สกุลเงิน",
 	"lbl_TotalDeposit":"เงินฝากทั้งหมด",
@@ -409,5 +407,10 @@
 	"lbl_BonusAmount":"จำนวนโบนัส",
 	"lbl_ReferralStatus0":"ยืนยัน",
 	"lbl_ReferralStatus1":"กำลังดำเนินการ",
-	"lbl_ReferralStatus2":"หมดเวลา"
+	"lbl_ReferralStatus2":"หมดเวลา",
+	"lbl_ReferralStatus":"สถานะการแนะนำเพื่อนของคุณ",
+	"lbl_InvitationAccepted":"การตอบรับคำแนะนำ",
+	"lbl_MissionCompleted":"การแนะนำสำเร็จ",
+	"lbl_NoOfAchievements":"จำนวนการตอบรับ",
+	"lbl_RewardAmount":"รางวัล"
 }

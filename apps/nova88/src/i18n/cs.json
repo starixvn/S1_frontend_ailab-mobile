@@ -400,8 +400,6 @@
 	"lbl_SpecialBonus":"特别优惠",
 	"lbl_SpecialBonusCode":"特别优惠代码",
 	"lbl_TurnoverAccmulateHint":"由于未达要求流水金额故余额无法转出",
-	"lbl_Achievement":"绩效",
-	"lbl_Referral_rewards":"奖励",
 	"lbl_RegisterDate":"注册日期",
 	"lbl_Currency":"币值",
 	"lbl_TotalDeposit":"总存款",
@@ -409,5 +407,10 @@
 	"lbl_BonusAmount":"优惠金额",
 	"lbl_ReferralStatus0":"已核准",
 	"lbl_ReferralStatus1":"处理中",
-	"lbl_ReferralStatus2":"逾期"
+	"lbl_ReferralStatus2":"逾期",
+	"lbl_ReferralStatus":"您的推荐状态",
+	"lbl_InvitationAccepted":"好友已接受邀请",
+	"lbl_MissionCompleted":"任务已完成",
+	"lbl_NoOfAchievements":"您推荐的朋友人数",
+	"lbl_RewardAmount":"奖励金额"
 }

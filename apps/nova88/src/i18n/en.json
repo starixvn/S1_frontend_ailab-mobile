@@ -400,8 +400,6 @@
 	"lbl_SpecialBonus":"Special Bonus",
 	"lbl_SpecialBonusCode":"Special Bonus Code",
 	"lbl_TurnoverAccmulateHint":"Your Fund are locked to transfer out due to Rollover requirement is not fulfils.",
-	"lbl_Achievement":"Achievement",
-	"lbl_Referral_rewards":"Rewards",
 	"lbl_RegisterDate":"Register Date",
 	"lbl_Currency":"Currency",
 	"lbl_TotalDeposit":"Total Deposit",
@@ -409,6 +407,11 @@
 	"lbl_BonusAmount":"Bonus Amount",
 	"lbl_ReferralStatus0":"Approved",
 	"lbl_ReferralStatus1":"Processing",
-	"lbl_ReferralStatus2":"Expired"
+	"lbl_ReferralStatus2":"Expired",
+	"lbl_ReferralStatus":"Your Referral Status",
+	"lbl_InvitationAccepted":"Invitation Accepted",
+	"lbl_MissionCompleted":"Mission completed",
+	"lbl_NoOfAchievements":"No. of achievements",
+	"lbl_RewardAmount":"Rewards Amounts"
 
 }
