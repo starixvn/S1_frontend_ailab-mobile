@@ -379,6 +379,8 @@
 	"lbl_BonusWallet_2": "Ví thưởng sòng bài",
 	"lbl_SpecialBonus":"Khuyến mãi đặc biệt",
 	"lbl_SpecialBonusCode":"Code khuyến mãi đặc biệt",
-	"lbl_TurnoverAccmulateHint":"Bạn cần hoành thành doanh thu cược yêu cầu của khuyến mãi để thực hiện chuyển quỹ"
+	"lbl_TurnoverAccmulateHint":"Bạn cần hoành thành doanh thu cược yêu cầu của khuyến mãi để thực hiện chuyển quỹ",
+	"lbl_please_select_from_wallet":"Vui lòng chọn ví tiền phù hợp",
+	"lbl_please_select_to_wallet":"Vui lòng chọn quỹ phù hợp"
 
 }
