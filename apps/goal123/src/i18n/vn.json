@@ -281,9 +281,9 @@
 	"msg_NeedAccountNo": "Cần nhập số tài khoản",
 	"msg_NoData": "Không có dữ liệu",
 	"msg_OTPSendCode": "Chúng tôi đã gửi mã xác minh đến số điện thoại đăng ký của bạn. Vui lòng kiểm tra và nhập mã xác minh bên dưới.",
-	"msg_PasswordLength": "Mật khẩu phải có từ 6 đến 18 ký tự",
+	"msg_PasswordLength": "Mật khẩu phải có từ 6 đến 15 ký tự",
 	"msg_PasswordReq": "Mật khẩu là bắt buộc",
-	"msg_PasswordVaildate": "6-18 ký tự chữ và số (A-Z, a-z, 0-9) hoặc Ký tự đặc biệt @$*!%#?&",
+	"msg_PasswordVaildate": "* Mật khẩu phải có từ 6-15 ký tự, bao gồm cả chữ, số và ký tự đặc biệt (!@#$%^&*).",
 	"msg_ReferenceNumber": "Reference number",
 	"msg_SelectBirthDay": "Vui lòng chọn ngày sinh của bạn.",
 	"msg_SelectFile": "Select File",
@@ -371,7 +371,6 @@
 	"lbl_last_3_day":"3 ngày qua",
 	"lbl_LastUpdTime":"Cập nhật vào lúc {{time}}  (Cập nhật mỗi 30 phút)",
 	"msg_PhoneExisted":"Số điện thoại này đã được sử dụng.",
-
 	"lbl_New":"Mới",
 	"lbl_AllProvider":"Tất cả nền tảng",
 	"lbl_AllGameType":"Tất cả thể loại",
@@ -379,5 +378,7 @@
 	"lbl_BonusWallet_1": "Ví thưởng quay hũ",
 	"lbl_BonusWallet_2": "Ví thưởng sòng bài",
 	"lbl_SpecialBonus":"Khuyến mãi đặc biệt",
-	"lbl_SpecialBonusCode":"Code khuyến mãi đặc biệt"
+	"lbl_SpecialBonusCode":"Code khuyến mãi đặc biệt",
+	"lbl_TurnoverAccmulateHint":"Bạn cần hoành thành doanh thu cược yêu cầu của khuyến mãi để thực hiện chuyển quỹ"
+
 }

@@ -281,9 +281,9 @@
 	"msg_NeedAccountNo": "Need Account Number",
 	"msg_NoData": "No Data",
 	"msg_OTPSendCode": "We had send the verification code to your registered mobile no. Please check and enter the verification code below.",
-	"msg_PasswordLength": "Password must between 6 and 18 characters long.",
+	"msg_PasswordLength": "Password must between 6 and 15 characters long.",
 	"msg_PasswordReq": "Password is required.",
-	"msg_PasswordVaildate": "6-18 alphanumeric (A-Z, a-z, 0-9) characters or special characters @$*!%#?&",
+	"msg_PasswordVaildate": "* Password must be 6-15 characters, contain both alphanumeric and a special characters (!@#$%^&*).",
 	"msg_ReferenceNumber": "Reference number",
 	"msg_SelectBirthDay": "Please select your birthday.",
 	"msg_SelectFile": "Select File",
@@ -438,12 +438,17 @@
 	"lbl_liveCasino_789SeDie":"789 Se Die",
 	"lbl_please_select_from_wallet":"Kindly select preferable fund out wallet",
 	"lbl_please_select_to_wallet":"Kindly select preferable fund in wallet",
-
 	"lbl_New":"New",
 	"lbl_AllProvider":"All Platform",
 	"lbl_AllGameType":"All Categories",
 	"lbl_SearchGames":"Search Games",
 	"lbl_BonusWallet_1": "Casino Bonus Wallet",
 	"lbl_BonusWallet_2": "Live Casino Bonus Wallet",
-	"lbl_dream_gaming_se_die": "Dream Gaming Se die"
+	
+	"lbl_Game_ICG_DRAGONBALL_FISHING":"Dragonball Fishing",
+	"lbl_Game_ICG_FISHING_OF_SAVIORS":"Fishing Of Saviors",
+	"lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS":"The Tyrant And The Princess",
+	"lbl_Game_ICG_TOWER_OF_SAVIORS":"Tower Of Saviors",
+	"lbl_dream_gaming_se_die": "Dream Gaming Se die",
+	"lbl_TurnoverAccmulateHint":"Your Fund are locked to transfer out due to Rollover requirement is not fulfils."
 }
