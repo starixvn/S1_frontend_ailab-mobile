@@ -55,7 +55,9 @@
     "no-empty": ["error", { "allowEmptyCatch": true }],
     "react/jsx-props-no-spreading":["warn"],
     "no-nested-ternary": ["warn"],
-    "react/jsx-no-bind": ["warn"]
+    "react/jsx-no-bind": ["warn"],
+    "react/jsx-curly-newline":"off",
+    "no-param-reassign": ["error", { "props": false }]
   },
   "overrides": [
     {
