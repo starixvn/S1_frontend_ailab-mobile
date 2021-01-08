@@ -51,7 +51,8 @@
     "jsx-a11y/no-static-element-interactions":"off",
     "jsx-a11y/label-has-associated-control":"off",
     "react/destructuring-assignment":"off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "no-empty": ["error", { "allowEmptyCatch": true }]
   },
   "overrides": [
     {
