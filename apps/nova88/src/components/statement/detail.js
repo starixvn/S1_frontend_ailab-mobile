@@ -8,7 +8,7 @@ import {
 import moment from "moment";
 import Dropdown from "../common/dropdown";
 import { number_format, isConvert } from "../common/common";
-import { Breadcrumbs } from "../common/breadcrumb";
+import Breadcrumbs from "../common/breadcrumb";
 import { getDateRange, getSkipLink, defStatement } from "./common";
 import path from "../../path";
 import api from "../../service/api";

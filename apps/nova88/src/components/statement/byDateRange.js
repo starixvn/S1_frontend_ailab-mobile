@@ -9,7 +9,7 @@ import moment from "moment";
 import { number_format, isConvert } from "../common/common";
 import Dropdown from "../common/dropdown";
 import api from "../../service/api";
-import { Breadcrumbs } from "../common/breadcrumb";
+import Breadcrumbs from "../common/breadcrumb";
 import { useNavigate } from "@reach/router";
 import { getDateRange, defStatement } from "./common";
 import path from "../../path";

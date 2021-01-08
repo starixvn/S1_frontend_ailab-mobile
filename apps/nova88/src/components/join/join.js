@@ -5,7 +5,7 @@ import Dropdown from "../common/dropdown";
 import Checkbox from "../common/checkbox";
 import Tips from "./tips";
 import { getUrlParameter, passwordCheck } from "../common/common";
-import { getCookie } from "../common/cookie";
+import { getCookie } from "../common/common";
 import {
 	userInfoContext,
 	i18nContext,

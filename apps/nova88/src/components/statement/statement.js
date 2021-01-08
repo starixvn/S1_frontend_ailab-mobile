@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useContext } from "react";
 import { i18nContext } from "Context";
 import { useNavigate } from "@reach/router";
 import { Filter } from "./filter";
-import { Breadcrumbs } from "../common/breadcrumb";
+import Breadcrumbs from "../common/breadcrumb";
 import path from "../../path";
 
 export default props => {

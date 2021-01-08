@@ -9,7 +9,7 @@ import moment from "moment";
 import Dropdown from "../common/dropdown";
 import { number_format, isConvert } from "../common/common";
 import { useNavigate } from "@reach/router";
-import { Breadcrumbs } from "../common/breadcrumb";
+import Breadcrumbs from "../common/breadcrumb";
 import { getDateRange, getSkipLink, defStatement } from "./common";
 import api from "../../service/api";
 import path from "../../path";
