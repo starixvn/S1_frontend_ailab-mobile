@@ -53,7 +53,8 @@
     "react/destructuring-assignment":"off",
     "import/prefer-default-export": "off",
     "no-empty": ["error", { "allowEmptyCatch": true }],
-    "react/jsx-props-no-spreading":["warn"]
+    "react/jsx-props-no-spreading":["warn"],
+    "no-nested-ternary": ["warn"]
   },
   "overrides": [
     {
