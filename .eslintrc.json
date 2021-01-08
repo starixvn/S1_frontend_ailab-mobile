@@ -43,7 +43,7 @@
     "jsx-a11y/control-has-associated-label":"off",
     "no-underscore-dangle":"off",
     "camelcase":["warn", { "ignoreImports": true }],
-    "react/jsx-boolean-value":["error", "always"],
+    "react/jsx-boolean-value":"off",
     "react/jsx-one-expression-per-line":"off",
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "jsx-a11y/click-events-have-key-events": "off",
@@ -51,7 +51,8 @@
     "jsx-a11y/no-static-element-interactions":"off",
     "jsx-a11y/label-has-associated-control":"off",
     "react/destructuring-assignment":"off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "no-empty": ["error", { "allowEmptyCatch": true }]
   },
   "overrides": [
     {
