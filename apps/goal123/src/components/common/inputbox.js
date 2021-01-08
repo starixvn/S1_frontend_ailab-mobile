@@ -6,7 +6,7 @@ const Inputbox = props => {
 		<div className="inputBox">
 			{props.label ? (
 				<label className="inputdate">
-					<i className={`icon ${props.icon}`}></i>
+					<i className={`icon ${props.icon}`} />
 					<input
 						type={props.inputType ?? "text"}
 						placeholder={props.placeholder}
@@ -24,7 +24,7 @@ const Inputbox = props => {
 				</label>
 			) : (
 				<>
-					<i className={`icon ${props.icon}`}></i>
+					<i className={`icon ${props.icon}`} />
 					<input
 						type={props.inputType ?? "text"}
 						placeholder={props.placeholder}
@@ -45,7 +45,7 @@ const Inputbox = props => {
 
 			{props.Warning?.status || props.WarningIcon ? (
 				<div className="icon-module">
-					<i className="icon icon-warning"></i>
+					<i className="icon icon-warning" />
 				</div>
 			) : null}
 			{props.showTips ? (
@@ -69,8 +69,24 @@ const Inputbox = props => {
 	);
 };
 
+Inputbox.defaultProps = {
+	icon: "",
+	value: "",
+	inputType: "",
+	placeholder: "",
+	Warning: {},
+	showTips: false,
+	label: false,
+	max: null,
+	disabled: null,
+	maxLength: null,
+	WarningIcon: null,
+	ClassName: "",
+	Tips: ""
+};
+
 Inputbox.propTypes = {
-	icon: PropTypes.string.isRequired,
+	icon: PropTypes.string,
 	value: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number,
@@ -78,11 +94,18 @@ Inputbox.propTypes = {
 	]),
 	inputType: PropTypes.string,
 	placeholder: PropTypes.string,
-	onFocus: PropTypes.func,
-	onBlur: PropTypes.func,
-	onChange: PropTypes.func,
-	Warning: PropTypes.object,
-	showTips: PropTypes.bool
+	onFocus: PropTypes.func.isRequired,
+	onBlur: PropTypes.func.isRequired,
+	onChange: PropTypes.func.isRequired,
+	Warning: PropTypes.objectOf(PropTypes.object),
+	showTips: PropTypes.bool,
+	label: PropTypes.bool,
+	max: PropTypes.number,
+	disabled: PropTypes.bool,
+	maxLength: PropTypes.number,
+	WarningIcon: PropTypes.objectOf(PropTypes.string),
+	ClassName: PropTypes.string,
+	Tips: PropTypes.string
 };
 
 export default Inputbox;

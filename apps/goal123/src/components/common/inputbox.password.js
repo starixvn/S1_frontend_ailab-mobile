@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const Inputbox = props => {
 	return (
 		<div className="inputBox">
-			<i className={`icon ${props.icon}`}></i>
+			<i className={`icon ${props.icon}`} />
 			<input
 				type={props.inputType}
 				placeholder={props.placeholder}
@@ -18,9 +18,10 @@ const Inputbox = props => {
 					className={`icon ${
 						!props.showPsw ? "icon-eye-blocked" : "icon-eye"
 					}`}
-					onClick={props.showPswHandler}></i>
+					onClick={props.showPswHandler}
+				/>
 				{props.Warning.status ? (
-					<i className="icon icon-warning"></i>
+					<i className="icon icon-warning" />
 				) : null}
 			</div>
 			{props.showTips ? (
@@ -42,6 +43,14 @@ const Inputbox = props => {
 	);
 };
 
+Inputbox.defaultProps = {
+	placeholder: "",
+	Warning: {},
+	showTips: null,
+	ClassName: "",
+	Tips: ""
+};
+
 Inputbox.propTypes = {
 	icon: PropTypes.string.isRequired,
 	value: PropTypes.string.isRequired,
@@ -49,11 +58,13 @@ Inputbox.propTypes = {
 	showPsw: PropTypes.bool.isRequired,
 	inputType: PropTypes.string.isRequired,
 	placeholder: PropTypes.string,
-	onFocus: PropTypes.func,
-	onBlur: PropTypes.func,
-	onChange: PropTypes.func,
-	Warning: PropTypes.object,
-	showTips: PropTypes.bool
+	onFocus: PropTypes.func.isRequired,
+	onBlur: PropTypes.func.isRequired,
+	onChange: PropTypes.func.isRequired,
+	Warning: PropTypes.objectOf(PropTypes.string),
+	showTips: PropTypes.bool,
+	ClassName: PropTypes.string,
+	Tips: PropTypes.string
 };
 
 export default Inputbox;

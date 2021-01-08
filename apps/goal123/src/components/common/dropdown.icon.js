@@ -1,4 +1,5 @@
 import React, { Component, createRef } from "react";
+import PropTypes from "prop-types";
 
 export class IconDropdown extends Component {
 	constructor(props) {
@@ -17,7 +18,7 @@ export class IconDropdown extends Component {
 	};
 
 	ClickDropdown = () => {
-		this.setState({ isOpen: !this.state.isOpen });
+		this.setState(prev => ({ isOpen: !prev.isOpen }));
 	};
 
 	SelectItem = value => {
@@ -26,22 +27,22 @@ export class IconDropdown extends Component {
 	};
 
 	render() {
-		let arr = this.props.options.map((item, i) => {
-			let displayText = item.displayText
+		const arr = this.props.options.map((item, i) => {
+			const displayText = item.displayText
 				? item.displayText
 				: this.props.i18n?.[item.displayKey];
 			return (
 				<Item
-					key={`${this.props.mainKey}-${i}`}
+					key={`${this.props.mainKey}-${item.displayKey}`}
 					displayText={displayText}
 					iconClassName={this.props.options[i].iconClassName}
-					onClick={this.SelectItem.bind(null, i)}
+					onClick={this.SelectItem}
 				/>
 			);
 		});
 		let selected = null;
 		if (this.props.options[this.props.selectedIdx]) {
-			let _s = this.props.options[this.props.selectedIdx];
+			const _s = this.props.options[this.props.selectedIdx];
 			if (_s.displayText) {
 				selected = _s.displayText;
 			} else {
@@ -62,7 +63,8 @@ export class IconDropdown extends Component {
 								? this.props.icon
 								: this.props.options[this.props.selectedIdx]
 										?.iconClassName
-						}></i>
+						}
+					/>
 					<span className="text">{selected}</span>
 				</a>
 				<div className="dropdown-container">{arr}</div>
@@ -71,12 +73,43 @@ export class IconDropdown extends Component {
 	}
 }
 
+IconDropdown.defaultProps = {
+	options: [],
+	mainKey: "",
+	placeholder: "",
+	icon: null
+};
+
+IconDropdown.propTypes = {
+	onSelectItem: PropTypes.func.isRequired,
+	options: PropTypes.arrayOf(PropTypes.object),
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	mainKey: PropTypes.string,
+	selectedIdx: PropTypes.number.isRequired,
+	placeholder: PropTypes.string,
+	icon: PropTypes.string
+};
+
 const Item = props => {
+	const handleClick = () => props.onClick(props.idx);
 	return (
-		<div className="dropdown-item" onClick={props.onClick}>
-			<i className={props.iconClassName}></i>
+		<div className="dropdown-item" onClick={handleClick}>
+			<i className={props.iconClassName} />
 			<span className="text">{props.displayText}</span>
 		</div>
 	);
 };
+
+Item.defaultProps = {
+	iconClassName: "",
+	displayText: ""
+};
+
+Item.propTypes = {
+	onClick: PropTypes.func.isRequired,
+	iconClassName: PropTypes.string,
+	displayText: PropTypes.string,
+	idx: PropTypes.number.isRequired
+};
+
 export default IconDropdown;
