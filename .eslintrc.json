@@ -57,7 +57,8 @@
     "no-nested-ternary": ["warn"],
     "react/jsx-no-bind": ["warn"],
     "react/jsx-curly-newline":"off",
-    "no-param-reassign": ["error", { "props": false }]
+    "no-param-reassign": ["error", { "props": false }],
+    "consistent-return": ["error", { "treatUndefinedAsUnspecified": true }]
   },
   "overrides": [
     {
