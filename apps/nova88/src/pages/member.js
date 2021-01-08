@@ -8,6 +8,10 @@ const defTabs = {
 		displayKey: "lbl_Profile",
 		excludeMath: path.member.sub.bankInfo.root
 	},
+	referral: {
+		to: `/${path.referral.root}`,
+		displayKey: "lbl_Referral"
+	},
 	bankInfo: {
 		to: path.member.sub.bankInfo.root,
 		displayKey: "lbl_BankInfo"

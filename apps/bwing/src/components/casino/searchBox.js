@@ -8,14 +8,14 @@ const SearchBox = props => {
 	const [openAdvance, setOpenAdvance] = useState(false);
 
 	const gameTypeList = [
-		{ id: null, displayText: i18n.lbl_All },
+		{ id: null, displayText: i18n.lbl_AllGameType },
 		...Object.keys(GameTypes).map(k => {
 			return { id: k, displayText: i18n[GameTypes[k].displayKey] };
 		})
 	];
 
 	const providerList = [
-		{ id: null, displayText: i18n.lbl_All },
+		{ id: null, displayText: i18n.lbl_AllProvider },
 		...Object.keys(props.TpList)?.map(k => {
 			let d = props.TpList[k];
 			return {
@@ -69,7 +69,7 @@ const SearchBox = props => {
 				<i className="icon icon-search"></i>
 				<input
 					className="search"
-					placeholder={i18n.lbl_Search}
+					placeholder={i18n.lbl_SearchGames}
 					value={props.searchText}
 					onChange={EditField.bind(this, "searchText")}
 				/>

@@ -35,6 +35,25 @@ export const defGameInfo = {
 	sabaClub: {
 		tpId: 1,
 		gameId: 200
+	},
+	casino_ICG: {
+		tpId: 24
+	},
+	ICG_DRAGONBALL_FISHING: {
+		tpId: 24,
+		gameId: "cmf0001"
+	},
+	ICG_FISHING_OF_SAVIORS: {
+		tpId: 24,
+		gameId: "cmf0002"
+	},
+	ICG_THE_TYRANT_AND_THE_PRINCESS: {
+		tpId: 24,
+		gameId: "cmf0003"
+	},
+	ICG_TOWER_OF_SAVIORS: {
+		tpId: 24,
+		gameId: "cmt0001"
 	}
 };
 

@@ -40,7 +40,7 @@ const defPageInfo = {
 	},
 	statement: {
 		titleKey: "lbl_Statement",
-		className: "main",
+		className: "main statementPage",
 		hideLogo: true
 	},
 	message: {
@@ -95,6 +95,11 @@ const defPageInfo = {
 	},
 	whoami: {
 		titleKey: "Who AM I",
+		className: "main",
+		hideLogo: true
+	},
+	financialLog: {
+		titleKey: "lbl_FinancialLog",
 		className: "main",
 		hideLogo: true
 	},

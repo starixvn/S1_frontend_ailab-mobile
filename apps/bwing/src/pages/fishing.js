@@ -6,8 +6,36 @@ import LinksPanel from "../components/home/links";
 import fishingGGImg from "../styles/img/fishingGG.png";
 import fishingSGImg from "../styles/img/fishingSG.png";
 import fishingSGwarImg from "../styles/img/fishingSGwar.png";
+import fishingICG_DB from "../styles/img/fishingICG-DB.png";
+import fishingICG_FOS from "../styles/img/fishingICG-FOS.png";
+import fishingICG_TTATP from "../styles/img/fishingICG-TTATP.png";
+import fishingICG_TOS from "../styles/img/fishingICG-TOS.png";
 
 const defGames = [
+	{
+		...defGameInfo.ICG_DRAGONBALL_FISHING,
+		displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
+		img: fishingICG_DB,
+		isNew: true
+	},
+	{
+		...defGameInfo.ICG_FISHING_OF_SAVIORS,
+		displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS",
+		img: fishingICG_FOS,
+		isNew: true
+	},
+	{
+		...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
+		displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS",
+		img: fishingICG_TTATP,
+		isNew: true
+	},
+	{
+		...defGameInfo.ICG_TOWER_OF_SAVIORS,
+		displayKey: "lbl_Game_ICG_TOWER_OF_SAVIORS",
+		img: fishingICG_TOS,
+		isNew: true
+	},
 	{
 		...defGameInfo.Fishing,
 		displayKey: "lbl_FishingGG",
@@ -45,7 +73,7 @@ export default () => {
 	let arr = defGames.map(game => {
 		return (
 			<button
-				className="gameInBox"
+				className={`gameInBox${game.isNew ? " newicon" : ""}`}
 				key={`fishingPanel-${game.displayKey}`}
 				onClick={ClickGame.bind(
 					this,

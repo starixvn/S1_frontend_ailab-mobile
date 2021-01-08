@@ -18,6 +18,8 @@ export class siteAPI extends BaseAPI {
 
 	GetGamelist = () => this.siteRequest.post(`/GetGamelist`);
 
+	GetGamelistV2 = () => this.siteRequest.post(`/GetGamelistV2`);
+
 	ForgetPwd = ({ langId, Email }) =>
 		this.siteRequest.post(`/ForgetPwdV2/${langId}`, {
 			Email: Email,
@@ -39,4 +41,9 @@ export class siteAPI extends BaseAPI {
 
 	ExistsPhoneNo = ({ AreaCode, Phone }) =>
 		this.siteRequest.post(`/ExistsPhoneNo`, { AreaCode, PhoneNo: Phone });
+
+	GetAffiliateAgent = ({ AffId }) =>
+		this.siteRequest.post(`/GetAffiliateAgent`, {
+			AffId
+		});
 }

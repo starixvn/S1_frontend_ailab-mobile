@@ -22,7 +22,11 @@ export default () => {
 				defRuleCols.rollOver,
 				defRuleCols.remainingTime
 			]}
-			formatSetting={{ isConvertRequired: true, digits: 0 }}
+			formatSetting={{
+				isConvertRequired: true,
+				digits: 2,
+				formatRequired: false
+			}}
 		/>
 	);
 };

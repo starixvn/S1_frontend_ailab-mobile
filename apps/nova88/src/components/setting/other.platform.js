@@ -87,6 +87,12 @@ const defPlatfrom = [
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_CQ9 },
 		imgName: "cq9"
+	},
+	{
+		...defGameInfo.casino_ICG,
+		path: path.casino.root,
+		parameter: { ...defGameInfo.casino_ICG },
+		imgName: "icg"
 	}
 	// {
 	// 	...defGameInfo.Casino_918Kiss,
@@ -133,7 +139,8 @@ export default ({ langId, isLogin }) => {
 		return (
 			<img
 				key={key}
-				src={`${config.imgUrl}/common/images/logo/${p.imgName}.png`}
+				src={`${config.cloudImgURL}/SiteSkin/img/logo/${p.imgName}.png`}
+				// src={`${config.imgUrl}/common/images/logo/${p.imgName}.png`}
 				onClick={ClickItem.bind(this, { ...p, urlParams: _urlParams })}
 				alt={p.imgName}
 			/>

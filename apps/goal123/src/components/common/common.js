@@ -10,21 +10,18 @@ export const getUrlParameter = name => {
 export const number_format = (n, IsConvertRequired = false) => {
 	if (!isNaN(n)) {
 		n /= 1000;
+		n = Number(n).toFixed(2);
 	}
 
 	n += "";
 	let arr = n.split(".");
 	let re = /(\d{1,3})(?=(\d{3})+$)/g;
 
-	if (IsConvertRequired) {
-		return (
-			arr[0].replace(re, "$1,") +
-			(arr.length === 2 ? "." + arr[1] : "") +
-			(IsConvertRequired ? " ('000)" : "")
-		);
-	} else {
-		return arr[0].replace(re, "$1,");
-	}
+	return (
+		arr[0].replace(re, "$1,") +
+		(arr.length === 2 ? "." + arr[1] : "") +
+		(IsConvertRequired ? " ('000)" : "")
+	);
 };
 
 const _isConvertList = {
@@ -82,4 +79,23 @@ export const readCookie = cookieName => {
 
 export const deleteCookie = cookieName => {
 	document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+};
+
+export const passwordCheck = ({ val }) => {
+	let checked = true;
+	let message = "";
+
+	const regx = /^(?=.{6,15}$)(?=.*[a-zA-Z0-9])(?=.*[!@#$%^&*]).*$/;
+	if (!val) {
+		checked = false;
+		message = "msg_PasswordReq";
+	} else if (val.length < 6 || val.length > 15) {
+		checked = false;
+		message = "msg_PasswordLength";
+	} else if (!regx.test(val)) {
+		checked = false;
+		message = "msg_PasswordVaildate";
+	}
+
+	return { checked, message };
 };
