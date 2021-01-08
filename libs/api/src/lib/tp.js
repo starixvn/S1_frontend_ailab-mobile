@@ -6,7 +6,7 @@ const defGotoGame_AppType = {
 	NativeAPP: 3
 };
 
-export class tpAPI extends BaseAPI {
+export class TpAPI extends BaseAPI {
 	GetTransferHistory = ({ StartDate, EndDate, PageNumber }) =>
 		this.tpRequest.post("/GetTransferHistory", {
 			StartDate,

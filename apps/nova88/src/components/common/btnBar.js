@@ -2,9 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Btn = ({ isOpen, displayText, value, isLogin, beforeLogin, onClick }) => {
-	const handleClick = () => {
-		onClick(value, isLogin, beforeLogin);
-	};
+	const handleClick = () => onClick(value, isLogin, beforeLogin);
 	return (
 		<button
 			className={isOpen ? "open" : ""}

@@ -5,8 +5,8 @@ export const siteName = "Nova88";
 const getAffiliate = langId => {
 	if (typeof window === `undefined`) return "";
 
-	let fullPath = window.location.hostname;
-	let arr = fullPath.split(".");
+	const fullPath = window.location.hostname;
+	const arr = fullPath.split(".");
 
 	return arr.length === 3
 		? `https://aff.${arr

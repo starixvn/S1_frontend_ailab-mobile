@@ -1,12 +1,13 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
+import moment from "moment";
+import { Redirect } from "@reach/router";
+import PropTypes from "prop-types";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
 import { number_format, isConvert } from "../common/common";
-import moment from "moment";
 import HistoryFilter from "../common/historyFilter";
 import ReloadSpin from "../common/reloadSpin";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import Loading from "../common/loading";
-import { Redirect } from "@reach/router";
 import api from "../../service/api";
 
 const IndexPage = () => {
@@ -25,7 +26,9 @@ const IndexPage = () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -75,7 +78,7 @@ const IndexPage = () => {
 				.then(
 					response => {
 						if (isMountedRef.current) {
-							const errorCode = response.data.errorCode;
+							const { errorCode } = response.data;
 							if (errorCode !== 0) {
 								setPopBox({
 									isOpen: true,
@@ -143,8 +146,8 @@ const IndexPage = () => {
 				<div className="recent open">
 					<div className="recentTransactions">
 						<div className="smallTitle">
-							<i className="icon icon-history"></i>
-							{i18n["lbl_TransactionHistory"]}
+							<i className="icon icon-history" />
+							{i18n.lbl_TransactionHistory}
 						</div>
 						<ReloadSpin
 							func={submitHandler.bind(
@@ -159,9 +162,7 @@ const IndexPage = () => {
 						<div className="infoList">{arr}</div>
 					) : (
 						<div className="nodata icon icon-nodata">
-							<div className="txt-white">
-								{i18n["msg_NoData"]}
-							</div>
+							<div className="txt-white">{i18n.msg_NoData}</div>
 						</div>
 					)}{" "}
 				</div>
@@ -175,54 +176,71 @@ const TransactionHistory = props => {
 		<div className="info">
 			<ul>
 				<li>
-					<span className="title">{props.i18n["lbl_Date"]}</span>
+					<span className="title">{props.i18n.lbl_Date}</span>
 					<span>
 						{moment(props.createTime).format("MM/DD/YYYY(Z)")}
 					</span>
 				</li>
 				<li>
-					<span className="title">{props.i18n["lbl_Time"]}</span>
+					<span className="title">{props.i18n.lbl_Time}</span>
 					<span>{moment(props.createTime).format("hh:mm:ss A")}</span>
 				</li>
 				<li>
-					<span className="title">{props.i18n["lbl_TypeName"]}</span>
+					<span className="title">{props.i18n.lbl_TypeName}</span>
 					<span>{props.typeName}</span>
 				</li>
 				<li>
-					<span className="title">
-						{props.i18n["lbl_ChangeAmount"]}
-					</span>
+					<span className="title">{props.i18n.lbl_ChangeAmount}</span>
 					<span>
 						{props.direction}
 						{number_format(props.changeAmount, props._isConvert)}
 					</span>
 				</li>
 				<li>
-					<span className="title">
-						{props.i18n["lbl_BeforeAmount"]}
-					</span>
+					<span className="title">{props.i18n.lbl_BeforeAmount}</span>
 					<span>
 						{number_format(props.beforeAmount, props._isConvert)}
 					</span>
 				</li>
 				<li>
-					<span className="title">
-						{props.i18n["lbl_AfterAmount"]}
-					</span>
+					<span className="title">{props.i18n.lbl_AfterAmount}</span>
 					<span>
 						{number_format(props.afterAmount, props._isConvert)}
 					</span>
 				</li>
 				<li>
-					<span className="title">
-						{props.i18n["lbl_RefTransId"]}
-					</span>
+					<span className="title">{props.i18n.lbl_RefTransId}</span>
 					<span>{props.refTransId}</span>
 				</li>
 			</ul>
-			<div className="btn-group"></div>
+			<div className="btn-group" />
 		</div>
 	);
+};
+
+TransactionHistory.defaultProps = {
+	_isConvert: false
+};
+
+TransactionHistory.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	createTime: PropTypes.oneOfType([
+		PropTypes.instanceOf(Date),
+		PropTypes.string
+	]).isRequired,
+	typeName: PropTypes.string.isRequired,
+	direction: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired,
+
+	changeAmount: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired,
+	beforeAmount: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired,
+	afterAmount: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired,
+	_isConvert: PropTypes.bool,
+	refTransId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired
 };
 
 export default IndexPage;

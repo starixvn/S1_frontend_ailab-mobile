@@ -14,7 +14,9 @@ export default () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -32,7 +34,7 @@ export default () => {
 	useEffect(() => {
 		if (userInfo.isLogin) {
 			const CheckBankInfo = async () => {
-				let result = await api.account.GetCustBankInfo().then(res => {
+				const result = await api.account.GetCustBankInfo().then(res => {
 					let hasBankInfo = false;
 					if (res.data.errorCode === 0) {
 						if (res.data.data?.bankInfoDetail) {
@@ -80,20 +82,20 @@ export default () => {
 		<>
 			<div className="step">
 				<div className="stepLine">
-					<div className="stepBar100"></div>
+					<div className="stepBar100" />
 				</div>
 				<div className="circle">
 					<div>
-						<div className="icon icon-checkmark"></div>
+						<div className="icon icon-checkmark" />
 					</div>
 				</div>
 				<div className="circle">
 					<div>
-						<div className="icon icon-checkmark"></div>
+						<div className="icon icon-checkmark" />
 					</div>
 				</div>
 			</div>
-			<div className="icon icon-like"></div>
+			<div className="icon icon-like" />
 			<span className="text-center">{i18n.lbl_WaitKYCHint}</span>
 		</>
 	);

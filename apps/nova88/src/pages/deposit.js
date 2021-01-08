@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { bankSlipPopBoxContext } from "Context";
 import TabPage from "../components/common/tabPage";
 import path from "../path";
 import BankSlip from "../components/deposit/bankSlip";
-import { bankSlipPopBoxContext } from "Context";
 
 const defTabs = {
 	default: {
@@ -28,6 +29,10 @@ const IndexPage = props => {
 			<BankSlip />
 		</bankSlipPopBoxContext.Provider>
 	);
+};
+
+IndexPage.propTypes = {
+	children: PropTypes.node.isRequired
 };
 
 export default IndexPage;

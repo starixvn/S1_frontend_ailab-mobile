@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import PropTypes from "prop-types";
 import { defBtns } from "./def";
 import { useGetRanking } from "./hook";
 import RankList from "./rankList";
@@ -32,6 +33,18 @@ const Ranking = ({
 			/>
 		</div>
 	);
+};
+
+Ranking.defaultProps = {
+	isOpen: false,
+	selected: ""
+};
+
+Ranking.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
+	isOpen: PropTypes.bool,
+	selected: PropTypes.string
 };
 
 export default Ranking;

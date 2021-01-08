@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { RankImg } from "./rankList";
 import { defPrize } from "./def";
 
@@ -47,6 +48,16 @@ const PrizeList = ({ userInfo, category, i18n }) => {
 			{rows}
 		</div>
 	);
+};
+
+PrizeList.defaultProps = {
+	category: ""
+};
+
+PrizeList.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
+	category: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 export default PrizeList;

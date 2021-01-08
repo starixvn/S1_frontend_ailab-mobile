@@ -6,16 +6,17 @@ import {
 	loadingContext
 } from "Context";
 import moment from "moment";
+import { useNavigate } from "@reach/router";
+import PropTypes from "prop-types";
 import Dropdown from "../common/dropdown";
 import { number_format, isConvert } from "../common/common";
-import { useNavigate } from "@reach/router";
 import Breadcrumbs from "../common/breadcrumb";
 import { getDateRange, getSkipLink, defStatement } from "./common";
 import api from "../../service/api";
 import path from "../../path";
 import { useHandlePage } from "./hook";
 
-export default props => {
+const ByCategory = props => {
 	const isMountedRef = useRef(null);
 	const navigate = useNavigate();
 	const { timePeriod, date: _selDate, category: _categoryId } = props;
@@ -32,12 +33,14 @@ export default props => {
 	const _startDay = timePeriod.substr(0, timePeriod.indexOf("to"));
 	const _endDay = timePeriod.split("to").pop();
 
-	let dateRange = getDateRange({ startDate: _startDay, endDate: _endDay });
+	const dateRange = getDateRange({ startDate: _startDay, endDate: _endDay });
 	const skipLink = getSkipLink({ dateRange });
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -96,7 +99,7 @@ export default props => {
 		func_getDatas: getListByCategoryId
 	});
 
-	let detailArr = datas?.map(data => {
+	const detailArr = datas?.map(data => {
 		return (
 			<Detail
 				key={`bet-by-category-${data.settledDate}-${data.turnOver}`}
@@ -144,11 +147,21 @@ export default props => {
 				</>
 			) : (
 				<div className="nodata icon icon-nodata">
-					<div className="txt-white">{i18n["msg_NoData"]}</div>
+					<div className="txt-white">{i18n.msg_NoData}</div>
 				</div>
 			)}
 		</>
 	) : null;
+};
+
+ByCategory.defaultProps = {
+	category: ""
+};
+
+ByCategory.propTypes = {
+	timePeriod: PropTypes.string.isRequired,
+	date: PropTypes.string.isRequired,
+	category: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 const Detail = ({
@@ -201,3 +214,29 @@ const Detail = ({
 		</div>
 	);
 };
+
+Detail.defaultProps = {
+	_isConvert: false
+};
+
+Detail.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	settledDate: PropTypes.oneOfType([
+		PropTypes.instanceOf(Date),
+		PropTypes.string
+	]).isRequired,
+	turnOver: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired,
+	validBet: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired,
+	winlostAmount: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired,
+	_isConvert: PropTypes.bool,
+	toDetailPage: PropTypes.func.isRequired,
+	gameTypeName: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired,
+	gameTypeID: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired
+};
+
+export default ByCategory;

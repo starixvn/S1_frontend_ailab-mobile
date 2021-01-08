@@ -108,13 +108,14 @@ const SearchBox = props => {
 
 SearchBox.defaultProps = {
 	gameType: {},
-	provider: {}
+	provider: {},
+	DefaultProvider: null
 };
 
 SearchBox.propTypes = {
 	TpList: PropTypes.arrayOf(PropTypes.object).isRequired,
 	provider: PropTypes.objectOf(PropTypes.any),
-	DefaultProvider: PropTypes.number.isRequired,
+	DefaultProvider: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	EditSearchField: PropTypes.func.isRequired,
 	searchText: PropTypes.string.isRequired,
 	gameType: PropTypes.objectOf(PropTypes.any)

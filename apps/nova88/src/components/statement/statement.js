@@ -1,25 +1,28 @@
 import React, { useEffect, useRef, useContext } from "react";
 import { i18nContext } from "Context";
 import { useNavigate } from "@reach/router";
+import PropTypes from "prop-types";
 import { Filter } from "./filter";
 import Breadcrumbs from "../common/breadcrumb";
 import path from "../../path";
 
-export default props => {
+const Statement = props => {
 	const { i18n } = useContext(i18nContext);
 	const isMountedRef = useRef(null);
 	const navigate = useNavigate();
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	const submitFilter = (startDay, endDay) => {
 		if (startDay !== endDay) {
 			toDateRangePage({
-				startDay: startDay,
-				endDay: endDay
+				startDay,
+				endDay
 			});
 		} else {
 			toByDayPage({
@@ -50,3 +53,13 @@ export default props => {
 		</>
 	) : null;
 };
+
+Statement.defaultProps = {
+	uri: ""
+};
+
+Statement.propTypes = {
+	uri: PropTypes.string
+};
+
+export default Statement;
