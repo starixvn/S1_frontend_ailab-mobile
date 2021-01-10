@@ -10,7 +10,7 @@ const Panel = () => {
 
 	return (
 		<>
-			<div className="avatar"></div>
+			<div className="avatar" />
 			{/* <div className="viplv">
 				<i className="icon icon-vip"></i>VIP Lv{userInfo.userLevel}
 			</div> */}

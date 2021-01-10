@@ -1,4 +1,5 @@
 import React, { useContext, useRef, useEffect, useState } from "react";
+import PropTypes, { objectOf } from "prop-types";
 import {
 	i18nContext,
 	userInfoContext,
@@ -22,7 +23,9 @@ export default () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -39,7 +42,7 @@ export default () => {
 						} else {
 							setPopBox({
 								isOpen: true,
-								title: i18n["lbl_ImportantNote"],
+								title: i18n.lbl_ImportantNote,
 								content: res.data.message
 							});
 						}
@@ -49,8 +52,8 @@ export default () => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n["lbl_ImportantNote"],
-							content: i18n["msg_ApiServerError"]
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
 						});
 					}
 				}
@@ -61,7 +64,7 @@ export default () => {
 		api.account.GetBalnace().then(
 			res => {
 				if (res.data.errorCode === 0) {
-					let data = res.data.data;
+					const { data } = res.data;
 					if (data !== null && isMountedRef.current) {
 						setWalletInfo(prevState => ({
 							...prevState,
@@ -74,8 +77,8 @@ export default () => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n["lbl_ImportantNote"],
-						content: i18n["msg_ApiServerError"]
+						title: i18n.lbl_ImportantNote,
+						content: i18n.msg_ApiServerError
 					});
 				}
 			}
@@ -83,7 +86,7 @@ export default () => {
 
 		api.account.GetCustBonusWallet().then(res => {
 			if (res.data.errorCode === 0 && isMountedRef.current) {
-				let result = {};
+				const result = {};
 				res.data.data.forEach(b => {
 					if (result.tpId) {
 						result[b.tpId].push({
@@ -102,14 +105,14 @@ export default () => {
 		api.account.GetTpWalletBalance({ TpId: tpId }).then(
 			res => {
 				if (res.data.errorCode === 0) {
-					let _datas = res.data.data;
-					let tpWalletData = {
+					const _datas = res.data.data;
+					const tpWalletData = {
 						id: _datas.tpId,
 						displayKey: `lbl_TpWallet_${_datas.tpId}`,
 						balance: _datas.balance
 					};
 
-					let tpWalletIdx = tpWalletList.findIndex(wallet => {
+					const tpWalletIdx = tpWalletList.findIndex(wallet => {
 						return wallet.id === tpId;
 					});
 
@@ -127,15 +130,15 @@ export default () => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n["lbl_ImportantNote"],
-						content: i18n["msg_ApiServerError"]
+						title: i18n.lbl_ImportantNote,
+						content: i18n.msg_ApiServerError
 					});
 				}
 			}
 		);
 	};
 
-	let _tpWalletArrs = tpWalletList.map(t => {
+	const _tpWalletArrs = tpWalletList.map(t => {
 		return (
 			<Wallet
 				key={`profile-tpWalletArr-${t.id}`}
@@ -153,7 +156,7 @@ export default () => {
 		<>
 			<Wallet
 				i18n={i18n}
-				titleKey={"lbl_MainWallet"}
+				titleKey="lbl_MainWallet"
 				currencyId={userInfo.currencyId}
 				balance={walletInfo.main}
 				func_GetBalance={GetBalance}
@@ -172,7 +175,7 @@ const Wallet = ({
 	func_GetBalance,
 	bonusWallet
 }) => {
-	let _bonusWallet =
+	const _bonusWallet =
 		bonusWallet &&
 		bonusWallet
 			.filter(b => b.status === 0 || b.status === 1)
@@ -194,7 +197,7 @@ const Wallet = ({
 				<div>
 					<span className="text-org">
 						{i18n[`Currency_${currencyId}`]}
-						{i18n["lbl_Cash"]}
+						{i18n.lbl_Cash}
 					</span>{" "}
 					{number_format(balance, isConvert(currencyId))}
 				</div>
@@ -203,4 +206,20 @@ const Wallet = ({
 			{_bonusWallet}
 		</div>
 	);
+};
+
+Wallet.defaultProps = {
+	titleKey: "",
+	currencyId: null,
+	balance: null,
+	bonusWallet: []
+};
+
+Wallet.propTypes = {
+	titleKey: PropTypes.string,
+	currencyId: PropTypes.number,
+	balance: PropTypes.number,
+	func_GetBalance: PropTypes.func.isRequired,
+	bonusWallet: PropTypes.arrayOf(PropTypes.object),
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired
 };

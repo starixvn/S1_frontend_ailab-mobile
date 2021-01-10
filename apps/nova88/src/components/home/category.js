@@ -6,9 +6,9 @@ import {
 	userInfoContext,
 	popBoxContext
 } from "Context";
-import productList from "../../datas/productList";
-import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { Redirect, Link } from "@reach/router";
+import { productList } from "../../datas/productList";
+import { GET_ENTER_PAGE } from "../../service/enterPage";
 import path from "../../path";
 import api from "../../service/api";
 

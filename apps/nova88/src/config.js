@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const siteName = "Nova88";
+const siteName = "Nova88";
 
 const getAffiliate = langId => {
 	if (typeof window === `undefined`) return "";
