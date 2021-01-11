@@ -61,7 +61,8 @@
     "consistent-return": ["error", { "treatUndefinedAsUnspecified": true }],
     "react/no-array-index-key":["warn"],
     "react/prop-types":["warn"],
-    "react/no-did-update-set-state":["warn"]
+    "react/no-did-update-set-state":["warn"],
+    "react/no-unescaped-entities":["warn"]
   },
   "overrides": [
     {
