@@ -112,18 +112,16 @@ export default () => {
 						balance: _datas.balance
 					};
 
-					const tpWalletIdx = tpWalletList.findIndex(wallet => {
-						return wallet.id === tpId;
-					});
-
-					if (tpWalletIdx !== -1) {
-						setTpWalletList(prev => {
+					setTpWalletList(prev => {
+						const tpWalletIdx = prev.findIndex(
+							wallet => wallet.id === tpId
+						);
+						if (tpWalletIdx !== -1) {
 							prev[tpWalletIdx] = tpWalletData;
 							return prev;
-						});
-					} else {
-						setTpWalletList(prev => [...prev, tpWalletData]);
-					}
+						}
+						return [...prev, tpWalletData];
+					});
 				}
 			},
 			err => {
