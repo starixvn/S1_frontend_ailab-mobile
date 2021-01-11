@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import PropTypes from "prop-types";
 import Swiper from "react-id-swiper";
 import { Link } from "@reach/router";
-import { siteName } from "../../config";
+import config, { siteName } from "../../config";
 import { api_GetBanner } from "../../service/api/site";
 import { userInfoContext, navContext, defNavPanel } from "./context";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
@@ -144,18 +144,24 @@ Panel.defaultProps = {
 };
 
 Panel.propTypes = {
-	ImgFolder: PropTypes.arrayOf(PropTypes.object),
+	ImgFolder: PropTypes.arrayOf(PropTypes.string),
 	filterHideInHome: PropTypes.bool
 };
 
 const Autoplay = props => {
 	return (
 		<Swiper
-			spaceBetween={spaceBetween}
-			centeredSlides={centeredSlides}
-			autoplay={autoplay}
-			pagination={pagination}
-			rebuildOnUpdate={rebuildOnUpdate}>
+			spaceBetween={30}
+			centeredSlides={true}
+			autoplay={{
+				delay: 2500,
+				disableOnInteraction: false
+			}}
+			pagination={{
+				el: ".swiper-pagination",
+				clickable: true
+			}}
+			rebuildOnUpdate={true}>
 			{props.Rows}
 		</Swiper>
 	);

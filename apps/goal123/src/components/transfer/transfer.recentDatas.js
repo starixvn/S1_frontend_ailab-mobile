@@ -1,9 +1,8 @@
 import React, { useState, useContext } from "react";
+import { Link } from "@reach/router";
 import { i18nContext } from "../common/context";
 import { TransactionHistory } from "./transfer.history";
-import { number_format } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
-import { Link } from "@reach/router";
 import path from "../../path";
 
 const ReacentDatas = props => {
@@ -32,8 +31,8 @@ const ReacentDatas = props => {
 		return { startWallet, endWallet };
 	};
 
-	let hasData = props.datas && props.datas.length > 0;
-	let arr =
+	const hasData = props.datas && props.datas.length > 0;
+	const arr =
 		hasData &&
 		props.datas?.map(item => {
 			const _transferDirection = transferDirection(
@@ -60,11 +59,12 @@ const ReacentDatas = props => {
 		<>
 			<div className="btn-group">
 				<button className="orange switch" onClick={HandleOpen}>
-					{i18n["lbl_RecentTransactions"]}
+					{i18n.lbl_RecentTransactions}
 					<i
 						className={`icon icon-circle-right${
 							isOpen ? " open" : ""
-						}`}></i>
+						}`}
+					/>
 				</button>
 			</div>
 
@@ -74,13 +74,13 @@ const ReacentDatas = props => {
 						<div className="recentTransactions">
 							<div className="smallTitle">
 								<i className="icon icon-history">
-									{i18n["lbl_RecentTransactions"]}
+									{i18n.lbl_RecentTransactions}
 								</i>
 							</div>
 							<ReloadSpin func={props.GetRecentDatas} />
 						</div>
 						<div className="txt-blue2">
-							{i18n["msg_AmountFormatTip"]}
+							{i18n.msg_AmountFormatTip}
 						</div>
 						<div className="infoList">{arr}</div>
 					</div>
@@ -89,13 +89,13 @@ const ReacentDatas = props => {
 							<Link
 								to={path.transfer.sub.history.root}
 								className="orange recentBtn">
-								{i18n["lbl_AllTranscations"]}
+								{i18n.lbl_AllTranscations}
 							</Link>
 						</div>
 					) : null}
 				</>
 			) : isOpen ? (
-				<div className="not-found">{i18n["msg_NoData"]}</div>
+				<div className="not-found">{i18n.msg_NoData}</div>
 			) : null}
 		</>
 	);

@@ -1,5 +1,6 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import { Redirect } from "@reach/router";
+import PropTypes from "prop-types";
 import Inputbox from "../common/inputbox";
 import Dropdown from "../common/dropdown.icon";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
@@ -36,13 +37,15 @@ const Panel = () => {
 	const [userValue, setuserValue] = useState(_initUserValue);
 
 	const country = userInfo.country ? userInfo.country : userInfo.perCountry;
-	let _areaCode = country ? areaCode[country].AreaCode : "";
-	let _infoList = infoList({ i18n, userInfo, _areaCode });
+	const _areaCode = country ? areaCode[country].AreaCode : "";
+	const _infoList = infoList({ i18n, userInfo, _areaCode });
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -51,19 +54,19 @@ const Panel = () => {
 		}
 	}, [redirectPath]);
 
-	let yearOptions = [];
-	let dateOptions = [];
+	const yearOptions = [];
+	const dateOptions = [];
 
-	let startYear = GetYear();
-	let month = birthIdx.month ? monthOptions[birthIdx.month].value : "";
+	const startYear = GetYear();
+	const month = birthIdx.month ? monthOptions[birthIdx.month].value : "";
 
-	let _startYear = startYear - 59;
+	const _startYear = startYear - 59;
 	for (let i = startYear; i >= _startYear; i--) {
 		yearOptions.push({ value: i, id: i, displayText: i });
 	}
-	let year = birthIdx.year ? yearOptions[birthIdx.year].value : "";
+	const year = birthIdx.year ? yearOptions[birthIdx.year].value : "";
 
-	let days = GetDayOfMonth(year, month);
+	const days = GetDayOfMonth(year, month);
 	for (let i = 1; i <= days; i++) {
 		dateOptions.push({ value: i, id: i, displayText: i });
 	}
@@ -85,7 +88,7 @@ const Panel = () => {
 
 		if (val === "" || isNaN(val)) {
 			checked = false;
-			message = i18n["msg_EnterPhoneNumber"];
+			message = i18n.msg_EnterPhoneNumber;
 		} else {
 			try {
 				const res = await api_account_ExistsPhoneNo({
@@ -94,11 +97,11 @@ const Panel = () => {
 				});
 				if (res.data.errorCode === 0 && res.data.data === true) {
 					checked = false;
-					message = i18n["msg_PhoneExisted"];
+					message = i18n.msg_PhoneExisted;
 				}
 			} catch (error) {
 				checked = false;
-				message = i18n["msg_ApiServerError"];
+				message = i18n.msg_ApiServerError;
 			}
 		}
 
@@ -111,7 +114,7 @@ const Panel = () => {
 
 		if (val === "" || val === null || val === undefined) {
 			checked = false;
-			message = i18n["msg_EnterRealName"];
+			message = i18n.msg_EnterRealName;
 		}
 
 		return { checked, message };
@@ -128,17 +131,17 @@ const Panel = () => {
 
 		if (val === "" || val === null) {
 			checked = false;
-			message = i18n["msg_MailWrongFormat"];
+			message = i18n.msg_MailWrongFormat;
 		} else if (!regx.test(val)) {
 			checked = false;
-			message = i18n["msg_MailWrongFormat"];
+			message = i18n.msg_MailWrongFormat;
 		} else {
 			try {
 				const res = await api_ExistsEmail({ Email: val });
 
 				if (res.data.errorCode === 0 && res.data.data === true) {
 					checked = false;
-					message = i18n["msg_MailExisted"];
+					message = i18n.msg_MailExisted;
 				}
 			} catch (error) {
 				checked = false;
@@ -157,13 +160,13 @@ const Panel = () => {
 			return { checked, message };
 		}
 
-		let year = yearOptions[birthIdx.year]?.value;
-		let month = monthOptions[birthIdx.month]?.value;
-		let day = birthIdx.day + 1;
+		const _year = yearOptions[birthIdx.year]?.value;
+		const _month = monthOptions[birthIdx.month]?.value;
+		const day = birthIdx.day + 1;
 
-		if (!year || !month || !day) {
+		if (!_year || !_month || !day) {
 			checked = false;
-			message = i18n["msg_SelectBirthDay"];
+			message = i18n.msg_SelectBirthDay;
 		}
 
 		return { checked, message };
@@ -175,15 +178,15 @@ const Panel = () => {
 		let msg = "";
 
 		if (col === "AccountName") {
-			let result = checkAccountName(val);
+			const result = checkAccountName(val);
 			checked = result.checked;
 			msg = result.message;
 		} else if (col === "Email") {
-			let result = await checkEmail(val);
+			const result = await checkEmail(val);
 			checked = result.checked;
 			msg = result.message;
 		} else {
-			let result = await checkPhone(val);
+			const result = await checkPhone(val);
 			checked = result.checked;
 			msg = result.message;
 		}
@@ -192,7 +195,7 @@ const Panel = () => {
 			...prevState,
 			[col]: {
 				status: !checked,
-				msg: msg
+				msg
 			}
 		}));
 	};
@@ -213,17 +216,19 @@ const Panel = () => {
 	};
 
 	const checkAll = async () => {
-		return await Promise.all([
+		const result = await Promise.all([
 			checkPhone(userValue.PhoneNo),
 			checkEmail(userValue.Email)
 		]).then(
 			res => {
-				let _accountNameCheck = checkAccountName(userValue.AccountName);
-				let _phoneCheck = res[0];
-				let _emailCheck = res[1];
-				let _birthCheck = checkBirth();
+				const _accountNameCheck = checkAccountName(
+					userValue.AccountName
+				);
+				const _phoneCheck = res[0];
+				const _emailCheck = res[1];
+				const _birthCheck = checkBirth();
 
-				let checked =
+				const checked =
 					_accountNameCheck.checked &&
 					_emailCheck.checked &&
 					_phoneCheck.checked &&
@@ -256,10 +261,11 @@ const Panel = () => {
 				return false;
 			}
 		);
+		return result;
 	};
 
 	const checkSubmitHandler = async () => {
-		let checked = await checkAll();
+		const checked = await checkAll();
 
 		if (checked) {
 			const closePopbox = ({ _redirectPath }) => {
@@ -273,15 +279,15 @@ const Panel = () => {
 				setPopBox({
 					isOpen: true,
 					title: i18n.msg_Updatesuccessful,
-					content: <div>{i18n["lbl_VertifyContactConfirm"]}</div>,
+					content: <div>{i18n.lbl_VertifyContactConfirm}</div>,
 					hasBtn: true,
 					btnBar: (
 						<div className="btn-group">
 							<button className="blue" onClick={closePopbox}>
-								{i18n["lbl_Later"]}
+								{i18n.lbl_Later}
 							</button>
 							<button className="orange" onClick={clickOtp}>
-								{i18n["lbl_VerifyNow"]}
+								{i18n.lbl_VerifyNow}
 							</button>
 						</div>
 					)
@@ -289,7 +295,7 @@ const Panel = () => {
 			};
 
 			const setProfile = () => {
-				let profileData = {
+				const profileData = {
 					AccountName: userInfo.accountName ?? userValue.AccountName,
 					Birth_d: `${birthIdx.day + 1}`,
 					Birth_m: `${monthOptions[birthIdx.month]?.value}`,
@@ -303,8 +309,8 @@ const Panel = () => {
 				api_SetProfile(profileData).then(
 					response => {
 						if (isMountedRef.current) {
-							const errorCode = response.data.errorCode;
-							const message = response.data.message;
+							const { errorCode } = response.data;
+							const { message } = response.data;
 
 							if (errorCode === 0) {
 								api_GetCustProfile().then(
@@ -374,19 +380,19 @@ const Panel = () => {
 				content: (
 					<>
 						<div className="title">
-							{i18n["lbl_Hi"]} {userValue.AccountName}
+							{i18n.lbl_Hi} {userValue.AccountName}
 						</div>
-						<div>{i18n["lbl_ProfileModifyWarning"]}</div>
+						<div>{i18n.lbl_ProfileModifyWarning}</div>
 					</>
 				),
 				hasBtn: true,
 				btnBar: (
 					<div className="btn-group">
 						<button className="blue" onClick={closePopbox}>
-							{i18n["lbl_Cancel"]}
+							{i18n.lbl_Cancel}
 						</button>
 						<button className="orange" onClick={setProfile}>
-							{i18n["lbl_Submit"]}
+							{i18n.lbl_Submit}
 						</button>
 					</div>
 				)
@@ -405,11 +411,11 @@ const Panel = () => {
 		setPopBox({
 			isOpen: true,
 			popBoxType: defPopBoxType.Otp,
-			ClosePopbox: ClosePopbox
+			ClosePopbox
 		});
 	};
 
-	let arr = _infoList
+	const arr = _infoList
 		.filter(item => {
 			return (
 				userInfo[item.infoTitle] ||
@@ -417,7 +423,7 @@ const Panel = () => {
 			);
 		})
 		.map(item => {
-			let _isVerified =
+			const _isVerified =
 				item.infoTitle === "phoneNo" ? item.isVerified : null;
 
 			return (
@@ -442,7 +448,7 @@ const Panel = () => {
 					<Inputbox
 						icon="icon-member"
 						inputType="text"
-						placeholder={i18n["lbl_RealName"]}
+						placeholder={i18n.lbl_RealName}
 						onBlur={checkInputboxHandler.bind(null, "AccountName")}
 						onChange={EditField.bind(null, "AccountName")}
 						WarningIcon={warning.AccountName.status}
@@ -462,7 +468,7 @@ const Panel = () => {
 					<Inputbox
 						icon="icon-email"
 						inputType="text"
-						placeholder={i18n["lbl_Email"]}
+						placeholder={i18n.lbl_Email}
 						onBlur={checkInputboxHandler.bind(null, "Email")}
 						onChange={EditField.bind(null, "Email")}
 						WarningIcon={warning.Email.status}
@@ -488,7 +494,8 @@ const Panel = () => {
 					monthSelectedIdx={birthIdx.month}
 					daySelectedIdx={birthIdx.day}
 					Warning={warning.Birthday}
-					dropdownStateHandler={dropdownStateHandler}></Birthday>
+					dropdownStateHandler={dropdownStateHandler}
+				/>
 			) : null}
 
 			{!userInfo.phoneNo ? (
@@ -498,7 +505,7 @@ const Panel = () => {
 					<Inputbox
 						icon="icon-phone"
 						inputType="tel"
-						placeholder={i18n["lbl_Phone"]}
+						placeholder={i18n.lbl_Phone}
 						onBlur={checkInputboxHandler.bind(null, "PhoneNo")}
 						onChange={EditField.bind(null, "PhoneNo")}
 						value={userValue.PhoneNo}
@@ -520,7 +527,7 @@ const Panel = () => {
 			!userInfo.email ? (
 				<div className="btn-group">
 					<button className="orange" onClick={checkSubmitHandler}>
-						{i18n["lbl_Submit"]}
+						{i18n.lbl_Submit}
 					</button>
 				</div>
 			) : null}
@@ -565,19 +572,41 @@ const Birthday = props => {
 	);
 };
 
+Birthday.defaultProps = {
+	monthSelectedIdx: null,
+	daySelectedIdx: null,
+	yearSelectedIdx: null,
+	Warning: { status: null, msg: "" }
+};
+
+Birthday.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	monthOptions: PropTypes.arrayOf(PropTypes.object).isRequired,
+	dropdownStateHandler: PropTypes.func.isRequired,
+	monthSelectedIdx: PropTypes.number,
+	dateOptions: PropTypes.arrayOf(PropTypes.object).isRequired,
+	daySelectedIdx: PropTypes.number,
+	yearOptions: PropTypes.arrayOf(PropTypes.object).isRequired,
+	yearSelectedIdx: PropTypes.number,
+	Warning: PropTypes.shape({
+		status: PropTypes.bool,
+		msg: PropTypes.string
+	})
+};
+
 const ColumnItem = props => {
 	return (
 		<li>
 			<span className="title">
 				{props.title}
 				{props.isVerified ? (
-					<i className="icon icon-checkmark"></i>
+					<i className="icon icon-checkmark" />
 				) : null}
 			</span>
 			<span>{props.content}</span>
 			{props.infoTitle === "phoneNo" && !props.isVerified ? (
 				<button className="otpBtn" onClick={props.clickOtp}>
-					<span className="icon icon-mobile"></span>
+					<span className="icon icon-mobile" />
 					<span>{props.i18n.lbl_MobileVerify}</span>
 				</button>
 			) : null}
@@ -585,12 +614,25 @@ const ColumnItem = props => {
 	);
 };
 
+ColumnItem.defaultProps = {
+	isVerified: null
+};
+
+ColumnItem.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	title: PropTypes.string.isRequired,
+	isVerified: PropTypes.bool,
+	content: PropTypes.string.isRequired,
+	infoTitle: PropTypes.string.isRequired,
+	clickOtp: PropTypes.func.isRequired
+};
+
 const GetYear = () => {
 	return new Date().getFullYear() - 21;
 };
 
 const GetDayOfMonth = (year, month) => {
-	let d = new Date(year, month, 0);
+	const d = new Date(year, month, 0);
 	return d.getDate();
 };
 

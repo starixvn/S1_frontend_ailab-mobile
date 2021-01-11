@@ -18,12 +18,12 @@ export const isExpiry = ({
 		promotionType !== defPromotionType.cashback
 	) {
 		bonusExpiry =
-			moment(moment.unix(custExpiryTime)).isBefore(new moment()) ||
+			moment(moment.unix(custExpiryTime)).isBefore(new Date()) ||
 			(status !== promoStatus.Running &&
 				status !== promoStatus.TransferOut);
 	}
 
-	return moment(moment.unix(periodTo)).isBefore(new moment()) || bonusExpiry;
+	return moment(moment.unix(periodTo)).isBefore(new Date()) || bonusExpiry;
 };
 
 export const displayExpiryTime = ({
@@ -33,7 +33,7 @@ export const displayExpiryTime = ({
 	custExpiryTime,
 	periodTo
 }) => {
-	let expiryTime = moment.duration(
+	const expiryTime = moment.duration(
 		moment
 			.unix(
 				isJoin && status === promoStatus.Running && custExpiryTime
@@ -43,16 +43,11 @@ export const displayExpiryTime = ({
 			.diff(new Date())
 	);
 
-	let displayExpiryTime =
-		expiryTime.days() +
-		" " +
-		i18n.lbl_Days +
-		" " +
-		expiryTime.hours() +
-		" " +
-		i18n.lbl_Hours;
+	const _displayExpiryTime = `${expiryTime.days()} ${
+		i18n.lbl_Days
+	} ${expiryTime.hours()} ${i18n.lbl_Hours}`;
 
-	return expiryTime._milliseconds < 0 ? " - " : displayExpiryTime;
+	return expiryTime._milliseconds < 0 ? " - " : _displayExpiryTime;
 };
 
 export const isClaimed = ({ isJoin, status }) => {
@@ -64,7 +59,5 @@ export const isClaimed = ({ isJoin, status }) => {
 };
 
 export const isNew = ({ periodFrom }) => {
-	return moment(moment.unix(periodFrom)).isAfter(
-		new moment().add(-14, "days")
-	);
+	return moment(moment.unix(periodFrom)).isAfter(new Date().add(-14, "days"));
 };

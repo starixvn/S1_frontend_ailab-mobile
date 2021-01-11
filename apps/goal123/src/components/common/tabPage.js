@@ -51,7 +51,7 @@ IndexPage.defaultProps = {
 };
 
 IndexPage.propTypes = {
-	defTabs: PropTypes.objectOf(PropTypes.string),
+	defTabs: PropTypes.objectOf(PropTypes.object),
 	children: PropTypes.node.isRequired,
 	beforeLogin: PropTypes.bool
 };

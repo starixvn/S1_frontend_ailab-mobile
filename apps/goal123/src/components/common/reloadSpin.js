@@ -32,8 +32,12 @@ const ReloadSpin = props => {
 	);
 };
 
+ReloadSpin.defaultProps = {
+	func: null
+};
+
 ReloadSpin.propTypes = {
-	func: PropTypes.func.isRequired
+	func: PropTypes.func
 };
 
 export default ReloadSpin;

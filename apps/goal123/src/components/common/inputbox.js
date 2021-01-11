@@ -74,7 +74,7 @@ Inputbox.defaultProps = {
 	value: "",
 	inputType: "",
 	placeholder: "",
-	Warning: {},
+	Warning: { status: null, msg: "" },
 	showTips: false,
 	label: false,
 	max: null,
@@ -82,7 +82,9 @@ Inputbox.defaultProps = {
 	maxLength: null,
 	WarningIcon: null,
 	ClassName: "",
-	Tips: ""
+	Tips: "",
+	onBlur: null,
+	onFocus: null
 };
 
 Inputbox.propTypes = {
@@ -94,16 +96,19 @@ Inputbox.propTypes = {
 	]),
 	inputType: PropTypes.string,
 	placeholder: PropTypes.string,
-	onFocus: PropTypes.func.isRequired,
-	onBlur: PropTypes.func.isRequired,
+	onFocus: PropTypes.func,
+	onBlur: PropTypes.func,
 	onChange: PropTypes.func.isRequired,
-	Warning: PropTypes.objectOf(PropTypes.object),
+	Warning: PropTypes.shape({
+		status: PropTypes.bool,
+		msg: PropTypes.string
+	}),
 	showTips: PropTypes.bool,
 	label: PropTypes.bool,
 	max: PropTypes.number,
-	disabled: PropTypes.bool,
-	maxLength: PropTypes.number,
-	WarningIcon: PropTypes.objectOf(PropTypes.string),
+	disabled: PropTypes.string,
+	maxLength: PropTypes.string,
+	WarningIcon: PropTypes.bool,
 	ClassName: PropTypes.string,
 	Tips: PropTypes.string
 };

@@ -237,34 +237,6 @@ const HeaderBtn = () => {
 	}
 
 	return display;
-
-	// return redirectPath === null ? (
-	// 	userInfo?.isLogin ? (
-	// 		<>
-	// 			<HeaderInfo
-	// 				userName={userInfo?.userName}
-	// 				currency={i18n[`Currency_${userInfo.currencyId}`]}
-	// 				amount={balance}
-	// 				ClickUserName={ClickUserName}
-	// 			/>
-	// 			<ReloadSpin func={GetBalance} />
-	// 			<div className="headerButton">
-	// 				<Link to={path.message.root} className="icon icon-chat">
-	// 					{msgCount ? (
-	// 						<span className="amount">{msgCount}</span>
-	// 					) : null}
-	// 				</Link>
-	// 			</div>
-	// 		</>
-	// 	) : (
-	// 		<div className="headerButton">
-	// 			<JoinPanel />
-	// 			<LoginPanel ButtonTitle={i18n.lbl_Login} />
-	// 		</div>
-	// 	)
-	// ) : (
-	// 	<Redirect to={redirectPath} noThrow />
-	// );
 };
 
 const HeaderInfo = props => {
@@ -281,14 +253,15 @@ const HeaderInfo = props => {
 };
 
 HeaderInfo.defaultProps = {
-	amount: 0
+	amount: 0,
+	currency: ""
 };
 
 HeaderInfo.propTypes = {
 	ClickUserName: PropTypes.func.isRequired,
 	userName: PropTypes.string.isRequired,
-	currency: PropTypes.string.isRequired,
-	amount: PropTypes.number
+	currency: PropTypes.string,
+	amount: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 export default Header;

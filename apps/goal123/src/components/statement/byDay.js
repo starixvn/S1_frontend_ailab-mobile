@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { i18nContext, popBoxContext } from "Context";
 import moment from "moment";
+import { Link } from "@reach/router";
 import Dropdown from "../common/dropdown";
 import { number_format } from "../common/common";
-import { Link } from "@reach/router";
 import { Breadcrumbs } from "../common/breadcrumb";
 import { getDateRange, getSkipLink, defStatement } from "./common";
 import { api_GetCustTpBetRecordListOneDay } from "../../service/api/payment";
@@ -24,12 +24,14 @@ export default props => {
 	const _startDay = timePeriod.substr(0, timePeriod.indexOf("to"));
 	const _endDay = timePeriod.split("to").pop();
 
-	let dateRange = getDateRange({ startDate: _startDay, endDate: _endDay });
+	const dateRange = getDateRange({ startDate: _startDay, endDate: _endDay });
 	const skipLink = getSkipLink({ dateRange });
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -79,7 +81,7 @@ export default props => {
 		func_getDatas: getListByDay
 	});
 
-	let detailArr = datas?.map(data => {
+	const detailArr = datas?.map(data => {
 		return (
 			<Detail
 				key={`bet-by-day-${data.settledDate}-${data.turnOver}`}
@@ -112,9 +114,7 @@ export default props => {
 			/>
 			{datas?.length !== 0 ? (
 				<>
-					<div className="txt-blue2">
-						{i18n["msg_AmountFormatTip"]}
-					</div>
+					<div className="txt-blue2">{i18n.msg_AmountFormatTip}</div>
 					<div className="inputBox page">
 						<Dropdown
 							options={pageOptions}
@@ -130,7 +130,7 @@ export default props => {
 				</>
 			) : (
 				<div className="nodata icon icon-nodata">
-					<div className="txt-white">{i18n["msg_NoData"]}</div>
+					<div className="txt-white">{i18n.msg_NoData}</div>
 				</div>
 			)}
 		</>

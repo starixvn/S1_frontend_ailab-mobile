@@ -25,7 +25,7 @@ import {
 import { GET_LANG_ID } from "../../service/language";
 import TandC from "../../service/t_and_c";
 import path from "../../path";
-import config from "../../config";
+import { siteName } from "../../config";
 import PromoPopup from "./join.promotion";
 import Logo from "../../styles/img/logo.png";
 
@@ -109,7 +109,9 @@ const Join = () => {
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -220,7 +222,7 @@ const Join = () => {
 		return { checked, message };
 	};
 
-	const checkUsernameHandler = (colName, e) => {
+	const checkUsernameHandler = (col, e) => {
 		const val = e.target.value;
 		const result = usernameCheck(val);
 
@@ -229,7 +231,7 @@ const Join = () => {
 				setWarningState(prevState => {
 					return {
 						...prevState,
-						[colName]: {
+						[col]: {
 							status: false,
 							msg: ""
 						}
@@ -303,14 +305,14 @@ const Join = () => {
 		}
 	};
 
-	const checkPasswordHandler = (colName, e) => {
+	const checkPasswordHandler = (col, e) => {
 		const val = e.target.value;
 
 		const result = passwordCheck({ val });
 		setWarningState(prevState => {
 			return {
 				...prevState,
-				[colName]: {
+				[col]: {
 					status: !result.checked,
 					msg: i18n[result.message]
 				}
@@ -440,11 +442,11 @@ const Join = () => {
 		});
 	};
 
-	const EditField = (colName, e) => {
+	const EditField = (col, e) => {
 		const val = e.target.value;
 		setUserValueState(prevState => ({
 			...prevState,
-			[colName]: val
+			[col]: val
 		}));
 	};
 
@@ -475,13 +477,12 @@ const Join = () => {
 		const UserName = usernameCheck(userValueState.UserName);
 		const Password = passwordCheck({ val: userValueState.Password });
 		// let Email = emailCheck(userValueState.Email);
-		const Checkbox = checkboxState;
 
 		checked =
 			UserName.checked &&
 			Password.checked &&
 			// && Email.checked
-			Checkbox;
+			checkboxState;
 
 		for (const i in checklistState) {
 			if (checklistState[i] === false) {
@@ -522,17 +523,17 @@ const Join = () => {
 						const { message } = response.data;
 						if (errorCode === 0) {
 							api_GetCustProfile().then(
-								res_custInfo => {
+								res => {
 									if (isMountedRef.current) {
 										let _user = {
 											isLogin: true,
 											langId: defaultLangId,
 											userName: userValueState.UserName
 										};
-										if (res_custInfo.data.errorCode === 0) {
+										if (res.data.errorCode === 0) {
 											_user = {
 												..._user,
-												...res_custInfo.data.data
+												...res.data.data
 											};
 										}
 										setUserInfo(_user);
@@ -729,14 +730,20 @@ const Join = () => {
 					checkboxHandler={checkboxHandler}
 					id="c1">
 					{i18n.lbl_Check18TC1} &nbsp;
-					<a target="_blank" href={TandC(userInfo.langId).terms}>
+					<a
+						target="_blank"
+						rel="noreferrer"
+						href={TandC(userInfo.langId).terms}>
 						{i18n.lbl_TermsConditions}
 					</a>
 					&nbsp; {i18n.lbl_Check18TC2}&nbsp;
-					<a target="_blank" href={TandC(userInfo.langId).rule}>
+					<a
+						target="_blank"
+						rel="noreferrer"
+						href={TandC(userInfo.langId).rule}>
 						{i18n.lbl_RuleRegulations}
 					</a>
-					&nbsp; {i18n.lbl_Check18TC3}&nbsp;{config.siteName}
+					&nbsp; {i18n.lbl_Check18TC3}&nbsp;{siteName}
 					.&nbsp;
 					{i18n.lbl_Check18TC4}
 				</Checkbox>

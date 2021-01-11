@@ -45,10 +45,11 @@ const Inputbox = props => {
 
 Inputbox.defaultProps = {
 	placeholder: "",
-	Warning: {},
+	Warning: { status: null, msg: "" },
 	showTips: null,
 	ClassName: "",
-	Tips: ""
+	Tips: "",
+	onFocus: null
 };
 
 Inputbox.propTypes = {
@@ -58,10 +59,13 @@ Inputbox.propTypes = {
 	showPsw: PropTypes.bool.isRequired,
 	inputType: PropTypes.string.isRequired,
 	placeholder: PropTypes.string,
-	onFocus: PropTypes.func.isRequired,
+	onFocus: PropTypes.func,
 	onBlur: PropTypes.func.isRequired,
 	onChange: PropTypes.func.isRequired,
-	Warning: PropTypes.objectOf(PropTypes.string),
+	Warning: PropTypes.shape({
+		status: PropTypes.bool,
+		msg: PropTypes.string
+	}),
 	showTips: PropTypes.bool,
 	ClassName: PropTypes.string,
 	Tips: PropTypes.string

@@ -33,7 +33,7 @@ export class IconDropdown extends Component {
 				: this.props.i18n?.[item.displayKey];
 			return (
 				<Item
-					key={`${this.props.mainKey}-${item.displayKey}`}
+					key={`${this.props.mainKey}-${i}`}
 					displayText={displayText}
 					iconClassName={this.props.options[i].iconClassName}
 					onClick={this.SelectItem}
@@ -77,15 +77,17 @@ IconDropdown.defaultProps = {
 	options: [],
 	mainKey: "",
 	placeholder: "",
-	icon: null
+	icon: null,
+	selectedIdx: null,
+	i18n: {}
 };
 
 IconDropdown.propTypes = {
 	onSelectItem: PropTypes.func.isRequired,
 	options: PropTypes.arrayOf(PropTypes.object),
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	i18n: PropTypes.objectOf(PropTypes.string),
 	mainKey: PropTypes.string,
-	selectedIdx: PropTypes.number.isRequired,
+	selectedIdx: PropTypes.number,
 	placeholder: PropTypes.string,
 	icon: PropTypes.string
 };
@@ -102,14 +104,15 @@ const Item = props => {
 
 Item.defaultProps = {
 	iconClassName: "",
-	displayText: ""
+	displayText: "",
+	idx: null
 };
 
 Item.propTypes = {
 	onClick: PropTypes.func.isRequired,
 	iconClassName: PropTypes.string,
-	displayText: PropTypes.string,
-	idx: PropTypes.number.isRequired
+	displayText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	idx: PropTypes.number
 };
 
 export default IconDropdown;

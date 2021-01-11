@@ -1,4 +1,6 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
+import PropTypes from "prop-types";
+import { Link } from "@reach/router";
 import Logo from "../../styles/img/logo.png";
 import {
 	userInfoContext,
@@ -8,7 +10,6 @@ import {
 	navContext,
 	defNavPanel
 } from "../common/context";
-import { Link } from "@reach/router";
 import path from "../../path";
 import { api_GetWalletInfo } from "../../service/api/account";
 import { number_format } from "../common/common";
@@ -116,17 +117,17 @@ export default () => {
 		setIsOpenSubMenu([]);
 	};
 
-	let openPanel = nav === defNavPanel.subMenu;
+	const openPanel = nav === defNavPanel.subMenu;
 
 	return (
 		<div className={`submenu${openPanel ? " open" : ""}`}>
 			<div className="close open" onClick={closeNavPanel}>
-				<span></span>
-				<span></span>
-				<span></span>
-				<span></span>
-				<span></span>
-				<span></span>
+				<span />
+				<span />
+				<span />
+				<span />
+				<span />
+				<span />
 			</div>
 			<img src={Logo} alt="Goal123" />
 			{userInfo.isLogin ? (
@@ -167,12 +168,12 @@ const SubMenuList = ({
 		});
 	};
 
-	let rows = defSubMenus.map(s => {
-		let key = `submenu-${s.displayKey}`;
+	const rows = defSubMenus.map(s => {
+		const key = `submenu-${s.displayKey}`;
 		let hasSubItem = false;
 		let _subItems = null;
 		if (s.subItems) {
-			let subItemContent = s.subItems?.map(c => {
+			const subItemContent = s.subItems?.map(c => {
 				return (
 					<li
 						key={`${key}-${c.displayKey}`}
@@ -187,13 +188,14 @@ const SubMenuList = ({
 
 			hasSubItem = subItemContent.length > 0;
 			if (hasSubItem) {
-				let isOpen = isOpenSubMenu.includes(s.displayKey);
+				const isOpen = isOpenSubMenu.includes(s.displayKey);
 				_subItems = (
 					<>
 						<i
 							className={`icon icon-keyboard_arrow_right1${
 								isOpen ? " open" : ""
-							}`}></i>
+							}`}
+						/>
 						<ul className={isOpen ? "open" : ""}>
 							{subItemContent}
 						</ul>
@@ -213,27 +215,39 @@ const SubMenuList = ({
 					{_subItems}
 				</Link>
 			);
-		} else {
-			return hasSubItem ? (
-				<div
-					key={key}
-					onClick={handleSubMenu.bind(this, s.displayKey)}
-					className={s.icon}>
-					{i18n[s.displayKey]?.toUpperCase() ?? s.displayKey}
-					{_subItems}
-				</div>
-			) : (
-				<button
-					key={key}
-					onClick={clickGame.bind(this, s)}
-					className={s.icon}>
-					{i18n[s.displayKey]?.toUpperCase() ?? s.displayKey}
-				</button>
-			);
 		}
+		return hasSubItem ? (
+			<div
+				key={key}
+				onClick={handleSubMenu.bind(this, s.displayKey)}
+				className={s.icon}>
+				{i18n[s.displayKey]?.toUpperCase() ?? s.displayKey}
+				{_subItems}
+			</div>
+		) : (
+			<button
+				key={key}
+				onClick={clickGame.bind(this, s)}
+				className={s.icon}>
+				{i18n[s.displayKey]?.toUpperCase() ?? s.displayKey}
+			</button>
+		);
 	});
 
 	return <div className="side-nav">{rows}</div>;
+};
+
+SubMenuList.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	userInfo: PropTypes.shape({
+		isLogin: PropTypes.bool,
+		currencyId: PropTypes.number,
+		langId: PropTypes.string
+	}).isRequired,
+	setNav: PropTypes.func.isRequired,
+	closeNavPanel: PropTypes.func.isRequired,
+	handleSubMenu: PropTypes.func.isRequired,
+	isOpenSubMenu: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 const WalletInfo = ({ i18n, userInfo }) => {
@@ -245,7 +259,9 @@ const WalletInfo = ({ i18n, userInfo }) => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	const GetBalance = () => {
@@ -256,10 +272,10 @@ const WalletInfo = ({ i18n, userInfo }) => {
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
-							let _data = res.data.data;
-							let mainWalletBalance = _data.balance;
+							const _data = res.data.data;
+							const mainWalletBalance = _data.balance;
 
-							let otherWalletBalance = _data.tpWallets?.reduce(
+							const otherWalletBalance = _data.tpWallets?.reduce(
 								(prev, curr) => {
 									return prev + curr.balance;
 								},
@@ -295,7 +311,7 @@ const WalletInfo = ({ i18n, userInfo }) => {
 		}
 	};
 
-	let balance = !walletInfo.allBalance
+	const balance = !walletInfo.allBalance
 		? 0
 		: number_format(walletInfo.allBalance, false);
 
@@ -311,4 +327,13 @@ const WalletInfo = ({ i18n, userInfo }) => {
 			</div>
 		</div>
 	);
+};
+
+WalletInfo.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	userInfo: PropTypes.shape({
+		isLogin: PropTypes.bool,
+		currencyId: PropTypes.number,
+		langId: PropTypes.string
+	}).isRequired
 };

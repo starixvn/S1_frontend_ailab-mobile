@@ -1,10 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
+import moment from "moment";
 import no1 from "../../styles/img/first.png";
 import no2 from "../../styles/img/second.png";
 import no3 from "../../styles/img/third.png";
 import nbadge from "../../styles/img/nbadge.png";
 import { number_format } from "../common/common";
-import moment from "moment";
 
 export const RankImg = ({ Ranking }) => {
 	let img = <img src={nbadge} alt="gold" />;
@@ -28,12 +29,23 @@ const RankItem = ({ Ranking, userName, turnover, isCurrentUser }) => {
 	);
 };
 
+RankItem.defaultProps = {
+	isCurrentUser: null
+};
+
+RankItem.propTypes = {
+	Ranking: PropTypes.objectOf(PropTypes.string).isRequired,
+	userName: PropTypes.string.isRequired,
+	turnover: PropTypes.number.isRequired,
+	isCurrentUser: PropTypes.bool
+};
+
 const RankItems = ({ datas }) =>
 	datas?.map((data, idx) => {
 		const { userName, wTurnover, rank } = data;
 		return (
 			<RankItem
-				key={`rank-${idx}-${userName}-${wTurnover}`}
+				key={`rank-${userName}-${wTurnover}`}
 				Ranking={rank ?? idx + 1}
 				userName={userName}
 				turnover={wTurnover}
@@ -67,6 +79,18 @@ const RankList = ({ loading, i18n = {}, datas, lastUpdTime }) => {
 			</div>
 		</>
 	);
+};
+
+RankList.defaultProps = {
+	loading: null,
+	datas: []
+};
+
+RankList.propTypes = {
+	loading: PropTypes.bool,
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	datas: PropTypes.arrayOf(PropTypes.object),
+	lastUpdTime: PropTypes.string.isRequired
 };
 
 export default RankList;

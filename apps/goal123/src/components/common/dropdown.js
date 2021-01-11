@@ -102,13 +102,14 @@ const Item = props => {
 };
 
 Item.defaultProps = {
-	displayText: ""
+	displayText: "",
+	idx: null
 };
 
 Item.propTypes = {
 	onClick: PropTypes.func.isRequired,
-	displayText: PropTypes.string,
-	idx: PropTypes.number.isRequired
+	displayText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	idx: PropTypes.number
 };
 
 export default DropdownBox;

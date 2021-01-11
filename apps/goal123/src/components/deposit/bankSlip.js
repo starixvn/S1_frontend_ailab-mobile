@@ -1,10 +1,11 @@
 import React, { useContext, Component, useEffect, useRef } from "react";
+import moment from "moment";
+import PropTypes from "prop-types";
 import {
 	bankSlipPopBoxContext,
 	i18nContext,
 	popBoxContext
 } from "../common/context";
-import moment from "moment";
 import ClipboardJS from "../../lib/clipboard.min";
 import {
 	api_UploadReceipt,
@@ -12,12 +13,12 @@ import {
 } from "../../service/api/payment";
 
 const GetUploadFileName = files => {
-	let fullPath = files[0].name;
-	var startIndex =
+	const fullPath = files[0].name;
+	const startIndex =
 		fullPath.indexOf("\\") >= 0
 			? fullPath.lastIndexOf("\\")
 			: fullPath.lastIndexOf("/");
-	var filename = fullPath.substring(startIndex);
+	let filename = fullPath.substring(startIndex);
 	if (filename.indexOf("\\") === 0 || filename.indexOf("/") === 0) {
 		filename = filename.substring(1);
 	}
@@ -25,9 +26,15 @@ const GetUploadFileName = files => {
 };
 
 class Modal extends Component {
-	state = { processing: false };
-	isMountedRef = false;
 	filebox = React.createRef();
+
+	isMountedRef = false;
+
+	constructor(props) {
+		super(props);
+		this.state = { processing: false };
+	}
+
 	componentDidMount() {
 		/* eslint-disable */
 		this.isMountedRef = true;
@@ -36,30 +43,29 @@ class Modal extends Component {
 		this._clipboard.on("error", e => {});
 		/* eslint-enable */
 	}
+
 	componentWillUnmount() {
 		this.isMountedRef = false;
 		this._clipboard.destroy();
 	}
+
 	onCheckUpload = () => {
-		let files = this.filebox.current.files;
+		const { files } = this.filebox.current;
 		if (files[0]) {
-			this.setState({
-				UploadDisabled: files.length <= 0
-			});
 			this.props.EditField("picFileName", GetUploadFileName(files));
 		}
 	};
+
 	onUploadFile = () => {
-		let files = this.filebox.current.files;
+		const { files } = this.filebox.current;
 		if (files.length > 0) {
-			this.setState({ UploadDisabled: false });
-			let formData = new FormData();
+			const formData = new FormData();
 			formData.append("TransId", this.props.bankSlipPopBox.transId);
 			formData.append("Receipt", files[0]);
 			api_UploadReceipt(formData).then(
 				response => {
 					if (this.isMountedRef) {
-						let result = response.data;
+						const result = response.data;
 						if (result.errorCode === 0) {
 							alert(this.props.i18n.lbl_UploadSuccess);
 						} else {
@@ -77,17 +83,17 @@ class Modal extends Component {
 					}
 				}
 			);
-		} else {
-			this.setState({ UploadDisabled: true });
 		}
 	};
+
 	EditField = (column, e) => {
 		this.props.EditField(column, e.target.value);
 	};
+
 	SeReceipt = () => {
 		if (!this.state.processing) {
 			this.setState({ processing: true });
-			let bankSlipPopBox = this.props.bankSlipPopBox;
+			const { bankSlipPopBox } = this.props;
 			api_SetDepositReceipt(
 				bankSlipPopBox.transId,
 				moment(bankSlipPopBox.depositTime).unix(),
@@ -118,9 +124,10 @@ class Modal extends Component {
 			);
 		}
 	};
+
 	render() {
-		let bankSlipPopBox = this.props.bankSlipPopBox;
-		let i18n = this.props.i18n;
+		const { bankSlipPopBox } = this.props;
+		const { i18n } = this.props;
 		return (
 			<div
 				className={`bankSlip popUp${
@@ -130,14 +137,15 @@ class Modal extends Component {
 					<ul>
 						<li>
 							<div>
-								<div className="bankLogo acb"></div>
+								<div className="bankLogo acb" />
 								<span>{bankSlipPopBox.bankName}</span>
 							</div>
 							<a
 								className="icon icon-new-tab clickBtn"
 								target="_blank"
 								rel="noreferrer noopener"
-								href={bankSlipPopBox.bankSite}></a>
+								href={bankSlipPopBox.bankSite}
+							/>
 						</li>
 						<li>
 							<div>
@@ -148,9 +156,8 @@ class Modal extends Component {
 							</div>
 							<button
 								className="icon icon-files-empty clickBtn copyBtn"
-								data-clipboard-text={
-									bankSlipPopBox.accountName
-								}></button>
+								data-clipboard-text={bankSlipPopBox.accountName}
+							/>
 						</li>
 						<li>
 							<div>
@@ -161,9 +168,8 @@ class Modal extends Component {
 							</div>
 							<button
 								className="icon icon-files-empty clickBtn copyBtn"
-								data-clipboard-text={
-									bankSlipPopBox.accountNo
-								}></button>
+								data-clipboard-text={bankSlipPopBox.accountNo}
+							/>
 						</li>
 						<li>
 							<div>
@@ -174,9 +180,8 @@ class Modal extends Component {
 							</div>
 							<button
 								className="icon icon-files-empty clickBtn copyBtn"
-								data-clipboard-text={
-									bankSlipPopBox.amount
-								}></button>
+								data-clipboard-text={bankSlipPopBox.amount}
+							/>
 						</li>
 					</ul>
 				</div>
@@ -189,7 +194,7 @@ class Modal extends Component {
 							accept="image/*"
 							onChange={this.onCheckUpload}
 						/>
-						<i className="icon icon-folder-upload"></i>
+						<i className="icon icon-folder-upload" />
 						{` ${
 							this.props.bankSlipPopBox.picFileName ??
 							i18n.msg_SelectFile
@@ -204,7 +209,7 @@ class Modal extends Component {
 					<span className="text-org">({moment().format("Z")})</span>
 				</span>
 				<div className="inputBox">
-					<i className="icon icon-calendar"></i>
+					<i className="icon icon-calendar" />
 					<input
 						placeholder={i18n.msg_SubmitDepositTime}
 						type="datetime-local"
@@ -214,7 +219,7 @@ class Modal extends Component {
 				</div>
 				<span className="text">{i18n.lbl_RefnoToolTip}</span>
 				<div className="inputBox">
-					<i className="icon icon-pencil"></i>
+					<i className="icon icon-pencil" />
 					<input
 						placeholder={i18n.msg_ReferenceNumber}
 						value={this.props.bankSlipPopBox.refId ?? ""}
@@ -238,6 +243,14 @@ class Modal extends Component {
 	}
 }
 
+Modal.propTypes = {
+	EditField: PropTypes.func.isRequired,
+	bankSlipPopBox: PropTypes.objectOf(PropTypes.string).isRequired,
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	setPopBox: PropTypes.func.isRequired,
+	handlePopBox: PropTypes.func.isRequired
+};
+
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -248,7 +261,9 @@ const Panel = () => {
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	const handlePopBox = () => {

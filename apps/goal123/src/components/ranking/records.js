@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import PropTypes from "prop-types";
 import RankList from "./rankList";
 import { useGetRanking, useHandleSelectDay } from "./hook";
 import { defDayBtns } from "./def";
@@ -35,6 +36,16 @@ const Records = ({ isOpen, i18n, userInfo: { isLogin, userName } }) => {
 			/>
 		</div>
 	);
+};
+
+Records.defaultProps = {
+	isOpen: null
+};
+
+Records.propTypes = {
+	isOpen: PropTypes.bool,
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	userInfo: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
 export default Records;

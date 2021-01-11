@@ -1,10 +1,13 @@
+/* eslint-disable global-require */
+/* eslint-disable import/no-dynamic-require */
 import { GET_LANG_ID } from "../service/language";
 import { siteInfo } from "../config";
+
 export const langList = ["en", "vn"];
 export const defaultLang = siteInfo().siteDefaultLang;
 
 export default lang => {
-	let _lang = lang ? lang : GET_LANG_ID();
+	let _lang = lang || GET_LANG_ID();
 	if (!langList.includes(_lang)) {
 		_lang = defaultLang;
 	}
@@ -13,8 +16,9 @@ export default lang => {
 };
 
 export const ReplaceStr = (str, patterns) => {
+	let result = str;
 	Object.keys(patterns).forEach(p => {
-		str = str.replace(`{{${p}}}`, patterns[p]);
+		result = result.replace(`{{${p}}}`, patterns[p]);
 	});
 
 	return str;

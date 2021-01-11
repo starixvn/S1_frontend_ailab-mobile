@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
+import { Redirect } from "@reach/router";
 import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
 import { api_UploadCustPhotoId } from "../../service/api/accountStrict";
 import { api_GetCustBankInfo } from "../../service/api/account";
 import { api_KycCheck } from "../../service/api/payment";
-import { Redirect } from "@reach/router";
 import path from "../../path";
 import Loading from "../common/loading";
 
@@ -19,7 +19,9 @@ export default () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -37,7 +39,7 @@ export default () => {
 	useEffect(() => {
 		if (userInfo.isLogin) {
 			const CheckBankInfo = async () => {
-				let result = await api_GetCustBankInfo().then(res => {
+				const result = await api_GetCustBankInfo().then(res => {
 					let hasBankInfo = false;
 					if (res.data.errorCode === 0) {
 						if (res.data.data?.bankInfoDetail) {
@@ -77,7 +79,7 @@ export default () => {
 	}, [userInfo.isLogin]);
 
 	const onChangeUpload = e => {
-		let newFile = e.target.files[0];
+		const newFile = e.target.files[0];
 		setFile(newFile);
 	};
 
@@ -86,12 +88,12 @@ export default () => {
 
 		if (file !== null && !processing) {
 			setProcessing(true);
-			let formData = new FormData();
+			const formData = new FormData();
 			formData.append("PhotoId", file);
 			api_UploadCustPhotoId(formData).then(
 				response => {
 					if (isMountedRef.current) {
-						let res = response.data;
+						const res = response.data;
 						if (res.errorCode === 0) {
 							setRedirectPath(`/${path.kycWaiting.root}`);
 						} else {
@@ -128,11 +130,11 @@ export default () => {
 		<>
 			<div className="step">
 				<div className="stepLine">
-					<div></div>
+					<div />
 				</div>
 				<div className="circle">
 					<div>
-						<div className="icon icon-checkmark"></div>
+						<div className="icon icon-checkmark" />
 					</div>
 				</div>
 				<div className="circle">
@@ -149,7 +151,7 @@ export default () => {
 						accept="image/*"
 						onChange={onChangeUpload}
 					/>
-					<i className="icon icon-folder-upload"></i>{" "}
+					<i className="icon icon-folder-upload" />{" "}
 					{`${file ? file.name : i18n.msg_SelectFile}`}
 				</label>
 				<button className="orange" onClick={onUploadFile}>
