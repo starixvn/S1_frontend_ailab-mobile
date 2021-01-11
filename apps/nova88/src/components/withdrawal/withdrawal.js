@@ -394,7 +394,7 @@ const Panel = () => {
 	};
 
 	const SelectBank = b => {
-		if (b.sysId !== selBank?.sysId) {
+		if (b.sysId !== selBank?.sysId || b.accountNo !== selBank?.accountNo) {
 			setSelBank(b);
 		}
 	};
@@ -470,8 +470,13 @@ const Panel = () => {
 	const banks = bankInfo?.bankList?.map(b => {
 		return (
 			<button
-				className={selBank?.sysId === b.sysId ? "open" : ""}
-				key={`withdrawal-bank-${b.sysId}`}
+				className={
+					selBank?.sysId === b.sysId &&
+					selBank?.accountNo === b.accountNo
+						? "open"
+						: ""
+				}
+				key={`withdrawal-bank-${b.sysId}-${b.accountNo}`}
 				onClick={SelectBank.bind(this, b)}>
 				<img
 					src={`${config.imgUrl}/common/images/BankLogo/${b.bankLogo}`}

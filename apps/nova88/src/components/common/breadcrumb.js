@@ -92,7 +92,7 @@ Breadcrumbs.defaultProps = {
 	skipLink: [],
 	locationInfo: {},
 	i18n: {},
-	customDisplayKey: {},
+	customDisplayKey: "",
 	mainKey: ""
 };
 
@@ -102,7 +102,7 @@ Breadcrumbs.propTypes = {
 	locationInfo: PropTypes.objectOf(PropTypes.any),
 	skipLink: PropTypes.arrayOf(PropTypes.string),
 	i18n: PropTypes.objectOf(PropTypes.any),
-	customDisplayKey: PropTypes.string
+	customDisplayKey: PropTypes.objectOf(PropTypes.any)
 };
 
 export default Breadcrumbs;

@@ -83,7 +83,7 @@ Inputbox.propTypes = {
 	tip: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	Tips: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	disabled: PropTypes.bool,
-	max: PropTypes.number
+	max: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 export default Inputbox;
