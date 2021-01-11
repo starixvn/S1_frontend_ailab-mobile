@@ -58,7 +58,10 @@
     "react/jsx-no-bind": ["warn"],
     "react/jsx-curly-newline":"off",
     "no-param-reassign": ["error", { "props": false }],
-    "consistent-return": ["error", { "treatUndefinedAsUnspecified": true }]
+    "consistent-return": ["error", { "treatUndefinedAsUnspecified": true }],
+    "react/no-array-index-key":["warn"],
+    "react/prop-types":["warn"],
+    "react/no-did-update-set-state":["warn"]
   },
   "overrides": [
     {
