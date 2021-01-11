@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import PropTypes from "prop-types";
 import Slider from "../components/casino/slider";
 import defNav from "../components/casino/defNav";
 import Nav from "../components/casino/nav";
@@ -37,13 +36,13 @@ class Panel extends React.Component {
 				gameType: { idx: 0, value: null }
 			},
 			favorite: [],
-			selNav: Object.keys(defNav)?.[0]
+			selNav: Object.keys(defNav)?.[0],
+			imgUrl: ""
 		};
 	}
 
 	componentDidMount() {
 		this.mounted = true;
-		const { userInfo } = this.props;
 
 		window.addEventListener("mousewheel", this.ScrollBarListener, false);
 		window.addEventListener("touchmove", this.ScrollBarListener, {
@@ -54,7 +53,7 @@ class Panel extends React.Component {
 				const _tpList = {};
 				const games = [];
 
-				const { providerList } = res.data.data;
+				const { imgUrl, providerList } = res.data.data;
 				providerList?.forEach(t => {
 					_tpList[t.value] = { ...t };
 					if (t.gameList?.data) {
@@ -84,7 +83,8 @@ class Panel extends React.Component {
 						{
 							tpList: _tpList,
 							gameDatas: games,
-							selNav: nav
+							selNav: nav,
+							imgUrl
 						},
 						() => {
 							this.SetMoreItems();
@@ -94,47 +94,7 @@ class Panel extends React.Component {
 			}
 		});
 
-		ScrollBarListener = () => {
-			const windowHeight =
-				window.innerHeight ||
-				document.documentElement.clientHeight ||
-				document.body.clientHeight;
-
-			const windowScrollTop =
-				document.body.scrollTop ||
-				window.pageYOffset ||
-				document.documentElement.scrollTop;
-
-			const { body } = document;
-			const html = document.documentElement;
-
-			const documentHeight =
-				Math.max(
-					body.scrollHeight,
-					body.offsetHeight,
-					html.clientHeight,
-					html.scrollHeight,
-					html.offsetHeight
-				) * 0.8;
-
-			if (
-				!this.trigger &&
-				windowHeight + windowScrollTop >= documentHeight
-			) {
-				this.trigger = true;
-				this.SetMoreItems();
-			}
-		};
-
-		componentWillUnmount = () => {
-			this.mounted = false;
-			window.removeEventListener("mousewheel", this.ScrollBarListener);
-			window.removeEventListener("touchmove", this.ScrollBarListener, {
-				passive: false
-			});
-		};
-
-		if (userInfo[isLogin]) {
+		if (this.props.userInfo.isLogin) {
 			api_GetFavoriteGame().then(res => {
 				if (res.data.errorCode === 0 && res.data.data) {
 					const fav = res.data.data.map(f => {
@@ -148,32 +108,68 @@ class Panel extends React.Component {
 		}
 	}
 
-	SetFavorite = (tpId, gameId) => {
-		const { userInfo } = this.props;
-		const { favorite, selNav, displayGames: _displayGames } = this.state;
+	componentWillUnmount = () => {
+		this.mounted = false;
+		window.removeEventListener("mousewheel", this.ScrollBarListener);
+		window.removeEventListener("touchmove", this.ScrollBarListener, {
+			passive: false
+		});
+	};
 
+	ScrollBarListener = () => {
+		const window_height =
+			window.innerHeight ||
+			document.documentElement.clientHeight ||
+			document.body.clientHeight;
+
+		const window_scrollTop =
+			document.body.scrollTop ||
+			window.pageYOffset ||
+			document.documentElement.scrollTop;
+
+		const { body } = document;
+		const html = document.documentElement;
+
+		const document_height =
+			Math.max(
+				body.scrollHeight,
+				body.offsetHeight,
+				html.clientHeight,
+				html.scrollHeight,
+				html.offsetHeight
+			) * 0.8;
+
+		if (
+			!this.trigger &&
+			window_height + window_scrollTop >= document_height
+		) {
+			this.trigger = true;
+			this.SetMoreItems();
+		}
+	};
+
+	SetFavorite = (tpId, gameId) => {
 		const key = `${tpId}_${gameId}`;
-		const isRemove = tfavorite?.includes(key);
+		const isRemove = this.state.favorite?.includes(key);
 		const newFav = isRemove
-			? favorite?.filter(f => f !== key)
-			: [...favorite, key];
+			? this.state.favorite?.filter(f => f !== key)
+			: [...this.state.favorite, key];
 		const displayGames =
-			isRemove && selNav === defNav.FAVOURITE.key
-				? _displayGames.filter(
+			isRemove && this.state.selNav === defNav.FAVOURITE.key
+				? this.state.displayGames.filter(
 						g => !(g.tpId === tpId && g.gameId === gameId)
 				  )
-				: _displayGames;
+				: this.state.displayGames;
 		if (this.mounted) {
 			this.setState({ favorite: newFav, displayGames });
 		}
-		if (userInfo[isLogin]) {
+		if (this.props.userInfo.isLogin) {
 			api_SetFavoriteGame(tpId, gameId, isRemove);
 		}
 	};
 
 	SelectNav = navKey => {
-		const { selNav } = this.state;
-		if (selNav !== navKey) {
+		if (this.state.selNav !== navKey) {
 			this.setState(
 				{
 					selNav: navKey,
@@ -195,8 +191,7 @@ class Panel extends React.Component {
 	};
 
 	SelectGame = (tpId, gameInfo) => {
-		const { selGameInfo } = this.state;
-		if (selGameInfo === null && this.mounted) {
+		if (this.state.selGameInfo === null && this.mounted) {
 			this.setState({
 				selGameInfo: { tpId, ...gameInfo }
 			});
@@ -204,10 +199,11 @@ class Panel extends React.Component {
 	};
 
 	EditSearchField = (colName, v) => {
-		const { searchInfo } = this.state;
-		if (JSON.stringify(searchInfo[colName]) !== JSON.stringify(v)) {
+		if (
+			JSON.stringify(this.state.searchInfo[colName]) !== JSON.stringify(v)
+		) {
 			const newData = {
-				...searchInfo,
+				...this.state.searchInfo,
 				[colName]: v
 			};
 
@@ -237,9 +233,8 @@ class Panel extends React.Component {
 	};
 
 	FilterGames = (_searchInfo, _nav, initGameDatas, initTpList) => {
-		const { gameDatas, tpList, favorite } = this.state;
-		const _gameDatas = initGameDatas ?? gameDatas;
-		const _tpList = initTpList ?? tpList;
+		const _gameDatas = initGameDatas ?? this.state.gameDatas;
+		const _tpList = initTpList ?? this.state.tpList;
 		const tpId = _searchInfo.provider.value;
 		const gameCategory = _searchInfo.gameType.value;
 		const { searchText } = _searchInfo;
@@ -250,7 +245,7 @@ class Panel extends React.Component {
 				(_nav === defNav.PROMO.key && g.promotion === 1) ||
 				(_nav === defNav.FEATURED.key && g.featured === true) ||
 				(_nav === defNav.FAVOURITE.key &&
-					favorite.includes(`${_tpId}_${g.gameId}`)) ||
+					this.state.favorite.includes(`${_tpId}_${g.gameId}`)) ||
 				_nav === defNav.ALLGAMES.key;
 			return (
 				matchNav &&
@@ -268,28 +263,23 @@ class Panel extends React.Component {
 	};
 
 	ClickPlay = freePlay => {
-		const { userInfo } = this.props;
-		const { selGameInfo, setNav } = this.state;
-		if (userInfo.isLogin) {
+		if (this.props.userInfo.isLogin) {
 			GET_CASINO_ENTER_PAGE(
-				selGameInfo.tpId,
-				selGameInfo.gameId,
+				this.state.selGameInfo.tpId,
+				this.state.selGameInfo.gameId,
 				freePlay,
-				userInfo.langId
+				this.props.userInfo.langId
 			);
 		} else {
-			setNav(defNavPanel.login);
+			this.props.setNav(defNavPanel.login);
 		}
 	};
 
 	SetMoreItems = () => {
-		const {
-			searchInfo: _searchInfo,
-			setNav: _selNav,
-			gameDatas: initGameDatas,
-			tpList: initTpList
-		} = this.state;
-
+		const _searchInfo = this.state.searchInfo;
+		const _selNav = this.state.selNav;
+		const initGameDatas = this.state.gameDatas;
+		const initTpList = this.state.tpList;
 		const s = this.state;
 		if (s.hasMore) {
 			const _gameDatas = this.FilterGames(
@@ -310,13 +300,13 @@ class Panel extends React.Component {
 			}
 
 			if (newItem.length !== 0 && this.mounted) {
-				const newCount = s.displayedCount + newItem.length;
+				const new_count = s.displayedCount + newItem.length;
 				if (this.mounted) {
 					const displayGames = s.displayGames ?? [];
 					this.setState({
 						displayGames: [...displayGames, ...newItem],
-						hasMore: newCount < _gameDatas?.length,
-						displayedCount: newCount
+						hasMore: new_count < _gameDatas?.length,
+						displayedCount: new_count
 					});
 				}
 			} else if (this.mounted) {
@@ -337,62 +327,50 @@ class Panel extends React.Component {
 	};
 
 	render() {
-		const {
-			selNav,
-			tpList,
-			searchInfo,
-			displayGames,
-			favorite,
-			imgUrl,
-			selGameInfo
-		} = this.stste;
-		const { userInfo, i18n, tpId } = this.props;
 		return (
 			<>
 				<Slider />
-				<Nav selNav={selNav} SelectNav={this.SelectNav} />
+				<Nav selNav={this.state.selNav} SelectNav={this.SelectNav} />
 				<SearchBox
-					TpList={tpList}
-					provider={searchInfo.provider}
-					providerList={searchInfo.providerList}
-					searchText={searchInfo.searchText}
-					gameType={searchInfo.gameType}
+					TpList={this.state.tpList}
+					{...this.state.searchInfo}
 					EditSearchField={this.EditSearchField}
-					DefaultProvider={tpId}
+					DefaultProvider={this.props.tpId}
 				/>
 
 				<Games
 					SelectGame={this.SelectGame}
-					Games={displayGames}
-					Favorite={favorite}
+					Games={this.state.displayGames}
+					Favorite={this.state.favorite}
 					SetFavorite={this.SetFavorite}
-					TpList={tpList}
-					i18n={i18n}
-					imgUrl={imgUrl}
+					TpList={this.state.tpList}
+					i18n={this.props.i18n}
+					imgUrl={this.state.imgUrl}
 				/>
 
-				{selGameInfo === null ? null : (
+				{this.state.selGameInfo === null ? null : (
 					<div className="slotFunction open">
 						<div className="title text-org">
-							{selGameInfo.name[userInfo.langId] ??
-								selGameInfo.name.en}
+							{this.state.selGameInfo.name[
+								this.props.userInfo.langId
+							] ?? this.state.selGameInfo.name.en}
 						</div>
 						<button
 							className="icon icon-cancel-circle"
 							onClick={this.CloseSelGame}
 						/>
 						<div className="btn-group">
-							{selGameInfo.playFree ? (
+							{this.state.selGameInfo.playFree ? (
 								<button
 									className="white"
 									onClick={this.ClickPlay.bind(this, true)}>
-									{i18n.lbl_Free}
+									{this.props.i18n.lbl_Free}
 								</button>
 							) : null}
 							<button
 								className="orange"
 								onClick={this.ClickPlay.bind(this, false)}>
-								{i18n.lbl_PlayNow}
+								{this.props.i18n.lbl_PlayNow}
 							</button>
 						</div>
 					</div>
@@ -402,37 +380,16 @@ class Panel extends React.Component {
 	}
 }
 
-Panel.defaultProps = {
-	tpId: 0
-};
-
-Panel.propTypes = {
-	userInfo: PropTypes.objectOf(PropTypes.object).isRequired,
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	tpId: PropTypes.number
-};
-
 const IndexPage = props => {
 	const { i18n } = useContext(i18nContext);
 	const { setNav } = useContext(navContext);
 	const { userInfo } = useContext(userInfoContext);
-	const { tpId: _tpId, location } = props;
 
-	let tpId = _tpId ?? location.state?.tpId;
+	let tpId = props.tpId ?? props.location.state?.tpId;
 	tpId = typeof tpId === "string" && !isNaN(tpId) ? Number(tpId) : tpId;
 	return (
 		<Panel i18n={i18n} userInfo={userInfo} setNav={setNav} tpId={tpId} />
 	);
-};
-
-IndexPage.defaultProps = {
-	tpId: 0,
-	location: {}
-};
-
-IndexPage.propTypes = {
-	tpId: PropTypes.number,
-	location: PropTypes.objectOf(PropTypes.object)
 };
 
 export default IndexPage;
