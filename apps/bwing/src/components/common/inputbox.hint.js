@@ -41,28 +41,13 @@ const Inputbox = ({
 const IptStatus = ({ btnStatus }) => {
 	switch (btnStatus) {
 		case defIptStatus.verified:
-			return <span className="icon icon-checkmark textGreen"></span>;
+			return <span className="icon icon-checkmark textGreen" />;
 
 		case defIptStatus.warning:
-			return <span className="icon icon-cross textRed"></span>;
+			return <span className="icon icon-cross textRed" />;
 		default:
 			return null;
 	}
-};
-
-Inputbox.propTypes = {
-	title: PropTypes.string.isRequired,
-	value: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.number,
-		PropTypes.object
-	]),
-	onChange: PropTypes.func.isRequired,
-	showTips: PropTypes.bool,
-	tipDisplayText: PropTypes.string,
-	inputType: PropTypes.string,
-	btnStatus: PropTypes.string,
-	numberConvert: PropTypes.bool
 };
 
 export default Inputbox;

@@ -124,18 +124,18 @@ export default ({ i18n, userInfo }) => {
 	const ClickGame = (tpId, gameId, betType) => {
 		GET_ENTER_PAGE({
 			langId: userInfo.langId,
-			tpId: tpId,
-			gameId: gameId,
+			tpId,
+			gameId,
 			isLogin: userInfo.isLogin,
-			betType: betType,
+			betType,
 			loginCallback: () => {
 				setNav(defNavPanel.login);
 			}
 		});
 	};
 
-	let rows = defGameList.map(g => {
-		let displayText = i18n[g.displayKey] ?? g.displayKey;
+	const rows = defGameList.map(g => {
+		const displayText = i18n[g.displayKey] ?? g.displayKey;
 		return (
 			<div
 				className="gameArea-box"

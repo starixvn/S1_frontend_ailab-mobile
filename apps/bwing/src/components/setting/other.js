@@ -6,9 +6,9 @@ import { siteInfo } from "../../config";
 export default () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
-	let _siteInfo = siteInfo();
+	const _siteInfo = siteInfo();
 
-	let socialMedia =
+	const socialMedia =
 		_siteInfo.socialMedia &&
 		Object.values(_siteInfo.socialMedia).map(v => {
 			return (

@@ -27,7 +27,9 @@ export default () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -66,7 +68,7 @@ export default () => {
 		api_GetBalnace().then(
 			res => {
 				if (res.data.errorCode === 0) {
-					let data = res.data.data;
+					const { data } = res.data;
 					if (data !== null) {
 						if (isMountedRef.current) {
 							setWalletInfo(prevState => ({
@@ -90,7 +92,7 @@ export default () => {
 
 		api_account_GetCustBonusWallet().then(res => {
 			if (res.data.errorCode === 0 && isMountedRef.current) {
-				let result = {};
+				const result = {};
 				res.data.data.forEach(b => {
 					if (result.tpId) {
 						result[b.tpId].push({
@@ -109,14 +111,14 @@ export default () => {
 		api_account_GetTpWalletBalance({ TpId: tpId }).then(
 			res => {
 				if (res.data.errorCode === 0) {
-					let _datas = res.data.data;
-					let tpWalletData = {
+					const _datas = res.data.data;
+					const tpWalletData = {
 						id: _datas.tpId,
 						displayKey: `lbl_TpWallet_${_datas.tpId}`,
 						balance: _datas.balance
 					};
 
-					let tpWalletIdx = tpWalletList.findIndex(wallet => {
+					const tpWalletIdx = tpWalletList.findIndex(wallet => {
 						return wallet.id === tpId;
 					});
 
@@ -142,7 +144,7 @@ export default () => {
 		);
 	};
 
-	let _tpWalletArrs = tpWalletList.map(t => {
+	const _tpWalletArrs = tpWalletList.map(t => {
 		return (
 			<Wallet
 				key={`profile-tpWallet-${t.tpId}`}
@@ -160,7 +162,7 @@ export default () => {
 		<>
 			<Wallet
 				i18n={i18n}
-				titleKey={"lbl_MainWallet"}
+				titleKey="lbl_MainWallet"
 				currencyId={userInfo.currencyId}
 				balance={walletInfo.main}
 				func_GetBalance={GetBalance}
@@ -179,7 +181,7 @@ const Wallet = ({
 	func_GetBalance,
 	bonusWallet
 }) => {
-	let _bonusWallet =
+	const _bonusWallet =
 		bonusWallet &&
 		bonusWallet
 			.filter(b => b.status === 0 || b.status === 1)

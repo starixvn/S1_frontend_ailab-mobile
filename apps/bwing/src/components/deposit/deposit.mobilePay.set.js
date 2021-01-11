@@ -1,13 +1,9 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import {
-	i18nContext,
-	userInfoContext,
-	popBoxContext
-} from "../../components/common/context";
+import { Redirect } from "@reach/router";
+import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import config from "../../config";
 import LimitTip from "./limitTip";
 import { isConvert, number_format, checkAmount } from "../common/common";
-import { Redirect } from "@reach/router";
 import InputBox, { defIptStatus } from "../common/inputbox.hint";
 import path from "../../path";
 import PageVerify from "./deposit.pageVerify";
@@ -37,7 +33,9 @@ const SetMobilePay = props => {
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	PageVerify(
@@ -56,7 +54,7 @@ const SetMobilePay = props => {
 	}, [props.location.state, redirectPath]);
 
 	const VaildAmount = _amount => {
-		let result = checkAmount(
+		const result = checkAmount(
 			_amount,
 			paymentInfo?.minAmount,
 			paymentInfo?.maxAmount,
@@ -78,20 +76,20 @@ const SetMobilePay = props => {
 	};
 
 	const EditAmount = e => {
-		let value = e.target.value;
+		const { value } = e.target;
 		VaildAmount(value);
 		setAmount(value);
 	};
 
 	const ClickSubmit = () => {
 		if (pageVerify) {
-			let confirmAmount =
+			const confirmAmount =
 				paymentInfo.amountRule === 3 &&
 				paymentInfo.amountList?.length > 0
 					? amount / 1000
 					: amount;
 
-			let result = VaildAmount(confirmAmount);
+			const result = VaildAmount(confirmAmount);
 
 			if (result) {
 				const RedirectToNext = real_amount => {
@@ -105,7 +103,7 @@ const SetMobilePay = props => {
 					);
 				};
 
-				let real_amount = _isConvert
+				const real_amount = _isConvert
 					? confirmAmount * 1000
 					: confirmAmount;
 				setPopBox({
@@ -141,7 +139,7 @@ const SetMobilePay = props => {
 										isOpen: false
 									}))
 								}>
-								{i18n["lbl_Cancel"]}
+								{i18n.lbl_Cancel}
 							</button>
 							<button
 								className="submit"
@@ -149,7 +147,7 @@ const SetMobilePay = props => {
 									this,
 									real_amount
 								)}>
-								{i18n["lbl_Confirm"]}
+								{i18n.lbl_Confirm}
 							</button>
 						</div>
 					)
@@ -166,13 +164,13 @@ const SetMobilePay = props => {
 
 	if (!paymentInfo) return null;
 
-	let amountBtn = paymentInfo?.amountList?.map(a => {
+	const amountBtn = paymentInfo?.amountList?.map(a => {
 		return (
 			<button
 				className={amount === a ? "open" : ""}
 				key={`deposit-mobilepay-${paymentInfo.groupId}-${paymentInfo.channelId}-${a}`}
 				onClick={OnSelectAmount.bind(this, a)}>
-				<i className="icon icon-checkmark"></i>
+				<i className="icon icon-checkmark" />
 				{number_format(a, _isConvert)}
 			</button>
 		);
@@ -222,7 +220,7 @@ const SetMobilePay = props => {
 					</>
 				) : (
 					<InputBox
-						title={i18n["lbl_Amount"]}
+						title={i18n.lbl_Amount}
 						value={amount}
 						numberConvert={isConvert(userInfo.currencyId)}
 						inputType="tel"
@@ -237,7 +235,7 @@ const SetMobilePay = props => {
 					</button>
 				</div>
 			</div>
-			<BackBtn i18n={i18n} to={`../`} />
+			<BackBtn i18n={i18n} to="../" />
 		</DepositWrapper>
 	);
 };

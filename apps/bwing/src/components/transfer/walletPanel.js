@@ -3,7 +3,7 @@ import { number_format } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
 
 export default ({ i18n, walletInfo, GetBalnace, GetTpWalletBalance }) => {
-	let arr = walletInfo
+	const arr = walletInfo
 		.filter(wallet => {
 			return wallet.balance !== null;
 		})
@@ -17,7 +17,8 @@ export default ({ i18n, walletInfo, GetBalnace, GetTpWalletBalance }) => {
 									idx === 0
 										? "Main-Wallet"
 										: "Sportsbook-Wallet"
-								}`}></span>
+								}`}
+							/>
 							{i18n[item.displayKey]?.toUpperCase()}
 						</p>
 						<p>{number_format(item.balance, false)}</p>

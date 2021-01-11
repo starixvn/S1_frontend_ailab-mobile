@@ -11,7 +11,9 @@ export default ({ i18n, accountName, custBankList, reload }) => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	const delBankAccount = (sysId, accountNo) => {
@@ -21,7 +23,7 @@ export default ({ i18n, accountName, custBankList, reload }) => {
 			});
 		};
 
-		const deleteCard = (sysId, accountNo) => {
+		const deleteCard = (_sysId, _accountNo) => {
 			setPopBox({
 				isOpen: false
 			});
@@ -29,8 +31,8 @@ export default ({ i18n, accountName, custBankList, reload }) => {
 
 			api_DelCustBankInfo({
 				AccountName: accountName,
-				AccountNo: accountNo,
-				SysId: sysId
+				AccountNo: _accountNo,
+				SysId: _sysId
 			}).then(
 				res => {
 					if (isMountedRef.current) {
@@ -42,7 +44,7 @@ export default ({ i18n, accountName, custBankList, reload }) => {
 						} else {
 							setPopBox({
 								isOpen: true,
-								title: i18n["lbl_ImportantNote"],
+								title: i18n.lbl_ImportantNote,
 								content: res.data.message
 							});
 							setLoading(false);
@@ -53,8 +55,8 @@ export default ({ i18n, accountName, custBankList, reload }) => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n["lbl_ImportantNote"],
-							content: i18n["msg_ApiServerError"]
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
 						});
 						setLoading(false);
 					}
@@ -64,25 +66,25 @@ export default ({ i18n, accountName, custBankList, reload }) => {
 
 		setPopBox({
 			isOpen: true,
-			title: i18n["lbl_ImportantNote"],
-			content: i18n["lbl_CheckConfirm"],
+			title: i18n.lbl_ImportantNote,
+			content: i18n.lbl_CheckConfirm,
 			hasBtn: true,
 			btnBar: (
 				<div className="btn-group">
 					<button
 						className="gray"
 						onClick={deleteCard.bind(this, sysId, accountNo)}>
-						{i18n["lbl_Yes"]}
+						{i18n.lbl_Yes}
 					</button>
 					<button className="blue" onClick={ClickCancel}>
-						{i18n["lbl_No"]}
+						{i18n.lbl_No}
 					</button>
 				</div>
 			)
 		});
 	};
 
-	let arr = custBankList?.map(item => {
+	const arr = custBankList?.map(item => {
 		return (
 			<div
 				className="bankCard"
@@ -99,7 +101,8 @@ export default ({ i18n, accountName, custBankList, reload }) => {
 						this,
 						item.SysId,
 						item.accountNo
-					)}></button>
+					)}
+				/>
 			</div>
 		);
 	});
@@ -109,10 +112,10 @@ export default ({ i18n, accountName, custBankList, reload }) => {
 	) : (
 		<>
 			<div className="depositTitle textLeft borderTop">
-				<h1>{i18n["lbl_BankAccount"].toUpperCase()}</h1>
+				<h1>{i18n.lbl_BankAccount.toUpperCase()}</h1>
 				<p>
-					{i18n["lbl_NumberOfBankAccounts"]}:{" "}
-					{custBankList?.length ?? 0}/3
+					{i18n.lbl_NumberOfBankAccounts}: {custBankList?.length ?? 0}
+					/3
 				</p>
 			</div>
 			{custBankList?.length > 0 ? arr : null}
