@@ -155,12 +155,14 @@ const ByCategory = props => {
 };
 
 ByCategory.defaultProps = {
-	category: ""
+	category: "",
+	timePeriod: "",
+	date: ""
 };
 
 ByCategory.propTypes = {
-	timePeriod: PropTypes.string.isRequired,
-	date: PropTypes.string.isRequired,
+	timePeriod: PropTypes.string,
+	date: PropTypes.string,
 	category: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 

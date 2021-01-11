@@ -8,6 +8,7 @@ export default (callback, delay) => {
 	});
 
 	useEffect(() => {
+		let mounted = true;
 		function tick() {
 			savedCallback.current();
 		}
@@ -16,6 +17,8 @@ export default (callback, delay) => {
 			return () => clearInterval(id);
 		}
 
-		return () => _;
+		return () => {
+			mounted = false;
+		};
 	}, [delay]);
 };

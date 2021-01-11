@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import moment from "moment";
-import { number_format, isConvert } from "../common/common";
-import Step from "./step";
 import {
 	i18nContext,
 	popBoxContext,
@@ -9,6 +7,8 @@ import {
 	userInfoContext
 } from "Context";
 import { Link, Redirect } from "@reach/router";
+import { number_format, isConvert } from "../common/common";
+import Step from "./step";
 import RecentDatas from "./deposit.recentDatas";
 import Loading from "../common/loading";
 import PageVerify from "./deposit.pageVerify";
@@ -67,7 +67,9 @@ const Panel = () => {
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	PageVerify(
@@ -183,20 +185,20 @@ const Panel = () => {
 		refId
 	) => {
 		if (pageVerify) {
-			let { currencyId, ...restBankInfo } = bankInfo;
-			let { accountName, accountNo } = depositRep;
+			const { currencyId, ...restBankInfo } = bankInfo;
+			const { accountName, accountNo } = depositRep;
 			setbankSlipPopBox(() => ({
 				depositTime: `${moment().format(
 					"yyyy-MM-DDT"
 				)}${moment().format("HH:mm")}`,
 				...restBankInfo,
-				transId: transId,
-				accountNo: accountNo,
-				accountName: accountName,
+				transId,
+				accountNo,
+				accountName,
 				isOpen: true,
 				amount: number_format(amount, _isConvert),
-				picFileName: picFileName,
-				refId: refId
+				picFileName,
+				refId
 			}));
 		}
 	};
@@ -209,11 +211,13 @@ const Panel = () => {
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 0) {
-								api.payment.GetDepositInfoRecent().then(res => {
-									if (res.data.errorCode === 0) {
-										setRecentDatas(res.data.data);
-									}
-								});
+								api.payment
+									.GetDepositInfoRecent()
+									.then(resRecent => {
+										if (resRecent.data.errorCode === 0) {
+											setRecentDatas(resRecent.data.data);
+										}
+									});
 							} else {
 								setPopBox({
 									isOpen: true,
@@ -235,22 +239,22 @@ const Panel = () => {
 				);
 			};
 
-			const ClickCancel = () => {
+			const ClickPopBoxCancel = () => {
 				setPopBox({ isOpen: false });
 			};
 
 			setPopBox({
 				isOpen: true,
 				title: "",
-				content: i18n["lbl_CancelConfirm"],
+				content: i18n.lbl_CancelConfirm,
 				hasBtn: true,
 				btnBar: (
 					<div className="btn-group">
-						<button className="blue" onClick={ClickCancel}>
-							{i18n["lbl_Cancel"]}
+						<button className="blue" onClick={ClickPopBoxCancel}>
+							{i18n.lbl_Cancel}
 						</button>
 						<button className="orange" onClick={ClickSubmit}>
-							{i18n["lbl_Submit"]}
+							{i18n.lbl_Submit}
 						</button>
 					</div>
 				)
@@ -264,7 +268,7 @@ const Panel = () => {
 					return allowPayment[key];
 				})
 				.map(key => {
-					let item = defPayment[key];
+					const item = defPayment[key];
 					let list = [];
 					if (key === defPayType.onlineBank) {
 						list = onlineBankingList;
@@ -309,7 +313,7 @@ const Panel = () => {
 					}
 				}
 			},
-			err => {
+			() => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,

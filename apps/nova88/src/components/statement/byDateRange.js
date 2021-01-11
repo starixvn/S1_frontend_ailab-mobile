@@ -153,8 +153,12 @@ const ByDateRange = props => {
 	) : null;
 };
 
+ByDateRange.defaultProps = {
+	timePeriod: ""
+};
+
 ByDateRange.propTypes = {
-	timePeriod: PropTypes.string.isRequired
+	timePeriod: PropTypes.string
 };
 
 const Detail = ({

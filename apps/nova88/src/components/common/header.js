@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import { Redirect, Link } from "@reach/router";
 import {
 	userInfoContext,
@@ -16,14 +17,14 @@ import path from "../../path";
 import { siteInfo } from "../../config";
 import { tpWalletsListType } from "../transfer/transfer";
 
-const HeaderTitle = ({ title }) => (
+const HeaderTitle = ({ title = "" }) => (
 	<>
 		<div className="title">{title}</div>
 		<LoginPanel hideBtn={true} />
 	</>
 );
 
-const Header = ({ title, hideLogo }) => {
+const Header = ({ title = "", hideLogo = false }) => {
 	return (
 		<header className={title ? "header" : ""} id="header">
 			{hideLogo ? null : (
@@ -49,7 +50,9 @@ const HeaderBtn = () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -79,7 +82,7 @@ const HeaderBtn = () => {
 						} else {
 							setPopBox({
 								isOpen: true,
-								title: i18n["lbl_ImportantNote"],
+								title: i18n.lbl_ImportantNote,
 								content: res.data.message
 							});
 						}
@@ -90,8 +93,8 @@ const HeaderBtn = () => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n["lbl_ImportantNote"],
-							content: i18n["msg_ApiServerError"]
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
 						});
 						setProcessing(false);
 					}
@@ -108,15 +111,20 @@ const HeaderBtn = () => {
 									api.account
 										.GetTpWalletBalance({ TpId: i.tpId })
 										.then(
-											res => {
-												if (res.data.errorCode === 0) {
-													let data = res.data.data;
-													let tpWalletData = {
+											resBalance => {
+												if (
+													resBalance.data
+														.errorCode === 0
+												) {
+													const {
+														data
+													} = resBalance.data;
+													const tpWalletData = {
 														id: data.tpId,
 														balance: data.balance
 													};
 
-													let tpWalletIdx = tpWalletsList.findIndex(
+													const tpWalletIdx = tpWalletsList.findIndex(
 														wallet =>
 															wallet.id === i.tpId
 													);
@@ -140,18 +148,14 @@ const HeaderBtn = () => {
 													}
 												}
 											},
-											err => {
+											() => {
 												if (isMountedRef.current) {
 													setPopBox({
 														isOpen: true,
 														title:
-															i18n[
-																"lbl_ImportantNote"
-															],
+															i18n.lbl_ImportantNote,
 														content:
-															i18n[
-																"msg_ApiServerError"
-															]
+															i18n.msg_ApiServerError
 													});
 												}
 											}
@@ -160,18 +164,18 @@ const HeaderBtn = () => {
 							} else {
 								setPopBox({
 									isOpen: true,
-									title: i18n["lbl_ImportantNote"],
+									title: i18n.lbl_ImportantNote,
 									content: res.data.message
 								});
 							}
 						}
 					},
-					err => {
+					() => {
 						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
-								title: i18n["lbl_ImportantNote"],
-								content: i18n["msg_ApiServerError"]
+								title: i18n.lbl_ImportantNote,
+								content: i18n.msg_ApiServerError
 							});
 						}
 					}
@@ -179,12 +183,12 @@ const HeaderBtn = () => {
 		}
 	};
 
-	let otherWalletBalance = tpWalletsList?.reduce((prev, curr) => {
+	const otherWalletBalance = tpWalletsList?.reduce((prev, curr) => {
 		return prev + curr.balance;
 	}, 0);
-	let allWalletBalance = walletInfo.main + otherWalletBalance;
+	const allWalletBalance = walletInfo.main + otherWalletBalance;
 
-	let balance = !allWalletBalance
+	const balance = !allWalletBalance
 		? 0
 		: number_format(allWalletBalance, isConvert(userInfo.currencyId));
 
@@ -225,6 +229,18 @@ const HeaderInfo = props => {
 			</div>
 		</div>
 	);
+};
+
+HeaderInfo.defaultProps = {
+	userName: "",
+	currency: null,
+	amount: 0
+};
+
+HeaderInfo.propTypes = {
+	userName: PropTypes.string,
+	currency: PropTypes.string,
+	amount: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 export default Header;

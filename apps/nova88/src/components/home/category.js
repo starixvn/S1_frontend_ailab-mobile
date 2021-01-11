@@ -7,7 +7,7 @@ import {
 	popBoxContext
 } from "Context";
 import { Redirect, Link } from "@reach/router";
-import { productList } from "../../datas/productList";
+import gameList from "../../datas/productList";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import path from "../../path";
 import api from "../../service/api";
@@ -24,26 +24,25 @@ const Category = props => {
 	const { setPopBox } = useContext(popBoxContext);
 	const [casinoTpIds, setCasinoTpIds] = useState(null);
 
-	const clickGame = ({ tpId, gameId, path, needLogin }) => {
+	const clickGame = ({ tpId, gameId, _path, needLogin }) => {
 		const HandleLogin = () => {
 			setNav(defNavPanel.login);
 		};
-		if (path) {
+		if (_path) {
 			return needLogin && !userInfo.isLogin
 				? HandleLogin()
 				: setRedirect({
 						redirect: true,
-						path: `/${path}`
+						path: `/${_path}`
 				  });
-		} else {
-			return GET_ENTER_PAGE({
-				langId: userInfo.langId,
-				tpId,
-				gameId,
-				isLogin: userInfo.isLogin === true,
-				loginCallback: HandleLogin
-			});
 		}
+		return GET_ENTER_PAGE({
+			langId: userInfo.langId,
+			tpId,
+			gameId,
+			isLogin: userInfo.isLogin === true,
+			loginCallback: HandleLogin
+		});
 	};
 
 	useEffect(() => {
@@ -95,7 +94,7 @@ class CateGoryContent extends Component {
 		this.RefItems = {};
 		this.setCategory = false;
 
-		let _productList = productList({ langId: this.props.langId });
+		const _productList = gameList({ langId: this.props.langId });
 		_productList &&
 			_productList.forEach(item => {
 				this.RefItems[`${item.category}`] = {
@@ -105,15 +104,41 @@ class CateGoryContent extends Component {
 			});
 		this.checkScrollTimer = null;
 	}
+
+	componentDidMount() {
+		this.mounted = true;
+		window.addEventListener("mousewheel", this.ScrollBarListener, false);
+		window.addEventListener("touchmove", this.ScrollBarListener, {
+			passive: false
+		});
+		window.addEventListener("scroll", this.checkScrolling, false);
+	}
+
+	componentWillUnmount() {
+		this.mounted = false;
+		window.removeEventListener("mousewheel", this.ScrollBarListener, false);
+		window.removeEventListener("touchmove", this.ScrollBarListener, {
+			passive: false
+		});
+		window.removeEventListener("scroll", this.checkScrolling, false);
+	}
+
+	checkScrolling = () => {
+		if (this.checkScrollTimer !== null) {
+			clearTimeout(this.checkScrollTimer);
+		}
+		this.checkScrollTimer = setTimeout(this.ScrollBarListener, 10);
+	};
+
 	ScrollBarListener = () => {
 		if (!this.setCategory) {
 			this.setCategory = true;
 			let currentCategory = null;
 			Object.keys(this.RefItems).forEach(k => {
-				let item =
+				const item =
 					this.RefItems[k].Last.current ??
 					this.RefItems[k].First.current;
-				let x = item.getBoundingClientRect();
+				const x = item.getBoundingClientRect();
 
 				if (
 					x.bottom >= this.props.top + 50 &&
@@ -128,43 +153,21 @@ class CateGoryContent extends Component {
 				this.state.category !== currentCategory
 			) {
 				if (this.mounted) {
-					this.setState(
-						{ category: currentCategory },
-						() => (this.setCategory = false)
-					);
+					this.setState({ category: currentCategory }, () => {
+						this.setCategory = false;
+					});
 				}
 			} else {
 				this.setCategory = false;
 			}
 		}
 	};
-	checkScrolling = () => {
-		if (this.checkScrollTimer !== null) {
-			clearTimeout(this.checkScrollTimer);
-		}
-		this.checkScrollTimer = setTimeout(this.ScrollBarListener, 10);
-	};
-	componentWillUnmount() {
-		this.mounted = false;
-		window.removeEventListener("mousewheel", this.ScrollBarListener, false);
-		window.removeEventListener("touchmove", this.ScrollBarListener, {
-			passive: false
-		});
-		window.removeEventListener("scroll", this.checkScrolling, false);
-	}
-	componentDidMount() {
-		this.mounted = true;
-		window.addEventListener("mousewheel", this.ScrollBarListener, false);
-		window.addEventListener("touchmove", this.ScrollBarListener, {
-			passive: false
-		});
-		window.addEventListener("scroll", this.checkScrolling, false);
-	}
+
 	selectCategory = _category => {
 		if (this.state.category !== _category) {
 			this.setState({ category: _category });
 		}
-		let firstItem = this.RefItems[
+		const firstItem = this.RefItems[
 			_category
 		].First.current.getBoundingClientRect();
 
@@ -172,13 +175,14 @@ class CateGoryContent extends Component {
 		const y = firstItem.top + window.pageYOffset + offset_y;
 		window.scrollTo({ top: y, behavior: "smooth" });
 	};
+
 	render() {
-		let sideBarItems = [];
+		const sideBarItems = [];
 		let products = [];
-		let _productList = productList({ langId: this.props.langId });
+		const _productList = gameList({ langId: this.props.langId });
 		_productList &&
 			_productList.forEach(item => {
-				let _open = this.state.category === item.category;
+				const _open = this.state.category === item.category;
 				sideBarItems.push(
 					<CategoryItem
 						key={`category-${item.category}`}
@@ -194,9 +198,9 @@ class CateGoryContent extends Component {
 					/>
 				);
 
-				let content = item.items
+				const content = item.items
 					.filter(subItem => {
-						let allowCurrency =
+						const allowCurrency =
 							this.props.userCurrencyId === null ||
 							this.props.userCurrencyId === undefined ||
 							subItem.allowCurrency === undefined ||
@@ -213,13 +217,13 @@ class CateGoryContent extends Component {
 						);
 					})
 					.map((subItem, idx) => {
-						let refItem =
+						const refItem =
 							idx === 0
 								? this.RefItems[item.category].First
 								: idx === item.items.length - 1
 								? this.RefItems[item.category].Last
 								: null;
-						let key = subItem.tpId
+						const key = subItem.tpId
 							? `home-category-product-tpId_${subItem.tpId}-gameId_${subItem.gameId}`
 							: `home-category-${subItem.spanTextKey}`;
 
@@ -235,29 +239,24 @@ class CateGoryContent extends Component {
 									isNew={subItem.isNew}
 								/>
 							);
-						} else {
-							return (
-								<ProductItem
-									_ref={refItem}
-									isShow={!item.className && _open}
-									key={key}
-									clickGame={this.props.clickGame.bind(this, {
-										...subItem
-									})}
-									spanText={
-										this.props.i18n[subItem.spanTextKey]
-									}
-									descText={
-										subItem.descTextKey
-											? this.props.i18n[
-													subItem.descTextKey
-											  ]
-											: ""
-									}
-									{...subItem}
-								/>
-							);
 						}
+						return (
+							<ProductItem
+								_ref={refItem}
+								isShow={!item.className && _open}
+								key={key}
+								clickGame={this.props.clickGame.bind(this, {
+									...subItem
+								})}
+								spanText={this.props.i18n[subItem.spanTextKey]}
+								descText={
+									subItem.descTextKey
+										? this.props.i18n[subItem.descTextKey]
+										: ""
+								}
+								{...subItem}
+							/>
+						);
 					});
 
 				if (item.comingSoonImg && content.length % 2 !== 0) {
@@ -343,7 +342,7 @@ const ProductItem = props => {
 	return (
 		<>
 			{content}
-			{props.addSpaceInBelow ? <a href="" className="space"></a> : null}
+			{props.addSpaceInBelow ? <a href="" className="space" /> : null}
 		</>
 	);
 };

@@ -53,9 +53,13 @@ const GamePanel = props => {
 	);
 };
 
+GamePanel.defaultProps = {
+	Games: []
+};
+
 GamePanel.propTypes = {
 	SelectGame: PropTypes.func.isRequired,
-	Games: PropTypes.arrayOf(PropTypes.object).isRequired,
+	Games: PropTypes.arrayOf(PropTypes.object),
 	Favorite: PropTypes.arrayOf(PropTypes.object).isRequired,
 	SetFavorite: PropTypes.func.isRequired,
 	TpList: PropTypes.objectOf(PropTypes.any).isRequired,

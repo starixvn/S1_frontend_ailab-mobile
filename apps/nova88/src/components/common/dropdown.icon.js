@@ -78,15 +78,17 @@ IconDropdown.defaultProps = {
 	options: [],
 	mainKey: "",
 	placeholder: "",
-	icon: null
+	icon: null,
+	selectedIdx: null,
+	i18n: {}
 };
 
 IconDropdown.propTypes = {
 	onSelectItem: PropTypes.func.isRequired,
 	options: PropTypes.arrayOf(PropTypes.object),
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	i18n: PropTypes.objectOf(PropTypes.string),
 	mainKey: PropTypes.string,
-	selectedIdx: PropTypes.number.isRequired,
+	selectedIdx: PropTypes.number,
 	placeholder: PropTypes.string,
 	icon: PropTypes.string
 };

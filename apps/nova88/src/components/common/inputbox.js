@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 const Inputbox = props => {
 	return (
 		<div className="inputBox">
-			<i className={`icon ${props.icon}`}></i>
+			<i className={`icon ${props.icon}`} />
 			<input
-				type={props.inputType ?? "text"}
+				type={props.inputType}
 				placeholder={props.placeholder}
 				onFocus={props.onFocus}
 				onBlur={props.onBlur}
@@ -16,12 +16,12 @@ const Inputbox = props => {
 						? ""
 						: props.value
 				}
-				max={props.max ? props.max : null}
+				max={props.max}
 				disabled={props.disabled ? props.disabled : null}
 			/>
 			{props.checked === false || props.Warning?.status ? (
 				<div className="icon-module">
-					<i className="icon icon-warning"></i>
+					<i className="icon icon-warning" />
 				</div>
 			) : null}
 			{props.Warning?.status ? (
@@ -48,6 +48,22 @@ const Inputbox = props => {
 	);
 };
 
+Inputbox.defaultProps = {
+	value: "",
+	inputType: "text",
+	placeholder: "",
+	onFocus: null,
+	onBlur: null,
+	Warning: {},
+	showTips: false,
+	checked: false,
+	ClassName: "",
+	tip: null,
+	Tips: null,
+	disabled: false,
+	max: null
+};
+
 Inputbox.propTypes = {
 	icon: PropTypes.string.isRequired,
 	value: PropTypes.oneOfType([
@@ -59,9 +75,15 @@ Inputbox.propTypes = {
 	placeholder: PropTypes.string,
 	onFocus: PropTypes.func,
 	onBlur: PropTypes.func,
-	onChange: PropTypes.func,
-	Warning: PropTypes.object,
-	showTips: PropTypes.bool
+	onChange: PropTypes.func.isRequired,
+	Warning: PropTypes.objectOf(PropTypes.any),
+	showTips: PropTypes.bool,
+	checked: PropTypes.bool,
+	ClassName: PropTypes.string,
+	tip: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+	Tips: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+	disabled: PropTypes.bool,
+	max: PropTypes.number
 };
 
 export default Inputbox;

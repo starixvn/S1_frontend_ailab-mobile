@@ -113,7 +113,7 @@ SearchBox.defaultProps = {
 };
 
 SearchBox.propTypes = {
-	TpList: PropTypes.arrayOf(PropTypes.object).isRequired,
+	TpList: PropTypes.objectOf(PropTypes.object).isRequired,
 	provider: PropTypes.objectOf(PropTypes.any),
 	DefaultProvider: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	EditSearchField: PropTypes.func.isRequired,

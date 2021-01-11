@@ -158,17 +158,23 @@ const Index = props => {
 				</>
 			) : (
 				<div className="nodata icon icon-nodata">
-					<div className="txt-white">{i18n["msg_NoData"]}</div>
+					<div className="txt-white">{i18n.msg_NoData}</div>
 				</div>
 			)}
 		</>
 	) : null;
 };
 
+Index.defaultProps = {
+	timePeriod: "",
+	date: "",
+	game: null
+};
+
 Index.propTypes = {
-	timePeriod: PropTypes.string.isRequired,
-	date: PropTypes.string.isRequired,
-	game: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
+	timePeriod: PropTypes.string,
+	date: PropTypes.string,
+	game: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 const Detail = ({

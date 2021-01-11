@@ -28,7 +28,7 @@ const warningLangKey = {
 	Password: "msg_PasswordReq"
 };
 
-const LoginPage = ({ ButtonTitle = "", hideBtn = true }) => {
+const LoginPage = ({ ButtonTitle = "", hideBtn = false }) => {
 	const { i18n } = useContext(i18nContext);
 	const { setUserInfo } = useContext(userInfoContext);
 	const { nav, setNav } = useContext(navContext);

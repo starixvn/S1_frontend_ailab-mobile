@@ -631,7 +631,7 @@ const Join = () => {
 					onChange={EditField.bind(null, "AffiliateId")}
 					checked={status.AffiliateId.checked}
 					tip={status.AffiliateId.msg}
-					disabled={affiliateidExist}
+					disabled={Boolean(affiliateidExist)}
 				/>
 
 				<Checkbox

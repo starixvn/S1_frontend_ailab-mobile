@@ -152,9 +152,14 @@ const ByDay = props => {
 	) : null;
 };
 
+ByDay.defaultProps = {
+	timePeriod: "",
+	date: ""
+};
+
 ByDay.propTypes = {
-	timePeriod: PropTypes.string.isRequired,
-	date: PropTypes.string.isRequired
+	timePeriod: PropTypes.string,
+	date: PropTypes.string
 };
 
 const Detail = ({

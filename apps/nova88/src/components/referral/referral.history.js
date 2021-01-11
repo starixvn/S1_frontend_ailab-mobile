@@ -37,7 +37,9 @@ const Panel = () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	AUTO_FETCHING_DATA(
@@ -74,26 +76,23 @@ const Panel = () => {
 				.then(
 					response => {
 						if (isMountedRef.current) {
-							const errorCode = response.data.errorCode;
+							const { errorCode } = response.data;
 							if (errorCode !== 0) {
 								setPopBox({
 									isOpen: true,
 									title: i18n.lbl_ImportantNote,
 									content: response.data.message
 								});
-							} else {
-								if (isMountedRef.current) {
-									setGetHistoryState(response.data.data);
-									if (
-										response.data.totalPages >=
-										response.data.pageNumber
-									) {
-										setPageInfo(() => ({
-											totalPages:
-												response.data.totalPages,
-											pageNumber: response.data.pageNumber
-										}));
-									}
+							} else if (isMountedRef.current) {
+								setGetHistoryState(response.data.data);
+								if (
+									response.data.totalPages >=
+									response.data.pageNumber
+								) {
+									setPageInfo(() => ({
+										totalPages: response.data.totalPages,
+										pageNumber: response.data.pageNumber
+									}));
 								}
 							}
 							setProcessing(false);
@@ -115,7 +114,7 @@ const Panel = () => {
 		}
 	};
 
-	let arr = getHistoryState?.map(item => {
+	const arr = getHistoryState?.map(item => {
 		const _transferDirection = transferDirection(
 			item.direction,
 			i18n.lbl_MainWallet,
@@ -146,8 +145,8 @@ const Panel = () => {
 				<div className="recent open">
 					<div className="recentTransactions">
 						<div className="smallTitle">
-							<i className="icon icon-history"></i>
-							{i18n["lbl_TransactionHistory"]}
+							<i className="icon icon-history" />
+							{i18n.lbl_TransactionHistory}
 						</div>
 						<ReloadSpin
 							func={submitHandler.bind(
@@ -162,9 +161,7 @@ const Panel = () => {
 						<div className="infoList">{arr}</div>
 					) : (
 						<div className="nodata icon icon-nodata">
-							<div className="txt-white">
-								{i18n["msg_NoData"]}
-							</div>
+							<div className="txt-white">{i18n.msg_NoData}</div>
 						</div>
 					)}{" "}
 				</div>
@@ -178,25 +175,25 @@ export const TransactionHistory = props => {
 		<div className={props.className}>
 			<ul>
 				<li>
-					<span className="title">{props.i18n["lbl_Date"]}</span>
+					<span className="title">{props.i18n.lbl_Date}</span>
 					<span>
 						{moment(props.createTime).format("MM/DD/YYYY(Z)")}
 					</span>
 				</li>
 				<li>
-					<span className="title">{props.i18n["lbl_Time"]}</span>
+					<span className="title">{props.i18n.lbl_Time}</span>
 					<span>{moment(props.createTime).format("hh:mm:ss A")}</span>
 				</li>
 				<li>
-					<span className="title">{props.i18n["lbl_ID"]}</span>
+					<span className="title">{props.i18n.lbl_ID}</span>
 					<span>{props.transId}</span>
 				</li>
 				<li>
-					<span className="title">{props.i18n["lbl_Amount"]}</span>
+					<span className="title">{props.i18n.lbl_Amount}</span>
 					<span>{number_format(props.amount, props._isConvert)}</span>
 				</li>
 				<li>
-					<span className="title">{props.i18n["lbl_Direction"]}</span>
+					<span className="title">{props.i18n.lbl_Direction}</span>
 					<span>
 						<span>{props.startWallet}</span>
 						{`>`}
@@ -204,13 +201,13 @@ export const TransactionHistory = props => {
 					</span>
 				</li>
 				<li>
-					<span className="title">{props.i18n["lbl_Memo"]}</span>
+					<span className="title">{props.i18n.lbl_Memo}</span>
 					<span>
 						<span>{props.memo}</span>
 					</span>
 				</li>
 			</ul>
-			<div className="btn-group"></div>
+			<div className="btn-group" />
 		</div>
 	);
 };

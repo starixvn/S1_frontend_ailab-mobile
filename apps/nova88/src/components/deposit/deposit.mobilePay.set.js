@@ -1,10 +1,11 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import { i18nContext, userInfoContext, popBoxContext } from "Context";
+import { Link, Redirect } from "@reach/router";
 import Step from "./step";
 import config from "../../config";
 import LimitTip from "./limitTip";
 import { isConvert, number_format, checkAmount } from "../common/common";
-import { Link, Redirect } from "@reach/router";
 import InputBox from "../common/inputbox";
 import path from "../../path";
 import PageVerify from "./deposit.pageVerify";
@@ -28,7 +29,9 @@ const SetMobilePay = props => {
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	PageVerify(
@@ -47,7 +50,7 @@ const SetMobilePay = props => {
 	}, [props.location.state, redirectPath]);
 
 	const VaildAmount = _amount => {
-		let result = checkAmount(
+		const result = checkAmount(
 			_amount,
 			paymentInfo.minAmount,
 			paymentInfo.maxAmount,
@@ -69,20 +72,20 @@ const SetMobilePay = props => {
 	};
 
 	const EditAmount = e => {
-		let value = e.target.value;
+		const { value } = e.target;
 		VaildAmount(value);
 		setAmount(value);
 	};
 
 	const ClickSubmit = () => {
 		if (pageVerify) {
-			let confirmAmount =
+			const confirmAmount =
 				paymentInfo.amountRule === 3 &&
 				paymentInfo.amountList?.length > 0
 					? amount / 1000
 					: amount;
 
-			let result = VaildAmount(confirmAmount);
+			const result = VaildAmount(confirmAmount);
 
 			if (result) {
 				const RedirectToNext = real_amount => {
@@ -96,7 +99,7 @@ const SetMobilePay = props => {
 					);
 				};
 
-				let real_amount = _isConvert
+				const real_amount = _isConvert
 					? confirmAmount * 1000
 					: confirmAmount;
 				setPopBox({
@@ -126,7 +129,7 @@ const SetMobilePay = props => {
 										isOpen: false
 									}))
 								}>
-								{i18n["lbl_Cancel"]}
+								{i18n.lbl_Cancel}
 							</button>
 							<button
 								className="orange"
@@ -134,7 +137,7 @@ const SetMobilePay = props => {
 									this,
 									real_amount
 								)}>
-								{i18n["lbl_Submit"]}
+								{i18n.lbl_Submit}
 							</button>
 						</div>
 					)
@@ -149,13 +152,13 @@ const SetMobilePay = props => {
 		}
 	};
 
-	let amountBtn = paymentInfo?.amountList?.map(a => {
+	const amountBtn = paymentInfo?.amountList?.map(a => {
 		return (
 			<button
 				className={amount === a ? "open" : ""}
 				key={`deposit-mobilepay-${paymentInfo.groupId}-${paymentInfo.channelId}-${a}`}
 				onClick={OnSelectAmount.bind(this, a)}>
-				<i className="icon icon-checkmark"></i>
+				<i className="icon icon-checkmark" />
 				{number_format(a, _isConvert)}
 			</button>
 		);
@@ -220,6 +223,14 @@ const SetMobilePay = props => {
 			</div>
 		</>
 	);
+};
+
+SetMobilePay.defaultProps = {
+	location: {}
+};
+
+SetMobilePay.propTypes = {
+	location: PropTypes.objectOf(PropTypes.any)
 };
 
 export default SetMobilePay;

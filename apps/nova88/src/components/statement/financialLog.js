@@ -118,7 +118,7 @@ const IndexPage = () => {
 		}
 	};
 
-	let arr = getHistoryState?.map(item => {
+	const arr = getHistoryState?.map(item => {
 		return (
 			<TransactionHistory
 				key={`statementHistory-${item.refTransId}-${item.direction}`}
