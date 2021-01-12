@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import PrizeList from "./prize";
 import coins from "../../styles/img/coins.png";
-import { siteName } from "../../config";
+import config, { siteName } from "../../config";
 
 const Event = ({ userInfo = {}, i18n = {}, isOpen }) => {
 	return (
