@@ -24,7 +24,8 @@ const Category = props => {
 	const { setPopBox } = useContext(popBoxContext);
 	const [casinoTpIds, setCasinoTpIds] = useState(null);
 
-	const clickGame = ({ tpId, gameId, _path, needLogin }) => {
+	const clickGame = gameInfo => {
+		const { tpId, gameId, path: _path, needLogin } = gameInfo;
 		const HandleLogin = () => {
 			setNav(defNavPanel.login);
 		};
