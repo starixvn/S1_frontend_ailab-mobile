@@ -25,7 +25,7 @@ import {
 import { GET_LANG_ID } from "../../service/language";
 import TandC from "../../service/t_and_c";
 import path from "../../path";
-import { siteName } from "../../config";
+import config from "../../config";
 import PromoPopup from "./join.promotion";
 import Logo from "../../styles/img/logo.png";
 
@@ -743,7 +743,7 @@ const Join = () => {
 						href={TandC(userInfo.langId).rule}>
 						{i18n.lbl_RuleRegulations}
 					</a>
-					&nbsp; {i18n.lbl_Check18TC3}&nbsp;{siteName}
+					&nbsp; {i18n.lbl_Check18TC3}&nbsp;{config.siteName}
 					.&nbsp;
 					{i18n.lbl_Check18TC4}
 				</Checkbox>

@@ -24,7 +24,7 @@ Btn.defaultProps = {
 Btn.propTypes = {
 	isOpen: PropTypes.bool,
 	displayText: PropTypes.string,
-	value: PropTypes.string,
+	value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	onClick: PropTypes.func.isRequired,
 	isLogin: PropTypes.bool,
 	beforeLogin: PropTypes.bool
@@ -73,7 +73,7 @@ BtnBar.defaultProps = {
 
 BtnBar.propTypes = {
 	btnListClass: PropTypes.string,
-	defBtns: PropTypes.arrayOf(PropTypes.object).isRequired,
+	defBtns: PropTypes.objectOf(PropTypes.any).isRequired,
 	i18n: PropTypes.objectOf(PropTypes.any).isRequired,
 	selected: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 		.isRequired,
