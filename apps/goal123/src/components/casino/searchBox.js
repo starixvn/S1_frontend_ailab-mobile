@@ -107,16 +107,17 @@ const SearchBox = props => {
 };
 
 SearchBox.defaultProps = {
-	searchText: ""
+	searchText: "",
+	DefaultProvider: null
 };
 
 SearchBox.propTypes = {
-	TpList: PropTypes.arrayOf(PropTypes.object).isRequired,
-	provider: PropTypes.number.isRequired,
-	DefaultProvider: PropTypes.objectOf(PropTypes.string).isRequired,
+	TpList: PropTypes.objectOf(PropTypes.any).isRequired,
+	provider: PropTypes.objectOf(PropTypes.any).isRequired,
+	DefaultProvider: PropTypes.objectOf(PropTypes.any),
 	EditSearchField: PropTypes.func.isRequired,
 	searchText: PropTypes.string,
-	gameType: PropTypes.objectOf(PropTypes.string).isRequired
+	gameType: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
 export default SearchBox;

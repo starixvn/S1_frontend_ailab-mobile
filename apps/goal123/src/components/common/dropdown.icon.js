@@ -36,6 +36,7 @@ export class IconDropdown extends Component {
 					key={`${this.props.mainKey}-${i}`}
 					displayText={displayText}
 					iconClassName={this.props.options[i].iconClassName}
+					idx={i}
 					onClick={this.SelectItem}
 				/>
 			);
@@ -105,7 +106,7 @@ const Item = props => {
 Item.defaultProps = {
 	iconClassName: "",
 	displayText: "",
-	idx: null
+	idx: 0
 };
 
 Item.propTypes = {

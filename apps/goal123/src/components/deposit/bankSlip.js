@@ -245,7 +245,7 @@ class Modal extends Component {
 
 Modal.propTypes = {
 	EditField: PropTypes.func.isRequired,
-	bankSlipPopBox: PropTypes.objectOf(PropTypes.string).isRequired,
+	bankSlipPopBox: PropTypes.objectOf(PropTypes.any).isRequired,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	setPopBox: PropTypes.func.isRequired,
 	handlePopBox: PropTypes.func.isRequired

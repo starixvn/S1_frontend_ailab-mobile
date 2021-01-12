@@ -317,7 +317,7 @@ TransactionHistory.propTypes = {
 	SubmitProof: PropTypes.func.isRequired,
 	className: PropTypes.string,
 	createTime: PropTypes.string.isRequired,
-	transId: PropTypes.number.isRequired,
+	transId: PropTypes.string.isRequired,
 	amount: PropTypes.number.isRequired
 };
 

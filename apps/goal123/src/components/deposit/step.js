@@ -35,9 +35,13 @@ const Panel = ({ step, total = totalStep }) => {
 	);
 };
 
+Panel.defaultProps = {
+	total: 1
+};
+
 Panel.propTypes = {
 	step: PropTypes.number.isRequired,
-	total: PropTypes.number.isRequired
+	total: PropTypes.number
 };
 
 export default Panel;

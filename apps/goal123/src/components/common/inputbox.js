@@ -105,7 +105,7 @@ Inputbox.propTypes = {
 	}),
 	showTips: PropTypes.bool,
 	label: PropTypes.bool,
-	max: PropTypes.number,
+	max: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	disabled: PropTypes.string,
 	maxLength: PropTypes.string,
 	WarningIcon: PropTypes.bool,
