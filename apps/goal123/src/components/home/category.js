@@ -86,6 +86,14 @@ const Category = props => {
 	);
 };
 
+// Category.defaultProps = {
+// 	shortcutBarLocate: ""
+// };
+
+// Category.propTypes = {
+// 	shortcutBarLocate: PropTypes.string
+// };
+
 class CateGoryContent extends Component {
 	constructor(props) {
 		super(props);
@@ -301,6 +309,20 @@ class CateGoryContent extends Component {
 	}
 }
 
+// CateGoryContent.defaultProps = {
+// 	userCurrencyId: null,
+// 	casinoTpIds: null
+// };
+
+// CateGoryContent.propTypes = {
+// 	langId: PropTypes.string.isRequired,
+// 	setNav: PropTypes.func.isRequired,
+// 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+// 	userCurrencyId: PropTypes.number,
+// 	casinoTpIds: PropTypes.arrayOf(PropTypes.any),
+// 	clickGame: PropTypes.func.isRequired
+// };
+
 const CategoryItem = ({ iconClassName = "", isOpen, onClick, translation }) => {
 	return (
 		<button
@@ -310,6 +332,18 @@ const CategoryItem = ({ iconClassName = "", isOpen, onClick, translation }) => {
 		</button>
 	);
 };
+
+// CategoryItem.defaultProps = {
+// 	iconClassName: "",
+// 	translation: ""
+// };
+
+// CategoryItem.propTypes = {
+// 	iconClassName: PropTypes.string,
+// 	isOpen: PropTypes.string.isRequired,
+// 	onClick: PropTypes.func.isRequired,
+// 	translation: PropTypes.string
+// };
 
 const ProductItem = ({
 	href,
@@ -338,6 +372,26 @@ const ProductItem = ({
 	);
 };
 
+// ProductItem.defaultProps = {
+// 	href: "",
+// 	_ref: {},
+// 	isShow: null,
+// 	icon: "",
+// 	spanText: "",
+// 	isNew: null
+// };
+
+// ProductItem.propTypes = {
+// 	href: PropTypes.string,
+// 	clickGame: PropTypes.func.isRequired,
+// 	_ref: PropTypes.objectOf(PropTypes.any),
+// 	isShow: PropTypes.bool,
+// 	img: PropTypes.string.isRequired,
+// 	icon: PropTypes.string,
+// 	spanText: PropTypes.string,
+// 	isNew: PropTypes.bool
+// };
+
 const ProductLinkItem = ({
 	to,
 	parameter,
@@ -365,6 +419,28 @@ const ProductLinkItem = ({
 	);
 };
 
+// ProductLinkItem.defaultProps = {
+// 	parameter: {},
+// 	_ref: null,
+// 	isShow: null,
+// 	icon: "",
+// 	spanText: "",
+// 	className: "",
+// 	isNew: null
+// };
+
+// ProductLinkItem.propTypes = {
+// 	to: PropTypes.string.isRequired,
+// 	parameter: PropTypes.objectOf(PropTypes.number),
+// 	_ref: PropTypes.objectOf(PropTypes.any),
+// 	isShow: PropTypes.bool,
+// 	img: PropTypes.string.isRequired,
+// 	icon: PropTypes.string,
+// 	spanText: PropTypes.string,
+// 	className: PropTypes.string,
+// 	isNew: PropTypes.bool
+// };
+
 const ComingSoonItem = ({ isShow, img }) => {
 	return (
 		<a className={isShow ? "open" : ""}>
@@ -372,5 +448,14 @@ const ComingSoonItem = ({ isShow, img }) => {
 		</a>
 	);
 };
+
+// ComingSoonItem.defaultProps = {
+// 	isShow: null
+// };
+
+// ComingSoonItem.propTypes = {
+// 	isShow: PropTypes.bool,
+// 	img: PropTypes.string.isRequired
+// };
 
 export default Category;

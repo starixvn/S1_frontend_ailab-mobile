@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Swiper from "react-id-swiper";
 import { userInfoContext, i18nContext, navContext } from "../common/context";
 import { ClickLink } from "../common/swipperBanner";
-import config, { siteName } from "../../config";
+import config from "../../config";
 
 const Promotion = ({ banner, ImgFolder, ClickClose, title, isOpen }) => {
 	const { userInfo } = useContext(userInfoContext);
@@ -34,7 +34,7 @@ const Promotion = ({ banner, ImgFolder, ClickClose, title, isOpen }) => {
 				)}
 				key={`${lang}-${b.img}`}>
 				<img
-					src={`${config.imgUrl}/CMS/${siteName}/${_imgFolder}/${lang}/${b.img}`}
+					src={`${config.imgUrl}/CMS/${config.siteName}/${_imgFolder}/${lang}/${b.img}`}
 					className="banner"
 					alt={b.img}
 				/>
@@ -42,7 +42,8 @@ const Promotion = ({ banner, ImgFolder, ClickClose, title, isOpen }) => {
 		);
 	});
 
-	const signUpHint = i18n.msg_CreditSignUpHint_2?.replace("{0}", siteName);
+	const { _siteName } = config;
+	const signUpHint = i18n.msg_CreditSignUpHint_2?.replace("{0}", _siteName);
 	return isOpen ? (
 		<div id="welcome" style={{ display: "block" }}>
 			<div

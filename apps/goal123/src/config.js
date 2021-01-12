@@ -1,4 +1,4 @@
-export const siteName = "Goal123";
+const siteName = "Goal123";
 
 const getAffiliate = langId => {
 	if (typeof window === `undefined`) return "";
