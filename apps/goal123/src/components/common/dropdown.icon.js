@@ -94,7 +94,10 @@ IconDropdown.propTypes = {
 };
 
 const Item = props => {
-	const handleClick = () => props.onClick(props.idx);
+	const handleClick = e => {
+		e.stopPropagation();
+		props.onClick(props.idx);
+	};
 	return (
 		<div className="dropdown-item" onClick={handleClick}>
 			<i className={props.iconClassName} />

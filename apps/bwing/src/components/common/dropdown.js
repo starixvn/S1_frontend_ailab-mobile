@@ -22,7 +22,8 @@ export class DropdownBox extends Component {
 		}
 	};
 
-	SelectItem = value => {
+	SelectItem = (value, e) => {
+		e.stopPropagation();
 		this.setState({ isOpen: false });
 		this.props.onSelectItem(
 			value,
@@ -40,7 +41,7 @@ export class DropdownBox extends Component {
 				<Item
 					key={`${this.props.mainKey}-${item.id ?? item.displayKey}`}
 					displayText={displayText}
-					onClick={this.SelectItem.bind(null, i)}
+					onClick={this.SelectItem.bind(this, i)}
 				/>
 			);
 		});
