@@ -1,8 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 const totalStep = 3;
-const Panel = ({ step, total = totalStep }) => {
+const Panel = ({ step = null, total = totalStep }) => {
 	let processBar = null;
 	if (step === 1) {
 		processBar = <div />;
@@ -33,15 +32,6 @@ const Panel = ({ step, total = totalStep }) => {
 			{rows}
 		</div>
 	);
-};
-
-Panel.defaultProps = {
-	total: 1
-};
-
-Panel.propTypes = {
-	step: PropTypes.number.isRequired,
-	total: PropTypes.number
 };
 
 export default Panel;
