@@ -34,7 +34,7 @@ RankItem.defaultProps = {
 };
 
 RankItem.propTypes = {
-	Ranking: PropTypes.objectOf(PropTypes.string).isRequired,
+	Ranking: PropTypes.number.isRequired,
 	userName: PropTypes.string.isRequired,
 	turnover: PropTypes.number.isRequired,
 	isCurrentUser: PropTypes.bool
@@ -90,7 +90,7 @@ RankList.propTypes = {
 	loading: PropTypes.bool,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	datas: PropTypes.arrayOf(PropTypes.object),
-	lastUpdTime: PropTypes.string.isRequired
+	lastUpdTime: PropTypes.instanceOf(Date).isRequired
 };
 
 export default RankList;

@@ -31,7 +31,7 @@ const PrizeList = ({ userInfo, i18n }) => {
 };
 
 PrizeList.propTypes = {
-	userInfo: PropTypes.objectOf(PropTypes.string).isRequired,
+	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired
 };
 

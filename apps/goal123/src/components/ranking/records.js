@@ -45,7 +45,7 @@ Records.defaultProps = {
 Records.propTypes = {
 	isOpen: PropTypes.bool,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	userInfo: PropTypes.objectOf(PropTypes.string).isRequired
+	userInfo: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
 export default Records;
