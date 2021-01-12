@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import PropTypes from "prop-types";
 import Swiper from "react-id-swiper";
 import { Link } from "@reach/router";
-import config, { siteName } from "../../config";
+import config from "../../config";
 import { api_GetBanner } from "../../service/api/site";
 import { userInfoContext, navContext, defNavPanel } from "./context";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
@@ -106,7 +106,7 @@ const Panel = ({ ImgFolder, filterHideInHome = false }) => {
 			: b.actionLink;
 		const imgSRC = b.fromDB
 			? b.imgURL
-			: `${config.imgUrl}/CMS/${siteName}/${_imgFolder}/${lang}/${b.img}`;
+			: `${config.imgUrl}/CMS/${config.siteName}/${_imgFolder}/${lang}/${b.img}`;
 
 		if (actionLink?.startsWith("promotion/promotionInfo?BonusCode=")) {
 			return (

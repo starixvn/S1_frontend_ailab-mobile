@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import PrizeList from "./prize";
 import coins from "../../styles/img/coins.png";
-import config, { siteName } from "../../config";
+import config from "../../config";
 
 const Event = ({ userInfo = {}, i18n = {}, isOpen }) => {
 	return (
@@ -19,7 +19,7 @@ const Event = ({ userInfo = {}, i18n = {}, isOpen }) => {
 			<a
 				target="_blank"
 				rel="noreferrer"
-				href={`${config.t_and_cURL}/SiteSkin/${siteName}/ranking/${userInfo.langId}.html`}
+				href={`${config.t_and_cURL}/SiteSkin/${config.siteName}/ranking/${userInfo.langId}.html`}
 				className="more">
 				{i18n.lbl_MoreDetails?.toUpperCase()}
 			</a>
