@@ -1,7 +1,7 @@
 import React from "react";
-import App from "./app";
-//import * as serviceWorker from "./serviceWorker";
 import { render } from "react-snapshot";
+import App from "./app";
+// import * as serviceWorker from "./serviceWorker";
 import "./styles/css/style-dark.css";
 import "./styles/css/style.css";
 import "./styles/css/font.css";
@@ -17,4 +17,4 @@ const Content = () => {
 
 render(<Content />, document.getElementById("root"));
 
-//serviceWorker.register();
+// serviceWorker.register();

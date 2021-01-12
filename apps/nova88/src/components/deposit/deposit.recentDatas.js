@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
+import PropTypes from "prop-types";
 import { Link } from "@reach/router";
-import { isConvert } from "../common/common";
 import { i18nContext, userInfoContext } from "Context";
+import { isConvert } from "../common/common";
 import { TransactionHistory } from "./deposit.history";
 import ReloadSpin from "../common/reloadSpin";
 import path from "../../path";
@@ -16,8 +17,8 @@ const RecentDatas = props => {
 		setOpen(prevState => !prevState);
 	};
 
-	let hasData = props.Datas && props.Datas.length > 0;
-	let rows =
+	const hasData = props.Datas && props.Datas.length > 0;
+	const rows =
 		hasData &&
 		props.Datas.map(d => {
 			return (
@@ -46,9 +47,10 @@ const RecentDatas = props => {
 				<button className="orange switch" onClick={HandleOpen}>
 					{i18n.lbl_RecentTransactions}
 					<i
-						className={
-							"icon icon-circle-right" + (isOpen ? " open" : "")
-						}></i>
+						className={`icon icon-circle-right${
+							isOpen ? " open" : ""
+						}`}
+					/>
 				</button>
 			</div>
 			{hasData ? (
@@ -76,11 +78,22 @@ const RecentDatas = props => {
 				</>
 			) : isOpen ? (
 				<div className="nodata icon icon-nodata">
-					<div className="txt-white">{i18n["msg_NoData"]}</div>
+					<div className="txt-white">{i18n.msg_NoData}</div>
 				</div>
 			) : null}
 		</>
 	);
+};
+
+RecentDatas.defaultProps = {
+	Datas: []
+};
+
+RecentDatas.propTypes = {
+	Datas: PropTypes.arrayOf(PropTypes.object),
+	ClickCancel: PropTypes.func.isRequired,
+	ReloadFunc: PropTypes.func.isRequired,
+	SubmitProof: PropTypes.func.isRequired
 };
 
 export default RecentDatas;

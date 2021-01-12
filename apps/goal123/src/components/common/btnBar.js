@@ -1,10 +1,34 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-const Btn = ({ isOpen, displayText, onClick, value }) => (
-	<button className={isOpen ? "open" : ""} value={value} onClick={onClick}>
-		{displayText}
-	</button>
-);
+const Btn = ({ isOpen, displayText, value, isLogin, beforeLogin, onClick }) => {
+	const handleClick = () => onClick(value, isLogin, beforeLogin);
+	return (
+		<button
+			className={isOpen ? "open" : ""}
+			value={value}
+			onClick={handleClick}>
+			{displayText}
+		</button>
+	);
+};
+
+Btn.defaultProps = {
+	isOpen: false,
+	displayText: "",
+	value: "",
+	isLogin: false,
+	beforeLogin: false
+};
+
+Btn.propTypes = {
+	isOpen: PropTypes.bool,
+	displayText: PropTypes.string,
+	value: PropTypes.string,
+	onClick: PropTypes.func.isRequired,
+	isLogin: PropTypes.bool,
+	beforeLogin: PropTypes.bool
+};
 
 const BtnBar = ({
 	btnListClass = "topBtn",
@@ -21,12 +45,7 @@ const BtnBar = ({
 			key={`${mainKey}-${item.value}`}
 			isOpen={item.value === selected}
 			displayText={i18n[item.displayKey]}
-			onClick={handleSelect.bind(
-				this,
-				item.value,
-				isLogin,
-				item.beforeLogin
-			)}
+			onClick={handleSelect}
 		/>
 	));
 
@@ -40,6 +59,25 @@ const BtnBar = ({
 	) : (
 		btnList
 	);
+};
+
+BtnBar.defaultProps = {
+	btnListClass: "filterBtn",
+	mainKey: "",
+	isLogin: false,
+	title: null
+};
+
+BtnBar.propTypes = {
+	btnListClass: PropTypes.string,
+	defBtns: PropTypes.arrayOf(PropTypes.object).isRequired,
+	i18n: PropTypes.objectOf(PropTypes.any).isRequired,
+	selected: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired,
+	handleSelect: PropTypes.func.isRequired,
+	mainKey: PropTypes.string,
+	isLogin: PropTypes.bool,
+	title: PropTypes.string
 };
 
 export default BtnBar;

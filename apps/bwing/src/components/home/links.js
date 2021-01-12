@@ -1,8 +1,8 @@
 import React from "react";
+import { Link } from "@reach/router";
 import config, { siteInfo } from "../../config";
 import TandC from "../../service/t_and_c";
 import Bong88 from "../../styles/img/bong88.png";
-import { Link } from "@reach/router";
 import path from "../../path";
 
 export default ({ i18n, langId }) => {
@@ -78,31 +78,38 @@ const ContactUs = ({ i18n, langId }) => {
 				<a
 					href={siteInfo(langId).skypeId}
 					target="_blank"
-					className="icon icon-contactUS6"></a>
+					className="icon icon-contactUS6"
+				/>
 				<a
 					href={siteInfo(langId).telegramId}
 					target="_blank"
-					className="icon icon-contactUS3"></a>
+					className="icon icon-contactUS3"
+				/>
 				<a
 					href={siteInfo(langId).zaloId}
 					target="_blank"
-					className="icon icon-Zalo"></a>
+					className="icon icon-Zalo"
+				/>
 				<a
 					href={siteInfo(langId).facebookId}
 					target="_blank"
-					className="icon icon-contactUS1"></a>
+					className="icon icon-contactUS1"
+				/>
 				<a
 					href={siteInfo(langId).twitterId}
 					target="_blank"
-					className="icon icon-contactUS2"></a>
+					className="icon icon-contactUS2"
+				/>
 				<a
 					href={siteInfo(langId).youtubeId}
 					target="_blank"
-					className="icon icon-youtube"></a>
+					className="icon icon-youtube"
+				/>
 				<a
 					href={siteInfo(langId).tiktokId}
 					target="_blank"
-					className="icon icon-tiktok"></a>
+					className="icon icon-tiktok"
+				/>
 			</div>
 		</div>
 	);

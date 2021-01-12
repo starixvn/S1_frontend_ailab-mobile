@@ -6,9 +6,7 @@ const Inputbox = props => {
 		<div className={props.className ? props.className : "inputBox"}>
 			{props.label ? (
 				<label className="inputdate">
-					{props.icon ? (
-						<i className={`icon ${props.icon}`}></i>
-					) : null}
+					{props.icon ? <i className={`icon ${props.icon}`} /> : null}
 					<input
 						type={props.inputType ?? "text"}
 						placeholder={props.placeholder}
@@ -25,19 +23,16 @@ const Inputbox = props => {
 					/>
 					{props.iconModuleName ? (
 						<div className="iconModule">
-							<span
-								className={`icon ${props.iconModuleName}`}></span>
+							<span className={`icon ${props.iconModuleName}`} />
 							{props.iconModuleWarning ? (
-								<i className="icon icon-warning"></i>
+								<i className="icon icon-warning" />
 							) : null}
 						</div>
 					) : null}
 				</label>
 			) : (
 				<>
-					{props.icon ? (
-						<i className={`icon ${props.icon}`}></i>
-					) : null}
+					{props.icon ? <i className={`icon ${props.icon}`} /> : null}
 					<input
 						type={props.inputType ?? "text"}
 						placeholder={props.placeholder}
@@ -57,7 +52,8 @@ const Inputbox = props => {
 						<div className="iconModule">
 							<span
 								className={`icon ${props.iconModuleName}`}
-								onClick={props.clickInfo ?? null}></span>
+								onClick={props.clickInfo ?? null}
+							/>
 						</div>
 					) : null}
 				</>
@@ -65,7 +61,7 @@ const Inputbox = props => {
 
 			{props.Warning?.status || props.WarningIcon ? (
 				<div className="icon-module">
-					<i className="icon icon-warning"></i>
+					<i className="icon icon-warning" />
 				</div>
 			) : null}
 			{props.showTips ? (
@@ -90,19 +86,6 @@ const Inputbox = props => {
 };
 
 Inputbox.propTypes = {
-	icon: PropTypes.string,
-	value: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.number,
-		PropTypes.object
-	]),
-	inputType: PropTypes.string,
-	placeholder: PropTypes.string,
-	onFocus: PropTypes.func,
-	onBlur: PropTypes.func,
-	onChange: PropTypes.func,
-	Warning: PropTypes.object,
-	showTips: PropTypes.bool,
 	ClassName: PropTypes.string
 };
 

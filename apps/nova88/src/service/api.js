@@ -1,21 +1,21 @@
 import {
-	accountAPI,
-	accountStrictAPI,
-	tpAPI,
-	siteAPI,
-	messageAPI,
-	paymentAPI,
-	eventsAPI
+	AccountAPI,
+	AccountStrictAPI,
+	TpAPI,
+	SiteAPI,
+	MessageAPI,
+	PaymentAPI,
+	EventsAPI
 } from "@ailab-mobile/api";
 
 import config from "Config";
 
 export default {
-	account: new accountAPI(config),
-	accountStrict: new accountStrictAPI(config),
-	tp: new tpAPI(config),
-	site: new siteAPI(config),
-	message: new messageAPI(config),
-	payment: new paymentAPI(config),
-	events: new eventsAPI(config)
+	account: new AccountAPI(config),
+	accountStrict: new AccountStrictAPI(config),
+	tp: new TpAPI(config),
+	site: new SiteAPI(config),
+	message: new MessageAPI(config),
+	payment: new PaymentAPI(config),
+	events: new EventsAPI(config)
 };

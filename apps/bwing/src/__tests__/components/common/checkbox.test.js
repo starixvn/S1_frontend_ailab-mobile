@@ -7,7 +7,7 @@ it("checkbox renders correctly", () => {
 		.create(
 			<Checkbox
 				Checked={false}
-				className={`Terms error`}
+				className="Terms error"
 				checkboxHandler={() => {
 					return null;
 				}}

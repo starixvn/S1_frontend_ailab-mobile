@@ -48,7 +48,7 @@ const useGotoGame = ({ isLogin, langId, tpId }) => {
 									<button
 										className="blue"
 										onClick={ClickClose}>
-										{i18n["lbl_Cancel"]}
+										{i18n.lbl_Cancel}
 									</button>
 								</div>
 							)
@@ -57,7 +57,9 @@ const useGotoGame = ({ isLogin, langId, tpId }) => {
 				});
 		}
 
-		return () => (mounted = false);
+		return () => {
+			mounted = false;
+		};
 	}, [isLogin, langId, tpId]);
 
 	return { data };
@@ -100,14 +102,14 @@ const Kiss918 = () => {
 			<div className="kisstitle">{i18n.lbl_918KissMobileApp}</div>
 			<AppDownload i18n={i18n} />
 
-			<Suspense fallback={<div></div>}>
+			<Suspense fallback={<div />}>
 				<InstallGuide displayText={i18n.lbl_IOSInstallGuide} />
 			</Suspense>
 		</>
 	);
 };
 
-const ButtonWithCopyBtn = ({ value }) => {
+const ButtonWithCopyBtn = ({ value = "" }) => {
 	const ipt = createRef();
 	const OnCopy = () => {
 		ipt.current.select();
@@ -115,11 +117,12 @@ const ButtonWithCopyBtn = ({ value }) => {
 	};
 	return (
 		<div>
-			<input readOnly defaultValue={value} ref={ipt} />
+			<input readOnly={true} defaultValue={value} ref={ipt} />
 			<button
 				className="icon icon-files-empty"
 				value={value}
-				onClick={OnCopy}></button>
+				onClick={OnCopy}
+			/>
 		</div>
 	);
 };

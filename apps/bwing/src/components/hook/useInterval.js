@@ -8,12 +8,17 @@ export default (callback, delay) => {
 	});
 
 	useEffect(() => {
+		let mounted = true;
 		function tick() {
 			savedCallback.current();
 		}
 		if (delay !== null) {
-			let id = setInterval(tick, delay);
+			const id = setInterval(tick, delay);
 			return () => clearInterval(id);
 		}
+
+		return () => {
+			mounted = false;
+		};
 	}, [delay]);
 };

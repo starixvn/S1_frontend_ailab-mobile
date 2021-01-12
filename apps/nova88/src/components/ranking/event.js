@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { defBtnsOfCategory } from "./def";
 import BtnBar from "../common/btnBar";
 import { useHandleSelect } from "./hook";
@@ -35,6 +36,16 @@ const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
 			</div>
 		</div>
 	);
+};
+
+Event.defaultProps = {
+	isOpen: false
+};
+
+Event.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
+	isOpen: PropTypes.bool
 };
 
 export default Event;

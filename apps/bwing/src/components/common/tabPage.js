@@ -31,22 +31,17 @@ const IndexPage = ({ defTabs, children, beforeLogin }) => {
 
 	if (redirectPath !== null) {
 		return <Redirect to="/" noThrow />;
-	} else {
-		const items = Object.keys(defTabs).map(key => (
-			<TabItem
-				key={`tab-btn-${key}`}
-				i18n={i18n}
-				tabItem={defTabs[key]}
-			/>
-		));
-
-		return (
-			<>
-				<div className="tag">{items}</div>
-				{children}
-			</>
-		);
 	}
+	const items = Object.keys(defTabs).map(key => (
+		<TabItem key={`tab-btn-${key}`} i18n={i18n} tabItem={defTabs[key]} />
+	));
+
+	return (
+		<>
+			<div className="tag">{items}</div>
+			{children}
+		</>
+	);
 };
 
 const TabItem = ({ i18n, tabItem }) => {

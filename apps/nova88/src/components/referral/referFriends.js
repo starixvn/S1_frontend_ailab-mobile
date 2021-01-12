@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState, useContext, useRef } from "react";
+import QRCode from "qrcode.react";
 import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
 import stepImg_en from "../../styles/img/refbanner-en.png";
 import stepImg_cs from "../../styles/img/refbanner-cs.png";
@@ -8,7 +9,6 @@ import stepImg_id from "../../styles/img/refbanner-id.png";
 import MediaLinks from "./links";
 import api from "../../service/api";
 import path from "../../path";
-import QRCode from "qrcode.react";
 import TandC from "../../service/t_and_c";
 import { number_format, isConvert } from "../common/common";
 import Summary from "./referral.summary";
@@ -47,7 +47,9 @@ export default () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -109,14 +111,14 @@ export default () => {
 
 	const copyText = colName => {
 		if (colName === "copyToClipboard") {
-			let virtualInput = document.createElement("input");
+			const virtualInput = document.createElement("input");
 			virtualInput.value = i18n.lbl_Referral_Welcome;
 			document.body.appendChild(virtualInput);
 			virtualInput.select();
 			document.execCommand("copy");
 			document.body.removeChild(virtualInput);
 		} else {
-			let copyCol = document.getElementById(colName);
+			const copyCol = document.getElementById(colName);
 			window.getSelection().selectAllChildren(copyCol);
 			document.execCommand("Copy");
 		}
@@ -211,10 +213,8 @@ export default () => {
 						{refLink}
 						<button
 							className="icon icon-files-empty"
-							onClick={copyText.bind(
-								this,
-								"referralLink"
-							)}></button>
+							onClick={copyText.bind(this, "referralLink")}
+						/>
 					</div>
 
 					<div className="refMedia">

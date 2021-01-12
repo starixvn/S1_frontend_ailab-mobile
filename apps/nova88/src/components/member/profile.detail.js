@@ -1,8 +1,9 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import { Redirect } from "@reach/router";
+import { i18nContext, userInfoContext, popBoxContext } from "Context";
+import PropTypes from "prop-types";
 import Inputbox from "../common/inputbox";
 import Dropdown from "../common/dropdown.icon";
-import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import areaCode from "../../datas/areaCode";
 import path from "../../path";
 import {
@@ -34,7 +35,9 @@ const Panel = () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -43,26 +46,26 @@ const Panel = () => {
 		}
 	}, [redirectPath]);
 
-	let _areaCode = country ? areaCode[country].AreaCode : "";
-	let _infoList = infoList({ i18n, userInfo, _areaCode });
+	const _areaCode = country ? areaCode[country].AreaCode : "";
+	const _infoList = infoList({ i18n, userInfo, _areaCode });
 
-	let yearOptions = [];
-	let dateOptions = [];
+	const yearOptions = [];
+	const dateOptions = [];
 
-	let startYear = GetYear();
-	let month =
+	const startYear = GetYear();
+	const month =
 		monthSelectedIdx === undefined
 			? ""
 			: monthOptions[monthSelectedIdx].value;
 
-	let _startYear = startYear - 59;
+	const _startYear = startYear - 59;
 	for (let i = startYear; i >= _startYear; i--) {
 		yearOptions.push({ value: i, id: i, displayText: i });
 	}
-	let year =
+	const year =
 		yearSelectedIdx === undefined ? "" : yearOptions[yearSelectedIdx].value;
 
-	let days = GetDayOfMonth(year, month);
+	const days = GetDayOfMonth(year, month);
 	for (let i = 1; i <= days; i++) {
 		dateOptions.push({ value: i, id: i, displayText: i });
 	}
@@ -78,13 +81,13 @@ const Panel = () => {
 	};
 
 	const checkAccountName = val => {
-		let checked = !!val;
-		let message = !val ? i18n["msg_EnterRealName"] : "";
+		const checked = !!val;
+		const message = !val ? i18n.msg_EnterRealName : "";
 
 		setWarning(prevState => ({
 			...prevState,
 			accountName: {
-				checked: checked,
+				checked,
 				msg: message
 			}
 		}));
@@ -119,7 +122,7 @@ const Panel = () => {
 		setWarning(prev => ({
 			...prev,
 			phoneNo: {
-				checked: checked,
+				checked,
 				msg: tip
 			}
 		}));
@@ -127,19 +130,19 @@ const Panel = () => {
 		return checked;
 	};
 
-	const checkBirth = (day, month, year) => {
+	const checkBirth = (_day, _month, _year) => {
 		let checked = true;
 		let message = "";
 
-		if (!day || !month || !year) {
+		if (!_day || !_month || !_year) {
 			checked = false;
-			message = i18n["msg_SelectBirthDay"];
+			message = i18n.msg_SelectBirthDay;
 		}
 
 		setWarning(prevState => ({
 			...prevState,
 			birth: {
-				checked: checked,
+				checked,
 				msg: message
 			}
 		}));
@@ -148,7 +151,7 @@ const Panel = () => {
 	};
 
 	const EditField = (col, e) => {
-		let val = e.target.value;
+		const val = e.target.value;
 		setUserValue(prevState => ({
 			...prevState,
 			[col]: val
@@ -156,15 +159,17 @@ const Panel = () => {
 	};
 
 	const checkAll = async () => {
-		let year = yearOptions[yearSelectedIdx]?.value;
-		let month = monthOptions[monthSelectedIdx]?.value;
-		let day = daySelectedIdx + 1;
+		const _year = yearOptions[yearSelectedIdx]?.value;
+		const _month = monthOptions[monthSelectedIdx]?.value;
+		const _day = daySelectedIdx + 1;
 
-		let accountNameCheck = userInfo.accountName
+		const accountNameCheck = userInfo.accountName
 			? true
 			: checkAccountName(userValue.accountName);
 
-		let birthCheck = userInfo.birth_d ? true : checkBirth(day, month, year);
+		const birthCheck = userInfo.birth_d
+			? true
+			: checkBirth(_day, _month, _year);
 
 		let phoneCheck = false;
 		if (userInfo.phoneNo) {
@@ -173,12 +178,12 @@ const Panel = () => {
 			phoneCheck = await checkPhone(userValue.phoneNo);
 		}
 
-		let checked = accountNameCheck && birthCheck && phoneCheck;
+		const checked = accountNameCheck && birthCheck && phoneCheck;
 
 		if (checked) {
 			setUserValue(prevState => ({
 				...prevState,
-				Birth: `${year} / ${month} / ${day}`
+				Birth: `${_year} / ${_month} / ${_day}`
 			}));
 		}
 
@@ -186,7 +191,7 @@ const Panel = () => {
 	};
 
 	const clickSubmit = async () => {
-		let checked = await checkAll();
+		const checked = await checkAll();
 
 		if (checked) {
 			const closePopbox = ({ _redirectPath }) => {
@@ -200,15 +205,15 @@ const Panel = () => {
 				setPopBox({
 					isOpen: true,
 					title: i18n.msg_Updatesuccessful,
-					content: <div>{i18n["lbl_VertifyContactConfirm"]}</div>,
+					content: <div>{i18n.lbl_VertifyContactConfirm}</div>,
 					hasBtn: true,
 					btnBar: (
 						<div className="btn-group">
 							<button className="blue" onClick={closePopbox}>
-								{i18n["lbl_Later"]}
+								{i18n.lbl_Later}
 							</button>
 							<button className="orange" onClick={clickOtp}>
-								{i18n["lbl_VerifyNow"]}
+								{i18n.lbl_VerifyNow}
 							</button>
 						</div>
 					)
@@ -216,7 +221,7 @@ const Panel = () => {
 			};
 
 			const setProfile = () => {
-				let profileData = {
+				const profileData = {
 					AccountName: userInfo.accountName ?? userValue.accountName,
 					Birth_d: userInfo.birth_d ?? `${daySelectedIdx + 1}`,
 					Birth_m:
@@ -233,8 +238,8 @@ const Panel = () => {
 				api.accountStrict.SetProfile(profileData).then(
 					response => {
 						if (isMountedRef.current) {
-							const errorCode = response.data.errorCode;
-							const message = response.data.message;
+							const { errorCode } = response.data;
+							const { message } = response.data;
 
 							if (errorCode === 0) {
 								api.accountStrict.GetCustProfile().then(
@@ -308,10 +313,10 @@ const Panel = () => {
 				btnBar: (
 					<div className="btn-group">
 						<button className="blue" onClick={closePopbox}>
-							{i18n["lbl_Cancel"]}
+							{i18n.lbl_Cancel}
 						</button>
 						<button className="orange" onClick={setProfile}>
-							{i18n["lbl_Submit"]}
+							{i18n.lbl_Submit}
 						</button>
 					</div>
 				)
@@ -330,11 +335,11 @@ const Panel = () => {
 		setPopBox({
 			isOpen: true,
 			popBoxType: defPopBoxType.Otp,
-			ClosePopbox: ClosePopbox
+			ClosePopbox
 		});
 	};
 
-	let arr = _infoList
+	const arr = _infoList
 		.filter(item => {
 			return (
 				userInfo[item.infoTitle] ||
@@ -342,7 +347,7 @@ const Panel = () => {
 			);
 		})
 		.map(item => {
-			let _isVerified =
+			const _isVerified =
 				item.infoTitle === "phoneNo" ? item.isVerified : null;
 
 			return (
@@ -365,7 +370,7 @@ const Panel = () => {
 			{!userInfo?.accountName ? (
 				<Inputbox
 					icon="icon-member"
-					placeholder={i18n["lbl_RealName"]}
+					placeholder={i18n.lbl_RealName}
 					onBlur={e => checkAccountName(e.target.value)}
 					onChange={EditField.bind(null, "accountName")}
 					checked={warning.accountName.checked}
@@ -386,7 +391,8 @@ const Panel = () => {
 					daySelectedIdx={daySelectedIdx}
 					checked={warning.birth.checked}
 					tip={warning.birth.msg}
-					dropdownStateHandler={dropdownStateHandler}></Birthday>
+					dropdownStateHandler={dropdownStateHandler}
+				/>
 			) : null}
 
 			{!userInfo?.phoneNo ? (
@@ -395,7 +401,7 @@ const Panel = () => {
 					<Inputbox
 						icon="icon-phone"
 						inputType="tel"
-						placeholder={i18n["lbl_Phone"]}
+						placeholder={i18n.lbl_Phone}
 						onBlur={e => checkPhone(e.target.value)}
 						onChange={EditField.bind(null, "phoneNo")}
 						checked={warning.phoneNo.checked}
@@ -415,7 +421,7 @@ const Panel = () => {
 			!userInfo?.phoneNo ? (
 				<div className="btn-group">
 					<button className="orange" onClick={clickSubmit}>
-						{i18n["lbl_Submit"]}
+						{i18n.lbl_Submit}
 					</button>
 				</div>
 			) : null}
@@ -466,19 +472,40 @@ const Birthday = props => {
 	);
 };
 
+Birthday.defaultProps = {
+	monthSelectedIdx: null,
+	daySelectedIdx: null,
+	yearSelectedIdx: null,
+	checked: false,
+	tip: ""
+};
+
+Birthday.propTypes = {
+	monthOptions: PropTypes.arrayOf(PropTypes.object).isRequired,
+	dateOptions: PropTypes.arrayOf(PropTypes.object).isRequired,
+	yearOptions: PropTypes.arrayOf(PropTypes.object).isRequired,
+	monthSelectedIdx: PropTypes.number,
+	daySelectedIdx: PropTypes.number,
+	yearSelectedIdx: PropTypes.number,
+	tip: PropTypes.string,
+	dropdownStateHandler: PropTypes.func.isRequired,
+	checked: PropTypes.bool,
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired
+};
+
 const ColumnItem = props => {
 	return (
 		<li>
 			<span className="title">
 				{props.title}
 				{props.isVerified ? (
-					<i className="icon icon-checkmark"></i>
+					<i className="icon icon-checkmark" />
 				) : null}
 			</span>
 			<span>{props.content}</span>
 			{props.infoTitle === "phoneNo" && !props.isVerified ? (
 				<button className="otpBtn" onClick={props.clickOtp}>
-					<span className="icon icon-mobile"></span>
+					<span className="icon icon-mobile" />
 					<span>{props.i18n.lbl_MobileVerify}</span>
 				</button>
 			) : null}
@@ -486,12 +513,26 @@ const ColumnItem = props => {
 	);
 };
 
+ColumnItem.defaultProps = {
+	isVerified: false,
+	content: ""
+};
+
+ColumnItem.propTypes = {
+	title: PropTypes.string.isRequired,
+	isVerified: PropTypes.bool,
+	infoTitle: PropTypes.string.isRequired,
+	clickOtp: PropTypes.func.isRequired,
+	content: PropTypes.string,
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired
+};
+
 const GetYear = () => {
 	return new Date().getFullYear() - 21;
 };
 
 const GetDayOfMonth = (year, month) => {
-	let d = new Date(year, month, 0);
+	const d = new Date(year, month, 0);
 	return d.getDate();
 };
 

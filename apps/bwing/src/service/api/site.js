@@ -1,10 +1,10 @@
 import { siteRequest } from "./base";
 
 export const api_ExistsUserName = ({ UserName }) =>
-	siteRequest.post(`/ExistsUserName`, { UserName: UserName });
+	siteRequest.post(`/ExistsUserName`, { UserName });
 
 export const api_ExistsEmail = ({ Email }) =>
-	siteRequest.post(`/ExistsEmail`, { Email: Email });
+	siteRequest.post(`/ExistsEmail`, { Email });
 
 export const api_Register = data => siteRequest.post(`/Register/`, data);
 
@@ -20,7 +20,7 @@ export const api_GetGamelist = () => siteRequest.post(`/GetGamelist`);
 export const api_Site_GetGamelistV2 = () => siteRequest.post(`/GetGamelistV2`);
 
 export const api_ForgetPwd = ({ Email, langId }) =>
-	siteRequest.post(`/ForgetPwdV2/${langId}`, { Email: Email, flag: 2 });
+	siteRequest.post(`/ForgetPwdV2/${langId}`, { Email, flag: 2 });
 
 export const api_GetTpIds = () => siteRequest.post(`/GetTpIds`);
 

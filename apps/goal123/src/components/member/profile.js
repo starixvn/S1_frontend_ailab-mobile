@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { i18nContext } from "../common/context";
 import { Link } from "@reach/router";
+import { i18nContext } from "../common/context";
 import ProfileDetail from "./profile.detail";
 import path from "../../path";
 import ProfileWallet from "./profile.wallet";
@@ -10,7 +10,7 @@ const Panel = () => {
 
 	return (
 		<>
-			<div className="avatar"></div>
+			<div className="avatar" />
 			{/* <div className="viplv">
 				<i className="icon icon-vip"></i>VIP Lv{userInfo.userLevel}
 			</div> */}

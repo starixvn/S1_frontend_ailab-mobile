@@ -1,4 +1,5 @@
 import React, { useContext, useRef, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import {
 	i18nContext,
 	userInfoContext,
@@ -27,7 +28,9 @@ export default () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -44,7 +47,7 @@ export default () => {
 					} else {
 						setPopBox({
 							isOpen: true,
-							title: i18n["lbl_ImportantNote"],
+							title: i18n.lbl_ImportantNote,
 							content: `[${res.data.errorCode}]${res.data.message}`
 						});
 					}
@@ -54,20 +57,20 @@ export default () => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n["lbl_ImportantNote"],
-						content: i18n["msg_ApiServerError"]
+						title: i18n.lbl_ImportantNote,
+						content: i18n.msg_ApiServerError
 					});
 				}
 			}
 		);
-	}, []);
+	}, [i18n, setPopBox]);
 
 	const GetBalance = () => {
 		api_GetBalnace().then(
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
-						let data = res.data.data;
+						const { data } = res.data;
 						if (data !== null) {
 							if (isMountedRef.current) {
 								setWalletInfo(prevState => ({
@@ -98,7 +101,7 @@ export default () => {
 
 		api_account_GetCustBonusWallet().then(res => {
 			if (res.data.errorCode === 0 && isMountedRef.current) {
-				let result = {};
+				const result = {};
 				res.data.data.forEach(b => {
 					if (result.tpId) {
 						result[b.tpId].push({
@@ -117,40 +120,38 @@ export default () => {
 		api_account_GetTpWalletBalance({ TpId: tpId }).then(
 			res => {
 				if (res.data.errorCode === 0) {
-					let _datas = res.data.data;
-					let tpWalletData = {
+					const _datas = res.data.data;
+					const tpWalletData = {
 						id: _datas.tpId,
 						displayKey: `lbl_TpWallet_${_datas.tpId}`,
 						balance: _datas.balance
 					};
 
-					let tpWalletIdx = tpWalletList.findIndex(wallet => {
-						return wallet.id === tpId;
-					});
-
-					if (tpWalletIdx !== -1) {
-						setTpWalletList(prev => {
+					setTpWalletList(prev => {
+						const tpWalletIdx = prev.findIndex(
+							wallet => wallet.id === tpId
+						);
+						if (tpWalletIdx !== -1) {
 							prev[tpWalletIdx] = tpWalletData;
 							return prev;
-						});
-					} else {
-						setTpWalletList(prev => [...prev, tpWalletData]);
-					}
+						}
+						return [...prev, tpWalletData];
+					});
 				}
 			},
-			err => {
+			() => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n["lbl_ImportantNote"],
-						content: i18n["msg_ApiServerError"]
+						title: i18n.lbl_ImportantNote,
+						content: i18n.msg_ApiServerError
 					});
 				}
 			}
 		);
 	};
 
-	let _tpWalletArrs = tpWalletList.map(t => {
+	const _tpWalletArrs = tpWalletList.map(t => {
 		return (
 			<Wallet
 				key={`profile-tpWalletArr-${t.id}`}
@@ -168,7 +169,7 @@ export default () => {
 		<>
 			<Wallet
 				i18n={i18n}
-				titleKey={"lbl_MainWallet"}
+				titleKey="lbl_MainWallet"
 				currencyId={userInfo.currencyId}
 				balance={walletInfo.main}
 				func_GetBalance={GetBalance}
@@ -184,10 +185,10 @@ const Wallet = ({
 	currencyId,
 	titleKey,
 	balance,
-	func_GetBalance,
+	GetBalance,
 	bonusWallet
 }) => {
-	let _bonusWallet =
+	const _bonusWallet =
 		bonusWallet &&
 		bonusWallet
 			.filter(b => b.status === 0 || b.status === 1)
@@ -197,7 +198,10 @@ const Wallet = ({
 						key={`profile-wallet-${titleKey}-${b.promoCategoryId}`}
 						i18n={i18n}
 						currencyId={currencyId}
-						{...b}
+						titleKey={b.titleKey}
+						balance={b.balance}
+						func_GetBalance={b.func_GetBalance}
+						bonusWallet={b.bonusWallet}
 					/>
 				);
 			});
@@ -213,8 +217,25 @@ const Wallet = ({
 					{number_format(balance, false)}
 				</div>
 			</div>
-			<ReloadSpin func={func_GetBalance} />
+			<ReloadSpin func={GetBalance} />
 			{_bonusWallet}
 		</div>
 	);
+};
+
+Wallet.defaultProps = {
+	titleKey: "",
+	GetBalance: null,
+	bonusWallet: [],
+	currencyId: null,
+	balance: 0
+};
+
+Wallet.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	currencyId: PropTypes.number,
+	titleKey: PropTypes.string,
+	balance: PropTypes.number,
+	GetBalance: PropTypes.func,
+	bonusWallet: PropTypes.arrayOf(PropTypes.object)
 };

@@ -1,10 +1,10 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
+import { Redirect } from "@reach/router";
 import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
 import { api_ResetPassword } from "../../service/api/accountStrict";
 import { api_CheckResetPwdToken } from "../../service/api/site";
 import Inputbox from "../common/inputbox.password";
 import { getUrlParameter, passwordCheck } from "../common/common";
-import { Redirect } from "@reach/router";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
@@ -18,7 +18,9 @@ export default () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -28,7 +30,7 @@ export default () => {
 	}, [redirectPath]);
 
 	useEffect(() => {
-		let key = getUrlParameter("key");
+		const key = getUrlParameter("key");
 		if (userInfo.isLogin === false && key) {
 			api_CheckResetPwdToken(key).then(
 				res => {
@@ -84,13 +86,13 @@ export default () => {
 	};
 
 	const EditField = e => {
-		let val = e.target.value;
+		const val = e.target.value;
 		setNewPsw(val);
 	};
 
 	const checkPswHandler = e => {
-		let val = e.target.value;
-		let result = passwordCheck({ val });
+		const val = e.target.value;
+		const result = passwordCheck({ val });
 		setWarning({ status: !result.checked, msg: i18n[result.message] });
 	};
 

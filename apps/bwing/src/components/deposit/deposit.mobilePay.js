@@ -1,10 +1,6 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { Link, Redirect } from "@reach/router";
-import {
-	i18nContext,
-	userInfoContext,
-	popBoxContext
-} from "../../components/common/context";
+import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import {
 	api_GetMobilePayGroupList,
 	api_GetMobilePayInfoList
@@ -35,7 +31,9 @@ export const Main = props => {
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	PageVerify(
@@ -54,40 +52,38 @@ export const Main = props => {
 				setLoading(false);
 				setPaymentList(props.location.state.paymentList);
 			}
-		} else {
-			if (userInfo.isLogin) {
-				setLoading(true);
-				api_GetMobilePayGroupList().then(
-					res => {
-						if (isMountedRef.current) {
-							if (res.data.errorCode === 0) {
-								if (res.data.data.length > 0) {
-									setPaymentList(res.data.data);
-								} else {
-									setRedirectPath(`/${path.deposit.root}`);
-								}
+		} else if (userInfo.isLogin) {
+			setLoading(true);
+			api_GetMobilePayGroupList().then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							if (res.data.data.length > 0) {
+								setPaymentList(res.data.data);
 							} else {
-								setPopBox({
-									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: res.data.message
-								});
+								setRedirectPath(`/${path.deposit.root}`);
 							}
-							setLoading(false);
-						}
-					},
-					err => {
-						if (isMountedRef.current) {
-							setLoading(false);
+						} else {
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
-								content: i18n.msg_ApiServerError
+								content: res.data.message
 							});
 						}
+						setLoading(false);
 					}
-				);
-			}
+				},
+				err => {
+					if (isMountedRef.current) {
+						setLoading(false);
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
+						});
+					}
+				}
+			);
 		}
 	}, [
 		props.location.state,
@@ -130,7 +126,7 @@ export const Main = props => {
 		}
 	};
 
-	let rows = paymentList?.map(p => {
+	const rows = paymentList?.map(p => {
 		return (
 			<div key={`deposit-mobilepay-${p.groupId}`}>
 				<div
@@ -146,7 +142,7 @@ export const Main = props => {
 		);
 	});
 
-	let channels = channelList?.map(c => {
+	const channels = channelList?.map(c => {
 		return (
 			<Link
 				className="account"
@@ -181,34 +177,33 @@ export const Main = props => {
 
 	if (loading) {
 		return <Loading />;
-	} else {
-		return redirectPath !== null ? (
-			<Redirect to={redirectPath} noThrow />
-		) : pageVerify ? (
-			<DepositWrapper step={2} i18n={i18n}>
-				<div className="depositInBox">
-					<Title i18n={i18n} />
-					<div className="depositImgArea">{rows}</div>
-				</div>
-				<div
-					className={`inputBox channel${
-						selGroupId !== null ? " open" : ""
-					}`}>
-					{channels}
-				</div>
-				<div className="btn-group">
-					<Link to={`/${path.deposit.root}`} className="left">
-						<span
-							style={{
-								transform: "rotate(180deg)",
-								marginRight: "5px"
-							}}>
-							→
-						</span>
-						{i18n.lbl_Back}
-					</Link>
-				</div>
-			</DepositWrapper>
-		) : null;
 	}
+	return redirectPath !== null ? (
+		<Redirect to={redirectPath} noThrow />
+	) : pageVerify ? (
+		<DepositWrapper step={2} i18n={i18n}>
+			<div className="depositInBox">
+				<Title i18n={i18n} />
+				<div className="depositImgArea">{rows}</div>
+			</div>
+			<div
+				className={`inputBox channel${
+					selGroupId !== null ? " open" : ""
+				}`}>
+				{channels}
+			</div>
+			<div className="btn-group">
+				<Link to={`/${path.deposit.root}`} className="left">
+					<span
+						style={{
+							transform: "rotate(180deg)",
+							marginRight: "5px"
+						}}>
+						→
+					</span>
+					{i18n.lbl_Back}
+				</Link>
+			</div>
+		</DepositWrapper>
+	) : null;
 };

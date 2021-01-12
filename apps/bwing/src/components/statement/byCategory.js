@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import moment from "moment";
+import { useNavigate } from "@reach/router";
+import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import Dropdown from "../common/dropdown";
 import { number_format, isConvert } from "../common/common";
-import { useNavigate } from "@reach/router";
 import { Breadcrumbs } from "../common/breadcrumb";
 import { getDateRange, getSkipLink, defStatement } from "./common";
 import { api_GetCustTpBetRecordListbyCategoryId } from "../../service/api/payment";
@@ -28,12 +28,14 @@ export default props => {
 	const _startDay = timePeriod.substr(0, timePeriod.indexOf("to"));
 	const _endDay = timePeriod.split("to").pop();
 
-	let dateRange = getDateRange({ startDate: _startDay, endDate: _endDay });
+	const dateRange = getDateRange({ startDate: _startDay, endDate: _endDay });
 	const skipLink = getSkipLink({ dateRange });
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -90,7 +92,7 @@ export default props => {
 		func_getDatas: getListByCategoryId
 	});
 
-	let detailArr = datas?.map(data => {
+	const detailArr = datas?.map(data => {
 		return (
 			<Detail
 				key={`bet-by-category-${data.settledDate}-${data.turnOver}`}
@@ -138,7 +140,7 @@ export default props => {
 				</>
 			) : (
 				<div className="nodata icon icon-nodata">
-					<div className="txt-white">{i18n["msg_NoData"]}</div>
+					<div className="txt-white">{i18n.msg_NoData}</div>
 				</div>
 			)}
 		</>

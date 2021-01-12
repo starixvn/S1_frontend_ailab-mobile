@@ -1,12 +1,13 @@
 import React, { useState, useContext } from "react";
 import { i18nContext, userInfoContext } from "Context";
+import PropTypes from "prop-types";
+import { Link } from "@reach/router";
 import { TransactionHistory } from "./transfer.history";
 import { isConvert, number_format } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
-import { Link } from "@reach/router";
 import path from "../../path";
 
-const ReacentDatas = props => {
+const RecentDatas = props => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const _isConvert = isConvert(userInfo.currencyId);
@@ -27,8 +28,8 @@ const ReacentDatas = props => {
 		return { startWallet, endWallet };
 	};
 
-	let hasData = props.datas && props.datas.length > 0;
-	let arr =
+	const hasData = props.datas && props.datas.length > 0;
+	const arr =
 		hasData &&
 		props.datas?.map(item => {
 			const _transferDirection = transferDirection(
@@ -54,11 +55,12 @@ const ReacentDatas = props => {
 		<>
 			<div className="btn-group">
 				<button className="orange switch" onClick={HandleOpen}>
-					{i18n["lbl_RecentTransactions"]}
+					{i18n.lbl_RecentTransactions}
 					<i
 						className={`icon icon-circle-right${
 							isOpen ? " open" : ""
-						}`}></i>
+						}`}
+					/>
 				</button>
 			</div>
 
@@ -68,7 +70,7 @@ const ReacentDatas = props => {
 						<div className="recentTransactions">
 							<div className="smallTitle">
 								<i className="icon icon-history">
-									{i18n["lbl_RecentTransactions"]}
+									{i18n.lbl_RecentTransactions}
 								</i>
 							</div>
 							<ReloadSpin func={props.ReloadFunc} />
@@ -80,18 +82,27 @@ const ReacentDatas = props => {
 							<Link
 								to={path.transfer.sub.history.root}
 								className="orange recentBtn">
-								{i18n["lbl_AllTranscations"]}
+								{i18n.lbl_AllTranscations}
 							</Link>
 						</div>
 					) : null}
 				</>
 			) : isOpen ? (
 				<div className="nodata icon icon-nodata">
-					<div className="txt-white">{i18n["msg_NoData"]}</div>
+					<div className="txt-white">{i18n.msg_NoData}</div>
 				</div>
 			) : null}
 		</>
 	);
 };
 
-export default ReacentDatas;
+RecentDatas.defaultProps = {
+	datas: []
+};
+
+RecentDatas.propTypes = {
+	datas: PropTypes.arrayOf(PropTypes.object),
+	ReloadFunc: PropTypes.func.isRequired
+};
+
+export default RecentDatas;

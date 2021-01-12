@@ -1,4 +1,6 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
+import { useMatch, Redirect, Link } from "@reach/router";
+import PropTypes from "prop-types";
 import Inputbox from "../common/inputbox";
 import InputboxPWD from "../common/inputbox.password";
 import { LOGIN } from "../../service/auth";
@@ -8,9 +10,8 @@ import {
 	navContext,
 	defNavPanel
 } from "../common/context";
-import { useMatch, Redirect, Link } from "@reach/router";
 import path from "../../path";
-import config from "../../config";
+import { siteName } from "../../config";
 import Logo from "../../styles/img/logo.png";
 
 const initState = {
@@ -51,7 +52,9 @@ const LoginPage = ({ ButtonTitle, hideBtn }) => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -61,7 +64,7 @@ const LoginPage = ({ ButtonTitle, hideBtn }) => {
 	}, [redirectPath]);
 
 	const checkValueHandler = (colName, e) => {
-		let val = e.target.value;
+		const val = e.target.value;
 		setWarningState(prevState => {
 			return {
 				...prevState,
@@ -79,7 +82,7 @@ const LoginPage = ({ ButtonTitle, hideBtn }) => {
 	};
 
 	const handleLogin = () => {
-		let checked =
+		const checked =
 			userValueState.UserName !== "" && userValueState.Password !== "";
 
 		setWarningState(prevState => {
@@ -104,7 +107,7 @@ const LoginPage = ({ ButtonTitle, hideBtn }) => {
 					if (isMountedRef.current) {
 						setUserInfo(() => ({
 							...userData,
-							isLogin: isLogin
+							isLogin
 						}));
 						setNav(null);
 					}
@@ -150,17 +153,17 @@ const LoginPage = ({ ButtonTitle, hideBtn }) => {
 			setRedirectPath("/");
 		} else {
 			setNav(() => {
-				let newState = show ? null : defNavPanel.login;
+				const newState = show ? null : defNavPanel.login;
 				return newState;
 			});
 		}
 	};
 
-	let showBylink = useMatch(path.login.root) !== null;
-	let showPanel = showBylink || nav === defNavPanel.login;
+	const showBylink = useMatch(path.login.root) !== null;
+	const showPanel = showBylink || nav === defNavPanel.login;
 
 	const EditField = (colName, e) => {
-		let value = e.target.value;
+		const { value } = e.target;
 		setUserValueState(prevState => ({
 			...prevState,
 			[colName]: value
@@ -183,21 +186,21 @@ const LoginPage = ({ ButtonTitle, hideBtn }) => {
 						true,
 						showBylink
 					)}>
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
+					<span />
+					<span />
+					<span />
+					<span />
+					<span />
+					<span />
 				</div>
 
-				<img src={Logo} alt={config.siteName} />
-				<div className="title">{i18n["lbl_Login"]}</div>
+				<img src={Logo} alt={siteName} />
+				<div className="title">{i18n.lbl_Login}</div>
 
 				<Inputbox
 					icon="icon-member"
 					inputType="text"
-					placeholder={i18n["lbl_Username"]}
+					placeholder={i18n.lbl_Username}
 					onBlur={checkValueHandler.bind(null, "UserName")}
 					onChange={EditField.bind(null, "UserName")}
 					ClassName="JoinRule"
@@ -208,7 +211,7 @@ const LoginPage = ({ ButtonTitle, hideBtn }) => {
 				<InputboxPWD
 					icon="icon-key"
 					inputType={`${!pswState ? "password" : "text"}`}
-					placeholder={i18n["lbl_Password"]}
+					placeholder={i18n.lbl_Password}
 					onBlur={checkValueHandler.bind(null, "Password")}
 					onChange={EditField.bind(null, "Password")}
 					showPsw={pswState}
@@ -231,12 +234,22 @@ const LoginPage = ({ ButtonTitle, hideBtn }) => {
 					</Link>
 				</div>
 
-				<button onClick={handleLogin}>{i18n["lbl_Login"]}</button>
+				<button onClick={handleLogin}>{i18n.lbl_Login}</button>
 			</div>
 		</>
 	) : (
 		<Redirect to="/" noThrow />
 	);
+};
+
+LoginPage.defaultProps = {
+	ButtonTitle: "",
+	hideBtn: null
+};
+
+LoginPage.propTypes = {
+	ButtonTitle: PropTypes.string,
+	hideBtn: PropTypes.bool
 };
 
 export default LoginPage;

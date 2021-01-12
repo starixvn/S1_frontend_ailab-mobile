@@ -12,14 +12,16 @@ export default props => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	const submitFilter = (startDay, endDay) => {
 		if (startDay !== endDay) {
 			toDateRangePage({
-				startDay: startDay,
-				endDay: endDay
+				startDay,
+				endDay
 			});
 		} else {
 			toByDayPage({

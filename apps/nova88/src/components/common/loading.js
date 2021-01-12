@@ -4,18 +4,18 @@ import { i18nContext } from "Context";
 export default () => {
 	const { i18n } = useContext(i18nContext);
 
-	let loadingDisplayText = i18n.lbl_Loading;
+	const loadingDisplayText = i18n.lbl_Loading;
 	return (
 		<div id="Loading" className="open">
 			<div className="container">
 				<div className="cube">
 					<div className="sides">
-						<div className="top"></div>
-						<div className="right"></div>
-						<div className="bottom"></div>
-						<div className="left"></div>
-						<div className="front"></div>
-						<div className="back"></div>
+						<div className="top" />
+						<div className="right" />
+						<div className="bottom" />
+						<div className="left" />
+						<div className="front" />
+						<div className="back" />
 					</div>
 				</div>
 				<h1> </h1>

@@ -6,6 +6,7 @@ import {
 	popBoxContext
 } from "Context";
 import { Redirect } from "@reach/router";
+import PropTypes from "prop-types";
 import { LOGOUT } from "../../service/auth";
 import ThemeMode from "../member/profile.themeMode";
 import path from "../../path";
@@ -14,7 +15,7 @@ import DefLangs from "../../datas/defLangs";
 import api from "../../service/api";
 
 const languageList = () => {
-	let _siteInfo = siteInfo();
+	const _siteInfo = siteInfo();
 	return _siteInfo.siteLangList.map(l => DefLangs[l]);
 };
 
@@ -27,10 +28,12 @@ export default () => {
 	const [redirectPath, setRedirectPath] = useState(null);
 	const isMountedRef = useRef(null);
 
-	let _languageList = languageList();
+	const _languageList = languageList();
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -41,7 +44,7 @@ export default () => {
 
 	useEffect(() => {
 		if (userInfo.langId && isMountedRef.current) {
-			setUserLanguage(prevState => {
+			setUserLanguage(() => {
 				return _languageList.find(l => l.value === userInfo.langId) ===
 					undefined
 					? "en"
@@ -52,7 +55,7 @@ export default () => {
 
 	const selectLanguage = language => {
 		if (userLanguage !== language) {
-			let langId = language;
+			const langId = language;
 			setUserLanguage(language);
 
 			if (userInfo.isLogin) {
@@ -62,7 +65,7 @@ export default () => {
 							if (res.data.errorCode === 0) {
 								setUserInfo(prevState => ({
 									...prevState,
-									langId: langId
+									langId
 								}));
 							} else {
 								setPopBox({
@@ -86,7 +89,7 @@ export default () => {
 			} else {
 				setUserInfo(prevState => ({
 					...prevState,
-					langId: langId
+					langId
 				}));
 			}
 		}
@@ -103,7 +106,7 @@ export default () => {
 		});
 	};
 
-	let arr = _languageList.map(item => {
+	const arr = _languageList.map(item => {
 		return (
 			<Item
 				key={`lang-${item.value}`}
@@ -145,4 +148,18 @@ const Item = props => {
 			<span className="text">{props.displayText}</span>
 		</div>
 	);
+};
+
+Item.defaultProps = {
+	userLanguage: "",
+	value: "",
+	displayText: ""
+};
+
+Item.propTypes = {
+	userLanguage: PropTypes.string,
+	value: PropTypes.string,
+	selectLanguage: PropTypes.func.isRequired,
+	img: PropTypes.string.isRequired,
+	displayText: PropTypes.string
 };

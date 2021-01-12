@@ -5,7 +5,7 @@ export const useHandlePage = ({ totalPages, func_getDatas }) => {
 	const [selectedPage, setSelectedPage] = useState(0);
 
 	useEffect(() => {
-		let result = [];
+		const result = [];
 		for (let i = 1; i <= totalPages; i++) {
 			result.push({ displayText: i, id: i });
 		}
@@ -15,7 +15,7 @@ export const useHandlePage = ({ totalPages, func_getDatas }) => {
 	const onSelectPage = idx => {
 		if (idx !== selectedPage) {
 			setSelectedPage(idx);
-			let _selectedPage = idx + 1;
+			const _selectedPage = idx + 1;
 			func_getDatas({ pageNumber: _selectedPage });
 		}
 	};

@@ -7,144 +7,15 @@ import {
 	defNavPanel,
 	navContext
 } from "../common/context";
-import {
-	api_GetBalnace,
-	api_account_GetTpWalletList,
-	api_account_GetTpWalletBalance
-} from "../../service/api/account";
 import JoinPanel from "../join/join";
 import LoginPanel from "../login/login";
-import { number_format } from "../common/common";
 import path from "../../path";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import Menu from "./header.menu";
 import SubMenu from "./submenu";
 import { LOGOUT } from "../../service/auth";
 import Logo from "../img/logo";
-import { tpWalletsListType } from "../transfer/transfer";
-
-export const useGetBalance = ({ isLogin, i18n, setPopBox }) => {
-	const [mainWalletBalance, setMainWalletBalance] = useState(0);
-	const [tpWalletsList, setTpWalletsList] = useState([]);
-	const isMountedRef = useRef(null);
-
-	useEffect(() => {
-		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
-	});
-
-	useEffect(() => {
-		if (isLogin) {
-			GetBalance();
-		}
-	}, [isLogin]);
-
-	const GetBalance = () => {
-		api_GetBalnace().then(
-			res => {
-				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
-						setMainWalletBalance(res.data.data);
-					} else {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: `[${res.data.errorCode}]${res.data.message}`
-						});
-					}
-				}
-			},
-			err => {
-				if (isMountedRef.current) {
-					setPopBox({
-						isOpen: true,
-						title: i18n.lbl_ImportantNote,
-						content: i18n.msg_ApiServerError
-					});
-				}
-			}
-		);
-
-		api_account_GetTpWalletList({
-			ListType: tpWalletsListType.allWallets
-		}).then(
-			res => {
-				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
-						res.data.data?.forEach(i => {
-							api_account_GetTpWalletBalance({
-								TpId: i.tpId
-							}).then(
-								res => {
-									if (res.data.errorCode === 0) {
-										let data = res.data.data;
-										let tpWalletData = {
-											id: data.tpId,
-											balance: data.balance
-										};
-
-										let tpWalletIdx = tpWalletsList.findIndex(
-											wallet => wallet.id === i.tpId
-										);
-
-										if (tpWalletIdx !== -1) {
-											setTpWalletsList(prev => {
-												prev[
-													tpWalletIdx
-												] = tpWalletData;
-												return prev;
-											});
-										} else {
-											setTpWalletsList(prev => [
-												...prev,
-												tpWalletData
-											]);
-										}
-									}
-								},
-								err => {
-									if (isMountedRef.current) {
-										setPopBox({
-											isOpen: true,
-											title: i18n.lbl_ImportantNote,
-											content: i18n.msg_ApiServerError
-										});
-									}
-								}
-							);
-						});
-					} else {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: `[${res.data.errorCode}]${res.data.message}`
-						});
-					}
-				}
-			},
-			err => {
-				if (isMountedRef.current) {
-					setPopBox({
-						isOpen: true,
-						title: i18n.lbl_ImportantNote,
-						content: i18n.msg_ApiServerError
-					});
-				}
-			}
-		);
-	};
-
-	let otherWalletBalance = tpWalletsList?.reduce((prev, curr) => {
-		return prev + curr.balance;
-	}, 0);
-	let allWalletBalance = mainWalletBalance + otherWalletBalance;
-
-	let allBalance = !allWalletBalance
-		? 0
-		: number_format(allWalletBalance, false);
-
-	return { allBalance };
-};
+import { useGetBalance } from "./hook";
 
 export default ({ hideLogo, title, showMenuBar }) => {
 	const { i18n } = useContext(i18nContext);
@@ -200,18 +71,19 @@ export default ({ hideLogo, title, showMenuBar }) => {
 			<div className="headerT">
 				<div className="headerTLogout">
 					<div className="close noPos" onClick={onClickSubMenu}>
-						<span></span>
-						<span></span>
-						<span></span>
-						<span></span>
-						<span></span>
-						<span></span>
+						<span />
+						<span />
+						<span />
+						<span />
+						<span />
+						<span />
 					</div>
 					{headerTitleBar}
 					{userInfo.isLogin === true ? (
 						<button
 							className="icon icon-exit"
-							onClick={handleLogout}></button>
+							onClick={handleLogout}
+						/>
 					) : (
 						<BeforeLogin i18n={i18n} />
 					)}

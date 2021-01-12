@@ -1,6 +1,6 @@
 import React from "react";
 import { configContext } from "./context";
-import { promotionAPI } from "@ailab-mobile/api";
+import { PromotionAPI } from "@ailab-mobile/api";
 import { isConvert } from "@ailab-mobile/common";
 import { defWrapperCol } from "../common/def";
 
@@ -27,7 +27,7 @@ export default ({
 			i18n,
 			userInfo,
 			setPopBox,
-			api: { promotion: new promotionAPI({ apiURL: config?.apiURL }) },
+			api: { promotion: new PromotionAPI({ apiURL: config?.apiURL }) },
 			ruleCols,
 			formatSetting: {
 				[defWrapperCol.formatSetting.isConvertRequired]:

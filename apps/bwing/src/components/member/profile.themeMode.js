@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { themeContext } from "../common/context";
-import { i18nContext } from "../common/context";
+import { themeContext, i18nContext } from "../common/context";
+
 import themeList from "../../datas/theme";
 
 const Panel = () => {
@@ -21,15 +21,14 @@ const Panel = () => {
 					className={`icon icon-sun${
 						theme === themeList.default ? " open" : ""
 					}`}
-					onClick={handleTheme.bind(
-						null,
-						themeList.default
-					)}></button>
+					onClick={handleTheme.bind(null, themeList.default)}
+				/>
 				<button
 					className={`icon icon-moon${
 						theme === themeList.dark ? " open" : ""
 					}`}
-					onClick={handleTheme.bind(null, themeList.dark)}></button>
+					onClick={handleTheme.bind(null, themeList.dark)}
+				/>
 			</div>
 		</div>
 	);

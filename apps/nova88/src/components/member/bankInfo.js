@@ -1,8 +1,9 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { i18nContext, userInfoContext, popBoxContext } from "Context";
+import PropTypes from "prop-types";
+import config from "Config";
 import Inputbox from "../common/inputbox";
 import Dropdown from "../common/dropdown.image";
-import config from "Config";
 import Loading from "../common/loading";
 import api from "../../service/api";
 
@@ -31,7 +32,9 @@ const BankInfo = () => {
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -47,10 +50,11 @@ const BankInfo = () => {
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
-							let data = res.data.data;
+							const { data } = res.data;
 							if (data !== null) {
-								let bankInfoDetail = data.bankInfoDetail ?? [];
-								let getBankInfoArr = bankInfoDetail.map(i => {
+								const bankInfoDetail =
+									data.bankInfoDetail ?? [];
+								const getBankInfoArr = bankInfoDetail.map(i => {
 									return {
 										bankName: i.bankName,
 										image: i.bankLogo,
@@ -95,8 +99,8 @@ const BankInfo = () => {
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
-						const data = res.data.data;
-						let bankInfoArr = data.map(i => {
+						const { data } = res.data;
+						const bankInfoArr = data.map(i => {
 							return {
 								id: i.sysId,
 								sysId: i.sysId,
@@ -153,12 +157,12 @@ const BankInfo = () => {
 		if (col === "RealName") {
 			if (val === "" || !isNaN(val)) {
 				checked = false;
-				message = i18n["msg_EnterRealName"];
+				message = i18n.msg_EnterRealName;
 			}
 		} else if (col === "BankAccount") {
 			if (val === "" || isNaN(val)) {
 				checked = false;
-				message = i18n["msg_NeedAccountNo"];
+				message = i18n.msg_NeedAccountNo;
 			}
 		}
 
@@ -179,7 +183,7 @@ const BankInfo = () => {
 	};
 
 	const EditField = (col, e) => {
-		let val = e.target.value;
+		const val = e.target.value;
 		setUserValueState(prevState => ({
 			...prevState,
 			[col]: val
@@ -193,10 +197,10 @@ const BankInfo = () => {
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
-						let data = res.data.data;
+						const { data } = res.data;
 						if (data !== null) {
-							let bankInfoDetail = data.bankInfoDetail ?? [];
-							let getBankInfoArr = bankInfoDetail.map(i => {
+							const bankInfoDetail = data.bankInfoDetail ?? [];
+							const getBankInfoArr = bankInfoDetail.map(i => {
 								return {
 									bankName: i.bankName,
 									image: i.bankLogo,
@@ -236,7 +240,7 @@ const BankInfo = () => {
 		setLoading(true);
 
 		const removeAccount = () => {
-			let removeAccountData = {
+			const removeAccountData = {
 				AccountName: userInfo.accountName,
 				AccountNo: val.accountNo,
 				SysId: val.SysId
@@ -272,15 +276,15 @@ const BankInfo = () => {
 		setPopBox({
 			isOpen: true,
 			title: i18n.lbl_ImportantNote,
-			content: i18n["lbl_CheckConfirm"],
+			content: i18n.lbl_CheckConfirm,
 			hasBtn: true,
 			btnBar: (
 				<div className="btn-group">
 					<button className="blue" onClick={toShowBankAccount}>
-						{i18n["lbl_Cancel"]}
+						{i18n.lbl_Cancel}
 					</button>
 					<button className="orange" onClick={removeAccount}>
-						{i18n["lbl_Submit"]}
+						{i18n.lbl_Submit}
 					</button>
 				</div>
 			)
@@ -300,7 +304,7 @@ const BankInfo = () => {
 					...prevState,
 					RealName: {
 						status: !checked,
-						msg: i18n["msg_EnterRealName"]
+						msg: i18n.msg_EnterRealName
 					}
 				};
 			});
@@ -330,7 +334,7 @@ const BankInfo = () => {
 					...prevState,
 					BankAccount: {
 						status: !checked,
-						msg: i18n["msg_NeedAccountNo"]
+						msg: i18n.msg_NeedAccountNo
 					}
 				};
 			});
@@ -350,15 +354,13 @@ const BankInfo = () => {
 	};
 
 	const checkSubmitHandler = () => {
-		let checked = true;
-
 		const SetCustBankInfo = (checked, hidePopBox) => {
 			if (hidePopBox) {
 				setPopBox({ isOpen: false });
 			}
 
 			if (checked) {
-				let bankInfoData = {
+				const bankInfoData = {
 					AccountName:
 						userInfo.accountName ?? userValueState.RealName,
 					AccountNo: userValueState.BankAccount,
@@ -368,13 +370,13 @@ const BankInfo = () => {
 				api.accountStrict.SetCustBankInfo(bankInfoData).then(
 					response => {
 						if (isMountedRef.current) {
-							const errorCode = response.data.errorCode;
-							const message = response.data.message;
+							const { errorCode } = response.data;
+							const { message } = response.data;
 
 							if (errorCode !== 0) {
 								setPopBox({
 									isOpen: true,
-									title: i18n["lbl_ImportantNote"],
+									title: i18n.lbl_ImportantNote,
 									content: message
 								});
 							} else {
@@ -399,10 +401,11 @@ const BankInfo = () => {
 		};
 
 		if (status === false) {
+			let checked = true;
 			if (!userInfo.accountName) {
 				checked = realNameCheck() && bankAccountCheck();
 
-				const closePopbox = status => {
+				const closePopbox = () => {
 					setPopBox({ isOpen: false });
 				};
 
@@ -414,7 +417,7 @@ const BankInfo = () => {
 					btnBar: (
 						<div className="btn-group">
 							<button className="blue" onClick={closePopbox}>
-								{i18n["lbl_Cancel"]}
+								{i18n.lbl_Cancel}
 							</button>
 							<button
 								className="orange"
@@ -423,7 +426,7 @@ const BankInfo = () => {
 									checked,
 									true
 								)}>
-								{i18n["lbl_Submit"]}
+								{i18n.lbl_Submit}
 							</button>
 						</div>
 					)
@@ -435,7 +438,7 @@ const BankInfo = () => {
 		}
 	};
 
-	let arr = getBankInfo.map(item => {
+	const arr = getBankInfo.map(item => {
 		return (
 			<BankAccountItem
 				key={`bankAccount-${item.accountNo}`}
@@ -453,20 +456,20 @@ const BankInfo = () => {
 		<Loading />
 	) : (
 		<>
-			<div className="avatar"></div>
+			<div className="avatar" />
 			<div className="name">{userInfo.accountName}</div>
 			{status === true ? (
 				<>
 					{userInfo.accountName ? (
-						<div className="text-org">{i18n["lbl_ContactCSD"]}</div>
+						<div className="text-org">{i18n.lbl_ContactCSD}</div>
 					) : null}
 					{getBankInfo && getBankInfo.length < 3 ? (
 						<div className="btn-group">
 							<button
 								className="orange"
 								onClick={toAddBankAccount}>
-								<i className="icon icon-user-plus"></i>
-								{i18n["lbl_AddNewAccount"]}
+								<i className="icon icon-user-plus" />
+								{i18n.lbl_AddNewAccount}
 							</button>
 						</div>
 					) : null}
@@ -490,7 +493,7 @@ const BankInfo = () => {
 							icon="icon-member"
 							inputType="text"
 							value={userValueState.RealName}
-							placeholder={i18n["lbl_RealName"]}
+							placeholder={i18n.lbl_RealName}
 							onBlur={checkInputboxHandler.bind(null, "RealName")}
 							onChange={EditField.bind(null, "RealName")}
 							Warning={warningState.RealName}
@@ -501,16 +504,16 @@ const BankInfo = () => {
 						Warning={warningState.BankAccount}
 						inputType="tel"
 						value={userValueState.BankAccount}
-						placeholder={i18n["lbl_BankNumber"]}
+						placeholder={i18n.lbl_BankNumber}
 						onBlur={checkInputboxHandler.bind(null, "BankAccount")}
 						onChange={EditField.bind(null, "BankAccount")}
 					/>
 					<div className="btn-group">
 						<button className="blue" onClick={toShowBankAccount}>
-							{i18n["lbl_Cancel"]}
+							{i18n.lbl_Cancel}
 						</button>
 						<button className="orange" onClick={checkSubmitHandler}>
-							{i18n["lbl_Submit"]}
+							{i18n.lbl_Submit}
 						</button>
 					</div>
 				</>
@@ -519,8 +522,8 @@ const BankInfo = () => {
 				<>
 					{getBankInfo && getBankInfo.length > 0 ? (
 						<div className="smallTitle">
-							<i className="icon icon-library"></i>
-							{i18n["lbl_BankAccount"]}
+							<i className="icon icon-library" />
+							{i18n.lbl_BankAccount}
 						</div>
 					) : null}
 					<div className="bankAccount">{arr}</div>
@@ -546,9 +549,22 @@ const BankAccountItem = props => {
 			</div>
 			<button
 				className="icon icon-bin clickBtn"
-				onClick={props.removeAccountHandler}></button>
+				onClick={props.removeAccountHandler}
+			/>
 		</div>
 	);
+};
+
+BankAccountItem.defaultProps = {
+	className: ""
+};
+
+BankAccountItem.propTypes = {
+	className: PropTypes.string,
+	image: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
+	accountNo: PropTypes.string.isRequired,
+	removeAccountHandler: PropTypes.func.isRequired
 };
 
 export default BankInfo;

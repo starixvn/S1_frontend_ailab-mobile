@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
-import { i18nContext } from "../common/context";
 import moment from "moment";
-import Dropdown from "../common/dropdown.icon";
-import Inputbox from "../common/inputbox";
+import { i18nContext } from "./context";
+import Dropdown from "./dropdown.icon";
+import Inputbox from "./inputbox";
 
 const quickPickList = [
 	{ displayKey: "lbl_Today" },
@@ -26,7 +26,7 @@ const Panel = props => {
 		setSelectedIdx(idx);
 
 		if (selectedIdx !== idx) {
-			let result = selectDateRange({ idx: idx });
+			const result = selectDateRange({ idx });
 			setDateRange({
 				startDate: result.startDate,
 				endDate: result.endDate
@@ -35,7 +35,7 @@ const Panel = props => {
 	};
 
 	const EditField = (col, e) => {
-		let val = e.target.value;
+		const val = e.target.value;
 		setDateRange(prev => ({
 			...prev,
 			[col]: val
@@ -93,8 +93,8 @@ const Panel = props => {
 						false
 					)}>
 					{props.statement
-						? i18n["lbl_statement_submit"]
-						: i18n["lbl_history_submit"]}
+						? i18n.lbl_statement_submit
+						: i18n.lbl_history_submit}
 				</button>
 			</div>
 		</>
@@ -104,7 +104,7 @@ const Panel = props => {
 export default Panel;
 
 export const selectDateRange = ({ idx }) => {
-	let _displayKey = quickPickList[idx].displayKey;
+	const _displayKey = quickPickList[idx].displayKey;
 
 	let startDate = "";
 	let endDate = "";

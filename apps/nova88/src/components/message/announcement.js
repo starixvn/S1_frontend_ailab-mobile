@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { userInfoContext, popBoxContext, i18nContext } from "Context";
+import PropTypes from "prop-types";
 import moment from "moment";
 import Loading from "../common/loading";
 import api from "../../service/api";
@@ -13,7 +14,7 @@ const Panel = () => {
 	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
-		let mounted = true;
+		const mounted = true;
 		if (mounted) {
 			setLoading(true);
 		}
@@ -21,7 +22,7 @@ const Panel = () => {
 		api.message.GetAnnouncement(userInfo.langId).then(
 			res => {
 				if (res.data.errorCode === 0) {
-					const data = res.data.data;
+					const { data } = res.data;
 					if (mounted) {
 						setGetAnnouncement(data);
 					}
@@ -63,8 +64,8 @@ const Panel = () => {
 		}
 	};
 
-	let arr = getAnnouncement?.map(item => {
-		let _open = selectItemState === item.id;
+	const arr = getAnnouncement?.map(item => {
+		const _open = selectItemState === item.id;
 		return (
 			<Item
 				key={`announcement-${item.id}`}
@@ -80,12 +81,12 @@ const Panel = () => {
 	return (
 		<>
 			{loading ? <Loading /> : null}
-			<div className="functionList"></div>
+			<div className="functionList" />
 			{getAnnouncement.length > 0 ? (
-				<>{arr}</>
+				{ arr }
 			) : (
 				<div className="nodata icon icon-nodata">
-					<div className="txt-white">{i18n["msg_NoData"]}</div>
+					<div className="txt-white">{i18n.msg_NoData}</div>
 				</div>
 			)}
 		</>
@@ -104,13 +105,30 @@ const Item = props => {
 					className={`icon icon-circle-right ${
 						props.isOpen ? " open" : ""
 					}`}
-					onClick={props.onClick}></button>
+					onClick={props.onClick}
+				/>
 			</div>
 			<div className={`content ${props.isOpen ? " open" : ""}`}>
 				<pre>{props.content}</pre>
 			</div>
 		</div>
 	);
+};
+
+Item.defaultProps = {
+	isOpen: false,
+	content: ""
+};
+
+Item.propTypes = {
+	subject: PropTypes.string.isRequired,
+	isOpen: PropTypes.bool,
+	onClick: PropTypes.func.isRequired,
+	content: PropTypes.string,
+	showTime: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.instanceOf(Date)
+	]).isRequired
 };
 
 export default Panel;

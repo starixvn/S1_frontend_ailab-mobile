@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const Inputbox = props => {
 	return (
 		<div className="inputBox">
-			<i className={`icon ${props.icon}`}></i>
+			<i className={`icon ${props.icon}`} />
 			<input
 				type={props.inputType}
 				placeholder={props.placeholder}
@@ -18,9 +18,10 @@ const Inputbox = props => {
 					className={`icon ${
 						!props.showPsw ? "icon-eye-blocked" : "icon-eye"
 					}`}
-					onClick={props.showPswHandler}></i>
+					onClick={props.showPswHandler}
+				/>
 				{props.Warning.status ? (
-					<i className="icon icon-warning"></i>
+					<i className="icon icon-warning" />
 				) : null}
 			</div>
 			{props.showTips ? (
@@ -47,13 +48,7 @@ Inputbox.propTypes = {
 	value: PropTypes.string.isRequired,
 	showPswHandler: PropTypes.func.isRequired,
 	showPsw: PropTypes.bool.isRequired,
-	inputType: PropTypes.string.isRequired,
-	placeholder: PropTypes.string,
-	onFocus: PropTypes.func,
-	onBlur: PropTypes.func,
-	onChange: PropTypes.func,
-	Warning: PropTypes.object,
-	showTips: PropTypes.bool
+	inputType: PropTypes.string.isRequired
 };
 
 export default Inputbox;

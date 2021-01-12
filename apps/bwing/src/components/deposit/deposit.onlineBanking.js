@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
-import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
 import { Link, Redirect } from "@reach/router";
+import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
 import { api_GetOnlinePaymentList } from "../../service/api/payment";
 import PageVerify from "./deposit.pageVerify";
 import path from "../../path";
@@ -24,7 +24,9 @@ export const Main = props => {
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	PageVerify(
@@ -42,41 +44,39 @@ export const Main = props => {
 				setPaymentList(props.location.state.paymentList);
 				setLoading(false);
 			}
-		} else {
-			if (userInfo.isLogin) {
-				setLoading(true);
-				api_GetOnlinePaymentList().then(
-					res => {
-						if (isMountedRef.current) {
-							if (res.data.errorCode === 0) {
-								if (res.data.data.length > 0) {
-									setPaymentList(res.data.data);
-								} else {
-									setRedirectPath(`/${path.deposit.root}`);
-								}
+		} else if (userInfo.isLogin) {
+			setLoading(true);
+			api_GetOnlinePaymentList().then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							if (res.data.data.length > 0) {
+								setPaymentList(res.data.data);
 							} else {
-								setPopBox({
-									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: res.data.message
-								});
+								setRedirectPath(`/${path.deposit.root}`);
 							}
-
-							setLoading(false);
-						}
-					},
-					err => {
-						if (isMountedRef.current) {
+						} else {
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
-								content: i18n.msg_ApiServerError
+								content: res.data.message
 							});
-							setLoading(false);
 						}
+
+						setLoading(false);
 					}
-				);
-			}
+				},
+				err => {
+					if (isMountedRef.current) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
+						});
+						setLoading(false);
+					}
+				}
+			);
 		}
 	}, [
 		props.location.state,
@@ -86,37 +86,39 @@ export const Main = props => {
 		i18n.msg_ApiServerError
 	]);
 
-	let rows = paymentList?.map(p => {
+	const rows = paymentList?.map(p => {
 		return (
 			<div key={`onlinebanking-${p.payId}-${p.channelId}`}>
 				<Link to={`${p.payName}`} state={{ ...p }}>
 					<img
 						src={`${config.imgUrl}/common/images/Payment/${p.payName}.png`}
-						alt={p.payName}></img>
+						alt={p.payName}
+					/>
 				</Link>
-				<span>{`${i18n.lbl_Limit} ${number_format(
-					p.minAmount,
-					isConvert(userInfo.currencyId)
-				)} ~ ${number_format(
-					p.maxAmount,
-					isConvert(userInfo.currencyId)
-				)}`}</span>
+				<span>
+					{`${i18n.lbl_Limit} ${number_format(
+						p.minAmount,
+						isConvert(userInfo.currencyId)
+					)} ~ ${number_format(
+						p.maxAmount,
+						isConvert(userInfo.currencyId)
+					)}`}
+				</span>
 			</div>
 		);
 	});
 	if (loading) {
 		return <Loading />;
-	} else {
-		return redirectPath !== null ? (
-			<Redirect to={redirectPath} noThrow />
-		) : pageVerify ? (
-			<DepositWrapper step={2} i18n={i18n}>
-				<div className="depositInBox">
-					<Title i18n={i18n} />
-					<div className="depositImgArea">{rows}</div>
-				</div>
-				<BackBtn i18n={i18n} to={`/${path.deposit.root}`} />
-			</DepositWrapper>
-		) : null;
 	}
+	return redirectPath !== null ? (
+		<Redirect to={redirectPath} noThrow />
+	) : pageVerify ? (
+		<DepositWrapper step={2} i18n={i18n}>
+			<div className="depositInBox">
+				<Title i18n={i18n} />
+				<div className="depositImgArea">{rows}</div>
+			</div>
+			<BackBtn i18n={i18n} to={`/${path.deposit.root}`} />
+		</DepositWrapper>
+	) : null;
 };

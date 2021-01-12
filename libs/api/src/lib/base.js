@@ -1,7 +1,8 @@
 import axios from "axios";
+
 export default class BaseAPI {
 	constructor(data) {
-		let apiUrl = data.apiURL;
+		const apiUrl = data.apiURL;
 		this.loginRequest = axios.create({
 			withCredentials: true,
 			baseURL: `${apiUrl}/api/Site`

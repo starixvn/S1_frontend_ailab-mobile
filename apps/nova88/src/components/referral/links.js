@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-export default ({ refLink, i18n }) => {
+const Link = ({ refLink, i18n }) => {
 	const socialLink = ({ socialMedia }) => {
 		const links = {
 			fb: `https://www.facebook.com/sharer/sharer.php?u=${refLink}&quote=${i18n.lbl_Referral_Welcome}`,
@@ -45,3 +46,14 @@ export default ({ refLink, i18n }) => {
 		</>
 	);
 };
+
+Link.defaultProps = {
+	refLink: ""
+};
+
+Link.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	refLink: PropTypes.string
+};
+
+export default Link;

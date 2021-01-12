@@ -52,17 +52,17 @@ export default () => {
 	const ClickGame = (tpId, gameId, betType) => {
 		GET_ENTER_PAGE({
 			langId: userInfo.langId,
-			tpId: tpId,
-			gameId: gameId,
+			tpId,
+			gameId,
 			isLogin: userInfo.isLogin,
-			betType: betType,
+			betType,
 			loginCallback: () => {
 				setNav(defNavPanel.login);
 			}
 		});
 	};
 
-	let arr = defGames.map(game => {
+	const arr = defGames.map(game => {
 		return (
 			<button
 				className={`gameInBox${game.isNew ? " newicon" : ""}`}

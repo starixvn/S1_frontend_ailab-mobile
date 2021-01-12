@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
+import { Redirect } from "@reach/router";
+import PropTypes from "prop-types";
 import path from "../../path";
 import { navContext, defNavPanel } from "../common/context";
 import { defGameInfo } from "../../datas/productList";
-import { Redirect } from "@reach/router";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import config from "../../config";
 
@@ -84,42 +85,43 @@ const defPlatfrom = [
 	}
 ];
 
-export default ({ langId, isLogin }) => {
+const Platform = ({ langId, isLogin }) => {
 	const { setNav } = useContext(navContext);
 	const [redirectPath, setRedirectPath] = useState(null);
 
-	const ClickItem = ({ path, urlParams, tpId, gameId }) => {
+	const ClickItem = ({ _path, urlParams, tpId, gameId }) => {
 		const loginCallback = () => {
 			setNav(defNavPanel.login);
 		};
 
-		if (path) {
-			setRedirectPath(`/${path}${urlParams}`);
+		if (_path) {
+			setRedirectPath(`/${_path}${urlParams}`);
 		} else {
 			GET_ENTER_PAGE({
 				isLogin,
 				langId,
 				tpId,
 				gameId,
-				loginCallback: loginCallback
+				loginCallback
 			});
 		}
 	};
 
-	let rows = defPlatfrom.map(p => {
-		let key = `other-platform-${p.tpId}-${p.gameId}`;
+	const rows = defPlatfrom.map(p => {
+		const key = `other-platform-${p.tpId}-${p.gameId}`;
 		let params = null;
 		if (p.parameter) {
-			params = Object.keys(p.parameter).map(key => {
-				return `${key}=${p.parameter[key]}`;
+			params = Object.keys(p.parameter).map(_key => {
+				return `${_key}=${p.parameter[key]}`;
 			});
 		}
 
-		let _urlParams = params !== null ? `?${params.join("&")}` : "";
+		const _urlParams = params !== null ? `?${params.join("&")}` : "";
 
 		return (
 			<img
 				key={key}
+				alt={p.imgName}
 				src={`${config.imgUrl}/common/images/logo/${p.imgName}.png`}
 				onClick={ClickItem.bind(this, { ...p, urlParams: _urlParams })}
 			/>
@@ -132,3 +134,14 @@ export default ({ langId, isLogin }) => {
 		<div className="partner-bar">{rows}</div>
 	);
 };
+
+Platform.defaultProps = {
+	isLogin: null
+};
+
+Platform.propTypes = {
+	langId: PropTypes.string.isRequired,
+	isLogin: PropTypes.bool
+};
+
+export default Platform;

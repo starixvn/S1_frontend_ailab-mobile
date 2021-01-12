@@ -1,11 +1,10 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
-import Inputbox from "../common/inputbox.password";
-import { getUrlParameter } from "../common/common";
 import { Redirect } from "@reach/router";
+import Inputbox from "../common/inputbox.password";
 import { LOGOUT } from "../../service/auth";
 import api from "../../service/api";
-import { passwordCheck } from "../common/common";
+import { getUrlParameter, passwordCheck } from "../common/common";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
@@ -19,7 +18,9 @@ export default () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -29,7 +30,7 @@ export default () => {
 	}, [redirectPath]);
 
 	useEffect(() => {
-		let key = getUrlParameter("key");
+		const key = getUrlParameter("key");
 
 		if (key) {
 			if (userInfo.isLogin === false) {
@@ -69,10 +70,8 @@ export default () => {
 					}
 				);
 			}
-		} else {
-			if (isMountedRef.current) {
-				setRedirectPath("/");
-			}
+		} else if (isMountedRef.current) {
+			setRedirectPath("/");
 		}
 	}, [redirectPath, userInfo.isLogin, setPopBox, setUserInfo, i18n]);
 
@@ -81,13 +80,13 @@ export default () => {
 	};
 
 	const EditField = e => {
-		let val = e.target.value;
+		const val = e.target.value;
 		setNewPsw(val);
 	};
 
 	const checkPswHandler = e => {
 		const val = e.target.value;
-		let result = passwordCheck({ val });
+		const result = passwordCheck({ val });
 		setWarning({ status: !result.checked, msg: i18n[result.msg] });
 	};
 

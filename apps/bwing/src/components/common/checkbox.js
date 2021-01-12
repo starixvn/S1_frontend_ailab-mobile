@@ -10,7 +10,7 @@ const Checkbox = props => {
 				onChange={props.onChange}
 			/>
 			<label htmlFor={props.id}>
-				<div></div>
+				<div />
 			</label>
 			{props.children}
 		</div>
