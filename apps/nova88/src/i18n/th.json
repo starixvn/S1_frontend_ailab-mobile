@@ -401,5 +401,6 @@
 	"lbl_SpecialBonusCode":"รหัสโบนัสพิเศษ",
 	"lbl_TurnoverAccmulateHint":"เงินของคุณถูกล็อคไม่ให้โอนออกเนื่องจากข้อกำหนดโรลโอเวอร์ไม่เป็นไปตามข้อกำหนด",
 	"lbl_Achievement":"ความสำเร็จ",
-	"lbl_Referral_rewards":"รางวัล"
+	"lbl_Referral_rewards":"รางวัล",
+	"lbl_Redeposit_Promo":"ทำรายการฝากอีกครั้ง"
 }

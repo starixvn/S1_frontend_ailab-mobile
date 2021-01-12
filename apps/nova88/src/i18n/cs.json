@@ -401,5 +401,6 @@
 	"lbl_SpecialBonusCode":"特别优惠代码",
 	"lbl_TurnoverAccmulateHint":"由于未达要求流水金额故余额无法转出",
 	"lbl_Achievement":"绩效",
-	"lbl_Referral_rewards":"奖励"
+	"lbl_Referral_rewards":"奖励",
+	"lbl_Redeposit_Promo":"再存"
 }

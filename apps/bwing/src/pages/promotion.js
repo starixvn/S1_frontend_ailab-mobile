@@ -22,7 +22,7 @@ export default ({ location }) => {
 				defRuleCols.rollOver,
 				defRuleCols.remainingTime
 			]}
-			navBar={[defNav.All, defNav.FirstDeposit, defNav.FreeBet]}
+			navBar={[defNav.All, defNav.FirstDeposit, defNav.ReDeposit]}
 			formatSetting={{
 				isConvertRequired: true,
 				digits: 2,
