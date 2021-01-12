@@ -309,11 +309,11 @@ const gameList = ({ langId }) => [
 	},
 	{
 		category: "ranking",
-		categoryIcon: "icon32px_top",
+		categoryIcon: "ranking",
 		translateKey: "lbl_Ranking",
 		items: [
 			{
-				icon: "icon32px_top",
+				icon: "ranking",
 				path: path.ranking.root,
 				img: ranking,
 				spanTextKey: "lbl_Ranking",
