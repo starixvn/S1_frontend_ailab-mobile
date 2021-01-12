@@ -185,7 +185,7 @@ const Wallet = ({
 	currencyId,
 	titleKey,
 	balance,
-	GetBalance,
+	func_GetBalance,
 	bonusWallet
 }) => {
 	const _bonusWallet =
@@ -217,7 +217,7 @@ const Wallet = ({
 					{number_format(balance, false)}
 				</div>
 			</div>
-			<ReloadSpin func={GetBalance} />
+			<ReloadSpin func={func_GetBalance} />
 			{_bonusWallet}
 		</div>
 	);
@@ -225,7 +225,7 @@ const Wallet = ({
 
 Wallet.defaultProps = {
 	titleKey: "",
-	GetBalance: null,
+	func_GetBalance: null,
 	bonusWallet: [],
 	currencyId: null,
 	balance: 0
@@ -236,6 +236,6 @@ Wallet.propTypes = {
 	currencyId: PropTypes.number,
 	titleKey: PropTypes.string,
 	balance: PropTypes.number,
-	GetBalance: PropTypes.func,
+	func_GetBalance: PropTypes.func,
 	bonusWallet: PropTypes.arrayOf(PropTypes.object)
 };
