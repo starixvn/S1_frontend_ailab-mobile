@@ -1,11 +1,11 @@
 import BaseAPI from "./base";
 
-export class siteAPI extends BaseAPI {
+export class SiteAPI extends BaseAPI {
 	ExistsUserName = ({ UserName }) =>
-		this.siteRequest.post(`/ExistsUserName`, { UserName: UserName });
+		this.siteRequest.post(`/ExistsUserName`, { UserName });
 
 	ExistsEmail = ({ Email }) =>
-		this.siteRequest.post(`/ExistsEmail`, { Email: Email });
+		this.siteRequest.post(`/ExistsEmail`, { Email });
 
 	// Register = data => this.siteRequest.post(`/Register/`, data);
 	Signup = (data, langId) => this.siteRequest.post(`/Signup/${langId}`, data);
@@ -22,7 +22,7 @@ export class siteAPI extends BaseAPI {
 
 	ForgetPwd = ({ langId, Email }) =>
 		this.siteRequest.post(`/ForgetPwdV2/${langId}`, {
-			Email: Email,
+			Email,
 			flag: 2
 		});
 
@@ -41,4 +41,9 @@ export class siteAPI extends BaseAPI {
 
 	ExistsPhoneNo = ({ AreaCode, Phone }) =>
 		this.siteRequest.post(`/ExistsPhoneNo`, { AreaCode, PhoneNo: Phone });
+
+	GetAffiliateAgent = ({ AffId }) =>
+		this.siteRequest.post(`/GetAffiliateAgent`, {
+			AffId
+		});
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Redirect } from "@reach/router";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
 import Category from "../components/home/category";
@@ -9,7 +10,6 @@ import {
 } from "../components/common/context";
 import { readCookie, setCookie } from "../components/common/common";
 import path from "../path";
-import { Redirect } from "@reach/router";
 import { api_GetWalletInfo } from "../service/api/account";
 import GamePanel from "../components/home/gamePanel";
 import LinksPanel from "../components/home/links";
@@ -29,7 +29,7 @@ const IndexPage = () => {
 	}, [redirectPath]);
 
 	useEffect(() => {
-		let cookieName = `balanceHint${userInfo.userName}`;
+		const cookieName = `balanceHint${userInfo.userName}`;
 		if (
 			userInfo.currencyId &&
 			userInfo.userName &&
@@ -38,13 +38,13 @@ const IndexPage = () => {
 			setCookie(cookieName, "1", 1);
 			api_GetWalletInfo().then(res => {
 				if (res.data.errorCode === 0) {
-					let data = res.data.data;
-					let mainWallet = {
+					const { data } = res.data;
+					const mainWallet = {
 						id: 0,
 						displayKey: "lbl_MainWallet",
 						balance: data?.balance
 					};
-					let tpWalletsArr = data?.tpWallets.map(i => {
+					const tpWalletsArr = data?.tpWallets.map(i => {
 						return {
 							id: i.tpId,
 							displayKey: i.displayKey,
@@ -52,7 +52,7 @@ const IndexPage = () => {
 						};
 					});
 
-					let hasBalance =
+					const hasBalance =
 						mainWallet.balance ||
 						tpWalletsArr?.filter(t => {
 							return t.balance > 0;
@@ -94,12 +94,12 @@ const IndexPage = () => {
 									<button
 										className="cancel"
 										onClick={ClosePopUp}>
-										{i18n["lbl_Later"]}
+										{i18n.lbl_Later}
 									</button>
 									<button
 										onClick={RedirectToDeposit}
 										className="submit">
-										{i18n["lbl_DepositNow"]}
+										{i18n.lbl_DepositNow}
 									</button>
 								</div>
 							)

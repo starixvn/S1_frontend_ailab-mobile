@@ -1,12 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 
-export default props => {
+const ReloadSpin = props => {
 	const [spin, setSpin] = useState(false);
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	const clickSpin = () => {
@@ -24,6 +27,13 @@ export default props => {
 	return (
 		<button
 			className={`icon icon-spinner11 clickBtn${spin ? " open" : ""}`}
-			onClick={clickSpin}></button>
+			onClick={clickSpin}
+		/>
 	);
 };
+
+ReloadSpin.propTypes = {
+	func: PropTypes.func.isRequired
+};
+
+export default ReloadSpin;

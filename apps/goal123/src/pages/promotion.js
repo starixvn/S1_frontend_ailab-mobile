@@ -17,7 +17,11 @@ export default ({ location }) => {
 			userInfo={userInfo}
 			i18n={i18n}
 			setPopBox={setPopBox}
-			formatSetting={{ isConvertRequired: true, digits: 0 }}
+			formatSetting={{
+				isConvertRequired: true,
+				digits: 2,
+				formatRequired: false
+			}}
 			location={location}
 			navBar={[defNav.All, defNav.FirstDeposit, defNav.FreeBet]}
 		/>

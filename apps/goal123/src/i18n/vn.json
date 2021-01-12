@@ -281,9 +281,9 @@
 	"msg_NeedAccountNo": "Cần nhập số tài khoản",
 	"msg_NoData": "Không có dữ liệu",
 	"msg_OTPSendCode": "Chúng tôi đã gửi mã xác minh đến số điện thoại đăng ký của bạn. Vui lòng kiểm tra và nhập mã xác minh bên dưới.",
-	"msg_PasswordLength": "Mật khẩu phải có từ 6 đến 18 ký tự",
+	"msg_PasswordLength": "Mật khẩu phải có từ 6 đến 15 ký tự",
 	"msg_PasswordReq": "Mật khẩu là bắt buộc",
-	"msg_PasswordVaildate": "6-18 ký tự chữ và số (A-Z, a-z, 0-9) hoặc Ký tự đặc biệt @$*!%#?&",
+	"msg_PasswordVaildate": "* Mật khẩu phải có từ 6-15 ký tự, bao gồm cả chữ, số và ký tự đặc biệt (!@#$%^&*).",
 	"msg_ReferenceNumber": "Reference number",
 	"msg_SelectBirthDay": "Vui lòng chọn ngày sinh của bạn.",
 	"msg_SelectFile": "Select File",
@@ -382,5 +382,9 @@
 	"lbl_DownloadApp":"Tải App",
 	"lbl_DownloadAppHint":"Cược mọi lúc mọi nơi",
 	"lbl_Downloads":"Tải về",
-	"lbl_APPDownload":"Tải ứng dụng"
+	"lbl_APPDownload":"Tải ứng dụng",
+	"lbl_TurnoverAccmulateHint":"Bạn cần hoành thành doanh thu cược yêu cầu của khuyến mãi để thực hiện chuyển quỹ",
+	"lbl_please_select_from_wallet":"Vui lòng chọn ví tiền phù hợp",
+	"lbl_please_select_to_wallet":"Vui lòng chọn quỹ phù hợp"
+
 }

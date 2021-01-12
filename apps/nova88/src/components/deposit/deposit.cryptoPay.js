@@ -1,8 +1,9 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import Step from "./step";
+import PropTypes from "prop-types";
 import { Link, Redirect } from "@reach/router";
 import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import path from "Path";
+import Step from "./step";
 import PageVerify from "./deposit.pageVerify";
 import Loading from "../common/loading";
 import config from "../../config";
@@ -23,7 +24,9 @@ export const Main = props => {
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	PageVerify(
@@ -82,7 +85,7 @@ export const Main = props => {
 		i18n.msg_ApiServerError
 	]);
 
-	let rows = paymentList?.map(p => {
+	const rows = paymentList?.map(p => {
 		return (
 			<div key={`deposit-cryptoPay-${p.groupId}-${p.channelId}`}>
 				<Link state={p} to={p.channelName.replace(" ", "")}>
@@ -98,21 +101,28 @@ export const Main = props => {
 
 	if (loading) {
 		return <Loading />;
-	} else {
-		return redirectPath !== null ? (
-			<Redirect to={redirectPath} noThrow />
-		) : pageVerify ? (
-			<>
-				<Step step={2} />
-				<div className="depositType">{rows}</div>
-				<div className="btn-group">
-					<Link to="../" className="white">
-						{i18n.lbl_Back}
-					</Link>
-				</div>
-			</>
-		) : (
-			<></>
-		);
 	}
+	return redirectPath !== null ? (
+		<Redirect to={redirectPath} noThrow />
+	) : pageVerify ? (
+		<>
+			<Step step={2} />
+			<div className="depositType">{rows}</div>
+			<div className="btn-group">
+				<Link to="../" className="white">
+					{i18n.lbl_Back}
+				</Link>
+			</div>
+		</>
+	) : (
+		<></>
+	);
+};
+
+Main.defaultProps = {
+	location: {}
+};
+
+Main.propTypes = {
+	location: PropTypes.objectOf(PropTypes.any)
 };

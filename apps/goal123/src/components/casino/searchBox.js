@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { i18nContext } from "../common/context";
 import GameTypes from "./defGameType";
 import Dropdown from "../common/dropdown";
@@ -6,6 +7,7 @@ import Dropdown from "../common/dropdown";
 const SearchBox = props => {
 	const { i18n } = useContext(i18nContext);
 	const [openAdvance, setOpenAdvance] = useState(false);
+	const { TpList, searchText, provider, gameType } = props;
 
 	const gameTypeList = [
 		{ id: null, displayText: i18n.lbl_AllGameType },
@@ -16,8 +18,8 @@ const SearchBox = props => {
 
 	const providerList = [
 		{ id: null, displayText: i18n.lbl_AllProvider },
-		...Object.keys(props.TpList)?.map(k => {
-			let d = props.TpList[k];
+		...Object.keys(TpList)?.map(k => {
+			const d = TpList[k];
 			return {
 				id: d.value,
 				displayText: d.displayKey ? i18n[d.displayKey] : d.displayText
@@ -50,7 +52,7 @@ const SearchBox = props => {
 
 	const SelectProvider = idx => {
 		props.EditSearchField("provider", {
-			idx: idx,
+			idx,
 			value: providerList[idx].id,
 			init: true
 		});
@@ -58,7 +60,7 @@ const SearchBox = props => {
 
 	const SelectGameType = idx => {
 		props.EditSearchField("gameType", {
-			idx: idx,
+			idx,
 			value: gameTypeList[idx].id
 		});
 	};
@@ -66,16 +68,17 @@ const SearchBox = props => {
 	return (
 		<>
 			<div className="inputBox">
-				<i className="icon icon-search"></i>
+				<i className="icon icon-search" />
 				<input
 					className="search"
 					placeholder={i18n.lbl_SearchGames}
-					value={props.searchText}
+					value={searchText}
 					onChange={EditField.bind(this, "searchText")}
 				/>
 				<button
 					className="icon icon-equalizer filter"
-					onClick={HandleOpenAdvance}></button>
+					onClick={HandleOpenAdvance}
+				/>
 			</div>
 			<div className={`filterSelect${openAdvance ? " open" : ""}`}>
 				<div className="inputBox">
@@ -83,9 +86,9 @@ const SearchBox = props => {
 						i18n={i18n}
 						mainKey="casino-gamePlatform"
 						options={providerList}
-						selectedIdx={props.provider?.idx}
+						selectedIdx={provider?.idx}
 						onSelectItem={SelectProvider}
-						placeholder={"Game Platform"}
+						placeholder="Game Platform"
 					/>
 				</div>
 				<div className="inputBox">
@@ -93,14 +96,28 @@ const SearchBox = props => {
 						i18n={i18n}
 						mainKey="casino-gamePlatform"
 						options={gameTypeList}
-						selectedIdx={props.gameType?.idx}
+						selectedIdx={gameType?.idx}
 						onSelectItem={SelectGameType}
-						placeholder={"Game Type"}
+						placeholder="Game Type"
 					/>
 				</div>
 			</div>
 		</>
 	);
+};
+
+SearchBox.defaultProps = {
+	searchText: "",
+	DefaultProvider: null
+};
+
+SearchBox.propTypes = {
+	TpList: PropTypes.objectOf(PropTypes.any).isRequired,
+	provider: PropTypes.objectOf(PropTypes.any).isRequired,
+	DefaultProvider: PropTypes.objectOf(PropTypes.any),
+	EditSearchField: PropTypes.func.isRequired,
+	searchText: PropTypes.string,
+	gameType: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
 export default SearchBox;

@@ -23,7 +23,7 @@ export default () => {
 	};
 	const { selected, handleSelect } = useHandleSelect({
 		defaultSelect: defBtns.Event.value,
-		handleLogin: handleLogin,
+		handleLogin,
 		isLogin
 	});
 

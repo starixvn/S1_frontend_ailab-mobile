@@ -3,7 +3,7 @@ import { getUrlParameter } from "../common/common";
 import path from "../../path";
 
 export const redirectToPrev = (i18n, setPopBox, closePopbox) => {
-	let _prevPage = getUrlParameter("prevPage");
+	const _prevPage = getUrlParameter("prevPage");
 	if (_prevPage === path.withdrawal.root) {
 		setPopBox({
 			isOpen: true,
@@ -13,14 +13,14 @@ export const redirectToPrev = (i18n, setPopBox, closePopbox) => {
 			btnBar: (
 				<div className="btn-group">
 					<button className="blue" onClick={closePopbox}>
-						{i18n["lbl_Cancel"]}
+						{i18n.lbl_Cancel}
 					</button>
 					<button
 						className="orange"
 						onClick={closePopbox.bind(null, {
 							_redirectPath: `/${path.withdrawal.root}`
 						})}>
-						{i18n["lbl_Confirm"]}
+						{i18n.lbl_Confirm}
 					</button>
 				</div>
 			)
@@ -34,7 +34,7 @@ export const redirectToPrev = (i18n, setPopBox, closePopbox) => {
 			btnBar: (
 				<div className="btn-group">
 					<button className="blue" onClick={closePopbox}>
-						{i18n["lbl_Cancel"]}
+						{i18n.lbl_Cancel}
 					</button>
 					<button
 						className="orange"
@@ -43,7 +43,7 @@ export const redirectToPrev = (i18n, setPopBox, closePopbox) => {
 								path.promotionInfo.root
 							}?BonusCode=${getUrlParameter("BonusCode")}`
 						})}>
-						{i18n["lbl_Confirm"]}
+						{i18n.lbl_Confirm}
 					</button>
 				</div>
 			)
@@ -57,14 +57,14 @@ export const redirectToPrev = (i18n, setPopBox, closePopbox) => {
 			btnBar: (
 				<div className="btn-group">
 					<button className="blue" onClick={closePopbox}>
-						{i18n["lbl_Cancel"]}
+						{i18n.lbl_Cancel}
 					</button>
 					<button
 						className="orange"
 						onClick={closePopbox.bind(null, {
 							_redirectPath: `/${path.deposit.root}`
 						})}>
-						{i18n["lbl_Confirm"]}
+						{i18n.lbl_Confirm}
 					</button>
 				</div>
 			)

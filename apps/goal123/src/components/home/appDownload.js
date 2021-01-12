@@ -13,7 +13,8 @@ export default ({ i18n, cookieName, langId, setAppHint }) => {
 			<div className="left">
 				<button
 					className="icon icon-close"
-					onClick={handleDownloadHint}></button>
+					onClick={handleDownloadHint}
+				/>
 				<img src={appIng} alt="APP Download icon" />
 				<div>
 					{i18n.lbl_DownloadApp}

@@ -16,7 +16,7 @@ const IndexPage = () => {
 		};
 	}, []);
 
-	let row =
+	const row =
 		datas &&
 		Object.keys(datas).map(key => {
 			return (

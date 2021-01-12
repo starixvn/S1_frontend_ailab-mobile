@@ -1,10 +1,10 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
-import Inputbox from "../common/inputbox.password";
-import { getUrlParameter } from "../common/common";
 import { Redirect } from "@reach/router";
+import Inputbox from "../common/inputbox.password";
 import { LOGOUT } from "../../service/auth";
 import api from "../../service/api";
+import { getUrlParameter, passwordCheck } from "../common/common";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
@@ -18,7 +18,9 @@ export default () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -28,7 +30,7 @@ export default () => {
 	}, [redirectPath]);
 
 	useEffect(() => {
-		let key = getUrlParameter("key");
+		const key = getUrlParameter("key");
 
 		if (key) {
 			if (userInfo.isLogin === false) {
@@ -68,47 +70,29 @@ export default () => {
 					}
 				);
 			}
-		} else {
-			if (isMountedRef.current) {
-				setRedirectPath("/");
-			}
+		} else if (isMountedRef.current) {
+			setRedirectPath("/");
 		}
-	}, [redirectPath, userInfo.isLogin, setPopBox, setUserInfo]);
+	}, [redirectPath, userInfo.isLogin, setPopBox, setUserInfo, i18n]);
 
 	const showPswHandler = () => {
 		setPswState(!pswState);
 	};
 
 	const EditField = e => {
-		let val = e.target.value;
+		const val = e.target.value;
 		setNewPsw(val);
 	};
 
 	const checkPswHandler = e => {
-		let val = e.target.value;
-		let checked = true;
-		let message = "";
-		const regx = /^[a-zA-Z0-9@$*!%#?&]*$/;
-
-		if (val === "") {
-			checked = false;
-			message = i18n.msg_PasswordReq;
-		} else if (val != null) {
-			if (val.length < 6 || val.length > 18) {
-				checked = false;
-				message = i18n.msg_PasswordLength;
-			} else if (!regx.test(val)) {
-				checked = false;
-				message = i18n.msg_PasswordVaildate;
-			}
-		}
-
-		setWarning({ status: !checked, msg: message });
+		const val = e.target.value;
+		const result = passwordCheck({ val });
+		setWarning({ status: !result.checked, msg: i18n[result.msg] });
 	};
 
 	const clickSubmit = () => {
 		if (newPsw === "") {
-			setWarning({ status: true, msg: i18n.msg_PasswordVaildate });
+			setWarning({ status: true, msg: i18n.msg_PasswordReq });
 		} else if (warning.status === false) {
 			api.accountStrict.ResetPassword({ NewPassword: newPsw }).then(
 				res => {

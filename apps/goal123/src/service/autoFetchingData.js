@@ -1,4 +1,4 @@
-//import useInterval from "../components/hook/useInterval";
+// import useInterval from "../components/hook/useInterval";
 import { useEffect, useRef } from "react";
 
 // export default (
@@ -95,20 +95,20 @@ export default (
 	useEffect(() => {
 		const ScrollBarListener = () => {
 			if (_clickSubmit.current) {
-				let window_height =
+				const window_height =
 					window.innerHeight ||
 					document.documentElement.clientHeight ||
 					document.body.clientHeight;
 
-				let window_scrollTop =
+				const window_scrollTop =
 					window.pageYOffset ||
 					document.documentElement.scrollTop ||
 					document.body.scrollTop;
 
-				let body = document.body;
-				let html = document.documentElement;
+				const { body } = document;
+				const html = document.documentElement;
 
-				let document_height =
+				const document_height =
 					Math.max(
 						body.scrollHeight,
 						body.offsetHeight,
@@ -122,7 +122,7 @@ export default (
 					window_height + window_scrollTop >= document_height
 				) {
 					trigger.current = true;
-					let pageNumber = _pageInfo.current.pageNumber + 1;
+					const pageNumber = _pageInfo.current.pageNumber + 1;
 
 					if (
 						!_processing.current &&

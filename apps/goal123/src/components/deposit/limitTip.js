@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { number_format } from "../common/common";
 
-export default ({
+const LimitTip = ({
 	minAmount,
 	maxAmount,
 	displayTextLimit,
@@ -23,3 +24,20 @@ export default ({
 		</div>
 	);
 };
+
+LimitTip.defaultProps = {
+	minAmount: null,
+	maxAmount: null,
+	displayTextLimit: "",
+	displayTextUnLimit: ""
+};
+
+LimitTip.propTypes = {
+	minAmount: PropTypes.number,
+	maxAmount: PropTypes.number,
+	displayTextLimit: PropTypes.string,
+	displayTextUnLimit: PropTypes.string,
+	_isConvert: PropTypes.bool.isRequired
+};
+
+export default LimitTip;

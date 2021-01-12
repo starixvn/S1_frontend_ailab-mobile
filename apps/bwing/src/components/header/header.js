@@ -1,86 +1,32 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "@reach/router";
 import {
 	userInfoContext,
 	i18nContext,
-	walletInfoContext,
 	popBoxContext,
 	defNavPanel,
 	navContext
 } from "../common/context";
-import { api_GetWalletInfo } from "../../service/api/account";
 import JoinPanel from "../join/join";
 import LoginPanel from "../login/login";
-import { number_format } from "../common/common";
 import path from "../../path";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import Menu from "./header.menu";
 import SubMenu from "./submenu";
 import { LOGOUT } from "../../service/auth";
 import Logo from "../img/logo";
-
-const useGetBalance = ({ isLogin }) => {
-	const { setPopBox } = useContext(popBoxContext);
-	const { walletInfo, setWalletInfo } = useContext(walletInfoContext);
-	const { i18n } = useContext(i18nContext);
-	const isMountedRef = useRef(null);
-
-	useEffect(() => {
-		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
-	});
-
-	useEffect(() => {
-		if (isLogin) {
-			api_GetWalletInfo().then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							let _data = res.data.data;
-							let mainWalletBalance = _data.balance;
-
-							let otherWalletBalance = _data.tpWallets?.reduce(
-								(prev, curr) => {
-									return prev + curr.balance;
-								},
-								0
-							);
-
-							setWalletInfo(prevState => ({
-								...prevState,
-								allBalance:
-									mainWalletBalance + otherWalletBalance
-							}));
-						} else {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: res.data.message
-							});
-						}
-					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-					}
-				}
-			);
-		}
-	}, [isLogin, setPopBox, setWalletInfo]);
-
-	return { walletInfo };
-};
+import { useGetBalance } from "./hook";
 
 export default ({ hideLogo, title, showMenuBar }) => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
-	const { walletInfo } = useGetBalance(userInfo);
+	const { setPopBox } = useContext(popBoxContext);
+	const { allBalance } = useGetBalance({
+		isLogin: userInfo.isLogin,
+		i18n,
+		setPopBox
+	});
 
 	const OnClickProduct = ({ tpId, gameId, langId, isLogin }) => {
 		return GET_ENTER_PAGE({
@@ -125,18 +71,19 @@ export default ({ hideLogo, title, showMenuBar }) => {
 			<div className="headerT">
 				<div className="headerTLogout">
 					<div className="close noPos" onClick={onClickSubMenu}>
-						<span></span>
-						<span></span>
-						<span></span>
-						<span></span>
-						<span></span>
-						<span></span>
+						<span />
+						<span />
+						<span />
+						<span />
+						<span />
+						<span />
 					</div>
 					{headerTitleBar}
 					{userInfo.isLogin === true ? (
 						<button
 							className="icon icon-exit"
-							onClick={handleLogout}></button>
+							onClick={handleLogout}
+						/>
 					) : (
 						<BeforeLogin i18n={i18n} />
 					)}
@@ -146,11 +93,7 @@ export default ({ hideLogo, title, showMenuBar }) => {
 					i18n={i18n}
 					currencyId={userInfo.currencyId}
 					userName={userInfo.userName}
-					allBalance={
-						!walletInfo.allBalance
-							? 0
-							: number_format(walletInfo.allBalance, false)
-					}
+					allBalance={allBalance}
 				/>
 			</div>
 			{menu}

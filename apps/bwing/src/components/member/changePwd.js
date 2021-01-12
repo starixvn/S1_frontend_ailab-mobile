@@ -4,6 +4,7 @@ import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
 import { api_ChangePassword } from "../../service/api/account";
 import path from "../../path";
 import Inputbox from "../common/inputbox.password";
+import { passwordCheck } from "../common/common";
 
 const initState = {
 	oldPsw: "",
@@ -38,7 +39,9 @@ export default () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -60,46 +63,36 @@ export default () => {
 		}));
 	};
 
-	const passwordCheck = val => {
-		let checked = false;
-		let message = "";
-
-		const regx = /^[a-zA-Z0-9@$*!%#?&]*$/;
-		if (val === "") {
-			checked = false;
-			message = i18n.msg_PasswordReq;
-		} else if (val !== null) {
-			if (val.length < 6 || val.length > 18) {
-				checked = false;
-				message = i18n["msg_PasswordLength"];
-			} else if (!regx.test(val)) {
-				checked = false;
-				message = i18n["msg_PasswordVaildate"];
-			} else {
-				checked = true;
-			}
-		}
-
-		return { checked, message };
-	};
-
 	const checkPswHandler = (colName, e) => {
 		const val = e.target.value;
-		let result = passwordCheck(val);
+		const result =
+			colName === "oldPsw"
+				? pwdEmptyCheck({ val })
+				: passwordCheck({ val });
 
 		setWarningState(prevState => {
 			return {
 				...prevState,
 				[colName]: {
 					status: !result.checked,
-					msg: result.message
+					msg: i18n[result.message]
 				}
 			};
 		});
 	};
 
+	const pwdEmptyCheck = ({ val }) => {
+		let checked = true;
+		let message = "";
+		if (!val) {
+			checked = false;
+			message = "msg_PasswordReq";
+		}
+		return { checked, message };
+	};
+
 	const EditField = (colName, e) => {
-		let value = e.target.value;
+		const { value } = e.target;
 
 		setUserValueState(prevState => ({
 			...prevState,
@@ -108,8 +101,8 @@ export default () => {
 	};
 
 	const clickSubmit = () => {
-		let oldPsw = passwordCheck(userValueState.oldPsw);
-		let newPsw = passwordCheck(userValueState.newPsw);
+		const oldPsw = pwdEmptyCheck({ val: userValueState.oldPsw });
+		const newPsw = passwordCheck({ val: userValueState.newPsw });
 
 		if (oldPsw.checked && newPsw.checked) {
 			const closePopbox = status => {
@@ -139,7 +132,7 @@ export default () => {
 												null,
 												"success"
 											)}>
-											{i18n["lbl_Confirm"]}
+											{i18n.lbl_Confirm}
 										</button>
 									</div>
 								)
@@ -155,7 +148,7 @@ export default () => {
 										<button
 											className="blue"
 											onClick={closePopbox}>
-											{i18n["lbl_Confirm"]}
+											{i18n.lbl_Confirm}
 										</button>
 									</div>
 								)
@@ -174,14 +167,12 @@ export default () => {
 				}
 			);
 		} else {
-			setWarningState(prevState => {
-				return {
-					oldPsw: {
-						status: !oldPsw.checked,
-						msg: oldPsw.message
-					},
-					newPsw: { status: !newPsw.checked, msg: newPsw.message }
-				};
+			setWarningState({
+				oldPsw: {
+					status: !oldPsw.checked,
+					msg: i18n[oldPsw.message]
+				},
+				newPsw: { status: !newPsw.checked, msg: i18n[newPsw.message] }
 			});
 		}
 	};

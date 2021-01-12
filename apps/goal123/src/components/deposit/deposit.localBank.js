@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
-import Step from "./step";
 import { Link, Redirect } from "@reach/router";
+import moment from "moment";
+import PropTypes from "prop-types";
+import Step from "./step";
 import DropdownIMG from "../common/dropdown.image";
 import config from "../../config";
 import {
@@ -16,7 +18,6 @@ import {
 	api_DepositReqWireTransfer,
 	api_GetBankInfoOffList
 } from "../../service/api/payment";
-import moment from "moment";
 import PageVerify from "./deposit.pageVerify";
 import path from "../../path";
 import Loading from "../common/loading";
@@ -52,7 +53,9 @@ export const Main = props => {
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	PageVerify(
@@ -66,8 +69,8 @@ export const Main = props => {
 
 	useEffect(() => {
 		if (props.location.state?.paymentList) {
-			let datas = props.location.state.paymentList.map(b => {
-				let { bankLogo, sysId, bankName, ...rest } = b;
+			const datas = props.location.state.paymentList.map(b => {
+				const { bankLogo, sysId, bankName, ...rest } = b;
 				return {
 					...rest,
 					image: bankLogo,
@@ -80,56 +83,54 @@ export const Main = props => {
 				setBankList(datas);
 				setProcessing(false);
 			}
-		} else {
-			if (userInfo.isLogin) {
-				setLoading(true);
-				api_GetBankInfoOffList().then(
-					res => {
-						if (isMountedRef.current) {
-							if (res.data.errorCode === 0) {
-								let datas = res.data.data.map(b => {
-									let {
-										bankLogo,
-										sysId,
-										bankName,
-										...rest
-									} = b;
-									return {
-										...rest,
-										image: bankLogo,
-										id: sysId,
-										displayText: bankName
-									};
-								});
-								if (datas.length > 0) {
-									setBankList(datas);
-								} else {
-									setRedirectPath(`/${path.deposit.root}`);
-								}
+		} else if (userInfo.isLogin) {
+			setLoading(true);
+			api_GetBankInfoOffList().then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							const datas = res.data.data.map(b => {
+								const {
+									bankLogo,
+									sysId,
+									bankName,
+									...rest
+								} = b;
+								return {
+									...rest,
+									image: bankLogo,
+									id: sysId,
+									displayText: bankName
+								};
+							});
+							if (datas.length > 0) {
+								setBankList(datas);
+							} else {
+								setRedirectPath(`/${path.deposit.root}`);
 							}
+						}
 
-							setLoading(false);
-						}
-					},
-					err => {
-						if (isMountedRef.current) {
-							setLoading(false);
-						}
+						setLoading(false);
 					}
-				);
-			}
+				},
+				err => {
+					if (isMountedRef.current) {
+						setLoading(false);
+					}
+				}
+			);
 		}
 	}, [props.location.state, userInfo.isLogin]);
 
 	const SelectBank = idx => {
 		setSelBank({
-			idx: idx,
+			idx,
 			bank: bankList[idx]
 		});
 	};
 
 	const VaildAmount = _amount => {
-		let result = checkAmount(
+		const result = checkAmount(
 			_amount,
 			selBank?.bank?.minAmount,
 			selBank?.bank?.maxAmount,
@@ -157,7 +158,7 @@ export const Main = props => {
 	};
 
 	const EditField = (col, e) => {
-		let value = e.target.value;
+		const { value } = e.target;
 
 		if (col === "amount") {
 			if (selBank.bank) {
@@ -186,13 +187,13 @@ export const Main = props => {
 
 	const ClickSubmit = () => {
 		if (!processing) {
-			let result = VaildAmount(amount) && accountName;
+			const result = VaildAmount(amount) && accountName;
 
 			if (result && pageVerify) {
-				const RedirectToNext = (real_amount, sysId) => {
+				const RedirectToNext = (realAmount, sysId) => {
 					api_DepositReqWireTransfer({
-						amount: real_amount,
-						sysId: sysId
+						amount: realAmount,
+						sysId
 					}).then(
 						res => {
 							if (isMountedRef.current) {
@@ -205,7 +206,7 @@ export const Main = props => {
 										)}${moment().format("HH:mm")}`,
 										isOpen: true,
 										amount: number_format(
-											real_amount,
+											realAmount,
 											_isConvert
 										),
 										closeCallBack: () =>
@@ -240,7 +241,7 @@ export const Main = props => {
 				};
 
 				const openConfirmPopBox = () => {
-					let real_amount = _isConvert
+					const realAmount = _isConvert
 						? Number(amount) * 1000
 						: Number(amount);
 					setPopBox({
@@ -255,7 +256,7 @@ export const Main = props => {
 								/>
 								<div className="tip">
 									<span>{i18n.lbl_DepositAmount} :</span>{" "}
-									{number_format(real_amount, _isConvert)}
+									{number_format(realAmount, _isConvert)}
 								</div>
 							</>
 						),
@@ -270,25 +271,25 @@ export const Main = props => {
 											isOpen: false
 										}))
 									}>
-									{i18n["lbl_Cancel"]}
+									{i18n.lbl_Cancel}
 								</button>
 								<button
 									className="orange"
 									onClick={RedirectToNext.bind(
 										this,
-										real_amount,
+										realAmount,
 										selBank.bank.id
 									)}>
-									{i18n["lbl_Submit"]}
+									{i18n.lbl_Submit}
 								</button>
 							</div>
 						)
 					});
 				};
 
-				const setAccountName = () => {
+				const SetAccountName = () => {
 					api_SetAccountName({
-						name: accountName ? accountName : userInfo.accountName
+						name: accountName || userInfo.accountName
 					}).then(
 						res => {
 							if (isMountedRef.current) {
@@ -299,7 +300,7 @@ export const Main = props => {
 									if (res.data.errorCode === 0) {
 										setUserInfo(prevState => ({
 											...prevState,
-											accountName: accountName
+											accountName
 										}));
 									}
 									openConfirmPopBox();
@@ -314,14 +315,12 @@ export const Main = props => {
 												<button
 													className="blue"
 													onClick={() =>
-														setPopBox(
-															prevState => ({
-																...prevState,
-																isOpen: false
-															})
-														)
+														setPopBox(prev => ({
+															...prev,
+															isOpen: false
+														}))
 													}>
-													{i18n["lbl_Cancel"]}
+													{i18n.lbl_Cancel}
 												</button>
 											</div>
 										)
@@ -357,18 +356,18 @@ export const Main = props => {
 											isOpen: false
 										}))
 									}>
-									{i18n["lbl_Cancel"]}
+									{i18n.lbl_Cancel}
 								</button>
 								<button
 									className="orange"
-									onClick={setAccountName}>
-									{i18n["lbl_Submit"]}
+									onClick={SetAccountName}>
+									{i18n.lbl_Submit}
 								</button>
 							</div>
 						)
 					});
 				} else {
-					setAccountName();
+					SetAccountName();
 				}
 			} else {
 				setWarning({
@@ -388,61 +387,68 @@ export const Main = props => {
 
 	if (loading) {
 		return <Loading />;
-	} else {
-		return redirectPath !== null ? (
-			<Redirect to={redirectPath} noThrow />
-		) : pageVerify ? (
-			<>
-				<Step step={3} total={2} />
-				<div className="inputBox">
-					<DropdownIMG
-						mainKey={"localBank-bankList"}
-						onSelectItem={SelectBank}
-						options={bankList}
-						selectedIdx={selBank?.idx}
-						i18n={i18n}
-						ImgURL={`${config.imgUrl}/common/images/BankLogo/`}
-						className="bankLogo"
-					/>
-					<LimitTip
-						displayTextLimit={i18n.lbl_Limit}
-						displayTextUnLimit={i18n.lbl_Unlimited}
-						minAmount={selBank?.bank?.minAmount}
-						maxAmount={selBank?.bank?.maxAmount}
-						_isConvert={_isConvert}
-					/>
-				</div>
-				{!userInfo.accountName ? (
-					<>
-						<InputBox
-							icon="icon-member"
-							placeholder={i18n["lbl_RealName"]}
-							value={accountName}
-							onChange={EditField.bind(this, "accountName")}
-							Warning={warning.accountName}
-						/>
-						<div className="info">
-							<div className="open">{i18n.msg_RealnameTip}</div>
-						</div>
-					</>
-				) : null}
-				<InputBox
-					icon="icon-pencil"
-					placeholder={i18n["lbl_Amount"]}
-					value={amount}
-					inputType="tel"
-					onChange={EditField.bind(this, "amount")}
-					Warning={warning.amount}
-				/>
-				<div className="btn-group">
-					<Link to="../" className="white">
-						{i18n.lbl_Back}
-					</Link>
-					<button className="orange" onClick={ClickSubmit}>
-						{i18n.lbl_Submit}
-					</button>
-				</div>
-			</>
-		) : null;
 	}
+	return redirectPath !== null ? (
+		<Redirect to={redirectPath} noThrow />
+	) : pageVerify ? (
+		<>
+			<Step step={3} total={2} />
+			<div className="inputBox">
+				<DropdownIMG
+					mainKey="localBank-bankList"
+					onSelectItem={SelectBank}
+					options={bankList}
+					selectedIdx={selBank?.idx}
+					i18n={i18n}
+					ImgURL={`${config.imgUrl}/common/images/BankLogo/`}
+					className="bankLogo"
+				/>
+				<LimitTip
+					displayTextLimit={i18n.lbl_Limit}
+					displayTextUnLimit={i18n.lbl_Unlimited}
+					minAmount={selBank?.bank?.minAmount}
+					maxAmount={selBank?.bank?.maxAmount}
+					_isConvert={_isConvert}
+				/>
+			</div>
+			{!userInfo.accountName ? (
+				<>
+					<InputBox
+						icon="icon-member"
+						placeholder={i18n.lbl_RealName}
+						value={accountName}
+						onChange={EditField.bind(this, "accountName")}
+						Warning={warning.accountName}
+					/>
+					<div className="info">
+						<div className="open">{i18n.msg_RealnameTip}</div>
+					</div>
+				</>
+			) : null}
+			<InputBox
+				icon="icon-pencil"
+				placeholder={i18n.lbl_Amount}
+				value={amount}
+				inputType="tel"
+				onChange={EditField.bind(this, "amount")}
+				Warning={warning.amount}
+			/>
+			<div className="btn-group">
+				<Link to="../" className="white">
+					{i18n.lbl_Back}
+				</Link>
+				<button className="orange" onClick={ClickSubmit}>
+					{i18n.lbl_Submit}
+				</button>
+			</div>
+		</>
+	) : null;
+};
+
+Main.defaultProps = {
+	location: null
+};
+
+Main.propTypes = {
+	location: PropTypes.objectOf(PropTypes.string)
 };

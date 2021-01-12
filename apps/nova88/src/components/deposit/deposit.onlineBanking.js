@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
-import Step from "./step";
+import PropTypes from "prop-types";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
 import { Link, Redirect } from "@reach/router";
+import Step from "./step";
 import PageVerify from "./deposit.pageVerify";
 import path from "../../path";
 import Loading from "../common/loading";
@@ -21,7 +22,9 @@ export const Main = props => {
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	PageVerify(
@@ -39,41 +42,39 @@ export const Main = props => {
 				setPaymentList(props.location.state.paymentList);
 				setLoading(false);
 			}
-		} else {
-			if (userInfo.isLogin) {
-				setLoading(true);
-				api.payment.GetOnlinePaymentList().then(
-					res => {
-						if (isMountedRef.current) {
-							if (res.data.errorCode === 0) {
-								if (res.data.data.length > 0) {
-									setPaymentList(res.data.data);
-								} else {
-									setRedirectPath(`/${path.deposit.root}`);
-								}
+		} else if (userInfo.isLogin) {
+			setLoading(true);
+			api.payment.GetOnlinePaymentList().then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							if (res.data.data.length > 0) {
+								setPaymentList(res.data.data);
 							} else {
-								setPopBox({
-									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: res.data.message
-								});
+								setRedirectPath(`/${path.deposit.root}`);
 							}
-
-							setLoading(false);
-						}
-					},
-					err => {
-						if (isMountedRef.current) {
+						} else {
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
-								content: i18n.msg_ApiServerError
+								content: res.data.message
 							});
-							setLoading(false);
 						}
+
+						setLoading(false);
 					}
-				);
-			}
+				},
+				err => {
+					if (isMountedRef.current) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
+						});
+						setLoading(false);
+					}
+				}
+			);
 		}
 	}, [
 		props.location.state,
@@ -83,7 +84,7 @@ export const Main = props => {
 		i18n.msg_ApiServerError
 	]);
 
-	let rows = paymentList?.map(p => {
+	const rows = paymentList?.map(p => {
 		return (
 			<div key={`onlinebanking-${p.payId}-${p.channelId}`}>
 				<Link
@@ -102,21 +103,28 @@ export const Main = props => {
 	});
 	if (loading) {
 		return <Loading />;
-	} else {
-		return redirectPath !== null ? (
-			<Redirect to={redirectPath} noThrow />
-		) : pageVerify ? (
-			<>
-				<Step step={2} />
-				<div className="depositType">{rows}</div>
-				<div className="btn-group">
-					<Link to="/deposit" className="white">
-						{i18n.lbl_Back}
-					</Link>
-				</div>
-			</>
-		) : (
-			<></>
-		);
 	}
+	return redirectPath !== null ? (
+		<Redirect to={redirectPath} noThrow />
+	) : pageVerify ? (
+		<>
+			<Step step={2} />
+			<div className="depositType">{rows}</div>
+			<div className="btn-group">
+				<Link to="/deposit" className="white">
+					{i18n.lbl_Back}
+				</Link>
+			</div>
+		</>
+	) : (
+		<></>
+	);
+};
+
+Main.defaultProps = {
+	location: {}
+};
+
+Main.propTypes = {
+	location: PropTypes.objectOf(PropTypes.any)
 };

@@ -22,7 +22,7 @@ const useHandleBreadcrumb = ({
 		const specialLink = {};
 		if (skipLink.length > 0) {
 			skipLink.forEach(skip => {
-				let specialIdx = urlParams?.findIndex(u => u === skip);
+				const specialIdx = urlParams?.findIndex(u => u === skip);
 				if (specialIdx > 0) {
 					const specialItem = urlParams[specialIdx - 1];
 					specialLink[
@@ -34,7 +34,7 @@ const useHandleBreadcrumb = ({
 
 		if (urlParams.length > 0) {
 			let prevPath = "";
-			let result = urlParams
+			const result = urlParams
 				.filter(u => u && u !== "/" && !skipLink.includes(u))
 				.map(u => {
 					const currentPath = specialLink[u]
@@ -85,14 +85,19 @@ export const Breadcrumbs = ({
 	return <div className="guided">{rows}</div>;
 };
 
-Breadcrumbs.propTypes = {
-	root: PropTypes.string.isRequired
-};
-
 Breadcrumbs.defaultProps = {
 	skipLink: [],
 	locationInfo: {},
 	i18n: {},
-	root: "",
-	customDisplayKey: {}
+	customDisplayKey: "",
+	mainKey: ""
+};
+
+Breadcrumbs.propTypes = {
+	root: PropTypes.string.isRequired,
+	mainKey: PropTypes.string,
+	locationInfo: PropTypes.objectOf(PropTypes.any),
+	skipLink: PropTypes.arrayOf(PropTypes.string),
+	i18n: PropTypes.objectOf(PropTypes.any),
+	customDisplayKey: PropTypes.objectOf(PropTypes.any)
 };

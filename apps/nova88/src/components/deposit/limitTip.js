@@ -2,11 +2,11 @@ import React from "react";
 import { number_format } from "../common/common";
 
 export default ({
-	minAmount,
-	maxAmount,
-	displayTextLimit,
-	displayTextUnLimit,
-	_isConvert
+	minAmount = 0,
+	maxAmount = 0,
+	displayTextLimit = "",
+	displayTextUnLimit = "",
+	_isConvert = false
 }) => {
 	return !minAmount && !maxAmount ? (
 		<div className="tip">

@@ -1,5 +1,6 @@
 import React, { useContext, Component } from "react";
 import PropTypes from "prop-types";
+import { useMatch, useLocation } from "@reach/router";
 import Footer from "./footer";
 import Header from "../header/header";
 import {
@@ -7,8 +8,7 @@ import {
 	i18nContext,
 	defNavPanel,
 	loadingContext
-} from "../common/context";
-import { useMatch, useLocation } from "@reach/router";
+} from "./context";
 import path from "../../path";
 import Loading from "./loading";
 
@@ -132,22 +132,21 @@ const defPageInfo = {
 };
 
 const GetPageInfo = locationPath => {
-	let result = defPageInfo[locationPath];
+	const result = defPageInfo[locationPath];
 	if (result) {
 		return result;
-	} else {
-		let pageInfoKey =
-			locationPath === "/"
-				? []
-				: Object.keys(path).filter(p => {
-						let _location = locationPath.split("/");
-						return _location?.[1] === path[p].root;
-				  });
-
-		pageInfoKey = pageInfoKey?.length > 0 ? pageInfoKey[0] : null;
-		let pageInfo = defPageInfo[pageInfoKey] ?? null;
-		return pageInfoKey && pageInfo ? { ...pageInfo } : defPageInfo.default;
 	}
+	let pageInfoKey =
+		locationPath === "/"
+			? []
+			: Object.keys(path).filter(p => {
+					const _location = locationPath.split("/");
+					return _location?.[1] === path[p].root;
+			  });
+
+	pageInfoKey = pageInfoKey?.length > 0 ? pageInfoKey[0] : null;
+	const pageInfo = defPageInfo[pageInfoKey] ?? null;
+	return pageInfoKey && pageInfo ? { ...pageInfo } : defPageInfo.default;
 };
 
 const Layout = ({ children }) => {
@@ -155,10 +154,10 @@ const Layout = ({ children }) => {
 	const { nav } = useContext(navContext);
 	const { loading } = useContext(loadingContext);
 	const location = useLocation();
-	let pageInfo = GetPageInfo(location.pathname);
+	const pageInfo = GetPageInfo(location.pathname);
 
-	let _matchLogin = useMatch(`/${path.login.root}`) !== null;
-	let position =
+	const _matchLogin = useMatch(`/${path.login.root}`) !== null;
+	const position =
 		nav === defNavPanel.login || _matchLogin || nav === defNavPanel.join
 			? { position: "fixed" }
 			: {};
@@ -185,6 +184,11 @@ class RotationHint extends Component {
 		super(props);
 		this.state = { rotateClass: this.rotationChange() };
 	}
+
+	UNSAFE_componentWillMount() {
+		window.removeEventListener("orientationchange", this.OnRotate);
+	}
+
 	rotationChange = () => {
 		switch (window.orientation) {
 			case 0:
@@ -199,16 +203,16 @@ class RotationHint extends Component {
 				return "";
 		}
 	};
-	componentDidMount() {
+
+	OnRotate = () => {
+		const rotateClass = this.rotationChange();
+		this.setState({ rotateClass });
+	};
+
+	UNSAFE_componentDidMount() {
 		window.addEventListener("orientationchange", this.OnRotate);
 	}
-	componentWillMount() {
-		window.removeEventListener("orientationchange", this.OnRotate);
-	}
-	OnRotate = () => {
-		let rotateClass = this.rotationChange();
-		this.setState({ rotateClass: rotateClass });
-	};
+
 	render() {
 		return (
 			<div
@@ -216,17 +220,17 @@ class RotationHint extends Component {
 					this.state.rotateClass ? ` ${this.state.rotateClass}` : ""
 				}`}>
 				<div className="icon icon-mobile img-rotate">
-					<i className="icon icon-spinner11"></i>
+					<i className="icon icon-spinner11" />
 				</div>
 				<div className="text">
 					{this.props.i18n.lbl_RotationHint_1}
-					<br></br>
+					<br />
 					{this.props.i18n.lbl_RotationHint_2}
-					<br></br>
+					<br />
 					<span className="text-org">
 						{this.props.i18n.lbl_RotationHint_3}
 					</span>
-					<br></br>
+					<br />
 					{this.props.i18n.lbl_RotationHint_4}
 				</div>
 			</div>

@@ -7,10 +7,6 @@ const IndexPage = ({ defTabs, children, beforeLogin }) => {
 	const { i18n } = useContext(i18nContext);
 	const [redirectPath, setRedirectPath] = useState(null);
 
-	const CheckMatch = path => {
-		return useMatch(path) !== null;
-	};
-
 	useEffect(() => {
 		let mounted = true;
 		if (mounted && redirectPath !== null) {
@@ -35,31 +31,29 @@ const IndexPage = ({ defTabs, children, beforeLogin }) => {
 
 	if (redirectPath !== null) {
 		return <Redirect to="/" noThrow />;
-	} else {
-		let items = Object.keys(defTabs).map(key => {
-			let tabItem = defTabs[key];
-			let match =
-				CheckMatch(`${tabItem.to}/*`) &&
-				(!tabItem.excludeMath ||
-					!CheckMatch(`${tabItem.excludeMath}/*`));
-
-			return (
-				<Link
-					to={tabItem.to}
-					key={`tab-btn-${key}`}
-					className={match ? "open" : ""}>
-					{i18n[tabItem.displayKey]}
-				</Link>
-			);
-		});
-
-		return (
-			<>
-				<div className="tag">{items}</div>
-				{children}
-			</>
-		);
 	}
+	const items = Object.keys(defTabs).map(key => (
+		<TabItem key={`tab-btn-${key}`} i18n={i18n} tabItem={defTabs[key]} />
+	));
+
+	return (
+		<>
+			<div className="tag">{items}</div>
+			{children}
+		</>
+	);
+};
+
+const TabItem = ({ i18n, tabItem }) => {
+	const matchTo = useMatch(`${tabItem.to}/*`) !== null;
+	const matchExclude = useMatch(`${tabItem.excludeMath}/*`) !== null;
+	const match = matchTo && (!tabItem.excludeMath || !matchExclude);
+
+	return (
+		<Link to={tabItem.to} className={match ? "open" : ""}>
+			{i18n[tabItem.displayKey]}
+		</Link>
+	);
 };
 
 export default IndexPage;

@@ -1,4 +1,5 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
 import moment from "moment";
 import { redirectToPrev } from "../member/profile.redirect";
@@ -18,7 +19,9 @@ const Panel = ({ ClosePopbox }) => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -56,12 +59,12 @@ const Panel = ({ ClosePopbox }) => {
 	}, []);
 
 	const editInput = e => {
-		let val = e.target.value;
+		const val = e.target.value;
 		setOtpCode(val);
 	};
 
 	const checkValue = val => {
-		let msg = val === "" ? i18n.msg_VerifyCodeTip : "";
+		const msg = val === "" ? i18n.msg_VerifyCodeTip : "";
 		setWarning(msg);
 	};
 
@@ -74,10 +77,10 @@ const Panel = ({ ClosePopbox }) => {
 		}
 	};
 
-	const clickSubmit = async otpCode => {
+	const clickSubmit = async _otpCode => {
 		await api.accountStrict
 			.VerifyOTP({
-				inputOTPcode: otpCode
+				inputOTPcode: _otpCode
 			})
 			.then(
 				res => {
@@ -106,7 +109,7 @@ const Panel = ({ ClosePopbox }) => {
 										<button
 											className="blue"
 											onClick={closePopbox}>
-											{i18n["lbl_Cancel"]}
+											{i18n.lbl_Cancel}
 										</button>
 									</div>
 								)
@@ -169,7 +172,7 @@ const Panel = ({ ClosePopbox }) => {
 		<div className="popTxt">
 			{loading ? (
 				<div className="otpLoading">
-					<i className="icon icon-spinner11"></i>
+					<i className="icon icon-spinner11" />
 				</div>
 			) : errorMsg ? (
 				<>
@@ -219,24 +222,28 @@ const Panel = ({ ClosePopbox }) => {
 	);
 };
 
+Panel.propTypes = {
+	ClosePopbox: PropTypes.func.isRequired
+};
+
 export const Counter = ({ startUnixTime, timeStop }) => {
-	let now = moment().unix();
+	const now = moment().unix();
 	const [count, setCount] = useState(startUnixTime + 300 - now);
 	const timerRef = useRef(null);
 
 	const secondsToTime = secondsInTime => {
 		const pad = (num, size) => {
-			return ("000" + num).slice(size * -1);
+			return `000${num}`.slice(size * -1);
 		};
-		let time = parseFloat(secondsInTime).toFixed(3);
-		let minutes = Math.floor(time / 60) % 60;
-		let seconds = Math.floor(time - minutes * 60);
+		const time = parseFloat(secondsInTime).toFixed(3);
+		const minutes = Math.floor(time / 60) % 60;
+		const seconds = Math.floor(time - minutes * 60);
 		return `${pad(minutes, 2)}:${pad(seconds, 2)}`;
 	};
 
 	useEffect(() => {
 		const interval = setInterval(() => {
-			setCount(count => count - 1);
+			setCount(prev => prev - 1);
 		}, 1000);
 		timerRef.current = interval;
 

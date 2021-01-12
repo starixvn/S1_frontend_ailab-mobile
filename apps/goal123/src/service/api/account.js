@@ -1,5 +1,4 @@
-import { loginRequest } from "./base";
-import { accountRequest } from "./base";
+import { loginRequest, accountRequest } from "./base";
 
 export const api_SetLanguage = lang =>
 	accountRequest.post("/SetLanguage", { LangId: lang });
@@ -21,11 +20,10 @@ export const api_GetMsgList = ({ PageNumber }) =>
 
 export const api_GetMsgContent = MsgId =>
 	accountRequest.post("/GetMsgContent", {
-		MsgId: MsgId
+		MsgId
 	});
 
-export const api_DelMsg = MsgIds =>
-	accountRequest.post("/DelMsg", { MsgIds: MsgIds });
+export const api_DelMsg = MsgIds => accountRequest.post("/DelMsg", { MsgIds });
 
 export const api_GetWalletInfo = () => accountRequest.post("/GetWalletInfo");
 
@@ -59,3 +57,9 @@ export const api_account_GetCustSpecificBonus = ({
 
 export const api_account_ExistsPhoneNo = ({ AreaCode, Phone }) =>
 	accountRequest.post(`/ExistsPhoneNo`, { AreaCode, PhoneNo: Phone });
+
+export const api_account_GetTpWalletList = ({ ListType }) =>
+	accountRequest.post(`/GetTpWalletList`, { ListType });
+
+export const api_account_GetTpWalletBalance = ({ TpId }) =>
+	accountRequest.post(`/GetTpWalletBalance`, { TpId });

@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
+import PropTypes from "prop-types";
 import Swiper from "react-id-swiper";
-import config from "../../config";
 import { userInfoContext, navContext, defNavPanel } from "Context";
+import { Link } from "@reach/router";
+import config from "../../config";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import path from "../../path";
-import { Link } from "@reach/router";
 import api from "../../service/api";
 
 export const ClickLink = (
@@ -26,10 +27,16 @@ export const ClickLink = (
 		if (href === "Promotion/Index") {
 			window.location.href = `/${path.promotion.root}`;
 		} else if (href === "Home/Register") {
-			return;
+			//
 		} else if (href === "918kiss") {
 			if (isLogin) {
 				window.location.href = `/${path.kiss918.root}`;
+			} else {
+				HandleLogin();
+			}
+		} else if (href === "referral") {
+			if (isLogin) {
+				window.location.href = `/${path.referral.root}`;
 			} else {
 				HandleLogin();
 			}
@@ -56,7 +63,7 @@ export const ClickLink = (
 	}
 };
 
-const Panel = ({ ImgFolder, filterHideInHome = false }) => {
+const Panel = ({ ImgFolder = "", filterHideInHome = false }) => {
 	const [banner, setBanner] = useState([]);
 	const { userInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
@@ -71,29 +78,31 @@ const Panel = ({ ImgFolder, filterHideInHome = false }) => {
 				}
 			});
 
-		return () => (mounted = false);
+		return () => {
+			mounted = false;
+		};
 	}, [userInfo, ImgFolder, filterHideInHome]);
 
-	let rows = banner?.map((b, b_idx) => {
-		let _imgFolder = b.imgFolder ?? ImgFolder;
-		let lang =
+	const rows = banner?.map((b, b_idx) => {
+		const _imgFolder = b.imgFolder ?? ImgFolder;
+		const lang =
 			b.fromDB || b.lang?.includes(userInfo.langId)
 				? userInfo.langId
 				: "en";
-		let actionLinkByLang = b.fromDB
+		const actionLinkByLang = b.fromDB
 			? null
 			: b.actionLinkByLang?.find(a => a.lang === userInfo.langId);
-		let actionLink = actionLinkByLang
+		const actionLink = actionLinkByLang
 			? actionLinkByLang.link
 			: b.actionLink;
-		let imgSRC = b.fromDB
+		const imgSRC = b.fromDB
 			? b.imgURL
 			: `${config.imgUrl}/CMS/${config.siteName}/${_imgFolder}/${lang}/${b.img}`;
 
 		let promotionUrl = "";
 
 		if (actionLink?.startsWith("Promotion/Bonus?")) {
-			let promoUrlParam = actionLink.split("?")?.[1];
+			const promoUrlParam = actionLink.split("?")?.[1];
 			promotionUrl = `/${path.promotionInfo.root}?${promoUrlParam}`;
 		} else if (
 			actionLink?.startsWith("promotion/promotionInfo?BonusCode=")
@@ -107,25 +116,24 @@ const Panel = ({ ImgFolder, filterHideInHome = false }) => {
 					<img src={imgSRC} className="banner" alt={b.img ?? ""} />
 				</Link>
 			);
-		} else {
-			return (
-				<button
-					onClick={ClickLink.bind(
-						this,
-						b.tpId,
-						b.gameId,
-						lang,
-						actionLink,
-						b.outerLink === true,
-						b.urlWithLang,
-						userInfo.isLogin,
-						setNav
-					)}
-					key={`${lang}-${b.img}-${b_idx}`}>
-					<img src={imgSRC} className="banner" alt={b.img ?? ""} />
-				</button>
-			);
 		}
+		return (
+			<button
+				onClick={ClickLink.bind(
+					this,
+					b.tpId,
+					b.gameId,
+					lang,
+					actionLink,
+					b.outerLink === true,
+					b.urlWithLang,
+					userInfo.isLogin,
+					setNav
+				)}
+				key={`${lang}-${b.img}-${b_idx}`}>
+				<img src={imgSRC} className="banner" alt={b.img ?? ""} />
+			</button>
+		);
 	});
 
 	return <Autoplay Rows={rows} />;
@@ -147,6 +155,14 @@ const Autoplay = props => {
 	};
 
 	return <Swiper {...params}>{props.Rows}</Swiper>;
+};
+
+Autoplay.defaultProps = {
+	Rows: []
+};
+
+Autoplay.propTypes = {
+	Rows: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default Panel;

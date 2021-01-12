@@ -2,12 +2,12 @@ import { siteInfo } from "../config";
 import { readCookie } from "../components/common/common";
 
 export const GET_LANG_ID = userLangId => {
-	let _siteInfo = siteInfo();
-	let siteDefLangId = _siteInfo.siteDefaultLang;
-	let siteLangList = _siteInfo.siteLangList;
+	const _siteInfo = siteInfo();
+	const siteDefLangId = _siteInfo.siteDefaultLang;
+	const { siteLangList } = _siteInfo;
 
-	let langId = userLangId ? userLangId : readCookie("LangId");
-	let browserDefLang =
+	let langId = userLangId || readCookie("LangId");
+	const browserDefLang =
 		typeof window !== `undefined` ? navigator.language.toLowerCase() : null;
 
 	if (!langId && browserDefLang) {

@@ -1,6 +1,6 @@
 import BaseAPI from "./base";
 
-export class accountAPI extends BaseAPI {
+export class AccountAPI extends BaseAPI {
 	SetLanguage = lang =>
 		this.accountRequest.post("/SetLanguage", { LangId: lang });
 
@@ -19,10 +19,10 @@ export class accountAPI extends BaseAPI {
 
 	GetMsgContent = MsgId =>
 		this.accountRequest.post("/GetMsgContent", {
-			MsgId: MsgId
+			MsgId
 		});
 
-	DelMsg = MsgIds => this.accountRequest.post("/DelMsg", { MsgIds: MsgIds });
+	DelMsg = MsgIds => this.accountRequest.post("/DelMsg", { MsgIds });
 
 	GetWalletInfo = () => this.accountRequest.post("/GetWalletInfo");
 
@@ -64,4 +64,10 @@ export class accountAPI extends BaseAPI {
 		this.accountRequest.post("/GetTpWalletBalance", {
 			TpId
 		});
+
+	GetReferralCode = () => this.accountRequest.post("/GetReferralCode");
+
+	GetReferralSetting = () => this.accountRequest.post("/GetReferralSetting");
+
+	GetReferralSummary = () => this.accountRequest.post("/GetReferralSummary");
 }

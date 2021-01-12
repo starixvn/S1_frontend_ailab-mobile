@@ -1,30 +1,28 @@
 export const getUrlParameter = name => {
-	name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-	var regex = new RegExp("[\\?&]" + name + "=([^&#]*)", "i");
-	var results = regex.exec(window.location.search);
+	const paramName = name.replace(/[[]/, "\\[").replace(/[\]]/, "\\]");
+	const regex = new RegExp(`[\\?&]${paramName}=([^&#]*)`, "i");
+	const results = regex.exec(window.location.search);
 	return results === null
 		? ""
 		: decodeURIComponent(results[1].replace(/\+/g, " "));
 };
 
-export const number_format = (n, IsConvertRequired = false) => {
+export const number_format = (number, IsConvertRequired = false) => {
+	let n = number;
 	if (!isNaN(n)) {
 		n /= 1000;
+		n = Number(n).toFixed(2);
 	}
 
 	n += "";
-	let arr = n.split(".");
-	let re = /(\d{1,3})(?=(\d{3})+$)/g;
+	const arr = n.split(".");
+	const re = /(\d{1,3})(?=(\d{3})+$)/g;
 
-	if (IsConvertRequired) {
-		return (
-			arr[0].replace(re, "$1,") +
-			(arr.length === 2 ? "." + arr[1] : "") +
-			(IsConvertRequired ? " ('000)" : "")
-		);
-	} else {
-		return arr[0].replace(re, "$1,");
-	}
+	return (
+		arr[0].replace(re, "$1,") +
+		(arr.length === 2 ? `.${arr[1]}` : "") +
+		(IsConvertRequired ? " ('000)" : "")
+	);
 };
 
 const _isConvertList = {
@@ -40,46 +38,73 @@ export const checkAmount = (amount, minAmount, maxAmount, _isConvert, i18n) => {
 	let status = 0;
 	let msg = "";
 	if (amount !== null && amount !== undefined) {
-		let num_Amount = isNaN(amount) ? 0 : Number(amount);
+		let numAmount = isNaN(amount) ? 0 : Number(amount);
 		if (_isConvert) {
-			num_Amount *= 1000;
+			numAmount *= 1000;
 		}
-		if (num_Amount <= 0) {
+		if (numAmount <= 0) {
 			status = 2;
 			msg = i18n.lbl_AmountTooltip;
 		} else if (
 			minAmount !== 0 &&
 			maxAmount !== 0 &&
-			(num_Amount > maxAmount || num_Amount < minAmount)
+			(numAmount > maxAmount || numAmount < minAmount)
 		) {
 			status = 2;
-			msg =
-				number_format(num_Amount, _isConvert) +
-				" " +
-				i18n.lbl_NotinLimit;
+			msg = `${number_format(numAmount, _isConvert)} ${
+				i18n.lbl_NotinLimit
+			}`;
 		}
 	}
 
-	return { status: status, msg: msg };
+	return { status, msg };
 };
 
 export const setCookie = (cookieName, cookieValue, exdays) => {
-	let d = new Date();
+	const d = new Date();
 	d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-	var expires = "expires=" + d.toUTCString();
-	document.cookie =
-		cookieName + "=" + cookieValue + ";" + expires + ";path=/";
+	const expires = `expires=${d.toUTCString()}`;
+	document.cookie = `${cookieName}=${cookieValue};${expires};path=/`;
 };
 
 export const readCookie = cookieName => {
-	let result = document.cookie.split(`${cookieName}=`);
+	const result = document.cookie.split(`${cookieName}=`);
 	if (result.length === 2) {
 		return result[1].split("; ")[0];
-	} else {
-		return null;
 	}
+	return null;
+};
+
+export const getCookie = cookieName => {
+	const name = `${cookieName}=`;
+	const ca = document.cookie.split(";");
+	for (let i = 0; i < ca.length; i++) {
+		let c = ca[i];
+		while (c.charAt(0) === " ") c = c.substring(1);
+		if (c.indexOf(name) === 0) return c.substring(name.length, c.length);
+	}
+	return "";
 };
 
 export const deleteCookie = cookieName => {
-	document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+	document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
+};
+
+export const passwordCheck = ({ val }) => {
+	let checked = true;
+	let message = "";
+
+	const regx = /^(?=.{6,15}$)(?=.*[a-zA-Z0-9])(?=.*[!@#$%^&*]).*$/;
+	if (!val) {
+		checked = false;
+		message = "msg_PasswordReq";
+	} else if (val.length < 6 || val.length > 15) {
+		checked = false;
+		message = "msg_PasswordLength";
+	} else if (!regx.test(val)) {
+		checked = false;
+		message = "msg_PasswordVaildate";
+	}
+
+	return { checked, message };
 };

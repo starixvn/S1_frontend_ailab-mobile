@@ -1,23 +1,23 @@
 import React from "react";
 
 const totalStep = 3;
-const Panel = ({ step, total = totalStep }) => {
-	let processBar =
+const Panel = ({ step = 1, total = totalStep }) => {
+	const processBar =
 		step === 1 ? (
-			<div></div>
+			<div />
 		) : step === 2 ? (
-			<div className="stepBar50"></div>
+			<div className="stepBar50" />
 		) : (
-			<div className="stepBar100"></div>
+			<div className="stepBar100" />
 		);
 
-	let rows = [];
+	const rows = [];
 	for (let s = 1; s <= total; s++) {
 		rows.push(
 			<div key={`step-${s}`} className="circle">
 				<div>
 					{s <= step ? (
-						<div className="icon icon-checkmark"></div>
+						<div className="icon icon-checkmark" />
 					) : (
 						<div>{s}</div>
 					)}

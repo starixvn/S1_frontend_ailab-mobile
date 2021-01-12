@@ -26,16 +26,16 @@ export default ({
 	};
 
 	const widthPercentageCalculationHandlar = (currentVale, maxValue) => {
-		let result = currentVale / maxValue;
+		const result = currentVale / maxValue;
 		return isNaN(result) ? 0 : result;
 	};
 
 	const onMouseDownHandlar = e => {
 		const cashBarElementWidth = cashBarRef.current.clientWidth;
-		const originalPointWidth =
+		const _originalPointWidth =
 			Math.imul(cashBarElementWidth, cashLineWidthPercentage) * 0.01;
 
-		setOriginalPointWidth(originalPointWidth);
+		setOriginalPointWidth(_originalPointWidth);
 		setOriginalScreenX(e.screenX);
 		setMouseMoveActive(true);
 	};
@@ -49,12 +49,12 @@ export default ({
 		const cashBarElementWidth = cashBarRef.current.clientWidth;
 		const mouseMoveOffset = e.screenX - originalScreenX;
 		const cashLinewidth = originalPointWidth + mouseMoveOffset;
-		const cashLineWidthPercentage = widthPercentageCalculationHandlar(
+		const _cashLineWidthPercentage = widthPercentageCalculationHandlar(
 			minMaxRange(cashLinewidth, 0, cashBarElementWidth),
 			cashBarElementWidth
 		);
-		let resultAmount = _maxValue * cashLineWidthPercentage;
-		onChangeAmount(minMaxRange(Math.floor(resultAmount), 1, _maxValue));
+		const _resultAmount = _maxValue * _cashLineWidthPercentage;
+		onChangeAmount(minMaxRange(Math.floor(_resultAmount), 1, _maxValue));
 	};
 
 	const handleClickOutside = e => {
@@ -116,9 +116,11 @@ export default ({
 					onMouseDown={onMouseDownHandlar}
 					style={{ cursor: "pointer" }}
 					className="cashPoint">
-					<span style={spanStyle}>{`$${number_format(resultAmount)} ${
-						_isConvert ? "('000)" : ""
-					}`}</span>
+					<span style={spanStyle}>
+						{`$${number_format(resultAmount)} ${
+							_isConvert ? "('000)" : ""
+						}`}
+					</span>
 				</div>
 			</div>
 			{/* <button className="max" onClick={() => onChangeAmount(_maxValue)}>

@@ -2,6 +2,7 @@ import React from "react";
 import TabPage from "../components/common/tabPage";
 import path from "../path";
 import FinancialLog from "../components/statement/financialLog";
+
 const defTabs = {
 	Sdefaulttatement: {
 		to: `/${path.statement.root}`,
@@ -13,7 +14,7 @@ const defTabs = {
 	}
 };
 
-const IndexPage = props => {
+const IndexPage = () => {
 	return (
 		<TabPage defTabs={defTabs}>
 			<FinancialLog />

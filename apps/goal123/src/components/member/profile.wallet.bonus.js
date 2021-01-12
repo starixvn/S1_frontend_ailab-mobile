@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { number_format } from "../common/common";
 
-export default ({
+const BonusWallet = ({
 	i18n,
 	currencyId,
 	promoCategoryId,
@@ -9,7 +10,7 @@ export default ({
 	turnover,
 	rollover
 }) => {
-	let percentage =
+	const percentage =
 		turnover > rollover ? 100 : ((turnover / rollover) * 100).toFixed(2);
 	return (
 		<div className="progressBarModule">
@@ -26,10 +27,22 @@ export default ({
 				<div className="bar">
 					<div
 						className="progress"
-						style={{ width: `${percentage}%` }}></div>
+						style={{ width: `${percentage}%` }}
+					/>
 				</div>
 				<div className="percentage">{percentage}%</div>
 			</div>
 		</div>
 	);
 };
+
+BonusWallet.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	currencyId: PropTypes.number.isRequired,
+	promoCategoryId: PropTypes.number.isRequired,
+	bonus: PropTypes.number.isRequired,
+	turnover: PropTypes.number.isRequired,
+	rollover: PropTypes.number.isRequired
+};
+
+export default BonusWallet;

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
+import { Redirect } from "@reach/router";
 import Kiss918 from "../components/918kiss/918kiss";
 import { userInfoContext } from "../components/common/context";
 import useBeforeLoginCheck from "../components/hook/useBeforeLoginCheck";
-import { Redirect } from "@reach/router";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);

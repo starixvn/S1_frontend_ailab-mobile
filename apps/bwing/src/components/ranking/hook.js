@@ -62,7 +62,7 @@ export const useGetRanking = ({
 								} = custRankRes.data.data;
 
 								setDatas(() => {
-									let rank =
+									const rank =
 										custRank > 999 || custRank === 0
 											? "999+"
 											: custRank;
@@ -119,8 +119,8 @@ export const useHandleSelect = ({
 		}
 	}, [defaultSelect, isLogin]);
 
-	const handleSelect = (value, isLogin, beforeLogin) => {
-		if (isLogin || beforeLogin || !handleLogin) {
+	const handleSelect = (value, _isLogin, beforeLogin) => {
+		if (_isLogin || beforeLogin || !handleLogin) {
 			setSelected(value);
 		} else {
 			handleLogin();

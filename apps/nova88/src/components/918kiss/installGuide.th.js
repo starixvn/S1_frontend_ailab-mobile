@@ -11,7 +11,7 @@ import Step9 from "../../styles/img/918/th/Help_09.png";
 import Step10 from "../../styles/img/918/th/Help_10.png";
 import Step11 from "../../styles/img/918/th/Help_11.png";
 
-export default ({ displayText }) => (
+export default ({ displayText = "" }) => (
 	<div className="installGuide">
 		{displayText}
 		<div>

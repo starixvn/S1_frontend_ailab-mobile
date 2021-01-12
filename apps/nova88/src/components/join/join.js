@@ -1,11 +1,5 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
-import Inputbox from "../common/inputbox";
-import InputboxPWD from "../common/inputbox.password";
-import Dropdown from "../common/dropdown";
-import Checkbox from "../common/checkbox";
-import Tips from "./tips";
-import { getUrlParameter } from "../common/common";
-import { getCookie } from "../common/cookie";
+import { useMatch, Redirect } from "@reach/router";
 import {
 	userInfoContext,
 	i18nContext,
@@ -13,9 +7,14 @@ import {
 	defNavPanel,
 	popBoxContext
 } from "Context";
+import Inputbox from "../common/inputbox";
+import InputboxPWD from "../common/inputbox.password";
+import Dropdown from "../common/dropdown";
+import Checkbox from "../common/checkbox";
+import Tips from "./tips";
+import { getUrlParameter, passwordCheck, getCookie } from "../common/common";
 import { GET_LANG_ID } from "../../service/language";
 import TandC from "../../service/t_and_c";
-import { useMatch, Redirect } from "@reach/router";
 import path from "../../path";
 import config, { siteInfo } from "../../config";
 import PromoPopup from "./join.promotion";
@@ -47,13 +46,15 @@ const Join = () => {
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
-		let refId = getCookie("RefId");
-		let showBylink = window.location.pathname === `/${path.join.root}`;
-		let openPanel = showBylink || nav === defNavPanel.join;
+		const refId = getCookie("RefId");
+		const showBylink = window.location.pathname === `/${path.join.root}`;
+		const openPanel = showBylink || nav === defNavPanel.join;
 		if (refId && openPanel) {
 			api.site
 				.GetBanner("Promotion", refId, userInfo.langId)
@@ -68,11 +69,43 @@ const Join = () => {
 		}
 	}, [nav, userInfo.langId]);
 
+	const AffId = getUrlParameter("AffId") || getCookie("AffId");
 	useEffect(() => {
-		let AffCode = getUrlParameter("AffCode") || getCookie("AffCode");
+		const AffCode = getUrlParameter("AffCode") || getCookie("AffCode");
 
-		if (AffCode && isMountedRef) {
-			setAffiliateidExist(AffCode);
+		if (AffId) {
+			setAffiliateidExist(AffId);
+			api.site.GetAffiliateAgent({ AffId }).then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							const { currencyId } = res.data.data;
+							setSiteCurrencyState([
+								{
+									id: currencyId,
+									displayKey: `Currency_${currencyId}`
+								}
+							]);
+						} else {
+							GetSiteCurrencyList();
+						}
+					}
+				},
+				err => {
+					if (isMountedRef.current) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
+						});
+					}
+				}
+			);
+		} else {
+			if (AffCode) {
+				setAffiliateidExist(AffCode);
+			}
+			GetSiteCurrencyList();
 		}
 	}, []);
 
@@ -82,14 +115,14 @@ const Join = () => {
 		}
 	}, [redirectPath]);
 
-	useEffect(() => {
+	const GetSiteCurrencyList = () => {
 		api.site.GetSiteCurrencyList().then(
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
 						const currencyNum = res.data.data;
-						let currencyArr = currencyNum.map(id => {
-							return { id: id, displayKey: `Currency_${id}` };
+						const currencyArr = currencyNum.map(id => {
+							return { id, displayKey: `Currency_${id}` };
 						});
 						setSiteCurrencyState(() => currencyArr);
 					} else {
@@ -101,7 +134,7 @@ const Join = () => {
 					}
 				}
 			},
-			err => {
+			() => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
@@ -111,11 +144,11 @@ const Join = () => {
 				}
 			}
 		);
-	}, [i18n.lbl_ImportantNote, i18n.msg_ApiServerError, setPopBox]);
+	};
 
-	let _currencyId = siteCurrency[userValue.Currency]?.id;
+	const _currencyId = siteCurrency[userValue.Currency]?.id;
 
-	let currencyToCountryCode = _currencyId
+	const currencyToCountryCode = _currencyId
 		? currencyToAreacode[_currencyId]
 		: null;
 
@@ -129,13 +162,13 @@ const Join = () => {
 	};
 
 	const showOnFocusTip = col => {
-		let checked = status[col].checked;
+		const { checked } = status[col];
 		let msg = "";
 
 		if (col === "UserName") {
 			msg = "lbl_UsernameTooltip";
 		} else if (col === "Password") {
-			msg = "lbl_PasswordTooltip";
+			msg = "msg_PasswordVaildate";
 		} else if (col === "AffiliateId") {
 			msg = `lbl_Please_enter_Affiliate_ID`;
 		} else if (col === "Email") {
@@ -147,35 +180,35 @@ const Join = () => {
 		setStatus(prev => ({
 			...prev,
 			[col]: {
-				checked: checked,
+				checked,
 				msg: i18n[msg]
 			}
 		}));
 	};
 
 	const checkValue = async (col, e) => {
-		let val = e.target.value;
+		const val = e.target.value;
 		let checked = true;
 		let msg = "";
 
 		if (col === "UserName") {
-			let result = await usernameCheck(val);
+			const result = await usernameCheck(val);
 			checked = result.checked;
 			msg = result.msg;
 		} else if (col === "Password") {
-			let result = passwordCheck(val);
+			const result = passwordCheck({ val });
 			checked = result.checked;
 			msg = result.msg;
 		} else if (col === "Email") {
-			let result = await emailCheck(val);
+			const result = await emailCheck(val);
 			checked = result.checked;
 			msg = result.msg;
 		} else if (col === "Currency") {
-			let result = currencyCheck();
+			const result = currencyCheck();
 			checked = result.checked;
 			msg = result.msg;
 		} else if (col === "Phone") {
-			let result = await phoneCheck(val);
+			const result = await phoneCheck(val);
 			checked = result.checked;
 			msg = result.msg;
 		}
@@ -183,7 +216,7 @@ const Join = () => {
 		setStatus(prev => ({
 			...prev,
 			[col]: {
-				checked: checked,
+				checked,
 				msg: i18n[msg]
 			}
 		}));
@@ -206,25 +239,6 @@ const Join = () => {
 				checked = false;
 				msg = "msg_UsernameNotAvailable";
 			}
-		}
-
-		return { checked, msg };
-	};
-
-	const passwordCheck = val => {
-		let checked = true;
-		let msg = "";
-		const regx = /^[a-zA-Z0-9@$*!%#?&]*$/;
-
-		if (!val) {
-			checked = false;
-			msg = "msg_PasswordReq";
-		} else if (val.length < 6 || val.length > 18) {
-			checked = false;
-			msg = "msg_PasswordLength";
-		} else if (!regx.test(val)) {
-			checked = false;
-			msg = "msg_PasswordVaildate";
 		}
 
 		return { checked, msg };
@@ -296,7 +310,7 @@ const Join = () => {
 	};
 
 	const EditField = (col, e) => {
-		let val = e.target.value;
+		const val = e.target.value;
 		setUserValue(prevState => ({
 			...prevState,
 			[col]: val
@@ -304,7 +318,7 @@ const Join = () => {
 	};
 
 	const checkboxHandler = () => {
-		let checked = !userValue.Checkbox;
+		const checked = !userValue.Checkbox;
 		setUserValue(prevState => ({
 			...prevState,
 			Checkbox: checked
@@ -312,73 +326,74 @@ const Join = () => {
 	};
 
 	const checkAll = async () => {
-		return await Promise.all([
-			usernameCheck(userValue.UserName),
-			phoneCheck(userValue.Phone),
-			emailCheck(userValue.Email)
-		]).then(
-			res => {
-				let _usernameCheck = res[0];
-				let _phoneCheck = res[1];
-				let _emailCheck = res[2];
-				let _passwordCheck = passwordCheck(userValue.Password);
-				let _currencyCheck = currencyCheck();
-				let _checkboxCheck = userValue.Checkbox;
+		try {
+			const res = await Promise.all([
+				usernameCheck(userValue.UserName),
+				phoneCheck(userValue.Phone),
+				emailCheck(userValue.Email)
+			]);
 
-				let checked =
-					_usernameCheck.checked &&
-					_passwordCheck.checked &&
-					_phoneCheck.checked &&
-					_emailCheck.checked &&
-					_currencyCheck.checked &&
-					_checkboxCheck;
+			const _usernameCheck = res[0];
+			const _phoneCheck = res[1];
+			const _emailCheck = res[2];
+			const _passwordCheck = passwordCheck({
+				val: userValue.Password
+			});
+			const _currencyCheck = currencyCheck();
+			const _checkboxCheck = userValue.Checkbox;
 
-				if (!checked) {
-					let checkboxMsg = "";
-					if (!_checkboxCheck) {
-						checkboxMsg = "lbl_Check18TCTooltip";
-					}
-					setStatus(prev => ({
-						...prev,
-						UserName: {
-							checked: _usernameCheck.checked,
-							msg: i18n[_usernameCheck.msg]
-						},
-						Password: {
-							checked: _passwordCheck.checked,
-							msg: i18n[_passwordCheck.msg]
-						},
-						Phone: {
-							checked: _phoneCheck.checked,
-							msg: i18n[_phoneCheck.msg]
-						},
-						Email: {
-							checked: _emailCheck.checked,
-							msg: i18n[_emailCheck.msg]
-						},
-						Currency: {
-							checked: _currencyCheck.checked,
-							msg: i18n[_currencyCheck.msg]
-						},
-						Checkbox: {
-							checked: _checkboxCheck,
-							msg: i18n[checkboxMsg]
-						}
-					}));
+			const checked =
+				_usernameCheck.checked &&
+				_passwordCheck.checked &&
+				_phoneCheck.checked &&
+				_emailCheck.checked &&
+				_currencyCheck.checked &&
+				_checkboxCheck;
+
+			if (!checked) {
+				let checkboxMsg = "";
+				if (!_checkboxCheck) {
+					checkboxMsg = "lbl_Check18TCTooltip";
 				}
-				return checked;
-			},
-			err => {
-				return false;
+				setStatus(prev => ({
+					...prev,
+					UserName: {
+						checked: _usernameCheck.checked,
+						msg: i18n[_usernameCheck.msg]
+					},
+					Password: {
+						checked: _passwordCheck.checked,
+						msg: i18n[_passwordCheck.msg]
+					},
+					Phone: {
+						checked: _phoneCheck.checked,
+						msg: i18n[_phoneCheck.msg]
+					},
+					Email: {
+						checked: _emailCheck.checked,
+						msg: i18n[_emailCheck.msg]
+					},
+					Currency: {
+						checked: _currencyCheck.checked,
+						msg: i18n[_currencyCheck.msg]
+					},
+					Checkbox: {
+						checked: _checkboxCheck,
+						msg: i18n[checkboxMsg]
+					}
+				}));
 			}
-		);
+			return checked;
+		} catch (error) {
+			return false;
+		}
 	};
 
 	const clickSubmit = async () => {
-		let checked = await checkAll();
+		const checked = await checkAll();
 
 		if (checked) {
-			let regData = {
+			const regData = {
 				UserName: userValue.UserName,
 				Userpwd: userValue.Password,
 				Email: userValue.Email,
@@ -388,20 +403,27 @@ const Join = () => {
 				AreaCode: _areaCode
 			};
 
-			regData["RefId"] = getUrlParameter("RefId") || getCookie("RefId");
-			regData["AffId"] = getUrlParameter("AffId") || getCookie("AffId");
-			regData["Aff"] = getUrlParameter("Aff") || getCookie("Aff");
-			regData["AffCode"] =
+			if (AffId) {
+				const res = await api.site.GetAffiliateAgent({ AffId });
+				if (res.data.errorCode === 0) {
+					regData.AffId =
+						getUrlParameter("AffId") || getCookie("AffId");
+				}
+			}
+
+			regData.RefId = getUrlParameter("RefId") || getCookie("RefId");
+			regData.Aff = getUrlParameter("Aff") || getCookie("Aff");
+			regData.AffCode =
 				getUrlParameter("AffCode") ||
 				getCookie("AffCode") ||
 				userValue.AffiliateId;
-			regData["blackbox"] = await Iov_GetBlackBox();
+			regData.blackbox = await Iov_GetBlackBox();
 
 			api.site.Signup(regData, defaultLangId).then(
 				response => {
 					if (isMountedRef.current) {
-						const errorCode = response.data.errorCode;
-						const message = response.data.message;
+						const { errorCode } = response.data;
+						const { message } = response.data;
 						if (errorCode === 0) {
 							api.accountStrict.GetCustProfile().then(
 								res_custInfo => {
@@ -472,14 +494,14 @@ const Join = () => {
 			setRedirectPath("/");
 		} else {
 			setNav(() => {
-				let newState = show ? null : defNavPanel.join;
+				const newState = show ? null : defNavPanel.join;
 				return newState;
 			});
 		}
 	};
 
-	let showBylink = useMatch(path.join.root);
-	let openPanel = showBylink || nav === defNavPanel.join;
+	const showBylink = useMatch(path.join.root);
+	const openPanel = showBylink || nav === defNavPanel.join;
 
 	const ClosePromoPopup = () => {
 		setPromoPopup(false);
@@ -499,12 +521,12 @@ const Join = () => {
 						true,
 						showBylink
 					)}>
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
+					<span />
+					<span />
+					<span />
+					<span />
+					<span />
+					<span />
 				</div>
 				<img src={siteInfo().logo} alt={config.siteName} />
 				<div className="title">{i18n.lbl_JoinNow}</div>
@@ -512,38 +534,41 @@ const Join = () => {
 				<Inputbox
 					icon="icon-member"
 					ClassName="JoinRule"
-					placeholder={i18n["lbl_Username"]}
+					placeholder={i18n.lbl_Username}
 					value={userValue.UserName}
 					onFocus={showOnFocusTip.bind(null, "UserName")}
 					onBlur={checkValue.bind(null, "UserName")}
 					onChange={EditField.bind(null, "UserName")}
 					checked={status.UserName.checked}
-					tip={status.UserName.msg}></Inputbox>
+					tip={status.UserName.msg}
+				/>
 
 				<InputboxPWD
 					icon="icon-key"
 					inputType={`${!pswState ? "password" : "text"}`}
 					ClassName="JoinRule"
 					showPsw={pswState}
-					placeholder={i18n["lbl_Password"]}
+					placeholder={i18n.lbl_Password}
 					value={userValue.Password}
 					onFocus={showOnFocusTip.bind(null, "Password")}
 					onBlur={checkValue.bind(null, "Password")}
 					onChange={EditField.bind(null, "Password")}
 					showPswHandler={showPswHandler}
 					checked={status.Password.checked}
-					tip={status.Password.msg}></InputboxPWD>
+					tip={status.Password.msg}
+				/>
 
 				<Inputbox
 					icon="icon-email"
 					ClassName="JoinRule"
-					placeholder={i18n["lbl_Email"]}
+					placeholder={i18n.lbl_Email}
 					value={userValue.Email}
 					onFocus={showOnFocusTip.bind(null, "Email")}
 					onBlur={checkValue.bind(null, "Email")}
 					onChange={EditField.bind(null, "Email")}
 					checked={status.Email.checked}
-					tip={status.Email.msg}></Inputbox>
+					tip={status.Email.msg}
+				/>
 
 				<div
 					className="inputBox"
@@ -555,7 +580,8 @@ const Join = () => {
 						selectedIdx={userValue.Currency}
 						options={siteCurrency}
 						onSelectItem={onSelectItem}
-						i18n={i18n}></Dropdown>
+						i18n={i18n}
+					/>
 					<Tips
 						Icon="icon-coin-dollar"
 						IsOpen={defaultOption !== null}
@@ -564,7 +590,7 @@ const Join = () => {
 					</Tips>
 				</div>
 				<Tips IsOpen={true} ClassName="JoinRule">
-					{i18n["lbl_PreferredCurrencyToolTip"]}
+					{i18n.lbl_PreferredCurrencyToolTip}
 				</Tips>
 
 				{userValue.Currency !== null ? (
@@ -573,13 +599,14 @@ const Join = () => {
 						<Inputbox
 							icon="icon-phone"
 							ClassName="JoinRule"
-							placeholder={i18n["lbl_Phone"]}
+							placeholder={i18n.lbl_Phone}
 							value={userValue.Phone}
 							areaCode={_areaCode}
 							onFocus={showOnFocusTip.bind(null, "Phone")}
 							onBlur={checkValue.bind(null, "Phone")}
 							onChange={EditField.bind(null, "Phone")}
-							checked={status.Phone.checked}></Inputbox>
+							checked={status.Phone.checked}
+						/>
 						<div
 							className={`errortip${
 								status.Phone.checked ? "" : " open"
@@ -594,7 +621,7 @@ const Join = () => {
 				<Inputbox
 					icon="icon-affiliate"
 					ClassName="JoinRule"
-					placeholder={i18n["lbl_Affiliate_ID"]}
+					placeholder={i18n.lbl_Affiliate_ID}
 					value={
 						affiliateidExist !== ""
 							? affiliateidExist
@@ -604,7 +631,8 @@ const Join = () => {
 					onChange={EditField.bind(null, "AffiliateId")}
 					checked={status.AffiliateId.checked}
 					tip={status.AffiliateId.msg}
-					disabled={affiliateidExist}></Inputbox>
+					disabled={Boolean(affiliateidExist)}
+				/>
 
 				<Checkbox
 					Checked={userValue.Checkbox}
@@ -613,17 +641,17 @@ const Join = () => {
 					}`}
 					checkboxHandler={checkboxHandler}
 					id="c1">
-					{i18n["lbl_Check18TC1"]} &nbsp;
+					{i18n.lbl_Check18TC1} &nbsp;
 					<a target="_blank" href={TandC(userInfo.langId).terms}>
-						{i18n["lbl_TermsConditions"]}
+						{i18n.lbl_TermsConditions}
 					</a>
-					&nbsp; {i18n["lbl_Check18TC2"]}&nbsp;
+					&nbsp; {i18n.lbl_Check18TC2}&nbsp;
 					<a target="_blank" href={TandC(userInfo.langId).rule}>
-						{i18n["lbl_RuleRegulations"]}
+						{i18n.lbl_RuleRegulations}
 					</a>
-					&nbsp; {i18n["lbl_Check18TC3"]}&nbsp;{config.siteName}
+					&nbsp; {i18n.lbl_Check18TC3}&nbsp;{config.siteName}
 					.&nbsp;
-					{i18n["lbl_Check18TC4"]}
+					{i18n.lbl_Check18TC4}
 				</Checkbox>
 				{status.Checkbox.checked === false ? (
 					<div className="JoinRule open">
@@ -631,7 +659,7 @@ const Join = () => {
 					</div>
 				) : null}
 				<div className="btn-group">
-					<button onClick={clickSubmit}>{i18n["lbl_JoinNow"]}</button>
+					<button onClick={clickSubmit}>{i18n.lbl_JoinNow}</button>
 				</div>
 			</div>
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import * as ct from "../common/context";
+import PropTypes from "prop-types";
+import * as ct from "./context";
 import { api_GetCustProfile } from "../../service/api/accountStrict";
 import {
 	api_GetBalnace,
@@ -9,7 +10,7 @@ import {
 import { IS_LOGGED_IN } from "../../service/auth";
 import themeList from "../../datas/theme";
 import useInterval from "../hook/useInterval";
-import { getUrlParameter, setCookie, deleteCookie } from "../common/common";
+import { getUrlParameter, setCookie, deleteCookie } from "./common";
 import i18nConfig from "../../i18n/config";
 
 export const Wrapper = ({ children }) => {
@@ -38,14 +39,16 @@ export const Wrapper = ({ children }) => {
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
-		let AffId = getUrlParameter("AffId");
-		let RefId = getUrlParameter("RefId");
-		let Aff = getUrlParameter("Aff");
-		let AffCode = getUrlParameter("AffCode");
+		const AffId = getUrlParameter("AffId");
+		const RefId = getUrlParameter("RefId");
+		const Aff = getUrlParameter("Aff");
+		const AffCode = getUrlParameter("AffCode");
 
 		if (AffId) {
 			setCookie("AffId", AffId, 7);
@@ -75,7 +78,7 @@ export const Wrapper = ({ children }) => {
 			if (isLogin !== userInfo.isLogin && isMountedRef.current) {
 				setUserInfo(prevState => ({
 					...prevState,
-					isLogin: isLogin
+					isLogin
 				}));
 			}
 		});
@@ -110,7 +113,7 @@ export const Wrapper = ({ children }) => {
 		() => {
 			api_onlineCheck().then(
 				res => {
-					var result = res.data;
+					const result = res.data;
 					if (
 						result.errorCode !== null &&
 						result.errorCode !== 0 &&
@@ -136,12 +139,12 @@ export const Wrapper = ({ children }) => {
 	useEffect(() => {
 		if (userInfo.isLogin) {
 			if (!userInfo.regTime) {
-				api_GetCustProfile().then(res_custInfo => {
+				api_GetCustProfile().then(resCustInfo => {
 					if (
-						res_custInfo.data.errorCode === 0 &&
+						resCustInfo.data.errorCode === 0 &&
 						isMountedRef.current
 					) {
-						let data = res_custInfo.data.data;
+						const { data } = resCustInfo.data;
 						setUserInfo(prevState => ({
 							...prevState,
 							...data
@@ -198,4 +201,8 @@ export const Wrapper = ({ children }) => {
 			</ct.i18nContext.Provider>
 		</ct.userInfoContext.Provider>
 	);
+};
+
+Wrapper.propTypes = {
+	children: PropTypes.node.isRequired
 };

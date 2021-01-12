@@ -1,11 +1,11 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import moment from "moment";
+import { useNavigate } from "@reach/router";
+import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import { number_format, isConvert } from "../common/common";
 import Dropdown from "../common/dropdown";
 import { api_CustTpBetRecordListDateRange } from "../../service/api/payment";
 import { Breadcrumbs } from "../common/breadcrumb";
-import { useNavigate } from "@reach/router";
 import { getDateRange, defStatement } from "./common";
 import path from "../../path";
 import { useHandlePage } from "./hook";
@@ -27,11 +27,13 @@ export default props => {
 	const { timePeriod } = props;
 	const _startDay = timePeriod.substr(0, timePeriod.indexOf("to"));
 	const _endDay = timePeriod.split("to").pop();
-	let dateRange = getDateRange({ startDate: _startDay, endDate: _endDay });
+	const dateRange = getDateRange({ startDate: _startDay, endDate: _endDay });
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -45,7 +47,7 @@ export default props => {
 	}, []);
 
 	const toByDayPage = ({ selDate }) => {
-		let _path = timePeriod.includes("to")
+		const _path = timePeriod.includes("to")
 			? `${_startDay}to${_endDay}`
 			: `${selDate}to${selDate}`;
 
@@ -94,7 +96,7 @@ export default props => {
 		func_getDatas: getListByDateRange
 	});
 
-	let detailArr = datas?.map(data => {
+	const detailArr = datas?.map(data => {
 		return (
 			<Detail
 				key={`bet-dateRange-${data.settledDate}-${data.turnOver}`}
@@ -137,7 +139,7 @@ export default props => {
 				</>
 			) : (
 				<div className="nodata icon icon-nodata">
-					<div className="txt-white">{i18n["msg_NoData"]}</div>
+					<div className="txt-white">{i18n.msg_NoData}</div>
 				</div>
 			)}
 		</>

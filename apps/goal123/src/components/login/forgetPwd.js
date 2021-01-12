@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
+import { Redirect } from "@reach/router";
 import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
 import { api_ForgetPwd } from "../../service/api/site";
 import Inputbox from "../common/inputbox";
-import { Redirect } from "@reach/router";
 import path from "../../path";
 
 export default () => {
@@ -21,16 +21,18 @@ export default () => {
 	}, [redirectPath]);
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	const EditField = e => {
-		let val = e.target.value;
+		const val = e.target.value;
 		setUserEmail(val);
 	};
 
 	const checkEmailHandler = e => {
-		let val = e.target.value;
+		const val = e.target.value;
 		let checked = true;
 		let message = "";
 		const regx = /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
@@ -106,7 +108,7 @@ export default () => {
 			<Inputbox
 				icon="icon-email"
 				inputType="text"
-				placeholder={i18n["lbl_Email"]}
+				placeholder={i18n.lbl_Email}
 				value={userEmail}
 				onChange={EditField.bind(null)}
 				onBlur={checkEmailHandler.bind(null)}

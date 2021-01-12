@@ -3031,9 +3031,12 @@ button.clickBtn:before {
 }
 
 .casino .slotList .info .newTag {
-  position: absolute;
   right: 1vw;
   bottom: 1.5vw;
+}
+
+.newTag {
+  position: absolute;
   padding: 10px 10px;
   background-color: rgba(244, 43, 7, 0.3);
   border: 1px solid #f42b07;
@@ -6155,7 +6158,7 @@ span.important {
   background-color: #0c1a3f;
   border: 1px solid #1d2f62;
   border-radius: 5px;
-  padding: 2vw 0;
+  padding: 2vw;
   text-align: center;
   color: #fff;
   margin-bottom: 2vw;
@@ -6174,12 +6177,22 @@ span.important {
   font-weight: bold;
 }
 
+.gameInBox .newTag {
+  top: 1vw;
+  right: 1.5vw;
+  padding: 5px 10px;
+}
+
 .gameInBox img {
   width: 100%;
 }
 
 .gameInBox p {
   font-size: 4vw;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
 }
 
 .gameInBox p span {

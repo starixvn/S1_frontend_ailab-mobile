@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
+import moment from "moment";
 import { i18nContext, popBoxContext, msgCountContext } from "../common/context";
 import {
 	api_GetMsgList,
@@ -6,7 +7,6 @@ import {
 	api_DelMsg,
 	api_GetMsgCount
 } from "../../service/api/account";
-import moment from "moment";
 import ReloadSpin from "../common/reloadSpin";
 import Loading from "../common/loading";
 
@@ -40,9 +40,10 @@ const Panel = () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
-
 	useEffect(() => {
 		isMountedRef.current = true;
 		setLoading(true);
@@ -50,7 +51,7 @@ const Panel = () => {
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
-						let data = res.data.data;
+						const { data } = res.data;
 						if (data !== null) {
 							setGetMsgList(data);
 
@@ -91,7 +92,7 @@ const Panel = () => {
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
-							let data = res.data.data;
+							const { data } = res.data;
 							if (data !== null) {
 								setGetMsgList(data);
 								if (
@@ -139,7 +140,7 @@ const Panel = () => {
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 0) {
-								let data = res.data.data;
+								const { data } = res.data;
 								setGetMsgContent(data);
 
 								if (!flag) {
@@ -153,22 +154,26 @@ const Panel = () => {
 									});
 
 									api_GetMsgCount().then(
-										res => {
+										resMsg => {
 											if (isMountedRef.current) {
-												if (res.data.errorCode === 0) {
-													setMsgCount(res.data.data);
+												if (
+													resMsg.data.errorCode === 0
+												) {
+													setMsgCount(
+														resMsg.data.data
+													);
 												} else {
 													setPopBox({
 														isOpen: true,
 														title:
 															i18n.lbl_ImportantNote,
 														content:
-															res.data.message
+															resMsg.data.message
 													});
 												}
 											}
 										},
-										err => {
+										() => {
 											if (isMountedRef.current) {
 												setPopBox({
 													isOpen: true,
@@ -208,7 +213,7 @@ const Panel = () => {
 	};
 
 	const checkboxHandler = item => {
-		let currIds = checkboxListState.includes(item.id)
+		const currIds = checkboxListState.includes(item.id)
 			? checkboxListState.filter(_item => _item !== item.id)
 			: [...checkboxListState, item.id];
 		setcheckboxListState(currIds);
@@ -216,7 +221,7 @@ const Panel = () => {
 	};
 
 	const selectAll = () => {
-		let allId = getMsgList.map(item => {
+		const allId = getMsgList.map(item => {
 			return item.id;
 		});
 		if (checkboxListState.length === getMsgList.length) {
@@ -270,15 +275,15 @@ const Panel = () => {
 			setPopBox({
 				isOpen: true,
 				title: "",
-				content: i18n["lbl_CheckConfirm"],
+				content: i18n.lbl_CheckConfirm,
 				hasBtn: true,
 				btnBar: (
 					<div className="btn-group">
 						<button className="cancel" onClick={DelMsg}>
-							{i18n["lbl_Yes"]}
+							{i18n.lbl_Yes}
 						</button>
 						<button className="submit" onClick={closePopBox}>
-							{i18n["lbl_No"]}
+							{i18n.lbl_No}
 						</button>
 					</div>
 				)
@@ -286,9 +291,9 @@ const Panel = () => {
 		}
 	};
 
-	let arr = getMsgList?.map(item => {
-		let _open = openContentState === item.id;
-		let _checked = checkboxListState.includes(item.id);
+	const arr = getMsgList?.map(item => {
+		const _open = openContentState === item.id;
+		const _checked = checkboxListState.includes(item.id);
 
 		return (
 			<Item
@@ -317,20 +322,22 @@ const Panel = () => {
 							<i
 								className={`icon icon-checkbox ${
 									isSelectedAll ? "open" : ""
-								}`}></i>
-							{i18n["lbl_SelectAll"]}
+								}`}
+							/>
+							{i18n.lbl_SelectAll}
 						</label>
 						<div className="smallBtn-group">
 							<button
 								className="icon icon-bin clickBtn"
-								onClick={delMsg}></button>
+								onClick={delMsg}
+							/>
 							<ReloadSpin func={GetMsgList} />
 						</div>
 					</div>
 					{getMsgList.length > 0 ? (
 						<>{arr}</>
 					) : (
-						<div className="not-found">{i18n["msg_NoData"]}</div>
+						<div className="not-found">{i18n.msg_NoData}</div>
 					)}
 				</>
 			)}
@@ -347,7 +354,8 @@ const Item = props => {
 					<i
 						className={`icon icon-checkbox${
 							props.isChecked ? " open" : ""
-						}`}></i>
+						}`}
+					/>
 				</label>
 				<div className="introduction">
 					<span className="title">{props.title}</span>
@@ -359,7 +367,8 @@ const Item = props => {
 					className={`icon icon-circle-right ${
 						props.isOpen ? " open" : ""
 					}`}
-					onClick={props.onClick}></button>
+					onClick={props.onClick}
+				/>
 			</div>
 			<div className={`content ${props.isOpen ? " open" : ""}`}>
 				<pre>{props.content}</pre>

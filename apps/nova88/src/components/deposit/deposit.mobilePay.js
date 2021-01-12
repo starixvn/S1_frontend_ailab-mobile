@@ -1,7 +1,8 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import Step from "./step";
+import PropTypes from "prop-types";
 import { Link, Redirect } from "@reach/router";
 import { i18nContext, userInfoContext, popBoxContext } from "Context";
+import Step from "./step";
 import config from "../../config";
 import LimitTip from "./limitTip";
 import { isConvert } from "../common/common";
@@ -27,7 +28,9 @@ export const Main = props => {
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	PageVerify(
@@ -46,40 +49,38 @@ export const Main = props => {
 				setLoading(false);
 				setPaymentList(props.location.state.paymentList);
 			}
-		} else {
-			if (userInfo.isLogin) {
-				setLoading(true);
-				api.payment.GetMobilePayGroupList().then(
-					res => {
-						if (isMountedRef.current) {
-							if (res.data.errorCode === 0) {
-								if (res.data.data.length > 0) {
-									setPaymentList(res.data.data);
-								} else {
-									setRedirectPath(`/${path.deposit.root}`);
-								}
+		} else if (userInfo.isLogin) {
+			setLoading(true);
+			api.payment.GetMobilePayGroupList().then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							if (res.data.data.length > 0) {
+								setPaymentList(res.data.data);
 							} else {
-								setPopBox({
-									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: res.data.message
-								});
+								setRedirectPath(`/${path.deposit.root}`);
 							}
-							setLoading(false);
-						}
-					},
-					err => {
-						if (isMountedRef.current) {
-							setLoading(false);
+						} else {
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
-								content: i18n.msg_ApiServerError
+								content: res.data.message
 							});
 						}
+						setLoading(false);
 					}
-				);
-			}
+				},
+				err => {
+					if (isMountedRef.current) {
+						setLoading(false);
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
+						});
+					}
+				}
+			);
 		}
 	}, [
 		props.location.state,
@@ -122,7 +123,7 @@ export const Main = props => {
 		}
 	};
 
-	let rows = paymentList?.map(p => {
+	const rows = paymentList?.map(p => {
 		return (
 			<div key={`deposit-mobilepay-${p.groupId}`}>
 				<button
@@ -140,7 +141,7 @@ export const Main = props => {
 		);
 	});
 
-	let channels = channelList?.map(c => {
+	const channels = channelList?.map(c => {
 		return (
 			<Link
 				className="account"
@@ -175,27 +176,34 @@ export const Main = props => {
 
 	if (loading) {
 		return <Loading />;
-	} else {
-		return redirectPath !== null ? (
-			<Redirect to={redirectPath} noThrow />
-		) : pageVerify ? (
-			<>
-				<Step step={2} />
-				<div className="depositType">{rows}</div>
-				<div
-					className={`inputBox channel${
-						selGroupId !== null ? " open" : ""
-					}`}>
-					{channels}
-				</div>
-				<div className="btn-group">
-					<Link to="../" className="white">
-						{i18n.lbl_Back}
-					</Link>
-				</div>
-			</>
-		) : (
-			<></>
-		);
 	}
+	return redirectPath !== null ? (
+		<Redirect to={redirectPath} noThrow />
+	) : pageVerify ? (
+		<>
+			<Step step={2} />
+			<div className="depositType">{rows}</div>
+			<div
+				className={`inputBox channel${
+					selGroupId !== null ? " open" : ""
+				}`}>
+				{channels}
+			</div>
+			<div className="btn-group">
+				<Link to="../" className="white">
+					{i18n.lbl_Back}
+				</Link>
+			</div>
+		</>
+	) : (
+		<></>
+	);
+};
+
+Main.defaultProps = {
+	location: {}
+};
+
+Main.propTypes = {
+	location: PropTypes.objectOf(PropTypes.any)
 };

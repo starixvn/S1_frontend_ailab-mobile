@@ -9,7 +9,7 @@ export default ({ i18n }) => (
 
 export const OneLineTitle = ({ i18n }) => (
 	<p>
-		{i18n["lbl_OnlineBanking"].toUpperCase()}
+		{i18n.lbl_OnlineBanking.toUpperCase()}
 		<br />
 		{i18n.lbl_CreditTime}: {i18n.lbl_Instant}
 	</p>

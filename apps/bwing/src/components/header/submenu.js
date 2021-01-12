@@ -1,16 +1,14 @@
 import React, { useContext, useState } from "react";
+import { Link } from "@reach/router";
 import Logo from "../img/logo";
 import {
 	userInfoContext,
 	i18nContext,
-	walletInfoContext,
 	navContext,
-	defNavPanel
+	defNavPanel,
+	popBoxContext
 } from "../common/context";
-import { Link } from "@reach/router";
 import path from "../../path";
-// import { api_GetWalletInfo } from "../../service/api/account";
-import { number_format } from "../common/common";
 // import ReloadSpin from "../common/reloadSpin";
 import { defGameInfo } from "../../datas/productList";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
@@ -18,6 +16,7 @@ import ShortcutBar from "./shortcutBar";
 import LangDropdown from "../common/dropdown.language";
 import { siteInfo } from "../../config";
 import { api_SetLanguage } from "../../service/api/account";
+import { useGetBalance } from "./hook";
 
 const defSubMenus = langId => [
 	{
@@ -67,8 +66,14 @@ export default () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { nav, setNav } = useContext(navContext);
-	const { walletInfo } = useContext(walletInfoContext);
 	const [isOpenSubMenu, setIsOpenSubMenu] = useState([]);
+	const { setPopBox } = useContext(popBoxContext);
+
+	const { allBalance } = useGetBalance({
+		isLogin: userInfo.isLogin,
+		i18n,
+		setPopBox
+	});
 
 	const handleSubMenu = displayKey => {
 		if (isOpenSubMenu.includes(displayKey)) {
@@ -90,22 +95,20 @@ export default () => {
 		}
 	};
 
-	let openPanel = nav === defNavPanel.subMenu;
+	const openPanel = nav === defNavPanel.subMenu;
 
 	return (
 		<div className={`menu${openPanel ? " active" : ""}`}>
-			<button
-				onClick={closeNavPanel}
-				className="icon icon-close"></button>
+			<button onClick={closeNavPanel} className="icon icon-close" />
 
 			<div className="menuTop">
 				<div className="menuBtn open">
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
+					<span />
+					<span />
+					<span />
+					<span />
+					<span />
+					<span />
 				</div>
 				<Logo />
 			</div>
@@ -118,11 +121,7 @@ export default () => {
 				{userInfo.isLogin ? (
 					<div className="icon icon-wallteIcon" href="">
 						<span>{i18n[`Currency_${userInfo.currencyId}`]} </span>
-						<span>
-							{!walletInfo.allBalance
-								? 0
-								: number_format(walletInfo.allBalance, false)}
-						</span>
+						<span>{allBalance}</span>
 					</div>
 				) : null}
 				<LangDropdown
@@ -169,13 +168,13 @@ const SubMenuList = ({
 		window.open(href, "_blank");
 	};
 
-	let rows = defSubMenus(userInfo.langId).map(s => {
-		let key = `submenu-${s.displayKey}`;
+	const rows = defSubMenus(userInfo.langId).map(s => {
+		const key = `submenu-${s.displayKey}`;
 		let hasSubItem = false;
 		let _subItems = null;
 
 		if (s.subItems) {
-			let subItemContent = s.subItems?.map(c => {
+			const subItemContent = s.subItems?.map(c => {
 				return (
 					<li
 						key={`${key}-${c.displayKey}`}
@@ -188,7 +187,7 @@ const SubMenuList = ({
 
 			hasSubItem = subItemContent.length > 0;
 			if (hasSubItem) {
-				let isOpen = isOpenSubMenu.includes(s.displayKey);
+				const isOpen = isOpenSubMenu.includes(s.displayKey);
 				_subItems = (
 					<>
 						<div className={`menuNavText${isOpen ? " open" : ""}`}>
@@ -198,7 +197,8 @@ const SubMenuList = ({
 								onClick={handleSubMenu.bind(this, s.displayKey)}
 								className={`icon icon-arrow_drop_down${
 									isOpen ? " open" : ""
-								}`}></i>
+								}`}
+							/>
 						</div>
 						<div className="menuNavOption">
 							<ul>{subItemContent}</ul>
@@ -220,7 +220,8 @@ const SubMenuList = ({
 					{_subItems}
 				</Link>
 			);
-		} else if (s.href) {
+		}
+		if (s.href) {
 			return (
 				<div
 					className="menuNavTitle"
@@ -232,21 +233,19 @@ const SubMenuList = ({
 					</div>
 				</div>
 			);
-		} else {
-			return hasSubItem ? (
-				<div key={key} className="menuNavTitle">
-					{_subItems}
-				</div>
-			) : (
-				<button
-					key={key}
-					onClick={clickGame.bind(this, s)}
-					className="menuNavTitle">
-					{i18n[s.displayKey].toUpperCase() ??
-						s.displayKey.toUpperCase()}
-				</button>
-			);
 		}
+		return hasSubItem ? (
+			<div key={key} className="menuNavTitle">
+				{_subItems}
+			</div>
+		) : (
+			<button
+				key={key}
+				onClick={clickGame.bind(this, s)}
+				className="menuNavTitle">
+				{i18n[s.displayKey].toUpperCase() ?? s.displayKey.toUpperCase()}
+			</button>
+		);
 	});
 
 	return <div className="menuNav">{rows}</div>;

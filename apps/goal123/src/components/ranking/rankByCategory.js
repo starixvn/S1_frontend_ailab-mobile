@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { defBtns } from "./def";
+import PropTypes from "prop-types";
 import { useGetRanking } from "./hook";
 import RankList from "./rankList";
 import { loadingContext } from "../common/context";
@@ -24,6 +24,16 @@ const Ranking = ({ isOpen, i18n = {}, userInfo: { isLogin, userName } }) => {
 			/>
 		</div>
 	);
+};
+
+Ranking.defaultProps = {
+	isOpen: null
+};
+
+Ranking.propTypes = {
+	isOpen: PropTypes.bool,
+	userInfo: PropTypes.objectOf(PropTypes.string).isRequired,
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
 export default Ranking;
