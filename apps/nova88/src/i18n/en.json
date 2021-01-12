@@ -401,5 +401,6 @@
 	"lbl_SpecialBonusCode":"Special Bonus Code",
 	"lbl_TurnoverAccmulateHint":"Your Fund are locked to transfer out due to Rollover requirement is not fulfils.",
 	"lbl_Achievement":"Achievement",
-	"lbl_Referral_rewards":"Rewards"
+	"lbl_Referral_rewards":"Rewards",
+	"lbl_Redeposit_Promo":"Redeposit"
 }

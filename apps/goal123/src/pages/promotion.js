@@ -23,7 +23,7 @@ export default ({ location }) => {
 				formatRequired: false
 			}}
 			location={location}
-			navBar={[defNav.All, defNav.FirstDeposit, defNav.FreeBet]}
+			navBar={[defNav.All, defNav.FirstDeposit, defNav.ReDeposit]}
 		/>
 	);
 };

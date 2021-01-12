@@ -4831,11 +4831,11 @@ span.icon.icon-icon32px_top:after {
 .achievement {
   color: white;
   margin: 2vw 0;
-  font-weight: bold;
 }
 
 .achievement span {
-  margin-left: 2vw;
+  margin-left: 1vw;
   color: #F77A00;
+  font-weight: bold;
 }
 /*# sourceMappingURL=style.css.map */
