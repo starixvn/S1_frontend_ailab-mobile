@@ -1,10 +1,10 @@
 import React, { useContext, Component, useEffect, useRef } from "react";
+import moment from "moment";
 import {
 	bankSlipPopBoxContext,
 	i18nContext,
 	popBoxContext
 } from "../common/context";
-import moment from "moment";
 import ClipboardJS from "../../lib/clipboard.min";
 import {
 	api_UploadReceipt,
@@ -14,12 +14,12 @@ import config from "../../config";
 import { number_format } from "../common/common";
 
 const GetUploadFileName = files => {
-	let fullPath = files[0].name;
-	var startIndex =
+	const fullPath = files[0].name;
+	const startIndex =
 		fullPath.indexOf("\\") >= 0
 			? fullPath.lastIndexOf("\\")
 			: fullPath.lastIndexOf("/");
-	var filename = fullPath.substring(startIndex);
+	let filename = fullPath.substring(startIndex);
 	if (filename.indexOf("\\") === 0 || filename.indexOf("/") === 0) {
 		filename = filename.substring(1);
 	}
@@ -27,9 +27,13 @@ const GetUploadFileName = files => {
 };
 
 class Content extends Component {
-	state = { processing: false, disableUpload: false, refIdTip: "" };
-	isMountedRef = false;
-	filebox = React.createRef();
+	constructor(props) {
+		super(props);
+		this.state = { processing: false, disableUpload: false, refIdTip: "" };
+		this.isMountedRef = false;
+		this.filebox = React.createRef();
+	}
+
 	componentDidMount() {
 		/* eslint-disable */
 		this.isMountedRef = true;
@@ -38,28 +42,31 @@ class Content extends Component {
 		this._clipboard.on("error", e => {});
 		/* eslint-enable */
 	}
+
 	componentWillUnmount() {
 		this.isMountedRef = false;
 		this._clipboard.destroy();
 	}
+
 	onCheckUpload = () => {
-		let files = this.filebox.current.files;
+		const { files } = this.filebox.current;
 		if (files[0]) {
 			this.props.EditField("picFileName", GetUploadFileName(files));
 			this.onUploadFile();
 		}
 	};
+
 	onUploadFile = () => {
-		let files = this.filebox.current.files;
+		const { files } = this.filebox.current;
 		if (files.length > 0) {
 			this.setState({ disableUpload: true });
-			let formData = new FormData();
+			const formData = new FormData();
 			formData.append("TransId", this.props.bankSlipPopBox.transId);
 			formData.append("Receipt", files[0]);
 			api_UploadReceipt(formData).then(
 				response => {
 					if (this.isMountedRef) {
-						let result = response.data;
+						const result = response.data;
 						if (result.errorCode === 0) {
 							alert(this.props.i18n.lbl_UploadSuccess);
 						} else {
@@ -79,60 +86,62 @@ class Content extends Component {
 			);
 		}
 	};
+
 	EditField = (column, e) => {
 		this.props.EditField(column, e.target.value);
 	};
+
 	SeReceipt = () => {
 		if (!this.props.bankSlipPopBox.refId) {
 			this.setState({ refIdTip: this.props.i18n.lbl_RemindForRefNum });
-		} else {
-			if (!this.state.processing) {
-				this.setState({ processing: true });
-				let bankSlipPopBox = this.props.bankSlipPopBox;
-				api_SetDepositReceipt(
-					bankSlipPopBox.transId,
-					moment(bankSlipPopBox.depositTime).unix(),
-					bankSlipPopBox.refId
-				).then(
-					res => {
-						if (this.isMountedRef) {
-							if (res.data.errorCode === 0) {
-								this.setState({ processing: false });
-								this.props.handlePopBox();
+		} else if (!this.state.processing) {
+			this.setState({ processing: true });
+			const { bankSlipPopBox } = this.props;
+			api_SetDepositReceipt(
+				bankSlipPopBox.transId,
+				moment(bankSlipPopBox.depositTime).unix(),
+				bankSlipPopBox.refId
+			).then(
+				res => {
+					if (this.isMountedRef) {
+						if (res.data.errorCode === 0) {
+							this.setState({ processing: false });
+							this.props.handlePopBox();
 
-								this.props.setPopBox({
-									isOpen: true,
-									title: this.props.i18n.lbl_ImportantNote,
-									content: this.props.i18n
-										.lbl_UpdateSuccessWillProcess
-								});
-							} else {
-								alert(res.message);
-								this.setState({ processing: false });
-							}
-						}
-					},
-					err => {
-						if (this.isMountedRef) {
 							this.props.setPopBox({
 								isOpen: true,
 								title: this.props.i18n.lbl_ImportantNote,
-								content: this.props.i18n.msg_ApiServerError
+								content: this.props.i18n
+									.lbl_UpdateSuccessWillProcess
 							});
-
+						} else {
+							alert(res.message);
 							this.setState({ processing: false });
 						}
 					}
-				);
-			}
+				},
+				err => {
+					if (this.isMountedRef) {
+						this.props.setPopBox({
+							isOpen: true,
+							title: this.props.i18n.lbl_ImportantNote,
+							content: this.props.i18n.msg_ApiServerError
+						});
+
+						this.setState({ processing: false });
+					}
+				}
+			);
 		}
 	};
+
 	HandleUploadAgain = () => {
 		this.setState({ disableUpload: false });
 	};
+
 	render() {
-		let bankSlipPopBox = this.props.bankSlipPopBox;
-		let i18n = this.props.i18n;
+		const { bankSlipPopBox } = this.props;
+		const { i18n } = this.props;
 		return (
 			<div
 				id="popup"
@@ -141,12 +150,12 @@ class Content extends Component {
 					<div
 						className="close open"
 						onClick={this.props.handlePopBox}>
-						<span></span>
-						<span></span>
-						<span></span>
-						<span></span>
-						<span></span>
-						<span></span>
+						<span />
+						<span />
+						<span />
+						<span />
+						<span />
+						<span />
 					</div>
 					<h1 className="text-org">{i18n.lbl_SubmitProof}</h1>
 				</div>
@@ -182,7 +191,8 @@ class Content extends Component {
 										className="icon icon-files-empty clickBtn copyBtn"
 										data-clipboard-text={
 											bankSlipPopBox.accountName
-										}></span>
+										}
+									/>
 								</p>
 								<h1>{i18n.lbl_BankNumber}</h1>
 								<p>
@@ -191,7 +201,8 @@ class Content extends Component {
 										className="icon icon-files-empty clickBtn copyBtn"
 										data-clipboard-text={
 											bankSlipPopBox.accountNo
-										}></span>
+										}
+									/>
 								</p>
 								<h1>{i18n.lbl_DepositAmount}</h1>
 								<p>
@@ -203,7 +214,8 @@ class Content extends Component {
 										className="icon icon-files-empty clickBtn copyBtn"
 										data-clipboard-text={
 											bankSlipPopBox.amount
-										}></span>
+										}
+									/>
 								</p>
 							</div>
 						</div>
@@ -214,7 +226,7 @@ class Content extends Component {
 						<div className="depositInBox">
 							<p>{i18n.lbl_HaveUploadedFile}</p>
 							<p>
-								<span className="icon icon-icon32px_attachment"></span>
+								<span className="icon icon-icon32px_attachment" />
 								{this.props.bankSlipPopBox.picFileName}
 							</p>
 							<div className="btn-group">
@@ -243,7 +255,7 @@ class Content extends Component {
 									/>
 									<label htmlFor="bankSlip">
 										<p>
-											<span className="icon icon-cloud_upload"></span>
+											<span className="icon icon-cloud_upload" />
 											{i18n.lbl_UploadFile}
 										</p>
 									</label>
@@ -260,9 +272,11 @@ class Content extends Component {
 					)}
 
 					<div className="inputBox">
-						<span>{`${i18n.lbl_DepositTime} (${moment().format(
-							"Z"
-						)})`}</span>
+						<span>
+							{`${i18n.lbl_DepositTime} (${moment().format(
+								"Z"
+							)})`}
+						</span>
 						<div className="inputBoxText">
 							<input
 								placeholder={i18n.msg_SubmitDepositTime}
@@ -276,7 +290,7 @@ class Content extends Component {
 								)}
 							/>
 							<div className="iconModule">
-								<span className="icon icon-calendar"></span>
+								<span className="icon icon-calendar" />
 								{/* <span className="icon icon-information-solid textBlue"></span> */}
 							</div>
 						</div>
@@ -316,7 +330,9 @@ export default () => {
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	const handlePopBox = () => {

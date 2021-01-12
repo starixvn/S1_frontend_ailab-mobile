@@ -1,21 +1,24 @@
 import React, { useEffect, useState, useRef } from "react";
 import moment from "moment";
-import path from "../../path";
 import { Link, Redirect } from "@reach/router";
+import PropTypes from "prop-types";
+import path from "../../path";
 import { api_promotion_SetClaimPromotion } from "../../service/api/promotion";
 import { number_format, isConvert } from "../common/common";
 import { promoStatus } from "./promotion.def";
 
-export default ({ userInfo, i18n, p, GetPromotion, isList, setPopBox }) => {
+const JoinBtn = ({ userInfo, i18n, p, GetPromotion, isList, setPopBox }) => {
 	const [redirectPath, setRedirectPath] = useState(null);
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
-	const onJoinPromotion = (p, e) => {
+	const onJoinPromotion = (promotion, e) => {
 		e.stopPropagation();
 
 		if (userInfo.isLogin !== false) {
@@ -54,10 +57,10 @@ export default ({ userInfo, i18n, p, GetPromotion, isList, setPopBox }) => {
 					)
 				});
 			} else if (
-				p.canJoin &&
-				!p.isJoin &&
-				p.result === 1 &&
-				p.requiredAmount > 0
+				promotion.canJoin &&
+				!promotion.isJoin &&
+				promotion.result === 1 &&
+				promotion.requiredAmount > 0
 			) {
 				const RedirectToDeposit = () => {
 					setRedirectPath(
@@ -67,8 +70,8 @@ export default ({ userInfo, i18n, p, GetPromotion, isList, setPopBox }) => {
 				};
 
 				const _currency = i18n[`Currency_${userInfo.currencyId}`];
-				let _requiredAmount = number_format(
-					p.requiredAmount - p.depositAmount,
+				const _requiredAmount = number_format(
+					promotion.requiredAmount - promotion.depositAmount,
 					isConvert(userInfo.currencyId)
 				);
 
@@ -76,9 +79,9 @@ export default ({ userInfo, i18n, p, GetPromotion, isList, setPopBox }) => {
 					isOpen: true,
 					title: i18n.lbl_ImportantNote,
 					content: (
-						<div class="info">
+						<div className="info">
 							{i18n.lbl_RequireMinAmountHint}{" "}
-							<span class="text-org">
+							<span className="text-org">
 								{_currency} ${_requiredAmount}
 							</span>
 							<br />
@@ -102,7 +105,7 @@ export default ({ userInfo, i18n, p, GetPromotion, isList, setPopBox }) => {
 			} else {
 				api_promotion_SetClaimPromotion({
 					langId: userInfo.langId,
-					BonusCode: p.bonusCode
+					BonusCode: promotion.bonusCode
 				}).then(
 					res => {
 						if (isMountedRef.current) {
@@ -111,7 +114,7 @@ export default ({ userInfo, i18n, p, GetPromotion, isList, setPopBox }) => {
 									? GetPromotion()
 									: GetPromotion(
 											userInfo.langId,
-											p.bonusCode
+											promotion.bonusCode
 									  );
 
 								setPopBox({
@@ -195,7 +198,7 @@ export default ({ userInfo, i18n, p, GetPromotion, isList, setPopBox }) => {
 		}
 	};
 
-	let expiryTime = moment.duration(
+	const expiryTime = moment.duration(
 		moment
 			.unix(
 				p.isJoin && p.status === promoStatus.Running && p.custExpiryTime
@@ -227,3 +230,18 @@ export default ({ userInfo, i18n, p, GetPromotion, isList, setPopBox }) => {
 		<Redirect to={redirectPath} noThrow />
 	);
 };
+
+JoinBtn.defaultProps = {
+	isList: null
+};
+
+JoinBtn.propTypes = {
+	userInfo: PropTypes.objectOf(propTypes.string).isRequired,
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	p: PropTypes.objectOf(PropTypes.string).isRequired,
+	GetPromotion: PropTypes.func.isRequired,
+	isList: PropTypes.bool,
+	setPopBox: PropTypes.func.isRequired
+};
+
+export default JoinBtn;

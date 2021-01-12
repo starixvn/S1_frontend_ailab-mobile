@@ -6,15 +6,16 @@ import {
 	loadingContext
 } from "Context";
 import moment from "moment";
+import PropTypes from "prop-types";
 import Dropdown from "../common/dropdown";
 import { number_format, isConvert } from "../common/common";
-import { Breadcrumbs } from "../common/breadcrumb";
+import Breadcrumbs from "../common/breadcrumb";
 import { getDateRange, getSkipLink, defStatement } from "./common";
 import path from "../../path";
 import api from "../../service/api";
 import { useHandlePage } from "./hook";
 
-export default props => {
+const Index = props => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -30,12 +31,14 @@ export default props => {
 	const _startDay = timePeriod.substr(0, timePeriod.indexOf("to"));
 	const _endDay = timePeriod.split("to").pop();
 
-	let dateRange = getDateRange({ startDate: _startDay, endDate: _endDay });
+	const dateRange = getDateRange({ startDate: _startDay, endDate: _endDay });
 	const skipLink = getSkipLink({ dateRange });
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -88,15 +91,15 @@ export default props => {
 		func_getDatas: getListbyGameType
 	});
 
-	let totalTurnover = datas?.reduce((prev, curr) => {
+	const totalTurnover = datas?.reduce((prev, curr) => {
 		return prev + curr.turnOver;
 	}, 0);
 
-	let totalWinLoss = datas?.reduce((prev, curr) => {
+	const totalWinLoss = datas?.reduce((prev, curr) => {
 		return prev + curr.winlostAmount;
 	}, 0);
 
-	let detailArr = datas?.map(data => {
+	const detailArr = datas?.map(data => {
 		return (
 			<Detail
 				key={`bet-by-gameType-${data.transId}`}
@@ -155,11 +158,23 @@ export default props => {
 				</>
 			) : (
 				<div className="nodata icon icon-nodata">
-					<div className="txt-white">{i18n["msg_NoData"]}</div>
+					<div className="txt-white">{i18n.msg_NoData}</div>
 				</div>
 			)}
 		</>
 	) : null;
+};
+
+Index.defaultProps = {
+	timePeriod: "",
+	date: "",
+	game: null
+};
+
+Index.propTypes = {
+	timePeriod: PropTypes.string,
+	date: PropTypes.string,
+	game: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 const Detail = ({
@@ -211,3 +226,34 @@ const Detail = ({
 		</div>
 	);
 };
+
+Detail.defaultProps = {
+	_isConvert: false
+};
+
+Detail.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	transTime: PropTypes.oneOfType([
+		PropTypes.instanceOf(Date),
+		PropTypes.string
+	]).isRequired,
+	turnOver: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired,
+	validBet: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired,
+	winlostAmount: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired,
+	_isConvert: PropTypes.bool,
+	transId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired,
+	bonusCode: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired,
+	bonusId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired,
+	settledTime: PropTypes.oneOfType([
+		PropTypes.instanceOf(Date),
+		PropTypes.string
+	]).isRequired
+};
+
+export default Index;

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
+import moment from "moment";
 import { userInfoContext, popBoxContext, i18nContext } from "../common/context";
 import { api_GetAnnouncement } from "../../service/api/message";
-import moment from "moment";
 import Loading from "../common/loading";
 
 const Panel = () => {
@@ -13,7 +13,7 @@ const Panel = () => {
 	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
-		let mounted = true;
+		const mounted = true;
 		if (mounted) {
 			setLoading(true);
 		}
@@ -21,7 +21,7 @@ const Panel = () => {
 		api_GetAnnouncement(userInfo.langId).then(
 			res => {
 				if (res.data.errorCode === 0) {
-					const data = res.data.data;
+					const { data } = res.data;
 					if (mounted) {
 						setGetAnnouncement(data);
 					}
@@ -63,8 +63,8 @@ const Panel = () => {
 		}
 	};
 
-	let arr = getAnnouncement?.map(item => {
-		let _open = selectItemState === item.id;
+	const arr = getAnnouncement?.map(item => {
+		const _open = selectItemState === item.id;
 		return (
 			<Item
 				key={`announcement-${item.id}`}
@@ -80,7 +80,7 @@ const Panel = () => {
 	return (
 		<>
 			{loading ? <Loading /> : null}
-			<div className="functionList"></div>
+			<div className="functionList" />
 			{arr}
 		</>
 	);
@@ -98,7 +98,8 @@ const Item = props => {
 					className={`icon icon-circle-right ${
 						props.isOpen ? " open" : ""
 					}`}
-					onClick={props.onClick}></button>
+					onClick={props.onClick}
+				/>
 			</div>
 			<div className={`content ${props.isOpen ? " open" : ""}`}>
 				<pre>{props.content}</pre>

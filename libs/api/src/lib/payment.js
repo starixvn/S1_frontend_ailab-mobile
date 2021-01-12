@@ -1,6 +1,6 @@
 import BaseAPI from "./base";
 
-export class paymentAPI extends BaseAPI {
+export class PaymentAPI extends BaseAPI {
 	GetBankInfoSysList = () => this.paymentRequest.post("/GetBankInfoSysList");
 
 	GetDepositInfoHistory = ({ StartDate, EndDate, PageNumber }) =>
@@ -45,7 +45,7 @@ export class paymentAPI extends BaseAPI {
 		this.paymentRequest.post("/GetDepositInfoRecent");
 
 	SetDepositCancel = TransId =>
-		this.paymentRequest.post("/SetDepositCancel", { TransId: TransId });
+		this.paymentRequest.post("/SetDepositCancel", { TransId });
 
 	UploadReceipt = formData =>
 		this.paymentRequest.post("/UploadReceipt", formData, {
@@ -56,14 +56,14 @@ export class paymentAPI extends BaseAPI {
 
 	SetDepositReceipt = (TransId, DepositTime, RefNo) =>
 		this.paymentRequest.post("/SetDepositReceipt", {
-			TransId: TransId,
-			DepositTime: DepositTime,
-			RefNo: RefNo
+			TransId,
+			DepositTime,
+			RefNo
 		});
 
 	GetMobilePayInfoList = GroupId =>
 		this.paymentRequest.post("/GetMobilePayInfoList", {
-			GroupId: GroupId
+			GroupId
 		});
 
 	WithdrawalReq = (AccountNo, amount, sysId, blackbox) =>

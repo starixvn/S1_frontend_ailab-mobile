@@ -2,7 +2,7 @@ import React from "react";
 import { defPromoNavs } from "./promotion.def";
 
 export default ({ i18n, selected, selectPromoType }) => {
-	let arr = defPromoNavs.map(p => {
+	const arr = defPromoNavs.map(p => {
 		return (
 			<button
 				key={`promo-nav-${p.displayKey}`}
@@ -12,5 +12,5 @@ export default ({ i18n, selected, selectPromoType }) => {
 			</button>
 		);
 	});
-	return <>{arr}</>;
+	return { arr };
 };

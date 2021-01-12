@@ -24,7 +24,7 @@ export const Filter = ({ submitHandler }) => {
 		setSelectedIdx(idx);
 
 		if (selectedIdx !== idx) {
-			let result = selectDateRange({ idx: idx });
+			const result = selectDateRange({ idx });
 			setDateRange({
 				startDate: result.startDate,
 				endDate: result.endDate
@@ -53,7 +53,7 @@ export const Filter = ({ submitHandler }) => {
 						dateRange.startDate,
 						dateRange.endDate
 					)}>
-					{i18n["lbl_Submit"]}
+					{i18n.lbl_Submit}
 				</button>
 			</div>
 		</>

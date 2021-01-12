@@ -1,15 +1,11 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import Swiper from "react-id-swiper";
+import { Link } from "@reach/router";
 import config from "../../config";
 import { api_GetBanner } from "../../service/api/site";
-import {
-	userInfoContext,
-	navContext,
-	defNavPanel
-} from "../../components/common/context";
+import { userInfoContext, navContext, defNavPanel } from "./context";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import path from "../../path";
-import { Link } from "@reach/router";
 
 export const defBannerFolder = {
 	Sports: "Sports"
@@ -36,7 +32,7 @@ export const ClickLink = (
 		if (href === "Promotion/Index") {
 			window.location.href = `/${path.promotion.root}`;
 		} else if (href === "Home/Register") {
-			return;
+			//
 		} else if (href === "leaderBoard") {
 			window.location.href = `/${path.ranking.root}`;
 		} else {
@@ -92,10 +88,10 @@ const Panel = ({
 						result = [
 							...result,
 							...r.data.data?.map(d => {
-								let imgFolder = d.imgFolder
+								const imgFolder = d.imgFolder
 									? d.imgFolder
 									: ImgFolder[idx];
-								return { ...d, imgFolder: imgFolder };
+								return { ...d, imgFolder };
 							})
 						];
 					}
@@ -107,29 +103,31 @@ const Panel = ({
 			});
 		}
 
-		return () => (mounted = false);
+		return () => {
+			mounted = false;
+		};
 	}, [userInfo, ImgFolder, filterHideInHome]);
 
-	let rows = banner?.map((b, b_idx) => {
-		let _imgFolder = b.imgFolder ?? ImgFolder;
-		let lang =
+	const rows = banner?.map((b, b_idx) => {
+		const _imgFolder = b.imgFolder ?? ImgFolder;
+		const lang =
 			b.fromDB || b.lang?.includes(userInfo.langId)
 				? userInfo.langId
 				: "en";
-		let actionLinkByLang = b.fromDB
+		const actionLinkByLang = b.fromDB
 			? null
 			: b.actionLinkByLang?.find(a => a.lang === userInfo.langId);
-		let actionLink = actionLinkByLang
+		const actionLink = actionLinkByLang
 			? actionLinkByLang.link
 			: b.actionLink;
-		let imgSRC = b.fromDB
+		const imgSRC = b.fromDB
 			? b.imgURL
 			: `${config.imgUrl}/CMS/${config.siteName}/${_imgFolder}/${lang}/${b.img}`;
 
 		let promotionUrl = "";
 
 		if (actionLink?.startsWith("Promotion/Bonus?")) {
-			let promoUrlParam = actionLink.split("?")?.[1];
+			const promoUrlParam = actionLink.split("?")?.[1];
 			promotionUrl = `/${path.promotionInfo.root}?${promoUrlParam}`;
 		} else if (
 			actionLink?.startsWith("promotion/promotionInfo?BonusCode=")
@@ -143,26 +141,25 @@ const Panel = ({
 					<img src={imgSRC} className="banner" alt={b.img ?? ""} />
 				</Link>
 			);
-		} else {
-			return (
-				<button
-					onClick={ClickLink.bind(
-						this,
-						b.tpId,
-						b.gameId,
-						lang,
-						actionLink,
-						b.outerLink === true,
-						b.urlWithLang,
-						userInfo.isLogin,
-						setNav,
-						b.matchid
-					)}
-					key={`${lang}-${b.img}-${b_idx}`}>
-					<img src={imgSRC} className="banner" alt={b.img ?? ""} />
-				</button>
-			);
 		}
+		return (
+			<button
+				onClick={ClickLink.bind(
+					this,
+					b.tpId,
+					b.gameId,
+					lang,
+					actionLink,
+					b.outerLink === true,
+					b.urlWithLang,
+					userInfo.isLogin,
+					setNav,
+					b.matchid
+				)}
+				key={`${lang}-${b.img}-${b_idx}`}>
+				<img src={imgSRC} className="banner" alt={b.img ?? ""} />
+			</button>
+		);
 	});
 
 	return withBtn ? <AutoplayWithBtn Rows={rows} /> : <Autoplay Rows={rows} />;
@@ -199,10 +196,10 @@ const AutoplayWithBtn = ({ Rows }) => {
 			ref.current = obj;
 		},
 		renderPrevButton: () => (
-			<div className="swiper-button-prev" onClick={goPrev}></div>
+			<div className="swiper-button-prev" onClick={goPrev} />
 		),
 		renderNextButton: () => (
-			<div className="swiper-button-next" onClick={goNext}></div>
+			<div className="swiper-button-next" onClick={goNext} />
 		)
 	};
 	const ref = useRef(null);

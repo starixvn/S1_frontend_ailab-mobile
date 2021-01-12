@@ -17,7 +17,7 @@ const SearchBox = props => {
 	const providerList = [
 		{ id: null, displayText: i18n.lbl_AllProvider },
 		...Object.keys(props.TpList)?.map(k => {
-			let d = props.TpList[k];
+			const d = props.TpList[k];
 			return {
 				id: d.value,
 				displayText: d.displayKey ? i18n[d.displayKey] : d.displayText
@@ -50,7 +50,7 @@ const SearchBox = props => {
 
 	const SelectProvider = idx => {
 		props.EditSearchField("provider", {
-			idx: idx,
+			idx,
 			value: providerList[idx].id,
 			init: true
 		});
@@ -58,7 +58,7 @@ const SearchBox = props => {
 
 	const SelectGameType = idx => {
 		props.EditSearchField("gameType", {
-			idx: idx,
+			idx,
 			value: gameTypeList[idx].id
 		});
 	};
@@ -66,7 +66,7 @@ const SearchBox = props => {
 	return (
 		<>
 			<div className="inputBox">
-				<i className="icon icon-search"></i>
+				<i className="icon icon-search" />
 				<input
 					className="search"
 					placeholder={i18n.lbl_SearchGames}
@@ -75,7 +75,8 @@ const SearchBox = props => {
 				/>
 				<button
 					className="icon icon-equalizer filter"
-					onClick={HandleOpenAdvance}></button>
+					onClick={HandleOpenAdvance}
+				/>
 			</div>
 			<div className={`filterSelect${openAdvance ? " open" : ""}`}>
 				<div className="inputBox">
@@ -85,7 +86,7 @@ const SearchBox = props => {
 						options={providerList}
 						selectedIdx={props.provider?.idx}
 						onSelectItem={SelectProvider}
-						placeholder={"Game Platform"}
+						placeholder="Game Platform"
 					/>
 				</div>
 				<div className="inputBox">
@@ -95,7 +96,7 @@ const SearchBox = props => {
 						options={gameTypeList}
 						selectedIdx={props.gameType?.idx}
 						onSelectItem={SelectGameType}
-						placeholder={"Game Type"}
+						placeholder="Game Type"
 					/>
 				</div>
 			</div>

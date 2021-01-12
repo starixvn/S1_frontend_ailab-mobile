@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { Redirect, Link, useMatch } from "@reach/router";
 import { i18nContext, userInfoContext } from "./context";
 
@@ -31,22 +32,28 @@ const IndexPage = ({ defTabs, children, beforeLogin }) => {
 
 	if (redirectPath !== null) {
 		return <Redirect to="/" noThrow />;
-	} else {
-		const items = Object.keys(defTabs).map(key => (
-			<TabItem
-				key={`tab-btn-${key}`}
-				i18n={i18n}
-				tabItem={defTabs[key]}
-			/>
-		));
-
-		return (
-			<>
-				<div className="tag">{items}</div>
-				{children}
-			</>
-		);
 	}
+	const items = Object.keys(defTabs).map(key => (
+		<TabItem key={`tab-btn-${key}`} i18n={i18n} tabItem={defTabs[key]} />
+	));
+
+	return (
+		<>
+			<div className="tag">{items}</div>
+			{children}
+		</>
+	);
+};
+
+IndexPage.defaultProps = {
+	defTabs: {},
+	beforeLogin: false
+};
+
+IndexPage.propTypes = {
+	defTabs: PropTypes.objectOf(PropTypes.object),
+	children: PropTypes.node.isRequired,
+	beforeLogin: PropTypes.bool
 };
 
 const TabItem = ({ i18n, tabItem }) => {
@@ -59,6 +66,11 @@ const TabItem = ({ i18n, tabItem }) => {
 			{i18n[tabItem.displayKey]}
 		</Link>
 	);
+};
+
+TabItem.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	tabItem: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
 export default IndexPage;

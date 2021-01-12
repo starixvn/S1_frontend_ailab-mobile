@@ -19,7 +19,9 @@ export default ({
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	const ClosePopBox = () => {
@@ -74,24 +76,24 @@ export default ({
 		setPopBox({
 			isOpen: true,
 			title: i18n.lbl_ImportantNote,
-			content: i18n["lbl_CheckConfirm"],
+			content: i18n.lbl_CheckConfirm,
 			hasBtn: true,
 			btnBar: (
 				<div className="btn-group">
 					<button className="gray" onClick={delBankInfo}>
-						{i18n["lbl_Yes"]}
+						{i18n.lbl_Yes}
 					</button>
 					<button className="blue" onClick={ClosePopBox}>
-						{i18n["lbl_No"]}
+						{i18n.lbl_No}
 					</button>
 				</div>
 			)
 		});
 	};
 
-	let arr = custBankInfo?.map(item => {
-		let _key = `withdrawal-bankCard-${item.sysId}-${item.accountNo}`;
-		let _checked =
+	const arr = custBankInfo?.map(item => {
+		const _key = `withdrawal-bankCard-${item.sysId}-${item.accountNo}`;
+		const _checked =
 			item.accountNo === selBank?.accountNo &&
 			item.sysId === selBank?.sysId;
 
@@ -110,14 +112,14 @@ export default ({
 	return (
 		<div className="addBank">
 			<div className="remainder">
-				{i18n["lbl_NumberOfBankAccounts"]}:{custBankInfo?.length ?? 0}/3
+				{i18n.lbl_NumberOfBankAccounts}:{custBankInfo?.length ?? 0}/3
 			</div>
 			{custBankInfo.length > 0 ? arr : null}
 
 			{custBankInfo.length < 3 ? (
 				<div className="addBankName noBank" onClick={addBankAccount}>
-					<div className="icon icon-plus"></div>
-					<div>{i18n["lbl_AddBankAccount"]}</div>
+					<div className="icon icon-plus" />
+					<div>{i18n.lbl_AddBankAccount}</div>
 				</div>
 			) : null}
 		</div>
@@ -138,7 +140,8 @@ const BankCard = props => {
 					{props.hideDelBtn ? null : (
 						<button
 							className="icon icon-bin"
-							onClick={props.delAccount}></button>
+							onClick={props.delAccount}
+						/>
 					)}
 					<div className="checkbox">
 						<input
@@ -149,7 +152,8 @@ const BankCard = props => {
 						/>
 						<label
 							htmlFor={props.checkKey}
-							className="icon icon-checkbox-checked"></label>
+							className="icon icon-checkbox-checked"
+						/>
 					</div>
 				</div>
 			</div>

@@ -1,7 +1,6 @@
 import React from "react";
-import InputBox from "../common/inputbox.hint";
+import InputBox, { defIptStatus } from "../common/inputbox.hint";
 import Dropdown from "../common/dropdown";
-import { defIptStatus } from "../common/inputbox.hint";
 
 export default ({
 	i18n,
@@ -24,7 +23,7 @@ export default ({
 	return (
 		<div className="depositInBox">
 			<div>
-				<div className="input-title">{i18n["lbl_From"]}</div>
+				<div className="input-title">{i18n.lbl_From}</div>
 				<div className="inputBox">
 					<Dropdown
 						mainKey="transfer-From"
@@ -33,7 +32,7 @@ export default ({
 								? allWalletsList
 								: transferOptions.transferFrom
 						}
-						placeholder={i18n["lbl_TransferFrom"]}
+						placeholder={i18n.lbl_TransferFrom}
 						selectedIdx={selectedIdx.transferFrom}
 						i18n={i18n}
 						onSelectItem={selectItem.bind(this, "transferFrom")}
@@ -43,7 +42,7 @@ export default ({
 			</div>
 
 			<div>
-				<div className="input-title">{i18n["lbl_To"]}</div>
+				<div className="input-title">{i18n.lbl_To}</div>
 				<div className="inputBox">
 					<Dropdown
 						mainKey="transfer-To"
@@ -52,7 +51,7 @@ export default ({
 								? allWalletsList
 								: transferOptions.transferTo
 						}
-						placeholder={i18n["lbl_TransferTo"]}
+						placeholder={i18n.lbl_TransferTo}
 						selectedIdx={selectedIdx.transferTo}
 						onSelectItem={selectItem.bind(this, "transferTo")}
 						i18n={i18n}
@@ -64,7 +63,7 @@ export default ({
 			<div className="inputBoxLevel">
 				<div className="left">
 					<InputBox
-						title={i18n["lbl_Amount"]}
+						title={i18n.lbl_Amount}
 						value={amount}
 						inputType="tel"
 						onChange={EditAmount}
@@ -74,7 +73,7 @@ export default ({
 				<div className="right">
 					<div className="btn-group">
 						<button className="blue" onClick={clickSubmit}>
-							{i18n["lbl_transfer_submit"]}
+							{i18n.lbl_transfer_submit}
 						</button>
 					</div>
 				</div>

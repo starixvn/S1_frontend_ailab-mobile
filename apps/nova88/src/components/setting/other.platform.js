@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
+import { Redirect } from "@reach/router";
 import path from "../../path";
 import { navContext, defNavPanel } from "../common/context";
 import { defGameInfo } from "../../datas/productList";
-import { Redirect } from "@reach/router";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import config from "../../config";
 
@@ -101,40 +101,39 @@ const defPlatfrom = [
 	// }
 ];
 
-export default ({ langId, isLogin }) => {
+export default ({ langId = "en", isLogin = false }) => {
 	const { setNav } = useContext(navContext);
 	const [redirectPath, setRedirectPath] = useState(null);
 
-	const ClickItem = ({ path, urlParams, tpId, gameId, needLogin }) => {
+	const ClickItem = ({ _path, urlParams, tpId, gameId, needLogin }) => {
 		const loginCallback = () => {
 			setNav(defNavPanel.login);
 		};
 
-		if (path) {
+		if (_path)
 			return !isLogin && needLogin
 				? loginCallback()
-				: setRedirectPath(`/${path}${urlParams}`);
-		} else {
-			GET_ENTER_PAGE({
-				isLogin,
-				langId,
-				tpId,
-				gameId,
-				loginCallback: loginCallback
-			});
-		}
+				: setRedirectPath(`/${_path}${urlParams}`);
+
+		return GET_ENTER_PAGE({
+			isLogin,
+			langId,
+			tpId,
+			gameId,
+			loginCallback
+		});
 	};
 
-	let rows = defPlatfrom.map(p => {
-		let key = `other-platform-${p.tpId}-${p.gameId}`;
+	const rows = defPlatfrom.map(p => {
+		const key = `other-platform-${p.tpId}-${p.gameId}`;
 		let params = null;
 		if (p.parameter) {
-			params = Object.keys(p.parameter).map(key => {
-				return `${key}=${p.parameter[key]}`;
+			params = Object.keys(p.parameter).map(k => {
+				return `${k}=${p.parameter[k]}`;
 			});
 		}
 
-		let _urlParams = params !== null ? `?${params.join("&")}` : "";
+		const _urlParams = params !== null ? `?${params.join("&")}` : "";
 
 		return (
 			<img

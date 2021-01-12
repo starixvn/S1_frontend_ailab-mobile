@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-import { i18nContext } from "../common/context";
+import PropTypes from "prop-types";
+import { i18nContext } from "./context";
 import LoadingLogo from "../../styles/img/logo.png";
 
 export default () => {
@@ -30,4 +31,12 @@ const Loading = ({ loadingDisplayText }) => {
 			</div>
 		</div>
 	);
+};
+
+Loading.defaultProps = {
+	loadingDisplayText: "Loading"
+};
+
+Loading.propTypes = {
+	loadingDisplayText: PropTypes.string
 };

@@ -1,9 +1,9 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
+import moment from "moment";
 import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
 import { api_GetTransferHistory } from "../../service/api/tp";
 import { number_format, isConvert } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
-import moment from "moment";
 import HistoryFilter from "../common/historyFilter";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import Loading from "../common/loading";
@@ -37,7 +37,9 @@ const Panel = () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	AUTO_FETCHING_DATA(
@@ -72,25 +74,23 @@ const Panel = () => {
 			}).then(
 				response => {
 					if (isMountedRef.current) {
-						const errorCode = response.data.errorCode;
+						const { errorCode } = response.data;
 						if (errorCode !== 0) {
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
 								content: response.data.message
 							});
-						} else {
-							if (isMountedRef.current) {
-								setGetHistoryState(response.data.data);
-								if (
-									response.data.totalPages >=
-									response.data.pageNumber
-								) {
-									setPageInfo(() => ({
-										totalPages: response.data.totalPages,
-										pageNumber: response.data.pageNumber
-									}));
-								}
+						} else if (isMountedRef.current) {
+							setGetHistoryState(response.data.data);
+							if (
+								response.data.totalPages >=
+								response.data.pageNumber
+							) {
+								setPageInfo(() => ({
+									totalPages: response.data.totalPages,
+									pageNumber: response.data.pageNumber
+								}));
 							}
 						}
 						setProcessing(false);
@@ -112,7 +112,7 @@ const Panel = () => {
 		}
 	};
 
-	let arr = getHistoryState?.map(item => {
+	const arr = getHistoryState?.map(item => {
 		const _transferDirection = transferDirection(
 			item.direction,
 			i18n.lbl_MainWallet,
@@ -146,7 +146,7 @@ const Panel = () => {
 							<div
 								className="textArea"
 								style={{ padding: "2vw 0 4vw 2vw" }}>
-								{i18n["msg_AmountFormatTip"]}
+								{i18n.msg_AmountFormatTip}
 							</div>
 							<div className="recent open">
 								<div className="recentTransactions">
@@ -163,7 +163,7 @@ const Panel = () => {
 									<div className="infoList">{arr}</div>
 								) : (
 									<div className="not-found">
-										{i18n["msg_NoData"]}
+										{i18n.msg_NoData}
 									</div>
 								)}
 							</div>
@@ -177,43 +177,43 @@ const Panel = () => {
 
 export const TransactionHistory = props => {
 	const _status =
-		props.status === 0 ? props.i18n["lbl_Success"] : props.i18n["lbl_Fail"];
+		props.status === 0 ? props.i18n.lbl_Success : props.i18n.lbl_Fail;
 	const _statusColor = props.status === 0 ? "textGreen" : "textGray";
 
 	return (
 		<div className={props.className}>
 			<ul>
 				<li>
-					<span className="title">{props.i18n["lbl_Date"]}</span>
+					<span className="title">{props.i18n.lbl_Date}</span>
 					<span>
 						{moment(props.createTime).format("MM/DD/YYYY(Z)")}
 					</span>
 				</li>
 				<li>
-					<span className="title">{props.i18n["lbl_Time"]}</span>
+					<span className="title">{props.i18n.lbl_Time}</span>
 					<span>{moment(props.createTime).format("hh:mm:ss A")}</span>
 				</li>
 				<li>
-					<span className="title">{props.i18n["lbl_ID"]}</span>
+					<span className="title">{props.i18n.lbl_ID}</span>
 					<span>{props.transId}</span>
 				</li>
 				<li>
-					<span className="title">{props.i18n["lbl_Amount"]}</span>
+					<span className="title">{props.i18n.lbl_Amount}</span>
 					<span>{props.amount}</span>
 				</li>
 				<li>
-					<span className="title">{props.i18n["lbl_Status"]}</span>
+					<span className="title">{props.i18n.lbl_Status}</span>
 					<span className={_statusColor}>{_status}</span>
 				</li>
 				<li>
-					<span className="title">{props.i18n["lbl_Direction"]}</span>
+					<span className="title">{props.i18n.lbl_Direction}</span>
 					<span>
 						<span>{`${props.startWallet}  >`}</span>
 						<span>{props.endWallet}</span>
 					</span>
 				</li>
 			</ul>
-			<div className="btn-group"></div>
+			<div className="btn-group" />
 		</div>
 	);
 };

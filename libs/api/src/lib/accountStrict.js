@@ -1,6 +1,6 @@
 import BaseAPI from "./base";
 
-export class accountStrictAPI extends BaseAPI {
+export class AccountStrictAPI extends BaseAPI {
 	GetCustProfile = () => this.accountStrictRequest.post("/GetCustProfile");
 
 	SetProfile = ({

@@ -25,14 +25,14 @@ const initTransferOptions = {
 };
 
 const updateTpWalletsList = ({ prev, tpId, balance = null }) => {
-	let tpWalletIdx = prev.findIndex(wallet => wallet.id === tpId);
+	const tpWalletIdx = prev.findIndex(wallet => wallet.id === tpId);
 	if (tpWalletIdx !== -1) {
 		prev[tpWalletIdx].balance = balance;
 	} else {
 		prev.push({
 			id: tpId,
 			displayKey: `lbl_TpWallet_${tpId}`,
-			balance: balance
+			balance
 		});
 	}
 	return [...prev].sort((a, b) => a.id - b.id);
@@ -57,7 +57,9 @@ const Panel = () => {
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -71,7 +73,7 @@ const Panel = () => {
 								GetTpWalletBalance(i.tpId);
 								setTpWalletsList(prev =>
 									updateTpWalletsList({
-										prev: prev,
+										prev,
 										tpId: i.tpId,
 										balance: null
 									})
@@ -80,7 +82,7 @@ const Panel = () => {
 						} else {
 							setPopBox({
 								isOpen: true,
-								title: i18n["lbl_ImportantNote"],
+								title: i18n.lbl_ImportantNote,
 								content: res.data.message
 							});
 						}
@@ -102,14 +104,14 @@ const Panel = () => {
 		});
 	}, []);
 
-	let allWalletsList = [mainWalletInfo, ...tpWalletsList];
+	const allWalletsList = [mainWalletInfo, ...tpWalletsList];
 
 	const GetBalnace = () => {
 		api.account.GetBalnace().then(
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
-						let mainWalletData = {
+						const mainWalletData = {
 							id: 0,
 							displayKey: "lbl_MainWallet",
 							balance: res.data.data
@@ -118,7 +120,7 @@ const Panel = () => {
 					} else {
 						setPopBox({
 							isOpen: true,
-							title: i18n["lbl_ImportantNote"],
+							title: i18n.lbl_ImportantNote,
 							content: res.data.message
 						});
 					}
@@ -132,16 +134,16 @@ const Panel = () => {
 		);
 	};
 
-	const GetTpWalletBalance = tpId => {
-		api.account.GetTpWalletBalance({ TpId: tpId }).then(
+	const GetTpWalletBalance = _tpId => {
+		api.account.GetTpWalletBalance({ TpId: _tpId }).then(
 			res => {
 				if (res.data.errorCode === 0) {
-					let { tpId, balance } = res.data.data;
+					const { tpId, balance } = res.data.data;
 					setTpWalletsList(prev =>
 						updateTpWalletsList({
-							prev: prev,
-							tpId: tpId,
-							balance: balance
+							prev,
+							tpId,
+							balance
 						})
 					);
 				}
@@ -163,11 +165,11 @@ const Panel = () => {
 	};
 
 	const VaildAmount = _amount => {
-		let checked = _amount > 0 && _amount !== "";
+		const checked = _amount > 0 && _amount !== "";
 		if (!checked) {
 			setWarning({
 				status: true,
-				msg: i18n["lbl_AmountTooltip"]
+				msg: i18n.lbl_AmountTooltip
 			});
 		} else {
 			setWarning({
@@ -179,19 +181,19 @@ const Panel = () => {
 	};
 
 	const EditAmount = e => {
-		let value = e.target.value;
+		const { value } = e.target;
 		VaildAmount(value);
 		setAmount(value);
 	};
 
 	const setMaxAmount = () => {
 		const balance = allWalletsList[selectedIdx.transferFrom]?.balance;
-		let _balance = _isConvert ? Number(balance) / 1000 : Number(balance);
+		const _balance = _isConvert ? Number(balance) / 1000 : Number(balance);
 		_balance > 0 ? setAmount(`${_balance}`) : setAmount("1");
 	};
 
 	const selectItem = (col, i) => {
-		let otherDirection =
+		const otherDirection =
 			col === "transferFrom" ? "transferTo" : "transferFrom";
 		let _arr = [...allWalletsList];
 		let emptySelectedIdx = false;
@@ -217,17 +219,17 @@ const Panel = () => {
 	};
 
 	const clickSubmit = () => {
-		let checked =
+		const checked =
 			VaildAmount(amount) &&
 			selectedIdx.transferFrom !== null &&
 			selectedIdx.transferTo !== null;
 
 		if (checked) {
-			let real_amount = _isConvert
+			const real_amount = _isConvert
 				? Number(amount) * 1000
 				: Number(amount);
-			let direction = selectedIdx.transferFrom === 0 ? 1 : 2;
-			let _tpId =
+			const direction = selectedIdx.transferFrom === 0 ? 1 : 2;
+			const _tpId =
 				selectedIdx.transferFrom === 0
 					? allWalletsList[selectedIdx.transferTo].id
 					: allWalletsList[selectedIdx.transferFrom].id;
@@ -237,7 +239,7 @@ const Panel = () => {
 				.Transfer({
 					TpId: _tpId,
 					amount: real_amount,
-					direction: direction
+					direction
 				})
 				.then(
 					res => {
@@ -254,7 +256,7 @@ const Panel = () => {
 							} else if (res.data.errorCode !== 0) {
 								setPopBox({
 									isOpen: true,
-									title: i18n["lbl_ImportantNote"],
+									title: i18n.lbl_ImportantNote,
 									content: res.data.message
 								});
 							} else {
@@ -276,19 +278,19 @@ const Panel = () => {
 			selectedIdx.transferFrom === null ||
 			selectedIdx.transferTo === null
 		) {
-			let msg =
+			const msg =
 				selectedIdx.transferFrom === null
 					? "lbl_please_select_from_wallet"
 					: "lbl_please_select_to_wallet";
 			setPopBox({
 				isOpen: true,
-				title: i18n["lbl_ImportantNote"],
+				title: i18n.lbl_ImportantNote,
 				content: i18n[msg]
 			});
 		}
 	};
 
-	let arr = allWalletsList
+	const arr = allWalletsList
 		.filter(wallet => {
 			return wallet.balance !== null;
 		})
@@ -323,7 +325,7 @@ const Panel = () => {
 							? allWalletsList
 							: transferOptions.transferFrom
 					}
-					placeholder={i18n["lbl_TransferFrom"]}
+					placeholder={i18n.lbl_TransferFrom}
 					selectedIdx={selectedIdx.transferFrom}
 					i18n={i18n}
 					onSelectItem={selectItem.bind(this, "transferFrom")}
@@ -339,7 +341,7 @@ const Panel = () => {
 							? allWalletsList
 							: transferOptions.transferTo
 					}
-					placeholder={i18n["lbl_TransferTo"]}
+					placeholder={i18n.lbl_TransferTo}
 					selectedIdx={selectedIdx.transferTo}
 					onSelectItem={selectItem.bind(this, "transferTo")}
 					i18n={i18n}
@@ -359,10 +361,10 @@ const Panel = () => {
 
 			<div className="btn-group">
 				<button className="blue" onClick={setMaxAmount}>
-					{i18n["lbl_MaxAmount"]}
+					{i18n.lbl_MaxAmount}
 				</button>
 				<button className="orange" onClick={clickSubmit}>
-					{i18n["lbl_Transfer"]}
+					{i18n.lbl_Transfer}
 				</button>
 			</div>
 

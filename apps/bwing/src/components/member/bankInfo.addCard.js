@@ -34,7 +34,9 @@ export default ({
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	const clickAddBtn = () => {
@@ -69,7 +71,7 @@ export default ({
 	};
 
 	const checkInput = (val, col) => {
-		let _status = !val ? true : false;
+		const _status = !val;
 		let _msg = "";
 
 		if (!val) {
@@ -93,9 +95,9 @@ export default ({
 
 		if (warning[col].msg === "") {
 			if (col === "accountName") {
-				_msg = i18n["lbl_Please_input_your_real_name_as_in_your_ID"];
+				_msg = i18n.lbl_Please_input_your_real_name_as_in_your_ID;
 			} else {
-				_msg = i18n["lbl_EnterAccountNumber"];
+				_msg = i18n.lbl_EnterAccountNumber;
 			}
 		}
 
@@ -109,11 +111,11 @@ export default ({
 	};
 
 	const clickSubmit = () => {
-		let checked =
+		const checked =
 			(accountName || userValue.accountName) && userValue.accountNo;
 
 		if (checked) {
-			let bankInfoData = {
+			const bankInfoData = {
 				AccountName: accountName ?? userValue.accountName,
 				AccountNo: userValue.accountNo,
 				SysId: siteBankList[bankSelectedIdx].sysId
@@ -125,7 +127,7 @@ export default ({
 						if (res.data.errorCode !== 0) {
 							setPopBox({
 								isOpen: true,
-								title: i18n["lbl_ImportantNote"],
+								title: i18n.lbl_ImportantNote,
 								content: res.data.message
 							});
 						} else {
@@ -139,8 +141,8 @@ export default ({
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n["lbl_ImportantNote"],
-							content: i18n["msg_ApiServerErrors"]
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerErrors
 						});
 					}
 				}
@@ -153,7 +155,7 @@ export default ({
 		}
 	};
 
-	let arr = siteBankList?.map((item, i) => {
+	const arr = siteBankList?.map((item, i) => {
 		return (
 			<div className="img3Box" key={`addBankAccount-${item.sysId}`}>
 				<img
@@ -168,21 +170,21 @@ export default ({
 	return step === defStep.initPanel ? (
 		<div className="btn-group">
 			<button className="blue" onClick={clickAddBtn}>
-				{i18n["lbl_AddBankAccount"]}
+				{i18n.lbl_AddBankAccount}
 			</button>
 		</div>
 	) : step === defStep.bankPanel ? (
 		<>
 			<div className="depositInBox">
 				<div className="depositTitle textLeft">
-					<h1>{i18n["lbl_Step_SelectBank"].toUpperCase()}</h1>
+					<h1>{i18n.lbl_Step_SelectBank.toUpperCase()}</h1>
 				</div>
 				<div className="depositImgArea">{arr}</div>
 			</div>
 			<div className="btn-group">
 				<button className="left" onClick={toPrevStep}>
-					<span className="icon icon-arrow-left2"></span>
-					{i18n["lbl_Back"]}
+					<span className="icon icon-arrow-left2" />
+					{i18n.lbl_Back}
 				</button>
 			</div>
 		</>
@@ -190,7 +192,7 @@ export default ({
 		<>
 			<div className="depositInBox">
 				<div className="depositTitle textLeft">
-					<h1>{i18n["lbl_EnterAccountNumber"].toUpperCase()}</h1>
+					<h1>{i18n.lbl_EnterAccountNumber.toUpperCase()}</h1>
 				</div>
 				<div className="depositImgArea">
 					<div className="img3Box">
@@ -205,7 +207,7 @@ export default ({
 					{accountName ? null : (
 						<>
 							<div className="input-title">
-								{i18n["lbl_RealName"]}
+								{i18n.lbl_RealName}
 							</div>
 							<Inputbox
 								className="inputBoxText"
@@ -217,7 +219,7 @@ export default ({
 									"accountName"
 								)}
 								WarningIcon={warning.accountName.status}
-								placeholder={i18n["msg_EnterRealName"]}
+								placeholder={i18n.msg_EnterRealName}
 								iconModuleName={
 									!warning.accountName.status
 										? "icon-information-solid"
@@ -231,7 +233,7 @@ export default ({
 						</>
 					)}
 
-					<div className="input-title">{i18n["lbl_BankNumber"]}</div>
+					<div className="input-title">{i18n.lbl_BankNumber}</div>
 					<Inputbox
 						value={userValue.accountNo}
 						className="inputBoxText"
@@ -256,15 +258,15 @@ export default ({
 
 					<div className="btn-group">
 						<button className="blue" onClick={clickSubmit}>
-							{i18n["lbl_add_bank_submit"].toUpperCase()}
+							{i18n.lbl_add_bank_submit.toUpperCase()}
 						</button>
 					</div>
 				</div>
 			</div>
 			<div className="btn-group">
 				<button className="left" onClick={toPrevStep}>
-					<span className="icon icon-arrow-left2"></span>
-					{i18n["lbl_Back"]}
+					<span className="icon icon-arrow-left2" />
+					{i18n.lbl_Back}
 				</button>
 			</div>
 		</>

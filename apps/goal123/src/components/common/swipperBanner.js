@@ -1,15 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
+import PropTypes from "prop-types";
 import Swiper from "react-id-swiper";
-import config from "../../config";
+import { Link } from "@reach/router";
+import config, { siteName } from "../../config";
 import { api_GetBanner } from "../../service/api/site";
-import {
-	userInfoContext,
-	navContext,
-	defNavPanel
-} from "../../components/common/context";
+import { userInfoContext, navContext, defNavPanel } from "./context";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import path from "../../path";
-import { Link } from "@reach/router";
 
 export const ClickLink = (
 	tpId,
@@ -27,8 +24,6 @@ export const ClickLink = (
 	} else if (tpId === null) {
 		if (href === "Promotion/Index") {
 			window.location.href = `/${path.promotion.root}`;
-		} else if (href === "Home/Register") {
-			return;
 		} else if (href === "leaderBoard") {
 			window.location.href = `/${path.ranking.root}`;
 		} else {
@@ -79,10 +74,10 @@ const Panel = ({ ImgFolder, filterHideInHome = false }) => {
 						result = [
 							...result,
 							...r.data.data?.map(d => {
-								let imgFolder = d.imgFolder
+								const imgFolder = d.imgFolder
 									? d.imgFolder
 									: ImgFolder[idx];
-								return { ...d, imgFolder: imgFolder };
+								return { ...d, imgFolder };
 							})
 						];
 					}
@@ -92,72 +87,92 @@ const Panel = ({ ImgFolder, filterHideInHome = false }) => {
 			});
 		}
 
-		return () => (mounted = false);
+		return () => {
+			mounted = false;
+		};
 	}, [userInfo, ImgFolder, filterHideInHome]);
 
-	let rows = banner?.map((b, b_idx) => {
-		let _imgFolder = b.imgFolder ?? ImgFolder;
-		let lang =
+	const rows = banner?.map((b, Idx) => {
+		const _imgFolder = b.imgFolder ?? ImgFolder;
+		const lang =
 			b.fromDB || b.lang?.includes(userInfo.langId)
 				? userInfo.langId
 				: "en";
-		let actionLinkByLang = b.fromDB
+		const actionLinkByLang = b.fromDB
 			? null
 			: b.actionLinkByLang?.find(a => a.lang === userInfo.langId);
-		let actionLink = actionLinkByLang
+		const actionLink = actionLinkByLang
 			? actionLinkByLang.link
 			: b.actionLink;
-		let imgSRC = b.fromDB
+		const imgSRC = b.fromDB
 			? b.imgURL
-			: `${config.imgUrl}/CMS/${config.siteName}/${_imgFolder}/${lang}/${b.img}`;
+			: `${config.imgUrl}/CMS/${siteName}/${_imgFolder}/${lang}/${b.img}`;
 
 		if (actionLink?.startsWith("promotion/promotionInfo?BonusCode=")) {
 			return (
-				<Link key={`${lang}-${b.img}-${b_idx}`} to={actionLink}>
+				<Link key={`${lang}-${b.img}`} to={actionLink}>
 					<img src={imgSRC} className="banner" alt={b.img ?? ""} />
 				</Link>
 			);
-		} else {
-			return (
-				<button
-					onClick={ClickLink.bind(
-						this,
-						b.tpId,
-						b.gameId,
-						lang,
-						actionLink,
-						b.outerLink === true,
-						b.urlWithLang,
-						userInfo.isLogin,
-						setNav,
-						b.matchid
-					)}
-					key={`${lang}-${b.img}-${b_idx}`}>
-					<img src={imgSRC} className="banner" alt={b.img ?? ""} />
-				</button>
-			);
 		}
+		return (
+			<button
+				onClick={ClickLink.bind(
+					this,
+					b.tpId,
+					b.gameId,
+					lang,
+					actionLink,
+					b.outerLink === true,
+					b.urlWithLang,
+					userInfo.isLogin,
+					setNav,
+					b.matchid
+				)}
+				key={`${lang}-${b.img}`}>
+				<img src={imgSRC} className="banner" alt={b.img ?? ""} />
+			</button>
+		);
 	});
 
 	return <Autoplay Rows={rows} />;
 };
 
-const Autoplay = props => {
-	const params = {
-		spaceBetween: 30,
-		centeredSlides: true,
-		autoplay: {
-			delay: 2500,
-			disableOnInteraction: false
-		},
-		pagination: {
-			el: ".swiper-pagination",
-			clickable: true
-		},
-		rebuildOnUpdate: true
-	};
+Panel.defaultProps = {
+	ImgFolder: [],
+	filterHideInHome: false
+};
 
-	return <Swiper {...params}>{props.Rows}</Swiper>;
+Panel.propTypes = {
+	ImgFolder: PropTypes.arrayOf(PropTypes.string),
+	filterHideInHome: PropTypes.bool
+};
+
+const Autoplay = props => {
+	return (
+		<Swiper
+			spaceBetween={30}
+			centeredSlides={true}
+			autoplay={{
+				delay: 2500,
+				disableOnInteraction: false
+			}}
+			pagination={{
+				el: ".swiper-pagination",
+				clickable: true
+			}}
+			rebuildOnUpdate={true}>
+			{props.Rows}
+		</Swiper>
+	);
+};
+
+Autoplay.defaultProps = {
+	Rows: []
+};
+
+Autoplay.propTypes = {
+	Rows: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default Panel;

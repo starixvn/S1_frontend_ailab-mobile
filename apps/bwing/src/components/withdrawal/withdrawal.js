@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
+import { Redirect } from "@reach/router";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import {
 	number_format,
@@ -17,7 +18,6 @@ import {
 } from "../../service/api/payment";
 import RecentDatas from "./withdrawal.recentDatas";
 import path from "../../path";
-import { Redirect } from "@reach/router";
 import Loading from "../common/loading";
 import WalletPanel from "./walletPanel";
 import BankCardPanel from "./bankCardPanel";
@@ -51,7 +51,9 @@ const Panel = () => {
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -94,7 +96,7 @@ const Panel = () => {
 			}
 		} else if (userInfo.isLogin) {
 			const CheckBankInfo = async () => {
-				let result = await api_GetCustBankInfo().then(res => {
+				const result = await api_GetCustBankInfo().then(res => {
 					let hasBankInfo = false;
 					if (res.data.errorCode === 0) {
 						if (
@@ -196,16 +198,14 @@ const Panel = () => {
 	]);
 
 	const KycCheck = async UpdatePageVerify => {
-		let executeKycProcess = await api_KycCheck().then(res => {
+		const executeKycProcess = await api_KycCheck().then(res => {
 			if (isMountedRef.current) {
 				if (res.data.errorCode === 1) {
 					setRedirectPath(`/${path.kyc.root}`);
 				} else if (res.data.errorCode === 2) {
 					setRedirectPath(`/${path.kycWaiting.root}`);
-				} else {
-					if (isMountedRef.current && UpdatePageVerify) {
-						setPageVerify(true);
-					}
+				} else if (isMountedRef.current && UpdatePageVerify) {
+					setPageVerify(true);
 				}
 			}
 
@@ -225,14 +225,14 @@ const Panel = () => {
 		}
 	};
 
-	let _availableBalance =
+	const _availableBalance =
 		balanceInfo?.availableBalance !== null ||
 		balanceInfo?.availableBalance !== undefined
 			? balanceInfo?.availableBalance
 			: 0;
 
 	const VaildAmount = _amount => {
-		let result = checkWithdrawalAmount(
+		const result = checkWithdrawalAmount(
 			_amount,
 			balanceInfo?.availableBalance,
 			_isConvert,
@@ -259,7 +259,7 @@ const Panel = () => {
 
 	const ClickSubmit = () => {
 		if (pageVerify) {
-			let result = VaildAmount(amount) && selBank;
+			const result = VaildAmount(amount) && selBank;
 			if (result) {
 				const RedirectToNext = (accountNo, _real_amount, sysId) => {
 					api_WithdrawalReq(accountNo, _real_amount, sysId).then(
@@ -275,27 +275,27 @@ const Panel = () => {
 											setWarning(initWarning);
 											setSelBank(null);
 											api_GetWithdrawalAvailableBalance().then(
-												res => {
+												resBalance => {
 													if (
-														res.data.errorCode ===
-															0 &&
+														resBalance.data
+															.errorCode === 0 &&
 														isMountedRef.current
 													) {
 														setBalanceInfo(
-															res.data.data
+															resBalance.data.data
 														);
 													}
 												}
 											);
 											api_GetWithdrawalInfoRecent().then(
-												res => {
+												resRecent => {
 													if (
-														res.data.errorCode ===
-															0 &&
+														resRecent.data
+															.errorCode === 0 &&
 														isMountedRef.current
 													) {
 														setRecentDatas(
-															res.data.data
+															resRecent.data.data
 														);
 													}
 												}
@@ -330,7 +330,7 @@ const Panel = () => {
 									setPopBox({
 										isOpen: true,
 										title: i18n.lbl_ImportantNote,
-										content: content,
+										content,
 										hasBtn: false
 									});
 								}
@@ -338,17 +338,17 @@ const Panel = () => {
 						},
 						err => {
 							if (isMountedRef.current) {
-								this.props.setPopBox({
+								setPopBox({
 									isOpen: true,
-									title: this.props.i18n.lbl_ImportantNote,
-									content: this.props.i18n.msg_ApiServerError
+									title: i18n.lbl_ImportantNote,
+									content: i18n.msg_ApiServerError
 								});
 							}
 						}
 					);
 				};
 
-				let real_amount = _isConvert
+				const real_amount = _isConvert
 					? Number(amount) * 1000
 					: Number(amount);
 				setPopBox({
@@ -389,7 +389,7 @@ const Panel = () => {
 										isOpen: false
 									}))
 								}>
-								{i18n["lbl_Cancel"]}
+								{i18n.lbl_Cancel}
 							</button>
 							<button
 								className="submit"
@@ -399,7 +399,7 @@ const Panel = () => {
 									real_amount,
 									selBank.sysId
 								)}>
-								{i18n["lbl_Confirm"]}
+								{i18n.lbl_Confirm}
 							</button>
 						</div>
 					)
@@ -420,8 +420,8 @@ const Panel = () => {
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
-						let datas = res.data.data;
-						let _custBankInfo =
+						const datas = res.data.data;
+						const _custBankInfo =
 							datas === null ? [] : datas.bankInfoDetail;
 						setbankInfo(() => ({
 							accountName: datas?.accountName,
@@ -460,55 +460,57 @@ const Panel = () => {
 
 	const ClickCancel = transId => {
 		if (pageVerify) {
-			const ClickSubmit = () => {
+			const ClickPopBoxSubmit = () => {
 				setPopBox({ isOpen: false });
 				api_SetWithdrawalCancel(transId).then(
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 0) {
-								api_GetWithdrawalInfoRecent().then(res => {
-									if (res.data.errorCode === 0) {
-										setRecentDatas(res.data.data);
-										GetBalance();
+								api_GetWithdrawalInfoRecent().then(
+									resRecent => {
+										if (resRecent.data.errorCode === 0) {
+											setRecentDatas(resRecent.data.data);
+											GetBalance();
+										}
 									}
-								});
+								);
 							} else {
-								this.props.setPopBox({
+								setPopBox({
 									isOpen: true,
-									title: this.props.i18n.lbl_ImportantNote,
+									title: i18n.lbl_ImportantNote,
 									content: res.data.message
 								});
 							}
 						}
 					},
-					err => {
+					() => {
 						if (isMountedRef.current) {
-							this.props.setPopBox({
+							setPopBox({
 								isOpen: true,
-								title: this.props.i18n.lbl_ImportantNote,
-								content: this.props.i18n.msg_ApiServerError
+								title: i18n.lbl_ImportantNote,
+								content: i18n.msg_ApiServerError
 							});
 						}
 					}
 				);
 			};
 
-			const ClickCancel = () => {
+			const ClickPopBoxCancel = () => {
 				setPopBox({ isOpen: false });
 			};
 
 			setPopBox({
 				isOpen: true,
 				title: i18n.lbl_ImportantNote,
-				content: i18n["lbl_CancelConfirm"],
+				content: i18n.lbl_CancelConfirm,
 				hasBtn: true,
 				btnBar: (
 					<div className="btn-group">
-						<button className="cancel" onClick={ClickSubmit}>
-							{i18n["lbl_Yes"]}
+						<button className="cancel" onClick={ClickPopBoxSubmit}>
+							{i18n.lbl_Yes}
 						</button>
-						<button className="submit" onClick={ClickCancel}>
-							{i18n["lbl_No"]}
+						<button className="submit" onClick={ClickPopBoxCancel}>
+							{i18n.lbl_No}
 						</button>
 					</div>
 				)

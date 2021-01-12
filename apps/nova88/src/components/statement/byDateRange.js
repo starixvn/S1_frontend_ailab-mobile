@@ -6,16 +6,17 @@ import {
 	loadingContext
 } from "Context";
 import moment from "moment";
+import { useNavigate } from "@reach/router";
+import PropTypes from "prop-types";
 import { number_format, isConvert } from "../common/common";
 import Dropdown from "../common/dropdown";
 import api from "../../service/api";
-import { Breadcrumbs } from "../common/breadcrumb";
-import { useNavigate } from "@reach/router";
+import Breadcrumbs from "../common/breadcrumb";
 import { getDateRange, defStatement } from "./common";
 import path from "../../path";
 import { useHandlePage } from "./hook";
 
-export default props => {
+const ByDateRange = props => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -31,11 +32,13 @@ export default props => {
 	const { timePeriod } = props;
 	const _startDay = timePeriod.substr(0, timePeriod.indexOf("to"));
 	const _endDay = timePeriod.split("to").pop();
-	let dateRange = getDateRange({ startDate: _startDay, endDate: _endDay });
+	const dateRange = getDateRange({ startDate: _startDay, endDate: _endDay });
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -49,7 +52,7 @@ export default props => {
 	}, []);
 
 	const toByDayPage = ({ selDate }) => {
-		let _path = timePeriod.includes("to")
+		const _path = timePeriod.includes("to")
 			? `${_startDay}to${_endDay}`
 			: `${selDate}to${selDate}`;
 
@@ -100,7 +103,7 @@ export default props => {
 		func_getDatas: getListByDateRange
 	});
 
-	let detailArr = datas?.map(data => {
+	const detailArr = datas?.map(data => {
 		return (
 			<Detail
 				key={`bet-dateRange-${data.settledDate}-${data.turnOver}`}
@@ -143,11 +146,19 @@ export default props => {
 				</>
 			) : (
 				<div className="nodata icon icon-nodata">
-					<div className="txt-white">{i18n["msg_NoData"]}</div>
+					<div className="txt-white">{i18n.msg_NoData}</div>
 				</div>
 			)}
 		</>
 	) : null;
+};
+
+ByDateRange.defaultProps = {
+	timePeriod: ""
+};
+
+ByDateRange.propTypes = {
+	timePeriod: PropTypes.string
 };
 
 const Detail = ({
@@ -196,3 +207,25 @@ const Detail = ({
 		</div>
 	);
 };
+
+Detail.defaultProps = {
+	_isConvert: false
+};
+
+Detail.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	settledDate: PropTypes.oneOfType([
+		PropTypes.instanceOf(Date),
+		PropTypes.string
+	]).isRequired,
+	turnOver: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired,
+	validBet: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired,
+	winlostAmount: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired,
+	_isConvert: PropTypes.bool,
+	toByDayPage: PropTypes.func.isRequired
+};
+
+export default ByDateRange;

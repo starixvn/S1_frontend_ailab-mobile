@@ -1,20 +1,25 @@
 import api from "./api";
 
 export const IS_LOGGED_IN = async () => {
-	return await api.site.CheckSignIn().then(res => res.data.errorCode === 0);
+	let result;
+	try {
+		const res = await api.site.CheckSignIn();
+		result = res.data.errorCode === 0;
+	} catch (error) {}
+	return result;
 };
 
-const isBrowser = typeof window !== `undefined`;
+const isBrowser = typeof window !== "undefined";
 
 export const LOGIN = async ({ userName, password }, CallbackLogin) => {
 	if (!isBrowser) return false;
 
-	let url,
-		platform,
-		userAgent,
-		screen,
-		di = "";
-	if (typeof window !== undefined) {
+	let url;
+	let platform;
+	let userAgent;
+	let screen;
+	let di = "";
+	if (typeof window !== "undefined") {
 		url = window.location.origin;
 		platform = navigator.platform;
 		userAgent = navigator.userAgent;
@@ -36,17 +41,17 @@ export const LOGIN = async ({ userName, password }, CallbackLogin) => {
 		.then(
 			res => {
 				if (res.data.errorCode === 0) {
-					let userlangId = res.data.message.replace("/", "");
+					const userlangId = res.data.message.replace("/", "");
 
 					api.accountStrict.GetCustProfile().then(res_custInfo => {
 						let _loginUser = {
-							userName: userName,
+							userName,
 							langId: userlangId,
 							isLogin: true
 						};
 
 						if (res_custInfo.data.errorCode === 0) {
-							let data = res_custInfo.data.data;
+							const { data } = res_custInfo.data;
 							_loginUser = {
 								..._loginUser,
 								...data

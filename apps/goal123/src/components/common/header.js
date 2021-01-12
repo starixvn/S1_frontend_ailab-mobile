@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import { Redirect, Link } from "@reach/router";
 // import SubMenu from "../subMenu/subMenu";
 import {
@@ -7,7 +8,7 @@ import {
 	walletInfoContext,
 	popBoxContext,
 	msgCountContext
-} from "../common/context";
+} from "./context";
 import {
 	api_GetBalnace,
 	api_account_GetTpWalletList,
@@ -28,6 +29,10 @@ const HeaderTitle = ({ title }) => (
 	</>
 );
 
+HeaderTitle.propTypes = {
+	title: PropTypes.string.isRequired
+};
+
 const Header = ({ title, hideLogo }) => {
 	return (
 		<header className={title ? "header" : ""} id="header">
@@ -40,6 +45,15 @@ const Header = ({ title, hideLogo }) => {
 			{/* <SubMenu /> */}
 		</header>
 	);
+};
+
+Header.defaultProps = {
+	hideLogo: null
+};
+
+Header.propTypes = {
+	title: PropTypes.string.isRequired,
+	hideLogo: PropTypes.bool
 };
 
 const HeaderBtn = () => {
@@ -55,7 +69,9 @@ const HeaderBtn = () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -114,15 +130,15 @@ const HeaderBtn = () => {
 								api_account_GetTpWalletBalance({
 									TpId: i.tpId
 								}).then(
-									res => {
-										if (res.data.errorCode === 0) {
-											let data = res.data.data;
-											let tpWalletData = {
+									response => {
+										if (response.data.errorCode === 0) {
+											const { data } = response.data;
+											const tpWalletData = {
 												id: data.tpId,
 												balance: data.balance
 											};
 
-											let tpWalletIdx = tpWalletsList.findIndex(
+											const tpWalletIdx = tpWalletsList.findIndex(
 												wallet => wallet.id === i.tpId
 											);
 
@@ -174,12 +190,12 @@ const HeaderBtn = () => {
 		}
 	};
 
-	let otherWalletBalance = tpWalletsList?.reduce((prev, curr) => {
+	const otherWalletBalance = tpWalletsList?.reduce((prev, curr) => {
 		return prev + curr.balance;
 	}, 0);
-	let allWalletBalance = walletInfo.main + otherWalletBalance;
+	const allWalletBalance = walletInfo.main + otherWalletBalance;
 
-	let balance = !allWalletBalance
+	const balance = !allWalletBalance
 		? 0
 		: number_format(allWalletBalance, false);
 
@@ -189,8 +205,11 @@ const HeaderBtn = () => {
 		}
 	};
 
-	return redirectPath === null ? (
-		userInfo?.isLogin ? (
+	let display = null;
+	if (redirectPath !== null) {
+		display = <Redirect to={redirectPath} noThrow />;
+	} else if (userInfo?.isLogin) {
+		display = (
 			<>
 				<HeaderInfo
 					userName={userInfo?.userName}
@@ -207,15 +226,17 @@ const HeaderBtn = () => {
 					</Link>
 				</div>
 			</>
-		) : (
+		);
+	} else {
+		display = (
 			<div className="headerButton">
 				<JoinPanel />
 				<LoginPanel ButtonTitle={i18n.lbl_Login} />
 			</div>
-		)
-	) : (
-		<Redirect to={redirectPath} noThrow />
-	);
+		);
+	}
+
+	return display;
 };
 
 const HeaderInfo = props => {
@@ -229,6 +250,18 @@ const HeaderInfo = props => {
 			</div>
 		</div>
 	);
+};
+
+HeaderInfo.defaultProps = {
+	amount: 0,
+	currency: ""
+};
+
+HeaderInfo.propTypes = {
+	ClickUserName: PropTypes.func.isRequired,
+	userName: PropTypes.string.isRequired,
+	currency: PropTypes.string,
+	amount: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 export default Header;

@@ -35,16 +35,16 @@ export const initWarning = {
 	}
 };
 
-export const infoList = ({ i18n, userInfo, _areaCode }) => {
+export const infoList = ({ i18n = {}, userInfo = {}, _areaCode = "" }) => {
 	return [
 		{
 			infoTitle: "accountName",
-			colTitle: i18n["lbl_RealName"],
+			colTitle: i18n.lbl_RealName,
 			content: userInfo.accountName
 		},
 		{
 			infoTitle: "birth",
-			colTitle: i18n["lbl_Birthday"],
+			colTitle: i18n.lbl_Birthday,
 			content: `${userInfo.birth_m}/${userInfo.birth_d}/${userInfo.birth_y}`,
 			birth_d: userInfo.birth_d,
 			birth_m: userInfo.birth_m,
@@ -52,13 +52,13 @@ export const infoList = ({ i18n, userInfo, _areaCode }) => {
 		},
 		{
 			infoTitle: "phoneNo",
-			colTitle: i18n["lbl_Phone"],
+			colTitle: i18n.lbl_Phone,
 			content: `(${_areaCode})${userInfo.phoneNo}`,
 			isVerified: userInfo.phoneVerified
 		},
 		{
 			infoTitle: "userName",
-			colTitle: i18n["lbl_Username"],
+			colTitle: i18n.lbl_Username,
 			content: userInfo.userName
 		},
 		{
@@ -66,7 +66,7 @@ export const infoList = ({ i18n, userInfo, _areaCode }) => {
 				userInfo.country && userInfo.country !== "null"
 					? "country"
 					: "perCountry",
-			colTitle: i18n["lbl_Country"],
+			colTitle: i18n.lbl_Country,
 			content:
 				userInfo.country && userInfo.country !== "null"
 					? i18n[`lbl_Country${userInfo.country}`]
@@ -74,17 +74,17 @@ export const infoList = ({ i18n, userInfo, _areaCode }) => {
 		},
 		{
 			infoTitle: "email",
-			colTitle: i18n["lbl_Email"],
+			colTitle: i18n.lbl_Email,
 			content: userInfo.email
 		},
 		{
 			infoTitle: "regTime",
-			colTitle: i18n["lbl_RegisterTime"],
+			colTitle: i18n.lbl_RegisterTime,
 			content: date_format(userInfo.regTime)
 		},
 		{
 			infoTitle: "lastLogin",
-			colTitle: i18n["lbl_LastLogin"],
+			colTitle: i18n.lbl_LastLogin,
 			content: date_format(userInfo.lastLogin)
 		}
 	];

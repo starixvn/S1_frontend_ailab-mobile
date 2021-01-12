@@ -8,17 +8,20 @@ export class DropdownBox extends Component {
 		this.state = { isOpen: false };
 		this.wrapper = createRef(null);
 	}
+
 	handleClickOutside = e => {
 		if (this.wrapper.current && !this.wrapper.current.contains(e.target)) {
 			this.setState({ isOpen: false });
 		}
 	};
+
 	ClickDropdown = () => {
-		this.setState({ isOpen: !this.state.isOpen });
+		this.setState(prev => ({ isOpen: !prev.isOpen }));
 		if (this.props.clickDropdown) {
 			this.props.clickDropdown(this.props.colName);
 		}
 	};
+
 	SelectItem = value => {
 		this.setState({ isOpen: false });
 		this.props.onSelectItem(
@@ -29,8 +32,8 @@ export class DropdownBox extends Component {
 	};
 
 	render() {
-		let arr = this.props.options.map((item, i) => {
-			let displayText = item.displayText
+		const arr = this.props.options.map((item, i) => {
+			const displayText = item.displayText
 				? item.displayText
 				: this.props.i18n?.[item.displayKey];
 			return (
@@ -44,7 +47,7 @@ export class DropdownBox extends Component {
 
 		let selected = null;
 		if (this.props.options[this.props.selectedIdx]) {
-			let _s = this.props.options[this.props.selectedIdx];
+			const _s = this.props.options[this.props.selectedIdx];
 
 			if (_s.displayText) {
 				selected = _s.displayText;
@@ -80,14 +83,6 @@ const Item = props => {
 			<span className="text">{props.displayText}</span>
 		</div>
 	);
-};
-
-DropdownBox.propTypes = {
-	colName: PropTypes.string,
-	onSelectItem: PropTypes.func,
-	options: PropTypes.array,
-	selectedIdx: PropTypes.number,
-	mainKey: PropTypes.string
 };
 
 export default DropdownBox;

@@ -23,12 +23,14 @@ export default props => {
 	const _startDay = timePeriod.substr(0, timePeriod.indexOf("to"));
 	const _endDay = timePeriod.split("to").pop();
 
-	let dateRange = getDateRange({ startDate: _startDay, endDate: _endDay });
+	const dateRange = getDateRange({ startDate: _startDay, endDate: _endDay });
 	const skipLink = getSkipLink({ dateRange });
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -74,11 +76,11 @@ export default props => {
 		);
 	};
 
-	let totalTurnover = datas?.reduce((prev, curr) => {
+	const totalTurnover = datas?.reduce((prev, curr) => {
 		return prev + curr.turnOver;
 	}, 0);
 
-	let totalWinLoss = datas?.reduce((prev, curr) => {
+	const totalWinLoss = datas?.reduce((prev, curr) => {
 		return prev + curr.winlostAmount;
 	}, 0);
 
@@ -87,7 +89,7 @@ export default props => {
 		func_getDatas: getListbyGameType
 	});
 
-	let detailArr = datas?.map(data => {
+	const detailArr = datas?.map(data => {
 		return (
 			<Detail
 				key={`bet-by-gameType-${data.transId}`}
@@ -123,9 +125,7 @@ export default props => {
 			/>
 			{datas?.length !== 0 ? (
 				<>
-					<div className="txt-blue2">
-						{i18n["msg_AmountFormatTip"]}
-					</div>
+					<div className="txt-blue2">{i18n.msg_AmountFormatTip}</div>
 					<div className="inputBox page">
 						<Dropdown
 							options={pageOptions}
@@ -149,7 +149,7 @@ export default props => {
 				</>
 			) : (
 				<div className="nodata icon icon-nodata">
-					<div className="txt-white">{i18n["msg_NoData"]}</div>
+					<div className="txt-white">{i18n.msg_NoData}</div>
 				</div>
 			)}
 		</>

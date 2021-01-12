@@ -5,7 +5,7 @@ export default () => {
 		<div className="popTxt">
 			<div className="account">
 				<div className="otpLoading">
-					<i className="icon icon-spinner11"></i>
+					<i className="icon icon-spinner11" />
 				</div>
 			</div>
 		</div>

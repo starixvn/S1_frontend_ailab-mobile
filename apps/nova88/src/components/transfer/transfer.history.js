@@ -1,8 +1,9 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
+import moment from "moment";
+import PropTypes from "prop-types";
 import { number_format, isConvert } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
-import moment from "moment";
 import HistoryFilter from "../common/historyFilter";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import Loading from "../common/loading";
@@ -37,7 +38,9 @@ const Panel = () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	AUTO_FETCHING_DATA(
@@ -74,26 +77,23 @@ const Panel = () => {
 				.then(
 					response => {
 						if (isMountedRef.current) {
-							const errorCode = response.data.errorCode;
+							const { errorCode } = response.data;
 							if (errorCode !== 0) {
 								setPopBox({
 									isOpen: true,
 									title: i18n.lbl_ImportantNote,
 									content: response.data.message
 								});
-							} else {
-								if (isMountedRef.current) {
-									setGetHistoryState(response.data.data);
-									if (
-										response.data.totalPages >=
-										response.data.pageNumber
-									) {
-										setPageInfo(() => ({
-											totalPages:
-												response.data.totalPages,
-											pageNumber: response.data.pageNumber
-										}));
-									}
+							} else if (isMountedRef.current) {
+								setGetHistoryState(response.data.data);
+								if (
+									response.data.totalPages >=
+									response.data.pageNumber
+								) {
+									setPageInfo(() => ({
+										totalPages: response.data.totalPages,
+										pageNumber: response.data.pageNumber
+									}));
 								}
 							}
 							setProcessing(false);
@@ -115,7 +115,7 @@ const Panel = () => {
 		}
 	};
 
-	let arr = getHistoryState?.map(item => {
+	const arr = getHistoryState?.map(item => {
 		const _transferDirection = transferDirection(
 			item.direction,
 			i18n.lbl_MainWallet,
@@ -142,37 +142,31 @@ const Panel = () => {
 			<HistoryFilter submitHandler={submitHandler} />
 			{loading ? (
 				<Loading />
-			) : (
-				<>
-					{getHistoryState ? (
-						<div className="recent open">
-							<div className="recentTransactions">
-								<div className="smallTitle">
-									<i className="icon icon-history"></i>
-									{i18n["lbl_TransactionHistory"]}
-								</div>
-								<ReloadSpin
-									func={submitHandler.bind(
-										this,
-										filterData?.StartDate,
-										filterData?.EndDate,
-										true
-									)}
-								/>
-							</div>
-							{getHistoryState.length > 0 ? (
-								<div className="infoList">{arr}</div>
-							) : (
-								<div className="nodata icon icon-nodata">
-									<div className="txt-white">
-										{i18n["msg_NoData"]}
-									</div>
-								</div>
-							)}{" "}
+			) : getHistoryState ? (
+				<div className="recent open">
+					<div className="recentTransactions">
+						<div className="smallTitle">
+							<i className="icon icon-history" />
+							{i18n.lbl_TransactionHistory}
 						</div>
-					) : null}
-				</>
-			)}
+						<ReloadSpin
+							func={submitHandler.bind(
+								this,
+								filterData?.StartDate,
+								filterData?.EndDate,
+								true
+							)}
+						/>
+					</div>
+					{getHistoryState.length > 0 ? (
+						<div className="infoList">{arr}</div>
+					) : (
+						<div className="nodata icon icon-nodata">
+							<div className="txt-white">{i18n.msg_NoData}</div>
+						</div>
+					)}{" "}
+				</div>
+			) : null}
 		</>
 	);
 };
@@ -182,41 +176,63 @@ export const TransactionHistory = props => {
 		<div className={props.className}>
 			<ul>
 				<li>
-					<span className="title">{props.i18n["lbl_Date"]}</span>
+					<span className="title">{props.i18n.lbl_Date}</span>
 					<span>
 						{moment(props.createTime).format("MM/DD/YYYY(Z)")}
 					</span>
 				</li>
 				<li>
-					<span className="title">{props.i18n["lbl_Time"]}</span>
+					<span className="title">{props.i18n.lbl_Time}</span>
 					<span>{moment(props.createTime).format("hh:mm:ss A")}</span>
 				</li>
 				<li>
-					<span className="title">{props.i18n["lbl_ID"]}</span>
+					<span className="title">{props.i18n.lbl_ID}</span>
 					<span>{props.transId}</span>
 				</li>
 				<li>
-					<span className="title">{props.i18n["lbl_Amount"]}</span>
+					<span className="title">{props.i18n.lbl_Amount}</span>
 					<span>{number_format(props.amount, props._isConvert)}</span>
 				</li>
 				<li>
-					<span className="title">{props.i18n["lbl_Direction"]}</span>
+					<span className="title">{props.i18n.lbl_Direction}</span>
 					<span>
 						<span>{props.startWallet}</span>
-						<>{`>`}</>
+						{`>`}
 						<span>{props.endWallet}</span>
 					</span>
 				</li>
 				<li>
-					<span className="title">{props.i18n["lbl_Memo"]}</span>
+					<span className="title">{props.i18n.lbl_Memo}</span>
 					<span>
 						<span>{props.memo}</span>
 					</span>
 				</li>
 			</ul>
-			<div className="btn-group"></div>
+			<div className="btn-group" />
 		</div>
 	);
+};
+
+TransactionHistory.defaultProps = {
+	_isConvert: false,
+	className: "",
+	startWallet: "",
+	endWallet: "",
+	memo: ""
+};
+
+TransactionHistory.propTypes = {
+	className: PropTypes.string,
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	startWallet: PropTypes.string,
+	endWallet: PropTypes.string,
+	memo: PropTypes.string,
+	transId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired,
+	createTime: PropTypes.string.isRequired,
+	amount: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired,
+	_isConvert: PropTypes.bool
 };
 
 export default Panel;

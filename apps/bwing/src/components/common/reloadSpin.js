@@ -6,7 +6,9 @@ export default props => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	const clickSpin = () => {
@@ -26,6 +28,7 @@ export default props => {
 			className={`${props.className ?? "icon icon-spinner11"}${
 				props.btnActive !== false ? " clickBtn" : ""
 			}${spin ? " open" : ""}`}
-			onClick={clickSpin}></button>
+			onClick={clickSpin}
+		/>
 	);
 };

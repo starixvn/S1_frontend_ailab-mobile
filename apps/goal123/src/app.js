@@ -1,8 +1,8 @@
 import React from "react";
+import { Router, createHistory, LocationProvider } from "@reach/router";
 import path from "./path";
 import { Wrapper } from "./components/common/wrapper";
 import PopBox from "./components/common/popbox";
-import { Router, createHistory, LocationProvider } from "@reach/router";
 import Home from "./pages/home";
 import Promotion from "./pages/promotion";
 import Wallet from "./pages/wallet";
@@ -59,7 +59,7 @@ import ForgetPwd from "./components/login/forgetPwd";
 import ResetPwd from "./components/login/resetPwd";
 import ChangePwd from "./components/member/changePwd";
 
-import Setting from "./pages/setting.js";
+import Setting from "./pages/setting";
 import SettingInfo from "./components/setting/settingInfo";
 import Other from "./components/setting/other";
 
@@ -72,17 +72,17 @@ import PromotionInfo from "./pages/promotionInfo";
 import Ranking from "./pages/ranking";
 
 const Index = () => {
-	let history = createHistory(window);
+	const history = createHistory(window);
 	return (
 		<Wrapper>
 			<LocationProvider history={history}>
 				<Layout>
 					<Router>
-						<Home path={path.home.root} default />
+						<Home path={path.home.root} default={true} />
 						<ForgetPwd path={path.forgetPassword.root} />
 						<ResetPwd path={path.resetPassword.root} />
 						<ChangePwd path={path.changePassword.root} />
-						<Promotion path={path.promotion.root}></Promotion>
+						<Promotion path={path.promotion.root} />
 						<PromotionInfo path={path.promotionInfo.root} />
 						<Wallet path={path.wallet.root} />
 						<LiveChat path={path.livechat.root} />
@@ -138,14 +138,10 @@ const Index = () => {
 						</Transfer>
 						<Statement path={path.statement.root}>
 							<StatementList path="/" />
-							<BetDateRange path={"/:timePeriod"} />
-							<BetOneDay path={`/:timePeriod/:date`} />
-							<BetByCategory
-								path={`/:timePeriod/:date/:category`}
-							/>
-							<BetDetail
-								path={`/:timePeriod/:date/:category/:game`}
-							/>
+							<BetDateRange path="/:timePeriod" />
+							<BetOneDay path="/:timePeriod/:date" />
+							<BetByCategory path="/:timePeriod/:date/:category" />
+							<BetDetail path="/:timePeriod/:date/:category/:game" />
 						</Statement>
 						<FinancialLog path={path.financialLog.root}>
 							<FinancialLogHome path="/" />

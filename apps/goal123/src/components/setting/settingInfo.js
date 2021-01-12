@@ -1,11 +1,12 @@
 import React, { useContext, useRef, useEffect, useState } from "react";
+import { Redirect } from "@reach/router";
+import PropTypes from "prop-types";
 import {
 	i18nContext,
 	userInfoContext,
 	navContext,
 	popBoxContext
 } from "../common/context";
-import { Redirect } from "@reach/router";
 import { LOGOUT } from "../../service/auth";
 import { api_SetLanguage } from "../../service/api/account";
 import ThemeMode from "../member/profile.themeMode";
@@ -14,7 +15,7 @@ import { siteInfo } from "../../config";
 import DefLangs from "../../datas/defLangs";
 
 const languageList = () => {
-	let _siteInfo = siteInfo();
+	const _siteInfo = siteInfo();
 	return _siteInfo.siteLangList.map(l => DefLangs[l]);
 };
 
@@ -27,10 +28,12 @@ export default () => {
 	const [redirectPath, setRedirectPath] = useState(null);
 	const isMountedRef = useRef(null);
 
-	let _languageList = languageList();
+	const _languageList = languageList();
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -52,7 +55,7 @@ export default () => {
 
 	const selectLanguage = language => {
 		if (userLanguage !== language) {
-			let langId = language;
+			const langId = language;
 			setUserLanguage(language);
 
 			if (userInfo.isLogin) {
@@ -62,7 +65,7 @@ export default () => {
 							if (res.data.errorCode === 0) {
 								setUserInfo(prevState => ({
 									...prevState,
-									langId: langId
+									langId
 								}));
 							} else {
 								setPopBox({
@@ -86,7 +89,7 @@ export default () => {
 			} else {
 				setUserInfo(prevState => ({
 					...prevState,
-					langId: langId
+					langId
 				}));
 			}
 		}
@@ -103,7 +106,7 @@ export default () => {
 		});
 	};
 
-	let arr = _languageList.map(item => {
+	const arr = _languageList.map(item => {
 		return (
 			<Item
 				key={`lang-${item.value}`}
@@ -145,4 +148,12 @@ const Item = props => {
 			<span className="text">{props.displayText}</span>
 		</div>
 	);
+};
+
+Item.propTypes = {
+	userLanguage: PropTypes.string.isRequired,
+	value: PropTypes.string.isRequired,
+	selectLanguage: PropTypes.func.isRequired,
+	img: PropTypes.string.isRequired,
+	displayText: PropTypes.string.isRequired
 };

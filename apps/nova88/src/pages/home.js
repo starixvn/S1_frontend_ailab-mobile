@@ -1,16 +1,17 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
+import { i18nContext, userInfoContext, popBoxContext } from "Context";
+import { Redirect } from "@reach/router";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
 import Category from "../components/home/category";
 import ShortcutBar from "../components/home/shortcutBar";
-import { i18nContext, userInfoContext, popBoxContext } from "Context";
+
 import { readCookie, setCookie } from "../components/common/common";
 import path from "../path";
-import { Redirect } from "@reach/router";
 import api from "../service/api";
 
 const IndexPage = () => {
-	const _shortcutBar = useRef(null);
+	const shortcutBar = useRef(null);
 	const [shortcutBarLocate, setShortcutBarLocate] = useState(null);
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
@@ -24,13 +25,13 @@ const IndexPage = () => {
 	}, [redirectPath]);
 
 	useEffect(() => {
-		if (_shortcutBar.current !== null) {
-			setShortcutBarLocate(_shortcutBar.current?.getBoundingClientRect());
+		if (shortcutBar.current !== null) {
+			setShortcutBarLocate(shortcutBar.current?.getBoundingClientRect());
 		}
 	}, []);
 
 	useEffect(() => {
-		let cookieName = `balanceHint${userInfo.userName}`;
+		const cookieName = `balanceHint${userInfo.userName}`;
 		if (
 			userInfo.currencyId &&
 			userInfo.userName &&
@@ -39,13 +40,13 @@ const IndexPage = () => {
 			setCookie(cookieName, "1", 1);
 			api.account.GetWalletInfo().then(res => {
 				if (res.data.errorCode === 0) {
-					let data = res.data.data;
-					let mainWallet = {
+					const { balance, tpWallets } = res.data.data;
+					const mainWallet = {
 						id: 0,
 						displayKey: "lbl_MainWallet",
-						balance: data?.balance
+						balance
 					};
-					let tpWalletsArr = data?.tpWallets.map(i => {
+					const tpWalletsArr = tpWallets?.map(i => {
 						return {
 							id: i.tpId,
 							displayKey: i.displayKey,
@@ -53,7 +54,7 @@ const IndexPage = () => {
 						};
 					});
 
-					let hasBalance =
+					const hasBalance =
 						mainWallet.balance ||
 						tpWalletsArr?.filter(t => {
 							return t.balance > 0;
@@ -93,14 +94,16 @@ const IndexPage = () => {
 							btnBar: (
 								<div className="btn-group">
 									<button
+										type="submit"
 										className="blue"
 										onClick={ClosePopUp}>
-										{i18n["lbl_Later"]}
+										{i18n.lbl_Later}
 									</button>
 									<button
+										type="submit"
 										onClick={RedirectToDeposit}
 										className="orange">
-										{i18n["lbl_DepositNow"]}
+										{i18n.lbl_DepositNow}
 									</button>
 								</div>
 							)
@@ -118,7 +121,7 @@ const IndexPage = () => {
 			<Slider />
 			<Marquee />
 			<Category shortcutBarLocate={shortcutBarLocate} />
-			<ShortcutBar _ref={_shortcutBar} />
+			<ShortcutBar _ref={shortcutBar} />
 		</>
 	);
 };

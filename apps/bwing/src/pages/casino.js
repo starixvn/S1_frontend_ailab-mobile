@@ -26,7 +26,6 @@ class Panel extends React.Component {
 		this.state = {
 			tpList: {},
 			hasMore: true,
-			totalCount: 0,
 			displayedCount: 0,
 			displayGames: null,
 			selGameInfo: null,
@@ -41,45 +40,6 @@ class Panel extends React.Component {
 			imgUrl: ""
 		};
 	}
-	componentWillUnmount = () => {
-		this.mounted = false;
-		window.removeEventListener("mousewheel", this.ScrollBarListener);
-		window.removeEventListener("touchmove", this.ScrollBarListener, {
-			passive: false
-		});
-	};
-
-	ScrollBarListener = () => {
-		let window_height =
-			window.innerHeight ||
-			document.documentElement.clientHeight ||
-			document.body.clientHeight;
-
-		let window_scrollTop =
-			document.body.scrollTop ||
-			window.pageYOffset ||
-			document.documentElement.scrollTop;
-
-		let body = document.body;
-		let html = document.documentElement;
-
-		let document_height =
-			Math.max(
-				body.scrollHeight,
-				body.offsetHeight,
-				html.clientHeight,
-				html.scrollHeight,
-				html.offsetHeight
-			) * 0.8;
-
-		if (
-			!this.trigger &&
-			window_height + window_scrollTop >= document_height
-		) {
-			this.trigger = true;
-			this.SetMoreItems();
-		}
-	};
 
 	componentDidMount() {
 		this.mounted = true;
@@ -90,8 +50,8 @@ class Panel extends React.Component {
 		});
 		api_Site_GetGamelistV2().then(res => {
 			if (res.data.errorCode === 0) {
-				let _tpList = {};
-				let games = [];
+				const _tpList = {};
+				const games = [];
 
 				const { imgUrl, providerList } = res.data.data;
 				providerList?.forEach(t => {
@@ -108,9 +68,9 @@ class Panel extends React.Component {
 
 				if (games.length) {
 					for (let i = 0; i < games.length; i++) {
-						let idx = Math.floor(Math.random() * games.length);
-						let tempEle1 = games[i];
-						let tempEle2 = games[idx];
+						const idx = Math.floor(Math.random() * games.length);
+						const tempEle1 = games[i];
+						const tempEle2 = games[idx];
 
 						games[i] = tempEle2;
 						games[idx] = tempEle1;
@@ -118,7 +78,7 @@ class Panel extends React.Component {
 				}
 
 				if (this.mounted) {
-					let nav = defNav.ALLGAMES.key;
+					const nav = defNav.ALLGAMES.key;
 					this.setState(
 						{
 							tpList: _tpList,
@@ -137,7 +97,7 @@ class Panel extends React.Component {
 		if (this.props.userInfo.isLogin) {
 			api_GetFavoriteGame().then(res => {
 				if (res.data.errorCode === 0 && res.data.data) {
-					let fav = res.data.data.map(f => {
+					const fav = res.data.data.map(f => {
 						return `${f.providerId}_${f.gameId}`;
 					});
 					if (this.mounted) {
@@ -148,20 +108,60 @@ class Panel extends React.Component {
 		}
 	}
 
+	componentWillUnmount = () => {
+		this.mounted = false;
+		window.removeEventListener("mousewheel", this.ScrollBarListener);
+		window.removeEventListener("touchmove", this.ScrollBarListener, {
+			passive: false
+		});
+	};
+
+	ScrollBarListener = () => {
+		const window_height =
+			window.innerHeight ||
+			document.documentElement.clientHeight ||
+			document.body.clientHeight;
+
+		const window_scrollTop =
+			document.body.scrollTop ||
+			window.pageYOffset ||
+			document.documentElement.scrollTop;
+
+		const { body } = document;
+		const html = document.documentElement;
+
+		const document_height =
+			Math.max(
+				body.scrollHeight,
+				body.offsetHeight,
+				html.clientHeight,
+				html.scrollHeight,
+				html.offsetHeight
+			) * 0.8;
+
+		if (
+			!this.trigger &&
+			window_height + window_scrollTop >= document_height
+		) {
+			this.trigger = true;
+			this.SetMoreItems();
+		}
+	};
+
 	SetFavorite = (tpId, gameId) => {
-		let key = `${tpId}_${gameId}`;
-		let isRemove = this.state.favorite?.includes(key);
-		let newFav = isRemove
+		const key = `${tpId}_${gameId}`;
+		const isRemove = this.state.favorite?.includes(key);
+		const newFav = isRemove
 			? this.state.favorite?.filter(f => f !== key)
 			: [...this.state.favorite, key];
-		let displayGames =
+		const displayGames =
 			isRemove && this.state.selNav === defNav.FAVOURITE.key
 				? this.state.displayGames.filter(
 						g => !(g.tpId === tpId && g.gameId === gameId)
 				  )
 				: this.state.displayGames;
 		if (this.mounted) {
-			this.setState({ favorite: newFav, displayGames: displayGames });
+			this.setState({ favorite: newFav, displayGames });
 		}
 		if (this.props.userInfo.isLogin) {
 			api_SetFavoriteGame(tpId, gameId, isRemove);
@@ -174,7 +174,6 @@ class Panel extends React.Component {
 				{
 					selNav: navKey,
 					displayGames: null,
-					totalCount: 0,
 					hasMore: true,
 					displayedCount: 0
 				},
@@ -203,7 +202,7 @@ class Panel extends React.Component {
 		if (
 			JSON.stringify(this.state.searchInfo[colName]) !== JSON.stringify(v)
 		) {
-			let newData = {
+			const newData = {
 				...this.state.searchInfo,
 				[colName]: v
 			};
@@ -213,7 +212,6 @@ class Panel extends React.Component {
 					{
 						searchInfo: newData,
 						displayGames: [],
-						totalCount: 0,
 						hasMore: true,
 						displayedCount: 0
 					},
@@ -226,7 +224,7 @@ class Panel extends React.Component {
 	};
 
 	matchKeyword = (name, _keyword) => {
-		let keyword = _keyword.toLowerCase();
+		const keyword = _keyword.toLowerCase();
 		return (
 			Object.keys(name)?.filter(key => {
 				return name[key].toLowerCase().indexOf(keyword) !== -1;
@@ -235,19 +233,19 @@ class Panel extends React.Component {
 	};
 
 	FilterGames = (_searchInfo, _nav, initGameDatas, initTpList) => {
-		let _gameDatas = initGameDatas ?? this.state.gameDatas;
-		let _tpList = initTpList ?? this.state.tpList;
-		let tpId = _searchInfo.provider.value;
-		let gameCategory = _searchInfo.gameType.value;
-		let searchText = _searchInfo.searchText;
+		const _gameDatas = initGameDatas ?? this.state.gameDatas;
+		const _tpList = initTpList ?? this.state.tpList;
+		const tpId = _searchInfo.provider.value;
+		const gameCategory = _searchInfo.gameType.value;
+		const { searchText } = _searchInfo;
 
-		const matchFilter = (tpId, g) => {
-			let matchNav =
+		const matchFilter = (_tpId, g) => {
+			const matchNav =
 				(_nav === defNav.NEW.key && g.new === true) ||
 				(_nav === defNav.PROMO.key && g.promotion === 1) ||
 				(_nav === defNav.FEATURED.key && g.featured === true) ||
 				(_nav === defNav.FAVOURITE.key &&
-					this.state.favorite.includes(`${tpId}_${g.gameId}`)) ||
+					this.state.favorite.includes(`${_tpId}_${g.gameId}`)) ||
 				_nav === defNav.ALLGAMES.key;
 			return (
 				matchNav &&
@@ -257,7 +255,7 @@ class Panel extends React.Component {
 		};
 
 		return _gameDatas?.filter(g => {
-			let tp = _tpList[g.tpId];
+			const tp = _tpList[g.tpId];
 			return (
 				(tpId === null || tp.value === tpId) && matchFilter(tp.value, g)
 			);
@@ -278,52 +276,49 @@ class Panel extends React.Component {
 	};
 
 	SetMoreItems = () => {
-		let _searchInfo = this.state.searchInfo;
-		let _selNav = this.state.selNav;
-		let initGameDatas = this.state.gameDatas;
-		let initTpList = this.state.tpList;
+		const _searchInfo = this.state.searchInfo;
+		const _selNav = this.state.selNav;
+		const initGameDatas = this.state.gameDatas;
+		const initTpList = this.state.tpList;
 		const s = this.state;
 		if (s.hasMore) {
-			let _gameDatas = this.FilterGames(
+			const _gameDatas = this.FilterGames(
 				_searchInfo,
 				_selNav,
 				initGameDatas,
 				initTpList
 			);
-			let restCount = _gameDatas?.length - s.displayedCount;
-			let loadCount =
+			const restCount = _gameDatas?.length - s.displayedCount;
+			const loadCount =
 				restCount >= eachPageItem ? eachPageItem : restCount;
-			let startIdx = s.displayedCount;
-			let endIdx = startIdx + loadCount;
+			const startIdx = s.displayedCount;
+			const endIdx = startIdx + loadCount;
 
-			let newItem = [];
+			const newItem = [];
 			for (let i = startIdx; i < endIdx; i++) {
 				newItem.push(_gameDatas[i]);
 			}
 
 			if (newItem.length !== 0 && this.mounted) {
-				let new_count = s.displayedCount + newItem.length;
+				const new_count = s.displayedCount + newItem.length;
 				if (this.mounted) {
-					let displayGames = s.displayGames ?? [];
+					const displayGames = s.displayGames ?? [];
 					this.setState({
 						displayGames: [...displayGames, ...newItem],
-						totalCount: _gameDatas?.length,
 						hasMore: new_count < _gameDatas?.length,
 						displayedCount: new_count
 					});
 				}
-			} else {
-				if (this.mounted) {
-					if (s.displayGames === null) {
-						this.setState({
-							hasMore: false,
-							displayGames: []
-						});
-					} else {
-						this.setState({
-							hasMore: false
-						});
-					}
+			} else if (this.mounted) {
+				if (s.displayGames === null) {
+					this.setState({
+						hasMore: false,
+						displayGames: []
+					});
+				} else {
+					this.setState({
+						hasMore: false
+					});
 				}
 			}
 		}
@@ -362,7 +357,8 @@ class Panel extends React.Component {
 						</div>
 						<button
 							className="icon icon-cancel-circle"
-							onClick={this.CloseSelGame}></button>
+							onClick={this.CloseSelGame}
+						/>
 						<div className="btn-group">
 							{this.state.selGameInfo.playFree ? (
 								<button

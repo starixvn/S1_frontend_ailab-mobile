@@ -8,25 +8,28 @@ export class DropdownBox extends Component {
 		this.state = { isOpen: false };
 		this.wrapper = createRef(null);
 	}
+
 	handleClickOutside = e => {
 		if (this.wrapper.current && !this.wrapper.current.contains(e.target)) {
 			this.setState({ isOpen: false });
 		}
 	};
+
 	ClickDropdown = () => {
-		this.setState({ isOpen: !this.state.isOpen });
+		this.setState(prev => ({ isOpen: !prev.isOpen }));
 		if (this.props.clickDropdown) {
 			this.props.clickDropdown(this.props.colName);
 		}
 	};
+
 	SelectItem = value => {
 		this.setState({ isOpen: false });
 		this.props.onSelectItem(value, this.props.colName);
 	};
 
 	render() {
-		let arr = this.props.options.map((item, i) => {
-			let displayText = item.displayText
+		const arr = this.props.options.map((item, i) => {
+			const displayText = item.displayText
 				? item.displayText
 				: this.props.i18n?.[item.displayKey];
 			return (
@@ -40,7 +43,7 @@ export class DropdownBox extends Component {
 
 		let selected = null;
 		if (this.props.options[this.props.selectedIdx]) {
-			let _s = this.props.options[this.props.selectedIdx];
+			const _s = this.props.options[this.props.selectedIdx];
 
 			if (_s.displayText) {
 				selected = _s.displayText;
@@ -72,6 +75,27 @@ export class DropdownBox extends Component {
 	}
 }
 
+DropdownBox.defaultProps = {
+	colName: "",
+	defaultOption: null,
+	placeholder: "",
+	selectedIdx: null,
+	clickDropdown: null,
+	i18n: {}
+};
+
+DropdownBox.propTypes = {
+	colName: PropTypes.string,
+	onSelectItem: PropTypes.func.isRequired,
+	clickDropdown: PropTypes.func,
+	selectedIdx: PropTypes.number,
+	mainKey: PropTypes.string.isRequired,
+	i18n: PropTypes.objectOf(PropTypes.string),
+	placeholder: PropTypes.string,
+	defaultOption: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+	options: PropTypes.arrayOf(PropTypes.object).isRequired
+};
+
 const Item = props => {
 	return (
 		<div className="dropdown-item" onClick={props.onClick}>
@@ -80,12 +104,13 @@ const Item = props => {
 	);
 };
 
-DropdownBox.propTypes = {
-	colName: PropTypes.string,
-	onSelectItem: PropTypes.func,
-	options: PropTypes.array,
-	selectedIdx: PropTypes.number,
-	mainKey: PropTypes.string
+Item.defaultProps = {
+	displayText: ""
+};
+
+Item.propTypes = {
+	onClick: PropTypes.func.isRequired,
+	displayText: PropTypes.string
 };
 
 export default DropdownBox;

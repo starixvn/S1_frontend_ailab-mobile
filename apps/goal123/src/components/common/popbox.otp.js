@@ -1,8 +1,8 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
-import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
-import { api_SendOTPSMS, api_VerifyOTP } from "../../service/api/accountStrict";
+import PropTypes from "prop-types";
 import moment from "moment";
-import { getUrlParameter } from "../common/common";
+import { i18nContext, popBoxContext, userInfoContext } from "./context";
+import { api_SendOTPSMS, api_VerifyOTP } from "../../service/api/accountStrict";
 import { redirectToPrev } from "../member/profile.redirect";
 
 const Panel = ({ ClosePopbox }) => {
@@ -19,7 +19,9 @@ const Panel = ({ ClosePopbox }) => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -54,15 +56,15 @@ const Panel = ({ ClosePopbox }) => {
 				}
 			);
 		}
-	}, []);
+	}, [i18n, setPopBox]);
 
 	const editInput = e => {
-		let val = e.target.value;
+		const val = e.target.value;
 		setOtpCode(val);
 	};
 
 	const checkValue = val => {
-		let msg = val === "" ? i18n.msg_VerifyCodeTip : "";
+		const msg = val === "" ? i18n.msg_VerifyCodeTip : "";
 		setWarning(msg);
 	};
 
@@ -75,9 +77,9 @@ const Panel = ({ ClosePopbox }) => {
 		}
 	};
 
-	const clickSubmit = async otpCode => {
+	const clickSubmit = async _otpCode => {
 		await api_VerifyOTP({
-			inputOTPcode: otpCode
+			inputOTPcode: _otpCode
 		}).then(
 			res => {
 				if (isMountedRef.current) {
@@ -105,7 +107,7 @@ const Panel = ({ ClosePopbox }) => {
 									<button
 										className="blue"
 										onClick={closePopbox}>
-										{i18n["lbl_Cancel"]}
+										{i18n.lbl_Cancel}
 									</button>
 								</div>
 							)
@@ -113,7 +115,7 @@ const Panel = ({ ClosePopbox }) => {
 					}
 				}
 			},
-			err => {
+			() => {
 				if (isMountedRef.current) {
 					setLoading(false);
 					setPopBox({
@@ -168,7 +170,7 @@ const Panel = ({ ClosePopbox }) => {
 		<div className="popTxt">
 			{loading ? (
 				<div className="otpLoading">
-					<i className="icon icon-spinner11"></i>
+					<i className="icon icon-spinner11" />
 				</div>
 			) : errorMsg ? (
 				<>
@@ -218,24 +220,28 @@ const Panel = ({ ClosePopbox }) => {
 	);
 };
 
+Panel.propTypes = {
+	ClosePopbox: PropTypes.func.isRequired
+};
+
 export const Counter = ({ startUnixTime, timeStop }) => {
-	let now = moment().unix();
+	const now = moment().unix();
 	const [count, setCount] = useState(startUnixTime + 300 - now);
 	const timerRef = useRef(null);
 
 	const secondsToTime = secondsInTime => {
 		const pad = (num, size) => {
-			return ("000" + num).slice(size * -1);
+			return `000${num}`.slice(size * -1);
 		};
-		let time = parseFloat(secondsInTime).toFixed(3);
-		let minutes = Math.floor(time / 60) % 60;
-		let seconds = Math.floor(time - minutes * 60);
+		const time = parseFloat(secondsInTime).toFixed(3);
+		const minutes = Math.floor(time / 60) % 60;
+		const seconds = Math.floor(time - minutes * 60);
 		return `${pad(minutes, 2)}:${pad(seconds, 2)}`;
 	};
 
 	useEffect(() => {
 		const interval = setInterval(() => {
-			setCount(count => count - 1);
+			setCount(_count => _count - 1);
 		}, 1000);
 		timerRef.current = interval;
 

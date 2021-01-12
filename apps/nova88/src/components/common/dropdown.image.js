@@ -8,25 +8,28 @@ export class DropdownBox extends Component {
 		this.state = { isOpen: false };
 		this.wrapper = createRef(null);
 	}
+
 	handleClickOutside = e => {
 		if (this.wrapper.current && !this.wrapper.current.contains(e.target)) {
 			this.setState({ isOpen: false });
 		}
 	};
+
 	ClickDropdown = () => {
-		this.setState({ isOpen: !this.state.isOpen });
+		this.setState(prev => ({ isOpen: !prev.isOpen }));
 		if (this.props.clickDropdown) {
 			this.props.clickDropdown(this.props.colName);
 		}
 	};
+
 	SelectItem = value => {
 		this.setState({ isOpen: false });
 		this.props.onSelectItem(value, this.props.colName);
 	};
 
 	render() {
-		let arr = this.props.options.map((item, i) => {
-			let displayText = item.displayText
+		const arr = this.props.options.map((item, i) => {
+			const displayText = item.displayText
 				? item.displayText
 				: this.props.i18n?.[item.displayKey];
 
@@ -47,7 +50,7 @@ export class DropdownBox extends Component {
 			this.props.selectedIdx !== null &&
 			this.props.options[this.props.selectedIdx]
 		) {
-			let _s = this.props.options[this.props.selectedIdx];
+			const _s = this.props.options[this.props.selectedIdx];
 			if (_s.displayText) {
 				displayText = _s.displayText;
 			} else {
@@ -78,6 +81,25 @@ export class DropdownBox extends Component {
 	}
 }
 
+DropdownBox.defaultProps = {
+	colName: "",
+	clickDropdown: null,
+	i18n: {},
+	selectedIdx: null
+};
+
+DropdownBox.propTypes = {
+	colName: PropTypes.string,
+	onSelectItem: PropTypes.func.isRequired,
+	clickDropdown: PropTypes.func,
+	selectedIdx: PropTypes.number,
+	mainKey: PropTypes.string.isRequired,
+	i18n: PropTypes.arrayOf(PropTypes.string),
+	ImgURL: PropTypes.string.isRequired,
+	className: PropTypes.string.isRequired,
+	options: PropTypes.arrayOf(PropTypes.object).isRequired
+};
+
 const Item = props => {
 	return (
 		<div className="dropdown-item" onClick={props.onClick}>
@@ -89,15 +111,17 @@ const Item = props => {
 	);
 };
 
-DropdownBox.propTypes = {
-	colName: PropTypes.string,
-	onSelectItem: PropTypes.func.isRequired,
-	options: PropTypes.array.isRequired,
-	selectedIdx: PropTypes.number,
-	mainKey: PropTypes.string.isRequired,
-	i18n: PropTypes.object,
-	ImgURL: PropTypes.string.isRequired,
-	className: PropTypes.string.isRequired
+Item.defaultProps = {
+	className: "",
+	ImgURL: "",
+	displayText: ""
+};
+
+Item.propTypes = {
+	onClick: PropTypes.func.isRequired,
+	className: PropTypes.string,
+	ImgURL: PropTypes.string,
+	displayText: PropTypes.string
 };
 
 export default DropdownBox;

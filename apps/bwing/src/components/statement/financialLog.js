@@ -1,13 +1,13 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
+import moment from "moment";
+import { Redirect } from "@reach/router";
 import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
 import { api_GetStatement } from "../../service/api/payment";
 import { number_format } from "../common/common";
-import moment from "moment";
 import HistoryFilter from "../common/historyFilter";
 import ReloadSpin from "../common/reloadSpin";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import Loading from "../common/loading";
-import { Redirect } from "@reach/router";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -24,7 +24,9 @@ const IndexPage = () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -72,7 +74,7 @@ const IndexPage = () => {
 			}).then(
 				response => {
 					if (isMountedRef.current) {
-						const errorCode = response.data.errorCode;
+						const { errorCode } = response.data;
 						if (errorCode !== 0) {
 							setPopBox({
 								isOpen: true,
@@ -112,7 +114,7 @@ const IndexPage = () => {
 		}
 	};
 
-	let arr = getHistoryState?.map(item => {
+	const arr = getHistoryState?.map(item => {
 		return (
 			<TransactionHistory
 				key={`financial log-${item.refTransId}-${item.createTime}`}
@@ -141,7 +143,7 @@ const IndexPage = () => {
 					<div
 						className="textArea"
 						style={{ padding: "2vw 0 4vw 2vw" }}>
-						{i18n["msg_AmountFormatTip"]}
+						{i18n.msg_AmountFormatTip}
 					</div>
 					<div className="recent open">
 						<div className="recentTransactions">
@@ -157,9 +159,7 @@ const IndexPage = () => {
 						{getHistoryState.length > 0 ? (
 							<div className="infoList">{arr}</div>
 						) : (
-							<div className="not-found">
-								{i18n["msg_NoData"]}
-							</div>
+							<div className="not-found">{i18n.msg_NoData}</div>
 						)}
 					</div>
 				</>
@@ -173,48 +173,40 @@ const TransactionHistory = props => {
 		<div className={props.className}>
 			<ul>
 				<li>
-					<span className="title">{props.i18n["lbl_Date"]}</span>
+					<span className="title">{props.i18n.lbl_Date}</span>
 					<span>
 						{moment(props.createTime).format("MM/DD/YYYY(Z)")}
 					</span>
 				</li>
 				<li>
-					<span className="title">{props.i18n["lbl_Time"]}</span>
+					<span className="title">{props.i18n.lbl_Time}</span>
 					<span>{moment(props.createTime).format("hh:mm:ss A")}</span>
 				</li>
 				<li>
-					<span className="title">{props.i18n["lbl_TypeName"]}</span>
+					<span className="title">{props.i18n.lbl_TypeName}</span>
 					<span>{props.typeName}</span>
 				</li>
 				<li>
-					<span className="title">
-						{props.i18n["lbl_ChangeAmount"]}
-					</span>
+					<span className="title">{props.i18n.lbl_ChangeAmount}</span>
 					<span>
 						{props.direction}
 						{number_format(props.changeAmount, false)}
 					</span>
 				</li>
 				<li>
-					<span className="title">
-						{props.i18n["lbl_BeforeAmount"]}
-					</span>
+					<span className="title">{props.i18n.lbl_BeforeAmount}</span>
 					<span>{number_format(props.beforeAmount, false)}</span>
 				</li>
 				<li>
-					<span className="title">
-						{props.i18n["lbl_AfterAmount"]}
-					</span>
+					<span className="title">{props.i18n.lbl_AfterAmount}</span>
 					<span>{number_format(props.afterAmount, false)}</span>
 				</li>
 				<li>
-					<span className="title">
-						{props.i18n["lbl_RefTransId"]}
-					</span>
+					<span className="title">{props.i18n.lbl_RefTransId}</span>
 					<span>{props.refTransId}</span>
 				</li>
 			</ul>
-			<div className="btn-group"></div>
+			<div className="btn-group" />
 		</div>
 	);
 };

@@ -32,14 +32,14 @@ const initTransferOptions = {
 const initWarning = { status: defIptStatus.default, msg: "" };
 
 const updateTpWalletsList = ({ prev, tpId, balance = null }) => {
-	let tpWalletIdx = prev.findIndex(wallet => wallet.id === tpId);
+	const tpWalletIdx = prev.findIndex(wallet => wallet.id === tpId);
 	if (tpWalletIdx !== -1) {
 		prev[tpWalletIdx].balance = balance;
 	} else {
 		prev.push({
 			id: tpId,
 			displayKey: `lbl_TpWallet_${tpId}`,
-			balance: balance
+			balance
 		});
 	}
 	return [...prev].sort((a, b) => a.id - b.id);
@@ -64,7 +64,9 @@ const Panel = () => {
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -78,7 +80,7 @@ const Panel = () => {
 							GetTpWalletBalance(i.tpId);
 							setTpWalletsList(prev =>
 								updateTpWalletsList({
-									prev: prev,
+									prev,
 									tpId: i.tpId,
 									balance: null
 								})
@@ -109,14 +111,14 @@ const Panel = () => {
 		});
 	}, []);
 
-	let allWalletsList = [mainWalletInfo, ...tpWalletsList];
+	const allWalletsList = [mainWalletInfo, ...tpWalletsList];
 
 	const GetBalnace = () => {
 		api_GetBalnace().then(
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
-						let mainWalletData = {
+						const mainWalletData = {
 							id: 0,
 							displayKey: "lbl_MainWallet",
 							balance: res.data.data
@@ -147,10 +149,10 @@ const Panel = () => {
 		api_account_GetTpWalletBalance({ TpId: tpId }).then(
 			res => {
 				if (res.data.errorCode === 0) {
-					let _datas = res.data.data;
+					const _datas = res.data.data;
 					setTpWalletsList(prev =>
 						updateTpWalletsList({
-							prev: prev,
+							prev,
 							tpId: _datas.tpId,
 							balance: _datas.balance
 						})
@@ -178,7 +180,7 @@ const Panel = () => {
 	};
 
 	const VaildAmount = _amount => {
-		let checked = _amount > 0 && _amount !== "";
+		const checked = _amount > 0 && _amount !== "";
 		if (!checked) {
 			setWarning({
 				status: true,
@@ -194,13 +196,13 @@ const Panel = () => {
 	};
 
 	const EditAmount = e => {
-		let value = e.target.value;
+		const { value } = e.target;
 		VaildAmount(value);
 		setAmount(value);
 	};
 
 	const selectItem = (col, i) => {
-		let otherDirection =
+		const otherDirection =
 			col === "transferFrom" ? "transferTo" : "transferFrom";
 		let _arr = [...allWalletsList];
 		let emptySelectedIdx = false;
@@ -248,7 +250,7 @@ const Panel = () => {
 						setLoading(false);
 						setPopBox({
 							isOpen: true,
-							title: i18n["lbl_ImportantNote"],
+							title: i18n.lbl_ImportantNote,
 							content: res.data.message
 						});
 					} else {
@@ -266,8 +268,8 @@ const Panel = () => {
 					setLoading(false);
 					setPopBox({
 						isOpen: true,
-						title: i18n["lbl_ImportantNote"],
-						content: i18n["msg_ApiServerError"]
+						title: i18n.lbl_ImportantNote,
+						content: i18n.msg_ApiServerError
 					});
 				}
 			}
@@ -275,17 +277,17 @@ const Panel = () => {
 	};
 
 	const clickSubmit = () => {
-		let checked =
+		const checked =
 			VaildAmount(amount) &&
 			selectedIdx.transferFrom !== null &&
 			selectedIdx.transferTo !== null;
 
 		if (checked) {
-			let real_amount = _isConvert
+			const real_amount = _isConvert
 				? Number(amount) * 1000
 				: Number(amount);
-			let _direction = selectedIdx.transferFrom === 0 ? 1 : 2;
-			let _tpId =
+			const _direction = selectedIdx.transferFrom === 0 ? 1 : 2;
+			const _tpId =
 				selectedIdx.transferFrom === 0
 					? allWalletsList[selectedIdx.transferTo].id
 					: allWalletsList[selectedIdx.transferFrom].id;
@@ -297,7 +299,7 @@ const Panel = () => {
 			selectedIdx.transferFrom === null ||
 			selectedIdx.transferTo === null
 		) {
-			let msg =
+			const msg =
 				selectedIdx.transferFrom === null
 					? "lbl_please_select_from_wallet"
 					: "lbl_please_select_to_wallet";
