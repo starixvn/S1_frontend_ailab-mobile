@@ -1,10 +1,10 @@
 import React from "react";
+import moment from "moment";
 import no1 from "../../styles/img/ranking/trophy1.png";
 import no2 from "../../styles/img/ranking/trophy2.png";
 import no3 from "../../styles/img/ranking/trophy3.png";
 import gold from "../../styles/img/ranking/trophy4.png";
 import { number_format } from "../common/common";
-import moment from "moment";
 
 export const RankImg = ({ Ranking }) => {
 	let img = <img src={gold} alt="gold" />;
@@ -18,7 +18,7 @@ export const RankImg = ({ Ranking }) => {
 };
 
 const RankItem = ({ Ranking, userName, turnover, isCurrentUser }) => {
-	let className = Ranking <= 3 ? `no${Ranking}` : "";
+	const className = Ranking <= 3 ? `no${Ranking}` : "";
 	return (
 		<li className={isCurrentUser ? `${className} myRank` : className}>
 			<div>

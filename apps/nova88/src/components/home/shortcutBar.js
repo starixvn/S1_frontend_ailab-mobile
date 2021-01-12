@@ -12,13 +12,18 @@ const ShortcutBar = props => {
 		setNav(defNavPanel.login);
 	};
 
-	const NavLink = props => {
-		let { checkProfile, redirectPath, checkBankInfo, ...passProps } = props;
+	const NavLink = ({
+		checkProfile,
+		redirectPath,
+		checkBankInfo,
+		...passProps
+	}) => {
+		let _passProps = passProps;
 		if (userInfo.isLogin === false) {
-			passProps = { ...passProps, to: "/", onClick: ShowLogin };
+			_passProps = { ...passProps, to: "/", onClick: ShowLogin };
 		}
 
-		return <Link {...passProps} />;
+		return <Link {..._passProps} />;
 	};
 
 	return (

@@ -21,7 +21,9 @@ const BankInfo = () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -31,10 +33,11 @@ const BankInfo = () => {
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
-							let data = res.data.data;
+							const { data } = res.data;
 							if (data !== null) {
-								let bankInfoDetail = data.bankInfoDetail ?? [];
-								let getBankInfoArr = bankInfoDetail.map(i => {
+								const bankInfoDetail =
+									data.bankInfoDetail ?? [];
+								const getBankInfoArr = bankInfoDetail.map(i => {
 									return {
 										bankName: i.bankName,
 										image: i.bankLogo,
@@ -80,10 +83,10 @@ const BankInfo = () => {
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
-						let data = res.data.data;
+						const { data } = res.data;
 						if (data !== null) {
-							let bankInfoDetail = data.bankInfoDetail ?? [];
-							let getBankInfoArr = bankInfoDetail.map(i => {
+							const bankInfoDetail = data.bankInfoDetail ?? [];
+							const getBankInfoArr = bankInfoDetail.map(i => {
 								return {
 									bankName: i.bankName,
 									image: i.bankLogo,
@@ -128,7 +131,7 @@ const BankInfo = () => {
 					} else {
 						setPopBox({
 							isOpen: true,
-							title: i18n["lbl_ImportantNote"],
+							title: i18n.lbl_ImportantNote,
 							content: res.data.message
 						});
 					}
@@ -139,8 +142,8 @@ const BankInfo = () => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n["lbl_ImportantNote"],
-						content: i18n["msg_ApiServerError"]
+						title: i18n.lbl_ImportantNote,
+						content: i18n.msg_ApiServerError
 					});
 					setLoading(false);
 				}
@@ -149,7 +152,7 @@ const BankInfo = () => {
 	};
 
 	const showTip = () => {
-		let _tip = tip === "" ? i18n["lbl_ContactCSD"] : "";
+		const _tip = tip === "" ? i18n.lbl_ContactCSD : "";
 		setTip(_tip);
 	};
 
@@ -157,21 +160,22 @@ const BankInfo = () => {
 		<Loading />
 	) : (
 		<section className="depositBox">
-			<p className="depositBox-text">{i18n["lbl_BankInfo_Hint"]}</p>
+			<p className="depositBox-text">{i18n.lbl_BankInfo_Hint}</p>
 			<Step i18n={i18n} step={step} />
 			{userInfo?.accountName ? (
 				<>
 					<div className="depositInBox">
 						<div className="textFlex textArea">
 							<p>
-								<span className="icon icon-icon32px_Profile"></span>
-								{i18n["lbl_BankAccountName"]}
+								<span className="icon icon-icon32px_Profile" />
+								{i18n.lbl_BankAccountName}
 							</p>
 							<p>
 								{userInfo?.accountName}
 								<span
 									className="icon icon-information-solid"
-									onClick={showTip}></span>
+									onClick={showTip}
+								/>
 							</p>
 						</div>
 					</div>

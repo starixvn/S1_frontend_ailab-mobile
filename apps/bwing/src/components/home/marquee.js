@@ -1,6 +1,7 @@
 import React, { Component, useContext, createRef } from "react";
-import { api_GetAnnouncement } from "../../service/api/message";
 import PropTypes from "prop-types";
+import { Redirect } from "@reach/router";
+import { api_GetAnnouncement } from "../../service/api/message";
 import {
 	popBoxContext,
 	userInfoContext,
@@ -10,7 +11,6 @@ import {
 } from "../common/context";
 import { GET_LANG_ID } from "../../service/language";
 import path from "../../path";
-import { Redirect } from "@reach/router";
 
 const Panel = () => {
 	const { nav, setNav } = useContext(navContext);
@@ -24,7 +24,7 @@ const Panel = () => {
 
 	const { popBox, setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
-	let langId = GET_LANG_ID(userInfo.langId);
+	const langId = GET_LANG_ID(userInfo.langId);
 
 	return (
 		<Marquee
@@ -44,22 +44,21 @@ class Marquee extends Component {
 		super(props);
 		this.state = {
 			datas: [],
-			hover: false,
 			pos: null,
-			initWidth: 0,
-			nav: this.props.nav,
 			redirectPath: null
 		};
 		this.isMountedRef = false;
 		this.marquee = createRef();
 		this.content = createRef();
 	}
+
 	shouldComponentUpdate = (nextProps, nextState) => {
 		if (this.props.langId !== nextProps.langId) {
 			this.GetAnnouncement(nextProps.langId);
 		}
 		return true;
 	};
+
 	componentDidMount = () => {
 		this.isMountedRef = true;
 		this.GetAnnouncement(this.props.langId);
@@ -68,6 +67,7 @@ class Marquee extends Component {
 			60000
 		);
 	};
+
 	SetPos = () => {
 		if (
 			this.isMountedRef &&
@@ -76,50 +76,52 @@ class Marquee extends Component {
 		) {
 			// let style = window.getComputedStyle(this.content.current, null);
 			// let outerBox = parseFloat(style.width);
-			let style = window.getComputedStyle(this.marquee.current, null);
-			let outerBox = parseFloat(style.width);
+			const style = window.getComputedStyle(this.marquee.current, null);
+			const outerBox = parseFloat(style.width);
 			this.setState(prev => {
 				if (prev.pos <= -outerBox) {
-					let _style = window.getComputedStyle(
+					const _style = window.getComputedStyle(
 						this.content.current,
 						null
 					);
-					let contentBox = parseFloat(_style.width);
+					const contentBox = parseFloat(_style.width);
 					return { pos: contentBox };
-				} else {
-					return { pos: prev.pos - 1.5 };
 				}
+				return { pos: prev.pos - 1.5 };
 			});
 		}
 	};
+
 	componentWillUnmount = () => {
 		this.isMountedRef = false;
 		clearInterval(this.intervalId_Pos);
 	};
+
 	componentDidUpdate = () => {
 		if (this.state.pos === null && this.isMountedRef) {
-			let style = window.getComputedStyle(this.marquee.current, null);
-			let pos = parseFloat(style.width);
+			const style = window.getComputedStyle(this.marquee.current, null);
+			const pos = parseFloat(style.width);
 
-			this.setState({ pos: -pos, initWidth: pos });
+			this.setState({ pos: -pos });
 		}
 	};
+
 	GetAnnouncement = langId => {
 		api_GetAnnouncement(langId).then(res => {
 			if (res.data.errorCode === 0) {
-				let resData = res.data.data;
-				let stateData = this.state.datas;
+				const resData = res.data.data;
+				const stateData = this.state.datas;
 				let upd = false;
 				if (resData.length !== 0 && stateData.length !== 0) {
-					for (let d in resData) {
-						let find = stateData.find(
-							x =>
-								x.id === resData[d].id &&
-								x.subject === resData[d].subject &&
-								x.content === resData[d].content
-						);
-
-						if (!find) {
+					for (const d in resData) {
+						if (
+							!stateData.find(
+								x =>
+									x.id === resData[d].id &&
+									x.subject === resData[d].subject &&
+									x.content === resData[d].content
+							)
+						) {
 							upd = true;
 							break;
 						}
@@ -154,9 +156,10 @@ class Marquee extends Component {
 			}
 		});
 	};
+
 	ClickMarquee = item => {
 		if (this.props.userIsLogin) {
-			let content = item.content.split("\\n").join("　");
+			const content = item.content.split("\\n").join("　");
 			const GoToAnnouncement = () => {
 				this.props.setPopBox({
 					isOpen: false
@@ -168,12 +171,12 @@ class Marquee extends Component {
 			this.props.setPopBox({
 				isOpen: true,
 				title: item.subject,
-				content: content,
+				content,
 				hasBtn: true,
 				btnBar: (
 					<div className="btn-group">
 						<button className="blue" onClick={GoToAnnouncement}>
-							{this.props.i18n["lbl_More"] ?? "More"}
+							{this.props.i18n.lbl_More ?? "More"}
 						</button>
 					</div>
 				)
@@ -182,8 +185,9 @@ class Marquee extends Component {
 			this.props.OpenLoginPanel();
 		}
 	};
+
 	render() {
-		let rows = this.state.datas.map(item => {
+		const rows = this.state.datas.map(item => {
 			return (
 				<button
 					key={`announcement-${item.id}`}
@@ -194,11 +198,11 @@ class Marquee extends Component {
 			);
 		});
 
-		let style = this.state.pos === null ? {} : { left: this.state.pos };
+		const style = this.state.pos === null ? {} : { left: this.state.pos };
 		return this.state.redirectPath === null ? (
 			<div className="marquee" id="Marquee">
 				<div className="marqueeIcon">
-					<div className="icon icon-marquee"></div>
+					<div className="icon icon-marquee" />
 				</div>
 				<div ref={this.content} className="marquee-box">
 					<div
@@ -222,9 +226,7 @@ Marquee.defaultProps = {
 
 Marquee.propTypes = {
 	langId: PropTypes.string,
-	userIsLogin: PropTypes.bool,
-	setPopBox: PropTypes.func,
-	popBoxIsOpen: PropTypes.bool
+	userIsLogin: PropTypes.bool
 };
 
 export default Panel;

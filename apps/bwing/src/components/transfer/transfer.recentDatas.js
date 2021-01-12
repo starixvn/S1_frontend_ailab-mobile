@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
+import { Link } from "@reach/router";
 import { i18nContext } from "../common/context";
 import { TransactionHistory } from "./transfer.history";
 import { number_format } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
-import { Link } from "@reach/router";
 import path from "../../path";
 
 const ReacentDatas = props => {
@@ -32,8 +32,8 @@ const ReacentDatas = props => {
 		return { startWallet, endWallet };
 	};
 
-	let hasData = props.datas && props.datas.length > 0;
-	let arr =
+	const hasData = props.datas && props.datas.length > 0;
+	const arr =
 		hasData &&
 		props.datas?.map(item => {
 			const _transferDirection = transferDirection(
@@ -60,11 +60,12 @@ const ReacentDatas = props => {
 		<>
 			<div className="btn-group">
 				<button className="switch left" onClick={HandleOpen}>
-					{i18n["lbl_RecentTransactions"].toUpperCase()}
+					{i18n.lbl_RecentTransactions.toUpperCase()}
 					<i
 						className={`icon icon-circle-right${
 							isOpen ? " open" : ""
-						}`}></i>
+						}`}
+					/>
 				</button>
 			</div>
 
@@ -75,7 +76,7 @@ const ReacentDatas = props => {
 							<ReloadSpin func={props.GetRecentDatas} />
 						</div>
 						<div className="txt-blue2">
-							{i18n["msg_AmountFormatTip"]}
+							{i18n.msg_AmountFormatTip}
 						</div>
 						<div className="infoList">{arr}</div>
 					</div>
@@ -84,13 +85,13 @@ const ReacentDatas = props => {
 							<Link
 								to={path.transfer.sub.history.root}
 								className="blue recentBtn">
-								{i18n["lbl_AllTranscations"]}
+								{i18n.lbl_AllTranscations}
 							</Link>
 						</div>
 					) : null}
 				</>
 			) : isOpen ? (
-				<div className="not-found">{i18n["msg_NoData"]}</div>
+				<div className="not-found">{i18n.msg_NoData}</div>
 			) : null}
 		</>
 	);

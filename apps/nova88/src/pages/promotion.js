@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { Promotion } from "@ailab-mobile/promotion";
-import staticList from "../datas/promotionList";
 import config from "Config";
 import path from "Path";
 import { Promotion as uiSetting } from "UISetting";
 import { userInfoContext, i18nContext, popBoxContext } from "Context";
+import staticList from "../datas/promotionList";
 
-export default ({ location }) => {
+export default ({ location = {} }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -24,7 +24,7 @@ export default ({ location }) => {
 	);
 };
 
-//region fetch static promotion datas from cloud.
+// region fetch static promotion datas from cloud.
 // const [staticList, setStaticList] = useState([]);
 // fetch(siteInfo().staticPromotions)
 // 	.then(res => {
@@ -33,4 +33,4 @@ export default ({ location }) => {
 // 	.then(data => {
 // 		setStaticList(data);
 // 	});
-//endregion
+// endregion

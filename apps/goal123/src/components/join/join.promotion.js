@@ -1,21 +1,22 @@
 import React, { useContext } from "react";
-import { userInfoContext, i18nContext, navContext } from "../common/context";
+import PropTypes from "prop-types";
 import Swiper from "react-id-swiper";
+import { userInfoContext, i18nContext, navContext } from "../common/context";
 import { ClickLink } from "../common/swipperBanner";
-import config, { siteInfo } from "../../config";
+import config, { siteInfo, siteName } from "../../config";
 
-export default ({ banner, ImgFolder, ClickClose, title, isOpen }) => {
+const Promotion = ({ banner, ImgFolder, ClickClose, title, isOpen }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setNav } = useContext(navContext);
 
-	let rows = banner.map(b => {
-		let _imgFolder = b.imgFolder ?? ImgFolder;
-		let lang = b.lang.includes(userInfo.langId) ? userInfo.langId : "en";
-		let actionLinkByLang = b.actionLinkByLang?.find(
+	const rows = banner.map(b => {
+		const _imgFolder = b.imgFolder ?? ImgFolder;
+		const lang = b.lang.includes(userInfo.langId) ? userInfo.langId : "en";
+		const actionLinkByLang = b.actionLinkByLang?.find(
 			a => a.lang === userInfo.langId
 		);
-		let actionLink = actionLinkByLang
+		const actionLink = actionLinkByLang
 			? actionLinkByLang.link
 			: b.actionLink;
 		return (
@@ -33,7 +34,7 @@ export default ({ banner, ImgFolder, ClickClose, title, isOpen }) => {
 				)}
 				key={`${lang}-${b.img}`}>
 				<img
-					src={`${config.imgUrl}/CMS/${config.siteName}/${_imgFolder}/${lang}/${b.img}`}
+					src={`${config.imgUrl}/CMS/${siteName}/${_imgFolder}/${lang}/${b.img}`}
 					className="banner"
 					alt={b.img}
 				/>
@@ -41,8 +42,8 @@ export default ({ banner, ImgFolder, ClickClose, title, isOpen }) => {
 		);
 	});
 
-	let siteName = siteInfo().siteName;
-	let signUpHint = i18n.msg_CreditSignUpHint_2?.replace("{0}", siteName);
+	const { _siteName } = siteInfo();
+	const signUpHint = i18n.msg_CreditSignUpHint_2?.replace("{0}", _siteName);
 	return isOpen ? (
 		<div id="welcome" style={{ display: "block" }}>
 			<div
@@ -55,7 +56,7 @@ export default ({ banner, ImgFolder, ClickClose, title, isOpen }) => {
 			</div>
 			<div className="wecTxt">
 				{i18n.msg_CreditSignUpHint_1}
-				<br></br>
+				<br />
 				{signUpHint}
 				<div className="btn-group">
 					<button className="orange openPopup" onClick={ClickClose}>
@@ -64,25 +65,41 @@ export default ({ banner, ImgFolder, ClickClose, title, isOpen }) => {
 				</div>
 			</div>
 		</div>
-	) : (
-		<></>
+	) : null;
+};
+
+Promotion.defaultProps = {
+	title: "",
+	ImgFolder: "",
+	isOpen: null
+};
+
+Promotion.propTypes = {
+	banner: PropTypes.arrayOf(PropTypes.object).isRequired,
+	ImgFolder: PropTypes.string,
+	ClickClose: PropTypes.func.isRequired,
+	title: PropTypes.string,
+	isOpen: PropTypes.bool
+};
+
+const Autoplay = ({ Rows }) => {
+	return (
+		<Swiper
+			spaceBetween={30}
+			centeredSlides={true}
+			autoplay={{ delay: 2500, disableOnInteraction: false }}
+			pagination={{
+				el: ".swiper-pagination",
+				clickable: true
+			}}
+			rebuildOnUpdate={true}>
+			{Rows}
+		</Swiper>
 	);
 };
 
-const Autoplay = props => {
-	const params = {
-		spaceBetween: 30,
-		centeredSlides: true,
-		autoplay: {
-			delay: 2500,
-			disableOnInteraction: false
-		},
-		pagination: {
-			el: ".swiper-pagination",
-			clickable: true
-		},
-		rebuildOnUpdate: true
-	};
-
-	return <Swiper {...params}>{props.Rows}</Swiper>;
+Autoplay.propTypes = {
+	Rows: PropTypes.arrayOf(PropTypes.object).isRequired
 };
+
+export default Promotion;

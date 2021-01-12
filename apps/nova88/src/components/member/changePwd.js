@@ -38,7 +38,9 @@ export default () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -57,7 +59,7 @@ export default () => {
 	const checkPswHandler = (colName, e) => {
 		const _val = e.target.value;
 
-		let result =
+		const result =
 			colName === "oldPsw"
 				? pwdEmptyCheck({ val: _val })
 				: passwordCheck({ val: _val });
@@ -84,7 +86,7 @@ export default () => {
 	};
 
 	const EditField = (colName, e) => {
-		let value = e.target.value;
+		const { value } = e.target;
 
 		setUserValueState(prevState => ({
 			...prevState,
@@ -93,8 +95,8 @@ export default () => {
 	};
 
 	const clickSubmit = () => {
-		let oldPsw = pwdEmptyCheck({ val: userValueState.oldPsw });
-		let newPsw = passwordCheck({ val: userValueState.newPsw });
+		const oldPsw = pwdEmptyCheck({ val: userValueState.oldPsw });
+		const newPsw = passwordCheck({ val: userValueState.newPsw });
 
 		if (oldPsw.checked && newPsw.checked) {
 			const closePopbox = status => {
@@ -126,7 +128,7 @@ export default () => {
 													null,
 													"success"
 												)}>
-												{i18n["lbl_Confirm"]}
+												{i18n.lbl_Confirm}
 											</button>
 										</div>
 									)
@@ -142,7 +144,7 @@ export default () => {
 											<button
 												className="orange"
 												onClick={closePopbox}>
-												{i18n["lbl_Confirm"]}
+												{i18n.lbl_Confirm}
 											</button>
 										</div>
 									)

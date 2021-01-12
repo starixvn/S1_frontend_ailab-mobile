@@ -1,22 +1,17 @@
 import { siteInfo } from "../config";
+
 const GetCookie = name => {
-	if (typeof document !== `undefined`) {
-		let match = document.cookie.match(
-			new RegExp("(^| )" + name + "=([^;]+)")
-		);
-		return match ? match[2] : null;
-	} else {
-		return null;
-	}
+	if (typeof document === `undefined`) return null;
+	const match = document.cookie.match(new RegExp(`(^| )${name}=([^;]+)`));
+	return match ? match[2] : null;
 };
 
 export const GET_LANG_ID = userLangId => {
-	let _siteInfo = siteInfo();
-	let siteDefLangId = _siteInfo.siteDefaultLang;
-	let siteLangList = _siteInfo.siteLangList;
+	const _siteInfo = siteInfo();
+	const { siteDefaultLang: siteDefLangId, siteLangList } = _siteInfo;
 
-	let langId = userLangId ? userLangId : GetCookie("LangId");
-	let browserDefLang =
+	let langId = userLangId ?? GetCookie("LangId");
+	const browserDefLang =
 		typeof window !== `undefined` ? navigator.language.toLowerCase() : null;
 
 	if (!langId && browserDefLang) {

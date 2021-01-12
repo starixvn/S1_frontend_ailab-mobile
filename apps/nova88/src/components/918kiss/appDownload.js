@@ -9,14 +9,16 @@ const APPDownloadLink = {
 		"itms-services://?action=download-manifest&url=itms-services://?action=download-manifest&url=https://s3-ap-southeast-1.amazonaws.com/app918kiss/ios32/918Kiss.plist"
 };
 
-const DownloadAPP = ({ i18n }) => {
+const DownloadAPP = ({ i18n = {} }) => {
 	const OnClick = e => {
-		return typeof window !== undefined ? window.open(e.target.value) : null;
+		return typeof window !== "undefined"
+			? window.open(e.target.value)
+			: null;
 	};
 	return (
 		<div className="kissdoanload open">
 			<div>
-				<div className="icon icon-android"></div>
+				<div className="icon icon-android" />
 				<div className="title">Android</div>
 				<div className="sysName">918Kiss android</div>
 				<div className="btn-group">
@@ -29,7 +31,7 @@ const DownloadAPP = ({ i18n }) => {
 				</div>
 			</div>
 			<div>
-				<div className="icon icon-appleinc"></div>
+				<div className="icon icon-appleinc" />
 				<div className="title">IOS</div>
 				<div className="sysName">Iphone 5s+</div>
 				<div className="btn-group">
@@ -42,7 +44,7 @@ const DownloadAPP = ({ i18n }) => {
 				</div>
 			</div>
 			<div>
-				<div className="icon icon-appleinc"></div>
+				<div className="icon icon-appleinc" />
 				<div className="title">IOS</div>
 				<div className="sysName">Iphone 5-</div>
 				<div className="btn-group">

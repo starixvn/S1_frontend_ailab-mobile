@@ -4,7 +4,7 @@ import { siteInfo } from "../../config";
 import DefLangs from "../../datas/defLangs";
 
 const languageList = () => {
-	let _siteInfo = siteInfo();
+	const _siteInfo = siteInfo();
 	return _siteInfo.siteLangList.map(l => DefLangs[l]);
 };
 
@@ -15,14 +15,17 @@ export class DropdownBox extends Component {
 		this.state = { isOpen: false };
 		this.wrapper = createRef(null);
 	}
+
 	handleClickOutside = e => {
 		if (this.wrapper.current && !this.wrapper.current.contains(e.target)) {
 			this.setState({ isOpen: false });
 		}
 	};
+
 	ClickDropdown = () => {
-		this.setState({ isOpen: !this.state.isOpen });
+		this.setState(prev => ({ isOpen: !prev.isOpen }));
 	};
+
 	SelectItem = value => {
 		this.setState({ isOpen: false });
 		this.props.onSelectItem(value);
@@ -30,8 +33,8 @@ export class DropdownBox extends Component {
 
 	render() {
 		let currentSelect = null;
-		let rows = languageList().map(item => {
-			let content = (
+		const rows = languageList().map(item => {
+			const content = (
 				<>
 					<img src={item.img} alt={item.value} />
 					<span>{item.displayText.toUpperCase()}</span>
@@ -57,7 +60,7 @@ export class DropdownBox extends Component {
 				onClick={this.ClickDropdown}>
 				<div className="text">
 					{currentSelect}
-					<i className="icon icon-arrow_drop_down"></i>
+					<i className="icon icon-arrow_drop_down" />
 				</div>
 				<div className="languageOption">
 					<ul>{rows}</ul>
@@ -66,11 +69,5 @@ export class DropdownBox extends Component {
 		);
 	}
 }
-
-DropdownBox.propTypes = {
-	onSelectItem: PropTypes.func,
-	mainKey: PropTypes.string,
-	langId: PropTypes.string
-};
 
 export default DropdownBox;

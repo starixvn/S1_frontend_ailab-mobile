@@ -19,7 +19,7 @@ const stepDesc = [
 ];
 
 const Panel = ({ step, i18n }) => {
-	let rows = stepDesc.map((s, idx) => {
+	const rows = stepDesc.map((s, idx) => {
 		return (
 			<div
 				key={`step-${idx}`}

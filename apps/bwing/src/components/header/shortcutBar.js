@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
+import { Link } from "@reach/router";
 import {
 	i18nContext,
 	navContext,
 	defNavPanel,
 	userInfoContext
 } from "../common/context";
-import { Link } from "@reach/router";
 import path from "../../path";
 
 const ShortcutBar = () => {
@@ -17,13 +17,18 @@ const ShortcutBar = () => {
 		setNav(defNavPanel.login);
 	};
 
-	const NavLink = props => {
-		let { checkProfile, redirectPath, checkBankInfo, ...passProps } = props;
+	const NavLink = ({
+		checkProfile,
+		redirectPath,
+		checkBankInfo,
+		...passProps
+	}) => {
+		let _passProps = passProps;
 		if (userInfo.isLogin === false) {
-			passProps = { ...passProps, to: "/", onClick: ShowLogin };
+			_passProps = { ...passProps, to: "/", onClick: ShowLogin };
 		}
 
-		return <Link {...passProps} onClick={() => setNav(null)} />;
+		return <Link {..._passProps} onClick={() => setNav(null)} />;
 	};
 
 	return (

@@ -1,9 +1,14 @@
-import { api_UserLogin, api_UserLogout } from "../service/api/account";
-import { api_GetCustProfile } from "../service/api/accountStrict";
-import { api_CheckSignIn } from "../service/api/site";
+import { api_UserLogin, api_UserLogout } from "./api/account";
+import { api_GetCustProfile } from "./api/accountStrict";
+import { api_CheckSignIn } from "./api/site";
 
 export const IS_LOGGED_IN = async () => {
-	return await api_CheckSignIn().then(res => res.data.errorCode === 0);
+	try {
+		const res = await api_CheckSignIn();
+		return res.data.errorCode === 0;
+	} catch (error) {
+		return null;
+	}
 };
 
 const isBrowser = typeof window !== `undefined`;
@@ -11,11 +16,11 @@ const isBrowser = typeof window !== `undefined`;
 export const LOGIN = async ({ userName, password, langId }, CallbackLogin) => {
 	if (!isBrowser) return false;
 
-	let url,
-		platform,
-		userAgent,
-		screen,
-		di = "";
+	let url;
+	let platform;
+	let userAgent;
+	let screen;
+	let di = "";
 	if (typeof window !== undefined) {
 		url = window.location.origin;
 		platform = navigator.platform;
@@ -36,17 +41,17 @@ export const LOGIN = async ({ userName, password, langId }, CallbackLogin) => {
 	}).then(
 		res => {
 			if (res.data.errorCode === 0) {
-				let userlangId = res.data.message.replace("/", "");
+				const userlangId = res.data.message.replace("/", "");
 
 				api_GetCustProfile().then(res_custInfo => {
 					let _loginUser = {
-						userName: userName,
+						userName,
 						langId: userlangId,
 						isLogin: true
 					};
 
 					if (res_custInfo.data.errorCode === 0) {
-						let data = res_custInfo.data.data;
+						const { data } = res_custInfo.data;
 						_loginUser = {
 							..._loginUser,
 							...data

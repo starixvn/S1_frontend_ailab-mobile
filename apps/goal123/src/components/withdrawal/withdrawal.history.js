@@ -1,11 +1,11 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
+import moment from "moment";
 import { i18nContext, popBoxContext } from "../common/context";
 import {
 	api_GetWithdrawalInfoHistory,
 	api_SetWithdrawalCancel
 } from "../../service/api/payment";
 import { number_format } from "../common/common";
-import moment from "moment";
 import HistoryFilter from "../common/historyFilter";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import ReloadSpin from "../common/reloadSpin";
@@ -24,7 +24,9 @@ const Panel = () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 	AUTO_FETCHING_DATA(
 		api_GetWithdrawalInfoHistory,
@@ -59,7 +61,7 @@ const Panel = () => {
 			}).then(
 				response => {
 					if (isMountedRef.current) {
-						const errorCode = response.data.errorCode;
+						const { errorCode } = response.data;
 						if (errorCode !== 0) {
 							setPopBox({
 								isOpen: true,
@@ -105,8 +107,8 @@ const Panel = () => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
 							setGetHistoryState(prevState => {
-								let newD = [...prevState];
-								let idx = newD.findIndex(
+								const newD = [...prevState];
+								const idx = newD.findIndex(
 									x => x.transId === transId
 								);
 								newD[idx].status = 5;
@@ -134,29 +136,29 @@ const Panel = () => {
 			);
 		};
 
-		const ClickCancel = () => {
+		const closePopBox = () => {
 			setPopBox({ isOpen: false });
 		};
 
 		setPopBox({
 			isOpen: true,
 			title: i18n.lbl_ImportantNote,
-			content: i18n["lbl_CancelConfirm"],
+			content: i18n.lbl_CancelConfirm,
 			hasBtn: true,
 			btnBar: (
 				<div className="btn-group">
-					<button className="blue" onClick={ClickCancel}>
-						{i18n["lbl_Cancel"]}
+					<button className="blue" onClick={closePopBox}>
+						{i18n.lbl_Cancel}
 					</button>
 					<button className="orange" onClick={ClickSubmit}>
-						{i18n["lbl_Submit"]}
+						{i18n.lbl_Submit}
 					</button>
 				</div>
 			)
 		});
 	};
 
-	let arr = getHistoryState?.map(item => {
+	const arr = getHistoryState?.map(item => {
 		return (
 			<TransactionHistory
 				key={`withdrawalHistory-${item.transId}`}
@@ -180,8 +182,8 @@ const Panel = () => {
 						<div className="recent open">
 							<div className="recentTransactions">
 								<div className="smallTitle">
-									<i className="icon icon-history"></i>
-									{i18n["lbl_TransactionHistory"]}
+									<i className="icon icon-history" />
+									{i18n.lbl_TransactionHistory}
 								</div>
 								<ReloadSpin
 									func={submitHandler.bind(
@@ -195,13 +197,13 @@ const Panel = () => {
 							{getHistoryState.length > 0 ? (
 								<>
 									<div className="txt-blue2">
-										{i18n["msg_AmountFormatTip"]}
+										{i18n.msg_AmountFormatTip}
 									</div>
 									<div className="infoList">{arr}</div>
 								</>
 							) : (
 								<div className="not-found">
-									{i18n["msg_NoData"]}
+									{i18n.msg_NoData}
 								</div>
 							)}{" "}
 						</div>
@@ -229,25 +231,25 @@ export const TransactionHistory = props => {
 		<div className="info">
 			<ul>
 				<li>
-					<span className="title">{i18n["lbl_Date"]}</span>
+					<span className="title">{i18n.lbl_Date}</span>
 					<span>
 						{moment(props.createTime).format("MM/DD/YYYY(Z)")}
 					</span>
 				</li>
 				<li>
-					<span className="title">{i18n["lbl_Time"]}</span>
+					<span className="title">{i18n.lbl_Time}</span>
 					<span>{moment(props.createTime).format("hh:mm:ss A")}</span>
 				</li>
 				<li>
-					<span className="title">{i18n["lbl_ID"]}</span>
+					<span className="title">{i18n.lbl_ID}</span>
 					<span>{props.transId}</span>
 				</li>
 				<li>
-					<span className="title">{i18n["lbl_Amount"]}</span>
+					<span className="title">{i18n.lbl_Amount}</span>
 					<span>{number_format(props.amount, false)}</span>
 				</li>
 				<li>
-					<span className="title">{i18n["lbl_Status"]}</span>
+					<span className="title">{i18n.lbl_Status}</span>
 					<span>{i18n[`lbl_WithdrawalStatus${props.status}`]}</span>
 				</li>
 			</ul>

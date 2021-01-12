@@ -17,7 +17,7 @@ export class IconDropdown extends Component {
 	};
 
 	ClickDropdown = () => {
-		this.setState({ isOpen: !this.state.isOpen });
+		this.setState(prev => ({ isOpen: !prev.isOpen }));
 	};
 
 	SelectItem = value => {
@@ -26,8 +26,8 @@ export class IconDropdown extends Component {
 	};
 
 	render() {
-		let arr = this.props.options.map((item, i) => {
-			let displayText = item.displayText
+		const arr = this.props.options.map((item, i) => {
+			const displayText = item.displayText
 				? item.displayText
 				: this.props.i18n?.[item.displayKey];
 			return (
@@ -41,7 +41,7 @@ export class IconDropdown extends Component {
 		});
 		let selected = null;
 		if (this.props.options[this.props.selectedIdx]) {
-			let _s = this.props.options[this.props.selectedIdx];
+			const _s = this.props.options[this.props.selectedIdx];
 			if (_s.displayText) {
 				selected = _s.displayText;
 			} else {
@@ -62,7 +62,8 @@ export class IconDropdown extends Component {
 								? this.props.icon
 								: this.props.options[this.props.selectedIdx]
 										?.iconClassName
-						}></i>
+						}
+					/>
 					<span className="text">{selected}</span>
 				</a>
 				<div className="dropdown-container">{arr}</div>
@@ -74,9 +75,7 @@ export class IconDropdown extends Component {
 const Item = props => {
 	return (
 		<div className="dropdown-item" onClick={props.onClick}>
-			{props.iconClassName ? (
-				<i className={props.iconClassName}></i>
-			) : null}
+			{props.iconClassName ? <i className={props.iconClassName} /> : null}
 			<span className="text">{props.displayText}</span>
 		</div>
 	);

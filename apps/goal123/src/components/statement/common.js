@@ -20,35 +20,23 @@ export const getDateRange = ({ startDate, endDate }) => {
 
 	if (startDate === endDate) {
 		displayKey = startDate === today ? "lbl_Today" : "lbl_YesterDay";
+	} else if (
+		moment(startDate).isBetween(thisWeekStart, today, undefined, "[]") &&
+		moment(endDate).isBetween(thisWeekStart, today, undefined, "[]")
+	) {
+		displayKey = "lbl_ThisWeek";
+	} else if (
+		moment(startDate).isBetween(
+			lastWeekStart,
+			lastWeekEnd,
+			undefined,
+			"[]"
+		) &&
+		moment(endDate).isBetween(lastWeekStart, lastWeekEnd, undefined, "[]")
+	) {
+		displayKey = "lbl_LastWeek";
 	} else {
-		if (
-			moment(startDate).isBetween(
-				thisWeekStart,
-				today,
-				undefined,
-				"[]"
-			) &&
-			moment(endDate).isBetween(thisWeekStart, today, undefined, "[]")
-		) {
-			displayKey = "lbl_ThisWeek";
-		} else if (
-			moment(startDate).isBetween(
-				lastWeekStart,
-				lastWeekEnd,
-				undefined,
-				"[]"
-			) &&
-			moment(endDate).isBetween(
-				lastWeekStart,
-				lastWeekEnd,
-				undefined,
-				"[]"
-			)
-		) {
-			displayKey = "lbl_LastWeek";
-		} else {
-			displayKey = "lbl_Other";
-		}
+		displayKey = "lbl_Other";
 	}
 
 	return displayKey;

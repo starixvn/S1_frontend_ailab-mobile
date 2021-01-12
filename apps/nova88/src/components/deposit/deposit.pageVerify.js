@@ -40,10 +40,8 @@ export default (
 					if (mounted) {
 						setPageVerify(false);
 					}
-				} else {
-					if (mounted) {
-						setPageVerify(true);
-					}
+				} else if (mounted) {
+					setPageVerify(true);
 				}
 			}
 		}

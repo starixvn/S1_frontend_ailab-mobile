@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
+import { Link } from "@reach/router";
 import { i18nContext, userInfoContext } from "../common/context";
 import { isConvert } from "../common/common";
-import { Link } from "@reach/router";
 import path from "../../path";
 import { TransactionHistory } from "./withdrawal.history";
 import ReloadSpin from "../common/reloadSpin";
@@ -16,8 +16,8 @@ const RecentDatas = props => {
 		setOpen(prevState => !prevState);
 	};
 
-	let hasData = props.Datas && props.Datas.length > 0;
-	let rows =
+	const hasData = props.Datas && props.Datas.length > 0;
+	const rows =
 		hasData &&
 		props.Datas.map(d => {
 			return (
@@ -37,9 +37,10 @@ const RecentDatas = props => {
 				<button className="orange switch" onClick={HandleOpen}>
 					{i18n.lbl_RecentTransactions}
 					<i
-						className={
-							"icon icon-circle-right" + (isOpen ? " open" : "")
-						}></i>
+						className={`icon icon-circle-right${
+							isOpen ? " open" : ""
+						}`}
+					/>
 				</button>
 			</div>
 			{hasData ? (
@@ -54,7 +55,7 @@ const RecentDatas = props => {
 							<ReloadSpin func={props.GetRecentDatas} />
 						</div>
 						<div className="txt-blue2">
-							{i18n["msg_AmountFormatTip"]}
+							{i18n.msg_AmountFormatTip}
 						</div>
 						{rows}
 					</div>
@@ -69,7 +70,7 @@ const RecentDatas = props => {
 					) : null}
 				</>
 			) : isOpen ? (
-				<div className="not-found">{i18n["msg_NoData"]}</div>
+				<div className="not-found">{i18n.msg_NoData}</div>
 			) : null}
 		</>
 	);

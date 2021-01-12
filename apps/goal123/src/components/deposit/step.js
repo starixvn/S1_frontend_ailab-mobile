@@ -1,23 +1,24 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const totalStep = 3;
 const Panel = ({ step, total = totalStep }) => {
-	let processBar =
-		step === 1 ? (
-			<div></div>
-		) : step === 2 ? (
-			<div className="stepBar50"></div>
-		) : (
-			<div className="stepBar100"></div>
-		);
+	let processBar = null;
+	if (step === 1) {
+		processBar = <div />;
+	} else if (step === 2) {
+		processBar = <div className="stepBar50" />;
+	} else {
+		processBar = <div className="stepBar100" />;
+	}
 
-	let rows = [];
+	const rows = [];
 	for (let s = 1; s <= total; s++) {
 		rows.push(
 			<div key={`step-${s}`} className="circle">
 				<div>
 					{s <= step ? (
-						<div className="icon icon-checkmark"></div>
+						<div className="icon icon-checkmark" />
 					) : (
 						<div>{s}</div>
 					)}
@@ -32,6 +33,15 @@ const Panel = ({ step, total = totalStep }) => {
 			{rows}
 		</div>
 	);
+};
+
+Panel.defaultProps = {
+	total: 1
+};
+
+Panel.propTypes = {
+	step: PropTypes.number.isRequired,
+	total: PropTypes.number
 };
 
 export default Panel;

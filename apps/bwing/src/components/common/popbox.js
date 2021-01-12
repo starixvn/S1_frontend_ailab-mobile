@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { popBoxContext, i18nContext } from "../common/context";
+import { popBoxContext, i18nContext } from "./context";
 import TurnoverAccumulated from "./popbox.turnover";
 import Otp from "./popbox.otp";
 import Loading from "./popbox.loading";
@@ -47,13 +47,13 @@ const PopUp = () => {
 		<div id="popup" style={popBox.isOpen ? { display: "block" } : {}}>
 			<div className="popTit">
 				{popBox.hideCloseBtn === true ? null : (
-					<div className={`close open`} onClick={handlePopBox}>
-						<span></span>
-						<span></span>
-						<span></span>
-						<span></span>
-						<span></span>
-						<span></span>
+					<div className="close open" onClick={handlePopBox}>
+						<span />
+						<span />
+						<span />
+						<span />
+						<span />
+						<span />
 					</div>
 				)}
 				<h1 className="text-org">

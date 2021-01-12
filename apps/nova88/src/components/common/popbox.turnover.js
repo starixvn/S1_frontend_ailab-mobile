@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
+import PropTypes from "prop-types";
 import { i18nContext } from "Context";
-import { number_format } from "../common/common";
+import { number_format } from "./common";
 
-export default ({ currencyId, turnover, rollover }) => {
+const PopBoxTurnover = ({ currencyId, turnover, rollover }) => {
 	const { i18n } = useContext(i18nContext);
-	let currency = i18n[`Currency_${currencyId}`];
-	let percentage =
+	const currency = i18n[`Currency_${currencyId}`];
+	const percentage =
 		turnover > rollover ? 100 : ((turnover / rollover) * 100).toFixed(2);
 
 	return (
@@ -30,7 +31,8 @@ export default ({ currencyId, turnover, rollover }) => {
 						<div className="bar">
 							<div
 								className="progress"
-								style={{ width: `${percentage}%` }}></div>
+								style={{ width: `${percentage}%` }}
+							/>
 						</div>
 						<div className="percentage">{percentage}%</div>
 					</div>
@@ -39,3 +41,11 @@ export default ({ currencyId, turnover, rollover }) => {
 		</div>
 	);
 };
+
+PopBoxTurnover.propTypes = {
+	currencyId: PropTypes.number.isRequired,
+	turnover: PropTypes.number.isRequired,
+	rollover: PropTypes.number.isRequired
+};
+
+export default PopBoxTurnover;

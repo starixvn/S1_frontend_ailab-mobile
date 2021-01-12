@@ -18,7 +18,7 @@ export default ({
 			<div className="subModuleBody">
 				<div className="calculation">
 					<div>
-						<div>{i18n["lbl_Balance"]}</div>
+						<div>{i18n.lbl_Balance}</div>
 						<div>
 							<div>
 								{number_format(
@@ -30,7 +30,7 @@ export default ({
 					</div>
 					<div>-</div>
 					<div>
-						<div>{i18n["lbl_Deduction"]}</div>
+						<div>{i18n.lbl_Deduction}</div>
 						<div>
 							<div>
 								{number_format(
@@ -42,7 +42,7 @@ export default ({
 					</div>
 					<div>=</div>
 					<div>
-						<div>{i18n["lbl_EligibleWithdrawalAmount"]}</div>
+						<div>{i18n.lbl_EligibleWithdrawalAmount}</div>
 						<div>
 							<span>
 								{number_format(
@@ -62,7 +62,7 @@ export default ({
 				<div className="inputBoxLevel">
 					<div className="left">
 						<Inputbox
-							title={i18n["lbl_Amount"]}
+							title={i18n.lbl_Amount}
 							value={amount}
 							numberConvert={_isConvert}
 							inputType="tel"
@@ -73,7 +73,7 @@ export default ({
 					<div className="right">
 						<div className="btn-group">
 							<button className="submit" onClick={ClickSubmit}>
-								{i18n["lbl_withdraw_submit"]}
+								{i18n.lbl_withdraw_submit}
 							</button>
 						</div>
 					</div>

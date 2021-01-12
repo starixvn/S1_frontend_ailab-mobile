@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
+import { Redirect } from "@reach/router";
 import { i18nContext, userInfoContext } from "../common/context";
 import { api_KycCheck } from "../../service/api/payment";
 import { api_GetCustBankInfo } from "../../service/api/account";
-import { Redirect } from "@reach/router";
 import path from "../../path";
 import Loading from "../common/loading";
 import kycProgressingImg from "../../styles/img/gear.png";
@@ -16,7 +16,9 @@ export default () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -34,7 +36,7 @@ export default () => {
 	useEffect(() => {
 		if (userInfo.isLogin) {
 			const CheckBankInfo = async () => {
-				let result = await api_GetCustBankInfo().then(res => {
+				const result = await api_GetCustBankInfo().then(res => {
 					let hasBankInfo = false;
 					if (res.data.errorCode === 0) {
 						if (res.data.data?.bankInfoDetail) {

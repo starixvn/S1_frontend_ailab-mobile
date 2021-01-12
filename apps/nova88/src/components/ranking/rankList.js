@@ -1,10 +1,11 @@
 import React from "react";
+import moment from "moment";
+import PropTypes from "prop-types";
 import no1 from "../../styles/img/no1.png";
 import no2 from "../../styles/img/no2.png";
 import no3 from "../../styles/img/no3.png";
 import gold from "../../styles/img/gold.png";
 import { number_format } from "../common/common";
-import moment from "moment";
 
 export const RankImg = ({ Ranking }) => {
 	let img = <img src={gold} alt="gold" />;
@@ -28,12 +29,21 @@ const RankItem = ({ Ranking, userName, turnover, isCurrentUser }) => {
 	);
 };
 
+RankItem.propTypes = {
+	isCurrentUser: PropTypes.bool.isRequired,
+	userName: PropTypes.string.isRequired,
+	turnover: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+		.isRequired,
+	Ranking: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+		.isRequired
+};
+
 const RankItems = ({ datas, selected }) =>
 	datas?.map((data, idx) => {
 		const { userName, wTurnover, rank } = data;
 		return (
 			<RankItem
-				key={`rank-${selected}-${idx}-${userName}-${wTurnover}`}
+				key={`rank-${selected}-${userName}-${wTurnover}`}
 				Ranking={rank ?? idx + 1}
 				userName={userName}
 				turnover={wTurnover}
@@ -67,6 +77,23 @@ const RankList = ({ loading, i18n = {}, datas, selected, lastUpdTime }) => {
 			</div>
 		</>
 	);
+};
+
+RankList.defaultProps = {
+	loading: false,
+	datas: [],
+	selected: ""
+};
+
+RankList.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	loading: PropTypes.bool,
+	datas: PropTypes.arrayOf(PropTypes.object),
+	selected: PropTypes.string,
+	lastUpdTime: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.instanceOf(Date)
+	]).isRequired
 };
 
 export default RankList;
