@@ -20,7 +20,8 @@ export class IconDropdown extends Component {
 		this.setState(prev => ({ isOpen: !prev.isOpen }));
 	};
 
-	SelectItem = value => {
+	SelectItem = (value, e) => {
+		e.stopPropagation();
 		this.setState({ isOpen: false });
 		this.props.onSelectItem(value);
 	};
@@ -35,7 +36,7 @@ export class IconDropdown extends Component {
 					key={`${this.props.mainKey}-${i}`}
 					displayText={displayText}
 					iconClassName={this.props.options[i].iconClassName}
-					onClick={this.SelectItem.bind(null, i)}
+					onClick={this.SelectItem.bind(this, i)}
 				/>
 			);
 		});
