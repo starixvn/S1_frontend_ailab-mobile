@@ -35,7 +35,7 @@ export class DropdownBox extends Component {
 				: this.props.i18n?.[item.displayKey];
 			return (
 				<Item
-					key={`${this.props.mainKey}-${item.id}`}
+					key={`${this.props.mainKey}-${item.id ?? i}`}
 					displayText={displayText}
 					onClick={this.SelectItem.bind(this, i)}
 				/>
