@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import { NoData } from "@ailab-mobile/common";
+import PropTypes from "prop-types";
 import {
 	defFilterType,
 	defPromotionType,
@@ -9,10 +11,8 @@ import { isExpiry, isClaimed, isNew } from "./common/common";
 import Card, { CardForStatic } from "./components/promotionCard";
 import Nav, { useHandleNav } from "./components/nav";
 import Tab, { useHandleTab } from "./components/tab";
-import { NoData } from "@ailab-mobile/common";
 import Wrapper from "./common/wrapper";
 import { configContext } from "./common/context";
-import PropTypes from "prop-types";
 import SpecialBonusCodeInputBox from "./components/specialBonusCodeInputBox";
 import { useHandleSpecialBonus } from "./hook/useHandleSpecialBonus";
 import { useGetPromotions } from "./hook/useGetPromotions";
@@ -27,6 +27,10 @@ export const Promotion = ({ staticList, location, navBar, ...rest }) => {
 			/>
 		</Wrapper>
 	);
+};
+
+Promotion.defaultProps = {
+	formatSetting: {}
 };
 
 Promotion.propTypes = {
@@ -47,10 +51,10 @@ const setPromotionCards = ({
 	urlParameters
 }) => {
 	return datas.map(p => {
-		let imgSRC = p.banner;
-		let _isClaimed = isClaimed(p);
-		let _isNew = _isClaimed ? false : isNew(p);
-		let _isExpiry = tab === defTabs.Expired.key;
+		const imgSRC = p.banner;
+		const _isClaimed = isClaimed(p);
+		const _isNew = _isClaimed ? false : isNew(p);
+		const _isExpiry = tab === defTabs.Expired.key;
 		return (
 			<Card
 				key={`promotion-${userInfo.langId}-${p.bonusCode}`}
@@ -130,7 +134,8 @@ const PromotionContent = ({ staticList, location, navBar }) => {
 						...p,
 						isLogin: userInfo.isLogin
 					});
-				} else if (filterType === defFilterType.firstDeposit) {
+				}
+				if (filterType === defFilterType.firstDeposit) {
 					return (
 						(p.promotionType === filterType ||
 							p.promotionType === defPromotionType.walletBonus) &&
@@ -139,21 +144,19 @@ const PromotionContent = ({ staticList, location, navBar }) => {
 							isLogin: userInfo.isLogin
 						})
 					);
-				} else {
-					return (
-						p.promotionType === filterType &&
-						!isExpiry({
-							...p,
-							isLogin: userInfo.isLogin
-						})
-					);
 				}
-			} else {
-				return isExpiry({
-					...p,
-					isLogin: userInfo.isLogin
-				});
+				return (
+					p.promotionType === filterType &&
+					!isExpiry({
+						...p,
+						isLogin: userInfo.isLogin
+					})
+				);
 			}
+			return isExpiry({
+				...p,
+				isLogin: userInfo.isLogin
+			});
 		});
 
 		rows = setPromotionCards({
@@ -182,7 +185,7 @@ const PromotionContent = ({ staticList, location, navBar }) => {
 			  })
 			: null;
 
-	let noData =
+	const noData =
 		!rows?.length && !staticRows ? (
 			<NoData displayText={i18n.msg_NoData} />
 		) : null;

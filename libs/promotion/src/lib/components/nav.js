@@ -1,5 +1,5 @@
-import { defPromotionNav, defTabs, defFilterType } from "../common/def";
 import React, { useState, useEffect } from "react";
+import { defPromotionNav, defTabs, defFilterType } from "../common/def";
 
 export const useHandleNav = ({
 	defaultValue = defFilterType.all,
@@ -37,7 +37,7 @@ export default ({
 	isLogin,
 	navBar = defPromotionNav
 }) => {
-	let rows =
+	const rows =
 		tab === defTabs.Expired.key
 			? null
 			: navBar
