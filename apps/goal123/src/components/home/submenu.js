@@ -97,7 +97,7 @@ const defSubMenus = [
 		icon: "icon icon-gift"
 	},
 	{
-		displayKey: "APP Download",
+		displayKey: "lbl_APPDownload",
 		TandCLink: "AppDownload",
 		icon: "icon icon-mobile"
 	}

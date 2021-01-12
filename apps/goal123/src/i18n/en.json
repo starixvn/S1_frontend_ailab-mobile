@@ -381,5 +381,6 @@
 	"lbl_SearchGames":"Search Games",
 	"lbl_DownloadApp":"Download App",
 	"lbl_DownloadAppHint":"Bet anytime anywhere",
-	"lbl_Downloads":"Download"
+	"lbl_Downloads":"Download",
+	"lbl_APPDownload":"APP Download"
 }
