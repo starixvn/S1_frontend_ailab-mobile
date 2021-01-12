@@ -13,7 +13,8 @@ export const ClickLink = ({
 	actionMode,
 	bannerLink,
 	lang,
-	isLogin
+	isLogin,
+	setNav
 }) => {
 	const HandleLogin = () => {
 		setNav(defNavPanel.login);
@@ -40,23 +41,35 @@ export const ClickLink = ({
 
 const NeedLoginRoute = [path.kiss918.root, path.referral.root];
 
-const Panel = ({ ImgFolder = "", filterHideInHome = false }) => {
+const Panel = ({ ImgFolder = [], filterHideInHome = false }) => {
 	const [banner, setBanner] = useState([]);
 	const { userInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
 
 	useEffect(() => {
 		let mounted = true;
-		api.site
-			.GetBannerV2({
-				lang: userInfo.langId,
-				BannerType: api.site.defBannerType.Promotions
-			})
-			.then(res => {
-				if (res.data.errorCode === 0 && mounted) {
-					setBanner(res.data.data);
-				}
-			});
+
+		const getBanner = async () => {
+			await setBanner([]);
+			try {
+				ImgFolder.forEach(async BannerType => {
+					const res = await api.site.GetBannerV2({
+						lang: userInfo.langId,
+						BannerType
+					});
+
+					if (res.data.errorCode === 0 && mounted) {
+						setBanner(prev => [...prev, ...res.data.data]);
+					}
+				});
+
+				return true;
+			} catch (error) {
+				return false;
+			}
+		};
+
+		getBanner();
 
 		return () => {
 			mounted = false;
@@ -74,12 +87,14 @@ const Panel = ({ ImgFolder = "", filterHideInHome = false }) => {
 			redirectLink =
 				!userInfo.isLogin && NeedLoginRoute.includes(b.urlRouter)
 					? null
-					: `/${b.bannerLink}`;
+					: `/${b.urlRouter}`;
 		}
 
 		if (redirectLink) {
 			return (
-				<Link key={`${lang}-${b.img}-${b_idx}`} to={promotionUrl}>
+				<Link
+					key={`${userInfo.langId}-${b.img}-${b_idx}`}
+					to={redirectLink}>
 					<img
 						src={b.bannerMobileUrl}
 						className="banner"
@@ -91,7 +106,7 @@ const Panel = ({ ImgFolder = "", filterHideInHome = false }) => {
 
 		return (
 			<button
-				key={`${lang}-${b_idx}`}
+				key={`${userInfo.langId}-${b_idx}`}
 				onClick={ClickLink.bind(this, {
 					...b,
 					isLogin: userInfo.isLogin,
