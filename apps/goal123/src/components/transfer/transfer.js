@@ -18,20 +18,7 @@ import {
 	initSelectedIdx,
 	initTransferOptions
 } from "./transfer.def";
-
-const updateTpWalletsList = ({ prev, tpId, balance = null }) => {
-	const tpWalletIdx = prev.findIndex(wallet => wallet.id === tpId);
-	if (tpWalletIdx !== -1) {
-		prev[tpWalletIdx].balance = balance;
-	} else {
-		prev.push({
-			id: tpId,
-			displayKey: `lbl_TpWallet_${tpId}`,
-			balance
-		});
-	}
-	return [...prev].sort((a, b) => a.id - b.id);
-};
+import { updateTpWalletsList } from "./transfer.getBalance";
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
@@ -119,7 +106,7 @@ const Panel = () => {
 					}
 				}
 			},
-			err => {
+			() => {
 				if (isMountedRef.current) {
 					setLoading(false);
 				}
