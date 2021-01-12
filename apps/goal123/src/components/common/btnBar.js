@@ -45,7 +45,12 @@ const BtnBar = ({
 			key={`${mainKey}-${item.value}`}
 			isOpen={item.value === selected}
 			displayText={i18n[item.displayKey]}
-			onClick={handleSelect}
+			onClick={handleSelect.bind(
+				this,
+				item.value,
+				isLogin,
+				item.beforeLogin
+			)}
 		/>
 	));
 
@@ -70,7 +75,7 @@ BtnBar.defaultProps = {
 
 BtnBar.propTypes = {
 	btnListClass: PropTypes.string,
-	defBtns: PropTypes.arrayOf(PropTypes.object).isRequired,
+	defBtns: PropTypes.objectOf(PropTypes.any).isRequired,
 	i18n: PropTypes.objectOf(PropTypes.any).isRequired,
 	selected: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 		.isRequired,
