@@ -60,10 +60,19 @@ export const infoList = (i18n, userInfo, _areaCode) => {
 		{
 			infoTitle: "birth",
 			colTitle: i18n.lbl_Birthday,
-			content: `${userInfo.birth_y}/${userInfo.birth_m}/${userInfo.birth_d}`,
+			content: birthFormat({
+				day: userInfo?.birth_d,
+				month: userInfo?.birth_m,
+				year: userInfo?.birth_y
+			}),
 			birth_d: userInfo.birth_d,
 			birth_m: userInfo.birth_m,
 			birth_y: userInfo.birth_y
 		}
 	];
+};
+
+const birthFormat = ({ day, month, year }) => {
+	const zeroPad = (num, places) => String(num).padStart(places, "0");
+	return `${zeroPad(day, 2)}/${zeroPad(month, 2)}/${year}`;
 };
