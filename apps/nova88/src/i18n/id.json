@@ -374,7 +374,7 @@
 	"lbl_Top":"Teratas",
 	"lbl_Rewards":"Penghargaan",
 	"lbl_MoreDetails":"KETERANGAN LEBIH LANJUT",
-	"lbl_EventTitle":"HADIAH iPHONE 12 NATAL & TAHUN BARU",
+	"lbl_EventTitle":"Menangkan Hadiah Rp 350.000.000 di Tahun Baru Imlek!",
 	"lbl_Ranking_Sports":"Peringkat Sports",
 	"lbl_Ranking_LiveCasino":"Peringkat Live Casino",
 	"lbl_Ranking_Slots":"Peringkat Slot Mesin",
@@ -402,6 +402,6 @@
 	"lbl_TurnoverAccmulateHint":"Dana Anda terkunci untuk ditransfer karena persyaratan Rollover belum terpenuhi.",
 	"lbl_Achievement":"Prestasi",
 	"lbl_Referral_rewards":"Hadiah",
-	"lbl_Redeposit_Promo":"Deposit ulang"
-
+	"lbl_Redeposit_Promo":"Deposit ulang",
+	"lbl_Last_Event":"Event terakhir"
 }
