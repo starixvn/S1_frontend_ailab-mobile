@@ -21,31 +21,20 @@ export default ({ userInfo, i18n, _isConvert, setPopBox }) => {
 
 	useEffect(() => {
 		if (userInfo.isLogin === true && isMountedRef.current) {
-			api.account.GetReferralSetting().then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							if (res.data.data.length > 0)
-								setReferralData(res.data.data[0]);
-						} else {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: `[${res.data.errorCode}]${res.data.message}`
-							});
-						}
-					}
-				},
-				() => {
-					if (isMountedRef.current) {
+			api.account.GetReferralSetting().then(res => {
+				if (isMountedRef.current) {
+					if (res.data.errorCode === 0) {
+						if (res.data.data.length > 0)
+							setReferralData(res.data.data[0]);
+					} else {
 						setPopBox({
 							isOpen: true,
 							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
+							content: `[${res.data.errorCode}]${res.data.message}`
 						});
 					}
 				}
-			);
+			});
 		}
 	}, [userInfo.isLogin, i18n, setPopBox]);
 
