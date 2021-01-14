@@ -332,7 +332,7 @@ const Panel = () => {
 				</div>
 			</div>
 			{getMsgList.length > 0 ? (
-				{ arr }
+				arr
 			) : (
 				<div className="nodata icon icon-nodata">
 					<div className="txt-white">{i18n.msg_NoData}</div>

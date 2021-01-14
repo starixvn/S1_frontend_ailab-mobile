@@ -1,18 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 import TabPage from "../components/common/tabPage";
-// import path from "../path";
+import path from "../path";
 
 const defTabs = {
-	// default: {
-	// 	to: `/${path.referral.root}`,
-	// 	displayKey: "lbl_ReferFriends",
-	// 	excludeMath: path.referral.sub.history.root
-	// },
-	// History: {
-	// 	to: path.referral.sub.history.root,
-	// 	displayKey: "lbl_ReferralHistory"
-	// }
+	default: {
+		to: `/${path.referral.root}`,
+		displayKey: "lbl_ReferFriends",
+		excludeMath: path.referral.sub.history.root
+	},
+	History: {
+		to: path.referral.sub.history.root,
+		displayKey: "lbl_ReferralHistory"
+	}
 };
 
 const IndexPage = props => {
