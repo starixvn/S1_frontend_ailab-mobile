@@ -93,12 +93,17 @@ const defPlatfrom = [
 		path: path.casino.root,
 		parameter: { ...defGameInfo.casino_ICG },
 		imgName: "icg"
-	}
+	},
 	// {
 	// 	...defGameInfo.Casino_918Kiss,
 	// 	imgName: "kiss",
 	// 	path: path.kiss918.root
-	// }
+	// },
+	{
+		...defGameInfo.poker,
+		parameter: { ...defGameInfo.poker },
+		imgName: "1g"
+	}
 ];
 
 export default ({ langId = "en", isLogin = false }) => {

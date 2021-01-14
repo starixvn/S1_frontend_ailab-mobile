@@ -19,12 +19,15 @@ import casino_JOKER from "../styles/img/casino_JOKER.jpg";
 import casino_CQ9 from "../styles/img/casino_CQ9.jpg";
 import casino_YGG from "../styles/img/casino_YGG.jpg";
 import casino_GPI from "../styles/img/casino_GPI.jpg";
+
 // import casino_KISS from "../styles/img/casino_KISS.jpg";
 import id4d from "../styles/img/id4d.jpg";
 import Keno from "../styles/img/keno.jpg";
 import Lottery from "../styles/img/lottery.jpg";
 import number_game from "../styles/img/number_game.jpg";
 import affiliate from "../styles/img/affiliate.jpg";
+import poker from "../styles/img/poker.jpg";
+
 import { siteInfo } from "../config";
 import fish_GG from "../styles/img/fish_GG.jpg";
 import fish_SG from "../styles/img/fish_SG.jpg";
@@ -293,6 +296,20 @@ const gameList = ({ langId }) => [
 		]
 	},
 	{
+		category: "poker",
+		categoryIcon: "play",
+		translateKey: "lbl_Poker",
+		isNew: true,
+		items: [
+			{
+				tpId: 13,
+				icon: "play",
+				img: poker,
+				spanTextKey: "lbl_Poker"
+			}
+		]
+	},
+	{
 		category: "affiliate",
 		categoryIcon: "affiliate",
 		translateKey: "lbl_Affiliate",
@@ -378,5 +395,6 @@ export const defGameInfo = {
 	ICG_TOWER_OF_SAVIORS: {
 		tpId: 24,
 		gameId: "cmt0001"
-	}
+	},
+	poker: { tpId: 13 }
 };
