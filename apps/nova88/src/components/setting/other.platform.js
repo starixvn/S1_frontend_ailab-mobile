@@ -101,7 +101,6 @@ const defPlatfrom = [
 	// },
 	{
 		...defGameInfo.poker,
-		parameter: { ...defGameInfo.poker },
 		imgName: "1g"
 	}
 ];
