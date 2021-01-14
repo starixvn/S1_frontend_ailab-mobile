@@ -5,13 +5,13 @@ import {
 	userInfoContext,
 	loadingContext
 } from "Context";
+import moment from "moment";
 import { isConvert } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
-import moment from "moment";
 import HistoryFilter from "../common/historyFilter";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import api from "../../service/api";
-import Detail from "./referral.history.detail";
+import { Detail } from "./referral.history.detail";
 
 const Panel = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -28,7 +28,9 @@ const Panel = () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	AUTO_FETCHING_DATA(
@@ -66,7 +68,7 @@ const Panel = () => {
 				.then(
 					response => {
 						if (isMountedRef.current) {
-							const errorCode = response.data.errorCode;
+							const { errorCode } = response.data;
 							if (errorCode !== 0) {
 								setPopBox({
 									isOpen: true,
@@ -104,7 +106,7 @@ const Panel = () => {
 		}
 	};
 
-	let arr = history?.map(data => {
+	const arr = history?.map(data => {
 		return (
 			<Detail
 				key={`referral-history-${data.custId}`}
@@ -122,8 +124,8 @@ const Panel = () => {
 				<div className="recent open">
 					<div className="recentTransactions">
 						<div className="smallTitle">
-							<i className="icon icon-history"></i>
-							{i18n["lbl_TransactionHistory"]}
+							<i className="icon icon-history" />
+							{i18n.lbl_TransactionHistory}
 						</div>
 						<ReloadSpin
 							func={submitHandler.bind(
@@ -138,9 +140,7 @@ const Panel = () => {
 						<div className="infoList">{arr}</div>
 					) : (
 						<div className="nodata icon icon-nodata">
-							<div className="txt-white">
-								{i18n["msg_NoData"]}
-							</div>
+							<div className="txt-white">{i18n.msg_NoData}</div>
 						</div>
 					)}{" "}
 				</div>

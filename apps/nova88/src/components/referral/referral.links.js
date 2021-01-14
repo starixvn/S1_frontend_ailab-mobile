@@ -14,7 +14,9 @@ export default ({ isLogin, i18n, setPopBox }) => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
@@ -48,14 +50,14 @@ export default ({ isLogin, i18n, setPopBox }) => {
 
 	const copyText = colName => {
 		if (colName === "copyToClipboard") {
-			let virtualInput = document.createElement("input");
+			const virtualInput = document.createElement("input");
 			virtualInput.value = i18n.lbl_Referral_Welcome;
 			document.body.appendChild(virtualInput);
 			virtualInput.select();
 			document.execCommand("copy");
 			document.body.removeChild(virtualInput);
 		} else {
-			let copyCol = document.getElementById(colName);
+			const copyCol = document.getElementById(colName);
 			window.getSelection().selectAllChildren(copyCol);
 			document.execCommand("Copy");
 		}
@@ -88,7 +90,8 @@ export default ({ isLogin, i18n, setPopBox }) => {
 					{refLink}
 					<button
 						className="icon icon-files-empty"
-						onClick={copyText.bind(this, "referralLink")}></button>
+						onClick={copyText.bind(this, "referralLink")}
+					/>
 				</div>
 
 				<div className="refMedia">

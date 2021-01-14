@@ -14,7 +14,9 @@ export default ({ userInfo, i18n, _isConvert, setPopBox }) => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
