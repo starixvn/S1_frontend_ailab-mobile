@@ -1,9 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
-import PropTypes from "prop-types";
 import { number_format } from "../common/common";
 import api from "../../service/api";
 
-const Summary = ({ isLogin, i18n, setPopBox, _isConvert }) => {
+export default ({ userInfo, i18n, setPopBox, _isConvert }) => {
 	const isMountedRef = useRef(null);
 	const [summary, setSummary] = useState({});
 
@@ -15,7 +14,7 @@ const Summary = ({ isLogin, i18n, setPopBox, _isConvert }) => {
 	});
 
 	useEffect(() => {
-		if (isLogin === true && isMountedRef.current) {
+		if (userInfo.isLogin === true && isMountedRef.current) {
 			api.account.GetReferralSummary().then(
 				res => {
 					if (isMountedRef.current) {
@@ -41,34 +40,30 @@ const Summary = ({ isLogin, i18n, setPopBox, _isConvert }) => {
 				}
 			);
 		}
-	}, [isLogin, i18n, setPopBox]);
+	}, [userInfo.isLogin, i18n, setPopBox]);
 
 	return (
 		<>
+			<div className="title">{i18n.lbl_ReferralStatus}</div>
 			<div className="achievement">
-				{i18n.lbl_Achievement}
-				<span>
-					{summary.amountCount}/{summary.referralCount}
-				</span>
+				{i18n.lbl_InvitationAccepted}
+				<span>{summary.conditionCount}</span>
 			</div>
 			<div className="achievement">
-				{i18n.lbl_Referral_rewards}
-				<span>{number_format(summary.amountSum, _isConvert)}</span>
+				{i18n.lbl_MissionCompleted}
+				<span>{summary.amountCount}</span>
+			</div>
+			<div className="achievement">
+				{i18n.lbl_NoOfAchievements}
+				<span>{summary.referralCount}</span>
+			</div>
+			<div className="achievement">
+				{i18n.lbl_RewardAmount}
+				<span>
+					{i18n[`Currency_${userInfo.currencyId}`]}{" "}
+					{number_format(summary.amountSum, _isConvert)}
+				</span>
 			</div>
 		</>
 	);
 };
-
-Summary.defaultProps = {
-	_isConvert: false,
-	isLogin: null
-};
-
-Summary.propTypes = {
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	isLogin: PropTypes.bool,
-	setPopBox: PropTypes.func.isRequired,
-	_isConvert: PropTypes.bool
-};
-
-export default Summary;
