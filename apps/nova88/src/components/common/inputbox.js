@@ -56,7 +56,7 @@ Inputbox.defaultProps = {
 	onBlur: null,
 	Warning: {},
 	showTips: false,
-	checked: false,
+	checked: true,
 	ClassName: "",
 	tip: null,
 	Tips: null,

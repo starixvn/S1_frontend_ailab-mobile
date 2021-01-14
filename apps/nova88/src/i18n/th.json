@@ -412,5 +412,8 @@
 	"lbl_InvitationAccepted":"การตอบรับคำแนะนำ",
 	"lbl_MissionCompleted":"การแนะนำสำเร็จ",
 	"lbl_NoOfAchievements":"จำนวนการตอบรับ",
-	"lbl_RewardAmount":"รางวัล"
+	"lbl_RewardAmount":"รางวัล",
+	"lbl_Achievement":"ความสำเร็จ",
+	"lbl_Referral_rewards":"รางวัล",
+	"lbl_Redeposit_Promo":"ทำรายการฝากอีกครั้ง"
 }

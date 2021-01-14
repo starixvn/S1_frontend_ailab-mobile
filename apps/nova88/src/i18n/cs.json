@@ -412,5 +412,8 @@
 	"lbl_InvitationAccepted":"好友已接受邀请",
 	"lbl_MissionCompleted":"任务已完成",
 	"lbl_NoOfAchievements":"您推荐的朋友人数",
-	"lbl_RewardAmount":"奖励金额"
+	"lbl_RewardAmount":"奖励金额",
+	"lbl_Achievement":"绩效",
+	"lbl_Referral_rewards":"奖励",
+	"lbl_Redeposit_Promo":"再存"
 }

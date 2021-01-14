@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Promotion } from "@ailab-mobile/promotion";
+import { Promotion, defNav } from "@ailab-mobile/promotion";
 import config from "Config";
 import path from "Path";
 import { Promotion as uiSetting } from "UISetting";
@@ -20,6 +20,12 @@ export default ({ location = {} }) => {
 			i18n={i18n}
 			setPopBox={setPopBox}
 			location={location}
+			navBar={[
+				defNav.All,
+				defNav.FirstDeposit,
+				defNav.ReDeposit,
+				defNav.SpecialBonus
+			]}
 		/>
 	);
 };

@@ -412,5 +412,9 @@
 	"lbl_InvitationAccepted":"Undangan Diterima",
 	"lbl_MissionCompleted":"Misi selesai",
 	"lbl_NoOfAchievements":"Jumlah Pencapaian",
-	"lbl_RewardAmount":"Hadiah"
+	"lbl_RewardAmount":"Hadiah",
+	"lbl_Achievement":"Prestasi",
+	"lbl_Referral_rewards":"Hadiah",
+	"lbl_Redeposit_Promo":"Deposit ulang"
+
 }

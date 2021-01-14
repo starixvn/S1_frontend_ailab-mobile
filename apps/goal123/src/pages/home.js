@@ -13,12 +13,14 @@ import { readCookie, setCookie } from "../components/common/common";
 import path from "../path";
 import { api_GetWalletInfo } from "../service/api/account";
 import Submenu from "../components/home/submenu";
+import AppDownloadHint, { isIOS } from "../components/home/appDownload";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const [redirectPath, setRedirectPath] = useState(null);
+	const [appHint, setAppHint] = useState(false);
 
 	useEffect(() => {
 		if (redirectPath !== null) {
@@ -108,6 +110,14 @@ const IndexPage = () => {
 		}
 	}, [i18n, setPopBox, userInfo.currencyId, userInfo.userName]);
 
+	useEffect(() => {
+		const cookieName = `appDownloadHint${userInfo.userName}`;
+
+		if (userInfo.userName && readCookie(cookieName) !== "1") {
+			setAppHint(true);
+		}
+	}, [userInfo.currencyId, userInfo.userName]);
+
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
 	) : (
@@ -117,6 +127,14 @@ const IndexPage = () => {
 			<Category />
 			{userInfo.isLogin ? <ShortcutBar /> : null}
 			<Submenu />
+			{!isIOS && appHint ? (
+				<AppDownloadHint
+					i18n={i18n}
+					cookieName={`appDownloadHint${userInfo.userName}`}
+					langId={userInfo.langId}
+					setAppHint={setAppHint}
+				/>
+			) : null}
 		</>
 	);
 };

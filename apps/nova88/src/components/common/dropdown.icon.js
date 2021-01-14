@@ -33,7 +33,7 @@ export class IconDropdown extends Component {
 				: this.props.i18n?.[item.displayKey];
 			return (
 				<Item
-					key={`${this.props.mainKey}-${item.displayKey}`}
+					key={`${this.props.mainKey}-${item.displayKey ?? i}`}
 					displayText={displayText}
 					iconClassName={this.props.options[i].iconClassName}
 					idx={i}
@@ -94,7 +94,10 @@ IconDropdown.propTypes = {
 };
 
 const Item = props => {
-	const handleClick = () => props.onClick(props.idx);
+	const handleClick = e => {
+		e.stopPropagation();
+		props.onClick(props.idx);
+	};
 	return (
 		<div className="dropdown-item" onClick={handleClick}>
 			<i className={props.iconClassName} />

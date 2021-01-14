@@ -1,6 +1,5 @@
 import React, { useState, useContext, Component, useEffect } from "react";
 import { Redirect, Link } from "@reach/router";
-import PropTypes from "prop-types";
 import {
 	i18nContext,
 	navContext,

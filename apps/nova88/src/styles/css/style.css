@@ -4705,11 +4705,11 @@ span.important {
   display: block;
 }
 
-button.icon.icon-icon32px_top, span.icon.icon-icon32px_top {
+button.icon.icon-ranking, span.icon.icon-ranking {
   position: relative;
 }
 
-button.icon.icon-icon32px_top:after, span.icon.icon-icon32px_top:after {
+button.icon.icon-ranking:after, span.icon.icon-ranking:after {
   content: "Live";
   font-family: 'Microsoft YaHei',sans-serif;
   color: white;
@@ -4720,11 +4720,11 @@ button.icon.icon-icon32px_top:after, span.icon.icon-icon32px_top:after {
   padding: 0 1vw;
 }
 
-span.icon.icon-icon32px_top {
+span.icon.icon-ranking {
   position: absolute;
 }
 
-span.icon.icon-icon32px_top:after {
+span.icon.icon-ranking:after {
   content: "Live";
   font-family: 'Microsoft YaHei',sans-serif;
   top: 50%;

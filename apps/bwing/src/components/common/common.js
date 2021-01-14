@@ -110,7 +110,8 @@ export const readCookie = cookieName => {
 };
 
 export const deleteCookie = cookieName => {
-	document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
+	setCookie(cookieName, null, 0);
+	// document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
 };
 
 export const isEventPeriod = () => {

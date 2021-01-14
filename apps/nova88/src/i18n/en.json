@@ -412,6 +412,8 @@
 	"lbl_InvitationAccepted":"Invitation Accepted",
 	"lbl_MissionCompleted":"Mission completed",
 	"lbl_NoOfAchievements":"No. of achievements",
-	"lbl_RewardAmount":"Rewards Amounts"
-
+	"lbl_RewardAmount":"Rewards Amounts",
+	"lbl_Achievement":"Achievement",
+	"lbl_Referral_rewards":"Rewards",
+	"lbl_Redeposit_Promo":"Redeposit"
 }
