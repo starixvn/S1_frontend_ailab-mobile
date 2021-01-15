@@ -209,6 +209,8 @@ class CateGoryContent extends Component {
 					isOpen={`${_open ? " open" : ""}`}
 					translation={this.props.i18n[item.translateKey]}
 					iconClassName={item.iconClassName}
+					subIcon={item.items.filter(subItem => subItem.eventIcon)}
+					categoryEventIcon={item.categoryEventIcon}
 				/>
 			);
 
@@ -251,7 +253,8 @@ class CateGoryContent extends Component {
 								img={subItem.img}
 								spanText={this.props.i18n[subItem.spanTextKey]}
 								icon={subItem.icon}
-								isNew={subItem.isNew}
+								// isNew={subItem.isNew}
+								eventIcon={subItem.eventIcon}
 							/>
 						);
 					}
@@ -267,7 +270,8 @@ class CateGoryContent extends Component {
 							spanText={this.props.i18n[subItem.spanTextKey]}
 							icon={subItem.icon}
 							href={item.href}
-							isNew={subItem.isNew}
+							// isNew={subItem.isNew}
+							eventIcon={subItem.eventIcon}
 						/>
 					);
 				});
@@ -353,8 +357,13 @@ const ProductItem = ({
 	img,
 	icon,
 	spanText,
-	isNew
+	// isNew,
+	eventIcon
 }) => {
+	let showingEventIcon = "";
+	if (eventIcon) {
+		showingEventIcon = eventIcon.find(obj => obj.inPeriod === true).icon;
+	}
 	return (
 		<a
 			href={href}
@@ -362,7 +371,8 @@ const ProductItem = ({
 			onClick={!href ? clickGame : null}
 			ref={_ref}
 			className={`${isShow ? "open" : ""}${
-				isNew ? " icon icon-new" : ""
+				// isNew ? " icon icon-new" : ""
+				eventIcon ? ` icon ${showingEventIcon}` : ""
 			}`}>
 			<img src={img} alt={icon ?? ""} />
 			{spanText ? (
@@ -401,15 +411,21 @@ const ProductLinkItem = ({
 	icon,
 	spanText,
 	className = "",
-	isNew
+	// isNew,
+	eventIcon
 }) => {
+	let showingEventIcon = "";
+	if (eventIcon) {
+		showingEventIcon = eventIcon.find(obj => obj.inPeriod === true).icon;
+	}
 	return (
 		<Link
 			to={`/${to}`}
 			state={parameter}
 			ref={_ref}
 			className={`${className}${isShow ? " open" : ""}${
-				isNew ? " icon icon-new" : ""
+				// isNew ? " icon icon-new" : ""
+				eventIcon ? ` icon ${showingEventIcon}` : ""
 			}`}>
 			<img src={img} alt={icon ?? ""} />
 			{spanText ? (

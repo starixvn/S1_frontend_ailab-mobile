@@ -28,6 +28,8 @@ import fish_FOS from "../styles/img/fish_ICG_FOS.jpg";
 import fish_TAP from "../styles/img/fish_ICG_TTAT.jpg";
 import fish_TOS from "../styles/img/fish_ICG_TOS.jpg";
 
+import { isEventPeriod } from "../components/common/common";
+
 export const defGameInfo = {
 	Sports: { tpId: 1, gameId: 1 },
 	CockFighting: { tpId: 17 },
@@ -81,6 +83,14 @@ export const defGameInfo = {
 		tpId: 24,
 		gameId: "cmt0001"
 	}
+};
+
+const defIconType = {
+	new: "icon-new"
+};
+
+const eventTime = {
+	new_ICG: { endDate: "2021/02/08 11:00:00" }
 };
 
 const gameList = langId => [
@@ -158,22 +168,46 @@ const gameList = langId => [
 			{
 				...defGameInfo.ICG_DRAGONBALL_FISHING,
 				img: fish_DBF,
-				isNew: true
+				// isNew: true,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_ICG)
+					}
+				]
 			},
 			{
 				...defGameInfo.ICG_FISHING_OF_SAVIORS,
 				img: fish_FOS,
-				isNew: true
+				// isNew: true,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_ICG)
+					}
+				]
 			},
 			{
 				...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
 				img: fish_TAP,
-				isNew: true
+				// isNew: true,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_ICG)
+					}
+				]
 			},
 			{
 				...defGameInfo.ICG_TOWER_OF_SAVIORS,
 				img: fish_TOS,
-				isNew: true
+				// isNew: true,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_ICG)
+					}
+				]
 			},
 			{
 				...defGameInfo.Fishing,
