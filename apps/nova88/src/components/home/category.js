@@ -195,7 +195,10 @@ class CateGoryContent extends Component {
 						}
 						isOpen={`${_open ? " open" : ""}`}
 						translation={this.props.i18n[item.translateKey]}
-						isNew={item.isNew}
+						subIcon={item.items.filter(
+							subItem => subItem.eventIcon
+						)}
+						categoryEventIcon={item.categoryEventIcon}
 					/>
 				);
 
@@ -237,7 +240,7 @@ class CateGoryContent extends Component {
 									to={path.casino.root}
 									parameter={subItem.parameter}
 									img={subItem.img}
-									isNew={subItem.isNew}
+									eventIcon={subItem.eventIcon}
 								/>
 							);
 						}
@@ -293,12 +296,28 @@ class CateGoryContent extends Component {
 }
 
 const CategoryItem = props => {
+	let showingEventIcon = "";
+	if (props.subIcon.length > 0) {
+		const categoryIdx = props.subIcon.findIndex(obj =>
+			obj?.eventIcon.find(item => item.inPeriod === true)
+		);
+		showingEventIcon = props.subIcon[categoryIdx].eventIcon.find(
+			item => item.inPeriod === true
+		)?.icon;
+	}
 	return (
 		<button
 			className={`icon icon-${props.categoryIcon}${props.isOpen}`}
 			onClick={props.onClick}>
 			<div>{props.translation}</div>
-			{props.isNew ? <div className="icon icon-new" /> : null}
+			{props.subIcon.length > 0 && showingEventIcon ? (
+				<i className={`icon ${showingEventIcon}`} />
+			) : null}
+			{props.categoryEventIcon
+				?.filter(obj => obj.inPeriod)
+				?.map(obj => {
+					return <i className={`icon ${obj.icon}`} key={obj.icon} />;
+				})}
 		</button>
 	);
 };
@@ -311,7 +330,16 @@ const ProductItem = props => {
 			rel="noreferrer"
 			ref={props._ref}
 			className={props.isShow ? "open" : ""}>
-			{props.isNew ? <i className="icon icon-new" /> : null}
+			{props.eventIcon
+				?.filter(obj => obj.inPeriod)
+				?.map(obj => {
+					return (
+						<i
+							className={`icon ${obj.icon}`}
+							key={`eventIcon-${obj.icon}`}
+						/>
+					);
+				})}
 			<img src={props.img} alt={props.icon ?? ""} />
 			{props.spanText ? (
 				<span className={`icon icon-${props.icon}`}>
@@ -327,7 +355,16 @@ const ProductItem = props => {
 			onClick={props.clickGame}
 			ref={props._ref}
 			className={props.isShow ? "open" : ""}>
-			{props.isNew ? <i className="icon icon-new" /> : null}
+			{props.eventIcon
+				?.filter(obj => obj.inPeriod)
+				?.map(obj => {
+					return (
+						<i
+							className={`icon ${obj.icon}`}
+							key={`eventIcon-${obj.icon}`}
+						/>
+					);
+				})}
 			<img src={props.img} alt={props.icon ?? ""} />
 			{props.spanText ? (
 				<span className={`icon icon-${props.icon}`}>
@@ -355,7 +392,16 @@ const ProductLinkItem = props => {
 			state={props.parameter}
 			ref={props._ref}
 			className={props.isShow ? "open" : ""}>
-			{props.isNew ? <i className="icon icon-new" /> : null}
+			{props.eventIcon
+				?.filter(obj => obj.inPeriod)
+				?.map(obj => {
+					return (
+						<i
+							className={`icon ${obj.icon}`}
+							key={`eventIcon-${obj.icon}`}
+						/>
+					);
+				})}
 			<img src={props.img} alt={props.icon ?? ""} />
 		</Link>
 	);
