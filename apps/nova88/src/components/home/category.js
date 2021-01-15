@@ -323,6 +323,11 @@ const CategoryItem = props => {
 };
 
 const ProductItem = props => {
+	let showingEventIcon = "";
+	if (props.eventIcon) {
+		showingEventIcon = props.eventIcon.find(obj => obj.inPeriod === true)
+			.icon;
+	}
 	const content = props.href ? (
 		<a
 			href={props.href}
@@ -330,16 +335,9 @@ const ProductItem = props => {
 			rel="noreferrer"
 			ref={props._ref}
 			className={props.isShow ? "open" : ""}>
-			{props.eventIcon
-				?.filter(obj => obj.inPeriod)
-				?.map(obj => {
-					return (
-						<i
-							className={`icon ${obj.icon}`}
-							key={`eventIcon-${obj.icon}`}
-						/>
-					);
-				})}
+			{showingEventIcon !== "" ? (
+				<i className={`icon ${showingEventIcon}`} />
+			) : null}
 			<img src={props.img} alt={props.icon ?? ""} />
 			{props.spanText ? (
 				<span className={`icon icon-${props.icon}`}>
@@ -355,16 +353,9 @@ const ProductItem = props => {
 			onClick={props.clickGame}
 			ref={props._ref}
 			className={props.isShow ? "open" : ""}>
-			{props.eventIcon
-				?.filter(obj => obj.inPeriod)
-				?.map(obj => {
-					return (
-						<i
-							className={`icon ${obj.icon}`}
-							key={`eventIcon-${obj.icon}`}
-						/>
-					);
-				})}
+			{showingEventIcon !== "" ? (
+				<i className={`icon ${showingEventIcon}`} />
+			) : null}
 			<img src={props.img} alt={props.icon ?? ""} />
 			{props.spanText ? (
 				<span className={`icon icon-${props.icon}`}>
@@ -386,22 +377,20 @@ const ProductItem = props => {
 };
 
 const ProductLinkItem = props => {
+	let showingEventIcon = "";
+	if (props.eventIcon) {
+		showingEventIcon = props.eventIcon.find(obj => obj.inPeriod === true)
+			.icon;
+	}
 	return (
 		<Link
 			to={`/${props.to}`}
 			state={props.parameter}
 			ref={props._ref}
 			className={props.isShow ? "open" : ""}>
-			{props.eventIcon
-				?.filter(obj => obj.inPeriod)
-				?.map(obj => {
-					return (
-						<i
-							className={`icon ${obj.icon}`}
-							key={`eventIcon-${obj.icon}`}
-						/>
-					);
-				})}
+			{showingEventIcon !== "" ? (
+				<i className={`icon ${showingEventIcon}`} />
+			) : null}
 			<img src={props.img} alt={props.icon ?? ""} />
 		</Link>
 	);
