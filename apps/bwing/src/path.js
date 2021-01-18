@@ -130,6 +130,6 @@ export default {
 		root: "howToPlay"
 	},
 	ranking: {
-		root: "ranking"
+		root: "leaderBoard"
 	}
 };

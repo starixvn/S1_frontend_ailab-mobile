@@ -121,6 +121,6 @@ export default {
 		root: "whoami"
 	},
 	ranking: {
-		root: "ranking"
+		root: "leaderBoard"
 	}
 };
