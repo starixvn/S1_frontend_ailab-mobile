@@ -19,7 +19,9 @@ const Prize = ({ currencyId, category, langId, i18n }) => {
 		? currCustomMapping[currencyId] ?? i18n[`Currency_${currencyId}`]
 		: langMappingCurr[langId];
 
-	return defPrize({ i18n })[currency][category];
+	return defPrize({ i18n })[currency]
+		? defPrize({ i18n })[currency][category]
+		: defPrize({ i18n }).MYR[category];
 };
 
 const PrizeList = ({ userInfo, category, i18n }) => {
