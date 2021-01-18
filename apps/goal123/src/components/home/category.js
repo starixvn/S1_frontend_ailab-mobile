@@ -1,5 +1,6 @@
 import React, { useState, useContext, Component, useEffect } from "react";
 import { Redirect, Link } from "@reach/router";
+import PropTypes from "prop-types";
 import {
 	i18nContext,
 	navContext,
@@ -54,7 +55,7 @@ const Category = props => {
 						setCasinoTpIds(res.data.data);
 					}
 				},
-				err => {
+				() => {
 					if (mounted) {
 						setPopBox({
 							isOpen: true,
@@ -85,14 +86,6 @@ const Category = props => {
 		/>
 	);
 };
-
-// Category.defaultProps = {
-// 	shortcutBarLocate: ""
-// };
-
-// Category.propTypes = {
-// 	shortcutBarLocate: PropTypes.string
-// };
 
 class CateGoryContent extends Component {
 	constructor(props) {
@@ -208,9 +201,8 @@ class CateGoryContent extends Component {
 					}
 					isOpen={`${_open ? " open" : ""}`}
 					translation={this.props.i18n[item.translateKey]}
-					iconClassName={item.iconClassName}
-					subIcon={item.items.filter(subItem => subItem.eventIcon)}
 					categoryEventIcon={item.categoryEventIcon}
+					subIcon={item.items.filter(subItem => subItem.eventIcon)}
 				/>
 			);
 
@@ -253,7 +245,6 @@ class CateGoryContent extends Component {
 								img={subItem.img}
 								spanText={this.props.i18n[subItem.spanTextKey]}
 								icon={subItem.icon}
-								// isNew={subItem.isNew}
 								eventIcon={subItem.eventIcon}
 							/>
 						);
@@ -270,7 +261,6 @@ class CateGoryContent extends Component {
 							spanText={this.props.i18n[subItem.spanTextKey]}
 							icon={subItem.icon}
 							href={item.href}
-							// isNew={subItem.isNew}
 							eventIcon={subItem.eventIcon}
 						/>
 					);
@@ -313,41 +303,63 @@ class CateGoryContent extends Component {
 	}
 }
 
-// CateGoryContent.defaultProps = {
-// 	userCurrencyId: null,
-// 	casinoTpIds: null
-// };
+CateGoryContent.defaultProps = {
+	userCurrencyId: null,
+	casinoTpIds: null
+};
 
-// CateGoryContent.propTypes = {
-// 	langId: PropTypes.string.isRequired,
-// 	setNav: PropTypes.func.isRequired,
-// 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-// 	userCurrencyId: PropTypes.number,
-// 	casinoTpIds: PropTypes.arrayOf(PropTypes.any),
-// 	clickGame: PropTypes.func.isRequired
-// };
+CateGoryContent.propTypes = {
+	langId: PropTypes.string.isRequired,
+	setNav: PropTypes.func.isRequired,
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	userCurrencyId: PropTypes.number,
+	casinoTpIds: PropTypes.arrayOf(PropTypes.any),
+	clickGame: PropTypes.func.isRequired
+};
 
-const CategoryItem = ({ iconClassName = "", isOpen, onClick, translation }) => {
+const CategoryItem = ({
+	categoryEventIcon = [],
+	isOpen,
+	onClick,
+	translation,
+	subIcon
+}) => {
+	let showingEventIcon = "";
+	if (subIcon.length > 0) {
+		const categoryIdx = subIcon.findIndex(obj =>
+			obj?.eventIcon.find(item => item.inPeriod === true)
+		);
+		showingEventIcon = subIcon[categoryIdx].eventIcon.find(
+			item => item.inPeriod === true
+		)?.icon;
+	} else if (categoryEventIcon.length > 0) {
+		showingEventIcon = categoryEventIcon.find(obj => obj.inPeriod === true)
+			.icon;
+	}
 	return (
 		<button
-			className={`${iconClassName}${isOpen ? " open" : ""}`}
+			className={`${`icon ${
+				showingEventIcon !== "" ? showingEventIcon : ""
+			}`}${isOpen ? " open" : ""}`}
 			onClick={onClick}>
 			<div>{translation?.toUpperCase()}</div>
 		</button>
 	);
 };
 
-// CategoryItem.defaultProps = {
-// 	iconClassName: "",
-// 	translation: ""
-// };
+CategoryItem.defaultProps = {
+	categoryEventIcon: [],
+	translation: "",
+	subIcon: []
+};
 
-// CategoryItem.propTypes = {
-// 	iconClassName: PropTypes.string,
-// 	isOpen: PropTypes.string.isRequired,
-// 	onClick: PropTypes.func.isRequired,
-// 	translation: PropTypes.string
-// };
+CategoryItem.propTypes = {
+	categoryEventIcon: PropTypes.arrayOf(PropTypes.any),
+	isOpen: PropTypes.string.isRequired,
+	onClick: PropTypes.func.isRequired,
+	translation: PropTypes.string,
+	subIcon: PropTypes.arrayOf(PropTypes.any)
+};
 
 const ProductItem = ({
 	href,
@@ -357,11 +369,10 @@ const ProductItem = ({
 	img,
 	icon,
 	spanText,
-	// isNew,
 	eventIcon
 }) => {
 	let showingEventIcon = "";
-	if (eventIcon) {
+	if (eventIcon.length > 0) {
 		showingEventIcon = eventIcon.find(obj => obj.inPeriod === true).icon;
 	}
 	return (
@@ -382,25 +393,25 @@ const ProductItem = ({
 	);
 };
 
-// ProductItem.defaultProps = {
-// 	href: "",
-// 	_ref: {},
-// 	isShow: null,
-// 	icon: "",
-// 	spanText: "",
-// 	isNew: null
-// };
+ProductItem.defaultProps = {
+	href: "",
+	_ref: {},
+	isShow: null,
+	icon: "",
+	spanText: "",
+	eventIcon: []
+};
 
-// ProductItem.propTypes = {
-// 	href: PropTypes.string,
-// 	clickGame: PropTypes.func.isRequired,
-// 	_ref: PropTypes.objectOf(PropTypes.any),
-// 	isShow: PropTypes.bool,
-// 	img: PropTypes.string.isRequired,
-// 	icon: PropTypes.string,
-// 	spanText: PropTypes.string,
-// 	isNew: PropTypes.bool
-// };
+ProductItem.propTypes = {
+	href: PropTypes.string,
+	clickGame: PropTypes.func.isRequired,
+	_ref: PropTypes.objectOf(PropTypes.any),
+	isShow: PropTypes.bool,
+	img: PropTypes.string.isRequired,
+	icon: PropTypes.string,
+	spanText: PropTypes.string,
+	eventIcon: PropTypes.arrayOf(PropTypes.any)
+};
 
 const ProductLinkItem = ({
 	to,
@@ -411,11 +422,10 @@ const ProductLinkItem = ({
 	icon,
 	spanText,
 	className = "",
-	// isNew,
 	eventIcon
 }) => {
 	let showingEventIcon = "";
-	if (eventIcon) {
+	if (eventIcon.length > 0) {
 		showingEventIcon = eventIcon.find(obj => obj.inPeriod === true).icon;
 	}
 	return (
@@ -424,7 +434,6 @@ const ProductLinkItem = ({
 			state={parameter}
 			ref={_ref}
 			className={`${className}${isShow ? " open" : ""}${
-				// isNew ? " icon icon-new" : ""
 				eventIcon ? ` icon ${showingEventIcon}` : ""
 			}`}>
 			<img src={img} alt={icon ?? ""} />
@@ -435,27 +444,27 @@ const ProductLinkItem = ({
 	);
 };
 
-// ProductLinkItem.defaultProps = {
-// 	parameter: {},
-// 	_ref: null,
-// 	isShow: null,
-// 	icon: "",
-// 	spanText: "",
-// 	className: "",
-// 	isNew: null
-// };
+ProductLinkItem.defaultProps = {
+	parameter: {},
+	_ref: null,
+	isShow: null,
+	icon: "",
+	spanText: "",
+	className: "",
+	eventIcon: []
+};
 
-// ProductLinkItem.propTypes = {
-// 	to: PropTypes.string.isRequired,
-// 	parameter: PropTypes.objectOf(PropTypes.number),
-// 	_ref: PropTypes.objectOf(PropTypes.any),
-// 	isShow: PropTypes.bool,
-// 	img: PropTypes.string.isRequired,
-// 	icon: PropTypes.string,
-// 	spanText: PropTypes.string,
-// 	className: PropTypes.string,
-// 	isNew: PropTypes.bool
-// };
+ProductLinkItem.propTypes = {
+	to: PropTypes.string.isRequired,
+	parameter: PropTypes.objectOf(PropTypes.number),
+	_ref: PropTypes.objectOf(PropTypes.any),
+	isShow: PropTypes.bool,
+	img: PropTypes.string.isRequired,
+	icon: PropTypes.string,
+	spanText: PropTypes.string,
+	className: PropTypes.string,
+	eventIcon: PropTypes.arrayOf(PropTypes.any)
+};
 
 const ComingSoonItem = ({ isShow, img }) => {
 	return (
@@ -465,13 +474,13 @@ const ComingSoonItem = ({ isShow, img }) => {
 	);
 };
 
-// ComingSoonItem.defaultProps = {
-// 	isShow: null
-// };
+ComingSoonItem.defaultProps = {
+	isShow: null
+};
 
-// ComingSoonItem.propTypes = {
-// 	isShow: PropTypes.bool,
-// 	img: PropTypes.string.isRequired
-// };
+ComingSoonItem.propTypes = {
+	isShow: PropTypes.bool,
+	img: PropTypes.string.isRequired
+};
 
 export default Category;
