@@ -50,7 +50,7 @@ const Panel = ({ ImgFolder = [], filterHideInHome = false }) => {
 		let mounted = true;
 
 		const getBanner = async () => {
-			await setBanner([]);
+			setBanner([]);
 			try {
 				ImgFolder.forEach(async BannerType => {
 					const res = await api.site.GetBannerV2({
@@ -76,7 +76,7 @@ const Panel = ({ ImgFolder = [], filterHideInHome = false }) => {
 		};
 	}, [userInfo, ImgFolder, filterHideInHome]);
 
-	const rows = banner?.map((b, b_idx) => {
+	const rows = banner?.map((b, bIdx) => {
 		let redirectLink = null;
 
 		if (b.actionMode === api.site.defBannerActionMode.GoToBonus) {
@@ -92,9 +92,7 @@ const Panel = ({ ImgFolder = [], filterHideInHome = false }) => {
 
 		if (redirectLink) {
 			return (
-				<Link
-					key={`${userInfo.langId}-${b.img}-${b_idx}`}
-					to={redirectLink}>
+				<Link key={`${userInfo.langId}-${bIdx}`} to={redirectLink}>
 					<img
 						src={b.bannerMobileUrl}
 						className="banner"
@@ -106,12 +104,12 @@ const Panel = ({ ImgFolder = [], filterHideInHome = false }) => {
 
 		return (
 			<button
-				key={`${userInfo.langId}-${b_idx}`}
+				key={`${userInfo.langId}-${bIdx}`}
 				onClick={ClickLink.bind(this, {
 					...b,
 					isLogin: userInfo.isLogin,
-					setNav,
-					lang: userInfo.langId
+					lang: userInfo.langId,
+					setNav
 				})}>
 				<img
 					src={b.bannerMobileUrl}
