@@ -86,10 +86,12 @@ export const defGameInfo = {
 };
 
 const defIconType = {
+	ranking: "icon-live RANKING",
 	new: "icon-new"
 };
 
 const eventTime = {
+	ranking: { startDate: "2021/01/01 12:00:00" },
 	new_ICG: { endDate: "2021/02/08 11:00:00" }
 };
 
@@ -158,7 +160,6 @@ const gameList = langId => [
 		]
 	},
 	{
-		iconClassName: "icon icon-new",
 		category: "fishing",
 		categoryIcon: "game",
 		className: "casinoList",
@@ -168,7 +169,6 @@ const gameList = langId => [
 			{
 				...defGameInfo.ICG_DRAGONBALL_FISHING,
 				img: fish_DBF,
-				// isNew: true,
 				eventIcon: [
 					{
 						icon: defIconType.new,
@@ -179,7 +179,6 @@ const gameList = langId => [
 			{
 				...defGameInfo.ICG_FISHING_OF_SAVIORS,
 				img: fish_FOS,
-				// isNew: true,
 				eventIcon: [
 					{
 						icon: defIconType.new,
@@ -190,7 +189,6 @@ const gameList = langId => [
 			{
 				...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
 				img: fish_TAP,
-				// isNew: true,
 				eventIcon: [
 					{
 						icon: defIconType.new,
@@ -201,7 +199,6 @@ const gameList = langId => [
 			{
 				...defGameInfo.ICG_TOWER_OF_SAVIORS,
 				img: fish_TOS,
-				// isNew: true,
 				eventIcon: [
 					{
 						icon: defIconType.new,
@@ -237,7 +234,12 @@ const gameList = langId => [
 		]
 	},
 	{
-		iconClassName: "icon icon-new",
+		categoryEventIcon: [
+			{
+				icon: defIconType.new,
+				inPeriod: isEventPeriod(eventTime.new_ICG)
+			}
+		],
 		category: "slots",
 		categoryIcon: "casino",
 		translateKey: "lbl_Slots",
@@ -309,7 +311,12 @@ const gameList = langId => [
 		category: "ranking",
 		categoryIcon: "icon32px_top",
 		translateKey: "lbl_Ranking",
-		iconClassName: "icon icon-live RANKING",
+		categoryEventIcon: [
+			{
+				icon: defIconType.ranking,
+				inPeriod: isEventPeriod(eventTime.ranking)
+			}
+		],
 		items: [
 			{
 				icon: "icon32px_top",
