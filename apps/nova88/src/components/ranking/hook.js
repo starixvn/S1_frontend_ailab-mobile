@@ -15,19 +15,30 @@ const SetUpdTime = () => {
 	);
 };
 
+const handleEventCode = isLastEvent => {
+	const defEventCode = {
+		current: "202101",
+		prev: "xmas2020"
+	};
+
+	return isLastEvent ? defEventCode.prev : defEventCode.current;
+};
+
 export const useGetRanking = ({
 	isOpen,
 	selected,
 	BeforeDays = 0,
 	isLogin,
 	userName,
-	setLoading
+	setLoading,
+	isLastEvent = false
 }) => {
 	const [datas, setDatas] = useState([]);
 	const [lastUpdTime, setLastUpdTime] = useState(SetUpdTime());
 
 	useEffect(() => {
 		if (isOpen && isLogin) {
+			const EventCode = handleEventCode(isLastEvent);
 			const lBCategoryId = defBtns[selected]?.lBCategoryId;
 			const beforeDays = isNaN(BeforeDays)
 				? Number(defDayBtns.Yesterday.value)
@@ -37,18 +48,20 @@ export const useGetRanking = ({
 				setLoading(true);
 				try {
 					const TopNum = 10;
-					const res = await api.events.GetLeaderboardList({
+					const res = await api.events.GetLeaderboardListV2({
 						lBCategoryId,
 						TopNum,
-						BeforeDays: beforeDays
+						BeforeDays: beforeDays,
+						EventCode
 					});
 
 					if (res.data.errorCode === 0) {
 						const rankDatas = res.data.data;
 						if (rankDatas?.length > 0) {
-							const custRankRes = await api.events.GetCustRank({
+							const custRankRes = await api.events.GetCustRankV2({
 								LBCategoryId: lBCategoryId,
-								BeforeDays: beforeDays
+								BeforeDays: beforeDays,
+								EventCode
 							});
 
 							if (custRankRes.data.errorCode === 0) {
@@ -97,7 +110,16 @@ export const useGetRanking = ({
 
 			GetRankingDatas();
 		}
-	}, [isOpen, selected, setDatas, BeforeDays, isLogin, userName]);
+	}, [
+		isOpen,
+		selected,
+		setDatas,
+		BeforeDays,
+		isLogin,
+		userName,
+		setLoading,
+		isLastEvent
+	]);
 
 	return { datas, lastUpdTime };
 };

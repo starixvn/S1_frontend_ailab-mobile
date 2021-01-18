@@ -6,7 +6,13 @@ import { defBtnsOfCategory, defDayBtns } from "./def";
 import BtnBar from "../common/btnBar";
 import { loadingContext } from "../common/context";
 
-const Records = ({ isOpen, i18n, userInfo: { isLogin, userName } }) => {
+const Records = ({
+	isOpen,
+	i18n,
+	userInfo: { isLogin, userName },
+	isLastEvent = false,
+	title = ""
+}) => {
 	const { loading, setLoading } = useContext(loadingContext);
 	const { selected, handleSelect } = useHandleSelect({
 		defaultSelect: defBtnsOfCategory.Sports.value,
@@ -16,15 +22,16 @@ const Records = ({ isOpen, i18n, userInfo: { isLogin, userName } }) => {
 	const { datas, lastUpdTime } = useGetRanking({
 		isOpen,
 		selected,
-		BeforeDays: selectedDay,
+		BeforeDays: isLastEvent ? 0 : selectedDay,
 		isLogin,
 		userName,
-		setLoading
+		setLoading,
+		isLastEvent
 	});
 
 	return (
 		<div className={`records${isOpen ? " open" : ""}`}>
-			<div className="title">{i18n.lbl_Records}</div>
+			<div className="title">{title}</div>
 			<BtnBar
 				title={i18n.lbl_Game_type}
 				i18n={i18n}
@@ -34,15 +41,18 @@ const Records = ({ isOpen, i18n, userInfo: { isLogin, userName } }) => {
 				defBtns={defBtnsOfCategory}
 				isLogin={isLogin}
 			/>
-			<BtnBar
-				title={i18n.lbl_Date}
-				i18n={i18n}
-				selected={selectedDay}
-				handleSelect={handleSelectDay}
-				mainKey="leader-board-records-dayBtnBar"
-				defBtns={defDayBtns}
-			/>
+			{isLastEvent ? null : (
+				<BtnBar
+					title={i18n.lbl_Date}
+					i18n={i18n}
+					selected={selectedDay}
+					handleSelect={handleSelectDay}
+					mainKey="leader-board-records-dayBtnBar"
+					defBtns={defDayBtns}
+				/>
+			)}
 			<RankList
+				isLastEvent={isLastEvent}
 				loading={loading}
 				i18n={i18n}
 				datas={datas}

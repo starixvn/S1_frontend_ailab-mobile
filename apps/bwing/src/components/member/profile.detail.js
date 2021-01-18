@@ -48,9 +48,7 @@ const Panel = () => {
 	const EditField = (col, e) => {
 		let val = e.target.value;
 
-		if (col === "AccountName") {
-			val = val.replace(/[^a-zA-Z\s]/g, "");
-		} else if (col === "PhoneNo") {
+		if (col === "PhoneNo") {
 			val = val.replace(/^[^\d]+/g, "");
 		}
 

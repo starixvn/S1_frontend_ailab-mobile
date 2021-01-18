@@ -52,7 +52,10 @@ const RankItems = ({ datas, selected }) =>
 		);
 	});
 
-const RankList = ({ loading, i18n = {}, datas, selected, lastUpdTime }) => {
+const RankList = (
+	{ loading, i18n = {}, datas, selected, lastUpdTime },
+	isLastEvent
+) => {
 	return (
 		<>
 			{!loading && (!datas || datas.length === 0) ? (
@@ -69,12 +72,14 @@ const RankList = ({ loading, i18n = {}, datas, selected, lastUpdTime }) => {
 					<RankItems datas={datas} selected={selected} />
 				</div>
 			)}
-			<div className="text">
-				{i18n.lbl_LastUpdTime?.replace(
-					"{{time}}",
-					moment(lastUpdTime).format("YYYY-MM-DD H:mm:ss")
-				)}
-			</div>
+			{isLastEvent ? null : (
+				<div className="text">
+					{i18n.lbl_LastUpdTime?.replace(
+						"{{time}}",
+						moment(lastUpdTime).format("YYYY-MM-DD H:mm:ss")
+					)}
+				</div>
+			)}
 		</>
 	);
 };
