@@ -91,8 +91,15 @@ const Panel = ({ ImgFolder = [], filterHideInHome = false }) => {
 		}
 
 		if (redirectLink) {
+			const parameter =
+				b.urlRouter === path.casino.root
+					? { tpId: Number(b.tpId) }
+					: null;
 			return (
-				<Link key={`${userInfo.langId}-${bIdx}`} to={redirectLink}>
+				<Link
+					state={parameter}
+					key={`${userInfo.langId}-${bIdx}`}
+					to={redirectLink}>
 					<img
 						src={b.bannerMobileUrl}
 						className="banner"
