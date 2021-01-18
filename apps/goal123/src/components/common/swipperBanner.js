@@ -2,135 +2,128 @@ import React, { useEffect, useState, useContext } from "react";
 import PropTypes from "prop-types";
 import Swiper from "react-id-swiper";
 import { Link } from "@reach/router";
-import config from "../../config";
-import { api_GetBanner } from "../../service/api/site";
 import { userInfoContext, navContext, defNavPanel } from "./context";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import path from "../../path";
+import {
+	api_site_GetBannerV2,
+	defBannerActionMode
+} from "../../service/api/site";
 
-export const ClickLink = (
+export const ClickLink = ({
 	tpId,
 	gameId,
+	actionMode,
+	bannerLink,
 	lang,
-	href,
-	isOuterLink,
-	urlWithLang,
 	isLogin,
-	setNav,
-	matchid
-) => {
-	if (href === "Casino/Lobby") {
-		window.location.href = `/${path.casino.root}${tpId ? `/${tpId}` : ""}`;
-	} else if (tpId === null) {
-		if (href === "Promotion/Index") {
-			window.location.href = `/${path.promotion.root}`;
-		} else if (href === "leaderBoard") {
-			window.location.href = `/${path.ranking.root}`;
-		} else {
-			window.open(
-				isOuterLink
-					? href
-					: `${config.t_and_cURL}${
-							urlWithLang ? `/${lang}` : ""
-					  }/${href}`,
-				"_blank"
-			);
-		}
-	} else {
+	setNav
+}) => {
+	const HandleLogin = () => {
+		setNav(defNavPanel.login);
+	};
+
+	if (actionMode === defBannerActionMode.OpenWindow) {
+		window.open(bannerLink, "_blank");
+	} else if (actionMode === defBannerActionMode.RedirectPage) {
+		window.location.href = bannerLink;
+	} else if (actionMode === defBannerActionMode.RedirectPageOfThisSite) {
+		HandleLogin();
+	} else if (actionMode === defBannerActionMode.GoToGame) {
 		GET_ENTER_PAGE({
 			langId: lang,
 			tpId,
 			gameId,
-			matchid,
 			isLogin: isLogin === true,
-			loginCallback: () => {
-				setNav(defNavPanel.login);
-			}
+			loginCallback: HandleLogin
 		});
 	}
 };
 
-const Panel = ({ ImgFolder, filterHideInHome = false }) => {
+const NeedLoginRoute = [];
+
+const Panel = ({ ImgFolder = [], filterHideInHome = false }) => {
 	const [banner, setBanner] = useState([]);
 	const { userInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
 
 	useEffect(() => {
 		let mounted = true;
-		if (ImgFolder) {
-			const fetchData = folder => {
-				return api_GetBanner(
-					folder,
-					"",
-					userInfo.langId,
-					filterHideInHome
-				);
-			};
 
-			Promise.all(ImgFolder?.map(m => fetchData(m))).then(res => {
-				let result = [];
-				res.forEach((r, idx) => {
-					if (r.data.errorCode === 0 && mounted) {
-						result = [
-							...result,
-							...r.data.data?.map(d => {
-								const imgFolder = d.imgFolder
-									? d.imgFolder
-									: ImgFolder[idx];
-								return { ...d, imgFolder };
-							})
-						];
+		const getBanner = async () => {
+			setBanner([]);
+			try {
+				ImgFolder.forEach(async BannerType => {
+					const res = await api_site_GetBannerV2({
+						lang: userInfo.langId,
+						BannerType
+					});
+
+					if (res.data.errorCode === 0 && mounted) {
+						setBanner(prev => [...prev, ...res.data.data]);
 					}
 				});
 
-				setBanner(result);
-			});
-		}
+				return true;
+			} catch (error) {
+				return false;
+			}
+		};
+
+		getBanner();
 
 		return () => {
 			mounted = false;
 		};
 	}, [userInfo, ImgFolder, filterHideInHome]);
 
-	const rows = banner?.map((b, Idx) => {
-		const _imgFolder = b.imgFolder ?? ImgFolder;
-		const lang =
-			b.fromDB || b.lang?.includes(userInfo.langId)
-				? userInfo.langId
-				: "en";
-		const actionLinkByLang = b.fromDB
-			? null
-			: b.actionLinkByLang?.find(a => a.lang === userInfo.langId);
-		const actionLink = actionLinkByLang
-			? actionLinkByLang.link
-			: b.actionLink;
-		const imgSRC = b.fromDB
-			? b.imgURL
-			: `${config.imgUrl}/CMS/${config.siteName}/${_imgFolder}/${lang}/${b.img}`;
+	const rows = banner?.map((b, bIdx) => {
+		let redirectLink = null;
 
-		if (actionLink?.startsWith("promotion/promotionInfo?BonusCode=")) {
+		if (b.actionMode === defBannerActionMode.GoToBonus) {
+			redirectLink = `/${path.promotionInfo.root}?BonusCode=${b.bonusCode}`;
+		} else if (
+			b.actionMode === defBannerActionMode.RedirectPageOfThisSite
+		) {
+			redirectLink =
+				!userInfo.isLogin && NeedLoginRoute.includes(b.urlRouter)
+					? null
+					: `/${b.urlRouter}`;
+		}
+
+		if (redirectLink) {
+			const parameter =
+				b.urlRouter === path.casino.root
+					? { tpId: Number(b.tpId) }
+					: null;
 			return (
-				<Link key={`${lang}-${b.img}`} to={actionLink}>
-					<img src={imgSRC} className="banner" alt={b.img ?? ""} />
+				<Link
+					state={parameter}
+					key={`${userInfo.langId}-${bIdx}`}
+					to={redirectLink}>
+					<img
+						src={b.bannerMobileUrl}
+						className="banner"
+						alt={b.img ?? ""}
+					/>
 				</Link>
 			);
 		}
+
 		return (
 			<button
-				onClick={ClickLink.bind(
-					this,
-					b.tpId,
-					b.gameId,
-					lang,
-					actionLink,
-					b.outerLink === true,
-					b.urlWithLang,
-					userInfo.isLogin,
-					setNav,
-					b.matchid
-				)}
-				key={`${lang}-${b.img}`}>
-				<img src={imgSRC} className="banner" alt={b.img ?? ""} />
+				key={`${userInfo.langId}-${bIdx}`}
+				onClick={ClickLink.bind(this, {
+					...b,
+					isLogin: userInfo.isLogin,
+					lang: userInfo.langId,
+					setNav
+				})}>
+				<img
+					src={b.bannerMobileUrl}
+					className="banner"
+					alt={b.bannerName ?? ""}
+				/>
 			</button>
 		);
 	});
