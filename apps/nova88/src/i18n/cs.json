@@ -374,7 +374,7 @@
 	"lbl_Top":"最高",
 	"lbl_Rewards":"奖励",
 	"lbl_MoreDetails":"更多详情",
-	"lbl_EventTitle":"圣诞快乐 & 新年如意 送出 IPhone 12",
+	"lbl_EventTitle":"金牛送礼好运来 ！赢得价值高达100,000令吉奖金！",
 	"lbl_Ranking_Sports":"体育排行榜",
 	"lbl_Ranking_LiveCasino":"真人排行榜",
 	"lbl_Ranking_Slots":"老虎机排行榜",
@@ -415,5 +415,6 @@
 	"lbl_RewardAmount":"奖励金额",
 	"lbl_Achievement":"绩效",
 	"lbl_Referral_rewards":"奖励",
-	"lbl_Redeposit_Promo":"再存"
+	"lbl_Redeposit_Promo":"再存",
+	"lbl_Last_Event":"上个活动"
 }

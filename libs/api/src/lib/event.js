@@ -19,4 +19,24 @@ export class EventsAPI extends BaseAPI {
 			LBCategoryId,
 			BeforeDays
 		});
+
+	GetLeaderboardListV2 = ({
+		lBCategoryId,
+		TopNum = 10,
+		BeforeDays = 0,
+		EventCode
+	}) =>
+		this.evnetsRequest.post(`/GetLeaderboardListV2/`, {
+			lBCategoryId,
+			TopNum,
+			BeforeDays,
+			EventCode
+		});
+
+	GetCustRankV2 = ({ LBCategoryId, BeforeDays = 0, EventCode }) =>
+		this.evnetsRequest.post(`/GetCustRankV2/`, {
+			LBCategoryId,
+			BeforeDays,
+			EventCode
+		});
 }

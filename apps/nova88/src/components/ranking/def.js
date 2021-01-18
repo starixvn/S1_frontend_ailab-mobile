@@ -3,7 +3,8 @@ import api from "../../service/api";
 export const defElemType = {
 	Event: "Event",
 	Ranking: "Ranking",
-	Record: "Record"
+	Record: "Record",
+	LastEvent: "LastEvent"
 };
 
 export const defBtnsOfCategory = {
@@ -42,6 +43,11 @@ export const defBtns = {
 		displayKey: "lbl_Records",
 		value: "Records",
 		elemType: defElemType.Record
+	},
+	LastEvent: {
+		displayKey: "lbl_Last_Event",
+		value: "LastEvent",
+		elemType: defElemType.LastEvent
 	}
 };
 
@@ -60,74 +66,163 @@ export const defDayBtns = {
 	}
 };
 
-export const defPrize = ({ i18n: { lbl_Cash = "Cash" } }) => ({
+export const defPrize = () => ({
 	MYR: {
 		[defBtnsOfCategory.Sports.value]: [
-			{ rank: "1", prize: "iPhone 12 (64GB)" },
-			{ rank: "2", prize: `888 MYR (${lbl_Cash})` },
-			{ rank: "3", prize: `788 MYR (${lbl_Cash})` },
-			{ rank: "4", prize: `688 MYR (${lbl_Cash})` },
-			{ rank: "5", prize: `588 MYR (${lbl_Cash})` }
+			{
+				rank: "1",
+				prize: "MacBook Pro 13 M1 256GB"
+			},
+			{ rank: "2", prize: `iPad Air 64GB Wi-Fi+Cellular ` },
+			{ rank: "3", prize: `iPad 10.2inch 128GB Wi-Fi ` },
+			{ rank: "4", prize: `988 Ang Pao` },
+			{ rank: "5", prize: `888 Ang Pao` },
+			{ rank: "6", prize: `788 Ang Pao` },
+			{ rank: "7", prize: `688 Ang Pao` },
+			{ rank: "8", prize: `588 Ang Pao` },
+			{ rank: "9", prize: `188 Ang Pao` },
+			{ rank: "10", prize: `88 Ang Pao` }
 		],
 		[defBtnsOfCategory.LiveCasino.value]: [
-			{ rank: "1", prize: "iPhone 12 (64GB)" },
-			{ rank: "2", prize: `888 MYR (${lbl_Cash})` },
-			{ rank: "3", prize: `788 MYR (${lbl_Cash})` },
-			{ rank: "4", prize: `688 MYR (${lbl_Cash})` },
-			{ rank: "5", prize: `588 MYR (${lbl_Cash})` }
+			{
+				rank: "1",
+				prize: "MacBook Pro 13 M1 256GB"
+			},
+			{ rank: "2", prize: `iPad Air 64GB Wi-Fi+Cellular ` },
+			{ rank: "3", prize: `iPad 10.2inch 128GB Wi-Fi ` },
+			{ rank: "4", prize: `988 Ang Pao` },
+			{ rank: "5", prize: `888 Ang Pao` },
+			{ rank: "6", prize: `788 Ang Pao` },
+			{ rank: "7", prize: `688 Ang Pao` },
+			{ rank: "8", prize: `588 Ang Pao` },
+			{ rank: "9", prize: `188 Ang Pao` },
+			{ rank: "10", prize: `88 Ang Pao` }
 		],
 		[defBtnsOfCategory.Slots.value]: [
-			{ rank: "1", prize: "iPhone 12 (64GB)" },
-			{ rank: "2", prize: `888 MYR (${lbl_Cash})` },
-			{ rank: "3", prize: `788 MYR (${lbl_Cash})` },
-			{ rank: "4", prize: `688 MYR (${lbl_Cash})` },
-			{ rank: "5", prize: `588 MYR (${lbl_Cash})` }
+			{
+				rank: "1",
+				prize: "MacBook Pro 13 M1 256GB"
+			},
+			{ rank: "2", prize: `iPad Air 64GB Wi-Fi+Cellular ` },
+			{ rank: "3", prize: `iPad 10.2inch 128GB Wi-Fi ` },
+			{ rank: "4", prize: `988 Ang Pao` },
+			{ rank: "5", prize: `888 Ang Pao` },
+			{ rank: "6", prize: `788 Ang Pao` },
+			{ rank: "7", prize: `688 Ang Pao` },
+			{ rank: "8", prize: `588 Ang Pao` },
+			{ rank: "9", prize: `188 Ang Pao` },
+			{ rank: "10", prize: `88 Ang Pao` }
 		]
 	},
 	IDR: {
 		[defBtnsOfCategory.Sports.value]: [
-			{ rank: "1", prize: "iPhone 12 (64GB)" },
-			{ rank: "2", prize: `3,000,000 IDR (${lbl_Cash})` },
-			{ rank: "3", prize: `2,688,000 IDR (${lbl_Cash})` },
-			{ rank: "4", prize: `2,388,000 IDR (${lbl_Cash})` },
-			{ rank: "5", prize: `1,388,000 IDR (${lbl_Cash})` }
+			{ rank: "1", prize: "iPad 10.2inch 128GB Wi-Fi" },
+			{ rank: "2", prize: `3,388,000 IDR Ang Pao` },
+			{ rank: "3", prize: `3,088,000 IDR Ang Pao` },
+			{ rank: "4", prize: `2,688,000 IDR Ang Pao` },
+			{ rank: "5", prize: `2,388,000 IDR Ang Pao` },
+			{ rank: "6", prize: `2,088,000 IDR Ang Pao` },
+			{ rank: "7", prize: `688,000 IDR Ang Pao` },
+			{ rank: "8", prize: `388,000 IDR Ang Pao` }
 		],
 		[defBtnsOfCategory.LiveCasino.value]: [
-			{ rank: "1", prize: "iPhone 12 (64GB)" },
-			{ rank: "2", prize: `3,000,000 IDR (${lbl_Cash})` },
-			{ rank: "3", prize: `2,688,000 IDR (${lbl_Cash})` },
-			{ rank: "4", prize: `2,388,000 IDR (${lbl_Cash})` },
-			{ rank: "5", prize: `1,388,000 IDR (${lbl_Cash})` }
+			{ rank: "1", prize: "iPad 10.2inch 128GB Wi-Fi" },
+			{ rank: "2", prize: `3,388,000 IDR Ang Pao` },
+			{ rank: "3", prize: `3,088,000 IDR Ang Pao` },
+			{ rank: "4", prize: `2,688,000 IDR Ang Pao` },
+			{ rank: "5", prize: `2,388,000 IDR Ang Pao` },
+			{ rank: "6", prize: `2,088,000 IDR Ang Pao` },
+			{ rank: "7", prize: `688,000 IDR Ang Pao` },
+			{ rank: "8", prize: `388,000 IDR Ang Pao` }
 		],
 		[defBtnsOfCategory.Slots.value]: [
-			{ rank: "1", prize: "iPhone 12 (64GB)" },
-			{ rank: "2", prize: `3,000,000 IDR (${lbl_Cash})` },
-			{ rank: "3", prize: `2,688,000 IDR (${lbl_Cash})` },
-			{ rank: "4", prize: `2,388,000 IDR (${lbl_Cash})` },
-			{ rank: "5", prize: `1,388,000 IDR (${lbl_Cash})` }
+			{ rank: "1", prize: "iPad 10.2inch 128GB Wi-Fi" },
+			{ rank: "2", prize: `3,388,000 IDR Ang Pao` },
+			{ rank: "3", prize: `3,088,000 IDR Ang Pao` },
+			{ rank: "4", prize: `2,688,000 IDR Ang Pao` },
+			{ rank: "5", prize: `2,388,000 IDR Ang Pao` },
+			{ rank: "6", prize: `2,088,000 IDR Ang Pao` },
+			{ rank: "7", prize: `688,000 IDR Ang Pao` },
+			{ rank: "8", prize: `388,000 IDR Ang Pao` }
 		]
 	},
 	THB: {
 		[defBtnsOfCategory.Sports.value]: [
-			{ rank: "1", prize: "iPhone 12 (64GB)" },
-			{ rank: "2", prize: `6,588 THB (${lbl_Cash})` },
-			{ rank: "3", prize: `5,588 THB (${lbl_Cash})` },
-			{ rank: "4", prize: `5,088 THB (${lbl_Cash})` },
-			{ rank: "5", prize: `4,088 THB (${lbl_Cash})` }
+			{ rank: "1", prize: "iPad 10.2inch 128GB Wi-Fi " },
+			{ rank: "2", prize: `7,788 THB Ang Pao` },
+			{ rank: "3", prize: `6,688 THB Ang Pao` },
+			{ rank: "4", prize: `5,588 THB Ang Pao` },
+			{ rank: "5", prize: `4,888 THB Ang Pao` },
+			{ rank: "6", prize: `4,388 THB Ang Pao` },
+			{ rank: "7", prize: `1,388 THB Ang Pao` },
+			{ rank: "8", prize: `688 THB Ang Pao` }
 		],
 		[defBtnsOfCategory.LiveCasino.value]: [
-			{ rank: "1", prize: "iPhone 12 (64GB)" },
-			{ rank: "2", prize: `6,588 THB (${lbl_Cash})` },
-			{ rank: "3", prize: `5,588 THB (${lbl_Cash})` },
-			{ rank: "4", prize: `5,088 THB (${lbl_Cash})` },
-			{ rank: "5", prize: `4,088 THB (${lbl_Cash})` }
+			{ rank: "1", prize: "iPad 10.2inch 128GB Wi-Fi " },
+			{ rank: "2", prize: `7,788 THB Ang Pao` },
+			{ rank: "3", prize: `6,688 THB Ang Pao` },
+			{ rank: "4", prize: `5,588 THB Ang Pao` },
+			{ rank: "5", prize: `4,888 THB Ang Pao` },
+			{ rank: "6", prize: `4,388 THB Ang Pao` },
+			{ rank: "7", prize: `1,388 THB Ang Pao` },
+			{ rank: "8", prize: `688 THB Ang Pao` }
 		],
 		[defBtnsOfCategory.Slots.value]: [
-			{ rank: "1", prize: "iPhone 12 (64GB)" },
-			{ rank: "2", prize: `6,588 THB (${lbl_Cash})` },
-			{ rank: "3", prize: `5,588 THB (${lbl_Cash})` },
-			{ rank: "4", prize: `5,088 THB (${lbl_Cash})` },
-			{ rank: "5", prize: `4,088 THB (${lbl_Cash})` }
+			{ rank: "1", prize: "iPad 10.2inch 128GB Wi-Fi " },
+			{ rank: "2", prize: `7,788 THB Ang Pao` },
+			{ rank: "3", prize: `6,688 THB Ang Pao` },
+			{ rank: "4", prize: `5,588 THB Ang Pao` },
+			{ rank: "5", prize: `4,888 THB Ang Pao` },
+			{ rank: "6", prize: `4,388 THB Ang Pao` },
+			{ rank: "7", prize: `1,388 THB Ang Pao` },
+			{ rank: "8", prize: `688 THB Ang Pao` }
+		]
+	},
+	RMB: {
+		[defBtnsOfCategory.Sports.value]: [
+			{
+				rank: "1",
+				prize: "MacBook Pro 13 M1 256GB"
+			},
+			{ rank: "2", prize: `iPad Air 64GB Wi-Fi+Cellular ` },
+			{ rank: "3", prize: `iPad 10.2inch 128GB Wi-Fi ` },
+			{ rank: "4", prize: `988 紅包` },
+			{ rank: "5", prize: `888 紅包` },
+			{ rank: "6", prize: `788 紅包` },
+			{ rank: "7", prize: `688 紅包` },
+			{ rank: "8", prize: `588 紅包` },
+			{ rank: "9", prize: `188 紅包` },
+			{ rank: "10", prize: `88 紅包` }
+		],
+		[defBtnsOfCategory.LiveCasino.value]: [
+			{
+				rank: "1",
+				prize: "MacBook Pro 13 M1 256GB"
+			},
+			{ rank: "2", prize: `iPad Air 64GB Wi-Fi+Cellular ` },
+			{ rank: "3", prize: `iPad 10.2inch 128GB Wi-Fi ` },
+			{ rank: "4", prize: `988 紅包` },
+			{ rank: "5", prize: `888 紅包` },
+			{ rank: "6", prize: `788 紅包` },
+			{ rank: "7", prize: `688 紅包` },
+			{ rank: "8", prize: `588 紅包` },
+			{ rank: "9", prize: `188 紅包` },
+			{ rank: "10", prize: `88 紅包` }
+		],
+		[defBtnsOfCategory.Slots.value]: [
+			{
+				rank: "1",
+				prize: "MacBook Pro 13 M1 256GB"
+			},
+			{ rank: "2", prize: `iPad Air 64GB Wi-Fi+Cellular ` },
+			{ rank: "3", prize: `iPad 10.2inch 128GB Wi-Fi ` },
+			{ rank: "4", prize: `988 紅包` },
+			{ rank: "5", prize: `888 紅包` },
+			{ rank: "6", prize: `788 紅包` },
+			{ rank: "7", prize: `688 紅包` },
+			{ rank: "8", prize: `588 紅包` },
+			{ rank: "9", prize: `188 紅包` },
+			{ rank: "10", prize: `88 紅包` }
 		]
 	}
 });

@@ -27,7 +27,7 @@ const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
 				<a
 					href={`${
 						config.cloudImgURL
-					}/NovaPromotion/iPhone12Giveaway/${userInfo.langId?.toUpperCase()}.html`}
+					}/NovaPromotion/year-of-OX/${userInfo.langId?.toUpperCase()}.html`}
 					target="_blank"
 					rel="noreferrer"
 					className="orange openPopup">
