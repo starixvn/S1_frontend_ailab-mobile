@@ -5,49 +5,15 @@ import {
 	navContext,
 	defNavPanel
 } from "../components/common/context";
-import { defGameInfo } from "../datas/productList";
 import { GET_ENTER_PAGE } from "../service/enterPage";
 import LinksPanel from "../components/home/links";
-import sabaClubImg from "../styles/img/sabaclub.png";
-import KenoImg from "../styles/img/keno.png";
-import LotteryImg from "../styles/img/Lottery.png";
-import One789Lottery from "../styles/img/one789.png";
-import One789LotteryTra from "../styles/img/lotteryTra.png";
-
-const defGames = [
-	{
-		...defGameInfo.One789_lottery,
-		displayKey: "lbl_TraditionalLottery",
-		img: One789LotteryTra,
-		isNew: true
-	},
-	{
-		...defGameInfo.One789_lottery_789,
-		displayKey: "lbl_789Lottery",
-		img: One789Lottery,
-		isNew: true
-	},
-	{
-		...defGameInfo.sabaClub,
-		displayKey: "lbl_SabaClub",
-		img: sabaClubImg
-	},
-	{
-		...defGameInfo.Keno,
-		displayKey: "lbl_Keno",
-		img: KenoImg
-	},
-	{
-		...defGameInfo.lottery,
-		displayKey: "lbl_Lottery",
-		img: LotteryImg
-	}
-];
+import { productList } from "../datas/defMenu";
 
 export default () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setNav } = useContext(navContext);
+	const _productList = productList(userInfo.langId).game.items;
 
 	const ClickGame = (tpId, gameId, betType) => {
 		GET_ENTER_PAGE({
@@ -62,10 +28,15 @@ export default () => {
 		});
 	};
 
-	const arr = defGames.map(game => {
+	const arr = _productList.map(game => {
+		let showingIcon = "";
+		if (game.eventIcon) {
+			showingIcon = game.eventIcon.find(obj => obj.inPeriod === true)
+				.icon;
+		}
 		return (
 			<button
-				className={`gameInBox${game.isNew ? " newicon" : ""}`}
+				className={`gameInBox${showingIcon}`}
 				key={`gamesPanel-${game.displayKey}`}
 				onClick={ClickGame.bind(
 					this,

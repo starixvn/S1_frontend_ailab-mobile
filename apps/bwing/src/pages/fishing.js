@@ -1,61 +1,13 @@
 import React, { useContext } from "react";
 import { i18nContext, userInfoContext } from "../components/common/context";
-import { defGameInfo } from "../datas/productList";
 import { GET_ENTER_PAGE } from "../service/enterPage";
 import LinksPanel from "../components/home/links";
-import fishingGGImg from "../styles/img/fishingGG.png";
-import fishingSGImg from "../styles/img/fishingSG.png";
-import fishingSGwarImg from "../styles/img/fishingSGwar.png";
-import fishingICG_DB from "../styles/img/fishingICG-DB.png";
-import fishingICG_FOS from "../styles/img/fishingICG-FOS.png";
-import fishingICG_TTATP from "../styles/img/fishingICG-TTATP.png";
-import fishingICG_TOS from "../styles/img/fishingICG-TOS.png";
-
-const defGames = [
-	{
-		...defGameInfo.ICG_DRAGONBALL_FISHING,
-		displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
-		img: fishingICG_DB,
-		isNew: true
-	},
-	{
-		...defGameInfo.ICG_FISHING_OF_SAVIORS,
-		displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS",
-		img: fishingICG_FOS,
-		isNew: true
-	},
-	{
-		...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
-		displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS",
-		img: fishingICG_TTATP,
-		isNew: true
-	},
-	{
-		...defGameInfo.ICG_TOWER_OF_SAVIORS,
-		displayKey: "lbl_Game_ICG_TOWER_OF_SAVIORS",
-		img: fishingICG_TOS,
-		isNew: true
-	},
-	{
-		...defGameInfo.Fishing,
-		displayKey: "lbl_FishingGG",
-		img: fishingGGImg
-	},
-	{
-		...defGameInfo.Fishing_SG,
-		displayKey: "lbl_FishingSG1",
-		img: fishingSGImg
-	},
-	{
-		...defGameInfo.Fishing_SGW,
-		displayKey: "lbl_FishingSG2",
-		img: fishingSGwarImg
-	}
-];
+import { productList } from "../datas/defMenu";
 
 export default () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
+	const _productList = productList(userInfo.langId).fishing.items;
 
 	const ClickGame = (tpId, gameId, betType) => {
 		GET_ENTER_PAGE({
@@ -70,10 +22,15 @@ export default () => {
 		});
 	};
 
-	const arr = defGames.map(game => {
+	const arr = _productList.map(game => {
+		let showingIcon = "";
+		if (game.eventIcon) {
+			showingIcon = game.eventIcon.find(obj => obj.inPeriod === true)
+				.icon;
+		}
 		return (
 			<button
-				className={`gameInBox${game.isNew ? " newicon" : ""}`}
+				className={`gameInBox${showingIcon}`}
 				key={`fishingPanel-${game.displayKey}`}
 				onClick={ClickGame.bind(
 					this,
