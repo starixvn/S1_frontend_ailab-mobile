@@ -296,15 +296,7 @@ class CateGoryContent extends Component {
 }
 
 const CategoryItem = props => {
-	let showingEventIcon = "";
-	if (props.subIcon.length > 0) {
-		const categoryIdx = props.subIcon.findIndex(obj =>
-			obj?.eventIcon.find(item => item.inPeriod === true)
-		);
-		showingEventIcon = props.subIcon[categoryIdx].eventIcon.find(
-			item => item.inPeriod === true
-		)?.icon;
-	}
+	const showingEventIcon = getEventIcon({ subIcon: props?.subIcon });
 	return (
 		<button
 			className={`icon icon-${props.categoryIcon}${props.isOpen}`}
@@ -323,11 +315,7 @@ const CategoryItem = props => {
 };
 
 const ProductItem = props => {
-	let showingEventIcon = "";
-	if (props.eventIcon) {
-		showingEventIcon = props.eventIcon.find(obj => obj.inPeriod === true)
-			.icon;
-	}
+	const showingEventIcon = getEventIcon({ eventIcon: props?.eventIcon });
 	const content = props.href ? (
 		<a
 			href={props.href}
@@ -377,11 +365,7 @@ const ProductItem = props => {
 };
 
 const ProductLinkItem = props => {
-	let showingEventIcon = "";
-	if (props.eventIcon) {
-		showingEventIcon = props.eventIcon.find(obj => obj.inPeriod === true)
-			.icon;
-	}
+	const showingEventIcon = getEventIcon({ eventIcon: props?.eventIcon });
 	return (
 		<Link
 			to={`/${props.to}`}
@@ -402,6 +386,23 @@ const ComingSoonItem = props => {
 			<img src={props.img} alt="Coming Soon" />
 		</a>
 	);
+};
+
+const getEventIcon = ({ subIcon, eventIcon }) => {
+	let showingEventIcon = "";
+
+	if (subIcon?.length > 0) {
+		const categoryIdx = subIcon.findIndex(obj =>
+			obj?.eventIcon.find(item => item.inPeriod === true)
+		);
+		showingEventIcon = subIcon[categoryIdx].eventIcon.find(
+			item => item.inPeriod === true
+		)?.icon;
+	} else if (eventIcon?.length > 0) {
+		showingEventIcon = eventIcon.find(obj => obj.inPeriod === true).icon;
+	}
+
+	return showingEventIcon;
 };
 
 export default Category;

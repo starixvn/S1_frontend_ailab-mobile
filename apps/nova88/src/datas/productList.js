@@ -332,7 +332,7 @@ const gameList = ({ langId }) => [
 		items: [
 			{
 				icon: "affiliate",
-				href: `${siteInfo().affiliateLink}/?lang=${langId}`,
+				href: `${siteInfo(langId).affiliateLink}`,
 				img: affiliate,
 				spanTextKey: "lbl_SiteAffiliate",
 				descTextKey: "lbl_AffiliateDesc",
