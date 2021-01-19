@@ -26,7 +26,8 @@ export class DropdownBox extends Component {
 		this.setState(prev => ({ isOpen: !prev.isOpen }));
 	};
 
-	SelectItem = value => {
+	SelectItem = (value, e) => {
+		e.stopPropagation();
 		this.setState({ isOpen: false });
 		this.props.onSelectItem(value);
 	};
