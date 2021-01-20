@@ -48,7 +48,7 @@ export const productList = {
 };
 
 const defIconType = {
-	new: "icon-new"
+	new: " icon-new"
 };
 
 const eventTime = {

@@ -198,7 +198,7 @@ class CateGoryContent extends Component {
 						subIcon={item.items.filter(
 							subItem => subItem.eventIcon
 						)}
-						categoryEventIcon={item.categoryEventIcon}
+						eventIcon={item.eventIcon}
 					/>
 				);
 
@@ -296,20 +296,18 @@ class CateGoryContent extends Component {
 }
 
 const CategoryItem = props => {
-	const showingEventIcon = getEventIcon({ subIcon: props?.subIcon });
+	const showingEventIcon = getEventIcon({
+		subIcon: props?.subIcon,
+		eventIcon: props?.eventIcon
+	});
 	return (
 		<button
 			className={`icon icon-${props.categoryIcon}${props.isOpen}`}
 			onClick={props.onClick}>
 			<div>{props.translation}</div>
-			{props.subIcon.length > 0 && showingEventIcon ? (
-				<i className={`icon ${showingEventIcon}`} />
+			{showingEventIcon !== "" ? (
+				<i className={`icon${showingEventIcon}`} />
 			) : null}
-			{props.categoryEventIcon
-				?.filter(obj => obj.inPeriod)
-				?.map(obj => {
-					return <i className={`icon ${obj.icon}`} key={obj.icon} />;
-				})}
 		</button>
 	);
 };
@@ -390,17 +388,17 @@ const ComingSoonItem = props => {
 
 const getEventIcon = ({ subIcon, eventIcon }) => {
 	let showingEventIcon = "";
+	let eventIconList = eventIcon ?? [];
 
 	if (subIcon?.length > 0) {
 		const categoryIdx = subIcon.findIndex(obj =>
 			obj?.eventIcon.find(item => item.inPeriod === true)
 		);
-		showingEventIcon = subIcon[categoryIdx].eventIcon.find(
-			item => item.inPeriod === true
-		)?.icon;
-	} else if (eventIcon?.length > 0) {
-		showingEventIcon = eventIcon.find(obj => obj.inPeriod === true).icon;
+		eventIconList =
+			categoryIdx === -1 ? [] : subIcon[categoryIdx].eventIcon;
 	}
+	const eventInPeriodObj = eventIconList.find(item => item.inPeriod === true);
+	showingEventIcon = eventInPeriodObj ? eventInPeriodObj.icon : "";
 
 	return showingEventIcon;
 };
