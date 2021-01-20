@@ -53,8 +53,11 @@ const HeaderBtn = () => {
 	const { msgCount } = useContext(msgCountContext);
 	const [redirectPath, setRedirectPath] = useState(null);
 
-	const { mainWalletInfo, GetBalance } = useGetBalance();
+	const { mainWalletInfo, GetBalance } = useGetBalance({
+		isLogin: userInfo.isLogin
+	});
 	const { tpWalletsList, GetTpWalletList } = useGetTpBalance({
+		isLogin: userInfo.isLogin,
 		listType: tpWalletsListType.allWallets
 	});
 

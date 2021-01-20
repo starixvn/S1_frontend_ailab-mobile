@@ -30,8 +30,11 @@ const Panel = () => {
 	const [recentDatas, setRecentDatas] = useState([]);
 	const [loading, setLoading] = useState(false);
 
-	const { mainWalletInfo, GetBalance } = useGetBalance();
+	const { mainWalletInfo, GetBalance } = useGetBalance({
+		isLogin: userInfo.isLogin
+	});
 	const { tpWalletsList, GetTpWalletBalance } = useGetTpBalance({
+		isLogin: userInfo.isLogin,
 		listType: tpWalletsListType.allWallets
 	});
 

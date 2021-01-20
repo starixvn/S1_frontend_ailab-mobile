@@ -19,7 +19,7 @@ const updateTpWalletsList = ({ prev, tpId, balance = null }) => {
 	return [...prev].sort((a, b) => a.id - b.id);
 };
 
-export default ({ listType }) => {
+export default ({ isLogin, listType }) => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const [tpWalletsList, setTpWalletsList] = useState([]);
@@ -97,8 +97,10 @@ export default ({ listType }) => {
 	};
 
 	useEffect(() => {
-		GetTpWalletList();
-	}, [GetTpWalletList]);
+		if (isLogin === true) {
+			GetTpWalletList();
+		}
+	}, [GetTpWalletList, isLogin]);
 
 	return { tpWalletsList, GetTpWalletList, GetTpWalletBalance };
 };

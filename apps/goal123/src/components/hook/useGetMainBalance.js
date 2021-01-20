@@ -2,7 +2,7 @@ import { useEffect, useState, useRef, useCallback, useContext } from "react";
 import { i18nContext, popBoxContext } from "../common/context";
 import { api_GetBalnace } from "../../service/api/account";
 
-export default () => {
+export default ({ isLogin }) => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const [mainWalletInfo, setMainWalletInfo] = useState({});
@@ -46,8 +46,10 @@ export default () => {
 	}, [setPopBox, i18n]);
 
 	useEffect(() => {
-		GetBalance();
-	}, [GetBalance]);
+		if (isLogin === true) {
+			GetBalance();
+		}
+	}, [GetBalance, isLogin]);
 
 	return { mainWalletInfo, GetBalance };
 };
