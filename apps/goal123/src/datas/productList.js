@@ -240,7 +240,7 @@ const gameList = langId => [
 		eventIcon: [
 			{
 				icon: defIconType.new,
-				inPeriod: false // isEventPeriod(eventTime.new_ICG)
+				inPeriod: isEventPeriod(eventTime.new_ICG)
 			}
 		],
 		items: [
