@@ -374,7 +374,7 @@
 	"lbl_Top":"TOP",
 	"lbl_Rewards":"Rewards",
 	"lbl_MoreDetails":"MORE DETAILS",
-	"lbl_EventTitle":"Christmas & New Year IPhone 12 Giveaway",
+	"lbl_EventTitle":"Win worth up to RM100,000 prizes for this Chinese New Year!",
 	"lbl_Ranking_Sports":"Sports Ranking",
 	"lbl_Ranking_LiveCasino":"Live Casino Ranking",
 	"lbl_Ranking_Slots":"Slots Ranking",
@@ -415,5 +415,6 @@
 	"lbl_RewardAmount":"Rewards Amounts",
 	"lbl_Achievement":"Achievement",
 	"lbl_Referral_rewards":"Rewards",
-	"lbl_Redeposit_Promo":"Redeposit"
+	"lbl_Redeposit_Promo":"Redeposit",
+	"lbl_Last_Event":"Last Event"
 }
