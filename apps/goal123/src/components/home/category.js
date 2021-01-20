@@ -201,7 +201,7 @@ class CateGoryContent extends Component {
 					}
 					isOpen={`${_open ? " open" : ""}`}
 					translation={this.props.i18n[item.translateKey]}
-					categoryEventIcon={item.categoryEventIcon}
+					eventIcon={item.eventIcon}
 					subIcon={item.items.filter(subItem => subItem.eventIcon)}
 				/>
 			);
@@ -318,18 +318,18 @@ CateGoryContent.propTypes = {
 };
 
 const CategoryItem = ({
-	categoryEventIcon = [],
+	eventIcon = [],
 	isOpen,
 	onClick,
 	translation,
 	subIcon
 }) => {
-	const showingEventIcon = getEventIcon({ subIcon, categoryEventIcon });
+	const showingEventIcon = getEventIcon({ subIcon, eventIcon });
 	return (
 		<button
-			className={`${`icon ${
+			className={`${isOpen ? "open " : ""}${`icon${
 				showingEventIcon !== "" ? showingEventIcon : ""
-			}`}${isOpen ? " open" : ""}`}
+			}`}`}
 			onClick={onClick}>
 			<div>{translation?.toUpperCase()}</div>
 		</button>
@@ -337,13 +337,13 @@ const CategoryItem = ({
 };
 
 CategoryItem.defaultProps = {
-	categoryEventIcon: [],
+	eventIcon: [],
 	translation: "",
 	subIcon: []
 };
 
 CategoryItem.propTypes = {
-	categoryEventIcon: PropTypes.arrayOf(PropTypes.any),
+	eventIcon: PropTypes.arrayOf(PropTypes.any),
 	isOpen: PropTypes.string.isRequired,
 	onClick: PropTypes.func.isRequired,
 	translation: PropTypes.string,
@@ -367,8 +367,8 @@ const ProductItem = ({
 			target={href ? "_blank" : null}
 			onClick={!href ? clickGame : null}
 			ref={_ref}
-			className={`${isShow ? "open" : ""}${
-				eventIcon ? ` icon ${showingEventIcon}` : ""
+			className={`${isShow ? "open " : ""}${
+				eventIcon ? `icon${showingEventIcon}` : ""
 			}`}>
 			<img src={img} alt={icon ?? ""} />
 			{spanText ? (
@@ -465,22 +465,18 @@ ComingSoonItem.propTypes = {
 	img: PropTypes.string.isRequired
 };
 
-const getEventIcon = ({ subIcon, eventIcon, categoryEventIcon }) => {
+const getEventIcon = ({ subIcon, eventIcon }) => {
 	let showingEventIcon = "";
+	let eventIconList = eventIcon ?? [];
 
 	if (subIcon?.length > 0) {
 		const categoryIdx = subIcon.findIndex(obj =>
 			obj?.eventIcon.find(item => item.inPeriod === true)
 		);
-		showingEventIcon = subIcon[categoryIdx].eventIcon.find(
-			item => item.inPeriod === true
-		)?.icon;
-	} else if (eventIcon?.length > 0) {
-		showingEventIcon = eventIcon.find(obj => obj.inPeriod === true).icon;
-	} else if (categoryEventIcon?.length > 0) {
-		showingEventIcon = categoryEventIcon.find(obj => obj.inPeriod === true)
-			.icon;
+		eventIconList = subIcon[categoryIdx].eventIcon;
 	}
+	const eventInPeriodObj = eventIconList.find(item => item.inPeriod === true);
+	showingEventIcon = eventInPeriodObj ? eventInPeriodObj.icon : "";
 
 	return showingEventIcon;
 };

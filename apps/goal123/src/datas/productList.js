@@ -86,8 +86,8 @@ export const defGameInfo = {
 };
 
 const defIconType = {
-	ranking: "icon-live RANKING",
-	new: "icon-new"
+	live: " icon-live",
+	new: " icon-new"
 };
 
 const eventTime = {
@@ -234,15 +234,15 @@ const gameList = langId => [
 		]
 	},
 	{
-		categoryEventIcon: [
-			{
-				icon: defIconType.new,
-				inPeriod: isEventPeriod(eventTime.new_ICG)
-			}
-		],
 		category: "slots",
 		categoryIcon: "casino",
 		translateKey: "lbl_Slots",
+		eventIcon: [
+			{
+				icon: defIconType.new,
+				inPeriod: false // isEventPeriod(eventTime.new_ICG)
+			}
+		],
 		items: [
 			{
 				...defGameInfo.Casino_All,
@@ -311,9 +311,9 @@ const gameList = langId => [
 		category: "ranking",
 		categoryIcon: "icon32px_top",
 		translateKey: "lbl_Ranking",
-		categoryEventIcon: [
+		eventIcon: [
 			{
-				icon: defIconType.ranking,
+				icon: defIconType.live,
 				inPeriod: isEventPeriod(eventTime.ranking)
 			}
 		],
