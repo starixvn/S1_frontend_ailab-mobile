@@ -25,8 +25,10 @@ export default () => {
 	const arr = _productList.map(game => {
 		let showingIcon = "";
 		if (game.eventIcon) {
-			showingIcon = game.eventIcon.find(obj => obj.inPeriod === true)
-				.icon;
+			const eventInPeriodObj = game.eventIcon.find(
+				obj => obj.inPeriod === true
+			);
+			showingIcon = eventInPeriodObj ? eventInPeriodObj.icon : "";
 		}
 		return (
 			<button

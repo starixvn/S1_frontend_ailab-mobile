@@ -29,7 +29,7 @@ import liveCasino_EB from "../styles/img/liveGame/liveGame7.png";
 import liveCasino_SA from "../styles/img/liveGame/liveGame8.png";
 
 export const defIconType = {
-	ranking: " liveIcon",
+	live: " liveIcon",
 	new: " newicon",
 	new_nav: " icon icon-newicon"
 };
@@ -96,7 +96,7 @@ export const productList = langId => {
 		casino: {
 			displayKey: "lbl_Slots",
 			path: path.casino.root,
-			categoryEvent: [
+			eventIcon: [
 				{
 					icon: defIconType.new_nav,
 					inPeriod: isEventPeriod(eventTime.new_ICG)
@@ -245,9 +245,9 @@ export const productList = langId => {
 		ranking: {
 			displayKey: "lbl_Ranking",
 			path: path.ranking.root,
-			categoryEvent: [
+			eventIcon: [
 				{
-					icon: defIconType.ranking,
+					icon: defIconType.live,
 					inPeriod: isEventPeriod(eventTime.ranking)
 				}
 			]

@@ -18,7 +18,7 @@ const HeaderMenu = ({ i18n, OnClickProduct, userInfo }) => {
 					subIcon={product.items?.filter(
 						subItem => subItem.eventIcon
 					)}
-					categoryEvent={product?.categoryEvent}
+					eventIcon={product?.eventIcon}
 				/>
 			);
 		}
@@ -29,7 +29,7 @@ const HeaderMenu = ({ i18n, OnClickProduct, userInfo }) => {
 				productPath={product.path}
 				href={product.href}
 				subIcon={product.items?.filter(subItem => subItem.eventIcon)}
-				categoryEvent={product?.categoryEvent}
+				eventIcon={product?.eventIcon}
 			/>
 		);
 	});
@@ -43,8 +43,8 @@ HeaderMenu.propTypes = {
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
-const ProductItem = ({ spanText, OnClickProduct, subIcon, categoryEvent }) => {
-	const showingEventIcon = getEventIcon({ subIcon, categoryEvent });
+const ProductItem = ({ spanText, OnClickProduct, subIcon, eventIcon }) => {
+	const showingEventIcon = getEventIcon({ subIcon, eventIcon });
 	return (
 		<button onClick={OnClickProduct} className={`nav${showingEventIcon}`}>
 			{spanText.toUpperCase()}
@@ -54,14 +54,14 @@ const ProductItem = ({ spanText, OnClickProduct, subIcon, categoryEvent }) => {
 
 ProductItem.defaultProps = {
 	subIcon: [],
-	categoryEvent: []
+	eventIcon: []
 };
 
 ProductItem.propTypes = {
 	spanText: PropTypes.string.isRequired,
 	OnClickProduct: PropTypes.func.isRequired,
 	subIcon: PropTypes.arrayOf(PropTypes.object),
-	categoryEvent: PropTypes.arrayOf(PropTypes.object)
+	eventIcon: PropTypes.arrayOf(PropTypes.object)
 };
 
 const ProductLinkItem = ({
@@ -69,10 +69,10 @@ const ProductLinkItem = ({
 	productPath,
 	href,
 	subIcon,
-	categoryEvent
+	eventIcon
 }) => {
 	const { pathname } = window.location;
-	const showingEventIcon = getEventIcon({ subIcon, categoryEvent });
+	const showingEventIcon = getEventIcon({ subIcon, eventIcon });
 
 	return productPath ? (
 		<Link
@@ -93,7 +93,7 @@ ProductLinkItem.defaultProps = {
 	productPath: "",
 	href: "",
 	subIcon: [],
-	categoryEvent: []
+	eventIcon: []
 };
 
 ProductLinkItem.propTypes = {
@@ -101,25 +101,28 @@ ProductLinkItem.propTypes = {
 	productPath: PropTypes.string,
 	href: PropTypes.string,
 	subIcon: PropTypes.arrayOf(PropTypes.object),
-	categoryEvent: PropTypes.arrayOf(PropTypes.object)
+	eventIcon: PropTypes.arrayOf(PropTypes.object)
 };
 
-const getEventIcon = ({ subIcon, categoryEvent }) => {
+const getEventIcon = ({ subIcon, eventIcon }) => {
 	let showingEventIcon = "";
+	let eventIconList = eventIcon ?? [];
 
-	if (subIcon && subIcon.length > 0) {
+	if (subIcon.length > 0) {
 		const categoryIdx = subIcon.findIndex(obj =>
 			obj?.eventIcon.find(item => item.inPeriod === true)
 		);
-		showingEventIcon = subIcon[categoryIdx].eventIcon.find(
-			item => item.inPeriod === true
-		)?.icon;
-		if (showingEventIcon === defIconType.new) {
-			showingEventIcon = defIconType.new_nav;
-		}
-	} else if (categoryEvent && categoryEvent.length > 0) {
-		showingEventIcon = categoryEvent.find(obj => obj.inPeriod === true)
-			.icon;
+		eventIconList =
+			categoryIdx === -1 ? [] : subIcon[categoryIdx].eventIcon;
+	}
+
+	const eventInPeriodObj = eventIconList?.find(
+		item => item.inPeriod === true
+	);
+	showingEventIcon = eventInPeriodObj ? eventInPeriodObj.icon : "";
+
+	if (showingEventIcon === defIconType.new) {
+		showingEventIcon = defIconType.new_nav;
 	}
 
 	return showingEventIcon;
