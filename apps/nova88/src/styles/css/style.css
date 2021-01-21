@@ -4305,10 +4305,20 @@ span.important {
   border-bottom-left-radius: 0;
 }
 
+.kissinfo ~ .btn-group button:before {
+  margin-right: 1vw;
+}
+
 .kisstitle {
   color: #F77A00;
   text-align: center;
   font-weight: bold;
+  margin-top: 3vw;
+}
+
+.onegameQR {
+  width: 50%;
+  margin: auto;
   margin-top: 3vw;
 }
 
