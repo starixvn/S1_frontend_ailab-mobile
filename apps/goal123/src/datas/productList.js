@@ -237,19 +237,19 @@ const gameList = langId => [
 		category: "slots",
 		categoryIcon: "casino",
 		translateKey: "lbl_Slots",
-		eventIcon: [
-			{
-				icon: defIconType.new,
-				inPeriod: isEventPeriod(eventTime.new_ICG)
-			}
-		],
 		items: [
 			{
 				...defGameInfo.Casino_All,
 				parameter: { tpId: defGameInfo.Casino_All.tpId },
 				img: Casino,
 				icon: "casino",
-				spanTextKey: "lbl_Slots"
+				spanTextKey: "lbl_Slots",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_ICG)
+					}
+				]
 			}
 		]
 	},
