@@ -83,6 +83,8 @@ import FriendReferral from "./pages/referral";
 import ReferFriends from "./components/referral/referFriends";
 import ReferralHistory from "./components/referral/referral.history";
 
+import OneGame from "./pages/oneGame";
+
 const Index = () => {
 	const history = createHistory(window);
 	return (
@@ -190,6 +192,7 @@ const Index = () => {
 						</Setting>
 						<Whoami path={path.whoami.root} />
 						<Ranking path={path.ranking.root} />
+						<OneGame path={path.oneGame.root} />
 						{/* <Kiss918 path={path.kiss918.root} /> */}
 					</Router>
 				</Layout>

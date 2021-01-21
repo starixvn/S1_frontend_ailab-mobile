@@ -100,7 +100,7 @@ const defPlatfrom = [
 	// 	path: path.kiss918.root
 	// },
 	{
-		...defGameInfo.poker,
+		...defGameInfo.oneGame,
 		imgName: "1g"
 	}
 ];

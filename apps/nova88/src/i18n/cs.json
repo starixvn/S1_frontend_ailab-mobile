@@ -416,5 +416,9 @@
 	"lbl_Achievement":"绩效",
 	"lbl_Referral_rewards":"奖励",
 	"lbl_Redeposit_Promo":"再存",
-	"lbl_Poker":"Poker"
+	"lbl_Poker":"Poker",
+	"lbl_DownloadApp":"下载APP",
+	"lbl_ScanQRCode":"Scan QR Code",
+	"lbl_GoToGame":"Go To Game"
+
 }

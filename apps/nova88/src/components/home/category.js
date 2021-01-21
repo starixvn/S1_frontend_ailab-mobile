@@ -83,6 +83,7 @@ const Category = props => {
 			casinoTpIds={casinoTpIds}
 			userCurrencyId={userInfo.currencyId}
 			langId={userInfo.langId}
+			setPopBox={setPopBox}
 		/>
 	);
 };
@@ -255,6 +256,15 @@ class CateGoryContent extends Component {
 										? this.props.i18n[subItem.descTextKey]
 										: ""
 								}
+								openPopBox={
+									subItem?.popBox
+										? this.props.setPopBox.bind(this, {
+												isOpen: true,
+												title: subItem?.popBox.title,
+												popBoxType: subItem?.popBox.type
+										  })
+										: null
+								}
 								{...subItem}
 							/>
 						);
@@ -324,7 +334,7 @@ const ProductItem = props => {
 		</a>
 	) : (
 		<a
-			onClick={props.clickGame}
+			onClick={props.openPopBox ? props.openPopBox : props.clickGame}
 			ref={props._ref}
 			className={props.isShow ? "open" : ""}>
 			{props.isNew ? <i className="icon icon-new" /> : null}

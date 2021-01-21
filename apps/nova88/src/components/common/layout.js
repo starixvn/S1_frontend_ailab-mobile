@@ -117,6 +117,11 @@ const defPageInfo = {
 		titleKey: "lbl_friendReferral",
 		className: "main",
 		hideLogo: true
+	},
+	oneGame: {
+		titleKey: "One Game",
+		className: "main casino kiss",
+		hideLogo: true
 	}
 };
 

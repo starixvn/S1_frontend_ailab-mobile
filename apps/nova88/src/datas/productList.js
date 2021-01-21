@@ -41,10 +41,15 @@ import fish_FOS from "../styles/img/fish_FOS.jpg";
 import fish_TAP from "../styles/img/fish_TAP.jpg";
 import fish_TOS from "../styles/img/fish_TOS.jpg";
 
+import { defPopBoxType } from "../components/common/popbox";
+
 export const productList = {
 	kiss918: {
 		tpId: 21,
 		gameId: 21
+	},
+	oneGame: {
+		tpId: 13
 	}
 };
 
@@ -305,7 +310,12 @@ const gameList = ({ langId }) => [
 				tpId: 13,
 				icon: "play",
 				img: poker,
-				spanTextKey: "lbl_Poker"
+				spanTextKey: "lbl_Poker",
+				isNew: true,
+				popBox: {
+					title: "One Game",
+					type: defPopBoxType.OneGame
+				}
 			}
 		]
 	},
@@ -396,5 +406,5 @@ export const defGameInfo = {
 		tpId: 24,
 		gameId: "cmt0001"
 	},
-	poker: { tpId: 13 }
+	oneGame: { tpId: 13 }
 };

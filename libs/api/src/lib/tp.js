@@ -28,6 +28,6 @@ export class TpAPI extends BaseAPI {
 			GameId,
 			TpId,
 			LangId,
-			AppType: defGotoGame_AppType.Mobile
+			AppType: defGotoGame_AppType.NativeAPP
 		});
 }
