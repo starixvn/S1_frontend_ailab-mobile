@@ -473,7 +473,8 @@ const getEventIcon = ({ subIcon, eventIcon }) => {
 		const categoryIdx = subIcon.findIndex(obj =>
 			obj?.eventIcon.find(item => item.inPeriod === true)
 		);
-		eventIconList = subIcon[categoryIdx].eventIcon;
+		eventIconList =
+			categoryIdx === -1 ? [] : subIcon[categoryIdx].eventIcon;
 	}
 	const eventInPeriodObj = eventIconList.find(item => item.inPeriod === true);
 	showingEventIcon = eventInPeriodObj ? eventInPeriodObj.icon : "";
