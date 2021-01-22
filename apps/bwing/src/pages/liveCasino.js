@@ -23,8 +23,7 @@ const defGames = [
 		...defGameInfo.LIVEcasinoOne789,
 		displayKey: "lbl_liveCasino_789SeDie",
 		icon: "icon icon-one789",
-		img: liveCasino_One789,
-		isNew: true
+		img: liveCasino_One789
 	},
 	{
 		...defGameInfo.LIVEcasinoWM,

@@ -186,7 +186,7 @@ const PromotionContent = ({ staticList, location, navBar }) => {
 			: null;
 
 	const noData =
-		!rows?.length && !staticRows ? (
+		!rows?.length && !staticRows?.length ? (
 			<NoData displayText={i18n.msg_NoData} />
 		) : null;
 

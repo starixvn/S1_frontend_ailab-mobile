@@ -6,7 +6,7 @@
     "sourceType": "module",
     "project": "./tsconfig.*?.json"
   },
-  "ignorePatterns": ["**/*"],
+  "ignorePatterns": ["**/*", "config-overrides.js"],
   "plugins": ["@typescript-eslint", "@nrwl/nx"],
   "extends": [
     "airbnb", 

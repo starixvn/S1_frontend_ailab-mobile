@@ -374,7 +374,7 @@
 	"lbl_Top":"TOP",
 	"lbl_Rewards":"รางวัล",
 	"lbl_MoreDetails":"รายละเอียดเพิ่มเติม",
-	"lbl_EventTitle":"ลุ้นรับ IPHONE 12 ในวันคริสต์มาส & ปีใหม่",
+	"lbl_EventTitle":"ลุ้นรับรางวัลมูลค่าสูงถึง  750,000  บาท  สำหรับตรุษจีนนี้!",
 	"lbl_Ranking_Sports":"กีฬา อันดับที่",
 	"lbl_Ranking_LiveCasino":"คาสิโนสด อันดับที่",
 	"lbl_Ranking_Slots":"สล็อต อันดับที่",
@@ -420,6 +420,6 @@
 	"lbl_DownloadApp":"ดาวน์โหลดAPP",
 	"lbl_ScanQRCode":"Scan QR Code",
 	"lbl_GoToGame":"Go To Game",
-	"lbl_GoToDownloadApp":"Go To Download APP"
-
+	"lbl_GoToDownloadApp":"Go To Download APP",
+	"lbl_Last_Event":"กิจกรรมสุดท้าย"
 }
