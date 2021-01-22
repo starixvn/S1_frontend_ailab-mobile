@@ -18,14 +18,12 @@ const defGames = [
 	{
 		...defGameInfo.One789_lottery,
 		displayKey: "lbl_TraditionalLottery",
-		img: One789LotteryTra,
-		isNew: true
+		img: One789LotteryTra
 	},
 	{
 		...defGameInfo.One789_lottery_789,
 		displayKey: "lbl_789Lottery",
-		img: One789Lottery,
-		isNew: true
+		img: One789Lottery
 	},
 	{
 		...defGameInfo.sabaClub,
