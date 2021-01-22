@@ -30,7 +30,7 @@ const PopUp = () => {
 			break;
 
 		case defPopBoxType.OneGame:
-			content = <OneGamePopBox ClosePopbox={popBox.ClosePopbox} />;
+			content = <OneGamePopBox setRedirect={popBox.setRedirect} />;
 			break;
 
 		default:

@@ -15,6 +15,11 @@ export default () => {
 		tpId: productList.oneGame.tpId
 	});
 
+	const clickDownload = () => {
+		const downloadLink = "http://interdownload.info/download/OneGaming.apk";
+		return typeof window !== "undefined" ? window.open(downloadLink) : null;
+	};
+
 	return (
 		<>
 			<img src={oneGameImg} className="banner" alt="one game" />
@@ -25,12 +30,18 @@ export default () => {
 				<ButtonWithCopyBtn value={data?.password} />
 			</div>
 			<div className="btn-group">
-				<button className="orange icon icon-android">
+				<button
+					className="orange icon icon-android"
+					onClick={clickDownload}>
 					{i18n.lbl_DownloadApp.toUpperCase()}
 				</button>
 			</div>
-			<div className="kisstitle">{i18n.lbl_ScanQRCode}</div>
-			<img src={QRCode} className="onegameQR" alt="one game QR code" />
+			<div className="kisstitle">
+				{`${i18n.lbl_ScanQRCode} (Android)`}
+			</div>
+			<div className="onegameQR">
+				<img src={QRCode} alt="one game QR code" />
+			</div>
 		</>
 	);
 };

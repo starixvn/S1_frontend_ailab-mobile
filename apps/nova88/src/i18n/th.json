@@ -419,6 +419,7 @@
 	"lbl_Poker":"Poker",
 	"lbl_DownloadApp":"ดาวน์โหลดAPP",
 	"lbl_ScanQRCode":"Scan QR Code",
-	"lbl_GoToGame":"Go To Game"
+	"lbl_GoToGame":"Go To Game",
+	"lbl_GoToDownloadApp":"Go To Download APP"
 
 }

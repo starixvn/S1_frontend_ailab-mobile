@@ -25,7 +25,13 @@ const Category = props => {
 	const [casinoTpIds, setCasinoTpIds] = useState(null);
 
 	const clickGame = gameInfo => {
-		const { tpId, gameId, path: _path, needLogin } = gameInfo;
+		const {
+			tpId,
+			gameId,
+			path: _path,
+			needLogin,
+			popBox: popBoxData
+		} = gameInfo;
 		const HandleLogin = () => {
 			setNav(defNavPanel.login);
 		};
@@ -35,6 +41,16 @@ const Category = props => {
 				: setRedirect({
 						redirect: true,
 						path: `/${_path}`
+				  });
+		}
+		if (popBoxData) {
+			return needLogin && !userInfo.isLogin
+				? HandleLogin()
+				: setPopBox({
+						isOpen: true,
+						title: popBoxData.title,
+						popBoxType: popBoxData.type,
+						setRedirect
 				  });
 		}
 		return GET_ENTER_PAGE({
@@ -83,7 +99,6 @@ const Category = props => {
 			casinoTpIds={casinoTpIds}
 			userCurrencyId={userInfo.currencyId}
 			langId={userInfo.langId}
-			setPopBox={setPopBox}
 		/>
 	);
 };
@@ -256,15 +271,6 @@ class CateGoryContent extends Component {
 										? this.props.i18n[subItem.descTextKey]
 										: ""
 								}
-								openPopBox={
-									subItem?.popBox
-										? this.props.setPopBox.bind(this, {
-												isOpen: true,
-												title: subItem?.popBox.title,
-												popBoxType: subItem?.popBox.type
-										  })
-										: null
-								}
 								{...subItem}
 							/>
 						);
@@ -334,7 +340,7 @@ const ProductItem = props => {
 		</a>
 	) : (
 		<a
-			onClick={props.openPopBox ? props.openPopBox : props.clickGame}
+			onClick={props.clickGame}
 			ref={props._ref}
 			className={props.isShow ? "open" : ""}>
 			{props.isNew ? <i className="icon icon-new" /> : null}

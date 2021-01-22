@@ -114,7 +114,7 @@ Item.defaultProps = {
 Item.propTypes = {
 	onClick: PropTypes.func.isRequired,
 	iconClassName: PropTypes.string,
-	displayText: PropTypes.string,
+	displayText: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	idx: PropTypes.number.isRequired
 };
 

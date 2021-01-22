@@ -312,6 +312,7 @@ const gameList = ({ langId }) => [
 				img: poker,
 				spanTextKey: "lbl_Poker",
 				isNew: true,
+				needLogin: true,
 				popBox: {
 					title: "One Game",
 					type: defPopBoxType.OneGame
