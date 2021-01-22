@@ -4317,9 +4317,12 @@ span.important {
 }
 
 .onegameQR {
-  width: 50%;
-  margin: auto;
+  text-align: center;
   margin-top: 3vw;
+}
+
+.onegameQR img {
+  width: 50%;
 }
 
 .installGuide {
