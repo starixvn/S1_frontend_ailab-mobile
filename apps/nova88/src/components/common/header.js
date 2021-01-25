@@ -12,10 +12,18 @@ import api from "../../service/api";
 import JoinPanel from "../join/join";
 import LoginPanel from "../login/login";
 import ReloadSpin from "./reloadSpin";
-import { number_format, isConvert } from "./common";
+import { number_format, isConvert, isEventPeriod } from "./common";
 import path from "../../path";
 import { siteInfo } from "../../config";
 import { tpWalletsListType } from "../transfer/transfer";
+
+const Logo_cny = "https://image.n88media.com/SiteSkin/img/logo_evt.png";
+const eventTime = {
+	logo_cny: {
+		startDate: "2021/01/29 11:00:00",
+		endDate: "2021/02/26 11:00:00"
+	}
+};
 
 const HeaderTitle = ({ title = "" }) => (
 	<>
@@ -29,7 +37,14 @@ const Header = ({ title = "", hideLogo = false }) => {
 		<header className={title ? "header" : ""} id="header">
 			{hideLogo ? null : (
 				<a href="/">
-					<img src={siteInfo().logo} alt="logo" />
+					<img
+						src={
+							isEventPeriod(eventTime.logo_cny)
+								? Logo_cny
+								: siteInfo().logo
+						}
+						alt="logo"
+					/>
 				</a>
 			)}
 			{title ? <HeaderTitle title={title} /> : <HeaderBtn />}
@@ -89,7 +104,7 @@ const HeaderBtn = () => {
 						setProcessing(false);
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
@@ -192,8 +207,11 @@ const HeaderBtn = () => {
 		? 0
 		: number_format(allWalletBalance, isConvert(userInfo.currencyId));
 
-	return redirectPath === null ? (
-		userInfo?.isLogin ? (
+	let content = null;
+	if (redirectPath !== null) {
+		content = <Redirect to={redirectPath} noThrow />;
+	} else if (userInfo?.isLogin) {
+		content = (
 			<>
 				<HeaderInfo
 					userName={userInfo?.userName}
@@ -209,15 +227,17 @@ const HeaderBtn = () => {
 					</Link>
 				</div>
 			</>
-		) : (
+		);
+	} else {
+		content = (
 			<div className="headerButton">
 				<JoinPanel />
 				<LoginPanel ButtonTitle={i18n.lbl_Login} />
 			</div>
-		)
-	) : (
-		<Redirect to={redirectPath} noThrow />
-	);
+		);
+	}
+
+	return content;
 };
 
 const HeaderInfo = props => {
