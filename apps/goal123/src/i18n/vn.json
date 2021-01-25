@@ -386,5 +386,7 @@
 	"lbl_TurnoverAccmulateHint":"Bạn cần hoành thành doanh thu cược yêu cầu của khuyến mãi để thực hiện chuyển quỹ",
 	"lbl_please_select_from_wallet":"Vui lòng chọn ví tiền phù hợp",
 	"lbl_please_select_to_wallet":"Vui lòng chọn quỹ phù hợp",
-	"lbl_Redeposit_Promo":"Nạp lại"
+	"lbl_Redeposit_Promo":"Nạp lại",
+	"lbl_V8Poker":"V8 Poker"
+
 }

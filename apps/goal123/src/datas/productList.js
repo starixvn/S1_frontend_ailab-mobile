@@ -27,6 +27,7 @@ import fish_DBF from "../styles/img/fish_ICG_DB.jpg";
 import fish_FOS from "../styles/img/fish_ICG_FOS.jpg";
 import fish_TAP from "../styles/img/fish_ICG_TTAT.jpg";
 import fish_TOS from "../styles/img/fish_ICG_TOS.jpg";
+import V8Poker from "../styles/img/V8.jpg";
 
 export const defGameInfo = {
 	Sports: { tpId: 1, gameId: 1 },
@@ -80,7 +81,8 @@ export const defGameInfo = {
 	ICG_TOWER_OF_SAVIORS: {
 		tpId: 24,
 		gameId: "cmt0001"
-	}
+	},
+	V8Poker: { gameId: 0, tpId: 25 }
 };
 
 const gameList = langId => [
@@ -144,6 +146,20 @@ const gameList = langId => [
 				icon: "lottery",
 				img: Lottery,
 				spanTextKey: "lbl_Lottery"
+			}
+		]
+	},
+	{
+		category: "poker",
+		translateKey: "lbl_V8Poker",
+		iconClassName: "icon icon-new",
+		items: [
+			{
+				...defGameInfo.V8Poker,
+				icon: "casino",
+				img: V8Poker,
+				spanTextKey: "lbl_V8Poker",
+				isNew: true
 			}
 		]
 	},
