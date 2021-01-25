@@ -67,33 +67,24 @@ export default ({ isLogin, listType }) => {
 	}, [listType, setPopBox, i18n]);
 
 	const GetTpWalletBalance = tpId => {
-		api_account_GetTpWalletBalance({ TpId: tpId }).then(
-			res => {
-				if (res.data.errorCode === 0) {
-					const _datas = res.data.data;
-					setTpWalletsList(prev =>
-						updateTpWalletsList({
-							prev,
-							tpId: _datas.tpId,
-							balance: _datas.balance
-						})
-					);
-				} else {
-					setPopBox({
-						isOpen: true,
-						title: i18n.lbl_ImportantNote,
-						content: `[${res.data.errorCode}]${res.data.message}`
-					});
-				}
-			},
-			() => {
+		api_account_GetTpWalletBalance({ TpId: tpId }).then(res => {
+			if (res.data.errorCode === 0) {
+				const _datas = res.data.data;
+				setTpWalletsList(prev =>
+					updateTpWalletsList({
+						prev,
+						tpId: _datas.tpId,
+						balance: _datas.balance
+					})
+				);
+			} else {
 				setPopBox({
 					isOpen: true,
 					title: i18n.lbl_ImportantNote,
-					content: i18n.msg_ApiServerError
+					content: `[${res.data.errorCode}]${res.data.message}`
 				});
 			}
-		);
+		});
 	};
 
 	useEffect(() => {
