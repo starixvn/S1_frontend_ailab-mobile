@@ -357,7 +357,8 @@
 	"lbl_Detail":"Chi tiết",
 	"lbl_TurnoverTotal":"Tổng Doanh thu",
 	"lbl_WinlostAmountTotal":"Tổng Doanh số Thắng - Thua",
-	"lbl_EventTitle":"ĐUA TOP GIÁNG SINH TRÚNG TIỀN MAY MẮN",
+	"lbl_EventTitle1":"CHÚC MỪNG NĂM MỚI",
+	"lbl_EventTitle2":"NHẬN QUÀ PHƠI PHỚI",
 	"lbl_Rank":"Thứ Hạng",
 	"lbl_Awards":"Phần Thưởng",
 	"lbl_TotalValue":"Tổng Giải Thưởng",
@@ -386,5 +387,6 @@
 	"lbl_TurnoverAccmulateHint":"Bạn cần hoành thành doanh thu cược yêu cầu của khuyến mãi để thực hiện chuyển quỹ",
 	"lbl_please_select_from_wallet":"Vui lòng chọn ví tiền phù hợp",
 	"lbl_please_select_to_wallet":"Vui lòng chọn quỹ phù hợp",
-	"lbl_Redeposit_Promo":"Nạp lại"
+	"lbl_Redeposit_Promo":"Nạp lại",
+	"lbl_Last_Event":"Sự kiện cuối cùng"
 }
