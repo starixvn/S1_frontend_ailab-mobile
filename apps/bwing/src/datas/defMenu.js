@@ -1,0 +1,256 @@
+/* eslint-disable camelcase */
+import { siteInfo } from "../config";
+import path from "../path";
+import { defGameInfo } from "./productList";
+import { isEventPeriod } from "../components/common/common";
+
+import game_SabaClub from "../styles/img/sabaclub.png";
+import game_Keno from "../styles/img/keno.png";
+import game_Lottery from "../styles/img/Lottery.png";
+import game_One789Lottery from "../styles/img/one789.png";
+import game_One789LotteryTra from "../styles/img/lotteryTra.png";
+
+import fishing_GG from "../styles/img/fishingGG.png";
+import fishing_SG from "../styles/img/fishingSG.png";
+import fishing_SGwar from "../styles/img/fishingSGwar.png";
+import fishing_ICG_DB from "../styles/img/fishingICG-DB.png";
+import fishing_ICG_FOS from "../styles/img/fishingICG-FOS.png";
+import fishing_ICG_TTATP from "../styles/img/fishingICG-TTATP.png";
+import fishing_ICG_TOS from "../styles/img/fishingICG-TOS.png";
+
+import liveCasino_One789 from "../styles/img/liveGame/liveGame9.png";
+import liveCasino_WM from "../styles/img/liveGame/liveGame1.png";
+import liveCasino_AG from "../styles/img/liveGame/liveGame2.png";
+import liveCasino_PP from "../styles/img/liveGame/liveGame3.png";
+import liveCasino_AE from "../styles/img/liveGame/liveGame4.png";
+import liveCasino_DG from "../styles/img/liveGame/liveGame5.png";
+import liveCasino_AB from "../styles/img/liveGame/liveGame6.png";
+import liveCasino_EB from "../styles/img/liveGame/liveGame7.png";
+import liveCasino_SA from "../styles/img/liveGame/liveGame8.png";
+
+export const defIconType = {
+	live: " liveIcon",
+	new: " newicon",
+	new_nav: " icon icon-newicon"
+};
+
+const eventTime = {
+	ranking: { startDate: "2021/01/01 12:00:00" },
+	new_ICG: { endDate: "2021/02/08 11:00:00" },
+	new_one789: { endDate: "2021/01/22 11:00:00" }
+};
+
+export const productList = langId => {
+	return {
+		sports: {
+			displayKey: "lbl_Sports",
+			...defGameInfo.Sports
+		},
+		game: {
+			displayKey: "lbl_Games",
+			path: path.games.root,
+			items: [
+				{
+					displayKey: "lbl_TraditionalLottery",
+					img: game_One789LotteryTra,
+					...defGameInfo.One789_lottery,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.new_one789)
+						}
+					]
+				},
+				{
+					displayKey: "lbl_789Lottery",
+					img: game_One789Lottery,
+					...defGameInfo.One789_lottery_789,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.new_one789)
+						}
+					]
+				},
+				{
+					displayKey: "lbl_SabaClub",
+					img: game_SabaClub,
+					...defGameInfo.sabaClub
+				},
+				{
+					displayKey: "lbl_Keno",
+					img: game_Keno,
+					...defGameInfo.Keno
+				},
+				{
+					displayKey: "lbl_Lottery",
+					img: game_Lottery,
+					...defGameInfo.lottery
+				}
+			]
+		},
+		eSports: {
+			displayKey: "lbl_eSports",
+			...defGameInfo.eSports
+		},
+		casino: {
+			displayKey: "lbl_Slots",
+			path: path.casino.root,
+			eventIcon: [
+				{
+					icon: defIconType.new_nav,
+					inPeriod: isEventPeriod(eventTime.new_ICG)
+				}
+			]
+		},
+		liveCasino: {
+			displayKey: "lbl_LiveCasino",
+			path: path.liveCasino.root,
+			items: [
+				{
+					displayKey: "lbl_liveCasino_789SeDie",
+					icon: "icon icon-one789",
+					img: liveCasino_One789,
+					...defGameInfo.LIVEcasinoOne789,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.new_one789)
+						}
+					]
+				},
+				{
+					displayKey: "WM",
+					icon: "icon icon-WM",
+					img: liveCasino_WM,
+					...defGameInfo.LIVEcasinoWM
+				},
+				{
+					displayKey: "AG",
+					icon: "icon icon-AG",
+					img: liveCasino_AG,
+					...defGameInfo.LIVEcasinoAG
+				},
+				{
+					displayKey: "PP",
+					icon: "icon icon-PP",
+					img: liveCasino_PP,
+					...defGameInfo.LIVEcasinoPP
+				},
+				{
+					displayKey: "AE",
+					icon: "icon icon-AE",
+					img: liveCasino_AE,
+					...defGameInfo.LIVEcasinoAE
+				},
+				{
+					displayKey: "DG",
+					icon: "icon icon-DG",
+					img: liveCasino_DG,
+					...defGameInfo.LIVEcasinoDG
+				},
+				{
+					displayKey: "AB",
+					icon: "icon icon-AB",
+					img: liveCasino_AB,
+					...defGameInfo.LIVEcasinoAB
+				},
+				{
+					displayKey: "eBET",
+					icon: "icon icon-EB",
+					img: liveCasino_EB,
+					...defGameInfo.LIVEcasinoEB
+				},
+				{
+					displayKey: "SA",
+					icon: "icon icon-SA",
+					img: liveCasino_SA,
+					...defGameInfo.LIVEcasinoSA
+				}
+			]
+		},
+		fishing: {
+			displayKey: "lbl_Fishing",
+			path: path.fishing.root,
+			items: [
+				{
+					displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
+					img: fishing_ICG_DB,
+					...defGameInfo.ICG_DRAGONBALL_FISHING,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.new_ICG)
+						}
+					]
+				},
+				{
+					displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS",
+					img: fishing_ICG_FOS,
+					...defGameInfo.ICG_FISHING_OF_SAVIORS,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.new_ICG)
+						}
+					]
+				},
+				{
+					displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS",
+					img: fishing_ICG_TTATP,
+					...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.new_ICG)
+						}
+					]
+				},
+				{
+					displayKey: "lbl_Game_ICG_TOWER_OF_SAVIORS",
+					img: fishing_ICG_TOS,
+					...defGameInfo.ICG_TOWER_OF_SAVIORS,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.new_ICG)
+						}
+					]
+				},
+				{
+					displayKey: "lbl_FishingGG",
+					img: fishing_GG,
+					...defGameInfo.Fishing
+				},
+				{
+					displayKey: "lbl_FishingSG1",
+					img: fishing_SG,
+					...defGameInfo.Fishing_SG
+				},
+				{
+					displayKey: "lbl_FishingSG2",
+					img: fishing_SGwar,
+					...defGameInfo.Fishing_SGW
+				}
+			]
+		},
+		promotion: {
+			displayKey: "lbl_Promotions",
+			path: path.promotion.root
+		},
+		affiliate: {
+			displayKey: "lbl_Affiliates",
+			href: siteInfo(langId).affiliateLink
+		},
+		ranking: {
+			displayKey: "lbl_Ranking",
+			path: path.ranking.root,
+			eventIcon: [
+				{
+					icon: defIconType.live,
+					inPeriod: isEventPeriod(eventTime.ranking)
+				}
+			]
+		}
+	};
+};
