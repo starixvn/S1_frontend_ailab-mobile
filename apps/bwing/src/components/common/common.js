@@ -122,10 +122,10 @@ export const isEventPeriod = ({ startDate, endDate }) => {
 	let result = false;
 	if (_startDate && _endDate) {
 		result = now > _startDate && now < _endDate;
-	} else if (!_startDate) {
-		result = now < _endDate;
-	} else if (!_endDate) {
+	} else if (_startDate) {
 		result = now > _startDate;
+	} else if (_endDate) {
+		result = now < _endDate;
 	}
 
 	return result;
