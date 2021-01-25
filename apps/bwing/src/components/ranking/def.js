@@ -47,13 +47,13 @@ export const defDayBtns = {
 export const defPrize = [
 	{
 		rank: "1",
-		prize: "VND 8,888,000",
+		prize: "8,888,000",
 		noOfWinners: 1,
 		className: "no1"
 	},
-	{ rank: "2", prize: `VND 5,888,000`, noOfWinners: 1, className: "no2" },
-	{ rank: "3", prize: `VND 2,880,000`, noOfWinners: 1, className: "no3" },
-	{ rank: "4", prize: `VND 1,880,000`, noOfWinners: 1 },
-	{ rank: "5", prize: `VND 880,000`, noOfWinners: 1 },
-	{ rank: "6", prize: `VND 80,000`, noOfWinners: 15 }
+	{ rank: "2", prize: `5,888,000`, noOfWinners: 1, className: "no2" },
+	{ rank: "3", prize: `2,880,000`, noOfWinners: 1, className: "no3" },
+	{ rank: "4", prize: `1,880,000`, noOfWinners: 1 },
+	{ rank: "5", prize: `880,000`, noOfWinners: 1 },
+	{ rank: "6", prize: `88,000`, noOfWinners: 15 }
 ];
