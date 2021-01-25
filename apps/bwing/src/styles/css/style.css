@@ -6317,11 +6317,12 @@ span.important {
 }
 
 .ranking .rankBotton button {
-  padding: 2vw 4vw;
+  padding: 2vw 2vw;
   border: 1px solid #58cdff;
   color: #58cdff;
   border-radius: 5px;
   margin-right: 5px;
+  margin-bottom: 10px;
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
 }
