@@ -23,11 +23,16 @@ export class TpAPI extends BaseAPI {
 			direction
 		});
 
-	GotoGame = ({ GameId = null, TpId, LangId }) =>
+	GotoGame = ({
+		GameId = null,
+		TpId,
+		LangId,
+		AppType = defGotoGame_AppType.NativeAPP
+	}) =>
 		this.tpRequest.post("/GotoGame", {
 			GameId,
 			TpId,
 			LangId,
-			AppType: defGotoGame_AppType.NativeAPP
+			AppType
 		});
 }
