@@ -14,9 +14,7 @@ export const GET_CASINO_ENTER_PAGE = (tpId, gameId, isFree, langId) => {
 	const entPageUrl = `${config.openURL}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}`;
 	window
 		.open(
-			`${entPageUrl}&fun=${
-				isFree ? 1 : 0
-			}&gameId=${gameId}&tpId=${tpId}&gameType=slots`,
+			`${entPageUrl}&fun=${isFree ? 1 : 0}&gameType=slots`,
 			`Tp_${tpId}`,
 			"toolbar=no, menubar=no,scrollbars=no,resizable=no,location=no,directories=no,status=no, top=0, left=0"
 		)

@@ -211,7 +211,10 @@ class CateGoryContent extends Component {
 						}
 						isOpen={`${_open ? " open" : ""}`}
 						translation={this.props.i18n[item.translateKey]}
-						isNew={item.isNew}
+						subIcon={item.items.filter(
+							subItem => subItem.eventIcon
+						)}
+						eventIcon={item.eventIcon}
 					/>
 				);
 
@@ -253,7 +256,7 @@ class CateGoryContent extends Component {
 									to={path.casino.root}
 									parameter={subItem.parameter}
 									img={subItem.img}
-									isNew={subItem.isNew}
+									eventIcon={subItem.eventIcon}
 								/>
 							);
 						}
@@ -309,17 +312,24 @@ class CateGoryContent extends Component {
 }
 
 const CategoryItem = props => {
+	const showingEventIcon = getEventIcon({
+		subIcon: props?.subIcon,
+		eventIcon: props?.eventIcon
+	});
 	return (
 		<button
 			className={`icon icon-${props.categoryIcon}${props.isOpen}`}
 			onClick={props.onClick}>
 			<div>{props.translation}</div>
-			{props.isNew ? <div className="icon icon-new" /> : null}
+			{showingEventIcon !== "" ? (
+				<i className={`icon${showingEventIcon}`} />
+			) : null}
 		</button>
 	);
 };
 
 const ProductItem = props => {
+	const showingEventIcon = getEventIcon({ eventIcon: props?.eventIcon });
 	const content = props.href ? (
 		<a
 			href={props.href}
@@ -327,7 +337,9 @@ const ProductItem = props => {
 			rel="noreferrer"
 			ref={props._ref}
 			className={props.isShow ? "open" : ""}>
-			{props.isNew ? <i className="icon icon-new" /> : null}
+			{showingEventIcon !== "" ? (
+				<i className={`icon ${showingEventIcon}`} />
+			) : null}
 			<img src={props.img} alt={props.icon ?? ""} />
 			{props.spanText ? (
 				<span className={`icon icon-${props.icon}`}>
@@ -343,7 +355,9 @@ const ProductItem = props => {
 			onClick={props.clickGame}
 			ref={props._ref}
 			className={props.isShow ? "open" : ""}>
-			{props.isNew ? <i className="icon icon-new" /> : null}
+			{showingEventIcon !== "" ? (
+				<i className={`icon ${showingEventIcon}`} />
+			) : null}
 			<img src={props.img} alt={props.icon ?? ""} />
 			{props.spanText ? (
 				<span className={`icon icon-${props.icon}`}>
@@ -365,13 +379,16 @@ const ProductItem = props => {
 };
 
 const ProductLinkItem = props => {
+	const showingEventIcon = getEventIcon({ eventIcon: props?.eventIcon });
 	return (
 		<Link
 			to={`/${props.to}`}
 			state={props.parameter}
 			ref={props._ref}
 			className={props.isShow ? "open" : ""}>
-			{props.isNew ? <i className="icon icon-new" /> : null}
+			{showingEventIcon !== "" ? (
+				<i className={`icon ${showingEventIcon}`} />
+			) : null}
 			<img src={props.img} alt={props.icon ?? ""} />
 		</Link>
 	);
@@ -383,6 +400,23 @@ const ComingSoonItem = props => {
 			<img src={props.img} alt="Coming Soon" />
 		</a>
 	);
+};
+
+const getEventIcon = ({ subIcon, eventIcon }) => {
+	let showingEventIcon = "";
+	let eventIconList = eventIcon ?? [];
+
+	if (subIcon?.length > 0) {
+		const categoryIdx = subIcon.findIndex(obj =>
+			obj?.eventIcon.find(item => item.inPeriod === true)
+		);
+		eventIconList =
+			categoryIdx === -1 ? [] : subIcon[categoryIdx].eventIcon;
+	}
+	const eventInPeriodObj = eventIconList.find(item => item.inPeriod === true);
+	showingEventIcon = eventInPeriodObj ? eventInPeriodObj.icon : "";
+
+	return showingEventIcon;
 };
 
 export default Category;

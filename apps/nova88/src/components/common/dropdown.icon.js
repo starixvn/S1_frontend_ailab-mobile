@@ -108,7 +108,7 @@ const Item = props => {
 
 Item.defaultProps = {
 	iconClassName: "",
-	displayText: ""
+	displayText: null
 };
 
 Item.propTypes = {
