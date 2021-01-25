@@ -12,8 +12,7 @@ const PopBoxOneGame = ({ setRedirect }) => {
 
 	const goToGame = () => {
 		setPopBox({ isOpen: false });
-
-		return GET_ENTER_PAGE({
+		GET_ENTER_PAGE({
 			isLogin: userInfo.isLogin,
 			langId: userInfo.langId,
 			tpId: 13
@@ -21,11 +20,11 @@ const PopBoxOneGame = ({ setRedirect }) => {
 	};
 
 	const toDownloadPage = () => {
+		setPopBox({ isOpen: false });
 		setRedirect({
 			redirect: true,
 			path: `/${path.oneGame.root}`
 		});
-		setPopBox({ isOpen: false });
 	};
 
 	return (
