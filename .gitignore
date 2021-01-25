@@ -42,3 +42,5 @@ node_modules
 cmd
 coverage
 debug.log
+
+.eslintcache

@@ -28,6 +28,8 @@ import fish_FOS from "../styles/img/fish_ICG_FOS.jpg";
 import fish_TAP from "../styles/img/fish_ICG_TTAT.jpg";
 import fish_TOS from "../styles/img/fish_ICG_TOS.jpg";
 
+import { isEventPeriod } from "../components/common/common";
+
 export const defGameInfo = {
 	Sports: { tpId: 1, gameId: 1 },
 	CockFighting: { tpId: 17 },
@@ -81,6 +83,16 @@ export const defGameInfo = {
 		tpId: 24,
 		gameId: "cmt0001"
 	}
+};
+
+const defIconType = {
+	live: " icon-live",
+	new: " icon-new"
+};
+
+const eventTime = {
+	ranking: { startDate: "2021/01/01 12:00:00" },
+	new_ICG: { endDate: "2021/02/08 11:00:00" }
 };
 
 const gameList = langId => [
@@ -148,7 +160,6 @@ const gameList = langId => [
 		]
 	},
 	{
-		iconClassName: "icon icon-new",
 		category: "fishing",
 		categoryIcon: "game",
 		className: "casinoList",
@@ -158,22 +169,42 @@ const gameList = langId => [
 			{
 				...defGameInfo.ICG_DRAGONBALL_FISHING,
 				img: fish_DBF,
-				isNew: true
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_ICG)
+					}
+				]
 			},
 			{
 				...defGameInfo.ICG_FISHING_OF_SAVIORS,
 				img: fish_FOS,
-				isNew: true
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_ICG)
+					}
+				]
 			},
 			{
 				...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
 				img: fish_TAP,
-				isNew: true
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_ICG)
+					}
+				]
 			},
 			{
 				...defGameInfo.ICG_TOWER_OF_SAVIORS,
 				img: fish_TOS,
-				isNew: true
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_ICG)
+					}
+				]
 			},
 			{
 				...defGameInfo.Fishing,
@@ -203,7 +234,6 @@ const gameList = langId => [
 		]
 	},
 	{
-		iconClassName: "icon icon-new",
 		category: "slots",
 		categoryIcon: "casino",
 		translateKey: "lbl_Slots",
@@ -213,7 +243,13 @@ const gameList = langId => [
 				parameter: { tpId: defGameInfo.Casino_All.tpId },
 				img: Casino,
 				icon: "casino",
-				spanTextKey: "lbl_Slots"
+				spanTextKey: "lbl_Slots",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_ICG)
+					}
+				]
 			}
 		]
 	},
@@ -275,7 +311,12 @@ const gameList = langId => [
 		category: "ranking",
 		categoryIcon: "icon32px_top",
 		translateKey: "lbl_Ranking",
-		iconClassName: "icon icon-live RANKING",
+		eventIcon: [
+			{
+				icon: defIconType.live,
+				inPeriod: isEventPeriod(eventTime.ranking)
+			}
+		],
 		items: [
 			{
 				icon: "icon32px_top",
