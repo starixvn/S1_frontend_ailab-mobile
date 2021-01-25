@@ -1,21 +1,16 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { Redirect, Link } from "@reach/router";
-import {
-	userInfoContext,
-	i18nContext,
-	popBoxContext,
-	msgCountContext,
-	walletInfoContext
-} from "Context";
-import api from "../../service/api";
+import { userInfoContext, i18nContext, msgCountContext } from "Context";
 import JoinPanel from "../join/join";
 import LoginPanel from "../login/login";
 import ReloadSpin from "./reloadSpin";
 import { number_format, isConvert } from "./common";
 import path from "../../path";
 import { siteInfo } from "../../config";
-import { tpWalletsListType } from "../transfer/transfer";
+import { tpWalletsListType } from "../transfer/transfer.def";
+import useGetBalance from "../hook/useGetMainBalance";
+import useGetTpBalance from "../hook/useGetTpBalance";
 
 const HeaderTitle = ({ title = "" }) => (
 	<>
@@ -41,13 +36,17 @@ const HeaderBtn = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { msgCount } = useContext(msgCountContext);
-	const { walletInfo, setWalletInfo } = useContext(walletInfoContext);
-	const { setPopBox } = useContext(popBoxContext);
 	const [redirectPath, setRedirectPath] = useState(null);
-	const [processing, setProcessing] = useState(false);
-	const [tpWalletsList, setTpWalletsList] = useState([]);
-	const isMountedRef = useRef(null);
 
+	const { mainWalletInfo, GetBalance } = useGetBalance({
+		isLogin: userInfo.isLogin
+	});
+	const { tpWalletsList, GetTpWalletList } = useGetTpBalance({
+		isLogin: userInfo.isLogin,
+		listType: tpWalletsListType.allWallets
+	});
+
+	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => {
@@ -56,168 +55,57 @@ const HeaderBtn = () => {
 	});
 
 	useEffect(() => {
-		if (userInfo.isLogin) {
-			GetBalance();
-		}
-	}, [userInfo.isLogin]);
-
-	useEffect(() => {
 		if (isMountedRef.current && redirectPath !== null) {
 			setRedirectPath(null);
 		}
 	}, [redirectPath, setRedirectPath]);
 
-	const GetBalance = () => {
-		if (!processing) {
-			setProcessing(true);
-
-			api.account.GetBalnace().then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							setWalletInfo(prevState => ({
-								...prevState,
-								main: res.data.data
-							}));
-						} else {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: res.data.message
-							});
-						}
-						setProcessing(false);
-					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-						setProcessing(false);
-					}
-				}
-			);
-
-			api.account
-				.GetTpWalletList({ ListType: tpWalletsListType.allWallets })
-				.then(
-					res => {
-						if (isMountedRef.current) {
-							if (res.data.errorCode === 0) {
-								res.data.data?.forEach(i => {
-									api.account
-										.GetTpWalletBalance({ TpId: i.tpId })
-										.then(
-											resBalance => {
-												if (
-													resBalance.data
-														.errorCode === 0
-												) {
-													const {
-														data
-													} = resBalance.data;
-													const tpWalletData = {
-														id: data.tpId,
-														balance: data.balance
-													};
-
-													const tpWalletIdx = tpWalletsList.findIndex(
-														wallet =>
-															wallet.id === i.tpId
-													);
-
-													if (tpWalletIdx !== -1) {
-														setTpWalletsList(
-															prev => {
-																prev[
-																	tpWalletIdx
-																] = tpWalletData;
-																return prev;
-															}
-														);
-													} else {
-														setTpWalletsList(
-															prev => [
-																...prev,
-																tpWalletData
-															]
-														);
-													}
-												}
-											},
-											() => {
-												if (isMountedRef.current) {
-													setPopBox({
-														isOpen: true,
-														title:
-															i18n.lbl_ImportantNote,
-														content:
-															i18n.msg_ApiServerError
-													});
-												}
-											}
-										);
-								});
-							} else {
-								setPopBox({
-									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: res.data.message
-								});
-							}
-						}
-					},
-					() => {
-						if (isMountedRef.current) {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: i18n.msg_ApiServerError
-							});
-						}
-					}
-				);
-		}
+	const clickReloadSpin = () => {
+		GetBalance();
+		GetTpWalletList();
 	};
 
 	const otherWalletBalance = tpWalletsList?.reduce((prev, curr) => {
 		return prev + curr.balance;
 	}, 0);
-	const allWalletBalance = walletInfo.main + otherWalletBalance;
-
+	const allWalletBalance = mainWalletInfo.balance + otherWalletBalance;
 	const balance = !allWalletBalance
 		? 0
 		: number_format(allWalletBalance, isConvert(userInfo.currencyId));
 
-	return redirectPath === null ? (
-		userInfo?.isLogin ? (
-			<>
-				<HeaderInfo
-					userName={userInfo?.userName}
-					currency={i18n[`Currency_${userInfo.currencyId}`]}
-					amount={balance}
-				/>
-				<ReloadSpin func={GetBalance} />
+	let content = null;
+	if (redirectPath === null) {
+		if (userInfo?.isLogin) {
+			content = (
+				<>
+					<HeaderInfo
+						userName={userInfo?.userName}
+						currency={i18n[`Currency_${userInfo.currencyId}`]}
+						amount={balance}
+					/>
+					<ReloadSpin func={clickReloadSpin} />
+					<div className="headerButton">
+						<Link to={path.message.root} className="icon icon-chat">
+							{msgCount ? (
+								<span className="amount">{msgCount}</span>
+							) : null}
+						</Link>
+					</div>
+				</>
+			);
+		} else {
+			content = (
 				<div className="headerButton">
-					<Link to={path.message.root} className="icon icon-chat">
-						{msgCount ? (
-							<span className="amount">{msgCount}</span>
-						) : null}
-					</Link>
+					<JoinPanel />
+					<LoginPanel ButtonTitle={i18n.lbl_Login} />
 				</div>
-			</>
-		) : (
-			<div className="headerButton">
-				<JoinPanel />
-				<LoginPanel ButtonTitle={i18n.lbl_Login} />
-			</div>
-		)
-	) : (
-		<Redirect to={redirectPath} noThrow />
-	);
+			);
+		}
+	} else {
+		content = <Redirect to={redirectPath} noThrow />;
+	}
+
+	return content;
 };
 
 const HeaderInfo = props => {
