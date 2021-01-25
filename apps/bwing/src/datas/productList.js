@@ -54,7 +54,8 @@ export const defGameInfo = {
 	ICG_TOWER_OF_SAVIORS: {
 		tpId: 24,
 		gameId: "cmt0001"
-	}
+	},
+	V8Poker: { gameId: 0, tpId: 25 }
 };
 
 const gameList = langId => [
