@@ -379,9 +379,9 @@ const ProductItem = ({
 };
 
 ProductItem.defaultProps = {
-	href: "",
-	_ref: {},
-	isShow: null,
+	href: null,
+	_ref: null,
+	isShow: false,
 	icon: "",
 	spanText: "",
 	eventIcon: []

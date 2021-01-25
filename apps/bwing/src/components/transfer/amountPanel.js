@@ -1,8 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 import InputBox, { defIptStatus } from "../common/inputbox.hint";
 import Dropdown from "../common/dropdown";
 
-export default ({
+const AmountPanel = ({
 	i18n,
 	amount,
 	EditAmount,
@@ -86,3 +87,29 @@ export default ({
 		</div>
 	);
 };
+
+AmountPanel.defaultProps = {
+	i18n: {},
+	warning: {},
+	selectedIdx: null,
+	transferOptions: [],
+	selectItem: null,
+	allWalletsList: []
+};
+
+AmountPanel.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string),
+	amount: PropTypes.string.isRequired,
+	EditAmount: PropTypes.func.isRequired,
+	warning: PropTypes.shape({
+		status: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+		msg: PropTypes.string
+	}),
+	clickSubmit: PropTypes.func.isRequired,
+	selectedIdx: PropTypes.objectOf(PropTypes.any),
+	transferOptions: PropTypes.objectOf(PropTypes.any),
+	selectItem: PropTypes.func,
+	allWalletsList: PropTypes.arrayOf(PropTypes.object)
+};
+
+export default AmountPanel;

@@ -2,18 +2,7 @@ import React, { useContext, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { Redirect, Link } from "@reach/router";
 // import SubMenu from "../subMenu/subMenu";
-import {
-	userInfoContext,
-	i18nContext,
-	walletInfoContext,
-	popBoxContext,
-	msgCountContext
-} from "./context";
-import {
-	api_GetBalnace,
-	api_account_GetTpWalletList,
-	api_account_GetTpWalletBalance
-} from "../../service/api/account";
+import { userInfoContext, i18nContext, msgCountContext } from "./context";
 import JoinPanel from "../join/join";
 import LoginPanel from "../login/login";
 import ReloadSpin from "./reloadSpin";
@@ -22,6 +11,8 @@ import path from "../../path";
 import Logo from "../../styles/img/logo.png";
 import Logo_cny from "../../styles/img/logo_evt.png";
 import { tpWalletsListType } from "../transfer/transfer.def";
+import useGetBalance from "../hook/useGetMainBalance";
+import useGetTpBalance from "../hook/useGetTpBalance";
 
 const eventTime = {
 	logo_cny: {
@@ -73,11 +64,16 @@ const HeaderBtn = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { msgCount } = useContext(msgCountContext);
-	const { walletInfo, setWalletInfo } = useContext(walletInfoContext);
-	const { setPopBox } = useContext(popBoxContext);
 	const [redirectPath, setRedirectPath] = useState(null);
-	const [processing, setProcessing] = useState(false);
-	const [tpWalletsList, setTpWalletsList] = useState([]);
+
+	const { mainWalletInfo, GetBalance } = useGetBalance({
+		isLogin: userInfo.isLogin
+	});
+	const { tpWalletsList, GetTpWalletList } = useGetTpBalance({
+		isLogin: userInfo.isLogin,
+		listType: tpWalletsListType.allWallets
+	});
+
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -88,125 +84,20 @@ const HeaderBtn = () => {
 	});
 
 	useEffect(() => {
-		if (userInfo.isLogin) {
-			GetBalance();
-		}
-	}, [userInfo.isLogin]);
-
-	useEffect(() => {
 		if (isMountedRef.current && redirectPath !== null) {
 			setRedirectPath(null);
 		}
 	}, [redirectPath, setRedirectPath]);
 
-	const GetBalance = () => {
-		if (!processing) {
-			setProcessing(true);
-
-			api_GetBalnace().then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							setWalletInfo(prevState => ({
-								...prevState,
-								main: res.data.data
-							}));
-						} else {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: `[${res.data.errorCode}]${res.data.message}`
-							});
-						}
-						setProcessing(false);
-					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-						setProcessing(false);
-					}
-				}
-			);
-
-			api_account_GetTpWalletList({
-				ListType: tpWalletsListType.allWallets
-			}).then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							res.data.data?.forEach(i => {
-								api_account_GetTpWalletBalance({
-									TpId: i.tpId
-								}).then(
-									response => {
-										if (response.data.errorCode === 0) {
-											const { data } = response.data;
-											const tpWalletData = {
-												id: data.tpId,
-												balance: data.balance
-											};
-
-											const tpWalletIdx = tpWalletsList.findIndex(
-												wallet => wallet.id === i.tpId
-											);
-
-											if (tpWalletIdx !== -1) {
-												setTpWalletsList(prev => {
-													prev[
-														tpWalletIdx
-													] = tpWalletData;
-													return prev;
-												});
-											} else {
-												setTpWalletsList(prev => [
-													...prev,
-													tpWalletData
-												]);
-											}
-										}
-									},
-									err => {
-										if (isMountedRef.current) {
-											setPopBox({
-												isOpen: true,
-												title: i18n.lbl_ImportantNote,
-												content: i18n.msg_ApiServerError
-											});
-										}
-									}
-								);
-							});
-						} else {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: res.data.message
-							});
-						}
-					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-					}
-				}
-			);
-		}
+	const clickReloadSpin = () => {
+		GetBalance();
+		GetTpWalletList();
 	};
 
 	const otherWalletBalance = tpWalletsList?.reduce((prev, curr) => {
 		return prev + curr.balance;
 	}, 0);
-	const allWalletBalance = walletInfo.main + otherWalletBalance;
+	const allWalletBalance = mainWalletInfo.balance + otherWalletBalance;
 
 	const balance = !allWalletBalance
 		? 0
@@ -230,7 +121,7 @@ const HeaderBtn = () => {
 					amount={balance}
 					ClickUserName={ClickUserName}
 				/>
-				<ReloadSpin func={GetBalance} />
+				<ReloadSpin func={clickReloadSpin} />
 				<div className="headerButton">
 					<Link to={path.message.root} className="icon icon-chat">
 						{msgCount ? (
