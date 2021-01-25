@@ -346,7 +346,7 @@ const gameList = ({ langId }) => [
 				isNew: true,
 				needLogin: true,
 				popBox: {
-					title: "One Game",
+					title: "lbl_Poker",
 					type: defPopBoxType.OneGame
 				}
 			}

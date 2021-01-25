@@ -48,7 +48,7 @@ const Category = props => {
 				? HandleLogin()
 				: setPopBox({
 						isOpen: true,
-						title: popBoxData.title,
+						title: i18n[popBoxData.title],
 						popBoxType: popBoxData.type,
 						setRedirect
 				  });
