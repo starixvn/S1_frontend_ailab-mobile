@@ -668,6 +668,20 @@ main .gameList a {
   opacity: 1;
 }
 
+main .gameList a.icon-new:before {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  content: "\e9b2";
+  font-family: 'icomoon';
+  display: block;
+  color: #ffffff;
+  background-color: #ff0c0c;
+  font-size: 14px;
+  padding: 1px 3px 5px 3px;
+  border-radius: 2px;
+}
+
 main .gameList a img {
   width: 100%;
 }
@@ -718,36 +732,8 @@ main .gameList .casinoList a {
           flex: 0 0 calc(50% - 1.5vw);
 }
 
-main .gameList .casinoList a.icon-new::before {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
-  display: block;
-  color: #ffffff;
-  background-color: #ff0c0c;
-  font-size: 14px;
-  padding: 1px 3px 5px 3px;
-  border-radius: 2px;
-  -webkit-animation: flash linear infinite alternate 1s;
-          animation: flash linear infinite alternate 1s;
-}
-
 main .gameList .icon-casino {
   position: absolute;
-}
-
-main .gameList .icon-casino:after {
-  position: absolute;
-  top: 0;
-  left: -15px;
-  content: "\e9b2";
-  font-family: 'icomoon';
-  display: block;
-  color: #ffffff;
-  background-color: #ff0c0c;
-  font-size: 14px;
-  padding: 1px 3px 5px 3px;
-  border-radius: 2px;
 }
 
 main .gameList .icon-trophy {
