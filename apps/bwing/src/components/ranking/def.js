@@ -1,7 +1,8 @@
 export const defElemType = {
 	Event: "Event",
 	Ranking: "Ranking",
-	Record: "Record"
+	Record: "Record",
+	LastEvent: "LastEvent"
 };
 
 export const defBtns = {
@@ -20,6 +21,11 @@ export const defBtns = {
 		displayKey: "lbl_Records",
 		value: "Records",
 		elemType: defElemType.Record
+	},
+	LastEvent: {
+		displayKey: "lbl_Last_Event",
+		value: "LastEvent",
+		elemType: defElemType.LastEvent
 	}
 };
 
@@ -41,10 +47,13 @@ export const defDayBtns = {
 export const defPrize = [
 	{
 		rank: "1",
-		prize: "iPhone 12 Pro Max (256GB)",
+		prize: "VND 8,888,000",
 		noOfWinners: 1,
 		className: "no1"
 	},
-	{ rank: "2~6", prize: `VND 10,888,000`, noOfWinners: 5, className: "no2" },
-	{ rank: "7~16", prize: `VND 5,888,000`, noOfWinners: 10, className: "no3" }
+	{ rank: "2", prize: `VND 5,888,000`, noOfWinners: 1, className: "no2" },
+	{ rank: "3", prize: `VND 2,880,000`, noOfWinners: 1, className: "no3" },
+	{ rank: "4", prize: `VND 1,880,000`, noOfWinners: 1 },
+	{ rank: "5", prize: `VND 880,000`, noOfWinners: 1 },
+	{ rank: "6", prize: `VND 80,000`, noOfWinners: 15 }
 ];

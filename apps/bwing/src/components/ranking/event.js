@@ -15,8 +15,9 @@ const Event = ({ userInfo = {}, i18n = {}, isOpen }) => {
 			<img src={iphone} alt="iphone" />
 			<PrizeList userInfo={userInfo} i18n={i18n} />
 			<a
+				rel="noreferrer"
 				target="_blank"
-				href={`${config.t_and_cURL}/SiteSkin/${config.siteName}/ranking/${userInfo.langId}.html`}
+				href={`${config.t_and_cURL}/SiteSkin/${config.siteName}/ranking/${userInfo.langId}2.html`}
 				className="remind btn">
 				{i18n.lbl_MoreDetails}
 			</a>

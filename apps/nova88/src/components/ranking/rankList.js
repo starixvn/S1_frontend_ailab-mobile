@@ -52,10 +52,14 @@ const RankItems = ({ datas, selected }) =>
 		);
 	});
 
-const RankList = (
-	{ loading, i18n = {}, datas, selected, lastUpdTime },
+const RankList = ({
+	loading,
+	i18n = {},
+	datas,
+	selected,
+	lastUpdTime,
 	isLastEvent
-) => {
+}) => {
 	return (
 		<>
 			{!loading && (!datas || datas.length === 0) ? (
