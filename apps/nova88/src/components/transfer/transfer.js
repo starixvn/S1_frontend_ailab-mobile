@@ -8,35 +8,13 @@ import ReloadSpin from "../common/reloadSpin";
 import Loading from "../common/loading";
 import { defPopBoxType } from "../common/popbox";
 import api from "../../service/api";
-
-export const tpWalletsListType = {
-	allWallets: 0,
-	afterTransWallets: 1
-};
-
-const initSelectedIdx = {
-	transferFrom: null,
-	transferTo: null
-};
-
-const initTransferOptions = {
-	transferFrom: [],
-	transferTo: []
-};
-
-const updateTpWalletsList = ({ prev, tpId, balance = null }) => {
-	const tpWalletIdx = prev.findIndex(wallet => wallet.id === tpId);
-	if (tpWalletIdx !== -1) {
-		prev[tpWalletIdx].balance = balance;
-	} else {
-		prev.push({
-			id: tpId,
-			displayKey: `lbl_TpWallet_${tpId}`,
-			balance
-		});
-	}
-	return [...prev].sort((a, b) => a.id - b.id);
-};
+import {
+	tpWalletsListType,
+	initSelectedIdx,
+	initTransferOptions
+} from "./transfer.def";
+import useGetBalance from "../hook/useGetMainBalance";
+import useGetTpBalance from "../hook/useGetTpBalance";
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
@@ -44,15 +22,20 @@ const Panel = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const _isConvert = isConvert(userInfo.currencyId);
 
-	const [mainWalletInfo, setMainWalletInfo] = useState({});
-	const [tpWalletsList, setTpWalletsList] = useState([]);
 	const [transferOptions, setTransferOptions] = useState(initTransferOptions);
-
 	const [amount, setAmount] = useState("1");
 	const [warning, setWarning] = useState({ status: false, msg: "" });
 	const [selectedIdx, setSelectedIdx] = useState(initSelectedIdx);
 	const [recentDatas, setRecentDatas] = useState([]);
-	const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(false);
+
+	const { mainWalletInfo, GetBalance } = useGetBalance({
+		isLogin: userInfo.isLogin
+	});
+	const { tpWalletsList, GetTpWalletBalance } = useGetTpBalance({
+		isLogin: userInfo.isLogin,
+		listType: tpWalletsListType.allWallets
+	});
 
 	const isMountedRef = useRef(null);
 	useEffect(() => {
@@ -63,98 +46,8 @@ const Panel = () => {
 	});
 
 	useEffect(() => {
-		api.account
-			.GetTpWalletList({ ListType: tpWalletsListType.allWallets })
-			.then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							res.data.data?.forEach(i => {
-								GetTpWalletBalance(i.tpId);
-								setTpWalletsList(prev =>
-									updateTpWalletsList({
-										prev,
-										tpId: i.tpId,
-										balance: null
-									})
-								);
-							});
-						} else {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: res.data.message
-							});
-						}
-						setLoading(false);
-					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setLoading(false);
-					}
-				}
-			);
-		GetBalnace();
-
-		api.tp.GetTransferRecent().then(res => {
-			if (res.data.errorCode === 0 && isMountedRef.current) {
-				setRecentDatas(res.data.data);
-			}
-		});
+		GetTransferRecent();
 	}, []);
-
-	const allWalletsList = [mainWalletInfo, ...tpWalletsList];
-
-	const GetBalnace = () => {
-		api.account.GetBalnace().then(
-			res => {
-				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
-						const mainWalletData = {
-							id: 0,
-							displayKey: "lbl_MainWallet",
-							balance: res.data.data
-						};
-						setMainWalletInfo(mainWalletData);
-					} else {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: res.data.message
-						});
-					}
-				}
-			},
-			err => {
-				if (isMountedRef.current) {
-					setLoading(false);
-				}
-			}
-		);
-	};
-
-	const GetTpWalletBalance = _tpId => {
-		api.account.GetTpWalletBalance({ TpId: _tpId }).then(
-			res => {
-				if (res.data.errorCode === 0) {
-					const { tpId, balance } = res.data.data;
-					setTpWalletsList(prev =>
-						updateTpWalletsList({
-							prev,
-							tpId,
-							balance
-						})
-					);
-				}
-			},
-			err => {
-				if (isMountedRef.current) {
-					setLoading(false);
-				}
-			}
-		);
-	};
 
 	const GetTransferRecent = () => {
 		api.tp.GetTransferRecent().then(res => {
@@ -261,14 +154,14 @@ const Panel = () => {
 								});
 							} else {
 								GetTpWalletBalance(_tpId);
-								GetBalnace();
+								GetBalance();
 								setAmount("1");
 								GetTransferRecent();
 							}
 							setLoading(false);
 						}
 					},
-					err => {
+					() => {
 						if (isMountedRef.current) {
 							setLoading(false);
 						}
@@ -290,6 +183,7 @@ const Panel = () => {
 		}
 	};
 
+	const allWalletsList = [mainWalletInfo, ...tpWalletsList];
 	const arr = allWalletsList
 		.filter(wallet => {
 			return wallet.balance !== null;
@@ -305,7 +199,7 @@ const Panel = () => {
 						func={
 							wallet.id !== 0
 								? GetTpWalletBalance.bind(this, wallet.id)
-								: GetBalnace
+								: GetBalance
 						}
 					/>
 				</div>

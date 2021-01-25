@@ -1,8 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { number_format } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
 
-export default ({ i18n, walletInfo, GetBalnace, GetTpWalletBalance }) => {
+const WalletPanel = ({ i18n, walletInfo, GetBalance, GetTpWalletBalance }) => {
 	const arr = walletInfo
 		.filter(wallet => {
 			return wallet.balance !== null;
@@ -27,7 +28,7 @@ export default ({ i18n, walletInfo, GetBalnace, GetTpWalletBalance }) => {
 						<ReloadSpin
 							func={
 								item.id === 0
-									? GetBalnace
+									? GetBalance
 									: GetTpWalletBalance.bind(this, item.id)
 							}
 							className="blue icon icon-spinner11 clickBtn"
@@ -43,3 +44,17 @@ export default ({ i18n, walletInfo, GetBalnace, GetTpWalletBalance }) => {
 		</div>
 	);
 };
+
+WalletPanel.defaultProps = {
+	i18n: {},
+	walletInfo: []
+};
+
+WalletPanel.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string),
+	walletInfo: PropTypes.arrayOf(PropTypes.object),
+	GetBalance: PropTypes.func.isRequired,
+	GetTpWalletBalance: PropTypes.func.isRequired
+};
+
+export default WalletPanel;
