@@ -27,7 +27,7 @@ import TandC from "../../service/t_and_c";
 import path from "../../path";
 import config from "../../config";
 import PromoPopup from "./join.promotion";
-import Logo from "../../styles/img/logo.png";
+import Logo from "../common/logo";
 
 const colName = [
 	"UserName",
@@ -640,7 +640,7 @@ const Join = () => {
 					<span />
 					<span />
 				</div>
-				<img src={Logo} alt="Goal123" />
+				<Logo />
 				<div className="title">{i18n.lbl_JoinNow}</div>
 
 				<Inputbox

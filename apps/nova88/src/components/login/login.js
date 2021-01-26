@@ -5,7 +5,7 @@ import Inputbox from "../common/inputbox";
 import InputboxPWD from "../common/inputbox.password";
 import { LOGIN } from "../../service/auth";
 import path from "../../path";
-import config, { siteInfo } from "../../config";
+import Logo from "../common/logo";
 
 const initState = {
 	UserName: "",
@@ -30,7 +30,7 @@ const warningLangKey = {
 
 const LoginPage = ({ ButtonTitle = "", hideBtn = false }) => {
 	const { i18n } = useContext(i18nContext);
-	const { setUserInfo } = useContext(userInfoContext);
+	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { nav, setNav } = useContext(navContext);
 	const [userValueState, setUserValueState] = useState(initState);
 	const [redirectPath, setRedirectPath] = useState(null);
@@ -182,7 +182,7 @@ const LoginPage = ({ ButtonTitle = "", hideBtn = false }) => {
 					<span />
 				</div>
 
-				<img src={siteInfo().logo} alt={config.siteName} />
+				<Logo langId={userInfo.langId} />
 				<div className="title">{i18n.lbl_Login}</div>
 
 				<Inputbox

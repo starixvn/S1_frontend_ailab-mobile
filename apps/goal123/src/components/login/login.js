@@ -11,8 +11,7 @@ import {
 	defNavPanel
 } from "../common/context";
 import path from "../../path";
-import config from "../../config";
-import Logo from "../../styles/img/logo.png";
+import Logo from "../common/logo";
 
 const initState = {
 	UserName: "",
@@ -194,7 +193,7 @@ const LoginPage = ({ ButtonTitle, hideBtn }) => {
 					<span />
 				</div>
 
-				<img src={Logo} alt={config.siteName} />
+				<Logo />
 				<div className="title">{i18n.lbl_Login}</div>
 
 				<Inputbox
