@@ -418,8 +418,9 @@
 	"lbl_Redeposit_Promo":"Deposit ulang",
 	"lbl_Poker":"Poker",
 	"lbl_DownloadApp":"Unduh Aplikasi",
-	"lbl_ScanQRCode":"Scan QR Code",
-	"lbl_GoToGame":"Go To Game",
-	"lbl_GoToDownloadApp":"Go To Download APP",
-	"lbl_Last_Event":"Event terakhir"
+	"lbl_ScanQRCode":"Memindai Kode QR",
+	"lbl_GoToGame":"Ke Permainan",
+	"lbl_GoToDownloadApp":"Buka untuk mendownload APP",
+	"lbl_Last_Event":"Event terakhir",
+	"lbl_Android":"Android"
 }

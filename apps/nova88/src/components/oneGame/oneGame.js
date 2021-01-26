@@ -37,7 +37,7 @@ export default () => {
 				</button>
 			</div>
 			<div className="kisstitle">
-				{`${i18n.lbl_ScanQRCode} (Android)`}
+				{`${i18n.lbl_ScanQRCode} (${i18n.lbl_Android})`}
 			</div>
 			<div className="onegameQR">
 				<img src={QRCode} alt="one game QR code" />

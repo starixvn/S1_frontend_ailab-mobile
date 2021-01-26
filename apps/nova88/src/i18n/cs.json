@@ -418,8 +418,9 @@
 	"lbl_Redeposit_Promo":"再存",
 	"lbl_Poker":"扑克",
 	"lbl_DownloadApp":"下载APP",
-	"lbl_ScanQRCode":"Scan QR Code",
-	"lbl_GoToGame":"Go To Game",
-	"lbl_GoToDownloadApp":"Go To Download APP",
-	"lbl_Last_Event":"上个活动"
+	"lbl_ScanQRCode":"扫二维码",
+	"lbl_GoToGame":"前往游戏",
+	"lbl_GoToDownloadApp":"前往下载APP",
+	"lbl_Last_Event":"上个活动",
+	"lbl_Android":"安卓"
 }

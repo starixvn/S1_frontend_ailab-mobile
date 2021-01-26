@@ -421,5 +421,6 @@
 	"lbl_ScanQRCode":"Scan QR Code",
 	"lbl_GoToGame":"Go To Game",
 	"lbl_GoToDownloadApp":"Go To Download APP",
-	"lbl_Last_Event":"Last Event"
+	"lbl_Last_Event":"Last Event",
+	"lbl_Android":"Android"
 }

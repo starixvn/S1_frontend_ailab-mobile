@@ -418,8 +418,9 @@
 	"lbl_Redeposit_Promo":"ทำรายการฝากอีกครั้ง",
 	"lbl_Poker":"โป๊กเกอร์",
 	"lbl_DownloadApp":"ดาวน์โหลดAPP",
-	"lbl_ScanQRCode":"Scan QR Code",
-	"lbl_GoToGame":"Go To Game",
-	"lbl_GoToDownloadApp":"Go To Download APP",
-	"lbl_Last_Event":"กิจกรรมสุดท้าย"
+	"lbl_ScanQRCode":"สแกน QR Code",
+	"lbl_GoToGame":"ไปที่เกม",
+	"lbl_GoToDownloadApp":"ไปที่ดาวน์โหลดแอพ",
+	"lbl_Last_Event":"กิจกรรมสุดท้าย",
+	"lbl_Android":"แอนดรอยด์"
 }
