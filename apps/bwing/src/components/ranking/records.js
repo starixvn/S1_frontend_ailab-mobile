@@ -17,7 +17,7 @@ const Records = ({
 	const { selectedDay, handleSelectDay } = useHandleSelectDay();
 	const { datas, lastUpdTime } = useGetRanking({
 		isOpen,
-		BeforeDays: selectedDay,
+		BeforeDays: isLastEvent ? 0 : selectedDay,
 		isLogin,
 		userName,
 		setLoading,

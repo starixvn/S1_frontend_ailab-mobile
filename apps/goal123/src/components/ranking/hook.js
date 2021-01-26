@@ -52,9 +52,10 @@ export const useGetRanking = ({
 				setLoading(true);
 				try {
 					const TopNum = 6;
+					const lastEventTopNum = 20;
 					const res = await api_events_GetLeaderboardListV2({
 						lBCategoryId,
-						TopNum,
+						TopNum: isLastEvent ? lastEventTopNum : TopNum,
 						BeforeDays: beforeDays,
 						EventCode
 					});
