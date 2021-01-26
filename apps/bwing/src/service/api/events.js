@@ -11,8 +11,32 @@ export const api_events_GetLeaderboardList = ({
 		BeforeDays
 	});
 
+export const api_events_GetLeaderboardListV2 = ({
+	lBCategoryId = 0,
+	TopNum = 10,
+	BeforeDays = 0,
+	EventCode
+}) =>
+	eventRequest.post(`/GetLeaderboardListV2/`, {
+		lBCategoryId,
+		TopNum,
+		BeforeDays,
+		EventCode
+	});
+
 export const api_events_GetCustRank = ({ LBCategoryId = 0, BeforeDays = 0 }) =>
 	eventRequest.post(`/GetCustRank/`, {
 		LBCategoryId,
 		BeforeDays
+	});
+
+export const api_events_GetCustRankV2 = ({
+	LBCategoryId = 0,
+	BeforeDays = 0,
+	EventCode
+}) =>
+	eventRequest.post(`/GetCustRankV2/`, {
+		LBCategoryId,
+		BeforeDays,
+		EventCode
 	});

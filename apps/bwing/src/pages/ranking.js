@@ -52,6 +52,14 @@ export default () => {
 				isOpen={defBtns[selected].elemType === defElemType.Record}
 				i18n={i18n}
 				userInfo={userInfo}
+				title={i18n[defBtns[selected].displayKey]}
+			/>
+			<Record
+				isOpen={defBtns[selected].elemType === defElemType.LastEvent}
+				i18n={i18n}
+				userInfo={userInfo}
+				isLastEvent={true}
+				title={i18n[defBtns[selected].displayKey]}
 			/>
 		</>
 	);
