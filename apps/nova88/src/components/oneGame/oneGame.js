@@ -16,7 +16,8 @@ export default () => {
 	});
 
 	const clickDownload = () => {
-		const downloadLink = "http://interdownload.info/download/OneGaming.apk";
+		const downloadLink =
+			"https://interdownload.info/download/OneGaming.apk";
 		return typeof window !== "undefined" ? window.open(downloadLink) : null;
 	};
 
