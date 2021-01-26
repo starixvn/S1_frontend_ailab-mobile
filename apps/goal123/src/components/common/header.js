@@ -6,20 +6,12 @@ import { userInfoContext, i18nContext, msgCountContext } from "./context";
 import JoinPanel from "../join/join";
 import LoginPanel from "../login/login";
 import ReloadSpin from "./reloadSpin";
-import { number_format, isEventPeriod } from "./common";
+import { number_format } from "./common";
 import path from "../../path";
-import Logo from "../../styles/img/logo.png";
-import Logo_cny from "../../styles/img/logo_evt.png";
 import { tpWalletsListType } from "../transfer/transfer.def";
 import useGetBalance from "../hook/useGetMainBalance";
 import useGetTpBalance from "../hook/useGetTpBalance";
-
-const eventTime = {
-	logo_cny: {
-		startDate: "2021/01/29 11:00:00",
-		endDate: "2021/02/26 11:00:00"
-	}
-};
+import Logo from "./logo";
 
 const HeaderTitle = ({ title }) => (
 	<>
@@ -37,12 +29,7 @@ const Header = ({ title, hideLogo }) => {
 		<header className={title ? "header" : ""} id="header">
 			{hideLogo ? null : (
 				<a href="/">
-					<img
-						src={
-							isEventPeriod(eventTime.logo_cny) ? Logo_cny : Logo
-						}
-						alt="logo"
-					/>
+					<Logo />
 				</a>
 			)}
 			{title ? <HeaderTitle title={title} /> : <HeaderBtn />}
