@@ -60,7 +60,7 @@ export const useGetRanking = ({
 					const TopNum = getTopNum(isLastEvent);
 					const res = await api_events_GetLeaderboardListV2({
 						lBCategoryId,
-						TopNum: isLastEvent ? lastEventTopNum : TopNum,
+						TopNum,
 						BeforeDays: beforeDays,
 						EventCode
 					});
