@@ -59,7 +59,8 @@ const defIconType = {
 };
 
 const eventTime = {
-	new_ICG: { endDate: "2021/02/08 11:00:00" }
+	new_ICG: { endDate: "2021/02/08 11:00:00" },
+	new_poker: { startDate: "2021/01/25 11:00:00" }
 };
 
 const gameList = ({ langId }) => [
@@ -336,15 +337,19 @@ const gameList = ({ langId }) => [
 		category: "poker",
 		categoryIcon: "play",
 		translateKey: "lbl_Poker",
-		isNew: true,
 		items: [
 			{
 				tpId: 13,
 				icon: "play",
 				img: poker,
 				spanTextKey: "lbl_Poker",
-				isNew: true,
 				needLogin: true,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_poker)
+					}
+				],
 				popBox: {
 					title: "lbl_Poker",
 					type: defPopBoxType.OneGame
