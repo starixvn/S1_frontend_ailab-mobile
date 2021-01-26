@@ -8,7 +8,7 @@ const Logo_cny_cs = "https://image.n88media.com/SiteSkin/img/logo_evt_cs.png";
 
 const eventTime = {
 	CNY: {
-		startDate: "2021/01/29 11:00:00",
+		startDate: "2021/01/26 11:00:00",
 		endDate: "2021/02/26 11:00:00"
 	}
 };
