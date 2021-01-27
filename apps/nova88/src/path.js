@@ -143,5 +143,8 @@ export default {
 				root: "history"
 			}
 		}
+	},
+	angPow: {
+		root: "angPow"
 	}
 };

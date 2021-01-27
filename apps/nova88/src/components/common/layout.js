@@ -1,6 +1,6 @@
-import React, { useContext, Component } from "react";
+import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { useMatch, useLocation } from "@reach/router";
+import { useMatch, useLocation, Link } from "@reach/router";
 import Footer from "./footer";
 import Header from "./header";
 import {
@@ -11,6 +11,7 @@ import {
 } from "./context";
 import path from "../../path";
 import Loading from "./loading";
+import eventImg from "../../styles/img/event/eventlink.png";
 
 const defPageInfo = {
 	default: {
@@ -117,6 +118,11 @@ const defPageInfo = {
 		titleKey: "lbl_friendReferral",
 		className: "main",
 		hideLogo: true
+	},
+	angPow: {
+		titleKey: "lbl_AngPow",
+		className: "main event",
+		hideLogo: true
 	}
 };
 
@@ -210,28 +216,56 @@ class RotationHint extends Component {
 
 	render() {
 		return (
-			<div
-				className={`Straight-lock${
-					this.state.rotateClass ? ` ${this.state.rotateClass}` : ""
-				}`}>
-				<div className="icon icon-mobile img-rotate">
-					<i className="icon icon-spinner11" />
+			<>
+				<div
+					className={`Straight-lock${
+						this.state.rotateClass
+							? ` ${this.state.rotateClass}`
+							: ""
+					}`}>
+					<div className="icon icon-mobile img-rotate">
+						<i className="icon icon-spinner11" />
+					</div>
+					<div className="text">
+						{this.props.i18n.lbl_RotationHint_1}
+						<br />
+						{this.props.i18n.lbl_RotationHint_2}
+						<br />
+						<span className="text-org">
+							{this.props.i18n.lbl_RotationHint_3}
+						</span>
+						<br />
+						{this.props.i18n.lbl_RotationHint_4}
+					</div>
 				</div>
-				<div className="text">
-					{this.props.i18n.lbl_RotationHint_1}
-					<br />
-					{this.props.i18n.lbl_RotationHint_2}
-					<br />
-					<span className="text-org">
-						{this.props.i18n.lbl_RotationHint_3}
-					</span>
-					<br />
-					{this.props.i18n.lbl_RotationHint_4}
-				</div>
-			</div>
+				<AngPow />
+			</>
 		);
 	}
 }
+
+const AngPow = () => {
+	const matchHome = useMatch(`/`) !== null;
+	const [isOpen, setIsOpen] = useState(true);
+	useEffect(() => {
+		if (matchHome) {
+			setIsOpen(true);
+		}
+	}, [matchHome]);
+
+	const closePop = () => {
+		setIsOpen(false);
+	};
+
+	return matchHome && isOpen ? (
+		<div className="eventLink">
+			<button className="icon icon-close" onClick={closePop} />
+			<Link to={path.angPow.root}>
+				<img src={eventImg} alt="Ang Pow" />
+			</Link>
+		</div>
+	) : null;
+};
 
 Layout.propTypes = {
 	children: PropTypes.node.isRequired
