@@ -41,7 +41,7 @@ export const ClickLink = ({
 
 const NeedLoginRoute = [];
 
-const Panel = ({ ImgFolder = [], filterHideInHome = false }) => {
+const Panel = ({ ImgFolder = [] }) => {
 	const [banner, setBanner] = useState([]);
 	const { userInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
@@ -74,7 +74,7 @@ const Panel = ({ ImgFolder = [], filterHideInHome = false }) => {
 		return () => {
 			mounted = false;
 		};
-	}, [userInfo, ImgFolder, filterHideInHome]);
+	}, [userInfo, ImgFolder]);
 
 	const rows = banner?.map((b, bIdx) => {
 		let redirectLink = null;
