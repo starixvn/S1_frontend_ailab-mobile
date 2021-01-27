@@ -6,7 +6,7 @@ import { userInfoContext, navContext, defNavPanel } from "./context";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import path from "../../path";
 import {
-	api_site_GetBannerV2,
+	api_site_GetBannerV3,
 	defBannerActionMode
 } from "../../service/api/site";
 
@@ -54,7 +54,7 @@ const Panel = ({ ImgFolder = [], filterHideInHome = false }) => {
 			setBanner([]);
 			try {
 				ImgFolder.forEach(async BannerType => {
-					const res = await api_site_GetBannerV2({
+					const res = await api_site_GetBannerV3({
 						lang: userInfo.langId,
 						BannerType
 					});

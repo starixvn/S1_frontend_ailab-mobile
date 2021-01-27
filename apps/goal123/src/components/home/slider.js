@@ -5,7 +5,7 @@ import { defBannerType } from "../../service/api/site";
 export default () => {
 	return (
 		<SwipperBanner
-			ImgFolder={[defBannerType.Promotions, defBannerType.HotEvent]}
+			ImgFolder={[defBannerType.Promotions]}
 			filterHideInHome={true}
 		/>
 	);

@@ -53,7 +53,7 @@ const Panel = ({ ImgFolder = [], filterHideInHome = false }) => {
 			setBanner([]);
 			try {
 				ImgFolder.forEach(async BannerType => {
-					const res = await api.site.GetBannerV2({
+					const res = await api.site.GetBannerV3({
 						lang: userInfo.langId,
 						BannerType
 					});

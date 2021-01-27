@@ -50,8 +50,8 @@ export const api_GetBanner = (
 		`FolderName=${FolderName}&refId=${refId}&filterHideInHome=${filterHideInHome}`
 	);
 
-export const api_site_GetBannerV2 = ({ lang, BannerType }) =>
-	siteRequest.post(`/GetBannerV2/${lang}`, { BannerType });
+export const api_site_GetBannerV3 = ({ lang, BannerType }) =>
+	siteRequest.post(`/GetBannerV3/${lang}`, { BannerType });
 
 export const api_CheckResetPwdToken = key =>
 	siteRequest.post(`/CheckResetPwdToken`, `key=${key}`);

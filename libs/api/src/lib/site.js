@@ -49,8 +49,8 @@ export class SiteAPI extends BaseAPI {
 			`FolderName=${FolderName}&refId=${refId}&filterHideInHome=${filterHideInHome}`
 		);
 
-	GetBannerV2 = ({ lang, BannerType }) =>
-		this.siteRequest.post(`/GetBannerV2/${lang}`, { BannerType });
+	GetBannerV3 = ({ lang, BannerType }) =>
+		this.siteRequest.post(`/GetBannerV3/${lang}`, { BannerType });
 
 	CheckResetPwdToken = key =>
 		this.siteRequest.post(`/CheckResetPwdToken`, `key=${key}`);
