@@ -1,5 +1,4 @@
 import React, { Component, createRef } from "react";
-import PropTypes from "prop-types";
 
 export class DropdownBox extends Component {
 	constructor(props) {

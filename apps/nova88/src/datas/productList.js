@@ -38,11 +38,21 @@ import fish_FOS from "../styles/img/fish_FOS.jpg";
 import fish_TAP from "../styles/img/fish_TAP.jpg";
 import fish_TOS from "../styles/img/fish_TOS.jpg";
 
+import { isEventPeriod } from "../components/common/common";
+
 export const productList = {
 	kiss918: {
 		tpId: 21,
 		gameId: 21
 	}
+};
+
+const defIconType = {
+	new: " icon-new"
+};
+
+const eventTime = {
+	new_ICG: { endDate: "2021/02/08 11:00:00" }
 };
 
 const gameList = ({ langId }) => [
@@ -140,7 +150,6 @@ const gameList = ({ langId }) => [
 		categoryIcon: "casino",
 		className: "casinoList",
 		translateKey: "lbl_Casino",
-		isNew: true,
 		comingSoonImg: Coming_soon,
 		items: [
 			{
@@ -152,7 +161,12 @@ const gameList = ({ langId }) => [
 				...defGameInfo.casino_ICG,
 				parameter: { tpId: defGameInfo.casino_ICG.tpId },
 				img: casino_ICG,
-				isNew: true
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_ICG)
+					}
+				]
 			},
 			{
 				tpId: 9,
@@ -203,27 +217,46 @@ const gameList = ({ langId }) => [
 		className: "casinoList",
 		translateKey: "lbl_Fishing",
 		comingSoonImg: Coming_soon,
-		isNew: true,
 		items: [
 			{
 				...defGameInfo.ICG_DRAGONBALL_FISHING,
 				img: fish_DBF,
-				isNew: true
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_ICG)
+					}
+				]
 			},
 			{
 				...defGameInfo.ICG_FISHING_OF_SAVIORS,
 				img: fish_FOS,
-				isNew: true
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_ICG)
+					}
+				]
 			},
 			{
 				...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
 				img: fish_TAP,
-				isNew: true
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_ICG)
+					}
+				]
 			},
 			{
 				...defGameInfo.ICG_TOWER_OF_SAVIORS,
 				img: fish_TOS,
-				isNew: true
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_ICG)
+					}
+				]
 			},
 			{
 				gameId: 10,
@@ -299,7 +332,7 @@ const gameList = ({ langId }) => [
 		items: [
 			{
 				icon: "affiliate",
-				href: `${siteInfo().affiliateLink}/?lang=${langId}`,
+				href: `${siteInfo(langId).affiliateLink}`,
 				img: affiliate,
 				spanTextKey: "lbl_SiteAffiliate",
 				descTextKey: "lbl_AffiliateDesc",

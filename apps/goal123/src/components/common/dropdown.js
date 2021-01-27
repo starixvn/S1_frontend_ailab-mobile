@@ -82,7 +82,8 @@ DropdownBox.defaultProps = {
 	mainKey: "",
 	placeholder: "",
 	i18n: {},
-	clickDropdown: null
+	clickDropdown: null,
+	selectedIdx: null
 };
 
 DropdownBox.propTypes = {
@@ -90,7 +91,7 @@ DropdownBox.propTypes = {
 	onSelectItem: PropTypes.func.isRequired,
 	i18n: PropTypes.objectOf(PropTypes.string),
 	options: PropTypes.arrayOf(PropTypes.object),
-	selectedIdx: PropTypes.number.isRequired,
+	selectedIdx: PropTypes.number,
 	mainKey: PropTypes.string,
 	clickDropdown: PropTypes.func,
 	placeholder: PropTypes.string

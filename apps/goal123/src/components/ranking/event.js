@@ -12,14 +12,14 @@ const Event = ({ userInfo = {}, i18n = {}, isOpen }) => {
 				<img src={coins} alt="coins" />
 				<div className="highest">
 					{i18n.lbl_TotalValue}
-					<span>VND 161,000,000</span>
+					<span>VND 10,996,738</span>
 				</div>
 			</div>
 			<PrizeList userInfo={userInfo} i18n={i18n} />
 			<a
 				target="_blank"
 				rel="noreferrer"
-				href={`${config.t_and_cURL}/SiteSkin/${config.siteName}/ranking/${userInfo.langId}.html`}
+				href={`${config.t_and_cURL}/SiteSkin/${config.siteName}/ranking/${userInfo.langId}2.html`}
 				className="more">
 				{i18n.lbl_MoreDetails?.toUpperCase()}
 			</a>

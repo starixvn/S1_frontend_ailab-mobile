@@ -114,13 +114,21 @@ export const deleteCookie = cookieName => {
 	// document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
 };
 
-export const isEventPeriod = () => {
-	// xmas end date is 2021/01/04 11:00:00
-	const startDate = new Date("2020/12/10 11:00:00 GMT+0800"); // yyyy/mm/dd hh:mm:ss
-	const endDate = new Date("2021/01/04 11:00:00 GMT+0800"); // yyyy/mm/dd hh:mm:ss
+export const isEventPeriod = ({ startDate, endDate }) => {
 	const now = new Date();
+	const _startDate = startDate ? new Date(`${startDate} GMT+0800`) : null; // yyyy/mm/dd hh:mm:ss
+	const _endDate = endDate ? new Date(`${endDate} GMT+0800`) : null; // yyyy/mm/dd hh:mm:ss
 
-	return now > startDate && now < endDate;
+	let result = false;
+	if (_startDate && _endDate) {
+		result = now > _startDate && now < _endDate;
+	} else if (_startDate) {
+		result = now > _startDate;
+	} else if (_endDate) {
+		result = now < _endDate;
+	}
+
+	return result;
 };
 
 export const passwordCheck = ({ val }) => {

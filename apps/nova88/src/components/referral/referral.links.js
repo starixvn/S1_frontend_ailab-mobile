@@ -10,7 +10,7 @@ export default ({ isLogin, i18n, setPopBox }) => {
 	const [referralCode, setReferralCode] = useState("");
 	const isMountedRef = useRef(null);
 
-	const refLink = `${currentLocation}/${path.join.root}/?AffId=${referralCode}`;
+	const refLink = `${currentLocation}/${path.join.root}?AffId=${referralCode}`;
 
 	useEffect(() => {
 		isMountedRef.current = true;
