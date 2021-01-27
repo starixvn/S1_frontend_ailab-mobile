@@ -5235,9 +5235,7 @@ span.icon.icon-ranking:after {
 }
 
 .eventModule {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   text-align: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -5248,6 +5246,12 @@ span.icon.icon-ranking:after {
   color: white;
   font-size: 3vw;
   padding: 3vw 3vw 5vw;
+}
+
+.eventModule.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .eventModule .title {
@@ -5283,6 +5287,10 @@ span.icon.icon-ranking:after {
   font-weight: bold;
   color: black;
   display: none;
+}
+
+.eventList.active {
+  display: table;
 }
 
 .eventList tr {
