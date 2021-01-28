@@ -1,14 +1,18 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Redirect } from "@reach/router";
 import AngPow from "../components/angPow/angPow";
-import { userInfoContext } from "../components/common/context";
-import useBeforeLoginCheck from "../components/hook/useBeforeLoginCheck";
+import { isEventPeriod } from "../components/common/common";
+
+export const eventTime = {
+	angPow: { startDate: "2021/02/11 00:00:00", endDate: "2021/02/26 23:59:59" }
+};
 
 const IndexPage = () => {
-	const { userInfo } = useContext(userInfoContext);
-	const { redirectPath } = useBeforeLoginCheck({ isLogin: userInfo.isLogin });
-
-	return redirectPath !== null ? <Redirect to="/" noThrow /> : <AngPow />;
+	return isEventPeriod(eventTime.angPow) ? (
+		<AngPow />
+	) : (
+		<Redirect to="/" noThrow />
+	);
 };
 
 export default IndexPage;

@@ -1,7 +1,8 @@
 import React, { useRef, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import api from "../../service/api";
 
-const AngPowPopBox = ({ setAngPowPop }) => {
+const AngPowPopBox = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 	const [prize, setPrize] = useState("");
 	const [animationOver, setAnimationOver] = useState(false);
 	const isMountedRef = useRef(null);
@@ -23,8 +24,12 @@ const AngPowPopBox = ({ setAngPowPop }) => {
 		api.events.DrawPrize({ eventId: 0 }).then(
 			res => {
 				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
+					if (
+						res.data.errorCode === 0 ||
+						res.data.errorCode === 100
+					) {
 						setPrize(res.data.data.prizeName);
+						setCanDrawPrize(false);
 					} else if (
 						res.data.errorCode !== 0 &&
 						res.data.errorCode !== 100
@@ -33,6 +38,7 @@ const AngPowPopBox = ({ setAngPowPop }) => {
 							isOpen: true,
 							content: `[${res.data.errorCode}]${res.data.message}`
 						});
+						setAngPowPop(false);
 					}
 				}
 			},
@@ -46,7 +52,7 @@ const AngPowPopBox = ({ setAngPowPop }) => {
 				}
 			}
 		);
-	}, []);
+	}, [i18n, setPopBox, setAngPowPop, setCanDrawPrize]);
 
 	const closePop = () => {
 		setAngPowPop(false);
@@ -64,16 +70,23 @@ const AngPowPopBox = ({ setAngPowPop }) => {
 			</div>
 			<div className={`eventpop${animationOver ? " active" : ""}`}>
 				<button className="icon icon-close" onClick={closePop} />
-				<div className="title">Important Note</div>
+				<div className="title">{i18n.lbl_ImportantNote}</div>
 				<div>
-					恭喜发财! <br />
-					恭喜，您的红包
+					{i18n.lbl_AngPow_Congratulations} <br />
+					{i18n.lbl_AngPow_CreditedAccount1}
 				</div>
 				<div className="am">{prize}</div>
-				<div>已汇入您的户口！</div>
+				<div>{i18n.lbl_AngPow_CreditedAccount2}</div>
 			</div>
 		</div>
 	);
+};
+
+AngPowPopBox.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	setAngPowPop: PropTypes.func.isRequired,
+	setCanDrawPrize: PropTypes.func.isRequired,
+	setPopBox: PropTypes.func.isRequired
 };
 
 export default AngPowPopBox;

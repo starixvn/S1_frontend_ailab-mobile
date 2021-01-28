@@ -11,6 +11,8 @@ import {
 } from "./context";
 import path from "../../path";
 import Loading from "./loading";
+import { isEventPeriod } from "./common";
+import { eventTime } from "../../pages/angPow";
 import eventImg from "../../styles/img/event/eventlink.png";
 
 const defPageInfo = {
@@ -238,7 +240,7 @@ class RotationHint extends Component {
 						{this.props.i18n.lbl_RotationHint_4}
 					</div>
 				</div>
-				<AngPow />
+				{isEventPeriod(eventTime.angPow) ? <AngPow /> : null}
 			</>
 		);
 	}

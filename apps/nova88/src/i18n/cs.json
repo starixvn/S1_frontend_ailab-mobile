@@ -417,6 +417,20 @@
 	"lbl_Referral_rewards":"奖励",
 	"lbl_Redeposit_Promo":"再存",
 	"lbl_Last_Event":"上个活动",
-	"lbl_AngPow":"Ang Pow"
+	"lbl_AngPow":"Ang Pow",
+	"lbl_AngPow_EventTitle":"New Year Free Ang Pow Giveaway",
+	"lbl_Start":"Start",
+	"lbl_End":"End",
+	"lbl_AngPow_Conditions":"红包领取条件",
+	"lbl_AngPow_MyAngPow":"My Ang Pow",
+	"lbl_AngPow_MemberEligibility":"at least 1 Deposit and has at least 1 settled bet before",
+	"lbl_AngPow_OtherConditions":"Other Conditions",
+	"lbl_AngPow_OtherConditions1":"1. Each account to participant 1 time/ per day on the first login",
+	"lbl_AngPow_OtherConditions2":"2. Member won before can participant again tomorrow, 1 time a day only",
+	"lbl_Next":"Next",
+	"lbl_Awards":"奖励",
+	"lbl_AngPow_Congratulations":"恭喜发财",
+	"lbl_AngPow_CreditedAccount1":"恭喜，您的红包",
+	"lbl_AngPow_CreditedAccount2":"已汇入您的户口！"
 
 }

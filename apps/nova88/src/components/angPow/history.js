@@ -1,11 +1,9 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 import moment from "moment";
-import { i18nContext, popBoxContext } from "../common/context";
 import api from "../../service/api";
 
-const History = () => {
-	const { i18n } = useContext(i18nContext);
-	const { setPopBox } = useContext(popBoxContext);
+const History = ({ i18n, userInfo, setPopBox }) => {
 	const [history, setHistory] = useState([]);
 	const isMountedRef = useRef(null);
 
@@ -17,33 +15,35 @@ const History = () => {
 	});
 
 	useEffect(() => {
-		api.events.GetCustDrawPrizeList({ eventId: 0 }).then(
-			res => {
-				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
-						setHistory(res.data.data);
-					} else if (
-						res.data.errorCode !== 0 &&
-						res.data.errorCode !== 100
-					) {
+		if (userInfo.isLogin === true) {
+			api.events.GetCustDrawPrizeList({ eventId: 0 }).then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							setHistory(res.data.data);
+						} else if (
+							res.data.errorCode !== 0 &&
+							res.data.errorCode !== 100
+						) {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}]${res.data.message}`
+							});
+						}
+					}
+				},
+				() => {
+					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							content: `[${res.data.errorCode}]${res.data.message}`
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
 						});
 					}
 				}
-			},
-			() => {
-				if (isMountedRef.current) {
-					setPopBox({
-						isOpen: true,
-						title: i18n.lbl_ImportantNote,
-						content: i18n.msg_ApiServerError
-					});
-				}
-			}
-		);
-	}, [i18n, setPopBox]);
+			);
+		}
+	}, [i18n, setPopBox, userInfo]);
 
 	const arr = history?.map(data => {
 		return (
@@ -59,8 +59,13 @@ const History = () => {
 		<table className="eventList active">
 			<tbody>
 				<tr>
-					<td>Date ( +08:00 )</td>
-					<td>Awards ( MYR )</td>
+					<td>
+						{i18n.lbl_Date}({moment().format("Z")})
+					</td>
+					<td>
+						{i18n.lbl_Awards} (
+						{i18n[`Currency_${userInfo.currencyId}`]})
+					</td>
 				</tr>
 				{history?.length > 0 ? (
 					arr
@@ -69,7 +74,7 @@ const History = () => {
 						<td colSpan="2">
 							<div className="nodata icon icon-nodata">
 								<div className="txt-white">
-									No information is available now.
+									{i18n.msg_NoData}
 								</div>
 							</div>
 						</td>
@@ -80,15 +85,26 @@ const History = () => {
 	);
 };
 
+History.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
+	setPopBox: PropTypes.func.isRequired
+};
+
 const Item = ({ drawTime, prizeName }) => {
 	return (
 		<tr>
-			<td>{moment(drawTime).format("YYYY/MM/DD hh:mm:ss")}</td>
+			<td>{moment(drawTime).format("YYYY/MM/DD HH:mm:ss")}</td>
 			<td>
 				<div>{prizeName}</div>
 			</td>
 		</tr>
 	);
+};
+
+Item.propTypes = {
+	drawTime: PropTypes.string.isRequired,
+	prizeName: PropTypes.string.isRequired
 };
 
 export default History;
