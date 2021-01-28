@@ -4903,15 +4903,17 @@ span.icon.icon-ranking:after {
           align-items: center;
 }
 
+.event > div[tabindex="-1"] {
+  width: 100%;
+}
+
 .event .animation {
   margin-top: 5vw;
 }
 
 .event .filterBtn {
   margin: 7vw 0 5vw;
-  display: unset;
-  -ms-flex-item-align: start;
-      align-self: flex-start;
+  display: block;
 }
 
 .event .filterBtn button {
