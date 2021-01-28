@@ -35,12 +35,12 @@ const Counter = ({ i18n, setCanDrawPrize }) => {
 		}
 	}, [end, setCanDrawPrize, count]);
 
-	return (
+	return count ? (
 		<div className="time">
 			{i18n.lbl_Next}
 			<div>{count}</div>
 		</div>
-	);
+	) : null;
 };
 
 Counter.propTypes = {

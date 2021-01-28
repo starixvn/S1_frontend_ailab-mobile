@@ -431,6 +431,8 @@
 	"lbl_Awards":"Awards",
 	"lbl_AngPow_Congratulations":"Congratulations",
 	"lbl_AngPow_CreditedAccount1":"Congratulations, your Ang Pow",
-	"lbl_AngPow_CreditedAccount2":"has been credited to your account!"
+	"lbl_AngPow_CreditedAccount2":"has been credited to your account!",
+	"lbl_AngPow_AlreadyDrawn":"You already drawn Ang Pow today, please try again tomorrow!",
+	"lbl_AngPow_NotWinning":"Oops! ANG POW is over, Please come back tomorrow!"
 
 }

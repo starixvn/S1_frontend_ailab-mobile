@@ -2,9 +2,8 @@ import React, { useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import api from "../../service/api";
 
-const AngPowPopBox = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
+const useDrawPrize = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 	const [prize, setPrize] = useState("");
-	const [animationOver, setAnimationOver] = useState(false);
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -15,28 +14,30 @@ const AngPowPopBox = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 	});
 
 	useEffect(() => {
-		setInterval(() => {
-			setAnimationOver(true);
-		}, 3000);
-	}, []);
-
-	useEffect(() => {
 		api.events.DrawPrize({ eventId: 0 }).then(
 			res => {
 				if (isMountedRef.current) {
-					if (
-						res.data.errorCode === 0 ||
-						res.data.errorCode === 100
-					) {
-						setPrize(res.data.data.prizeName);
+					const { data, errorCode, message } = res.data;
+					if (errorCode === 0) {
+						setPrize(data.prizeName);
 						setCanDrawPrize(false);
-					} else if (
-						res.data.errorCode !== 0 &&
-						res.data.errorCode !== 100
-					) {
+					} else if (errorCode === 100 || errorCode === 101) {
+						const msg =
+							errorCode === 100
+								? "lbl_AngPow_AlreadyDrawn"
+								: "lbl_AngPow_NotWinning";
+
 						setPopBox({
 							isOpen: true,
-							content: `[${res.data.errorCode}]${res.data.message}`
+							title: i18n.lbl_ImportantNote,
+							content: i18n[msg]
+						});
+						setCanDrawPrize(false);
+						setAngPowPop(false);
+					} else {
+						setPopBox({
+							isOpen: true,
+							content: `[${errorCode}]${message}`
 						});
 						setAngPowPop(false);
 					}
@@ -53,6 +54,25 @@ const AngPowPopBox = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 			}
 		);
 	}, [i18n, setPopBox, setAngPowPop, setCanDrawPrize]);
+
+	return { prize };
+};
+
+const AngPowPopBox = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
+	const [animationOver, setAnimationOver] = useState(false);
+
+	const { prize } = useDrawPrize({
+		i18n,
+		setAngPowPop,
+		setCanDrawPrize,
+		setPopBox
+	});
+
+	useEffect(() => {
+		setInterval(() => {
+			setAnimationOver(true);
+		}, 3000);
+	}, []);
 
 	const closePop = () => {
 		setAngPowPop(false);

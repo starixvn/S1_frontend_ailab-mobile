@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import moment from "moment";
 import api from "../../service/api";
 
-const History = ({ i18n, userInfo, setPopBox }) => {
+const useGetPrizeList = ({ i18n, userInfo, setPopBox, setLoading }) => {
 	const [history, setHistory] = useState([]);
 	const isMountedRef = useRef(null);
 
@@ -16,6 +16,7 @@ const History = ({ i18n, userInfo, setPopBox }) => {
 
 	useEffect(() => {
 		if (userInfo.isLogin === true) {
+			setLoading(true);
 			api.events.GetCustDrawPrizeList({ eventId: 0 }).then(
 				res => {
 					if (isMountedRef.current) {
@@ -30,6 +31,7 @@ const History = ({ i18n, userInfo, setPopBox }) => {
 								content: `[${res.data.errorCode}]${res.data.message}`
 							});
 						}
+						setLoading(false);
 					}
 				},
 				() => {
@@ -39,11 +41,23 @@ const History = ({ i18n, userInfo, setPopBox }) => {
 							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
+						setLoading(false);
 					}
 				}
 			);
 		}
-	}, [i18n, setPopBox, userInfo]);
+	}, [i18n, setPopBox, userInfo, setLoading]);
+
+	return { history };
+};
+
+const History = ({ i18n, userInfo, setPopBox, setLoading }) => {
+	const { history } = useGetPrizeList({
+		i18n,
+		userInfo,
+		setPopBox,
+		setLoading
+	});
 
 	const arr = history?.map(data => {
 		return (
@@ -88,7 +102,8 @@ const History = ({ i18n, userInfo, setPopBox }) => {
 History.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
-	setPopBox: PropTypes.func.isRequired
+	setPopBox: PropTypes.func.isRequired,
+	setLoading: PropTypes.func.isRequired
 };
 
 const Item = ({ drawTime, prizeName }) => {

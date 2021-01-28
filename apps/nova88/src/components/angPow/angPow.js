@@ -4,7 +4,8 @@ import {
 	popBoxContext,
 	userInfoContext,
 	navContext,
-	defNavPanel
+	defNavPanel,
+	loadingContext
 } from "../common/context";
 import Condition from "./condition";
 import History from "./history";
@@ -12,14 +13,7 @@ import PopBox from "./popBox";
 import Counter from "./counter";
 import api from "../../service/api";
 
-const AngPow = () => {
-	const { i18n } = useContext(i18nContext);
-	const { setPopBox } = useContext(popBoxContext);
-	const { userInfo } = useContext(userInfoContext);
-	const { setNav } = useContext(navContext);
-
-	const [currentTab, setCurrentTab] = useState("condition");
-	const [AngPowPop, setAngPowPop] = useState(false);
+const useCheckPrize = ({ i18n, setPopBox, userInfo }) => {
 	const [canDrawPrize, setCanDrawPrize] = useState(true);
 	const isMountedRef = useRef(null);
 
@@ -61,6 +55,24 @@ const AngPow = () => {
 		}
 	}, [i18n, setPopBox, userInfo]);
 
+	return { canDrawPrize, setCanDrawPrize };
+};
+
+const AngPow = () => {
+	const { i18n } = useContext(i18nContext);
+	const { setPopBox } = useContext(popBoxContext);
+	const { userInfo } = useContext(userInfoContext);
+	const { setNav } = useContext(navContext);
+	const { setLoading } = useContext(loadingContext);
+
+	const [currentTab, setCurrentTab] = useState("condition");
+	const [AngPowPop, setAngPowPop] = useState(false);
+	const { canDrawPrize, setCanDrawPrize } = useCheckPrize({
+		i18n,
+		setPopBox,
+		userInfo
+	});
+
 	const drawAngPow = () => {
 		if (!userInfo.isLogin) {
 			setNav(defNavPanel.login);
@@ -92,27 +104,27 @@ const AngPow = () => {
 					) : null}
 				</div>
 			</div>
-			<div className="filterBtn">
-				<button
-					className={currentTab === "condition" ? "open" : ""}
-					open
-					onClick={clickTab.bind(this, "condition")}>
-					{i18n.lbl_AngPow_Conditions}
-				</button>
-				{userInfo.isLogin === true ? (
+			{userInfo.isLogin === true ? (
+				<div className="filterBtn">
+					<button
+						className={currentTab === "condition" ? "open" : ""}
+						open
+						onClick={clickTab.bind(this, "condition")}>
+						{i18n.lbl_AngPow_Conditions}
+					</button>
 					<button
 						className={currentTab === "history" ? "open" : ""}
 						onClick={clickTab.bind(this, "history")}>
 						{i18n.lbl_AngPow_MyAngPow}
 					</button>
-				) : null}
-			</div>
-
+				</div>
+			) : null}
 			{currentTab === "history" ? (
 				<History
 					userInfo={userInfo}
 					i18n={i18n}
 					setPopBox={setPopBox}
+					setLoading={setLoading}
 				/>
 			) : (
 				<Condition i18n={i18n} />
