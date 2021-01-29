@@ -4912,8 +4912,11 @@ span.icon.icon-ranking:after {
 }
 
 .event .filterBtn {
-  margin: 7vw 0 5vw;
+  margin: 7vw auto 5vw;
   display: block;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
 }
 
 .event .filterBtn button {
