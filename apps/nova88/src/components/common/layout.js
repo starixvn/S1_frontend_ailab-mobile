@@ -1,4 +1,4 @@
-import React, { useContext, Component, useState, useEffect } from "react";
+import React, { useContext, Component } from "react";
 import PropTypes from "prop-types";
 import { useMatch, useLocation, Link } from "@reach/router";
 import Footer from "./footer";
@@ -7,14 +7,14 @@ import {
 	navContext,
 	i18nContext,
 	defNavPanel,
-	loadingContext
+	loadingContext,
+	rootContext
 } from "./context";
 import path from "../../path";
 import Loading from "./loading";
 import { isEventPeriod } from "./common";
 import { eventTime } from "../../pages/angPow";
 import eventImg from "../../styles/img/event/eventlink.png";
-import { isVaildLang } from "../../service/language";
 
 const defPageInfo = {
 	default: {
@@ -248,22 +248,13 @@ class RotationHint extends Component {
 }
 
 const AngPow = () => {
-	const urlPath = window.location.pathname.split("/").filter(x => x !== "");
-	const matchHome =
-		urlPath.length === 0 ||
-		(urlPath.length === 1 && isVaildLang(urlPath[0]));
-	const [isOpen, setIsOpen] = useState(true);
-	useEffect(() => {
-		if (matchHome) {
-			setIsOpen(true);
-		}
-	}, [matchHome]);
+	const { root, setRoot } = useContext(rootContext);
 
 	const closePop = () => {
-		setIsOpen(false);
+		setRoot(false);
 	};
 
-	return matchHome && isOpen ? (
+	return root ? (
 		<div className="eventLink">
 			<button className="icon icon-close" onClick={closePop} />
 			<Link to={path.angPow.root}>
