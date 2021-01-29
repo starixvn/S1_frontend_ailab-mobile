@@ -89,11 +89,8 @@ const AngPowPopBox = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 			</div>
 			<div className={`eventpop${animationOver ? " active" : ""}`}>
 				<button className="icon icon-close" onClick={closePop} />
-				<div className="title">{i18n.lbl_ImportantNote}</div>
-				<div>
-					{i18n.lbl_AngPow_Congratulations} <br />
-					{i18n.lbl_AngPow_CreditedAccount1}
-				</div>
+				<div className="title">{i18n.lbl_AngPow_Congratulations}</div>
+				<div>{i18n.lbl_AngPow_CreditedAccount1}</div>
 				<div className="am">{prize}</div>
 				<div>{i18n.lbl_AngPow_CreditedAccount2}</div>
 			</div>

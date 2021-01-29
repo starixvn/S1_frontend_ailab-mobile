@@ -123,7 +123,7 @@ const defPageInfo = {
 		hideLogo: true
 	},
 	angPow: {
-		titleKey: "lbl_AngPow",
+		titleKey: "lbl_AngPow_EventTitle",
 		className: "main event",
 		hideLogo: true
 	}
