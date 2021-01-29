@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState, useContext } from "react";
 import PropTypes from "prop-types";
 import Swiper from "react-id-swiper";
@@ -13,6 +14,7 @@ import {
 export const ClickLink = ({
 	tpId,
 	gameId,
+	matchId,
 	actionMode,
 	bannerLink,
 	lang,
@@ -34,6 +36,7 @@ export const ClickLink = ({
 			langId: lang,
 			tpId,
 			gameId,
+			matchid: matchId,
 			isLogin: isLogin === true,
 			loginCallback: HandleLogin
 		});
@@ -42,10 +45,8 @@ export const ClickLink = ({
 
 const NeedLoginRoute = [];
 
-const Panel = ({ ImgFolder = [] }) => {
+export const useGetBanner = ({ langId, ImgFolder }) => {
 	const [banner, setBanner] = useState([]);
-	const { userInfo } = useContext(userInfoContext);
-	const { setNav } = useContext(navContext);
 
 	useEffect(() => {
 		let mounted = true;
@@ -55,7 +56,7 @@ const Panel = ({ ImgFolder = [] }) => {
 			try {
 				ImgFolder.forEach(async BannerType => {
 					const res = await api_site_GetBannerV3({
-						lang: userInfo.langId,
+						lang: langId,
 						BannerType
 					});
 
@@ -75,7 +76,16 @@ const Panel = ({ ImgFolder = [] }) => {
 		return () => {
 			mounted = false;
 		};
-	}, [userInfo, ImgFolder]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [langId]);
+
+	return { banner };
+};
+
+const Panel = ({ ImgFolder = [] }) => {
+	const { userInfo } = useContext(userInfoContext);
+	const { setNav } = useContext(navContext);
+	const { banner } = useGetBanner({ langId: userInfo.langId, ImgFolder });
 
 	const rows = banner?.map((b, bIdx) => {
 		let redirectLink = null;
@@ -104,7 +114,7 @@ const Panel = ({ ImgFolder = [] }) => {
 					<img
 						src={b.bannerMobileUrl}
 						className="banner"
-						alt={b.img ?? ""}
+						alt={b.bannerName ?? ""}
 					/>
 				</Link>
 			);
