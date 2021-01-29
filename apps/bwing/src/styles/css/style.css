@@ -6625,11 +6625,17 @@ span.important {
 
 .eventImg {
   width: 97%;
-  height: 130px;
+  height: 20vh;
   background: url(../img/eventBg.png) no-repeat;
   background-size: 100%;
   margin: 0 auto;
   position: relative;
+}
+
+@media screen and (min-height: 800px) {
+  .eventImg {
+    height: 17vh;
+  }
 }
 
 .eventImg .team {
@@ -6644,34 +6650,32 @@ span.important {
       -ms-flex-pack: center;
           justify-content: center;
   position: absolute;
-  top: 7px;
+  top: 1vh;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
 }
 
+.eventImg .team p {
+  width: 42.5vw;
+  text-align: center;
+  font-size: 12px;
+}
+
 .eventImg .team .teamL {
-  width: 30px;
-  height: 30px;
+  width: 8vw;
+  height: 8vw;
   background-size: 100%;
-  margin-right: 10px;
 }
 
 .eventImg .team .teamL.teamR {
   margin-right: 0;
-  margin-left: 10px;
-}
-
-.eventImg .team p {
-  width: 140px;
-  text-align: center;
-  font-size: 12px;
 }
 
 .eventImg .teamName {
   width: 100%;
   position: absolute;
-  top: 64px;
+  top: 9.5vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -6683,18 +6687,21 @@ span.important {
           box-sizing: border-box;
 }
 
+@media screen and (min-height: 800px) {
+  .eventImg .teamName {
+    top: 7.8vh;
+  }
+}
+
 .eventImg .teamName p {
-  width: 130px;
+  width: 34vw;
   color: #021e46;
   text-transform: uppercase;
   font-weight: bold;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-
-.eventImg .teamName p:nth-child(2) {
-  text-align: right;
+  text-align: center;
 }
 
 .eventImg .time {
@@ -6702,10 +6709,16 @@ span.important {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  bottom: 28px;
+  top: 12.7vh;
   font-size: 12px;
   color: #021e46;
   font-weight: bold;
+}
+
+@media screen and (min-height: 800px) {
+  .eventImg .time {
+    top: 10.6vh;
+  }
 }
 
 .event {
