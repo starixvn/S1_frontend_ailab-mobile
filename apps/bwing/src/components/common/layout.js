@@ -1,16 +1,19 @@
 import React, { useContext, Component } from "react";
 import PropTypes from "prop-types";
-import { useMatch, useLocation } from "@reach/router";
+import { useMatch, useLocation, Link } from "@reach/router";
 import Footer from "./footer";
 import Header from "../header/header";
 import {
 	navContext,
 	i18nContext,
 	defNavPanel,
-	loadingContext
+	loadingContext,
+	rootContext
 } from "./context";
 import path from "../../path";
 import Loading from "./loading";
+import { isEventPeriod } from "./common";
+import { eventTime } from "../../pages/angPow";
 
 const defPageInfo = {
 	default: {
@@ -128,6 +131,11 @@ const defPageInfo = {
 		titleKey: "lbl_Ranking",
 		className: "main ranking",
 		hideLogo: true
+	},
+	angPow: {
+		titleKey: "lbl_AngPow_EventTitle",
+		className: "main event",
+		hideLogo: true
 	}
 };
 
@@ -215,28 +223,47 @@ class RotationHint extends Component {
 
 	render() {
 		return (
-			<div
-				className={`Straight-lock${
-					this.state.rotateClass ? ` ${this.state.rotateClass}` : ""
-				}`}>
-				<div className="icon icon-mobile img-rotate">
-					<i className="icon icon-spinner11" />
+			<>
+				<div
+					className={`Straight-lock${
+						this.state.rotateClass
+							? ` ${this.state.rotateClass}`
+							: ""
+					}`}>
+					<div className="icon icon-mobile img-rotate">
+						<i className="icon icon-spinner11" />
+					</div>
+					<div className="text">
+						{this.props.i18n.lbl_RotationHint_1}
+						<br />
+						{this.props.i18n.lbl_RotationHint_2}
+						<br />
+						<span className="text-org">
+							{this.props.i18n.lbl_RotationHint_3}
+						</span>
+						<br />
+						{this.props.i18n.lbl_RotationHint_4}
+					</div>
 				</div>
-				<div className="text">
-					{this.props.i18n.lbl_RotationHint_1}
-					<br />
-					{this.props.i18n.lbl_RotationHint_2}
-					<br />
-					<span className="text-org">
-						{this.props.i18n.lbl_RotationHint_3}
-					</span>
-					<br />
-					{this.props.i18n.lbl_RotationHint_4}
-				</div>
-			</div>
+				{isEventPeriod(eventTime.angPow) ? <AngPow /> : null}
+			</>
 		);
 	}
 }
+
+const AngPow = () => {
+	const { root, setRoot } = useContext(rootContext);
+
+	const closePop = () => {
+		setRoot(false);
+	};
+
+	return root ? (
+		<Link to={path.angPow.root}>
+			<div className="angPao" />
+		</Link>
+	) : null;
+};
 
 Layout.propTypes = {
 	children: PropTypes.node.isRequired

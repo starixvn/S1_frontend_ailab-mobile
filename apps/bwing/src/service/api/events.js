@@ -40,3 +40,18 @@ export const api_events_GetCustRankV2 = ({
 		BeforeDays,
 		EventCode
 	});
+
+export const api_events_CheckDrawPrize = ({ eventId = 0 }) =>
+	eventRequest.post(`/CheckDrawPrize/`, {
+		eventId
+	});
+
+export const api_events_DrawPrize = ({ eventId = 0 }) =>
+	eventRequest.post(`/DrawPrize/`, {
+		eventId
+	});
+
+export const api_events_GetCustDrawPrizeList = ({ eventId = 0 }) =>
+	eventRequest.post(`/GetCustDrawPrizeList/`, {
+		eventId
+	});
