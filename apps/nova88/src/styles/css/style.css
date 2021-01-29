@@ -5287,22 +5287,14 @@ span.icon.icon-ranking:after {
   margin: 2vw 0;
 }
 
-.eventModule .title:nth-child(5) {
-  color: #F77A00;
-  margin-top: 8vw;
-}
-
-.eventModule .text-gray:nth-child(3) {
-  margin-bottom: 3vw;
-}
-
-.eventModule .text-gray:nth-child(6) {
+.eventModule .text-gray {
   text-align: left;
 }
 
-.eventModule .text-gray:nth-child(6) li {
+.eventModule .text-gray li {
   list-style: decimal;
   margin-left: 3vw;
+  line-height: 24px;
 }
 
 .eventList {
