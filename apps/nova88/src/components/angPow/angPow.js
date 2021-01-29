@@ -13,7 +13,7 @@ import PopBox from "./popBox";
 import Counter from "./counter";
 import api from "../../service/api";
 
-const useCheckPrize = ({ i18n, setPopBox, userInfo }) => {
+const useCheckPrize = ({ i18n, setPopBox, isLogin }) => {
 	const [canDrawPrize, setCanDrawPrize] = useState(true);
 	const isMountedRef = useRef(null);
 
@@ -25,7 +25,7 @@ const useCheckPrize = ({ i18n, setPopBox, userInfo }) => {
 	});
 
 	useEffect(() => {
-		if (userInfo.isLogin === true) {
+		if (isLogin === true) {
 			api.events.CheckDrawPrize({ eventId: 0 }).then(
 				res => {
 					if (isMountedRef.current) {
@@ -53,7 +53,7 @@ const useCheckPrize = ({ i18n, setPopBox, userInfo }) => {
 				}
 			);
 		}
-	}, [i18n, setPopBox, userInfo]);
+	}, [isLogin, i18n, setPopBox]);
 
 	return { canDrawPrize, setCanDrawPrize };
 };
@@ -70,8 +70,15 @@ const AngPow = () => {
 	const { canDrawPrize, setCanDrawPrize } = useCheckPrize({
 		i18n,
 		setPopBox,
-		userInfo
+		isLogin: userInfo.isLogin
 	});
+
+	useEffect(() => {
+		if (!userInfo.isLogin) {
+			setCanDrawPrize(true);
+			setCurrentTab("condition");
+		}
+	}, [userInfo.isLogin, setCanDrawPrize]);
 
 	const drawAngPow = () => {
 		if (!userInfo.isLogin) {
@@ -125,6 +132,7 @@ const AngPow = () => {
 					i18n={i18n}
 					setPopBox={setPopBox}
 					setLoading={setLoading}
+					canDrawPrize={canDrawPrize}
 				/>
 			) : (
 				<Condition i18n={i18n} />

@@ -3,7 +3,13 @@ import PropTypes from "prop-types";
 import moment from "moment";
 import api from "../../service/api";
 
-const useGetPrizeList = ({ i18n, userInfo, setPopBox, setLoading }) => {
+const useGetPrizeList = ({
+	i18n,
+	userInfo,
+	setPopBox,
+	setLoading,
+	canDrawPrize
+}) => {
 	const [history, setHistory] = useState([]);
 	const isMountedRef = useRef(null);
 
@@ -22,10 +28,7 @@ const useGetPrizeList = ({ i18n, userInfo, setPopBox, setLoading }) => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
 							setHistory(res.data.data);
-						} else if (
-							res.data.errorCode !== 0 &&
-							res.data.errorCode !== 100
-						) {
+						} else {
 							setPopBox({
 								isOpen: true,
 								content: `[${res.data.errorCode}]${res.data.message}`
@@ -46,17 +49,18 @@ const useGetPrizeList = ({ i18n, userInfo, setPopBox, setLoading }) => {
 				}
 			);
 		}
-	}, [i18n, setPopBox, userInfo, setLoading]);
+	}, [i18n, setPopBox, userInfo, setLoading, canDrawPrize]);
 
 	return { history };
 };
 
-const History = ({ i18n, userInfo, setPopBox, setLoading }) => {
+const History = ({ i18n, userInfo, setPopBox, setLoading, canDrawPrize }) => {
 	const { history } = useGetPrizeList({
 		i18n,
 		userInfo,
 		setPopBox,
-		setLoading
+		setLoading,
+		canDrawPrize
 	});
 
 	const arr = history?.map(data => {
@@ -103,7 +107,8 @@ History.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
 	setPopBox: PropTypes.func.isRequired,
-	setLoading: PropTypes.func.isRequired
+	setLoading: PropTypes.func.isRequired,
+	canDrawPrize: PropTypes.bool.isRequired
 };
 
 const Item = ({ drawTime, prizeName }) => {

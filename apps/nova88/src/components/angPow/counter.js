@@ -10,16 +10,20 @@ const Counter = ({ i18n, setCanDrawPrize }) => {
 
 	useEffect(() => {
 		const interval = setInterval(() => {
-			const hour = moment.duration(end.diff(moment())).hours();
-			const minute = moment.duration(end.diff(moment())).minutes();
-			const second = moment.duration(end.diff(moment())).seconds();
-
-			setCount(
-				`${zeroPad(hour, 2)}:${zeroPad(minute, 2)}:${zeroPad(
-					second,
-					2
-				)}`
+			const hour = zeroPad(
+				moment.duration(end.diff(moment())).hours(),
+				2
 			);
+			const minute = zeroPad(
+				moment.duration(end.diff(moment())).minutes(),
+				2
+			);
+			const second = zeroPad(
+				moment.duration(end.diff(moment())).seconds(),
+				2
+			);
+
+			setCount(`${hour}:${minute}:${second}`);
 		}, 1000);
 		counterRef.current = interval;
 

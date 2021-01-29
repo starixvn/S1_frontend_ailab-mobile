@@ -26,7 +26,6 @@ const useDrawPrize = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 							errorCode === 100
 								? "lbl_AngPow_AlreadyDrawn"
 								: "lbl_AngPow_NotWinning";
-
 						setPopBox({
 							isOpen: true,
 							title: i18n.lbl_ImportantNote,
