@@ -14,6 +14,7 @@ import Loading from "./loading";
 import { isEventPeriod } from "./common";
 import { eventTime } from "../../pages/angPow";
 import eventImg from "../../styles/img/event/eventlink.png";
+import { isVaildLang } from "../../service/language";
 
 const defPageInfo = {
 	default: {
@@ -247,7 +248,10 @@ class RotationHint extends Component {
 }
 
 const AngPow = () => {
-	const matchHome = useMatch(`/`) !== null;
+	const urlPath = window.location.pathname.split("/").filter(x => x !== "");
+	const matchHome =
+		urlPath.length === 0 ||
+		(urlPath.length === 1 && isVaildLang(urlPath[0]));
 	const [isOpen, setIsOpen] = useState(true);
 	useEffect(() => {
 		if (matchHome) {
