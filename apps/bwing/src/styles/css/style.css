@@ -6758,29 +6758,34 @@ span.important {
 
 .event {
   width: 100%;
+  padding: 0 3vw 24vw;
   background: #001942 url(../img/event/bg.png) no-repeat top center;
   background-size: 120%;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
-.event .animation {
+.event > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.animation {
   height: 47vw;
   overflow: hidden;
 }
 
-.event .filterBtn {
-  margin: 7vw 0 5vw;
+.filterBtn {
+  margin: 5vw 0;
   display: unset;
   -ms-flex-item-align: start;
       align-self: flex-start;
 }
 
-.event .filterBtn button {
+.filterBtn button {
   padding: 3vw;
   font-size: 3vw;
 }
@@ -6921,10 +6926,11 @@ span.important {
   cursor: pointer;
   -webkit-animation: box 2s ease-in-out infinite alternate;
           animation: box 2s ease-in-out infinite alternate;
-  margin-top: 50px;
   padding-top: 45px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  margin: 0 auto;
+  margin-top: 50px;
 }
 
 .angpao.pop {
