@@ -6721,6 +6721,41 @@ span.important {
   }
 }
 
+.angPao {
+  position: fixed;
+  width: 25vw;
+  height: 25vw;
+  background-image: url(../img/event/angPao.png);
+  background-size: 100%;
+  bottom: 10vh;
+  right: 3vw;
+  z-index: 10;
+  -webkit-animation: angPao 1s ease-in-out infinite alternate;
+          animation: angPao 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes angPao {
+  0% {
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+  100% {
+    -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+  }
+}
+
+@keyframes angPao {
+  0% {
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+  100% {
+    -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+  }
+}
+
 .event {
   width: 100%;
   background: #001942 url(../img/event/bg.png) no-repeat top center;
