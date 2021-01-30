@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { number_format } from "../common/common";
 import { Inputbox } from "@ailab-mobile/common";
+import { number_format } from "../common/common";
+import { defWrapperCol } from "../common/def";
 
 export const checkClaimAmount = ({
 	_claimAmount,
@@ -9,15 +10,16 @@ export const checkClaimAmount = ({
 }) => {
 	if (_claimAmount === "" || isNaN(_claimAmount)) {
 		return false;
-	} else {
-		let num_claimAmount = Number(_claimAmount);
-		return (
-			num_claimAmount >= requiredAmount && num_claimAmount <= maxAmount
-		);
 	}
+
+	return _claimAmount >= requiredAmount && _claimAmount <= maxAmount;
 };
 
-export const useJoinPromotion = ({ i18n = {}, SetClaimPromotion }) => {
+export const useJoinPromotion = ({
+	i18n = {},
+	SetClaimPromotion,
+	formatSetting
+}) => {
 	const [warning, setWarning] = useState({ status: false, msg: "" });
 	const [claimAmount, setClaimAmount] = useState("");
 
@@ -34,10 +36,23 @@ export const useJoinPromotion = ({ i18n = {}, SetClaimPromotion }) => {
 		requiredAmount,
 		maxAmount
 	}) => {
-		if (checkClaimAmount({ _claimAmount, requiredAmount, maxAmount })) {
+		const numClaimAmount =
+			formatSetting[defWrapperCol.formatSetting.isConvertRequired] ||
+			formatSetting[defWrapperCol.formatSetting.formatRequired]
+				? Number(_claimAmount) * 1000
+				: Number(_claimAmount);
+
+		if (
+			checkClaimAmount({
+				_claimAmount: numClaimAmount,
+				requiredAmount,
+				maxAmount,
+				formatSetting
+			})
+		) {
 			SetClaimPromotion({
-				bonusCode: bonusCode,
-				LockedAmount: _claimAmount
+				bonusCode,
+				LockedAmount: numClaimAmount
 			});
 		} else {
 			setWarning({
@@ -69,7 +84,7 @@ export default ({
 		claimAmount,
 		OnChangeClaimAmount,
 		onJoinPromotion
-	} = useJoinPromotion({ i18n, SetClaimPromotion });
+	} = useJoinPromotion({ i18n, SetClaimPromotion, formatSetting });
 
 	return (
 		<>
