@@ -70,6 +70,7 @@ import Whoami from "./pages/whoami";
 import PromotionInfo from "./pages/promotionInfo";
 
 import Ranking from "./pages/ranking";
+import AngPow from "./pages/angPow";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -160,6 +161,7 @@ const Index = () => {
 						</Setting>
 						<Whoami path={path.whoami.root} />
 						<Ranking path={path.ranking.root} />
+						<AngPow path={path.angPow.root} />
 					</Router>
 				</Layout>
 			</LocationProvider>

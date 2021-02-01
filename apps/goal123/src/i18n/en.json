@@ -388,5 +388,22 @@
 	"lbl_please_select_from_wallet":"Kindly select preferable fund out wallet",
 	"lbl_please_select_to_wallet":"Kindly select preferable fund in wallet",
 	"lbl_Redeposit_Promo":"Redeposit",
-	"lbl_Last_Event":"Last Event"
+	"lbl_Last_Event":"Last Event",
+	"lbl_AngPow":"Ang Pow",
+	"lbl_AngPow_EventTitle":"New Year Free Ang Pow Giveaway",
+	"lbl_Start":"Start",
+	"lbl_End":"End",
+	"lbl_AngPow_Conditions":"Ang Pow Conditions",
+	"lbl_AngPow_MyAngPow":"My Ang Pow",
+	"lbl_AngPow_MemberEligibility":"at least 1 Deposit and has at least 1 settled bet before",
+	"lbl_AngPow_OtherConditions":"Other Conditions",
+	"lbl_AngPow_OtherConditions1":"Member can participate daily until the promotion end.",
+	"lbl_AngPow_OtherConditions2":"Each member can participant once per day only.",
+	"lbl_Next":"Next",
+	"lbl_AngPow_Congratulations":"Congratulations!",
+	"lbl_AngPow_CreditedAccount1":"Congratulations, your Ang Pow",
+	"lbl_AngPow_CreditedAccount2":"has been credited to your account!",
+	"lbl_AngPow_AlreadyDrawn":"You already drawn Ang Pow today, please try again tomorrow!",
+	"lbl_AngPow_NotWinning":"Oops! ANG POW is over, Please come back tomorrow!"
+
 }

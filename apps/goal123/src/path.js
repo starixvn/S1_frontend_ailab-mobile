@@ -122,5 +122,8 @@ export default {
 	},
 	ranking: {
 		root: "ranking"
+	},
+	angPow: {
+		root: "angPow"
 	}
 };

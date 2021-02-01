@@ -1,16 +1,20 @@
 import React, { useContext, Component } from "react";
 import PropTypes from "prop-types";
-import { useMatch, useLocation } from "@reach/router";
+import { useMatch, useLocation, Link } from "@reach/router";
 import Footer from "./footer";
 import Header from "./header";
 import {
 	navContext,
 	i18nContext,
 	defNavPanel,
-	loadingContext
+	loadingContext,
+	rootContext
 } from "./context";
 import path from "../../path";
 import Loading from "./loading";
+import { isEventPeriod } from "./common";
+import { eventTime } from "../../pages/angPow";
+import eventImg from "../../styles/img/event/eventlink.png";
 
 const defPageInfo = {
 	default: {
@@ -107,6 +111,11 @@ const defPageInfo = {
 		titleKey: "lbl_Ranking",
 		className: "main ranking",
 		hideLogo: true
+	},
+	angPow: {
+		titleKey: "lbl_AngPow_EventTitle",
+		className: "main event",
+		hideLogo: true
 	}
 };
 
@@ -158,6 +167,7 @@ const Layout = ({ children }) => {
 				{children}
 				{loading ? <Loading /> : null}
 			</main>
+			{isEventPeriod(eventTime.angPow) ? <AngPow /> : null}
 			<Footer />
 		</>
 	);
@@ -225,6 +235,22 @@ class RotationHint extends Component {
 		);
 	}
 }
+
+const AngPow = () => {
+	const { root, setRoot } = useContext(rootContext);
+	const closePop = () => {
+		setRoot(false);
+	};
+
+	return root ? (
+		<div className="eventLink">
+			<button className="icon icon-close" onClick={closePop} />
+			<Link to={path.angPow.root}>
+				<img src={eventImg} alt="Ang pow" />
+			</Link>
+		</div>
+	) : null;
+};
 
 RotationHint.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired
