@@ -29,9 +29,10 @@ const useCheckPrize = ({ i18n, setPopBox, isLogin }) => {
 			api.events.CheckDrawPrize({ eventId: 0 }).then(
 				res => {
 					if (isMountedRef.current) {
-						if (res.data.errorCode === 100) {
-							setCanDrawPrize(false);
-						} else if (res.data.errorCode === 101) {
+						const { errorCode } = res.data;
+						if (errorCode === 0) {
+							setCanDrawPrize(true);
+						} else if (errorCode === 101) {
 							setCanDrawPrize(false);
 							setPopBox({
 								isOpen: true,
