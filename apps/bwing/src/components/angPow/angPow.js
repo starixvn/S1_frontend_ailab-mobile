@@ -26,7 +26,7 @@ const useCheckPrize = ({ i18n, setPopBox, isLogin }) => {
 
 	useEffect(() => {
 		if (isLogin === true) {
-			api_events_CheckDrawPrize({ eventId: 0 }).then(
+			api_events_CheckDrawPrize().then(
 				res => {
 					if (isMountedRef.current) {
 						const { errorCode } = res.data;

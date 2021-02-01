@@ -133,7 +133,7 @@ const defPageInfo = {
 		hideLogo: true
 	},
 	angPow: {
-		titleKey: "lbl_AngPow_EventTitle",
+		titleKey: "lbl_NewYearAngPow",
 		className: "main event",
 		hideLogo: true
 	}
@@ -259,9 +259,14 @@ const AngPow = () => {
 	};
 
 	return root ? (
-		<Link to={path.angPow.root}>
-			<div className="angPao" />
-		</Link>
+		<div className="angPao_module">
+			<div className="angPao_close" onClick={closePop}>
+				X
+			</div>
+			<Link to={path.angPow.root}>
+				<div className="angPao" />
+			</Link>
+		</div>
 	) : null;
 };
 

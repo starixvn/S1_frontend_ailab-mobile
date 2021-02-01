@@ -1,4 +1,5 @@
 const siteName = "Bwing";
+export const siteId = 3;
 
 const getAffiliate = langId => {
 	if (typeof window === `undefined`) return "";

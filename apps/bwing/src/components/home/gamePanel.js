@@ -120,15 +120,6 @@ const defGameList = [
 
 export default ({ i18n, userInfo }) => {
 	const { setNav } = useContext(navContext);
-	const { setRoot } = useContext(rootContext);
-
-	useEffect(() => {
-		setRoot(true);
-
-		return () => {
-			setRoot(false);
-		};
-	}, []);
 
 	const ClickGame = (tpId, gameId, betType) => {
 		GET_ENTER_PAGE({

@@ -1,8 +1,10 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useContext } from "react";
 import PropTypes from "prop-types";
+import { loadingContext } from "../common/context";
 import { api_events_DrawPrize } from "../../service/api/events";
 
 const useDrawPrize = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
+	const { setLoading } = useContext(loadingContext);
 	const [prize, setPrize] = useState("");
 	const [jackpot, setJackpot] = useState(false);
 
@@ -16,7 +18,8 @@ const useDrawPrize = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 	});
 
 	useEffect(() => {
-		api_events_DrawPrize({ eventId: 0 }).then(
+		setLoading(true);
+		api_events_DrawPrize().then(
 			res => {
 				if (isMountedRef.current) {
 					const { data, errorCode, message } = res.data;
@@ -47,6 +50,7 @@ const useDrawPrize = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 							content: `[${errorCode}]${message}`
 						});
 					}
+					setLoading(false);
 				}
 			},
 			() => {
@@ -56,10 +60,11 @@ const useDrawPrize = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
+					setLoading(false);
 				}
 			}
 		);
-	}, [i18n, setPopBox, setAngPowPop, setCanDrawPrize]);
+	}, [i18n, setPopBox, setAngPowPop, setCanDrawPrize, setLoading]);
 
 	return { prize, jackpot };
 };
@@ -90,6 +95,7 @@ const AngPowPopBox = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 				jackpot={jackpot}
 				animationOver={animationOver}
 				prize={prize}
+				i18n={i18n}
 			/>
 			<div className={`eventpop${animationOver ? " active" : ""}`}>
 				<button className="icon icon-close" onClick={closePop} />
@@ -109,7 +115,7 @@ AngPowPopBox.propTypes = {
 	setPopBox: PropTypes.func.isRequired
 };
 
-const Animation = ({ jackpot, animationOver, prize }) => {
+const Animation = ({ jackpot, animationOver, prize, i18n }) => {
 	return jackpot ? (
 		<div className={`gold${animationOver ? "" : " active"}`}>
 			<div className="textBox">
@@ -152,7 +158,8 @@ const Animation = ({ jackpot, animationOver, prize }) => {
 Animation.propTypes = {
 	jackpot: PropTypes.bool.isRequired,
 	animationOver: PropTypes.bool.isRequired,
-	prize: PropTypes.string.isRequired
+	prize: PropTypes.string.isRequired,
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
 export default AngPowPopBox;
