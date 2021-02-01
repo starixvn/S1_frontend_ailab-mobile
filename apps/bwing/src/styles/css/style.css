@@ -6721,6 +6721,26 @@ span.important {
   }
 }
 
+.angPao_module {
+  position: fixed;
+  width: 25vw;
+  height: 25vw;
+  bottom: 10vh;
+  right: 3vw;
+  z-index: 1;
+}
+
+.angPao_close {
+  background: red;
+  color: white;
+  position: absolute;
+  right: -1vw;
+  top: -2vw;
+  width: 5vw;
+  height: 5vw;
+  border-radius: 100%;
+}
+
 .angPao {
   position: fixed;
   width: 25vw;
@@ -6729,7 +6749,6 @@ span.important {
   background-size: 100%;
   bottom: 10vh;
   right: 3vw;
-  z-index: 10;
   -webkit-animation: angPao 1s ease-in-out infinite alternate;
           animation: angPao 1s ease-in-out infinite alternate;
 }
@@ -7282,6 +7301,11 @@ span.important {
   padding: 3vw 3vw 5vw;
 }
 
+.eventModule li {
+  list-style: decimal;
+  margin-left: 3vw;
+}
+
 .eventModule.active {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7307,11 +7331,6 @@ span.important {
 
 .eventModule .text-gray:nth-child(6) {
   text-align: left;
-}
-
-.eventModule .text-gray:nth-child(6) li {
-  list-style: decimal;
-  margin-left: 3vw;
 }
 
 .eventModule .more {
