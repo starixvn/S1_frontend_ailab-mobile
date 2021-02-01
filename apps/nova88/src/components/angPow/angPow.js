@@ -32,6 +32,8 @@ const useCheckPrize = ({ i18n, setPopBox, isLogin }) => {
 						const { errorCode } = res.data;
 						if (errorCode === 0) {
 							setCanDrawPrize(true);
+						} else if (errorCode === 100) {
+							setCanDrawPrize(false);
 						} else if (errorCode === 101) {
 							setCanDrawPrize(false);
 							setPopBox({
