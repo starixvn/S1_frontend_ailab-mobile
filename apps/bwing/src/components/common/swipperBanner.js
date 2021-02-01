@@ -153,7 +153,8 @@ const defSwipperConfig = {
 		el: ".swiper-pagination",
 		clickable: true
 	},
-	rebuildOnUpdate: true
+	rebuildOnUpdate: true,
+	observer: true
 };
 
 export const AutoPlay = props => {
