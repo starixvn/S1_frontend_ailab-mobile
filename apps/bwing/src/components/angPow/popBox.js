@@ -27,6 +27,9 @@ const useDrawPrize = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 						setPrize(data.prizeName);
 						setCanDrawPrize(false);
 					} else if (errorCode === 100 || errorCode === 101) {
+						setCanDrawPrize(false);
+						setAngPowPop(false);
+
 						const msg =
 							errorCode === 100
 								? "lbl_AngPow_AlreadyDrawn"
@@ -36,14 +39,13 @@ const useDrawPrize = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 							title: i18n.lbl_ImportantNote,
 							content: i18n[msg]
 						});
-						setCanDrawPrize(false);
-						setAngPowPop(false);
 					} else {
+						setAngPowPop(false);
+
 						setPopBox({
 							isOpen: true,
 							content: `[${errorCode}]${message}`
 						});
-						setAngPowPop(false);
 					}
 				}
 			},

@@ -29,12 +29,19 @@ const useCheckPrize = ({ i18n, setPopBox, isLogin }) => {
 			api_events_CheckDrawPrize({ eventId: 0 }).then(
 				res => {
 					if (isMountedRef.current) {
-						if (res.data.errorCode === 100) {
+						const { errorCode } = res.data;
+						if (errorCode === 0) {
+							setCanDrawPrize(true);
+						} else if (errorCode === 100) {
 							setCanDrawPrize(false);
-						} else if (
-							res.data.errorCode !== 0 &&
-							res.data.errorCode !== 100
-						) {
+						} else if (errorCode === 101) {
+							setCanDrawPrize(false);
+							setPopBox({
+								isOpen: true,
+								title: i18n.lbl_AngPow_EventTitle,
+								content: i18n.lbl_AngPow_NotWinning
+							});
+						} else {
 							setPopBox({
 								isOpen: true,
 								content: `[${res.data.errorCode}]${res.data.message}`
@@ -109,8 +116,7 @@ const AngPow = () => {
 						<div className="badge" />
 					</div>
 					<div className="textBox">
-						<p className="bigtitle">FREE ANG PAO</p>
-						{/* <p className="time">00:00:00</p> */}
+						<p className="bigtitle">{i18n.lbl_AngPow}</p>
 						{canDrawPrize === false ? (
 							<Counter
 								i18n={i18n}
