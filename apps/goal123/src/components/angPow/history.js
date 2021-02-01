@@ -23,7 +23,7 @@ const useGetPrizeList = ({
 	useEffect(() => {
 		if (userInfo.isLogin === true) {
 			setLoading(true);
-			api_events_GetCustDrawPrizeList({ eventId: 0 }).then(
+			api_events_GetCustDrawPrizeList().then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
