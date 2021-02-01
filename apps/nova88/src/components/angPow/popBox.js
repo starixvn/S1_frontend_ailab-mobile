@@ -1,8 +1,11 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useContext } from "react";
 import PropTypes from "prop-types";
 import api from "../../service/api";
+import { loadingContext } from "../common/context";
+import { siteId } from "../../config";
 
 const useDrawPrize = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
+	const { setLoading } = useContext(loadingContext);
 	const [prize, setPrize] = useState("");
 	const isMountedRef = useRef(null);
 
@@ -14,7 +17,8 @@ const useDrawPrize = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 	});
 
 	useEffect(() => {
-		api.events.DrawPrize({ eventId: 0 }).then(
+		setLoading(true);
+		api.events.DrawPrize({ eventId: siteId }).then(
 			res => {
 				if (isMountedRef.current) {
 					const { data, errorCode, message } = res.data;
@@ -40,6 +44,7 @@ const useDrawPrize = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 						});
 						setAngPowPop(false);
 					}
+					setLoading(false);
 				}
 			},
 			() => {
@@ -49,10 +54,11 @@ const useDrawPrize = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
+					setLoading(false);
 				}
 			}
 		);
-	}, [i18n, setPopBox, setAngPowPop, setCanDrawPrize]);
+	}, [i18n, setPopBox, setAngPowPop, setCanDrawPrize, setLoading]);
 
 	return { prize };
 };

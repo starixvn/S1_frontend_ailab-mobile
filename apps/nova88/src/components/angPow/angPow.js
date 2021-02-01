@@ -12,6 +12,7 @@ import History from "./history";
 import PopBox from "./popBox";
 import Counter from "./counter";
 import api from "../../service/api";
+import { siteId } from "../../config";
 
 const useCheckPrize = ({ i18n, setPopBox, isLogin }) => {
 	const [canDrawPrize, setCanDrawPrize] = useState(true);
@@ -26,7 +27,7 @@ const useCheckPrize = ({ i18n, setPopBox, isLogin }) => {
 
 	useEffect(() => {
 		if (isLogin === true) {
-			api.events.CheckDrawPrize({ eventId: 0 }).then(
+			api.events.CheckDrawPrize({ eventId: siteId }).then(
 				res => {
 					if (isMountedRef.current) {
 						const { errorCode } = res.data;

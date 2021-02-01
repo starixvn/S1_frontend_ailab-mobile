@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import api from "../../service/api";
+import { siteId } from "../../config";
 
 const useGetPrizeList = ({
 	i18n,
@@ -23,7 +24,7 @@ const useGetPrizeList = ({
 	useEffect(() => {
 		if (userInfo.isLogin === true) {
 			setLoading(true);
-			api.events.GetCustDrawPrizeList({ eventId: 0 }).then(
+			api.events.GetCustDrawPrizeList({ eventId: siteId }).then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
