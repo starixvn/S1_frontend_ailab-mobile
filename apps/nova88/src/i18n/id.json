@@ -417,12 +417,12 @@
 	"lbl_Referral_rewards":"Hadiah",
 	"lbl_Redeposit_Promo":"Deposit ulang",
 	"lbl_Last_Event":"Event terakhir",
-	"lbl_AngPow":"Ang Pow",
-	"lbl_AngPow_EventTitle":"Hadiah Ang Pow Tahun Baru",
+	"lbl_AngPow":"Ang Pao",
+	"lbl_AngPow_EventTitle":"Hadiah Ang Pao Tahun Baru",
 	"lbl_Start":"Mulai",
 	"lbl_End":"Akhir",
 	"lbl_AngPow_Conditions":"Ketentuan Angpao",
-	"lbl_AngPow_MyAngPow":"Ang Pow Saya",
+	"lbl_AngPow_MyAngPow":"Ang Pao Saya",
 	"lbl_AngPow_MemberEligibility":"setidaknya 1 Deposit dan memiliki 1 taruhan yang diselesaikan sebelumnya",
 	"lbl_AngPow_OtherConditions":"Kondisi lain",
 	"lbl_AngPow_OtherConditions1":"Anggota dapat berpartisipasi setiap hari hingga promosi berakhir.",
@@ -432,7 +432,7 @@
 	"lbl_AngPow_Congratulations":"Selamat",
 	"lbl_AngPow_CreditedAccount1":"Selamat, Ang Pao Anda",
 	"lbl_AngPow_CreditedAccount2":"telah dikreditkan ke akun Anda!",
-	"lbl_AngPow_AlreadyDrawn":"Anda sudah mengambil Ang Pow hari ini, coba lagi besok!",
-	"lbl_AngPow_NotWinning":"Ups! ANG POW sudah berakhir, Silakan kembali besok!"
+	"lbl_AngPow_AlreadyDrawn":"Anda sudah mengambil Ang Pao hari ini, coba lagi besok!",
+	"lbl_AngPow_NotWinning":"Ups! ANG PAO sudah berakhir, Silakan kembali besok!"
 
 }

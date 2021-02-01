@@ -31,10 +31,14 @@ const useCheckPrize = ({ i18n, setPopBox, isLogin }) => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 100) {
 							setCanDrawPrize(false);
-						} else if (
-							res.data.errorCode !== 0 &&
-							res.data.errorCode !== 100
-						) {
+						} else if (res.data.errorCode === 101) {
+							setCanDrawPrize(false);
+							setPopBox({
+								isOpen: true,
+								title: i18n.lbl_AngPow_EventTitle,
+								content: i18n.lbl_AngPow_NotWinning
+							});
+						} else {
 							setPopBox({
 								isOpen: true,
 								content: `[${res.data.errorCode}]${res.data.message}`

@@ -8,13 +8,15 @@ import {
 	i18nContext,
 	defNavPanel,
 	loadingContext,
-	rootContext
+	rootContext,
+	userInfoContext
 } from "./context";
 import path from "../../path";
 import Loading from "./loading";
 import { isEventPeriod } from "./common";
 import { eventTime } from "../../pages/angPow";
 import eventImg from "../../styles/img/event/eventlink.png";
+import eventIdImg from "../../styles/img/event/eventlink_id.png";
 
 const defPageInfo = {
 	default: {
@@ -158,6 +160,7 @@ const Layout = ({ children }) => {
 	const { i18n } = useContext(i18nContext);
 	const { nav } = useContext(navContext);
 	const { loading } = useContext(loadingContext);
+	const { userInfo } = useContext(userInfoContext);
 	const location = useLocation();
 	const pageInfo = GetPageInfo(location.pathname);
 
@@ -178,6 +181,9 @@ const Layout = ({ children }) => {
 				{children}
 				{loading ? <Loading /> : null}
 			</main>
+			{isEventPeriod(eventTime.angPow) ? (
+				<AngPow langId={userInfo.langId} />
+			) : null}
 			<Footer />
 		</>
 	);
@@ -219,35 +225,30 @@ class RotationHint extends Component {
 
 	render() {
 		return (
-			<>
-				<div
-					className={`Straight-lock${
-						this.state.rotateClass
-							? ` ${this.state.rotateClass}`
-							: ""
-					}`}>
-					<div className="icon icon-mobile img-rotate">
-						<i className="icon icon-spinner11" />
-					</div>
-					<div className="text">
-						{this.props.i18n.lbl_RotationHint_1}
-						<br />
-						{this.props.i18n.lbl_RotationHint_2}
-						<br />
-						<span className="text-org">
-							{this.props.i18n.lbl_RotationHint_3}
-						</span>
-						<br />
-						{this.props.i18n.lbl_RotationHint_4}
-					</div>
+			<div
+				className={`Straight-lock${
+					this.state.rotateClass ? ` ${this.state.rotateClass}` : ""
+				}`}>
+				<div className="icon icon-mobile img-rotate">
+					<i className="icon icon-spinner11" />
 				</div>
-				{isEventPeriod(eventTime.angPow) ? <AngPow /> : null}
-			</>
+				<div className="text">
+					{this.props.i18n.lbl_RotationHint_1}
+					<br />
+					{this.props.i18n.lbl_RotationHint_2}
+					<br />
+					<span className="text-org">
+						{this.props.i18n.lbl_RotationHint_3}
+					</span>
+					<br />
+					{this.props.i18n.lbl_RotationHint_4}
+				</div>
+			</div>
 		);
 	}
 }
 
-const AngPow = () => {
+const AngPow = ({ langId }) => {
 	const { root, setRoot } = useContext(rootContext);
 
 	const closePop = () => {
@@ -258,7 +259,10 @@ const AngPow = () => {
 		<div className="eventLink">
 			<button className="icon icon-close" onClick={closePop} />
 			<Link to={path.angPow.root}>
-				<img src={eventImg} alt="Ang Pow" />
+				<img
+					src={langId === "id" ? eventIdImg : eventImg}
+					alt={langId === "id" ? "Ang Pao" : "Ang pow"}
+				/>
 			</Link>
 		</div>
 	) : null;
@@ -270,6 +274,10 @@ Layout.propTypes = {
 
 RotationHint.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired
+};
+
+AngPow.propTypes = {
+	langId: PropTypes.string.isRequired
 };
 
 export default Layout;
