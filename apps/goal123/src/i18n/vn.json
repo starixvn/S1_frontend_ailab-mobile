@@ -389,8 +389,7 @@
 	"lbl_please_select_to_wallet":"Vui lòng chọn quỹ phù hợp",
 	"lbl_Redeposit_Promo":"Nạp lại",
 	"lbl_Last_Event":"Sự kiện cuối cùng",
-	"lbl_AngPow":"Lì xì",
-	"lbl_AngPow_EventTitle":"Tặng Lì Xì miễn phí cho Năm Mới",
+	"lbl_AngPow_EventTitle":"Tặng Lì Xì Năm Mới May Mắn",
 	"lbl_Start":"Bắt đầu",
 	"lbl_End":"Kết thúc",
 	"lbl_AngPow_Conditions":"Điều Khoản & Điều Kiện",
@@ -404,6 +403,7 @@
 	"lbl_AngPow_CreditedAccount1":"Xin chúc mừng, tiền lì xì VNĐ ",
 	"lbl_AngPow_CreditedAccount2":"đã được ghi có vào ví của bạn!",
 	"lbl_AngPow_AlreadyDrawn":"Bạn đã nhận lì xì cho ngày hôm nay, vui lòng thử lại vào ngày mai!",
-	"lbl_AngPow_NotWinning":"Rất tiếc ! Đã hết lì xì cho ngày hôm nay. Vui lòng quay lại vào ngày mai!"
+	"lbl_AngPow_NotWinning":"Rất tiếc ! Đã hết lì xì cho ngày hôm nay. Vui lòng quay lại vào ngày mai!",
+	"lbl_FreeAngPow":"Lì Xì May Mắn"
 
 }

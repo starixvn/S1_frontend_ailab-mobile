@@ -15,7 +15,8 @@ import path from "../../path";
 import Loading from "./loading";
 import { isEventPeriod } from "./common";
 import { eventTime } from "../../pages/angPow";
-import eventImg from "../../styles/img/event/eventlink.png";
+import eventImg from "../../styles/img/event/eventlink_en.png";
+import eventVNImg from "../../styles/img/event/eventlink_vn.png";
 
 const defPageInfo = {
 	default: {
@@ -170,7 +171,7 @@ const Layout = ({ children }) => {
 				{loading ? <Loading /> : null}
 			</main>
 			{isEventPeriod(eventTime.angPow) ? (
-				<AngPow isLogin={userInfo.isLogin} />
+				<AngPow userInfo={userInfo} />
 			) : null}
 			<Footer />
 		</>
@@ -240,17 +241,20 @@ class RotationHint extends Component {
 	}
 }
 
-const AngPow = ({ isLogin }) => {
+const AngPow = ({ userInfo }) => {
 	const { root, setRoot } = useContext(rootContext);
 	const closePop = () => {
 		setRoot(false);
 	};
 
 	return root ? (
-		<div className={`eventLink ${isLogin ? "afterlogin" : ""}`}>
+		<div className={`eventLink ${userInfo.isLogin ? "afterlogin" : ""}`}>
 			<button className="icon icon-close" onClick={closePop} />
 			<Link to={path.angPow.root}>
-				<img src={eventImg} alt="Ang pow" />
+				<img
+					src={userInfo.langId === "vn" ? eventVNImg : eventImg}
+					alt="Ang pow"
+				/>
 			</Link>
 		</div>
 	) : null;
@@ -260,12 +264,8 @@ RotationHint.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
-AngPow.defaultProps = {
-	isLogin: null
-};
-
 AngPow.propTypes = {
-	isLogin: PropTypes.bool
+	userInfo: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
 export default Layout;

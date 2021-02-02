@@ -12,6 +12,9 @@ import History from "./history";
 import PopBox from "./popBox";
 import Counter from "./counter";
 import { api_events_CheckDrawPrize } from "../../service/api/events";
+import eventImg from "../../styles/img/event/angpao_inf_en.png";
+import eventVNImg from "../../styles/img/event/angpao_inf_vn.png";
+import eventBgImg from "../../styles/img/event/angpao_inf_d.png";
 
 const useCheckPrize = ({ i18n, setPopBox, isLogin }) => {
 	const [canDrawPrize, setCanDrawPrize] = useState(true);
@@ -101,6 +104,13 @@ const AngPow = () => {
 		}
 	};
 
+	let _eventImg = eventImg;
+	if (canDrawPrize === false) {
+		_eventImg = eventBgImg;
+	} else if (userInfo.langId === "vn") {
+		_eventImg = eventVNImg;
+	}
+
 	return (
 		<>
 			<div className="animation">
@@ -109,7 +119,11 @@ const AngPow = () => {
 						canDrawPrize === false ? " active" : ""
 					}`}
 					onClick={drawAngPow}>
-					<div className="redbox" />
+					<img
+						className="redbox"
+						src={_eventImg}
+						alt={i18n.lbl_FreeAngPow}
+					/>
 					{canDrawPrize === false ? (
 						<Counter
 							i18n={i18n}
@@ -150,6 +164,7 @@ const AngPow = () => {
 					setAngPowPop={setAngPowPop}
 					setCanDrawPrize={setCanDrawPrize}
 					setPopBox={setPopBox}
+					langId={userInfo.langId}
 				/>
 			) : null}
 		</>

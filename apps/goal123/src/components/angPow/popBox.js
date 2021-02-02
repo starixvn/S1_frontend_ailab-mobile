@@ -2,6 +2,8 @@ import React, { useRef, useEffect, useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { loadingContext } from "../common/context";
 import { api_events_DrawPrize } from "../../service/api/events";
+import eventImg from "../../styles/img/event/angpao_inf_en.png";
+import eventVNImg from "../../styles/img/event/angpao_inf_vn.png";
 
 const useDrawPrize = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 	const { setLoading } = useContext(loadingContext);
@@ -63,7 +65,13 @@ const useDrawPrize = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 	return { prize };
 };
 
-const AngPowPopBox = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
+const AngPowPopBox = ({
+	i18n,
+	setAngPowPop,
+	setCanDrawPrize,
+	setPopBox,
+	langId
+}) => {
 	const [animationOver, setAnimationOver] = useState(false);
 
 	const { prize } = useDrawPrize({
@@ -88,7 +96,13 @@ const AngPowPopBox = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 	return prize ? (
 		<div id="popup" className="active">
 			<div className="popangpao">
-				<div className="redbox inner" />
+				<div className="redbox">
+					<img
+						className="redbox"
+						src={langId === "vn" ? eventVNImg : eventImg}
+						alt={i18n.lbl_FreeAngPow}
+					/>
+				</div>
 				<div className="coin" />
 				<div className="coin" />
 				<div className="coin" />
@@ -110,7 +124,8 @@ AngPowPopBox.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	setAngPowPop: PropTypes.func.isRequired,
 	setCanDrawPrize: PropTypes.func.isRequired,
-	setPopBox: PropTypes.func.isRequired
+	setPopBox: PropTypes.func.isRequired,
+	langId: PropTypes.string.isRequired
 };
 
 export default AngPowPopBox;
