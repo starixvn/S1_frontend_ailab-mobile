@@ -2154,6 +2154,8 @@ p.txt-blue12 {
           align-items: start;
   padding: 5px;
   margin-top: 5vw;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .depositType .icon:before {
@@ -2181,8 +2183,9 @@ p.txt-blue12 {
           flex-direction: column;
   color: #fff;
   float: left;
-  width: calc(100% / 2 - 10px);
+  width: calc(100% / 2 - 5px);
   border-radius: 5px;
+  margin: 10px 0;
 }
 
 .depositType div a {
@@ -2199,6 +2202,7 @@ p.txt-blue12 {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  color: #58cdff;
 }
 
 .depositType div button {
@@ -2235,7 +2239,7 @@ p.txt-blue12 {
   color: #58cdff;
   font-weight: bold;
   text-align: center;
-  height: 25vw;
+  height: 20vw;
 }
 
 .depositType div span {
@@ -6731,14 +6735,16 @@ span.important {
 }
 
 .angPao_close {
-  background: red;
+  background: #ff4741;
   color: white;
   position: absolute;
-  right: -1vw;
-  top: -2vw;
-  width: 5vw;
-  height: 5vw;
+  right: 0vw;
+  top: -5vw;
+  width: 20px;
+  line-height: 20px;
   border-radius: 100%;
+  z-index: 1;
+  text-align: center;
 }
 
 .angPao {
@@ -6798,7 +6804,7 @@ span.important {
 }
 
 .filterBtn {
-  margin: 5vw 0;
+  margin: 3vw auto;
   display: unset;
   -ms-flex-item-align: start;
       align-self: flex-start;
@@ -7304,6 +7310,8 @@ span.important {
 .eventModule li {
   list-style: decimal;
   margin-left: 3vw;
+  margin-top: 3vw;
+  text-align: left;
 }
 
 .eventModule.active {
