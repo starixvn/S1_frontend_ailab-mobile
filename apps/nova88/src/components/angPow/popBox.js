@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import api from "../../service/api";
 import { loadingContext } from "../common/context";
 import { siteId } from "../../config";
+import eventImg from "../../styles/img/event/angpao_inf.png";
+import eventIdImg from "../../styles/img/event/angpao_inf_id.png";
 
 const useDrawPrize = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 	const { setLoading } = useContext(loadingContext);
@@ -63,7 +65,13 @@ const useDrawPrize = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 	return { prize };
 };
 
-const AngPowPopBox = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
+const AngPowPopBox = ({
+	i18n,
+	setAngPowPop,
+	setCanDrawPrize,
+	setPopBox,
+	langId
+}) => {
 	const [animationOver, setAnimationOver] = useState(false);
 
 	const { prize } = useDrawPrize({
@@ -88,7 +96,13 @@ const AngPowPopBox = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 	return prize ? (
 		<div id="popup" className="active">
 			<div className="popangpao">
-				<div className="redbox" />
+				<div className="redbox">
+					<img
+						className="redbox"
+						src={langId === "id" ? eventIdImg : eventImg}
+						alt={i18n.lbl_AngPow}
+					/>
+				</div>
 				<div className="coin" />
 				<div className="coin" />
 				<div className="coin" />
@@ -106,11 +120,16 @@ const AngPowPopBox = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 	) : null;
 };
 
+AngPowPopBox.defaultProps = {
+	langId: null
+};
+
 AngPowPopBox.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	setAngPowPop: PropTypes.func.isRequired,
 	setCanDrawPrize: PropTypes.func.isRequired,
-	setPopBox: PropTypes.func.isRequired
+	setPopBox: PropTypes.func.isRequired,
+	langId: PropTypes.string
 };
 
 export default AngPowPopBox;

@@ -163,6 +163,7 @@ const AngPow = () => {
 					setAngPowPop={setAngPowPop}
 					setCanDrawPrize={setCanDrawPrize}
 					setPopBox={setPopBox}
+					langId={userInfo.langId}
 				/>
 			) : null}
 		</>
