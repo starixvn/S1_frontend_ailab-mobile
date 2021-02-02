@@ -401,7 +401,8 @@ const Join = () => {
 				PhoneNo: userValue.Phone,
 				CurrencyId: _currencyId,
 				UserLang: defaultLangId,
-				AreaCode: _areaCode
+				AreaCode: _areaCode,
+				PromoCode: userValue.SpecialBonusCode
 			};
 
 			if (AffId) {
