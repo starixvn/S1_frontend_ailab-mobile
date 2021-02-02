@@ -1,6 +1,21 @@
 import BaseAPI from "./base";
 
 export class SiteAPI extends BaseAPI {
+	defBannerType = {
+		Promotions: 1,
+		HotEvent: 2,
+		Slots: 3
+	};
+
+	defBannerActionMode = {
+		NoAction: 1,
+		GoToGame: 2,
+		GoToBonus: 3,
+		OpenWindow: 4,
+		RedirectPage: 5,
+		RedirectPageOfThisSite: 6
+	};
+
 	ExistsUserName = ({ UserName }) =>
 		this.siteRequest.post(`/ExistsUserName`, { UserName });
 
@@ -34,10 +49,13 @@ export class SiteAPI extends BaseAPI {
 			`FolderName=${FolderName}&refId=${refId}&filterHideInHome=${filterHideInHome}`
 		);
 
+	GetBannerV3 = ({ lang, BannerType }) =>
+		this.siteRequest.post(`/GetBannerV3/${lang}`, { BannerType });
+
 	CheckResetPwdToken = key =>
 		this.siteRequest.post(`/CheckResetPwdToken`, `key=${key}`);
 
-	WhoAMI = key => this.siteRequest.post(`/WhoAMI`);
+	WhoAMI = () => this.siteRequest.post(`/WhoAMI`);
 
 	ExistsPhoneNo = ({ AreaCode, Phone }) =>
 		this.siteRequest.post(`/ExistsPhoneNo`, { AreaCode, PhoneNo: Phone });

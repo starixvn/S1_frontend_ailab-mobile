@@ -37,18 +37,32 @@ export const GET_ENTER_PAGE = ({
 	const entPageUrl = `${config.openURL}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&CashierUrl=${cashierUrl}&&LobbyUrl=${lobbyUrl}`;
 	let result = setResult("", true, _ACTION_TYPE.blank);
 
-	if (tpId === 1) {
-		if (gameId === 43 || gameId === 220 || gameId === 202) {
-			result = setResult("", true, _ACTION_TYPE.redirect, tpId, gameId);
-		} else if (gameId < 100) {
-			result = setResult("", false, _ACTION_TYPE.redirect, tpId, gameId);
-		} else if (gameId === 161 || gameId === 180) {
-			result = setResult("", false, _ACTION_TYPE.redirect, tpId, gameId);
-		} else if (gameId >= 200) {
-			result = setResult("", true, _ACTION_TYPE.blank, tpId, gameId);
+	const _tpId = isNaN(tpId) ? tpId : Number(tpId);
+	const _gameId = isNaN(gameId) ? gameId : Number(gameId);
+	if (_tpId === 1) {
+		if (_gameId === 43 || _gameId === 220 || _gameId === 202) {
+			result = setResult("", true, _ACTION_TYPE.redirect, _tpId, _gameId);
+		} else if (_gameId < 100) {
+			result = setResult(
+				"",
+				false,
+				_ACTION_TYPE.redirect,
+				_tpId,
+				_gameId
+			);
+		} else if (_gameId === 161 || _gameId === 180) {
+			result = setResult(
+				"",
+				false,
+				_ACTION_TYPE.redirect,
+				_tpId,
+				_gameId
+			);
+		} else if (_gameId >= 200) {
+			result = setResult("", true, _ACTION_TYPE.blank, _tpId, _gameId);
 		}
 	} else {
-		result = setResult("", true, _ACTION_TYPE.blank, tpId, gameId);
+		result = setResult("", true, _ACTION_TYPE.blank, _tpId, _gameId);
 	}
 
 	if (!isLogin && result.needLogin) {

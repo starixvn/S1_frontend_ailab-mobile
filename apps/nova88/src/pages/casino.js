@@ -273,7 +273,8 @@ class Panel extends React.Component {
 		const initGameDatas = this.state.gameDatas;
 		const initTpList = this.state.tpList;
 		const s = this.state;
-		if (s.hasMore) {
+
+		if (s.hasMore && initGameDatas) {
 			const _gameDatas = this.FilterGames(
 				_searchInfo,
 				_selNav,
@@ -329,7 +330,6 @@ class Panel extends React.Component {
 					EditSearchField={this.EditSearchField}
 					DefaultProvider={this.props.tpId}
 				/>
-
 				<Games
 					SelectGame={this.SelectGame}
 					Games={this.state.displayGames}
@@ -339,7 +339,6 @@ class Panel extends React.Component {
 					i18n={this.props.i18n}
 					imgUrl={this.state.imgUrl}
 				/>
-
 				{this.state.selGameInfo === null ? null : (
 					<div className="slotFunction open">
 						<div className="title text-org">
@@ -372,16 +371,16 @@ class Panel extends React.Component {
 	}
 }
 
-Panel.defaultProps = {
-	tpId: null
-};
+// Panel.defaultProps = {
+// 	tpId: null
+// };
 
-Panel.propTypes = {
-	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	setNav: PropTypes.func.isRequired,
-	tpId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-};
+// Panel.propTypes = {
+// 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
+// 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+// 	setNav: PropTypes.func.isRequired,
+// 	tpId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+// };
 
 const IndexPage = props => {
 	const { i18n } = useContext(i18nContext);
