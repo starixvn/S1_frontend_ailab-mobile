@@ -15,6 +15,7 @@ import api from "../../service/api";
 import { siteId } from "../../config";
 import eventImg from "../../styles/img/event/angpao_inf.png";
 import eventIdImg from "../../styles/img/event/angpao_inf_id.png";
+import eventBgImg from "../../styles/img/event/angpao_inf_d.png";
 
 const useCheckPrize = ({ i18n, setPopBox, isLogin }) => {
 	const [canDrawPrize, setCanDrawPrize] = useState(true);
@@ -104,6 +105,13 @@ const AngPow = () => {
 		}
 	};
 
+	let _eventImg = eventImg;
+	if (canDrawPrize === false) {
+		_eventImg = eventBgImg;
+	} else if (userInfo.langId === "id") {
+		_eventImg = eventIdImg;
+	}
+
 	return (
 		<>
 			<div className="animation">
@@ -113,12 +121,7 @@ const AngPow = () => {
 					}`}
 					onClick={drawAngPow}>
 					<div className="redbox">
-						<img
-							src={
-								userInfo.langId === "id" ? eventIdImg : eventImg
-							}
-							alt={i18n.lbl_AngPow}
-						/>
+						<img src={_eventImg} alt={i18n.lbl_AngPow} />
 					</div>
 					{canDrawPrize === false ? (
 						<Counter
