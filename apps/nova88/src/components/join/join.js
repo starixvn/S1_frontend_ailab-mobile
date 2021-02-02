@@ -615,9 +615,16 @@ const Join = () => {
 							{status.Phone.msg}
 						</div>
 					</div>
-				) : (
-					<></>
-				)}
+				) : null}
+
+				<Inputbox
+					icon="icon-email"
+					ClassName="JoinRule"
+					placeholder={i18n.lbl_JoinPromoCode}
+					value={userValue.SpecialBonusCode}
+					onBlur={checkValue.bind(null, "SpecialBonusCode")}
+					onChange={EditField.bind(null, "SpecialBonusCode")}
+				/>
 
 				<Inputbox
 					icon="icon-affiliate"
@@ -643,11 +650,17 @@ const Join = () => {
 					checkboxHandler={checkboxHandler}
 					id="c1">
 					{i18n.lbl_Check18TC1} &nbsp;
-					<a target="_blank" href={TandC(userInfo.langId).terms}>
+					<a
+						rel="noreferrer"
+						target="_blank"
+						href={TandC(userInfo.langId).terms}>
 						{i18n.lbl_TermsConditions}
 					</a>
 					&nbsp; {i18n.lbl_Check18TC2}&nbsp;
-					<a target="_blank" href={TandC(userInfo.langId).rule}>
+					<a
+						rel="noreferrer"
+						target="_blank"
+						href={TandC(userInfo.langId).rule}>
 						{i18n.lbl_RuleRegulations}
 					</a>
 					&nbsp; {i18n.lbl_Check18TC3}&nbsp;{config.siteName}

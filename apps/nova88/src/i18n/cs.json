@@ -416,5 +416,6 @@
 	"lbl_Achievement":"绩效",
 	"lbl_Referral_rewards":"奖励",
 	"lbl_Redeposit_Promo":"再存",
-	"lbl_Last_Event":"上个活动"
+	"lbl_Last_Event":"上个活动",
+	"lbl_JoinPromoCode":"优惠代码"
 }

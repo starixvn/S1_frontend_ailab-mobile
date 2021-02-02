@@ -416,5 +416,6 @@
 	"lbl_Achievement":"Prestasi",
 	"lbl_Referral_rewards":"Hadiah",
 	"lbl_Redeposit_Promo":"Deposit ulang",
-	"lbl_Last_Event":"Event terakhir"
+	"lbl_Last_Event":"Event terakhir",
+	"lbl_JoinPromoCode":"Promo Code"
 }
