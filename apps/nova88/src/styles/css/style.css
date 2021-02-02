@@ -5022,6 +5022,10 @@ span.icon.icon-ranking:after {
   z-index: 2;
 }
 
+.redbox img {
+  width: 100%;
+}
+
 .coin {
   position: absolute;
   top: 25vw;

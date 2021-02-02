@@ -1013,6 +1013,10 @@
   content: "\e935";
 }
 
+.icon-box-bookmark:before {
+  content: "\e9c8";
+}
+
 .icon-icon32px_openmail:before {
   content: "\e999";
 }
