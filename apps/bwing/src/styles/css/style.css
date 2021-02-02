@@ -7260,6 +7260,7 @@ span.important {
 #popup .eventpop .icon-close {
   color: #f5c346;
   position: absolute;
+  left: auto;
   right: 3vw;
   top: 4vw;
 }
