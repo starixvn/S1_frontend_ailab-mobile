@@ -80,16 +80,18 @@ const AngPowPopBox = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 	});
 
 	useEffect(() => {
-		setInterval(() => {
-			setAnimationOver(true);
-		}, 3000);
-	}, []);
+		if (prize) {
+			setInterval(() => {
+				setAnimationOver(true);
+			}, 3000);
+		}
+	}, [prize]);
 
 	const closePop = () => {
 		setAngPowPop(false);
 	};
 
-	return (
+	return prize ? (
 		<div id="popup" className="active">
 			<Animation
 				jackpot={jackpot}
@@ -105,7 +107,7 @@ const AngPowPopBox = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 				<div>{i18n.lbl_AngPow_CreditedAccount2}</div>
 			</div>
 		</div>
-	);
+	) : null;
 };
 
 AngPowPopBox.propTypes = {
