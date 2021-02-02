@@ -15,6 +15,12 @@ const SetUpdTime = () => {
 	);
 };
 
+const getTopNum = isLastEvent => {
+	const topNum = 10;
+	const lastTimeTopNum = 10;
+	return isLastEvent ? lastTimeTopNum : topNum;
+};
+
 const handleEventCode = isLastEvent => {
 	const defEventCode = {
 		current: "202101",
@@ -47,7 +53,7 @@ export const useGetRanking = ({
 			const GetRankingDatas = async () => {
 				setLoading(true);
 				try {
-					const TopNum = 10;
+					const TopNum = getTopNum(isLastEvent);
 					const res = await api.events.GetLeaderboardListV2({
 						lBCategoryId,
 						TopNum,

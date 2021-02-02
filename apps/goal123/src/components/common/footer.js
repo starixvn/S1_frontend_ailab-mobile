@@ -4,13 +4,6 @@ import { userInfoContext, i18nContext } from "./context";
 import path from "../../path";
 import { siteInfo } from "../../config";
 
-const defChatLangSubUrl = {
-	en: 1,
-	id: 2,
-	cs: 3,
-	th: 4
-};
-
 const Footer = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
@@ -52,9 +45,7 @@ const Footer = () => {
 				<a
 					target="_blank"
 					rel="noreferrer"
-					href={`https://direct.lc.chat/${siteInfo().liveChatId}/${
-						defChatLangSubUrl[userInfo.langId] ?? ""
-					}`}
+					href={`https://direct.lc.chat/${siteInfo().liveChatId}`}
 					className="">
 					<div className="circleAnimation">
 						<div className="icon icon-contact" />
@@ -140,9 +131,7 @@ const Footer = () => {
 			<a
 				target="_blank"
 				rel="noreferrer"
-				href={`https://direct.lc.chat/${siteInfo().liveChatId}/${
-					defChatLangSubUrl[userInfo.langId] ?? ""
-				}`}
+				href={`https://direct.lc.chat/${siteInfo().liveChatId}`}
 				className="">
 				<div className="circleAnimation">
 					<div className="icon icon-contact" />
