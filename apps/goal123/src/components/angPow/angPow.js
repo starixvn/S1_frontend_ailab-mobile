@@ -142,7 +142,7 @@ const AngPow = () => {
 					canDrawPrize={canDrawPrize}
 				/>
 			) : (
-				<Condition i18n={i18n} />
+				<Condition i18n={i18n} langId={userInfo.langId} />
 			)}
 			{AngPowPop ? (
 				<PopBox
