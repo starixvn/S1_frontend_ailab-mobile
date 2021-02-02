@@ -418,7 +418,7 @@
 	"lbl_Redeposit_Promo":"再存",
 	"lbl_Last_Event":"上个活动",
 	"lbl_AngPow":"红包",
-	"lbl_AngPow_EventTitle":"新年红包派送",
+	"lbl_AngPow_EventTitle":"派送新年幸运红包",
 	"lbl_Start":"开始",
 	"lbl_End":"结束",
 	"lbl_AngPow_Conditions":"红包领取条件",
@@ -433,7 +433,7 @@
 	"lbl_AngPow_CreditedAccount1":"恭喜，您的红包",
 	"lbl_AngPow_CreditedAccount2":"已汇入您的户口！",
 	"lbl_AngPow_AlreadyDrawn":"您今日已领取过红包，请明天再试！",
-	"lbl_AngPow_NotWinning":"抱歉！红包派送完毕，请明日再继续！"
-
+	"lbl_AngPow_NotWinning":"抱歉！红包派送完毕，请明日再继续！",
+	"lbl_NewYearAngPow":"新年红包"
 
 }

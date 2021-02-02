@@ -79,7 +79,7 @@ const History = ({ i18n, userInfo, setPopBox, setLoading, canDrawPrize }) => {
 			<tbody>
 				<tr>
 					<td>
-						{i18n.lbl_Date}({moment().format("Z")})
+						{i18n.lbl_Date} ({moment().format("Z")})
 					</td>
 					<td>
 						{i18n.lbl_Awards} (

@@ -1,13 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
+import moment from "moment";
 
 const Condition = ({ i18n }) => {
+	const zone = moment().format("Z");
 	return (
 		<div className="eventModule active">
 			<div className="title">{i18n.lbl_AngPow_Conditions}</div>
 			<div className="text-gray">
 				<ul>
-					<li>{`${i18n.lbl_Start} ${i18n.lbl_From} 11-02-2021 00:00:00 GMT+8 ${i18n.lbl_To} 26-02-2021 23:59:59 GMT+8`}</li>
+					<li>{`${i18n.lbl_Start} ${i18n.lbl_From} 11-02-2021 00:00:00 GMT${zone} ${i18n.lbl_To} 26-02-2021 23:59:59 GMT${zone}`}</li>
 					<li>{i18n.lbl_AngPow_OtherConditions1}</li>
 					<li>{i18n.lbl_AngPow_OtherConditions2}</li>
 				</ul>

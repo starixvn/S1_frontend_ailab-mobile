@@ -418,12 +418,12 @@
 	"lbl_Redeposit_Promo":"ทำรายการฝากอีกครั้ง",
 	"lbl_Last_Event":"กิจกรรมสุดท้าย",
 	"lbl_AngPow":"อั่งเปา",
-	"lbl_AngPow_EventTitle":"ตรุษจีนแจกอั่งเปา",
+	"lbl_AngPow_EventTitle":"แจกอั่งเปานำโชคในวันตรุษจีนนี้",
 	"lbl_Start":"เริ่ม",
 	"lbl_End":"จบ",
 	"lbl_AngPow_Conditions":"เงื่อนไขอั่งเปา",
 	"lbl_AngPow_MyAngPow":"อั่งเปาของฉัน",
-	"lbl_AngPow_MemberEligibility":"อย่างน้อย 1 การฝากและมีการตัดสินการเดิมพันอย่างน้อย 1 ครั้ง",
+	"lbl_AngPow_MemberEligibility":"สมาชิกต้องทำการฝากและวางเดิมพันอย่างน้อย 1 ครั้ง",
 	"lbl_AngPow_OtherConditions":"เงื่อนไขอื่น ๆ",
 	"lbl_AngPow_OtherConditions1":"สมาชิกสามารถเข้าร่วมได้ทุกวันจนกว่าโปรโมชั่นจะสิ้นสุด",
 	"lbl_AngPow_OtherConditions2":"สมาชิกแต่ละท่านสามารถเข้าร่วมได้วันละครั้งเท่านั้น",
@@ -433,6 +433,8 @@
 	"lbl_AngPow_CreditedAccount1":"ขอแสดงความยินดีเงินคืนของคุณ",
 	"lbl_AngPow_CreditedAccount2":"ได้รับการบันทึกเครดิตเข้าบัญชีของคุณแล้ว!ขอแสดงความยินดีด้วย, อังเปาได้ส่งเข้าไปที่บัญชีเครดิตของคุณแล้ว",
 	"lbl_AngPow_AlreadyDrawn":"วันนี้คุณได้รับอั่งเปาไปเรียบร้อยแล้ว กรุณาลองอีกครั้งในวันพรุ่งนี้",
-	"lbl_AngPow_NotWinning":"อุ๊ป! อั่งเปา จบแล้ว โปรดกลับมาใหม่พรุ่งนี้!"
+	"lbl_AngPow_NotWinning":"อุ๊ป! อั่งเปา จบแล้ว โปรดกลับมาใหม่พรุ่งนี้!",
+	"lbl_NewYearAngPow":"อั่งเปาวันตรุษจีน"
+
 
 }
