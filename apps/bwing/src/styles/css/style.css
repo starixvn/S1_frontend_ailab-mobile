@@ -2154,6 +2154,8 @@ p.txt-blue12 {
           align-items: start;
   padding: 5px;
   margin-top: 5vw;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .depositType .icon:before {
@@ -2181,8 +2183,9 @@ p.txt-blue12 {
           flex-direction: column;
   color: #fff;
   float: left;
-  width: calc(100% / 2 - 10px);
+  width: calc(100% / 2 - 5px);
   border-radius: 5px;
+  margin: 10px 0;
 }
 
 .depositType div a {
@@ -2199,6 +2202,7 @@ p.txt-blue12 {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  color: #58cdff;
 }
 
 .depositType div button {
@@ -2235,7 +2239,7 @@ p.txt-blue12 {
   color: #58cdff;
   font-weight: bold;
   text-align: center;
-  height: 25vw;
+  height: 20vw;
 }
 
 .depositType div span {
@@ -6721,6 +6725,28 @@ span.important {
   }
 }
 
+.angPao_module {
+  position: fixed;
+  width: 25vw;
+  height: 25vw;
+  bottom: 10vh;
+  right: 3vw;
+  z-index: 1;
+}
+
+.angPao_close {
+  background: #ff4741;
+  color: white;
+  position: absolute;
+  right: 0vw;
+  top: -5vw;
+  width: 20px;
+  line-height: 20px;
+  border-radius: 100%;
+  z-index: 1;
+  text-align: center;
+}
+
 .angPao {
   position: fixed;
   width: 25vw;
@@ -6729,7 +6755,6 @@ span.important {
   background-size: 100%;
   bottom: 10vh;
   right: 3vw;
-  z-index: 10;
   -webkit-animation: angPao 1s ease-in-out infinite alternate;
           animation: angPao 1s ease-in-out infinite alternate;
 }
@@ -6779,7 +6804,7 @@ span.important {
 }
 
 .filterBtn {
-  margin: 5vw 0;
+  margin: 3vw auto;
   display: unset;
   -ms-flex-item-align: start;
       align-self: flex-start;
@@ -7282,6 +7307,13 @@ span.important {
   padding: 3vw 3vw 5vw;
 }
 
+.eventModule li {
+  list-style: decimal;
+  margin-left: 3vw;
+  margin-top: 3vw;
+  text-align: left;
+}
+
 .eventModule.active {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7307,11 +7339,6 @@ span.important {
 
 .eventModule .text-gray:nth-child(6) {
   text-align: left;
-}
-
-.eventModule .text-gray:nth-child(6) li {
-  list-style: decimal;
-  margin-left: 3vw;
 }
 
 .eventModule .more {
