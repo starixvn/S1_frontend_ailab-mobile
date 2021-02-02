@@ -183,6 +183,7 @@ const Layout = ({ children }) => {
 				{loading ? <Loading /> : null}
 			</main>
 			<Footer />
+			{isEventPeriod(eventTime.angPow) ? <AngPow i18n={i18n} /> : null}
 		</>
 	);
 };
@@ -223,35 +224,30 @@ class RotationHint extends Component {
 
 	render() {
 		return (
-			<>
-				<div
-					className={`Straight-lock${
-						this.state.rotateClass
-							? ` ${this.state.rotateClass}`
-							: ""
-					}`}>
-					<div className="icon icon-mobile img-rotate">
-						<i className="icon icon-spinner11" />
-					</div>
-					<div className="text">
-						{this.props.i18n.lbl_RotationHint_1}
-						<br />
-						{this.props.i18n.lbl_RotationHint_2}
-						<br />
-						<span className="text-org">
-							{this.props.i18n.lbl_RotationHint_3}
-						</span>
-						<br />
-						{this.props.i18n.lbl_RotationHint_4}
-					</div>
+			<div
+				className={`Straight-lock${
+					this.state.rotateClass ? ` ${this.state.rotateClass}` : ""
+				}`}>
+				<div className="icon icon-mobile img-rotate">
+					<i className="icon icon-spinner11" />
 				</div>
-				{isEventPeriod(eventTime.angPow) ? <AngPow /> : null}
-			</>
+				<div className="text">
+					{this.props.i18n.lbl_RotationHint_1}
+					<br />
+					{this.props.i18n.lbl_RotationHint_2}
+					<br />
+					<span className="text-org">
+						{this.props.i18n.lbl_RotationHint_3}
+					</span>
+					<br />
+					{this.props.i18n.lbl_RotationHint_4}
+				</div>
+			</div>
 		);
 	}
 }
 
-const AngPow = () => {
+const AngPow = ({ i18n }) => {
 	const { root, setRoot } = useContext(rootContext);
 
 	const closePop = () => {
@@ -264,7 +260,9 @@ const AngPow = () => {
 				X
 			</div>
 			<Link to={path.angPow.root}>
-				<div className="angPao" />
+				<div className="angPao">
+					<p>{i18n.lbl_FreeAngPow}</p>
+				</div>
 			</Link>
 		</div>
 	) : null;
@@ -272,6 +270,10 @@ const AngPow = () => {
 
 Layout.propTypes = {
 	children: PropTypes.node.isRequired
+};
+
+AngPow.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
 export default Layout;

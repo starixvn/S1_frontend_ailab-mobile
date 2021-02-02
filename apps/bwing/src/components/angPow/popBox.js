@@ -142,7 +142,7 @@ const Animation = ({ jackpot, animationOver, prize, i18n }) => {
 					<div className="badge" />
 				</div>
 				<div className="textBox">
-					<p className="bigtitle">Free Ang Pow</p>
+					<p className="bigtitle">{i18n.lbl_FreeAngPow}</p>
 				</div>
 				<div className="moneyArea">
 					<div className="box" />

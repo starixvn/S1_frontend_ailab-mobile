@@ -116,7 +116,9 @@ const AngPow = () => {
 						<div className="badge" />
 					</div>
 					<div className="textBox">
-						<p className="bigtitle">{i18n.lbl_AngPow}</p>
+						<p className="bigtitle">
+							{i18n.lbl_FreeAngPow.toUpperCase()}
+						</p>
 						{canDrawPrize === false ? (
 							<Counter
 								i18n={i18n}
