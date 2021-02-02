@@ -4550,11 +4550,15 @@ span.important {
 .eventLink {
   position: fixed;
   right: 1vw;
-  bottom: 28vw;
+  bottom: 16vw;
   z-index: 3;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.eventLink.afterlogin {
+  bottom: 28vw;
 }
 
 .eventLink .icon-close {
@@ -4609,6 +4613,7 @@ span.important {
 
 .event .filterBtn {
   margin: 2vw 0 5vw;
+  text-align: center;
   display: block;
 }
 
@@ -4892,5 +4897,197 @@ span.important {
     -webkit-transform: rotate(2deg);
     transform: rotate(2deg);
   }
+}
+
+.Join {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: calc(100% - 16vw);
+  padding: 4vw 8vw;
+  height: calc(100% - 8vw);
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: white;
+  z-index: 2;
+  background: #001942;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  pointer-events: none;
+}
+
+.Join .dropdown {
+  padding: 2vw 0 2vw 5vw;
+  margin-left: 0;
+}
+
+.Join .dropdown .btn {
+  padding: 0 3vw;
+  background: transparent;
+}
+
+.Join .dropdown .dropdown-item {
+  padding: 3vw;
+}
+
+.Join > .close {
+  top: 4vw;
+}
+
+.Join > img {
+  width: 40vw;
+  margin: 0 auto 2vw;
+}
+
+.Join .title {
+  text-align: center;
+  font-size: 6vw;
+  margin: 1vw auto;
+  font-weight: bold;
+}
+
+.Join .inputBox {
+  position: relative;
+  margin: 1vw 0;
+}
+
+.Join .inputBox > input {
+  margin: 1vw 0;
+}
+
+.Join .inputBox > input::-webkit-input-placeholder {
+  color: white;
+}
+
+.Join .inputBox > input:-ms-input-placeholder {
+  color: white;
+}
+
+.Join .inputBox > input::-ms-input-placeholder {
+  color: white;
+}
+
+.Join .inputBox > input::placeholder {
+  color: white;
+}
+
+.Join .inputBox .JoinRule {
+  height: 0;
+  visibility: hidden;
+  opacity: 0;
+  font-size: 12px;
+}
+
+.Join .inputBox .JoinRule.open {
+  height: auto;
+  visibility: visible;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  opacity: 1;
+}
+
+.Join .inputBox > .icon-module {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.Join .inputBox i.icon {
+  position: absolute;
+  -webkit-transform: translateY(60%);
+          transform: translateY(60%);
+  left: 2vw;
+  top: 0;
+  color: #64789b;
+}
+
+.Join .inputBox i.icon.icon-eye, .Join .inputBox i.icon.icon-eye-blocked {
+  display: none;
+}
+
+.Join .inputBox i.icon.icon-key + input + div > .icon-eye {
+  display: inline-block;
+  position: initial;
+  margin-right: 2vw;
+}
+
+.Join .inputBox i.icon.icon-key + input + div > .icon-eye-blocked {
+  display: inline-block;
+  position: initial;
+  margin-right: 2vw;
+}
+
+.Join .inputBox i.icon.icon-warning {
+  position: initial;
+  margin-right: 2vw;
+  display: inline-block;
+}
+
+.Join .inputBox i.icon.icon-warning.open {
+  display: none;
+}
+
+.Join button {
+  background: #1E85EC;
+  border-radius: 3px;
+  color: white;
+  padding: 3vw;
+}
+
+.Join .Terms {
+  margin: 1vw auto 2vw;
+  line-height: 26px;
+}
+
+.Join .Terms.error {
+  border: 1px solid #fab617;
+  -webkit-box-shadow: 0 0 0 1px white;
+          box-shadow: 0 0 0 1px white;
+  border-radius: 0;
+  padding: 0 2vw;
+}
+
+.Join .Terms a {
+  color: #1E85EC;
+  text-decoration: underline;
+}
+
+.Join .Terms input[type="checkbox"] {
+  display: none;
+}
+
+.Join .Terms input[type="checkbox"] + label {
+  margin: 0vw 1vw 0 0;
+  border: 1px solid #1E85EC;
+  border-radius: 100%;
+  width: 4vw;
+  height: 4vw;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  vertical-align: middle;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Join .Terms input[type="checkbox"] + label > div {
+  width: 3vw;
+  height: 3vw;
+  background: transparent;
+  margin: auto;
+  border-radius: 100%;
+}
+
+.Join .Terms input[type="checkbox"]:checked + label > div {
+  background: #fab617;
 }
 /*# sourceMappingURL=style.css.map */

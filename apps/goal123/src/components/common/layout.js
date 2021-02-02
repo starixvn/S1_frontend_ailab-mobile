@@ -8,7 +8,8 @@ import {
 	i18nContext,
 	defNavPanel,
 	loadingContext,
-	rootContext
+	rootContext,
+	userInfoContext
 } from "./context";
 import path from "../../path";
 import Loading from "./loading";
@@ -147,6 +148,7 @@ const Layout = ({ children }) => {
 	const { i18n } = useContext(i18nContext);
 	const { nav } = useContext(navContext);
 	const { loading } = useContext(loadingContext);
+	const { userInfo } = useContext(userInfoContext);
 	const location = useLocation();
 	const pageInfo = GetPageInfo(location.pathname);
 
@@ -167,7 +169,9 @@ const Layout = ({ children }) => {
 				{children}
 				{loading ? <Loading /> : null}
 			</main>
-			{isEventPeriod(eventTime.angPow) ? <AngPow /> : null}
+			{isEventPeriod(eventTime.angPow) ? (
+				<AngPow isLogin={userInfo.isLogin} />
+			) : null}
 			<Footer />
 		</>
 	);
@@ -236,14 +240,14 @@ class RotationHint extends Component {
 	}
 }
 
-const AngPow = () => {
+const AngPow = ({ isLogin }) => {
 	const { root, setRoot } = useContext(rootContext);
 	const closePop = () => {
 		setRoot(false);
 	};
 
 	return root ? (
-		<div className="eventLink">
+		<div className={`eventLink ${isLogin ? "afterlogin" : ""}`}>
 			<button className="icon icon-close" onClick={closePop} />
 			<Link to={path.angPow.root}>
 				<img src={eventImg} alt="Ang pow" />
@@ -254,6 +258,14 @@ const AngPow = () => {
 
 RotationHint.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired
+};
+
+AngPow.defaultProps = {
+	isLogin: null
+};
+
+AngPow.propTypes = {
+	isLogin: PropTypes.bool
 };
 
 export default Layout;
