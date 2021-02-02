@@ -4880,13 +4880,43 @@ span.icon.icon-ranking:after {
 }
 
 .eventLink img {
-  -webkit-transform: rotate(-10deg);
-          transform: rotate(-10deg);
   width: 100px;
+  -webkit-animation: eventLink 2s infinite;
+          animation: eventLink 2s infinite;
 }
 
 .eventLink.active {
   display: none;
+}
+
+@-webkit-keyframes eventLink {
+  0% {
+    -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+  }
+  50% {
+    -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+  }
+  100% {
+    -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+  }
+}
+
+@keyframes eventLink {
+  0% {
+    -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+  }
+  50% {
+    -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+  }
+  100% {
+    -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+  }
 }
 
 .event {
@@ -4988,8 +5018,11 @@ span.icon.icon-ranking:after {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url(../img/event/angpao_inf.png) no-repeat center/cover;
   z-index: 2;
+}
+
+.redbox img {
+  width: 100%;
 }
 
 .coin {

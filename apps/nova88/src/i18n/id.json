@@ -416,5 +416,11 @@
 	"lbl_Achievement":"Prestasi",
 	"lbl_Referral_rewards":"Hadiah",
 	"lbl_Redeposit_Promo":"Deposit ulang",
-	"lbl_Last_Event":"Event terakhir"
+	"lbl_Poker":"Poker",
+	"lbl_DownloadApp":"Unduh Aplikasi",
+	"lbl_ScanQRCode":"Memindai Kode QR",
+	"lbl_GoToGame":"Ke Permainan",
+	"lbl_GoToDownloadApp":"Buka untuk mendownload APP",
+	"lbl_Last_Event":"Event terakhir",
+	"lbl_Android":"Android"
 }

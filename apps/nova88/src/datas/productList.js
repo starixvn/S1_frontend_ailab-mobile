@@ -19,12 +19,15 @@ import casino_JOKER from "../styles/img/casino_JOKER.jpg";
 import casino_CQ9 from "../styles/img/casino_CQ9.jpg";
 import casino_YGG from "../styles/img/casino_YGG.jpg";
 import casino_GPI from "../styles/img/casino_GPI.jpg";
+
 // import casino_KISS from "../styles/img/casino_KISS.jpg";
 import id4d from "../styles/img/id4d.jpg";
 import Keno from "../styles/img/keno.jpg";
 import Lottery from "../styles/img/lottery.jpg";
 import number_game from "../styles/img/number_game.jpg";
 import affiliate from "../styles/img/affiliate.jpg";
+import poker from "../styles/img/poker.jpg";
+
 import { siteInfo } from "../config";
 import fish_GG from "../styles/img/fish_GG.jpg";
 import fish_SG from "../styles/img/fish_SG.jpg";
@@ -38,12 +41,16 @@ import fish_FOS from "../styles/img/fish_FOS.jpg";
 import fish_TAP from "../styles/img/fish_TAP.jpg";
 import fish_TOS from "../styles/img/fish_TOS.jpg";
 
+import { defPopBoxType } from "../components/common/popbox";
 import { isEventPeriod } from "../components/common/common";
 
 export const productList = {
 	kiss918: {
 		tpId: 21,
 		gameId: 21
+	},
+	oneGame: {
+		tpId: 13
 	}
 };
 
@@ -52,7 +59,8 @@ const defIconType = {
 };
 
 const eventTime = {
-	new_ICG: { endDate: "2021/02/08 11:00:00" }
+	new_ICG: { endDate: "2021/02/08 11:00:00" },
+	new_poker: { startDate: "2021/01/25 11:00:00" }
 };
 
 const gameList = ({ langId }) => [
@@ -326,6 +334,30 @@ const gameList = ({ langId }) => [
 		]
 	},
 	{
+		category: "poker",
+		categoryIcon: "play",
+		translateKey: "lbl_Poker",
+		items: [
+			{
+				tpId: 13,
+				icon: "play",
+				img: poker,
+				spanTextKey: "lbl_Poker",
+				needLogin: true,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_poker)
+					}
+				],
+				popBox: {
+					title: "lbl_Poker",
+					type: defPopBoxType.OneGame
+				}
+			}
+		]
+	},
+	{
 		category: "affiliate",
 		categoryIcon: "affiliate",
 		translateKey: "lbl_Affiliate",
@@ -411,5 +443,6 @@ export const defGameInfo = {
 	ICG_TOWER_OF_SAVIORS: {
 		tpId: 24,
 		gameId: "cmt0001"
-	}
+	},
+	oneGame: { tpId: 13 }
 };
