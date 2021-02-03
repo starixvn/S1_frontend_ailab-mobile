@@ -25,7 +25,13 @@ const Category = props => {
 	const [casinoTpIds, setCasinoTpIds] = useState(null);
 
 	const clickGame = gameInfo => {
-		const { tpId, gameId, path: _path, needLogin } = gameInfo;
+		const {
+			tpId,
+			gameId,
+			path: _path,
+			needLogin,
+			popBox: popBoxData
+		} = gameInfo;
 		const HandleLogin = () => {
 			setNav(defNavPanel.login);
 		};
@@ -35,6 +41,16 @@ const Category = props => {
 				: setRedirect({
 						redirect: true,
 						path: `/${_path}`
+				  });
+		}
+		if (popBoxData) {
+			return needLogin && !userInfo.isLogin
+				? HandleLogin()
+				: setPopBox({
+						isOpen: true,
+						title: i18n[popBoxData.title],
+						popBoxType: popBoxData.type,
+						setRedirect
 				  });
 		}
 		return GET_ENTER_PAGE({

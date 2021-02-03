@@ -130,7 +130,7 @@ export default {
 		root: "whoami"
 	},
 	ranking: {
-		root: "ranking"
+		root: "leaderBoard"
 	},
 	kiss918: {
 		root: "918kiss"
@@ -143,5 +143,8 @@ export default {
 				root: "history"
 			}
 		}
+	},
+	oneGame: {
+		root: "oneGame"
 	}
 };

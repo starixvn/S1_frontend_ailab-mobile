@@ -416,5 +416,11 @@
 	"lbl_Achievement":"Achievement",
 	"lbl_Referral_rewards":"Rewards",
 	"lbl_Redeposit_Promo":"Redeposit",
-	"lbl_Last_Event":"Last Event"
+	"lbl_Poker":"Poker",
+	"lbl_DownloadApp":"Download APP",
+	"lbl_ScanQRCode":"Scan QR Code",
+	"lbl_GoToGame":"Go To Game",
+	"lbl_GoToDownloadApp":"Go To Download APP",
+	"lbl_Last_Event":"Last Event",
+	"lbl_Android":"Android"
 }
