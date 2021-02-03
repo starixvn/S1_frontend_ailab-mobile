@@ -182,7 +182,7 @@ export const productList = langId => {
 				{
 					displayKey: "lbl_Paradise",
 					img: fishing_CQ9_AB3,
-					icon: "icon icon-CQ9",
+					icon: "icon icon-cq9",
 					...defGameInfo.Fishing_AB3,
 					eventIcon: [
 						{
@@ -194,7 +194,7 @@ export const productList = langId => {
 				{
 					displayKey: "lbl_Lucky_Fishing",
 					img: fishing_CQ9_AT05,
-					icon: "icon icon-CQ9",
+					icon: "icon icon-cq9",
 					...defGameInfo.Fishing_AT05,
 					eventIcon: [
 						{
@@ -206,7 +206,7 @@ export const productList = langId => {
 				{
 					displayKey: "lbl_Oneshot_Fishing",
 					img: fishing_CQ9_AT01,
-					icon: "icon icon-CQ9",
+					icon: "icon icon-cq9",
 					...defGameInfo.Fishing_AT01,
 					eventIcon: [
 						{
@@ -218,7 +218,7 @@ export const productList = langId => {
 				{
 					displayKey: "lbl_Water_Margin_Fishing",
 					img: fishing_CQ9_AT06,
-					icon: "icon icon-CQ9",
+					icon: "icon icon-cq9",
 					...defGameInfo.Fishing_AT06,
 					eventIcon: [
 						{
@@ -230,7 +230,7 @@ export const productList = langId => {
 				{
 					displayKey: "lbl_Thunder_Fighter",
 					img: fishing_CQ9_AT04,
-					icon: "icon icon-CQ9",
+					icon: "icon icon-cq9",
 					...defGameInfo.Fishing_AT04,
 					eventIcon: [
 						{
