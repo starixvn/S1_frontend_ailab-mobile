@@ -452,11 +452,11 @@
 	"lbl_TurnoverAccmulateHint":"Bạn cần hoành thành doanh thu cược yêu cầu của khuyến mãi để thực hiện chuyển quỹ",
 	"lbl_Redeposit_Promo":"Nạp lại",
 	"lbl_Last_Event":"Sự kiện cuối cùng",
-	"lbl_NewYearAngPow":"Lì Xì Năm Mới",
+	"lbl_NewYearAngPow":"Lì Xì Phát Lộc",
 	"lbl_Start":"Bắt đầu",
 	"lbl_End":"Kết thúc",
 	"lbl_AngPow_Conditions":"Điều Khoản & Điều Kiện",
-	"lbl_AngPow_MyAngPow":"Lì xì của tôi",
+	"lbl_AngPow_MyAngPow":"Lộc Lì Xì đã trúng",
 	"lbl_AngPow_MemberEligibility":"Có ít nhất 1 lệnh gửi tiền và 1 đơn cược đã được thanh toán trước đó",
 	"lbl_AngPow_OtherConditions":"Điều kiện khác",
 	"lbl_AngPow_OtherConditions1":"Thành viên có thể tham gia hàng ngày cho đến khi chương trình khuyến mãi kết thúc.",
@@ -468,6 +468,6 @@
 	"lbl_AngPow_CreditedAccount2":"đã được ghi có vào ví của bạn!",
 	"lbl_AngPow_AlreadyDrawn":"Bạn đã nhận lì xì cho ngày hôm nay, vui lòng thử lại vào ngày mai!",
 	"lbl_AngPow_NotWinning":"Rất tiếc ! Đã hết lì xì cho ngày hôm nay. Vui lòng quay lại vào ngày mai!",
-	"lbl_FreeAngPow":"Lì Xì May Mắn"
+	"lbl_FreeAngPow":"Lắc Lì Xì"
 
 }
