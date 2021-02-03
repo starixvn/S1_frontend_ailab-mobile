@@ -268,6 +268,7 @@ const AngPow = ({ i18n, langId }) => {
 			</div>
 			<Link to={path.angPow.root}>
 				<img
+					className="angPao"
 					src={langId === "vn" ? eventVNImg : eventImg}
 					alt={i18n.lbl_FreeAngPow}
 				/>

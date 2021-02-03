@@ -12,6 +12,8 @@ import History from "./history";
 import PopBox from "./popBox";
 import Counter from "./counter";
 import { api_events_CheckDrawPrize } from "../../service/api/events";
+import bgImg from "../../styles/img/event/bg_en.png";
+import bgVNImg from "../../styles/img/event/bg_vn.png";
 
 const useCheckPrize = ({ i18n, setPopBox, isLogin }) => {
 	const [canDrawPrize, setCanDrawPrize] = useState(true);
@@ -103,6 +105,11 @@ const AngPow = () => {
 
 	return (
 		<>
+			<img
+				className="angpaoBg"
+				src={userInfo.langId === "vn" ? bgVNImg : bgImg}
+				alt={i18n.lbl_FreeAngPow}
+			/>
 			<div className="animation">
 				<div
 					className={`angpao${
