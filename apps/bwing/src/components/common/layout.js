@@ -8,12 +8,15 @@ import {
 	i18nContext,
 	defNavPanel,
 	loadingContext,
-	rootContext
+	rootContext,
+	userInfoContext
 } from "./context";
 import path from "../../path";
 import Loading from "./loading";
 import { isEventPeriod } from "./common";
 import { eventTime } from "../../pages/angPow";
+import eventImg from "../../styles/img/event/angPao_en.png";
+import eventVNImg from "../../styles/img/event/angPao_vn.png";
 
 const defPageInfo = {
 	default: {
@@ -161,6 +164,8 @@ const Layout = ({ children }) => {
 	const { i18n } = useContext(i18nContext);
 	const { nav } = useContext(navContext);
 	const { loading } = useContext(loadingContext);
+	const { userInfo } = useContext(userInfoContext);
+
 	const location = useLocation();
 	const pageInfo = GetPageInfo(location.pathname);
 
@@ -183,7 +188,9 @@ const Layout = ({ children }) => {
 				{loading ? <Loading /> : null}
 			</main>
 			<Footer />
-			{isEventPeriod(eventTime.angPow) ? <AngPow i18n={i18n} /> : null}
+			{isEventPeriod(eventTime.angPow) ? (
+				<AngPow i18n={i18n} langId={userInfo.langId} />
+			) : null}
 		</>
 	);
 };
@@ -247,7 +254,7 @@ class RotationHint extends Component {
 	}
 }
 
-const AngPow = ({ i18n }) => {
+const AngPow = ({ i18n, langId }) => {
 	const { root, setRoot } = useContext(rootContext);
 
 	const closePop = () => {
@@ -260,9 +267,10 @@ const AngPow = ({ i18n }) => {
 				X
 			</div>
 			<Link to={path.angPow.root}>
-				<div className="angPao">
-					<p>{i18n.lbl_FreeAngPow}</p>
-				</div>
+				<img
+					src={langId === "vn" ? eventVNImg : eventImg}
+					alt={i18n.lbl_FreeAngPow}
+				/>
 			</Link>
 		</div>
 	) : null;
@@ -273,7 +281,8 @@ Layout.propTypes = {
 };
 
 AngPow.propTypes = {
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	langId: PropTypes.string.isRequired
 };
 
 export default Layout;
