@@ -24,6 +24,7 @@ const EventSwipper = memo(() => {
 		const datetime = moment(sportBattleDateTime).format("DD/MM HH:mm:ss");
 		return (
 			<div
+				key={`HotEvent-${bIdx}`}
 				onClick={ClickLink.bind(this, {
 					...b,
 					isLogin: userInfo.isLogin,
@@ -32,7 +33,6 @@ const EventSwipper = memo(() => {
 				})}>
 				<div
 					// eslint-disable-next-line react/no-array-index-key
-					key={`HotEvent-${bIdx}`}
 					className="eventImg">
 					<div className="team">
 						<img
