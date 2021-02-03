@@ -60,7 +60,7 @@ const defIconType = {
 
 const eventTime = {
 	new_ICG: { endDate: "2021/02/08 11:00:00" },
-	new_poker: { startDate: "2021/01/25 11:00:00" }
+	new_poker: { endDate: "2021/03/03 11:00:00" }
 };
 
 const gameList = ({ langId }) => [
