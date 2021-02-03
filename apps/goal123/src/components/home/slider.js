@@ -1,10 +1,11 @@
 import React from "react";
 import SwipperBanner from "../common/swipperBanner";
+import { defBannerType } from "../../service/api/site";
 
 export default () => {
 	return (
 		<SwipperBanner
-			ImgFolder={["Promotion", "Sports"]}
+			ImgFolder={[defBannerType.Promotions]}
 			filterHideInHome={true}
 		/>
 	);

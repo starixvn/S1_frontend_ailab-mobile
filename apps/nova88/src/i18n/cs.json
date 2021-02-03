@@ -434,6 +434,11 @@
 	"lbl_AngPow_CreditedAccount2":"已汇入您的户口！",
 	"lbl_AngPow_AlreadyDrawn":"您今日已领取过红包，请明天再试！",
 	"lbl_AngPow_NotWinning":"抱歉！红包派送完毕，请明日再继续！",
-	"lbl_NewYearAngPow":"新年红包"
-
+	"lbl_NewYearAngPow":"新年红包",
+	"lbl_Poker":"扑克",
+	"lbl_DownloadApp":"下载APP",
+	"lbl_ScanQRCode":"扫二维码",
+	"lbl_GoToGame":"前往游戏",
+	"lbl_GoToDownloadApp":"前往下载APP",
+	"lbl_Android":"安卓"
 }

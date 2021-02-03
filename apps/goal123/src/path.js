@@ -120,8 +120,8 @@ export default {
 	whoami: {
 		root: "whoami"
 	},
-	ranking: {
-		root: "ranking"
+	leaderBoard: {
+		root: "leaderBoard"
 	},
 	angPow: {
 		root: "angPow"

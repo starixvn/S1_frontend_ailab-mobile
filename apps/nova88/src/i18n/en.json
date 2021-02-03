@@ -434,6 +434,11 @@
 	"lbl_AngPow_CreditedAccount2":"has been credited to your account!",
 	"lbl_AngPow_AlreadyDrawn":"You already drawn Ang Pow today, please try again tomorrow!",
 	"lbl_AngPow_NotWinning":"Oops! ANG POW is over, Please come back tomorrow!",
-	"lbl_NewYearAngPow":"New Year Ang Pow"
-
+	"lbl_NewYearAngPow":"New Year Ang Pow",
+	"lbl_Poker":"Poker",
+	"lbl_DownloadApp":"Download APP",
+	"lbl_ScanQRCode":"Scan QR Code",
+	"lbl_GoToGame":"Go To Game",
+	"lbl_GoToDownloadApp":"Go To Download APP",
+	"lbl_Android":"Android"
 }

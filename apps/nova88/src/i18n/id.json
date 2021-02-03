@@ -434,6 +434,11 @@
 	"lbl_AngPow_CreditedAccount2":"telah dikreditkan ke akun Anda!",
 	"lbl_AngPow_AlreadyDrawn":"Anda sudah mengambil Ang Pao hari ini, coba lagi besok!",
 	"lbl_AngPow_NotWinning":"Ups! ANG PAO sudah berakhir, Silakan kembali besok!",
-	"lbl_NewYearAngPow":"Ang Pao Tahun Baru Cina"
-
+	"lbl_NewYearAngPow":"Ang Pao Tahun Baru Cina",
+	"lbl_Poker":"Poker",
+	"lbl_DownloadApp":"Unduh Aplikasi",
+	"lbl_ScanQRCode":"Memindai Kode QR",
+	"lbl_GoToGame":"Ke Permainan",
+	"lbl_GoToDownloadApp":"Buka untuk mendownload APP",
+	"lbl_Android":"Android"
 }

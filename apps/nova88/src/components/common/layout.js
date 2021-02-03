@@ -128,6 +128,11 @@ const defPageInfo = {
 		titleKey: "lbl_NewYearAngPow",
 		className: "main event",
 		hideLogo: true
+	},
+	oneGame: {
+		titleKey: "One Game",
+		className: "main casino kiss",
+		hideLogo: true
 	}
 };
 

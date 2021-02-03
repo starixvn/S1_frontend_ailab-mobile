@@ -416,7 +416,6 @@
 	"lbl_Achievement":"ความสำเร็จ",
 	"lbl_Referral_rewards":"รางวัล",
 	"lbl_Redeposit_Promo":"ทำรายการฝากอีกครั้ง",
-	"lbl_Last_Event":"กิจกรรมสุดท้าย",
 	"lbl_AngPow":"อั่งเปา",
 	"lbl_AngPow_EventTitle":"แจกอั่งเปานำโชคในวันตรุษจีนนี้",
 	"lbl_Start":"เริ่ม",
@@ -434,7 +433,12 @@
 	"lbl_AngPow_CreditedAccount2":"ได้รับการบันทึกเครดิตเข้าบัญชีของคุณแล้ว!ขอแสดงความยินดีด้วย, อังเปาได้ส่งเข้าไปที่บัญชีเครดิตของคุณแล้ว",
 	"lbl_AngPow_AlreadyDrawn":"วันนี้คุณได้รับอั่งเปาไปเรียบร้อยแล้ว กรุณาลองอีกครั้งในวันพรุ่งนี้",
 	"lbl_AngPow_NotWinning":"อุ๊ป! อั่งเปา จบแล้ว โปรดกลับมาใหม่พรุ่งนี้!",
-	"lbl_NewYearAngPow":"อั่งเปาวันตรุษจีน"
-
-
+	"lbl_NewYearAngPow":"อั่งเปาวันตรุษจีน",
+	"lbl_Poker":"โป๊กเกอร์",
+	"lbl_DownloadApp":"ดาวน์โหลดAPP",
+	"lbl_ScanQRCode":"สแกน QR Code",
+	"lbl_GoToGame":"ไปที่เกม",
+	"lbl_GoToDownloadApp":"ไปที่ดาวน์โหลดแอพ",
+	"lbl_Last_Event":"กิจกรรมสุดท้าย",
+	"lbl_Android":"แอนดรอยด์"
 }

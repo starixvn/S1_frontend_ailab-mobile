@@ -84,6 +84,7 @@ import ReferFriends from "./components/referral/referFriends";
 import ReferralHistory from "./components/referral/referral.history";
 
 import AngPow from "./pages/angPow";
+import OneGame from "./pages/oneGame";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -193,6 +194,7 @@ const Index = () => {
 						<Whoami path={path.whoami.root} />
 						<Ranking path={path.ranking.root} />
 						<AngPow path={path.angPow.root} />
+						<OneGame path={path.oneGame.root} />
 						{/* <Kiss918 path={path.kiss918.root} /> */}
 					</Router>
 				</Layout>
