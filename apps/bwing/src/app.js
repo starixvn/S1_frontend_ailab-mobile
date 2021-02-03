@@ -167,7 +167,7 @@ const Index = () => {
 						<HowToDeposit path={path.howToDeposit.root} />
 						<HowToWithdraw path={path.howToWithdraw.root} />
 						<HowToPlay path={path.howToPlay.root} />
-						<Ranking path={path.ranking.root} />
+						<Ranking path={path.leaderBoard.root} />
 						<AngPow path={path.angPow.root} />
 					</Router>
 				</Layout>
