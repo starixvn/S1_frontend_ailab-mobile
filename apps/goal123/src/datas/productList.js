@@ -28,6 +28,12 @@ import fish_FOS from "../styles/img/fish_ICG_FOS.jpg";
 import fish_TAP from "../styles/img/fish_ICG_TTAT.jpg";
 import fish_TOS from "../styles/img/fish_ICG_TOS.jpg";
 
+import fish_AB3 from "../styles/img/paradise.jpg";
+import fish_AT05 from "../styles/img/luckyfishing.jpg";
+import fish_AT01 from "../styles/img/oneshotfishing.jpg";
+import fish_AT06 from "../styles/img/watermarginfishing.jpg";
+import fish_AT04 from "../styles/img/thunderfighter.jpg";
+
 import { isEventPeriod } from "../components/common/common";
 
 export const defGameInfo = {
@@ -82,6 +88,26 @@ export const defGameInfo = {
 	ICG_TOWER_OF_SAVIORS: {
 		tpId: 24,
 		gameId: "cmt0001"
+	},
+	fish_AB3: {
+		tpId: 16,
+		gameId: "AB3"
+	},
+	fish_AT05: {
+		tpId: 16,
+		gameId: "AT05"
+	},
+	fish_AT01: {
+		tpId: 16,
+		gameId: "AT01"
+	},
+	fish_AT06: {
+		tpId: 16,
+		gameId: "AT06"
+	},
+	fish_AT04: {
+		tpId: 16,
+		gameId: "AT04"
 	}
 };
 
@@ -92,7 +118,8 @@ const defIconType = {
 
 const eventTime = {
 	ranking: { startDate: "2021/01/01 12:00:00" },
-	new_ICG: { endDate: "2021/02/08 11:00:00" }
+	new_ICG: { endDate: "2021/02/08 11:00:00" },
+	new_CQ9: { endDate: "2021/03/05 11:00:00" }
 };
 
 const gameList = langId => [
@@ -166,6 +193,56 @@ const gameList = langId => [
 		translateKey: "lbl_Fishing",
 		comingSoonImg: Coming_soon,
 		items: [
+			{
+				...defGameInfo.fish_AB3,
+				img: fish_AB3,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_CQ9)
+					}
+				]
+			},
+			{
+				...defGameInfo.fish_AT05,
+				img: fish_AT05,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_CQ9)
+					}
+				]
+			},
+			{
+				...defGameInfo.fish_AT01,
+				img: fish_AT01,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_CQ9)
+					}
+				]
+			},
+			{
+				...defGameInfo.fish_AT06,
+				img: fish_AT06,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_CQ9)
+					}
+				]
+			},
+			{
+				...defGameInfo.fish_AT04,
+				img: fish_AT04,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_CQ9)
+					}
+				]
+			},
 			{
 				...defGameInfo.ICG_DRAGONBALL_FISHING,
 				img: fish_DBF,
