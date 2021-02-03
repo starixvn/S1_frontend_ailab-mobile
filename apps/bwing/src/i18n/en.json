@@ -444,7 +444,6 @@
 	"lbl_SearchGames":"Search Games",
 	"lbl_BonusWallet_1": "Casino Bonus Wallet",
 	"lbl_BonusWallet_2": "Live Casino Bonus Wallet",
-	
 	"lbl_Game_ICG_DRAGONBALL_FISHING":"Dragonball Fishing",
 	"lbl_Game_ICG_FISHING_OF_SAVIORS":"Fishing Of Saviors",
 	"lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS":"The Tyrant And The Princess",
@@ -452,5 +451,10 @@
 	"lbl_dream_gaming_se_die": "Dream Gaming Se die",
 	"lbl_TurnoverAccmulateHint":"Your Fund are locked to transfer out due to Rollover requirement is not fulfils.",
 	"lbl_Redeposit_Promo":"Redeposit",
-	"lbl_Last_Event":"Last Event"
+	"lbl_Last_Event":"Last Event",
+	"lbl_Paradise":"Paradise",
+	"lbl_Lucky_Fishing":"Lucky Fishing",
+	"lbl_Oneshot_Fishing":"Oneshot Fishing",
+	"lbl_Water_Margin_Fishing":"Water Margin Fishing",
+	"lbl_Thunder_Fighter":"Thunder Fighter"
 }

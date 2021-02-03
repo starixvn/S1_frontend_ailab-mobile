@@ -444,7 +444,6 @@
 	"lbl_SearchGames":"Tìm kiếm trò chơi",
 	"lbl_BonusWallet_1": "Ví thưởng quay hũ",
 	"lbl_BonusWallet_2": "Ví thưởng sòng bài",
-	
 	"lbl_Game_ICG_DRAGONBALL_FISHING":"NGỌC RỒNG BẮN CÁ",
 	"lbl_Game_ICG_FISHING_OF_SAVIORS":"THẦN BẮN CÁ",
 	"lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS":"THE TYRANT AND THE PRINCESS",
@@ -452,5 +451,10 @@
 	"lbl_dream_gaming_se_die": "Xóc đĩa live",
 	"lbl_TurnoverAccmulateHint":"Bạn cần hoành thành doanh thu cược yêu cầu của khuyến mãi để thực hiện chuyển quỹ",
 	"lbl_Redeposit_Promo":"Nạp lại",
-	"lbl_Last_Event":"Sự kiện cuối cùng"
+	"lbl_Last_Event":"Sự kiện cuối cùng",
+	"lbl_Paradise":"Paradise",
+	"lbl_Lucky_Fishing":"Lucky Fishing",
+	"lbl_Oneshot_Fishing":"Oneshot Fishing",
+	"lbl_Water_Margin_Fishing":"Water Margin Fishing",
+	"lbl_Thunder_Fighter":"Thunder Fighter"
 }
