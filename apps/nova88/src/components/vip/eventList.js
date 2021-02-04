@@ -1,6 +1,6 @@
 import React from "react";
-// import THBList from "./eventListTHB";
-// import IDRList from "./eventListIDR";
+import THBList from "./eventListTHB";
+import IDRList from "./eventListIDR";
 import MYRList from "./eventListMYR";
 
 const langToCurrency = {
@@ -13,9 +13,9 @@ const langToCurrency = {
 export const EventList = ({ langId }) => {
 	let content = null;
 	if (langToCurrency[langId] === "THB") {
-		// content = <THBList  />;
+		content = <THBList />;
 	} else if (langToCurrency[langId] === "IDR") {
-		// content = <IDRList />;
+		content = <IDRList />;
 	} else {
 		content = <MYRList />;
 	}
