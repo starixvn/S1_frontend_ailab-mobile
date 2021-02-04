@@ -281,7 +281,7 @@ class Panel extends React.Component {
 		const initGameDatas = this.state.gameDatas;
 		const initTpList = this.state.tpList;
 		const s = this.state;
-		if (s.hasMore) {
+		if (s.hasMore && initGameDatas) {
 			const _gameDatas = this.FilterGames(
 				_searchInfo,
 				_selNav,

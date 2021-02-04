@@ -1,5 +1,10 @@
 import { siteInfo } from "../config";
 
+export const isVaildLang = langId => {
+	const { siteLangList } = siteInfo();
+	return siteLangList.includes(langId);
+};
+
 const GetCookie = name => {
 	if (typeof document === `undefined`) return null;
 	const match = document.cookie.match(new RegExp(`(^| )${name}=([^;]+)`));

@@ -244,7 +244,7 @@ export const productList = langId => {
 		},
 		ranking: {
 			displayKey: "lbl_Ranking",
-			path: path.ranking.root,
+			path: path.leaderBoard.root,
 			eventIcon: [
 				{
 					icon: defIconType.live,
