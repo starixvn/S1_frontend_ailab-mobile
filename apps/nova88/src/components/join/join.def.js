@@ -36,6 +36,10 @@ export const initStatus = {
 	Checkbox: {
 		checked: null,
 		msg: ""
+	},
+	SpecialBonusCode: {
+		checked: null,
+		msg: ""
 	}
 };
 

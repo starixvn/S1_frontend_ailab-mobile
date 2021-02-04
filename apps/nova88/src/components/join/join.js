@@ -212,13 +212,16 @@ const Join = () => {
 			const result = await phoneCheck(val);
 			checked = result.checked;
 			msg = result.msg;
+		} else {
+			checked = null;
+			msg = "";
 		}
 
 		setStatus(prev => ({
 			...prev,
 			[col]: {
 				checked,
-				msg: i18n[msg]
+				msg: msg ? i18n[msg] : ""
 			}
 		}));
 	};
@@ -462,12 +465,20 @@ const Join = () => {
 						) {
 							setStatus(prevState => ({
 								...prevState,
-								UserName: { status: true, msg: message }
+								UserName: { checked: false, msg: message }
 							}));
 						} else if (errorCode === -3) {
 							setStatus(prevState => ({
 								...prevState,
-								Password: { status: true, msg: message }
+								Password: { checked: false, msg: message }
+							}));
+						} else if (errorCode === -7) {
+							setStatus(prevState => ({
+								...prevState,
+								SpecialBonusCode: {
+									checked: false,
+									msg: message
+								}
 							}));
 						}
 					}
@@ -619,12 +630,14 @@ const Join = () => {
 				) : null}
 
 				<Inputbox
-					icon="icon-email"
+					icon="icon-promotion"
 					ClassName="JoinRule"
 					placeholder={i18n.lbl_JoinPromoCode}
 					value={userValue.SpecialBonusCode}
 					onBlur={checkValue.bind(null, "SpecialBonusCode")}
 					onChange={EditField.bind(null, "SpecialBonusCode")}
+					checked={status.SpecialBonusCode.checked}
+					tip={status.SpecialBonusCode.msg}
 				/>
 
 				<Inputbox
