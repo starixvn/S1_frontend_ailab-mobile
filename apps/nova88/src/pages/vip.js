@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Autoplay } from "../components/common/swipperBanner";
 import { userInfoContext } from "../components/common/context";
 import { defBannersUrl, defLevelList } from "../components/vip/def";
+import { EventList } from "../components/vip/eventList";
 
 const Banners = () => {
 	const rows = defBannersUrl.map((b, bIdx) => (
@@ -16,13 +17,13 @@ const Banners = () => {
 };
 
 const IndexPage = () => {
-	// const { userInfo } = useContext(userInfoContext);
+	const { userInfo } = useContext(userInfoContext);
 
 	return (
 		<>
 			<Banners />
 			<LevelList />
-			{/* <EventList langId={userInfo.langId} /> */}
+			<EventList langId={userInfo.langId} />
 		</>
 	);
 };
