@@ -146,7 +146,7 @@ Panel.defaultProps = {
 };
 
 Panel.propTypes = {
-	ImgFolder: PropTypes.arrayOf(PropTypes.string)
+	ImgFolder: PropTypes.arrayOf(PropTypes.any)
 };
 
 const Autoplay = props => {
