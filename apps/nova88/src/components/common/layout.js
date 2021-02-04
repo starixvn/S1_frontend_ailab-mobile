@@ -1,16 +1,22 @@
 import React, { useContext, Component } from "react";
 import PropTypes from "prop-types";
-import { useMatch, useLocation } from "@reach/router";
+import { useMatch, useLocation, Link } from "@reach/router";
 import Footer from "./footer";
 import Header from "./header";
 import {
 	navContext,
 	i18nContext,
 	defNavPanel,
-	loadingContext
+	loadingContext,
+	rootContext,
+	userInfoContext
 } from "./context";
 import path from "../../path";
 import Loading from "./loading";
+import { isEventPeriod } from "./common";
+import { eventTime } from "../../pages/angPow";
+import eventImg from "../../styles/img/event/eventlink.png";
+import eventIdImg from "../../styles/img/event/eventlink_id.png";
 
 const defPageInfo = {
 	default: {
@@ -118,6 +124,11 @@ const defPageInfo = {
 		className: "main",
 		hideLogo: true
 	},
+	angPow: {
+		titleKey: "lbl_NewYearAngPow",
+		className: "main event",
+		hideLogo: true
+	},
 	oneGame: {
 		titleKey: "One Game",
 		className: "main casino kiss",
@@ -154,6 +165,7 @@ const Layout = ({ children }) => {
 	const { i18n } = useContext(i18nContext);
 	const { nav } = useContext(navContext);
 	const { loading } = useContext(loadingContext);
+	const { userInfo } = useContext(userInfoContext);
 	const location = useLocation();
 	const pageInfo = GetPageInfo(location.pathname);
 
@@ -174,6 +186,9 @@ const Layout = ({ children }) => {
 				{children}
 				{loading ? <Loading /> : null}
 			</main>
+			{isEventPeriod(eventTime.angPow) ? (
+				<AngPow langId={userInfo.langId} />
+			) : null}
 			<Footer />
 		</>
 	);
@@ -238,12 +253,36 @@ class RotationHint extends Component {
 	}
 }
 
+const AngPow = ({ langId }) => {
+	const { root, setRoot } = useContext(rootContext);
+
+	const closePop = () => {
+		setRoot(false);
+	};
+
+	return root ? (
+		<div className="eventLink">
+			<button className="icon icon-close" onClick={closePop} />
+			<Link to={path.angPow.root}>
+				<img
+					src={langId === "id" ? eventIdImg : eventImg}
+					alt={langId === "id" ? "Ang Pao" : "Ang pow"}
+				/>
+			</Link>
+		</div>
+	) : null;
+};
+
 Layout.propTypes = {
 	children: PropTypes.node.isRequired
 };
 
 RotationHint.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired
+};
+
+AngPow.propTypes = {
+	langId: PropTypes.string.isRequired
 };
 
 export default Layout;

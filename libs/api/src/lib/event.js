@@ -39,4 +39,19 @@ export class EventsAPI extends BaseAPI {
 			BeforeDays,
 			EventCode
 		});
+
+	CheckDrawPrize = ({ eventId }) =>
+		this.evnetsRequest.post(`/CheckDrawPrize/`, {
+			eventId
+		});
+
+	DrawPrize = ({ eventId }) =>
+		this.evnetsRequest.post(`/DrawPrize/`, {
+			eventId
+		});
+
+	GetCustDrawPrizeList = ({ eventId }) =>
+		this.evnetsRequest.post(`/GetCustDrawPrizeList/`, {
+			eventId
+		});
 }

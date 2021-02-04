@@ -2,11 +2,11 @@ import React, { useState, useEffect, useContext } from "react";
 import { Redirect } from "@reach/router";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
-import Category from "../components/home/category";
 import {
 	i18nContext,
 	userInfoContext,
-	popBoxContext
+	popBoxContext,
+	rootContext
 } from "../components/common/context";
 import { readCookie, setCookie } from "../components/common/common";
 import path from "../path";
@@ -21,12 +21,20 @@ const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const [redirectPath, setRedirectPath] = useState(null);
+	const { setRoot } = useContext(rootContext);
 
 	useEffect(() => {
 		if (redirectPath !== null) {
 			setRedirectPath(null);
 		}
 	}, [redirectPath]);
+
+	useEffect(() => {
+		setRoot(true);
+		return () => {
+			setRoot(false);
+		};
+	}, [setRoot]);
 
 	useEffect(() => {
 		const cookieName = `balanceHint${userInfo.userName}`;

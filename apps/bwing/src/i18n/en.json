@@ -444,7 +444,6 @@
 	"lbl_SearchGames":"Search Games",
 	"lbl_BonusWallet_1": "Casino Bonus Wallet",
 	"lbl_BonusWallet_2": "Live Casino Bonus Wallet",
-	
 	"lbl_Game_ICG_DRAGONBALL_FISHING":"Dragonball Fishing",
 	"lbl_Game_ICG_FISHING_OF_SAVIORS":"Fishing Of Saviors",
 	"lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS":"The Tyrant And The Princess",
@@ -452,5 +451,23 @@
 	"lbl_dream_gaming_se_die": "Dream Gaming Se die",
 	"lbl_TurnoverAccmulateHint":"Your Fund are locked to transfer out due to Rollover requirement is not fulfils.",
 	"lbl_Redeposit_Promo":"Redeposit",
-	"lbl_Last_Event":"Last Event"
+	"lbl_Last_Event":"Last Event",
+	"lbl_NewYearAngPow":"New Year Ang Pow",
+	"lbl_Start":"Start",
+	"lbl_End":"End",
+	"lbl_AngPow_Conditions":"Ang Pow Conditions",
+	"lbl_AngPow_MyAngPow":"My Ang Pow",
+	"lbl_AngPow_MemberEligibility":"at least 1 Deposit and has at least 1 settled bet before",
+	"lbl_AngPow_OtherConditions":"Other Conditions",
+	"lbl_AngPow_OtherConditions1":"Member can participate daily until the promotion end.",
+	"lbl_AngPow_OtherConditions2":"Each member can participant once per day only.",
+	"lbl_Next":"Next",
+	"lbl_Awards":"Awards",
+	"lbl_AngPow_Congratulations":"Congratulations!",
+	"lbl_AngPow_CreditedAccount1":"Congratulations, your Ang Pow",
+	"lbl_AngPow_CreditedAccount2":"has been credited to your account!",
+	"lbl_AngPow_AlreadyDrawn":"You already drawn Ang Pow today, please try again tomorrow!",
+	"lbl_AngPow_NotWinning":"Oops! ANG POW is over, Please come back tomorrow!",
+	"lbl_FreeAngPow":"Lucky Ang Pow"
+
 }

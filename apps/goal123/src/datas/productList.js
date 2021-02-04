@@ -320,7 +320,7 @@ const gameList = langId => [
 		items: [
 			{
 				icon: "icon32px_top",
-				path: path.ranking.root,
+				path: path.leaderBoard.root,
 				img: ranking,
 				spanTextKey: "lbl_Ranking"
 			}
