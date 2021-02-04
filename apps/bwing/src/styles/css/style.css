@@ -6751,12 +6751,20 @@ span.important {
   position: fixed;
   width: 25vw;
   height: 25vw;
-  background-image: url(../img/event/angPao.png);
-  background-size: 100%;
   bottom: 10vh;
   right: 3vw;
   -webkit-animation: angPao 1s ease-in-out infinite alternate;
           animation: angPao 1s ease-in-out infinite alternate;
+}
+
+.angPao p {
+  position: absolute;
+  top: 42px;
+  left: 30px;
+  font-size: 10px;
+  width: 50px;
+  line-height: 13px;
+  color: #ffecbe;
 }
 
 @-webkit-keyframes angPao {
@@ -6784,8 +6792,16 @@ span.important {
 .event {
   width: 100%;
   padding: 0 3vw 24vw;
-  background: #001942 url(../img/event/bg.png) no-repeat top center;
   background-size: 120%;
+  position: relative;
+}
+
+.event .angpaoBg {
+  position: absolute;
+  width: 100%;
+  height: 47vw;
+  left: 0;
+  top: 0;
 }
 
 .event > div {
@@ -7260,6 +7276,7 @@ span.important {
 #popup .eventpop .icon-close {
   color: #f5c346;
   position: absolute;
+  left: auto;
   right: 3vw;
   top: 4vw;
 }

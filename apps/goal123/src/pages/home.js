@@ -7,7 +7,8 @@ import ShortcutBar from "../components/home/shortcutBar";
 import {
 	i18nContext,
 	userInfoContext,
-	popBoxContext
+	popBoxContext,
+	rootContext
 } from "../components/common/context";
 import { readCookie, setCookie } from "../components/common/common";
 import path from "../path";
@@ -19,6 +20,7 @@ const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const { setRoot } = useContext(rootContext);
 	const [redirectPath, setRedirectPath] = useState(null);
 	const [appHint, setAppHint] = useState(false);
 
@@ -27,6 +29,13 @@ const IndexPage = () => {
 			setRedirectPath(null);
 		}
 	}, [redirectPath]);
+
+	useEffect(() => {
+		setRoot(true);
+		return () => {
+			setRoot(false);
+		};
+	}, []);
 
 	useEffect(() => {
 		const cookieName = `balanceHint${userInfo.userName}`;

@@ -15,3 +15,4 @@ export const walletInfoContext = createContext({});
 export const bankSlipPopBoxContext = createContext({});
 export const msgCountContext = createContext({});
 export const loadingContext = createContext({});
+export const rootContext = createContext({});

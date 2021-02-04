@@ -144,6 +144,9 @@ export default {
 			}
 		}
 	},
+	angPow: {
+		root: "angPow"
+	},
 	oneGame: {
 		root: "oneGame"
 	}
