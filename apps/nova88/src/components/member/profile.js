@@ -4,17 +4,20 @@ import { Link } from "@reach/router";
 import ProfileDetail from "./profile.detail";
 import path from "../../path";
 import ProfileWallet from "./profile.wallet";
+import { defLevelList } from "../vip/def";
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
+	const levelInfo = userInfo.userLevel
+		? defLevelList[Number(userInfo.userLevel)]
+		: {};
 
 	return (
 		<>
-			<div className="avatar" />
-			<div className="viplv">
-				<i className="icon icon-vip" />
-				VIP Lv{userInfo.userLevel}
+			<div className="avatar">
+				<img src={levelInfo.imgUrl} alt={levelInfo.levelName} />
+				<div>{levelInfo.levelName}</div>
 			</div>
 			<ProfileWallet />
 			<ProfileDetail />

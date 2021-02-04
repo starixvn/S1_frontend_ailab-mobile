@@ -151,6 +151,6 @@ export default {
 		root: "oneGame"
 	},
 	vip: {
-		vip: "vip"
+		root: "vip"
 	}
 };

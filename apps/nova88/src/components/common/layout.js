@@ -133,6 +133,11 @@ const defPageInfo = {
 		titleKey: "One Game",
 		className: "main casino kiss",
 		hideLogo: true
+	},
+	vip: {
+		titleKey: "VIP",
+		className: "main vip",
+		hideLogo: true
 	}
 };
 

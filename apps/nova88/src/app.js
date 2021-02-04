@@ -85,6 +85,7 @@ import ReferralHistory from "./components/referral/referral.history";
 
 import AngPow from "./pages/angPow";
 import OneGame from "./pages/oneGame";
+import VIP from "./pages/vip";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -195,6 +196,7 @@ const Index = () => {
 						<Ranking path={path.ranking.root} />
 						<AngPow path={path.angPow.root} />
 						<OneGame path={path.oneGame.root} />
+						<VIP path={path.vip.root} />
 						{/* <Kiss918 path={path.kiss918.root} /> */}
 					</Router>
 				</Layout>
