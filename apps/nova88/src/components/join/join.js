@@ -16,12 +16,13 @@ import { getUrlParameter, passwordCheck, getCookie } from "../common/common";
 import { GET_LANG_ID } from "../../service/language";
 import TandC from "../../service/t_and_c";
 import path from "../../path";
-import config, { siteInfo } from "../../config";
+import config from "../../config";
 import PromoPopup from "./join.promotion";
 import { initValue, initStatus, currencyToAreacode } from "./join.def";
 import areaCode from "../../datas/areaCode";
 import { Iov_GetBlackBox } from "../common/iovation";
 import api from "../../service/api";
+import Logo from "../common/logo";
 
 const defaultLangId = GET_LANG_ID();
 
@@ -528,7 +529,7 @@ const Join = () => {
 					<span />
 					<span />
 				</div>
-				<img src={siteInfo().logo} alt={config.siteName} />
+				<Logo langId={userInfo.langId} />
 				<div className="title">{i18n.lbl_JoinNow}</div>
 
 				<Inputbox

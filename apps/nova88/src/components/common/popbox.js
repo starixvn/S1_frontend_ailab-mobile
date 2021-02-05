@@ -2,11 +2,13 @@ import React, { useContext } from "react";
 import { popBoxContext, i18nContext } from "Context";
 import TurnoverAccumulated from "./popbox.turnover";
 import Otp from "./popbox.otp";
+import OneGamePopBox from "./popbox.oneGame";
 
 export const defPopBoxType = {
 	default: "default",
 	TurnoverAccumulated: "TurnoverAccumulated",
-	Otp: "Otp"
+	Otp: "Otp",
+	OneGame: "OneGame"
 };
 
 const PopUp = () => {
@@ -27,11 +29,15 @@ const PopUp = () => {
 			content = <Otp ClosePopbox={popBox.ClosePopbox} />;
 			break;
 
+		case defPopBoxType.OneGame:
+			content = <OneGamePopBox setRedirect={popBox.setRedirect} />;
+			break;
+
 		default:
 			content = (
 				<div className="popTxt">
 					{popBox.content}
-					{popBox.hasBtn === true ? popBox.btnBar : <></>}
+					{popBox.hasBtn === true ? popBox.btnBar : null}
 				</div>
 			);
 			break;

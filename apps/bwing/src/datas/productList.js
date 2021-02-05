@@ -55,7 +55,27 @@ export const defGameInfo = {
 		tpId: 24,
 		gameId: "cmt0001"
 	},
-	V8Poker: { gameId: 0, tpId: 25 }
+	V8Poker: { gameId: 0, tpId: 25 },
+	Fishing_AB3: {
+		tpId: 16,
+		gameId: "AB3"
+	},
+	Fishing_AT05: {
+		tpId: 16,
+		gameId: "AT05"
+	},
+	Fishing_AT01: {
+		tpId: 16,
+		gameId: "AT01"
+	},
+	Fishing_AT06: {
+		tpId: 16,
+		gameId: "AT06"
+	},
+	Fishing_AT04: {
+		tpId: 16,
+		gameId: "AT04"
+	}
 };
 
 const gameList = langId => [

@@ -11,7 +11,7 @@ import { GET_ENTER_PAGE } from "../../service/enterPage";
 import LinksPanel from "../home/links";
 import { productList } from "../../datas/defMenu";
 
-const ProductPage = ({ category }) => {
+const ProductPage = ({ category, titleKey }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setNav } = useContext(navContext);
@@ -61,7 +61,7 @@ const ProductPage = ({ category }) => {
 		<>
 			<div className="gameArea">
 				<p className="gameAear__title lightBTitle">
-					{i18n.lbl_LiveCasino.toUpperCase()}
+					{i18n[titleKey].toUpperCase()}
 				</p>
 				<div className="gameBox">{arr}</div>
 			</div>
@@ -71,7 +71,8 @@ const ProductPage = ({ category }) => {
 };
 
 ProductPage.propTypes = {
-	category: PropTypes.string.isRequired
+	category: PropTypes.string.isRequired,
+	titleKey: PropTypes.string.isRequired
 };
 
 export default ProductPage;

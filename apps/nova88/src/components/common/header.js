@@ -7,10 +7,10 @@ import LoginPanel from "../login/login";
 import ReloadSpin from "./reloadSpin";
 import { number_format, isConvert } from "./common";
 import path from "../../path";
-import { siteInfo } from "../../config";
 import { tpWalletsListType } from "../transfer/transfer.def";
 import useGetBalance from "../hook/useGetMainBalance";
 import useGetTpBalance from "../hook/useGetTpBalance";
+import Logo from "./logo";
 
 const HeaderTitle = ({ title = "" }) => (
 	<>
@@ -20,21 +20,26 @@ const HeaderTitle = ({ title = "" }) => (
 );
 
 const Header = ({ title = "", hideLogo = false }) => {
+	const { userInfo } = useContext(userInfoContext);
+
 	return (
 		<header className={title ? "header" : ""} id="header">
 			{hideLogo ? null : (
 				<a href="/">
-					<img src={siteInfo().logo} alt="logo" />
+					<Logo langId={userInfo.langId} />
 				</a>
 			)}
-			{title ? <HeaderTitle title={title} /> : <HeaderBtn />}
+			{title ? (
+				<HeaderTitle title={title} />
+			) : (
+				<HeaderBtn userInfo={userInfo} />
+			)}
 		</header>
 	);
 };
 
-const HeaderBtn = () => {
+const HeaderBtn = ({ userInfo }) => {
 	const { i18n } = useContext(i18nContext);
-	const { userInfo } = useContext(userInfoContext);
 	const { msgCount } = useContext(msgCountContext);
 	const [redirectPath, setRedirectPath] = useState(null);
 

@@ -49,6 +49,10 @@
   font-size: 4vw !important;
 }
 
+.icon-nova88:before {
+  content: "\e9c6";
+}
+
 .icon-mega:before {
   content: "\e9c3";
 }
@@ -1011,6 +1015,10 @@
 
 .icon-conversation:before {
   content: "\e935";
+}
+
+.icon-box-bookmark:before {
+  content: "\e9c8";
 }
 
 .icon-icon32px_openmail:before {

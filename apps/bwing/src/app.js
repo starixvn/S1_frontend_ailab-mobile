@@ -74,6 +74,7 @@ import HowToWithdraw from "./pages/howToWithdraw";
 import HowToPlay from "./pages/howToPlay";
 
 import Ranking from "./pages/ranking";
+import AngPow from "./pages/angPow";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -81,7 +82,7 @@ const Index = () => {
 		<Wrapper>
 			<LocationProvider history={history}>
 				<Layout>
-					<Router primary={false}>
+					<Router>
 						<Home path={path.home.root} default />
 						<ForgetPwd path={path.forgetPassword.root} />
 						<ResetPwd path={path.resetPassword.root} />
@@ -166,7 +167,8 @@ const Index = () => {
 						<HowToDeposit path={path.howToDeposit.root} />
 						<HowToWithdraw path={path.howToWithdraw.root} />
 						<HowToPlay path={path.howToPlay.root} />
-						<Ranking path={path.ranking.root} />
+						<Ranking path={path.leaderBoard.root} />
+						<AngPow path={path.angPow.root} />
 					</Router>
 				</Layout>
 			</LocationProvider>

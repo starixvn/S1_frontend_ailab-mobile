@@ -13,6 +13,7 @@ export default langId => {
 		AboutUs: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/AboutUs.html`,
 		Terms: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/Terms.html`,
 		ContactUs: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/ContactUs.html`,
-		AppDownload: `${config.t_and_cURL}/SiteSkin/${config.siteName}/appDownload/${langId}.html`
+		AppDownload: `${config.t_and_cURL}/SiteSkin/${config.siteName}/appDownload/${langId}.html`,
+		AngPow: `${config.t_and_cURL}/SiteSkin/${config.siteName}/ranking/${langId}3.html`
 	};
 };

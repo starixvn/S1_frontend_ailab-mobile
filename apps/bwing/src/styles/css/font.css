@@ -1180,4 +1180,12 @@
 .icon-ICG:before {
   content: "\e9e7";
 }
+
+.icon-topupCard:before {
+  content: "\e9e8";
+}
+
+.icon-gg:before {
+  content: "\e9e9";
+}
 /*# sourceMappingURL=font.css.map */

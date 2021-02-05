@@ -1,5 +1,10 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
-import { i18nContext, userInfoContext, popBoxContext } from "Context";
+import {
+	i18nContext,
+	userInfoContext,
+	popBoxContext,
+	rootContext
+} from "Context";
 import { Redirect } from "@reach/router";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
@@ -17,6 +22,7 @@ const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const [redirectPath, setRedirectPath] = useState(null);
+	const { setRoot } = useContext(rootContext);
 
 	useEffect(() => {
 		if (redirectPath !== null) {
@@ -25,9 +31,15 @@ const IndexPage = () => {
 	}, [redirectPath]);
 
 	useEffect(() => {
+		setRoot(true);
+
 		if (shortcutBar.current !== null) {
 			setShortcutBarLocate(shortcutBar.current?.getBoundingClientRect());
 		}
+
+		return () => {
+			setRoot(false);
+		};
 	}, []);
 
 	useEffect(() => {

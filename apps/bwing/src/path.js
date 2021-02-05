@@ -129,7 +129,10 @@ export default {
 	howToPlay: {
 		root: "howToPlay"
 	},
-	ranking: {
-		root: "ranking"
+	leaderBoard: {
+		root: "leaderBoard"
+	},
+	angPow: {
+		root: "angPow"
 	}
 };

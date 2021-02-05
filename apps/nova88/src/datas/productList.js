@@ -19,12 +19,15 @@ import casino_JOKER from "../styles/img/casino_JOKER.jpg";
 import casino_CQ9 from "../styles/img/casino_CQ9.jpg";
 import casino_YGG from "../styles/img/casino_YGG.jpg";
 import casino_GPI from "../styles/img/casino_GPI.jpg";
+
 // import casino_KISS from "../styles/img/casino_KISS.jpg";
 import id4d from "../styles/img/id4d.jpg";
 import Keno from "../styles/img/keno.jpg";
 import Lottery from "../styles/img/lottery.jpg";
 import number_game from "../styles/img/number_game.jpg";
 import affiliate from "../styles/img/affiliate.jpg";
+import poker from "../styles/img/poker.jpg";
+
 import { siteInfo } from "../config";
 import fish_GG from "../styles/img/fish_GG.jpg";
 import fish_SG from "../styles/img/fish_SG.jpg";
@@ -37,13 +40,22 @@ import fish_DBF from "../styles/img/fish_DBF.jpg";
 import fish_FOS from "../styles/img/fish_FOS.jpg";
 import fish_TAP from "../styles/img/fish_TAP.jpg";
 import fish_TOS from "../styles/img/fish_TOS.jpg";
+import fishing_CQ9_AB3 from "../styles/img/fish_paradise.jpg";
+import fishing_CQ9_AT05 from "../styles/img/fish_luckyfishing.jpg";
+import fishing_CQ9_AT01 from "../styles/img/fish_oneshotfishing.jpg";
+import fishing_CQ9_AT06 from "../styles/img/fish_watermarginfishing.jpg";
+import fishing_CQ9_AT04 from "../styles/img/fish_thunderfighter.jpg";
 
+import { defPopBoxType } from "../components/common/popbox";
 import { isEventPeriod } from "../components/common/common";
 
 export const productList = {
 	kiss918: {
 		tpId: 21,
 		gameId: 21
+	},
+	oneGame: {
+		tpId: 13
 	}
 };
 
@@ -52,7 +64,9 @@ const defIconType = {
 };
 
 const eventTime = {
-	new_ICG: { endDate: "2021/02/08 11:00:00" }
+	new_poker: { endDate: "2021/03/03 11:00:00" },
+	new_CQ9_fishing: { endDate: "2021/03/05 11:00:00" },
+	new_ICG: { endDate: "2021/02/05 11:00:00" }
 };
 
 const gameList = ({ langId }) => [
@@ -219,6 +233,56 @@ const gameList = ({ langId }) => [
 		comingSoonImg: Coming_soon,
 		items: [
 			{
+				...defGameInfo.Fishing_AB3,
+				img: fishing_CQ9_AB3,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_CQ9_fishing)
+					}
+				]
+			},
+			// {
+			// 	...defGameInfo.Fishing_AT05,
+			// 	img: fishing_CQ9_AT05,
+			// 	eventIcon: [
+			// 		{
+			// 			icon: defIconType.new,
+			// 			inPeriod: isEventPeriod(eventTime.new_CQ9_fishing)
+			// 		}
+			// 	]
+			// },
+			{
+				...defGameInfo.Fishing_AT01,
+				img: fishing_CQ9_AT01,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_CQ9_fishing)
+					}
+				]
+			},
+			// {
+			// 	...defGameInfo.Fishing_AT06,
+			// 	img: fishing_CQ9_AT06,
+			// 	eventIcon: [
+			// 		{
+			// 			icon: defIconType.new,
+			// 			inPeriod: isEventPeriod(eventTime.new_CQ9_fishing)
+			// 		}
+			// 	]
+			// },
+			// {
+			// 	...defGameInfo.Fishing_AT04,
+			// 	img: fishing_CQ9_AT04,
+			// 	eventIcon: [
+			// 		{
+			// 			icon: defIconType.new,
+			// 			inPeriod: isEventPeriod(eventTime.new_CQ9_fishing)
+			// 		}
+			// 	]
+			// },
+			{
 				...defGameInfo.ICG_DRAGONBALL_FISHING,
 				img: fish_DBF,
 				eventIcon: [
@@ -326,6 +390,30 @@ const gameList = ({ langId }) => [
 		]
 	},
 	{
+		category: "poker",
+		categoryIcon: "play",
+		translateKey: "lbl_Poker",
+		items: [
+			{
+				tpId: 13,
+				icon: "play",
+				img: poker,
+				spanTextKey: "lbl_Poker",
+				needLogin: true,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_poker)
+					}
+				],
+				popBox: {
+					title: "lbl_Poker",
+					type: defPopBoxType.OneGame
+				}
+			}
+		]
+	},
+	{
 		category: "affiliate",
 		categoryIcon: "affiliate",
 		translateKey: "lbl_Affiliate",
@@ -411,5 +499,26 @@ export const defGameInfo = {
 	ICG_TOWER_OF_SAVIORS: {
 		tpId: 24,
 		gameId: "cmt0001"
+	},
+	oneGame: { tpId: 13 },
+	Fishing_AB3: {
+		tpId: 16,
+		gameId: "AB3"
+	},
+	Fishing_AT05: {
+		tpId: 16,
+		gameId: "AT05"
+	},
+	Fishing_AT01: {
+		tpId: 16,
+		gameId: "AT01"
+	},
+	Fishing_AT06: {
+		tpId: 16,
+		gameId: "AT06"
+	},
+	Fishing_AT04: {
+		tpId: 16,
+		gameId: "AT04"
 	}
 };

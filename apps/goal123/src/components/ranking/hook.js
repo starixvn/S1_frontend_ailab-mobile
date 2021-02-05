@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {
-	api_events_GetLeaderboardList,
-	api_events_GetCustRank
+	api_events_GetLeaderboardListV2,
+	api_events_GetCustRankV2
 } from "../../service/api/events";
 import { defBtns, defDayBtns } from "./def";
 
@@ -19,19 +19,36 @@ const SetUpdTime = () => {
 	);
 };
 
+const getTopNum = isLastEvent => {
+	const topNum = 6;
+	const lastTimeTopNum = 20;
+	return isLastEvent ? lastTimeTopNum : topNum;
+};
+
+const handleEventCode = isLastEvent => {
+	const defEventCode = {
+		current: "202101",
+		prev: "xmas2020"
+	};
+
+	return isLastEvent ? defEventCode.prev : defEventCode.current;
+};
+
 export const useGetRanking = ({
 	isOpen,
 	selected,
 	BeforeDays = 0,
 	isLogin,
 	userName,
-	setLoading
+	setLoading,
+	isLastEvent = false
 }) => {
 	const [datas, setDatas] = useState([]);
 	const [lastUpdTime, setLastUpdTime] = useState(SetUpdTime());
 
 	useEffect(() => {
 		if (isOpen && isLogin) {
+			const EventCode = handleEventCode(isLastEvent);
 			const lBCategoryId = defBtns[selected]?.lBCategoryId;
 			const beforeDays = isNaN(BeforeDays)
 				? Number(defDayBtns.Yesterday.value)
@@ -40,19 +57,21 @@ export const useGetRanking = ({
 			const GetRankingDatas = async () => {
 				setLoading(true);
 				try {
-					const TopNum = 20;
-					const res = await api_events_GetLeaderboardList({
+					const TopNum = getTopNum(isLastEvent);
+					const res = await api_events_GetLeaderboardListV2({
 						lBCategoryId,
 						TopNum,
-						BeforeDays: beforeDays
+						BeforeDays: beforeDays,
+						EventCode
 					});
 
 					if (res.data.errorCode === 0) {
 						const rankDatas = res.data.data;
 						if (rankDatas?.length > 0) {
-							const custRankRes = await api_events_GetCustRank({
+							const custRankRes = await api_events_GetCustRankV2({
 								LBCategoryId: lBCategoryId,
-								BeforeDays: beforeDays
+								BeforeDays: beforeDays,
+								EventCode
 							});
 
 							if (custRankRes.data.errorCode === 0) {
@@ -101,7 +120,16 @@ export const useGetRanking = ({
 
 			GetRankingDatas();
 		}
-	}, [isOpen, selected, setDatas, BeforeDays, isLogin, userName, setLoading]);
+	}, [
+		isOpen,
+		selected,
+		setDatas,
+		BeforeDays,
+		isLogin,
+		userName,
+		setLoading,
+		isLastEvent
+	]);
 
 	return { datas, lastUpdTime };
 };
