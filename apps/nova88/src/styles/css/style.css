@@ -5398,8 +5398,8 @@ span.icon.icon-ranking:after {
 }
 
 .vip {
-  min-height: calc(100% - 107vw);
-  padding: 12vw 0 95vw;
+  min-height: calc(100% - 102vw);
+  padding: 12vw 0 90vw;
   width: 100%;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
