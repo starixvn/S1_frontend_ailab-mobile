@@ -5398,22 +5398,25 @@ span.icon.icon-ranking:after {
 }
 
 .vip {
-  min-height: calc(100% - 36vw);
-  padding: 12vw 0 24vw;
+  min-height: calc(100% - 147vw);
+  padding: 12vw 0 135vw;
   width: 100%;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
 }
 
-.vip .swiper-container {
-  height: 35vw;
+.vip .swiper-container .banner {
+  top: auto;
 }
 
-.vip .swiper-container img {
-  height: 43vw;
-  margin-left: 2vw;
-  margin-top: -4vw;
+.vip .swiper-container .swiper-slide.swiper-slide-active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .medal {
@@ -5423,7 +5426,7 @@ span.icon.icon-ranking:after {
   background: #980B0B;
   color: white;
   position: fixed;
-  top: 47vw;
+  top: 49vw;
 }
 
 .medal div {
@@ -5449,7 +5452,7 @@ span.icon.icon-ranking:after {
 }
 
 .vipPage {
-  margin-top: 57vw;
+  margin-top: 59vw;
 }
 
 .vipPage .eventList {
@@ -5467,6 +5470,7 @@ span.icon.icon-ranking:after {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  background: #212121;
 }
 
 .vipPage .eventList tr:first-child td {
@@ -5480,7 +5484,6 @@ span.icon.icon-ranking:after {
 }
 
 .vipPage .eventList tr.title .icon {
-  font-size: 4vw;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -5490,8 +5493,20 @@ span.icon.icon-ranking:after {
           justify-content: flex-start;
 }
 
+.vipPage .eventList tr.title .icon:before {
+  margin-right: 2vw;
+}
+
 .vipPage .eventList tr.title .icon span {
   margin-left: 1vw;
+}
+
+.vipPage .eventList tr:not(.title) td[colspan="7"] {
+  background: #333;
+}
+
+.vipPage .eventList tr.lastTd td {
+  border-bottom: 1px solid #666;
 }
 
 .vipPage .eventList tr td {
@@ -5516,7 +5531,13 @@ span.icon.icon-ranking:after {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  word-break: break-all;
+  border: 1px solid #666;
+  border-left: 0;
+  border-bottom: 0;
+}
+
+.vipPage .eventList tr td:first-child {
+  border-left: 1px solid #666;
 }
 
 .vipPage .eventList tr td img {

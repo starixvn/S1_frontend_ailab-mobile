@@ -49,6 +49,10 @@
   font-size: 4vw !important;
 }
 
+.icon-nova88:before {
+  content: "\e9c6";
+}
+
 .icon-mega:before {
   content: "\e9c3";
 }
