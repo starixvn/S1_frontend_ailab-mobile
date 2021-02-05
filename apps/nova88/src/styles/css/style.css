@@ -1386,6 +1386,9 @@ footer > a.open .circleAnimation + span {
   color: #fff;
   position: relative;
   text-align: center;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
 }
 
 .avatar img {
