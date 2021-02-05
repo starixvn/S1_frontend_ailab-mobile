@@ -120,13 +120,9 @@ const defIconType = {
 
 const eventTime = {
 	ranking: { startDate: "2021/01/01 12:00:00" },
-<<<<<<< HEAD
-	new_ICG: { endDate: "2021/02/08 11:00:00" },
-	new_V8Poker: { endDate: "2021/03/05 23:59:59" }
-=======
+	new_V8Poker: { endDate: "2021/03/05 23:59:59" },
 	new_CQ9: { endDate: "2021/03/05 11:00:00" },
 	new_ICG: { endDate: "2021/02/05 11:00:00" }
->>>>>>> 8f61b6462a09bf3950fc9d015feb41b6987531f4
 };
 
 const gameList = langId => [
