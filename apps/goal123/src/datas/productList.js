@@ -92,7 +92,7 @@ const defIconType = {
 
 const eventTime = {
 	ranking: { startDate: "2021/01/01 12:00:00" },
-	new_ICG: { endDate: "2021/02/08 11:00:00" }
+	new_ICG: { endDate: "2021/02/05 11:00:00" }
 };
 
 const gameList = langId => [

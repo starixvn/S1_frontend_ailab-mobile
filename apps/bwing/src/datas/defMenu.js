@@ -36,7 +36,7 @@ export const defIconType = {
 
 const eventTime = {
 	ranking: { startDate: "2021/01/01 12:00:00" },
-	new_ICG: { endDate: "2021/02/08 11:00:00" },
+	new_ICG: { endDate: "2021/02/05 11:00:00" },
 	new_one789: { endDate: "2021/01/22 11:00:00" }
 };
 
