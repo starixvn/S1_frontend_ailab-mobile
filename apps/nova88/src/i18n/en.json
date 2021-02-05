@@ -470,5 +470,6 @@
 	"lbl_Vip_Minimum_Turnover_Within_Validity_Period":"MINIMUM TURNOVER WITHIN VALIDITY PERIOD",
 	"lbl_Vip_Normal":"Normal",
 	"lbl_Vip_Lifetime":"Lifetime",
-	"lbl_Vip_Months":"Months"
+	"lbl_Vip_Months":"Months",
+	"lbl_VIP":"VIP"
 }

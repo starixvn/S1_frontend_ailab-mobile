@@ -470,5 +470,6 @@
 	"lbl_Vip_Minimum_Turnover_Within_Validity_Period":"有效期内最低有效投注",
 	"lbl_Vip_Normal":"普通",
 	"lbl_Vip_Lifetime":"终身",
-	"lbl_Vip_Months":"月"
+	"lbl_Vip_Months":"月",
+	"lbl_VIP":"VIP"
 }

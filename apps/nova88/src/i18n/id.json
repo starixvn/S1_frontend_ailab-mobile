@@ -470,5 +470,6 @@
 	"lbl_Vip_Minimum_Turnover_Within_Validity_Period":"TURNOVER MINIMUM DALAM PERIODE VALIDITAS",
 	"lbl_Vip_Normal":"Normal",
 	"lbl_Vip_Lifetime":"Seumur Hidup",
-	"lbl_Vip_Months":"Bulan"
+	"lbl_Vip_Months":"Bulan",
+	"lbl_VIP":"VIP"
 }

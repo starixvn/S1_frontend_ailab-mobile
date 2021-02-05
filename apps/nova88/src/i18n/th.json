@@ -470,5 +470,6 @@
 	"lbl_Vip_Minimum_Turnover_Within_Validity_Period":"การเทิร์นโอเวอร์ขั้นต่ำภายในระยะเวลากำหนด",
 	"lbl_Vip_Normal":"ปกติ",
 	"lbl_Vip_Lifetime":"อายุการใช้งาน",
-	"lbl_Vip_Months":"เดือน"
+	"lbl_Vip_Months":"เดือน",
+	"lbl_VIP":"VIP"
 }
