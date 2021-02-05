@@ -137,10 +137,10 @@ const EventListIDR = ({ i18n }) => {
 					</tr>
 					<tr>
 						<td />
-						<td>100,000</td>
-						<td>300,000</td>
-						<td>900,000</td>
-						<td>3,300,000</td>
+						<td>100('000)</td>
+						<td>300('000)</td>
+						<td>900('000)</td>
+						<td>3,300('000)</td>
 						<td>{i18n.lbl_Vip_Invisible}</td>
 					</tr>
 					<tr className="title">
@@ -233,10 +233,10 @@ const EventListIDR = ({ i18n }) => {
 					</tr>
 					<tr>
 						<td />
-						<td>25,000,000</td>
-						<td>100,000,000</td>
-						<td>250,000,000</td>
-						<td>500,000,000</td>
+						<td>25,000('000)</td>
+						<td>100,000('000)</td>
+						<td>250,000('000)</td>
+						<td>500,000('000)</td>
 						<td>{i18n.lbl_Vip_Invisible}</td>
 					</tr>
 					<tr className="title">
@@ -255,9 +255,9 @@ const EventListIDR = ({ i18n }) => {
 					<tr>
 						<td />
 						<td />
-						<td>100,000,000</td>
-						<td>250,000,000</td>
-						<td>500,000,000</td>
+						<td>100,000('000)</td>
+						<td>250,000('000)</td>
+						<td>500,000('000)</td>
 						<td>{i18n.lbl_Vip_Invisible}</td>
 					</tr>
 					<tr>
@@ -270,9 +270,9 @@ const EventListIDR = ({ i18n }) => {
 					<tr>
 						<td />
 						<td />
-						<td>100,000,000</td>
-						<td>250,000,000</td>
-						<td>500,000,000</td>
+						<td>100,000('000)</td>
+						<td>250,000('000)</td>
+						<td>500,000('000)</td>
 						<td>{i18n.lbl_Vip_Invisible}</td>
 					</tr>
 					<tr>
