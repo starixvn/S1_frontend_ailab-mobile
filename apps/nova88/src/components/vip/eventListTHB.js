@@ -113,7 +113,7 @@ const EventListTHB = ({ i18n }) => {
 							<i className="icon icon-checkmark" />
 						</td>
 					</tr>
-					<tr>
+					{/* <tr>
 						<td colSpan="7">
 							{i18n.lbl_Vip_Unlimited_Withdrawal_amount}
 						</td>
@@ -125,7 +125,7 @@ const EventListTHB = ({ i18n }) => {
 						<td>{i18n.lbl_Vip_Status1}</td>
 						<td>{i18n.lbl_Vip_Status1}</td>
 						<td>{i18n.lbl_Vip_Status1}</td>
-					</tr>
+					</tr> */}
 					<tr className="title">
 						<td colSpan="7" className="icon icon-nova88">
 							{i18n.lbl_Vip_Exclusive_Bonus}
@@ -235,9 +235,9 @@ const EventListTHB = ({ i18n }) => {
 						<td />
 						<td>300,000</td>
 						<td>800,000</td>
-						<td>2,800,000</td>
-						<td>4,800,000</td>
-						<td>7,800,000</td>
+						<td>2,500,000</td>
+						<td>4,500,000</td>
+						<td>{i18n.lbl_Vip_Invisible}</td>
 					</tr>
 					<tr className="title">
 						<td colSpan="7" className="icon icon-nova88">
@@ -247,29 +247,33 @@ const EventListTHB = ({ i18n }) => {
 					</tr>
 					<tr>
 						<td colSpan="7">
-							{i18n.lbl_Vip_Accumulated_Deposit_Within_3_Months}
+							{
+								i18n.lbl_Vip_Minimum_Deposit_Within_Validity_Period
+							}
 						</td>
 					</tr>
 					<tr>
 						<td />
 						<td />
-						<td>380,000</td>
+						<td>400,000</td>
 						<td>1,300,000</td>
 						<td>2,300,000</td>
-						<td>3,800,000</td>
+						<td>{i18n.lbl_Vip_Invisible}</td>
 					</tr>
 					<tr>
 						<td colSpan="7">
-							{i18n.lbl_Vip_Accumulated_Turnover_Within_3_Months}
+							{
+								i18n.lbl_Vip_Minimum_Turnover_Within_Validity_Period
+							}
 						</td>
 					</tr>
 					<tr>
 						<td />
 						<td />
-						<td>3,800,000</td>
+						<td>4,000,000</td>
 						<td>13,000,000</td>
 						<td>23,000,000</td>
-						<td>38,000,000</td>
+						<td>{i18n.lbl_Vip_Invisible}</td>
 					</tr>
 					<tr>
 						<td colSpan="7">

@@ -277,7 +277,7 @@ const EventListMYR = ({ i18n }) => (
 					<td>3 {i18n.lbl_Vip_Months}</td>
 					<td>3 {i18n.lbl_Vip_Months}</td>
 					<td>3 {i18n.lbl_Vip_Months}</td>
-					<td>3 {i18n.lbl_Vip_Months}</td>
+					<td>{i18n.lbl_Vip_Invisible}</td>
 				</tr>
 			</tbody>
 		</table>

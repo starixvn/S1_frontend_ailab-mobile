@@ -113,7 +113,7 @@ const EventListIDR = ({ i18n }) => {
 							<i className="icon icon-checkmark" />
 						</td>
 					</tr>
-					<tr>
+					{/* <tr>
 						<td colSpan="7">
 							{i18n.lbl_Vip_Unlimited_Withdrawal_amount}
 						</td>
@@ -125,7 +125,7 @@ const EventListIDR = ({ i18n }) => {
 						<td>{i18n.lbl_Vip_Status1}</td>
 						<td>{i18n.lbl_Vip_Status1}</td>
 						<td>{i18n.lbl_Vip_Status1}</td>
-					</tr>
+					</tr> */}
 					<tr className="title">
 						<td colSpan="7" className="icon icon-nova88">
 							{i18n.lbl_Vip_Exclusive_Bonus}
@@ -233,7 +233,7 @@ const EventListIDR = ({ i18n }) => {
 					</tr>
 					<tr>
 						<td />
-						<td>25,000('000)</td>
+						<td>30,000('000)</td>
 						<td>100,000('000)</td>
 						<td>250,000('000)</td>
 						<td>500,000('000)</td>
