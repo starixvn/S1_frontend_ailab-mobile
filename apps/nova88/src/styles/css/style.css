@@ -5398,12 +5398,25 @@ span.icon.icon-ranking:after {
 }
 
 .vip {
-  min-height: calc(100% - 147vw);
-  padding: 12vw 0 135vw;
+  min-height: calc(100% - 102vw);
+  padding: 12vw 0 90vw;
   width: 100%;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+}
+
+.vip .swiper-container .banner {
+  top: auto;
+}
+
+.vip .swiper-container .swiper-slide.swiper-slide-active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .medal {
