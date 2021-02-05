@@ -9,6 +9,7 @@ import game_Keno from "../styles/img/keno.png";
 import game_Lottery from "../styles/img/Lottery.png";
 import game_One789Lottery from "../styles/img/one789.png";
 import game_One789LotteryTra from "../styles/img/lotteryTra.png";
+import game_V8Poker from "../styles/img/lotteryV8.png";
 
 import fishing_GG from "../styles/img/fishingGG.png";
 import fishing_SG from "../styles/img/fishingSG.png";
@@ -41,8 +42,9 @@ export const defIconType = {
 
 const eventTime = {
 	ranking: { startDate: "2021/01/01 12:00:00" },
-	new_ICG: { endDate: "2021/02/05 11:00:00" },
 	new_one789: { endDate: "2021/01/22 11:00:00" },
+	new_V8Poker: { endDate: "2021/03/05 23:59:59" },
+	new_ICG: { endDate: "2021/02/05 11:00:00" },
 	new_CQ9_fishing: { endDate: "2021/03/05 11:00:00" }
 };
 
@@ -56,6 +58,17 @@ export const productList = langId => {
 			displayKey: "lbl_Games",
 			path: path.games.root,
 			items: [
+				{
+					displayKey: "lbl_V8Poker",
+					img: game_V8Poker,
+					...defGameInfo.V8Poker,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.new_V8Poker)
+						}
+					]
+				},
 				{
 					displayKey: "lbl_TraditionalLottery",
 					img: game_One789LotteryTra,
