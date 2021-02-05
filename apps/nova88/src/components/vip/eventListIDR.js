@@ -1,44 +1,18 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-export default () => {
+const EventListIDR = ({ i18n }) => {
 	return (
 		<div className="vipPage">
 			<table className="eventList">
 				<tbody>
 					<tr className="title">
 						<td colSpan="7" className="icon icon-nova88">
-							Service Support
+							{i18n.lbl_Vip_Service_Support}
 						</td>
 					</tr>
 					<tr>
-						<td colSpan="7">DEPOSIT PRIORITY</td>
-					</tr>
-					<tr>
-						<td>
-							<i className="icon icon-checkmark" />
-						</td>
-						<td>
-							<i className="icon icon-checkmark" />
-						</td>
-						<td>
-							<i className="icon icon-checkmark" />
-							High
-						</td>
-						<td>
-							<i className="icon icon-checkmark" />
-							High
-						</td>
-						<td>
-							<i className="icon icon-checkmark" />
-							High
-						</td>
-						<td>
-							<i className="icon icon-checkmark" />
-							High
-						</td>
-					</tr>
-					<tr>
-						<td colSpan="7">WITHDRAWAL PRIORITY</td>
+						<td colSpan="7">{i18n.lbl_Vip_Deposit_Priority}</td>
 					</tr>
 					<tr>
 						<td>
@@ -49,23 +23,23 @@ export default () => {
 						</td>
 						<td>
 							<i className="icon icon-checkmark" />
-							High
+							{i18n.lbl_Vip_High}
 						</td>
 						<td>
 							<i className="icon icon-checkmark" />
-							High
+							{i18n.lbl_Vip_High}
 						</td>
 						<td>
 							<i className="icon icon-checkmark" />
-							High
+							{i18n.lbl_Vip_High}
 						</td>
 						<td>
 							<i className="icon icon-checkmark" />
-							High
+							{i18n.lbl_Vip_High}
 						</td>
 					</tr>
 					<tr>
-						<td colSpan="7">24/7 SERVICE SUPPORT</td>
+						<td colSpan="7">{i18n.lbl_Vip_WithDrawal_Priority}</td>
 					</tr>
 					<tr>
 						<td>
@@ -76,23 +50,54 @@ export default () => {
 						</td>
 						<td>
 							<i className="icon icon-checkmark" />
-							High
+							{i18n.lbl_Vip_High}
 						</td>
 						<td>
 							<i className="icon icon-checkmark" />
-							High
+							{i18n.lbl_Vip_High}
 						</td>
 						<td>
 							<i className="icon icon-checkmark" />
-							High
+							{i18n.lbl_Vip_High}
 						</td>
 						<td>
 							<i className="icon icon-checkmark" />
-							High
+							{i18n.lbl_Vip_High}
 						</td>
 					</tr>
 					<tr>
-						<td colSpan="7">DESIGNATED ACCOUNT MANAGER</td>
+						<td colSpan="7">
+							{i18n.lbl_Vip_Service_Support_At_Date}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<i className="icon icon-checkmark" />
+						</td>
+						<td>
+							<i className="icon icon-checkmark" />
+						</td>
+						<td>
+							<i className="icon icon-checkmark" />
+							{i18n.lbl_Vip_High}
+						</td>
+						<td>
+							<i className="icon icon-checkmark" />
+							{i18n.lbl_Vip_High}
+						</td>
+						<td>
+							<i className="icon icon-checkmark" />
+							{i18n.lbl_Vip_High}
+						</td>
+						<td>
+							<i className="icon icon-checkmark" />
+							{i18n.lbl_Vip_High}
+						</td>
+					</tr>
+					<tr>
+						<td colSpan="7">
+							{i18n.lbl_Vip_Designated_Account_Manager}
+						</td>
 					</tr>
 					<tr>
 						<td />
@@ -109,40 +114,42 @@ export default () => {
 						</td>
 					</tr>
 					<tr>
-						<td colSpan="7">UNLIMITED WITHDRAWAL AMOUNT</td>
+						<td colSpan="7">
+							{i18n.lbl_Vip_Unlimited_Withdrawal_amount}
+						</td>
 					</tr>
 					<tr>
-						<td>Pending</td>
-						<td>Pending</td>
-						<td>Pending</td>
-						<td>Pending</td>
-						<td>Pending</td>
-						<td>Pending</td>
+						<td>{i18n.lbl_Vip_Status1}</td>
+						<td>{i18n.lbl_Vip_Status1}</td>
+						<td>{i18n.lbl_Vip_Status1}</td>
+						<td>{i18n.lbl_Vip_Status1}</td>
+						<td>{i18n.lbl_Vip_Status1}</td>
+						<td>{i18n.lbl_Vip_Status1}</td>
 					</tr>
 					<tr className="title">
 						<td colSpan="7" className="icon icon-nova88">
-							Exclusive Bonus
+							{i18n.lbl_Vip_Exclusive_Bonus}
 							<span className="text-org">(IDR)</span>
 						</td>
 					</tr>
 					<tr>
-						<td colSpan="7">TIER UPGRADE BONUS</td>
+						<td colSpan="7">{i18n.lbl_Vip_Tier_UpGrade_Bonus}</td>
 					</tr>
 					<tr>
 						<td />
-						<td>100000</td>
-						<td>300000</td>
-						<td>900000</td>
-						<td>3300000</td>
-						<td>Invisible</td>
+						<td>100,000</td>
+						<td>300,000</td>
+						<td>900,000</td>
+						<td>3,300,000</td>
+						<td>{i18n.lbl_Vip_Invisible}</td>
 					</tr>
 					<tr className="title">
 						<td colSpan="7" className="icon icon-nova88">
-							Special Rebate
+							{i18n.lbl_Vip_Special_Rebate}
 						</td>
 					</tr>
 					<tr>
-						<td colSpan="7">SPORT REBATE</td>
+						<td colSpan="7">{i18n.lbl_Vip_Sport_Rebate}</td>
 					</tr>
 					<tr>
 						<td>0.5%</td>
@@ -153,7 +160,7 @@ export default () => {
 						<td>1%</td>
 					</tr>
 					<tr>
-						<td colSpan="7">LIVE CASINO REBATE</td>
+						<td colSpan="7">{i18n.lbl_Vip_LiveCasino_Rebate}</td>
 					</tr>
 					<tr>
 						<td>0.5%</td>
@@ -164,7 +171,7 @@ export default () => {
 						<td>1%</td>
 					</tr>
 					<tr>
-						<td colSpan="7">SLOT & FISHING REBATE</td>
+						<td colSpan="7">{i18n.lbl_Vip_SlotFishing_Rebate}</td>
 					</tr>
 					<tr>
 						<td>0.8%</td>
@@ -175,7 +182,7 @@ export default () => {
 						<td>1.7%</td>
 					</tr>
 					<tr>
-						<td colSpan="7">VIRTUAL SPORT REBATE</td>
+						<td colSpan="7">{i18n.lbl_Vip_VirtualSport_Rebate}</td>
 					</tr>
 					<tr>
 						<td>0.8%</td>
@@ -187,11 +194,11 @@ export default () => {
 					</tr>
 					<tr className="title">
 						<td colSpan="7" className="icon icon-nova88">
-							Referral Bonus Program
+							{i18n.lbl_Vip_Referral_bonus_Program}
 						</td>
 					</tr>
 					<tr>
-						<td colSpan="7">REFERRAL BONUS</td>
+						<td colSpan="7">{i18n.lbl_Vip_Referral_bonus}</td>
 					</tr>
 					<tr>
 						<td>
@@ -215,77 +222,80 @@ export default () => {
 					</tr>
 					<tr className="title">
 						<td colSpan="7" className="icon icon-nova88">
-							Tier Upgrade Requirement
+							{i18n.lbl_Vip_Tire_Upgrade_Requirement}
 							<span className="text-org">(IDR)</span>
 						</td>
 					</tr>
 					<tr>
-						<td colSpan="7">MINIMUM DEPOSIT</td>
+						<td colSpan="7">
+							{i18n.lbl_Vip_Monthly_Minimum_Deposit}
+						</td>
 					</tr>
 					<tr>
 						<td />
-						<td>25000000</td>
-						<td>100000000</td>
-						<td>250000000</td>
-						<td>500000000</td>
-						<td>Invisible</td>
-					</tr>
-					<tr>
-						<td colSpan="7">MINIMUM DEPOSIT COUNT</td>
-					</tr>
-					<tr>
-						<td />
-						<td>5</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
+						<td>25,000,000</td>
+						<td>100,000,000</td>
+						<td>250,000,000</td>
+						<td>500,000,000</td>
+						<td>{i18n.lbl_Vip_Invisible}</td>
 					</tr>
 					<tr className="title">
 						<td colSpan="7" className="icon icon-nova88">
-							Tier Maintenance Requirement
-							<span className="text-org">(IDR))</span>
+							{i18n.lbl_Vip_Tier_Maintenance_Requirement}
+							<span className="text-org">(IDR)</span>
 						</td>
 					</tr>
 					<tr>
 						<td colSpan="7">
-							MINIMUM DEPOSIT WITHIN VALIDITY PERIOD
+							{
+								i18n.lbl_Vip_Minimum_Deposit_Within_Validity_Period
+							}
 						</td>
 					</tr>
 					<tr>
 						<td />
 						<td />
-						<td>IDR 100,000,000</td>
-						<td>IDR 250,000,000</td>
-						<td>IDR 500,000,000</td>
-						<td>Invisible</td>
+						<td>100,000,000</td>
+						<td>250,000,000</td>
+						<td>500,000,000</td>
+						<td>{i18n.lbl_Vip_Invisible}</td>
 					</tr>
 					<tr>
 						<td colSpan="7">
-							MINIMUM TURNOVER WITHIN VALIDITY PERIOD
+							{
+								i18n.lbl_Vip_Minimum_Turnover_Within_Validity_Period
+							}
 						</td>
 					</tr>
 					<tr>
 						<td />
 						<td />
-						<td>IDR 100,000,000</td>
-						<td>IDR 250,000,000</td>
-						<td>IDR 500,000,000</td>
-						<td>Invisible</td>
+						<td>100,000,000</td>
+						<td>250,000,000</td>
+						<td>500,000,000</td>
+						<td>{i18n.lbl_Vip_Invisible}</td>
 					</tr>
 					<tr>
-						<td colSpan="7">RANKING VALIDITY MEMBERSHIP RENEWAL</td>
+						<td colSpan="7">
+							{i18n.lbl_Vip_Ranking_Validity_Membership_renewal}
+						</td>
 					</tr>
 					<tr className="lastTd">
-						<td>Normal</td>
-						<td>Lifetime</td>
-						<td>3 Months</td>
-						<td>3 Months</td>
-						<td>3 Months</td>
-						<td>3 Months</td>
+						<td>{i18n.lbl_Vip_Normal}</td>
+						<td>{i18n.lbl_Vip_Lifetime}</td>
+						<td>3 {i18n.lbl_Vip_Months}</td>
+						<td>3 {i18n.lbl_Vip_Months}</td>
+						<td>3 {i18n.lbl_Vip_Months}</td>
+						<td>3 {i18n.lbl_Vip_Months}</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	);
 };
+
+EventListIDR.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired
+};
+
+export default EventListIDR;
