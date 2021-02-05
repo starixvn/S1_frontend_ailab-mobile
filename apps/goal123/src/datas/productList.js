@@ -27,6 +27,7 @@ import fish_DBF from "../styles/img/fish_ICG_DB.jpg";
 import fish_FOS from "../styles/img/fish_ICG_FOS.jpg";
 import fish_TAP from "../styles/img/fish_ICG_TTAT.jpg";
 import fish_TOS from "../styles/img/fish_ICG_TOS.jpg";
+import V8Poker from "../styles/img/V8.jpg";
 
 import fish_AB3 from "../styles/img/paradise.jpg";
 import fish_AT05 from "../styles/img/luckyfishing.jpg";
@@ -89,6 +90,7 @@ export const defGameInfo = {
 		tpId: 24,
 		gameId: "cmt0001"
 	},
+	V8Poker: { gameId: 0, tpId: 25 },
 	fish_AB3: {
 		tpId: 16,
 		gameId: "AB3"
@@ -118,6 +120,7 @@ const defIconType = {
 
 const eventTime = {
 	ranking: { startDate: "2021/01/01 12:00:00" },
+	new_V8Poker: { endDate: "2021/03/05 23:59:59" },
 	new_CQ9: { endDate: "2021/03/05 11:00:00" },
 	new_ICG: { endDate: "2021/02/05 11:00:00" }
 };
@@ -183,6 +186,24 @@ const gameList = langId => [
 				icon: "lottery",
 				img: Lottery,
 				spanTextKey: "lbl_Lottery"
+			}
+		]
+	},
+	{
+		category: "poker",
+		translateKey: "lbl_V8Poker",
+		items: [
+			{
+				...defGameInfo.V8Poker,
+				icon: "casino",
+				img: V8Poker,
+				spanTextKey: "lbl_V8Poker",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_V8Poker)
+					}
+				]
 			}
 		]
 	},
