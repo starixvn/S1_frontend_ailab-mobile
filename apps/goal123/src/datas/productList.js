@@ -203,16 +203,16 @@ const gameList = langId => [
 					}
 				]
 			},
-			{
-				...defGameInfo.fish_AT05,
-				img: fish_AT05,
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.new_CQ9)
-					}
-				]
-			},
+			// {
+			// 	...defGameInfo.fish_AT05,
+			// 	img: fish_AT05,
+			// 	eventIcon: [
+			// 		{
+			// 			icon: defIconType.new,
+			// 			inPeriod: isEventPeriod(eventTime.new_CQ9)
+			// 		}
+			// 	]
+			// },
 			{
 				...defGameInfo.fish_AT01,
 				img: fish_AT01,
@@ -223,26 +223,26 @@ const gameList = langId => [
 					}
 				]
 			},
-			{
-				...defGameInfo.fish_AT06,
-				img: fish_AT06,
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.new_CQ9)
-					}
-				]
-			},
-			{
-				...defGameInfo.fish_AT04,
-				img: fish_AT04,
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.new_CQ9)
-					}
-				]
-			},
+			// {
+			// 	...defGameInfo.fish_AT06,
+			// 	img: fish_AT06,
+			// 	eventIcon: [
+			// 		{
+			// 			icon: defIconType.new,
+			// 			inPeriod: isEventPeriod(eventTime.new_CQ9)
+			// 		}
+			// 	]
+			// },
+			// {
+			// 	...defGameInfo.fish_AT04,
+			// 	img: fish_AT04,
+			// 	eventIcon: [
+			// 		{
+			// 			icon: defIconType.new,
+			// 			inPeriod: isEventPeriod(eventTime.new_CQ9)
+			// 		}
+			// 	]
+			// },
 			{
 				...defGameInfo.ICG_DRAGONBALL_FISHING,
 				img: fish_DBF,

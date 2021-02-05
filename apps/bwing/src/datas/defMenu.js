@@ -191,18 +191,18 @@ export const productList = langId => {
 						}
 					]
 				},
-				{
-					displayKey: "lbl_Lucky_Fishing",
-					img: fishing_CQ9_AT05,
-					icon: "icon icon-cq9",
-					...defGameInfo.Fishing_AT05,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.new_CQ9_fishing)
-						}
-					]
-				},
+				// {
+				// 	displayKey: "lbl_Lucky_Fishing",
+				// 	img: fishing_CQ9_AT05,
+				// 	icon: "icon icon-cq9",
+				// 	...defGameInfo.Fishing_AT05,
+				// 	eventIcon: [
+				// 		{
+				// 			icon: defIconType.new,
+				// 			inPeriod: isEventPeriod(eventTime.new_CQ9_fishing)
+				// 		}
+				// 	]
+				// },
 				{
 					displayKey: "lbl_Oneshot_Fishing",
 					img: fishing_CQ9_AT01,
@@ -215,30 +215,30 @@ export const productList = langId => {
 						}
 					]
 				},
-				{
-					displayKey: "lbl_Water_Margin_Fishing",
-					img: fishing_CQ9_AT06,
-					icon: "icon icon-cq9",
-					...defGameInfo.Fishing_AT06,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.new_CQ9_fishing)
-						}
-					]
-				},
-				{
-					displayKey: "lbl_Thunder_Fighter",
-					img: fishing_CQ9_AT04,
-					icon: "icon icon-cq9",
-					...defGameInfo.Fishing_AT04,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.new_CQ9_fishing)
-						}
-					]
-				},
+				// {
+				// 	displayKey: "lbl_Water_Margin_Fishing",
+				// 	img: fishing_CQ9_AT06,
+				// 	icon: "icon icon-cq9",
+				// 	...defGameInfo.Fishing_AT06,
+				// 	eventIcon: [
+				// 		{
+				// 			icon: defIconType.new,
+				// 			inPeriod: isEventPeriod(eventTime.new_CQ9_fishing)
+				// 		}
+				// 	]
+				// },
+				// {
+				// 	displayKey: "lbl_Thunder_Fighter",
+				// 	img: fishing_CQ9_AT04,
+				// 	icon: "icon icon-cq9",
+				// 	...defGameInfo.Fishing_AT04,
+				// 	eventIcon: [
+				// 		{
+				// 			icon: defIconType.new,
+				// 			inPeriod: isEventPeriod(eventTime.new_CQ9_fishing)
+				// 		}
+				// 	]
+				// },
 				{
 					displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
 					img: fishing_ICG_DB,
