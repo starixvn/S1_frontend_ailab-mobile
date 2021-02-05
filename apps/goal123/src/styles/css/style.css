@@ -4717,10 +4717,6 @@ span.important {
   z-index: 2;
 }
 
-.redbox.inner {
-  background: url(../img/event/angpao_whole.png) no-repeat center/cover;
-}
-
 @-webkit-keyframes bounce2 {
   0%, 30%, 70%, 90%, 100% {
     -webkit-transform: translateY(0);
