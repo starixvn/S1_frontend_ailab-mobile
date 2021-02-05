@@ -24,8 +24,6 @@ import { Iov_GetBlackBox } from "../common/iovation";
 import api from "../../service/api";
 import Logo from "../common/logo";
 
-const defaultLangId = GET_LANG_ID();
-
 const Join = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -43,6 +41,7 @@ const Join = () => {
 	);
 
 	const [promoPopup, setPromoPopup] = useState(false);
+	const defaultLangId = userInfo.langId ?? GET_LANG_ID();
 
 	const isMountedRef = useRef(null);
 	useEffect(() => {
