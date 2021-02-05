@@ -1,6 +1,6 @@
 {
   "extends": ["../../.eslintrc.json"],
-  "ignorePatterns": ["!**/*", "config-overrides.js"],
+  "ignorePatterns": ["!**/*", "config-overrides.js", "jest.config.js"],
   "env": {
     "browser": true,
     "commonjs": true,
