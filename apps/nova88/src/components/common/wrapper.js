@@ -12,6 +12,7 @@ import api from "../../service/api";
 export const Wrapper = ({ children }) => {
 	const [i18n, seti18n] = useState(i18nConfig());
 	const [loading, setLoading] = useState(false);
+	const [root, setRoot] = useState(false);
 
 	const [userInfo, setUserInfo] = useState({
 		isLogin: null,
@@ -179,7 +180,10 @@ export const Wrapper = ({ children }) => {
 									value={{ msgCount, setMsgCount }}>
 									<ct.loadingContext.Provider
 										value={{ loading, setLoading }}>
-										{children}
+										<ct.rootContext.Provider
+											value={{ root, setRoot }}>
+											{children}
+										</ct.rootContext.Provider>
 									</ct.loadingContext.Provider>
 								</ct.msgCountContext.Provider>
 							</ct.navContext.Provider>

@@ -41,7 +41,7 @@ export const defIconType = {
 
 const eventTime = {
 	ranking: { startDate: "2021/01/01 12:00:00" },
-	new_ICG: { endDate: "2021/02/08 11:00:00" },
+	new_ICG: { endDate: "2021/02/05 11:00:00" },
 	new_one789: { endDate: "2021/01/22 11:00:00" },
 	new_CQ9_fishing: { endDate: "2021/03/05 11:00:00" }
 };
@@ -317,7 +317,7 @@ export const productList = langId => {
 		},
 		ranking: {
 			displayKey: "lbl_Ranking",
-			path: path.ranking.root,
+			path: path.leaderBoard.root,
 			eventIcon: [
 				{
 					icon: defIconType.live,

@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
-import { navContext, defNavPanel } from "../common/context";
+import { navContext, defNavPanel, rootContext } from "../common/context";
 import { defGameInfo } from "../../datas/productList";
 import img1 from "../../styles/img/GameList1.png";
 import img2 from "../../styles/img/GameList2.png";

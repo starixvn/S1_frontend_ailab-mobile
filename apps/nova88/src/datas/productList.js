@@ -64,9 +64,9 @@ const defIconType = {
 };
 
 const eventTime = {
-	new_ICG: { endDate: "2021/02/08 11:00:00" },
 	new_poker: { endDate: "2021/03/03 11:00:00" },
-	new_CQ9_fishing: { endDate: "2021/03/05 11:00:00" }
+	new_CQ9_fishing: { endDate: "2021/03/05 11:00:00" },
+	new_ICG: { endDate: "2021/02/05 11:00:00" }
 };
 
 const gameList = ({ langId }) => [
