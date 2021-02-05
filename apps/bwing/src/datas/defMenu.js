@@ -39,7 +39,7 @@ const eventTime = {
 	ranking: { startDate: "2021/01/01 12:00:00" },
 	new_ICG: { endDate: "2021/02/08 11:00:00" },
 	new_one789: { endDate: "2021/01/22 11:00:00" },
-	new_V8Poker: { startDate: "2021/01/25 12:00:00" }
+	new_V8Poker: { endDate: "2021/03/05 23:59:59" }
 };
 
 export const productList = langId => {
