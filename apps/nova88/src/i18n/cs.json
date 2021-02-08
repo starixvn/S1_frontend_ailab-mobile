@@ -451,7 +451,7 @@
 	"lbl_Vip_Status1":"待定",
 	"lbl_Vip_Exclusive_Bonus":"独家优惠",
 	"lbl_Vip_Tier_UpGrade_Bonus":"等级升级奖励",
-	"lbl_Vip_Invisible":"隐藏",
+	"lbl_Vip_ByInvitation":"邀请",
 	"lbl_Vip_Special_Rebate":"特别返水",
 	"lbl_Vip_Sport_Rebate":"体育返水",
 	"lbl_Vip_LiveCasino_Rebate":"真人娱乐返水",
@@ -468,8 +468,14 @@
 	"lbl_Vip_Minimum_Deposit_Count":"最低存款金额",
 	"lbl_Vip_Minimum_Deposit_Within_Validity_Period":"有效期内最低存款",
 	"lbl_Vip_Minimum_Turnover_Within_Validity_Period":"有效期内最低有效投注",
-	"lbl_Vip_Normal":"普通",
+	"lbl_Vip_Normal":"普通会员",
 	"lbl_Vip_Lifetime":"终身",
-	"lbl_Vip_Months":"月",
-	"lbl_VIP":"VIP"
+	"lbl_Vip_3Months":"三个月",
+	"lbl_VIP":"VIP",
+	"lbl_Vintage_Club":"古铜俱乐部",
+	"lbl_Silver_Club":"白银俱乐部",
+	"lbl_Gold_Club":"黄金俱乐部",
+	"lbl_Titanium_Club":"钛金俱乐部",
+	"lbl_Diamond_Club":"钻石俱乐部",
+	"lbl_Nova_Club":"欧亚俱乐部"
 }

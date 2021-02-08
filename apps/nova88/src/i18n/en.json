@@ -451,7 +451,7 @@
 	"lbl_Vip_Status1":"Pending",
 	"lbl_Vip_Exclusive_Bonus":"EXCLUSIVE BONUS",
 	"lbl_Vip_Tier_UpGrade_Bonus":"TIER UPGRADE BONUS",
-	"lbl_Vip_Invisible":"Invisible",
+	"lbl_Vip_ByInvitation":"By Invitation",
 	"lbl_Vip_Special_Rebate":"SPECIAL REBATE",
 	"lbl_Vip_Sport_Rebate":"SPORT REBATE",
 	"lbl_Vip_LiveCasino_Rebate":"LIVE CASINO REBATE",
@@ -470,6 +470,12 @@
 	"lbl_Vip_Minimum_Turnover_Within_Validity_Period":"MINIMUM TURNOVER WITHIN VALIDITY PERIOD",
 	"lbl_Vip_Normal":"Normal",
 	"lbl_Vip_Lifetime":"Lifetime",
-	"lbl_Vip_Months":"Months",
-	"lbl_VIP":"VIP"
+	"lbl_Vip_3Months":"3 Months",
+	"lbl_VIP":"VIP",
+	"lbl_Vintage_Club":"VINTAGE CLUB",
+	"lbl_Silver_Club":"SILVER CLUB",
+	"lbl_Gold_Club":"GOLD CLUB",
+	"lbl_Titanium_Club":"TITANIUM CLUB",
+	"lbl_Diamond_Club":"DIAMOND CLUB",
+	"lbl_Nova_Club":"NOVA CLUB"
 }

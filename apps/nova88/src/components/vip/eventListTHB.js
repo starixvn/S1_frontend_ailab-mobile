@@ -141,7 +141,7 @@ const EventListTHB = ({ i18n }) => {
 						<td>2,500</td>
 						<td>5,000</td>
 						<td>10,000</td>
-						<td>{i18n.lbl_Vip_Invisible}</td>
+						<td>{i18n.lbl_Vip_ByInvitation}</td>
 					</tr>
 					<tr className="title">
 						<td colSpan="7" className="icon icon-nova88">
@@ -237,7 +237,7 @@ const EventListTHB = ({ i18n }) => {
 						<td>800,000</td>
 						<td>2,500,000</td>
 						<td>4,500,000</td>
-						<td>{i18n.lbl_Vip_Invisible}</td>
+						<td>{i18n.lbl_Vip_ByInvitation}</td>
 					</tr>
 					<tr className="title">
 						<td colSpan="7" className="icon icon-nova88">
@@ -258,7 +258,7 @@ const EventListTHB = ({ i18n }) => {
 						<td>400,000</td>
 						<td>1,300,000</td>
 						<td>2,300,000</td>
-						<td>{i18n.lbl_Vip_Invisible}</td>
+						<td>{i18n.lbl_Vip_ByInvitation}</td>
 					</tr>
 					<tr>
 						<td colSpan="7">
@@ -273,7 +273,7 @@ const EventListTHB = ({ i18n }) => {
 						<td>4,000,000</td>
 						<td>13,000,000</td>
 						<td>23,000,000</td>
-						<td>{i18n.lbl_Vip_Invisible}</td>
+						<td>{i18n.lbl_Vip_ByInvitation}</td>
 					</tr>
 					<tr>
 						<td colSpan="7">
@@ -283,10 +283,10 @@ const EventListTHB = ({ i18n }) => {
 					<tr className="lastTd">
 						<td>{i18n.lbl_Vip_Normal}</td>
 						<td>{i18n.lbl_Vip_Lifetime}</td>
-						<td>3 {i18n.lbl_Vip_Months}</td>
-						<td>3 {i18n.lbl_Vip_Months}</td>
-						<td>3 {i18n.lbl_Vip_Months}</td>
-						<td>3 {i18n.lbl_Vip_Months}</td>
+						<td>{i18n.lbl_Vip_3Months}</td>
+						<td>{i18n.lbl_Vip_3Months}</td>
+						<td>{i18n.lbl_Vip_3Months}</td>
+						<td>{i18n.lbl_Vip_3Months}</td>
 					</tr>
 				</tbody>
 			</table>

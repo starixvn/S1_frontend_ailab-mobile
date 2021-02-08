@@ -451,7 +451,7 @@
 	"lbl_Vip_Status1":"รอดำเนินการ",
 	"lbl_Vip_Exclusive_Bonus":"โบนัสพิเศษ ",
 	"lbl_Vip_Tier_UpGrade_Bonus":"โบนัสอัพเกรด",
-	"lbl_Vip_Invisible":"มองไม่เห็น",
+	"lbl_Vip_ByInvitation":"ตามคำเชิญ",
 	"lbl_Vip_Special_Rebate":"คืนเงินพิเศษ",
 	"lbl_Vip_Sport_Rebate":"คืนเงินสปอร์ต",
 	"lbl_Vip_LiveCasino_Rebate":"คืนเงินคาสิโนสด",
@@ -470,6 +470,12 @@
 	"lbl_Vip_Minimum_Turnover_Within_Validity_Period":"การเทิร์นโอเวอร์ขั้นต่ำภายในระยะเวลากำหนด",
 	"lbl_Vip_Normal":"ปกติ",
 	"lbl_Vip_Lifetime":"อายุการใช้งาน",
-	"lbl_Vip_Months":"เดือน",
-	"lbl_VIP":"VIP"
+	"lbl_Vip_3Months":"สามเดือน",
+	"lbl_VIP":"VIP",
+	"lbl_Vintage_Club":"วินเทจ คลับ",
+	"lbl_Silver_Club":"ซิลเวอร์ คลับ",
+	"lbl_Gold_Club":"โกลด์ คลับ",
+	"lbl_Titanium_Club":"ไททาเนียม คลับ",
+	"lbl_Diamond_Club":"ไดมอนด์ คลับ",
+	"lbl_Nova_Club":"โนวา คลับ"
 }

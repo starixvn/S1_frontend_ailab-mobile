@@ -141,7 +141,7 @@ const EventListIDR = ({ i18n }) => {
 						<td>300('000)</td>
 						<td>900('000)</td>
 						<td>3,300('000)</td>
-						<td>{i18n.lbl_Vip_Invisible}</td>
+						<td>{i18n.lbl_Vip_ByInvitation}</td>
 					</tr>
 					<tr className="title">
 						<td colSpan="7" className="icon icon-nova88">
@@ -237,7 +237,7 @@ const EventListIDR = ({ i18n }) => {
 						<td>100,000('000)</td>
 						<td>250,000('000)</td>
 						<td>500,000('000)</td>
-						<td>{i18n.lbl_Vip_Invisible}</td>
+						<td>{i18n.lbl_Vip_ByInvitation}</td>
 					</tr>
 					<tr className="title">
 						<td colSpan="7" className="icon icon-nova88">
@@ -258,7 +258,7 @@ const EventListIDR = ({ i18n }) => {
 						<td>100,000('000)</td>
 						<td>250,000('000)</td>
 						<td>500,000('000)</td>
-						<td>{i18n.lbl_Vip_Invisible}</td>
+						<td>{i18n.lbl_Vip_ByInvitation}</td>
 					</tr>
 					<tr>
 						<td colSpan="7">
@@ -273,7 +273,7 @@ const EventListIDR = ({ i18n }) => {
 						<td>100,000('000)</td>
 						<td>250,000('000)</td>
 						<td>500,000('000)</td>
-						<td>{i18n.lbl_Vip_Invisible}</td>
+						<td>{i18n.lbl_Vip_ByInvitation}</td>
 					</tr>
 					<tr>
 						<td colSpan="7">
@@ -283,10 +283,10 @@ const EventListIDR = ({ i18n }) => {
 					<tr className="lastTd">
 						<td>{i18n.lbl_Vip_Normal}</td>
 						<td>{i18n.lbl_Vip_Lifetime}</td>
-						<td>3 {i18n.lbl_Vip_Months}</td>
-						<td>3 {i18n.lbl_Vip_Months}</td>
-						<td>3 {i18n.lbl_Vip_Months}</td>
-						<td>3 {i18n.lbl_Vip_Months}</td>
+						<td>{i18n.lbl_Vip_3Months}</td>
+						<td>{i18n.lbl_Vip_3Months}</td>
+						<td>{i18n.lbl_Vip_3Months}</td>
+						<td>{i18n.lbl_Vip_3Months}</td>
 					</tr>
 				</tbody>
 			</table>

@@ -138,7 +138,7 @@ const EventListMYR = ({ i18n }) => (
 					<td>300</td>
 					<td>600</td>
 					<td>1,200</td>
-					<td>{i18n.lbl_Vip_Invisible}</td>
+					<td>{i18n.lbl_Vip_ByInvitation}</td>
 				</tr>
 				<tr className="title">
 					<td colSpan="7" className="icon icon-nova88">
@@ -232,7 +232,7 @@ const EventListMYR = ({ i18n }) => (
 					<td>150,000</td>
 					<td>450,000</td>
 					<td>800,000</td>
-					<td>{i18n.lbl_Vip_Invisible}</td>
+					<td>{i18n.lbl_Vip_ByInvitation}</td>
 				</tr>
 				<tr className="title">
 					<td colSpan="7" className="icon icon-nova88">
@@ -251,7 +251,7 @@ const EventListMYR = ({ i18n }) => (
 					<td>25,000</td>
 					<td>150,000</td>
 					<td>300,000</td>
-					<td>{i18n.lbl_Vip_Invisible}</td>
+					<td>{i18n.lbl_Vip_ByInvitation}</td>
 				</tr>
 				<tr>
 					<td colSpan="7">
@@ -264,7 +264,7 @@ const EventListMYR = ({ i18n }) => (
 					<td>250,000</td>
 					<td>1,500,000</td>
 					<td>3,000,000</td>
-					<td>{i18n.lbl_Vip_Invisible}</td>
+					<td>{i18n.lbl_Vip_ByInvitation}</td>
 				</tr>
 				<tr>
 					<td colSpan="7">
@@ -274,10 +274,10 @@ const EventListMYR = ({ i18n }) => (
 				<tr className="lastTd">
 					<td>{i18n.lbl_Vip_Normal}</td>
 					<td>{i18n.lbl_Vip_Lifetime}</td>
-					<td>3 {i18n.lbl_Vip_Months}</td>
-					<td>3 {i18n.lbl_Vip_Months}</td>
-					<td>3 {i18n.lbl_Vip_Months}</td>
-					<td>{i18n.lbl_Vip_Invisible}</td>
+					<td>{i18n.lbl_Vip_3Months}</td>
+					<td>{i18n.lbl_Vip_3Months}</td>
+					<td>{i18n.lbl_Vip_3Months}</td>
+					<td>{i18n.lbl_Vip_ByInvitation}</td>
 				</tr>
 			</tbody>
 		</table>
