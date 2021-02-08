@@ -4,7 +4,8 @@ export const initValue = {
 	Email: "",
 	Currency: null,
 	AffiliateId: "",
-	Checkbox: false
+	Checkbox: false,
+	SpecialBonusCode: ""
 };
 
 export const initStatus = {
@@ -33,6 +34,10 @@ export const initStatus = {
 		msg: ""
 	},
 	Checkbox: {
+		checked: null,
+		msg: ""
+	},
+	SpecialBonusCode: {
 		checked: null,
 		msg: ""
 	}
