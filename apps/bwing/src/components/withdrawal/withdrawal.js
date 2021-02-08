@@ -108,6 +108,18 @@ const Panel = () => {
 									accountName: res.data.data.accountName,
 									bankList: res.data.data.bankInfoDetail
 								}));
+								const defAccountNoIdx = res.data.data.bankInfoDetail?.findIndex(
+									obj =>
+										obj.accountNo ===
+										res.data.data.defAccountNo
+								);
+								setSelBank(
+									res.data.data.bankInfoDetail?.[
+										defAccountNoIdx === -1
+											? null
+											: defAccountNoIdx
+									]
+								);
 								if (!pageVerify) {
 									setPageVerify(true);
 								}
