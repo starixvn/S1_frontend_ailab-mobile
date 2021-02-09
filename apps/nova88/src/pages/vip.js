@@ -5,8 +5,8 @@ import { userInfoContext, i18nContext } from "../components/common/context";
 import { defBannersUrl, defLevelList } from "../components/vip/def";
 import { EventList } from "../components/vip/eventList";
 
-const Banners = () => {
-	const rows = defBannersUrl.map((b, bIdx) => (
+const Banners = ({ langId }) => {
+	const rows = defBannersUrl({ langId }).map((b, bIdx) => (
 		<img
 			key={`VIPBanner-${bIdx}`}
 			src={b}
@@ -17,13 +17,17 @@ const Banners = () => {
 	return <Autoplay Rows={rows} />;
 };
 
+Banners.propTypes = {
+	langId: PropTypes.string.isRequired
+};
+
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 
 	return (
 		<>
-			<Banners />
+			<Banners langId={userInfo.langId} />
 			<LevelList i18n={i18n} />
 			<EventList langId={userInfo.langId} />
 		</>
