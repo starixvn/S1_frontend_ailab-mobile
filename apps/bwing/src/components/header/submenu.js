@@ -88,10 +88,17 @@ export default () => {
 		setIsOpenSubMenu([]);
 	};
 
-	const SetLanguage = langId => {
+	const SetLanguage = async langId => {
 		if (langId !== userInfo.langId) {
+			if (userInfo.isLogin) {
+				try {
+					await api_SetLanguage(langId);
+				} catch (error) {
+					//
+				}
+			}
+
 			setUserInfo(prev => ({ ...prev, langId }));
-			if (userInfo.isLogin) api_SetLanguage(langId);
 		}
 	};
 
