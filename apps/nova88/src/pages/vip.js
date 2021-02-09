@@ -35,10 +35,10 @@ const IndexPage = () => {
 };
 
 const LevelList = ({ i18n }) => {
-	const rows = defLevelList({ i18n }).map(l => (
+	const rows = defLevelList.map(l => (
 		<div key={`VIPLevelList-${l.levelName}`}>
 			<img src={l.imgUrl} alt={l.levelName} />
-			{l.levelName}
+			{i18n[l.levelName]}
 		</div>
 	));
 

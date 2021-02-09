@@ -10,14 +10,14 @@ const Panel = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const levelInfo = userInfo.userLevel
-		? defLevelList[Number(userInfo.userLevel)]
+		? defLevelList[Number(userInfo.userLevel) - 1]
 		: {};
 
 	return (
 		<>
 			<div className="avatar">
 				<img src={levelInfo.imgUrl} alt={levelInfo.levelName} />
-				<div>{levelInfo.levelName}</div>
+				<div>{i18n[levelInfo.levelName]}</div>
 			</div>
 			<ProfileWallet />
 			<ProfileDetail />

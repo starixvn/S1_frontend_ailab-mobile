@@ -9,31 +9,29 @@ export const defBannersUrl = ({ langId }) => {
 	];
 };
 
-export const defLevelList = ({ i18n }) => {
-	return [
-		{
-			imgUrl: "https://image.n88media.com/VIP/img/vip01.png",
-			levelName: i18n.lbl_Vintage_Club
-		},
-		{
-			imgUrl: "https://image.n88media.com/VIP/img/vip02.png",
-			levelName: i18n.lbl_Silver_Club
-		},
-		{
-			imgUrl: "https://image.n88media.com/VIP/img/vip03.png",
-			levelName: i18n.lbl_Gold_Club
-		},
-		{
-			imgUrl: "https://image.n88media.com/VIP/img/vip04.png",
-			levelName: i18n.lbl_Titanium_Club
-		},
-		{
-			imgUrl: "https://image.n88media.com/VIP/img/vip05.png",
-			levelName: i18n.lbl_Diamond_Club
-		},
-		{
-			imgUrl: "https://image.n88media.com/VIP/img/vip06.png",
-			levelName: i18n.lbl_Nova_Club
-		}
-	];
-};
+export const defLevelList = [
+	{
+		imgUrl: "https://image.n88media.com/VIP/img/vip01.png",
+		levelName: "lbl_Vintage_Club"
+	},
+	{
+		imgUrl: "https://image.n88media.com/VIP/img/vip02.png",
+		levelName: "lbl_Silver_Club"
+	},
+	{
+		imgUrl: "https://image.n88media.com/VIP/img/vip03.png",
+		levelName: "lbl_Gold_Club"
+	},
+	{
+		imgUrl: "https://image.n88media.com/VIP/img/vip04.png",
+		levelName: "lbl_Titanium_Club"
+	},
+	{
+		imgUrl: "https://image.n88media.com/VIP/img/vip05.png",
+		levelName: "lbl_Diamond_Club"
+	},
+	{
+		imgUrl: "https://image.n88media.com/VIP/img/vip06.png",
+		levelName: "lbl_Nova_Club"
+	}
+];
