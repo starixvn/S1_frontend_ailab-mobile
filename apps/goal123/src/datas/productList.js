@@ -290,10 +290,10 @@ const gameList = langId => [
 					}
 				]
 			},
-			{
-				...defGameInfo.Fishing,
-				img: fish_GG
-			},
+			// {
+			// 	...defGameInfo.Fishing,
+			// 	img: fish_GG
+			// },
 			{
 				...defGameInfo.FishingSG,
 				img: fish_SG
