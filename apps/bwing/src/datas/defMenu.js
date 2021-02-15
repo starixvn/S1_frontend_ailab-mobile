@@ -289,18 +289,6 @@ export const productList = langId => {
 					]
 				},
 				{
-					displayKey: "lbl_Game_ICG_TOWER_OF_SAVIORS",
-					icon: "icon icon-ICG",
-					img: fishing_ICG_TOS,
-					...defGameInfo.ICG_TOWER_OF_SAVIORS,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.new_ICG)
-						}
-					]
-				},
-				{
 					displayKey: "lbl_FishingGG",
 					icon: "icon icon-gg",
 					img: fishing_GG,

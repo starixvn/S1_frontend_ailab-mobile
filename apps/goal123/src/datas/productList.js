@@ -86,10 +86,6 @@ export const defGameInfo = {
 		tpId: 24,
 		gameId: "cmf0003"
 	},
-	ICG_TOWER_OF_SAVIORS: {
-		tpId: 24,
-		gameId: "cmt0001"
-	},
 	V8Poker: { gameId: 0, tpId: 25 },
 	fish_AB3: {
 		tpId: 16,
@@ -287,16 +283,6 @@ const gameList = langId => [
 			{
 				...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
 				img: fish_TAP,
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.new_ICG)
-					}
-				]
-			},
-			{
-				...defGameInfo.ICG_TOWER_OF_SAVIORS,
-				img: fish_TOS,
 				eventIcon: [
 					{
 						icon: defIconType.new,

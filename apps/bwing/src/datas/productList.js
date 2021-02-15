@@ -51,10 +51,6 @@ export const defGameInfo = {
 		tpId: 24,
 		gameId: "cmf0003"
 	},
-	ICG_TOWER_OF_SAVIORS: {
-		tpId: 24,
-		gameId: "cmt0001"
-	},
 	V8Poker: { gameId: 0, tpId: 25 },
 	Fishing_AB3: {
 		tpId: 16,
