@@ -90,7 +90,18 @@ const Panel = () => {
 									accountName: res.data.data.accountName,
 									bankList: res.data.data.bankInfoDetail
 								}));
-								setSelBank(res.data.data.bankInfoDetail?.[0]);
+								const defAccountNoIdx = res.data.data.bankInfoDetail?.findIndex(
+									obj =>
+										obj.accountNo ===
+										res.data.data.defAccountNo
+								);
+								setSelBank(
+									res.data.data.bankInfoDetail?.[
+										defAccountNoIdx === -1
+											? 0
+											: defAccountNoIdx
+									]
+								);
 								if (!pageVerify) {
 									setPageVerify(true);
 								}
@@ -150,7 +161,7 @@ const Panel = () => {
 												setLoading(false);
 											}
 										},
-										err => {
+										() => {
 											if (isMountedRef.current) {
 												setLoading(false);
 											}
@@ -321,7 +332,7 @@ const Panel = () => {
 									}
 								}
 							},
-							err => {
+							() => {
 								if (isMountedRef.current) {
 									setPopBox({
 										isOpen: true,
@@ -486,11 +497,14 @@ const Panel = () => {
 		);
 	});
 
-	return redirectPath === null ? (
-		pageVerify ? (
-			loading ? (
-				<Loading />
-			) : (
+	let content = null;
+	if (redirectPath !== null) {
+		content = <Redirect to={redirectPath} noThrow />;
+	} else if (pageVerify) {
+		if (loading) {
+			content = <Loading />;
+		} else {
+			content = (
 				<>
 					<div className="avatar" />
 					<div className="name">{userInfo.userName}</div>
@@ -523,11 +537,11 @@ const Panel = () => {
 						ReloadFunc={GetWithdrawalInfoRecent}
 					/>
 				</>
-			)
-		) : null
-	) : (
-		<Redirect to={redirectPath} noThrow />
-	);
+			);
+		}
+	}
+
+	return content;
 };
 
 export default Panel;
