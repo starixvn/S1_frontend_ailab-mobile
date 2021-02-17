@@ -312,21 +312,11 @@ const gameList = ({ langId }) => [
 					}
 				]
 			},
-			{
-				...defGameInfo.ICG_TOWER_OF_SAVIORS,
-				img: fish_TOS,
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.new_ICG)
-					}
-				]
-			},
-			{
-				gameId: 10,
-				tpId: 7,
-				img: fish_GG
-			},
+			// {
+			// 	gameId: 10,
+			// 	tpId: 7,
+			// 	img: fish_GG
+			// },
 			{
 				gameId: "F-SF01",
 				tpId: 10,
@@ -495,10 +485,6 @@ export const defGameInfo = {
 	ICG_THE_TYRANT_AND_THE_PRINCESS: {
 		tpId: 24,
 		gameId: "cmf0003"
-	},
-	ICG_TOWER_OF_SAVIORS: {
-		tpId: 24,
-		gameId: "cmt0001"
 	},
 	oneGame: { tpId: 13 },
 	Fishing_AB3: {
