@@ -140,7 +140,7 @@ const Panel = ({ ImgFolder = [] }) => {
 	return <Autoplay Rows={rows} />;
 };
 
-const Autoplay = props => {
+export const Autoplay = props => {
 	const params = {
 		spaceBetween: 30,
 		centeredSlides: true,

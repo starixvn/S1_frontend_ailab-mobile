@@ -27,6 +27,7 @@ import Lottery from "../styles/img/lottery.jpg";
 import number_game from "../styles/img/number_game.jpg";
 import affiliate from "../styles/img/affiliate.jpg";
 import poker from "../styles/img/poker.jpg";
+import vip from "../styles/img/vip.jpg";
 
 import { siteInfo } from "../config";
 import fish_GG from "../styles/img/fish_GG.jpg";
@@ -64,9 +65,10 @@ const defIconType = {
 };
 
 const eventTime = {
+	new_ICG: { endDate: "2021/02/05 11:00:00" },
 	new_poker: { endDate: "2021/03/03 11:00:00" },
-	new_CQ9_fishing: { endDate: "2021/03/05 11:00:00" },
-	new_ICG: { endDate: "2021/02/05 11:00:00" }
+	new_vip: { startDate: "2021/02/05 11:00:00" },
+	new_CQ9_fishing: { endDate: "2021/03/05 11:00:00" }
 };
 
 const gameList = ({ langId }) => [
@@ -418,6 +420,25 @@ const gameList = ({ langId }) => [
 			}
 		]
 	},
+	// {
+	// 	category: "vip",
+	// 	categoryIcon: "vip",
+	// 	translateKey: "lbl_VIP",
+	// 	items: [
+	// 		{
+	// 			icon: "vip",
+	// 			path: path.vip.root,
+	// 			img: vip,
+	// 			spanText: "VIP",
+	// 			eventIcon: [
+	// 				{
+	// 					icon: defIconType.new,
+	// 					inPeriod: isEventPeriod(eventTime.new_vip)
+	// 				}
+	// 			]
+	// 		}
+	// 	]
+	// },
 	{
 		category: "ranking",
 		categoryIcon: "ranking",
