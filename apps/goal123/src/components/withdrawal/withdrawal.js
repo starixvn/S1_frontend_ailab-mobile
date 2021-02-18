@@ -98,7 +98,18 @@ const Panel = () => {
 									accountName: res.data.data.accountName,
 									bankList: res.data.data.bankInfoDetail
 								}));
-								setSelBank(res.data.data.bankInfoDetail?.[0]);
+								const defAccountNoIdx = res.data.data.bankInfoDetail?.findIndex(
+									obj =>
+										obj.accountNo ===
+										res.data.data.defAccountNo
+								);
+								setSelBank(
+									res.data.data.bankInfoDetail?.[
+										defAccountNoIdx === -1
+											? 0
+											: defAccountNoIdx
+									]
+								);
 								if (!pageVerify) {
 									setPageVerify(true);
 								}
@@ -316,7 +327,7 @@ const Panel = () => {
 								}
 							}
 						},
-						err => {
+						() => {
 							if (isMountedRef.current) {
 								props.setPopBox({
 									isOpen: true,

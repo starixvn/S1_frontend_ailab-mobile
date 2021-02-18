@@ -95,7 +95,7 @@ DropdownBox.propTypes = {
 	clickDropdown: PropTypes.func,
 	selectedIdx: PropTypes.number,
 	mainKey: PropTypes.string.isRequired,
-	i18n: PropTypes.arrayOf(PropTypes.string),
+	i18n: PropTypes.objectOf(PropTypes.string),
 	ImgURL: PropTypes.string.isRequired,
 	className: PropTypes.string.isRequired,
 	options: PropTypes.arrayOf(PropTypes.object).isRequired

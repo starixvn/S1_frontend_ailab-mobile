@@ -116,8 +116,8 @@ export const deleteCookie = cookieName => {
 
 export const isEventPeriod = ({ startDate, endDate }) => {
 	const now = new Date();
-	const _startDate = startDate ? new Date(`${startDate} GMT+0800`) : null; // yyyy/mm/dd hh:mm:ss
-	const _endDate = endDate ? new Date(`${endDate} GMT+0800`) : null; // yyyy/mm/dd hh:mm:ss
+	const _startDate = startDate ? new Date(`${startDate} GMT+0700`) : null; // yyyy/mm/dd hh:mm:ss
+	const _endDate = endDate ? new Date(`${endDate} GMT+0700`) : null; // yyyy/mm/dd hh:mm:ss
 
 	let result = false;
 	if (_startDate && _endDate) {

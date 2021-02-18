@@ -86,7 +86,9 @@ DropdownBox.defaultProps = {
 	colName: "",
 	options: [],
 	mainKey: "",
-	className: ""
+	className: "",
+	i18n: {},
+	clickDropdown: null
 };
 
 DropdownBox.propTypes = {
@@ -95,10 +97,10 @@ DropdownBox.propTypes = {
 	options: PropTypes.arrayOf(PropTypes.object),
 	selectedIdx: PropTypes.number.isRequired,
 	mainKey: PropTypes.string,
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	i18n: PropTypes.objectOf(PropTypes.string),
 	ImgURL: PropTypes.string.isRequired,
 	className: PropTypes.string,
-	clickDropdown: PropTypes.func.isRequired
+	clickDropdown: PropTypes.func
 };
 
 const Item = props => {
