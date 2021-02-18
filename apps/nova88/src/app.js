@@ -196,7 +196,7 @@ const Index = () => {
 						<Ranking path={path.ranking.root} />
 						<AngPow path={path.angPow.root} />
 						<OneGame path={path.oneGame.root} />
-						<VIP path={path.vip.root} />
+						{/* <VIP path={path.vip.root} /> */}
 						{/* <Kiss918 path={path.kiss918.root} /> */}
 					</Router>
 				</Layout>
