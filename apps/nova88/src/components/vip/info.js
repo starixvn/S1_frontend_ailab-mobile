@@ -24,10 +24,10 @@ const ENInfo = () => {
 	return (
 		<div className="vipInfo">
 			<div className="vipTitle">VIP Programme</div>
-			We have classified the membership tiers to Vintage Club, Silver
-			Club, Gold Club, Titanium Club, Diamond Club and Nova Club. Enjoy
-			all our privillege products and services when you achieve higher
-			membership.
+			Nova88 has launched its VIP rewards program so that members could
+			indulge in good services, more rewards, and a better experience.
+			Discover greater perks and entitlements when your tier upgraded.
+			We're waiting for you!
 			<div className="vipTitle">Overview</div>
 			We have classified the membership tiers to Vintage Club, Silver
 			Club, Gold Club, Titanium Club, Diamond Club and Nova Club. Enjoy
