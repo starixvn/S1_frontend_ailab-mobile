@@ -152,7 +152,7 @@ const EventListIDR = ({ i18n }) => {
 						<td colSpan="7">{i18n.lbl_Vip_Sport_Rebate}</td>
 					</tr>
 					<tr>
-						<td>0.5%</td>
+						<td>0.55%</td>
 						<td>0.6%</td>
 						<td>0.7%</td>
 						<td>0.8%</td>
