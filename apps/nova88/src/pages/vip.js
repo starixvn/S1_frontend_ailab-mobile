@@ -4,6 +4,8 @@ import { Autoplay } from "../components/common/swipperBanner";
 import { userInfoContext, i18nContext } from "../components/common/context";
 import { defBannersUrl, defLevelList } from "../components/vip/def";
 import { EventList } from "../components/vip/eventList";
+import { Info } from "../components/vip/info";
+import { FooterBanner } from "../components/vip/footerBanner";
 
 const Banners = ({ langId }) => {
 	const rows = defBannersUrl({ langId }).map((b, bIdx) => (
@@ -29,7 +31,11 @@ const IndexPage = () => {
 		<>
 			<Banners langId={userInfo.langId} />
 			<LevelList i18n={i18n} />
-			<EventList langId={userInfo.langId} />
+			<Info langId={userInfo.langId} />
+			<div className="vipPage">
+				<EventList langId={userInfo.langId} />
+				<FooterBanner langId={userInfo.langId} />
+			</div>
 		</>
 	);
 };
