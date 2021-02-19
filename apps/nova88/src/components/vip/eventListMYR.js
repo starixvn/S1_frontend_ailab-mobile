@@ -14,12 +14,8 @@ const EventListMYR = ({ i18n }) => (
 					<td colSpan="7">{i18n.lbl_Vip_Deposit_Priority}</td>
 				</tr>
 				<tr>
-					<td>
-						<i className="icon icon-checkmark" />
-					</td>
-					<td>
-						<i className="icon icon-checkmark" />
-					</td>
+					<td />
+					<td />
 					<td>
 						<i className="icon icon-checkmark" />
 						{i18n.lbl_Vip_High}
@@ -41,12 +37,8 @@ const EventListMYR = ({ i18n }) => (
 					<td colSpan="7">{i18n.lbl_Vip_WithDrawal_Priority}</td>
 				</tr>
 				<tr>
-					<td>
-						<i className="icon icon-checkmark" />
-					</td>
-					<td>
-						<i className="icon icon-checkmark" />
-					</td>
+					<td />
+					<td />
 					<td>
 						<i className="icon icon-checkmark" />
 						{i18n.lbl_Vip_High}
@@ -68,12 +60,8 @@ const EventListMYR = ({ i18n }) => (
 					<td colSpan="7">{i18n.lbl_Vip_Service_Support_At_Date}</td>
 				</tr>
 				<tr>
-					<td>
-						<i className="icon icon-checkmark" />
-					</td>
-					<td>
-						<i className="icon icon-checkmark" />
-					</td>
+					<td />
+					<td />
 					<td>
 						<i className="icon icon-checkmark" />
 						{i18n.lbl_Vip_High}

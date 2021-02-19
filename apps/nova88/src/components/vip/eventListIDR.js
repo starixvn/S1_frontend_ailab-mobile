@@ -15,12 +15,8 @@ const EventListIDR = ({ i18n }) => {
 						<td colSpan="7">{i18n.lbl_Vip_Deposit_Priority}</td>
 					</tr>
 					<tr>
-						<td>
-							<i className="icon icon-checkmark" />
-						</td>
-						<td>
-							<i className="icon icon-checkmark" />
-						</td>
+						<td />
+						<td />
 						<td>
 							<i className="icon icon-checkmark" />
 							{i18n.lbl_Vip_High}
@@ -42,12 +38,8 @@ const EventListIDR = ({ i18n }) => {
 						<td colSpan="7">{i18n.lbl_Vip_WithDrawal_Priority}</td>
 					</tr>
 					<tr>
-						<td>
-							<i className="icon icon-checkmark" />
-						</td>
-						<td>
-							<i className="icon icon-checkmark" />
-						</td>
+						<td />
+						<td />
 						<td>
 							<i className="icon icon-checkmark" />
 							{i18n.lbl_Vip_High}
@@ -71,12 +63,8 @@ const EventListIDR = ({ i18n }) => {
 						</td>
 					</tr>
 					<tr>
-						<td>
-							<i className="icon icon-checkmark" />
-						</td>
-						<td>
-							<i className="icon icon-checkmark" />
-						</td>
+						<td />
+						<td />
 						<td>
 							<i className="icon icon-checkmark" />
 							{i18n.lbl_Vip_High}
