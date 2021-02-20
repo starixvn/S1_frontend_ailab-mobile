@@ -32,7 +32,7 @@ const ENInfo = () => {
 			We have classified the membership tiers to Vintage Club, Silver
 			Club, Gold Club, Titanium Club, Diamond Club and Nova Club. Enjoy
 			all our privillege products and services when you achieve higher
-			membership.
+			tier.
 			<div className="vipTitle">
 				Enjoy the benefits and privileges with difference membership
 				tier.
@@ -45,10 +45,10 @@ const CSInfo = () => {
 	return (
 		<div className="vipInfo">
 			<div className="vipTitle">VIP计划</div>
-			Nova88启动了VIP奖励计划，使会员可以更快，更轻松地享受更好的奖励。升级到更高级别后，发现更大的特权和权利！
+			欧亚体育贵族体系已正式推出！会员现可尊享更优质服务，更多福利回馈及更完善游戏体验。解锁贵族等级一探更多福利等您领取
 			<div className="vipTitle">概观</div>
-			我们将会员等级分为复古俱乐部，银俱乐部，金俱乐部，钛俱乐部，钻石俱乐部和新星俱乐部。当您获得更高的会员资格时，请享受我们所有的privillege产品和服务。
-			<div className="vipTitle">享受会员级别不同的优惠和特权</div>
+			贵族等级分为古铜俱乐部，白银俱乐部，黄金俱乐部，钛金俱乐部，钻石俱乐部和欧亚俱乐部。解锁贵族等级以享有更多尊贵福利与独享服务。
+			<div className="vipTitle">不同等级享有各种豪爽福利</div>
 		</div>
 	);
 };
@@ -58,8 +58,9 @@ const THInfo = () => {
 		<div className="vipInfo">
 			<div className="vipTitle">โปรแกรมวีไอพี</div>
 			Nova88 ได้เปิดตัวโปรแกรม VIP Rewards
-			เพื่อให้สมาชิกสามารถดื่มด่ำกับรางวัลที่ดีขึ้นเร็วขึ้นและง่ายขึ้น
-			ค้นพบสิทธิประโยชน์และสิทธิพิเศษที่มากขึ้นเมื่อคุณอัปเกรดเป็นระดับที่สูงขึ้น!
+			เพื่อให้สมาชิกสามารถเพลิดเพลินกับบริการที่ดีกว่าเดิมทั้งรางวัลที่มากยิ่งขี้นและประสบการณ์ที่ดียิ่งกว่า
+			พบกับสิทธิประโยชน์สุดพิเศษที่มากยิ่งขึ้นเมื่อท่านอัปเกรดเป็นสมาชิกระดับที่สูงขึ้น
+			เรารอคุณอยู่!
 			<div className="vipTitle">ภาพรวม</div>
 			เราได้จัดระดับสมาชิกเป็น Vintage Club, Silver Club, Gold Club,
 			Titanium Club, Diamond Club และ Nova Club
@@ -75,10 +76,11 @@ const IDInfo = () => {
 	return (
 		<div className="vipInfo">
 			<div className="vipTitle">Program VIP</div>
-			Nova88 mempersembahkan program hadiah VIP sehingga member dapat
-			menikmati hadiah yang lebih banyak, lebih cepat dan lebih mudah.
-			Dapatkan keuntungan yang lebih besar saat Anda meningkatkan ke level
-			yang lebih tinggi! <div className="vipTitle">Keterangan</div>
+			Nova88 telah meluncurkan program hadiah VIP sehingga member dapat
+			menikmati layanan dan pengalaman yang lebih baik dan lebih banyak
+			hadiah. Temukan keuntungan dan hak yang lebih besar saat level Anda
+			ditingkatkan. Nova88 menghargai loyalitas Anda!
+			<div className="vipTitle">Keterangan</div>
 			Kami telah mengklasifikasikan tingkatan keanggotaan ke Klub Vintage,
 			Klub Silver, Klub Gold, Klub Titanium, Klub Diamond dan Klub Nova.
 			Nikmati semua produk dan layanan khusus kami saat Anda mencapai

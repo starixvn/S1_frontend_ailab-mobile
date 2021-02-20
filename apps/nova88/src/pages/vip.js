@@ -30,7 +30,7 @@ const IndexPage = () => {
 	return (
 		<>
 			<Banners langId={userInfo.langId} />
-			<LevelList i18n={i18n} />
+			<LevelList i18n={i18n} langId={userInfo.langId} />
 			<Info langId={userInfo.langId} />
 			<div className="vipPage">
 				<EventList langId={userInfo.langId} />
@@ -40,11 +40,18 @@ const IndexPage = () => {
 	);
 };
 
-const LevelList = ({ i18n }) => {
+const LevelList = ({ i18n, langId }) => {
 	const rows = defLevelList.map(l => (
 		<div key={`VIPLevelList-${l.levelName}`}>
 			<img src={l.imgUrl} alt={l.levelName} />
-			{i18n[l.levelName]}
+			{langId === "cs" ? (
+				<>
+					{i18n[l.levelNameCS]}
+					<p>{i18n.lbl_Club}</p>
+				</>
+			) : (
+				i18n[l.levelName]
+			)}
 		</div>
 	));
 
@@ -52,7 +59,8 @@ const LevelList = ({ i18n }) => {
 };
 
 LevelList.propTypes = {
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	langId: PropTypes.string.isRequired
 };
 
 export default IndexPage;
