@@ -20,7 +20,7 @@ const useDrawPrize = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 
 	useEffect(() => {
 		setLoading(true);
-		api_events_DrawPrize().then(
+		api_events_DrawPrize({ eventId: 2 }).then(
 			res => {
 				if (isMountedRef.current) {
 					const { data, errorCode, message } = res.data;

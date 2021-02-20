@@ -1,5 +1,4 @@
 import { eventRequest } from "./base";
-import { siteId } from "../../config";
 
 export const api_events_GetLeaderboardList = ({
 	lBCategoryId = 0,
@@ -42,17 +41,17 @@ export const api_events_GetCustRankV2 = ({
 		EventCode
 	});
 
-export const api_events_CheckDrawPrize = () =>
+export const api_events_CheckDrawPrize = ({ eventId }) =>
 	eventRequest.post(`/CheckDrawPrize/`, {
-		eventId: siteId
+		eventId
 	});
 
-export const api_events_DrawPrize = () =>
+export const api_events_DrawPrize = ({ eventId }) =>
 	eventRequest.post(`/DrawPrize/`, {
-		eventId: siteId
+		eventId
 	});
 
-export const api_events_GetCustDrawPrizeList = () =>
+export const api_events_GetCustDrawPrizeList = ({ eventId }) =>
 	eventRequest.post(`/GetCustDrawPrizeList/`, {
-		eventId: siteId
+		eventId
 	});
