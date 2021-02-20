@@ -1385,7 +1385,7 @@ footer > a.open .circleAnimation + span {
   height: 12vw;
   border-bottom: 3px solid transparent;
   color: #fff;
-  font-size: 5vw;
+  font-size: 3.8vw;
 }
 
 .tag a.open {
@@ -2094,6 +2094,27 @@ footer > a.open .circleAnimation + span {
   margin-left: 2vw;
 }
 
+.account .info.icon-BTC {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  word-break: break-all;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.account .info.icon-BTC:before {
+  margin-right: 2vw;
+  color: #F77A00;
+  font-size: 7vw;
+}
+
+.account .info.icon-plus {
+  text-align: center;
+  color: #F77A00;
+}
+
 .account .info ul li {
   width: 100%;
   line-height: 16px;
@@ -2110,10 +2131,17 @@ footer > a.open .circleAnimation + span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .smallTitle i.icon:before {
-  margin-right: 1vw;
+  margin-right: 2vw;
+}
+
+.smallTitle i.icon.icon-BTC:before {
+  font-size: 6vw;
 }
 
 .countryCode {
@@ -2217,6 +2245,14 @@ input::-ms-input-placeholder {
 
 input::placeholder {
   color: #fff;
+}
+
+input[placeholder="Wallet Address"] {
+  margin-bottom: 3vw;
+}
+
+input[placeholder="Wallet Address"] ~ .text {
+  color: #1E85EC;
 }
 
 input[type="file"] {
@@ -5458,6 +5494,7 @@ span.icon.icon-ranking:after {
   color: white;
   position: fixed;
   top: 49vw;
+  width: 100%;
 }
 
 .medal div {
