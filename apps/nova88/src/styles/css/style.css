@@ -1188,8 +1188,8 @@ footer > a.open .circleAnimation + span {
 }
 
 #popup .close {
-  -webkit-transform: translateY(50%);
-          transform: translateY(50%);
+  -webkit-transform: translateY(25%) scale(0.8);
+          transform: translateY(25%) scale(0.8);
   right: 1vw;
 }
 
@@ -1214,7 +1214,39 @@ footer > a.open .circleAnimation + span {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   line-height: 6vw;
-  width: calc(100% - 8vw - 2px);
+  width: calc(100% - 8vw);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#popup .popTxt input[type="checkbox"] {
+  display: none;
+}
+
+#popup .popTxt input[type="checkbox"] + label {
+  margin: 0vw 1vw 0 0;
+  border: 1px solid #F77A00;
+  border-radius: 100%;
+  width: 4vw;
+  height: 4vw;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  vertical-align: middle;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#popup .popTxt input[type="checkbox"] + label > div {
+  width: 3vw;
+  height: 3vw;
+  background: transparent;
+  margin: auto;
+  border-radius: 100%;
+}
+
+#popup .popTxt input[type="checkbox"]:checked + label > div {
+  background: #F77A00;
 }
 
 #popup .popTxt > div.icon {
@@ -1353,7 +1385,7 @@ footer > a.open .circleAnimation + span {
   height: 12vw;
   border-bottom: 3px solid transparent;
   color: #fff;
-  font-size: 5vw;
+  font-size: 3.8vw;
 }
 
 .tag a.open {
@@ -2062,6 +2094,27 @@ footer > a.open .circleAnimation + span {
   margin-left: 2vw;
 }
 
+.account .info.icon-BTC {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  word-break: break-all;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.account .info.icon-BTC:before {
+  margin-right: 2vw;
+  color: #F77A00;
+  font-size: 7vw;
+}
+
+.account .info.icon-plus {
+  text-align: center;
+  color: #F77A00;
+}
+
 .account .info ul li {
   width: 100%;
   line-height: 16px;
@@ -2078,10 +2131,17 @@ footer > a.open .circleAnimation + span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .smallTitle i.icon:before {
-  margin-right: 1vw;
+  margin-right: 2vw;
+}
+
+.smallTitle i.icon.icon-BTC:before {
+  font-size: 6vw;
 }
 
 .countryCode {
@@ -2185,6 +2245,14 @@ input::-ms-input-placeholder {
 
 input::placeholder {
   color: #fff;
+}
+
+input[placeholder="Wallet Address"] {
+  margin-bottom: 3vw;
+}
+
+input[placeholder="Wallet Address"] ~ .text {
+  color: #1E85EC;
 }
 
 input[type="file"] {
@@ -5398,7 +5466,6 @@ span.icon.icon-ranking:after {
 }
 
 .vip {
-  min-height: calc(100% - 102vw);
   padding: 12vw 0 90vw;
   width: 100%;
   -webkit-box-pack: start;
@@ -5427,6 +5494,7 @@ span.icon.icon-ranking:after {
   color: white;
   position: fixed;
   top: 49vw;
+  width: 100%;
 }
 
 .medal div {
@@ -5461,8 +5529,16 @@ span.icon.icon-ranking:after {
   width: 10vw;
 }
 
-.vipPage {
-  margin-top: 59vw;
+.vipInfo {
+  color: white;
+  padding: 2vw;
+  margin: 55vw auto 0;
+}
+
+.vipInfo .vipTitle {
+  font-weight: bold;
+  color: #F77A00;
+  margin: 2vw 0;
 }
 
 .vipPage .eventList {
@@ -5552,5 +5628,23 @@ span.icon.icon-ranking:after {
 
 .vipPage .eventList tr td img {
   width: 10vw;
+}
+
+.vipBanner {
+  width: 100%;
+  height: 37.5vw;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 3vw;
+}
+
+.vipBanner img {
+  width: auto;
+  height: 100%;
 }
 /*# sourceMappingURL=style.css.map */

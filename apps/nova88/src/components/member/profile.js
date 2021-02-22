@@ -15,10 +15,10 @@ const Panel = () => {
 
 	return (
 		<>
-			{/* <div className="avatar">
+			<div className="avatar">
 				<img src={levelInfo.imgUrl} alt={levelInfo.levelName} />
 				<div>{i18n[levelInfo.levelName]}</div>
-			</div> */}
+			</div>
 			<ProfileWallet />
 			<ProfileDetail />
 			<div className="btn-group">

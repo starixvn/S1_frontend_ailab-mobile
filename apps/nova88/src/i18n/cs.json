@@ -473,10 +473,11 @@
 	"lbl_Vip_Lifetime":"终身",
 	"lbl_Vip_3Months":"三个月",
 	"lbl_VIP":"VIP",
-	"lbl_Vintage_Club":"古铜俱乐部",
-	"lbl_Silver_Club":"白银俱乐部",
-	"lbl_Gold_Club":"黄金俱乐部",
-	"lbl_Titanium_Club":"钛金俱乐部",
-	"lbl_Diamond_Club":"钻石俱乐部",
-	"lbl_Nova_Club":"欧亚俱乐部"
+	"lbl_Club":"俱乐部",
+	"lbl_Vintage":"古铜",
+	"lbl_Silver":"白银",
+	"lbl_Gold":"黄金",
+	"lbl_Titanium":"钛金",
+	"lbl_Diamond":"钻石",
+	"lbl_Nova":"欧亚"
 }
