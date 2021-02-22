@@ -12,12 +12,15 @@ const Panel = () => {
 	const levelInfo = userInfo.userLevel
 		? defLevelList[Number(userInfo.userLevel) - 1]
 		: {};
-
+	const levelName =
+		userInfo.langId === "cs"
+			? `${i18n[levelInfo.levelNameCS]}${i18n.lbl_Club}`
+			: i18n[levelInfo.levelName];
 	return (
 		<>
 			<div className="avatar">
 				<img src={levelInfo.imgUrl} alt={levelInfo.levelName} />
-				<div>{i18n[levelInfo.levelName]}</div>
+				<div>{levelName}</div>
 			</div>
 			<ProfileWallet />
 			<ProfileDetail />
