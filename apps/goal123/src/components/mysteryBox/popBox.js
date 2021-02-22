@@ -32,14 +32,10 @@ const useDrawPrize = ({
 						setPrize(data.prizeName);
 						setCanDrawPrize(false);
 					} else if (errorCode === 100) {
-						const msg = i18n.lbl_MysteryBox_AlreadyDrawn.replace(
-							"{0}",
-							data.prizeName
-						);
 						setPopBox({
 							isOpen: true,
 							title: i18n.lbl_ImportantNote,
-							content: i18n[msg]
+							content: i18n.lbl_MysteryBox_AlreadyDrawn
 						});
 						setCanDrawPrize(false);
 						setMysteryBoxPop(false);
