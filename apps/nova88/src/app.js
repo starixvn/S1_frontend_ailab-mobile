@@ -90,8 +90,8 @@ import VIP from "./pages/vip";
 const Index = () => {
 	const history = createHistory(window);
 	return (
-		<Wrapper pageLangKeys={langKeys}>
-			<LocationProvider history={history}>
+		<LocationProvider history={history}>
+			<Wrapper pageLangKeys={langKeys}>
 				<Layout>
 					<Router>
 						<Home path={path.home.root} default={true} />
@@ -200,9 +200,9 @@ const Index = () => {
 						{/* <Kiss918 path={path.kiss918.root} /> */}
 					</Router>
 				</Layout>
-			</LocationProvider>
-			<PopBox />
-		</Wrapper>
+				<PopBox />
+			</Wrapper>
+		</LocationProvider>
 	);
 };
 

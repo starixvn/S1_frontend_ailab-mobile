@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { userInfoContext, i18nContext, navContext, defNavPanel } from "Context";
-import { useMatch, Redirect, Link } from "@reach/router";
+import { useMatch, Link, useNavigate } from "@reach/router";
 import Inputbox from "../common/inputbox";
 import InputboxPWD from "../common/inputbox.password";
 import { LOGIN } from "../../service/auth";
@@ -29,11 +29,11 @@ const warningLangKey = {
 };
 
 const LoginPage = ({ ButtonTitle = "", hideBtn = false }) => {
+	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { nav, setNav } = useContext(navContext);
 	const [userValueState, setUserValueState] = useState(initState);
-	const [redirectPath, setRedirectPath] = useState(null);
 	const [pswState, setPswState] = useState(false);
 	const [warningState, setWarningState] = useState(initWarningState);
 	const isMountedRef = useRef(null);
@@ -44,12 +44,6 @@ const LoginPage = ({ ButtonTitle = "", hideBtn = false }) => {
 			isMountedRef.current = false;
 		};
 	});
-
-	useEffect(() => {
-		if (isMountedRef.current && redirectPath !== null) {
-			setRedirectPath(null);
-		}
-	}, [redirectPath]);
 
 	const checkValueHandler = (colName, e) => {
 		const val = e.target.value;
@@ -98,6 +92,7 @@ const LoginPage = ({ ButtonTitle = "", hideBtn = false }) => {
 							isLogin
 						}));
 						setNav(null);
+						navigate(`/${path.deposit.root}`);
 					}
 				} else if (
 					errorCode === 1101 ||
@@ -137,7 +132,7 @@ const LoginPage = ({ ButtonTitle = "", hideBtn = false }) => {
 		}
 
 		if (showBylink) {
-			setRedirectPath("/");
+			navigate("/");
 		} else {
 			setNav(() => {
 				const newState = show ? null : defNavPanel.login;
@@ -157,7 +152,7 @@ const LoginPage = ({ ButtonTitle = "", hideBtn = false }) => {
 		}));
 	};
 
-	return redirectPath === null ? (
+	return (
 		<>
 			{hideBtn ? null : (
 				<button onClick={handleloginPanel.bind(this, showPanel)}>
@@ -225,8 +220,6 @@ const LoginPage = ({ ButtonTitle = "", hideBtn = false }) => {
 				<button onClick={handleLogin}>{i18n.lbl_Login}</button>
 			</div>
 		</>
-	) : (
-		<Redirect to="/" noThrow />
 	);
 };
 
