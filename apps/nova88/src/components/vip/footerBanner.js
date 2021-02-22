@@ -5,7 +5,7 @@ import BannerID from "../../styles/img/vip/vip_program_id.jpg";
 import BannerCS from "../../styles/img/vip/vip_program_cs.jpg";
 import BannerTH from "../../styles/img/vip/vip_program_th.jpg";
 
-export const FooterBanner = ({ langId }) => {
+export const FooterBanner = ({ langId, openJoinPop }) => {
 	let _banner;
 	switch (langId) {
 		case "cs":
@@ -23,12 +23,13 @@ export const FooterBanner = ({ langId }) => {
 	}
 
 	return (
-		<div className="vipBanner">
+		<div className="vipBanner" onClick={openJoinPop}>
 			<img src={_banner} alt="VIP Programme" />
 		</div>
 	);
 };
 
 FooterBanner.propTypes = {
-	langId: PropTypes.string.isRequired
+	langId: PropTypes.string.isRequired,
+	openJoinPop: PropTypes.func.isRequired
 };

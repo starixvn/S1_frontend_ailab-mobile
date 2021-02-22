@@ -16,6 +16,7 @@ const HeaderTitle = ({ title = "" }) => (
 	<>
 		<div className="title">{title}</div>
 		<LoginPanel hideBtn={true} />
+		<JoinPanel />
 	</>
 );
 

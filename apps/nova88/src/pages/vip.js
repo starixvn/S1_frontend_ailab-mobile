@@ -1,7 +1,12 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { Autoplay } from "../components/common/swipperBanner";
-import { userInfoContext, i18nContext } from "../components/common/context";
+import {
+	userInfoContext,
+	i18nContext,
+	defNavPanel,
+	navContext
+} from "../components/common/context";
 import { defBannersUrl, defLevelList } from "../components/vip/def";
 import { EventList } from "../components/vip/eventList";
 import { Info } from "../components/vip/info";
@@ -26,6 +31,13 @@ Banners.propTypes = {
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
+	const { setNav } = useContext(navContext);
+
+	const openJoinPop = () => {
+		if (!userInfo.isLogin) {
+			setNav(defNavPanel.join);
+		}
+	};
 
 	return (
 		<>
@@ -34,7 +46,10 @@ const IndexPage = () => {
 			<Info langId={userInfo.langId} />
 			<div className="vipPage">
 				<EventList langId={userInfo.langId} />
-				<FooterBanner langId={userInfo.langId} />
+				<FooterBanner
+					langId={userInfo.langId}
+					openJoinPop={openJoinPop}
+				/>
 			</div>
 		</>
 	);
