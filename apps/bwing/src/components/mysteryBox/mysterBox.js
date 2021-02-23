@@ -24,7 +24,7 @@ const MysteryBox = () => {
 	const { setLoading } = useContext(loadingContext);
 
 	const [currentTab, setCurrentTab] = useState("condition");
-	const [mysteryBoxPop, setDrawPopOpen] = useState(false);
+	const [drawPopOpen, setDrawPopOpen] = useState(false);
 	const { canDrawPrize, setCanDrawPrize } = useCheckPrize({
 		i18n,
 		setPopBox,
@@ -102,7 +102,7 @@ const MysteryBox = () => {
 			) : (
 				<Condition i18n={i18n} />
 			)}
-			{mysteryBoxPop ? (
+			{drawPopOpen ? (
 				<PopBox
 					i18n={i18n}
 					setDrawPopOpen={setDrawPopOpen}

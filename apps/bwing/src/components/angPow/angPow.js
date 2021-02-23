@@ -24,7 +24,7 @@ const AngPow = () => {
 	const { setLoading } = useContext(loadingContext);
 
 	const [currentTab, setCurrentTab] = useState("condition");
-	const [AngPowPop, setDrawPopOpen] = useState(false);
+	const [drawPopOpen, setDrawPopOpen] = useState(false);
 	const { canDrawPrize, setCanDrawPrize } = useCheckPrize({
 		i18n,
 		setPopBox,
@@ -119,7 +119,7 @@ const AngPow = () => {
 			) : (
 				<Condition i18n={i18n} langId={userInfo.langId} />
 			)}
-			{AngPowPop ? (
+			{drawPopOpen ? (
 				<PopBox
 					i18n={i18n}
 					setDrawPopOpen={setDrawPopOpen}
