@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
 	i18nContext,
 	popBoxContext,
@@ -11,53 +11,9 @@ import Condition from "./condition";
 import History from "./history";
 import PopBox from "./popBox";
 import Counter from "./counter";
-import { api_events_CheckDrawPrize } from "../../service/api/events";
 import eventImg from "../../styles/img/event/box/box_close.png";
-
-const useCheckPrize = ({ i18n, setPopBox, isLogin }) => {
-	const [canDrawPrize, setCanDrawPrize] = useState(true);
-	const isMountedRef = useRef(null);
-
-	useEffect(() => {
-		isMountedRef.current = true;
-		return () => {
-			isMountedRef.current = false;
-		};
-	});
-
-	useEffect(() => {
-		if (isLogin === true) {
-			api_events_CheckDrawPrize({ eventId: 5 }).then(
-				res => {
-					if (isMountedRef.current) {
-						const { errorCode } = res.data;
-						if (errorCode === 0) {
-							setCanDrawPrize(true);
-						} else if (errorCode === 100) {
-							setCanDrawPrize(false);
-						} else {
-							setPopBox({
-								isOpen: true,
-								content: `[${res.data.errorCode}]${res.data.message}`
-							});
-						}
-					}
-				},
-				() => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-					}
-				}
-			);
-		}
-	}, [isLogin, i18n, setPopBox]);
-
-	return { canDrawPrize, setCanDrawPrize };
-};
+import { useCheckPrize } from "../hook/useCheckPrize";
+import { eventIds } from "../../datas/eventIds";
 
 const MysteryBox = () => {
 	const { i18n } = useContext(i18nContext);
@@ -67,11 +23,12 @@ const MysteryBox = () => {
 	const { setLoading } = useContext(loadingContext);
 
 	const [currentTab, setCurrentTab] = useState("condition");
-	const [mysteryBoxPop, setMysteryBoxPop] = useState(false);
+	const [mysteryBoxPop, setDrawPopOpen] = useState(false);
 	const { canDrawPrize, setCanDrawPrize } = useCheckPrize({
 		i18n,
 		setPopBox,
-		isLogin: userInfo.isLogin
+		isLogin: userInfo.isLogin,
+		eventId: eventIds.mysteryBox
 	});
 
 	useEffect(() => {
@@ -85,7 +42,7 @@ const MysteryBox = () => {
 		if (!userInfo.isLogin) {
 			setNav(defNavPanel.login);
 		} else if (canDrawPrize) {
-			setMysteryBoxPop(true);
+			setDrawPopOpen(true);
 		}
 	};
 
@@ -140,12 +97,12 @@ const MysteryBox = () => {
 					canDrawPrize={canDrawPrize}
 				/>
 			) : (
-				<Condition i18n={i18n} langId={userInfo.langId} />
+				<Condition i18n={i18n} />
 			)}
 			{mysteryBoxPop ? (
 				<PopBox
 					i18n={i18n}
-					setMysteryBoxPop={setMysteryBoxPop}
+					setDrawPopOpen={setDrawPopOpen}
 					setCanDrawPrize={setCanDrawPrize}
 					setPopBox={setPopBox}
 				/>

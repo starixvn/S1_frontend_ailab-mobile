@@ -1,94 +1,35 @@
-import React, { useRef, useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { loadingContext } from "../common/context";
-import { api_events_DrawPrize } from "../../service/api/events";
 import eventImg from "../../styles/img/event/box/box_open.png";
-
-const useDrawPrize = ({
-	i18n,
-	setMysteryBoxPop,
-	setCanDrawPrize,
-	setPopBox
-}) => {
-	const { setLoading } = useContext(loadingContext);
-	const [prize, setPrize] = useState("");
-
-	const isMountedRef = useRef(null);
-
-	useEffect(() => {
-		isMountedRef.current = true;
-		return () => {
-			isMountedRef.current = false;
-		};
-	});
-
-	useEffect(() => {
-		setLoading(true);
-		api_events_DrawPrize({ eventId: 5 }).then(
-			res => {
-				if (isMountedRef.current) {
-					const { data, errorCode, message } = res.data;
-					if (errorCode === 0) {
-						setPrize(data.prizeName);
-						setCanDrawPrize(false);
-					} else if (errorCode === 100) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.lbl_MysteryBox_AlreadyDrawn
-						});
-						setCanDrawPrize(false);
-						setMysteryBoxPop(false);
-					} else {
-						setPopBox({
-							isOpen: true,
-							content: `[${errorCode}]${message}`
-						});
-						setMysteryBoxPop(false);
-					}
-					setLoading(false);
-				}
-			},
-			() => {
-				if (isMountedRef.current) {
-					setPopBox({
-						isOpen: true,
-						title: i18n.lbl_ImportantNote,
-						content: i18n.msg_ApiServerError
-					});
-					setLoading(false);
-				}
-			}
-		);
-	}, [i18n, setPopBox, setMysteryBoxPop, setCanDrawPrize, setLoading]);
-
-	return { prize };
-};
+import { useDrawPrize } from "../hook/useDrawPrize";
+import { eventIds } from "../../datas/eventIds";
 
 const MysteryBoxPop = ({
 	i18n,
-	setMysteryBoxPop,
+	setDrawPopOpen,
 	setCanDrawPrize,
 	setPopBox
 }) => {
 	const [animationOver, setAnimationOver] = useState(false);
 	const { prize } = useDrawPrize({
 		i18n,
-		setMysteryBoxPop,
+		setDrawPopOpen,
 		setCanDrawPrize,
-		setPopBox
+		setPopBox,
+		eventId: eventIds.mysteryBox,
+		alreadyDrwanKey: "lbl_MysteryBox_AlreadyDrawn"
 	});
 
 	useEffect(() => {
 		if (prize) {
 			setInterval(() => {
 				setAnimationOver(true);
-			}, 1000);
+			}, 2000);
 		}
 	}, [prize]);
 
 	const closePop = () => {
-		setMysteryBoxPop(false);
+		setDrawPopOpen(false);
 	};
 
 	return prize ? (
@@ -118,7 +59,7 @@ const MysteryBoxPop = ({
 
 MysteryBoxPop.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	setMysteryBoxPop: PropTypes.func.isRequired,
+	setDrawPopOpen: PropTypes.func.isRequired,
 	setCanDrawPrize: PropTypes.func.isRequired,
 	setPopBox: PropTypes.func.isRequired
 };

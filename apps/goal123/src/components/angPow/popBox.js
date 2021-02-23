@@ -1,84 +1,25 @@
-import React, { useRef, useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { loadingContext } from "../common/context";
-import { api_events_DrawPrize } from "../../service/api/events";
 import eventImg from "../../styles/img/event/angpao_inf_en.png";
 import eventVNImg from "../../styles/img/event/angpao_inf_vn.png";
-
-const useDrawPrize = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
-	const { setLoading } = useContext(loadingContext);
-	const [prize, setPrize] = useState("");
-
-	const isMountedRef = useRef(null);
-
-	useEffect(() => {
-		isMountedRef.current = true;
-		return () => {
-			isMountedRef.current = false;
-		};
-	});
-
-	useEffect(() => {
-		setLoading(true);
-		api_events_DrawPrize({ eventId: 2 }).then(
-			res => {
-				if (isMountedRef.current) {
-					const { data, errorCode, message } = res.data;
-					if (errorCode === 0) {
-						setPrize(data.prizeName);
-						setCanDrawPrize(false);
-					} else if (errorCode === 100 || errorCode === 101) {
-						const msg =
-							errorCode === 100
-								? "lbl_AngPow_AlreadyDrawn"
-								: "lbl_AngPow_NotWinning";
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n[msg]
-						});
-						setCanDrawPrize(false);
-						setAngPowPop(false);
-					} else {
-						setPopBox({
-							isOpen: true,
-							content: `[${errorCode}]${message}`
-						});
-						setAngPowPop(false);
-					}
-					setLoading(false);
-				}
-			},
-			() => {
-				if (isMountedRef.current) {
-					setPopBox({
-						isOpen: true,
-						title: i18n.lbl_ImportantNote,
-						content: i18n.msg_ApiServerError
-					});
-					setLoading(false);
-				}
-			}
-		);
-	}, [i18n, setPopBox, setAngPowPop, setCanDrawPrize, setLoading]);
-
-	return { prize };
-};
+import { useDrawPrize } from "../hook/useDrawPrize";
+import { eventIds } from "../../datas/eventIds";
 
 const AngPowPopBox = ({
 	i18n,
-	setAngPowPop,
+	setDrawPopOpen,
 	setCanDrawPrize,
 	setPopBox,
 	langId
 }) => {
 	const [animationOver, setAnimationOver] = useState(false);
-
 	const { prize } = useDrawPrize({
 		i18n,
-		setAngPowPop,
+		setDrawPopOpen,
 		setCanDrawPrize,
-		setPopBox
+		setPopBox,
+		eventId: eventIds.angPow,
+		alreadyDrwanKey: "lbl_AngPow_AlreadyDrawn"
 	});
 
 	useEffect(() => {
@@ -90,7 +31,7 @@ const AngPowPopBox = ({
 	}, [prize]);
 
 	const closePop = () => {
-		setAngPowPop(false);
+		setDrawPopOpen(false);
 	};
 
 	return prize ? (
@@ -122,7 +63,7 @@ const AngPowPopBox = ({
 
 AngPowPopBox.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	setAngPowPop: PropTypes.func.isRequired,
+	setDrawPopOpen: PropTypes.func.isRequired,
 	setCanDrawPrize: PropTypes.func.isRequired,
 	setPopBox: PropTypes.func.isRequired,
 	langId: PropTypes.string.isRequired

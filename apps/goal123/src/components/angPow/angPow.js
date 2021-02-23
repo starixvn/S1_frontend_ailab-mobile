@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
 	i18nContext,
 	popBoxContext,
@@ -11,62 +11,11 @@ import Condition from "./condition";
 import History from "./history";
 import PopBox from "./popBox";
 import Counter from "./counter";
-import { api_events_CheckDrawPrize } from "../../service/api/events";
 import eventImg from "../../styles/img/event/angpao_inf_en.png";
 import eventVNImg from "../../styles/img/event/angpao_inf_vn.png";
 import eventBgImg from "../../styles/img/event/angpao_inf_d.png";
-
-const useCheckPrize = ({ i18n, setPopBox, isLogin }) => {
-	const [canDrawPrize, setCanDrawPrize] = useState(true);
-	const isMountedRef = useRef(null);
-
-	useEffect(() => {
-		isMountedRef.current = true;
-		return () => {
-			isMountedRef.current = false;
-		};
-	});
-
-	useEffect(() => {
-		if (isLogin === true) {
-			api_events_CheckDrawPrize({ eventId: 2 }).then(
-				res => {
-					if (isMountedRef.current) {
-						const { errorCode } = res.data;
-						if (errorCode === 0) {
-							setCanDrawPrize(true);
-						} else if (errorCode === 100) {
-							setCanDrawPrize(false);
-						} else if (errorCode === 101) {
-							setCanDrawPrize(false);
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_AngPow_EventTitle,
-								content: i18n.lbl_AngPow_NotWinning
-							});
-						} else {
-							setPopBox({
-								isOpen: true,
-								content: `[${res.data.errorCode}]${res.data.message}`
-							});
-						}
-					}
-				},
-				() => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-					}
-				}
-			);
-		}
-	}, [isLogin, i18n, setPopBox]);
-
-	return { canDrawPrize, setCanDrawPrize };
-};
+import { useCheckPrize } from "../hook/useCheckPrize";
+import { eventIds } from "../../datas/eventIds";
 
 const AngPow = () => {
 	const { i18n } = useContext(i18nContext);
@@ -76,11 +25,12 @@ const AngPow = () => {
 	const { setLoading } = useContext(loadingContext);
 
 	const [currentTab, setCurrentTab] = useState("condition");
-	const [AngPowPop, setAngPowPop] = useState(false);
+	const [AngPowPop, setDrawPopOpen] = useState(false);
 	const { canDrawPrize, setCanDrawPrize } = useCheckPrize({
 		i18n,
 		setPopBox,
-		isLogin: userInfo.isLogin
+		isLogin: userInfo.isLogin,
+		eventId: eventIds.angPow
 	});
 
 	useEffect(() => {
@@ -94,7 +44,7 @@ const AngPow = () => {
 		if (!userInfo.isLogin) {
 			setNav(defNavPanel.login);
 		} else if (canDrawPrize) {
-			setAngPowPop(true);
+			setDrawPopOpen(true);
 		}
 	};
 
@@ -161,7 +111,7 @@ const AngPow = () => {
 			{AngPowPop ? (
 				<PopBox
 					i18n={i18n}
-					setAngPowPop={setAngPowPop}
+					setDrawPopOpen={setDrawPopOpen}
 					setCanDrawPrize={setCanDrawPrize}
 					setPopBox={setPopBox}
 					langId={userInfo.langId}
