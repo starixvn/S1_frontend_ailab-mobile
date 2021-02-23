@@ -152,5 +152,8 @@ export default {
 	},
 	vip: {
 		root: "vip"
+	},
+	mysteryBox: {
+		root: "mysteryBox"
 	}
 };

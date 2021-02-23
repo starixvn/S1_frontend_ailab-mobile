@@ -86,6 +86,7 @@ import ReferralHistory from "./components/referral/referral.history";
 import AngPow from "./pages/angPow";
 import OneGame from "./pages/oneGame";
 import VIP from "./pages/vip";
+import MysteryBox from "./pages/mysteryBox";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -198,6 +199,7 @@ const Index = () => {
 						<OneGame path={path.oneGame.root} />
 						{/* <VIP path={path.vip.root} /> */}
 						{/* <Kiss918 path={path.kiss918.root} /> */}
+						<MysteryBox path={path.mysteryBox.root} />
 					</Router>
 				</Layout>
 			</LocationProvider>
