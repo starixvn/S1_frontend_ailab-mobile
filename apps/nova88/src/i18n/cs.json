@@ -493,6 +493,12 @@
 	"lbl_MysteryBox_CreditedAccount1":"今天您获得奖励",
 	"lbl_MysteryBox_CreditedAccount2":"请明日再来领取！",
 	"lbl_MysteryBox_MemberEligibility":"立即存款，明天即可获得奖励。",
-	"lbl_MysteryBox_OtherConditions":"其它条款"
-
+	"lbl_MysteryBox_OtherConditions":"其它条款",
+	"lbl_Club":"俱乐部",
+	"lbl_Vintage":"古铜",
+	"lbl_Silver":"白银",
+	"lbl_Gold":"黄金",
+	"lbl_Titanium":"钛金",
+	"lbl_Diamond":"钻石",
+	"lbl_Nova":"欧亚"
 }

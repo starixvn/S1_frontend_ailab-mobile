@@ -1,9 +1,16 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { Autoplay } from "../components/common/swipperBanner";
-import { userInfoContext, i18nContext } from "../components/common/context";
+import {
+	userInfoContext,
+	i18nContext,
+	defNavPanel,
+	navContext
+} from "../components/common/context";
 import { defBannersUrl, defLevelList } from "../components/vip/def";
 import { EventList } from "../components/vip/eventList";
+import { Info } from "../components/vip/info";
+import { FooterBanner } from "../components/vip/footerBanner";
 
 const Banners = ({ langId }) => {
 	const rows = defBannersUrl({ langId }).map((b, bIdx) => (
@@ -24,21 +31,42 @@ Banners.propTypes = {
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
+	const { setNav } = useContext(navContext);
+
+	const openJoinPop = () => {
+		if (!userInfo.isLogin) {
+			setNav(defNavPanel.join);
+		}
+	};
 
 	return (
 		<>
 			<Banners langId={userInfo.langId} />
-			<LevelList i18n={i18n} />
-			<EventList langId={userInfo.langId} />
+			<LevelList i18n={i18n} langId={userInfo.langId} />
+			<Info langId={userInfo.langId} />
+			<div className="vipPage">
+				<EventList langId={userInfo.langId} />
+				<FooterBanner
+					langId={userInfo.langId}
+					openJoinPop={openJoinPop}
+				/>
+			</div>
 		</>
 	);
 };
 
-const LevelList = ({ i18n }) => {
+const LevelList = ({ i18n, langId }) => {
 	const rows = defLevelList.map(l => (
 		<div key={`VIPLevelList-${l.levelName}`}>
 			<img src={l.imgUrl} alt={l.levelName} />
-			{i18n[l.levelName]}
+			{langId === "cs" ? (
+				<>
+					{i18n[l.levelNameCS]}
+					<p>{i18n.lbl_Club}</p>
+				</>
+			) : (
+				i18n[l.levelName]
+			)}
 		</div>
 	));
 
@@ -46,7 +74,8 @@ const LevelList = ({ i18n }) => {
 };
 
 LevelList.propTypes = {
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	langId: PropTypes.string.isRequired
 };
 
 export default IndexPage;

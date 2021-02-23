@@ -91,8 +91,8 @@ import MysteryBox from "./pages/mysteryBox";
 const Index = () => {
 	const history = createHistory(window);
 	return (
-		<Wrapper pageLangKeys={langKeys}>
-			<LocationProvider history={history}>
+		<LocationProvider history={history}>
+			<Wrapper pageLangKeys={langKeys}>
 				<Layout>
 					<Router>
 						<Home path={path.home.root} default={true} />
@@ -197,14 +197,14 @@ const Index = () => {
 						<Ranking path={path.ranking.root} />
 						<AngPow path={path.angPow.root} />
 						<OneGame path={path.oneGame.root} />
-						{/* <VIP path={path.vip.root} /> */}
+						<VIP path={path.vip.root} />
 						{/* <Kiss918 path={path.kiss918.root} /> */}
 						<MysteryBox path={path.mysteryBox.root} />
 					</Router>
 				</Layout>
-			</LocationProvider>
-			<PopBox />
-		</Wrapper>
+				<PopBox />
+			</Wrapper>
+		</LocationProvider>
 	);
 };
 

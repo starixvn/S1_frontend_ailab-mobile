@@ -420,25 +420,25 @@ const gameList = ({ langId }) => [
 			}
 		]
 	},
-	// {
-	// 	category: "vip",
-	// 	categoryIcon: "vip",
-	// 	translateKey: "lbl_VIP",
-	// 	items: [
-	// 		{
-	// 			icon: "vip",
-	// 			path: path.vip.root,
-	// 			img: vip,
-	// 			spanText: "VIP",
-	// 			eventIcon: [
-	// 				{
-	// 					icon: defIconType.new,
-	// 					inPeriod: isEventPeriod(eventTime.new_vip)
-	// 				}
-	// 			]
-	// 		}
-	// 	]
-	// },
+	{
+		category: "vip",
+		categoryIcon: "vip",
+		translateKey: "lbl_VIP",
+		items: [
+			{
+				icon: "vip",
+				path: path.vip.root,
+				img: vip,
+				spanText: "VIP",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_vip)
+					}
+				]
+			}
+		]
+	},
 	{
 		category: "ranking",
 		categoryIcon: "ranking",

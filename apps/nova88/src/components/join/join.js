@@ -24,7 +24,7 @@ import { Iov_GetBlackBox } from "../common/iovation";
 import api from "../../service/api";
 import Logo from "../common/logo";
 
-const Join = () => {
+const Join = ({ hideBtn = false }) => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -521,9 +521,11 @@ const Join = () => {
 
 	return redirectPath === null ? (
 		<>
-			<button onClick={handleJoinPanel.bind(this, openPanel)}>
-				{i18n.lbl_JoinNow}
-			</button>
+			{hideBtn ? null : (
+				<button onClick={handleJoinPanel.bind(this, openPanel)}>
+					{i18n.lbl_JoinNow}
+				</button>
+			)}
 			<div className={`Join${openPanel ? " open" : ""}`}>
 				<div
 					className={`close${openPanel ? " open" : ""}`}

@@ -136,11 +136,11 @@ const defPageInfo = {
 		className: "main casino kiss",
 		hideLogo: true
 	},
-	// vip: {
-	// 	titleKey: "VIP",
-	// 	className: "main vip",
-	// 	hideLogo: true
-	// }
+	vip: {
+		titleKey: "VIP",
+		className: "main vip",
+		hideLogo: true
+	},
 	mysteryBox: {
 		titleKey: "lbl_MysteryBox_EventTitle",
 		className: "main event2",

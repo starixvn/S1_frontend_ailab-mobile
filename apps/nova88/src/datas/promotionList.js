@@ -1,37 +1,32 @@
 export default [
-	// {
-	// 	bonusCode: "VKNGamesUnlimitedRebate15",
-	// 	bannerLink: {
-	// 		en:
-	// 			"https://image.n88media.com/NovaPromotion/Virtual+Sports+%2C+Keno+%26+Number+Game+Unlimited+Rebate+1.5%25/EN-Virtual+Sports+%2C+Keno+%26+Number+Game+Unlimited+Rebate+1.5%25.html",
-	// 		cs:
-	// 			"https://image.n88media.com/NovaPromotion/Virtual+Sports+%2C+Keno+%26+Number+Game+Unlimited+Rebate+1.5%25/CS-Virtual+Sports+%2C+Keno+%26+Number+Game+Unlimited+Rebate+1.5%25.html",
-	// 		id:
-	// 			"https://image.n88media.com/NovaPromotion/Virtual+Sports+%2C+Keno+%26+Number+Game+Unlimited+Rebate+1.5%25/ID-Virtual+Sports+%2C+Keno+%26+Number+Game+Unlimited+Rebate+1.5%25.html",
-	// 		th:
-	// 			"https://image.n88media.com/NovaPromotion/Virtual+Sports+%2C+Keno+%26+Number+Game+Unlimited+Rebate+1.5%25/TH-Virtual+Sports+%2C+Keno+%26+Number+Game+Unlimited+Rebate+1.5%25.html"
-	// 	},
-	// 	imgUrl: {
-	// 		en:
-	// 			"https://image.n88media.com/NovaPromotion/Virtual+Sports+%2C+Keno+%26+Number+Game+Unlimited+Rebate+1.5%25/CMS/Nova88/Promotion/en/banner-VKNGamesUnlimitedRebate15.jpg",
-	// 		cs:
-	// 			"https://image.n88media.com/NovaPromotion/Virtual+Sports+%2C+Keno+%26+Number+Game+Unlimited+Rebate+1.5%25/CMS/Nova88/Promotion/cs/banner-VKNGamesUnlimitedRebate15.jpg",
-	// 		id:
-	// 			"https://image.n88media.com/NovaPromotion/Virtual+Sports+%2C+Keno+%26+Number+Game+Unlimited+Rebate+1.5%25/CMS/Nova88/Promotion/id/banner-VKNGamesUnlimitedRebate15.jpg",
-	// 		th:
-	// 			"https://image.n88media.com/NovaPromotion/Virtual+Sports+%2C+Keno+%26+Number+Game+Unlimited+Rebate+1.5%25/CMS/Nova88/Promotion/th/banner-VKNGamesUnlimitedRebate15.jpg"
-	// 	},
-	// 	title: {
-	// 		en: "Virtual Sports , Keno & Number Game Unlimited Rebate 1.5%",
-	// 		cs: "虚拟运动，快乐彩和百练赛 1.5% 无上限返水",
-	// 		id: "RABAT VIRTUAL SPORTS , KENO & NUMBER GAME 1.5% TAK TERBATAS",
-	// 		th: "กีฬาเสมือนจริง, คีโน และ นัมเบอร์เกม อันลิมิเต็ด ส่วนลด 1.5%"
-	// 	},
-	// 	description: {
-	// 		en: "Register & Enjoy Your Bonus Now!",
-	// 		cs: "立即注册即可享有优惠奖金！",
-	// 		id: "Daftar & Nikmati Bonus Anda Sekarang!",
-	// 		th: "สมัครและร่วมสนุกไปกับโบนัสของเราตอนนี้!!"
-	// 	}
-	// }
+	{
+		bonusCode: "VIPProgram",
+		bannerLink: {
+			en: "https://image.n88media.com/NovaPromotion/VIPBDREWARD/EN.html",
+			cs: "https://image.n88media.com/NovaPromotion/VIPBDREWARD/CS.html",
+			id: "https://image.n88media.com/NovaPromotion/VIPBDREWARD/ID.html",
+			th: "https://image.n88media.com/NovaPromotion/VIPBDREWARD/TH.html"
+		},
+		imgUrl: {
+			en:
+				"https://image.n88media.com/NovaPromotion/VIPBDREWARD/en/EN.jpg",
+			cs:
+				"https://image.n88media.com/NovaPromotion/VIPBDREWARD/cs/CS.jpg",
+			id:
+				"https://image.n88media.com/NovaPromotion/VIPBDREWARD/id/ID.jpg",
+			th: "https://image.n88media.com/NovaPromotion/VIPBDREWARD/th/TH.jpg"
+		},
+		title: {
+			en: "EXCLUSIVE VIP BIRTHDAY REWARD",
+			cs: "VIP 独家生日礼金",
+			id: "HADIAH ULANG TAHUN VIP EKSKLUSIF",
+			th: "รางวัลวันเกิด พิเศษสำหรับ VIP เท่านั้น"
+		},
+		description: {
+			en: "CLAIM YOUR BIRTHDAY REWARD NOW!",
+			cs: "立即申领您的生日礼金！",
+			id: "KLAIM HADIAH ULANG TAHUN ANDA SEKARANG!",
+			th: "รับรางวัลวันเกิดของคุณได้เลย!"
+		}
+	}
 ];
