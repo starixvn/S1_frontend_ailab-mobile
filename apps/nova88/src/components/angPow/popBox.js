@@ -19,7 +19,8 @@ const AngPowPopBox = ({
 		setDrawPopOpen,
 		setCanDrawPrize,
 		setPopBox,
-		eventId: eventIds.angPow
+		eventId: eventIds.angPow,
+		alreadyDrawnKey: "lbl_AngPow_AlreadyDrawn"
 	});
 
 	useEffect(() => {

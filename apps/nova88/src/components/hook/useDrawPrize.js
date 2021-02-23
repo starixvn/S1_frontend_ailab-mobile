@@ -7,7 +7,8 @@ export const useDrawPrize = ({
 	setDrawPopOpen,
 	setCanDrawPrize,
 	setPopBox,
-	eventId
+	eventId,
+	alreadyDrawnKey
 }) => {
 	const { setLoading } = useContext(loadingContext);
 	const [prize, setPrize] = useState("");
@@ -34,7 +35,7 @@ export const useDrawPrize = ({
 						setPopBox({
 							isOpen: true,
 							title: i18n.lbl_ImportantNote,
-							content: i18n.lbl_MysteryBox_AlreadyDrawn
+							content: i18n[alreadyDrawnKey]
 						});
 						setCanDrawPrize(false);
 						setDrawPopOpen(false);
@@ -59,7 +60,15 @@ export const useDrawPrize = ({
 				}
 			}
 		);
-	}, [i18n, setPopBox, setDrawPopOpen, setCanDrawPrize, setLoading, eventId]);
+	}, [
+		i18n,
+		setPopBox,
+		setDrawPopOpen,
+		setCanDrawPrize,
+		setLoading,
+		eventId,
+		alreadyDrawnKey
+	]);
 
 	return { prize };
 };

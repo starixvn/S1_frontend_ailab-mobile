@@ -16,7 +16,8 @@ const MysteryBoxPop = ({
 		setDrawPopOpen,
 		setCanDrawPrize,
 		setPopBox,
-		eventId: eventIds.mysteryBox
+		eventId: eventIds.mysteryBox,
+		alreadyDrawnKey: "lbl_MysteryBox_AlreadyDrawn"
 	});
 
 	useEffect(() => {
