@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import TandC from "../../service/t_and_c";
 
-const Condition = ({ i18n, langId }) => {
+const Condition = ({ i18n }) => {
 	return (
 		<div className="eventModule active">
 			<div className="title">Nova88 {i18n.lbl_MysteryBox_EventTitle}</div>
@@ -20,20 +19,12 @@ const Condition = ({ i18n, langId }) => {
 					<li>{i18n.lbl_MysteryBox_OtherConditions5}</li>
 				</ul>
 			</div>
-			{/* <a
-				className="more"
-				href={TandC(langId).AngPow}
-				target="_blank"
-				rel="noreferrer">
-				{i18n.lbl_MoreDetails}
-			</a> */}
 		</div>
 	);
 };
 
 Condition.propTypes = {
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	langId: PropTypes.string.isRequired
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
 export default Condition;

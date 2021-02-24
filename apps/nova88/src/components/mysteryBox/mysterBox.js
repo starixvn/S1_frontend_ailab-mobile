@@ -96,7 +96,7 @@ const MysteryBox = () => {
 					canDrawPrize={canDrawPrize}
 				/>
 			) : (
-				<Condition i18n={i18n} langId={userInfo.langId} />
+				<Condition i18n={i18n} />
 			)}
 			{drawPopOpen ? (
 				<PopBox
