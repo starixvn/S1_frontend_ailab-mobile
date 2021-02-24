@@ -4,7 +4,7 @@ import MysteryBox from "../components/mysteryBox/mysterBox";
 import { isEventPeriod } from "../components/common/common";
 
 export const eventTime = {
-	mysteryBox: { startDate: "2021/02/23 00:00:00" }
+	mysteryBox: { startDate: "2021/02/27 00:00:00" }
 };
 
 const IndexPage = () => {

@@ -195,9 +195,9 @@ const Layout = ({ children }) => {
 				{loading ? <Loading /> : null}
 			</main>
 			<Footer />
-			{/* {isEventPeriod(angPowEventTime.angPow) ? (
+			{isEventPeriod(angPowEventTime.angPow) ? (
 				<AngPow i18n={i18n} langId={userInfo.langId} />
-			) : null} */}
+			) : null}
 			{isEventPeriod(mysteryBoxEventTime.mysteryBox) ? (
 				<MysteryBox langId={userInfo.langId} />
 			) : null}
