@@ -58,6 +58,10 @@
   font-size: 4vw !important;
 }
 
+.icon-qrcode:before {
+  content: "\e9c3";
+}
+
 .icon-slots:before {
   content: "\e9c2";
 }
