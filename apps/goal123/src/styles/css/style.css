@@ -4583,7 +4583,7 @@ span.important {
 .eventLink img {
   -webkit-animation: routate linear infinite alternate 0.8s;
           animation: routate linear infinite alternate 0.8s;
-  width: 110px;
+  width: 160px;
 }
 
 .eventLink.active {
@@ -5485,5 +5485,169 @@ span.important {
 
 .Join .Terms input[type="checkbox"]:checked + label > div {
   background: #fab617;
+}
+
+.mt-2 {
+  margin-top: 20px;
+}
+
+.refbanner {
+  margin-bottom: 2vw;
+  width: 100%;
+  height: auto;
+}
+
+.refShare .title {
+  margin-bottom: 2vw;
+}
+
+.refShare .refBox {
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.refShare .refBox > div {
+  width: 100%;
+  margin: 2vw 0;
+  margin-left: 0;
+  border-radius: 5px;
+  padding: 3vw;
+  background: #030c1b;
+}
+
+.refShare .refBox > div > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 3px;
+  margin-bottom: 10px;
+}
+
+.refShare .refBox > div.open {
+  background: rgba(30, 133, 236, 0.5);
+  border-color: #1E85EC;
+}
+
+.refShare .refBox > div span {
+  color: #fab617;
+}
+
+.refShare .refBox > div a {
+  color: #fab617;
+  text-decoration: underline;
+  font-size: 12px;
+}
+
+.refShare .refBox > div a.more {
+  font-size: 16px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 12px;
+  border: 1px solid #fab617;
+  padding: 5px;
+  margin-top: 10px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.refShare .refBox > div a.more:hover {
+  background: #fab617;
+  color: #ffffff;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.refLink {
+  color: white;
+  margin-top: 3vw;
+}
+
+.refLink .refBox {
+  margin-top: 3vw;
+}
+
+.refLink .refBox .icon:before {
+  margin-left: 2vw;
+}
+
+.refLink .refBox .refMedia {
+  margin-top: 5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.refLink .refBox .refMedia a {
+  font-size: 10px;
+  width: calc(50% - 2vw);
+  margin-bottom: 3vw;
+  margin-right: 2vw;
+}
+
+.refLink .refBox .refMedia a:nth-child(even) {
+  margin-right: 0;
+}
+
+.refLink .refBox .refMedia a.icon:before {
+  margin-right: 2vw;
+  margin-left: 0;
+}
+
+.refLink .text-org {
+  text-align: left;
+}
+
+.refLink .icon {
+  color: white;
+}
+
+.achievement {
+  color: white;
+  margin: 2vw 0;
+}
+
+.achievement_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 92%;
+  padding: 10px;
+  border-radius: 5px;
+  background: #030c1b;
+  margin-bottom: 10px;
+}
+
+.achievement_item:nth-child(1) {
+  margin-right: 15px;
+}
+
+.achievement_item span {
+  font-weight: bold;
+  margin-top: 10px;
+  color: #fab617;
 }
 /*# sourceMappingURL=style.css.map */
