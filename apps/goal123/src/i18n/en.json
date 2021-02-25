@@ -417,7 +417,7 @@
 	"lbl_Copy_to_clipboard":"Copy to Clipboard",
 	"lbl_Referral_code":"Referral Code",
 	"lbl_Referral_link":"Referral Link",
-	"lbl_Referral_Welcome":"Welcome to Nova88, you are invited to join us. There are a lot of rewarding program offer for NEW MEMBER. Simply click and sign up with us to get yourself and help your friend to be rewarded! Terms and Conditions apply.",
+	"lbl_Referral_Welcome":"Welcome to Goal123, you are invited to join us. There are a lot of rewarding program offer for NEW MEMBER. Simply click and sign up with us to get yourself and help your friend to be rewarded! Terms and Conditions apply.",
 	"lbl_TotalDeposit":"Total Deposit",
 	"lbl_TotalBet":"Total Bet",
 	"lbl_BonusAmount":"Bonus Amount",
@@ -430,6 +430,7 @@
 	"lbl_NoOfAchievements":"No. of achievements",
 	"lbl_RewardAmount":"Rewards Amounts",
 	"lbl_Achievement":"Achievement",
-	"lbl_Referral_rewards":"Rewards"
+	"lbl_Referral_rewards":"Rewards",
+	"lbl_ValidPeriod":"Valid Period"
 
 }

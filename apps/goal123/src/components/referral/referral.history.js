@@ -1,12 +1,6 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
-import {
-	i18nContext,
-	popBoxContext,
-	userInfoContext,
-	loadingContext
-} from "Context";
+import { i18nContext, popBoxContext, loadingContext } from "Context";
 import moment from "moment";
-import { isConvert } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
 import HistoryFilter from "../common/historyFilter";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
@@ -14,11 +8,9 @@ import { api_account_GetRefFriendList } from "../../service/api/account";
 import { Detail } from "./referral.history.detail";
 
 const Panel = () => {
-	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setLoading } = useContext(loadingContext);
-	const _isConvert = isConvert(userInfo.currencyId);
 	const [history, setHistory] = useState(null);
 	const [filterData, setFilterData] = useState(null);
 	const [pageInfo, setPageInfo] = useState({ pageNumber: 0, totalPages: 0 });
@@ -109,8 +101,15 @@ const Panel = () => {
 			<Detail
 				key={`referral-history-${data.custId}`}
 				i18n={i18n}
-				_isConvert={_isConvert}
-				{...data}
+				userName={data.userName}
+				registerDate={data.registerDate}
+				currencyId={data.currencyId}
+				totalDeposit={data.totalDeposit}
+				depositC={data.depositC}
+				totalBet={data.totalBet}
+				vaildBetC={data.vaildBetC}
+				bonusAmount={data.bonusAmount}
+				status={data.status}
 			/>
 		);
 	});
@@ -123,7 +122,7 @@ const Panel = () => {
 					<div className="recentTransactions">
 						<div className="smallTitle">
 							<i className="icon icon-history" />
-							{i18n.lbl_TransactionHistory}
+							{i18n.lbl_ReferralHistory}
 						</div>
 						<ReloadSpin
 							func={submitHandler.bind(

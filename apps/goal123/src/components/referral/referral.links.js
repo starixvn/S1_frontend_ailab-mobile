@@ -1,12 +1,12 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState, useRef } from "react";
+import PropTypes from "prop-types";
 import QRCode from "qrcode.react";
 import { api_account_GetReferralCode } from "../../service/api/account";
 import path from "../../path";
 
 const currentLocation = window.location.origin;
 
-export default ({ isLogin, i18n, setPopBox }) => {
+const ReferralLinks = ({ isLogin, i18n, setPopBox }) => {
 	const [referralCode, setReferralCode] = useState("");
 	const isMountedRef = useRef(null);
 
@@ -83,7 +83,7 @@ export default ({ isLogin, i18n, setPopBox }) => {
 
 	return (
 		<div className="refLink">
-			<div className="title">{i18n.lbl_Your_link_invite}</div>
+			<div className="title mt-2">{i18n.lbl_Your_link_invite}</div>
 			<div className="refBox">
 				<div>{i18n.lbl_Referral_link}:</div>
 				<div className="text-org" id="referralLink">
@@ -115,48 +115,54 @@ export default ({ isLogin, i18n, setPopBox }) => {
 	);
 };
 
+ReferralLinks.defaultProps = {
+	isLogin: null
+};
+
+ReferralLinks.propTypes = {
+	isLogin: PropTypes.bool,
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	setPopBox: PropTypes.func.isRequired
+};
+
 const MediaLinks = ({ refLink, i18n }) => {
-	const socialLink = ({ socialMedia }) => {
-		const links = {
-			fb: `https://www.facebook.com/sharer/sharer.php?u=${refLink}&quote=${i18n.lbl_Referral_Welcome}`,
-			whatsapp: `https://wa.me/?text=${i18n.lbl_Referral_Welcome} ${refLink}`,
-			line: `http://line.naver.jp/R/msg/text/?${i18n.lbl_Referral_Welcome}%0D%0A${refLink}`,
-			telegram: `https://t.me/share/url?url=${refLink}&text=${i18n.lbl_Referral_Welcome}`
-		};
-
-		return links[socialMedia];
-	};
-
 	return (
 		<>
 			<a
 				className="icon icon-facebook2"
 				target="_blank"
 				rel="noreferrer"
-				href={socialLink({ socialMedia: "fb" })}>
+				href={`https://www.facebook.com/sharer/sharer.php?u=${refLink}&quote=${i18n.lbl_Referral_Welcome}`}>
 				Facebook
 			</a>
 			<a
 				className="icon icon-whatsapp"
 				target="_blank"
 				rel="noreferrer"
-				href={socialLink({ socialMedia: "whatsapp" })}>
+				href={`https://wa.me/?text=${i18n.lbl_Referral_Welcome} ${refLink}`}>
 				Whatsapp
 			</a>
 			<a
 				className="icon icon-line"
 				target="_blank"
 				rel="noreferrer"
-				href={socialLink({ socialMedia: "line" })}>
+				href={`http://line.naver.jp/R/msg/text/?${i18n.lbl_Referral_Welcome}%0D%0A${refLink}`}>
 				Line
 			</a>
 			<a
 				className="icon icon-telegram"
 				target="_blank"
 				rel="noreferrer"
-				href={socialLink({ socialMedia: "telegram" })}>
+				href={`https://t.me/share/url?url=${refLink}&text=${i18n.lbl_Referral_Welcome}`}>
 				Telegram
 			</a>
 		</>
 	);
 };
+
+MediaLinks.propTypes = {
+	refLink: PropTypes.string.isRequired,
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired
+};
+
+export default ReferralLinks;

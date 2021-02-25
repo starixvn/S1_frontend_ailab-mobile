@@ -1,10 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import moment from "moment";
 import { number_format } from "../common/common";
 
 export const Detail = ({
 	i18n,
-	_isConvert,
 	userName,
 	registerDate,
 	currencyId,
@@ -33,20 +33,20 @@ export const Detail = ({
 				<li>
 					<span className="title">{i18n.lbl_TotalDeposit}</span>
 					<span>
-						{number_format(totalDeposit, _isConvert)}/
-						{number_format(depositC, _isConvert)}
+						{number_format(totalDeposit, true)}/
+						{number_format(depositC, true)}
 					</span>
 				</li>
 				<li>
 					<span className="title">{i18n.lbl_TotalBet}</span>
 					<span>
-						{number_format(totalBet, _isConvert)}/
-						{number_format(vaildBetC, _isConvert)}
+						{number_format(totalBet, true)}/
+						{number_format(vaildBetC, true)}
 					</span>
 				</li>
 				<li>
 					<span className="title">{i18n.lbl_BonusAmount}</span>
-					<span>{number_format(bonusAmount, _isConvert)}</span>
+					<span>{number_format(bonusAmount, true)}</span>
 				</li>
 				<li>
 					<span className="title">{i18n.lbl_Status}</span>
@@ -55,6 +55,19 @@ export const Detail = ({
 			</ul>
 		</div>
 	);
+};
+
+Detail.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	userName: PropTypes.string.isRequired,
+	registerDate: PropTypes.string.isRequired,
+	currencyId: PropTypes.number.isRequired,
+	totalDeposit: PropTypes.number.isRequired,
+	depositC: PropTypes.number.isRequired,
+	totalBet: PropTypes.number.isRequired,
+	vaildBetC: PropTypes.number.isRequired,
+	bonusAmount: PropTypes.number.isRequired,
+	status: PropTypes.number.isRequired
 };
 
 export default Detail;

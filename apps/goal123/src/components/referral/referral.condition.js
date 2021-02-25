@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
+import PropTypes from "prop-types";
 import { api_account_GetReferralSetting } from "../../service/api/account";
 import { number_format } from "../common/common";
 import TandC from "../../service/t_and_c";
 
-export default ({ userInfo, i18n, _isConvert, setPopBox }) => {
+const Conditios = ({ userInfo, i18n, setPopBox }) => {
 	const isMountedRef = useRef(null);
 	const [referralData, setReferralData] = useState({
 		bonusAmount: 0,
@@ -44,14 +45,15 @@ export default ({ userInfo, i18n, _isConvert, setPopBox }) => {
 			<div className="refBox">
 				<div>
 					<div>
+						{i18n.lbl_ValidPeriod}
+						<span>{` ${referralData.periodDays} ${i18n.lbl_Days}`}</span>
+					</div>
+					<div>
 						{i18n.lbl_Bonus}
 						<span>
 							{` ${
 								i18n[`Currency_${userInfo.currencyId}`]
-							} ${number_format(
-								referralData.bonusAmount,
-								_isConvert
-							)}`}
+							} ${number_format(referralData.bonusAmount, true)}`}
 						</span>
 					</div>
 					<div>
@@ -59,10 +61,7 @@ export default ({ userInfo, i18n, _isConvert, setPopBox }) => {
 						<span>
 							{` ${
 								i18n[`Currency_${userInfo.currencyId}`]
-							} ${number_format(
-								referralData.vaildBet,
-								_isConvert
-							)}`}
+							} ${number_format(referralData.vaildBet, true)}`}
 						</span>
 					</div>
 					<div>
@@ -70,24 +69,26 @@ export default ({ userInfo, i18n, _isConvert, setPopBox }) => {
 						<span>
 							{` ${
 								i18n[`Currency_${userInfo.currencyId}`]
-							} ${number_format(
-								referralData.deposit,
-								_isConvert
-							)}`}
+							} ${number_format(referralData.deposit, true)}`}
 						</span>
 					</div>
-					<div>
-						{i18n.lbl_ValidPeriod}
-						<span>{` ${referralData.periodDays} ${i18n.lbl_Days}`}</span>
-					</div>
 					<a
+						className="more"
 						href={TandC(userInfo.langId).Referral}
 						target="_blank"
 						rel="noreferrer">
-						{i18n.lbl_Details}
+						{i18n.lbl_MoreDetails}
 					</a>
 				</div>
 			</div>
 		</div>
 	);
 };
+
+Conditios.propTypes = {
+	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	setPopBox: PropTypes.func.isRequired
+};
+
+export default Conditios;

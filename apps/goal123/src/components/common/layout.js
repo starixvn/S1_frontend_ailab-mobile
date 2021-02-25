@@ -118,6 +118,11 @@ const defPageInfo = {
 		titleKey: "lbl_NewYearAngPow",
 		className: "main event",
 		hideLogo: true
+	},
+	referral: {
+		titleKey: "lbl_friendReferral",
+		className: "main",
+		hideLogo: true
 	}
 };
 
