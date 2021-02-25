@@ -14,7 +14,6 @@ import Coming_soon from "../styles/img/coming_soon.jpg";
 import Keno from "../styles/img/keno.jpg";
 import Lottery from "../styles/img/lottery.jpg";
 import SabaClub from "../styles/img/saba.jpg";
-import Cockfighting from "../styles/img/cockfighting.jpg";
 import Casino from "../styles/img/casino.jpg";
 import Affiliate from "../styles/img/affiliate.jpg";
 import { siteInfo } from "../config";
@@ -26,20 +25,20 @@ import ranking from "../styles/img/ranking.jpg";
 import fish_DBF from "../styles/img/fish_ICG_DB.jpg";
 import fish_FOS from "../styles/img/fish_ICG_FOS.jpg";
 import fish_TAP from "../styles/img/fish_ICG_TTAT.jpg";
-import fish_TOS from "../styles/img/fish_ICG_TOS.jpg";
+// import fish_TOS from "../styles/img/fish_ICG_TOS.jpg";
 import V8Poker from "../styles/img/V8.jpg";
 
 import fish_AB3 from "../styles/img/paradise.jpg";
-import fish_AT05 from "../styles/img/luckyfishing.jpg";
+// import fish_AT05 from "../styles/img/luckyfishing.jpg";
 import fish_AT01 from "../styles/img/oneshotfishing.jpg";
-import fish_AT06 from "../styles/img/watermarginfishing.jpg";
-import fish_AT04 from "../styles/img/thunderfighter.jpg";
+// import fish_AT06 from "../styles/img/watermarginfishing.jpg";
+// import fish_AT04 from "../styles/img/thunderfighter.jpg";
 
 import { isEventPeriod } from "../components/common/common";
 
 export const defGameInfo = {
 	Sports: { tpId: 1, gameId: 1 },
-	CockFighting: { tpId: 17 },
+	// CockFighting: { tpId: 17 },
 	VirtualSports: { tpId: 1, gameId: 180 },
 	eSports: { tpId: 1, gameId: 43 },
 	LIVEcasinoDG: { tpId: 4, gameId: 4 },
@@ -141,19 +140,19 @@ const gameList = langId => [
 			}
 		]
 	},
-	{
-		category: "cockFighting",
-		categoryIcon: "e-sports",
-		translateKey: "lbl_CockFighting",
-		items: [
-			{
-				...defGameInfo.CockFighting,
-				icon: "e-sports",
-				img: Cockfighting,
-				spanTextKey: "lbl_CockFighting"
-			}
-		]
-	},
+	// {
+	// 	category: "cockFighting",
+	// 	categoryIcon: "e-sports",
+	// 	translateKey: "lbl_CockFighting",
+	// 	items: [
+	// 		{
+	// 			...defGameInfo.CockFighting,
+	// 			icon: "e-sports",
+	// 			img: Cockfighting,
+	// 			spanTextKey: "lbl_CockFighting"
+	// 		}
+	// 	]
+	// },
 	{
 		category: "game",
 		categoryIcon: "game",
