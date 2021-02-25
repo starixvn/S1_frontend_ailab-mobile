@@ -58,6 +58,35 @@
   font-size: 4vw !important;
 }
 
+.icon-slots:before {
+  content: "\e9c2";
+}
+
+.icon-pokers:before {
+  content: "\e9c1";
+}
+
+.icon-friend:before {
+  content: "\e9bd";
+}
+
+.icon-skype:before {
+  content: "\e9be";
+}
+
+.icon-telegram1:before {
+  content: "\e9bf";
+}
+
+.icon-zalo:before {
+  content: "\e9c0";
+  color: #fff;
+}
+
+.icon-download:before {
+  content: "\e9bc";
+}
+
 .icon-nodata:before {
   content: "\e9a7";
 }
