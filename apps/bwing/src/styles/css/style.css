@@ -4501,6 +4501,7 @@ span.important {
 }
 
 .partner-bar img {
+  max-height: 40px;
   vertical-align: middle;
   margin: 0 10px;
 }

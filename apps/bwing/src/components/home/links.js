@@ -83,12 +83,12 @@ const ContactUs = ({ i18n, langId }) => {
 				<a
 					href={siteInfo(langId).telegramId}
 					target="_blank"
-					className="icon icon-contactUS3"
+					className="icon icon-Telegram"
 				/>
 				<a
 					href={siteInfo(langId).zaloId}
 					target="_blank"
-					className="icon icon-Zalo"
+					className="icon icon-zalo"
 				/>
 				<a
 					href={siteInfo(langId).facebookId}
