@@ -134,5 +134,8 @@ export default {
 	},
 	angPow: {
 		root: "angPow"
+	},
+	mysteryBox: {
+		root: "mysteryBox"
 	}
 };
