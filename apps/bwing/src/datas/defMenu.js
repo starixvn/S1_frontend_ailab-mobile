@@ -288,12 +288,12 @@ export const productList = langId => {
 						}
 					]
 				},
-				// {
-				// 	displayKey: "lbl_FishingGG",
-				// 	icon: "icon icon-gg",
-				// 	img: fishing_GG,
-				// 	...defGameInfo.Fishing
-				// },
+				{
+					displayKey: "lbl_FishingGG",
+					icon: "icon icon-gg",
+					img: fishing_GG,
+					...defGameInfo.Fishing
+				},
 				{
 					displayKey: "lbl_FishingSG1",
 					icon: "icon icon-SG",

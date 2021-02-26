@@ -16,10 +16,10 @@ const defPlatfrom = [
 		...defGameInfo.LIVEcasinoAB,
 		imgName: "ab"
 	},
-	// {
-	// 	...defGameInfo.Fishing,
-	// 	imgName: "yl"
-	// },
+	{
+		...defGameInfo.Fishing,
+		imgName: "yl"
+	},
 	{
 		...defGameInfo.LIVEcasinoAG,
 		imgName: "ag"
