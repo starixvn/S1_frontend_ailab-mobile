@@ -102,6 +102,10 @@ const defPlatfrom = [
 	{
 		...defGameInfo.oneGame,
 		imgName: "1g"
+	},
+	{
+		...defGameInfo.LIVEcasinoN2,
+		imgName: "n2"
 	}
 ];
 
