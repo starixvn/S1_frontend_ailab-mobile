@@ -18,6 +18,10 @@
   color: #58cdff;
 }
 
+.blue {
+  background-color: #58cdff;
+}
+
 html.dark body {
   background: #333;
 }
