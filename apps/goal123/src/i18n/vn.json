@@ -424,13 +424,13 @@
 	"lbl_ReferralStatus0":"Thành công",
 	"lbl_ReferralStatus1":"Đang xử lý",
 	"lbl_ReferralStatus2":"Hết hạn",
-	"lbl_ReferralStatus":"Your Referral Status",
-	"lbl_InvitationAccepted":"Invitation Accepted",
-	"lbl_MissionCompleted":"Mission completed",
-	"lbl_NoOfAchievements":"No. of achievements",
-	"lbl_RewardAmount":"Rewards Amounts",
-	"lbl_Achievement":"Achievement",
-	"lbl_Referral_rewards":"Rewards",
-	"lbl_ValidPeriod":"Valid Period"
+	"lbl_ReferralStatus":"Lời mời của bạn",
+	"lbl_InvitationAccepted":"Được chấp nhận",
+	"lbl_MissionCompleted":"Đã hoàn thành",
+	"lbl_NoOfAchievements":"Số bạn giới thiệu thành công",
+	"lbl_RewardAmount":"Số tiền thưởng",
+	"lbl_Achievement":"Thành tích",
+	"lbl_Referral_rewards":"Phần thưởng",
+	"lbl_ValidPeriod":"Thời gian có hiệu lực"
 
 }
