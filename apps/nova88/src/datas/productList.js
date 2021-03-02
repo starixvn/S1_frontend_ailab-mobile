@@ -116,6 +116,16 @@ const gameList = ({ langId }) => [
 		translateKey: "lbl_LiveCasino",
 		comingSoonImg: Coming_soon,
 		items: [
+			{
+				...defGameInfo.LIVEcasinoN2,
+				img: LIVEcasino_N2,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_LiveCasino_N2Live)
+					}
+				]
+			},
 			// {
 			// 	tpId: 5,
 			// 	gameId: 105,
@@ -160,16 +170,6 @@ const gameList = ({ langId }) => [
 				gameId: 3,
 				tpId: 3,
 				img: LIVEcasino_AG
-			},
-			{
-				...defGameInfo.LIVEcasinoN2,
-				img: LIVEcasino_N2,
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.new_LiveCasino_N2Live)
-					}
-				]
 			}
 		]
 	},
