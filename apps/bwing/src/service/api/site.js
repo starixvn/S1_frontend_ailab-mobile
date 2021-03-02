@@ -56,4 +56,9 @@ export const api_site_GetBannerV3 = ({ lang, BannerType }) =>
 export const api_CheckResetPwdToken = key =>
 	siteRequest.post(`/CheckResetPwdToken`, `key=${key}`);
 
-export const api_WhoAMI = key => siteRequest.post(`/WhoAMI`);
+export const api_WhoAMI = () => siteRequest.post(`/WhoAMI`);
+
+export const api_site_GetAffiliateAgent = ({ AffId }) =>
+	siteRequest.post(`/GetAffiliateAgent`, {
+		AffId
+	});

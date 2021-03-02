@@ -134,5 +134,14 @@ export default {
 	},
 	angPow: {
 		root: "angPow"
+	},
+	referral: {
+		root: "referral",
+		sub: {
+			root: "/",
+			history: {
+				root: "history"
+			}
+		}
 	}
 };
