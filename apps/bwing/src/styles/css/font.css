@@ -700,7 +700,7 @@
   color: #fff;
 }
 
-.icon-contactUS3:before {
+.icon-Telegram:before {
   content: "\e910";
   color: #fff;
 }
@@ -1181,11 +1181,23 @@
   content: "\e9e7";
 }
 
-.icon-topupCard:before {
-  content: "\e9e8";
+.icon-zalo:before {
+  content: "\e9ea";
 }
 
-.icon-gg:before {
-  content: "\e9e9";
+.icon-skype:before {
+  content: "\e9eb";
+}
+
+.icon-live-chat:before {
+  content: "\e9ec";
+}
+
+.icon-qrcode:before {
+  content: "\e9ed";
+}
+
+.icon-N2LIVE:before {
+  content: "\e9ee";
 }
 /*# sourceMappingURL=font.css.map */
