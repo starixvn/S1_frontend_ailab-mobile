@@ -483,7 +483,7 @@ export const defGameInfo = {
 	LIVEcasinoEB: { gameId: 18, tpId: 18 },
 	LIVEcasinoMW: { gameId: 105, tpId: 5 },
 	LIVEcasinoWM: { gameId: 20, tpId: 20 },
-	LIVEcasinoN2: { gameId: 28, tpId: 28 },
+	LIVEcasinoN2: { tpId: 28 },
 	Casino_ow: { gameId: 208, tpId: 1 },
 	Casino_All: { tpId: 0 },
 	Casino_PP: { tpId: 5 },
