@@ -496,5 +496,6 @@
 	"lbl_MysteryBox_OtherConditions":"เงื่อนไขอื่น ๆ",
 	"lbl_PaymentModes":"Payment Modes",
 	"lbl_SelectChannel":"Select Channel",
-	"lbl_MinMaxAmount":"Min/Max Llimit"
+	"lbl_MinMaxAmount":"Min/Max Llimit",
+	"lbl_SelectBank":"Select Bank"
 }

@@ -5,6 +5,7 @@ import {
 	loadingContext
 } from "../common/context";
 import MobilePay from "./deposit.all.mobilePay";
+import OnlineBanking from "./deposit.all.onlineBanking";
 import api from "../../service/api";
 import RecentDatas from "./deposit.recentDatas";
 import { number_format, isConvert } from "../common/common";
@@ -83,7 +84,7 @@ const Panel = () => {
 
 	let content = (
 		<MobilePay
-			creditTimeKey={defPayment[defPayType.onlineBank].creditTimeKey}
+			creditTimeKey={defPayment[defPayType.mobilePay].creditTimeKey}
 			paymentList={paymentList[defPayType.mobilePay] ?? []}
 		/>
 	);
@@ -91,7 +92,12 @@ const Panel = () => {
 	if (selected === defPayType.localBank) {
 		content = <div />;
 	} else if (selected === defPayType.onlineBank) {
-		content = <div />;
+		content = (
+			<OnlineBanking
+				creditTimeKey={defPayment[defPayType.onlineBank].creditTimeKey}
+				paymentList={paymentList[defPayType.onlineBank] ?? []}
+			/>
+		);
 	} else if (selected === defPayType.cryptoPay) {
 		content = <div />;
 	}
