@@ -493,6 +493,8 @@
 	"lbl_MysteryBox_CreditedAccount1":"วันนี้คุณได้รับรางวัล",
 	"lbl_MysteryBox_CreditedAccount2":"โปรดกลับมาพรุ่งนี้!",
 	"lbl_MysteryBox_MemberEligibility":"ฝากเงินวันนี้รับรางวัลพรุ่งนี้",
-	"lbl_MysteryBox_OtherConditions":"เงื่อนไขอื่น ๆ"
-
+	"lbl_MysteryBox_OtherConditions":"เงื่อนไขอื่น ๆ",
+	"lbl_PaymentModes":"Payment Modes",
+	"lbl_SelectChannel":"Select Channel",
+	"lbl_MinMaxAmount":"Min/Max Llimit"
 }

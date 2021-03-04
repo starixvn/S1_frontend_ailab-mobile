@@ -36,6 +36,11 @@ const defPageInfo = {
 		className: "main",
 		hideLogo: true
 	},
+	depositOld: {
+		titleKey: "lbl_Deposit",
+		className: "main",
+		hideLogo: true
+	},
 	withdrawal: {
 		titleKey: "lbl_Withdrawal",
 		className: "main",

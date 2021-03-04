@@ -500,5 +500,8 @@
 	"lbl_Gold":"黄金",
 	"lbl_Titanium":"钛金",
 	"lbl_Diamond":"钻石",
-	"lbl_Nova":"欧亚"
+	"lbl_Nova":"欧亚",
+	"lbl_PaymentModes":"Payment Modes",
+	"lbl_SelectChannel":"Select Channel",
+	"lbl_MinMaxAmount":"Min/Max Llimit"
 }

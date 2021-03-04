@@ -493,5 +493,8 @@
 	"lbl_MysteryBox_CreditedAccount1":"You are rewarded today",
 	"lbl_MysteryBox_CreditedAccount2":"please come back again tomorrow!",
 	"lbl_MysteryBox_MemberEligibility":"Deposit Today Get Your Rewards Tomorrow.",
-	"lbl_MysteryBox_OtherConditions":"Other Conditions"
+	"lbl_MysteryBox_OtherConditions":"Other Conditions",
+	"lbl_PaymentModes":"Payment Modes",
+	"lbl_SelectChannel":"Select Channel",
+	"lbl_MinMaxAmount":"Min/Max Llimit"
 }

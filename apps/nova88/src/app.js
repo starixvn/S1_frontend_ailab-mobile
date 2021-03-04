@@ -114,47 +114,59 @@ const Index = () => {
 							/>
 						</FriendReferral>
 
-						<Deposit path={path.deposit.root}>
-							<DepositHome path={path.deposit.sub.root} />
+						<Deposit path={path.deposit.root} />
+						<DepositHistory path={path.depositHistory.root} />
+
+						<Deposit path={path.depositOld.root}>
+							<DepositHome path={path.depositOld.sub.root} />
 							<OnlineBanking
-								path={path.deposit.sub.onlineBank.root}>
+								path={path.depositOld.sub.onlineBank.root}>
 								<OnlineBankingMain
-									path={path.deposit.sub.onlineBank.sub.root}
+									path={
+										path.depositOld.sub.onlineBank.sub.root
+									}
 								/>
 								<SetOnlineBanking
 									path={
-										path.deposit.sub.onlineBank.sub
+										path.depositOld.sub.onlineBank.sub
 											.setOnlineBanking.root
 									}
 								/>
 							</OnlineBanking>
-							<MobilePay path={path.deposit.sub.mobilePay.root}>
+							<MobilePay
+								path={path.depositOld.sub.mobilePay.root}>
 								<MobilePayMain
-									path={path.deposit.sub.mobilePay.sub.root}
+									path={
+										path.depositOld.sub.mobilePay.sub.root
+									}
 								/>
 								<SetMobilePay
 									path={
-										path.deposit.sub.mobilePay.sub
+										path.depositOld.sub.mobilePay.sub
 											.setMobilePay.root
 									}
 								/>
 							</MobilePay>
-							<CryptoPay path={path.deposit.sub.cryptoPay.root}>
+							<CryptoPay
+								path={path.depositOld.sub.cryptoPay.root}>
 								<CryptoPayMain
-									path={path.deposit.sub.cryptoPay.sub.root}
+									path={
+										path.depositOld.sub.cryptoPay.sub.root
+									}
 								/>
 								<SetCryptoPay
 									path={
-										path.deposit.sub.cryptoPay.sub
+										path.depositOld.sub.cryptoPay.sub
 											.setCryptoPay.root
 									}
 								/>
 							</CryptoPay>
-							<LocalBank path={path.deposit.sub.localBank.root}>
+							<LocalBank
+								path={path.depositOld.sub.localBank.root}>
 								<LocalBankMain path="/" />
 							</LocalBank>
 							<DepositHistory
-								path={path.deposit.sub.history.root}
+								path={path.depositOld.sub.history.root}
 							/>
 						</Deposit>
 						<Withdrawal path={path.withdrawal.root}>

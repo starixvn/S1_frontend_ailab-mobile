@@ -4,15 +4,15 @@ import { bankSlipPopBoxContext } from "Context";
 import TabPage from "../components/common/tabPage";
 import path from "../path";
 import BankSlip from "../components/deposit/bankSlip";
+import Deposit from "../components/deposit/deposit.all";
 
 const defTabs = {
 	default: {
 		to: `/${path.deposit.root}`,
-		displayKey: "lbl_Deposit",
-		excludeMath: path.deposit.sub.history.root
+		displayKey: "lbl_Deposit"
 	},
 	History: {
-		to: path.deposit.sub.history.root,
+		to: path.depositHistory.root,
 		displayKey: "lbl_DepositHistory"
 	}
 };
@@ -25,7 +25,7 @@ const IndexPage = props => {
 	return (
 		<bankSlipPopBoxContext.Provider
 			value={{ bankSlipPopBox, setbankSlipPopBox }}>
-			<TabPage defTabs={defTabs}>{props.children}</TabPage>
+			<TabPage defTabs={defTabs}>{props.children ?? <Deposit />}</TabPage>
 			<BankSlip />
 		</bankSlipPopBoxContext.Provider>
 	);
