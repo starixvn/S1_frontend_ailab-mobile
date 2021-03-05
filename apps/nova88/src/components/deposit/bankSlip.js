@@ -43,7 +43,10 @@ class Modal extends Component {
 	onCheckUpload = () => {
 		const { files } = this.filebox.current;
 		if (files[0]) {
-			this.props.EditField("picFileName", GetUploadFileName(files));
+			const picFileName = GetUploadFileName(files);
+			this.props.EditField("picFileName", picFileName);
+			if (this.props.bankSlipPopBox.disableSubmit)
+				this.props.SetImg(picFileName, files[0]);
 		}
 	};
 
@@ -82,7 +85,9 @@ class Modal extends Component {
 	};
 
 	SeReceipt = () => {
-		if (!this.state.processing) {
+		if (this.props.bankSlipPopBox.disableSubmit) {
+			this.props.closePopBoxAndKeepData();
+		} else if (!this.state.processing) {
 			this.setState({ processing: true });
 			const { bankSlipPopBox } = this.props;
 			api.payment
@@ -103,7 +108,7 @@ class Modal extends Component {
 							this.setState({ processing: false });
 						}
 					},
-					err => {
+					() => {
 						if (this.isMountedRef) {
 							this.props.setPopBox({
 								isOpen: true,
@@ -189,13 +194,16 @@ class Modal extends Component {
 						/>
 						<i className="icon icon-folder-upload" />
 						{` ${
-							this.props.bankSlipPopBox.picFileName ??
-							i18n.msg_SelectFile
+							this.props.bankSlipPopBox.picFileName
+								? this.props.bankSlipPopBox.picFileName
+								: i18n.msg_SelectFile
 						} `}
 					</label>
-					<button className="orange" onClick={this.onUploadFile}>
-						{i18n.lbl_UploadFile}
-					</button>
+					{this.props.bankSlipPopBox.disableSubmit ? null : (
+						<button className="orange" onClick={this.onUploadFile}>
+							{i18n.lbl_UploadFile}
+						</button>
+					)}
 				</div>
 				<span className="text">
 					{i18n.lbl_DepositTime}{" "}
@@ -220,11 +228,14 @@ class Modal extends Component {
 					/>
 				</div>
 				<div className="btn-group">
-					<button
-						className="blue closePopup"
-						onClick={this.props.handlePopBox}>
-						{i18n.lbl_Cancel}
-					</button>
+					{this.props.bankSlipPopBox.disableSubmit ? null : (
+						<button
+							className="blue closePopup"
+							onClick={this.props.handlePopBox}>
+							{i18n.lbl_Cancel}
+						</button>
+					)}
+
 					<button
 						className="orange closePopup"
 						onClick={this.SeReceipt}>
@@ -272,8 +283,22 @@ const Panel = () => {
 		}
 	};
 
+	const closePopBoxAndKeepData = () => {
+		if (isMountedRef.current) {
+			setbankSlipPopBox(prev => ({ ...prev, isOpen: false }));
+		}
+	};
+
 	const EditField = (column, value) => {
 		setbankSlipPopBox(prevState => ({ ...prevState, [column]: value }));
+	};
+
+	const SetImg = (picFileName, receipt) => {
+		setbankSlipPopBox(prevState => ({
+			...prevState,
+			picFileName,
+			receipt
+		}));
 	};
 
 	return (
@@ -283,6 +308,8 @@ const Panel = () => {
 			handlePopBox={handlePopBox}
 			EditField={EditField}
 			setPopBox={setPopBox}
+			SetImg={SetImg}
+			closePopBoxAndKeepData={closePopBoxAndKeepData}
 		/>
 	);
 };

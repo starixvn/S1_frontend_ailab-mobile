@@ -9,7 +9,8 @@ import Deposit from "../components/deposit/deposit.all";
 const defTabs = {
 	default: {
 		to: `/${path.deposit.root}`,
-		displayKey: "lbl_Deposit"
+		displayKey: "lbl_Deposit",
+		excludeMath: path.depositHistory.root
 	},
 	History: {
 		to: path.depositHistory.root,
@@ -19,7 +20,11 @@ const defTabs = {
 
 const IndexPage = props => {
 	const [bankSlipPopBox, setbankSlipPopBox] = useState({
-		isOpen: false
+		isOpen: false,
+		depositTime: null,
+		picFileName: "",
+		refId: "",
+		receipt: null
 	});
 
 	return (

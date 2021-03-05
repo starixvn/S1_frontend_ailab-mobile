@@ -656,6 +656,10 @@ main .gameList a {
   opacity: 0.6;
 }
 
+main .gameList a.ambassador {
+  opacity: 1;
+}
+
 main .gameList a.open {
   -webkit-box-shadow: 1px 2px 4px 0px #5e5e5e;
           box-shadow: 1px 2px 4px 0px #5e5e5e;
@@ -701,7 +705,7 @@ main .gameList a span.icon-affiliate {
 }
 
 main .gameList .space {
-  height: 100vw;
+  height: 35vw;
   background: transparent;
 }
 
@@ -1776,6 +1780,10 @@ footer > a.open .circleAnimation + span {
   background: #fff;
   color: #F77A00;
   border: 1px solid #F77A00;
+}
+
+.btn-group button.darkGray, .btn-group a.darkGray {
+  background: #666;
 }
 
 .bankAccount {
@@ -5957,6 +5965,23 @@ span.icon.icon-ranking:after {
   margin: 2vw 0;
 }
 
+.depositModule_mobile .selectModule > div.info, .depositModule_online .selectModule > div.info, .depositModule_local .selectModule > div.info {
+  width: calc(100% - 12vw);
+  padding: 2vw 4vw;
+  background: rgba(0, 25, 66, 0.95);
+  margin: auto;
+  border-radius: 5px;
+}
+
+.depositModule_mobile .selectModule > div.info .checkBank, .depositModule_online .selectModule > div.info .checkBank, .depositModule_local .selectModule > div.info .checkBank {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .depositModule_mobile .selectModule > div .bankName, .depositModule_online .selectModule > div .bankName, .depositModule_local .selectModule > div .bankName {
   width: 20vw;
   background: white;
@@ -5996,16 +6021,6 @@ span.icon.icon-ranking:after {
 
 .depositModule_mobile .inputBox .tip, .depositModule_online .inputBox .tip, .depositModule_local .inputBox .tip {
   margin-left: 2.5vw;
-}
-
-.depositModule_mobile .btn-group, .depositModule_online .btn-group, .depositModule_local .btn-group {
-  width: auto;
-  display: unset;
-}
-
-.depositModule_mobile .btn-group button, .depositModule_online .btn-group button, .depositModule_local .btn-group button {
-  width: 50vw;
-  margin: auto;
 }
 
 .depositModule_mobile + .btn-group, .depositModule_online + .btn-group, .depositModule_local + .btn-group {

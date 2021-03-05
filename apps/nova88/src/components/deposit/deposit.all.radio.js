@@ -1,9 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Radio = ({ radioGroup, id, imgUrl, imgAlt, onChange, isSelect }) => {
+const Radio = ({
+	radioGroup,
+	id,
+	imgUrl,
+	imgAlt,
+	onChange,
+	isSelect,
+	className
+}) => {
 	return (
-		<div>
+		<div className={className}>
 			<input
 				type="radio"
 				name={radioGroup}
@@ -22,13 +30,18 @@ const Radio = ({ radioGroup, id, imgUrl, imgAlt, onChange, isSelect }) => {
 	);
 };
 
+Radio.defaultProps = {
+	className: ""
+};
+
 Radio.propTypes = {
 	id: PropTypes.string.isRequired,
 	imgUrl: PropTypes.string.isRequired,
 	imgAlt: PropTypes.string.isRequired,
 	onChange: PropTypes.func.isRequired,
 	isSelect: PropTypes.bool.isRequired,
-	radioGroup: PropTypes.string.isRequired
+	radioGroup: PropTypes.string.isRequired,
+	className: PropTypes.string
 };
 
 export default Radio;

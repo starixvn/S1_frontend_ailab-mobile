@@ -1,11 +1,17 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
+import { useNavigate } from "@reach/router";
+import moment from "moment";
 import {
 	i18nContext,
 	userInfoContext,
-	loadingContext
+	loadingContext,
+	bankSlipPopBoxContext,
+	popBoxContext
 } from "../common/context";
+import PageVerify from "./deposit.pageVerify";
 import MobilePay from "./deposit.all.mobilePay";
 import OnlineBanking from "./deposit.all.onlineBanking";
+import LocalBank from "./deposit.all.localBank";
 import api from "../../service/api";
 import RecentDatas from "./deposit.recentDatas";
 import { number_format, isConvert } from "../common/common";
@@ -65,14 +71,20 @@ const Tab = ({ i18n, selected, HandleSelect, paymentList }) => {
 };
 
 const Panel = () => {
+	const navigate = useNavigate();
 	const { selected, HandleSelect } = useHandleSelect();
 	const { i18n } = useContext(i18nContext);
 	const { setLoading } = useContext(loadingContext);
 	const { userInfo } = useContext(userInfoContext);
+	const { setbankSlipPopBox } = useContext(bankSlipPopBoxContext);
+	const { setPopBox } = useContext(popBoxContext);
 
 	const [paymentList, setPaymentList] = useState({});
 	const [recentDatas, setRecentDatas] = useState([]);
-	// const [pageVerify, setPageVerify] = useState(true);
+
+	const [pageVerify, setPageVerify] = useState(true);
+
+	PageVerify(userInfo, i18n, setPopBox, navigate, setPageVerify, false);
 
 	const isMountedRef = useRef(null);
 	useEffect(() => {
@@ -84,16 +96,24 @@ const Panel = () => {
 
 	let content = (
 		<MobilePay
+			payType={defPayType.mobilePay}
 			creditTimeKey={defPayment[defPayType.mobilePay].creditTimeKey}
 			paymentList={paymentList[defPayType.mobilePay] ?? []}
 		/>
 	);
 
 	if (selected === defPayType.localBank) {
-		content = <div />;
+		content = (
+			<LocalBank
+				payType={selected}
+				creditTimeKey={defPayment[defPayType.localBank].creditTimeKey}
+				paymentList={paymentList[defPayType.localBank] ?? []}
+			/>
+		);
 	} else if (selected === defPayType.onlineBank) {
 		content = (
 			<OnlineBanking
+				payType={selected}
 				creditTimeKey={defPayment[defPayType.onlineBank].creditTimeKey}
 				paymentList={paymentList[defPayType.onlineBank] ?? []}
 			/>
@@ -195,23 +215,23 @@ const Panel = () => {
 		picFileName,
 		refId
 	) => {
-		if (pageVerify) {
-			const { currencyId, ...restBankInfo } = bankInfo;
-			const { accountName, accountNo } = depositRep;
-			setbankSlipPopBox(() => ({
-				depositTime: `${moment().format(
-					"yyyy-MM-DDT"
-				)}${moment().format("HH:mm")}`,
-				...restBankInfo,
-				transId,
-				accountNo,
-				accountName,
-				isOpen: true,
-				amount: number_format(amount, _isConvert),
-				picFileName,
-				refId
-			}));
-		}
+		// if (pageVerify) {
+		const { currencyId, ...restBankInfo } = bankInfo;
+		const { accountName, accountNo } = depositRep;
+		setbankSlipPopBox(() => ({
+			depositTime: `${moment().format("yyyy-MM-DDT")}${moment().format(
+				"HH:mm"
+			)}`,
+			...restBankInfo,
+			transId,
+			accountNo,
+			accountName,
+			isOpen: true,
+			amount: number_format(amount, _isConvert),
+			picFileName,
+			refId
+		}));
+		// }
 	};
 
 	const ClickCancel = transId => {
@@ -238,7 +258,7 @@ const Panel = () => {
 							}
 						}
 					},
-					err => {
+					() => {
 						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
@@ -256,7 +276,7 @@ const Panel = () => {
 
 			setPopBox({
 				isOpen: true,
-				title: "",
+				title: i18n.lbl_ImportantNote,
 				content: i18n.lbl_CancelConfirm,
 				hasBtn: true,
 				btnBar: (

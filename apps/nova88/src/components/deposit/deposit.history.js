@@ -136,7 +136,7 @@ const Panel = () => {
 						}
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
@@ -155,7 +155,7 @@ const Panel = () => {
 
 		setPopBox({
 			isOpen: true,
-			title: "",
+			title: i18n.lbl_ImportantNote,
 			content: i18n.lbl_CancelConfirm,
 			hasBtn: true,
 			btnBar: (

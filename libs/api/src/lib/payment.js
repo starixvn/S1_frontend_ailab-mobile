@@ -130,4 +130,7 @@ export class PaymentAPI extends BaseAPI {
 			PageNumber,
 			PageSize
 		});
+
+	GetLocalBankInfo = ({ sysId }) =>
+		this.paymentRequest.post("/GetLocalBankInfo", { sysId });
 }
