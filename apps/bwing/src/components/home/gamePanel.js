@@ -1,7 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
+import PropTypes from "prop-types";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
-import { navContext, defNavPanel, rootContext } from "../common/context";
+import { navContext, defNavPanel } from "../common/context";
 import { defGameInfo } from "../../datas/productList";
+import { api_GetTpIds } from "../../service/api/site";
+
 import img1 from "../../styles/img/GameList1.png";
 import img2 from "../../styles/img/GameList2.png";
 import img3 from "../../styles/img/GameList3.png";
@@ -118,8 +121,38 @@ const defGameList = [
 	// }
 ];
 
-export default ({ i18n, userInfo }) => {
+const GamePanel = ({ i18n, userInfo }) => {
 	const { setNav } = useContext(navContext);
+	const [tpIds, setTpIds] = useState(null);
+	const isMountedRef = useRef(null);
+
+	useEffect(() => {
+		isMountedRef.current = true;
+		return () => {
+			isMountedRef.current = false;
+		};
+	});
+
+	useEffect(() => {
+		if (userInfo.isLogin) {
+			api_GetTpIds().then(
+				res => {
+					if (res.data.errorCode === 0 && isMountedRef.current) {
+						setTpIds(res.data.data);
+					}
+				},
+				() => {
+					if (isMountedRef.current) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
+						});
+					}
+				}
+			);
+		}
+	}, [userInfo.isLogin, i18n]);
 
 	const ClickGame = (tpId, gameId, betType) => {
 		GET_ENTER_PAGE({
@@ -134,20 +167,35 @@ export default ({ i18n, userInfo }) => {
 		});
 	};
 
-	const rows = defGameList.map(g => {
-		const displayText = i18n[g.displayKey] ?? g.displayKey;
-		return (
-			<div
-				className="gameArea-box"
-				key={`promoGameList-${g.displayKey}`}
-				onClick={ClickGame.bind(this, g.tpId, g.gameId, g.betType)}>
-				<img src={g.img} alt={displayText} />
-				<div className="gameArea-box-text">
-					<p>{displayText}</p>
+	const rows = defGameList
+		.filter(item => {
+			return tpIds?.includes(item.tpId);
+		})
+		.map(g => {
+			const displayText = i18n[g.displayKey] ?? g.displayKey;
+			return (
+				<div
+					className="gameArea-box"
+					key={`promoGameList-${g.displayKey}`}
+					onClick={ClickGame.bind(this, g.tpId, g.gameId, g.betType)}>
+					<img src={g.img} alt={displayText} />
+					<div className="gameArea-box-text">
+						<p>{displayText}</p>
+					</div>
 				</div>
-			</div>
-		);
-	});
+			);
+		});
 
 	return <div className="gameArea">{rows}</div>;
 };
+
+GamePanel.defaultProps = {
+	userInfo: {}
+};
+
+GamePanel.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	userInfo: PropTypes.objectOf(PropTypes.any)
+};
+
+export default GamePanel;
