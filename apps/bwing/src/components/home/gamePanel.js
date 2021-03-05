@@ -169,7 +169,7 @@ const GamePanel = ({ i18n, userInfo }) => {
 
 	const rows = defGameList
 		.filter(item => {
-			return tpIds?.includes(item.tpId);
+			return tpIds ? tpIds.includes(item.tpId) : true;
 		})
 		.map(g => {
 			const displayText = i18n[g.displayKey] ?? g.displayKey;

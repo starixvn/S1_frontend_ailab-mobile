@@ -162,7 +162,7 @@ export default ({ langId = "en", isLogin = false }) => {
 
 	const rows = defPlatfrom
 		.filter(item => {
-			return tpIds?.includes(item.tpId);
+			return tpIds ? tpIds.includes(item.tpId) : true;
 		})
 		.map(p => {
 			const key = `other-platform-${p.tpId}-${p.gameId}`;

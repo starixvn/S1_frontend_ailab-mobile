@@ -145,7 +145,7 @@ const Platform = ({ langId, isLogin }) => {
 
 	const rows = defPlatfrom
 		.filter(item => {
-			return tpIds?.includes(item.tpId);
+			return tpIds ? tpIds.includes(item.tpId) : true;
 		})
 		.map(p => {
 			const key = `other-platform-${p.tpId}-${p.gameId}`;
