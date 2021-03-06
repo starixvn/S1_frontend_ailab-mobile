@@ -493,7 +493,6 @@
 	"lbl_MysteryBox_CreditedAccount1":"Anda dapat hadiah",
 	"lbl_MysteryBox_CreditedAccount2":" hari ini, silakan kembali besok!",
 	"lbl_MysteryBox_MemberEligibility":"Deposit Hari Ini, Dapatkan Hadiah Anda Besok.",
-	"lbl_MysteryBox_OtherConditions":"Kondisi lain"
-	
-
+	"lbl_MysteryBox_OtherConditions":"Kondisi lain",
+	"lbl_MaxBonusAmount":"Jumlah Maksimal Bonus"
 }
