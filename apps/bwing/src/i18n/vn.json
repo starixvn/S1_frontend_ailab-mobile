@@ -498,6 +498,7 @@
 	"lbl_RewardAmount":"Số tiền thưởng",
 	"lbl_Achievement":"Thành tích",
 	"lbl_Referral_rewards":"Phần thưởng",
-	"lbl_ValidPeriod":"Thời gian có hiệu lực"
-
+	"lbl_ValidPeriod":"Thời gian có hiệu lực",
+	"lbl_RegisterDate":"Ngày đăng ký",
+	"lbl_Currency":"Tiền tệ"
 }

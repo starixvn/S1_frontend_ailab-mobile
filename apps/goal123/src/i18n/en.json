@@ -431,6 +431,8 @@
 	"lbl_RewardAmount":"Rewards Amounts",
 	"lbl_Achievement":"Achievement",
 	"lbl_Referral_rewards":"Rewards",
-	"lbl_ValidPeriod":"Valid Period"
+	"lbl_ValidPeriod":"Valid Period",
+	"lbl_RegisterDate":"Register Date",
+	"lbl_Currency":"Currency"
 
 }
