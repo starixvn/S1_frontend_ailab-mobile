@@ -1192,4 +1192,12 @@
 .icon-live-chat:before {
   content: "\e9ec";
 }
+
+.icon-qrcode:before {
+  content: "\e9ed";
+}
+
+.icon-N2LIVE:before {
+  content: "\e9ee";
+}
 /*# sourceMappingURL=font.css.map */
