@@ -257,7 +257,7 @@ const Join = () => {
 		return { checked, message };
 	};
 
-	const checkUsernameHandler = (_colName, e) => {
+	const checkUsernameHandler = async (_colName, e) => {
 		const val = e.target.value;
 		const result = usernameCheck(val);
 
@@ -272,57 +272,56 @@ const Join = () => {
 						}
 					};
 				});
-				api_ExistsUserName({
-					UserName: val
-				}).then(
-					response => {
-						if (isMountedRef.current) {
-							const res = response.data;
-							if (res.errorCode === 0) {
-								if (res.data === true) {
-									setWarningState(prevState => {
-										return {
-											...prevState,
-											UserName: {
-												status: true,
-												msg:
-													i18n.msg_UsernameNotAvailable
-											}
-										};
-									});
-								} else {
-									setShowTipsState(prevState => {
-										return {
-											...prevState,
-											UserName: false
-										};
-									});
-									setChecklistState(prevState => {
-										return {
-											...prevState,
-											UserName: result.checked
-										};
-									});
-								}
+
+				try {
+					const response = await api_ExistsUserName({
+						UserName: val
+					});
+
+					if (isMountedRef.current) {
+						const res = response.data;
+						if (res.errorCode === 0) {
+							if (res.data === true) {
+								setWarningState(prevState => {
+									return {
+										...prevState,
+										UserName: {
+											status: true,
+											msg: i18n.msg_UsernameNotAvailable
+										}
+									};
+								});
 							} else {
-								setPopBox({
-									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: res.data.message
+								setShowTipsState(prevState => {
+									return {
+										...prevState,
+										UserName: false
+									};
+								});
+								setChecklistState(prevState => {
+									return {
+										...prevState,
+										UserName: result.checked
+									};
 								});
 							}
-						}
-					},
-					err => {
-						if (isMountedRef.current) {
+						} else {
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
-								content: i18n.msg_ApiServerError
+								content: res.data.message
 							});
 						}
 					}
-				);
+				} catch (error) {
+					if (isMountedRef.current) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
+						});
+					}
+				}
 			} else {
 				setShowTipsState(prevState => {
 					return { ...prevState, UserName: false };
