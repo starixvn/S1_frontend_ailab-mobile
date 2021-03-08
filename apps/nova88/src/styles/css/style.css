@@ -656,6 +656,10 @@ main .gameList a {
   opacity: 0.6;
 }
 
+main .gameList a.ambassador {
+  opacity: 1;
+}
+
 main .gameList a.open {
   -webkit-box-shadow: 1px 2px 4px 0px #5e5e5e;
           box-shadow: 1px 2px 4px 0px #5e5e5e;
@@ -701,7 +705,7 @@ main .gameList a span.icon-affiliate {
 }
 
 main .gameList .space {
-  height: 100vw;
+  height: 35vw;
   background: transparent;
 }
 
@@ -5001,10 +5005,13 @@ span.icon.icon-ranking:after {
   }
 }
 
-.event {
+.event, .event2 {
   width: calc(100% - 6vw);
   padding: 0 3vw 24vw;
-  background: #001942 url(../img/event/bg.jpg) no-repeat top center;
+  background-image: url(../img/event/bg.jpg);
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: top;
   background-size: 120%;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
@@ -5015,15 +5022,15 @@ span.icon.icon-ranking:after {
           align-items: center;
 }
 
-.event > div[tabindex="-1"] {
+.event > div[tabindex="-1"], .event2 > div[tabindex="-1"] {
   width: 100%;
 }
 
-.event .animation {
+.event .animation, .event2 .animation {
   margin-top: 5vw;
 }
 
-.event .filterBtn {
+.event .filterBtn, .event2 .filterBtn {
   margin: 7vw auto 5vw;
   display: block;
   width: -webkit-max-content;
@@ -5031,7 +5038,7 @@ span.icon.icon-ranking:after {
   width: max-content;
 }
 
-.event .filterBtn button {
+.event .filterBtn button, .event2 .filterBtn button {
   padding: 3vw;
   font-size: 3vw;
 }
@@ -5308,7 +5315,7 @@ span.icon.icon-ranking:after {
   border: 0;
 }
 
-#popup .eventpop {
+#popup .eventpop, #popup .eventpop2 {
   position: relative;
   width: 90vw;
   height: 70vw;
@@ -5336,20 +5343,20 @@ span.icon.icon-ranking:after {
   z-index: 2;
 }
 
-#popup .eventpop.active {
+#popup .eventpop.active, #popup .eventpop2.active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-#popup .eventpop .icon-close {
+#popup .eventpop .icon-close, #popup .eventpop2 .icon-close {
   color: #F5C346;
   position: absolute;
   right: 3vw;
   top: 4vw;
 }
 
-#popup .eventpop .title {
+#popup .eventpop .title, #popup .eventpop2 .title {
   width: 100%;
   height: 50px;
   display: -webkit-box;
@@ -5365,7 +5372,7 @@ span.icon.icon-ranking:after {
   margin-bottom: 6vw;
 }
 
-#popup .eventpop .am {
+#popup .eventpop .am, #popup .eventpop2 .am {
   width: 90%;
   background: #121212;
   border-radius: 3px;
@@ -5375,6 +5382,19 @@ span.icon.icon-ranking:after {
   text-align: center;
   line-height: 50px;
   margin: 6vw 0;
+}
+
+#popup .eventpop2 {
+  background: rgba(191, 154, 119, 0.85);
+}
+
+#popup .eventpop2 .icon-close {
+  color: #0F2D54;
+}
+
+#popup .eventpop2 .title {
+  border-bottom: 1px solid #0F2D54;
+  color: #0F2D54;
 }
 
 .eventModule {
@@ -5397,7 +5417,7 @@ span.icon.icon-ranking:after {
   display: flex;
 }
 
-.eventModule .title {
+.eventModule .title:not(.text-org) {
   background: transparent;
   font-size: 5vw;
   color: #F5C346;
@@ -5646,5 +5666,372 @@ span.icon.icon-ranking:after {
 .vipBanner img {
   width: auto;
   height: 100%;
+}
+
+.event2 {
+  background-image: url(../img/event/mysterybox/bg.jpg);
+}
+
+.event2 > div[tabindex="-1"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.event2 .eventTitle {
+  color: #ffff67;
+  margin-top: 11vw;
+  font-size: 3vw;
+  background: -webkit-linear-gradient(top, #f0b52d 30%, #fffccf 40%, #e2a625 65%, #ff6c00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.5px #ffff9b;
+  -webkit-filter: drop-shadow(0px 3px 1px #922707);
+          filter: drop-shadow(0px 3px 1px #922707);
+  letter-spacing: 1px;
+}
+
+.event2 .animation {
+  margin-top: 3vw;
+}
+
+.event2 .animation .angpao {
+  background: transparent;
+  width: 30vw;
+  height: 30vw;
+}
+
+.event2 .animation .angpao .time {
+  background: rgba(15, 45, 84, 0.9);
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  border: 2px solid #BF9A77;
+  padding: 1vw 3vw;
+  border-radius: 10px;
+}
+
+.event2 .eventModule .title + .text-gray.text-center {
+  text-align: center;
+  color: #939393;
+}
+
+.event2 .eventModule .title + .text-gray.text-center + div {
+  margin: 5vw 0;
+}
+
+.event2 .eventList tr:first-child {
+  background: #F5C346;
+}
+
+.event2 .eventList tr:first-child td {
+  color: #0F2D54;
+}
+
+.event2 .eventList .nodata {
+  color: #F5C346;
+}
+
+.popangpao {
+  -webkit-animation: redrotate 0.3s 8 alternate;
+          animation: redrotate 0.3s 8 alternate;
+  -webkit-transform-origin: bottom center;
+          transform-origin: bottom center;
+  position: absolute;
+  width: 70vw;
+  height: 70vw;
+  cursor: auto;
+}
+
+.popangpao .redbox {
+  z-index: 0;
+}
+
+.popangpao .coin {
+  -webkit-animation: coin2 1s 1s infinite linear;
+          animation: coin2 1s 1s infinite linear;
+}
+
+.popangpao .coin {
+  position: absolute;
+  top: 25vw;
+  right: 10vw;
+  width: 8vw;
+  height: 6vw;
+  background: url(../img/event/mysterybox/coin.png) no-repeat center/cover;
+}
+
+.popangpao .coin:nth-child(3) {
+  top: 22vw;
+  left: 43vw;
+  width: 10vw;
+  height: 9vw;
+}
+
+.popangpao .coin:nth-child(4) {
+  top: 16vw;
+  left: 39vw;
+  width: 10vw;
+  height: 9vw;
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+  -webkit-animation-delay: .2s;
+          animation-delay: .2s;
+}
+
+.popangpao .coin:nth-child(5) {
+  top: 12vw;
+  left: 21vw;
+  -webkit-animation-delay: .3s;
+          animation-delay: .3s;
+}
+
+.popangpao .coin:nth-child(6) {
+  top: 20vw;
+  left: 30vw;
+  -webkit-animation-delay: .5s;
+          animation-delay: .5s;
+}
+
+@-webkit-keyframes coin2 {
+  0% {
+    opacity: 0;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  20% {
+    opacity: 0.9;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    margin-top: 0;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+    margin-top: -200px;
+    opacity: 0;
+  }
+}
+
+@keyframes coin2 {
+  0% {
+    opacity: 0;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  20% {
+    opacity: 0.9;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    margin-top: 0;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+    margin-top: -200px;
+    opacity: 0;
+  }
+}
+
+.switchTag {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 110%;
+  margin-left: -5%;
+  margin-top: 5vw;
+}
+
+.switchTag div {
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+  color: white;
+  border-bottom: 0;
+  padding: 2vw;
+  border-radius: 3px 3px 0 0;
+  text-align: center;
+  margin-right: 2px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.switchTag div.open {
+  background: #F77A00;
+}
+
+.switchTag div:last-child {
+  margin-right: 0;
+}
+
+.depositModule_mobile, .depositModule_online, .depositModule_local {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid #F77A00;
+  padding: 3vw;
+  width: calc(110% - 6vw - 2px);
+  margin-left: -5%;
+  border-radius: 0 0 5px 5px;
+  display: none;
+}
+
+.depositModule_mobile.open, .depositModule_online.open, .depositModule_local.open {
+  display: block;
+}
+
+.depositModule_mobile > .title, .depositModule_online > .title, .depositModule_local > .title {
+  margin: 5vw 0 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.depositModule_mobile > .title:not(.text-org), .depositModule_online > .title:not(.text-org), .depositModule_local > .title:not(.text-org) {
+  font-weight: normal;
+  background: #001942;
+  padding: 5px;
+  border-radius: 5px 5px 0 0;
+  margin-bottom: 1px;
+}
+
+.depositModule_mobile > .title:before, .depositModule_mobile > .title span, .depositModule_online > .title:before, .depositModule_online > .title span, .depositModule_local > .title:before, .depositModule_local > .title span {
+  margin-right: 1vw;
+}
+
+.depositModule_mobile .selectModule, .depositModule_online .selectModule, .depositModule_local .selectModule {
+  background: rgba(33, 62, 111, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 1px;
+  border-radius: 0 0 5px 5px;
+  padding: 2vw;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.depositModule_mobile .selectModule input[type="radio"], .depositModule_online .selectModule input[type="radio"], .depositModule_local .selectModule input[type="radio"] {
+  display: none;
+}
+
+.depositModule_mobile .selectModule input[type="radio"] + label, .depositModule_online .selectModule input[type="radio"] + label, .depositModule_local .selectModule input[type="radio"] + label {
+  border: 1px solid #F77A00;
+  width: 4vw;
+  height: 4vw;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  vertical-align: middle;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: 2vw;
+}
+
+.depositModule_mobile .selectModule input[type="radio"]:checked + label div, .depositModule_online .selectModule input[type="radio"]:checked + label div, .depositModule_local .selectModule input[type="radio"]:checked + label div {
+  width: 3vw;
+  height: 3vw;
+  background: #F77A00;
+}
+
+.depositModule_mobile .selectModule > div, .depositModule_online .selectModule > div, .depositModule_local .selectModule > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 50%;
+  margin: 2vw 0;
+}
+
+.depositModule_mobile .selectModule > div.info, .depositModule_online .selectModule > div.info, .depositModule_local .selectModule > div.info {
+  width: calc(100% - 12vw);
+  padding: 2vw 4vw;
+  background: rgba(0, 25, 66, 0.95);
+  margin: auto;
+  border-radius: 5px;
+}
+
+.depositModule_mobile .selectModule > div.info .checkBank, .depositModule_online .selectModule > div.info .checkBank, .depositModule_local .selectModule > div.info .checkBank {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.depositModule_mobile .selectModule > div .bankName, .depositModule_online .selectModule > div .bankName, .depositModule_local .selectModule > div .bankName {
+  width: 20vw;
+  background: white;
+  border-radius: 5px;
+  padding: 0.5vw 1vw;
+}
+
+.depositModule_mobile .selectModule > div .bankName img, .depositModule_online .selectModule > div .bankName img, .depositModule_local .selectModule > div .bankName img {
+  width: 100%;
+  vertical-align: middle;
+}
+
+.depositModule_mobile .inputBox, .depositModule_online .inputBox, .depositModule_local .inputBox {
+  margin: 2px 0 2vw;
+}
+
+.depositModule_mobile .inputBox input, .depositModule_online .inputBox input, .depositModule_local .inputBox input {
+  padding: 2vw;
+  border-radius: 0;
+}
+
+.depositModule_mobile .inputBox input::-webkit-input-placeholder, .depositModule_online .inputBox input::-webkit-input-placeholder, .depositModule_local .inputBox input::-webkit-input-placeholder {
+  color: #666;
+}
+
+.depositModule_mobile .inputBox input:-ms-input-placeholder, .depositModule_online .inputBox input:-ms-input-placeholder, .depositModule_local .inputBox input:-ms-input-placeholder {
+  color: #666;
+}
+
+.depositModule_mobile .inputBox input::-ms-input-placeholder, .depositModule_online .inputBox input::-ms-input-placeholder, .depositModule_local .inputBox input::-ms-input-placeholder {
+  color: #666;
+}
+
+.depositModule_mobile .inputBox input::placeholder, .depositModule_online .inputBox input::placeholder, .depositModule_local .inputBox input::placeholder {
+  color: #666;
+}
+
+.depositModule_mobile .inputBox .tip, .depositModule_online .inputBox .tip, .depositModule_local .inputBox .tip {
+  margin-left: 2.5vw;
+}
+
+.depositModule_mobile .btn-group, .depositModule_online .btn-group, .depositModule_local .btn-group {
+  width: auto;
+  display: unset;
+}
+
+.depositModule_mobile .btn-group button, .depositModule_online .btn-group button, .depositModule_local .btn-group button {
+  width: 50vw;
+  margin: auto;
+}
+
+.depositModule_mobile + .btn-group, .depositModule_online + .btn-group, .depositModule_local + .btn-group {
+  width: 110%;
+  margin-left: -5%;
+  margin: 3vw 0 3vw -5%;
 }
 /*# sourceMappingURL=style.css.map */

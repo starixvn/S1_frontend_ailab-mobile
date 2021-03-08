@@ -1,58 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
-import { api_events_GetCustDrawPrizeList } from "../../service/api/events";
-
-const useGetPrizeList = ({
-	i18n,
-	userInfo,
-	setPopBox,
-	setLoading,
-	canDrawPrize
-}) => {
-	const [history, setHistory] = useState([]);
-	const isMountedRef = useRef(null);
-
-	useEffect(() => {
-		isMountedRef.current = true;
-		return () => {
-			isMountedRef.current = false;
-		};
-	});
-
-	useEffect(() => {
-		if (userInfo.isLogin === true) {
-			setLoading(true);
-			api_events_GetCustDrawPrizeList().then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							setHistory(res.data.data);
-						} else {
-							setPopBox({
-								isOpen: true,
-								content: `[${res.data.errorCode}]${res.data.message}`
-							});
-						}
-						setLoading(false);
-					}
-				},
-				() => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-						setLoading(false);
-					}
-				}
-			);
-		}
-	}, [i18n, setPopBox, userInfo, setLoading, canDrawPrize]);
-
-	return { history };
-};
+import { useGetPrizeList } from "../hook/useGetPrizeList";
+import { eventIds } from "../../datas/eventIds";
 
 const History = ({ i18n, userInfo, setPopBox, setLoading, canDrawPrize }) => {
 	const { history } = useGetPrizeList({
@@ -60,7 +10,8 @@ const History = ({ i18n, userInfo, setPopBox, setLoading, canDrawPrize }) => {
 		userInfo,
 		setPopBox,
 		setLoading,
-		canDrawPrize
+		canDrawPrize,
+		eventId: eventIds.angPow
 	});
 
 	const arr = history?.map(data => {

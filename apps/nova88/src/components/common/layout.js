@@ -14,9 +14,12 @@ import {
 import path from "../../path";
 import Loading from "./loading";
 import { isEventPeriod } from "./common";
-import { eventTime } from "../../pages/angPow";
+import { eventTime as eventTimeAngPow } from "../../pages/angPow";
 import eventImg from "../../styles/img/event/eventlink.png";
 import eventIdImg from "../../styles/img/event/eventlink_id.png";
+import { eventTime as eventTimeMysteryBox } from "../../pages/mysteryBox";
+import MysteryBox from "../mysteryBox/homePopBox";
+import SEO from "../seo";
 
 const defPageInfo = {
 	default: {
@@ -138,6 +141,11 @@ const defPageInfo = {
 		titleKey: "VIP",
 		className: "main vip",
 		hideLogo: true
+	},
+	mysteryBox: {
+		titleKey: "lbl_MysteryBox_EventTitle",
+		className: "main event2",
+		hideLogo: true
 	}
 };
 
@@ -182,6 +190,7 @@ const Layout = ({ children }) => {
 
 	return (
 		<>
+			<SEO />
 			<RotationHint i18n={i18n} />
 			<Header
 				title={i18n[pageInfo.titleKey] ?? pageInfo.titleKey}
@@ -191,8 +200,11 @@ const Layout = ({ children }) => {
 				{children}
 				{loading ? <Loading /> : null}
 			</main>
-			{isEventPeriod(eventTime.angPow) ? (
+			{isEventPeriod(eventTimeAngPow.angPow) ? (
 				<AngPow langId={userInfo.langId} />
+			) : null}
+			{isEventPeriod(eventTimeMysteryBox.mysteryBox) ? (
+				<MysteryBox isLogin={userInfo.isLogin} />
 			) : null}
 			<Footer />
 		</>

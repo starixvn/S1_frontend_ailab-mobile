@@ -297,7 +297,6 @@ export default [
 	"lbl_Slots",
 	"lbl_Promotions",
 	"msg_OTPSendCode",
-	"lbl_CockFighting",
 	"lbl_SabaClub",
 	"lbl_ProfileModifyWarning"
 ];

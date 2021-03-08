@@ -14,9 +14,11 @@ import {
 import path from "../../path";
 import Loading from "./loading";
 import { isEventPeriod } from "./common";
-import { eventTime } from "../../pages/angPow";
+import { eventTime as angPowEventTime } from "../../pages/angPow";
 import eventImg from "../../styles/img/event/eventlink_en.png";
 import eventVNImg from "../../styles/img/event/eventlink_vn.png";
+import MysteryBox from "../mysteryBox/homePopBox";
+import { eventTime as mysteryBoxEventTime } from "../../pages/mysteryBox";
 
 const defPageInfo = {
 	default: {
@@ -121,7 +123,11 @@ const defPageInfo = {
 	},
 	referral: {
 		titleKey: "lbl_friendReferral",
-		className: "main",
+		className: "main"
+	},
+	mysteryBox: {
+		titleKey: "lbl_MysteryBox_EventTitle",
+		className: "main event goldbox",
 		hideLogo: true
 	}
 };
@@ -175,8 +181,11 @@ const Layout = ({ children }) => {
 				{children}
 				{loading ? <Loading /> : null}
 			</main>
-			{isEventPeriod(eventTime.angPow) ? (
+			{isEventPeriod(angPowEventTime.angPow) ? (
 				<AngPow userInfo={userInfo} />
+			) : null}
+			{isEventPeriod(mysteryBoxEventTime.mysteryBox) ? (
+				<MysteryBox userInfo={userInfo} />
 			) : null}
 			<Footer />
 		</>

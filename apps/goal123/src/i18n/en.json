@@ -52,7 +52,6 @@
 	"lbl_Check18TCTooltip": "Please click the above checkbox to confirm the account registration requirements",
 	"lbl_CheckConfirm": "Are you sure you want to delete? It cannot restore after deletion!",
 	"lbl_Close": "Close",
-	"lbl_CockFighting": "Cock Fighting",
 	"lbl_Confirm": "Confirm",
 	"lbl_ConfirmDeposit": "Please confirm the deposit information.",
 	"lbl_ContactCSD": "For any request of modification, please contact CSD.",
@@ -433,6 +432,19 @@
 	"lbl_Referral_rewards":"Rewards",
 	"lbl_ValidPeriod":"Valid Period",
 	"lbl_RegisterDate":"Register Date",
-	"lbl_Currency":"Currency"
+	"lbl_Currency":"Currency",
 
+	"lbl_MysteryBox_EventTitle":"Goal123 Mystery Box",
+	"lbl_MysteryBox_AlreadyDrawn":"You have already drawn today, please try again tomorrow!",
+	"lbl_MysteryBox_OtherConditions1":"Each member can participant once per day only.",
+	"lbl_MysteryBox_OtherConditions2":"Member able to participate daily until the promotion end.",
+	"lbl_MysteryBox_OtherConditions3":"Goal123 reserves the right to amend or withdraw the Promotion at any time.",
+	"lbl_MysteryBox_OtherConditions4":"Goal123 is the sole arbiter of the Promotion and its decision is final.",
+	"lbl_MysteryBox_OtherConditions5":"Goal123 Standard Terms and Conditions apply.",
+	"lbl_MysteryBox_Conditions":"Rewards Conditions",
+	"lbl_MysteryBox_Awards":"Lastest Awards",
+	"lbl_MysteryBox_MysteryBoxRewards":"My Mystery Box Rewards",
+	"lbl_MysteryBox_Congratulations":"Congratulations",
+	"lbl_MysteryBox_CreditedAccount1":"You are rewarded today",
+	"lbl_MysteryBox_CreditedAccount2":"please come back again tomorrow!"
 }

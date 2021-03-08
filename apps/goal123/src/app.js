@@ -71,6 +71,7 @@ import PromotionInfo from "./pages/promotionInfo";
 
 import Ranking from "./pages/ranking";
 import AngPow from "./pages/angPow";
+import MysteryBox from "./pages/mysteryBox";
 
 import FriendReferral from "./pages/referral";
 import ReferFriends from "./components/referral/referFriends";
@@ -173,6 +174,7 @@ const Index = () => {
 						<Whoami path={path.whoami.root} />
 						<Ranking path={path.leaderBoard.root} />
 						<AngPow path={path.angPow.root} />
+						<MysteryBox path={path.mysteryBox.root} />
 					</Router>
 				</Layout>
 			</LocationProvider>

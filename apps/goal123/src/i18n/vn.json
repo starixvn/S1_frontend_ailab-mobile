@@ -52,7 +52,6 @@
 	"lbl_Check18TCTooltip": "Vui lòng bấm vào ô bên trên để xác nhận các yêu cầu đăng ký tài khoản.",
 	"lbl_CheckConfirm": "Bạn có chắc muốn xóa? Không thể khôi phục lại sau khi xóa!",
 	"lbl_Close": "Đóng",
-	"lbl_CockFighting": "Đá gà",
 	"lbl_Confirm": "Xác nhận",
 	"lbl_ConfirmDeposit": "Vui lòng xác nhận thông tin nạp tiền.",
 	"lbl_ContactCSD": "Vui lòng liên hệ CSKH để thay đổi tên tài khoản ngân hàng của bạn",
@@ -433,5 +432,19 @@
 	"lbl_Referral_rewards":"Phần thưởng",
 	"lbl_ValidPeriod":"Thời gian có hiệu lực",
 	"lbl_RegisterDate":"Ngày đăng ký",
-	"lbl_Currency":"Tiền tệ"
+	"lbl_Currency":"Tiền tệ",
+	"lbl_MysteryBox_EventTitle":"Rương Thần Huyền Bí Goal123",
+	"lbl_MysteryBox_AlreadyDrawn":"Bạn đã nhận lì xì cho ngày hôm nay, vui lòng thử lại vào ngày mai!",
+	"lbl_MysteryBox_OtherConditions1":"Mỗi thành viên chỉ được tham gia chơi một lần trong ngày.",
+	"lbl_MysteryBox_OtherConditions2":"Thành viên được tham gia mỗi ngày cho đến khi chương trình kết thúc.",
+	"lbl_MysteryBox_OtherConditions3":"Goal123 có toàn quyền sửa đổi hoặc huỷ bỏ khuyến mãi bất kỳ lúc nào.",
+	"lbl_MysteryBox_OtherConditions4":"Quyền quyết định cuối cùng thuộc về Goal123.",
+	"lbl_MysteryBox_OtherConditions5":"Áp dụng Điều khoản và Điều kiện chung của Goal123.",
+	"lbl_MysteryBox_Conditions":"Điều kiện nhận thưởng",
+	"lbl_MysteryBox_Awards":"Phần thưởng gần đây",
+	"lbl_MysteryBox_MysteryBoxRewards":"Phần thưởng từ rương thần",
+	"lbl_MysteryBox_Congratulations":"Xin chúc mừng!",
+	"lbl_MysteryBox_CreditedAccount1":"Bạn đã nhận thưởng",
+	"lbl_MysteryBox_CreditedAccount2":" hôm nay. Vui lòng thử lại vào ngày mai!"
+
 }

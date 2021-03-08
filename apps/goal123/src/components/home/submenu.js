@@ -26,11 +26,6 @@ const defSubMenus = [
 		icon: "icon icon-sports"
 	},
 	{
-		...defGameInfo.CockFighting,
-		displayKey: "lbl_CockFighting",
-		icon: "icon icon-cock"
-	},
-	{
 		displayKey: "lbl_Games",
 		icon: "icon icon-kelo",
 		subItems: [

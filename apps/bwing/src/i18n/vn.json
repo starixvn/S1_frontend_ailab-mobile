@@ -500,5 +500,19 @@
 	"lbl_Referral_rewards":"Phần thưởng",
 	"lbl_ValidPeriod":"Thời gian có hiệu lực",
 	"lbl_RegisterDate":"Ngày đăng ký",
-	"lbl_Currency":"Tiền tệ"
+	"lbl_Currency":"Tiền tệ",
+	"lbl_MysteryBox_EventTitle":"Chiếc Hộp Thần Kỳ",
+	"lbl_MysteryBox_AlreadyDrawn":"Bạn đã nhận lì xì cho ngày hôm nay, vui lòng thử lại vào ngày mai!",
+	"lbl_MysteryBox_OtherConditions1":"Mỗi thành viên chỉ được tham gia chơi một lần trong ngày.",
+	"lbl_MysteryBox_OtherConditions2":"Thành viên được tham gia mỗi ngày cho đến khi chương trình kết thúc.",
+	"lbl_MysteryBox_OtherConditions3":"Bwing có toàn quyền sửa đổi hoặc huỷ bỏ khuyến mãi bất kỳ lúc nào.",
+	"lbl_MysteryBox_OtherConditions4":"Quyền quyết định cuối cùng thuộc về Bwing.",
+	"lbl_MysteryBox_OtherConditions5":"Áp dụng Điều khoản và Điều kiện chung của Bwing.",
+	"lbl_MysteryBox_Conditions":"Điều kiện nhận thưởng",
+	"lbl_MysteryBox_Awards":"Phần thưởng gần đây",
+	"lbl_MysteryBox_MysteryBoxRewards":"Phần thưởng từ hộp thần kỳ",
+	"lbl_MysteryBox_Congratulations":"Xin chúc mừng!",
+	"lbl_MysteryBox_CreditedAccount1":"Bạn đã nhận thưởng",
+	"lbl_MysteryBox_CreditedAccount2":" hôm nay. Vui lòng thử lại vào ngày mai!"
+
 }
