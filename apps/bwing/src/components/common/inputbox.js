@@ -59,7 +59,9 @@ const Inputbox = props => {
 				</>
 			)}
 
-			{props.Warning?.status || props.WarningIcon ? (
+			{props.Warning?.status ||
+			props.WarningIcon ||
+			props.error === true ? (
 				<div className="icon-module">
 					<i className="icon icon-warning" />
 				</div>

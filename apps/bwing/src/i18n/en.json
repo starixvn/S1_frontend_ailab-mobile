@@ -486,6 +486,6 @@
 	"lbl_MysteryBox_MysteryBoxRewards":"My Mystery Box Rewards",
 	"lbl_MysteryBox_Congratulations":"Congratulations",
 	"lbl_MysteryBox_CreditedAccount1":"You are rewarded today",
-	"lbl_MysteryBox_CreditedAccount2":"please come back again tomorrow!"
-
+	"lbl_MysteryBox_CreditedAccount2":"please come back again tomorrow!",
+	"lbl_PhoneRequired":"Please fill in the phone field"
 }

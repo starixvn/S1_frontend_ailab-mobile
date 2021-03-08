@@ -486,6 +486,6 @@
 	"lbl_MysteryBox_MysteryBoxRewards":"Phần thưởng từ hộp thần kỳ",
 	"lbl_MysteryBox_Congratulations":"Xin chúc mừng!",
 	"lbl_MysteryBox_CreditedAccount1":"Bạn đã nhận thưởng",
-	"lbl_MysteryBox_CreditedAccount2":" hôm nay. Vui lòng thử lại vào ngày mai!"
-
+	"lbl_MysteryBox_CreditedAccount2":" hôm nay. Vui lòng thử lại vào ngày mai!",
+	"lbl_PhoneRequired":"Vui lòng nhập số điện thoại"
 }
