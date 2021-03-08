@@ -202,7 +202,14 @@ class CateGoryContent extends Component {
 					isOpen={`${_open ? " open" : ""}`}
 					translation={this.props.i18n[item.translateKey]}
 					eventIcon={item.eventIcon}
-					subIcon={item.items.filter(subItem => subItem.eventIcon)}
+					subIcon={item.items.filter(
+						subItem =>
+							subItem.eventIcon &&
+							(subItem.tpId
+								? this.props.showingTpIds === null ||
+								  this.props.showingTpIds.includes(subItem.tpId)
+								: true)
+					)}
 				/>
 			);
 
