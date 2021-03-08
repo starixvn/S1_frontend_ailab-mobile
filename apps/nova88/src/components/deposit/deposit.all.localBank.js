@@ -12,7 +12,8 @@ import {
 	i18nContext,
 	userInfoContext,
 	popBoxContext,
-	bankSlipPopBoxContext
+	bankSlipPopBoxContext,
+	loadingContext
 } from "../common/context";
 import config from "../../config";
 import { isConvert, number_format } from "../common/common";
@@ -32,6 +33,7 @@ const Payment = props => {
 	const { bankSlipPopBox, setbankSlipPopBox } = useContext(
 		bankSlipPopBoxContext
 	);
+	const { setLoading } = useContext(loadingContext);
 
 	const [processing, setProcessing] = useState(false);
 	const [selBank, setBank] = useState({});
@@ -63,12 +65,23 @@ const Payment = props => {
 	}, [paymentList.length]);
 
 	const SelectBank = bankInfo => {
-		api.payment.GetLocalBankInfo({ sysId: bankInfo.sysId }).then(res => {
-			if (isMountedRef.current && res.data.errorCode === 0) {
-				setAccountInfo(res.data.data);
-				setBank(bankInfo);
+		setLoading(true);
+		api.payment.GetLocalBankInfo({ sysId: bankInfo.sysId }).then(
+			res => {
+				if (isMountedRef.current) {
+					if (res.data.errorCode === 0) {
+						setAccountInfo(res.data.data);
+						setBank(bankInfo);
+					}
+					setLoading(false);
+				}
+			},
+			() => {
+				if (isMountedRef.current) {
+					setLoading(false);
+				}
 			}
-		});
+		);
 	};
 
 	const SubmitProof = (bankInfo, accInfo) => {
@@ -97,8 +110,13 @@ const Payment = props => {
 			VaildAmount({ amount });
 
 		if (result && !processing) {
-			setProcessing(true);
 			const RedirectToNext = (real_amount, sysId) => {
+				setLoading(true);
+				setPopBox(prevState => ({
+					...prevState,
+					isOpen: false
+				}));
+
 				api.payment
 					.DepositReqWireTransfer({
 						amount: real_amount,
@@ -109,10 +127,6 @@ const Payment = props => {
 							if (isMountedRef.current) {
 								if (res.data.errorCode === 0) {
 									const CloseDoneDepositPopup = () => {
-										setPopBox(prevState => ({
-											...prevState,
-											isOpen: false
-										}));
 										setProcessing(false);
 										window.location.reload();
 									};
@@ -142,6 +156,7 @@ const Payment = props => {
 													title:
 														i18n.lbl_ImportantNote,
 													content: result.message,
+													isOpen: true,
 													hasBtn: true,
 													btnBar: (
 														<div className="btn-group">
@@ -167,10 +182,11 @@ const Payment = props => {
 								} else {
 									setPopBox(prevState => ({
 										...prevState,
+										isOpen: true,
 										title: i18n.lbl_ImportantNote,
 										content: i18n.msg_WrongAmount
 									}));
-									setProcessing(false);
+									setLoading(false);
 								}
 							}
 						},
@@ -181,7 +197,7 @@ const Payment = props => {
 									title: i18n.lbl_ImportantNote,
 									content: i18n.msg_ApiServerError
 								});
-								setProcessing(false);
+								setLoading(false);
 							}
 						}
 					);
