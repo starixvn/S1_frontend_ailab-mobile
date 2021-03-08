@@ -494,9 +494,10 @@
 	"lbl_MysteryBox_CreditedAccount2":" hari ini, silakan kembali besok!",
 	"lbl_MysteryBox_MemberEligibility":"Deposit Hari Ini, Dapatkan Hadiah Anda Besok.",
 	"lbl_MysteryBox_OtherConditions":"Kondisi lain",
-	"lbl_PaymentModes":"Payment Modes",
-	"lbl_SelectChannel":"Select Channel",
-	"lbl_MinMaxAmount":"Min/Max Llimit",
-	"lbl_SelectBank":"Select Bank",
-	"lbl_UploadReceipt":"Upload Receipt"
+	"lbl_PaymentModes":"Mode Pembayaran",
+	"lbl_SelectChannel":"Pilih Saluran",
+	"lbl_MinMaxAmount":"Batas Min / Maks",
+	"lbl_SelectBank":"Pilih Bank",
+	"lbl_UploadReceipt":"Unggah Tanda Terima",
+	"lbl_Refno":"Nomor Referensi"
 }

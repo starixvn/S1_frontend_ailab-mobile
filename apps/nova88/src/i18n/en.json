@@ -153,7 +153,7 @@
 	"lbl_PersonalMsg": "Personal Message",
 	"lbl_Announcement": "Announcement",
 	"lbl_SelectAll": "Select All",
-	"lbl_AttachFile": "Please attach your bank slip here. (Optional)",
+	"lbl_AttachFile": "Please attach your bank slip here",
 	"lbl_UploadFile": "Upload File",
 	"lbl_RefnoToolTip": "Please submit your bank slip reference number",
 	"lbl_DepositTime": "Deposit Time",
@@ -496,7 +496,8 @@
 	"lbl_MysteryBox_OtherConditions":"Other Conditions",
 	"lbl_PaymentModes":"Payment Modes",
 	"lbl_SelectChannel":"Select Channel",
-	"lbl_MinMaxAmount":"Min/Max Llimit",
+	"lbl_MinMaxAmount":"Min/Max Limit",
 	"lbl_SelectBank":"Select Bank",
-	"lbl_UploadReceipt":"Upload Receipt"
+	"lbl_UploadReceipt":"Upload Receipt",
+	"lbl_Refno":"Reference No."
 }
