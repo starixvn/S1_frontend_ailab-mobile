@@ -73,6 +73,10 @@ import Ranking from "./pages/ranking";
 import AngPow from "./pages/angPow";
 import MysteryBox from "./pages/mysteryBox";
 
+import FriendReferral from "./pages/referral";
+import ReferFriends from "./components/referral/referFriends";
+import ReferralHistory from "./components/referral/referral.history";
+
 const Index = () => {
 	const history = createHistory(window);
 	return (
@@ -92,6 +96,13 @@ const Index = () => {
 							<Profile path={path.member.sub.root} />
 							<BankInfo path={path.member.sub.bankInfo.root} />
 						</Member>
+						<FriendReferral path={path.referral.root}>
+							<ReferFriends path={path.referral.sub.root} />
+							<ReferralHistory
+								path={path.referral.sub.history.root}
+							/>
+						</FriendReferral>
+
 						<Deposit path={path.deposit.root}>
 							<DepositHome path={path.deposit.sub.root} />
 							<OnlineBanking

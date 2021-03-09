@@ -16,6 +16,7 @@ export default langId => {
 		HowToDeposit: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/HowToDeposit.html`,
 		HowToBet: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/HowToBet.html`,
 		HowToWithdraw: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/HowToWithdraw.html`,
-		AngPow: `${config.t_and_cURL}/SiteSkin/${config.siteName}/ranking/${langId}3.html`
+		AngPow: `${config.t_and_cURL}/SiteSkin/${config.siteName}/ranking/${langId}3.html`,
+		Referral: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/ReferralConditions.html`
 	};
 };

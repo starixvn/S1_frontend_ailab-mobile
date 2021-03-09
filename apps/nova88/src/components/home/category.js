@@ -11,6 +11,7 @@ import gameList from "../../datas/productList";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import path from "../../path";
 import api from "../../service/api";
+import Ambassador from "../../styles/img/ambassador.jpg";
 
 const Category = props => {
 	const { i18n } = useContext(i18nContext);
@@ -373,7 +374,17 @@ const ProductItem = props => {
 	return (
 		<>
 			{content}
-			{props.addSpaceInBelow ? <a href="" className="space" /> : null}
+			{props.addSpaceInBelow ? (
+				<>
+					<a className="ambassador">
+						<img
+							src={Ambassador}
+							alt="Nova88 Brand Ambassador JOE COLE"
+						/>
+					</a>
+					<a href="" className="space" />
+				</>
+			) : null}
 		</>
 	);
 };

@@ -142,6 +142,11 @@ const defPageInfo = {
 		className: "main event",
 		hideLogo: true
 	},
+	referral: {
+		titleKey: "lbl_friendReferral",
+		className: "main",
+		hideLogo: true
+	},
 	mysteryBox: {
 		titleKey: "lbl_MysteryBox_EventTitle",
 		className: "main mysteryEvent",

@@ -63,3 +63,25 @@ export const api_account_GetTpWalletList = ({ ListType }) =>
 
 export const api_account_GetTpWalletBalance = ({ TpId }) =>
 	accountRequest.post(`/GetTpWalletBalance`, { TpId });
+
+export const api_account_GetReferralCode = () =>
+	accountRequest.post("/GetReferralCode");
+
+export const api_account_GetReferralSetting = () =>
+	accountRequest.post("/GetReferralSetting");
+
+export const api_account_GetReferralSummary = () =>
+	accountRequest.post("/GetReferralSummary");
+
+export const api_account_GetRefFriendList = ({
+	StartDate,
+	EndDate,
+	PageNumber,
+	PageSize
+}) =>
+	accountRequest.post("/GetRefFriendList", {
+		StartDate,
+		EndDate,
+		PageNumber,
+		PageSize
+	});

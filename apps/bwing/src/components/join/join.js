@@ -10,7 +10,8 @@ import {
 	// api_ExistsEmail,
 	api_Register,
 	api_GetSiteCurrencyList,
-	api_GetBanner
+	api_GetBanner,
+	api_site_GetAffiliateAgent
 } from "../../service/api/site";
 import { api_GetCustProfile } from "../../service/api/accountStrict";
 import { getUrlParameter, readCookie, passwordCheck } from "../common/common";
@@ -93,9 +94,7 @@ const Join = () => {
 	const [checkboxState, setCheckboxState] = useState(initCheckboxVal);
 	const [redirectPath, setRedirectPath] = useState(null);
 	const [banner, setBanner] = useState([]);
-
 	const [affiliateidExist, setAffiliateidExist] = useState("");
-
 	const [showTipsState, setShowTipsState] = useState({
 		UserName: false,
 		Password: false,
@@ -130,11 +129,46 @@ const Join = () => {
 		}
 	}, [nav, userInfo.langId]);
 
+	const AffId = getUrlParameter("AffId") || readCookie("AffId");
 	useEffect(() => {
 		const AffCode = getUrlParameter("AffCode") || readCookie("AffCode");
 
-		if (AffCode && isMountedRef) {
-			setAffiliateidExist(AffCode);
+		if (AffId) {
+			setAffiliateidExist(AffId);
+			api_site_GetAffiliateAgent({ AffId }).then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							const { currencyId } = res.data.data;
+							const currencyData = {
+								id: currencyId,
+								displayKey: `Currency_${currencyId}`
+							};
+							setUserValueState(prev => ({
+								...prev,
+								Currency: currencyData
+							}));
+							setSiteCurrencyState(() => [currencyData]);
+						} else {
+							GetSiteCurrencyList();
+						}
+					}
+				},
+				() => {
+					if (isMountedRef.current) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
+						});
+					}
+				}
+			);
+		} else {
+			if (AffCode) {
+				setAffiliateidExist(AffCode);
+			}
+			GetSiteCurrencyList();
 		}
 	}, []);
 
@@ -144,7 +178,7 @@ const Join = () => {
 		}
 	}, [redirectPath]);
 
-	useEffect(() => {
+	const GetSiteCurrencyList = () => {
 		api_GetSiteCurrencyList().then(
 			res => {
 				if (isMountedRef.current) {
@@ -167,7 +201,7 @@ const Join = () => {
 					}
 				}
 			},
-			err => {
+			() => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
@@ -177,7 +211,7 @@ const Join = () => {
 				}
 			}
 		);
-	}, [i18n.lbl_ImportantNote, i18n.msg_ApiServerError, setPopBox]);
+	};
 
 	const showPswHandler = () => {
 		setPswState(!pswState);
@@ -223,7 +257,7 @@ const Join = () => {
 		return { checked, message };
 	};
 
-	const checkUsernameHandler = (_colName, e) => {
+	const checkUsernameHandler = async (_colName, e) => {
 		const val = e.target.value;
 		const result = usernameCheck(val);
 
@@ -238,57 +272,56 @@ const Join = () => {
 						}
 					};
 				});
-				api_ExistsUserName({
-					UserName: val
-				}).then(
-					response => {
-						if (isMountedRef.current) {
-							const res = response.data;
-							if (res.errorCode === 0) {
-								if (res.data === true) {
-									setWarningState(prevState => {
-										return {
-											...prevState,
-											UserName: {
-												status: true,
-												msg:
-													i18n.msg_UsernameNotAvailable
-											}
-										};
-									});
-								} else {
-									setShowTipsState(prevState => {
-										return {
-											...prevState,
-											UserName: false
-										};
-									});
-									setChecklistState(prevState => {
-										return {
-											...prevState,
-											UserName: result.checked
-										};
-									});
-								}
+
+				try {
+					const response = await api_ExistsUserName({
+						UserName: val
+					});
+
+					if (isMountedRef.current) {
+						const res = response.data;
+						if (res.errorCode === 0) {
+							if (res.data === true) {
+								setWarningState(prevState => {
+									return {
+										...prevState,
+										UserName: {
+											status: true,
+											msg: i18n.msg_UsernameNotAvailable
+										}
+									};
+								});
 							} else {
-								setPopBox({
-									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: res.data.message
+								setShowTipsState(prevState => {
+									return {
+										...prevState,
+										UserName: false
+									};
+								});
+								setChecklistState(prevState => {
+									return {
+										...prevState,
+										UserName: result.checked
+									};
 								});
 							}
-						}
-					},
-					err => {
-						if (isMountedRef.current) {
+						} else {
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
-								content: i18n.msg_ApiServerError
+								content: res.data.message
 							});
 						}
 					}
-				);
+				} catch (error) {
+					if (isMountedRef.current) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
+						});
+					}
+				}
 			} else {
 				setShowTipsState(prevState => {
 					return { ...prevState, UserName: false };
@@ -459,7 +492,7 @@ const Join = () => {
 		}));
 	};
 
-	const checklistHandler = () => {
+	const checklistHandler = async () => {
 		let checked = true;
 
 		const UserName = usernameCheck(userValueState.UserName);
@@ -497,8 +530,15 @@ const Join = () => {
 				UserLang: userInfo.langId
 			};
 
+			if (AffId) {
+				const res = await api_site_GetAffiliateAgent({ AffId });
+				if (res.data.errorCode === 0) {
+					regData.AffId =
+						getUrlParameter("AffId") || getCookie("AffId");
+				}
+			}
+
 			regData.RefId = getUrlParameter("RefId") || readCookie("RefId");
-			regData.AffId = getUrlParameter("AffId") || readCookie("AffId");
 			regData.Aff = getUrlParameter("Aff") || readCookie("Aff");
 			regData.AffCode =
 				getUrlParameter("AffCode") ||

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { i18nContext } from "Context";
 import moment from "moment";
 import Dropdown from "./dropdown.icon";
-import Inputbox from "./inputbox";
+import Inputbox from "./inputbox.date";
 
 const quickPickList = [
 	{ displayKey: "lbl_Today" },
@@ -55,8 +55,8 @@ const Panel = ({ submitHandler }) => {
 
 			<div className="inputBox parts">
 				<Inputbox
-					icon="icon-calendar"
-					inputType="date"
+					// icon="icon-calendar"
+					// inputType="date"
 					onChange={EditField.bind(null, "startDate")}
 					value={dateRange.startDate}
 					max={moment().format("YYYY-MM-DD")}
