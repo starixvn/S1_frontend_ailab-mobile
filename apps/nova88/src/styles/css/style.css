@@ -172,9 +172,6 @@ header > a > img {
 }
 
 header .Join, header .Login {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -192,10 +189,6 @@ header .Join, header .Login {
   -webkit-transition: 0.7s;
   transition: 0.7s;
   opacity: 0;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  pointer-events: none;
   overflow-y: scroll;
 }
 
@@ -227,7 +220,7 @@ header .Join > .close, header .Login > .close {
 
 header .Join > img, header .Login > img {
   width: 40vw;
-  margin: 3vw auto;
+  margin: 3vw calc(50% - 20vw);
 }
 
 header .Join .title, header .Login .title {
@@ -318,6 +311,7 @@ header .Join button, header .Login button {
   border-radius: 3px;
   color: #fff;
   padding: 3vw;
+  width: 100%;
 }
 
 header .Join .Terms, header .Login .Terms {
@@ -366,6 +360,15 @@ header .Join .Terms input[type="checkbox"] + label > div, header .Login .Terms i
 
 header .Join .Terms input[type="checkbox"]:checked + label > div, header .Login .Terms input[type="checkbox"]:checked + label > div {
   background: #F77A00;
+}
+
+header .Login {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 header .headerInfo {
