@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useContext, Component, useEffect, useRef } from "react";
 import moment from "moment";
 import {
@@ -26,10 +27,18 @@ const GetUploadFileName = files => {
 	return filename;
 };
 
+const defColumns = {
+	refId: "refId"
+};
+
 class Content extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { processing: false, disableUpload: false, refIdTip: "" };
+		this.state = {
+			processing: false,
+			disableUpload: false,
+			refIdTip: ""
+		};
 		this.isMountedRef = false;
 		this.filebox = React.createRef();
 	}
@@ -52,7 +61,14 @@ class Content extends Component {
 		const { files } = this.filebox.current;
 		if (files[0]) {
 			this.props.EditField("picFileName", GetUploadFileName(files));
-			this.onUploadFile();
+
+			const picFileName = GetUploadFileName(files);
+			this.props.EditField("picFileName", picFileName);
+			if (this.props.bankSlipPopBox.disableSubmit) {
+				this.props.SetImg(picFileName, files[0]);
+			} else {
+				this.onUploadFile();
+			}
 		}
 	};
 
@@ -92,7 +108,11 @@ class Content extends Component {
 	};
 
 	SeReceipt = () => {
-		if (!this.props.bankSlipPopBox.refId) {
+		if (this.props.bankSlipPopBox.disableSubmit) {
+			if (this.checkAllValue()) {
+				this.props.closePopBoxAndKeepData();
+			}
+		} else if (!this.props.bankSlipPopBox.refId) {
 			this.setState({ refIdTip: this.props.i18n.lbl_RemindForRefNum });
 		} else if (!this.state.processing) {
 			this.setState({ processing: true });
@@ -137,6 +157,73 @@ class Content extends Component {
 
 	HandleUploadAgain = () => {
 		this.setState({ disableUpload: false });
+	};
+
+	checkAllValue = () => {
+		const refIdResult = this.checkRefId(this.props.bankSlipPopBox.refId);
+		const doneUploadResult = this.checkDoneUpload();
+		if (doneUploadResult.status) {
+			this.props.setPopBox({
+				isOpen: true,
+				title: this.props.i18n.lbl_ImportantNote,
+				content: doneUploadResult.msg,
+				hasBtn: true,
+				btnBar: (
+					<div className="btn-group">
+						<button
+							className="orange"
+							onClick={() =>
+								this.props.setPopBox({
+									isOpen: false
+								})
+							}>
+							OK
+						</button>
+					</div>
+				)
+			});
+		} else if (refIdResult.status) {
+			this.setState({ refIdTip: this.props.i18n.lbl_RemindForRefNum });
+		}
+
+		return !refIdResult.status && !doneUploadResult.status;
+	};
+
+	checkDoneUpload = () => {
+		let result = { status: false, msg: "" };
+		const { files } = this.filebox.current;
+		if (files.length <= 0) {
+			result = { status: true, msg: this.props.i18n.lbl_AttachFile };
+		}
+
+		return result;
+	};
+
+	checkRefId = value => {
+		let result = { status: false, msg: "" };
+		if (value === "") {
+			result = { status: true, msg: this.props.i18n.lbl_RefnoToolTip };
+		}
+
+		return result;
+	};
+
+	checkValueHandler = (column, e) => {
+		let result = { status: false, msg: "" };
+		let stateColumn = null;
+		if (column === defColumns.refId) {
+			stateColumn = "warningStateRefId";
+			result = this.checkRefId(e.target.value);
+		}
+
+		if (result.status) {
+			this.setState({
+				[stateColumn]: {
+					status: result.status,
+					msg: result.msg
+				}
+			});
+		}
 	};
 
 	render() {
@@ -344,8 +431,22 @@ export default () => {
 		}
 	};
 
+	const closePopBoxAndKeepData = () => {
+		if (isMountedRef.current) {
+			setbankSlipPopBox(prev => ({ ...prev, isOpen: false }));
+		}
+	};
+
 	const EditField = (column, value) => {
 		setbankSlipPopBox(prevState => ({ ...prevState, [column]: value }));
+	};
+
+	const SetImg = (picFileName, receipt) => {
+		setbankSlipPopBox(prevState => ({
+			...prevState,
+			picFileName,
+			receipt
+		}));
 	};
 
 	return bankSlipPopBox.isOpen ? (
@@ -355,6 +456,8 @@ export default () => {
 			handlePopBox={handlePopBox}
 			EditField={EditField}
 			setPopBox={setPopBox}
+			SetImg={SetImg}
+			closePopBoxAndKeepData={closePopBoxAndKeepData}
 		/>
 	) : null;
 };
