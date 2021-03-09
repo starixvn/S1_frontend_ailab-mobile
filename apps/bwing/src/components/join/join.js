@@ -30,6 +30,13 @@ import areaCode from "../../datas/areaCode";
 
 const colName = ["UserName", "Password", "Currency", "Phone"];
 
+const defColName = {
+	UserName: "UserName",
+	Password: "Password",
+	Currency: "Currency",
+	Phone: "Phone"
+};
+
 const initState = {
 	UserName: "",
 	Password: "",
@@ -103,7 +110,8 @@ const Join = () => {
 		UserName: false,
 		Password: false,
 		AffiliateId: false,
-		Currency: false
+		Currency: false,
+		Phone: false
 	});
 	const [checklistState, setChecklistState] = useState(initChecklistState);
 	const [promoPopup, setPromoPopup] = useState(false);
@@ -234,12 +242,9 @@ const Join = () => {
 		let msg = "";
 		const regx = /^[0-9\s]*$/;
 
-		if (!val) {
+		if (!val || val.length < 9 || !regx.test(val)) {
 			checked = false;
 			msg = "lbl_PhoneRequired";
-		} else if (!regx.test(val)) {
-			checked = false;
-			msg = "lbl_PhoneTooltip";
 		} else {
 			const res = await api_site_ExistsPhoneNo({
 				AreaCode: _areaCode,
@@ -397,10 +402,18 @@ const Join = () => {
 
 	const EditField = (_colName, e) => {
 		const val = e.target.value;
-		setUserValueState(prevState => ({
-			...prevState,
-			[_colName]: val
-		}));
+		let checked = true;
+		if (_colName === defColName.Phone) {
+			const regx = /^[0-9\s]*$/;
+			checked = regx.test(val);
+		}
+
+		if (checked) {
+			setUserValueState(prevState => ({
+				...prevState,
+				[_colName]: val
+			}));
+		}
 	};
 
 	const checkboxHandler = col => {
@@ -663,6 +676,7 @@ const Join = () => {
 					<span className="countryCode">{_areaCode}</span>
 					<Inputbox
 						icon="icon-phone"
+						inputType="tel"
 						ClassName="JoinRule"
 						placeholder={i18n.lbl_Phone}
 						value={userValueState.Phone}
@@ -674,9 +688,13 @@ const Join = () => {
 					/>
 					<div
 						className={`errortip${
-							warningState.Phone.status ? " open" : ""
+							warningState.Phone.status || showTipsState.Phone
+								? " open"
+								: ""
 						}`}>
-						{warningState.Phone.msg}
+						{warningState.Phone.status
+							? warningState.Phone.msg
+							: i18n.lbl_PhoneTooltip}
 					</div>
 				</div>
 
