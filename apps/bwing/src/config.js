@@ -14,6 +14,9 @@ const getAffiliate = langId => {
 		: `https://aff.${arr.join(".")}/?lang=${langId}`;
 };
 
+export const errorPageUrl = langId =>
+	`https://error.bw88.io/404/index_${langId}.html`;
+
 export const siteInfo = langId => {
 	return {
 		siteName: "Bwing",
