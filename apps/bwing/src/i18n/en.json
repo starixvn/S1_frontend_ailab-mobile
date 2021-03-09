@@ -25,7 +25,7 @@
 	"lbl_Amount": "Amount",
 	"lbl_AmountTooltip": "Amount can not be less than 0.",
 	"lbl_Announcement": "Announcement",
-	"lbl_AttachFile": "Please attach your bank slip here. (Optional)",
+	"lbl_AttachFile": "Please attach your bank slip here.",
 	"lbl_Back": "Back",
 	"lbl_BankAccount": "Bank Account",
 	"lbl_BankAccountName": "Account Name",

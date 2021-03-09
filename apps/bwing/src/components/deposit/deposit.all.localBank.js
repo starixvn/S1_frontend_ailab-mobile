@@ -167,7 +167,7 @@ const Payment = props => {
 												btnBar: (
 													<div className="btn-group">
 														<button
-															className="orange"
+															className="blue"
 															onClick={
 																CloseDoneDepositPopup
 															}>
@@ -232,7 +232,7 @@ const Payment = props => {
 				btnBar: (
 					<div className="btn-group">
 						<button
-							className="blue"
+							className="Cancel"
 							onClick={() =>
 								setPopBox(prevState => ({
 									...prevState,
@@ -242,7 +242,7 @@ const Payment = props => {
 							{i18n.lbl_Cancel}
 						</button>
 						<button
-							className="orange"
+							className="blue"
 							onClick={RedirectToNext.bind(
 								this,
 								real_amount,

@@ -25,7 +25,7 @@
 	"lbl_Amount": "Số Tiền",
 	"lbl_AmountTooltip": "Số tiền không thể nhỏ hơn 0.",
 	"lbl_Announcement": "Thông Báo",
-	"lbl_AttachFile": "Vui lòng đính kèm biên lai ngân hàng của bạn ở đây. (không bắt buộc)",
+	"lbl_AttachFile": "Vui lòng đính kèm biên lai ngân hàng của bạn ở đây.",
 	"lbl_Back": "Quay lại",
 	"lbl_BankAccount": "Tài khoản ngân hàng",
 	"lbl_BankAccountName": "Tên tài khoản",

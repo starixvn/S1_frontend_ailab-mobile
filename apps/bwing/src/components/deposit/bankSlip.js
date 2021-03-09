@@ -27,10 +27,6 @@ const GetUploadFileName = files => {
 	return filename;
 };
 
-const defColumns = {
-	refId: "refId"
-};
-
 class Content extends Component {
 	constructor(props) {
 		super(props);
@@ -157,12 +153,13 @@ class Content extends Component {
 
 	HandleUploadAgain = () => {
 		this.setState({ disableUpload: false });
+		this.props.EditField("picFileName", "");
 	};
 
 	checkAllValue = () => {
 		const refIdResult = this.checkRefId(this.props.bankSlipPopBox.refId);
 		const doneUploadResult = this.checkDoneUpload();
-		if (doneUploadResult.status) {
+		if (!doneUploadResult.status) {
 			this.props.setPopBox({
 				isOpen: true,
 				title: this.props.i18n.lbl_ImportantNote,
@@ -171,7 +168,7 @@ class Content extends Component {
 				btnBar: (
 					<div className="btn-group">
 						<button
-							className="orange"
+							className="blue"
 							onClick={() =>
 								this.props.setPopBox({
 									isOpen: false
@@ -182,48 +179,32 @@ class Content extends Component {
 					</div>
 				)
 			});
-		} else if (refIdResult.status) {
+		} else if (!refIdResult.status) {
 			this.setState({ refIdTip: this.props.i18n.lbl_RemindForRefNum });
 		}
 
-		return !refIdResult.status && !doneUploadResult.status;
+		return refIdResult.status && doneUploadResult.status;
 	};
 
 	checkDoneUpload = () => {
-		let result = { status: false, msg: "" };
-		const { files } = this.filebox.current;
-		if (files.length <= 0) {
-			result = { status: true, msg: this.props.i18n.lbl_AttachFile };
+		let result = { status: true, msg: "" };
+		if (
+			!this.state.disableUpload &&
+			!this.props.bankSlipPopBox.picFileName
+		) {
+			result = { status: false, msg: this.props.i18n.lbl_AttachFile };
 		}
 
 		return result;
 	};
 
 	checkRefId = value => {
-		let result = { status: false, msg: "" };
+		let result = { status: true, msg: "" };
 		if (value === "") {
-			result = { status: true, msg: this.props.i18n.lbl_RefnoToolTip };
+			result = { status: false, msg: this.props.i18n.lbl_RefnoToolTip };
 		}
 
 		return result;
-	};
-
-	checkValueHandler = (column, e) => {
-		let result = { status: false, msg: "" };
-		let stateColumn = null;
-		if (column === defColumns.refId) {
-			stateColumn = "warningStateRefId";
-			result = this.checkRefId(e.target.value);
-		}
-
-		if (result.status) {
-			this.setState({
-				[stateColumn]: {
-					status: result.status,
-					msg: result.msg
-				}
-			});
-		}
 	};
 
 	render() {
@@ -309,7 +290,8 @@ class Content extends Component {
 					</div>
 
 					{this.props.bankSlipPopBox.picFileName &&
-					this.state.disableUpload ? (
+					(this.props.bankSlipPopBox.disableSubmit ||
+						this.state.disableUpload) ? (
 						<div className="depositInBox">
 							<p>{i18n.lbl_HaveUploadedFile}</p>
 							<p>
