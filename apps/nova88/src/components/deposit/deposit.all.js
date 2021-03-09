@@ -91,6 +91,7 @@ const Panel = () => {
 		isMountedRef.current = true;
 		return () => {
 			isMountedRef.current = false;
+			setLoading(false);
 		};
 	});
 

@@ -145,7 +145,7 @@ const Payment = props => {
 	return (
 		<div className="depositModule_mobile open">
 			<div className="title text-org icon icon-nova88">
-				{i18n[creditTimeKey]}
+				{`${i18n.lbl_CreditTime}: ${i18n[creditTimeKey]}`}
 			</div>
 
 			<GroupList
