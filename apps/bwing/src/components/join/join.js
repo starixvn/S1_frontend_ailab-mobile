@@ -192,12 +192,6 @@ const Join = () => {
 		}
 	}, []);
 
-	useEffect(() => {
-		if (isMountedRef.current && redirectPath !== null) {
-			setRedirectPath(null);
-		}
-	}, [redirectPath]);
-
 	const GetSiteCurrencyList = () => {
 		api_GetSiteCurrencyList().then(
 			res => {
@@ -282,9 +276,12 @@ const Join = () => {
 		let msg = "";
 		const regx = /^[0-9\s]*$/;
 
-		if (!val || val.length < 9 || !regx.test(val)) {
+		if (!val) {
 			checked = false;
 			msg = "lbl_PhoneRequired";
+		} else if (val.length < 9 || !regx.test(val)) {
+			checked = false;
+			msg = "lbl_PhoneTooltip";
 		} else {
 			const res = await api_site_ExistsPhoneNo({
 				AreaCode: _areaCode,
