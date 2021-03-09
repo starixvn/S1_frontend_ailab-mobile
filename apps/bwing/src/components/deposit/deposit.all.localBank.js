@@ -265,9 +265,7 @@ const Payment = props => {
 
 	return (
 		<div className="depositModule_mobile open">
-			<div className="title text-org icon icon-nova88">
-				{i18n[creditTimeKey]}
-			</div>
+			<div className="title text-org">{`${i18n.lbl_CreditTime}: ${i18n[creditTimeKey]}`}</div>
 			<GroupList
 				title={i18n.lbl_SelectBank}
 				dataList={paymentList}
@@ -294,12 +292,12 @@ const Payment = props => {
 			/>
 			<div className="btn-group">
 				<button
-					className="orange"
+					className="blue"
 					onClick={SubmitProof.bind(this, selBank, accountInfo)}>
 					{i18n.lbl_UploadReceipt}
 				</button>
 				<button
-					className={canSubmit ? "orange" : "darkGray"}
+					className={canSubmit ? "blue" : "darkGray"}
 					onClick={ClickSubmit}>
 					{i18n.lbl_Submit}
 				</button>

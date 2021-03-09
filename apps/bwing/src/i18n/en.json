@@ -317,7 +317,7 @@
 	"msg_VerifyCodeTip":"Please enter the verification number",
 	"lbl_MobileVerifiy": "Mobile verification",
 	"lbl_Affiliates":"Affiliates",
-	"lbl_SelectBank":"Please select the bank",
+	"lbl_SelectBankHint":"Please select the bank",
 	"lbl_MobileVerify": "Mobile verification",
 	"msg_API_SendOTPSMS_5002": "Entered the wrong phone number.",
 	"msg_OTP_Invalid": "Invalid OTP Code",
@@ -513,6 +513,10 @@
 	"lbl_MysteryBox_MysteryBoxRewards":"My Mystery Box Rewards",
 	"lbl_MysteryBox_Congratulations":"Congratulations",
 	"lbl_MysteryBox_CreditedAccount1":"You are rewarded today",
-	"lbl_MysteryBox_CreditedAccount2":"please come back again tomorrow!"
-
+	"lbl_MysteryBox_CreditedAccount2":"please come back again tomorrow!",
+	"lbl_PaymentModes":"Payment Modes",
+	"lbl_SelectChannel":"Select Channel",
+	"lbl_MinMaxAmount":"Min/Max Limit",
+	"lbl_SelectBank":"Select Bank",
+	"lbl_UploadReceipt":"Upload Receipt"
 }

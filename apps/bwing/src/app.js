@@ -12,6 +12,8 @@ import BankInfo from "./components/member/bankInfo";
 import Member from "./pages/member";
 
 import Deposit from "./pages/deposit";
+import DepositHistory from "./components/deposit/deposit.history";
+
 // import DepositHome from "./components/deposit/deposit";
 // import {
 // 	Panel as OnlineBanking,
@@ -29,8 +31,6 @@ import Deposit from "./pages/deposit";
 // 	Panel as LocalBank,
 // 	Main as LocalBankMain
 // } from "./components/deposit/deposit.localBank";
-
-import DepositHistory from "./components/deposit/deposit.history";
 
 import Withdrawal from "./pages/withdrawal";
 import WithdrawalHome from "./components/withdrawal/withdrawal";

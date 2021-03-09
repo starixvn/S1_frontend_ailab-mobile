@@ -317,7 +317,7 @@
 	"msg_VerifyCodeTip": "Vui lòng điền số xác thực",
 	"lbl_MobileVerifiy": "Xác minh số điện thoại",
 	"lbl_Affiliates": "Đại lý",
-	"lbl_SelectBank":"Chọn ngân hàng",
+	"lbl_SelectBankHint":"Chọn ngân hàng",
 	"lbl_MobileVerify": "Xác minh số điện thoại",
 	"msg_API_SendOTPSMS_5002": "Số điện thoại đã điền không đúng.",
 	"msg_OTP_Invalid": "Mã OTP không hợp lệ",
@@ -513,6 +513,11 @@
 	"lbl_MysteryBox_MysteryBoxRewards":"Phần thưởng từ hộp thần kỳ",
 	"lbl_MysteryBox_Congratulations":"Xin chúc mừng!",
 	"lbl_MysteryBox_CreditedAccount1":"Bạn đã nhận thưởng",
-	"lbl_MysteryBox_CreditedAccount2":" hôm nay. Vui lòng thử lại vào ngày mai!"
+	"lbl_MysteryBox_CreditedAccount2":" hôm nay. Vui lòng thử lại vào ngày mai!",
+	"lbl_PaymentModes":"Payment Modes",
+	"lbl_SelectChannel":"Select Channel",
+	"lbl_MinMaxAmount":"Min/Max Limit",
+	"lbl_SelectBank":"Select Bank",
+	"lbl_UploadReceipt":"Upload Receipt"
 
 }

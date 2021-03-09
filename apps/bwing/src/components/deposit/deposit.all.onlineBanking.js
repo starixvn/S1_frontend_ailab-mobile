@@ -144,7 +144,7 @@ const Payment = props => {
 							{i18n.lbl_Cancel}
 						</button>
 						<button
-							className="orange"
+							className="blue"
 							onClick={RedirectToNext.bind(this, real_amount)}>
 							{i18n.lbl_Submit}
 						</button>
@@ -158,9 +158,7 @@ const Payment = props => {
 
 	return (
 		<div className="depositModule_mobile open">
-			<div className="title text-org icon icon-nova88">
-				{i18n[creditTimeKey]}
-			</div>
+			<div className="title text-org">{`${i18n.lbl_CreditTime}: ${i18n[creditTimeKey]}`}</div>
 
 			<GroupList
 				title={i18n.lbl_PaymentModes}
