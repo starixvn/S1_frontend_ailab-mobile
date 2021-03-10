@@ -278,7 +278,7 @@ class Modal extends Component {
 						/>
 						<i className="icon icon-folder-upload" />
 						{` ${
-							this.filebox?.current?.[0]
+							this.filebox?.current?.files?.[0]
 								? this.props.bankSlipPopBox.picFileName
 								: i18n.msg_SelectFile
 						} `}
