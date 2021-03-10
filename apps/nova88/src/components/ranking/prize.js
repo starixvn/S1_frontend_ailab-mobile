@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { RankImg } from "./rankList";
-import { defPrize } from "./def";
+import { defPrize, defEuroTourBtns } from "./def";
+import EuroAgenda from "./euroAgenda";
 
 const langMappingCurr = {
 	en: "MYR",
@@ -42,11 +43,17 @@ const PrizeList = ({ userInfo, category, i18n }) => {
 	});
 
 	return (
-		<div className="rankList">
-			<ul>
-				<li>{i18n.lbl_Ranking}</li>
-				<li>{i18n.lbl_Rewards}</li>
-			</ul>
+		<div className="rankList open">
+			{category === defEuroTourBtns.MonthlyTournament.value && (
+				<EuroAgenda i18n={i18n} />
+			)}
+			{category !== defEuroTourBtns.MonthlyTournament.value && (
+				<ul>
+					<li>{i18n.lbl_Ranking}</li>
+					<li>{i18n.lbl_Rewards}</li>
+				</ul>
+			)}
+
 			{rows}
 		</div>
 	);

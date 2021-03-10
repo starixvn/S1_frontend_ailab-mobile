@@ -37,23 +37,25 @@ export const useGetRanking = ({
 	isLogin,
 	userName,
 	setLoading,
-	isLastEvent = false
+	isLastEvent = false,
+	DefBtns = {},
+	topNum
 }) => {
 	const [datas, setDatas] = useState([]);
 	const [lastUpdTime, setLastUpdTime] = useState(SetUpdTime());
 
 	useEffect(() => {
 		if (isOpen && isLogin) {
-			const EventCode = handleEventCode(isLastEvent);
-			const lBCategoryId = defBtns[selected]?.lBCategoryId;
+			const EventCode =
+				DefBtns[selected]?.value || handleEventCode(isLastEvent);
+			const lBCategoryId = defBtns[selected]?.lBCategoryId || 1;
 			const beforeDays = isNaN(BeforeDays)
 				? Number(defDayBtns.Yesterday.value)
 				: Number(BeforeDays);
-
 			const GetRankingDatas = async () => {
 				setLoading(true);
 				try {
-					const TopNum = getTopNum(isLastEvent);
+					const TopNum = topNum || getTopNum(isLastEvent);
 					const res = await api.events.GetLeaderboardListV2({
 						lBCategoryId,
 						TopNum,

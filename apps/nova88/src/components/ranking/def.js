@@ -4,7 +4,16 @@ export const defElemType = {
 	Event: "Event",
 	Ranking: "Ranking",
 	Record: "Record",
-	LastEvent: "LastEvent"
+	LastEvent: "LastEvent",
+	Final: "Final",
+	Tournament: "Tournament",
+	Rewards: "Rewards",
+	EuroDate1: "EuroDate1",
+	EuroDate2: "EuroDate2",
+	EuroDate3: "EuroDate3",
+	EuroDate4: "EuroDate4",
+	FinalTournament: "FinalTournament",
+	MonthlyTournament: "MonthlyTournament"
 };
 
 export const defBtnsOfCategory = {
@@ -51,6 +60,66 @@ export const defBtns = {
 	}
 };
 
+export const defEuroBtns = {
+	Event: {
+		displayKey: "lbl_Event",
+		value: "Event",
+		elemType: defElemType.Event,
+		beforeLogin: true
+	},
+	Final: {
+		displayKey: "lbl_Final",
+		value: "Final",
+		elemType: defElemType.Final
+	},
+	Tournament: {
+		displayKey: "lbl_TournamentPoints",
+		value: "Tournament",
+		elemType: defElemType.Tournament
+	},
+	Records: {
+		displayKey: "lbl_Records",
+		value: "Records",
+		elemType: defElemType.Record
+	}
+};
+
+export const defEuroDateBtns = {
+	2021021: {
+		displayKey: "lbl_EuroDate1",
+		value: "2021021",
+		elemType: defElemType.EuroDate1
+	},
+	2021022: {
+		displayKey: "lbl_EuroDate2",
+		value: "2021022",
+		elemType: defElemType.EuroDate2
+	},
+	2021023: {
+		displayKey: "lbl_EuroDate3",
+		value: "2021023",
+		elemType: defElemType.EuroDate3
+	},
+	2021024: {
+		displayKey: "lbl_Final",
+		value: "2021024",
+		elemType: defElemType.EuroDate4
+	}
+};
+
+export const defEuroTourBtns = {
+	FinalTournament: {
+		displayKey: "lbl_Final",
+		value: "FinalTournament",
+		elemType: defElemType.FinalTournament
+	},
+	MonthlyTournament: {
+		displayKey: "lbl_MonthlyTournament",
+		value: "MonthlyTournament",
+		elemType: defElemType.MonthlyTournament
+	}
+};
+
 export const defDayBtns = {
 	Yesterday: {
 		displayKey: "lbl_YesterDay",
@@ -67,6 +136,107 @@ export const defDayBtns = {
 };
 
 export const defPrize = () => ({
+	MYR: {
+		[defEuroTourBtns.FinalTournament.value]: [
+			{
+				rank: "冠军",
+				prize: "HUBLOT Big Bang Gold Ceramic"
+			},
+			{
+				rank: "亚军",
+				prize: `HUBLOT Classic Fusion Aerofusion Chronograph Titanium `
+			},
+			{
+				rank: "季军",
+				prize: `HUBLOT Classic Fusion Chronograph Titanium Blue `
+			},
+			{ rank: "殿军", prize: `马币 18,000` },
+			{ rank: "第五名", prize: `马币 15,000` },
+			{ rank: "第六名", prize: `马币 13,000` },
+			{ rank: "第七名", prize: `马币 10,000` },
+			{ rank: "第八名", prize: `马币 8,000` },
+			{ rank: "第九名", prize: `马币 5,000` }
+		],
+		[defEuroTourBtns.MonthlyTournament.value]: [
+			{
+				rank: "冠军",
+				prize: "马币 15,000"
+			},
+			{ rank: "亚军", prize: `马币 5,000` },
+			{ rank: "季军", prize: `马币 3,000` }
+		]
+	},
+	IDR: {
+		[defEuroTourBtns.FinalTournament.value]: [
+			{ rank: "PEMENANG", prize: "LOGAM MULIA 100g" },
+			{ rank: "Juara 2", prize: `LOGAM MULIA 75g` },
+			{ rank: "Juara 3", prize: `LOGAM MULIA 50g` },
+			{ rank: "Juara 4", prize: `IDR 35,000,000` },
+			{ rank: "Juara 5", prize: `IDR 30,000,000` },
+			{ rank: "Juara 6", prize: `IDR 25,000,000` },
+			{ rank: "Juara 7", prize: `IDR 15,000,000` },
+			{ rank: "Juara 8", prize: `IDR 8,000,000` },
+			{ rank: "Juara 9", prize: `IDR 5,000,000` }
+		],
+		[defEuroTourBtns.MonthlyTournament.value]: [
+			{ rank: "PEMENANG", prize: "IDR 15,000,000" },
+			{ rank: "Juara 2", prize: `IDR 12,000,000` },
+			{ rank: "Juara 3", prize: `IDR 8,000,000` }
+		]
+	},
+	THB: {
+		[defEuroTourBtns.FinalTournament.value]: [
+			{ rank: "รางวัลชนะเลิศ", prize: "THB 80,000 " },
+			{ rank: "รองชนะเลิศอันดับ 1", prize: `THB 50,000` },
+			{ rank: "รองชนะเลิศอันดับ 2", prize: `THB 35,000` },
+			{ rank: "รองชนะเลิศอันดับ 3", prize: `THB 30,000` },
+			{ rank: "รองชนะเลิศอันดับ 4", prize: `THB 25,000` },
+			{ rank: "รองชนะเลิศอันดับ 5", prize: `THB 20,000` },
+			{ rank: "รองชนะเลิศอันดับ 6", prize: `THB 15,000` },
+			{ rank: "รองชนะเลิศอันดับ 7", prize: `THB 10,000` },
+			{ rank: "รองชนะเลิศอันดับ 8", prize: `THB 5,000` }
+		],
+		[defEuroTourBtns.MonthlyTournament.value]: [
+			{ rank: "รางวัลชนะเลิศ", prize: "THB 15,000 " },
+			{ rank: "รองชนะเลิศอันดับ 1", prize: `THB 12,000` },
+			{ rank: "รองชนะเลิศอันดับ 2", prize: `THB 8,000` }
+		]
+	},
+	RMB: {
+		[defBtnsOfCategory.Sports.value]: [
+			{
+				rank: "1",
+				prize: "MacBook Pro 13 M1 256GB"
+			},
+			{ rank: "2", prize: `iPad Air 64GB Wi-Fi+Cellular ` },
+			{ rank: "3", prize: `iPad 10.2inch 128GB Wi-Fi ` },
+			{ rank: "4", prize: `988 紅包` },
+			{ rank: "5", prize: `888 紅包` },
+			{ rank: "6", prize: `788 紅包` },
+			{ rank: "7", prize: `688 紅包` },
+			{ rank: "8", prize: `588 紅包` },
+			{ rank: "9", prize: `188 紅包` },
+			{ rank: "10", prize: `88 紅包` }
+		],
+		[defBtnsOfCategory.LiveCasino.value]: [
+			{
+				rank: "1",
+				prize: "MacBook Pro 13 M1 256GB"
+			},
+			{ rank: "2", prize: `iPad Air 64GB Wi-Fi+Cellular ` },
+			{ rank: "3", prize: `iPad 10.2inch 128GB Wi-Fi ` },
+			{ rank: "4", prize: `988 紅包` },
+			{ rank: "5", prize: `888 紅包` },
+			{ rank: "6", prize: `788 紅包` },
+			{ rank: "7", prize: `688 紅包` },
+			{ rank: "8", prize: `588 紅包` },
+			{ rank: "9", prize: `188 紅包` },
+			{ rank: "10", prize: `88 紅包` }
+		]
+	}
+});
+
+export const defEuroPrize = () => ({
 	MYR: {
 		[defBtnsOfCategory.Sports.value]: [
 			{
