@@ -6,7 +6,11 @@ import RankList from "./rankList";
 import { loadingContext, defNavPanel } from "../common/context";
 import BtnBar from "../common/btnBar";
 
-const Final = ({ isOpen, i18n = {}, userInfo: { isLogin, userName } }) => {
+const Final = ({
+	isOpen,
+	i18n = {},
+	userInfo: { isLogin, userName, currencyId, langId }
+}) => {
 	const { loading, setLoading } = useContext(loadingContext);
 
 	const handleLogin = () => {
@@ -23,9 +27,7 @@ const Final = ({ isOpen, i18n = {}, userInfo: { isLogin, userName } }) => {
 		selected,
 		isLogin,
 		userName,
-		setLoading,
-		DefBtns: defEuroDateBtns,
-		topNum: 9
+		setLoading
 	});
 
 	return (
@@ -46,6 +48,8 @@ const Final = ({ isOpen, i18n = {}, userInfo: { isLogin, userName } }) => {
 				datas={datas}
 				selected={selected}
 				lastUpdTime={lastUpdTime}
+				currencyId={currencyId}
+				langId={langId}
 			/>
 		</div>
 	);

@@ -10,7 +10,6 @@ const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
 	const { selected, handleSelect } = useHandleSelect({
 		defaultSelect: defEuroTourBtns.FinalTournament.value
 	});
-
 	return (
 		<div className={`rankEvent${isOpen ? " open" : ""}`}>
 			<div className="title">{i18n.lbl_Event}</div>

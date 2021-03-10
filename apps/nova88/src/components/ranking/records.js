@@ -10,7 +10,7 @@ import { loadingContext } from "../common/context";
 const Records = ({
 	isOpen,
 	i18n,
-	userInfo: { isLogin, userName },
+	userInfo: { isLogin, userName, currencyId, langId },
 	isLastEvent,
 	title
 }) => {
@@ -20,7 +20,7 @@ const Records = ({
 	// 	defaultSelect: defBtnsOfCategory.Sports.value,
 	// 	isLogin
 	// });
-	let selected = 0;
+	let selected = "2021021";
 	if (moment(currentDate).isBetween("2021-03-13", "2021-04-12")) {
 		selected = defEuroDateBtns[2021021].value;
 	} else if (moment(currentDate).isBetween("2021-04-13", "2021-05-12")) {
@@ -39,8 +39,7 @@ const Records = ({
 		isLogin,
 		userName,
 		setLoading,
-		isLastEvent,
-		topNum: 9
+		isLastEvent
 	});
 
 	return (
@@ -80,6 +79,8 @@ const Records = ({
 				datas={datas}
 				selected="records"
 				lastUpdTime={lastUpdTime}
+				currencyId={currencyId}
+				langId={langId}
 			/>
 		</div>
 	);

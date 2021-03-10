@@ -4,41 +4,52 @@ import { RankImg } from "./rankList";
 import { defPrize, defEuroTourBtns } from "./def";
 import EuroAgenda from "./euroAgenda";
 
-const langMappingCurr = {
-	en: "MYR",
-	cs: "MYR",
-	id: "IDR",
-	th: "THB"
-};
+// const langMappingCurr = {
+// 	en: "MYR",
+// 	cs: "MYR",
+// 	id: "IDR",
+// 	th: "THB"
+// };
 
-export const currCustomMapping = {
-	13: "MYR"
-};
+// export const currCustomMapping = {
+// 	13: "MYR"
+// };
 
-const Prize = ({ currencyId, category, langId, i18n }) => {
-	const currency = currencyId
-		? currCustomMapping[currencyId] ?? i18n[`Currency_${currencyId}`]
-		: langMappingCurr[langId];
+// "Currency_15": "IDR"
+// "Currency_2": "MYR",
+// "Currency_4": "THB",
 
-	return defPrize({ i18n })[currency]
-		? defPrize({ i18n })[currency][category]
-		: defPrize({ i18n }).MYR[category];
+const Prize = ({ currencyId = 2, category, langId = "cs", i18n }) => {
+	// const currency = currencyId
+	// 	? currCustomMapping[currencyId] ?? i18n[`Currency_${currencyId}`]
+	// 	: langMappingCurr[langId];
+
+	// return defPrize({ i18n })[currency]
+	// 	? defPrize({ i18n })[currency][category]
+	// 	: defPrize({ i18n }).MYR[category];
+	const prize = defPrize();
+	return prize[i18n[`Currency_${currencyId}`]][langId][category];
 };
 
 const PrizeList = ({ userInfo, category, i18n }) => {
 	const { currencyId, langId } = userInfo;
 	const getPrize = Prize({ currencyId, langId, category, i18n });
 
-	const rows = getPrize.map(item => {
+	const rows = getPrize.map((item, index) => {
 		const { rank, prize } = item;
 		return (
-			<ul key={`prize-${category}-${currencyId}-${langId}-${rank}`}>
-				<li>
-					<RankImg Ranking={rank} />
-					{rank}
-				</li>
-				<li>{prize}</li>
-			</ul>
+			index < 9 && (
+				<ul
+					key={`prize-${category}-${currencyId}-${langId}-${
+						index + 1
+					}`}>
+					<li>
+						<RankImg Ranking={index + 1} />
+						{rank}
+					</li>
+					<li>{prize}</li>
+				</ul>
+			)
 		);
 	});
 

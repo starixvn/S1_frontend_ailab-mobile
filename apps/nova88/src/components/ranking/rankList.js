@@ -1,6 +1,7 @@
 import React from "react";
 import moment from "moment";
 import PropTypes from "prop-types";
+import { defPrize } from "./def";
 import no1 from "../../styles/img/no1.png";
 import no2 from "../../styles/img/no2.png";
 import no3 from "../../styles/img/no3.png";
@@ -16,12 +17,12 @@ export const RankImg = ({ Ranking }) => {
 	return img;
 };
 
-const RankItem = ({ Ranking, userName, turnover, isCurrentUser }) => {
+const RankItem = ({ Ranking, userName, turnover, isCurrentUser, rank }) => {
 	return (
 		<ul className={isCurrentUser ? "userRank" : ""}>
 			<li>
 				<RankImg Ranking={Ranking} />
-				{Ranking}
+				{rank[Ranking - 1]?.rank ?? Ranking}
 			</li>
 			<li>{userName}</li>
 			<li>{number_format(turnover)}</li>
@@ -38,7 +39,7 @@ RankItem.propTypes = {
 		.isRequired
 };
 
-const RankItems = ({ datas, selected }) =>
+const RankItems = ({ datas, selected, prize }) =>
 	datas?.map((data, idx) => {
 		const { userName, wTurnover, rank } = data;
 		return (
@@ -47,19 +48,31 @@ const RankItems = ({ datas, selected }) =>
 				Ranking={rank ?? idx + 1}
 				userName={userName}
 				turnover={wTurnover}
+				rank={prize}
 				isCurrentUser={Boolean(rank)}
 			/>
 		);
 	});
-
+const Prize = ({
+	currencyId = 2,
+	category = "FinalTournament",
+	langId = "cs",
+	i18n
+}) => {
+	const prize = defPrize();
+	return prize[i18n[`Currency_${currencyId}`]][langId][category];
+};
 const RankList = ({
 	loading,
 	i18n = {},
 	datas,
 	selected,
 	lastUpdTime,
-	isLastEvent
+	isLastEvent,
+	langId,
+	currencyId
 }) => {
+	const prize = Prize({ currencyId, langId, i18n });
 	return (
 		<>
 			{!loading && (!datas || datas.length === 0) ? (
@@ -73,7 +86,11 @@ const RankList = ({
 						<li>{i18n.lbl_Username}</li>
 						<li>{i18n.lbl_Points}</li>
 					</ul>
-					<RankItems datas={datas} selected={selected} />
+					<RankItems
+						datas={datas}
+						selected={selected}
+						prize={prize}
+					/>
 				</div>
 			)}
 			{isLastEvent ? null : (

@@ -7,11 +7,11 @@ import { useGetRanking } from "./hook";
 import { defEuroDateBtns } from "./def";
 
 const TournamentPoints = ({ isOpen, userInfo, i18n = {} }) => {
-	const { isLogin, userName } = userInfo;
+	const { isLogin, userName, currencyId, langId } = userInfo;
 	const { loading, setLoading } = useContext(loadingContext);
 	const currentDate = moment().format("YYYY-MM-DD");
 
-	let selected = 0;
+	let selected = "2021021";
 	if (moment(currentDate).isBetween("2021-03-13", "2021-04-12")) {
 		selected = defEuroDateBtns[2021021].value;
 	} else if (moment(currentDate).isBetween("2021-04-13", "2021-05-12")) {
@@ -27,7 +27,6 @@ const TournamentPoints = ({ isOpen, userInfo, i18n = {} }) => {
 		isLogin,
 		userName,
 		setLoading,
-		topNum: 9,
 		selected
 	});
 
@@ -43,6 +42,8 @@ const TournamentPoints = ({ isOpen, userInfo, i18n = {} }) => {
 				datas={datas}
 				selected=""
 				lastUpdTime={lastUpdTime}
+				currencyId={currencyId}
+				langId={langId}
 			/>
 		</div>
 	);
