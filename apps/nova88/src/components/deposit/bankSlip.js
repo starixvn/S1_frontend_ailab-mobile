@@ -192,14 +192,12 @@ class Modal extends Component {
 			result = this.checkRefId(e.target.value);
 		}
 
-		if (result.status) {
-			this.setState({
-				[stateColumn]: {
-					status: result.status,
-					msg: result.msg
-				}
-			});
-		}
+		this.setState({
+			[stateColumn]: {
+				status: result.status,
+				msg: result.msg
+			}
+		});
 	};
 
 	render() {
@@ -273,7 +271,7 @@ class Modal extends Component {
 						/>
 						<i className="icon icon-folder-upload" />
 						{` ${
-							this.props.bankSlipPopBox.picFileName
+							this.filebox?.current?.files?.[0]
 								? this.props.bankSlipPopBox.picFileName
 								: i18n.msg_SelectFile
 						} `}
