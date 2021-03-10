@@ -30,6 +30,12 @@ export default {
 		root: "join"
 	},
 	deposit: {
+		root: "deposit"
+	},
+	depositHistory: {
+		root: "depositHistory"
+	},
+	depositOld: {
 		root: "deposit",
 		sub: {
 			root: "/",

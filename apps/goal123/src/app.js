@@ -104,6 +104,11 @@ const Index = () => {
 						</FriendReferral>
 
 						<Deposit path={path.deposit.root}>
+							<Deposit path="/" />
+							<DepositHistory path={path.depositHistory.root} />
+						</Deposit>
+
+						{/* <Deposit path={path.deposit.root}>
 							<DepositHome path={path.deposit.sub.root} />
 							<OnlineBanking
 								path={path.deposit.sub.onlineBank.root}>
@@ -134,7 +139,8 @@ const Index = () => {
 							<DepositHistory
 								path={path.deposit.sub.history.root}
 							/>
-						</Deposit>
+						</Deposit> */}
+
 						<Withdrawal path={path.withdrawal.root}>
 							<WithdrawalHome path={path.withdrawal.sub.root} />
 							<WithdrawalHistory

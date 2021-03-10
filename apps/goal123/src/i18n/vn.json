@@ -25,7 +25,7 @@
 	"lbl_Amount": "Số Tiền",
 	"lbl_AmountTooltip": "Số tiền không thể nhỏ hơn 0.",
 	"lbl_Announcement": "Thông Báo",
-	"lbl_AttachFile": "Vui lòng đính kèm Biên lai ngân hàng của bạn ở đây. (Không bắt buộc)",
+	"lbl_AttachFile": "Vui lòng đính kèm Biên lai ngân hàng của bạn ở đây.",
 	"lbl_Back": "Quay lại",
 	"lbl_BankAccount": "Tài khoản ngân hàng",
 	"lbl_BankAccountName": "Tên Tài Khoản",
@@ -316,7 +316,7 @@
 	"msg_VerifyCodeTip": "Please enter the verification number",
 	"lbl_MobileVerifiy": "Xác minh số điện thoại",
 	"lbl_Affiliates": "Đại lý",
-	"lbl_SelectBank":"Chọn ngân hàng",
+	"lbl_SelectBankHint":"Chọn ngân hàng",
 	"lbl_MobileVerify": "Xác minh số điện thoại",
 	"msg_API_SendOTPSMS_5002": "Entered the wrong phone number.",
 	"msg_OTP_Invalid": "Invalid OTP Code",
@@ -445,6 +445,14 @@
 	"lbl_MysteryBox_MysteryBoxRewards":"Phần thưởng từ rương thần",
 	"lbl_MysteryBox_Congratulations":"Xin chúc mừng!",
 	"lbl_MysteryBox_CreditedAccount1":"Bạn đã nhận thưởng",
-	"lbl_MysteryBox_CreditedAccount2":" hôm nay. Vui lòng thử lại vào ngày mai!"
-
+	"lbl_MysteryBox_CreditedAccount2":" hôm nay. Vui lòng thử lại vào ngày mai!",
+	"lbl_PaymentModes":"Payment Modes",
+	"lbl_SelectChannel":"Select Channel",
+	"lbl_MinMaxAmount":"Min/Max Limit",
+	"lbl_SelectBank":"Select Bank",
+	"lbl_UploadReceipt":"Upload Receipt",
+	"lbl_DepositLocalBankNotes1":"Please use the bank account with NAME AS REGISTERED and in your ID, otherwise your transactions (deposit/ withdrawal) WILL BE REJECTED. This is to ensure your account security and experiences while  gaming with us!",
+	"lbl_DepositLocalBankNotes2":"The bank account is only valid for this transaction. Always check the bank details first before processing your transfer.",
+	"lbl_DepositLocalBankNotes3":"Please choose “Sender bears the transfer fee”.",
+	"lbl_DepositLocalBankNotes4":"Upload your pay slip to speed up processing time."
 }
