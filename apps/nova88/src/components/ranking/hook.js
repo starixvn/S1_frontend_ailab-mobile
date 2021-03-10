@@ -48,7 +48,7 @@ export const useGetRanking = ({
 		if (isOpen && isLogin) {
 			const EventCode =
 				DefBtns[selected]?.value || handleEventCode(isLastEvent);
-			const lBCategoryId = defBtns[selected]?.lBCategoryId || 1;
+			const lBCategoryId = defBtns[selected]?.lBCategoryId || 0;
 			const beforeDays = isNaN(BeforeDays)
 				? Number(defDayBtns.Yesterday.value)
 				: Number(BeforeDays);
