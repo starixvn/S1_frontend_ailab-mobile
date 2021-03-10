@@ -173,9 +173,6 @@ header > a > img {
 }
 
 header .Join, header .Login {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -197,6 +194,7 @@ header .Join, header .Login {
       -ms-flex-pack: center;
           justify-content: center;
   pointer-events: none;
+  overflow-y: scroll;
 }
 
 header .Join.open, header .Login.open {
@@ -227,7 +225,7 @@ header .Join > .close, header .Login > .close {
 
 header .Join > img, header .Login > img {
   width: 40vw;
-  margin: 0 auto 2vw;
+  margin: 0 calc(50% - 20vw) 2vw;
 }
 
 header .Join .title, header .Login .title {
@@ -323,6 +321,7 @@ header .Join button, header .Login button {
   border-radius: 3px;
   color: white;
   padding: 3vw;
+  width: 100%;
 }
 
 header .Join .Terms, header .Login .Terms {
@@ -1753,6 +1752,10 @@ footer > a.open .circleAnimation + span {
 .btn-group button.yellow, .btn-group a.yellow {
   background: #fab617;
   color: white;
+}
+
+.btn-group button.darkGray, .btn-group a.darkGray {
+  background: #666;
 }
 
 .statementPage a.blue {
@@ -5296,9 +5299,6 @@ span.important {
 }
 
 .Join {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -5778,6 +5778,23 @@ span.important {
   margin: 2vw 0;
 }
 
+.depositModule_mobile .selectModule > div.info, .depositModule_online .selectModule > div.info, .depositModule_local .selectModule > div.info {
+  width: calc(100% - 12vw);
+  padding: 2vw 5vw;
+  background: rgba(3, 12, 27, 0.95);
+  margin: auto;
+  border-radius: 5px;
+}
+
+.depositModule_mobile .selectModule > div.info .checkBank, .depositModule_online .selectModule > div.info .checkBank, .depositModule_local .selectModule > div.info .checkBank {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .depositModule_mobile .selectModule > div .bankName, .depositModule_online .selectModule > div .bankName, .depositModule_local .selectModule > div .bankName {
   width: 20vw;
   background: white;
@@ -5817,39 +5834,6 @@ span.important {
 
 .depositModule_mobile .inputBox .tip, .depositModule_online .inputBox .tip, .depositModule_local .inputBox .tip {
   margin-left: 2.5vw;
-  display: none;
-}
-
-.depositModule_mobile .inputBox .tip.open, .depositModule_online .inputBox .tip.open, .depositModule_local .inputBox .tip.open {
-  display: block;
-}
-
-.depositModule_mobile .btn-group, .depositModule_online .btn-group, .depositModule_local .btn-group {
-  width: auto;
-  display: unset;
-}
-
-.depositModule_mobile .btn-group button, .depositModule_online .btn-group button, .depositModule_local .btn-group button {
-  width: 50vw;
-  margin: auto;
-}
-
-.depositModule_mobile .btn-group .tip, .depositModule_online .btn-group .tip, .depositModule_local .btn-group .tip {
-  color: #fff;
-  border: 1px solid #a1a1a1;
-  border-radius: 5px;
-  padding: 2vw;
-  margin-top: 2vw;
-}
-
-.depositModule_mobile + .btn-group, .depositModule_online + .btn-group, .depositModule_local + .btn-group {
-  width: 110%;
-  margin-left: -5%;
-  margin: 3vw 0 3vw -5%;
-}
-
-.depositModule_mobile .buttonBox button .icon, .depositModule_online .buttonBox button .icon, .depositModule_local .buttonBox button .icon {
-  background: #fab617;
 }
 
 .depositModule_mobile .note, .depositModule_online .note, .depositModule_local .note {
@@ -5865,5 +5849,28 @@ span.important {
 
 .depositModule_mobile .note ol li, .depositModule_online .note ol li, .depositModule_local .note ol li {
   margin: 1vw;
+}
+
+.depositModule_mobile a.clickBtn, .depositModule_online a.clickBtn, .depositModule_local a.clickBtn {
+  background: #f0eff5;
+  border-radius: 100%;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #1D3662;
+  margin-left: 2vw;
+  width: 7vw;
+  height: 7vw;
+}
+
+.depositModule_mobile a.clickBtn:before, .depositModule_online a.clickBtn:before, .depositModule_local a.clickBtn:before {
+  font-size: 4vw;
 }
 /*# sourceMappingURL=style.css.map */
