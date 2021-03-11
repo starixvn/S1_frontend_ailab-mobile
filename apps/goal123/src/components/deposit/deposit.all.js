@@ -219,7 +219,8 @@ const Panel = () => {
 			isOpen: true,
 			amount: number_format(amount, _isConvert),
 			picFileName,
-			refId
+			refId,
+			disableSubmit: false
 		}));
 		// }
 	};

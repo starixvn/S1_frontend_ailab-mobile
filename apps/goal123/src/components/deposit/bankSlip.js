@@ -11,7 +11,7 @@ import {
 	api_UploadReceipt,
 	api_SetDepositReceipt
 } from "../../service/api/payment";
-import Inputbox from "../common/inputbox";
+// import Inputbox from "../common/inputbox";
 
 const GetUploadFileName = files => {
 	const fullPath = files[0].name;
@@ -37,7 +37,10 @@ class Modal extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { processing: false, warningStateRefId: {} };
+		this.state = {
+			processing: false
+			// warningStateRefId: {}
+		};
 	}
 
 	componentDidMount() {
@@ -139,7 +142,7 @@ class Modal extends Component {
 	};
 
 	checkAllValue = () => {
-		const refIdResult = this.checkRefId(this.props.bankSlipPopBox.refId);
+		// const refIdResult = this.checkRefId(this.props.bankSlipPopBox.refId);
 		const doneUploadResult = this.checkDoneUpload();
 		if (doneUploadResult.status) {
 			this.props.setPopBox({
@@ -161,16 +164,19 @@ class Modal extends Component {
 					</div>
 				)
 			});
-		} else if (refIdResult.status) {
-			this.setState({
-				warningStateRefId: {
-					status: refIdResult.status,
-					msg: refIdResult.msg
-				}
-			});
 		}
+		// else if (refIdResult.status) {
+		// 	this.setState({
+		// 		warningStateRefId: {
+		// 			status: refIdResult.status,
+		// 			msg: refIdResult.msg
+		// 		}
+		// 	});
+		// }
 
-		return !refIdResult.status && !doneUploadResult.status;
+		// return !refIdResult.status && !doneUploadResult.status;
+
+		return !doneUploadResult.status;
 	};
 
 	checkDoneUpload = () => {
@@ -182,29 +188,37 @@ class Modal extends Component {
 		return result;
 	};
 
-	checkRefId = value => {
-		let result = { status: false, msg: "" };
-		if (value === "") {
-			result = { status: true, msg: this.props.i18n.lbl_RefnoToolTip };
+	// checkRefId = value => {
+	// 	let result = { status: false, msg: "" };
+	// 	if (value === "") {
+	// 		result = { status: true, msg: this.props.i18n.lbl_RefnoToolTip };
+	// 	}
+
+	// 	return result;
+	// };
+
+	// checkValueHandler = (column, e) => {
+	// 	let result = { status: false, msg: "" };
+	// 	let stateColumn = null;
+	// 	if (column === defColumns.refId) {
+	// 		stateColumn = "warningStateRefId";
+	// 		result = this.checkRefId(e.target.value);
+	// 	}
+
+	// 	this.setState({
+	// 		[stateColumn]: {
+	// 			status: result.status,
+	// 			msg: result.msg
+	// 		}
+	// 	});
+	// };
+
+	onClickCancel = () => {
+		if (this.props.bankSlipPopBox.disableSubmit) {
+			this.props.closePopBoxAndKeepData();
+		} else {
+			this.props.handlePopBox();
 		}
-
-		return result;
-	};
-
-	checkValueHandler = (column, e) => {
-		let result = { status: false, msg: "" };
-		let stateColumn = null;
-		if (column === defColumns.refId) {
-			stateColumn = "warningStateRefId";
-			result = this.checkRefId(e.target.value);
-		}
-
-		this.setState({
-			[stateColumn]: {
-				status: result.status,
-				msg: result.msg
-			}
-		});
 	};
 
 	render() {
@@ -278,7 +292,7 @@ class Modal extends Component {
 						/>
 						<i className="icon icon-folder-upload" />
 						{` ${
-							this.filebox?.current?.files?.[0]
+							this.props.bankSlipPopBox.picFileName
 								? this.props.bankSlipPopBox.picFileName
 								: i18n.msg_SelectFile
 						} `}
@@ -289,7 +303,7 @@ class Modal extends Component {
 						</button>
 					)}
 				</div>
-				<span className="text">
+				{/* <span className="text">
 					{i18n.lbl_DepositTime}{" "}
 					<span className="text-org">({moment().format("Z")})</span>
 				</span>
@@ -301,17 +315,8 @@ class Modal extends Component {
 						value={this.props.bankSlipPopBox.depositTime ?? ""}
 						onChange={this.EditField.bind(this, "depositTime")}
 					/>
-				</div>
-				{/* <span className="text">{i18n.lbl_RefnoToolTip}</span>
-				<div className="inputBox">
-					<i className="icon icon-pencil" />
-					<input
-						placeholder={i18n.msg_ReferenceNumber}
-						value={this.props.bankSlipPopBox.refId ?? ""}
-						onChange={this.EditField.bind(this, "refId")}
-					/>
 				</div> */}
-				<span className="text">{i18n.lbl_Refno}</span>
+				{/* <span className="text">{i18n.lbl_Refno}</span>
 				<Inputbox
 					icon="icon-pencil"
 					inputType="text"
@@ -320,15 +325,11 @@ class Modal extends Component {
 					onChange={this.EditField.bind(this, defColumns.refId)}
 					onBlur={this.checkValueHandler.bind(this, defColumns.refId)}
 					Warning={this.state.warningStateRefId}
-				/>
+				/> */}
 				<div className="btn-group">
 					<button
 						className="blue closePopup"
-						onClick={
-							this.props.bankSlipPopBox.disableSubmit
-								? this.props.closePopBoxAndKeepData
-								: this.props.handlePopBox
-						}>
+						onClick={this.onClickCancel}>
 						{i18n.lbl_Cancel}
 					</button>
 					<button
@@ -376,7 +377,10 @@ const Panel = () => {
 
 	const closePopBoxAndKeepData = () => {
 		if (isMountedRef.current) {
-			setbankSlipPopBox(prev => ({ ...prev, isOpen: false }));
+			setbankSlipPopBox(prev => ({
+				...prev,
+				isOpen: false
+			}));
 		}
 	};
 
@@ -394,6 +398,7 @@ const Panel = () => {
 
 	return (
 		<Modal
+			key={`bankslip-${bankSlipPopBox.transId}-${bankSlipPopBox.sysId}`}
 			i18n={i18n}
 			bankSlipPopBox={bankSlipPopBox}
 			handlePopBox={handlePopBox}

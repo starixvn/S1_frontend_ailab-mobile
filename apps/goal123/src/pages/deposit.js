@@ -32,10 +32,11 @@ const IndexPage = props => {
 			{props.children ? (
 				<TabPage defTabs={defTabs}>{props.children}</TabPage>
 			) : (
-				<Deposit />
+				<>
+					<Deposit />
+					<BankSlip />
+				</>
 			)}
-
-			<BankSlip />
 		</bankSlipPopBoxContext.Provider>
 	);
 };
