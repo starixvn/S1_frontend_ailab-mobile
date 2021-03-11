@@ -46,7 +46,7 @@ export const checkAmount = (amount, minAmount, maxAmount, _isConvert, i18n) => {
 			status = 2;
 			msg = i18n.lbl_AmountTooltip?.replace(
 				"{{0}}",
-				number_format(minAmount, _isConvert)
+				minAmount ? number_format(minAmount, _isConvert) : 0
 			);
 		} else if (
 			minAmount !== 0 &&
