@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import RankList from "./rankList";
-import { useGetRanking, useHandleSelect, useHandleSelectDay } from "./hook";
-import { defBtnsOfCategory, defDayBtns, defEuroDateBtns } from "./def";
+import { useGetRanking, useHandleSelectDay } from "./hook";
+import { defDayBtns, defEuroDateBtns } from "./def";
 import BtnBar from "../common/btnBar";
 import { loadingContext } from "../common/context";
 

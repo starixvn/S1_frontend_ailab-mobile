@@ -30,7 +30,12 @@ const RankItem = ({ Ranking, userName, turnover, isCurrentUser, rank }) => {
 	);
 };
 
+RankItem.defaultProps = {
+	rank: []
+};
+
 RankItem.propTypes = {
+	rank: PropTypes.arrayOf([PropTypes.object]),
 	isCurrentUser: PropTypes.bool.isRequired,
 	userName: PropTypes.string.isRequired,
 	turnover: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
@@ -108,7 +113,10 @@ const RankList = ({
 RankList.defaultProps = {
 	loading: false,
 	datas: [],
-	selected: ""
+	selected: "",
+	isLastEvent: false,
+	langId: "",
+	currencyId: 2
 };
 
 RankList.propTypes = {
@@ -119,7 +127,10 @@ RankList.propTypes = {
 	lastUpdTime: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.instanceOf(Date)
-	]).isRequired
+	]).isRequired,
+	isLastEvent: PropTypes.bool,
+	langId: PropTypes.string,
+	currencyId: PropTypes.number
 };
 
 export default RankList;
