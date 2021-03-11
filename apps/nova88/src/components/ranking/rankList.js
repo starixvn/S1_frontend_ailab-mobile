@@ -35,7 +35,7 @@ RankItem.defaultProps = {
 };
 
 RankItem.propTypes = {
-	rank: PropTypes.arrayOf([PropTypes.object]),
+	rank: PropTypes.arrayOf(PropTypes.object),
 	isCurrentUser: PropTypes.bool.isRequired,
 	userName: PropTypes.string.isRequired,
 	turnover: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
