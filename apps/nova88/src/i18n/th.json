@@ -495,14 +495,14 @@
 	"lbl_MysteryBox_MemberEligibility":"ฝากเงินวันนี้รับรางวัลพรุ่งนี้",
 	"lbl_MysteryBox_OtherConditions":"เงื่อนไขอื่น ๆ",
 	"lbl_MaxBonusAmount":"จำนวนโบนัสสูงสุด",
-	"lbl_TournamentPoints" : "Tournament Points",
-	"lbl_EuroDate1" : "13 MAR - 12 APR",
-	"lbl_EuroDate2" : "13 APR - 12 MAY",
-	"lbl_EuroDate3" : "13 MAY - 12 JUN",
+	"lbl_TournamentPoints" : "คะแนนการแข่งขัน",
+	"lbl_EuroDate1" : "13 มี.ค. - 12 เม.ย.",
+	"lbl_EuroDate2" : "13 เม.ย. - 12 พ.ค.",
+	"lbl_EuroDate3" : "13 พ.ค. - 12 มิ.ย.",
 	"lbl_Final" : "ยูฟ่าแชมเปียนส์ลีกรอบชิงชนะเลิศ 2020",
 	"lbl_MonthlyTournament" : "กำหนดการรายเดือน",
 	"lbl_EuroEventTitle" : "การแข่งรอบสุดท้ายลีก UEFA EURO 2020 ลุ้นรับรางวัลสูงสุด มูลค่า 388,000 บาท!",
 	"lbl_AgendaTitle" : "การแข่งขันยอดเงินฝากรายเดือน & ยอดเทิร์นโอเวอร์",
-	"lbl_Tournament" : "Tournament",
-	"lbl_Stage": "Stage"
+	"lbl_Tournament" : "การแข่งขัน",
+	"lbl_Stage": "เวที"
 }
