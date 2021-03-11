@@ -143,7 +143,7 @@
 	"lbl_AfterAmount": "Jumlah sesudah",
 	"lbl_RefTransId": "Referensi nomor transaksi",
 	"lbl_Stake": "Taruhan",
-	"lbl_AmountTooltip": "Jumlah tidak boleh kurang dari 0",
+	"lbl_AmountTooltip": "Jumlah tidak boleh kurang dari {{0}}",
 	"lbl_NotinLimit": "Tidak dalam Limit",
 	"lbl_ConfirmDeposit": "Harap konfirmasi informasi setoran.",
 	"lbl_ImportantNote": "Catatan Penting",

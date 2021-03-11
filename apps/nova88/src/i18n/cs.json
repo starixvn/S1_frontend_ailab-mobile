@@ -143,7 +143,7 @@
 	"lbl_AfterAmount": "账变后余额",
 	"lbl_RefTransId": "注单编号",
 	"lbl_Stake": "本金",
-	"lbl_AmountTooltip": "金额不得小于0",
+	"lbl_AmountTooltip": "金额不得小于{{0}}",
 	"lbl_NotinLimit": "不在设定范围",
 	"lbl_ConfirmDeposit": "请确认充值资讯。",
 	"lbl_ImportantNote": "温馨提醒",

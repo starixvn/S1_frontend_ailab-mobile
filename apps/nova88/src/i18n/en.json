@@ -143,7 +143,7 @@
 	"lbl_AfterAmount": "After Amount",
 	"lbl_RefTransId": "Ref TransId",
 	"lbl_Stake": "Stake",
-	"lbl_AmountTooltip": "Amount can not be less than 0.",
+	"lbl_AmountTooltip": "Amount can not be less than {{0}}.",
 	"lbl_NotinLimit": "not in Limit.",
 	"lbl_ConfirmDeposit": "Please confirm the deposit information.",
 	"lbl_ImportantNote": "Important Note",

@@ -143,7 +143,7 @@
 	"lbl_AfterAmount": "จำนวนเงินที่เหลือ",
 	"lbl_RefTransId": "รหัส ID อ้างอิง",
 	"lbl_Stake": "ยอดเดิมพัน",
-	"lbl_AmountTooltip": "จำนวนเงินต้องไม่น้อยกว่า 0",
+	"lbl_AmountTooltip": "จำนวนเงินต้องไม่น้อยกว่า {{0}}",
 	"lbl_NotinLimit": "จำนวนเงินมากกว่าหรือน้อยกว่าที่กำหนดไว้",
 	"lbl_ConfirmDeposit": "กรุณายืนยันข้อมูลการฝากเงิน",
 	"lbl_ImportantNote": "โน๊ตสำคัญ",
