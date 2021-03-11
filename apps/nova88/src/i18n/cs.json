@@ -508,7 +508,8 @@
 	"lbl_EuroDate3" : "5月 13日 - 6月 12日",
 	"lbl_Final" : "2020 欧洲冠军杯决赛",
 	"lbl_MonthlyTournament" : "每月赛程表",
-	"lbl_EuroEventTitle" : "2020欧洲杯决赛 高达MYR 500,000奖励！",
+	"lbl_EuroEventTitle1" : "2020欧洲杯决赛",
+	"lbl_EuroEventTitle2" : "高达MYR 500,000奖励！",
 	"lbl_AgendaTitle" : "每月存款 和 流水倍数竞赛",
 	"lbl_Tournament" : "竞赛",
 	"lbl_Stage": "等级"

@@ -13,7 +13,10 @@ const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
 	return (
 		<div className={`rankEvent${isOpen ? " open" : ""}`}>
 			<div className="title">{i18n.lbl_Event}</div>
-			<div className="eventTitle">{i18n.lbl_EuroEventTitle}</div>
+			<div className="eventTitle">
+				<p>{i18n.lbl_EuroEventTitle1}</p>
+				<p>{i18n.lbl_EuroEventTitle2}</p>
+			</div>
 			<BtnBar
 				i18n={i18n}
 				selected={selected}
