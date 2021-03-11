@@ -382,7 +382,7 @@
 	"lbl_BankSlipRequirement2":"Số lượng tối đa: 1",
 	"lbl_BankSlipRequirement3":"Định dạng hợp lệ: JPG, JPEG, PNG, GIF",
 	"lbl_RemindForName": "Tên đầy đủ của bạn phải đúng với tên trên tài khoản Ngân hàng để thực hiện việc nạp/rút tiền nhanh",
-	"lbl_PhoneTooltip": "Vui lòng nhập số điện thoại của bạn. Lưu ý: số điện thoại này sẽ không thể thay đổi!",
+	"lbl_PhoneTooltip": "Vui lòng điền số điện thoại đúng. Bạn không thể sửa sau khi lưu.",
 	"lbl_Bank_Step_1": "Thêm tài khoản mới",
 	"lbl_Bank_Step_2": "Chọn tên ngân hàng",
 	"lbl_Bank_Step_3": "Thông tin tài khoản",
@@ -514,10 +514,10 @@
 	"lbl_MysteryBox_Congratulations":"Xin chúc mừng!",
 	"lbl_MysteryBox_CreditedAccount1":"Bạn đã nhận thưởng",
 	"lbl_MysteryBox_CreditedAccount2":" hôm nay. Vui lòng thử lại vào ngày mai!",
+	"lbl_PhoneRequired":"Vui lòng nhập số điện thoại",
 	"lbl_PaymentModes":"Payment Modes",
 	"lbl_SelectChannel":"Select Channel",
 	"lbl_MinMaxAmount":"Min/Max Limit",
 	"lbl_SelectBank":"Select Bank",
 	"lbl_UploadReceipt":"Upload Receipt"
-
 }
