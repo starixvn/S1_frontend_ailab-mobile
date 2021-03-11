@@ -503,6 +503,9 @@
 	"lbl_MonthlyTournament" : "MONTHLY TOURNAMENT",
 	"lbl_EuroEventTitle1" : "UEFA EURO FINAL 2020",
 	"lbl_EuroEventTitle2" : "UP TO MYR 500,000 PRIZES WORTH!",
+	"lbl_EuroEventTitle3" : "",
+	"lbl_EuroEventTitle4" : "",
+	"lbl_EuroEventTitle5" : "",
 	"lbl_AgendaTitle" : "MONTHLY DEPOSIT & TURNOVER RACE TOURNAMENT",
 	"lbl_Tournament" : "Tournament",
 	"lbl_Stage": "Stage"

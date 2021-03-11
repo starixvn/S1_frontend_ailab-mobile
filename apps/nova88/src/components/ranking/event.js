@@ -10,12 +10,23 @@ const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
 	const { selected, handleSelect } = useHandleSelect({
 		defaultSelect: defEuroTourBtns.FinalTournament.value
 	});
+
 	return (
 		<div className={`rankEvent${isOpen ? " open" : ""}`}>
 			<div className="title">{i18n.lbl_Event}</div>
 			<div className="eventTitle">
-				<p>{i18n.lbl_EuroEventTitle1}</p>
-				<p>{i18n.lbl_EuroEventTitle2}</p>
+				{userInfo?.langId === "th" ? (
+					<>
+						<p>{i18n.lbl_EuroEventTitle3}</p>
+						<p>{i18n.lbl_EuroEventTitle4}</p>
+						<p>{i18n.lbl_EuroEventTitle5}</p>
+					</>
+				) : (
+					<>
+						<p>{i18n.lbl_EuroEventTitle1}</p>
+						<p>{i18n.lbl_EuroEventTitle2}</p>
+					</>
+				)}
 			</div>
 			<BtnBar
 				i18n={i18n}
@@ -27,9 +38,7 @@ const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
 			<PrizeList userInfo={userInfo} category={selected} i18n={i18n} />
 			<div className="btn-group">
 				<a
-					href={`${
-						config.cloudImgURL
-					}/NovaPromotion/UEFAEuro/${userInfo.langId?.toUpperCase()}.html`}
+					href={`${config.cloudImgURL}/NovaPromotion/UEFAEuro/${userInfo.langId}.html`}
 					target="_blank"
 					rel="noreferrer"
 					className="orange openPopup">

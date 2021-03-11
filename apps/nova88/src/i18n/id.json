@@ -503,6 +503,9 @@
 	"lbl_MonthlyTournament" : " TURNAMEN BULANAN",
 	"lbl_EuroEventTitle1" : "FINAL PIALA EROPA 2020",
 	"lbl_EuroEventTitle2" : "HADIAH HINGGA IDR 450.000.000",
+	"lbl_EuroEventTitle3" : "",
+	"lbl_EuroEventTitle4" : "",
+	"lbl_EuroEventTitle5" : "",
 	"lbl_AgendaTitle" : "TURNAMEN DEPOSIT BULANAN & TURNOVER",
 	"lbl_Tournament" : "TURNAMEN",
 	"lbl_Stage": "Tahap"

@@ -503,6 +503,9 @@
 	"lbl_MonthlyTournament" : "กำหนดการรายเดือน",
 	"lbl_EuroEventTitle1" : "การแข่งรอบสุดท้ายลีก UEFA EURO 2020",
 	"lbl_EuroEventTitle2" : "ลุ้นรับรางวัลสูงสุด มูลค่า 388,000 บาท!",
+	"lbl_EuroEventTitle3" : "การแข่งรอบสุดท้ายลีก",
+	"lbl_EuroEventTitle4" : "UEFA EURO 2020",
+	"lbl_EuroEventTitle5" : "ลุ้นรับรางวัลสูงสุด มูลค่า 388,000 บาท!",
 	"lbl_AgendaTitle" : "การแข่งขันยอดเงินฝากรายเดือน & ยอดเทิร์นโอเวอร์",
 	"lbl_Tournament" : "การแข่งขัน",
 	"lbl_Stage": "เวที"
