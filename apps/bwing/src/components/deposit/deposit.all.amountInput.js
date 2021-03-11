@@ -33,6 +33,7 @@ const AmountInput = ({
 		content = (
 			<div className="inputBox">
 				<input
+					type="tel"
 					onChange={EditAmount}
 					placeholder={
 						minAmount && maxAmount
