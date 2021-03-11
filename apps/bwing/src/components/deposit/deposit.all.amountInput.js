@@ -44,7 +44,7 @@ const AmountInput = ({
 					}
 					value={amount}
 				/>
-				<div className="tip">{tip}</div>
+				<div className={`tip${tip ? " open" : ""}`}>{tip}</div>
 			</div>
 		);
 	}

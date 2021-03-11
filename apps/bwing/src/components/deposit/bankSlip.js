@@ -200,7 +200,7 @@ class Content extends Component {
 
 	checkRefId = value => {
 		let result = { status: true, msg: "" };
-		if (value === "") {
+		if (!value) {
 			result = { status: false, msg: this.props.i18n.lbl_RefnoToolTip };
 		}
 
@@ -250,8 +250,13 @@ class Content extends Component {
 								<span>{bankSlipPopBox.bankName}</span>
 							</div>
 							<div>
-								<h1>{i18n.lbl_ID}</h1>
-								<p>{bankSlipPopBox.transId}</p>
+								{this.props.bankSlipPopBox
+									.disableSubmit ? null : (
+									<>
+										<h1>{i18n.lbl_ID}</h1>
+										<p>{bankSlipPopBox.transId}</p>
+									</>
+								)}
 								<h1>{i18n.lbl_BankAccountName}</h1>
 								<p>
 									{bankSlipPopBox.accountName}
@@ -272,19 +277,24 @@ class Content extends Component {
 										}
 									/>
 								</p>
-								<h1>{i18n.lbl_DepositAmount}</h1>
-								<p>
-									{number_format(
-										bankSlipPopBox.amount,
-										bankSlipPopBox._isConvert
-									)}
-									<span
-										className="icon icon-files-empty clickBtn copyBtn"
-										data-clipboard-text={
-											bankSlipPopBox.amount
-										}
-									/>
-								</p>
+								{this.props.bankSlipPopBox
+									.disableSubmit ? null : (
+									<>
+										<h1>{i18n.lbl_DepositAmount}</h1>
+										<p>
+											{number_format(
+												bankSlipPopBox.amount,
+												bankSlipPopBox._isConvert
+											)}
+											<span
+												className="icon icon-files-empty clickBtn copyBtn"
+												data-clipboard-text={
+													bankSlipPopBox.amount
+												}
+											/>
+										</p>
+									</>
+								)}
 							</div>
 						</div>
 					</div>
