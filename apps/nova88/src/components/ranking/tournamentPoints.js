@@ -4,7 +4,8 @@ import moment from "moment";
 import { loadingContext } from "../common/context";
 import RankList from "./rankList";
 import { useGetRanking } from "./hook";
-import { defEuroDateBtns } from "./def";
+import { defEuroDateBtns, defEuroTourBtns } from "./def";
+import { Prize } from "./prize";
 
 const TournamentPoints = ({ isOpen, userInfo, i18n = {} }) => {
 	const { isLogin, userName, currencyId, langId } = userInfo;
@@ -29,6 +30,12 @@ const TournamentPoints = ({ isOpen, userInfo, i18n = {} }) => {
 		setLoading,
 		selected
 	});
+	const defPrize = Prize({
+		currencyId,
+		langId,
+		i18n,
+		category: defEuroTourBtns.FinalTournament.value
+	});
 
 	return (
 		<div className={`champion${isOpen ? " open" : ""}`}>
@@ -42,8 +49,7 @@ const TournamentPoints = ({ isOpen, userInfo, i18n = {} }) => {
 				datas={datas}
 				selected=""
 				lastUpdTime={lastUpdTime}
-				currencyId={currencyId}
-				langId={langId}
+				defPrize={defPrize}
 			/>
 		</div>
 	);

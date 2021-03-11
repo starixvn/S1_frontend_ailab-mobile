@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { defEuroTourBtns } from "./def";
 import BtnBar from "../common/btnBar";
-import { useHandleSelect, useGetRanking } from "./hook";
+import { useHandleSelect } from "./hook";
 import PrizeList from "./prize";
 import config from "../../config";
 

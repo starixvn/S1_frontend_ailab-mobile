@@ -1,7 +1,6 @@
 import React from "react";
 import moment from "moment";
 import PropTypes from "prop-types";
-import { defPrize } from "./def";
 import no1 from "../../styles/img/no1.png";
 import no2 from "../../styles/img/no2.png";
 import no3 from "../../styles/img/no3.png";
@@ -58,15 +57,7 @@ const RankItems = ({ datas, selected, prize }) =>
 			/>
 		);
 	});
-const Prize = ({
-	currencyId = 2,
-	category = "FinalTournament",
-	langId = "cs",
-	i18n
-}) => {
-	const prize = defPrize();
-	return prize[i18n[`Currency_${currencyId}`]][langId][category];
-};
+
 const RankList = ({
 	loading,
 	i18n = {},
@@ -74,10 +65,8 @@ const RankList = ({
 	selected,
 	lastUpdTime,
 	isLastEvent,
-	langId,
-	currencyId
+	defPrize
 }) => {
-	const prize = Prize({ currencyId, langId, i18n });
 	return (
 		<>
 			{!loading && (!datas || datas.length === 0) ? (
@@ -94,7 +83,7 @@ const RankList = ({
 					<RankItems
 						datas={datas}
 						selected={selected}
-						prize={prize}
+						prize={defPrize}
 					/>
 				</div>
 			)}
@@ -114,9 +103,7 @@ RankList.defaultProps = {
 	loading: false,
 	datas: [],
 	selected: "",
-	isLastEvent: false,
-	langId: "",
-	currencyId: 2
+	isLastEvent: false
 };
 
 RankList.propTypes = {
@@ -128,9 +115,7 @@ RankList.propTypes = {
 		PropTypes.string,
 		PropTypes.instanceOf(Date)
 	]).isRequired,
-	isLastEvent: PropTypes.bool,
-	langId: PropTypes.string,
-	currencyId: PropTypes.number
+	isLastEvent: PropTypes.bool
 };
 
 export default RankList;

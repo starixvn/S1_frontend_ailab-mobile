@@ -1,16 +1,23 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { defEuroDateBtns } from "./def";
+import { defEuroDateBtns, defEuroTourBtns } from "./def";
 import { useGetRanking, useHandleSelect } from "./hook";
 import RankList from "./rankList";
 import { loadingContext, defNavPanel } from "../common/context";
 import BtnBar from "../common/btnBar";
+import { Prize } from "./prize";
 
 const Final = ({
 	isOpen,
 	i18n = {},
 	userInfo: { isLogin, userName, currencyId, langId }
 }) => {
+	const defPrize = Prize({
+		currencyId,
+		langId,
+		i18n,
+		category: defEuroTourBtns.FinalTournament.value
+	});
 	const { loading, setLoading } = useContext(loadingContext);
 
 	const handleLogin = () => {
@@ -48,8 +55,7 @@ const Final = ({
 				datas={datas}
 				selected={selected}
 				lastUpdTime={lastUpdTime}
-				currencyId={currencyId}
-				langId={langId}
+				defPrize={defPrize}
 			/>
 		</div>
 	);

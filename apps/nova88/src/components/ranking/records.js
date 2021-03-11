@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import moment from "moment";
 import RankList from "./rankList";
 import { useGetRanking, useHandleSelectDay } from "./hook";
-import { defDayBtns, defEuroDateBtns } from "./def";
+import { defDayBtns, defEuroDateBtns, defEuroTourBtns } from "./def";
 import BtnBar from "../common/btnBar";
 import { loadingContext } from "../common/context";
+import { Prize } from "./prize";
 
 const Records = ({
 	isOpen,
@@ -14,12 +15,14 @@ const Records = ({
 	isLastEvent,
 	title
 }) => {
+	const defPrize = Prize({
+		currencyId,
+		langId,
+		i18n,
+		category: defEuroTourBtns.FinalTournament.value
+	});
 	const { loading, setLoading } = useContext(loadingContext);
 	const currentDate = moment().format("YYYY-MM-DD");
-	// const { selected, handleSelect } = useHandleSelect({
-	// 	defaultSelect: defBtnsOfCategory.Sports.value,
-	// 	isLogin
-	// });
 	let selected = "2021021";
 	if (moment(currentDate).isBetween("2021-03-13", "2021-04-12")) {
 		selected = defEuroDateBtns[2021021].value;
@@ -45,25 +48,6 @@ const Records = ({
 	return (
 		<div className={`records${isOpen ? " open" : ""}`}>
 			<div className="title">{title}</div>
-			{/* <BtnBar
-				title={i18n.lbl_Game_type}
-				i18n={i18n}
-				selected={selected}
-				handleSelect={handleSelect}
-				mainKey="leader-board-records-btnsOfCategory"
-				defBtns={defBtnsOfCategory}
-				isLogin={isLogin}
-			/> */}
-			{/* {isLastEvent ? null : (
-				<BtnBar
-					title={i18n.lbl_Date}
-					i18n={i18n}
-					selected={selectedDay}
-					handleSelect={handleSelectDay}
-					mainKey="leader-board-records-dayBtnBar"
-					defBtns={defDayBtns}
-				/>
-			)} */}
 			<BtnBar
 				title={i18n.lbl_Date}
 				i18n={i18n}
@@ -79,8 +63,7 @@ const Records = ({
 				datas={datas}
 				selected="records"
 				lastUpdTime={lastUpdTime}
-				currencyId={currencyId}
-				langId={langId}
+				defPrize={defPrize}
 			/>
 		</div>
 	);
