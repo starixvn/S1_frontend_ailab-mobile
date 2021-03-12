@@ -59,7 +59,15 @@ const LevelList = ({ i18n }) => {
 	const rows = defLevelList.map(l => (
 		<div key={`VIPLevelList-${l.levelName}`}>
 			<img src={l.imgUrl} alt={l.levelName} />
-			{i18n[l.levelName]}
+			{l.levelName ? (
+				i18n[l.levelName]
+			) : (
+				<>
+					{l.levelName_col1}
+					<p>{l.levelName_col2}</p>
+					<p>{l.levelName_col3}</p>
+				</>
+			)}
 		</div>
 	));
 

@@ -57,6 +57,8 @@ export const defLevelList = [
 	},
 	{
 		imgUrl: vipClub6,
-		levelName: "lbl_GOAL123_Club"
+		levelName_col1: "GOAL",
+		levelName_col2: "123",
+		levelName_col3: "VIP"
 	}
 ];
