@@ -1,10 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import { Redirect } from "@reach/router";
 import path from "../../path";
-import { navContext, defNavPanel } from "../common/context";
+import { navContext, defNavPanel, userInfoContext } from "../common/context";
 import { defGameInfo } from "../../datas/productList";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import config from "../../config";
+import api from "../../service/api";
 
 const defPlatfrom = [
 	{
@@ -102,12 +103,47 @@ const defPlatfrom = [
 	{
 		...defGameInfo.oneGame,
 		imgName: "1g"
+	},
+	{
+		...defGameInfo.LIVEcasinoN2,
+		imgName: "n2"
 	}
 ];
 
 export default ({ langId = "en", isLogin = false }) => {
 	const { setNav } = useContext(navContext);
+	const { userInfo } = useContext(userInfoContext);
 	const [redirectPath, setRedirectPath] = useState(null);
+	const [tpIds, setTpIds] = useState(null);
+	const isMountedRef = useRef(null);
+
+	useEffect(() => {
+		isMountedRef.current = true;
+		return () => {
+			isMountedRef.current = false;
+		};
+	});
+
+	useEffect(() => {
+		if (userInfo.isLogin) {
+			api.site.GetTpIds().then(
+				res => {
+					if (res.data.errorCode === 0 && isMountedRef.current) {
+						setTpIds(res.data.data);
+					}
+				},
+				() => {
+					if (isMountedRef.current) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
+						});
+					}
+				}
+			);
+		}
+	}, [userInfo.isLogin]);
 
 	const ClickItem = ({ _path, urlParams, tpId, gameId, needLogin }) => {
 		const loginCallback = () => {
@@ -128,27 +164,33 @@ export default ({ langId = "en", isLogin = false }) => {
 		});
 	};
 
-	const rows = defPlatfrom.map(p => {
-		const key = `other-platform-${p.tpId}-${p.gameId}`;
-		let params = null;
-		if (p.parameter) {
-			params = Object.keys(p.parameter).map(k => {
-				return `${k}=${p.parameter[k]}`;
-			});
-		}
+	const rows = defPlatfrom
+		.filter(item => {
+			return tpIds ? tpIds.includes(item.tpId) : true;
+		})
+		.map(p => {
+			const key = `other-platform-${p.tpId}-${p.gameId}`;
+			let params = null;
+			if (p.parameter) {
+				params = Object.keys(p.parameter).map(k => {
+					return `${k}=${p.parameter[k]}`;
+				});
+			}
 
-		const _urlParams = params !== null ? `?${params.join("&")}` : "";
-
-		return (
-			<img
-				key={key}
-				src={`${config.cloudImgURL}/SiteSkin/img/logo/${p.imgName}.png`}
-				// src={`${config.imgUrl}/common/images/logo/${p.imgName}.png`}
-				onClick={ClickItem.bind(this, { ...p, urlParams: _urlParams })}
-				alt={p.imgName}
-			/>
-		);
-	});
+			const _urlParams = params !== null ? `?${params.join("&")}` : "";
+			return (
+				<img
+					key={key}
+					src={`${config.cloudImgURL}/SiteSkin/img/logo/${p.imgName}.png`}
+					// src={`${config.imgUrl}/common/images/logo/${p.imgName}.png`}
+					onClick={ClickItem.bind(this, {
+						...p,
+						urlParams: _urlParams
+					})}
+					alt={p.imgName}
+				/>
+			);
+		});
 
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
