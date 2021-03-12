@@ -1,23 +1,39 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import moment from "moment";
 import RankList from "./rankList";
-import { useGetRanking, useHandleSelect, useHandleSelectDay } from "./hook";
-import { defBtnsOfCategory, defDayBtns } from "./def";
+import { useGetRanking, useHandleSelectDay } from "./hook";
+import { defDayBtns, defEuroDateBtns, defEuroTourBtns } from "./def";
 import BtnBar from "../common/btnBar";
 import { loadingContext } from "../common/context";
+import { Prize } from "./prize";
 
 const Records = ({
 	isOpen,
 	i18n,
-	userInfo: { isLogin, userName },
-	isLastEvent = false,
-	title = ""
+	userInfo: { isLogin, userName, currencyId, langId },
+	isLastEvent,
+	title
 }) => {
-	const { loading, setLoading } = useContext(loadingContext);
-	const { selected, handleSelect } = useHandleSelect({
-		defaultSelect: defBtnsOfCategory.Sports.value,
-		isLogin
+	const defPrize = Prize({
+		currencyId,
+		langId,
+		i18n,
+		category: defEuroTourBtns.FinalTournament.value
 	});
+	const { loading, setLoading } = useContext(loadingContext);
+	const currentDate = moment().format("YYYY-MM-DD");
+	let selected = "2021021";
+	if (moment(currentDate).isBetween("2021-03-13", "2021-04-12")) {
+		selected = defEuroDateBtns[2021021].value;
+	} else if (moment(currentDate).isBetween("2021-04-13", "2021-05-12")) {
+		selected = defEuroDateBtns[2021022].value;
+	} else if (moment(currentDate).isBetween("2021-05-13", "2021-06-12")) {
+		selected = defEuroDateBtns[2021023].value;
+	} else if (moment(currentDate).isAfter("2021-06-12")) {
+		selected = defEuroDateBtns[2021024].value;
+	}
+
 	const { selectedDay, handleSelectDay } = useHandleSelectDay();
 	const { datas, lastUpdTime } = useGetRanking({
 		isOpen,
@@ -33,44 +49,38 @@ const Records = ({
 		<div className={`records${isOpen ? " open" : ""}`}>
 			<div className="title">{title}</div>
 			<BtnBar
-				title={i18n.lbl_Game_type}
+				title={i18n.lbl_Date}
 				i18n={i18n}
-				selected={selected}
-				handleSelect={handleSelect}
-				mainKey="leader-board-records-btnsOfCategory"
-				defBtns={defBtnsOfCategory}
-				isLogin={isLogin}
+				selected={selectedDay}
+				handleSelect={handleSelectDay}
+				mainKey="leader-board-records-dayBtnBar"
+				defBtns={defDayBtns}
 			/>
-			{isLastEvent ? null : (
-				<BtnBar
-					title={i18n.lbl_Date}
-					i18n={i18n}
-					selected={selectedDay}
-					handleSelect={handleSelectDay}
-					mainKey="leader-board-records-dayBtnBar"
-					defBtns={defDayBtns}
-				/>
-			)}
 			<RankList
 				isLastEvent={isLastEvent}
 				loading={loading}
 				i18n={i18n}
 				datas={datas}
-				selected={selected}
+				selected="records"
 				lastUpdTime={lastUpdTime}
+				defPrize={defPrize}
 			/>
 		</div>
 	);
 };
 
 Records.defaultProps = {
-	isOpen: false
+	isOpen: false,
+	isLastEvent: false,
+	title: ""
 };
 
 Records.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
-	isOpen: PropTypes.bool
+	isOpen: PropTypes.bool,
+	isLastEvent: PropTypes.bool,
+	title: PropTypes.string
 };
 
 export default Records;

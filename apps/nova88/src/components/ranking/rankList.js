@@ -16,12 +16,12 @@ export const RankImg = ({ Ranking }) => {
 	return img;
 };
 
-const RankItem = ({ Ranking, userName, turnover, isCurrentUser }) => {
+const RankItem = ({ Ranking, userName, turnover, isCurrentUser, rank }) => {
 	return (
 		<ul className={isCurrentUser ? "userRank" : ""}>
 			<li>
 				<RankImg Ranking={Ranking} />
-				{Ranking}
+				{rank[Ranking - 1]?.rank ?? Ranking}
 			</li>
 			<li>{userName}</li>
 			<li>{number_format(turnover)}</li>
@@ -29,7 +29,12 @@ const RankItem = ({ Ranking, userName, turnover, isCurrentUser }) => {
 	);
 };
 
+RankItem.defaultProps = {
+	rank: []
+};
+
 RankItem.propTypes = {
+	rank: PropTypes.arrayOf(PropTypes.object),
 	isCurrentUser: PropTypes.bool.isRequired,
 	userName: PropTypes.string.isRequired,
 	turnover: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
@@ -38,7 +43,7 @@ RankItem.propTypes = {
 		.isRequired
 };
 
-const RankItems = ({ datas, selected }) =>
+const RankItems = ({ datas, selected, prize }) =>
 	datas?.map((data, idx) => {
 		const { userName, wTurnover, rank } = data;
 		return (
@@ -47,6 +52,7 @@ const RankItems = ({ datas, selected }) =>
 				Ranking={rank ?? idx + 1}
 				userName={userName}
 				turnover={wTurnover}
+				rank={prize}
 				isCurrentUser={Boolean(rank)}
 			/>
 		);
@@ -58,7 +64,8 @@ const RankList = ({
 	datas,
 	selected,
 	lastUpdTime,
-	isLastEvent
+	isLastEvent,
+	defPrize
 }) => {
 	return (
 		<>
@@ -73,7 +80,11 @@ const RankList = ({
 						<li>{i18n.lbl_Username}</li>
 						<li>{i18n.lbl_Points}</li>
 					</ul>
-					<RankItems datas={datas} selected={selected} />
+					<RankItems
+						datas={datas}
+						selected={selected}
+						prize={defPrize}
+					/>
 				</div>
 			)}
 			{isLastEvent ? null : (
@@ -91,7 +102,8 @@ const RankList = ({
 RankList.defaultProps = {
 	loading: false,
 	datas: [],
-	selected: ""
+	selected: "",
+	isLastEvent: false
 };
 
 RankList.propTypes = {
@@ -102,7 +114,8 @@ RankList.propTypes = {
 	lastUpdTime: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.instanceOf(Date)
-	]).isRequired
+	]).isRequired,
+	isLastEvent: PropTypes.bool
 };
 
 export default RankList;
