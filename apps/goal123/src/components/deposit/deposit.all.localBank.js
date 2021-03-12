@@ -119,7 +119,7 @@ const Payment = props => {
 	};
 
 	const ClickSubmit = () => {
-		const checkAccountName = userInfo.accountName ? true : !!realName;
+		const checkAccountName = !!userInfo.accountName || !!realName;
 		const result =
 			selBank.sysId &&
 			bankSlipPopBox.receipt !== null &&
@@ -360,7 +360,8 @@ const Payment = props => {
 		selBank.sysId &&
 		bankSlipPopBox.receipt &&
 		amount !== "" &&
-		VaildAmount({ amount, displayWarning: false });
+		VaildAmount({ amount, displayWarning: false }) &&
+		(!!userInfo.accountName || !!realName);
 
 	return (
 		<div className="depositModule_mobile open">
@@ -382,7 +383,10 @@ const Payment = props => {
 			/>
 			{!userInfo.accountName ? (
 				<>
-					<div className="title">{i18n.lbl_RealName}</div>
+					<div className="title">
+						<span className="text-org">*</span>
+						{i18n.lbl_RealName}
+					</div>
 					<div className="inputBox">
 						<input onChange={HandleAccountName} value={realName} />
 						<div className="tip">{realNameTip}</div>
