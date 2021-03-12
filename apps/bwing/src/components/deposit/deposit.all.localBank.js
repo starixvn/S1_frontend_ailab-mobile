@@ -119,7 +119,7 @@ const Payment = props => {
 	};
 
 	const ClickSubmit = () => {
-		const checkAccountName = userInfo.accountName ? true : !!realName;
+		const checkAccountName = !!userInfo.accountName || !!realName;
 		const result =
 			selBank.sysId &&
 			bankSlipPopBox.receipt !== null &&
@@ -361,7 +361,7 @@ const Payment = props => {
 		bankSlipPopBox.receipt &&
 		amount !== "" &&
 		VaildAmount({ amount, displayWarning: false }) &&
-		(userInfo.accountName ? true : !!realName);
+		(!!userInfo.accountName || !!realName);
 
 	return (
 		<div className="depositModule_mobile open">
