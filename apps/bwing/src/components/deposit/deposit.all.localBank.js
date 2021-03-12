@@ -25,6 +25,7 @@ import {
 	api_DepositReqWireTransfer,
 	api_UploadReceipt
 } from "../../service/api/payment";
+import { api_SetAccountName } from "../../service/api/accountStrict";
 
 const payType = "localBank";
 
@@ -32,7 +33,7 @@ const Payment = props => {
 	const { paymentList, creditTimeKey } = props;
 
 	const { i18n } = useContext(i18nContext);
-	const { userInfo } = useContext(userInfoContext);
+	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { bankSlipPopBox, setbankSlipPopBox } = useContext(
 		bankSlipPopBoxContext
@@ -42,6 +43,12 @@ const Payment = props => {
 	const [processing, setProcessing] = useState(false);
 	const [selBank, setBank] = useState({});
 	const [accountInfo, setAccountInfo] = useState({});
+	const [realName, setRealName] = useState(
+		userInfo.accountName === null || userInfo.accountName === undefined
+			? ""
+			: userInfo.accountName
+	);
+	const [realNameTip, setRealNameTip] = useState("");
 
 	const {
 		amount,
@@ -112,11 +119,13 @@ const Payment = props => {
 	};
 
 	const ClickSubmit = () => {
+		const checkAccountName = userInfo.accountName ? true : !!realName;
 		const result =
 			selBank.sysId &&
 			bankSlipPopBox.receipt !== null &&
 			amount !== "" &&
-			VaildAmount({ amount });
+			VaildAmount({ amount }) &&
+			checkAccountName;
 
 		if (result && !processing) {
 			const RedirectToNext = (real_amount, sysId) => {
@@ -209,50 +218,140 @@ const Payment = props => {
 				);
 			};
 
-			const real_amount = _isConvert
-				? Number(amount) * 1000
-				: Number(amount);
-			setPopBox({
-				isOpen: true,
-				title: i18n.lbl_ImportantNote,
-				content: (
-					<>
-						<p>{i18n.lbl_ConfirmDeposit}</p>
-						<img
-							src={`${config.imgUrl}/common/images/BankLogo/${selBank.bankLogo}`}
-							alt={selBank.bankName}
-						/>
-						<div className="tip">
-							<span>{i18n.lbl_DepositAmount} :</span>{" "}
-							{number_format(real_amount, _isConvert)}
+			const openConfirmPopBox = () => {
+				const real_amount = _isConvert
+					? Number(amount) * 1000
+					: Number(amount);
+				setPopBox({
+					isOpen: true,
+					title: i18n.lbl_ImportantNote,
+					content: (
+						<>
+							<p>{i18n.lbl_ConfirmDeposit}</p>
+							<img
+								src={`${config.imgUrl}/common/images/BankLogo/${selBank.bankLogo}`}
+								alt={selBank.bankName}
+							/>
+							<div className="tip">
+								<span>{i18n.lbl_DepositAmount} :</span>{" "}
+								{number_format(real_amount, _isConvert)}
+							</div>
+						</>
+					),
+					hasBtn: true,
+					btnBar: (
+						<div className="btn-group">
+							<button
+								className="Cancel"
+								onClick={() =>
+									setPopBox(prevState => ({
+										...prevState,
+										isOpen: false
+									}))
+								}>
+								{i18n.lbl_Cancel}
+							</button>
+							<button
+								className="blue"
+								onClick={RedirectToNext.bind(
+									this,
+									real_amount,
+									selBank.sysId
+								)}>
+								{i18n.lbl_Submit}
+							</button>
 						</div>
-					</>
-				),
-				hasBtn: true,
-				btnBar: (
-					<div className="btn-group">
-						<button
-							className="Cancel"
-							onClick={() =>
+					)
+				});
+			};
+
+			const SetAccountName = () => {
+				api_SetAccountName({
+					name: realName || userInfo.accountName
+				}).then(
+					res => {
+						if (isMountedRef.current) {
+							if (
+								res.data.errorCode === 0 ||
+								res.data.errorCode === -5
+							) {
+								if (res.data.errorCode === 0) {
+									setUserInfo(prevState => ({
+										...prevState,
+										realName
+									}));
+								}
+								openConfirmPopBox();
+							} else {
 								setPopBox(prevState => ({
 									...prevState,
-									isOpen: false
-								}))
-							}>
-							{i18n.lbl_Cancel}
-						</button>
-						<button
-							className="blue"
-							onClick={RedirectToNext.bind(
-								this,
-								real_amount,
-								selBank.sysId
-							)}>
-							{i18n.lbl_Submit}
-						</button>
-					</div>
-				)
-			});
+									title: i18n.lbl_ImportantNote,
+									content: res.data.message,
+									hasBtn: true,
+									btnBar: (
+										<div className="btn-group">
+											<button
+												className="cancel"
+												onClick={() =>
+													setPopBox(prev => ({
+														...prev,
+														isOpen: false
+													}))
+												}>
+												{i18n.lbl_Cancel}
+											</button>
+										</div>
+									)
+								}));
+							}
+						}
+					},
+					() => {
+						if (isMountedRef.current) {
+							setPopBox({
+								isOpen: true,
+								title: i18n.lbl_ImportantNote,
+								content: i18n.msg_ApiServerError
+							});
+						}
+					}
+				);
+			};
+
+			if (!userInfo.accountName) {
+				setPopBox({
+					isOpen: true,
+					title: i18n.lbl_ImportantNote,
+					content: i18n.msg_ConfirmRealNameAlert,
+					hasBtn: true,
+					btnBar: (
+						<div className="btn-group">
+							<button
+								className="cancel"
+								onClick={() =>
+									setPopBox(prevState => ({
+										...prevState,
+										isOpen: false
+									}))
+								}>
+								{i18n.lbl_Cancel}
+							</button>
+							<button className="submit" onClick={SetAccountName}>
+								{i18n.lbl_Confirm}
+							</button>
+						</div>
+					)
+				});
+			} else {
+				openConfirmPopBox();
+			}
+		}
+	};
+
+	const HandleAccountName = e => {
+		setRealName(e.target.value);
+		if (!realNameTip) {
+			setRealNameTip("");
 		}
 	};
 
@@ -261,7 +360,8 @@ const Payment = props => {
 		selBank.sysId &&
 		bankSlipPopBox.receipt &&
 		amount !== "" &&
-		VaildAmount({ amount, displayWarning: false });
+		VaildAmount({ amount, displayWarning: false }) &&
+		(userInfo.accountName ? true : !!realName);
 
 	return (
 		<div className="depositModule_mobile open">
@@ -279,6 +379,18 @@ const Payment = props => {
 				imgKeyWithExtension={true}
 				accountInfo={accountInfo}
 			/>
+			{!userInfo.accountName ? (
+				<>
+					<div className="title">
+						<span className="text-org">*</span>
+						{i18n.lbl_RealName}
+					</div>
+					<div className="inputBox">
+						<input onChange={HandleAccountName} value={realName} />
+						<div className="tip">{realNameTip}</div>
+					</div>
+				</>
+			) : null}
 			<AmountInput
 				title={i18n.lbl_DepositAmount}
 				channel={selBank}
