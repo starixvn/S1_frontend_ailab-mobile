@@ -115,11 +115,11 @@ const gameList = langId => [
 				icon: "game",
 				spanTextKey: "lbl_SabaClub"
 			},
-			// {
-			// 	...defGameInfo.Fishing,
-			// 	icon: "game",
-			// 	spanTextKey: "lbl_Fishing"
-			// },
+			{
+				...defGameInfo.Fishing,
+				icon: "game",
+				spanTextKey: "lbl_Fishing"
+			},
 			{
 				...defGameInfo.Keno,
 				icon: "keno",

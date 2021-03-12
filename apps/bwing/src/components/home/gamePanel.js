@@ -88,12 +88,12 @@ const defGameList = [
 		tpId: 1,
 		gameId: 43
 	},
-	// {
-	// 	img: img9,
-	// 	displayKey: "lbl_FishingGG",
-	// 	tpId: 7,
-	// 	gameId: 10
-	// },
+	{
+		img: img9,
+		displayKey: "lbl_FishingGG",
+		tpId: 7,
+		gameId: 10
+	},
 	{
 		img: img10,
 		displayKey: "lbl_VirtualSports",

@@ -326,11 +326,11 @@ const gameList = ({ langId }) => [
 					}
 				]
 			},
-			// {
-			// 	gameId: 10,
-			// 	tpId: 7,
-			// 	img: fish_GG
-			// },
+			{
+				gameId: 10,
+				tpId: 7,
+				img: fish_GG
+			},
 			{
 				gameId: "F-SF01",
 				tpId: 10,

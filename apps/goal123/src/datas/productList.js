@@ -167,12 +167,6 @@ const gameList = langId => [
 				img: SabaClub,
 				spanTextKey: "lbl_SabaClub"
 			},
-			// {
-			// 	...defGameInfo.Fishing,
-			// 	icon: "game",
-			// 	img: Fish,
-			// 	spanTextKey: "lbl_Fishing"
-			// },
 			{
 				...defGameInfo.Keno,
 				icon: "keno",
@@ -292,10 +286,10 @@ const gameList = langId => [
 					}
 				]
 			},
-			// {
-			// 	...defGameInfo.Fishing,
-			// 	img: fish_GG
-			// },
+			{
+				...defGameInfo.Fishing,
+				img: fish_GG
+			},
 			{
 				...defGameInfo.FishingSG,
 				img: fish_SG
