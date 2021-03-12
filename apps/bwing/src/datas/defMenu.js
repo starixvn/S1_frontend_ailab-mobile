@@ -45,7 +45,8 @@ const eventTime = {
 	new_one789: { endDate: "2021/01/22 11:00:00" },
 	new_V8Poker: { endDate: "2021/03/05 23:59:59" },
 	new_ICG: { endDate: "2021/02/05 11:00:00" },
-	new_CQ9_fishing: { endDate: "2021/03/05 11:00:00" }
+	new_CQ9_fishing: { endDate: "2021/03/05 11:00:00" },
+	new_vip: { startDate: "2021/03/11 12:00:00" }
 };
 
 export const productList = langId => {
@@ -315,6 +316,16 @@ export const productList = langId => {
 		affiliate: {
 			displayKey: "lbl_Affiliates",
 			href: siteInfo(langId).affiliateLink
+		},
+		vip: {
+			displayKey: "lbl_VIP",
+			path: path.vip.root,
+			eventIcon: [
+				{
+					icon: defIconType.new_nav,
+					inPeriod: isEventPeriod(eventTime.new_vip)
+				}
+			]
 		},
 		ranking: {
 			displayKey: "lbl_Ranking",
