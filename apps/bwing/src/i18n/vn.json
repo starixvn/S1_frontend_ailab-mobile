@@ -515,9 +515,9 @@
 	"lbl_MysteryBox_CreditedAccount1":"Bạn đã nhận thưởng",
 	"lbl_MysteryBox_CreditedAccount2":" hôm nay. Vui lòng thử lại vào ngày mai!",
 	"lbl_PhoneRequired":"Vui lòng nhập số điện thoại",
-	"lbl_PaymentModes":"Payment Modes",
-	"lbl_SelectChannel":"Select Channel",
-	"lbl_MinMaxAmount":"Min/Max Limit",
-	"lbl_SelectBank":"Select Bank",
-	"lbl_UploadReceipt":"Upload Receipt"
+	"lbl_PaymentModes":"Phương thức thanh toán",
+	"lbl_SelectChannel":"Chọn kênh",
+	"lbl_MinMaxAmount":"Tối thiểu/Tối đa",
+	"lbl_SelectBank":"Chọn ngân hàng",
+	"lbl_UploadReceipt":"Tải biên lai ngân hàng"
 }
