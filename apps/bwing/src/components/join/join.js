@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
-import { useMatch, Redirect } from "@reach/router";
+import { useMatch, useNavigate } from "@reach/router";
 import Inputbox from "../common/inputbox";
 import InputboxPWD from "../common/inputbox.password";
 import Dropdown from "../common/dropdown";
@@ -7,10 +7,11 @@ import Checkbox from "../common/checkbox";
 import Tips from "./tips";
 import {
 	api_ExistsUserName,
-	// api_ExistsEmail,
-	api_Register,
 	api_GetSiteCurrencyList,
-	api_GetBanner
+	api_GetBanner,
+	api_site_Signup,
+	api_site_ExistsPhoneNo,
+	api_site_GetAffiliateAgent
 } from "../../service/api/site";
 import { api_GetCustProfile } from "../../service/api/accountStrict";
 import { getUrlParameter, readCookie, passwordCheck } from "../common/common";
@@ -26,18 +27,21 @@ import path from "../../path";
 import config from "../../config";
 import PromoPopup from "./join.promotion";
 import Logo from "../img/logo";
+import areaCode from "../../datas/areaCode";
 
-const colName = [
-	"UserName",
-	"Password",
-	// "Email",
-	"Currency"
-];
+const colName = ["UserName", "Password", "Currency", "Phone"];
+
+const defColName = {
+	UserName: "UserName",
+	Password: "Password",
+	Currency: "Currency",
+	Phone: "Phone"
+};
 
 const initState = {
 	UserName: "",
 	Password: "",
-	// Email: "",
+	Phone: "",
 	Currency: null,
 	AffiliateId: ""
 };
@@ -51,10 +55,6 @@ const initWarningState = {
 		status: false,
 		msg: ""
 	},
-	// Email: {
-	// 	status: false,
-	// 	msg: ""
-	// },
 	Currency: {
 		status: false
 	},
@@ -63,6 +63,10 @@ const initWarningState = {
 		msg: ""
 	},
 	Checkbox: {
+		status: false,
+		msg: ""
+	},
+	Phone: {
 		status: false,
 		msg: ""
 	}
@@ -76,12 +80,20 @@ const initCheckboxVal = {
 const initChecklistState = {
 	UserName: false,
 	Password: false
-	// Email: false,
+};
+
+const currencyToAreacode = {
+	2: "MY",
+	4: "TH",
+	13: "CS",
+	15: "ID",
+	51: "VN"
 };
 
 const currencyDefaultSelectIdx = 0;
 
 const Join = () => {
+	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -91,20 +103,27 @@ const Join = () => {
 	const [warningState, setWarningState] = useState(initWarningState);
 	const [pswState, setPswState] = useState(false);
 	const [checkboxState, setCheckboxState] = useState(initCheckboxVal);
-	const [redirectPath, setRedirectPath] = useState(null);
 	const [banner, setBanner] = useState([]);
-
 	const [affiliateidExist, setAffiliateidExist] = useState("");
-
 	const [showTipsState, setShowTipsState] = useState({
 		UserName: false,
 		Password: false,
-		// Email: false,
 		AffiliateId: false,
-		Currency: false
+		Currency: false,
+		Phone: false
 	});
 	const [checklistState, setChecklistState] = useState(initChecklistState);
 	const [promoPopup, setPromoPopup] = useState(false);
+	const [currencyState, setcurrencyState] = useState(
+		currencyDefaultSelectIdx
+	);
+
+	const currencyToCountryCode = currencyToAreacode[51];
+
+	const _areaCode =
+		currencyToCountryCode !== null
+			? areaCode[currencyToCountryCode]?.AreaCode
+			: null;
 
 	const isMountedRef = useRef(null);
 	useEffect(() => {
@@ -130,21 +149,50 @@ const Join = () => {
 		}
 	}, [nav, userInfo.langId]);
 
+	const AffId = getUrlParameter("AffId") || readCookie("AffId");
 	useEffect(() => {
 		const AffCode = getUrlParameter("AffCode") || readCookie("AffCode");
 
-		if (AffCode && isMountedRef) {
-			setAffiliateidExist(AffCode);
+		if (AffId) {
+			setAffiliateidExist(AffId);
+			api_site_GetAffiliateAgent({ AffId }).then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							const { currencyId } = res.data.data;
+							const currencyData = {
+								id: currencyId,
+								displayKey: `Currency_${currencyId}`
+							};
+							setUserValueState(prev => ({
+								...prev,
+								Currency: currencyData
+							}));
+							setSiteCurrencyState(() => [currencyData]);
+						} else {
+							GetSiteCurrencyList();
+						}
+					}
+				},
+				() => {
+					if (isMountedRef.current) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
+						});
+					}
+				}
+			);
+		} else {
+			if (AffCode) {
+				setAffiliateidExist(AffCode);
+			}
+			GetSiteCurrencyList();
 		}
 	}, []);
 
-	useEffect(() => {
-		if (isMountedRef.current && redirectPath !== null) {
-			setRedirectPath(null);
-		}
-	}, [redirectPath]);
-
-	useEffect(() => {
+	const GetSiteCurrencyList = () => {
 		api_GetSiteCurrencyList().then(
 			res => {
 				if (isMountedRef.current) {
@@ -167,7 +215,7 @@ const Join = () => {
 					}
 				}
 			},
-			err => {
+			() => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
@@ -177,7 +225,7 @@ const Join = () => {
 				}
 			}
 		);
-	}, [i18n.lbl_ImportantNote, i18n.msg_ApiServerError, setPopBox]);
+	};
 
 	const showPswHandler = () => {
 		setPswState(!pswState);
@@ -223,7 +271,33 @@ const Join = () => {
 		return { checked, message };
 	};
 
-	const checkUsernameHandler = (_colName, e) => {
+	const phoneCheck = async val => {
+		let checked = true;
+		let msg = "";
+		const regx = /^[0-9\s]*$/;
+
+		if (!val) {
+			checked = false;
+			msg = "lbl_PhoneRequired";
+		} else if (val.length < 9 || !regx.test(val)) {
+			checked = false;
+			msg = "lbl_PhoneTooltip";
+		} else {
+			const res = await api_site_ExistsPhoneNo({
+				AreaCode: _areaCode,
+				Phone: val
+			});
+
+			if (res.data.errorCode === 0 && res.data.data === true) {
+				checked = false;
+				msg = "msg_PhoneExisted";
+			}
+		}
+
+		return { checked, msg };
+	};
+
+	const checkUsernameHandler = async (_colName, e) => {
 		const val = e.target.value;
 		const result = usernameCheck(val);
 
@@ -238,57 +312,56 @@ const Join = () => {
 						}
 					};
 				});
-				api_ExistsUserName({
-					UserName: val
-				}).then(
-					response => {
-						if (isMountedRef.current) {
-							const res = response.data;
-							if (res.errorCode === 0) {
-								if (res.data === true) {
-									setWarningState(prevState => {
-										return {
-											...prevState,
-											UserName: {
-												status: true,
-												msg:
-													i18n.msg_UsernameNotAvailable
-											}
-										};
-									});
-								} else {
-									setShowTipsState(prevState => {
-										return {
-											...prevState,
-											UserName: false
-										};
-									});
-									setChecklistState(prevState => {
-										return {
-											...prevState,
-											UserName: result.checked
-										};
-									});
-								}
+
+				try {
+					const response = await api_ExistsUserName({
+						UserName: val
+					});
+
+					if (isMountedRef.current) {
+						const res = response.data;
+						if (res.errorCode === 0) {
+							if (res.data === true) {
+								setWarningState(prevState => {
+									return {
+										...prevState,
+										UserName: {
+											status: true,
+											msg: i18n.msg_UsernameNotAvailable
+										}
+									};
+								});
 							} else {
-								setPopBox({
-									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: res.data.message
+								setShowTipsState(prevState => {
+									return {
+										...prevState,
+										UserName: false
+									};
+								});
+								setChecklistState(prevState => {
+									return {
+										...prevState,
+										UserName: result.checked
+									};
 								});
 							}
-						}
-					},
-					err => {
-						if (isMountedRef.current) {
+						} else {
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
-								content: i18n.msg_ApiServerError
+								content: res.data.message
 							});
 						}
 					}
-				);
+				} catch (error) {
+					if (isMountedRef.current) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
+						});
+					}
+				}
 			} else {
 				setShowTipsState(prevState => {
 					return { ...prevState, UserName: false };
@@ -330,109 +403,6 @@ const Join = () => {
 		});
 	};
 
-	// const emailCheck = val => {
-	// 	let checked = false;
-	// 	let message = "";
-	// 	const regx = /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
-
-	// 	if (val === "") {
-	// 		checked = false;
-	// 		message = i18n["msg_MailWrongFormat"];
-	// 	} else if (val != null) {
-	// 		if (!regx.test(val)) {
-	// 			checked = false;
-	// 			message = i18n["msg_MailWrongFormat"];
-	// 		} else {
-	// 			checked = true;
-	// 		}
-	// 	}
-
-	// 	return { checked, message };
-	// };
-
-	// const checkEmailHandler = (colName, e) => {
-	// 	const val = e.target.value;
-
-	// 	let result = emailCheck(val);
-	// 	if (val !== "") {
-	// 		if (result.checked) {
-	// 			setWarningState(prevState => {
-	// 				return {
-	// 					...prevState,
-	// 					[colName]: {
-	// 						status: false,
-	// 						msg: ""
-	// 					}
-	// 				};
-	// 			});
-	// 			api_ExistsEmail({
-	// 				Email: val
-	// 			}).then(
-	// 				response => {
-	// 					if (isMountedRef.current) {
-	// 						const res = response.data;
-	// 						if (res.errorCode === 0) {
-	// 							if (res.data === true) {
-	// 								setShowTipsState(prevState => {
-	// 									return { ...prevState, Email: false };
-	// 								});
-	// 								setWarningState(prevState => {
-	// 									return {
-	// 										...prevState,
-	// 										Email: {
-	// 											status: true,
-	// 											msg: i18n["msg_MailExisted"]
-	// 										}
-	// 									};
-	// 								});
-	// 							} else {
-	// 								setChecklistState(prevState => {
-	// 									return {
-	// 										...prevState,
-	// 										Email: result.checked
-	// 									};
-	// 								});
-	// 							}
-	// 						} else {
-	// 							setPopBox({
-	// 								isOpen: true,
-	// 								title: i18n.lbl_ImportantNote,
-	// 								content: response.data.message
-	// 							});
-	// 						}
-	// 					}
-	// 				},
-	// 				err => {
-	// 					if (isMountedRef.current) {
-	// 						setPopBox({
-	// 							isOpen: true,
-	// 							title: i18n.lbl_ImportantNote,
-	// 							content: i18n.msg_ApiServerError
-	// 						});
-	// 					}
-	// 				}
-	// 			);
-	// 		} else {
-	// 			setShowTipsState(prevState => {
-	// 				return { ...prevState, Email: false };
-	// 			});
-	// 			setWarningState(prevState => {
-	// 				return {
-	// 					...prevState,
-	// 					[colName]: {
-	// 						status: !result.checked,
-	// 						msg: result.message
-	// 					}
-	// 				};
-	// 			});
-	// 		}
-	// 	}
-	// };
-
-	const [currencyState, setcurrencyState] = useState(
-		currencyDefaultSelectIdx
-	);
-
 	const dropdownStateHandler = i => {
 		setcurrencyState(i);
 		setShowTipsState(prevState => {
@@ -443,12 +413,43 @@ const Join = () => {
 		});
 	};
 
+	const checkValue = async (col, e) => {
+		const val = e.target.value;
+		let checked = true;
+		let msg = "";
+
+		if (col === "Phone") {
+			const result = await phoneCheck(val);
+			checked = result.checked;
+			msg = result.msg;
+		} else {
+			checked = null;
+			msg = "";
+		}
+
+		setWarningState(prev => ({
+			...prev,
+			[col]: {
+				status: !checked,
+				msg: msg ? i18n[msg] : ""
+			}
+		}));
+	};
+
 	const EditField = (_colName, e) => {
 		const val = e.target.value;
-		setUserValueState(prevState => ({
-			...prevState,
-			[_colName]: val
-		}));
+		let checked = true;
+		if (_colName === defColName.Phone) {
+			const regx = /^[0-9\s]*$/;
+			checked = regx.test(val);
+		}
+
+		if (checked) {
+			setUserValueState(prevState => ({
+				...prevState,
+				[_colName]: val
+			}));
+		}
 	};
 
 	const checkboxHandler = col => {
@@ -459,19 +460,39 @@ const Join = () => {
 		}));
 	};
 
-	const checklistHandler = () => {
+	const checkAll = async () => {
+		try {
+			const res = await Promise.all([phoneCheck(userValueState.Phone)]);
+
+			const _phoneCheck = res[0];
+			const { checked } = _phoneCheck;
+
+			if (!checked) {
+				setWarningState(prev => ({
+					...prev,
+					Phone: {
+						status: !_phoneCheck.checked,
+						msg: i18n[_phoneCheck.msg]
+					}
+				}));
+			}
+
+			return checked;
+		} catch (error) {
+			return false;
+		}
+	};
+
+	const checklistHandler = async () => {
 		let checked = true;
 
 		const UserName = usernameCheck(userValueState.UserName);
 		const Password = passwordCheck({ val: userValueState.Password });
-		// let Email = emailCheck(userValueState.Email);
 		const _Checkbox = checkboxState.termsCheck && checkboxState.ageCheck;
+		const _checkAll = await checkAll();
 
 		checked =
-			UserName.checked &&
-			Password.checked &&
-			// && Email.checked
-			_Checkbox;
+			UserName.checked && Password.checked && _Checkbox && _checkAll;
 
 		for (const i in checklistState) {
 			if (checklistState[i] === false) {
@@ -492,20 +513,28 @@ const Join = () => {
 			const regData = {
 				UserName: userValueState.UserName,
 				Userpwd: userValueState.Password,
-				// Email: userValueState.Email,
 				CurrencyId: userValueState.Currency.id,
-				UserLang: userInfo.langId
+				UserLang: userInfo.langId,
+				PhoneNo: userValueState.Phone,
+				AreaCode: _areaCode
 			};
 
+			if (AffId) {
+				const res = await api_site_GetAffiliateAgent({ AffId });
+				if (res.data.errorCode === 0) {
+					regData.AffId =
+						getUrlParameter("AffId") || getCookie("AffId");
+				}
+			}
+
 			regData.RefId = getUrlParameter("RefId") || readCookie("RefId");
-			regData.AffId = getUrlParameter("AffId") || readCookie("AffId");
 			regData.Aff = getUrlParameter("Aff") || readCookie("Aff");
 			regData.AffCode =
 				getUrlParameter("AffCode") ||
 				readCookie("AffCode") ||
 				userValueState.AffiliateId;
 
-			api_Register(regData).then(
+			api_site_Signup(regData).then(
 				response => {
 					if (isMountedRef.current) {
 						const { errorCode } = response.data;
@@ -528,7 +557,7 @@ const Join = () => {
 										setUserInfo(_user);
 									}
 								},
-								err => {
+								() => {
 									if (isMountedRef.current) {
 										setPopBox({
 											isOpen: true,
@@ -556,7 +585,7 @@ const Join = () => {
 						}
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
@@ -567,20 +596,20 @@ const Join = () => {
 				}
 			);
 		} else {
-			setWarningState({
+			setWarningState(prev => ({
+				...prev,
 				UserName: { status: !UserName.checked, msg: UserName.message },
 				Password: {
 					status: !Password.checked,
 					msg: i18n[Password.message]
 				},
-				// Email: { status: !Email.checked, msg: Email.message }
 				Checkbox: {
 					status: !(
 						checkboxState.termsCheck && checkboxState.ageCheck
 					),
 					msg: i18n.lbl_Check18TCTooltip
 				}
-			});
+			}));
 		}
 	};
 
@@ -597,7 +626,7 @@ const Join = () => {
 		}
 
 		if (showBylink) {
-			setRedirectPath("/");
+			navigate("/");
 		} else {
 			setNav(() => {
 				const newState = show ? null : defNavPanel.join;
@@ -613,7 +642,7 @@ const Join = () => {
 		setPromoPopup(false);
 	};
 
-	return redirectPath === null ? (
+	return (
 		<>
 			<button onClick={handleJoinPanel.bind(this, openPanel)}>
 				{i18n.lbl_JoinNow.toUpperCase()}
@@ -666,19 +695,6 @@ const Join = () => {
 					Warning={warningState.Password}
 					value={userValueState.Password}
 				/>
-				{/* 
-				<Inputbox
-					icon="icon-email"
-					inputType="text"
-					placeholder={i18n["lbl_Email"]}
-					onFocus={showTipsHandler.bind(null, "Email")}
-					onBlur={checkEmailHandler.bind(null, "Email")}
-					onChange={EditField.bind(null, "Email")}
-					ClassName="JoinRule"
-					showTips={showTipsState.Email}
-					Tips={i18n["lbl_EmailToolTip"]}
-					Warning={warningState.Email}
-					value={userValueState.Email}></Inputbox> */}
 
 				<div className="inputBox">
 					<Dropdown
@@ -697,6 +713,32 @@ const Join = () => {
 						ClassName="JoinRule">
 						{i18n.lbl_PreferredCurrencyToolTip}
 					</Tips>
+				</div>
+
+				<div className="inputBox parts">
+					<span className="countryCode">{_areaCode}</span>
+					<Inputbox
+						icon="icon-phone"
+						inputType="tel"
+						ClassName="JoinRule"
+						placeholder={i18n.lbl_Phone}
+						value={userValueState.Phone}
+						areaCode={_areaCode}
+						onFocus={showTipsHandler.bind(null, "Phone")}
+						onBlur={checkValue.bind(null, "Phone")}
+						onChange={EditField.bind(null, "Phone")}
+						error={warningState.Phone.status}
+					/>
+					<div
+						className={`errortip${
+							warningState.Phone.status || showTipsState.Phone
+								? " open"
+								: ""
+						}`}>
+						{warningState.Phone.status
+							? warningState.Phone.msg
+							: i18n.lbl_PhoneTooltip}
+					</div>
 				</div>
 
 				<Inputbox
@@ -722,11 +764,17 @@ const Join = () => {
 						onChange={checkboxHandler.bind(this, "termsCheck")}
 						id="joinTermsCheck">
 						{i18n.lbl_Check18TC1} &nbsp;
-						<a target="_blank" href={TandC(userInfo.langId).terms}>
+						<a
+							target="_blank"
+							rel="noreferrer"
+							href={TandC(userInfo.langId).terms}>
 							{i18n.lbl_TermsConditions}
 						</a>
 						&nbsp; {i18n.lbl_Check18TC2}&nbsp;
-						<a target="_blank" href={TandC(userInfo.langId).rule}>
+						<a
+							target="_blank"
+							rel="noreferrer"
+							href={TandC(userInfo.langId).rule}>
 							{i18n.lbl_RuleRegulations}
 						</a>
 						&nbsp; {i18n.lbl_Check18TC3}&nbsp;{config.siteName}
@@ -757,8 +805,6 @@ const Join = () => {
 				isOpen={promoPopup}
 			/>
 		</>
-	) : (
-		<Redirect to="/" noThrow />
 	);
 };
 

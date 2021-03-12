@@ -19,6 +19,7 @@ import eventImg from "../../styles/img/event/eventlink.png";
 import eventIdImg from "../../styles/img/event/eventlink_id.png";
 import { eventTime as eventTimeMysteryBox } from "../../pages/mysteryBox";
 import MysteryBox from "../mysteryBox/homePopBox";
+import SEO from "../seo";
 
 const defPageInfo = {
 	default: {
@@ -189,6 +190,7 @@ const Layout = ({ children }) => {
 
 	return (
 		<>
+			<SEO />
 			<RotationHint i18n={i18n} />
 			<Header
 				title={i18n[pageInfo.titleKey] ?? pageInfo.titleKey}

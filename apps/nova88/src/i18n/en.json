@@ -304,7 +304,7 @@
 	"lbl_AffiliateDesc":"Your Partner to Success",
 	"lbl_PrefferedCurrency":"Preferred Currency",
 	"lbl_PhoneRequired": "Please fill in the phone field",
-	"lbl_PhoneTooltip": "Please enter your phone number, it can not change once enter!",
+	"lbl_PhoneTooltip": "Please enter your valid phone number, it can not be changed once saved!",
 	"msg_PhoneExisted":"Phone number already exists.",
 	"lbl_RemindPrefferedCurrency":"Preffered Currency is required.",
 	"lbl_ProfileModifyWarning": "Ensure account security, personal information cannot be modified after filling.",
@@ -493,5 +493,6 @@
 	"lbl_MysteryBox_CreditedAccount1":"You are rewarded today",
 	"lbl_MysteryBox_CreditedAccount2":"please come back again tomorrow!",
 	"lbl_MysteryBox_MemberEligibility":"Deposit Today Get Your Rewards Tomorrow.",
-	"lbl_MysteryBox_OtherConditions":"Other Conditions"
+	"lbl_MysteryBox_OtherConditions":"Other Conditions",
+	"lbl_MaxBonusAmount":"Max Bonus Amount"
 }

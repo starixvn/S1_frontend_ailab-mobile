@@ -1,8 +1,8 @@
 import React from "react";
-import { configContext } from "./context";
 import { PromotionAPI } from "@ailab-mobile/api";
 import { isConvert } from "@ailab-mobile/common";
-import { defWrapperCol } from "../common/def";
+import { configContext } from "./context";
+import { defWrapperCol, defRuleCols } from "./def";
 
 export default ({
 	config,
@@ -12,7 +12,11 @@ export default ({
 	i18n = {},
 	userInfo = {},
 	setPopBox,
-	ruleCols,
+	ruleCols = [
+		defRuleCols.maxBonus,
+		defRuleCols.rollOver,
+		defRuleCols.remainingTime
+	],
 	formatSetting = {
 		isConvertRequired: false,
 		digits: undefined,

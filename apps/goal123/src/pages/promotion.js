@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Promotion, defNav } from "@ailab-mobile/promotion";
+import { Promotion, defNav, defRuleCols } from "@ailab-mobile/promotion";
 import config from "Config";
 import path from "Path";
 import { Promotion as uiSetting } from "UISetting";
@@ -24,6 +24,11 @@ export default ({ location }) => {
 			}}
 			location={location}
 			navBar={[defNav.All, defNav.FirstDeposit, defNav.ReDeposit]}
+			ruleCols={[
+				defRuleCols.minAmount,
+				defRuleCols.rollOver,
+				defRuleCols.remainingTime
+			]}
 		/>
 	);
 };

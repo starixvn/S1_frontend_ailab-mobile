@@ -34,7 +34,7 @@ import { siteInfo } from "../config";
 import fish_GG from "../styles/img/fish_GG.jpg";
 import fish_SG from "../styles/img/fish_SG.jpg";
 import fish_SGW from "../styles/img/fish_SGW.jpg";
-import Cockfighting from "../styles/img/cockfighting.jpg";
+// import Cockfighting from "../styles/img/cockfighting.jpg";
 import ranking from "../styles/img/ranking.jpg";
 import path from "../path";
 import casino_ICG from "../styles/img/casino_ICG.jpg";
@@ -343,20 +343,20 @@ const gameList = ({ langId }) => [
 			}
 		]
 	},
-	{
-		category: "cockFighting",
-		categoryIcon: "cock",
-		translateKey: "lbl_CockFighting",
-		items: [
-			{
-				tpId: 19,
-				gameId: 19,
-				icon: "cock",
-				img: Cockfighting,
-				spanTextKey: "lbl_CockFighting"
-			}
-		]
-	},
+	// {
+	// 	category: "cockFighting",
+	// 	categoryIcon: "cock",
+	// 	translateKey: "lbl_CockFighting",
+	// 	items: [
+	// 		{
+	// 			tpId: 19,
+	// 			gameId: 19,
+	// 			icon: "cock",
+	// 			img: Cockfighting,
+	// 			spanTextKey: "lbl_CockFighting"
+	// 		}
+	// 	]
+	// },
 	{
 		category: "kelo",
 		categoryIcon: "kelo",

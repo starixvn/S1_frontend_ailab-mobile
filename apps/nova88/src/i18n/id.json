@@ -304,7 +304,7 @@
 	"lbl_AffiliateDesc": "Partner Anda menuju Sukses",
 	"lbl_PrefferedCurrency": "Mata Uang Pilihan",
 	"lbl_PhoneRequired": "Harap isi kolom ponsel",
-	"lbl_PhoneTooltip": "Silakan masukkan nomor handphone anda, tidak dapat di ganti setelah menekan enter",
+	"lbl_PhoneTooltip": "Masukkan nomor telepon Anda yang sah, nomor ini tidak dapat diubah setelah disimpan!",
 	"msg_PhoneExisted": "Nomor telepon sudah digunakan",
 	"lbl_RemindPrefferedCurrency": "Mata Uang Pilihan wajib diisi.",
 	"lbl_ProfileModifyWarning": "Pastikan keamanan akun Anda, Data Anda tidak dapat diubah atau modifikasi setelah diajukan",
@@ -493,7 +493,6 @@
 	"lbl_MysteryBox_CreditedAccount1":"Anda dapat hadiah",
 	"lbl_MysteryBox_CreditedAccount2":" hari ini, silakan kembali besok!",
 	"lbl_MysteryBox_MemberEligibility":"Deposit Hari Ini, Dapatkan Hadiah Anda Besok.",
-	"lbl_MysteryBox_OtherConditions":"Kondisi lain"
-	
-
+	"lbl_MysteryBox_OtherConditions":"Kondisi lain",
+	"lbl_MaxBonusAmount":"Jumlah Maksimal Bonus"
 }

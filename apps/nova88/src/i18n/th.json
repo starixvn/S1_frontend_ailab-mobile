@@ -304,7 +304,7 @@
 	"lbl_AffiliateDesc": "ข้อเสนอคอมมิชชั่นสุดพิเศษ!",
 	"lbl_PrefferedCurrency": "สกุลเงินที่เลือก",
 	"lbl_PhoneRequired": "โปรดใส่หมายเลขโทรศัพท์",
-	"lbl_PhoneTooltip": "กรุณากรอกหมายเลขโทรศัพท์ของคุณ และไม่สามารถเปลี่ยนแปลงได้ภายหลัง",
+	"lbl_PhoneTooltip": "กรุณากรอกหมายเลขโทรศัพท์ที่ถูกต้อง เนื่องจากจะไม่สามารถเปลี่ยนแปลงได้เมื่อบันทึกแล้ว!",
 	"msg_PhoneExisted": "หมายเลขนี้ได้ทำการลงทะเบียนแล้ว",
 	"lbl_RemindPrefferedCurrency": "ต้องระบุสกุลเงินที่ต้องการ",
 	"lbl_ProfileModifyWarning": "เพื่อความปลอดภัย ข้อมูลส่วนตัวทั้งหมดจะไม่สามารถแก้ไขได้หลังจากใส่ข้อมูลสำเร็จแล้ว",
@@ -493,6 +493,6 @@
 	"lbl_MysteryBox_CreditedAccount1":"วันนี้คุณได้รับรางวัล",
 	"lbl_MysteryBox_CreditedAccount2":"โปรดกลับมาพรุ่งนี้!",
 	"lbl_MysteryBox_MemberEligibility":"ฝากเงินวันนี้รับรางวัลพรุ่งนี้",
-	"lbl_MysteryBox_OtherConditions":"เงื่อนไขอื่น ๆ"
-
+	"lbl_MysteryBox_OtherConditions":"เงื่อนไขอื่น ๆ",
+	"lbl_MaxBonusAmount":"จำนวนโบนัสสูงสุด"
 }

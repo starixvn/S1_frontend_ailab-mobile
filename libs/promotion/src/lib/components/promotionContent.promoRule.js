@@ -74,14 +74,7 @@ const defElems = ({ promotionInfo, i18n = {}, isLogin, formatSetting }) => {
 	};
 };
 
-export default ({
-	ruleCols = [
-		defRuleCols.minAmount,
-		defRuleCols.rollOver,
-		defRuleCols.remainingTime
-	],
-	promotionInfo
-}) => {
+export default ({ ruleCols, promotionInfo }) => {
 	const {
 		formatSetting,
 		userInfo: { isLogin },
