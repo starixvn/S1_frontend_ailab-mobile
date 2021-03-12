@@ -23,7 +23,7 @@ const Category = props => {
 	});
 
 	const { setPopBox } = useContext(popBoxContext);
-	const [casinoTpIds, setCasinoTpIds] = useState(null);
+	const [showingTpIds, setShowingTpIds] = useState(null);
 
 	const clickGame = gameInfo => {
 		const {
@@ -70,7 +70,7 @@ const Category = props => {
 			api.site.GetTpIds().then(
 				res => {
 					if (res.data.errorCode === 0 && mounted) {
-						setCasinoTpIds(res.data.data);
+						setShowingTpIds(res.data.data);
 					}
 				},
 				err => {
@@ -97,7 +97,7 @@ const Category = props => {
 			clickGame={clickGame}
 			i18n={i18n}
 			top={props.shortcutBarLocate?.bottom}
-			casinoTpIds={casinoTpIds}
+			showingTpIds={showingTpIds}
 			userCurrencyId={userInfo.currencyId}
 			langId={userInfo.langId}
 		/>
@@ -213,7 +213,14 @@ class CateGoryContent extends Component {
 						isOpen={`${_open ? " open" : ""}`}
 						translation={this.props.i18n[item.translateKey]}
 						subIcon={item.items.filter(
-							subItem => subItem.eventIcon
+							subItem =>
+								subItem.eventIcon &&
+								(subItem.tpId
+									? this.props.showingTpIds === null ||
+									  this.props.showingTpIds.includes(
+											subItem.tpId
+									  )
+									: true)
 						)}
 						eventIcon={item.eventIcon}
 					/>
@@ -231,9 +238,9 @@ class CateGoryContent extends Component {
 
 						return (
 							allowCurrency &&
-							(item.category === "casino"
-								? this.props.casinoTpIds === null ||
-								  this.props.casinoTpIds.includes(subItem.tpId)
+							(subItem.tpId
+								? this.props.showingTpIds === null ||
+								  this.props.showingTpIds.includes(subItem.tpId)
 								: true)
 						);
 					})
