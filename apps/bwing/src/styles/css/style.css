@@ -189,6 +189,10 @@ html {
 }
 
 header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 99;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -210,9 +214,6 @@ header > a > img {
 
 header .Join,
 header .Login {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -234,6 +235,7 @@ header .Login {
       -ms-flex-pack: center;
           justify-content: center;
   pointer-events: none;
+  overflow-y: scroll;
 }
 
 header .Join.open,
@@ -270,7 +272,7 @@ header .Login > .close {
 header .Join > img,
 header .Login > img {
   width: 40vw;
-  margin: 3vw auto;
+  margin: 3vw calc(50% - 15vw);
 }
 
 header .Join .title,
@@ -356,6 +358,7 @@ header .Login button {
   border-radius: 3px;
   color: #fff;
   padding: 3vw;
+  width: 100%;
 }
 
 header .Join .Terms,
@@ -1291,6 +1294,7 @@ footer > a.open {
       -ms-flex-pack: center;
           justify-content: center;
   padding-bottom: 100px;
+  padding-top: 12vw;
 }
 
 .balance {
@@ -2525,7 +2529,8 @@ input[type="file"] {
           flex: 1;
 }
 
-button.clickBtn {
+button.clickBtn,
+a.clickBtn {
   background: #0c1a3f;
   border-radius: 100%;
   display: -webkit-box;
@@ -2544,11 +2549,13 @@ button.clickBtn {
   border-radius: 3px;
 }
 
-button.clickBtn.icon-spinner11 {
+button.clickBtn.icon-spinner11,
+a.clickBtn.icon-spinner11 {
   color: #58cdff;
 }
 
-button.clickBtn:before {
+button.clickBtn:before,
+a.clickBtn:before {
   font-size: 3vw;
 }
 
@@ -8262,7 +8269,9 @@ span.important {
   margin-right: 0;
 }
 
-.depositModule_mobile, .depositModule_online, .depositModule_local {
+.depositModule_mobile,
+.depositModule_online,
+.depositModule_local {
   background: rgba(1, 14, 51, 0.5);
   border: 1px solid #1d2f62;
   padding: 3vw;
@@ -8271,11 +8280,15 @@ span.important {
   display: none;
 }
 
-.depositModule_mobile.open, .depositModule_online.open, .depositModule_local.open {
+.depositModule_mobile.open,
+.depositModule_online.open,
+.depositModule_local.open {
   display: block;
 }
 
-.depositModule_mobile > .title, .depositModule_online > .title, .depositModule_local > .title {
+.depositModule_mobile > .title,
+.depositModule_online > .title,
+.depositModule_local > .title {
   margin: 5vw 0 2vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -8285,7 +8298,9 @@ span.important {
           align-items: center;
 }
 
-.depositModule_mobile > .title:not(.text-org), .depositModule_online > .title:not(.text-org), .depositModule_local > .title:not(.text-org) {
+.depositModule_mobile > .title:not(.text-org),
+.depositModule_online > .title:not(.text-org),
+.depositModule_local > .title:not(.text-org) {
   font-weight: normal;
   background: #1a3055;
   padding: 5px;
@@ -8293,11 +8308,18 @@ span.important {
   margin-bottom: 1px;
 }
 
-.depositModule_mobile > .title:before, .depositModule_mobile > .title span, .depositModule_online > .title:before, .depositModule_online > .title span, .depositModule_local > .title:before, .depositModule_local > .title span {
+.depositModule_mobile > .title:before,
+.depositModule_mobile > .title span,
+.depositModule_online > .title:before,
+.depositModule_online > .title span,
+.depositModule_local > .title:before,
+.depositModule_local > .title span {
   margin-right: 1vw;
 }
 
-.depositModule_mobile .selectModule, .depositModule_online .selectModule, .depositModule_local .selectModule {
+.depositModule_mobile .selectModule,
+.depositModule_online .selectModule,
+.depositModule_local .selectModule {
   background: rgba(12, 26, 63, 0.5);
   border: 1px solid #1d2f62;
   border-top: 0;
@@ -8313,11 +8335,15 @@ span.important {
       flex-wrap: wrap;
 }
 
-.depositModule_mobile .selectModule input[type="radio"], .depositModule_online .selectModule input[type="radio"], .depositModule_local .selectModule input[type="radio"] {
+.depositModule_mobile .selectModule input[type="radio"],
+.depositModule_online .selectModule input[type="radio"],
+.depositModule_local .selectModule input[type="radio"] {
   display: none;
 }
 
-.depositModule_mobile .selectModule input[type="radio"] + label, .depositModule_online .selectModule input[type="radio"] + label, .depositModule_local .selectModule input[type="radio"] + label {
+.depositModule_mobile .selectModule input[type="radio"] + label,
+.depositModule_online .selectModule input[type="radio"] + label,
+.depositModule_local .selectModule input[type="radio"] + label {
   border: 1px solid #71d3fb;
   width: 4vw;
   height: 4vw;
@@ -8334,13 +8360,17 @@ span.important {
   margin-right: 2vw;
 }
 
-.depositModule_mobile .selectModule input[type="radio"]:checked + label div, .depositModule_online .selectModule input[type="radio"]:checked + label div, .depositModule_local .selectModule input[type="radio"]:checked + label div {
+.depositModule_mobile .selectModule input[type="radio"]:checked + label div,
+.depositModule_online .selectModule input[type="radio"]:checked + label div,
+.depositModule_local .selectModule input[type="radio"]:checked + label div {
   width: 3vw;
   height: 3vw;
   background: #f77a00;
 }
 
-.depositModule_mobile .selectModule > div, .depositModule_online .selectModule > div, .depositModule_local .selectModule > div {
+.depositModule_mobile .selectModule > div,
+.depositModule_online .selectModule > div,
+.depositModule_local .selectModule > div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8354,59 +8384,323 @@ span.important {
   margin: 2vw 0;
 }
 
-.depositModule_mobile .selectModule > div .bankName, .depositModule_online .selectModule > div .bankName, .depositModule_local .selectModule > div .bankName {
+.depositModule_mobile .selectModule > div.info,
+.depositModule_online .selectModule > div.info,
+.depositModule_local .selectModule > div.info {
+  width: calc(100% - 12vw);
+  padding: 2vw 4vw;
+  background: rgba(26, 48, 85, 0.95);
+  margin: auto;
+  border-radius: 5px;
+}
+
+.depositModule_mobile .selectModule > div.info .checkBank,
+.depositModule_online .selectModule > div.info .checkBank,
+.depositModule_local .selectModule > div.info .checkBank {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.depositModule_mobile .selectModule > div.info ul,
+.depositModule_online .selectModule > div.info ul,
+.depositModule_local .selectModule > div.info ul {
+  width: 100%;
+}
+
+.depositModule_mobile .selectModule > div .bankName,
+.depositModule_online .selectModule > div .bankName,
+.depositModule_local .selectModule > div .bankName {
   width: 20vw;
   background: white;
   border-radius: 5px;
   padding: 0.5vw 1vw;
 }
 
-.depositModule_mobile .selectModule > div .bankName img, .depositModule_online .selectModule > div .bankName img, .depositModule_local .selectModule > div .bankName img {
+.depositModule_mobile .selectModule > div .bankName img,
+.depositModule_online .selectModule > div .bankName img,
+.depositModule_local .selectModule > div .bankName img {
   width: 100%;
   vertical-align: middle;
 }
 
-.depositModule_mobile .inputBox, .depositModule_online .inputBox, .depositModule_local .inputBox {
+.depositModule_mobile .inputBox,
+.depositModule_online .inputBox,
+.depositModule_local .inputBox {
   margin: 2px 0 2vw;
 }
 
-.depositModule_mobile .inputBox input, .depositModule_online .inputBox input, .depositModule_local .inputBox input {
+.depositModule_mobile .inputBox input,
+.depositModule_online .inputBox input,
+.depositModule_local .inputBox input {
   padding: 2vw;
   border-radius: 0;
 }
 
-.depositModule_mobile .inputBox input::-webkit-input-placeholder, .depositModule_online .inputBox input::-webkit-input-placeholder, .depositModule_local .inputBox input::-webkit-input-placeholder {
+.depositModule_mobile .inputBox input::-webkit-input-placeholder,
+.depositModule_online .inputBox input::-webkit-input-placeholder,
+.depositModule_local .inputBox input::-webkit-input-placeholder {
   color: #afafaf;
 }
 
-.depositModule_mobile .inputBox input:-ms-input-placeholder, .depositModule_online .inputBox input:-ms-input-placeholder, .depositModule_local .inputBox input:-ms-input-placeholder {
+.depositModule_mobile .inputBox input:-ms-input-placeholder,
+.depositModule_online .inputBox input:-ms-input-placeholder,
+.depositModule_local .inputBox input:-ms-input-placeholder {
   color: #afafaf;
 }
 
-.depositModule_mobile .inputBox input::-ms-input-placeholder, .depositModule_online .inputBox input::-ms-input-placeholder, .depositModule_local .inputBox input::-ms-input-placeholder {
+.depositModule_mobile .inputBox input::-ms-input-placeholder,
+.depositModule_online .inputBox input::-ms-input-placeholder,
+.depositModule_local .inputBox input::-ms-input-placeholder {
   color: #afafaf;
 }
 
-.depositModule_mobile .inputBox input::placeholder, .depositModule_online .inputBox input::placeholder, .depositModule_local .inputBox input::placeholder {
+.depositModule_mobile .inputBox input::placeholder,
+.depositModule_online .inputBox input::placeholder,
+.depositModule_local .inputBox input::placeholder {
   color: #afafaf;
 }
 
-.depositModule_mobile .inputBox .tip, .depositModule_online .inputBox .tip, .depositModule_local .inputBox .tip {
+.depositModule_mobile .inputBox .tip,
+.depositModule_online .inputBox .tip,
+.depositModule_local .inputBox .tip {
   margin-left: 2.5vw;
 }
 
-.depositModule_mobile .btn-group, .depositModule_online .btn-group, .depositModule_local .btn-group {
-  width: auto;
-  display: unset;
+.depositModule_mobile .btn-group,
+.depositModule_online .btn-group,
+.depositModule_local .btn-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-.depositModule_mobile .btn-group button, .depositModule_online .btn-group button, .depositModule_local .btn-group button {
+.depositModule_mobile .btn-group a,
+.depositModule_mobile .btn-group button,
+.depositModule_online .btn-group a,
+.depositModule_online .btn-group button,
+.depositModule_local .btn-group a,
+.depositModule_local .btn-group button {
   width: 50vw;
   margin: auto;
+  background: -webkit-gradient(linear, left top, left bottom, from(#71d3fb), to(#3fb1e0));
+  background: linear-gradient(180deg, #71d3fb, #3fb1e0);
+  color: #070e22;
 }
 
-.depositModule_mobile + .btn-group, .depositModule_online + .btn-group, .depositModule_local + .btn-group {
+.depositModule_mobile .btn-group a.darkGray,
+.depositModule_mobile .btn-group button.darkGray,
+.depositModule_online .btn-group a.darkGray,
+.depositModule_online .btn-group button.darkGray,
+.depositModule_local .btn-group a.darkGray,
+.depositModule_local .btn-group button.darkGray {
+  background: #666;
+}
+
+.depositModule_mobile .btn-group a:first-child,
+.depositModule_mobile .btn-group button:first-child,
+.depositModule_online .btn-group a:first-child,
+.depositModule_online .btn-group button:first-child,
+.depositModule_local .btn-group a:first-child,
+.depositModule_local .btn-group button:first-child {
+  margin-right: 0.5vw;
+}
+
+.depositModule_mobile + .btn-group,
+.depositModule_online + .btn-group,
+.depositModule_local + .btn-group {
   width: 100%;
   margin: 3vw 0;
+}
+
+.vip {
+  padding: 12vw 0 90vw;
+  width: 100%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.vip .swiper-container {
+  position: fixed;
+}
+
+.vip .swiper-container .banner {
+  top: auto;
+}
+
+.vip .swiper-container .swiper-slide.swiper-slide-active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.medal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #980b0b;
+  color: white;
+  position: fixed;
+  top: 49vw;
+  width: 100%;
+}
+
+.medal div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border: 1px solid #001942;
+  text-align: center;
+  padding: 1vw;
+  word-break: break-word;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.medal div:first-child {
+  border-left: 0;
+}
+
+.medal div:last-child {
+  border-right: 0;
+}
+
+.medal div img {
+  width: 10vw;
+}
+
+.vipInfo {
+  color: white;
+  padding: 2vw;
+  margin: 55vw auto 0;
+}
+
+.vipInfo .vipTitle {
+  font-weight: bold;
+  color: #f77a00;
+  margin: 2vw 0;
+}
+
+.vipPage .eventList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-collapse: collapse;
+}
+
+.vipPage .eventList tbody {
+  width: 100%;
+}
+
+.vipPage .eventList tr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #212121;
+}
+
+.vipPage .eventList tr:first-child td {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.vipPage .eventList tr.title {
+  background: #58cdff;
+}
+
+.vipPage .eventList tr.title .icon {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.vipPage .eventList tr.title .icon:before {
+  margin-right: 2vw;
+}
+
+.vipPage .eventList tr.title .icon span {
+  margin-left: 1vw;
+}
+
+.vipPage .eventList tr:not(.title) td[colspan="7"] {
+  background: #333;
+}
+
+.vipPage .eventList tr.lastTd td {
+  border-bottom: 1px solid #afafaf;
+}
+
+.vipPage .eventList tr td {
+  padding: 1vw;
+  font-weight: normal;
+  font-size: 3vw;
+  height: auto;
+  border-radius: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid #afafaf;
+  border-left: 0;
+  border-bottom: 0;
+  word-break: break-word;
+}
+
+.vipPage .eventList tr td:first-child {
+  border-left: 1px solid #afafaf;
+}
+
+.vipPage .eventList tr td img {
+  width: 10vw;
+}
+
+.vipBanner {
+  width: 100%;
+  height: 37.5vw;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 3vw;
+}
+
+.vipBanner img {
+  width: auto;
+  height: 100%;
 }
 /*# sourceMappingURL=style.css.map */
