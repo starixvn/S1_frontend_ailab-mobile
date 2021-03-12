@@ -87,6 +87,10 @@ const defPlatfrom = [
 	{
 		...defGameInfo.V8Poker,
 		imgName: "v8"
+	},
+	{
+		...defGameInfo.LIVEcasinoN2,
+		imgName: "n2live"
 	}
 ];
 

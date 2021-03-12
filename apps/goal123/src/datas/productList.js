@@ -8,6 +8,7 @@ import LIVEcasino_AG from "../styles/img/LIVEcasino_AG.jpg";
 import LIVEcasino_AB from "../styles/img/LIVEcasino_AB.jpg";
 import LIVEcasino_SA from "../styles/img/LIVEcasino_SA.jpg";
 import LIVEcasino_EB from "../styles/img/LIVEcasino_EB.jpg";
+import LIVEcasino_N2Live from "../styles/img/LIVEcasino_n2live.jpg";
 // import LIVEcasino_MW from "../styles/img/LIVEcasino_MW.jpg";
 import LIVEcasino_WM from "../styles/img/LIVEcasino_WM.jpg";
 import Coming_soon from "../styles/img/coming_soon.jpg";
@@ -50,6 +51,7 @@ export const defGameInfo = {
 	LIVEcasinoEB: { gameId: 18, tpId: 18 },
 	LIVEcasinoMW: { gameId: 105, tpId: 5 },
 	LIVEcasinoWM: { gameId: 20, tpId: 20 },
+	LIVEcasinoN2: { tpId: 28 },
 	Casino_ow: { gameId: 208, tpId: 1 },
 	Casino_All: { tpId: 0 },
 	Casino_PP: { tpId: 5 },
@@ -117,7 +119,8 @@ const eventTime = {
 	ranking: { startDate: "2021/01/01 12:00:00" },
 	new_V8Poker: { endDate: "2021/03/05 23:59:59" },
 	new_CQ9: { endDate: "2021/03/05 11:00:00" },
-	new_ICG: { endDate: "2021/02/05 11:00:00" }
+	new_ICG: { endDate: "2021/02/05 11:00:00" },
+	new_LiveCasino_N2Live: { startDate: "2021/03/02 11:00:00" }
 };
 
 const gameList = langId => [
@@ -343,6 +346,16 @@ const gameList = langId => [
 		translateKey: "lbl_LiveCasino",
 		comingSoonImg: Coming_soon,
 		items: [
+			{
+				...defGameInfo.LIVEcasinoN2,
+				img: LIVEcasino_N2Live,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_LiveCasino_N2Live)
+					}
+				]
+			},
 			{
 				...defGameInfo.LIVEcasinoWM,
 				img: LIVEcasino_WM

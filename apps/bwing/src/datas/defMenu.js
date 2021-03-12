@@ -33,6 +33,7 @@ import liveCasino_DG from "../styles/img/liveGame/liveGame5.png";
 import liveCasino_AB from "../styles/img/liveGame/liveGame6.png";
 import liveCasino_EB from "../styles/img/liveGame/liveGame7.png";
 import liveCasino_SA from "../styles/img/liveGame/liveGame8.png";
+import liveCasino_N2 from "../styles/img/liveGame/livegame10.png";
 
 export const defIconType = {
 	live: " liveIcon",
@@ -45,7 +46,8 @@ const eventTime = {
 	new_one789: { endDate: "2021/01/22 11:00:00" },
 	new_V8Poker: { endDate: "2021/03/05 23:59:59" },
 	new_ICG: { endDate: "2021/02/05 11:00:00" },
-	new_CQ9_fishing: { endDate: "2021/03/05 11:00:00" }
+	new_CQ9_fishing: { endDate: "2021/03/05 11:00:00" },
+	new_LiveCasino_N2Live: { startDate: "2021/03/02 11:00:00" }
 };
 
 export const productList = langId => {
@@ -126,6 +128,20 @@ export const productList = langId => {
 			displayKey: "lbl_LiveCasino",
 			path: path.liveCasino.root,
 			items: [
+				{
+					displayKey: "N2Live",
+					icon: "icon icon-N2LIVE",
+					img: liveCasino_N2,
+					...defGameInfo.LIVEcasinoN2,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(
+								eventTime.new_LiveCasino_N2Live
+							)
+						}
+					]
+				},
 				{
 					displayKey: "lbl_liveCasino_789SeDie",
 					icon: "icon icon-one789",
