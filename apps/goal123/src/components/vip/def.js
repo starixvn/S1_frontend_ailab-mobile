@@ -5,12 +5,12 @@ import vipBanner4_en from "../../styles/img/vip/en/banner_vip4.jpg";
 import vipBanner5_en from "../../styles/img/vip/en/banner_vip5.jpg";
 import vipBanner6_en from "../../styles/img/vip/en/banner_vip6.jpg";
 
-import vipClub1_en from "../../styles/img/vip/vip1.png";
-import vipClub2_en from "../../styles/img/vip/vip2.png";
-import vipClub3_en from "../../styles/img/vip/vip3.png";
-import vipClub4_en from "../../styles/img/vip/vip4.png";
-import vipClub5_en from "../../styles/img/vip/vip5.png";
-import vipClub6_en from "../../styles/img/vip/vip6.png";
+import vipClub1 from "../../styles/img/vip/vip1.png";
+import vipClub2 from "../../styles/img/vip/vip2.png";
+import vipClub3 from "../../styles/img/vip/vip3.png";
+import vipClub4 from "../../styles/img/vip/vip4.png";
+import vipClub5 from "../../styles/img/vip/vip5.png";
+import vipClub6 from "../../styles/img/vip/vip6.png";
 
 export const defBannersUrl = ({ langId }) => {
 	const imgArr =
@@ -23,33 +23,40 @@ export const defBannersUrl = ({ langId }) => {
 					vipBanner5_en,
 					vipBanner6_en
 			  ]
-			: [vip1_en, vip2_en, vip3_en, vip4_en, vip5_en, vip6_en];
+			: [
+					vipBanner1_en,
+					vipBanner1_en,
+					vipBanner1_en,
+					vipBanner1_en,
+					vipBanner1_en,
+					vipBanner1_en
+			  ];
 	return imgArr;
 };
 
 export const defLevelList = [
 	{
-		imgUrl: "https://image.n88media.com/VIP/img/vip01.png",
+		imgUrl: vipClub1,
 		levelName: "lbl_Vintage_Club"
 	},
 	{
-		imgUrl: "https://image.n88media.com/VIP/img/vip02.png",
+		imgUrl: vipClub2,
 		levelName: "lbl_Silver_Club"
 	},
 	{
-		imgUrl: "https://image.n88media.com/VIP/img/vip03.png",
+		imgUrl: vipClub3,
 		levelName: "lbl_Gold_Club"
 	},
 	{
-		imgUrl: "https://image.n88media.com/VIP/img/vip04.png",
+		imgUrl: vipClub4,
 		levelName: "lbl_Titanium_Club"
 	},
 	{
-		imgUrl: "https://image.n88media.com/VIP/img/vip05.png",
+		imgUrl: vipClub5,
 		levelName: "lbl_Diamond_Club"
 	},
 	{
-		imgUrl: "https://image.n88media.com/VIP/img/vip06.png",
-		levelName: "lbl_Nova_Club"
+		imgUrl: vipClub6,
+		levelName: "lbl_GOAL123_Club"
 	}
 ];

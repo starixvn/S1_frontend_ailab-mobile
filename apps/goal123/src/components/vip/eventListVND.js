@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const EventListMYR = ({ i18n }) => (
+const EventListVND = ({ i18n }) => (
 	<table className="eventList">
 		<tbody>
 			<tr className="title">
@@ -111,7 +111,7 @@ const EventListMYR = ({ i18n }) => (
 			<tr className="title">
 				<td colSpan="7" className="icon icon-nova88">
 					{i18n.lbl_Vip_Exclusive_Bonus}
-					<span className="text-org">(MYR)</span>
+					<span className="text-org">(VND)</span>
 				</td>
 			</tr>
 			<tr>
@@ -119,10 +119,10 @@ const EventListMYR = ({ i18n }) => (
 			</tr>
 			<tr>
 				<td />
-				<td>200</td>
-				<td>300</td>
-				<td>600</td>
-				<td>1,200</td>
+				<td>333,123</td>
+				<td>500,123</td>
+				<td>1,123,123</td>
+				<td>2,123,123</td>
 				<td>{i18n.lbl_Vip_ByInvitation}</td>
 			</tr>
 			<tr className="title">
@@ -134,7 +134,7 @@ const EventListMYR = ({ i18n }) => (
 				<td colSpan="7">{i18n.lbl_Vip_Sport_Rebate}</td>
 			</tr>
 			<tr>
-				<td>0.55%</td>
+				<td>0.5%</td>
 				<td>0.6%</td>
 				<td>0.7%</td>
 				<td>0.8%</td>
@@ -145,34 +145,34 @@ const EventListMYR = ({ i18n }) => (
 				<td colSpan="7">{i18n.lbl_Vip_LiveCasino_Rebate}</td>
 			</tr>
 			<tr>
+				<td>0.4%</td>
 				<td>0.5%</td>
 				<td>0.6%</td>
+				<td>0.65%</td>
 				<td>0.7%</td>
 				<td>0.8%</td>
-				<td>0.9%</td>
-				<td>1%</td>
 			</tr>
 			<tr>
 				<td colSpan="7">{i18n.lbl_Vip_SlotFishing_Rebate}</td>
 			</tr>
 			<tr>
+				<td>0.7%</td>
 				<td>0.8%</td>
 				<td>0.9%</td>
 				<td>1.1%</td>
 				<td>1.3%</td>
 				<td>1.5%</td>
-				<td>1.7%</td>
 			</tr>
 			<tr>
 				<td colSpan="7">{i18n.lbl_Vip_VirtualSport_Rebate}</td>
 			</tr>
 			<tr>
+				<td>0.7%</td>
 				<td>0.8%</td>
 				<td>0.9%</td>
 				<td>1.1%</td>
 				<td>1.3%</td>
 				<td>1.5%</td>
-				<td>1.7%</td>
 			</tr>
 			<tr className="title">
 				<td colSpan="7" className="icon icon-nova88">
@@ -205,7 +205,7 @@ const EventListMYR = ({ i18n }) => (
 			<tr className="title">
 				<td colSpan="7" className="icon icon-nova88">
 					{i18n.lbl_Vip_Tire_Upgrade_Requirement}
-					<span className="text-org">(MYR)</span>
+					<span className="text-org">(VND)</span>
 				</td>
 			</tr>
 			<tr>
@@ -213,16 +213,16 @@ const EventListMYR = ({ i18n }) => (
 			</tr>
 			<tr>
 				<td />
-				<td>50,000</td>
-				<td>150,000</td>
-				<td>450,000</td>
-				<td>800,000</td>
+				<td>88,123,000</td>
+				<td>168,123,000</td>
+				<td>388,123,000</td>
+				<td>888,123,000</td>
 				<td>{i18n.lbl_Vip_ByInvitation}</td>
 			</tr>
 			<tr className="title">
 				<td colSpan="7" className="icon icon-nova88">
 					{i18n.lbl_Vip_Tier_Maintenance_Requirement}
-					<span className="text-org">(MYR)</span>
+					<span className="text-org">(VND)</span>
 				</td>
 			</tr>
 			<tr>
@@ -233,9 +233,9 @@ const EventListMYR = ({ i18n }) => (
 			<tr>
 				<td />
 				<td />
-				<td>25,000</td>
-				<td>150,000</td>
-				<td>300,000</td>
+				<td>468,123,000</td>
+				<td>788,123,000</td>
+				<td>1,388,123,000</td>
 				<td>{i18n.lbl_Vip_ByInvitation}</td>
 			</tr>
 			<tr>
@@ -246,9 +246,9 @@ const EventListMYR = ({ i18n }) => (
 			<tr>
 				<td />
 				<td />
-				<td>250,000</td>
-				<td>1,500,000</td>
-				<td>3,000,000</td>
+				<td>10,888,123,000</td>
+				<td>20,888,123,000</td>
+				<td>50,888,123,000</td>
 				<td>{i18n.lbl_Vip_ByInvitation}</td>
 			</tr>
 			<tr>
@@ -262,14 +262,14 @@ const EventListMYR = ({ i18n }) => (
 				<td>{i18n.lbl_Vip_3Months}</td>
 				<td>{i18n.lbl_Vip_3Months}</td>
 				<td>{i18n.lbl_Vip_3Months}</td>
-				<td>{i18n.lbl_Vip_ByInvitation}</td>
+				<td>{i18n.lbl_Vip_3Months}</td>
 			</tr>
 		</tbody>
 	</table>
 );
 
-EventListMYR.propTypes = {
+EventListVND.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
-export default EventListMYR;
+export default EventListVND;
