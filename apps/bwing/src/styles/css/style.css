@@ -1280,6 +1280,7 @@ footer > a.open {
   width: 100%;
   height: auto;
   background: #070e22;
+  padding: 26vw 8vw 24vw;
   padding: 0 10px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -1294,7 +1295,14 @@ footer > a.open {
       -ms-flex-pack: center;
           justify-content: center;
   padding-bottom: 100px;
-  padding-top: 12vw;
+}
+
+.mainLogout {
+  padding-top: 25vw;
+}
+
+.mainLogin {
+  padding-top: 37vw;
 }
 
 .balance {
@@ -8517,7 +8525,7 @@ span.important {
 }
 
 .vip {
-  padding: 12vw 0 90vw;
+  padding: 40px 0 90vw;
   width: 100%;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
@@ -8548,7 +8556,7 @@ span.important {
   background: #980b0b;
   color: white;
   position: fixed;
-  top: 49vw;
+  top: 47vw;
   width: 100%;
 }
 
