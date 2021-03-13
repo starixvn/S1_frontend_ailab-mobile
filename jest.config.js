@@ -9,6 +9,7 @@ module.exports = {
 		"<rootDir>/libs/common",
 		"<rootDir>/libs/service",
 		"<rootDir>/libs/casino",
-		"<rootDir>/libs/history"
+		"<rootDir>/libs/history",
+		"<rootDir>/apps/nova88v2"
 	]
 };

@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login renders correctly 1`] = `
+<div
+  className="Login active"
+>
+  <div
+    className="infoModule"
+    data-testid=""
+  >
+    <div
+      className="inputInfo "
+      data-testid="inputInfo"
+    >
+      
+    </div>
+    <div
+      className="inputBox "
+    >
+      <i
+        className="icon icon-member"
+      />
+      <input
+        className="textRight"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder=""
+        type="text"
+        value=""
+      />
+      <div
+        className="icon-module"
+      >
+        <i
+          className="icon icon-information"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="tip"
+    data-testid=""
+  >
+    
+  </div>
+  <div
+    className="infoModule"
+    data-test=""
+  >
+    <div
+      className="inputBox "
+    >
+      <i
+        className="icon icon-key"
+      />
+      <input
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={null}
+        placeholder=""
+        type="password"
+        value=""
+      />
+      <div
+        className="icon-module"
+      >
+        <i
+          className="icon icon-eye-blocked"
+          onClick={[Function]}
+        />
+        <i
+          className="icon icon-information"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="Terms"
+  >
+    <a
+      href="/en/forgetPassword"
+      onClick={[Function]}
+    >
+      ?
+    </a>
+  </div>
+  <div
+    className="btn-group"
+  >
+    <button
+      onClick={[Function]}
+    />
+  </div>
+  <a
+    href="/en/"
+    onClick={[Function]}
+  >
+    <div
+      className="visit"
+    >
+      <i
+        className="icon icon-visit"
+      />
+    </div>
+  </a>
+</div>
+`;

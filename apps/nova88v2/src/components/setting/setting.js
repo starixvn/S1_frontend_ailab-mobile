@@ -1,0 +1,187 @@
+import React, { useContext, useState } from "react";
+import { Link } from "@Router";
+import { useNavigate } from "@reach/router";
+import PropTypes from "prop-types";
+import {
+	i18nContext,
+	userInfoContext,
+	navContext,
+	msgCountContext
+} from "../common/context";
+import LangPanel from "./setting.langPanel";
+import { LOGOUT } from "../../service/auth";
+import ThemeMode from "./setting.themeMode";
+import path from "../../path";
+import { siteInfo } from "../../config";
+
+const BtnBar = ({ langId, isLogin, i18n, msgCount }) => {
+	return isLogin ? (
+		<div className="tag">
+			<Link
+				to={`/${langId}/${path.profile.root}`}
+				className="icon icon-member">
+				{i18n.lbl_MyAccount}
+			</Link>
+			<i />
+			<Link
+				to={`/${langId}/${path.message.root}`}
+				className="icon icon-email">
+				{i18n.lbl_Message}
+				{msgCount ? (
+					<i className="quantity">
+						{msgCount <= 99 ? msgCount : "99+"}
+					</i>
+				) : null}
+			</Link>
+		</div>
+	) : (
+		<div className="tag">
+			<Link to={`/${langId}/${path.join.root}`}>{i18n.lbl_JoinNow}</Link>
+			<i />
+			<Link to={`/${langId}/${path.login.root}`}>{i18n.lbl_Login}</Link>
+		</div>
+	);
+};
+
+BtnBar.defaultProps = {
+	isLogin: false,
+	msgCount: 0
+};
+
+BtnBar.propTypes = {
+	isLogin: PropTypes.bool,
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	langId: PropTypes.string.isRequired,
+	msgCount: PropTypes.number
+};
+
+const Card = ({ children, btnTitle, btnClass }) => {
+	const [open, setOpen] = useState("");
+	const openToggler = () => {
+		setOpen(prev => (prev === "" ? "active" : ""));
+	};
+
+	return (
+		<div>
+			<button
+				onClick={openToggler}
+				className={`title icon ${btnClass} ${open}`}>
+				{btnTitle}
+				<i className="icon icon-keyboard_arrow_down" />
+			</button>
+			{children}
+		</div>
+	);
+};
+
+export default () => {
+	const navigate = useNavigate();
+	const { msgCount } = useContext(msgCountContext);
+	const { i18n } = useContext(i18nContext);
+	const { userInfo, setUserInfo } = useContext(userInfoContext);
+	const { setNav } = useContext(navContext);
+	const handleLogout = () => {
+		LOGOUT(() => {
+			setUserInfo(prevState => ({
+				isLogin: false,
+				langId: prevState.langId
+			}));
+			setNav(() => null);
+			navigate(`/${userInfo.langId}`);
+		});
+	};
+
+	return (
+		<>
+			<BtnBar
+				langId={userInfo.langId}
+				isLogin={userInfo.isLogin}
+				i18n={i18n}
+				msgCount={msgCount}
+			/>
+			<div className="accordion">
+				<div>
+					<button className="title icon icon-cog">
+						{i18n.lbl_Setting}
+					</button>
+					<ThemeMode />
+					<LangPanel
+						userInfo={userInfo}
+						setUserInfo={setUserInfo}
+						i18n={i18n}
+					/>
+				</div>
+				<Card btnTitle={i18n.lbl_OurPolicies} btnClass="icon-policies">
+					<a href="/SiteSkin/Nova88/Static/cs/ResposibleGaming.html">
+						{i18n.lbl_ResposibleGaming}
+					</a>
+					<a href="/SiteSkin/Nova88/Static/cs/TermsConditions.html">
+						{i18n.lbl_TermsConditions}
+					</a>
+					<a href="/SiteSkin/Nova88/Static/cs/PrivacyPolicy.html">
+						{i18n.lbl_PrivacyPolicy}
+					</a>
+					<a href="/SiteSkin/Nova88/Static/cs/CookiePolicy.html">
+						{i18n.lbl_CookiePolicy}
+					</a>
+				</Card>
+				<Card btnTitle={i18n.lbl_HelpSupport} btnClass="icon-question">
+					<a href="/SiteSkin/Nova88/Static/cs/ResposibleGaming.html">
+						{i18n.lbl_RuleRegulations}
+					</a>
+					<a href="/SiteSkin/Nova88/Static/cs/AccountTerms.html">
+						{i18n.lbl_AccountTerms}
+					</a>
+					<a href="/SiteSkin/Nova88/Static/cs/FAQ.html">
+						{i18n.lbl_FAQ}
+					</a>
+				</Card>
+				<Card
+					btnTitle={siteInfo(userInfo.langId).siteName}
+					btnClass="icon-nova88">
+					<a href="/SiteSkin/Nova88/Static/cs/AboutUs.html">
+						{i18n.lbl_AboutUs}
+					</a>
+					<a href={`${siteInfo(userInfo.langId).affiliateLink}`}>
+						{i18n.lbl_Affiliate}
+					</a>
+					<a href="/SiteSkin/Nova88/Static/cs/ContactUs.html">
+						{i18n.lbl_ContactUs}
+					</a>
+					<a href="/SiteSkin/Nova88/Static/cs/Terms.html">
+						{i18n.lbl_Terms}
+					</a>
+				</Card>
+				<Card btnTitle={i18n.lbl_SocialMedia} btnClass="icon-facebook2">
+					<a
+						href={`${
+							siteInfo(userInfo.langId).socialMedia.fb.link
+						}`}>
+						Facebook
+					</a>
+					<a
+						href={`${
+							siteInfo(userInfo.langId).socialMedia.twitter.link
+						}`}>
+						Twitter
+					</a>
+					<a
+						href={`${
+							siteInfo(userInfo.langId).socialMedia.ig.link
+						}`}>
+						Instagram
+					</a>
+				</Card>
+				{userInfo.isLogin ? (
+					<div>
+						<button
+							className="title icon icon-exit"
+							onClick={handleLogout}>
+							{i18n.lbl_Logout}
+						</button>
+					</div>
+				) : null}
+			</div>
+		</>
+	);
+};
