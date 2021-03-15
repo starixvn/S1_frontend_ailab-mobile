@@ -190,6 +190,7 @@ const Panel = () => {
 			accountNo,
 			accountName,
 			isOpen: true,
+			real_amount: amount,
 			amount: number_format(amount, _isConvert),
 			picFileName,
 			refId

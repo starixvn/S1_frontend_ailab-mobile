@@ -131,7 +131,7 @@ class Modal extends Component {
 	};
 
 	checkAllValue = () => {
-		const refIdResult = this.checkRefId(this.props.bankSlipPopBox.refId);
+		// const refIdResult = this.checkRefId(this.props.bankSlipPopBox.refId);
 		const doneUploadResult = this.checkDoneUpload();
 		if (doneUploadResult.status) {
 			this.props.setPopBox({
@@ -153,16 +153,19 @@ class Modal extends Component {
 					</div>
 				)
 			});
-		} else if (refIdResult.status) {
-			this.setState({
-				warningStateRefId: {
-					status: refIdResult.status,
-					msg: refIdResult.msg
-				}
-			});
 		}
+		// else if (refIdResult.status) {
+		// 	this.setState({
+		// 		warningStateRefId: {
+		// 			status: refIdResult.status,
+		// 			msg: refIdResult.msg
+		// 		}
+		// 	});
+		// }
 
-		return !refIdResult.status && !doneUploadResult.status;
+		// return !refIdResult.status && !doneUploadResult.status;
+
+		return !doneUploadResult.status;
 	};
 
 	checkDoneUpload = () => {
@@ -246,18 +249,22 @@ class Modal extends Component {
 								data-clipboard-text={bankSlipPopBox.accountNo}
 							/>
 						</li>
-						<li>
-							<div>
-								<span className="title">
-									{i18n.lbl_DepositAmount}
-								</span>
-								<span>{bankSlipPopBox.amount}</span>
-							</div>
-							<button
-								className="icon icon-files-empty clickBtn copyBtn"
-								data-clipboard-text={bankSlipPopBox.amount}
-							/>
-						</li>
+						{this.props.bankSlipPopBox.disableSubmit ? null : (
+							<li>
+								<div>
+									<span className="title">
+										{i18n.lbl_DepositAmount}
+									</span>
+									<span>{bankSlipPopBox.amount}</span>
+								</div>
+								<button
+									className="icon icon-files-empty clickBtn copyBtn"
+									data-clipboard-text={
+										bankSlipPopBox.real_amount
+									}
+								/>
+							</li>
+						)}
 					</ul>
 				</div>
 				<span className="text">{i18n.lbl_AttachFile}</span>

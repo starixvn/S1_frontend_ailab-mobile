@@ -110,10 +110,7 @@ const Payment = props => {
 					isOpen: false
 				}));
 				window.open(
-					`${
-						`${config.openURL}/${userInfo.langId}/Cashier/DepositReqOnlineBanking` +
-						"?sysId="
-					}${sysId}&payId=${payId}&ChannelId=${channelId}&Amount=${real_amount}`
+					`${config.openURL}/${userInfo.langId}/Cashier/DepositReqOnlineBanking?sysId=${sysId}&payId=${payId}&ChannelId=${channelId}&Amount=${real_amount}`
 				);
 				window.location.reload();
 			};
