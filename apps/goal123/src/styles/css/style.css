@@ -1402,14 +1402,14 @@ footer > a.open .circleAnimation + span {
 }
 
 .avatar {
-  width: 24vw;
-  height: 24vw;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  height: 100%;
   border-radius: 100%;
-  border: 2px solid #1E85EC;
   margin: 5vw auto 2vw;
   color: white;
   position: relative;
-  background: url(../img/avatar.jpg) no-repeat top center/cover;
 }
 
 .avatar button {
@@ -1435,6 +1435,16 @@ footer > a.open .circleAnimation + span {
 
 .avatar button:before {
   font-size: 4vw;
+}
+
+.avatar img {
+  width: 30vw;
+}
+
+.avatar div {
+  background: #1E85EC;
+  padding: 1vw;
+  border-radius: 5px;
 }
 
 .viplv {
