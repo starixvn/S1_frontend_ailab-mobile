@@ -2982,7 +2982,6 @@ a.clickBtn:before {
 .casino {
   width: 100%;
   min-height: calc(100% - 71vw);
-  padding: 0vw 4vw 24vw;
   position: relative;
   -webkit-box-pack: normal;
       -ms-flex-pack: normal;
@@ -3585,7 +3584,6 @@ span.important {
   width: 100%;
   height: auto;
   min-height: calc(100% - 39vw);
-  padding: 0vw 3vw 24vw;
 }
 
 .promotions img {
@@ -6837,7 +6835,6 @@ span.important {
 
 .mysteryEvent {
   width: 100%;
-  padding: 0 3vw 24vw;
   background-size: 120%;
   position: relative;
 }
@@ -7183,7 +7180,6 @@ span.important {
 
 .event {
   width: 100%;
-  padding: 0 3vw 24vw;
   background-size: 120%;
   position: relative;
 }
