@@ -1,17 +1,23 @@
 import React, { useContext, useEffect, useState } from "react";
-import { userInfoContext, popBoxContext, i18nContext } from "Context";
+import {
+	userInfoContext,
+	popBoxContext,
+	i18nContext,
+	loadingContext
+} from "Context";
 import PropTypes from "prop-types";
 import moment from "moment";
 import Loading from "../common/loading";
 import api from "../../service/api";
+import GoTopBtn from "../common/goTopBtn";
 
 const Panel = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const { setLoading } = useContext(loadingContext);
 	const [getAnnouncement, setGetAnnouncement] = useState([]);
 	const [selectItemState, setSelectItemState] = useState(null);
-	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		const mounted = true;
@@ -67,10 +73,12 @@ const Panel = () => {
 
 	return (
 		<>
-			{loading ? <Loading /> : null}
 			<div className="functionList" />
 			{getAnnouncement.length > 0 ? (
-				arr
+				<>
+					{arr}
+					<GoTopBtn />
+				</>
 			) : (
 				<div className="nodata icon icon-nodata">
 					<div className="txt-white">{i18n.msg_NoData}</div>

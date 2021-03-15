@@ -10,6 +10,7 @@ import moment from "moment";
 import { number_format, isConvert } from "../common/common";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import ReloadSpin from "../common/reloadSpin";
+import GoTopBtn from "../common/goTopBtn";
 import api from "../../service/api";
 import Detail from "./historyDetail";
 
@@ -151,7 +152,12 @@ const Panel = ({
 
 	let infoList = null;
 	if (history?.length > 0) {
-		infoList = <div className="infoList">{arr}</div>;
+		infoList = (
+			<div className="infoList">
+				{arr}
+				<GoTopBtn />
+			</div>
+		);
 	} else {
 		infoList = (
 			<div className="nodata icon icon-nodata">
@@ -164,7 +170,7 @@ const Panel = ({
 	if (history) {
 		subContent = (
 			<div className="recent active">
-				<div className="recentTransactions">
+				{/* <div className="recentTransactions">
 					<ReloadSpin
 						func={submitFilter.bind(this, {
 							startDay: filterData?.StartDate,
@@ -172,7 +178,7 @@ const Panel = ({
 							isUnix: true
 						})}
 					/>
-				</div>
+				</div> */}
 				{infoList}
 			</div>
 		);
@@ -196,7 +202,9 @@ Panel.propTypes = {
 	setHistory: PropTypes.func,
 	pageInfo: PropTypes.objectOf(PropTypes.number),
 	setPageInfo: PropTypes.func,
-	filterData: PropTypes.objectOf(PropTypes.number),
+	filterData: PropTypes.objectOf(
+		PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+	),
 	clickSubmit: PropTypes.bool,
 	submitFilter: PropTypes.func
 };

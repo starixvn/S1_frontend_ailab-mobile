@@ -19,6 +19,7 @@ import api from "../../service/api";
 import path from "../../path";
 import { useHandlePage } from "./hook";
 import { Filter } from "./filter";
+import GoTopBtn from "../common/goTopBtn";
 
 const ByCategory = props => {
 	const isMountedRef = useRef(null);
@@ -156,6 +157,7 @@ const ByCategory = props => {
 					<div className="recent active">
 						<div className="infoList">{detailArr}</div>
 					</div>
+					<GoTopBtn />
 				</>
 			) : (
 				<div className="nodata icon icon-nodata">
