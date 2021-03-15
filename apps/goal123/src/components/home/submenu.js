@@ -33,10 +33,10 @@ const defSubMenus = [
 				...defGameInfo.sabaClub,
 				displayKey: "lbl_SabaClub"
 			},
-			// {
-			// 	...defGameInfo.Fishing,
-			// 	displayKey: "lbl_Fishing"
-			// },
+			{
+				...defGameInfo.Fishing,
+				displayKey: "lbl_Fishing"
+			},
 			{
 				...defGameInfo.Keno,
 				displayKey: "lbl_Keno"

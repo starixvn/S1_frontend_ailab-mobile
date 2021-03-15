@@ -1,0 +1,919 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Join Join renders correctly 1`] = `
+<div
+  className="Join active"
+>
+  <div
+    className="infoModule"
+    data-testid="UserName"
+  >
+    <div
+      className="inputInfo "
+      data-testid="inputInfo"
+    >
+      For security, we suggest that your username does not contain your real name.
+    </div>
+    <div
+      className="inputBox "
+    >
+      <i
+        className="icon icon-member"
+      />
+      <input
+        className="textRight"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Username"
+        type="text"
+        value=""
+      />
+      <div
+        className="icon-module"
+      >
+        <i
+          className="icon icon-information"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="tip"
+    data-testid="UserName"
+  >
+    
+  </div>
+  <div
+    className="infoModule"
+    data-test="Password"
+  >
+    <div
+      className="inputBox "
+    >
+      <i
+        className="icon icon-key"
+      />
+      <input
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={null}
+        placeholder="Password"
+        type="password"
+        value=""
+      />
+      <div
+        className="icon-module"
+      >
+        <i
+          className="icon icon-eye-blocked"
+          onClick={[Function]}
+        />
+        <i
+          className="icon icon-information"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="infoModule"
+    data-testid="Email"
+  >
+    <div
+      className="inputInfo "
+      data-testid="inputInfo"
+    >
+      Email cannot be changed after submission.
+    </div>
+    <div
+      className="inputBox "
+    >
+      <i
+        className="icon icon-email"
+      />
+      <input
+        className="textRight"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Email"
+        type="text"
+        value=""
+      />
+      <div
+        className="icon-module"
+      >
+        <i
+          className="icon icon-information"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="tip"
+    data-testid="Email"
+  >
+    
+  </div>
+  <div
+    className="infoModule"
+    data-test="Currency"
+  >
+    <div
+      className="inputInfo "
+    >
+      Preferred currency can not be changed after registration.
+    </div>
+    <div
+      className="inputBox "
+    >
+      <i
+        className="icon icon-coin-dollar"
+      />
+      <button
+        className="dropdown btn"
+        onClick={[Function]}
+      >
+        <span
+          className="text"
+        >
+          Preferred Currency
+        </span>
+        <i
+          className="icon icon-keyboard_arrow_down"
+        />
+      </button>
+      <div
+        className="icon-module"
+      >
+        <i
+          className="icon icon-information"
+          onClick={[Function]}
+        />
+      </div>
+      <div
+        className="dropdown-container"
+      />
+    </div>
+  </div>
+  <div
+    className="tip"
+  >
+    
+  </div>
+  <div
+    className="infoModule"
+    data-testid="SpecialBonusCode"
+  >
+    <div
+      className="inputInfo "
+      data-testid="inputInfo"
+    >
+      
+    </div>
+    <div
+      className="inputBox "
+    >
+      <i
+        className="icon icon-promotion"
+      />
+      <input
+        className="textRight"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Promo Code"
+        type="text"
+        value=""
+      />
+      <div
+        className="icon-module"
+      >
+        <i
+          className="icon icon-information"
+          onClick={null}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="tip"
+    data-testid="SpecialBonusCode"
+  >
+    
+  </div>
+  <div
+    className="infoModule"
+    data-testid="AffiliateId"
+  >
+    <div
+      className="inputInfo "
+      data-testid="inputInfo"
+    >
+      Please enter Affiliate ID (Optional), it can not change once enter!
+    </div>
+    <div
+      className="inputBox "
+    >
+      <i
+        className="icon icon-affiliate"
+      />
+      <input
+        className="textRight"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Affiliate ID/Referral"
+        type="text"
+        value=""
+      />
+      <div
+        className="icon-module"
+      >
+        <i
+          className="icon icon-information"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="tip"
+    data-testid="AffiliateId"
+  >
+    
+  </div>
+  <div
+    className="Terms"
+    data-test="iAgree"
+  >
+    <input
+      checked={false}
+      id="c1"
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <label
+      className="icon icon-radio-unchecked"
+      htmlFor="c1"
+    />
+    I agree to the
+      
+    <a
+      href="http://www.n88dev.com/SiteSkin/Nova88/Static/en/TermsConditions.html"
+      rel="noreferrer"
+      target="_blank"
+    >
+      Terms and Conditions
+    </a>
+      
+    and the
+     
+    <a
+      href="http://www.n88dev.com/SiteSkin/Nova88/Static/en/RulesandRegulations.html"
+      rel="noreferrer"
+      target="_blank"
+    >
+      Rules and Regulations
+    </a>
+      
+    of
+     
+    Nova88
+    . 
+    I acknowledge I am at least 21 years of age.
+  </div>
+  <div
+    className="btn-group"
+  >
+    <button
+      onClick={[Function]}
+    >
+      Join Now
+    </button>
+  </div>
+  <a
+    href="/en/"
+    onClick={[Function]}
+  >
+    <div
+      className="visit"
+    >
+      I would like to visit !
+      <i
+        className="icon icon-visit"
+      />
+    </div>
+  </a>
+</div>
+`;
+
+exports[`Join renders correctly 1`] = `
+<div
+  className="Join active"
+>
+  <div
+    className="infoModule"
+  >
+    <div
+      className="inputInfo "
+    >
+      For security, we suggest that your username does not contain your real name.
+    </div>
+    <div
+      className="inputBox "
+    >
+      <i
+        className="icon icon-member"
+      />
+      <input
+        className="textRight"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Username"
+        type="text"
+        value=""
+      />
+      <div
+        className="icon-module"
+      >
+        <i
+          className="icon icon-information"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="tip"
+  >
+    
+  </div>
+  <div
+    className="infoModule"
+  >
+    <div
+      className="inputBox "
+    >
+      <i
+        className="icon icon-key"
+      />
+      <input
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={null}
+        placeholder="Password"
+        type="password"
+        value=""
+      />
+      <div
+        className="icon-module"
+      >
+        <i
+          className="icon icon-eye-blocked"
+          onClick={[Function]}
+        />
+        <i
+          className="icon icon-information"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="infoModule"
+  >
+    <div
+      className="inputInfo "
+    >
+      Email cannot be changed after submission.
+    </div>
+    <div
+      className="inputBox "
+    >
+      <i
+        className="icon icon-email"
+      />
+      <input
+        className="textRight"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Email"
+        type="text"
+        value=""
+      />
+      <div
+        className="icon-module"
+      >
+        <i
+          className="icon icon-information"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="tip"
+  >
+    
+  </div>
+  <div
+    className="infoModule"
+  >
+    <div
+      className="inputInfo "
+    >
+      Preferred currency can not be changed after registration.
+    </div>
+    <div
+      className="inputBox "
+    >
+      <i
+        className="icon icon-coin-dollar"
+      />
+      <button
+        className="dropdown btn"
+        onClick={[Function]}
+      >
+        <span
+          className="text"
+        >
+          Preferred Currency
+        </span>
+        <i
+          className="icon icon-keyboard_arrow_down"
+        />
+      </button>
+      <div
+        className="icon-module"
+      >
+        <i
+          className="icon icon-information"
+          onClick={[Function]}
+        />
+      </div>
+      <div
+        className="dropdown-container"
+      />
+    </div>
+  </div>
+  <div
+    className="tip"
+  >
+    
+  </div>
+  <div
+    className="infoModule"
+  >
+    <div
+      className="inputInfo "
+    >
+      
+    </div>
+    <div
+      className="inputBox "
+    >
+      <i
+        className="icon icon-promotion"
+      />
+      <input
+        className="textRight"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Promo Code"
+        type="text"
+        value=""
+      />
+      <div
+        className="icon-module"
+      >
+        <i
+          className="icon icon-information"
+          onClick={null}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="tip"
+  >
+    
+  </div>
+  <div
+    className="infoModule"
+  >
+    <div
+      className="inputInfo "
+    >
+      Please enter Affiliate ID (Optional), it can not change once enter!
+    </div>
+    <div
+      className="inputBox "
+    >
+      <i
+        className="icon icon-affiliate"
+      />
+      <input
+        className="textRight"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Affiliate ID/Referral"
+        type="text"
+        value=""
+      />
+      <div
+        className="icon-module"
+      >
+        <i
+          className="icon icon-information"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="tip"
+  >
+    
+  </div>
+  <div
+    className="Terms"
+  >
+    <input
+      checked={false}
+      id="c1"
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <label
+      className="icon icon-radio-unchecked"
+      htmlFor="c1"
+    />
+    I agree to the
+      
+    <a
+      href="http://www.n88dev.com/SiteSkin/Nova88/Static/en/TermsConditions.html"
+      rel="noreferrer"
+      target="_blank"
+    >
+      Terms and Conditions
+    </a>
+      
+    and the
+     
+    <a
+      href="http://www.n88dev.com/SiteSkin/Nova88/Static/en/RulesandRegulations.html"
+      rel="noreferrer"
+      target="_blank"
+    >
+      Rules and Regulations
+    </a>
+      
+    of
+     
+    Nova88
+    . 
+    I acknowledge I am at least 21 years of age.
+  </div>
+  <div
+    className="btn-group"
+  >
+    <button
+      onClick={[Function]}
+    >
+      Join Now
+    </button>
+  </div>
+  <a
+    href="/en/"
+    onClick={[Function]}
+  >
+    <div
+      className="visit"
+    >
+      I would like to visit !
+      <i
+        className="icon icon-visit"
+      />
+    </div>
+  </a>
+</div>
+`;
+
+exports[`Join tests Join renders correctly 1`] = `
+<div
+  className="Join active"
+>
+  <div
+    className="infoModule"
+    data-testid="UserName"
+  >
+    <div
+      className="inputInfo "
+      data-testid="inputInfo"
+    >
+      For security, we suggest that your username does not contain your real name.
+    </div>
+    <div
+      className="inputBox "
+    >
+      <i
+        className="icon icon-member"
+      />
+      <input
+        className="textRight"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Username"
+        type="text"
+        value=""
+      />
+      <div
+        className="icon-module"
+      >
+        <i
+          className="icon icon-information"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="tip"
+    data-testid="UserName"
+  >
+    
+  </div>
+  <div
+    className="infoModule"
+    data-test="Password"
+  >
+    <div
+      className="inputBox "
+    >
+      <i
+        className="icon icon-key"
+      />
+      <input
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={null}
+        placeholder="Password"
+        type="password"
+        value=""
+      />
+      <div
+        className="icon-module"
+      >
+        <i
+          className="icon icon-eye-blocked"
+          onClick={[Function]}
+        />
+        <i
+          className="icon icon-information"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="infoModule"
+    data-testid="Email"
+  >
+    <div
+      className="inputInfo "
+      data-testid="inputInfo"
+    >
+      Email cannot be changed after submission.
+    </div>
+    <div
+      className="inputBox "
+    >
+      <i
+        className="icon icon-email"
+      />
+      <input
+        className="textRight"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Email"
+        type="text"
+        value=""
+      />
+      <div
+        className="icon-module"
+      >
+        <i
+          className="icon icon-information"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="tip"
+    data-testid="Email"
+  >
+    
+  </div>
+  <div
+    className="infoModule"
+    data-test="Currency"
+  >
+    <div
+      className="inputInfo "
+    >
+      Preferred currency can not be changed after registration.
+    </div>
+    <div
+      className="inputBox "
+    >
+      <i
+        className="icon icon-coin-dollar"
+      />
+      <button
+        className="dropdown btn"
+        onClick={[Function]}
+      >
+        <span
+          className="text"
+        >
+          Preferred Currency
+        </span>
+        <i
+          className="icon icon-keyboard_arrow_down"
+        />
+      </button>
+      <div
+        className="icon-module"
+      >
+        <i
+          className="icon icon-information"
+          onClick={[Function]}
+        />
+      </div>
+      <div
+        className="dropdown-container"
+      />
+    </div>
+  </div>
+  <div
+    className="tip"
+  >
+    
+  </div>
+  <div
+    className="infoModule"
+    data-testid="SpecialBonusCode"
+  >
+    <div
+      className="inputInfo "
+      data-testid="inputInfo"
+    >
+      
+    </div>
+    <div
+      className="inputBox "
+    >
+      <i
+        className="icon icon-promotion"
+      />
+      <input
+        className="textRight"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Promo Code"
+        type="text"
+        value=""
+      />
+      <div
+        className="icon-module"
+      >
+        <i
+          className="icon icon-information"
+          onClick={null}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="tip"
+    data-testid="SpecialBonusCode"
+  >
+    
+  </div>
+  <div
+    className="infoModule"
+    data-testid="AffiliateId"
+  >
+    <div
+      className="inputInfo "
+      data-testid="inputInfo"
+    >
+      Please enter Affiliate ID (Optional), it can not change once enter!
+    </div>
+    <div
+      className="inputBox "
+    >
+      <i
+        className="icon icon-affiliate"
+      />
+      <input
+        className="textRight"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Affiliate ID/Referral"
+        type="text"
+        value=""
+      />
+      <div
+        className="icon-module"
+      >
+        <i
+          className="icon icon-information"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="tip"
+    data-testid="AffiliateId"
+  >
+    
+  </div>
+  <div
+    className="Terms"
+    data-test="iAgree"
+  >
+    <input
+      checked={false}
+      id="c1"
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <label
+      className="icon icon-radio-unchecked"
+      htmlFor="c1"
+    />
+    I agree to the
+      
+    <a
+      href="http://www.n88dev.com/SiteSkin/Nova88/Static/en/TermsConditions.html"
+      rel="noreferrer"
+      target="_blank"
+    >
+      Terms and Conditions
+    </a>
+      
+    and the
+     
+    <a
+      href="http://www.n88dev.com/SiteSkin/Nova88/Static/en/RulesandRegulations.html"
+      rel="noreferrer"
+      target="_blank"
+    >
+      Rules and Regulations
+    </a>
+      
+    of
+     
+    Nova88
+    . 
+    I acknowledge I am at least 21 years of age.
+  </div>
+  <div
+    className="btn-group"
+  >
+    <button
+      onClick={[Function]}
+    >
+      Join Now
+    </button>
+  </div>
+  <a
+    href="/en/"
+    onClick={[Function]}
+  >
+    <div
+      className="visit"
+    >
+      I would like to visit !
+      <i
+        className="icon icon-visit"
+      />
+    </div>
+  </a>
+</div>
+`;

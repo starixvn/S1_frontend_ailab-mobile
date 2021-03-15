@@ -68,6 +68,13 @@
 		},
 		"history": {
 			"tags": []
+		},
+		"nova88v2": {
+			"tags": []
+		},
+		"nova88v2-e2e": {
+			"tags": [],
+			"implicitDependencies": ["nova88v2"]
 		}
 	}
 }

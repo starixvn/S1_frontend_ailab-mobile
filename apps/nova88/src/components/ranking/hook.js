@@ -21,13 +21,13 @@ const getTopNum = isLastEvent => {
 	return isLastEvent ? lastTimeTopNum : topNum;
 };
 
-const handleEventCode = isLastEvent => {
+const handleEventCode = ({ isLastEvent, selected }) => {
 	const defEventCode = {
 		current: "202101",
 		prev: "xmas2020"
 	};
 
-	return isLastEvent ? defEventCode.prev : defEventCode.current;
+	return isLastEvent ? defEventCode.current : selected;
 };
 
 export const useGetRanking = ({
@@ -44,14 +44,14 @@ export const useGetRanking = ({
 
 	useEffect(() => {
 		if (isOpen && isLogin) {
-			const EventCode = handleEventCode(isLastEvent);
-			const lBCategoryId = defBtns[selected]?.lBCategoryId;
+			const EventCode = handleEventCode({ isLastEvent, selected });
+			const lBCategoryId = defBtns[selected]?.lBCategoryId || 0;
 			const beforeDays = isNaN(BeforeDays)
 				? Number(defDayBtns.Yesterday.value)
 				: Number(BeforeDays);
-
 			const GetRankingDatas = async () => {
 				setLoading(true);
+
 				try {
 					const TopNum = getTopNum(isLastEvent);
 					const res = await api.events.GetLeaderboardListV2({

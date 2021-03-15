@@ -172,9 +172,6 @@ header > a > img {
 }
 
 header .Join, header .Login {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -192,10 +189,7 @@ header .Join, header .Login {
   -webkit-transition: 0.7s;
   transition: 0.7s;
   opacity: 0;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  pointer-events: none;
+  overflow-y: scroll;
 }
 
 header .Join.open, header .Login.open {
@@ -226,7 +220,7 @@ header .Join > .close, header .Login > .close {
 
 header .Join > img, header .Login > img {
   width: 40vw;
-  margin: 3vw auto;
+  margin: 3vw calc(50% - 20vw);
 }
 
 header .Join .title, header .Login .title {
@@ -317,6 +311,7 @@ header .Join button, header .Login button {
   border-radius: 3px;
   color: #fff;
   padding: 3vw;
+  width: 100%;
 }
 
 header .Join .Terms, header .Login .Terms {
@@ -365,6 +360,15 @@ header .Join .Terms input[type="checkbox"] + label > div, header .Login .Terms i
 
 header .Join .Terms input[type="checkbox"]:checked + label > div, header .Login .Terms input[type="checkbox"]:checked + label > div {
   background: #F77A00;
+}
+
+header .Login {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 header .headerInfo {
@@ -1780,6 +1784,10 @@ footer > a.open .circleAnimation + span {
   background: #fff;
   color: #F77A00;
   border: 1px solid #F77A00;
+}
+
+.btn-group button.darkGray, .btn-group a.darkGray {
+  background: #666;
 }
 
 .bankAccount {
@@ -4589,6 +4597,7 @@ span.important {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  background: url(https://image.n88media.com/SiteSkin/img/body-bg.jpg) no-repeat top center/auto 100%;
 }
 
 .ranking .filterBtn {
@@ -4727,6 +4736,86 @@ span.important {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.ranking .rankList ul > div {
+  width: 100%;
+}
+
+.ranking .rankList ul > div.timeLine {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #003b44;
+  height: 3vw;
+  border-radius: 9vw;
+  margin: 35vw 0 9vw;
+}
+
+.ranking .rankList ul > div.timeLine > div {
+  width: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  position: relative;
+  text-align: left;
+}
+
+.ranking .rankList ul > div.timeLine > div:before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: #19a4bb;
+  border-radius: 30px;
+  display: block;
+}
+
+.ranking .rankList ul > div.timeLine > div:nth-child(2) > div {
+  z-index: 2;
+}
+
+.ranking .rankList ul > div.timeLine > div:nth-child(3) > div {
+  z-index: 1;
+  top: -24vw;
+}
+
+.ranking .rankList ul > div.timeLine > div:nth-child(4) > div {
+  top: -12vw;
+}
+
+.ranking .rankList ul > div.timeLine > div > div {
+  white-space: nowrap;
+  position: absolute;
+  bottom: 4vw;
+  line-height: normal;
+  padding: 1vw 0 2vw 1vw;
+  background: #003b44;
+  color: white;
+  font-weight: bold;
+  margin-left: -15vw;
+  height: 8vw;
+  top: -36vw;
+}
+
+.ranking .rankList ul > div.timeLine > div > div:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5.5vw 0 5.5vw 3vw;
+  border-color: transparent transparent transparent #003b44;
+  position: absolute;
+  top: 0;
+  right: -3vw;
+}
+
+.ranking .rankList ul > div.timeLine > div > div > div {
+  color: #fab617;
 }
 
 .ranking .rankList ul li {
@@ -4736,13 +4825,9 @@ span.important {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 4vw;
   height: 10vw;
 }
 
@@ -4770,7 +4855,7 @@ span.important {
 }
 
 .ranking .rankList ul:nth-child(n+2) {
-  background: rgba(0, 0, 0, 0.5);
+  background: #00616f;
   border: 1px solid transparent;
   border-width: 0 0 1px 0;
   -o-border-image: linear-gradient(to right, #f5a14f, #F77A00);
@@ -4780,11 +4865,21 @@ span.important {
 }
 
 .ranking .rankList ul:nth-child(n+2) li {
-  height: 15vw;
+  height: auto;
+  padding: 1vw 2vw 1vw 1vw;
+  min-height: 15vw;
 }
 
 .ranking .rankList ul.userRank {
-  background: rgba(247, 122, 0, 0.5);
+  background: rgba(247, 122, 0, 0.7);
+}
+
+.ranking .rankEvent .rankList {
+  display: none;
+}
+
+.ranking .rankEvent .rankList.open {
+  display: block;
 }
 
 .ranking .rankEvent .rankList ul:nth-child(2) li {
@@ -4795,12 +4890,46 @@ span.important {
   font-weight: normal;
 }
 
+.finalTour {
+  -webkit-animation: finaltour 1s infinite;
+          animation: finaltour 1s infinite;
+}
+
+@-webkit-keyframes finaltour {
+  0% {
+    background: #003b44;
+  }
+  50% {
+    background: #00616f;
+  }
+  100% {
+    background: #003b44;
+  }
+}
+
+@keyframes finaltour {
+  0% {
+    background: #003b44;
+  }
+  50% {
+    background: #00616f;
+  }
+  100% {
+    background: #003b44;
+  }
+}
+
 .rankEvent, .champion, .records {
   display: none;
 }
 
 .rankEvent.open, .champion.open, .records.open {
   display: block;
+}
+
+.rankEvent > .text, .champion > .text, .records > .text {
+  background: rgba(0, 59, 68, 0.8);
+  padding: 1vw;
 }
 
 button.icon.icon-ranking, span.icon.icon-ranking {
@@ -6017,16 +6146,6 @@ span.icon.icon-ranking:after {
 
 .depositModule_mobile .inputBox .tip, .depositModule_online .inputBox .tip, .depositModule_local .inputBox .tip {
   margin-left: 2.5vw;
-}
-
-.depositModule_mobile .btn-group, .depositModule_online .btn-group, .depositModule_local .btn-group {
-  width: auto;
-  display: unset;
-}
-
-.depositModule_mobile .btn-group button, .depositModule_online .btn-group button, .depositModule_local .btn-group button {
-  width: 50vw;
-  margin: auto;
 }
 
 .depositModule_mobile + .btn-group, .depositModule_online + .btn-group, .depositModule_local + .btn-group {
