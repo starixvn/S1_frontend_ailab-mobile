@@ -37,7 +37,14 @@ export const getMainClass = ({ defTabs, location }) => {
 	return mainClass;
 };
 
-const IndexPage = ({ defTabs, beforeLogin, filter, breadCrumb, tabHint }) => {
+const IndexPage = ({
+	defTabs,
+	beforeLogin,
+	filter,
+	breadCrumb,
+	tabHint,
+	title
+}) => {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const { userInfo } = useContext(userInfoContext);
@@ -94,13 +101,26 @@ const IndexPage = ({ defTabs, beforeLogin, filter, breadCrumb, tabHint }) => {
 
 	return (
 		<header className="header">
-			<div className="headerTag">{mainTab}</div>
+			{title.displayText ? null : (
+				<div className="headerTag">{mainTab}</div>
+			)}
 			{subItems?.length > 0 &&
 			(currentTab === null || currentTab?.subTabs) ? (
 				<div className="tag">{subItems}</div>
 			) : null}
 			{filter || null}
 			{breadCrumb || null}
+			{title?.displayText ? (
+				<div className="title">
+					{title?.link ? (
+						<Link to={title?.link}>
+							<i className="icon icon icon-icon32px_1" />
+							{i18n.lbl_Back}
+						</Link>
+					) : null}
+					{title?.displayText}
+				</div>
+			) : null}
 		</header>
 	);
 };
@@ -110,7 +130,8 @@ IndexPage.defaultProps = {
 	beforeLogin: false,
 	filter: null,
 	tabHint: "",
-	breadCrumb: null
+	breadCrumb: null,
+	title: {}
 };
 
 IndexPage.propTypes = {
@@ -118,7 +139,8 @@ IndexPage.propTypes = {
 	beforeLogin: PropTypes.bool,
 	filter: PropTypes.node,
 	tabHint: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-	breadCrumb: PropTypes.node
+	breadCrumb: PropTypes.node,
+	title: PropTypes.objectOf(PropTypes.string)
 };
 
 const TabItem = ({ i18n = {}, tabItem = {}, match = false, tabHint = "" }) => {

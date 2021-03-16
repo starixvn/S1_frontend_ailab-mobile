@@ -70,7 +70,7 @@ import ChangePwd from "../components/profile/changePwd";
 import Kyc from "../components/withdrawal/kyc";
 import KycWaiting from "../components/withdrawal/kycWaiting";
 
-// import Kiss918 from "../pages/918kiss";
+import Kiss918 from "../pages/918kiss";
 
 import FriendReferral from "../pages/referral";
 // import ReferFriends from "../components/referral/referFriends";
@@ -177,7 +177,7 @@ const RouteComponents = () => {
 			</FinancialLog>
 
 			<OneGame path={`/:langId/${path.oneGame.root}`} />
-			{/* <Kiss918 path={`/:langId/${path.kiss918.root}`} /> */}
+			<Kiss918 path={`/:langId/${path.kiss918.root}`} />
 		</Router>
 	);
 };
