@@ -12,7 +12,8 @@ const GroupList = ({
 	idKey,
 	bindFullObj,
 	prefixImgUrl,
-	imgKeyWithExtension
+	imgKeyWithExtension,
+	bindingItem
 }) => {
 	const rows = dataList?.map(data => {
 		const _mainKey = `${mainKey}-${data[idKey]}`;
@@ -27,7 +28,8 @@ const GroupList = ({
 				imgAlt={data[imgKey] ?? ""}
 				onChange={SelectPayment.bind(
 					this,
-					bindFullObj ? data : data[idKey]
+					bindFullObj ? data : data[idKey],
+					bindingItem
 				)}
 				isSelect={selected === data[idKey]}
 			/>
@@ -48,7 +50,8 @@ GroupList.defaultProps = {
 	dataList: null,
 	selected: null,
 	bindFullObj: false,
-	imgKeyWithExtension: false
+	imgKeyWithExtension: false,
+	bindingItem: null
 };
 
 GroupList.propTypes = {
@@ -65,7 +68,8 @@ GroupList.propTypes = {
 	idKey: PropTypes.string.isRequired,
 	bindFullObj: PropTypes.bool,
 	prefixImgUrl: PropTypes.string.isRequired,
-	imgKeyWithExtension: PropTypes.bool
+	imgKeyWithExtension: PropTypes.bool,
+	bindingItem: PropTypes.objectOf(PropTypes.any)
 };
 
 export default GroupList;

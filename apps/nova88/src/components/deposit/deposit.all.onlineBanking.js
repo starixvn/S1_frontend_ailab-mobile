@@ -55,55 +55,87 @@ const Payment = props => {
 		if (selGroup?.payId !== groupInfo.payId) {
 			setLoading(true);
 			setSelGroup(groupInfo);
-			api.payment
-				.GetOnlineBankInfoSysList({ payId: groupInfo.payId })
-				.then(
-					res => {
-						if (res.data.errorCode === 0) {
-							if (
-								isMountedRef.current &&
-								res.data.data.length > 0
-							) {
-								setBankList(res.data.data);
-								SelectBank(res.data.data[0]);
+			if (groupInfo.selBank) {
+				api.payment
+					.GetOnlineBankInfoSysList({ payId: groupInfo.payId })
+					.then(
+						res => {
+							if (res.data.errorCode === 0) {
+								if (
+									isMountedRef.current &&
+									res.data.data.length > 0
+								) {
+									setBankList(res.data.data);
+									SelectBank(res.data.data[0], groupInfo);
+								}
+							} else if (isMountedRef.current) {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content: res.data.message
+								});
 							}
-						} else if (isMountedRef.current) {
+
+							if (isMountedRef.current) {
+								setLoading(false);
+							}
+						},
+						() => {
+							if (isMountedRef.current) {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content: i18n.msg_ApiServerError
+								});
+								setLoading(false);
+							}
+						}
+					);
+			}
+		}
+	};
+
+	const SelectBank = (bankInfo, groupInfo) => {
+		api.payment
+			.GetOnlineBankInfo({
+				payId: groupInfo.payId,
+				sysId: bankInfo.sysId
+			})
+			.then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							setBank(res.data.data);
+						} else {
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
 								content: res.data.message
 							});
 						}
-
-						if (isMountedRef.current) {
-							setLoading(false);
-						}
-					},
-					() => {
-						if (isMountedRef.current) {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: i18n.msg_ApiServerError
-							});
-							setLoading(false);
-						}
 					}
-				);
-		}
-	};
-
-	const SelectBank = bankInfo => {
-		setBank(bankInfo);
+				},
+				() => {
+					if (isMountedRef.current) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
+						});
+					}
+				}
+			);
 	};
 
 	const ClickSubmit = () => {
-		const { payId, channelId } = selGroup;
-		const { sysId, bankLogo, bankName } = selbank;
-
 		const result = VaildAmount({ _amount: amount });
 
 		if (result) {
+			const { payId, channelId } = selGroup;
+			let { sysId } = selGroup;
+			let bankLogo = null;
+			let bankName = null;
+
 			const RedirectToNext = real_amount => {
 				setPopBox(prevState => ({
 					...prevState,
@@ -116,43 +148,54 @@ const Payment = props => {
 			};
 
 			const real_amount = _isConvert ? amount * 1000 : amount;
-			setPopBox({
-				isOpen: true,
-				title: i18n.lbl_ImportantNote,
-				content: (
-					<>
-						<p>{i18n.lbl_ConfirmDeposit}</p>
-						<img
-							src={`${config.imgUrl}/common/images/BankLogo/${bankLogo}`}
-							alt={bankName}
-						/>
-						<div className="tip">
-							<span>{i18n.lbl_DepositAmount} :</span>{" "}
-							{number_format(real_amount, _isConvert)}
+			if (selGroup.selBank) {
+				sysId = selbank.sysId;
+				bankLogo = selbank.bankLogo;
+				bankName = selbank.bankName;
+
+				setPopBox({
+					isOpen: true,
+					title: i18n.lbl_ImportantNote,
+					content: (
+						<>
+							<p>{i18n.lbl_ConfirmDeposit}</p>
+							<img
+								src={`${config.imgUrl}/common/images/BankLogo/${bankLogo}`}
+								alt={bankName}
+							/>
+							<div className="tip">
+								<span>{i18n.lbl_DepositAmount} :</span>{" "}
+								{number_format(real_amount, _isConvert)}
+							</div>
+						</>
+					),
+					hasBtn: true,
+					btnBar: (
+						<div className="btn-group">
+							<button
+								className="blue"
+								onClick={() =>
+									setPopBox(prevState => ({
+										...prevState,
+										isOpen: false
+									}))
+								}>
+								{i18n.lbl_Cancel}
+							</button>
+							<button
+								className="orange"
+								onClick={RedirectToNext.bind(
+									this,
+									real_amount
+								)}>
+								{i18n.lbl_Submit}
+							</button>
 						</div>
-					</>
-				),
-				hasBtn: true,
-				btnBar: (
-					<div className="btn-group">
-						<button
-							className="blue"
-							onClick={() =>
-								setPopBox(prevState => ({
-									...prevState,
-									isOpen: false
-								}))
-							}>
-							{i18n.lbl_Cancel}
-						</button>
-						<button
-							className="orange"
-							onClick={RedirectToNext.bind(this, real_amount)}>
-							{i18n.lbl_Submit}
-						</button>
-					</div>
-				)
-			});
+					)
+				});
+			} else {
+				RedirectToNext(this, real_amount);
+			}
 		}
 	};
 
@@ -185,6 +228,7 @@ const Payment = props => {
 				bindFullObj={true}
 				prefixImgUrl={`${config.imgUrl}/common/images/BankLogo/`}
 				imgKeyWithExtension={true}
+				bindingItem={selGroup}
 			/>
 			<AmountInput
 				title={i18n.lbl_DepositAmount}
