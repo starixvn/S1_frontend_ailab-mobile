@@ -77,6 +77,18 @@ export const statement_financialLog = {
 	}
 };
 
+export const wallet_bankInfo = {
+	myWallet: {
+		to: `${path.wallet.root}`,
+		displayKey: "lbl_MyWallet"
+	},
+	bankInfo: {
+		to: path.bankInfo.root,
+		displayKey: "lbl_BankInfo",
+		mainClass: "main"
+	}
+};
+
 export const referral = {
 	transfer: {
 		to: `${path.referral.root}`,

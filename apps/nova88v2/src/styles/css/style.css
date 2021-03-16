@@ -58,7 +58,6 @@ a {
 }
 
 body, html {
-  width: 100%;
   overflow-x: hidden;
   background: #001942;
   height: 100%;
@@ -87,8 +86,8 @@ body, html {
   top: 0;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
   padding: 7vw 8vw 5vw;
   -webkit-transition: -webkit-transition;
   transition: -webkit-transition;
@@ -127,7 +126,7 @@ body, html {
           align-items: center;
   position: relative;
   height: 10vw;
-  margin-bottom: 3vw;
+  margin: 0 0 3vw;
 }
 
 .logoSwitch .switch > div {
@@ -167,11 +166,9 @@ body, html {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  position: absolute;
-  top: 40vw;
-  width: calc(100% - 16vw);
+      -ms-flex-flow: column;
+          flex-flow: column;
+  height: 0;
   visibility: hidden;
   opacity: 0;
   -webkit-transition: 0.7s;
@@ -230,16 +227,6 @@ body, html {
   color: #F77A00;
 }
 
-.Join .Terms input[type="checkbox"], .Login .Terms input[type="checkbox"] {
-  display: none;
-}
-
-.Join .Terms input[type="checkbox"] + label, .Login .Terms input[type="checkbox"] + label {
-  margin-right: 2vw;
-  vertical-align: middle;
-  color: #F77A00;
-}
-
 .Login .Terms a {
   color: #1E85EC;
   text-decoration: underline;
@@ -286,9 +273,9 @@ header .headerInfo {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin-left: 2vw;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  margin: 0 0 0 2vw;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -320,7 +307,7 @@ header button.clickBtn {
   width: 5vw;
   height: 5vw;
   padding: 0;
-  margin-left: 2.5vw;
+  margin: 0 0 0 2.5vw;
 }
 
 header button.clickBtn::before {
@@ -329,7 +316,7 @@ header button.clickBtn::before {
 }
 
 header .headerButton {
-  margin-left: 2vw;
+  margin: 0 0 0 2vw;
 }
 
 header .headerButton > button, header .headerButton > a {
@@ -339,41 +326,13 @@ header .headerButton > button, header .headerButton > a {
   padding: 1vw 3vw;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(60%, white), to(#ccc));
   background: linear-gradient(to bottom, white 60%, #ccc);
-  margin-left: 5px;
+  margin: 0 0 0 5px;
 }
 
 header .headerButton > button.loginBtn, header .headerButton > a.loginBtn {
   background: -webkit-gradient(linear, left top, left bottom, from(#FB8F25), color-stop(#F77A00), to(#FF5D00));
   background: linear-gradient(to bottom, #FB8F25, #F77A00, #FF5D00);
   color: white;
-}
-
-header .headerButton .icon-chat {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-header .headerButton .icon-chat .amount {
-  width: 6vw;
-  height: 6vw;
-  background: #F77A00;
-  position: absolute;
-  border-radius: 100%;
-  margin-left: 3vw;
-  margin-top: -3vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-transform: scale(0.7);
-          transform: scale(0.7);
-  padding: 0.5vw;
 }
 
 #Marquee {
@@ -448,7 +407,7 @@ main.stopScroll {
 }
 
 main .swiper-container {
-  padding-top: 12vw;
+  padding: 12vw 0 0;
 }
 
 main .swiper-container .swiper-slide.swiper-slide-active {
@@ -519,12 +478,12 @@ main .gameList {
   width: calc(100% - 21vw);
   position: absolute;
   left: 21vw;
-  padding-bottom: 20vw;
+  padding: 0 0 20vw 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
   background: #f3f3f3;
 }
 
@@ -571,17 +530,17 @@ main .gameList a span {
 }
 
 main .gameList a, main .gameList div {
-  padding-top: 0;
+  padding: 0;
 }
 
 main .gameList a#Sports, main .gameList div#Sports {
-  padding-top: 57vw;
-  margin-top: 0;
+  padding: 57vw 0 0;
+  margin: 0;
 }
 
 main .gameList a.anchor, main .gameList div.anchor {
-  padding-top: 57vw;
-  margin-top: -56vw;
+  padding: 57vw 0 0;
+  margin: -56vw 0 0;
 }
 
 main .gameList .space {
@@ -593,8 +552,8 @@ main .gameList .casinoList {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
   padding: 0 1.2vw;
 }
 
@@ -633,8 +592,8 @@ footer > a {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -895,7 +854,7 @@ footer > a.active .circleAnimation + span {
   border: 1px solid #F77A00;
   border-top: 0;
   width: 100%;
-  margin-left: -1px;
+  margin: 0 0 0 -1px;
   left: 0;
   top: 8vw;
   max-height: 45vw;
@@ -928,8 +887,8 @@ footer > a.active .circleAnimation + span {
           align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
   background: rgba(0, 25, 66, 0.95);
   padding: 8vw;
   overflow: auto;
@@ -949,14 +908,13 @@ footer > a.active .circleAnimation + span {
   transition: 0.7s;
 }
 
-#popup > div:not(.bankSlip) {
+#popup > div:not(.bankSlip):not(.eventpop) {
   background: rgba(0, 0, 0, 0.5);
   width: 100%;
 }
 
 #popup .popTit {
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
+  border-radius: 3px 3px 0 0;
   position: relative;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -991,8 +949,7 @@ footer > a.active .circleAnimation + span {
 
 #popup .popTxt {
   padding: 4vw 2vw;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
+  border-radius: 0 0 3px 3px;
   width: calc(100% - 4vw);
   color: #B2B2B2;
   display: -webkit-box;
@@ -1000,8 +957,8 @@ footer > a.active .circleAnimation + span {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
 }
 
 #popup .popTxt .inputInfo {
@@ -1009,7 +966,7 @@ footer > a.active .circleAnimation + span {
 }
 
 #popup .popTxt .txt {
-  margin-bottom: 3vw;
+  margin: 0 0 3vw;
 }
 
 #popup .popTxt .txt ~ img {
@@ -1018,7 +975,7 @@ footer > a.active .circleAnimation + span {
 }
 
 #popup .popTxt .title {
-  margin-top: 2vw;
+  margin: 2vw 0 0;
 }
 
 #popup.ErrorPage {
@@ -1035,7 +992,7 @@ footer > a.active .circleAnimation + span {
 #popup.ErrorPage .errorInfo {
   border: 0;
   text-align: center;
-  margin-top: 20vw;
+  margin: 20vw 0 0;
   background: transparent;
 }
 
@@ -1075,7 +1032,7 @@ footer > a.active .circleAnimation + span {
 
 .blackInfo .icon:before {
   color: #F77A00;
-  margin-right: 2vw;
+  margin: 0 2vw 0 0;
 }
 
 .blackInfo span {
@@ -1096,8 +1053,8 @@ footer > a.active .circleAnimation + span {
   height: auto;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
 }
 
 .header .headerTag {
@@ -1166,8 +1123,8 @@ footer > a.active .circleAnimation + span {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1201,7 +1158,7 @@ footer > a.active .circleAnimation + span {
   font-weight: normal;
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
-  margin-top: -3vw;
+  margin: -3vw 0 0;
   color: white;
 }
 
@@ -1248,8 +1205,8 @@ footer > a.active .circleAnimation + span {
 
 .main {
   width: calc(100% - 16vw);
-  height: calc(100% - 50vw);
-  padding: 25vw 8vw;
+  height: calc(100% - 40vw);
+  padding: 20vw 8vw;
   overflow: scroll;
 }
 
@@ -1267,9 +1224,8 @@ footer > a.active .circleAnimation + span {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin: auto;
   border-radius: 100%;
-  margin-bottom: 7vw;
+  margin: 0 auto 7vw;
   position: relative;
 }
 
@@ -1294,6 +1250,27 @@ footer > a.active .circleAnimation + span {
 .main > .icon-member .circleAnimation:after {
   width: 22vw;
   height: 22vw;
+}
+
+.Wallet {
+  height: calc(100% - 55vw);
+  padding: 30vw 8vw 25vw;
+}
+
+.Wallet .icon-BTC {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.Wallet .icon-BTC:before {
+  margin: 0 1vw 0 0;
 }
 
 .Wallet .account .account {
@@ -1384,8 +1361,8 @@ footer > a.active .circleAnimation + span {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1409,7 +1386,7 @@ footer > a.active .circleAnimation + span {
 }
 
 .walletMenu .walletModule > a span {
-  margin-bottom: -15vw;
+  margin: 0 0 -15vw;
 }
 
 .walletMenu .walletModule > a:before {
@@ -1504,7 +1481,7 @@ footer > a.active .circleAnimation + span {
   width: 5vw;
   height: 5vw;
   padding: 0;
-  margin-left: 2.5vw;
+  margin: 0 0 0 2.5vw;
 }
 
 .balance button.clickBtn::before {
@@ -1516,7 +1493,7 @@ footer > a.active .circleAnimation + span {
   font-size: 5vw;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 1vw;
+  margin: 0 0 1vw;
 }
 
 .name + .text-org {
@@ -1712,13 +1689,13 @@ footer > a.active .circleAnimation + span {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-top: 2vw;
+  margin: 2vw 0 0;
 }
 
 .visit .icon-visit:before {
   font-weight: normal;
   font-size: 7vw;
-  margin-left: 2vw;
+  margin: 0 0 0 2vw;
 }
 
 .infoModule {
@@ -1728,22 +1705,16 @@ footer > a.active .circleAnimation + span {
   display: inline-flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
   width: 100%;
 }
 
 .infoModule.parts {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
+      -ms-flex-flow: row;
+          flex-flow: row;
 }
 
 .infoModule.parts .inputBox {
@@ -1751,13 +1722,13 @@ footer > a.active .circleAnimation + span {
   -webkit-box-flex: 1;
       -ms-flex: auto;
           flex: auto;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
+  -ms-flex-flow: nowrap;
+      flex-flow: nowrap;
   margin: 0;
 }
 
 .infoModule.parts .inputBox:nth-child(n+2) {
-  margin-left: 1vw;
+  margin: 0 0 0 1vw;
 }
 
 .infoModule.parts label.inputBox {
@@ -1767,7 +1738,7 @@ footer > a.active .circleAnimation + span {
 }
 
 .infoModule.parts label.inputBox .icon-folder-upload {
-  margin-right: 1vw;
+  margin: 0 1vw 0 0;
 }
 
 .infoModule.parts .btn-group {
@@ -1785,8 +1756,8 @@ footer > a.active .circleAnimation + span {
   position: relative;
   margin: 1vw 0;
   padding: 0 2vw;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
   border: 1px solid #F77A00;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1822,7 +1793,7 @@ footer > a.active .circleAnimation + span {
       -ms-flex: 4;
           flex: 4;
   text-align: left;
-  margin-left: 2vw;
+  margin: 0 0 0 2vw;
 }
 
 .inputBox.error {
@@ -1858,7 +1829,7 @@ footer > a.active .circleAnimation + span {
 }
 
 .inputBox > .icon-module i.icon {
-  margin-left: 1vw;
+  margin: 0 0 0 1vw;
 }
 
 .inputBox > .icon-module .icon-checkmark {
@@ -1894,7 +1865,7 @@ footer > a.active .circleAnimation + span {
 }
 
 .quickSelect + .functionList .icon-icon32px_1 {
-  margin-left: 1vw;
+  margin: 0 0 0 1vw;
   color: #F77A00;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1920,12 +1891,11 @@ footer > a.active .circleAnimation + span {
 }
 
 .quickSelect button {
-  color: white;
   white-space: nowrap;
 }
 
 .quickSelect button:nth-child(n+2) {
-  margin-left: 5vw;
+  margin: 0 0 0 5vw;
 }
 
 .quickSelect button.active {
@@ -1955,7 +1925,7 @@ footer > a.active .circleAnimation + span {
 
 .infotxt .icon-close {
   position: unset;
-  margin-top: 2vw;
+  margin: 2vw 0 0;
 }
 
 .history {
@@ -1993,10 +1963,9 @@ footer > a.active .circleAnimation + span {
   width: 20vw;
   min-width: 20vw;
   height: 100%;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
   font-weight: bold;
-  color: white;
 }
 
 .btn-group.transferAll .blue.active {
@@ -2007,7 +1976,6 @@ footer > a.active .circleAnimation + span {
   background: -webkit-gradient(linear, left top, left bottom, from(#FB8F25), color-stop(#F77A00), to(#FF5D00));
   background: linear-gradient(to bottom, #FB8F25, #F77A00, #FF5D00);
   width: 100%;
-  color: white;
   border-radius: 3px;
   padding: 3vw;
   display: -webkit-box;
@@ -2026,7 +1994,7 @@ footer > a.active .circleAnimation + span {
 }
 
 .btn-group button i, .btn-group a i, .btn-group .submit i {
-  margin-left: 2vw;
+  margin: 0 0 0 2vw;
   -webkit-transition: 0.7s;
   transition: 0.7s;
 }
@@ -2039,7 +2007,7 @@ footer > a.active .circleAnimation + span {
 }
 
 .btn-group button:nth-child(n+2), .btn-group a:nth-child(n+2), .btn-group .submit:nth-child(n+2) {
-  margin-left: 3vw;
+  margin: 0 0 0 3vw;
 }
 
 .btn-group button.blue, .btn-group button.cancel, .btn-group a.blue, .btn-group a.cancel, .btn-group .submit.blue, .btn-group .submit.cancel {
@@ -2066,19 +2034,42 @@ footer > a.active .circleAnimation + span {
   margin: 1vw 0;
 }
 
+.bankAccount .icon-plus {
+  margin: auto;
+}
+
+.bankAccount .icon-BTC {
+  word-break: break-all;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.bankAccount .icon-BTC:before {
+  color: #F77A00;
+  margin: 0 1vw 0 0;
+  font-size: 6vw;
+}
+
 .selectBank {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
 }
 
 .selectBank button, .selectBank a {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 calc(100% / 3 - 1vw);
           flex: 0 0 calc(100% / 3 - 1vw);
-  border-radius: 3px;
   margin: 0.5vw;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -2225,8 +2216,8 @@ footer > a.active .circleAnimation + span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
 }
 
 .depositType .icon:before {
@@ -2248,8 +2239,8 @@ footer > a.active .circleAnimation + span {
           align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
   -webkit-box-flex: 1;
       -ms-flex: 1 0 calc(100% / 3);
           flex: 1 0 calc(100% / 3);
@@ -2258,11 +2249,11 @@ footer > a.active .circleAnimation + span {
 }
 
 .depositType > div span {
-  margin-top: 1vw;
+  margin: 1vw 0 0;
 }
 
 .depositType > div span:nth-child(2) {
-  margin-top: 3vw;
+  margin: 3vw 0 0;
 }
 
 .depositType > div .title {
@@ -2367,8 +2358,8 @@ footer > a.active .circleAnimation + span {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
   position: relative;
 }
 
@@ -2379,7 +2370,7 @@ footer > a.active .circleAnimation + span {
 }
 
 .account .bankLogo + .info {
-  margin-left: 2vw;
+  margin: 0 0 0 2vw;
 }
 
 .account .bankLogo img {
@@ -2398,19 +2389,19 @@ footer > a.active .circleAnimation + span {
 }
 
 .account .info .text-org {
-  margin-right: 1vw;
+  margin: 0 1vw 0 0;
 }
 
 .smallTitle {
   margin: 2vw 0;
-  padding-left: 2vw;
+  padding: 0 0 0 2vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
 .smallTitle i.icon:before {
-  margin-right: 1vw;
+  margin: 0 1vw 0 0;
 }
 
 .countryCode {
@@ -2420,7 +2411,7 @@ footer > a.active .circleAnimation + span {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-right: 1vw;
+  margin: 0 1vw 0;
   padding: 2vw;
   border-radius: 3px;
   border: 1px solid #F77A00;
@@ -2450,7 +2441,7 @@ footer > a.active .circleAnimation + span {
 }
 
 .text-org.text-center:before {
-  margin-right: 2vw;
+  margin: 0 2vw 0 0;
 }
 
 .text-white-border-org {
@@ -2483,8 +2474,8 @@ footer > a.active .circleAnimation + span {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
   padding: 2vw;
   width: calc(100% - 4vw);
 }
@@ -2508,8 +2499,7 @@ footer > a.active .circleAnimation + span {
 }
 
 .rule ul {
-  margin-top: 2vw;
-  margin-left: 5vw;
+  margin: 2vw 0 0 5vw;
 }
 
 .rule ul li {
@@ -2547,11 +2537,21 @@ input[type="file"] {
   display: none;
 }
 
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"] + label {
+  margin: 0 2vw 0 0;
+  vertical-align: middle;
+  color: #F77A00;
+}
+
 .fileUpload {
   border: 1px solid #F77A00;
   padding: 2vw;
   cursor: pointer;
-  margin-right: 0.5vw;
+  margin: 0 0.5vw 0 0;
   border-radius: 3px;
   -webkit-box-flex: 2;
       -ms-flex: 2;
@@ -2580,7 +2580,7 @@ button.clickBtn {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-left: 2vw;
+  margin: 0 0 0 2vw;
   width: 7vw;
   height: 7vw;
 }
@@ -2600,9 +2600,8 @@ button.clickBtn:before {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin: 3vw 0;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
 }
 
 .buttonBox button {
@@ -2610,44 +2609,34 @@ button.clickBtn:before {
       -ms-flex: 0 0 calc(100% / 3 - 2vw);
           flex: 0 0 calc(100% / 3 - 2vw);
   border-radius: 3px;
-  padding: 2vw;
+  padding: 1vw;
   margin: 1vw;
-  border: 1px solid #1a3055;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  -webkit-box-shadow: 0px 3px #1a3055;
-          box-shadow: 0px 3px #1a3055;
   position: relative;
-  background: #213e6f;
+  background: #1249A5;
+  font-size: 3vw;
 }
 
-.buttonBox button .icon {
-  display: none;
+.buttonBox button .icon-icon32px_check {
   position: absolute;
-  right: -1vw;
-  background: #ff5d00;
+  right: 0;
+  bottom: 0;
+  color: #1E85EC;
+  background: white;
   border-radius: 100%;
-  width: 5vw;
   height: 5vw;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  display: none;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-transform: translateY(40%);
-          transform: translateY(40%);
 }
 
 .buttonBox button.active {
-  background: none;
-  -webkit-box-shadow: 0px 0px #883200;
-          box-shadow: 0px 0px #883200;
-  border: 1px solid #F77A00;
-  top: 1px;
+  color: #1E85EC;
+  background: white;
+  font-weight: bold;
 }
 
-.buttonBox button.active .icon {
+.buttonBox button.active .icon-icon32px_check {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2730,12 +2719,12 @@ button.clickBtn:before {
 
 .Message {
   height: calc(100% - 65vw);
-  padding-top: 40vw;
+  padding: 40vw 8vw 25vw;
 }
 
 .Announcement {
   height: calc(100% - 55vw);
-  padding-top: 30vw;
+  padding: 30vw 8vw 25vw;
 }
 
 .Announcement .functionList {
@@ -2763,6 +2752,10 @@ button.clickBtn:before {
   display: flex;
 }
 
+.functionList .parts .dropdown-container {
+  background: #000714;
+}
+
 .functionList.ann {
   border: 0;
   padding: 0;
@@ -2787,7 +2780,7 @@ button.clickBtn:before {
       -ms-flex-pack: center;
           justify-content: center;
   color: #b6b6b6;
-  margin-left: 5vw;
+  margin: 0 0 0 5vw;
   padding: 2vw;
   width: 7vw;
   height: 7vw;
@@ -2795,6 +2788,7 @@ button.clickBtn:before {
 
 .functionList .smallBtn-group button.icon-spinner11 {
   background: #F77A00;
+  color: white;
 }
 
 .functionList .smallBtn-group button:not(.icon-icon32px_openmail):before {
@@ -2811,8 +2805,8 @@ button.clickBtn:before {
 }
 
 .functionList ~ .account {
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
   margin: 2vw 0;
   padding: 2vw 4vw;
   position: relative;
@@ -2830,7 +2824,7 @@ button.clickBtn:before {
   opacity: 1;
   height: auto;
   border-top: 1px solid #F77A00;
-  padding-top: 2vw;
+  padding: 2vw 0 0;
   line-height: normal;
 }
 
@@ -2906,7 +2900,7 @@ button.clickBtn:before {
 
 .checkbox .icon {
   color: #F77A00;
-  margin-right: 2vw;
+  margin: 0 2vw 0 0;
 }
 
 .checkbox .icon.icon-checkbox:before {
@@ -2917,8 +2911,8 @@ button.clickBtn:before {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
   width: 100%;
 }
 
@@ -2928,8 +2922,8 @@ button.clickBtn:before {
 
 .casino {
   width: calc(100% - 8vw);
-  height: calc(100% - 110vw);
-  padding: 86vw 4vw 24vw;
+  height: calc(100% - 112vw);
+  padding: 88vw 4vw 24vw;
   position: relative;
 }
 
@@ -2947,8 +2941,8 @@ button.clickBtn:before {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
   top: calc(49vw + 2px);
   position: absolute;
 }
@@ -2958,21 +2952,12 @@ button.clickBtn:before {
   top: 12vw;
 }
 
-.casino .functionList .parts {
-  width: 100%;
-  margin: 1vw 0;
-}
-
-.casino .functionList .parts .dropdown-container {
-  background: #000714;
-}
-
 .casino .slotList {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
 }
 
 .casino .slotList .info {
@@ -2999,11 +2984,11 @@ button.clickBtn:before {
 }
 
 .casino .slotList .info:nth-child(odd) {
-  margin-right: 1vw;
+  margin: 0 1vw 0 0;
 }
 
 .casino .slotList .info:nth-child(even) {
-  margin-left: 1vw;
+  margin: 0 0 0 1vw;
 }
 
 .casino .slotList .info:before {
@@ -3011,7 +2996,7 @@ button.clickBtn:before {
   border-style: solid;
   border-width: 6vw 9vw;
   border-color: #F77A00 transparent transparent #F77A00;
-  border-top-left-radius: 5px;
+  border-radius: 5px 0 0;
   position: absolute;
   left: 0;
   top: 0;
@@ -3055,18 +3040,18 @@ button.clickBtn:before {
 }
 
 .inputdate:first-child {
-  margin-right: 2px;
+  margin: 0 2px 0 0;
 }
 
 .inputdate:last-child {
-  margin-left: 2px;
+  margin: 0 0 0 2px;
 }
 
 .inputdate i.icon {
   position: static;
   -webkit-transform: none;
           transform: none;
-  margin-right: 1vw;
+  margin: 0 1vw 0 0;
 }
 
 input[type="date"] {
@@ -3101,11 +3086,11 @@ input[type="date"] {
   border: 1px solid #F77A00;
   border-radius: 3px;
   padding: 1vw;
-  margin-right: 2vw;
+  margin: 0 2vw 0 0;
 }
 
 .filterBtn button:last-child {
-  margin-right: 0;
+  margin: 0;
 }
 
 .filterBtn button.active {
@@ -3222,8 +3207,8 @@ input[type="date"] {
           align-items: center;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-flow: row;
+          flex-flow: row;
   margin: 0 auto;
   width: 50%;
 }
@@ -3742,8 +3727,8 @@ span.important {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-flow: row;
+          flex-flow: row;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -3891,7 +3876,7 @@ span.important {
 
 .promotions .claimed:before {
   content: "CLAIMED";
-  margin-right: 1vw;
+  margin: 0 1vw 0 0;
 }
 
 .promotions .promodule, .promotions .proInfomodule {
@@ -3941,31 +3926,28 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-left: 1vw;
+  margin: 0 0 0 1vw;
 }
 
 .promotions .promodule > button, .promotions .proInfomodule > button {
   line-height: 24px;
   vertical-align: bottom;
-  margin-left: 1vw;
+  margin: 0 0 0 1vw;
   font-size: 12px;
 }
 
 .promotions .promodule > button.ViewAllAmount, .promotions .proInfomodule > button.ViewAllAmount {
   padding: 5px 10px;
   background: #002B6C;
-  margin-left: 0;
-  margin-top: -1px;
+  margin: -1px 0 2vw;
   width: 100%;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-radius: 0 0 10px 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-bottom: 2vw;
 }
 
 .promotions .promodule > button.ViewAllAmount span, .promotions .proInfomodule > button.ViewAllAmount span {
@@ -3983,7 +3965,7 @@ span.important {
 }
 
 .promotions .promodule .protitle, .promotions .proInfomodule .protitle {
-  margin-top: 1vw;
+  margin: 1vw 0 0;
   font-size: 4vw;
   color: #F77A00;
   font-weight: bold;
@@ -3998,7 +3980,7 @@ span.important {
 }
 
 .promotions .promodule .text ol, .promotions .proInfomodule .text ol {
-  padding-left: 5vw;
+  padding: 0 0 0 5vw;
 }
 
 .promotions .promodule .text ol li, .promotions .proInfomodule .text ol li {
@@ -4042,7 +4024,7 @@ span.important {
 
 .kyc ul li {
   list-style: decimal;
-  margin-left: 4vw;
+  margin: 0 0 0 4vw;
 }
 
 .kyc .icon-jump {
@@ -4110,8 +4092,8 @@ span.important {
           align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
 }
 
 .Straight-lock.in {
@@ -4125,10 +4107,6 @@ span.important {
   transform: scaleX(-1);
   -webkit-filter: FlipH;
   filter: FlipH;
-}
-
-.Straight-lock .icon {
-  color: white;
 }
 
 .Straight-lock .icon-mobile {
@@ -4170,7 +4148,7 @@ span.important {
 }
 
 .Straight-lock .text {
-  margin-top: 2vw;
+  margin: 2vw 0 0;
   text-align: center;
   line-height: 4vw;
 }
@@ -4199,7 +4177,7 @@ span.important {
 
 .progressBarModule {
   width: 100%;
-  margin-top: 2vw;
+  margin: 2vw 0 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4231,7 +4209,7 @@ span.important {
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
   min-width: 12vw;
-  margin-right: 3vw;
+  margin: 0 3vw 0 0;
 }
 
 .otp {
@@ -4279,7 +4257,7 @@ span.important {
   padding: 2vw;
   border: 1px solid #1249A5;
   border-radius: 3px;
-  margin-top: 1vw;
+  margin: 1vw 0 0;
 }
 
 .rollover .account {
@@ -4319,7 +4297,7 @@ span.important {
 }
 
 .rollover > div:not(.account) > div:before {
-  margin-right: 2vw;
+  margin: 0 2vw 0 0;
 }
 
 .rollover > div:not(.account) > div:nth-child(2) {
@@ -4332,8 +4310,8 @@ span.important {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -4351,9 +4329,9 @@ span.important {
   display: flex;
   font-size: 12px;
   border-radius: 3px;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin-top: 2vw;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
+  margin: 2vw 0 0;
 }
 
 .minAmount > div {
@@ -4419,7 +4397,7 @@ span.important {
 
 .new:before {
   content: "NEW";
-  margin-right: 1vw;
+  margin: 0 1vw 0 0;
 }
 
 .new.active {
@@ -4442,7 +4420,7 @@ span.important {
   padding: 3vw 0;
   border-radius: 3px;
   width: 100%;
-  margin-top: 3vw;
+  margin: 3vw 0 0;
 }
 
 .installGuide {
@@ -4473,7 +4451,7 @@ span.important {
 }
 
 .installGuide section .copyinfo {
-  margin-top: 2vw;
+  margin: 2vw 0 0;
 }
 
 .installGuide section .copyinfo .inputBox {
@@ -4517,7 +4495,7 @@ span.important {
 
 .installGuide section .downloadModule .downloadSelect {
   display: none;
-  margin-top: 1vw;
+  margin: 1vw 0 0;
 }
 
 .installGuide section .downloadModule .downloadSelect > div {
@@ -4533,8 +4511,8 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
 }
 
 .installGuide section .downloadModule .downloadSelect > div .title {
@@ -4546,7 +4524,7 @@ span.important {
 }
 
 .installGuide section .downloadModule .downloadSelect > div .icon {
-  margin-right: 0.5vw;
+  margin: 0 0.5vw 0 0;
   color: #F77A00;
 }
 
@@ -4616,7 +4594,7 @@ span.important {
 
 .page .dropdown-container {
   top: 7vw;
-  padding-bottom: 2vw;
+  padding: 0 0 2vw;
 }
 
 .total {
@@ -4641,7 +4619,7 @@ span.important {
 .ranking .userRankInfo {
   background: #002B6C;
   padding: 2vw;
-  margin-bottom: 3vw;
+  margin: 0 0 3vw;
   border-radius: 0 0 3px 3px;
   text-align: center;
 }
@@ -4671,7 +4649,7 @@ span.important {
 
 .ranking .userRankInfo .userRank span {
   color: #1E85EC;
-  margin-left: 2vw;
+  margin: 0 0 0 2vw;
 }
 
 .ranking .title {
@@ -4684,14 +4662,14 @@ span.important {
   text-align: center;
 }
 
-.ranking .rankList {
+.list {
   margin: 0 0 3vw;
   background: #002B6C;
   padding: 4vw 2vw;
   border-radius: 0 0 3px 3px;
 }
 
-.ranking .rankList .icon-trophy {
+.list .icon-trophy {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4700,24 +4678,24 @@ span.important {
           justify-content: space-between;
 }
 
-.ranking .rankList .icon-trophy:before {
+.list .icon-trophy:before {
   color: #F9B041;
 }
 
-.ranking .rankList ul {
+.list ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.ranking .rankList ul:first-child li {
+.list ul:first-child li {
   background: #1249A5;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
 }
 
-.ranking .rankList ul li {
+.list ul li {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -4728,8 +4706,7 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
   padding: 2vw;
-  margin-top: 3px;
-  margin-right: 3px;
+  margin: 3px 3px 0 0;
   background: rgba(0, 0, 0, 0.5);
   border-radius: 3px;
   -webkit-box-pack: end;
@@ -4737,26 +4714,21 @@ span.important {
           justify-content: flex-end;
 }
 
-.ranking .rankList ul li:last-child {
-  text-align: right;
-  margin-right: 0;
-}
-
-.ranking .rankList ul:nth-child(2) li {
+.list ul:nth-child(2) li {
   background: #CF0404;
 }
 
-.ranking .rankList ul:nth-child(3) li {
+.list ul:nth-child(3) li {
   background: #FF5D00;
 }
 
-.ranking .rankList ul:nth-child(4) li {
+.list ul:nth-child(4) li {
   background: #F77A00;
 }
 
 .referral {
   height: calc(100% - 40vw);
-  padding: 20vw 8vw;
+  padding: 20vw 8vw 20vw;
 }
 
 .referral > .title {
@@ -4773,21 +4745,21 @@ span.important {
 }
 
 .refbanner {
-  margin-bottom: 2vw;
+  margin: 0 0 2vw;
   width: 100%;
   height: auto;
 }
 
 .refShare .title {
-  margin-bottom: 2vw;
+  margin: 0 0 2vw;
 }
 
 .refShare .refBox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -4797,7 +4769,6 @@ span.important {
   width: calc(50% - 8vw - 2px);
   width: 100%;
   margin: 2vw 0;
-  margin-left: 0;
   border: 1px solid #F77A00;
   border-radius: 15px;
   padding: 3vw;
@@ -4819,42 +4790,40 @@ span.important {
 }
 
 .refLink {
-  margin-top: 3vw;
+  margin: 3vw 0 0;
 }
 
 .refLink .refBox {
-  margin-top: 3vw;
+  margin: 3vw 0 0;
 }
 
 .refLink .refBox .icon:before {
-  margin-left: 2vw;
+  margin: 0 0 0 2vw;
 }
 
 .refLink .refBox .refMedia {
-  margin-top: 5vw;
+  margin: 5vw 0 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
 }
 
 .refLink .refBox .refMedia a {
   width: calc(50% - 2vw);
-  margin-bottom: 3vw;
-  margin-right: 2vw;
+  margin: 0 2vw 3vw 0;
 }
 
 .refLink .refBox .refMedia a:nth-child(even) {
-  margin-right: 0;
+  margin: 0;
 }
 
 .refLink .refBox .refMedia a.icon:before {
-  margin-right: 2vw;
-  margin-left: 0;
+  margin: 0 2vw 0 0;
 }
 
 .refLink .text-org {
@@ -4867,7 +4836,7 @@ span.important {
 }
 
 .achievement span {
-  margin-left: 2vw;
+  margin: 0 0 0 2vw;
   color: #F77A00;
 }
 
@@ -4898,8 +4867,8 @@ span.important {
   color: white;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
   position: relative;
 }
 
@@ -4927,8 +4896,8 @@ span.important {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
 }
 
 .accordion > div .title {
@@ -4946,7 +4915,7 @@ span.important {
 
 .accordion > div .title:before {
   font-weight: normal;
-  margin-right: 2vw;
+  margin: 0 2vw 0 0;
 }
 
 .accordion > div .title.icon-exit {
@@ -4954,7 +4923,7 @@ span.important {
 }
 
 .accordion > div .title.icon-policies:before {
-  margin-left: 1vw;
+  margin: 0 1vw 0;
 }
 
 .accordion > div > div {
@@ -5000,7 +4969,7 @@ span.important {
 .accordion > div a, .accordion > div button, .accordion > div div {
   padding: 3vw 4vw;
   background: #002B6C;
-  margin-bottom: 1px;
+  margin: 0 0 1px;
 }
 
 .accordion > div a.mode, .accordion > div button.mode, .accordion > div div.mode {
@@ -5035,8 +5004,8 @@ span.important {
 .accordion > div a.country > button, .accordion > div button.country > button, .accordion > div div.country > button {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
   width: calc(100% / 4);
   background: transparent;
 }
@@ -5063,7 +5032,6 @@ span.important {
 
 .vip_mark {
   margin: 2vw auto 5vw;
-  color: #fff;
   position: relative;
   text-align: center;
   width: -webkit-min-content;
@@ -5079,5 +5047,748 @@ span.important {
   background: #F77A00;
   padding: 1vw;
   border-radius: 15px;
+}
+
+.contact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.contact > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #B2B2B2;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: bold;
+}
+
+.contact > div img {
+  width: 25vw;
+  margin: 0 2vw 0 0;
+}
+
+.contact > div i {
+  width: 12vw;
+  height: 12vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: white;
+  border-radius: 5px;
+  margin: 0 2vw 0 0;
+}
+
+.contact > div i::before {
+  color: #001942;
+  font-size: 7vw;
+}
+
+.contact > div i:not(.icon-chat):before {
+  font-weight: normal;
+}
+
+.provider {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.provider button {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 31%;
+          flex: 0 0 31%;
+  border-radius: 5px;
+  margin: 0 0 3vw;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.provider button img {
+  max-width: 90%;
+  height: auto;
+}
+
+.vip {
+  width: 100%;
+  height: calc(100% - 25vw);
+  padding: 0 0 25vw;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.vip .swiper-container {
+  width: 375px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: fixed;
+}
+
+.vip .swiper-container .banner {
+  top: auto;
+}
+
+.vip .swiper-container .swiper-slide.swiper-slide-active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.vip .medal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #980B0B;
+  position: fixed;
+  top: 49vw;
+  width: 100%;
+}
+
+.vip .medal div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border: 1px solid #001942;
+  text-align: center;
+  padding: 1vw;
+  word-break: break-word;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.vip .medal div img {
+  width: 10vw;
+}
+
+.vip .vipInfo {
+  padding: 2vw;
+  margin: 71vw auto 0;
+}
+
+.vip .vipInfo .vipTitle {
+  font-weight: bold;
+  color: #F77A00;
+  margin: 2vw 0;
+}
+
+.vip .vipPage .eventList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-collapse: collapse;
+}
+
+.vip .vipPage .eventList tbody {
+  width: 100%;
+}
+
+.vip .vipPage .eventList tr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #191919;
+}
+
+.vip .vipPage .eventList tr.title {
+  background: #213e6f;
+}
+
+.vip .vipPage .eventList tr.title .icon {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.vip .vipPage .eventList tr.title .icon:before {
+  margin: 0 2vw 0 0;
+}
+
+.vip .vipPage .eventList tr.title .icon span {
+  margin: 0 0 0 1vw;
+}
+
+.vip .vipPage .eventList tr:not(.title) td[colspan="7"] {
+  background: #333;
+}
+
+.vip .vipPage .eventList tr.lastTd td {
+  border-bottom: 1px solid #666;
+}
+
+.vip .vipPage .eventList tr td {
+  padding: 1vw;
+  font-weight: normal;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid #666;
+  border-bottom: 0;
+  text-align: center;
+}
+
+.vip .vipBanner {
+  width: 100%;
+  height: 37.5vw;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 3vw 0 0;
+}
+
+.vip .vipBanner img {
+  width: auto;
+  height: 100%;
+}
+
+.event {
+  background: url(../img/event/mysterybox/bg.jpg) no-repeat top center/120%;
+  width: calc(100% - 6vw);
+  height: auto;
+  padding: 0 3vw 24vw;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 12vw 0 0;
+}
+
+.event > div[tabindex="-1"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.event .eventTitle {
+  margin: 11vw 0 0;
+  background: -webkit-linear-gradient(top, #f0b52d 30%, #fffccf 40%, #e2a625 65%, #ff6c00 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.5px #ffff9b;
+  -webkit-filter: drop-shadow(0px 3px 1px #922707);
+          filter: drop-shadow(0px 3px 1px #922707);
+  text-align: center;
+}
+
+.event .animation {
+  margin: 5vw auto 2vw;
+  background: transparent;
+  width: 35vw;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-animation: whose .6s ease-in-out infinite alternate;
+          animation: whose .6s ease-in-out infinite alternate;
+}
+
+.event .animation > img {
+  width: 100%;
+}
+
+.event .animation .time {
+  background: rgba(0, 25, 66, 0.9);
+  border: 2px solid #BF9A77;
+  padding: 1vw 3vw;
+  border-radius: 10px;
+  text-align: center;
+  position: absolute;
+  font-size: 5vw;
+  display: none;
+}
+
+.event .animation .time div {
+  color: #fdae04;
+}
+
+.event .animation.active .time {
+  display: block;
+}
+
+.event .filterBtn {
+  margin: 3vw 0;
+}
+
+.event .eventModule {
+  background: #002B6C;
+  padding: 3vw;
+  text-align: center;
+  display: none;
+}
+
+.event .eventModule.active {
+  display: block;
+}
+
+.event .eventModule .title:not(.text-org) {
+  font-size: 5vw;
+  color: #F5C346;
+}
+
+.event .eventModule .title:not(.text-org) + .text-gray {
+  color: #939393;
+  margin: 3vw 0 5vw;
+}
+
+.event .eventModule .title:not(.text-org) + .text-gray + div {
+  margin: 5vw 0;
+}
+
+.event .eventModule .title.text-org + .text-gray {
+  text-align: left;
+}
+
+.event .eventModule .title.text-org + .text-gray li {
+  list-style: decimal;
+  margin: 0 0 0 3vw;
+  line-height: 24px;
+}
+
+.event .list {
+  display: none;
+}
+
+.event .list.active {
+  display: block;
+}
+
+.event .list ul:nth-child(n+2) li {
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@-webkit-keyframes whose {
+  0% {
+    -webkit-transform: scale(1.05, 0.95);
+            transform: scale(1.05, 0.95);
+  }
+  30% {
+    -webkit-transform: scale(1.05, 0.95);
+            transform: scale(1.05, 0.95);
+  }
+  75% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  95% {
+    -webkit-transform: scale(1.05, 0.95);
+            transform: scale(1.05, 0.95);
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+}
+
+@keyframes whose {
+  0% {
+    -webkit-transform: scale(1.05, 0.95);
+            transform: scale(1.05, 0.95);
+  }
+  30% {
+    -webkit-transform: scale(1.05, 0.95);
+            transform: scale(1.05, 0.95);
+  }
+  75% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  95% {
+    -webkit-transform: scale(1.05, 0.95);
+            transform: scale(1.05, 0.95);
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+}
+
+.eventpop {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-animation: redrotate 0.3s 8 alternate;
+          animation: redrotate 0.3s 8 alternate;
+  -webkit-transform-origin: bottom center;
+          transform-origin: bottom center;
+  width: 80%;
+  height: 70vw;
+  top: 50%;
+  margin: -35vw 0 0;
+  z-index: -1;
+}
+
+.eventpop .redbox {
+  width: 80%;
+}
+
+.eventpop .coin {
+  -webkit-animation: coin 1s 1s infinite linear;
+          animation: coin 1s 1s infinite linear;
+}
+
+.eventpop .coin {
+  position: absolute;
+  top: 25vw;
+  right: 10vw;
+  width: 8vw;
+  height: 6vw;
+  background: url(../img/event/mysterybox/coin.png) no-repeat center/cover;
+}
+
+.eventpop .coin:nth-child(3) {
+  top: 22vw;
+  left: 43vw;
+  width: 10vw;
+  height: 9vw;
+}
+
+.eventpop .coin:nth-child(4) {
+  top: 16vw;
+  left: 39vw;
+  width: 10vw;
+  height: 9vw;
+  -webkit-animation-delay: .2s;
+          animation-delay: .2s;
+}
+
+.eventpop .coin:nth-child(5) {
+  top: 12vw;
+  left: 21vw;
+  -webkit-animation-delay: .3s;
+          animation-delay: .3s;
+}
+
+.eventpop .coin:nth-child(6) {
+  top: 20vw;
+  left: 30vw;
+  -webkit-animation-delay: .5s;
+          animation-delay: .5s;
+}
+
+.eventpop .pop {
+  position: absolute;
+  background: rgba(191, 154, 119, 0.85);
+  border-radius: 5px;
+  display: none;
+  width: 100%;
+}
+
+.eventpop .pop.active {
+  display: block;
+}
+
+.eventpop .pop .popTit {
+  border-bottom: 1px solid #001942 !important;
+  color: #001942 !important;
+}
+
+.eventpop .pop .popTit .icon-close {
+  color: #001942;
+}
+
+.eventpop .pop .popTxt {
+  color: white !important;
+}
+
+.eventpop .pop .popTxt .blackInfo {
+  font-size: 8vw;
+  font-weight: bold;
+  color: #fdae04;
+}
+
+@-webkit-keyframes coin {
+  0% {
+    opacity: 0;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  20% {
+    opacity: 0.9;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    margin-top: 0;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+    margin-top: -200px;
+    opacity: 0;
+  }
+}
+
+@keyframes coin {
+  0% {
+    opacity: 0;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  20% {
+    opacity: 0.9;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    margin-top: 0;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+    margin-top: -200px;
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes redrotate {
+  0% {
+    -webkit-transform: rotate(3deg);
+            transform: rotate(3deg);
+  }
+  15% {
+    -webkit-transform: rotate(3deg);
+            transform: rotate(3deg);
+  }
+  30% {
+    -webkit-transform: rotate(-2deg);
+            transform: rotate(-2deg);
+  }
+  45% {
+    -webkit-transform: rotate(-2deg);
+            transform: rotate(-2deg);
+  }
+  70% {
+    -webkit-transform: rotate(3deg);
+            transform: rotate(3deg);
+  }
+}
+
+@keyframes redrotate {
+  0% {
+    -webkit-transform: rotate(3deg);
+            transform: rotate(3deg);
+  }
+  15% {
+    -webkit-transform: rotate(3deg);
+            transform: rotate(3deg);
+  }
+  30% {
+    -webkit-transform: rotate(-2deg);
+            transform: rotate(-2deg);
+  }
+  45% {
+    -webkit-transform: rotate(-2deg);
+            transform: rotate(-2deg);
+  }
+  70% {
+    -webkit-transform: rotate(3deg);
+            transform: rotate(3deg);
+  }
+}
+
+.switchTag {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.switchTag div {
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+  padding: 2vw;
+  border-radius: 3px 3px 0 0;
+  text-align: center;
+  margin: 0 1px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.switchTag div.active {
+  background: #002B6C;
+}
+
+.depositModule {
+  width: calc(100% - 6vw - 2px);
+  margin: auto;
+  background: #002B6C;
+  padding: 3vw;
+  border-radius: 0 0 5px 5px;
+  display: none;
+}
+
+.depositModule.active {
+  display: block;
+}
+
+.depositModule > .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.depositModule > .title:not(.text-org) {
+  font-weight: normal;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 5px;
+  border-radius: 5px 5px 0 0;
+  margin: 4vw 0 0;
+}
+
+.depositModule > .title:before, .depositModule > .title span {
+  margin-right: 1vw;
+}
+
+.depositModule .selectModule {
+  background: #1249A5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 0 0 5px 5px;
+  padding: 2vw 1vw;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
+}
+
+.depositModule .selectModule li span {
+  padding: 0 0 0 1.5vw;
+}
+
+.depositModule .selectModule li button {
+  margin: 0 1.5vw 0;
+}
+
+.depositModule .selectModule .bankName {
+  width: 22vw;
+  height: 12vw;
+  background: white;
+  border-radius: 5px;
+  padding: 0.5vw;
+  margin: 1vw 1.5vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.depositModule .selectModule .bankName img {
+  width: 100%;
+}
+
+.depositModule .selectModule .bankName .icon-icon32px_check {
+  position: absolute;
+  right: 0.5vw;
+  bottom: 0;
+  color: #1E85EC;
+  display: none;
+}
+
+.depositModule .selectModule .bankName.active {
+  border: 2px solid #1249A5;
+  -webkit-box-shadow: 0 0 0 2px #1E85EC;
+          box-shadow: 0 0 0 2px #1E85EC;
+}
+
+.depositModule .selectModule .bankName.active .icon-icon32px_check {
+  display: block;
 }
 /*# sourceMappingURL=style.css.map */

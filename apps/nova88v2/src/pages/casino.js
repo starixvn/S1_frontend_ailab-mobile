@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, createRef } from "react";
 import PropTypes from "prop-types";
 import { i18nContext, userInfoContext, navContext, defNavPanel } from "Context";
 import Slider from "../components/casino/slider";
@@ -8,6 +8,8 @@ import SearchBox from "../components/casino/searchBox";
 import Games from "../components/casino/games";
 import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
 import api from "../service/api";
+import Layout from "../components/common/layout";
+import Header from "../components/header/header";
 
 const eachPageItem = 20;
 
@@ -29,8 +31,10 @@ class Panel extends React.Component {
 			},
 			favorite: [],
 			selNav: Object.keys(defNav)?.[0],
-			imgUrl: ""
+			imgUrl: "",
+			listFixed: false
 		};
+		this.gameList = createRef(null);
 	}
 
 	componentDidMount() {
@@ -38,6 +42,11 @@ class Panel extends React.Component {
 
 		window.addEventListener("mousewheel", this.ScrollBarListener, false);
 		window.addEventListener("touchmove", this.ScrollBarListener, {
+			passive: false
+		});
+
+		window.addEventListener("wheel", this.setListFixed, false);
+		window.addEventListener("touchmove", this.setListFixed, {
 			passive: false
 		});
 		api.site.GetGamelistV2().then(res => {
@@ -132,10 +141,23 @@ class Panel extends React.Component {
 		}
 	};
 
+	setListFixed = () => {
+		const gameListTop = this.gameList.current.getBoundingClientRect().top;
+		if (gameListTop >= 200) {
+			this.setState({ listFixed: false });
+		} else {
+			this.setState({ listFixed: true });
+		}
+	};
+
 	componentWillUnmount = () => {
 		this.mounted = false;
 		window.removeEventListener("mousewheel", this.ScrollBarListener);
 		window.removeEventListener("touchmove", this.ScrollBarListener, {
+			passive: false
+		});
+		window.removeEventListener("wheel", this.setListFixed);
+		window.removeEventListener("touchmove", this.setListFixed, {
 			passive: false
 		});
 	};
@@ -323,13 +345,21 @@ class Panel extends React.Component {
 		return (
 			<>
 				<Slider />
-				<Nav selNav={this.state.selNav} SelectNav={this.SelectNav} />
-				<SearchBox
-					TpList={this.state.tpList}
-					{...this.state.searchInfo}
-					EditSearchField={this.EditSearchField}
-					DefaultProvider={this.props.tpId}
-				/>
+				<div
+					className={`functionList${
+						this.state.listFixed ? " active" : ""
+					}`}>
+					<Nav
+						selNav={this.state.selNav}
+						SelectNav={this.SelectNav}
+					/>
+					<SearchBox
+						TpList={this.state.tpList}
+						{...this.state.searchInfo}
+						EditSearchField={this.EditSearchField}
+						DefaultProvider={this.props.tpId}
+					/>
+				</div>
 				<Games
 					SelectGame={this.SelectGame}
 					Games={this.state.displayGames}
@@ -338,6 +368,7 @@ class Panel extends React.Component {
 					TpList={this.state.tpList}
 					i18n={this.props.i18n}
 					imgUrl={this.state.imgUrl}
+					ref={this.gameList}
 				/>
 				{this.state.selGameInfo === null ? null : (
 					<div className="slotFunction open">
@@ -386,11 +417,19 @@ const IndexPage = props => {
 	const { i18n } = useContext(i18nContext);
 	const { setNav } = useContext(navContext);
 	const { userInfo } = useContext(userInfoContext);
+	const header = <Header title={i18n.lbl_Casino} hideLogo={true} />;
 
 	let tpId = props.tpId ?? props.location.state?.tpId;
 	tpId = typeof tpId === "string" && !isNaN(tpId) ? Number(tpId) : tpId;
 	return (
-		<Panel i18n={i18n} userInfo={userInfo} setNav={setNav} tpId={tpId} />
+		<Layout header={header} mainClass="main casino">
+			<Panel
+				i18n={i18n}
+				userInfo={userInfo}
+				setNav={setNav}
+				tpId={tpId}
+			/>
+		</Layout>
 	);
 };
 

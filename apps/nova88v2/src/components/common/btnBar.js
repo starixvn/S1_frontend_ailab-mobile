@@ -5,7 +5,7 @@ const Btn = ({ isOpen, displayText, value, isLogin, beforeLogin, onClick }) => {
 	const handleClick = () => onClick(value, isLogin, beforeLogin);
 	return (
 		<button
-			className={isOpen ? "open" : ""}
+			className={isOpen ? "active" : ""}
 			value={value}
 			onClick={handleClick}>
 			{displayText}

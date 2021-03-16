@@ -1,9 +1,10 @@
 import React, { Component, createRef } from "react";
-import PropTypes, { func } from "prop-types";
+import PropTypes from "prop-types";
 
 export class DropdownBox extends Component {
 	constructor(props) {
 		super(props);
+		document.addEventListener("mousedown", this.handleClickOutside);
 		this.state = { isOpen: false };
 		this.wrapper = createRef(null);
 	}
@@ -55,7 +56,10 @@ export class DropdownBox extends Component {
 		}
 		return (
 			<>
-				<div className="infoModule" data-testid={this.props.testAttr}>
+				<div
+					className="infoModule"
+					data-testid={this.props.testAttr}
+					ref={this.wrapper}>
 					<div
 						className={`inputInfo ${
 							this.props.showTips ? " active" : ""
@@ -74,7 +78,6 @@ export class DropdownBox extends Component {
 						)}
 						<button
 							className="dropdown btn"
-							ref={this.wrapper}
 							onClick={this.ClickDropdown}>
 							<span className="text">
 								{this.props.defaultOption ?? selected}

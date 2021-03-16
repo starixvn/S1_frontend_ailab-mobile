@@ -10,10 +10,14 @@ import useGetTpBalance from "../hook/useGetTpBalance";
 import Logo from "../common/logo";
 import path from "../../path";
 
-const HeaderTitle = ({ title = "" }) =>
-	title ? <div className="title">{title}</div> : null;
+const HeaderTitle = ({ title = "", link = "" }) =>
+	title ? (
+		<div className="title">
+			{link} {title}
+		</div>
+	) : null;
 
-const Header = ({ title, hideLogo, filter }) => {
+const Header = ({ title, hideLogo, filter, children, link }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const headerClassName = !title ? "" : "header";
 	return (
@@ -24,11 +28,12 @@ const Header = ({ title, hideLogo, filter }) => {
 				</a>
 			)}
 			{title ? (
-				<HeaderTitle title={title} />
+				<HeaderTitle title={title} link={link} />
 			) : (
 				<HeaderBtn userInfo={userInfo} />
 			)}
 			{filter || null}
+			{children}
 		</header>
 	);
 };

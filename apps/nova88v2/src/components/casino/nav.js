@@ -11,7 +11,7 @@ const Nav = props => {
 		return (
 			<button
 				key={`casino-nav-${k}`}
-				className={selNav === k ? "open" : ""}
+				className={selNav === k ? "active" : ""}
 				onClick={SelectNav.bind(this, k)}>
 				{i18n[_nav.displayKey]}
 			</button>
