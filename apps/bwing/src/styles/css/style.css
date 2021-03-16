@@ -2283,6 +2283,37 @@ p.txt-blue12 {
   font-size: 3vw;
 }
 
+.porfileVip {
+  width: 100%;
+  margin: 20px 0 15px 0;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.porfileVip img {
+  width: 180px;
+}
+
+.porfileVip button {
+  padding: 5px 15px;
+  border-radius: 20px;
+  background-color: #243a6e;
+  margin-top: 10px;
+  color: #fff;
+}
+
 .recent {
   visibility: hidden;
   -webkit-transition: 0.7s;
