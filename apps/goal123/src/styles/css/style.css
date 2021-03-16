@@ -1445,6 +1445,7 @@ footer > a.open .circleAnimation + span {
   background: #1E85EC;
   padding: 1vw;
   border-radius: 5px;
+  text-align: center;
 }
 
 .viplv {
