@@ -219,24 +219,26 @@ const Payment = props => {
 				i18n={i18n}
 				displayKey="payName"
 				_isConvert={_isConvert}
-			/>
-			<GroupList
-				title={i18n.lbl_SelectBank}
-				dataList={bankList}
-				SelectPayment={SelectBank}
-				selected={selbank?.sysId}
-				mainKey={`deposit-full-${payType}-bankList`}
-				imgKey="bankLogo"
-				idKey="sysId"
-				bindFullObj={true}
-				prefixImgUrl={`${config.imgUrl}/common/images/BankLogo/`}
-				imgKeyWithExtension={true}
-				bindingItem={selGroup}
-				displayKey="bankName"
 				showMinMaxHint={true}
-				i18n={i18n}
-				_isConvert={_isConvert}
 			/>
+			{selGroup?.selBank ? (
+				<GroupList
+					title={i18n.lbl_SelectBank}
+					dataList={bankList}
+					SelectPayment={SelectBank}
+					selected={selbank?.sysId}
+					mainKey={`deposit-full-${payType}-bankList`}
+					imgKey="bankLogo"
+					idKey="sysId"
+					bindFullObj={true}
+					prefixImgUrl={`${config.imgUrl}/common/images/BankLogo/`}
+					imgKeyWithExtension={true}
+					bindingItem={selGroup}
+					displayKey="bankName"
+					i18n={i18n}
+					_isConvert={_isConvert}
+				/>
+			) : null}
 			<AmountInput
 				title={i18n.lbl_DepositAmount}
 				channel={selbank}
