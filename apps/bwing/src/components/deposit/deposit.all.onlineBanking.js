@@ -97,8 +97,6 @@ const Payment = props => {
 	};
 
 	const SelectBank = (bankInfo, groupInfo) => {
-		setBank(bankInfo);
-
 		api_GetOnlineBankInfo({
 			payId: groupInfo.payId,
 			sysId: bankInfo.sysId
