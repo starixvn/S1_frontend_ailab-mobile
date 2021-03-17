@@ -122,7 +122,6 @@ const Payment = props => {
 		const checkAccountName = !!userInfo.accountName || !!realName;
 		const result =
 			selBank.sysId &&
-			bankSlipPopBox.receipt !== null &&
 			amount !== "" &&
 			VaildAmount({ amount }) &&
 			checkAccountName;
@@ -358,7 +357,6 @@ const Payment = props => {
 	const _isConvert = isConvert(userInfo.currencyId);
 	const canSubmit =
 		selBank.sysId &&
-		bankSlipPopBox.receipt &&
 		amount !== "" &&
 		VaildAmount({ amount, displayWarning: false }) &&
 		(!!userInfo.accountName || !!realName);
@@ -378,6 +376,9 @@ const Payment = props => {
 				prefixImgUrl={`${config.imgUrl}/common/images/BankLogo/`}
 				imgKeyWithExtension={true}
 				accountInfo={accountInfo}
+				i18n={i18n}
+				displayKey="bankName"
+				_isConvert={_isConvert}
 			/>
 			{!userInfo.accountName ? (
 				<>
@@ -434,16 +435,18 @@ const GroupList = ({
 	bindFullObj,
 	prefixImgUrl,
 	imgKeyWithExtension,
-	accountInfo
+	accountInfo,
+	displayKey,
+	_isConvert,
+	i18n
 }) => {
 	const rows = dataList?.map(data => {
 		const _mainKey = `${mainKey}-${data[idKey]}`;
 		const isSelect = selected === data[idKey];
-
+		const { minAmount, maxAmount } = data;
 		const RadioBtn = (
 			<Radio
 				key={`${_mainKey}-outerRadio`}
-				className="checkBank"
 				id={`${_mainKey}-radio`}
 				radioGroup={mainKey}
 				imgUrl={`${prefixImgUrl}${
@@ -455,13 +458,34 @@ const GroupList = ({
 					bindFullObj ? data : data[idKey]
 				)}
 				isSelect={isSelect}
+				displayName={data[displayKey]}
+				minAmount={minAmount}
+				maxAmount={maxAmount}
+				_isConvert={_isConvert}
+				i18n={i18n}
 			/>
 		);
 		return isSelect ? (
 			<div className="info infoAccount" key={_mainKey}>
 				<ul>
 					<li>
-						{RadioBtn}
+						<Radio
+							key={`${_mainKey}-outerRadio`}
+							className="checkBank"
+							id={`${_mainKey}-radio`}
+							radioGroup={mainKey}
+							imgUrl={`${prefixImgUrl}${
+								imgKeyWithExtension
+									? data[imgKey]
+									: `${data[imgKey]}.png`
+							}`}
+							imgAlt={data[imgKey] ?? ""}
+							onChange={SelectPayment.bind(
+								this,
+								bindFullObj ? data : data[idKey]
+							)}
+							isSelect={isSelect}
+						/>
 						{/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
 						<a
 							href={accountInfo.bankSite}
@@ -494,7 +518,8 @@ GroupList.defaultProps = {
 	selected: null,
 	bindFullObj: false,
 	imgKeyWithExtension: false,
-	accountInfo: {}
+	accountInfo: {},
+	displayKey: ""
 };
 
 GroupList.propTypes = {
@@ -512,7 +537,10 @@ GroupList.propTypes = {
 	bindFullObj: PropTypes.bool,
 	prefixImgUrl: PropTypes.string.isRequired,
 	imgKeyWithExtension: PropTypes.bool,
-	accountInfo: PropTypes.objectOf(PropTypes.any)
+	accountInfo: PropTypes.objectOf(PropTypes.any),
+	displayKey: PropTypes.string,
+	_isConvert: PropTypes.bool.isRequired,
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
 class CopyBtn extends Component {

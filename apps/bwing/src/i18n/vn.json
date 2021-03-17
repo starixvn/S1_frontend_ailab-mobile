@@ -519,5 +519,7 @@
 	"lbl_SelectChannel":"Chọn kênh",
 	"lbl_MinMaxAmount":"Tối thiểu/Tối đa",
 	"lbl_SelectBank":"Chọn ngân hàng",
-	"lbl_UploadReceipt":"Tải biên lai ngân hàng"
+	"lbl_UploadReceipt":"Tải biên lai ngân hàng",
+	"lbl_Max":"Lớn nhất",
+	"lbl_Min":"Nhỏ nhất"
 }

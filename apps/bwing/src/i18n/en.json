@@ -519,5 +519,7 @@
 	"lbl_SelectChannel":"Select Channel",
 	"lbl_MinMaxAmount":"Min/Max Limit",
 	"lbl_SelectBank":"Select Bank",
-	"lbl_UploadReceipt":"Upload Receipt"
+	"lbl_UploadReceipt":"Upload Receipt",
+	"lbl_Max":"Max",
+	"lbl_Min":"Min"
 }

@@ -105,12 +105,12 @@ class Content extends Component {
 
 	SeReceipt = () => {
 		if (this.props.bankSlipPopBox.disableSubmit) {
-			if (this.checkAllValue()) {
-				this.props.closePopBoxAndKeepData();
-			}
-		} else if (!this.props.bankSlipPopBox.refId) {
-			this.setState({ refIdTip: this.props.i18n.lbl_RemindForRefNum });
-		} else if (!this.state.processing) {
+			this.props.closePopBoxAndKeepData();
+		}
+		// else if (!this.props.bankSlipPopBox.refId) {
+		// 	this.setState({ refIdTip: this.props.i18n.lbl_RemindForRefNum });
+		// }
+		else if (!this.state.processing) {
 			this.setState({ processing: true });
 			const { bankSlipPopBox } = this.props;
 			api_SetDepositReceipt(
@@ -136,7 +136,7 @@ class Content extends Component {
 						}
 					}
 				},
-				err => {
+				() => {
 					if (this.isMountedRef) {
 						this.props.setPopBox({
 							isOpen: true,
@@ -156,56 +156,56 @@ class Content extends Component {
 		this.props.EditField("picFileName", "");
 	};
 
-	checkAllValue = () => {
-		const refIdResult = this.checkRefId(this.props.bankSlipPopBox.refId);
-		const doneUploadResult = this.checkDoneUpload();
-		if (!doneUploadResult.status) {
-			this.props.setPopBox({
-				isOpen: true,
-				title: this.props.i18n.lbl_ImportantNote,
-				content: doneUploadResult.msg,
-				hasBtn: true,
-				btnBar: (
-					<div className="btn-group">
-						<button
-							className="blue"
-							onClick={() =>
-								this.props.setPopBox({
-									isOpen: false
-								})
-							}>
-							OK
-						</button>
-					</div>
-				)
-			});
-		} else if (!refIdResult.status) {
-			this.setState({ refIdTip: this.props.i18n.lbl_RemindForRefNum });
-		}
+	// checkAllValue = () => {
+	// 	const refIdResult = this.checkRefId(this.props.bankSlipPopBox.refId);
+	// 	const doneUploadResult = this.checkDoneUpload();
+	// 	if (!doneUploadResult.status) {
+	// 		this.props.setPopBox({
+	// 			isOpen: true,
+	// 			title: this.props.i18n.lbl_ImportantNote,
+	// 			content: doneUploadResult.msg,
+	// 			hasBtn: true,
+	// 			btnBar: (
+	// 				<div className="btn-group">
+	// 					<button
+	// 						className="blue"
+	// 						onClick={() =>
+	// 							this.props.setPopBox({
+	// 								isOpen: false
+	// 							})
+	// 						}>
+	// 						OK
+	// 					</button>
+	// 				</div>
+	// 			)
+	// 		});
+	// 	} else if (!refIdResult.status) {
+	// 		this.setState({ refIdTip: this.props.i18n.lbl_RemindForRefNum });
+	// 	}
 
-		return refIdResult.status && doneUploadResult.status;
-	};
+	// 	return refIdResult.status && doneUploadResult.status;
+	// };
 
-	checkDoneUpload = () => {
-		let result = { status: true, msg: "" };
-		if (
-			!this.state.disableUpload &&
-			!this.props.bankSlipPopBox.picFileName
-		) {
-			result = { status: false, msg: this.props.i18n.lbl_AttachFile };
-		}
+	// checkDoneUpload = () => {
+	// 	let result = { status: true, msg: "" };
+	// 	if (
+	// 		!this.state.disableUpload &&
+	// 		!this.props.bankSlipPopBox.picFileName
+	// 	) {
+	// 		result = { status: false, msg: this.props.i18n.lbl_AttachFile };
+	// 	}
 
-		return result;
-	};
+	// 	return result;
+	// };
 
-	checkRefId = value => {
-		let result = { status: true, msg: "" };
-		if (!value) {
-			result = { status: false, msg: this.props.i18n.lbl_RefnoToolTip };
-		}
+	// checkRefId = value => {
+	// 	let result = { status: true, msg: "" };
+	// 	if (!value) {
+	// 		result = { status: false, msg: this.props.i18n.lbl_RefnoToolTip };
+	// 	}
 
-		return result;
-	};
+	// 	return result;
+	// };
 
 	render() {
 		const { bankSlipPopBox } = this.props;
