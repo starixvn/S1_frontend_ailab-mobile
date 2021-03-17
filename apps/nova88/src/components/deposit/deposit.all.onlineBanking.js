@@ -194,7 +194,7 @@ const Payment = props => {
 					)
 				});
 			} else {
-				RedirectToNext(this, real_amount);
+				RedirectToNext(real_amount);
 			}
 		}
 	};
