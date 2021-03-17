@@ -192,7 +192,7 @@ header {
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: 99;
+  z-index: 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8293,7 +8293,7 @@ span.important {
   border-radius: 3px 3px 0 0;
   text-align: center;
   margin-right: 2px;
-  background: rgba(0, 0, 0, 0.3);
+  background: #1d2844;
 }
 
 .switchTag div.open {
