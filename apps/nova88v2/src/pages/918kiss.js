@@ -2,8 +2,7 @@ import React, { useContext } from "react";
 import Kiss918 from "../components/918kiss/918kiss";
 import { userInfoContext } from "../components/common/context";
 import useBeforeLoginCheck from "../components/hook/useBeforeLoginCheck";
-import Layout from "../components/common/layout";
-import TabPage from "../components/common/tabPage";
+import Header from "../components/header/header";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -12,13 +11,13 @@ const IndexPage = () => {
 		langId: userInfo.langId
 	});
 
-	const headerTitle = { displayText: "918Kiss", link: "/" };
-	const header = <TabPage title={headerTitle} />;
-
 	return canSee ? (
-		<Layout header={header} mainClass="installGuide">
-			<Kiss918 />
-		</Layout>
+		<>
+			<Header title="918 Kiss" hideLogo={true} link="/" />
+			<main className="installGuide">
+				<Kiss918 />
+			</main>
+		</>
 	) : null;
 };
 

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import { userInfoContext, i18nContext, msgCountContext } from "Context";
+import { userInfoContext, i18nContext } from "Context";
 import { Link } from "@Router";
 import ReloadSpin from "../common/reloadSpin";
 import { number_format, isConvert } from "../common/common";
@@ -10,12 +10,24 @@ import useGetTpBalance from "../hook/useGetTpBalance";
 import Logo from "../common/logo";
 import path from "../../path";
 
-const HeaderTitle = ({ title = "" }) =>
-	title ? <div className="title">{title}</div> : null;
+const HeaderTitle = ({ title = "", link, i18n }) =>
+	title ? (
+		<div className="title">
+			{link ? (
+				<Link to={link}>
+					<i className="icon icon icon-icon32px_1" />
+					{i18n.lbl_Back}
+				</Link>
+			) : null}
+			{title}
+		</div>
+	) : null;
 
-const Header = ({ title, hideLogo, filter }) => {
+const Header = ({ title, hideLogo, filter, link }) => {
 	const { userInfo } = useContext(userInfoContext);
+	const { i18n } = useContext(i18nContext);
 	const headerClassName = !title ? "" : "header";
+
 	return (
 		<header className={headerClassName} id="header">
 			{hideLogo ? null : (
@@ -24,7 +36,7 @@ const Header = ({ title, hideLogo, filter }) => {
 				</a>
 			)}
 			{title ? (
-				<HeaderTitle title={title} />
+				<HeaderTitle title={title} link={link} i18n={i18n} />
 			) : (
 				<HeaderBtn userInfo={userInfo} />
 			)}
@@ -35,8 +47,6 @@ const Header = ({ title, hideLogo, filter }) => {
 
 const HeaderBtn = ({ userInfo }) => {
 	const { i18n } = useContext(i18nContext);
-	const { msgCount } = useContext(msgCountContext);
-
 	const { mainWalletInfo, GetBalance } = useGetBalance({
 		isLogin: userInfo.isLogin
 	});
@@ -123,13 +133,27 @@ HeaderInfo.propTypes = {
 Header.defaultProps = {
 	filter: null,
 	title: null,
-	hideLogo: false
+	hideLogo: false,
+	link: null
 };
 
 Header.propTypes = {
 	filter: PropTypes.node,
 	title: PropTypes.string,
-	hideLogo: PropTypes.bool
+	hideLogo: PropTypes.bool,
+	link: PropTypes.string
+};
+
+HeaderTitle.defaultProps = {
+	title: null,
+	link: null,
+	i18n: {}
+};
+
+HeaderTitle.propTypes = {
+	title: PropTypes.string,
+	link: PropTypes.string,
+	i18n: PropTypes.objectOf(PropTypes.string)
 };
 
 export default Header;

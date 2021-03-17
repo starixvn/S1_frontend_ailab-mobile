@@ -87,25 +87,41 @@ const Kiss918 = () => {
 		tpId: productList.kiss918.tpId
 	});
 	const { InstallGuide } = GetImageContent(userInfo);
+	const [downloadColOpen, setDownloadColOpen] = useState(false);
+	const openDownloadCol = () => {
+		setDownloadColOpen(prev => !prev);
+	};
 
 	return (
-		<>
-			<img src={kiss} alt="918 kiss banner" className="banner" />
+		<section>
+			<div className="banner">
+				<img src={kiss} alt="918 kiss banner" />
+			</div>
 
-			<div className="inputBox filterBtn kissinfo">
+			<div className="copyinfo">
 				<div>{i18n.lbl_Username}</div>
 				<ButtonWithCopyBtn value={data?.account} />
 				<div> {i18n.lbl_Password}</div>
 				<ButtonWithCopyBtn value={data?.password} />
 			</div>
 
-			<div className="kisstitle">{i18n.lbl_918KissMobileApp}</div>
-			<AppDownload i18n={i18n} />
+			<div className="downloadModule">
+				<div className="title">{i18n.lbl_918KissMobileApp}</div>
+				<div className="btn-group" onClick={openDownloadCol}>
+					<button>{i18n.lbl_Download.toUpperCase()}</button>
+				</div>
+				<div
+					className={`downloadSelect${
+						downloadColOpen ? " active" : ""
+					}`}>
+					<AppDownload i18n={i18n} />
+				</div>
+			</div>
 
 			<Suspense fallback={<div />}>
-				<InstallGuide displayText={i18n.lbl_IOSInstallGuide} />
+				<InstallGuide />
 			</Suspense>
-		</>
+		</section>
 	);
 };
 
@@ -116,13 +132,17 @@ const ButtonWithCopyBtn = ({ value = "" }) => {
 		document.execCommand("copy");
 	};
 	return (
-		<div>
-			<input readOnly={true} defaultValue={value} ref={ipt} />
-			<button
-				className="icon icon-files-empty"
-				value={value}
-				onClick={OnCopy}
-			/>
+		<div className="infoModule parts">
+			<div className="inputBox">
+				<input readOnly={true} defaultValue={value} ref={ipt} />
+			</div>
+			<div className="btn-group">
+				<button
+					className="icon icon-files-empty"
+					value={value}
+					onClick={OnCopy}
+				/>
+			</div>
 		</div>
 	);
 };
