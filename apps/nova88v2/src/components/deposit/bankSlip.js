@@ -1,6 +1,11 @@
 import React, { useContext, Component, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import { bankSlipPopBoxContext, i18nContext, popBoxContext } from "Context";
+import {
+	bankSlipPopBoxContext,
+	i18nContext,
+	popBoxContext,
+	userInfoContext
+} from "Context";
 import moment from "moment";
 import ClipboardJS from "../../lib/clipboard.min";
 import api from "../../service/api";
@@ -21,13 +26,18 @@ const GetUploadFileName = files => {
 class Modal extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { processing: false };
+		this.state = {
+			processing: false,
+			fileIsSetted: false,
+			isUploaded: false
+		};
 		this.isMountedRef = false;
 		this.filebox = React.createRef();
 	}
 
 	componentDidMount() {
 		/* eslint-disable */
+		console.log(this.props.currencyId);
 		this.isMountedRef = true;
 		this._clipboard = new ClipboardJS(".copyBtn");
 		this._clipboard.on("success", e => {});
@@ -44,7 +54,19 @@ class Modal extends Component {
 		const { files } = this.filebox.current;
 		if (files[0]) {
 			this.props.EditField("picFileName", GetUploadFileName(files));
+			this.setState({ fileIsSetted: true });
+		} else {
+			this.setState({ fileIsSetted: false });
 		}
+	};
+	// 參照號碼改非必船
+	// thb 必傳單具圖檔 沒船不能提交
+	// currencyId 4
+
+	onHandlePopBox = () => {
+		this.setState({ isUploaded: false });
+		this.setState({ fileIsSetted: false });
+		this.props.handlePopBox();
 	};
 
 	onUploadFile = () => {
@@ -59,6 +81,7 @@ class Modal extends Component {
 						const result = response.data;
 						if (result.errorCode === 0) {
 							alert(this.props.i18n.lbl_UploadSuccess);
+							this.setState({ isUploaded: true });
 						} else {
 							alert(result.message);
 						}
@@ -96,6 +119,9 @@ class Modal extends Component {
 						if (this.isMountedRef) {
 							if (res.data.errorCode === 0) {
 								this.props.handlePopBox();
+								if (!alert(this.props.i18n.lbl_UploadSuccess)) {
+									window.location.reload();
+								}
 							} else {
 								alert(res.message);
 							}
@@ -137,11 +163,11 @@ class Modal extends Component {
 									<span>{bankSlipPopBox.bankName}</span>
 								</div>
 								<a
-									className="icon icon-new-tab clickBtn"
-									target="_blank"
-									rel="noreferrer noopener"
 									href={bankSlipPopBox.bankSite}
-								/>
+									target="_blank"
+									rel="noreferrer">
+									<button className="icon icon-new-tab clickBtn" />
+								</a>
 							</li>
 							<li>
 								<div>
@@ -200,7 +226,12 @@ class Modal extends Component {
 								i18n.msg_SelectFile
 							} `}
 						</label>
-						<button className="orange" onClick={this.onUploadFile}>
+						<button
+							className={`${
+								this.state.fileIsSetted ? "orange" : "gray"
+							}`}
+							disabled={!this.state.fileIsSetted}
+							onClick={this.onUploadFile}>
 							{i18n.lbl_UploadFile}
 						</button>
 					</div>
@@ -219,7 +250,6 @@ class Modal extends Component {
 							onChange={this.EditField.bind(this, "depositTime")}
 						/>
 					</div>
-					<span className="text">{i18n.lbl_RefnoToolTip}</span>
 					<div className="inputBox">
 						<i className="icon icon-pencil" />
 						<input
@@ -231,11 +261,20 @@ class Modal extends Component {
 					<div className="btn-group">
 						<button
 							className="blue closePopup"
-							onClick={this.props.handlePopBox}>
+							onClick={() => this.onHandlePopBox()}>
 							{i18n.lbl_Cancel}
 						</button>
 						<button
-							className="orange closePopup"
+							disabled={
+								!this.state.isUploaded &&
+								this.props.currencyId === 4
+							}
+							className={`${
+								this.props.currencyId !== 4 ||
+								this.state.isUploaded
+									? "orange"
+									: "gray"
+							} closePopup`}
 							onClick={this.SeReceipt}>
 							{i18n.lbl_Submit}
 						</button>
@@ -255,16 +294,17 @@ Modal.propTypes = {
 	handlePopBox: PropTypes.func.isRequired,
 	bankSlipPopBox: PropTypes.objectOf(PropTypes.any),
 	setPopBox: PropTypes.func.isRequired,
-	EditField: PropTypes.func.isRequired
+	EditField: PropTypes.func.isRequired,
+	currencyId: PropTypes.number.isRequired
 };
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
+	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { bankSlipPopBox, setbankSlipPopBox } = useContext(
 		bankSlipPopBoxContext
 	);
-
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -288,6 +328,7 @@ const Panel = () => {
 
 	return (
 		<Modal
+			currencyId={userInfo.currencyId}
 			i18n={i18n}
 			bankSlipPopBox={bankSlipPopBox}
 			handlePopBox={handlePopBox}

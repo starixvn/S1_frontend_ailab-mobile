@@ -4923,7 +4923,7 @@ span.important {
 }
 
 .accordion > div .title.icon-policies:before {
-  margin: 0 0 0 1vw;
+  margin: 0 1vw 0;
 }
 
 .accordion > div > div {

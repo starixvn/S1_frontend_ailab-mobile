@@ -143,7 +143,6 @@
 	"lbl_AfterAmount": "จำนวนเงินที่เหลือ",
 	"lbl_RefTransId": "รหัส ID อ้างอิง",
 	"lbl_Stake": "ยอดเดิมพัน",
-	"lbl_AmountTooltip": "จำนวนเงินต้องไม่น้อยกว่า 0",
 	"lbl_NotinLimit": "จำนวนเงินมากกว่าหรือน้อยกว่าที่กำหนดไว้",
 	"lbl_ConfirmDeposit": "กรุณายืนยันข้อมูลการฝากเงิน",
 	"lbl_ImportantNote": "โน๊ตสำคัญ",
@@ -456,5 +455,12 @@
 	"lbl_Diamond_Club":"ไดมอนด์ คลับ",
 	"lbl_Nova_Club":"โนวา คลับ",
 	"lbl_ReSend":"Re-send in",
-	"lbl_Minutes":"นาที"
+	"lbl_Minutes":"นาที",
+	"lbl_PaymentModes":"Payment Modes",
+	"lbl_SelectChannel":"Select Channel",
+	"lbl_MinMaxAmount":"Min/Max Limit",
+	"lbl_SelectBank":"Select Bank",
+	"lbl_UploadReceipt":"Upload Receipt",
+	"lbl_Refno":"Reference No.",
+	"lbl_AmountTooltip": "จำนวนเงินต้องไม่น้อยกว่า {{0}}"
 }

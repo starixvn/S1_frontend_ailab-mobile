@@ -143,7 +143,6 @@
 	"lbl_AfterAmount": "账变后余额",
 	"lbl_RefTransId": "注单编号",
 	"lbl_Stake": "本金",
-	"lbl_AmountTooltip": "金额不得小于0",
 	"lbl_NotinLimit": "不在设定范围",
 	"lbl_ConfirmDeposit": "请确认充值资讯。",
 	"lbl_ImportantNote": "温馨提醒",
@@ -457,5 +456,12 @@
 	"lbl_Nova":"欧亚",
 	"lbl_Club":"俱乐部",
 	"lbl_ReSend":"Re-send in",
-	"lbl_Minutes":"分"
+	"lbl_Minutes":"分",
+	"lbl_PaymentModes":"Payment Modes",
+	"lbl_SelectChannel":"Select Channel",
+	"lbl_MinMaxAmount":"Min/Max Limit",
+	"lbl_SelectBank":"Select Bank",
+	"lbl_UploadReceipt":"Upload Receipt",
+	"lbl_Refno":"Reference No.",
+	"lbl_AmountTooltip": "金额不得小于{{0}}"
 }

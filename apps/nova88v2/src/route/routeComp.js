@@ -32,10 +32,7 @@ import {
 } from "../components/deposit/deposit.onlineBanking";
 import SetOnlineBanking from "../components/deposit/deposit.onlineBanking.set";
 
-import {
-	Panel as MobilePay,
-	Main as MobilePayMain
-} from "../components/deposit/deposit.mobilePay";
+import MobilePay from "../components/deposit/deposit.all.mobilePay";
 import SetMobilePay from "../components/deposit/deposit.mobilePay.set";
 
 import {
@@ -129,12 +126,7 @@ const RouteComponents = () => {
 						}
 					/>
 				</OnlineBanking>
-				<MobilePay path={path.deposit.sub.mobilePay.root}>
-					<MobilePayMain path={path.deposit.sub.mobilePay.sub.root} />
-					<SetMobilePay
-						path={path.deposit.sub.mobilePay.sub.setMobilePay.root}
-					/>
-				</MobilePay>
+				<MobilePay path={path.deposit.sub.mobilePay.root} />
 				<CryptoPay path={path.deposit.sub.cryptoPay.root}>
 					<CryptoPayMain path={path.deposit.sub.cryptoPay.sub.root} />
 					<SetCryptoPay
