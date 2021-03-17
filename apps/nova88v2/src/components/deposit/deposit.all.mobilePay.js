@@ -45,18 +45,18 @@ const Payment = props => {
 	useEffect(() => {
 		isMountedRef.current = true;
 		if (paymentList.length > 0) {
-			SelectPayment(paymentList[0].groupId);
+			SelectPayment({ groupInfo: paymentList[0] });
 		}
 		return () => {
 			isMountedRef.current = false;
 		};
 	}, [paymentList.length]);
 
-	const SelectPayment = groupId => {
-		if (selGroupId !== groupId) {
-			setSelGroupId(() => groupId);
+	const SelectPayment = ({ groupInfo }) => {
+		if (selGroupId !== groupInfo?.groupId) {
+			setSelGroupId(() => groupInfo?.groupId);
 			setLoading(true);
-			api.payment.GetMobilePayInfoList(groupId).then(
+			api.payment.GetMobilePayInfoList(groupInfo?.groupId).then(
 				res => {
 					if (isMountedRef.current) {
 						if (
@@ -64,7 +64,7 @@ const Payment = props => {
 							res.data.data.length > 0
 						) {
 							setChannelList(res.data.data);
-							SelectChannel(res.data.data?.[0]);
+							SelectChannel({ bankInfo: res.data.data?.[0] });
 						} else {
 							setPopBox({
 								isOpen: true,
@@ -84,8 +84,8 @@ const Payment = props => {
 		}
 	};
 
-	const SelectChannel = channel => {
-		setChannel(channel);
+	const SelectChannel = ({ bankInfo }) => {
+		setChannel(bankInfo);
 	};
 
 	const ClickSubmit = () => {
@@ -162,10 +162,12 @@ const Payment = props => {
 				imgKey="groupName"
 				idKey="groupId"
 				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/Payment/`}
+				displayKey="groupName"
 			/>
 			<GroupList
 				title={i18n.lbl_SelectChannel}
 				dataList={channelList}
+				channel={selChannel}
 				SelectPayment={SelectChannel}
 				selected={selChannel?.channelId}
 				mainKey={`deposit-full-${payType}-channelList`}
@@ -173,6 +175,9 @@ const Payment = props => {
 				idKey="channelId"
 				bindFullObj={true}
 				prefixImgUrl={`${config.imgUrl}/common/images/MobilePay/`}
+				displayKey="channelName"
+				_isConvert={_isConvert}
+				showMinMaxHint={true}
 			/>
 			<AmountInput
 				title={i18n.lbl_DepositAmount}
@@ -185,7 +190,7 @@ const Payment = props => {
 				SelectAmount={SelectAmount}
 				EditAmount={EditAmount}
 				payType={payType}
-				tip={i18n.lbl_AmountTooltip}
+				tip={i18n.lbl_AmountTooltip0}
 			/>
 			<div className="btn-group">
 				<button className="orange" onClick={ClickSubmit}>

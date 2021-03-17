@@ -463,5 +463,6 @@
 	"lbl_SelectBank":"Select Bank",
 	"lbl_UploadReceipt":"Upload Receipt",
 	"lbl_Refno":"Reference No.",
-	"lbl_AmountTooltip": "金额不得小于{{0}}"
+	"lbl_AmountTooltip": "金额不得小于{{0}}",
+	"lbl_AmountTooltip0": "金额不得小于0"
 }

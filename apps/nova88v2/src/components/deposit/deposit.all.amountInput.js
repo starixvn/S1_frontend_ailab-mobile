@@ -18,6 +18,7 @@ const AmountInput = ({
 }) => {
 	const { showTips, showTipHandler } = useTip();
 	const { amountRule, amountList, minAmount, maxAmount } = channel;
+
 	let content = null;
 	if (amountRule === 3 && amountList?.length > 0) {
 		const rows = amountList.map(a => {

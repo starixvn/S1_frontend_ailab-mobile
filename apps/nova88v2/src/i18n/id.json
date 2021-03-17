@@ -462,5 +462,6 @@
 	"lbl_SelectBank":"Select Bank",
 	"lbl_UploadReceipt":"Upload Receipt",
 	"lbl_Refno":"Reference No.",
-	"lbl_AmountTooltip": "Jumlah tidak boleh kurang dari {{0}}"
+	"lbl_AmountTooltip": "Jumlah tidak boleh kurang dari {{0}}",
+	"lbl_AmountTooltip0": "Jumlah tidak boleh kurang dari 0"
 }

@@ -462,6 +462,7 @@
 	"lbl_SelectBank":"Select Bank",
 	"lbl_UploadReceipt":"Upload Receipt",
 	"lbl_Refno":"Reference No.",
-	"lbl_AmountTooltip": "Amount can not be less than {{0}}."
+	"lbl_AmountTooltip": "Amount can not be less than {{0}}.",
+	"lbl_AmountTooltip0": "Amount can not be less than 0"
 
 }

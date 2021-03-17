@@ -462,5 +462,6 @@
 	"lbl_SelectBank":"Select Bank",
 	"lbl_UploadReceipt":"Upload Receipt",
 	"lbl_Refno":"Reference No.",
-	"lbl_AmountTooltip": "จำนวนเงินต้องไม่น้อยกว่า {{0}}"
+	"lbl_AmountTooltip": "จำนวนเงินต้องไม่น้อยกว่า {{0}}",
+	"lbl_AmountTooltip0": "จำนวนเงินต้องไม่น้อยกว่า 0"
 }

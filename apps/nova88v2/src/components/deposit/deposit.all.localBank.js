@@ -30,9 +30,7 @@ const Payment = props => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const [status, setStatus] = useState(null);
-	const { bankSlipPopBox, setbankSlipPopBox } = useContext(
-		bankSlipPopBoxContext
-	);
+	const { setbankSlipPopBox } = useContext(bankSlipPopBoxContext);
 	const { setLoading } = useContext(loadingContext);
 
 	const [transID, setTransId] = useState("");
@@ -111,7 +109,7 @@ const Payment = props => {
 	const ClickSubmit = () => {
 		const result =
 			selBank.sysId && amount !== "" && VaildAmount({ amount });
-		setStatus(result);
+
 		if (result) {
 			const RedirectToNext = (real_amount, sysId) => {
 				setLoading(true);
@@ -130,59 +128,7 @@ const Payment = props => {
 							if (isMountedRef.current) {
 								if (res.data.errorCode === 0) {
 									setTransId(res.data.data.transId);
-									// const CloseDoneDepositPopup = () => {
-									// 	setProcessing(false);
-									// 	// window.location.reload();
-									// };
-
-									// const UploadReceipt = async () => {
-									// 	try {
-									// 		const formData = new FormData();
-									// 		formData.append(
-									// 			"TransId",
-									// 			res.data.data.transId
-									// 		);
-									// 		formData.append(
-									// 			"Receipt",
-									// 			bankSlipPopBox.receipt
-									// 		);
-
-									// 		const resUploadReceipt = await api.payment.UploadReceipt(
-									// 			formData
-									// 		);
-
-									// 		if (
-									// 			resUploadReceipt.data
-									// 				.errorCode !== 0
-									// 		) {
-									// 			setPopBox(prevState => ({
-									// 				...prevState,
-									// 				title:
-									// 					i18n.lbl_ImportantNote,
-									// 				content: result.message,
-									// 				isOpen: true,
-									// 				hasBtn: true,
-									// 				btnBar: (
-									// 					<div className="btn-group">
-									// 						<button
-									// 							className="orange"
-									// 							onClick={
-									// 								CloseDoneDepositPopup
-									// 							}>
-									// 							OK
-									// 						</button>
-									// 					</div>
-									// 				)
-									// 			}));
-									// 		} else {
-									// 			CloseDoneDepositPopup();
-									// 		}
-									// 	} catch (error) {
-									// 		CloseDoneDepositPopup();
-									// 	}
-									// };
-
-									// UploadReceipt();
+									setStatus(true);
 								} else {
 									setPopBox(prevState => ({
 										...prevState,
@@ -190,6 +136,7 @@ const Payment = props => {
 										title: i18n.lbl_ImportantNote,
 										content: i18n.msg_WrongAmount
 									}));
+									setStatus(false);
 									setLoading(false);
 								}
 							}
@@ -274,9 +221,12 @@ const Payment = props => {
 				imgKey="bankLogo"
 				idKey="sysId"
 				bindFullObj={true}
+				channel={selBank}
 				prefixImgUrl={`${config.imgUrl}/common/images/BankLogo/`}
 				imgKeyWithExtension={true}
 				accountInfo={accountInfo}
+				displayKey="bankName"
+				_isConvert={_isConvert}
 			/>
 			<AmountInput
 				title={i18n.lbl_DepositAmount}
@@ -287,7 +237,7 @@ const Payment = props => {
 				SelectAmount={SelectAmount}
 				EditAmount={EditAmount}
 				payType={payType}
-				tip={i18n.lbl_AmountTooltip}
+				tip={i18n.lbl_AmountTooltip0}
 				msg={warning}
 				status={status}
 			/>
@@ -324,8 +274,12 @@ const GroupList = ({
 	bindFullObj,
 	prefixImgUrl,
 	imgKeyWithExtension,
-	accountInfo
+	accountInfo,
+	displayKey,
+	channel,
+	_isConvert
 }) => {
+	const { i18n } = useContext(i18nContext);
 	const rows = dataList?.map(data => {
 		const _mainKey = `${mainKey}-${data[idKey]}`;
 		const isSelect = selected === data[idKey];
@@ -376,6 +330,22 @@ const GroupList = ({
 								alt={data[imgKey] ?? ""}
 							/>
 							<i className="icon icon-icon32px_check" />
+							<div className="bank">
+								<div>{data[displayKey]}</div>
+								<div>
+									{channel?.minAmount && channel?.maxAmount
+										? `${
+												i18n.lbl_MinMaxAmount
+										  }: ${number_format(
+												channel.minAmount,
+												_isConvert
+										  )} / ${number_format(
+												channel.maxAmount,
+												_isConvert
+										  )}`
+										: ""}
+								</div>
+							</div>
 						</div>
 					</li>
 				</ul>
@@ -398,7 +368,8 @@ GroupList.defaultProps = {
 	selected: null,
 	bindFullObj: false,
 	imgKeyWithExtension: false,
-	accountInfo: {}
+	accountInfo: {},
+	channel: null
 };
 
 GroupList.propTypes = {
@@ -416,7 +387,10 @@ GroupList.propTypes = {
 	bindFullObj: PropTypes.bool,
 	prefixImgUrl: PropTypes.string.isRequired,
 	imgKeyWithExtension: PropTypes.bool,
-	accountInfo: PropTypes.objectOf(PropTypes.any)
+	accountInfo: PropTypes.objectOf(PropTypes.any),
+	displayKey: PropTypes.string.isRequired,
+	channel: PropTypes.objectOf(PropTypes.any),
+	_isConvert: PropTypes.bool.isRequired
 };
 
 class CopyBtn extends Component {

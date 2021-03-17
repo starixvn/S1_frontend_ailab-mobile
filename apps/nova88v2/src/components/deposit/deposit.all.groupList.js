@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import { i18nContext } from "../common/context";
+import { number_format } from "../common/common";
 
 const GroupList = ({
 	mainKey,
@@ -12,18 +14,27 @@ const GroupList = ({
 	bindFullObj,
 	bindingItem,
 	prefixImgUrl,
-	imgKeyWithExtension
+	imgKeyWithExtension,
+	displayKey,
+	channel,
+	_isConvert,
+	showMinMaxHint
 }) => {
+	const { i18n } = useContext(i18nContext);
 	const rows = dataList?.map(data => {
 		const _mainKey = `${mainKey}-${data[idKey]}`;
 		const isSelect = selected === data[idKey];
+
 		return (
 			<div
 				className={`bankName${isSelect ? " active" : ""}`}
 				key={_mainKey}
 				onClick={() =>
 					SelectPayment({
-						groupInfo: bindingItem,
+						groupInfo:
+							idKey === "payId" || idKey === "groupId"
+								? data
+								: bindingItem,
 						bankInfo: bindFullObj ? data : data[idKey]
 					})
 				}>
@@ -36,18 +47,36 @@ const GroupList = ({
 					alt={data[imgKey] ?? ""}
 				/>
 				<i className="icon icon-icon32px_check" />
+				<div className="bank">
+					<div>{data[displayKey]}</div>
+					<div>
+						{showMinMaxHint &&
+						channel?.minAmount &&
+						channel?.maxAmount
+							? `${i18n.lbl_MinMaxAmount}: ${number_format(
+									channel.minAmount,
+									_isConvert
+							  )} / ${number_format(
+									channel.maxAmount,
+									_isConvert
+							  )}`
+							: ""}
+					</div>
+				</div>
 			</div>
 		);
 	});
 
 	return (
-		<>
-			<div className="title">
-				<span className="text-org">*</span>
-				{title}
-			</div>
-			<div className="selectModule">{rows}</div>
-		</>
+		dataList?.length > 0 && (
+			<>
+				<div className="title">
+					<span className="text-org">*</span>
+					{title}
+				</div>
+				<div className="selectModule">{rows}</div>
+			</>
+		)
 	);
 };
 
@@ -56,7 +85,10 @@ GroupList.defaultProps = {
 	selected: null,
 	bindFullObj: false,
 	imgKeyWithExtension: false,
-	bindingItem: null
+	bindingItem: null,
+	displayKey: "",
+	channel: null,
+	showMinMaxHint: false
 };
 
 GroupList.propTypes = {
@@ -74,7 +106,11 @@ GroupList.propTypes = {
 	bindFullObj: PropTypes.bool,
 	prefixImgUrl: PropTypes.string.isRequired,
 	imgKeyWithExtension: PropTypes.bool,
-	bindingItem: PropTypes.objectOf(PropTypes.any)
+	bindingItem: PropTypes.objectOf(PropTypes.any),
+	displayKey: PropTypes.string,
+	channel: PropTypes.objectOf(PropTypes.any),
+	_isConvert: PropTypes.bool.isRequired,
+	showMinMaxHint: PropTypes.bool
 };
 
 export default GroupList;

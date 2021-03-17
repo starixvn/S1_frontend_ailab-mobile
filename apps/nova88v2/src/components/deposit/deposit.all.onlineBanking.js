@@ -21,6 +21,7 @@ const Payment = props => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const [status, setStatus] = useState(null);
 	const { setLoading } = useContext(loadingContext);
 
 	const [selGroup, setSelGroup] = useState(null);
@@ -45,7 +46,6 @@ const Payment = props => {
 		isMountedRef.current = true;
 		if (paymentList.length > 0) {
 			SelectPayment({ groupInfo: paymentList[0] });
-
 			setSelGroup(paymentList[0]);
 		}
 		return () => {
@@ -54,56 +54,61 @@ const Payment = props => {
 	}, [paymentList.length]);
 
 	const SelectPayment = ({ groupInfo }) => {
-		setLoading(true);
-		setSelGroup(groupInfo);
-		console.log(groupInfo);
-		if (groupInfo.selBank) {
-			api.payment
-				.GetOnlineBankInfoSysList({ payId: groupInfo.payId })
-				.then(
-					res => {
-						if (res.data.errorCode === 0) {
-							if (
-								isMountedRef.current &&
-								res.data.data.length > 0
-							) {
-								setBankList(res.data.data);
+		if (selGroup?.payId !== groupInfo.payId) {
+			setLoading(true);
+			setSelGroup(groupInfo);
 
-								SelectBank({
-									GroupInfo: groupInfo,
-									bankInfo: res.data.data[0]
+			if (groupInfo.selBank) {
+				api.payment
+					.GetOnlineBankInfoSysList({ payId: groupInfo.payId })
+					.then(
+						res => {
+							if (res.data.errorCode === 0) {
+								if (
+									isMountedRef.current &&
+									res.data.data.length > 0
+								) {
+									setBankList(res.data.data);
+
+									SelectBank({
+										groupInfo,
+										bankInfo: res.data.data[0]
+									});
+								}
+							} else if (isMountedRef.current) {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content: res.data.message
 								});
 							}
-						} else if (isMountedRef.current) {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: res.data.message
-							});
-						}
 
-						if (isMountedRef.current) {
-							setLoading(false);
+							if (isMountedRef.current) {
+								setLoading(false);
+							}
+						},
+						() => {
+							if (isMountedRef.current) {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content: i18n.msg_ApiServerError
+								});
+								setLoading(false);
+							}
 						}
-					},
-					() => {
-						if (isMountedRef.current) {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: i18n.msg_ApiServerError
-							});
-							setLoading(false);
-						}
-					}
-				);
+					);
+			} else {
+				setBank({});
+				setBankList([]);
+			}
 		}
 	};
 
-	const SelectBank = ({ GroupInfo, bankInfo }) => {
+	const SelectBank = ({ groupInfo, bankInfo }) => {
 		api.payment
 			.GetOnlineBankInfo({
-				payId: GroupInfo.payId,
+				payId: groupInfo.payId,
 				sysId: bankInfo.sysId
 			})
 			.then(
@@ -136,20 +141,22 @@ const Payment = props => {
 		const result = VaildAmount({ _amount: amount });
 
 		if (result) {
+			setStatus(true);
 			const { payId, channelId } = selGroup;
-			let { sysId } = selGroup;
+			let { sysId } = selbank;
 			let bankLogo = null;
 			let bankName = null;
-
 			const RedirectToNext = real_amount => {
 				setPopBox(prevState => ({
 					...prevState,
 					isOpen: false
 				}));
 				window.open(
-					`${config.openURL}/${userInfo.langId}/Cashier/DepositReqOnlineBanking?sysId=${sysId}&payId=${payId}&ChannelId=${channelId}&Amount=${real_amount}`
+					sysId
+						? `${config.openURL}/${userInfo.langId}/Cashier/DepositReqOnlineBanking?sysId=${sysId}&payId=${payId}&ChannelId=${channelId}&Amount=${real_amount}`
+						: `${config.openURL}/${userInfo.langId}/Cashier/DepositReqOnlineBanking?payId=${payId}&ChannelId=${channelId}&Amount=${real_amount}`
 				);
-				window.location.reload();
+				// window.location.reload();
 			};
 
 			const real_amount = _isConvert ? amount * 1000 : amount;
@@ -199,8 +206,10 @@ const Payment = props => {
 					)
 				});
 			} else {
-				RedirectToNext(this, real_amount);
+				RedirectToNext(real_amount);
 			}
+		} else {
+			setStatus(false);
 		}
 	};
 
@@ -221,10 +230,12 @@ const Payment = props => {
 				idKey="payId"
 				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/Payment/`}
 				bindFullObj={true}
-				bindingItem={selGroup}
+				displayKey="payName"
+				showMinMaxHint={true}
 			/>
 			<GroupList
 				title={i18n.lbl_SelectBank}
+				channel={selbank}
 				dataList={bankList}
 				SelectPayment={SelectBank}
 				selected={selbank?.sysId}
@@ -235,6 +246,8 @@ const Payment = props => {
 				prefixImgUrl={`${config.imgUrl}/common/images/BankLogo/`}
 				imgKeyWithExtension={true}
 				bindingItem={selGroup}
+				displayKey="bankName"
+				_isConvert={_isConvert}
 			/>
 			<AmountInput
 				title={i18n.lbl_DepositAmount}
@@ -242,10 +255,12 @@ const Payment = props => {
 				i18n={i18n}
 				_isConvert={_isConvert}
 				amount={amount}
-				tip={warning}
 				SelectAmount={SelectAmount}
 				EditAmount={EditAmount}
 				payType={payType}
+				msg={warning}
+				status={status}
+				tip={i18n.lbl_AmountTooltip0}
 			/>
 			<div className="btn-group">
 				<button className="orange" onClick={ClickSubmit}>
