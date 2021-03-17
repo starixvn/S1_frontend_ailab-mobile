@@ -1,11 +1,5 @@
 import React, { useState, useContext, Component, useEffect } from "react";
-import {
-	i18nContext,
-	navContext,
-	defNavPanel,
-	userInfoContext,
-	popBoxContext
-} from "Context";
+import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import { Link } from "@Router";
 import { useNavigate } from "@reach/router";
 import gameList from "../../datas/productList";
@@ -17,8 +11,6 @@ const Category = props => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
-	const { setNav } = useContext(navContext);
-
 	const { setPopBox } = useContext(popBoxContext);
 	const [casinoTpIds, setCasinoTpIds] = useState(null);
 
@@ -31,7 +23,7 @@ const Category = props => {
 			popBox: popBoxData
 		} = gameInfo;
 		const HandleLogin = () => {
-			setNav(defNavPanel.login);
+			navigate(`/${userInfo.langId}/login`);
 		};
 		if (_path) {
 			return needLogin && !userInfo.isLogin
@@ -67,7 +59,7 @@ const Category = props => {
 						setCasinoTpIds(res.data.data);
 					}
 				},
-				err => {
+				() => {
 					if (mounted) {
 						setPopBox({
 							isOpen: true,
@@ -375,7 +367,7 @@ const ProductLinkItem = props => {
 	const showingEventIcon = getEventIcon({ eventIcon: props?.eventIcon });
 	return (
 		<Link
-			to={`/${props.to}`}
+			to={`${props.to}`}
 			state={props.parameter}
 			ref={props._ref}
 			className={props.isShow ? "open" : ""}>

@@ -10,22 +10,15 @@ import useGetTpBalance from "../hook/useGetTpBalance";
 import Logo from "../common/logo";
 import path from "../../path";
 
-const HeaderTitle = ({ title = "", link, i18n }) =>
+const HeaderTitle = ({ title = "", link = "" }) =>
 	title ? (
 		<div className="title">
-			{link ? (
-				<Link to={link}>
-					<i className="icon icon icon-icon32px_1" />
-					{i18n.lbl_Back}
-				</Link>
-			) : null}
-			{title}
+			{link} {title}
 		</div>
 	) : null;
 
-const Header = ({ title, hideLogo, filter, link }) => {
+const Header = ({ title, hideLogo, filter, children, link }) => {
 	const { userInfo } = useContext(userInfoContext);
-	const { i18n } = useContext(i18nContext);
 	const headerClassName = !title ? "" : "header";
 
 	return (
@@ -36,11 +29,12 @@ const Header = ({ title, hideLogo, filter, link }) => {
 				</a>
 			)}
 			{title ? (
-				<HeaderTitle title={title} link={link} i18n={i18n} />
+				<HeaderTitle title={title} link={link} />
 			) : (
 				<HeaderBtn userInfo={userInfo} />
 			)}
 			{filter || null}
+			{children}
 		</header>
 	);
 };
@@ -134,26 +128,26 @@ Header.defaultProps = {
 	filter: null,
 	title: null,
 	hideLogo: false,
-	link: null
+	link: null,
+	children: null
 };
 
 Header.propTypes = {
 	filter: PropTypes.node,
 	title: PropTypes.string,
 	hideLogo: PropTypes.bool,
-	link: PropTypes.string
+	link: PropTypes.node,
+	children: PropTypes.node
 };
 
 HeaderTitle.defaultProps = {
 	title: null,
-	link: null,
-	i18n: {}
+	link: null
 };
 
 HeaderTitle.propTypes = {
 	title: PropTypes.string,
-	link: PropTypes.string,
-	i18n: PropTypes.objectOf(PropTypes.string)
+	link: PropTypes.string
 };
 
 export default Header;

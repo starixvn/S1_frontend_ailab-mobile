@@ -36,35 +36,28 @@ const ResetPwd = () => {
 	useEffect(() => {
 		const key = getUrlParameter("key");
 
-		if (key) {
-			if (userInfo.isLogin === false) {
-				api.site.CheckResetPwdToken(key).then(
-					res => {
-						if (isMountedRef.current) {
-							if (res.data.errorCode === 1) {
-								navigate(`/${userInfo.langId}`);
-								setUserInfo(prevState => ({
-									...prevState,
-									isLogin: true
-								}));
-							} else if (res.data.errorCode === 0) {
-								setUserInfo(prevState => ({
-									...prevState,
-									isLogin: true,
-									loginFromResetPwd: true
-								}));
-							} else {
-								navigate(`/${userInfo.langId}`);
-								setPopBox({
-									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: i18n.msg_ApiServerError
-								});
-							}
-						}
-					},
-					() => {
-						if (isMountedRef.current) {
+		if (
+			key &&
+			userInfo.isLogin === false &&
+			userInfo.loginFromResetPwd === undefined
+		) {
+			api.site.CheckResetPwdToken(key).then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 1) {
+							navigate(`/${userInfo.langId}`);
+							setUserInfo(prevState => ({
+								...prevState,
+								isLogin: true
+							}));
+						} else if (res.data.errorCode === 0) {
+							setUserInfo(prevState => ({
+								...prevState,
+								isLogin: true,
+								loginFromResetPwd: true
+							}));
+						} else {
+							navigate(`/${userInfo.langId}`);
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
@@ -72,19 +65,25 @@ const ResetPwd = () => {
 							});
 						}
 					}
-				);
-			}
-		} else if (isMountedRef.current) {
+				},
+				() => {
+					if (isMountedRef.current) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
+						});
+					}
+				}
+			);
+		} else if (
+			userInfo.isLogin === true &&
+			isMountedRef.current &&
+			!userInfo.loginFromResetPwd
+		) {
 			navigate(`/${userInfo.langId}`);
 		}
-	}, [
-		userInfo.isLogin,
-		setPopBox,
-		setUserInfo,
-		i18n,
-		navigate,
-		userInfo.langId
-	]);
+	}, [userInfo, i18n]);
 
 	const showPswHandler = () => {
 		setPswState(!pswState);

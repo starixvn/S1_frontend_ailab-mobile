@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { userInfoContext } from "Context";
 import Loading from "../common/loading";
 
-const GamePanel = props => {
+const GamePanel = React.forwardRef((props, ref) => {
 	const {
 		SelectGame,
 		Games,
@@ -47,11 +47,11 @@ const GamePanel = props => {
 			<div className="txt-white">{i18n.msg_NoData}</div>
 		</div>
 	) : (
-		<div className="slotList" id="scrollId">
+		<div className="slotList" id="scrollId" ref={ref}>
 			{games}
 		</div>
 	);
-};
+});
 
 GamePanel.defaultProps = {
 	Games: [],
@@ -61,7 +61,9 @@ GamePanel.defaultProps = {
 GamePanel.propTypes = {
 	SelectGame: PropTypes.func.isRequired,
 	Games: PropTypes.arrayOf(PropTypes.object),
-	Favorite: PropTypes.arrayOf(PropTypes.object),
+	Favorite: PropTypes.arrayOf(
+		PropTypes.oneOfType([PropTypes.object, PropTypes.string])
+	),
 	SetFavorite: PropTypes.func.isRequired,
 	TpList: PropTypes.objectOf(PropTypes.any).isRequired,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,

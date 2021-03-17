@@ -1,7 +1,7 @@
 export default {
 	ALLGAMES: {
 		key: "ALLGAMES",
-		displayKey: "lbl_AllGames"
+		displayKey: "lbl_All"
 	},
 	PROMO: {
 		key: "PROMO",

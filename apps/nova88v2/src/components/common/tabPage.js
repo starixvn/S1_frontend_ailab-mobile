@@ -106,7 +106,7 @@ const IndexPage = ({ defTabs, beforeLogin, filter, breadCrumb, tabHint }) => {
 };
 
 IndexPage.defaultProps = {
-	defTabs: [],
+	defTabs: {},
 	beforeLogin: false,
 	filter: null,
 	tabHint: "",

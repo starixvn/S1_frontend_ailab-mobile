@@ -78,6 +78,7 @@ Inputbox.defaultProps = {
 	btnStatus: "",
 	onBlur: () => null,
 	testAttr: "",
+	value: "",
 	showInfoIcon: true
 };
 
@@ -85,7 +86,7 @@ Inputbox.propTypes = {
 	icon: PropTypes.string,
 	placeholder: PropTypes.string,
 	onChange: PropTypes.func.isRequired,
-	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	inputType: PropTypes.string,
 	infoText: PropTypes.string,
 	clickInfo: PropTypes.func,
