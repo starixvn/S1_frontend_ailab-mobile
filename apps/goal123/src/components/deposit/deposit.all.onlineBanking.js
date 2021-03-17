@@ -56,9 +56,9 @@ const Payment = props => {
 
 	const SelectPayment = groupInfo => {
 		if (selGroup?.payId !== groupInfo.payId) {
-			setLoading(true);
 			setSelGroup(groupInfo);
 			if (groupInfo.selBank) {
+				setLoading(true);
 				api_GetOnlineBankInfoSysList({ payId: groupInfo.payId }).then(
 					res => {
 						if (res.data.errorCode === 0) {
