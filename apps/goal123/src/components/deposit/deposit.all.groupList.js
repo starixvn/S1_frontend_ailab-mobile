@@ -12,10 +12,16 @@ const GroupList = ({
 	idKey,
 	bindFullObj,
 	prefixImgUrl,
-	imgKeyWithExtension
+	imgKeyWithExtension,
+	bindingItem,
+	i18n,
+	displayKey,
+	showMinMaxHint,
+	_isConvert
 }) => {
 	const rows = dataList?.map(data => {
 		const _mainKey = `${mainKey}-${data[idKey]}`;
+		const { minAmount, maxAmount } = showMinMaxHint ? data : {};
 		return (
 			<Radio
 				key={_mainKey}
@@ -27,9 +33,15 @@ const GroupList = ({
 				imgAlt={data[imgKey] ?? ""}
 				onChange={SelectPayment.bind(
 					this,
-					bindFullObj ? data : data[idKey]
+					bindFullObj ? data : data[idKey],
+					bindingItem
 				)}
 				isSelect={selected === data[idKey]}
+				displayName={data[displayKey]}
+				minAmount={minAmount}
+				maxAmount={maxAmount}
+				_isConvert={_isConvert}
+				i18n={i18n}
 			/>
 		);
 	});
@@ -48,7 +60,10 @@ GroupList.defaultProps = {
 	dataList: null,
 	selected: null,
 	bindFullObj: false,
-	imgKeyWithExtension: false
+	imgKeyWithExtension: false,
+	bindingItem: null,
+	showMinMaxHint: false,
+	displayKey: ""
 };
 
 GroupList.propTypes = {
@@ -65,7 +80,12 @@ GroupList.propTypes = {
 	idKey: PropTypes.string.isRequired,
 	bindFullObj: PropTypes.bool,
 	prefixImgUrl: PropTypes.string.isRequired,
-	imgKeyWithExtension: PropTypes.bool
+	imgKeyWithExtension: PropTypes.bool,
+	bindingItem: PropTypes.objectOf(PropTypes.any),
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	showMinMaxHint: PropTypes.bool,
+	displayKey: PropTypes.string,
+	_isConvert: PropTypes.bool.isRequired
 };
 
 export default GroupList;

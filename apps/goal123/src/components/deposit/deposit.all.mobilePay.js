@@ -157,6 +157,9 @@ const Payment = props => {
 				imgKey="groupName"
 				idKey="groupId"
 				prefixImgUrl={`${config.imgUrl}/common/images/MobilePay/`}
+				i18n={i18n}
+				displayKey="groupName"
+				_isConvert={_isConvert}
 			/>
 			<GroupList
 				title={i18n.lbl_SelectChannel}
@@ -168,6 +171,10 @@ const Payment = props => {
 				idKey="channelId"
 				bindFullObj={true}
 				prefixImgUrl={`${config.imgUrl}/common/images/MobilePay/`}
+				i18n={i18n}
+				displayKey="channelName"
+				showMinMaxHint={true}
+				_isConvert={_isConvert}
 			/>
 			<AmountInput
 				title={i18n.lbl_DepositAmount}

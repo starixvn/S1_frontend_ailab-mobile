@@ -104,9 +104,7 @@ class Modal extends Component {
 
 	SeReceipt = () => {
 		if (this.props.bankSlipPopBox.disableSubmit) {
-			if (this.checkAllValue()) {
-				this.props.closePopBoxAndKeepData();
-			}
+			this.props.closePopBoxAndKeepData();
 		} else if (!this.state.processing) {
 			this.setState({ processing: true });
 			const { bankSlipPopBox } = this.props;
@@ -141,52 +139,52 @@ class Modal extends Component {
 		}
 	};
 
-	checkAllValue = () => {
-		// const refIdResult = this.checkRefId(this.props.bankSlipPopBox.refId);
-		const doneUploadResult = this.checkDoneUpload();
-		if (doneUploadResult.status) {
-			this.props.setPopBox({
-				isOpen: true,
-				title: this.props.i18n.lbl_ImportantNote,
-				content: doneUploadResult.msg,
-				hasBtn: true,
-				btnBar: (
-					<div className="btn-group">
-						<button
-							className="orange"
-							onClick={() =>
-								this.props.setPopBox({
-									isOpen: false
-								})
-							}>
-							OK
-						</button>
-					</div>
-				)
-			});
-		}
-		// else if (refIdResult.status) {
-		// 	this.setState({
-		// 		warningStateRefId: {
-		// 			status: refIdResult.status,
-		// 			msg: refIdResult.msg
-		// 		}
-		// 	});
-		// }
+	// checkAllValue = () => {
+	// 	// const refIdResult = this.checkRefId(this.props.bankSlipPopBox.refId);
+	// 	const doneUploadResult = this.checkDoneUpload();
+	// 	if (doneUploadResult.status) {
+	// 		this.props.setPopBox({
+	// 			isOpen: true,
+	// 			title: this.props.i18n.lbl_ImportantNote,
+	// 			content: doneUploadResult.msg,
+	// 			hasBtn: true,
+	// 			btnBar: (
+	// 				<div className="btn-group">
+	// 					<button
+	// 						className="orange"
+	// 						onClick={() =>
+	// 							this.props.setPopBox({
+	// 								isOpen: false
+	// 							})
+	// 						}>
+	// 						OK
+	// 					</button>
+	// 				</div>
+	// 			)
+	// 		});
+	// 	}
+	// 	// else if (refIdResult.status) {
+	// 	// 	this.setState({
+	// 	// 		warningStateRefId: {
+	// 	// 			status: refIdResult.status,
+	// 	// 			msg: refIdResult.msg
+	// 	// 		}
+	// 	// 	});
+	// 	// }
 
-		// return !refIdResult.status && !doneUploadResult.status;
+	// 	// return !refIdResult.status && !doneUploadResult.status;
 
-		return !doneUploadResult.status;
-	};
+	// 	return !doneUploadResult.status;
+	// };
 
-	checkDoneUpload = () => {
-		let result = { status: false, msg: "" };
-		if (!this.props.bankSlipPopBox.picFileName) {
-			result = { status: true, msg: this.props.i18n.lbl_AttachFile };
-		}
+	// checkDoneUpload = () => {
+	// 	let result = { status: false, msg: "" };
+	// 	if (!this.props.bankSlipPopBox.picFileName) {
+	// 		result = { status: true, msg: this.props.i18n.lbl_AttachFile };
+	// 	}
 
-		return result;
-	};
+	// 	return result;
+	// };
 
 	// checkRefId = value => {
 	// 	let result = { status: false, msg: "" };
