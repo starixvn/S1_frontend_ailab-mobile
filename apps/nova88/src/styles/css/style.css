@@ -172,9 +172,6 @@ header > a > img {
 }
 
 header .Join, header .Login {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -192,10 +189,6 @@ header .Join, header .Login {
   -webkit-transition: 0.7s;
   transition: 0.7s;
   opacity: 0;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  pointer-events: none;
   overflow-y: scroll;
 }
 
@@ -227,7 +220,7 @@ header .Join > .close, header .Login > .close {
 
 header .Join > img, header .Login > img {
   width: 40vw;
-  margin: 3vw auto;
+  margin: 3vw calc(50% - 20vw);
 }
 
 header .Join .title, header .Login .title {
@@ -318,6 +311,7 @@ header .Join button, header .Login button {
   border-radius: 3px;
   color: #fff;
   padding: 3vw;
+  width: 100%;
 }
 
 header .Join .Terms, header .Login .Terms {
@@ -366,6 +360,15 @@ header .Join .Terms input[type="checkbox"] + label > div, header .Login .Terms i
 
 header .Join .Terms input[type="checkbox"]:checked + label > div, header .Login .Terms input[type="checkbox"]:checked + label > div {
   background: #F77A00;
+}
+
+header .Login {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 header .headerInfo {
@@ -5817,6 +5820,7 @@ span.icon.icon-ranking:after {
   font-size: 3vw;
   background: -webkit-linear-gradient(top, #f0b52d 30%, #fffccf 40%, #e2a625 65%, #ff6c00 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 0.5px #ffff9b;
   -webkit-filter: drop-shadow(0px 3px 1px #922707);
@@ -6064,7 +6068,6 @@ span.icon.icon-ranking:after {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-right: 2vw;
 }
 
 .depositModule_mobile .selectModule input[type="radio"]:checked + label div, .depositModule_online .selectModule input[type="radio"]:checked + label div, .depositModule_local .selectModule input[type="radio"]:checked + label div {
@@ -6080,11 +6083,23 @@ span.icon.icon-ranking:after {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 50%;
+  width: 100%;
   margin: 2vw 0;
+}
+
+.depositModule_mobile .selectModule > div .bank, .depositModule_online .selectModule > div .bank, .depositModule_local .selectModule > div .bank {
+  color: white;
+}
+
+.depositModule_mobile .selectModule > div .bank > div, .depositModule_online .selectModule > div .bank > div, .depositModule_local .selectModule > div .bank > div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 50vw;
+}
+
+.depositModule_mobile .selectModule > div .bank > div:last-child, .depositModule_online .selectModule > div .bank > div:last-child, .depositModule_local .selectModule > div .bank > div:last-child {
+  color: #F77A00;
 }
 
 .depositModule_mobile .selectModule > div.info, .depositModule_online .selectModule > div.info, .depositModule_local .selectModule > div.info {
@@ -6105,10 +6120,11 @@ span.icon.icon-ranking:after {
 }
 
 .depositModule_mobile .selectModule > div .bankName, .depositModule_online .selectModule > div .bankName, .depositModule_local .selectModule > div .bankName {
-  width: 20vw;
   background: white;
   border-radius: 5px;
   padding: 0.5vw 1vw;
+  width: 20vw;
+  margin: 0 2vw;
 }
 
 .depositModule_mobile .selectModule > div .bankName img, .depositModule_online .selectModule > div .bankName img, .depositModule_local .selectModule > div .bankName img {
@@ -6143,11 +6159,5 @@ span.icon.icon-ranking:after {
 
 .depositModule_mobile .inputBox .tip, .depositModule_online .inputBox .tip, .depositModule_local .inputBox .tip {
   margin-left: 2.5vw;
-}
-
-.depositModule_mobile + .btn-group, .depositModule_online + .btn-group, .depositModule_local + .btn-group {
-  width: 110%;
-  margin-left: -5%;
-  margin: 3vw 0 3vw -5%;
 }
 /*# sourceMappingURL=style.css.map */

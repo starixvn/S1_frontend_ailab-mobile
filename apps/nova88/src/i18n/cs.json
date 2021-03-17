@@ -507,5 +507,7 @@
 	"lbl_SelectBank":"选择银行",
 	"lbl_UploadReceipt":"上传收据",
 	"lbl_Refno":"参考编号",
-	"lbl_MaxBonusAmount":"最高奖金"
+	"lbl_MaxBonusAmount":"最高奖金",
+	"lbl_Min":"最小",
+	"lbl_Max":"最大"
 }

@@ -500,5 +500,7 @@
 	"lbl_SelectBank":"Select Bank",
 	"lbl_UploadReceipt":"Upload Receipt",
 	"lbl_Refno":"Reference No.",
-	"lbl_MaxBonusAmount":"Max Bonus Amount"
+	"lbl_MaxBonusAmount":"Max Bonus Amount",
+	"lbl_Min":"Min",
+	"lbl_Max":"Max"
 }

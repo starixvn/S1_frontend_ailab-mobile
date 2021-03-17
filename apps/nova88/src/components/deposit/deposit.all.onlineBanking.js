@@ -216,6 +216,9 @@ const Payment = props => {
 				idKey="payId"
 				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/Payment/`}
 				bindFullObj={true}
+				i18n={i18n}
+				displayKey="payName"
+				_isConvert={_isConvert}
 			/>
 			<GroupList
 				title={i18n.lbl_SelectBank}
@@ -229,6 +232,10 @@ const Payment = props => {
 				prefixImgUrl={`${config.imgUrl}/common/images/BankLogo/`}
 				imgKeyWithExtension={true}
 				bindingItem={selGroup}
+				displayKey="bankName"
+				showMinMaxHint={true}
+				i18n={i18n}
+				_isConvert={_isConvert}
 			/>
 			<AmountInput
 				title={i18n.lbl_DepositAmount}

@@ -500,5 +500,7 @@
 	"lbl_SelectBank":"เลือกธนาคาร",
 	"lbl_UploadReceipt":"อัปโหลดสลิปการโอนเงิน",
 	"lbl_Refno":"หมายเลขอ้างอิง",
-	"lbl_MaxBonusAmount":"จำนวนโบนัสสูงสุด"
+	"lbl_MaxBonusAmount":"จำนวนโบนัสสูงสุด",
+	"lbl_Min":"ขั้นต่ำ",
+	"lbl_Max":"สูงสุด"
 }

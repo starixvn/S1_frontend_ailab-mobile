@@ -500,5 +500,7 @@
 	"lbl_SelectBank":"Pilih Bank",
 	"lbl_UploadReceipt":"Unggah Tanda Terima",
 	"lbl_Refno":"Nomor Referensi",
-	"lbl_MaxBonusAmount":"Jumlah Maksimal Bonus"
+	"lbl_MaxBonusAmount":"Jumlah Maksimal Bonus",
+	"lbl_Min":"Minimum",
+	"lbl_Max":"Maksimum"
 }
