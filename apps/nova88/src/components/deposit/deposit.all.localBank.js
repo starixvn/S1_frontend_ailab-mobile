@@ -103,14 +103,17 @@ const Payment = props => {
 			accountNo,
 			accountName,
 			isOpen: true,
-			disableSubmit: true
+			disableSubmit: true,
+			currencyId: userInfo.currencyId
 		}));
 	};
 
 	const ClickSubmit = () => {
 		const result =
 			selBank.sysId &&
-			bankSlipPopBox.receipt !== null &&
+			(userInfo.currencyId !== 4 ||
+				(userInfo.currencyId === 4 &&
+					bankSlipPopBox.receipt !== null)) &&
 			amount !== "" &&
 			VaildAmount({ amount });
 
@@ -258,7 +261,8 @@ const Payment = props => {
 	const _isConvert = isConvert(userInfo.currencyId);
 	const canSubmit =
 		selBank.sysId &&
-		bankSlipPopBox.receipt &&
+		(userInfo.currencyId !== 4 ||
+			(userInfo.currencyId === 4 && bankSlipPopBox.receipt !== null)) &&
 		amount !== "" &&
 		VaildAmount({ amount, displayWarning: false });
 

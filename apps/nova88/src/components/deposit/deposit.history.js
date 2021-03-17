@@ -193,7 +193,8 @@ const Panel = () => {
 			real_amount: amount,
 			amount: number_format(amount, _isConvert),
 			picFileName,
-			refId
+			refId,
+			currencyId: userInfo.currencyId
 		}));
 	};
 

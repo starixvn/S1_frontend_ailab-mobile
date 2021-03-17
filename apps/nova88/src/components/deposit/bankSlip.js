@@ -132,7 +132,10 @@ class Modal extends Component {
 
 	checkAllValue = () => {
 		// const refIdResult = this.checkRefId(this.props.bankSlipPopBox.refId);
-		const doneUploadResult = this.checkDoneUpload();
+		const doneUploadResult =
+			this.props.bankSlipPopBox.currencyId === 4
+				? this.checkDoneUpload()
+				: true;
 		if (doneUploadResult.status) {
 			this.props.setPopBox({
 				isOpen: true,
