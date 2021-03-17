@@ -177,7 +177,7 @@ const RouteComponents = () => {
 			</FinancialLog>
 
 			<OneGame path={`/:langId/${path.oneGame.root}`} />
-			<Kiss918 path={`/:langId/${path.kiss918.root}`} />
+			{/* <Kiss918 path={`/:langId/${path.kiss918.root}`} /> */}
 		</Router>
 	);
 };
