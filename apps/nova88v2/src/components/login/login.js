@@ -38,7 +38,7 @@ const LoginPage = () => {
 	const [pswState, setPswState] = useState(false);
 	const [warningState, setWarningState] = useState(initWarningState);
 	const isMountedRef = useRef(null);
-	const { showTips, showTipHandler } = useTip([]);
+	const { showTips, showTipHandler } = useTip();
 
 	useEffect(() => {
 		isMountedRef.current = true;

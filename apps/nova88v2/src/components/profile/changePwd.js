@@ -3,6 +3,7 @@ import { useNavigate } from "@reach/router";
 import { Link } from "@Router";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
 import path from "Path";
+import useTip from "../hook/useTip";
 import Inputbox from "../common/inputbox.password";
 import api from "../../service/api";
 import Layout from "../common/layout";
@@ -34,7 +35,7 @@ const ChangePwd = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
 	const [userValueState, setUserValueState] = useState(initState);
-	const [showTips, setTips] = useState([]);
+	const { showTips, showTipHandler } = useTip();
 	const [warningState, setWarningState] = useState(initWarningState);
 	const [pswState, setPswState] = useState(initPswState);
 	const isMountedRef = useRef(null);
@@ -45,14 +46,6 @@ const ChangePwd = () => {
 			isMountedRef.current = false;
 		};
 	});
-
-	const showTip = col => {
-		if (showTips.includes(col)) {
-			setTips(showTips.filter(el => el !== col));
-		} else {
-			setTips(prev => [...prev, col]);
-		}
-	};
 
 	const showPswHandler = col => {
 		setPswState(prevState => ({
@@ -201,7 +194,7 @@ const ChangePwd = () => {
 				checked={warningState.oldPsw.status}
 				tips={i18n.msg_PasswordVaildate}
 				warningMsg={warningState.oldPsw.msg}
-				clickInfo={showTip.bind(null, "oldPsw")}
+				clickInfo={() => showTipHandler("oldPsw")}
 				showTips={showTips.includes("oldPsw")}
 				value={userValueState.oldPsw}
 				showInfoIcon={false}
@@ -217,7 +210,7 @@ const ChangePwd = () => {
 				checked={warningState.newPsw.status}
 				tips={i18n.msg_PasswordVaildate}
 				warningMsg={warningState.newPsw.msg}
-				clickInfo={showTip.bind(null, "newPsw")}
+				clickInfo={() => showTipHandler("newPsw")}
 				showTips={showTips.includes("newPsw")}
 				value={userValueState.newPsw}
 				showInfoIcon={true}

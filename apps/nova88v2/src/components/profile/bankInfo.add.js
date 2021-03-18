@@ -5,6 +5,7 @@ import config from "../../config";
 import Inputbox from "../common/inputbox.hint";
 import Dropdown from "../common/dropdown.image";
 import { defIptStatus } from "../common/inputStatus";
+import useTip from "../hook/useTip";
 
 const initWarning = {
 	RealName: {
@@ -29,7 +30,7 @@ const AddBankPanel = ({
 	const [bankSelectedIdx, setBankSelectedIdx] = useState(0);
 	const [userValue, setUserValue] = useState({});
 	const [warning, setWarning] = useState(initWarning);
-	const [showTipsArr, setShowTipsArr] = useState([]);
+	const { showTips, showTipHandler } = useTip();
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -119,14 +120,6 @@ const AddBankPanel = ({
 
 	const toShowBankAccount = () => {
 		setCurrentPanel("showBankPanel");
-	};
-
-	const clickInfo = ({ col }) => {
-		if (showTipsArr.includes(col)) {
-			setShowTipsArr(showTipsArr.filter(item => item !== col));
-		} else {
-			setShowTipsArr(prev => [...prev, col]);
-		}
 	};
 
 	const clickSubmit = () => {
@@ -248,9 +241,9 @@ const AddBankPanel = ({
 					onChange={EditField.bind(this, "RealName")}
 					btnStatus={warning.RealName.status}
 					warningMsg={warning.RealName.msg}
-					showTips={showTipsArr.includes("RealName")}
+					showTips={showTips.includes("RealName")}
 					infoText={i18n.msg_ConfirmRealNameAlert}
-					clickInfo={clickInfo.bind(this, { col: "RealName" })}
+					clickInfo={() => showTipHandler("RealName")}
 				/>
 			) : null}
 
@@ -266,9 +259,9 @@ const AddBankPanel = ({
 				onChange={EditField.bind(null, "BankAccount")}
 				btnStatus={warning.BankAccount.status}
 				warningMsg={warning.BankAccount.msg}
-				showTips={showTipsArr.includes("BankAccount")}
+				showTips={showTips.includes("BankAccount")}
 				infoText={i18n.msg_NeedAccountNo}
-				clickInfo={clickInfo.bind(this, { col: "BankAccount" })}
+				clickInfo={() => showTipHandler("BankAccount")}
 			/>
 
 			<div className="btn-group">

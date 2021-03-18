@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import Inputbox from "../common/inputbox.hint";
 import Dropdown from "../common/dropdown";
 import areaCode from "../../datas/areaCode";
+import useTip from "../hook/useTip";
 import {
 	monthOptions,
 	initWarning,
@@ -25,7 +26,7 @@ const Panel = () => {
 	const [yearSelectedIdx, setYearSelectedIdx] = useState();
 	const [monthSelectedIdx, setMonthSelectedIdx] = useState();
 	const [daySelectedIdx, setDaySelectedIdx] = useState();
-	const [showTips, setTips] = useState([]);
+	const { showTips, showTipHandler } = useTip();
 	const country =
 		userInfo.country && userInfo.country !== "null"
 			? userInfo.country
@@ -42,14 +43,6 @@ const Panel = () => {
 			isMountedRef.current = false;
 		};
 	}, []);
-
-	const showTip = col => {
-		if (showTips.includes(col)) {
-			setTips(showTips.filter(el => el !== col));
-		} else {
-			setTips(prev => [...prev, col]);
-		}
-	};
 
 	const _areaCode = country ? areaCode[country].AreaCode : "";
 	const _infoList = infoList({ i18n, userInfo, _areaCode });
@@ -377,7 +370,7 @@ const Panel = () => {
 					warningMsg={warning.accountName.msg}
 					value={userValue.accountName}
 					infoText={i18n.lbl_UsernameTooltip}
-					clickInfo={showTip.bind(null, "accountName")}
+					clickInfo={() => showTipHandler("accountName")}
 					showTips={showTips.includes("accountName")}
 				/>
 			) : null}
@@ -411,7 +404,7 @@ const Panel = () => {
 					btnStatus={warning.phoneNo.checked}
 					warningMsg={warning.phoneNo.msg}
 					infoText={i18n.lbl_PhoneTooltip}
-					clickInfo={showTip.bind(null, "phoneNo")}
+					clickInfo={() => showTipHandler("phoneNo")}
 					showTips={showTips.includes("phoneNo")}
 				/>
 			) : null}
