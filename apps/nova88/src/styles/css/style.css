@@ -5820,6 +5820,7 @@ span.icon.icon-ranking:after {
   font-size: 3vw;
   background: -webkit-linear-gradient(top, #f0b52d 30%, #fffccf 40%, #e2a625 65%, #ff6c00 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 0.5px #ffff9b;
   -webkit-filter: drop-shadow(0px 3px 1px #922707);
@@ -6067,7 +6068,6 @@ span.icon.icon-ranking:after {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-right: 2vw;
 }
 
 .depositModule_mobile .selectModule input[type="radio"]:checked + label div, .depositModule_online .selectModule input[type="radio"]:checked + label div, .depositModule_local .selectModule input[type="radio"]:checked + label div {
@@ -6083,11 +6083,23 @@ span.icon.icon-ranking:after {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 50%;
+  width: 100%;
   margin: 2vw 0;
+}
+
+.depositModule_mobile .selectModule > div .bank, .depositModule_online .selectModule > div .bank, .depositModule_local .selectModule > div .bank {
+  color: white;
+}
+
+.depositModule_mobile .selectModule > div .bank > div, .depositModule_online .selectModule > div .bank > div, .depositModule_local .selectModule > div .bank > div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 50vw;
+}
+
+.depositModule_mobile .selectModule > div .bank > div:last-child, .depositModule_online .selectModule > div .bank > div:last-child, .depositModule_local .selectModule > div .bank > div:last-child {
+  color: #F77A00;
 }
 
 .depositModule_mobile .selectModule > div.info, .depositModule_online .selectModule > div.info, .depositModule_local .selectModule > div.info {
@@ -6108,10 +6120,11 @@ span.icon.icon-ranking:after {
 }
 
 .depositModule_mobile .selectModule > div .bankName, .depositModule_online .selectModule > div .bankName, .depositModule_local .selectModule > div .bankName {
-  width: 20vw;
   background: white;
   border-radius: 5px;
   padding: 0.5vw 1vw;
+  width: 20vw;
+  margin: 0 2vw;
 }
 
 .depositModule_mobile .selectModule > div .bankName img, .depositModule_online .selectModule > div .bankName img, .depositModule_local .selectModule > div .bankName img {
@@ -6146,11 +6159,5 @@ span.icon.icon-ranking:after {
 
 .depositModule_mobile .inputBox .tip, .depositModule_online .inputBox .tip, .depositModule_local .inputBox .tip {
   margin-left: 2.5vw;
-}
-
-.depositModule_mobile + .btn-group, .depositModule_online + .btn-group, .depositModule_local + .btn-group {
-  width: 110%;
-  margin-left: -5%;
-  margin: 3vw 0 3vw -5%;
 }
 /*# sourceMappingURL=style.css.map */
