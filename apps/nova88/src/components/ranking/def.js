@@ -268,18 +268,18 @@ export const defPrize = () => ({
 				{ rank: "冠军", prize: "LOGAM MULIA 100g" },
 				{ rank: "亚军", prize: `LOGAM MULIA 75g` },
 				{ rank: "季军", prize: `LOGAM MULIA 50g` },
-				{ rank: "殿军", prize: `IDR 35,000,000` },
-				{ rank: "第五名", prize: `IDR 30,000,000` },
-				{ rank: "第六名", prize: `IDR 25,000,000` },
-				{ rank: "第七名", prize: `IDR 15,000,000` },
-				{ rank: "第八名", prize: `IDR 8,000,000` },
-				{ rank: "第九名", prize: `IDR 5,000,000` },
+				{ rank: "殿军", prize: `IDR 35.000.000` },
+				{ rank: "第五名", prize: `IDR 30.000.000` },
+				{ rank: "第六名", prize: `IDR 25.000.000` },
+				{ rank: "第七名", prize: `IDR 15.000.000` },
+				{ rank: "第八名", prize: `IDR 8.000.000` },
+				{ rank: "第九名", prize: `IDR 5.000.000` },
 				{ rank: "第十名" }
 			],
 			[defEuroTourBtns.MonthlyTournament.value]: [
-				{ rank: "冠军", prize: "IDR 15,000,000" },
-				{ rank: "亚军", prize: `IDR 12,000,000` },
-				{ rank: "季军", prize: `IDR 8,000,000` }
+				{ rank: "冠军", prize: "IDR 15.000.000" },
+				{ rank: "亚军", prize: `IDR 12.000.000` },
+				{ rank: "季军", prize: `IDR 8.000.000` }
 			]
 		},
 		en: {
@@ -287,18 +287,18 @@ export const defPrize = () => ({
 				{ rank: "CHAMPION", prize: "LOGAM MULIA 100g" },
 				{ rank: "2nd Runner Up", prize: `LOGAM MULIA 75g` },
 				{ rank: "3rd Runner Up", prize: `LOGAM MULIA 50g` },
-				{ rank: "4th Runner Up", prize: `IDR 35,000,000` },
-				{ rank: "5th Runner Up", prize: `IDR 30,000,000` },
-				{ rank: "6th Runner Up", prize: `IDR 25,000,000` },
-				{ rank: "7th Runner Up", prize: `IDR 15,000,000` },
-				{ rank: "8th Runner Up", prize: `IDR 8,000,000` },
-				{ rank: "9th Runner Up", prize: `IDR 5,000,000` },
+				{ rank: "4th Runner Up", prize: `IDR 35.000.000` },
+				{ rank: "5th Runner Up", prize: `IDR 30.000.000` },
+				{ rank: "6th Runner Up", prize: `IDR 25.000.000` },
+				{ rank: "7th Runner Up", prize: `IDR 15.000.000` },
+				{ rank: "8th Runner Up", prize: `IDR 8.000.000` },
+				{ rank: "9th Runner Up", prize: `IDR 5.000.000` },
 				{ rank: "10th Runner Up" }
 			],
 			[defEuroTourBtns.MonthlyTournament.value]: [
-				{ rank: "CHAMPION", prize: "IDR 15,000,000" },
-				{ rank: "2nd Runner Up", prize: `IDR 12,000,000` },
-				{ rank: "3rd Runner Up", prize: `IDR 8,000,000` }
+				{ rank: "CHAMPION", prize: "IDR 15.000.000" },
+				{ rank: "2nd Runner Up", prize: `IDR 12.000.000` },
+				{ rank: "3rd Runner Up", prize: `IDR 8.000.000` }
 			]
 		},
 		id: {
@@ -306,18 +306,18 @@ export const defPrize = () => ({
 				{ rank: "PEMENANG", prize: "LOGAM MULIA 100g" },
 				{ rank: "Juara 2", prize: `LOGAM MULIA 75g` },
 				{ rank: "Juara 3", prize: `LOGAM MULIA 50g` },
-				{ rank: "Juara 4", prize: `IDR 35,000,000` },
-				{ rank: "Juara 5", prize: `IDR 30,000,000` },
-				{ rank: "Juara 6", prize: `IDR 25,000,000` },
-				{ rank: "Juara 7", prize: `IDR 15,000,000` },
-				{ rank: "Juara 8", prize: `IDR 8,000,000` },
-				{ rank: "Juara 9", prize: `IDR 5,000,000` },
+				{ rank: "Juara 4", prize: `IDR 35.000.000` },
+				{ rank: "Juara 5", prize: `IDR 30.000.000` },
+				{ rank: "Juara 6", prize: `IDR 25.000.000` },
+				{ rank: "Juara 7", prize: `IDR 15.000.000` },
+				{ rank: "Juara 8", prize: `IDR 8.000.000` },
+				{ rank: "Juara 9", prize: `IDR 5.000.000` },
 				{ rank: "Juara 10" }
 			],
 			[defEuroTourBtns.MonthlyTournament.value]: [
-				{ rank: "PEMENANG", prize: "IDR 15,000,000" },
-				{ rank: "Juara 2", prize: `IDR 12,000,000` },
-				{ rank: "Juara 3", prize: `IDR 8,000,000` }
+				{ rank: "PEMENANG", prize: "IDR 15.000.000" },
+				{ rank: "Juara 2", prize: `IDR 12.000.000` },
+				{ rank: "Juara 3", prize: `IDR 8.000.000` }
 			]
 		},
 		th: {
@@ -325,18 +325,18 @@ export const defPrize = () => ({
 				{ rank: "รางวัลชนะเลิศ", prize: "LOGAM MULIA 100g" },
 				{ rank: "รองชนะเลิศอันดับ 1", prize: `LOGAM MULIA 75g` },
 				{ rank: "รองชนะเลิศอันดับ 2", prize: `LOGAM MULIA 50g` },
-				{ rank: "รองชนะเลิศอันดับ 3", prize: `IDR 35,000,000` },
-				{ rank: "รองชนะเลิศอันดับ 4", prize: `IDR 30,000,000` },
-				{ rank: "รองชนะเลิศอันดับ 5", prize: `IDR 25,000,000` },
-				{ rank: "รองชนะเลิศอันดับ 6", prize: `IDR 15,000,000` },
-				{ rank: "รองชนะเลิศอันดับ 7", prize: `IDR 8,000,000` },
-				{ rank: "รองชนะเลิศอันดับ 8", prize: `IDR 5,000,000` },
+				{ rank: "รองชนะเลิศอันดับ 3", prize: `IDR 35.000.000` },
+				{ rank: "รองชนะเลิศอันดับ 4", prize: `IDR 30.000.000` },
+				{ rank: "รองชนะเลิศอันดับ 5", prize: `IDR 25.000.000` },
+				{ rank: "รองชนะเลิศอันดับ 6", prize: `IDR 15.000.000` },
+				{ rank: "รองชนะเลิศอันดับ 7", prize: `IDR 8.000.000` },
+				{ rank: "รองชนะเลิศอันดับ 8", prize: `IDR 5.000.000` },
 				{ rank: "รองชนะเลิศอันดับ 9" }
 			],
 			[defEuroTourBtns.MonthlyTournament.value]: [
-				{ rank: "รางวัลชนะเลิศ", prize: "IDR 15,000,000" },
-				{ rank: "รองชนะเลิศอันดับ 2", prize: `IDR 12,000,000` },
-				{ rank: "รองชนะเลิศอันดับ 3", prize: `IDR 8,000,000` }
+				{ rank: "รางวัลชนะเลิศ", prize: "IDR 15.000.000" },
+				{ rank: "รองชนะเลิศอันดับ 2", prize: `IDR 12.000.000` },
+				{ rank: "รองชนะเลิศอันดับ 3", prize: `IDR 8.000.000` }
 			]
 		}
 	},

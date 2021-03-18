@@ -1,43 +1,20 @@
 import React, { useContext } from "react";
-import {
-	i18nContext,
-	userInfoContext,
-	navContext,
-	defNavPanel
-} from "../components/common/context";
+import { useNavigate } from "@reach/router";
+import { i18nContext, userInfoContext } from "../components/common/context";
+import path from "../path";
 import Event from "../components/ranking/event";
 import RankingByCategory from "../components/ranking/rankByCategory";
 import Record from "../components/ranking/records";
 import { defBtns, defElemType } from "../components/ranking/def";
 import { useHandleSelect } from "../components/ranking/hook";
 import BtnBar from "../components/common/btnBar";
+import Header from "../components/header/header";
 
-export default () => {
+const Ranking = ({ selected }) => {
 	const { i18n } = useContext(i18nContext);
-	const { setNav } = useContext(navContext);
 	const { userInfo } = useContext(userInfoContext);
-	const { isLogin } = userInfo;
-
-	const handleLogin = () => {
-		setNav(defNavPanel.login);
-	};
-	const { selected, handleSelect } = useHandleSelect({
-		defaultSelect: defBtns.Event.value,
-		handleLogin,
-		isLogin
-	});
-
 	return (
 		<>
-			<BtnBar
-				i18n={i18n}
-				selected={selected}
-				handleSelect={handleSelect}
-				mainKey="leader-board-btnBar"
-				defBtns={defBtns}
-				btnListClass="tagBtn"
-				isLogin={isLogin}
-			/>
 			<Event
 				isOpen={defBtns[selected].elemType === defElemType.Event}
 				i18n={i18n}
@@ -65,3 +42,43 @@ export default () => {
 		</>
 	);
 };
+const IndexPage = () => {
+	const { i18n } = useContext(i18nContext);
+	const { userInfo } = useContext(userInfoContext);
+	const { isLogin } = userInfo;
+	const navigate = useNavigate();
+	const handleLogin = () => {
+		navigate(`${path.login.root}`);
+	};
+	const { selected, handleSelect } = useHandleSelect({
+		defaultSelect: defBtns.Event.value,
+		handleLogin,
+		isLogin
+	});
+	const link = (
+		<a href="/">
+			<i className="icon icon icon-icon32px_1" />
+			{i18n.lbl_Back}
+		</a>
+	);
+	return (
+		<>
+			<main className="main ranking">
+				<Ranking selected={selected} />
+			</main>
+			<Header title={i18n.lbl_Ranking} hideLogo={true} link={link}>
+				<BtnBar
+					i18n={i18n}
+					selected={selected}
+					handleSelect={handleSelect}
+					mainKey="leader-board-quickSelect"
+					defBtns={defBtns}
+					isLogin={isLogin}
+					btnListClass="quickSelect"
+				/>
+			</Header>
+		</>
+	);
+};
+
+export default IndexPage;

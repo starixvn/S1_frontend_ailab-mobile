@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { RankImg } from "./rankList";
 import { defPrize } from "./def";
 
 const langMappingCurr = {
@@ -18,7 +17,6 @@ const Prize = ({ currencyId, category, langId, i18n }) => {
 	const currency = currencyId
 		? currCustomMapping[currencyId] ?? i18n[`Currency_${currencyId}`]
 		: langMappingCurr[langId];
-
 	return defPrize({ i18n })[currency]
 		? defPrize({ i18n })[currency][category]
 		: defPrize({ i18n }).MYR[category];
@@ -30,12 +28,12 @@ const PrizeList = ({ userInfo, category, i18n }) => {
 
 	const rows = getPrize.map(item => {
 		const { rank, prize } = item;
+		let trophy = "";
+		if (+rank === 1 || +rank === 2 || +rank === 3)
+			trophy = "icon icon-trophy";
 		return (
 			<ul key={`prize-${category}-${currencyId}-${langId}-${rank}`}>
-				<li>
-					<RankImg Ranking={rank} />
-					{rank}
-				</li>
+				<li className={trophy}>{rank}</li>
 				<li>{prize}</li>
 			</ul>
 		);

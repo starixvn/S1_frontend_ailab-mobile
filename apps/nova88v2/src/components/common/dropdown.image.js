@@ -60,20 +60,22 @@ export class DropdownBox extends Component {
 			selectedImg = _s ? this.props.ImgURL + _s.image : null;
 		}
 		return (
-			<div
-				ref={this.wrapper}
-				className={`dropdown${this.state.isOpen ? " open" : ""}`}
-				onClick={this.ClickDropdown}>
-				<button className="btn">
+			<div className="inputBox" ref={this.wrapper}>
+				<button
+					className={`dropdown${
+						this.state.isOpen ? " dropdownbank" : ""
+					}`}
+					onClick={this.ClickDropdown}>
 					<div className={this.props.className}>
 						<img src={selectedImg} alt="" />
 					</div>
-					<span className="text">{displayText}</span>
+					<span>{displayText}</span>
+					<i className="icon icon-keyboard_arrow_down" />
 				</button>
 
 				<div
 					className={`dropdown-container${
-						this.state.isOpen ? " open" : ""
+						this.state.isOpen ? " active" : ""
 					}`}>
 					{arr}
 				</div>

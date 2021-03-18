@@ -143,6 +143,7 @@
 	"lbl_AfterAmount": "After Amount",
 	"lbl_RefTransId": "Ref TransId",
 	"lbl_Stake": "Stake",
+	"lbl_AmountTooltip": "Amount can not be less than 1",
 	"lbl_NotinLimit": "not in Limit.",
 	"lbl_ConfirmDeposit": "Please confirm the deposit information.",
 	"lbl_ImportantNote": "Important Note",
@@ -448,6 +449,7 @@
 	"lbl_ForgetPwdHint": "If you have forgotten your username or password, please provide your email and we will send your new password to your registered email address.",
 	"lbl_Yes":"Yes",
 	"lbl_No":"No",
+	"lbl_RestoreAll":"Restore All",
 	"lbl_Vintage_Club":"VINTAGE CLUB",
 	"lbl_Silver_Club":"SILVER CLUB",
 	"lbl_Gold_Club":"GOLD CLUB",
@@ -461,8 +463,6 @@
 	"lbl_MinMaxAmount":"Min/Max Limit",
 	"lbl_SelectBank":"Select Bank",
 	"lbl_UploadReceipt":"Upload Receipt",
-	"lbl_Refno":"Reference No.",
-	"lbl_AmountTooltip": "Amount can not be less than {{0}}.",
-	"lbl_AmountTooltip0": "Amount can not be less than 0"
+	"lbl_Refno":"Reference No."
 
 }
