@@ -7,13 +7,17 @@ const ButtonWithCopyBtn = ({ value = "" }) => {
 		document.execCommand("copy");
 	};
 	return (
-		<div>
-			<input readOnly={true} defaultValue={value} ref={ipt} />
-			<button
-				className="icon icon-files-empty"
-				value={value}
-				onClick={OnCopy}
-			/>
+		<div className="infoModule parts">
+			<div className="inputBox">
+				<input readOnly={true} defaultValue={value} ref={ipt} />
+			</div>
+			<div className="btn-group">
+				<button
+					className="icon icon-files-empty"
+					value={value}
+					onClick={OnCopy}
+				/>
+			</div>
 		</div>
 	);
 };

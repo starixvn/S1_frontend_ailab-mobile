@@ -55,6 +55,8 @@
 
 .icon-new:before {
   font-size: 3vw;
+  content: "New" !important;
+  font-family: 'Microsoft YaHei',sans-serif;
 }
 
 .icon-envelope:before {
@@ -82,11 +84,12 @@
   background: #F77A00;
   padding: 0 1vw;
   border-radius: 3px;
-  font-weight: bold;
+  font-size: 3vw;
 }
 
 .icon-live:before {
   content: "Live";
+  font-family: 'Microsoft YaHei',sans-serif;
 }
 
 .icon-nova88:before {
