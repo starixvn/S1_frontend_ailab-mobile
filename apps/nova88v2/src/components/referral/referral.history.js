@@ -6,6 +6,7 @@ import ReloadSpin from "../common/reloadSpin";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import api from "../../service/api";
 import { Detail } from "./referral.history.detail";
+import GoTopBtn from "../common/goTopBtn";
 
 const Panel = ({
 	history,
@@ -63,7 +64,7 @@ const Panel = ({
 
 	return history ? (
 		<div className="recent active">
-			<div className="recentTransactions">
+			{/* <div className="recentTransactions">
 				<ReloadSpin
 					func={submitFilter.bind(this, {
 						startDay: filterData?.StartDate,
@@ -71,9 +72,12 @@ const Panel = ({
 						isUnix: true
 					})}
 				/>
-			</div>
+			</div> */}
 			{history.length > 0 ? (
-				<div className="infoList">{arr}</div>
+				<div className="infoList">
+					{arr}
+					<GoTopBtn />
+				</div>
 			) : (
 				<div className="nodata icon icon-nodata">
 					<div className="txt-white">{i18n.msg_NoData}</div>
