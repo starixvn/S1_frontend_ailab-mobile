@@ -141,7 +141,8 @@ const GameProvider = ({ langId = "en", isLogin = false, i18n }) => {
 		}
 	}, [isLogin, i18n]);
 
-	const ClickItem = ({ _path, urlParams, tpId, gameId, needLogin }) => {
+	const ClickItem = itemInfo => {
+		const { path: _path, urlParams, tpId, gameId, needLogin } = itemInfo;
 		const loginCallback = () => {
 			navigate(`/${langId}/login`);
 		};
