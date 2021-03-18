@@ -9,6 +9,7 @@ import { defBtns, defElemType } from "../components/ranking/def";
 import { useHandleSelect } from "../components/ranking/hook";
 import BtnBar from "../components/common/btnBar";
 import Header from "../components/header/header";
+import { Link } from "../route/link";
 
 const Ranking = ({ selected }) => {
 	const { i18n } = useContext(i18nContext);
@@ -56,10 +57,10 @@ const IndexPage = () => {
 		isLogin
 	});
 	const link = (
-		<a href="/">
+		<Link to="/">
 			<i className="icon icon icon-icon32px_1" />
 			{i18n.lbl_Back}
-		</a>
+		</Link>
 	);
 	return (
 		<>

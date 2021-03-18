@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { pageContext } from "../common/context";
 import api from "../../service/api";
 import { defBtns, defDayBtns } from "./def";
 

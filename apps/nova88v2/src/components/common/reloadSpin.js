@@ -26,7 +26,7 @@ const ReloadSpin = ({ func, className }) => {
 
 	return (
 		<button
-			className={`icon icon-spinner11${className ? ` ${className}` : ""}${
+			className={`${className ?? "icon icon-spinner11 clickBtn"}${
 				spin ? " active" : ""
 			}`}
 			onClick={clickSpin}
@@ -35,7 +35,7 @@ const ReloadSpin = ({ func, className }) => {
 };
 
 ReloadSpin.defaultProps = {
-	className: ""
+	className: null
 };
 
 ReloadSpin.propTypes = {

@@ -1,7 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Checkbox = ({ className, id, checkboxHandler, children, Checked, labelClassName, testAttr }) => {
+const Checkbox = ({
+	className,
+	id,
+	checkboxHandler,
+	children,
+	Checked,
+	labelClassName,
+	testAttr
+}) => {
 	return (
 		<div className={className} data-test={testAttr}>
 			<input

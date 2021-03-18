@@ -329,6 +329,7 @@ const Panel = () => {
 					<button className="icon icon-bin" onClick={delMsg} />
 					<ReloadSpin
 						func={GetMsgList.bind(this, { loading: false })}
+						className="icon icon-spinner11"
 					/>
 				</div>
 			</div>

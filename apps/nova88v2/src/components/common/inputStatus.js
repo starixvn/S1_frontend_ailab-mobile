@@ -10,9 +10,9 @@ export const defIptStatus = {
 const IptStatus = ({ btnStatus }) => {
 	switch (btnStatus) {
 		case defIptStatus.verified:
-			return <span className="icon icon-checkmark" />;
+			return <i className="icon icon-checkmark" />;
 		case defIptStatus.warning:
-			return <span className="icon icon-errormark" />;
+			return <i className="icon icon-errormark" />;
 		default:
 			return null;
 	}
@@ -26,4 +26,4 @@ IptStatus.defaultProps = {
 	btnStatus: defIptStatus.default
 };
 
-export default IptStatus
+export default IptStatus;

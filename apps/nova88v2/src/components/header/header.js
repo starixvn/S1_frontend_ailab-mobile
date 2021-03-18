@@ -80,7 +80,7 @@ const HeaderBtn = ({ userInfo }) => {
 					currency={i18n[`Currency_${userInfo.currencyId}`]}
 					amount={balance}
 				/>
-				<ReloadSpin func={clickReloadSpin} className="clickBtn" />
+				<ReloadSpin func={clickReloadSpin} />
 			</>
 		);
 	} else {
