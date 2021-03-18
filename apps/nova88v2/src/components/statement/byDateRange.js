@@ -19,6 +19,7 @@ import { getDateRange, defStatement } from "./common";
 import path from "../../path";
 import { useHandlePage } from "./hook";
 import { Filter } from "./filter";
+import GoTopBtn from "../common/goTopBtn";
 
 const ByDateRange = props => {
 	const navigate = useNavigate();
@@ -158,6 +159,7 @@ const ByDateRange = props => {
 					<div className="recent active">
 						<div className="infoList">{detailArr}</div>
 					</div>
+					<GoTopBtn />
 				</>
 			) : (
 				<div className="nodata icon icon-nodata">

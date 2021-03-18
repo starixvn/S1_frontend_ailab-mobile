@@ -3,6 +3,7 @@ import { useNavigate } from "@reach/router";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
 import { isConvert } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
+import GoTopBtn from "../common/goTopBtn";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import api from "../../service/api";
 import Detail from "./financialLog.detail";
@@ -68,7 +69,11 @@ const IndexPage = ({
 
 	let infoList = null;
 	if (history?.length > 0) {
-		infoList = <div className="infoList">{arr}</div>;
+		infoList = (
+			<div className="infoList">
+				{arr} <GoTopBtn />
+			</div>
+		);
 	} else {
 		infoList = (
 			<div className="nodata icon icon-nodata">
@@ -81,7 +86,7 @@ const IndexPage = ({
 
 	content = history ? (
 		<div className="recent active">
-			<div className="recentTransactions">
+			{/* <div className="recentTransactions">
 				<ReloadSpin
 					func={submitFilter.bind(this, {
 						startDay: filterData?.StartDate,
@@ -89,7 +94,7 @@ const IndexPage = ({
 						isUnix: true
 					})}
 				/>
-			</div>
+			</div> */}
 			{infoList}
 		</div>
 	) : null;
