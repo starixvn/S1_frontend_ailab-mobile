@@ -457,5 +457,6 @@
 	"lbl_Diamond_Club":"ไดมอนด์ คลับ",
 	"lbl_Nova_Club":"โนวา คลับ",
 	"lbl_ReSend":"Re-send in",
-	"lbl_Minutes":"นาที"
+	"lbl_Minutes":"นาที",
+	"ibi_GameProvider":"ผู้ให้บริการเกม"
 }

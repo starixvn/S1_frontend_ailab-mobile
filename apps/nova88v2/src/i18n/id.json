@@ -457,5 +457,6 @@
 	"lbl_Diamond_Club":"DIAMOND CLUB",
 	"lbl_Nova_Club":"NOVA CLUB",
 	"lbl_ReSend":"Re-send in",
-	"lbl_Minutes":"Menit"
+	"lbl_Minutes":"Menit",
+	"ibi_GameProvider":"Penyedia permainan"
 }

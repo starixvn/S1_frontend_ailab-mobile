@@ -458,5 +458,6 @@
 	"lbl_Nova":"欧亚",
 	"lbl_Club":"俱乐部",
 	"lbl_ReSend":"Re-send in",
-	"lbl_Minutes":"分"
+	"lbl_Minutes":"分",
+	"ibi_GameProvider":"游戏供应商"
 }
