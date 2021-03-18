@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
-import { Link } from "@Router";
-import { userInfoContext, i18nContext } from "../common/context";
+import { useNavigate } from "@reach/router";
+import { Link } from "../../route/link";
+import { userInfoContext, i18nContext, pageContext } from "../common/context";
 import path from "../../path";
 import Join from "./join";
 import Login from "../login/login";
@@ -9,6 +10,7 @@ import Logo from "../common/logo";
 const Modal = ({ isLogin, isJoin }) => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
+	const navigate = useNavigate();
 	const content = isJoin ? (
 		<Join showModal={isJoin} />
 	) : (
@@ -23,9 +25,9 @@ const Modal = ({ isLogin, isJoin }) => {
 
 	return isJoin || isLogin ? (
 		<div className="logoSwitch active">
-			<Link to="/">
+			<button onClick={() => navigate(-1)}>
 				<div className="icon icon-close" />
-			</Link>
+			</button>
 			<Logo langId={userInfo.langId} />
 			<button className="switch">
 				<div className={`switchBg${isJoin ? " right" : ""}`} />

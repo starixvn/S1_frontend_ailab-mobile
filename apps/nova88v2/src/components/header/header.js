@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import { userInfoContext, i18nContext, msgCountContext } from "Context";
+import { userInfoContext, i18nContext } from "Context";
 import { Link } from "@Router";
 import ReloadSpin from "../common/reloadSpin";
 import { number_format, isConvert } from "../common/common";
@@ -20,6 +20,7 @@ const HeaderTitle = ({ title = "", link = "" }) =>
 const Header = ({ title, hideLogo, filter, children, link }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const headerClassName = !title ? "" : "header";
+
 	return (
 		<header className={headerClassName} id="header">
 			{hideLogo ? null : (
@@ -40,8 +41,6 @@ const Header = ({ title, hideLogo, filter, children, link }) => {
 
 const HeaderBtn = ({ userInfo }) => {
 	const { i18n } = useContext(i18nContext);
-	const { msgCount } = useContext(msgCountContext);
-
 	const { mainWalletInfo, GetBalance } = useGetBalance({
 		isLogin: userInfo.isLogin
 	});
@@ -80,7 +79,7 @@ const HeaderBtn = ({ userInfo }) => {
 					currency={i18n[`Currency_${userInfo.currencyId}`]}
 					amount={balance}
 				/>
-				<ReloadSpin func={clickReloadSpin} className="clickBtn" />
+				<ReloadSpin func={clickReloadSpin} />
 			</>
 		);
 	} else {
@@ -128,13 +127,27 @@ HeaderInfo.propTypes = {
 Header.defaultProps = {
 	filter: null,
 	title: null,
-	hideLogo: false
+	hideLogo: false,
+	link: null,
+	children: null
 };
 
 Header.propTypes = {
 	filter: PropTypes.node,
 	title: PropTypes.string,
-	hideLogo: PropTypes.bool
+	hideLogo: PropTypes.bool,
+	link: PropTypes.node,
+	children: PropTypes.node
+};
+
+HeaderTitle.defaultProps = {
+	title: null,
+	link: null
+};
+
+HeaderTitle.propTypes = {
+	title: PropTypes.string,
+	link: PropTypes.string
 };
 
 export default Header;

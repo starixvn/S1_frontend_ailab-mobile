@@ -20,40 +20,32 @@ const Inputbox = ({
 	showInfoIcon
 }) => {
 	return (
-		<>
-			<div className="infoModule" data-testid={testAttr}>
-				{showInfoIcon && (
-					<div
-						className={`inputInfo ${showTips ? " active" : ""}`}
-						data-testid="inputInfo">
-						{infoText}
-					</div>
-				)}
+		<div className="infoModule" data-testid={testAttr}>
+			{showInfoIcon && (
 				<div
-					className={`inputBox ${
-						btnStatus === false ? "error" : ""
-					}`}>
-					{areaCode ? (
-						<i className={`icon ${icon}`}>{areaCode}</i>
-					) : icon ? (
-						<i className={`icon ${icon}`} />
-					) : null}
-					<input
-						disabled={disabled}
-						onBlur={onBlur}
-						placeholder={placeholder}
-						type={inputType}
-						className="textRight"
-						value={value}
-						onChange={onChange}
-					/>
-					<div className="icon-module">
-						<IptStatus btnStatus={btnStatus} />
-						<i
-							className="icon icon-information"
-							onClick={clickInfo}
-						/>
-					</div>
+					className={`inputInfo ${showTips ? " active" : ""}`}
+					data-testid="inputInfo">
+					{infoText}
+				</div>
+			)}
+			<div className={`inputBox ${btnStatus === false ? "error" : ""}`}>
+				{areaCode ? (
+					<i className={`icon ${icon}`}>{areaCode}</i>
+				) : icon ? (
+					<i className={`icon ${icon}`} />
+				) : null}
+				<input
+					disabled={disabled}
+					onBlur={onBlur}
+					placeholder={placeholder}
+					type={inputType}
+					className="textRight"
+					value={value}
+					onChange={onChange}
+				/>
+				<div className="icon-module">
+					<IptStatus btnStatus={btnStatus} />
+					<i className="icon icon-information" onClick={clickInfo} />
 				</div>
 			</div>
 			<div
@@ -61,7 +53,7 @@ const Inputbox = ({
 				data-testid={testAttr}>
 				{warningMsg}
 			</div>
-		</>
+		</div>
 	);
 };
 

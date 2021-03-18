@@ -16,7 +16,7 @@ const DownloadAPP = ({ i18n = {} }) => {
 			: null;
 	};
 	return (
-		<div className="kissdoanload open">
+		<>
 			<div>
 				<div className="icon icon-android" />
 				<div className="title">Android</div>
@@ -56,7 +56,7 @@ const DownloadAPP = ({ i18n = {} }) => {
 					</button>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

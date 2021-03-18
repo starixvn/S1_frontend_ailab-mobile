@@ -6,7 +6,7 @@ export const initValue = {
 	AffiliateId: "",
 	Checkbox: false,
 	SpecialBonusCode: "",
-	Phone: ''
+	Phone: ""
 };
 
 export const initStatus = {

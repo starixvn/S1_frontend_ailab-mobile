@@ -140,10 +140,10 @@ class CateGoryContent extends Component {
 				const item =
 					this.RefItems[k].Last.current ??
 					this.RefItems[k].First.current;
-				const x = item.getBoundingClientRect();
+				const x = item?.getBoundingClientRect();
 
 				if (
-					x.bottom >= this.props.top + 50 &&
+					x?.bottom >= this.props.top + 50 &&
 					currentCategory === null
 				) {
 					currentCategory = k;

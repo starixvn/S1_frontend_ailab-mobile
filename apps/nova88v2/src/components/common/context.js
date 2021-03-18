@@ -7,6 +7,7 @@ export const defNavPanel = {
 };
 
 export const i18nContext = createContext({});
+export const pageContext = createContext({});
 export const navContext = createContext({});
 export const popBoxContext = createContext({});
 export const themeContext = createContext({});
