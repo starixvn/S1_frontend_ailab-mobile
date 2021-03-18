@@ -1,10 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "@reach/router";
 import path from "../../path";
-import { navContext, defNavPanel } from "../common/context";
+import { i18nContext } from "../common/context";
 import { defGameInfo } from "../../datas/productList";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import config from "../../config";
+import Header from "../header/header";
+import { Link } from "../../route/link";
+import api from "../../service/api";
 
 const defPlatfrom = [
 	{
@@ -105,13 +108,43 @@ const defPlatfrom = [
 	}
 ];
 
-export default ({ langId = "en", isLogin = false }) => {
+const GameProvider = ({ langId = "en", isLogin = false, i18n }) => {
 	const navigate = useNavigate();
-	const { setNav } = useContext(navContext);
+	const [showingTpIds, setShowingTpIds] = useState([]);
+	const isMountedRef = useRef(null);
 
-	const ClickItem = ({ _path, urlParams, tpId, gameId, needLogin }) => {
+	useEffect(() => {
+		isMountedRef.current = true;
+		return () => {
+			isMountedRef.current = false;
+		};
+	});
+
+	useEffect(() => {
+		if (isLogin) {
+			api.site.GetTpIds().then(
+				res => {
+					if (res.data.errorCode === 0 && isMountedRef.current) {
+						setShowingTpIds(res.data.data);
+					}
+				},
+				() => {
+					if (isMountedRef.current) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
+						});
+					}
+				}
+			);
+		}
+	}, [isLogin, i18n]);
+
+	const ClickItem = itemInfo => {
+		const { path: _path, urlParams, tpId, gameId, needLogin } = itemInfo;
 		const loginCallback = () => {
-			setNav(defNavPanel.login);
+			navigate(`/${langId}/login`);
 		};
 
 		if (_path)
@@ -128,27 +161,56 @@ export default ({ langId = "en", isLogin = false }) => {
 		});
 	};
 
-	const rows = defPlatfrom.map(p => {
-		const key = `other-platform-${p.tpId}-${p.gameId}`;
-		let params = null;
-		if (p.parameter) {
-			params = Object.keys(p.parameter).map(k => {
-				return `${k}=${p.parameter[k]}`;
-			});
-		}
+	const rows = defPlatfrom
+		.filter(obj =>
+			showingTpIds.length > 0 ? showingTpIds.includes(obj.tpId) : true
+		)
+		.map(p => {
+			const key = `gameProvider-${p.tpId}-${p.gameId}`;
+			let params = null;
+			if (p.parameter) {
+				params = Object.keys(p.parameter).map(k => {
+					return `${k}=${p.parameter[k]}`;
+				});
+			}
 
-		const _urlParams = params !== null ? `?${params.join("&")}` : "";
+			const _urlParams = params !== null ? `?${params.join("&")}` : "";
+			return (
+				<button
+					key={key}
+					onClick={ClickItem.bind(this, {
+						...p,
+						urlParams: _urlParams
+					})}>
+					<img
+						src={`${config.cloudImgURL}/SiteSkin/img/logo/${p.imgName}.png`}
+						alt={p.imgName}
+					/>
+				</button>
+			);
+		});
 
-		return (
-			<img
-				key={key}
-				src={`${config.cloudImgURL}/SiteSkin/img/logo/${p.imgName}.png`}
-				// src={`${config.imgUrl}/common/images/logo/${p.imgName}.png`}
-				onClick={ClickItem.bind(this, { ...p, urlParams: _urlParams })}
-				alt={p.imgName}
-			/>
-		);
-	});
-
-	return <div className="partner-bar">{rows}</div>;
+	return rows;
 };
+
+const IndexPage = () => {
+	const { i18n } = useContext(i18nContext);
+
+	const link = (
+		<Link to={path.setting.root}>
+			<i className="icon icon icon-icon32px_1" />
+			{i18n.lbl_Back}
+		</Link>
+	);
+
+	return (
+		<>
+			<Header title={i18n.ibi_GameProvider} hideLogo={true} link={link} />
+			<main className="main provider">
+				<GameProvider i18n={i18n} />
+			</main>
+		</>
+	);
+};
+
+export default IndexPage;

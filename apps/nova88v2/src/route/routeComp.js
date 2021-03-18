@@ -12,7 +12,8 @@ import ForgetPwd from "../components/login/forgetPwd";
 import ResetPwd from "../components/login/resetPwd";
 
 import Setting from "../pages/setting";
-
+import ContactUs from "../components/setting/contactUs";
+import GameProvider from "../components/setting/gameProvider";
 import Whoami from "../pages/whoami";
 import PromotionInfo from "../pages/promotionInfo";
 
@@ -92,6 +93,9 @@ const RouteComponents = () => {
 			<Casino path={`/:langId/${path.casino.root}`} />
 			<Casino path={`/:langId/${path.casino.root}/:tpId`} />
 			<Setting path={`/:langId/${path.setting.root}`} />
+			<ContactUs path={`/:langId/${path.contactUs.root}`} />
+			<GameProvider path={`/:langId/${path.gameProvider.root}`} />
+
 			<Whoami path={path.whoami.root} />
 			<Ranking path={`/:langId/${path.ranking.root}`} />
 			<AngPow path={`/:langId/${path.angPow.root}`} />

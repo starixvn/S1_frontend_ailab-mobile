@@ -128,5 +128,11 @@ export default {
 	},
 	oneGame: {
 		root: "oneGame"
+	},
+	contactUs: {
+		root: "contactUs"
+	},
+	gameProvider: {
+		root: "gameProvider"
 	}
 };

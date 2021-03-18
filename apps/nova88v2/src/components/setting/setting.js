@@ -145,12 +145,13 @@ export default () => {
 					<a href={`${siteInfo(userInfo.langId).affiliateLink}`}>
 						{i18n.lbl_Affiliate}
 					</a>
-					<a href="/SiteSkin/Nova88/Static/cs/ContactUs.html">
-						{i18n.lbl_ContactUs}
-					</a>
+					<Link to={path.contactUs.root}>{i18n.lbl_ContactUs}</Link>
 					<a href="/SiteSkin/Nova88/Static/cs/Terms.html">
 						{i18n.lbl_Terms}
 					</a>
+					<Link to={path.gameProvider.root}>
+						{i18n.ibi_GameProvider}
+					</Link>
 				</Card>
 				<Card btnTitle={i18n.lbl_SocialMedia} btnClass="icon-facebook2">
 					<a
