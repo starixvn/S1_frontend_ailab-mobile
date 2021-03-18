@@ -168,6 +168,10 @@
   content: "\e9a4";
 }
 
+.icon-upcomingmatches:before {
+  content: "\e9cf";
+}
+
 .icon-home123:before {
   content: "\e900";
 }

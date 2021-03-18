@@ -129,6 +129,9 @@ export default {
 	oneGame: {
 		root: "oneGame"
 	},
+	vip: {
+		root: "vip"
+	},
 	contactUs: {
 		root: "contactUs"
 	},

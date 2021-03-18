@@ -76,8 +76,8 @@ import Kiss918 from "../pages/918kiss";
 import FriendReferral from "../pages/referral";
 // import ReferFriends from "../components/referral/referFriends";
 import ReferralHistory from "../pages/referralHistory";
-
 import OneGame from "../pages/oneGame";
+import VIP from "../pages/vip";
 
 const RouteComponents = () => {
 	return (
@@ -181,6 +181,7 @@ const RouteComponents = () => {
 			</FinancialLog>
 
 			<OneGame path={`/:langId/${path.oneGame.root}`} />
+			<VIP path={`/:langId/${path.vip.root}`} />
 			{/* <Kiss918 path={`/:langId/${path.kiss918.root}`} /> */}
 		</Router>
 	);
