@@ -131,5 +131,11 @@ export default {
 	},
 	vip: {
 		root: "vip"
+	},
+	contactUs: {
+		root: "contactUs"
+	},
+	gameProvider: {
+		root: "gameProvider"
 	}
 };

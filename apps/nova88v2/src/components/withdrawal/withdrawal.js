@@ -14,6 +14,7 @@ import config from "../../config";
 import RecentDatas from "./withdrawal.recentDatas";
 import ReloadSpin from "../common/reloadSpin";
 import path from "../../path";
+import useTip from "../hook/useTip";
 import { Iov_GetBlackBox } from "../common/iovation";
 import api from "../../service/api";
 
@@ -37,7 +38,7 @@ const Panel = () => {
 		accountName: "",
 		bankList: []
 	});
-	const [info, setInfo] = useState("");
+	const { showTips, showTipHandler } = useTip();
 	const [recentDatas, setRecentDatas] = useState([]);
 	const [pageVerify, setPageVerify] = useState(true);
 
@@ -482,10 +483,10 @@ const Panel = () => {
 		});
 	};
 
-	const clickInfo = () => {
-		const _info = info === "" ? i18n.lbl_AmountTooltip : "";
-		setInfo(_info);
-	};
+	// const clickInfo = () => {
+	// 	const _info = info === "" ? i18n.lbl_AmountTooltip : "";
+	// 	setInfo(_info);
+	// };
 
 	const banks = bankInfo?.bankList?.map(b => {
 		return (
@@ -523,9 +524,9 @@ const Panel = () => {
 				value={amount}
 				inputType="tel"
 				onChange={EditAmount}
-				clickInfo={clickInfo}
-				infoText={info}
-				showTips={info !== ""}
+				clickInfo={() => showTipHandler("amount")}
+				infoText={i18n.lbl_AmountTooltip}
+				showTips={showTips.includes("amount")}
 				placeholder={i18n.lbl_Amount}
 				btnStatus={warning.status}
 				warningMsg={warning.msg}

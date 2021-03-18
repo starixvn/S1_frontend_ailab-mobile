@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect, useRef } from "react";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
 import { useNavigate } from "@reach/router";
 import Inputbox from "../common/inputbox.password";
+import useTip from "../hook/useTip";
 import { LOGOUT } from "../../service/auth";
 import Layout from "../common/layout";
 import api from "../../service/api";
@@ -14,7 +15,7 @@ const ResetPwd = () => {
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const [newPsw, setNewPsw] = useState("");
 	const [pswState, setPswState] = useState(false);
-	const [showTips, setTips] = useState([]);
+	const { showTips, showTipHandler } = useTip();
 	const [warning, setWarning] = useState({ status: null, msg: "" });
 	const isMountedRef = useRef(null);
 
@@ -24,14 +25,6 @@ const ResetPwd = () => {
 			isMountedRef.current = false;
 		};
 	});
-
-	const showTip = col => {
-		if (showTips.includes(col)) {
-			setTips(showTips.filter(el => el !== col));
-		} else {
-			setTips(prev => [...prev, col]);
-		}
-	};
 
 	useEffect(() => {
 		const key = getUrlParameter("key");
@@ -171,7 +164,7 @@ const ResetPwd = () => {
 				checked={warning.status}
 				tips={i18n.msg_PasswordVaildate}
 				warningMsg={warning.msg}
-				clickInfo={showTip.bind(null, "Password")}
+				clickInfo={() => showTipHandler("Password")}
 				showTips={showTips.includes("Password")}
 			/>
 			<div className="btn-group">

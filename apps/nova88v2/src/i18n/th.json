@@ -488,5 +488,6 @@
 	"lbl_Vip_Normal":"ปกติ",
 	"lbl_Vip_Lifetime":"อายุการใช้งาน",
 	"lbl_Vip_3Months":"สามเดือน",
-	"lbl_VIP":"VIP"
+	"lbl_VIP":"VIP",
+	"ibi_GameProvider":"ผู้ให้บริการเกม"
 }

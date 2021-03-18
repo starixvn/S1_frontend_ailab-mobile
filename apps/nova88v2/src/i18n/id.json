@@ -488,5 +488,6 @@
 	"lbl_Vip_Normal":"Normal",
 	"lbl_Vip_Lifetime":"Seumur Hidup",
 	"lbl_Vip_3Months":"Tiga Bulan",
-	"lbl_VIP":"VIP"
+	"lbl_VIP":"VIP",
+	"ibi_GameProvider":"Penyedia permainan"
 }
