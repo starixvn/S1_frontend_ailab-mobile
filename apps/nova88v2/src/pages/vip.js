@@ -12,6 +12,7 @@ import { EventList } from "../components/vip/eventList";
 import { Info } from "../components/vip/info";
 import { FooterBanner } from "../components/vip/footerBanner";
 import Header from "../components/header/header";
+import Footer from "../components/common/footer";
 
 const Banners = ({ langId }) => {
 	const rows = defBannersUrl({ langId }).map((b, bIdx) => (
@@ -55,6 +56,7 @@ const IndexPage = () => {
 					/>
 				</div>
 			</main>
+			<Footer />
 		</>
 	);
 };

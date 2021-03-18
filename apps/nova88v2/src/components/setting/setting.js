@@ -14,18 +14,14 @@ import ThemeMode from "./setting.themeMode";
 import path from "../../path";
 import { siteInfo } from "../../config";
 
-const BtnBar = ({ langId, isLogin, i18n, msgCount }) => {
+const BtnBar = ({ isLogin, i18n, msgCount }) => {
 	return isLogin ? (
 		<div className="tag">
-			<Link
-				to={`/${langId}/${path.profile.root}`}
-				className="icon icon-member">
+			<Link to={path.profile.root} className="icon icon-member">
 				{i18n.lbl_MyAccount}
 			</Link>
 			<i />
-			<Link
-				to={`/${langId}/${path.message.root}`}
-				className="icon icon-email">
+			<Link to={path.message.root} className="icon icon-email">
 				{i18n.lbl_Message}
 				{msgCount ? (
 					<i className="quantity">
@@ -36,9 +32,9 @@ const BtnBar = ({ langId, isLogin, i18n, msgCount }) => {
 		</div>
 	) : (
 		<div className="tag">
-			<Link to={`/${langId}/${path.join.root}`}>{i18n.lbl_JoinNow}</Link>
+			<Link to={path.join.root}>{i18n.lbl_JoinNow}</Link>
 			<i />
-			<Link to={`/${langId}/${path.login.root}`}>{i18n.lbl_Login}</Link>
+			<Link to={path.login.root}>{i18n.lbl_Login}</Link>
 		</div>
 	);
 };
@@ -51,7 +47,6 @@ BtnBar.defaultProps = {
 BtnBar.propTypes = {
 	isLogin: PropTypes.bool,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	langId: PropTypes.string.isRequired,
 	msgCount: PropTypes.number
 };
 
