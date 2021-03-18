@@ -1,6 +1,11 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { userInfoContext, i18nContext, navContext, defNavPanel } from "Context";
-import { useMatch, useNavigate } from "@reach/router";
+import {
+	useMatch,
+	useNavigate,
+	useLocation,
+	globalHistory
+} from "@reach/router";
 import { Link } from "@Router";
 import useTip from "../hook/useTip";
 import Inputbox from "../common/inputbox.hint";
@@ -30,6 +35,7 @@ const warningLangKey = {
 };
 
 const LoginPage = () => {
+	const state = useLocation();
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -46,6 +52,12 @@ const LoginPage = () => {
 			isMountedRef.current = false;
 		};
 	});
+
+	useEffect(() => {
+		if (state.state.fromHeader) {
+			localStorage.setItem("previousPage", "/");
+		}
+	}, [globalHistory]);
 
 	const checkValueHandler = (colName, e) => {
 		let flag = "";
@@ -99,7 +111,7 @@ const LoginPage = () => {
 		if (checked) {
 			const CallBackLogin = (errorCode, message, isLogin, userData) => {
 				if (errorCode === 0) {
-					navigate(-1);
+					navigate(localStorage.getItem("previousPage"));
 					if (isMountedRef.current) {
 						setUserInfo(() => ({
 							...userData,

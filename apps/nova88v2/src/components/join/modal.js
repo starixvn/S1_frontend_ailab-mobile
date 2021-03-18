@@ -25,7 +25,8 @@ const Modal = ({ isLogin, isJoin }) => {
 
 	return isJoin || isLogin ? (
 		<div className="logoSwitch active">
-			<button onClick={() => navigate(-1)}>
+			<button
+				onClick={() => navigate(localStorage.getItem("previousPage"))}>
 				<div className="icon icon-close" />
 			</button>
 			<Logo langId={userInfo.langId} />
