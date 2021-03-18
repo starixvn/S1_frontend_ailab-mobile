@@ -168,8 +168,12 @@
   content: "\e9a4";
 }
 
-.icon-home:before {
-  content: "\e956";
+.icon-upcomingmatches:before {
+  content: "\e9cf";
+}
+
+.icon-home123:before {
+  content: "\e900";
 }
 
 .icon-deposit1:before {
@@ -210,6 +214,10 @@
 
 .icon-icon_1_cop:before {
   content: "\e996";
+}
+
+.icon-mediafire:before {
+  content: "\e9ca";
 }
 
 .icon-tiktok:before {
@@ -752,8 +760,8 @@
   content: "\e950";
 }
 
-.icon-home123:before {
-  content: "\e900";
+.icon-home:before {
+  content: "\e956";
 }
 
 .icon-newspaper:before {
@@ -766,6 +774,14 @@
 
 .icon-camera:before {
   content: "\e919";
+}
+
+.icon-film:before {
+  content: "\e9cb";
+}
+
+.icon-video-camera:before {
+  content: "\e9cc";
 }
 
 .icon-connection:before {
@@ -1012,6 +1028,10 @@
   content: "\ea96";
 }
 
+.icon-youtube:before {
+  content: "\ea9d";
+}
+
 .icon-appleinc:before {
   content: "\eabe";
 }
@@ -1044,6 +1064,14 @@
   content: "\e939";
 }
 
+.icon-news:before {
+  content: "\e9cd";
+}
+
+.icon-paper:before {
+  content: "\e9cd";
+}
+
 .icon-like:before {
   content: "\e936";
 }
@@ -1074,6 +1102,10 @@
 
 .icon-conversation:before {
   content: "\e935";
+}
+
+.icon-box-bookmark:before {
+  content: "\e9c8";
 }
 
 .icon-icon32px_openmail:before {
