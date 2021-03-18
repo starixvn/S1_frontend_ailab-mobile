@@ -260,7 +260,7 @@ const Payment = props => {
 				payType={payType}
 				msg={warning}
 				status={status}
-				tip={i18n.lbl_AmountTooltip0}
+				tip={i18n.lbl_AmountTooltip}
 			/>
 			<div className="btn-group">
 				<button className="orange" onClick={ClickSubmit}>

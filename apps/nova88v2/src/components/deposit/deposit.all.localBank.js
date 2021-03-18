@@ -237,7 +237,7 @@ const Payment = props => {
 				SelectAmount={SelectAmount}
 				EditAmount={EditAmount}
 				payType={payType}
-				tip={i18n.lbl_AmountTooltip0}
+				tip={i18n.lbl_AmountTooltip}
 				msg={warning}
 				status={status}
 			/>
