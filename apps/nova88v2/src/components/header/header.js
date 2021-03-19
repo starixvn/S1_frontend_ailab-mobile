@@ -85,10 +85,16 @@ const HeaderBtn = ({ userInfo }) => {
 	} else {
 		content = (
 			<div className="headerButton">
-				<Link className="loginBtn" to={path.login.root}>
+				<Link
+					className="loginBtn"
+					to={path.login.root}
+					state={{ fromHeader: true }}>
 					{i18n.lbl_Login}
 				</Link>
-				<Link className="joinBtn" to={path.join.root}>
+				<Link
+					className="joinBtn"
+					to={path.join.root}
+					state={{ fromHeader: true }}>
 					{i18n.lbl_JoinNow}
 				</Link>
 			</div>

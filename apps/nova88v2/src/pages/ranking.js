@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
-import { useNavigate } from "@reach/router";
 import { i18nContext, userInfoContext } from "../components/common/context";
-import path from "../path";
+import useHandleLogin from "../components/hook/useHandleLogin";
 import Event from "../components/ranking/event";
 import RankingByCategory from "../components/ranking/rankByCategory";
 import Record from "../components/ranking/records";
@@ -47,10 +46,7 @@ const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { isLogin } = userInfo;
-	const navigate = useNavigate();
-	const handleLogin = () => {
-		navigate(`${path.login.root}`);
-	};
+	const { handleLogin } = useHandleLogin();
 	const { selected, handleSelect } = useHandleSelect({
 		defaultSelect: defBtns.Event.value,
 		handleLogin,
