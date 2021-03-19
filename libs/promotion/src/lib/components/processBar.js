@@ -23,7 +23,7 @@ export default ({
 		promotionType !== defPromotionType.cashback &&
 		promotionType !== defPromotionType.rebate
 	) {
-		let percentage =
+		const percentage =
 			status === defPromoStatus.Fulfill || custTurnOver >= custRollOver
 				? 100
 				: ((custTurnOver / custRollOver) * 100).toFixed(2);
