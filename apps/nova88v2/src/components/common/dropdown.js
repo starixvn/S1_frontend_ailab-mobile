@@ -77,6 +77,7 @@ export class DropdownBox extends Component {
 							<i className="icon icon-cake" />
 						)}
 						<button
+							onBlur={this.props.onBlur}
 							className="dropdown btn"
 							onClick={this.ClickDropdown}>
 							<span className="text">
@@ -122,6 +123,7 @@ DropdownBox.defaultProps = {
 	warningMsg: "",
 	testAttr: "",
 	hideInfo: false,
+	onBlur: () => null,
 	birthDayIcon: false
 };
 
@@ -142,6 +144,7 @@ DropdownBox.propTypes = {
 	warningMsg: PropTypes.string,
 	testAttr: PropTypes.string,
 	hideInfo: PropTypes.bool,
+	onBlur: PropTypes.func,
 	birthDayIcon: PropTypes.bool
 };
 

@@ -12,7 +12,8 @@ import ForgetPwd from "../components/login/forgetPwd";
 import ResetPwd from "../components/login/resetPwd";
 
 import Setting from "../pages/setting";
-
+import ContactUs from "../components/setting/contactUs";
+import GameProvider from "../components/setting/gameProvider";
 import Whoami from "../pages/whoami";
 import PromotionInfo from "../pages/promotionInfo";
 
@@ -67,13 +68,13 @@ import ChangePwd from "../components/profile/changePwd";
 import Kyc from "../components/withdrawal/kyc";
 import KycWaiting from "../components/withdrawal/kycWaiting";
 
-// import Kiss918 from "../pages/918kiss";
+import Kiss918 from "../pages/918kiss";
 
 import FriendReferral from "../pages/referral";
 // import ReferFriends from "../components/referral/referFriends";
 import ReferralHistory from "../pages/referralHistory";
-
 import OneGame from "../pages/oneGame";
+import VIP from "../pages/vip";
 
 const RouteComponents = () => {
 	return (
@@ -89,6 +90,9 @@ const RouteComponents = () => {
 			<Casino path={`/:langId/${path.casino.root}`} />
 			<Casino path={`/:langId/${path.casino.root}/:tpId`} />
 			<Setting path={`/:langId/${path.setting.root}`} />
+			<ContactUs path={`/:langId/${path.contactUs.root}`} />
+			<GameProvider path={`/:langId/${path.gameProvider.root}`} />
+
 			<Whoami path={path.whoami.root} />
 			<Ranking path={`/:langId/${path.ranking.root}`} />
 			<AngPow path={`/:langId/${path.angPow.root}`} />
@@ -169,6 +173,7 @@ const RouteComponents = () => {
 			</FinancialLog>
 
 			<OneGame path={`/:langId/${path.oneGame.root}`} />
+			<VIP path={`/:langId/${path.vip.root}`} />
 			{/* <Kiss918 path={`/:langId/${path.kiss918.root}`} /> */}
 		</Router>
 	);

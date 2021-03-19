@@ -6,13 +6,15 @@ export const useGetPromotions = ({ api, userInfo: { langId } }) => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	const getPromotionListV2 = useCallback(() => {
 		api.promotion.GetPromotionListV2({ langId }).then(res => {
 			if (res.data.errorCode === 0 && isMountedRef.current) {
-				let result = res.data.data.sort((a, b) =>
+				const result = res.data.data.sort((a, b) =>
 					a.periodFrom > b.periodFrom ? -1 : 1
 				);
 

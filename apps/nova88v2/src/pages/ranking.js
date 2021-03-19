@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
-import { useNavigate } from "@reach/router";
 import { i18nContext, userInfoContext } from "../components/common/context";
-import path from "../path";
+import useHandleLogin from "../components/hook/useHandleLogin";
 import Event from "../components/ranking/event";
 import RankingByCategory from "../components/ranking/rankByCategory";
 import Record from "../components/ranking/records";
@@ -9,6 +8,7 @@ import { defBtns, defElemType } from "../components/ranking/def";
 import { useHandleSelect } from "../components/ranking/hook";
 import BtnBar from "../components/common/btnBar";
 import Header from "../components/header/header";
+import { Link } from "../route/link";
 
 const Ranking = ({ selected }) => {
 	const { i18n } = useContext(i18nContext);
@@ -46,20 +46,17 @@ const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { isLogin } = userInfo;
-	const navigate = useNavigate();
-	const handleLogin = () => {
-		navigate(`${path.login.root}`);
-	};
+	const { handleLogin } = useHandleLogin();
 	const { selected, handleSelect } = useHandleSelect({
 		defaultSelect: defBtns.Event.value,
 		handleLogin,
 		isLogin
 	});
 	const link = (
-		<a href="/">
+		<Link to="/">
 			<i className="icon icon icon-icon32px_1" />
 			{i18n.lbl_Back}
-		</a>
+		</Link>
 	);
 	return (
 		<>

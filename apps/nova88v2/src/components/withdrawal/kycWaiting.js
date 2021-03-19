@@ -1,16 +1,18 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
-import { i18nContext, userInfoContext } from "Context";
+import React, { useContext, useEffect, useRef } from "react";
+import { i18nContext, userInfoContext, loadingContext } from "Context";
 import { useNavigate } from "@reach/router";
 import path from "Path";
-import Loading from "../common/loading";
 import api from "../../service/api";
+import Layout from "../common/layout";
+import Header from "../header/header";
 
 export default () => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
+
 	const { userInfo } = useContext(userInfoContext);
+	const { setLoading } = useContext(loadingContext);
 	const isMountedRef = useRef(null);
-	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -39,10 +41,8 @@ export default () => {
 							);
 						}
 					}
-
 					return hasBankInfo;
 				});
-
 				return result;
 			};
 
@@ -63,7 +63,7 @@ export default () => {
 								setLoading(false);
 							}
 						},
-						res => {
+						() => {
 							if (isMountedRef.current) {
 								setLoading(false);
 							}
@@ -74,27 +74,14 @@ export default () => {
 		}
 	}, [userInfo.isLogin, userInfo.langId, navigate]);
 
-	return loading ? (
-		<Loading />
-	) : (
+	return (
 		<>
-			<div className="step">
-				<div className="stepLine">
-					<div className="stepBar100" />
-				</div>
-				<div className="circle">
-					<div>
-						<div className="icon icon-checkmark" />
-					</div>
-				</div>
-				<div className="circle">
-					<div>
-						<div className="icon icon-checkmark" />
-					</div>
-				</div>
-			</div>
-			<div className="icon icon-like" />
-			<span className="text-center">{i18n.lbl_WaitKYCHint}</span>
+			<Header title={i18n.lbl_WaitKYC} hideLogo={true} />
+			<Layout mainClass="main kyc">
+				<div className="icon icon-jump" />
+				<div className="text-center">{i18n.lbl_WaitKYC}</div>
+				<div className="text-center">{i18n.lbl_WaitKYCHint}</div>
+			</Layout>
 		</>
 	);
 };

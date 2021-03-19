@@ -1,7 +1,13 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { userInfoContext, i18nContext, navContext, defNavPanel } from "Context";
-import { useMatch, useNavigate } from "@reach/router";
+import {
+	useMatch,
+	useNavigate,
+	useLocation,
+	globalHistory
+} from "@reach/router";
 import { Link } from "@Router";
+import useTip from "../hook/useTip";
 import Inputbox from "../common/inputbox.hint";
 import InputboxPWD from "../common/inputbox.password";
 import { LOGIN } from "../../service/auth";
@@ -28,7 +34,8 @@ const warningLangKey = {
 	Password: "msg_PasswordReq"
 };
 
-const LoginPage = ({ ButtonTitle = "", hideBtn = false }) => {
+const LoginPage = () => {
+	const state = useLocation();
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -37,7 +44,7 @@ const LoginPage = ({ ButtonTitle = "", hideBtn = false }) => {
 	const [pswState, setPswState] = useState(false);
 	const [warningState, setWarningState] = useState(initWarningState);
 	const isMountedRef = useRef(null);
-	const [showTips, setTips] = useState([]);
+	const { showTips, showTipHandler } = useTip();
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -45,6 +52,12 @@ const LoginPage = ({ ButtonTitle = "", hideBtn = false }) => {
 			isMountedRef.current = false;
 		};
 	});
+
+	useEffect(() => {
+		if (state.state.fromHeader) {
+			localStorage.setItem("previousPage", "/");
+		}
+	}, [globalHistory]);
 
 	const checkValueHandler = (colName, e) => {
 		let flag = "";
@@ -65,14 +78,6 @@ const LoginPage = ({ ButtonTitle = "", hideBtn = false }) => {
 				}
 			};
 		});
-	};
-
-	const showTip = col => {
-		if (showTips.includes(col)) {
-			setTips(showTips.filter(el => el !== col));
-		} else {
-			setTips(prev => [...prev, col]);
-		}
 	};
 
 	const showPswHandler = () => {
@@ -106,13 +111,14 @@ const LoginPage = ({ ButtonTitle = "", hideBtn = false }) => {
 		if (checked) {
 			const CallBackLogin = (errorCode, message, isLogin, userData) => {
 				if (errorCode === 0) {
+					navigate(localStorage.getItem("previousPage"));
 					if (isMountedRef.current) {
 						setUserInfo(() => ({
 							...userData,
 							isLogin
 						}));
-						setNav(null);
-						navigate(`/${userData.langId}`);
+
+						// setNav(null);
 					}
 				} else if (
 					errorCode === 1101 ||
@@ -147,7 +153,6 @@ const LoginPage = ({ ButtonTitle = "", hideBtn = false }) => {
 
 	const handleloginPanel = (show, reset, showBylink) => {
 		if (reset) {
-			// 清空狀態
 			setUserValueState(initState);
 			setWarningState(initWarningState);
 		}
@@ -184,7 +189,7 @@ const LoginPage = ({ ButtonTitle = "", hideBtn = false }) => {
 				onBlur={checkValueHandler.bind(null, "UserName")}
 				btnStatus={warningState.UserName.status}
 				infoText={i18n.lbl_UsernameTooltip}
-				clickInfo={showTip.bind(null, "UserName")}
+				clickInfo={() => showTipHandler("UserName")}
 				showTips={showTips.includes("UserName")}
 			/>
 
@@ -200,7 +205,7 @@ const LoginPage = ({ ButtonTitle = "", hideBtn = false }) => {
 				onBlur={checkValueHandler.bind(null, "Password")}
 				tips={i18n.msg_PasswordVaildate}
 				warningMsg={warningState.Password.msg}
-				clickInfo={showTip.bind(null, "Password")}
+				clickInfo={() => showTipHandler("Password")}
 				showTips={showTips.includes("Password")}
 				checked={warningState.Password.status}
 			/>

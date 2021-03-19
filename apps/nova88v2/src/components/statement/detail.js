@@ -18,6 +18,7 @@ import path from "../../path";
 import api from "../../service/api";
 import { useHandlePage } from "./hook";
 import { Filter } from "./filter";
+import GoTopBtn from "../common/goTopBtn";
 
 const Index = props => {
 	const { i18n } = useContext(i18nContext);
@@ -169,6 +170,7 @@ const Index = props => {
 						{i18n.lbl_WinlostAmountTotal}：
 						{number_format(totalWinLoss, _isConvert)}
 					</div>
+					<GoTopBtn />
 				</>
 			) : (
 				<div className="nodata icon icon-nodata">

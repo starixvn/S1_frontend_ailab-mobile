@@ -3,7 +3,7 @@ import JoinBtn from "./joinBtn";
 import DetailBtn from "./detailBtn";
 import PromoRule from "./promotionCard.promoRule";
 import { Stamp } from "./stamp";
-import { canJoin } from "../common/common";
+import { CanJoin } from "../common/common";
 import { defUrlParamCols } from "../common/def";
 
 export default ({
@@ -20,7 +20,7 @@ export default ({
 }) => (
 	<div
 		className={`promodule${_isClaimed ? " open" : ""}${
-			canJoin({
+			CanJoin({
 				_isExpiry,
 				canJoin: p.canJoin,
 				filterType: urlParameters?.[defUrlParamCols.filterType]

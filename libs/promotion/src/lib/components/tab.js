@@ -12,7 +12,7 @@ export const useHandleTab = ({ defaultValue = defTabs.Processing.key }) => {
 };
 
 export default ({ i18n, tab, onClickTab }) => {
-	let rows = Object.values(defTabs).map(t => (
+	const rows = Object.values(defTabs).map(t => (
 		<TabBtn
 			key={`promo-tab-${t.key}`}
 			isOpen={tab === t.key}

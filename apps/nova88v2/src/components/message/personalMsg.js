@@ -6,6 +6,7 @@ import {
 	loadingContext
 } from "Context";
 import ReloadSpin from "../common/reloadSpin";
+import GoTopBtn from "../common/goTopBtn";
 import api from "../../service/api";
 import Detail from "./personalMsg.detail";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
@@ -329,11 +330,15 @@ const Panel = () => {
 					<button className="icon icon-bin" onClick={delMsg} />
 					<ReloadSpin
 						func={GetMsgList.bind(this, { loading: false })}
+						className="icon icon-spinner11"
 					/>
 				</div>
 			</div>
 			{msgList.length > 0 ? (
-				arr
+				<>
+					{arr}
+					<GoTopBtn />
+				</>
 			) : (
 				<div className="nodata icon icon-nodata">
 					<div className="txt-white">{i18n.msg_NoData}</div>

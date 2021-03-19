@@ -8,12 +8,11 @@ export const Stamp = ({
 	filterType,
 	canJoin
 }) => {
-	let _canJoin =
-		filterType === defFilterType.specialBonus && !canJoin ? false : true;
+	const _canJoin = !(filterType === defFilterType.specialBonus && !canJoin);
 
 	return _isClaimed ? (
-		<div className="claimed"></div>
+		<div className="claimed" />
 	) : _canJoin && _isNew && !_isExpiry ? (
-		<div className="new active"></div>
+		<div className="new active" />
 	) : null;
 };
