@@ -146,53 +146,58 @@ const Payment = props => {
 									window.location.reload();
 								};
 
-								const UploadReceipt = async () => {
-									try {
-										const formData = new FormData();
-										formData.append(
-											"TransId",
-											res.data.data.transId
-										);
-										formData.append(
-											"Receipt",
-											bankSlipPopBox.receipt
-										);
+								if (bankSlipPopBox.receipt) {
+									const UploadReceipt = async () => {
+										try {
+											const formData = new FormData();
+											formData.append(
+												"TransId",
+												res.data.data.transId
+											);
+											formData.append(
+												"Receipt",
+												bankSlipPopBox.receipt
+											);
 
-										const resUploadReceipt = await api_UploadReceipt(
-											formData
-										);
+											const resUploadReceipt = await api_UploadReceipt(
+												formData
+											);
 
-										if (
-											resUploadReceipt.data.errorCode !==
-											0
-										) {
-											setPopBox(prevState => ({
-												...prevState,
-												title: i18n.lbl_ImportantNote,
-												content: result.message,
-												isOpen: true,
-												hasBtn: true,
-												btnBar: (
-													<div className="btn-group">
-														<button
-															className="orange"
-															onClick={
-																CloseDoneDepositPopup
-															}>
-															OK
-														</button>
-													</div>
-												)
-											}));
-										} else {
+											if (
+												resUploadReceipt.data
+													.errorCode !== 0
+											) {
+												setPopBox(prevState => ({
+													...prevState,
+													title:
+														i18n.lbl_ImportantNote,
+													content: result.message,
+													isOpen: true,
+													hasBtn: true,
+													btnBar: (
+														<div className="btn-group">
+															<button
+																className="orange"
+																onClick={
+																	CloseDoneDepositPopup
+																}>
+																OK
+															</button>
+														</div>
+													)
+												}));
+											} else {
+												CloseDoneDepositPopup();
+											}
+										} catch (error) {
 											CloseDoneDepositPopup();
 										}
-									} catch (error) {
-										CloseDoneDepositPopup();
-									}
-								};
+									};
 
-								UploadReceipt();
+									UploadReceipt();
+								} else {
+									CloseDoneDepositPopup();
+								}
 							} else {
 								setPopBox(prevState => ({
 									...prevState,
