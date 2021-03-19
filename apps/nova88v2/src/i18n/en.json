@@ -153,7 +153,7 @@
 	"lbl_PersonalMsg": "Personal Message",
 	"lbl_Announcement": "Announcement",
 	"lbl_SelectAll": "Select All",
-	"lbl_AttachFile": "Please attach your bank slip here. (Optional)",
+	"lbl_AttachFile": "Please attach your bank slip here.",
 	"lbl_UploadFile": "Upload File",
 	"lbl_RefnoToolTip": "Please submit your bank slip reference number",
 	"lbl_DepositTime": "Deposit Time",
@@ -463,6 +463,8 @@
 	"lbl_MinMaxAmount":"Min/Max Limit",
 	"lbl_SelectBank":"Select Bank",
 	"lbl_UploadReceipt":"Upload Receipt",
-	"lbl_Refno":"Reference No."
+	"lbl_Refno":"Reference No.",
+	"lbl_DepositOptions": "Deposit Options",
+	"lbl_DepositProcessingDescription":"Processing deposit please update the below or click on history link to view the deposit result."
 
 }

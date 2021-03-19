@@ -49,19 +49,35 @@ const GroupList = ({
 				<i className="icon icon-icon32px_check" />
 				<div className="bank">
 					<div>{data[displayKey]}</div>
-					<div>
-						{showMinMaxHint &&
-						channel?.minAmount &&
-						channel?.maxAmount
-							? `${i18n.lbl_MinMaxAmount}: ${number_format(
-									channel.minAmount,
-									_isConvert
-							  )} / ${number_format(
-									channel.maxAmount,
-									_isConvert
-							  )}`
-							: ""}
-					</div>
+					{!channel ? (
+						<div>
+							{showMinMaxHint &&
+							data?.minAmount &&
+							data?.maxAmount
+								? `${i18n.lbl_MinMaxAmount}: ${number_format(
+										data.minAmount,
+										_isConvert
+								  )} / ${number_format(
+										data.maxAmount,
+										_isConvert
+								  )}`
+								: ""}
+						</div>
+					) : (
+						<div>
+							{showMinMaxHint &&
+							channel?.minAmount &&
+							channel?.maxAmount
+								? `${i18n.lbl_MinMaxAmount}: ${number_format(
+										channel.minAmount,
+										_isConvert
+								  )} / ${number_format(
+										channel.maxAmount,
+										_isConvert
+								  )}`
+								: ""}
+						</div>
+					)}
 				</div>
 			</div>
 		);

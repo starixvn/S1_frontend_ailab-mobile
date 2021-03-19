@@ -77,7 +77,7 @@
 	"msg_NeedAccountName": "Butuh Nama Akun",
 	"msg_NeedAccountNo": "Butuh Nomor Rekening",
 	"lbl_Cancel": "Batal",
-	"lbl_BankAccount": "Rekening Bank",
+	"lbl_BankAccount": "Akun bank",
 	"lbl_CheckConfirm": "Apakah anda yakin untuk menghapus? Jika sudah terhapus maka tidak bisa kembali lagi",
 	"msg_Updatesuccessful": "Pembaruan berhasil",
 	"lbl_Confirm": "Konfirmasi",
@@ -458,10 +458,12 @@
 	"lbl_Nova_Club":"NOVA CLUB",
 	"lbl_ReSend":"Re-send in",
 	"lbl_Minutes":"Menit",
-	"lbl_PaymentModes":"Payment Modes",
-	"lbl_SelectChannel":"Select Channel",
-	"lbl_MinMaxAmount":"Min/Max Limit",
-	"lbl_SelectBank":"Select Bank",
-	"lbl_UploadReceipt":"Upload Receipt",
-	"lbl_Refno":"Reference No."
+	"lbl_PaymentModes":"Mode Pembayaran",
+	"lbl_SelectChannel":"Pilih Saluran",
+	"lbl_MinMaxAmount":"Batas Min / Maks",
+	"lbl_SelectBank":"Pilih Bank",
+	"lbl_UploadReceipt":"Unggah Tanda Terima",
+	"lbl_Refno":"Nomor Referensi",
+	"lbl_DepositOptions":"Pilihan Deposit",
+	"lbl_DepositProcessingDescription":"Memproses setoran, harap perbarui di bawah ini atau klik tautan riwayat untuk melihat hasil setoran."
 }

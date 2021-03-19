@@ -99,7 +99,10 @@ const Payment = props => {
 						}
 					);
 			} else {
-				setBank({});
+				setBank({
+					maxAmount: groupInfo.maxAmount,
+					minAmount: groupInfo.minAmount
+				});
 				setBankList([]);
 			}
 		}

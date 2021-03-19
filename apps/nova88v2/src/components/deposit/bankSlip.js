@@ -27,9 +27,7 @@ class Modal extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			processing: false,
-			fileIsSetted: false,
-			isUploaded: false
+			processing: false
 		};
 		this.isMountedRef = false;
 		this.filebox = React.createRef();
@@ -37,7 +35,6 @@ class Modal extends Component {
 
 	componentDidMount() {
 		/* eslint-disable */
-		console.log(this.props.currencyId);
 		this.isMountedRef = true;
 		this._clipboard = new ClipboardJS(".copyBtn");
 		this._clipboard.on("success", e => {});
@@ -53,20 +50,17 @@ class Modal extends Component {
 	onCheckUpload = () => {
 		const { files } = this.filebox.current;
 		if (files[0]) {
+			const picFileName = GetUploadFileName(files);
 			this.props.EditField("picFileName", GetUploadFileName(files));
-			this.setState({ fileIsSetted: true });
-		} else {
-			this.setState({ fileIsSetted: false });
+			if (this.props.bankSlipPopBox.hideSubmit)
+				this.props.SetImg(picFileName, files[0]);
 		}
 	};
-	// 參照號碼改非必船
-	// thb 必傳單具圖檔 沒船不能提交
-	// currencyId 4
 
 	onHandlePopBox = () => {
-		this.setState({ isUploaded: false });
-		this.setState({ fileIsSetted: false });
-		this.props.handlePopBox();
+		this.props.bankSlipPopBox.hideSubmit
+			? this.props.closePopBoxAndKeepData()
+			: this.props.handlePopBox();
 	};
 
 	onUploadFile = () => {
@@ -81,7 +75,6 @@ class Modal extends Component {
 						const result = response.data;
 						if (result.errorCode === 0) {
 							alert(this.props.i18n.lbl_UploadSuccess);
-							this.setState({ isUploaded: true });
 						} else {
 							alert(result.message);
 						}
@@ -105,7 +98,9 @@ class Modal extends Component {
 	};
 
 	SeReceipt = () => {
-		if (!this.state.processing) {
+		if (this.props.bankSlipPopBox.hideSubmit) {
+			this.props.closePopBoxAndKeepData();
+		} else if (!this.state.processing) {
 			this.setState({ processing: true });
 			const { bankSlipPopBox } = this.props;
 			api.payment
@@ -226,14 +221,13 @@ class Modal extends Component {
 								i18n.msg_SelectFile
 							} `}
 						</label>
-						<button
-							className={`${
-								this.state.fileIsSetted ? "orange" : "gray"
-							}`}
-							disabled={!this.state.fileIsSetted}
-							onClick={this.onUploadFile}>
-							{i18n.lbl_UploadFile}
-						</button>
+						{!bankSlipPopBox.hideSubmit && (
+							<button
+								className="orange"
+								onClick={this.onUploadFile}>
+								{i18n.lbl_UploadFile}
+							</button>
+						)}
 					</div>
 					<span className="text">
 						{i18n.lbl_DepositTime}{" "}
@@ -265,15 +259,9 @@ class Modal extends Component {
 							{i18n.lbl_Cancel}
 						</button>
 						<button
-							disabled={
-								!this.state.isUploaded &&
-								this.props.currencyId === 4
-							}
+							disabled={!bankSlipPopBox.picFileName}
 							className={`${
-								this.props.currencyId !== 4 ||
-								this.state.isUploaded
-									? "orange"
-									: "gray"
+								bankSlipPopBox.picFileName ? "orange" : "gray"
 							} closePopup`}
 							onClick={this.SeReceipt}>
 							{i18n.lbl_Submit}
@@ -295,7 +283,7 @@ Modal.propTypes = {
 	bankSlipPopBox: PropTypes.objectOf(PropTypes.any),
 	setPopBox: PropTypes.func.isRequired,
 	EditField: PropTypes.func.isRequired,
-	currencyId: PropTypes.number.isRequired
+	SetImg: PropTypes.func.isRequired
 };
 
 const Panel = () => {
@@ -313,6 +301,12 @@ const Panel = () => {
 		};
 	});
 
+	const closePopBoxAndKeepData = () => {
+		if (isMountedRef.current) {
+			setbankSlipPopBox(prev => ({ ...prev, isOpen: false }));
+		}
+	};
+
 	const handlePopBox = () => {
 		if (isMountedRef.current) {
 			if (bankSlipPopBox.closeCallBack) {
@@ -326,6 +320,14 @@ const Panel = () => {
 		setbankSlipPopBox(prevState => ({ ...prevState, [column]: value }));
 	};
 
+	const SetImg = (picFileName, receipt) => {
+		setbankSlipPopBox(prevState => ({
+			...prevState,
+			picFileName,
+			receipt
+		}));
+	};
+
 	return (
 		<Modal
 			currencyId={userInfo.currencyId}
@@ -334,6 +336,8 @@ const Panel = () => {
 			handlePopBox={handlePopBox}
 			EditField={EditField}
 			setPopBox={setPopBox}
+			closePopBoxAndKeepData={closePopBoxAndKeepData}
+			SetImg={SetImg}
 		/>
 	);
 };

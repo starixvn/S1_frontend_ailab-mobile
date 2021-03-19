@@ -30,10 +30,11 @@ const Payment = props => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const [status, setStatus] = useState(null);
-	const { setbankSlipPopBox } = useContext(bankSlipPopBoxContext);
+	const [processing, setProcessing] = useState(false);
+	const { bankSlipPopBox, setbankSlipPopBox } = useContext(
+		bankSlipPopBoxContext
+	);
 	const { setLoading } = useContext(loadingContext);
-
-	const [transID, setTransId] = useState("");
 	const [selBank, setBank] = useState({});
 	const [accountInfo, setAccountInfo] = useState({});
 
@@ -98,19 +99,17 @@ const Payment = props => {
 				: `${moment().format("yyyy-MM-DDT")}${moment().format(
 						"HH:mm"
 				  )}`,
-			transId: transID,
 			accountNo,
 			accountName,
 			isOpen: true,
-			disableSubmit: true
+			hideSubmit: true
 		}));
 	};
 
 	const ClickSubmit = () => {
 		const result =
 			selBank.sysId && amount !== "" && VaildAmount({ amount });
-
-		if (result) {
+		if (result && !processing) {
 			const RedirectToNext = (real_amount, sysId) => {
 				setLoading(true);
 				setPopBox(prevState => ({
@@ -127,8 +126,59 @@ const Payment = props => {
 						res => {
 							if (isMountedRef.current) {
 								if (res.data.errorCode === 0) {
-									setTransId(res.data.data.transId);
+									const CloseDoneDepositPopup = () => {
+										setProcessing(false);
+										window.location.reload();
+									};
+
 									setStatus(true);
+									const UploadReceipt = async () => {
+										try {
+											const formData = new FormData();
+											formData.append(
+												"TransId",
+												res.data.data.transId
+											);
+											formData.append(
+												"Receipt",
+												bankSlipPopBox.receipt
+											);
+
+											const resUploadReceipt = await api.payment.UploadReceipt(
+												formData
+											);
+
+											if (
+												resUploadReceipt.data
+													.errorCode !== 0
+											) {
+												setPopBox(prevState => ({
+													...prevState,
+													title:
+														i18n.lbl_ImportantNote,
+													content: result.message,
+													isOpen: true,
+													hasBtn: true,
+													btnBar: (
+														<div className="btn-group">
+															<button
+																className="orange"
+																onClick={
+																	CloseDoneDepositPopup
+																}>
+																OK
+															</button>
+														</div>
+													)
+												}));
+											} else {
+												CloseDoneDepositPopup();
+											}
+										} catch (error) {
+											CloseDoneDepositPopup();
+										}
+									};
+									if (bankSlipPopBox.receipt) UploadReceipt();
 								} else {
 									setPopBox(prevState => ({
 										...prevState,
@@ -202,10 +252,13 @@ const Payment = props => {
 	};
 
 	const _isConvert = isConvert(userInfo.currencyId);
+	const reciptIsRequired =
+		userInfo.currencyId === 4 ? bankSlipPopBox.receipt ?? false : true;
 	const canSubmit =
 		selBank.sysId &&
 		amount !== "" &&
-		VaildAmount({ amount, displayWarning: false });
+		VaildAmount({ amount, displayWarning: false }) &&
+		reciptIsRequired;
 
 	return (
 		<div className="depositModule active">
@@ -221,7 +274,6 @@ const Payment = props => {
 				imgKey="bankLogo"
 				idKey="sysId"
 				bindFullObj={true}
-				channel={selBank}
 				prefixImgUrl={`${config.imgUrl}/common/images/BankLogo/`}
 				imgKeyWithExtension={true}
 				accountInfo={accountInfo}
@@ -244,13 +296,11 @@ const Payment = props => {
 			<div className="btn-group">
 				<button
 					className={canSubmit ? "orange" : "gray"}
+					disabled={!canSubmit}
 					onClick={ClickSubmit}>
 					{i18n.lbl_Submit}
 				</button>
-				<button
-					className={transID ? "orange" : "gray"}
-					disabled={!transID}
-					onClick={SubmitProof.bind(this, selBank, accountInfo)}>
+				<button onClick={SubmitProof.bind(this, selBank, accountInfo)}>
 					{i18n.lbl_UploadReceipt}
 				</button>
 			</div>
@@ -332,15 +382,16 @@ const GroupList = ({
 							<i className="icon icon-icon32px_check" />
 							<div className="bank">
 								<div>{data[displayKey]}</div>
+
 								<div>
-									{channel?.minAmount && channel?.maxAmount
+									{data?.minAmount && data?.maxAmount
 										? `${
 												i18n.lbl_MinMaxAmount
 										  }: ${number_format(
-												channel.minAmount,
+												data.minAmount,
 												_isConvert
 										  )} / ${number_format(
-												channel.maxAmount,
+												data.maxAmount,
 												_isConvert
 										  )}`
 										: ""}

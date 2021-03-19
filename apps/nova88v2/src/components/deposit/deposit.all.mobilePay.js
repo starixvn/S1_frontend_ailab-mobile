@@ -69,7 +69,8 @@ const Payment = props => {
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
-								content: res.data.message
+								content:
+									res.data.message || i18n.msg_ApiServerError
 							});
 						}
 						setLoading(false);
