@@ -1,6 +1,6 @@
 import React, { useContext, createRef } from "react";
 import PropTypes from "prop-types";
-import { i18nContext, userInfoContext, navContext, defNavPanel } from "Context";
+import { i18nContext, userInfoContext } from "Context";
 import Slider from "../components/casino/slider";
 import defNav from "../components/casino/defNav";
 import Nav from "../components/casino/nav";
@@ -8,8 +8,9 @@ import SearchBox from "../components/casino/searchBox";
 import Games from "../components/casino/games";
 import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
 import api from "../service/api";
-import Layout from "../components/common/layout";
 import Header from "../components/header/header";
+import Footer from "../components/common/footer";
+import useHandleLogin from "../components/hook/useHandleLogin";
 
 const eachPageItem = 20;
 
@@ -285,7 +286,7 @@ class Panel extends React.Component {
 				this.props.userInfo.langId
 			);
 		} else {
-			this.props.setNav(defNavPanel.login);
+			this.props.handleLogin();
 		}
 	};
 
@@ -371,7 +372,7 @@ class Panel extends React.Component {
 					ref={this.gameList}
 				/>
 				{this.state.selGameInfo === null ? null : (
-					<div className="slotFunction open">
+					<div className="slotFunction active">
 						<div className="title text-org">
 							{this.state.selGameInfo.name[
 								this.props.userInfo.langId
@@ -384,7 +385,7 @@ class Panel extends React.Component {
 						<div className="btn-group">
 							{this.state.selGameInfo.playFree ? (
 								<button
-									className="white"
+									className="blue"
 									onClick={this.ClickPlay.bind(this, true)}>
 									{this.props.i18n.lbl_Free}
 								</button>
@@ -415,21 +416,24 @@ class Panel extends React.Component {
 
 const IndexPage = props => {
 	const { i18n } = useContext(i18nContext);
-	const { setNav } = useContext(navContext);
 	const { userInfo } = useContext(userInfoContext);
-	const header = <Header title={i18n.lbl_Casino} hideLogo={true} />;
+	const { handleLogin } = useHandleLogin();
 
 	let tpId = props.tpId ?? props.location.state?.tpId;
 	tpId = typeof tpId === "string" && !isNaN(tpId) ? Number(tpId) : tpId;
 	return (
-		<Layout header={header} mainClass="main casino">
-			<Panel
-				i18n={i18n}
-				userInfo={userInfo}
-				setNav={setNav}
-				tpId={tpId}
-			/>
-		</Layout>
+		<>
+			<Header title={i18n.lbl_Casino} hideLogo={true} />
+			<main className="main casino">
+				<Panel
+					i18n={i18n}
+					userInfo={userInfo}
+					tpId={tpId}
+					handleLogin={handleLogin}
+				/>
+			</main>
+			<Footer />
+		</>
 	);
 };
 
