@@ -77,6 +77,10 @@ body, html {
   color: #F77A00;
 }
 
+div[tabindex="-1"] {
+  height: 100%;
+}
+
 .logoSwitch {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5149,7 +5153,7 @@ span.important {
 .vip {
   width: 100%;
   height: calc(100% - 25vw);
-  padding: 0 0 25vw;
+  padding: 12vw 0 25vw;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -5215,7 +5219,7 @@ span.important {
 
 .vip .vipInfo {
   padding: 2vw;
-  margin: 71vw auto 0;
+  margin: 55vw auto 0;
 }
 
 .vip .vipInfo .vipTitle {
@@ -5853,6 +5857,20 @@ span.important {
   position: absolute;
   right: 0;
   color: #5574A7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.submenu > div.Balance .restore:before {
+  font-size: 5vw;
 }
 
 .submenu > div.thBar {
@@ -5900,20 +5918,20 @@ span.important {
   font-size: 7vw;
 }
 
-.hotGame {
+.hotGame, .promos {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   padding: 0 2vw;
-  margin: 2vw 0;
+  margin: 0 0 2vw;
   overflow: scroll;
 }
 
-.hotGame > div {
+.hotGame > div, .promos > div {
   background: #f3f3f3;
   min-width: 45vw;
   color: #666;
-  margin: 0 1vw;
+  margin: 2vw 2vw 0 0;
   border-radius: 5px;
   overflow: hidden;
   padding: 0 0 2vw;
@@ -5921,34 +5939,52 @@ span.important {
   border: 1px solid #e2e2e2;
 }
 
-.hotGame > div img {
+.hotGame > div img, .promos > div img {
   width: 100%;
 }
 
-.hotGame > div > div.btn-group {
+.hotGame > div > div.btn-group, .promos > div > div.btn-group {
   width: 80%;
   margin: 2vw 10%;
 }
 
-.hotGame > div > div.btn-group button {
+.hotGame > div > div.btn-group button, .promos > div > div.btn-group button {
   padding: 2vw 0;
   border-radius: 5px;
 }
 
-.hotGame > div > div:not(.btn-group) {
+.hotGame > div > div:not(.btn-group), .promos > div > div:not(.btn-group) {
   padding: 0.5vw 2vw;
 }
 
-.hotGame > div > div:not(.btn-group):nth-child(2) {
+.hotGame > div > div:not(.btn-group):nth-child(2), .promos > div > div:not(.btn-group):nth-child(2) {
   font-weight: bold;
   color: #5574A7;
 }
 
-.hotGame > div > div:not(.btn-group):nth-child(3) {
+.hotGame > div > div:not(.btn-group):nth-child(3), .promos > div > div:not(.btn-group):nth-child(3) {
   width: 35vw;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.promos > div > div:nth-child(1) {
+  width: 100%;
+  height: 18vw;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0;
+}
+
+.promos > div > div:nth-child(1) img {
+  width: auto;
+  height: 100%;
 }
 
 .friendReferral {
@@ -5969,7 +6005,7 @@ span.important {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  border: 1px solid #9db2d5;
+  border: 1px solid #d2e2f9;
 }
 
 .friendReferral > div:nth-child(1) {
@@ -6021,6 +6057,89 @@ span.important {
   width: 30%;
 }
 
+.upcomingmatches {
+  margin: 2vw;
+  padding: 0 2vw 2vw;
+  background: url(../img/upcomingmatchesbg.jpg) no-repeat top center/100% auto;
+  height: 58vw;
+}
+
+.upcomingmatches .team {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  height: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.upcomingmatches .team > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: bold;
+}
+
+.upcomingmatches .team > div:first-child {
+  background: url(../img/upcomingmatchestitle.png) no-repeat top center/auto;
+  line-height: 7vw;
+}
+
+.upcomingmatches .team > div:last-child {
+  background: url(../img/upcomingmatchestitledown.png) no-repeat top center/auto;
+  line-height: 7vw;
+}
+
+.upcomingmatches .team > div > div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 3vw;
+  margin: 8vw 0 0;
+  text-align: right;
+}
+
+.upcomingmatches .team > div > div.teamR {
+  text-align: left;
+}
+
+.upcomingmatches .team > div > div img {
+  width: 17vw;
+  margin: 0 0 2vw;
+}
+
+.upcomingmatches .team > div > div.btn-group {
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin: 0;
+}
+
+.upcomingmatches .team > div > div.btn-group button {
+  padding: 1vw 2vw;
+  width: auto;
+}
+
 .liveTv {
   background: -webkit-gradient(linear, left top, left bottom, from(#F1D5B6), to(#CDAE8E));
   background: linear-gradient(to bottom, #F1D5B6, #CDAE8E);
@@ -6038,6 +6157,23 @@ span.important {
   margin: 2vw 0 0;
 }
 
+.liveTv > .liveTvModule.active > .title {
+  background: url(../img/livetvtitlebggold.png) no-repeat center/75% 100%;
+}
+
+.liveTv > .liveTvModule.active > .title:before {
+  color: red;
+}
+
+.liveTv > .liveTvModule.active .time {
+  color: red;
+  font-weight: bold;
+}
+
+.liveTv > .liveTvModule.active .time + .title span {
+  display: unset;
+}
+
 .liveTv > .liveTvModule > .title {
   width: 100%;
   height: 6vw;
@@ -6050,8 +6186,17 @@ span.important {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background: url(../img/livetvtitlebg.png) no-repeat center/auto 100%;
+  background: url(../img/livetvtitlebg.png) no-repeat center/75% 100%;
   color: white;
+  position: relative;
+}
+
+.liveTv > .liveTvModule > .title:before {
+  position: absolute;
+  left: 2vw;
+  top: 1vw;
+  color: #aec3e1;
+  font-weight: normal;
 }
 
 .liveTv > .liveTvModule .liveTvInfo {
@@ -6070,6 +6215,15 @@ span.important {
 
 .liveTv > .liveTvModule .liveTvInfo > div div {
   color: #5574A7;
+}
+
+.liveTv > .liveTvModule .liveTvInfo > div div span {
+  background: #5574A7;
+  padding: 1vw 2vw;
+  margin: 2vw;
+  border-radius: 5px;
+  color: white;
+  display: none;
 }
 
 .liveTv > .liveTvModule .liveTvInfo > div div:nth-child(2) {
@@ -6096,10 +6250,34 @@ span.important {
 
 .moduleTitle {
   background: url(../img/indextitle.png) no-repeat center left/auto 100%;
-  height: 6vw;
-  margin: 3vw 0 0 2vw;
+  margin: 4vw 2vw 0;
   font-weight: bold;
   padding: 0 0 0 3vw;
-  line-height: 6vw;
+  line-height: 7vw;
+  border-bottom: 1px solid #9db2d5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+.moduleTitle > a {
+  position: absolute;
+  right: 2vw;
+  color: #5574A7;
+}
+
+.moduleTitle.icon:before {
+  margin: 0 1vw 0 0;
+  font-weight: normal;
+}
+
+.moduleTitle.icon-friend:before, .moduleTitle.icon-upcomingmatches:before, .moduleTitle.icon-film:before {
+  font-size: 4vw;
+}
+
+.liveTvjpg {
+  margin: 0 2.5vw;
+  width: calc(100% - 5vw);
 }
 /*# sourceMappingURL=style.css.map */
