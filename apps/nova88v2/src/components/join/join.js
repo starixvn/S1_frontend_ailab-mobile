@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
-import { useNavigate } from "@reach/router";
+import { useNavigate, useLocation, globalHistory } from "@reach/router";
 import {
 	userInfoContext,
 	i18nContext,
@@ -26,6 +26,7 @@ import { Link } from "../../route/link";
 
 const Join = () => {
 	const navigate = useNavigate();
+	const state = useLocation();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -57,6 +58,12 @@ const Join = () => {
 			navigate(`/${userInfo.langId}`);
 		}
 	}, []);
+
+	useEffect(() => {
+		if (state.state.fromHeader) {
+			localStorage.setItem("previousPage", "/");
+		}
+	}, [globalHistory]);
 
 	useEffect(() => {
 		const refId = getCookie("RefId");

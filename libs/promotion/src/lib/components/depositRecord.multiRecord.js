@@ -49,8 +49,8 @@ export const Content = ({
 				<div>{i18n?.lbl_Amount}</div>
 			</div>
 			<div>
-				<div></div>
-				<div></div>
+				<div />
+				<div />
 			</div>
 			{children}
 			<div className={isOpen ? "open" : ""}>
@@ -65,7 +65,8 @@ export const Content = ({
 			<span
 				className={`icon icon-keyboard_arrow_down${
 					isOpen ? " open" : ""
-				}`}></span>
+				}`}
+			/>
 		</button>
 	</>
 );

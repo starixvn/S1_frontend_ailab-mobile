@@ -20,7 +20,6 @@ export default ({ i18n = {}, promotionInfo, currencyId, filterType }) => {
 				currencyId={currencyId}
 			/>
 		);
-	} else {
-		return null;
 	}
+	return null;
 };

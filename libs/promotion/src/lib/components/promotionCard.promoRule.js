@@ -98,7 +98,7 @@ export default ({ ruleCols, promotionInfo }) => {
 		formatSetting
 	});
 
-	let rows = ruleCols.map(col => allElems[col]);
+	const rows = ruleCols.map(col => allElems[col]);
 	return (
 		<div className="rollover">
 			<div>{rows}</div>

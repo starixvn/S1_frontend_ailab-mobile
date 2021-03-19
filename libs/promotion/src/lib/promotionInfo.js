@@ -1,17 +1,21 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
+import PropTypes from "prop-types";
 import { getUrlParameter } from "@ailab-mobile/common";
 import { isClaimed, isNew, isExpiry } from "./common/common";
 import PromotionContent from "./components/promotionContent";
 import Wrapper from "./common/wrapper";
 import { configContext } from "./common/context";
 import { useHandlePopBox } from "./hook/useHandlePopBox";
-import PropTypes from "prop-types";
 
 export const PromotionInfo = props => (
 	<Wrapper {...props}>
 		<PromotionInfoContent />
 	</Wrapper>
 );
+
+PromotionInfo.defaultProps = {
+	formatSetting: {}
+};
 
 PromotionInfo.propTypes = {
 	formatSetting: PropTypes.shape({
@@ -30,12 +34,14 @@ const PromotionInfoContent = () => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	useEffect(() => {
 		if (userInfo.isLogin !== null) {
-			let _bonusCode = getUrlParameter("bonusCode");
+			const _bonusCode = getUrlParameter("bonusCode");
 
 			api.promotion
 				.GetPromotionDetail({
@@ -64,7 +70,7 @@ const PromotionInfoContent = () => {
 	const GetPromotionDetail = (langId, _bonusCode) => {
 		api.promotion
 			.GetPromotionDetail({
-				langId: langId,
+				langId,
 				BonusCode: _bonusCode
 			})
 			.then(
@@ -109,11 +115,11 @@ const PromotionInfoContent = () => {
 
 	if (promotionInfo === null) return null;
 	const { popBox } = uiSetting;
-	let _isClaimed = isClaimed(promotionInfo);
-	let _isNew = _isClaimed ? false : isNew(promotionInfo);
-	let _isExpiry = isExpiry({ ...promotionInfo, isLogin: userInfo.isLogin });
+	const _isClaimed = isClaimed(promotionInfo);
+	const _isNew = _isClaimed ? false : isNew(promotionInfo);
+	const _isExpiry = isExpiry({ ...promotionInfo, isLogin: userInfo.isLogin });
 
-	let urlParams = {};
+	const urlParams = {};
 	window.location.search
 		?.substring(1)
 		.split("&")

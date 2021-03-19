@@ -62,7 +62,8 @@
     "react/no-array-index-key":["warn"],
     "react/prop-types":["warn"],
     "react/no-did-update-set-state":["warn"],
-    "react/no-unescaped-entities":["warn"]
+    "react/no-unescaped-entities":["warn"],
+    "new-cap":["off"]
   },
   "overrides": [
     {
