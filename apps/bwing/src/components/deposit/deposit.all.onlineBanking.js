@@ -239,7 +239,7 @@ const Payment = props => {
 			<AmountInput
 				title={i18n.lbl_DepositAmount}
 				channel={
-					selGroup?.selBank ? { ...selbank, ...selGroup } : selbank
+					selGroup?.selBank ? selbank : { ...selbank, ...selGroup }
 				}
 				i18n={i18n}
 				_isConvert={_isConvert}
