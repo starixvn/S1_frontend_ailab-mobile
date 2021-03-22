@@ -77,7 +77,7 @@
 	"msg_NeedAccountName": "Butuh Nama Akun",
 	"msg_NeedAccountNo": "Butuh Nomor Rekening",
 	"lbl_Cancel": "Batal",
-	"lbl_BankAccount": "Rekening Bank",
+	"lbl_BankAccount": "Akun bank",
 	"lbl_CheckConfirm": "Apakah anda yakin untuk menghapus? Jika sudah terhapus maka tidak bisa kembali lagi",
 	"msg_Updatesuccessful": "Pembaruan berhasil",
 	"lbl_Confirm": "Konfirmasi",
@@ -143,7 +143,7 @@
 	"lbl_AfterAmount": "Jumlah sesudah",
 	"lbl_RefTransId": "Referensi nomor transaksi",
 	"lbl_Stake": "Taruhan",
-	"lbl_AmountTooltip": "Jumlah tidak boleh kurang dari 1",
+	"lbl_AmountTooltip": "Jumlah tidak boleh kurang dari {{0}}",
 	"lbl_NotinLimit": "Tidak dalam Limit",
 	"lbl_ConfirmDeposit": "Harap konfirmasi informasi setoran.",
 	"lbl_ImportantNote": "Catatan Penting",
@@ -458,6 +458,8 @@
 	"lbl_Nova_Club":"NOVA CLUB",
 	"lbl_ReSend":"Re-send in",
 	"lbl_Minutes":"Menit",
+	"lbl_DepositOptions":"Pilihan Deposit",
+	"lbl_DepositProcessingDescription":"Memproses setoran, harap perbarui di bawah ini atau klik tautan riwayat untuk melihat hasil setoran.",
 	"lbl_Vip_Service_Support":"DUKUNGAN LAYANAN",
 	"lbl_Vip_Deposit_Priority":"PRIORITAS DEPOSIT",
 	"lbl_Vip_WithDrawal_Priority":"PRIORITAS PENARIKAN",
@@ -499,5 +501,15 @@
 	"lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS":"The Tyrant And The Princess",
 	"lbl_FishingGG":"Dunia Pancing",
 	"lbl_FishingSG1":"Pancingan Tuhan",
-	"lbl_FishingSG2":"Perang Pancing"
+	"lbl_FishingSG2":"Perang Pancing",
+	"lbl_PaymentModes":"Mode Pembayaran",
+	"lbl_SelectChannel":"Pilih Saluran",
+	"lbl_MinMaxAmount":"Batas Min / Maks",
+	"lbl_SelectBank":"Pilih Bank",
+	"lbl_UploadReceipt":"Unggah Tanda Terima",
+	"lbl_Refno":"Nomor Referensi",
+	"lbl_MaxBonusAmount":"Jumlah Maksimal Bonus",
+	"lbl_Min":"Minimum",
+	"lbl_Max":"Maksimum"
+
 }

@@ -149,7 +149,7 @@ Panel.propTypes = {
 	ImgFolder: PropTypes.arrayOf(PropTypes.any)
 };
 
-const Autoplay = props => {
+export const Autoplay = props => {
 	return (
 		<Swiper
 			spaceBetween={30}

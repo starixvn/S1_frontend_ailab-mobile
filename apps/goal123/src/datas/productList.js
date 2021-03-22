@@ -34,6 +34,7 @@ import fish_AB3 from "../styles/img/paradise.jpg";
 import fish_AT01 from "../styles/img/oneshotfishing.jpg";
 // import fish_AT06 from "../styles/img/watermarginfishing.jpg";
 // import fish_AT04 from "../styles/img/thunderfighter.jpg";
+import vip from "../styles/img/vip.jpg";
 
 import { isEventPeriod } from "../components/common/common";
 
@@ -120,6 +121,7 @@ const eventTime = {
 	new_V8Poker: { endDate: "2021/03/05 23:59:59" },
 	new_CQ9: { endDate: "2021/03/05 11:00:00" },
 	new_ICG: { endDate: "2021/02/05 11:00:00" },
+	new_vip: { startDate: "2021/03/11 11:00:00" },
 	new_LiveCasino_N2Live: { startDate: "2021/03/12 11:00:00" }
 };
 
@@ -394,6 +396,24 @@ const gameList = langId => [
 				icon: "affiliate",
 				img: Affiliate,
 				spanTextKey: "lbl_Affiliates"
+			}
+		]
+	},
+	{
+		category: "vip",
+		translateKey: "lbl_VIP",
+		items: [
+			{
+				icon: "vip",
+				path: path.vip.root,
+				img: vip,
+				spanTextKey: "lbl_VIP",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_vip)
+					}
+				]
 			}
 		]
 	},

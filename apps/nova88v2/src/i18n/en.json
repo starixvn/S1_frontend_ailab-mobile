@@ -143,7 +143,7 @@
 	"lbl_AfterAmount": "After Amount",
 	"lbl_RefTransId": "Ref TransId",
 	"lbl_Stake": "Stake",
-	"lbl_AmountTooltip": "Amount can not be less than 1",
+	"lbl_AmountTooltip": "Amount can not be less than {{0}}",
 	"lbl_NotinLimit": "not in Limit.",
 	"lbl_ConfirmDeposit": "Please confirm the deposit information.",
 	"lbl_ImportantNote": "Important Note",
@@ -153,7 +153,7 @@
 	"lbl_PersonalMsg": "Personal Message",
 	"lbl_Announcement": "Announcement",
 	"lbl_SelectAll": "Select All",
-	"lbl_AttachFile": "Please attach your bank slip here. (Optional)",
+	"lbl_AttachFile": "Please attach your bank slip here.",
 	"lbl_UploadFile": "Upload File",
 	"lbl_RefnoToolTip": "Please submit your bank slip reference number",
 	"lbl_DepositTime": "Deposit Time",
@@ -499,5 +499,14 @@
 	"lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS":"The Tyrant And The Princess",
 	"lbl_FishingGG":"Fishing World",
 	"lbl_FishingSG1":"Fishing God",
-	"lbl_FishingSG2":"Fishing War"
+	"lbl_FishingSG2":"Fishing War",
+	"lbl_PaymentModes":"Payment Modes",
+	"lbl_SelectChannel":"Select Channel",
+	"lbl_MinMaxAmount":"Min/Max Limit",
+	"lbl_SelectBank":"Select Bank",
+	"lbl_UploadReceipt":"Upload Receipt",
+	"lbl_Refno":"Reference No.",
+	"lbl_MaxBonusAmount":"Max Bonus Amount",
+	"lbl_Min":"Min",
+	"lbl_Max":"Max"
 }

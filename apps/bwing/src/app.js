@@ -76,6 +76,7 @@ import HowToPlay from "./pages/howToPlay";
 import Ranking from "./pages/ranking";
 import AngPow from "./pages/angPow";
 import MysteryBox from "./pages/mysteryBox";
+import VIP from "./pages/vip";
 
 import FriendReferral from "./pages/referral";
 import ReferFriends from "./components/referral/referFriends";
@@ -182,6 +183,7 @@ const Index = () => {
 						<Ranking path={path.leaderBoard.root} />
 						<AngPow path={path.angPow.root} />
 						<MysteryBox path={path.mysteryBox.root} />
+						<VIP path={path.vip.root} />
 					</Router>
 				</Layout>
 			</LocationProvider>
