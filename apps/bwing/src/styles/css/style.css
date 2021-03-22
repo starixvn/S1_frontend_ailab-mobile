@@ -192,7 +192,7 @@ header {
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: 2;
+  z-index: 10;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1620,12 +1620,27 @@ footer > a.open {
 
 .inputBox > .icon-module {
   position: absolute;
-  right: 0;
+  right: 20px;
   top: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 100%;
+}
+
+.inputBox > .icon-module > i {
+  left: 9vw;
+}
+
+.inputBox > .icon-module > i.icon-cross {
+  color: #f20505;
+}
+
+.inputBox > .icon-module > i.icon-checkmark {
+  color: green;
 }
 
 .LoginRule {

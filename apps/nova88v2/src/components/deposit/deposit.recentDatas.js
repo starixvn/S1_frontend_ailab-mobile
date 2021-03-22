@@ -50,7 +50,7 @@ const RecentDatas = ({ Datas, SubmitProof, ClickCancel, ReloadFunc }) => {
 		dataContent = (
 			<>
 				<div className="infoList">
-					<ReloadSpin func={ReloadFunc} />
+					{/* <ReloadSpin func={ReloadFunc} /> */}
 					{rows}
 				</div>
 				<div className="btn-group">
