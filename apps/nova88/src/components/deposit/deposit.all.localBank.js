@@ -115,7 +115,7 @@ const Payment = props => {
 				(userInfo.currencyId === 4 &&
 					bankSlipPopBox.receipt !== null)) &&
 			amount !== "" &&
-			VaildAmount({ amount });
+			VaildAmount({ _amount: amount });
 
 		if (result && !processing) {
 			const RedirectToNext = (real_amount, sysId) => {
@@ -268,7 +268,7 @@ const Payment = props => {
 		(userInfo.currencyId !== 4 ||
 			(userInfo.currencyId === 4 && bankSlipPopBox.receipt !== null)) &&
 		amount !== "" &&
-		VaildAmount({ amount, displayWarning: false });
+		VaildAmount({ _amount: amount, displayWarning: false });
 
 	return (
 		<div className="depositModule_mobile open">
