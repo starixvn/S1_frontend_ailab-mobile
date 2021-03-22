@@ -192,7 +192,7 @@ header {
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: 99;
+  z-index: 10;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1620,12 +1620,27 @@ footer > a.open {
 
 .inputBox > .icon-module {
   position: absolute;
-  right: 0;
+  right: 20px;
   top: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 100%;
+}
+
+.inputBox > .icon-module > i {
+  left: 9vw;
+}
+
+.inputBox > .icon-module > i.icon-cross {
+  color: #f20505;
+}
+
+.inputBox > .icon-module > i.icon-checkmark {
+  color: green;
 }
 
 .LoginRule {
@@ -8293,12 +8308,13 @@ span.important {
   border-radius: 3px 3px 0 0;
   text-align: center;
   margin-right: 2px;
-  background: rgba(0, 0, 0, 0.3);
+  background: #1d2844;
 }
 
 .switchTag div.open {
-  background: -webkit-gradient(linear, left bottom, left top, from(#f20c05), to(#f85f05));
-  background: linear-gradient(0deg, #f20c05, #f85f05);
+  background: -webkit-gradient(linear, left top, left bottom, from(#71d3fb), to(#3fb1e0));
+  background: linear-gradient(180deg, #71d3fb, #3fb1e0);
+  color: #070e22;
 }
 
 .switchTag div:last-child {
@@ -8307,7 +8323,8 @@ span.important {
 
 .depositModule_mobile,
 .depositModule_online,
-.depositModule_local {
+.depositModule_local,
+.depositModule_topupmobile {
   background: rgba(1, 14, 51, 0.5);
   border: 1px solid #1d2f62;
   padding: 3vw;
@@ -8318,13 +8335,15 @@ span.important {
 
 .depositModule_mobile.open,
 .depositModule_online.open,
-.depositModule_local.open {
+.depositModule_local.open,
+.depositModule_topupmobile.open {
   display: block;
 }
 
 .depositModule_mobile > .title,
 .depositModule_online > .title,
-.depositModule_local > .title {
+.depositModule_local > .title,
+.depositModule_topupmobile > .title {
   margin: 5vw 0 2vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -8336,7 +8355,8 @@ span.important {
 
 .depositModule_mobile > .title:not(.text-org),
 .depositModule_online > .title:not(.text-org),
-.depositModule_local > .title:not(.text-org) {
+.depositModule_local > .title:not(.text-org),
+.depositModule_topupmobile > .title:not(.text-org) {
   font-weight: normal;
   background: #1a3055;
   padding: 5px;
@@ -8349,13 +8369,16 @@ span.important {
 .depositModule_online > .title:before,
 .depositModule_online > .title span,
 .depositModule_local > .title:before,
-.depositModule_local > .title span {
+.depositModule_local > .title span,
+.depositModule_topupmobile > .title:before,
+.depositModule_topupmobile > .title span {
   margin-right: 1vw;
 }
 
 .depositModule_mobile .selectModule,
 .depositModule_online .selectModule,
-.depositModule_local .selectModule {
+.depositModule_local .selectModule,
+.depositModule_topupmobile .selectModule {
   background: rgba(12, 26, 63, 0.5);
   border: 1px solid #1d2f62;
   border-top: 0;
@@ -8373,13 +8396,15 @@ span.important {
 
 .depositModule_mobile .selectModule input[type="radio"],
 .depositModule_online .selectModule input[type="radio"],
-.depositModule_local .selectModule input[type="radio"] {
+.depositModule_local .selectModule input[type="radio"],
+.depositModule_topupmobile .selectModule input[type="radio"] {
   display: none;
 }
 
 .depositModule_mobile .selectModule input[type="radio"] + label,
 .depositModule_online .selectModule input[type="radio"] + label,
-.depositModule_local .selectModule input[type="radio"] + label {
+.depositModule_local .selectModule input[type="radio"] + label,
+.depositModule_topupmobile .selectModule input[type="radio"] + label {
   border: 1px solid #71d3fb;
   width: 4vw;
   height: 4vw;
@@ -8398,15 +8423,17 @@ span.important {
 
 .depositModule_mobile .selectModule input[type="radio"]:checked + label div,
 .depositModule_online .selectModule input[type="radio"]:checked + label div,
-.depositModule_local .selectModule input[type="radio"]:checked + label div {
+.depositModule_local .selectModule input[type="radio"]:checked + label div,
+.depositModule_topupmobile .selectModule input[type="radio"]:checked + label div {
   width: 3vw;
   height: 3vw;
-  background: #f77a00;
+  background: #58cdff;
 }
 
 .depositModule_mobile .selectModule > div,
 .depositModule_online .selectModule > div,
-.depositModule_local .selectModule > div {
+.depositModule_local .selectModule > div,
+.depositModule_topupmobile .selectModule > div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8416,13 +8443,14 @@ span.important {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 50%;
+  width: 100%;
   margin: 2vw 0;
 }
 
 .depositModule_mobile .selectModule > div.info,
 .depositModule_online .selectModule > div.info,
-.depositModule_local .selectModule > div.info {
+.depositModule_local .selectModule > div.info,
+.depositModule_topupmobile .selectModule > div.info {
   width: calc(100% - 12vw);
   padding: 2vw 4vw;
   background: rgba(26, 48, 85, 0.95);
@@ -8432,7 +8460,8 @@ span.important {
 
 .depositModule_mobile .selectModule > div.info .checkBank,
 .depositModule_online .selectModule > div.info .checkBank,
-.depositModule_local .selectModule > div.info .checkBank {
+.depositModule_local .selectModule > div.info .checkBank,
+.depositModule_topupmobile .selectModule > div.info .checkBank {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8443,72 +8472,98 @@ span.important {
 
 .depositModule_mobile .selectModule > div.info ul,
 .depositModule_online .selectModule > div.info ul,
-.depositModule_local .selectModule > div.info ul {
+.depositModule_local .selectModule > div.info ul,
+.depositModule_topupmobile .selectModule > div.info ul {
   width: 100%;
 }
 
 .depositModule_mobile .selectModule > div .bankName,
 .depositModule_online .selectModule > div .bankName,
-.depositModule_local .selectModule > div .bankName {
+.depositModule_local .selectModule > div .bankName,
+.depositModule_topupmobile .selectModule > div .bankName {
   width: 20vw;
   background: white;
   border-radius: 5px;
   padding: 0.5vw 1vw;
+  margin: 0 2vw;
 }
 
 .depositModule_mobile .selectModule > div .bankName img,
 .depositModule_online .selectModule > div .bankName img,
-.depositModule_local .selectModule > div .bankName img {
+.depositModule_local .selectModule > div .bankName img,
+.depositModule_topupmobile .selectModule > div .bankName img {
   width: 100%;
   vertical-align: middle;
 }
 
+.depositModule_mobile .selectModule > div .bank,
+.depositModule_online .selectModule > div .bank,
+.depositModule_local .selectModule > div .bank,
+.depositModule_topupmobile .selectModule > div .bank {
+  width: 55vw;
+}
+
+.depositModule_mobile .selectModule > div .bank > div > div,
+.depositModule_online .selectModule > div .bank > div > div,
+.depositModule_local .selectModule > div .bank > div > div,
+.depositModule_topupmobile .selectModule > div .bank > div > div {
+  color: #71d3fb;
+}
+
 .depositModule_mobile .inputBox,
 .depositModule_online .inputBox,
-.depositModule_local .inputBox {
+.depositModule_local .inputBox,
+.depositModule_topupmobile .inputBox {
   margin: 2px 0 2vw;
 }
 
 .depositModule_mobile .inputBox input,
 .depositModule_online .inputBox input,
-.depositModule_local .inputBox input {
+.depositModule_local .inputBox input,
+.depositModule_topupmobile .inputBox input {
   padding: 2vw;
   border-radius: 0;
 }
 
 .depositModule_mobile .inputBox input::-webkit-input-placeholder,
 .depositModule_online .inputBox input::-webkit-input-placeholder,
-.depositModule_local .inputBox input::-webkit-input-placeholder {
+.depositModule_local .inputBox input::-webkit-input-placeholder,
+.depositModule_topupmobile .inputBox input::-webkit-input-placeholder {
   color: #afafaf;
 }
 
 .depositModule_mobile .inputBox input:-ms-input-placeholder,
 .depositModule_online .inputBox input:-ms-input-placeholder,
-.depositModule_local .inputBox input:-ms-input-placeholder {
+.depositModule_local .inputBox input:-ms-input-placeholder,
+.depositModule_topupmobile .inputBox input:-ms-input-placeholder {
   color: #afafaf;
 }
 
 .depositModule_mobile .inputBox input::-ms-input-placeholder,
 .depositModule_online .inputBox input::-ms-input-placeholder,
-.depositModule_local .inputBox input::-ms-input-placeholder {
+.depositModule_local .inputBox input::-ms-input-placeholder,
+.depositModule_topupmobile .inputBox input::-ms-input-placeholder {
   color: #afafaf;
 }
 
 .depositModule_mobile .inputBox input::placeholder,
 .depositModule_online .inputBox input::placeholder,
-.depositModule_local .inputBox input::placeholder {
+.depositModule_local .inputBox input::placeholder,
+.depositModule_topupmobile .inputBox input::placeholder {
   color: #afafaf;
 }
 
 .depositModule_mobile .inputBox .tip,
 .depositModule_online .inputBox .tip,
-.depositModule_local .inputBox .tip {
+.depositModule_local .inputBox .tip,
+.depositModule_topupmobile .inputBox .tip {
   margin-left: 2.5vw;
 }
 
 .depositModule_mobile .btn-group,
 .depositModule_online .btn-group,
-.depositModule_local .btn-group {
+.depositModule_local .btn-group,
+.depositModule_topupmobile .btn-group {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8519,7 +8574,9 @@ span.important {
 .depositModule_online .btn-group a,
 .depositModule_online .btn-group button,
 .depositModule_local .btn-group a,
-.depositModule_local .btn-group button {
+.depositModule_local .btn-group button,
+.depositModule_topupmobile .btn-group a,
+.depositModule_topupmobile .btn-group button {
   width: 50vw;
   margin: auto;
   background: -webkit-gradient(linear, left top, left bottom, from(#71d3fb), to(#3fb1e0));
@@ -8532,7 +8589,9 @@ span.important {
 .depositModule_online .btn-group a.darkGray,
 .depositModule_online .btn-group button.darkGray,
 .depositModule_local .btn-group a.darkGray,
-.depositModule_local .btn-group button.darkGray {
+.depositModule_local .btn-group button.darkGray,
+.depositModule_topupmobile .btn-group a.darkGray,
+.depositModule_topupmobile .btn-group button.darkGray {
   background: #666;
 }
 
@@ -8541,13 +8600,16 @@ span.important {
 .depositModule_online .btn-group a:first-child,
 .depositModule_online .btn-group button:first-child,
 .depositModule_local .btn-group a:first-child,
-.depositModule_local .btn-group button:first-child {
+.depositModule_local .btn-group button:first-child,
+.depositModule_topupmobile .btn-group a:first-child,
+.depositModule_topupmobile .btn-group button:first-child {
   margin-right: 0.5vw;
 }
 
 .depositModule_mobile + .btn-group,
 .depositModule_online + .btn-group,
-.depositModule_local + .btn-group {
+.depositModule_local + .btn-group,
+.depositModule_topupmobile + .btn-group {
   width: 100%;
   margin: 3vw 0;
 }
