@@ -510,6 +510,8 @@
 	"lbl_Refno":"Nomor Referensi",
 	"lbl_MaxBonusAmount":"Jumlah Maksimal Bonus",
 	"lbl_Min":"Minimum",
-	"lbl_Max":"Maksimum"
-
+	"lbl_Max":"Maksimum",
+	"lbl_TableGame":"Table Game",
+	"lbl_SlotsGame":"Slots Game",
+	"lbl_HotGame":"Hot Game"
 }

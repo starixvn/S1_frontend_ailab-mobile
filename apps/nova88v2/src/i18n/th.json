@@ -510,6 +510,8 @@
 	"lbl_Refno":"หมายเลขอ้างอิง",
 	"lbl_MaxBonusAmount":"จำนวนโบนัสสูงสุด",
 	"lbl_Min":"ขั้นต่ำ",
-	"lbl_Max":"สูงสุด"
-
+	"lbl_Max":"สูงสุด",
+	"lbl_TableGame":"เกมส์โต๊ะ",
+	"lbl_SlotsGame":"เกมอิเล็กทรอนิกส์",
+	"lbl_HotGame":"Hot Game"
 }

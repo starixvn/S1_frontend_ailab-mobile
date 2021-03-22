@@ -11,6 +11,7 @@ import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
 import ShortcutBar from "../components/home/shortcutBar";
 import Menu from "../components/home/menu";
+import HotGame from "../components/home/hotGame";
 
 import { readCookie, setCookie } from "../components/common/common";
 import path from "../path";
@@ -135,6 +136,7 @@ const IndexPage = () => {
 			<Slider />
 			<Marquee />
 			<Menu i18n={i18n} userInfo={userInfo} setPopBox={setPopBox} />
+			<HotGame i18n={i18n} userInfo={userInfo} />
 			{/* <ShortcutBar _ref={shortcutBar} /> */}
 		</Layout>
 	);
