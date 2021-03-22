@@ -489,5 +489,15 @@
 	"lbl_Vip_Lifetime":"อายุการใช้งาน",
 	"lbl_Vip_3Months":"สามเดือน",
 	"lbl_VIP":"VIP",
-	"ibi_GameProvider":"ผู้ให้บริการเกม"
+	"ibi_GameProvider":"ผู้ให้บริการเกม",
+	"lbl_SabaSoccer":"ฟุตบอล Saba",
+	"lbl_Cricket":"คริกเก็ต",
+	"lbl_Paradise":"Paradise",
+	"lbl_Oneshot_Fishing":"Oneshot Fishing",
+	"lbl_Game_ICG_DRAGONBALL_FISHING":"Dragonball Fishing",
+	"lbl_Game_ICG_FISHING_OF_SAVIORS":"Fishing Of Saviors",
+	"lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS":"The Tyrant And The Princess",
+	"lbl_FishingGG":"โลกแห่งการตกปลา",
+	"lbl_FishingSG1":"พระเจ้าตกปลา",
+	"lbl_FishingSG2":"สงครามตกปลา"
 }

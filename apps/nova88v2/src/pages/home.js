@@ -9,8 +9,8 @@ import { useNavigate } from "@reach/router";
 import Layout from "../components/common/layout";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
-import Category from "../components/home/category";
 import ShortcutBar from "../components/home/shortcutBar";
+import Menu from "../components/home/menu";
 
 import { readCookie, setCookie } from "../components/common/common";
 import path from "../path";
@@ -134,8 +134,8 @@ const IndexPage = () => {
 		<Layout>
 			<Slider />
 			<Marquee />
-			<Category shortcutBarLocate={shortcutBarLocate} />
-			<ShortcutBar _ref={shortcutBar} />
+			<Menu i18n={i18n} userInfo={userInfo} setPopBox={setPopBox} />
+			{/* <ShortcutBar _ref={shortcutBar} /> */}
 		</Layout>
 	);
 };

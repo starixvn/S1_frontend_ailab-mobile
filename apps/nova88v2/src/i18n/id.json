@@ -489,5 +489,15 @@
 	"lbl_Vip_Lifetime":"Seumur Hidup",
 	"lbl_Vip_3Months":"Tiga Bulan",
 	"lbl_VIP":"VIP",
-	"ibi_GameProvider":"Penyedia permainan"
+	"ibi_GameProvider":"Penyedia permainan",
+	"lbl_SabaSoccer":"Sepak Bola Saba",
+	"lbl_Cricket":"Kriket",
+	"lbl_Paradise":"Paradise",
+	"lbl_Oneshot_Fishing":"Oneshot Fishing",
+	"lbl_Game_ICG_DRAGONBALL_FISHING":"Dragonball Fishing",
+	"lbl_Game_ICG_FISHING_OF_SAVIORS":"Fishing Of Saviors",
+	"lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS":"The Tyrant And The Princess",
+	"lbl_FishingGG":"Dunia Pancing",
+	"lbl_FishingSG1":"Pancingan Tuhan",
+	"lbl_FishingSG2":"Perang Pancing"
 }

@@ -496,5 +496,15 @@
 	"lbl_Titanium_Club":"钛金俱乐部",
 	"lbl_Diamond_Club":"钻石俱乐部",
 	"lbl_Nova_Club":"欧亚俱乐部",
-	"ibi_GameProvider":"游戏供应商"
+	"ibi_GameProvider":"游戏供应商",
+	"lbl_SabaSoccer":"沙巴足球",
+	"lbl_Cricket":"板球",
+	"lbl_Paradise":"皇金渔场",
+	"lbl_Oneshot_Fishing":"一炮捕鱼",
+	"lbl_Game_ICG_DRAGONBALL_FISHING":"龙珠捕鱼",
+	"lbl_Game_ICG_FISHING_OF_SAVIORS":"中国神魔捕鱼",
+	"lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS":"霸王虞姬",
+	"lbl_FishingGG":"捕鱼天下",
+	"lbl_FishingSG1":"捕鱼天王",
+	"lbl_FishingSG2":"捕鱼大战"
 }
