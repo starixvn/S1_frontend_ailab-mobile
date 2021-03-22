@@ -22,7 +22,6 @@ const Payment = props => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setLoading } = useContext(loadingContext);
-	const [status, setStatus] = useState(null);
 
 	const [selGroupId, setSelGroupId] = useState(null);
 	const [selChannel, setChannel] = useState({});
@@ -92,7 +91,6 @@ const Payment = props => {
 	const ClickSubmit = () => {
 		const result = VaildAmount({ _amount: amount });
 
-		setStatus(result);
 		if (result) {
 			const RedirectToNext = real_amount => {
 				setPopBox(prevState => ({
@@ -164,6 +162,7 @@ const Payment = props => {
 				idKey="groupId"
 				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/Payment/`}
 				displayKey="groupName"
+				_isConvert={_isConvert}
 			/>
 			<GroupList
 				title={i18n.lbl_SelectChannel}
@@ -186,12 +185,17 @@ const Payment = props => {
 				i18n={i18n}
 				_isConvert={_isConvert}
 				amount={amount}
-				msg={warning}
-				status={status}
+				msg={warning.msg}
+				status={warning.status}
 				SelectAmount={SelectAmount}
 				EditAmount={EditAmount}
 				payType={payType}
-				tip={i18n.lbl_AmountTooltip}
+				tip={i18n.lbl_AmountTooltip?.replace(
+					"{{0}}",
+					selChannel?.minAmount
+						? number_format(selChannel?.minAmount, _isConvert)
+						: 1
+				)}
 			/>
 			<div className="btn-group">
 				<button className="orange" onClick={ClickSubmit}>

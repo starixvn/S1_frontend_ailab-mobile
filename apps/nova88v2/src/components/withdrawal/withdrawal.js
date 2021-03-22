@@ -483,11 +483,6 @@ const Panel = () => {
 		});
 	};
 
-	// const clickInfo = () => {
-	// 	const _info = info === "" ? i18n.lbl_AmountTooltip : "";
-	// 	setInfo(_info);
-	// };
-
 	const banks = bankInfo?.bankList?.map(b => {
 		return (
 			<button
@@ -525,7 +520,7 @@ const Panel = () => {
 				inputType="tel"
 				onChange={EditAmount}
 				clickInfo={() => showTipHandler("amount")}
-				infoText={i18n.lbl_AmountTooltip}
+				infoText={i18n.lbl_AmountTooltip?.replace("{{0}}", 1)}
 				showTips={showTips.includes("amount")}
 				placeholder={i18n.lbl_Amount}
 				btnStatus={warning.status}

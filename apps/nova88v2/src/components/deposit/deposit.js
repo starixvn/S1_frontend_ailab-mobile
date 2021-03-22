@@ -197,7 +197,6 @@ const Panel = () => {
 		picFileName,
 		refId
 	) => {
-		// if (pageVerify) {
 		const { currencyId, ...restBankInfo } = bankInfo;
 		const { accountName, accountNo } = depositRep;
 		setbankSlipPopBox(() => ({
@@ -214,7 +213,6 @@ const Panel = () => {
 			picFileName,
 			refId
 		}));
-		// }
 	};
 
 	const ClickCancel = transId => {

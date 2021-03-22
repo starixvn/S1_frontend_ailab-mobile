@@ -4,7 +4,7 @@ import { isConvert, checkAmount } from "../common/common";
 export const useHandleAmount = ({ currencyId, minAmount, maxAmount, i18n }) => {
 	const _isConvert = isConvert(currencyId);
 	const [amount, setAmount] = useState("");
-	const [warning, setWarning] = useState("");
+	const [warning, setWarning] = useState({});
 
 	useEffect(() => {
 		setAmount("");
@@ -33,9 +33,12 @@ export const useHandleAmount = ({ currencyId, minAmount, maxAmount, i18n }) => {
 		);
 		if (displayWarning) {
 			if (result.status !== 0) {
-				setWarning(result.msg);
+				setWarning(result);
 			} else {
-				setWarning("");
+				setWarning({
+					...result,
+					status: _amount === "" ? null : result.status
+				});
 			}
 		}
 

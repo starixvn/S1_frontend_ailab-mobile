@@ -21,7 +21,6 @@ const Payment = props => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
-	const [status, setStatus] = useState(null);
 	const { setLoading } = useContext(loadingContext);
 
 	const [selGroup, setSelGroup] = useState(null);
@@ -144,7 +143,6 @@ const Payment = props => {
 		const result = VaildAmount({ _amount: amount });
 
 		if (result) {
-			setStatus(true);
 			const { payId, channelId } = selGroup;
 			let { sysId } = selbank;
 			let bankLogo = null;
@@ -159,7 +157,7 @@ const Payment = props => {
 						? `${config.openURL}/${userInfo.langId}/Cashier/DepositReqOnlineBanking?sysId=${sysId}&payId=${payId}&ChannelId=${channelId}&Amount=${real_amount}`
 						: `${config.openURL}/${userInfo.langId}/Cashier/DepositReqOnlineBanking?payId=${payId}&ChannelId=${channelId}&Amount=${real_amount}`
 				);
-				// window.location.reload();
+				window.location.reload();
 			};
 
 			const real_amount = _isConvert ? amount * 1000 : amount;
@@ -211,8 +209,6 @@ const Payment = props => {
 			} else {
 				RedirectToNext(real_amount);
 			}
-		} else {
-			setStatus(false);
 		}
 	};
 
@@ -235,6 +231,7 @@ const Payment = props => {
 				bindFullObj={true}
 				displayKey="payName"
 				showMinMaxHint={true}
+				_isConvert={_isConvert}
 			/>
 			<GroupList
 				title={i18n.lbl_SelectBank}
@@ -254,16 +251,28 @@ const Payment = props => {
 			/>
 			<AmountInput
 				title={i18n.lbl_DepositAmount}
-				channel={selbank}
+				channel={
+					selGroup?.selBank ? selbank : { ...selbank, ...selGroup }
+				}
 				i18n={i18n}
 				_isConvert={_isConvert}
 				amount={amount}
 				SelectAmount={SelectAmount}
 				EditAmount={EditAmount}
 				payType={payType}
-				msg={warning}
-				status={status}
-				tip={i18n.lbl_AmountTooltip}
+				msg={warning.msg}
+				status={warning.status}
+				tip={
+					selGroup?.selBank
+						? i18n.lbl_AmountTooltip.replace(
+								"{{0}}",
+								number_format(selbank?.minAmount, _isConvert)
+						  )
+						: i18n.lbl_AmountTooltip.replace(
+								"{{0}}",
+								number_format(selGroup?.minAmount, _isConvert)
+						  )
+				}
 			/>
 			<div className="btn-group">
 				<button className="orange" onClick={ClickSubmit}>

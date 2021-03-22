@@ -75,17 +75,18 @@ class Modal extends Component {
 						const result = response.data;
 						if (result.errorCode === 0) {
 							alert(this.props.i18n.lbl_UploadSuccess);
+							this.props.handlePopBox();
 						} else {
 							alert(result.message);
 						}
 					}
 				},
-				err => {
+				() => {
 					if (this.isMountedRef) {
 						this.props.setPopBox({
 							isOpen: true,
 							title: this.props.i18n.lbl_ImportantNote,
-							content: "API Server Error."
+							content: this.props.i18n.msg_ApiServerError
 						});
 					}
 				}
@@ -114,9 +115,7 @@ class Modal extends Component {
 						if (this.isMountedRef) {
 							if (res.data.errorCode === 0) {
 								this.props.handlePopBox();
-								if (!alert(this.props.i18n.lbl_UploadSuccess)) {
-									window.location.reload();
-								}
+								window.location.reload();
 							} else {
 								alert(res.message);
 							}
@@ -124,7 +123,7 @@ class Modal extends Component {
 							this.setState({ processing: false });
 						}
 					},
-					err => {
+					() => {
 						if (this.isMountedRef) {
 							this.props.setPopBox({
 								isOpen: true,
@@ -221,15 +220,15 @@ class Modal extends Component {
 								i18n.msg_SelectFile
 							} `}
 						</label>
-						{!bankSlipPopBox.hideSubmit && (
+						{/* {!bankSlipPopBox.hideSubmit && (
 							<button
 								className="orange"
 								onClick={this.onUploadFile}>
 								{i18n.lbl_UploadFile}
 							</button>
-						)}
+						)} */}
 					</div>
-					<span className="text">
+					{/* <span className="text">
 						{i18n.lbl_DepositTime}{" "}
 						<span className="text-org">
 							({moment().format("Z")})
@@ -243,15 +242,17 @@ class Modal extends Component {
 							value={this.props.bankSlipPopBox.depositTime ?? ""}
 							onChange={this.EditField.bind(this, "depositTime")}
 						/>
-					</div>
-					<div className="inputBox">
-						<i className="icon icon-pencil" />
-						<input
-							placeholder={i18n.msg_ReferenceNumber}
-							value={this.props.bankSlipPopBox.refId ?? ""}
-							onChange={this.EditField.bind(this, "refId")}
-						/>
-					</div>
+					</div> */}
+					{/* {this.props.currencyId === 4 ? null : (
+						<div className="inputBox">
+							<i className="icon icon-pencil" />
+							<input
+								placeholder={i18n.msg_ReferenceNumber}
+								value={this.props.bankSlipPopBox.refId ?? ""}
+								onChange={this.EditField.bind(this, "refId")}
+							/>
+						</div>
+					)} */}
 					<div className="btn-group">
 						<button
 							className="blue closePopup"
@@ -261,9 +262,17 @@ class Modal extends Component {
 						<button
 							disabled={!bankSlipPopBox.picFileName}
 							className={`${
-								bankSlipPopBox.picFileName ? "orange" : "gray"
+								this.props.currencyId !== 4 ||
+								(this.props.currencyId === 4 &&
+									bankSlipPopBox.picFileName)
+									? "orange"
+									: "gray"
 							} closePopup`}
-							onClick={this.SeReceipt}>
+							onClick={
+								!bankSlipPopBox.hideSubmit
+									? this.onUploadFile
+									: this.SeReceipt
+							}>
 							{i18n.lbl_Submit}
 						</button>
 					</div>

@@ -29,7 +29,6 @@ const Payment = props => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
-	const [status, setStatus] = useState(null);
 	const [processing, setProcessing] = useState(false);
 	const { bankSlipPopBox, setbankSlipPopBox } = useContext(
 		bankSlipPopBoxContext
@@ -131,54 +130,58 @@ const Payment = props => {
 										window.location.reload();
 									};
 
-									setStatus(true);
-									const UploadReceipt = async () => {
-										try {
-											const formData = new FormData();
-											formData.append(
-												"TransId",
-												res.data.data.transId
-											);
-											formData.append(
-												"Receipt",
-												bankSlipPopBox.receipt
-											);
+									if (bankSlipPopBox.receipt) {
+										const UploadReceipt = async () => {
+											try {
+												const formData = new FormData();
+												formData.append(
+													"TransId",
+													res.data.data.transId
+												);
+												formData.append(
+													"Receipt",
+													bankSlipPopBox.receipt
+												);
 
-											const resUploadReceipt = await api.payment.UploadReceipt(
-												formData
-											);
+												const resUploadReceipt = await api.payment.UploadReceipt(
+													formData
+												);
 
-											if (
-												resUploadReceipt.data
-													.errorCode !== 0
-											) {
-												setPopBox(prevState => ({
-													...prevState,
-													title:
-														i18n.lbl_ImportantNote,
-													content: result.message,
-													isOpen: true,
-													hasBtn: true,
-													btnBar: (
-														<div className="btn-group">
-															<button
-																className="orange"
-																onClick={
-																	CloseDoneDepositPopup
-																}>
-																OK
-															</button>
-														</div>
-													)
-												}));
-											} else {
+												if (
+													resUploadReceipt.data
+														.errorCode !== 0
+												) {
+													setPopBox(prevState => ({
+														...prevState,
+														title:
+															i18n.lbl_ImportantNote,
+														content: result.message,
+														isOpen: true,
+														hasBtn: true,
+														btnBar: (
+															<div className="btn-group">
+																<button
+																	className="orange"
+																	onClick={
+																		CloseDoneDepositPopup
+																	}>
+																	OK
+																</button>
+															</div>
+														)
+													}));
+												} else {
+													CloseDoneDepositPopup();
+												}
+											} catch (error) {
 												CloseDoneDepositPopup();
 											}
-										} catch (error) {
-											CloseDoneDepositPopup();
-										}
-									};
-									if (bankSlipPopBox.receipt) UploadReceipt();
+										};
+
+										UploadReceipt();
+									} else {
+										CloseDoneDepositPopup();
+									}
 								} else {
 									setPopBox(prevState => ({
 										...prevState,
@@ -186,7 +189,6 @@ const Payment = props => {
 										title: i18n.lbl_ImportantNote,
 										content: i18n.msg_WrongAmount
 									}));
-									setStatus(false);
 									setLoading(false);
 								}
 							}
@@ -289,9 +291,14 @@ const Payment = props => {
 				SelectAmount={SelectAmount}
 				EditAmount={EditAmount}
 				payType={payType}
-				tip={i18n.lbl_AmountTooltip}
-				msg={warning}
-				status={status}
+				tip={i18n.lbl_AmountTooltip?.replace(
+					"{{0}}",
+					selBank?.minAmount
+						? number_format(selBank?.minAmount, _isConvert)
+						: 1
+				)}
+				msg={warning.msg}
+				status={warning.status}
 			/>
 			<div className="btn-group">
 				<button
@@ -326,7 +333,6 @@ const GroupList = ({
 	imgKeyWithExtension,
 	accountInfo,
 	displayKey,
-	channel,
 	_isConvert
 }) => {
 	const { i18n } = useContext(i18nContext);
@@ -419,8 +425,7 @@ GroupList.defaultProps = {
 	selected: null,
 	bindFullObj: false,
 	imgKeyWithExtension: false,
-	accountInfo: {},
-	channel: null
+	accountInfo: {}
 };
 
 GroupList.propTypes = {
@@ -440,7 +445,6 @@ GroupList.propTypes = {
 	imgKeyWithExtension: PropTypes.bool,
 	accountInfo: PropTypes.objectOf(PropTypes.any),
 	displayKey: PropTypes.string.isRequired,
-	channel: PropTypes.objectOf(PropTypes.any),
 	_isConvert: PropTypes.bool.isRequired
 };
 

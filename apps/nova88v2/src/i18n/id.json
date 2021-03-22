@@ -143,7 +143,7 @@
 	"lbl_AfterAmount": "Jumlah sesudah",
 	"lbl_RefTransId": "Referensi nomor transaksi",
 	"lbl_Stake": "Taruhan",
-	"lbl_AmountTooltip": "Jumlah tidak boleh kurang dari 1",
+	"lbl_AmountTooltip": "Jumlah tidak boleh kurang dari {{0}}",
 	"lbl_NotinLimit": "Tidak dalam Limit",
 	"lbl_ConfirmDeposit": "Harap konfirmasi informasi setoran.",
 	"lbl_ImportantNote": "Catatan Penting",
@@ -458,12 +458,6 @@
 	"lbl_Nova_Club":"NOVA CLUB",
 	"lbl_ReSend":"Re-send in",
 	"lbl_Minutes":"Menit",
-	"lbl_PaymentModes":"Mode Pembayaran",
-	"lbl_SelectChannel":"Pilih Saluran",
-	"lbl_MinMaxAmount":"Batas Min / Maks",
-	"lbl_SelectBank":"Pilih Bank",
-	"lbl_UploadReceipt":"Unggah Tanda Terima",
-	"lbl_Refno":"Nomor Referensi",
 	"lbl_DepositOptions":"Pilihan Deposit",
 	"lbl_DepositProcessingDescription":"Memproses setoran, harap perbarui di bawah ini atau klik tautan riwayat untuk melihat hasil setoran.",
 	"lbl_Vip_Service_Support":"DUKUNGAN LAYANAN",
@@ -497,5 +491,15 @@
 	"lbl_Vip_Lifetime":"Seumur Hidup",
 	"lbl_Vip_3Months":"Tiga Bulan",
 	"lbl_VIP":"VIP",
-	"ibi_GameProvider":"Penyedia permainan"
+	"ibi_GameProvider":"Penyedia permainan",
+	"lbl_PaymentModes":"Mode Pembayaran",
+	"lbl_SelectChannel":"Pilih Saluran",
+	"lbl_MinMaxAmount":"Batas Min / Maks",
+	"lbl_SelectBank":"Pilih Bank",
+	"lbl_UploadReceipt":"Unggah Tanda Terima",
+	"lbl_Refno":"Nomor Referensi",
+	"lbl_MaxBonusAmount":"Jumlah Maksimal Bonus",
+	"lbl_Min":"Minimum",
+	"lbl_Max":"Maksimum"
+
 }

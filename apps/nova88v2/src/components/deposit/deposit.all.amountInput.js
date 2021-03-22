@@ -38,12 +38,15 @@ const AmountInput = ({
 		content = (
 			<div className="infoModule">
 				<div
-					className={`inputInfo ${
-						showTips.includes("amountInput") ? "active" : ""
+					className={`inputInfo${
+						showTips.includes("amountInput") ? " active" : ""
 					}`}>
 					{tip}
 				</div>
-				<div className={`inputBox ${status === false ? "error" : ""}`}>
+				<div
+					className={`inputBox${
+						status && status !== 0 ? " error" : ""
+					}`}>
 					<i className="icon icon-pencil" />
 					<input
 						type="tel"
@@ -59,19 +62,17 @@ const AmountInput = ({
 						value={amount}
 					/>
 					<div className="icon-module">
-						{status === false && (
-							<i className="icon icon-errormark" />
-						)}
-						{status === true && (
+						{status ? <i className="icon icon-errormark" /> : null}
+						{status === 0 ? (
 							<i className="icon icon-checkmark" />
-						)}
+						) : null}
 						<i
 							className="icon icon-information"
 							onClick={() => showTipHandler("amountInput")}
 						/>
 					</div>
 				</div>
-				{status === false && <div className="tip">{msg}</div>}
+				{status ? <div className="tip">{msg}</div> : null}
 			</div>
 		);
 	}
@@ -105,7 +106,7 @@ AmountInput.propTypes = {
 	EditAmount: PropTypes.func.isRequired,
 	payType: PropTypes.string.isRequired,
 	msg: PropTypes.string,
-	status: PropTypes.oneOfType([null, PropTypes.bool])
+	status: PropTypes.oneOfType([PropTypes.bool, PropTypes.number])
 };
 
 export default AmountInput;
