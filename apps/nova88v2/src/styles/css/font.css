@@ -92,6 +92,10 @@
   font-family: 'Microsoft YaHei',sans-serif;
 }
 
+.icon-nolive:before {
+  content: "\e9d6";
+}
+
 .icon-nova88:before {
   content: "\e9c6";
 }
@@ -640,6 +644,10 @@
   content: "\e910";
 }
 
+.icon-cricket:before {
+  content: "\e9d0";
+}
+
 .icon-cloud_upload:before {
   content: "\e9af";
 }
@@ -1102,6 +1110,14 @@
 
 .icon-conversation:before {
   content: "\e935";
+}
+
+.icon-volleyball:before {
+  content: "\e9d2";
+}
+
+.icon-boxing:before {
+  content: "\e9d3";
 }
 
 .icon-box-bookmark:before {

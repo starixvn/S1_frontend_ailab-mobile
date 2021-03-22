@@ -44,7 +44,7 @@ button {
   border: none;
   padding: 0;
   outline: none;
-  font-family: 'Microsoft YaHei';
+  font-family: 'Microsoft YaHei',sans-serif;
   color: white;
 }
 
@@ -551,6 +551,10 @@ main .gameList > div > div, main .gameList > div > a, main .gameList > div > but
   border-radius: 10px;
   background: #ececec;
   overflow: hidden;
+}
+
+main .gameList > div > div .icon-new, main .gameList > div > a .icon-new, main .gameList > div > button .icon-new, main .gameList > a > div .icon-new, main .gameList > a > a .icon-new, main .gameList > a > button .icon-new, main .gameList > button > div .icon-new, main .gameList > button > a .icon-new, main .gameList > button > button .icon-new {
+  bottom: 5vw;
 }
 
 main .gameList > div > div img, main .gameList > div > a img, main .gameList > div > button img, main .gameList > a > div img, main .gameList > a > a img, main .gameList > a > button img, main .gameList > button > div img, main .gameList > button > a img, main .gameList > button > button img {
@@ -1072,7 +1076,7 @@ footer > a.active .circleAnimation + span {
   height: 12vw;
 }
 
-.header .headerTag > a {
+.header .headerTag > a, .header .headerTag > button {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -1087,15 +1091,17 @@ footer > a.active .circleAnimation + span {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-weight: bold;
+  font-size: 4vw;
 }
 
-.header .headerTag > a.active {
+.header .headerTag > a.active, .header .headerTag > button.active {
   color: white;
   background: -webkit-gradient(linear, left top, left bottom, from(#FB8F25), color-stop(#F77A00), to(#FF5D00));
   background: linear-gradient(to bottom, #FB8F25, #F77A00, #FF5D00);
 }
 
-.header .headerTag > a.active .quantity {
+.header .headerTag > a.active .quantity, .header .headerTag > button.active .quantity {
   color: #F77A00;
   background: white;
 }
@@ -1210,9 +1216,9 @@ footer > a.active .circleAnimation + span {
 }
 
 .main {
-  width: calc(100% - 16vw);
+  width: calc(100% - 8vw);
   height: calc(100% - 40vw);
-  padding: 20vw 8vw;
+  padding: 20vw 4vw;
   overflow: scroll;
 }
 
@@ -1260,7 +1266,7 @@ footer > a.active .circleAnimation + span {
 
 .Wallet {
   height: calc(100% - 55vw);
-  padding: 30vw 8vw 25vw;
+  padding: 30vw 4vw 25vw;
 }
 
 .Wallet .icon-BTC {
@@ -1935,12 +1941,12 @@ footer > a.active .circleAnimation + span {
 }
 
 .history {
-  padding: 45vw 8vw 20vw;
+  padding: 45vw 4vw 20vw;
   height: calc(100% - 65vw);
 }
 
 .statement {
-  padding: 55vw 8vw 20vw;
+  padding: 55vw 4vw 20vw;
   height: calc(100% - 75vw);
 }
 
@@ -2017,8 +2023,8 @@ footer > a.active .circleAnimation + span {
 }
 
 .btn-group button.blue, .btn-group button.cancel, .btn-group a.blue, .btn-group a.cancel, .btn-group .submit.blue, .btn-group .submit.cancel {
-  background: -webkit-gradient(linear, left top, left bottom, from(#435F8B), to(#6383B9));
-  background: linear-gradient(to bottom, #435F8B, #6383B9);
+  background: -webkit-gradient(linear, left top, left bottom, from(#1249a5), to(#00286c));
+  background: linear-gradient(to bottom, #1249a5, #00286c);
 }
 
 .btn-group button.white, .btn-group a.white, .btn-group .submit.white {
@@ -2574,7 +2580,7 @@ input[type="checkbox"] + label {
 }
 
 button.clickBtn {
-  background: #5574A7;
+  background: #F77A00;
   border-radius: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2724,12 +2730,12 @@ button.clickBtn:before {
 
 .Message {
   height: calc(100% - 65vw);
-  padding: 40vw 8vw 25vw;
+  padding: 40vw 4vw 25vw;
 }
 
 .Announcement {
   height: calc(100% - 55vw);
-  padding: 30vw 8vw 25vw;
+  padding: 30vw 4vw 25vw;
 }
 
 .Announcement .functionList {
@@ -4741,7 +4747,7 @@ span.important {
 
 .referral {
   height: calc(100% - 40vw);
-  padding: 20vw 8vw 20vw;
+  padding: 20vw 4vw 20vw;
 }
 
 .referral > .title {
@@ -5845,8 +5851,15 @@ span.important {
   color: #5574A7;
 }
 
+.submenu > div.Balance .clickBtn {
+  background: #5574A7;
+}
+
 .submenu > div.Balance .icon-eye, .submenu > div.Balance .icon-eye-blocked {
   margin: 0 1vw 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .submenu > div.Balance .icon-eye:before, .submenu > div.Balance .icon-eye-blocked:before {
@@ -6140,13 +6153,46 @@ span.important {
   width: auto;
 }
 
+.liveTvTag {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
+  margin: 2vw 2vw 0;
+}
+
+.liveTvTag button {
+  background: #acc1e0;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  padding: 1vw;
+  margin: 0 1vw 2vw 0;
+  width: 23vw;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.liveTvTag button.active {
+  background: -webkit-gradient(linear, left top, left bottom, from(#F1D5B6), to(#CDAE8E));
+  background: linear-gradient(to bottom, #F1D5B6, #CDAE8E);
+  color: #884500;
+  border: 1px solid #CDAE8E;
+}
+
 .liveTv {
   background: -webkit-gradient(linear, left top, left bottom, from(#F1D5B6), to(#CDAE8E));
   background: linear-gradient(to bottom, #F1D5B6, #CDAE8E);
-  margin: 2vw;
+  margin: 0 2vw 2vw;
   border-radius: 5px;
   border: 1px solid #CDAE8E;
   padding: 0 2vw 2vw;
+  display: none;
+}
+
+.liveTv.active {
+  display: block;
 }
 
 .liveTv > .liveTvModule {
@@ -6155,6 +6201,14 @@ span.important {
   color: black;
   text-align: center;
   margin: 2vw 0 0;
+}
+
+.liveTv > .liveTvModule.icon {
+  padding: 5vw 0;
+}
+
+.liveTv > .liveTvModule.icon:before {
+  font-size: 20vw;
 }
 
 .liveTv > .liveTvModule.active > .title {
@@ -6234,14 +6288,46 @@ span.important {
   color: #666;
 }
 
+.streaming {
+  padding: 30vw 4vw;
+  width: calc(100% - 8vw);
+}
+
+.streaming .liveTv {
+  display: block;
+}
+
 .aff {
   text-align: center;
-  padding: 5vw 0 10vw;
   color: #5574A7;
 }
 
 .aff .title {
   text-decoration: underline;
+  margin: 5vw 0 2vw;
+}
+
+.social {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.social a {
+  border-radius: 100%;
+  width: 10vw;
+  height: 10vw;
+  background: #c0cce2;
+  margin: 4vw 0 10vw 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .spokesperson {
@@ -6276,8 +6362,19 @@ span.important {
   font-size: 4vw;
 }
 
-.liveTvjpg {
-  margin: 0 2.5vw;
-  width: calc(100% - 5vw);
+#content {
+  background: #ecf3fd;
+}
+
+#header {
+  background: #5574A7;
+}
+
+main {
+  padding: 12vw 0;
+}
+
+main .sideBar button, main .sideBar a {
+  color: #5574A7;
 }
 /*# sourceMappingURL=style.css.map */
