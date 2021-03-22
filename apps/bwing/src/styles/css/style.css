@@ -189,10 +189,10 @@ html {
 }
 
 header {
-  /* width: 100%;
+  width: 100%;
   position: fixed;
   top: 0;
-  z-index: 99; */
+  z-index: 99;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1295,6 +1295,7 @@ footer > a.open {
       -ms-flex-pack: center;
           justify-content: center;
   padding-bottom: 100px;
+  padding-top: 12vw;
 }
 
 .mainLogout {
@@ -2282,6 +2283,37 @@ p.txt-blue12 {
   font-size: 3vw;
 }
 
+.porfileVip {
+  width: 100%;
+  margin: 20px 0 15px 0;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.porfileVip img {
+  width: 180px;
+}
+
+.porfileVip button {
+  padding: 5px 15px;
+  border-radius: 20px;
+  background-color: #243a6e;
+  margin-top: 10px;
+  color: #fff;
+}
+
 .recent {
   visibility: hidden;
   -webkit-transition: 0.7s;
@@ -2981,7 +3013,6 @@ a.clickBtn:before {
 .casino {
   width: 100%;
   min-height: calc(100% - 71vw);
-  padding: 0vw 4vw 24vw;
   position: relative;
   -webkit-box-pack: normal;
       -ms-flex-pack: normal;
@@ -3584,7 +3615,6 @@ span.important {
   width: 100%;
   height: auto;
   min-height: calc(100% - 39vw);
-  padding: 0vw 3vw 24vw;
 }
 
 .promotions img {
@@ -6836,7 +6866,6 @@ span.important {
 
 .mysteryEvent {
   width: 100%;
-  padding: 0 3vw 24vw;
   background-size: 120%;
   position: relative;
 }
@@ -7182,7 +7211,6 @@ span.important {
 
 .event {
   width: 100%;
-  padding: 0 3vw 24vw;
   background-size: 120%;
   position: relative;
 }
@@ -8525,11 +8553,11 @@ span.important {
 }
 
 .vip {
-  padding: 40px 0 90vw;
   width: 100%;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  padding: 10vw 0 20vw 0;
 }
 
 .vip .swiper-container {
