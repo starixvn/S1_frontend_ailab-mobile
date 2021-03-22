@@ -26,9 +26,9 @@ const GetUploadFileName = files => {
 	return filename;
 };
 
-const defColumns = {
-	refId: "refId"
-};
+// const defColumns = {
+// 	refId: "refId"
+// };
 
 class Modal extends Component {
 	filebox = React.createRef();

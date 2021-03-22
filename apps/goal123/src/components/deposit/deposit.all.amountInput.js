@@ -45,6 +45,7 @@ const AmountInput = ({
 					}
 					value={amount}
 				/>
+				{amount !== "" && <div className="iconModule">(&apos;000)</div>}
 				<div className="tip">{tip}</div>
 			</div>
 		);

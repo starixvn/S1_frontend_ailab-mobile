@@ -5835,7 +5835,16 @@ span.important {
 }
 
 .depositModule_mobile .inputBox, .depositModule_online .inputBox, .depositModule_local .inputBox, .depositModule_topupMobile .inputBox {
+  position: relative;
   margin: 2px 0 2vw;
+}
+
+.depositModule_mobile .inputBox .iconModule, .depositModule_online .inputBox .iconModule, .depositModule_local .inputBox .iconModule, .depositModule_topupMobile .inputBox .iconModule {
+  position: absolute;
+  -webkit-transform: translateY(60%);
+          transform: translateY(60%);
+  right: 3vw;
+  top: -1.5vw;
 }
 
 .depositModule_mobile .inputBox input, .depositModule_online .inputBox input, .depositModule_local .inputBox input, .depositModule_topupMobile .inputBox input {
