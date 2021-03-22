@@ -32,35 +32,28 @@ export default () => {
 	useEffect(() => {
 		const key = getUrlParameter("key");
 
-		if (key) {
-			if (userInfo.isLogin === false) {
-				api.site.CheckResetPwdToken(key).then(
-					res => {
-						if (isMountedRef.current) {
-							if (res.data.errorCode === 1) {
-								setRedirectPath("/");
-								setUserInfo(prevState => ({
-									...prevState,
-									isLogin: true
-								}));
-							} else if (res.data.errorCode === 0) {
-								setUserInfo(prevState => ({
-									...prevState,
-									isLogin: true,
-									loginFromResetPwd: true
-								}));
-							} else {
-								setRedirectPath("/");
-								setPopBox({
-									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: i18n.msg_ApiServerError
-								});
-							}
-						}
-					},
-					err => {
-						if (isMountedRef.current) {
+		if (
+			key &&
+			userInfo.isLogin === false &&
+			userInfo.loginFromResetPwd === undefined
+		) {
+			api.site.CheckResetPwdToken(key).then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 1) {
+							setRedirectPath("/");
+							setUserInfo(prevState => ({
+								...prevState,
+								isLogin: true
+							}));
+						} else if (res.data.errorCode === 0) {
+							setUserInfo(prevState => ({
+								...prevState,
+								isLogin: true,
+								loginFromResetPwd: true
+							}));
+						} else {
+							setRedirectPath("/");
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
@@ -68,9 +61,22 @@ export default () => {
 							});
 						}
 					}
-				);
-			}
-		} else if (isMountedRef.current) {
+				},
+				err => {
+					if (isMountedRef.current) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
+						});
+					}
+				}
+			);
+		} else if (
+			userInfo.isLogin &&
+			isMountedRef.current &&
+			!userInfo.loginFromResetPwd
+		) {
 			setRedirectPath("/");
 		}
 	}, [redirectPath, userInfo.isLogin, setPopBox, setUserInfo, i18n]);

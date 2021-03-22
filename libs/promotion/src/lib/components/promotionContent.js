@@ -5,7 +5,7 @@ import DepositRecord from "./depositRecord";
 import ProcessBar from "./processBar";
 import PromoRule from "./promotionContent.promoRule";
 import { Stamp } from "./stamp";
-import { canJoin } from "../common/common";
+import { CanJoin } from "../common/common";
 import { defUrlParamCols } from "../common/def";
 
 export default ({
@@ -24,7 +24,7 @@ export default ({
 }) => (
 	<div
 		className={`promodule${promotionInfo.isJoin ? " open" : ""}${
-			canJoin({
+			CanJoin({
 				_isExpiry,
 				canJoin: promotionInfo.canJoin,
 				filterType: urlParameters?.[defUrlParamCols.filterType]
@@ -69,6 +69,7 @@ export default ({
 			className="text"
 			dangerouslySetInnerHTML={{
 				__html: `<pre>${promotionInfo.details}</pre>`
-			}}></div>
+			}}
+		/>
 	</div>
 );

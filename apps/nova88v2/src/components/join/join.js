@@ -1,0 +1,679 @@
+import React, { useEffect, useState, useContext, useRef } from "react";
+import { useNavigate, useLocation, globalHistory } from "@reach/router";
+import {
+	userInfoContext,
+	i18nContext,
+	navContext,
+	defNavPanel,
+	popBoxContext
+} from "../common/context";
+import Inputbox from "../common/inputbox.hint";
+import InputboxPWD from "../common/inputbox.password";
+import Dropdown from "../common/dropdown";
+import Checkbox from "../common/checkbox";
+import { getUrlParameter, passwordCheck, getCookie } from "../common/common";
+import { GET_LANG_ID } from "../../service/language";
+import useTip from "../hook/useTip";
+import TandC from "../../service/t_and_c";
+import path from "../../path";
+import config from "../../config";
+import PromoPopup from "./join.promotion";
+import { initValue, initStatus, currencyToAreacode } from "./join.def";
+import areaCode from "../../datas/areaCode";
+import { Iov_GetBlackBox } from "../common/iovation";
+import api from "../../service/api";
+import { Link } from "../../route/link";
+
+const Join = () => {
+	const navigate = useNavigate();
+	const state = useLocation();
+	const { i18n } = useContext(i18nContext);
+	const { userInfo, setUserInfo } = useContext(userInfoContext);
+	const { setPopBox } = useContext(popBoxContext);
+	const { nav, setNav } = useContext(navContext);
+	const [userValue, setUserValue] = useState(initValue);
+	const [siteCurrency, setSiteCurrencyState] = useState([]);
+	const [status, setStatus] = useState(initStatus);
+	const [pswState, setPswState] = useState(false);
+	const [banner, setBanner] = useState([]);
+	const [affiliateidExist, setAffiliateidExist] = useState("");
+	const [defaultOption, setDefaultOption] = useState(
+		i18n.lbl_PrefferedCurrency
+	);
+	const { showTips, showTipHandler } = useTip([]);
+	const [promoPopup, setPromoPopup] = useState(false);
+	const defaultLangId = userInfo.langId ?? GET_LANG_ID();
+
+	const isMountedRef = useRef(null);
+	const justMounted = useRef(true);
+	useEffect(() => {
+		isMountedRef.current = true;
+		return () => {
+			isMountedRef.current = false;
+		};
+	});
+
+	useEffect(() => {
+		if (userInfo.isLogin) {
+			navigate(`/${userInfo.langId}`);
+		}
+	}, []);
+
+	useEffect(() => {
+		if (state.state.fromHeader) {
+			localStorage.setItem("previousPage", "/");
+		}
+	}, [globalHistory]);
+
+	useEffect(() => {
+		const refId = getCookie("RefId");
+		const showBylink = window.location.pathname === `/${path.join.root}`;
+		const openPanel = showBylink || nav === defNavPanel.join;
+		if (refId && openPanel) {
+			api.site
+				.GetBanner("Promotion", refId, userInfo.langId)
+				.then(res => {
+					if (res.data.errorCode === 0 && isMountedRef.current) {
+						if (res.data.data.length > 0) {
+							setBanner(res.data.data);
+							setPromoPopup(true);
+						}
+					}
+				});
+		}
+	}, [nav, userInfo.langId]);
+
+	useEffect(() => {
+		if (justMounted.current) {
+			justMounted.current = false;
+		} else {
+			checkValue("Currency");
+		}
+	}, [userValue.Currency]);
+	const AffId = getUrlParameter("AffId") || getCookie("AffId");
+	useEffect(() => {
+		const AffCode = getUrlParameter("AffCode") || getCookie("AffCode");
+
+		if (AffId) {
+			setAffiliateidExist(AffId);
+			api.site.GetAffiliateAgent({ AffId }).then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							const { currencyId } = res.data.data;
+							setSiteCurrencyState([
+								{
+									id: currencyId,
+									displayKey: `Currency_${currencyId}`
+								}
+							]);
+						} else {
+							GetSiteCurrencyList();
+						}
+					}
+				},
+				() => {
+					if (isMountedRef.current) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
+						});
+					}
+				}
+			);
+		} else {
+			if (AffCode) {
+				setAffiliateidExist(AffCode);
+			}
+			GetSiteCurrencyList();
+		}
+	}, []);
+
+	const GetSiteCurrencyList = () => {
+		// if (fakeCurrencyList) {
+		// 	setSiteCurrencyState(fakeCurrencyList);
+		// 	return;
+		// }
+		api.site.GetSiteCurrencyList().then(
+			res => {
+				if (isMountedRef.current) {
+					if (res.data.errorCode === 0) {
+						const currencyNum = res.data.data;
+						const currencyArr = currencyNum.map(id => {
+							return { id, displayKey: `Currency_${id}` };
+						});
+						setSiteCurrencyState(() => currencyArr);
+					} else {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: res.data.message
+						});
+					}
+				}
+			},
+			() => {
+				if (isMountedRef.current) {
+					setPopBox({
+						isOpen: true,
+						title: i18n.lbl_ImportantNote,
+						content: i18n.msg_ApiServerError
+					});
+				}
+			}
+		);
+	};
+
+	const _currencyId = siteCurrency[userValue.Currency]?.id;
+
+	const currencyToCountryCode = _currencyId
+		? currencyToAreacode[_currencyId]
+		: null;
+
+	const _areaCode =
+		currencyToCountryCode !== null
+			? areaCode[currencyToCountryCode]?.AreaCode
+			: null;
+
+	const showPswHandler = () => {
+		setPswState(!pswState);
+	};
+
+	const checkValue = async (col, e) => {
+		const val = e?.target?.value;
+		let checked = true;
+		let msg = "";
+		if (col === "UserName") {
+			const result = await usernameCheck(val);
+			checked = result.checked;
+			msg = result.msg;
+		} else if (col === "Password") {
+			const result = passwordCheck({ val });
+			checked = result.checked;
+			msg = result.msg;
+		} else if (col === "Email") {
+			const result = await emailCheck(val);
+			checked = result.checked;
+			msg = result.msg;
+		} else if (col === "Currency") {
+			const result = currencyCheck();
+			checked = result.checked;
+			msg = result.msg;
+		} else if (col === "Phone") {
+			const result = await phoneCheck(val);
+			checked = result.checked;
+			msg = result.msg;
+		} else {
+			checked = null;
+			msg = "";
+		}
+
+		setStatus(prev => ({
+			...prev,
+			[col]: {
+				checked,
+				msg: msg ? i18n[msg] : ""
+			}
+		}));
+	};
+
+	const usernameCheck = async val => {
+		let checked = true;
+		let msg = "";
+
+		if (!val) {
+			checked = false;
+			msg = "msg_UsernameReq";
+		} else if (val.length < 6 || val.length > 18) {
+			checked = false;
+			msg = "msg_UsernameLength";
+		} else {
+			const res = await api.site.ExistsUserName({ UserName: val });
+			if (res.data.errorCode === 0 && res.data.data === true) {
+				checked = false;
+				msg = "msg_UsernameNotAvailable";
+			}
+		}
+
+		return { checked, msg };
+	};
+
+	const emailCheck = async val => {
+		let checked = true;
+		let msg = "";
+		const regx = /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+
+		if (!val || !regx.test(val)) {
+			checked = false;
+			msg = "msg_MailWrongFormat";
+		} else {
+			const res = await api.site.ExistsEmail({ Email: val });
+			if (res.data.errorCode === 0 && res.data.data === true) {
+				checked = false;
+				msg = "msg_MailExisted";
+			}
+		}
+
+		return { checked, msg };
+	};
+
+	const phoneCheck = async val => {
+		let checked = true;
+		let msg = "";
+		const regx = /^[0-9\s]*$/;
+
+		if (!val) {
+			checked = false;
+			msg = "lbl_PhoneRequired";
+		} else if (!regx.test(val)) {
+			checked = false;
+			msg = "lbl_PhoneTooltip";
+		} else {
+			const res = await api.site.ExistsPhoneNo({
+				AreaCode: _areaCode,
+				Phone: val
+			});
+
+			if (res.data.errorCode === 0 && res.data.data === true) {
+				checked = false;
+				msg = "msg_PhoneExisted";
+			}
+		}
+
+		return { checked, msg };
+	};
+
+	const currencyCheck = () => {
+		let checked = true;
+		let msg = "";
+		if (defaultOption !== null) {
+			checked = false;
+			msg = "lbl_RemindPrefferedCurrency";
+		}
+		return { checked, msg };
+	};
+
+	const onSelectItem = i => {
+		setDefaultOption(null);
+		setUserValue(prev => ({ ...prev, Currency: i }));
+	};
+
+	const EditField = (col, e) => {
+		const val = e.target.value;
+		setUserValue(prevState => ({
+			...prevState,
+			[col]: val
+		}));
+	};
+
+	const checkboxHandler = () => {
+		setUserValue(prevState => ({
+			...prevState,
+			Checkbox: !prevState.Checkbox
+		}));
+
+		setStatus(prevState => ({
+			...prevState,
+			Checkbox: {
+				checked: !prevState.Checkbox.checked,
+				msg: ""
+			}
+		}));
+	};
+
+	const checkAll = async () => {
+		try {
+			const res = await Promise.all([
+				usernameCheck(userValue.UserName),
+				phoneCheck(userValue.Phone),
+				emailCheck(userValue.Email)
+			]);
+
+			const _usernameCheck = res[0];
+			const _phoneCheck = res[1];
+			const _emailCheck = res[2];
+			const _passwordCheck = passwordCheck({
+				val: userValue.Password
+			});
+			const _currencyCheck = currencyCheck();
+			const _checkboxCheck = userValue.Checkbox;
+
+			const checked =
+				_usernameCheck.checked &&
+				_passwordCheck.checked &&
+				_phoneCheck.checked &&
+				_emailCheck.checked &&
+				_currencyCheck.checked &&
+				_checkboxCheck;
+
+			if (!checked) {
+				let checkboxMsg = "";
+				if (!_checkboxCheck) {
+					checkboxMsg = "lbl_Check18TCTooltip";
+				}
+				setStatus(prev => ({
+					...prev,
+					UserName: {
+						checked: _usernameCheck.checked,
+						msg: i18n[_usernameCheck.msg]
+					},
+					Password: {
+						checked: _passwordCheck.checked,
+						msg: i18n[_passwordCheck.msg]
+					},
+					Phone: {
+						checked: _phoneCheck.checked,
+						msg: i18n[_phoneCheck.msg]
+					},
+					Email: {
+						checked: _emailCheck.checked,
+						msg: i18n[_emailCheck.msg]
+					},
+					Currency: {
+						checked: _currencyCheck.checked,
+						msg: i18n[_currencyCheck.msg]
+					},
+					Checkbox: {
+						checked: _checkboxCheck,
+						msg: i18n[checkboxMsg]
+					}
+				}));
+			}
+			return checked;
+		} catch (error) {
+			return false;
+		}
+	};
+
+	const clickSubmit = async () => {
+		const checked = await checkAll();
+
+		if (checked) {
+			const regData = {
+				UserName: userValue.UserName,
+				Userpwd: userValue.Password,
+				Email: userValue.Email,
+				PhoneNo: userValue.Phone,
+				CurrencyId: _currencyId,
+				UserLang: defaultLangId,
+				AreaCode: _areaCode,
+				PromoCode: userValue.SpecialBonusCode
+			};
+
+			if (AffId) {
+				const res = await api.site.GetAffiliateAgent({ AffId });
+				if (res.data.errorCode === 0) {
+					regData.AffId =
+						getUrlParameter("AffId") || getCookie("AffId");
+				} else if (res.data.errorCode === -19) {
+					setStatus(prev => ({
+						...prev,
+						AffiliateId: {
+							checked: false,
+							msg: res.data.message
+						}
+					}));
+				}
+			}
+
+			regData.RefId = getUrlParameter("RefId") || getCookie("RefId");
+			regData.Aff = getUrlParameter("Aff") || getCookie("Aff");
+			regData.AffCode =
+				getUrlParameter("AffCode") ||
+				getCookie("AffCode") ||
+				userValue.AffiliateId;
+			regData.blackbox = await Iov_GetBlackBox();
+
+			api.site.Signup(regData, defaultLangId).then(
+				response => {
+					if (isMountedRef.current) {
+						const { errorCode } = response.data;
+						const { message } = response.data;
+						setStatus(initStatus);
+						if (errorCode === 0) {
+							api.accountStrict.GetCustProfile().then(
+								res_custInfo => {
+									if (isMountedRef.current) {
+										let _user = {
+											isLogin: true,
+											langId: defaultLangId,
+											userName: userValue.UserName
+										};
+										if (res_custInfo.data.errorCode === 0) {
+											navigate(`/${userInfo.langId}`);
+											_user = {
+												..._user,
+												...res_custInfo.data.data
+											};
+										}
+										setUserInfo(_user);
+									}
+								},
+								() => {
+									if (isMountedRef.current) {
+										setPopBox({
+											isOpen: true,
+											title: i18n.lbl_ImportantNote,
+											content: i18n.msg_ApiServerError
+										});
+									}
+								}
+							);
+							setNav(null);
+						} else if (
+							errorCode === -2 ||
+							errorCode === -5 ||
+							errorCode === -19
+						) {
+							setStatus(prevState => ({
+								...prevState,
+								UserName: { checked: false, msg: message }
+							}));
+						} else if (errorCode === -3) {
+							setStatus(prevState => ({
+								...prevState,
+								Password: { checked: false, msg: message }
+							}));
+						} else if (errorCode === -7) {
+							setStatus(prevState => ({
+								...prevState,
+								SpecialBonusCode: {
+									checked: false,
+									msg: message
+								}
+							}));
+						} else if (errorCode === -6) {
+							setStatus(prevState => ({
+								...prevState,
+								Phone: { checked: false, msg: message }
+							}));
+						}
+					}
+				},
+				err => {
+					if (isMountedRef.current) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
+						});
+					}
+				}
+			);
+		}
+	};
+
+	const ClosePromoPopup = () => {
+		setPromoPopup(false);
+	};
+	return (
+		<>
+			<div className="Join active">
+				<Inputbox
+					icon="icon-member"
+					placeholder={i18n.lbl_Username}
+					value={userValue.UserName}
+					onChange={EditField.bind(null, "UserName")}
+					onBlur={checkValue.bind(null, "UserName")}
+					btnStatus={status.UserName.checked}
+					warningMsg={status.UserName.msg}
+					infoText={i18n.lbl_UsernameTooltip}
+					clickInfo={() => showTipHandler("UserName")}
+					showTips={showTips.includes("UserName")}
+					testAttr="UserName"
+				/>
+				<InputboxPWD
+					infoModule="infoModule"
+					icon="icon-key"
+					inputType={`${!pswState ? "password" : "text"}`}
+					showPsw={pswState}
+					placeholder={i18n.lbl_Password}
+					value={userValue.Password}
+					onChange={EditField.bind(null, "Password")}
+					onBlur={checkValue.bind(null, "Password")}
+					showPswHandler={showPswHandler}
+					checked={status.Password.checked}
+					tips={i18n.msg_PasswordVaildate}
+					warningMsg={status.Password.msg}
+					clickInfo={() => showTipHandler("Password")}
+					showTips={showTips.includes("Password")}
+					testAttr="Password"
+				/>
+				<Inputbox
+					icon="icon-email"
+					placeholder={i18n.lbl_Email}
+					value={userValue.Email}
+					onChange={EditField.bind(null, "Email")}
+					onBlur={checkValue.bind(null, "Email")}
+					btnStatus={status.Email.checked}
+					warningMsg={status.Email.msg}
+					infoText={i18n.lbl_EmailToolTip}
+					clickInfo={() => showTipHandler("Email")}
+					showTips={showTips.includes("Email")}
+					testAttr="Email"
+				/>
+				<Dropdown
+					mainKey="join-curr"
+					colName="Currency"
+					defaultOption={defaultOption}
+					selectedIdx={userValue.Currency}
+					options={siteCurrency}
+					onSelectItem={onSelectItem}
+					infoText={i18n.lbl_PreferredCurrencyToolTip}
+					clickInfo={() => showTipHandler("Currency")}
+					showTips={showTips.includes("Currency")}
+					checked={status.Currency.checked}
+					warningMsg={status.Currency.msg}
+					i18n={i18n}
+					testAttr="Currency"
+					onBlur={checkValue.bind(null, "Currency")}
+				/>
+
+				{userValue.Currency !== null ? (
+					<div className="infoModule">
+						<Inputbox
+							icon="icon-phone"
+							placeholder={i18n.lbl_Phone}
+							value={userValue.Phone}
+							areaCode={_areaCode}
+							onChange={EditField.bind(null, "Phone")}
+							btnStatus={status.Phone.checked}
+							warningMsg={status.Phone.msg}
+							infoText={i18n.lbl_PhoneTooltip}
+							clickInfo={() => showTipHandler("Phone")}
+							showTips={showTips.includes("Phone")}
+							onBlur={checkValue.bind(null, "Phone")}
+							testAttr="Phone"
+						/>
+					</div>
+				) : null}
+
+				<Inputbox
+					icon="icon-promotion"
+					placeholder={i18n.lbl_JoinPromoCode}
+					value={userValue.SpecialBonusCode}
+					onChange={EditField.bind(null, "SpecialBonusCode")}
+					warningMsg={status.SpecialBonusCode.msg}
+					btnStatus={status.SpecialBonusCode.checked}
+					showTips={showTips.includes("SpecialBonusCode")}
+					testAttr="SpecialBonusCode"
+				/>
+
+				<Inputbox
+					icon="icon-affiliate"
+					placeholder={i18n.lbl_Affiliate_ID}
+					value={
+						affiliateidExist !== ""
+							? affiliateidExist
+							: userValue.AffiliateId
+					}
+					onChange={EditField.bind(null, "AffiliateId")}
+					disabled={Boolean(affiliateidExist)}
+					btnStatus={status.AffiliateId.checked}
+					warningMsg={status.AffiliateId.msg}
+					infoText={i18n.lbl_Please_enter_Affiliate_ID}
+					clickInfo={() => showTipHandler("AffiliateId")}
+					showTips={showTips.includes("AffiliateId")}
+					testAttr="AffiliateId"
+				/>
+
+				<Checkbox
+					testAttr="iAgree"
+					labelClassName={`icon icon-radio-${
+						status.Checkbox.checked === true
+							? "checked"
+							: "unchecked"
+					}`}
+					Checked={userValue.Checkbox}
+					className={`Terms${
+						status.Checkbox.checked === false ? " error" : ""
+					}`}
+					checkboxHandler={checkboxHandler}
+					id="c1">
+					{i18n.lbl_Check18TC1} &nbsp;
+					<a
+						rel="noreferrer"
+						target="_blank"
+						href={TandC(userInfo.langId).terms}>
+						{i18n.lbl_TermsConditions}
+					</a>
+					&nbsp; {i18n.lbl_Check18TC2}&nbsp;
+					<a
+						rel="noreferrer"
+						target="_blank"
+						href={TandC(userInfo.langId).rule}>
+						{i18n.lbl_RuleRegulations}
+					</a>
+					&nbsp; {i18n.lbl_Check18TC3}&nbsp;{config.siteName}
+					.&nbsp;
+					{i18n.lbl_Check18TC4}
+				</Checkbox>
+				{status.Checkbox.checked === false ? (
+					<div className="tip active">
+						{i18n.lbl_Check18TCTooltip}
+					</div>
+				) : null}
+				<div className="btn-group">
+					<button onClick={clickSubmit}>{i18n.lbl_JoinNow}</button>
+				</div>
+				<Link to="/">
+					<div className="visit">
+						{i18n.lbl_IWouldLikeToVisit}
+						<i className="icon icon-visit" />
+					</div>
+				</Link>
+			</div>
+
+			<PromoPopup
+				banner={banner}
+				ImgFolder="Promotion"
+				ClickClose={ClosePromoPopup}
+				title={i18n.lbl_Welcome}
+				isOpen={promoPopup}
+			/>
+		</>
+	);
+};
+
+export default Join;

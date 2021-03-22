@@ -31,7 +31,11 @@ export default () => {
 
 	useEffect(() => {
 		const key = getUrlParameter("key");
-		if (userInfo.isLogin === false && key) {
+		if (
+			key &&
+			userInfo.isLogin === false &&
+			userInfo.loginFromResetPwd === undefined
+		) {
 			api_CheckResetPwdToken(key).then(
 				res => {
 					if (isMountedRef.current) {
@@ -67,10 +71,12 @@ export default () => {
 					}
 				}
 			);
-		} else if (userInfo.isLogin && !userInfo.loginFromResetPwd) {
-			if (isMountedRef.current) {
-				setRedirectPath("/");
-			}
+		} else if (
+			userInfo.isLogin &&
+			!userInfo.loginFromResetPwd &&
+			isMountedRef.current
+		) {
+			setRedirectPath("/");
 		}
 	}, [
 		redirectPath,

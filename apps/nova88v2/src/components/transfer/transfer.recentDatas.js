@@ -1,0 +1,108 @@
+import React, { useState, useContext } from "react";
+import { i18nContext, userInfoContext } from "Context";
+import PropTypes from "prop-types";
+import { Link } from "@Router";
+import Detail from "./historyDetail";
+import { isConvert, number_format } from "../common/common";
+import ReloadSpin from "../common/reloadSpin";
+import path from "../../path";
+
+const RecentDatas = ({ datas, ReloadFunc }) => {
+	const { userInfo } = useContext(userInfoContext);
+	const { i18n } = useContext(i18nContext);
+	const _isConvert = isConvert(userInfo.currencyId);
+	const [isOpen, setOpen] = useState(false);
+
+	const HandleOpen = () => {
+		setOpen(prevState => !prevState);
+	};
+
+	const transferDirection = (_direction, tpName) => {
+		let startWallet = i18n.lbl_MainWallet;
+		let endWallet = tpName;
+
+		if (_direction !== 1) {
+			startWallet = tpName;
+			endWallet = i18n.lbl_MainWallet;
+		}
+		return { startWallet, endWallet };
+	};
+
+	const hasData = datas && datas.length > 0;
+	const arr =
+		hasData &&
+		datas?.map(item => {
+			const _transferDirection = transferDirection(
+				item.direction,
+				item.tpName
+			);
+			return (
+				<Detail
+					key={`transferRecent-${item.transId}`}
+					createTime={item.createTime}
+					transId={item.transId}
+					amount={number_format(item.amount, _isConvert)}
+					startWallet={_transferDirection.startWallet}
+					endWallet={_transferDirection.endWallet}
+					i18n={i18n}
+					memo={item.memo}
+				/>
+			);
+		});
+
+	let dataContent = null;
+	if (hasData) {
+		dataContent = (
+			<>
+				<div className="infoList">
+					<div className="recentTransactions">
+						<ReloadSpin func={ReloadFunc} />
+					</div>
+					{arr}
+				</div>
+				<div className="btn-group">
+					<Link
+						to={path.transferHistory.root}
+						className="orange recentBtn">
+						{i18n.lbl_AllTranscations}
+					</Link>
+				</div>
+			</>
+		);
+	} else if (isOpen) {
+		dataContent = (
+			<div className="nodata icon icon-nodata">
+				<div className="txt-white">{i18n.msg_NoData}</div>
+			</div>
+		);
+	}
+
+	return (
+		<>
+			<div className="btn-group">
+				<button className="recentBtn" onClick={HandleOpen}>
+					{i18n.lbl_RecentTransactions}
+					<i
+						className={`icon icon-keyboard_arrow_down${
+							isOpen ? " active" : ""
+						}`}
+					/>
+				</button>
+			</div>
+			<div className={`recent${isOpen ? " active" : ""}`}>
+				{dataContent}
+			</div>
+		</>
+	);
+};
+
+RecentDatas.defaultProps = {
+	datas: []
+};
+
+RecentDatas.propTypes = {
+	datas: PropTypes.arrayOf(PropTypes.object),
+	ReloadFunc: PropTypes.func.isRequired
+};
+
+export default RecentDatas;
