@@ -26,7 +26,10 @@ const defColumns = {
 class Modal extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { processing: false, warningStateRefId: {} };
+		this.state = {
+			processing: false
+			// warningStateRefId: {}
+		};
 		this.isMountedRef = false;
 		this.filebox = React.createRef();
 	}
@@ -305,16 +308,26 @@ class Modal extends Component {
 						onChange={this.EditField.bind(this, "depositTime")}
 					/>
 				</div>
-				<span className="text">{i18n.lbl_Refno}</span>
-				<Inputbox
-					icon="icon-pencil"
-					inputType="text"
-					placeholder={i18n.msg_ReferenceNumber}
-					value={this.props.bankSlipPopBox.refId ?? ""}
-					onChange={this.EditField.bind(this, defColumns.refId)}
-					onBlur={this.checkValueHandler.bind(this, defColumns.refId)}
-					Warning={this.state.warningStateRefId}
-				/>
+				{this.props.bankSlipPopBox.currencyId === 4 ? null : (
+					<>
+						<span className="text">{i18n.lbl_Refno}</span>
+						<Inputbox
+							icon="icon-pencil"
+							inputType="text"
+							placeholder={i18n.msg_ReferenceNumber}
+							value={this.props.bankSlipPopBox.refId ?? ""}
+							onChange={this.EditField.bind(
+								this,
+								defColumns.refId
+							)}
+							onBlur={this.checkValueHandler.bind(
+								this,
+								defColumns.refId
+							)}
+							// Warning={this.state.warningStateRefId}
+						/>
+					</>
+				)}
 				<div className="btn-group">
 					<button
 						className="blue closePopup"
