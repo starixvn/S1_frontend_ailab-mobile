@@ -143,7 +143,7 @@
 	"lbl_AfterAmount": "จำนวนเงินที่เหลือ",
 	"lbl_RefTransId": "รหัส ID อ้างอิง",
 	"lbl_Stake": "ยอดเดิมพัน",
-	"lbl_AmountTooltip": "จำนวนเงินต้องไม่น้อยกว่า 1",
+	"lbl_AmountTooltip": "จำนวนเงินต้องไม่น้อยกว่า {{0}}",
 	"lbl_NotinLimit": "จำนวนเงินมากกว่าหรือน้อยกว่าที่กำหนดไว้",
 	"lbl_ConfirmDeposit": "กรุณายืนยันข้อมูลการฝากเงิน",
 	"lbl_ImportantNote": "โน๊ตสำคัญ",
@@ -153,7 +153,7 @@
 	"lbl_PersonalMsg": "ข้อความส่วนตัว",
 	"lbl_Announcement": "ประกาศ",
 	"lbl_SelectAll": "เลือกทั้งหมด",
-	"lbl_AttachFile": "โปรดแนบสลิปธนาคารของคุณที่นี่ (ทางเลือก)",
+	"lbl_AttachFile": "โปรดแนบสลิปธนาคารของคุณที่นี่",
 	"lbl_UploadFile": "กำลังดำเนินการอัพโหลดไฟล์",
 	"lbl_RefnoToolTip": "โปรดใส่หมายเลขอ้างอิงสลิปธนาคารของคุณ",
 	"lbl_DepositTime": "เวลาที่ทำการฝากเงิน",
@@ -458,6 +458,8 @@
 	"lbl_Nova_Club":"โนวา คลับ",
 	"lbl_ReSend":"Re-send in",
 	"lbl_Minutes":"นาที",
+	"lbl_DepositOptions":"ตัวเลือกการฝาก",
+	"lbl_DepositProcessingDescription":"กำลังดำเนินรายการฝากของคุณ กรุณาอัปเดตด้านล่างหรือคลิ๊กที่ลิงค์ประวัติเพื่อตรวจสอบผลธุรกรรมการฝาก",
 	"lbl_Vip_Service_Support":"ฝ่ายบริการ",
 	"lbl_Vip_Deposit_Priority":"การฝากเงิน",
 	"lbl_Vip_WithDrawal_Priority":"การถอนเงิน",
@@ -489,5 +491,15 @@
 	"lbl_Vip_Lifetime":"อายุการใช้งาน",
 	"lbl_Vip_3Months":"สามเดือน",
 	"lbl_VIP":"VIP",
-	"ibi_GameProvider":"ผู้ให้บริการเกม"
+	"ibi_GameProvider":"ผู้ให้บริการเกม",
+	"lbl_PaymentModes":"วิธีการชำระเงิน",
+	"lbl_SelectChannel":"เลือกช่อง",
+	"lbl_MinMaxAmount":"ขั้นต่ำ / สูงสุด",
+	"lbl_SelectBank":"เลือกธนาคาร",
+	"lbl_UploadReceipt":"อัปโหลดสลิปการโอนเงิน",
+	"lbl_Refno":"หมายเลขอ้างอิง",
+	"lbl_MaxBonusAmount":"จำนวนโบนัสสูงสุด",
+	"lbl_Min":"ขั้นต่ำ",
+	"lbl_Max":"สูงสุด"
+
 }

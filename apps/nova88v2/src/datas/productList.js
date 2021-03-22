@@ -11,7 +11,7 @@ import LIVEcasino_EB from "../styles/img/LIVEcasino_EB.jpg";
 // import LIVEcasino_MW from "../styles/img/LIVEcasino_MW.jpg";
 import LIVEcasino_WM from "../styles/img/LIVEcasino_WM.jpg";
 import Coming_soon from "../styles/img/coming_soon.jpg";
-import casino_ow from "../styles/img/casino_OW.jpg";
+import casino_ow from "../styles/img/casino_ow.jpg";
 import casino_PP from "../styles/img/casino_PP.jpg";
 import casino_SG from "../styles/img/casino_SG.jpg";
 import casino_PG from "../styles/img/casino_PG.jpg";
