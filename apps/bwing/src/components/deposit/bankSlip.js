@@ -32,8 +32,8 @@ class Content extends Component {
 		super(props);
 		this.state = {
 			processing: false,
-			disableUpload: false,
-			refIdTip: ""
+			disableUpload: false
+			// refIdTip: ""
 		};
 		this.isMountedRef = false;
 		this.filebox = React.createRef();
@@ -43,8 +43,8 @@ class Content extends Component {
 		/* eslint-disable */
 		this.isMountedRef = true;
 		this._clipboard = new ClipboardJS(".copyBtn");
-		this._clipboard.on("success", e => {});
-		this._clipboard.on("error", e => {});
+		this._clipboard.on("success", () => {});
+		this._clipboard.on("error", () => {});
 		/* eslint-enable */
 	}
 
@@ -86,7 +86,7 @@ class Content extends Component {
 						}
 					}
 				},
-				err => {
+				() => {
 					if (this.isMountedRef) {
 						this.props.setPopBox({
 							isOpen: true,
@@ -111,43 +111,44 @@ class Content extends Component {
 		// 	this.setState({ refIdTip: this.props.i18n.lbl_RemindForRefNum });
 		// }
 		else if (!this.state.processing) {
-			this.setState({ processing: true });
-			const { bankSlipPopBox } = this.props;
-			api_SetDepositReceipt(
-				bankSlipPopBox.transId,
-				moment(bankSlipPopBox.depositTime).unix(),
-				bankSlipPopBox.refId
-			).then(
-				res => {
-					if (this.isMountedRef) {
-						if (res.data.errorCode === 0) {
-							this.setState({ processing: false });
-							this.props.handlePopBox();
+			window.location.reload();
+			// this.setState({ processing: true });
+			// const { bankSlipPopBox } = this.props;
+			// api_SetDepositReceipt(
+			// 	bankSlipPopBox.transId,
+			// 	moment(bankSlipPopBox.depositTime).unix(),
+			// 	bankSlipPopBox.refId
+			// ).then(
+			// 	res => {
+			// 		if (this.isMountedRef) {
+			// 			if (res.data.errorCode === 0) {
+			// 				this.setState({ processing: false });
+			// 				this.props.handlePopBox();
 
-							this.props.setPopBox({
-								isOpen: true,
-								title: this.props.i18n.lbl_ImportantNote,
-								content: this.props.i18n
-									.lbl_UpdateSuccessWillProcess
-							});
-						} else {
-							alert(res.message);
-							this.setState({ processing: false });
-						}
-					}
-				},
-				() => {
-					if (this.isMountedRef) {
-						this.props.setPopBox({
-							isOpen: true,
-							title: this.props.i18n.lbl_ImportantNote,
-							content: this.props.i18n.msg_ApiServerError
-						});
+			// 				this.props.setPopBox({
+			// 					isOpen: true,
+			// 					title: this.props.i18n.lbl_ImportantNote,
+			// 					content: this.props.i18n
+			// 						.lbl_UpdateSuccessWillProcess
+			// 				});
+			// 			} else {
+			// 				alert(res.message);
+			// 				this.setState({ processing: false });
+			// 			}
+			// 		}
+			// 	},
+			// 	() => {
+			// 		if (this.isMountedRef) {
+			// 			this.props.setPopBox({
+			// 				isOpen: true,
+			// 				title: this.props.i18n.lbl_ImportantNote,
+			// 				content: this.props.i18n.msg_ApiServerError
+			// 			});
 
-						this.setState({ processing: false });
-					}
-				}
-			);
+			// 			this.setState({ processing: false });
+			// 		}
+			// 	}
+			// );
 		}
 	};
 
@@ -350,7 +351,7 @@ class Content extends Component {
 						</div>
 					)}
 
-					<div className="inputBox">
+					{/* <div className="inputBox">
 						<span>
 							{`${i18n.lbl_DepositTime} (${moment().format(
 								"Z"
@@ -370,7 +371,6 @@ class Content extends Component {
 							/>
 							<div className="iconModule">
 								<span className="icon icon-calendar" />
-								{/* <span className="icon icon-information-solid textBlue"></span> */}
 							</div>
 						</div>
 						<span>{i18n.lbl_Refno}</span>
@@ -380,14 +380,11 @@ class Content extends Component {
 								value={this.props.bankSlipPopBox.refId ?? ""}
 								onChange={this.EditField.bind(this, "refId")}
 							/>
-							{/* <div className="iconModule">
-									<span className="icon icon-information-solid textBlue"></span>
-								</div> */}
 						</div>
 						<div className="tip open">
 							{this.state.refIdTip ?? ""}
 						</div>
-					</div>
+					</div> */}
 					<div className="btn-group">
 						<button className="blue" onClick={this.SeReceipt}>
 							{i18n.lbl_Submit}

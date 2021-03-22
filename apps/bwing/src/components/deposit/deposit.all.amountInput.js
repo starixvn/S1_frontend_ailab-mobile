@@ -46,10 +46,12 @@ const AmountInput = ({
 					value={amount}
 				/>
 				<div className={`tip${tip ? " open" : ""}`}>{tip}</div>
+				{amount !== "" && (
+					<div className="icon-module">(&apos;000)</div>
+				)}
 			</div>
 		);
 	}
-
 	return (
 		<>
 			<div className="title">

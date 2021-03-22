@@ -123,7 +123,7 @@ const Payment = props => {
 		const result =
 			selBank.sysId &&
 			amount !== "" &&
-			VaildAmount({ amount }) &&
+			VaildAmount({ _amount: amount }) &&
 			checkAccountName;
 
 		if (result && !processing) {
@@ -363,7 +363,7 @@ const Payment = props => {
 	const canSubmit =
 		selBank.sysId &&
 		amount !== "" &&
-		VaildAmount({ amount, displayWarning: false }) &&
+		VaildAmount({ _amount: amount, displayWarning: false }) &&
 		(!!userInfo.accountName || !!realName);
 
 	return (
