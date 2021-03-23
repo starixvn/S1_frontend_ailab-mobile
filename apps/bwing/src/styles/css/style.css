@@ -1621,14 +1621,13 @@ footer > a.open {
 .inputBox > .icon-module {
   position: absolute;
   right: 20px;
-  top: 0;
+  top: 9px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 100%;
 }
 
 .inputBox > .icon-module > i {
