@@ -13,6 +13,7 @@ import Dropdown from "../common/dropdown";
 import ReloadSpin from "../common/reloadSpin";
 import { defPopBoxType } from "../common/popbox";
 import api from "../../service/api";
+import useTip from "../hook/useTip";
 import {
 	tpWalletsListType,
 	initSelectedIdx,
@@ -34,7 +35,7 @@ const Panel = () => {
 	const [transferOptions, setTransferOptions] = useState(initTransferOptions);
 	const [amount, setAmount] = useState("");
 	const [warning, setWarning] = useState(initWarning);
-	const [info, setInfo] = useState("");
+	const { showTips, showTipHandler } = useTip();
 	const [selectedIdx, setSelectedIdx] = useState(initSelectedIdx);
 	const [recentDatas, setRecentDatas] = useState([]);
 
@@ -71,7 +72,7 @@ const Panel = () => {
 		if (!_checked) {
 			setWarning({
 				status: defIptStatus.warning,
-				msg: i18n.lbl_AmountTooltip
+				msg: i18n.lbl_AmountTooltip?.replace("{{0}}", 1)
 			});
 		} else {
 			setWarning({ status: defIptStatus.verified, msg: "" });
@@ -225,10 +226,6 @@ const Panel = () => {
 		}
 	};
 
-	const clickInfo = () => {
-		setInfo(prev => (prev === "" ? i18n.lbl_AmountTooltip : ""));
-	};
-
 	const allWalletsList = [mainWalletInfo, ...tpWalletsList];
 	const arr = allWalletsList
 		.filter(wallet => {
@@ -302,9 +299,9 @@ const Panel = () => {
 				btnStatus={warning.status}
 				warningMsg={warning.msg}
 				inputType="tel"
-				infoText={info}
-				showTips={info !== ""}
-				clickInfo={clickInfo}
+				infoText={i18n.lbl_AmountTooltip?.replace("{{0}}", 1)}
+				showTips={showTips.includes("amount")}
+				clickInfo={() => showTipHandler("amount")}
 			/>
 
 			<div className="btn-group">

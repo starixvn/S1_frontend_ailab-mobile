@@ -1,34 +1,46 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
-import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import { useNavigate } from "@reach/router";
+import { Link } from "@Router";
+import {
+	i18nContext,
+	userInfoContext,
+	popBoxContext,
+	loadingContext
+} from "../common/context";
 import { number_format, isConvert, checkAmount } from "../common/common";
-import InputBox from "../common/inputbox";
+import InputBox from "../common/inputbox.hint";
+import { defIptStatus } from "../common/inputStatus";
 import config from "../../config";
 import RecentDatas from "./withdrawal.recentDatas";
 import ReloadSpin from "../common/reloadSpin";
 import path from "../../path";
-import Loading from "../common/loading";
+import useTip from "../hook/useTip";
 import { Iov_GetBlackBox } from "../common/iovation";
 import api from "../../service/api";
+
+const initWarning = {
+	status: defIptStatus.default,
+	msg: ""
+};
 
 const Panel = () => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const { setLoading } = useContext(loadingContext);
 	const [balanceInfo, setBalanceInfo] = useState(null);
 	const _isConvert = isConvert(userInfo.currencyId);
 	const [amount, setAmount] = useState("");
-	const [warning, setWarning] = useState({ status: false, msg: "" });
+	const [warning, setWarning] = useState(initWarning);
 	const [selBank, setSelBank] = useState(null);
 	const [bankInfo, setbankInfo] = useState({
 		accountName: "",
 		bankList: []
 	});
+	const { showTips, showTipHandler } = useTip();
 	const [recentDatas, setRecentDatas] = useState([]);
-
 	const [pageVerify, setPageVerify] = useState(true);
-	const [loading, setLoading] = useState(true);
 
 	const isMountedRef = useRef(null);
 	useEffect(() => {
@@ -84,7 +96,16 @@ const Panel = () => {
 									accountName: res.data.data.accountName,
 									bankList: res.data.data.bankInfoDetail
 								}));
-								setSelBank(res.data.data.bankInfoDetail?.[0]);
+								const defAccountIdx = res.data.data?.bankInfoDetail.findIndex(
+									obj =>
+										obj.accountNo ===
+										res.data.data?.defAccountNo
+								);
+								setSelBank(
+									res.data.data.bankInfoDetail?.[
+										defAccountIdx === -1 ? 0 : defAccountIdx
+									]
+								);
 								if (!pageVerify) {
 									setPageVerify(true);
 								}
@@ -115,15 +136,12 @@ const Panel = () => {
 										</div>
 									)
 								});
-
 								setPageVerify(false);
 							}
 						}
 					}
-
 					return hasBankInfo;
 				});
-
 				return result;
 			};
 
@@ -144,7 +162,7 @@ const Panel = () => {
 												setLoading(false);
 											}
 										},
-										err => {
+										() => {
 											if (isMountedRef.current) {
 												setLoading(false);
 											}
@@ -177,7 +195,8 @@ const Panel = () => {
 		setPopBox,
 		pageVerify,
 		userInfo.langId,
-		navigate
+		navigate,
+		setLoading
 	]);
 
 	const KycCheck = async UpdatePageVerify => {
@@ -191,10 +210,8 @@ const Panel = () => {
 					setPageVerify(true);
 				}
 			}
-
 			return res.data.errorCode === 1 || res.data.errorCode === 2;
 		});
-
 		return executeKycProcess;
 	};
 
@@ -224,12 +241,12 @@ const Panel = () => {
 		);
 		if (result.status !== 0) {
 			setWarning({
-				status: true,
+				status: defIptStatus.warning,
 				msg: result.msg
 			});
 		} else {
 			setWarning({
-				status: false,
+				status: defIptStatus.verified,
 				msg: ""
 			});
 		}
@@ -278,6 +295,9 @@ const Panel = () => {
 																resRecent.data
 																	.data
 															);
+															setWarning(
+																initWarning
+															);
 														}
 													});
 											}
@@ -317,7 +337,7 @@ const Panel = () => {
 									}
 								}
 							},
-							err => {
+							() => {
 								if (isMountedRef.current) {
 									setPopBox({
 										isOpen: true,
@@ -338,23 +358,23 @@ const Panel = () => {
 					content: (
 						<div>
 							<ul>
-								<li>
-									{i18n.lbl_WithdrawalTo}
-									<span>{selBank?.bankName}</span>
+								<li className="text-org">
+									{i18n.lbl_WithdrawalTo} :
+								</li>
+								<li>{selBank?.bankName}</li>
+								<li className="text-org">
+									{i18n.lbl_BankAccountName} :
+								</li>
+								<li>{bankInfo?.accountName}</li>
+								<li className="text-org">
+									{i18n.lbl_BankNumber} :
+								</li>
+								<li>{selBank?.accountNo}</li>
+								<li className="text-org">
+									{i18n.lbl_WithdrawalAmount} :
 								</li>
 								<li>
-									{i18n.lbl_BankAccountName}
-									<span>{bankInfo?.accountName}</span>
-								</li>
-								<li>
-									{i18n.lbl_BankNumber}
-									<span>{selBank?.accountNo}</span>
-								</li>
-								<li>
-									{i18n.lbl_WithdrawalAmount}
-									<span>
-										{number_format(real_amount, _isConvert)}
-									</span>
+									{number_format(real_amount, _isConvert)}
 								</li>
 							</ul>
 						</div>
@@ -443,11 +463,11 @@ const Panel = () => {
 				hasBtn: true,
 				btnBar: (
 					<div className="btn-group">
-						<button className="blue" onClick={ClickPopBoxCancel}>
-							{i18n.lbl_Cancel}
+						<button className="white" onClick={ClickPopBoxSubmit}>
+							{i18n.lbl_Yes}
 						</button>
-						<button className="orange" onClick={ClickPopBoxSubmit}>
-							{i18n.lbl_Submit}
+						<button className="orange" onClick={ClickPopBoxCancel}>
+							{i18n.lbl_No}
 						</button>
 					</div>
 				)
@@ -469,7 +489,7 @@ const Panel = () => {
 				className={
 					selBank?.sysId === b.sysId &&
 					selBank?.accountNo === b.accountNo
-						? "open"
+						? "active"
 						: ""
 				}
 				key={`withdrawal-bank-${b.sysId}-${b.accountNo}`}
@@ -483,42 +503,48 @@ const Panel = () => {
 	});
 
 	return pageVerify ? (
-		loading ? (
-			<Loading />
-		) : (
-			<>
-				<div className="avatar" />
-				<div className="name">{userInfo.userName}</div>
-				<div className="text-org">
-					{i18n.lbl_EligibleWithdrawalAmount}
-				</div>
-				<div className="balance">
-					{i18n[`Currency_${userInfo.currencyId}`]}{" "}
-					{number_format(_availableBalance, _isConvert)}
-					<ReloadSpin func={GetBalance} />
-				</div>
-				<InputBox
-					icon="icon-pencil"
-					value={amount}
-					inputType="tel"
-					onChange={EditAmount}
-					Warning={warning}
-				/>
-				<div className="inputBox">
-					<div className="selectBank">{banks}</div>
-				</div>
-				<div className="btn-group">
-					<button className="orange" onClick={ClickSubmit}>
-						{i18n.lbl_Submit}
-					</button>
-				</div>
-				<RecentDatas
-					Datas={recentDatas}
-					ClickCancel={ClickCancel}
-					ReloadFunc={GetWithdrawalInfoRecent}
-				/>
-			</>
-		)
+		<>
+			<div className="icon icon-member">
+				<div className="circleAnimation" />
+			</div>
+			<div className="name">{userInfo.userName}</div>
+			<div className="text-org">{i18n.lbl_EligibleWithdrawalAmount}</div>
+			<div className="balance">
+				{i18n[`Currency_${userInfo.currencyId}`]}{" "}
+				{number_format(_availableBalance, _isConvert)}
+				<ReloadSpin func={GetBalance} />
+			</div>
+			<InputBox
+				icon="icon-pencil"
+				value={amount}
+				inputType="tel"
+				onChange={EditAmount}
+				clickInfo={() => showTipHandler("amount")}
+				infoText={i18n.lbl_AmountTooltip?.replace("{{0}}", 1)}
+				showTips={showTips.includes("amount")}
+				placeholder={i18n.lbl_Amount}
+				btnStatus={warning.status}
+				warningMsg={warning.msg}
+			/>
+			<div className="selectBank">
+				{banks}
+				{bankInfo?.bankList?.length < 3 ? (
+					<Link to={path.bankInfo.root} />
+				) : null}
+			</div>
+			<div className="btn-group">
+				<button
+					className={amount > 0 ? "" : "gray"}
+					onClick={ClickSubmit}>
+					{i18n.lbl_Submit}
+				</button>
+			</div>
+			<RecentDatas
+				Datas={recentDatas}
+				ClickCancel={ClickCancel}
+				ReloadFunc={GetWithdrawalInfoRecent}
+			/>
+		</>
 	) : null;
 };
 

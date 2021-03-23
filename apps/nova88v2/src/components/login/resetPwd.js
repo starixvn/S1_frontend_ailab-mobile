@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect, useRef } from "react";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
 import { useNavigate } from "@reach/router";
 import Inputbox from "../common/inputbox.password";
+import useTip from "../hook/useTip";
 import { LOGOUT } from "../../service/auth";
 import Layout from "../common/layout";
 import api from "../../service/api";
@@ -14,7 +15,7 @@ const ResetPwd = () => {
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const [newPsw, setNewPsw] = useState("");
 	const [pswState, setPswState] = useState(false);
-	const [showTips, setTips] = useState([]);
+	const { showTips, showTipHandler } = useTip();
 	const [warning, setWarning] = useState({ status: null, msg: "" });
 	const isMountedRef = useRef(null);
 
@@ -25,39 +26,38 @@ const ResetPwd = () => {
 		};
 	});
 
-	const showTip = col => {
-		if (showTips.includes(col)) {
-			setTips(showTips.filter(el => el !== col));
-		} else {
-			setTips(prev => [...prev, col]);
-		}
-	};
-
 	useEffect(() => {
 		const key = getUrlParameter("key");
 
-		if (
-			key &&
-			userInfo.isLogin === false &&
-			userInfo.loginFromResetPwd === undefined
-		) {
-			api.site.CheckResetPwdToken(key).then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 1) {
-							navigate(`/${userInfo.langId}`);
-							setUserInfo(prevState => ({
-								...prevState,
-								isLogin: true
-							}));
-						} else if (res.data.errorCode === 0) {
-							setUserInfo(prevState => ({
-								...prevState,
-								isLogin: true,
-								loginFromResetPwd: true
-							}));
-						} else {
-							navigate(`/${userInfo.langId}`);
+		if (key) {
+			if (userInfo.isLogin === false) {
+				api.site.CheckResetPwdToken(key).then(
+					res => {
+						if (isMountedRef.current) {
+							if (res.data.errorCode === 1) {
+								navigate(`/${userInfo.langId}`);
+								setUserInfo(prevState => ({
+									...prevState,
+									isLogin: true
+								}));
+							} else if (res.data.errorCode === 0) {
+								setUserInfo(prevState => ({
+									...prevState,
+									isLogin: true,
+									loginFromResetPwd: true
+								}));
+							} else {
+								navigate(`/${userInfo.langId}`);
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content: i18n.msg_ApiServerError
+								});
+							}
+						}
+					},
+					() => {
+						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
@@ -65,25 +65,19 @@ const ResetPwd = () => {
 							});
 						}
 					}
-				},
-				() => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-					}
-				}
-			);
-		} else if (
-			userInfo.isLogin === true &&
-			isMountedRef.current &&
-			!userInfo.loginFromResetPwd
-		) {
+				);
+			}
+		} else if (isMountedRef.current) {
 			navigate(`/${userInfo.langId}`);
 		}
-	}, [userInfo, i18n]);
+	}, [
+		userInfo.isLogin,
+		setPopBox,
+		setUserInfo,
+		i18n,
+		navigate,
+		userInfo.langId
+	]);
 
 	const showPswHandler = () => {
 		setPswState(!pswState);
@@ -170,7 +164,7 @@ const ResetPwd = () => {
 				checked={warning.status}
 				tips={i18n.msg_PasswordVaildate}
 				warningMsg={warning.msg}
-				clickInfo={showTip.bind(null, "Password")}
+				clickInfo={() => showTipHandler("Password")}
 				showTips={showTips.includes("Password")}
 			/>
 			<div className="btn-group">

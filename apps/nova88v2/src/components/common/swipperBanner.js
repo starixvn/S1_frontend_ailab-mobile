@@ -3,6 +3,7 @@ import React, { useEffect, useState, useContext } from "react";
 import PropTypes from "prop-types";
 import Swiper from "react-id-swiper";
 import { Link } from "../../route/link";
+import useHandleLogin from "../hook/useHandleLogin";
 import { userInfoContext, navContext, defNavPanel } from "./context";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import path from "../../path";
@@ -18,9 +19,7 @@ export const ClickLink = ({
 	isLogin,
 	setNav
 }) => {
-	const HandleLogin = () => {
-		setNav(defNavPanel.login);
-	};
+	const { handleLogin } = useHandleLogin();
 
 	if (actionMode === api.site.defBannerActionMode.OpenWindow) {
 		window.open(bannerLink, "_blank");
@@ -29,7 +28,7 @@ export const ClickLink = ({
 	} else if (
 		actionMode === api.site.defBannerActionMode.RedirectPageOfThisSite
 	) {
-		HandleLogin();
+		handleLogin();
 	} else if (actionMode === api.site.defBannerActionMode.GoToGame) {
 		GET_ENTER_PAGE({
 			langId: lang,
@@ -37,7 +36,7 @@ export const ClickLink = ({
 			gameId,
 			matchid: matchId,
 			isLogin: isLogin === true,
-			loginCallback: HandleLogin
+			loginCallback: handleLogin
 		});
 	}
 };
@@ -140,7 +139,7 @@ const Panel = ({ ImgFolder = [] }) => {
 	return <Autoplay Rows={rows} />;
 };
 
-const Autoplay = props => {
+export const Autoplay = props => {
 	const params = {
 		spaceBetween: 30,
 		centeredSlides: true,

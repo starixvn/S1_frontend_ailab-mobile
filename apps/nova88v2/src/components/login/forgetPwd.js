@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect, useRef } from "react";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
 import { useNavigate } from "@reach/router";
 import path from "Path";
+import useTip from "../hook/useTip";
 import Inputbox from "../common/inputbox.hint";
 import Layout from "../common/layout";
 import api from "../../service/api";
@@ -12,8 +13,8 @@ const ForgetPwd = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
 	const [userEmail, setUserEmail] = useState("");
-	const [showTips, setTips] = useState([]);
 	const [warning, setWarning] = useState({ status: null, msg: "" });
+	const { showTips, showTipHandler } = useTip();
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -25,14 +26,6 @@ const ForgetPwd = () => {
 	const EditField = e => {
 		const val = e.target.value;
 		setUserEmail(val);
-	};
-
-	const showTip = col => {
-		if (showTips.includes(col)) {
-			setTips(showTips.filter(el => el !== col));
-		} else {
-			setTips(prev => [...prev, col]);
-		}
 	};
 
 	const checkEmailHandler = e => {
@@ -61,8 +54,7 @@ const ForgetPwd = () => {
 			api.site
 				.ForgetPwd({
 					langId: userInfo.langId,
-					Email: userEmail,
-					flag: 1
+					Email: userEmail
 				})
 				.then(
 					res => {
@@ -104,7 +96,7 @@ const ForgetPwd = () => {
 				btnStatus={warning.status}
 				warningMsg={warning.msg}
 				infoText={i18n.lbl_ForgetPwdHint}
-				clickInfo={showTip.bind(null, "Email")}
+				clickInfo={() => showTipHandler("Email")}
 				showTips={showTips.includes("Email")}
 			/>
 			<div className="btn-group">

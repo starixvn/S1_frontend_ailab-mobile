@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
-import { useNavigate } from "@reach/router";
+import { useNavigate, useLocation, globalHistory } from "@reach/router";
 import {
 	userInfoContext,
 	i18nContext,
@@ -13,6 +13,7 @@ import Dropdown from "../common/dropdown";
 import Checkbox from "../common/checkbox";
 import { getUrlParameter, passwordCheck, getCookie } from "../common/common";
 import { GET_LANG_ID } from "../../service/language";
+import useTip from "../hook/useTip";
 import TandC from "../../service/t_and_c";
 import path from "../../path";
 import config from "../../config";
@@ -25,6 +26,7 @@ import { Link } from "../../route/link";
 
 const Join = () => {
 	const navigate = useNavigate();
+	const state = useLocation();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -38,12 +40,12 @@ const Join = () => {
 	const [defaultOption, setDefaultOption] = useState(
 		i18n.lbl_PrefferedCurrency
 	);
-	const [showTips, setTips] = useState([]);
+	const { showTips, showTipHandler } = useTip([]);
 	const [promoPopup, setPromoPopup] = useState(false);
 	const defaultLangId = userInfo.langId ?? GET_LANG_ID();
 
-	//
 	const isMountedRef = useRef(null);
+	const justMounted = useRef(true);
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => {
@@ -56,6 +58,12 @@ const Join = () => {
 			navigate(`/${userInfo.langId}`);
 		}
 	}, []);
+
+	useEffect(() => {
+		if (state.state.fromHeader) {
+			localStorage.setItem("previousPage", "/");
+		}
+	}, [globalHistory]);
 
 	useEffect(() => {
 		const refId = getCookie("RefId");
@@ -75,6 +83,13 @@ const Join = () => {
 		}
 	}, [nav, userInfo.langId]);
 
+	useEffect(() => {
+		if (justMounted.current) {
+			justMounted.current = false;
+		} else {
+			checkValue("Currency");
+		}
+	}, [userValue.Currency]);
 	const AffId = getUrlParameter("AffId") || getCookie("AffId");
 	useEffect(() => {
 		const AffCode = getUrlParameter("AffCode") || getCookie("AffCode");
@@ -165,16 +180,8 @@ const Join = () => {
 		setPswState(!pswState);
 	};
 
-	const showTip = col => {
-		if (showTips.includes(col)) {
-			setTips(showTips.filter(el => el !== col));
-		} else {
-			setTips(prev => [...prev, col]);
-		}
-	};
-
 	const checkValue = async (col, e) => {
-		const val = e.target.value;
+		const val = e?.target?.value;
 		let checked = true;
 		let msg = "";
 		if (col === "UserName") {
@@ -280,7 +287,6 @@ const Join = () => {
 	const currencyCheck = () => {
 		let checked = true;
 		let msg = "";
-
 		if (defaultOption !== null) {
 			checked = false;
 			msg = "lbl_RemindPrefferedCurrency";
@@ -290,10 +296,7 @@ const Join = () => {
 
 	const onSelectItem = i => {
 		setDefaultOption(null);
-
-		setUserValue(prev => {
-			return { ...prev, Currency: i };
-		});
+		setUserValue(prev => ({ ...prev, Currency: i }));
 	};
 
 	const EditField = (col, e) => {
@@ -305,11 +308,17 @@ const Join = () => {
 	};
 
 	const checkboxHandler = () => {
-		const checked = !userValue.Checkbox;
-
 		setUserValue(prevState => ({
 			...prevState,
-			Checkbox: checked
+			Checkbox: !prevState.Checkbox
+		}));
+
+		setStatus(prevState => ({
+			...prevState,
+			Checkbox: {
+				checked: !prevState.Checkbox.checked,
+				msg: ""
+			}
 		}));
 	};
 
@@ -498,7 +507,6 @@ const Join = () => {
 	const ClosePromoPopup = () => {
 		setPromoPopup(false);
 	};
-
 	return (
 		<>
 			<div className="Join active">
@@ -511,7 +519,7 @@ const Join = () => {
 					btnStatus={status.UserName.checked}
 					warningMsg={status.UserName.msg}
 					infoText={i18n.lbl_UsernameTooltip}
-					clickInfo={showTip.bind(null, "UserName")}
+					clickInfo={() => showTipHandler("UserName")}
 					showTips={showTips.includes("UserName")}
 					testAttr="UserName"
 				/>
@@ -528,7 +536,7 @@ const Join = () => {
 					checked={status.Password.checked}
 					tips={i18n.msg_PasswordVaildate}
 					warningMsg={status.Password.msg}
-					clickInfo={showTip.bind(null, "Password")}
+					clickInfo={() => showTipHandler("Password")}
 					showTips={showTips.includes("Password")}
 					testAttr="Password"
 				/>
@@ -541,7 +549,7 @@ const Join = () => {
 					btnStatus={status.Email.checked}
 					warningMsg={status.Email.msg}
 					infoText={i18n.lbl_EmailToolTip}
-					clickInfo={showTip.bind(null, "Email")}
+					clickInfo={() => showTipHandler("Email")}
 					showTips={showTips.includes("Email")}
 					testAttr="Email"
 				/>
@@ -553,12 +561,13 @@ const Join = () => {
 					options={siteCurrency}
 					onSelectItem={onSelectItem}
 					infoText={i18n.lbl_PreferredCurrencyToolTip}
-					clickInfo={showTip.bind(null, "Currency")}
+					clickInfo={() => showTipHandler("Currency")}
 					showTips={showTips.includes("Currency")}
 					checked={status.Currency.checked}
 					warningMsg={status.Currency.msg}
 					i18n={i18n}
 					testAttr="Currency"
+					onBlur={checkValue.bind(null, "Currency")}
 				/>
 
 				{userValue.Currency !== null ? (
@@ -572,7 +581,7 @@ const Join = () => {
 							btnStatus={status.Phone.checked}
 							warningMsg={status.Phone.msg}
 							infoText={i18n.lbl_PhoneTooltip}
-							clickInfo={showTip.bind(null, "Phone")}
+							clickInfo={() => showTipHandler("Phone")}
 							showTips={showTips.includes("Phone")}
 							onBlur={checkValue.bind(null, "Phone")}
 							testAttr="Phone"
@@ -604,7 +613,7 @@ const Join = () => {
 					btnStatus={status.AffiliateId.checked}
 					warningMsg={status.AffiliateId.msg}
 					infoText={i18n.lbl_Please_enter_Affiliate_ID}
-					clickInfo={showTip.bind(null, "AffiliateId")}
+					clickInfo={() => showTipHandler("AffiliateId")}
 					showTips={showTips.includes("AffiliateId")}
 					testAttr="AffiliateId"
 				/>
@@ -612,7 +621,9 @@ const Join = () => {
 				<Checkbox
 					testAttr="iAgree"
 					labelClassName={`icon icon-radio-${
-						userValue.Checkbox ? "checked" : "unchecked"
+						status.Checkbox.checked === true
+							? "checked"
+							: "unchecked"
 					}`}
 					Checked={userValue.Checkbox}
 					className={`Terms${

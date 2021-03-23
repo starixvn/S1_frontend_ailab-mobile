@@ -22,7 +22,9 @@ export default ({
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	const SetClaimPromotion = ({ bonusCode, LockedAmount = 0 }) => {
@@ -202,15 +204,14 @@ export default ({
 		}
 	};
 
-	let _isExpiry = isExpiry({
+	const _isExpiry = isExpiry({
 		...promotionInfo,
 		isLogin: userInfo.isLogin
 	});
 
-	let _canJoin =
+	const _canJoin = !(
 		filterType === defFilterType.specialBonus && !promotionInfo.canJoin
-			? false
-			: true;
+	);
 
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />

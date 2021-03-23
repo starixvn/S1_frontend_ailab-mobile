@@ -2,6 +2,7 @@ import React, { useState, useContext, Component, useEffect } from "react";
 import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import { Link } from "@Router";
 import { useNavigate } from "@reach/router";
+import useHandleLogin from "../hook/useHandleLogin";
 import gameList from "../../datas/productList";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import path from "../../path";
@@ -13,7 +14,7 @@ const Category = props => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const [casinoTpIds, setCasinoTpIds] = useState(null);
-
+	const { handleLogin } = useHandleLogin();
 	const clickGame = gameInfo => {
 		const {
 			tpId,
@@ -22,17 +23,15 @@ const Category = props => {
 			needLogin,
 			popBox: popBoxData
 		} = gameInfo;
-		const HandleLogin = () => {
-			navigate(`/${userInfo.langId}/login`);
-		};
+
 		if (_path) {
 			return needLogin && !userInfo.isLogin
-				? HandleLogin()
+				? handleLogin()
 				: navigate(`/${userInfo.langId}/${_path}`);
 		}
 		if (popBoxData) {
 			return needLogin && !userInfo.isLogin
-				? HandleLogin()
+				? handleLogin()
 				: setPopBox({
 						isOpen: true,
 						title: i18n[popBoxData.title],
@@ -45,7 +44,7 @@ const Category = props => {
 			tpId,
 			gameId,
 			isLogin: userInfo.isLogin === true,
-			loginCallback: HandleLogin
+			loginCallback: handleLogin
 		});
 	};
 
@@ -140,10 +139,10 @@ class CateGoryContent extends Component {
 				const item =
 					this.RefItems[k].Last.current ??
 					this.RefItems[k].First.current;
-				const x = item.getBoundingClientRect();
+				const x = item?.getBoundingClientRect();
 
 				if (
-					x.bottom >= this.props.top + 50 &&
+					x?.bottom >= this.props.top + 50 &&
 					currentCategory === null
 				) {
 					currentCategory = k;

@@ -77,6 +77,10 @@ body, html {
   color: #F77A00;
 }
 
+div[tabindex="-1"] {
+  height: 100%;
+}
+
 .logoSwitch {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -285,13 +289,7 @@ header .headerInfo {
 }
 
 header .headerInfo .MemberID {
-  color: #F77A00;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-header .headerInfo .Balance {
+  color: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -324,8 +322,8 @@ header .headerButton > button, header .headerButton > a {
   border-radius: 3px;
   color: #F77A00;
   padding: 1vw 3vw;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(60%, white), to(#ccc));
-  background: linear-gradient(to bottom, white 60%, #ccc);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(60%, white), to(#BFCCE2));
+  background: linear-gradient(to bottom, white 60%, #BFCCE2);
   margin: 0 0 0 5px;
 }
 
@@ -336,7 +334,7 @@ header .headerButton > button.loginBtn, header .headerButton > a.loginBtn {
 }
 
 #Marquee {
-  background: #F77A00;
+  background: white;
   height: 6vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -344,13 +342,13 @@ header .headerButton > button.loginBtn, header .headerButton > a.loginBtn {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.3);
-          box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.3);
-  position: fixed;
-  z-index: 1;
+  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
   width: 100%;
-  top: 49.4vw;
   overflow: hidden;
+  padding: 1vw 0;
+  position: relative;
+  z-index: 1;
 }
 
 #Marquee .icon {
@@ -358,7 +356,9 @@ header .headerButton > button.loginBtn, header .headerButton > a.loginBtn {
   display: -ms-flexbox;
   display: flex;
   width: 5vw;
-  background: #F77A00;
+  background: white;
+  color: #001942;
+  z-index: 1;
 }
 
 #Marquee .marquee-box {
@@ -374,11 +374,14 @@ header .headerButton > button.loginBtn, header .headerButton > a.loginBtn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  z-index: -1;
 }
 
 #Marquee .marquee-box .marquee-run {
   position: absolute;
+}
+
+#Marquee .marquee-box .marquee-run button {
+  color: #5574A7;
 }
 
 #Marquee > div.active {
@@ -399,7 +402,7 @@ header .headerButton > button.loginBtn, header .headerButton > a.loginBtn {
 
 main {
   width: 100%;
-  height: calc(100% - 12vw);
+  padding: 12vw 0 15vw;
 }
 
 main.stopScroll {
@@ -407,7 +410,7 @@ main.stopScroll {
 }
 
 main .swiper-container {
-  padding: 12vw 0 0;
+  position: relative;
 }
 
 main .swiper-container .swiper-slide.swiper-slide-active {
@@ -419,6 +422,10 @@ main .swiper-container .swiper-slide.swiper-slide-active {
           justify-content: center;
 }
 
+main .swiper-container .swiper-pagination-bullet-active {
+  background: #5574A7;
+}
+
 main .banner {
   background: white;
   height: 37.5vw;
@@ -428,38 +435,73 @@ main .banner {
 }
 
 main .sideBar {
-  width: 20vw;
-  height: calc(100% - 79vw);
-  -webkit-box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.5);
-          box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.5);
-  position: fixed;
-  top: 0;
-  padding: 55vw 0 24vw;
+  width: 100%;
   overflow-y: scroll;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 1;
+  background: #e2efff;
+  -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.3);
 }
 
 main .sideBar button, main .sideBar a {
-  display: block;
   text-align: center;
   -webkit-transition: 0.7s;
   transition: 0.7s;
-  width: 100%;
+  color: #001942;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: 15vw;
+  padding: 3vw 0 4vw;
   position: relative;
-  border-bottom: 1px solid #002B6C;
-  padding: 3vw 0 2vw;
+}
+
+main .sideBar button i:not(.icon-new):not(.icon-live):before, main .sideBar a i:not(.icon-new):not(.icon-live):before {
+  font-size: 8vw;
+}
+
+main .sideBar button i:not(.icon-new):not(.icon-live) + div, main .sideBar a i:not(.icon-new):not(.icon-live) + div {
+  color: #5574A7;
+  font-size: 3vw;
+}
+
+main .sideBar button i.icon-new, main .sideBar button i.icon-live, main .sideBar a i.icon-new, main .sideBar a i.icon-live {
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
 }
 
 main .sideBar button.icon:before, main .sideBar a.icon:before {
   font-size: 6vw;
-  border-radius: 100%;
-  padding: 0.5vw;
-  color: #B2B2B2;
 }
 
 main .sideBar button.active, main .sideBar a.active {
+  background: #5574A7;
+}
+
+main .sideBar button.active i, main .sideBar a.active i {
   -webkit-transition: 0.7s;
   transition: 0.7s;
-  border-color: #F77A00;
+  color: white;
+}
+
+main .sideBar button.active i:not(.icon-new):not(.icon-live) + div, main .sideBar a.active i:not(.icon-new):not(.icon-live) + div {
+  color: white;
 }
 
 main .sideBar button.active .circleAnimation, main .sideBar a.active .circleAnimation {
@@ -469,102 +511,66 @@ main .sideBar button.active .circleAnimation, main .sideBar a.active .circleAnim
   left: 50%;
 }
 
-main .sideBar button.active.icon:before, main .sideBar a.active.icon:before {
-  background: #F77A00;
-  color: white;
-}
-
 main .gameList {
-  width: calc(100% - 21vw);
-  position: absolute;
-  left: 21vw;
-  padding: 0 0 20vw 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-flow: wrap;
       flex-flow: wrap;
   background: #f3f3f3;
+  padding: 2vw;
+  border: 1px solid #e2e2e2;
 }
 
-main .gameList .icon-new {
-  position: absolute;
-  right: 1vw;
-  bottom: 1vw;
+main .gameList > div, main .gameList > a, main .gameList > button {
+  display: none;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
 }
 
-main .gameList a {
-  margin: 1vw auto;
+main .gameList > div.active, main .gameList > a.active, main .gameList > button.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main .gameList > div > div, main .gameList > div > a, main .gameList > div > button, main .gameList > a > div, main .gameList > a > a, main .gameList > a > button, main .gameList > button > div, main .gameList > button > a, main .gameList > button > button {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 calc(100% - 3vw);
-          flex: 0 0 calc(100% - 3vw);
+      -ms-flex: 0 0 27vw;
+          flex: 0 0 27vw;
+  margin: 2vw;
+  text-align: center;
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: relative;
+  border: 1px solid #e2e2e2;
+  border-radius: 10px;
+  background: #ececec;
   overflow: hidden;
 }
 
-main .gameList a.active {
-  opacity: 1;
-}
-
-main .gameList a img {
+main .gameList > div > div img, main .gameList > div > a img, main .gameList > div > button img, main .gameList > a > div img, main .gameList > a > a img, main .gameList > a > button img, main .gameList > button > div img, main .gameList > button > a img, main .gameList > button > button img {
   width: 100%;
-  border-radius: 3px;
 }
 
-main .gameList a span {
+main .gameList > div > div img + div, main .gameList > div > a img + div, main .gameList > div > button img + div, main .gameList > a > div img + div, main .gameList > a > a img + div, main .gameList > a > button img + div, main .gameList > button > div img + div, main .gameList > button > a img + div, main .gameList > button > button img + div {
   position: absolute;
-  left: 3vw;
-  width: 30vw;
-  font-weight: bold;
-  font-size: 7vw;
-  font-style: italic;
+  bottom: 0.2vw;
+  margin: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 19vw;
 }
 
-main .gameList a, main .gameList div {
-  padding: 0;
-}
-
-main .gameList a#Sports, main .gameList div#Sports {
-  padding: 57vw 0 0;
-  margin: 0;
-}
-
-main .gameList a.anchor, main .gameList div.anchor {
-  padding: 57vw 0 0;
-  margin: -56vw 0 0;
-}
-
-main .gameList .space {
-  height: 100vw;
-  background: transparent;
-}
-
-main .gameList .casinoList {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-flow: wrap;
-      flex-flow: wrap;
-  padding: 0 1.2vw;
-}
-
-main .gameList .casinoList.active a {
-  opacity: 1;
-}
-
-main .gameList .casinoList a {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 calc(50% - 1.5vw);
-          flex: 0 0 calc(50% - 1.5vw);
+main .gameList .icon-new {
+  position: absolute;
+  right: 1vw;
+  bottom: 1vw;
 }
 
 footer {
@@ -2011,13 +2017,13 @@ footer > a.active .circleAnimation + span {
 }
 
 .btn-group button.blue, .btn-group button.cancel, .btn-group a.blue, .btn-group a.cancel, .btn-group .submit.blue, .btn-group .submit.cancel {
-  background: -webkit-gradient(linear, left top, left bottom, from(#1249A5), to(#002B6C));
-  background: linear-gradient(to bottom, #1249A5, #002B6C);
+  background: -webkit-gradient(linear, left top, left bottom, from(#435F8B), to(#6383B9));
+  background: linear-gradient(to bottom, #435F8B, #6383B9);
 }
 
 .btn-group button.white, .btn-group a.white, .btn-group .submit.white {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(60%, white), to(#ccc));
-  background: linear-gradient(to bottom, white 60%, #ccc);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(60%, white), to(#BFCCE2));
+  background: linear-gradient(to bottom, white 60%, #BFCCE2);
   color: #F77A00;
 }
 
@@ -2568,9 +2574,8 @@ input[type="checkbox"] + label {
 }
 
 button.clickBtn {
-  background: #F77A00;
+  background: #5574A7;
   border-radius: 100%;
-  padding: 2vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2581,8 +2586,8 @@ button.clickBtn {
       -ms-flex-pack: center;
           justify-content: center;
   margin: 0 0 0 2vw;
-  width: 7vw;
-  height: 7vw;
+  width: 6vw;
+  height: 6vw;
 }
 
 button.clickBtn:before {
@@ -2930,7 +2935,7 @@ button.clickBtn:before {
 .casino .swiper-container {
   position: absolute;
   left: 0;
-  top: 0;
+  top: 12vw;
 }
 
 .casino .functionList {
@@ -4447,7 +4452,7 @@ span.important {
 }
 
 .installGuide section .banner img {
-  height: 100%;
+  width: 100%;
 }
 
 .installGuide section .copyinfo {
@@ -4465,6 +4470,7 @@ span.important {
   padding: 2vw;
   position: relative;
   text-align: center;
+  overflow: hidden;
 }
 
 .installGuide section .downloadModule .guideMark {
@@ -4486,6 +4492,7 @@ span.important {
   border-style: solid;
   border-width: 3vw 20vw;
   background: transparent;
+  pointer-events: none;
 }
 
 .installGuide section .downloadModule > .title {
@@ -4557,11 +4564,17 @@ span.important {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  width: 45vw;
+  overflow: unset;
 }
 
 .installGuide section .swiper-container img {
   width: 45vw;
   margin: 0 1vw;
+}
+
+.installGuide section .swiper-container .swiper-slide {
+  width: 100% !important;
 }
 
 .partner img {
@@ -5062,7 +5075,7 @@ span.important {
           justify-content: space-between;
 }
 
-.contact > div {
+.contact > div, .contact a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5073,12 +5086,12 @@ span.important {
   font-weight: bold;
 }
 
-.contact > div img {
+.contact > div img, .contact a img {
   width: 25vw;
   margin: 0 2vw 0 0;
 }
 
-.contact > div i {
+.contact > div i, .contact a i {
   width: 12vw;
   height: 12vw;
   display: -webkit-box;
@@ -5095,12 +5108,12 @@ span.important {
   margin: 0 2vw 0 0;
 }
 
-.contact > div i::before {
+.contact > div i::before, .contact a i::before {
   color: #001942;
   font-size: 7vw;
 }
 
-.contact > div i:not(.icon-chat):before {
+.contact > div i:not(.icon-chat):before, .contact a i:not(.icon-chat):before {
   font-weight: normal;
 }
 
@@ -5140,7 +5153,7 @@ span.important {
 .vip {
   width: 100%;
   height: calc(100% - 25vw);
-  padding: 0 0 25vw;
+  padding: 12vw 0 25vw;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -5206,7 +5219,7 @@ span.important {
 
 .vip .vipInfo {
   padding: 2vw;
-  margin: 71vw auto 0;
+  margin: 55vw auto 0;
 }
 
 .vip .vipInfo .vipTitle {
@@ -5735,13 +5748,12 @@ span.important {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   border-radius: 0 0 5px 5px;
   padding: 2vw 1vw;
-  -ms-flex-flow: wrap;
-      flex-flow: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
 }
 
 .depositModule .selectModule li span {
@@ -5758,7 +5770,7 @@ span.important {
   background: white;
   border-radius: 5px;
   padding: 0.5vw;
-  margin: 1vw 1.5vw;
+  margin: 1.5vw;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   display: -webkit-box;
@@ -5768,6 +5780,21 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
   position: relative;
+}
+
+.depositModule .selectModule .bankName .bank {
+  margin: 0 0 0 3vw;
+}
+
+.depositModule .selectModule .bankName .bank div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 50vw;
+}
+
+.depositModule .selectModule .bankName .bank div:last-child {
+  color: #F77A00;
 }
 
 .depositModule .selectModule .bankName img {
@@ -5790,5 +5817,467 @@ span.important {
 
 .depositModule .selectModule .bankName.active .icon-icon32px_check {
   display: block;
+}
+
+.submenu {
+  display: none;
+  background: #f3f3f3;
+  padding: 0 2vw;
+}
+
+.submenu.active {
+  display: block;
+}
+
+.submenu > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 3vw 0;
+}
+
+.submenu > div.Balance {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  border-bottom: 1px solid #5574A7;
+  color: #5574A7;
+}
+
+.submenu > div.Balance .icon-eye, .submenu > div.Balance .icon-eye-blocked {
+  margin: 0 1vw 0;
+}
+
+.submenu > div.Balance .icon-eye:before, .submenu > div.Balance .icon-eye-blocked:before {
+  color: #5574A7;
+}
+
+.submenu > div.Balance .restore {
+  position: absolute;
+  right: 0;
+  color: #5574A7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.submenu > div.Balance .restore:before {
+  font-size: 5vw;
+}
+
+.submenu > div.thBar {
+  padding: 3vw 0 2vw;
+}
+
+.submenu > div.thBar a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 1vw;
+  color: #5574A7;
+}
+
+.submenu > div.thBar a i {
+  background: #5574A7;
+  padding: 2vw 1vw;
+  border-radius: 5px;
+  width: 8vw;
+  height: 6vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 0 1vw;
+  color: white;
+}
+
+.submenu > div.thBar a i:not(.icon-history):before {
+  font-size: 7vw;
+}
+
+.hotGame, .promos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 2vw;
+  margin: 0 0 2vw;
+  overflow: scroll;
+}
+
+.hotGame > div, .promos > div {
+  background: #f3f3f3;
+  min-width: 45vw;
+  color: #666;
+  margin: 2vw 2vw 0 0;
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 0 0 2vw;
+  position: relative;
+  border: 1px solid #e2e2e2;
+}
+
+.hotGame > div img, .promos > div img {
+  width: 100%;
+}
+
+.hotGame > div > div.btn-group, .promos > div > div.btn-group {
+  width: 80%;
+  margin: 2vw 10%;
+}
+
+.hotGame > div > div.btn-group button, .promos > div > div.btn-group button {
+  padding: 2vw 0;
+  border-radius: 5px;
+}
+
+.hotGame > div > div:not(.btn-group), .promos > div > div:not(.btn-group) {
+  padding: 0.5vw 2vw;
+}
+
+.hotGame > div > div:not(.btn-group):nth-child(2), .promos > div > div:not(.btn-group):nth-child(2) {
+  font-weight: bold;
+  color: #5574A7;
+}
+
+.hotGame > div > div:not(.btn-group):nth-child(3), .promos > div > div:not(.btn-group):nth-child(3) {
+  width: 35vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.promos > div > div:nth-child(1) {
+  width: 100%;
+  height: 18vw;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0;
+}
+
+.promos > div > div:nth-child(1) img {
+  width: auto;
+  height: 100%;
+}
+
+.friendReferral {
+  margin: 2vw;
+  background: url(../img/referralbg.png) no-repeat center/cover;
+  height: 46vw;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border: 1px solid #d2e2f9;
+}
+
+.friendReferral > div:nth-child(1) {
+  width: 50%;
+  color: #666;
+  float: right;
+  margin: 4vw 0 0;
+}
+
+.friendReferral > div:nth-child(1) .title {
+  color: #5574A7;
+  font-size: 4vw;
+}
+
+.friendReferral > div:nth-child(1) a {
+  color: #5574A7;
+  text-decoration: underline;
+}
+
+.friendReferral > div:nth-child(2) {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 0 4vw;
+}
+
+.friendReferral > div:nth-child(2) div {
+  margin: 0 2vw;
+  height: 8vw;
+}
+
+.friendReferral > div:nth-child(2) div:not(.btn-group) {
+  background: white;
+  border-radius: 5px;
+  width: calc(70% - 4vw);
+  color: #666;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 2vw;
+  font-size: 4vw;
+}
+
+.friendReferral > div:nth-child(2) div.btn-group {
+  width: 30%;
+}
+
+.upcomingmatches {
+  margin: 2vw;
+  padding: 0 2vw 2vw;
+  background: url(../img/upcomingmatchesbg.jpg) no-repeat top center/100% auto;
+  height: 58vw;
+}
+
+.upcomingmatches .team {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  height: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.upcomingmatches .team > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: bold;
+}
+
+.upcomingmatches .team > div:first-child {
+  background: url(../img/upcomingmatchestitle.png) no-repeat top center/auto;
+  line-height: 7vw;
+}
+
+.upcomingmatches .team > div:last-child {
+  background: url(../img/upcomingmatchestitledown.png) no-repeat top center/auto;
+  line-height: 7vw;
+}
+
+.upcomingmatches .team > div > div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 3vw;
+  margin: 8vw 0 0;
+  text-align: right;
+}
+
+.upcomingmatches .team > div > div.teamR {
+  text-align: left;
+}
+
+.upcomingmatches .team > div > div img {
+  width: 17vw;
+  margin: 0 0 2vw;
+}
+
+.upcomingmatches .team > div > div.btn-group {
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin: 0;
+}
+
+.upcomingmatches .team > div > div.btn-group button {
+  padding: 1vw 2vw;
+  width: auto;
+}
+
+.liveTv {
+  background: -webkit-gradient(linear, left top, left bottom, from(#F1D5B6), to(#CDAE8E));
+  background: linear-gradient(to bottom, #F1D5B6, #CDAE8E);
+  margin: 2vw;
+  border-radius: 5px;
+  border: 1px solid #CDAE8E;
+  padding: 0 2vw 2vw;
+}
+
+.liveTv > .liveTvModule {
+  background: white;
+  border-radius: 5px;
+  color: black;
+  text-align: center;
+  margin: 2vw 0 0;
+}
+
+.liveTv > .liveTvModule.active > .title {
+  background: url(../img/livetvtitlebggold.png) no-repeat center/75% 100%;
+}
+
+.liveTv > .liveTvModule.active > .title:before {
+  color: red;
+}
+
+.liveTv > .liveTvModule.active .time {
+  color: red;
+  font-weight: bold;
+}
+
+.liveTv > .liveTvModule.active .time + .title span {
+  display: unset;
+}
+
+.liveTv > .liveTvModule > .title {
+  width: 100%;
+  height: 6vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: url(../img/livetvtitlebg.png) no-repeat center/75% 100%;
+  color: white;
+  position: relative;
+}
+
+.liveTv > .liveTvModule > .title:before {
+  position: absolute;
+  left: 2vw;
+  top: 1vw;
+  color: #aec3e1;
+  font-weight: normal;
+}
+
+.liveTv > .liveTvModule .liveTvInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.liveTv > .liveTvModule .liveTvInfo > div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin: 2vw;
+  line-height: 7vw;
+}
+
+.liveTv > .liveTvModule .liveTvInfo > div div {
+  color: #5574A7;
+}
+
+.liveTv > .liveTvModule .liveTvInfo > div div span {
+  background: #5574A7;
+  padding: 1vw 2vw;
+  margin: 2vw;
+  border-radius: 5px;
+  color: white;
+  display: none;
+}
+
+.liveTv > .liveTvModule .liveTvInfo > div div:nth-child(2) {
+  font-weight: bold;
+}
+
+.liveTv > .liveTvModule .liveTvInfo > div div:nth-child(2):not(.title) {
+  color: #666;
+}
+
+.aff {
+  text-align: center;
+  padding: 5vw 0 10vw;
+  color: #5574A7;
+}
+
+.aff .title {
+  text-decoration: underline;
+}
+
+.spokesperson {
+  width: 100%;
+}
+
+.moduleTitle {
+  background: url(../img/indextitle.png) no-repeat center left/auto 100%;
+  margin: 4vw 2vw 0;
+  font-weight: bold;
+  padding: 0 0 0 3vw;
+  line-height: 7vw;
+  border-bottom: 1px solid #9db2d5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+.moduleTitle > a {
+  position: absolute;
+  right: 2vw;
+  color: #5574A7;
+}
+
+.moduleTitle.icon:before {
+  margin: 0 1vw 0 0;
+  font-weight: normal;
+}
+
+.moduleTitle.icon-friend:before, .moduleTitle.icon-upcomingmatches:before, .moduleTitle.icon-film:before {
+  font-size: 4vw;
+}
+
+.liveTvjpg {
+  margin: 0 2.5vw;
+  width: calc(100% - 5vw);
 }
 /*# sourceMappingURL=style.css.map */

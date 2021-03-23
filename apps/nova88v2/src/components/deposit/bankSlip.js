@@ -1,6 +1,11 @@
 import React, { useContext, Component, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import { bankSlipPopBoxContext, i18nContext, popBoxContext } from "Context";
+import {
+	bankSlipPopBoxContext,
+	i18nContext,
+	popBoxContext,
+	userInfoContext
+} from "Context";
 import moment from "moment";
 import ClipboardJS from "../../lib/clipboard.min";
 import api from "../../service/api";
@@ -21,7 +26,9 @@ const GetUploadFileName = files => {
 class Modal extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { processing: false };
+		this.state = {
+			processing: false
+		};
 		this.isMountedRef = false;
 		this.filebox = React.createRef();
 	}
@@ -43,8 +50,17 @@ class Modal extends Component {
 	onCheckUpload = () => {
 		const { files } = this.filebox.current;
 		if (files[0]) {
+			const picFileName = GetUploadFileName(files);
 			this.props.EditField("picFileName", GetUploadFileName(files));
+			if (this.props.bankSlipPopBox.hideSubmit)
+				this.props.SetImg(picFileName, files[0]);
 		}
+	};
+
+	onHandlePopBox = () => {
+		this.props.bankSlipPopBox.hideSubmit
+			? this.props.closePopBoxAndKeepData()
+			: this.props.handlePopBox();
 	};
 
 	onUploadFile = () => {
@@ -59,17 +75,18 @@ class Modal extends Component {
 						const result = response.data;
 						if (result.errorCode === 0) {
 							alert(this.props.i18n.lbl_UploadSuccess);
+							this.props.handlePopBox();
 						} else {
 							alert(result.message);
 						}
 					}
 				},
-				err => {
+				() => {
 					if (this.isMountedRef) {
 						this.props.setPopBox({
 							isOpen: true,
 							title: this.props.i18n.lbl_ImportantNote,
-							content: "API Server Error."
+							content: this.props.i18n.msg_ApiServerError
 						});
 					}
 				}
@@ -82,7 +99,9 @@ class Modal extends Component {
 	};
 
 	SeReceipt = () => {
-		if (!this.state.processing) {
+		if (this.props.bankSlipPopBox.hideSubmit) {
+			this.props.closePopBoxAndKeepData();
+		} else if (!this.state.processing) {
 			this.setState({ processing: true });
 			const { bankSlipPopBox } = this.props;
 			api.payment
@@ -96,6 +115,7 @@ class Modal extends Component {
 						if (this.isMountedRef) {
 							if (res.data.errorCode === 0) {
 								this.props.handlePopBox();
+								window.location.reload();
 							} else {
 								alert(res.message);
 							}
@@ -103,7 +123,7 @@ class Modal extends Component {
 							this.setState({ processing: false });
 						}
 					},
-					err => {
+					() => {
 						if (this.isMountedRef) {
 							this.props.setPopBox({
 								isOpen: true,
@@ -137,11 +157,11 @@ class Modal extends Component {
 									<span>{bankSlipPopBox.bankName}</span>
 								</div>
 								<a
-									className="icon icon-new-tab clickBtn"
-									target="_blank"
-									rel="noreferrer noopener"
 									href={bankSlipPopBox.bankSite}
-								/>
+									target="_blank"
+									rel="noreferrer">
+									<button className="icon icon-new-tab clickBtn" />
+								</a>
 							</li>
 							<li>
 								<div>
@@ -200,11 +220,15 @@ class Modal extends Component {
 								i18n.msg_SelectFile
 							} `}
 						</label>
-						<button className="orange" onClick={this.onUploadFile}>
-							{i18n.lbl_UploadFile}
-						</button>
+						{/* {!bankSlipPopBox.hideSubmit && (
+							<button
+								className="orange"
+								onClick={this.onUploadFile}>
+								{i18n.lbl_UploadFile}
+							</button>
+						)} */}
 					</div>
-					<span className="text">
+					{/* <span className="text">
 						{i18n.lbl_DepositTime}{" "}
 						<span className="text-org">
 							({moment().format("Z")})
@@ -218,25 +242,37 @@ class Modal extends Component {
 							value={this.props.bankSlipPopBox.depositTime ?? ""}
 							onChange={this.EditField.bind(this, "depositTime")}
 						/>
-					</div>
-					<span className="text">{i18n.lbl_RefnoToolTip}</span>
-					<div className="inputBox">
-						<i className="icon icon-pencil" />
-						<input
-							placeholder={i18n.msg_ReferenceNumber}
-							value={this.props.bankSlipPopBox.refId ?? ""}
-							onChange={this.EditField.bind(this, "refId")}
-						/>
-					</div>
+					</div> */}
+					{/* {this.props.currencyId === 4 ? null : (
+						<div className="inputBox">
+							<i className="icon icon-pencil" />
+							<input
+								placeholder={i18n.msg_ReferenceNumber}
+								value={this.props.bankSlipPopBox.refId ?? ""}
+								onChange={this.EditField.bind(this, "refId")}
+							/>
+						</div>
+					)} */}
 					<div className="btn-group">
 						<button
 							className="blue closePopup"
-							onClick={this.props.handlePopBox}>
+							onClick={() => this.onHandlePopBox()}>
 							{i18n.lbl_Cancel}
 						</button>
 						<button
-							className="orange closePopup"
-							onClick={this.SeReceipt}>
+							disabled={!bankSlipPopBox.picFileName}
+							className={`${
+								this.props.currencyId !== 4 ||
+								(this.props.currencyId === 4 &&
+									bankSlipPopBox.picFileName)
+									? "orange"
+									: "gray"
+							} closePopup`}
+							onClick={
+								!bankSlipPopBox.hideSubmit
+									? this.onUploadFile
+									: this.SeReceipt
+							}>
 							{i18n.lbl_Submit}
 						</button>
 					</div>
@@ -255,16 +291,17 @@ Modal.propTypes = {
 	handlePopBox: PropTypes.func.isRequired,
 	bankSlipPopBox: PropTypes.objectOf(PropTypes.any),
 	setPopBox: PropTypes.func.isRequired,
-	EditField: PropTypes.func.isRequired
+	EditField: PropTypes.func.isRequired,
+	SetImg: PropTypes.func.isRequired
 };
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
+	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { bankSlipPopBox, setbankSlipPopBox } = useContext(
 		bankSlipPopBoxContext
 	);
-
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -272,6 +309,12 @@ const Panel = () => {
 			isMountedRef.current = false;
 		};
 	});
+
+	const closePopBoxAndKeepData = () => {
+		if (isMountedRef.current) {
+			setbankSlipPopBox(prev => ({ ...prev, isOpen: false }));
+		}
+	};
 
 	const handlePopBox = () => {
 		if (isMountedRef.current) {
@@ -286,13 +329,24 @@ const Panel = () => {
 		setbankSlipPopBox(prevState => ({ ...prevState, [column]: value }));
 	};
 
+	const SetImg = (picFileName, receipt) => {
+		setbankSlipPopBox(prevState => ({
+			...prevState,
+			picFileName,
+			receipt
+		}));
+	};
+
 	return (
 		<Modal
+			currencyId={userInfo.currencyId}
 			i18n={i18n}
 			bankSlipPopBox={bankSlipPopBox}
 			handlePopBox={handlePopBox}
 			EditField={EditField}
 			setPopBox={setPopBox}
+			closePopBoxAndKeepData={closePopBoxAndKeepData}
+			SetImg={SetImg}
 		/>
 	);
 };

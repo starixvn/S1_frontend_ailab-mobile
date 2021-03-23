@@ -1,17 +1,23 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import { i18nContext, popBoxContext, userInfoContext } from "Context";
+import {
+	i18nContext,
+	popBoxContext,
+	userInfoContext,
+	loadingContext
+} from "Context";
 import { useNavigate } from "@reach/router";
 import path from "Path";
-import Loading from "../common/loading";
 import api from "../../service/api";
+import Layout from "../common/layout";
+import Header from "../header/header";
 
 export default () => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
+	const { setLoading } = useContext(loadingContext);
 	const [processing, setProcessing] = useState(false);
-	const [loading, setLoading] = useState(true);
 	const [file, setFile] = useState(null);
 	const isMountedRef = useRef(null);
 
@@ -44,7 +50,6 @@ export default () => {
 					}
 					return hasBankInfo;
 				});
-
 				return result;
 			};
 
@@ -82,9 +87,8 @@ export default () => {
 	};
 
 	const onUploadFile = () => {
-		setLoading(true);
-
 		if (file !== null && !processing) {
+			setLoading(true);
 			setProcessing(true);
 			const formData = new FormData();
 			formData.append("PhotoId", file);
@@ -107,7 +111,7 @@ export default () => {
 						setLoading(false);
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
@@ -122,48 +126,38 @@ export default () => {
 		}
 	};
 
-	return loading ? (
-		<Loading />
-	) : (
+	return (
 		<>
-			<div className="step">
-				<div className="stepLine">
-					<div />
-				</div>
-				<div className="circle">
-					<div>
-						<div className="icon icon-checkmark" />
+			<Header title={i18n.lbl_SubmitPhotoId} hideLogo={true} />
+			<Layout mainClass="main kyc">
+				<span className="text-org">{i18n.lbl_SubmitPhotoIdHint}</span>
+				<div className="infoModule parts">
+					<label className="inputBox">
+						<i className="icon icon-folder-upload" />
+						{`${file ? file.name : i18n.msg_SelectFile}`}
+						<input
+							type="file"
+							accept="image/*"
+							onChange={onChangeUpload}
+						/>
+					</label>
+					<div className="btn-group">
+						<button
+							className={file ? "" : "gray"}
+							onClick={onUploadFile}>
+							{i18n.lbl_UploadPhotoId}
+						</button>
 					</div>
 				</div>
-				<div className="circle">
-					<div>
-						<div>2</div>
-					</div>
+				<span>{i18n.lbl_KYCSubmitHint}</span>
+				<div>
+					<ul>
+						<li>{i18n.lbl_NationalIdentityCard}</li>
+						<li>{i18n.lbl_Passport}</li>
+						<li>{i18n.lbl_DrivingLicense}</li>
+					</ul>
 				</div>
-			</div>
-			<span className="text-org">{i18n.lbl_SubmitPhotoIdHint}</span>
-			<div className="btn-group">
-				<label className="fileUpload">
-					<input
-						type="file"
-						accept="image/*"
-						onChange={onChangeUpload}
-					/>
-					<i className="icon icon-folder-upload" />{" "}
-					{`${file ? file.name : i18n.msg_SelectFile}`}
-				</label>
-				<button className="orange" onClick={onUploadFile}>
-					{i18n.lbl_UploadPhotoId}
-				</button>
-			</div>
-			<span className="text">{i18n.lbl_KYCSubmitHint}</span>
-			<div className="text">
-				<ul>
-					<li>{i18n.lbl_NationalIdentityCard}</li>
-					<li>{i18n.lbl_Passport}</li>
-					<li>{i18n.lbl_DrivingLicense}</li>
-				</ul>
-			</div>
+			</Layout>
 		</>
 	);
 };

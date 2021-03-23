@@ -151,6 +151,11 @@ const defPageInfo = {
 		titleKey: "lbl_MysteryBox_EventTitle",
 		className: "main mysteryEvent",
 		hideLogo: true
+	},
+	vip: {
+		titleKey: "VIP",
+		className: "main vip",
+		hideLogo: true
 	}
 };
 
@@ -177,14 +182,14 @@ const Layout = ({ children }) => {
 	const { nav } = useContext(navContext);
 	const { loading } = useContext(loadingContext);
 	const { userInfo } = useContext(userInfoContext);
-	// const { root } = useContext(rootContext);
+	const { root } = useContext(rootContext);
 
 	const location = useLocation();
 	const pageInfo = GetPageInfo(location.pathname);
 
-	// if (root) {
-	// 	pageInfo.className = userInfo.isLogin ? "mainLogin" : "mainLogout";
-	// }
+	if (root) {
+		pageInfo.className = userInfo.isLogin ? "mainLogin" : "mainLogout";
+	}
 
 	const _matchLogin = useMatch(`/${path.login.root}`) !== null;
 	const position =
