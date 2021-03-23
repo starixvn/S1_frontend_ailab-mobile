@@ -13,7 +13,7 @@ import ShortcutBar from "../components/home/shortcutBar";
 import Menu from "../components/home/menu";
 import HotGame from "../components/home/hotGame";
 import Referral from "../components/home/referral";
-
+import EventSwipper from "../components/home/eventSwipper";
 import { readCookie, setCookie } from "../components/common/common";
 import path from "../path";
 import api from "../service/api";
@@ -145,6 +145,7 @@ const IndexPage = () => {
 					setPopBox={setPopBox}
 				/>
 			) : null}
+			<EventSwipper i18n={i18n} userInfo={userInfo} />
 			{/* <ShortcutBar _ref={shortcutBar} /> */}
 		</Layout>
 	);

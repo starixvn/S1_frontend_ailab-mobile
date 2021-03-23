@@ -6285,6 +6285,10 @@ span.important {
   color: #5574A7;
 }
 
+.liveTv > .liveTvModule .liveTvInfo > div div.btn-group button, .liveTv > .liveTvModule .liveTvInfo > div div.btn-group a {
+  padding: 1vw 3vw;
+}
+
 .liveTv > .liveTvModule .liveTvInfo > div div span {
   background: #5574A7;
   padding: 1vw 2vw;
