@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
+import PropTypes from "prop-types";
 import { useMatch, Redirect } from "@reach/router";
 import Inputbox from "../common/inputbox";
 import InputboxPWD from "../common/inputbox.password";
@@ -82,7 +83,7 @@ const initChecklistState = {
 const defaultLangId = GET_LANG_ID();
 const currencyDefaultSelectIdx = 0;
 
-const Join = () => {
+const Join = ({ hideBtn }) => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -663,9 +664,11 @@ const Join = () => {
 
 	return redirectPath === null ? (
 		<>
-			<button onClick={handleJoinPanel.bind(this, openPanel)}>
-				{i18n.lbl_JoinNow}
-			</button>
+			{hideBtn ? null : (
+				<button onClick={handleJoinPanel.bind(this, openPanel)}>
+					{i18n.lbl_JoinNow}
+				</button>
+			)}
 			<div className={`Join${openPanel ? " open" : ""}`}>
 				<div
 					className={`close${openPanel ? " open" : ""}`}
@@ -811,6 +814,14 @@ const Join = () => {
 	) : (
 		<Redirect to="/" noThrow={true} />
 	);
+};
+
+Join.defaultProps = {
+	hideBtn: null
+};
+
+Join.propTypes = {
+	hideBtn: PropTypes.bool
 };
 
 export default Join;
