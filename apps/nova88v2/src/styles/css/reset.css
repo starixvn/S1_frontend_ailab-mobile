@@ -44,7 +44,7 @@ button {
   border: none;
   padding: 0;
   outline: none;
-  font-family: 'Microsoft YaHei';
+  font-family: 'Microsoft YaHei',sans-serif;
   color: white;
 }
 

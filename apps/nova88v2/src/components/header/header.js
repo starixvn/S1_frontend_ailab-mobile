@@ -10,17 +10,27 @@ import useGetTpBalance from "../hook/useGetTpBalance";
 import Logo from "../common/logo";
 import path from "../../path";
 
-const HeaderTitle = ({ title = "", link = "" }) =>
+const HeaderTitle = ({ title = "", link = "", titleClass = "title", navBar }) =>
 	title ? (
-		<div className="title">
-			{link} {title}
-		</div>
+		<>
+			<div className={titleClass}>
+				{link} {title}
+			</div>
+			{navBar}
+		</>
 	) : null;
 
-const Header = ({ title, hideLogo, filter, children, link }) => {
+const Header = ({
+	title,
+	hideLogo,
+	filter,
+	children,
+	link,
+	titleClass,
+	navBar
+}) => {
 	const { userInfo } = useContext(userInfoContext);
 	const headerClassName = !title ? "" : "header";
-
 	return (
 		<header className={headerClassName} id="header">
 			{hideLogo ? null : (
@@ -29,7 +39,12 @@ const Header = ({ title, hideLogo, filter, children, link }) => {
 				</a>
 			)}
 			{title ? (
-				<HeaderTitle title={title} link={link} />
+				<HeaderTitle
+					title={title}
+					link={link}
+					titleClass={titleClass}
+					navBar={navBar}
+				/>
 			) : (
 				<HeaderBtn userInfo={userInfo} />
 			)}
@@ -135,7 +150,9 @@ Header.defaultProps = {
 	title: null,
 	hideLogo: false,
 	link: null,
-	children: null
+	children: null,
+	titleClass: "",
+	navBar: null
 };
 
 Header.propTypes = {
@@ -143,7 +160,9 @@ Header.propTypes = {
 	title: PropTypes.string,
 	hideLogo: PropTypes.bool,
 	link: PropTypes.node,
-	children: PropTypes.node
+	children: PropTypes.node,
+	titleClass: PropTypes.string,
+	navBar: PropTypes.node
 };
 
 HeaderTitle.defaultProps = {
