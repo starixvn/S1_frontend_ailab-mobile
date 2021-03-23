@@ -142,18 +142,18 @@ export const productList = langId => {
 						}
 					]
 				},
-				{
-					displayKey: "lbl_liveCasino_789SeDie",
-					icon: "icon icon-one789",
-					img: liveCasino_One789,
-					...defGameInfo.LIVEcasinoOne789,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.new_one789)
-						}
-					]
-				},
+				// {
+				// 	displayKey: "lbl_liveCasino_789SeDie",
+				// 	icon: "icon icon-one789",
+				// 	img: liveCasino_One789,
+				// 	...defGameInfo.LIVEcasinoOne789,
+				// 	eventIcon: [
+				// 		{
+				// 			icon: defIconType.new,
+				// 			inPeriod: isEventPeriod(eventTime.new_one789)
+				// 		}
+				// 	]
+				// },
 				{
 					displayKey: "WM",
 					icon: "icon icon-WM",
