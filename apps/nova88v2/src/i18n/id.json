@@ -181,7 +181,7 @@
 	"lbl_Table": "Meja",
 	"lbl_All": "Semua",
 	"lbl_GPI": "GPI",
-	"lbl_Free": "Gratis bermain",
+	"lbl_FreePlay": "Gratis bermain",
 	"lbl_PlayNow": "Main Sekarang",
 	"lbl_Memo": "Memo",
 	"lbl_Soccer": "Sepak Bola",
@@ -513,5 +513,9 @@
 	"lbl_Max":"Maksimum",
 	"lbl_TableGame":"Table Game",
 	"lbl_SlotsGame":"Slots Game",
-	"lbl_HotGame":"Hot Game"
+	"lbl_HotGame":"Hot Game",
+	"lbl_Share":"Share",
+	"lbl_Referral_intro":"Get exclusive referral bonuses when your friend signs up using your referral code.",
+	"lbl_Free":"Free",
+	"lbl_To_Referral":"Go To Friend Referral Page"
 }

@@ -19,7 +19,7 @@ const HotGame = ({ i18n, userInfo }) => {
 
 	const gameArr = HotGameList.map(game => {
 		return (
-			<div>
+			<div key={`hotGame-${game.name}`}>
 				<img src={game.img} alt={game.name} />
 				<div>{game.name}</div>
 				<div>{`${i18n[game.gameTypeKey]} ${game.provider}`}</div>

@@ -12,6 +12,7 @@ import Marquee from "../components/home/marquee";
 import ShortcutBar from "../components/home/shortcutBar";
 import Menu from "../components/home/menu";
 import HotGame from "../components/home/hotGame";
+import Referral from "../components/home/referral";
 
 import { readCookie, setCookie } from "../components/common/common";
 import path from "../path";
@@ -137,6 +138,13 @@ const IndexPage = () => {
 			<Marquee />
 			<Menu i18n={i18n} userInfo={userInfo} setPopBox={setPopBox} />
 			<HotGame i18n={i18n} userInfo={userInfo} />
+			{userInfo.isLogin ? (
+				<Referral
+					i18n={i18n}
+					userInfo={userInfo}
+					setPopBox={setPopBox}
+				/>
+			) : null}
 			{/* <ShortcutBar _ref={shortcutBar} /> */}
 		</Layout>
 	);

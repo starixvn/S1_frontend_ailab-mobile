@@ -181,7 +181,7 @@
 	"lbl_Table": "牌桌",
 	"lbl_All": "全部",
 	"lbl_GPI": "优品",
-	"lbl_Free": "免费试玩",
+	"lbl_FreePlay": "免费试玩",
 	"lbl_PlayNow": "立即游戏",
 	"lbl_Memo": "备忘录",
 	"lbl_Soccer": "足球",
@@ -520,5 +520,9 @@
 	"lbl_Max":"最大",
 	"lbl_TableGame":"棋牌游戏",
 	"lbl_SlotsGame":"电子游戏",
-	"lbl_HotGame":"Hot Game"
+	"lbl_HotGame":"热门游戏",
+	"lbl_Share":"分享",
+	"lbl_Referral_intro":"Get exclusive referral bonuses when your friend signs up using your referral code.",
+	"lbl_Free":"免费",
+	"lbl_To_Referral":"前往朋友推荐页面"
 }

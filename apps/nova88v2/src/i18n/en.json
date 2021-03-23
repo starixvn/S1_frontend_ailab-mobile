@@ -181,7 +181,7 @@
 	"lbl_Table": "Table",
 	"lbl_All": "All",
 	"lbl_GPI": "GPI",
-	"lbl_Free": "Free Play",
+	"lbl_FreePlay": "Free Play",
 	"lbl_PlayNow": "Play Now",
 	"lbl_Memo": "Memo",
 	"lbl_Soccer": "Soccer",
@@ -511,5 +511,9 @@
 	"lbl_Max":"Max",
 	"lbl_TableGame":"Table Game",
 	"lbl_SlotsGame":"Slots Game",
-	"lbl_HotGame":"Hot Game"
+	"lbl_HotGame":"Hot Game",
+	"lbl_Share":"Share",
+	"lbl_Referral_intro":"Get exclusive referral bonuses when your friend signs up using your referral code.",
+	"lbl_Free":"Free",
+	"lbl_To_Referral":"Go To Friend Referral Page"
 }

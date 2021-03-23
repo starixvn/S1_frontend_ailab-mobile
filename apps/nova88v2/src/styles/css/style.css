@@ -3158,6 +3158,7 @@ input[type="date"] {
 }
 
 .icon-spinner11.active:before {
+  display: block;
   -webkit-animation-name: reload;
           animation-name: reload;
   -webkit-animation-duration: 1s;
@@ -4211,6 +4212,19 @@ span.important {
   background: #F77A00;
   height: 100%;
   border-radius: 10px;
+}
+
+.progressBarModule .icon-spinner11 {
+  background: #F77A00;
+  color: white;
+  border-radius: 100%;
+  margin: 0 0 0 2vw;
+  width: 7vw;
+  height: 7vw;
+}
+
+.progressBarModule .icon-spinner11:before {
+  font-size: 3vw;
 }
 
 .progressBarModule .percentage {
@@ -6376,5 +6390,37 @@ main {
 
 main .sideBar button, main .sideBar a {
   color: #5574A7;
+}
+
+.referralShare {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.referralShare .popTxt > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-bottom: 2vw;
+}
+
+.referralShare .popTxt > div button, .referralShare .popTxt > div a {
+  margin: 1vw;
+}
+
+.referralShare .popTxt > div button i, .referralShare .popTxt > div a i {
+  background: #F77A00;
+  border-radius: 5px;
+  padding: 3vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 /*# sourceMappingURL=style.css.map */

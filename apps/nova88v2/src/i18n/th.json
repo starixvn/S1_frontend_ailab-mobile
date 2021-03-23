@@ -181,7 +181,7 @@
 	"lbl_Table": "เทเบิลเกมส์",
 	"lbl_All": "ทั้งหมด",
 	"lbl_GPI": "GPI",
-	"lbl_Free": "เล่นฟรี",
+	"lbl_FreePlay": "เล่นฟรี",
 	"lbl_PlayNow": "เล่นเดี๋ยวนี้",
 	"lbl_Memo": "Memo",
 	"lbl_Soccer": "ฟุตบอล",
@@ -513,5 +513,9 @@
 	"lbl_Max":"สูงสุด",
 	"lbl_TableGame":"เกมส์โต๊ะ",
 	"lbl_SlotsGame":"เกมอิเล็กทรอนิกส์",
-	"lbl_HotGame":"Hot Game"
+	"lbl_HotGame":"Hot Game",
+	"lbl_Share":"Share",
+	"lbl_Referral_intro":"Get exclusive referral bonuses when your friend signs up using your referral code.",
+	"lbl_Free":"Free",
+	"lbl_To_Referral":"Go To Friend Referral Page"
 }
