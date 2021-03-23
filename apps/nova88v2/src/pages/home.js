@@ -11,6 +11,7 @@ import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
 import ShortcutBar from "../components/home/shortcutBar";
 import Menu from "../components/home/menu";
+import Streaming from "../components/home/streaming";
 
 import { readCookie, setCookie } from "../components/common/common";
 import path from "../path";
@@ -136,6 +137,7 @@ const IndexPage = () => {
 			<Marquee />
 			<Menu i18n={i18n} userInfo={userInfo} setPopBox={setPopBox} />
 			{/* <ShortcutBar _ref={shortcutBar} /> */}
+			<Streaming />
 		</Layout>
 	);
 };

@@ -510,6 +510,15 @@
 	"lbl_Refno":"Nomor Referensi",
 	"lbl_MaxBonusAmount":"Jumlah Maksimal Bonus",
 	"lbl_Min":"Minimum",
-	"lbl_Max":"Maksimum"
+	"lbl_Max":"Maksimum",
+	"lbl_LiveStreaming":"Live Streaming",
+	"lbl_Streaming_FOOTBALL":"FOOTBALL",
+	"lbl_Streaming_BASKETBALL":"BASKETBALL",
+	"lbl_Streaming_CRICKET":"CRICKET",
+	"lbl_Streaming_TENNIS":"TENNIS",
+	"lbl_Streaming_BOXING":"BOXING",
+	"lbl_Streaming_ESPORTS":"ESPORTS",
+	"lbl_Streaming_BADMINTON":"BADMINTON",
+	"lbl_Streaming_VOLLEYBALL":"VOLLEYBALL"
 
 }

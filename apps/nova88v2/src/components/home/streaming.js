@@ -1,0 +1,58 @@
+import React, { useEffect, useContext, useRef } from "react";
+import { Link } from "../../route/link";
+import path from "../../path";
+import { userInfoContext } from "../common/context";
+import { defStreamingCategory } from "../streaming/defStreaming";
+import { useGetVideo } from "../streaming/hook";
+import { StreamingModule } from "../streaming/streaming.row";
+import { StreamingNoData } from "../streaming/streaming.noData";
+
+const Content = () => {
+	const { userInfo } = useContext(userInfoContext);
+
+	const isMountedRef = useRef(null);
+	useEffect(() => {
+		isMountedRef.current = true;
+		return () => {
+			isMountedRef.current = false;
+		};
+	});
+
+	const { handleSelectCategory, selCategory } = useGetVideo({
+		langId: userInfo.langId,
+		isMounted: isMountedRef.current
+	});
+
+	const btns = Object.values(defStreamingCategory).map(t => (
+		<button
+			key={`home-streaming-${t.type}`}
+			className={`${t.icon}${
+				t.type === selCategory.type ? " active" : ""
+			}`}
+			onClick={handleSelectCategory.bind(this, t.type)}
+		/>
+	));
+
+	const rows = selCategory.datas?.map(v => {
+		return (
+			<StreamingModule
+				key={`home-streaming-${v.type}-${v.matchID}`}
+				{...v}
+			/>
+		);
+	});
+
+	return (
+		<>
+			<div className="moduleTitle icon icon-film">
+				Live Streaming<Link to={path.streaming.root}>more...</Link>
+			</div>
+			<div className="liveTvTag">{btns}</div>
+			<div className="liveTv active">
+				{rows.length <= 0 ? <StreamingNoData /> : rows}
+			</div>
+		</>
+	);
+};
+
+export default Content;

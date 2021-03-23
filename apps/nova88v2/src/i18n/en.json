@@ -508,5 +508,15 @@
 	"lbl_Refno":"Reference No.",
 	"lbl_MaxBonusAmount":"Max Bonus Amount",
 	"lbl_Min":"Min",
-	"lbl_Max":"Max"
+	"lbl_Max":"Max",
+	"lbl_LiveStreaming":"Live Streaming",
+	"lbl_Streaming_FOOTBALL":"FOOTBALL",
+	"lbl_Streaming_BASKETBALL":"BASKETBALL",
+	"lbl_Streaming_CRICKET":"CRICKET",
+	"lbl_Streaming_TENNIS":"TENNIS",
+	"lbl_Streaming_BOXING":"BOXING",
+	"lbl_Streaming_ESPORTS":"ESPORTS",
+	"lbl_Streaming_BADMINTON":"BADMINTON",
+	"lbl_Streaming_VOLLEYBALL":"VOLLEYBALL"
+	
 }
