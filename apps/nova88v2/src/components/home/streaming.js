@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useRef } from "react";
 import { Link } from "../../route/link";
 import path from "../../path";
-import { userInfoContext } from "../common/context";
+import { userInfoContext, i18nContext } from "../common/context";
 import { defStreamingCategory } from "../streaming/defStreaming";
 import { useGetVideo } from "../streaming/hook";
 import { StreamingModule } from "../streaming/streaming.row";
@@ -9,6 +9,7 @@ import { StreamingNoData } from "../streaming/streaming.noData";
 
 const Content = () => {
 	const { userInfo } = useContext(userInfoContext);
+	const { i18n } = useContext(i18nContext);
 
 	const isMountedRef = useRef(null);
 	useEffect(() => {
@@ -37,6 +38,7 @@ const Content = () => {
 		return (
 			<StreamingModule
 				key={`home-streaming-${v.type}-${v.matchID}`}
+				i18n={i18n}
 				{...v}
 			/>
 		);
@@ -45,7 +47,8 @@ const Content = () => {
 	return (
 		<>
 			<div className="moduleTitle icon icon-film">
-				Live Streaming<Link to={path.streaming.root}>more...</Link>
+				{i18n.lbl_LiveStreaming}
+				<Link to={path.streaming.root}>{i18n.lbl_More}...</Link>
 			</div>
 			<div className="liveTvTag">{btns}</div>
 			<div className="liveTv active">

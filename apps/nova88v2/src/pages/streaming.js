@@ -35,6 +35,7 @@ const IndexPage = () => {
 		return (
 			<StreamingModule
 				key={`home-streaming-${v.type}-${v.matchID}`}
+				i18n={i18n}
 				{...v}
 			/>
 		);
