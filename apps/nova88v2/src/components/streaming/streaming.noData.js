@@ -1,7 +1,7 @@
 import React from "react";
 
-export const StreamingNoData = () => (
+export const StreamingNoData = ({ i18n }) => (
 	<div className="liveTvModule icon icon-nolive">
-		<div>No LIVE STREAMING available now,please try again later.</div>
+		<div>{i18n.lbl_Streaming_NoData}</div>
 	</div>
 );

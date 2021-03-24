@@ -36,6 +36,9 @@ const IndexPage = () => {
 			<StreamingModule
 				key={`home-streaming-${v.type}-${v.matchID}`}
 				i18n={i18n}
+				langId={userInfo.langId}
+				isLogin={userInfo.isLogin}
+				isStreamingPage={true}
 				{...v}
 			/>
 		);
@@ -52,7 +55,7 @@ const IndexPage = () => {
 	return (
 		<Layout header={header} mainClass="main streaming">
 			<div className="liveTv active">
-				{rows.length <= 0 ? <StreamingNoData /> : rows}
+				{rows.length <= 0 ? <StreamingNoData i18n={i18n} /> : rows}
 			</div>
 		</Layout>
 	);
