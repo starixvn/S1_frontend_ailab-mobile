@@ -15,6 +15,7 @@ import HotGame from "../components/home/hotGame";
 import Referral from "../components/home/referral";
 import EventSwipper from "../components/home/eventSwipper";
 import HeaderShortcut from "../components/home/headerShortcut";
+import Bottom from "../components/home/bottom";
 import { readCookie, setCookie } from "../components/common/common";
 import path from "../path";
 import api from "../service/api";
@@ -138,17 +139,20 @@ const IndexPage = () => {
 			) : null}
 			<Slider />
 			<Marquee />
-			<Menu i18n={i18n} userInfo={userInfo} setPopBox={setPopBox} />
-			<HotGame i18n={i18n} userInfo={userInfo} />
-			{userInfo.isLogin ? (
-				<Referral
-					i18n={i18n}
-					userInfo={userInfo}
-					setPopBox={setPopBox}
-				/>
-			) : null}
-			<EventSwipper i18n={i18n} userInfo={userInfo} />
-			<Streaming />
+			<div id="content">
+				<Menu i18n={i18n} userInfo={userInfo} setPopBox={setPopBox} />
+				<HotGame i18n={i18n} userInfo={userInfo} />
+				{userInfo.isLogin ? (
+					<Referral
+						i18n={i18n}
+						userInfo={userInfo}
+						setPopBox={setPopBox}
+					/>
+				) : null}
+				<EventSwipper i18n={i18n} userInfo={userInfo} />
+				<Streaming />
+				<Bottom i18n={i18n} langId={userInfo.langId} />
+			</div>
 		</Layout>
 	);
 };

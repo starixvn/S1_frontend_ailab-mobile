@@ -148,10 +148,10 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 	});
 
 	return (
-		<div id="content">
+		<>
 			<div className="sideBar">{gameArr}</div>
 			<div className="gameList">{subGameArr}</div>
-		</div>
+		</>
 	);
 };
 
