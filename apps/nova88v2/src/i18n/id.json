@@ -511,6 +511,15 @@
 	"lbl_MaxBonusAmount":"Jumlah Maksimal Bonus",
 	"lbl_Min":"Minimum",
 	"lbl_Max":"Maksimum",
+	"lbl_LiveStreaming":"Live Streaming",
+	"lbl_Streaming_FOOTBALL":"FOOTBALL",
+	"lbl_Streaming_BASKETBALL":"BASKETBALL",
+	"lbl_Streaming_CRICKET":"CRICKET",
+	"lbl_Streaming_TENNIS":"TENNIS",
+	"lbl_Streaming_BOXING":"BOXING",
+	"lbl_Streaming_ESPORTS":"ESPORTS",
+	"lbl_Streaming_BADMINTON":"BADMINTON",
+	"lbl_Streaming_VOLLEYBALL":"VOLLEYBALL",
 	"lbl_TableGame":"Table Game",
 	"lbl_SlotsGame":"Slots Game",
 	"lbl_HotGame":"Hot Game",
@@ -519,5 +528,6 @@
 	"lbl_Free":"Free",
 	"lbl_To_Referral":"Go To Friend Referral Page",
 	"lbl_BetNow":"Bet Now",
-	"lbl_UpcomingMatches":"Upcoming Matches"
+	"lbl_UpcomingMatches":"Upcoming Matches",
+	"lbl_Streaming_NoData":"No LIVE STREAMING available now,please try again later."
 }

@@ -10,6 +10,7 @@ import Layout from "../components/common/layout";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
 import Menu from "../components/home/menu";
+import Streaming from "../components/home/streaming";
 import HotGame from "../components/home/hotGame";
 import Referral from "../components/home/referral";
 import EventSwipper from "../components/home/eventSwipper";
@@ -147,6 +148,7 @@ const IndexPage = () => {
 				/>
 			) : null}
 			<EventSwipper i18n={i18n} userInfo={userInfo} />
+			<Streaming />
 		</Layout>
 	);
 };

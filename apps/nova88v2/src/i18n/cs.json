@@ -518,6 +518,15 @@
 	"lbl_MaxBonusAmount":"最高奖金",
 	"lbl_Min":"最小",
 	"lbl_Max":"最大",
+	"lbl_LiveStreaming":"Live Streaming",
+	"lbl_Streaming_FOOTBALL":"FOOTBALL",
+	"lbl_Streaming_BASKETBALL":"BASKETBALL",
+	"lbl_Streaming_CRICKET":"CRICKET",
+	"lbl_Streaming_TENNIS":"TENNIS",
+	"lbl_Streaming_BOXING":"BOXING",
+	"lbl_Streaming_ESPORTS":"ESPORTS",
+	"lbl_Streaming_BADMINTON":"BADMINTON",
+	"lbl_Streaming_VOLLEYBALL":"VOLLEYBALL",
 	"lbl_TableGame":"棋牌游戏",
 	"lbl_SlotsGame":"电子游戏",
 	"lbl_HotGame":"热门游戏",
@@ -526,6 +535,7 @@
 	"lbl_Free":"免费",
 	"lbl_To_Referral":"前往朋友推荐页面",
 	"lbl_BetNow":"Bet Now",
-	"lbl_UpcomingMatches":"Upcoming Matches"
+	"lbl_UpcomingMatches":"Upcoming Matches",
+	"lbl_Streaming_NoData":"No LIVE STREAMING available now,please try again later."
 
 }
