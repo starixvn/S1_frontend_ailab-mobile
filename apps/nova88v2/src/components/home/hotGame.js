@@ -1,8 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
 import HotGameList from "../../datas/hotGameList";
+import { Autoplay } from "../common/swipperBanner";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import useHandleLogin from "../hook/useHandleLogin";
+
+const swipperParam = {
+	spaceBetween: 5,
+	slidesPerView: 2,
+	centeredSlides: true,
+	autoplay: {
+		delay: 2500,
+		disableOnInteraction: false
+	},
+	rebuildOnUpdate: true,
+	loop: true,
+	containerClass: "hotGame"
+};
 
 const HotGame = ({ i18n, userInfo }) => {
 	const { handleLogin } = useHandleLogin();
@@ -19,7 +33,7 @@ const HotGame = ({ i18n, userInfo }) => {
 
 	const gameArr = HotGameList.map(game => {
 		return (
-			<div key={`hotGame-${game.name}`}>
+			<div key={`hotGame-${game.name}`} className="hotGamModule">
 				<img src={game.img} alt={game.name} />
 				<div>{game.name}</div>
 				<div>{`${i18n[game.gameTypeKey]} ${game.provider}`}</div>
@@ -41,7 +55,7 @@ const HotGame = ({ i18n, userInfo }) => {
 			<div className="moduleTitle icon icon-mediafire">
 				{i18n.lbl_HotGame}
 			</div>
-			<div className="hotGame">{gameArr}</div>
+			<Autoplay Rows={gameArr} params={swipperParam} />
 		</>
 	);
 };

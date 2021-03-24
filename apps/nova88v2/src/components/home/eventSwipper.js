@@ -6,6 +6,18 @@ import api from "../../service/api";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import useHandleLogin from "../hook/useHandleLogin";
 
+const swipperParam = {
+	spaceBetween: 30,
+	centeredSlides: true,
+	autoplay: {
+		delay: 2500,
+		disableOnInteraction: false
+	},
+	rebuildOnUpdate: true,
+	loop: true,
+	containerClass: "upcomingmatches"
+};
+
 const EventSwipper = ({ userInfo, i18n }) => {
 	const { handleLogin } = useHandleLogin();
 	const { banner } = useGetBanner({
@@ -34,7 +46,8 @@ const EventSwipper = ({ userInfo, i18n }) => {
 			sportTeamsAway,
 			tpId,
 			gameId,
-			matchId
+			matchId,
+			bannerName
 		} = event;
 
 		const eventTime = moment(sportBattleDateTime).format(
@@ -43,40 +56,32 @@ const EventSwipper = ({ userInfo, i18n }) => {
 
 		return (
 			<div
-				key={`hotEvent-${sportLeaguesId}`}
+				key={`hotEvent-${bannerName}`}
 				onClick={goToBet.bind(this, { tpId, gameId, matchId })}>
-				<div className="upcomingmatches">
-					<div className="team">
-						<div>{sportLeaguesId}</div>
-						<div>
-							<div className="teamL">
-								<img
-									src={sportTeamsHomePic}
-									alt={sportTeamsHome}
-								/>
-								{sportTeamsHome}
-							</div>
-							<div
-								className="btn-group"
-								onClick={goToBet.bind(this, {
-									tpId,
-									gameId,
-									matchId
-								})}>
-								<button className="title">
-									{i18n.lbl_BetNow.toUpperCase()}
-								</button>
-							</div>
-							<div className="teamR">
-								<img
-									src={sportTeamsAwayPic}
-									alt={sportTeamsAway}
-								/>
-								{sportTeamsAway}
-							</div>
+				<div className="team">
+					<div>{sportLeaguesId}</div>
+					<div>
+						<div className="teamL">
+							<img src={sportTeamsHomePic} alt={sportTeamsHome} />
+							{sportTeamsHome}
 						</div>
-						<div> {eventTime}</div>
+						<div
+							className="btn-group"
+							onClick={goToBet.bind(this, {
+								tpId,
+								gameId,
+								matchId
+							})}>
+							<button className="title">
+								{i18n.lbl_BetNow.toUpperCase()}
+							</button>
+						</div>
+						<div className="teamR">
+							<img src={sportTeamsAwayPic} alt={sportTeamsAway} />
+							{sportTeamsAway}
+						</div>
 					</div>
+					<div> {eventTime}</div>
 				</div>
 			</div>
 		);
@@ -87,7 +92,7 @@ const EventSwipper = ({ userInfo, i18n }) => {
 			<div className="moduleTitle icon icon-upcomingmatches">
 				{i18n.lbl_UpcomingMatches}
 			</div>
-			<Autoplay Rows={arr} />
+			<Autoplay Rows={arr} params={swipperParam} />
 		</>
 	);
 };

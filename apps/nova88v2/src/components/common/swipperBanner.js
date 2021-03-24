@@ -138,7 +138,7 @@ const Panel = ({ ImgFolder = [] }) => {
 };
 
 export const Autoplay = props => {
-	const params = {
+	const params = props.params ?? {
 		spaceBetween: 30,
 		centeredSlides: true,
 		autoplay: {
@@ -157,11 +157,13 @@ export const Autoplay = props => {
 };
 
 Autoplay.defaultProps = {
-	Rows: []
+	Rows: [],
+	params: {}
 };
 
 Autoplay.propTypes = {
-	Rows: PropTypes.arrayOf(PropTypes.object)
+	Rows: PropTypes.arrayOf(PropTypes.object),
+	params: PropTypes.objectOf(PropTypes.any)
 };
 
 export default Panel;
