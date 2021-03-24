@@ -6,7 +6,8 @@ import {
 	MessageAPI,
 	PaymentAPI,
 	EventsAPI,
-	VideoAPI
+	VideoAPI,
+	PromotionAPI
 } from "@ailab-mobile/api";
 
 import config from "../config";
@@ -19,5 +20,6 @@ export default {
 	message: new MessageAPI(config),
 	payment: new PaymentAPI(config),
 	events: new EventsAPI(config),
-	video: new VideoAPI(config)
+	video: new VideoAPI(config),
+	promotion: new PromotionAPI(config)
 };
