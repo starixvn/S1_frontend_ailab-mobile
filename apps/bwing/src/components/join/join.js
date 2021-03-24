@@ -749,7 +749,7 @@ const Join = () => {
 					</div>
 				</div>
 
-				<Inputbox
+				{/* <Inputbox
 					icon="icon-promotion"
 					ClassName="JoinRule"
 					placeholder={i18n.lbl_JoinPromoCode}
@@ -757,7 +757,7 @@ const Join = () => {
 					onChange={EditField.bind(null, "SpecialBonusCode")}
 					onBlur={checkValue.bind(null, "SpecialBonusCode")}
 					Warning={warningState.SpecialBonusCode}
-				/>
+				/> */}
 
 				<Inputbox
 					icon="icon-affiliate"

@@ -759,7 +759,7 @@ const Join = () => {
 					</Tips>
 				</div>
 
-				<Inputbox
+				{/* <Inputbox
 					icon="icon-promotion"
 					ClassName="JoinRule"
 					placeholder={i18n.lbl_JoinPromoCode}
@@ -775,7 +775,7 @@ const Join = () => {
 						}))
 					}
 					Warning={warningState.SpecialBonusCode}
-				/>
+				/> */}
 
 				<Inputbox
 					icon="icon-affiliate"
