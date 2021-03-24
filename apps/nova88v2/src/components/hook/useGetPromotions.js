@@ -45,7 +45,7 @@ export const useGetPromotions = ({ langId, isLogin, filterExpiry = true }) => {
 	}, [getPromotionListV2]);
 
 	const promotionList = filterExpiry
-		? filterExpiry.filter(p => isExpiry({ ...p, isLogin }))
+		? filterExpiry.filter(p => !isExpiry({ ...p, isLogin }))
 		: promotion;
 
 	return { promotionList };
