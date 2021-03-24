@@ -38,9 +38,6 @@ export const StreamingModule = ({
 
 	const ClickLiveTv = () => {
 		if (isStreamingPage) {
-			console.log(
-				`${config.openURL}/${langId}/liveStreamingEntPage?ch=${channel}`
-			);
 			window.open(
 				`${config.openURL}/${langId}/liveStreamingEntPage?ch=${channel}`
 			);
