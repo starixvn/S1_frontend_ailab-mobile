@@ -11,6 +11,7 @@ import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
 import Menu from "../components/home/menu";
 import Streaming from "../components/home/streaming";
+import Promos from "../components/home/promos";
 import HotGame from "../components/home/hotGame";
 import Referral from "../components/home/referral";
 import EventSwipper from "../components/home/eventSwipper";
@@ -141,6 +142,7 @@ const IndexPage = () => {
 			<Marquee />
 			<div id="content">
 				<Menu i18n={i18n} userInfo={userInfo} setPopBox={setPopBox} />
+				<Promos i18n={i18n} userInfo={userInfo} />
 				<HotGame i18n={i18n} userInfo={userInfo} />
 				{userInfo.isLogin ? (
 					<Referral

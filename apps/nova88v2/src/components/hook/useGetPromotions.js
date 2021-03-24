@@ -29,7 +29,7 @@ export const useGetPromotions = ({ langId, isLogin, filterExpiry = true }) => {
 	});
 
 	const getPromotionListV2 = useCallback(() => {
-		api.promotion.getPromotionListV2({ langId }).then(res => {
+		api.promotion.GetPromotionListV2({ langId }).then(res => {
 			if (res.data.errorCode === 0 && isMountedRef.current) {
 				const result = res.data.data.sort((a, b) =>
 					a.periodFrom > b.periodFrom ? -1 : 1
