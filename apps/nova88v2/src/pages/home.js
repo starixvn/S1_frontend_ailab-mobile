@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
 	i18nContext,
 	userInfoContext,
@@ -9,31 +9,25 @@ import { useNavigate } from "@reach/router";
 import Layout from "../components/common/layout";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
-import ShortcutBar from "../components/home/shortcutBar";
 import Menu from "../components/home/menu";
 import HotGame from "../components/home/hotGame";
 import Referral from "../components/home/referral";
 import EventSwipper from "../components/home/eventSwipper";
+import HeaderShortcut from "../components/home/headerShortcut";
 import { readCookie, setCookie } from "../components/common/common";
 import path from "../path";
 import api from "../service/api";
 
 const IndexPage = () => {
 	const navigate = useNavigate();
-	const shortcutBar = useRef(null);
-	const [shortcutBarLocate, setShortcutBarLocate] = useState(null);
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
+	const [showingShortcut, setShowingShortcut] = useState(false);
 
 	useEffect(() => {
 		setRoot(true);
-
-		if (shortcutBar.current !== null) {
-			setShortcutBarLocate(shortcutBar.current?.getBoundingClientRect());
-		}
-
 		return () => {
 			setRoot(false);
 		};
@@ -133,7 +127,14 @@ const IndexPage = () => {
 	]);
 
 	return (
-		<Layout>
+		<Layout setShowingShortcut={setShowingShortcut}>
+			{userInfo.isLogin ? (
+				<HeaderShortcut
+					i18n={i18n}
+					userInfo={userInfo}
+					showingShortcut={showingShortcut}
+				/>
+			) : null}
 			<Slider />
 			<Marquee />
 			<Menu i18n={i18n} userInfo={userInfo} setPopBox={setPopBox} />
@@ -146,7 +147,6 @@ const IndexPage = () => {
 				/>
 			) : null}
 			<EventSwipper i18n={i18n} userInfo={userInfo} />
-			{/* <ShortcutBar _ref={shortcutBar} /> */}
 		</Layout>
 	);
 };
