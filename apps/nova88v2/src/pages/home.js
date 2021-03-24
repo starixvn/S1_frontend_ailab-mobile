@@ -13,6 +13,9 @@ import ShortcutBar from "../components/home/shortcutBar";
 import Menu from "../components/home/menu";
 import Streaming from "../components/home/streaming";
 
+import HotGame from "../components/home/hotGame";
+import Referral from "../components/home/referral";
+import EventSwipper from "../components/home/eventSwipper";
 import { readCookie, setCookie } from "../components/common/common";
 import path from "../path";
 import api from "../service/api";
@@ -136,6 +139,15 @@ const IndexPage = () => {
 			<Slider />
 			<Marquee />
 			<Menu i18n={i18n} userInfo={userInfo} setPopBox={setPopBox} />
+			<HotGame i18n={i18n} userInfo={userInfo} />
+			{userInfo.isLogin ? (
+				<Referral
+					i18n={i18n}
+					userInfo={userInfo}
+					setPopBox={setPopBox}
+				/>
+			) : null}
+			<EventSwipper i18n={i18n} userInfo={userInfo} />
 			{/* <ShortcutBar _ref={shortcutBar} /> */}
 			<Streaming />
 		</Layout>

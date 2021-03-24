@@ -386,7 +386,7 @@ class Panel extends React.Component {
 								<button
 									className="white"
 									onClick={this.ClickPlay.bind(this, true)}>
-									{this.props.i18n.lbl_Free}
+									{this.props.i18n.lbl_FreePlay}
 								</button>
 							) : null}
 							<button
