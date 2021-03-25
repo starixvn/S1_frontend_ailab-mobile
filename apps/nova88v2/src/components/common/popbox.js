@@ -3,12 +3,14 @@ import { popBoxContext, i18nContext } from "Context";
 import TurnoverAccumulated from "./popbox.turnover";
 import Otp from "./popbox.otp";
 import OneGamePopBox from "./popbox.oneGame";
+import ReferralPopBox from "./popbox.referral";
 
 export const defPopBoxType = {
 	default: "default",
 	TurnoverAccumulated: "TurnoverAccumulated",
 	Otp: "Otp",
-	OneGame: "OneGame"
+	OneGame: "OneGame",
+	Referral: "Referral"
 };
 
 const PopUp = () => {
@@ -33,6 +35,10 @@ const PopUp = () => {
 			content = <OneGamePopBox setRedirect={popBox.setRedirect} />;
 			break;
 
+		case defPopBoxType.Referral:
+			content = <ReferralPopBox referralCode={popBox.referralCode} />;
+			break;
+
 		default:
 			content = (
 				<div className="popTxt">
@@ -44,7 +50,11 @@ const PopUp = () => {
 	}
 
 	return (
-		<div id="popup" className={`${popBox.isOpen ? "active" : ""}`}>
+		<div
+			id="popup"
+			className={`${popBox.className ?? ""}${
+				popBox.isOpen ? "active" : ""
+			}`}>
 			<div className="pop">
 				<div className="popTit">
 					{popBox.hideCloseBtn === true ? null : (

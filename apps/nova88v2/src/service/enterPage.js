@@ -25,6 +25,7 @@ export const GET_ENTER_PAGE = ({
 	langId,
 	tpId,
 	gameId,
+	matchid,
 	isLogin,
 	loginCallback
 }) => {
@@ -34,7 +35,7 @@ export const GET_ENTER_PAGE = ({
 	const LoginUrl = `${appUrl}/${path.login.root}`;
 	const lobbyUrl = ``;
 	const cashierUrl = `${appUrl}${path.deposit.root}`;
-	const entPageUrl = `${config.openURL}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&CashierUrl=${cashierUrl}&&LobbyUrl=${lobbyUrl}`;
+	const entPageUrl = `${config.openURL}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&CashierUrl=${cashierUrl}&&LobbyUrl=${lobbyUrl}&matchid=${matchid}`;
 	let result = setResult("", true, _ACTION_TYPE.blank);
 
 	const _tpId = isNaN(tpId) ? tpId : Number(tpId);

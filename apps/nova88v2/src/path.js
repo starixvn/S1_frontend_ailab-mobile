@@ -137,5 +137,8 @@ export default {
 	},
 	gameProvider: {
 		root: "gameProvider"
+	},
+	streaming: {
+		root: "streaming"
 	}
 };

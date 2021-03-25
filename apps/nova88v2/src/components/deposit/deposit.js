@@ -1,159 +1,184 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
+import { useNavigate } from "@reach/router";
 import moment from "moment";
 import {
 	i18nContext,
-	popBoxContext,
+	userInfoContext,
+	loadingContext,
 	bankSlipPopBoxContext,
-	userInfoContext
-} from "Context";
-import { useNavigate } from "@reach/router";
-import { Link } from "@Router";
-import { number_format, isConvert } from "../common/common";
-import Step from "./step";
-import RecentDatas from "./deposit.recentDatas";
-import Loading from "../common/loading";
+	popBoxContext
+} from "../common/context";
 import PageVerify from "./deposit.pageVerify";
+import MobilePay from "./deposit.all.mobilePay";
+import OnlineBanking from "./deposit.all.onlineBanking";
+import LocalBank from "./deposit.all.localBank";
 import api from "../../service/api";
+import RecentDatas from "./deposit.recentDatas";
+import { number_format, isConvert } from "../common/common";
 
 const defPayType = {
 	onlineBank: "onlineBank",
 	localBank: "localBank",
-	mobilePay: "mobilePay",
-	cryptoPay: "cryptoPay"
+	mobilePay: "mobilePay"
 };
 
 const defPayment = {
-	[defPayType.onlineBank]: {
-		icon: "icon icon-connection",
-		displayKey: "lbl_OnlineBanking",
-		creditTimeKey: "lbl_Instant"
-	},
-	[defPayType.localBank]: {
-		icon: "icon icon-credit-card",
-		displayKey: "lbl_WireTransfers",
-		creditTimeKey: "lbl_5mins"
-	},
 	[defPayType.mobilePay]: {
-		icon: "icon icon-mobile",
 		displayKey: "lbl_MobileDeposit",
 		creditTimeKey: "lbl_5mins"
 	},
-	[defPayType.cryptoPay]: {
-		icon: "icon icon-BTC",
-		displayKey: "lbl_CryptoPay",
+	[defPayType.localBank]: {
+		displayKey: "lbl_WireTransfers",
+		creditTimeKey: "lbl_5mins"
+	},
+	[defPayType.onlineBank]: {
+		displayKey: "lbl_OnlineBanking",
 		creditTimeKey: "lbl_Instant"
 	}
 };
 
+const useHandleSelect = defaultSelect => {
+	const [selected, setSelected] = useState(defaultSelect ?? "");
+
+	const HandleSelect = value => {
+		setSelected(value);
+	};
+
+	return { selected, HandleSelect };
+};
+
+const Tab = ({ i18n, selected, HandleSelect, paymentList }) => {
+	const rows = Object.keys(defPayment)
+		.filter(key => paymentList[key]?.length > 0)
+		.map(key => {
+			const pay = defPayment[key];
+			return (
+				<div
+					key={`deposit-full-${pay.displayKey}`}
+					className={selected === key ? "active" : ""}
+					onClick={HandleSelect.bind(this, key)}>
+					{i18n[pay.displayKey]}
+				</div>
+			);
+		});
+
+	return <div className="switchTag">{rows}</div>;
+};
+
 const Panel = () => {
 	const navigate = useNavigate();
-	const { userInfo } = useContext(userInfoContext);
+	const { selected, HandleSelect } = useHandleSelect();
 	const { i18n } = useContext(i18nContext);
-	const { setPopBox } = useContext(popBoxContext);
+	const { setLoading } = useContext(loadingContext);
+	const { userInfo } = useContext(userInfoContext);
 	const { setbankSlipPopBox } = useContext(bankSlipPopBoxContext);
-	const [allowPayment, setAllowPayment] = useState({
-		[defPayType.onlineBank]: false,
-		[defPayType.localBank]: false,
-		[defPayType.mobilePay]: false
-	});
+	const { setPopBox } = useContext(popBoxContext);
 
-	const [onlineBankingList, setOnlineBankingList] = useState([]);
-	const [localBankList, setLocalBankList] = useState([]);
-	const [mobilePayList, setMobilePayList] = useState([]);
-	const [cryptoPayList, setCryptoPayList] = useState([]);
+	const [paymentList, setPaymentList] = useState({});
 	const [recentDatas, setRecentDatas] = useState([]);
 
 	const [pageVerify, setPageVerify] = useState(true);
-	const [loading, setLoading] = useState(true);
+
+	PageVerify(userInfo, i18n, setPopBox, navigate, setPageVerify, false);
+
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => {
 			isMountedRef.current = false;
+			setLoading(false);
 		};
 	});
 
-	PageVerify(userInfo, i18n, setPopBox, navigate, setPageVerify, false);
+	let content = (
+		<MobilePay
+			payType={defPayType.mobilePay}
+			creditTimeKey={defPayment[defPayType.mobilePay].creditTimeKey}
+			paymentList={paymentList[defPayType.mobilePay] ?? []}
+		/>
+	);
+
+	if (selected === defPayType.localBank) {
+		content = (
+			<LocalBank
+				payType={selected}
+				creditTimeKey={defPayment[defPayType.localBank].creditTimeKey}
+				paymentList={paymentList[defPayType.localBank] ?? []}
+			/>
+		);
+	} else if (selected === defPayType.onlineBank) {
+		content = (
+			<OnlineBanking
+				payType={selected}
+				creditTimeKey={defPayment[defPayType.onlineBank].creditTimeKey}
+				paymentList={paymentList[defPayType.onlineBank] ?? []}
+			/>
+		);
+	}
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
-			setLoading(true);
+			const GetAllPayment = async () => {
+				setLoading(true);
+				let defaultSelect = "";
 
-			api.payment.GetOnlinePaymentList().then(
-				res => {
-					if (res.data.errorCode === 0 && isMountedRef.current) {
-						setOnlineBankingList(res.data.data);
-						setAllowPayment(prevState => ({
-							...prevState,
-							[defPayType.onlineBank]:
-								res.data.data && res.data.data.length > 0
-						}));
-						setLoading(false);
-					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setLoading(false);
-					}
-				}
-			);
+				const payments = {
+					[defPayType.mobilePay]: [],
+					[defPayType.onlineBank]: [],
+					[defPayType.localBank]: []
+				};
 
-			api.payment.GetBankInfoOffList().then(
-				res => {
-					if (res.data.errorCode === 0 && isMountedRef.current) {
-						setLocalBankList(res.data.data);
-						setAllowPayment(prevState => ({
-							...prevState,
-							[defPayType.localBank]:
-								res.data.data && res.data.data.length > 0
-						}));
-						setLoading(false);
-					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setLoading(false);
-					}
-				}
-			);
+				const setDefaultSelect = (currentValue, payType, dataList) =>
+					currentValue === "" && dataList.length > 0
+						? payType
+						: currentValue;
 
-			api.payment.GetMobilePayGroupList().then(
-				res => {
-					if (res.data.errorCode === 0 && isMountedRef.current) {
-						setMobilePayList(res.data.data);
-						setAllowPayment(prevState => ({
-							...prevState,
-							[defPayType.mobilePay]:
-								res.data.data && res.data.data.length > 0
-						}));
-						setLoading(false);
-					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setLoading(false);
-					}
-				}
-			);
+				const getDataListResult = res =>
+					res.data.errorCode === 0 && res.data.data?.length > 0
+						? res.data.data
+						: [];
 
-			api.payment.GetCryptoPayInfoList().then(
-				res => {
-					if (res.data.errorCode === 0 && isMountedRef.current) {
-						setCryptoPayList(res.data.data);
-						setAllowPayment(prevState => ({
-							...prevState,
-							[defPayType.cryptoPay]:
-								res.data.data && res.data.data.length > 0
-						}));
-						setLoading(false);
-					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setLoading(false);
-					}
+				try {
+					const res = await api.payment.GetMobilePayGroupList();
+					payments[defPayType.mobilePay] = getDataListResult(res);
+
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defPayType.mobilePay,
+						payments[defPayType.mobilePay]
+					);
+				} catch (error) {}
+
+				try {
+					const res = await api.payment.GetBankInfoOffList();
+					payments[defPayType.localBank] = getDataListResult(res);
+
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defPayType.localBank,
+						payments[defPayType.localBank]
+					);
+				} catch (error) {}
+
+				try {
+					const res = await api.payment.GetOnlinePaymentList();
+					payments[defPayType.onlineBank] = getDataListResult(res);
+
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defPayType.onlineBank,
+						payments[defPayType.onlineBank]
+					);
+				} catch (error) {}
+
+				if (isMountedRef.current) {
+					setLoading(false);
+					setPaymentList(payments);
+					HandleSelect(defaultSelect);
 				}
-			);
+			};
+
+			GetAllPayment();
 
 			api.payment.GetDepositInfoRecent().then(res => {
 				if (res.data.errorCode === 0 && isMountedRef.current) {
@@ -172,23 +197,22 @@ const Panel = () => {
 		picFileName,
 		refId
 	) => {
-		if (pageVerify) {
-			const { currencyId, ...restBankInfo } = bankInfo;
-			const { accountName, accountNo } = depositRep;
-			setbankSlipPopBox(() => ({
-				depositTime: `${moment().format(
-					"yyyy-MM-DDT"
-				)}${moment().format("HH:mm")}`,
-				...restBankInfo,
-				transId,
-				accountNo,
-				accountName,
-				isOpen: true,
-				amount: number_format(amount, _isConvert),
-				picFileName,
-				refId
-			}));
-		}
+		const { currencyId, ...restBankInfo } = bankInfo;
+		const { accountName, accountNo } = depositRep;
+		setbankSlipPopBox(() => ({
+			depositTime: `${moment().format("yyyy-MM-DDT")}${moment().format(
+				"HH:mm"
+			)}`,
+			...restBankInfo,
+			transId,
+			accountNo,
+			accountName,
+			isOpen: true,
+			amount: number_format(amount, _isConvert),
+			real_amount: amount,
+			picFileName,
+			refId
+		}));
 	};
 
 	const ClickCancel = transId => {
@@ -215,7 +239,7 @@ const Panel = () => {
 							}
 						}
 					},
-					err => {
+					() => {
 						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
@@ -233,7 +257,7 @@ const Panel = () => {
 
 			setPopBox({
 				isOpen: true,
-				title: "",
+				title: i18n.lbl_ImportantNote,
 				content: i18n.lbl_CancelConfirm,
 				hasBtn: true,
 				btnBar: (
@@ -249,42 +273,6 @@ const Panel = () => {
 			});
 		}
 	};
-
-	const paymentList = pageVerify
-		? Object.keys(defPayment)
-				.filter(key => {
-					return allowPayment[key];
-				})
-				.map(key => {
-					const item = defPayment[key];
-					let list = [];
-					if (key === defPayType.onlineBank) {
-						list = onlineBankingList;
-					} else if (key === defPayType.localBank) {
-						list = localBankList;
-					} else if (key === defPayType.mobilePay) {
-						list = mobilePayList;
-					} else if (key === defPayType.cryptoPay) {
-						list = cryptoPayList;
-					}
-					return (
-						<div key={`deposit-${key}`}>
-							<Link
-								to={key}
-								className={item.icon}
-								state={{
-									paymentList: list
-								}}
-							/>
-							<span>{i18n[item.displayKey]}</span>
-							<span className="title">{i18n.lbl_CreditTime}</span>
-							<span className="creditTime">
-								{i18n[item.creditTimeKey]}
-							</span>
-						</div>
-					);
-				})
-		: null;
 
 	const GetDepositInfoRecent = () => {
 		api.payment.GetDepositInfoRecent().then(
@@ -313,12 +301,15 @@ const Panel = () => {
 		);
 	};
 
-	return loading ? (
-		<Loading />
-	) : (
+	return (
 		<>
-			<Step step={1} />
-			<div className="depositType">{paymentList}</div>
+			<Tab
+				i18n={i18n}
+				selected={selected}
+				HandleSelect={HandleSelect}
+				paymentList={paymentList}
+			/>
+			{content}
 			<RecentDatas
 				Datas={recentDatas}
 				SubmitProof={SubmitProof}

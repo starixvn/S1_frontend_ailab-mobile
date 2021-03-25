@@ -4,11 +4,13 @@ import Swiper from "react-id-swiper";
 import { userInfoContext, i18nContext, navContext } from "../common/context";
 import { ClickLink } from "../common/swipperBanner";
 import config, { siteInfo } from "../../config";
+import useHandleLogin from "../hook/useHandleLogin";
 
 const PromoOfJoin = ({ banner, ImgFolder, ClickClose, title, isOpen }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setNav } = useContext(navContext);
+	const { handleLogin } = useHandleLogin();
 
 	const rows = banner.map(b => {
 		const _imgFolder = b.imgFolder ?? ImgFolder;
@@ -30,7 +32,8 @@ const PromoOfJoin = ({ banner, ImgFolder, ClickClose, title, isOpen }) => {
 					b.outerLink === true,
 					b.urlWithLang,
 					userInfo.isLogin,
-					setNav
+					setNav,
+					handleLogin
 				)}
 				key={`${lang}-${b.img}`}>
 				<img
