@@ -34,17 +34,19 @@ const Content = () => {
 		/>
 	));
 
-	const rows = selCategory.datas?.map(v => {
-		return (
-			<StreamingModule
-				key={`home-streaming-${v.type}-${v.matchID}`}
-				i18n={i18n}
-				langId={userInfo.langId}
-				isLogin={userInfo.isLogin}
-				{...v}
-			/>
-		);
-	});
+	const rows = selCategory.datas
+		?.filter((_, idx) => idx < 3)
+		.map(v => {
+			return (
+				<StreamingModule
+					key={`home-streaming-${v.type}-${v.matchID}`}
+					i18n={i18n}
+					langId={userInfo.langId}
+					isLogin={userInfo.isLogin}
+					{...v}
+				/>
+			);
+		});
 
 	return (
 		<>
