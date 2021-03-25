@@ -264,6 +264,7 @@ const Panel = () => {
 						if (res.data.errorCode === 0) {
 							setCheckboxList([]);
 							getMsgCount();
+							GetMsgList({ loading: false });
 						} else {
 							setPopBox({
 								isOpen: true,
@@ -337,7 +338,7 @@ const Panel = () => {
 			{msgList.length > 0 ? (
 				<>
 					{arr}
-					<GoTopBtn />
+					{msgList.length > 5 ? <GoTopBtn /> : null}
 				</>
 			) : (
 				<div className="nodata icon icon-nodata">

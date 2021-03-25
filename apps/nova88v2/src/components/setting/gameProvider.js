@@ -13,8 +13,7 @@ import useHandleLogin from "../hook/useHandleLogin";
 
 const defPlatfrom = [
 	{
-		...defGameInfo.Sports,
-		parameter: { ...defGameInfo.Sports },
+		...defGameInfo.Soccer,
 		imgName: "saba"
 	},
 	{
@@ -30,11 +29,11 @@ const defPlatfrom = [
 		imgName: "ag"
 	},
 	{
-		...defGameInfo.Casino_JOKER,
+		path: path.casino.root,
+		parameter: { ...defGameInfo.Casino_JOKER },
 		imgName: "jk"
 	},
 	{
-		...defGameInfo.Casino_GPI,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_GPI },
 		imgName: "gp"
@@ -48,25 +47,21 @@ const defPlatfrom = [
 		imgName: "sa"
 	},
 	{
-		...defGameInfo.Casino_YGG,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_YGG },
 		imgName: "yg"
 	},
 	{
-		...defGameInfo.Casino_PP,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_PP },
 		imgName: "pp"
 	},
 	{
-		...defGameInfo.Casino_SG,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_SG },
 		imgName: "sg"
 	},
 	{
-		...defGameInfo.Casino_PG,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_PG },
 		imgName: "pg"
@@ -88,13 +83,11 @@ const defPlatfrom = [
 		imgName: "wm"
 	},
 	{
-		...defGameInfo.Casino_CQ9,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_CQ9 },
 		imgName: "cq9"
 	},
 	{
-		...defGameInfo.casino_ICG,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.casino_ICG },
 		imgName: "icg"
@@ -170,20 +163,19 @@ const GameProvider = ({ langId = "en", isLogin = false, i18n }) => {
 		)
 		.map(p => {
 			const key = `gameProvider-${p.tpId}-${p.gameId}`;
-			let params = null;
-			if (p.parameter) {
-				params = Object.keys(p.parameter).map(k => {
-					return `${k}=${p.parameter[k]}`;
-				});
-			}
 
-			const _urlParams = params !== null ? `?${params.join("&")}` : "";
-			return (
+			return p.parameter ? (
+				<Link to={p.path} state={p.parameter}>
+					<img
+						src={`${config.cloudImgURL}/SiteSkin/img/logo/${p.imgName}.png`}
+						alt={p.imgName}
+					/>
+				</Link>
+			) : (
 				<button
 					key={key}
 					onClick={ClickItem.bind(this, {
-						...p,
-						urlParams: _urlParams
+						...p
 					})}>
 					<img
 						src={`${config.cloudImgURL}/SiteSkin/img/logo/${p.imgName}.png`}

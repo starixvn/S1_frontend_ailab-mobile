@@ -188,7 +188,8 @@ const gameList = ({ langId }) => [
 				...defGameInfo.Casino_CQ9,
 				parameter: defGameInfo.Casino_CQ9,
 				spanText: "CQ9",
-				img: casino_CQ9
+				img: casino_CQ9,
+				path: path.casino.root
 			},
 			{
 				...defGameInfo.Casino_GPI,

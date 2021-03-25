@@ -475,14 +475,6 @@ const Panel = () => {
 		}
 	};
 
-	const GetWithdrawalInfoRecent = () => {
-		api.payment.GetWithdrawalInfoRecent().then(res => {
-			if (res.data.errorCode === 0 && isMountedRef.current) {
-				setRecentDatas(res.data.data);
-			}
-		});
-	};
-
 	const banks = bankInfo?.bankList?.map(b => {
 		return (
 			<button
@@ -539,11 +531,7 @@ const Panel = () => {
 					{i18n.lbl_Submit}
 				</button>
 			</div>
-			<RecentDatas
-				Datas={recentDatas}
-				ClickCancel={ClickCancel}
-				ReloadFunc={GetWithdrawalInfoRecent}
-			/>
+			<RecentDatas Datas={recentDatas} ClickCancel={ClickCancel} />
 		</>
 	) : null;
 };
