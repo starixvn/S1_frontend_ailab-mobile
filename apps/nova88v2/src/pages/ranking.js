@@ -1,51 +1,23 @@
 import React, { useContext } from "react";
 import { i18nContext, userInfoContext } from "../components/common/context";
-import useHandleLogin from "../components/hook/useHandleLogin";
 import Event from "../components/ranking/event";
-import RankingByCategory from "../components/ranking/rankByCategory";
+import Final from "../components/ranking/final";
 import Record from "../components/ranking/records";
-import { defBtns, defElemType } from "../components/ranking/def";
+import { defBtns, defElemType, defEuroBtns } from "../components/ranking/def";
 import { useHandleSelect } from "../components/ranking/hook";
+import useHandleLogin from "../components/hook/useHandleLogin";
 import BtnBar from "../components/common/btnBar";
+import TournamentPoints from "../components/ranking/tournamentPoints";
+import Layout from "../components/common/layout";
 import Header from "../components/header/header";
 import { Link } from "../route/link";
+import path from "../path";
 
-const Ranking = ({ selected }) => {
-	const { i18n } = useContext(i18nContext);
-	const { userInfo } = useContext(userInfoContext);
-	return (
-		<>
-			<Event
-				isOpen={defBtns[selected].elemType === defElemType.Event}
-				i18n={i18n}
-				userInfo={userInfo}
-			/>
-			<RankingByCategory
-				isOpen={defBtns[selected].elemType === defElemType.Ranking}
-				selected={selected}
-				i18n={i18n}
-				userInfo={userInfo}
-			/>
-			<Record
-				isOpen={defBtns[selected].elemType === defElemType.Record}
-				i18n={i18n}
-				userInfo={userInfo}
-				title={i18n[defBtns[selected].displayKey]}
-			/>
-			<Record
-				isOpen={defBtns[selected].elemType === defElemType.LastEvent}
-				i18n={i18n}
-				userInfo={userInfo}
-				isLastEvent={true}
-				title={i18n[defBtns[selected].displayKey]}
-			/>
-		</>
-	);
-};
-const IndexPage = () => {
+export default () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { isLogin } = userInfo;
+
 	const { handleLogin } = useHandleLogin();
 	const { selected, handleSelect } = useHandleSelect({
 		defaultSelect: defBtns.Event.value,
@@ -53,29 +25,56 @@ const IndexPage = () => {
 		isLogin
 	});
 	const link = (
-		<Link to="/">
+		<Link to={path.home.root}>
 			<i className="icon icon icon-icon32px_1" />
 			{i18n.lbl_Back}
 		</Link>
 	);
+
 	return (
 		<>
-			<main className="main ranking">
-				<Ranking selected={selected} />
-			</main>
 			<Header title={i18n.lbl_Ranking} hideLogo={true} link={link}>
 				<BtnBar
 					i18n={i18n}
 					selected={selected}
 					handleSelect={handleSelect}
-					mainKey="leader-board-quickSelect"
-					defBtns={defBtns}
-					isLogin={isLogin}
+					mainKey="leader-board-btnBar"
+					defBtns={defEuroBtns}
 					btnListClass="quickSelect"
+					isLogin={isLogin}
 				/>
 			</Header>
+			<Layout mainClass="main rankingEuro" header={false}>
+				<Event
+					isOpen={
+						defEuroBtns[selected].elemType === defElemType.Event
+					}
+					i18n={i18n}
+					userInfo={userInfo}
+				/>
+				<Final
+					isOpen={
+						defEuroBtns[selected].elemType === defElemType.Final
+					}
+					i18n={i18n}
+					userInfo={userInfo}
+				/>
+				<TournamentPoints
+					isOpen={
+						defEuroBtns[selected].elemType ===
+						defElemType.Tournament
+					}
+					i18n={i18n}
+					userInfo={userInfo}
+				/>
+				<Record
+					isOpen={
+						defEuroBtns[selected].elemType === defElemType.Record
+					}
+					i18n={i18n}
+					userInfo={userInfo}
+				/>
+			</Layout>
 		</>
 	);
 };
-
-export default IndexPage;

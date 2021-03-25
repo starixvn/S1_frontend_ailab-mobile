@@ -123,7 +123,7 @@ const defPageInfo = {
 	},
 	ranking: {
 		titleKey: "lbl_Ranking",
-		className: "main ranking",
+		className: "main",
 		hideLogo: true
 	},
 	"/918kiss": {
@@ -165,7 +165,6 @@ const GetPageInfo = locationPath => {
 					const _location = locationPath.split("/");
 					return _location?.[2] === path[p].root;
 			  });
-
 	pageInfoKey = pageInfoKey?.length > 0 ? pageInfoKey[0] : null;
 	const pageInfo = defPageInfo[pageInfoKey] ?? null;
 	return pageInfoKey && pageInfo
