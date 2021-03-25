@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { defPromotionNav, defTabs, defFilterType } from "../common/def";
 
@@ -39,6 +39,7 @@ const Nav = ({
 	Class,
 	children
 }) => {
+	const wrapperDiv = useRef(null);
 	const rows = navBar
 		.filter(n => !n.afterLogin || (n.afterLogin && isLogin))
 		.map(n => {
@@ -51,7 +52,23 @@ const Nav = ({
 				</button>
 			);
 		});
-	return <div className={Class}>{children || rows}</div>;
+
+	const clickToScroll = () => {
+		wrapperDiv.current.scrollTo({
+			left: wrapperDiv.current.scrollLeft + 80,
+			behavior: "smooth"
+		});
+	};
+
+	return (
+		<div ref={wrapperDiv} className={Class}>
+			{children || rows}
+			<i
+				className="icon icon-keyboard_arrow_right"
+				onClick={clickToScroll}
+			/>
+		</div>
+	);
 };
 
 Nav.defaultProps = {
