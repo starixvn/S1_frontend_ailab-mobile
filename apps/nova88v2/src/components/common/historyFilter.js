@@ -38,6 +38,14 @@ const Panel = ({ submitHandler }) => {
 		setDateRange(prev => ({ ...prev, [col]: val }));
 	};
 
+	const scrollRight = () => {
+		const quickSelect = document.querySelector(".quickSelect");
+		quickSelect.scrollTo({
+			left: quickSelect.scrollLeft + 80,
+			behavior: "smooth"
+		});
+	};
+
 	const quickSelectArr = quickPickList.map((item, i) => {
 		return (
 			<button
@@ -53,7 +61,10 @@ const Panel = ({ submitHandler }) => {
 		<>
 			<div className="quickSelect">
 				{quickSelectArr}
-				<i className="icon icon-keyboard_arrow_right" />
+				<i
+					className="icon icon-keyboard_arrow_right"
+					onClick={scrollRight}
+				/>
 			</div>
 
 			<div className="functionList">
