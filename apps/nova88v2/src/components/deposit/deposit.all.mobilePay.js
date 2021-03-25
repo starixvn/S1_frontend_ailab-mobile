@@ -37,7 +37,8 @@ const Payment = props => {
 		currencyId: userInfo.currencyId,
 		minAmount: selChannel?.minAmount,
 		maxAmount: selChannel?.maxAmount,
-		i18n
+		i18n,
+		digits: 0
 	});
 
 	const isMountedRef = useRef(null);
@@ -116,7 +117,7 @@ const Payment = props => {
 						/>
 						<div className="tip">
 							<span>{i18n.lbl_DepositAmount} :</span>{" "}
-							{number_format(real_amount, _isConvert)}
+							{number_format(real_amount, _isConvert, 0)}
 						</div>
 					</>
 				),
@@ -193,7 +194,7 @@ const Payment = props => {
 				tip={i18n.lbl_AmountTooltip?.replace(
 					"{{0}}",
 					selChannel?.minAmount
-						? number_format(selChannel?.minAmount, _isConvert)
+						? number_format(selChannel?.minAmount, _isConvert, 0)
 						: 1
 				)}
 			/>
