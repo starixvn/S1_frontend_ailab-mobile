@@ -264,6 +264,7 @@ const Panel = () => {
 						if (res.data.errorCode === 0) {
 							setCheckboxList([]);
 							getMsgCount();
+							GetMsgList({ loading: false });
 						} else {
 							setPopBox({
 								isOpen: true,
