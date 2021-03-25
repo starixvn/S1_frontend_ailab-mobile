@@ -3,7 +3,10 @@ import path from "Path";
 import { Promotion as uiSetting } from "UISetting";
 import { userInfoContext, i18nContext, popBoxContext } from "Context";
 import { Promotion } from "../components/promotion/promotion";
-import { defNav, defUrlParamCols } from "../components/promotion/common/def";
+import {
+	defUrlParamCols,
+	defPromotionNav
+} from "../components/promotion/common/def";
 import Tab, { useHandleTab } from "../components/promotion/components/tab";
 import Nav, { useHandleNav } from "../components/promotion/components/nav";
 import config from "../config";
@@ -28,12 +31,7 @@ export default ({ location = {} }) => {
 	});
 	const nav = (
 		<Nav
-			navBar={[
-				defNav.All,
-				defNav.FirstDeposit,
-				defNav.ReDeposit,
-				defNav.SpecialBonus
-			]}
+			navBar={defPromotionNav}
 			i18n={i18n}
 			tab={tab}
 			filterType={filterType}
@@ -51,11 +49,12 @@ export default ({ location = {} }) => {
 			navBar={nav}
 		/>
 	);
+
 	return (
 		<Layout
 			header={header}
-			mainClass={`main${
-				tab === "Processing" ? " promotions" : " Expired"
+			mainClass={`main promotions${
+				tab === "Processing" ? "" : " Expired"
 			}`}>
 			<Promotion
 				staticList={staticList}
@@ -82,14 +81,3 @@ const getFilterType = ({ location, column }) => {
 			: Number(state?.[column])
 		: undefined;
 };
-
-// region fetch static promotion datas from cloud.
-// const [staticList, setStaticList] = useState([]);
-// fetch(siteInfo().staticPromotions)
-// 	.then(res => {
-// 		return res.json();
-// 	})
-// 	.then(data => {
-// 		setStaticList(data);
-// 	});
-// endregion

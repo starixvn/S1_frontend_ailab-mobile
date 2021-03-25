@@ -1,10 +1,19 @@
 import React, { useContext, useRef, useEffect, useState } from "react";
+import { userInfoContext, i18nContext } from "Context";
 import { Link, Redirect } from "@reach/router";
+import path from "../../../path";
 import { isExpiry } from "../common/common";
-import { defBonusType, defPromotionType, defFilterType } from "../common/def";
+import {
+	defBonusType,
+	defPromotionType,
+	defFilterType,
+	defWrapperCol
+} from "../common/def";
+
 import ClaimWithLockedAmount from "./joinBtn.claimWithLockedAmount";
-import { configContext } from "../common/context";
 import { useHandlePopBox } from "../hook/useHandlePopBox";
+import useHandleLogin from "../../hook/useHandleLogin";
+import api from "../../../service/api";
 
 export default ({
 	uiSetting = {},
@@ -13,13 +22,19 @@ export default ({
 	func_CallBack,
 	filterType
 }) => {
-	const { path, userInfo, i18n, api, formatSetting } = useContext(
-		configContext
-	);
+	const formatSetting = {
+		[defWrapperCol.formatSetting.isConvertRequired]: false,
+		[defWrapperCol.formatSetting.formatRequired]: undefined,
+		[defWrapperCol.formatSetting.digits]: undefined
+	};
+
+	const { userInfo } = useContext(userInfoContext);
+	const { i18n } = useContext(i18nContext);
+
 	const { handlePopBox, handleErrorPopBox, clickClose } = useHandlePopBox();
 	const isMountedRef = useRef(null);
 	const [redirectPath, setRedirectPath] = useState(null);
-
+	const { handleLogin } = useHandleLogin();
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => {
@@ -63,7 +78,7 @@ export default ({
 					} else if (res.data.errorCode === -5) {
 						const RedirectToProfile = () => {
 							setRedirectPath(
-								`/${path.member.root}?prevPage=${path.promotionInfo.root}&BonusCode=${bonusCode}`
+								`/${userInfo.langId}/${path.member.root}?prevPage=${path.promotionInfo.root}&BonusCode=${bonusCode}`
 							);
 							clickClose();
 						};
@@ -97,15 +112,28 @@ export default ({
 			});
 	};
 
-	const onJoinPromotion = _promo => {
+	const onJoinPromotion = (_promo = {}) => {
 		if (userInfo.isLogin !== false) {
+			console.log(
+				// _promo.canJoin,
+				// _promo.promotionType,
+				// defPromotionType.reDeposit,
+				// filterType,
+				// defFilterType.specialBonus,
+				// _promo.promotionType,
+				// defPromotionType.firstDeposit
+				filterType,
+				defFilterType.specialBonus,
+				_promo.promotionType,
+				defPromotionType.firstDeposit
+			);
 			if (
 				userInfo.currencyId &&
 				!(userInfo.accountName && userInfo.phoneNo && userInfo.email)
 			) {
 				const RedirectToProfile = () => {
 					setRedirectPath(
-						`/${path.member.root}?prevPage=${path.promotionInfo.root}&BonusCode=${_promo.bonusCode}`
+						`/${userInfo.langId}/${path.member.root}?prevPage=${path.promotionInfo.root}&BonusCode=${_promo.bonusCode}`
 					);
 					clickClose();
 				};
@@ -137,7 +165,7 @@ export default ({
 				_promo.requiredAmount > 0
 			) {
 				const RedirectToDeposit = () => {
-					setRedirectPath(`/${path.deposit.root}`);
+					setRedirectPath(`/${userInfo.langId}/${path.deposit.root}`);
 					clickClose();
 				};
 				handlePopBox({
@@ -176,7 +204,7 @@ export default ({
 				userInfo.isLogin &&
 				_promo.canJoin &&
 				(_promo.promotionType === defPromotionType.reDeposit ||
-					(filterType === defFilterType.specialBonus &&
+					(filterType == defFilterType.specialBonus &&
 						_promo.promotionType === defPromotionType.firstDeposit))
 			) {
 				if (_promo.bonusType === defBonusType.Percentage) {
@@ -210,18 +238,18 @@ export default ({
 	});
 
 	const _canJoin = !(
-		filterType === defFilterType.specialBonus && !promotionInfo.canJoin
+		filterType === defFilterType.specialBonus && !promotionInfo?.canJoin
 	);
 
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
 	) : userInfo.isLogin === false && !_isExpiry ? (
-		<Link
+		<button
 			className={uiSetting.joinBtn ?? "btn-check"}
-			to={`/${path.login.root}`}>
+			onClick={() => handleLogin()}>
 			{i18n?.lbl_PromoJoinNow}
-		</Link>
-	) : _canJoin && userInfo.isLogin && !promotionInfo.isJoin && !_isExpiry ? (
+		</button>
+	) : _canJoin && userInfo.isLogin && !promotionInfo?.isJoin && !_isExpiry ? (
 		<button
 			className={uiSetting.joinBtn ?? "btn-check"}
 			onClick={onJoinPromotion.bind(this, promotionInfo)}>

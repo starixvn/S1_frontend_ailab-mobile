@@ -109,7 +109,6 @@ const PromotionInfoContent = () => {
 					: Number(pattern[1]);
 			}
 		});
-
 	return (
 		<PromotionContent
 			path={path}
@@ -123,7 +122,11 @@ const PromotionInfoContent = () => {
 			ruleCols={ruleCols}
 			currencyId={userInfo.currencyId}
 			urlParameters={urlParams}
-			Class="proInfomodule"
+			Class={
+				getUrlParameter("tab") === "Expired"
+					? "promodule"
+					: "proInfomodule"
+			}
 		/>
 	);
 };

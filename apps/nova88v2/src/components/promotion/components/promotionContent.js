@@ -1,20 +1,16 @@
 import React from "react";
 import DepositRecord from "./depositRecord";
-import ProcessBar from "./processBar";
 import PromoRule from "./promotionContent.promoRule";
 import { Stamp } from "./stamp";
 import { CanJoin } from "../common/common";
 import { defUrlParamCols } from "../common/def";
 
 export default ({
-	path,
-	uiSetting = {},
 	promotionInfo,
 	i18n = {},
 	_isExpiry,
 	_isClaimed,
 	_isNew,
-	GetPromotionDetail,
 	ruleCols,
 	currencyId,
 	urlParameters = {},
@@ -40,13 +36,14 @@ export default ({
 		<img src={promotionInfo.banner} alt={promotionInfo.title} />
 		<div className="protitle">{promotionInfo.title}</div>
 		<div className="text">{promotionInfo.description}</div>
+
+		<PromoRule promotionInfo={promotionInfo} ruleCols={ruleCols} />
 		<DepositRecord
 			promotionInfo={promotionInfo}
 			i18n={i18n}
 			currencyId={currencyId}
 			filterType={urlParameters?.[defUrlParamCols.filterType]}
 		/>
-		<PromoRule promotionInfo={promotionInfo} ruleCols={ruleCols} />
 		<div
 			className="text"
 			dangerouslySetInnerHTML={{

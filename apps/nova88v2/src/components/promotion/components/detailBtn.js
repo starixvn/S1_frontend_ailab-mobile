@@ -2,12 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "../../../route/link";
 import { configContext } from "../common/context";
 
-export default ({
-	bonusCode,
-	displayText_Detail,
-	urlParameters = {},
-	userInfo
-}) => {
+export default ({ bonusCode, displayText_Detail, urlParameters = {} }) => {
 	const urlParams = Object.keys(urlParameters)
 		.map(key => `${key}=${urlParameters[key]}`)
 		.join("&");

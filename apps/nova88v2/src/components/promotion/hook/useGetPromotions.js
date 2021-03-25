@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback, useRef } from "react";
+import api from "../../../service/api";
 
-export const useGetPromotions = ({ api, userInfo: { langId } }) => {
+export const useGetPromotions = ({ userInfo: { langId } }) => {
 	const [promotion, setPromotion] = useState([]);
 	const isMountedRef = useRef(null);
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { defPromotionNav, defTabs, defFilterType } from "../common/def";
 
 export const useHandleNav = ({
@@ -29,13 +30,12 @@ export const useHandleNav = ({
 	return { filterType, onClickFilter };
 };
 
-export default ({
-	i18n = {},
-	filterType = {},
-	onClickFilter = () => null,
-	tab,
+const Nav = ({
+	i18n,
+	filterType,
+	onClickFilter,
 	isLogin,
-	navBar = defPromotionNav,
+	navBar,
 	Class,
 	children
 }) => {
@@ -53,3 +53,25 @@ export default ({
 		});
 	return <div className={Class}>{children || rows}</div>;
 };
+
+Nav.defaultProps = {
+	i18n: {},
+	filterType: 0,
+	onClickFilter: () => null,
+	isLogin: false,
+	navBar: defPromotionNav,
+	Class: "",
+	children: null
+};
+
+Nav.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.any),
+	filterType: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+	onClickFilter: PropTypes.func,
+	isLogin: PropTypes.bool,
+	navBar: PropTypes.arrayOf(PropTypes.any),
+	Class: PropTypes.string,
+	children: PropTypes.node
+};
+
+export default Nav;

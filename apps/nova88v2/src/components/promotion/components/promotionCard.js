@@ -1,13 +1,13 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "../../../route/link";
 import JoinBtn from "./joinBtn";
 import DetailBtn from "./detailBtn";
 import PromoRule from "./promotionCard.promoRule";
 import { Stamp } from "./stamp";
-import { CanJoin } from "../common/common";
 import { defUrlParamCols } from "../common/def";
 
-export default ({
+const PromotionCard = ({
 	p,
 	_isExpiry,
 	_isClaimed,
@@ -21,6 +21,7 @@ export default ({
 	userInfo
 }) => (
 	<div className={`promodule${_isClaimed ? " active" : ""}`}>
+		<div className="expiredIcon" />
 		<Stamp
 			_isClaimed={_isClaimed}
 			_isNew={_isNew}
@@ -48,6 +49,36 @@ export default ({
 		</div>
 	</div>
 );
+
+PromotionCard.defaultProps = {
+	p: {},
+	_isExpiry: false,
+	_isClaimed: false,
+	_isNew: false,
+	imgSRC: "",
+	func_CallBack: () => null,
+	i18n: {},
+	uiSetting: {},
+	ruleCols: [],
+	urlParameters: {},
+	userInfo: {}
+};
+
+PromotionCard.propTypes = {
+	p: PropTypes.objectOf(PropTypes.any),
+	_isExpiry: PropTypes.bool,
+	_isClaimed: PropTypes.bool,
+	_isNew: PropTypes.bool,
+	imgSRC: PropTypes.string,
+	func_CallBack: PropTypes.func,
+	i18n: PropTypes.objectOf(PropTypes.any),
+	uiSetting: PropTypes.objectOf(PropTypes.any),
+	ruleCols: PropTypes.arrayOf(PropTypes.any),
+	urlParameters: PropTypes.objectOf(PropTypes.any),
+	userInfo: PropTypes.objectOf(PropTypes.any)
+};
+
+export default PromotionCard;
 
 export const CardForStatic = ({
 	userInfo: { langId },

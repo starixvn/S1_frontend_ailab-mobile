@@ -17,10 +17,11 @@ export const defPromotionType = {
 
 export const defFilterType = {
 	all: 0,
-	firstDeposit: defPromotionType.firstDeposit,
-	freeBet: defPromotionType.freeBet,
+	firstDeposit: defPromotionType.firstDeposit, //
+	freeBet: defPromotionType.freeBet, //
 	specialBonus: 9991,
-	reDeposit: defPromotionType.reDeposit
+	reDeposit: defPromotionType.reDeposit, //
+	rebateAndCashBack: "6_7" //
 };
 
 export const defNav = {
@@ -44,6 +45,10 @@ export const defNav = {
 	ReDeposit: {
 		displayKey: "lbl_Redeposit_Promo",
 		value: defFilterType.reDeposit
+	},
+	RebateAndCashBack: {
+		displayKey: "lbl_PromotionRebateAndCashback",
+		value: defFilterType.rebateAndCashBack
 	}
 };
 
@@ -51,6 +56,8 @@ export const defPromotionNav = [
 	defNav.All,
 	defNav.FirstDeposit,
 	defNav.FreeBet,
+	defNav.ReDeposit,
+	defNav.RebateAndCashBack,
 	defNav.SpecialBonus
 ];
 

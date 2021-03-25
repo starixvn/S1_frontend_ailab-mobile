@@ -6,7 +6,6 @@ import { configContext } from "../common/context";
 import ProcessBar from "./processBar";
 
 const MinAmount = ({ requiredAmount, displayText, formatSetting }) => {
-	console.log(requiredAmount);
 	return requiredAmount > 0 ? (
 		<div>
 			<div className="icon icon-icon32px_money">{displayText}</div>
@@ -122,6 +121,7 @@ export default ({ ruleCols, promotionInfo }) => {
 				}
 			});
 	};
+
 	const rows = ruleCols.map(col => allElems[col]);
 	return (
 		<div className="rollover">

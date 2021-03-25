@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
-import { configContext } from "../common/context";
+import React, { useContext, useState } from "react";
+import { i18nContext, popBoxContext } from "Context";
 
 export const useHandlePopBox = () => {
-	const { setPopBox, i18n } = useContext(configContext);
+	const { i18n } = useContext(i18nContext);
+	const { popBox, setPopBox } = useContext(popBoxContext);
 
 	const clickClose = () => {
 		setPopBox({ isOpen: false });

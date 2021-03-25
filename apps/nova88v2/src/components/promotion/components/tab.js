@@ -1,11 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { userInfoContext } from "Context";
+import { useNavigate } from "@reach/router";
+import path from "../../../path";
 import { defTabs } from "../common/def";
 
 export const useHandleTab = ({ defaultValue = defTabs.Processing.key }) => {
 	const [tab, setTab] = useState(defaultValue);
-
+	const { userInfo } = useContext(userInfoContext);
+	const navigate = useNavigate();
 	const onClickTab = tabKey => {
-		setTab(tabKey);
+		setTab(prev => {
+			if (prev !== tabKey) {
+				navigate(`/${userInfo.langId}/${path.promotion.root}`, {
+					state: { tab: tabKey }
+				});
+			}
+			return tabKey;
+		});
 	};
 
 	return { tab, onClickTab };

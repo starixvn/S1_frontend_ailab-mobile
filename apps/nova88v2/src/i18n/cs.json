@@ -507,5 +507,6 @@
 	"lbl_Refno":"参考编号",
 	"lbl_MaxBonusAmount":"最高奖金",
 	"lbl_Min":"最小",
-	"lbl_Max":"最大"
+	"lbl_Max":"最大",
+	"lbl_PromotionRebateAndCashback":"返水 / 现金返还"
 }

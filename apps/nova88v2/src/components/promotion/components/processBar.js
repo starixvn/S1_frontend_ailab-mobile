@@ -12,16 +12,12 @@ export default ({
 	isJoin,
 	status
 }) => {
-	const {
-		i18n,
-		userInfo: { currencyId },
-		formatSetting
-	} = useContext(configContext);
+	const { i18n, formatSetting } = useContext(configContext);
 
 	if (
 		isJoin &&
-		promotionType !== defPromotionType.cashback &&
-		promotionType !== defPromotionType.rebate
+		promotionType !== defPromotionType.rebate &&
+		promotionType !== defPromotionType.cashback
 	) {
 		const percentage =
 			status === defPromoStatus.Fulfill || custTurnOver >= custRollOver

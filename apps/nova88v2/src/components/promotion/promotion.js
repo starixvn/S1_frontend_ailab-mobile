@@ -37,14 +37,24 @@ export const Promotion = ({
 };
 
 Promotion.defaultProps = {
-	formatSetting: {}
+	formatSetting: {},
+	staticList: [],
+	location: {},
+	tab: "",
+	nav: {},
+	filterType: 0
 };
 
 Promotion.propTypes = {
 	formatSetting: PropTypes.shape({
 		isConvertRequired: PropTypes.bool,
 		digits: PropTypes.number
-	})
+	}),
+	staticList: PropTypes.arrayOf(PropTypes.any),
+	location: PropTypes.objectOf(PropTypes.any),
+	tab: PropTypes.string,
+	nav: PropTypes.node,
+	filterType: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 const setPromotionCards = ({
@@ -85,17 +95,7 @@ const PromotionContent = ({ staticList, location, tab, nav, filterType }) => {
 	const { uiSetting, userInfo, i18n, api, ruleCols } = useContext(
 		configContext
 	);
-	// const { tab, onClickTab } = useHandleTab({
-	// 	defaultValue: getFilterType({ location, column: defUrlParamCols.tab })
-	// });
-	// const { filterType, onClickFilter } = useHandleNav({
-	// 	defaultValue: getFilterType({
-	// 		location,
-	// 		column: defUrlParamCols.filterType
-	// 	}),
-	// 	isLogin: userInfo.isLogin,
-	// 	tab
-	// });
+
 	const { promotion, getPromotionListV2 } = useGetPromotions({
 		api,
 		userInfo
@@ -115,8 +115,24 @@ const PromotionContent = ({ staticList, location, tab, nav, filterType }) => {
 	};
 	let rows = [];
 	if (filterType === defFilterType.specialBonus) {
+		let datas = [];
+		if (tab === defTabs.Processing.key) {
+			datas = specialBonusDatas.filter(p => {
+				return !isExpiry({
+					...p,
+					isLogin: userInfo.isLogin
+				});
+			});
+		} else {
+			datas = specialBonusDatas.filter(p => {
+				return isExpiry({
+					...p,
+					isLogin: userInfo.isLogin
+				});
+			});
+		}
 		rows = setPromotionCards({
-			datas: specialBonusDatas,
+			datas,
 			tab,
 			userInfo,
 			i18n,
@@ -144,18 +160,71 @@ const PromotionContent = ({ staticList, location, tab, nav, filterType }) => {
 						})
 					);
 				}
-				return (
-					p.promotionType === filterType &&
-					!isExpiry({
+				if (filterType === defFilterType.rebateAndCashBack) {
+					return (
+						(p.promotionType === defPromotionType.rebate ||
+							p.promotionType === defPromotionType.cashback) &&
+						!isExpiry({
+							...p,
+							isLogin: userInfo.isLogin
+						})
+					);
+				}
+				if (
+					filterType !== defFilterType.all ||
+					filterType !== defFilterType.firstDeposit ||
+					filterType !== defFilterType.rebateAndCashBack
+				) {
+					return (
+						p.promotionType === filterType &&
+						!isExpiry({
+							...p,
+							isLogin: userInfo.isLogin
+						})
+					);
+				}
+			} else {
+				if (filterType === defFilterType.all) {
+					return isExpiry({
 						...p,
 						isLogin: userInfo.isLogin
-					})
-				);
+					});
+				}
+				if (filterType === defFilterType.firstDeposit) {
+					return (
+						(p.promotionType === filterType ||
+							p.promotionType === defPromotionType.walletBonus) &&
+						isExpiry({
+							...p,
+							isLogin: userInfo.isLogin
+						})
+					);
+				}
+				if (filterType === defFilterType.rebateAndCashBack) {
+					return (
+						(p.promotionType === defPromotionType.rebate ||
+							p.promotionType === defPromotionType.cashback) &&
+						isExpiry({
+							...p,
+							isLogin: userInfo.isLogin
+						})
+					);
+				}
+				if (
+					filterType !== defFilterType.all ||
+					filterType !== defFilterType.firstDeposit ||
+					filterType !== defFilterType.rebateAndCashBack
+				) {
+					return (
+						p.promotionType === filterType &&
+						isExpiry({
+							...p,
+							isLogin: userInfo.isLogin
+						})
+					);
+				}
 			}
-			return isExpiry({
-				...p,
-				isLogin: userInfo.isLogin
-			});
+			return false;
 		});
 
 		rows = setPromotionCards({
@@ -191,15 +260,6 @@ const PromotionContent = ({ staticList, location, tab, nav, filterType }) => {
 
 	return (
 		<>
-			{/* <Tab i18n={i18n} tab={tab} onClickTab={onClickTab} />
-			<Nav
-				navBar={navBar}
-				i18n={i18n}
-				tab={tab}
-				filterType={filterType}
-				onClickFilter={onClickFilter}
-				isLogin={userInfo.isLogin}
-			/> */}
 			<SpecialBonusCodeInputBox
 				tab={tab}
 				filterType={filterType}

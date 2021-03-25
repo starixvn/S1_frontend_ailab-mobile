@@ -157,7 +157,7 @@ Header.defaultProps = {
 
 Header.propTypes = {
 	filter: PropTypes.node,
-	title: PropTypes.string,
+	title: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 	hideLogo: PropTypes.bool,
 	link: PropTypes.node,
 	children: PropTypes.node,
@@ -166,13 +166,13 @@ Header.propTypes = {
 };
 
 HeaderTitle.defaultProps = {
-	title: null,
-	link: null
+	title: false,
+	link: ""
 };
 
 HeaderTitle.propTypes = {
-	title: PropTypes.string,
-	link: PropTypes.string
+	title: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+	link: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
 };
 
 export default Header;

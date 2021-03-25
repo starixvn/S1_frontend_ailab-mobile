@@ -498,5 +498,6 @@
 	"lbl_Refno":"Reference No.",
 	"lbl_MaxBonusAmount":"Max Bonus Amount",
 	"lbl_Min":"Min",
-	"lbl_Max":"Max"
+	"lbl_Max":"Max",
+	"lbl_PromotionRebateAndCashback":"Rebate / Cashback"
 }

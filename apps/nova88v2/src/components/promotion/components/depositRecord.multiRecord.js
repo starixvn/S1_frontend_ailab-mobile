@@ -28,7 +28,7 @@ export default ({ i18n, refList, depositAmount }) => {
 };
 
 export const Record = ({ isOpen, depositId, amount, formatSetting }) => (
-	<div className={isOpen ? "open" : ""}>
+	<div className={isOpen ? "active" : ""}>
 		<div>{depositId}</div>
 		<div>{number_format(amount, formatSetting)}</div>
 	</div>
@@ -44,7 +44,7 @@ export const Content = ({
 }) => (
 	<>
 		<div className="minAmount">
-			<div className={isOpen ? "open" : ""}>
+			<div className={isOpen ? " active" : ""}>
 				<div>{i18n?.lbl_ID}</div>
 				<div>{i18n?.lbl_Amount}</div>
 			</div>
@@ -53,7 +53,7 @@ export const Content = ({
 				<div />
 			</div>
 			{children}
-			<div className={isOpen ? "open" : ""}>
+			<div className={isOpen ? " active" : ""}>
 				<div>{i18n?.lbl_Total}</div>
 				<div>{number_format(depositAmount, formatSetting)}</div>
 			</div>
@@ -64,7 +64,7 @@ export const Content = ({
 			{i18n?.lbl_ViewAll}
 			<span
 				className={`icon icon-keyboard_arrow_down${
-					isOpen ? " open" : ""
+					isOpen ? " active" : ""
 				}`}
 			/>
 		</button>

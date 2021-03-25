@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Inputbox } from "@ailab-mobile/common";
+import Inputbox from "../../common/inputbox.hint";
 import { number_format } from "../common/common";
 import { defWrapperCol } from "../common/def";
 
@@ -20,13 +20,13 @@ export const useJoinPromotion = ({
 	SetClaimPromotion,
 	formatSetting
 }) => {
-	const [warning, setWarning] = useState({ status: false, msg: "" });
+	const [warning, setWarning] = useState({ status: null, msg: "" });
 	const [claimAmount, setClaimAmount] = useState("");
 
 	const OnChangeClaimAmount = e => {
 		setClaimAmount(e.target.value);
 		if (warning.status) {
-			setWarning({ status: false, msg: "" });
+			setWarning({ status: true, msg: "" });
 		}
 	};
 
@@ -56,7 +56,7 @@ export const useJoinPromotion = ({
 			});
 		} else {
 			setWarning({
-				status: true,
+				status: false,
 				msg: `${_claimAmount} ${i18n?.lbl_NotinLimit}`
 			});
 		}
@@ -96,7 +96,9 @@ export default ({
 				value={claimAmount}
 				onChange={OnChangeClaimAmount}
 				inputType="tel"
-				Warning={warning}
+				warningMsg={warning.msg}
+				btnStatus={warning.status}
+				showInfoIcon={false}
 			/>
 			<div className="text-org">
 				{`${i18n?.lbl_ClaimAmountRange} : ${number_format(
