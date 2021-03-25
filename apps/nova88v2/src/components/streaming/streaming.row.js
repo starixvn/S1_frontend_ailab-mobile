@@ -84,7 +84,9 @@ export const StreamingModule = ({
 };
 
 StreamingModule.defaultProps = {
-	isStreamingPage: false
+	isStreamingPage: false,
+	homeScore: null,
+	awayScore: null
 };
 
 StreamingModule.propTypes = {
@@ -96,8 +98,8 @@ StreamingModule.propTypes = {
 	home: PropTypes.string.isRequired,
 	away: PropTypes.string.isRequired,
 	nowPlaying: PropTypes.bool.isRequired,
-	homeScore: PropTypes.number.isRequired,
-	awayScore: PropTypes.number.isRequired,
+	homeScore: PropTypes.number,
+	awayScore: PropTypes.number,
 	timeStart: PropTypes.string.isRequired,
 	matchID: PropTypes.number.isRequired,
 	channel: PropTypes.number.isRequired
