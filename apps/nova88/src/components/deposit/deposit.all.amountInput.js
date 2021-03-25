@@ -46,6 +46,7 @@ const AmountInput = ({
 					}
 					value={amount}
 				/>
+				{_isConvert ? <i className="icon-rate" /> : null}
 				<div className="tip">{tip}</div>
 			</div>
 		);
