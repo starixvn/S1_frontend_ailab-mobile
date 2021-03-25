@@ -21,13 +21,12 @@ const Inputbox = ({
 }) => {
 	return (
 		<div className="infoModule" data-testid={testAttr}>
-			{showInfoIcon && (
-				<div
-					className={`inputInfo ${showTips ? " active" : ""}`}
-					data-testid="inputInfo">
-					{infoText}
-				</div>
-			)}
+			<div
+				className={`inputInfo ${showTips ? " active" : ""}`}
+				data-testid="inputInfo">
+				{infoText}
+			</div>
+
 			<div className={`inputBox ${btnStatus === false ? "error" : ""}`}>
 				{areaCode ? (
 					<i className={`icon ${icon}`}>{areaCode}</i>
@@ -45,7 +44,12 @@ const Inputbox = ({
 				/>
 				<div className="icon-module">
 					<IptStatus btnStatus={btnStatus} />
-					<i className="icon icon-information" onClick={clickInfo} />
+					{showInfoIcon && (
+						<i
+							className="icon icon-information"
+							onClick={clickInfo}
+						/>
+					)}
 				</div>
 			</div>
 			<div
