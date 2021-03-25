@@ -56,10 +56,12 @@ const GroupList = ({
 							data?.maxAmount
 								? `${i18n.lbl_MinMaxAmount}: ${number_format(
 										data.minAmount,
-										_isConvert
+										_isConvert,
+										0
 								  )} / ${number_format(
 										data.maxAmount,
-										_isConvert
+										_isConvert,
+										0
 								  )}`
 								: ""}
 						</div>
@@ -70,10 +72,12 @@ const GroupList = ({
 							channel?.maxAmount
 								? `${i18n.lbl_MinMaxAmount}: ${number_format(
 										channel.minAmount,
-										_isConvert
+										_isConvert,
+										0
 								  )} / ${number_format(
 										channel.maxAmount,
-										_isConvert
+										_isConvert,
+										0
 								  )}`
 								: ""}
 						</div>

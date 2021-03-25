@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Swiper from "react-id-swiper";
 import { Link } from "../../route/link";
 import useHandleLogin from "../hook/useHandleLogin";
-import { userInfoContext, navContext, defNavPanel } from "./context";
+import { userInfoContext } from "./context";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import path from "../../path";
 import api from "../../service/api";
@@ -17,10 +17,8 @@ export const ClickLink = ({
 	bannerLink,
 	lang,
 	isLogin,
-	setNav
+	handleLogin
 }) => {
-	const { handleLogin } = useHandleLogin();
-
 	if (actionMode === api.site.defBannerActionMode.OpenWindow) {
 		window.open(bannerLink, "_blank");
 	} else if (actionMode === api.site.defBannerActionMode.RedirectPage) {
@@ -82,8 +80,8 @@ export const useGetBanner = ({ langId, ImgFolder }) => {
 
 const Panel = ({ ImgFolder = [] }) => {
 	const { userInfo } = useContext(userInfoContext);
-	const { setNav } = useContext(navContext);
 	const { banner } = useGetBanner({ langId: userInfo.langId, ImgFolder });
+	const { handleLogin } = useHandleLogin();
 
 	const rows = banner?.map((b, bIdx) => {
 		let redirectLink = null;
@@ -125,7 +123,7 @@ const Panel = ({ ImgFolder = [] }) => {
 					...b,
 					isLogin: userInfo.isLogin,
 					lang: userInfo.langId,
-					setNav
+					handleLogin
 				})}>
 				<img
 					src={b.bannerMobileUrl}
@@ -140,7 +138,7 @@ const Panel = ({ ImgFolder = [] }) => {
 };
 
 export const Autoplay = props => {
-	const params = {
+	const params = props.params ?? {
 		spaceBetween: 30,
 		centeredSlides: true,
 		autoplay: {
@@ -159,11 +157,13 @@ export const Autoplay = props => {
 };
 
 Autoplay.defaultProps = {
-	Rows: []
+	Rows: [],
+	params: {}
 };
 
 Autoplay.propTypes = {
-	Rows: PropTypes.arrayOf(PropTypes.object)
+	Rows: PropTypes.arrayOf(PropTypes.object),
+	params: PropTypes.objectOf(PropTypes.any)
 };
 
 export default Panel;

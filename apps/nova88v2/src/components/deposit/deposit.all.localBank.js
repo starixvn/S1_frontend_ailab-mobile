@@ -47,7 +47,8 @@ const Payment = props => {
 		currencyId: userInfo.currencyId,
 		minAmount: selBank?.minAmount,
 		maxAmount: selBank?.maxAmount,
-		i18n
+		i18n,
+		digits: 0
 	});
 
 	const isMountedRef = useRef(null);
@@ -221,7 +222,7 @@ const Payment = props => {
 						/>
 						<div className="tip">
 							<span>{i18n.lbl_DepositAmount} :</span>{" "}
-							{number_format(real_amount, _isConvert)}
+							{number_format(real_amount, _isConvert, 0)}
 						</div>
 					</>
 				),
@@ -294,7 +295,7 @@ const Payment = props => {
 				tip={i18n.lbl_AmountTooltip?.replace(
 					"{{0}}",
 					selBank?.minAmount
-						? number_format(selBank?.minAmount, _isConvert)
+						? number_format(selBank?.minAmount, _isConvert, 0)
 						: 1
 				)}
 				msg={warning.msg}
@@ -395,10 +396,12 @@ const GroupList = ({
 												i18n.lbl_MinMaxAmount
 										  }: ${number_format(
 												data.minAmount,
-												_isConvert
+												_isConvert,
+												0
 										  )} / ${number_format(
 												data.maxAmount,
-												_isConvert
+												_isConvert,
+												0
 										  )}`
 										: ""}
 								</div>

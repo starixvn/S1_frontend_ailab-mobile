@@ -55,6 +55,8 @@ import FriendReferral from "../pages/referral";
 import ReferralHistory from "../pages/referralHistory";
 import OneGame from "../pages/oneGame";
 import VIP from "../pages/vip";
+import MysteryBox from "../pages/mysteryBox";
+import Streaming from "../pages/streaming";
 
 const RouteComponents = () => {
 	return (
@@ -122,7 +124,9 @@ const RouteComponents = () => {
 
 			<OneGame path={`/:langId/${path.oneGame.root}`} />
 			<VIP path={`/:langId/${path.vip.root}`} />
+			<MysteryBox path={`/:langId/${path.mysteryBox.root}`} />
 			{/* <Kiss918 path={`/:langId/${path.kiss918.root}`} /> */}
+			<Streaming path={`/:langId/${path.streaming.root}`} />
 		</Router>
 	);
 };

@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
 import { isConvert, checkAmount } from "../common/common";
 
-export const useHandleAmount = ({ currencyId, minAmount, maxAmount, i18n }) => {
+export const useHandleAmount = ({
+	currencyId,
+	minAmount,
+	maxAmount,
+	i18n,
+	digits = 2
+}) => {
 	const _isConvert = isConvert(currencyId);
 	const [amount, setAmount] = useState("");
 	const [warning, setWarning] = useState({});
@@ -29,7 +35,8 @@ export const useHandleAmount = ({ currencyId, minAmount, maxAmount, i18n }) => {
 			minAmount,
 			maxAmount,
 			_isConvert,
-			i18n
+			i18n,
+			digits
 		);
 		if (displayWarning) {
 			if (result.status !== 0) {
