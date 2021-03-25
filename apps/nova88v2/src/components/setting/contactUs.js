@@ -6,6 +6,7 @@ import path from "../../path";
 import { Link } from "../../route/link";
 import lineQRCode from "../../styles/img/line.jpg";
 import whatsappQRCode from "../../styles/img/whatsapp.jpg";
+import Footer from "../common/footer";
 
 const ContactUs = ({ i18n }) => {
 	return (
@@ -79,6 +80,7 @@ const IndexPage = () => {
 			<main className="main contact">
 				<ContactUs i18n={i18n} />
 			</main>
+			<Footer />
 		</>
 	);
 };

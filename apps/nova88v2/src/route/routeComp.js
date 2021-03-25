@@ -26,29 +26,6 @@ import Message from "../pages/message";
 import Announcement from "../pages/announcement";
 
 import Deposit from "../pages/deposit";
-import DepositHome from "../components/deposit/deposit";
-import {
-	Panel as OnlineBanking,
-	Main as OnlineBankingMain
-} from "../components/deposit/deposit.onlineBanking";
-import SetOnlineBanking from "../components/deposit/deposit.onlineBanking.set";
-
-import {
-	Panel as MobilePay,
-	Main as MobilePayMain
-} from "../components/deposit/deposit.mobilePay";
-import SetMobilePay from "../components/deposit/deposit.mobilePay.set";
-
-import {
-	Panel as CryptoPay,
-	Main as CryptoPayMain
-} from "../components/deposit/deposit.cryptoPay";
-import SetCryptoPay from "../components/deposit/deposit.cryptoPay.set";
-
-import {
-	Panel as LocalBank,
-	Main as LocalBankMain
-} from "../components/deposit/deposit.localBank";
 import DepositHistory from "../pages/depositHistory";
 
 import Withdrawal from "../pages/withdrawal";
@@ -78,6 +55,8 @@ import FriendReferral from "../pages/referral";
 import ReferralHistory from "../pages/referralHistory";
 import OneGame from "../pages/oneGame";
 import VIP from "../pages/vip";
+import MysteryBox from "../pages/mysteryBox";
+import Streaming from "../pages/streaming";
 
 const RouteComponents = () => {
 	return (
@@ -89,6 +68,7 @@ const RouteComponents = () => {
 			<ForgetPwd path={`/:langId/${path.forgetPassword.root}`} />
 			<ResetPwd path={`/:langId/${path.resetPassword.root}`} />
 			<Promotion path={`/:langId/${path.promotion.root}`} />
+
 			<PromotionInfo path={`/:langId/${path.promotionInfo.root}`} />
 			<Casino path={`/:langId/${path.casino.root}`} />
 			<Casino path={`/:langId/${path.casino.root}/:tpId`} />
@@ -96,16 +76,6 @@ const RouteComponents = () => {
 			<ContactUs path={`/:langId/${path.contactUs.root}`} />
 			<GameProvider path={`/:langId/${path.gameProvider.root}`} />
 
-			<Whoami path={path.whoami.root} />
-			<Ranking path={`/:langId/${path.ranking.root}`} />
-			<AngPow path={`/:langId/${path.angPow.root}`} />
-
-			<ForgetPwd path={`/:langId/${path.forgetPassword.root}`} />
-			<ResetPwd path={`/:langId/${path.resetPassword.root}`} />
-			<Promotion path={`/:langId/${path.promotion.root}`} />
-			<PromotionInfo path={`/:langId/${path.promotionInfo.root}`} />
-			<Casino path={`/:langId/${path.casino.root}`} />
-			<Casino path={`/:langId/${path.casino.root}/:tpId`} />
 			<Whoami path={path.whoami.root} />
 			<Ranking path={`/:langId/${path.ranking.root}`} />
 			<AngPow path={`/:langId/${path.angPow.root}`} />
@@ -120,35 +90,7 @@ const RouteComponents = () => {
 			<FriendReferral path={`/:langId/${path.referral.root}`} />
 			<ReferralHistory path={`/:langId/${path.referralHistory.root}`} />
 
-			<Deposit path={`/:langId/${path.deposit.root}`}>
-				<DepositHome path={path.deposit.sub.root} />
-				<OnlineBanking path={path.deposit.sub.onlineBank.root}>
-					<OnlineBankingMain
-						path={path.deposit.sub.onlineBank.sub.root}
-					/>
-					<SetOnlineBanking
-						path={
-							path.deposit.sub.onlineBank.sub.setOnlineBanking
-								.root
-						}
-					/>
-				</OnlineBanking>
-				<MobilePay path={path.deposit.sub.mobilePay.root}>
-					<MobilePayMain path={path.deposit.sub.mobilePay.sub.root} />
-					<SetMobilePay
-						path={path.deposit.sub.mobilePay.sub.setMobilePay.root}
-					/>
-				</MobilePay>
-				<CryptoPay path={path.deposit.sub.cryptoPay.root}>
-					<CryptoPayMain path={path.deposit.sub.cryptoPay.sub.root} />
-					<SetCryptoPay
-						path={path.deposit.sub.cryptoPay.sub.setCryptoPay.root}
-					/>
-				</CryptoPay>
-				<LocalBank path={path.deposit.sub.localBank.root}>
-					<LocalBankMain path="/" />
-				</LocalBank>
-			</Deposit>
+			<Deposit path={`/:langId/${path.deposit.root}`} />
 			<DepositHistory path={`/:langId/${path.depositHistory.root}`} />
 
 			<Withdrawal path={`/:langId/${path.withdrawal.root}`} />
@@ -182,7 +124,9 @@ const RouteComponents = () => {
 
 			<OneGame path={`/:langId/${path.oneGame.root}`} />
 			<VIP path={`/:langId/${path.vip.root}`} />
+			<MysteryBox path={`/:langId/${path.mysteryBox.root}`} />
 			{/* <Kiss918 path={`/:langId/${path.kiss918.root}`} /> */}
+			<Streaming path={`/:langId/${path.streaming.root}`} />
 		</Router>
 	);
 };

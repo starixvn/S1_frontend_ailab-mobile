@@ -4,6 +4,7 @@ import OneGame from "../components/oneGame/oneGame";
 import { userInfoContext, i18nContext } from "../components/common/context";
 import useBeforeLoginCheck from "../components/hook/useBeforeLoginCheck";
 import Header from "../components/header/header";
+import Footer from "../components/common/footer";
 
 const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
@@ -25,6 +26,7 @@ const IndexPage = () => {
 			<main className="installGuide">
 				<OneGame />
 			</main>
+			<Footer />
 		</>
 	) : null;
 };

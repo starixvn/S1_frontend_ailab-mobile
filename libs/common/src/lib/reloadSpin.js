@@ -6,7 +6,9 @@ export const ReloadSpin = props => {
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
+		return () => {
+			isMountedRef.current = false;
+		};
 	});
 
 	const clickSpin = () => {
@@ -23,7 +25,8 @@ export const ReloadSpin = props => {
 
 	return (
 		<button
-			className={`icon icon-spinner11 clickBtn${spin ? " open" : ""}`}
-			onClick={clickSpin}></button>
+			className={`icon icon-spinner11 clickBtn${spin ? " active" : ""}`}
+			onClick={clickSpin}
+		/>
 	);
 };

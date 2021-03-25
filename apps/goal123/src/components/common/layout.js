@@ -130,6 +130,11 @@ const defPageInfo = {
 		titleKey: "lbl_MysteryBox_EventTitle",
 		className: "main event goldbox",
 		hideLogo: true
+	},
+	vip: {
+		titleKey: "VIP",
+		className: "main vip",
+		hideLogo: true
 	}
 };
 

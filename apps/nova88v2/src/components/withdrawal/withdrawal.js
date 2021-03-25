@@ -475,19 +475,6 @@ const Panel = () => {
 		}
 	};
 
-	const GetWithdrawalInfoRecent = () => {
-		api.payment.GetWithdrawalInfoRecent().then(res => {
-			if (res.data.errorCode === 0 && isMountedRef.current) {
-				setRecentDatas(res.data.data);
-			}
-		});
-	};
-
-	// const clickInfo = () => {
-	// 	const _info = info === "" ? i18n.lbl_AmountTooltip : "";
-	// 	setInfo(_info);
-	// };
-
 	const banks = bankInfo?.bankList?.map(b => {
 		return (
 			<button
@@ -525,7 +512,7 @@ const Panel = () => {
 				inputType="tel"
 				onChange={EditAmount}
 				clickInfo={() => showTipHandler("amount")}
-				infoText={i18n.lbl_AmountTooltip}
+				infoText={i18n.lbl_AmountTooltip?.replace("{{0}}", 1)}
 				showTips={showTips.includes("amount")}
 				placeholder={i18n.lbl_Amount}
 				btnStatus={warning.status}
@@ -544,11 +531,7 @@ const Panel = () => {
 					{i18n.lbl_Submit}
 				</button>
 			</div>
-			<RecentDatas
-				Datas={recentDatas}
-				ClickCancel={ClickCancel}
-				ReloadFunc={GetWithdrawalInfoRecent}
-			/>
+			<RecentDatas Datas={recentDatas} ClickCancel={ClickCancel} />
 		</>
 	) : null;
 };

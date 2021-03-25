@@ -72,7 +72,7 @@ const Panel = () => {
 		if (!_checked) {
 			setWarning({
 				status: defIptStatus.warning,
-				msg: i18n.lbl_AmountTooltip
+				msg: i18n.lbl_AmountTooltip?.replace("{{0}}", 1)
 			});
 		} else {
 			setWarning({ status: defIptStatus.verified, msg: "" });
@@ -299,7 +299,7 @@ const Panel = () => {
 				btnStatus={warning.status}
 				warningMsg={warning.msg}
 				inputType="tel"
-				infoText={i18n.lbl_AmountTooltip}
+				infoText={i18n.lbl_AmountTooltip?.replace("{{0}}", 1)}
 				showTips={showTips.includes("amount")}
 				clickInfo={() => showTipHandler("amount")}
 			/>
@@ -324,7 +324,7 @@ const Panel = () => {
 					{i18n.lbl_Transfer}
 				</button>
 			</div>
-			<RecentDatas datas={recentDatas} ReloadFunc={GetTransferRecent} />
+			<RecentDatas datas={recentDatas} />
 		</>
 	);
 };

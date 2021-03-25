@@ -137,5 +137,11 @@ export default {
 	},
 	gameProvider: {
 		root: "gameProvider"
+	},
+	mysteryBox: {
+		root: "mysteryBox"
+	},
+	streaming: {
+		root: "streaming"
 	}
 };

@@ -138,7 +138,7 @@ DropdownBox.propTypes = {
 	defaultOption: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 	options: PropTypes.arrayOf(PropTypes.object).isRequired,
 	checked: PropTypes.bool,
-	showTips: PropTypes.string,
+	showTips: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 	clickInfo: PropTypes.func,
 	infoText: PropTypes.string,
 	warningMsg: PropTypes.string,
