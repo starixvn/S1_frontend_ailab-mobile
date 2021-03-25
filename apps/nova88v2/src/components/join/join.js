@@ -596,6 +596,8 @@ const Join = () => {
 					onChange={EditField.bind(null, "SpecialBonusCode")}
 					warningMsg={status.SpecialBonusCode.msg}
 					btnStatus={status.SpecialBonusCode.checked}
+					infoText={i18n.lbl_JoinPromoCode}
+					clickInfo={() => showTipHandler("SpecialBonusCode")}
 					showTips={showTips.includes("SpecialBonusCode")}
 					testAttr="SpecialBonusCode"
 				/>
