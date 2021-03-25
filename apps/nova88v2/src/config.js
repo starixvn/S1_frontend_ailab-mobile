@@ -3,6 +3,9 @@ import axios from "axios";
 const siteName = "Nova88";
 export const siteId = 1;
 
+export const errorPageUrl = langId =>
+	`https://error.n88media.com/404/index_${langId}.html`;
+
 const getAffiliate = langId => {
 	if (typeof window === `undefined`) return "";
 
