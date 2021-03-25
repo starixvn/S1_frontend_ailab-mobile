@@ -7,11 +7,18 @@ export const getUrlParameter = name => {
 		: decodeURIComponent(results[1].replace(/\+/g, " "));
 };
 
-export const number_format = (number, IsConvertRequired = false) => {
+export const number_format = (
+	number,
+	IsConvertRequired = false,
+	digits = 2
+) => {
 	let n = number;
 	if (!isNaN(n)) {
 		n /= 1000;
-		n = Number(n).toFixed(2);
+
+		if (digits > 0) {
+			n = Number(n).toFixed(digits);
+		}
 	}
 
 	n += "";
@@ -34,7 +41,14 @@ export const isConvert = currencyId => {
 	return _isConvertList[currencyId] === true;
 };
 
-export const checkAmount = (amount, minAmount, maxAmount, _isConvert, i18n) => {
+export const checkAmount = (
+	amount,
+	minAmount,
+	maxAmount,
+	_isConvert,
+	i18n,
+	digits = 2
+) => {
 	let status = 0;
 	let msg = "";
 	if (amount !== null && amount !== undefined) {
@@ -46,7 +60,7 @@ export const checkAmount = (amount, minAmount, maxAmount, _isConvert, i18n) => {
 			status = 2;
 			msg = i18n.lbl_AmountTooltip?.replace(
 				"{{0}}",
-				minAmount ? number_format(minAmount, _isConvert) : 0
+				minAmount ? number_format(minAmount, _isConvert, digits) : 0
 			);
 		} else if (
 			minAmount !== 0 &&
@@ -54,7 +68,7 @@ export const checkAmount = (amount, minAmount, maxAmount, _isConvert, i18n) => {
 			(numAmount > maxAmount || numAmount < minAmount)
 		) {
 			status = 2;
-			msg = `${number_format(numAmount, _isConvert)} ${
+			msg = `${number_format(numAmount, _isConvert, digits)} ${
 				i18n.lbl_NotinLimit
 			}`;
 		}

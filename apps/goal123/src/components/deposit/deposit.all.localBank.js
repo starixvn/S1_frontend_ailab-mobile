@@ -238,7 +238,7 @@ const Payment = props => {
 							/>
 							<div className="tip">
 								<span>{i18n.lbl_DepositAmount} :</span>{" "}
-								{number_format(real_amount, _isConvert)}
+								{number_format(real_amount, _isConvert, 0)}
 							</div>
 						</>
 					),

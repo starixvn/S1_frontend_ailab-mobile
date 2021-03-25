@@ -217,7 +217,7 @@ const Panel = () => {
 			accountNo,
 			accountName,
 			isOpen: true,
-			amount: number_format(amount, _isConvert),
+			amount: number_format(amount, false, 0),
 			picFileName,
 			refId,
 			disableSubmit: false

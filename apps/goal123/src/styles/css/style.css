@@ -5837,6 +5837,7 @@ span.important {
 .depositModule_mobile .inputBox, .depositModule_online .inputBox, .depositModule_local .inputBox, .depositModule_topupMobile .inputBox {
   position: relative;
   margin: 2px 0 2vw;
+  color: #f0eff5;
 }
 
 .depositModule_mobile .inputBox .iconModule, .depositModule_online .inputBox .iconModule, .depositModule_local .inputBox .iconModule, .depositModule_topupMobile .inputBox .iconModule {
@@ -5850,22 +5851,28 @@ span.important {
 .depositModule_mobile .inputBox input, .depositModule_online .inputBox input, .depositModule_local .inputBox input, .depositModule_topupMobile .inputBox input {
   padding: 2vw;
   border-radius: 0;
+  text-align: right;
+  padding-right: 15vw;
 }
 
 .depositModule_mobile .inputBox input::-webkit-input-placeholder, .depositModule_online .inputBox input::-webkit-input-placeholder, .depositModule_local .inputBox input::-webkit-input-placeholder, .depositModule_topupMobile .inputBox input::-webkit-input-placeholder {
   color: #f0eff5;
+  opacity: 0.5;
 }
 
 .depositModule_mobile .inputBox input:-ms-input-placeholder, .depositModule_online .inputBox input:-ms-input-placeholder, .depositModule_local .inputBox input:-ms-input-placeholder, .depositModule_topupMobile .inputBox input:-ms-input-placeholder {
   color: #f0eff5;
+  opacity: 0.5;
 }
 
 .depositModule_mobile .inputBox input::-ms-input-placeholder, .depositModule_online .inputBox input::-ms-input-placeholder, .depositModule_local .inputBox input::-ms-input-placeholder, .depositModule_topupMobile .inputBox input::-ms-input-placeholder {
   color: #f0eff5;
+  opacity: 0.5;
 }
 
 .depositModule_mobile .inputBox input::placeholder, .depositModule_online .inputBox input::placeholder, .depositModule_local .inputBox input::placeholder, .depositModule_topupMobile .inputBox input::placeholder {
   color: #f0eff5;
+  opacity: 0.5;
 }
 
 .depositModule_mobile .inputBox .tip, .depositModule_online .inputBox .tip, .depositModule_local .inputBox .tip, .depositModule_topupMobile .inputBox .tip {

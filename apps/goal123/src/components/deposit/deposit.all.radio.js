@@ -75,14 +75,14 @@ const BankInfo = ({ displayName, i18n, minAmount, maxAmount, _isConvert }) => {
 						{`${i18n.lbl_Min}: ${
 							minAmount === 0
 								? i18n.lbl_Unlimited
-								: number_format(minAmount, _isConvert)
+								: number_format(minAmount, _isConvert, 0)
 						}`}
 					</div>
 					<div>
 						{`${i18n.lbl_Max}: ${
 							maxAmount === 0
 								? i18n.lbl_Unlimited
-								: number_format(maxAmount, _isConvert)
+								: number_format(maxAmount, _isConvert, 0)
 						}`}
 					</div>
 				</div>
