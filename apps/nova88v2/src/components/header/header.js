@@ -1,23 +1,25 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { userInfoContext, i18nContext } from "Context";
 import { Link } from "@Router";
-import ReloadSpin from "../common/reloadSpin";
-import { number_format, isConvert } from "../common/common";
-import { tpWalletsListType } from "../transfer/transfer.def";
-import useGetBalance from "../hook/useGetMainBalance";
-import useGetTpBalance from "../hook/useGetTpBalance";
 import Logo from "../common/logo";
 import path from "../../path";
 
-const HeaderTitle = ({ title = "", link = "" }) =>
+const HeaderTitle = ({ title = "", link }) =>
 	title ? (
 		<div className="title">
 			{link} {title}
 		</div>
 	) : null;
 
-const Header = ({ title, hideLogo, filter, children, link }) => {
+const Header = ({
+	title,
+	hideLogo,
+	filter,
+	children,
+	link,
+	setShowingShortcut
+}) => {
 	const { userInfo } = useContext(userInfoContext);
 	const headerClassName = !title ? "" : "header";
 
@@ -31,7 +33,10 @@ const Header = ({ title, hideLogo, filter, children, link }) => {
 			{title ? (
 				<HeaderTitle title={title} link={link} />
 			) : (
-				<HeaderBtn userInfo={userInfo} />
+				<HeaderBtn
+					userInfo={userInfo}
+					setShowingShortcut={setShowingShortcut}
+				/>
 			)}
 			{filter || null}
 			{children}
@@ -39,48 +44,16 @@ const Header = ({ title, hideLogo, filter, children, link }) => {
 	);
 };
 
-const HeaderBtn = ({ userInfo }) => {
+const HeaderBtn = ({ userInfo, setShowingShortcut }) => {
 	const { i18n } = useContext(i18nContext);
-	const { mainWalletInfo, GetBalance } = useGetBalance({
-		isLogin: userInfo.isLogin
-	});
-	const { tpWalletsList, GetTpWalletList } = useGetTpBalance({
-		isLogin: userInfo.isLogin,
-		listType: tpWalletsListType.allWallets
-	});
-
-	const isMountedRef = useRef(null);
-	useEffect(() => {
-		isMountedRef.current = true;
-		return () => {
-			isMountedRef.current = false;
-		};
-	});
-
-	const clickReloadSpin = () => {
-		GetBalance();
-		GetTpWalletList();
-	};
-
-	const otherWalletBalance = tpWalletsList?.reduce((prev, curr) => {
-		return prev + curr.balance;
-	}, 0);
-	const allWalletBalance = mainWalletInfo.balance + otherWalletBalance;
-	const balance = !allWalletBalance
-		? 0
-		: number_format(allWalletBalance, isConvert(userInfo.currencyId));
 
 	let content = null;
 	if (userInfo?.isLogin) {
 		content = (
-			<>
-				<HeaderInfo
-					userName={userInfo?.userName}
-					currency={i18n[`Currency_${userInfo.currencyId}`]}
-					amount={balance}
-				/>
-				<ReloadSpin func={clickReloadSpin} />
-			</>
+			<HeaderInfo
+				userName={userInfo?.userName}
+				setShowingShortcut={setShowingShortcut}
+			/>
 		);
 	} else {
 		content = (
@@ -104,30 +77,29 @@ const HeaderBtn = ({ userInfo }) => {
 	return content;
 };
 
-const HeaderInfo = props => {
+const HeaderInfo = ({ userName, setShowingShortcut }) => {
+	const showShortcut = () => {
+		setShowingShortcut(prev => !prev);
+	};
+
 	return (
-		<div className="headerInfo">
-			<div className="MemberID">
-				{props.userName}
+		<div className="headerInfo" onClick={showShortcut}>
+			<button className="MemberID">
+				{userName}
 				<span className="icon icon-arrow_drop_down" />
-			</div>
-			<div className="Balance">
-				{props.currency} {props.amount}
-			</div>
+			</button>
 		</div>
 	);
 };
 
 HeaderInfo.defaultProps = {
 	userName: "",
-	currency: null,
-	amount: 0
+	setShowingShortcut: () => null
 };
 
 HeaderInfo.propTypes = {
 	userName: PropTypes.string,
-	currency: PropTypes.string,
-	amount: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+	setShowingShortcut: PropTypes.func
 };
 
 Header.defaultProps = {
@@ -135,7 +107,8 @@ Header.defaultProps = {
 	title: null,
 	hideLogo: false,
 	link: null,
-	children: null
+	children: null,
+	setShowingShortcut: () => null
 };
 
 Header.propTypes = {
@@ -143,7 +116,8 @@ Header.propTypes = {
 	title: PropTypes.string,
 	hideLogo: PropTypes.bool,
 	link: PropTypes.node,
-	children: PropTypes.node
+	children: PropTypes.node,
+	setShowingShortcut: PropTypes.func
 };
 
 HeaderTitle.defaultProps = {
@@ -153,7 +127,7 @@ HeaderTitle.defaultProps = {
 
 HeaderTitle.propTypes = {
 	title: PropTypes.string,
-	link: PropTypes.string
+	link: PropTypes.node
 };
 
 export default Header;

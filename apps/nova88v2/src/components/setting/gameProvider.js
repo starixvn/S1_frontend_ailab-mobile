@@ -8,6 +8,8 @@ import config from "../../config";
 import Header from "../header/header";
 import { Link } from "../../route/link";
 import api from "../../service/api";
+import Footer from "../common/footer";
+import useHandleLogin from "../hook/useHandleLogin";
 
 const defPlatfrom = [
 	{
@@ -111,6 +113,7 @@ const defPlatfrom = [
 const GameProvider = ({ langId = "en", isLogin = false, i18n }) => {
 	const navigate = useNavigate();
 	const [showingTpIds, setShowingTpIds] = useState([]);
+	const { handleLogin } = useHandleLogin();
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -144,7 +147,7 @@ const GameProvider = ({ langId = "en", isLogin = false, i18n }) => {
 	const ClickItem = itemInfo => {
 		const { path: _path, urlParams, tpId, gameId, needLogin } = itemInfo;
 		const loginCallback = () => {
-			navigate(`/${langId}/login`);
+			handleLogin();
 		};
 
 		if (_path)
@@ -209,6 +212,7 @@ const IndexPage = () => {
 			<main className="main provider">
 				<GameProvider i18n={i18n} />
 			</main>
+			<Footer />
 		</>
 	);
 };

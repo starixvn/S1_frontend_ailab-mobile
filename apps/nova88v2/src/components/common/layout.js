@@ -1,6 +1,6 @@
 import React, { useContext, Component } from "react";
 import PropTypes from "prop-types";
-import { useMatch, useLocation, useNavigate, Router } from "@reach/router";
+import { useMatch, useLocation, useNavigate } from "@reach/router";
 import { Link } from "@Router";
 import Footer from "./footer";
 import Header from "../header/header";
@@ -179,7 +179,7 @@ const GetPageInfo = locationPath => {
 		: defPageInfo.default;
 };
 
-const Layout = ({ children, header, mainClass }) => {
+const Layout = ({ children, header, mainClass, setShowingShortcut }) => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { nav } = useContext(navContext);
@@ -213,6 +213,7 @@ const Layout = ({ children, header, mainClass }) => {
 				<Header
 					title={i18n[pageInfo.titleKey] ?? pageInfo.titleKey}
 					hideLogo={pageInfo.hideLogo}
+					setShowingShortcut={setShowingShortcut}
 				/>
 			)}
 			<main style={position} className={_mainClass}>
@@ -310,11 +311,17 @@ const AngPow = ({ langId }) => {
 };
 
 Layout.defaultProps = {
-	children: null
+	children: null,
+	header: null,
+	mainClass: null,
+	setShowingShortcut: () => null
 };
 
 Layout.propTypes = {
-	children: PropTypes.node
+	children: PropTypes.node,
+	header: PropTypes.node,
+	mainClass: PropTypes.string,
+	setShowingShortcut: PropTypes.func
 };
 
 RotationHint.propTypes = {
