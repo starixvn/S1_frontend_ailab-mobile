@@ -39,7 +39,6 @@ const IndexPage = props => {
 				setPageInfo={setPageInfo}
 				filterData={filterData}
 				clickSubmit={clickSubmit}
-				submitFilter={submitFilter}
 			/>
 		</Layout>
 	);

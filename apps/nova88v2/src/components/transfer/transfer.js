@@ -324,7 +324,7 @@ const Panel = () => {
 					{i18n.lbl_Transfer}
 				</button>
 			</div>
-			<RecentDatas datas={recentDatas} ReloadFunc={GetTransferRecent} />
+			<RecentDatas datas={recentDatas} />
 		</>
 	);
 };

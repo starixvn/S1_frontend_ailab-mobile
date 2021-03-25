@@ -338,7 +338,7 @@ const Panel = () => {
 			{msgList.length > 0 ? (
 				<>
 					{arr}
-					<GoTopBtn />
+					{msgList.length > 5 ? <GoTopBtn /> : null}
 				</>
 			) : (
 				<div className="nodata icon icon-nodata">
