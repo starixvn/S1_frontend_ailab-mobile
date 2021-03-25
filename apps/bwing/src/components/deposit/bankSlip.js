@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useContext, Component, useEffect, useRef } from "react";
-import moment from "moment";
+// import moment from "moment";
 import {
 	bankSlipPopBoxContext,
 	i18nContext,
@@ -8,8 +8,8 @@ import {
 } from "../common/context";
 import ClipboardJS from "../../lib/clipboard.min";
 import {
-	api_UploadReceipt,
-	api_SetDepositReceipt
+	api_UploadReceipt
+	// api_SetDepositReceipt
 } from "../../service/api/payment";
 import config from "../../config";
 import { number_format } from "../common/common";
@@ -285,7 +285,8 @@ class Content extends Component {
 										<p>
 											{number_format(
 												bankSlipPopBox.amount,
-												bankSlipPopBox._isConvert
+												bankSlipPopBox._isConvert,
+												0
 											)}
 											<span
 												className="icon icon-files-empty clickBtn copyBtn"

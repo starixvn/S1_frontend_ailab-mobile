@@ -29,7 +29,8 @@ export const useHandleAmount = ({ currencyId, minAmount, maxAmount, i18n }) => {
 			minAmount,
 			maxAmount,
 			_isConvert,
-			i18n
+			i18n,
+			0
 		);
 		if (displayWarning) {
 			if (result.status !== 0) {

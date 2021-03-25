@@ -8521,7 +8521,9 @@ span.important {
 .depositModule_local .inputBox input,
 .depositModule_topupmobile .inputBox input {
   padding: 2vw;
+  padding-right: 14vw;
   border-radius: 0;
+  text-align: right;
 }
 
 .depositModule_mobile .inputBox input::-webkit-input-placeholder,
