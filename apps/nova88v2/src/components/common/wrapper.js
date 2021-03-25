@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import { useMatch, navigate } from "@reach/router";
+import { useMatch } from "@reach/router";
 import * as ct from "./context";
 import { IS_LOGGED_IN } from "../../service/auth";
 import { GET_LANG_ID, isVaildLang } from "../../service/language";

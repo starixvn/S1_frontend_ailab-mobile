@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
 import { Match } from "@reach/router";
 import PropTypes from "prop-types";
-import { userInfoContext, i18nContext } from "Context";
+import { userInfoContext, i18nContext, msgCountContext } from "Context";
 import { Link } from "@Router";
 import path from "../../path";
 
 const Footer = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
+	const { msgCount } = useContext(msgCountContext);
 	const [openWalletMenu, setOpenWalletMenu] = useState(false);
 
 	const handleWalletMenu = isClose => {
@@ -140,6 +141,9 @@ const Footer = () => {
 								className={`icon icon-menu${
 									isMatch && !openWalletMenu ? " active" : ""
 								}`}>
+								{msgCount > 0 ? (
+									<div className="icon icon-envelope" />
+								) : null}
 								<div className="circleAnimation" />
 								<span>{i18n.lbl_More}</span>
 							</Link>

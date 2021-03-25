@@ -166,7 +166,7 @@ class Marquee extends Component {
 					isOpen: false
 				});
 				this.props.navigate(
-					`/${this.props.langId}/${path.message.root}/${path.message.sub.announcement.root}`
+					`/${this.props.langId}/${path.announcement.root}`
 				);
 			};
 			this.props.setPopBox({

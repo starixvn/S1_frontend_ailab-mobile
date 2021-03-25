@@ -386,7 +386,7 @@ const ComingSoonItem = props => {
 	);
 };
 
-const getEventIcon = ({ subIcon, eventIcon }) => {
+export const getEventIcon = ({ subIcon, eventIcon }) => {
 	let showingEventIcon = "";
 	let eventIconList = eventIcon ?? [];
 
