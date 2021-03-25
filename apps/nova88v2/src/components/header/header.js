@@ -5,7 +5,7 @@ import { Link } from "@Router";
 import Logo from "../common/logo";
 import path from "../../path";
 
-const HeaderTitle = ({ title = "", link = "" }) =>
+const HeaderTitle = ({ title = "", link }) =>
 	title ? (
 		<div className="title">
 			{link} {title}
@@ -127,7 +127,7 @@ HeaderTitle.defaultProps = {
 
 HeaderTitle.propTypes = {
 	title: PropTypes.string,
-	link: PropTypes.string
+	link: PropTypes.node
 };
 
 export default Header;

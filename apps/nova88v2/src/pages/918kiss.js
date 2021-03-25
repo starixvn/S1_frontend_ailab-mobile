@@ -4,6 +4,7 @@ import Kiss918 from "../components/918kiss/918kiss";
 import { userInfoContext, i18nContext } from "../components/common/context";
 import useBeforeLoginCheck from "../components/hook/useBeforeLoginCheck";
 import Header from "../components/header/header";
+import Footer from "../components/common/footer";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -25,6 +26,7 @@ const IndexPage = () => {
 			<main className="installGuide">
 				<Kiss918 />
 			</main>
+			<Footer />
 		</>
 	) : null;
 };

@@ -4640,7 +4640,7 @@ span.important {
   text-align: right;
 }
 
-.ranking {
+.ranking, .rankingEuro {
   width: calc(100% - 8vw);
   height: calc(100% - 60vw);
   padding: 40vw 4vw 20vw;
@@ -4649,7 +4649,7 @@ span.important {
           justify-content: flex-start;
 }
 
-.ranking .userRankInfo {
+.ranking .userRankInfo, .rankingEuro .userRankInfo {
   background: #002B6C;
   padding: 2vw;
   margin: 0 0 3vw;
@@ -4657,15 +4657,15 @@ span.important {
   text-align: center;
 }
 
-.ranking .userRankInfo > img {
+.ranking .userRankInfo > img, .rankingEuro .userRankInfo > img {
   width: 40vw;
 }
 
-.ranking .userRankInfo .account {
+.ranking .userRankInfo .account, .rankingEuro .userRankInfo .account {
   padding: 2vw 4vw;
 }
 
-.ranking .userRankInfo .account .info {
+.ranking .userRankInfo .account .info, .rankingEuro .userRankInfo .account .info {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -4674,18 +4674,18 @@ span.important {
   display: flex;
 }
 
-.ranking .userRankInfo .userRank {
+.ranking .userRankInfo .userRank, .rankingEuro .userRankInfo .userRank {
   color: #F77A00;
   text-align: center;
   font-weight: bold;
 }
 
-.ranking .userRankInfo .userRank span {
+.ranking .userRankInfo .userRank span, .rankingEuro .userRankInfo .userRank span {
   color: #1E85EC;
   margin: 0 0 0 2vw;
 }
 
-.ranking .title {
+.ranking .title, .rankingEuro .title {
   color: #F77A00;
   font-size: 4vw;
   margin: 5vw 0 0;
@@ -4693,6 +4693,135 @@ span.important {
   padding: 2.5vw 2vw;
   background: black;
   text-align: center;
+}
+
+.rankingEuro {
+  background: url(https://image.n88media.com/SiteSkin/img/body-bg.jpg) no-repeat top center/auto 100%;
+  height: calc(100% - 45vw);
+  padding: 25vw 4vw 20vw;
+}
+
+.rankingEuro .title {
+  background: transparent;
+  color: white;
+  font-size: 5vw;
+}
+
+.rankingEuro .title + .title {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.rankingEuro .filterBtn {
+  -webkit-box-align: unset;
+      -ms-flex-align: unset;
+          align-items: unset;
+}
+
+.rankingEuro .list {
+  background: #009ab1;
+  display: none;
+}
+
+.rankingEuro .list ul {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.rankingEuro .list ul li:nth-child(1):not(.icon) {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.rankingEuro .list ul > div {
+  width: 100%;
+}
+
+.rankingEuro .list ul > div.timeLine {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #003b44;
+  height: 3vw;
+  border-radius: 9vw;
+  margin: 35vw 0 9vw;
+}
+
+.rankingEuro .list ul > div.timeLine > div {
+  width: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  position: relative;
+  text-align: left;
+}
+
+.rankingEuro .list ul > div.timeLine > div:before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: #19a4bb;
+  border-radius: 30px;
+  display: block;
+}
+
+.rankingEuro .list ul > div.timeLine > div > div {
+  white-space: nowrap;
+  position: absolute;
+  bottom: 4vw;
+  line-height: normal;
+  padding: 1vw 0 2vw 1vw;
+  background: #003b44;
+  color: white;
+  font-weight: bold;
+  margin-left: -15vw;
+  height: 8vw;
+  top: -36vw;
+}
+
+.rankingEuro .list ul > div.timeLine > div > div:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5.5vw 0 5.5vw 3vw;
+  border-color: transparent transparent transparent #003b44;
+  position: absolute;
+  top: 0;
+  right: -3vw;
+}
+
+.rankingEuro .list ul > div.timeLine > div > div > div {
+  color: #fab617;
+}
+
+.rankingEuro .list ul > div.timeLine > div:nth-child(2) > div {
+  z-index: 2;
+}
+
+.rankingEuro .list ul > div.timeLine > div:nth-child(3) > div {
+  z-index: 1;
+  top: -24vw;
+}
+
+.rankingEuro .list ul > div.timeLine > div:nth-child(4) > div {
+  top: -12vw;
+}
+
+.rankingEuro .list.active {
+  display: block;
+}
+
+.rankingEuro .eventTitle {
+  color: white;
+  font-weight: bold;
+  font-size: 5vw;
+  text-align: center;
+  margin-bottom: 5vw;
 }
 
 .list {
