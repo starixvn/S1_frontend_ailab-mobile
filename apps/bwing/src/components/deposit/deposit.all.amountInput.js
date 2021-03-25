@@ -39,17 +39,15 @@ const AmountInput = ({
 						minAmount && maxAmount
 							? `${i18n.lbl_MinMaxAmount}: ${number_format(
 									minAmount,
-									_isConvert,
+									false,
 									0
-							  )} / ${number_format(maxAmount, _isConvert, 0)}`
+							  )} / ${number_format(maxAmount, false, 0)}`
 							: ""
 					}
 					value={amount}
 				/>
 				<div className={`tip${tip ? " open" : ""}`}>{tip}</div>
-				{amount !== "" && (
-					<div className="icon-module">(&apos;000)</div>
-				)}
+				<div className="icon-module">(&apos;000)</div>
 			</div>
 		);
 	}
