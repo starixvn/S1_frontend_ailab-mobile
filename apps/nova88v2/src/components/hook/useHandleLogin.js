@@ -10,7 +10,9 @@ const useHandleLogin = () => {
 	const handleLogin = () => {
 		localStorage.setItem(
 			"previousPage",
-			window.location.pathname.split("/")[2] ?? `/${userInfo.langId}`
+			window.location.pathname.split("/")[2]
+				? window.location.pathname.split("/")[2]
+				: `/${userInfo.langId}`
 		);
 		navigate(`/${userInfo.langId}/${path.login.root}`);
 	};
