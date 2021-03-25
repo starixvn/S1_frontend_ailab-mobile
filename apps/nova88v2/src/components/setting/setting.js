@@ -13,6 +13,7 @@ import { LOGOUT } from "../../service/auth";
 import ThemeMode from "./setting.themeMode";
 import path from "../../path";
 import { siteInfo } from "../../config";
+import TandC from "../../service/t_and_c";
 
 const BtnBar = ({ isLogin, i18n, msgCount }) => {
 	return isLogin ? (
@@ -107,41 +108,71 @@ export default () => {
 					/>
 				</div>
 				<Card btnTitle={i18n.lbl_OurPolicies} btnClass="icon-policies">
-					<a href="/SiteSkin/Nova88/Static/cs/ResposibleGaming.html">
+					<a
+						href={TandC(userInfo.langId).OurPolicies}
+						target="_blank"
+						rel="noreferrer noopener">
 						{i18n.lbl_ResposibleGaming}
 					</a>
-					<a href="/SiteSkin/Nova88/Static/cs/TermsConditions.html">
+					<a
+						href={TandC(userInfo.langId).terms}
+						target="_blank"
+						rel="noreferrer noopener">
 						{i18n.lbl_TermsConditions}
 					</a>
-					<a href="/SiteSkin/Nova88/Static/cs/PrivacyPolicy.html">
+					<a
+						href={TandC(userInfo.langId).PrivacyPolicy}
+						target="_blank"
+						rel="noreferrer noopener">
 						{i18n.lbl_PrivacyPolicy}
 					</a>
-					<a href="/SiteSkin/Nova88/Static/cs/CookiePolicy.html">
+					<a
+						href={TandC(userInfo.langId).CookiePolicy}
+						target="_blank"
+						rel="noreferrer noopener">
 						{i18n.lbl_CookiePolicy}
 					</a>
 				</Card>
 				<Card btnTitle={i18n.lbl_HelpSupport} btnClass="icon-question">
-					<a href="/SiteSkin/Nova88/Static/cs/ResposibleGaming.html">
+					<a
+						href={TandC(userInfo.langId).RuleRegulations}
+						target="_blank"
+						rel="noreferrer noopener">
 						{i18n.lbl_RuleRegulations}
 					</a>
-					<a href="/SiteSkin/Nova88/Static/cs/AccountTerms.html">
+					<a
+						href={TandC(userInfo.langId).AccountTerms}
+						target="_blank"
+						rel="noreferrer noopener">
 						{i18n.lbl_AccountTerms}
 					</a>
-					<a href="/SiteSkin/Nova88/Static/cs/FAQ.html">
+					<a
+						href={TandC(userInfo.langId).FAQ}
+						target="_blank"
+						rel="noreferrer noopener">
 						{i18n.lbl_FAQ}
 					</a>
 				</Card>
 				<Card
 					btnTitle={siteInfo(userInfo.langId).siteName}
 					btnClass="icon-nova88">
-					<a href="/SiteSkin/Nova88/Static/cs/AboutUs.html">
+					<a
+						href={TandC(userInfo.langId).AboutUs}
+						target="_blank"
+						rel="noreferrer noopener">
 						{i18n.lbl_AboutUs}
 					</a>
-					<a href={`${siteInfo(userInfo.langId).affiliateLink}`}>
+					<a
+						href={`${siteInfo(userInfo.langId).affiliateLink}`}
+						target="_blank"
+						rel="noreferrer noopener">
 						{i18n.lbl_Affiliate}
 					</a>
 					<Link to={path.contactUs.root}>{i18n.lbl_ContactUs}</Link>
-					<a href="/SiteSkin/Nova88/Static/cs/Terms.html">
+					<a
+						href={TandC(userInfo.langId).Terms}
+						target="_blank"
+						rel="noreferrer noopener">
 						{i18n.lbl_Terms}
 					</a>
 					<Link to={path.gameProvider.root}>
@@ -152,19 +183,25 @@ export default () => {
 					<a
 						href={`${
 							siteInfo(userInfo.langId).socialMedia.fb.link
-						}`}>
+						}`}
+						target="_blank"
+						rel="noreferrer noopener">
 						Facebook
 					</a>
 					<a
 						href={`${
 							siteInfo(userInfo.langId).socialMedia.twitter.link
-						}`}>
+						}`}
+						target="_blank"
+						rel="noreferrer noopener">
 						Twitter
 					</a>
 					<a
 						href={`${
 							siteInfo(userInfo.langId).socialMedia.ig.link
-						}`}>
+						}`}
+						target="_blank"
+						rel="noreferrer noopener">
 						Instagram
 					</a>
 				</Card>
