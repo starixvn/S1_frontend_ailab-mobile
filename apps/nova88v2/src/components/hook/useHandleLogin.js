@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { useNavigate } from "@reach/router";
-import { userInfoContext } from "../common/context";
+import { userInfoContext } from "Context";
 import path from "../../path";
 
 const useHandleLogin = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const navigate = useNavigate();
+	const { userInfo } = useContext(userInfoContext);
 	const handleLogin = () => {
 		localStorage.setItem(
 			"previousPage",

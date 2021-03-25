@@ -19,6 +19,7 @@ import { eventTime } from "../../pages/angPow";
 import eventImg from "../../styles/img/event/eventlink.png";
 import eventIdImg from "../../styles/img/event/eventlink_id.png";
 import Modal from "../join/modal";
+import GotopBtn from "./goTopBtn";
 
 const defPageInfo = {
 	default: {
@@ -226,6 +227,9 @@ const Layout = ({ children, header, mainClass, setShowingShortcut }) => {
 			<Footer />
 			{userInfo.isLogin === false && (isJoinPage || isLoginPage) && (
 				<Modal isJoin={isJoinPage} isLogin={isLoginPage} />
+			)}
+			{useMatch(`/${userInfo.langId}/${path.promotion.root}`) && (
+				<GotopBtn />
 			)}
 		</>
 	);
