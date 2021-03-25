@@ -24,7 +24,7 @@ const AmountInput = ({
 					className={a === realAmount ? "open" : ""}
 					key={`${payType}-fixedamount-${a}`}>
 					<i className="icon icon-checkmark" />
-					{number_format(a, _isConvert)}
+					{number_format(a, _isConvert, 0)}
 				</button>
 			);
 		});
@@ -39,8 +39,9 @@ const AmountInput = ({
 						minAmount && maxAmount
 							? `${i18n.lbl_MinMaxAmount}: ${number_format(
 									minAmount,
-									_isConvert
-							  )} / ${number_format(maxAmount, _isConvert)}`
+									_isConvert,
+									0
+							  )} / ${number_format(maxAmount, _isConvert, 0)}`
 							: ""
 					}
 					value={amount}

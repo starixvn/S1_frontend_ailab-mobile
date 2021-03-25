@@ -229,7 +229,7 @@ const Panel = () => {
 			accountName,
 			isOpen: true,
 			real_amount: amount,
-			amount: number_format(amount, _isConvert),
+			amount: number_format(amount, _isConvert, 0),
 			picFileName,
 			refId,
 			currencyId: userInfo.currencyId
