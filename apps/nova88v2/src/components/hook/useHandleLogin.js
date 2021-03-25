@@ -6,7 +6,7 @@ import path from "../../path";
 const useHandleLogin = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const navigate = useNavigate();
-	const { userInfo } = useContext(userInfoContext);
+
 	const handleLogin = () => {
 		localStorage.setItem(
 			"previousPage",
