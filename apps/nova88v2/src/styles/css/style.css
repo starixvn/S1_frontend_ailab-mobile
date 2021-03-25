@@ -2531,18 +2531,22 @@ input {
 
 input::-webkit-input-placeholder {
   color: white;
+  text-align: left;
 }
 
 input:-ms-input-placeholder {
   color: white;
+  text-align: left;
 }
 
 input::-ms-input-placeholder {
   color: white;
+  text-align: left;
 }
 
 input::placeholder {
   color: white;
+  text-align: left;
 }
 
 input[type="file"] {
@@ -2557,6 +2561,14 @@ input[type="checkbox"] + label {
   margin: 0 2vw 0 0;
   vertical-align: middle;
   color: #F77A00;
+}
+
+.icon-rate::before {
+  content: "('000)";
+}
+
+.icon-pencil + input {
+  text-align: right;
 }
 
 .fileUpload {
@@ -6222,7 +6234,7 @@ span.important {
   padding: 0 2vw 7vw;
   background: url(../img/upcomingmatchesbg.jpg) no-repeat top center/100% auto;
   height: 58vw;
-  width: 100%;
+  width: calc(100% - 8vw);
   position: relative;
 }
 
