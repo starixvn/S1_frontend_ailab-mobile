@@ -94,7 +94,7 @@ const Panel = ({ ImgFolder = [] }) => {
 			redirectLink =
 				!userInfo.isLogin && NeedLoginRoute.includes(b.urlRouter)
 					? null
-					: `/${b.urlRouter}`;
+					: `${b.urlRouter}`;
 		}
 
 		if (redirectLink) {
