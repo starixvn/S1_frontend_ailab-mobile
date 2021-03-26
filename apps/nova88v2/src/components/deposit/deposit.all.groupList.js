@@ -24,9 +24,6 @@ const GroupList = ({
 	const rows = dataList?.map(data => {
 		const _mainKey = `${mainKey}-${data[idKey]}`;
 		const isSelect = selected === data[idKey];
-		// online - payName顯示個別的min max
-		// mobilePay - channelName顯示channel的min max
-		// localBank - bankName顯示個別的min max
 		return (
 			<div
 				className={`bankName${isSelect ? " active" : ""}`}
