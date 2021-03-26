@@ -24,7 +24,9 @@ const GroupList = ({
 	const rows = dataList?.map(data => {
 		const _mainKey = `${mainKey}-${data[idKey]}`;
 		const isSelect = selected === data[idKey];
-
+		// online - payName顯示個別的min max
+		// mobilePay - channelName顯示channel的min max
+		// localBank - bankName顯示個別的min max
 		return (
 			<div
 				className={`bankName${isSelect ? " active" : ""}`}
@@ -49,39 +51,24 @@ const GroupList = ({
 				<i className="icon icon-icon32px_check" />
 				<div className="bank">
 					<div>{data[displayKey]}</div>
-					{!channel ? (
-						<div>
-							{showMinMaxHint &&
-							data?.minAmount &&
-							data?.maxAmount
-								? `${i18n.lbl_MinMaxAmount}: ${number_format(
-										data.minAmount,
-										_isConvert,
-										0
-								  )} / ${number_format(
-										data.maxAmount,
-										_isConvert,
-										0
-								  )}`
-								: ""}
-						</div>
-					) : (
-						<div>
-							{showMinMaxHint &&
-							channel?.minAmount &&
-							channel?.maxAmount
-								? `${i18n.lbl_MinMaxAmount}: ${number_format(
-										channel.minAmount,
-										_isConvert,
-										0
-								  )} / ${number_format(
-										channel.maxAmount,
-										_isConvert,
-										0
-								  )}`
-								: ""}
-						</div>
-					)}
+					{((displayKey === "bankName" && !channel) ||
+						displayKey === "payName" ||
+						displayKey === "channelName") &&
+						showMinMaxHint &&
+						data?.minAmount &&
+						data?.maxAmount && (
+							<div>
+								{`${i18n.lbl_MinMaxAmount}: ${number_format(
+									data.minAmount,
+									_isConvert,
+									0
+								)} / ${number_format(
+									data.maxAmount,
+									_isConvert,
+									0
+								)}`}
+							</div>
+						)}
 				</div>
 			</div>
 		);
