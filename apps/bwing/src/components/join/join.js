@@ -43,7 +43,8 @@ const initState = {
 	Password: "",
 	Phone: "",
 	Currency: null,
-	AffiliateId: ""
+	AffiliateId: "",
+	SpecialBonusCode: ""
 };
 
 const initWarningState = {
@@ -68,6 +69,10 @@ const initWarningState = {
 	},
 	Phone: {
 		status: false,
+		msg: ""
+	},
+	SpecialBonusCode: {
+		checked: null,
 		msg: ""
 	}
 };
@@ -422,9 +427,6 @@ const Join = () => {
 			const result = await phoneCheck(val);
 			checked = result.checked;
 			msg = result.msg;
-		} else {
-			checked = null;
-			msg = "";
 		}
 
 		setWarningState(prev => ({
@@ -516,7 +518,8 @@ const Join = () => {
 				CurrencyId: userValueState.Currency.id,
 				UserLang: userInfo.langId,
 				PhoneNo: userValueState.Phone,
-				AreaCode: _areaCode
+				AreaCode: _areaCode,
+				PromoCode: userValueState.SpecialBonusCode
 			};
 
 			if (AffId) {
@@ -534,7 +537,7 @@ const Join = () => {
 				readCookie("AffCode") ||
 				userValueState.AffiliateId;
 
-			api_site_Signup(regData).then(
+			api_site_Signup(regData, userInfo.langId).then(
 				response => {
 					if (isMountedRef.current) {
 						const { errorCode } = response.data;
@@ -581,6 +584,11 @@ const Join = () => {
 							setWarningState(prevState => ({
 								...prevState,
 								Password: { status: true, msg: message }
+							}));
+						} else if (errorCode === -7) {
+							setWarningState(prevState => ({
+								...prevState,
+								SpecialBonusCode: { status: true, msg: message }
 							}));
 						}
 					}
@@ -740,6 +748,16 @@ const Join = () => {
 							: i18n.lbl_PhoneTooltip}
 					</div>
 				</div>
+
+				{/* <Inputbox
+					icon="icon-promotion"
+					ClassName="JoinRule"
+					placeholder={i18n.lbl_JoinPromoCode}
+					value={userValueState.SpecialBonusCode}
+					onChange={EditField.bind(null, "SpecialBonusCode")}
+					onBlur={checkValue.bind(null, "SpecialBonusCode")}
+					Warning={warningState.SpecialBonusCode}
+				/> */}
 
 				<Inputbox
 					icon="icon-affiliate"
