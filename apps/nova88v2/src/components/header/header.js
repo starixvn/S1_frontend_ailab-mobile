@@ -21,7 +21,7 @@ const Header = ({
 	filter,
 	children,
 	link,
-	titleClass,
+	titleClass = "title",
 	navBar,
 	setShowingShortcut
 }) => {
@@ -118,7 +118,7 @@ Header.defaultProps = {
 	hideLogo: false,
 	link: null,
 	children: null,
-	titleClass: "",
+	titleClass: undefined,
 	navBar: null,
 	setShowingShortcut: () => null
 };
