@@ -42,7 +42,7 @@ const Promos = ({ i18n, userInfo }) => {
 		);
 	});
 
-	return (
+	return promoArr?.length <= 0 ? null : (
 		<>
 			<div className="moduleTitle icon icon-gift">
 				{i18n.lbl_Promotion}

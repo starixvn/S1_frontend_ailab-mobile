@@ -178,6 +178,7 @@ const ResetPwd = () => {
 };
 
 const IndexPage = () => {
+	const { i18n } = useContext(i18nContext);
 	const header = <Header title={i18n.lbl_ResetPassword} hideLogo={true} />;
 	return (
 		<Layout mainClass="main" header={header}>
