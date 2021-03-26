@@ -156,7 +156,7 @@ const GameProvider = ({ userInfo, i18n }) => {
 				<Link
 					key={`gameProvider-${p.tpId}-${p.gameId}`}
 					to={p.path}
-					state={p.parameter}>
+					state={{ tpId: p.tpId, gameId: p.gameId }}>
 					<img
 						src={`${config.cloudImgURL}/SiteSkin/img/logo/${p.imgName}.png`}
 						alt={p.imgName}
