@@ -4661,6 +4661,10 @@ span.important {
           justify-content: flex-start;
 }
 
+.ranking div:not(.rankEvent) .list ul:last-child li, .rankingEuro div:not(.rankEvent) .list ul:last-child li {
+  background: rgba(18, 73, 165, 0.5);
+}
+
 .ranking .userRankInfo, .rankingEuro .userRankInfo {
   background: #002B6C;
   padding: 2vw;

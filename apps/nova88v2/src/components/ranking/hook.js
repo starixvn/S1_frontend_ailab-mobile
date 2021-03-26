@@ -1,5 +1,4 @@
-import { useEffect, useState, useContext } from "react";
-import { pageContext } from "../common/context";
+import { useEffect, useState } from "react";
 import api from "../../service/api";
 import { defBtns, defDayBtns } from "./def";
 
@@ -22,92 +21,113 @@ const getTopNum = isLastEvent => {
 	return isLastEvent ? lastTimeTopNum : topNum;
 };
 
-const handleEventCode = isLastEvent => {
+const handleEventCode = ({ isLastEvent, selected }) => {
 	const defEventCode = {
 		current: "202101",
 		prev: "xmas2020"
 	};
 
-	return isLastEvent ? defEventCode.prev : defEventCode.current;
+	return isLastEvent ? defEventCode.current : selected;
 };
 
-export const useGetRanking = () => {
-	const [lastUpdTime, setLastUpdTime] = useState(SetUpdTime());
+export const useGetRanking = ({
+	isOpen,
+	selected,
+	BeforeDays = 0,
+	isLogin,
+	userName,
+	setLoading,
+	isLastEvent = false
+}) => {
 	const [datas, setDatas] = useState([]);
+	const [lastUpdTime, setLastUpdTime] = useState(SetUpdTime());
 
-	const GetRankingDatas = async ({
-		selected,
-		BeforeDays = 0,
-		userName,
-		setLoading,
-		isLastEvent = false
-	}) => {
-		const EventCode = handleEventCode(isLastEvent);
-		const lBCategoryId = defBtns[selected]?.lBCategoryId;
-		const beforeDays = isNaN(BeforeDays)
-			? Number(defDayBtns.Yesterday.value)
-			: Number(BeforeDays);
-		setLoading(true);
-		try {
-			const TopNum = getTopNum(isLastEvent);
-			const res = await api.events.GetLeaderboardListV2({
-				lBCategoryId,
-				TopNum,
-				BeforeDays: beforeDays,
-				EventCode
-			});
+	useEffect(() => {
+		if (isOpen && isLogin) {
+			const EventCode = handleEventCode({ isLastEvent, selected });
+			const lBCategoryId = defBtns[selected]?.lBCategoryId || 0;
+			const beforeDays = isNaN(BeforeDays)
+				? Number(defDayBtns.Yesterday.value)
+				: Number(BeforeDays);
+			const GetRankingDatas = async () => {
+				setLoading(true);
 
-			if (res.data.errorCode === 0) {
-				const rankDatas = res.data.data;
-				if (rankDatas?.length > 0) {
-					const custRankRes = await api.events.GetCustRankV2({
-						LBCategoryId: lBCategoryId,
+				try {
+					const TopNum = getTopNum(isLastEvent);
+					const res = await api.events.GetLeaderboardListV2({
+						lBCategoryId,
+						TopNum,
 						BeforeDays: beforeDays,
 						EventCode
 					});
 
-					if (custRankRes.data.errorCode === 0) {
-						const { custRank, point } = custRankRes.data.data;
+					if (res.data.errorCode === 0) {
+						const rankDatas = res.data.data;
+						if (rankDatas?.length > 0) {
+							const custRankRes = await api.events.GetCustRankV2({
+								LBCategoryId: lBCategoryId,
+								BeforeDays: beforeDays,
+								EventCode
+							});
 
-						setDatas(() => {
-							const rank =
-								custRank > 999 || custRank === 0
-									? "999+"
-									: custRank;
+							if (custRankRes.data.errorCode === 0) {
+								const {
+									custRank,
+									point
+								} = custRankRes.data.data;
 
-							let result = [];
-							if (custRank <= TopNum && custRank !== 0) {
-								rankDatas[custRank - 1] = {
-									...rankDatas[custRank - 1],
-									rank
-								};
-								result = rankDatas;
-							} else {
-								result = [
-									...rankDatas,
-									{
-										userName,
-										wTurnover: point,
-										rank
+								setDatas(() => {
+									const rank =
+										custRank > 999 || custRank === 0
+											? "999+"
+											: custRank;
+
+									let result = [];
+									if (custRank <= TopNum && custRank !== 0) {
+										rankDatas[custRank - 1] = {
+											...rankDatas[custRank - 1],
+											rank
+										};
+										result = rankDatas;
+									} else {
+										result = [
+											...rankDatas,
+											{
+												userName,
+												wTurnover: point,
+												rank
+											}
+										];
 									}
-								];
+
+									return result;
+								});
 							}
-
-							return result;
-						});
+						} else {
+							setDatas([]);
+						}
 					}
-				} else {
-					setDatas([]);
+					setLoading(false);
+					setLastUpdTime(SetUpdTime());
+				} catch (error) {
+					setLoading(false);
 				}
-			}
-			setLoading(false);
-			setLastUpdTime(SetUpdTime());
-		} catch (error) {
-			setLoading(false);
-		}
-	};
+			};
 
-	return { datas, lastUpdTime, GetRankingDatas };
+			GetRankingDatas();
+		}
+	}, [
+		isOpen,
+		selected,
+		setDatas,
+		BeforeDays,
+		isLogin,
+		userName,
+		setLoading,
+		isLastEvent
+	]);
+
+	return { datas, lastUpdTime };
 };
 
 export const useHandleSelect = ({

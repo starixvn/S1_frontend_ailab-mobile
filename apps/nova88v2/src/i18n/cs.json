@@ -554,5 +554,19 @@
 	"lbl_UpcomingMatches":"Upcoming Matches",
 	"lbl_Streaming_NoData":"No LIVE STREAMING available now,please try again later.",
 	"lbl_AffiliateProgram":"Affiliate Program",
-	"lbl_Cookie_Reminder":"Nova88 uses cookies to enhance your website experience. By staying on the website, you agree to the use of these cookies."
+	"lbl_Cookie_Reminder":"Nova88 uses cookies to enhance your website experience. By staying on the website, you agree to the use of these cookies.",
+	"lbl_TournamentPoints" : "竞赛分数",
+	"lbl_EuroDate1" : "3月 13日 - 4月 12日",
+	"lbl_EuroDate2" : "4月 13日 - 5月 12日",
+	"lbl_EuroDate3" : "5月 13日 - 6月 12日",
+	"lbl_Final" : "2020 欧洲冠军杯决赛",
+	"lbl_MonthlyTournament" : "每月赛程表",
+	"lbl_EuroEventTitle1" : "2020欧洲杯决赛",
+	"lbl_EuroEventTitle2" : "高达MYR 500,000奖励！",
+	"lbl_EuroEventTitle3" : "",
+	"lbl_EuroEventTitle4" : "",
+	"lbl_EuroEventTitle5" : "",
+	"lbl_AgendaTitle" : "每月存款 和 流水倍数竞赛",
+	"lbl_Tournament" : "竞赛",
+	"lbl_Stage": "阶段"
 }

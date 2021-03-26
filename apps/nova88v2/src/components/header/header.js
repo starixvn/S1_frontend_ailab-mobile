@@ -27,6 +27,7 @@ const Header = ({
 }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const headerClassName = !title ? "" : "header";
+
 	return (
 		<header className={headerClassName} id="header">
 			{hideLogo ? null : (
