@@ -6,6 +6,7 @@ import useTip from "../hook/useTip";
 import Inputbox from "../common/inputbox.hint";
 import Layout from "../common/layout";
 import api from "../../service/api";
+import Header from "../header/header";
 
 const ForgetPwd = () => {
 	const navigate = useNavigate();
@@ -112,8 +113,9 @@ const ForgetPwd = () => {
 };
 
 const IndexPage = () => {
+	const header = <Header title={i18n.lbl_ForgetPassword} hideLogo={true} />;
 	return (
-		<Layout mainClass="main">
+		<Layout mainClass="main" header={header}>
 			<ForgetPwd />
 		</Layout>
 	);
