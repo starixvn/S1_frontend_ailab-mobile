@@ -2,30 +2,7 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { userInfoContext } from "../common/context";
-
 import { number_format } from "../common/common";
-
-// export const RankImg = ({ Ranking }) => {
-// 	let img = <img src={gold} alt="gold" />;
-// 	const rank = Number(Ranking);
-// 	if (rank === 1) img = <img src={no1} alt="no1" />;
-// 	else if (rank === 2) img = <img src={no2} alt="no2" />;
-// 	else if (rank === 3) img = <img src={no3} alt="no3" />;
-// 	return img;
-// };
-
-// const RankItem = ({ Ranking, userName, turnover, isCurrentUser, rank }) => {
-// 	return (
-// 		<ul className={isCurrentUser ? "userRank" : ""}>
-// 			<li>
-// 				<RankImg Ranking={Ranking} />
-// 				{rank[Ranking - 1]?.rank ?? Ranking}
-// 			</li>
-// 			<li>{userName}</li>
-// 			<li>{number_format(turnover)}</li>
-// 		</ul>
-// 	);
-// };
 
 const RankItem = ({ Ranking, userName, turnover, isCurrentUser, userRank }) => {
 	const rank = Number(Ranking);
@@ -63,25 +40,7 @@ RankItem.propTypes = {
 		.isRequired
 };
 
-// const langMappingCurr = {
-// 	en: "MYR",
-// 	cs: "MYR",
-// 	id: "IDR",
-// 	th: "THB"
-// };
-
-// export const currCustomMapping = {
-// 	13: "MYR"
-// };
-
 const RankItems = ({ datas, defPrize }) => {
-	// const { currentId, langId  }  = userInfo
-
-	// const currency = currencyId
-	// 	? currCustomMapping[currencyId] ?? i18n[`Currency_${currencyId}`]
-	// 	: langMappingCurr[langId];
-
-	// prize[currency]?.[langId]?.[category] ?? prize.MYR[langId][category];
 	return datas?.map((data, idx) => {
 		const { userName, wTurnover, rank } = data;
 
@@ -98,61 +57,6 @@ const RankItems = ({ datas, defPrize }) => {
 	});
 };
 
-// const RankItems = ({ datas, selected, prize }) =>
-// 	datas?.map((data, idx) => {
-// 		const { userName, wTurnover, rank } = data;
-// 		return (
-// 			<RankItem
-// 				key={`rank-${selected}-${userName}-${wTurnover}`}
-// 				Ranking={rank ?? idx + 1}
-// 				userName={userName}
-// 				turnover={wTurnover}
-// 				rank={prize}
-// 				isCurrentUser={Boolean(rank)}
-// 			/>
-// 		);
-// 	});
-
-// const RankList = ({
-// 	loading,
-// 	i18n = {},
-// 	datas,
-// 	selected,
-// 	lastUpdTime,
-// 	isLastEvent,
-// 	defPrize
-// }) => {
-// 	return (
-// 		<>
-// 			{!loading && (!datas || datas.length === 0) ? (
-// 				<div className="nodata icon icon-nodata">
-// 					<div className="txt-white">{i18n.msg_NoData}</div>
-// 				</div>
-// 			) : (
-// 				<div className="list">
-// 					<ul>
-// 						<li>{i18n.lbl_Ranking}</li>
-// 						<li>{i18n.lbl_Username}</li>
-// 						<li>{i18n.lbl_Points}</li>
-// 					</ul>
-// 					<RankItems
-// 						datas={datas}
-// 						selected={selected}
-// 						prize={defPrize}
-// 					/>
-// 				</div>
-// 			)}
-// 			{isLastEvent ? null : (
-// 				<div className="text">
-// 					{i18n.lbl_LastUpdTime?.replace(
-// 						"{{time}}",
-// 						moment(lastUpdTime).format("YYYY-MM-DD H:mm:ss")
-// 					)}
-// 				</div>
-// 			)}
-// 		</>
-// 	);
-// };
 const RankList = ({
 	loading,
 	i18n = {},
@@ -199,7 +103,6 @@ const RankList = ({
 RankList.defaultProps = {
 	loading: false,
 	datas: [],
-	// selected: "",
 	isLastEvent: false,
 	defPrize: {}
 };
