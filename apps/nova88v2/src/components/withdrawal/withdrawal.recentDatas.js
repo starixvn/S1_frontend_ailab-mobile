@@ -5,9 +5,8 @@ import { Link } from "@Router";
 import { isConvert } from "../common/common";
 import path from "../../path";
 import Detail from "./historyDetail";
-import ReloadSpin from "../common/reloadSpin";
 
-const RecentDatas = ({ Datas, ClickCancel, ReloadFunc }) => {
+const RecentDatas = ({ Datas, ClickCancel }) => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const [isOpen, setOpen] = useState(false);
@@ -40,12 +39,7 @@ const RecentDatas = ({ Datas, ClickCancel, ReloadFunc }) => {
 	if (hasData) {
 		dataContent = (
 			<>
-				<div className="infoList">
-					<div className="recentTransactions">
-						<ReloadSpin func={ReloadFunc} />
-					</div>
-					{rows}
-				</div>
+				<div className="infoList">{rows}</div>
 				<div className="btn-group">
 					<Link
 						to={path.withdrawalHistory.root}
@@ -88,8 +82,7 @@ RecentDatas.defaultProps = {
 
 RecentDatas.propTypes = {
 	Datas: PropTypes.arrayOf(PropTypes.object),
-	ClickCancel: PropTypes.func.isRequired,
-	ReloadFunc: PropTypes.func.isRequired
+	ClickCancel: PropTypes.func.isRequired
 };
 
 export default RecentDatas;

@@ -55,18 +55,15 @@ const AmountInput = ({
 							minAmount && maxAmount
 								? `${i18n.lbl_MinMaxAmount}: ${number_format(
 										minAmount,
-										_isConvert,
+										false,
 										0
-								  )} / ${number_format(
-										maxAmount,
-										_isConvert,
-										0
-								  )}`
+								  )} / ${number_format(maxAmount, false, 0)}`
 								: ""
 						}
 						value={amount}
 					/>
 					<div className="icon-module">
+						{_isConvert && <i className="icon-rate" />}
 						{status ? <i className="icon icon-errormark" /> : null}
 						{status === 0 ? (
 							<i className="icon icon-checkmark" />

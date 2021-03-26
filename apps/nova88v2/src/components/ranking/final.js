@@ -40,7 +40,6 @@ const Final = ({
 	return (
 		<div className={`records${isOpen ? " active" : ""}`}>
 			<div className="title">{i18n.lbl_Final}</div>
-			<div className="text">{i18n.lbl_Tournament}</div>
 			<BtnBar
 				i18n={i18n}
 				selected={selected}

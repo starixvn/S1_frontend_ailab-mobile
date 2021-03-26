@@ -5,11 +5,14 @@ import { Link } from "@Router";
 import Logo from "../common/logo";
 import path from "../../path";
 
-const HeaderTitle = ({ title = "", link }) =>
+const HeaderTitle = ({ title = "", link = "", titleClass = "title", navBar }) =>
 	title ? (
-		<div className="title">
-			{link} {title}
-		</div>
+		<>
+			<div className={titleClass}>
+				{link} {title}
+			</div>
+			{navBar}
+		</>
 	) : null;
 
 const Header = ({
@@ -18,6 +21,8 @@ const Header = ({
 	filter,
 	children,
 	link,
+	titleClass,
+	navBar,
 	setShowingShortcut
 }) => {
 	const { userInfo } = useContext(userInfoContext);
@@ -31,7 +36,12 @@ const Header = ({
 				</a>
 			)}
 			{title ? (
-				<HeaderTitle title={title} link={link} />
+				<HeaderTitle
+					title={title}
+					link={link}
+					titleClass={titleClass}
+					navBar={navBar}
+				/>
 			) : (
 				<HeaderBtn
 					userInfo={userInfo}
@@ -108,26 +118,30 @@ Header.defaultProps = {
 	hideLogo: false,
 	link: null,
 	children: null,
+	titleClass: "",
+	navBar: null,
 	setShowingShortcut: () => null
 };
 
 Header.propTypes = {
 	filter: PropTypes.node,
-	title: PropTypes.string,
+	title: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 	hideLogo: PropTypes.bool,
 	link: PropTypes.node,
 	children: PropTypes.node,
+	titleClass: PropTypes.string,
+	navBar: PropTypes.node,
 	setShowingShortcut: PropTypes.func
 };
 
 HeaderTitle.defaultProps = {
-	title: null,
-	link: null
+	title: false,
+	link: ""
 };
 
 HeaderTitle.propTypes = {
-	title: PropTypes.string,
-	link: PropTypes.node
+	title: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+	link: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
 };
 
 export default Header;

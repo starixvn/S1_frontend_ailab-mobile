@@ -47,7 +47,7 @@ const Records = ({
 
 	return (
 		<div className={`records${isOpen ? " active" : ""}`}>
-			<div className="title">{title}</div>
+			<div className="title">{i18n[title]}</div>
 			<BtnBar
 				title={i18n.lbl_Date}
 				i18n={i18n}

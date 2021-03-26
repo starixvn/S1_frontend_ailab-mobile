@@ -33,7 +33,11 @@ export default () => {
 
 	return (
 		<>
-			<Header title={i18n.lbl_Ranking} hideLogo={true} link={link}>
+			<Header
+				title={i18n.lbl_Ranking}
+				hideLogo={true}
+				link={link}
+				titleClass="title">
 				<BtnBar
 					i18n={i18n}
 					selected={selected}
@@ -73,6 +77,7 @@ export default () => {
 					}
 					i18n={i18n}
 					userInfo={userInfo}
+					title="lbl_Records"
 				/>
 			</Layout>
 		</>

@@ -526,6 +526,8 @@
 	"lbl_MaxBonusAmount":"จำนวนโบนัสสูงสุด",
 	"lbl_Min":"ขั้นต่ำ",
 	"lbl_Max":"สูงสุด",
+	"lbl_PromotionRebateAndCashback":"คืนยอดเทิร์น / คืนยอดเสีย",
+
 	"lbl_LiveStreaming":"Live Streaming",
 	"lbl_Streaming_FOOTBALL":"FOOTBALL",
 	"lbl_Streaming_BASKETBALL":"BASKETBALL",

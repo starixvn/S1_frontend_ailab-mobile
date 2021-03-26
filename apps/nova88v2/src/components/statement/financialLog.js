@@ -2,7 +2,6 @@ import React, { useState, useContext, useRef, useEffect } from "react";
 import { useNavigate } from "@reach/router";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
 import { isConvert } from "../common/common";
-import ReloadSpin from "../common/reloadSpin";
 import GoTopBtn from "../common/goTopBtn";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import api from "../../service/api";
@@ -14,8 +13,7 @@ const IndexPage = ({
 	pageInfo,
 	setPageInfo,
 	filterData,
-	clickSubmit,
-	submitFilter
+	clickSubmit
 }) => {
 	const navigate = useNavigate();
 	const { userInfo } = useContext(userInfoContext);
@@ -71,7 +69,8 @@ const IndexPage = ({
 	if (history?.length > 0) {
 		infoList = (
 			<div className="infoList">
-				{arr} <GoTopBtn />
+				{arr}
+				{history.length > 1 ? <GoTopBtn /> : null}
 			</div>
 		);
 	} else {
@@ -84,20 +83,7 @@ const IndexPage = ({
 
 	let content = null;
 
-	content = history ? (
-		<div className="recent active">
-			{/* <div className="recentTransactions">
-				<ReloadSpin
-					func={submitFilter.bind(this, {
-						startDay: filterData?.StartDate,
-						endDay: filterData?.EndDate,
-						isUnix: true
-					})}
-				/>
-			</div> */}
-			{infoList}
-		</div>
-	) : null;
+	content = history ? <div className="recent active">{infoList}</div> : null;
 
 	return content;
 };

@@ -52,16 +52,7 @@ const BtnBar = ({
 		/>
 	));
 
-	const btnList = <div className={btnListClass}>{rows}</div>;
-
-	return title ? (
-		<>
-			<div className="text">{title}</div>
-			{btnList}
-		</>
-	) : (
-		btnList
-	);
+	return <div className={btnListClass}>{rows}</div>;
 };
 
 BtnBar.defaultProps = {
