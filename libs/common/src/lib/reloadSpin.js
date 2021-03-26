@@ -25,7 +25,7 @@ export const ReloadSpin = props => {
 
 	return (
 		<button
-			className={`icon icon-spinner11 clickBtn${spin ? " active" : ""}`}
+			className={`icon icon-spinner11 clickBtn${spin ? " open" : ""}`}
 			onClick={clickSpin}
 		/>
 	);
