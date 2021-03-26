@@ -20,6 +20,7 @@ import Bottom from "../components/home/bottom";
 import { readCookie, setCookie } from "../components/common/common";
 import path from "../path";
 import api from "../service/api";
+import Header from "../components/header/header";
 
 const IndexPage = () => {
 	const navigate = useNavigate();
@@ -129,8 +130,9 @@ const IndexPage = () => {
 		userInfo.langId
 	]);
 
+	const header = <Header setShowingShortcut={setShowingShortcut} />;
 	return (
-		<Layout setShowingShortcut={setShowingShortcut}>
+		<Layout header={header}>
 			{userInfo.isLogin ? (
 				<HeaderShortcut
 					i18n={i18n}
