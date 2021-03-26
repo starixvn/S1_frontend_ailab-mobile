@@ -126,38 +126,37 @@ export default () => {
 		}
 	};
 
+	const header = <Header title={i18n.lbl_SubmitPhotoId} hideLogo={true} />;
+
 	return (
-		<>
-			<Header title={i18n.lbl_SubmitPhotoId} hideLogo={true} />
-			<Layout mainClass="main kyc">
-				<span className="text-org">{i18n.lbl_SubmitPhotoIdHint}</span>
-				<div className="infoModule parts">
-					<label className="inputBox">
-						<i className="icon icon-folder-upload" />
-						{`${file ? file.name : i18n.msg_SelectFile}`}
-						<input
-							type="file"
-							accept="image/*"
-							onChange={onChangeUpload}
-						/>
-					</label>
-					<div className="btn-group">
-						<button
-							className={file ? "" : "gray"}
-							onClick={onUploadFile}>
-							{i18n.lbl_UploadPhotoId}
-						</button>
-					</div>
+		<Layout mainClass="main kyc" header={header}>
+			<span className="text-org">{i18n.lbl_SubmitPhotoIdHint}</span>
+			<div className="infoModule parts">
+				<label className="inputBox">
+					<i className="icon icon-folder-upload" />
+					{`${file ? file.name : i18n.msg_SelectFile}`}
+					<input
+						type="file"
+						accept="image/*"
+						onChange={onChangeUpload}
+					/>
+				</label>
+				<div className="btn-group">
+					<button
+						className={file ? "" : "gray"}
+						onClick={onUploadFile}>
+						{i18n.lbl_UploadPhotoId}
+					</button>
 				</div>
-				<span>{i18n.lbl_KYCSubmitHint}</span>
-				<div>
-					<ul>
-						<li>{i18n.lbl_NationalIdentityCard}</li>
-						<li>{i18n.lbl_Passport}</li>
-						<li>{i18n.lbl_DrivingLicense}</li>
-					</ul>
-				</div>
-			</Layout>
-		</>
+			</div>
+			<span>{i18n.lbl_KYCSubmitHint}</span>
+			<div>
+				<ul>
+					<li>{i18n.lbl_NationalIdentityCard}</li>
+					<li>{i18n.lbl_Passport}</li>
+					<li>{i18n.lbl_DrivingLicense}</li>
+				</ul>
+			</div>
+		</Layout>
 	);
 };

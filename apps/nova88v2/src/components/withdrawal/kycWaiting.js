@@ -74,14 +74,12 @@ export default () => {
 		}
 	}, [userInfo.isLogin, userInfo.langId, navigate]);
 
+	const header = <Header title={i18n.lbl_WaitKYC} hideLogo={true} />;
 	return (
-		<>
-			<Header title={i18n.lbl_WaitKYC} hideLogo={true} />
-			<Layout mainClass="main kyc">
-				<div className="icon icon-jump" />
-				<div className="text-center">{i18n.lbl_WaitKYC}</div>
-				<div className="text-center">{i18n.lbl_WaitKYCHint}</div>
-			</Layout>
-		</>
+		<Layout mainClass="main kyc" header={header}>
+			<div className="icon icon-jump" />
+			<div className="text-center">{i18n.lbl_WaitKYC}</div>
+			<div className="text-center">{i18n.lbl_WaitKYCHint}</div>
+		</Layout>
 	);
 };
