@@ -158,7 +158,7 @@ export const Autoplay = props => {
 
 Autoplay.defaultProps = {
 	Rows: [],
-	params: {}
+	params: null
 };
 
 Autoplay.propTypes = {
