@@ -543,7 +543,7 @@
 	"lbl_To_Referral":"Go To Friend Referral Page",
 	"lbl_BetNow":"Bet Now",
 	"lbl_UpcomingMatches":"Upcoming Matches",
-	"lbl_Streaming_NoData":"No LIVE STREAMING available now,please try again later.",
+	"lbl_Streaming_NoData":"No LIVE STREAMING available now, please try again later.",
 	"lbl_AffiliateProgram":"Affiliate Program",
 	"lbl_Cookie_Reminder":"Nova88 uses cookies to enhance your website experience. By staying on the website, you agree to the use of these cookies.",
 	"lbl_TournamentPoints" : "TOURNAMENT POINTS",
@@ -559,5 +559,7 @@
 	"lbl_EuroEventTitle5" : "",
 	"lbl_AgendaTitle" : "MONTHLY DEPOSIT & TURNOVER RACE TOURNAMENT",
 	"lbl_Tournament" : "Tournament",
-	"lbl_Stage": "Stage"
+	"lbl_Stage": "Stage",
+	"lbl_Streaming_Home":"Home",
+	"lbl_Streaming_Away":"Away"
 }
