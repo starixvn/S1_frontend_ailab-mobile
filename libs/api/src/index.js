@@ -6,3 +6,4 @@ export * from "./lib/promotion";
 export * from "./lib/site";
 export * from "./lib/tp";
 export * from "./lib/event";
+export * from "./lib/video";

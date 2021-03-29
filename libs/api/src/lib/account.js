@@ -78,4 +78,7 @@ export class AccountAPI extends BaseAPI {
 			PageNumber,
 			PageSize
 		});
+
+	SetMsgRead = ({ MsgIds }) =>
+		this.accountRequest.post("/SetMsgRead", { MsgIds });
 }

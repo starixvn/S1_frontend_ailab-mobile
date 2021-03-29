@@ -173,9 +173,6 @@ header > a > img {
 }
 
 header .Join, header .Login {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -197,6 +194,7 @@ header .Join, header .Login {
       -ms-flex-pack: center;
           justify-content: center;
   pointer-events: none;
+  overflow-y: scroll;
 }
 
 header .Join.open, header .Login.open {
@@ -227,7 +225,7 @@ header .Join > .close, header .Login > .close {
 
 header .Join > img, header .Login > img {
   width: 40vw;
-  margin: 0 auto 2vw;
+  margin: 0 calc(50% - 20vw) 2vw;
 }
 
 header .Join .title, header .Login .title {
@@ -323,6 +321,7 @@ header .Join button, header .Login button {
   border-radius: 3px;
   color: white;
   padding: 3vw;
+  width: 100%;
 }
 
 header .Join .Terms, header .Login .Terms {
@@ -1403,14 +1402,14 @@ footer > a.open .circleAnimation + span {
 }
 
 .avatar {
-  width: 24vw;
-  height: 24vw;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  height: 100%;
   border-radius: 100%;
-  border: 2px solid #1E85EC;
   margin: 5vw auto 2vw;
   color: white;
   position: relative;
-  background: url(../img/avatar.jpg) no-repeat top center/cover;
 }
 
 .avatar button {
@@ -1436,6 +1435,17 @@ footer > a.open .circleAnimation + span {
 
 .avatar button:before {
   font-size: 4vw;
+}
+
+.avatar img {
+  width: 30vw;
+}
+
+.avatar div {
+  background: #1E85EC;
+  padding: 1vw;
+  border-radius: 5px;
+  text-align: center;
 }
 
 .viplv {
@@ -1753,6 +1763,10 @@ footer > a.open .circleAnimation + span {
 .btn-group button.yellow, .btn-group a.yellow {
   background: #fab617;
   color: white;
+}
+
+.btn-group button.darkGray, .btn-group a.darkGray {
+  background: #666;
 }
 
 .statementPage a.blue {
@@ -5296,9 +5310,6 @@ span.important {
 }
 
 .Join {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -5681,7 +5692,7 @@ span.important {
   margin-right: 0;
 }
 
-.depositModule_mobile, .depositModule_online, .depositModule_local {
+.depositModule_mobile, .depositModule_online, .depositModule_local, .depositModule_topupMobile {
   background: rgba(0, 0, 0, 0.5);
   border: 1px solid #fab617;
   padding: 3vw;
@@ -5691,11 +5702,11 @@ span.important {
   display: none;
 }
 
-.depositModule_mobile.open, .depositModule_online.open, .depositModule_local.open {
+.depositModule_mobile.open, .depositModule_online.open, .depositModule_local.open, .depositModule_topupMobile.open {
   display: block;
 }
 
-.depositModule_mobile > .title, .depositModule_online > .title, .depositModule_local > .title {
+.depositModule_mobile > .title, .depositModule_online > .title, .depositModule_local > .title, .depositModule_topupMobile > .title {
   margin: 5vw 0 2vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5705,7 +5716,7 @@ span.important {
           align-items: center;
 }
 
-.depositModule_mobile > .title:not(.text-org), .depositModule_online > .title:not(.text-org), .depositModule_local > .title:not(.text-org) {
+.depositModule_mobile > .title:not(.text-org), .depositModule_online > .title:not(.text-org), .depositModule_local > .title:not(.text-org), .depositModule_topupMobile > .title:not(.text-org) {
   font-weight: normal;
   background: #134DAE;
   padding: 5px;
@@ -5713,16 +5724,16 @@ span.important {
   margin-bottom: 1px;
 }
 
-.depositModule_mobile > .title:before, .depositModule_mobile > .title span, .depositModule_online > .title:before, .depositModule_online > .title span, .depositModule_local > .title:before, .depositModule_local > .title span {
+.depositModule_mobile > .title:before, .depositModule_mobile > .title span, .depositModule_online > .title:before, .depositModule_online > .title span, .depositModule_local > .title:before, .depositModule_local > .title span, .depositModule_topupMobile > .title:before, .depositModule_topupMobile > .title span {
   margin-right: 1vw;
 }
 
-.depositModule_mobile > .title.important, .depositModule_online > .title.important, .depositModule_local > .title.important {
+.depositModule_mobile > .title.important, .depositModule_online > .title.important, .depositModule_local > .title.important, .depositModule_topupMobile > .title.important {
   font-weight: bold;
   color: #fab617;
 }
 
-.depositModule_mobile .selectModule, .depositModule_online .selectModule, .depositModule_local .selectModule {
+.depositModule_mobile .selectModule, .depositModule_online .selectModule, .depositModule_local .selectModule, .depositModule_topupMobile .selectModule {
   background: rgba(19, 77, 174, 0.5);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5737,11 +5748,11 @@ span.important {
       flex-wrap: wrap;
 }
 
-.depositModule_mobile .selectModule input[type="radio"], .depositModule_online .selectModule input[type="radio"], .depositModule_local .selectModule input[type="radio"] {
+.depositModule_mobile .selectModule input[type="radio"], .depositModule_online .selectModule input[type="radio"], .depositModule_local .selectModule input[type="radio"], .depositModule_topupMobile .selectModule input[type="radio"] {
   display: none;
 }
 
-.depositModule_mobile .selectModule input[type="radio"] + label, .depositModule_online .selectModule input[type="radio"] + label, .depositModule_local .selectModule input[type="radio"] + label {
+.depositModule_mobile .selectModule input[type="radio"] + label, .depositModule_online .selectModule input[type="radio"] + label, .depositModule_local .selectModule input[type="radio"] + label, .depositModule_topupMobile .selectModule input[type="radio"] + label {
   border: 1px solid #1E85EC;
   width: 4vw;
   height: 4vw;
@@ -5755,16 +5766,15 @@ span.important {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-right: 2vw;
 }
 
-.depositModule_mobile .selectModule input[type="radio"]:checked + label div, .depositModule_online .selectModule input[type="radio"]:checked + label div, .depositModule_local .selectModule input[type="radio"]:checked + label div {
+.depositModule_mobile .selectModule input[type="radio"]:checked + label div, .depositModule_online .selectModule input[type="radio"]:checked + label div, .depositModule_local .selectModule input[type="radio"]:checked + label div, .depositModule_topupMobile .selectModule input[type="radio"]:checked + label div {
   width: 3vw;
   height: 3vw;
   background: #fab617;
 }
 
-.depositModule_mobile .selectModule > div, .depositModule_online .selectModule > div, .depositModule_local .selectModule > div {
+.depositModule_mobile .selectModule > div, .depositModule_online .selectModule > div, .depositModule_local .selectModule > div, .depositModule_topupMobile .selectModule > div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5774,96 +5784,296 @@ span.important {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 50%;
+  width: 100%;
   margin: 2vw 0;
+  font-size: 10px;
 }
 
-.depositModule_mobile .selectModule > div .bankName, .depositModule_online .selectModule > div .bankName, .depositModule_local .selectModule > div .bankName {
+.depositModule_mobile .selectModule > div .bank, .depositModule_online .selectModule > div .bank, .depositModule_local .selectModule > div .bank, .depositModule_topupMobile .selectModule > div .bank {
+  color: white;
+  margin: 0 1vw 0;
+}
+
+.depositModule_mobile .selectModule > div .bank > div, .depositModule_online .selectModule > div .bank > div, .depositModule_local .selectModule > div .bank > div, .depositModule_topupMobile .selectModule > div .bank > div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 50vw;
+}
+
+.depositModule_mobile .selectModule > div .bank > div:last-child, .depositModule_online .selectModule > div .bank > div:last-child, .depositModule_local .selectModule > div .bank > div:last-child, .depositModule_topupMobile .selectModule > div .bank > div:last-child {
+  color: #fab617;
+}
+
+.depositModule_mobile .selectModule > div.info, .depositModule_online .selectModule > div.info, .depositModule_local .selectModule > div.info, .depositModule_topupMobile .selectModule > div.info {
+  width: calc(100% - 12vw);
+  padding: 2vw 5vw;
+  background: rgba(3, 12, 27, 0.95);
+  margin: auto;
+  border-radius: 5px;
+}
+
+.depositModule_mobile .selectModule > div.info .checkBank, .depositModule_online .selectModule > div.info .checkBank, .depositModule_local .selectModule > div.info .checkBank, .depositModule_topupMobile .selectModule > div.info .checkBank {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.depositModule_mobile .selectModule > div .bankName, .depositModule_online .selectModule > div .bankName, .depositModule_local .selectModule > div .bankName, .depositModule_topupMobile .selectModule > div .bankName {
   width: 20vw;
   background: white;
   border-radius: 5px;
-  padding: 0.5vw 1vw;
+  margin: 0 2vw;
 }
 
-.depositModule_mobile .selectModule > div .bankName img, .depositModule_online .selectModule > div .bankName img, .depositModule_local .selectModule > div .bankName img {
+.depositModule_mobile .selectModule > div .bankName img, .depositModule_online .selectModule > div .bankName img, .depositModule_local .selectModule > div .bankName img, .depositModule_topupMobile .selectModule > div .bankName img {
   width: 100%;
   vertical-align: middle;
 }
 
-.depositModule_mobile .inputBox, .depositModule_online .inputBox, .depositModule_local .inputBox {
+.depositModule_mobile .inputBox, .depositModule_online .inputBox, .depositModule_local .inputBox, .depositModule_topupMobile .inputBox {
   margin: 2px 0 2vw;
 }
 
-.depositModule_mobile .inputBox input, .depositModule_online .inputBox input, .depositModule_local .inputBox input {
+.depositModule_mobile .inputBox input, .depositModule_online .inputBox input, .depositModule_local .inputBox input, .depositModule_topupMobile .inputBox input {
   padding: 2vw;
   border-radius: 0;
 }
 
-.depositModule_mobile .inputBox input::-webkit-input-placeholder, .depositModule_online .inputBox input::-webkit-input-placeholder, .depositModule_local .inputBox input::-webkit-input-placeholder {
+.depositModule_mobile .inputBox input::-webkit-input-placeholder, .depositModule_online .inputBox input::-webkit-input-placeholder, .depositModule_local .inputBox input::-webkit-input-placeholder, .depositModule_topupMobile .inputBox input::-webkit-input-placeholder {
   color: #f0eff5;
 }
 
-.depositModule_mobile .inputBox input:-ms-input-placeholder, .depositModule_online .inputBox input:-ms-input-placeholder, .depositModule_local .inputBox input:-ms-input-placeholder {
+.depositModule_mobile .inputBox input:-ms-input-placeholder, .depositModule_online .inputBox input:-ms-input-placeholder, .depositModule_local .inputBox input:-ms-input-placeholder, .depositModule_topupMobile .inputBox input:-ms-input-placeholder {
   color: #f0eff5;
 }
 
-.depositModule_mobile .inputBox input::-ms-input-placeholder, .depositModule_online .inputBox input::-ms-input-placeholder, .depositModule_local .inputBox input::-ms-input-placeholder {
+.depositModule_mobile .inputBox input::-ms-input-placeholder, .depositModule_online .inputBox input::-ms-input-placeholder, .depositModule_local .inputBox input::-ms-input-placeholder, .depositModule_topupMobile .inputBox input::-ms-input-placeholder {
   color: #f0eff5;
 }
 
-.depositModule_mobile .inputBox input::placeholder, .depositModule_online .inputBox input::placeholder, .depositModule_local .inputBox input::placeholder {
+.depositModule_mobile .inputBox input::placeholder, .depositModule_online .inputBox input::placeholder, .depositModule_local .inputBox input::placeholder, .depositModule_topupMobile .inputBox input::placeholder {
   color: #f0eff5;
 }
 
-.depositModule_mobile .inputBox .tip, .depositModule_online .inputBox .tip, .depositModule_local .inputBox .tip {
+.depositModule_mobile .inputBox .tip, .depositModule_online .inputBox .tip, .depositModule_local .inputBox .tip, .depositModule_topupMobile .inputBox .tip {
   margin-left: 2.5vw;
-  display: none;
 }
 
-.depositModule_mobile .inputBox .tip.open, .depositModule_online .inputBox .tip.open, .depositModule_local .inputBox .tip.open {
-  display: block;
-}
-
-.depositModule_mobile .btn-group, .depositModule_online .btn-group, .depositModule_local .btn-group {
-  width: auto;
-  display: unset;
-}
-
-.depositModule_mobile .btn-group button, .depositModule_online .btn-group button, .depositModule_local .btn-group button {
-  width: 50vw;
-  margin: auto;
-}
-
-.depositModule_mobile .btn-group .tip, .depositModule_online .btn-group .tip, .depositModule_local .btn-group .tip {
-  color: #fff;
-  border: 1px solid #a1a1a1;
-  border-radius: 5px;
-  padding: 2vw;
-  margin-top: 2vw;
-}
-
-.depositModule_mobile + .btn-group, .depositModule_online + .btn-group, .depositModule_local + .btn-group {
-  width: 110%;
-  margin-left: -5%;
-  margin: 3vw 0 3vw -5%;
-}
-
-.depositModule_mobile .buttonBox button .icon, .depositModule_online .buttonBox button .icon, .depositModule_local .buttonBox button .icon {
-  background: #fab617;
-}
-
-.depositModule_mobile .note, .depositModule_online .note, .depositModule_local .note {
+.depositModule_mobile .note, .depositModule_online .note, .depositModule_local .note, .depositModule_topupMobile .note {
   background: rgba(19, 77, 174, 0.5);
   color: #ffffff;
   padding: 2vw;
 }
 
-.depositModule_mobile .note ol, .depositModule_online .note ol, .depositModule_local .note ol {
+.depositModule_mobile .note ol, .depositModule_online .note ol, .depositModule_local .note ol, .depositModule_topupMobile .note ol {
   list-style-type: decimal !important;
   padding-left: 4vw;
 }
 
-.depositModule_mobile .note ol li, .depositModule_online .note ol li, .depositModule_local .note ol li {
+.depositModule_mobile .note ol li, .depositModule_online .note ol li, .depositModule_local .note ol li, .depositModule_topupMobile .note ol li {
   margin: 1vw;
+}
+
+.depositModule_mobile a.clickBtn, .depositModule_online a.clickBtn, .depositModule_local a.clickBtn, .depositModule_topupMobile a.clickBtn {
+  background: #f0eff5;
+  border-radius: 100%;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #1D3662;
+  margin-left: 2vw;
+  width: 7vw;
+  height: 7vw;
+}
+
+.depositModule_mobile a.clickBtn:before, .depositModule_online a.clickBtn:before, .depositModule_local a.clickBtn:before, .depositModule_topupMobile a.clickBtn:before {
+  font-size: 4vw;
+}
+
+.vip {
+  padding: 12vw 0 90vw;
+  width: 100%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.vip .swiper-container .banner {
+  top: auto;
+  height: 37.5vw;
+}
+
+.vip .swiper-container .swiper-slide.swiper-slide-active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.medal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #134DAE;
+  color: white;
+  position: fixed;
+  top: 49vw;
+  width: 100%;
+  font-size: 10px;
+  word-break: break-word;
+}
+
+.medal div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border: 1px solid #001942;
+  text-align: center;
+  padding: 1vw;
+  word-break: break-word;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.medal div:first-child {
+  border-left: 0;
+}
+
+.medal div:last-child {
+  border-right: 0;
+}
+
+.medal div img {
+  width: 10vw;
+}
+
+.vipInfo {
+  color: white;
+  padding: 2vw;
+  margin: 60vw auto 0;
+}
+
+.vipInfo .vipTitle {
+  font-weight: bold;
+  color: #fab617;
+  margin: 2vw 0;
+}
+
+.vipPage .eventList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-collapse: collapse;
+}
+
+.vipPage .eventList tbody {
+  width: 100%;
+}
+
+.vipPage .eventList tr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #212121;
+}
+
+.vipPage .eventList tr:first-child td {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.vipPage .eventList tr.title {
+  background: #1E85EC;
+}
+
+.vipPage .eventList tr.title .text-org {
+  color: #fab617;
+}
+
+.vipPage .eventList tr:not(.title) td[colspan="7"] {
+  background: black;
+}
+
+.vipPage .eventList tr.lastTd td {
+  border-bottom: 1px solid #f0eff5;
+}
+
+.vipPage .eventList tr td {
+  padding: 1vw 0;
+  font-weight: normal;
+  font-size: 3vw;
+  height: auto;
+  border-radius: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid #f0eff5;
+  border-left: 0;
+  border-bottom: 0;
+  word-break: break-word;
+}
+
+.vipPage .eventList tr td:first-child {
+  border-left: 1px solid #f0eff5;
+}
+
+.vipPage .eventList tr td img {
+  width: 10vw;
+}
+
+.vipBanner {
+  width: 100%;
+  height: 49.5vw;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 3vw;
+}
+
+.vipBanner.small {
+  height: 28vw;
+}
+
+.vipBanner img {
+  max-width: 100%;
 }
 /*# sourceMappingURL=style.css.map */

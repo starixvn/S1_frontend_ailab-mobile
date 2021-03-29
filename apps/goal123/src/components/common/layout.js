@@ -111,7 +111,7 @@ const defPageInfo = {
 		className: "main",
 		hideLogo: true
 	},
-	ranking: {
+	leaderBoard: {
 		titleKey: "lbl_Ranking",
 		className: "main ranking",
 		hideLogo: true
@@ -129,6 +129,11 @@ const defPageInfo = {
 	mysteryBox: {
 		titleKey: "lbl_MysteryBox_EventTitle",
 		className: "main event goldbox",
+		hideLogo: true
+	},
+	vip: {
+		titleKey: "VIP",
+		className: "main vip",
 		hideLogo: true
 	}
 };
