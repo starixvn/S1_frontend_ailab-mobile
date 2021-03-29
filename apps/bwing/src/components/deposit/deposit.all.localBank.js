@@ -408,6 +408,7 @@ const Payment = props => {
 				EditAmount={EditAmount}
 				payType={payType}
 			/>
+			<ImportantNotes i18n={i18n} />
 			<div className="btn-group">
 				<button
 					className="blue"
@@ -423,6 +424,21 @@ const Payment = props => {
 		</div>
 	);
 };
+
+const ImportantNotes = ({ i18n = {} }) => (
+	<>
+		<div className="title">
+			<span className="text-org">*</span>
+			{i18n.lbl_ImportantNote?.toUpperCase()}
+		</div>
+		<div className="selectModule">
+			<p>{i18n.lbl_DepositLocalBankNotes1}</p>
+			<p>{i18n.lbl_DepositLocalBankNotes2}</p>
+			<p>{i18n.lbl_DepositLocalBankNotes3}</p>
+			<p>{i18n.lbl_DepositLocalBankNotes4}</p>
+		</div>
+	</>
+);
 
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
