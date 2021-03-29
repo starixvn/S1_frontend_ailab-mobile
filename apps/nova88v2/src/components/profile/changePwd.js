@@ -8,6 +8,7 @@ import Inputbox from "../common/inputbox.password";
 import api from "../../service/api";
 import Layout from "../common/layout";
 import { passwordCheck } from "../common/common";
+import Header from "../header/header";
 
 const initState = {
 	oldPsw: "",
@@ -228,8 +229,10 @@ const ChangePwd = () => {
 };
 
 const IndexPage = () => {
+	const { i18n } = useContext(i18nContext);
+	const header = <Header title={i18n.lbl_ResetPassword} hideLogo={true} />;
 	return (
-		<Layout mainClass="main">
+		<Layout mainClass="main" header={header}>
 			<ChangePwd />
 		</Layout>
 	);

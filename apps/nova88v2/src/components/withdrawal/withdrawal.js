@@ -59,7 +59,7 @@ const Panel = () => {
 			const ClosePopBox = () => {
 				setPopBox({ isOpen: false });
 				navigate(
-					`/${userInfo.langId}/${path.member.root}?prevPage=${path.withdrawal.root}`
+					`/${userInfo.langId}/${path.profile.root}?prevPage=${path.withdrawal.root}`
 				);
 			};
 
@@ -115,7 +115,7 @@ const Panel = () => {
 							const ClosePopBox = () => {
 								setPopBox({ isOpen: false });
 								navigate(
-									`/${userInfo.langId}/${path.member.root}/${path.bankInfo.root}`
+									`/${userInfo.langId}/${path.bankInfo.root}`
 								);
 							};
 

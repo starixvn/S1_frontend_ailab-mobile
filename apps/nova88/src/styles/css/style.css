@@ -2245,18 +2245,22 @@ input {
 
 input::-webkit-input-placeholder {
   color: #fff;
+  text-align: left;
 }
 
 input:-ms-input-placeholder {
   color: #fff;
+  text-align: left;
 }
 
 input::-ms-input-placeholder {
   color: #fff;
+  text-align: left;
 }
 
 input::placeholder {
   color: #fff;
+  text-align: left;
 }
 
 input[placeholder="Wallet Address"] {
@@ -6137,8 +6141,9 @@ span.icon.icon-ranking:after {
 }
 
 .depositModule_mobile .inputBox input, .depositModule_online .inputBox input, .depositModule_local .inputBox input {
-  padding: 2vw;
+  padding: 2vw 11vw 2vw;
   border-radius: 0;
+  text-align: right;
 }
 
 .depositModule_mobile .inputBox input::-webkit-input-placeholder, .depositModule_online .inputBox input::-webkit-input-placeholder, .depositModule_local .inputBox input::-webkit-input-placeholder {
@@ -6159,5 +6164,15 @@ span.icon.icon-ranking:after {
 
 .depositModule_mobile .inputBox .tip, .depositModule_online .inputBox .tip, .depositModule_local .inputBox .tip {
   margin-left: 2.5vw;
+}
+
+.icon-rate {
+  position: absolute;
+  right: 2vw;
+  top: 2vw;
+}
+
+.icon-rate::before {
+  content: "('000)";
 }
 /*# sourceMappingURL=style.css.map */

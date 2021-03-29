@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import PropTypes from "prop-types";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
 import path from "../../path";
 import oneGameImg from "../../styles/img/onegame/bg.jpg";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
+import { Link } from "../../route/link";
 
-const PopBoxOneGame = ({ setRedirect }) => {
+const PopBoxOneGame = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -19,14 +19,6 @@ const PopBoxOneGame = ({ setRedirect }) => {
 		});
 	};
 
-	const toDownloadPage = () => {
-		setPopBox({ isOpen: false });
-		setRedirect({
-			redirect: true,
-			path: `/${path.oneGame.root}`
-		});
-	};
-
 	return (
 		<div className="popTxt">
 			<img src={oneGameImg} className="banner" alt="One Game" />
@@ -34,16 +26,12 @@ const PopBoxOneGame = ({ setRedirect }) => {
 				<button className="orange" onClick={goToGame}>
 					{i18n.lbl_GoToGame.toUpperCase()}
 				</button>
-				<button className="white" onClick={toDownloadPage}>
+				<Link className="white" to={path.oneGame.root}>
 					{i18n.lbl_GoToDownloadApp.toUpperCase()}
-				</button>
+				</Link>
 			</div>
 		</div>
 	);
-};
-
-PopBoxOneGame.propTypes = {
-	setRedirect: PropTypes.func.isRequired
 };
 
 export default PopBoxOneGame;

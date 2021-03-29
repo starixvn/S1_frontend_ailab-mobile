@@ -82,16 +82,9 @@ div[tabindex="-1"] {
 }
 
 .logoSwitch {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   position: fixed;
   width: calc(100% - 16vw);
   top: 0;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
   padding: 7vw 8vw 5vw;
   -webkit-transition: -webkit-transition;
   transition: -webkit-transition;
@@ -99,10 +92,10 @@ div[tabindex="-1"] {
   transition: transition, -webkit-transition;
   z-index: 4;
   background: #001942;
-  height: calc(100% - 12vw);
   overflow: scroll;
   visibility: hidden;
   opacity: 0;
+  height: calc(100% - 12vw);
 }
 
 .logoSwitch.active {
@@ -113,11 +106,12 @@ div[tabindex="-1"] {
 }
 
 .logoSwitch > img {
-  margin: 1vw auto 5vw;
+  margin: 1vw calc((100% - 40vw) / 2) 5vw;
   width: 40vw;
 }
 
 .logoSwitch .switch {
+  width: 100%;
   border: 1px solid #F77A00;
   background: black;
   border-radius: 30px;
@@ -165,13 +159,6 @@ div[tabindex="-1"] {
 }
 
 .Join, .Login {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
   height: 0;
   visibility: hidden;
   opacity: 0;
@@ -184,6 +171,7 @@ div[tabindex="-1"] {
   opacity: 1;
   -webkit-transition: 0.7s;
   transition: 0.7s;
+  height: auto;
 }
 
 .Join .dropdown .btn, .Login .dropdown .btn {
@@ -541,12 +529,6 @@ main .gameList > div > div, main .gameList > div > a, main .gameList > div > but
   margin: 2vw;
   text-align: center;
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   border: 1px solid #e2e2e2;
   border-radius: 10px;
   background: #ececec;
@@ -563,12 +545,12 @@ main .gameList > div > div img, main .gameList > div > a img, main .gameList > d
 
 main .gameList > div > div img + div, main .gameList > div > a img + div, main .gameList > div > button img + div, main .gameList > a > div img + div, main .gameList > a > a img + div, main .gameList > a > button img + div, main .gameList > button > div img + div, main .gameList > button > a img + div, main .gameList > button > button img + div {
   position: absolute;
-  bottom: 0.2vw;
+  bottom: 1vw;
   margin: auto;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 19vw;
+  width: 100%;
 }
 
 main .gameList .icon-new {
@@ -1712,9 +1694,9 @@ footer > a.active .circleAnimation + span {
 
 .infoModule {
   margin: 1vw 0;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
@@ -1851,10 +1833,6 @@ footer > a.active .circleAnimation + span {
 .inputBox .icon-keyboard_arrow_down {
   color: #F77A00;
   max-height: 16px;
-  -webkit-transform: scaleX(1.2);
-          transform: scaleX(1.2);
-  position: absolute;
-  right: 0;
 }
 
 .quickSelect {
@@ -4661,6 +4639,10 @@ span.important {
           justify-content: flex-start;
 }
 
+.ranking div:not(.rankEvent) .list ul:last-child li, .rankingEuro div:not(.rankEvent) .list ul:last-child li {
+  background: rgba(18, 73, 165, 0.5);
+}
+
 .ranking .userRankInfo, .rankingEuro .userRankInfo {
   background: #002B6C;
   padding: 2vw;
@@ -4809,10 +4791,6 @@ span.important {
 
 .rankingEuro .list ul > div.timeLine > div > div > div {
   color: #fab617;
-}
-
-.rankingEuro .list ul > div.timeLine > div:nth-child(2) > div {
-  z-index: 2;
 }
 
 .rankingEuro .list ul > div.timeLine > div:nth-child(3) > div {

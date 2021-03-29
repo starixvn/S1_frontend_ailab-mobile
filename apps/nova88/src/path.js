@@ -30,7 +30,13 @@ export default {
 		root: "join"
 	},
 	deposit: {
-		root: "deposit",
+		root: "deposit"
+	},
+	depositHistory: {
+		root: "depositHistory"
+	},
+	depositOld: {
+		root: "depositOld",
 		sub: {
 			root: "/",
 			onlineBank: {

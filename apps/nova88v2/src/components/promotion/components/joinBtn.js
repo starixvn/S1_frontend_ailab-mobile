@@ -78,7 +78,7 @@ export default ({
 					} else if (res.data.errorCode === -5) {
 						const RedirectToProfile = () => {
 							setRedirectPath(
-								`/${userInfo.langId}/${path.member.root}?prevPage=${path.promotionInfo.root}&BonusCode=${bonusCode}`
+								`/${userInfo.langId}/${path.profile.root}?prevPage=${path.promotionInfo.root}&BonusCode=${bonusCode}`
 							);
 							clickClose();
 						};
@@ -114,26 +114,13 @@ export default ({
 
 	const onJoinPromotion = (_promo = {}) => {
 		if (userInfo.isLogin !== false) {
-			console.log(
-				// _promo.canJoin,
-				// _promo.promotionType,
-				// defPromotionType.reDeposit,
-				// filterType,
-				// defFilterType.specialBonus,
-				// _promo.promotionType,
-				// defPromotionType.firstDeposit
-				filterType,
-				defFilterType.specialBonus,
-				_promo.promotionType,
-				defPromotionType.firstDeposit
-			);
 			if (
 				userInfo.currencyId &&
 				!(userInfo.accountName && userInfo.phoneNo && userInfo.email)
 			) {
 				const RedirectToProfile = () => {
 					setRedirectPath(
-						`/${userInfo.langId}/${path.member.root}?prevPage=${path.promotionInfo.root}&BonusCode=${_promo.bonusCode}`
+						`/${userInfo.langId}/${path.profile.root}?prevPage=${path.promotionInfo.root}&BonusCode=${_promo.bonusCode}`
 					);
 					clickClose();
 				};

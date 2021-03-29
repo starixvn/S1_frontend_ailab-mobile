@@ -21,12 +21,13 @@ const Header = ({
 	filter,
 	children,
 	link,
-	titleClass,
+	titleClass = "title",
 	navBar,
 	setShowingShortcut
 }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const headerClassName = !title ? "" : "header";
+
 	return (
 		<header className={headerClassName} id="header">
 			{hideLogo ? null : (
@@ -117,7 +118,7 @@ Header.defaultProps = {
 	hideLogo: false,
 	link: null,
 	children: null,
-	titleClass: "",
+	titleClass: undefined,
 	navBar: null,
 	setShowingShortcut: () => null
 };

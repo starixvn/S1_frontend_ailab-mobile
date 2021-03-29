@@ -1,6 +1,6 @@
 import React, { useContext, Component } from "react";
 import PropTypes from "prop-types";
-import { useMatch, useLocation, useNavigate } from "@reach/router";
+import { useMatch, useNavigate } from "@reach/router";
 import { Link } from "@Router";
 import Footer from "./footer";
 import Header from "../header/header";
@@ -21,173 +21,12 @@ import eventIdImg from "../../styles/img/event/eventlink_id.png";
 import Modal from "../join/modal";
 import GotopBtn from "./goTopBtn";
 
-const defPageInfo = {
-	default: {
-		titleKey: "",
-		className: "",
-		hideLogo: false
-	},
-	member: {
-		// titleKey: "lbl_MyAccount",
-		className: "main",
-		hideLogo: true
-	},
-	deposit: {
-		// titleKey: "lbl_Deposit",
-		className: "main",
-		hideLogo: true
-	},
-	[`/deposit/history`]: {
-		titleKey: "lbl_Deposit",
-		className: "main history",
-		hideLogo: true
-	},
-	withdrawal: {
-		titleKey: "lbl_Withdrawal",
-		className: "main",
-		hideLogo: true
-	},
-	[`/withdrawal/history`]: {
-		titleKey: "lbl_Withdrawal",
-		className: "main history",
-		hideLogo: true
-	},
-	transfer: {
-		titleKey: "lbl_Transfer",
-		className: "main",
-		hideLogo: true
-	},
-	[`/transfer/history`]: {
-		titleKey: "lbl_Transfer",
-		className: "main history",
-		hideLogo: true
-	},
-	statement: {
-		titleKey: "lbl_Statement",
-		className: "main",
-		hideLogo: true
-	},
-	message: {
-		titleKey: "lbl_Message",
-		className: "main Message",
-		hideLogo: true
-	},
-	[`/message/announcement`]: {
-		titleKey: "lbl_Message",
-		className: "main Announcement",
-		hideLogo: true
-	},
-	casino: {
-		titleKey: "lbl_Casino",
-		className: "main casino",
-		hideLogo: true
-	},
-	forgetPassword: {
-		titleKey: "lbl_ForgetPassword",
-		className: "main",
-		hideLogo: true
-	},
-	resetPassword: {
-		titleKey: "lbl_ResetPassword",
-		className: "main",
-		hideLogo: true
-	},
-	changePassword: {
-		titleKey: "lbl_ChangePassword",
-		className: "main",
-		hideLogo: true
-	},
-	setting: {
-		titleKey: "lbl_Setting",
-		className: "main",
-		hideLogo: true
-	},
-	promotion: {
-		titleKey: "lbl_Promotion",
-		className: "main promotions",
-		hideLogo: true
-	},
-	kyc: {
-		titleKey: "lbl_SubmitPhotoId",
-		className: "main kyc",
-		hideLogo: true
-	},
-	kycWaiting: {
-		titleKey: "lbl_WaitKYC",
-		className: "main kyc",
-		hideLogo: true
-	},
-	whoami: {
-		titleKey: "Who AM I",
-		className: "main",
-		hideLogo: true
-	},
-	ranking: {
-		titleKey: "lbl_Ranking",
-		className: "main ranking",
-		hideLogo: true
-	},
-	"/918kiss": {
-		titleKey: "918 Kiss",
-		className: "main casino kiss",
-		hideLogo: true
-	},
-	financialLog: {
-		titleKey: "lbl_financialLog",
-		className: "main",
-		hideLogo: true
-	},
-	referral: {
-		titleKey: "lbl_friendReferral",
-		className: "main",
-		hideLogo: true
-	},
-	angPow: {
-		titleKey: "lbl_NewYearAngPow",
-		className: "main event",
-		hideLogo: true
-	},
-	oneGame: {
-		titleKey: "One Game",
-		className: "main casino kiss",
-		hideLogo: true
-	}
-};
-
-const GetPageInfo = locationPath => {
-	const result = defPageInfo[locationPath];
-	if (result) {
-		return result;
-	}
-	let pageInfoKey =
-		locationPath === "/"
-			? []
-			: Object.keys(path).filter(p => {
-					const _location = locationPath.split("/");
-					return _location?.[2] === path[p].root;
-			  });
-
-	pageInfoKey = pageInfoKey?.length > 0 ? pageInfoKey[0] : null;
-	const pageInfo = defPageInfo[pageInfoKey] ?? null;
-	return pageInfoKey && pageInfo
-		? {
-				titleKey: pageInfo.titleKey,
-				className: pageInfo.className,
-				hideLogo: pageInfo.hideLogo,
-				defTabs: pageInfo.defTabs,
-				defSubTabs: pageInfo.defSubTabs
-		  }
-		: defPageInfo.default;
-};
-
-const Layout = ({ children, header, mainClass, setShowingShortcut }) => {
+const Layout = ({ children, header, mainClass }) => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { nav } = useContext(navContext);
 	const { loading } = useContext(loadingContext);
 	const { userInfo } = useContext(userInfoContext);
-	const location = useLocation();
-	const pageInfo = GetPageInfo(location.pathname);
 
 	const _matchLogin =
 		useMatch(`/${userInfo.langId}/${path.login.root}`) !== null;
@@ -210,13 +49,7 @@ const Layout = ({ children, header, mainClass, setShowingShortcut }) => {
 	return (
 		<>
 			<RotationHint i18n={i18n} />
-			{header ?? (
-				<Header
-					title={i18n[pageInfo.titleKey] ?? pageInfo.titleKey}
-					hideLogo={pageInfo.hideLogo}
-					setShowingShortcut={setShowingShortcut}
-				/>
-			)}
+			{header ?? <Header title="" hideLogo={true} />}
 			<main style={position} className={_mainClass}>
 				{children}
 				{loading ? <Loading /> : null}
@@ -317,15 +150,13 @@ const AngPow = ({ langId }) => {
 Layout.defaultProps = {
 	children: null,
 	header: null,
-	mainClass: null,
-	setShowingShortcut: () => null
+	mainClass: null
 };
 
 Layout.propTypes = {
 	children: PropTypes.node,
 	header: PropTypes.node,
-	mainClass: PropTypes.string,
-	setShowingShortcut: PropTypes.func
+	mainClass: PropTypes.string
 };
 
 RotationHint.propTypes = {

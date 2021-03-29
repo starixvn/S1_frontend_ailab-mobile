@@ -111,14 +111,13 @@ const LoginPage = () => {
 		if (checked) {
 			const CallBackLogin = (errorCode, message, isLogin, userData) => {
 				if (errorCode === 0) {
-					navigate(localStorage.getItem("previousPage"));
 					if (isMountedRef.current) {
 						setUserInfo(() => ({
 							...userData,
 							isLogin
 						}));
 
-						// setNav(null);
+						navigate(`${localStorage.getItem("previousPage")}`);
 					}
 				} else if (
 					errorCode === 1101 ||
