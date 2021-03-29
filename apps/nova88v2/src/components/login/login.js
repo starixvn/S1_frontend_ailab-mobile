@@ -117,11 +117,7 @@ const LoginPage = () => {
 							isLogin
 						}));
 
-						navigate(
-							`/${userData.langId}/${localStorage.getItem(
-								"previousPage"
-							)}`
-						);
+						navigate(`${localStorage.getItem("previousPage")}`);
 					}
 				} else if (
 					errorCode === 1101 ||
