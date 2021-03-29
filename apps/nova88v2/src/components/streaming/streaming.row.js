@@ -53,7 +53,7 @@ export const StreamingModule = ({
 			<div className="title icon icon-youtube">{league}</div>
 			<div className="liveTvInfo">
 				<div>
-					<div>HOME</div>
+					<div>{i18n.lbl_Streaming_Home.toUpperCase()}</div>
 					<div>{home}</div>
 				</div>
 				<div>
@@ -75,7 +75,7 @@ export const StreamingModule = ({
 					) : null}
 				</div>
 				<div>
-					<div>AWAY</div>
+					<div>{i18n.lbl_Streaming_Away.toUpperCase()}</div>
 					<div>{away}</div>
 				</div>
 			</div>
