@@ -633,23 +633,14 @@ const Join = () => {
 					}`}
 					checkboxHandler={checkboxHandler}
 					id="c1">
-					{i18n.lbl_Check18TC1} &nbsp;
+					{i18n.lbl_Check18TC1}
 					<a
 						rel="noreferrer"
 						target="_blank"
 						href={TandC(userInfo.langId).terms}>
 						{i18n.lbl_TermsConditions}
 					</a>
-					&nbsp; {i18n.lbl_Check18TC2}&nbsp;
-					<a
-						rel="noreferrer"
-						target="_blank"
-						href={TandC(userInfo.langId).rule}>
-						{i18n.lbl_RuleRegulations}
-					</a>
-					&nbsp; {i18n.lbl_Check18TC3}&nbsp;{config.siteName}
-					.&nbsp;
-					{i18n.lbl_Check18TC4}
+					{i18n.lbl_Check18TC2}
 				</Checkbox>
 				{status.Checkbox.checked === false ? (
 					<div className="tip active">
