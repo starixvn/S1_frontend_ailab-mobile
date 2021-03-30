@@ -432,10 +432,12 @@ const ImportantNotes = ({ i18n = {} }) => (
 			{i18n.lbl_ImportantNote?.toUpperCase()}
 		</div>
 		<div className="selectModule">
-			<p>{i18n.lbl_DepositLocalBankNotes1}</p>
-			<p>{i18n.lbl_DepositLocalBankNotes2}</p>
-			<p>{i18n.lbl_DepositLocalBankNotes3}</p>
-			<p>{i18n.lbl_DepositLocalBankNotes4}</p>
+			<ol>
+				<li>{`1. ${i18n.lbl_DepositLocalBankNotes1}`}</li>
+				<li>{`2. ${i18n.lbl_DepositLocalBankNotes2}`}</li>
+				<li>{`3. ${i18n.lbl_DepositLocalBankNotes3}`}</li>
+				<li>{`4. ${i18n.lbl_DepositLocalBankNotes4}`}</li>
+			</ol>
 		</div>
 	</>
 );
