@@ -21,6 +21,7 @@ import { readCookie, setCookie } from "../components/common/common";
 import path from "../path";
 import api from "../service/api";
 import Header from "../components/header/header";
+import JoinLoginBar from "../components/home/joinLoginBar";
 
 const IndexPage = () => {
 	const navigate = useNavigate();
@@ -136,6 +137,7 @@ const IndexPage = () => {
 			) : null}
 			<Slider />
 			<Marquee />
+			{userInfo.isLogin ? null : <JoinLoginBar />}
 			<div id="content">
 				<Menu i18n={i18n} userInfo={userInfo} setPopBox={setPopBox} />
 				<Promos i18n={i18n} userInfo={userInfo} />

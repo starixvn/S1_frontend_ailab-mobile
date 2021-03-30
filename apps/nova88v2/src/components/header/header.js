@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { userInfoContext, i18nContext } from "Context";
+import { userInfoContext } from "Context";
 import { Link } from "@Router";
 import Logo from "../common/logo";
 import path from "../../path";
@@ -42,7 +42,7 @@ const Header = ({
 					navBar={navBar}
 				/>
 			) : (
-				<HeaderBtn userInfo={userInfo} />
+				<HeaderInfo userInfo={userInfo} />
 			)}
 			{filter || null}
 			{children}
@@ -50,51 +50,20 @@ const Header = ({
 	);
 };
 
-const HeaderBtn = ({ userInfo }) => {
-	const { i18n } = useContext(i18nContext);
-
-	let content = null;
-	if (userInfo?.isLogin) {
-		content = <HeaderInfo userName={userInfo?.userName} />;
-	} else {
-		content = (
-			<div className="headerButton">
-				<Link
-					className="loginBtn"
-					to={path.login.root}
-					state={{ fromHeader: true }}>
-					{i18n.lbl_Login}
-				</Link>
-				<Link
-					className="joinBtn"
-					to={path.join.root}
-					state={{ fromHeader: true }}>
-					{i18n.lbl_JoinNow}
-				</Link>
-			</div>
-		);
-	}
-
-	return content;
-};
-
-const HeaderInfo = ({ userName }) => {
+const HeaderInfo = ({ userInfo }) => {
 	return (
 		<div className="headerInfo">
-			<Link className="MemberID" to={path.profile.root}>
-				{userName}
-				<span className="icon icon-arrow_drop_down" />
-			</Link>
+			{userInfo.isLogin ? (
+				<Link className="MemberID" to={path.profile.root}>
+					{userInfo.userName}
+				</Link>
+			) : null}
 		</div>
 	);
 };
 
-HeaderInfo.defaultProps = {
-	userName: ""
-};
-
 HeaderInfo.propTypes = {
-	userName: PropTypes.string
+	userInfo: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
 Header.defaultProps = {
