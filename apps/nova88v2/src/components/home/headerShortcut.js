@@ -8,7 +8,7 @@ import useGetBalance from "../hook/useGetMainBalance";
 import useGetTpBalance from "../hook/useGetTpBalance";
 import path from "../../path";
 
-const HeaderShortcut = ({ i18n, userInfo, showingShortcut }) => {
+const HeaderShortcut = ({ i18n, userInfo }) => {
 	const [showingBalance, setShowingBalance] = useState(true);
 	const { mainWalletInfo, GetBalance } = useGetBalance({
 		isLogin: userInfo.isLogin
@@ -36,7 +36,7 @@ const HeaderShortcut = ({ i18n, userInfo, showingShortcut }) => {
 	};
 
 	return (
-		<div className={`submenu${showingShortcut ? " active" : ""}`}>
+		<div className="submenu active">
 			<div className="Balance">
 				<button
 					className={
@@ -80,8 +80,7 @@ const HeaderShortcut = ({ i18n, userInfo, showingShortcut }) => {
 
 HeaderShortcut.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
-	showingShortcut: PropTypes.bool.isRequired
+	userInfo: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
 export default HeaderShortcut;
