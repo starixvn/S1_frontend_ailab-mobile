@@ -41,12 +41,12 @@ import casino_ICG from "../styles/img/casino_ICG.jpg";
 import fish_DBF from "../styles/img/fish_DBF.jpg";
 import fish_FOS from "../styles/img/fish_FOS.jpg";
 import fish_TAP from "../styles/img/fish_TAP.jpg";
-import fish_TOS from "../styles/img/fish_TOS.jpg";
+// import fish_TOS from "../styles/img/fish_TOS.jpg";
 import fishing_CQ9_AB3 from "../styles/img/fish_paradise.jpg";
-import fishing_CQ9_AT05 from "../styles/img/fish_luckyfishing.jpg";
+// import fishing_CQ9_AT05 from "../styles/img/fish_luckyfishing.jpg";
 import fishing_CQ9_AT01 from "../styles/img/fish_oneshotfishing.jpg";
-import fishing_CQ9_AT06 from "../styles/img/fish_watermarginfishing.jpg";
-import fishing_CQ9_AT04 from "../styles/img/fish_thunderfighter.jpg";
+// import fishing_CQ9_AT06 from "../styles/img/fish_watermarginfishing.jpg";
+// import fishing_CQ9_AT04 from "../styles/img/fish_thunderfighter.jpg";
 
 import { defPopBoxType } from "../components/common/popbox";
 import { isEventPeriod } from "../components/common/common";
@@ -116,6 +116,11 @@ const gameList = ({ langId }) => [
 		translateKey: "lbl_LiveCasino",
 		comingSoonImg: Coming_soon,
 		items: [
+			{
+				...defGameInfo.LIVEcasinoPlayTech,
+				img: LIVEcasino_WM,
+				useGotoGame: true
+			},
 			{
 				...defGameInfo.LIVEcasinoN2,
 				img: LIVEcasino_N2,
@@ -484,6 +489,7 @@ export const defGameInfo = {
 	LIVEcasinoMW: { gameId: 105, tpId: 5 },
 	LIVEcasinoWM: { gameId: 20, tpId: 20 },
 	LIVEcasinoN2: { tpId: 28 },
+	LIVEcasinoPlayTech: { tpId: 27 },
 	Casino_ow: { gameId: 208, tpId: 1 },
 	Casino_All: { tpId: 0 },
 	Casino_PP: { tpId: 5 },

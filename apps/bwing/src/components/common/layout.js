@@ -224,9 +224,6 @@ class RotationHint extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { rotateClass: this.rotationChange() };
-	}
-
-	UNSAFE_componentWillMount() {
 		window.removeEventListener("orientationchange", this.OnRotate);
 	}
 
