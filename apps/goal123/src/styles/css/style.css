@@ -1401,6 +1401,13 @@ footer > a.open .circleAnimation + span {
           justify-content: center;
 }
 
+.main.ranking {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  background: url(../img/ranking/bg-m.jpg) no-repeat top center/auto 100%;
+}
+
 .avatar {
   width: -webkit-min-content;
   width: -moz-min-content;
@@ -6091,5 +6098,288 @@ span.important {
 
 .vipBanner img {
   max-width: 100%;
+}
+
+.topBtn {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.topBtn button {
+  color: #ffffff;
+  padding: 4px;
+  border: 1px solid #fab715;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-right: 1vw;
+}
+
+.topBtn button:last-child {
+  margin: 0;
+}
+
+.topBtn button.open {
+  background-color: #fab715;
+}
+
+.rankContent {
+  margin-top: 20px;
+  display: none;
+  text-align: center;
+}
+
+.rankContent.open {
+  display: block;
+}
+
+.rankContent .title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fab715;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.rankContent .title.xs {
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.rankContent .rankList {
+  color: #ffffff;
+  margin-top: 20px;
+  display: none;
+}
+
+.rankContent .rankList.open {
+  display: block;
+}
+
+.rankContent .rankList ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 12px 5px;
+  font-size: 10px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.rankContent .rankList ul > div {
+  width: 100%;
+}
+
+.rankContent .rankList ul > div.timeLine {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #014C57;
+  height: 3vw;
+  border-radius: 9vw;
+  margin: 35vw 0 9vw;
+}
+
+.rankContent .rankList ul > div.timeLine > div {
+  width: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  position: relative;
+  text-align: left;
+}
+
+.rankContent .rankList ul > div.timeLine > div:before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  border-radius: 30px;
+  display: block;
+}
+
+.rankContent .rankList ul > div.timeLine > div:nth-child(2) > div {
+  z-index: 2;
+}
+
+.rankContent .rankList ul > div.timeLine > div:nth-child(3) > div {
+  z-index: 1;
+  top: -24vw;
+}
+
+.rankContent .rankList ul > div.timeLine > div:nth-child(4) > div {
+  top: -12vw;
+}
+
+.rankContent .rankList ul > div.timeLine > div > div {
+  white-space: nowrap;
+  position: absolute;
+  bottom: 4vw;
+  line-height: normal;
+  padding: 1vw 0 2vw 1vw;
+  background: #ffffff;
+  color: #016F80;
+  font-weight: bold;
+  margin-left: -15vw;
+  height: 8vw;
+  top: -36vw;
+}
+
+.rankContent .rankList ul > div.timeLine > div > div:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5.5vw 0 5.5vw 3vw;
+  border-color: transparent transparent transparent #ffffff;
+  position: absolute;
+  top: 0;
+  right: -3vw;
+}
+
+.rankContent .rankList ul > div.timeLine > div > div > div {
+  color: #fab617;
+}
+
+.rankContent .rankList ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 10px;
+}
+
+.rankContent .rankList ul li:last-child {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding-right: 10px;
+}
+
+.rankContent .rankList ul li img {
+  width: auto;
+  height: 30px;
+  margin-right: 5px;
+}
+
+.rankContent .rankList ul:nth-child(n+2) {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid #fab715;
+}
+
+.rankContent .rankList ul.mine {
+  background-color: rgba(250, 182, 23, 0.8);
+  color: #ffffff;
+  padding: 15px 5px;
+}
+
+.rankContent .message {
+  color: #ffffff;
+  font-size: 10px;
+  margin-top: 5px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 2px;
+}
+
+.rankContent .dateSelector {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.rankContent .dateSelector button {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border: 1px solid #fab715;
+  color: #ffffff;
+  padding: 2px;
+  margin: 2px;
+  font-size: 10px;
+}
+
+.rankContent .dateSelector button.open {
+  background-color: #fab715;
+}
+
+.rankContent .more {
+  padding: 5px;
+  color: #fff;
+  border: 1px solid #fab715;
+  background: #fab617;
+  margin-top: 10px;
+  display: block;
+}
+
+.rankContent .filterBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 1vw;
+  margin: 2vw 0 1vw;
+}
+
+.rankContent .filterBtn button {
+  border-radius: 0;
+  border: 1px solid #fab617;
+  padding: 3px;
+}
+
+.rankContent .filterBtn button.open {
+  background-color: #fab617;
+}
+
+.rankContent .text {
+  background: rgba(1, 76, 87, 0.5);
+}
+
+.topInfo {
+  text-align: center;
+}
+
+.topInfo img {
+  width: 90%;
+  max-width: 267px;
+}
+
+.topInfo .highest {
+  border: 1px solid #fab715;
+  padding: 10px;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.topInfo .highest span {
+  color: #fab715;
+  padding-top: 10px;
+  margin-top: 10px;
+  border-top: 1px solid #f72626;
+  display: block;
+}
+
+.topInfo .highest.person {
+  font-size: 12px;
+  color: #ffffff;
+}
+
+.topInfo .highest.person .score {
+  color: #fab715;
+  font-size: 18px;
+  font-weight: bold;
 }
 /*# sourceMappingURL=style.css.map */

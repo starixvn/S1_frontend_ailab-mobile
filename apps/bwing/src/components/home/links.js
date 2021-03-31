@@ -118,7 +118,7 @@ const ContactUs = ({ i18n, langId }) => {
 const defPlatform = [
 	"saba",
 	"ab",
-	// "yl",
+	"yl",
 	"ag",
 	"gp",
 	"dg",
@@ -132,7 +132,8 @@ const defPlatform = [
 	"cq9",
 	"one789",
 	"icg",
-	"v8"
+	"v8",
+	"n2live"
 ];
 
 const Platforms = ({ i18n }) => {

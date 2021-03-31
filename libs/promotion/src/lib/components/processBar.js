@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
+import { ReloadSpin } from "@ailab-mobile/common";
 import { defPromotionType, defPromoStatus } from "../common/def";
 import { number_format } from "../common/common";
-import { ReloadSpin } from "@ailab-mobile/common";
 import { configContext } from "../common/context";
 
 export default ({
@@ -23,7 +23,7 @@ export default ({
 		promotionType !== defPromotionType.cashback &&
 		promotionType !== defPromotionType.rebate
 	) {
-		let percentage =
+		const percentage =
 			status === defPromoStatus.Fulfill || custTurnOver >= custRollOver
 				? 100
 				: ((custTurnOver / custRollOver) * 100).toFixed(2);
@@ -43,13 +43,13 @@ export default ({
 					<div className="bar">
 						<div
 							className="progress"
-							style={{ width: `${percentage}%` }}></div>
+							style={{ width: `${percentage}%` }}
+						/>
 					</div>
 					<div className="percentage">{percentage}%</div>
 				</div>
 			</div>
 		);
-	} else {
-		return null;
 	}
+	return null;
 };

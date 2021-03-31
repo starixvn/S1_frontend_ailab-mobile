@@ -172,9 +172,6 @@ header > a > img {
 }
 
 header .Join, header .Login {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -192,10 +189,7 @@ header .Join, header .Login {
   -webkit-transition: 0.7s;
   transition: 0.7s;
   opacity: 0;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  pointer-events: none;
+  overflow-y: scroll;
 }
 
 header .Join.open, header .Login.open {
@@ -226,7 +220,7 @@ header .Join > .close, header .Login > .close {
 
 header .Join > img, header .Login > img {
   width: 40vw;
-  margin: 3vw auto;
+  margin: 3vw calc(50% - 20vw);
 }
 
 header .Join .title, header .Login .title {
@@ -317,6 +311,7 @@ header .Join button, header .Login button {
   border-radius: 3px;
   color: #fff;
   padding: 3vw;
+  width: 100%;
 }
 
 header .Join .Terms, header .Login .Terms {
@@ -365,6 +360,15 @@ header .Join .Terms input[type="checkbox"] + label > div, header .Login .Terms i
 
 header .Join .Terms input[type="checkbox"]:checked + label > div, header .Login .Terms input[type="checkbox"]:checked + label > div {
   background: #F77A00;
+}
+
+header .Login {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 header .headerInfo {
@@ -1782,6 +1786,10 @@ footer > a.open .circleAnimation + span {
   border: 1px solid #F77A00;
 }
 
+.btn-group button.darkGray, .btn-group a.darkGray {
+  background: #666;
+}
+
 .bankAccount {
   margin: 1vw 0;
 }
@@ -2237,18 +2245,22 @@ input {
 
 input::-webkit-input-placeholder {
   color: #fff;
+  text-align: left;
 }
 
 input:-ms-input-placeholder {
   color: #fff;
+  text-align: left;
 }
 
 input::-ms-input-placeholder {
   color: #fff;
+  text-align: left;
 }
 
 input::placeholder {
   color: #fff;
+  text-align: left;
 }
 
 input[placeholder="Wallet Address"] {
@@ -4589,6 +4601,7 @@ span.important {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  background: url(https://image.n88media.com/SiteSkin/img/body-bg.jpg) no-repeat top center/auto 100%;
 }
 
 .ranking .filterBtn {
@@ -4727,6 +4740,86 @@ span.important {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.ranking .rankList ul > div {
+  width: 100%;
+}
+
+.ranking .rankList ul > div.timeLine {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #003b44;
+  height: 3vw;
+  border-radius: 9vw;
+  margin: 35vw 0 9vw;
+}
+
+.ranking .rankList ul > div.timeLine > div {
+  width: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  position: relative;
+  text-align: left;
+}
+
+.ranking .rankList ul > div.timeLine > div:before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: #19a4bb;
+  border-radius: 30px;
+  display: block;
+}
+
+.ranking .rankList ul > div.timeLine > div:nth-child(2) > div {
+  z-index: 2;
+}
+
+.ranking .rankList ul > div.timeLine > div:nth-child(3) > div {
+  z-index: 1;
+  top: -24vw;
+}
+
+.ranking .rankList ul > div.timeLine > div:nth-child(4) > div {
+  top: -12vw;
+}
+
+.ranking .rankList ul > div.timeLine > div > div {
+  white-space: nowrap;
+  position: absolute;
+  bottom: 4vw;
+  line-height: normal;
+  padding: 1vw 0 2vw 1vw;
+  background: #003b44;
+  color: white;
+  font-weight: bold;
+  margin-left: -15vw;
+  height: 8vw;
+  top: -36vw;
+}
+
+.ranking .rankList ul > div.timeLine > div > div:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5.5vw 0 5.5vw 3vw;
+  border-color: transparent transparent transparent #003b44;
+  position: absolute;
+  top: 0;
+  right: -3vw;
+}
+
+.ranking .rankList ul > div.timeLine > div > div > div {
+  color: #fab617;
 }
 
 .ranking .rankList ul li {
@@ -4736,13 +4829,9 @@ span.important {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 4vw;
   height: 10vw;
 }
 
@@ -4770,7 +4859,7 @@ span.important {
 }
 
 .ranking .rankList ul:nth-child(n+2) {
-  background: rgba(0, 0, 0, 0.5);
+  background: #00616f;
   border: 1px solid transparent;
   border-width: 0 0 1px 0;
   -o-border-image: linear-gradient(to right, #f5a14f, #F77A00);
@@ -4780,11 +4869,21 @@ span.important {
 }
 
 .ranking .rankList ul:nth-child(n+2) li {
-  height: 15vw;
+  height: auto;
+  padding: 1vw 2vw 1vw 1vw;
+  min-height: 15vw;
 }
 
 .ranking .rankList ul.userRank {
-  background: rgba(247, 122, 0, 0.5);
+  background: rgba(247, 122, 0, 0.7);
+}
+
+.ranking .rankEvent .rankList {
+  display: none;
+}
+
+.ranking .rankEvent .rankList.open {
+  display: block;
 }
 
 .ranking .rankEvent .rankList ul:nth-child(2) li {
@@ -4795,12 +4894,46 @@ span.important {
   font-weight: normal;
 }
 
+.finalTour {
+  -webkit-animation: finaltour 1s infinite;
+          animation: finaltour 1s infinite;
+}
+
+@-webkit-keyframes finaltour {
+  0% {
+    background: #003b44;
+  }
+  50% {
+    background: #00616f;
+  }
+  100% {
+    background: #003b44;
+  }
+}
+
+@keyframes finaltour {
+  0% {
+    background: #003b44;
+  }
+  50% {
+    background: #00616f;
+  }
+  100% {
+    background: #003b44;
+  }
+}
+
 .rankEvent, .champion, .records {
   display: none;
 }
 
 .rankEvent.open, .champion.open, .records.open {
   display: block;
+}
+
+.rankEvent > .text, .champion > .text, .records > .text {
+  background: rgba(0, 59, 68, 0.8);
+  padding: 1vw;
 }
 
 button.icon.icon-ranking, span.icon.icon-ranking {
@@ -5691,6 +5824,7 @@ span.icon.icon-ranking:after {
   font-size: 3vw;
   background: -webkit-linear-gradient(top, #f0b52d 30%, #fffccf 40%, #e2a625 65%, #ff6c00 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 0.5px #ffff9b;
   -webkit-filter: drop-shadow(0px 3px 1px #922707);
@@ -5938,7 +6072,6 @@ span.icon.icon-ranking:after {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-right: 2vw;
 }
 
 .depositModule_mobile .selectModule input[type="radio"]:checked + label div, .depositModule_online .selectModule input[type="radio"]:checked + label div, .depositModule_local .selectModule input[type="radio"]:checked + label div {
@@ -5954,11 +6087,23 @@ span.icon.icon-ranking:after {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 50%;
+  width: 100%;
   margin: 2vw 0;
+}
+
+.depositModule_mobile .selectModule > div .bank, .depositModule_online .selectModule > div .bank, .depositModule_local .selectModule > div .bank {
+  color: white;
+}
+
+.depositModule_mobile .selectModule > div .bank > div, .depositModule_online .selectModule > div .bank > div, .depositModule_local .selectModule > div .bank > div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 50vw;
+}
+
+.depositModule_mobile .selectModule > div .bank > div:last-child, .depositModule_online .selectModule > div .bank > div:last-child, .depositModule_local .selectModule > div .bank > div:last-child {
+  color: #F77A00;
 }
 
 .depositModule_mobile .selectModule > div.info, .depositModule_online .selectModule > div.info, .depositModule_local .selectModule > div.info {
@@ -5979,10 +6124,11 @@ span.icon.icon-ranking:after {
 }
 
 .depositModule_mobile .selectModule > div .bankName, .depositModule_online .selectModule > div .bankName, .depositModule_local .selectModule > div .bankName {
-  width: 20vw;
   background: white;
   border-radius: 5px;
   padding: 0.5vw 1vw;
+  width: 20vw;
+  margin: 0 2vw;
 }
 
 .depositModule_mobile .selectModule > div .bankName img, .depositModule_online .selectModule > div .bankName img, .depositModule_local .selectModule > div .bankName img {
@@ -5995,8 +6141,9 @@ span.icon.icon-ranking:after {
 }
 
 .depositModule_mobile .inputBox input, .depositModule_online .inputBox input, .depositModule_local .inputBox input {
-  padding: 2vw;
+  padding: 2vw 11vw 2vw;
   border-radius: 0;
+  text-align: right;
 }
 
 .depositModule_mobile .inputBox input::-webkit-input-placeholder, .depositModule_online .inputBox input::-webkit-input-placeholder, .depositModule_local .inputBox input::-webkit-input-placeholder {
@@ -6019,19 +6166,13 @@ span.icon.icon-ranking:after {
   margin-left: 2.5vw;
 }
 
-.depositModule_mobile .btn-group, .depositModule_online .btn-group, .depositModule_local .btn-group {
-  width: auto;
-  display: unset;
+.icon-rate {
+  position: absolute;
+  right: 2vw;
+  top: 2vw;
 }
 
-.depositModule_mobile .btn-group button, .depositModule_online .btn-group button, .depositModule_local .btn-group button {
-  width: 50vw;
-  margin: auto;
-}
-
-.depositModule_mobile + .btn-group, .depositModule_online + .btn-group, .depositModule_local + .btn-group {
-  width: 110%;
-  margin-left: -5%;
-  margin: 3vw 0 3vw -5%;
+.icon-rate::before {
+  content: "('000)";
 }
 /*# sourceMappingURL=style.css.map */

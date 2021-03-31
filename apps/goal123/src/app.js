@@ -77,6 +77,8 @@ import FriendReferral from "./pages/referral";
 import ReferFriends from "./components/referral/referFriends";
 import ReferralHistory from "./components/referral/referral.history";
 
+import VIP from "./pages/vip";
+
 const Index = () => {
 	const history = createHistory(window);
 	return (
@@ -181,6 +183,7 @@ const Index = () => {
 						<Ranking path={path.leaderBoard.root} />
 						<AngPow path={path.angPow.root} />
 						<MysteryBox path={path.mysteryBox.root} />
+						<VIP path={path.vip.root} />
 					</Router>
 				</Layout>
 			</LocationProvider>

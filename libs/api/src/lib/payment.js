@@ -16,6 +16,9 @@ export class PaymentAPI extends BaseAPI {
 	GetOnlineBankInfoSysList = ({ payId }) =>
 		this.paymentRequest.post("/GetOnlineBankInfoSysList", { payId });
 
+	GetLocalBankInfo = ({ sysId }) =>
+		this.paymentRequest.post("/GetLocalBankInfo", { sysId });
+
 	GetOnlineBankInfo = ({ payId, sysId }) =>
 		this.paymentRequest.post("/GetOnlineBankInfo", { payId, sysId });
 
@@ -130,4 +133,7 @@ export class PaymentAPI extends BaseAPI {
 			PageNumber,
 			PageSize
 		});
+
+	GetLocalBankInfo = ({ sysId }) =>
+		this.paymentRequest.post("/GetLocalBankInfo", { sysId });
 }

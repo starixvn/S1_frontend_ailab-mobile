@@ -23,10 +23,12 @@ const SingleRecord = ({
 			</div>
 			<div>
 				<div>{i18n?.lbl_DepositAmount}</div>
-				<div>{`${i18n?.[`Currency_${currencyId}`]} ${number_format(
-					depositAmount,
-					formatSetting
-				)}`}</div>
+				<div>
+					{`${i18n?.[`Currency_${currencyId}`]} ${number_format(
+						depositAmount,
+						formatSetting
+					)}`}
+				</div>
 			</div>
 		</div>
 	) : null;
