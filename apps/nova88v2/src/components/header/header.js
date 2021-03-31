@@ -44,10 +44,7 @@ const Header = ({
 					navBar={navBar}
 				/>
 			) : (
-				<HeaderBtn
-					userInfo={userInfo}
-					setShowingShortcut={setShowingShortcut}
-				/>
+				<HeaderBtn userInfo={userInfo} />
 			)}
 			{filter || null}
 			{children}
@@ -55,17 +52,12 @@ const Header = ({
 	);
 };
 
-const HeaderBtn = ({ userInfo, setShowingShortcut }) => {
+const HeaderBtn = ({ userInfo }) => {
 	const { i18n } = useContext(i18nContext);
 
 	let content = null;
 	if (userInfo?.isLogin) {
-		content = (
-			<HeaderInfo
-				userName={userInfo?.userName}
-				setShowingShortcut={setShowingShortcut}
-			/>
-		);
+		content = <HeaderInfo userName={userInfo?.userName} />;
 	} else {
 		content = (
 			<div className="headerButton">
@@ -88,29 +80,23 @@ const HeaderBtn = ({ userInfo, setShowingShortcut }) => {
 	return content;
 };
 
-const HeaderInfo = ({ userName, setShowingShortcut }) => {
-	const showShortcut = () => {
-		setShowingShortcut(prev => !prev);
-	};
-
+const HeaderInfo = ({ userName }) => {
 	return (
-		<div className="headerInfo" onClick={showShortcut}>
-			<button className="MemberID">
+		<div className="headerInfo">
+			<Link className="MemberID" to={path.profile.root}>
 				{userName}
 				<span className="icon icon-arrow_drop_down" />
-			</button>
+			</Link>
 		</div>
 	);
 };
 
 HeaderInfo.defaultProps = {
-	userName: "",
-	setShowingShortcut: () => null
+	userName: ""
 };
 
 HeaderInfo.propTypes = {
-	userName: PropTypes.string,
-	setShowingShortcut: PropTypes.func
+	userName: PropTypes.string
 };
 
 Header.defaultProps = {
@@ -139,12 +125,16 @@ Header.propTypes = {
 
 HeaderTitle.defaultProps = {
 	title: false,
-	link: ""
+	link: "",
+	titleClass: null,
+	navBar: null
 };
 
 HeaderTitle.propTypes = {
 	title: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-	link: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+	link: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+	titleClass: PropTypes.string,
+	navBar: PropTypes.node
 };
 
 export default Header;

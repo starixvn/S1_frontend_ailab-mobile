@@ -13,6 +13,8 @@ export default ({
 	func_CallBack,
 	filterType
 }) => {
+	if (promotionInfo.promotionType === defPromotionType.rebate) return null;
+
 	const { path, userInfo, i18n, api, formatSetting } = useContext(
 		configContext
 	);
