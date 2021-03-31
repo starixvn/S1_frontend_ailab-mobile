@@ -9,7 +9,6 @@ import {
 import moment from "moment";
 import { number_format, isConvert } from "../common/common";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
-import ReloadSpin from "../common/reloadSpin";
 import GoTopBtn from "../common/goTopBtn";
 import api from "../../service/api";
 import Detail from "./historyDetail";
@@ -20,8 +19,7 @@ const Panel = ({
 	pageInfo,
 	setPageInfo,
 	filterData,
-	clickSubmit,
-	submitFilter
+	clickSubmit
 }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
@@ -156,7 +154,7 @@ const Panel = ({
 		infoList = (
 			<div className="infoList">
 				{arr}
-				<GoTopBtn />
+				{history.length > 2 ? <GoTopBtn /> : null}
 			</div>
 		);
 	} else {
@@ -169,20 +167,7 @@ const Panel = ({
 
 	let subContent = null;
 	if (history) {
-		subContent = (
-			<div className="recent active">
-				{/* <div className="recentTransactions">
-					<ReloadSpin
-						func={submitFilter.bind(this, {
-							startDay: filterData?.StartDate,
-							endDay: filterData?.EndDate,
-							isUnix: true
-						})}
-					/>
-				</div> */}
-				{infoList}
-			</div>
-		);
+		subContent = <div className="recent active">{infoList}</div>;
 	}
 
 	return subContent;
@@ -194,8 +179,7 @@ Panel.defaultProps = {
 	pageInfo: { pageNumber: 0, totalPages: 0 },
 	setPageInfo: null,
 	filterData: {},
-	clickSubmit: null,
-	submitFilter: null
+	clickSubmit: null
 };
 
 Panel.propTypes = {
@@ -206,8 +190,7 @@ Panel.propTypes = {
 	filterData: PropTypes.objectOf(
 		PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 	),
-	clickSubmit: PropTypes.bool,
-	submitFilter: PropTypes.func
+	clickSubmit: PropTypes.bool
 };
 
 export default Panel;

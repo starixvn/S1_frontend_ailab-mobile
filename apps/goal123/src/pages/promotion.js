@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import { Promotion, defNav, defRuleCols } from "@ailab-mobile/promotion";
+import { Promotion, defRuleCols } from "@ailab-mobile/promotion";
 import config from "Config";
 import path from "Path";
 import { Promotion as uiSetting } from "UISetting";
 import { userInfoContext, i18nContext, popBoxContext } from "Context";
+import staticList from "../datas/promotionList";
 
 export default ({ location }) => {
 	const { userInfo } = useContext(userInfoContext);
@@ -11,6 +12,7 @@ export default ({ location }) => {
 	const { setPopBox } = useContext(popBoxContext);
 	return (
 		<Promotion
+			staticList={staticList}
 			config={config}
 			uiSetting={uiSetting}
 			path={path}
@@ -23,7 +25,7 @@ export default ({ location }) => {
 				formatRequired: false
 			}}
 			location={location}
-			navBar={[defNav.All, defNav.FirstDeposit, defNav.ReDeposit]}
+			// navBar={[defNav.All, defNav.FirstDeposit, defNav.ReDeposit]}
 			ruleCols={[
 				defRuleCols.minAmount,
 				defRuleCols.rollOver,

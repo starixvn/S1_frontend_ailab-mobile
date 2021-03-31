@@ -4,10 +4,9 @@ import PropTypes from "prop-types";
 import { Link } from "@Router";
 import Detail from "./historyDetail";
 import { isConvert, number_format } from "../common/common";
-import ReloadSpin from "../common/reloadSpin";
 import path from "../../path";
 
-const RecentDatas = ({ datas, ReloadFunc }) => {
+const RecentDatas = ({ datas }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const _isConvert = isConvert(userInfo.currencyId);
@@ -54,12 +53,7 @@ const RecentDatas = ({ datas, ReloadFunc }) => {
 	if (hasData) {
 		dataContent = (
 			<>
-				<div className="infoList">
-					<div className="recentTransactions">
-						<ReloadSpin func={ReloadFunc} />
-					</div>
-					{arr}
-				</div>
+				<div className="infoList">{arr}</div>
 				<div className="btn-group">
 					<Link
 						to={path.transferHistory.root}
@@ -101,8 +95,7 @@ RecentDatas.defaultProps = {
 };
 
 RecentDatas.propTypes = {
-	datas: PropTypes.arrayOf(PropTypes.object),
-	ReloadFunc: PropTypes.func.isRequired
+	datas: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default RecentDatas;

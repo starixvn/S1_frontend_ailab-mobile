@@ -1,23 +1,29 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { userInfoContext, i18nContext } from "Context";
 import { Link } from "@Router";
-import ReloadSpin from "../common/reloadSpin";
-import { number_format, isConvert } from "../common/common";
-import { tpWalletsListType } from "../transfer/transfer.def";
-import useGetBalance from "../hook/useGetMainBalance";
-import useGetTpBalance from "../hook/useGetTpBalance";
 import Logo from "../common/logo";
 import path from "../../path";
 
-const HeaderTitle = ({ title = "", link = "" }) =>
+const HeaderTitle = ({ title = "", link = "", titleClass = "title", navBar }) =>
 	title ? (
-		<div className="title">
-			{link} {title}
-		</div>
+		<>
+			<div className={titleClass}>
+				{link} {title}
+			</div>
+			{navBar}
+		</>
 	) : null;
 
-const Header = ({ title, hideLogo, filter, children, link }) => {
+const Header = ({
+	title,
+	hideLogo,
+	filter,
+	children,
+	link,
+	titleClass = "title",
+	navBar
+}) => {
 	const { userInfo } = useContext(userInfoContext);
 	const headerClassName = !title ? "" : "header";
 
@@ -29,7 +35,12 @@ const Header = ({ title, hideLogo, filter, children, link }) => {
 				</a>
 			)}
 			{title ? (
-				<HeaderTitle title={title} link={link} />
+				<HeaderTitle
+					title={title}
+					link={link}
+					titleClass={titleClass}
+					navBar={navBar}
+				/>
 			) : (
 				<HeaderBtn userInfo={userInfo} />
 			)}
@@ -41,47 +52,10 @@ const Header = ({ title, hideLogo, filter, children, link }) => {
 
 const HeaderBtn = ({ userInfo }) => {
 	const { i18n } = useContext(i18nContext);
-	const { mainWalletInfo, GetBalance } = useGetBalance({
-		isLogin: userInfo.isLogin
-	});
-	const { tpWalletsList, GetTpWalletList } = useGetTpBalance({
-		isLogin: userInfo.isLogin,
-		listType: tpWalletsListType.allWallets
-	});
-
-	const isMountedRef = useRef(null);
-	useEffect(() => {
-		isMountedRef.current = true;
-		return () => {
-			isMountedRef.current = false;
-		};
-	});
-
-	const clickReloadSpin = () => {
-		GetBalance();
-		GetTpWalletList();
-	};
-
-	const otherWalletBalance = tpWalletsList?.reduce((prev, curr) => {
-		return prev + curr.balance;
-	}, 0);
-	const allWalletBalance = mainWalletInfo.balance + otherWalletBalance;
-	const balance = !allWalletBalance
-		? 0
-		: number_format(allWalletBalance, isConvert(userInfo.currencyId));
 
 	let content = null;
 	if (userInfo?.isLogin) {
-		content = (
-			<>
-				<HeaderInfo
-					userName={userInfo?.userName}
-					currency={i18n[`Currency_${userInfo.currencyId}`]}
-					amount={balance}
-				/>
-				<ReloadSpin func={clickReloadSpin} />
-			</>
-		);
+		content = <HeaderInfo userName={userInfo?.userName} />;
 	} else {
 		content = (
 			<div className="headerButton">
@@ -104,30 +78,23 @@ const HeaderBtn = ({ userInfo }) => {
 	return content;
 };
 
-const HeaderInfo = props => {
+const HeaderInfo = ({ userName }) => {
 	return (
 		<div className="headerInfo">
-			<div className="MemberID">
-				{props.userName}
+			<Link className="MemberID" to={path.profile.root}>
+				{userName}
 				<span className="icon icon-arrow_drop_down" />
-			</div>
-			<div className="Balance">
-				{props.currency} {props.amount}
-			</div>
+			</Link>
 		</div>
 	);
 };
 
 HeaderInfo.defaultProps = {
-	userName: "",
-	currency: null,
-	amount: 0
+	userName: ""
 };
 
 HeaderInfo.propTypes = {
-	userName: PropTypes.string,
-	currency: PropTypes.string,
-	amount: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+	userName: PropTypes.string
 };
 
 Header.defaultProps = {
@@ -135,25 +102,33 @@ Header.defaultProps = {
 	title: null,
 	hideLogo: false,
 	link: null,
-	children: null
+	children: null,
+	titleClass: undefined,
+	navBar: null
 };
 
 Header.propTypes = {
 	filter: PropTypes.node,
-	title: PropTypes.string,
+	title: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 	hideLogo: PropTypes.bool,
 	link: PropTypes.node,
-	children: PropTypes.node
+	children: PropTypes.node,
+	titleClass: PropTypes.string,
+	navBar: PropTypes.node
 };
 
 HeaderTitle.defaultProps = {
-	title: null,
-	link: null
+	title: false,
+	link: "",
+	titleClass: null,
+	navBar: null
 };
 
 HeaderTitle.propTypes = {
-	title: PropTypes.string,
-	link: PropTypes.string
+	title: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+	link: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+	titleClass: PropTypes.string,
+	navBar: PropTypes.node
 };
 
 export default Header;

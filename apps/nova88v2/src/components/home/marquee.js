@@ -1,27 +1,16 @@
 import React, { Component, useContext, createRef } from "react";
 import PropTypes from "prop-types";
-import {
-	popBoxContext,
-	userInfoContext,
-	navContext,
-	defNavPanel,
-	i18nContext
-} from "Context";
+import { popBoxContext, userInfoContext, i18nContext } from "Context";
 import { useNavigate } from "@reach/router";
 import { GET_LANG_ID } from "../../service/language";
 import path from "../../path";
 import api from "../../service/api";
+import useHandleLogin from "../hook/useHandleLogin";
 
 const Panel = () => {
 	const navigate = useNavigate();
-	const { nav, setNav } = useContext(navContext);
 	const { i18n } = useContext(i18nContext);
-
-	const OpenLoginPanel = () => {
-		setNav(() => {
-			return defNavPanel.login;
-		});
-	};
+	const { handleLogin } = useHandleLogin();
 
 	const { popBox, setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -29,8 +18,7 @@ const Panel = () => {
 
 	return (
 		<Marquee
-			nav={nav}
-			OpenLoginPanel={OpenLoginPanel}
+			handleLogin={handleLogin}
 			setPopBox={setPopBox}
 			userIsLogin={userInfo.isLogin}
 			langId={langId}
@@ -166,7 +154,7 @@ class Marquee extends Component {
 					isOpen: false
 				});
 				this.props.navigate(
-					`/${this.props.langId}/${path.message.root}/${path.message.sub.announcement.root}`
+					`/${this.props.langId}/${path.announcement.root}`
 				);
 			};
 			this.props.setPopBox({
@@ -183,7 +171,7 @@ class Marquee extends Component {
 				)
 			});
 		} else {
-			this.props.OpenLoginPanel();
+			this.props.handleLogin();
 		}
 	};
 
@@ -225,7 +213,10 @@ Marquee.propTypes = {
 	langId: PropTypes.string,
 	userIsLogin: PropTypes.bool,
 	setPopBox: PropTypes.func.isRequired,
-	popBoxIsOpen: PropTypes.bool.isRequired
+	popBoxIsOpen: PropTypes.bool.isRequired,
+	handleLogin: PropTypes.func.isRequired,
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	navigate: PropTypes.func.isRequired
 };
 
 export default Panel;

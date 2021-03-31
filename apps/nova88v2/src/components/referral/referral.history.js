@@ -2,7 +2,6 @@ import React, { useState, useContext, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
 import { isConvert } from "../common/common";
-import ReloadSpin from "../common/reloadSpin";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import api from "../../service/api";
 import { Detail } from "./referral.history.detail";
@@ -14,8 +13,7 @@ const Panel = ({
 	pageInfo,
 	setPageInfo,
 	filterData,
-	clickSubmit,
-	submitFilter
+	clickSubmit
 }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
@@ -64,19 +62,10 @@ const Panel = ({
 
 	return history ? (
 		<div className="recent active">
-			{/* <div className="recentTransactions">
-				<ReloadSpin
-					func={submitFilter.bind(this, {
-						startDay: filterData?.StartDate,
-						endDay: filterData?.EndDate,
-						isUnix: true
-					})}
-				/>
-			</div> */}
 			{history.length > 0 ? (
 				<div className="infoList">
 					{arr}
-					<GoTopBtn />
+					{history.length > 2 ? <GoTopBtn /> : null}
 				</div>
 			) : (
 				<div className="nodata icon icon-nodata">
@@ -93,8 +82,7 @@ Panel.defaultProps = {
 	pageInfo: { pageNumber: 0, totalPages: 0 },
 	setPageInfo: null,
 	filterData: {},
-	clickSubmit: null,
-	submitFilter: null
+	clickSubmit: null
 };
 
 Panel.propTypes = {
@@ -105,8 +93,7 @@ Panel.propTypes = {
 	filterData: PropTypes.objectOf(
 		PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 	),
-	clickSubmit: PropTypes.bool,
-	submitFilter: PropTypes.func
+	clickSubmit: PropTypes.bool
 };
 
 export default Panel;

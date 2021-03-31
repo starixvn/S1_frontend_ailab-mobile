@@ -52,5 +52,10 @@ export default class BaseAPI {
 			withCredentials: true,
 			baseURL: `${apiUrl}/api/events`
 		});
+
+		this.videoRequest = axios.create({
+			withCredentials: true,
+			baseURL: `${apiUrl}/api/video`
+		});
 	}
 }

@@ -157,7 +157,7 @@ const ByCategory = props => {
 					<div className="recent active">
 						<div className="infoList">{detailArr}</div>
 					</div>
-					<GoTopBtn />
+					{datas.length > 2 ? <GoTopBtn /> : null}
 				</>
 			) : (
 				<div className="nodata icon icon-nodata">

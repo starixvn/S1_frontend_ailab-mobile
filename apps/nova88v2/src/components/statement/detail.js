@@ -170,7 +170,7 @@ const Index = props => {
 						{i18n.lbl_WinlostAmountTotal}：
 						{number_format(totalWinLoss, _isConvert)}
 					</div>
-					<GoTopBtn />
+					{datas.length > 2 ? <GoTopBtn /> : null}
 				</>
 			) : (
 				<div className="nodata icon icon-nodata">

@@ -20,7 +20,7 @@ export default (
 				) {
 					const ClosePopBox = () => {
 						setPopBox({ isOpen: false });
-						navigate(`/${userInfo.langId}/${path.member.root}`);
+						navigate(`/${userInfo.langId}/${path.profile.root}`);
 					};
 
 					setPopBox({

@@ -4,10 +4,9 @@ import { Link } from "@Router";
 import { i18nContext, userInfoContext } from "Context";
 import { isConvert } from "../common/common";
 import Detail from "./historyDetail";
-import ReloadSpin from "../common/reloadSpin";
 import path from "../../path";
 
-const RecentDatas = ({ Datas, SubmitProof, ClickCancel, ReloadFunc }) => {
+const RecentDatas = ({ Datas, SubmitProof, ClickCancel }) => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const [isOpen, setOpen] = useState(false);
@@ -49,10 +48,7 @@ const RecentDatas = ({ Datas, SubmitProof, ClickCancel, ReloadFunc }) => {
 	if (hasData) {
 		dataContent = (
 			<>
-				<div className="infoList">
-					{/* <ReloadSpin func={ReloadFunc} /> */}
-					{rows}
-				</div>
+				<div className="infoList">{rows}</div>
 				<div className="btn-group">
 					<Link
 						to={path.depositHistory.root}
@@ -96,7 +92,6 @@ RecentDatas.defaultProps = {
 RecentDatas.propTypes = {
 	Datas: PropTypes.arrayOf(PropTypes.object),
 	ClickCancel: PropTypes.func.isRequired,
-	ReloadFunc: PropTypes.func.isRequired,
 	SubmitProof: PropTypes.func.isRequired
 };
 

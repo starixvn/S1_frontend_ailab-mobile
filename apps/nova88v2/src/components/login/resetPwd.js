@@ -7,6 +7,7 @@ import { LOGOUT } from "../../service/auth";
 import Layout from "../common/layout";
 import api from "../../service/api";
 import { getUrlParameter, passwordCheck } from "../common/common";
+import Header from "../header/header";
 
 const ResetPwd = () => {
 	const navigate = useNavigate();
@@ -177,8 +178,10 @@ const ResetPwd = () => {
 };
 
 const IndexPage = () => {
+	const { i18n } = useContext(i18nContext);
+	const header = <Header title={i18n.lbl_ResetPassword} hideLogo={true} />;
 	return (
-		<Layout mainClass="main">
+		<Layout mainClass="main" header={header}>
 			<ResetPwd />
 		</Layout>
 	);

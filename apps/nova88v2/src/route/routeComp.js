@@ -55,6 +55,8 @@ import FriendReferral from "../pages/referral";
 import ReferralHistory from "../pages/referralHistory";
 import OneGame from "../pages/oneGame";
 import VIP from "../pages/vip";
+import MysteryBox from "../pages/mysteryBox";
+import Streaming from "../pages/streaming";
 
 const RouteComponents = () => {
 	return (
@@ -66,6 +68,7 @@ const RouteComponents = () => {
 			<ForgetPwd path={`/:langId/${path.forgetPassword.root}`} />
 			<ResetPwd path={`/:langId/${path.resetPassword.root}`} />
 			<Promotion path={`/:langId/${path.promotion.root}`} />
+
 			<PromotionInfo path={`/:langId/${path.promotionInfo.root}`} />
 			<Casino path={`/:langId/${path.casino.root}`} />
 			<Casino path={`/:langId/${path.casino.root}/:tpId`} />
@@ -73,16 +76,6 @@ const RouteComponents = () => {
 			<ContactUs path={`/:langId/${path.contactUs.root}`} />
 			<GameProvider path={`/:langId/${path.gameProvider.root}`} />
 
-			<Whoami path={path.whoami.root} />
-			<Ranking path={`/:langId/${path.ranking.root}`} />
-			<AngPow path={`/:langId/${path.angPow.root}`} />
-
-			<ForgetPwd path={`/:langId/${path.forgetPassword.root}`} />
-			<ResetPwd path={`/:langId/${path.resetPassword.root}`} />
-			<Promotion path={`/:langId/${path.promotion.root}`} />
-			<PromotionInfo path={`/:langId/${path.promotionInfo.root}`} />
-			<Casino path={`/:langId/${path.casino.root}`} />
-			<Casino path={`/:langId/${path.casino.root}/:tpId`} />
 			<Whoami path={path.whoami.root} />
 			<Ranking path={`/:langId/${path.ranking.root}`} />
 			<AngPow path={`/:langId/${path.angPow.root}`} />
@@ -131,7 +124,9 @@ const RouteComponents = () => {
 
 			<OneGame path={`/:langId/${path.oneGame.root}`} />
 			<VIP path={`/:langId/${path.vip.root}`} />
+			<MysteryBox path={`/:langId/${path.mysteryBox.root}`} />
 			{/* <Kiss918 path={`/:langId/${path.kiss918.root}`} /> */}
+			<Streaming path={`/:langId/${path.streaming.root}`} />
 		</Router>
 	);
 };

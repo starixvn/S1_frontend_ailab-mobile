@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { defPrize } from "./def";
+import { defPrize, defEuroTourBtns } from "./def";
+import EuroAgenda from "./euroAgenda";
 
 const langMappingCurr = {
 	en: "MYR",
@@ -13,38 +14,46 @@ export const currCustomMapping = {
 	13: "MYR"
 };
 
-const Prize = ({ currencyId, category, langId, i18n }) => {
+export const Prize = ({ currencyId, category, langId, i18n }) => {
 	const currency = currencyId
 		? currCustomMapping[currencyId] ?? i18n[`Currency_${currencyId}`]
 		: langMappingCurr[langId];
-	return defPrize({ i18n })[currency]
-		? defPrize({ i18n })[currency][category]
-		: defPrize({ i18n }).MYR[category];
+
+	const prize = defPrize();
+	return prize[currency]?.[langId]?.[category] ?? prize.MYR[langId][category];
 };
 
 const PrizeList = ({ userInfo, category, i18n }) => {
 	const { currencyId, langId } = userInfo;
 	const getPrize = Prize({ currencyId, langId, category, i18n });
 
-	const rows = getPrize.map(item => {
+	const rows = getPrize.map((item, index) => {
 		const { rank, prize } = item;
 		let trophy = "";
-		if (+rank === 1 || +rank === 2 || +rank === 3)
-			trophy = "icon icon-trophy";
-		return (
+		if (index < 3) trophy = "icon icon-trophy";
+
+		return index < 9 ? (
 			<ul key={`prize-${category}-${currencyId}-${langId}-${rank}`}>
 				<li className={trophy}>{rank}</li>
 				<li>{prize}</li>
 			</ul>
+		) : (
+			""
 		);
 	});
 
 	return (
-		<div className="rankList">
-			<ul>
-				<li>{i18n.lbl_Ranking}</li>
-				<li>{i18n.lbl_Rewards}</li>
-			</ul>
+		<div className="list active">
+			{category === defEuroTourBtns.MonthlyTournament.value && (
+				<EuroAgenda i18n={i18n} />
+			)}
+			{category !== defEuroTourBtns.MonthlyTournament.value && (
+				<ul>
+					<li>{i18n.lbl_Ranking}</li>
+					<li>{i18n.lbl_Rewards}</li>
+				</ul>
+			)}
+
 			{rows}
 		</div>
 	);

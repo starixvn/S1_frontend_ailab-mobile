@@ -274,33 +274,6 @@ const Panel = () => {
 		}
 	};
 
-	const GetDepositInfoRecent = () => {
-		api.payment.GetDepositInfoRecent().then(
-			res => {
-				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
-						setRecentDatas(res.data.data);
-					} else {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: res.data.message
-						});
-					}
-				}
-			},
-			() => {
-				if (isMountedRef.current) {
-					setPopBox({
-						isOpen: true,
-						title: i18n.lbl_ImportantNote,
-						content: i18n.msg_ApiServerError
-					});
-				}
-			}
-		);
-	};
-
 	return (
 		<>
 			<Tab
@@ -314,7 +287,6 @@ const Panel = () => {
 				Datas={recentDatas}
 				SubmitProof={SubmitProof}
 				ClickCancel={ClickCancel}
-				ReloadFunc={GetDepositInfoRecent}
 			/>
 		</>
 	);

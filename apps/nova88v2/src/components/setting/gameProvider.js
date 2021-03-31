@@ -1,18 +1,18 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { useNavigate } from "@reach/router";
 import path from "../../path";
-import { i18nContext } from "../common/context";
+import { i18nContext, userInfoContext } from "../common/context";
 import { defGameInfo } from "../../datas/productList";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import config from "../../config";
 import Header from "../header/header";
 import { Link } from "../../route/link";
 import api from "../../service/api";
+import Footer from "../common/footer";
+import useHandleLogin from "../hook/useHandleLogin";
 
 const defPlatfrom = [
 	{
-		...defGameInfo.Sports,
-		parameter: { ...defGameInfo.Sports },
+		...defGameInfo.Soccer,
 		imgName: "saba"
 	},
 	{
@@ -29,12 +29,12 @@ const defPlatfrom = [
 	},
 	{
 		...defGameInfo.Casino_JOKER,
+		path: path.casino.root,
 		imgName: "jk"
 	},
 	{
 		...defGameInfo.Casino_GPI,
 		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_GPI },
 		imgName: "gp"
 	},
 	{
@@ -48,25 +48,21 @@ const defPlatfrom = [
 	{
 		...defGameInfo.Casino_YGG,
 		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_YGG },
 		imgName: "yg"
 	},
 	{
 		...defGameInfo.Casino_PP,
 		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_PP },
 		imgName: "pp"
 	},
 	{
 		...defGameInfo.Casino_SG,
 		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_SG },
 		imgName: "sg"
 	},
 	{
 		...defGameInfo.Casino_PG,
 		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_PG },
 		imgName: "pg"
 	},
 	{
@@ -88,13 +84,11 @@ const defPlatfrom = [
 	{
 		...defGameInfo.Casino_CQ9,
 		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_CQ9 },
 		imgName: "cq9"
 	},
 	{
 		...defGameInfo.casino_ICG,
 		path: path.casino.root,
-		parameter: { ...defGameInfo.casino_ICG },
 		imgName: "icg"
 	},
 	// {
@@ -108,10 +102,11 @@ const defPlatfrom = [
 	}
 ];
 
-const GameProvider = ({ langId = "en", isLogin = false, i18n }) => {
-	const navigate = useNavigate();
+const GameProvider = ({ userInfo, i18n }) => {
 	const [showingTpIds, setShowingTpIds] = useState([]);
+	const { handleLogin } = useHandleLogin();
 	const isMountedRef = useRef(null);
+	const { isLogin, langId } = userInfo;
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -142,22 +137,13 @@ const GameProvider = ({ langId = "en", isLogin = false, i18n }) => {
 	}, [isLogin, i18n]);
 
 	const ClickItem = itemInfo => {
-		const { path: _path, urlParams, tpId, gameId, needLogin } = itemInfo;
-		const loginCallback = () => {
-			navigate(`/${langId}/login`);
-		};
-
-		if (_path)
-			return !isLogin && needLogin
-				? loginCallback()
-				: navigate(`/${langId}/${_path}${urlParams}`);
-
-		return GET_ENTER_PAGE({
+		const { tpId, gameId } = itemInfo;
+		GET_ENTER_PAGE({
 			isLogin,
 			langId,
 			tpId,
 			gameId,
-			loginCallback
+			loginCallback: handleLogin
 		});
 	};
 
@@ -166,21 +152,22 @@ const GameProvider = ({ langId = "en", isLogin = false, i18n }) => {
 			showingTpIds.length > 0 ? showingTpIds.includes(obj.tpId) : true
 		)
 		.map(p => {
-			const key = `gameProvider-${p.tpId}-${p.gameId}`;
-			let params = null;
-			if (p.parameter) {
-				params = Object.keys(p.parameter).map(k => {
-					return `${k}=${p.parameter[k]}`;
-				});
-			}
-
-			const _urlParams = params !== null ? `?${params.join("&")}` : "";
-			return (
+			return p.path ? (
+				<Link
+					key={`gameProvider-${p.tpId}-${p.gameId}`}
+					to={p.path}
+					state={{ tpId: p.tpId, gameId: p.gameId }}>
+					<img
+						src={`${config.cloudImgURL}/SiteSkin/img/logo/${p.imgName}.png`}
+						alt={p.imgName}
+					/>
+				</Link>
+			) : (
 				<button
-					key={key}
+					key={`gameProvider-${p.tpId}-${p.gameId}`}
 					onClick={ClickItem.bind(this, {
-						...p,
-						urlParams: _urlParams
+						tpId: p.tpId,
+						gameId: p.gameId
 					})}>
 					<img
 						src={`${config.cloudImgURL}/SiteSkin/img/logo/${p.imgName}.png`}
@@ -195,6 +182,7 @@ const GameProvider = ({ langId = "en", isLogin = false, i18n }) => {
 
 const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
+	const { userInfo } = useContext(userInfoContext);
 
 	const link = (
 		<Link to={path.setting.root}>
@@ -207,8 +195,9 @@ const IndexPage = () => {
 		<>
 			<Header title={i18n.ibi_GameProvider} hideLogo={true} link={link} />
 			<main className="main provider">
-				<GameProvider i18n={i18n} />
+				<GameProvider i18n={i18n} userInfo={userInfo} />
 			</main>
+			<Footer />
 		</>
 	);
 };
