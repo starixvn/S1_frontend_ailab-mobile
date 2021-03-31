@@ -129,7 +129,7 @@ export default () => {
 			</div>
 			{userInfo.isLogin ? (
 				<div className="btn-group">
-					<button className="orange" onClick={handleLogout}>
+					<button className="blue" onClick={handleLogout}>
 						{i18n.lbl_Logout}
 					</button>
 				</div>

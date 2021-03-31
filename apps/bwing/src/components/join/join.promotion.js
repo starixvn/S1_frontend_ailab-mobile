@@ -58,7 +58,7 @@ export default ({ banner, ImgFolder, ClickClose, title, isOpen }) => {
 				<br />
 				{signUpHint}
 				<div className="btn-group">
-					<button className="orange openPopup" onClick={ClickClose}>
+					<button className="blue openPopup" onClick={ClickClose}>
 						{i18n.lbl_Close}
 					</button>
 				</div>
