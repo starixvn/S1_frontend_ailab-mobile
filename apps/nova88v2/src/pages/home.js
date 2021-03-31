@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import {
 	i18nContext,
 	userInfoContext,
@@ -28,7 +28,6 @@ const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
-	const [showingShortcut, setShowingShortcut] = useState(false);
 
 	useEffect(() => {
 		setRoot(true);
@@ -130,15 +129,10 @@ const IndexPage = () => {
 		userInfo.langId
 	]);
 
-	const header = <Header setShowingShortcut={setShowingShortcut} />;
 	return (
-		<Layout header={header}>
+		<Layout header={<Header />}>
 			{userInfo.isLogin ? (
-				<HeaderShortcut
-					i18n={i18n}
-					userInfo={userInfo}
-					showingShortcut={showingShortcut}
-				/>
+				<HeaderShortcut i18n={i18n} userInfo={userInfo} />
 			) : null}
 			<Slider />
 			<Marquee />

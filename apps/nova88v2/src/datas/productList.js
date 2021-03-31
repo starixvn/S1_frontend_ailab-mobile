@@ -4,6 +4,7 @@ import Basketball from "../styles/img/basketball.png";
 import Tennis from "../styles/img/tennis.png";
 import Cricket from "../styles/img/cricket.png";
 
+import LIVEcasino_N2Live from "../styles/img/n2.png";
 import LIVEcasino_DG from "../styles/img/dg.png";
 import LIVEcasino_PP from "../styles/img/pp.png";
 import LIVEcasino_AE from "../styles/img/ae.png";
@@ -21,7 +22,7 @@ import casino_CQ9 from "../styles/img/cq9.png";
 import casino_GPI from "../styles/img/gpi.png";
 import casino_YGG from "../styles/img/ygg.png";
 import casino_SG from "../styles/img/sg.png";
-// import casino_PG from "../styles/img/pg.png";
+import casino_PG from "../styles/img/pg.png";
 import casino_OW from "../styles/img/ow.png";
 // import casino_KISS from "../styles/img/kiss.png";
 
@@ -114,7 +115,7 @@ const gameList = ({ langId }) => [
 			{
 				...defGameInfo.LIVEcasinoN2Live,
 				spanText: "N2Live",
-				img: LIVEcasino_WM
+				img: LIVEcasino_N2Live
 			},
 			{
 				...defGameInfo.LIVEcasinoWM,
@@ -216,7 +217,7 @@ const gameList = ({ langId }) => [
 				...defGameInfo.Casino_PG,
 				parameter: defGameInfo.Casino_PG,
 				spanText: "PG",
-				img: casino_SG,
+				img: casino_PG,
 				path: path.casino.root
 			},
 			// {

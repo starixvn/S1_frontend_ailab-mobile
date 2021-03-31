@@ -550,7 +550,9 @@ main .gameList > div > div img + div, main .gameList > div > a img + div, main .
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 100%;
+  width: 76%;
+  color: #5574A7;
+  padding: 0 12%;
 }
 
 main .gameList .icon-new {
@@ -5299,7 +5301,7 @@ span.important {
 }
 
 .vip .swiper-container {
-  width: 375px;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -6110,10 +6112,10 @@ span.important {
 .hotGame .hotGamModule > div:not(.btn-group):nth-child(2), .hotGame .promosModule > div:not(.btn-group):nth-child(2), .promos .hotGamModule > div:not(.btn-group):nth-child(2), .promos .promosModule > div:not(.btn-group):nth-child(2) {
   font-weight: bold;
   color: #5574A7;
+  height: 8.5vw;
 }
 
 .hotGame .hotGamModule > div:not(.btn-group):nth-child(3), .hotGame .promosModule > div:not(.btn-group):nth-child(3), .promos .hotGamModule > div:not(.btn-group):nth-child(3), .promos .promosModule > div:not(.btn-group):nth-child(3) {
-  width: 35vw;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

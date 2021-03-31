@@ -169,7 +169,7 @@ export const Main = props => {
 					...prev,
 					amount: {
 						status: defIptStatus.warning,
-						msg: i18n.lbl_SelectBank
+						msg: i18n.lbl_SelectBankHint
 					}
 				}));
 			}

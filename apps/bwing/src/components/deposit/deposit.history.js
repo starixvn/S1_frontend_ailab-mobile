@@ -96,7 +96,7 @@ const Panel = () => {
 						setLoading(false);
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
@@ -136,7 +136,7 @@ const Panel = () => {
 						}
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
@@ -213,38 +213,32 @@ const Panel = () => {
 			<HistoryFilter submitHandler={submitHandler} />
 			{loading ? (
 				<Loading />
-			) : (
+			) : getHistoryState ? (
 				<>
-					{getHistoryState ? (
-						<>
-							<div
-								className="textArea"
-								style={{ padding: "2vw 0 4vw 2vw" }}>
-								{i18n.msg_AmountFormatTip}
-							</div>
-							<div className="recent open">
-								<div className="recentTransactions">
-									<ReloadSpin
-										func={submitHandler.bind(
-											this,
-											filterData?.StartDate,
-											filterData?.EndDate,
-											true
-										)}
-									/>
-								</div>
-								{getHistoryState.length > 0 ? (
-									<div className="infoList">{arr}</div>
-								) : (
-									<div className="not-found">
-										{i18n.msg_NoData}
-									</div>
+					<div
+						className="textArea"
+						style={{ padding: "2vw 0 4vw 2vw" }}>
+						{i18n.msg_AmountFormatTip}
+					</div>
+					<div className="recent open">
+						<div className="recentTransactions">
+							<ReloadSpin
+								func={submitHandler.bind(
+									this,
+									filterData?.StartDate,
+									filterData?.EndDate,
+									true
 								)}
-							</div>
-						</>
-					) : null}
+							/>
+						</div>
+						{getHistoryState.length > 0 ? (
+							<div className="infoList">{arr}</div>
+						) : (
+							<div className="not-found">{i18n.msg_NoData}</div>
+						)}
+					</div>
 				</>
-			)}
+			) : null}
 		</div>
 	);
 };
