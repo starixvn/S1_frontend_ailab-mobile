@@ -1,5 +1,7 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
+import { useNavigate } from "@reach/router";
+import path from "../../path";
 import {
 	i18nContext,
 	userInfoContext,
@@ -13,6 +15,7 @@ import AddBankPanel from "./bankInfo.add";
 const BankInfo = () => {
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { setLoading } = useContext(loadingContext);
 	const [custBankInfo, setCustBankInfo] = useState([]);
@@ -27,6 +30,10 @@ const BankInfo = () => {
 	});
 
 	useEffect(() => {
+		if (userInfo.currencyId === 96) {
+			navigate(path.home.root);
+			setLoading(false);
+		}
 		if (userInfo.isLogin) {
 			setLoading(true);
 			api.account.GetCustBankInfo().then(

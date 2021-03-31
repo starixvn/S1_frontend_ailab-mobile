@@ -54,7 +54,8 @@ const Panel = () => {
 		if (
 			userInfo.isLogin &&
 			userInfo.currencyId &&
-			(!userInfo.accountName || !userInfo.phoneNo)
+			(!userInfo.accountName || !userInfo.phoneNo) &&
+			userInfo.currencyId !== 96
 		) {
 			const ClosePopBox = () => {
 				setPopBox({ isOpen: false });
@@ -62,7 +63,6 @@ const Panel = () => {
 					`/${userInfo.langId}/${path.profile.root}?prevPage=${path.withdrawal.root}`
 				);
 			};
-
 			if (isMountedRef.current) {
 				setPopBox({
 					isOpen: true,
@@ -91,6 +91,7 @@ const Panel = () => {
 							res.data.data?.bankInfoDetail &&
 							res.data.data?.bankInfoDetail.length > 0
 						) {
+							setPopBox({ isOpen: false });
 							if (isMountedRef.current) {
 								setbankInfo(() => ({
 									accountName: res.data.data.accountName,
@@ -111,11 +112,58 @@ const Panel = () => {
 								}
 							}
 							hasBankInfo = true;
-						} else {
+						} else if (
+							userInfo.currencyId === 96 &&
+							res.data.data?.uSDTDetail &&
+							res.data.data?.uSDTDetail.length > 0
+						) {
+							setPopBox({ isOpen: false });
+							if (isMountedRef.current) {
+								setbankInfo(() => ({
+									accountName: res.data.data.accountName,
+									bankList: res.data.data.uSDTDetail
+								}));
+								setSelBank(res.data.data.uSDTDetail?.[0]);
+								if (!pageVerify) {
+									setPageVerify(true);
+								}
+							}
+							hasBankInfo = true;
+						} else if (
+							userInfo.currencyId &&
+							userInfo.currencyId !== 96
+						) {
 							const ClosePopBox = () => {
 								setPopBox({ isOpen: false });
 								navigate(
 									`/${userInfo.langId}/${path.bankInfo.root}`
+								);
+							};
+
+							if (isMountedRef.current) {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content: i18n.lbl_UpdateBankInfo,
+									hasBtn: true,
+									hideCloseBtn: true,
+									btnBar: (
+										<div className="btn-group">
+											<button
+												className="blue"
+												onClick={ClosePopBox}>
+												{i18n.lbl_UpdateBankDetail}
+											</button>
+										</div>
+									)
+								});
+								setPageVerify(false);
+							}
+						} else {
+							const ClosePopBox = () => {
+								setPopBox({ isOpen: false });
+								navigate(
+									`/${userInfo.langId}/${path.cryptoWallet.root}`
 								);
 							};
 
@@ -399,6 +447,8 @@ const Panel = () => {
 									selBank.accountNo,
 									real_amount,
 									selBank.sysId
+										? selBank.sysId
+										: selBank.usdtAddress
 								)}>
 								{i18n.lbl_Submit}
 							</button>
@@ -410,7 +460,12 @@ const Panel = () => {
 	};
 
 	const SelectBank = b => {
-		if (b.sysId !== selBank?.sysId || b.accountNo !== selBank?.accountNo) {
+		if (
+			b.sysId &&
+			(b.sysId !== selBank?.sysId || b.accountNo !== selBank?.accountNo)
+		) {
+			setSelBank(b);
+		} else if (b.usdtAddress !== selBank?.usdtAddress) {
 			setSelBank(b);
 		}
 	};
@@ -475,24 +530,41 @@ const Panel = () => {
 		}
 	};
 
-	const banks = bankInfo?.bankList?.map(b => {
-		return (
-			<button
-				className={
-					selBank?.sysId === b.sysId &&
-					selBank?.accountNo === b.accountNo
-						? "active"
-						: ""
-				}
-				key={`withdrawal-bank-${b.sysId}-${b.accountNo}`}
-				onClick={SelectBank.bind(this, b)}>
-				<img
-					src={`${config.imgUrl}/common/images/BankLogo/${b.bankLogo}`}
-					alt={b.bankName}
-				/>
-			</button>
-		);
-	});
+	let banks = [];
+
+	if (userInfo.currencyId === 96) {
+		banks = bankInfo?.bankList?.map(b => {
+			return (
+				<div
+					className={`account${
+						selBank?.usdtAddress === b.usdtAddress ? " active" : ""
+					}`}
+					key={`withdrawal-bank-${b.usdtAddress}`}
+					onClick={SelectBank.bind(this, b)}>
+					<div className="icon icon-BTC">{b.usdtAddress}</div>
+				</div>
+			);
+		});
+	} else {
+		banks = bankInfo?.bankList?.map(b => {
+			return (
+				<button
+					className={
+						selBank?.sysId === b.sysId &&
+						selBank?.accountNo === b.accountNo
+							? "active"
+							: ""
+					}
+					key={`withdrawal-bank-${b.sysId}-${b.accountNo}`}
+					onClick={SelectBank.bind(this, b)}>
+					<img
+						src={`${config.imgUrl}/common/images/BankLogo/${b.bankLogo}`}
+						alt={b.bankName}
+					/>
+				</button>
+			);
+		});
+	}
 
 	return pageVerify ? (
 		<>
@@ -518,12 +590,16 @@ const Panel = () => {
 				btnStatus={warning.status}
 				warningMsg={warning.msg}
 			/>
-			<div className="selectBank">
-				{banks}
-				{bankInfo?.bankList?.length < 3 ? (
-					<Link to={path.bankInfo.root} />
-				) : null}
-			</div>
+			{userInfo.currencyId === 96 ? (
+				<div className="bankAccount">{banks}</div>
+			) : (
+				<div className="selectBank">
+					{banks}
+					{bankInfo?.bankList?.length < 3 ? (
+						<Link to={path.bankInfo.root} />
+					) : null}
+				</div>
+			)}
 			<div className="btn-group">
 				<button
 					className={amount > 0 ? "" : "gray"}

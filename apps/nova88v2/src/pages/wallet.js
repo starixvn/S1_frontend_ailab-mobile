@@ -19,6 +19,7 @@ const Wallet = () => {
 	const { mainWalletInfo, GetBalance } = useGetBalance({
 		isLogin: userInfo.isLogin
 	});
+
 	const [tpWallets, setLists] = useState([]);
 	const { tpWalletsList, GetTpWalletList } = useGetTpBalance({
 		isLogin: userInfo.isLogin,
@@ -42,6 +43,20 @@ const Wallet = () => {
 			}
 		});
 	}, [tpWalletsList, mainWalletInfo]);
+
+	useEffect(() => {
+		if (userInfo.currencyId && userInfo.currencyId === 96) {
+			defTabs.cryptoWallet = {
+				to: path.cryptoWallet.root,
+				displayKey: "lbl_CryptoWallet"
+			};
+		} else if (userInfo.currencyId && userInfo.currencyId !== 96) {
+			defTabs.bankInfo = {
+				to: path.bankInfo.root,
+				displayKey: "lbl_BankInfo"
+			};
+		}
+	}, [userInfo]);
 
 	let total = tpWallets.reduce((accumulator, currentValue) => {
 		return accumulator + currentValue.balance;
@@ -202,10 +217,6 @@ const defTabs = {
 	myWallet: {
 		to: `${path.wallet.root}`,
 		displayKey: "lbl_MyWallet"
-	},
-	bankInfo: {
-		to: path.bankInfo.root,
-		displayKey: "lbl_BankInfo"
 	}
 };
 

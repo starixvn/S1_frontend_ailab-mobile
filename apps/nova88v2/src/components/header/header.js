@@ -23,13 +23,14 @@ const Header = ({
 	link,
 	titleClass = "title",
 	navBar,
-	setShowingShortcut
+	setShowingShortcut,
+	id
 }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const headerClassName = !title ? "" : "header";
 
 	return (
-		<header className={headerClassName} id="header">
+		<header className={headerClassName} id={id}>
 			{hideLogo ? null : (
 				<a href={`/${userInfo.langId}`}>
 					<Logo langId={userInfo.langId} />
@@ -120,7 +121,8 @@ Header.defaultProps = {
 	children: null,
 	titleClass: undefined,
 	navBar: null,
-	setShowingShortcut: () => null
+	setShowingShortcut: () => null,
+	id: "header"
 };
 
 Header.propTypes = {
@@ -131,7 +133,8 @@ Header.propTypes = {
 	children: PropTypes.node,
 	titleClass: PropTypes.string,
 	navBar: PropTypes.node,
-	setShowingShortcut: PropTypes.func
+	setShowingShortcut: PropTypes.func,
+	id: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
 };
 
 HeaderTitle.defaultProps = {

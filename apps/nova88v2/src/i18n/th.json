@@ -563,5 +563,10 @@
 	"lbl_Tournament" : "การแข่งขัน",
 	"lbl_Stage": "เวที",
 	"lbl_Streaming_Home":"ทีมเจ้าบ้าน",
-	"lbl_Streaming_Away":"ทีมเยือน"
+	"lbl_Streaming_Away":"ทีมเยือน",
+	"lbl_CryptoWallet":"Crypto Wallet",
+	"lbl_CryptoWalletTip1": "For any request of modification please contact CSD.",
+	"lbl_CryptoWalletTip2": "Please note:Once the crypto wallet is submitted,it cannot be modified/ deleted.For any request of modification, please contact CSD.",
+	"lbl_CryptoWalletNickName":"Wallet Nickname",
+	"lbl_CryptoWalletAddress":"Wallet Address"
 }

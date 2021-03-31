@@ -561,5 +561,10 @@
 	"lbl_Tournament" : "Tournament",
 	"lbl_Stage": "Stage",
 	"lbl_Streaming_Home":"Home",
-	"lbl_Streaming_Away":"Away"
+	"lbl_Streaming_Away":"Away",
+	"lbl_CryptoWallet":"Crypto Wallet",
+	"lbl_CryptoWalletTip1": "For any request of modification please contact CSD.",
+	"lbl_CryptoWalletTip2": "Please note:Once the crypto wallet is submitted,it cannot be modified/ deleted.For any request of modification, please contact CSD.",
+	"lbl_CryptoWalletNickName":"Wallet Nickname",
+	"lbl_CryptoWalletAddress":"Wallet Address"
 }

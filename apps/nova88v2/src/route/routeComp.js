@@ -57,6 +57,7 @@ import OneGame from "../pages/oneGame";
 import VIP from "../pages/vip";
 import MysteryBox from "../pages/mysteryBox";
 import Streaming from "../pages/streaming";
+import CryptoWallet from "../pages/cryptoWallet";
 
 const RouteComponents = () => {
 	return (
@@ -84,6 +85,7 @@ const RouteComponents = () => {
 			<Profile path={`/:langId/${path.profile.root}`} />
 			<BankInfo path={`/:langId/${path.bankInfo.root}`} />
 			<MyWallet path={`/:langId/${path.wallet.root}`} />
+			<CryptoWallet path={`/:langId/${path.cryptoWallet.root}`} />
 			<Message path={`/:langId/${path.message.root}`} />
 			<Announcement path={`/:langId/${path.announcement.root}`} />
 

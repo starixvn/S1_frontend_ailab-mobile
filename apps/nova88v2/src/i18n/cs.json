@@ -570,5 +570,11 @@
 	"lbl_Tournament" : "竞赛",
 	"lbl_Stage": "阶段",
 	"lbl_Streaming_Home":"主",
-	"lbl_Streaming_Away":"客"
+	"lbl_Streaming_Away":"客",
+	"lbl_CryptoWallet":"Crypto Wallet",
+	"lbl_CryptoWalletTip1": "For any request of modification please contact CSD.",
+	"lbl_CryptoWalletTip2": "Please note:Once the crypto wallet is submitted,it cannot be modified/ deleted.For any request of modification, please contact CSD.",
+	"lbl_CryptoWalletNickName":"Wallet Nickname",
+	"lbl_CryptoWalletAddress":"Wallet Address"
+	
 }
