@@ -301,28 +301,38 @@ header button.clickBtn::before {
           transform: scale(0.75);
 }
 
-header .headerButton {
-  margin: 0 0 0 2vw;
+.headerButton {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 10vw;
 }
 
-header .headerButton > button, header .headerButton > a {
+.headerButton > button, .headerButton > a {
   font-size: 3vw;
-  border-radius: 3px;
-  color: #F77A00;
+  color: white;
   padding: 1vw 3vw;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(60%, white), to(#BFCCE2));
-  background: linear-gradient(to bottom, white 60%, #BFCCE2);
-  margin: 0 0 0 5px;
+  background: #a5bbe0;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-header .headerButton > button.loginBtn, header .headerButton > a.loginBtn {
-  background: -webkit-gradient(linear, left top, left bottom, from(#FB8F25), color-stop(#F77A00), to(#FF5D00));
-  background: linear-gradient(to bottom, #FB8F25, #F77A00, #FF5D00);
-  color: white;
+.headerButton > button.loginBtn, .headerButton > a.loginBtn {
+  background: #5574A7;
 }
 
 #Marquee {
-  background: white;
+  background: #e2efff;
   height: 6vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -330,8 +340,6 @@ header .headerButton > button.loginBtn, header .headerButton > a.loginBtn {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
-          box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
   width: 100%;
   overflow: hidden;
   padding: 1vw 0;
@@ -344,7 +352,7 @@ header .headerButton > button.loginBtn, header .headerButton > a.loginBtn {
   display: -ms-flexbox;
   display: flex;
   width: 5vw;
-  background: white;
+  background: #e2efff;
   color: #001942;
   z-index: 1;
 }
@@ -425,13 +433,14 @@ main .banner {
 main .sideBar {
   width: 100%;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   z-index: 1;
-  background: #e2efff;
-  -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.3);
-          box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.3);
+  background: #f3f3f3;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
 }
 
 main .sideBar button, main .sideBar a {
@@ -2048,6 +2057,11 @@ footer > a.active .circleAnimation + span {
   color: #F77A00;
   margin: 0 1vw 0 0;
   font-size: 6vw;
+}
+
+.bankAccount .account.active {
+  -webkit-box-shadow: 0 0 0 2px #f77a00 inset;
+          box-shadow: 0 0 0 2px #f77a00 inset;
 }
 
 .selectBank {
@@ -5961,13 +5975,8 @@ span.important {
 }
 
 .submenu {
-  display: none;
   background: #f3f3f3;
   padding: 0 2vw;
-}
-
-.submenu.active {
-  display: block;
 }
 
 .submenu > div {
@@ -6559,5 +6568,86 @@ main .sideBar button, main .sideBar a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.eventLink {
+  position: fixed;
+  right: 1vw;
+  bottom: 20vw;
+  z-index: 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.eventLink .icon-close {
+  width: 5vw;
+  height: 5vw;
+  color: #5574A7;
+  position: absolute;
+  right: 1vw;
+  top: -5vw;
+  z-index: 4;
+  background: #a5bbe0;
+  border-radius: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.eventLink .icon-close:before {
+  font-size: 3vw;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+.eventLink img {
+  width: 20vw;
+  -webkit-animation: eventLink 2s infinite;
+          animation: eventLink 2s infinite;
+}
+
+.eventLink.active {
+  display: none;
+}
+
+@-webkit-keyframes eventLink {
+  0% {
+    -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+  }
+  50% {
+    -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+  }
+  100% {
+    -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+  }
+}
+
+@keyframes eventLink {
+  0% {
+    -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+  }
+  50% {
+    -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+  }
+  100% {
+    -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+  }
+}
+
+.autoTransfer {
+  margin: 2vw 0;
 }
 /*# sourceMappingURL=style.css.map */

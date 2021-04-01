@@ -36,7 +36,7 @@ const HeaderShortcut = ({ i18n, userInfo }) => {
 	};
 
 	return (
-		<div className="submenu active">
+		<div className="submenu">
 			<div className="Balance">
 				<button
 					className={
