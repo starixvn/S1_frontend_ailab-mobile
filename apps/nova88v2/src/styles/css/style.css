@@ -110,7 +110,7 @@ div[tabindex="-1"] {
   width: 40vw;
 }
 
-.logoSwitch .switch {
+.switch {
   width: 100%;
   border: 1px solid #F77A00;
   background: black;
@@ -124,10 +124,10 @@ div[tabindex="-1"] {
           align-items: center;
   position: relative;
   height: 10vw;
-  margin: 0 0 3vw;
+  margin: 3vw 0;
 }
 
-.logoSwitch .switch > div {
+.switch > div {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -135,11 +135,11 @@ div[tabindex="-1"] {
   padding: 3vw 0;
 }
 
-.logoSwitch .switch > div.active {
+.switch > div.active {
   color: white;
 }
 
-.logoSwitch .switch > div.switchBg {
+.switch > div.switchBg {
   position: absolute;
   background: -webkit-gradient(linear, left top, left bottom, from(#FB8F25), color-stop(#F77A00), to(#FF5D00));
   background: linear-gradient(to bottom, #FB8F25, #F77A00, #FF5D00);
@@ -152,13 +152,13 @@ div[tabindex="-1"] {
   padding: 0;
 }
 
-.logoSwitch .switch > div.switchBg.right {
+.switch > div.switchBg.right {
   left: 50%;
   -webkit-transition: 0.7s;
   transition: 0.7s;
 }
 
-.Join, .Login {
+.Login {
   height: 0;
   visibility: hidden;
   opacity: 0;
@@ -166,7 +166,7 @@ div[tabindex="-1"] {
   transition: 0.7s;
 }
 
-.Join.active, .Login.active {
+.Login.active {
   visibility: visible;
   opacity: 1;
   -webkit-transition: 0.7s;
@@ -174,49 +174,45 @@ div[tabindex="-1"] {
   height: auto;
 }
 
-.Join .dropdown .btn, .Login .dropdown .btn {
+.Login .dropdown .btn {
   padding: 0;
   background: transparent;
 }
 
-.Join .dropdown .dropdown-item, .Login .dropdown .dropdown-item {
+.Login .dropdown .dropdown-item {
   padding: 3vw;
 }
 
-.Join .title, .Login .title {
+.Login .title {
   text-align: center;
   font-size: 6vw;
   margin: 2vw auto;
   font-weight: bold;
 }
 
-.Join .inputBox i.icon.icon-eye, .Join .inputBox i.icon.icon-eye-blocked, .Login .inputBox i.icon.icon-eye, .Login .inputBox i.icon.icon-eye-blocked {
+.Login .inputBox i.icon.icon-eye, .Login .inputBox i.icon.icon-eye-blocked {
   display: none;
 }
 
-.Join .inputBox i.icon.icon-key + input + div > .icon-eye, .Login .inputBox i.icon.icon-key + input + div > .icon-eye {
+.Login .inputBox i.icon.icon-key + input + div > .icon-eye {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.Join .inputBox i.icon.icon-key + input + div > .icon-eye-blocked, .Login .inputBox i.icon.icon-key + input + div > .icon-eye-blocked {
+.Login .inputBox i.icon.icon-key + input + div > .icon-eye-blocked {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.Join .Terms, .Login .Terms {
+.Login .Terms {
   padding: 0 2vw;
   margin: 2vw 0;
 }
 
-.Join .Terms.error, .Login .Terms.error {
+.Login .Terms.error {
   border: 1px solid #e92529;
-}
-
-.Join .Terms a, .Login .Terms a {
-  color: #F77A00;
 }
 
 .Login .Terms a {
@@ -224,6 +220,55 @@ div[tabindex="-1"] {
   text-decoration: underline;
   display: block;
   text-align: center;
+}
+
+.logo {
+  text-align: center;
+}
+
+.Join .dropdown .btn {
+  padding: 0;
+  background: transparent;
+}
+
+.Join .dropdown .dropdown-item {
+  padding: 3vw;
+}
+
+.Join .title {
+  text-align: center;
+  font-size: 6vw;
+  margin: 2vw auto;
+  font-weight: bold;
+}
+
+.Join .inputBox i.icon.icon-eye, .Join .inputBox i.icon.icon-eye-blocked {
+  display: none;
+}
+
+.Join .inputBox i.icon.icon-key + input + div > .icon-eye {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.Join .inputBox i.icon.icon-key + input + div > .icon-eye-blocked {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.Join .Terms {
+  padding: 0 2vw;
+  margin: 2vw 0;
+}
+
+.Join .Terms.error {
+  border: 1px solid #e92529;
+}
+
+.Join .Terms a {
+  color: #F77A00;
 }
 
 header {
@@ -911,7 +956,7 @@ footer > a.active .circleAnimation + span {
   transition: 0.7s;
 }
 
-#popup > div:not(.bankSlip):not(.eventpop) {
+#popup > div:not(.bankSlip):not(.eventpop):not(.joinSuccess) {
   background: rgba(0, 0, 0, 0.5);
   width: 100%;
 }
@@ -1718,8 +1763,8 @@ footer > a.active .circleAnimation + span {
 .infoModule.parts {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-flow: row;
-          flex-flow: row;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
 }
 
 .infoModule.parts .inputBox {
@@ -1729,11 +1774,10 @@ footer > a.active .circleAnimation + span {
           flex: auto;
   -ms-flex-flow: nowrap;
       flex-flow: nowrap;
-  margin: 0;
 }
 
 .infoModule.parts .inputBox:nth-child(n+2) {
-  margin: 0 0 0 1vw;
+  margin: 1vw 0 1vw 1vw;
 }
 
 .infoModule.parts label.inputBox {
@@ -1755,6 +1799,21 @@ footer > a.active .circleAnimation + span {
 
 .infoModule.parts .btn-group button {
   padding: 2.5vw;
+}
+
+.infoModule.parts .inputInfo {
+  width: 100%;
+  -webkit-box-ordinal-group: 0;
+      -ms-flex-order: -1;
+          order: -1;
+}
+
+.infoModule.parts .inputInfo + .inputBox {
+  width: 23vw;
+}
+
+.infoModule.parts .inputInfo + .inputBox .icon-phone + input {
+  width: 20vw;
 }
 
 .inputBox {

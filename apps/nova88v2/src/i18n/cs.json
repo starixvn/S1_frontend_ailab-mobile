@@ -47,6 +47,7 @@
 	"Currency_51": "VND",
 	"Currency_6": "EURO",
 	"Currency_9": "AUD",
+	"Currency_96": "USDT",
 	"msg_EnterRealName": "请输入您的真实姓名",
 	"msg_EnterPhoneNumber": "请输入手机号码",
 	"lbl_Month1": "一月",
@@ -575,6 +576,7 @@
 	"lbl_CryptoWalletTip1": "For any request of modification please contact CSD.",
 	"lbl_CryptoWalletTip2": "Please note:Once the crypto wallet is submitted,it cannot be modified/ deleted.For any request of modification, please contact CSD.",
 	"lbl_CryptoWalletNickName":"Wallet Nickname",
-	"lbl_CryptoWalletAddress":"Wallet Address"
+	"lbl_CryptoWalletAddress":"Wallet Address",
+	"lbl_InvalidAddress":"Invalid Address"
 	
 }

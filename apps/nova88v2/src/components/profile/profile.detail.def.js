@@ -94,6 +94,14 @@ export const infoList = ({ i18n = {}, userInfo = {}, _areaCode = "" }) => {
 	];
 };
 
+export const currencyToAreacode = {
+	2: "MY",
+	4: "TH",
+	13: "CS",
+	15: "ID",
+	51: "VN"
+};
+
 const date_format = v => {
 	return moment(new Date(v)).format("lll");
 };

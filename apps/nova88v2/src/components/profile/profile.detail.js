@@ -3,14 +3,16 @@ import { useNavigate } from "@reach/router";
 import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import PropTypes from "prop-types";
 import Inputbox from "../common/inputbox.hint";
-import Dropdown from "../common/dropdown";
+import Dropdown from "../common/dropdown.profile";
+import PhoneInputbox from "../common/inputbox.profile";
 import areaCode from "../../datas/areaCode";
 import useTip from "../hook/useTip";
 import {
 	monthOptions,
 	initWarning,
 	initValue,
-	infoList
+	infoList,
+	currencyToAreacode
 } from "./profile.detail.def";
 import { defPopBoxType } from "../common/popbox";
 import { redirectToPrev } from "./profile.redirect";
@@ -26,12 +28,32 @@ const Panel = () => {
 	const [yearSelectedIdx, setYearSelectedIdx] = useState();
 	const [monthSelectedIdx, setMonthSelectedIdx] = useState();
 	const [daySelectedIdx, setDaySelectedIdx] = useState();
+	const [AreaCodeIdx, setAreaCodeIdx] = useState();
+
 	const { showTips, showTipHandler } = useTip();
+
 	const country =
 		userInfo.country && userInfo.country !== "null"
 			? userInfo.country
 			: userInfo.perCountry;
 	const isMountedRef = useRef(null);
+
+	const areaCodeOptions = [];
+	const AreaCode = Object.entries(areaCode);
+	Object.values(currencyToAreacode).forEach(item => {
+		AreaCode.forEach(el => {
+			if (el[0] === item) {
+				areaCodeOptions.push({
+					value: el[1].AreaCode,
+					id: el[1].AreaCode,
+					displayText: el[1].AreaCode
+				});
+			}
+		});
+	});
+
+	// { value: 1, id: 0, displayKey: "lbl_Month1" },
+	// { value: 2, id: 1, displayKey: "lbl_Month2" },
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -39,6 +61,7 @@ const Panel = () => {
 		setYearSelectedIdx(1);
 		setMonthSelectedIdx(1);
 		setDaySelectedIdx(1);
+		setAreaCodeIdx(1);
 		return () => {
 			isMountedRef.current = false;
 		};
@@ -73,8 +96,10 @@ const Panel = () => {
 			setYearSelectedIdx(i);
 		} else if (col === "bday_month") {
 			setMonthSelectedIdx(i);
-		} else {
+		} else if (col === "bday_day") {
 			setDaySelectedIdx(i);
+		} else {
+			setAreaCodeIdx(i);
 		}
 	};
 
@@ -103,7 +128,7 @@ const Panel = () => {
 		} else {
 			try {
 				const res = await api.site.ExistsPhoneNo({
-					AreaCode: _areaCode,
+					AreaCode: areaCodeOptions[AreaCodeIdx]?.value,
 					Phone: val
 				});
 
@@ -227,7 +252,9 @@ const Panel = () => {
 						userInfo.birth_y ??
 						`${yearOptions[yearSelectedIdx]?.value}`,
 					CountryCode: country,
-					AreaCode: userInfo.areaCode ?? _areaCode,
+					AreaCode:
+						userInfo.areaCode ??
+						areaCodeOptions[AreaCodeIdx]?.value,
 					PhoneNo: userInfo.phoneNo ?? userValue.phoneNo
 				};
 
@@ -393,20 +420,34 @@ const Panel = () => {
 			) : null}
 
 			{!userInfo?.phoneNo ? (
-				<Inputbox
-					areaCode={_areaCode}
-					icon="icon-phone"
-					inputType="tel"
-					placeholder={i18n.lbl_Phone}
-					onBlur={e => checkPhone(e.target.value)}
-					onChange={EditField.bind(null, "phoneNo")}
-					value={userValue.phoneNo}
-					btnStatus={warning.phoneNo.checked}
-					warningMsg={warning.phoneNo.msg}
-					infoText={i18n.lbl_PhoneTooltip}
-					clickInfo={() => showTipHandler("phoneNo")}
-					showTips={showTips.includes("phoneNo")}
-				/>
+				<div className="infoModule parts">
+					<Dropdown
+						i18n={i18n}
+						mainKey="profile-areaCode"
+						options={areaCodeOptions}
+						colName="areaCode"
+						onSelectItem={dropdownStateHandler.bind(
+							null,
+							"areaCode"
+						)}
+						selectedIdx={AreaCodeIdx}
+						icon="icon icon-phone"
+						hideInfo={true}
+					/>
+					<PhoneInputbox
+						icon="icon-phone"
+						inputType="tel"
+						placeholder={i18n.lbl_Phone}
+						onBlur={e => checkPhone(e.target.value)}
+						onChange={EditField.bind(null, "phoneNo")}
+						value={userValue.phoneNo}
+						btnStatus={warning.phoneNo.checked}
+						warningMsg={warning.phoneNo.msg}
+						infoText={i18n.lbl_PhoneTooltip}
+						clickInfo={() => showTipHandler("phoneNo")}
+						showTips={showTips.includes("phoneNo")}
+					/>
+				</div>
 			) : null}
 
 			{!userInfo?.accountName ||

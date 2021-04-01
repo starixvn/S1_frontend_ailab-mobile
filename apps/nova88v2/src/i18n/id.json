@@ -47,6 +47,7 @@
 	"Currency_51": "VND",
 	"Currency_6": "EURO",
 	"Currency_9": "AUD",
+	"Currency_96": "USDT",
 	"msg_EnterRealName": "Silakan masukkan nama asli anda",
 	"msg_EnterPhoneNumber": "Silakan masukkan nomor telepon anda",
 	"lbl_Month1": "Januari",
@@ -568,5 +569,6 @@
 	"lbl_CryptoWalletTip1": "For any request of modification please contact CSD.",
 	"lbl_CryptoWalletTip2": "Please note:Once the crypto wallet is submitted,it cannot be modified/ deleted.For any request of modification, please contact CSD.",
 	"lbl_CryptoWalletNickName":"Wallet Nickname",
-	"lbl_CryptoWalletAddress":"Wallet Address"
+	"lbl_CryptoWalletAddress":"Wallet Address",
+	"lbl_InvalidAddress":"Invalid Address"
 }
