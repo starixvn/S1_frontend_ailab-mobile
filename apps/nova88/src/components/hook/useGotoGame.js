@@ -58,18 +58,6 @@ export const useGotoGame = ({
 			gameId: _gameId,
 			isFun: _isFun
 		}) => {
-			console.log(
-				"_isLogin",
-				_isLogin,
-				"_langId",
-				_langId,
-				"_tpId",
-				_tpId,
-				"_gameId",
-				_gameId,
-				"_isFun",
-				_isFun
-			);
 			if (_isLogin) {
 				api.tp
 					.GotoGame({
