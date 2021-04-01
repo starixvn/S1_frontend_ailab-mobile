@@ -112,6 +112,12 @@ const gameList = ({ langId }) => [
 		translateKey: "lbl_LiveCasino",
 		items: [
 			{
+				...defGameInfo.LIVEcasinoPlayTech,
+				spanText: "PlayTech",
+				img: LIVEcasino_WM,
+				useGotoGame: true
+			},
+			{
 				...defGameInfo.LIVEcasinoN2Live,
 				spanText: "N2Live",
 				img: LIVEcasino_WM
@@ -392,6 +398,7 @@ export const defGameInfo = {
 	LIVEcasinoDG: { tpId: 4, gameId: 4 },
 	LIVEcasinoAG: { tpId: 3, gameId: 3 },
 	LIVEcasinoMW: { tpId: 5, gameId: 105 },
+	LIVEcasinoPlayTech: { tpId: 27, gameId: "0" },
 	Casino_All: { tpId: 0 },
 	Casino_PP: { tpId: 5 },
 	casino_ICG: { tpId: 24 },
