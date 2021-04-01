@@ -566,5 +566,6 @@
 	"lbl_Streaming_Away":"ทีมเยือน",
 	"lbl_ConfirmPsw":"Confirm Password",
 	"lbl_WrongPswHint":"Your confirm password is not same as your password, please check again.",
-	"lbl_Register":"สมัครสมาชิก"
+	"lbl_Register":"สมัครสมาชิก",
+	"lbl_AfterJoinHint":"ยินดีด้วยค่ะ คุณได้ลงทะเบียนเป็นสมาชิกเรียบร้อยแล้ว"
 }

@@ -566,5 +566,6 @@
 	"lbl_Streaming_Away":"Lawan",
 	"lbl_ConfirmPsw":"Confirm Password",
 	"lbl_WrongPswHint":"Your confirm password is not same as your password, please check again.",
-	"lbl_Register":"Registrasi"
+	"lbl_Register":"Registrasi",
+	"lbl_AfterJoinHint":"Selamat! Anda berhasil mendaftar sebagai member."
 }
