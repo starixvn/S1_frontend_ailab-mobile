@@ -55,7 +55,9 @@ const PopUp = () => {
 			className={`${popBox.className ?? ""}${
 				popBox.isOpen ? "active" : ""
 			}`}>
-			{popBox.title || content ? (
+			{popBox.fullPage ? (
+				popBox.content
+			) : popBox.title || content ? (
 				<div className="pop">
 					<div className="popTit">
 						{popBox.hideCloseBtn === true ? null : (

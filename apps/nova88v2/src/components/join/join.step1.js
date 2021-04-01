@@ -18,10 +18,8 @@ const JoinStep1 = ({
 	setStep
 }) => {
 	const [showingPsw, setShowingPsw] = useState({
-		Password: false,
-		ConfirmPsw: false
+		Password: false
 	});
-	const [confirmPsw, setConfirmPsw] = useState("");
 	const [affiliateidExist, setAffiliateidExist] = useState("");
 	const { showTips, showTipHandler } = useTip([]);
 
@@ -44,11 +42,6 @@ const JoinStep1 = ({
 		}));
 	};
 
-	const EditConfirmedPsw = e => {
-		const val = e.target.value;
-		setConfirmPsw(val);
-	};
-
 	const checkValue = async (col, e) => {
 		const val = e?.target?.value;
 		let checked = null;
@@ -59,10 +52,6 @@ const JoinStep1 = ({
 			msg = result.msg;
 		} else if (col === "Password") {
 			const result = passwordCheck({ val });
-			checked = result.checked;
-			msg = result.msg;
-		} else if (col === "ConfirmPsw") {
-			const result = confirmPswCheck({ val });
 			checked = result.checked;
 			msg = result.msg;
 		}
@@ -96,26 +85,14 @@ const JoinStep1 = ({
 		return { checked, msg };
 	};
 
-	const confirmPswCheck = ({ val }) => {
-		const checked = val !== "" && val === userValue.Password;
-		const msg =
-			val !== "" && val === userValue.Password ? "" : "lbl_WrongPswHint";
-
-		return { checked, msg };
-	};
-
 	const checkAll = async () => {
 		try {
 			const _usernameCheck = await usernameCheck(userValue.UserName);
 			const _passwordCheck = passwordCheck({
 				val: userValue.Password
 			});
-			const _confirmPswCheck = confirmPswCheck({ val: confirmPsw });
 
-			const checked =
-				_usernameCheck.checked &&
-				_passwordCheck.checked &&
-				_confirmPswCheck.checked;
+			const checked = _usernameCheck.checked && _passwordCheck.checked;
 
 			if (!checked) {
 				setHintStatus(prev => ({
@@ -127,10 +104,6 @@ const JoinStep1 = ({
 					Password: {
 						checked: _passwordCheck.checked,
 						msg: i18n[_passwordCheck.msg]
-					},
-					ConfirmPsw: {
-						checked: _confirmPswCheck.checked,
-						msg: i18n[_confirmPswCheck.msg]
 					}
 				}));
 			}
@@ -177,25 +150,6 @@ const JoinStep1 = ({
 				warningMsg={hintStatus.Password.msg}
 				clickInfo={() => showTipHandler("Password")}
 				showTips={showTips.includes("Password")}
-				testAttr="Password"
-			/>
-			<InputboxPWD
-				infoModule="infoModule"
-				icon="icon-key"
-				inputType={showingPsw.ConfirmPsw ? "text" : "password"}
-				showPsw={showingPsw.ConfirmPsw}
-				placeholder={i18n.lbl_ConfirmPsw}
-				value={confirmPsw}
-				onChange={EditConfirmedPsw}
-				onBlur={checkValue.bind(null, "ConfirmPsw")}
-				showPswHandler={showPswHandler.bind(this, {
-					col: "ConfirmPsw"
-				})}
-				checked={hintStatus.ConfirmPsw.checked}
-				tips={i18n.msg_PasswordVaildate}
-				warningMsg={hintStatus.ConfirmPsw.msg}
-				clickInfo={() => showTipHandler("ConfirmPsw")}
-				showTips={showTips.includes("ConfirmPsw")}
 				testAttr="Password"
 			/>
 			<Inputbox

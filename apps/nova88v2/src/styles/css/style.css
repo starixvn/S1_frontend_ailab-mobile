@@ -59,7 +59,7 @@ a {
 
 body, html {
   overflow-x: hidden;
-  background: #ecf3fd;
+  background: #001942;
   height: 100%;
   font-size: 12px;
   font-family: 'Microsoft YaHei',sans-serif;
@@ -280,7 +280,7 @@ header {
   width: calc(100% - 8vw);
   position: fixed;
   top: 0;
-  background: white;
+  background: #001942;
   height: 12vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1097,8 +1097,8 @@ footer > a.active .circleAnimation + span {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
-          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 0px 10px 0px black;
+          box-shadow: 0px 0px 10px 0px black;
   padding: 0;
   font-size: 4vw;
   font-weight: bold;
@@ -1111,7 +1111,7 @@ footer > a.active .circleAnimation + span {
 }
 
 .header .headerTag {
-  background: #a5bbe0;
+  background: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1126,7 +1126,7 @@ footer > a.active .circleAnimation + span {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  color: #5574A7;
+  color: #B2B2B2;
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1140,12 +1140,12 @@ footer > a.active .circleAnimation + span {
 
 .header .headerTag > a.active, .header .headerTag > button.active {
   color: white;
-  background: -webkit-gradient(linear, left top, left bottom, from(#435F8B), to(#6383B9));
-  background: linear-gradient(to bottom, #435F8B, #6383B9);
+  background: -webkit-gradient(linear, left top, left bottom, from(#FB8F25), color-stop(#F77A00), to(#FF5D00));
+  background: linear-gradient(to bottom, #FB8F25, #F77A00, #FF5D00);
 }
 
 .header .headerTag > a.active .quantity, .header .headerTag > button.active .quantity {
-  color: #5574A7;
+  color: #F77A00;
   background: white;
 }
 
@@ -1230,7 +1230,7 @@ footer > a.active .circleAnimation + span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border-bottom: 1px solid #5574A7;
+  border-bottom: 1px solid #F77A00;
 }
 
 .tag a, .tag button {
@@ -1248,13 +1248,13 @@ footer > a.active .circleAnimation + span {
           justify-content: center;
   height: 12vw;
   border-bottom: 3px solid transparent;
-  color: #a5bbe0;
+  color: #6F6F6F;
   font-size: 4vw;
 }
 
 .tag a.active, .tag button.active {
-  color: #5574A7;
-  border-color: #5574A7;
+  color: #F77A00;
+  border-color: #F77A00;
   font-weight: bold;
 }
 
@@ -2414,7 +2414,7 @@ footer > a.active .circleAnimation + span {
 }
 
 .account {
-  background: #c6d4f1;
+  background: rgba(0, 0, 0, 0.5);
   border-radius: 3px;
   margin: 2vw 0;
   padding: 4vw;
@@ -2430,9 +2430,6 @@ footer > a.active .circleAnimation + span {
   -ms-flex-flow: wrap;
       flex-flow: wrap;
   position: relative;
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
-          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
-  color: #5574A7;
 }
 
 .account .bankLogo {
@@ -2884,8 +2881,7 @@ button.clickBtn:before {
 }
 
 .functionList ~ .account:nth-child(even) {
-  background: #5574A7;
-  color: #a5bbe0;
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .functionList ~ .account {
@@ -2899,7 +2895,6 @@ button.clickBtn:before {
 
 .functionList ~ .account.active {
   background: #002B6C;
-  color: #a5bbe0;
 }
 
 .functionList ~ .account.active .content {
@@ -2908,7 +2903,7 @@ button.clickBtn:before {
   transition: 0.7s;
   opacity: 1;
   height: auto;
-  border-top: 1px solid #5574A7;
+  border-top: 1px solid #F77A00;
   padding: 2vw 0 0;
   line-height: normal;
 }
@@ -2935,7 +2930,7 @@ button.clickBtn:before {
 }
 
 .functionList ~ .account .icon-keyboard_arrow_down {
-  color: #a5bbe0;
+  color: #F77A00;
   -webkit-transition: 0.7s;
   transition: 0.7s;
   float: right;
@@ -6588,6 +6583,10 @@ span.important {
 
 .moduleTitle.icon-friend:before, .moduleTitle.icon-upcomingmatches:before, .moduleTitle.icon-film:before {
   font-size: 4vw;
+}
+
+#content {
+  background: #ecf3fd;
 }
 
 #header {

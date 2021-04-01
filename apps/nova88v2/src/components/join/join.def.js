@@ -53,10 +53,6 @@ export const initStatus = {
 	Birth: {
 		checked: null,
 		msg: ""
-	},
-	ConfirmPsw: {
-		checked: null,
-		msg: ""
 	}
 };
 

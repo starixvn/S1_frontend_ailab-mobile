@@ -307,12 +307,6 @@ const JoinStep2 = ({
 		}
 	};
 
-	console.log(
-		userValue.Birth_d + 1,
-		monthOptions[userValue.Birth_m]?.value,
-		yearOptions[userValue.Birth_y]?.value
-	);
-
 	const clickSubmit = async () => {
 		const checked = await checkAll();
 
@@ -364,6 +358,7 @@ const JoinStep2 = ({
 								res_custInfo => {
 									if (isMountedRef.current) {
 										let _user = {
+											isJoin: true,
 											isLogin: true,
 											langId: defaultLangId,
 											userName: userValue.UserName
