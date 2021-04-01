@@ -563,5 +563,8 @@
 	"lbl_Tournament" : "TURNAMEN",
 	"lbl_Stage": "Tahap",
 	"lbl_Streaming_Home":"Tuan Rumah",
-	"lbl_Streaming_Away":"Lawan"
+	"lbl_Streaming_Away":"Lawan",
+	"lbl_ConfirmPsw":"Confirm Password",
+	"lbl_WrongPswHint":"Your confirm password is not same as your password, please check again.",
+	"lbl_Register":"Registrasi"
 }

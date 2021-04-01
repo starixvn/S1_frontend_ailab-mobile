@@ -563,5 +563,8 @@
 	"lbl_Tournament" : "การแข่งขัน",
 	"lbl_Stage": "เวที",
 	"lbl_Streaming_Home":"ทีมเจ้าบ้าน",
-	"lbl_Streaming_Away":"ทีมเยือน"
+	"lbl_Streaming_Away":"ทีมเยือน",
+	"lbl_ConfirmPsw":"Confirm Password",
+	"lbl_WrongPswHint":"Your confirm password is not same as your password, please check again.",
+	"lbl_Register":"สมัครสมาชิก"
 }

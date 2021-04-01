@@ -569,6 +569,9 @@
 	"lbl_AgendaTitle" : "每月存款 和 流水倍数竞赛",
 	"lbl_Tournament" : "竞赛",
 	"lbl_Stage": "阶段",
-	"lbl_Streaming_Home":"主",
-	"lbl_Streaming_Away":"客"
+	"lbl_Streaming_Home":"主队",
+	"lbl_Streaming_Away":"客队",
+	"lbl_ConfirmPsw":"Confirm Password",
+	"lbl_WrongPswHint":"Your confirm password is not same as your password, please check again.",
+	"lbl_Register":"注册"
 }
