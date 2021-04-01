@@ -26,7 +26,7 @@ import Logo from "../components/common/logo";
 
 const IndexPage = () => {
 	const navigate = useNavigate();
-	const { userInfo } = useContext(userInfoContext);
+	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
@@ -77,7 +77,15 @@ const IndexPage = () => {
 								{i18n.lbl_AfterJoinHint}
 							</div>
 							<Link
-								onClick={ClosePopUp}
+								onClick={() => {
+									setPopBox({
+										isOpen: false
+									});
+									setUserInfo(prev => ({
+										...prev,
+										isJoin: false
+									}));
+								}}
 								className="btn-group"
 								to={`/${userInfo.langId}/${path.deposit.root}`}>
 								<button>{i18n.lbl_DepositNow}</button>
