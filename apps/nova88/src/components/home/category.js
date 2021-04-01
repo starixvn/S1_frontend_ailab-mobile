@@ -57,21 +57,20 @@ const Category = props => {
 				  });
 		}
 
-		if (gameInfo.useGotoGame) {
-			return handleGoToGame({
-				isLogin: userInfo.isLogin === true,
-				langId: userInfo.langId,
-				tpId,
-				gameId
-			});
-		}
-
 		return GET_ENTER_PAGE({
 			langId: userInfo.langId,
 			tpId,
 			gameId,
 			isLogin: userInfo.isLogin === true,
-			loginCallback: HandleLogin
+			loginCallback: HandleLogin,
+			execFunction: gameInfo.useGotoGame
+				? handleGoToGame.bind({
+						isLogin: userInfo.isLogin === true,
+						langId: userInfo.langId,
+						tpId,
+						gameId
+				  })
+				: null
 		});
 	};
 
@@ -85,7 +84,7 @@ const Category = props => {
 						setShowingTpIds(res.data.data);
 					}
 				},
-				err => {
+				() => {
 					if (mounted) {
 						setPopBox({
 							isOpen: true,

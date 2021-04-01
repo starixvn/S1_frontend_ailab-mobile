@@ -257,22 +257,21 @@ class Panel extends React.Component {
 
 	ClickPlay = freePlay => {
 		if (this.props.userInfo.isLogin) {
-			if (this.state.selGameInfo.tpId === defSpecialSetting.playTech) {
-				this.props.handleGoToGame({
-					isLogin: this.props.userInfo.isLogin,
-					langId: this.props.userInfo.langId,
-					tpId: this.state.selGameInfo.tpId,
-					gameId: this.state.selGameInfo.gameId,
-					isFun: freePlay
-				});
-			} else {
-				GET_CASINO_ENTER_PAGE(
-					this.state.selGameInfo.tpId,
-					this.state.selGameInfo.gameId,
-					freePlay,
-					this.props.userInfo.langId
-				);
-			}
+			GET_CASINO_ENTER_PAGE({
+				tpId: this.state.selGameInfo.tpId,
+				gameId: this.state.selGameInfo.gameId,
+				isFree: freePlay,
+				langId: this.props.userInfo.langId,
+				execFunction:
+					this.state.selGameInfo.tpId === defSpecialSetting.playTech
+						? this.props.handleGoToGame.bind(this, {
+								langId: this.props.userInfo.langId,
+								tpId: this.state.selGameInfo.tpId,
+								gameId: this.state.selGameInfo.gameId,
+								isFun: freePlay
+						  })
+						: null
+			});
 		} else {
 			this.props.setNav(defNavPanel.login);
 		}

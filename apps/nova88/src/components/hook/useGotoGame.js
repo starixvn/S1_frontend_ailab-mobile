@@ -52,7 +52,7 @@ export const useGotoGame = ({
 
 	const handleGoToGame = useCallback(
 		({
-			isLogin: _isLogin,
+			isLogin: _isLogin = true,
 			langId: _langId,
 			tpId: _tpId,
 			gameId: _gameId,
