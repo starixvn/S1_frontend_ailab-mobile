@@ -99,7 +99,8 @@ const IndexPage = () => {
 			if (
 				userInfo.currencyId &&
 				userInfo.userName &&
-				readCookie(cookieName) !== "1"
+				readCookie(cookieName) !== "1" &&
+				userInfo.isJoin !== false
 			) {
 				setCookie(cookieName, "1", 1);
 				api.account.GetWalletInfo().then(res => {

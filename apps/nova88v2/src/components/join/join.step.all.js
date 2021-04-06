@@ -1,12 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate, globalHistory, useLocation } from "@reach/router";
 import { i18nContext, userInfoContext } from "../common/context";
-import { Link } from "../../route/link";
 import JoinStep1 from "./join.step1";
 import JoinStep2 from "./join.step2";
 import { initValue, initStatus } from "./join.def";
-import Logo from "../common/logo";
-import path from "../../path";
 
 const JoinStepAll = () => {
 	const navigate = useNavigate();
@@ -24,7 +21,7 @@ const JoinStepAll = () => {
 	}, []);
 
 	useEffect(() => {
-		if (state.state.fromHeader) {
+		if (state.state?.fromHeader) {
 			localStorage.setItem("previousPage", "/");
 		}
 	}, [globalHistory]);
@@ -69,9 +66,6 @@ const JoinStepAll = () => {
 					userInfo={userInfo}
 					setUserValue={setUserValue}
 					setUserInfo={setUserInfo}
-					JoinStep3={
-						<JoinStep3 langId={userInfo.langId} i18n={i18n} />
-					}
 				/>
 			) : (
 				<JoinStep1
@@ -85,40 +79,6 @@ const JoinStepAll = () => {
 				/>
 			)}
 		</>
-	);
-};
-
-const JoinStep3 = ({ langId, i18n }) => {
-	return (
-		<div className="joinSuccess">
-			<Logo langId={langId} />
-			<div className="step">
-				<div className="stepLine">
-					<div className="stepBar100" />
-				</div>
-				<div className="circle active">
-					<div>
-						<div className="icon icon-checkmark" />
-					</div>
-				</div>
-				<div className="circle active">
-					<div>
-						<div className="icon icon-checkmark" />
-					</div>
-				</div>
-				<div className="circle active">
-					<div>
-						<div className="icon icon-checkmark" />
-					</div>
-				</div>
-			</div>
-			<div className="Join">
-				<div className="Terms">{i18n.lbl_AfterJoinHint}</div>
-				<Link className="btn-group" to={path.deposit.root}>
-					<button>{i18n.lbl_DepositNow}</button>
-				</Link>
-			</div>
-		</div>
 	);
 };
 

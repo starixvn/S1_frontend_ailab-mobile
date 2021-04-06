@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
-import { useNavigate } from "@reach/router";
 import areaCode from "../../datas/areaCode";
 import { popBoxContext } from "../common/context";
 import { getUrlParameter, getCookie } from "../common/common";
@@ -25,10 +24,8 @@ const JoinStep2 = ({
 	EditField,
 	userInfo,
 	setUserValue,
-	setUserInfo,
-	JoinStep3
+	setUserInfo
 }) => {
-	const navigate = useNavigate();
 	const { setPopBox } = useContext(popBoxContext);
 	const [siteCurrency, setSiteCurrencyState] = useState([]);
 	const [defaultOption, setDefaultOption] = useState(
@@ -236,24 +233,6 @@ const JoinStep2 = ({
 		return { checked, msg };
 	};
 
-	const checkBirth = (_day, _month, _year) => {
-		let checked = true;
-		let msg = "";
-		if (!_day || !_month || !_year) {
-			checked = false;
-			msg = i18n.msg_SelectBirthDay;
-		}
-		setHintStatus(prev => ({
-			...prev,
-			Birth: {
-				checked,
-				msg
-			}
-		}));
-
-		return { checked, msg };
-	};
-
 	const checkRealName = ({ val }) => {
 		const checked = val !== "";
 		const msg = val === "" ? "msg_EnterRealName" : "";
@@ -270,7 +249,6 @@ const JoinStep2 = ({
 			const _phoneCheck = res[0];
 			const _emailCheck = res[1];
 			const _currencyCheck = currencyCheck();
-
 			const _realNameCheck = checkRealName({ val: userValue.RealName });
 
 			const checked =
@@ -364,16 +342,6 @@ const JoinStep2 = ({
 											userName: userValue.UserName
 										};
 										if (res_custInfo.data.errorCode === 0) {
-											// navigate(`/${userInfo.langId}`);
-											// setPopBox({
-											// 	isOpen: true,
-											// 	specialPopbox: JoinStep3
-											// });
-											setPopBox({
-												isOpen: true,
-												title: i18n.lbl_ImportantNote,
-												content: i18n.msg_ApiServerError
-											});
 											_user = {
 												..._user,
 												...res_custInfo.data.data
@@ -540,8 +508,7 @@ JoinStep2.propTypes = {
 	EditField: PropTypes.func.isRequired,
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
 	setUserValue: PropTypes.func.isRequired,
-	setUserInfo: PropTypes.func.isRequired,
-	JoinStep3: PropTypes.node.isRequired
+	setUserInfo: PropTypes.func.isRequired
 };
 
 export default JoinStep2;
