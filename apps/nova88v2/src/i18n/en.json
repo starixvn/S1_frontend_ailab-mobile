@@ -1,7 +1,7 @@
 {
 	"lbl_Sports": "Sports",
 	"lbl_VirtualSports": "Virtual Sports",
-	"lbl_LiveCasino": "Live Casino",
+	"lbl_LiveCasino": "Casino",
 	"lbl_Casino": "Slots",
 	"lbl_Games": "Games",
 	"lbl_KenoAndLottery": "Keno & Lottery",
@@ -132,7 +132,7 @@
 	"lbl_Wallet_Saba": "Sportsbook Wallet",
 	"lbl_MainWallet": "Main Wallet",
 	"lbl_Direction": "Direction",
-	"lbl_eSports": "E-Sport",
+	"lbl_eSports": "E-Sports",
 	"lbl_Back": "Back",
 	"lbl_Limit": "Limit",
 	"lbl_Unlimited": "Unlimited",
@@ -565,5 +565,6 @@
 	"lbl_ConfirmPsw":"Confirm Password",
 	"lbl_WrongPswHint":"Your confirm password is not same as your password, please check again.",
 	"lbl_Register":"Register",
-	"lbl_AfterJoinHint":"Congratulation! You have successfully register as a member."
+	"lbl_AfterJoinHint":"Congratulation! You have successfully register as a member.",
+	"lbl_TpWallet_27": "PT Wallet"
 }

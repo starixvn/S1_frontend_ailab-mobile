@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { userInfoContext } from "Context";
+import { userInfoContext, i18nContext } from "Context";
 import { Link } from "@Router";
 import Logo from "../common/logo";
 import path from "../../path";
@@ -25,6 +25,7 @@ const Header = ({
 	navBar
 }) => {
 	const { userInfo } = useContext(userInfoContext);
+	const { i18n } = useContext(i18nContext);
 	const headerClassName = !title ? "" : "header";
 
 	return (
@@ -42,7 +43,7 @@ const Header = ({
 					navBar={navBar}
 				/>
 			) : (
-				<HeaderInfo userInfo={userInfo} />
+				<HeaderInfo userInfo={userInfo} i18n={i18n} />
 			)}
 			{filter || null}
 			{children}
@@ -50,20 +51,24 @@ const Header = ({
 	);
 };
 
-const HeaderInfo = ({ userInfo }) => {
+const HeaderInfo = ({ userInfo, i18n }) => {
 	return (
 		<div className="headerInfo">
 			{userInfo.isLogin ? (
-				<Link className="MemberID" to={path.profile.root}>
-					{userInfo.userName}
-				</Link>
+				<>
+					{i18n.lbl_Welcome}
+					<Link className="MemberID" to={path.profile.root}>
+						{userInfo.userName}
+					</Link>
+				</>
 			) : null}
 		</div>
 	);
 };
 
 HeaderInfo.propTypes = {
-	userInfo: PropTypes.objectOf(PropTypes.any).isRequired
+	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
 Header.defaultProps = {

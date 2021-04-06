@@ -567,5 +567,6 @@
 	"lbl_ConfirmPsw":"Confirm Password",
 	"lbl_WrongPswHint":"Your confirm password is not same as your password, please check again.",
 	"lbl_Register":"Registrasi",
-	"lbl_AfterJoinHint":"Selamat! Anda berhasil mendaftar sebagai member."
+	"lbl_AfterJoinHint":"Selamat! Anda berhasil mendaftar sebagai member.",
+	"lbl_TpWallet_27": "Dompet PT"
 }
