@@ -32,7 +32,7 @@ const RankItem = ({
 				{userRank}
 			</div>
 			<div>{userName}</div>
-			<div>{number_format(turnover)}</div>
+			<div>{turnover}</div>
 		</li>
 	);
 };
@@ -107,8 +107,8 @@ const RankList = ({
 					<ul>
 						<li className="listTitle">
 							<div>{i18n.lbl_Ranking}</div>
-							<div>{i18n.lbl_Points}</div>
 							<div>{i18n.lbl_Username}</div>
+							<div>{i18n.lbl_Points}</div>
 						</li>
 
 						<RankItems
