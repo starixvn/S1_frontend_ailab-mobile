@@ -1,10 +1,64 @@
-import React from "react";
+import React, { useContext } from "react";
+import PropTypes from "prop-types";
 import moment from "moment";
+import { userInfoContext } from "../common/context";
+import { number_format } from "../common/common";
 import no1 from "../../styles/img/ranking/trophy1.png";
 import no2 from "../../styles/img/ranking/trophy2.png";
 import no3 from "../../styles/img/ranking/trophy3.png";
 import gold from "../../styles/img/ranking/trophy4.png";
-import { number_format } from "../common/common";
+
+const RankItem = ({
+	Ranking,
+	userName,
+	turnover,
+	isCurrentUser,
+	userRank,
+	idx
+}) => {
+	let Class;
+	if (idx === 0) {
+		Class = "no1";
+	} else if (idx === 1) {
+		Class = "no2";
+	} else if (idx === 2) {
+		Class = "no3";
+	}
+	return (
+		<li className={isCurrentUser ? `myRank ${Class}` : Class}>
+			<div>
+				<RankImg Ranking={idx + 1} />
+				{Ranking}
+				{userRank}
+			</div>
+			<div>{userName}</div>
+			<div>{number_format(turnover)}</div>
+		</li>
+	);
+};
+
+RankItem.propTypes = {
+	isCurrentUser: PropTypes.bool.isRequired,
+	userName: PropTypes.string.isRequired,
+	turnover: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+		.isRequired,
+	Ranking: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+		.isRequired
+};
+
+RankItem.defaultProps = {
+	userRank: 999
+};
+
+RankItem.propTypes = {
+	userRank: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	isCurrentUser: PropTypes.bool.isRequired,
+	userName: PropTypes.string.isRequired,
+	turnover: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+		.isRequired,
+	Ranking: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+		.isRequired
+};
 
 export const RankImg = ({ Ranking }) => {
 	let img = <img src={gold} alt="gold" />;
@@ -14,56 +68,60 @@ export const RankImg = ({ Ranking }) => {
 	} else if (rank === 1) img = <img src={no1} alt="no1" />;
 	else if (rank === 2) img = <img src={no2} alt="no2" />;
 	else if (rank === 3) img = <img src={no3} alt="no3" />;
-	return img;
+	return img || "";
 };
 
-const RankItem = ({ Ranking, userName, turnover, isCurrentUser }) => {
-	const className = Ranking <= 3 ? `no${Ranking}` : "";
-	return (
-		<li className={isCurrentUser ? `${className} myRank` : className}>
-			<div>
-				<RankImg Ranking={Ranking} />
-				{Ranking}
-			</div>
-			<div>{userName}</div>
-			<div>{number_format(turnover)}</div>
-		</li>
-	);
-};
-
-const RankItems = ({ datas }) =>
-	datas?.map((data, idx) => {
+const RankItems = ({ datas, defPrize }) => {
+	return datas?.map((data, idx) => {
 		const { userName, wTurnover, rank } = data;
 		return (
 			<RankItem
-				key={`rank-${idx}-${userName}-${wTurnover}`}
-				Ranking={rank ?? idx + 1}
+				key={`rank-${userName}-${wTurnover}`}
+				Ranking={defPrize[idx]?.rank}
+				userRank={idx === datas.length - 1 ? rank : null}
 				userName={userName}
 				turnover={wTurnover}
 				isCurrentUser={Boolean(rank)}
+				idx={idx}
 			/>
 		);
 	});
+};
 
-const RankList = ({ loading, i18n = {}, datas, lastUpdTime, isLastEvent }) => {
+const RankList = ({
+	loading,
+	i18n = {},
+	datas,
+	lastUpdTime,
+	isLastEvent,
+	defPrize
+}) => {
+	const { userInfo } = useContext(userInfoContext);
+
 	return (
 		<>
 			{!loading && (!datas || datas.length === 0) ? (
-				<div className="nodata icon icon-nodata">{i18n.msg_NoData}</div>
+				<div className="icon icon-nodata">{i18n.msg_NoData}</div>
 			) : (
-				<div className="ranklist">
+				<div className="ranklist open">
 					<ul>
 						<li className="listTitle">
 							<div>{i18n.lbl_Ranking}</div>
-							<div>{i18n.lbl_Username}</div>
 							<div>{i18n.lbl_Points}</div>
+							<div>{i18n.lbl_Username}</div>
 						</li>
-						<RankItems datas={datas} i18n={i18n} />
+
+						<RankItems
+							datas={datas}
+							userInfo={userInfo}
+							i18n={i18n}
+							defPrize={defPrize}
+						/>
 					</ul>
 				</div>
 			)}
 			{isLastEvent ? null : (
-				<div className="text">
+				<div className="remind">
 					{i18n.lbl_LastUpdTime?.replace(
 						"{{time}}",
 						moment(lastUpdTime).format("YYYY-MM-DD H:mm:ss")
@@ -72,6 +130,25 @@ const RankList = ({ loading, i18n = {}, datas, lastUpdTime, isLastEvent }) => {
 			)}
 		</>
 	);
+};
+
+RankList.defaultProps = {
+	loading: false,
+	datas: [],
+	isLastEvent: false,
+	defPrize: {}
+};
+
+RankList.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	loading: PropTypes.bool,
+	datas: PropTypes.arrayOf(PropTypes.object),
+	defPrize: PropTypes.objectOf(PropTypes.object),
+	lastUpdTime: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.instanceOf(Date)
+	]).isRequired,
+	isLastEvent: PropTypes.bool
 };
 
 export default RankList;

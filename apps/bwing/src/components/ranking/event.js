@@ -1,28 +1,55 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { defEuroTourBtns } from "./def";
+import BtnBar from "../common/btnBar";
+import { useHandleSelect } from "./hook";
 import PrizeList from "./prize";
-import firstPrize from "../../styles/img/ranking/money.png";
-import { defPrize } from "./def";
-import config from "../../config";
 
-const Event = ({ userInfo = {}, i18n = {}, isOpen }) => {
+const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
+	const { selected, handleSelect } = useHandleSelect({
+		defaultSelect: defEuroTourBtns.FinalTournament.value
+	});
+
 	return (
 		<div className={`rankInBox${isOpen ? " open" : ""}`}>
 			<div className="title">{i18n.lbl_Event}</div>
 			<div className="textBox">
-				<h1>{i18n.lbl_No1_Reward}</h1>
-				<p>{defPrize[0]?.prize}</p>
+				{selected === defEuroTourBtns.FinalTournament.value ? (
+					<>
+						<p>{i18n.lbl_EuroEventTitle1}</p>
+						<p>{i18n.lbl_EuroEventTitle2}</p>
+					</>
+				) : (
+					<p>{i18n.lbl_MonthlyTournament}</p>
+				)}
 			</div>
-			<img src={firstPrize} alt="first prize" />
-			<PrizeList userInfo={userInfo} i18n={i18n} />
+			<BtnBar
+				i18n={i18n}
+				selected={selected}
+				handleSelect={handleSelect}
+				mainKey="leader-board-records-btnsOfCategory"
+				defBtns={defEuroTourBtns}
+			/>
+			<PrizeList userInfo={userInfo} category={selected} i18n={i18n} />
 			<a
-				rel="noreferrer"
+				href={`release.bwing.com/SiteSkin/Bwing/Ranking/UEFAEuro-${userInfo.langId}.html`}
 				target="_blank"
-				href={`${config.t_and_cURL}/SiteSkin/${config.siteName}/ranking/${userInfo.langId}2.html`}
+				rel="noreferrer"
 				className="remind btn">
 				{i18n.lbl_MoreDetails}
 			</a>
 		</div>
 	);
+};
+
+Event.defaultProps = {
+	isOpen: false
+};
+
+Event.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
+	isOpen: PropTypes.bool
 };
 
 export default Event;
