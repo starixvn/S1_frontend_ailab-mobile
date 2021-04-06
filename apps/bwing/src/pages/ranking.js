@@ -1,20 +1,27 @@
 import React, { useContext } from "react";
-import { i18nContext, userInfoContext } from "../components/common/context";
+import {
+	i18nContext,
+	userInfoContext,
+	navContext,
+	defNavPanel
+} from "../components/common/context";
 import Event from "../components/ranking/event";
 import Final from "../components/ranking/final";
 import Record from "../components/ranking/records";
 import { defBtns, defElemType, defEuroBtns } from "../components/ranking/def";
 import { useHandleSelect } from "../components/ranking/hook";
-import useHandleLogin from "../components/hook/useHandleLogin";
 import BtnBar from "../components/common/btnBar";
 import TournamentPoints from "../components/ranking/tournamentPoints";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
+	const { setNav } = useContext(navContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { isLogin } = userInfo;
 
-	const { handleLogin } = useHandleLogin();
+	const handleLogin = () => {
+		setNav(defNavPanel.login);
+	};
 	const { selected, handleSelect } = useHandleSelect({
 		defaultSelect: defBtns.Event.value,
 		handleLogin,
