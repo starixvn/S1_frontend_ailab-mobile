@@ -96,7 +96,7 @@ div[tabindex="-1"] {
   transition: transition;
   transition: transition, -webkit-transition;
   z-index: 4;
-  background: #001942;
+  background: #D2E2F9;
   overflow: scroll;
   visibility: hidden;
   opacity: 0;
@@ -117,10 +117,10 @@ div[tabindex="-1"] {
 
 .switch {
   width: 100%;
-  border: 1px solid #F77A00;
-  background: black;
+  border: 1px solid #5574A7;
+  background: #c6d4f1;
   border-radius: 30px;
-  color: #6F6F6F;
+  color: #5574A7;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -146,8 +146,8 @@ div[tabindex="-1"] {
 
 .switch > div.switchBg {
   position: absolute;
-  background: -webkit-gradient(linear, left top, left bottom, from(#FB8F25), color-stop(#F77A00), to(#FF5D00));
-  background: linear-gradient(to bottom, #FB8F25, #F77A00, #FF5D00);
+  background: -webkit-gradient(linear, left top, left bottom, from(#435F8B), to(#6383B9));
+  background: linear-gradient(to bottom, #435F8B, #6383B9);
   width: 50%;
   height: 100%;
   border-radius: 30px;
@@ -161,6 +161,14 @@ div[tabindex="-1"] {
   left: 50%;
   -webkit-transition: 0.7s;
   transition: 0.7s;
+}
+
+.switch + .Join {
+  display: none;
+}
+
+.switch + .Join.active {
+  display: block;
 }
 
 .Login {
@@ -231,10 +239,6 @@ div[tabindex="-1"] {
   text-align: center;
 }
 
-.Join {
-  background: #001942;
-}
-
 .Join .dropdown .btn {
   padding: 0;
   background: transparent;
@@ -270,6 +274,7 @@ div[tabindex="-1"] {
 .Join .Terms {
   padding: 0 2vw;
   margin: 2vw 0;
+  color: #5574A7;
 }
 
 .Join .Terms.error {
@@ -277,14 +282,15 @@ div[tabindex="-1"] {
 }
 
 .Join .Terms a {
-  color: #F77A00;
+  color: #1E85EC;
+  text-decoration: underline;
 }
 
 header {
   width: calc(100% - 8vw);
   position: fixed;
   top: 0;
-  background: white;
+  background: #5574A7;
   height: 12vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1114,6 +1120,7 @@ footer > a.active .circleAnimation + span {
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
+  background: transparent;
 }
 
 .header .headerTag {
@@ -1960,6 +1967,7 @@ footer > a.active .circleAnimation + span {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background: #ecf3fd;
 }
 
 .quickSelect + .functionList {
@@ -2250,7 +2258,7 @@ footer > a.active .circleAnimation + span {
 }
 
 .step .stepLine {
-  background: #002B6C;
+  background: #c6d4f1;
   position: absolute;
   width: calc(100% - 4vw);
   height: 2vw;
@@ -2264,13 +2272,13 @@ footer > a.active .circleAnimation + span {
 }
 
 .step .stepLine .stepBar50 {
-  background: #F77A00;
+  background: #5574A7;
   width: 50%;
   height: 100%;
 }
 
 .step .stepLine .stepBar100 {
-  background: #F77A00;
+  background: #5574A7;
   width: 100%;
   height: 100%;
 }
@@ -2289,7 +2297,7 @@ footer > a.active .circleAnimation + span {
 }
 
 .step .circle {
-  background: rgba(18, 73, 165, 0.33);
+  background: rgba(85, 116, 167, 0.33);
   width: 12vw;
   height: 12vw;
   z-index: 1;
@@ -2309,7 +2317,7 @@ footer > a.active .circleAnimation + span {
 }
 
 .step .circle > div {
-  background: rgba(18, 73, 165, 0.33);
+  background: rgba(85, 116, 167, 0.33);
   width: 10vw;
   height: 10vw;
 }
@@ -2317,21 +2325,21 @@ footer > a.active .circleAnimation + span {
 .step .circle > div > div {
   width: 8vw;
   height: 8vw;
-  background: #1249A5;
+  background: #5574A7;
   font-weight: bold;
   color: #b2b2b2;
 }
 
 .step .circle.active {
-  background: rgba(247, 122, 0, 0.33);
+  background: rgba(85, 116, 167, 0.33);
 }
 
 .step .circle.active > div {
-  background: rgba(247, 122, 0, 0.33);
+  background: rgba(85, 116, 167, 0.33);
 }
 
 .step .circle.active > div > div {
-  background: #F77A00;
+  background: #5574A7;
   color: white;
 }
 
@@ -6577,7 +6585,6 @@ span.important {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  margin: 2vw;
   line-height: 7vw;
 }
 
@@ -6686,10 +6693,6 @@ span.important {
   font-size: 4vw;
 }
 
-#header {
-  background: #5574A7;
-}
-
 main {
   padding: 12vw 0;
 }
@@ -6734,7 +6737,7 @@ main .sideBar button, main .sideBar a {
   position: fixed;
   right: 1vw;
   bottom: 20vw;
-  z-index: 3;
+  z-index: 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
