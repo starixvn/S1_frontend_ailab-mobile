@@ -3,10 +3,9 @@ import PropTypes from "prop-types";
 import { defEuroDateBtns, defEuroTourBtns } from "./def";
 import { useGetRanking, useHandleSelect } from "./hook";
 import RankList from "./rankList";
-import { loadingContext } from "../common/context";
+import { loadingContext, defNavPanel, navContext } from "../common/context";
 import Dropdown from "../common/dropdown";
 import { Prize } from "./prize";
-import useHandleLogin from "../hook/useHandleLogin";
 
 const Final = ({
 	isOpen,
@@ -19,8 +18,11 @@ const Final = ({
 		i18n,
 		category: defEuroTourBtns.FinalTournament.value
 	});
+	const { setNav } = useContext(navContext);
 	const { loading, setLoading } = useContext(loadingContext);
-	const { handleLogin } = useHandleLogin();
+	const handleLogin = () => {
+		setNav(defNavPanel.login);
+	};
 
 	const { selected, handleSelect } = useHandleSelect({
 		defaultSelect: defEuroDateBtns[2021022].value,
