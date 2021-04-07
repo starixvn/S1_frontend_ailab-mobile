@@ -22,14 +22,15 @@ const Header = ({
 	children,
 	link,
 	titleClass = "title",
-	navBar
+	navBar,
+	hideId
 }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const headerClassName = !title ? "" : "header";
 
 	return (
-		<header className={headerClassName} id="header">
+		<header className={headerClassName} id={hideId ? "" : "header"}>
 			{hideLogo ? null : (
 				<a href={`/${userInfo.langId}`}>
 					<Logo langId={userInfo.langId} />
@@ -78,7 +79,8 @@ Header.defaultProps = {
 	link: null,
 	children: null,
 	titleClass: undefined,
-	navBar: null
+	navBar: null,
+	hideId: false
 };
 
 Header.propTypes = {
@@ -88,7 +90,8 @@ Header.propTypes = {
 	link: PropTypes.node,
 	children: PropTypes.node,
 	titleClass: PropTypes.string,
-	navBar: PropTypes.node
+	navBar: PropTypes.node,
+	hideId: PropTypes.bool
 };
 
 HeaderTitle.defaultProps = {

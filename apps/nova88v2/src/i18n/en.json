@@ -97,7 +97,7 @@
 	"lbl_Instant": "Instant",
 	"lbl_WireTransfers": "Local Bank Transfer",
 	"lbl_5mins": "5 mins",
-	"lbl_MobileDeposit": "Mobile Deposit",
+	"lbl_MobileDeposit": "Mobile E-Wallet",
 	"lbl_TransactionHistory": "Transaction History",
 	"lbl_WithdrawalHistory": "Withdrawal History",
 	"lbl_TransferHistory": "Transfer History",
@@ -515,7 +515,7 @@
 	"lbl_FishingGG":"Fishing World",
 	"lbl_FishingSG1":"Fishing God",
 	"lbl_FishingSG2":"Fishing War",
-	"lbl_PaymentModes":"Payment Modes",
+	"lbl_PaymentModes":"PAYMENT METHODS",
 	"lbl_SelectChannel":"Select Channel",
 	"lbl_MinMaxAmount":"Min/Max Limit",
 	"lbl_SelectBank":"Select Bank",
@@ -566,5 +566,6 @@
 	"lbl_WrongPswHint":"Your confirm password is not same as your password, please check again.",
 	"lbl_Register":"Register",
 	"lbl_AfterJoinHint":"Congratulation! You have successfully register as a member.",
-	"lbl_TpWallet_27": "PT Wallet"
+	"lbl_TpWallet_27": "PT Wallet",
+	"lbl_LIVE_SPORT" : "LIVE SPORTS"
 }
