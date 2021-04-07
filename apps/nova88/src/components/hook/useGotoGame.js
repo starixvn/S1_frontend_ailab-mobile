@@ -64,7 +64,11 @@ export const useGotoGame = ({
 						TpId: _tpId,
 						LangId: _langId,
 						gameId: _gameId,
-						fun: _isFun ? "1" : "0"
+						fun: _isFun ? "1" : "0",
+						AppType:
+							_tpId === defSpecialSetting.playTech
+								? api.tp.defGotoGame_AppType.Mobile
+								: api.tp.defGotoGame_AppType.NativeAPP
 					})
 					.then(res => {
 						if (isMountedRef.current) {
