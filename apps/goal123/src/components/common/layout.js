@@ -23,7 +23,7 @@ import { eventTime as mysteryBoxEventTime } from "../../pages/mysteryBox";
 const defPageInfo = {
 	default: {
 		titleKey: "",
-		className: "",
+		className: "mainNew",
 		hideLogo: false
 	},
 	member: {

@@ -1,16 +1,16 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { Redirect, Link } from "@reach/router";
-// import SubMenu from "../subMenu/subMenu";
-import { userInfoContext, i18nContext, msgCountContext } from "./context";
+import {
+	userInfoContext,
+	i18nContext,
+	msgCountContext,
+	defNavPanel,
+	navContext
+} from "./context";
 import JoinPanel from "../join/join";
 import LoginPanel from "../login/login";
-import ReloadSpin from "./reloadSpin";
-import { number_format } from "./common";
 import path from "../../path";
-import { tpWalletsListType } from "../transfer/transfer.def";
-import useGetBalance from "../hook/useGetMainBalance";
-import useGetTpBalance from "../hook/useGetTpBalance";
 import Logo from "./logo";
 
 const HeaderTitle = ({ title }) => (
@@ -26,15 +26,26 @@ HeaderTitle.propTypes = {
 };
 
 const Header = ({ title, hideLogo }) => {
+	const { setNav } = useContext(navContext);
+	const showSubMenu = () => {
+		setNav(defNavPanel.subMenu);
+	};
+
 	return (
 		<header className={title ? "header" : ""} id="header">
 			{hideLogo ? null : (
-				<a href="/">
-					<Logo />
-				</a>
+				<>
+					<div className="menuBtnNew">
+						<button onClick={showSubMenu}>
+							<span>≡</span>
+						</button>
+					</div>
+					<a href="/">
+						<Logo />
+					</a>
+				</>
 			)}
 			{title ? <HeaderTitle title={title} /> : <HeaderBtn />}
-			{/* <SubMenu /> */}
 		</header>
 	);
 };
@@ -53,15 +64,6 @@ const HeaderBtn = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { msgCount } = useContext(msgCountContext);
 	const [redirectPath, setRedirectPath] = useState(null);
-
-	const { mainWalletInfo, GetBalance } = useGetBalance({
-		isLogin: userInfo.isLogin
-	});
-	const { tpWalletsList, GetTpWalletList } = useGetTpBalance({
-		isLogin: userInfo.isLogin,
-		listType: tpWalletsListType.allWallets
-	});
-
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -76,20 +78,6 @@ const HeaderBtn = () => {
 			setRedirectPath(null);
 		}
 	}, [redirectPath, setRedirectPath]);
-
-	const clickReloadSpin = () => {
-		GetBalance();
-		GetTpWalletList();
-	};
-
-	const otherWalletBalance = tpWalletsList?.reduce((prev, curr) => {
-		return prev + curr.balance;
-	}, 0);
-	const allWalletBalance = mainWalletInfo.balance + otherWalletBalance;
-
-	const balance = !allWalletBalance
-		? 0
-		: number_format(allWalletBalance, false);
 
 	const ClickUserName = () => {
 		if (userInfo.isLogin) {
@@ -106,10 +94,8 @@ const HeaderBtn = () => {
 				<HeaderInfo
 					userName={userInfo?.userName}
 					currency={i18n[`Currency_${userInfo.currencyId}`]}
-					amount={balance}
 					ClickUserName={ClickUserName}
 				/>
-				<ReloadSpin func={clickReloadSpin} />
 				<div className="headerButton">
 					<Link to={path.message.root} className="icon icon-chat">
 						{msgCount ? (
@@ -123,7 +109,7 @@ const HeaderBtn = () => {
 		display = (
 			<div className="headerButton">
 				<JoinPanel />
-				<LoginPanel ButtonTitle={i18n.lbl_Login} />
+				<LoginPanel ButtonTitle={i18n.lbl_Login.toUpperCase()} />
 			</div>
 		);
 	}
@@ -137,23 +123,13 @@ const HeaderInfo = props => {
 			<div className="MemberID" onClick={props.ClickUserName}>
 				{props.userName}
 			</div>
-			<div className="Balance">
-				{props.currency} {props.amount}
-			</div>
 		</div>
 	);
 };
 
-HeaderInfo.defaultProps = {
-	amount: 0,
-	currency: ""
-};
-
 HeaderInfo.propTypes = {
 	ClickUserName: PropTypes.func.isRequired,
-	userName: PropTypes.string.isRequired,
-	currency: PropTypes.string,
-	amount: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+	userName: PropTypes.string.isRequired
 };
 
 export default Header;

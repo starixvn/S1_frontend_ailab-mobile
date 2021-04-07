@@ -492,6 +492,7 @@
 	"lbl_Vip_Normal":"Normal",
 	"lbl_Vip_Lifetime":"Lifetime",
 	"lbl_Vip_3Months":"3 Months",
-	"lbl_VIP":"VIP"
+	"lbl_VIP":"VIP",
+	"lbl_Balance":"Balance"
 
 }

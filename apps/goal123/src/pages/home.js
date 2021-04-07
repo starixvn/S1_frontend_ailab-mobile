@@ -15,6 +15,7 @@ import path from "../path";
 import { api_GetWalletInfo } from "../service/api/account";
 import Submenu from "../components/home/submenu";
 import AppDownloadHint, { isIOS } from "../components/home/appDownload";
+import HeaderShortcut from "../components/home/headerShortcut";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -131,6 +132,7 @@ const IndexPage = () => {
 		<Redirect to={redirectPath} noThrow />
 	) : (
 		<>
+			<HeaderShortcut userInfo={userInfo} i18n={i18n} />
 			<Slider />
 			<Marquee />
 			<Category />

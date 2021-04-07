@@ -492,6 +492,7 @@
 	"lbl_Vip_Normal":"Thông thường",
 	"lbl_Vip_Lifetime":"Vĩnh viễn",
 	"lbl_Vip_3Months":"3 tháng",
-	"lbl_VIP":"VIP"
+	"lbl_VIP":"VIP",
+	"lbl_Balance":"Số dư"
 
 }
