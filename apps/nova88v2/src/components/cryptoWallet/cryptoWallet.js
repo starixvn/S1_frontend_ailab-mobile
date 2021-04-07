@@ -12,7 +12,7 @@ const CryptoWallet = () => {
 	const [walletInfo, setWalletInfo] = useState([]);
 	const [form, setForm] = useState({
 		AccountName: userInfo.userName,
-		USDTInfo: [{}, {}, {}]
+		USDTInfo: []
 	});
 	const [disabledSubmit, setSubmitDisabled] = useState(true);
 	//	submit的時候檢查是否至少有填一筆address
@@ -57,8 +57,9 @@ const CryptoWallet = () => {
 				if (res.data.errorCode === 0) {
 					setForm({
 						AccountName: userInfo.userName,
-						USDTInfo: [{}, {}, {}]
+						USDTInfo: []
 					});
+					setShowAddWallet(false);
 					setPopBox({
 						isOpen: true,
 						title: i18n.lbl_ImportantNote,
@@ -110,6 +111,9 @@ const CryptoWallet = () => {
 	const onChange = ({ e, col, index }) => {
 		const { value } = e.target;
 		setForm(prev => {
+			if (!prev.USDTInfo[index]) {
+				prev.USDTInfo[index] = {};
+			}
 			prev.USDTInfo[index][col] = value;
 			return {
 				...prev
@@ -161,7 +165,7 @@ const CryptoWallet = () => {
 			{showAddWallet && (
 				<>
 					<InputBox
-						value={form.USDTInfo[0]?.NickName}
+						value={form.USDTInfo?.[0]?.NickName}
 						icon="icon-member"
 						showInfoIcon={false}
 						warningMsg={isValid[0]?.NickName?.msg}
@@ -173,7 +177,7 @@ const CryptoWallet = () => {
 						onBlur={e => validate({ e, col: "NickName", index: 0 })}
 					/>
 					<InputBox
-						value={form.USDTInfo[0]?.USDTAddress}
+						value={form.USDTInfo?.[0]?.USDTAddress}
 						icon="icon-newspaper"
 						showInfoIcon={false}
 						warningMsg={isValid[0]?.USDTAddress?.msg}
@@ -187,7 +191,7 @@ const CryptoWallet = () => {
 						}
 					/>
 					<InputBox
-						value={form.USDTInfo[1]?.NickName}
+						value={form.USDTInfo?.[1]?.NickName}
 						icon="icon-member"
 						showInfoIcon={false}
 						warningMsg={isValid[1]?.NickName?.msg}
@@ -199,7 +203,7 @@ const CryptoWallet = () => {
 						onBlur={e => validate({ e, col: "NickName", index: 1 })}
 					/>
 					<InputBox
-						value={form.USDTInfo[1]?.USDTAddress}
+						value={form.USDTInfo?.[1]?.USDTAddress}
 						icon="icon-newspaper"
 						showInfoIcon={false}
 						warningMsg={isValid[1]?.USDTAddress?.msg}
@@ -213,7 +217,7 @@ const CryptoWallet = () => {
 						}
 					/>
 					<InputBox
-						value={form.USDTInfo[2]?.NickName}
+						value={form.USDTInfo?.[2]?.NickName}
 						icon="icon-member"
 						showInfoIcon={false}
 						warningMsg={isValid[2]?.NickName?.msg}
@@ -225,7 +229,7 @@ const CryptoWallet = () => {
 						onBlur={e => validate({ e, col: "NickName", index: 2 })}
 					/>
 					<InputBox
-						value={form.USDTInfo[2]?.USDTAddress}
+						value={form.USDTInfo?.[2]?.USDTAddress}
 						icon="icon-newspaper"
 						showInfoIcon={false}
 						warningMsg={isValid[2]?.USDTAddress?.msg}
