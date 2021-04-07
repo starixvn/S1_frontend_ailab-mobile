@@ -35,7 +35,7 @@ export const initWarning = {
 	}
 };
 
-export const infoList = ({ i18n = {}, userInfo = {}, _areaCode = "" }) => {
+export const infoList = ({ i18n = {}, userInfo = {} }) => {
 	return [
 		{
 			infoTitle: "accountName",
@@ -57,7 +57,7 @@ export const infoList = ({ i18n = {}, userInfo = {}, _areaCode = "" }) => {
 		{
 			infoTitle: "phoneNo",
 			colTitle: i18n.lbl_Phone,
-			content: `(${_areaCode})${userInfo.phoneNo}`,
+			content: `(${userInfo.areaCode})${userInfo.phoneNo}`,
 			isVerified: userInfo.phoneVerified
 		},
 		{

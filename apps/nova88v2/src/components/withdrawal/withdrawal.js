@@ -166,7 +166,6 @@ const Panel = () => {
 									`/${userInfo.langId}/${path.cryptoWallet.root}`
 								);
 							};
-
 							if (isMountedRef.current) {
 								setPopBox({
 									isOpen: true,
@@ -444,11 +443,13 @@ const Panel = () => {
 								className="orange"
 								onClick={RedirectToNext.bind(
 									this,
-									selBank.accountNo,
+									userInfo.currencyId === 96
+										? selBank.usdtAddress
+										: selBank.accountNo,
 									real_amount,
-									selBank.sysId
+									userInfo.currencyId !== 96
 										? selBank.sysId
-										: selBank.usdtAddress
+										: 0
 								)}>
 								{i18n.lbl_Submit}
 							</button>

@@ -83,11 +83,10 @@ const CryptoWallet = () => {
 				}
 			})
 			.catch(err => {
-				console.log(err);
 				setPopBox({
 					isOpen: true,
 					title: i18n.lbl_ImportantNote,
-					content: err,
+					content: err.response.data.title,
 					hideCloseBtn: false
 				});
 			});
@@ -121,7 +120,7 @@ const CryptoWallet = () => {
 		api.account
 			.GetCustBankInfo()
 			.then(res => {
-				if (res.data.data.uSDTDetail) {
+				if (res.data.data?.uSDTDetail) {
 					setWalletInfo(res.data.data.uSDTDetail);
 				}
 			})
@@ -252,7 +251,7 @@ const CryptoWallet = () => {
 							{i18n.lbl_Cancel}
 						</button>
 						<button
-							className="submit"
+							className={`submit${disabledSubmit ? " gray" : ""}`}
 							disabled={disabledSubmit}
 							onClick={onSubmit}>
 							{i18n.lbl_Submit}

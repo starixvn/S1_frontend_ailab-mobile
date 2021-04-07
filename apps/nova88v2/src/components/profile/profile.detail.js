@@ -67,8 +67,7 @@ const Panel = () => {
 		};
 	}, []);
 
-	const _areaCode = country ? areaCode[country].AreaCode : "";
-	const _infoList = infoList({ i18n, userInfo, _areaCode });
+	const _infoList = infoList({ i18n, userInfo });
 
 	const yearOptions = [];
 	const dateOptions = [];
@@ -525,6 +524,7 @@ Birthday.propTypes = {
 };
 
 const ColumnItem = props => {
+	console.log(props);
 	return (
 		<>
 			<li>

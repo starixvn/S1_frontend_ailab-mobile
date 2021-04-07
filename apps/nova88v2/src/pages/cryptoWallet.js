@@ -11,11 +11,11 @@ const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const navigate = useNavigate();
-	useEffect(() => {
-		if (userInfo.currencyId !== 96) {
-			navigate(path.home.root);
-		}
-	}, [userInfo]);
+	// useEffect(() => {
+	// 	if (userInfo.currencyId !== 96) {
+	// 		navigate(path.home.root);
+	// 	}
+	// }, [userInfo]);
 	const link = (
 		<>
 			<Link to={path.wallet.root}>{i18n.lbl_Wallet}</Link>
