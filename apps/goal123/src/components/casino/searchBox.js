@@ -114,7 +114,10 @@ SearchBox.defaultProps = {
 SearchBox.propTypes = {
 	TpList: PropTypes.objectOf(PropTypes.any).isRequired,
 	provider: PropTypes.objectOf(PropTypes.any).isRequired,
-	DefaultProvider: PropTypes.objectOf(PropTypes.any),
+	DefaultProvider: PropTypes.oneOfType([
+		PropTypes.objectOf(PropTypes.any),
+		PropTypes.number
+	]),
 	EditSearchField: PropTypes.func.isRequired,
 	searchText: PropTypes.string,
 	gameType: PropTypes.objectOf(PropTypes.any).isRequired
