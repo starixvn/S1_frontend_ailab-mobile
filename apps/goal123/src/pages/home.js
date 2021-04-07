@@ -2,8 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Redirect } from "@reach/router";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
-import Category from "../components/home/category";
-import ShortcutBar from "../components/home/shortcutBar";
+import Menu from "../components/home/menu";
 import {
 	i18nContext,
 	userInfoContext,
@@ -132,11 +131,12 @@ const IndexPage = () => {
 		<Redirect to={redirectPath} noThrow />
 	) : (
 		<>
-			<HeaderShortcut userInfo={userInfo} i18n={i18n} />
+			{userInfo.isLogin ? (
+				<HeaderShortcut userInfo={userInfo} i18n={i18n} />
+			) : null}
 			<Slider />
 			<Marquee />
-			<Category />
-			{userInfo.isLogin ? <ShortcutBar /> : null}
+			<Menu i18n={i18n} userInfo={userInfo} />
 			<Submenu />
 			{!isIOS && appHint ? (
 				<AppDownloadHint

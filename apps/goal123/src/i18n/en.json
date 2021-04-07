@@ -493,6 +493,17 @@
 	"lbl_Vip_Lifetime":"Lifetime",
 	"lbl_Vip_3Months":"3 Months",
 	"lbl_VIP":"VIP",
-	"lbl_Balance":"Balance"
+	"lbl_Balance":"Balance",
+	"lbl_HotGame":"Hot Game",
+	"lbl_SabaSoccer":"Saba Soccer",
+	"lbl_Volleyball":"Volleyball",
+	"lbl_Paradise":"Paradise",
+	"lbl_Oneshot_Fishing":"Oneshot Fishing",
+	"lbl_Game_ICG_DRAGONBALL_FISHING":"Dragonball Fishing",
+	"lbl_Game_ICG_FISHING_OF_SAVIORS":"Fishing Of Saviors",
+	"lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS":"The Tyrant And The Princess",
+	"lbl_FishingGG":"Fishing World",
+	"lbl_FishingSG1":"Fishing God",
+	"lbl_FishingSG2":"Fishing War"
 
 }

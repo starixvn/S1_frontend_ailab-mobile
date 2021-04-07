@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "@reach/router";
 import { number_format } from "../common/common";
@@ -9,6 +9,7 @@ import ReloadSpin from "../common/reloadSpin";
 import path from "../../path";
 
 const HeaderShortcut = ({ userInfo, i18n }) => {
+	const [showingBalance, setShowingBalance] = useState(true);
 	const { mainWalletInfo, GetBalance } = useGetBalance({
 		isLogin: userInfo.isLogin
 	});
@@ -31,13 +32,25 @@ const HeaderShortcut = ({ userInfo, i18n }) => {
 		GetTpWalletList();
 	};
 
+	const clickEye = () => {
+		setShowingBalance(prev => !prev);
+	};
+
 	return (
-		<div className="walletBox">
+		<div className="walletBox open">
 			<div className="side-info">
-				<div>{i18n.lbl_Balance}</div>
+				<p>{i18n.lbl_Balance}</p>
 				<div>
-					<span>{i18n[`Currency_${userInfo.currencyId}`]} </span>
-					{balance}
+					<button
+						className={`icon icon-eye${
+							showingBalance ? "" : "-blocked"
+						}`}
+						onClick={clickEye}
+					/>
+					<q>
+						<span>{i18n[`Currency_${userInfo.currencyId}`]} </span>
+						{showingBalance ? balance : "*****"}
+					</q>
 					<ReloadSpin func={clickReloadSpin} />
 				</div>
 			</div>
