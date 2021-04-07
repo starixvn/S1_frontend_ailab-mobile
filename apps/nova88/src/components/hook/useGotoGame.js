@@ -10,7 +10,7 @@ import { popBoxContext, i18nContext } from "../common/context";
 import api from "../../service/api";
 
 export const defSpecialSetting = {
-	playTech: defGameInfo.LIVEcasinoPlayTech.tpId
+	playTech: defGameInfo.Casino_PT.tpId
 };
 
 const launchGameWithFunMode = ({ client, game, lang, mode }) => {

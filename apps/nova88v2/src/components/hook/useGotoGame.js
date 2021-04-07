@@ -10,7 +10,7 @@ import { popBoxContext, i18nContext } from "../common/context";
 import api from "../../service/api";
 
 export const defSpecialSetting = {
-	playTech: defGameInfo.LIVEcasinoPlayTech.tpId
+	playTech: defGameInfo.Casino_PT.tpId
 };
 
 const launchGameWithFunMode = ({ client, game, lang, mode }) => {
@@ -52,13 +52,12 @@ export const useGotoGame = ({
 
 	const handleGoToGame = useCallback(
 		({
-			isLogin: _isLogin,
+			isLogin: _isLogin = true,
 			langId: _langId,
 			tpId: _tpId,
 			gameId: _gameId,
 			isFun: _isFun
 		}) => {
-			console.log(_isLogin, _langId, _tpId, _gameId, _isFun);
 			if (_isLogin) {
 				api.tp
 					.GotoGame({

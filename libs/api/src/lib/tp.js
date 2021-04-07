@@ -31,10 +31,12 @@ export class TpAPI extends BaseAPI {
 		fun = null
 	}) =>
 		this.tpRequest.post("/GotoGame", {
-			gameId,
 			TpId,
 			LangId,
 			AppType,
-			fun
+			fun,
+			inputs: {
+				gameId
+			}
 		});
 }

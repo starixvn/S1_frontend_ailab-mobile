@@ -64,7 +64,8 @@ const defIconType = {
 };
 
 const eventTime = {
-	new_vip: { startDate: "2021/02/05 11:00:00" }
+	new_vip: { startDate: "2021/02/05 11:00:00" },
+	new_PT: { endDate: "2021/04/15 11:00:00" }
 };
 
 const gameList = ({ langId }) => [
@@ -111,12 +112,6 @@ const gameList = ({ langId }) => [
 		categoryIcon: "livecasino",
 		translateKey: "lbl_LiveCasino",
 		items: [
-			{
-				...defGameInfo.LIVEcasinoPlayTech,
-				spanText: "PlayTech",
-				img: LIVEcasino_WM,
-				useGotoGame: true
-			},
 			{
 				...defGameInfo.LIVEcasinoN2Live,
 				spanText: "N2Live",
@@ -169,6 +164,19 @@ const gameList = ({ langId }) => [
 		categoryIcon: "icon_777",
 		translateKey: "lbl_Casino",
 		items: [
+			{
+				...defGameInfo.Casino_PT,
+				parameter: defGameInfo.Casino_PT,
+				spanText: "PT",
+				img: casino_PP,
+				path: path.casino.root,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_PT)
+					}
+				]
+			},
 			{
 				...defGameInfo.Casino_PP,
 				parameter: defGameInfo.Casino_PP,
@@ -398,7 +406,6 @@ export const defGameInfo = {
 	LIVEcasinoDG: { tpId: 4, gameId: 4 },
 	LIVEcasinoAG: { tpId: 3, gameId: 3 },
 	LIVEcasinoMW: { tpId: 5, gameId: 105 },
-	LIVEcasinoPlayTech: { tpId: 27, gameId: "0" },
 	Casino_All: { tpId: 0 },
 	Casino_PP: { tpId: 5 },
 	casino_ICG: { tpId: 24 },
@@ -408,6 +415,7 @@ export const defGameInfo = {
 	Casino_YGG: { tpId: 8 },
 	Casino_SG: { tpId: 10 },
 	Casino_PG: { tpId: 14 },
+	Casino_PT: { tpId: 27, gameId: "0" },
 	// Casino_918Kiss: { tpId: 21, needLogin: true },
 	Casino_OW: { tpId: 1, gameId: 208 },
 	Fishing_AB3: { tpId: 16, gameId: "AB3" },
