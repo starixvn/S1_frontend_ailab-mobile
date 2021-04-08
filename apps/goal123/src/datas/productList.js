@@ -55,11 +55,6 @@ import LIVEcasino_SA from "../styles/img/hotgame-m/livecasino/livecasino-sa.png"
 import LIVEcasino_AE from "../styles/img/hotgame-m/livecasino/livecasino-ae.png";
 import LIVEcasino_EB from "../styles/img/hotgame-m/livecasino/livecasino-ebet.png";
 
-import Affiliate from "../styles/img/affiliate.jpg";
-import { siteInfo } from "../config";
-import ranking from "../styles/img/ranking.jpg";
-import vip from "../styles/img/vip.jpg";
-
 import { isEventPeriod } from "../components/common/common";
 import path from "../path";
 
@@ -130,7 +125,7 @@ export const defCol = {
 	livecasino: "livecasino"
 };
 
-const gameList = langId => [
+const gameList = [
 	{
 		category: "hotGame",
 		translateKey: "lbl_HotGame",
@@ -175,6 +170,11 @@ const gameList = langId => [
 				...defGameInfo.V8Poker,
 				img: HotGame_V8Poker,
 				spanTextKey: "lbl_V8Poker"
+			},
+			{
+				...defGameInfo.eSports,
+				img: HotGame_ESports,
+				spanTextKey: "lbl_eSports"
 			},
 			{
 				...defGameInfo.eSports,
@@ -428,56 +428,6 @@ const gameList = langId => [
 			}
 		]
 	}
-	// {
-	// 	category: "affiliate",
-	// 	categoryIcon: "affiliate",
-	// 	translateKey: "lbl_Affiliates",
-	// 	href: siteInfo(langId).affiliateLink,
-	// 	items: [
-	// 		{
-	// 			icon: "affiliate",
-	// 			img: Affiliate,
-	// 			spanTextKey: "lbl_Affiliates"
-	// 		}
-	// 	]
-	// },
-	// {
-	// 	category: "vip",
-	// 	translateKey: "lbl_VIP",
-	// 	items: [
-	// 		{
-	// 			icon: "vip",
-	// 			path: path.vip.root,
-	// 			img: vip,
-	// 			spanTextKey: "lbl_VIP",
-	// 			eventIcon: [
-	// 				{
-	// 					icon: defIconType.new,
-	// 					inPeriod: isEventPeriod(eventTime.new_vip)
-	// 				}
-	// 			]
-	// 		}
-	// 	]
-	// },
-	// {
-	// 	category: "ranking",
-	// 	categoryIcon: "icon32px_top",
-	// 	translateKey: "lbl_Ranking",
-	// 	eventIcon: [
-	// 		{
-	// 			icon: defIconType.live,
-	// 			inPeriod: isEventPeriod(eventTime.ranking)
-	// 		}
-	// 	],
-	// 	items: [
-	// 		{
-	// 			icon: "icon32px_top",
-	// 			path: path.leaderBoard.root,
-	// 			img: ranking,
-	// 			spanTextKey: "lbl_Ranking"
-	// 		}
-	// 	]
-	// }
 ];
 
 export default gameList;

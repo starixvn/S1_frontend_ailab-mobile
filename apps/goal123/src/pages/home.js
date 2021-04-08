@@ -15,6 +15,7 @@ import { api_GetWalletInfo } from "../service/api/account";
 import Submenu from "../components/home/submenu";
 import AppDownloadHint, { isIOS } from "../components/home/appDownload";
 import HeaderShortcut from "../components/home/headerShortcut";
+import EventSwipper from "../components/home/eventSwipper";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -135,6 +136,7 @@ const IndexPage = () => {
 				<HeaderShortcut userInfo={userInfo} i18n={i18n} />
 			) : null}
 			<Slider />
+			<EventSwipper userInfo={userInfo} />
 			<Marquee />
 			<Menu i18n={i18n} userInfo={userInfo} />
 			<Submenu />
