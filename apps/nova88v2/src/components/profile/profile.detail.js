@@ -3,7 +3,7 @@ import { useNavigate } from "@reach/router";
 import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import PropTypes from "prop-types";
 import Inputbox from "../common/inputbox.hint";
-import Dropdown from "../common/dropdown";
+import Dropdown from "./dropdown.profile";
 import areaCode from "../../datas/areaCode";
 import useTip from "../hook/useTip";
 import {

@@ -2081,12 +2081,14 @@ footer > a.active .circleAnimation + span {
           align-items: center;
 }
 
+.btn-group.transferAll .clickBtn {
+  max-width: 6vw;
+}
+
 .btn-group.transferAll .blue {
   width: 20vw;
   min-width: 20vw;
   height: 100%;
-  -ms-flex-flow: wrap;
-      flex-flow: wrap;
   font-weight: bold;
 }
 
@@ -2688,10 +2690,6 @@ input[type="checkbox"] + label {
 
 .icon-rate::before {
   content: "('000)";
-}
-
-.icon-pencil + input {
-  text-align: right;
 }
 
 .fileUpload {
@@ -6107,15 +6105,19 @@ span.important {
   margin: 0 0 0 3vw;
 }
 
-.depositModule .selectModule .bankName .bank div {
+.depositModule .selectModule .bankName .bank > div {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 50vw;
 }
 
-.depositModule .selectModule .bankName .bank div:last-child {
-  color: #a5aab1;
+.depositModule .selectModule .bankName .bank > div:first-child {
+  color: #5574A7;
+}
+
+.depositModule .selectModule .bankName .bank > div:last-child {
+  color: #666;
 }
 
 .depositModule .selectModule .bankName img {
