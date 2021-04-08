@@ -47,6 +47,7 @@
 	"Currency_51": "VND",
 	"Currency_6": "EURO",
 	"Currency_9": "AUD",
+	"Currency_96": "USDT",
 	"msg_EnterRealName": "Please enter your real name.",
 	"msg_EnterPhoneNumber": "Please enter phone number.",
 	"lbl_Month1": "JAN",
@@ -517,5 +518,11 @@
 	"lbl_AgendaTitle" : "MONTHLY DEPOSIT & TURNOVER RACE TOURNAMENT",
 	"lbl_Tournament" : "Tournament",
 	"lbl_Stage": "Stage",
-	"lbl_Youtube":"Youtube"
+	"lbl_Youtube":"Youtube",
+	"lbl_CryptoWallet":"Crypto Wallet",
+	"lbl_CryptoWalletTip1": "For any request of modification please contact CSD.",
+	"lbl_CryptoWalletTip2": "Please note:Once the crypto wallet is submitted,it cannot be modified/ deleted.For any request of modification, please contact CSD.",
+	"lbl_CryptoWalletNickName":"Wallet Nickname",
+	"lbl_CryptoWalletAddress":"Wallet Address",
+	"lbl_InvalidAddress":"Invalid Address"
 }

@@ -517,5 +517,11 @@
 	"lbl_AgendaTitle" : "TURNAMEN DEPOSIT BULANAN & TURNOVER",
 	"lbl_Tournament" : "TURNAMEN",
 	"lbl_Stage": "Tahap",
-	"lbl_Youtube":"Youtube"
+	"lbl_Youtube":"Youtube",
+	"lbl_CryptoWallet":"Crypto Wallet",
+	"lbl_CryptoWalletTip1": "For any request of modification please contact CSD.",
+	"lbl_CryptoWalletTip2": "Please note:Once the crypto wallet is submitted,it cannot be modified/ deleted.For any request of modification, please contact CSD.",
+	"lbl_CryptoWalletNickName":"Wallet Nickname",
+	"lbl_CryptoWalletAddress":"Wallet Address",
+	"lbl_InvalidAddress":"Invalid Address"
 }

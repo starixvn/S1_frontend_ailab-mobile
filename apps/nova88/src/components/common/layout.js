@@ -156,6 +156,11 @@ const defPageInfo = {
 		titleKey: "lbl_MysteryBox_EventTitle",
 		className: "main event2",
 		hideLogo: true
+	},
+	cryptoWallet: {
+		titleKey: "lbl_Profile",
+		className: "main",
+		hideLogo: true
 	}
 };
 
