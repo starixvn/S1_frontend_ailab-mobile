@@ -317,7 +317,7 @@ header .Join .inputBox i.icon.icon-warning.open, header .Login .inputBox i.icon.
 }
 
 header .Join button, header .Login button {
-  background: #1E85EC;
+  background: #1e85ec;
   border-radius: 3px;
   color: white;
   padding: 3vw;
@@ -338,7 +338,7 @@ header .Join .Terms.error, header .Login .Terms.error {
 }
 
 header .Join .Terms a, header .Login .Terms a {
-  color: #1E85EC;
+  color: #1e85ec;
   text-decoration: underline;
 }
 
@@ -348,7 +348,7 @@ header .Join .Terms input[type="checkbox"], header .Login .Terms input[type="che
 
 header .Join .Terms input[type="checkbox"] + label, header .Login .Terms input[type="checkbox"] + label {
   margin: 0vw 1vw 0 0;
-  border: 1px solid #1E85EC;
+  border: 1px solid #1e85ec;
   border-radius: 100%;
   width: 4vw;
   height: 4vw;
@@ -435,7 +435,7 @@ header .headerButton > button {
 }
 
 header .headerButton > button:nth-child(3) {
-  background: #e92529;
+  background: #d83b35;
 }
 
 header .headerButton .icon-chat {
@@ -922,7 +922,7 @@ footer > a span {
 }
 
 footer > a.open {
-  border-bottom: 2px solid #1E85EC;
+  border-bottom: 2px solid #1e85ec;
   -webkit-transition: 0.7s;
   transition: 0.7s;
 }
@@ -964,11 +964,11 @@ footer > a.open .circleAnimation:after {
 }
 
 footer > a.open .circleAnimation > div {
-  color: #1E85EC;
+  color: #1e85ec;
 }
 
 footer > a.open .circleAnimation + span {
-  color: #1E85EC;
+  color: #1e85ec;
 }
 
 @-webkit-keyframes zoom1 {
@@ -1349,7 +1349,7 @@ footer > a.open .circleAnimation + span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border-bottom: 1px solid #1E85EC;
+  border-bottom: 1px solid #1e85ec;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1378,8 +1378,8 @@ footer > a.open .circleAnimation + span {
 }
 
 .tag a.open {
-  color: #1E85EC;
-  border-color: #1E85EC;
+  color: #1e85ec;
+  border-color: #1e85ec;
   font-weight: bold;
 }
 
@@ -1422,7 +1422,7 @@ footer > a.open .circleAnimation + span {
 .avatar button {
   width: 7vw;
   height: 7vw;
-  background: #1E85EC;
+  background: #1e85ec;
   border-radius: 100%;
   padding: 1vw;
   display: -webkit-box;
@@ -1449,7 +1449,7 @@ footer > a.open .circleAnimation + span {
 }
 
 .avatar div {
-  background: #1E85EC;
+  background: #1e85ec;
   padding: 1vw;
   border-radius: 5px;
   text-align: center;
@@ -1543,7 +1543,7 @@ footer > a.open .circleAnimation + span {
 
 .info ul li span.title button.icon, .info ul li span.title i.icon {
   border-radius: 100%;
-  background: #1E85EC;
+  background: #1e85ec;
   color: white;
   width: 4.6vw;
   height: 4.6vw;
@@ -1755,7 +1755,7 @@ footer > a.open .circleAnimation + span {
 }
 
 .btn-group button.orange, .btn-group a.orange {
-  background: #1E85EC;
+  background: #1e85ec;
 }
 
 .btn-group button.blue, .btn-group a.blue {
@@ -1764,7 +1764,7 @@ footer > a.open .circleAnimation + span {
 
 .btn-group button.white, .btn-group a.white {
   background: white;
-  color: #1D3662;
+  color: #1d3662;
 }
 
 .btn-group button.yellow, .btn-group a.yellow {
@@ -1821,7 +1821,7 @@ footer > a.open .circleAnimation + span {
 }
 
 .selectBank button.open {
-  border: 2px solid #1E85EC;
+  border: 2px solid #1e85ec;
 }
 
 .selectBank > img {
@@ -1873,13 +1873,13 @@ footer > a.open .circleAnimation + span {
 }
 
 .step .stepLine .stepBar50 {
-  background: #1E85EC;
+  background: #1e85ec;
   width: 50%;
   height: 1vw;
 }
 
 .step .stepLine .stepBar100 {
-  background: #1E85EC;
+  background: #1e85ec;
   width: 100%;
   height: 1vw;
 }
@@ -1926,7 +1926,7 @@ footer > a.open .circleAnimation + span {
 .step .circle > div > div {
   width: 8vw;
   height: 8vw;
-  background: #1E85EC;
+  background: #1e85ec;
   font-weight: bold;
   color: white;
 }
@@ -1941,7 +1941,7 @@ footer > a.open .circleAnimation + span {
 
 .depositType .icon:before {
   font-size: 10vw;
-  color: #1E85EC;
+  color: #1e85ec;
 }
 
 .depositType .localBank {
@@ -1971,7 +1971,7 @@ footer > a.open .circleAnimation + span {
 
 .depositType div a, .depositType div button {
   border-radius: 100%;
-  border: 1px solid #134DAE;
+  border: 1px solid #134dae;
   width: 20vw;
   height: 20vw;
   display: -webkit-box;
@@ -2001,7 +2001,7 @@ footer > a.open .circleAnimation + span {
 }
 
 .depositType div .title {
-  color: #1E85EC;
+  color: #1e85ec;
 }
 
 .depositType div .creditTime {
@@ -2141,7 +2141,7 @@ footer > a.open .circleAnimation + span {
   color: white;
   font-size: 12px;
   margin: 0 0 5px;
-  border: 1px solid #1E85EC;
+  border: 1px solid #1e85ec;
   padding: 3vw 1vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2252,7 +2252,7 @@ button.clickBtn {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  color: #1D3662;
+  color: #1d3662;
   margin-left: 2vw;
   width: 7vw;
   height: 7vw;
@@ -2300,7 +2300,7 @@ button.clickBtn:before {
   display: none;
   position: absolute;
   right: -1vw;
-  background: #1E85EC;
+  background: #1e85ec;
   border-radius: 100%;
   width: 5vw;
   height: 5vw;
@@ -2318,7 +2318,7 @@ button.clickBtn:before {
   background: none;
   -webkit-box-shadow: 0px 0px #883200;
           box-shadow: 0px 0px #883200;
-  border: 1px solid #134DAE;
+  border: 1px solid #134dae;
   top: 1px;
 }
 
@@ -2333,7 +2333,7 @@ button.clickBtn:before {
 }
 
 .tip a {
-  color: #1E85EC;
+  color: #1e85ec;
   text-decoration: underline;
   margin-left: 10px;
   float: right;
@@ -2344,7 +2344,7 @@ button.clickBtn:before {
   display: none;
   margin-top: 1vw;
   width: 100%;
-  color: #e92529;
+  color: #d83b35;
 }
 
 .errortip.open {
@@ -2423,7 +2423,7 @@ button.clickBtn:before {
 }
 
 .Message .functionList ~ .account:before {
-  color: #e92529;
+  color: #d83b35;
   content: "●";
   position: absolute;
   top: 1vw;
@@ -2509,7 +2509,7 @@ button.clickBtn:before {
 }
 
 .functionList ~ .account .icon-circle-right {
-  color: #134DAE;
+  color: #134dae;
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
   -webkit-transition: 0.7s;
@@ -2541,7 +2541,7 @@ button.clickBtn:before {
   transition: 0.7s;
   opacity: 1;
   height: auto;
-  border-top: 1px solid #1E85EC;
+  border-top: 1px solid #1e85ec;
   padding-top: 2vw;
   line-height: normal;
 }
@@ -2569,7 +2569,7 @@ button.clickBtn:before {
 }
 
 .checkbox .icon {
-  color: #134DAE;
+  color: #134dae;
   margin-right: 2vw;
 }
 
@@ -2666,7 +2666,7 @@ button.clickBtn:before {
   line-height: initial;
   z-index: 1;
   font-weight: bold;
-  color: #1D3662;
+  color: #1d3662;
 }
 
 .casino .slotList .info span.icon {
@@ -2752,7 +2752,7 @@ button.clickBtn:before {
 }
 
 .filter {
-  color: #1D3662;
+  color: #1d3662;
   text-align: right;
   float: right;
   background: #fab617;
@@ -2796,7 +2796,7 @@ button.clickBtn:before {
       -ms-flex: 1;
           flex: 1;
   color: white;
-  border: 1px solid #1E85EC;
+  border: 1px solid #1e85ec;
   border-radius: 3px;
   padding: 1vw 0;
   margin-right: 2vw;
@@ -2807,7 +2807,7 @@ button.clickBtn:before {
 }
 
 .filterBtn button.open {
-  background: #1E85EC;
+  background: #1e85ec;
 }
 
 .search {
@@ -3082,7 +3082,7 @@ input.error {
 
 .webmap div span {
   font-weight: bold;
-  color: #1E85EC;
+  color: #1e85ec;
 }
 
 .webmap div a {
@@ -3240,7 +3240,7 @@ span.important {
 
 .promotions .claimed {
   position: absolute;
-  background: rgba(233, 37, 41, 0.8);
+  background: rgba(216, 59, 53, 0.8);
   width: 17vw;
   height: 17vw;
   border-radius: 100%;
@@ -3266,7 +3266,7 @@ span.important {
 
 .promotions .tag ~ div.promodule {
   padding: 3vw;
-  border: 1px dotted #1E85EC;
+  border: 1px dotted #1e85ec;
   margin-bottom: 3vw;
   background: rgba(0, 0, 0, 0.3);
   display: -webkit-box;
@@ -3295,7 +3295,7 @@ span.important {
 
 .promotions .tag ~ div.promodule .protitle {
   margin-top: 1vw;
-  color: #1E85EC;
+  color: #1e85ec;
   font-weight: bold;
   padding-left: 1vw;
   overflow: hidden;
@@ -3335,7 +3335,7 @@ span.important {
 
 .promotions div.promodule > button.ViewAllAmount {
   padding: 5px 10px;
-  background: #1E85EC;
+  background: #1e85ec;
   margin-left: 0;
   margin-top: -1px;
   width: 100%;
@@ -3650,7 +3650,7 @@ span.important {
 
 .progressBarModule .progressBar .bar {
   height: 1vw;
-  border: 1px solid #1E85EC;
+  border: 1px solid #1e85ec;
   border-radius: 10px;
   margin-top: 2vw;
   margin-right: 1vw;
@@ -3660,13 +3660,13 @@ span.important {
 }
 
 .progressBarModule .progressBar .bar .progress {
-  background: #1E85EC;
+  background: #1e85ec;
   height: 100%;
 }
 
 .progressBarModule .progressBar .percentage {
   text-align: right;
-  color: #1E85EC;
+  color: #1e85ec;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
@@ -3682,7 +3682,7 @@ span.important {
 }
 
 .progressBarModule .turnover span {
-  color: #1E85EC;
+  color: #1e85ec;
 }
 
 .mainWallet .progressBarModule .bar {
@@ -3716,7 +3716,7 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
   margin-top: 3vw;
-  background: #1E85EC;
+  background: #1e85ec;
   border-radius: 5px;
   padding: 1vw;
 }
@@ -3765,7 +3765,7 @@ span.important {
 
 .submenu .side-info span {
   margin-right: 2vw;
-  color: #1E85EC;
+  color: #1e85ec;
 }
 
 .submenu .side-info > div:nth-child(2) {
@@ -3792,7 +3792,7 @@ span.important {
   width: 7vw;
   height: 7vw;
   border-radius: 7vw;
-  background: #1E85EC;
+  background: #1e85ec;
   padding: 1vw;
   color: white;
 }
@@ -3823,7 +3823,7 @@ span.important {
   line-height: 14vw;
   width: 100%;
   text-align: left;
-  border-bottom: 1px solid #1D3662;
+  border-bottom: 1px solid #1d3662;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3838,7 +3838,7 @@ span.important {
 }
 
 .submenu .side-nav a > ul li, .submenu .side-nav button > ul li, .submenu .side-nav div > ul li {
-  border-top: 1px solid #1D3662;
+  border-top: 1px solid #1d3662;
   padding-left: 9vw;
 }
 
@@ -3918,7 +3918,7 @@ span.important {
   width: 10vw;
   height: 15vw;
   position: fixed;
-  background: #1D3662;
+  background: #1d3662;
   padding-left: 1vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3931,7 +3931,7 @@ span.important {
 }
 
 .menuBtn button {
-  background: #1E85EC;
+  background: #1e85ec;
   width: 10vw;
   height: 9vw;
   border-radius: 5px;
@@ -3947,13 +3947,13 @@ span.important {
   background: white;
   border-radius: 5px;
   text-align: center;
-  color: #1E85EC;
+  color: #1e85ec;
   padding: 2vw;
   font-size: 3vw;
 }
 
 .btn-check {
-  background: #1E85EC;
+  background: #1e85ec;
   border-radius: 5px;
   text-align: center;
   color: white;
@@ -3976,7 +3976,7 @@ span.important {
 }
 
 .rollover .icon {
-  color: #1E85EC;
+  color: #1e85ec;
 }
 
 .resend {
@@ -3993,7 +3993,7 @@ span.important {
 }
 
 .txt-blue2 {
-  color: #1E85EC;
+  color: #1e85ec;
 }
 
 .affiliate {
@@ -4034,7 +4034,7 @@ span.important {
 }
 
 .minAmount > div:first-child > div {
-  color: #1E85EC;
+  color: #1e85ec;
 }
 
 .minAmount > div:last-child {
@@ -4047,7 +4047,7 @@ span.important {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  border: 1px solid #134DAE;
+  border: 1px solid #134dae;
   padding: 5px 10px;
   color: white;
 }
@@ -4090,7 +4090,7 @@ span.important {
 .nodata {
   text-align: center;
   padding: 10vw 0;
-  color: #1E85EC;
+  color: #1e85ec;
 }
 
 .nodata.icon:before {
@@ -4130,7 +4130,7 @@ span.important {
 }
 
 .breadcrumb ul .breadcrumb-item a {
-  color: #1E85EC;
+  color: #1e85ec;
   text-transform: capitalize;
 }
 
@@ -5450,7 +5450,7 @@ span.important {
 }
 
 .Join button {
-  background: #1E85EC;
+  background: #1e85ec;
   border-radius: 3px;
   color: white;
   padding: 3vw;
@@ -5470,7 +5470,7 @@ span.important {
 }
 
 .Join .Terms a {
-  color: #1E85EC;
+  color: #1e85ec;
   text-decoration: underline;
 }
 
@@ -5480,7 +5480,7 @@ span.important {
 
 .Join .Terms input[type="checkbox"] + label {
   margin: 0vw 1vw 0 0;
-  border: 1px solid #1E85EC;
+  border: 1px solid #1e85ec;
   border-radius: 100%;
   width: 4vw;
   height: 4vw;
@@ -5725,7 +5725,7 @@ span.important {
 
 .depositModule_mobile > .title:not(.text-org), .depositModule_online > .title:not(.text-org), .depositModule_local > .title:not(.text-org), .depositModule_topupMobile > .title:not(.text-org) {
   font-weight: normal;
-  background: #134DAE;
+  background: #134dae;
   padding: 5px;
   border-radius: 5px 5px 0 0;
   margin-bottom: 1px;
@@ -5760,7 +5760,7 @@ span.important {
 }
 
 .depositModule_mobile .selectModule input[type="radio"] + label, .depositModule_online .selectModule input[type="radio"] + label, .depositModule_local .selectModule input[type="radio"] + label, .depositModule_topupMobile .selectModule input[type="radio"] + label {
-  border: 1px solid #1E85EC;
+  border: 1px solid #1e85ec;
   width: 4vw;
   height: 4vw;
   display: -webkit-inline-box;
@@ -5914,7 +5914,7 @@ span.important {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  color: #1D3662;
+  color: #1d3662;
   margin-left: 2vw;
   width: 7vw;
   height: 7vw;
@@ -5950,7 +5950,7 @@ span.important {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background: #134DAE;
+  background: #134dae;
   color: white;
   position: fixed;
   top: 49vw;
@@ -6028,7 +6028,7 @@ span.important {
 }
 
 .vipPage .eventList tr.title {
-  background: #1E85EC;
+  background: #1e85ec;
 }
 
 .vipPage .eventList tr.title .text-org {
@@ -6119,6 +6119,13 @@ span.important {
   margin-right: 1vw;
 }
 
+@media (max-width: 320px) {
+  .topBtn button {
+    padding: 1px;
+    font-size: 7px;
+  }
+}
+
 .topBtn button:last-child {
   margin: 0;
 }
@@ -6181,7 +6188,7 @@ span.important {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background: #014C57;
+  background: #014c57;
   height: 3vw;
   border-radius: 9vw;
   margin: 35vw 0 9vw;
@@ -6225,7 +6232,7 @@ span.important {
   line-height: normal;
   padding: 1vw 0 2vw 1vw;
   background: #ffffff;
-  color: #016F80;
+  color: #016f80;
   font-weight: bold;
   margin-left: -15vw;
   height: 8vw;
