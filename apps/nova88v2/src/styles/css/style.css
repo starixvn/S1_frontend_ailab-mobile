@@ -2700,6 +2700,7 @@ input[type="checkbox"] + label {
 .icon-rate::before {
   content: "('000)";
   color: #5574A7;
+  font: 3vw Arial;
 }
 
 .fileUpload {
