@@ -45,6 +45,22 @@ export const useGotoGame = ({
 		if (autoGetData) {
 			handleGoToGame({ isLogin, langId, tpId, gameId, isFun });
 		}
+
+		iapiSetCallout("Login", response => {
+			if (response.errorCode) {
+				if (response.errorCode == 48) {
+					errorPopBox(
+						`Login failed, error: ${response.errorCode} ,playerMessage: ${response.actions.PlayerActionShowMessage[0].message}`,
+						response.errorCode
+					);
+				} else {
+					errorPopBox(
+						`Login failed, error: ${response.errorCode} ,playerMessage: ${response.playerMessage}`,
+						response.errorCode
+					);
+				}
+			}
+		});
 		return () => {
 			isMountedRef.current = false;
 		};
