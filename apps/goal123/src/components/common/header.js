@@ -12,6 +12,12 @@ import JoinPanel from "../join/join";
 import LoginPanel from "../login/login";
 import path from "../../path";
 import Logo from "./logo";
+import vipClub1 from "../../styles/img/vip/vip1.png";
+import vipClub2 from "../../styles/img/vip/vip2.png";
+import vipClub3 from "../../styles/img/vip/vip3.png";
+import vipClub4 from "../../styles/img/vip/vip4.png";
+import vipClub5 from "../../styles/img/vip/vip5.png";
+import vipClub6 from "../../styles/img/vip/vip6.png";
 
 const HeaderTitle = ({ title }) => (
 	<>
@@ -89,25 +95,45 @@ const HeaderBtn = () => {
 	if (redirectPath !== null) {
 		display = <Redirect to={redirectPath} noThrow />;
 	} else if (userInfo?.isLogin) {
+		let medalImg = null;
+		switch (userInfo.userLevel) {
+			case 2:
+				medalImg = vipClub2;
+				break;
+			case 3:
+				medalImg = vipClub3;
+				break;
+			case 4:
+				medalImg = vipClub4;
+				break;
+			case 5:
+				medalImg = vipClub5;
+				break;
+			case 6:
+				medalImg = vipClub6;
+				break;
+			default:
+				medalImg = vipClub1;
+				break;
+		}
 		display = (
-			<>
-				<HeaderInfo
-					userName={userInfo?.userName}
-					currency={i18n[`Currency_${userInfo.currencyId}`]}
-					ClickUserName={ClickUserName}
-				/>
+			<div className="headerBtnIn open">
+				<img src={medalImg} alt={`VIP level${userInfo.userLevel}`} />
+				<p onClick={ClickUserName}>{userInfo.userName}</p>
 				<div className="headerButton">
-					<Link to={path.message.root} className="icon icon-chat">
+					<Link
+						to={path.message.root}
+						className="icon icon-email active">
 						{msgCount ? (
 							<span className="amount">{msgCount}</span>
 						) : null}
 					</Link>
 				</div>
-			</>
+			</div>
 		);
 	} else {
 		display = (
-			<div className="headerButton">
+			<div className="headerBtnOut open">
 				<JoinPanel />
 				<LoginPanel ButtonTitle={i18n.lbl_Login.toUpperCase()} />
 			</div>

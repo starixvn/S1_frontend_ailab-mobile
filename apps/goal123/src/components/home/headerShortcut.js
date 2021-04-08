@@ -62,9 +62,9 @@ const HeaderShortcut = ({ userInfo, i18n }) => {
 					<span>{i18n.lbl_Transfer}</span>
 				</Link>
 				<Link
-					to={path.withdrawal.root}
+					to={path.financialLog.root}
 					className="icon icon-withdrawal">
-					<span>{i18n.lbl_Withdrawal}</span>
+					<span>{i18n.lbl_FinancialLog}</span>
 				</Link>
 			</div>
 		</div>
