@@ -17,23 +17,23 @@ const Birthday = ({
 				i18n={i18n}
 				mainKey="profile-month"
 				options={monthOptions}
-				colName="birth_m"
-				onSelectItem={dropdownStateHandler.bind(null, "birth_m")}
+				colName="Birth_m"
+				onSelectItem={dropdownStateHandler.bind(null, "Birth_m")}
 				selectedIdx={monthSelectedIdx}
 				birthDayIcon={true}
 			/>
 			<Dropdown
 				mainKey="profile-day"
 				options={dateOptions}
-				colName="birth_d"
-				onSelectItem={dropdownStateHandler.bind(null, "birth_d")}
+				colName="Birth_d"
+				onSelectItem={dropdownStateHandler.bind(null, "Birth_d")}
 				selectedIdx={daySelectedIdx}
 			/>
 			<Dropdown
 				mainKey="profile-year"
 				options={yearOptions}
-				colName="birth_y"
-				onSelectItem={dropdownStateHandler.bind(null, "birth_y")}
+				colName="Birth_y"
+				onSelectItem={dropdownStateHandler.bind(null, "Birth_y")}
 				selectedIdx={yearSelectedIdx}
 			/>
 		</div>
