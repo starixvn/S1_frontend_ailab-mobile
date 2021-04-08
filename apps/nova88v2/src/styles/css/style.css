@@ -436,8 +436,9 @@ header button.clickBtn::before {
   position: absolute;
 }
 
-#Marquee .marquee-box .marquee-run button {
+#Marquee .marquee-box .marquee-run button, #Marquee .marquee-box .marquee-run a {
   color: #5574A7;
+  font-size: 3vw;
 }
 
 #Marquee > div.active {
@@ -954,7 +955,7 @@ footer > a.active .circleAnimation + span {
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  background: rgba(0, 25, 66, 0.95);
+  background: rgba(85, 116, 167, 0.95);
   padding: 8vw;
   overflow: auto;
   display: -webkit-box;
@@ -974,8 +975,13 @@ footer > a.active .circleAnimation + span {
 }
 
 #popup > div:not(.bankSlip):not(.eventpop):not(.joinSuccess) {
-  background: rgba(0, 0, 0, 0.5);
+  background: white;
   width: 100%;
+}
+
+#popup .pop .account {
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 #popup .popTit {
@@ -988,8 +994,8 @@ footer > a.active .circleAnimation + span {
   word-break: break-word;
   padding: 1vw 8vw 1vw 2vw;
   display: -webkit-box;
-  border-bottom: 1px solid #F77A00;
-  color: #F77A00;
+  border-bottom: 1px solid #5574A7;
+  color: #5574A7;
   font-weight: bold;
   width: calc(100% - 10vw);
   line-height: 24px;
@@ -1010,13 +1016,14 @@ footer > a.active .circleAnimation + span {
       -ms-flex-align: center;
           align-items: center;
   top: 0;
+  color: #5574A7;
 }
 
 #popup .popTxt {
   padding: 4vw 2vw;
   border-radius: 0 0 3px 3px;
   width: calc(100% - 4vw);
-  color: #B2B2B2;
+  color: #5574A7;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1244,6 +1251,7 @@ footer > a.active .circleAnimation + span {
   display: -ms-flexbox;
   display: flex;
   border-bottom: 1px solid #5574A7;
+  background: #ecf3fd;
 }
 
 .tag a, .tag button {
@@ -2690,6 +2698,7 @@ input[type="checkbox"] + label {
 
 .icon-rate::before {
   content: "('000)";
+  color: #5574A7;
 }
 
 .fileUpload {
@@ -3035,6 +3044,7 @@ button.clickBtn:before {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  color: #5574A7;
 }
 
 .checkbox input {
@@ -3329,7 +3339,7 @@ input[type="date"] {
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba(0, 25, 66, 0.95);
+  background: #ecf3fd;
   padding: 8vw;
   display: none;
   z-index: 4;
@@ -3410,8 +3420,8 @@ input[type="date"] {
 #Loading .cube .sides * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background-color: rgba(255, 80, 13, 0.1);
-  border: 1px solid #ff500d;
+  background-color: rgba(85, 116, 167, 0.1);
+  border: 1px solid #5574A7;
 }
 
 #Loading .cube .sides .top {
@@ -3855,6 +3865,7 @@ input[type="date"] {
           transform: translateY(25vw);
   font-size: 4vw;
   text-align: center;
+  color: #5574A7;
 }
 
 .amount {
@@ -5559,11 +5570,11 @@ span.important {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background: #191919;
+  background: #D2E2F9;
 }
 
 .vip .vipPage .eventList tr.title {
-  background: #213e6f;
+  background: #5574A7;
 }
 
 .vip .vipPage .eventList tr.title .icon {
@@ -5574,6 +5585,7 @@ span.important {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  color: white;
 }
 
 .vip .vipPage .eventList tr.title .icon:before {
@@ -5585,11 +5597,11 @@ span.important {
 }
 
 .vip .vipPage .eventList tr:not(.title) td[colspan="7"] {
-  background: #333;
+  background: #a5bbe0;
 }
 
 .vip .vipPage .eventList tr.lastTd td {
-  border-bottom: 1px solid #666;
+  border-bottom: 1px solid #a5bbe0;
 }
 
 .vip .vipPage .eventList tr td {
@@ -5611,9 +5623,10 @@ span.important {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border: 1px solid #666;
+  border: 1px solid #a5bbe0;
   border-bottom: 0;
   text-align: center;
+  color: #5574A7;
 }
 
 .vip .vipBanner {
@@ -5736,19 +5749,21 @@ span.important {
 }
 
 .event .eventModule .title:not(.text-org) + .text-gray {
+  color: #666;
   margin: 3vw 0 5vw;
 }
 
 .event .eventModule .title:not(.text-org) + .text-gray + div {
   margin: 5vw 0;
+  color: #666;
 }
 
 .event .eventModule .title.text-org + .text-gray {
   text-align: left;
+  color: #666;
 }
 
 .event .eventModule .title.text-org + .text-gray li {
-  color: #a5aab1;
   list-style: decimal;
   margin: 0 0 0 3vw;
   line-height: 24px;
@@ -6727,7 +6742,7 @@ main .sideBar button, main .sideBar a {
 }
 
 .referralShare .popTxt > div button i, .referralShare .popTxt > div a i {
-  background: #F77A00;
+  background: #5574A7;
   border-radius: 5px;
   padding: 3vw;
   display: -webkit-box;

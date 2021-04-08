@@ -25,9 +25,6 @@ const Panel = () => {
 	};
 	return (
 		<>
-			<div className="icon icon-member">
-				<div className="circleAnimation" />
-			</div>
 			<div className="vip_mark">
 				<img
 					src={`https://image.n88media.com/VIP/img/vip0${userInfo.userLevel}.png`}

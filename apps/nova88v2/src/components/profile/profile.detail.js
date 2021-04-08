@@ -391,7 +391,6 @@ const Panel = () => {
 					dropdownStateHandler={dropdownStateHandler}
 				/>
 			) : null}
-
 			{!userInfo?.phoneNo ? (
 				<Inputbox
 					areaCode={_areaCode}
@@ -408,7 +407,6 @@ const Panel = () => {
 					showTips={showTips.includes("phoneNo")}
 				/>
 			) : null}
-
 			{!userInfo?.accountName ||
 			!userInfo?.birth_d ||
 			!userInfo?.phoneNo ? (
