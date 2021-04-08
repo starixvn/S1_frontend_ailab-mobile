@@ -6459,8 +6459,8 @@ span.important {
 }
 
 .upcomingmatches .team > div > div img {
-  width: 17vw;
-  margin: 0 0 2vw;
+  width: 15vw;
+  margin: 0 0 7vw;
 }
 
 .upcomingmatches .team > div > div.btn-group {
@@ -6470,6 +6470,9 @@ span.important {
   -ms-flex-item-align: end;
       align-self: flex-end;
   margin: 0;
+  -webkit-box-flex: 0.6;
+      -ms-flex: 0.6;
+          flex: 0.6;
 }
 
 .upcomingmatches .team > div > div.btn-group button {
