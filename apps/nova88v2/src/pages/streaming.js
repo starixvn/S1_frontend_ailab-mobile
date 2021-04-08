@@ -46,7 +46,7 @@ const IndexPage = () => {
 
 	const header = (
 		<Header
-			title={i18n.lbl_LiveStreaming}
+			title={i18n.lbl_LIVE_SPORT}
 			hideLogo={true}
 			filter={filter}
 			hideId={true}

@@ -2091,6 +2091,7 @@ footer > a.active .circleAnimation + span {
 
 .btn-group.transferAll .clickBtn {
   max-width: 6vw;
+  padding: 0;
 }
 
 .btn-group.transferAll .blue {
@@ -3211,6 +3212,7 @@ input[type="date"] {
   outline: none;
   resize: none;
   font-size: 12px;
+  white-space: nowrap;
 }
 
 ::-webkit-datetime-edit {
