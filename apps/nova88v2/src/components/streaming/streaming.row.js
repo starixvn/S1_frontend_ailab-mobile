@@ -20,7 +20,9 @@ export const StreamingModule = ({
 	awayScore,
 	timeStart,
 	matchID,
-	channel
+	channel,
+	tpId,
+	gameId
 }) => {
 	const navigate = useNavigate();
 	const { handleLogin } = useHandleLogin();
@@ -28,8 +30,8 @@ export const StreamingModule = ({
 		e.stopPropagation();
 		GET_ENTER_PAGE({
 			langId,
-			tpId: 1,
-			gameId: 1,
+			tpId: tpId || 1,
+			gameId: gameId || 1,
 			matchid: matchID,
 			isLogin: isLogin === true,
 			loginCallback: handleLogin
