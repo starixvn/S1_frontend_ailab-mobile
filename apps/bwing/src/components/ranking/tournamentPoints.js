@@ -39,7 +39,7 @@ const TournamentPoints = ({ isOpen, userInfo, i18n = {} }) => {
 		<div className={`rankInBox${isOpen ? " open" : ""}`}>
 			<div className="title">{i18n.lbl_TournamentPoints}</div>
 			<div className="eventTitle">
-				{i18n.lbl_Sports}, {i18n.lbl_LiveCasino} & {i18n.lbl_Slots}
+				{i18n.lbl_SPORTS}, {i18n.lbl_LiveCasino} & {i18n.lbl_Slots}
 			</div>
 			<RankList
 				loading={loading}

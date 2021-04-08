@@ -142,62 +142,62 @@ export const defPrize = () => ({
 			[defEuroTourBtns.FinalTournament.value]: [
 				{
 					rank: "VÔ ĐỊCH",
-					prize: "VND 123,123,000"
+					prize: "VND 118,888,000"
 				},
 				{
 					rank: "Giải Nhất",
-					prize: `VND 88,123,000 `
+					prize: `VND 78,888,000 `
 				},
 				{
 					rank: "Giải Nhì",
-					prize: `VND 55,123,000 `
+					prize: `VND 38,888,000 `
 				},
-				{ rank: "Giải Ba", prize: `VND 36,123,000` },
-				{ rank: "Giải Bốn", prize: `VND 28,123,000` },
-				{ rank: "Giải Năm", prize: `VND 22,123,000` },
-				{ rank: "Giải Sáu", prize: `VND 17,123,000` },
-				{ rank: "Giải Bảy", prize: `VND 13,123,000` },
-				{ rank: "Giải Tám", prize: `VND 11,123,000` },
+				{ rank: "Giải Ba", prize: `VND 28,888,000` },
+				{ rank: "Giải Bốn", prize: `VND 23,888,000` },
+				{ rank: "Giải Năm", prize: `VND 19,888,000` },
+				{ rank: "Giải Sáu", prize: `VND 15,888,000` },
+				{ rank: "Giải Bảy", prize: `VND 11,888,000` },
+				{ rank: "Giải Tám", prize: `VND 9,888,000` },
 				{ rank: "Giải Tám" }
 			],
 			[defEuroTourBtns.MonthlyTournament.value]: [
 				{
 					rank: "Vô địch",
-					prize: "43,123,000"
+					prize: "38,888,000"
 				},
-				{ rank: "Giải Nhất", prize: `28,123,000` },
-				{ rank: "Giải Nhì", prize: `20,123,000` }
+				{ rank: "Giải Nhất", prize: `28,888,000` },
+				{ rank: "Giải Nhì", prize: `18,888,000` }
 			]
 		},
 		en: {
 			[defEuroTourBtns.FinalTournament.value]: [
 				{
 					rank: "CHAMPION",
-					prize: "VND 123,123,000"
+					prize: "VND 118,888,000"
 				},
 				{
 					rank: "1st Runner Up",
-					prize: `VND 88,123,000 `
+					prize: `VND 78,888,000 `
 				},
 				{
 					rank: "2nd Runner Up",
-					prize: `VND 55,123,000 `
+					prize: `VND 38,888,000 `
 				},
-				{ rank: "3rd Runner Up", prize: `VND 36,123,000` },
-				{ rank: "4th Runner Up", prize: `VND 28,123,000` },
-				{ rank: "5th Runner Up", prize: `VND 22,123,000` },
-				{ rank: "6th Runner Up", prize: `VND 17,123,000` },
-				{ rank: "7th Runner Up", prize: `VND 13,123,000` },
-				{ rank: "8th Runner Up", prize: `VND 11,123,000` },
+				{ rank: "3rd Runner Up", prize: `VND 28,888,000` },
+				{ rank: "4th Runner Up", prize: `VND 23,888,000` },
+				{ rank: "5th Runner Up", prize: `VND 19,888,000` },
+				{ rank: "6th Runner Up", prize: `VND 15,888,000` },
+				{ rank: "7th Runner Up", prize: `VND 11,888,000` },
+				{ rank: "8th Runner Up", prize: `VND 9,888,000` },
 				{ rank: "9th Runner Up" }
 			],
 			[defEuroTourBtns.MonthlyTournament.value]: [
 				{
 					rank: "CHAMPION",
-					prize: "VND 43,123,000"
+					prize: "VND 38,888,000"
 				},
-				{ rank: "1st Runner Up", prize: `VND 28,123,000` },
-				{ rank: "2nd Runner Up", prize: `VND 20,123,000` }
+				{ rank: "1st Runner Up", prize: `VND 28,888,000` },
+				{ rank: "2nd Runner Up", prize: `VND 18,888,000` }
 			]
 		}
 	}

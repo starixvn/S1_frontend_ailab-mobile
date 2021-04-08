@@ -564,7 +564,7 @@
 	"lbl_DepositLocalBankNotes4":"Vui lòng tải biên lai ngân hàng để giao dịch được xử lý nhanh hơn.",
 	"lbl_EuroEventTitle1" : "CHUNG KẾT UEFA EURO 2020",
 	"lbl_EuroEventTitle2" : "TRANH TÀI ĐUA TOP, GIẬT GIẢI LÊN ĐẾN 500,000",
-	"lbl_TournamentPoints" : "Điểm vòng đấu",
+	"lbl_TournamentPoints" : "ĐIỂM VÒNG ĐẤU",
 	"lbl_EuroDate1" : "13 THÁNG 3 - 12 THÁNG 4",
 	"lbl_EuroDate2" : "13 THÁNG 4 - 12 THÁNG 5",
 	"lbl_EuroDate3" : "13 THÁNG 5 - 12 THÁNG 6",
@@ -572,5 +572,6 @@
 	"lbl_MonthlyTournament" : "VÒNG ĐẤU THÁNG",
 	"lbl_AgendaTitle" : "ĐUA TOP NẠP VÀ DOANH THU CƯỢC HÀNG THÁNG",
 	"lbl_Tournament" : "Vòng đấu",
-	"lbl_Stage": "Giai đoạn"
+	"lbl_Stage": "Giai đoạn",
+	"lbl_SPORTS": "THỂ THAO"
 }
