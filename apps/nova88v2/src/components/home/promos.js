@@ -10,7 +10,7 @@ const swipperParam = {
 	slidesPerView: 2,
 	centeredSlides: true,
 	autoplay: {
-		delay: 1000,
+		delay: 1250,
 		disableOnInteraction: false
 	},
 	rebuildOnUpdate: true,

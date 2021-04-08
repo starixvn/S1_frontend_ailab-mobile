@@ -49,6 +49,7 @@ const IndexPage = () => {
 			title={i18n.lbl_LiveStreaming}
 			hideLogo={true}
 			filter={filter}
+			hideId={true}
 		/>
 	);
 

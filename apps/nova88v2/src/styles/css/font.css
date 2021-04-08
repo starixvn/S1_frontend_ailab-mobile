@@ -29,17 +29,9 @@
 }
 
 .icon-information:before {
-  color: #1E85EC;
+  color: #5574A7;
   -webkit-transform: scale(0.9);
           transform: scale(0.9);
-}
-
-.icon-eye:before {
-  color: #DFDDDD;
-}
-
-.icon-eye-blocked:before {
-  color: #DFDDDD;
 }
 
 .icon-checkmark:before {
@@ -77,7 +69,7 @@
 }
 
 .icon-library:before {
-  font-size: 4vw;
+  font-size: 4.5vw;
 }
 
 .icon-live {

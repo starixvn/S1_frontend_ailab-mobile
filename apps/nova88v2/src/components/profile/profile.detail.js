@@ -3,7 +3,7 @@ import { useNavigate } from "@reach/router";
 import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import PropTypes from "prop-types";
 import Inputbox from "../common/inputbox.hint";
-import Dropdown from "../common/dropdown";
+import Dropdown from "./dropdown.profile";
 import areaCode from "../../datas/areaCode";
 import useTip from "../hook/useTip";
 import {
@@ -391,7 +391,6 @@ const Panel = () => {
 					dropdownStateHandler={dropdownStateHandler}
 				/>
 			) : null}
-
 			{!userInfo?.phoneNo ? (
 				<Inputbox
 					areaCode={_areaCode}
@@ -408,7 +407,6 @@ const Panel = () => {
 					showTips={showTips.includes("phoneNo")}
 				/>
 			) : null}
-
 			{!userInfo?.accountName ||
 			!userInfo?.birth_d ||
 			!userInfo?.phoneNo ? (
@@ -521,11 +519,11 @@ ColumnItem.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
-const GetYear = () => {
+export const GetYear = () => {
 	return new Date().getFullYear() - 21;
 };
 
-const GetDayOfMonth = (year, month) => {
+export const GetDayOfMonth = (year, month) => {
 	const d = new Date(year, month, 0);
 	return d.getDate();
 };
