@@ -85,7 +85,10 @@ const Menu = ({ i18n, userInfo }) => {
 			return item.category === selectedCol;
 		})
 		.items?.filter(subItem => {
-			return showingTpIds ? showingTpIds.includes(subItem.tpId) : true;
+			return showingTpIds
+				? showingTpIds.includes(subItem.tpId) ||
+						subItem.spanTextKey === "lbl_Slots"
+				: true;
 		})
 		.map(subItem => {
 			return (

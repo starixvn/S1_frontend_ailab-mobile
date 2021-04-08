@@ -16,7 +16,7 @@ import Submenu from "../components/home/submenu";
 import AppDownloadHint from "../components/home/appDownload";
 import HeaderShortcut from "../components/home/headerShortcut";
 import EventSwipper from "../components/home/eventSwipper";
-import AppPanel from "../components/home/appPanel";
+import MiddlePanel from "../components/home/middlePanel";
 import Bottom from "../components/home/bottom";
 
 const IndexPage = () => {
@@ -141,7 +141,7 @@ const IndexPage = () => {
 			<EventSwipper userInfo={userInfo} />
 			<Marquee />
 			<Menu i18n={i18n} userInfo={userInfo} />
-			<AppPanel langId={userInfo.langId} />
+			<MiddlePanel langId={userInfo.langId} i18n={i18n} />
 			<Bottom i18n={i18n} langId={userInfo.langId} />
 			<Submenu />
 			{appHint ? (

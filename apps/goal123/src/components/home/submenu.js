@@ -11,13 +11,20 @@ import {
 	defNavPanel
 } from "../common/context";
 import path from "../../path";
-import { api_GetWalletInfo } from "../../service/api/account";
+import { api_GetWalletInfo, api_SetLanguage } from "../../service/api/account";
 import { number_format } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
 import { defGameInfo } from "../../datas/productList";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import ShortcutBar from "./shortcutBar";
 import TandC from "../../service/t_and_c";
+import Skype from "../../styles/img/sk_1.png";
+import Telegram from "../../styles/img/te_1.png";
+import Zalo from "../../styles/img/zalo_1.png";
+import Lang_en from "../../styles/img/en.jpg";
+import Lang_vn from "../../styles/img/vn.jpg";
+import { siteInfo } from "../../config";
+import DefLangs from "../../datas/defLangs";
 
 const defSubMenus = [
 	{
@@ -96,13 +103,24 @@ const defSubMenus = [
 		displayKey: "lbl_APPDownload",
 		TandCLink: "AppDownload",
 		icon: "icon icon-mobile"
+	},
+	{
+		displayKey: "lbl_VIP",
+		path: `/${path.vip.root}`,
+		icon: "icon icon-vip"
+	},
+	{
+		displayKey: "lbl_Ranking",
+		path: `/${path.leaderBoard.root}`,
+		icon: "icon icon-icon32px_top"
 	}
 ];
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
-	const { userInfo } = useContext(userInfoContext);
+	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { nav, setNav } = useContext(navContext);
+	const { setPopBox } = useContext(popBoxContext);
 	const [isOpenSubMenu, setIsOpenSubMenu] = useState([]);
 
 	const handleSubMenu = displayKey => {
@@ -121,7 +139,7 @@ export default () => {
 	const openPanel = nav === defNavPanel.subMenu;
 
 	return (
-		<div className={`submenu${openPanel ? " open" : ""}`}>
+		<div className={`submenuNew${openPanel ? " open" : ""}`}>
 			<div className="close open" onClick={closeNavPanel}>
 				<span />
 				<span />
@@ -133,7 +151,11 @@ export default () => {
 			<img src={Logo} alt="Goal123" />
 			{userInfo.isLogin ? (
 				<>
-					<WalletInfo i18n={i18n} userInfo={userInfo} />
+					<WalletInfo
+						i18n={i18n}
+						userInfo={userInfo}
+						setPopBox={setPopBox}
+					/>
 					<ShortcutBar />
 				</>
 			) : null}
@@ -144,6 +166,12 @@ export default () => {
 				closeNavPanel={closeNavPanel}
 				handleSubMenu={handleSubMenu}
 				isOpenSubMenu={isOpenSubMenu}
+			/>
+			<ContactUs i18n={i18n} />
+			<LangSwitch
+				setPopBox={setPopBox}
+				userInfo={userInfo}
+				setUserInfo={setUserInfo}
 			/>
 		</div>
 	);
@@ -263,8 +291,7 @@ SubMenuList.propTypes = {
 	isOpenSubMenu: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
-const WalletInfo = ({ i18n, userInfo }) => {
-	const { setPopBox } = useContext(popBoxContext);
+const WalletInfo = ({ i18n, userInfo, setPopBox }) => {
 	const { walletInfo, setWalletInfo } = useContext(walletInfoContext);
 	const [processing, setProcessing] = useState(false);
 
@@ -310,7 +337,7 @@ const WalletInfo = ({ i18n, userInfo }) => {
 						setProcessing(false);
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
@@ -347,6 +374,128 @@ WalletInfo.propTypes = {
 	userInfo: PropTypes.shape({
 		isLogin: PropTypes.bool,
 		currencyId: PropTypes.number,
-		langId: PropTypes.string
-	}).isRequired
+		langId: PropTypes.string,
+		userName: PropTypes.string
+	}).isRequired,
+	setPopBox: PropTypes.func.isRequired
+};
+
+const ContactUs = ({ i18n }) => {
+	return (
+		<div className="contact">
+			<div>{i18n.lbl_ContactUs.toUpperCase()}</div>
+			<a
+				href="skype:live:.cid.d357533c71e50fb5?chat"
+				target="_blank"
+				rel="noreferrer noopener">
+				<img src={Skype} alt="skype" />
+			</a>
+			<a
+				href="https://t.me/Goal123csd"
+				target="_blank"
+				rel="noreferrer noopener">
+				<img src={Telegram} alt="telegram" />
+			</a>
+			<a
+				href="https://zalo.me/Goal123csd"
+				target="_blank"
+				rel="noreferrer noopener">
+				<img src={Zalo} alt="zalo" />
+			</a>
+		</div>
+	);
+};
+
+ContactUs.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired
+};
+
+const languageList = () => {
+	const _siteInfo = siteInfo();
+	return _siteInfo.siteLangList.map(l => DefLangs[l]);
+};
+
+const LangSwitch = ({ setPopBox, userInfo, setUserInfo }) => {
+	const [userLanguage, setUserLanguage] = useState("vn");
+	const isMountedRef = useRef(null);
+	const _languageList = languageList();
+
+	useEffect(() => {
+		isMountedRef.current = true;
+		return () => {
+			isMountedRef.current = false;
+		};
+	});
+
+	useEffect(() => {
+		if (userInfo.langId && isMountedRef.current) {
+			setUserLanguage(() => {
+				return _languageList.find(l => l.value === userInfo.langId) ===
+					undefined
+					? "en"
+					: userInfo.langId;
+			});
+		}
+	}, [userInfo.langId, _languageList]);
+
+	const selectLanguage = language => {
+		if (userLanguage !== language) {
+			const langId = language;
+			setUserLanguage(language);
+
+			if (userInfo.isLogin) {
+				api_SetLanguage(langId).then(
+					res => {
+						if (isMountedRef.current) {
+							if (res.data.errorCode === 0) {
+								setUserInfo(prevState => ({
+									...prevState,
+									langId
+								}));
+							} else {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content: res.data.message
+								});
+							}
+						}
+					},
+					() => {
+						if (isMountedRef.current) {
+							setPopBox({
+								isOpen: true,
+								title: i18n.lbl_ImportantNote,
+								content: i18n.msg_ApiServerError
+							});
+						}
+					}
+				);
+			} else {
+				setUserInfo(prevState => ({
+					...prevState,
+					langId
+				}));
+			}
+		}
+	};
+
+	return (
+		<div className="language">
+			<div onClick={selectLanguage.bind(this, "en")}>
+				<img src={Lang_en} alt="English" />
+				English
+			</div>
+			<div onClick={selectLanguage.bind(this, "vn")}>
+				<img src={Lang_vn} alt="Tiếng Việt" />
+				Tiếng Việt
+			</div>
+		</div>
+	);
+};
+
+LangSwitch.propTypes = {
+	setPopBox: PropTypes.func.isRequired,
+	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
+	setUserInfo: PropTypes.func.isRequired
 };

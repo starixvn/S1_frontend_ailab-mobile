@@ -677,7 +677,9 @@ const Join = ({ hideBtn }) => {
 	return redirectPath === null ? (
 		<>
 			{hideBtn ? null : (
-				<button onClick={handleJoinPanel.bind(this, openPanel)}>
+				<button
+					className="registerBtn"
+					onClick={handleJoinPanel.bind(this, openPanel)}>
 					{i18n.lbl_JoinNow.toUpperCase()}
 				</button>
 			)}
