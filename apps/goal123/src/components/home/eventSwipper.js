@@ -14,7 +14,8 @@ const swipperParam = {
 		disableOnInteraction: false
 	},
 	rebuildOnUpdate: true,
-	loop: true
+	loop: true,
+	containerClass: "hotevent"
 };
 
 const EventSwipper = ({ userInfo }) => {
@@ -57,7 +58,7 @@ const EventSwipper = ({ userInfo }) => {
 
 		return (
 			<div
-				className="hotevent"
+				className="hotDiv"
 				key={`hotEvent-${bannerName}`}
 				onClick={goToBet.bind(this, { tpId, gameId, matchId })}>
 				<div className="teamL">

@@ -504,6 +504,10 @@
 	"lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS":"The Tyrant And The Princess",
 	"lbl_FishingGG":"Fishing World",
 	"lbl_FishingSG1":"Fishing God",
-	"lbl_FishingSG2":"Fishing War"
-
+	"lbl_FishingSG2":"Fishing War",
+	"lbl_InfoCenter":"Info Center",
+	"lbl_HowToDepoist":"HOW TO DEPOSIT",
+	"lbl_HowToWithdraw":"HOW TO WITHDRAW",
+	"lbl_Affiliate_Program":"Affiliate Program",
+	"lbl_PoweredBy":"Powered by"
 }

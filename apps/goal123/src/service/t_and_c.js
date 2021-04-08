@@ -15,6 +15,8 @@ export default langId => {
 		ContactUs: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/ContactUs.html`,
 		AppDownload: `${config.t_and_cURL}/SiteSkin/${config.siteName}/appDownload/${langId}.html`,
 		AngPow: `${config.t_and_cURL}/SiteSkin/${config.siteName}/ranking/${langId}3.html`,
-		Referral: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/ReferralConditions.html`
+		Referral: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/ReferralConditions.html`,
+		HowToDeposit: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/HowToDeposit.html`,
+		HowToWithdraw: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/HowToWithdrawal.html`
 	};
 };

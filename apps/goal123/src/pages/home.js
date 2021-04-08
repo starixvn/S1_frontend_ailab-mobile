@@ -13,9 +13,11 @@ import { readCookie, setCookie } from "../components/common/common";
 import path from "../path";
 import { api_GetWalletInfo } from "../service/api/account";
 import Submenu from "../components/home/submenu";
-import AppDownloadHint, { isIOS } from "../components/home/appDownload";
+import AppDownloadHint from "../components/home/appDownload";
 import HeaderShortcut from "../components/home/headerShortcut";
 import EventSwipper from "../components/home/eventSwipper";
+import AppPanel from "../components/home/appPanel";
+import Bottom from "../components/home/bottom";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -139,8 +141,10 @@ const IndexPage = () => {
 			<EventSwipper userInfo={userInfo} />
 			<Marquee />
 			<Menu i18n={i18n} userInfo={userInfo} />
+			<AppPanel langId={userInfo.langId} />
+			<Bottom i18n={i18n} langId={userInfo.langId} />
 			<Submenu />
-			{!isIOS && appHint ? (
+			{appHint ? (
 				<AppDownloadHint
 					i18n={i18n}
 					cookieName={`appDownloadHint${userInfo.userName}`}
