@@ -4,6 +4,12 @@ import Basketball from "../styles/img/basketball.png";
 import Tennis from "../styles/img/tennis.png";
 import Cricket from "../styles/img/cricket.png";
 
+import ESportsAll from "../styles/img/esportALL.png";
+import ESportsCS from "../styles/img/esportCS.png";
+import ESportsDota from "../styles/img/esportDOTA2.png";
+import ESportsKOG from "../styles/img/esportKOG.png";
+import ESportsLOL from "../styles/img/esportLOL.png";
+
 import LIVEcasino_N2Live from "../styles/img/n2.png";
 import LIVEcasino_DG from "../styles/img/dg.png";
 import LIVEcasino_PP from "../styles/img/pp.png";
@@ -105,7 +111,33 @@ const gameList = ({ langId }) => [
 		category: "virtualsports",
 		categoryIcon: "e-sports",
 		translateKey: "lbl_eSports",
-		...defGameInfo.ESport
+		items: [
+			{
+				...defGameInfo.ESportAll,
+				spanTextKey: "lbl_All",
+				img: ESportsAll
+			},
+			{
+				...defGameInfo.ESportAll,
+				spanText: "CS:GO",
+				img: ESportsCS
+			},
+			{
+				...defGameInfo.ESportAll,
+				spanText: "DOTA2",
+				img: ESportsDota
+			},
+			{
+				...defGameInfo.ESportAll,
+				spanText: "KOG",
+				img: ESportsKOG
+			},
+			{
+				...defGameInfo.ESportAll,
+				spanText: "LOL",
+				img: ESportsLOL
+			}
+		]
 	},
 	{
 		category: "livecasino",
@@ -382,7 +414,11 @@ export const defGameInfo = {
 	Basketball: { tpId: 1, gameId: 2 },
 	Tennis: { tpId: 1, gameId: 5 },
 	Cricket: { tpId: 1, gameId: 50 },
-	ESport: { tpId: 1, gameId: 43 },
+	ESportAll: { tpId: 1, gameId: 43 },
+	ESportCS: { tpId: 1, gameId: 43, bettype: 1 },
+	ESportDota: { tpId: 1, gameId: 43, bettype: 2 },
+	ESportKOG: { tpId: 1, gameId: 43, bettype: 3 },
+	ESportLOL: { tpId: 1, gameId: 43, bettype: 4 },
 	LIVEcasinoN2Live: { tpId: 28 },
 	LIVEcasinoWM: { tpId: 20, gameId: 20 },
 	LIVEcasinoAB: { tpId: 12, gameId: 12 },

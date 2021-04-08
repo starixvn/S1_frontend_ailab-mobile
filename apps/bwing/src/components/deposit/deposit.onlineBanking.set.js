@@ -199,7 +199,7 @@ const SetPayment = props => {
 		} else {
 			setWarning({
 				status: defIptStatus.warning,
-				msg: i18n.lbl_SelectBank
+				msg: i18n.lbl_SelectBankHint
 			});
 		}
 	};

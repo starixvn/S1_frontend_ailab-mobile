@@ -307,11 +307,10 @@ header .Login .inputBox .JoinRule.open {
   opacity: 1;
 }
 
-header .Join .inputBox > .icon-module,
-header .Login .inputBox > .icon-module {
+header .Join .inputBox .icon-module,
+header .Login .inputBox .icon-module {
   position: absolute;
   right: 0;
-  top: 0;
 }
 
 header .Join .inputBox i.icon,
@@ -1112,6 +1111,7 @@ footer > a.open {
   padding: 8vw;
   overflow: auto;
   display: none;
+  z-index: 10;
 }
 
 #popup.show {
@@ -1621,14 +1621,15 @@ footer > a.open {
 .inputBox > .icon-module {
   position: absolute;
   right: 20px;
-  top: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 100%;
 }
 
 .inputBox > .icon-module > i {
@@ -6578,6 +6579,317 @@ span.important {
   border-radius: 3px;
 }
 
+.rankingNew .rankBotton {
+  margin-top: 4vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.rankingNew .rankBotton button {
+  width: 25%;
+  border: 1px solid #58cdff;
+  color: #58cdff;
+  border-radius: 5px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+
+.rankingNew .rankBotton button.open {
+  background-color: #58cdff;
+  color: #070e22;
+  font-weight: bold;
+  -webkit-box-shadow: 0px 0px 5px rgba(88, 205, 255, 0.5);
+          box-shadow: 0px 0px 5px rgba(88, 205, 255, 0.5);
+}
+
+.rankingNew .rankInBox {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: none;
+}
+
+.rankingNew .rankInBox.open {
+  display: block;
+}
+
+.rankingNew .rankInBox .title {
+  width: 100%;
+  color: #58cdff;
+  font-size: 5vw;
+  border-bottom: 1px solid #58cdff;
+  margin: 5vw 0 3vw 0;
+  position: relative;
+  padding-bottom: 2vw;
+  text-align: left;
+}
+
+.rankingNew .rankInBox .textBox {
+  text-align: center;
+}
+
+.rankingNew .rankInBox .textBox p {
+  font-size: 14px;
+}
+
+.rankingNew .rankInBox .textBox h1 {
+  color: #ffd13c;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.rankingNew .rankInBox .filterBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.rankingNew .rankInBox .filterBtn > button {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+  border-radius: 3px;
+  padding: 1vw;
+}
+
+.rankingNew .rankInBox img {
+  width: 100%;
+}
+
+.rankingNew .rankInBox .icon-nodata {
+  width: 100%;
+  line-height: 400px;
+  text-align: center;
+  color: #ff5722;
+  font-size: 20px;
+}
+
+.rankingNew .rankInBox .eventTitle {
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.rankingNew .rankInBox .ranklist {
+  width: 100%;
+  margin: 20px 0;
+  position: relative;
+  display: none;
+}
+
+.rankingNew .rankInBox .ranklist.open {
+  display: block;
+}
+
+.rankingNew .rankInBox .ranklist ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.rankingNew .rankInBox .ranklist ul > div {
+  width: 100%;
+}
+
+.rankingNew .rankInBox .ranklist ul > div.timeLine {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #003b44;
+  height: 3vw;
+  border-radius: 9vw;
+  margin: 25vw 0 9vw;
+}
+
+.rankingNew .rankInBox .ranklist ul > div.timeLine > div {
+  width: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  position: relative;
+  text-align: left;
+}
+
+.rankingNew .rankInBox .ranklist ul > div.timeLine > div:before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: #19a4bb;
+  border-radius: 30px;
+  display: block;
+}
+
+.rankingNew .rankInBox .ranklist ul > div.timeLine > div:nth-child(2) > div {
+  z-index: 2;
+}
+
+.rankingNew .rankInBox .ranklist ul > div.timeLine > div:nth-child(3) > div {
+  z-index: 1;
+  top: -24vw;
+}
+
+.rankingNew .rankInBox .ranklist ul > div.timeLine > div:nth-child(4) > div {
+  top: -12vw;
+}
+
+.rankingNew .rankInBox .ranklist ul > div.timeLine > div > div {
+  white-space: nowrap;
+  position: absolute;
+  bottom: 4vw;
+  line-height: normal;
+  padding: 1vw 5vw 2vw 5vw;
+  background: #003b44;
+  color: white;
+  font-weight: bold;
+  margin-left: -30vw;
+  height: 8vw;
+  top: -36vw;
+}
+
+.rankingNew .rankInBox .ranklist ul > div.timeLine > div > div:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5.5vw 0 5.5vw 3vw;
+  border-color: transparent transparent transparent #003b44;
+  position: absolute;
+  top: 0;
+  right: -3vw;
+}
+
+.rankingNew .rankInBox .ranklist ul > div.timeLine > div > div > div {
+  color: #fab617;
+}
+
+.rankingNew .rankInBox .ranklist li {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: transparent;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 30px;
+  min-height: auto;
+  margin-bottom: 10px;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #58cdff;
+  border-radius: 5px;
+}
+
+.rankingNew .rankInBox .ranklist li.listTitle {
+  border: 0;
+  margin: 0;
+  height: 30px;
+}
+
+.rankingNew .rankInBox .ranklist li.no1 {
+  border: 1px solid #ffdd33;
+  background-color: rgba(255, 216, 100, 0.1);
+  height: 50px;
+  line-height: 50;
+}
+
+.rankingNew .rankInBox .ranklist li.no2 {
+  border: 1px solid #cbe5ff;
+  background-color: rgba(203, 229, 255, 0.1);
+  height: 50px;
+  line-height: 50;
+}
+
+.rankingNew .rankInBox .ranklist li.no3 {
+  border: 1px solid #ffa64d;
+  background-color: rgba(255, 166, 77, 0.1);
+  height: 50px;
+  line-height: 50;
+}
+
+.rankingNew .rankInBox .ranklist li.myRank {
+  background-color: #58cdff;
+  color: #070e22;
+  -webkit-box-shadow: 0 0 8px rgba(88, 205, 255, 0.5);
+          box-shadow: 0 0 8px rgba(88, 205, 255, 0.5);
+}
+
+.rankingNew .rankInBox .ranklist li div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  padding: 0 10px;
+  height: 40px;
+  white-space: initial;
+  line-height: 10px;
+}
+
+.rankingNew .rankInBox .ranklist li div:nth-child(1) {
+  width: 25%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding-left: 15px;
+}
+
+.rankingNew .rankInBox .ranklist li div:nth-child(2) {
+  width: 35%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding-left: 15px;
+}
+
+.rankingNew .rankInBox .ranklist li div:nth-last-child(1) {
+  width: 40%;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding-right: 15px;
+}
+
+.rankingNew .rankInBox .ranklist li div img {
+  width: 30%;
+  margin-right: 10px;
+}
+
+.rankingNew .remind {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.rankingNew .remind.btn {
+  width: 100%;
+  padding: 10px 0;
+  color: #fff;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f85f05), to(#f20505));
+  background: linear-gradient(180deg, #f85f05, #f20505);
+  border-radius: 3px;
+}
+
 .errorPage {
   position: fixed;
   top: 0;
@@ -8522,7 +8834,9 @@ span.important {
 .depositModule_local .inputBox input,
 .depositModule_topupmobile .inputBox input {
   padding: 2vw;
+  padding-right: 14vw;
   border-radius: 0;
+  text-align: right;
 }
 
 .depositModule_mobile .inputBox input::-webkit-input-placeholder,

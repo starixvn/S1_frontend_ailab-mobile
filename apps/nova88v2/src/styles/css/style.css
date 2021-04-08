@@ -2177,8 +2177,8 @@ footer > a.active .circleAnimation + span {
 }
 
 .bankAccount .account.active {
-  -webkit-box-shadow: 0 0 0 2px #5574a7 inset;
-          box-shadow: 0 0 0 2px #5574a7 inset;
+  -webkit-box-shadow: 0 0 0 2px #f77a00 inset;
+          box-shadow: 0 0 0 2px #f77a00 inset;
 }
 
 .selectBank {
@@ -6809,6 +6809,5 @@ main .sideBar button, main .sideBar a {
 
 .autoTransfer {
   margin: 2vw 0;
-  color: #5574A7;
 }
 /*# sourceMappingURL=style.css.map */

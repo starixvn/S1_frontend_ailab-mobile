@@ -169,7 +169,7 @@ export const Main = props => {
 					...prev,
 					amount: {
 						status: true,
-						msg: i18n.lbl_SelectBank
+						msg: i18n.lbl_SelectBankHint
 					}
 				}));
 			}
