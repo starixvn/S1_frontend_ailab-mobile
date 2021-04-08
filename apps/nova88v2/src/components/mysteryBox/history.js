@@ -38,13 +38,9 @@ const History = ({ i18n, userInfo, setPopBox, setLoading, canDrawPrize }) => {
 			{history?.length > 0 ? (
 				arr
 			) : (
-				<ul>
-					<li>
-						<div className="nodata icon icon-nodata">
-							<div className="txt-white">{i18n.msg_NoData}</div>
-						</div>
-					</li>
-				</ul>
+				<div className="nodata icon icon-nodata">
+					<div className="txt-white">{i18n.msg_NoData}</div>
+				</div>
 			)}
 		</div>
 	);

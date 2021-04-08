@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import { useNavigate } from "@reach/router";
 import { Link } from "../../route/link";
-import { userInfoContext, i18nContext, pageContext } from "../common/context";
+import { userInfoContext, i18nContext } from "../common/context";
 import path from "../../path";
-import Join from "./join";
+import Join from "./join.step.all";
 import Login from "../login/login";
 import Logo from "../common/logo";
 
