@@ -492,6 +492,17 @@
 	"lbl_Vip_Normal":"Normal",
 	"lbl_Vip_Lifetime":"Lifetime",
 	"lbl_Vip_3Months":"3 Months",
-	"lbl_VIP":"VIP"
+	"lbl_VIP":"VIP",
+	"lbl_EuroEventTitle1" : "UEFA EURO FINAL 2020",
+	"lbl_EuroEventTitle2" : "UP TO VND 580,000,000 PRIZES WORTH!",
+	"lbl_TournamentPoints" : "TOURNAMENT POINTS",
+	"lbl_EuroDate1" : "13 MAR - 12 APR",
+	"lbl_EuroDate2" : "13 APR - 12 MAY",
+	"lbl_EuroDate3" : "13 MAY - 12 JUN",
+	"lbl_Final" : "UEFA EURO 2020 FINAL TOURNAMENT",
+	"lbl_MonthlyTournament" : "MONTHLY TOURNAMENT",
+	"lbl_AgendaTitle" : "MONTHLY DEPOSIT & TURNOVER RACE TOURNAMENT",
+	"lbl_Tournament" : "Tournament",
+	"lbl_Stage": "Stage"
 
 }

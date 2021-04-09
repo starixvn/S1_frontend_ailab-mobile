@@ -6,11 +6,12 @@ import {
 	defNavPanel
 } from "../components/common/context";
 import Event from "../components/ranking/event";
-import RankingByCategory from "../components/ranking/rankByCategory";
+import Final from "../components/ranking/final";
 import Record from "../components/ranking/records";
-import { defBtns, defElemType } from "../components/ranking/def";
+import { defBtns, defElemType, defEuroBtns } from "../components/ranking/def";
 import { useHandleSelect } from "../components/ranking/hook";
 import BtnBar from "../components/common/btnBar";
+import TournamentPoints from "../components/ranking/tournamentPoints";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
@@ -30,36 +31,36 @@ export default () => {
 	return (
 		<>
 			<BtnBar
-				btnListClass="rankBotton"
 				i18n={i18n}
 				selected={selected}
 				handleSelect={handleSelect}
 				mainKey="leader-board-btnBar"
-				defBtns={defBtns}
+				defBtns={defEuroBtns}
+				btnListClass="rankBotton"
 				isLogin={isLogin}
 			/>
 			<Event
-				isOpen={defBtns[selected].elemType === defElemType.Event}
+				isOpen={defEuroBtns[selected].elemType === defElemType.Event}
 				i18n={i18n}
 				userInfo={userInfo}
 			/>
-			<RankingByCategory
-				isOpen={defBtns[selected].elemType === defElemType.Ranking}
+			<Final
+				isOpen={defEuroBtns[selected].elemType === defElemType.Final}
+				i18n={i18n}
+				userInfo={userInfo}
+			/>
+			<TournamentPoints
+				isOpen={
+					defEuroBtns[selected].elemType === defElemType.Tournament
+				}
 				i18n={i18n}
 				userInfo={userInfo}
 			/>
 			<Record
-				isOpen={defBtns[selected].elemType === defElemType.Record}
+				isOpen={defEuroBtns[selected].elemType === defElemType.Record}
 				i18n={i18n}
 				userInfo={userInfo}
-				title={i18n[defBtns[selected].displayKey]}
-			/>
-			<Record
-				isOpen={defBtns[selected].elemType === defElemType.LastEvent}
-				i18n={i18n}
-				userInfo={userInfo}
-				isLastEvent={true}
-				title={i18n[defBtns[selected].displayKey]}
+				title="lbl_Records"
 			/>
 		</>
 	);
