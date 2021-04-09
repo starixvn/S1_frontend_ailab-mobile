@@ -25,7 +25,7 @@ const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
 			/>
 			<PrizeList userInfo={userInfo} category={selected} i18n={i18n} />
 			<a
-				href={`release.goal123.com/SiteSkin/goal123/Ranking/${userInfo.langId}4.html`}
+				href={`${config.t_and_cURL}/SiteSkin/goal123/Ranking/${userInfo.langId}4.html`}
 				target="_blank"
 				rel="noreferrer"
 				className="more">
