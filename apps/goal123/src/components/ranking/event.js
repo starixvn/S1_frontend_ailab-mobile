@@ -4,6 +4,7 @@ import { defEuroTourBtns } from "./def";
 import BtnBar from "../common/btnBar";
 import { useHandleSelect } from "./hook";
 import PrizeList from "./prize";
+import config from "../../config";
 
 const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
 	const { selected, handleSelect } = useHandleSelect({
