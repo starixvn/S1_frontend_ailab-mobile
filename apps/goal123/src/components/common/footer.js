@@ -62,7 +62,7 @@ const Footer = () => {
 								to={path.other.root}
 								className={isMatch ? "open" : ""}>
 								<div className="circleAnimation">
-									<div className="icon icon-cog" />
+									<div className="icon icon-more" />
 								</div>
 								<span>{i18n.lbl_More}</span>
 							</Link>

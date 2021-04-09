@@ -285,10 +285,10 @@ const BankInfo = () => {
 			hasBtn: true,
 			btnBar: (
 				<div className="btn-group">
-					<button className="blue" onClick={toShowBankAccount}>
+					<button className="darkGray" onClick={toShowBankAccount}>
 						{i18n.lbl_Cancel}
 					</button>
-					<button className="orange" onClick={removeAccount}>
+					<button className="lightBlue" onClick={removeAccount}>
 						{i18n.lbl_Submit}
 					</button>
 				</div>
@@ -422,11 +422,11 @@ const BankInfo = () => {
 					hasBtn: true,
 					btnBar: (
 						<div className="btn-group">
-							<button className="blue" onClick={closePopbox}>
+							<button className="darkGray" onClick={closePopbox}>
 								{i18n.lbl_Cancel}
 							</button>
 							<button
-								className="orange"
+								className="lightBlue"
 								onClick={SetCustBankInfo.bind(
 									this,
 									checked,
@@ -515,10 +515,14 @@ const BankInfo = () => {
 						onChange={EditField.bind(null, "BankAccount")}
 					/>
 					<div className="btn-group">
-						<button className="blue" onClick={toShowBankAccount}>
+						<button
+							className="darkGray"
+							onClick={toShowBankAccount}>
 							{i18n.lbl_Cancel}
 						</button>
-						<button className="orange" onClick={checkSubmitHandler}>
+						<button
+							className="lightBlue"
+							onClick={checkSubmitHandler}>
 							{i18n.lbl_Submit}
 						</button>
 					</div>

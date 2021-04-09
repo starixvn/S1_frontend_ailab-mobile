@@ -47,7 +47,7 @@ const HeaderShortcut = ({ userInfo, i18n }) => {
 						}`}
 						onClick={clickEye}
 					/>
-					<q>
+					<q className="money">
 						<span>{i18n[`Currency_${userInfo.currencyId}`]} </span>
 						{showingBalance ? balance : "*****"}
 					</q>

@@ -12,6 +12,21 @@ import { EventList } from "../components/vip/eventList";
 import { Info } from "../components/vip/info";
 import { FooterBanner } from "../components/vip/footerBanner";
 
+const swipperParams = {
+	spaceBetween: 30,
+	centeredSlides: true,
+	autoplay: {
+		delay: 2500,
+		disableOnInteraction: false
+	},
+	pagination: {
+		el: ".swiper-pagination",
+		clickable: true
+	},
+	rebuildOnUpdate: true,
+	containerClass: "vipBannerTop"
+};
+
 const Banners = ({ langId }) => {
 	const rows = defBannersUrl({ langId }).map((b, bIdx) => (
 		<img
@@ -21,7 +36,7 @@ const Banners = ({ langId }) => {
 			alt="vip banner"
 		/>
 	));
-	return <Autoplay Rows={rows} />;
+	return <Autoplay Rows={rows} params={swipperParams} />;
 };
 
 Banners.propTypes = {

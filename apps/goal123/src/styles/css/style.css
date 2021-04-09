@@ -187,7 +187,7 @@ header .Login {
   left: 0;
   color: white;
   z-index: 2;
-  background: #001942;
+  background: #fff;
   visibility: hidden;
   -webkit-transition: 0.7s;
   transition: 0.7s;
@@ -228,6 +228,11 @@ header .Login .dropdown .dropdown-item {
 header .Join > .close,
 header .Login > .close {
   top: 4vw;
+}
+
+header .Join > .close span,
+header .Login > .close span {
+  background-color: #052561;
 }
 
 header .Join > img,
@@ -354,6 +359,7 @@ header .Join .Terms,
 header .Login .Terms {
   margin: 1vw auto 2vw;
   line-height: 26px;
+  color: #052561;
 }
 
 header .Join .Terms.error,
@@ -363,6 +369,7 @@ header .Login .Terms.error {
           box-shadow: 0 0 0 1px white;
   border-radius: 0;
   padding: 0 2vw;
+  color: #052561;
 }
 
 header .Join .Terms a,
@@ -403,7 +410,7 @@ header .Login .Terms input[type="checkbox"] + label > div {
 
 header .Join .Terms input[type="checkbox"]:checked + label > div,
 header .Login .Terms input[type="checkbox"]:checked + label > div {
-  background: #fab617;
+  background: #1e85ec;
 }
 
 header .headerInfo {
@@ -1324,7 +1331,7 @@ footer > a.open .circleAnimation + span {
   background: #bfc9da;
   border: 1px solid #284985;
   border-radius: 3px;
-  color: white;
+  color: #052561;
   width: 100%;
   position: relative;
   display: -webkit-box;
@@ -1344,7 +1351,7 @@ footer > a.open .circleAnimation + span {
   height: 0;
   border-style: solid;
   border-width: 5px 5px 0 5px;
-  border-color: white transparent transparent transparent;
+  border-color: #052561 transparent transparent transparent;
   position: absolute;
   right: 3vw;
 }
@@ -1360,7 +1367,7 @@ footer > a.open .circleAnimation + span {
 .dropdown > .dropdown-container {
   display: none;
   position: absolute;
-  background: #001942;
+  background: #fff;
   z-index: 1;
   border: 1px solid #284985;
   border-top: 0;
@@ -1460,7 +1467,7 @@ footer > a.open .circleAnimation + span {
       -ms-flex-direction: column;
           flex-direction: column;
   color: white;
-  background: rgba(15, 35, 70, 0.95);
+  background: rgba(191, 201, 218, 0.95);
   padding: 8vw;
   overflow: auto;
   display: none;
@@ -1478,9 +1485,9 @@ footer > a.open .circleAnimation + span {
 }
 
 #popup .close {
-  -webkit-transform: translateY(50%);
-          transform: translateY(50%);
-  right: 1vw;
+  -webkit-transform: translateY(30%);
+          transform: translateY(30%);
+  right: 2vw;
 }
 
 #popup .popTit {
@@ -1497,14 +1504,33 @@ footer > a.open .circleAnimation + span {
   word-break: break-word;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 0 9vw 1vw 4vw;
+  padding: 2vw 9vw 2vw 4vw;
 }
 
 #popup .popTxt {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   line-height: 6vw;
-  width: calc(100% - 8vw - 2px);
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 5vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #294985;
+  background: #eaf1ff;
+  color: #052561;
 }
 
 #popup .popTxt img {
@@ -1693,6 +1719,15 @@ footer > a.open .circleAnimation + span {
   margin-left: 5px;
 }
 
+.mainNew .walletBox > div.side-info > div .money {
+  width: 70%;
+  word-break: break-all;
+}
+
+.mainNew .walletBox > div.side-info > div .money span {
+  margin-right: 5px;
+}
+
 .mainNew .walletBox > div.content {
   width: 60%;
   display: -webkit-box;
@@ -1823,21 +1858,16 @@ footer > a.open .circleAnimation + span {
   padding: 3vw 2vw;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   background: url(../img/hotgamebg.jpg);
   background-size: cover;
   min-height: 400px;
+  font-size: 0;
 }
 
 .mainNew .gamelistNew .game {
+  display: inline-block;
   width: 30%;
+  height: 120px;
   margin: 0.5% 1.66%;
   line-height: 0;
   position: relative;
@@ -1859,12 +1889,19 @@ footer > a.open .circleAnimation + span {
 }
 
 .mainNew .gamelistNew .game .title {
-  padding: 12px 0;
+  padding: 12px 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   text-align: center;
   font-size: 12px;
   background: -webkit-gradient(linear, left top, left bottom, from(#4d6ba7), to(#1b3159));
   background: linear-gradient(to bottom, #4d6ba7 0%, #1b3159 100%);
   text-transform: uppercase;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #fff;
 }
 
 .mainNew .vipRanking {
@@ -2049,7 +2086,7 @@ footer > a.open .circleAnimation + span {
 }
 
 .viplv {
-  color: white;
+  color: #052561;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2068,7 +2105,7 @@ footer > a.open .circleAnimation + span {
 .balance {
   font-size: 5vw;
   font-weight: bold;
-  color: white;
+  color: #052561;
   text-align: center;
   margin-bottom: 1vw;
 }
@@ -2091,7 +2128,7 @@ footer > a.open .circleAnimation + span {
 .name {
   font-size: 5vw;
   font-weight: bold;
-  color: white;
+  color: #052561;
   text-align: center;
   margin-bottom: 1vw;
 }
@@ -2284,6 +2321,7 @@ footer > a.open .circleAnimation + span {
   height: 0;
   visibility: hidden;
   opacity: 0;
+  color: #052561;
 }
 
 .LoginRule.open {
@@ -2292,6 +2330,11 @@ footer > a.open .circleAnimation + span {
   -webkit-transition: 0.7s;
   transition: 0.7s;
   opacity: 1;
+  color: #052561;
+}
+
+.JoinRule {
+  color: #052561;
 }
 
 .btn-group {
@@ -2679,6 +2722,7 @@ footer > a.open .circleAnimation + span {
           justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  color: #052561;
 }
 
 .account .bankLogo {
@@ -2741,14 +2785,14 @@ footer > a.open .circleAnimation + span {
   padding: 2vw;
   border-radius: 3px;
   border: 1px solid #284985;
-  background: #030c1b;
+  background: #bfc9da;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
 
 .text {
-  color: white;
+  color: #052561;
 }
 
 .text-org {
@@ -2780,7 +2824,7 @@ footer > a.open .circleAnimation + span {
 
 .bankSlip {
   position: absolute;
-  background: rgba(15, 35, 70, 0.95);
+  background: rgba(255, 255, 255, 0.95);
   top: 0;
   left: 0;
   padding: 12vw 8vw 23vw;
@@ -2801,7 +2845,7 @@ footer > a.open .circleAnimation + span {
 }
 
 input {
-  background: #030c1b;
+  background: #bfc9da;
   border: 1px solid #284985;
   border-radius: 3px;
   padding: 3vw 9vw;
@@ -2849,7 +2893,7 @@ input[type="file"] {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  background: #030c1b;
+  background: #bfc9da;
 }
 
 .fileUpload + button {
@@ -2903,16 +2947,14 @@ button.clickBtn:before {
       -ms-flex: 0 0 calc(100% / 3 - 2vw);
           flex: 0 0 calc(100% / 3 - 2vw);
   border-radius: 3px;
-  color: white;
+  color: #052561;
   padding: 2vw;
   margin: 1vw;
-  border: 1px solid #1a3055;
+  border: 1px solid #052561;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  -webkit-box-shadow: 0px 3px #1a3055;
-          box-shadow: 0px 3px #1a3055;
   position: relative;
-  background: #213e6f;
+  background: none;
 }
 
 .buttonBox button .icon {
@@ -2934,10 +2976,9 @@ button.clickBtn:before {
 }
 
 .buttonBox button.open {
-  background: none;
-  -webkit-box-shadow: 0px 0px #883200;
-          box-shadow: 0px 0px #883200;
-  border: 1px solid #134dae;
+  background: #052561;
+  border: 0;
+  color: white;
   top: 1px;
 }
 
@@ -2949,6 +2990,7 @@ button.clickBtn:before {
 
 .tip {
   margin-top: 1vw;
+  color: #052561;
 }
 
 .tip a {
@@ -3145,7 +3187,7 @@ button.clickBtn:before {
 
 .functionList ~ .account .content {
   width: 100%;
-  color: white;
+  color: #052561;
   visibility: hidden;
   -webkit-transition: 0.7s;
   transition: 0.7s;
@@ -3414,7 +3456,7 @@ button.clickBtn:before {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  color: white;
+  color: #052561;
   border: 1px solid #1e85ec;
   border-radius: 3px;
   padding: 1vw 0;
@@ -3426,6 +3468,7 @@ button.clickBtn:before {
 }
 
 .filterBtn button.open {
+  color: white;
   background: #1e85ec;
 }
 
@@ -3536,10 +3579,10 @@ button.clickBtn:before {
   top: 0;
   left: 0;
   color: white;
-  background: rgba(15, 35, 70, 0.95);
   padding: 8vw;
   display: none;
   z-index: 4;
+  background: rgba(191, 201, 218, 0.8);
 }
 
 #Loading.open {
@@ -3690,8 +3733,8 @@ input.error {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   line-height: 10vw;
-  margin-top: 6vw;
-  padding: 6vw 2vw 0;
+  padding: 6vw 4vw 0;
+  background: rgba(29, 54, 98, 0.1);
 }
 
 .webmap div {
@@ -3708,6 +3751,7 @@ input.error {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  color: #052561;
 }
 
 .webmap div a.icon:before {
@@ -4056,7 +4100,7 @@ span.important {
 }
 
 .kyc .icon-like {
-  color: white;
+  color: #052561;
   margin: 2vw auto;
   text-align: center;
 }
@@ -4067,7 +4111,7 @@ span.important {
 
 .text-center {
   text-align: center;
-  color: white;
+  color: #052561;
 }
 
 #welcome {
@@ -4557,6 +4601,7 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
   margin-top: 10px;
+  margin-bottom: 50px;
 }
 
 .submenuNew .language > div {
@@ -4569,6 +4614,13 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.submenuNew .language > div.open {
+  background-color: #1e85ec;
+  padding: 10px;
+  border-radius: 50px;
+  color: white;
 }
 
 .submenuNew .language > div img {
@@ -4942,7 +4994,7 @@ span.important {
           flex: 1;
   border: 1px solid #134dae;
   padding: 5px 10px;
-  color: white;
+  color: #052561;
 }
 
 .minAmount > div > div:last-child {
@@ -5018,8 +5070,8 @@ span.important {
   margin: 10px auto;
   padding: 10px;
   background-color: #455c83;
-  border-radius: 10px;
-  font-size: 16px;
+  border-radius: 20px;
+  font-size: 14px;
 }
 
 .breadcrumb ul .breadcrumb-item a {
@@ -5496,7 +5548,7 @@ span.important {
   position: fixed;
   right: 1vw;
   bottom: 16vw;
-  z-index: 3;
+  z-index: 4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5527,7 +5579,7 @@ span.important {
 .eventLink img {
   -webkit-animation: routate linear infinite alternate 0.8s;
           animation: routate linear infinite alternate 0.8s;
-  width: 160px;
+  width: 130px;
 }
 
 .eventLink.active {
@@ -5551,7 +5603,7 @@ span.important {
 .event.goldbox {
   width: calc(100% - 6vw);
   padding: 0 3vw 24vw;
-  background: #000 url(../img/event/box/bg.jpg) no-repeat top center;
+  background: #f0f4fa url(../img/event/box/bg.jpg) no-repeat top center;
   background-size: 120%;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
@@ -5869,7 +5921,7 @@ span.important {
   position: relative;
   width: 90vw;
   height: auto;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(206, 206, 206, 0.6);
   border-radius: 0;
   -webkit-backdrop-filter: blur(3px);
           backdrop-filter: blur(3px);
@@ -6250,15 +6302,15 @@ span.important {
   position: fixed;
   top: 0;
   left: 0;
-  color: white;
+  color: #052561;
   z-index: 2;
-  background: #001942;
   -webkit-transition: 0.7s;
   transition: 0.7s;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   pointer-events: none;
+  background-color: #fff;
 }
 
 .Join .dropdown {
@@ -6289,6 +6341,7 @@ span.important {
   font-size: 6vw;
   margin: 1vw auto;
   font-weight: bold;
+  color: #052561;
 }
 
 .Join .inputBox {
@@ -6321,6 +6374,7 @@ span.important {
   visibility: hidden;
   opacity: 0;
   font-size: 12px;
+  color: #052561;
 }
 
 .Join .inputBox .JoinRule.open {
@@ -6329,6 +6383,7 @@ span.important {
   -webkit-transition: 0.7s;
   transition: 0.7s;
   opacity: 1;
+  color: #052561;
 }
 
 .Join .inputBox > .icon-module {
@@ -6441,6 +6496,7 @@ span.important {
 
 .refShare .title {
   margin-bottom: 2vw;
+  color: #052561;
 }
 
 .refShare .refBox {
@@ -6616,7 +6672,7 @@ span.important {
 }
 
 .switchTag div.open {
-  background: #fab617;
+  background: #1e85ec;
 }
 
 .switchTag div:last-child {
@@ -6627,8 +6683,8 @@ span.important {
 .depositModule_online,
 .depositModule_local,
 .depositModule_topupMobile {
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid #fab617;
+  background: rgba(213, 228, 255, 0.4);
+  border: 1px solid #1e85ec;
   padding: 3vw;
   width: calc(110% - 6vw - 2px);
   margin-left: -5%;
@@ -6683,7 +6739,7 @@ span.important {
 .depositModule_local > .title.important,
 .depositModule_topupMobile > .title.important {
   font-weight: bold;
-  color: #fab617;
+  color: white;
 }
 
 .depositModule_mobile .selectModule,
@@ -6715,7 +6771,7 @@ span.important {
 .depositModule_online .selectModule input[type="radio"] + label,
 .depositModule_local .selectModule input[type="radio"] + label,
 .depositModule_topupMobile .selectModule input[type="radio"] + label {
-  border: 1px solid #1e85ec;
+  border: 1px solid white;
   width: 4vw;
   height: 4vw;
   display: -webkit-inline-box;
@@ -6736,7 +6792,7 @@ span.important {
 .depositModule_topupMobile .selectModule input[type="radio"]:checked + label div {
   width: 3vw;
   height: 3vw;
-  background: #fab617;
+  background: white;
 }
 
 .depositModule_mobile .selectModule > div,
@@ -6779,7 +6835,7 @@ span.important {
 .depositModule_online .selectModule > div .bank > div:last-child,
 .depositModule_local .selectModule > div .bank > div:last-child,
 .depositModule_topupMobile .selectModule > div .bank > div:last-child {
-  color: #fab617;
+  color: white;
 }
 
 .depositModule_mobile .selectModule > div.info,
@@ -6788,7 +6844,7 @@ span.important {
 .depositModule_topupMobile .selectModule > div.info {
   width: calc(100% - 12vw);
   padding: 2vw 5vw;
-  background: rgba(3, 12, 27, 0.95);
+  background: #adccff;
   margin: auto;
   border-radius: 5px;
 }
@@ -6829,7 +6885,7 @@ span.important {
 .depositModule_topupMobile .inputBox {
   position: relative;
   margin: 2px 0 2vw;
-  color: #f0eff5;
+  color: white;
 }
 
 .depositModule_mobile .inputBox .iconModule,
@@ -6849,15 +6905,16 @@ span.important {
 .depositModule_topupMobile .inputBox input {
   padding: 2vw;
   border-radius: 0;
-  text-align: right;
+  text-align: left;
   padding-right: 15vw;
+  color: #052561;
 }
 
 .depositModule_mobile .inputBox input::-webkit-input-placeholder,
 .depositModule_online .inputBox input::-webkit-input-placeholder,
 .depositModule_local .inputBox input::-webkit-input-placeholder,
 .depositModule_topupMobile .inputBox input::-webkit-input-placeholder {
-  color: #f0eff5;
+  color: white;
   opacity: 0.5;
 }
 
@@ -6865,7 +6922,7 @@ span.important {
 .depositModule_online .inputBox input:-ms-input-placeholder,
 .depositModule_local .inputBox input:-ms-input-placeholder,
 .depositModule_topupMobile .inputBox input:-ms-input-placeholder {
-  color: #f0eff5;
+  color: white;
   opacity: 0.5;
 }
 
@@ -6873,7 +6930,7 @@ span.important {
 .depositModule_online .inputBox input::-ms-input-placeholder,
 .depositModule_local .inputBox input::-ms-input-placeholder,
 .depositModule_topupMobile .inputBox input::-ms-input-placeholder {
-  color: #f0eff5;
+  color: white;
   opacity: 0.5;
 }
 
@@ -6881,7 +6938,7 @@ span.important {
 .depositModule_online .inputBox input::placeholder,
 .depositModule_local .inputBox input::placeholder,
 .depositModule_topupMobile .inputBox input::placeholder {
-  color: #f0eff5;
+  color: white;
   opacity: 0.5;
 }
 
@@ -7013,7 +7070,7 @@ span.important {
 }
 
 .vipInfo {
-  color: white;
+  color: #052561;
   padding: 2vw;
   margin: 60vw auto 0;
 }
@@ -7100,6 +7157,16 @@ span.important {
   width: 10vw;
 }
 
+.vipBannerTop {
+  position: fixed !important;
+  top: 12vw;
+  height: 37.5vw;
+}
+
+.vipBannerTop > div img {
+  width: 100%;
+}
+
 .vipBanner {
   width: 100%;
   height: 49.5vw;
@@ -7111,10 +7178,6 @@ span.important {
       -ms-flex-pack: center;
           justify-content: center;
   margin-top: 3vw;
-}
-
-.vipBanner.small {
-  height: 28vw;
 }
 
 .vipBanner img {

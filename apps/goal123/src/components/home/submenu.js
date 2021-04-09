@@ -450,11 +450,15 @@ const LangSwitch = ({ setPopBox, userInfo, setUserInfo }) => {
 
 	return (
 		<div className="language">
-			<div onClick={selectLanguage.bind(this, "en")}>
+			<div
+				className={userInfo.langId === "en" ? "open" : ""}
+				onClick={selectLanguage.bind(this, "en")}>
 				<img src={Lang_en} alt="English" />
 				English
 			</div>
-			<div onClick={selectLanguage.bind(this, "vn")}>
+			<div
+				className={userInfo.langId === "vn" ? "open" : ""}
+				onClick={selectLanguage.bind(this, "vn")}>
 				<img src={Lang_vn} alt="Tiếng Việt" />
 				Tiếng Việt
 			</div>

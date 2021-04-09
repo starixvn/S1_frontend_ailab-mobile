@@ -73,7 +73,7 @@ const Panel = ({ submitHandler }) => {
 
 			<div className="btn-group">
 				<button
-					className="orange switch"
+					className="lightBlue switch"
 					onClick={submitHandler.bind(
 						this,
 						dateRange.startDate,

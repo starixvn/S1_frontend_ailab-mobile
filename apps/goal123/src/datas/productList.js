@@ -175,11 +175,6 @@ const gameList = [
 				...defGameInfo.eSports,
 				img: HotGame_ESports,
 				spanTextKey: "lbl_eSports"
-			},
-			{
-				...defGameInfo.eSports,
-				img: HotGame_ESports,
-				spanTextKey: "lbl_eSports"
 			}
 		]
 	},
