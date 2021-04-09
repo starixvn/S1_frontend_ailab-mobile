@@ -100,7 +100,7 @@ export default () => {
 					<button className="title icon icon-cog">
 						{i18n.lbl_Setting}
 					</button>
-					<ThemeMode />
+					{/* <ThemeMode /> */}
 					<LangPanel
 						userInfo={userInfo}
 						setUserInfo={setUserInfo}

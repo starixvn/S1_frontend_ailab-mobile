@@ -69,7 +69,7 @@ const RecentDatas = ({ Datas, SubmitProof, ClickCancel }) => {
 	return (
 		<>
 			<div className="btn-group">
-				<button className="orange switch" onClick={HandleOpen}>
+				<button className="recentBtn" onClick={HandleOpen}>
 					{i18n.lbl_RecentTransactions}
 					<i
 						className={`icon icon-keyboard_arrow_down${

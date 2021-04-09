@@ -12,25 +12,25 @@ import BankInfo from "./components/member/bankInfo";
 import Member from "./pages/member";
 
 import Deposit from "./pages/deposit";
-import DepositHome from "./components/deposit/deposit";
-import {
-	Panel as OnlineBanking,
-	Main as OnlineBankingMain
-} from "./components/deposit/deposit.onlineBanking";
-import SetOnlineBanking from "./components/deposit/deposit.onlineBanking.set";
-
-import {
-	Panel as MobilePay,
-	Main as MobilePayMain
-} from "./components/deposit/deposit.mobilePay";
-import SetMobilePay from "./components/deposit/deposit.mobilePay.set";
-
-import {
-	Panel as LocalBank,
-	Main as LocalBankMain
-} from "./components/deposit/deposit.localBank";
-
 import DepositHistory from "./components/deposit/deposit.history";
+
+// import DepositHome from "./components/deposit/deposit";
+// import {
+// 	Panel as OnlineBanking,
+// 	Main as OnlineBankingMain
+// } from "./components/deposit/deposit.onlineBanking";
+// import SetOnlineBanking from "./components/deposit/deposit.onlineBanking.set";
+
+// import {
+// 	Panel as MobilePay,
+// 	Main as MobilePayMain
+// } from "./components/deposit/deposit.mobilePay";
+// import SetMobilePay from "./components/deposit/deposit.mobilePay.set";
+
+// import {
+// 	Panel as LocalBank,
+// 	Main as LocalBankMain
+// } from "./components/deposit/deposit.localBank";
 
 import Withdrawal from "./pages/withdrawal";
 import WithdrawalHome from "./components/withdrawal/withdrawal";
@@ -109,6 +109,11 @@ const Index = () => {
 						</FriendReferral>
 
 						<Deposit path={path.deposit.root}>
+							<Deposit path="/" />
+							<DepositHistory path={path.depositHistory.root} />
+						</Deposit>
+
+						{/* <Deposit path={path.deposit.root}>
 							<DepositHome path={path.deposit.sub.root} />
 							<OnlineBanking
 								path={path.deposit.sub.onlineBank.root}>
@@ -139,7 +144,7 @@ const Index = () => {
 							<DepositHistory
 								path={path.deposit.sub.history.root}
 							/>
-						</Deposit>
+						</Deposit> */}
 						<Withdrawal path={path.withdrawal.root}>
 							<WithdrawalHome path={path.withdrawal.sub.root} />
 							<WithdrawalHistory

@@ -31,14 +31,16 @@ const IndexPage = () => {
 		/>
 	);
 
-	const rows = selCategory.datas?.map(v => {
+	const rows = selCategory.datas?.map((v, vidx) => {
 		return (
 			<StreamingModule
-				key={`home-streaming-${v.type}-${v.matchID}`}
+				key={`home-streaming-${v.type}-${vidx}`}
 				i18n={i18n}
 				langId={userInfo.langId}
 				isLogin={userInfo.isLogin}
 				isStreamingPage={true}
+				tpId={selCategory.tpId}
+				gameId={selCategory.gameId}
 				{...v}
 			/>
 		);
@@ -46,9 +48,10 @@ const IndexPage = () => {
 
 	const header = (
 		<Header
-			title={i18n.lbl_LiveStreaming}
+			title={i18n.lbl_LIVE_SPORT}
 			hideLogo={true}
 			filter={filter}
+			hideId={true}
 		/>
 	);
 

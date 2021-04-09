@@ -3,6 +3,12 @@ import DragonTiger from "../styles/img/hotgame02.jpg";
 import Belangkai from "../styles/img/hotgame03.jpg";
 import Hulu from "../styles/img/hotgame04.jpg";
 import MultihandBlackjack from "../styles/img/hotgame05.jpg";
+import Vs1dragon8 from "../styles/img/hotgame06.jpg";
+import ThreeStarFortune from "../styles/img/hotgame07.jpg";
+import FortuneDragons from "../styles/img/hotgame08.jpg";
+import GodOfFortune from "../styles/img/hotgame09.jpg";
+import LuckyNeko from "../styles/img/hotgame10.jpg";
+import Poker from "../styles/img/hotgame11.jpg";
 
 const gameType = {
 	table: "lbl_TableGame",
@@ -55,7 +61,7 @@ export default [
 		name: "888 Dragon",
 		provider: "PP",
 		gameTypeKey: gameType.slots,
-		img: Baccarat,
+		img: Vs1dragon8,
 		tpId: 5,
 		gameId: "vs1dragon8"
 	},
@@ -63,7 +69,7 @@ export default [
 		name: "Three Star Fortune",
 		provider: "PP",
 		gameTypeKey: gameType.slots,
-		img: Baccarat,
+		img: ThreeStarFortune,
 		tpId: 5,
 		gameId: "vs10threestar"
 	},
@@ -71,7 +77,7 @@ export default [
 		name: "5 Fortune Dragons",
 		provider: "Spade",
 		gameTypeKey: gameType.slots,
-		img: Baccarat,
+		img: FortuneDragons,
 		tpId: 10,
 		gameId: "S-FD01"
 	},
@@ -79,7 +85,7 @@ export default [
 		name: "God Of Fortune",
 		provider: "GPI",
 		gameTypeKey: gameType.slots,
-		img: Baccarat,
+		img: GodOfFortune,
 		tpId: 6,
 		gameId: "godoffortune"
 	},
@@ -87,7 +93,7 @@ export default [
 		name: "Lucky Neko",
 		provider: "YGG",
 		gameTypeKey: gameType.slots,
-		img: Baccarat,
+		img: LuckyNeko,
 		tpId: 5,
 		gameId: 7382
 	},
@@ -95,7 +101,7 @@ export default [
 		name: "Poker",
 		provider: "OneGame",
 		gameTypeKey: gameType.poker,
-		img: Baccarat,
+		img: Poker,
 		tpId: 13
 	}
 ];

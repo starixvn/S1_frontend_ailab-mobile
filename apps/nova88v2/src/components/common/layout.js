@@ -1,7 +1,6 @@
 import React, { useContext, Component } from "react";
 import PropTypes from "prop-types";
 import { useMatch, useNavigate } from "@reach/router";
-import { Link } from "@Router";
 import Footer from "./footer";
 import Header from "../header/header";
 import {
@@ -9,15 +8,12 @@ import {
 	i18nContext,
 	defNavPanel,
 	loadingContext,
-	rootContext,
 	userInfoContext
 } from "./context";
 import path from "../../path";
 import Loading from "./loading";
 import { isEventPeriod } from "./common";
-import { eventTime } from "../../pages/angPow";
-import eventImg from "../../styles/img/event/eventlink.png";
-import eventIdImg from "../../styles/img/event/eventlink_id.png";
+import { eventTime, MysteryBoxPop } from "../../pages/mysteryBox";
 import Modal from "../join/modal";
 import GotopBtn from "./goTopBtn";
 
@@ -54,9 +50,7 @@ const Layout = ({ children, header, mainClass }) => {
 				{children}
 				{loading ? <Loading /> : null}
 			</main>
-			{isEventPeriod(eventTime.angPow) ? (
-				<AngPow langId={userInfo.langId} />
-			) : null}
+			{isEventPeriod(eventTime.mysteryBox) ? <MysteryBoxPop /> : null}
 			<Footer />
 			{userInfo.isLogin === false && (isJoinPage || isLoginPage) && (
 				<Modal isJoin={isJoinPage} isLogin={isLoginPage} />
@@ -124,26 +118,6 @@ class RotationHint extends Component {
 	}
 }
 
-const AngPow = ({ langId }) => {
-	const { root, setRoot } = useContext(rootContext);
-
-	const closePop = () => {
-		setRoot(false);
-	};
-
-	return root ? (
-		<div className="eventLink">
-			<button className="icon icon-close" onClick={closePop} />
-			<Link to={path.angPow.root}>
-				<img
-					src={langId === "id" ? eventIdImg : eventImg}
-					alt={langId === "id" ? "Ang Pao" : "Ang pow"}
-				/>
-			</Link>
-		</div>
-	) : null;
-};
-
 Layout.defaultProps = {
 	children: null,
 	header: null,
@@ -158,10 +132,6 @@ Layout.propTypes = {
 
 RotationHint.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired
-};
-
-AngPow.propTypes = {
-	langId: PropTypes.string.isRequired
 };
 
 export default Layout;

@@ -23,17 +23,17 @@ const defPayType = {
 };
 
 const defPayment = {
-	[defPayType.mobilePay]: {
-		displayKey: "lbl_MobileDeposit",
-		creditTimeKey: "lbl_5mins"
+	[defPayType.onlineBank]: {
+		displayKey: "lbl_OnlineBanking",
+		creditTimeKey: "lbl_Instant"
 	},
 	[defPayType.localBank]: {
 		displayKey: "lbl_WireTransfers",
 		creditTimeKey: "lbl_5mins"
 	},
-	[defPayType.onlineBank]: {
-		displayKey: "lbl_OnlineBanking",
-		creditTimeKey: "lbl_Instant"
+	[defPayType.mobilePay]: {
+		displayKey: "lbl_MobileDeposit",
+		creditTimeKey: "lbl_5mins"
 	}
 };
 
@@ -91,10 +91,10 @@ const Panel = () => {
 	});
 
 	let content = (
-		<MobilePay
-			payType={defPayType.mobilePay}
-			creditTimeKey={defPayment[defPayType.mobilePay].creditTimeKey}
-			paymentList={paymentList[defPayType.mobilePay] ?? []}
+		<OnlineBanking
+			payType={selected}
+			creditTimeKey={defPayment[defPayType.onlineBank].creditTimeKey}
+			paymentList={paymentList[defPayType.onlineBank] ?? []}
 		/>
 	);
 
@@ -106,12 +106,12 @@ const Panel = () => {
 				paymentList={paymentList[defPayType.localBank] ?? []}
 			/>
 		);
-	} else if (selected === defPayType.onlineBank) {
+	} else if (selected === defPayType.mobilePay) {
 		content = (
-			<OnlineBanking
-				payType={selected}
-				creditTimeKey={defPayment[defPayType.onlineBank].creditTimeKey}
-				paymentList={paymentList[defPayType.onlineBank] ?? []}
+			<MobilePay
+				payType={defPayType.mobilePay}
+				creditTimeKey={defPayment[defPayType.mobilePay].creditTimeKey}
+				paymentList={paymentList[defPayType.mobilePay] ?? []}
 			/>
 		);
 	}
@@ -123,9 +123,9 @@ const Panel = () => {
 				let defaultSelect = "";
 
 				const payments = {
-					[defPayType.mobilePay]: [],
 					[defPayType.onlineBank]: [],
-					[defPayType.localBank]: []
+					[defPayType.localBank]: [],
+					[defPayType.mobilePay]: []
 				};
 
 				const setDefaultSelect = (currentValue, payType, dataList) =>
@@ -139,13 +139,13 @@ const Panel = () => {
 						: [];
 
 				try {
-					const res = await api.payment.GetMobilePayGroupList();
-					payments[defPayType.mobilePay] = getDataListResult(res);
+					const res = await api.payment.GetOnlinePaymentList();
+					payments[defPayType.onlineBank] = getDataListResult(res);
 
 					defaultSelect = setDefaultSelect(
 						defaultSelect,
-						defPayType.mobilePay,
-						payments[defPayType.mobilePay]
+						defPayType.onlineBank,
+						payments[defPayType.onlineBank]
 					);
 				} catch (error) {}
 
@@ -161,13 +161,13 @@ const Panel = () => {
 				} catch (error) {}
 
 				try {
-					const res = await api.payment.GetOnlinePaymentList();
-					payments[defPayType.onlineBank] = getDataListResult(res);
+					const res = await api.payment.GetMobilePayGroupList();
+					payments[defPayType.mobilePay] = getDataListResult(res);
 
 					defaultSelect = setDefaultSelect(
 						defaultSelect,
-						defPayType.onlineBank,
-						payments[defPayType.onlineBank]
+						defPayType.mobilePay,
+						payments[defPayType.mobilePay]
 					);
 				} catch (error) {}
 

@@ -369,46 +369,40 @@ const GroupList = ({
 			</div>
 		) : (
 			<div className="info infoAccount" key={_mainKey}>
-				<ul>
-					<li>
-						<div
-							className="bankName"
-							onClick={SelectPayment.bind(
-								this,
-								bindFullObj ? data : data[idKey]
-							)}>
-							<img
-								key={`${_mainKey}-img`}
-								src={`${prefixImgUrl}${
-									imgKeyWithExtension
-										? data[imgKey]
-										: `${data[imgKey]}.png`
-								}`}
-								alt={data[imgKey] ?? ""}
-							/>
-							<i className="icon icon-icon32px_check" />
-							<div className="bank">
-								<div>{data[displayKey]}</div>
+				<div
+					className="bankName"
+					onClick={SelectPayment.bind(
+						this,
+						bindFullObj ? data : data[idKey]
+					)}>
+					<img
+						key={`${_mainKey}-img`}
+						src={`${prefixImgUrl}${
+							imgKeyWithExtension
+								? data[imgKey]
+								: `${data[imgKey]}.png`
+						}`}
+						alt={data[imgKey] ?? ""}
+					/>
+					<i className="icon icon-icon32px_check" />
+					<div className="bank">
+						<div>{data[displayKey]}</div>
 
-								<div>
-									{data?.minAmount && data?.maxAmount
-										? `${
-												i18n.lbl_MinMaxAmount
-										  }: ${number_format(
-												data.minAmount,
-												_isConvert,
-												0
-										  )} / ${number_format(
-												data.maxAmount,
-												_isConvert,
-												0
-										  )}`
-										: ""}
-								</div>
-							</div>
+						<div>
+							{data?.minAmount && data?.maxAmount
+								? `${i18n.lbl_MinMaxAmount}: ${number_format(
+										data.minAmount,
+										_isConvert,
+										0
+								  )} / ${number_format(
+										data.maxAmount,
+										_isConvert,
+										0
+								  )}`
+								: ""}
 						</div>
-					</li>
-				</ul>
+					</div>
+				</div>
 			</div>
 		);
 	});
