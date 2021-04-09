@@ -17,7 +17,7 @@
 	"lbl_Username": "用戶名",
 	"lbl_Password": "密码",
 	"lbl_UsernameTooltip": "基于安全考量，我们建议用户名不要使用或包含您的真实姓名。",
-	"lbl_PasswordTooltip": "6到18个数字、英文字母大写、英文字母小写或特殊字符(@$*!%#?&)",
+	"lbl_PasswordTooltip": "6到15个数字、英文字母大写、英文字母小写或特殊字符(@$*!%#?&)",
 	"lbl_EmailToolTip": "提交后无法变更电子邮件地址。",
 	"lbl_PreferredCurrencyToolTip": "一旦完成注册，即无法修改选定币别。",
 	"lbl_Check18TC1": "一旦注册即表示我已年满21周岁，且已阅读、接受并同意有关年龄验证和KYC（身份验证过程）的",
@@ -577,5 +577,10 @@
 	"lbl_Register":"注册",
 	"lbl_AfterJoinHint":"恭喜！您已成功注册为会员。",
 	"lbl_TpWallet_27": "PT钱包",
-	"lbl_LIVE_SPORT" : "现场直播"
+	"lbl_LIVE_SPORT" : "现场直播",
+	"lbl_CryptoWallet" : "Crypto Wallet",
+	"lbl_CryptoWalletAddress" : "Wallet Address" ,
+	"lbl_CryptoWalletNickName" : "Wallet Nickname" ,
+	"lbl_CryptoWalletTip2" : "Please note:Once the crypto wallet is submitted,it cannot be modified/ deleted.For any request of modification, please contact CSD." ,
+	"lbl_CryptoWalletTip1" : "For any request of modification please contact CSD."
 }

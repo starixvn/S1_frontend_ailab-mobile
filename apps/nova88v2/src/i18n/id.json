@@ -17,7 +17,7 @@
 	"lbl_Username": "Nama pengguna",
 	"lbl_Password": "Kata Sandi",
 	"lbl_UsernameTooltip": "Demi keamanan, kami menyarankan agar Username anda berbeda dengan nama asli anda",
-	"lbl_PasswordTooltip": "6-18 karakter alfanumerik (A-Z, a-z, 0-9) atau karakter khusus @ $ *!% #? &",
+	"lbl_PasswordTooltip": "6-15 karakter alfanumerik (A-Z, a-z, 0-9) atau karakter khusus @ $ *!% #? & ^",
 	"lbl_EmailToolTip": "Email tidak bisa dirubah jika sudah diajukan",
 	"lbl_PreferredCurrencyToolTip": "Mata uang yang dipilih tidak dapat diubah setelah melakukan pendaftaran.",
 	"lbl_Check18TC1": "Dengan meng-klik GABUNG SEKARANG, saya menyatakan hahwa saya berumur diatas 21 tahun dan telah membaca dan menyetujui ",
@@ -570,5 +570,10 @@
 	"lbl_Register":"Registrasi",
 	"lbl_AfterJoinHint":"Selamat! Anda berhasil mendaftar sebagai member.",
 	"lbl_TpWallet_27": "Dompet PT",
-	"lbl_LIVE_SPORT" : "LIVE SPORTS"
+	"lbl_LIVE_SPORT" : "LIVE SPORTS",
+	"lbl_CryptoWallet" : "Crypto Wallet",
+	"lbl_CryptoWalletAddress" : "Wallet Address" ,
+	"lbl_CryptoWalletNickName" : "Wallet Nickname" ,
+	"lbl_CryptoWalletTip2" : "Please note:Once the crypto wallet is submitted,it cannot be modified/ deleted.For any request of modification, please contact CSD." ,
+	"lbl_CryptoWalletTip1" : "For any request of modification please contact CSD."
 }

@@ -44,20 +44,6 @@ const Wallet = () => {
 		});
 	}, [tpWalletsList, mainWalletInfo]);
 
-	useEffect(() => {
-		if (userInfo.currencyId && userInfo.currencyId === 96) {
-			defTabs.cryptoWallet = {
-				to: path.cryptoWallet.root,
-				displayKey: "lbl_CryptoWallet"
-			};
-		} else if (userInfo.currencyId && userInfo.currencyId !== 96) {
-			defTabs.bankInfo = {
-				to: path.bankInfo.root,
-				displayKey: "lbl_BankInfo"
-			};
-		}
-	}, [userInfo]);
-
 	let total = tpWallets.reduce((accumulator, currentValue) => {
 		return accumulator + currentValue.balance;
 	}, 0);
@@ -213,15 +199,35 @@ BonusWallet.propTypes = {
 	bonusWallet: PropTypes.objectOf(PropTypes.any)
 };
 
-const defTabs = {
-	myWallet: {
-		to: `${path.wallet.root}`,
-		displayKey: "lbl_MyWallet"
-	}
-};
-
 const IndexPage = () => {
-	const header = <TabPage defTabs={defTabs} />;
+	const [tab, setTab] = useState({});
+	const { userInfo } = useContext(userInfoContext);
+	useEffect(() => {
+		if (userInfo.currencyId && userInfo.currencyId === 96) {
+			setTab({
+				myWallet: {
+					to: `${path.wallet.root}`,
+					displayKey: "lbl_MyWallet"
+				},
+				cryptoWallet: {
+					to: path.cryptoWallet.root,
+					displayKey: "lbl_CryptoWallet"
+				}
+			});
+		} else if (userInfo.currencyId && userInfo.currencyId !== 96) {
+			setTab({
+				myWallet: {
+					to: `${path.wallet.root}`,
+					displayKey: "lbl_MyWallet"
+				},
+				bankInfo: {
+					to: path.bankInfo.root,
+					displayKey: "lbl_BankInfo"
+				}
+			});
+		}
+	}, [userInfo]);
+	const header = <TabPage defTabs={tab} />;
 	return (
 		<Layout header={header} mainClass="main Wallet">
 			<Wallet />

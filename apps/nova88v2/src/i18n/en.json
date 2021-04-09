@@ -17,7 +17,7 @@
 	"lbl_Username": "Username",
 	"lbl_Password": "Password",
 	"lbl_UsernameTooltip": "For security, we suggest that your username does not contain your real name.",
-	"lbl_PasswordTooltip": "6-18 alphanumeric (A-Z, a-z, 0-9) characters or special characters @$*!%#?&",
+	"lbl_PasswordTooltip": "6-15 alphanumeric (A-Z, a-z, 0-9) characters or special characters !@#$%^&*",
 	"lbl_EmailToolTip": "Email cannot be changed after submission.",
 	"lbl_PreferredCurrencyToolTip": "Preferred currency can not be changed after registration.",
 	"lbl_Check18TC1": "By clicking the JOIN NOW button, I hereby acknowledge that I am above 21 years old and have read and accepted your ",
@@ -568,5 +568,10 @@
 	"lbl_Register":"Register",
 	"lbl_AfterJoinHint":"Congratulation! You have successfully register as a member.",
 	"lbl_TpWallet_27": "PT Wallet",
-	"lbl_LIVE_SPORT" : "LIVE SPORTS"
+	"lbl_LIVE_SPORT" : "LIVE SPORTS",
+	"lbl_CryptoWallet" : "Crypto Wallet",
+	"lbl_CryptoWalletAddress" : "Wallet Address" ,
+	"lbl_CryptoWalletNickName" : "Wallet Nickname" ,
+	"lbl_CryptoWalletTip2" : "Please note:Once the crypto wallet is submitted,it cannot be modified/ deleted.For any request of modification, please contact CSD." ,
+	"lbl_CryptoWalletTip1" : "For any request of modification please contact CSD."
 }

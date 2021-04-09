@@ -40,7 +40,7 @@ export const infoList = ({ i18n = {}, userInfo = {} }) => {
 		{
 			infoTitle: "phoneNo",
 			colTitle: i18n.lbl_Phone,
-			content: `(${_areaCode})${userInfo.phoneNo}`,
+			content: `(${userInfo.areaCode})${userInfo.phoneNo}`,
 			isVerified: userInfo.phoneVerified
 		},
 		{
