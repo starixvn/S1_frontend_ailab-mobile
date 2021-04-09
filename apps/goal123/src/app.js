@@ -59,8 +59,8 @@ import ForgetPwd from "./components/login/forgetPwd";
 import ResetPwd from "./components/login/resetPwd";
 import ChangePwd from "./components/member/changePwd";
 
-import Setting from "./pages/setting";
-import SettingInfo from "./components/setting/settingInfo";
+// import Setting from "./pages/setting";
+// import SettingInfo from "./components/setting/settingInfo";
 import Other from "./components/setting/other";
 
 import Kyc from "./components/withdrawal/kyc";
@@ -175,10 +175,10 @@ const Index = () => {
 						</Message>
 						<Casino path={`${path.casino.root}`} />
 						<Casino path={`${path.casino.root}/:tpId`} />
-						<Setting path={path.setting.root}>
+						{/* <Setting path={path.setting.root}>
 							<SettingInfo path={path.setting.sub.root} />
-							<Other path={path.setting.sub.other.root} />
-						</Setting>
+						</Setting> */}
+						<Other path={path.other.root} />
 						<Whoami path={path.whoami.root} />
 						<Ranking path={path.leaderBoard.root} />
 						<AngPow path={path.angPow.root} />

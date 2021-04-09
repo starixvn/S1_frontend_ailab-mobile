@@ -9,7 +9,7 @@ const Footer = () => {
 	const { i18n } = useContext(i18nContext);
 	if (userInfo.isLogin === false) {
 		return (
-			<footer>
+			<footer className="footerNew">
 				<Match path={path.promotion.root}>
 					{props => {
 						const isMatch = props.match !== null;
@@ -18,7 +18,7 @@ const Footer = () => {
 								to={path.promotion.root}
 								className={isMatch ? "open" : ""}>
 								<div className="circleAnimation">
-									<div className="icon icon-gift" />
+									<div className="icon icon-promotion" />
 								</div>
 								<span>{i18n.lbl_Promotion}</span>
 							</Link>
@@ -53,21 +53,18 @@ const Footer = () => {
 					<span>{i18n.lbl_LiveChat}</span>
 				</a>
 
-				<Match path={path.setting.root}>
+				<Match path={path.other.root}>
 					{props => {
 						const isMatch =
-							props.location.pathname ===
-								`/${path.setting.root}` ||
-							props.location.pathname ===
-								`/${path.setting.root}/${path.setting.sub.other.root}`;
+							props.location.pathname === `/${path.other.root}`;
 						return (
 							<Link
-								to={path.setting.root}
+								to={path.other.root}
 								className={isMatch ? "open" : ""}>
 								<div className="circleAnimation">
 									<div className="icon icon-cog" />
 								</div>
-								<span>{i18n.lbl_Setting}</span>
+								<span>{i18n.lbl_More}</span>
 							</Link>
 						);
 					}}
@@ -76,7 +73,7 @@ const Footer = () => {
 		);
 	}
 	return (
-		<footer>
+		<footer className="footerNew">
 			<Match path={path.promotion.root}>
 				{props => {
 					const isMatch = props.match !== null;
@@ -85,7 +82,7 @@ const Footer = () => {
 							to={path.promotion.root}
 							className={isMatch ? "open" : ""}>
 							<div className="circleAnimation">
-								<div className="icon icon-gift" />
+								<div className="icon icon-promotion" />
 							</div>
 							<span>{i18n.lbl_Promotion}</span>
 						</Link>
@@ -157,7 +154,7 @@ const Footer = () => {
 					);
 				}}
 			</Match>
-			<Match path={path.setting.root}>
+			{/* <Match path={path.setting.root}>
 				{props => {
 					const isMatch =
 						props.location.pathname === `/${path.setting.root}` ||
@@ -174,7 +171,7 @@ const Footer = () => {
 						</Link>
 					);
 				}}
-			</Match>
+			</Match> */}
 		</footer>
 	);
 };

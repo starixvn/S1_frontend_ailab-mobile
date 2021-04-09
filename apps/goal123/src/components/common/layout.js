@@ -81,8 +81,8 @@ const defPageInfo = {
 		className: "main",
 		hideLogo: true
 	},
-	setting: {
-		titleKey: "lbl_Setting",
+	other: {
+		titleKey: "lbl_Other",
 		className: "main",
 		hideLogo: true
 	},
