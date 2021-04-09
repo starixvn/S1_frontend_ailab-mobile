@@ -6,12 +6,11 @@ import {
 	userInfoContext,
 	i18nContext,
 	popBoxContext,
-	walletInfoContext,
 	navContext,
 	defNavPanel
 } from "../common/context";
 import path from "../../path";
-import { api_GetWalletInfo, api_SetLanguage } from "../../service/api/account";
+import { api_SetLanguage } from "../../service/api/account";
 import { number_format } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
 import { defGameInfo } from "../../datas/productList";
@@ -25,6 +24,9 @@ import Lang_en from "../../styles/img/en.jpg";
 import Lang_vn from "../../styles/img/vn.jpg";
 import { siteInfo } from "../../config";
 import DefLangs from "../../datas/defLangs";
+import { tpWalletsListType } from "../transfer/transfer.def";
+import useGetBalance from "../hook/useGetMainBalance";
+import useGetTpBalance from "../hook/useGetTpBalance";
 
 const defSubMenus = [
 	{
@@ -151,11 +153,7 @@ export default () => {
 			<img src={Logo} alt="Goal123" />
 			{userInfo.isLogin ? (
 				<>
-					<WalletInfo
-						i18n={i18n}
-						userInfo={userInfo}
-						setPopBox={setPopBox}
-					/>
+					<WalletInfo i18n={i18n} userInfo={userInfo} />
 					<ShortcutBar />
 				</>
 			) : null}
@@ -291,69 +289,33 @@ SubMenuList.propTypes = {
 	isOpenSubMenu: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
-const WalletInfo = ({ i18n, userInfo, setPopBox }) => {
-	const { walletInfo, setWalletInfo } = useContext(walletInfoContext);
-	const [processing, setProcessing] = useState(false);
-
-	const isMountedRef = useRef(null);
-
-	useEffect(() => {
-		isMountedRef.current = true;
-		return () => {
-			isMountedRef.current = false;
-		};
+const WalletInfo = ({ i18n, userInfo }) => {
+	const [showingBalance, setShowingBalance] = useState(true);
+	const { mainWalletInfo, GetBalance } = useGetBalance({
+		isLogin: userInfo.isLogin
+	});
+	const { tpWalletsList, GetTpWalletList } = useGetTpBalance({
+		isLogin: userInfo.isLogin,
+		listType: tpWalletsListType.allWallets
 	});
 
-	const GetBalance = () => {
-		if (!processing) {
-			setProcessing(true);
+	const otherWalletBalance = tpWalletsList?.reduce((prev, curr) => {
+		return prev + curr.balance;
+	}, 0);
+	const allWalletBalance = mainWalletInfo.balance + otherWalletBalance;
 
-			api_GetWalletInfo().then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							const _data = res.data.data;
-							const mainWalletBalance = _data.balance;
+	const balance = !allWalletBalance
+		? 0
+		: number_format(allWalletBalance, false);
 
-							const otherWalletBalance = _data.tpWallets?.reduce(
-								(prev, curr) => {
-									return prev + curr.balance;
-								},
-								0
-							);
-
-							setWalletInfo(prevState => ({
-								...prevState,
-								allBalance:
-									mainWalletBalance + otherWalletBalance
-							}));
-						} else {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: res.data.message
-							});
-						}
-						setProcessing(false);
-					}
-				},
-				() => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-						setProcessing(false);
-					}
-				}
-			);
-		}
+	const clickReloadSpin = () => {
+		GetBalance();
+		GetTpWalletList();
 	};
 
-	const balance = !walletInfo.allBalance
-		? 0
-		: number_format(walletInfo.allBalance, false);
+	const clickEye = () => {
+		setShowingBalance(prev => !prev);
+	};
 
 	return (
 		<div className="side-info">
@@ -361,9 +323,16 @@ const WalletInfo = ({ i18n, userInfo, setPopBox }) => {
 				{i18n.lbl_Welcome} {userInfo.userName}
 			</div>
 			<div>
-				<span>{i18n[`Currency_${userInfo.currencyId}`]}</span>
-				{balance}
-				<ReloadSpin func={GetBalance} />
+				<span>{i18n.lbl_Balance}</span>
+				<button
+					className={`icon icon-eye${
+						showingBalance ? "" : "-blocked"
+					}`}
+					onClick={clickEye}
+				/>
+				{i18n[`Currency_${userInfo.currencyId}`]}{" "}
+				{showingBalance ? balance : "*****"}
+				<ReloadSpin func={clickReloadSpin} />
 			</div>
 		</div>
 	);
@@ -376,8 +345,7 @@ WalletInfo.propTypes = {
 		currencyId: PropTypes.number,
 		langId: PropTypes.string,
 		userName: PropTypes.string
-	}).isRequired,
-	setPopBox: PropTypes.func.isRequired
+	}).isRequired
 };
 
 const ContactUs = ({ i18n }) => {
