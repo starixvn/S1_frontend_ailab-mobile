@@ -31,22 +31,10 @@ const Iovation = () => {
 	);
 };
 
-const PlayTech = () => {
-	return (
-		<Helmet>
-			<script
-				src="https://login-am.hotspin88.com/jswrapper/hotspin88am/integration.js"
-				type="text/javascript"
-			/>
-		</Helmet>
-	);
-};
-
 const Content = () => {
 	return (
 		<React.StrictMode>
 			<Iovation />
-			<PlayTech />
 			<App />
 		</React.StrictMode>
 	);

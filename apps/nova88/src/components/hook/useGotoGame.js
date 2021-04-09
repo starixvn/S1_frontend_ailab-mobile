@@ -49,15 +49,31 @@ export const useGotoGame = ({
 		iapiSetCallout("Login", response => {
 			if (response.errorCode) {
 				if (response.errorCode == 48) {
-					errorPopBox(
-						`Login failed, error: ${response.errorCode} ,playerMessage: ${response.actions.PlayerActionShowMessage[0].message}`,
-						response.errorCode
-					);
+					setPopBox({
+						isOpen: true,
+						content: `[${response.errorCode}] Login failed, error: ${response.errorCode} ,playerMessage: ${response.actions.PlayerActionShowMessage[0].message}`,
+						hasBtn: true,
+						btnBar: (
+							<div className="btn-group">
+								<button className="blue" onClick={ClickClose}>
+									OK
+								</button>
+							</div>
+						)
+					});
 				} else {
-					errorPopBox(
-						`Login failed, error: ${response.errorCode} ,playerMessage: ${response.playerMessage}`,
-						response.errorCode
-					);
+					setPopBox({
+						isOpen: true,
+						content: `[${response.errorCode}] Login failed, error: ${response.errorCode} ,playerMessage: ${response.playerMessage}`,
+						hasBtn: true,
+						btnBar: (
+							<div className="btn-group">
+								<button className="blue" onClick={ClickClose}>
+									OK
+								</button>
+							</div>
+						)
+					});
 				}
 			}
 		});
