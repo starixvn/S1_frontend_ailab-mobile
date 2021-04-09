@@ -96,7 +96,7 @@ div[tabindex="-1"] {
   transition: transition;
   transition: transition, -webkit-transition;
   z-index: 4;
-  background: #001942;
+  background: #D2E2F9;
   overflow: scroll;
   visibility: hidden;
   opacity: 0;
@@ -117,10 +117,10 @@ div[tabindex="-1"] {
 
 .switch {
   width: 100%;
-  border: 1px solid #F77A00;
-  background: black;
+  border: 1px solid #5574A7;
+  background: #c6d4f1;
   border-radius: 30px;
-  color: #6F6F6F;
+  color: #5574A7;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -146,8 +146,8 @@ div[tabindex="-1"] {
 
 .switch > div.switchBg {
   position: absolute;
-  background: -webkit-gradient(linear, left top, left bottom, from(#FB8F25), color-stop(#F77A00), to(#FF5D00));
-  background: linear-gradient(to bottom, #FB8F25, #F77A00, #FF5D00);
+  background: -webkit-gradient(linear, left top, left bottom, from(#435F8B), to(#6383B9));
+  background: linear-gradient(to bottom, #435F8B, #6383B9);
   width: 50%;
   height: 100%;
   border-radius: 30px;
@@ -161,6 +161,14 @@ div[tabindex="-1"] {
   left: 50%;
   -webkit-transition: 0.7s;
   transition: 0.7s;
+}
+
+.switch + .Join {
+  display: none;
+}
+
+.switch + .Join.active {
+  display: block;
 }
 
 .Login {
@@ -231,10 +239,6 @@ div[tabindex="-1"] {
   text-align: center;
 }
 
-.Join {
-  background: #001942;
-}
-
 .Join .dropdown .btn {
   padding: 0;
   background: transparent;
@@ -270,6 +274,7 @@ div[tabindex="-1"] {
 .Join .Terms {
   padding: 0 2vw;
   margin: 2vw 0;
+  color: #5574A7;
 }
 
 .Join .Terms.error {
@@ -277,14 +282,15 @@ div[tabindex="-1"] {
 }
 
 .Join .Terms a {
-  color: #F77A00;
+  color: #1E85EC;
+  text-decoration: underline;
 }
 
 header {
   width: calc(100% - 8vw);
   position: fixed;
   top: 0;
-  background: white;
+  background: #5574A7;
   height: 12vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -430,8 +436,9 @@ header button.clickBtn::before {
   position: absolute;
 }
 
-#Marquee .marquee-box .marquee-run button {
+#Marquee .marquee-box .marquee-run button, #Marquee .marquee-box .marquee-run a {
   color: #5574A7;
+  font-size: 3vw;
 }
 
 #Marquee > div.active {
@@ -948,7 +955,7 @@ footer > a.active .circleAnimation + span {
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  background: rgba(0, 25, 66, 0.95);
+  background: rgba(85, 116, 167, 0.95);
   padding: 8vw;
   overflow: auto;
   display: -webkit-box;
@@ -968,8 +975,13 @@ footer > a.active .circleAnimation + span {
 }
 
 #popup > div:not(.bankSlip):not(.eventpop):not(.joinSuccess) {
-  background: rgba(0, 0, 0, 0.5);
+  background: white;
   width: 100%;
+}
+
+#popup .pop .account {
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 #popup .popTit {
@@ -982,8 +994,8 @@ footer > a.active .circleAnimation + span {
   word-break: break-word;
   padding: 1vw 8vw 1vw 2vw;
   display: -webkit-box;
-  border-bottom: 1px solid #F77A00;
-  color: #F77A00;
+  border-bottom: 1px solid #5574A7;
+  color: #5574A7;
   font-weight: bold;
   width: calc(100% - 10vw);
   line-height: 24px;
@@ -1004,13 +1016,14 @@ footer > a.active .circleAnimation + span {
       -ms-flex-align: center;
           align-items: center;
   top: 0;
+  color: #5574A7;
 }
 
 #popup .popTxt {
   padding: 4vw 2vw;
   border-radius: 0 0 3px 3px;
   width: calc(100% - 4vw);
-  color: #B2B2B2;
+  color: #5574A7;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1114,6 +1127,7 @@ footer > a.active .circleAnimation + span {
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
+  background: transparent;
 }
 
 .header .headerTag {
@@ -1237,6 +1251,7 @@ footer > a.active .circleAnimation + span {
   display: -ms-flexbox;
   display: flex;
   border-bottom: 1px solid #5574A7;
+  background: #ecf3fd;
 }
 
 .tag a, .tag button {
@@ -1960,6 +1975,7 @@ footer > a.active .circleAnimation + span {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background: #ecf3fd;
 }
 
 .quickSelect + .functionList {
@@ -1974,7 +1990,7 @@ footer > a.active .circleAnimation + span {
 }
 
 .quickSelect + .functionList .infoModule.parts .inputBox {
-  max-width: 23vw;
+  max-width: 28vw;
 }
 
 .quickSelect + .functionList .icon-icon32px_1 {
@@ -2073,12 +2089,15 @@ footer > a.active .circleAnimation + span {
           align-items: center;
 }
 
+.btn-group.transferAll .clickBtn {
+  max-width: 6vw;
+  padding: 0;
+}
+
 .btn-group.transferAll .blue {
   width: 20vw;
   min-width: 20vw;
   height: 100%;
-  -ms-flex-flow: wrap;
-      flex-flow: wrap;
   font-weight: bold;
 }
 
@@ -2177,8 +2196,8 @@ footer > a.active .circleAnimation + span {
 }
 
 .bankAccount .account.active {
-  -webkit-box-shadow: 0 0 0 2px #f77a00 inset;
-          box-shadow: 0 0 0 2px #f77a00 inset;
+  -webkit-box-shadow: 0 0 0 2px #5574a7 inset;
+          box-shadow: 0 0 0 2px #5574a7 inset;
 }
 
 .selectBank {
@@ -2250,7 +2269,7 @@ footer > a.active .circleAnimation + span {
 }
 
 .step .stepLine {
-  background: #002B6C;
+  background: #c6d4f1;
   position: absolute;
   width: calc(100% - 4vw);
   height: 2vw;
@@ -2264,13 +2283,13 @@ footer > a.active .circleAnimation + span {
 }
 
 .step .stepLine .stepBar50 {
-  background: #F77A00;
+  background: #5574A7;
   width: 50%;
   height: 100%;
 }
 
 .step .stepLine .stepBar100 {
-  background: #F77A00;
+  background: #5574A7;
   width: 100%;
   height: 100%;
 }
@@ -2289,7 +2308,7 @@ footer > a.active .circleAnimation + span {
 }
 
 .step .circle {
-  background: rgba(18, 73, 165, 0.33);
+  background: rgba(85, 116, 167, 0.33);
   width: 12vw;
   height: 12vw;
   z-index: 1;
@@ -2309,7 +2328,7 @@ footer > a.active .circleAnimation + span {
 }
 
 .step .circle > div {
-  background: rgba(18, 73, 165, 0.33);
+  background: rgba(85, 116, 167, 0.33);
   width: 10vw;
   height: 10vw;
 }
@@ -2317,21 +2336,21 @@ footer > a.active .circleAnimation + span {
 .step .circle > div > div {
   width: 8vw;
   height: 8vw;
-  background: #1249A5;
+  background: #5574A7;
   font-weight: bold;
   color: #b2b2b2;
 }
 
 .step .circle.active {
-  background: rgba(247, 122, 0, 0.33);
+  background: rgba(85, 116, 167, 0.33);
 }
 
 .step .circle.active > div {
-  background: rgba(247, 122, 0, 0.33);
+  background: rgba(85, 116, 167, 0.33);
 }
 
 .step .circle.active > div > div {
-  background: #F77A00;
+  background: #5574A7;
   color: white;
 }
 
@@ -2680,10 +2699,8 @@ input[type="checkbox"] + label {
 
 .icon-rate::before {
   content: "('000)";
-}
-
-.icon-pencil + input {
-  text-align: right;
+  color: #5574A7;
+  font: 3vw Arial;
 }
 
 .fileUpload {
@@ -3029,6 +3046,7 @@ button.clickBtn:before {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  color: #5574A7;
 }
 
 .checkbox input {
@@ -3195,6 +3213,7 @@ input[type="date"] {
   outline: none;
   resize: none;
   font-size: 12px;
+  white-space: nowrap;
 }
 
 ::-webkit-datetime-edit {
@@ -3323,7 +3342,7 @@ input[type="date"] {
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba(0, 25, 66, 0.95);
+  background: #ecf3fd;
   padding: 8vw;
   display: none;
   z-index: 4;
@@ -3404,8 +3423,8 @@ input[type="date"] {
 #Loading .cube .sides * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background-color: rgba(255, 80, 13, 0.1);
-  border: 1px solid #ff500d;
+  background-color: rgba(85, 116, 167, 0.1);
+  border: 1px solid #5574A7;
 }
 
 #Loading .cube .sides .top {
@@ -3849,6 +3868,7 @@ input[type="date"] {
           transform: translateY(25vw);
   font-size: 4vw;
   text-align: center;
+  color: #5574A7;
 }
 
 .amount {
@@ -5553,11 +5573,11 @@ span.important {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background: #191919;
+  background: #D2E2F9;
 }
 
 .vip .vipPage .eventList tr.title {
-  background: #213e6f;
+  background: #5574A7;
 }
 
 .vip .vipPage .eventList tr.title .icon {
@@ -5568,6 +5588,7 @@ span.important {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  color: white;
 }
 
 .vip .vipPage .eventList tr.title .icon:before {
@@ -5579,11 +5600,11 @@ span.important {
 }
 
 .vip .vipPage .eventList tr:not(.title) td[colspan="7"] {
-  background: #333;
+  background: #a5bbe0;
 }
 
 .vip .vipPage .eventList tr.lastTd td {
-  border-bottom: 1px solid #666;
+  border-bottom: 1px solid #a5bbe0;
 }
 
 .vip .vipPage .eventList tr td {
@@ -5605,9 +5626,10 @@ span.important {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border: 1px solid #666;
+  border: 1px solid #a5bbe0;
   border-bottom: 0;
   text-align: center;
+  color: #5574A7;
 }
 
 .vip .vipBanner {
@@ -5730,15 +5752,18 @@ span.important {
 }
 
 .event .eventModule .title:not(.text-org) + .text-gray {
+  color: #666;
   margin: 3vw 0 5vw;
 }
 
 .event .eventModule .title:not(.text-org) + .text-gray + div {
   margin: 5vw 0;
+  color: #666;
 }
 
 .event .eventModule .title.text-org + .text-gray {
   text-align: left;
+  color: #666;
 }
 
 .event .eventModule .title.text-org + .text-gray li {
@@ -6099,15 +6124,19 @@ span.important {
   margin: 0 0 0 3vw;
 }
 
-.depositModule .selectModule .bankName .bank div {
+.depositModule .selectModule .bankName .bank > div {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 50vw;
 }
 
-.depositModule .selectModule .bankName .bank div:last-child {
-  color: #a5aab1;
+.depositModule .selectModule .bankName .bank > div:first-child {
+  color: #5574A7;
+}
+
+.depositModule .selectModule .bankName .bank > div:last-child {
+  color: #666;
 }
 
 .depositModule .selectModule .bankName img {
@@ -6449,8 +6478,8 @@ span.important {
 }
 
 .upcomingmatches .team > div > div img {
-  width: 17vw;
-  margin: 0 0 2vw;
+  width: 15vw;
+  margin: 0 0 7vw;
 }
 
 .upcomingmatches .team > div > div.btn-group {
@@ -6460,6 +6489,9 @@ span.important {
   -ms-flex-item-align: end;
       align-self: flex-end;
   margin: 0;
+  -webkit-box-flex: 0.6;
+      -ms-flex: 0.6;
+          flex: 0.6;
 }
 
 .upcomingmatches .team > div > div.btn-group button {
@@ -6577,7 +6609,6 @@ span.important {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  margin: 2vw;
   line-height: 7vw;
 }
 
@@ -6686,10 +6717,6 @@ span.important {
   font-size: 4vw;
 }
 
-#header {
-  background: #5574A7;
-}
-
 main {
   padding: 12vw 0;
 }
@@ -6719,7 +6746,7 @@ main .sideBar button, main .sideBar a {
 }
 
 .referralShare .popTxt > div button i, .referralShare .popTxt > div a i {
-  background: #F77A00;
+  background: #5574A7;
   border-radius: 5px;
   padding: 3vw;
   display: -webkit-box;
@@ -6734,7 +6761,7 @@ main .sideBar button, main .sideBar a {
   position: fixed;
   right: 1vw;
   bottom: 20vw;
-  z-index: 3;
+  z-index: 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -6809,5 +6836,6 @@ main .sideBar button, main .sideBar a {
 
 .autoTransfer {
   margin: 2vw 0;
+  color: #5574A7;
 }
 /*# sourceMappingURL=style.css.map */

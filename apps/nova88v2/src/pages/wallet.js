@@ -98,12 +98,12 @@ const Wallet = () => {
 				<Link
 					to={`${path.deposit.root}`}
 					className="icon icon-deposit white">
-					<span className="title text-gray">{i18n.lbl_Deposit}</span>
+					{i18n.lbl_Deposit}
 				</Link>
 				<Link
 					to={`${path.transfer.root}`}
 					className="icon icon-transfer white">
-					<span className="title text-gray">{i18n.lbl_Transfer}</span>
+					{i18n.lbl_Transfer}
 				</Link>
 			</div>
 		</>

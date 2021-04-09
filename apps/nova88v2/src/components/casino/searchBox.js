@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { i18nContext } from "Context";
 import PropTypes from "prop-types";
 import GameTypes from "./defGameType";
-import Dropdown from "../common/dropdown";
+import Dropdown from "../common/casino.dropdown";
 
 const SearchBox = props => {
 	const { TpList, searchText, provider, gameType } = props;

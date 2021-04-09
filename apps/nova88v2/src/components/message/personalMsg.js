@@ -314,7 +314,7 @@ const Panel = () => {
 				<label className="checkbox">
 					<input type="checkbox" onChange={selectAll} />
 					<i
-						className={`icon icon-checkbox ${
+						className={`icon icon-checkbox${
 							isSelectedAll ? "-checked" : ""
 						}`}
 					/>

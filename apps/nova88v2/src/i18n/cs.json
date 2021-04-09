@@ -570,13 +570,12 @@
 	"lbl_AgendaTitle" : "每月存款 和 流水倍数竞赛",
 	"lbl_Tournament" : "竞赛",
 	"lbl_Stage": "阶段",
-	"lbl_Streaming_Home":"主",
-	"lbl_Streaming_Away":"客",
-	"lbl_CryptoWallet":"Crypto Wallet",
-	"lbl_CryptoWalletTip1": "For any request of modification please contact CSD.",
-	"lbl_CryptoWalletTip2": "Please note:Once the crypto wallet is submitted,it cannot be modified/ deleted.For any request of modification, please contact CSD.",
-	"lbl_CryptoWalletNickName":"Wallet Nickname",
-	"lbl_CryptoWalletAddress":"Wallet Address",
-	"lbl_InvalidAddress":"Invalid Address"
-	
+	"lbl_Streaming_Home":"主队",
+	"lbl_Streaming_Away":"客队",
+	"lbl_ConfirmPsw":"Confirm Password",
+	"lbl_WrongPswHint":"Your confirm password is not same as your password, please check again.",
+	"lbl_Register":"注册",
+	"lbl_AfterJoinHint":"恭喜！您已成功注册为会员。",
+	"lbl_TpWallet_27": "PT钱包",
+	"lbl_LIVE_SPORT" : "现场直播"
 }

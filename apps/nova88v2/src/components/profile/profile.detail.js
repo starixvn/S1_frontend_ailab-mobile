@@ -417,7 +417,6 @@ const Panel = () => {
 					dropdownStateHandler={dropdownStateHandler}
 				/>
 			) : null}
-
 			{!userInfo?.phoneNo ? (
 				<div className="infoModule parts">
 					<Dropdown
@@ -448,7 +447,6 @@ const Panel = () => {
 					/>
 				</div>
 			) : null}
-
 			{!userInfo?.accountName ||
 			!userInfo?.birth_d ||
 			!userInfo?.phoneNo ? (
@@ -562,11 +560,11 @@ ColumnItem.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
-const GetYear = () => {
+export const GetYear = () => {
 	return new Date().getFullYear() - 21;
 };
 
-const GetDayOfMonth = (year, month) => {
+export const GetDayOfMonth = (year, month) => {
 	const d = new Date(year, month, 0);
 	return d.getDate();
 };

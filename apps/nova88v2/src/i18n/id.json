@@ -565,10 +565,10 @@
 	"lbl_Stage": "Tahap",
 	"lbl_Streaming_Home":"Tuan Rumah",
 	"lbl_Streaming_Away":"Lawan",
-	"lbl_CryptoWallet":"Crypto Wallet",
-	"lbl_CryptoWalletTip1": "For any request of modification please contact CSD.",
-	"lbl_CryptoWalletTip2": "Please note:Once the crypto wallet is submitted,it cannot be modified/ deleted.For any request of modification, please contact CSD.",
-	"lbl_CryptoWalletNickName":"Wallet Nickname",
-	"lbl_CryptoWalletAddress":"Wallet Address",
-	"lbl_InvalidAddress":"Invalid Address"
+	"lbl_ConfirmPsw":"Confirm Password",
+	"lbl_WrongPswHint":"Your confirm password is not same as your password, please check again.",
+	"lbl_Register":"Registrasi",
+	"lbl_AfterJoinHint":"Selamat! Anda berhasil mendaftar sebagai member.",
+	"lbl_TpWallet_27": "Dompet PT",
+	"lbl_LIVE_SPORT" : "LIVE SPORTS"
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback, useRef } from "react";
 import moment from "moment";
 import api from "../../service/api";
+import { defPromotionType } from "../promotion/common/def";
 
 const isExpiry = ({
 	periodTo,

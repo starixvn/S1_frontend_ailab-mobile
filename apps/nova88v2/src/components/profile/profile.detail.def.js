@@ -38,6 +38,12 @@ export const initWarning = {
 export const infoList = ({ i18n = {}, userInfo = {} }) => {
 	return [
 		{
+			infoTitle: "phoneNo",
+			colTitle: i18n.lbl_Phone,
+			content: `(${_areaCode})${userInfo.phoneNo}`,
+			isVerified: userInfo.phoneVerified
+		},
+		{
 			infoTitle: "accountName",
 			colTitle: i18n.lbl_RealName,
 			content: userInfo.accountName
@@ -53,12 +59,6 @@ export const infoList = ({ i18n = {}, userInfo = {} }) => {
 			birth_d: userInfo.birth_d,
 			birth_m: userInfo.birth_m,
 			birth_y: userInfo.birth_y
-		},
-		{
-			infoTitle: "phoneNo",
-			colTitle: i18n.lbl_Phone,
-			content: `(${userInfo.areaCode})${userInfo.phoneNo}`,
-			isVerified: userInfo.phoneVerified
 		},
 		{
 			infoTitle: "userName",

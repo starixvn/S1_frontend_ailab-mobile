@@ -565,10 +565,10 @@
 	"lbl_Stage": "เวที",
 	"lbl_Streaming_Home":"ทีมเจ้าบ้าน",
 	"lbl_Streaming_Away":"ทีมเยือน",
-	"lbl_CryptoWallet":"Crypto Wallet",
-	"lbl_CryptoWalletTip1": "For any request of modification please contact CSD.",
-	"lbl_CryptoWalletTip2": "Please note:Once the crypto wallet is submitted,it cannot be modified/ deleted.For any request of modification, please contact CSD.",
-	"lbl_CryptoWalletNickName":"Wallet Nickname",
-	"lbl_CryptoWalletAddress":"Wallet Address",
-	"lbl_InvalidAddress":"Invalid Address"
+	"lbl_ConfirmPsw":"Confirm Password",
+	"lbl_WrongPswHint":"Your confirm password is not same as your password, please check again.",
+	"lbl_Register":"สมัครสมาชิก",
+	"lbl_AfterJoinHint":"ยินดีด้วยค่ะ คุณได้ลงทะเบียนเป็นสมาชิกเรียบร้อยแล้ว",
+	"lbl_TpWallet_27": "PT วอลเล็ท",
+	"lbl_LIVE_SPORT" : "กีฬาสด"
 }

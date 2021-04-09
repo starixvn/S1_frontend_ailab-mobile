@@ -33,12 +33,7 @@ import casino_OW from "../styles/img/ow.png";
 // import casino_KISS from "../styles/img/kiss.png";
 
 import fishing_CQ9_AB3 from "../styles/img/pd.png";
-// import fishing_CQ9_AT05 from "../styles/img/fish_luckyfishing.jpg";
-import fishing_CQ9_AT01 from "../styles/img/of.png";
-// import fishing_CQ9_AT06 from "../styles/img/fish_watermarginfishing.jpg";
-// import fishing_CQ9_AT04 from "../styles/img/fish_thunderfighter.jpg";
 import fish_DBF from "../styles/img/df.png";
-import fish_FOS from "../styles/img/fos.png";
 import fish_TAP from "../styles/img/tap.png";
 import fish_GG from "../styles/img/ffw.png";
 import fish_SG from "../styles/img/fg.png";
@@ -279,47 +274,15 @@ const gameList = ({ langId }) => [
 				spanTextKey: "lbl_Paradise",
 				img: fishing_CQ9_AB3
 			},
-			// {
-			// 	...defGameInfo.Fishing_AT05,
-			// 	img: fishing_CQ9_AT05
-			// },
-			{
-				...defGameInfo.Fishing_AT01,
-				spanTextKey: "lbl_Oneshot_Fishing",
-				img: fishing_CQ9_AT01
-			},
-			// {
-			// 	...defGameInfo.Fishing_AT06,
-			// 	img: fishing_CQ9_AT06
-			// },
-			// {
-			// 	...defGameInfo.Fishing_AT04,
-			// 	img: fishing_CQ9_AT04
-			// },
 			{
 				...defGameInfo.ICG_DRAGONBALL_FISHING,
 				spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
 				img: fish_DBF
 			},
 			{
-				...defGameInfo.ICG_FISHING_OF_SAVIORS,
-				spanTextKey: "lbl_Game_ICG_FISHING_OF_SAVIORS",
-				img: fish_FOS
-			},
-			{
-				...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
-				spanTextKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS",
-				img: fish_TAP
-			},
-			{
 				...defGameInfo.FishingGG,
 				spanTextKey: "lbl_FishingGG",
 				img: fish_GG
-			},
-			{
-				...defGameInfo.FishingSG,
-				spanTextKey: "lbl_FishingSG1",
-				img: fish_SG
 			},
 			{
 				...defGameInfo.FishingSGW,
@@ -442,14 +405,13 @@ export const defGameInfo = {
 	Casino_OW: { tpId: 1, gameId: 208 },
 	Fishing_AB3: { tpId: 16, gameId: "AB3" },
 	Fishing_AT05: { tpId: 16, gameId: "AT05" },
-	Fishing_AT01: { tpId: 16, gameId: "AT01" },
+	// Fishing_AT01: { tpId: 16, gameId: "AT01" },
 	Fishing_AT06: { tpId: 16, gameId: "AT06" },
 	Fishing_AT04: { tpId: 16, gameId: "AT04" },
 	ICG_DRAGONBALL_FISHING: { tpId: 24, gameId: "cmf0001" },
-	ICG_FISHING_OF_SAVIORS: { tpId: 24, gameId: "cmf0002" },
-	ICG_THE_TYRANT_AND_THE_PRINCESS: { tpId: 24, gameId: "cmf0003" },
+	// ICG_FISHING_OF_SAVIORS: { tpId: 24, gameId: "cmf0002" },
 	FishingGG: { tpId: 7, gameId: 10 },
-	FishingSG: { tpId: 10, gameId: "F-SF01" },
+	// FishingSG: { tpId: 10, gameId: "F-SF01" },
 	FishingSGW: { tpId: 10, gameId: "F-SF02" },
 	CockFighting: { tpId: 17 },
 	// VirtualSports: { tpId: 1, gameId: 180 },
