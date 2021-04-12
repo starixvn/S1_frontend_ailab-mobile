@@ -99,6 +99,11 @@ const defPlatfrom = [
 	{
 		...defGameInfo.oneGame,
 		imgName: "1g"
+	},
+	{
+		...defGameInfo.Casino_PT,
+		path: path.casino.root,
+		imgName: "pt"
 	}
 ];
 
