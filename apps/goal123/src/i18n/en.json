@@ -510,5 +510,17 @@
 	"lbl_HowToWithdraw":"HOW TO WITHDRAW",
 	"lbl_Affiliate_Program":"Affiliate Program",
 	"lbl_PoweredBy":"Powered by",
-	"lbl_More":"More"
+	"lbl_More":"More",
+	"lbl_EuroEventTitle1" : "UEFA EURO FINAL 2020",
+	"lbl_EuroEventTitle2" : "UP TO VND 580,000,000 PRIZES WORTH!",
+	"lbl_TournamentPoints" : "TOURNAMENT POINTS",
+	"lbl_EuroDate1" : "13 MAR - 12 APR",
+	"lbl_EuroDate2" : "13 APR - 12 MAY",
+	"lbl_EuroDate3" : "13 MAY - 12 JUN",
+	"lbl_Final" : "UEFA EURO 2020 FINAL TOURNAMENT",
+	"lbl_MonthlyTournament" : "MONTHLY TOURNAMENT",
+	"lbl_AgendaTitle" : "MONTHLY DEPOSIT & TURNOVER RACE TOURNAMENT",
+	"lbl_Tournament" : "Tournament",
+	"lbl_Stage": "Stage"
+
 }
