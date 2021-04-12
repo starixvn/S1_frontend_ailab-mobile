@@ -56,12 +56,14 @@ export class DropdownBox extends Component {
 		}
 		return (
 			<>
-				<div
-					className={`inputInfo ${
-						this.props.showTips ? " active" : ""
-					}`}>
-					{this.props.infoText}
-				</div>
+				{!this.props.hideTip && (
+					<div
+						className={`inputInfo ${
+							this.props.showTips ? " active" : ""
+						}`}>
+						{this.props.infoText}
+					</div>
+				)}
 				<div
 					className={`inputBox ${
 						this.props.checked === false ? "error" : ""
@@ -118,7 +120,8 @@ DropdownBox.defaultProps = {
 	warningMsg: "",
 	hideInfo: false,
 	onBlur: () => null,
-	birthDayIcon: false
+	birthDayIcon: false,
+	hideTip: false
 };
 
 DropdownBox.propTypes = {
@@ -138,7 +141,8 @@ DropdownBox.propTypes = {
 	warningMsg: PropTypes.string,
 	hideInfo: PropTypes.bool,
 	onBlur: PropTypes.func,
-	birthDayIcon: PropTypes.bool
+	birthDayIcon: PropTypes.bool,
+	hideTip: PropTypes.bool
 };
 
 const Item = props => {
