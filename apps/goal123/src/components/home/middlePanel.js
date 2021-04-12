@@ -19,11 +19,11 @@ const MiddlePanel = ({ langId, i18n }) => {
 	return (
 		<>
 			<div className="vipRanking">
-				<Link to={path.vip.root}>
+				<Link to={`/${path.vip.root}`}>
 					<img src={VIP} alt="VIP" />
 					<div>VIP</div>
 				</Link>
-				<Link to={path.leaderBoard.root}>
+				<Link to={`/${path.leaderBoard.root}`}>
 					<img src={Ranking} alt="Ranking" />
 					<div>{i18n.lbl_Ranking.toUpperCase()}</div>
 				</Link>
