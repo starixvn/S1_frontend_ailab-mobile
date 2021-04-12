@@ -12,6 +12,7 @@ import PageVerify from "./deposit.pageVerify";
 import MobilePay from "./deposit.all.mobilePay";
 import OnlineBanking from "./deposit.all.onlineBanking";
 import LocalBank from "./deposit.all.localBank";
+import CryptoPay from "./deposit.cryptoPay";
 import api from "../../service/api";
 import RecentDatas from "./deposit.recentDatas";
 import { number_format, isConvert } from "../common/common";
@@ -19,7 +20,8 @@ import { number_format, isConvert } from "../common/common";
 const defPayType = {
 	onlineBank: "onlineBank",
 	localBank: "localBank",
-	mobilePay: "mobilePay"
+	mobilePay: "mobilePay",
+	cryptoPay: "cryptoPay"
 };
 
 const defPayment = {
@@ -33,6 +35,10 @@ const defPayment = {
 	},
 	[defPayType.mobilePay]: {
 		displayKey: "lbl_MobileDeposit",
+		creditTimeKey: "lbl_5mins"
+	},
+	[defPayType.cryptoPay]: {
+		displayKey: "lbl_CryptoWallet",
 		creditTimeKey: "lbl_5mins"
 	}
 };
@@ -114,6 +120,14 @@ const Panel = () => {
 				paymentList={paymentList[defPayType.mobilePay] ?? []}
 			/>
 		);
+	} else if (selected === defPayType.cryptoPay) {
+		content = (
+			<CryptoPay
+				payType={defPayType.cryptoPay}
+				creditTimeKey={defPayment[defPayType.cryptoPay].creditTimeKey}
+				paymentList={paymentList[defPayType.cryptoPay] ?? []}
+			/>
+		);
 	}
 
 	useEffect(() => {
@@ -168,6 +182,17 @@ const Panel = () => {
 						defaultSelect,
 						defPayType.mobilePay,
 						payments[defPayType.mobilePay]
+					);
+				} catch (error) {}
+
+				try {
+					const res = await api.payment.GetCryptoPayInfoList();
+					payments[defPayType.cryptoPay] = getDataListResult(res);
+
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defPayType.cryptoPay,
+						payments[defPayType.cryptoPay]
 					);
 				} catch (error) {}
 
