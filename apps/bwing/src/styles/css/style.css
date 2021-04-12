@@ -6738,7 +6738,7 @@ span.important {
 
 .rankingNew .rankInBox .ranklist ul > div.timeLine > div:nth-child(3) > div {
   z-index: 1;
-  top: -24vw;
+  top: -12vw;
 }
 
 .rankingNew .rankInBox .ranklist ul > div.timeLine > div:nth-child(4) > div {
@@ -6756,7 +6756,7 @@ span.important {
   font-weight: bold;
   margin-left: -30vw;
   height: 8vw;
-  top: -36vw;
+  top: -24vw;
 }
 
 .rankingNew .rankInBox .ranklist ul > div.timeLine > div > div:before {
