@@ -984,6 +984,32 @@ footer > a.active .circleAnimation + span {
           box-shadow: none;
 }
 
+#popup .Join .Terms {
+  color: white;
+}
+
+#popup .Join .Terms + .btn-group button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#F1D5B6), to(#CDAE8E));
+  background: linear-gradient(to bottom, #F1D5B6, #CDAE8E);
+}
+
+#popup .step .stepLine > div {
+  background: #233d67;
+}
+
+#popup .step .circle {
+  background: rgba(255, 255, 255, 0.33);
+}
+
+#popup .step .circle > div {
+  background: rgba(255, 255, 255, 0.33);
+}
+
+#popup .step .circle > div > div {
+  background: white;
+  color: #5574A7;
+}
+
 #popup .popTit {
   border-radius: 3px 3px 0 0;
   position: relative;
@@ -5468,7 +5494,7 @@ span.important {
   background: #5574A7;
 }
 
-.provider button {
+.provider button, .provider a {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 31%;
           flex: 0 0 31%;
@@ -5485,7 +5511,7 @@ span.important {
   display: flex;
 }
 
-.provider button img {
+.provider button img, .provider a img {
   max-width: 90%;
   height: auto;
 }
@@ -5757,6 +5783,10 @@ span.important {
   display: block;
 }
 
+.event .eventModule > div {
+  text-align: left;
+}
+
 .event .eventModule .title:not(.text-org) {
   font-size: 5vw;
   color: #5574A7;
@@ -5764,11 +5794,11 @@ span.important {
 
 .event .eventModule .title:not(.text-org) + .text-gray {
   color: #666;
-  margin: 3vw 0 5vw;
+  margin: 3vw 0;
 }
 
 .event .eventModule .title:not(.text-org) + .text-gray + div {
-  margin: 5vw 0;
+  margin: 3vw 0;
   color: #666;
 }
 
