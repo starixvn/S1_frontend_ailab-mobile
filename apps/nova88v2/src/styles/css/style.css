@@ -436,9 +436,9 @@ header button.clickBtn::before {
   position: absolute;
 }
 
-#Marquee .marquee-box .marquee-run button, #Marquee .marquee-box .marquee-run a {
+#Marquee .marquee-box .marquee-run button {
   color: #5574A7;
-  font-size: 3vw;
+  font-size: 3vw !important;
 }
 
 #Marquee > div.active {
@@ -1663,7 +1663,7 @@ footer > a.active .circleAnimation + span {
 
 .info ul li {
   float: left;
-  width: 50%;
+  width: 49%;
   line-height: 24px;
   color: #a5aab1;
 }
@@ -3077,8 +3077,8 @@ button.clickBtn:before {
 
 .casino {
   width: calc(100% - 8vw);
-  height: calc(100% - 112vw);
-  padding: 88vw 4vw 24vw;
+  height: calc(100% - 114vw);
+  padding: 90vw 4vw 24vw;
   position: relative;
 }
 
@@ -3089,7 +3089,7 @@ button.clickBtn:before {
 }
 
 .casino .functionList {
-  padding: 3vw 4vw 2vw;
+  padding: 2vw 4vw;
   width: calc(100% - 8vw);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3229,7 +3229,7 @@ input[type="date"] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 0 0 1vw;
+  margin: 1vw 0;
   border: 0;
   padding: 0;
   width: 100%;
@@ -3956,6 +3956,8 @@ span.important {
 .quickChangePage .btn-group button, .quickChangePage .btn-group a {
   padding: 1vw 2vw;
   color: white;
+  background: -webkit-gradient(linear, left top, left bottom, from(#F1D5B6), to(#CDAE8E));
+  background: linear-gradient(to bottom, #F1D5B6, #CDAE8E);
 }
 
 .promotions {
@@ -4058,6 +4060,15 @@ span.important {
 
 .promotions .promodule.active .rollover, .promotions .proInfomodule.active .rollover {
   border-color: #4F4F4F;
+}
+
+.promotions .promodule .inputBox, .promotions .proInfomodule .inputBox {
+  margin: 0;
+}
+
+.promotions .promodule .btn-group .white + button, .promotions .proInfomodule .btn-group .white + button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#F1D5B6), to(#CDAE8E));
+  background: linear-gradient(to bottom, #F1D5B6, #CDAE8E);
 }
 
 .promotions .promodule .btn-cancel, .promotions .proInfomodule .btn-cancel {
