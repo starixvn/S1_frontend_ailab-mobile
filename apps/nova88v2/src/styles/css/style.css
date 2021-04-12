@@ -984,6 +984,32 @@ footer > a.active .circleAnimation + span {
           box-shadow: none;
 }
 
+#popup .Join .Terms {
+  color: white;
+}
+
+#popup .Join .Terms + .btn-group button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#F1D5B6), to(#CDAE8E));
+  background: linear-gradient(to bottom, #F1D5B6, #CDAE8E);
+}
+
+#popup .step .stepLine > div {
+  background: #233d67;
+}
+
+#popup .step .circle {
+  background: rgba(255, 255, 255, 0.33);
+}
+
+#popup .step .circle > div {
+  background: rgba(255, 255, 255, 0.33);
+}
+
+#popup .step .circle > div > div {
+  background: white;
+  color: #5574A7;
+}
+
 #popup .popTit {
   border-radius: 3px 3px 0 0;
   position: relative;

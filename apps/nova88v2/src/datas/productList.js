@@ -30,6 +30,7 @@ import casino_YGG from "../styles/img/ygg.png";
 import casino_SG from "../styles/img/sg.png";
 import casino_PG from "../styles/img/pg.png";
 import casino_OW from "../styles/img/ow.png";
+import casino_PT from "../styles/img/pt.png";
 // import casino_KISS from "../styles/img/kiss.png";
 
 import fishing_CQ9_AB3 from "../styles/img/pd.png";
@@ -196,7 +197,7 @@ const gameList = ({ langId }) => [
 				...defGameInfo.Casino_PT,
 				parameter: defGameInfo.Casino_PT,
 				spanText: "PT",
-				img: casino_PP,
+				img: casino_PT,
 				path: path.casino.root,
 				eventIcon: [
 					{
