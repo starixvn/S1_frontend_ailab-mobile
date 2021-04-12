@@ -1,39 +1,48 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { defEuroTourBtns } from "./def";
+import BtnBar from "../common/btnBar";
+import { useHandleSelect } from "./hook";
 import PrizeList from "./prize";
-import coins from "../../styles/img/coins.png";
 import config from "../../config";
 
-const Event = ({ userInfo = {}, i18n = {}, isOpen }) => {
+const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
+	const { selected, handleSelect } = useHandleSelect({
+		defaultSelect: defEuroTourBtns.FinalTournament.value
+	});
+
 	return (
 		<div className={`rankContent${isOpen ? " open" : ""}`}>
-			<div className="title xs">{i18n.lbl_EventTitle}</div>
-			<div className="topInfo">
-				<img src={coins} alt="coins" />
-				<div className="highest">
-					{i18n.lbl_TotalValue}
-					<span>VND 10,996,738</span>
-				</div>
+			<div className="title">
+				<p>{i18n.lbl_EuroEventTitle1}</p>
+				<p>{i18n.lbl_EuroEventTitle2}</p>
 			</div>
-			<PrizeList userInfo={userInfo} i18n={i18n} />
+			<BtnBar
+				i18n={i18n}
+				selected={selected}
+				handleSelect={handleSelect}
+				mainKey="leader-board-records-btnsOfCategory"
+				defBtns={defEuroTourBtns}
+			/>
+			<PrizeList userInfo={userInfo} category={selected} i18n={i18n} />
 			<a
+				href={`${config.t_and_cURL}/SiteSkin/goal123/Ranking/${userInfo.langId}4.html`}
 				target="_blank"
 				rel="noreferrer"
-				href={`${config.t_and_cURL}/SiteSkin/${config.siteName}/ranking/${userInfo.langId}2.html`}
 				className="more">
-				{i18n.lbl_MoreDetails?.toUpperCase()}
+				{i18n.lbl_MoreDetails}
 			</a>
 		</div>
 	);
 };
 
 Event.defaultProps = {
-	isOpen: null
+	isOpen: false
 };
 
 Event.propTypes = {
-	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
 	isOpen: PropTypes.bool
 };
 
