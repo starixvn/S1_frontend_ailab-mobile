@@ -584,7 +584,6 @@ main .swiper-container {
   z-index: 4;
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-  position: relative;
 }
 
 main .swiper-container-horizontal > .swiper-pagination-bullets {
@@ -1673,6 +1672,10 @@ footer > a.open .circleAnimation + span {
   position: relative;
 }
 
+.mainNew .bannerNew .swiper-container {
+  position: relative;
+}
+
 .mainNew .bannerNew > img {
   width: 100%;
   height: 100px;
@@ -1853,7 +1856,11 @@ footer > a.open .circleAnimation + span {
   color: #052561;
 }
 
-.mainNew .gamelistNew {
+.mainNew .gameBox {
+  position: relative;
+}
+
+.mainNew .gameBox > div .gamelistNew {
   position: relative;
   padding: 3vw 2vw;
   -webkit-box-sizing: border-box;
@@ -1864,7 +1871,7 @@ footer > a.open .circleAnimation + span {
   font-size: 0;
 }
 
-.mainNew .gamelistNew .game {
+.mainNew .gameBox > div .gamelistNew .game {
   display: inline-block;
   width: 30%;
   height: 120px;
@@ -1873,7 +1880,7 @@ footer > a.open .circleAnimation + span {
   position: relative;
 }
 
-.mainNew .gamelistNew .game > i {
+.mainNew .gameBox > div .gamelistNew .game > i {
   position: absolute;
   right: 5px;
   top: 19vw;
@@ -1884,11 +1891,11 @@ footer > a.open .circleAnimation + span {
   color: #fff;
 }
 
-.mainNew .gamelistNew .game > img {
+.mainNew .gameBox > div .gamelistNew .game > img {
   width: 100%;
 }
 
-.mainNew .gamelistNew .game .title {
+.mainNew .gameBox > div .gamelistNew .game .title {
   padding: 12px 5px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -7158,7 +7165,7 @@ span.important {
 }
 
 .vipBannerTop {
-  position: fixed !important;
+  position: fixed;
   top: 12vw;
   height: 37.5vw;
 }

@@ -15,7 +15,8 @@ const swipperParam = {
 	pagination: {
 		el: ".swiper-pagination",
 		clickable: true
-	}
+	},
+	containerClass: "gameBox"
 };
 
 const Menu = ({ i18n, userInfo }) => {

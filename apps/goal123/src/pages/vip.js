@@ -23,8 +23,7 @@ const swipperParams = {
 		el: ".swiper-pagination",
 		clickable: true
 	},
-	rebuildOnUpdate: true,
-	containerClass: "vipBannerTop"
+	rebuildOnUpdate: true
 };
 
 const Banners = ({ langId }) => {
