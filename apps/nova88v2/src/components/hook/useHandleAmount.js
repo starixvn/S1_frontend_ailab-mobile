@@ -25,8 +25,9 @@ export const useHandleAmount = ({
 
 	const EditAmount = e => {
 		const { value } = e.target;
-		VaildAmount({ _amount: value, minAmount, maxAmount, i18n });
-		setAmount(value);
+		const _amount = String(value).replace(/^(0+)|[^\d]+/g, "");
+		VaildAmount({ _amount, minAmount, maxAmount, i18n });
+		setAmount(_amount);
 	};
 
 	const VaildAmount = ({ _amount, displayWarning = true }) => {

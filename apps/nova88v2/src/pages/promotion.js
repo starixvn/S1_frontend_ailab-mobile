@@ -42,6 +42,7 @@ export default ({ location = {} }) => {
 	);
 	const header = (
 		<Header
+			hideId={true}
 			hideLogo={true}
 			title={true}
 			titleClass="headerTag"

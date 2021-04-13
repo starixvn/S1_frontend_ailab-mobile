@@ -8,7 +8,6 @@ import { defBtns, defDayBtns } from "./def";
 const SetUpdTime = () => {
 	const now = new Date();
 	const minutes = now.getMinutes() > 30 ? 30 : 0;
-
 	return new Date(
 		now.getFullYear(),
 		now.getMonth(),
@@ -20,18 +19,18 @@ const SetUpdTime = () => {
 };
 
 const getTopNum = isLastEvent => {
-	const topNum = 6;
-	const lastTimeTopNum = 20;
+	const topNum = 10;
+	const lastTimeTopNum = 10;
 	return isLastEvent ? lastTimeTopNum : topNum;
 };
 
-const handleEventCode = isLastEvent => {
+const handleEventCode = ({ isLastEvent, selected }) => {
 	const defEventCode = {
 		current: "202101",
 		prev: "xmas2020"
 	};
 
-	return isLastEvent ? defEventCode.prev : defEventCode.current;
+	return isLastEvent ? defEventCode.current : selected;
 };
 
 export const useGetRanking = ({
@@ -48,14 +47,14 @@ export const useGetRanking = ({
 
 	useEffect(() => {
 		if (isOpen && isLogin) {
-			const EventCode = handleEventCode(isLastEvent);
-			const lBCategoryId = defBtns[selected]?.lBCategoryId;
+			const EventCode = handleEventCode({ isLastEvent, selected });
+			const lBCategoryId = defBtns[selected]?.lBCategoryId || 0;
 			const beforeDays = isNaN(BeforeDays)
 				? Number(defDayBtns.Yesterday.value)
 				: Number(BeforeDays);
-
 			const GetRankingDatas = async () => {
 				setLoading(true);
+
 				try {
 					const TopNum = getTopNum(isLastEvent);
 					const res = await api_events_GetLeaderboardListV2({

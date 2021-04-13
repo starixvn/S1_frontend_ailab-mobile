@@ -23,13 +23,14 @@ const Header = ({
 	link,
 	titleClass = "title",
 	navBar,
-	setShowingShortcut
+	hideId
 }) => {
 	const { userInfo } = useContext(userInfoContext);
+	const { i18n } = useContext(i18nContext);
 	const headerClassName = !title ? "" : "header";
 
 	return (
-		<header className={headerClassName} id="header">
+		<header className={headerClassName} id={hideId ? "" : "header"}>
 			{hideLogo ? null : (
 				<a href={`/${userInfo.langId}`}>
 					<Logo langId={userInfo.langId} />
@@ -43,10 +44,7 @@ const Header = ({
 					navBar={navBar}
 				/>
 			) : (
-				<HeaderBtn
-					userInfo={userInfo}
-					setShowingShortcut={setShowingShortcut}
-				/>
+				<HeaderInfo userInfo={userInfo} i18n={i18n} />
 			)}
 			{filter || null}
 			{children}
@@ -54,62 +52,24 @@ const Header = ({
 	);
 };
 
-const HeaderBtn = ({ userInfo, setShowingShortcut }) => {
-	const { i18n } = useContext(i18nContext);
-
-	let content = null;
-	if (userInfo?.isLogin) {
-		content = (
-			<HeaderInfo
-				userName={userInfo?.userName}
-				setShowingShortcut={setShowingShortcut}
-			/>
-		);
-	} else {
-		content = (
-			<div className="headerButton">
-				<Link
-					className="loginBtn"
-					to={path.login.root}
-					state={{ fromHeader: true }}>
-					{i18n.lbl_Login}
-				</Link>
-				<Link
-					className="joinBtn"
-					to={path.join.root}
-					state={{ fromHeader: true }}>
-					{i18n.lbl_JoinNow}
-				</Link>
-			</div>
-		);
-	}
-
-	return content;
-};
-
-const HeaderInfo = ({ userName, setShowingShortcut }) => {
-	const showShortcut = () => {
-		setShowingShortcut(prev => !prev);
-	};
-
+const HeaderInfo = ({ userInfo, i18n }) => {
 	return (
-		<div className="headerInfo" onClick={showShortcut}>
-			<button className="MemberID">
-				{userName}
-				<span className="icon icon-arrow_drop_down" />
-			</button>
+		<div className="headerInfo">
+			{userInfo.isLogin ? (
+				<>
+					{i18n.lbl_Welcome}
+					<Link className="MemberID" to={path.profile.root}>
+						{userInfo.userName}
+					</Link>
+				</>
+			) : null}
 		</div>
 	);
 };
 
-HeaderInfo.defaultProps = {
-	userName: "",
-	setShowingShortcut: () => null
-};
-
 HeaderInfo.propTypes = {
-	userName: PropTypes.string,
-	setShowingShortcut: PropTypes.func
+	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
 Header.defaultProps = {
@@ -120,7 +80,7 @@ Header.defaultProps = {
 	children: null,
 	titleClass: undefined,
 	navBar: null,
-	setShowingShortcut: () => null
+	hideId: false
 };
 
 Header.propTypes = {
@@ -131,17 +91,21 @@ Header.propTypes = {
 	children: PropTypes.node,
 	titleClass: PropTypes.string,
 	navBar: PropTypes.node,
-	setShowingShortcut: PropTypes.func
+	hideId: PropTypes.bool
 };
 
 HeaderTitle.defaultProps = {
 	title: false,
-	link: ""
+	link: "",
+	titleClass: null,
+	navBar: null
 };
 
 HeaderTitle.propTypes = {
 	title: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-	link: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+	link: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+	titleClass: PropTypes.string,
+	navBar: PropTypes.node
 };
 
 export default Header;

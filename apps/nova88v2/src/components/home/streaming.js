@@ -51,7 +51,7 @@ const Content = () => {
 	return (
 		<>
 			<div className="moduleTitle icon icon-film">
-				{i18n.lbl_LiveStreaming}
+				{i18n.lbl_LIVE_SPORT}
 				<Link to={path.streaming.root}>{i18n.lbl_More}...</Link>
 			</div>
 			<div className="liveTvTag">{btns}</div>

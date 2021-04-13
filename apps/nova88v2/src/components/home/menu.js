@@ -32,16 +32,8 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 		}
 	}, [setShowningTpIds, userInfo.isLogin]);
 
-	const showSubPanel = ({ panel, tpId, gameId, popBox }) => {
-		if (tpId && gameId) {
-			GET_ENTER_PAGE({
-				langId: userInfo.langId,
-				tpId,
-				gameId,
-				isLogin: userInfo.isLogin === true,
-				loginCallback: handleLogin
-			});
-		} else if (popBox) {
+	const showSubPanel = ({ panel, popBox }) => {
+		if (popBox) {
 			popBox.needLogin && !userInfo.isLogin
 				? handleLogin()
 				: setPopBox({
@@ -96,8 +88,6 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 				className={selectedCol === item.category ? "active" : ""}
 				onClick={showSubPanel.bind(this, {
 					panel: item.category,
-					tpId: item?.tpId,
-					gameId: item?.gameId,
 					popBox: item?.popBox
 				})}>
 				<i className={`icon icon-${item.categoryIcon}`} />

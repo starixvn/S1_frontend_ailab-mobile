@@ -97,7 +97,7 @@ const Panel = () => {
 						setLoading(false);
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
@@ -137,7 +137,7 @@ const Panel = () => {
 						}
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
@@ -156,7 +156,7 @@ const Panel = () => {
 
 		setPopBox({
 			isOpen: true,
-			title: "",
+			title: i18n.lbl_ImportantNote,
 			content: i18n.lbl_CancelConfirm,
 			hasBtn: true,
 			btnBar: (
@@ -214,40 +214,34 @@ const Panel = () => {
 			<HistoryFilter submitHandler={submitHandler} />
 			{loading ? (
 				<Loading />
-			) : (
-				<>
-					{getHistoryState ? (
-						<div className="recent open">
-							<div className="recentTransactions">
-								<div className="smallTitle">
-									<i className="icon icon-history" />
-									{i18n.lbl_TransactionHistory}
-								</div>
-								<ReloadSpin
-									func={submitHandler.bind(
-										this,
-										filterData?.StartDate,
-										filterData?.EndDate,
-										true
-									)}
-								/>
-							</div>
-							{getHistoryState.length > 0 ? (
-								<>
-									<div className="txt-blue2">
-										{i18n.msg_AmountFormatTip}
-									</div>
-									<div className="infoList">{arr}</div>
-								</>
-							) : (
-								<div className="not-found">
-									{i18n.msg_NoData}
-								</div>
-							)}{" "}
+			) : getHistoryState ? (
+				<div className="recent open">
+					<div className="recentTransactions">
+						<div className="smallTitle">
+							<i className="icon icon-history" />
+							{i18n.lbl_TransactionHistory}
 						</div>
-					) : null}
-				</>
-			)}
+						<ReloadSpin
+							func={submitHandler.bind(
+								this,
+								filterData?.StartDate,
+								filterData?.EndDate,
+								true
+							)}
+						/>
+					</div>
+					{getHistoryState.length > 0 ? (
+						<>
+							<div className="txt-blue2">
+								{i18n.msg_AmountFormatTip}
+							</div>
+							<div className="infoList">{arr}</div>
+						</>
+					) : (
+						<div className="not-found">{i18n.msg_NoData}</div>
+					)}{" "}
+				</div>
+			) : null}
 		</>
 	);
 };

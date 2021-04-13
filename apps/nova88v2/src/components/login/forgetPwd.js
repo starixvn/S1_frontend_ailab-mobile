@@ -65,6 +65,12 @@ const ForgetPwd = () => {
 									status: false,
 									msg: res.data.message
 								});
+							} else {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content: res.data.message
+								});
 							}
 						}
 					},

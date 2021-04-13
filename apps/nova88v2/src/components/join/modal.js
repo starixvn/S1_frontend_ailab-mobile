@@ -1,11 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import { useNavigate } from "@reach/router";
 import { Link } from "../../route/link";
-import { userInfoContext, i18nContext, pageContext } from "../common/context";
+import { userInfoContext, i18nContext } from "../common/context";
 import path from "../../path";
-import Join from "./join";
+import Join from "./join.step.all";
 import Login from "../login/login";
-import Logo from "../common/logo";
 
 const Modal = ({ isLogin, isJoin }) => {
 	const { i18n } = useContext(i18nContext);
@@ -29,7 +28,14 @@ const Modal = ({ isLogin, isJoin }) => {
 				onClick={() => navigate(localStorage.getItem("previousPage"))}>
 				<div className="icon icon-close" />
 			</button>
-			<Logo langId={userInfo.langId} />
+			<img
+				src={
+					userInfo.langId === "cs"
+						? "https://image.n88media.com/SiteSkin/img/logo_cs_w.png"
+						: "https://image.n88media.com/SiteSkin/img/logo_en_w.png"
+				}
+				alt="logo"
+			/>
 			<button className="switch">
 				<div className={`switchBg${isJoin ? " right" : ""}`} />
 				<div className={`switchLogin${isLogin ? " active" : ""}`}>

@@ -4,6 +4,13 @@ import Basketball from "../styles/img/basketball.png";
 import Tennis from "../styles/img/tennis.png";
 import Cricket from "../styles/img/cricket.png";
 
+import ESportsAll from "../styles/img/esportALL.png";
+import ESportsCS from "../styles/img/esportCS.png";
+import ESportsDota from "../styles/img/esportDOTA2.png";
+import ESportsKOG from "../styles/img/esportKOG.png";
+import ESportsLOL from "../styles/img/esportLOL.png";
+
+import LIVEcasino_N2Live from "../styles/img/n2.png";
 import LIVEcasino_DG from "../styles/img/dg.png";
 import LIVEcasino_PP from "../styles/img/pp.png";
 import LIVEcasino_AE from "../styles/img/ae.png";
@@ -21,17 +28,12 @@ import casino_CQ9 from "../styles/img/cq9.png";
 import casino_GPI from "../styles/img/gpi.png";
 import casino_YGG from "../styles/img/ygg.png";
 import casino_SG from "../styles/img/sg.png";
-// import casino_PG from "../styles/img/pg.png";
+import casino_PG from "../styles/img/pg.png";
 import casino_OW from "../styles/img/ow.png";
 // import casino_KISS from "../styles/img/kiss.png";
 
 import fishing_CQ9_AB3 from "../styles/img/pd.png";
-// import fishing_CQ9_AT05 from "../styles/img/fish_luckyfishing.jpg";
-import fishing_CQ9_AT01 from "../styles/img/of.png";
-// import fishing_CQ9_AT06 from "../styles/img/fish_watermarginfishing.jpg";
-// import fishing_CQ9_AT04 from "../styles/img/fish_thunderfighter.jpg";
 import fish_DBF from "../styles/img/df.png";
-import fish_FOS from "../styles/img/fos.png";
 import fish_TAP from "../styles/img/tap.png";
 import fish_GG from "../styles/img/ffw.png";
 import fish_SG from "../styles/img/fg.png";
@@ -104,7 +106,33 @@ const gameList = ({ langId }) => [
 		category: "virtualsports",
 		categoryIcon: "e-sports",
 		translateKey: "lbl_eSports",
-		...defGameInfo.ESport
+		items: [
+			{
+				...defGameInfo.ESportAll,
+				spanTextKey: "lbl_All",
+				img: ESportsAll
+			},
+			{
+				...defGameInfo.ESportAll,
+				spanText: "CS:GO",
+				img: ESportsCS
+			},
+			{
+				...defGameInfo.ESportAll,
+				spanText: "DOTA2",
+				img: ESportsDota
+			},
+			{
+				...defGameInfo.ESportAll,
+				spanText: "KOG",
+				img: ESportsKOG
+			},
+			{
+				...defGameInfo.ESportAll,
+				spanText: "LOL",
+				img: ESportsLOL
+			}
+		]
 	},
 	{
 		category: "livecasino",
@@ -114,7 +142,7 @@ const gameList = ({ langId }) => [
 			{
 				...defGameInfo.LIVEcasinoN2Live,
 				spanText: "N2Live",
-				img: LIVEcasino_WM
+				img: LIVEcasino_N2Live
 			},
 			{
 				...defGameInfo.LIVEcasinoWM,
@@ -216,7 +244,7 @@ const gameList = ({ langId }) => [
 				...defGameInfo.Casino_PG,
 				parameter: defGameInfo.Casino_PG,
 				spanText: "PG",
-				img: casino_SG,
+				img: casino_PG,
 				path: path.casino.root
 			},
 			// {
@@ -246,47 +274,15 @@ const gameList = ({ langId }) => [
 				spanTextKey: "lbl_Paradise",
 				img: fishing_CQ9_AB3
 			},
-			// {
-			// 	...defGameInfo.Fishing_AT05,
-			// 	img: fishing_CQ9_AT05
-			// },
-			{
-				...defGameInfo.Fishing_AT01,
-				spanTextKey: "lbl_Oneshot_Fishing",
-				img: fishing_CQ9_AT01
-			},
-			// {
-			// 	...defGameInfo.Fishing_AT06,
-			// 	img: fishing_CQ9_AT06
-			// },
-			// {
-			// 	...defGameInfo.Fishing_AT04,
-			// 	img: fishing_CQ9_AT04
-			// },
 			{
 				...defGameInfo.ICG_DRAGONBALL_FISHING,
 				spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
 				img: fish_DBF
 			},
 			{
-				...defGameInfo.ICG_FISHING_OF_SAVIORS,
-				spanTextKey: "lbl_Game_ICG_FISHING_OF_SAVIORS",
-				img: fish_FOS
-			},
-			{
-				...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
-				spanTextKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS",
-				img: fish_TAP
-			},
-			{
 				...defGameInfo.FishingGG,
 				spanTextKey: "lbl_FishingGG",
 				img: fish_GG
-			},
-			{
-				...defGameInfo.FishingSG,
-				spanTextKey: "lbl_FishingSG1",
-				img: fish_SG
 			},
 			{
 				...defGameInfo.FishingSGW,
@@ -381,7 +377,11 @@ export const defGameInfo = {
 	Basketball: { tpId: 1, gameId: 2 },
 	Tennis: { tpId: 1, gameId: 5 },
 	Cricket: { tpId: 1, gameId: 50 },
-	ESport: { tpId: 1, gameId: 43 },
+	ESportAll: { tpId: 1, gameId: 43 },
+	ESportCS: { tpId: 1, gameId: 43, bettype: 1 },
+	ESportDota: { tpId: 1, gameId: 43, bettype: 2 },
+	ESportKOG: { tpId: 1, gameId: 43, bettype: 3 },
+	ESportLOL: { tpId: 1, gameId: 43, bettype: 4 },
 	LIVEcasinoN2Live: { tpId: 28 },
 	LIVEcasinoWM: { tpId: 20, gameId: 20 },
 	LIVEcasinoAB: { tpId: 12, gameId: 12 },
@@ -405,14 +405,13 @@ export const defGameInfo = {
 	Casino_OW: { tpId: 1, gameId: 208 },
 	Fishing_AB3: { tpId: 16, gameId: "AB3" },
 	Fishing_AT05: { tpId: 16, gameId: "AT05" },
-	Fishing_AT01: { tpId: 16, gameId: "AT01" },
+	// Fishing_AT01: { tpId: 16, gameId: "AT01" },
 	Fishing_AT06: { tpId: 16, gameId: "AT06" },
 	Fishing_AT04: { tpId: 16, gameId: "AT04" },
 	ICG_DRAGONBALL_FISHING: { tpId: 24, gameId: "cmf0001" },
-	ICG_FISHING_OF_SAVIORS: { tpId: 24, gameId: "cmf0002" },
-	ICG_THE_TYRANT_AND_THE_PRINCESS: { tpId: 24, gameId: "cmf0003" },
+	// ICG_FISHING_OF_SAVIORS: { tpId: 24, gameId: "cmf0002" },
 	FishingGG: { tpId: 7, gameId: 10 },
-	FishingSG: { tpId: 10, gameId: "F-SF01" },
+	// FishingSG: { tpId: 10, gameId: "F-SF01" },
 	FishingSGW: { tpId: 10, gameId: "F-SF02" },
 	CockFighting: { tpId: 17 },
 	// VirtualSports: { tpId: 1, gameId: 180 },

@@ -134,7 +134,7 @@ const defPageInfo = {
 	},
 	leaderBoard: {
 		titleKey: "lbl_Ranking",
-		className: "main ranking",
+		className: "main rankingNew",
 		hideLogo: true
 	},
 	angPow: {

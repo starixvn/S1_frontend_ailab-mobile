@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useEffect, useState } from "react";
 import { userInfoContext, i18nContext } from "Context";
-import { Link, Redirect } from "@reach/router";
+import { Redirect } from "@reach/router";
 import path from "../../../path";
 import { isExpiry } from "../common/common";
 import {
@@ -22,6 +22,8 @@ export default ({
 	func_CallBack,
 	filterType
 }) => {
+	if (promotionInfo.promotionType === defPromotionType.rebate) return null;
+
 	const formatSetting = {
 		[defWrapperCol.formatSetting.isConvertRequired]: false,
 		[defWrapperCol.formatSetting.formatRequired]: undefined,

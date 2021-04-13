@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import {
 	i18nContext,
 	userInfoContext,
 	popBoxContext,
 	rootContext
 } from "Context";
-import { useNavigate } from "@reach/router";
+import { useNavigate, Link } from "@reach/router";
 import Layout from "../components/common/layout";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
@@ -21,14 +21,15 @@ import { readCookie, setCookie } from "../components/common/common";
 import path from "../path";
 import api from "../service/api";
 import Header from "../components/header/header";
+import JoinLoginBar from "../components/home/joinLoginBar";
+import Logo from "../components/common/logo";
 
 const IndexPage = () => {
 	const navigate = useNavigate();
-	const { userInfo } = useContext(userInfoContext);
+	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
-	const [showingShortcut, setShowingShortcut] = useState(false);
 
 	useEffect(() => {
 		setRoot(true);
@@ -38,110 +39,159 @@ const IndexPage = () => {
 	}, [setRoot]);
 
 	useEffect(() => {
-		const cookieName = `balanceHint${userInfo.userName}`;
-		if (
-			userInfo.currencyId &&
-			userInfo.userName &&
-			readCookie(cookieName) !== "1"
-		) {
-			setCookie(cookieName, "1", 1);
-			api.account.GetWalletInfo().then(res => {
-				if (res.data.errorCode === 0) {
-					const { balance, tpWallets } = res.data.data;
-					const mainWallet = {
-						id: 0,
-						displayKey: "lbl_MainWallet",
-						balance
-					};
-					const tpWalletsArr = tpWallets?.map(i => {
-						return {
-							id: i.tpId,
-							displayKey: i.displayKey,
-							balance: i.balance
-						};
-					});
-
-					const hasBalance =
-						mainWallet.balance ||
-						tpWalletsArr?.filter(t => {
-							return t.balance > 0;
-						}).length >= 1;
-
-					if (!hasBalance) {
-						const ClosePopUp = () => {
-							setPopBox({
-								isOpen: false
-							});
-						};
-
-						const RedirectToDeposit = () => {
-							navigate(
-								`/${userInfo.langId}/${path.deposit.root}`
-							);
-							ClosePopUp();
-						};
-
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_Notice,
-							content: (
-								<>
-									<p>
-										{`${i18n.msg_BalanceHint} : `}
-										<span className="important">
-											{`${
-												i18n[
-													`Currency_${userInfo.currencyId}`
-												]
-											} 0`}
-										</span>
-									</p>
-									<p>{i18n.msg_DepositHint}</p>
-								</>
-							),
-							hasBtn: true,
-							btnBar: (
-								<div className="btn-group">
-									<button
-										type="submit"
-										className="blue"
-										onClick={ClosePopUp}>
-										{i18n.lbl_Later}
-									</button>
-									<button
-										type="submit"
-										onClick={RedirectToDeposit}
-										className="orange">
-										{i18n.lbl_DepositNow}
-									</button>
+		const ClosePopUp = () => {
+			setPopBox({
+				isOpen: false
+			});
+		};
+		if (userInfo.isJoin) {
+			setPopBox({
+				isOpen: true,
+				title: i18n.lbl_Notice,
+				fullPage: true,
+				content: (
+					<div className="joinSuccess">
+						<Logo langId={userInfo.langId} />
+						<div className="step">
+							<div className="stepLine">
+								<div className="stepBar100" />
+							</div>
+							<div className="circle active">
+								<div>
+									<div className="icon icon-checkmark" />
 								</div>
-							)
-						});
-					}
-				}
+							</div>
+							<div className="circle active">
+								<div>
+									<div className="icon icon-checkmark" />
+								</div>
+							</div>
+							<div className="circle active">
+								<div>
+									<div className="icon icon-checkmark" />
+								</div>
+							</div>
+						</div>
+						<div className="Join">
+							<div className="Terms">
+								{i18n.lbl_AfterJoinHint}
+							</div>
+							<Link
+								onClick={() => {
+									setPopBox({
+										isOpen: false
+									});
+									setUserInfo(prev => ({
+										...prev,
+										isJoin: false
+									}));
+								}}
+								className="btn-group"
+								to={`/${userInfo.langId}/${path.deposit.root}`}>
+								<button>{i18n.lbl_DepositNow}</button>
+							</Link>
+						</div>
+					</div>
+				)
 			});
 		}
+		// else {
+		// 	const cookieName = `balanceHint${userInfo.userName}`;
+		// 	if (
+		// 		userInfo.currencyId &&
+		// 		userInfo.userName &&
+		// 		readCookie(cookieName) !== "1" &&
+		// 	) {
+		// 		setCookie(cookieName, "1", 1);
+		// 		api.account.GetWalletInfo().then(res => {
+		// 			if (res.data.errorCode === 0) {
+		// 				const { balance, tpWallets } = res.data.data;
+		// 				const mainWallet = {
+		// 					id: 0,
+		// 					displayKey: "lbl_MainWallet",
+		// 					balance
+		// 				};
+		// 				const tpWalletsArr = tpWallets?.map(i => {
+		// 					return {
+		// 						id: i.tpId,
+		// 						displayKey: i.displayKey,
+		// 						balance: i.balance
+		// 					};
+		// 				});
+
+		// 				const hasBalance =
+		// 					mainWallet.balance ||
+		// 					tpWalletsArr?.filter(t => {
+		// 						return t.balance > 0;
+		// 					}).length >= 1;
+
+		// 				if (!hasBalance) {
+		// 					const RedirectToDeposit = () => {
+		// 						navigate(
+		// 							`/${userInfo.langId}/${path.deposit.root}`
+		// 						);
+		// 						ClosePopUp();
+		// 					};
+
+		// 					setPopBox({
+		// 						isOpen: true,
+		// 						title: i18n.lbl_Notice,
+		// 						content: (
+		// 							<>
+		// 								<p>
+		// 									{`${i18n.msg_BalanceHint} : `}
+		// 									<span className="important">
+		// 										{`${
+		// 											i18n[
+		// 												`Currency_${userInfo.currencyId}`
+		// 											]
+		// 										} 0`}
+		// 									</span>
+		// 								</p>
+		// 								<p>{i18n.msg_DepositHint}</p>
+		// 							</>
+		// 						),
+		// 						hasBtn: true,
+		// 						btnBar: (
+		// 							<div className="btn-group">
+		// 								<button
+		// 									type="submit"
+		// 									className="blue"
+		// 									onClick={ClosePopUp}>
+		// 									{i18n.lbl_Later}
+		// 								</button>
+		// 								<button
+		// 									type="submit"
+		// 									onClick={RedirectToDeposit}
+		// 									className="orange">
+		// 									{i18n.lbl_DepositNow}
+		// 								</button>
+		// 							</div>
+		// 						)
+		// 					});
+		// 				}
+		// 			}
+		// 		});
+		// 	}
+		// }
 	}, [
 		i18n,
 		setPopBox,
 		userInfo.currencyId,
 		userInfo.userName,
 		navigate,
-		userInfo.langId
+		userInfo.langId,
+		userInfo.isJoin
 	]);
 
-	const header = <Header setShowingShortcut={setShowingShortcut} />;
 	return (
-		<Layout header={header}>
+		<Layout header={<Header />}>
 			{userInfo.isLogin ? (
-				<HeaderShortcut
-					i18n={i18n}
-					userInfo={userInfo}
-					showingShortcut={showingShortcut}
-				/>
+				<HeaderShortcut i18n={i18n} userInfo={userInfo} />
 			) : null}
 			<Slider />
 			<Marquee />
+			{userInfo.isLogin ? null : <JoinLoginBar />}
 			<div id="content">
 				<Menu i18n={i18n} userInfo={userInfo} setPopBox={setPopBox} />
 				<Promos i18n={i18n} userInfo={userInfo} />

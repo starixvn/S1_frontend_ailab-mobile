@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import React, { useContext, Component, useEffect, useRef } from "react";
-import moment from "moment";
+// import moment from "moment";
 import {
 	bankSlipPopBoxContext,
 	i18nContext,
@@ -7,8 +8,8 @@ import {
 } from "../common/context";
 import ClipboardJS from "../../lib/clipboard.min";
 import {
-	api_UploadReceipt,
-	api_SetDepositReceipt
+	api_UploadReceipt
+	// api_SetDepositReceipt
 } from "../../service/api/payment";
 import config from "../../config";
 import { number_format } from "../common/common";
@@ -29,7 +30,11 @@ const GetUploadFileName = files => {
 class Content extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { processing: false, disableUpload: false, refIdTip: "" };
+		this.state = {
+			processing: false,
+			disableUpload: false
+			// refIdTip: ""
+		};
 		this.isMountedRef = false;
 		this.filebox = React.createRef();
 	}
@@ -38,8 +43,8 @@ class Content extends Component {
 		/* eslint-disable */
 		this.isMountedRef = true;
 		this._clipboard = new ClipboardJS(".copyBtn");
-		this._clipboard.on("success", e => {});
-		this._clipboard.on("error", e => {});
+		this._clipboard.on("success", () => {});
+		this._clipboard.on("error", () => {});
 		/* eslint-enable */
 	}
 
@@ -52,7 +57,14 @@ class Content extends Component {
 		const { files } = this.filebox.current;
 		if (files[0]) {
 			this.props.EditField("picFileName", GetUploadFileName(files));
-			this.onUploadFile();
+
+			const picFileName = GetUploadFileName(files);
+			this.props.EditField("picFileName", picFileName);
+			if (this.props.bankSlipPopBox.disableSubmit) {
+				this.props.SetImg(picFileName, files[0]);
+			} else {
+				this.onUploadFile();
+			}
 		}
 	};
 
@@ -74,7 +86,7 @@ class Content extends Component {
 						}
 					}
 				},
-				err => {
+				() => {
 					if (this.isMountedRef) {
 						this.props.setPopBox({
 							isOpen: true,
@@ -92,52 +104,109 @@ class Content extends Component {
 	};
 
 	SeReceipt = () => {
-		if (!this.props.bankSlipPopBox.refId) {
-			this.setState({ refIdTip: this.props.i18n.lbl_RemindForRefNum });
-		} else if (!this.state.processing) {
-			this.setState({ processing: true });
-			const { bankSlipPopBox } = this.props;
-			api_SetDepositReceipt(
-				bankSlipPopBox.transId,
-				moment(bankSlipPopBox.depositTime).unix(),
-				bankSlipPopBox.refId
-			).then(
-				res => {
-					if (this.isMountedRef) {
-						if (res.data.errorCode === 0) {
-							this.setState({ processing: false });
-							this.props.handlePopBox();
+		if (this.props.bankSlipPopBox.disableSubmit) {
+			this.props.closePopBoxAndKeepData();
+		}
+		// else if (!this.props.bankSlipPopBox.refId) {
+		// 	this.setState({ refIdTip: this.props.i18n.lbl_RemindForRefNum });
+		// }
+		else if (!this.state.processing) {
+			window.location.reload();
+			// this.setState({ processing: true });
+			// const { bankSlipPopBox } = this.props;
+			// api_SetDepositReceipt(
+			// 	bankSlipPopBox.transId,
+			// 	moment(bankSlipPopBox.depositTime).unix(),
+			// 	bankSlipPopBox.refId
+			// ).then(
+			// 	res => {
+			// 		if (this.isMountedRef) {
+			// 			if (res.data.errorCode === 0) {
+			// 				this.setState({ processing: false });
+			// 				this.props.handlePopBox();
 
-							this.props.setPopBox({
-								isOpen: true,
-								title: this.props.i18n.lbl_ImportantNote,
-								content: this.props.i18n
-									.lbl_UpdateSuccessWillProcess
-							});
-						} else {
-							alert(res.message);
-							this.setState({ processing: false });
-						}
-					}
-				},
-				err => {
-					if (this.isMountedRef) {
-						this.props.setPopBox({
-							isOpen: true,
-							title: this.props.i18n.lbl_ImportantNote,
-							content: this.props.i18n.msg_ApiServerError
-						});
+			// 				this.props.setPopBox({
+			// 					isOpen: true,
+			// 					title: this.props.i18n.lbl_ImportantNote,
+			// 					content: this.props.i18n
+			// 						.lbl_UpdateSuccessWillProcess
+			// 				});
+			// 			} else {
+			// 				alert(res.message);
+			// 				this.setState({ processing: false });
+			// 			}
+			// 		}
+			// 	},
+			// 	() => {
+			// 		if (this.isMountedRef) {
+			// 			this.props.setPopBox({
+			// 				isOpen: true,
+			// 				title: this.props.i18n.lbl_ImportantNote,
+			// 				content: this.props.i18n.msg_ApiServerError
+			// 			});
 
-						this.setState({ processing: false });
-					}
-				}
-			);
+			// 			this.setState({ processing: false });
+			// 		}
+			// 	}
+			// );
 		}
 	};
 
 	HandleUploadAgain = () => {
 		this.setState({ disableUpload: false });
+		this.props.EditField("picFileName", "");
 	};
+
+	// checkAllValue = () => {
+	// 	const refIdResult = this.checkRefId(this.props.bankSlipPopBox.refId);
+	// 	const doneUploadResult = this.checkDoneUpload();
+	// 	if (!doneUploadResult.status) {
+	// 		this.props.setPopBox({
+	// 			isOpen: true,
+	// 			title: this.props.i18n.lbl_ImportantNote,
+	// 			content: doneUploadResult.msg,
+	// 			hasBtn: true,
+	// 			btnBar: (
+	// 				<div className="btn-group">
+	// 					<button
+	// 						className="blue"
+	// 						onClick={() =>
+	// 							this.props.setPopBox({
+	// 								isOpen: false
+	// 							})
+	// 						}>
+	// 						OK
+	// 					</button>
+	// 				</div>
+	// 			)
+	// 		});
+	// 	} else if (!refIdResult.status) {
+	// 		this.setState({ refIdTip: this.props.i18n.lbl_RemindForRefNum });
+	// 	}
+
+	// 	return refIdResult.status && doneUploadResult.status;
+	// };
+
+	// checkDoneUpload = () => {
+	// 	let result = { status: true, msg: "" };
+	// 	if (
+	// 		!this.state.disableUpload &&
+	// 		!this.props.bankSlipPopBox.picFileName
+	// 	) {
+	// 		result = { status: false, msg: this.props.i18n.lbl_AttachFile };
+	// 	}
+
+	// 	return result;
+	// };
+
+	// checkRefId = value => {
+	// 	let result = { status: true, msg: "" };
+	// 	if (!value) {
+	// 		result = { status: false, msg: this.props.i18n.lbl_RefnoToolTip };
+	// 	}
+
+	// 	return result;
+	// };
 
 	render() {
 		const { bankSlipPopBox } = this.props;
@@ -182,8 +251,13 @@ class Content extends Component {
 								<span>{bankSlipPopBox.bankName}</span>
 							</div>
 							<div>
-								<h1>{i18n.lbl_ID}</h1>
-								<p>{bankSlipPopBox.transId}</p>
+								{this.props.bankSlipPopBox
+									.disableSubmit ? null : (
+									<>
+										<h1>{i18n.lbl_ID}</h1>
+										<p>{bankSlipPopBox.transId}</p>
+									</>
+								)}
 								<h1>{i18n.lbl_BankAccountName}</h1>
 								<p>
 									{bankSlipPopBox.accountName}
@@ -204,25 +278,32 @@ class Content extends Component {
 										}
 									/>
 								</p>
-								<h1>{i18n.lbl_DepositAmount}</h1>
-								<p>
-									{number_format(
-										bankSlipPopBox.amount,
-										bankSlipPopBox._isConvert
-									)}
-									<span
-										className="icon icon-files-empty clickBtn copyBtn"
-										data-clipboard-text={
-											bankSlipPopBox.amount
-										}
-									/>
-								</p>
+								{this.props.bankSlipPopBox
+									.disableSubmit ? null : (
+									<>
+										<h1>{i18n.lbl_DepositAmount}</h1>
+										<p>
+											{number_format(
+												bankSlipPopBox.amount,
+												bankSlipPopBox._isConvert,
+												0
+											)}
+											<span
+												className="icon icon-files-empty clickBtn copyBtn"
+												data-clipboard-text={
+													bankSlipPopBox.amount
+												}
+											/>
+										</p>
+									</>
+								)}
 							</div>
 						</div>
 					</div>
 
 					{this.props.bankSlipPopBox.picFileName &&
-					this.state.disableUpload ? (
+					(this.props.bankSlipPopBox.disableSubmit ||
+						this.state.disableUpload) ? (
 						<div className="depositInBox">
 							<p>{i18n.lbl_HaveUploadedFile}</p>
 							<p>
@@ -271,7 +352,7 @@ class Content extends Component {
 						</div>
 					)}
 
-					<div className="inputBox">
+					{/* <div className="inputBox">
 						<span>
 							{`${i18n.lbl_DepositTime} (${moment().format(
 								"Z"
@@ -291,7 +372,6 @@ class Content extends Component {
 							/>
 							<div className="iconModule">
 								<span className="icon icon-calendar" />
-								{/* <span className="icon icon-information-solid textBlue"></span> */}
 							</div>
 						</div>
 						<span>{i18n.lbl_Refno}</span>
@@ -301,14 +381,11 @@ class Content extends Component {
 								value={this.props.bankSlipPopBox.refId ?? ""}
 								onChange={this.EditField.bind(this, "refId")}
 							/>
-							{/* <div className="iconModule">
-									<span className="icon icon-information-solid textBlue"></span>
-								</div> */}
 						</div>
 						<div className="tip open">
 							{this.state.refIdTip ?? ""}
 						</div>
-					</div>
+					</div> */}
 					<div className="btn-group">
 						<button className="blue" onClick={this.SeReceipt}>
 							{i18n.lbl_Submit}
@@ -344,8 +421,22 @@ export default () => {
 		}
 	};
 
+	const closePopBoxAndKeepData = () => {
+		if (isMountedRef.current) {
+			setbankSlipPopBox(prev => ({ ...prev, isOpen: false }));
+		}
+	};
+
 	const EditField = (column, value) => {
 		setbankSlipPopBox(prevState => ({ ...prevState, [column]: value }));
+	};
+
+	const SetImg = (picFileName, receipt) => {
+		setbankSlipPopBox(prevState => ({
+			...prevState,
+			picFileName,
+			receipt
+		}));
 	};
 
 	return bankSlipPopBox.isOpen ? (
@@ -355,6 +446,8 @@ export default () => {
 			handlePopBox={handlePopBox}
 			EditField={EditField}
 			setPopBox={setPopBox}
+			SetImg={SetImg}
+			closePopBoxAndKeepData={closePopBoxAndKeepData}
 		/>
 	) : null;
 };

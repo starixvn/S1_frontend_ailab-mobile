@@ -135,3 +135,6 @@ export const api_GetCustTpBetRecordDetailListbyGameType = ({
 		PageNumber,
 		PageSize
 	});
+
+export const api_payment_GetLocalBankInfo = ({ sysId }) =>
+	paymentRequest.post("/GetLocalBankInfo", { sysId });
