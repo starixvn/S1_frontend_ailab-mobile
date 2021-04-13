@@ -68,7 +68,7 @@ const defIconType = {
 
 const eventTime = {
 	new_vip: { startDate: "2021/02/05 11:00:00" },
-	new_PT: { endDate: "2021/04/15 11:00:00" }
+	casino_PT: { endDate: "2021/05/15 11:00:00" }
 };
 
 const gameList = ({ langId }) => [
@@ -202,7 +202,7 @@ const gameList = ({ langId }) => [
 				eventIcon: [
 					{
 						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.new_PT)
+						inPeriod: isEventPeriod(eventTime.casino_PT)
 					}
 				]
 			},
