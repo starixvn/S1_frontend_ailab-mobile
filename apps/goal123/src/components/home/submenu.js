@@ -63,7 +63,7 @@ const defSubMenus = [
 	},
 	{
 		displayKey: "lbl_Slots",
-		path: `/${path.casino.root}`,
+		path: path.casino.root,
 		icon: "icon icon-casino"
 	},
 	{
@@ -98,7 +98,7 @@ const defSubMenus = [
 	},
 	{
 		displayKey: "lbl_Promotions",
-		path: `/${path.promotion.root}`,
+		path: path.promotion.root,
 		icon: "icon icon-gift"
 	},
 	{
@@ -108,12 +108,12 @@ const defSubMenus = [
 	},
 	{
 		displayKey: "lbl_VIP",
-		path: `/${path.vip.root}`,
+		path: path.vip.root,
 		icon: "icon icon-vip"
 	},
 	{
 		displayKey: "lbl_Ranking",
-		path: `/${path.leaderBoard.root}`,
+		path: path.leaderBoard.root,
 		icon: "icon icon-icon32px_top"
 	}
 ];
@@ -234,7 +234,7 @@ const SubMenuList = ({
 		if (s.path) {
 			return (
 				<Link
-					to={s.path}
+					to={`/${s.path}`}
 					onClick={closeNavPanel}
 					key={key}
 					className={s.icon}>

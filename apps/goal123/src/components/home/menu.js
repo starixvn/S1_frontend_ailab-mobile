@@ -133,7 +133,7 @@ const SubGame = ({ game, clickGame, i18n }) => {
 			<Link
 				className="game"
 				key={game.spanText || game.spanTextKey}
-				to={game.path}
+				to={`/${game.path}`}
 				state={game.parameter}>
 				{showingEventIcon !== "" ? (
 					<i className={`icon ${showingEventIcon}`} />
