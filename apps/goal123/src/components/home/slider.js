@@ -5,8 +5,9 @@ import { defBannerType } from "../../service/api/site";
 const swipperParam = {
 	spaceBetween: 30,
 	centeredSlides: true,
+	effect: "fade",
 	autoplay: {
-		delay: 2500,
+		delay: 3500,
 		disableOnInteraction: false
 	},
 	pagination: {

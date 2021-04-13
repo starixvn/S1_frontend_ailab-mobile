@@ -74,12 +74,12 @@ const Panel = ({ submitHandler }) => {
 			<div className="btn-group">
 				<button
 					className="lightBlue switch"
-					onClick={submitHandler.bind(
-						this,
-						dateRange.startDate,
-						dateRange.endDate,
-						false
-					)}>
+					onClick={submitHandler.bind(this, {
+						startDay: dateRange.startDate,
+						endDay: dateRange.endDate,
+						isUnix: false,
+						isLoading: true
+					})}>
 					{i18n.lbl_Submit}
 				</button>
 			</div>
