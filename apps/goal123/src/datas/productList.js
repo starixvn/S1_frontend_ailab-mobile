@@ -44,6 +44,7 @@ import Casino_SG from "../styles/img/hotgame-m/slots/slot-sg.png";
 import Casino_PP from "../styles/img/hotgame-m/slots/slot-pp.png";
 import Casino_PG from "../styles/img/hotgame-m/slots/slot-pg.png";
 import Casino_OW from "../styles/img/hotgame-m/slots/slots-ow.png";
+import Casino_PT from "../styles/img/hotgame-m/slots/slot-pt.png";
 
 import LIVEcasino_N2Live from "../styles/img/hotgame-m/livecasino/livecasino-n2live.png";
 import LIVEcasino_WM from "../styles/img/hotgame-m/livecasino/livecasino-wm.png";
@@ -89,6 +90,7 @@ export const defGameInfo = {
 	Casino_SG: { tpId: 10 },
 	Casino_PP: { tpId: 5 },
 	Casino_PG: { tpId: 14 },
+	Casino_PT: { tpId: 27, gameId: "0" },
 	Casino_ow: { gameId: 208, tpId: 1 },
 	LIVEcasinoN2: { tpId: 28 },
 	LIVEcasinoWM: { gameId: 20, tpId: 20 },
@@ -113,7 +115,8 @@ const defIconType = {
 const eventTime = {
 	ranking: { startDate: "2021/01/01 12:00:00" },
 	new_vip: { startDate: "2021/03/11 11:00:00" },
-	new_LiveCasino_N2Live: { startDate: "2021/03/12 11:00:00" }
+	new_LiveCasino_N2Live: { startDate: "2021/03/12 11:00:00" },
+	casino_pt: { endDate: "2021/05/15 11:00:00" }
 };
 
 export const defCol = {
@@ -307,6 +310,19 @@ const gameList = [
 		translateKey: "lbl_Slots",
 		img: Menu_Slots,
 		items: [
+			{
+				...defGameInfo.Casino_PT,
+				parameter: defGameInfo.Casino_PT,
+				spanText: "PT",
+				img: Casino_PT,
+				path: path.casino.root,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.casino_pt)
+					}
+				]
+			},
 			{
 				...defGameInfo.casino_ICG,
 				parameter: defGameInfo.casino_ICG,
