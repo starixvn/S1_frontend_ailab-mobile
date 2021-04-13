@@ -562,5 +562,16 @@
 	"lbl_DepositLocalBankNotes2":"The bank account is only valid for this transaction. Always check the bank details first before processing your transfer.",
 	"lbl_DepositLocalBankNotes3":"Please choose “Sender bears the transfer fee”.",
 	"lbl_DepositLocalBankNotes4":"Upload your pay slip to speed up processing time.",
-	"lbl_TpWallet_27":"PT Wallet"
+	"lbl_TpWallet_27":"PT Wallet",
+	"lbl_EuroEventTitle1" : "UEFA EURO FINAL 2020",
+	"lbl_EuroEventTitle2" : "UP TO VND 520,000,000 PRIZES WORTH!",
+	"lbl_TournamentPoints" : "TOURNAMENT POINTS",
+	"lbl_EuroDate1" : "13 MAR - 12 APR",
+	"lbl_EuroDate2" : "13 APR - 12 MAY",
+	"lbl_EuroDate3" : "13 MAY - 12 JUN",
+	"lbl_Final" : "UEFA EURO 2020 FINAL TOURNAMENT",
+	"lbl_MonthlyTournament" : "MONTHLY TOURNAMENT",
+	"lbl_AgendaTitle" : "MONTHLY DEPOSIT & TURNOVER RACE TOURNAMENT",
+	"lbl_Tournament" : "Tournament",
+	"lbl_Stage": "Stage"
 }
