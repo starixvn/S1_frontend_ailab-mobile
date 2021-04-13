@@ -278,7 +278,7 @@
 	"msg_MailWrongFormat": "Mail Format is wrong.",
 	"msg_NeedAccountName": "Need Account Name",
 	"msg_NeedAccountNo": "Need Account Number",
-	"msg_NoData": "No Data",
+	"msg_NoData": "No information is available now.",
 	"msg_OTPSendCode": "We had send the verification code to your registered mobile no. Please check and enter the verification code below.",
 	"msg_PasswordLength": "Password must between 6 and 15 characters long.",
 	"msg_PasswordReq": "Password is required.",
