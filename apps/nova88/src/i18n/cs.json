@@ -128,7 +128,7 @@
 	"lbl_WithdrawalStatus5": "已取消",
 	"lbl_WithdrawalStatus6": "已核准",
 	"lbl_WithdrawalStatus7": "已拒绝",
-	"lbl_WithdrawalStatus8": null,
+	"lbl_WithdrawalStatus8": "处理中",
 	"lbl_Wallet_Saba": "体育钱包",
 	"lbl_MainWallet": "中心钱包",
 	"lbl_Direction": "方向",
