@@ -219,8 +219,6 @@ const JoinStep2 = ({
 		let msg = "";
 		const regx = /^[0-9\s]*$/;
 
-		console.log(val);
-
 		if (!val) {
 			checked = false;
 			msg = "lbl_PhoneRequired";

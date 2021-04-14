@@ -11,8 +11,7 @@ import {
 	monthOptions,
 	initWarning,
 	initValue,
-	infoList,
-	currencyToAreacode
+	infoList
 } from "./profile.detail.def";
 import { defPopBoxType } from "../common/popbox";
 import { redirectToPrev } from "./profile.redirect";
@@ -38,22 +37,23 @@ const Panel = () => {
 			: userInfo.perCountry;
 	const isMountedRef = useRef(null);
 
-	const areaCodeOptions = [];
-	const AreaCode = Object.entries(areaCode);
-	Object.values(currencyToAreacode).forEach(item => {
-		AreaCode.forEach(el => {
-			if (el[0] === item) {
-				areaCodeOptions.push({
-					value: el[1].AreaCode,
-					id: el[1].AreaCode,
-					displayText: el[1].AreaCode
-				});
-			}
-		});
-	});
-
-	// { value: 1, id: 0, displayKey: "lbl_Month1" },
-	// { value: 2, id: 1, displayKey: "lbl_Month2" },
+	const areaCodeOptions =
+		userInfo.currencyId === 96
+			? Object.keys(areaCode)
+					.filter(
+						(el, idx, self) =>
+							idx ===
+							self.findIndex(
+								t => areaCode[el].AreaCode === t.AreaCode
+							)
+					)
+					.map(el => ({
+						value: areaCode[el].AreaCode,
+						id: areaCode[el].AreaCode,
+						displayText: areaCode[el].AreaCode
+					}))
+					.sort((a, b) => (a.id > b.id ? 1 : -1))
+			: [];
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -250,7 +250,7 @@ const Panel = () => {
 					Birth_y:
 						userInfo.birth_y ??
 						`${yearOptions[yearSelectedIdx]?.value}`,
-					CountryCode: country,
+					CountryCode: country ?? "",
 					AreaCode:
 						userInfo.areaCode ??
 						areaCodeOptions[AreaCodeIdx]?.value,
@@ -363,10 +363,11 @@ const Panel = () => {
 
 	const arr = _infoList
 		.filter(item => {
-			return (
-				userInfo[item.infoTitle] ||
-				(item.infoTitle === "birth" && item.birth_d)
-			);
+			return userInfo.currencyId === 96
+				? item.infoTitle !== "country" &&
+						item.infoTitle !== "perCountry"
+				: userInfo[item.infoTitle] ||
+						(item.infoTitle === "birth" && item.birth_d);
 		})
 		.map(item => {
 			const _isVerified =
