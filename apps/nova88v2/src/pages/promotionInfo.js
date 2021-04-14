@@ -7,7 +7,10 @@ import { PromotionInfo } from "../components/promotion/promotionInfo";
 import Tab, { useHandleTab } from "../components/promotion/components/tab";
 import Nav from "../components/promotion/components/nav";
 import { Link } from "../route/link";
-import { defUrlParamCols } from "../components/promotion/common/def";
+import {
+	defUrlParamCols,
+	defPromotionType
+} from "../components/promotion/common/def";
 import config from "../config";
 import Layout from "../components/common/layout";
 import Header from "../components/header/header";
@@ -81,6 +84,7 @@ export default () => {
 				{i18n.lbl_Back}
 			</Link>
 			{tab !== "Expired" &&
+				promotionInfo.promotionType !== defPromotionType.rebate &&
 				(userInfo.isLogin ? (
 					<JoinBtn
 						promotionInfo={promotionInfo}
