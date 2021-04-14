@@ -523,7 +523,6 @@ Birthday.propTypes = {
 };
 
 const ColumnItem = props => {
-	console.log(props);
 	return (
 		<>
 			<li>

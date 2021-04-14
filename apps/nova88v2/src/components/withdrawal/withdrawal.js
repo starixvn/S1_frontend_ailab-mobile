@@ -565,6 +565,7 @@ const Panel = () => {
 					}`}
 					key={`withdrawal-bank-${b.usdtAddress}`}
 					onClick={SelectBank.bind(this, b)}>
+					<div className="nickName">{b.nickName}</div>
 					<div className="icon icon-BTC">{b.usdtAddress}</div>
 				</div>
 			);

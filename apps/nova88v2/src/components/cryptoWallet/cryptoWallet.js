@@ -134,6 +134,7 @@ const CryptoWallet = () => {
 	//
 	const wallets = walletInfo.map(item => (
 		<div key={item.usdtAddress} className="account">
+			<div className="nickName">{item.nickName}</div>
 			<div className="icon icon-BTC">{item.usdtAddress}</div>
 		</div>
 	));
