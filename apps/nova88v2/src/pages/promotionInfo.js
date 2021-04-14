@@ -82,10 +82,14 @@ export default () => {
 			</Link>
 			{tab !== "Expired" &&
 				(userInfo.isLogin ? (
-					<JoinBtn
-						promotionInfo={promotionInfo}
-						filterType={urlParameters?.[defUrlParamCols.filterType]}
-					/>
+					<div className="btn-group">
+						<JoinBtn
+							promotionInfo={promotionInfo}
+							filterType={
+								urlParameters?.[defUrlParamCols.filterType]
+							}
+						/>
+					</div>
 				) : (
 					<div className="btn-group">
 						<a onClick={() => handleLogin()}>{i18n.lbl_JoinNow}</a>
