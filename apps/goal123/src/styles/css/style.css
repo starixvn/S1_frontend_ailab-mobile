@@ -1529,10 +1529,15 @@ footer > a.open .circleAnimation + span {
   color: #052561;
 }
 
+#popup .popTxt .title {
+  color: #052561;
+}
+
 #popup .popTxt img {
   width: 100%;
   border-radius: 5px;
   margin-top: 3vw;
+  margin-bottom: 3vw;
 }
 
 #popup .popTxt .text-org {
@@ -1546,6 +1551,7 @@ footer > a.open .circleAnimation + span {
 
 #popup .popTxt > div {
   margin: 2vw 0 4vw;
+  color: #052561;
 }
 
 #popup .popTxt > div li {
@@ -1873,7 +1879,6 @@ footer > a.open .circleAnimation + span {
           box-sizing: border-box;
   background: url(../img/hotgamebg.jpg);
   background-size: cover;
-  min-height: 400px;
   font-size: 0;
 }
 
@@ -2863,7 +2868,7 @@ input {
   border-radius: 3px;
   padding: 3vw 9vw;
   width: 100%;
-  color: white;
+  color: #052561;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-size: 4vw;

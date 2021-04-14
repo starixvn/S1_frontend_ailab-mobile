@@ -23,7 +23,7 @@
 	"lbl_AllGames": "All Games",
 	"lbl_AllTranscations": "All Transactions",
 	"lbl_Amount": "Amount",
-	"lbl_AmountTooltip": "Amount can not be less than {{0}}.",
+	"lbl_AmountTooltip": "Amount can not be less than 1.",
 	"lbl_Announcement": "Announcement",
 	"lbl_AttachFile": "Please attach your bank slip here.",
 	"lbl_Back": "Back",
