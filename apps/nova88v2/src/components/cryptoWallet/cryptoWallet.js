@@ -15,8 +15,7 @@ const CryptoWallet = () => {
 		USDTInfo: []
 	});
 	const [disabledSubmit, setSubmitDisabled] = useState(true);
-	//	submit的時候檢查是否至少有填一筆address
-	//
+
 	const [isValid, setValid] = useState([
 		{
 			NickName: {
@@ -99,7 +98,7 @@ const CryptoWallet = () => {
 			const valid = WAValidator.validate(value, "usdt");
 			setValid(prev => {
 				prev[index][col].stat = valid;
-				prev[index][col].msg = valid ? "" : i18n.lbl_InvalidAddress;
+				prev[index][col].msg = valid ? "" : i18n.lbl_NotERC20WalletAddr;
 				return {
 					...prev
 				};
@@ -147,19 +146,14 @@ const CryptoWallet = () => {
 			<div className="text-center text-gray">
 				{i18n.lbl_CryptoWalletTip1}
 			</div>
-
 			<div className="btn-group">
 				{walletInfo?.length === 0 && !showAddWallet && (
 					<button
 						className="icon icon-plus"
 						onClick={() => setShowAddWallet(true)}>
-						{i18n.lbl_AddNewAccount}
+						{i18n.lbl_Add_Crypto_Wallet}
 					</button>
 				)}
-			</div>
-
-			<div className="text-center icon icon-BTC">
-				{i18n.lbl_CryptoWallet}
 			</div>
 			<div className="bankAccount">{wallets}</div>
 			{showAddWallet && (

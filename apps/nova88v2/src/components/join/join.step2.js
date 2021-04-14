@@ -40,19 +40,18 @@ const JoinStep2 = ({
 	const [_areaCode, setAreaCode] = useState(null);
 
 	const [AreaCodeIdx, setAreaCodeIdx] = useState();
-	const areaCodeOptions = [];
-	const AreaCode = Object.entries(areaCode);
-	Object.values(currencyToAreacode).forEach(item => {
-		AreaCode.forEach(el => {
-			if (el[0] === item) {
-				areaCodeOptions.push({
-					value: el[1].AreaCode,
-					id: el[1].AreaCode,
-					displayText: el[1].AreaCode
-				});
-			}
-		});
-	});
+	const areaCodeOptions = Object.values(areaCode)
+		.filter(
+			(el, idx, self) =>
+				idx === self.findIndex(t => el.AreaCode === t.AreaCode)
+		)
+		.map(el => ({
+			value: el.AreaCode,
+			id: el.AreaCode,
+			displayText: el.AreaCode
+		}))
+		.sort((a, b) => (a.id > b.id ? 1 : -1));
+
 	const yearOptions = [];
 	const startYear = GetYear();
 	for (let i = startYear; i >= startYear - 59; i--) {
@@ -219,6 +218,8 @@ const JoinStep2 = ({
 		let checked = true;
 		let msg = "";
 		const regx = /^[0-9\s]*$/;
+
+		console.log(val);
 
 		if (!val) {
 			checked = false;
@@ -490,7 +491,7 @@ const JoinStep2 = ({
 						icon="icon-phone"
 						inputType="tel"
 						placeholder={i18n.lbl_Phone}
-						onBlur={e => phoneCheck(e.target.value)}
+						onBlur={checkValue.bind(this, "Phone")}
 						onChange={EditField.bind(null, "Phone")}
 						value={userValue.Phone}
 						btnStatus={hintStatus.Phone.checked}

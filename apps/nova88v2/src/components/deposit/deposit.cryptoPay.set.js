@@ -1,18 +1,14 @@
-import React, { useContext, useState, useEffect, useRef } from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { i18nContext, userInfoContext, popBoxContext } from "Context";
-import { useNavigate } from "@reach/router";
 import { Link } from "@Router";
 import Step from "./step";
 import config from "../../config";
 import LimitTip from "./limitTip";
 import { isConvert, number_format, checkAmount } from "../common/common";
 import InputBox from "../common/inputbox";
-import path from "../../path";
-import PageVerify from "./deposit.pageVerify";
 
 const Main = props => {
-	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -24,25 +20,6 @@ const Main = props => {
 
 	const _isConvert = isConvert(userInfo.currencyId);
 	const paymentInfo = props.location.state;
-
-	const [pageVerify, setPageVerify] = useState(true);
-
-	const isMountedRef = useRef(null);
-	useEffect(() => {
-		isMountedRef.current = true;
-		return () => {
-			isMountedRef.current = false;
-		};
-	});
-
-	PageVerify(
-		userInfo,
-		i18n,
-		setPopBox,
-		navigate,
-		setPageVerify,
-		props.location.state !== null
-	);
 
 	const VaildAmount = _amount => {
 		const result = checkAmount(
@@ -73,87 +50,67 @@ const Main = props => {
 	};
 
 	const ClickSubmit = () => {
-		if (pageVerify) {
-			const confirmAmount =
-				paymentInfo.amountRule === 3 &&
-				paymentInfo.amountList?.length > 0
-					? amount / 1000
-					: amount;
+		const confirmAmount =
+			paymentInfo.amountRule === 3 && paymentInfo.amountList?.length > 0
+				? amount / 1000
+				: amount;
 
-			const result = VaildAmount(confirmAmount);
+		const result = VaildAmount(confirmAmount);
 
-			if (result) {
-				const RedirectToNext = real_amount => {
-					setPopBox(prevState => ({
-						...prevState,
-						isOpen: false
-					}));
-					navigate(`/${userInfo.langId}/${path.deposit.root}`);
-					window.open(
-						`${config.openURL}/${userInfo.langId}/Cashier/DepositReqCryptoPay?ChannelId=${paymentInfo.channelId}&Amount=${real_amount}`
-					);
-				};
+		if (result) {
+			const RedirectToNext = real_amount => {
+				setPopBox(prevState => ({
+					...prevState,
+					isOpen: false
+				}));
+				window.open(
+					`${config.openURL}/${userInfo.langId}/Cashier/DepositReqCryptoPay?ChannelId=${paymentInfo.channelId}&Amount=${real_amount}`
+				);
+			};
 
-				const real_amount = _isConvert
-					? confirmAmount * 1000
-					: confirmAmount;
-				setPopBox({
-					isOpen: true,
-					title: i18n.lbl_ImportantNote,
-					content: (
-						<>
-							<p>{i18n.lbl_ConfirmDeposit}</p>
-
-							<div className="icon icon-BTC" />
-							<div>
-								<ul>
-									<li className="text-org">
-										{i18n.lbl_DepositAmount} :
-									</li>
-									<li>
-										{number_format(real_amount, _isConvert)}
-									</li>
-									<li className="text-org">
-										{i18n.lbl_ExchangeRate} :
-									</li>
-									<li>{paymentInfo.sellRate}</li>
-									<li className="text-org">
-										{i18n.lbl_ExchangeAmount} :
-									</li>
-									<li>
-										{(real_amount / paymentInfo.sellRate)
-											.toFixed(8)
-											.replace(/\.0+$/, "")}
-									</li>
-								</ul>
-							</div>
-						</>
-					),
-					hasBtn: true,
-					btnBar: (
-						<div className="btn-group">
-							<button
-								className="blue"
-								onClick={() =>
-									setPopBox(prevState => ({
-										...prevState,
-										isOpen: false
-									}))
-								}>
-								{i18n.lbl_Cancel}
-							</button>
-							<button
-								className="orange"
-								onClick={RedirectToNext.bind(
-									this,
-									real_amount
-								)}>
-								{i18n.lbl_Submit}
-							</button>
+			const real_amount = _isConvert
+				? confirmAmount * 1000
+				: confirmAmount;
+			setPopBox({
+				isOpen: true,
+				title: i18n.lbl_ImportantNote,
+				content: (
+					<>
+						<p>{i18n.lbl_ConfirmDeposit}</p>
+						<div className="icon icon-BTC" />
+						<div>
+							<ul>
+								<li className="text-org">
+									{i18n.lbl_DepositAmount} :
+								</li>
+								<li>
+									{number_format(real_amount, _isConvert)}
+								</li>
+							</ul>
 						</div>
-					)
-				});
-			}
+					</>
+				),
+				hasBtn: true,
+				btnBar: (
+					<div className="btn-group">
+						<button
+							className="blue"
+							onClick={() =>
+								setPopBox(prevState => ({
+									...prevState,
+									isOpen: false
+								}))
+							}>
+							{i18n.lbl_Cancel}
+						</button>
+						<button
+							className="orange"
+							onClick={RedirectToNext.bind(this, real_amount)}>
+							{i18n.lbl_Submit}
+						</button>
+					</div>
+				)
+			});
 		}
 	};
 

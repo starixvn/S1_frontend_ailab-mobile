@@ -170,7 +170,7 @@ const Panel = () => {
 								setPopBox({
 									isOpen: true,
 									title: i18n.lbl_ImportantNote,
-									content: i18n.lbl_UpdateBankInfo,
+									content: i18n.lbl_UpdateCryptoWalletAddr,
 									hasBtn: true,
 									hideCloseBtn: true,
 									btnBar: (
@@ -178,7 +178,9 @@ const Panel = () => {
 											<button
 												className="blue"
 												onClick={ClosePopBox}>
-												{i18n.lbl_UpdateBankDetail}
+												{
+													i18n.lbl_Btn_UpdateCryptoWallet
+												}
 											</button>
 										</div>
 									)
@@ -399,33 +401,54 @@ const Panel = () => {
 				const real_amount = _isConvert
 					? Number(amount) * 1000
 					: Number(amount);
+
 				setPopBox({
 					isOpen: true,
 					title: i18n.lbl_ImportantNote,
-					content: (
-						<div>
-							<ul>
-								<li className="text-org">
-									{i18n.lbl_WithdrawalTo} :
-								</li>
-								<li>{selBank?.bankName}</li>
-								<li className="text-org">
-									{i18n.lbl_BankAccountName} :
-								</li>
-								<li>{bankInfo?.accountName}</li>
-								<li className="text-org">
-									{i18n.lbl_BankNumber} :
-								</li>
-								<li>{selBank?.accountNo}</li>
-								<li className="text-org">
-									{i18n.lbl_WithdrawalAmount} :
-								</li>
-								<li>
-									{number_format(real_amount, _isConvert)}
-								</li>
-							</ul>
-						</div>
-					),
+					content:
+						userInfo.currencyId === 96 ? (
+							<div>
+								<ul>
+									<li className="text-org">
+										{i18n.lbl_WithdrawalTo} :
+									</li>
+									<li>{selBank?.nickName}</li>
+									<li className="text-org">
+										{i18n.lbl_CryptoWalletAddress} :
+									</li>
+									<li>{selBank?.usdtAddress}</li>
+									<li className="text-org">
+										{i18n.lbl_WithdrawalAmount} :
+									</li>
+									<li>
+										{number_format(real_amount, _isConvert)}
+									</li>
+								</ul>
+							</div>
+						) : (
+							<div>
+								<ul>
+									<li className="text-org">
+										{i18n.lbl_WithdrawalTo} :
+									</li>
+									<li>{selBank?.bankName}</li>
+									<li className="text-org">
+										{i18n.lbl_BankAccountName} :
+									</li>
+									<li>{bankInfo?.accountName}</li>
+									<li className="text-org">
+										{i18n.lbl_BankNumber} :
+									</li>
+									<li>{selBank?.accountNo}</li>
+									<li className="text-org">
+										{i18n.lbl_WithdrawalAmount} :
+									</li>
+									<li>
+										{number_format(real_amount, _isConvert)}
+									</li>
+								</ul>
+							</div>
+						),
 					hasBtn: true,
 					btnBar: (
 						<div className="btn-group">

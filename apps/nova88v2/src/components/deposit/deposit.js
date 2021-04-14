@@ -9,9 +9,9 @@ import {
 	popBoxContext
 } from "../common/context";
 import PageVerify from "./deposit.pageVerify";
-import MobilePay from "./deposit.all.mobilePay";
-import OnlineBanking from "./deposit.all.onlineBanking";
-import LocalBank from "./deposit.all.localBank";
+import MobilePay from "./deposit.mobilePay";
+import OnlineBanking from "./deposit.onlineBanking";
+import LocalBank from "./deposit.localBank";
 import CryptoPay from "./deposit.cryptoPay";
 import api from "../../service/api";
 import RecentDatas from "./deposit.recentDatas";
@@ -38,7 +38,7 @@ const defPayment = {
 		creditTimeKey: "lbl_5mins"
 	},
 	[defPayType.cryptoPay]: {
-		displayKey: "lbl_CryptoWallet",
+		displayKey: "lbl_CryptoPay",
 		creditTimeKey: "lbl_5mins"
 	}
 };

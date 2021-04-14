@@ -42,19 +42,18 @@ const Join = () => {
 		i18n.lbl_PrefferedCurrency
 	);
 	const [AreaCodeIdx, setAreaCodeIdx] = useState();
-	const areaCodeOptions = [];
-	const AreaCode = Object.entries(areaCode);
-	Object.values(currencyToAreacode).forEach(item => {
-		AreaCode.forEach(el => {
-			if (el[0] === item) {
-				areaCodeOptions.push({
-					value: el[1].AreaCode,
-					id: el[1].AreaCode,
-					displayText: el[1].AreaCode
-				});
-			}
-		});
-	});
+
+	const areaCodeOptions = Object.values(areaCode)
+		.filter(
+			(el, idx, self) =>
+				idx === self.findIndex(t => el.AreaCode === t.AreaCode)
+		)
+		.map(el => ({
+			value: el.AreaCode,
+			id: el.AreaCode,
+			displayText: el.AreaCode
+		}))
+		.sort((a, b) => a.id > b.id);
 
 	const { showTips, showTipHandler } = useTip([]);
 	const [promoPopup, setPromoPopup] = useState(false);

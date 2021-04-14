@@ -322,7 +322,6 @@
 	"lbl_Expired": "หมดอายุ",
 	"lbl_FreeBet": "เดิมพันฟรี",
 	"lbl_PromotionCategory1": "ฝากครั้งแรก",
-	"lbl_CryptoPay":"ชำระเงินแบบ Crypto",
 	"lbl_VertifyContactConfirm": "ยืนยันหมายเลขโทรศัพท์เพื่อเข้าร่วมรับโปรโมชั่น",
 	"lbl_VerifyNow":"ยืนยันตอนนี้",
 	"lbl_GoWithdrawalPage":"ไปที่ี่หน้าทำรายการถอน",
@@ -571,9 +570,16 @@
 	"lbl_AfterJoinHint":"ยินดีด้วยค่ะ คุณได้ลงทะเบียนเป็นสมาชิกเรียบร้อยแล้ว",
 	"lbl_TpWallet_27": "PT วอลเล็ท",
 	"lbl_LIVE_SPORT" : "กีฬาสด",
+
+	"==============Crypto Wallet==============":"",
+	"lbl_CryptoPay":"ชำระเงินแบบ Crypto",
 	"lbl_CryptoWallet" : "Crypto Wallet",
 	"lbl_CryptoWalletAddress" : "Wallet Address" ,
 	"lbl_CryptoWalletNickName" : "Wallet Nickname" ,
-	"lbl_CryptoWalletTip2" : "Please note:Once the crypto wallet is submitted,it cannot be modified/ deleted.For any request of modification, please contact CSD." ,
-	"lbl_CryptoWalletTip1" : "For any request of modification please contact CSD."
+	"lbl_CryptoWalletTip2" : "Please note: Once the crypto wallet is submitted,it cannot be modified/ deleted.For any request of modification, please contact CSD." ,
+	"lbl_CryptoWalletTip1" : "For any request of modification please contact CSD.",
+	"lbl_Add_Crypto_Wallet":"Add Crypto Wallet",
+	"lbl_NotERC20WalletAddr":"Must be ERC-20 compatible wallet address",
+	"lbl_UpdateCryptoWalletAddr": "Please update your crypto wallet address before making withdrawal.",
+	"lbl_Btn_UpdateCryptoWallet": "Update Crypto Wallet"
 }

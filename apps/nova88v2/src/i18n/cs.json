@@ -322,7 +322,6 @@
 	"lbl_Expired":"已过期",
 	"lbl_FreeBet": "免费投注",
 	"lbl_PromotionCategory1": "首次存款",
-	"lbl_CryptoPay":"加密货币",
 	"lbl_VertifyContactConfirm": "验证您的号码以享有优惠？",
 	"lbl_VerifyNow":"立即验证",
 	"lbl_GoWithdrawalPage":"前往提款页面？",
@@ -578,9 +577,16 @@
 	"lbl_AfterJoinHint":"恭喜！您已成功注册为会员。",
 	"lbl_TpWallet_27": "PT钱包",
 	"lbl_LIVE_SPORT" : "现场直播",
+
+	"==============Crypto Wallet==============":"",
+	"lbl_CryptoPay":"加密货币",
 	"lbl_CryptoWallet" : "Crypto Wallet",
 	"lbl_CryptoWalletAddress" : "Wallet Address" ,
 	"lbl_CryptoWalletNickName" : "Wallet Nickname" ,
-	"lbl_CryptoWalletTip2" : "Please note:Once the crypto wallet is submitted,it cannot be modified/ deleted.For any request of modification, please contact CSD." ,
-	"lbl_CryptoWalletTip1" : "For any request of modification please contact CSD."
+	"lbl_CryptoWalletTip2" : "Please note: Once the crypto wallet is submitted,it cannot be modified/ deleted.For any request of modification, please contact CSD." ,
+	"lbl_CryptoWalletTip1" : "For any request of modification please contact CSD.",
+	"lbl_Add_Crypto_Wallet":"Add Crypto Wallet",
+	"lbl_NotERC20WalletAddr":"Must be ERC-20 compatible wallet address",
+	"lbl_UpdateCryptoWalletAddr": "Please update your crypto wallet address before making withdrawal.",
+	"lbl_Btn_UpdateCryptoWallet": "Update Crypto Wallet"
 }
