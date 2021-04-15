@@ -7,7 +7,8 @@ import {
 	defBonusType,
 	defPromotionType,
 	defFilterType,
-	defWrapperCol
+	defWrapperCol,
+	hideJoinBtnTypes
 } from "../common/def";
 
 import ClaimWithLockedAmount from "./joinBtn.claimWithLockedAmount";
@@ -22,7 +23,7 @@ export default ({
 	func_CallBack,
 	filterType
 }) => {
-	if (promotionInfo.promotionType === defPromotionType.rebate) return null;
+	if (hideJoinBtnTypes.includes(promotionInfo.promotionType)) return null;
 
 	const formatSetting = {
 		[defWrapperCol.formatSetting.isConvertRequired]: false,

@@ -9,7 +9,8 @@ import Nav from "../components/promotion/components/nav";
 import { Link } from "../route/link";
 import {
 	defUrlParamCols,
-	defPromotionType
+	defPromotionType,
+	hideJoinBtnTypes
 } from "../components/promotion/common/def";
 import config from "../config";
 import Layout from "../components/common/layout";
@@ -84,7 +85,7 @@ export default () => {
 				{i18n.lbl_Back}
 			</Link>
 			{tab !== "Expired" &&
-				promotionInfo.promotionType !== defPromotionType.rebate &&
+				!hideJoinBtnTypes.includes(promotionInfo.promotionType) &&
 				(userInfo.isLogin ? (
 					<div className="btn-group">
 						<JoinBtn
