@@ -27,7 +27,7 @@ const Panel = () => {
 	const [yearSelectedIdx, setYearSelectedIdx] = useState();
 	const [monthSelectedIdx, setMonthSelectedIdx] = useState();
 	const [daySelectedIdx, setDaySelectedIdx] = useState();
-	const [AreaCodeIdx, setAreaCodeIdx] = useState();
+	const [AreaCodeIdx, setAreaCodeIdx] = useState(0);
 
 	const { showTips, showTipHandler } = useTip();
 
@@ -37,23 +37,21 @@ const Panel = () => {
 			: userInfo.perCountry;
 	const isMountedRef = useRef(null);
 
-	const areaCodeOptions =
-		userInfo.currencyId === 96
-			? Object.keys(areaCode)
-					.filter(
-						(el, idx, self) =>
-							idx ===
-							self.findIndex(
-								t => areaCode[el].AreaCode === t.AreaCode
-							)
-					)
-					.map(el => ({
-						value: areaCode[el].AreaCode,
-						id: areaCode[el].AreaCode,
-						displayText: areaCode[el].AreaCode
-					}))
-					.sort((a, b) => (a.id > b.id ? 1 : -1))
-			: [];
+	const _areaCode = Object.entries(areaCode).find(
+		el => el[0] === userInfo?.perCountry
+	)?.[1]?.AreaCode;
+
+	const areaCodeOptions = Object.values(areaCode)
+		.filter(
+			(el, idx, self) =>
+				idx === self.findIndex(t => el.AreaCode === t.AreaCode)
+		)
+		.map(el => ({
+			value: el.AreaCode,
+			id: el.AreaCode,
+			displayText: el.AreaCode
+		}))
+		.sort((a, b) => (a.id > b.id ? 1 : -1));
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -241,6 +239,12 @@ const Panel = () => {
 			};
 
 			const setProfile = () => {
+				let _AreaCode = userInfo.areaCode;
+				if (!userInfo.areaCode && userInfo.currencyId === 96) {
+					_AreaCode = areaCodeOptions[AreaCodeIdx]?.value;
+				} else if (!userInfo.areaCode && userInfo.currencyId !== 96) {
+					_AreaCode = _areaCode;
+				}
 				const profileData = {
 					AccountName: userInfo.accountName ?? userValue.accountName,
 					Birth_d: userInfo.birth_d ?? `${daySelectedIdx + 1}`,
@@ -251,9 +255,7 @@ const Panel = () => {
 						userInfo.birth_y ??
 						`${yearOptions[yearSelectedIdx]?.value}`,
 					CountryCode: country ?? "",
-					AreaCode:
-						userInfo.areaCode ??
-						areaCodeOptions[AreaCodeIdx]?.value,
+					AreaCode: _AreaCode,
 					PhoneNo: userInfo.phoneNo ?? userValue.phoneNo
 				};
 
@@ -272,7 +274,6 @@ const Panel = () => {
 													...prevState,
 													...res.data.data
 												}));
-
 												if (!userInfo.phoneVerified) {
 													openOtpHint();
 												}
@@ -363,10 +364,12 @@ const Panel = () => {
 
 	const arr = _infoList
 		.filter(item => {
-			let result = userInfo[item.infoTitle] || item.infoTitle === "birth";
+			let result =
+				userInfo[item.infoTitle] ||
+				(item.infoTitle === "birth" && item.birth_d);
 
 			if (
-				reulst &&
+				result &&
 				userInfo.currencyId === 96 &&
 				(item.infoTitle === "country" ||
 					item.infoTitle === "perCountry")
@@ -408,7 +411,6 @@ const Panel = () => {
 					showTips={showTips.includes("accountName")}
 				/>
 			) : null}
-
 			{!userInfo?.birth_d || !userInfo?.birth_m || !userInfo?.birth_y ? (
 				<Birthday
 					i18n={i18n}
@@ -425,7 +427,7 @@ const Panel = () => {
 					dropdownStateHandler={dropdownStateHandler}
 				/>
 			) : null}
-			{!userInfo?.phoneNo ? (
+			{!userInfo?.phoneNo && userInfo?.currencyId === 96 ? (
 				<div className="infoModule parts">
 					<Dropdown
 						i18n={i18n}
@@ -455,6 +457,24 @@ const Panel = () => {
 					/>
 				</div>
 			) : null}
+			{!userInfo?.phoneNo && userInfo?.currencyId !== 96 ? (
+				<div className="infoModule">
+					<PhoneInputbox
+						icon="icon-phone"
+						inputType="tel"
+						placeholder={i18n.lbl_Phone}
+						onBlur={e => checkPhone(e.target.value)}
+						onChange={EditField.bind(null, "phoneNo")}
+						value={userValue.phoneNo}
+						btnStatus={warning.phoneNo.checked}
+						warningMsg={warning.phoneNo.msg}
+						infoText={i18n.lbl_PhoneTooltip}
+						clickInfo={() => showTipHandler("phoneNo")}
+						showTips={showTips.includes("phoneNo")}
+						areaCode={_areaCode}
+					/>
+				</div>
+			) : null}
 			{!userInfo?.accountName ||
 			!userInfo?.birth_d ||
 			!userInfo?.phoneNo ? (
@@ -464,7 +484,6 @@ const Panel = () => {
 					</button>
 				</div>
 			) : null}
-
 			<div className="info">
 				<ul>{arr}</ul>
 			</div>

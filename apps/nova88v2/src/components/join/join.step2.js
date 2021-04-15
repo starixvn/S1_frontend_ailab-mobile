@@ -39,7 +39,8 @@ const JoinStep2 = ({
 	const _currencyId = siteCurrency[userValue.Currency]?.id;
 	const [_areaCode, setAreaCode] = useState(null);
 
-	const [AreaCodeIdx, setAreaCodeIdx] = useState();
+	const [AreaCodeIdx, setAreaCodeIdx] = useState(0);
+
 	const areaCodeOptions = Object.values(areaCode)
 		.filter(
 			(el, idx, self) =>
