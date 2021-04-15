@@ -656,8 +656,9 @@ main #Marquee > div.open {
 main .sideBarNew {
   background: -webkit-gradient(linear, left top, left bottom, from(#4d6ba7), to(#1b3159));
   background: linear-gradient(to bottom, #4d6ba7 0%, #1b3159 100%);
-  white-space: nowrap;
-  overflow-x: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 main .sideBarNew > button {
@@ -665,7 +666,10 @@ main .sideBarNew > button {
   color: #fff;
   text-transform: uppercase;
   font-size: 12px;
-  padding: 5px 10px;
+  padding: 5px 0px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 main .sideBarNew > button.active {
