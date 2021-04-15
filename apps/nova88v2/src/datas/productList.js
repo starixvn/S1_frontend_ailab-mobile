@@ -81,7 +81,7 @@ const gameList = ({ langId }) => [
 				spanTextKey: "lbl_Soccer"
 			},
 			{
-				...defGameInfo.Soccer,
+				...defGameInfo.SabaSoccer,
 				img: SabaSoccer,
 				spanTextKey: "lbl_SabaSoccer"
 			},
