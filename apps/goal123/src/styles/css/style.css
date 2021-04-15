@@ -666,7 +666,7 @@ main .sideBarNew > button {
   color: #fff;
   text-transform: uppercase;
   font-size: 12px;
-  padding: 5px 0px;
+  padding: 10px 0px;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -680,10 +680,12 @@ main .sideBarNew > button.active {
 
 main .sideBarNew > button::before {
   position: absolute;
-  top: 5px;
-  left: 36px;
+  left: 50%;
+  -webkit-transform: translatex(-50%);
+          transform: translatex(-50%);
   color: #ffbe2e;
   font-size: 12px;
+  bottom: 0;
 }
 
 main .sideBarNew > button img {
@@ -2002,12 +2004,16 @@ footer > a.open .circleAnimation + span {
   padding: 2vw;
   color: #fff;
   border-radius: 5px;
+  display: block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-top: 30px;
 }
 
 .mainNew .partner {
   background: url(../img/footerbg.jpg) no-repeat top center;
   background-size: cover;
-  padding: 10px 0;
+  padding: 40px 0 30px 0;
 }
 
 .mainNew .partner > div {
