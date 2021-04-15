@@ -140,7 +140,7 @@ const gameList = [
 				spanTextKey: "lbl_Sports"
 			},
 			{
-				...defGameInfo.SabaSoccer,
+				...defGameInfo.Sports,
 				img: HotGame_SabaSoccer,
 				spanTextKey: "lbl_SabaSoccer"
 			},
@@ -192,7 +192,7 @@ const gameList = [
 				spanTextKey: "lbl_Soccer"
 			},
 			{
-				...defGameInfo.SabaSoccer,
+				...defGameInfo.Sports,
 				img: Sports_SabaSoccer,
 				spanTextKey: "lbl_SabaSoccer"
 			},
