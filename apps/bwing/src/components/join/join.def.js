@@ -4,7 +4,9 @@ export const initValue = {
 	Phone: "",
 	Currency: 0,
 	AffiliateId: "",
-	SpecialBonusCode: ""
+	// SpecialBonusCode: "",
+	termsCheck: false,
+	ageCheck: false
 };
 
 export const initWarning = {
@@ -53,4 +55,27 @@ export const currencyToAreacode = {
 	13: "CS",
 	15: "ID",
 	51: "VN"
+};
+
+export const initStatus = {
+	UserName: {
+		checked: null,
+		msg: ""
+	},
+	Password: {
+		checked: null,
+		msg: ""
+	},
+	Phone: {
+		checked: null,
+		msg: ""
+	},
+	AffiliateId: {
+		checked: null,
+		msg: ""
+	},
+	Checkbox: {
+		checked: null,
+		msg: ""
+	}
 };

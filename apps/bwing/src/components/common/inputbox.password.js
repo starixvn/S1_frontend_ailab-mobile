@@ -20,7 +20,7 @@ const Inputbox = props => {
 					}`}
 					onClick={props.showPswHandler}
 				/>
-				{props.Warning.status ? (
+				{props.Warning?.status ? (
 					<i className="icon icon-warning" />
 				) : null}
 			</div>
