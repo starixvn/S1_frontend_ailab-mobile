@@ -363,11 +363,13 @@ const Panel = () => {
 
 	const arr = _infoList
 		.filter(item => {
-			return userInfo.currencyId === 96
-				? item.infoTitle !== "country" &&
-						item.infoTitle !== "perCountry"
-				: userInfo[item.infoTitle] ||
-						(item.infoTitle === "birth" && item.birth_d);
+			return (
+				userInfo[item.infoTitle] &&
+				((item.infoTitle === "birth" && item.birth_d) ||
+					(userInfo.currencyId === 96 &&
+						item.infoTitle !== "country" &&
+						item.infoTitle !== "perCountry"))
+			);
 		})
 		.map(item => {
 			const _isVerified =
