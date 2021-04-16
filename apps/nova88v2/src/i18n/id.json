@@ -573,13 +573,13 @@
 
 	"==============Crypto Wallet==============":"",
 	"lbl_CryptoPay":"Pembayaran Crypto",
-	"lbl_CryptoWallet" : "Crypto Wallet",
-	"lbl_CryptoWalletAddress" : "Wallet Address" ,
-	"lbl_CryptoWalletNickName" : "Wallet Nickname" ,
-	"lbl_CryptoWalletTip2" : "Please note: Once the crypto wallet is submitted,it cannot be modified/ deleted.For any request of modification, please contact CSD." ,
-	"lbl_CryptoWalletTip1" : "For any request of modification please contact CSD.",
-	"lbl_Add_Crypto_Wallet":"Add Crypto Wallet",
-	"lbl_NotERC20WalletAddr":"Must be ERC-20 compatible wallet address",
-	"lbl_UpdateCryptoWalletAddr": "Please update your crypto wallet address before making withdrawal.",
-	"lbl_Btn_UpdateCryptoWallet": "Update Crypto Wallet"
+	"lbl_CryptoWallet" : "Dompet Crypto",
+	"lbl_CryptoWalletAddress" : "Alamat Dompet" ,
+	"lbl_CryptoWalletNickName" : "Nama Pengguna Dompet" ,
+	"lbl_CryptoWalletTip2" : "Harap diperhatikan: Setelah dompet Crypto diajukan, itu tidak dapat diubah / dihapus. Untuk permintaan modifikasi apa pun, silakan hubungi CSD" ,
+	"lbl_CryptoWalletTip1" : "Untuk permintaan modifikasi apapun silahkan hubungi CSD.",
+	"lbl_Add_Crypto_Wallet":"Tambahkan Dompet Crypto",
+	"lbl_NotERC20WalletAddr":"Harus alamat dompet yang sesuai dengan ERC-20",
+	"lbl_UpdateCryptoWalletAddr": "Harap perbarui alamat dompet Cryto Anda sebelum melakukan penarikan.",
+	"lbl_Btn_UpdateCryptoWallet": "Perbarui dompet Crypto"
 }
