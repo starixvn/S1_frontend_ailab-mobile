@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "@reach/router";
 import AppDownloadImg from "../../styles/img/appdownload.jpg";
+import AppDownloadVNImg from "../../styles/img/appdownload_vn.jpg";
 import IOS from "../../styles/img/ios.svg";
 import Android from "../../styles/img/android.svg";
 import VIP from "../../styles/img/home-vip.png";
@@ -33,7 +34,12 @@ const MiddlePanel = ({ langId, i18n }) => {
 					target="_blank"
 					rel="noreferrer"
 					href={TandC(langId).AppDownload}>
-					<img src={AppDownloadImg} alt="APP Download" />
+					<img
+						src={
+							langId === "en" ? AppDownloadImg : AppDownloadVNImg
+						}
+						alt="APP Download"
+					/>
 				</a>
 				<a href={APPDownloadLink.IOS}>
 					<div>

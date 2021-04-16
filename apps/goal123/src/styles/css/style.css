@@ -182,6 +182,7 @@ header > div {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  white-space: nowrap;
 }
 
 header > div > a > img {
