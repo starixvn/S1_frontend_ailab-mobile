@@ -169,6 +169,8 @@ const Layout = ({ children }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { root } = useContext(rootContext);
 	const [appHint, setAppHint] = useState(false);
+	const [mysteryBox, setMysteryBox] = useState(false);
+
 	const location = useLocation();
 	const pageInfo = GetPageInfo(location.pathname);
 
@@ -177,6 +179,12 @@ const Layout = ({ children }) => {
 		nav === defNavPanel.login || _matchLogin || nav === defNavPanel.join
 			? { position: "fixed" }
 			: {};
+
+	useEffect(() => {
+		if (root) {
+			setMysteryBox(true);
+		}
+	}, [root]);
 
 	useEffect(() => {
 		const cookieName = `appDownloadHint${userInfo.userName}`;
@@ -206,8 +214,10 @@ const Layout = ({ children }) => {
 			{isEventPeriod(angPowEventTime.angPow) ? (
 				<AngPow userInfo={userInfo} />
 			) : null}
-			{isEventPeriod(mysteryBoxEventTime.mysteryBox) ? (
-				<MysteryBox userInfo={userInfo} />
+			{isEventPeriod(mysteryBoxEventTime.mysteryBox) &&
+			mysteryBox &&
+			root ? (
+				<MysteryBox userInfo={userInfo} setMysteryBox={setMysteryBox} />
 			) : null}
 			<Footer />
 		</>
