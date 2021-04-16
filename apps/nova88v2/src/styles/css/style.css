@@ -6540,6 +6540,11 @@ span.important {
 .upcomingmatches .team > div > div.btn-group button {
   padding: 1vw 2vw;
   width: auto;
+  background: #e92529;
+}
+
+.upcomingmatches .team > div > div.btn-group button:hover {
+  background: #F77A00;
 }
 
 .liveTvTag {

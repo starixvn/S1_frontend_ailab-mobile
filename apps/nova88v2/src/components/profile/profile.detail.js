@@ -507,6 +507,7 @@ const Birthday = props => {
 				icon="icon icon-cake"
 				hideInfo={true}
 				birthDayIcon={true}
+				hideTip={true}
 			/>
 			<Dropdown
 				mainKey="profile-day"
@@ -515,6 +516,7 @@ const Birthday = props => {
 				onSelectItem={props.dropdownStateHandler.bind(null, "bday_day")}
 				selectedIdx={props.daySelectedIdx}
 				hideInfo={true}
+				hideTip={true}
 			/>
 			<Dropdown
 				mainKey="profile-year"
@@ -525,6 +527,7 @@ const Birthday = props => {
 					"bday_year"
 				)}
 				selectedIdx={props.yearSelectedIdx}
+				hideTip={true}
 				hideInfo={true}
 			/>
 		</div>

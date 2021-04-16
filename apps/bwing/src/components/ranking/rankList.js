@@ -32,7 +32,7 @@ const RankItem = ({
 				{userRank}
 			</div>
 			<div>{userName}</div>
-			<div>{turnover}</div>
+			<div>{number_format(turnover)}</div>
 		</li>
 	);
 };

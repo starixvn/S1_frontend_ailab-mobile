@@ -48,8 +48,16 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 	};
 
 	const gameArr = gameList({ langId: userInfo.langId }).map(item => {
+		const _subIcon = item?.items?.filter(
+			subItem =>
+				subItem.eventIcon &&
+				(subItem.tpId
+					? showingTpIds === null ||
+					  showingTpIds.includes(subItem.tpId)
+					: true)
+		);
 		const showingEventIcon = getEventIcon({
-			subIcon: item?.items?.filter(subItem => subItem.eventIcon),
+			subIcon: _subIcon,
 			eventIcon: item?.eventIcon
 		});
 
