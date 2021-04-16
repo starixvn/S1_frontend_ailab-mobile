@@ -2760,7 +2760,7 @@ footer > a.open .circleAnimation + span {
 }
 
 .account {
-  background: #d1d6e0;
+  background: #1f3258;
   border-radius: 5px;
   margin: 2vw 0;
   padding: 4vw;
@@ -2802,7 +2802,11 @@ footer > a.open .circleAnimation + span {
 }
 
 .account .info .title {
-  color: #052561;
+  color: #fff;
+}
+
+.account .info div {
+  color: #61b0ff;
 }
 
 .account .info ul li {
@@ -2893,10 +2897,6 @@ footer > a.open .circleAnimation + span {
   min-height: calc(100% - 35vw);
 }
 
-.icon-pencil + input {
-  text-align: right;
-}
-
 input {
   background: #bfc9da;
   border: 1px solid #284985;
@@ -2910,22 +2910,22 @@ input {
 }
 
 input::-webkit-input-placeholder {
-  color: white;
+  color: #052561;
   text-align: left;
 }
 
 input:-ms-input-placeholder {
-  color: white;
+  color: #052561;
   text-align: left;
 }
 
 input::-ms-input-placeholder {
-  color: white;
+  color: #052561;
   text-align: left;
 }
 
 input::placeholder {
-  color: white;
+  color: #052561;
   text-align: left;
 }
 
