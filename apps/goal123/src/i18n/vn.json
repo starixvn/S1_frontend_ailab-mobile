@@ -225,7 +225,7 @@
 	"lbl_TransactionHistory": "Lịch sử giao dịch",
 	"lbl_Transfer": "Chuyển quỹ",
 	"lbl_TransferFrom": "Chuyển từ",
-	"lbl_TransferHistory": "Lịch sử chuyển khoản",
+	"lbl_TransferHistory": "Lịch sử chuyển quỹ",
 	"lbl_TransferTo": "Chuyển đến",
 	"lbl_Twitter": "Twitter",
 	"lbl_TypeName": "Nhập tên",
@@ -260,7 +260,7 @@
 	"lbl_WithdrawalTo": "Rút tiền về",
 	"lbl_YesterDay": "Hôm qua",
 	"lbl_badminton": "Cầu lông",
-	"lbl_eSports": "Thể thao điện tử",
+	"lbl_eSports": "E-Sport",
 	"lbl_eSportsBetting": "Cá cược eSports",
 	"msg_ApiServerError": "Rất tiếc! Đã xảy ra lỗi, vui lòng thử lại.",
 	"msg_BalanceHint": "Số dư hiện tại của bạn là",
@@ -522,6 +522,7 @@
 	"lbl_AgendaTitle" : "ĐUA TOP NẠP VÀ DOANH THU CƯỢC HÀNG THÁNG",
 	"lbl_Tournament" : "Vòng đấu",
 	"lbl_Stage": "Giai đoạn",
-	"lbl_TpWallet_27":"Ví PT"
+	"lbl_TpWallet_27":"Ví PT",
+	"lbl_PromotionRebateAndCashback":"Hoàn trả / Hoàn lại tiền"
 
 }

@@ -43,8 +43,8 @@ const defSubMenus = [
 				displayKey: "lbl_SabaClub"
 			},
 			{
-				...defGameInfo.Fishing,
-				displayKey: "lbl_Fishing"
+				...defGameInfo.V8Poker,
+				displayKey: "lbl_V8Poker"
 			},
 			{
 				...defGameInfo.Keno,
@@ -53,6 +53,44 @@ const defSubMenus = [
 			{
 				...defGameInfo.lottery,
 				displayKey: "lbl_Lottery"
+			}
+		]
+	},
+	{
+		displayKey: "lbl_Fishing",
+		icon: "icon icon-game",
+		subItems: [
+			{
+				...defGameInfo.fish_AB3,
+				displayKey: "lbl_Paradise"
+			},
+			{
+				...defGameInfo.fish_AT01,
+				displayKey: "lbl_Oneshot_Fishing"
+			},
+			{
+				...defGameInfo.ICG_DRAGONBALL_FISHING,
+				displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING"
+			},
+			{
+				...defGameInfo.ICG_FISHING_OF_SAVIORS,
+				displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS"
+			},
+			{
+				...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
+				displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS"
+			},
+			{
+				...defGameInfo.Fishing,
+				displayKey: "lbl_FishingGG"
+			},
+			{
+				...defGameInfo.FishingSG,
+				displayKey: "lbl_FishingSG1"
+			},
+			{
+				...defGameInfo.FishingSGW,
+				displayKey: "lbl_FishingSG2"
 			}
 		]
 	},
@@ -71,28 +109,40 @@ const defSubMenus = [
 		icon: "icon icon-livecasino",
 		subItems: [
 			{
+				...defGameInfo.LIVEcasinoN2,
+				displayKey: "N2Live"
+			},
+			{
+				...defGameInfo.LIVEcasinoWM,
+				displayKey: "WM"
+			},
+			{
 				...defGameInfo.LIVEcasinoDG,
 				displayKey: "DG"
-			},
-			{
-				...defGameInfo.LIVEcasinoAB,
-				displayKey: "AB"
-			},
-			{
-				...defGameInfo.LIVEcasinoAG,
-				displayKey: "AG"
 			},
 			{
 				...defGameInfo.LIVEcasinoPP,
 				displayKey: "PP"
 			},
 			{
+				...defGameInfo.LIVEcasinoAE,
+				displayKey: "AE"
+			},
+			{
+				...defGameInfo.LIVEcasinoAG,
+				displayKey: "AG"
+			},
+			{
+				...defGameInfo.LIVEcasinoAB,
+				displayKey: "AB"
+			},
+			{
 				...defGameInfo.LIVEcasinoSA,
 				displayKey: "SA"
 			},
 			{
-				...defGameInfo.LIVEcasinoAE,
-				displayKey: "AE"
+				...defGameInfo.LIVEcasinoEB,
+				displayKey: "EB"
 			}
 		]
 	},

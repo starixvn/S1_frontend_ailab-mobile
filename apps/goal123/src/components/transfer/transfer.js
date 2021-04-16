@@ -195,7 +195,7 @@ const Panel = () => {
 				<div className="account" key={`transfer-wallet-${wallet.id}`}>
 					<div className="info">
 						<span className="title">{i18n[wallet.displayKey]}</span>
-						<div>{number_format(wallet.balance, _isConvert)}</div>
+						<div>{number_format(wallet.balance, false)}</div>
 					</div>
 					<ReloadSpin
 						func={

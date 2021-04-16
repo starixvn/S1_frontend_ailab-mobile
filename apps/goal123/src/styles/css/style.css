@@ -149,12 +149,28 @@ html {
 }
 
 header {
-  width: calc(100% - 8vw);
   position: fixed;
   top: 0;
+  width: 100%;
   background: #0e0d2f;
   -webkit-box-shadow: 0px 0px 5px 0px black;
           box-shadow: 0px 0px 5px 0px black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 5;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+header > div {
+  width: calc(100% - 4vw);
+  background: #0e0d2f;
   height: 12vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -163,18 +179,21 @@ header {
       -ms-flex-align: center;
           align-items: center;
   padding: 0 4vw;
-  z-index: 5;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-header > a > img {
+header > div > a > img {
   width: 30vw;
 }
 
-header .Join,
-header .Login {
+header > div .logo {
+  margin: 0 8vw;
+}
+
+header > div .Join,
+header > div .Login {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -199,8 +218,8 @@ header .Login {
   overflow-y: scroll;
 }
 
-header .Join.open,
-header .Login.open {
+header > div .Join.open,
+header > div .Login.open {
   visibility: visible;
   -webkit-transition: 0.7s;
   transition: 0.7s;
@@ -208,88 +227,88 @@ header .Login.open {
   pointer-events: auto;
 }
 
-header .Join .dropdown,
-header .Login .dropdown {
+header > div .Join .dropdown,
+header > div .Login .dropdown {
   padding: 2vw 0 2vw 5vw;
   margin-left: 0;
 }
 
-header .Join .dropdown .btn,
-header .Login .dropdown .btn {
+header > div .Join .dropdown .btn,
+header > div .Login .dropdown .btn {
   padding: 0 3vw;
   background: transparent;
 }
 
-header .Join .dropdown .dropdown-item,
-header .Login .dropdown .dropdown-item {
+header > div .Join .dropdown .dropdown-item,
+header > div .Login .dropdown .dropdown-item {
   padding: 3vw;
 }
 
-header .Join > .close,
-header .Login > .close {
+header > div .Join > .close,
+header > div .Login > .close {
   top: 4vw;
 }
 
-header .Join > .close span,
-header .Login > .close span {
+header > div .Join > .close span,
+header > div .Login > .close span {
   background-color: #052561;
 }
 
-header .Join > img,
-header .Login > img {
+header > div .Join > img,
+header > div .Login > img {
   width: 40vw;
   margin: 0 calc(50% - 20vw) 2vw;
 }
 
-header .Join .title,
-header .Login .title {
+header > div .Join .title,
+header > div .Login .title {
   text-align: center;
   font-size: 6vw;
   margin: 1vw auto;
   font-weight: bold;
 }
 
-header .Join .inputBox,
-header .Login .inputBox {
+header > div .Join .inputBox,
+header > div .Login .inputBox {
   position: relative;
   margin: 1vw 0;
 }
 
-header .Join .inputBox > input,
-header .Login .inputBox > input {
+header > div .Join .inputBox > input,
+header > div .Login .inputBox > input {
   margin: 1vw 0;
 }
 
-header .Join .inputBox > input::-webkit-input-placeholder,
-header .Login .inputBox > input::-webkit-input-placeholder {
+header > div .Join .inputBox > input::-webkit-input-placeholder,
+header > div .Login .inputBox > input::-webkit-input-placeholder {
   color: white;
 }
 
-header .Join .inputBox > input:-ms-input-placeholder,
-header .Login .inputBox > input:-ms-input-placeholder {
+header > div .Join .inputBox > input:-ms-input-placeholder,
+header > div .Login .inputBox > input:-ms-input-placeholder {
   color: white;
 }
 
-header .Join .inputBox > input::-ms-input-placeholder,
-header .Login .inputBox > input::-ms-input-placeholder {
+header > div .Join .inputBox > input::-ms-input-placeholder,
+header > div .Login .inputBox > input::-ms-input-placeholder {
   color: white;
 }
 
-header .Join .inputBox > input::placeholder,
-header .Login .inputBox > input::placeholder {
+header > div .Join .inputBox > input::placeholder,
+header > div .Login .inputBox > input::placeholder {
   color: white;
 }
 
-header .Join .inputBox .JoinRule,
-header .Login .inputBox .JoinRule {
+header > div .Join .inputBox .JoinRule,
+header > div .Login .inputBox .JoinRule {
   height: 0;
   visibility: hidden;
   opacity: 0;
   font-size: 12px;
 }
 
-header .Join .inputBox .JoinRule.open,
-header .Login .inputBox .JoinRule.open {
+header > div .Join .inputBox .JoinRule.open,
+header > div .Login .inputBox .JoinRule.open {
   height: auto;
   visibility: visible;
   -webkit-transition: 0.7s;
@@ -297,15 +316,15 @@ header .Login .inputBox .JoinRule.open {
   opacity: 1;
 }
 
-header .Join .inputBox > .icon-module,
-header .Login .inputBox > .icon-module {
+header > div .Join .inputBox > .icon-module,
+header > div .Login .inputBox > .icon-module {
   position: absolute;
   right: 0;
   top: 0;
 }
 
-header .Join .inputBox i.icon,
-header .Login .inputBox i.icon {
+header > div .Join .inputBox i.icon,
+header > div .Login .inputBox i.icon {
   position: absolute;
   -webkit-transform: translateY(60%);
           transform: translateY(60%);
@@ -314,40 +333,40 @@ header .Login .inputBox i.icon {
   color: #64789b;
 }
 
-header .Join .inputBox i.icon.icon-eye, header .Join .inputBox i.icon.icon-eye-blocked,
-header .Login .inputBox i.icon.icon-eye,
-header .Login .inputBox i.icon.icon-eye-blocked {
+header > div .Join .inputBox i.icon.icon-eye, header > div .Join .inputBox i.icon.icon-eye-blocked,
+header > div .Login .inputBox i.icon.icon-eye,
+header > div .Login .inputBox i.icon.icon-eye-blocked {
   display: none;
 }
 
-header .Join .inputBox i.icon.icon-key + input + div > .icon-eye,
-header .Login .inputBox i.icon.icon-key + input + div > .icon-eye {
+header > div .Join .inputBox i.icon.icon-key + input + div > .icon-eye,
+header > div .Login .inputBox i.icon.icon-key + input + div > .icon-eye {
   display: inline-block;
   position: initial;
   margin-right: 2vw;
 }
 
-header .Join .inputBox i.icon.icon-key + input + div > .icon-eye-blocked,
-header .Login .inputBox i.icon.icon-key + input + div > .icon-eye-blocked {
+header > div .Join .inputBox i.icon.icon-key + input + div > .icon-eye-blocked,
+header > div .Login .inputBox i.icon.icon-key + input + div > .icon-eye-blocked {
   display: inline-block;
   position: initial;
   margin-right: 2vw;
 }
 
-header .Join .inputBox i.icon.icon-warning,
-header .Login .inputBox i.icon.icon-warning {
+header > div .Join .inputBox i.icon.icon-warning,
+header > div .Login .inputBox i.icon.icon-warning {
   position: initial;
   margin-right: 2vw;
   display: inline-block;
 }
 
-header .Join .inputBox i.icon.icon-warning.open,
-header .Login .inputBox i.icon.icon-warning.open {
+header > div .Join .inputBox i.icon.icon-warning.open,
+header > div .Login .inputBox i.icon.icon-warning.open {
   display: none;
 }
 
-header .Join button,
-header .Login button {
+header > div .Join button,
+header > div .Login button {
   background: #1e85ec;
   border-radius: 3px;
   color: white;
@@ -355,15 +374,15 @@ header .Login button {
   width: 100%;
 }
 
-header .Join .Terms,
-header .Login .Terms {
+header > div .Join .Terms,
+header > div .Login .Terms {
   margin: 1vw auto 2vw;
   line-height: 26px;
   color: #052561;
 }
 
-header .Join .Terms.error,
-header .Login .Terms.error {
+header > div .Join .Terms.error,
+header > div .Login .Terms.error {
   border: 1px solid #fab617;
   -webkit-box-shadow: 0 0 0 1px white;
           box-shadow: 0 0 0 1px white;
@@ -372,19 +391,19 @@ header .Login .Terms.error {
   color: #052561;
 }
 
-header .Join .Terms a,
-header .Login .Terms a {
+header > div .Join .Terms a,
+header > div .Login .Terms a {
   color: #1e85ec;
   text-decoration: underline;
 }
 
-header .Join .Terms input[type="checkbox"],
-header .Login .Terms input[type="checkbox"] {
+header > div .Join .Terms input[type="checkbox"],
+header > div .Login .Terms input[type="checkbox"] {
   display: none;
 }
 
-header .Join .Terms input[type="checkbox"] + label,
-header .Login .Terms input[type="checkbox"] + label {
+header > div .Join .Terms input[type="checkbox"] + label,
+header > div .Login .Terms input[type="checkbox"] + label {
   margin: 0vw 1vw 0 0;
   border: 1px solid #1e85ec;
   border-radius: 100%;
@@ -399,8 +418,8 @@ header .Login .Terms input[type="checkbox"] + label {
           align-items: center;
 }
 
-header .Join .Terms input[type="checkbox"] + label > div,
-header .Login .Terms input[type="checkbox"] + label > div {
+header > div .Join .Terms input[type="checkbox"] + label > div,
+header > div .Login .Terms input[type="checkbox"] + label > div {
   width: 3vw;
   height: 3vw;
   background: transparent;
@@ -408,12 +427,12 @@ header .Login .Terms input[type="checkbox"] + label > div {
   border-radius: 100%;
 }
 
-header .Join .Terms input[type="checkbox"]:checked + label > div,
-header .Login .Terms input[type="checkbox"]:checked + label > div {
+header > div .Join .Terms input[type="checkbox"]:checked + label > div,
+header > div .Login .Terms input[type="checkbox"]:checked + label > div {
   background: #1e85ec;
 }
 
-header .headerInfo {
+header > div .headerInfo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -430,14 +449,14 @@ header .headerInfo {
           align-items: flex-end;
 }
 
-header .headerInfo .MemberID {
+header > div .headerInfo .MemberID {
   color: #fab617;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-header .headerInfo .Balance {
+header > div .headerInfo .Balance {
   color: white;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -447,7 +466,7 @@ header .headerInfo .Balance {
           align-items: center;
 }
 
-header button.clickBtn {
+header > div button.clickBtn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -457,42 +476,42 @@ header button.clickBtn {
   margin-left: 2.5vw;
 }
 
-header button.clickBtn::before {
+header > div button.clickBtn::before {
   -webkit-transform: scale(0.75);
           transform: scale(0.75);
 }
 
-header .headerBtnOut {
+header > div .headerBtnOut {
   display: none;
   margin-left: 2vw;
 }
 
-header .headerBtnOut.open {
+header > div .headerBtnOut.open {
   display: block;
 }
 
-header .headerBtnOut > button {
+header > div .headerBtnOut > button {
   border-radius: 3px;
   color: white;
   padding: 1vw 1vw;
   margin-left: 5px;
 }
 
-header .headerBtnOut > button.registerBtn {
+header > div .headerBtnOut > button.registerBtn {
   background: #d83b35;
 }
 
-header .headerBtnOut > button.loginBtn {
+header > div .headerBtnOut > button.loginBtn {
   background: #fab617;
 }
 
-header .headerBtnOut .icon-chat {
+header > div .headerBtnOut .icon-chat {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-header .headerBtnOut .icon-chat .amount {
+header > div .headerBtnOut .icon-chat .amount {
   width: 6vw;
   height: 6vw;
   background: #fab617;
@@ -515,7 +534,7 @@ header .headerBtnOut .icon-chat .amount {
   padding: 0.5vw;
 }
 
-header .headerBtnIn {
+header > div .headerBtnIn {
   color: #eaa378;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -524,29 +543,29 @@ header .headerBtnIn {
   display: none;
 }
 
-header .headerBtnIn.open {
+header > div .headerBtnIn.open {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-header .headerBtnIn p {
+header > div .headerBtnIn p {
   margin: 0 5px;
 }
 
-header .headerBtnIn img {
+header > div .headerBtnIn img {
   width: 30px;
 }
 
-header .headerBtnIn .icon {
+header > div .headerBtnIn .icon {
   position: relative;
 }
 
-header .headerBtnIn .icon::before {
+header > div .headerBtnIn .icon::before {
   font-size: 30px;
 }
 
-header .headerBtnIn .icon .amount {
+header > div .headerBtnIn .icon .amount {
   width: 6vw;
   height: 6vw;
   background: #fab617;
@@ -574,6 +593,10 @@ main {
   height: calc(100% - 12vw);
   padding-top: 12vw;
   background: #f3f3f3;
+}
+
+main.openAppDownload {
+  padding-top: 25vw;
 }
 
 main.stopScroll {
@@ -1692,6 +1715,9 @@ footer > a.open .circleAnimation + span {
 .mainNew .walletBox {
   display: none;
   padding: 2vw;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .mainNew .walletBox.open {
@@ -1701,7 +1727,7 @@ footer > a.open .circleAnimation + span {
 }
 
 .mainNew .walletBox > div.side-info {
-  width: 40%;
+  width: 35%;
   font-size: 12px;
   color: #052561;
 }
@@ -1731,7 +1757,6 @@ footer > a.open .circleAnimation + span {
 }
 
 .mainNew .walletBox > div.side-info > div .money {
-  width: 70%;
   word-break: break-all;
 }
 
@@ -1740,7 +1765,7 @@ footer > a.open .circleAnimation + span {
 }
 
 .mainNew .walletBox > div.content {
-  width: 60%;
+  width: 55%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3505,6 +3530,18 @@ button.clickBtn:before {
   padding: 2vw 0 2vw 8vw;
 }
 
+.specialBonus {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 .specialBonus input {
   width: calc(100% - 21vw + 1px);
   padding: 2vw;
@@ -3922,7 +3959,23 @@ span.important {
 }
 
 .promotions .filterBtn {
+  width: 100%;
+  overflow-x: auto;
   margin: 14vw 0 3vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  white-space: nowrap;
+  -ms-flex-wrap: unset;
+      flex-wrap: unset;
+}
+
+.promotions .filterBtn button {
+  white-space: nowrap;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  padding: 2vw 5vw;
 }
 
 .promotions .claimed {
@@ -5319,25 +5372,26 @@ span.important {
 }
 
 .appDownload {
-  position: fixed;
-  z-index: 99;
   background: #f5ac23;
-  top: 0;
   width: 100%;
   padding: 5px 10px;
   color: #fff;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-size: 14px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  display: none;
+}
+
+.appDownload.open {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .appDownload span {

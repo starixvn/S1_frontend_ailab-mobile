@@ -1,4 +1,4 @@
-import React, { useContext, Component } from "react";
+import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useMatch, useLocation, Link } from "@reach/router";
 import Footer from "./footer";
@@ -13,7 +13,7 @@ import {
 } from "./context";
 import path from "../../path";
 import Loading from "./loading";
-import { isEventPeriod } from "./common";
+import { isEventPeriod, readCookie } from "./common";
 import { eventTime as angPowEventTime } from "../../pages/angPow";
 import eventImg from "../../styles/img/event/eventlink_en.png";
 import eventVNImg from "../../styles/img/event/eventlink_vn.png";
@@ -62,7 +62,7 @@ const defPageInfo = {
 		hideLogo: true
 	},
 	casino: {
-		titleKey: "lbl_Casino",
+		titleKey: "lbl_Slots",
 		className: "main casino",
 		hideLogo: true
 	},
@@ -167,6 +167,8 @@ const Layout = ({ children }) => {
 	const { nav } = useContext(navContext);
 	const { loading } = useContext(loadingContext);
 	const { userInfo } = useContext(userInfoContext);
+	const { root } = useContext(rootContext);
+	const [appHint, setAppHint] = useState(false);
 	const location = useLocation();
 	const pageInfo = GetPageInfo(location.pathname);
 
@@ -176,14 +178,28 @@ const Layout = ({ children }) => {
 			? { position: "fixed" }
 			: {};
 
+	useEffect(() => {
+		const cookieName = `appDownloadHint${userInfo.userName}`;
+
+		if (userInfo.userName && readCookie(cookieName) !== "1") {
+			setAppHint(true);
+		}
+	}, [userInfo.currencyId, userInfo.userName]);
+
 	return (
 		<>
 			<RotationHint i18n={i18n} />
 			<Header
 				title={i18n[pageInfo.titleKey] ?? pageInfo.titleKey}
 				hideLogo={pageInfo.hideLogo}
+				showingAppHint={appHint && root}
+				setAppHint={setAppHint}
 			/>
-			<main style={position} className={pageInfo.className ?? ""}>
+			<main
+				style={position}
+				className={`${pageInfo.className ?? ""}${
+					appHint && root ? " openAppDownload" : ""
+				}`}>
 				{children}
 				{loading ? <Loading /> : null}
 			</main>

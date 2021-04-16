@@ -18,6 +18,7 @@ import vipClub3 from "../../styles/img/vip/vip3.png";
 import vipClub4 from "../../styles/img/vip/vip4.png";
 import vipClub5 from "../../styles/img/vip/vip5.png";
 import vipClub6 from "../../styles/img/vip/vip6.png";
+import AppDownloadHint from "../home/appDownload";
 
 const HeaderTitle = ({ title }) => (
 	<>
@@ -31,38 +32,54 @@ HeaderTitle.propTypes = {
 	title: PropTypes.string.isRequired
 };
 
-const Header = ({ title, hideLogo }) => {
+const Header = ({ title, hideLogo, showingAppHint, setAppHint }) => {
 	const { setNav } = useContext(navContext);
+	const { userInfo } = useContext(userInfoContext);
+	const { i18n } = useContext(i18nContext);
 	const showSubMenu = () => {
 		setNav(defNavPanel.subMenu);
 	};
 
 	return (
 		<header className={title ? "header" : ""} id="header">
-			{hideLogo ? null : (
-				<>
-					<div className="menuBtnNew">
-						<button onClick={showSubMenu}>
-							<span>≡</span>
-						</button>
-					</div>
-					<a href="/">
-						<Logo />
-					</a>
-				</>
-			)}
-			{title ? <HeaderTitle title={title} /> : <HeaderBtn />}
+			{showingAppHint ? (
+				<AppDownloadHint
+					i18n={i18n}
+					cookieName={`appDownloadHint${userInfo.userName}`}
+					langId={userInfo.langId}
+					setAppHint={setAppHint}
+				/>
+			) : null}
+			<div>
+				{hideLogo ? null : (
+					<>
+						<div className="menuBtnNew">
+							<button onClick={showSubMenu}>
+								<span>≡</span>
+							</button>
+						</div>
+						<a href="/" className="logo">
+							<Logo />
+						</a>
+					</>
+				)}
+				{title ? <HeaderTitle title={title} /> : <HeaderBtn />}
+			</div>
 		</header>
 	);
 };
 
 Header.defaultProps = {
-	hideLogo: null
+	hideLogo: null,
+	showingAppHint: false,
+	setAppHint: () => null
 };
 
 Header.propTypes = {
 	title: PropTypes.string.isRequired,
-	hideLogo: PropTypes.bool
+	hideLogo: PropTypes.bool,
+	showingAppHint: PropTypes.bool,
+	setAppHint: PropTypes.func
 };
 
 const HeaderBtn = () => {

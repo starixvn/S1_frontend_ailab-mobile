@@ -9,7 +9,7 @@ export default ({ i18n, cookieName, langId, setAppHint }) => {
 		setAppHint(false);
 	};
 	return (
-		<div className="appDownload">
+		<div className="appDownload open">
 			<div className="left">
 				<button
 					className="icon icon-close"
