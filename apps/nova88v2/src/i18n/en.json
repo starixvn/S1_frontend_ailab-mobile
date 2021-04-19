@@ -65,7 +65,7 @@
 	"lbl_Phone": "Phone Number",
 	"lbl_Submit": "Submit",
 	"msg_SelectBirthDay": "Please select your birthday.",
-	"lbl_Profile": "My Account",
+	"lbl_Profile": "Profile",
 	"lbl_BankInfo": "Bank Info",
 	"lbl_ContactCSD": "For any request of modification, please contact CSD.",
 	"lbl_AddNewAccount": "Add New Account",
@@ -567,5 +567,6 @@
 	"lbl_Register":"Register",
 	"lbl_AfterJoinHint":"Congratulation! You have successfully register as a member.",
 	"lbl_TpWallet_27": "PT Wallet",
-	"lbl_LIVE_SPORT" : "LIVE SPORTS"
+	"lbl_LIVE_SPORT" : "LIVE SPORTS",
+	"lbl_AutoTransfer":"Main Wallet Auto Transfer"
 }

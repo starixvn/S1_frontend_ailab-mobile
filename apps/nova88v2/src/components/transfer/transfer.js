@@ -260,6 +260,11 @@ const Panel = () => {
 
 	return (
 		<>
+			<label className="checkbox autoTransfer">
+				<input type="checkbox" />
+				<i className="icon icon-checkbox" />
+				<span>{i18n.lbl_AutoTransfer}</span>
+			</label>
 			{arr}
 			<div className="text-org title">{i18n.lbl_From}</div>
 			<Dropdown
