@@ -4075,7 +4075,7 @@ span.important {
   background: transparent;
   line-height: 24px;
   position: relative;
-  background-color: #b3bcc5;
+  background-color: #1f3258;
   padding: 2vw;
 }
 
@@ -4136,6 +4136,7 @@ span.important {
   max-width: calc(100% - 1vw);
   padding-left: 1vw;
   word-wrap: break-word;
+  color: #fff;
 }
 
 .promotions div.promodule .text ol {
@@ -4155,12 +4156,17 @@ span.important {
   border-bottom: 1px dotted #fab617;
   padding-bottom: 3vw;
   margin-bottom: 5vw;
+  color: #76a0ef;
 }
 
 .promotions div.promodule .info ul li {
   float: none;
   width: 100%;
   padding-left: 1vw;
+}
+
+.promotions div.promodule .info ul li span {
+  color: #fff;
 }
 
 .promotions div.promodule .info .title {
