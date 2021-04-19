@@ -1,4 +1,4 @@
-import React from "reatc";
+import React from "react";
 import PropTypes from "prop-types";
 
 const Inputbox = ({
@@ -11,7 +11,9 @@ const Inputbox = ({
 	value,
 	max,
 	disabled,
-	maxLength
+	maxLength,
+	tip,
+	warningIcon
 }) => {
 	return (
 		<div className="inputBox">
@@ -27,6 +29,12 @@ const Inputbox = ({
 				disabled={disabled}
 				maxLength={maxLength}
 			/>
+			{tip ? <div className="tip open">{tip}</div> : null}
+			{warningIcon ? (
+				<div className="icon-module">
+					<i className="icon icon-warning" />
+				</div>
+			) : null}
 		</div>
 	);
 };
@@ -39,7 +47,9 @@ Inputbox.defaultProps = {
 	onBlur: () => null,
 	max: null,
 	disabled: false,
-	maxLength: null
+	maxLength: null,
+	tip: "",
+	warningIcon: false
 };
 
 Inputbox.propTypes = {
@@ -52,7 +62,9 @@ Inputbox.propTypes = {
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 	max: PropTypes.number,
 	disabled: PropTypes.bool,
-	maxLength: PropTypes.number
+	maxLength: PropTypes.number,
+	tip: PropTypes.string,
+	warningIcon: PropTypes.bool
 };
 
 export default Inputbox;

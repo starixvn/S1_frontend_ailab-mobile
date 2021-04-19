@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import { useMatch, useNavigate } from "@reach/router";
-import Inputbox from "../common/inputbox";
-import InputboxPWD from "../common/inputbox.password";
+import Inputbox from "../common/inputbox.refactor";
+import InputboxPWD from "../common/inputbox.password copy";
 import Dropdown from "../common/dropdown";
 import Checkbox from "../common/checkbox";
 import Tips from "./tips";
@@ -181,7 +181,7 @@ const Join = () => {
 		// let checked = true;
 		// let msg = "";
 
-		if (col === "userName") {
+		if (col === "UserName") {
 			result = await userNameCheck({ val });
 		} else if (col === "Password") {
 			result = passwordCheck({ val });
@@ -408,6 +408,8 @@ const Join = () => {
 		}
 	};
 
+	console.log(hintStatus);
+
 	const showBylink = useMatch(path.join.root);
 	const openPanel = showBylink || nav === defNavPanel.join;
 
@@ -440,21 +442,19 @@ const Join = () => {
 				<div className="title">{i18n.lbl_JoinNow}</div>
 
 				<Inputbox
-					icon="icon-member"
+					icon="icon icon-member"
 					inputType="text"
 					placeholder={i18n.lbl_Username}
 					// onFocus={showTipsHandler.bind(null, "UserName")}
 					onBlur={checkValue.bind(this, { col: "UserName" })}
 					onChange={EditField.bind(this, { col: "UserName" })}
-					ClassName="JoinRule"
-					// showTips={showTipsState.UserName}
-					Tips={i18n.lbl_UsernameTooltip}
-					// Warning={warning.UserName}
 					value={userValue.UserName}
+					tip={hintStatus.UserName.msg}
+					warningIcon={hintStatus.UserName.checked === false}
 				/>
 
 				<InputboxPWD
-					icon="icon-key"
+					icon="icon icon-key"
 					inputType={`${!showingPsw ? "password" : "text"}`}
 					placeholder={i18n.lbl_Password}
 					// onFocus={showTipsHandler.bind(null, "Password")}
@@ -462,11 +462,9 @@ const Join = () => {
 					onChange={EditField.bind(this, { col: "Password" })}
 					showPsw={showingPsw}
 					showPswHandler={showPswHandler}
-					ClassName="JoinRule"
-					// showTips={showTipsState.Password}
-					Tips={i18n.msg_PasswordVaildate}
-					// Warning={warning.Password}
 					value={userValue.Password}
+					tip={hintStatus.Password.msg}
+					warningIcon={hintStatus.Password.checked === false}
 				/>
 
 				<div className="inputBox">
@@ -491,7 +489,7 @@ const Join = () => {
 				<div className="inputBox parts">
 					<span className="countryCode">{_areaCode}</span>
 					<Inputbox
-						icon="icon-phone"
+						icon="icon icon-phone"
 						inputType="tel"
 						ClassName="JoinRule"
 						placeholder={i18n.lbl_Phone}
@@ -525,7 +523,7 @@ const Join = () => {
 				/> */}
 
 				<Inputbox
-					icon="icon-affiliate"
+					icon="icon icon-affiliate"
 					ClassName="JoinRule"
 					placeholder={i18n.lbl_Affiliate_ID}
 					value={affiliateidExist ?? userValue.AffiliateId}

@@ -20,16 +20,16 @@ const Inputbox = props => {
 					}`}
 					onClick={props.showPswHandler}
 				/>
-				{props.Warning?.status ? (
+				{props.Warning?.status || props.warningIcon ? (
 					<i className="icon icon-warning" />
 				) : null}
 			</div>
-			{props.showTips ? (
+			{props.showTips || props.tip ? (
 				<div
 					className={`${props.ClassName}${
 						props.showTips ? " open" : ""
 					}`}>
-					{props.Tips}
+					{props.Tips || props.tip}
 				</div>
 			) : props.Warning?.status ? (
 				<div
