@@ -1762,7 +1762,7 @@ footer > a.open .circleAnimation + span {
 }
 
 .mainNew .walletBox > div.side-info > div .money span {
-  margin-right: 5px;
+  margin-right: 2px;
 }
 
 .mainNew .walletBox > div.content {
@@ -1791,6 +1791,12 @@ footer > a.open .circleAnimation + span {
           justify-content: center;
   color: #052561;
   font-size: 12px;
+  width: 33.3%;
+  text-align: center;
+}
+
+.mainNew .walletBox > div > a span {
+  line-height: 13px;
 }
 
 .mainNew .hotevent {
@@ -2018,6 +2024,14 @@ footer > a.open .circleAnimation + span {
           justify-content: center;
   font-size: 12px;
   color: #5084e4;
+}
+
+.mainNew .infoCenter > div > a:nth-child(1) img {
+  width: 23%;
+}
+
+.mainNew .infoCenter > div > a:nth-child(3) img {
+  width: 35%;
 }
 
 .mainNew .infoCenter > div > a img {
@@ -4061,6 +4075,8 @@ span.important {
   background: transparent;
   line-height: 24px;
   position: relative;
+  background-color: #b3bcc5;
+  padding: 2vw;
 }
 
 .promotions div.promodule.open img {
