@@ -9,6 +9,7 @@ import {
 import config from "../../config";
 import api from "../../service/api";
 import AddBankPanel from "./bankInfo.add";
+import VIPLevel from "../common/vipLevel";
 
 const BankInfo = () => {
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -200,9 +201,7 @@ const BankInfo = () => {
 				<>
 					{userInfo?.accountName ? (
 						<>
-							<div className="icon icon-member">
-								<div className="circleAnimation" />
-							</div>
+							<VIPLevel userInfo={userInfo} i18n={i18n} />
 							<div className="name">{userInfo.accountName}</div>
 							<div className="text-center text-gray">
 								{i18n.lbl_ContactCSD}
