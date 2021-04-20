@@ -579,5 +579,6 @@
 	"lbl_Add_Crypto_Wallet":"Add Crypto Wallet",
 	"lbl_NotERC20WalletAddr":"Must be ERC-20 compatible wallet address",
 	"lbl_UpdateCryptoWalletAddr": "Please update your crypto wallet address before making withdrawal.",
-	"lbl_Btn_UpdateCryptoWallet": "Update Crypto Wallet"
+	"lbl_Btn_UpdateCryptoWallet": "Update Crypto Wallet",
+	"lbl_Optional": "Optional"
 }

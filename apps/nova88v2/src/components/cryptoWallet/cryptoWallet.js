@@ -6,12 +6,12 @@ import InputBox from "../common/inputbox.hint";
 
 const CryptoWallet = () => {
 	const { i18n } = useContext(i18nContext);
-	const { userInfo } = useContext(userInfoContext);
+	const { setUserInfo } = useContext(userInfoContext);
 	const [showAddWallet, setShowAddWallet] = useState(false);
 	const { setPopBox } = useContext(popBoxContext);
 	const [walletInfo, setWalletInfo] = useState([]);
 	const [form, setForm] = useState({
-		AccountName: userInfo.userName,
+		AccountName: "",
 		USDTInfo: []
 	});
 	const [disabledSubmit, setSubmitDisabled] = useState(true);
@@ -46,6 +46,12 @@ const CryptoWallet = () => {
 				msg: "",
 				stat: null
 			}
+		},
+		{
+			AccountName: {
+				msg: "",
+				stat: null
+			}
 		}
 	]);
 
@@ -55,7 +61,7 @@ const CryptoWallet = () => {
 			.then(res => {
 				if (res.data.errorCode === 0) {
 					setForm({
-						AccountName: userInfo.userName,
+						AccountName: "",
 						USDTInfo: []
 					});
 					setShowAddWallet(false);
@@ -65,11 +71,15 @@ const CryptoWallet = () => {
 						content: res.data.message,
 						hideCloseBtn: false
 					});
+					setUserInfo(prevState => ({
+						...prevState,
+						accountName: form.AccountName
+					}));
 					api.account
 						.GetCustBankInfo()
 						.then(r => {
-							if (r.data.data.uSDTDetail) {
-								setWalletInfo(r.data.data.uSDTDetail);
+							if (r.data.data) {
+								setWalletInfo(r.data.data);
 							}
 						})
 						.catch(err => console.error(err));
@@ -104,35 +114,44 @@ const CryptoWallet = () => {
 				};
 			});
 			setSubmitDisabled(!valid);
+		} else {
+			setSubmitDisabled(!value);
 		}
 	};
 
 	const onChange = ({ e, col, index }) => {
 		const { value } = e.target;
-		setForm(prev => {
-			if (!prev.USDTInfo[index]) {
-				prev.USDTInfo[index] = {};
-			}
-			prev.USDTInfo[index][col] = value;
-			return {
-				...prev
-			};
-		});
+		if (col !== "AccountName") {
+			setForm(prev => {
+				if (!prev.USDTInfo[index]) {
+					prev.USDTInfo[index] = {};
+				}
+				prev.USDTInfo[index][col] = value;
+				return {
+					...prev
+				};
+			});
+		} else {
+			setForm(prev => {
+				prev[col] = value;
+				return {
+					...prev
+				};
+			});
+			console.log(form);
+		}
 	};
 	useEffect(() => {
 		api.account
 			.GetCustBankInfo()
 			.then(res => {
-				if (res.data.data?.uSDTDetail) {
-					setWalletInfo(res.data.data.uSDTDetail);
+				if (res.data.data) {
+					setWalletInfo(res.data.data);
 				}
 			})
 			.catch(err => console.error(err));
 	}, []);
-	// submit時檢查至少要填一個合法的位址
-	// 否則醒目提示第一個address input
-	//
-	const wallets = walletInfo.map(item => (
+	const wallets = walletInfo?.uSDTDetail?.map(item => (
 		<div key={item.usdtAddress} className="account">
 			<div className="nickName">{item.nickName}</div>
 			<div className="icon icon-BTC">{item.usdtAddress}</div>
@@ -140,15 +159,19 @@ const CryptoWallet = () => {
 	));
 	return (
 		<>
-			<div className="icon icon-member">
-				<div className="circleAnimation" />
-			</div>
-			<div className="name">{userInfo.userName}</div>
-			<div className="text-center text-gray">
-				{i18n.lbl_CryptoWalletTip1}
-			</div>
+			{walletInfo.accountName && (
+				<>
+					<div className="icon icon-member">
+						<div className="circleAnimation" />
+					</div>
+					<div className="name">{walletInfo.accountName}</div>
+					<div className="text-center text-gray">
+						{i18n.lbl_CryptoWalletTip1}
+					</div>
+				</>
+			)}
 			<div className="btn-group">
-				{walletInfo?.length === 0 && !showAddWallet && (
+				{!walletInfo?.uSDTDetail && !showAddWallet && (
 					<button
 						className="icon icon-plus"
 						onClick={() => setShowAddWallet(true)}>
@@ -159,6 +182,18 @@ const CryptoWallet = () => {
 			<div className="bankAccount">{wallets}</div>
 			{showAddWallet && (
 				<>
+					{!walletInfo?.accountName && (
+						<InputBox
+							value={form.AccountName}
+							icon="icon-member"
+							showInfoIcon={false}
+							warningMsg={isValid.AccountName?.msg}
+							btnStatus={isValid.AccountName?.stat}
+							placeholder={i18n.msg_EnterRealName}
+							onChange={e => onChange({ e, col: "AccountName" })}
+							onBlur={e => validate({ e, col: "AccountName" })}
+						/>
+					)}
 					<InputBox
 						value={form.USDTInfo?.[0]?.NickName}
 						icon="icon-member"
@@ -242,7 +277,7 @@ const CryptoWallet = () => {
 			)}
 
 			<div className="btn-group">
-				{walletInfo?.length === 0 && showAddWallet && (
+				{!walletInfo?.uSDTDetail && showAddWallet && (
 					<>
 						<button
 							className="cancel"

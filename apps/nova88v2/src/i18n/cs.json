@@ -588,5 +588,6 @@
 	"lbl_Add_Crypto_Wallet":"新增数字钱包",
 	"lbl_NotERC20WalletAddr":"必须符合 ERC-20 的钱包地址",
 	"lbl_UpdateCryptoWalletAddr": "请提交提款订单前，更新数字钱包资料。",
-	"lbl_Btn_UpdateCryptoWallet": "更新数字钱包"
+	"lbl_Btn_UpdateCryptoWallet": "更新数字钱包",
+	"lbl_Optional": "Optional"
 }

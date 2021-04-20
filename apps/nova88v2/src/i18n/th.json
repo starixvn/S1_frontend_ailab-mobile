@@ -581,5 +581,6 @@
 	"lbl_Add_Crypto_Wallet": "เพิ่ม กระเป๋าเงินคริปโต",
 	"lbl_NotERC20WalletAddr": "ต้องเป็นที่อยู่กระเป๋าเงินที่สอดคล้องกับ ERC-20 ได้",
 	"lbl_UpdateCryptoWalletAddr": "โปรดอัปเดตที่อยู่กระเป๋าเงินคริปโตของคุณก่อนทำรายการถอนเงิน",
-	"lbl_Btn_UpdateCryptoWallet": "อัปเดตกระเป๋าเงินคริปโต"
+	"lbl_Btn_UpdateCryptoWallet": "อัปเดตกระเป๋าเงินคริปโต",
+	"lbl_Optional": "Optional"
 }

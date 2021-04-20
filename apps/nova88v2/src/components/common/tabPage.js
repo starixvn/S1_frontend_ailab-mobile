@@ -80,7 +80,6 @@ const IndexPage = ({ defTabs, beforeLogin, filter, breadCrumb, tabHint }) => {
 		if (isMatch({ location, tabInfo, langId: userInfo.langId })) {
 			currentTab = tabInfo;
 		}
-
 		mainTab.push(
 			<TabItem
 				key={`tab-btn-${key}`}
@@ -91,7 +90,6 @@ const IndexPage = ({ defTabs, beforeLogin, filter, breadCrumb, tabHint }) => {
 			/>
 		);
 	});
-
 	return (
 		<header className="header">
 			<div className="headerTag">{mainTab}</div>

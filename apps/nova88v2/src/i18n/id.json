@@ -581,5 +581,6 @@
 	"lbl_Add_Crypto_Wallet":"Tambahkan Dompet Crypto",
 	"lbl_NotERC20WalletAddr":"Harus alamat dompet yang sesuai dengan ERC-20",
 	"lbl_UpdateCryptoWalletAddr": "Harap perbarui alamat dompet Cryto Anda sebelum melakukan penarikan.",
-	"lbl_Btn_UpdateCryptoWallet": "Perbarui dompet Crypto"
+	"lbl_Btn_UpdateCryptoWallet": "Perbarui dompet Crypto",
+	"lbl_Optional": "Optional"
 }
