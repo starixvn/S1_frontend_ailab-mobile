@@ -306,7 +306,10 @@ const JoinStep2 = ({
 
 			if (AffId) {
 				const res = await api.site.GetAffiliateAgent({ AffId });
-				if (res.data.errorCode === -19) {
+				if (res.data.errorCode === 0) {
+					regData.AffId =
+						getUrlParameter("AffId") || getCookie("AffId");
+				} else {
 					setHintStatus(prev => ({
 						...prev,
 						AffiliateId: {
