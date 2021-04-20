@@ -48,7 +48,7 @@ const HeaderShortcut = ({ userInfo, i18n }) => {
 						onClick={clickEye}
 					/>
 					<q className="money">
-						<span>{i18n[`Currency_${userInfo.currencyId}`]} </span>
+						<span>{i18n[`Currency_${userInfo.currencyId}`]}</span>
 						{showingBalance ? balance : "*****"}
 					</q>
 					<ReloadSpin func={clickReloadSpin} />

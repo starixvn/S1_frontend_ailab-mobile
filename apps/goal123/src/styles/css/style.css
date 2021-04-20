@@ -597,7 +597,7 @@ main {
 }
 
 main.openAppDownload {
-  padding-top: 25vw;
+  padding-top: 24vw;
 }
 
 main.stopScroll {
@@ -1685,7 +1685,8 @@ footer > a.open .circleAnimation + span {
   height: 12vw;
   border-bottom: 3px solid transparent;
   color: #666;
-  font-size: 5vw;
+  font-size: 4.5vw;
+  text-align: center;
 }
 
 .tag a.open {
@@ -1761,10 +1762,6 @@ footer > a.open .circleAnimation + span {
   word-break: break-all;
 }
 
-.mainNew .walletBox > div.side-info > div .money span {
-  margin-right: 2px;
-}
-
 .mainNew .walletBox > div.content {
   width: 55%;
   display: -webkit-box;
@@ -1803,7 +1800,7 @@ footer > a.open .circleAnimation + span {
   background: url(../img/hotevent_inner.png) no-repeat top;
   background-color: #4d6ca7;
   width: 100%;
-  height: 12vw;
+  height: 16vw;
   background-size: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1859,7 +1856,7 @@ footer > a.open .circleAnimation + span {
 
 .mainNew .hotevent .hotDiv .teamL p {
   position: absolute;
-  top: 2%;
+  top: 2px;
   width: 100px;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1869,11 +1866,16 @@ footer > a.open .circleAnimation + span {
 
 .mainNew .hotevent .hotDiv .time {
   position: absolute;
-  line-height: 23px;
+  line-height: 25px;
 }
 
 .mainNew .hotevent .hotDiv .time > div span {
   color: #fab617;
+}
+
+.mainNew .hotevent .hotDiv .time p {
+  position: absolute;
+  top: 8vw;
 }
 
 .mainNew .hotevent .hotDiv .teamR {
@@ -1890,7 +1892,7 @@ footer > a.open .circleAnimation + span {
 
 .mainNew .hotevent .hotDiv .teamR p {
   position: absolute;
-  top: 2%;
+  top: 2px;
   width: 100px;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -2036,6 +2038,10 @@ footer > a.open .circleAnimation + span {
 
 .mainNew .infoCenter > div > a img {
   width: 20%;
+}
+
+.mainNew .infoCenter > div > a p {
+  font-size: 3.2vw;
 }
 
 .mainNew .infoCenter .AFFILIATEBtn {
@@ -5656,7 +5662,7 @@ span.important {
 }
 
 .eventLink.afterlogin {
-  bottom: 28vw;
+  bottom: 12vw;
 }
 
 .eventLink .icon-close {
@@ -5680,7 +5686,7 @@ span.important {
 .eventLink img {
   -webkit-animation: routate linear infinite alternate 0.8s;
           animation: routate linear infinite alternate 0.8s;
-  width: 130px;
+  width: 120px;
 }
 
 .eventLink.active {
