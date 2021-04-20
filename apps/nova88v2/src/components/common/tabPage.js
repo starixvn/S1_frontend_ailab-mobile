@@ -39,19 +39,19 @@ export const getMainClass = ({ defTabs, location }) => {
 
 const IndexPage = ({ defTabs, beforeLogin, filter, breadCrumb, tabHint }) => {
 	const location = useLocation();
-	const navigate = useNavigate();
+
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
-	const { canSee } = useBeforeLoginCheck({
+	useBeforeLoginCheck({
 		isLogin: userInfo.isLogin,
 		beforeLogin,
 		langId: userInfo.langId
 	});
 
 	if (userInfo.isLogin === null) return null;
-	if (!canSee) {
-		return navigate(`/${userInfo.langId}`);
-	}
+	// if (!canSee) {
+	// 	return navigate(`/${userInfo.langId}`);
+	// }
 
 	let currentTab = null;
 	const mainTab = [];
