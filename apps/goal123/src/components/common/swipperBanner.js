@@ -82,7 +82,7 @@ export const useGetBanner = ({ langId, ImgFolder }) => {
 	return { banner };
 };
 
-const Panel = ({ ImgFolder = [] }) => {
+const Panel = ({ ImgFolder = [], params }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
 	const { banner } = useGetBanner({ langId: userInfo.langId, ImgFolder });
@@ -138,42 +138,45 @@ const Panel = ({ ImgFolder = [] }) => {
 		);
 	});
 
-	return <Autoplay Rows={rows} />;
+	return <Autoplay Rows={rows} params={params} />;
 };
 
 Panel.defaultProps = {
-	ImgFolder: []
+	ImgFolder: [],
+	params: null
 };
 
 Panel.propTypes = {
-	ImgFolder: PropTypes.arrayOf(PropTypes.any)
+	ImgFolder: PropTypes.arrayOf(PropTypes.any),
+	params: PropTypes.objectOf(PropTypes.any)
 };
 
 export const Autoplay = props => {
-	return (
-		<Swiper
-			spaceBetween={30}
-			centeredSlides={true}
-			autoplay={{
-				delay: 2500,
-				disableOnInteraction: false
-			}}
-			pagination={{
-				el: ".swiper-pagination",
-				clickable: true
-			}}
-			rebuildOnUpdate={true}>
-			{props.Rows}
-		</Swiper>
-	);
+	const params = props.params ?? {
+		spaceBetween: 30,
+		centeredSlides: true,
+		autoplay: {
+			delay: 2500,
+			disableOnInteraction: false
+		},
+		pagination: {
+			el: ".swiper-pagination",
+			clickable: true
+		},
+		rebuildOnUpdate: true
+	};
+
+	return <Swiper {...params}>{props.Rows}</Swiper>;
 };
 
 Autoplay.defaultProps = {
-	Rows: []
+	Rows: [],
+	params: null
 };
 
 Autoplay.propTypes = {
-	Rows: PropTypes.arrayOf(PropTypes.object)
+	Rows: PropTypes.arrayOf(PropTypes.object),
+	params: PropTypes.objectOf(PropTypes.any)
 };
 
 export default Panel;

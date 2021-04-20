@@ -78,7 +78,7 @@ export const useGetBanner = ({ langId, ImgFolder }) => {
 	return { banner };
 };
 
-const Panel = ({ ImgFolder = [] }) => {
+const Panel = ({ ImgFolder = [], params }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { banner } = useGetBanner({ langId: userInfo.langId, ImgFolder });
 	const { handleLogin } = useHandleLogin();
@@ -134,7 +134,17 @@ const Panel = ({ ImgFolder = [] }) => {
 		);
 	});
 
-	return <Autoplay Rows={rows} />;
+	return <Autoplay Rows={rows} params={params} />;
+};
+
+Panel.defaultProps = {
+	ImgFolder: [],
+	params: null
+};
+
+Panel.propTypes = {
+	ImgFolder: PropTypes.arrayOf(PropTypes.any),
+	params: PropTypes.objectOf(PropTypes.any)
 };
 
 export const Autoplay = props => {
