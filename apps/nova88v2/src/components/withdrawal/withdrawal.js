@@ -20,6 +20,7 @@ import api from "../../service/api";
 import VIPLevel from "../common/vipLevel";
 import BalancePanel from "./balancePanel";
 import ImportantNote from "./importantNote";
+import RestoreAll from "./restoreAll";
 
 const initWarning = {
 	status: defIptStatus.default,
@@ -505,9 +506,13 @@ const Panel = () => {
 			<div className="text-org">{i18n.lbl_EligibleWithdrawalAmount}</div>
 			<div className="balanceModule">
 				<ReloadSpin func={GetBalance} content={showingAmount} />
-				<button className="icon icon-history clickBtn">
-					{i18n.lbl_RestoreAll}
-				</button>
+				<RestoreAll
+					i18n={i18n}
+					setLoading={setLoading}
+					GetBalance={GetBalance}
+					setPopBox={setPopBox}
+					isLogin={userInfo.isLogin}
+				/>
 			</div>
 			<div className="selectBank">
 				{banks}
