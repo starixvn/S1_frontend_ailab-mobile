@@ -571,6 +571,8 @@
 	"lbl_TpWallet_27": "Dompet PT",
 	"lbl_LIVE_SPORT" : "LIVE SPORTS",
 	"lbl_AutoTransfer":"Transfer Otomatis Dompet Utama",
+	"lbl_Balance":"Saldo",
+	"lbl_Deduction":"Ganti rugi jumlah putaran",
 
 	"==============Important Notice==============":"",
 	"lbl_ImportantNotice":"PEMBERITAHUAN PENTING"

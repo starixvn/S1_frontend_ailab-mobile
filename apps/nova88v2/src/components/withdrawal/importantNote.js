@@ -1,0 +1,188 @@
+import React from "react";
+import PropTypes from "prop-types";
+
+const ImportantNote = ({ langId, i18n }) => {
+	let content = null;
+	if (langId === "en") content = <EN />;
+	if (langId === "cs") content = <CS />;
+	if (langId === "th") content = <TH />;
+	if (langId === "id") content = <ID />;
+
+	if (langId) {
+		return (
+			<div className="important">
+				<div className="title">
+					<span className="icon icon-information" />
+					{i18n.lbl_ImportantNotice?.toUpperCase()}
+				</div>
+				{content}
+			</div>
+		);
+	}
+
+	return null;
+};
+
+const EN = () => (
+	<ul>
+		<li>
+			Kindly check with our{" "}
+			<a
+				rel="noreferrer"
+				target="_blank"
+				href="https://direct.lc.chat/11638088/">
+				24/7 LIVE CHAT
+			</a>{" "}
+			if your transaction is pending for more than 10 minutes.
+		</li>
+		<li>
+			Withdrawal bank account name must match with registered full name,
+			member is not allow withdrawal to 3rd party bank account.
+		</li>
+		<li>
+			Some game provider requires 15 till 30 minutes of report sync time,
+			kindly bear with us during the required sync time
+		</li>
+		<li>
+			Please make sure your required turnover is achieve, and submit the
+			withdrawal transaction after 30 minutes to avoid system auto reject.
+		</li>
+		<li>
+			Please take noted that will be 1x rollover required for all deposit
+			made before any withdrawal can be processed.
+		</li>
+		<li>
+			If there is any discrepancy or you may have any other further
+			withdrawal inquiries, kindly contact our{" "}
+			<a
+				rel="noreferrer"
+				target="_blank"
+				href="https://direct.lc.chat/11638088/">
+				24/7 LIVE CHAT
+			</a>
+			. Thank you.
+		</li>
+	</ul>
+);
+
+const CS = () => (
+	<ul>
+		<li>
+			如果您的交易超过10分钟还未完成, 请与我们的{" "}
+			<a
+				rel="noreferrer"
+				target="_blank"
+				href="https://direct.lc.chat/11638088/">
+				24/7在線客服
+			</a>{" "}
+			联系。
+		</li>
+		<li>
+			提款银行户口名称必须与注册的全名匹配，会员不允许提款到第三方的银行帐户。
+		</li>
+		<li>一些游戏平台需要15至30分钟的报告同步时间，不便之处请多多包含。</li>
+		<li>
+			请在达到所需求的流水量的30分钟后，提交提款申请，以避免系统自动拒绝。
+		</li>
+		<li>
+			如果您有任何提款疑问或查询, 请与我们的{" "}
+			<a
+				rel="noreferrer"
+				target="_blank"
+				href="https://direct.lc.chat/11638088/">
+				24/7在線客服
+			</a>{" "}
+			联系。谢谢。
+		</li>
+	</ul>
+);
+
+const TH = () => (
+	<ul>
+		<li>
+			กรุณาติดต่อทาง{" "}
+			<a
+				rel="noreferrer"
+				target="_blank"
+				href="https://direct.lc.chat/11638088/">
+				แชทสดตลอด 24/7
+			</a>{" "}
+			ชั่วโมง หากธุรกรรมของท่านได้รับการดำเนินการมากกว่า 10 นาที
+		</li>
+		<li>
+			ชื่อบัญชีธนาคารที่ถอนจะต้องตรงกับชื่อนามสกุลที่ลงทะเบียนสมาชิกไม่อนุญาตให้ถอนไปยังบัญชีธนาคารของบุคคลที่สาม
+		</li>
+		<li>
+			ในบางเกมอาจใช้เวลาประมาณ 15 ถึง 30 นาทีในการตรวจสอบรายการเดิมพัน
+			รบกวนรอสำหรับระยะเวลาดังกล่าวในการอัพเดตข้อมูล
+		</li>
+		<li>
+			กรุณาตรวจสอบให้แน่ใจว่าท่านได้ทำยอดเทิร์นสำเร็จตามเงื่อนไข
+			และทำการแจ้งถอนหลังการเดิมพันประมาณ 30
+			นาทีเพื่อป้องกันการปฎิเสธยอดถอนในระบบอัติโนมัติ
+		</li>
+		<li>
+			หากมีข้อสงสัยหรือข้อมูลสอบถามเพิ่มเติมเกี่ยวกับธุรกรรมการถอน
+			โปรดติดต่อ{" "}
+			<a
+				rel="noreferrer"
+				target="_blank"
+				href="https://direct.lc.chat/11638088/">
+				แชทสดตลอด 24/7
+			</a>{" "}
+			ชั่วโมง ขอบคุณค่ะ
+		</li>
+	</ul>
+);
+
+const ID = () => (
+	<ul>
+		<li>
+			Silakan hubungi{" "}
+			<a
+				rel="noreferrer"
+				target="_blank"
+				href="https://direct.lc.chat/11638088/">
+				LIVE CHAT 24/7
+			</a>{" "}
+			kami jika transaksi Anda belum selesai lebih dari 10 menit.
+		</li>
+		<li>
+			Nama rekening bank penarikan harus sesuai dengan nama lengkap
+			terdaftar, anggota tidak diperbolehkan penarikan ke rekening bank
+			pihak ke-3.
+		</li>
+		<li>
+			Beberapa penyedia permainan membutuhkan waktu sinkronisasi laporan
+			selama 15 hingga 30 menit, mohon bersabarlah selama waktu
+			sinkronisasi yang ditentukan.
+		</li>
+		<li>
+			Pastikan Turnover yang dibutuhkan tercapai, dan ajukan transaksi
+			penarikan setelah 30 menit untuk menghindari pembatalan otomatis
+			oleh sistem.
+		</li>
+		<li>
+			Jika ada perbedaan atau Anda mungkin memiliki pertanyaan penarikan
+			lebih lanjut, silakan hubungi{" "}
+			<a
+				rel="noreferrer"
+				target="_blank"
+				href="https://direct.lc.chat/11638088/">
+				LIVE CHAT 24/7
+			</a>{" "}
+			kami. Terima kasih.
+		</li>
+	</ul>
+);
+
+ImportantNote.defaultProps = {
+	langId: null
+};
+
+ImportantNote.propTypes = {
+	langId: PropTypes.string,
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired
+};
+
+export default ImportantNote;

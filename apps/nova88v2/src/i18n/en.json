@@ -569,6 +569,8 @@
 	"lbl_TpWallet_27": "PT Wallet",
 	"lbl_LIVE_SPORT" : "LIVE SPORTS",
 	"lbl_AutoTransfer":"Main Wallet Auto Transfer",
+	"lbl_Balance":"Balance",
+	"lbl_Deduction":"Offset rollover difference amount",
 
 	"==============Important Notice==============":"",
 	"lbl_ImportantNotice":"IMPORTANT NOTICE"

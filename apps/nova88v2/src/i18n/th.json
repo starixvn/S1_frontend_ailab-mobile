@@ -571,6 +571,8 @@
 	"lbl_TpWallet_27": "PT วอลเล็ท",
 	"lbl_LIVE_SPORT" : "กีฬาสด",
 	"lbl_AutoTransfer":"ย้ายเงินกระเป๋าหลักอัตโนมัติ",
+	"lbl_Balance":"ยอดเงิน",
+	"lbl_Deduction":"หักยอดเดิมพันหมุนเวียน",
 
 	"==============Important Notice==============":"",
 	"lbl_ImportantNotice":"ข้อมูลสำคัญ"

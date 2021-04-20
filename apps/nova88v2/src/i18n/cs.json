@@ -578,6 +578,8 @@
 	"lbl_TpWallet_27": "PT钱包",
 	"lbl_LIVE_SPORT" : "现场直播",
 	"lbl_AutoTransfer":"主钱包自动转账",
+	"lbl_Balance":"余额",
+	"lbl_Deduction":"相抵流水缺欠金额",
 
 	"==============Important Notice==============":"",
 	"lbl_ImportantNotice":"重要通知"
