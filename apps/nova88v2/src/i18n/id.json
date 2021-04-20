@@ -570,5 +570,8 @@
 	"lbl_AfterJoinHint":"Selamat! Anda berhasil mendaftar sebagai member.",
 	"lbl_TpWallet_27": "Dompet PT",
 	"lbl_LIVE_SPORT" : "LIVE SPORTS",
-	"lbl_AutoTransfer":"Transfer Otomatis Dompet Utama"
+	"lbl_AutoTransfer":"Transfer Otomatis Dompet Utama",
+
+	"==============Important Notice==============":"",
+	"lbl_ImportantNotice":"PEMBERITAHUAN PENTING"
 }
