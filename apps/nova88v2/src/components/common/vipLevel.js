@@ -22,7 +22,9 @@ const VIPLevel = ({ userInfo, i18n }) => {
 	return (
 		<div className="vip_mark">
 			<img
-				src={`https://image.n88media.com/VIP/img/vip0${userInfo.userLevel}.png`}
+				src={`https://image.n88media.com/VIP/img/vip0${
+					userInfo?.userLevel ?? 1
+				}.png`}
 				alt="vip"
 			/>
 			<div>

@@ -72,12 +72,16 @@ const RestoreAll = ({ i18n, setLoading, GetBalance, setPopBox, isLogin }) => {
 	);
 };
 
+RestoreAll.defaultProps = {
+	isLogin: null
+};
+
 RestoreAll.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	setLoading: PropTypes.func.isRequired,
 	GetBalance: PropTypes.func.isRequired,
 	setPopBox: PropTypes.func.isRequired,
-	isLogin: PropTypes.bool.isRequired
+	isLogin: PropTypes.bool
 };
 
 export default RestoreAll;
