@@ -12,7 +12,7 @@ import path from "../../path";
 
 const APPDownloadLink = {
 	Android:
-		"https://s3-ap-northeast-1.amazonaws.com/grd.fileshare/sasa/goal123/android/prodRelease-1.0.8-20201230-1804.apk",
+		"https://mars.fadatsai88.com/v1/App?path=goal123entry_sports_android.apk",
 	IOS: "https://appdage.com/76B5E24D6EC46B4B"
 };
 
