@@ -467,7 +467,7 @@ const GroupList = ({
 								src={`${prefixImgUrl}${
 									imgKeyWithExtension
 										? data[imgKey]
-										: `${data[imgKey]}.png`
+										: `${data[imgKey]?.toLowerCase()}.png`
 								}`}
 								alt={data[imgKey] ?? ""}
 							/>
@@ -496,8 +496,8 @@ const GroupList = ({
 					key={`${_mainKey}-img`}
 					src={`${prefixImgUrl}${
 						imgKeyWithExtension
-							? data[imgKey]
-							: `${data[imgKey]}.png`
+							? data[imgKey]?.toLowerCase()
+							: `${data[imgKey]?.toLowerCase()}.png`
 					}`}
 					alt={data[imgKey] ?? ""}
 				/>
