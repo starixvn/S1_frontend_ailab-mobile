@@ -209,7 +209,7 @@ const Payment = props => {
 				defDepChannelValue.ATM &&
 				selBankAccount === null)
 		) {
-			bankAccountlWarning(i18n.lbl_LocalBankBankAccountTip);
+			bankAccountSetWarning(i18n.lbl_LocalBankBankAccountTip);
 		}
 
 		if (result && !processing) {
@@ -402,6 +402,7 @@ const Payment = props => {
 				)}
 				msg={warning.msg}
 				status={warning.status}
+				currencyId={userInfo.currencyId}
 			/>
 			<DepositChannel
 				i18n={i18n}

@@ -278,6 +278,7 @@ const Payment = props => {
 								)
 						  )
 				}
+				currencyId={userInfo.currencyId}
 			/>
 			<div className="btn-group">
 				<button className="orange" onClick={ClickSubmit}>
