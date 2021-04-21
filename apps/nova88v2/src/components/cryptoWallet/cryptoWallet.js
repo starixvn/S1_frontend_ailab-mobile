@@ -222,96 +222,108 @@ const CryptoWallet = () => {
 							infoText={i18n.lbl_BankAccountNameHint}
 						/>
 					)}
-					<InputBox
-						value={form.USDTInfo?.[0]?.NickName}
-						icon="icon-member"
-						warningMsg={isValid[0]?.NickName?.msg}
-						btnStatus={isValid[0]?.NickName?.stat}
-						placeholder={`${i18n.lbl_CryptoWalletNickName}(${i18n.lbl_Optional})`}
-						onChange={e =>
-							onChange({ e, col: "NickName", index: 0 })
-						}
-						onBlur={e => validate({ e, col: "NickName", index: 0 })}
-						clickInfo={() => showTipHandler("NickName0")}
-						showTips={showTips.includes("NickName0")}
-						infoText={i18n.lbl_Wallet_Nickname_Tip}
-					/>
-					<InputBox
-						value={form.USDTInfo?.[0]?.USDTAddress}
-						icon="icon-newspaper"
-						warningMsg={isValid[0]?.USDTAddress?.msg}
-						btnStatus={isValid[0]?.USDTAddress?.stat}
-						placeholder={i18n.lbl_CryptoWalletAddress}
-						onChange={e =>
-							onChange({ e, col: "USDTAddress", index: 0 })
-						}
-						onBlur={e =>
-							validate({ e, col: "USDTAddress", index: 0 })
-						}
-						clickInfo={() => showTipHandler("Address0")}
-						showTips={showTips.includes("Address0")}
-						infoText={i18n.lbl_Wallet_Address_Tip}
-					/>
-					<InputBox
-						value={form.USDTInfo?.[1]?.NickName}
-						icon="icon-member"
-						warningMsg={isValid[1]?.NickName?.msg}
-						btnStatus={isValid[1]?.NickName?.stat}
-						placeholder={`${i18n.lbl_CryptoWalletNickName}(${i18n.lbl_Optional})`}
-						onChange={e =>
-							onChange({ e, col: "NickName", index: 1 })
-						}
-						onBlur={e => validate({ e, col: "NickName", index: 1 })}
-						clickInfo={() => showTipHandler("NickName1")}
-						showTips={showTips.includes("NickName1")}
-						infoText={i18n.lbl_Wallet_Nickname_Tip}
-					/>
-					<InputBox
-						value={form.USDTInfo?.[1]?.USDTAddress}
-						icon="icon-newspaper"
-						warningMsg={isValid[1]?.USDTAddress?.msg}
-						btnStatus={isValid[1]?.USDTAddress?.stat}
-						placeholder={i18n.lbl_CryptoWalletAddress}
-						onChange={e =>
-							onChange({ e, col: "USDTAddress", index: 1 })
-						}
-						onBlur={e =>
-							validate({ e, col: "USDTAddress", index: 1 })
-						}
-						clickInfo={() => showTipHandler("Address1")}
-						showTips={showTips.includes("Address1")}
-						infoText={i18n.lbl_Wallet_Address_Tip}
-					/>
-					<InputBox
-						value={form.USDTInfo?.[2]?.NickName}
-						icon="icon-member"
-						warningMsg={isValid[2]?.NickName?.msg}
-						btnStatus={isValid[2]?.NickName?.stat}
-						placeholder={`${i18n.lbl_CryptoWalletNickName}(${i18n.lbl_Optional})`}
-						onChange={e =>
-							onChange({ e, col: "NickName", index: 2 })
-						}
-						onBlur={e => validate({ e, col: "NickName", index: 2 })}
-						clickInfo={() => showTipHandler("NickName2")}
-						showTips={showTips.includes("NickName2")}
-						infoText={i18n.lbl_Wallet_Nickname_Tip}
-					/>
-					<InputBox
-						value={form.USDTInfo?.[2]?.USDTAddress}
-						icon="icon-newspaper"
-						warningMsg={isValid[2]?.USDTAddress?.msg}
-						btnStatus={isValid[2]?.USDTAddress?.stat}
-						placeholder={i18n.lbl_CryptoWalletAddress}
-						onChange={e =>
-							onChange({ e, col: "USDTAddress", index: 2 })
-						}
-						onBlur={e =>
-							validate({ e, col: "USDTAddress", index: 2 })
-						}
-						clickInfo={() => showTipHandler("Address2")}
-						showTips={showTips.includes("Address2")}
-						infoText={i18n.lbl_Wallet_Address_Tip}
-					/>
+					<div className="account">
+						<InputBox
+							value={form.USDTInfo?.[0]?.NickName}
+							icon="icon-member"
+							warningMsg={isValid[0]?.NickName?.msg}
+							btnStatus={isValid[0]?.NickName?.stat}
+							placeholder={`${i18n.lbl_CryptoWalletNickName}(${i18n.lbl_Optional})`}
+							onChange={e =>
+								onChange({ e, col: "NickName", index: 0 })
+							}
+							onBlur={e =>
+								validate({ e, col: "NickName", index: 0 })
+							}
+							clickInfo={() => showTipHandler("NickName0")}
+							showTips={showTips.includes("NickName0")}
+							infoText={i18n.lbl_Wallet_Nickname_Tip}
+						/>
+						<InputBox
+							value={form.USDTInfo?.[0]?.USDTAddress}
+							icon="icon-newspaper"
+							warningMsg={isValid[0]?.USDTAddress?.msg}
+							btnStatus={isValid[0]?.USDTAddress?.stat}
+							placeholder={i18n.lbl_CryptoWalletAddress}
+							onChange={e =>
+								onChange({ e, col: "USDTAddress", index: 0 })
+							}
+							onBlur={e =>
+								validate({ e, col: "USDTAddress", index: 0 })
+							}
+							clickInfo={() => showTipHandler("Address0")}
+							showTips={showTips.includes("Address0")}
+							infoText={i18n.lbl_Wallet_Address_Tip}
+						/>
+					</div>
+					<div className="account">
+						<InputBox
+							value={form.USDTInfo?.[1]?.NickName}
+							icon="icon-member"
+							warningMsg={isValid[1]?.NickName?.msg}
+							btnStatus={isValid[1]?.NickName?.stat}
+							placeholder={`${i18n.lbl_CryptoWalletNickName}(${i18n.lbl_Optional})`}
+							onChange={e =>
+								onChange({ e, col: "NickName", index: 1 })
+							}
+							onBlur={e =>
+								validate({ e, col: "NickName", index: 1 })
+							}
+							clickInfo={() => showTipHandler("NickName1")}
+							showTips={showTips.includes("NickName1")}
+							infoText={i18n.lbl_Wallet_Nickname_Tip}
+						/>
+						<InputBox
+							value={form.USDTInfo?.[1]?.USDTAddress}
+							icon="icon-newspaper"
+							warningMsg={isValid[1]?.USDTAddress?.msg}
+							btnStatus={isValid[1]?.USDTAddress?.stat}
+							placeholder={i18n.lbl_CryptoWalletAddress}
+							onChange={e =>
+								onChange({ e, col: "USDTAddress", index: 1 })
+							}
+							onBlur={e =>
+								validate({ e, col: "USDTAddress", index: 1 })
+							}
+							clickInfo={() => showTipHandler("Address1")}
+							showTips={showTips.includes("Address1")}
+							infoText={i18n.lbl_Wallet_Address_Tip}
+						/>
+					</div>
+					<div className="account">
+						<InputBox
+							value={form.USDTInfo?.[2]?.NickName}
+							icon="icon-member"
+							warningMsg={isValid[2]?.NickName?.msg}
+							btnStatus={isValid[2]?.NickName?.stat}
+							placeholder={`${i18n.lbl_CryptoWalletNickName}(${i18n.lbl_Optional})`}
+							onChange={e =>
+								onChange({ e, col: "NickName", index: 2 })
+							}
+							onBlur={e =>
+								validate({ e, col: "NickName", index: 2 })
+							}
+							clickInfo={() => showTipHandler("NickName2")}
+							showTips={showTips.includes("NickName2")}
+							infoText={i18n.lbl_Wallet_Nickname_Tip}
+						/>
+						<InputBox
+							value={form.USDTInfo?.[2]?.USDTAddress}
+							icon="icon-newspaper"
+							warningMsg={isValid[2]?.USDTAddress?.msg}
+							btnStatus={isValid[2]?.USDTAddress?.stat}
+							placeholder={i18n.lbl_CryptoWalletAddress}
+							onChange={e =>
+								onChange({ e, col: "USDTAddress", index: 2 })
+							}
+							onBlur={e =>
+								validate({ e, col: "USDTAddress", index: 2 })
+							}
+							clickInfo={() => showTipHandler("Address2")}
+							showTips={showTips.includes("Address2")}
+							infoText={i18n.lbl_Wallet_Address_Tip}
+						/>
+					</div>
 					<div className="text">
 						{i18n.lbl_Crypto_Wallet_Submit_Note}
 					</div>
