@@ -5686,7 +5686,7 @@ span.important {
 .eventLink img {
   -webkit-animation: routate linear infinite alternate 0.8s;
           animation: routate linear infinite alternate 0.8s;
-  width: 120px;
+  width: 85px;
 }
 
 .eventLink.active {
