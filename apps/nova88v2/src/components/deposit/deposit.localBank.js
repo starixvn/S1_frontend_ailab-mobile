@@ -87,7 +87,7 @@ const Payment = props => {
 
 	const {
 		selData: selBankAccount,
-		warning: bankAccountlWarning,
+		// warning: bankAccountlWarning,
 		HandleSelectData: HandleBankAccount,
 		SetWarning: bankAccountSetWarning
 	} = useHandleSelect();
@@ -379,7 +379,7 @@ const Payment = props => {
 				imgKey="bankLogo"
 				idKey="sysId"
 				bindFullObj={true}
-				prefixImgUrl={`${config.imgUrl}/common/images/BankLogo/`}
+				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/Payment/BankLogo/`}
 				imgKeyWithExtension={true}
 				accountInfo={accountInfo}
 				displayKey="bankName"
@@ -485,39 +485,38 @@ const GroupList = ({
 				</ul>
 			</div>
 		) : (
-			<div className="info infoAccount" key={_mainKey}>
-				<div
-					className="bankName"
-					onClick={SelectPayment.bind(
-						this,
-						bindFullObj ? data : data[idKey]
-					)}>
-					<img
-						key={`${_mainKey}-img`}
-						src={`${prefixImgUrl}${
-							imgKeyWithExtension
-								? data[imgKey]
-								: `${data[imgKey]}.png`
-						}`}
-						alt={data[imgKey] ?? ""}
-					/>
-					<i className="icon icon-icon32px_check" />
-					<div className="bank">
-						<div>{data[displayKey]}</div>
+			<div
+				key={_mainKey}
+				className={`bankName${data.status === 2 ? " close" : ""}`}
+				onClick={SelectPayment.bind(
+					this,
+					bindFullObj ? data : data[idKey]
+				)}>
+				<img
+					key={`${_mainKey}-img`}
+					src={`${prefixImgUrl}${
+						imgKeyWithExtension
+							? data[imgKey]
+							: `${data[imgKey]}.png`
+					}`}
+					alt={data[imgKey] ?? ""}
+				/>
+				<i className="icon icon-icon32px_check" />
+				<div className="bank">
+					<div>{data[displayKey]}</div>
 
-						<div>
-							{data?.minAmount && data?.maxAmount
-								? `${i18n.lbl_MinMaxAmount}: ${number_format(
-										data.minAmount,
-										_isConvert,
-										0
-								  )} / ${number_format(
-										data.maxAmount,
-										_isConvert,
-										0
-								  )}`
-								: ""}
-						</div>
+					<div>
+						{data?.minAmount && data?.maxAmount
+							? `${i18n.lbl_MinMaxAmount}: ${number_format(
+									data.minAmount,
+									_isConvert,
+									0
+							  )} / ${number_format(
+									data.maxAmount,
+									_isConvert,
+									0
+							  )}`
+							: ""}
 					</div>
 				</div>
 			</div>
