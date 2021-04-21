@@ -16,6 +16,7 @@ import {
 	api_GetFavoriteGame
 } from "../service/api/account";
 import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
+import { useGotoGame, defSpecialSetting } from "../components/hook/useGotoGame";
 
 const eachPageItem = 20;
 
@@ -264,12 +265,21 @@ class Panel extends React.Component {
 
 	ClickPlay = freePlay => {
 		if (this.props.userInfo.isLogin) {
-			GET_CASINO_ENTER_PAGE(
-				this.state.selGameInfo.tpId,
-				this.state.selGameInfo.gameId,
-				freePlay,
-				this.props.userInfo.langId
-			);
+			GET_CASINO_ENTER_PAGE({
+				tpId: this.state.selGameInfo.tpId,
+				gameId: this.state.selGameInfo.gameId,
+				isFree: freePlay,
+				langId: this.props.userInfo.langId,
+				execFunction:
+					this.state.selGameInfo.tpId === defSpecialSetting.playTech
+						? this.props.handleGoToGame.bind(this, {
+								langId: this.props.userInfo.langId,
+								tpId: this.state.selGameInfo.tpId,
+								gameId: this.state.selGameInfo.gameId,
+								isFun: freePlay
+						  })
+						: null
+			});
 		} else {
 			this.props.setNav(defNavPanel.login);
 		}
@@ -384,11 +394,18 @@ const IndexPage = props => {
 	const { i18n } = useContext(i18nContext);
 	const { setNav } = useContext(navContext);
 	const { userInfo } = useContext(userInfoContext);
+	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 
 	let tpId = props.tpId ?? props.location.state?.tpId;
 	tpId = typeof tpId === "string" && !isNaN(tpId) ? Number(tpId) : tpId;
 	return (
-		<Panel i18n={i18n} userInfo={userInfo} setNav={setNav} tpId={tpId} />
+		<Panel
+			i18n={i18n}
+			userInfo={userInfo}
+			setNav={setNav}
+			tpId={tpId}
+			handleGoToGame={handleGoToGame}
+		/>
 	);
 };
 

@@ -107,15 +107,11 @@ export default {
 	resetPassword: {
 		root: "resetPassword"
 	},
-	changePassword: { root: "changePassword" },
-	setting: {
-		root: "setting",
-		sub: {
-			root: "/",
-			other: {
-				root: "other"
-			}
-		}
+	changePassword: {
+		root: "changePassword"
+	},
+	other: {
+		root: "other"
 	},
 	kyc: {
 		root: "kyc"

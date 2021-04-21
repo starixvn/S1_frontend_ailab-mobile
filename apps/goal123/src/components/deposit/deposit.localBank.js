@@ -264,7 +264,7 @@ export const Main = props => {
 						btnBar: (
 							<div className="btn-group">
 								<button
-									className="blue"
+									className="darkGray"
 									onClick={() =>
 										setPopBox(prevState => ({
 											...prevState,
@@ -274,7 +274,7 @@ export const Main = props => {
 									{i18n.lbl_Cancel}
 								</button>
 								<button
-									className="orange"
+									className="lightBlue"
 									onClick={RedirectToNext.bind(
 										this,
 										realAmount,
@@ -313,7 +313,7 @@ export const Main = props => {
 										btnBar: (
 											<div className="btn-group">
 												<button
-													className="blue"
+													className="darkGray"
 													onClick={() =>
 														setPopBox(prev => ({
 															...prev,
@@ -349,7 +349,7 @@ export const Main = props => {
 						btnBar: (
 							<div className="btn-group">
 								<button
-									className="blue"
+									className="darkGray"
 									onClick={() =>
 										setPopBox(prevState => ({
 											...prevState,
@@ -359,7 +359,7 @@ export const Main = props => {
 									{i18n.lbl_Cancel}
 								</button>
 								<button
-									className="orange"
+									className="lightBlue"
 									onClick={SetAccountName}>
 									{i18n.lbl_Submit}
 								</button>
@@ -434,10 +434,10 @@ export const Main = props => {
 				Warning={warning.amount}
 			/>
 			<div className="btn-group">
-				<Link to="../" className="white">
+				<Link to="../" className="blue">
 					{i18n.lbl_Back}
 				</Link>
-				<button className="orange" onClick={ClickSubmit}>
+				<button className="lightBlue" onClick={ClickSubmit}>
 					{i18n.lbl_Submit}
 				</button>
 			</div>

@@ -191,7 +191,7 @@ export const Main = props => {
 				{channels}
 			</div>
 			<div className="btn-group">
-				<Link to="../" className="white">
+				<Link to="../" className="blue">
 					{i18n.lbl_Back}
 				</Link>
 			</div>

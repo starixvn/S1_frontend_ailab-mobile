@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
-import { Link } from "@reach/router";
-import { i18nContext, userInfoContext } from "../common/context";
+import { i18nContext, userInfoContext, navContext } from "../common/context";
 import ProfileDetail from "./profile.detail";
-import path from "../../path";
 import ProfileWallet from "./profile.wallet";
+import ProfileLinks from "./profile.links";
 import { defLevelList } from "../vip/def";
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
-	const { userInfo } = useContext(userInfoContext);
+	const { userInfo, setUserInfo } = useContext(userInfoContext);
+	const { setNav } = useContext(navContext);
+
 	const levelInfo = userInfo.userLevel
 		? defLevelList[Number(userInfo.userLevel) - 1]
 		: {};
@@ -22,13 +23,11 @@ const Panel = () => {
 			</div>
 			<ProfileWallet />
 			<ProfileDetail />
-			<div className="btn-group">
-				<button className="blue">
-					<Link to={`/${path.changePassword.root}`}>
-						{i18n.lbl_ChangePassword}
-					</Link>
-				</button>
-			</div>
+			<ProfileLinks
+				i18n={i18n}
+				setUserInfo={setUserInfo}
+				setNav={setNav}
+			/>
 		</>
 	);
 };

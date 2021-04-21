@@ -107,7 +107,7 @@ export const Main = props => {
 			<Step step={2} />
 			<div className="depositType">{rows}</div>
 			<div className="btn-group">
-				<Link to="/deposit" className="white">
+				<Link to="/deposit" className="blue">
 					{i18n.lbl_Back}
 				</Link>
 			</div>
