@@ -6,8 +6,8 @@ import {
 } from "../common/context";
 import { Link } from "../../route/link";
 import Header from "../header/header";
-import { markMap, csMap } from "../profile/profile";
 import path from "../../path";
+import VIPLevel from "../common/vipLevel";
 
 const MyAccount = () => {
 	const { i18n } = useContext(i18nContext);
@@ -18,19 +18,7 @@ const MyAccount = () => {
 		<>
 			<Header title={i18n.lbl_MyAccount} hideLogo={true} />
 			<main className="main">
-				<div className="vip_mark">
-					<img
-						src={`https://image.n88media.com/VIP/img/vip0${userInfo.userLevel}.png`}
-						alt="vip"
-					/>
-					<div>
-						{userInfo.langId === "cs"
-							? `${i18n[csMap[userInfo.userLevel]]} ${
-									i18n.lbl_Club
-							  }`
-							: i18n[markMap[userInfo.userLevel]]}
-					</div>
-				</div>
+				<VIPLevel userInfo={userInfo} i18n={i18n} />
 				<div className="name">{userInfo.userName}</div>
 				<div className="myAccount">
 					<Link to={path.profile.root}>

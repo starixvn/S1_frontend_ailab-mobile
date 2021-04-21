@@ -3,24 +3,7 @@ import { i18nContext, userInfoContext } from "Context";
 import { Link } from "@Router";
 import ProfileDetail from "./profile.detail";
 import path from "../../path";
-
-export const markMap = {
-	1: "lbl_Vintage_Club",
-	2: "lbl_Silver_Club",
-	3: "lbl_Gold_Club",
-	4: "lbl_Titanium_Club",
-	5: "lbl_Diamond_Club",
-	6: "lbl_Nova_Club"
-};
-
-export const csMap = {
-	1: "lbl_Vintage",
-	2: "lbl_Silver",
-	3: "lbl_Gold",
-	4: "lbl_Titanium",
-	5: "lbl_Diamond",
-	6: "lbl_Nova"
-};
+import VIPLevel from "../common/vipLevel";
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
@@ -28,17 +11,7 @@ const Panel = () => {
 
 	return (
 		<>
-			<div className="vip_mark">
-				<img
-					src={`https://image.n88media.com/VIP/img/vip0${userInfo.userLevel}.png`}
-					alt="vip"
-				/>
-				<div>
-					{userInfo.langId === "cs"
-						? `${i18n[csMap[userInfo.userLevel]]} ${i18n.lbl_Club}`
-						: i18n[markMap[userInfo.userLevel]]}
-				</div>
-			</div>
+			<VIPLevel userInfo={userInfo} i18n={i18n} />
 			<ProfileDetail />
 			<div className="btn-group">
 				<Link to={`${path.changePassword.root}`}>

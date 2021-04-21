@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 
-const ReloadSpin = ({ func, className }) => {
+const ReloadSpin = ({ func, className, content }) => {
 	const [spin, setSpin] = useState(false);
 	const isMountedRef = useRef(null);
 
@@ -29,18 +29,21 @@ const ReloadSpin = ({ func, className }) => {
 			className={`${className ?? "icon icon-spinner11 clickBtn"}${
 				spin ? " active" : ""
 			}`}
-			onClick={clickSpin}
-		/>
+			onClick={clickSpin}>
+			{content}
+		</button>
 	);
 };
 
 ReloadSpin.defaultProps = {
-	className: null
+	className: null,
+	content: null
 };
 
 ReloadSpin.propTypes = {
 	func: PropTypes.func.isRequired,
-	className: PropTypes.string
+	className: PropTypes.string,
+	content: PropTypes.node
 };
 
 export default ReloadSpin;
