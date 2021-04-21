@@ -573,5 +573,15 @@
 	"lbl_AutoTransfer":"Transfer Otomatis Dompet Utama",
 
 	"==============Important Notice==============":"",
-	"lbl_ImportantNotice":"PEMBERITAHUAN PENTING"
+	"lbl_ImportantNotice":"PEMBERITAHUAN PENTING",
+
+	"==============Deposit==============":"",
+	"lbl_DepositChannel_1":"Online Banking",
+	"lbl_DepositChannel_2":"Cash Deposit Machine",
+	"lbl_DepositChannel_3":"ATM",
+	"lbl_DepositChannel_4":"Over The Counter (OTC)",
+	"lbl_DepositChannel":"Deposit Channel",
+	"lbl_LocalBankDepositChannelTip":"Please select which bank channel you deposited from the local bank.",
+	"lbl_LocalBankBankAccountTip":"Please select which bank account you deposited from the local bank.",
+	"lbl_BankDetails":"Bank Details"
 }
