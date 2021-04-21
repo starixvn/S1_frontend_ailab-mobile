@@ -3214,6 +3214,10 @@ button.clickBtn:before {
   background: rgba(40, 73, 133, 0.3);
 }
 
+.functionList ~ .account:nth-child(even) .content {
+  color: #052561;
+}
+
 .functionList ~ .account {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
@@ -3261,7 +3265,7 @@ button.clickBtn:before {
 
 .functionList ~ .account .content {
   width: 100%;
-  color: #052561;
+  color: white;
   visibility: hidden;
   -webkit-transition: 0.7s;
   transition: 0.7s;
