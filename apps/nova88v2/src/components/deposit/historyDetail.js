@@ -24,7 +24,8 @@ const Detail = ({
 	_isConvert,
 	depositType,
 	SubmitProof,
-	i18n
+	i18n,
+	thirdId
 }) => {
 	let btnGroup = null;
 	if (depositType === 3 && (status === 1 || status === 7)) {
