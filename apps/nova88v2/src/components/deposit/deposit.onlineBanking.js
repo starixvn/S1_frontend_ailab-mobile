@@ -269,7 +269,7 @@ const Payment = props => {
 				imgKey="bankLogo"
 				idKey="sysId"
 				bindFullObj={true}
-				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/Payment/BankLogo/`}
+				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/BankLogo/`}
 				imgKeyWithExtension={true}
 				bindingItem={selGroup}
 				displayKey="bankName"

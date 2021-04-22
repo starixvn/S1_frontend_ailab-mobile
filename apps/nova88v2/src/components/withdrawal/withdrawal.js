@@ -494,7 +494,7 @@ const Panel = () => {
 				<img
 					src={`${
 						config.cloudImgURL
-					}/SiteSkin/img/Payment/BankLogo/${b.bankLogo?.toLowerCase()}`}
+					}/SiteSkin/img/BankLogo/${b.bankLogo?.toLowerCase()}`}
 					alt={b.bankName}
 				/>
 			</button>

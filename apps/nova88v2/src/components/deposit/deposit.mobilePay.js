@@ -138,7 +138,7 @@ const Payment = props => {
 						<img
 							src={`${
 								config.cloudImgURL
-							}/SiteSkin/img/Payment/${selChannel.groupName?.toLowerCase()}.png`}
+							}/SiteSkin/img/MobilePay/${selChannel.groupName?.toLowerCase()}.png`}
 							alt={selChannel.groupName}
 						/>
 						<div className="tip">
@@ -187,7 +187,7 @@ const Payment = props => {
 				mainKey={`deposit-full-${payType}-groupList`}
 				imgKey="groupName"
 				idKey="groupId"
-				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/Payment/`}
+				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/MobilePay/`}
 				displayKey="groupName"
 				_isConvert={_isConvert}
 			/>
@@ -201,7 +201,7 @@ const Payment = props => {
 				imgKey="groupName"
 				idKey="channelId"
 				bindFullObj={true}
-				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/Payment/`}
+				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/MobilePay/`}
 				displayKey="channelName"
 				_isConvert={_isConvert}
 				showMinMaxHint={true}

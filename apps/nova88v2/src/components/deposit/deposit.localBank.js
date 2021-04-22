@@ -339,7 +339,7 @@ const Payment = props => {
 						<img
 							src={`${
 								config.cloudImgURL
-							}/SiteSkin/img/Payment/BankLogo/${selBank.bankLogo?.toLowerCase()}`}
+							}/SiteSkin/img/BankLogo/${selBank.bankLogo?.toLowerCase()}`}
 							alt={selBank.bankName}
 						/>
 						<div className="tip">
@@ -399,7 +399,7 @@ const Payment = props => {
 				imgKey="bankLogo"
 				idKey="sysId"
 				bindFullObj={true}
-				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/Payment/BankLogo/`}
+				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/BankLogo/`}
 				imgKeyWithExtension={true}
 				accountInfo={accountInfo}
 				displayKey="bankName"
