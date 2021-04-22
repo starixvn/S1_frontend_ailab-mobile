@@ -102,9 +102,14 @@ const Payment = props => {
 	useEffect(() => {
 		isMountedRef.current = true;
 		if (paymentList.length > 0) {
+			let bankIdx = paymentList.findIndex(
+				obj => obj.sysId === userPaymentData?.sysId
+			);
+			bankIdx = bankIdx === -1 ? 0 : bankIdx;
 			for (const i in paymentList) {
 				if (paymentList[i].status === 1) {
-					SelectBank(paymentList[0]);
+					bankIdx = paymentList[bankIdx]?.status === 1 ? bankIdx : 0;
+					SelectBank(paymentList[bankIdx]);
 					break;
 				}
 			}
@@ -113,7 +118,7 @@ const Payment = props => {
 			isMountedRef.current = false;
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [paymentList.length]);
+	}, [paymentList.length, userPaymentData.payType]);
 
 	useEffect(() => {
 		if (userInfo.isLogin) {

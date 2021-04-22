@@ -60,14 +60,13 @@ const Payment = props => {
 		return () => {
 			isMountedRef.current = false;
 		};
-	}, [paymentList.length, userPaymentData]);
+	}, [paymentList.length, userPaymentData.payType]);
 
 	const SelectPayment = ({ groupInfo }) => {
-		const _groupId = groupInfo?.groupId;
-		if (selGroupId !== _groupId) {
-			setSelGroupId(() => _groupId);
+		if (selGroupId !== groupInfo?.groupId) {
+			setSelGroupId(() => groupInfo?.groupId);
 			setLoading(true);
-			api.payment.GetMobilePayInfoList(_groupId).then(
+			api.payment.GetMobilePayInfoList(groupInfo?.groupId).then(
 				res => {
 					if (isMountedRef.current) {
 						if (

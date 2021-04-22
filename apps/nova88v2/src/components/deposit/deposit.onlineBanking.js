@@ -43,19 +43,24 @@ const Payment = props => {
 		minAmount: selbank?.minAmount,
 		maxAmount: selbank?.maxAmount,
 		i18n,
-		digits: 0
+		digits: 0,
+		lastAmount: userPaymentData?.amount
 	});
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
 		if (paymentList.length > 0) {
-			SelectPayment({ groupInfo: paymentList[0] });
-			setSelGroup(paymentList[0]);
+			let groupIdx = paymentList.findIndex(
+				obj => obj.payId === userPaymentData?.payId
+			);
+			groupIdx = groupIdx === -1 ? 0 : groupIdx;
+			SelectPayment({ groupInfo: paymentList[groupIdx] });
+			setSelGroup(paymentList[groupIdx]);
 		}
 		return () => {
 			isMountedRef.current = false;
 		};
-	}, [paymentList.length]);
+	}, [paymentList.length, userPaymentData.payType]);
 
 	const SelectPayment = ({ groupInfo }) => {
 		if (selGroup?.payId !== groupInfo.payId) {
@@ -73,10 +78,17 @@ const Payment = props => {
 									res.data.data.length > 0
 								) {
 									setBankList(res.data.data);
-
+									let bankIdx = res.data.data.findIndex(
+										obj =>
+											obj.sysId ===
+												userPaymentData?.sysId &&
+											groupInfo?.payId ===
+												userPaymentData?.payId
+									);
+									bankIdx = bankIdx === -1 ? 0 : bankIdx;
 									SelectBank({
 										groupInfo,
-										bankInfo: res.data.data[0]
+										bankInfo: res.data.data[bankIdx]
 									});
 								}
 							} else if (isMountedRef.current) {
@@ -302,9 +314,16 @@ const Payment = props => {
 	);
 };
 
+Payment.defaultProps = {
+	userPaymentData: {},
+	handleUserPaymentData: () => null
+};
+
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
-	creditTimeKey: PropTypes.string.isRequired
+	creditTimeKey: PropTypes.string.isRequired,
+	userPaymentData: PropTypes.objectOf(PropTypes.any),
+	handleUserPaymentData: PropTypes.func
 };
 
 export default Payment;
