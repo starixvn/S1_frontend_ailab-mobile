@@ -190,7 +190,9 @@ const BankInfo = () => {
 				title={item.bankName}
 				accountNo={item.accountNo}
 				removeAccountHandler={removeAccountHandler.bind(null, item)}
-				image={`${config.imgUrl}/common/images/BankLogo/${item.image}`}
+				image={`${
+					config.cloudImgURL
+				}/SiteSkin/img/Payment/BankLogo/${item.image?.toLowerCase()}`}
 			/>
 		);
 	});

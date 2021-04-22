@@ -174,7 +174,9 @@ const Payment = props => {
 						<>
 							<p>{i18n.lbl_ConfirmDeposit}</p>
 							<img
-								src={`${config.imgUrl}/common/images/BankLogo/${bankLogo}`}
+								src={`${
+									config.cloudImgURL
+								}/SiteSkin/img/Payment/BankLogo/${bankLogo?.toLowerCase()}`}
 								alt={bankName}
 							/>
 							<div className="tip">
@@ -244,7 +246,7 @@ const Payment = props => {
 				imgKey="bankLogo"
 				idKey="sysId"
 				bindFullObj={true}
-				prefixImgUrl={`${config.imgUrl}/common/images/BankLogo/`}
+				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/Payment/BankLogo/`}
 				imgKeyWithExtension={true}
 				bindingItem={selGroup}
 				displayKey="bankName"
