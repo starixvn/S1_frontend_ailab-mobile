@@ -228,7 +228,7 @@ const Payment = props => {
 				mainKey={`deposit-full-${payType}-groupList`}
 				imgKey="payName"
 				idKey="payId"
-				prefixImgUrl={`${config.imgUrl}/SiteSkin/images/Payment/`}
+				prefixImgUrl={`${config.imgUrl}/common/images/Payment/`}
 				bindFullObj={true}
 				displayKey="payName"
 				showMinMaxHint={true}
