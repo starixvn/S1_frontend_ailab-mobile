@@ -222,7 +222,7 @@ const AddBankPanel = ({
 					options={siteBankInfoState}
 					colName="getBankInfo"
 					className="bankLogo"
-					ImgURL={`${config.imgUrl}/common/images/BankLogo/`}
+					ImgURL={`${config.cloudImgURL}/SiteSkin/img/Payment/BankLogo/`}
 					selectedIdx={bankSelectedIdx}
 					onSelectItem={dropdownStateHandler}
 				/>

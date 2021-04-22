@@ -10,7 +10,8 @@ export const getUrlParameter = name => {
 export const number_format = (
 	number,
 	IsConvertRequired = false,
-	digits = 2
+	digits = 2,
+	formatRequired = true
 ) => {
 	let n = number;
 	if (!isNaN(n)) {
@@ -30,7 +31,7 @@ export const number_format = (
 	return (
 		arr[0].replace(re, "$1,") +
 		(arr.length === 2 ? `.${arr[1]}` : "") +
-		(IsConvertRequired ? " ('000)" : "")
+		(IsConvertRequired && formatRequired ? " ('000)" : "")
 	);
 };
 

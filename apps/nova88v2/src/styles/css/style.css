@@ -67,7 +67,7 @@ body, html {
   color: white;
 }
 
-button[disabled="disabled"] {
+button[disabled] {
   background: #e6e6e6 !important;
   color: #a5aab1 !important;
 }

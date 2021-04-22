@@ -163,7 +163,7 @@ const Panel = () => {
 				} catch (error) {}
 
 				try {
-					const res = await api.payment.GetBankInfoOffList();
+					const res = await api.payment.GetBankInfoOffListStatus();
 					payments[defPayType.localBank] = getDataListResult(res);
 
 					defaultSelect = setDefaultSelect(

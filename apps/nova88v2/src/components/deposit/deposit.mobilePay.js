@@ -137,7 +137,9 @@ const Payment = props => {
 					<>
 						<p>{i18n.lbl_ConfirmDeposit}</p>
 						<img
-							src={`${config.imgUrl}/common/images/MobilePay/${selChannel.groupName}.png`}
+							src={`${
+								config.cloudImgURL
+							}/SiteSkin/img/Payment/${selChannel.groupName?.toLowerCase()}.png`}
 							alt={selChannel.groupName}
 						/>
 						<div className="tip">
@@ -200,7 +202,7 @@ const Payment = props => {
 				imgKey="groupName"
 				idKey="channelId"
 				bindFullObj={true}
-				prefixImgUrl={`${config.imgUrl}/common/images/MobilePay/`}
+				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/Payment/`}
 				displayKey="channelName"
 				_isConvert={_isConvert}
 				showMinMaxHint={true}
@@ -222,6 +224,7 @@ const Payment = props => {
 						? number_format(selChannel?.minAmount, _isConvert, 0)
 						: 1
 				)}
+				currencyId={userInfo.currencyId}
 			/>
 			<div className="btn-group">
 				<button className="orange" onClick={ClickSubmit}>
