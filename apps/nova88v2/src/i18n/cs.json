@@ -580,8 +580,8 @@
 
 	"==============Promotion==============":"",
 	"lbl_ClaimAmount": "领取金额",
-	"lbl_LossAmount":"Loss Amount",
-	"lbl_Percentage":"Percentage",
-	"lbl_TotalAmount":"Total Amount",
-	"lbl_ClaimNow":"Claim Now"
+	"lbl_LossAmount":"亏损金额",
+	"lbl_Percentage":"百分比",
+	"lbl_TotalAmount":"总额",
+	"lbl_ClaimNow":"立即领取"
 }
