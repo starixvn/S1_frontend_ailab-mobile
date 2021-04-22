@@ -192,7 +192,7 @@ const BankInfo = () => {
 				removeAccountHandler={removeAccountHandler.bind(null, item)}
 				image={`${
 					config.cloudImgURL
-				}/SiteSkin/img/Payment/BankLogo/${item.image?.toLowerCase()}`}
+				}/SiteSkin/img/BankLogo/${item.image?.toLowerCase()}`}
 			/>
 		);
 	});
