@@ -16,7 +16,12 @@ import { useHandleAmount } from "../hook/useHandleAmount";
 const payType = "onlineBanking";
 
 const Payment = props => {
-	const { paymentList, creditTimeKey } = props;
+	const {
+		paymentList,
+		creditTimeKey,
+		userPaymentData,
+		handleUserPaymentData
+	} = props;
 
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -40,7 +45,6 @@ const Payment = props => {
 		i18n,
 		digits: 0
 	});
-
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -149,6 +153,13 @@ const Payment = props => {
 			let bankLogo = null;
 			let bankName = null;
 			const RedirectToNext = real_amount => {
+				const userData = {
+					payType: "onlineBank",
+					amount: real_amount,
+					payId,
+					sysId
+				};
+				handleUserPaymentData({ userData });
 				setPopBox(prevState => ({
 					...prevState,
 					isOpen: false
