@@ -16,6 +16,7 @@ import api from "../../service/api";
 import RecentDatas from "./deposit.recentDatas";
 import { number_format, isConvert } from "../common/common";
 import ImportantNote from "./importantNote";
+import useGetUserPaymentData from "./userPaymentData";
 
 const defPayType = {
 	onlineBank: "onlineBank",
@@ -74,11 +75,12 @@ const Panel = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setbankSlipPopBox } = useContext(bankSlipPopBoxContext);
 	const { setPopBox } = useContext(popBoxContext);
-
 	const [paymentList, setPaymentList] = useState({});
 	const [recentDatas, setRecentDatas] = useState([]);
-
 	const [pageVerify, setPageVerify] = useState(true);
+	const { userPaymentData, handleUserPaymentData } = useGetUserPaymentData({
+		userInfo
+	});
 
 	PageVerify(userInfo, i18n, setPopBox, navigate, setPageVerify, false);
 
@@ -91,11 +93,16 @@ const Panel = () => {
 		};
 	});
 
+	const _userPaymentData =
+		userPaymentData?.payType === selected ? userPaymentData : {};
+
 	let content = (
 		<OnlineBanking
 			payType={selected}
 			creditTimeKey={defPayment[defPayType.onlineBank].creditTimeKey}
 			paymentList={paymentList[defPayType.onlineBank] ?? []}
+			userPaymentData={_userPaymentData}
+			handleUserPaymentData={handleUserPaymentData}
 		/>
 	);
 
@@ -105,6 +112,8 @@ const Panel = () => {
 				payType={selected}
 				creditTimeKey={defPayment[defPayType.localBank].creditTimeKey}
 				paymentList={paymentList[defPayType.localBank] ?? []}
+				userPaymentData={_userPaymentData}
+				handleUserPaymentData={handleUserPaymentData}
 			/>
 		);
 	} else if (selected === defPayType.mobilePay) {
@@ -113,15 +122,18 @@ const Panel = () => {
 				payType={defPayType.mobilePay}
 				creditTimeKey={defPayment[defPayType.mobilePay].creditTimeKey}
 				paymentList={paymentList[defPayType.mobilePay] ?? []}
+				userPaymentData={_userPaymentData}
+				handleUserPaymentData={handleUserPaymentData}
 			/>
 		);
 	}
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
+			let defaultSelect = userPaymentData?.payType ?? "";
+
 			const GetAllPayment = async () => {
 				setLoading(true);
-				let defaultSelect = "";
 
 				const payments = {
 					[defPayType.onlineBank]: [],
@@ -187,7 +199,7 @@ const Panel = () => {
 				}
 			});
 		}
-	}, [userInfo.isLogin]);
+	}, [userInfo.isLogin, userPaymentData]);
 
 	const _isConvert = isConvert(userInfo.currencyId);
 	const SubmitProof = (

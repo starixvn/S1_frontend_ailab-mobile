@@ -50,7 +50,12 @@ const useHandleSelect = () => {
 };
 
 const Payment = props => {
-	const { paymentList, creditTimeKey } = props;
+	const {
+		paymentList,
+		creditTimeKey,
+		userPaymentData,
+		handleUserPaymentData
+	} = props;
 
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -75,7 +80,8 @@ const Payment = props => {
 		minAmount: selBank?.minAmount,
 		maxAmount: selBank?.maxAmount,
 		i18n,
-		digits: 0
+		digits: 0,
+		lastAmount: userPaymentData?.amount
 	});
 
 	const {
@@ -230,6 +236,13 @@ const Payment = props => {
 							if (isMountedRef.current) {
 								if (res.data.errorCode === 0) {
 									const CloseDoneDepositPopup = () => {
+										const userData = {
+											payType: "localBank",
+											amount: real_amount,
+											sysId
+										};
+										handleUserPaymentData({ userData });
+
 										setProcessing(false);
 										window.location.reload();
 									};
@@ -432,9 +445,16 @@ const Payment = props => {
 	);
 };
 
+Payment.defaultProps = {
+	userPaymentData: {},
+	handleUserPaymentData: () => null
+};
+
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
-	creditTimeKey: PropTypes.string.isRequired
+	creditTimeKey: PropTypes.string.isRequired,
+	userPaymentData: PropTypes.objectOf(PropTypes.any),
+	handleUserPaymentData: PropTypes.func
 };
 
 const GroupList = ({
