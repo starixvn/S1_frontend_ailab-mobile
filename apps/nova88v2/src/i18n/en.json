@@ -567,5 +567,12 @@
 	"lbl_Register":"Register",
 	"lbl_AfterJoinHint":"Congratulation! You have successfully register as a member.",
 	"lbl_TpWallet_27": "PT Wallet",
-	"lbl_LIVE_SPORT" : "LIVE SPORTS"
+	"lbl_LIVE_SPORT" : "LIVE SPORTS",
+
+	"==============Promotion==============":"",
+	"lbl_ClaimAmount": "Claim Amount",
+	"lbl_LossAmount":"Loss Amount",
+	"lbl_Percentage":"Percentage",
+	"lbl_TotalAmount":"Total Amount",
+	"lbl_ClaimNow":"Claim Now"
 }
