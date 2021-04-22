@@ -579,14 +579,14 @@
 
 	"==============Deposit==============":"",
 	"lbl_DepositChannel_1":"Online Banking",
-	"lbl_DepositChannel_2":"Cash Deposit Machine",
+	"lbl_DepositChannel_2":"Mesin Setor Tunai",
 	"lbl_DepositChannel_3":"ATM",
-	"lbl_DepositChannel_4":"Over The Counter (OTC)",
-	"lbl_DepositChannel":"Deposit Channel",
-	"lbl_LocalBankDepositChannelTip":"Please select which bank channel you deposited from the local bank.",
+	"lbl_DepositChannel_4":"Setor Melalui Teller Bank",
+	"lbl_DepositChannel":"Saluran Deposit",
+	"lbl_LocalBankDepositChannelTip":"Silahkan Pilih Saluran Bank Anda melakukan Setoran Bank Lokal",
 	"lbl_LocalBankBankAccountTip":"Please select which bank account you deposited from the local bank.",
-	"lbl_BankDetails":"Bank Details",
-	"lbl_RememberPaymentMode":"Remember my last used mode",
-	"ibi_PaymentModeInfo":"Remember the bank used for your last deposit. If the bank you selected has been closed, please select again."
+	"lbl_BankDetails":"Rincian Bank",
+	"lbl_DepositLocalbankButton":"Ingat mode terakhir yang digunakan",
+	"lbl_DepositLocalbankButtonInfo":"Ingat bank yang Anda gunakan untuk deposit terakhir. Jika bank yang Anda pilih sudah tutup, mohon pilih kembali."
 
 }

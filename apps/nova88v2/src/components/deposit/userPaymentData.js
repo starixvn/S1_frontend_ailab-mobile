@@ -50,7 +50,7 @@ const UserPaymentSwitch = ({
 	const [tip, setTip] = useState("");
 
 	const clickInfo = () => {
-		setTip(tip === "" ? i18n.ibi_PaymentModeInfo : "");
+		setTip(tip === "" ? i18n.lbl_DepositLocalbankButtonInfo : "");
 	};
 
 	const switchPaymentMode = () => {
@@ -66,7 +66,7 @@ const UserPaymentSwitch = ({
 						userPaymentSwitch ? "-checked" : ""
 					}`}
 				/>
-				<span>{i18n.lbl_RememberPaymentMode}</span>
+				<span>{i18n.lbl_DepositLocalbankButton}</span>
 			</label>
 			<button className="icon icon-question" onClick={clickInfo} />
 			<div className={`inputInfo${tip ? " active" : ""}`}>{tip}</div>

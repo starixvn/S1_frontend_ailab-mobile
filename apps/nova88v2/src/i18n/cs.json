@@ -585,15 +585,15 @@
 	"lbl_ImportantNotice":"重要通知",
 
 	"==============Deposit==============":"",
-	"lbl_DepositChannel_1":"Online Banking",
-	"lbl_DepositChannel_2":"Cash Deposit Machine",
-	"lbl_DepositChannel_3":"ATM",
-	"lbl_DepositChannel_4":"Over The Counter (OTC)",
-	"lbl_DepositChannel":"Deposit Channel",
-	"lbl_LocalBankDepositChannelTip":"Please select which bank channel you deposited from the local bank.",
+	"lbl_DepositChannel_1":"网络银行",
+	"lbl_DepositChannel_2":"现金存款机",
+	"lbl_DepositChannel_3":"自动取款机",
+	"lbl_DepositChannel_4":"柜台办理（OTC）",
+	"lbl_DepositChannel":"存款渠道",
+	"lbl_LocalBankDepositChannelTip":"请选择您使用银行转账的银行",
 	"lbl_LocalBankBankAccountTip":"Please select which bank account you deposited from the local bank.",
-	"lbl_BankDetails":"Bank Details",
-	"lbl_RememberPaymentMode":"Remember my last used mode",
-	"ibi_PaymentModeInfo":"Remember the bank used for your last deposit. If the bank you selected has been closed, please select again."
+	"lbl_BankDetails":"银行资讯",
+	"lbl_DepositLocalbankButton":"储存我最后一次交易模式",
+	"lbl_DepositLocalbankButtonInfo":"储存最后一笔存款交易银行。若您选择的银行已结业，请再重新选择。"
 
 }

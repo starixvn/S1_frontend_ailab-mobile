@@ -584,7 +584,7 @@
 	"lbl_LocalBankDepositChannelTip":"Please select which bank channel you deposited from the local bank.",
 	"lbl_LocalBankBankAccountTip":"Please select which bank account you deposited from the local bank.",
 	"lbl_BankDetails":"Bank Details",
-	"lbl_RememberPaymentMode":"Remember my last used mode",
-	"ibi_PaymentModeInfo":"Remember the bank used for your last deposit. If the bank you selected has been closed, please select again."
+	"lbl_DepositLocalbankButton":"Remember my last used mode",
+	"lbl_DepositLocalbankButtonInfo":"Remember the bank used for your last deposit. If the bank you selected has been closed, please select again."
 
 }
