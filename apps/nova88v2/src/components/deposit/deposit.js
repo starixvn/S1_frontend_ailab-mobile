@@ -16,7 +16,7 @@ import api from "../../service/api";
 import RecentDatas from "./deposit.recentDatas";
 import { number_format, isConvert } from "../common/common";
 import ImportantNote from "./importantNote";
-import useGetUserPaymentData from "./userPaymentData";
+import UserPaymentSwitch, { useGetUserPaymentData } from "./userPaymentData";
 
 const defPayType = {
 	onlineBank: "onlineBank",
@@ -78,7 +78,13 @@ const Panel = () => {
 	const [paymentList, setPaymentList] = useState({});
 	const [recentDatas, setRecentDatas] = useState([]);
 	const [pageVerify, setPageVerify] = useState(true);
-	const { userPaymentData, handleUserPaymentData } = useGetUserPaymentData({
+
+	const {
+		userPaymentData,
+		handleUserPaymentData,
+		userPaymentSwitch,
+		setUserPaymentSwitch
+	} = useGetUserPaymentData({
 		userInfo
 	});
 
@@ -286,9 +292,13 @@ const Panel = () => {
 			});
 		}
 	};
-
 	return (
 		<>
+			<UserPaymentSwitch
+				i18n={i18n}
+				userPaymentSwitch={userPaymentSwitch}
+				setUserPaymentSwitch={setUserPaymentSwitch}
+			/>
 			<Tab
 				i18n={i18n}
 				selected={selected}
