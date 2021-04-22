@@ -2,7 +2,6 @@
 import React from "react";
 import { Link } from "../../route/link";
 import Dropdown from "../common/dropdown";
-import useTip from "../hook/useTip";
 import path from "../../path";
 
 export const defDepChannelValue = {
@@ -44,7 +43,6 @@ const DepositChannel = ({ i18n, DepositChannelProps, BankAccountProps }) => {
 };
 
 const Channel = ({ i18n, DepositChannelProps }) => {
-	// const { showTips, showTipHandler } = useTip();
 	const {
 		selDepositChannel,
 		HandleDepositChannel,
@@ -65,10 +63,8 @@ const Channel = ({ i18n, DepositChannelProps }) => {
 					options={defDepositChannel}
 					onSelectItem={HandleDepositChannel}
 					infoText={i18n.lbl_LocalBankDepositChannelTip}
-					// showTips={showTips.includes("tip")}
-					// clickInfo={() => showTipHandler("tip")}
 					hideInfo={true}
-					checked={depositChannelWarning.status}
+					checked={depositChannelWarning.status !== 1 ?? null}
 					warningMsg={depositChannelWarning.msg}
 					i18n={i18n}
 					onBlur={() => HandleDepositChannel(null)}
@@ -79,12 +75,11 @@ const Channel = ({ i18n, DepositChannelProps }) => {
 };
 
 const BankAccount = ({ i18n, BankAccountProps }) => {
-	// const { showTips, showTipHandler } = useTip();
 	const {
 		HandleBankAccount,
 		selBankAccount,
-		bankAccountSetWarning,
-		custBankInfo
+		custBankInfo,
+		bankAccountlWarning
 	} = BankAccountProps;
 
 	const rightBtn =
@@ -116,11 +111,9 @@ const BankAccount = ({ i18n, BankAccountProps }) => {
 					options={custBankInfo}
 					onSelectItem={HandleBankAccount}
 					infoText={i18n.lbl_LocalBankBankAccountTip}
-					// showTips={showTips.includes("tip")}
-					// clickInfo={() => showTipHandler("tip")}
 					hideInfo={true}
-					checked={bankAccountSetWarning.status}
-					warningMsg={bankAccountSetWarning.msg}
+					checked={bankAccountlWarning.status !== 1 ?? null}
+					warningMsg={bankAccountlWarning.msg}
 					i18n={i18n}
 					onBlur={() => HandleBankAccount(null)}
 					rightBtn={rightBtn}

@@ -93,7 +93,7 @@ const Payment = props => {
 
 	const {
 		selData: selBankAccount,
-		// warning: bankAccountlWarning,
+		warning: bankAccountlWarning,
 		HandleSelectData: HandleBankAccount,
 		SetWarning: bankAccountSetWarning
 	} = useHandleSelect();
@@ -214,13 +214,15 @@ const Payment = props => {
 			depositChannelSetWarning(i18n.lbl_LocalBankDepositChannelTip);
 			result = false;
 		} else if (
-			defDepositChannel[selDepositChannel].value ===
-				defDepChannelValue.OnlineBanking ||
+			(defDepositChannel[selDepositChannel].value ===
+				defDepChannelValue.OnlineBanking &&
+				selBankAccount === null) ||
 			(defDepositChannel[selDepositChannel].value ===
 				defDepChannelValue.ATM &&
 				selBankAccount === null)
 		) {
 			bankAccountSetWarning(i18n.lbl_LocalBankBankAccountTip);
+			result = false;
 		}
 
 		if (result && !processing) {
@@ -434,8 +436,8 @@ const Payment = props => {
 				BankAccountProps={{
 					HandleBankAccount,
 					selBankAccount,
-					bankAccountSetWarning,
-					custBankInfo
+					custBankInfo,
+					bankAccountlWarning
 				}}
 			/>
 			<div className="btn-group">
