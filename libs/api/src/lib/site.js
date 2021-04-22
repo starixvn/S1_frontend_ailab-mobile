@@ -1,4 +1,4 @@
-import BaseAPI from "./base";
+import BaseAPI, { defDeviceType } from "./base";
 
 export class SiteAPI extends BaseAPI {
 	defBannerType = {
@@ -31,9 +31,10 @@ export class SiteAPI extends BaseAPI {
 
 	CheckSignIn = () => this.siteRequest.post(`/CheckSignIn/`);
 
-	GetGamelist = () => this.siteRequest.post(`/GetGamelist`);
-
-	GetGamelistV2 = () => this.siteRequest.post(`/GetGamelistV2`);
+	GetGameListByDevice = () =>
+		this.siteRequest.post(`/GetGameListByDevice`, {
+			DeviceType: defDeviceType.Mobile
+		});
 
 	ForgetPwd = ({ langId, Email, flag = 2 }) =>
 		this.siteRequest.post(`/ForgetPwdV2/${langId}`, {

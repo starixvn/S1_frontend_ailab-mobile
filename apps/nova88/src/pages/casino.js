@@ -41,7 +41,7 @@ class Panel extends React.Component {
 		window.addEventListener("touchmove", this.ScrollBarListener, {
 			passive: false
 		});
-		api.site.GetGamelistV2().then(res => {
+		api.site.GetGameListByDevice().then(res => {
 			if (res.data.errorCode === 0) {
 				const _tpList = {};
 				const games = [];
