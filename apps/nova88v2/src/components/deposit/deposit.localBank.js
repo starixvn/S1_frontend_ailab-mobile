@@ -233,10 +233,26 @@ const Payment = props => {
 					isOpen: false
 				}));
 
+				let channelData = {};
+				if (
+					defDepositChannel[selDepositChannel].value ===
+						defDepChannelValue.OnlineBanking ||
+					defDepositChannel[selDepositChannel].value ===
+						defDepChannelValue.ATM
+				) {
+					channelData = {
+						fromChannel:
+							defDepositChannel[selDepositChannel]?.value,
+						fromSysId: custBankInfo[selBankAccount]?.SysId,
+						fromAccountNum: custBankInfo[selBankAccount]?.accountNo
+					};
+				}
+
 				api.payment
 					.DepositReqWireTransfer({
 						amount: real_amount,
-						sysId
+						sysId,
+						...channelData
 					})
 					.then(
 						res => {
