@@ -571,5 +571,24 @@
 	"lbl_TpWallet_27": "Dompet PT",
 	"lbl_LIVE_SPORT" : "LIVE SPORTS",
 	"lbl_TV" : "TV",
-	"lbl_MOVIE_TV" : "FILM TV"
+	"lbl_MOVIE_TV" : "FILM TV",
+	"lbl_AutoTransfer":"Transfer Otomatis Dompet Utama",
+	"lbl_Balance":"Saldo",
+	"lbl_Deduction":"Ganti rugi jumlah putaran",
+
+	"==============Important Notice==============":"",
+	"lbl_ImportantNotice":"PEMBERITAHUAN PENTING",
+
+	"==============Deposit==============":"",
+	"lbl_DepositChannel_1":"Online Banking",
+	"lbl_DepositChannel_2":"Mesin Setor Tunai",
+	"lbl_DepositChannel_3":"ATM",
+	"lbl_DepositChannel_4":"Setor Melalui Teller Bank",
+	"lbl_DepositChannel":"Saluran Deposit",
+	"lbl_LocalBankDepositChannelTip":"Silahkan Pilih Saluran Bank Anda melakukan Setoran Bank Lokal",
+	"lbl_LocalBankBankAccountTip":"Please select which bank account you deposited from the local bank.",
+	"lbl_BankDetails":"Rincian Bank",
+	"lbl_DepositLocalbankButton":"Ingat mode terakhir yang digunakan",
+	"lbl_DepositLocalbankButtonInfo":"Ingat bank yang Anda gunakan untuk deposit terakhir. Jika bank yang Anda pilih sudah tutup, mohon pilih kembali."
+
 }

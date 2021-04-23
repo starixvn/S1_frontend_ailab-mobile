@@ -9,6 +9,7 @@ import {
 import config from "../../config";
 import api from "../../service/api";
 import AddBankPanel from "./bankInfo.add";
+import VIPLevel from "../common/vipLevel";
 
 const BankInfo = () => {
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -189,7 +190,9 @@ const BankInfo = () => {
 				title={item.bankName}
 				accountNo={item.accountNo}
 				removeAccountHandler={removeAccountHandler.bind(null, item)}
-				image={`${config.imgUrl}/common/images/BankLogo/${item.image}`}
+				image={`${
+					config.cloudImgURL
+				}/SiteSkin/img/BankLogo/${item.image?.toLowerCase()}`}
 			/>
 		);
 	});
@@ -200,9 +203,7 @@ const BankInfo = () => {
 				<>
 					{userInfo?.accountName ? (
 						<>
-							<div className="icon icon-member">
-								<div className="circleAnimation" />
-							</div>
+							<VIPLevel userInfo={userInfo} i18n={i18n} />
 							<div className="name">{userInfo.accountName}</div>
 							<div className="text-center text-gray">
 								{i18n.lbl_ContactCSD}

@@ -39,7 +39,7 @@ export class DropdownBox extends Component {
 					key={`${this.props.mainKey}-${item.id ?? i}`}
 					displayText={displayText}
 					onClick={this.SelectItem.bind(this, i)}
-					ImgURL={this.props.ImgURL + item.image}
+					ImgURL={this.props.ImgURL + item.image?.toLowerCase()}
 					className={this.props.className}
 				/>
 			);
@@ -57,7 +57,9 @@ export class DropdownBox extends Component {
 			} else {
 				displayText = this.props.i18n[_s.displayKey];
 			}
-			selectedImg = _s ? this.props.ImgURL + _s.image : null;
+			selectedImg = _s
+				? this.props.ImgURL + _s.image?.toLowerCase()
+				: null;
 		}
 		return (
 			<div className="inputBox" ref={this.wrapper}>
