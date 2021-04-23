@@ -1725,6 +1725,37 @@ footer > a.active .circleAnimation + span {
   font-size: 12px;
 }
 
+.info > div:not(.btn-group) {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: calc(100% - 6vw);
+}
+
+.info > div:not(.btn-group) > div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #a5aab1;
+}
+
+.info > div:not(.btn-group) > div.title {
+  color: #5574A7;
+}
+
+.info > div:not(.btn-group) button {
+  position: absolute;
+  right: -6vw;
+}
+
 .info.infoAccount li {
   width: 100%;
   display: -webkit-box;
@@ -6913,12 +6944,6 @@ main .sideBar button, main .sideBar a {
   background: white;
 }
 
-.cashBack table tr {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .cashBack table tr:nth-child(1) {
   background: #5574A7;
   color: white;
@@ -6939,6 +6964,10 @@ main .sideBar button, main .sideBar a {
   background: transparent;
 }
 
+.cashBack table tr:nth-last-child(-n+3) td {
+  border-right: 0;
+}
+
 .cashBack table tr:nth-last-child(-n+3) td span {
   white-space: nowrap;
 }
@@ -6949,20 +6978,9 @@ main .sideBar button, main .sideBar a {
 
 .cashBack table tr td {
   border-right: 1px solid #D2E2F9;
-  padding: 1vw 2vw;
-  width: 25%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row;
-          flex-flow: row;
+  padding: 1vw;
   line-height: 18px;
-  word-break: break-word;
+  white-space: nowrap;
 }
 
 .cashBack table tr td:last-child {

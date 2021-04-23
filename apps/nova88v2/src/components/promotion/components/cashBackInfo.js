@@ -20,7 +20,6 @@ const CashbackInfo = ({ bonusCode, cashBackDetails, i18n, currencyId }) => {
 
 	return (
 		<div className="cashBack">
-			<div className="title">Cash Back</div>
 			<table>
 				<tbody>
 					<tr>
