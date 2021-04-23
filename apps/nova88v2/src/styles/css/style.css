@@ -523,6 +523,7 @@ main .sideBar button, main .sideBar a {
   min-width: 15vw;
   padding: 3vw 0 4vw;
   position: relative;
+  white-space: nowrap;
 }
 
 main .sideBar button i:not(.icon-new):not(.icon-live):before, main .sideBar a i:not(.icon-new):not(.icon-live):before {
@@ -543,6 +544,20 @@ main .sideBar button i.icon-new, main .sideBar button i.icon-live, main .sideBar
   bottom: 0;
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
+}
+
+main .sideBar button .icon-live_tv, main .sideBar a .icon-live_tv {
+  margin-left: 5vw;
+  margin-top: -1vw;
+  margin-bottom: 1vw;
+}
+
+main .sideBar button .icon-live_tv:before, main .sideBar a .icon-live_tv:before {
+  margin-top: -1vw;
+}
+
+main .sideBar button .icon-live_tv + div, main .sideBar a .icon-live_tv + div {
+  margin-left: 5vw;
 }
 
 main .sideBar button.icon:before, main .sideBar a.icon:before {
@@ -707,6 +722,32 @@ footer > a .icon-envelope {
   position: absolute;
   top: 1vw;
   right: 3vw;
+  -webkit-animation: envelope 1.5s infinite;
+          animation: envelope 1.5s infinite;
+}
+
+@-webkit-keyframes envelope {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes envelope {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 footer > a span {
@@ -1760,6 +1801,37 @@ footer > a.active .circleAnimation + span {
 
 .info ul li span.title button.icon:before, .info ul li span.title i.icon:before {
   font-size: 12px;
+}
+
+.info > div:not(.btn-group) {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: calc(100% - 6vw);
+}
+
+.info > div:not(.btn-group) > div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #a5aab1;
+}
+
+.info > div:not(.btn-group) > div.title {
+  color: #5574A7;
+}
+
+.info > div:not(.btn-group) button {
+  position: absolute;
+  right: -6vw;
 }
 
 .info.infoAccount li {
@@ -2884,7 +2956,7 @@ button.clickBtn:before {
 
 #goTop {
   position: fixed;
-  bottom: 23vw;
+  bottom: 15vw;
   right: 6vw;
   width: 10vw;
   height: 10vw;
@@ -6152,6 +6224,23 @@ span.important {
   margin: 0;
 }
 
+.depositModule .selectModule .parts .inputBox .dropdown {
+  width: 50vw;
+  text-align: left;
+  padding-right: 5vw;
+}
+
+.depositModule .selectModule .parts .inputBox .dropdown i {
+  position: absolute;
+  right: 0;
+}
+
+.depositModule .selectModule .parts .inputBox .dropdown-container {
+  top: 11vw;
+  max-height: 50vw;
+  min-height: 11vw;
+}
+
 .depositModule .selectModule .dropdown-container {
   background: #f5f5f5;
 }
@@ -6162,20 +6251,6 @@ span.important {
 
 .depositModule .selectModule li button {
   margin: 0 1.5vw 0;
-}
-
-.depositModule .selectModule > .info ~ .bankName:before {
-  content: "●";
-  border-radius: 100%;
-  color: #42AC5E;
-  position: absolute;
-  top: -1vw;
-  left: 0;
-  font-size: 5vw;
-}
-
-.depositModule .selectModule > .info ~ .bankName.close:before {
-  color: #e92529;
 }
 
 .depositModule .selectModule .bankName {
@@ -6194,6 +6269,26 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
   position: relative;
+}
+
+.depositModule .selectModule .bankName.open:before {
+  content: "●";
+  border-radius: 100%;
+  color: #42AC5E;
+  position: absolute;
+  top: -1vw;
+  left: 0;
+  font-size: 5vw;
+}
+
+.depositModule .selectModule .bankName.close:before {
+  content: "●";
+  border-radius: 100%;
+  color: #e92529;
+  position: absolute;
+  top: -1vw;
+  left: 0;
+  font-size: 5vw;
 }
 
 .depositModule .selectModule .bankName .bank {
@@ -7112,5 +7207,113 @@ main .sideBar button, main .sideBar a {
   color: white;
   top: 2vw;
   right: -2vw;
+}
+
+.cashBack {
+  background: #D2E2F9;
+  padding: 2vw;
+  border-radius: 5px;
+  margin: 2vw 0;
+}
+
+.cashBack .title {
+  color: #5574A7;
+  margin: 1vw;
+}
+
+.cashBack table {
+  color: #5574A7;
+  font-size: 3vw;
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+  background: white;
+}
+
+.cashBack table tr:nth-child(1) {
+  background: #5574A7;
+  color: white;
+  font-weight: bold;
+}
+
+.cashBack table tr:nth-child(even) {
+  background: rgba(198, 212, 241, 0.3);
+}
+
+.cashBack table tr:nth-last-child(3) {
+  border-top: 1px solid #D2E2F9;
+}
+
+.cashBack table tr:nth-last-child(-n+3) {
+  font-weight: bold;
+  width: 100%;
+  background: transparent;
+}
+
+.cashBack table tr:nth-last-child(-n+3) td {
+  border-right: 0;
+}
+
+.cashBack table tr:nth-last-child(-n+3) td span {
+  white-space: nowrap;
+}
+
+.cashBack table tr:nth-last-child(-n+3) td span:nth-child(1) {
+  min-width: 25vw;
+}
+
+.cashBack table tr td {
+  border-right: 1px solid #D2E2F9;
+  padding: 1vw;
+  line-height: 18px;
+  white-space: nowrap;
+}
+
+.cashBack table tr td:last-child {
+  border: 0;
+}
+
+.features {
+  background: #e2e2e2;
+  color: #838383;
+  border-radius: 5px;
+  float: left;
+  font-size: 3vw;
+  padding: 0 0 3vw;
+  margin-top: 3vw;
+}
+
+.features div, .features ul {
+  padding: 3vw 3vw 0;
+}
+
+.features .title {
+  text-align: left;
+  color: #5574A7;
+  margin: 0;
+  font-size: 3vw;
+}
+
+.features .title:nth-child(1) {
+  background: #5574A7;
+  color: white;
+  font-size: 4vw;
+  padding: 2vw 3vw;
+  border-radius: 5px 5px 0 0;
+}
+
+.features .title span:before {
+  font-size: 4vw;
+  margin-right: 2vw;
+}
+
+.features li {
+  list-style: decimal;
+  line-height: 24px;
+  margin-left: 3vw;
+}
+
+.features li span, .features li a {
+  font-weight: bold;
 }
 /*# sourceMappingURL=style.css.map */
