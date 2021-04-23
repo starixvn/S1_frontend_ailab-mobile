@@ -135,58 +135,6 @@ const gameList = ({ langId }) => [
 		]
 	},
 	{
-		category: "livecasino",
-		categoryIcon: "livecasino",
-		translateKey: "lbl_LiveCasino",
-		items: [
-			{
-				...defGameInfo.LIVEcasinoN2Live,
-				spanText: "N2Live",
-				img: LIVEcasino_N2Live
-			},
-			{
-				...defGameInfo.LIVEcasinoWM,
-				spanText: "WM",
-				img: LIVEcasino_WM
-			},
-			{
-				...defGameInfo.LIVEcasinoAB,
-				spanText: "AB",
-				img: LIVEcasino_AB
-			},
-			{
-				...defGameInfo.LIVEcasinoEB,
-				spanText: "EB",
-				img: LIVEcasino_EB
-			},
-			{
-				...defGameInfo.LIVEcasinoSA,
-				spanText: "SA",
-				img: LIVEcasino_SA
-			},
-			{
-				...defGameInfo.LIVEcasinoAE,
-				spanText: "AE",
-				img: LIVEcasino_AE
-			},
-			{
-				...defGameInfo.LIVEcasinoPP,
-				spanText: "PP",
-				img: LIVEcasino_PP
-			},
-			{
-				...defGameInfo.LIVEcasinoDG,
-				spanText: "DG",
-				img: LIVEcasino_DG
-			},
-			{
-				...defGameInfo.LIVEcasinoAG,
-				spanText: "AG",
-				img: LIVEcasino_AG
-			}
-		]
-	},
-	{
 		category: "slot",
 		categoryIcon: "icon_777",
 		translateKey: "lbl_Casino",
@@ -264,6 +212,68 @@ const gameList = ({ langId }) => [
 		]
 	},
 	{
+		category: "livecasino",
+		categoryIcon: "livecasino",
+		translateKey: "lbl_LiveCasino",
+		items: [
+			{
+				...defGameInfo.LIVEcasinoN2Live,
+				spanText: "N2Live",
+				img: LIVEcasino_N2Live
+			},
+			{
+				...defGameInfo.LIVEcasinoWM,
+				spanText: "WM",
+				img: LIVEcasino_WM
+			},
+			{
+				...defGameInfo.LIVEcasinoAB,
+				spanText: "AB",
+				img: LIVEcasino_AB
+			},
+			{
+				...defGameInfo.LIVEcasinoEB,
+				spanText: "EB",
+				img: LIVEcasino_EB
+			},
+			{
+				...defGameInfo.LIVEcasinoSA,
+				spanText: "SA",
+				img: LIVEcasino_SA
+			},
+			{
+				...defGameInfo.LIVEcasinoAE,
+				spanText: "AE",
+				img: LIVEcasino_AE
+			},
+			{
+				...defGameInfo.LIVEcasinoPP,
+				spanText: "PP",
+				img: LIVEcasino_PP
+			},
+			{
+				...defGameInfo.LIVEcasinoDG,
+				spanText: "DG",
+				img: LIVEcasino_DG
+			},
+			{
+				...defGameInfo.LIVEcasinoAG,
+				spanText: "AG",
+				img: LIVEcasino_AG
+			}
+		]
+	},
+	{
+		category: "poker",
+		categoryIcon: "casino",
+		translateKey: "lbl_Poker",
+		popBox: {
+			needLogin: true,
+			title: "lbl_Poker",
+			type: defPopBoxType.OneGame
+		}
+	},
+	{
 		category: "game",
 		categoryIcon: "game",
 		translateKey: "lbl_Fishing",
@@ -290,20 +300,6 @@ const gameList = ({ langId }) => [
 			}
 		]
 	},
-	// {
-	// 	category: "cockFighting",
-	// 	categoryIcon: "cock",
-	// 	translateKey: "lbl_CockFighting",
-	// 	items: [
-	// 		{
-	// 			tpId: 19,
-	// 			gameId: 19,
-	// 			icon: "cock",
-	// 			img: Cockfighting,
-	// 			spanTextKey: "lbl_CockFighting"
-	// 		}
-	// 	]
-	// },
 	{
 		category: "kelo",
 		categoryIcon: "kelo",
@@ -332,21 +328,46 @@ const gameList = ({ langId }) => [
 			}
 		]
 	},
-	{
-		category: "poker",
-		categoryIcon: "casino",
-		translateKey: "lbl_Poker",
-		popBox: {
-			needLogin: true,
-			title: "lbl_Poker",
-			type: defPopBoxType.OneGame
-		}
-	},
+
+	// {
+	// 	category: "cockFighting",
+	// 	categoryIcon: "cock",
+	// 	translateKey: "lbl_CockFighting",
+	// 	items: [
+	// 		{
+	// 			tpId: 19,
+	// 			gameId: 19,
+	// 			icon: "cock",
+	// 			img: Cockfighting,
+	// 			spanTextKey: "lbl_CockFighting"
+	// 		}
+	// 	]
+	// },
+
 	{
 		category: "affiliate",
 		categoryIcon: "affiliate",
 		translateKey: "lbl_Affiliate",
 		href: `${siteInfo(langId).affiliateLink}`
+	},
+	{
+		category: "liveTV",
+		categoryIcon: "liveTV",
+		translateKey: "lbl_TV",
+		items: [
+			{
+				spanTextKey: "lbl_LIVE_SPORT",
+				img: fishing_CQ9_AB3,
+				forceShow: true,
+				path: path.streaming.root
+			},
+			{
+				spanTextKey: "lbl_MOVIE_TV",
+				img: fish_DBF,
+				href: "https://nova88tv.com/",
+				forceShow: true
+			}
+		]
 	},
 	{
 		category: "vip",
@@ -435,5 +456,6 @@ export const defCol = {
 	kelo: "kelo",
 	poker: "poker",
 	affiliate: "affiliate",
-	ranking: "ranking"
+	ranking: "ranking",
+	liveTV: "liveTV"
 };

@@ -569,5 +569,7 @@
 	"lbl_Register":"Registrasi",
 	"lbl_AfterJoinHint":"Selamat! Anda berhasil mendaftar sebagai member.",
 	"lbl_TpWallet_27": "Dompet PT",
-	"lbl_LIVE_SPORT" : "LIVE SPORTS"
+	"lbl_LIVE_SPORT" : "LIVE SPORTS",
+	"lbl_TV" : "TV",
+	"lbl_MOVIE_TV" : "FILM TV"
 }
