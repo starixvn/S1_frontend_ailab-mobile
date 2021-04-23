@@ -546,20 +546,6 @@ main .sideBar button i.icon-new, main .sideBar button i.icon-live, main .sideBar
           transform: scale(0.8);
 }
 
-main .sideBar button .icon-live_tv, main .sideBar a .icon-live_tv {
-  margin-left: 5vw;
-  margin-top: -1vw;
-  margin-bottom: 1vw;
-}
-
-main .sideBar button .icon-live_tv:before, main .sideBar a .icon-live_tv:before {
-  margin-top: -1vw;
-}
-
-main .sideBar button .icon-live_tv + div, main .sideBar a .icon-live_tv + div {
-  margin-left: 5vw;
-}
-
 main .sideBar button.icon:before, main .sideBar a.icon:before {
   font-size: 6vw;
 }
@@ -7281,6 +7267,7 @@ main .sideBar button, main .sideBar a {
   font-size: 3vw;
   padding: 0 0 3vw;
   margin-top: 3vw;
+  width: 100%;
 }
 
 .features div, .features ul {
