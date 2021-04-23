@@ -199,7 +199,7 @@ const Payment = props => {
 							<img
 								src={`${
 									config.cloudImgURL
-								}/SiteSkin/img/Payment/BankLogo/${bankLogo?.toLowerCase()}`}
+								}/SiteSkin/img/BankLogo/${bankLogo?.toLowerCase()}`}
 								alt={bankName}
 							/>
 							<div className="tip">

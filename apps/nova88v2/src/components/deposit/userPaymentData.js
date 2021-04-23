@@ -2,28 +2,25 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 export const useGetUserPaymentData = ({ userInfo }) => {
-	const [userPaymentData, setUserPaymentData] = useState({});
 	const [userPaymentSwitch, setUserPaymentSwitch] = useState(null);
 
-	useEffect(() => {
-		if (userInfo?.currencyId) {
-			const paymentData = JSON.parse(
-				localStorage.getItem(`${userInfo.userName}-lastPaymentInfo`)
-			);
+	const userPaymentData =
+		JSON.parse(
+			localStorage.getItem(`${userInfo.userName}-lastPaymentInfo`)
+		) ?? {};
 
-			if (paymentData) {
-				setUserPaymentData(paymentData);
-				setUserPaymentSwitch(true);
-			}
+	useEffect(() => {
+		if (userInfo?.currencyId && userPaymentData) {
+			setUserPaymentSwitch(true);
 		}
-	}, [userInfo?.currencyId, userPaymentSwitch]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [userInfo?.currencyId]);
 
 	useEffect(() => {
 		if (userPaymentSwitch === false) {
 			localStorage.removeItem(`${userInfo.userName}-lastPaymentInfo`);
-			setUserPaymentData({});
 		}
-	}, [userPaymentSwitch]);
+	}, [userPaymentSwitch, userInfo.userName]);
 
 	const handleUserPaymentData = ({ userData }) => {
 		if (userPaymentSwitch) {

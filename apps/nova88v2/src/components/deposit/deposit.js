@@ -69,16 +69,12 @@ const Tab = ({ i18n, selected, HandleSelect, paymentList }) => {
 
 const Panel = () => {
 	const navigate = useNavigate();
-	const { selected, HandleSelect } = useHandleSelect();
 	const { i18n } = useContext(i18nContext);
 	const { setLoading } = useContext(loadingContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setbankSlipPopBox } = useContext(bankSlipPopBoxContext);
 	const { setPopBox } = useContext(popBoxContext);
-	const [paymentList, setPaymentList] = useState({});
-	const [recentDatas, setRecentDatas] = useState([]);
-	const [pageVerify, setPageVerify] = useState(true);
-
+	const { selected, HandleSelect } = useHandleSelect();
 	const {
 		userPaymentData,
 		handleUserPaymentData,
@@ -87,6 +83,9 @@ const Panel = () => {
 	} = useGetUserPaymentData({
 		userInfo
 	});
+	const [paymentList, setPaymentList] = useState({});
+	const [recentDatas, setRecentDatas] = useState([]);
+	const [pageVerify, setPageVerify] = useState(true);
 
 	PageVerify(userInfo, i18n, setPopBox, navigate, setPageVerify, false);
 
@@ -193,7 +192,7 @@ const Panel = () => {
 				if (isMountedRef.current) {
 					setLoading(false);
 					setPaymentList(payments);
-					HandleSelect(defaultSelect);
+					HandleSelect(userPaymentData?.payType ?? defaultSelect);
 				}
 			};
 
@@ -205,7 +204,7 @@ const Panel = () => {
 				}
 			});
 		}
-	}, [userInfo.isLogin, userPaymentData]);
+	}, [userInfo.isLogin, userPaymentData.payType]);
 
 	const _isConvert = isConvert(userInfo.currencyId);
 	const SubmitProof = (
