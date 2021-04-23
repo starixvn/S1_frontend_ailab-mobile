@@ -15,7 +15,6 @@ import GamePanel from "../components/home/gamePanel";
 import LinksPanel from "../components/home/links";
 import MidBanner from "../components/home/banner";
 import EventSwipper from "../components/home/eventSwipper";
-import jackpot from "../styles/img/jackpot.png";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -23,11 +22,6 @@ const IndexPage = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const [redirectPath, setRedirectPath] = useState(null);
 	const { setRoot } = useContext(rootContext);
-	const ticker2 = new Ticker({
-		info: 2,
-		casino: "hotspin88am",
-		currency: "vnd"
-	});
 
 	useEffect(() => {
 		if (redirectPath !== null) {
@@ -41,11 +35,6 @@ const IndexPage = () => {
 			setRoot(false);
 		};
 	}, [setRoot]);
-
-	useEffect(() => {
-		ticker2.tick();
-		setNum();
-	}, [ticker2]);
 
 	useEffect(() => {
 		const cookieName = `balanceHint${userInfo.userName}`;
@@ -133,11 +122,6 @@ const IndexPage = () => {
 		<Redirect to={redirectPath} noThrow />
 	) : (
 		<>
-			<div className="bannerS">
-				<img src={jackpot} alt="" />
-				<p>VND</p>
-				<p>{num}</p>
-			</div>
 			<Slider />
 			<Marquee />
 			<EventSwipper />
