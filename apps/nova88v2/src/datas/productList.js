@@ -39,6 +39,10 @@ import fish_GG from "../styles/img/ffw.png";
 import fish_SG from "../styles/img/fg.png";
 import fish_SGW from "../styles/img/fw.png";
 
+import livesports from "../styles/img/livesports.png";
+
+import movietv from "../styles/img/movietv.png";
+
 // import Cockfighting from "../styles/img/cockfighting.jpg";
 
 import id4d from "../styles/img/tablegame.png";
@@ -352,18 +356,18 @@ const gameList = ({ langId }) => [
 	},
 	{
 		category: "liveTV",
-		categoryIcon: "liveTV",
+		categoryIcon: "live_tv",
 		translateKey: "lbl_TV",
 		items: [
 			{
 				spanTextKey: "lbl_LIVE_SPORT",
-				img: fishing_CQ9_AB3,
+				img: livesports,
 				forceShow: true,
 				path: path.streaming.root
 			},
 			{
 				spanTextKey: "lbl_MOVIE_TV",
-				img: fish_DBF,
+				img: movietv,
 				href: "https://nova88tv.com/",
 				forceShow: true
 			}

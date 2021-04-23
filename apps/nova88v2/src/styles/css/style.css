@@ -6224,6 +6224,23 @@ span.important {
   margin: 0;
 }
 
+.depositModule .selectModule .parts .inputBox .dropdown {
+  width: 50vw;
+  text-align: left;
+  padding-right: 5vw;
+}
+
+.depositModule .selectModule .parts .inputBox .dropdown i {
+  position: absolute;
+  right: 0;
+}
+
+.depositModule .selectModule .parts .inputBox .dropdown-container {
+  top: 11vw;
+  max-height: 50vw;
+  min-height: 11vw;
+}
+
 .depositModule .selectModule .dropdown-container {
   background: #f5f5f5;
 }
@@ -6234,20 +6251,6 @@ span.important {
 
 .depositModule .selectModule li button {
   margin: 0 1.5vw 0;
-}
-
-.depositModule .selectModule > .info ~ .bankName:before {
-  content: "●";
-  border-radius: 100%;
-  color: #42AC5E;
-  position: absolute;
-  top: -1vw;
-  left: 0;
-  font-size: 5vw;
-}
-
-.depositModule .selectModule > .info ~ .bankName.close:before {
-  color: #e92529;
 }
 
 .depositModule .selectModule .bankName {
@@ -7204,5 +7207,113 @@ main .sideBar button, main .sideBar a {
   color: white;
   top: 2vw;
   right: -2vw;
+}
+
+.cashBack {
+  background: #D2E2F9;
+  padding: 2vw;
+  border-radius: 5px;
+  margin: 2vw 0;
+}
+
+.cashBack .title {
+  color: #5574A7;
+  margin: 1vw;
+}
+
+.cashBack table {
+  color: #5574A7;
+  font-size: 3vw;
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+  background: white;
+}
+
+.cashBack table tr:nth-child(1) {
+  background: #5574A7;
+  color: white;
+  font-weight: bold;
+}
+
+.cashBack table tr:nth-child(even) {
+  background: rgba(198, 212, 241, 0.3);
+}
+
+.cashBack table tr:nth-last-child(3) {
+  border-top: 1px solid #D2E2F9;
+}
+
+.cashBack table tr:nth-last-child(-n+3) {
+  font-weight: bold;
+  width: 100%;
+  background: transparent;
+}
+
+.cashBack table tr:nth-last-child(-n+3) td {
+  border-right: 0;
+}
+
+.cashBack table tr:nth-last-child(-n+3) td span {
+  white-space: nowrap;
+}
+
+.cashBack table tr:nth-last-child(-n+3) td span:nth-child(1) {
+  min-width: 25vw;
+}
+
+.cashBack table tr td {
+  border-right: 1px solid #D2E2F9;
+  padding: 1vw;
+  line-height: 18px;
+  white-space: nowrap;
+}
+
+.cashBack table tr td:last-child {
+  border: 0;
+}
+
+.features {
+  background: #e2e2e2;
+  color: #838383;
+  border-radius: 5px;
+  float: left;
+  font-size: 3vw;
+  padding: 0 0 3vw;
+  margin-top: 3vw;
+}
+
+.features div, .features ul {
+  padding: 3vw 3vw 0;
+}
+
+.features .title {
+  text-align: left;
+  color: #5574A7;
+  margin: 0;
+  font-size: 3vw;
+}
+
+.features .title:nth-child(1) {
+  background: #5574A7;
+  color: white;
+  font-size: 4vw;
+  padding: 2vw 3vw;
+  border-radius: 5px 5px 0 0;
+}
+
+.features .title span:before {
+  font-size: 4vw;
+  margin-right: 2vw;
+}
+
+.features li {
+  list-style: decimal;
+  line-height: 24px;
+  margin-left: 3vw;
+}
+
+.features li span, .features li a {
+  font-weight: bold;
 }
 /*# sourceMappingURL=style.css.map */
