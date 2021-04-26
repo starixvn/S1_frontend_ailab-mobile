@@ -1981,8 +1981,9 @@ footer > a.open .circleAnimation + span {
 
 .mainNew .jackpot .number {
   position: absolute;
-  top: 59%;
-  left: 48%;
+  top: 60%;
+  left: 47%;
+  font-size: 3.5vw;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   color: white;
