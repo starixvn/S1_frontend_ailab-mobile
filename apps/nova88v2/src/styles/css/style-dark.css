@@ -576,7 +576,7 @@
   content: "\e916";
 }
 
-.icon-soccer:before {
+.icon-soccer2:before {
   content: "\e917";
 }
 
@@ -1122,6 +1122,10 @@
 
 .icon-conversation:before {
   content: "\e935";
+}
+
+.icon-soccer:before {
+  content: "\e9df";
 }
 
 .icon-volleyball:before {

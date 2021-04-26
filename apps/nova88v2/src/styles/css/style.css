@@ -509,7 +509,7 @@ main .sideBar button, main .sideBar a {
   text-align: center;
   -webkit-transition: 0.7s;
   transition: 0.7s;
-  color: #001942;
+  color: #5574A7;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -755,6 +755,16 @@ footer > a.active:before {
   -webkit-transition: 0.7s;
   transition: 0.7s;
   background: #5574A7;
+}
+
+footer > a.active.icon-close:before {
+  content: "\e981";
+}
+
+footer > a.active.icon-close:after {
+  content: "\e98a";
+  margin-top: -36vw;
+  color: white;
 }
 
 footer > a.active .circleAnimation {
@@ -2877,9 +2887,9 @@ button.clickBtn:before {
 }
 
 .buttonBox button {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 calc(100% / 3 - 2vw);
-          flex: 0 0 calc(100% / 3 - 2vw);
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   border-radius: 3px;
   padding: 2vw 1vw;
   margin: 1vw;
@@ -6883,14 +6893,6 @@ span.important {
   font-size: 4vw;
 }
 
-main {
-  padding: 12vw 0;
-}
-
-main .sideBar button, main .sideBar a {
-  color: #5574A7;
-}
-
 .referralShare {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -6927,7 +6929,7 @@ main .sideBar button, main .sideBar a {
   position: fixed;
   right: 1vw;
   bottom: 20vw;
-  z-index: 2;
+  z-index: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
