@@ -85,7 +85,10 @@ const BankAccount = ({ i18n, BankAccountProps }) => {
 	const rightBtn =
 		custBankInfo.length < 3 ? (
 			<div className="btn-group">
-				<Link className="orange" to={`${path.bankInfo.root}`}>
+				<Link
+					className="orange"
+					to={`${path.bankInfo.root}`}
+					state={{ prevPage: "deposit" }}>
 					+
 				</Link>
 			</div>

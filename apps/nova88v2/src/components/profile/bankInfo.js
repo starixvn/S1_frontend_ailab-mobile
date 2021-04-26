@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
+import { Link } from "../../route/link";
 import {
 	i18nContext,
 	userInfoContext,
@@ -10,8 +11,9 @@ import config from "../../config";
 import api from "../../service/api";
 import AddBankPanel from "./bankInfo.add";
 import VIPLevel from "../common/vipLevel";
+import path from "../../path";
 
-const BankInfo = () => {
+const BankInfo = ({ prevPage }) => {
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { i18n } = useContext(i18nContext);
@@ -212,6 +214,11 @@ const BankInfo = () => {
 					) : null}
 					{custBankInfo && custBankInfo.length < 3 ? (
 						<div className="btn-group">
+							{prevPage === "deposit" ? (
+								<Link to={path.deposit.root} className="cancel">
+									{i18n.lbl_Back}
+								</Link>
+							) : null}
 							<button
 								className="icon icon-plus"
 								onClick={toAddBankAccount}>

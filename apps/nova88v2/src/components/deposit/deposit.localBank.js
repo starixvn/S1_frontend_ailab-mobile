@@ -506,7 +506,10 @@ const GroupList = ({
 			<div className="info infoAccount" key={_mainKey}>
 				<ul>
 					<li>
-						<div className="bankName active">
+						<div
+							className={`bankName active${
+								data.status === 2 ? " close" : " open"
+							}`}>
 							<img
 								key={`${_mainKey}-img`}
 								src={`${prefixImgUrl}${
@@ -532,7 +535,7 @@ const GroupList = ({
 		) : (
 			<div
 				key={_mainKey}
-				className={`bankName${data.status === 2 ? " close" : ""}`}
+				className={`bankName${data.status === 2 ? " close" : " open"}`}
 				onClick={SelectPayment.bind(
 					this,
 					bindFullObj ? data : data[idKey]
