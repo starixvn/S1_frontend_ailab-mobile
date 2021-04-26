@@ -1,18 +1,16 @@
-import React, { useContext } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "@reach/router";
-import { rootContext } from "../common/context";
 import path from "../../path";
 import eventImg from "../../styles/img/event/box/eventlink.png";
 import eventVNImg from "../../styles/img/event/box/eventlink_vn.png";
 
-const MysteryBox = ({ userInfo }) => {
-	const { root, setRoot } = useContext(rootContext);
+const MysteryBox = ({ userInfo, setMysteryBox }) => {
 	const closePop = () => {
-		setRoot(false);
+		setMysteryBox(false);
 	};
 
-	return root ? (
+	return (
 		<div className={`eventLink${userInfo.isLogin ? " afterlogin" : ""}`}>
 			<button className="icon icon-close" onClick={closePop} />
 			<Link to={path.mysteryBox.root}>
@@ -22,11 +20,12 @@ const MysteryBox = ({ userInfo }) => {
 				/>
 			</Link>
 		</div>
-	) : null;
+	);
 };
 
 MysteryBox.propTypes = {
-	userInfo: PropTypes.objectOf(PropTypes.any).isRequired
+	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
+	setMysteryBox: PropTypes.func.isRequired
 };
 
 export default MysteryBox;

@@ -326,12 +326,12 @@ class Modal extends Component {
 				/> */}
 				<div className="btn-group">
 					<button
-						className="blue closePopup"
+						className="darkGray closePopup"
 						onClick={this.onClickCancel}>
 						{i18n.lbl_Cancel}
 					</button>
 					<button
-						className="orange closePopup"
+						className="lightBlue closePopup"
 						onClick={this.SeReceipt}>
 						{i18n.lbl_Submit}
 					</button>

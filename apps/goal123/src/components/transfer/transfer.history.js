@@ -54,8 +54,10 @@ const Panel = () => {
 		clickSubmit
 	);
 
-	const submitHandler = (startDay, endDay, isUnix) => {
-		setLoading(true);
+	const submitHandler = ({ startDay, endDay, isUnix, isLoading }) => {
+		if (isLoading) {
+			setLoading(true);
+		}
 
 		if (!processing) {
 			setProcessing(true);
@@ -149,12 +151,11 @@ const Panel = () => {
 									{i18n.lbl_TransactionHistory}
 								</div>
 								<ReloadSpin
-									func={submitHandler.bind(
-										this,
-										filterData?.StartDate,
-										filterData?.EndDate,
-										true
-									)}
+									func={submitHandler.bind(this, {
+										startDay: filterData?.StartDate,
+										endDay: filterData?.EndDate,
+										isUnix: true
+									})}
 								/>
 							</div>
 							{getHistoryState.length > 0 ? (
@@ -165,10 +166,12 @@ const Panel = () => {
 									<div className="infoList">{arr}</div>
 								</>
 							) : (
-								<div className="not-found">
-									{i18n.msg_NoData}
+								<div className="nodata icon icon-nodata">
+									<div className="txt-white">
+										{i18n.msg_NoData}
+									</div>
 								</div>
-							)}{" "}
+							)}
 						</div>
 					) : null}
 				</>

@@ -1,10 +1,11 @@
 @font-face {
-  font-family: 'icomoon';
+  font-family: "icomoon";
   src: url("../fonts/icomoon.woff?v=202003") format("woff");
 }
 
-.icon:before, .icon:after {
-  font-family: 'icomoon';
+.icon:before,
+.icon:after {
+  font-family: "icomoon";
   font-size: 5vw;
 }
 
@@ -953,5 +954,9 @@
 
 .icon-live:before {
   content: "\e9b6";
+}
+
+.icon-more:before {
+  content: "\e9e1";
 }
 /*# sourceMappingURL=font.css.map */

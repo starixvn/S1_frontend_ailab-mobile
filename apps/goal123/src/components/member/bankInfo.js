@@ -79,7 +79,7 @@ const BankInfo = () => {
 						setLoading(false);
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
@@ -130,7 +130,7 @@ const BankInfo = () => {
 					setLoading(false);
 				}
 			},
-			err => {
+			() => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
@@ -213,7 +213,7 @@ const BankInfo = () => {
 									SysId: i.sysId
 								};
 							});
-							setGetBankInfo(preV => getBankInfoArr);
+							setGetBankInfo(() => getBankInfoArr);
 							setUserInfo(prevState => ({
 								...prevState,
 								accountName: data.accountName
@@ -229,7 +229,7 @@ const BankInfo = () => {
 					}
 				}
 			},
-			err => {
+			() => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
@@ -265,7 +265,7 @@ const BankInfo = () => {
 						}
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
@@ -285,10 +285,10 @@ const BankInfo = () => {
 			hasBtn: true,
 			btnBar: (
 				<div className="btn-group">
-					<button className="blue" onClick={toShowBankAccount}>
+					<button className="darkGray" onClick={toShowBankAccount}>
 						{i18n.lbl_Cancel}
 					</button>
-					<button className="orange" onClick={removeAccount}>
+					<button className="lightBlue" onClick={removeAccount}>
 						{i18n.lbl_Submit}
 					</button>
 				</div>
@@ -392,7 +392,7 @@ const BankInfo = () => {
 							setLoading(false);
 						}
 					},
-					err => {
+					() => {
 						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
@@ -414,29 +414,32 @@ const BankInfo = () => {
 				const closePopbox = () => {
 					setPopBox({ isOpen: false });
 				};
-
-				setPopBox({
-					isOpen: true,
-					title: i18n.lbl_ImportantNote,
-					content: i18n.msg_ConfirmRealNameAlert,
-					hasBtn: true,
-					btnBar: (
-						<div className="btn-group">
-							<button className="blue" onClick={closePopbox}>
-								{i18n.lbl_Cancel}
-							</button>
-							<button
-								className="orange"
-								onClick={SetCustBankInfo.bind(
-									this,
-									checked,
-									true
-								)}>
-								{i18n.lbl_Submit}
-							</button>
-						</div>
-					)
-				});
+				if (checked) {
+					setPopBox({
+						isOpen: true,
+						title: i18n.lbl_ImportantNote,
+						content: i18n.msg_ConfirmRealNameAlert,
+						hasBtn: true,
+						btnBar: (
+							<div className="btn-group">
+								<button
+									className="darkGray"
+									onClick={closePopbox}>
+									{i18n.lbl_Cancel}
+								</button>
+								<button
+									className="lightBlue"
+									onClick={SetCustBankInfo.bind(
+										this,
+										checked,
+										true
+									)}>
+									{i18n.lbl_Submit}
+								</button>
+							</div>
+						)
+					});
+				}
 			} else {
 				checked = bankAccountCheck();
 				SetCustBankInfo(checked, false);
@@ -482,7 +485,6 @@ const BankInfo = () => {
 				</>
 			) : (
 				<>
-					{" "}
 					<div className="inputBox">
 						<Dropdown
 							mainKey="bankInfo-bankList"
@@ -515,10 +517,14 @@ const BankInfo = () => {
 						onChange={EditField.bind(null, "BankAccount")}
 					/>
 					<div className="btn-group">
-						<button className="blue" onClick={toShowBankAccount}>
+						<button
+							className="darkGray"
+							onClick={toShowBankAccount}>
 							{i18n.lbl_Cancel}
 						</button>
-						<button className="orange" onClick={checkSubmitHandler}>
+						<button
+							className="lightBlue"
+							onClick={checkSubmitHandler}>
 							{i18n.lbl_Submit}
 						</button>
 					</div>

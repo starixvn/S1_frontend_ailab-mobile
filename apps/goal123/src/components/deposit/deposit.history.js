@@ -50,8 +50,10 @@ const Panel = () => {
 		clickSubmit
 	);
 
-	const submitHandler = (startDay, endDay, isUnix) => {
-		setLoading(true);
+	const submitHandler = ({ startDay, endDay, isUnix, isLoading }) => {
+		if (isLoading) {
+			setLoading(true);
+		}
 
 		if (!processing) {
 			setProcessing(true);
@@ -161,10 +163,10 @@ const Panel = () => {
 			hasBtn: true,
 			btnBar: (
 				<div className="btn-group">
-					<button className="blue" onClick={closePopBox}>
+					<button className="darkGray" onClick={closePopBox}>
 						{i18n.lbl_Cancel}
 					</button>
-					<button className="orange" onClick={ClickSubmit}>
+					<button className="lightBlue" onClick={ClickSubmit}>
 						{i18n.lbl_Submit}
 					</button>
 				</div>
@@ -222,12 +224,11 @@ const Panel = () => {
 							{i18n.lbl_TransactionHistory}
 						</div>
 						<ReloadSpin
-							func={submitHandler.bind(
-								this,
-								filterData?.StartDate,
-								filterData?.EndDate,
-								true
-							)}
+							func={submitHandler.bind(this, {
+								startDay: filterData?.StartDate,
+								endDay: filterData?.EndDate,
+								isUnix: true
+							})}
 						/>
 					</div>
 					{getHistoryState.length > 0 ? (
@@ -238,8 +239,10 @@ const Panel = () => {
 							<div className="infoList">{arr}</div>
 						</>
 					) : (
-						<div className="not-found">{i18n.msg_NoData}</div>
-					)}{" "}
+						<div className="nodata icon icon-nodata">
+							<div className="txt-white">{i18n.msg_NoData}</div>
+						</div>
+					)}
 				</div>
 			) : null}
 		</>
@@ -253,11 +256,11 @@ export const TransactionHistory = props => {
 	if (props.depositType === 3 && (props.status === 1 || props.status === 7)) {
 		btnGroup = (
 			<div className="btn-group">
-				<button className="blue" onClick={props.ClickCancel}>
+				<button className="darkGray" onClick={props.ClickCancel}>
 					{i18n.lbl_Cancel}
 				</button>
 				<button
-					className="orange openPopup"
+					className="lightBlue openPopup"
 					onClick={props.SubmitProof}>
 					{i18n.lbl_SubmitProof}
 				</button>
