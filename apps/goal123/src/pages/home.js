@@ -17,6 +17,7 @@ import HeaderShortcut from "../components/home/headerShortcut";
 import EventSwipper from "../components/home/eventSwipper";
 import MiddlePanel from "../components/home/middlePanel";
 import Bottom from "../components/home/bottom";
+import jackpot from "../styles/img/jackpotbg.png";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -24,6 +25,11 @@ const IndexPage = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
 	const [redirectPath, setRedirectPath] = useState(null);
+	const ticker2 = new Ticker({
+		info: 2,
+		casino: "hotspin88am",
+		currency: "vnd"
+	});
 
 	useEffect(() => {
 		if (redirectPath !== null) {
@@ -36,6 +42,11 @@ const IndexPage = () => {
 		return () => {
 			setRoot(false);
 		};
+	}, []);
+
+	useEffect(() => {
+		ticker2.attachToTextBox("tick");
+		ticker2.tick();
 	}, []);
 
 	useEffect(() => {
@@ -130,6 +141,14 @@ const IndexPage = () => {
 			<Slider />
 			<EventSwipper userInfo={userInfo} />
 			<Marquee />
+			<div className="jackpot">
+				<div className="title">Jackpot</div>
+				<img src={jackpot} alt="" />
+				<div className="number">
+					<span id="tick" />
+					VND
+				</div>
+			</div>
 			<Menu i18n={i18n} userInfo={userInfo} />
 			<MiddlePanel langId={userInfo.langId} i18n={i18n} />
 			<Bottom i18n={i18n} langId={userInfo.langId} />

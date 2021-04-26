@@ -1962,6 +1962,32 @@ footer > a.open .circleAnimation + span {
   color: #fff;
 }
 
+.mainNew .jackpot {
+  padding: 0 2vw;
+  position: relative;
+}
+
+.mainNew .jackpot .title {
+  background: url(../img/titlebg.png) no-repeat center;
+  background-size: 100%;
+  width: 30%;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+.mainNew .jackpot img {
+  width: 100%;
+}
+
+.mainNew .jackpot .number {
+  position: absolute;
+  top: 59%;
+  left: 48%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  color: white;
+}
+
 .mainNew .vipRanking {
   display: -webkit-box;
   display: -ms-flexbox;
