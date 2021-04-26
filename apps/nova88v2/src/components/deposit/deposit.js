@@ -79,7 +79,7 @@ const Panel = () => {
 		userPaymentData,
 		handleUserPaymentData,
 		userPaymentSwitch,
-		setUserPaymentSwitch
+		handleUserPaymentSwitch
 	} = useGetUserPaymentData({
 		userInfo
 	});
@@ -108,6 +108,7 @@ const Panel = () => {
 			paymentList={paymentList[defPayType.onlineBank] ?? []}
 			userPaymentData={_userPaymentData}
 			handleUserPaymentData={handleUserPaymentData}
+			userPaymentSwitch={userPaymentSwitch}
 		/>
 	);
 
@@ -119,6 +120,7 @@ const Panel = () => {
 				paymentList={paymentList[defPayType.localBank] ?? []}
 				userPaymentData={_userPaymentData}
 				handleUserPaymentData={handleUserPaymentData}
+				userPaymentSwitch={userPaymentSwitch}
 			/>
 		);
 	} else if (selected === defPayType.mobilePay) {
@@ -129,6 +131,7 @@ const Panel = () => {
 				paymentList={paymentList[defPayType.mobilePay] ?? []}
 				userPaymentData={_userPaymentData}
 				handleUserPaymentData={handleUserPaymentData}
+				userPaymentSwitch={userPaymentSwitch}
 			/>
 		);
 	}
@@ -296,7 +299,7 @@ const Panel = () => {
 			<UserPaymentSwitch
 				i18n={i18n}
 				userPaymentSwitch={userPaymentSwitch}
-				setUserPaymentSwitch={setUserPaymentSwitch}
+				handleUserPaymentSwitch={handleUserPaymentSwitch}
 			/>
 			<Tab
 				i18n={i18n}

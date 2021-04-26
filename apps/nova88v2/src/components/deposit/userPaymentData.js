@@ -2,25 +2,53 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 export const useGetUserPaymentData = ({ userInfo }) => {
-	const [userPaymentSwitch, setUserPaymentSwitch] = useState(null);
-
+	const [userPaymentSwitch, setUserPaymentSwitch] = useState(false);
 	const userPaymentData =
 		JSON.parse(
 			localStorage.getItem(`${userInfo.userName}-lastPaymentInfo`)
 		) ?? {};
 
-	useEffect(() => {
-		if (userInfo?.currencyId && userPaymentData) {
-			setUserPaymentSwitch(true);
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [userInfo?.currencyId]);
+	window.onbeforeunload = () => {
+		removeState();
+	};
 
 	useEffect(() => {
-		if (userPaymentSwitch === false) {
-			localStorage.removeItem(`${userInfo.userName}-lastPaymentInfo`);
+		if (userInfo.currencyId) {
+			const paymentSwitch = JSON.parse(
+				localStorage.getItem(`${userInfo.userName}-userPaymentSwitch`)
+			);
+			setUserPaymentSwitch(paymentSwitch);
 		}
-	}, [userPaymentSwitch, userInfo.userName]);
+	}, [userInfo.currencyId, userInfo.userName]);
+
+	useEffect(() => {
+		return () => {
+			removeState();
+		};
+	}, []);
+
+	const removeState = () => {
+		if (userInfo.currencyId) {
+			const paymentSwitch = JSON.parse(
+				localStorage.getItem(`${userInfo.userName}-userPaymentSwitch`)
+			);
+
+			if (paymentSwitch === false) {
+				localStorage.removeItem(`${userInfo.userName}-lastPaymentInfo`);
+				localStorage.removeItem(
+					`${userInfo.userName}-userPaymentSwitch`
+				);
+			}
+		}
+	};
+
+	const handleUserPaymentSwitch = ({ status }) => {
+		setUserPaymentSwitch(status);
+		localStorage.setItem(
+			`${userInfo.userName}-userPaymentSwitch`,
+			JSON.stringify(status)
+		);
+	};
 
 	const handleUserPaymentData = ({ userData }) => {
 		if (userPaymentSwitch) {
@@ -28,6 +56,8 @@ export const useGetUserPaymentData = ({ userInfo }) => {
 				`${userInfo.userName}-lastPaymentInfo`,
 				JSON.stringify(userData)
 			);
+		} else {
+			localStorage.removeItem(`${userInfo.userName}-lastPaymentInfo`);
 		}
 	};
 
@@ -35,14 +65,14 @@ export const useGetUserPaymentData = ({ userInfo }) => {
 		userPaymentData,
 		handleUserPaymentData,
 		userPaymentSwitch,
-		setUserPaymentSwitch
+		handleUserPaymentSwitch
 	};
 };
 
 const UserPaymentSwitch = ({
 	i18n,
 	userPaymentSwitch,
-	setUserPaymentSwitch
+	handleUserPaymentSwitch
 }) => {
 	const [tip, setTip] = useState("");
 
@@ -51,7 +81,7 @@ const UserPaymentSwitch = ({
 	};
 
 	const switchPaymentMode = () => {
-		setUserPaymentSwitch(!userPaymentSwitch);
+		handleUserPaymentSwitch({ status: !userPaymentSwitch });
 	};
 
 	return (
@@ -78,7 +108,7 @@ UserPaymentSwitch.defaultProps = {
 UserPaymentSwitch.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	userPaymentSwitch: PropTypes.bool,
-	setUserPaymentSwitch: PropTypes.func.isRequired
+	handleUserPaymentSwitch: PropTypes.func.isRequired
 };
 
 export default UserPaymentSwitch;
