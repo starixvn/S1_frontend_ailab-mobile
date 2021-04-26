@@ -6,6 +6,7 @@ import {
 } from "../common/context";
 import { Link } from "../../route/link";
 import Header from "../header/header";
+import Footer from "../common/footer";
 import path from "../../path";
 import VIPLevel from "../common/vipLevel";
 
@@ -53,6 +54,7 @@ const MyAccount = () => {
 					</Link>
 				</div>
 			</main>
+			<Footer />
 		</>
 	);
 };
