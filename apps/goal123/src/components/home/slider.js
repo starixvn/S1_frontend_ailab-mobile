@@ -14,7 +14,8 @@ const swipperParam = {
 		el: ".swiper-pagination",
 		clickable: true
 	},
-	rebuildOnUpdate: true
+	rebuildOnUpdate: true,
+	containerClass: "bannerNew"
 };
 
 export default () => {

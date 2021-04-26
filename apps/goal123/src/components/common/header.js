@@ -1,17 +1,24 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { Redirect, Link } from "@reach/router";
-// import SubMenu from "../subMenu/subMenu";
-import { userInfoContext, i18nContext, msgCountContext } from "./context";
+import {
+	userInfoContext,
+	i18nContext,
+	msgCountContext,
+	defNavPanel,
+	navContext
+} from "./context";
 import JoinPanel from "../join/join";
 import LoginPanel from "../login/login";
-import ReloadSpin from "./reloadSpin";
-import { number_format } from "./common";
 import path from "../../path";
-import { tpWalletsListType } from "../transfer/transfer.def";
-import useGetBalance from "../hook/useGetMainBalance";
-import useGetTpBalance from "../hook/useGetTpBalance";
 import Logo from "./logo";
+import vipClub1 from "../../styles/img/vip/vip1.png";
+import vipClub2 from "../../styles/img/vip/vip2.png";
+import vipClub3 from "../../styles/img/vip/vip3.png";
+import vipClub4 from "../../styles/img/vip/vip4.png";
+import vipClub5 from "../../styles/img/vip/vip5.png";
+import vipClub6 from "../../styles/img/vip/vip6.png";
+import AppDownloadHint from "../home/appDownload";
 
 const HeaderTitle = ({ title }) => (
 	<>
@@ -25,27 +32,54 @@ HeaderTitle.propTypes = {
 	title: PropTypes.string.isRequired
 };
 
-const Header = ({ title, hideLogo }) => {
+const Header = ({ title, hideLogo, showingAppHint, setAppHint }) => {
+	const { setNav } = useContext(navContext);
+	const { userInfo } = useContext(userInfoContext);
+	const { i18n } = useContext(i18nContext);
+	const showSubMenu = () => {
+		setNav(defNavPanel.subMenu);
+	};
+
 	return (
 		<header className={title ? "header" : ""} id="header">
-			{hideLogo ? null : (
-				<a href="/">
-					<Logo />
-				</a>
-			)}
-			{title ? <HeaderTitle title={title} /> : <HeaderBtn />}
-			{/* <SubMenu /> */}
+			{showingAppHint ? (
+				<AppDownloadHint
+					i18n={i18n}
+					cookieName={`appDownloadHint${userInfo.userName}`}
+					langId={userInfo.langId}
+					setAppHint={setAppHint}
+				/>
+			) : null}
+			<div>
+				{hideLogo ? null : (
+					<>
+						<div className="menuBtnNew">
+							<button onClick={showSubMenu}>
+								<span>≡</span>
+							</button>
+						</div>
+						<a href="/" className="logo">
+							<Logo />
+						</a>
+					</>
+				)}
+				{title ? <HeaderTitle title={title} /> : <HeaderBtn />}
+			</div>
 		</header>
 	);
 };
 
 Header.defaultProps = {
-	hideLogo: null
+	hideLogo: null,
+	showingAppHint: false,
+	setAppHint: () => null
 };
 
 Header.propTypes = {
 	title: PropTypes.string.isRequired,
-	hideLogo: PropTypes.bool
+	hideLogo: PropTypes.bool,
+	showingAppHint: PropTypes.bool,
+	setAppHint: PropTypes.func
 };
 
 const HeaderBtn = () => {
@@ -53,15 +87,6 @@ const HeaderBtn = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { msgCount } = useContext(msgCountContext);
 	const [redirectPath, setRedirectPath] = useState(null);
-
-	const { mainWalletInfo, GetBalance } = useGetBalance({
-		isLogin: userInfo.isLogin
-	});
-	const { tpWalletsList, GetTpWalletList } = useGetTpBalance({
-		isLogin: userInfo.isLogin,
-		listType: tpWalletsListType.allWallets
-	});
-
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -77,20 +102,6 @@ const HeaderBtn = () => {
 		}
 	}, [redirectPath, setRedirectPath]);
 
-	const clickReloadSpin = () => {
-		GetBalance();
-		GetTpWalletList();
-	};
-
-	const otherWalletBalance = tpWalletsList?.reduce((prev, curr) => {
-		return prev + curr.balance;
-	}, 0);
-	const allWalletBalance = mainWalletInfo.balance + otherWalletBalance;
-
-	const balance = !allWalletBalance
-		? 0
-		: number_format(allWalletBalance, false);
-
 	const ClickUserName = () => {
 		if (userInfo.isLogin) {
 			setRedirectPath(`/${path.member.root}`);
@@ -101,29 +112,47 @@ const HeaderBtn = () => {
 	if (redirectPath !== null) {
 		display = <Redirect to={redirectPath} noThrow />;
 	} else if (userInfo?.isLogin) {
+		let medalImg = null;
+		switch (userInfo.userLevel) {
+			case 2:
+				medalImg = vipClub2;
+				break;
+			case 3:
+				medalImg = vipClub3;
+				break;
+			case 4:
+				medalImg = vipClub4;
+				break;
+			case 5:
+				medalImg = vipClub5;
+				break;
+			case 6:
+				medalImg = vipClub6;
+				break;
+			default:
+				medalImg = vipClub1;
+				break;
+		}
 		display = (
-			<>
-				<HeaderInfo
-					userName={userInfo?.userName}
-					currency={i18n[`Currency_${userInfo.currencyId}`]}
-					amount={balance}
-					ClickUserName={ClickUserName}
-				/>
-				<ReloadSpin func={clickReloadSpin} />
+			<div className="headerBtnIn open">
+				<img src={medalImg} alt={`VIP level${userInfo.userLevel}`} />
+				<p onClick={ClickUserName}>{userInfo.userName}</p>
 				<div className="headerButton">
-					<Link to={path.message.root} className="icon icon-chat">
+					<Link
+						to={path.message.root}
+						className="icon icon-email active">
 						{msgCount ? (
 							<span className="amount">{msgCount}</span>
 						) : null}
 					</Link>
 				</div>
-			</>
+			</div>
 		);
 	} else {
 		display = (
-			<div className="headerButton">
+			<div className="headerBtnOut open">
 				<JoinPanel />
-				<LoginPanel ButtonTitle={i18n.lbl_Login} />
+				<LoginPanel ButtonTitle={i18n.lbl_Login.toUpperCase()} />
 			</div>
 		);
 	}
@@ -137,23 +166,13 @@ const HeaderInfo = props => {
 			<div className="MemberID" onClick={props.ClickUserName}>
 				{props.userName}
 			</div>
-			<div className="Balance">
-				{props.currency} {props.amount}
-			</div>
 		</div>
 	);
 };
 
-HeaderInfo.defaultProps = {
-	amount: 0,
-	currency: ""
-};
-
 HeaderInfo.propTypes = {
 	ClickUserName: PropTypes.func.isRequired,
-	userName: PropTypes.string.isRequired,
-	currency: PropTypes.string,
-	amount: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+	userName: PropTypes.string.isRequired
 };
 
 export default Header;

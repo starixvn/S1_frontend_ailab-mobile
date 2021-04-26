@@ -2,8 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Redirect } from "@reach/router";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
-import Category from "../components/home/category";
-import ShortcutBar from "../components/home/shortcutBar";
+import Menu from "../components/home/menu";
 import {
 	i18nContext,
 	userInfoContext,
@@ -14,7 +13,10 @@ import { readCookie, setCookie } from "../components/common/common";
 import path from "../path";
 import { api_GetWalletInfo } from "../service/api/account";
 import Submenu from "../components/home/submenu";
-import AppDownloadHint, { isIOS } from "../components/home/appDownload";
+import HeaderShortcut from "../components/home/headerShortcut";
+import EventSwipper from "../components/home/eventSwipper";
+import MiddlePanel from "../components/home/middlePanel";
+import Bottom from "../components/home/bottom";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -22,7 +24,6 @@ const IndexPage = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
 	const [redirectPath, setRedirectPath] = useState(null);
-	const [appHint, setAppHint] = useState(false);
 
 	useEffect(() => {
 		if (redirectPath !== null) {
@@ -119,31 +120,20 @@ const IndexPage = () => {
 		}
 	}, [i18n, setPopBox, userInfo.currencyId, userInfo.userName]);
 
-	useEffect(() => {
-		const cookieName = `appDownloadHint${userInfo.userName}`;
-
-		if (userInfo.userName && readCookie(cookieName) !== "1") {
-			setAppHint(true);
-		}
-	}, [userInfo.currencyId, userInfo.userName]);
-
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
 	) : (
 		<>
-			<Slider />
-			<Marquee />
-			<Category />
-			{userInfo.isLogin ? <ShortcutBar /> : null}
-			<Submenu />
-			{!isIOS && appHint ? (
-				<AppDownloadHint
-					i18n={i18n}
-					cookieName={`appDownloadHint${userInfo.userName}`}
-					langId={userInfo.langId}
-					setAppHint={setAppHint}
-				/>
+			{userInfo.isLogin ? (
+				<HeaderShortcut userInfo={userInfo} i18n={i18n} />
 			) : null}
+			<Slider />
+			<EventSwipper userInfo={userInfo} />
+			<Marquee />
+			<Menu i18n={i18n} userInfo={userInfo} />
+			<MiddlePanel langId={userInfo.langId} i18n={i18n} />
+			<Bottom i18n={i18n} langId={userInfo.langId} />
+			<Submenu />
 		</>
 	);
 };

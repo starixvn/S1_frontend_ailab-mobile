@@ -67,7 +67,7 @@ const Panel = () => {
 		if (!checked) {
 			setWarning({
 				status: true,
-				msg: i18n.lbl_AmountTooltip
+				msg: i18n.lbl_AmountTooltip?.replace("{{0}}", 1)
 			});
 		} else {
 			setWarning({
@@ -195,7 +195,7 @@ const Panel = () => {
 				<div className="account" key={`transfer-wallet-${wallet.id}`}>
 					<div className="info">
 						<span className="title">{i18n[wallet.displayKey]}</span>
-						<div>{number_format(wallet.balance, _isConvert)}</div>
+						<div>{number_format(wallet.balance, false)}</div>
 					</div>
 					<ReloadSpin
 						func={
