@@ -231,19 +231,24 @@ export default ({
 		filterType === defFilterType.specialBonus && !promotionInfo?.canJoin
 	);
 
+	const joinNowDisplayText =
+		promotionInfo?.promotionType === defPromotionType.cashback
+			? i18n?.lbl_ClaimNow
+			: i18n?.lbl_PromoJoinNow;
+
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
 	) : userInfo.isLogin === false && !_isExpiry ? (
 		<button
 			className={uiSetting.joinBtn ?? "btn-check"}
 			onClick={() => handleLogin()}>
-			{i18n?.lbl_PromoJoinNow}
+			{joinNowDisplayText}
 		</button>
 	) : _canJoin && userInfo.isLogin && !promotionInfo?.isJoin && !_isExpiry ? (
 		<button
 			className={uiSetting.joinBtn ?? "btn-check"}
 			onClick={onJoinPromotion.bind(this, promotionInfo)}>
-			{i18n?.lbl_PromoJoinNow}
+			{joinNowDisplayText}
 		</button>
 	) : null;
 };

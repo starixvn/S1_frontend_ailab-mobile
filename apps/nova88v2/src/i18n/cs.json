@@ -576,5 +576,12 @@
 	"lbl_Register":"注册",
 	"lbl_AfterJoinHint":"恭喜！您已成功注册为会员。",
 	"lbl_TpWallet_27": "PT钱包",
-	"lbl_LIVE_SPORT" : "现场直播"
+	"lbl_LIVE_SPORT" : "现场直播",
+
+	"==============Promotion==============":"",
+	"lbl_ClaimAmount": "领取金额",
+	"lbl_LossAmount":"亏损金额",
+	"lbl_Percentage":"百分比",
+	"lbl_TotalAmount":"总额",
+	"lbl_ClaimNow":"立即领取"
 }
