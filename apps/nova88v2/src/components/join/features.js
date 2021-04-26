@@ -30,7 +30,7 @@ const EN = () => {
 					<span>100%</span> LIVE CASINO WELCOME BONUS
 				</li>
 				<li>
-					<span>100%</span> SLOTS WELCOME BONUSACCOUNT NAME
+					<span>100%</span> SLOTS WELCOME BONUS
 				</li>
 				<li>
 					DAILY REDEPOSIT BONUS UP TO <span>20%</span>
