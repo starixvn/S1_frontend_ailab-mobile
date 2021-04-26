@@ -542,7 +542,8 @@ GroupList.defaultProps = {
 	bindFullObj: false,
 	imgKeyWithExtension: false,
 	accountInfo: {},
-	displayKey: ""
+	displayKey: "",
+	_isConvert: false
 };
 
 GroupList.propTypes = {
@@ -562,7 +563,7 @@ GroupList.propTypes = {
 	imgKeyWithExtension: PropTypes.bool,
 	accountInfo: PropTypes.objectOf(PropTypes.any),
 	displayKey: PropTypes.string,
-	_isConvert: PropTypes.bool.isRequired,
+	_isConvert: PropTypes.bool,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
