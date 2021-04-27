@@ -149,31 +149,15 @@ const Join = () => {
 		);
 	};
 
+	// const showTip = ({ col, msg }) => {
+	// 	setHintStatus(prev=>({
+
+	// 	}));
+	// };
+
 	const showPswHandler = () => {
 		setShowingPsw(!showingPsw);
 	};
-
-	// const showTipsHandler = col => {
-	// 	if (warning[col].status === true) {
-	// 		setShowTipsState(prevState => {
-	// 			Object.keys(prevState).forEach(_col => {
-	// 				prevState[_col] = false;
-	// 			});
-	// 			return {
-	// 				...prevState
-	// 			};
-	// 		});
-	// 	} else {
-	// 		setShowTipsState(prevState => {
-	// 			Object.keys(prevState).forEach(_col => {
-	// 				prevState[_col] = _col === col;
-	// 			});
-	// 			return {
-	// 				...prevState
-	// 			};
-	// 		});
-	// 	}
-	// };
 
 	const checkValue = async ({ col }, e) => {
 		const val = e.target.value;
@@ -248,7 +232,6 @@ const Join = () => {
 	};
 
 	const dropdownStateHandler = i => {
-		// setShowTipsState(prev => ({ ...prev, Currency: false }));
 		setUserValue(prev => ({
 			...prev,
 			Currency: siteCurrencyList[i]
@@ -267,12 +250,12 @@ const Join = () => {
 	const clickSubmit = async () => {
 		let checked = true;
 
-		const UserName = usernameCheck(userValue.UserName);
+		const UserName = await userNameCheck({ val: userValue.UserName });
 		const Password = passwordCheck({ val: userValue.Password });
+		const Phone = await phoneCheck({ val: userValue.Phone });
 		const _Checkbox = userValue.termsCheck && userValue.ageCheck;
 
-		checked =
-			UserName.checked && Password.checked && _Checkbox && _checkAll;
+		checked = UserName.checked && Password.checked && _Checkbox;
 
 		if (checked) {
 			const regData = {
@@ -377,10 +360,17 @@ const Join = () => {
 		} else {
 			setHintStatus(prev => ({
 				...prev,
-				UserName: { checked: UserName.checked, msg: UserName.message },
+				UserName: {
+					checked: UserName.checked,
+					msg: i18n[UserName.msg]
+				},
 				Password: {
 					checked: Password.checked,
 					msg: i18n[Password.message]
+				},
+				Phone: {
+					checked: Phone.checked,
+					msg: i18n[Phone.msg]
 				},
 				Checkbox: {
 					checked: userValue.termsCheck && userValue.ageCheck,
@@ -407,8 +397,6 @@ const Join = () => {
 			});
 		}
 	};
-
-	console.log(hintStatus);
 
 	const showBylink = useMatch(path.join.root);
 	const openPanel = showBylink || nav === defNavPanel.join;
@@ -498,18 +486,9 @@ const Join = () => {
 						// onFocus={showTipsHandler.bind(null, "Phone")}
 						onBlur={checkValue.bind(this, { col: "Phone" })}
 						onChange={EditField.bind(this, { col: "Phone" })}
-						// error={warning.Phone.status}
+						warningIcon={hintStatus.Phone.checked === false}
 					/>
-					{/* <div
-						className={`errortip${
-							warning.Phone.status || showTipsState.Phone
-								? " open"
-								: ""
-						}`}>
-						{warning.Phone.status
-							? warning.Phone.msg
-							: i18n.lbl_PhoneTooltip}
-					</div> */}
+					<div className="errortip open">{hintStatus.Phone.msg}</div>
 				</div>
 
 				{/* <Inputbox
@@ -562,11 +541,11 @@ const Join = () => {
 						onChange={EditField.bind(this, { col: "ageCheck" })}>
 						{i18n.lbl_Check18TC4}
 					</Checkbox>
-					{/* {warning.Checkbox.status ? (
+					{hintStatus.Checkbox.msg ? (
 						<div className="JoinRule open">
-							{i18n.lbl_Check18TCTooltip}
+							{hintStatus.Checkbox.msg}
 						</div>
-					) : null} */}
+					) : null}
 				</div>
 				<div className="btn-group">
 					<button onClick={clickSubmit}>{i18n.lbl_JoinNow}</button>
