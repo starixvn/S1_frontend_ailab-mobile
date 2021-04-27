@@ -16,7 +16,7 @@ const Inputbox = ({
 	warningIcon
 }) => {
 	return (
-		<div className="inputBox">
+		<div className="inputBoxText">
 			{icon ? <i className={icon} /> : null}
 			<input
 				type={inputType ?? "text"}
@@ -37,6 +37,13 @@ const Inputbox = ({
 			) : null}
 		</div>
 	);
+};
+
+const IptStatus = ({ btnStatus }) => {
+	switch (btnStatus) {
+		case false:
+		// return
+	}
 };
 
 Inputbox.defaultProps = {

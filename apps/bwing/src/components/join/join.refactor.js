@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import { useMatch, useNavigate } from "@reach/router";
 import Inputbox from "../common/inputbox.refactor";
-import InputboxPWD from "../common/inputbox.password copy";
+import InputboxPWD from "../common/inputbox.password.refactor";
 import Dropdown from "../common/dropdown";
 import Checkbox from "../common/checkbox";
 import Tips from "./tips";
@@ -486,7 +486,7 @@ const Join = () => {
 						// onFocus={showTipsHandler.bind(null, "Phone")}
 						onBlur={checkValue.bind(this, { col: "Phone" })}
 						onChange={EditField.bind(this, { col: "Phone" })}
-						warningIcon={hintStatus.Phone.checked === false}
+						iconStatus={hintStatus.Phone.checked}
 					/>
 					<div className="errortip open">{hintStatus.Phone.msg}</div>
 				</div>
