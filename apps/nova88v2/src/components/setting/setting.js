@@ -96,13 +96,15 @@ export default () => {
 				msgCount={msgCount}
 			/>
 			<div className="accordion">
-				<div>
-					<Link
-						className="title icon icon-person"
-						to={path.myAccount.root}>
-						{i18n.lbl_MyAccount}
-					</Link>
-				</div>
+				{userInfo.isLogin === true ? (
+					<div>
+						<Link
+							className="title icon icon-person"
+							to={path.myAccount.root}>
+							{i18n.lbl_MyAccount}
+						</Link>
+					</div>
+				) : null}
 				<div>
 					<Link className="title icon icon-medal" to={path.vip.root}>
 						{i18n.lbl_VIP}
