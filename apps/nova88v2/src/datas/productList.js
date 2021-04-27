@@ -349,12 +349,6 @@ const gameList = ({ langId }) => [
 	// },
 
 	{
-		category: "affiliate",
-		categoryIcon: "affiliate",
-		translateKey: "lbl_Affiliate",
-		href: `${siteInfo(langId).affiliateLink}`
-	},
-	{
 		category: "liveTV",
 		categoryIcon: "live_tv",
 		translateKey: "lbl_TV",
@@ -390,6 +384,12 @@ const gameList = ({ langId }) => [
 		categoryIcon: "ranking",
 		translateKey: "lbl_Ranking",
 		path: path.ranking.root
+	},
+	{
+		category: "affiliate",
+		categoryIcon: "affiliate",
+		translateKey: "lbl_Affiliate",
+		href: `${siteInfo(langId).affiliateLink}`
 	}
 ];
 
