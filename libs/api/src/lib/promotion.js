@@ -1,10 +1,6 @@
 import BaseAPI from "./base";
 
 export class PromotionAPI extends BaseAPI {
-	GetCanJoinPromotionList = langId => {
-		return this.promotionRequest.post(`/GetCanJoinPromotionList/${langId}`);
-	};
-
 	GetPromotionDetail = ({ langId, BonusCode }) =>
 		this.promotionRequest.post(`/GetPromotionDetail/${langId}`, {
 			BonusCode

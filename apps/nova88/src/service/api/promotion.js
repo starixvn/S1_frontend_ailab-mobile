@@ -1,8 +1,5 @@
 // import { promotionRequest } from "./base";
 
-// export const api_promotion_GetCanJoinPromotionList = langId =>
-// 	promotionRequest.post(`/GetCanJoinPromotionList/${langId}`);
-
 // export const api_promotion_GetPromotionDetail = ({ langId, BonusCode }) =>
 // 	promotionRequest.post(`/GetPromotionDetail/${langId}`, {
 // 		BonusCode
