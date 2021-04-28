@@ -1,10 +1,6 @@
-import BaseAPI from "./base";
+import BaseAPI, { defDeviceType } from "./base";
 
-const defGotoGame_AppType = {
-	Desktop: 1,
-	Mobile: 2,
-	NativeAPP: 3
-};
+const defGotoGame_AppType = defDeviceType;
 
 export class TpAPI extends BaseAPI {
 	GetTransferHistory = ({ StartDate, EndDate, PageNumber }) =>

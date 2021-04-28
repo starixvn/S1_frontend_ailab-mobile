@@ -1,19 +1,23 @@
-import BaseAPI from "./base";
+import BaseAPI, { defDeviceType } from "./base";
 
 export class PromotionAPI extends BaseAPI {
 	GetPromotionDetail = ({ langId, BonusCode }) =>
 		this.promotionRequest.post(`/GetPromotionDetail/${langId}`, {
-			BonusCode
+			BonusCode,
+			DeviceType: defDeviceType.Mobile
 		});
 
 	SetClaimPromotion = ({ langId, BonusCode, LockedAmount }) =>
 		this.promotionRequest.post(`/SetClaimPromotion/${langId}`, {
 			BonusCode,
-			LockedAmount
+			LockedAmount,
+			DeviceType: defDeviceType.Mobile
 		});
 
-	GetPromotionListV2 = ({ langId }) =>
-		this.promotionRequest.post(`/GetPromotionListV2/${langId}`);
+	GetPromotionList = ({ langId }) =>
+		this.promotionRequest.post(`/GetPromotionListV3/${langId}`, {
+			DeviceType: defDeviceType.Mobile
+		});
 
 	GetCustSpecificBonus = ({ BonusCode, TpId, PromoCategoryId }) =>
 		this.accountRequest.post("/GetCustSpecificBonus", {
@@ -23,12 +27,14 @@ export class PromotionAPI extends BaseAPI {
 		});
 
 	GetSpecialPromotionList = ({ langId, SpecialCode }) =>
-		this.promotionRequest.post(`/GetSpecialPromotionList/${langId}`, {
-			SpecialCode
+		this.promotionRequest.post(`/GetSpecialPromotionListV2/${langId}`, {
+			SpecialCode,
+			DeviceType: defDeviceType.Mobile
 		});
 
 	SetSpecialCode = ({ langId, SpecialCode }) =>
 		this.promotionRequest.post(`/SetSpecialCode/${langId}`, {
-			SpecialCode
+			SpecialCode,
+			DeviceType: defDeviceType.Mobile
 		});
 }

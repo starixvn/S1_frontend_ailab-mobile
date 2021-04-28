@@ -15,5 +15,5 @@
 // 		LockedAmount
 // 	});
 
-// export const api_promotion_GetPromotionListV2 = ({ langId }) =>
-// 	promotionRequest.post(`/GetPromotionListV2/${langId}`);
+// export const api_promotion_GetPromotionList = ({ langId }) =>
+// 	promotionRequest.post(`/GetPromotionListV3/${langId}`);
