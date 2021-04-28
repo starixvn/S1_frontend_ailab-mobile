@@ -16,7 +16,12 @@ import { useHandleAmount } from "../hook/useHandleAmount";
 const payType = "onlineBanking";
 
 const Payment = props => {
-	const { paymentList, creditTimeKey } = props;
+	const {
+		paymentList,
+		creditTimeKey,
+		userPaymentData,
+		handleUserPaymentData
+	} = props;
 
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -38,20 +43,24 @@ const Payment = props => {
 		minAmount: selbank?.minAmount,
 		maxAmount: selbank?.maxAmount,
 		i18n,
-		digits: 0
+		digits: 0,
+		lastAmount: userPaymentData?.amount
 	});
-
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
 		if (paymentList.length > 0) {
-			SelectPayment({ groupInfo: paymentList[0] });
-			setSelGroup(paymentList[0]);
+			let groupIdx = paymentList.findIndex(
+				obj => obj.payId === userPaymentData?.payId
+			);
+			groupIdx = groupIdx === -1 ? 0 : groupIdx;
+			SelectPayment({ groupInfo: paymentList[groupIdx] });
+			setSelGroup(paymentList[groupIdx]);
 		}
 		return () => {
 			isMountedRef.current = false;
 		};
-	}, [paymentList.length]);
+	}, [paymentList.length, userPaymentData.payType]);
 
 	const SelectPayment = ({ groupInfo }) => {
 		if (selGroup?.payId !== groupInfo.payId) {
@@ -69,10 +78,17 @@ const Payment = props => {
 									res.data.data.length > 0
 								) {
 									setBankList(res.data.data);
-
+									let bankIdx = res.data.data.findIndex(
+										obj =>
+											obj.sysId ===
+												userPaymentData?.sysId &&
+											groupInfo?.payId ===
+												userPaymentData?.payId
+									);
+									bankIdx = bankIdx === -1 ? 0 : bankIdx;
 									SelectBank({
 										groupInfo,
-										bankInfo: res.data.data[0]
+										bankInfo: res.data.data[bankIdx]
 									});
 								}
 							} else if (isMountedRef.current) {
@@ -149,6 +165,13 @@ const Payment = props => {
 			let bankLogo = null;
 			let bankName = null;
 			const RedirectToNext = real_amount => {
+				const userData = {
+					payType: "onlineBank",
+					amount: real_amount,
+					payId,
+					sysId
+				};
+				handleUserPaymentData({ userData });
 				setPopBox(prevState => ({
 					...prevState,
 					isOpen: false
@@ -174,7 +197,9 @@ const Payment = props => {
 						<>
 							<p>{i18n.lbl_ConfirmDeposit}</p>
 							<img
-								src={`${config.imgUrl}/common/images/BankLogo/${bankLogo}`}
+								src={`${
+									config.cloudImgURL
+								}/SiteSkin/img/BankLogo/${bankLogo?.toLowerCase()}`}
 								alt={bankName}
 							/>
 							<div className="tip">
@@ -244,7 +269,7 @@ const Payment = props => {
 				imgKey="bankLogo"
 				idKey="sysId"
 				bindFullObj={true}
-				prefixImgUrl={`${config.imgUrl}/common/images/BankLogo/`}
+				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/BankLogo/`}
 				imgKeyWithExtension={true}
 				bindingItem={selGroup}
 				displayKey="bankName"
@@ -278,6 +303,7 @@ const Payment = props => {
 								)
 						  )
 				}
+				currencyId={userInfo.currencyId}
 			/>
 			<div className="btn-group">
 				<button className="orange" onClick={ClickSubmit}>
@@ -288,9 +314,16 @@ const Payment = props => {
 	);
 };
 
+Payment.defaultProps = {
+	userPaymentData: {},
+	handleUserPaymentData: () => null
+};
+
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
-	creditTimeKey: PropTypes.string.isRequired
+	creditTimeKey: PropTypes.string.isRequired,
+	userPaymentData: PropTypes.objectOf(PropTypes.any),
+	handleUserPaymentData: PropTypes.func
 };
 
 export default Payment;

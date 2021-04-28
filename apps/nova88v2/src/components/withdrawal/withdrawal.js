@@ -17,6 +17,10 @@ import path from "../../path";
 import useTip from "../hook/useTip";
 import { Iov_GetBlackBox } from "../common/iovation";
 import api from "../../service/api";
+import VIPLevel from "../common/vipLevel";
+import BalancePanel from "./balancePanel";
+import ImportantNote from "./importantNote";
+import RestoreAll from "./restoreAll";
 
 const initWarning = {
 	status: defIptStatus.default,
@@ -273,12 +277,6 @@ const Panel = () => {
 			});
 		}
 	};
-
-	const _availableBalance =
-		balanceInfo?.availableBalance !== null ||
-		balanceInfo?.availableBalance !== undefined
-			? balanceInfo?.availableBalance
-			: 0;
 
 	const VaildAmount = _amount => {
 		const result = checkAmount(
@@ -556,6 +554,13 @@ const Panel = () => {
 
 	let banks = [];
 
+	const showingAmount = (
+		<>
+			{i18n[`Currency_${userInfo.currencyId}`]}{" "}
+			{number_format(balanceInfo?.availableBalance ?? 0, _isConvert)}
+		</>
+	);
+
 	if (userInfo.currencyId === 96) {
 		banks = bankInfo?.bankList?.map(b => {
 			return (
@@ -583,26 +588,42 @@ const Panel = () => {
 					key={`withdrawal-bank-${b.sysId}-${b.accountNo}`}
 					onClick={SelectBank.bind(this, b)}>
 					<img
-						src={`${config.imgUrl}/common/images/BankLogo/${b.bankLogo}`}
+						src={`${
+							config.cloudImgURL
+						}/SiteSkin/img/BankLogo/${b.bankLogo?.toLowerCase()}`}
 						alt={b.bankName}
 					/>
 				</button>
 			);
 		});
 	}
-
 	return pageVerify ? (
 		<>
-			<div className="icon icon-member">
-				<div className="circleAnimation" />
-			</div>
+			<VIPLevel userInfo={userInfo} i18n={i18n} />
 			<div className="name">{userInfo.userName}</div>
 			<div className="text-org">{i18n.lbl_EligibleWithdrawalAmount}</div>
-			<div className="balance">
-				{i18n[`Currency_${userInfo.currencyId}`]}{" "}
-				{number_format(_availableBalance, _isConvert)}
-				<ReloadSpin func={GetBalance} />
+			<div className="balanceModule">
+				<ReloadSpin func={GetBalance} content={showingAmount} />
+				<RestoreAll
+					i18n={i18n}
+					setLoading={setLoading}
+					GetBalance={GetBalance}
+					setPopBox={setPopBox}
+					isLogin={userInfo.isLogin}
+				/>
 			</div>
+			<div className="selectBank">
+				{banks}
+				{bankInfo?.bankList?.length < 3 ? (
+					<Link to={path.bankInfo.root} />
+				) : null}
+			</div>
+			<BalancePanel
+				currencyId={userInfo.currencyId}
+				i18n={i18n}
+				balanceInfo={balanceInfo}
+				_isConvert={_isConvert}
+			/>
 			<InputBox
 				icon="icon-pencil"
 				value={amount}
@@ -633,6 +654,7 @@ const Panel = () => {
 				</button>
 			</div>
 			<RecentDatas Datas={recentDatas} ClickCancel={ClickCancel} />
+			<ImportantNote i18n={i18n} langId={userInfo.langId} />
 		</>
 	) : null;
 };

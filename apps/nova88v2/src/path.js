@@ -146,5 +146,8 @@ export default {
 	},
 	cryptoWallet: {
 		root: "cryptoWallet"
+	},
+	myAccount: {
+		root: "myAccount"
 	}
 };

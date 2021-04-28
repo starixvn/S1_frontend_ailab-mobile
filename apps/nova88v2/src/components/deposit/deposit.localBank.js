@@ -20,11 +20,42 @@ import { isConvert, number_format } from "../common/common";
 import AmountInput from "./deposit.amountInput";
 import { useHandleAmount } from "../hook/useHandleAmount";
 import api from "../../service/api";
+import DepositChannel, {
+	defDepChannelValue,
+	defDepositChannel
+} from "./localbank.depositChannel";
 
 const payType = "localBank";
 
+const useHandleSelect = () => {
+	const [selData, setSelectData] = useState(null);
+	const [warning, setWarning] = useState({ msg: "", status: null });
+
+	const HandleSelectData = idx => {
+		if (idx !== null) {
+			setSelectData(idx);
+			setWarning({ msg: "", status: null });
+		}
+	};
+
+	const SetWarning = msg => {
+		if (msg) {
+			setWarning({ msg, status: 1 });
+		} else {
+			setWarning({ msg, status: null });
+		}
+	};
+
+	return { selData, warning, HandleSelectData, SetWarning };
+};
+
 const Payment = props => {
-	const { paymentList, creditTimeKey } = props;
+	const {
+		paymentList,
+		creditTimeKey,
+		userPaymentData,
+		handleUserPaymentData
+	} = props;
 
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -36,6 +67,7 @@ const Payment = props => {
 	const { setLoading } = useContext(loadingContext);
 	const [selBank, setBank] = useState({});
 	const [accountInfo, setAccountInfo] = useState({});
+	const [custBankInfo, setCustBankInfo] = useState([]);
 
 	const {
 		amount,
@@ -48,20 +80,89 @@ const Payment = props => {
 		minAmount: selBank?.minAmount,
 		maxAmount: selBank?.maxAmount,
 		i18n,
-		digits: 0
+		digits: 0,
+		lastAmount: userPaymentData?.amount
 	});
+
+	const {
+		selData: selDepositChannel,
+		warning: depositChannelWarning,
+		HandleSelectData: HandleDepositChannel,
+		SetWarning: depositChannelSetWarning
+	} = useHandleSelect();
+
+	const {
+		selData: selBankAccount,
+		warning: bankAccountlWarning,
+		HandleSelectData: HandleBankAccount,
+		SetWarning: bankAccountSetWarning
+	} = useHandleSelect();
 
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
 		if (paymentList.length > 0) {
-			SelectBank(paymentList[0]);
+			let bankIdx = paymentList.findIndex(
+				obj => obj.sysId === userPaymentData?.sysId
+			);
+			bankIdx = bankIdx === -1 ? 0 : bankIdx;
+			for (const i in paymentList) {
+				if (paymentList[i].status === 1) {
+					bankIdx = paymentList[bankIdx]?.status === 1 ? bankIdx : 0;
+					SelectBank(paymentList[bankIdx]);
+					break;
+				}
+			}
 		}
 		return () => {
 			isMountedRef.current = false;
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [paymentList.length]);
+	}, [paymentList.length, userPaymentData.payType]);
+
+	useEffect(() => {
+		if (userInfo.isLogin) {
+			api.account.GetCustBankInfo().then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							const { data } = res.data;
+							if (data !== null) {
+								const bankInfoDetail =
+									data.bankInfoDetail ?? [];
+								const getBankInfoArr = bankInfoDetail.map(
+									i => ({
+										displayText: `${i.bankName} / ${i.accountNo} / ${userInfo.accountName}`,
+										bankName: i.bankName,
+										image: i.bankLogo,
+										accountNo: i.accountNo,
+										SysId: i.sysId
+									})
+								);
+								setCustBankInfo(() => getBankInfoArr);
+							}
+						} else {
+							setPopBox({
+								isOpen: true,
+								title: i18n.lbl_ImportantNote,
+								content: `[${res.data.errorCode}]${res.data.message}`
+							});
+						}
+					}
+				},
+				() => {
+					if (isMountedRef.current) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
+						});
+					}
+					setLoading(false);
+				}
+			);
+		}
+	}, [i18n, setPopBox, userInfo.isLogin, userInfo.accountName]);
 
 	const SelectBank = bankInfo => {
 		setLoading(true);
@@ -107,8 +208,24 @@ const Payment = props => {
 	};
 
 	const ClickSubmit = () => {
-		const result =
-			selBank.sysId && amount !== "" && VaildAmount({ amount });
+		let result =
+			selBank.sysId && amount !== "" && VaildAmount({ _amount: amount });
+
+		if (selDepositChannel === null) {
+			depositChannelSetWarning(i18n.lbl_LocalBankDepositChannelTip);
+			result = false;
+		} else if (
+			(defDepositChannel[selDepositChannel].value ===
+				defDepChannelValue.OnlineBanking &&
+				selBankAccount === null) ||
+			(defDepositChannel[selDepositChannel].value ===
+				defDepChannelValue.ATM &&
+				selBankAccount === null)
+		) {
+			bankAccountSetWarning(i18n.lbl_LocalBankBankAccountTip);
+			result = false;
+		}
+
 		if (result && !processing) {
 			const RedirectToNext = (real_amount, sysId) => {
 				setLoading(true);
@@ -117,16 +234,39 @@ const Payment = props => {
 					isOpen: false
 				}));
 
+				let channelData = {};
+				if (
+					defDepositChannel[selDepositChannel].value ===
+						defDepChannelValue.OnlineBanking ||
+					defDepositChannel[selDepositChannel].value ===
+						defDepChannelValue.ATM
+				) {
+					channelData = {
+						fromChannel:
+							defDepositChannel[selDepositChannel]?.value,
+						fromSysId: custBankInfo[selBankAccount]?.SysId,
+						fromAccountNum: custBankInfo[selBankAccount]?.accountNo
+					};
+				}
+
 				api.payment
 					.DepositReqWireTransfer({
 						amount: real_amount,
-						sysId
+						sysId,
+						...channelData
 					})
 					.then(
 						res => {
 							if (isMountedRef.current) {
 								if (res.data.errorCode === 0) {
 									const CloseDoneDepositPopup = () => {
+										const userData = {
+											payType: "localBank",
+											amount: real_amount,
+											sysId
+										};
+										handleUserPaymentData({ userData });
+
 										setProcessing(false);
 										window.location.reload();
 									};
@@ -184,8 +324,7 @@ const Payment = props => {
 										CloseDoneDepositPopup();
 									}
 								} else {
-									setPopBox(prevState => ({
-										...prevState,
+									setPopBox(() => ({
 										isOpen: true,
 										title: i18n.lbl_ImportantNote,
 										content: i18n.msg_WrongAmount
@@ -217,7 +356,9 @@ const Payment = props => {
 					<>
 						<p>{i18n.lbl_ConfirmDeposit}</p>
 						<img
-							src={`${config.imgUrl}/common/images/BankLogo/${selBank.bankLogo}`}
+							src={`${
+								config.cloudImgURL
+							}/SiteSkin/img/BankLogo/${selBank.bankLogo?.toLowerCase()}`}
 							alt={selBank.bankName}
 						/>
 						<div className="tip">
@@ -277,7 +418,7 @@ const Payment = props => {
 				imgKey="bankLogo"
 				idKey="sysId"
 				bindFullObj={true}
-				prefixImgUrl={`${config.imgUrl}/common/images/BankLogo/`}
+				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/BankLogo/`}
 				imgKeyWithExtension={true}
 				accountInfo={accountInfo}
 				displayKey="bankName"
@@ -300,6 +441,21 @@ const Payment = props => {
 				)}
 				msg={warning.msg}
 				status={warning.status}
+				currencyId={userInfo.currencyId}
+			/>
+			<DepositChannel
+				i18n={i18n}
+				DepositChannelProps={{
+					HandleDepositChannel,
+					selDepositChannel,
+					depositChannelWarning
+				}}
+				BankAccountProps={{
+					HandleBankAccount,
+					selBankAccount,
+					custBankInfo,
+					bankAccountlWarning
+				}}
 			/>
 			<div className="btn-group">
 				<button
@@ -316,9 +472,16 @@ const Payment = props => {
 	);
 };
 
+Payment.defaultProps = {
+	userPaymentData: {},
+	handleUserPaymentData: () => null
+};
+
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
-	creditTimeKey: PropTypes.string.isRequired
+	creditTimeKey: PropTypes.string.isRequired,
+	userPaymentData: PropTypes.objectOf(PropTypes.any),
+	handleUserPaymentData: PropTypes.func
 };
 
 const GroupList = ({
@@ -344,13 +507,16 @@ const GroupList = ({
 			<div className="info infoAccount" key={_mainKey}>
 				<ul>
 					<li>
-						<div className="bankName active">
+						<div
+							className={`bankName active${
+								data.status === 2 ? " close" : " open"
+							}`}>
 							<img
 								key={`${_mainKey}-img`}
 								src={`${prefixImgUrl}${
 									imgKeyWithExtension
-										? data[imgKey]
-										: `${data[imgKey]}.png`
+										? data[imgKey]?.toLowerCase()
+										: `${data[imgKey]?.toLowerCase()}.png`
 								}`}
 								alt={data[imgKey] ?? ""}
 							/>
@@ -368,39 +534,38 @@ const GroupList = ({
 				</ul>
 			</div>
 		) : (
-			<div className="info infoAccount" key={_mainKey}>
-				<div
-					className="bankName"
-					onClick={SelectPayment.bind(
-						this,
-						bindFullObj ? data : data[idKey]
-					)}>
-					<img
-						key={`${_mainKey}-img`}
-						src={`${prefixImgUrl}${
-							imgKeyWithExtension
-								? data[imgKey]
-								: `${data[imgKey]}.png`
-						}`}
-						alt={data[imgKey] ?? ""}
-					/>
-					<i className="icon icon-icon32px_check" />
-					<div className="bank">
-						<div>{data[displayKey]}</div>
+			<div
+				key={_mainKey}
+				className={`bankName${data.status === 2 ? " close" : " open"}`}
+				onClick={SelectPayment.bind(
+					this,
+					bindFullObj ? data : data[idKey]
+				)}>
+				<img
+					key={`${_mainKey}-img`}
+					src={`${prefixImgUrl}${
+						imgKeyWithExtension
+							? data[imgKey]?.toLowerCase()
+							: `${data[imgKey]?.toLowerCase()}.png`
+					}`}
+					alt={data[imgKey] ?? ""}
+				/>
+				<i className="icon icon-icon32px_check" />
+				<div className="bank">
+					<div>{data[displayKey]}</div>
 
-						<div>
-							{data?.minAmount && data?.maxAmount
-								? `${i18n.lbl_MinMaxAmount}: ${number_format(
-										data.minAmount,
-										_isConvert,
-										0
-								  )} / ${number_format(
-										data.maxAmount,
-										_isConvert,
-										0
-								  )}`
-								: ""}
-						</div>
+					<div>
+						{data?.minAmount && data?.maxAmount
+							? `${i18n.lbl_MinMaxAmount}: ${number_format(
+									data.minAmount,
+									_isConvert,
+									0
+							  )} / ${number_format(
+									data.maxAmount,
+									_isConvert,
+									0
+							  )}`
+							: ""}
 					</div>
 				</div>
 			</div>

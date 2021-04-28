@@ -89,8 +89,7 @@ StreamingModule.defaultProps = {
 	isStreamingPage: false,
 	homeScore: null,
 	awayScore: null,
-	isLogin: null,
-	matchID: null
+	isLogin: null
 };
 
 StreamingModule.propTypes = {
@@ -105,6 +104,7 @@ StreamingModule.propTypes = {
 	homeScore: PropTypes.number,
 	awayScore: PropTypes.number,
 	timeStart: PropTypes.string.isRequired,
-	matchID: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	matchID: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired,
 	channel: PropTypes.number.isRequired
 };

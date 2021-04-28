@@ -7,11 +7,13 @@ import TabPage, { getMainClass } from "../components/common/tabPage";
 const IndexPage = props => {
 	const defTabs = bankInfoTabs;
 	const header = <TabPage defTabs={defTabs} />;
+	const { prevPage } = props?.location?.state;
+
 	return (
 		<Layout
 			header={header}
 			mainClass={getMainClass({ defTabs, location: props })}>
-			<BankInfo />
+			<BankInfo prevPage={prevPage} />
 		</Layout>
 	);
 };

@@ -16,7 +16,12 @@ import { useHandleAmount } from "../hook/useHandleAmount";
 const payType = "MobilePay";
 
 const Payment = props => {
-	const { paymentList, creditTimeKey } = props;
+	const {
+		paymentList,
+		creditTimeKey,
+		userPaymentData,
+		handleUserPaymentData
+	} = props;
 
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -38,19 +43,24 @@ const Payment = props => {
 		minAmount: selChannel?.minAmount,
 		maxAmount: selChannel?.maxAmount,
 		i18n,
-		digits: 0
+		digits: 0,
+		lastAmount: userPaymentData?.amount
 	});
 
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
 		if (paymentList.length > 0) {
-			SelectPayment({ groupInfo: paymentList[0] });
+			let groupIdx = paymentList.findIndex(
+				obj => obj.groupId === userPaymentData?.groupId
+			);
+			groupIdx = groupIdx === -1 ? 0 : groupIdx;
+			SelectPayment({ groupInfo: paymentList[groupIdx] });
 		}
 		return () => {
 			isMountedRef.current = false;
 		};
-	}, [paymentList.length]);
+	}, [paymentList.length, userPaymentData.payType]);
 
 	const SelectPayment = ({ groupInfo }) => {
 		if (selGroupId !== groupInfo?.groupId) {
@@ -64,7 +74,14 @@ const Payment = props => {
 							res.data.data.length > 0
 						) {
 							setChannelList(res.data.data);
-							SelectChannel({ bankInfo: res.data.data?.[0] });
+							let bankInfoIdx = res.data.data.findIndex(
+								obj =>
+									obj.channelId === userPaymentData?.channelId
+							);
+							bankInfoIdx = bankInfoIdx === -1 ? 0 : bankInfoIdx;
+							SelectChannel({
+								bankInfo: res.data.data?.[bankInfoIdx]
+							});
 						} else {
 							setPopBox({
 								isOpen: true,
@@ -94,6 +111,13 @@ const Payment = props => {
 
 		if (result) {
 			const RedirectToNext = real_amount => {
+				const userData = {
+					payType: "mobilePay",
+					amount: real_amount,
+					channelId: selChannel?.channelId,
+					groupId: selGroupId
+				};
+				handleUserPaymentData({ userData });
 				setPopBox(prevState => ({
 					...prevState,
 					isOpen: false
@@ -112,7 +136,9 @@ const Payment = props => {
 					<>
 						<p>{i18n.lbl_ConfirmDeposit}</p>
 						<img
-							src={`${config.imgUrl}/common/images/MobilePay/${selChannel.groupName}.png`}
+							src={`${
+								config.cloudImgURL
+							}/SiteSkin/img/MobilePay/${selChannel.groupName?.toLowerCase()}.png`}
 							alt={selChannel.groupName}
 						/>
 						<div className="tip">
@@ -161,7 +187,7 @@ const Payment = props => {
 				mainKey={`deposit-full-${payType}-groupList`}
 				imgKey="groupName"
 				idKey="groupId"
-				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/Payment/`}
+				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/MobilePay/`}
 				displayKey="groupName"
 				_isConvert={_isConvert}
 			/>
@@ -175,7 +201,7 @@ const Payment = props => {
 				imgKey="groupName"
 				idKey="channelId"
 				bindFullObj={true}
-				prefixImgUrl={`${config.imgUrl}/common/images/MobilePay/`}
+				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/MobilePay/`}
 				displayKey="channelName"
 				_isConvert={_isConvert}
 				showMinMaxHint={true}
@@ -197,6 +223,7 @@ const Payment = props => {
 						? number_format(selChannel?.minAmount, _isConvert, 0)
 						: 1
 				)}
+				currencyId={userInfo.currencyId}
 			/>
 			<div className="btn-group">
 				<button className="orange" onClick={ClickSubmit}>
@@ -207,9 +234,16 @@ const Payment = props => {
 	);
 };
 
+Payment.defaultProps = {
+	userPaymentData: {},
+	handleUserPaymentData: () => null
+};
+
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
-	creditTimeKey: PropTypes.string.isRequired
+	creditTimeKey: PropTypes.string.isRequired,
+	userPaymentData: PropTypes.objectOf(PropTypes.any),
+	handleUserPaymentData: PropTypes.func
 };
 
 export default Payment;

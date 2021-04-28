@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -66,9 +67,9 @@ body, html {
   color: white;
 }
 
-button[disabled=disabled] {
-  background: -webkit-gradient(linear, left top, left bottom, from(#B2B2B2), to(#6F6F6F)) !important;
-  background: linear-gradient(to bottom, #B2B2B2, #6F6F6F) !important;
+button[disabled] {
+  background: #e6e6e6 !important;
+  color: #a5aab1 !important;
 }
 
 #root {
@@ -508,7 +509,7 @@ main .sideBar button, main .sideBar a {
   text-align: center;
   -webkit-transition: 0.7s;
   transition: 0.7s;
-  color: #001942;
+  color: #5574A7;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -522,6 +523,7 @@ main .sideBar button, main .sideBar a {
   min-width: 15vw;
   padding: 3vw 0 4vw;
   position: relative;
+  white-space: nowrap;
 }
 
 main .sideBar button i:not(.icon-new):not(.icon-live):before, main .sideBar a i:not(.icon-new):not(.icon-live):before {
@@ -706,6 +708,32 @@ footer > a .icon-envelope {
   position: absolute;
   top: 1vw;
   right: 3vw;
+  -webkit-animation: envelope 1.5s infinite;
+          animation: envelope 1.5s infinite;
+}
+
+@-webkit-keyframes envelope {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes envelope {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 footer > a span {
@@ -727,6 +755,16 @@ footer > a.active:before {
   -webkit-transition: 0.7s;
   transition: 0.7s;
   background: #5574A7;
+}
+
+footer > a.active.icon-close:before {
+  content: "\e981";
+}
+
+footer > a.active.icon-close:after {
+  content: "\e98a";
+  margin-top: -36vw;
+  color: white;
 }
 
 footer > a.active .circleAnimation {
@@ -1574,34 +1612,70 @@ footer > a.active .circleAnimation + span {
           align-items: center;
 }
 
+.balanceModule {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 3vw 0;
+}
+
+.balanceModule button.clickBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5vw 2vw;
+  white-space: nowrap;
+  border-radius: 3px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.balanceModule button.clickBtn:not(.icon-history) {
+  margin: 0 1vw 0 0;
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #7591C1;
+}
+
+.balanceModule button.clickBtn:not(.icon-history)::before {
+  background: #5574A7;
+  padding: 2vw;
+}
+
+.balanceModule button.clickBtn::before {
+  margin: 0 2vw 0 0;
+  border-radius: 100%;
+}
+
+.balanceModule button.clickBtn.icon-history:before {
+  font-size: 5vw;
+}
+
 .balance {
   font-size: 4vw;
   font-weight: bold;
-  text-align: center;
-  margin: 3vw 0;
-  color: #5574A7;
-}
-
-.balance button.clickBtn {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  width: 5vw;
-  height: 5vw;
-  padding: 0;
-  margin: 0 0 0 2.5vw;
-}
-
-.balance button.clickBtn::before {
-  -webkit-transform: scale(0.75);
-          transform: scale(0.75);
+  margin: 3vw 1vw 3vw 0;
+  background: #7591C1;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 2vw;
+  border-radius: 3px;
 }
 
 .name {
   font-size: 5vw;
   font-weight: bold;
   text-align: center;
-  margin: 0 0 1vw;
+  margin: 0 0 2vw;
   color: #5574A7;
 }
 
@@ -2216,8 +2290,7 @@ footer > a.active .circleAnimation + span {
 }
 
 .btn-group button.gray, .btn-group a.gray, .btn-group .submit.gray {
-  background: -webkit-gradient(linear, left top, left bottom, from(#B2B2B2), to(#6F6F6F));
-  background: linear-gradient(to bottom, #B2B2B2, #6F6F6F);
+  background: #949494;
 }
 
 .btn-group a {
@@ -2293,17 +2366,14 @@ footer > a.active .circleAnimation + span {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background: #e6e6e6;
 }
 
 .selectBank a:before {
   content: '\e94f';
   font-family: 'icomoon';
-  color: #b2b2b2;
+  color: white;
   font-size: 8vw;
-}
-
-.selectBank img {
-  width: 100%;
 }
 
 .step {
@@ -2817,41 +2887,22 @@ button.clickBtn:before {
 }
 
 .buttonBox button {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 calc(100% / 3 - 2vw);
-          flex: 0 0 calc(100% / 3 - 2vw);
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   border-radius: 3px;
-  padding: 1vw;
+  padding: 2vw 1vw;
   margin: 1vw;
   position: relative;
-  background: #1249A5;
-  font-size: 3vw;
-}
-
-.buttonBox button .icon-icon32px_check {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  color: #1E85EC;
   background: white;
-  border-radius: 100%;
-  height: 5vw;
-  display: none;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  font-size: 3vw;
+  border: 1px solid #bfcce2;
+  color: #5574A7;
 }
 
 .buttonBox button.active {
-  color: #1E85EC;
-  background: white;
-  font-weight: bold;
-}
-
-.buttonBox button.active .icon-icon32px_check {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  color: white;
+  background: #F77A00;
 }
 
 .channel {
@@ -2901,7 +2952,7 @@ button.clickBtn:before {
 
 #goTop {
   position: fixed;
-  bottom: 23vw;
+  bottom: 15vw;
   right: 6vw;
   width: 10vw;
   height: 10vw;
@@ -5252,12 +5303,14 @@ span.important {
   padding: 12vw 0 20vw;
   height: calc(100% - 32vw);
   overflow: scroll;
+  background: #ecf3fd;
 }
 
 .more .tag {
   height: 19vw;
   padding: 3vw 0;
   border: 0;
+  background: rgba(210, 226, 249, 0.6);
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -5266,7 +5319,7 @@ span.important {
 .more .tag i {
   width: 1px;
   height: 15vw;
-  background: #5574A7;
+  background: #bfcce2;
 }
 
 .more .tag a, .more .tag button {
@@ -5277,16 +5330,21 @@ span.important {
       -ms-flex-flow: column;
           flex-flow: column;
   position: relative;
+  font-weight: bold;
 }
 
 .more .tag a .quantity, .more .tag button .quantity {
-  background: #5574A7;
+  background: #e92529;
   width: 8vw;
   height: 8vw;
   top: 3vw;
   left: 50%;
   position: absolute;
   color: white;
+}
+
+.more .tag a:not(.icon).active, .more .tag button:not(.icon).active {
+  color: #F77A00;
 }
 
 .more .tag a.active, .more .tag button.active {
@@ -5305,6 +5363,7 @@ span.important {
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
+  margin-bottom: 1px;
 }
 
 .accordion > div .title {
@@ -5315,9 +5374,9 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: white;
+  color: #949494;
   position: relative;
-  background: #5574A7;
+  background: white;
 }
 
 .accordion > div .title:before {
@@ -5326,21 +5385,23 @@ span.important {
 }
 
 .accordion > div .title.icon-exit {
-  color: white;
+  color: #F77A00;
 }
 
 .accordion > div .title.icon-exit:before {
-  margin: 0 1vw;
+  margin: 0 1.5vw 0 0.5vw;
 }
 
 .accordion > div .title.icon-policies:before {
   margin: 0 3vw 0 1vw;
 }
 
+.accordion > div .title.icon-cog.active + div {
+  display: block;
+}
+
 .accordion > div > div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -5366,8 +5427,10 @@ span.important {
   transition: 0.7s;
 }
 
-.accordion > div > button:first-child.active ~ a, .accordion > div > button:first-child.active ~ button {
-  display: block;
+.accordion > div > button:first-child.active ~ a, .accordion > div > button:first-child.active ~ button, .accordion > div > button:first-child.active ~ div.country {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .accordion > div > button:first-child.active .icon-keyboard_arrow_down {
@@ -5379,36 +5442,17 @@ span.important {
 
 .accordion > div a, .accordion > div button, .accordion > div div {
   padding: 3vw 4vw;
-  background: #f3f3f3;
-  color: #5574A7;
-}
-
-.accordion > div a.mode, .accordion > div button.mode, .accordion > div div.mode {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  background: #001942;
-}
-
-.accordion > div a.mode > button, .accordion > div button.mode > button, .accordion > div div.mode > button {
-  width: 10vw;
-  height: 10vw;
-  background: black;
-  margin: 3vw;
-  padding: 0;
-}
-
-.accordion > div a.mode > button.active, .accordion > div button.mode > button.active, .accordion > div div.mode > button.active {
-  color: #5574A7;
-  background: white;
-  -webkit-box-shadow: 0 0 5px 5px #5574a7;
-          box-shadow: 0 0 5px 5px #5574a7;
+  color: #7591C1;
+  font-weight: bold;
+  margin-bottom: 1px;
+  background: rgba(210, 226, 249, 0.6);
 }
 
 .accordion > div a.country, .accordion > div button.country, .accordion > div div.country {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  display: none;
 }
 
 .accordion > div a.country > button, .accordion > div button.country > button, .accordion > div div.country > button {
@@ -5418,6 +5462,10 @@ span.important {
           flex-flow: column;
   width: calc(100% / 4);
   background: transparent;
+}
+
+.accordion > div a.country > button span, .accordion > div button.country > button span, .accordion > div div.country > button span {
+  white-space: nowrap;
 }
 
 .accordion > div a.country > button img, .accordion > div button.country > button img, .accordion > div div.country > button img {
@@ -5441,7 +5489,7 @@ span.important {
 }
 
 .vip_mark {
-  margin: -8vw auto 5vw;
+  margin: -8vw auto 4vw;
   position: relative;
   text-align: center;
   width: -webkit-min-content;
@@ -6160,12 +6208,37 @@ span.important {
   display: -ms-flexbox;
   display: flex;
   border-radius: 0 0 5px 5px;
-  padding: 2vw 1vw;
+  padding: 2vw;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-flow: column wrap;
           flex-flow: column wrap;
   color: #5574A7;
+}
+
+.depositModule .selectModule .parts .inputBox {
+  margin: 0;
+}
+
+.depositModule .selectModule .parts .inputBox .dropdown {
+  width: 50vw;
+  text-align: left;
+  padding-right: 5vw;
+}
+
+.depositModule .selectModule .parts .inputBox .dropdown i {
+  position: absolute;
+  right: 0;
+}
+
+.depositModule .selectModule .parts .inputBox .dropdown-container {
+  top: 11vw;
+  max-height: 50vw;
+  min-height: 11vw;
+}
+
+.depositModule .selectModule .dropdown-container {
+  background: #f5f5f5;
 }
 
 .depositModule .selectModule li span {
@@ -6194,8 +6267,30 @@ span.important {
   position: relative;
 }
 
+.depositModule .selectModule .bankName.open:before {
+  content: "●";
+  border-radius: 100%;
+  color: #42AC5E;
+  position: absolute;
+  top: -1vw;
+  left: 0;
+  font-size: 5vw;
+}
+
+.depositModule .selectModule .bankName.close:before {
+  content: "●";
+  border-radius: 100%;
+  color: #e92529;
+  position: absolute;
+  top: -1vw;
+  left: 0;
+  font-size: 5vw;
+}
+
 .depositModule .selectModule .bankName .bank {
   margin: 0 0 0 3vw;
+  position: absolute;
+  left: 24vw;
 }
 
 .depositModule .selectModule .bankName .bank > div {
@@ -6214,20 +6309,22 @@ span.important {
 }
 
 .depositModule .selectModule .bankName img {
-  width: 100%;
+  width: auto;
+  max-width: 20vw;
+  margin: 0 auto;
 }
 
 .depositModule .selectModule .bankName .icon-icon32px_check {
   position: absolute;
   right: 0.5vw;
   bottom: 0;
-  color: #1E85EC;
+  color: #F77A00;
   display: none;
 }
 
 .depositModule .selectModule .bankName.active {
-  -webkit-box-shadow: 0 0 0 2px #5574A7;
-          box-shadow: 0 0 0 2px #5574A7;
+  -webkit-box-shadow: 0 0 0 2px #F77A00;
+          box-shadow: 0 0 0 2px #F77A00;
 }
 
 .depositModule .selectModule .bankName.active .icon-icon32px_check {
@@ -6796,14 +6893,6 @@ span.important {
   font-size: 4vw;
 }
 
-main {
-  padding: 12vw 0;
-}
-
-main .sideBar button, main .sideBar a {
-  color: #5574A7;
-}
-
 .referralShare {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -6840,7 +6929,7 @@ main .sideBar button, main .sideBar a {
   position: fixed;
   right: 1vw;
   bottom: 20vw;
-  z-index: 2;
+  z-index: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -6918,9 +7007,194 @@ main .sideBar button, main .sideBar a {
   color: #5574A7;
 }
 
+.autoTransfer + button {
+  color: #5574A7;
+}
+
+.rememberMode .inputInfo {
+  margin: 0 0 2vw;
+  word-break: break-word;
+}
+
+.rememberMode .inputInfo:before {
+  content: '';
+  border-width: 0 2vw 2vw 2vw;
+  border-style: solid dashed dashed;
+  border-color: transparent transparent #a5bbe0 transparent;
+  right: 32.5vw;
+  top: -2vw;
+}
+
 .nickName {
   font-weight: bold;
   margin-bottom: 2vw;
+}
+
+.important {
+  background: #e2e2e2;
+  color: #666;
+  padding: 4vw;
+}
+
+.important .title {
+  margin-bottom: 3vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.important .title span:before {
+  margin-right: 2vw;
+  font-weight: normal;
+}
+
+.important li {
+  list-style: decimal;
+  line-height: 6vw;
+  margin-left: 3vw;
+}
+
+.important li span, .important li a {
+  font-weight: bold;
+}
+
+.important li a {
+  color: #5574A7;
+}
+
+.formula {
+  background: white;
+  border: 1px solid #e6e6e6;
+  border-radius: 3px;
+  margin: 3vw 0;
+  color: #5574A7;
+  padding: 1vw 2vw;
+}
+
+.formula > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 2vw 0;
+}
+
+.formula > div > div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  font-weight: bold;
+  font-size: 5vw;
+  text-align: center;
+}
+
+.formula > div > div:nth-child(2) {
+  font-size: 3vw;
+  -webkit-box-flex: 19;
+      -ms-flex: 19;
+          flex: 19;
+  background: #f5f5f5;
+  text-align: right;
+  border-radius: 3px;
+}
+
+.formula > div > div:nth-child(2) > div:nth-child(1) {
+  font-weight: normal;
+}
+
+.formula > div > div:nth-child(2) > div:nth-child(2) {
+  color: #bfcce2;
+}
+
+.formula > div > div:nth-child(2) > div:nth-child(2) span {
+  color: #F77A00;
+  margin: 0 0 0 2vw;
+}
+
+.myAccount {
+  background: #D2E2F9;
+  margin-top: 4vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
+  padding: 1vw;
+}
+
+.myAccount a {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 calc(50% - 8vw);
+          flex: 1 0 calc(50% - 8vw);
+  background: #7591C1;
+  border-radius: 3px;
+  text-align: center;
+  margin: 2vw;
+  padding: 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.myAccount a div {
+  position: relative;
+}
+
+.myAccount a div:nth-child(1) {
+  background: #5574A7;
+  border-radius: 100%;
+  width: 18vw;
+  height: 18vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.myAccount a div:nth-child(1):before {
+  font-size: 12vw;
+}
+
+.myAccount a div .quantity {
+  position: absolute;
+  background: #e92529;
+  color: white;
+  top: 2vw;
+  right: -2vw;
 }
 
 .cashBack {
@@ -6985,5 +7259,50 @@ main .sideBar button, main .sideBar a {
 
 .cashBack table tr td:last-child {
   border: 0;
+}
+
+.features {
+  background: #e2e2e2;
+  color: #838383;
+  border-radius: 5px;
+  float: left;
+  font-size: 3vw;
+  padding: 0 0 3vw;
+  margin-top: 3vw;
+  width: 100%;
+}
+
+.features div, .features ul {
+  padding: 3vw 3vw 0;
+}
+
+.features .title {
+  text-align: left;
+  color: #5574A7;
+  margin: 0;
+  font-size: 3vw;
+}
+
+.features .title:nth-child(1) {
+  background: #5574A7;
+  color: white;
+  font-size: 4vw;
+  padding: 2vw 3vw;
+  border-radius: 5px 5px 0 0;
+}
+
+.features .title span:before {
+  font-size: 4vw;
+  margin-right: 2vw;
+}
+
+.features li {
+  list-style: decimal;
+  line-height: 24px;
+  margin-left: 3vw;
+}
+
+.features li span, .features li a {
+  font-weight: bold;
 }
 /*# sourceMappingURL=style.css.map */

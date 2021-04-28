@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createRef } from "react";
 import moment from "moment";
 import PropTypes from "prop-types";
 import { number_format } from "../common/common";
@@ -40,6 +40,11 @@ const Detail = ({
 			</div>
 		);
 	}
+	const ipt = createRef();
+	const OnCopy = () => {
+		ipt.current.select();
+		navigator.clipboard.writeText(ipt.current.value);
+	};
 
 	return (
 		<div className="info">
@@ -71,6 +76,22 @@ const Detail = ({
 					</span>
 				</li>
 			</ul>
+
+			<div>
+				<div className="title">TxId</div>
+				<div>{thirdId}</div>
+				<input
+					type="hidden"
+					readOnly={true}
+					defaultValue={thirdId}
+					ref={ipt}
+				/>
+				<button
+					className="icon icon-files-empty"
+					value={thirdId}
+					onClick={OnCopy}
+				/>
+			</div>
 			{btnGroup}
 		</div>
 	);
