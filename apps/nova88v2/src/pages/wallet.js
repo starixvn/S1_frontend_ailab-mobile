@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import PropTypes from "prop-types";
+import { useNavigate } from "@reach/router";
 import Layout from "../components/common/layout";
 import { Link } from "../route/link";
 import path from "../path";
@@ -13,6 +14,7 @@ import useGetBalance from "../components/hook/useGetMainBalance";
 import useGetTpBalance from "../components/hook/useGetTpBalance";
 
 const Wallet = () => {
+	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const [bonusWallets, setBonusWallet] = useState({});
@@ -31,16 +33,20 @@ const Wallet = () => {
 	};
 
 	useEffect(() => {
-		setLists(tpWalletsList);
-		api.account.GetCustBonusWallet().then(res => {
-			if (res.data.errorCode === 0) {
-				const result = {};
-				res.data.data.forEach(b => {
-					result[b.tpId] = b;
-				});
-				setBonusWallet(result);
-			}
-		});
+		if (userInfo.isLogin) {
+			setLists(tpWalletsList);
+			api.account.GetCustBonusWallet().then(res => {
+				if (res.data.errorCode === 0) {
+					const result = {};
+					res.data.data.forEach(b => {
+						result[b.tpId] = b;
+					});
+					setBonusWallet(result);
+				}
+			});
+		} else {
+			navigate(`/${userInfo.langId}`);
+		}
 	}, [tpWalletsList, mainWalletInfo]);
 
 	let total = tpWallets.reduce((accumulator, currentValue) => {

@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import { useNavigate } from "@reach/router";
 import {
 	i18nContext,
 	userInfoContext,
@@ -11,9 +12,16 @@ import path from "../../path";
 import VIPLevel from "../common/vipLevel";
 
 const MyAccount = () => {
+	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { msgCount } = useContext(msgCountContext);
+
+	useEffect(() => {
+		if (!userInfo.isLogin) {
+			navigate(`/${userInfo.langId}`);
+		}
+	}, [userInfo.isLogin]);
 
 	return (
 		<>
