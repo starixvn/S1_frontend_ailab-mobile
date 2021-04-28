@@ -13,23 +13,6 @@ import BankInfo from "./components/member/bankInfo";
 import Member from "./pages/member";
 
 import Deposit from "./pages/deposit";
-import DepositHome from "./components/deposit/deposit";
-import {
-	Panel as OnlineBanking,
-	Main as OnlineBankingMain
-} from "./components/deposit/deposit.onlineBanking";
-import SetOnlineBanking from "./components/deposit/deposit.onlineBanking.set";
-
-import {
-	Panel as MobilePay,
-	Main as MobilePayMain
-} from "./components/deposit/deposit.mobilePay";
-import SetMobilePay from "./components/deposit/deposit.mobilePay.set";
-
-import {
-	Panel as LocalBank,
-	Main as LocalBankMain
-} from "./components/deposit/deposit.localBank";
 
 import DepositHistory from "./components/deposit/deposit.history";
 
@@ -59,8 +42,6 @@ import ForgetPwd from "./components/login/forgetPwd";
 import ResetPwd from "./components/login/resetPwd";
 import ChangePwd from "./components/member/changePwd";
 
-import Setting from "./pages/setting";
-import SettingInfo from "./components/setting/settingInfo";
 import Other from "./components/setting/other";
 
 import Kyc from "./components/withdrawal/kyc";
@@ -85,7 +66,7 @@ const Index = () => {
 		<Wrapper>
 			<LocationProvider history={history}>
 				<Layout>
-					<Router>
+					<Router primary={false}>
 						<Home path={path.home.root} default={true} />
 						<ForgetPwd path={path.forgetPassword.root} />
 						<ResetPwd path={path.resetPassword.root} />
@@ -175,10 +156,7 @@ const Index = () => {
 						</Message>
 						<Casino path={`${path.casino.root}`} />
 						<Casino path={`${path.casino.root}/:tpId`} />
-						<Setting path={path.setting.root}>
-							<SettingInfo path={path.setting.sub.root} />
-							<Other path={path.setting.sub.other.root} />
-						</Setting>
+						<Other path={path.other.root} />
 						<Whoami path={path.whoami.root} />
 						<Ranking path={path.leaderBoard.root} />
 						<AngPow path={path.angPow.root} />

@@ -373,7 +373,7 @@ const Panel = () => {
 					btnBar: (
 						<div className="btn-group">
 							<button
-								className="blue"
+								className="darkGray"
 								onClick={() =>
 									setPopBox(prevState => ({
 										...prevState,
@@ -383,7 +383,7 @@ const Panel = () => {
 								{i18n.lbl_Cancel}
 							</button>
 							<button
-								className="orange"
+								className="lightBlue"
 								onClick={RedirectToNext.bind(
 									this,
 									selBank.accountNo,
@@ -451,10 +451,10 @@ const Panel = () => {
 				hasBtn: true,
 				btnBar: (
 					<div className="btn-group">
-						<button className="blue" onClick={closePopBox}>
+						<button className="darkGray" onClick={closePopBox}>
 							{i18n.lbl_Cancel}
 						</button>
-						<button className="orange" onClick={submitConfirm}>
+						<button className="lightBlue" onClick={submitConfirm}>
 							{i18n.lbl_Submit}
 						</button>
 					</div>
@@ -517,7 +517,7 @@ const Panel = () => {
 						<div className="selectBank">{banks}</div>
 					</div>
 					<div className="btn-group">
-						<button className="orange" onClick={ClickSubmit}>
+						<button className="lightBlue" onClick={ClickSubmit}>
 							{i18n.lbl_Submit}
 						</button>
 					</div>

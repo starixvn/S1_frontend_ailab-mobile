@@ -3,7 +3,7 @@ import TabPage from "../components/common/tabPage";
 import path from "../path";
 import BankSlip from "../components/deposit/bankSlip";
 import { bankSlipPopBoxContext } from "../components/common/context";
-import Deposit from "../components/deposit/deposit.all";
+import Deposit from "../components/deposit/deposit";
 
 const defTabs = {
 	default: {

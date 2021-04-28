@@ -595,5 +595,12 @@
 	"lbl_Wallet_Nickname_Tip" : "钱包昵称可随选以便识别核实您的身份",
 	"lbl_Wallet_Address_Tip" : "输入字母（a-z）和数字（0-9）。",
 	"lbl_BankAccountNameHint" : "账号名称请填写真实姓名，完成后将无法修改！",
-	"lbl_DuplicateAddress" : "您已经存储此信息。"
+	"lbl_DuplicateAddress" : "您已经存储此信息。",
+	
+	"==============Promotion==============":"",
+	"lbl_ClaimAmount": "领取金额",
+	"lbl_LossAmount":"亏损金额",
+	"lbl_Percentage":"百分比",
+	"lbl_TotalAmount":"总额",
+	"lbl_ClaimNow":"立即领取"
 }

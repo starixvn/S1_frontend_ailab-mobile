@@ -259,8 +259,7 @@ const gameList = ({ langId }) => [
 				...defGameInfo.Casino_OW,
 				parameter: defGameInfo.Casino_OW,
 				spanText: "OW",
-				img: casino_OW,
-				path: path.casino.root
+				img: casino_OW
 			}
 		]
 	},

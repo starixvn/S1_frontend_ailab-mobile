@@ -48,7 +48,7 @@ export default ({
 								key={`promo-nav-${n.value}`}
 								className={filterType === n.value ? "open" : ""}
 								onClick={onClickFilter.bind(this, n.value)}>
-								{i18n?.[n.displayKey]}
+								{i18n?.[n.displayKey]?.toUpperCase()}
 							</button>
 						);
 					});

@@ -35,7 +35,7 @@ const JoinStep1 = ({
 	}, []);
 
 	const showPswHandler = ({ col }) => {
-		const pswStatus = !showingPsw.col;
+		const pswStatus = !showingPsw[col];
 		setShowingPsw(prev => ({
 			...prev,
 			[col]: pswStatus

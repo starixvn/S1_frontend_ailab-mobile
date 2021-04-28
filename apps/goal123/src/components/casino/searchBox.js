@@ -12,7 +12,10 @@ const SearchBox = props => {
 	const gameTypeList = [
 		{ id: null, displayText: i18n.lbl_AllGameType },
 		...Object.keys(GameTypes).map(k => {
-			return { id: k, displayText: i18n[GameTypes[k].displayKey] };
+			return {
+				id: GameTypes[k].category1,
+				displayText: i18n[GameTypes[k].displayKey]
+			};
 		})
 	];
 
@@ -114,7 +117,10 @@ SearchBox.defaultProps = {
 SearchBox.propTypes = {
 	TpList: PropTypes.objectOf(PropTypes.any).isRequired,
 	provider: PropTypes.objectOf(PropTypes.any).isRequired,
-	DefaultProvider: PropTypes.objectOf(PropTypes.any),
+	DefaultProvider: PropTypes.oneOfType([
+		PropTypes.objectOf(PropTypes.any),
+		PropTypes.number
+	]),
 	EditSearchField: PropTypes.func.isRequired,
 	searchText: PropTypes.string,
 	gameType: PropTypes.objectOf(PropTypes.any).isRequired

@@ -588,5 +588,12 @@
 	"lbl_Wallet_Nickname_Tip" : "Ini hanya pilihan nama pengguna dompet untuk mempermudah identifikasi Anda",
 	"lbl_Wallet_Address_Tip" : "Masukkan hanya huruf (a-z) dan angka (0-9).",
 	"lbl_BankAccountNameHint" : "Silahkan isi nama asli untuk nama akun anda, Bagian ini tidak bisa dirubah jika sudah menekan enter",
-	"lbl_DuplicateAddress" : "Anda telah menyimpan informasi ini."
+	"lbl_DuplicateAddress" : "Anda telah menyimpan informasi ini.",
+	
+	"==============Promotion==============":"",
+	"lbl_ClaimAmount": "Jumlah Klaim",
+	"lbl_LossAmount":"Nilai Kekalahan",
+	"lbl_Percentage":"Persentase",
+	"lbl_TotalAmount":"Jumlah Dana",
+	"lbl_ClaimNow":"Klaim Sekarang"
 }

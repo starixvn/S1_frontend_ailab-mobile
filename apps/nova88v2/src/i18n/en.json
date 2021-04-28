@@ -586,5 +586,12 @@
 	"lbl_Wallet_Nickname_Tip" : "This is on optional wallet nickname to facilitate your identification",
 	"lbl_Wallet_Address_Tip" : "Enter only letters (a-z) and digits(0-9).",
 	"lbl_BankAccountNameHint" : "Please use your real name for account name. This field cannot be changed once entered!",
-	"lbl_DuplicateAddress" : "You have already stored this information."
+	"lbl_DuplicateAddress" : "You have already stored this information.",
+	
+	"==============Promotion==============":"",
+	"lbl_ClaimAmount": "Claim Amount",
+	"lbl_LossAmount":"Loss Amount",
+	"lbl_Percentage":"Percentage",
+	"lbl_TotalAmount":"Total Amount",
+	"lbl_ClaimNow":"Claim Now"
 }

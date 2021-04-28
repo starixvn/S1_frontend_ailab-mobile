@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { useMatch, useNavigate, useLocation } from "@reach/router";
+import { useMatch, useLocation } from "@reach/router";
 import { Link } from "@Router";
 import { i18nContext, userInfoContext } from "Context";
 import useBeforeLoginCheck from "../hook/useBeforeLoginCheck";
@@ -39,7 +39,6 @@ export const getMainClass = ({ defTabs, location }) => {
 
 const IndexPage = ({ defTabs, beforeLogin, filter, breadCrumb, tabHint }) => {
 	const location = useLocation();
-
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	useBeforeLoginCheck({
@@ -49,9 +48,6 @@ const IndexPage = ({ defTabs, beforeLogin, filter, breadCrumb, tabHint }) => {
 	});
 
 	if (userInfo.isLogin === null) return null;
-	// if (!canSee) {
-	// 	return navigate(`/${userInfo.langId}`);
-	// }
 
 	let currentTab = null;
 	const mainTab = [];

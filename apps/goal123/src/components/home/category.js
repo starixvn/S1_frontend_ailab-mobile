@@ -472,7 +472,7 @@ ComingSoonItem.propTypes = {
 	img: PropTypes.string.isRequired
 };
 
-const getEventIcon = ({ subIcon, eventIcon }) => {
+export const getEventIcon = ({ subIcon, eventIcon }) => {
 	let showingEventIcon = "";
 	let eventIconList = eventIcon ?? [];
 

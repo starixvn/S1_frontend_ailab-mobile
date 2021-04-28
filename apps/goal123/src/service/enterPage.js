@@ -6,20 +6,30 @@ export const _ACTION_TYPE = {
 	redirect: 2
 };
 
-export const GET_CASINO_ENTER_PAGE = (tpId, gameId, isFree, langId) => {
-	const appUrl = window.location.origin;
-	const homeUrl = `${appUrl}`;
-	const signupUrl = `${appUrl}/${path.join.root}`;
-	const LoginUrl = `${appUrl}/${path.login.root}`;
-	const _errorPageUrl = errorPageUrl(langId);
-	const entPageUrl = `${config.openURL}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&errorUrl=${_errorPageUrl}`;
-	window
-		.open(
-			`${entPageUrl}&fun=${isFree ? 1 : 0}&gameType=slots`,
-			`Tp_${tpId}`,
-			"toolbar=no, menubar=no,scrollbars=no,resizable=no,location=no,directories=no,status=no, top=0, left=0"
-		)
-		.focus();
+export const GET_CASINO_ENTER_PAGE = ({
+	tpId,
+	gameId,
+	isFree,
+	langId,
+	execFunction
+}) => {
+	if (execFunction) {
+		execFunction();
+	} else {
+		const appUrl = window.location.origin;
+		const homeUrl = `${appUrl}`;
+		const signupUrl = `${appUrl}/${path.join.root}`;
+		const LoginUrl = `${appUrl}/${path.login.root}`;
+		const _errorPageUrl = errorPageUrl(langId);
+		const entPageUrl = `${config.openURL}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&errorUrl=${_errorPageUrl}`;
+		window
+			.open(
+				`${entPageUrl}&fun=${isFree ? 1 : 0}&gameType=slots`,
+				`Tp_${tpId}`,
+				"toolbar=no, menubar=no,scrollbars=no,resizable=no,location=no,directories=no,status=no, top=0, left=0"
+			)
+			.focus();
+	}
 };
 
 export const GET_ENTER_PAGE = ({
@@ -45,7 +55,7 @@ export const GET_ENTER_PAGE = ({
 	if (_tpId === 1) {
 		if (_gameId === 43 || _gameId === 220 || _gameId === 202) {
 			result = setResult("", true, _ACTION_TYPE.redirect, _tpId, _gameId);
-		} else if (_gameId < 100) {
+		} else if (_gameId < 100 || _gameId === 997) {
 			result = setResult(
 				"",
 				false,
