@@ -5,7 +5,6 @@ const Inputbox = ({
 	icon,
 	inputType,
 	placeholder,
-	onFocus,
 	onBlur,
 	onChange,
 	value,
@@ -13,36 +12,38 @@ const Inputbox = ({
 	disabled,
 	maxLength,
 	tip,
-	warningIcon
+	inputStatus
 }) => {
 	return (
-		<div className="inputBoxText">
-			{icon ? <i className={icon} /> : null}
-			<input
-				type={inputType ?? "text"}
-				placeholder={placeholder}
-				onFocus={onFocus}
-				onBlur={onBlur}
-				onChange={onChange}
-				value={value}
-				max={max}
-				disabled={disabled}
-				maxLength={maxLength}
-			/>
-			{tip ? <div className="tip open">{tip}</div> : null}
-			{warningIcon ? (
-				<div className="icon-module">
-					<i className="icon icon-warning" />
-				</div>
-			) : null}
-		</div>
+		<>
+			<div className="inputBoxText">
+				{icon ? <i className={icon} /> : null}
+				<input
+					type={inputType ?? "text"}
+					placeholder={placeholder}
+					onFocus={onFocus}
+					onBlur={onBlur}
+					onChange={onChange}
+					value={value}
+					max={max}
+					disabled={disabled}
+					maxLength={maxLength}
+				/>
+				<IptStatus inputStatus={inputStatus} />
+			</div>
+			{tip ? <div>{tip}</div> : null}
+		</>
 	);
 };
 
-const IptStatus = ({ btnStatus }) => {
-	switch (btnStatus) {
+const IptStatus = ({ inputStatus }) => {
+	switch (inputStatus) {
 		case false:
-		// return
+			return <span className="icon icon-cross textRed" />;
+		case true:
+			return <span className="icon icon-checkmark textGreen" />;
+		default:
+			return <span className="icon icon-information-solid" />;
 	}
 };
 
@@ -50,20 +51,18 @@ Inputbox.defaultProps = {
 	icon: "",
 	inputType: "",
 	placeholder: "",
-	onFocus: () => null,
 	onBlur: () => null,
 	max: null,
 	disabled: false,
 	maxLength: null,
 	tip: "",
-	warningIcon: false
+	inputStatus: null
 };
 
 Inputbox.propTypes = {
 	icon: PropTypes.string,
 	inputType: PropTypes.string,
 	placeholder: PropTypes.string,
-	onFocus: PropTypes.func,
 	onBlur: PropTypes.func,
 	onChange: PropTypes.func.isRequired,
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
@@ -71,7 +70,7 @@ Inputbox.propTypes = {
 	disabled: PropTypes.bool,
 	maxLength: PropTypes.number,
 	tip: PropTypes.string,
-	warningIcon: PropTypes.bool
+	inputStatus: PropTypes.bool
 };
 
 export default Inputbox;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import { useMatch, useNavigate } from "@reach/router";
-import Inputbox from "../common/inputbox.refactor";
+import Inputbox from "../common/inputbox.info";
 import InputboxPWD from "../common/inputbox.password.refactor";
 import Dropdown from "../common/dropdown";
 import Checkbox from "../common/checkbox";
@@ -29,6 +29,7 @@ import PromoPopup from "./join.promotion";
 import Logo from "../img/logo";
 import areaCode from "../../datas/areaCode";
 import { initValue, initStatus, currencyToAreacode } from "./join.def";
+import useTip from "../hook/useTip";
 
 const Join = () => {
 	const navigate = useNavigate();
@@ -43,6 +44,7 @@ const Join = () => {
 	const [affiliateidExist, setAffiliateidExist] = useState(null);
 	const [hintStatus, setHintStatus] = useState(initStatus);
 	const [promoPopup, setPromoPopup] = useState(false);
+	const { showTips, showTipHandler } = useTip([]);
 	const isMountedRef = useRef(null);
 
 	const currencyToCountryCode = currencyToAreacode[51];
@@ -438,7 +440,7 @@ const Join = () => {
 					onChange={EditField.bind(this, { col: "UserName" })}
 					value={userValue.UserName}
 					tip={hintStatus.UserName.msg}
-					warningIcon={hintStatus.UserName.checked === false}
+					inputStatus={hintStatus.UserName.checked}
 				/>
 
 				<InputboxPWD
@@ -486,7 +488,7 @@ const Join = () => {
 						// onFocus={showTipsHandler.bind(null, "Phone")}
 						onBlur={checkValue.bind(this, { col: "Phone" })}
 						onChange={EditField.bind(this, { col: "Phone" })}
-						iconStatus={hintStatus.Phone.checked}
+						InputStatus={hintStatus.Phone.checked}
 					/>
 					<div className="errortip open">{hintStatus.Phone.msg}</div>
 				</div>
