@@ -138,3 +138,9 @@ export const api_GetCustTpBetRecordDetailListbyGameType = ({
 
 export const api_payment_GetLocalBankInfo = ({ sysId }) =>
 	paymentRequest.post("/GetLocalBankInfo", { sysId });
+
+export const api_payment_GetLoadCardPayGroupList = () =>
+	paymentRequest.post("/GetLoadCardPayGroupList");
+
+export const api_payment_GetLoadCardPayInfoList = ({ groupId }) =>
+	paymentRequest.post("/GetLoadCardPayInfoList", { groupId });
