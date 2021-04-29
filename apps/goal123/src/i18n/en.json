@@ -523,6 +523,8 @@
 	"lbl_Tournament" : "Tournament",
 	"lbl_Stage": "Stage",
 	"lbl_TpWallet_27":"PT Wallet",
-	"lbl_PromotionRebateAndCashback":"Rebate / Cashback"
-
+	"lbl_PromotionRebateAndCashback":"Rebate / Cashback",
+	"lbl_LoadCard":"Load Card",
+	"lbl_SelectPaymentMode":"Select Payment Mode",
+	"lbl_DepositType5":"Load Card"
 }
