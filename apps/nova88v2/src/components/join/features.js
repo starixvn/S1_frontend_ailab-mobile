@@ -21,13 +21,13 @@ const EN = () => {
 				<span className="icon icon-star-full" />
 				FEATURES
 			</div>
-			<div className="title">MEMBERS BENEFITS</div>
+			<div className="title">MEMBER BENEFITS</div>
 			<ul>
 				<li>
-					<span>126%</span> SPORTSBOOK WELCOME BONUS
+					<span>55%</span> NOVA88 STARTER PACK
 				</li>
 				<li>
-					<span>100%</span> LIVE CASINO WELCOME BONUS
+					<span>68%</span> LIVE CASINO WELCOME BONUS
 				</li>
 				<li>
 					<span>100%</span> SLOTS WELCOME BONUS
@@ -62,21 +62,21 @@ const CS = () => {
 			<div className="title">会员福利</div>
 			<ul>
 				<li>
-					<span>126%</span> 体育欢迎红利
+					<span>55%</span> NOVA88 新会员套餐
 				</li>
 				<li>
-					<span>100%</span> 真人娱乐欢迎红利
+					<span>68%</span> 真人娱乐欢迎红利
 				</li>
 				<li>
 					<span>100%</span> 老虎机欢迎红利
 				</li>
 				<li>
-					每周续存红利高达 <span>20%</span>
+					每周再存红利高达 <span>20%</span>
 				</li>
 			</ul>
-			<div className="title">豪享欧亚体育尊贵优惠红利与返水</div>
+			<div className="title">豪享NOVA88尊贵优惠红利与返水</div>
 			<ul>
-				<li>多样化产品平台配上超划算赔率以及完整游戏体验。</li>
+				<li>多样化产品平台配上超划赔率以及完整游戏体验。</li>
 				<li>多项支付方式且火速存/提款交易。</li>
 			</ul>
 		</div>
@@ -128,7 +128,7 @@ const ID = () => {
 			<div className="title">MANFAAT MEMBER</div>
 			<ul>
 				<li>
-					WELCOME BONUS <span>126%</span> SPORTSBOOK
+					<span>55%</span> NOVA88 STARTER PACK
 				</li>
 				<li>
 					WELCOME BONUS <span>100%</span> LIVE CASINO
