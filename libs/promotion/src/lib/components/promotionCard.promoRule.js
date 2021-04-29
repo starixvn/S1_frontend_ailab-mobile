@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import RemainTime from "../common/remainTime";
 import { number_format } from "../common/common";
-import { defRuleCols } from "../common/def";
+import { defRuleCols, defPromotionType } from "../common/def";
 import { configContext } from "../common/context";
 
 const MinAmount = ({ requiredAmount, displayText, formatSetting }) =>
@@ -98,7 +98,15 @@ export default ({ ruleCols, promotionInfo }) => {
 		formatSetting
 	});
 
-	const rows = ruleCols.map(col => allElems[col]);
+	const rows = ruleCols
+		.filter(
+			col =>
+				!(
+					promotionInfo.promotionType === defPromotionType.static &&
+					col === defRuleCols.maxBonus
+				)
+		)
+		.map(col => allElems[col]);
 	return (
 		<div className="rollover">
 			<div>{rows}</div>
