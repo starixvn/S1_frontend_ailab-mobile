@@ -110,9 +110,15 @@ const Payment = props => {
 							src={`${config.imgUrl}/common/images/MobilePay/${selChannel.groupName}.png`}
 							alt={selChannel.groupName}
 						/>
-						<div className="tip">
-							<span>{i18n.lbl_DepositAmount} :</span>{" "}
-							{number_format(real_amount, _isConvert, 0)}
+						<div>
+							<ul>
+								<li className="text-lightBlue">
+									{i18n.lbl_DepositAmount} :
+								</li>
+								<li>
+									{number_format(real_amount, _isConvert, 0)}
+								</li>
+							</ul>
 						</div>
 					</>
 				),
