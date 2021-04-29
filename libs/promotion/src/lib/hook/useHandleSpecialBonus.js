@@ -42,7 +42,7 @@ export const useHandleSpecialBonus = ({ api, langId, filterType }) => {
 
 	const GetSpecialBonusList = async SpecialCode => {
 		try {
-			const getDataRes = await api.promotion.GetSpecialBonusListV2({
+			const getDataRes = await api.promotion.GetSpecialPromotionList({
 				SpecialCode,
 				langId
 			});
