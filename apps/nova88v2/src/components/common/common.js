@@ -10,7 +10,8 @@ export const getUrlParameter = name => {
 export const number_format = (
 	number,
 	IsConvertRequired = false,
-	digits = 2
+	digits = 2,
+	formatRequired = true
 ) => {
 	let n = number;
 	if (!isNaN(n)) {
@@ -30,7 +31,7 @@ export const number_format = (
 	return (
 		arr[0].replace(re, "$1,") +
 		(arr.length === 2 ? `.${arr[1]}` : "") +
-		(IsConvertRequired ? " ('000)" : "")
+		(IsConvertRequired && formatRequired ? " ('000)" : "")
 	);
 };
 
@@ -43,14 +44,15 @@ export const isConvert = currencyId => {
 	return _isConvertList[currencyId] === true;
 };
 
-export const checkAmount = (
+export const checkAmount = ({
 	amount,
 	minAmount,
 	maxAmount,
 	_isConvert,
 	i18n,
-	digits = 2
-) => {
+	digits = 2,
+	maxAmountAllowUnlimit = true
+}) => {
 	let status = 0;
 	let msg = "";
 	if (amount !== null && amount !== undefined) {
@@ -65,9 +67,10 @@ export const checkAmount = (
 				minAmount ? number_format(minAmount, _isConvert, digits) : 1
 			);
 		} else if (
-			minAmount !== 0 &&
-			maxAmount !== 0 &&
-			(numAmount > maxAmount || numAmount < minAmount)
+			(minAmount !== 0 &&
+				maxAmount !== 0 &&
+				(numAmount > maxAmount || numAmount < minAmount)) ||
+			(!maxAmountAllowUnlimit && numAmount > maxAmount)
 		) {
 			status = 2;
 			msg = `${number_format(numAmount, _isConvert, digits)} ${

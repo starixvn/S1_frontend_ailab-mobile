@@ -169,13 +169,13 @@ const SetPayment = props => {
 			maxAmount = stateSelBank?.bank?.maxAmount;
 		}
 
-		const result = checkAmount(
-			_amount,
+		const result = checkAmount({
+			amount: _amount,
 			minAmount,
 			maxAmount,
 			_isConvert,
 			i18n
-		);
+		});
 		if (result.status !== 0) {
 			setWarning({
 				status: true,

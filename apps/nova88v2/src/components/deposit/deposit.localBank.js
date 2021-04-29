@@ -125,13 +125,13 @@ export const Main = props => {
 	};
 
 	const VaildAmount = _amount => {
-		const result = checkAmount(
-			_amount,
-			selBank?.bank?.minAmount,
-			selBank?.bank?.maxAmount,
+		const result = checkAmount({
+			amount: _amount,
+			minAmount: selBank?.bank?.minAmount,
+			maxAmount: selBank?.bank?.maxAmount,
 			_isConvert,
 			i18n
-		);
+		});
 		if (result.status !== 0) {
 			setWarning({
 				status: true,
