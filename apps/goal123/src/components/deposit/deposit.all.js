@@ -12,7 +12,7 @@ import PageVerify from "./deposit.pageVerify";
 import MobilePay from "./deposit.all.mobilePay";
 import OnlineBanking from "./deposit.all.onlineBanking";
 import LocalBank from "./deposit.all.localBank";
-import LoadCard from "./deposit.all.loadCard";
+import LoadCardPay from "./deposit.all.loadCardPay";
 import {
 	api_GetDepositInfoRecent,
 	api_GetMobilePayGroupList,
@@ -23,13 +23,13 @@ import {
 } from "../../service/api/payment";
 
 import RecentDatas from "./deposit.recentDatas";
-import { number_format, isConvert } from "../common/common";
+import { number_format } from "../common/common";
 
 const defPayType = {
 	onlineBank: "onlineBank",
 	localBank: "localBank",
 	mobilePay: "mobilePay",
-	loadCard: "loadCard"
+	loadCardPay: "loadCardPay"
 };
 
 const defPayment = {
@@ -45,8 +45,8 @@ const defPayment = {
 		displayKey: "lbl_OnlineBanking",
 		creditTimeKey: "lbl_Instant"
 	},
-	[defPayType.loadCard]: {
-		displayKey: "lbl_LoadCard",
+	[defPayType.loadCardPay]: {
+		displayKey: "lbl_LoadCardPay",
 		creditTimeKey: "lbl_5mins"
 	}
 };
@@ -128,12 +128,12 @@ const Panel = () => {
 				paymentList={paymentList[defPayType.onlineBank] ?? []}
 			/>
 		);
-	} else if (selected === defPayType.loadCard) {
+	} else if (selected === defPayType.loadCardPay) {
 		content = (
-			<LoadCard
+			<LoadCardPay
 				payType={selected}
-				creditTimeKey={defPayment[defPayType.loadCard].creditTimeKey}
-				paymentList={paymentList[defPayType.loadCard] ?? []}
+				creditTimeKey={defPayment[defPayType.loadCardPay].creditTimeKey}
+				paymentList={paymentList[defPayType.loadCardPay] ?? []}
 			/>
 		);
 	}
@@ -149,7 +149,7 @@ const Panel = () => {
 					[defPayType.onlineBank]: [],
 					[defPayType.localBank]: [],
 					[defPayType.cryptoPay]: [],
-					[defPayType.loadCard]: []
+					[defPayType.loadCardPay]: []
 				};
 
 				const setDefaultSelect = (currentValue, payType, dataList) =>
@@ -197,12 +197,12 @@ const Panel = () => {
 
 				try {
 					const res = await api_payment_GetLoadCardPayGroupList();
-					payments[defPayType.loadCard] = getDataListResult(res);
+					payments[defPayType.loadCardPay] = getDataListResult(res);
 
 					defaultSelect = setDefaultSelect(
 						defaultSelect,
-						defType.loadCard,
-						payments[defPayType.loadCard]
+						defType.loadCardPay,
+						payments[defPayType.loadCardPay]
 					);
 				} catch (error) {}
 
@@ -223,7 +223,6 @@ const Panel = () => {
 		}
 	}, [userInfo.isLogin]);
 
-	const _isConvert = isConvert(userInfo.currencyId);
 	const SubmitProof = (
 		bankInfo,
 		depositRep,

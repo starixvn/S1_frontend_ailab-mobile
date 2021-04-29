@@ -147,7 +147,7 @@ const Payment = props => {
 				dataList={groupList}
 				SelectPayment={SelectGroup}
 				selected={selChannel?.groupId}
-				title={i18n.lbl_SelectPaymentMode}
+				title={i18n.lbl_PaymentModes}
 				imgKey="payName"
 				idKey="groupId"
 				prefixImgUrl={`${config.imgUrl}/common/images/LoadCardPay/`}

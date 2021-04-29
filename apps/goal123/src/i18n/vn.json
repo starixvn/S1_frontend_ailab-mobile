@@ -524,8 +524,7 @@
 	"lbl_Stage": "Giai đoạn",
 	"lbl_TpWallet_27":"Ví PT",
 	"lbl_PromotionRebateAndCashback":"Hoàn trả / Hoàn lại tiền",
-	"lbl_LoadCard":"Load Card",
-	"lbl_SelectPaymentMode":"Select Payment Mode",
-	"lbl_DepositType5":"Load Card"
+	"lbl_LoadCardPay":"Load Card Pay",
+	"lbl_DepositType5":"Load Card Pay"
 
 }
