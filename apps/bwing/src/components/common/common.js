@@ -67,7 +67,7 @@ export const checkAmount = ({
 			(minAmount !== 0 &&
 				maxAmount !== 0 &&
 				(num_Amount > maxAmount || num_Amount < minAmount)) ||
-			(!maxAmountAllowUnlimit && numAmount > maxAmount)
+			(!maxAmountAllowUnlimit && num_Amount > maxAmount)
 		) {
 			status = 2;
 			msg = `${number_format(num_Amount, _isConvert, digits)} ${
