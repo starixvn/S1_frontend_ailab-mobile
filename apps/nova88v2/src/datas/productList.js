@@ -139,6 +139,58 @@ const gameList = ({ langId }) => [
 		]
 	},
 	{
+		category: "livecasino",
+		categoryIcon: "livecasino",
+		translateKey: "lbl_LiveCasino",
+		items: [
+			{
+				...defGameInfo.LIVEcasinoN2Live,
+				spanText: "N2Live",
+				img: LIVEcasino_N2Live
+			},
+			{
+				...defGameInfo.LIVEcasinoWM,
+				spanText: "WM",
+				img: LIVEcasino_WM
+			},
+			{
+				...defGameInfo.LIVEcasinoAB,
+				spanText: "AB",
+				img: LIVEcasino_AB
+			},
+			{
+				...defGameInfo.LIVEcasinoEB,
+				spanText: "EB",
+				img: LIVEcasino_EB
+			},
+			{
+				...defGameInfo.LIVEcasinoSA,
+				spanText: "SA",
+				img: LIVEcasino_SA
+			},
+			{
+				...defGameInfo.LIVEcasinoAE,
+				spanText: "AE",
+				img: LIVEcasino_AE
+			},
+			{
+				...defGameInfo.LIVEcasinoPP,
+				spanText: "PP",
+				img: LIVEcasino_PP
+			},
+			{
+				...defGameInfo.LIVEcasinoDG,
+				spanText: "DG",
+				img: LIVEcasino_DG
+			},
+			{
+				...defGameInfo.LIVEcasinoAG,
+				spanText: "AG",
+				img: LIVEcasino_AG
+			}
+		]
+	},
+	{
 		category: "slot",
 		categoryIcon: "icon_777",
 		translateKey: "lbl_Casino",
@@ -212,58 +264,6 @@ const gameList = ({ langId }) => [
 				parameter: defGameInfo.Casino_OW,
 				spanText: "OW",
 				img: casino_OW
-			}
-		]
-	},
-	{
-		category: "livecasino",
-		categoryIcon: "livecasino",
-		translateKey: "lbl_LiveCasino",
-		items: [
-			{
-				...defGameInfo.LIVEcasinoN2Live,
-				spanText: "N2Live",
-				img: LIVEcasino_N2Live
-			},
-			{
-				...defGameInfo.LIVEcasinoWM,
-				spanText: "WM",
-				img: LIVEcasino_WM
-			},
-			{
-				...defGameInfo.LIVEcasinoAB,
-				spanText: "AB",
-				img: LIVEcasino_AB
-			},
-			{
-				...defGameInfo.LIVEcasinoEB,
-				spanText: "EB",
-				img: LIVEcasino_EB
-			},
-			{
-				...defGameInfo.LIVEcasinoSA,
-				spanText: "SA",
-				img: LIVEcasino_SA
-			},
-			{
-				...defGameInfo.LIVEcasinoAE,
-				spanText: "AE",
-				img: LIVEcasino_AE
-			},
-			{
-				...defGameInfo.LIVEcasinoPP,
-				spanText: "PP",
-				img: LIVEcasino_PP
-			},
-			{
-				...defGameInfo.LIVEcasinoDG,
-				spanText: "DG",
-				img: LIVEcasino_DG
-			},
-			{
-				...defGameInfo.LIVEcasinoAG,
-				spanText: "AG",
-				img: LIVEcasino_AG
 			}
 		]
 	},
