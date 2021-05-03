@@ -54,7 +54,10 @@ const Payment = props => {
 				obj => obj.payId === userPaymentData?.payId
 			);
 			groupIdx = groupIdx === -1 ? 0 : groupIdx;
-			SelectPayment({ groupInfo: paymentList[groupIdx] });
+			SelectPayment({
+				groupInfo: paymentList[groupIdx],
+				userData: Boolean(userPaymentData?.payId)
+			});
 			setSelGroup(paymentList[groupIdx]);
 		}
 		return () => {
@@ -62,8 +65,8 @@ const Payment = props => {
 		};
 	}, [paymentList.length, userPaymentData.payType]);
 
-	const SelectPayment = ({ groupInfo }) => {
-		if (selGroup?.payId !== groupInfo.payId) {
+	const SelectPayment = ({ groupInfo, userData }) => {
+		if (selGroup?.payId !== groupInfo.payId || userData) {
 			setLoading(true);
 			setSelGroup(groupInfo);
 
