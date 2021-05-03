@@ -12,38 +12,55 @@ const Inputbox = ({
 	disabled,
 	maxLength,
 	tip,
-	inputStatus
+	inputStatus,
+	numberConvert,
+	title,
+	clickInfo
 }) => {
 	return (
-		<>
-			<div className="inputBoxText">
-				{icon ? <i className={icon} /> : null}
-				<input
-					type={inputType ?? "text"}
-					placeholder={placeholder}
-					onFocus={onFocus}
-					onBlur={onBlur}
-					onChange={onChange}
-					value={value}
-					max={max}
-					disabled={disabled}
-					maxLength={maxLength}
-				/>
-				<IptStatus inputStatus={inputStatus} />
+		<div className="input-Area">
+			{title ? <div className="input-title">{title}</div> : null}
+			<div className="input-group">
+				<div className="inputBoxNew">
+					{icon ? <i className={icon} /> : null}
+					<input
+						type={inputType ?? "text"}
+						placeholder={placeholder}
+						onBlur={onBlur}
+						onChange={onChange}
+						value={value}
+						max={max}
+						disabled={disabled}
+						maxLength={maxLength}
+					/>
+					{numberConvert ? <span>(000)</span> : null}
+					<IptStatus
+						inputStatus={inputStatus}
+						clickInfo={clickInfo}
+					/>
+				</div>
+				{/* <div className="btn-group">
+					<button className="blue">Submit</button>
+				</div> */}
 			</div>
-			{tip ? <div>{tip}</div> : null}
-		</>
+			{tip ? <div className="tip open">{tip}</div> : null}
+		</div>
 	);
 };
 
-const IptStatus = ({ inputStatus }) => {
+const IptStatus = ({ inputStatus, clickInfo }) => {
 	switch (inputStatus) {
 		case false:
-			return <span className="icon icon-cross textRed" />;
+			return <i className="icon icon-cross textRed" />;
 		case true:
-			return <span className="icon icon-checkmark textGreen" />;
+			return <i className="icon icon-checkmark textGreen" />;
 		default:
-			return <span className="icon icon-information-solid" />;
+			return (
+				<i
+					className="icon icon-information-solid"
+					onClick={clickInfo}
+				/>
+			);
 	}
 };
 
@@ -56,7 +73,9 @@ Inputbox.defaultProps = {
 	disabled: false,
 	maxLength: null,
 	tip: "",
-	inputStatus: null
+	inputStatus: null,
+	numberConvert: false,
+	title: null
 };
 
 Inputbox.propTypes = {
@@ -70,7 +89,9 @@ Inputbox.propTypes = {
 	disabled: PropTypes.bool,
 	maxLength: PropTypes.number,
 	tip: PropTypes.string,
-	inputStatus: PropTypes.bool
+	inputStatus: PropTypes.bool,
+	numberConvert: PropTypes.bool,
+	title: PropTypes.string
 };
 
 export default Inputbox;

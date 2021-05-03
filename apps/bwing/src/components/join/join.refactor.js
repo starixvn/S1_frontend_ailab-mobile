@@ -182,7 +182,7 @@ const Join = () => {
 			...prev,
 			[col]: {
 				checked: result.checked,
-				msg: result.msg ? i18n[result.msg] : ""
+				msg: result.msg ?? ""
 			}
 		}));
 	};
@@ -193,15 +193,18 @@ const Join = () => {
 
 		if (!val) {
 			checked = false;
-			msg = "msg_UsernameReq";
+			msg = i18n.msg_UsernameReq;
 		} else if (val.length < 6 || val.length > 18) {
 			checked = false;
-			msg = "msg_UsernameLength";
+			msg = i18n.msg_UsernameLength;
 		} else {
-			const res = await api_ExistsUserName({ UserName: val });
+			const res = await api_ExistsUserName({
+				UserName: val,
+				langId: userInfo.langId
+			});
 			if (res.data.errorCode === 0 && res.data.data === true) {
 				checked = false;
-				msg = "msg_UsernameNotAvailable";
+				msg = res.data.message;
 			}
 		}
 
@@ -215,10 +218,10 @@ const Join = () => {
 
 		if (!val) {
 			checked = false;
-			msg = "lbl_PhoneRequired";
+			msg = i18n.lbl_PhoneRequired;
 		} else if (val.length < 9 || !regx.test(val)) {
 			checked = false;
-			msg = "lbl_PhoneTooltip";
+			msg = i18n.lbl_PhoneTooltip;
 		} else {
 			const res = await api_site_ExistsPhoneNo({
 				AreaCode: _areaCode,
@@ -226,7 +229,7 @@ const Join = () => {
 			});
 			if (res.data.errorCode === 0 && res.data.data === true) {
 				checked = false;
-				msg = "msg_PhoneExisted";
+				msg = i18n.msg_PhoneExisted;
 			}
 		}
 
@@ -246,6 +249,17 @@ const Join = () => {
 		setUserValue(prev => ({
 			...prev,
 			[col]: val
+		}));
+	};
+
+	const clickInfo = ({ col, info }) => {
+		const _info = hintStatus[col].msg === "" ? i18n[info] : "";
+		setHintStatus(prev => ({
+			...prev,
+			[col]: {
+				checked: null,
+				msg: _info
+			}
 		}));
 	};
 
@@ -435,19 +449,21 @@ const Join = () => {
 					icon="icon icon-member"
 					inputType="text"
 					placeholder={i18n.lbl_Username}
-					// onFocus={showTipsHandler.bind(null, "UserName")}
 					onBlur={checkValue.bind(this, { col: "UserName" })}
 					onChange={EditField.bind(this, { col: "UserName" })}
 					value={userValue.UserName}
 					tip={hintStatus.UserName.msg}
 					inputStatus={hintStatus.UserName.checked}
+					clickInfo={clickInfo.bind(this, {
+						col: "UserName",
+						info: "lbl_UsernameTooltip"
+					})}
 				/>
 
 				<InputboxPWD
 					icon="icon icon-key"
 					inputType={`${!showingPsw ? "password" : "text"}`}
 					placeholder={i18n.lbl_Password}
-					// onFocus={showTipsHandler.bind(null, "Password")}
 					onBlur={checkValue.bind(this, { col: "Password" })}
 					onChange={EditField.bind(this, { col: "Password" })}
 					showPsw={showingPsw}
@@ -476,7 +492,7 @@ const Join = () => {
 					</Tips>
 				</div>
 
-				<div className="inputBox parts">
+				<div className="inputPhone parts">
 					<span className="countryCode">{_areaCode}</span>
 					<Inputbox
 						icon="icon icon-phone"
