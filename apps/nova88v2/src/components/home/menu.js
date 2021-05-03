@@ -7,6 +7,7 @@ import { getEventIcon } from "./category";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import useHandleLogin from "../hook/useHandleLogin";
 import api from "../../service/api";
+import { userInfoContext } from "../common/context";
 
 const Menu = ({ i18n, userInfo, setPopBox }) => {
 	const [selectedCol, setSelectedCol] = useState(defCol.sports);
@@ -47,7 +48,10 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 		}
 	};
 
-	const gameArr = gameList({ langId: userInfo.langId }).map(item => {
+	const gameArr = gameList({
+		langId: userInfo.langId,
+		currencyId: userInfo.currencyId
+	}).map(item => {
 		const _subIcon = item?.items?.filter(
 			subItem =>
 				subItem.eventIcon &&
@@ -107,7 +111,10 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 		);
 	});
 
-	const subGameArr = gameList({ langId: userInfo?.langId })?.map(item => {
+	const subGameArr = gameList({
+		langId: userInfo?.langId,
+		currencyId: userInfo.currencyId
+	})?.map(item => {
 		const subGame = item.items
 			?.filter(subItem => {
 				let showItem = true;

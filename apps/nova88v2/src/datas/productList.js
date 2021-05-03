@@ -69,304 +69,1151 @@ const eventTime = {
 	new_vip: { startDate: "2021/02/05 11:00:00" }
 };
 
-const gameList = ({ langId }) => [
-	{
-		category: "sports",
-		categoryIcon: "soccer",
-		translateKey: "lbl_Sports",
-		items: [
-			{
-				...defGameInfo.Soccer,
-				img: Soccer,
-				spanTextKey: "lbl_Soccer"
-			},
-			{
-				...defGameInfo.SabaSoccer,
-				img: SabaSoccer,
-				spanTextKey: "lbl_SabaSoccer"
-			},
-			{
-				...defGameInfo.Basketball,
-				img: Basketball,
-				spanTextKey: "lbl_Basketball"
-			},
-			{
-				...defGameInfo.Tennis,
-				img: Tennis,
-				spanTextKey: "lbl_Tennis"
-			},
-			{
-				...defGameInfo.Cricket,
-				img: Cricket,
-				spanTextKey: "lbl_Cricket"
-			}
-		]
-	},
-	{
-		category: "virtualsports",
-		categoryIcon: "e-sports",
-		translateKey: "lbl_eSports",
-		items: [
-			{
-				...defGameInfo.ESportAll,
-				spanTextKey: "lbl_All",
-				img: ESportsAll
-			},
-			{
-				...defGameInfo.ESportAll,
-				spanText: "CS:GO",
-				img: ESportsCS
-			},
-			{
-				...defGameInfo.ESportAll,
-				spanText: "DOTA2",
-				img: ESportsDota
-			},
-			{
-				...defGameInfo.ESportAll,
-				spanText: "KOG",
-				img: ESportsKOG
-			},
-			{
-				...defGameInfo.ESportAll,
-				spanText: "LOL",
-				img: ESportsLOL
-			}
-		]
-	},
-	{
-		category: "livecasino",
-		categoryIcon: "livecasino",
-		translateKey: "lbl_LiveCasino",
-		items: [
-			{
-				...defGameInfo.LIVEcasinoN2Live,
-				spanText: "N2Live",
-				img: LIVEcasino_N2Live
-			},
-			{
-				...defGameInfo.LIVEcasinoWM,
-				spanText: "WM",
-				img: LIVEcasino_WM
-			},
-			{
-				...defGameInfo.LIVEcasinoAB,
-				spanText: "AB",
-				img: LIVEcasino_AB
-			},
-			{
-				...defGameInfo.LIVEcasinoEB,
-				spanText: "EB",
-				img: LIVEcasino_EB
-			},
-			{
-				...defGameInfo.LIVEcasinoSA,
-				spanText: "SA",
-				img: LIVEcasino_SA
-			},
-			{
-				...defGameInfo.LIVEcasinoAE,
-				spanText: "AE",
-				img: LIVEcasino_AE
-			},
-			{
-				...defGameInfo.LIVEcasinoPP,
-				spanText: "PP",
-				img: LIVEcasino_PP
-			},
-			{
-				...defGameInfo.LIVEcasinoDG,
-				spanText: "DG",
-				img: LIVEcasino_DG
-			},
-			{
-				...defGameInfo.LIVEcasinoAG,
-				spanText: "AG",
-				img: LIVEcasino_AG
-			}
-		]
-	},
-	{
-		category: "slot",
-		categoryIcon: "icon_777",
-		translateKey: "lbl_Casino",
-		items: [
-			{
-				...defGameInfo.Casino_PP,
-				parameter: defGameInfo.Casino_PP,
-				spanText: "PP",
-				img: casino_PP,
-				path: path.casino.root
-			},
-			{
-				...defGameInfo.casino_ICG,
-				parameter: defGameInfo.casino_ICG,
-				spanText: "ICG",
-				img: casino_ICG,
-				path: path.casino.root
-			},
-			{
-				...defGameInfo.Casino_JOKER,
-				parameter: defGameInfo.Casino_JOKER,
-				spanText: "JOKER",
-				img: casino_JOKER,
-				path: path.casino.root
-			},
-			{
-				...defGameInfo.Casino_CQ9,
-				parameter: defGameInfo.Casino_CQ9,
-				spanText: "CQ9",
-				img: casino_CQ9,
-				path: path.casino.root
-			},
-			{
-				...defGameInfo.Casino_GPI,
-				parameter: defGameInfo.Casino_GPI,
-				spanText: "GPI",
-				img: casino_GPI,
-				path: path.casino.root
-			},
-			{
-				...defGameInfo.Casino_YGG,
-				parameter: defGameInfo.Casino_YGG,
-				spanText: "YGG",
-				img: casino_YGG,
-				path: path.casino.root
-			},
-			{
-				...defGameInfo.Casino_SG,
-				parameter: defGameInfo.Casino_SG,
-				spanText: "SG",
-				img: casino_SG,
-				path: path.casino.root
-			},
-			{
-				...defGameInfo.Casino_PG,
-				parameter: defGameInfo.Casino_PG,
-				spanText: "PG",
-				img: casino_PG,
-				path: path.casino.root
-			},
-			// {
-			// ...defGameInfo.Casino_918Kiss,
-			// parameter:defGameInfo.Casino_918Kiss,
-			// spanText: "918Kiss",
-			// 	img: casino_KISS,
-			// 	path: path.kiss918.root,
-			// 	needLogin: true
-			// },
-			{
-				...defGameInfo.Casino_OW,
-				parameter: defGameInfo.Casino_OW,
-				spanText: "OW",
-				img: casino_OW
-			}
-		]
-	},
-	{
-		category: "game",
-		categoryIcon: "game",
-		translateKey: "lbl_Fishing",
-		items: [
-			{
-				...defGameInfo.Fishing_AB3,
-				spanTextKey: "lbl_Paradise",
-				img: fishing_CQ9_AB3
-			},
-			{
-				...defGameInfo.ICG_DRAGONBALL_FISHING,
-				spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
-				img: fish_DBF
-			},
-			{
-				...defGameInfo.FishingGG,
-				spanTextKey: "lbl_FishingGG",
-				img: fish_GG
-			},
-			{
-				...defGameInfo.FishingSGW,
-				spanTextKey: "lbl_FishingSG2",
-				img: fish_SGW
-			}
-		]
-	},
-	// {
-	// 	category: "cockFighting",
-	// 	categoryIcon: "cock",
-	// 	translateKey: "lbl_CockFighting",
-	// 	items: [
-	// 		{
-	// 			tpId: 19,
-	// 			gameId: 19,
-	// 			icon: "cock",
-	// 			img: Cockfighting,
-	// 			spanTextKey: "lbl_CockFighting"
-	// 		}
-	// 	]
-	// },
-	{
-		category: "kelo",
-		categoryIcon: "kelo",
-		translateKey: "lbl_Lottery",
-		items: [
-			{
-				...defGameInfo.Indo4d,
-				img: id4d,
-				spanTextKey: "lbl_Indo4d",
-				allowCurrency: [4, 15]
-			},
-			{
-				...defGameInfo.Keno,
-				img: Keno,
-				spanTextKey: "lbl_Keno"
-			},
-			{
-				...defGameInfo.lottery,
-				img: Lottery,
-				spanTextKey: "lbl_Lottery"
-			},
-			{
-				...defGameInfo.NumberGame,
-				img: number_game,
-				spanTextKey: "lbl_NumberGame"
-			}
-		]
-	},
-	{
-		category: "poker",
-		categoryIcon: "casino",
-		translateKey: "lbl_Poker",
-		popBox: {
-			needLogin: true,
-			title: "lbl_Poker",
-			type: defPopBoxType.OneGame
-		}
-	},
-	{
-		category: "affiliate",
-		categoryIcon: "affiliate",
-		translateKey: "lbl_Affiliate",
-		href: `${siteInfo(langId).affiliateLink}`
-	},
-	{
-		category: "vip",
-		categoryIcon: "vip",
-		translateKey: "lbl_VIP",
-		path: path.vip.root,
-		eventIcon: [
-			{
-				icon: defIconType.new,
-				inPeriod: isEventPeriod(eventTime.new_vip)
-			}
-		]
-	},
-	{
-		category: "ranking",
-		categoryIcon: "ranking",
-		translateKey: "lbl_Ranking",
-		path: path.ranking.root
+const gameList = ({ langId, currencyId }) => {
+	let list = [];
+	switch (currencyId) {
+		case 15:
+			list = [
+				{
+					category: "sports",
+					categoryIcon: "soccer",
+					translateKey: "lbl_Sports",
+					items: [
+						{
+							...defGameInfo.Soccer,
+							img: Soccer,
+							spanTextKey: "lbl_Soccer"
+						},
+						{
+							...defGameInfo.SabaSoccer,
+							img: SabaSoccer,
+							spanTextKey: "lbl_SabaSoccer"
+						},
+						{
+							...defGameInfo.Basketball,
+							img: Basketball,
+							spanTextKey: "lbl_Basketball"
+						},
+						{
+							...defGameInfo.Tennis,
+							img: Tennis,
+							spanTextKey: "lbl_Tennis"
+						},
+						{
+							...defGameInfo.Cricket,
+							img: Cricket,
+							spanTextKey: "lbl_Cricket"
+						}
+					]
+				},
+				{
+					category: "virtualsports",
+					categoryIcon: "e-sports",
+					translateKey: "lbl_eSports",
+					items: [
+						{
+							...defGameInfo.ESportAll,
+							spanTextKey: "lbl_All",
+							img: ESportsAll
+						},
+						{
+							...defGameInfo.ESportAll,
+							spanText: "CS:GO",
+							img: ESportsCS
+						},
+						{
+							...defGameInfo.ESportAll,
+							spanText: "DOTA2",
+							img: ESportsDota
+						},
+						{
+							...defGameInfo.ESportAll,
+							spanText: "KOG",
+							img: ESportsKOG
+						},
+						{
+							...defGameInfo.ESportAll,
+							spanText: "LOL",
+							img: ESportsLOL
+						}
+					]
+				},
+				{
+					category: "livecasino",
+					categoryIcon: "livecasino",
+					translateKey: "lbl_LiveCasino",
+					items: [
+						{
+							...defGameInfo.LIVEcasinoAE,
+							spanText: "AE",
+							img: LIVEcasino_AE
+						},
+						{
+							...defGameInfo.LIVEcasinoAG,
+							spanText: "AG",
+							img: LIVEcasino_AG
+						},
+						{
+							...defGameInfo.LIVEcasinoEB,
+							spanText: "EB",
+							img: LIVEcasino_EB
+						},
+						{
+							...defGameInfo.LIVEcasinoDG,
+							spanText: "DG",
+							img: LIVEcasino_DG
+						},
+						{
+							...defGameInfo.LIVEcasinoWM,
+							spanText: "WM",
+							img: LIVEcasino_WM
+						},
+						{
+							...defGameInfo.LIVEcasinoPP,
+							spanText: "PP",
+							img: LIVEcasino_PP
+						},
+						{
+							...defGameInfo.LIVEcasinoSA,
+							spanText: "SA",
+							img: LIVEcasino_SA
+						},
+						{
+							...defGameInfo.LIVEcasinoAB,
+							spanText: "AB",
+							img: LIVEcasino_AB
+						},
+						{
+							...defGameInfo.LIVEcasinoN2Live,
+							spanText: "N2Live",
+							img: LIVEcasino_N2Live
+						}
+					]
+				},
+				{
+					category: "slot",
+					categoryIcon: "icon_777",
+					translateKey: "lbl_Casino",
+					items: [
+						{
+							...defGameInfo.Casino_PP,
+							parameter: defGameInfo.Casino_PP,
+							spanText: "PP",
+							img: casino_PP,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_PG,
+							parameter: defGameInfo.Casino_PG,
+							spanText: "PG",
+							img: casino_PG,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_SG,
+							parameter: defGameInfo.Casino_SG,
+							spanText: "SG",
+							img: casino_SG,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_JOKER,
+							parameter: defGameInfo.Casino_JOKER,
+							spanText: "JOKER",
+							img: casino_JOKER,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_CQ9,
+							parameter: defGameInfo.Casino_CQ9,
+							spanText: "CQ9",
+							img: casino_CQ9,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.casino_ICG,
+							parameter: defGameInfo.casino_ICG,
+							spanText: "ICG",
+							img: casino_ICG,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_GPI,
+							parameter: defGameInfo.Casino_GPI,
+							spanText: "GPI",
+							img: casino_GPI,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_YGG,
+							parameter: defGameInfo.Casino_YGG,
+							spanText: "YGG",
+							img: casino_YGG,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_OW,
+							parameter: defGameInfo.Casino_OW,
+							spanText: "OW",
+							img: casino_OW
+						}
+					]
+				},
+				{
+					category: "game",
+					categoryIcon: "game",
+					translateKey: "lbl_Fishing",
+					items: [
+						{
+							...defGameInfo.Fishing_AB3,
+							spanTextKey: "lbl_Paradise",
+							img: fishing_CQ9_AB3
+						},
+						{
+							...defGameInfo.ICG_DRAGONBALL_FISHING,
+							spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
+							img: fish_DBF
+						},
+						{
+							...defGameInfo.FishingGG,
+							spanTextKey: "lbl_FishingGG",
+							img: fish_GG
+						},
+						{
+							...defGameInfo.FishingSGW,
+							spanTextKey: "lbl_FishingSG2",
+							img: fish_SGW
+						}
+					]
+				},
+				{
+					category: "kelo",
+					categoryIcon: "kelo",
+					translateKey: "lbl_Lottery",
+					items: [
+						{
+							...defGameInfo.Indo4d,
+							img: id4d,
+							spanTextKey: "lbl_Indo4d",
+							allowCurrency: [4, 15]
+						},
+						{
+							...defGameInfo.Keno,
+							img: Keno,
+							spanTextKey: "lbl_Keno"
+						},
+						{
+							...defGameInfo.lottery,
+							img: Lottery,
+							spanTextKey: "lbl_Lottery"
+						},
+						{
+							...defGameInfo.NumberGame,
+							img: number_game,
+							spanTextKey: "lbl_NumberGame"
+						}
+					]
+				},
+				{
+					category: "poker",
+					categoryIcon: "casino",
+					translateKey: "lbl_Poker",
+					popBox: {
+						needLogin: true,
+						title: "lbl_Poker",
+						type: defPopBoxType.OneGame
+					}
+				},
+				{
+					category: "affiliate",
+					categoryIcon: "affiliate",
+					translateKey: "lbl_Affiliate",
+					href: `${siteInfo(langId).affiliateLink}`
+				},
+				{
+					category: "vip",
+					categoryIcon: "vip",
+					translateKey: "lbl_VIP",
+					path: path.vip.root,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.new_vip)
+						}
+					]
+				},
+				{
+					category: "ranking",
+					categoryIcon: "ranking",
+					translateKey: "lbl_Ranking",
+					path: path.ranking.root
+				}
+			];
+			break;
+		case 2:
+			list = [
+				{
+					category: "sports",
+					categoryIcon: "soccer",
+					translateKey: "lbl_Sports",
+					items: [
+						{
+							...defGameInfo.Soccer,
+							img: Soccer,
+							spanTextKey: "lbl_Soccer"
+						},
+						{
+							...defGameInfo.SabaSoccer,
+							img: SabaSoccer,
+							spanTextKey: "lbl_SabaSoccer"
+						},
+						{
+							...defGameInfo.Basketball,
+							img: Basketball,
+							spanTextKey: "lbl_Basketball"
+						},
+						{
+							...defGameInfo.Tennis,
+							img: Tennis,
+							spanTextKey: "lbl_Tennis"
+						},
+						{
+							...defGameInfo.Cricket,
+							img: Cricket,
+							spanTextKey: "lbl_Cricket"
+						}
+					]
+				},
+				{
+					category: "virtualsports",
+					categoryIcon: "e-sports",
+					translateKey: "lbl_eSports",
+					items: [
+						{
+							...defGameInfo.ESportAll,
+							spanTextKey: "lbl_All",
+							img: ESportsAll
+						},
+						{
+							...defGameInfo.ESportAll,
+							spanText: "CS:GO",
+							img: ESportsCS
+						},
+						{
+							...defGameInfo.ESportAll,
+							spanText: "DOTA2",
+							img: ESportsDota
+						},
+						{
+							...defGameInfo.ESportAll,
+							spanText: "KOG",
+							img: ESportsKOG
+						},
+						{
+							...defGameInfo.ESportAll,
+							spanText: "LOL",
+							img: ESportsLOL
+						}
+					]
+				},
+				{
+					category: "livecasino",
+					categoryIcon: "livecasino",
+					translateKey: "lbl_LiveCasino",
+					items: [
+						{
+							...defGameInfo.LIVEcasinoDG,
+							spanText: "DG",
+							img: LIVEcasino_DG
+						},
+						{
+							...defGameInfo.LIVEcasinoAE,
+							spanText: "AE",
+							img: LIVEcasino_AE
+						},
+						{
+							...defGameInfo.LIVEcasinoPP,
+							spanText: "PP",
+							img: LIVEcasino_PP
+						},
+						{
+							...defGameInfo.LIVEcasinoSA,
+							spanText: "SA",
+							img: LIVEcasino_SA
+						},
+						{
+							...defGameInfo.LIVEcasinoAB,
+							spanText: "AB",
+							img: LIVEcasino_AB
+						},
+						{
+							...defGameInfo.LIVEcasinoAG,
+							spanText: "AG",
+							img: LIVEcasino_AG
+						},
+						{
+							...defGameInfo.LIVEcasinoWM,
+							spanText: "WM",
+							img: LIVEcasino_WM
+						},
+						{
+							...defGameInfo.LIVEcasinoEB,
+							spanText: "EB",
+							img: LIVEcasino_EB
+						},
+						{
+							...defGameInfo.LIVEcasinoN2Live,
+							spanText: "N2Live",
+							img: LIVEcasino_N2Live
+						}
+					]
+				},
+				{
+					category: "slot",
+					categoryIcon: "icon_777",
+					translateKey: "lbl_Casino",
+					items: [
+						{
+							...defGameInfo.Casino_PP,
+							parameter: defGameInfo.Casino_PP,
+							spanText: "PP",
+							img: casino_PP,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_SG,
+							parameter: defGameInfo.Casino_SG,
+							spanText: "SG",
+							img: casino_SG,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_YGG,
+							parameter: defGameInfo.Casino_YGG,
+							spanText: "YGG",
+							img: casino_YGG,
+							path: path.casino.root
+						},
+
+						{
+							...defGameInfo.Casino_JOKER,
+							parameter: defGameInfo.Casino_JOKER,
+							spanText: "JOKER",
+							img: casino_JOKER,
+							path: path.casino.root
+						},
+
+						{
+							...defGameInfo.Casino_GPI,
+							parameter: defGameInfo.Casino_GPI,
+							spanText: "GPI",
+							img: casino_GPI,
+							path: path.casino.root
+						},
+
+						{
+							...defGameInfo.Casino_CQ9,
+							parameter: defGameInfo.Casino_CQ9,
+							spanText: "CQ9",
+							img: casino_CQ9,
+							path: path.casino.root
+						},
+
+						{
+							...defGameInfo.casino_ICG,
+							parameter: defGameInfo.casino_ICG,
+							spanText: "ICG",
+							img: casino_ICG,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_OW,
+							parameter: defGameInfo.Casino_OW,
+							spanText: "OW",
+							img: casino_OW
+						},
+						{
+							...defGameInfo.Casino_PG,
+							parameter: defGameInfo.Casino_PG,
+							spanText: "PG",
+							img: casino_PG,
+							path: path.casino.root
+						}
+						// {
+						// ...defGameInfo.Casino_918Kiss,
+						// parameter:defGameInfo.Casino_918Kiss,
+						// spanText: "918Kiss",
+						// 	img: casino_KISS,
+						// 	path: path.kiss918.root,
+						// 	needLogin: true
+						// },
+					]
+				},
+				{
+					category: "game",
+					categoryIcon: "game",
+					translateKey: "lbl_Fishing",
+					items: [
+						{
+							...defGameInfo.FishingSGW,
+							spanTextKey: "lbl_FishingSG2",
+							img: fish_SGW
+						},
+						{
+							...defGameInfo.Fishing_AB3,
+							spanTextKey: "lbl_Paradise",
+							img: fishing_CQ9_AB3
+						},
+						{
+							...defGameInfo.FishingGG,
+							spanTextKey: "lbl_FishingGG",
+							img: fish_GG
+						},
+						{
+							...defGameInfo.ICG_DRAGONBALL_FISHING,
+							spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
+							img: fish_DBF
+						}
+					]
+				},
+				{
+					category: "kelo",
+					categoryIcon: "kelo",
+					translateKey: "lbl_Lottery",
+					items: [
+						{
+							...defGameInfo.Indo4d,
+							img: id4d,
+							spanTextKey: "lbl_Indo4d",
+							allowCurrency: [4, 15]
+						},
+						{
+							...defGameInfo.Keno,
+							img: Keno,
+							spanTextKey: "lbl_Keno"
+						},
+						{
+							...defGameInfo.lottery,
+							img: Lottery,
+							spanTextKey: "lbl_Lottery"
+						},
+						{
+							...defGameInfo.NumberGame,
+							img: number_game,
+							spanTextKey: "lbl_NumberGame"
+						}
+					]
+				},
+				{
+					category: "poker",
+					categoryIcon: "casino",
+					translateKey: "lbl_Poker",
+					popBox: {
+						needLogin: true,
+						title: "lbl_Poker",
+						type: defPopBoxType.OneGame
+					}
+				},
+				{
+					category: "affiliate",
+					categoryIcon: "affiliate",
+					translateKey: "lbl_Affiliate",
+					href: `${siteInfo(langId).affiliateLink}`
+				},
+				{
+					category: "vip",
+					categoryIcon: "vip",
+					translateKey: "lbl_VIP",
+					path: path.vip.root,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.new_vip)
+						}
+					]
+				},
+				{
+					category: "ranking",
+					categoryIcon: "ranking",
+					translateKey: "lbl_Ranking",
+					path: path.ranking.root
+				}
+			];
+			break;
+		case 4:
+			list = [
+				{
+					category: "sports",
+					categoryIcon: "soccer",
+					translateKey: "lbl_Sports",
+					items: [
+						{
+							...defGameInfo.Soccer,
+							img: Soccer,
+							spanTextKey: "lbl_Soccer"
+						},
+						{
+							...defGameInfo.SabaSoccer,
+							img: SabaSoccer,
+							spanTextKey: "lbl_SabaSoccer"
+						},
+						{
+							...defGameInfo.Basketball,
+							img: Basketball,
+							spanTextKey: "lbl_Basketball"
+						},
+						{
+							...defGameInfo.Tennis,
+							img: Tennis,
+							spanTextKey: "lbl_Tennis"
+						},
+						{
+							...defGameInfo.Cricket,
+							img: Cricket,
+							spanTextKey: "lbl_Cricket"
+						}
+					]
+				},
+				{
+					category: "virtualsports",
+					categoryIcon: "e-sports",
+					translateKey: "lbl_eSports",
+					items: [
+						{
+							...defGameInfo.ESportAll,
+							spanTextKey: "lbl_All",
+							img: ESportsAll
+						},
+						{
+							...defGameInfo.ESportAll,
+							spanText: "CS:GO",
+							img: ESportsCS
+						},
+						{
+							...defGameInfo.ESportAll,
+							spanText: "DOTA2",
+							img: ESportsDota
+						},
+						{
+							...defGameInfo.ESportAll,
+							spanText: "KOG",
+							img: ESportsKOG
+						},
+						{
+							...defGameInfo.ESportAll,
+							spanText: "LOL",
+							img: ESportsLOL
+						}
+					]
+				},
+				{
+					category: "livecasino",
+					categoryIcon: "livecasino",
+					translateKey: "lbl_LiveCasino",
+					items: [
+						{
+							...defGameInfo.LIVEcasinoDG,
+							spanText: "DG",
+							img: LIVEcasino_DG
+						},
+						{
+							...defGameInfo.LIVEcasinoAE,
+							spanText: "AE",
+							img: LIVEcasino_AE
+						},
+						{
+							...defGameInfo.LIVEcasinoSA,
+							spanText: "SA",
+							img: LIVEcasino_SA
+						},
+						{
+							...defGameInfo.LIVEcasinoAB,
+							spanText: "AB",
+							img: LIVEcasino_AB
+						},
+						{
+							...defGameInfo.LIVEcasinoAG,
+							spanText: "AG",
+							img: LIVEcasino_AG
+						},
+						{
+							...defGameInfo.LIVEcasinoWM,
+							spanText: "WM",
+							img: LIVEcasino_WM
+						},
+						{
+							...defGameInfo.LIVEcasinoPP,
+							spanText: "PP",
+							img: LIVEcasino_PP
+						},
+						{
+							...defGameInfo.LIVEcasinoEB,
+							spanText: "EB",
+							img: LIVEcasino_EB
+						},
+						{
+							...defGameInfo.LIVEcasinoN2Live,
+							spanText: "N2Live",
+							img: LIVEcasino_N2Live
+						}
+					]
+				},
+				{
+					category: "slot",
+					categoryIcon: "icon_777",
+					translateKey: "lbl_Casino",
+					items: [
+						{
+							...defGameInfo.Casino_PG,
+							parameter: defGameInfo.Casino_PG,
+							spanText: "PG",
+							img: casino_PG,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_PP,
+							parameter: defGameInfo.Casino_PP,
+							spanText: "PP",
+							img: casino_PP,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_JOKER,
+							parameter: defGameInfo.Casino_JOKER,
+							spanText: "JOKER",
+							img: casino_JOKER,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_SG,
+							parameter: defGameInfo.Casino_SG,
+							spanText: "SG",
+							img: casino_SG,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.casino_ICG,
+							parameter: defGameInfo.casino_ICG,
+							spanText: "ICG",
+							img: casino_ICG,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_YGG,
+							parameter: defGameInfo.Casino_YGG,
+							spanText: "YGG",
+							img: casino_YGG,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_CQ9,
+							parameter: defGameInfo.Casino_CQ9,
+							spanText: "CQ9",
+							img: casino_CQ9,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_GPI,
+							parameter: defGameInfo.Casino_GPI,
+							spanText: "GPI",
+							img: casino_GPI,
+							path: path.casino.root
+						},
+						// {
+						// ...defGameInfo.Casino_918Kiss,
+						// parameter:defGameInfo.Casino_918Kiss,
+						// spanText: "918Kiss",
+						// 	img: casino_KISS,
+						// 	path: path.kiss918.root,
+						// 	needLogin: true
+						// },
+						{
+							...defGameInfo.Casino_OW,
+							parameter: defGameInfo.Casino_OW,
+							spanText: "OW",
+							img: casino_OW
+						}
+					]
+				},
+				{
+					category: "game",
+					categoryIcon: "game",
+					translateKey: "lbl_Fishing",
+					items: [
+						{
+							...defGameInfo.FishingSGW,
+							spanTextKey: "lbl_FishingSG2",
+							img: fish_SGW
+						},
+						{
+							...defGameInfo.Fishing_AB3,
+							spanTextKey: "lbl_Paradise",
+							img: fishing_CQ9_AB3
+						},
+						{
+							...defGameInfo.FishingGG,
+							spanTextKey: "lbl_FishingGG",
+							img: fish_GG
+						},
+						{
+							...defGameInfo.ICG_DRAGONBALL_FISHING,
+							spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
+							img: fish_DBF
+						}
+					]
+				},
+				{
+					category: "kelo",
+					categoryIcon: "kelo",
+					translateKey: "lbl_Lottery",
+					items: [
+						{
+							...defGameInfo.Indo4d,
+							img: id4d,
+							spanTextKey: "lbl_Indo4d",
+							allowCurrency: [4, 15]
+						},
+						{
+							...defGameInfo.Keno,
+							img: Keno,
+							spanTextKey: "lbl_Keno"
+						},
+						{
+							...defGameInfo.lottery,
+							img: Lottery,
+							spanTextKey: "lbl_Lottery"
+						},
+						{
+							...defGameInfo.NumberGame,
+							img: number_game,
+							spanTextKey: "lbl_NumberGame"
+						}
+					]
+				},
+				{
+					category: "poker",
+					categoryIcon: "casino",
+					translateKey: "lbl_Poker",
+					popBox: {
+						needLogin: true,
+						title: "lbl_Poker",
+						type: defPopBoxType.OneGame
+					}
+				},
+				{
+					category: "affiliate",
+					categoryIcon: "affiliate",
+					translateKey: "lbl_Affiliate",
+					href: `${siteInfo(langId).affiliateLink}`
+				},
+				{
+					category: "vip",
+					categoryIcon: "vip",
+					translateKey: "lbl_VIP",
+					path: path.vip.root,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.new_vip)
+						}
+					]
+				},
+				{
+					category: "ranking",
+					categoryIcon: "ranking",
+					translateKey: "lbl_Ranking",
+					path: path.ranking.root
+				}
+			];
+			break;
+		default:
+			list = [
+				{
+					category: "sports",
+					categoryIcon: "soccer",
+					translateKey: "lbl_Sports",
+					items: [
+						{
+							...defGameInfo.Soccer,
+							img: Soccer,
+							spanTextKey: "lbl_Soccer"
+						},
+						{
+							...defGameInfo.SabaSoccer,
+							img: SabaSoccer,
+							spanTextKey: "lbl_SabaSoccer"
+						},
+						{
+							...defGameInfo.Basketball,
+							img: Basketball,
+							spanTextKey: "lbl_Basketball"
+						},
+						{
+							...defGameInfo.Tennis,
+							img: Tennis,
+							spanTextKey: "lbl_Tennis"
+						},
+						{
+							...defGameInfo.Cricket,
+							img: Cricket,
+							spanTextKey: "lbl_Cricket"
+						}
+					]
+				},
+				{
+					category: "virtualsports",
+					categoryIcon: "e-sports",
+					translateKey: "lbl_eSports",
+					items: [
+						{
+							...defGameInfo.ESportAll,
+							spanTextKey: "lbl_All",
+							img: ESportsAll
+						},
+						{
+							...defGameInfo.ESportAll,
+							spanText: "CS:GO",
+							img: ESportsCS
+						},
+						{
+							...defGameInfo.ESportAll,
+							spanText: "DOTA2",
+							img: ESportsDota
+						},
+						{
+							...defGameInfo.ESportAll,
+							spanText: "KOG",
+							img: ESportsKOG
+						},
+						{
+							...defGameInfo.ESportAll,
+							spanText: "LOL",
+							img: ESportsLOL
+						}
+					]
+				},
+				{
+					category: "livecasino",
+					categoryIcon: "livecasino",
+					translateKey: "lbl_LiveCasino",
+					items: [
+						{
+							...defGameInfo.LIVEcasinoN2Live,
+							spanText: "N2Live",
+							img: LIVEcasino_N2Live
+						},
+						{
+							...defGameInfo.LIVEcasinoWM,
+							spanText: "WM",
+							img: LIVEcasino_WM
+						},
+						{
+							...defGameInfo.LIVEcasinoAB,
+							spanText: "AB",
+							img: LIVEcasino_AB
+						},
+						{
+							...defGameInfo.LIVEcasinoEB,
+							spanText: "EB",
+							img: LIVEcasino_EB
+						},
+						{
+							...defGameInfo.LIVEcasinoSA,
+							spanText: "SA",
+							img: LIVEcasino_SA
+						},
+						{
+							...defGameInfo.LIVEcasinoAE,
+							spanText: "AE",
+							img: LIVEcasino_AE
+						},
+						{
+							...defGameInfo.LIVEcasinoPP,
+							spanText: "PP",
+							img: LIVEcasino_PP
+						},
+						{
+							...defGameInfo.LIVEcasinoDG,
+							spanText: "DG",
+							img: LIVEcasino_DG
+						},
+						{
+							...defGameInfo.LIVEcasinoAG,
+							spanText: "AG",
+							img: LIVEcasino_AG
+						}
+					]
+				},
+				{
+					category: "slot",
+					categoryIcon: "icon_777",
+					translateKey: "lbl_Casino",
+					items: [
+						{
+							...defGameInfo.Casino_PP,
+							parameter: defGameInfo.Casino_PP,
+							spanText: "PP",
+							img: casino_PP,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.casino_ICG,
+							parameter: defGameInfo.casino_ICG,
+							spanText: "ICG",
+							img: casino_ICG,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_JOKER,
+							parameter: defGameInfo.Casino_JOKER,
+							spanText: "JOKER",
+							img: casino_JOKER,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_CQ9,
+							parameter: defGameInfo.Casino_CQ9,
+							spanText: "CQ9",
+							img: casino_CQ9,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_GPI,
+							parameter: defGameInfo.Casino_GPI,
+							spanText: "GPI",
+							img: casino_GPI,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_YGG,
+							parameter: defGameInfo.Casino_YGG,
+							spanText: "YGG",
+							img: casino_YGG,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_SG,
+							parameter: defGameInfo.Casino_SG,
+							spanText: "SG",
+							img: casino_SG,
+							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_PG,
+							parameter: defGameInfo.Casino_PG,
+							spanText: "PG",
+							img: casino_PG,
+							path: path.casino.root
+						},
+						// {
+						// ...defGameInfo.Casino_918Kiss,
+						// parameter:defGameInfo.Casino_918Kiss,
+						// spanText: "918Kiss",
+						// 	img: casino_KISS,
+						// 	path: path.kiss918.root,
+						// 	needLogin: true
+						// },
+						{
+							...defGameInfo.Casino_OW,
+							parameter: defGameInfo.Casino_OW,
+							spanText: "OW",
+							img: casino_OW
+						}
+					]
+				},
+				{
+					category: "game",
+					categoryIcon: "game",
+					translateKey: "lbl_Fishing",
+					items: [
+						{
+							...defGameInfo.Fishing_AB3,
+							spanTextKey: "lbl_Paradise",
+							img: fishing_CQ9_AB3
+						},
+						{
+							...defGameInfo.ICG_DRAGONBALL_FISHING,
+							spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
+							img: fish_DBF
+						},
+						{
+							...defGameInfo.FishingGG,
+							spanTextKey: "lbl_FishingGG",
+							img: fish_GG
+						},
+						{
+							...defGameInfo.FishingSGW,
+							spanTextKey: "lbl_FishingSG2",
+							img: fish_SGW
+						}
+					]
+				},
+				{
+					category: "kelo",
+					categoryIcon: "kelo",
+					translateKey: "lbl_Lottery",
+					items: [
+						{
+							...defGameInfo.Indo4d,
+							img: id4d,
+							spanTextKey: "lbl_Indo4d",
+							allowCurrency: [4, 15]
+						},
+						{
+							...defGameInfo.Keno,
+							img: Keno,
+							spanTextKey: "lbl_Keno"
+						},
+						{
+							...defGameInfo.lottery,
+							img: Lottery,
+							spanTextKey: "lbl_Lottery"
+						},
+						{
+							...defGameInfo.NumberGame,
+							img: number_game,
+							spanTextKey: "lbl_NumberGame"
+						}
+					]
+				},
+				{
+					category: "poker",
+					categoryIcon: "casino",
+					translateKey: "lbl_Poker",
+					popBox: {
+						needLogin: true,
+						title: "lbl_Poker",
+						type: defPopBoxType.OneGame
+					}
+				},
+				{
+					category: "affiliate",
+					categoryIcon: "affiliate",
+					translateKey: "lbl_Affiliate",
+					href: `${siteInfo(langId).affiliateLink}`
+				},
+				{
+					category: "vip",
+					categoryIcon: "vip",
+					translateKey: "lbl_VIP",
+					path: path.vip.root,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.new_vip)
+						}
+					]
+				},
+				{
+					category: "ranking",
+					categoryIcon: "ranking",
+					translateKey: "lbl_Ranking",
+					path: path.ranking.root
+				}
+			];
 	}
-];
+	return list;
+};
 
 export default gameList;
 
