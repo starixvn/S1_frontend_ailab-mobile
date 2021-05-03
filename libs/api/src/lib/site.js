@@ -17,7 +17,7 @@ export class SiteAPI extends BaseAPI {
 	};
 
 	ExistsUserName = ({ UserName, LangId }) =>
-		this.siteRequest.post(`/ExistsUserName`, { UserName, LangId });
+		this.siteRequest.post(`/ExistsUserName/${LangId}`, { UserName });
 
 	ExistsEmail = ({ Email }) =>
 		this.siteRequest.post(`/ExistsEmail`, { Email });
