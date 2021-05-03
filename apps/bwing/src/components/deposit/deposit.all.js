@@ -45,7 +45,7 @@ const defPayment = {
 		creditTimeKey: "lbl_Instant"
 	},
 	[defPayType.loadCardPay]: {
-		displayKey: "lbl_LoadCardPay",
+		displayKey: "lbl_TopUpCard",
 		creditTimeKey: "lbl_5mins"
 	}
 };
