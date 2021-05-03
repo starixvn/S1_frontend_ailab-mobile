@@ -16,7 +16,7 @@
 	"msg_PasswordReq": "Password is required.",
 	"lbl_Username": "Username",
 	"lbl_Password": "Password",
-	"lbl_UsernameTooltip": "For security, we suggest that your username does not contain your real name.",
+	"lbl_UsernameTooltip": "6-18 alphanumeric (A-Z, a-z, 0-9) characters only.",
 	"lbl_PasswordTooltip": "6-18 alphanumeric (A-Z, a-z, 0-9) characters or special characters @$*!%#?&",
 	"lbl_EmailToolTip": "Email cannot be changed after submission.",
 	"lbl_PreferredCurrencyToolTip": "Preferred currency can not be changed after registration.",

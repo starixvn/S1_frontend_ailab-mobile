@@ -16,7 +16,7 @@
 	"msg_PasswordReq": "Kata Sanda wajib diisi",
 	"lbl_Username": "Nama pengguna",
 	"lbl_Password": "Kata Sandi",
-	"lbl_UsernameTooltip": "Demi keamanan, kami menyarankan agar Username anda berbeda dengan nama asli anda",
+	"lbl_UsernameTooltip": "6-18 karakter alfanumerik (A-Z, a-z, 0-9) saja.",
 	"lbl_PasswordTooltip": "6-18 karakter alfanumerik (A-Z, a-z, 0-9) atau karakter khusus @ $ *!% #? &",
 	"lbl_EmailToolTip": "Email tidak bisa dirubah jika sudah diajukan",
 	"lbl_PreferredCurrencyToolTip": "Mata uang yang dipilih tidak dapat diubah setelah melakukan pendaftaran.",
