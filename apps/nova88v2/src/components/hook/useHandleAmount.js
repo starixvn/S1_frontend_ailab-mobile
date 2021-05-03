@@ -18,9 +18,12 @@ export const useHandleAmount = ({
 		setWarning("");
 
 		if (lastAmount) {
-			const result = VaildAmount({ _amount: Number(lastAmount) });
+			const _amount = _isConvert
+				? Number(lastAmount) / 1000
+				: Number(lastAmount);
+			const result = VaildAmount({ _amount });
 			if (result) {
-				setAmount(lastAmount);
+				setAmount(_amount);
 			}
 		}
 	}, [minAmount, maxAmount]);
