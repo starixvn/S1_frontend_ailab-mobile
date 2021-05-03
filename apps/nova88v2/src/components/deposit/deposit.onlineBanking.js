@@ -54,16 +54,16 @@ const Payment = props => {
 				obj => obj.payId === userPaymentData?.payId
 			);
 			groupIdx = groupIdx === -1 ? 0 : groupIdx;
-			SelectPayment({ groupInfo: paymentList[groupIdx] });
 			setSelGroup(paymentList[groupIdx]);
+			SelectPayment({ groupInfo: paymentList[groupIdx] }, groupIdx);
 		}
 		return () => {
 			isMountedRef.current = false;
 		};
 	}, [paymentList.length, userPaymentData.payType]);
 
-	const SelectPayment = ({ groupInfo }) => {
-		if (selGroup?.payId !== groupInfo.payId) {
+	const SelectPayment = ({ groupInfo }, groupIdx) => {
+		if (selGroup?.payId !== groupInfo.payId || groupIdx === 0) {
 			setLoading(true);
 			setSelGroup(groupInfo);
 
@@ -78,6 +78,7 @@ const Payment = props => {
 									res.data.data.length > 0
 								) {
 									setBankList(res.data.data);
+
 									let bankIdx = res.data.data.findIndex(
 										obj =>
 											obj.sysId ===
@@ -86,6 +87,7 @@ const Payment = props => {
 												userPaymentData?.payId
 									);
 									bankIdx = bankIdx === -1 ? 0 : bankIdx;
+
 									SelectBank({
 										groupInfo,
 										bankInfo: res.data.data[bankIdx]

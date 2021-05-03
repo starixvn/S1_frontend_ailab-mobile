@@ -106,7 +106,6 @@ const Panel = () => {
 
 	const _userPaymentData =
 		userPaymentData?.payType === selected ? userPaymentData : {};
-
 	let content = (
 		<OnlineBanking
 			payType={selected}

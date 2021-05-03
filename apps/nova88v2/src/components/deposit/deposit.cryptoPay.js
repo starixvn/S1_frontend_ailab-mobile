@@ -8,6 +8,7 @@ import PageVerify from "./deposit.pageVerify";
 import config from "../../config";
 import { isConvert, number_format } from "../common/common";
 import { useHandleAmount } from "../hook/useHandleAmount";
+import path from "../../path";
 
 export const Panel = props => props.children;
 
@@ -53,7 +54,7 @@ const Main = props => {
 						...prevState,
 						isOpen: false
 					}));
-					setRedirectPath(`/${path.deposit.root}`);
+					navigate(`/${userInfo.langId}/${path.deposit.root}`);
 					window.open(
 						`${config.openURL}/${userInfo.langId}/Cashier/DepositReqCryptoPay?ChannelId=${curSelPayment.channelId}&Amount=${real_amount}`
 					);
@@ -151,7 +152,7 @@ const Main = props => {
 				SelectPayment={SelectPayment}
 				selected={selGroupId}
 				mainKey="deposit-full-cryptoPay-groupList"
-				imgKey="groupName"
+				imgKey="payName"
 				idKey="groupId"
 				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/Payment/`}
 				displayKey="payName"
@@ -167,12 +168,12 @@ const Main = props => {
 				status={warning.status}
 				EditAmount={EditAmount}
 				payType="cryptoPay"
-				// tip={i18n.lbl_AmountTooltip?.replace(
-				// 	"{{0}}",
-				// 	selChannel?.minAmount
-				// 		? number_format(selChannel?.minAmount, _isConvert, 0)
-				// 		: 1
-				// )}
+				tip={i18n.lbl_AmountTooltip?.replace(
+					"{{0}}",
+					curSelPayment?.minAmount
+						? number_format(curSelPayment?.minAmount, _isConvert, 0)
+						: 1
+				)}
 			/>
 			<div className="btn-group">
 				<button className="orange" onClick={ClickSubmit}>
