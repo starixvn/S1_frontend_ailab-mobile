@@ -4,6 +4,7 @@ import { userInfoContext, i18nContext } from "Context";
 import { Link } from "@Router";
 import Logo from "../common/logo";
 import path from "../../path";
+import Balance from "./balance";
 
 const HeaderTitle = ({ title = "", link = "", titleClass = "title", navBar }) =>
 	title ? (
@@ -32,9 +33,14 @@ const Header = ({
 	return (
 		<header className={headerClassName} id={hideId ? "" : "header"}>
 			{hideLogo ? null : (
-				<a href={`/${userInfo.langId}`}>
-					<Logo langId={userInfo.langId} />
-				</a>
+				<>
+					{userInfo.isLogin ? (
+						<Balance i18n={i18n} userInfo={userInfo} />
+					) : null}
+					<a href={`/${userInfo.langId}`}>
+						<Logo langId={userInfo.langId} />
+					</a>
+				</>
 			)}
 			{title ? (
 				<HeaderTitle
