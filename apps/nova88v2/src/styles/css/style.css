@@ -1659,6 +1659,28 @@ footer > a.active .circleAnimation + span {
   font-size: 5vw;
 }
 
+.Balance {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  min-width: 37vw;
+}
+
+.Balance .icon-eye:before {
+  font-size: 3vw;
+  margin-right: 1vw;
+}
+
+.Balance .icon-spinner11 {
+  margin-left: 0;
+}
+
+.Balance .icon-spinner11 + div {
+  width: 100%;
+}
+
 .balance {
   font-size: 4vw;
   font-weight: bold;
@@ -1765,7 +1787,7 @@ footer > a.active .circleAnimation + span {
   float: left;
   width: 49%;
   line-height: 24px;
-  color: #a5aab1;
+  color: #666;
 }
 
 .info ul li span {
@@ -4592,7 +4614,7 @@ span.important {
 }
 
 .rollover > div:not(.account) > div:nth-child(2) {
-  color: #a5aab1;
+  color: #666;
 }
 
 .resend {
@@ -6272,8 +6294,8 @@ span.important {
   border-radius: 100%;
   color: #42AC5E;
   position: absolute;
-  top: -1vw;
-  left: 0;
+  top: -2vw;
+  right: 0;
   font-size: 5vw;
 }
 
@@ -6282,8 +6304,8 @@ span.important {
   border-radius: 100%;
   color: #e92529;
   position: absolute;
-  top: -1vw;
-  left: 0;
+  top: -2vw;
+  right: 0;
   font-size: 5vw;
 }
 
@@ -6317,7 +6339,7 @@ span.important {
 .depositModule .selectModule .bankName .icon-icon32px_check {
   position: absolute;
   right: 0.5vw;
-  bottom: 0;
+  bottom: -1vw;
   color: #F77A00;
   display: none;
 }
@@ -6341,50 +6363,6 @@ span.important {
   display: -ms-flexbox;
   display: flex;
   padding: 3vw 0;
-}
-
-.submenu > div.Balance {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: relative;
-  border-bottom: 1px solid #5574A7;
-  color: #5574A7;
-}
-
-.submenu > div.Balance .clickBtn {
-  background: #5574A7;
-}
-
-.submenu > div.Balance .icon-eye, .submenu > div.Balance .icon-eye-blocked {
-  margin: 0 1vw 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.submenu > div.Balance .icon-eye:before, .submenu > div.Balance .icon-eye-blocked:before {
-  color: #5574A7;
-}
-
-.submenu > div.Balance .restore {
-  position: absolute;
-  right: 0;
-  color: #5574A7;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.submenu > div.Balance .restore:before {
-  font-size: 5vw;
 }
 
 .submenu > div.thBar {
@@ -6581,6 +6559,20 @@ span.important {
   margin: 2vw;
   height: 58vw;
   position: relative;
+}
+
+.upcomingmatches.euro .swiper-slide {
+  background: url(../img/upcomingmatcheseurobg.jpg) no-repeat top center/100% auto;
+}
+
+.upcomingmatches.euro .team > div:first-child {
+  background: url(../img/upcomingmatcheseurotitle.png) no-repeat top center/auto;
+  line-height: 7vw;
+}
+
+.upcomingmatches.euro .team > div:last-child {
+  background: url(../img/upcomingmatcheseurotitledown.png) no-repeat top center/auto;
+  line-height: 7vw;
 }
 
 .upcomingmatches .swiper-pagination {
@@ -7297,12 +7289,67 @@ span.important {
 }
 
 .features li {
-  list-style: decimal;
+  list-style: disc;
   line-height: 24px;
   margin-left: 3vw;
 }
 
 .features li span, .features li a {
   font-weight: bold;
+}
+
+.jpot {
+  height: 33.3vw;
+  -webkit-animation: jpot 0.3s infinite;
+          animation: jpot 0.3s infinite;
+  position: relative;
+}
+
+.jpot div {
+  position: absolute;
+  bottom: 12.5vw;
+  right: 10vw;
+  font-size: 5vw;
+  width: 55vw;
+  text-align: right;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.jpot div span {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+@-webkit-keyframes jpot {
+  0% {
+    background: url(../img/jpotbg.png) no-repeat center/cover;
+  }
+  50% {
+    background: url(../img/jpotbga.png) no-repeat center/cover;
+  }
+  100% {
+    background: url(../img/jpotbg.png) no-repeat center/cover;
+  }
+}
+
+@keyframes jpot {
+  0% {
+    background: url(../img/jpotbg.png) no-repeat center/cover;
+  }
+  50% {
+    background: url(../img/jpotbga.png) no-repeat center/cover;
+  }
+  100% {
+    background: url(../img/jpotbg.png) no-repeat center/cover;
+  }
 }
 /*# sourceMappingURL=style.css.map */
