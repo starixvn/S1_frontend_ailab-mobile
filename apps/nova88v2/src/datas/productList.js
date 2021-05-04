@@ -78,7 +78,6 @@ const gameList = ({ langId, currencyId }) => {
 		id: 15
 	};
 	const cur = currencyId || currencyMap[langId];
-	console.log(cur);
 	switch (cur) {
 		case 15:
 			list = [
@@ -268,6 +267,16 @@ const gameList = ({ langId, currencyId }) => {
 					]
 				},
 				{
+					category: "poker",
+					categoryIcon: "casino",
+					translateKey: "lbl_Poker",
+					popBox: {
+						needLogin: true,
+						title: "lbl_Poker",
+						type: defPopBoxType.OneGame
+					}
+				},
+				{
 					category: "game",
 					categoryIcon: "game",
 					translateKey: "lbl_Fishing",
@@ -322,16 +331,7 @@ const gameList = ({ langId, currencyId }) => {
 						}
 					]
 				},
-				{
-					category: "poker",
-					categoryIcon: "casino",
-					translateKey: "lbl_Poker",
-					popBox: {
-						needLogin: true,
-						title: "lbl_Poker",
-						type: defPopBoxType.OneGame
-					}
-				},
+
 				{
 					category: "affiliate",
 					categoryIcon: "affiliate",
@@ -558,6 +558,16 @@ const gameList = ({ langId, currencyId }) => {
 					]
 				},
 				{
+					category: "poker",
+					categoryIcon: "casino",
+					translateKey: "lbl_Poker",
+					popBox: {
+						needLogin: true,
+						title: "lbl_Poker",
+						type: defPopBoxType.OneGame
+					}
+				},
+				{
 					category: "game",
 					categoryIcon: "game",
 					translateKey: "lbl_Fishing",
@@ -612,16 +622,6 @@ const gameList = ({ langId, currencyId }) => {
 							spanTextKey: "lbl_NumberGame"
 						}
 					]
-				},
-				{
-					category: "poker",
-					categoryIcon: "casino",
-					translateKey: "lbl_Poker",
-					popBox: {
-						needLogin: true,
-						title: "lbl_Poker",
-						type: defPopBoxType.OneGame
-					}
 				},
 				{
 					category: "affiliate",
@@ -845,6 +845,16 @@ const gameList = ({ langId, currencyId }) => {
 					]
 				},
 				{
+					category: "poker",
+					categoryIcon: "casino",
+					translateKey: "lbl_Poker",
+					popBox: {
+						needLogin: true,
+						title: "lbl_Poker",
+						type: defPopBoxType.OneGame
+					}
+				},
+				{
 					category: "game",
 					categoryIcon: "game",
 					translateKey: "lbl_Fishing",
@@ -899,16 +909,7 @@ const gameList = ({ langId, currencyId }) => {
 						}
 					]
 				},
-				{
-					category: "poker",
-					categoryIcon: "casino",
-					translateKey: "lbl_Poker",
-					popBox: {
-						needLogin: true,
-						title: "lbl_Poker",
-						type: defPopBoxType.OneGame
-					}
-				},
+
 				{
 					category: "affiliate",
 					categoryIcon: "affiliate",
