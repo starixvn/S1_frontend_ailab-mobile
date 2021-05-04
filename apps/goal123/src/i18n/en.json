@@ -523,6 +523,7 @@
 	"lbl_Tournament" : "Tournament",
 	"lbl_Stage": "Stage",
 	"lbl_TpWallet_27":"PT Wallet",
-	"lbl_PromotionRebateAndCashback":"Rebate / Cashback"
-
+	"lbl_PromotionRebateAndCashback":"Rebate / Cashback",
+	"lbl_TopUpCard":"TOP-UP CARD",
+	"lbl_DepositType5":"TOP-UP CARD"
 }

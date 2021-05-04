@@ -24,7 +24,7 @@ const AmountInput = ({
 					className={a === realAmount ? "open" : ""}
 					key={`${payType}-fixedamount-${a}`}>
 					<i className="icon icon-checkmark" />
-					{number_format(a, false, 0)}
+					{number_format(a, _isConvert, 0)}
 				</button>
 			);
 		});

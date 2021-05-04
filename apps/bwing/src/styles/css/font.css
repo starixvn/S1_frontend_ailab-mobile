@@ -137,6 +137,10 @@
   content: "\e9b6";
 }
 
+.icon-BTI:before {
+  content: "\e9f0";
+}
+
 .icon-cock:before {
   content: "\e9b4";
 }

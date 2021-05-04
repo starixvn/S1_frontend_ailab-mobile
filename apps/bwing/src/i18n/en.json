@@ -572,5 +572,7 @@
 	"lbl_MonthlyTournament" : "MONTHLY TOURNAMENT",
 	"lbl_AgendaTitle" : "MONTHLY DEPOSIT & TURNOVER RACE TOURNAMENT",
 	"lbl_Tournament" : "Tournament",
-	"lbl_Stage": "Stage"
+	"lbl_Stage": "Stage",
+	"lbl_TopUpCard":"TOP-UP CARD",
+	"lbl_DepositType5":"TOP-UP CARD"
 }
