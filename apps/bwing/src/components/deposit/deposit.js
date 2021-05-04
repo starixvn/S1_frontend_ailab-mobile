@@ -1,24 +1,26 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
+import { useNavigate } from "@reach/router";
 import moment from "moment";
-import { Link, Redirect } from "@reach/router";
-import { number_format, isConvert } from "../common/common";
 import {
 	i18nContext,
-	popBoxContext,
+	userInfoContext,
+	loadingContext,
 	bankSlipPopBoxContext,
-	userInfoContext
+	popBoxContext
 } from "../common/context";
+import PageVerify from "./deposit.pageVerify";
+import MobilePay from "./deposit.mobilePay";
+import OnlineBanking from "./deposit.onlineBanking";
+import LocalBank from "./deposit.localBank";
 import {
-	api_GetOnlinePaymentList,
-	api_GetBankInfoOffList,
-	api_GetMobilePayGroupList,
 	api_GetDepositInfoRecent,
+	api_GetMobilePayGroupList,
+	api_GetBankInfoOffList,
+	api_GetOnlinePaymentList,
 	api_SetDepositCancel
 } from "../../service/api/payment";
 import RecentDatas from "./deposit.recentDatas";
-import Loading from "../common/loading";
-import PageVerify from "./deposit.pageVerify";
-import DepositWrapper from "./deposit.wrapper";
+import { number_format, isConvert } from "../common/common";
 
 const defPayType = {
 	onlineBank: "onlineBank",
@@ -28,41 +30,63 @@ const defPayType = {
 
 const defPayment = {
 	[defPayType.mobilePay]: {
-		icon: "icon icon-phoneIcon",
 		displayKey: "lbl_MobileDeposit",
-		creditTimeKey: "lbl_Instant"
-	},
-	[defPayType.onlineBank]: {
-		icon: "icon icon-wifiIcon",
-		displayKey: "lbl_OnlineBanking",
-		creditTimeKey: "lbl_Instant"
+		creditTimeKey: "lbl_5mins"
 	},
 	[defPayType.localBank]: {
-		icon: "icon icon-bankIcon",
 		displayKey: "lbl_WireTransfers",
 		creditTimeKey: "lbl_5mins"
+	},
+	[defPayType.onlineBank]: {
+		displayKey: "lbl_OnlineBanking",
+		creditTimeKey: "lbl_Instant"
 	}
 };
 
-const Panel = () => {
-	const { userInfo } = useContext(userInfoContext);
-	const { i18n } = useContext(i18nContext);
-	const { setPopBox } = useContext(popBoxContext);
-	const { setbankSlipPopBox } = useContext(bankSlipPopBoxContext);
-	const [allowPayment, setAllowPayment] = useState({
-		[defPayType.onlineBank]: false,
-		[defPayType.localBank]: false,
-		[defPayType.mobilePay]: false
-	});
+const useHandleSelect = defaultSelect => {
+	const [selected, setSelected] = useState(defaultSelect ?? "");
 
-	const [onlineBankingList, setOnlineBankingList] = useState([]);
-	const [localBankList, setLocalBankList] = useState([]);
-	const [mobilePayList, setMobilePayList] = useState([]);
+	const HandleSelect = value => {
+		setSelected(value);
+	};
+
+	return { selected, HandleSelect };
+};
+
+const Tab = ({ i18n, selected, HandleSelect, paymentList }) => {
+	const rows = Object.keys(defPayment)
+		.filter(key => paymentList[key]?.length > 0)
+		.map(key => {
+			const pay = defPayment[key];
+			return (
+				<div
+					key={`deposit-full-${pay.displayKey}`}
+					className={selected === key ? "open" : ""}
+					onClick={HandleSelect.bind(this, key)}>
+					{i18n[pay.displayKey]}
+				</div>
+			);
+		});
+
+	return <div className="switchTag">{rows}</div>;
+};
+
+const Panel = () => {
+	const navigate = useNavigate();
+	const { selected, HandleSelect } = useHandleSelect();
+	const { i18n } = useContext(i18nContext);
+	const { setLoading } = useContext(loadingContext);
+	const { userInfo } = useContext(userInfoContext);
+	const { setbankSlipPopBox } = useContext(bankSlipPopBoxContext);
+	const { setPopBox } = useContext(popBoxContext);
+
+	const [paymentList, setPaymentList] = useState({});
 	const [recentDatas, setRecentDatas] = useState([]);
 
-	const [redirectPath, setRedirectPath] = useState(null);
 	const [pageVerify, setPageVerify] = useState(true);
-	const [loading, setLoading] = useState(true);
+
+	PageVerify(userInfo, i18n, setPopBox, navigate, setPageVerify, false);
+
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -71,81 +95,95 @@ const Panel = () => {
 		};
 	});
 
-	PageVerify(
-		userInfo,
-		i18n,
-		setPopBox,
-		setRedirectPath,
-		setPageVerify,
-		false
+	let content = (
+		<MobilePay
+			payType={defPayType.mobilePay}
+			creditTimeKey={defPayment[defPayType.mobilePay].creditTimeKey}
+			paymentList={paymentList[defPayType.mobilePay] ?? []}
+		/>
 	);
 
-	useEffect(() => {
-		if (isMountedRef.current && redirectPath !== null) {
-			setRedirectPath(null);
-		}
-	}, [redirectPath]);
+	if (selected === defPayType.localBank) {
+		content = (
+			<LocalBank
+				payType={selected}
+				creditTimeKey={defPayment[defPayType.localBank].creditTimeKey}
+				paymentList={paymentList[defPayType.localBank] ?? []}
+			/>
+		);
+	} else if (selected === defPayType.onlineBank) {
+		content = (
+			<OnlineBanking
+				payType={selected}
+				creditTimeKey={defPayment[defPayType.onlineBank].creditTimeKey}
+				paymentList={paymentList[defPayType.onlineBank] ?? []}
+			/>
+		);
+	}
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
-			setLoading(true);
+			const GetAllPayment = async () => {
+				setLoading(true);
+				let defaultSelect = "";
 
-			api_GetOnlinePaymentList().then(
-				res => {
-					if (res.data.errorCode === 0 && isMountedRef.current) {
-						setOnlineBankingList(res.data.data);
-						setAllowPayment(prevState => ({
-							...prevState,
-							[defPayType.onlineBank]:
-								res.data.data && res.data.data.length > 0
-						}));
-						setLoading(false);
-					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setLoading(false);
-					}
-				}
-			);
+				const payments = {
+					[defPayType.mobilePay]: [],
+					[defPayType.onlineBank]: [],
+					[defPayType.localBank]: []
+				};
 
-			api_GetBankInfoOffList().then(
-				res => {
-					if (res.data.errorCode === 0 && isMountedRef.current) {
-						setLocalBankList(res.data.data);
-						setAllowPayment(prevState => ({
-							...prevState,
-							[defPayType.localBank]:
-								res.data.data && res.data.data.length > 0
-						}));
-						setLoading(false);
-					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setLoading(false);
-					}
-				}
-			);
+				const setDefaultSelect = (currentValue, payType, dataList) =>
+					currentValue === "" && dataList.length > 0
+						? payType
+						: currentValue;
 
-			api_GetMobilePayGroupList().then(
-				res => {
-					if (res.data.errorCode === 0 && isMountedRef.current) {
-						setMobilePayList(res.data.data);
-						setAllowPayment(prevState => ({
-							...prevState,
-							[defPayType.mobilePay]:
-								res.data.data && res.data.data.length > 0
-						}));
-						setLoading(false);
-					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setLoading(false);
-					}
+				const getDataListResult = res =>
+					res.data.errorCode === 0 && res.data.data?.length > 0
+						? res.data.data
+						: [];
+
+				try {
+					const res = await api_GetMobilePayGroupList();
+					payments[defPayType.mobilePay] = getDataListResult(res);
+
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defPayType.mobilePay,
+						payments[defPayType.mobilePay]
+					);
+				} catch (error) {}
+
+				try {
+					const res = await api_GetBankInfoOffList();
+					payments[defPayType.localBank] = getDataListResult(res);
+
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defPayType.localBank,
+						payments[defPayType.localBank]
+					);
+				} catch (error) {}
+
+				try {
+					const res = await api_GetOnlinePaymentList();
+					payments[defPayType.onlineBank] = getDataListResult(res);
+
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defPayType.onlineBank,
+						payments[defPayType.onlineBank]
+					);
+				} catch (error) {}
+
+				if (isMountedRef.current) {
+					setLoading(false);
+					setPaymentList(payments);
+					HandleSelect(defaultSelect);
 				}
-			);
+			};
+
+			GetAllPayment();
 
 			api_GetDepositInfoRecent().then(res => {
 				if (res.data.errorCode === 0 && isMountedRef.current) {
@@ -164,24 +202,23 @@ const Panel = () => {
 		picFileName,
 		refId
 	) => {
-		if (pageVerify) {
-			const { currencyId, ...restBankInfo } = bankInfo;
-			const { accountName, accountNo } = depositRep;
-			setbankSlipPopBox(() => ({
-				depositTime: `${moment().format(
-					"yyyy-MM-DDT"
-				)}${moment().format("HH:mm")}`,
-				...restBankInfo,
-				transId,
-				accountNo,
-				accountName,
-				isOpen: true,
-				amount,
-				_isConvert,
-				picFileName,
-				refId
-			}));
-		}
+		// if (pageVerify) {
+		const { currencyId, ...restBankInfo } = bankInfo;
+		const { accountName, accountNo } = depositRep;
+		setbankSlipPopBox(() => ({
+			depositTime: `${moment().format("yyyy-MM-DDT")}${moment().format(
+				"HH:mm"
+			)}`,
+			...restBankInfo,
+			transId,
+			accountNo,
+			accountName,
+			isOpen: true,
+			amount: number_format(amount, _isConvert, 0),
+			picFileName,
+			refId
+		}));
+		// }
 	};
 
 	const ClickCancel = transId => {
@@ -206,7 +243,7 @@ const Panel = () => {
 							}
 						}
 					},
-					err => {
+					() => {
 						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
@@ -224,56 +261,22 @@ const Panel = () => {
 
 			setPopBox({
 				isOpen: true,
-				title: "",
+				title: i18n.lbl_ImportantNote,
 				content: i18n.lbl_CancelConfirm,
 				hasBtn: true,
 				btnBar: (
 					<div className="btn-group">
-						<button className="cancel" onClick={ClickSubmit}>
-							{i18n.lbl_Yes}
+						<button className="Cancel" onClick={ClickPopBoxCancel}>
+							{i18n.lbl_Cancel}
 						</button>
-						<button className="submit" onClick={ClickPopBoxCancel}>
-							{i18n.lbl_No}
+						<button className="blue" onClick={ClickSubmit}>
+							{i18n.lbl_Submit}
 						</button>
 					</div>
 				)
 			});
 		}
 	};
-
-	const paymentList = pageVerify
-		? Object.keys(defPayment)
-				.filter(key => {
-					return allowPayment[key];
-				})
-				.map(key => {
-					const item = defPayment[key];
-					let list = [];
-					if (key === defPayType.onlineBank) {
-						list = onlineBankingList;
-					} else if (key === defPayType.localBank) {
-						list = localBankList;
-					} else if (key === defPayType.mobilePay) {
-						list = mobilePayList;
-					}
-					return (
-						<div key={`deposit-${key}`}>
-							<Link
-								to={key}
-								className={item.icon}
-								state={{
-									paymentList: list
-								}}
-							/>
-							<h1>{i18n[item.displayKey].toUpperCase()}</h1>
-							<span className="title">{i18n.lbl_CreditTime}</span>
-							<span className="creditTime">
-								{i18n[item.creditTimeKey].toUpperCase()}
-							</span>
-						</div>
-					);
-				})
-		: null;
 
 	const GetDepositInfoRecent = () => {
 		api_GetDepositInfoRecent().then(
@@ -290,7 +293,7 @@ const Panel = () => {
 					}
 				}
 			},
-			err => {
+			() => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
@@ -302,22 +305,22 @@ const Panel = () => {
 		);
 	};
 
-	return redirectPath === null ? (
-		loading ? (
-			<Loading />
-		) : (
-			<DepositWrapper step={1} i18n={i18n}>
-				<div className="depositType">{paymentList}</div>
-				<RecentDatas
-					Datas={recentDatas}
-					SubmitProof={SubmitProof}
-					ClickCancel={ClickCancel}
-					GetDepositInfoRecent={GetDepositInfoRecent}
-				/>
-			</DepositWrapper>
-		)
-	) : (
-		<Redirect to={redirectPath} noThrow />
+	return (
+		<>
+			<Tab
+				i18n={i18n}
+				selected={selected}
+				HandleSelect={HandleSelect}
+				paymentList={paymentList}
+			/>
+			{content}
+			<RecentDatas
+				Datas={recentDatas}
+				SubmitProof={SubmitProof}
+				ClickCancel={ClickCancel}
+				ReloadFunc={GetDepositInfoRecent}
+			/>
+		</>
 	);
 };
 

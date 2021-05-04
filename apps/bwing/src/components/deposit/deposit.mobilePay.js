@@ -1,100 +1,58 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import { Link, Redirect } from "@reach/router";
-import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
+import PropTypes from "prop-types";
 import {
-	api_GetMobilePayGroupList,
-	api_GetMobilePayInfoList
-} from "../../service/api/payment";
+	i18nContext,
+	userInfoContext,
+	popBoxContext,
+	loadingContext
+} from "../common/context";
 import config from "../../config";
-import LimitTip from "./limitTip";
-import { isConvert } from "../common/common";
-import path from "../../path";
-import PageVerify from "./deposit.pageVerify";
-import Loading from "../common/loading";
-import Title from "./deposit.mobilePay.title";
-import DepositWrapper from "./deposit.wrapper";
+import { isConvert, number_format } from "../common/common";
+import GroupList from "./deposit.groupList";
+import AmountInput from "./deposit.amountInput";
+import { useHandleAmount } from "./hook/useHandleAmount";
+import { api_GetMobilePayInfoList } from "../../service/api/payment";
 
-export const Panel = props => props.children;
+const payType = "MobilePay";
 
-export const Main = props => {
+const Payment = props => {
+	const { paymentList, creditTimeKey } = props;
+
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
-	const [paymentList, setPaymentList] = useState([]);
-	const [selGroupId, setSelGroupId] = useState(null);
-	const [channelList, setChannelList] = useState([]);
 	const { setPopBox } = useContext(popBoxContext);
+	const { setLoading } = useContext(loadingContext);
 
-	const [redirectPath, setRedirectPath] = useState(null);
-	const [pageVerify, setPageVerify] = useState(true);
-	const [loading, setLoading] = useState(true);
+	const [selGroupId, setSelGroupId] = useState(null);
+	const [selChannel, setChannel] = useState({});
+	const [channelList, setChannelList] = useState([]);
+
+	const {
+		amount,
+		warning,
+		SelectAmount,
+		EditAmount,
+		VaildAmount
+	} = useHandleAmount({
+		currencyId: userInfo.currencyId,
+		minAmount: selChannel?.minAmount,
+		maxAmount: selChannel?.maxAmount,
+		i18n
+	});
 
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
+		if (paymentList.length > 0) {
+			SelectPayment(paymentList[0].groupId);
+		}
 		return () => {
 			isMountedRef.current = false;
 		};
-	});
-
-	PageVerify(
-		userInfo,
-		i18n,
-		setPopBox,
-		setRedirectPath,
-		setPageVerify,
-		props.location.state?.paymentList?.length >= 0
-	);
-
-	const _isConvert = isConvert(userInfo.currencyId);
-	useEffect(() => {
-		if (props.location.state?.paymentList) {
-			if (isMountedRef.current) {
-				setLoading(false);
-				setPaymentList(props.location.state.paymentList);
-			}
-		} else if (userInfo.isLogin) {
-			setLoading(true);
-			api_GetMobilePayGroupList().then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							if (res.data.data.length > 0) {
-								setPaymentList(res.data.data);
-							} else {
-								setRedirectPath(`/${path.deposit.root}`);
-							}
-						} else {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: res.data.message
-							});
-						}
-						setLoading(false);
-					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setLoading(false);
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-					}
-				}
-			);
-		}
-	}, [
-		props.location.state,
-		setPopBox,
-		i18n.lbl_ImportantNote,
-		userInfo.isLogin,
-		i18n.msg_ApiServerError
-	]);
+	}, [paymentList.length]);
 
 	const SelectPayment = groupId => {
-		if (pageVerify && selGroupId !== groupId) {
+		if (selGroupId !== groupId) {
 			setSelGroupId(() => groupId);
 			setLoading(true);
 			api_GetMobilePayInfoList(groupId).then(
@@ -102,6 +60,7 @@ export const Main = props => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
 							setChannelList(res.data.data);
+							SelectChannel(res.data.data?.[0]);
 						} else {
 							setPopBox({
 								isOpen: true,
@@ -112,13 +71,8 @@ export const Main = props => {
 						setLoading(false);
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
 						setLoading(false);
 					}
 				}
@@ -126,84 +80,123 @@ export const Main = props => {
 		}
 	};
 
-	const rows = paymentList?.map(p => {
-		return (
-			<div key={`deposit-mobilepay-${p.groupId}`}>
-				<div
-					className={`${selGroupId === p.groupId ? "open" : ""}`}
-					onClick={SelectPayment.bind(this, p.groupId)}>
-					<img
-						className="switch"
-						src={`${config.imgUrl}/common/images/MobilePay/${p.groupName}.png`}
-						alt={p.groupName}
-					/>
-				</div>
-			</div>
-		);
-	});
+	const SelectChannel = channel => {
+		setChannel(channel);
+	};
 
-	const channels = channelList?.map(c => {
-		return (
-			<Link
-				className="account"
-				key={`deposit-mobilepay-${c.channelId}`}
-				to={`${c.channelName.replace(" ", "")}`}
-				state={{
-					...c
-				}}>
-				<div className="bankLogo">
-					<img
-						src={`${config.imgUrl}/common/images/MobilePay/${c.groupName}.png`}
-						alt={c.groupName}
-					/>
-				</div>
-				<div className="info">
-					<ul>
-						<li>
-							<span className="title">{c.channelName}</span>
-							<LimitTip
-								minAmount={c.minAmount}
-								maxAmount={c.maxAmount}
-								displayTextLimit={i18n.lbl_Limit}
-								displayTextUnLimit={i18n.lbl_Unlimited}
-								_isConvert={_isConvert}
-							/>
-						</li>
-					</ul>
-				</div>
-			</Link>
-		);
-	});
+	const ClickSubmit = () => {
+		const result = VaildAmount({ _amount: amount });
 
-	if (loading) {
-		return <Loading />;
-	}
-	return redirectPath !== null ? (
-		<Redirect to={redirectPath} noThrow />
-	) : pageVerify ? (
-		<DepositWrapper step={2} i18n={i18n}>
-			<div className="depositInBox">
-				<Title i18n={i18n} />
-				<div className="depositImgArea">{rows}</div>
-			</div>
-			<div
-				className={`inputBox channel${
-					selGroupId !== null ? " open" : ""
-				}`}>
-				{channels}
-			</div>
+		if (result) {
+			const RedirectToNext = real_amount => {
+				setPopBox(prevState => ({
+					...prevState,
+					isOpen: false
+				}));
+				window.open(
+					`${config.openURL}/${userInfo.langId}/Cashier/DepositReqMobilePay?ChannelId=${selChannel.channelId}&Amount=${real_amount}`
+				);
+				window.location.reload();
+			};
+
+			const real_amount = _isConvert ? amount * 1000 : amount;
+			setPopBox({
+				isOpen: true,
+				title: i18n.lbl_ImportantNote,
+				content: (
+					<>
+						<p>{i18n.lbl_ConfirmDeposit}</p>
+						<img
+							src={`${config.imgUrl}/common/images/MobilePay/${selChannel.groupName}.png`}
+							alt={selChannel.groupName}
+						/>
+						<div className="tip">
+							<span>{i18n.lbl_DepositAmount} :</span>{" "}
+							{number_format(real_amount, _isConvert, 0)}
+						</div>
+					</>
+				),
+				hasBtn: true,
+				btnBar: (
+					<div className="btn-group">
+						<button
+							className="Cancel"
+							onClick={() =>
+								setPopBox(prevState => ({
+									...prevState,
+									isOpen: false
+								}))
+							}>
+							{i18n.lbl_Cancel}
+						</button>
+						<button
+							className="blue"
+							onClick={RedirectToNext.bind(this, real_amount)}>
+							{i18n.lbl_Submit}
+						</button>
+					</div>
+				)
+			});
+		}
+	};
+
+	const _isConvert = isConvert(userInfo.currencyId);
+
+	return (
+		<div className="depositModule_mobile open">
+			<div className="title text-org">{`${i18n.lbl_CreditTime}: ${i18n[creditTimeKey]}`}</div>
+
+			<GroupList
+				title={i18n.lbl_PaymentModes}
+				dataList={paymentList}
+				SelectPayment={SelectPayment}
+				selected={selGroupId}
+				mainKey={`deposit-full-${payType}-groupList`}
+				imgKey="groupName"
+				idKey="groupId"
+				prefixImgUrl={`${config.imgUrl}/common/images/MobilePay/`}
+				i18n={i18n}
+				displayKey="groupName"
+				_isConvert={_isConvert}
+			/>
+			<GroupList
+				title={i18n.lbl_SelectChannel}
+				dataList={channelList}
+				SelectPayment={SelectChannel}
+				selected={selChannel?.channelId}
+				mainKey={`deposit-full-${payType}-channelList`}
+				imgKey="groupName"
+				idKey="channelId"
+				bindFullObj={true}
+				prefixImgUrl={`${config.imgUrl}/common/images/MobilePay/`}
+				i18n={i18n}
+				displayKey="channelName"
+				showMinMaxHint={true}
+				_isConvert={_isConvert}
+			/>
+			<AmountInput
+				title={i18n.lbl_DepositAmount}
+				channel={selChannel}
+				i18n={i18n}
+				_isConvert={_isConvert}
+				amount={amount}
+				tip={warning}
+				SelectAmount={SelectAmount}
+				EditAmount={EditAmount}
+				payType={payType}
+			/>
 			<div className="btn-group">
-				<Link to={`/${path.deposit.root}`} className="left">
-					<span
-						style={{
-							transform: "rotate(180deg)",
-							marginRight: "5px"
-						}}>
-						→
-					</span>
-					{i18n.lbl_Back}
-				</Link>
+				<button className="blue" onClick={ClickSubmit}>
+					{i18n.lbl_Submit}
+				</button>
 			</div>
-		</DepositWrapper>
-	) : null;
+		</div>
+	);
 };
+
+Payment.propTypes = {
+	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
+	creditTimeKey: PropTypes.string.isRequired
+};
+
+export default Payment;

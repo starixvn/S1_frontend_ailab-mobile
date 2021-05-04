@@ -1,11 +1,13 @@
 import React from "react";
+import PropTypes from "prop-types";
 import DepositRecord from "./depositRecord";
 import PromoRule from "./promotionContent.promoRule";
 import { Stamp } from "./stamp";
 import { CanJoin } from "../common/common";
 import { defUrlParamCols } from "../common/def";
+import CashBackInfo from "./cashBackInfo";
 
-export default ({
+const PromoContent = ({
 	promotionInfo,
 	i18n = {},
 	_isExpiry,
@@ -38,6 +40,12 @@ export default ({
 		<div className="text">{promotionInfo.description}</div>
 
 		<PromoRule promotionInfo={promotionInfo} ruleCols={ruleCols} />
+		<CashBackInfo
+			bonusCode={promotionInfo.bonusCode}
+			cashBackDetails={promotionInfo.cashBackDetails}
+			currencyId={currencyId}
+			i18n={i18n}
+		/>
 		<DepositRecord
 			promotionInfo={promotionInfo}
 			i18n={i18n}
@@ -52,3 +60,16 @@ export default ({
 		/>
 	</div>
 );
+
+PromoContent.defaultProps = {
+	Class: "promodule",
+	currencyId: null
+};
+
+PromoContent.propTypes = {
+	Class: PropTypes.string,
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	currencyId: PropTypes.number
+};
+
+export default PromoContent;

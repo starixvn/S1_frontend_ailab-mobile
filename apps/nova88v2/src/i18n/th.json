@@ -569,5 +569,12 @@
 	"lbl_Register":"สมัครสมาชิก",
 	"lbl_AfterJoinHint":"ยินดีด้วยค่ะ คุณได้ลงทะเบียนเป็นสมาชิกเรียบร้อยแล้ว",
 	"lbl_TpWallet_27": "PT วอลเล็ท",
-	"lbl_LIVE_SPORT" : "กีฬาสด"
+	"lbl_LIVE_SPORT" : "กีฬาสด",
+
+	"==============Promotion==============":"",
+	"lbl_ClaimAmount": "จำนวนเงินที่ขอรับ",
+	"lbl_LossAmount":"จำนวนเงินที่เสีย",
+	"lbl_Percentage":"เปอร์เซ็นต์",
+	"lbl_TotalAmount":"จำนวนเงินทั้งหมด",
+	"lbl_ClaimNow":"แลกตอนนี้"
 }

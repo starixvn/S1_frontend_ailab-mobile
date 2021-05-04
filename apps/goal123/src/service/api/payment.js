@@ -144,3 +144,6 @@ export const api_payment_GetLoadCardPayGroupList = () =>
 
 export const api_payment_GetLoadCardPayInfoList = ({ groupId }) =>
 	paymentRequest.post("/GetLoadCardPayInfoList", { groupId });
+
+export const api_payment_GetWithdrawalLimit = () =>
+	paymentRequest.post("/GetWithdrawalLimit");

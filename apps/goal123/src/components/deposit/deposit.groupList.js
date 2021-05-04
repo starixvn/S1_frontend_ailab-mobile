@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Radio from "./deposit.all.radio";
+import Radio from "./deposit.radio";
 
 const GroupList = ({
 	mainKey,

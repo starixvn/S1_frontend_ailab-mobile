@@ -436,9 +436,9 @@ header button.clickBtn::before {
   position: absolute;
 }
 
-#Marquee .marquee-box .marquee-run button, #Marquee .marquee-box .marquee-run a {
+#Marquee .marquee-box .marquee-run button {
   color: #5574A7;
-  font-size: 3vw;
+  font-size: 3vw !important;
 }
 
 #Marquee > div.active {
@@ -1689,7 +1689,7 @@ footer > a.active .circleAnimation + span {
 
 .info ul li {
   float: left;
-  width: 50%;
+  width: 49%;
   line-height: 24px;
   color: #a5aab1;
 }
@@ -1723,6 +1723,37 @@ footer > a.active .circleAnimation + span {
 
 .info ul li span.title button.icon:before, .info ul li span.title i.icon:before {
   font-size: 12px;
+}
+
+.info > div:not(.btn-group) {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: calc(100% - 6vw);
+}
+
+.info > div:not(.btn-group) > div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #a5aab1;
+}
+
+.info > div:not(.btn-group) > div.title {
+  color: #5574A7;
+}
+
+.info > div:not(.btn-group) button {
+  position: absolute;
+  right: -6vw;
 }
 
 .info.infoAccount li {
@@ -3103,8 +3134,8 @@ button.clickBtn:before {
 
 .casino {
   width: calc(100% - 8vw);
-  height: calc(100% - 112vw);
-  padding: 88vw 4vw 24vw;
+  height: calc(100% - 114vw);
+  padding: 90vw 4vw 24vw;
   position: relative;
 }
 
@@ -3115,7 +3146,7 @@ button.clickBtn:before {
 }
 
 .casino .functionList {
-  padding: 3vw 4vw 2vw;
+  padding: 2vw 4vw;
   width: calc(100% - 8vw);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3255,7 +3286,7 @@ input[type="date"] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 0 0 1vw;
+  margin: 1vw 0;
   border: 0;
   padding: 0;
   width: 100%;
@@ -3983,6 +4014,8 @@ span.important {
 .quickChangePage .btn-group button, .quickChangePage .btn-group a {
   padding: 1vw 2vw;
   color: white;
+  background: -webkit-gradient(linear, left top, left bottom, from(#F1D5B6), to(#CDAE8E));
+  background: linear-gradient(to bottom, #F1D5B6, #CDAE8E);
 }
 
 .promotions {
@@ -4085,6 +4118,15 @@ span.important {
 
 .promotions .promodule.active .rollover, .promotions .proInfomodule.active .rollover {
   border-color: #4F4F4F;
+}
+
+.promotions .promodule .inputBox, .promotions .proInfomodule .inputBox {
+  margin: 0;
+}
+
+.promotions .promodule .btn-group .white + button, .promotions .proInfomodule .btn-group .white + button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#F1D5B6), to(#CDAE8E));
+  background: linear-gradient(to bottom, #F1D5B6, #CDAE8E);
 }
 
 .promotions .promodule .btn-cancel, .promotions .proInfomodule .btn-cancel {
@@ -6879,5 +6921,69 @@ main .sideBar button, main .sideBar a {
 .nickName {
   font-weight: bold;
   margin-bottom: 2vw;
+}
+
+.cashBack {
+  background: #D2E2F9;
+  padding: 2vw;
+  border-radius: 5px;
+  margin: 2vw 0;
+}
+
+.cashBack .title {
+  color: #5574A7;
+  margin: 1vw;
+}
+
+.cashBack table {
+  color: #5574A7;
+  font-size: 3vw;
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+  background: white;
+}
+
+.cashBack table tr:nth-child(1) {
+  background: #5574A7;
+  color: white;
+  font-weight: bold;
+}
+
+.cashBack table tr:nth-child(even) {
+  background: rgba(198, 212, 241, 0.3);
+}
+
+.cashBack table tr:nth-last-child(3) {
+  border-top: 1px solid #D2E2F9;
+}
+
+.cashBack table tr:nth-last-child(-n+3) {
+  font-weight: bold;
+  width: 100%;
+  background: transparent;
+}
+
+.cashBack table tr:nth-last-child(-n+3) td {
+  border-right: 0;
+}
+
+.cashBack table tr:nth-last-child(-n+3) td span {
+  white-space: nowrap;
+}
+
+.cashBack table tr:nth-last-child(-n+3) td span:nth-child(1) {
+  min-width: 25vw;
+}
+
+.cashBack table tr td {
+  border-right: 1px solid #D2E2F9;
+  padding: 1vw;
+  line-height: 18px;
+  white-space: nowrap;
+}
+
+.cashBack table tr td:last-child {
+  border: 0;
 }
 /*# sourceMappingURL=style.css.map */
