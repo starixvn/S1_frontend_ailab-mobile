@@ -439,7 +439,7 @@ header button.clickBtn::before {
 
 #Marquee .marquee-box .marquee-run button {
   color: #5574A7;
-  font-size: 3vw !important;
+  -webkit-text-size-adjust: 100%;
 }
 
 #Marquee > div.active {
@@ -1253,8 +1253,7 @@ footer > a.active .circleAnimation + span {
 .header .title a {
   position: absolute;
   left: 0;
-  background: white;
-  color: #6F6F6F;
+  color: white;
   width: 12vw;
   height: 12vw;
   display: -webkit-box;
@@ -1272,11 +1271,16 @@ footer > a.active .circleAnimation + span {
           justify-content: center;
   font-weight: bold;
   font-size: 3vw;
+  font-size: 3vw;
+  font-weight: bold;
 }
 
 .header .title a i {
-  -webkit-transform: scaleX(-1);
-          transform: scaleX(-1);
+  letter-spacing: -2.5vw;
+}
+
+.header .title a i.icon-keyboard_arrow_left:after {
+  content: "\e95d";
 }
 
 .quantity {

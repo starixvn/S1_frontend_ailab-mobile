@@ -422,8 +422,7 @@ const IndexPage = props => {
 	const { handleLogin } = useHandleLogin();
 	const link = (
 		<Link to={path.home.root}>
-			<i className="icon icon icon-icon32px_1" />
-			{i18n.lbl_Back}
+			<i className="icon icon-keyboard_arrow_left" />
 		</Link>
 	);
 	let tpId = props.tpId ?? props.location.state?.tpId;
