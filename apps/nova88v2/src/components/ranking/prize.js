@@ -18,9 +18,19 @@ export const Prize = ({ currencyId, category, langId, i18n }) => {
 	const currency = currencyId
 		? currCustomMapping[currencyId] ?? i18n[`Currency_${currencyId}`]
 		: langMappingCurr[langId];
-
+	let _landId = langId;
+	if (
+		langId !== "cs" &&
+		langId !== "id" &&
+		langId !== "th" &&
+		langId !== "en"
+	) {
+		_landId = "en";
+	}
 	const prize = defPrize();
-	return prize[currency]?.[langId]?.[category] ?? prize.MYR[langId][category];
+	return (
+		prize[currency]?.[_landId]?.[category] ?? prize.MYR[_landId][category]
+	);
 };
 
 const PrizeList = ({ userInfo, category, i18n }) => {
