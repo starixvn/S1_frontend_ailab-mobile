@@ -12,7 +12,7 @@ const Inputbox = ({
 	disabled,
 	maxLength,
 	tip,
-	inputStatus,
+	btnStatus,
 	numberConvert,
 	title,
 	clickInfo,
@@ -37,10 +37,7 @@ const Inputbox = ({
 						maxLength={maxLength}
 					/>
 					{numberConvert ? <span>(000)</span> : null}
-					<IptStatus
-						inputStatus={inputStatus}
-						clickInfo={clickInfo}
-					/>
+					<IptStatus btnStatus={btnStatus} clickInfo={clickInfo} />
 				</div>
 				{submitBtn ? (
 					<SubmitBtn i18n={i18n} clickSubmit={clickSubmit} />
@@ -60,7 +57,7 @@ Inputbox.defaultProps = {
 	disabled: false,
 	maxLength: null,
 	tip: "",
-	inputStatus: null,
+	btnStatus: null,
 	numberConvert: false,
 	title: null,
 	clickInfo: () => null,
@@ -80,7 +77,7 @@ Inputbox.propTypes = {
 	disabled: PropTypes.bool,
 	maxLength: PropTypes.number,
 	tip: PropTypes.string,
-	inputStatus: PropTypes.bool,
+	btnStatus: PropTypes.bool,
 	numberConvert: PropTypes.bool,
 	title: PropTypes.string,
 	clickInfo: PropTypes.func,
@@ -89,8 +86,8 @@ Inputbox.propTypes = {
 	clickSubmit: PropTypes.func
 };
 
-export const IptStatus = ({ inputStatus, clickInfo }) => {
-	switch (inputStatus) {
+export const IptStatus = ({ btnStatus, clickInfo }) => {
+	switch (btnStatus) {
 		case false:
 			return <i className="icon icon-cross textRed" />;
 		case true:
@@ -106,12 +103,12 @@ export const IptStatus = ({ inputStatus, clickInfo }) => {
 };
 
 IptStatus.defaultProps = {
-	inputStatus: null,
+	btnStatus: null,
 	clickInfo: () => null
 };
 
 IptStatus.propTypes = {
-	inputStatus: PropTypes.bool,
+	btnStatus: PropTypes.bool,
 	clickInfo: PropTypes.func
 };
 

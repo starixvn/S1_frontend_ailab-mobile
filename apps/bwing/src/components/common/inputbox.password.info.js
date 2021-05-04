@@ -8,7 +8,7 @@ const Inputbox = ({
 	onChange,
 	value,
 	tip,
-	inputStatus,
+	btnStatus,
 	title,
 	clickInfo
 }) => {
@@ -36,10 +36,7 @@ const Inputbox = ({
 						}`}
 						onClick={showPswHandler}
 					/>
-					<IptStatus
-						inputStatus={inputStatus}
-						clickInfo={clickInfo}
-					/>
+					<IptStatus btnStatus={btnStatus} clickInfo={clickInfo} />
 				</div>
 			</div>
 			{tip ? <div className="tip open">{tip}</div> : null}
@@ -51,7 +48,7 @@ Inputbox.defaultProps = {
 	placeholder: "",
 	onBlur: () => null,
 	tip: "",
-	inputStatus: null,
+	btnStatus: null,
 	title: null,
 	clickInfo: () => null
 };
@@ -62,7 +59,7 @@ Inputbox.propTypes = {
 	onChange: PropTypes.func.isRequired,
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 	tip: PropTypes.string,
-	inputStatus: PropTypes.bool,
+	btnStatus: PropTypes.bool,
 	title: PropTypes.string,
 	clickInfo: PropTypes.func
 };

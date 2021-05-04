@@ -40,7 +40,7 @@ const Join = () => {
 	const [siteCurrencyList, setSiteCurrencyList] = useState([]);
 	const [banner, setBanner] = useState([]);
 	const [affiliateidExist, setAffiliateidExist] = useState(null);
-	const [hintStatus, setHintStatus] = useState(initStatus);
+	const [inputStatus, setInputStatus] = useState(initStatus);
 	const [promoPopup, setPromoPopup] = useState(false);
 	const isMountedRef = useRef(null);
 
@@ -155,7 +155,7 @@ const Join = () => {
 			result = await phoneCheck({ val });
 		}
 
-		setHintStatus(prev => ({
+		setInputStatus(prev => ({
 			...prev,
 			[col]: {
 				checked: result.checked,
@@ -218,7 +218,7 @@ const Join = () => {
 	};
 
 	const selectCurrency = i => {
-		setHintStatus(prev => ({
+		setInputStatus(prev => ({
 			...prev,
 			Currency: {
 				checked: true,
@@ -240,8 +240,8 @@ const Join = () => {
 	};
 
 	const clickInfo = ({ col, info }) => {
-		const _info = hintStatus[col].msg === "" ? i18n[info] : "";
-		setHintStatus(prev => ({
+		const _info = inputStatus[col].msg === "" ? i18n[info] : "";
+		setInputStatus(prev => ({
 			...prev,
 			[col]: {
 				checked: null,
@@ -327,17 +327,17 @@ const Join = () => {
 							errorCode === -5 ||
 							errorCode === -19
 						) {
-							setHintStatus(prevState => ({
+							setInputStatus(prevState => ({
 								...prevState,
 								UserName: { checked: false, msg: message }
 							}));
 						} else if (errorCode === -3) {
-							setHintStatus(prevState => ({
+							setInputStatus(prevState => ({
 								...prevState,
 								Password: { checked: false, msg: message }
 							}));
 						} else if (errorCode === -7) {
-							setHintStatus(prevState => ({
+							setInputStatus(prevState => ({
 								...prevState,
 								SpecialBonusCode: {
 									checked: false,
@@ -364,7 +364,7 @@ const Join = () => {
 				}
 			);
 		} else {
-			setHintStatus(prev => ({
+			setInputStatus(prev => ({
 				...prev,
 				UserName: {
 					checked: UserNameCheck.checked,
@@ -391,7 +391,7 @@ const Join = () => {
 			setUserValue({
 				...initValue
 			});
-			setHintStatus(initStatus);
+			setInputStatus(initStatus);
 		}
 
 		if (showBylink) {
@@ -441,8 +441,8 @@ const Join = () => {
 					onBlur={checkValue.bind(this, { col: "UserName" })}
 					onChange={EditField.bind(this, { col: "UserName" })}
 					value={userValue.UserName}
-					tip={hintStatus.UserName.msg}
-					inputStatus={hintStatus.UserName.checked}
+					tip={inputStatus.UserName.msg}
+					btnStatus={inputStatus.UserName.checked}
 					clickInfo={clickInfo.bind(this, {
 						col: "UserName",
 						info: "lbl_UsernameTooltip"
@@ -453,8 +453,8 @@ const Join = () => {
 					onBlur={checkValue.bind(this, { col: "Password" })}
 					onChange={EditField.bind(this, { col: "Password" })}
 					value={userValue.Password}
-					tip={hintStatus.Password.msg}
-					inputStatus={hintStatus.Password.checked}
+					tip={inputStatus.Password.msg}
+					btnStatus={inputStatus.Password.checked}
 					clickInfo={clickInfo.bind(this, {
 						col: "Password",
 						info: "lbl_PasswordTooltip"
@@ -472,9 +472,9 @@ const Join = () => {
 					/>
 					<Tips
 						Icon="icon-coin-dollar"
-						IsOpen={hintStatus.Currency.checked}
+						IsOpen={inputStatus.Currency.checked}
 						ClassName="JoinRule">
-						{hintStatus.Currency.msg}
+						{inputStatus.Currency.msg}
 					</Tips>
 				</div>
 				<div className="inputPhone parts">
@@ -486,21 +486,21 @@ const Join = () => {
 						value={userValue.Phone}
 						onBlur={checkValue.bind(this, { col: "Phone" })}
 						onChange={EditField.bind(this, { col: "Phone" })}
-						inputStatus={hintStatus.Phone.checked}
+						btnStatus={inputStatus.Phone.checked}
 						clickInfo={clickInfo.bind(this, {
 							col: "Phone",
 							info: "lbl_PhoneTooltip"
 						})}
 					/>
-					<div className="errortip open">{hintStatus.Phone.msg}</div>
+					<div className="errortip open">{inputStatus.Phone.msg}</div>
 				</div>
 				<Inputbox
 					icon="icon icon-affiliate"
 					placeholder={i18n.lbl_Affiliate_ID}
 					value={affiliateidExist ?? userValue.AffiliateId}
 					onChange={EditField.bind(this, { col: "AffiliateId" })}
-					inputStatus={hintStatus.AffiliateId.checked}
-					tip={hintStatus.AffiliateId.msg}
+					btnStatus={inputStatus.AffiliateId.checked}
+					tip={inputStatus.AffiliateId.msg}
 					clickInfo={clickInfo.bind(this, {
 						col: "AffiliateId",
 						info: "lbl_Please_enter_Affiliate_ID"
@@ -534,9 +534,9 @@ const Join = () => {
 						onChange={EditField.bind(this, { col: "ageCheck" })}>
 						{i18n.lbl_Check18TC4}
 					</Checkbox>
-					{hintStatus.Checkbox.msg ? (
+					{inputStatus.Checkbox.msg ? (
 						<div className="JoinRule open">
-							{hintStatus.Checkbox.msg}
+							{inputStatus.Checkbox.msg}
 						</div>
 					) : null}
 				</div>
