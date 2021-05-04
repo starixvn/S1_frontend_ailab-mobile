@@ -71,7 +71,15 @@ const eventTime = {
 
 const gameList = ({ langId, currencyId }) => {
 	let list = [];
-	switch (currencyId) {
+	const currencyMap = {
+		cs: 0,
+		en: 2,
+		th: 4,
+		id: 15
+	};
+	const cur = currencyId || currencyMap[langId];
+	console.log(cur);
+	switch (cur) {
 		case 15:
 			list = [
 				{
@@ -265,9 +273,9 @@ const gameList = ({ langId, currencyId }) => {
 					translateKey: "lbl_Fishing",
 					items: [
 						{
-							...defGameInfo.Fishing_AB3,
-							spanTextKey: "lbl_Paradise",
-							img: fishing_CQ9_AB3
+							...defGameInfo.FishingSGW,
+							spanTextKey: "lbl_FishingSG2",
+							img: fish_SGW
 						},
 						{
 							...defGameInfo.ICG_DRAGONBALL_FISHING,
@@ -275,14 +283,14 @@ const gameList = ({ langId, currencyId }) => {
 							img: fish_DBF
 						},
 						{
+							...defGameInfo.Fishing_AB3,
+							spanTextKey: "lbl_Paradise",
+							img: fishing_CQ9_AB3
+						},
+						{
 							...defGameInfo.FishingGG,
 							spanTextKey: "lbl_FishingGG",
 							img: fish_GG
-						},
-						{
-							...defGameInfo.FishingSGW,
-							spanTextKey: "lbl_FishingSG2",
-							img: fish_SGW
 						}
 					]
 				},
@@ -555,6 +563,11 @@ const gameList = ({ langId, currencyId }) => {
 					translateKey: "lbl_Fishing",
 					items: [
 						{
+							...defGameInfo.FishingGG,
+							spanTextKey: "lbl_FishingGG",
+							img: fish_GG
+						},
+						{
 							...defGameInfo.FishingSGW,
 							spanTextKey: "lbl_FishingSG2",
 							img: fish_SGW
@@ -564,11 +577,7 @@ const gameList = ({ langId, currencyId }) => {
 							spanTextKey: "lbl_Paradise",
 							img: fishing_CQ9_AB3
 						},
-						{
-							...defGameInfo.FishingGG,
-							spanTextKey: "lbl_FishingGG",
-							img: fish_GG
-						},
+
 						{
 							...defGameInfo.ICG_DRAGONBALL_FISHING,
 							spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
