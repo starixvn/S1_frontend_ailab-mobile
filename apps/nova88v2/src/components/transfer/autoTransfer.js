@@ -30,7 +30,7 @@ export default ({ i18n, setPopBox }) => {
 					const { errorCode, data, message } = res.data;
 					if (errorCode === 0) {
 						const _autoTransfer =
-							data !== AutoTransferStatus.closed;
+							data === AutoTransferStatus.opened;
 						setAutoTransfer(_autoTransfer);
 					} else {
 						setPopBox({
