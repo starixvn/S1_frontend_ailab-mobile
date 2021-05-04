@@ -157,6 +157,7 @@ const Main = props => {
 				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/Payment/`}
 				displayKey="payName"
 				_isConvert={_isConvert}
+				showMinMaxHint={true}
 			/>
 			<AmountInput
 				title={i18n.lbl_DepositAmount}
