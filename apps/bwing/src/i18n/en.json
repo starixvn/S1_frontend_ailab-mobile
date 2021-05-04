@@ -572,5 +572,6 @@
 	"lbl_MonthlyTournament" : "MONTHLY TOURNAMENT",
 	"lbl_AgendaTitle" : "MONTHLY DEPOSIT & TURNOVER RACE TOURNAMENT",
 	"lbl_Tournament" : "Tournament",
-	"lbl_Stage": "Stage"
+	"lbl_Stage": "Stage",
+	"lbl_UserNameCheckTooltip":"6-18 alphanumeric (A-Z, a-z, 0-9) characters only."
 }

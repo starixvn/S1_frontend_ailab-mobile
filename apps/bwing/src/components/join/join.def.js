@@ -70,6 +70,10 @@ export const initStatus = {
 		checked: null,
 		msg: ""
 	},
+	Currency: {
+		checked: null,
+		msg: ""
+	},
 	AffiliateId: {
 		checked: null,
 		msg: ""

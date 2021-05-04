@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import { useMatch, useNavigate } from "@reach/router";
 import Inputbox from "../common/inputbox.info";
-import InputboxPWD from "../common/inputbox.password.refactor";
+import InputboxPWD from "../common/inputbox.password.info";
 import Dropdown from "../common/dropdown";
 import Checkbox from "../common/checkbox";
 import Tips from "./tips";
@@ -29,7 +29,6 @@ import PromoPopup from "./join.promotion";
 import Logo from "../img/logo";
 import areaCode from "../../datas/areaCode";
 import { initValue, initStatus, currencyToAreacode } from "./join.def";
-import useTip from "../hook/useTip";
 
 const Join = () => {
 	const navigate = useNavigate();
@@ -39,12 +38,10 @@ const Join = () => {
 	const { nav, setNav } = useContext(navContext);
 	const [userValue, setUserValue] = useState(initValue);
 	const [siteCurrencyList, setSiteCurrencyList] = useState([]);
-	const [showingPsw, setShowingPsw] = useState(false);
 	const [banner, setBanner] = useState([]);
 	const [affiliateidExist, setAffiliateidExist] = useState(null);
 	const [hintStatus, setHintStatus] = useState(initStatus);
 	const [promoPopup, setPromoPopup] = useState(false);
-	const { showTips, showTipHandler } = useTip([]);
 	const isMountedRef = useRef(null);
 
 	const currencyToCountryCode = currencyToAreacode[51];
@@ -76,7 +73,6 @@ const Join = () => {
 	const AffId = getUrlParameter("AffId") || readCookie("AffId");
 	useEffect(() => {
 		const AffCode = getUrlParameter("AffCode") || readCookie("AffCode");
-
 		if (AffId) {
 			setAffiliateidExist(AffId);
 			api_site_GetAffiliateAgent({ AffId }).then(
@@ -88,10 +84,6 @@ const Join = () => {
 								id: currencyId,
 								displayKey: `Currency_${currencyId}`
 							};
-							// setUserValue(prev => ({
-							// 	...prev,
-							// 	Currency: currencyData
-							// }));
 							setSiteCurrencyList(() => [currencyData]);
 						} else {
 							GetSiteCurrencyList();
@@ -151,32 +143,17 @@ const Join = () => {
 		);
 	};
 
-	// const showTip = ({ col, msg }) => {
-	// 	setHintStatus(prev=>({
-
-	// 	}));
-	// };
-
-	const showPswHandler = () => {
-		setShowingPsw(!showingPsw);
-	};
-
 	const checkValue = async ({ col }, e) => {
 		const val = e.target.value;
 		let result = { checked: true, msg: "" };
-		// let checked = true;
-		// let msg = "";
 
 		if (col === "UserName") {
 			result = await userNameCheck({ val });
 		} else if (col === "Password") {
-			result = passwordCheck({ val });
+			result = passwordCheck({ val, i18n });
 		} else if (col === "Phone") {
 			result = await phoneCheck({ val });
 		}
-
-		// checked = result.checked;
-		// msg = result.msg;
 
 		setHintStatus(prev => ({
 			...prev,
@@ -191,12 +168,16 @@ const Join = () => {
 		let checked = true;
 		let msg = "";
 
+		const regx = /^[A-Za-z][A-Za-z0-9]*$/;
 		if (!val) {
 			checked = false;
 			msg = i18n.msg_UsernameReq;
 		} else if (val.length < 6 || val.length > 18) {
 			checked = false;
 			msg = i18n.msg_UsernameLength;
+		} else if (!regx.test(val)) {
+			checked = false;
+			msg = i18n.lbl_UserNameCheckTooltip;
 		} else {
 			const res = await api_ExistsUserName({
 				UserName: val,
@@ -236,16 +217,22 @@ const Join = () => {
 		return { checked, msg };
 	};
 
-	const dropdownStateHandler = i => {
+	const selectCurrency = i => {
+		setHintStatus(prev => ({
+			...prev,
+			Currency: {
+				checked: true,
+				msg: i18n.lbl_PreferredCurrencyToolTip
+			}
+		}));
 		setUserValue(prev => ({
 			...prev,
-			Currency: siteCurrencyList[i]
+			Currency: i
 		}));
 	};
 
 	const EditField = ({ col }, e) => {
 		const val = col.includes("Check") ? !userValue[col] : e.target.value;
-
 		setUserValue(prev => ({
 			...prev,
 			[col]: val
@@ -264,14 +251,17 @@ const Join = () => {
 	};
 
 	const clickSubmit = async () => {
-		let checked = true;
+		let checked = null;
+		const UserNameCheck = await userNameCheck({ val: userValue.UserName });
+		const PasswordCheck = passwordCheck({ val: userValue.Password, i18n });
+		const PhoneCheck = await phoneCheck({ val: userValue.Phone });
+		const CheckboxCheck = userValue.termsCheck && userValue.ageCheck;
 
-		const UserName = await userNameCheck({ val: userValue.UserName });
-		const Password = passwordCheck({ val: userValue.Password });
-		const Phone = await phoneCheck({ val: userValue.Phone });
-		const _Checkbox = userValue.termsCheck && userValue.ageCheck;
-
-		checked = UserName.checked && Password.checked && _Checkbox;
+		checked =
+			UserNameCheck.checked &&
+			PasswordCheck.checked &&
+			PhoneCheck.checked &&
+			CheckboxCheck;
 
 		if (checked) {
 			const regData = {
@@ -377,16 +367,16 @@ const Join = () => {
 			setHintStatus(prev => ({
 				...prev,
 				UserName: {
-					checked: UserName.checked,
-					msg: i18n[UserName.msg]
+					checked: UserNameCheck.checked,
+					msg: UserNameCheck.msg
 				},
 				Password: {
-					checked: Password.checked,
-					msg: i18n[Password.message]
+					checked: PasswordCheck.checked,
+					msg: PasswordCheck.msg
 				},
 				Phone: {
-					checked: Phone.checked,
-					msg: i18n[Phone.msg]
+					checked: PhoneCheck.checked,
+					msg: PhoneCheck.msg
 				},
 				Checkbox: {
 					checked: userValue.termsCheck && userValue.ageCheck,
@@ -444,7 +434,6 @@ const Join = () => {
 				</div>
 				<Logo />
 				<div className="title">{i18n.lbl_JoinNow}</div>
-
 				<Inputbox
 					icon="icon icon-member"
 					inputType="text"
@@ -459,79 +448,65 @@ const Join = () => {
 						info: "lbl_UsernameTooltip"
 					})}
 				/>
-
 				<InputboxPWD
-					icon="icon icon-key"
-					inputType={`${!showingPsw ? "password" : "text"}`}
 					placeholder={i18n.lbl_Password}
 					onBlur={checkValue.bind(this, { col: "Password" })}
 					onChange={EditField.bind(this, { col: "Password" })}
-					showPsw={showingPsw}
-					showPswHandler={showPswHandler}
 					value={userValue.Password}
 					tip={hintStatus.Password.msg}
-					warningIcon={hintStatus.Password.checked === false}
+					inputStatus={hintStatus.Password.checked}
+					clickInfo={clickInfo.bind(this, {
+						col: "Password",
+						info: "lbl_PasswordTooltip"
+					})}
 				/>
-
 				<div className="inputBox">
 					<Dropdown
 						mainKey="join-curr"
 						colName="Currency"
 						selectedIdx={userValue.Currency}
 						options={siteCurrencyList}
-						// clickDropdown={showTipsHandler.bind(null, "Currency")}
-						onSelectItem={dropdownStateHandler}
+						onSelectItem={selectCurrency}
 						value={userValue.Currency}
 						i18n={i18n}
 					/>
 					<Tips
 						Icon="icon-coin-dollar"
-						// IsOpen={showTipsState.Currency}
+						IsOpen={hintStatus.Currency.checked}
 						ClassName="JoinRule">
-						{i18n.lbl_PreferredCurrencyToolTip}
+						{hintStatus.Currency.msg}
 					</Tips>
 				</div>
-
 				<div className="inputPhone parts">
 					<span className="countryCode">{_areaCode}</span>
 					<Inputbox
 						icon="icon icon-phone"
 						inputType="tel"
-						ClassName="JoinRule"
 						placeholder={i18n.lbl_Phone}
 						value={userValue.Phone}
-						areaCode={_areaCode}
-						// onFocus={showTipsHandler.bind(null, "Phone")}
 						onBlur={checkValue.bind(this, { col: "Phone" })}
 						onChange={EditField.bind(this, { col: "Phone" })}
-						InputStatus={hintStatus.Phone.checked}
+						inputStatus={hintStatus.Phone.checked}
+						clickInfo={clickInfo.bind(this, {
+							col: "Phone",
+							info: "lbl_PhoneTooltip"
+						})}
 					/>
 					<div className="errortip open">{hintStatus.Phone.msg}</div>
 				</div>
-
-				{/* <Inputbox
-					icon="icon-promotion"
-					ClassName="JoinRule"
-					placeholder={i18n.lbl_JoinPromoCode}
-					value={userValue.SpecialBonusCode}
-					onChange={EditField.bind(null, "SpecialBonusCode")}
-					onBlur={checkValue.bind(null, "SpecialBonusCode")}
-					Warning={warning.SpecialBonusCode}
-				/> */}
-
 				<Inputbox
 					icon="icon icon-affiliate"
-					ClassName="JoinRule"
 					placeholder={i18n.lbl_Affiliate_ID}
 					value={affiliateidExist ?? userValue.AffiliateId}
-					// onFocus={showTipsHandler.bind(null, "AffiliateId")}
 					onChange={EditField.bind(this, { col: "AffiliateId" })}
-					// showTips={showTipsState.AffiliateId}
-					Tips={i18n.lbl_Please_enter_Affiliate_ID}
-					// Warning={warning.AffiliateId}
+					inputStatus={hintStatus.AffiliateId.checked}
+					tip={hintStatus.AffiliateId.msg}
+					clickInfo={clickInfo.bind(this, {
+						col: "AffiliateId",
+						info: "lbl_Please_enter_Affiliate_ID"
+					})}
 					disabled={affiliateidExist}
 				/>
-
 				<div className="Terms">
 					<Checkbox
 						checked={userValue.termsCheck}

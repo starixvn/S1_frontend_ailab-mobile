@@ -15,7 +15,10 @@ const Inputbox = ({
 	inputStatus,
 	numberConvert,
 	title,
-	clickInfo
+	clickInfo,
+	submitBtn,
+	i18n,
+	clickSubmit
 }) => {
 	return (
 		<div className="input-Area">
@@ -39,29 +42,13 @@ const Inputbox = ({
 						clickInfo={clickInfo}
 					/>
 				</div>
-				{/* <div className="btn-group">
-					<button className="blue">Submit</button>
-				</div> */}
+				{submitBtn ? (
+					<SubmitBtn i18n={i18n} clickSubmit={clickSubmit} />
+				) : null}
 			</div>
 			{tip ? <div className="tip open">{tip}</div> : null}
 		</div>
 	);
-};
-
-const IptStatus = ({ inputStatus, clickInfo }) => {
-	switch (inputStatus) {
-		case false:
-			return <i className="icon icon-cross textRed" />;
-		case true:
-			return <i className="icon icon-checkmark textGreen" />;
-		default:
-			return (
-				<i
-					className="icon icon-information-solid"
-					onClick={clickInfo}
-				/>
-			);
-	}
 };
 
 Inputbox.defaultProps = {
@@ -75,7 +62,11 @@ Inputbox.defaultProps = {
 	tip: "",
 	inputStatus: null,
 	numberConvert: false,
-	title: null
+	title: null,
+	clickInfo: () => null,
+	submitBtn: false,
+	i18n: {},
+	clickSubmit: () => null
 };
 
 Inputbox.propTypes = {
@@ -91,7 +82,52 @@ Inputbox.propTypes = {
 	tip: PropTypes.string,
 	inputStatus: PropTypes.bool,
 	numberConvert: PropTypes.bool,
-	title: PropTypes.string
+	title: PropTypes.string,
+	clickInfo: PropTypes.func,
+	submitBtn: PropTypes.bool,
+	i18n: PropTypes.objectOf(PropTypes.string),
+	clickSubmit: PropTypes.func
+};
+
+export const IptStatus = ({ inputStatus, clickInfo }) => {
+	switch (inputStatus) {
+		case false:
+			return <i className="icon icon-cross textRed" />;
+		case true:
+			return <i className="icon icon-checkmark textGreen" />;
+		default:
+			return (
+				<i
+					className="icon icon-information-solid"
+					onClick={clickInfo}
+				/>
+			);
+	}
+};
+
+IptStatus.defaultProps = {
+	inputStatus: null,
+	clickInfo: () => null
+};
+
+IptStatus.propTypes = {
+	inputStatus: PropTypes.bool,
+	clickInfo: PropTypes.func
+};
+
+const SubmitBtn = ({ i18n, clickSubmit }) => {
+	return (
+		<div className="btn-group">
+			<button className="blue" onClick={clickSubmit}>
+				{i18n.lbl_Submit}
+			</button>
+		</div>
+	);
+};
+
+SubmitBtn.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	clickSubmit: PropTypes.func.isRequired
 };
 
 export default Inputbox;

@@ -148,21 +148,21 @@ export const isEventPeriod = ({ startDate, endDate }) => {
 	return result;
 };
 
-export const passwordCheck = ({ val }) => {
+export const passwordCheck = ({ val, i18n }) => {
 	let checked = true;
-	let message = "";
+	let msg = "";
 
 	const regx = /^(?=.{6,15}$)(?=.*[a-zA-Z0-9])(?=.*[!@#$%^&*]).*$/;
 	if (!val) {
 		checked = false;
-		message = "msg_PasswordReq";
+		msg = i18n.msg_PasswordReq;
 	} else if (val.length < 6 || val.length > 15) {
 		checked = false;
-		message = "msg_PasswordLength";
+		msg = i18n.msg_PasswordLength;
 	} else if (!regx.test(val)) {
 		checked = false;
-		message = "msg_PasswordVaildate";
+		msg = i18n.msg_PasswordVaildate;
 	}
 
-	return { checked, message };
+	return { checked, msg };
 };
