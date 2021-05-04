@@ -67,7 +67,7 @@ const LoginPage = () => {
 			const reg = /^(?=.{6,18}$)(?=.*[a-zA-Z0-9]$)/;
 			if (val.length < 6 || val.length > 18 || !reg.test(val)) {
 				flag = false;
-				col = "lbl_UsernameTooltip";
+				col = "lbl_UsernameInvalid";
 			}
 		}
 		setWarningState(prevState => {
@@ -89,21 +89,18 @@ const LoginPage = () => {
 	const handleLogin = () => {
 		let checked = true;
 		let col = "";
-		if (colName === "Password") {
-			if (userValueState.Password === "") {
-				checked = false;
-				col = "msg_PasswordReq";
-			}
-		} else {
-			const reg = /^(?=.{6,18}$)(?=.*[a-zA-Z0-9]$)/;
-			if (
-				userValueState.UserName.length < 6 ||
-				userValueState.UserName.length > 18 ||
-				!reg.test(userValueState.UserName)
-			) {
-				checked = false;
-				col = "lbl_UsernameTooltip";
-			}
+		const reg = /^(?=.{6,18}$)(?=.*[a-zA-Z0-9]$)/;
+		if (userValueState.Password === "") {
+			checked = false;
+			col = "msg_PasswordReq";
+		}
+		if (
+			userValueState.UserName.length < 6 ||
+			userValueState.UserName.length > 18 ||
+			!reg.test(userValueState.UserName)
+		) {
+			checked = false;
+			col = "lbl_UsernameInvalid";
 		}
 
 		setWarningState(prevState => {

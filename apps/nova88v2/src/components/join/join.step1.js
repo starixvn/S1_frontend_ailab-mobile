@@ -75,7 +75,7 @@ const JoinStep1 = ({
 			msg = "msg_UsernameReq";
 		} else if (val.length < 6 || val.length > 18 || !reg.test(val)) {
 			checked = false;
-			msg = "lbl_UsernameTooltip";
+			msg = "lbl_UsernameInvalid";
 		} else {
 			const res = await api.site.ExistsUserName({
 				UserName: val,
