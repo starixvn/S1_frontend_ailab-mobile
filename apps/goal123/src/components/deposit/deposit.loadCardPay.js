@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useRef } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import {
 	i18nContext,
@@ -8,12 +8,12 @@ import {
 } from "../common/context";
 import config from "../../config";
 import { isConvert, number_format } from "../common/common";
-import GroupList from "./deposit.all.groupList";
-import AmountInput from "./deposit.all.amountInput";
+import AmountInput from "./deposit.amountInput";
 import { useHandleAmount } from "./hook/useHandleAmount";
 import { api_payment_GetLoadCardPayInfoList } from "../../service/api/payment";
+import GroupList from "./deposit.groupList";
 
-const payType = "LoadCardPay";
+const payType = "LoadCard";
 
 const Payment = props => {
 	const { paymentList, creditTimeKey } = props;
@@ -21,7 +21,7 @@ const Payment = props => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setLoading } = useContext(loadingContext);
-	const [groupList, setGroupList] = useState(null);
+	const [groupList, setGroupList] = useState([]);
 	const [selChannel, setSelChannel] = useState({});
 
 	const {
@@ -46,6 +46,7 @@ const Payment = props => {
 		return () => {
 			isMountedRef.current = false;
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [paymentList.length]);
 
 	const SelectGroup = groupId => {
@@ -56,18 +57,17 @@ const Payment = props => {
 					if (res.data.errorCode === 0) {
 						setGroupList(res.data.data);
 						setSelChannel(res.data.data?.[0]);
-					} else {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: res.data.message
-						});
 					}
 					setLoading(false);
 				}
 			},
 			() => {
 				if (isMountedRef.current) {
+					setPopBox({
+						isOpen: true,
+						title: i18n.lbl_ImportantNote,
+						content: i18n.msg_ApiServerError
+					});
 					setLoading(false);
 				}
 			}
@@ -102,15 +102,9 @@ const Payment = props => {
 							src={`${config.imgUrl}/common/images/LoadCardPay/${selChannel.payName}.png`}
 							alt={selChannel.payName}
 						/>
-						<div>
-							<ul>
-								<li className="text-lightBlue">
-									{i18n.lbl_DepositAmount} :
-								</li>
-								<li>
-									{number_format(real_amount, _isConvert, 0)}
-								</li>
-							</ul>
+						<div className="tip">
+							<span>{i18n.lbl_DepositAmount} :</span>{" "}
+							{number_format(real_amount, _isConvert, 0)}
 						</div>
 					</>
 				),
@@ -118,7 +112,7 @@ const Payment = props => {
 				btnBar: (
 					<div className="btn-group">
 						<button
-							className="Cancel"
+							className="darkGray"
 							onClick={() =>
 								setPopBox(prevState => ({
 									...prevState,
@@ -128,7 +122,7 @@ const Payment = props => {
 							{i18n.lbl_Cancel}
 						</button>
 						<button
-							className="blue"
+							className="lightBlue"
 							onClick={RedirectToNext.bind(this, real_amount)}>
 							{i18n.lbl_Submit}
 						</button>
@@ -142,23 +136,25 @@ const Payment = props => {
 	const canSubmit =
 		amount !== "" &&
 		VaildAmount({ _amount: amount, displayWarning: false });
+
 	return (
 		<div className="depositModule_mobile open">
-			<div className="title text-org">{`${i18n.lbl_CreditTime}: ${i18n[creditTimeKey]}`}</div>
-
+			<div className="title text-org">
+				{`${i18n.lbl_CreditTime}: ${i18n[creditTimeKey]}`}
+			</div>
 			<GroupList
-				title={i18n.lbl_PaymentModes}
+				mainKey={`deposit-full-${payType}-groupList`}
 				dataList={groupList}
 				SelectPayment={SelectGroup}
 				selected={selChannel?.groupId}
-				mainKey={`deposit-full-${payType}-groupList`}
+				title={i18n.lbl_PaymentModes}
 				imgKey="payName"
 				idKey="groupId"
 				prefixImgUrl={`${config.imgUrl}/common/images/LoadCardPay/`}
 				i18n={i18n}
 				displayKey="payName"
-				_isConvert={_isConvert}
 				showMinMaxHint={true}
+				_isConvert={_isConvert}
 			/>
 			<AmountInput
 				title={i18n.lbl_DepositAmount}
@@ -173,7 +169,7 @@ const Payment = props => {
 			/>
 			<div className="btn-group">
 				<button
-					className={canSubmit ? "blue" : "gray"}
+					className={canSubmit ? "lightBlue" : "darkGray"}
 					onClick={ClickSubmit}>
 					{i18n.lbl_Submit}
 				</button>
