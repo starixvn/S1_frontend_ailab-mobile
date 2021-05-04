@@ -2455,6 +2455,7 @@ p.txt-blue12 {
           flex: 1;
   background: #010e33;
   padding: 0 2vw;
+  height: 35px;
 }
 
 .countryCode + .inputBox {
@@ -9136,6 +9137,9 @@ span.important {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 
 .input-Area .input-title {
@@ -9150,6 +9154,7 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-top: 10px;
 }
 
 .input-Area .input-group .inputBoxNew {
@@ -9180,6 +9185,10 @@ span.important {
   padding: 0;
   margin: 0 1vw;
   outline-style: none;
+}
+
+.input-Area .input-group .inputBoxNew i {
+  margin: 0 2px;
 }
 
 .input-Area .input-group .btn-group {

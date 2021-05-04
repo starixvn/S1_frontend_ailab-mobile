@@ -3,15 +3,15 @@ import { Link, Redirect } from "@reach/router";
 import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
 import { api_ChangePassword } from "../../service/api/account";
 import path from "../../path";
-import Inputbox from "../common/inputbox.password";
+import Inputbox from "../common/inputbox.password.info";
 import { passwordCheck } from "../common/common";
 
-const initState = {
+const initValue = {
 	oldPsw: "",
 	newPsw: ""
 };
 
-const initWarningState = {
+const initStatus = {
 	oldPsw: {
 		status: false,
 		msg: ""
@@ -22,20 +22,14 @@ const initWarningState = {
 	}
 };
 
-const initPswState = {
-	oldPsw: false,
-	newPsw: false
-};
-
 export default () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
-	const [userValueState, setUserValueState] = useState(initState);
-	const [warningState, setWarningState] = useState(initWarningState);
-	const [pswState, setPswState] = useState(initPswState);
-	const isMountedRef = useRef(null);
+	const [userValue, setUserValue] = useState(initValue);
+	const [inputStatus, setInputStatus] = useState(initStatus);
 	const [redirectPath, setRedirectPath] = useState(null);
+	const isMountedRef = useRef(null);
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -56,55 +50,51 @@ export default () => {
 		}
 	}, [userInfo.isLogin]);
 
-	const showPswHandler = col => {
-		setPswState(prevState => ({
-			...prevState,
-			[col]: !pswState[col]
-		}));
-	};
-
-	const checkPswHandler = (colName, e) => {
+	const checkPswHandler = ({ col }, e) => {
 		const val = e.target.value;
-		const result =
-			colName === "oldPsw"
+		const { checked, msg } =
+			col === "oldPsw"
 				? pwdEmptyCheck({ val })
-				: passwordCheck({ val });
+				: passwordCheck({ val, i18n });
 
-		setWarningState(prevState => {
-			return {
-				...prevState,
-				[colName]: {
-					status: !result.checked,
-					msg: i18n[result.message]
-				}
-			};
-		});
+		setInputStatus(prev => ({
+			...prev,
+			[col]: { checked, msg }
+		}));
 	};
 
 	const pwdEmptyCheck = ({ val }) => {
 		let checked = true;
-		let message = "";
+		let msg = "";
 		if (!val) {
 			checked = false;
-			message = "msg_PasswordReq";
+			msg = i18n.msg_PasswordReq;
 		}
-		return { checked, message };
+		return { checked, msg };
 	};
 
-	const EditField = (colName, e) => {
-		const { value } = e.target;
+	const EditField = ({ col }, e) => {
+		const val = e.target.value;
+		setUserValue(prev => ({
+			...prev,
+			[col]: val
+		}));
+	};
 
-		setUserValueState(prevState => ({
-			...prevState,
-			[colName]: value
+	const clickInfo = ({ col }) => {
+		const info =
+			inputStatus[col].msg === "" ? i18n.lbl_PasswordTooltip : "";
+		setInputStatus(prev => ({
+			...prev,
+			[col]: { checked: null, msg: info }
 		}));
 	};
 
 	const clickSubmit = () => {
-		const oldPsw = pwdEmptyCheck({ val: userValueState.oldPsw });
-		const newPsw = passwordCheck({ val: userValueState.newPsw });
+		const oldPswCheck = pwdEmptyCheck({ val: userValue.oldPsw });
+		const newPswCheck = passwordCheck({ val: userValue.newPsw, i18n });
 
-		if (oldPsw.checked && newPsw.checked) {
+		if (oldPswCheck.checked && newPswCheck.checked) {
 			const closePopbox = status => {
 				setPopBox({ isOpen: false });
 				if (status === "success") {
@@ -113,8 +103,8 @@ export default () => {
 			};
 
 			api_ChangePassword({
-				OldPassword: userValueState.oldPsw,
-				NewPassword: userValueState.newPsw
+				OldPassword: userValue.oldPsw,
+				NewPassword: userValue.newPsw
 			}).then(
 				res => {
 					if (isMountedRef.current) {
@@ -156,7 +146,7 @@ export default () => {
 						}
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
@@ -167,43 +157,39 @@ export default () => {
 				}
 			);
 		} else {
-			setWarningState({
+			setInputStatus({
 				oldPsw: {
-					status: !oldPsw.checked,
-					msg: i18n[oldPsw.message]
+					checked: oldPswCheck.checked,
+					msg: oldPswCheck.msg
 				},
-				newPsw: { status: !newPsw.checked, msg: i18n[newPsw.message] }
+				newPsw: {
+					checked: newPswCheck.checked,
+					msg: newPswCheck.msg
+				}
 			});
 		}
 	};
-
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
 	) : (
 		<>
 			<Inputbox
-				icon="icon-key"
-				inputType={`${!pswState.oldPsw ? "password" : "text"}`}
 				placeholder={i18n.lbl_OldPassword}
-				onBlur={checkPswHandler.bind(null, "oldPsw")}
-				onChange={EditField.bind(null, "oldPsw")}
-				showPsw={pswState.oldPsw}
-				showPswHandler={showPswHandler.bind(null, "oldPsw")}
-				ClassName="LoginRule "
-				Warning={warningState.oldPsw}
-				value={userValueState.oldPsw}
+				onBlur={checkPswHandler.bind(null, { col: "oldPsw" })}
+				onChange={EditField.bind(null, { col: "oldPsw" })}
+				value={userValue.oldPsw}
+				btnStatus={inputStatus.oldPsw.checked}
+				tip={inputStatus.oldPsw.msg}
+				clickInfo={clickInfo.bind(this, { col: "oldPsw" })}
 			/>
 			<Inputbox
-				icon="icon-key"
-				inputType={`${!pswState.newPsw ? "password" : "text"}`}
 				placeholder={i18n.lbl_NewPassword}
-				onBlur={checkPswHandler.bind(null, "newPsw")}
-				onChange={EditField.bind(null, "newPsw")}
-				showPsw={pswState.newPsw}
-				showPswHandler={showPswHandler.bind(null, "newPsw")}
-				ClassName="LoginRule "
-				Warning={warningState.newPsw}
-				value={userValueState.newPsw}
+				onBlur={checkPswHandler.bind(null, { col: "newPsw" })}
+				onChange={EditField.bind(null, { col: "newPsw" })}
+				value={userValue.newPsw}
+				btnStatus={inputStatus.newPsw.checked}
+				tip={inputStatus.newPsw.msg}
+				clickInfo={clickInfo.bind(this, { col: "newPsw" })}
 			/>
 			<div className="btn-group">
 				<Link className="cancel" to={`/${path.member.root}`}>
