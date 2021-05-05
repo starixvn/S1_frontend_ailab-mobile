@@ -83,7 +83,7 @@ const PromotionInfoContent = () => {
 						}
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						handleErrorPopBox({ uiSetting });
 					}

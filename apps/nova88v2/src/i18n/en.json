@@ -587,6 +587,12 @@
 	"lbl_LocalBankBankAccountTip":"Please select which bank account you deposited from the local bank.",
 	"lbl_BankDetails":"Bank Details",
 	"lbl_DepositLocalbankButton":"Remember my last used mode",
-	"lbl_DepositLocalbankButtonInfo":"Remember the bank used for your last deposit. If the bank you selected has been closed, please select again."
+	"lbl_DepositLocalbankButtonInfo":"Remember the bank used for your last deposit. If the bank you selected has been closed, please select again.",
 
+	"==============Promotion==============":"",
+	"lbl_ClaimAmount": "Claim Amount",
+	"lbl_LossAmount":"Loss Amount",
+	"lbl_Percentage":"Percentage",
+	"lbl_TotalAmount":"Total Amount",
+	"lbl_ClaimNow":"Claim Now"
 }

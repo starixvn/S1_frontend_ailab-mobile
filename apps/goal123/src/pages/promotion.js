@@ -12,7 +12,8 @@ const defPromotionNav = [
 	defNav.FreeBet,
 	defNav.ReDeposit,
 	defNav.RebateAndCashBack,
-	defNav.SpecialBonus
+	defNav.SpecialBonus,
+	defNav.Static
 ];
 
 export default ({ location }) => {

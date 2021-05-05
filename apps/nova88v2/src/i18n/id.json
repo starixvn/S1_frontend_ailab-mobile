@@ -589,6 +589,13 @@
 	"lbl_LocalBankBankAccountTip":"Please select which bank account you deposited from the local bank.",
 	"lbl_BankDetails":"Rincian Bank",
 	"lbl_DepositLocalbankButton":"Ingat mode terakhir yang digunakan",
-	"lbl_DepositLocalbankButtonInfo":"Ingat bank yang Anda gunakan untuk deposit terakhir. Jika bank yang Anda pilih sudah tutup, mohon pilih kembali."
+	"lbl_DepositLocalbankButtonInfo":"Ingat bank yang Anda gunakan untuk deposit terakhir. Jika bank yang Anda pilih sudah tutup, mohon pilih kembali.",
 
+
+	"==============Promotion==============":"",
+	"lbl_ClaimAmount": "Jumlah Klaim",
+	"lbl_LossAmount":"Nilai Kekalahan",
+	"lbl_Percentage":"Persentase",
+	"lbl_TotalAmount":"Jumlah Dana",
+	"lbl_ClaimNow":"Klaim Sekarang"
 }

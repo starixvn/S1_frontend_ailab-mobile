@@ -12,6 +12,7 @@ import { GET_ENTER_PAGE } from "../../service/enterPage";
 import path from "../../path";
 import api from "../../service/api";
 import Ambassador from "../../styles/img/ambassador.jpg";
+import { useGotoGame } from "../hook/useGotoGame";
 
 const Category = props => {
 	const { i18n } = useContext(i18nContext);
@@ -24,6 +25,7 @@ const Category = props => {
 
 	const { setPopBox } = useContext(popBoxContext);
 	const [showingTpIds, setShowingTpIds] = useState(null);
+	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 
 	const clickGame = gameInfo => {
 		const {
@@ -54,12 +56,21 @@ const Category = props => {
 						setRedirect
 				  });
 		}
+
 		return GET_ENTER_PAGE({
 			langId: userInfo.langId,
 			tpId,
 			gameId,
 			isLogin: userInfo.isLogin === true,
-			loginCallback: HandleLogin
+			loginCallback: HandleLogin,
+			execFunction: gameInfo.useGotoGame
+				? handleGoToGame.bind({
+						isLogin: userInfo.isLogin === true,
+						langId: userInfo.langId,
+						tpId,
+						gameId
+				  })
+				: null
 		});
 	};
 
@@ -73,7 +84,7 @@ const Category = props => {
 						setShowingTpIds(res.data.data);
 					}
 				},
-				err => {
+				() => {
 					if (mounted) {
 						setPopBox({
 							isOpen: true,

@@ -18,7 +18,7 @@ export const redirectToPrev = (i18n, setPopBox, closePopbox) => {
 					<button
 						className="orange"
 						onClick={closePopbox.bind(null, {
-							_redirectPath: `/${path.withdrawal.root}`
+							_redirectPath: path.withdrawal.root
 						})}>
 						{i18n.lbl_Confirm}
 					</button>
@@ -39,7 +39,7 @@ export const redirectToPrev = (i18n, setPopBox, closePopbox) => {
 					<button
 						className="orange"
 						onClick={closePopbox.bind(null, {
-							_redirectPath: `/${
+							_redirectPath: `${
 								path.promotionInfo.root
 							}?BonusCode=${getUrlParameter("BonusCode")}`
 						})}>
@@ -62,7 +62,7 @@ export const redirectToPrev = (i18n, setPopBox, closePopbox) => {
 					<button
 						className="orange"
 						onClick={closePopbox.bind(null, {
-							_redirectPath: `/${path.deposit.root}`
+							_redirectPath: path.deposit.root
 						})}>
 						{i18n.lbl_Confirm}
 					</button>

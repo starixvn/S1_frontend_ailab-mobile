@@ -204,17 +204,17 @@ div[tabindex="-1"] {
   font-weight: bold;
 }
 
-.Login .inputBox i.icon.icon-eye, .Login .inputBox i.icon.icon-eye-blocked {
+.Login .inputBox i.icon.icon-minus, .Login .inputBox i.icon.icon-plus {
   display: none;
 }
 
-.Login .inputBox i.icon.icon-key + input + div > .icon-eye {
+.Login .inputBox i.icon.icon-key + input + div > .icon-minus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.Login .inputBox i.icon.icon-key + input + div > .icon-eye-blocked {
+.Login .inputBox i.icon.icon-key + input + div > .icon-plus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -256,17 +256,17 @@ div[tabindex="-1"] {
   font-weight: bold;
 }
 
-.Join .inputBox i.icon.icon-eye, .Join .inputBox i.icon.icon-eye-blocked {
+.Join .inputBox i.icon.icon-minus, .Join .inputBox i.icon.icon-plus {
   display: none;
 }
 
-.Join .inputBox i.icon.icon-key + input + div > .icon-eye {
+.Join .inputBox i.icon.icon-key + input + div > .icon-minus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.Join .inputBox i.icon.icon-key + input + div > .icon-eye-blocked {
+.Join .inputBox i.icon.icon-key + input + div > .icon-plus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1672,17 +1672,44 @@ footer > a.active .circleAnimation + span {
   min-width: 37vw;
 }
 
-.Balance .icon-eye:before {
-  font-size: 3vw;
-  margin-right: 1vw;
+.Balance .icon-minus, .Balance .icon-plus {
+  width: 100%;
+  text-align: left;
+}
+
+.Balance .icon-minus:before, .Balance .icon-plus:before {
+  display: none;
+}
+
+.Balance .icon-minus:after, .Balance .icon-plus:after {
+  font-size: 3.5vw;
+  background: white;
+  color: #5574A7;
+  border-radius: 100%;
+  margin-left: 1vw;
+}
+
+.Balance .icon-minus:after {
+  content: "\e94e";
+}
+
+.Balance .icon-plus:after {
+  content: "\e94f";
 }
 
 .Balance .icon-spinner11 {
-  margin-left: 0;
+  margin-left: 1vw;
+  width: 4vw;
+  height: 4vw;
+  background: white;
+  color: #5574A7;
 }
 
-.Balance .icon-spinner11 + div {
+.Balance > div {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .balance {
@@ -1881,7 +1908,7 @@ footer > a.active .circleAnimation + span {
   border-radius: 5px;
   padding: 2vw;
   position: relative;
-  word-break: break-all;
+  word-break: break-word;
   color: #5574A7;
 }
 

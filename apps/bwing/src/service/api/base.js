@@ -3,6 +3,12 @@ import config from "../../config";
 
 const rootURL = config.apiURL;
 
+export const defDeviceType = {
+	Desktop: 1,
+	Mobile: 2,
+	NativeAPP: 3
+};
+
 export const loginRequest = axios.create({
 	withCredentials: true,
 	baseURL: `${rootURL}/api/Site`
