@@ -37,13 +37,13 @@ const Balance = ({ i18n, userInfo }) => {
 		<div className="Balance">
 			<button
 				className={
-					showingBalance ? "icon icon-plus" : "icon icon-minus"
+					showingBalance ? "icon icon-minus" : "icon icon-plus"
 				}
 				onClick={clickEye}>
 				{i18n[`Currency_${userInfo.currencyId}`]}{" "}
 			</button>
 			<div>
-				{showingBalance ? balance : "*****"}
+				{showingBalance ? `$${balance}` : "*****"}
 				<ReloadSpin func={clickReloadSpin} />
 			</div>
 		</div>

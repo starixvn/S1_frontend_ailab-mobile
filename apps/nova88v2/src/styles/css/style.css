@@ -1701,8 +1701,11 @@ footer > a.active .circleAnimation + span {
   margin-left: 1vw;
   width: 4vw;
   height: 4vw;
-  background: white;
-  color: #5574A7;
+}
+
+.Balance .icon-spinner11:before {
+  font-size: 5vw;
+  font-weight: normal;
 }
 
 .Balance > div {

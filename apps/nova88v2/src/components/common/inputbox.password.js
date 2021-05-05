@@ -30,7 +30,7 @@ const Inputbox = props => {
 					<IptStatus btnStatus={props.checked} />
 					<i
 						className={`icon ${
-							!props.showPsw ? "icon-minus" : "icon-plus"
+							!props.showPsw ? "icon-eye-blocked" : "icon-eye"
 						}`}
 						onClick={props.showPswHandler}
 					/>
