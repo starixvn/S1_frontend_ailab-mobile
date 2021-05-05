@@ -107,6 +107,12 @@ const defPlatfrom = [
 	{
 		...defGameInfo.LIVEcasinoN2,
 		imgName: "n2"
+	},
+	{
+		...defGameInfo.Casino_PT,
+		path: path.casino.root,
+		parameter: { ...defGameInfo.Casino_PT },
+		imgName: "playtech"
 	}
 ];
 

@@ -105,7 +105,7 @@ export const defUrlParamCols = {
 	filterType: "filterType"
 };
 
-export const hideJoinBtnTypes = [
+export const defHideJoinBtnTypes = [
 	defPromotionType.rebate,
 	defPromotionType.static
 ];

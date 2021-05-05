@@ -39,6 +39,9 @@ const PromotionCard = ({
 				bonusCode={p.bonusCode}
 				urlParameters={urlParameters}
 				userInfo={userInfo}
+				promotionType={p.promotionType}
+				promotionLink={p.promotionLink}
+				promotionAction={p.promotionAction}
 			/>
 			<JoinBtn
 				promotionInfo={p}

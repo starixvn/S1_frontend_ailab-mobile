@@ -568,7 +568,7 @@
 	"lbl_WrongPswHint":"Your confirm password is not same as your password, please check again.",
 	"lbl_Register":"สมัครสมาชิก",
 	"lbl_AfterJoinHint":"ยินดีด้วยค่ะ คุณได้ลงทะเบียนเป็นสมาชิกเรียบร้อยแล้ว",
-	"lbl_TpWallet_27": "PT วอลเล็ท",
+	"lbl_TpWallet_27": "กระเป๋าสตางค์ PT",
 	"lbl_LIVE_SPORT" : "กีฬาสด",
 	"lbl_TV" : "ทีวี",
 	"lbl_MOVIE_TV" : "มูฟวี่ ทีวี",
@@ -589,6 +589,12 @@
 	"lbl_LocalBankBankAccountTip":"Please select which bank account you deposited from the local bank.",
 	"lbl_BankDetails":"รายละเอียดธนาคาร",
 	"lbl_DepositLocalbankButton":"จำโหมดที่ใช้ล่าสุดของฉัน",
-	"lbl_DepositLocalbankButtonInfo":"จำธนาคารที่ใช้สำหรับการฝากเงินครั้งสุดท้ายของคุณ หากธนาคารที่คุณเลือกถูกปิดโปรดเลือกอีกครั้ง"
+	"lbl_DepositLocalbankButtonInfo":"จำธนาคารที่ใช้สำหรับการฝากเงินครั้งสุดท้ายของคุณ หากธนาคารที่คุณเลือกถูกปิดโปรดเลือกอีกครั้ง",
 
+	"==============Promotion==============":"",
+	"lbl_ClaimAmount": "จำนวนเงินที่ขอรับ",
+	"lbl_LossAmount":"จำนวนเงินที่เสีย",
+	"lbl_Percentage":"เปอร์เซ็นต์",
+	"lbl_TotalAmount":"จำนวนเงินทั้งหมด",
+	"lbl_ClaimNow":"แลกตอนนี้"
 }

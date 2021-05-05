@@ -1,7 +1,12 @@
 import React, { useContext, useRef, useEffect, useState } from "react";
 import { Link, Redirect } from "@reach/router";
 import { isExpiry } from "../common/common";
-import { defBonusType, defPromotionType, defFilterType } from "../common/def";
+import {
+	defBonusType,
+	defPromotionType,
+	defFilterType,
+	defHideJoinBtnTypes
+} from "../common/def";
 import ClaimWithLockedAmount from "./joinBtn.claimWithLockedAmount";
 import { configContext } from "../common/context";
 import { useHandlePopBox } from "../hook/useHandlePopBox";
@@ -13,7 +18,7 @@ export default ({
 	func_CallBack,
 	filterType
 }) => {
-	if (promotionInfo.promotionType === defPromotionType.rebate) return null;
+	if (defHideJoinBtnTypes.includes(promotionInfo.promotionType)) return null;
 
 	const { path, userInfo, i18n, api, formatSetting } = useContext(
 		configContext

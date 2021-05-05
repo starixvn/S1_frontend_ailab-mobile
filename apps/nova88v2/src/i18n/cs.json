@@ -596,6 +596,12 @@
 	"lbl_LocalBankBankAccountTip":"Please select which bank account you deposited from the local bank.",
 	"lbl_BankDetails":"银行资讯",
 	"lbl_DepositLocalbankButton":"储存我最后一次交易模式",
-	"lbl_DepositLocalbankButtonInfo":"储存最后一笔存款交易银行。若您选择的银行已结业，请再重新选择。"
+	"lbl_DepositLocalbankButtonInfo":"储存最后一笔存款交易银行。若您选择的银行已结业，请再重新选择。",
 
+	"==============Promotion==============":"",
+	"lbl_ClaimAmount": "领取金额",
+	"lbl_LossAmount":"亏损金额",
+	"lbl_Percentage":"百分比",
+	"lbl_TotalAmount":"总额",
+	"lbl_ClaimNow":"立即领取"
 }

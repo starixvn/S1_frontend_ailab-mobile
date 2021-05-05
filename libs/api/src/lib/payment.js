@@ -151,4 +151,6 @@ export class PaymentAPI extends BaseAPI {
 
 	GetBankInfoOffListStatus = () =>
 		this.paymentRequest.post("/GetBankInfoOffListStatus", { queryType: 1 });
+
+	GetWithdrawalLimit = () => this.paymentRequest.post("/GetWithdrawalLimit");
 }

@@ -1,12 +1,8 @@
-import BaseAPI from "./base";
-
-const defGotoGame_AppType = {
-	Desktop: 1,
-	Mobile: 2,
-	NativeAPP: 3
-};
+import BaseAPI, { defDeviceType } from "./base";
 
 export class TpAPI extends BaseAPI {
+	defGotoGame_AppType = defDeviceType;
+
 	GetTransferHistory = ({ StartDate, EndDate, PageNumber }) =>
 		this.tpRequest.post("/GetTransferHistory", {
 			StartDate,
@@ -24,15 +20,19 @@ export class TpAPI extends BaseAPI {
 		});
 
 	GotoGame = ({
-		GameId = null,
+		gameId = null,
 		TpId,
 		LangId,
-		AppType = defGotoGame_AppType.NativeAPP
+		AppType = defGotoGame_AppType.NativeAPP,
+		fun = null
 	}) =>
 		this.tpRequest.post("/GotoGame", {
-			GameId,
 			TpId,
 			LangId,
-			AppType
+			AppType,
+			inputs: {
+				gameId,
+				fun
+			}
 		});
 }
