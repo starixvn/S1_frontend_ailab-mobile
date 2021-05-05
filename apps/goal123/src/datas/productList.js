@@ -317,19 +317,19 @@ const gameList = [
 		translateKey: "lbl_Slots",
 		img: Menu_Slots,
 		items: [
-			// {
-			// 	...defGameInfo.Casino_PT,
-			// 	parameter: defGameInfo.Casino_PT,
-			// 	spanText: "PT",
-			// 	img: Casino_PT,
-			// 	path: path.casino.root,
-			// 	eventIcon: [
-			// 		{
-			// 			icon: defIconType.new,
-			// 			inPeriod: isEventPeriod(eventTime.casino_pt)
-			// 		}
-			// 	]
-			// },
+			{
+				...defGameInfo.Casino_PT,
+				parameter: defGameInfo.Casino_PT,
+				spanText: "PT",
+				img: Casino_PT,
+				path: path.casino.root,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.casino_pt)
+					}
+				]
+			},
 			{
 				...defGameInfo.casino_ICG,
 				parameter: defGameInfo.casino_ICG,
