@@ -57,6 +57,7 @@ import OneGame from "../pages/oneGame";
 import VIP from "../pages/vip";
 import MysteryBox from "../pages/mysteryBox";
 import Streaming from "../pages/streaming";
+import MyAccount from "../components/setting/myAccount";
 
 const RouteComponents = () => {
 	return (
@@ -127,6 +128,7 @@ const RouteComponents = () => {
 			<MysteryBox path={`/:langId/${path.mysteryBox.root}`} />
 			{/* <Kiss918 path={`/:langId/${path.kiss918.root}`} /> */}
 			<Streaming path={`/:langId/${path.streaming.root}`} />
+			<MyAccount path={`/:langId/${path.myAccount.root}`} />
 		</Router>
 	);
 };

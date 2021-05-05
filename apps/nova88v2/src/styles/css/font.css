@@ -16,10 +16,6 @@
   font-size: 6vw;
 }
 
-.icon-cog:before {
-  font-size: 6.3vw !important;
-}
-
 .icon-icon32px_wallet:before {
   font-size: 4vw;
 }
@@ -84,6 +80,10 @@
   font-family: 'Microsoft YaHei',sans-serif;
 }
 
+.icon-medal:before {
+  content: "\e9dd";
+}
+
 .icon-nolive:before {
   content: "\e9d6";
 }
@@ -98,6 +98,10 @@
 
 .icon-mega:before {
   content: "\e9c3";
+}
+
+.icon-livechat1:before {
+  content: "\e9db";
 }
 
 .icon-ICG:before {
@@ -126,6 +130,10 @@
 
 .icon-visit:before {
   content: "\e9c1";
+}
+
+.icon-friendreferral:before {
+  content: "\e9da";
 }
 
 .icon-friend:before {
@@ -372,7 +380,7 @@
   content: "\e97a";
 }
 
-.icon-icon32px_spin:before {
+.icon-spinner11:before {
   content: "\e97b";
 }
 
@@ -568,7 +576,7 @@
   content: "\e916";
 }
 
-.icon-soccer:before {
+.icon-soccer2:before {
   content: "\e917";
 }
 
@@ -634,6 +642,14 @@
 
 .icon-withdrawal:before {
   content: "\e910";
+}
+
+.icon-person:before {
+  content: "\e9dc";
+}
+
+.icon-live_tv:before {
+  content: "\e9d8";
 }
 
 .icon-cricket:before {
@@ -800,6 +816,10 @@
   content: "\e925";
 }
 
+.icon-download:before {
+  content: "\e9de";
+}
+
 .icon-folder-upload:before {
   content: "\e934";
 }
@@ -844,7 +864,7 @@
   content: "\e973";
 }
 
-.icon-spinner11:before {
+.icon-spinner12:before {
   content: "\e984";
 }
 
@@ -1102,6 +1122,10 @@
 
 .icon-conversation:before {
   content: "\e935";
+}
+
+.icon-soccer:before {
+  content: "\e9df";
 }
 
 .icon-volleyball:before {

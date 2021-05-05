@@ -84,8 +84,7 @@ export default () => {
 	const children = (
 		<>
 			<Link to={path.promotion.root}>
-				<div className="icon icon icon-icon32px_1" />
-				{i18n.lbl_Back}
+				<div className="icon icon-keyboard_arrow_left" />
 			</Link>
 			{joinBtn}
 		</>

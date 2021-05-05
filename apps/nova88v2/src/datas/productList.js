@@ -40,6 +40,10 @@ import fish_GG from "../styles/img/ffw.png";
 import fish_SG from "../styles/img/fg.png";
 import fish_SGW from "../styles/img/fw.png";
 
+import livesports from "../styles/img/livesports.png";
+
+import movietv from "../styles/img/movietv.png";
+
 // import Cockfighting from "../styles/img/cockfighting.jpg";
 
 import id4d from "../styles/img/tablegame.png";
@@ -279,6 +283,16 @@ const gameList = ({ langId }) => [
 		]
 	},
 	{
+		category: "poker",
+		categoryIcon: "casino",
+		translateKey: "lbl_Poker",
+		popBox: {
+			needLogin: true,
+			title: "lbl_Poker",
+			type: defPopBoxType.OneGame
+		}
+	},
+	{
 		category: "game",
 		categoryIcon: "game",
 		translateKey: "lbl_Fishing",
@@ -305,20 +319,6 @@ const gameList = ({ langId }) => [
 			}
 		]
 	},
-	// {
-	// 	category: "cockFighting",
-	// 	categoryIcon: "cock",
-	// 	translateKey: "lbl_CockFighting",
-	// 	items: [
-	// 		{
-	// 			tpId: 19,
-	// 			gameId: 19,
-	// 			icon: "cock",
-	// 			img: Cockfighting,
-	// 			spanTextKey: "lbl_CockFighting"
-	// 		}
-	// 	]
-	// },
 	{
 		category: "kelo",
 		categoryIcon: "kelo",
@@ -347,21 +347,40 @@ const gameList = ({ langId }) => [
 			}
 		]
 	},
+
+	// {
+	// 	category: "cockFighting",
+	// 	categoryIcon: "cock",
+	// 	translateKey: "lbl_CockFighting",
+	// 	items: [
+	// 		{
+	// 			tpId: 19,
+	// 			gameId: 19,
+	// 			icon: "cock",
+	// 			img: Cockfighting,
+	// 			spanTextKey: "lbl_CockFighting"
+	// 		}
+	// 	]
+	// },
+
 	{
-		category: "poker",
-		categoryIcon: "casino",
-		translateKey: "lbl_Poker",
-		popBox: {
-			needLogin: true,
-			title: "lbl_Poker",
-			type: defPopBoxType.OneGame
-		}
-	},
-	{
-		category: "affiliate",
-		categoryIcon: "affiliate",
-		translateKey: "lbl_Affiliate",
-		href: `${siteInfo(langId).affiliateLink}`
+		category: "liveTV",
+		categoryIcon: "live_tv",
+		translateKey: "lbl_TV",
+		items: [
+			{
+				spanTextKey: "lbl_LIVE_SPORT",
+				img: livesports,
+				forceShow: true,
+				path: path.streaming.root
+			},
+			{
+				spanTextKey: "lbl_MOVIE_TV",
+				img: movietv,
+				href: "https://nova88tv.com/",
+				forceShow: true
+			}
+		]
 	},
 	{
 		category: "vip",
@@ -380,6 +399,12 @@ const gameList = ({ langId }) => [
 		categoryIcon: "ranking",
 		translateKey: "lbl_Ranking",
 		path: path.ranking.root
+	},
+	{
+		category: "affiliate",
+		categoryIcon: "affiliate",
+		translateKey: "lbl_Affiliate",
+		href: `${siteInfo(langId).affiliateLink}`
 	}
 ];
 
@@ -451,5 +476,6 @@ export const defCol = {
 	kelo: "kelo",
 	poker: "poker",
 	affiliate: "affiliate",
-	ranking: "ranking"
+	ranking: "ranking",
+	liveTV: "liveTV"
 };

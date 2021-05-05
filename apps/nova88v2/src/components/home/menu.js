@@ -120,6 +120,9 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 				} else if (showingTpIds) {
 					showItem = showingTpIds.includes(subItem.tpId);
 				}
+				if (subItem.forceShow) {
+					showItem = true;
+				}
 				return showItem;
 			})
 			.map(subItem => {
@@ -182,6 +185,18 @@ const SubGame = ({ game, i18n, userInfo, handleLogin, handleGoToGame }) => {
 				: null
 		});
 	};
+
+	if (game?.href) {
+		return (
+			<a href={game.href} target="_blank" rel="noreferrer">
+				{showingEventIcon !== "" ? (
+					<i className={`icon ${showingEventIcon}`} />
+				) : null}
+				<img src={game.img} alt={i18n[game.spanTextKey]} />
+				<div>{game.spanText || i18n[game.spanTextKey]}</div>
+			</a>
+		);
+	}
 
 	return game?.path ? (
 		<Link to={game.path} state={game.parameter}>

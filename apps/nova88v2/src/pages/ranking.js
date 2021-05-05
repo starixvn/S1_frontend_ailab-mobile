@@ -26,8 +26,7 @@ export default () => {
 	});
 	const link = (
 		<Link to={path.home.root}>
-			<i className="icon icon icon-icon32px_1" />
-			{i18n.lbl_Back}
+			<i className="icon icon-keyboard_arrow_left" />
 		</Link>
 	);
 

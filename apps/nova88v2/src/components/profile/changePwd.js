@@ -42,6 +42,12 @@ const ChangePwd = () => {
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
+		if (!userInfo.isLogin) {
+			navigate(`/${userInfo.langId}`);
+		}
+	}, [userInfo.isLogin]);
+
+	useEffect(() => {
 		isMountedRef.current = true;
 		return () => {
 			isMountedRef.current = false;
@@ -230,7 +236,7 @@ const ChangePwd = () => {
 
 const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
-	const header = <Header title={i18n.lbl_ResetPassword} hideLogo={true} />;
+	const header = <Header title={i18n.lbl_ChangePassword} hideLogo={true} />;
 	return (
 		<Layout mainClass="main" header={header}>
 			<ChangePwd />

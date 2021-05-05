@@ -24,6 +24,7 @@ import {
 } from "./transfer.def";
 import useGetBalance from "../hook/useGetMainBalance";
 import useGetTpBalance from "../hook/useGetTpBalance";
+import useHandelAutoTrnasfer from "./autoTransfer";
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
@@ -45,6 +46,10 @@ const Panel = () => {
 	const { tpWalletsList, GetTpWalletBalance } = useGetTpBalance({
 		isLogin: userInfo.isLogin,
 		listType: tpWalletsListType.allWallets
+	});
+	const { autoTransfer, setWalletTransferStatus } = useHandelAutoTrnasfer({
+		i18n,
+		setPopBox
 	});
 
 	const isMountedRef = useRef(null);
@@ -260,6 +265,15 @@ const Panel = () => {
 
 	return (
 		<>
+			<label className="checkbox autoTransfer">
+				<input type="checkbox" onClick={setWalletTransferStatus} />
+				<i
+					className={`icon icon-checkbox${
+						autoTransfer ? "-checked" : ""
+					}`}
+				/>
+				<span>{i18n.lbl_AutoTransfer}</span>
+			</label>
 			{arr}
 			<div className="text-org title">{i18n.lbl_From}</div>
 			<Dropdown

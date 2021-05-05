@@ -11,6 +11,8 @@ import api from "../service/api";
 import Header from "../components/header/header";
 import Footer from "../components/common/footer";
 import useHandleLogin from "../components/hook/useHandleLogin";
+import { Link } from "../route/link";
+import path from "../path";
 import { useGotoGame, defSpecialSetting } from "../components/hook/useGotoGame";
 
 const eachPageItem = 20;
@@ -428,13 +430,18 @@ const IndexPage = props => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { handleLogin } = useHandleLogin();
+	const link = (
+		<Link to={path.home.root}>
+			<i className="icon icon-keyboard_arrow_left" />
+		</Link>
+	);
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 
 	let tpId = props.tpId ?? props.location.state?.tpId;
 	tpId = typeof tpId === "string" && !isNaN(tpId) ? Number(tpId) : tpId;
 	return (
 		<>
-			<Header title={i18n.lbl_Casino} hideLogo={true} />
+			<Header title={i18n.lbl_Casino} hideLogo={true} link={link} />
 			<main className="main casino">
 				<Panel
 					i18n={i18n}
