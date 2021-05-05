@@ -16,8 +16,8 @@ export class SiteAPI extends BaseAPI {
 		RedirectPageOfThisSite: 6
 	};
 
-	ExistsUserName = ({ UserName }) =>
-		this.siteRequest.post(`/ExistsUserName`, { UserName });
+	ExistsUserName = ({ UserName, LangId }) =>
+		this.siteRequest.post(`/ExistsUserName/${LangId}`, { UserName });
 
 	ExistsEmail = ({ Email }) =>
 		this.siteRequest.post(`/ExistsEmail`, { Email });

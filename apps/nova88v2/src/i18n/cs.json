@@ -17,6 +17,7 @@
 	"lbl_Username": "用戶名",
 	"lbl_Password": "密码",
 	"lbl_UsernameTooltip": "基于安全考量，我们建议用户名不要使用或包含您的真实姓名。",
+	"lbl_UsernameInvalid": "仅限6到18个数字、英文字母大小写",
 	"lbl_PasswordTooltip": "6到18个数字、英文字母大写、英文字母小写或特殊字符(@$*!%#?&)",
 	"lbl_EmailToolTip": "提交后无法变更电子邮件地址。",
 	"lbl_PreferredCurrencyToolTip": "一旦完成注册，即无法修改选定币别。",
