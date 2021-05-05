@@ -7,11 +7,13 @@ import { getEventIcon } from "./category";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import useHandleLogin from "../hook/useHandleLogin";
 import api from "../../service/api";
+import { useGotoGame } from "../hook/useGotoGame";
 
 const Menu = ({ i18n, userInfo, setPopBox }) => {
 	const [selectedCol, setSelectedCol] = useState(defCol.sports);
 	const [showingTpIds, setShowningTpIds] = useState(null);
 	const { handleLogin } = useHandleLogin();
+	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 	const navigate = useNavigate();
 	const isMountedRef = useRef(null);
 
@@ -130,6 +132,7 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 						i18n={i18n}
 						userInfo={userInfo}
 						handleLogin={handleLogin}
+						handleGoToGame={handleGoToGame}
 					/>
 				);
 			});
@@ -159,16 +162,24 @@ Menu.propTypes = {
 	setPopBox: PropTypes.func.isRequired
 };
 
-const SubGame = ({ game, i18n, userInfo, handleLogin }) => {
+const SubGame = ({ game, i18n, userInfo, handleLogin, handleGoToGame }) => {
 	const showingEventIcon = getEventIcon({ eventIcon: game?.eventIcon });
 
-	const clickGame = ({ tpId, gameId }) => {
+	const clickGame = ({ tpId, gameId, useGotoGame: _useGotoGame }) => {
 		GET_ENTER_PAGE({
 			langId: userInfo.langId,
 			tpId,
 			gameId,
 			isLogin: userInfo.isLogin === true,
-			loginCallback: handleLogin
+			loginCallback: handleLogin,
+			execFunction: _useGotoGame
+				? handleGoToGame.bind(this, {
+						isLogin: userInfo.isLogin === true,
+						langId: userInfo.langId,
+						tpId,
+						gameId
+				  })
+				: null
 		});
 	};
 
@@ -184,7 +195,8 @@ const SubGame = ({ game, i18n, userInfo, handleLogin }) => {
 		<button
 			onClick={clickGame.bind(this, {
 				tpId: game.tpId,
-				gameId: game.gameId
+				gameId: game.gameId,
+				useGotoGame: game.useGotoGame
 			})}>
 			{showingEventIcon !== "" ? (
 				<i className={`icon ${showingEventIcon}`} />
@@ -199,7 +211,8 @@ SubGame.propTypes = {
 	game: PropTypes.objectOf(PropTypes.any).isRequired,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
-	handleLogin: PropTypes.func.isRequired
+	handleLogin: PropTypes.func.isRequired,
+	handleGoToGame: PropTypes.func.isRequired
 };
 
 export default Menu;

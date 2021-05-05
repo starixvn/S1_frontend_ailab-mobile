@@ -11,6 +11,7 @@ import api from "../service/api";
 import Header from "../components/header/header";
 import Footer from "../components/common/footer";
 import useHandleLogin from "../components/hook/useHandleLogin";
+import { useGotoGame, defSpecialSetting } from "../components/hook/useGotoGame";
 
 const eachPageItem = 20;
 
@@ -50,7 +51,7 @@ class Panel extends React.Component {
 		window.addEventListener("touchmove", this.setListFixed, {
 			passive: false
 		});
-		api.site.GetGamelistV2().then(res => {
+		api.site.GetGameListByDevice().then(res => {
 			if (res.data.errorCode === 0) {
 				const _tpList = {};
 				const games = [];
@@ -279,12 +280,21 @@ class Panel extends React.Component {
 
 	ClickPlay = freePlay => {
 		if (this.props.userInfo.isLogin) {
-			GET_CASINO_ENTER_PAGE(
-				this.state.selGameInfo.tpId,
-				this.state.selGameInfo.gameId,
-				freePlay,
-				this.props.userInfo.langId
-			);
+			GET_CASINO_ENTER_PAGE({
+				tpId: this.state.selGameInfo.tpId,
+				gameId: this.state.selGameInfo.gameId,
+				isFree: freePlay,
+				langId: this.props.userInfo.langId,
+				execFunction:
+					this.state.selGameInfo.tpId === defSpecialSetting.playTech
+						? this.props.handleGoToGame.bind(this, {
+								langId: this.props.userInfo.langId,
+								tpId: this.state.selGameInfo.tpId,
+								gameId: this.state.selGameInfo.gameId,
+								isFun: freePlay
+						  })
+						: null
+			});
 		} else {
 			this.props.handleLogin();
 		}
@@ -418,6 +428,7 @@ const IndexPage = props => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { handleLogin } = useHandleLogin();
+	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 
 	let tpId = props.tpId ?? props.location.state?.tpId;
 	tpId = typeof tpId === "string" && !isNaN(tpId) ? Number(tpId) : tpId;
@@ -430,6 +441,7 @@ const IndexPage = props => {
 					userInfo={userInfo}
 					tpId={tpId}
 					handleLogin={handleLogin}
+					handleGoToGame={handleGoToGame}
 				/>
 			</main>
 			<Footer />
