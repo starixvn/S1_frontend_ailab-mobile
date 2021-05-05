@@ -42,10 +42,12 @@ const Balance = ({ i18n, userInfo }) => {
 				onClick={clickEye}>
 				{i18n[`Currency_${userInfo.currencyId}`]}{" "}
 			</button>
-			<div>
-				{showingBalance ? `$${balance}` : "*****"}
-				<ReloadSpin func={clickReloadSpin} />
-			</div>
+			{showingBalance ? (
+				<div>
+					{`$${balance}`}
+					<ReloadSpin func={clickReloadSpin} />
+				</div>
+			) : null}
 		</div>
 	);
 };
