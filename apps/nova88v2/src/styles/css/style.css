@@ -520,10 +520,10 @@ main .sideBar button, main .sideBar a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  min-width: 15vw;
-  padding: 3vw 0 4vw;
+  padding: 3vw;
   position: relative;
   white-space: nowrap;
+  margin: auto 0.5vw auto 0;
 }
 
 main .sideBar button i:not(.icon-new):not(.icon-live):before, main .sideBar a i:not(.icon-new):not(.icon-live):before {
