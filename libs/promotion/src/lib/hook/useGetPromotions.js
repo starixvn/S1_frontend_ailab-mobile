@@ -11,21 +11,21 @@ export const useGetPromotions = ({ api, userInfo: { langId } }) => {
 		};
 	});
 
-	const getPromotionListV2 = useCallback(() => {
-		api.promotion.GetPromotionListV2({ langId }).then(res => {
+	const getPromotionList = useCallback(() => {
+		api.promotion.GetPromotionList({ langId }).then(res => {
 			if (res.data.errorCode === 0 && isMountedRef.current) {
-				const result = res.data.data.sort((a, b) =>
-					a.periodFrom > b.periodFrom ? -1 : 1
-				);
+				// const result = res.data.data.sort((a, b) =>
+				// 	a.periodFrom > b.periodFrom ? -1 : 1
+				// );
 
-				setPromotion(result);
+				setPromotion(res.data.data);
 			}
 		});
 	}, [langId]);
 
 	useEffect(() => {
-		getPromotionListV2();
-	}, [getPromotionListV2]);
+		getPromotionList();
+	}, [getPromotionList]);
 
-	return { promotion, getPromotionListV2 };
+	return { promotion, getPromotionList };
 };

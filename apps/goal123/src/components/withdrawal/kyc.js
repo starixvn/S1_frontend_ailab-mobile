@@ -84,9 +84,8 @@ export default () => {
 	};
 
 	const onUploadFile = () => {
-		setLoading(true);
-
 		if (file !== null && !processing) {
+			setLoading(true);
 			setProcessing(true);
 			const formData = new FormData();
 			formData.append("PhotoId", file);

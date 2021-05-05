@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import path from "Path";
 import { Promotion as uiSetting } from "UISetting";
 import { userInfoContext, i18nContext, popBoxContext } from "Context";
-import useHadleLogin from "../components/hook/useHandleLogin";
 import { PromotionInfo } from "../components/promotion/promotionInfo";
 import Tab, { useHandleTab } from "../components/promotion/components/tab";
 import Nav from "../components/promotion/components/nav";
@@ -49,8 +48,6 @@ export default () => {
 		GetPromotionDetail(userInfo.langId, bonusCode);
 	}, [bonusCode]);
 
-	const { handleLogin } = useHadleLogin();
-
 	const GetPromotionDetail = (langId, _bonusCode) => {
 		api.promotion
 			.GetPromotionDetail({
@@ -74,27 +71,23 @@ export default () => {
 				}
 			);
 	};
+
+	const joinBtn = (
+		<div className="btn-group">
+			<JoinBtn
+				promotionInfo={promotionInfo}
+				filterType={urlParameters?.[defUrlParamCols.filterType]}
+			/>
+		</div>
+	);
+
 	const children = (
 		<>
 			<Link to={path.promotion.root}>
 				<div className="icon icon icon-icon32px_1" />
 				{i18n.lbl_Back}
 			</Link>
-			{tab !== "Expired" &&
-				(userInfo.isLogin ? (
-					<div className="btn-group">
-						<JoinBtn
-							promotionInfo={promotionInfo}
-							filterType={
-								urlParameters?.[defUrlParamCols.filterType]
-							}
-						/>
-					</div>
-				) : (
-					<div className="btn-group">
-						<a onClick={() => handleLogin()}>{i18n.lbl_JoinNow}</a>
-					</div>
-				))}
+			{joinBtn}
 		</>
 	);
 	const nav = (

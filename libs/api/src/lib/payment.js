@@ -136,4 +136,6 @@ export class PaymentAPI extends BaseAPI {
 
 	GetLocalBankInfo = ({ sysId }) =>
 		this.paymentRequest.post("/GetLocalBankInfo", { sysId });
+
+	GetWithdrawalLimit = () => this.paymentRequest.post("/GetWithdrawalLimit");
 }

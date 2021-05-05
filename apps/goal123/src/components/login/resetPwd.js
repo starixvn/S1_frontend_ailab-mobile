@@ -173,7 +173,7 @@ export default () => {
 				ClassName="LoginRule"
 			/>
 			<div className="btn-group">
-				<button className="orange" onClick={clickSubmit}>
+				<button className="lightBlue" onClick={clickSubmit}>
 					{i18n.lbl_Submit}
 				</button>
 			</div>

@@ -121,14 +121,14 @@
 	"lbl_Method": "วิธี",
 	"lbl_Amount": "จำนวน",
 	"lbl_Status": "สถานะ",
-	"lbl_WithdrawalStatus1": "รอดำเนินการ",
-	"lbl_WithdrawalStatus2": "รอตรวจสอบการถอนเงิน",
-	"lbl_WithdrawalStatus3": "ตรวจสอบ",
+	"lbl_WithdrawalStatus1": "กำลังดำเนินการ",
+	"lbl_WithdrawalStatus2": "กำลังดำเนินการ",
+	"lbl_WithdrawalStatus3": "กำลังดำเนินการ",
 	"lbl_WithdrawalStatus4": "กำลังดำเนินการ",
 	"lbl_WithdrawalStatus5": "ยกเลิก",
 	"lbl_WithdrawalStatus6": "ยืนยัน",
 	"lbl_WithdrawalStatus7": "ปฎิเสธ",
-	"lbl_WithdrawalStatus8": null,
+	"lbl_WithdrawalStatus8": "กำลังดำเนินการ",
 	"lbl_Wallet_Saba": "สปอร์ตบุค วอลเล็ท",
 	"lbl_MainWallet": "วอลเล็ทหลัก",
 	"lbl_Direction": "ทิศทาง",
@@ -569,5 +569,12 @@
 	"lbl_Register":"สมัครสมาชิก",
 	"lbl_AfterJoinHint":"ยินดีด้วยค่ะ คุณได้ลงทะเบียนเป็นสมาชิกเรียบร้อยแล้ว",
 	"lbl_TpWallet_27": "กระเป๋าสตางค์ PT",
-	"lbl_LIVE_SPORT" : "กีฬาสด"
+	"lbl_LIVE_SPORT" : "กีฬาสด",
+
+	"==============Promotion==============":"",
+	"lbl_ClaimAmount": "จำนวนเงินที่ขอรับ",
+	"lbl_LossAmount":"จำนวนเงินที่เสีย",
+	"lbl_Percentage":"เปอร์เซ็นต์",
+	"lbl_TotalAmount":"จำนวนเงินทั้งหมด",
+	"lbl_ClaimNow":"แลกตอนนี้"
 }

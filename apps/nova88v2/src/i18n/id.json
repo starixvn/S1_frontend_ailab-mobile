@@ -121,14 +121,14 @@
 	"lbl_Method": "Metode",
 	"lbl_Amount": "Jumlah",
 	"lbl_Status": "Status",
-	"lbl_WithdrawalStatus1": "Tertunda",
-	"lbl_WithdrawalStatus2": "Sedang menunggu",
-	"lbl_WithdrawalStatus3": "Verifikasi",
+	"lbl_WithdrawalStatus1": "Sedang dalam proses",
+	"lbl_WithdrawalStatus2": "Sedang dalam proses",
+	"lbl_WithdrawalStatus3": "Sedang dalam proses",
 	"lbl_WithdrawalStatus4": "Sedang dalam proses",
 	"lbl_WithdrawalStatus5": "Dibatalkan",
 	"lbl_WithdrawalStatus6": "Disetujui",
 	"lbl_WithdrawalStatus7": "Ditolak",
-	"lbl_WithdrawalStatus8": null,
+	"lbl_WithdrawalStatus8": "Sedang dalam proses",
 	"lbl_Wallet_Saba": "Dompet Olahraga",
 	"lbl_MainWallet": "Dompet Utama",
 	"lbl_Direction": "Direction",
@@ -569,5 +569,12 @@
 	"lbl_Register":"Registrasi",
 	"lbl_AfterJoinHint":"Selamat! Anda berhasil mendaftar sebagai member.",
 	"lbl_TpWallet_27": "Dompet PT",
-	"lbl_LIVE_SPORT" : "LIVE SPORTS"
+	"lbl_LIVE_SPORT" : "LIVE SPORTS",
+
+	"==============Promotion==============":"",
+	"lbl_ClaimAmount": "Jumlah Klaim",
+	"lbl_LossAmount":"Nilai Kekalahan",
+	"lbl_Percentage":"Persentase",
+	"lbl_TotalAmount":"Jumlah Dana",
+	"lbl_ClaimNow":"Klaim Sekarang"
 }

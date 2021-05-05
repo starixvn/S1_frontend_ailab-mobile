@@ -250,14 +250,14 @@
 	"lbl_WithdrawalAmount": "Số tiền muốn rút ",
 	"lbl_WithdrawalHistory": "Lịch sử rút tiền",
 	"lbl_WithdrawalOver": "Số tiền bạn yêu cầu vượt quá số tiền có thể rút",
-	"lbl_WithdrawalStatus1": "Đang chờ",
-	"lbl_WithdrawalStatus2": "Tạm dừng",
-	"lbl_WithdrawalStatus3": "Xác thực",
+	"lbl_WithdrawalStatus1": "Đang xử lý",
+	"lbl_WithdrawalStatus2": "Đang xử lý",
+	"lbl_WithdrawalStatus3": "Đang xử lý",
 	"lbl_WithdrawalStatus4": "Đang xử lý",
 	"lbl_WithdrawalStatus5": "Hủy",
 	"lbl_WithdrawalStatus6": "Chấp thuận",
 	"lbl_WithdrawalStatus7": "Từ chối",
-	"lbl_WithdrawalStatus8": "",
+	"lbl_WithdrawalStatus8": "Đang xử lý",
 	"lbl_WithdrawalTo": "Rút tiền về",
 	"lbl_YesterDay": "Hôm qua",
 	"lbl_badminton": "Cầu lông",
@@ -573,5 +573,7 @@
 	"lbl_MonthlyTournament" : "VÒNG ĐẤU THÁNG",
 	"lbl_AgendaTitle" : "ĐUA TOP NẠP VÀ DOANH THU CƯỢC HÀNG THÁNG",
 	"lbl_Tournament" : "Vòng đấu",
-	"lbl_Stage": "Giai đoạn"
+	"lbl_Stage": "Giai đoạn",
+	"lbl_LoadCard":"THẺ CÀO",
+	"lbl_DepositType5":"THẺ CÀO"
 }

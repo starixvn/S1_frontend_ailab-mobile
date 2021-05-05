@@ -68,7 +68,7 @@ const defIconType = {
 
 const eventTime = {
 	new_vip: { startDate: "2021/02/05 11:00:00" },
-	casino_PT: { endDate: "2021/05/15 11:00:00" }
+	casino_PT: { endDate: "2021/06/05 11:00:00" }
 };
 
 const gameList = ({ langId }) => [
@@ -274,8 +274,7 @@ const gameList = ({ langId }) => [
 				...defGameInfo.Casino_OW,
 				parameter: defGameInfo.Casino_OW,
 				spanText: "OW",
-				img: casino_OW,
-				path: path.casino.root
+				img: casino_OW
 			}
 		]
 	},

@@ -250,14 +250,14 @@
 	"lbl_WithdrawalAmount": "Withdrawal Amount",
 	"lbl_WithdrawalHistory": "Withdrawal History",
 	"lbl_WithdrawalOver": "Your required withdrawal amount had exceeded your elegible withdrawal amount.",
-	"lbl_WithdrawalStatus1": "Pending",
-	"lbl_WithdrawalStatus2": "On Hold",
-	"lbl_WithdrawalStatus3": "Verify",
+	"lbl_WithdrawalStatus1": "Processing",
+	"lbl_WithdrawalStatus2": "Processing",
+	"lbl_WithdrawalStatus3": "Processing",
 	"lbl_WithdrawalStatus4": "Processing",
 	"lbl_WithdrawalStatus5": "Cancelled",
 	"lbl_WithdrawalStatus6": "Approved",
 	"lbl_WithdrawalStatus7": "Rejected",
-	"lbl_WithdrawalStatus8": "",
+	"lbl_WithdrawalStatus8": "Processing",
 	"lbl_WithdrawalTo": "Withdrawal To",
 	"lbl_YesterDay": "Yesterday",
 	"lbl_badminton": "Badminton",
@@ -573,5 +573,7 @@
 	"lbl_MonthlyTournament" : "MONTHLY TOURNAMENT",
 	"lbl_AgendaTitle" : "MONTHLY DEPOSIT & TURNOVER RACE TOURNAMENT",
 	"lbl_Tournament" : "Tournament",
-	"lbl_Stage": "Stage"
+	"lbl_Stage": "Stage",
+	"lbl_TopUpCard":"TOP-UP CARD",
+	"lbl_DepositType5":"TOP-UP CARD"
 }

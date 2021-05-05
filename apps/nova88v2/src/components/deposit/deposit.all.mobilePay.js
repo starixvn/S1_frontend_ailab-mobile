@@ -161,7 +161,7 @@ const Payment = props => {
 				mainKey={`deposit-full-${payType}-groupList`}
 				imgKey="groupName"
 				idKey="groupId"
-				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/Payment/`}
+				prefixImgUrl={`${config.imgUrl}/common/images/MobilePay/`}
 				displayKey="groupName"
 				_isConvert={_isConvert}
 			/>

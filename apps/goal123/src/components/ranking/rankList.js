@@ -16,7 +16,7 @@ const RankItem = ({ Ranking, userName, turnover, isCurrentUser, userRank }) => {
 				{Ranking}
 			</li>
 			<li>{userName}</li>
-			<li>{turnover}</li>
+			<li>{number_format(turnover)}</li>
 		</ul>
 	);
 };

@@ -98,6 +98,12 @@ const defPlatfrom = [
 		parameter: { ...defGameInfo.Casino_PT },
 		imgName: "playtech"
 	}
+	// ,{
+	// 	...defGameInfo.Casino_PT,
+	// 	path: path.casino.root,
+	// 	parameter: { ...defGameInfo.Casino_PT },
+	// 	imgName: "playtech"
+	// }
 ];
 
 const Platform = ({ langId, isLogin }) => {
