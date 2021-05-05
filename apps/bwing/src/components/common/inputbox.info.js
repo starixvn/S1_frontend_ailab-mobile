@@ -22,7 +22,11 @@ const Inputbox = ({
 }) => {
 	return (
 		<div className="input-Area">
-			{title ? <div className="input-title">{title}</div> : null}
+			{title ? (
+				<div className="input-title frame">
+					<span className="text-org">*</span> {title}
+				</div>
+			) : null}
 			<div className="input-group">
 				<div className="inputBoxNew">
 					{icon ? <i className={icon} /> : null}

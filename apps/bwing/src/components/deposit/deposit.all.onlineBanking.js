@@ -32,7 +32,8 @@ const Payment = props => {
 
 	const {
 		amount,
-		warning,
+		inputStatus,
+		setInputStatus,
 		SelectAmount,
 		EditAmount,
 		VaildAmount
@@ -124,6 +125,17 @@ const Payment = props => {
 				}
 			}
 		);
+	};
+
+	const clickInfo = () => {
+		const msg = i18n.lbl_AmountTooltip.replace(
+			"{{0}}",
+			number_format(selbank?.minAmount, _isConvert)
+		);
+		setInputStatus({
+			checked: null,
+			msg: inputStatus.msg === "" ? msg : ""
+		});
 	};
 
 	const ClickSubmit = () => {
@@ -244,10 +256,12 @@ const Payment = props => {
 				i18n={i18n}
 				_isConvert={_isConvert}
 				amount={amount}
-				tip={warning}
 				SelectAmount={SelectAmount}
 				EditAmount={EditAmount}
 				payType={payType}
+				tip={inputStatus.msg}
+				btnStatus={inputStatus.checked}
+				clickInfo={clickInfo}
 			/>
 			<div className="btn-group">
 				<button className="blue" onClick={ClickSubmit}>
