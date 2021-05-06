@@ -370,7 +370,7 @@ const Payment = props => {
 		if (col === "amount") {
 			const msg = i18n.lbl_AmountTooltip.replace(
 				"{{0}}",
-				number_format(selBank?.minAmount, _isConvert)
+				number_format(selBank?.minAmount, _isConvert, 0)
 			);
 			setInputStatus({
 				checked: null,

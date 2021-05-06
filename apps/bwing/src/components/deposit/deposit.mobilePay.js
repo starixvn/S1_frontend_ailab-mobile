@@ -55,7 +55,7 @@ const Payment = props => {
 	const clickInfo = () => {
 		const msg = i18n.lbl_AmountTooltip.replace(
 			"{{0}}",
-			number_format(selChannel?.minAmount, _isConvert)
+			number_format(selChannel?.minAmount, _isConvert, 0)
 		);
 		setInputStatus({
 			checked: null,
