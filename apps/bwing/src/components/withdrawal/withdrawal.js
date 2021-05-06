@@ -269,8 +269,9 @@ const Panel = () => {
 	};
 
 	const EditAmount = value => {
-		VaildAmount(value);
-		setAmount(value);
+		const _amount = String(value).replace(/^(0+)|[^\d]+/g, "");
+		VaildAmount(_amount);
+		setAmount(_amount);
 	};
 
 	const clickInfo = () => {

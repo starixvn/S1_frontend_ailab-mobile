@@ -194,19 +194,19 @@ const Panel = () => {
 				setInputStatus({
 					AccountName: {
 						checked: _accountNameCheck.checked,
-						msg: _accountNameCheck.message
+						msg: _accountNameCheck.msg
 					},
 					Birthday: {
 						checked: _birthCheck.checked,
-						msg: _birthCheck.message
+						msg: _birthCheck.msg
 					},
 					PhoneNo: {
 						checked: _phoneCheck.checked,
-						msg: _phoneCheck.message
+						msg: _phoneCheck.msg
 					},
 					Email: {
 						checked: _emailCheck.checked,
-						msg: _emailCheck.message
+						msg: _emailCheck.msg
 					}
 				});
 			}

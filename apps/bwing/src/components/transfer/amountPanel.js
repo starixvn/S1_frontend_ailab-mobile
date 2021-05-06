@@ -14,7 +14,8 @@ const AmountPanel = ({
 	selectItem,
 	allWalletsList,
 	clickInfo,
-	_isConvert
+	_isConvert,
+	VaildAmount
 }) => {
 	return (
 		<div className="depositInBox">
@@ -67,6 +68,7 @@ const AmountPanel = ({
 				clickSubmit={clickSubmit}
 				clickInfo={clickInfo}
 				numberConvert={_isConvert}
+				onBlur={VaildAmount}
 			/>
 		</div>
 	);
@@ -79,7 +81,9 @@ AmountPanel.defaultProps = {
 	transferOptions: [],
 	selectItem: null,
 	allWalletsList: [],
-	clickInfo: () => null
+	clickInfo: () => null,
+	_isConvert: false,
+	VaildAmount: () => null
 };
 
 AmountPanel.propTypes = {
@@ -95,7 +99,9 @@ AmountPanel.propTypes = {
 	transferOptions: PropTypes.objectOf(PropTypes.any),
 	selectItem: PropTypes.func,
 	allWalletsList: PropTypes.arrayOf(PropTypes.object),
-	clickInfo: PropTypes.func
+	clickInfo: PropTypes.func,
+	_isConvert: PropTypes.bool,
+	VaildAmount: PropTypes.func
 };
 
 export default AmountPanel;

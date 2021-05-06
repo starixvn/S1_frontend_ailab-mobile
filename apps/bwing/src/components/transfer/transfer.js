@@ -98,8 +98,9 @@ const Panel = () => {
 
 	const EditAmount = e => {
 		const { value } = e.target;
-		VaildAmount(value);
-		setAmount(value);
+		const _amount = String(value).replace(/^(0+)|[^\d]+/g, "");
+		VaildAmount(_amount);
+		setAmount(_amount);
 	};
 
 	const selectItem = (col, i) => {
@@ -234,6 +235,7 @@ const Panel = () => {
 				allWalletsList={allWalletsList}
 				clickInfo={clickInfo}
 				_isConvert={_isConvert}
+				VaildAmount={VaildAmount.bind(this, amount)}
 			/>
 			<RecentDatas
 				datas={recentDatas}

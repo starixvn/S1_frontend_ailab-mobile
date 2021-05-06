@@ -21,17 +21,21 @@ const Inputbox = ({
 	clickSubmit,
 	isRequired
 }) => {
+	let Title = null;
+	if (title) {
+		if (isRequired) {
+			Title = (
+				<div className="input-title frame">
+					<span className="text-org">*</span> {title}
+				</div>
+			);
+		} else {
+			Title = <div className="input-title">{title}</div>;
+		}
+	}
 	return (
 		<div className="input-Area">
-			{title ? (
-				isRequired ? (
-					<div className="input-title frame">
-						<span className="text-org">*</span> {title}
-					</div>
-				) : (
-					<div className="input-title">{title}</div>
-				)
-			) : null}
+			{Title}
 			<div className="input-group">
 				<div className="inputBoxNew">
 					{icon ? <i className={icon} /> : null}
@@ -158,9 +162,6 @@ export const InputboxDate = ({
 			<IptStatus btnStatus={btnStatus} clickInfo={clickInfo} />
 			<div className="iconModule">
 				<span className="icon icon-calendar" />
-				{/* {props.iconModuleWarning ? (
-					<i className="icon icon-warning" />
-				) : null} */}
 			</div>
 		</label>
 	);
