@@ -96,7 +96,7 @@ const PromotionContent = ({ staticList, location, tab, nav, filterType }) => {
 		configContext
 	);
 
-	const { promotion, getPromotionListV2 } = useGetPromotions({
+	const { promotion, getPromotionList } = useGetPromotions({
 		api,
 		userInfo
 	});
@@ -234,7 +234,7 @@ const PromotionContent = ({ staticList, location, tab, nav, filterType }) => {
 			i18n,
 			uiSetting,
 			ruleCols,
-			func_CallBack: getPromotionListV2,
+			func_CallBack: getPromotionList,
 			urlParameters
 		});
 	}

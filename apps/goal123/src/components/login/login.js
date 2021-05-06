@@ -167,7 +167,9 @@ const LoginPage = ({ ButtonTitle, hideBtn }) => {
 	return (
 		<>
 			{hideBtn ? null : (
-				<button onClick={handleloginPanel.bind(this, showPanel)}>
+				<button
+					className="loginBtn"
+					onClick={handleloginPanel.bind(this, showPanel)}>
 					{ButtonTitle}
 				</button>
 			)}

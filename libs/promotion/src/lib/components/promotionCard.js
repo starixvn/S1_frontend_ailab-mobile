@@ -44,6 +44,9 @@ export default ({
 				displayText_Detail={i18n?.lbl_Details}
 				bonusCode={p.bonusCode}
 				urlParameters={urlParameters}
+				promotionType={p.promotionType}
+				promotionLink={p.promotionLink}
+				promotionAction={p.promotionAction}
 			/>
 			<JoinBtn
 				promotionInfo={p}

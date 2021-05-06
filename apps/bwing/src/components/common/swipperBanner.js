@@ -82,7 +82,7 @@ export const useGetBanner = ({ langId, ImgFolder }) => {
 	return { banner };
 };
 
-const Panel = ({ ImgFolder = [] }) => {
+const Panel = ({ ImgFolder = [], params }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
 	const { banner } = useGetBanner({ langId: userInfo.langId, ImgFolder });
@@ -138,7 +138,17 @@ const Panel = ({ ImgFolder = [] }) => {
 		);
 	});
 
-	return <AutoPlay Rows={rows} />;
+	return <AutoPlay Rows={rows} params={params} />;
+};
+
+Panel.defaultProps = {
+	ImgFolder: [],
+	params: null
+};
+
+Panel.propTypes = {
+	ImgFolder: PropTypes.arrayOf(PropTypes.any),
+	params: PropTypes.objectOf(PropTypes.any)
 };
 
 const defSwipperConfig = {
@@ -158,13 +168,18 @@ const defSwipperConfig = {
 };
 
 export const AutoPlay = props => {
-	const params = defSwipperConfig;
+	const params = props.params ?? defSwipperConfig;
 	// eslint-disable-next-line react/jsx-props-no-spreading
 	return <Swiper {...params}>{props.Rows}</Swiper>;
 };
 
+AutoPlay.defaultProps = {
+	params: null
+};
+
 AutoPlay.propTypes = {
-	Rows: PropTypes.arrayOf(PropTypes.node).isRequired
+	Rows: PropTypes.arrayOf(PropTypes.node).isRequired,
+	params: PropTypes.objectOf(PropTypes.any)
 };
 
 export const AutoPlayWithBtn = ({ Rows }) => {

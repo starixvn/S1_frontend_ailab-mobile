@@ -113,7 +113,7 @@ const Footer = () => {
 
 				<a
 					className={`icon icon-icon32px_wallet${
-						openWalletMenu ? " active" : ""
+						openWalletMenu ? " icon-close active" : ""
 					}`}
 					onClick={handleWalletMenu}>
 					<div className="circleAnimation" />

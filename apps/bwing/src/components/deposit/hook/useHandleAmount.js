@@ -25,14 +25,14 @@ export const useHandleAmount = ({ currencyId, minAmount, maxAmount, i18n }) => {
 	};
 
 	const VaildAmount = ({ _amount, displayWarning = true }) => {
-		const result = checkAmount(
-			_amount,
+		const result = checkAmount({
+			amount: _amount,
 			minAmount,
 			maxAmount,
 			_isConvert,
 			i18n,
-			0
-		);
+			digits: 0
+		});
 		if (displayWarning) {
 			if (result.status !== 0) {
 				setInputStatus({ checked: false, msg: result.msg });

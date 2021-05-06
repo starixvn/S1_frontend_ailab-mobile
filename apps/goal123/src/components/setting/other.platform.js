@@ -91,7 +91,19 @@ const defPlatfrom = [
 	{
 		...defGameInfo.LIVEcasinoN2,
 		imgName: "n2live"
+	},
+	{
+		...defGameInfo.Casino_PT,
+		path: path.casino.root,
+		parameter: { ...defGameInfo.Casino_PT },
+		imgName: "playtech"
 	}
+	// ,{
+	// 	...defGameInfo.Casino_PT,
+	// 	path: path.casino.root,
+	// 	parameter: { ...defGameInfo.Casino_PT },
+	// 	imgName: "playtech"
+	// }
 ];
 
 const Platform = ({ langId, isLogin }) => {

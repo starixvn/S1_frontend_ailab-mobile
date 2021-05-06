@@ -7,22 +7,6 @@ import Platform from "./other.platform";
 export default () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
-	const _siteInfo = siteInfo();
-
-	const socialMedia =
-		_siteInfo.socialMedia &&
-		Object.values(_siteInfo.socialMedia).map(v => {
-			return (
-				<a
-					key={`other-socialMedia-${v.displayKey}`}
-					href={v.link}
-					rel="noopener noreferrer"
-					target="_blank"
-					className={`icon icon-${v.icon}`}>
-					{i18n[v.displayKey]}
-				</a>
-			);
-		});
 
 	return (
 		<div className="webmap">
@@ -102,12 +86,6 @@ export default () => {
 					{i18n.lbl_ContactUs}
 				</a>
 			</div>
-			{socialMedia && socialMedia.length > 0 ? (
-				<div>
-					<span>{i18n.lbl_SocialMedia}</span>
-					{socialMedia}
-				</div>
-			) : null}
 			<div className="partner">
 				<Platform langId={userInfo.langId} isLogin={userInfo.isLogin} />
 			</div>

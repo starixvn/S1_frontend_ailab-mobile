@@ -10,7 +10,8 @@ import {
 	api_WithdrawalReq,
 	api_GetWithdrawalInfoRecent,
 	api_SetWithdrawalCancel,
-	api_KycCheck
+	api_KycCheck,
+	api_payment_GetWithdrawalLimit
 } from "../../service/api/payment";
 import InputBox from "../common/inputbox";
 import config from "../../config";
@@ -33,6 +34,7 @@ const Panel = () => {
 		bankList: []
 	});
 	const [recentDatas, setRecentDatas] = useState([]);
+	const [withdrawalMin, setWithdrawalMin] = useState(0);
 
 	const [redirectPath, setRedirectPath] = useState(null);
 	const [pageVerify, setPageVerify] = useState(true);
@@ -51,6 +53,16 @@ const Panel = () => {
 			setRedirectPath(null);
 		}
 	}, [redirectPath]);
+
+	useEffect(() => {
+		if (userInfo.isLogin) {
+			api_payment_GetWithdrawalLimit().then(res => {
+				if (res.data.errorCode === 0 && isMountedRef.current) {
+					setWithdrawalMin(res.data.data.withdrawalMin);
+				}
+			});
+		}
+	}, [userInfo.isLogin]);
 
 	useEffect(() => {
 		if (
@@ -234,13 +246,14 @@ const Panel = () => {
 			: 0;
 
 	const VaildAmount = _amount => {
-		const result = checkAmount(
-			_amount,
-			selBank?.minAmount,
-			selBank?.maxAmount,
+		const result = checkAmount({
+			amount: _amount,
+			minAmount: withdrawalMin,
+			maxAmount: balanceInfo?.availableBalance,
 			_isConvert,
-			i18n
-		);
+			i18n,
+			maxAmountAllowUnlimit: false
+		});
 		if (result.status !== 0) {
 			setWarning({
 				status: true,
@@ -373,7 +386,7 @@ const Panel = () => {
 					btnBar: (
 						<div className="btn-group">
 							<button
-								className="blue"
+								className="darkGray"
 								onClick={() =>
 									setPopBox(prevState => ({
 										...prevState,
@@ -383,7 +396,7 @@ const Panel = () => {
 								{i18n.lbl_Cancel}
 							</button>
 							<button
-								className="orange"
+								className="lightBlue"
 								onClick={RedirectToNext.bind(
 									this,
 									selBank.accountNo,
@@ -451,10 +464,10 @@ const Panel = () => {
 				hasBtn: true,
 				btnBar: (
 					<div className="btn-group">
-						<button className="blue" onClick={closePopBox}>
+						<button className="darkGray" onClick={closePopBox}>
 							{i18n.lbl_Cancel}
 						</button>
-						<button className="orange" onClick={submitConfirm}>
+						<button className="lightBlue" onClick={submitConfirm}>
 							{i18n.lbl_Submit}
 						</button>
 					</div>
@@ -517,7 +530,7 @@ const Panel = () => {
 						<div className="selectBank">{banks}</div>
 					</div>
 					<div className="btn-group">
-						<button className="orange" onClick={ClickSubmit}>
+						<button className="lightBlue" onClick={ClickSubmit}>
 							{i18n.lbl_Submit}
 						</button>
 					</div>

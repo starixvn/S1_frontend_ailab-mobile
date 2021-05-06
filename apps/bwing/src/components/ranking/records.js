@@ -6,7 +6,7 @@ import { useGetRanking, useHandleSelectDay } from "./hook";
 import { defDayBtns, defEuroDateBtns, defEuroTourBtns } from "./def";
 import { loadingContext } from "../common/context";
 import { Prize } from "./prize";
-import Dropdown from "../common/dropdown";
+import BtnBar from "../common/btnBar";
 
 const Records = ({
 	isOpen,
@@ -24,25 +24,21 @@ const Records = ({
 	const { loading, setLoading } = useContext(loadingContext);
 
 	const { selectedDay, handleSelectDay } = useHandleSelectDay();
-	const pickerOpts = Object.keys(defDayBtns).map(k => {
-		return { key: k, ...defDayBtns[k] };
-	});
-
-	const selectedIdx = pickerOpts.findIndex(x => x.value === selectedDay);
 
 	const currentDate = moment().format("YYYY-MM-DD");
-	let euroDate = "2021022";
+
+	let selected = "2021022";
 	if (moment(currentDate).isBetween("2021-04-13", "2021-05-12")) {
-		euroDate = defEuroDateBtns[2021022].value;
+		selected = defEuroDateBtns[2021022].value;
 	} else if (moment(currentDate).isBetween("2021-05-13", "2021-06-12")) {
-		euroDate = defEuroDateBtns[2021023].value;
+		selected = defEuroDateBtns[2021023].value;
 	} else if (moment(currentDate).isAfter("2021-06-12")) {
-		euroDate = defEuroDateBtns[2021024].value;
+		selected = defEuroDateBtns[2021024].value;
 	}
 
 	const { datas, lastUpdTime } = useGetRanking({
 		isOpen,
-		selected: euroDate,
+		selected,
 		BeforeDays: isLastEvent ? 0 : selectedDay,
 		isLogin,
 		userName,
@@ -53,17 +49,14 @@ const Records = ({
 	return (
 		<div className={`rankInBox${isOpen ? " open" : ""}`}>
 			<div className="title">{i18n[title]}</div>
-			<div className="inputBox">
-				<Dropdown
-					i18n={i18n}
-					mainKey="ranking-record-datepicker"
-					options={pickerOpts}
-					selectedIdx={selectedIdx}
-					onSelectItem={(i, col, option) =>
-						handleSelectDay(option.value, isLogin)
-					}
-				/>
-			</div>
+			<BtnBar
+				title={i18n.lbl_Tournament}
+				i18n={i18n}
+				selected={selectedDay}
+				handleSelect={handleSelectDay}
+				mainKey="leader-board-records-dayBtnBar"
+				defBtns={defDayBtns}
+			/>
 			<RankList
 				isLastEvent={isLastEvent}
 				loading={loading}

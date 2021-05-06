@@ -29,8 +29,8 @@ export const useGetPromotions = ({ langId, isLogin, filterExpiry = true }) => {
 		};
 	});
 
-	const getPromotionListV2 = useCallback(() => {
-		api.promotion.GetPromotionListV2({ langId }).then(res => {
+	const getPromotionList = useCallback(() => {
+		api.promotion.GetPromotionList({ langId }).then(res => {
 			if (res.data.errorCode === 0 && isMountedRef.current) {
 				const result = res.data.data.sort((a, b) =>
 					a.periodFrom > b.periodFrom ? -1 : 1
@@ -42,8 +42,8 @@ export const useGetPromotions = ({ langId, isLogin, filterExpiry = true }) => {
 	}, [langId]);
 
 	useEffect(() => {
-		getPromotionListV2();
-	}, [getPromotionListV2]);
+		getPromotionList();
+	}, [getPromotionList]);
 
 	const promotionList = filterExpiry
 		? promotion.filter(p => !isExpiry({ ...p, isLogin }))

@@ -4,13 +4,19 @@ import {
 	i18nContext,
 	userInfoContext,
 	popBoxContext,
-	loadingContext
+	loadingContext,
+	i18nContext,
+	userInfoContext,
+	popBoxContext
 } from "../common/context";
 import {
 	number_format,
 	isConvert,
-	checkWithdrawalAmount
+	number_format,
+	isConvert,
+	checkAmount
 } from "../common/common";
+
 import {
 	api_GetWithdrawalAvailableBalance,
 	api_GetCustBankInfo
@@ -19,7 +25,8 @@ import {
 	api_WithdrawalReq,
 	api_GetWithdrawalInfoRecent,
 	api_SetWithdrawalCancel,
-	api_KycCheck
+	api_KycCheck,
+	api_payment_GetWithdrawalLimit
 } from "../../service/api/payment";
 import RecentDatas from "./withdrawal.recentDatas";
 import path from "../../path";
@@ -44,6 +51,7 @@ const Panel = () => {
 		bankList: []
 	});
 	const [recentDatas, setRecentDatas] = useState([]);
+	const [withdrawalMin, setWithdrawalMin] = useState(0);
 	const [redirectPath, setRedirectPath] = useState(null);
 	const [pageVerify, setPageVerify] = useState(true);
 
@@ -60,6 +68,16 @@ const Panel = () => {
 			setRedirectPath(null);
 		}
 	}, [redirectPath]);
+
+	useEffect(() => {
+		if (userInfo.isLogin) {
+			api_payment_GetWithdrawalLimit().then(res => {
+				if (res.data.errorCode === 0 && isMountedRef.current) {
+					setWithdrawalMin(res.data.data.withdrawalMin);
+				}
+			});
+		}
+	}, [userInfo.isLogin]);
 
 	useEffect(() => {
 		if (
@@ -243,13 +261,14 @@ const Panel = () => {
 			: 0;
 
 	const VaildAmount = _amount => {
-		const result = checkWithdrawalAmount(
-			_amount,
-			balanceInfo?.availableBalance,
+		const result = checkAmount({
+			amount: _amount,
+			minAmount: withdrawalMin,
+			maxAmount: balanceInfo?.availableBalance,
 			_isConvert,
-			i18n
-		);
-
+			i18n,
+			maxAmountAllowUnlimit: false
+		});
 		if (result.status !== 0) {
 			setInputStatus({ checked: false, msg: result.msg });
 		} else {

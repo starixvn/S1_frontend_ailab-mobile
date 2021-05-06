@@ -6,18 +6,27 @@ import {
 	userInfoContext,
 	i18nContext,
 	popBoxContext,
-	walletInfoContext,
 	navContext,
 	defNavPanel
 } from "../common/context";
 import path from "../../path";
-import { api_GetWalletInfo } from "../../service/api/account";
+import { api_SetLanguage } from "../../service/api/account";
 import { number_format } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
 import { defGameInfo } from "../../datas/productList";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import ShortcutBar from "./shortcutBar";
 import TandC from "../../service/t_and_c";
+import Skype from "../../styles/img/sk_1.png";
+import Telegram from "../../styles/img/te_1.png";
+import Zalo from "../../styles/img/zalo_1.png";
+import Lang_en from "../../styles/img/en.jpg";
+import Lang_vn from "../../styles/img/vn.jpg";
+import { siteInfo } from "../../config";
+import DefLangs from "../../datas/defLangs";
+import { tpWalletsListType } from "../transfer/transfer.def";
+import useGetBalance from "../hook/useGetMainBalance";
+import useGetTpBalance from "../hook/useGetTpBalance";
 
 const defSubMenus = [
 	{
@@ -34,8 +43,8 @@ const defSubMenus = [
 				displayKey: "lbl_SabaClub"
 			},
 			{
-				...defGameInfo.Fishing,
-				displayKey: "lbl_Fishing"
+				...defGameInfo.V8Poker,
+				displayKey: "lbl_V8Poker"
 			},
 			{
 				...defGameInfo.Keno,
@@ -48,13 +57,51 @@ const defSubMenus = [
 		]
 	},
 	{
+		displayKey: "lbl_Fishing",
+		icon: "icon icon-game",
+		subItems: [
+			{
+				...defGameInfo.fish_AB3,
+				displayKey: "lbl_Paradise"
+			},
+			{
+				...defGameInfo.fish_AT01,
+				displayKey: "lbl_Oneshot_Fishing"
+			},
+			{
+				...defGameInfo.ICG_DRAGONBALL_FISHING,
+				displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING"
+			},
+			{
+				...defGameInfo.ICG_FISHING_OF_SAVIORS,
+				displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS"
+			},
+			{
+				...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
+				displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS"
+			},
+			{
+				...defGameInfo.Fishing,
+				displayKey: "lbl_FishingGG"
+			},
+			{
+				...defGameInfo.FishingSG,
+				displayKey: "lbl_FishingSG1"
+			},
+			{
+				...defGameInfo.FishingSGW,
+				displayKey: "lbl_FishingSG2"
+			}
+		]
+	},
+	{
 		...defGameInfo.eSports,
 		displayKey: "lbl_eSports",
 		icon: "icon icon-e-sports"
 	},
 	{
 		displayKey: "lbl_Slots",
-		path: `/${path.casino.root}`,
+		path: path.casino.root,
 		icon: "icon icon-casino"
 	},
 	{
@@ -62,47 +109,70 @@ const defSubMenus = [
 		icon: "icon icon-livecasino",
 		subItems: [
 			{
+				...defGameInfo.LIVEcasinoN2,
+				displayKey: "N2Live"
+			},
+			{
+				...defGameInfo.LIVEcasinoWM,
+				displayKey: "WM"
+			},
+			{
 				...defGameInfo.LIVEcasinoDG,
 				displayKey: "DG"
-			},
-			{
-				...defGameInfo.LIVEcasinoAB,
-				displayKey: "AB"
-			},
-			{
-				...defGameInfo.LIVEcasinoAG,
-				displayKey: "AG"
 			},
 			{
 				...defGameInfo.LIVEcasinoPP,
 				displayKey: "PP"
 			},
 			{
+				...defGameInfo.LIVEcasinoAE,
+				displayKey: "AE"
+			},
+			{
+				...defGameInfo.LIVEcasinoAG,
+				displayKey: "AG"
+			},
+			{
+				...defGameInfo.LIVEcasinoAB,
+				displayKey: "AB"
+			},
+			{
 				...defGameInfo.LIVEcasinoSA,
 				displayKey: "SA"
 			},
 			{
-				...defGameInfo.LIVEcasinoAE,
-				displayKey: "AE"
+				...defGameInfo.LIVEcasinoEB,
+				displayKey: "EB"
 			}
 		]
 	},
 	{
 		displayKey: "lbl_Promotions",
-		path: `/${path.promotion.root}`,
+		path: path.promotion.root,
 		icon: "icon icon-gift"
 	},
 	{
 		displayKey: "lbl_APPDownload",
 		TandCLink: "AppDownload",
 		icon: "icon icon-mobile"
+	},
+	{
+		displayKey: "lbl_VIP",
+		path: path.vip.root,
+		icon: "icon icon-vip"
+	},
+	{
+		displayKey: "lbl_Ranking",
+		path: path.leaderBoard.root,
+		icon: "icon icon-icon32px_top"
 	}
 ];
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
-	const { userInfo } = useContext(userInfoContext);
+	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { nav, setNav } = useContext(navContext);
+	const { setPopBox } = useContext(popBoxContext);
 	const [isOpenSubMenu, setIsOpenSubMenu] = useState([]);
 
 	const handleSubMenu = displayKey => {
@@ -121,7 +191,7 @@ export default () => {
 	const openPanel = nav === defNavPanel.subMenu;
 
 	return (
-		<div className={`submenu${openPanel ? " open" : ""}`}>
+		<div className={`submenuNew${openPanel ? " open" : ""}`}>
 			<div className="close open" onClick={closeNavPanel}>
 				<span />
 				<span />
@@ -144,6 +214,12 @@ export default () => {
 				closeNavPanel={closeNavPanel}
 				handleSubMenu={handleSubMenu}
 				isOpenSubMenu={isOpenSubMenu}
+			/>
+			<ContactUs i18n={i18n} />
+			<LangSwitch
+				setPopBox={setPopBox}
+				userInfo={userInfo}
+				setUserInfo={setUserInfo}
 			/>
 		</div>
 	);
@@ -208,7 +284,7 @@ const SubMenuList = ({
 		if (s.path) {
 			return (
 				<Link
-					to={s.path}
+					to={`/${s.path}`}
 					onClick={closeNavPanel}
 					key={key}
 					className={s.icon}>
@@ -264,69 +340,32 @@ SubMenuList.propTypes = {
 };
 
 const WalletInfo = ({ i18n, userInfo }) => {
-	const { setPopBox } = useContext(popBoxContext);
-	const { walletInfo, setWalletInfo } = useContext(walletInfoContext);
-	const [processing, setProcessing] = useState(false);
-
-	const isMountedRef = useRef(null);
-
-	useEffect(() => {
-		isMountedRef.current = true;
-		return () => {
-			isMountedRef.current = false;
-		};
+	const [showingBalance, setShowingBalance] = useState(true);
+	const { mainWalletInfo, GetBalance } = useGetBalance({
+		isLogin: userInfo.isLogin
+	});
+	const { tpWalletsList, GetTpWalletList } = useGetTpBalance({
+		isLogin: userInfo.isLogin,
+		listType: tpWalletsListType.allWallets
 	});
 
-	const GetBalance = () => {
-		if (!processing) {
-			setProcessing(true);
+	const otherWalletBalance = tpWalletsList?.reduce((prev, curr) => {
+		return prev + curr.balance;
+	}, 0);
+	const allWalletBalance = mainWalletInfo.balance + otherWalletBalance;
 
-			api_GetWalletInfo().then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							const _data = res.data.data;
-							const mainWalletBalance = _data.balance;
+	const balance = !allWalletBalance
+		? 0
+		: number_format(allWalletBalance, false);
 
-							const otherWalletBalance = _data.tpWallets?.reduce(
-								(prev, curr) => {
-									return prev + curr.balance;
-								},
-								0
-							);
-
-							setWalletInfo(prevState => ({
-								...prevState,
-								allBalance:
-									mainWalletBalance + otherWalletBalance
-							}));
-						} else {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: res.data.message
-							});
-						}
-						setProcessing(false);
-					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-						setProcessing(false);
-					}
-				}
-			);
-		}
+	const clickReloadSpin = () => {
+		GetBalance();
+		GetTpWalletList();
 	};
 
-	const balance = !walletInfo.allBalance
-		? 0
-		: number_format(walletInfo.allBalance, false);
+	const clickEye = () => {
+		setShowingBalance(prev => !prev);
+	};
 
 	return (
 		<div className="side-info">
@@ -334,9 +373,16 @@ const WalletInfo = ({ i18n, userInfo }) => {
 				{i18n.lbl_Welcome} {userInfo.userName}
 			</div>
 			<div>
-				<span>{i18n[`Currency_${userInfo.currencyId}`]}</span>
-				{balance}
-				<ReloadSpin func={GetBalance} />
+				<span>{i18n.lbl_Balance}</span>
+				<button
+					className={`icon icon-eye${
+						showingBalance ? "" : "-blocked"
+					}`}
+					onClick={clickEye}
+				/>
+				{i18n[`Currency_${userInfo.currencyId}`]}{" "}
+				{showingBalance ? balance : "*****"}
+				<ReloadSpin func={clickReloadSpin} />
 			</div>
 		</div>
 	);
@@ -347,6 +393,131 @@ WalletInfo.propTypes = {
 	userInfo: PropTypes.shape({
 		isLogin: PropTypes.bool,
 		currencyId: PropTypes.number,
-		langId: PropTypes.string
+		langId: PropTypes.string,
+		userName: PropTypes.string
 	}).isRequired
+};
+
+const ContactUs = ({ i18n }) => {
+	return (
+		<div className="contact">
+			<div>{i18n.lbl_ContactUs.toUpperCase()}</div>
+			<a
+				href="skype:live:.cid.d357533c71e50fb5?chat"
+				target="_blank"
+				rel="noreferrer noopener">
+				<img src={Skype} alt="skype" />
+			</a>
+			<a
+				href="https://t.me/Goal123csd"
+				target="_blank"
+				rel="noreferrer noopener">
+				<img src={Telegram} alt="telegram" />
+			</a>
+			<a
+				href="https://zalo.me/Goal123csd"
+				target="_blank"
+				rel="noreferrer noopener">
+				<img src={Zalo} alt="zalo" />
+			</a>
+		</div>
+	);
+};
+
+ContactUs.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired
+};
+
+const languageList = () => {
+	const _siteInfo = siteInfo();
+	return _siteInfo.siteLangList.map(l => DefLangs[l]);
+};
+
+const LangSwitch = ({ setPopBox, userInfo, setUserInfo }) => {
+	const [userLanguage, setUserLanguage] = useState("vn");
+	const isMountedRef = useRef(null);
+	const _languageList = languageList();
+
+	useEffect(() => {
+		isMountedRef.current = true;
+		return () => {
+			isMountedRef.current = false;
+		};
+	});
+
+	useEffect(() => {
+		if (userInfo.langId && isMountedRef.current) {
+			setUserLanguage(() => {
+				return _languageList.find(l => l.value === userInfo.langId) ===
+					undefined
+					? "en"
+					: userInfo.langId;
+			});
+		}
+	}, [userInfo.langId, _languageList]);
+
+	const selectLanguage = language => {
+		if (userLanguage !== language) {
+			const langId = language;
+			setUserLanguage(language);
+
+			if (userInfo.isLogin) {
+				api_SetLanguage(langId).then(
+					res => {
+						if (isMountedRef.current) {
+							if (res.data.errorCode === 0) {
+								setUserInfo(prevState => ({
+									...prevState,
+									langId
+								}));
+							} else {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content: res.data.message
+								});
+							}
+						}
+					},
+					() => {
+						if (isMountedRef.current) {
+							setPopBox({
+								isOpen: true,
+								title: i18n.lbl_ImportantNote,
+								content: i18n.msg_ApiServerError
+							});
+						}
+					}
+				);
+			} else {
+				setUserInfo(prevState => ({
+					...prevState,
+					langId
+				}));
+			}
+		}
+	};
+
+	return (
+		<div className="language">
+			<div
+				className={userInfo.langId === "en" ? "open" : ""}
+				onClick={selectLanguage.bind(this, "en")}>
+				<img src={Lang_en} alt="English" />
+				English
+			</div>
+			<div
+				className={userInfo.langId === "vn" ? "open" : ""}
+				onClick={selectLanguage.bind(this, "vn")}>
+				<img src={Lang_vn} alt="Tiếng Việt" />
+				Tiếng Việt
+			</div>
+		</div>
+	);
+};
+
+LangSwitch.propTypes = {
+	setPopBox: PropTypes.func.isRequired,
+	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
+	setUserInfo: PropTypes.func.isRequired
 };

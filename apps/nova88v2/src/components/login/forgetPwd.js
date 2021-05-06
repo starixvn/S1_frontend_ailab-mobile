@@ -55,7 +55,8 @@ const ForgetPwd = () => {
 			api.site
 				.ForgetPwd({
 					langId: userInfo.langId,
-					Email: userEmail
+					Email: userEmail,
+					flag: 1
 				})
 				.then(
 					res => {

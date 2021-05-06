@@ -8,7 +8,6 @@ const useBeforeLoginCheck = ({ isLogin, beforeLogin = false, langId }) => {
 	useEffect(() => {
 		let mounted = true;
 		if (mounted && isLogin === false && !beforeLogin) {
-			setCanSee(false);
 			navigate(`/${langId}`);
 		}
 

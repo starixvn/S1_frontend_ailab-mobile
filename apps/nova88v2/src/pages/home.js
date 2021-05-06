@@ -186,9 +186,7 @@ const IndexPage = () => {
 
 	return (
 		<Layout header={<Header />}>
-			{userInfo.isLogin ? (
-				<HeaderShortcut i18n={i18n} userInfo={userInfo} />
-			) : null}
+			{userInfo.isLogin ? <HeaderShortcut i18n={i18n} /> : null}
 			<Slider />
 			<Marquee />
 			{userInfo.isLogin ? null : <JoinLoginBar />}

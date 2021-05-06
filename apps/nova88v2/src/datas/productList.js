@@ -30,6 +30,7 @@ import casino_YGG from "../styles/img/ygg.png";
 import casino_SG from "../styles/img/sg.png";
 import casino_PG from "../styles/img/pg.png";
 import casino_OW from "../styles/img/ow.png";
+import casino_PT from "../styles/img/pt.png";
 // import casino_KISS from "../styles/img/kiss.png";
 
 import fishing_CQ9_AB3 from "../styles/img/pd.png";
@@ -38,6 +39,10 @@ import fish_TAP from "../styles/img/tap.png";
 import fish_GG from "../styles/img/ffw.png";
 import fish_SG from "../styles/img/fg.png";
 import fish_SGW from "../styles/img/fw.png";
+
+import livesports from "../styles/img/livesports.png";
+
+import movietv from "../styles/img/movietv.png";
 
 // import Cockfighting from "../styles/img/cockfighting.jpg";
 
@@ -66,7 +71,8 @@ const defIconType = {
 };
 
 const eventTime = {
-	new_vip: { startDate: "2021/02/05 11:00:00" }
+	new_vip: { startDate: "2021/02/05 11:00:00" },
+	casino_PT: { endDate: "2021/06/05 11:00:00" }
 };
 
 const gameList = ({ langId }) => [
@@ -192,6 +198,19 @@ const gameList = ({ langId }) => [
 		translateKey: "lbl_Casino",
 		items: [
 			{
+				...defGameInfo.Casino_PT,
+				parameter: defGameInfo.Casino_PT,
+				spanText: "PT",
+				img: casino_PT,
+				path: path.casino.root,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.casino_PT)
+					}
+				]
+			},
+			{
 				...defGameInfo.Casino_PP,
 				parameter: defGameInfo.Casino_PP,
 				spanText: "PP",
@@ -259,10 +278,19 @@ const gameList = ({ langId }) => [
 				...defGameInfo.Casino_OW,
 				parameter: defGameInfo.Casino_OW,
 				spanText: "OW",
-				img: casino_OW,
-				path: path.casino.root
+				img: casino_OW
 			}
 		]
+	},
+	{
+		category: "poker",
+		categoryIcon: "casino",
+		translateKey: "lbl_Poker",
+		popBox: {
+			needLogin: true,
+			title: "lbl_Poker",
+			type: defPopBoxType.OneGame
+		}
 	},
 	{
 		category: "game",
@@ -291,20 +319,6 @@ const gameList = ({ langId }) => [
 			}
 		]
 	},
-	// {
-	// 	category: "cockFighting",
-	// 	categoryIcon: "cock",
-	// 	translateKey: "lbl_CockFighting",
-	// 	items: [
-	// 		{
-	// 			tpId: 19,
-	// 			gameId: 19,
-	// 			icon: "cock",
-	// 			img: Cockfighting,
-	// 			spanTextKey: "lbl_CockFighting"
-	// 		}
-	// 	]
-	// },
 	{
 		category: "kelo",
 		categoryIcon: "kelo",
@@ -333,21 +347,40 @@ const gameList = ({ langId }) => [
 			}
 		]
 	},
+
+	// {
+	// 	category: "cockFighting",
+	// 	categoryIcon: "cock",
+	// 	translateKey: "lbl_CockFighting",
+	// 	items: [
+	// 		{
+	// 			tpId: 19,
+	// 			gameId: 19,
+	// 			icon: "cock",
+	// 			img: Cockfighting,
+	// 			spanTextKey: "lbl_CockFighting"
+	// 		}
+	// 	]
+	// },
+
 	{
-		category: "poker",
-		categoryIcon: "casino",
-		translateKey: "lbl_Poker",
-		popBox: {
-			needLogin: true,
-			title: "lbl_Poker",
-			type: defPopBoxType.OneGame
-		}
-	},
-	{
-		category: "affiliate",
-		categoryIcon: "affiliate",
-		translateKey: "lbl_Affiliate",
-		href: `${siteInfo(langId).affiliateLink}`
+		category: "liveTV",
+		categoryIcon: "live_tv",
+		translateKey: "lbl_TV",
+		items: [
+			{
+				spanTextKey: "lbl_LIVE_SPORT",
+				img: livesports,
+				forceShow: true,
+				path: path.streaming.root
+			},
+			{
+				spanTextKey: "lbl_MOVIE_TV",
+				img: movietv,
+				href: "https://nova88tv.com/",
+				forceShow: true
+			}
+		]
 	},
 	{
 		category: "vip",
@@ -366,6 +399,12 @@ const gameList = ({ langId }) => [
 		categoryIcon: "ranking",
 		translateKey: "lbl_Ranking",
 		path: path.ranking.root
+	},
+	{
+		category: "affiliate",
+		categoryIcon: "affiliate",
+		translateKey: "lbl_Affiliate",
+		href: `${siteInfo(langId).affiliateLink}`
 	}
 ];
 
@@ -401,6 +440,7 @@ export const defGameInfo = {
 	Casino_YGG: { tpId: 8 },
 	Casino_SG: { tpId: 10 },
 	Casino_PG: { tpId: 14 },
+	Casino_PT: { tpId: 27, gameId: "0" },
 	// Casino_918Kiss: { tpId: 21, needLogin: true },
 	Casino_OW: { tpId: 1, gameId: 208 },
 	Fishing_AB3: { tpId: 16, gameId: "AB3" },
@@ -436,5 +476,6 @@ export const defCol = {
 	kelo: "kelo",
 	poker: "poker",
 	affiliate: "affiliate",
-	ranking: "ranking"
+	ranking: "ranking",
+	liveTV: "liveTV"
 };

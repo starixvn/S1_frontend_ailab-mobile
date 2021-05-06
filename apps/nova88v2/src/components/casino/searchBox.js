@@ -11,7 +11,10 @@ const SearchBox = props => {
 	const gameTypeList = [
 		{ id: null, displayText: i18n.lbl_AllGameType },
 		...Object.keys(GameTypes).map(k => {
-			return { id: k, displayText: i18n[GameTypes[k].displayKey] };
+			return {
+				id: GameTypes[k].category1,
+				displayText: i18n[GameTypes[k].displayKey]
+			};
 		})
 	];
 

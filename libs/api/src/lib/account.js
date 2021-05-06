@@ -81,4 +81,10 @@ export class AccountAPI extends BaseAPI {
 
 	SetMsgRead = ({ MsgIds }) =>
 		this.accountRequest.post("/SetMsgRead", { MsgIds });
+
+	GetWalletTransferStatus = () =>
+		this.accountRequest.post("/GetWalletTransferStatus");
+
+	SetWalletTransferStatus = ({ AutoTransfer }) =>
+		this.accountRequest.post("/SetWalletTransferStatus", { AutoTransfer });
 }

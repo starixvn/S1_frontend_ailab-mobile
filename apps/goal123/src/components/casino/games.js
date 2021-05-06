@@ -52,12 +52,19 @@ const Games = props => {
 	);
 };
 
+Games.defaultProps = {
+	Games: [],
+	Favorite: []
+};
+
 Games.propTypes = {
 	SelectGame: PropTypes.func.isRequired,
-	Games: PropTypes.arrayOf(PropTypes.object).isRequired,
-	Favorite: PropTypes.arrayOf(PropTypes.object).isRequired,
+	Games: PropTypes.arrayOf(PropTypes.object),
+	Favorite: PropTypes.arrayOf(
+		PropTypes.oneOfType([PropTypes.object, PropTypes.string])
+	),
 	SetFavorite: PropTypes.func.isRequired,
-	TpList: PropTypes.arrayOf(PropTypes.number).isRequired,
+	TpList: PropTypes.objectOf(PropTypes.any).isRequired,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	imgUrl: PropTypes.string.isRequired
 };

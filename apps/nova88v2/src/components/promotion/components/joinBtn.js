@@ -7,7 +7,8 @@ import {
 	defBonusType,
 	defPromotionType,
 	defFilterType,
-	defWrapperCol
+	defWrapperCol,
+	defHideJoinBtnTypes
 } from "../common/def";
 
 import ClaimWithLockedAmount from "./joinBtn.claimWithLockedAmount";
@@ -22,7 +23,7 @@ export default ({
 	func_CallBack,
 	filterType
 }) => {
-	if (promotionInfo.promotionType === defPromotionType.rebate) return null;
+	if (defHideJoinBtnTypes.includes(promotionInfo.promotionType)) return null;
 
 	const formatSetting = {
 		[defWrapperCol.formatSetting.isConvertRequired]: false,
@@ -230,19 +231,24 @@ export default ({
 		filterType === defFilterType.specialBonus && !promotionInfo?.canJoin
 	);
 
+	const joinNowDisplayText =
+		promotionInfo?.promotionType === defPromotionType.cashback
+			? i18n?.lbl_ClaimNow
+			: i18n?.lbl_PromoJoinNow;
+
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
 	) : userInfo.isLogin === false && !_isExpiry ? (
 		<button
 			className={uiSetting.joinBtn ?? "btn-check"}
 			onClick={() => handleLogin()}>
-			{i18n?.lbl_PromoJoinNow}
+			{joinNowDisplayText}
 		</button>
 	) : _canJoin && userInfo.isLogin && !promotionInfo?.isJoin && !_isExpiry ? (
 		<button
 			className={uiSetting.joinBtn ?? "btn-check"}
 			onClick={onJoinPromotion.bind(this, promotionInfo)}>
-			{i18n?.lbl_PromoJoinNow}
+			{joinNowDisplayText}
 		</button>
 	) : null;
 };

@@ -32,22 +32,14 @@ const RankItem = ({
 				{userRank}
 			</div>
 			<div>{userName}</div>
-			<div>{turnover}</div>
+			<div>{number_format(turnover)}</div>
 		</li>
 	);
 };
 
-RankItem.propTypes = {
-	isCurrentUser: PropTypes.bool.isRequired,
-	userName: PropTypes.string.isRequired,
-	turnover: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-		.isRequired,
-	Ranking: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-		.isRequired
-};
-
 RankItem.defaultProps = {
-	userRank: 999
+	userRank: 999,
+	Ranking: 0
 };
 
 RankItem.propTypes = {
@@ -57,7 +49,6 @@ RankItem.propTypes = {
 	turnover: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 		.isRequired,
 	Ranking: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-		.isRequired
 };
 
 export const RankImg = ({ Ranking }) => {
@@ -143,7 +134,10 @@ RankList.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	loading: PropTypes.bool,
 	datas: PropTypes.arrayOf(PropTypes.object),
-	defPrize: PropTypes.objectOf(PropTypes.object),
+	defPrize: PropTypes.oneOfType([
+		PropTypes.objectOf(PropTypes.object),
+		PropTypes.arrayOf(PropTypes.object)
+	]),
 	lastUpdTime: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.instanceOf(Date)
