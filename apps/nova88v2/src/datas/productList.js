@@ -72,14 +72,17 @@ const eventTime = {
 const gameList = ({ langId, currencyId }) => {
 	let list = [];
 	const currencyMap = {
-		cs: 0,
-		en: 2,
-		th: 4,
-		id: 15
+		cs: "MYR",
+		en: "MYR",
+		th: "THB",
+		id: "IDR",
+		15: "IDR",
+		4: "THB",
+		2: "MYR"
 	};
-	const cur = currencyId || currencyMap[langId];
+	const cur = currencyMap[currencyId] || currencyMap[langId];
 	switch (cur) {
-		case 15:
+		case "IDR":
 			list = [
 				{
 					category: "sports",
@@ -358,7 +361,7 @@ const gameList = ({ langId, currencyId }) => {
 				}
 			];
 			break;
-		case 2:
+		case "MYR":
 			list = [
 				{
 					category: "sports",
@@ -649,7 +652,7 @@ const gameList = ({ langId, currencyId }) => {
 				}
 			];
 			break;
-		case 4:
+		case "THB":
 			list = [
 				{
 					category: "sports",
