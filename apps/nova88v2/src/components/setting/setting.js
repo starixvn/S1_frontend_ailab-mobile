@@ -124,7 +124,7 @@ export default () => {
 						{i18n.lbl_Affiliate}
 					</a>
 				</div>
-				<Card btnTitle={i18n.lbl_Setting} btnClass="icon-cog">
+				<Card btnTitle={i18n.lbl_Languages} btnClass="icon-cog">
 					{/* <ThemeMode /> */}
 					<LangPanel
 						userInfo={userInfo}

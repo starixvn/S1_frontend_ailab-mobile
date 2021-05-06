@@ -76,12 +76,7 @@ const LanguageList = ({ userInfo, setUserInfo, i18n }) => {
 			/>
 		);
 	});
-	return (
-		<>
-			<div>{i18n.lbl_Languages}</div>
-			<div className="country">{arr}</div>
-		</>
-	);
+	return <div className="country">{arr}</div>;
 };
 
 LanguageList.propTypes = {
