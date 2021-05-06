@@ -112,6 +112,13 @@ export default () => {
 				</div>
 				<div>
 					<Link
+						className="title icon icon-film"
+						to={path.streaming.root}>
+						{i18n.lbl_LiveStreaming}
+					</Link>
+				</div>
+				<div>
+					<Link
 						className="title icon icon-trophy"
 						to={path.ranking.root}>
 						{i18n.lbl_Ranking}
@@ -124,7 +131,7 @@ export default () => {
 						{i18n.lbl_Affiliate}
 					</a>
 				</div>
-				<Card btnTitle={i18n.lbl_Languages} btnClass="icon-cog">
+				<Card btnTitle={i18n.lbl_Languages} btnClass="icon-sphere">
 					{/* <ThemeMode /> */}
 					<LangPanel
 						userInfo={userInfo}
