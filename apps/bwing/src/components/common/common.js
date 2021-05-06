@@ -79,9 +79,9 @@ export const checkAmount = (
 
 export const getAmountTip = (minAmount, _isConvert, i18n) => {
 	return isNaN(minAmount)
-		? i18n.lbl_AmountTooltip?.replace("{0}", 0)
+		? i18n.lbl_AmountTooltip?.replace("{{0}}", 0)
 		: i18n.lbl_AmountTooltip?.replace(
-				"{0}",
+				"{{0}}",
 				number_format(minAmount, _isConvert)
 		  );
 };

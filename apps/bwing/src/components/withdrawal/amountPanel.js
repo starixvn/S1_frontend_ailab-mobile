@@ -1,17 +1,19 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { number_format } from "../common/common";
-import Inputbox from "../common/inputbox.hint";
+import Inputbox from "../common/inputbox.info";
 // import CashBar from "./cashBar";
 
-export default ({
+const AmountPanel = ({
 	i18n,
 	_isConvert,
 	amount,
 	balanceInfo,
 	EditAmount,
 	ClickSubmit,
-	currencyId,
-	warning
+	inputStatus,
+	clickInfo,
+	VaildAmount
 }) => {
 	return (
 		<div className="subModule">
@@ -59,31 +61,43 @@ export default ({
 					availableBalance={balanceInfo?.availableBalance}
 					_isConvert={_isConvert}
 				/> */}
-				<div className="inputBoxLevel">
-					<div className="left">
-						<Inputbox
-							title={i18n.lbl_Amount}
-							value={amount}
-							numberConvert={_isConvert}
-							inputType="tel"
-							onChange={e => EditAmount(e.target.value)}
-							btnStatus={warning.status}
-						/>
-					</div>
-					<div className="right">
-						<div className="btn-group">
-							<button className="submit" onClick={ClickSubmit}>
-								{i18n.lbl_withdraw_submit}
-							</button>
-						</div>
-					</div>
-				</div>
-				{warning.msg ? (
-					<div className={`tip${warning.msg ? " open" : ""}`}>
-						{warning.msg}
-					</div>
-				) : null}
+				<Inputbox
+					title={i18n.lbl_Amount}
+					value={amount}
+					numberConvert={_isConvert}
+					inputType="tel"
+					onChange={e => EditAmount(e.target.value)}
+					onBlur={e => VaildAmount(e.target.value)}
+					submitBtn={true}
+					btnStatus={inputStatus.checked}
+					tip={inputStatus.msg}
+					i18n={i18n}
+					clickSubmit={ClickSubmit}
+					clickInfo={clickInfo}
+				/>
 			</div>
 		</div>
 	);
 };
+
+AmountPanel.defaultProps = {
+	clickInfo: () => null,
+	_isConvert: false,
+	i18n: {},
+	balanceInfo: {},
+	inputStatus: {}
+};
+
+AmountPanel.propTypes = {
+	clickInfo: PropTypes.func,
+	_isConvert: PropTypes.bool,
+	amount: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+		.isRequired,
+	balanceInfo: PropTypes.objectOf(PropTypes.any),
+	EditAmount: PropTypes.func.isRequired,
+	ClickSubmit: PropTypes.func.isRequired,
+	inputStatus: PropTypes.objectOf(PropTypes.any),
+	i18n: PropTypes.objectOf(PropTypes.string)
+};
+
+export default AmountPanel;

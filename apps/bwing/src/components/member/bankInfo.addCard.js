@@ -3,15 +3,15 @@ import { api_SetCustBankInfo } from "../../service/api/accountStrict";
 import { popBoxContext } from "../common/context";
 import config from "../../config";
 import { defStep } from "./bankInfo.step";
-import Inputbox from "../common/inputbox";
+import Inputbox from "../common/inputbox.info";
 
-const initWarning = {
+const initStatus = {
 	accountName: {
-		status: false,
+		checked: null,
 		msg: ""
 	},
 	accountNo: {
-		status: false,
+		checked: null,
 		msg: ""
 	}
 };
@@ -29,7 +29,7 @@ export default ({
 }) => {
 	const { setPopBox } = useContext(popBoxContext);
 	const [userValue, setUserValue] = useState({});
-	const [warning, setWarning] = useState(initWarning);
+	const [inputStatus, setInputStatus] = useState(initStatus);
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -47,7 +47,7 @@ export default ({
 	const toPrevStep = () => {
 		if (step === defStep.accountPanel) {
 			setUserValue({});
-			setWarning(initWarning);
+			setInputStatus(initStatus);
 		}
 		setStep(step - 1);
 	};
@@ -57,7 +57,7 @@ export default ({
 		setStep(step + 1);
 	};
 
-	const editField = (col, e) => {
+	const editField = ({ col }, e) => {
 		let val = e.target.value;
 
 		if (col === "accountNo") {
@@ -70,43 +70,32 @@ export default ({
 		}));
 	};
 
-	const checkInput = (val, col) => {
-		const _status = !val;
+	const checkInput = ({ val, col }) => {
 		let _msg = "";
-
 		if (!val) {
 			_msg =
 				col === "accountName"
-					? "msg_EnterRealName"
-					: "msg_NeedAccountNo";
+					? i18n.msg_EnterRealName
+					: i18n.msg_NeedAccountNo;
 		}
-
-		setWarning(prev => ({
+		setInputStatus(prev => ({
 			...prev,
-			[col]: {
-				status: _status,
-				msg: _msg !== "" ? i18n[_msg] : ""
-			}
+			[col]: { checked: Boolean(val), msg: _msg }
 		}));
 	};
 
-	const clickInfo = col => {
+	const clickInfo = ({ col }) => {
 		let _msg = "";
-
-		if (warning[col].msg === "") {
+		if (inputStatus[col].msg === "") {
 			if (col === "accountName") {
 				_msg = i18n.lbl_Please_input_your_real_name_as_in_your_ID;
 			} else {
 				_msg = i18n.lbl_EnterAccountNumber;
 			}
 		}
-
-		setWarning(prev => ({
+		setInputStatus(prev => ({
 			...prev,
-			[col]: {
-				status: false,
-				msg: _msg
-			}
+			[col]: { checked: null, msg: _msg }
 		}));
 	};
 
@@ -137,7 +126,7 @@ export default ({
 						}
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
@@ -148,9 +137,9 @@ export default ({
 				}
 			);
 		} else {
-			checkInput(userValue.accountNo, "accountNo");
+			checkInput({ val: userValue.accountNo, col: "accountNo" });
 			if (!accountName) {
-				checkInput(userValue.accountName, "accountName");
+				checkInput({ val: userValue.accountName, col: "accountName" });
 			}
 		}
 	};
@@ -167,108 +156,98 @@ export default ({
 		);
 	});
 
-	return step === defStep.initPanel ? (
-		<div className="btn-group">
-			<button className="blue" onClick={clickAddBtn}>
-				{i18n.lbl_AddBankAccount}
-			</button>
-		</div>
-	) : step === defStep.bankPanel ? (
-		<>
-			<div className="depositInBox">
-				<div className="depositTitle textLeft">
-					<h1>{i18n.lbl_Step_SelectBank.toUpperCase()}</h1>
-				</div>
-				<div className="depositImgArea">{arr}</div>
-			</div>
+	let content = null;
+	if (step === defStep.initPanel) {
+		content = (
 			<div className="btn-group">
-				<button className="left" onClick={toPrevStep}>
-					<span className="icon icon-arrow-left2" />
-					{i18n.lbl_Back}
+				<button className="blue" onClick={clickAddBtn}>
+					{i18n.lbl_AddBankAccount}
 				</button>
 			</div>
-		</>
-	) : (
-		<>
-			<div className="depositInBox">
-				<div className="depositTitle textLeft">
-					<h1>{i18n.lbl_EnterAccountNumber.toUpperCase()}</h1>
-				</div>
-				<div className="depositImgArea">
-					<div className="img3Box">
-						<img
-							alt="BankLogo"
-							src={`${config.imgUrl}/common/images/BankLogo/${siteBankList[bankSelectedIdx]?.bankLogo}`}
-						/>
+		);
+	} else if (step === defStep.bankPanel) {
+		content = (
+			<>
+				<div className="depositInBox">
+					<div className="depositTitle textLeft">
+						<h1>{i18n.lbl_Step_SelectBank.toUpperCase()}</h1>
 					</div>
+					<div className="depositImgArea">{arr}</div>
 				</div>
-
-				<div className="inputBox">
-					{accountName ? null : (
-						<>
-							<div className="input-title">
-								{i18n.lbl_RealName}
-							</div>
-							<Inputbox
-								className="inputBoxText"
-								value={userValue.accountName}
-								onChange={editField.bind(this, "accountName")}
-								onBlur={checkInput.bind(
-									this,
-									userValue.accountName,
-									"accountName"
-								)}
-								WarningIcon={warning.accountName.status}
-								placeholder={i18n.msg_EnterRealName}
-								iconModuleName={
-									!warning.accountName.status
-										? "icon-information-solid"
-										: null
-								}
-								clickInfo={clickInfo.bind(this, "accountName")}
+				<div className="btn-group">
+					<button className="left" onClick={toPrevStep}>
+						<span className="icon icon-arrow-left2" />
+						{i18n.lbl_Back}
+					</button>
+				</div>
+			</>
+		);
+	} else {
+		content = (
+			<>
+				<div className="depositInBox">
+					<div className="depositTitle textLeft">
+						<h1>{i18n.lbl_EnterAccountNumber.toUpperCase()}</h1>
+					</div>
+					<div className="depositImgArea">
+						<div className="img3Box">
+							<img
+								alt="BankLogo"
+								src={`${config.imgUrl}/common/images/BankLogo/${siteBankList[bankSelectedIdx]?.bankLogo}`}
 							/>
-							{warning.accountName.msg ? (
-								<div>{warning.accountName.msg}</div>
-							) : null}
-						</>
+						</div>
+					</div>
+					{accountName ? null : (
+						<Inputbox
+							title={i18n.lbl_RealName}
+							value={userValue.accountName}
+							onChange={editField.bind(this, {
+								col: "accountName"
+							})}
+							onBlur={checkInput.bind(this, {
+								val: userValue.accountName,
+								col: "accountName"
+							})}
+							placeholder={i18n.msg_EnterRealName}
+							btnStatus={inputStatus.accountName.checked}
+							tip={inputStatus.accountName.msg}
+							clickInfo={clickInfo.bind(this, {
+								col: "accountName"
+							})}
+						/>
 					)}
-
-					<div className="input-title">{i18n.lbl_BankNumber}</div>
 					<Inputbox
+						title={i18n.lbl_BankNumber}
 						value={userValue.accountNo}
-						className="inputBoxText"
-						onChange={editField.bind(this, "accountNo")}
-						onBlur={checkInput.bind(
-							this,
-							userValue.accountNo,
-							"accountNo"
-						)}
-						WarningIcon={warning.accountNo.status}
+						onChange={editField.bind(this, {
+							col: "accountNo"
+						})}
+						onBlur={checkInput.bind(this, {
+							val: userValue.accountNo,
+							col: "accountNo"
+						})}
 						placeholder="1111 2222 3333 4444"
-						iconModuleName={
-							!warning.accountNo.status
-								? "icon-information-solid"
-								: null
-						}
-						clickInfo={clickInfo.bind(this, "accountNo")}
+						btnStatus={inputStatus.accountNo.checked}
+						tip={inputStatus.accountNo.msg}
+						clickInfo={clickInfo.bind(this, {
+							col: "accountNo"
+						})}
 					/>
-					{warning.accountNo.msg ? (
-						<div>{warning.accountNo.msg}</div>
-					) : null}
-
 					<div className="btn-group">
 						<button className="blue" onClick={clickSubmit}>
 							{i18n.lbl_add_bank_submit.toUpperCase()}
 						</button>
 					</div>
 				</div>
-			</div>
-			<div className="btn-group">
-				<button className="left" onClick={toPrevStep}>
-					<span className="icon icon-arrow-left2" />
-					{i18n.lbl_Back}
-				</button>
-			</div>
-		</>
-	);
+				<div className="btn-group">
+					<button className="left" onClick={toPrevStep}>
+						<span className="icon icon-arrow-left2" />
+						{i18n.lbl_Back}
+					</button>
+				</div>
+			</>
+		);
+	}
+
+	return content;
 };

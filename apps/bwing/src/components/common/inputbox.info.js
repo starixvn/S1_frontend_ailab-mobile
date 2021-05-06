@@ -18,15 +18,17 @@ const Inputbox = ({
 	clickInfo,
 	submitBtn,
 	i18n,
-	clickSubmit
+	clickSubmit,
+	isRequired
 }) => {
 	return (
 		<div className="input-Area">
-			{title ? (
+			{title && isRequired ? (
 				<div className="input-title frame">
 					<span className="text-org">*</span> {title}
 				</div>
 			) : null}
+			{title ? <div className="input-title">{title}</div> : null}
 			<div className="input-group">
 				<div className="inputBoxNew">
 					{icon ? <i className={icon} /> : null}
@@ -67,7 +69,8 @@ Inputbox.defaultProps = {
 	clickInfo: () => null,
 	submitBtn: false,
 	i18n: {},
-	clickSubmit: () => null
+	clickSubmit: () => null,
+	isRequired: false
 };
 
 Inputbox.propTypes = {
@@ -77,9 +80,9 @@ Inputbox.propTypes = {
 	onBlur: PropTypes.func,
 	onChange: PropTypes.func.isRequired,
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-	max: PropTypes.number,
+	max: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	disabled: PropTypes.bool,
-	maxLength: PropTypes.number,
+	maxLength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	tip: PropTypes.string,
 	btnStatus: PropTypes.bool,
 	numberConvert: PropTypes.bool,
@@ -87,7 +90,8 @@ Inputbox.propTypes = {
 	clickInfo: PropTypes.func,
 	submitBtn: PropTypes.bool,
 	i18n: PropTypes.objectOf(PropTypes.string),
-	clickSubmit: PropTypes.func
+	clickSubmit: PropTypes.func,
+	isRequired: PropTypes.bool
 };
 
 export const IptStatus = ({ btnStatus, clickInfo }) => {
@@ -129,6 +133,49 @@ const SubmitBtn = ({ i18n, clickSubmit }) => {
 SubmitBtn.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	clickSubmit: PropTypes.func.isRequired
+};
+
+export const InputboxDate = ({
+	onBlur,
+	onChange,
+	value,
+	max,
+	btnStatus,
+	clickInfo
+}) => {
+	return (
+		<label className="inputdate">
+			<input
+				type="date"
+				onBlur={onBlur}
+				onChange={onChange}
+				value={value}
+				max={max}
+			/>
+			<IptStatus btnStatus={btnStatus} clickInfo={clickInfo} />
+			<div className="iconModule">
+				<span className="icon icon-calendar" />
+				{/* {props.iconModuleWarning ? (
+					<i className="icon icon-warning" />
+				) : null} */}
+			</div>
+		</label>
+	);
+};
+
+InputboxDate.defaultProps = {
+	max: null,
+	btnStatus: null,
+	clickInfo: () => null
+};
+
+InputboxDate.propTypes = {
+	onBlur: PropTypes.func.isRequired,
+	onChange: PropTypes.func.isRequired,
+	value: PropTypes.string.isRequired,
+	max: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	btnStatus: PropTypes.bool,
+	clickInfo: PropTypes.func
 };
 
 export default Inputbox;

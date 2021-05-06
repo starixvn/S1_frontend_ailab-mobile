@@ -1,6 +1,11 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { Redirect } from "@reach/router";
-import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
+import {
+	i18nContext,
+	userInfoContext,
+	popBoxContext,
+	loadingContext
+} from "../common/context";
 import {
 	number_format,
 	isConvert,
@@ -18,35 +23,29 @@ import {
 } from "../../service/api/payment";
 import RecentDatas from "./withdrawal.recentDatas";
 import path from "../../path";
-import Loading from "../common/loading";
 import WalletPanel from "./walletPanel";
 import BankCardPanel from "./bankCardPanel";
 import AmountPanel from "./amountPanel";
-import { defIptStatus } from "../common/inputbox.hint";
 
-const initWarning = {
-	status: defIptStatus.default,
-	msg: ""
-};
+const initStatus = { checked: null, msg: "" };
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const { setLoading } = useContext(loadingContext);
 	const [balanceInfo, setBalanceInfo] = useState(null);
 	const _isConvert = isConvert(userInfo.currencyId);
 	const [amount, setAmount] = useState("");
-	const [warning, setWarning] = useState(initWarning);
+	const [inputStatus, setInputStatus] = useState(initStatus);
 	const [selBank, setSelBank] = useState(null);
 	const [bankInfo, setbankInfo] = useState({
 		accountName: "",
 		bankList: []
 	});
 	const [recentDatas, setRecentDatas] = useState([]);
-
 	const [redirectPath, setRedirectPath] = useState(null);
 	const [pageVerify, setPageVerify] = useState(true);
-	const [loading, setLoading] = useState(true);
 
 	const isMountedRef = useRef(null);
 	useEffect(() => {
@@ -177,7 +176,7 @@ const Panel = () => {
 											setLoading(false);
 										}
 									},
-									err => {
+									() => {
 										if (isMountedRef.current) {
 											setLoading(false);
 										}
@@ -250,16 +249,11 @@ const Panel = () => {
 			_isConvert,
 			i18n
 		);
+
 		if (result.status !== 0) {
-			setWarning({
-				status: defIptStatus.warning,
-				msg: result.msg
-			});
+			setInputStatus({ checked: false, msg: result.msg });
 		} else {
-			setWarning({
-				status: defIptStatus.verified,
-				msg: ""
-			});
+			setInputStatus({ checked: true, msg: "" });
 		}
 		return result.status === 0;
 	};
@@ -267,6 +261,17 @@ const Panel = () => {
 	const EditAmount = value => {
 		VaildAmount(value);
 		setAmount(value);
+	};
+
+	const clickInfo = () => {
+		const _msg = i18n.lbl_AmountTooltip.replace(
+			"{{0}}",
+			number_format(1, _isConvert)
+		);
+		setInputStatus({
+			checked: null,
+			msg: inputStatus.msg === "" ? _msg : ""
+		});
 	};
 
 	const ClickSubmit = () => {
@@ -284,7 +289,7 @@ const Panel = () => {
 									KycCheck(false).then(kycProcess => {
 										if (!kycProcess) {
 											setAmount("");
-											setWarning(initWarning);
+											setInputStatus(initStatus);
 											setSelBank(null);
 											api_GetWithdrawalAvailableBalance().then(
 												resBalance => {
@@ -348,7 +353,7 @@ const Panel = () => {
 								}
 							}
 						},
-						err => {
+						() => {
 							if (isMountedRef.current) {
 								setPopBox({
 									isOpen: true,
@@ -449,7 +454,7 @@ const Panel = () => {
 					setLoading(false);
 				}
 			},
-			err => {
+			() => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
@@ -538,50 +543,51 @@ const Panel = () => {
 		});
 	};
 
-	return redirectPath === null ? (
-		pageVerify ? (
-			loading ? (
-				<Loading />
-			) : (
-				<section className="withdrawalBox">
-					<WalletPanel
+	let content = null;
+	if (redirectPath !== null) {
+		content = <Redirect to={redirectPath} noThrow />;
+	} else if (pageVerify) {
+		content = (
+			<section className="withdrawalBox">
+				<WalletPanel
+					i18n={i18n}
+					availableBalance={_availableBalance}
+					GetWithdrawalAvailableBalance={GetBalance}
+				/>
+				<BankCardPanel
+					i18n={i18n}
+					accountName={userInfo.accountName}
+					custBankInfo={bankInfo?.bankList}
+					selBank={selBank}
+					setSelBank={setSelBank}
+					setRedirectPath={setRedirectPath}
+					GetCustBankInfo={GetCustBankInfo}
+					SelectBank={SelectBank}
+				/>
+				<div className="subModuleList">
+					<AmountPanel
 						i18n={i18n}
-						availableBalance={_availableBalance}
-						GetWithdrawalAvailableBalance={GetBalance}
+						_isConvert={_isConvert}
+						amount={amount}
+						balanceInfo={balanceInfo}
+						EditAmount={EditAmount}
+						ClickSubmit={ClickSubmit}
+						currencyId={userInfo.currencyId}
+						clickInfo={clickInfo}
+						inputStatus={inputStatus}
+						VaildAmount={VaildAmount}
 					/>
-					<BankCardPanel
-						i18n={i18n}
-						accountName={userInfo.accountName}
-						custBankInfo={bankInfo?.bankList}
-						selBank={selBank}
-						setSelBank={setSelBank}
-						setRedirectPath={setRedirectPath}
-						GetCustBankInfo={GetCustBankInfo}
-						SelectBank={SelectBank}
-					/>
-					<div className="subModuleList">
-						<AmountPanel
-							i18n={i18n}
-							_isConvert={_isConvert}
-							amount={amount}
-							balanceInfo={balanceInfo}
-							EditAmount={EditAmount}
-							ClickSubmit={ClickSubmit}
-							currencyId={userInfo.currencyId}
-							warning={warning}
-						/>
-					</div>
-					<RecentDatas
-						Datas={recentDatas}
-						ClickCancel={ClickCancel}
-						GetRecentDatas={GetWithdrawalInfoRecent}
-					/>
-				</section>
-			)
-		) : null
-	) : (
-		<Redirect to={redirectPath} noThrow />
-	);
+				</div>
+				<RecentDatas
+					Datas={recentDatas}
+					ClickCancel={ClickCancel}
+					GetRecentDatas={GetWithdrawalInfoRecent}
+				/>
+			</section>
+		);
+	}
+
+	return content;
 };
 
 export default Panel;

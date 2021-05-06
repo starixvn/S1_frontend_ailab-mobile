@@ -3,7 +3,6 @@ import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import { api_Transfer, api_GetTransferRecent } from "../../service/api/tp";
 import { isConvert } from "../common/common";
 import RecentDatas from "./transfer.recentDatas";
-import { defIptStatus } from "../common/inputbox.hint";
 import Loading from "../common/loading";
 import { defPopBoxType } from "../common/popbox";
 import WalletPanel from "./walletPanel";
@@ -26,7 +25,7 @@ const initTransferOptions = {
 	transferTo: []
 };
 
-const initWarning = { status: defIptStatus.default, msg: "" };
+const initStatus = { checked: null, msg: "" };
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
@@ -38,7 +37,7 @@ const Panel = () => {
 	const [selectedIdx, setSelectedIdx] = useState(initSelectedIdx);
 
 	const [amount, setAmount] = useState("");
-	const [warning, setWarning] = useState(initWarning);
+	const [inputStatus, setInputStatus] = useState({ checked: null, msg: "" });
 	const [recentDatas, setRecentDatas] = useState([]);
 	const [loading, setLoading] = useState(false);
 
@@ -76,17 +75,25 @@ const Panel = () => {
 	const VaildAmount = _amount => {
 		const checked = _amount > 0 && _amount !== "";
 		if (!checked) {
-			setWarning({
-				status: true,
-				msg: i18n.lbl_AmountTooltip
+			setInputStatus({
+				checked: false,
+				msg: i18n.lbl_AmountTooltip.replace("{{0}}", 1)
 			});
 		} else {
-			setWarning({
-				status: false,
-				msg: ""
-			});
+			setInputStatus({ checked: true, msg: "" });
 		}
 		return checked;
+	};
+
+	const clickInfo = () => {
+		const _msg = i18n.lbl_AmountTooltip.replace(
+			"{{0}}",
+			number_format(1, _isConvert)
+		);
+		setInputStatus({
+			checked: null,
+			msg: inputStatus.msg === "" ? _msg : ""
+		});
 	};
 
 	const EditAmount = e => {
@@ -151,7 +158,7 @@ const Panel = () => {
 						GetTpWalletBalance(_tpId);
 						GetBalance();
 						setAmount("");
-						setWarning(initWarning);
+						setInputStatus(initStatus);
 						GetTransferRecent();
 						setLoading(false);
 					}
@@ -187,7 +194,7 @@ const Panel = () => {
 					: allWalletsList[selectedIdx.transferFrom].id;
 
 			Transfer(_tpId, real_amount, _direction);
-			setWarning(initWarning);
+			setInputStatus(initStatus);
 			setAmount("");
 		} else if (
 			selectedIdx.transferFrom === null ||
@@ -219,12 +226,14 @@ const Panel = () => {
 				i18n={i18n}
 				amount={amount}
 				EditAmount={EditAmount}
-				warning={warning}
+				inputStatus={inputStatus}
 				clickSubmit={clickSubmit}
 				selectedIdx={selectedIdx}
 				transferOptions={transferOptions}
 				selectItem={selectItem}
 				allWalletsList={allWalletsList}
+				clickInfo={clickInfo}
+				_isConvert={_isConvert}
 			/>
 			<RecentDatas
 				datas={recentDatas}
