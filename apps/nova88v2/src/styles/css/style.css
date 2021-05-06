@@ -4941,11 +4941,11 @@ span.important {
 }
 
 .breadcrumb a {
-  color: #5574A7;
+  color: #a5bbe0;
 }
 
 .breadcrumb a[class="acive"] {
-  color: white;
+  color: #5574A7;
 }
 
 .breadcrumb a + a::before {
