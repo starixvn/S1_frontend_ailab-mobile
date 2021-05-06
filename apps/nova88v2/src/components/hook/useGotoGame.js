@@ -27,7 +27,7 @@ const launchGame = ({ client, mode, game, lang }) => {
 			client,
 			`language=${lang}&real=${real}&lobby=${lobbyUrl}&logout=${logoutUrl}&deposit=${depositUrl}&support=${supportUrl}&backurl=${lobbyUrl}`
 		);
-		iapiLaunchClient(client, game, mode, "_self");
+		iapiLaunchClient(client, game, mode, "_blank");
 	}
 
 	// Live Games
@@ -36,14 +36,14 @@ const launchGame = ({ client, mode, game, lang }) => {
 			client,
 			`&launch_alias=${game}&language=${lang}&real=${real}&lobby=${lobbyUrl}&logout=${logoutUrl}&deposit=${depositUrl}&support=${supportUrl}`
 		);
-		iapiLaunchClient(client, null, mode, "_self");
+		iapiLaunchClient(client, null, mode, "_blank");
 	}
 };
 
 const launchGameWithFunMode = ({ client, game, lang, mode }) => {
 	if (client === "ngm_desktop" || client === "ngm_mobile") {
 		iapiSetClientParams(client, `language=${lang}&real=0`);
-		iapiLaunchClient(client, game, mode, "_self");
+		iapiLaunchClient(client, game, mode, "_blank");
 	}
 };
 
