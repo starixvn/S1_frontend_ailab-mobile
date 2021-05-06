@@ -355,12 +355,13 @@ const Payment = props => {
 					<>
 						<p>{i18n.lbl_ConfirmDeposit}</p>
 						<img
+							className="bankimg"
 							src={`${
 								config.cloudImgURL
 							}/SiteSkin/img/BankLogo/${selBank.bankLogo?.toLowerCase()}`}
 							alt={selBank.bankName}
 						/>
-						<div className="tip">
+						<div>
 							<span>{i18n.lbl_DepositAmount} :</span>{" "}
 							{number_format(real_amount, _isConvert, 0)}
 						</div>

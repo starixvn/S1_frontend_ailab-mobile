@@ -205,7 +205,7 @@ const Payment = props => {
 								}/SiteSkin/img/BankLogo/${bankLogo?.toLowerCase()}`}
 								alt={bankName}
 							/>
-							<div className="tip">
+							<div>
 								<span>{i18n.lbl_DepositAmount} :</span>{" "}
 								{number_format(real_amount, _isConvert, 0)}
 							</div>

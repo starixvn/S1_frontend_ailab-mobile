@@ -136,12 +136,13 @@ const Payment = props => {
 					<>
 						<p>{i18n.lbl_ConfirmDeposit}</p>
 						<img
+							className="bankimg"
 							src={`${
 								config.cloudImgURL
 							}/SiteSkin/img/MobilePay/${selChannel.groupName?.toLowerCase()}.png`}
 							alt={selChannel.groupName}
 						/>
-						<div className="tip">
+						<div>
 							<span>{i18n.lbl_DepositAmount} :</span>{" "}
 							{number_format(real_amount, _isConvert, 0)}
 						</div>
