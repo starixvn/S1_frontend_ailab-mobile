@@ -4,18 +4,9 @@ import {
 	i18nContext,
 	userInfoContext,
 	popBoxContext,
-	loadingContext,
-	i18nContext,
-	userInfoContext,
-	popBoxContext
+	loadingContext
 } from "../common/context";
-import {
-	number_format,
-	isConvert,
-	number_format,
-	isConvert,
-	checkAmount
-} from "../common/common";
+import { number_format, isConvert, checkAmount } from "../common/common";
 
 import {
 	api_GetWithdrawalAvailableBalance,

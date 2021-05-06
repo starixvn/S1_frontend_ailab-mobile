@@ -14,7 +14,8 @@ const AmountInput = ({
 	SelectAmount,
 	EditAmount,
 	btnStatus,
-	clickInfo
+	clickInfo,
+	VaildAmount
 }) => {
 	const { amountRule, amountList, minAmount, maxAmount } = channel;
 	let content = null;
@@ -56,6 +57,7 @@ const AmountInput = ({
 							}
 							onChange={EditAmount}
 							value={amount}
+							onBlur={VaildAmount}
 						/>
 						<span>(000)</span>
 						<IptStatus
