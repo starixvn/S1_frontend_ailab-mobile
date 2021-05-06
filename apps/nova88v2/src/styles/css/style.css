@@ -1097,6 +1097,10 @@ footer > a.active .circleAnimation + span {
           flex-flow: column;
 }
 
+#popup .popTxt img.bankimg {
+  width: 20vw;
+}
+
 #popup .popTxt .inputInfo {
   color: white;
 }
@@ -4156,14 +4160,14 @@ span.important {
   left: 50%;
   -webkit-transform: translateX(-50%) translateY(-50%) rotate(-20deg);
           transform: translateX(-50%) translateY(-50%) rotate(-20deg);
-  background: #e2e2e2;
+  background: #666;
   border-radius: 20px;
   font-weight: bold;
   padding: 1vw 3vw;
   font-size: 5vw;
   font-style: italic;
   z-index: 1;
-  color: black;
+  color: #333;
 }
 
 .promotions.Expired .expiredIcon:before {
