@@ -106,13 +106,7 @@ const Payment = props => {
 				obj => obj.sysId === userPaymentData?.sysId
 			);
 			bankIdx = bankIdx === -1 ? 0 : bankIdx;
-			for (const i in paymentList) {
-				if (paymentList[i].status === 1) {
-					bankIdx = paymentList[bankIdx]?.status === 1 ? bankIdx : 0;
-					SelectBank(paymentList[bankIdx]);
-					break;
-				}
-			}
+			SelectBank(paymentList[bankIdx]);
 		}
 		return () => {
 			isMountedRef.current = false;
@@ -507,11 +501,9 @@ const GroupList = ({
 			<div className="info infoAccount" key={_mainKey}>
 				<ul>
 					<li>
-						<div
-							className={`bankName active${
-								data.status === 2 ? " close" : " open"
-							}`}>
+						<div className="bankName active">
 							<img
+								className="bankimg"
 								key={`${_mainKey}-img`}
 								src={`${prefixImgUrl}${
 									imgKeyWithExtension
@@ -536,7 +528,7 @@ const GroupList = ({
 		) : (
 			<div
 				key={_mainKey}
-				className={`bankName${data.status === 2 ? " close" : " open"}`}
+				className="bankName"
 				onClick={SelectPayment.bind(
 					this,
 					bindFullObj ? data : data[idKey]

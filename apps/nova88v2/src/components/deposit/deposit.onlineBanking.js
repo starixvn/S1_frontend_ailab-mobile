@@ -200,6 +200,7 @@ const Payment = props => {
 						<>
 							<p>{i18n.lbl_ConfirmDeposit}</p>
 							<img
+								className="bankimg"
 								src={`${
 									config.cloudImgURL
 								}/SiteSkin/img/BankLogo/${bankLogo?.toLowerCase()}`}
