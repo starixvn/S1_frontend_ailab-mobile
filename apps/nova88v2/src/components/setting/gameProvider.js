@@ -99,12 +99,12 @@ const defPlatfrom = [
 	{
 		...defGameInfo.oneGame,
 		imgName: "1g"
-	},
-	{
-		...defGameInfo.Casino_PT,
-		path: path.casino.root,
-		imgName: "pt"
 	}
+	// {
+	// 	...defGameInfo.Casino_PT,
+	// 	path: path.casino.root,
+	// 	imgName: "pt"
+	// }
 ];
 
 const GameProvider = ({ userInfo, i18n }) => {
