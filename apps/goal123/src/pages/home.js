@@ -17,7 +17,7 @@ import HeaderShortcut from "../components/home/headerShortcut";
 import EventSwipper from "../components/home/eventSwipper";
 import MiddlePanel from "../components/home/middlePanel";
 import Bottom from "../components/home/bottom";
-import jackpot from "../styles/img/jackpotbg.png";
+import jackpot from "../styles/img/jackpot.png";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -141,15 +141,13 @@ const IndexPage = () => {
 			<Slider />
 			<EventSwipper userInfo={userInfo} />
 			<Marquee />
-			<div className="jackpot">
-				<div className="title">Jackpot</div>
-				<img src={jackpot} alt="" />
-				<div className="number">
-					<span id="tick" />
-					VND
-				</div>
-			</div>
 			<Menu i18n={i18n} userInfo={userInfo} />
+			<div className="jackpot">
+				<img src={jackpot} alt="" />
+				<p>VEN</p>
+				<p id="tick" />
+			</div>
+
 			<MiddlePanel langId={userInfo.langId} i18n={i18n} />
 			<Bottom i18n={i18n} langId={userInfo.langId} />
 			<Submenu />

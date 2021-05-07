@@ -11,6 +11,7 @@ import {
 } from "../common/context";
 import { GET_LANG_ID } from "../../service/language";
 import path from "../../path";
+import horn from "../../styles/img/marqueeicon.png";
 
 const Panel = () => {
 	const { nav, setNav } = useContext(navContext);
@@ -202,7 +203,12 @@ class Marquee extends Component {
 		return this.state.redirectPath === null ? (
 			<div id="Marquee" className="MarqueeNew">
 				<div ref={this.content} className="marquee-box">
+					<div>
+						<img src={horn} alt="" />
+					</div>
 					<div
+						behavior=""
+						direction=""
 						className="marquee-run"
 						ref={this.marquee}
 						style={style}>

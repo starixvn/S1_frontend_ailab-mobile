@@ -5,15 +5,15 @@ import Menu_Slots from "../styles/img/sidbar/slots.png";
 import Menu_LiveCasino from "../styles/img/sidbar/livecasino.png";
 import Menu_Fishing from "../styles/img/sidbar/fishing.jpg";
 
-import HotGame_Sports from "../styles/img/hotgame-m/sports.png";
-import HotGame_SabaSoccer from "../styles/img/hotgame-m/sabasoccer.png";
-import HotGame_Slots from "../styles/img/hotgame-m/slots.png";
-import HotGame_SabaClub from "../styles/img/hotgame-m/sabaclub.png";
-import HotGame_Fishing from "../styles/img/hotgame-m/fishing.png";
-import HotGame_VirtualSports from "../styles/img/hotgame-m/virtualsports.png";
-import HotGame_Keno from "../styles/img/hotgame-m/keno.png";
-import HotGame_V8Poker from "../styles/img/hotgame-m/v8poker.png";
-import HotGame_ESports from "../styles/img/hotgame-m/e-sports.png";
+import HotGame_Sports from "../styles/img/hotgame-m/sport.jpg";
+import HotGame_SabaSoccer from "../styles/img/hotgame-m/sabasoccer.jpg";
+import HotGame_Slots from "../styles/img/hotgame-m/slots.jpg";
+import HotGame_SabaClub from "../styles/img/hotgame-m/sabaclub.jpg";
+import HotGame_Fishing from "../styles/img/hotgame-m/fishing.jpg";
+import HotGame_VirtualSports from "../styles/img/hotgame-m/virtual.jpg";
+import HotGame_Keno from "../styles/img/hotgame-m/keno.jpg";
+import HotGame_V8Poker from "../styles/img/hotgame-m/v8poker.jpg";
+import HotGame_ESports from "../styles/img/hotgame-m/esport.jpg";
 
 import Sports_Soccer from "../styles/img/hotgame-m/sports/soccer.png";
 import Sports_SabaSoccer from "../styles/img/hotgame-m/sports/sabasoccer.png";

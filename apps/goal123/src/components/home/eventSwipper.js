@@ -61,6 +61,7 @@ const EventSwipper = ({ userInfo }) => {
 				className="hotDiv"
 				key={`hotEvent-${bannerName}`}
 				onClick={goToBet.bind(this, { tpId, gameId, matchId })}>
+				<h1>{sportLeaguesId}</h1>
 				<div className="teamL">
 					<p>{sportTeamsHome}</p>
 					<img src={sportTeamsHomePic} alt={sportTeamsHome} />
@@ -70,7 +71,6 @@ const EventSwipper = ({ userInfo }) => {
 						{eventDate}
 						<span>{eventTime}</span>
 					</div>
-					<p>{sportLeaguesId}</p>
 				</div>
 				<div className="teamR">
 					<img src={sportTeamsAwayPic} alt={sportTeamsAway} />
