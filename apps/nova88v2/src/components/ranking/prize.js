@@ -2,31 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import { defPrize, defEuroTourBtns } from "./def";
 import EuroAgenda from "./euroAgenda";
-
-const langMappingCurr = {
-	en: "MYR",
-	cs: "MYR",
-	id: "IDR",
-	th: "THB"
-};
-
-export const currCustomMapping = {
-	13: "MYR"
-};
+import { GET_LANG_ID } from "../../service/language";
+import { GetCurrencyName } from "../common/common";
 
 export const Prize = ({ currencyId, category, langId, i18n }) => {
-	const currency = currencyId
-		? currCustomMapping[currencyId] ?? i18n[`Currency_${currencyId}`]
-		: langMappingCurr[langId];
-	let _landId = langId;
-	if (
-		langId !== "cs" &&
-		langId !== "id" &&
-		langId !== "th" &&
-		langId !== "en"
-	) {
-		_landId = "en";
-	}
+	const currency = GetCurrencyName({ langId, currencyId, i18n });
+	const _landId = GET_LANG_ID(langId);
+
 	const prize = defPrize();
 	return (
 		prize[currency]?.[_landId]?.[category] ?? prize.MYR[_landId][category]

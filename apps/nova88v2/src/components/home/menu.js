@@ -7,7 +7,7 @@ import { getEventIcon } from "./category";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import useHandleLogin from "../hook/useHandleLogin";
 import api from "../../service/api";
-import { userInfoContext } from "../common/context";
+import { GetCurrencyName } from "../common/common";
 
 const Menu = ({ i18n, userInfo, setPopBox }) => {
 	const [selectedCol, setSelectedCol] = useState(defCol.sports);
@@ -15,6 +15,12 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 	const { handleLogin } = useHandleLogin();
 	const navigate = useNavigate();
 	const isMountedRef = useRef(null);
+
+	const currencyName = GetCurrencyName({
+		langId: userInfo.langId,
+		currencyId: userInfo.currencyId,
+		i18n
+	});
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -48,72 +54,71 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 		}
 	};
 
-	const gameArr = gameList({
-		langId: userInfo.langId,
-		currencyId: userInfo.currencyId
-	}).map(item => {
-		const _subIcon = item?.items?.filter(
-			subItem =>
-				subItem.eventIcon &&
-				(subItem.tpId
-					? showingTpIds === null ||
-					  showingTpIds.includes(subItem.tpId)
-					: true)
-		);
-		const showingEventIcon = getEventIcon({
-			subIcon: _subIcon,
-			eventIcon: item?.eventIcon
-		});
+	const gameArr = gameList({ langId: userInfo?.langId, currencyName }).map(
+		item => {
+			const _subIcon = item?.items?.filter(
+				subItem =>
+					subItem.eventIcon &&
+					(subItem.tpId
+						? showingTpIds === null ||
+						  showingTpIds.includes(subItem.tpId)
+						: true)
+			);
+			const showingEventIcon = getEventIcon({
+				subIcon: _subIcon,
+				eventIcon: item?.eventIcon
+			});
 
-		if (item.href) {
+			if (item.href) {
+				return (
+					<a
+						key={`menu-${item.category}`}
+						href={item.href}
+						target="_blank"
+						rel="noreferrer">
+						<i className={`icon icon-${item.categoryIcon}`} />
+						<div>{i18n[item.translateKey]}</div>
+						{showingEventIcon !== "" ? (
+							<i className={`icon${showingEventIcon}`} />
+						) : null}
+					</a>
+				);
+			}
+			if (item.path) {
+				return (
+					<Link key={`menu-${item.category}`} to={item.path}>
+						<i className={`icon icon-${item.categoryIcon}`} />
+						<div>{i18n[item.translateKey]}</div>
+						{item.category === "ranking" ? (
+							<i className="icon-live" />
+						) : null}
+						{showingEventIcon !== "" ? (
+							<i className={`icon${showingEventIcon}`} />
+						) : null}
+					</Link>
+				);
+			}
 			return (
-				<a
+				<button
 					key={`menu-${item.category}`}
-					href={item.href}
-					target="_blank"
-					rel="noreferrer">
+					className={selectedCol === item.category ? "active" : ""}
+					onClick={showSubPanel.bind(this, {
+						panel: item.category,
+						popBox: item?.popBox
+					})}>
 					<i className={`icon icon-${item.categoryIcon}`} />
 					<div>{i18n[item.translateKey]}</div>
 					{showingEventIcon !== "" ? (
 						<i className={`icon${showingEventIcon}`} />
 					) : null}
-				</a>
+				</button>
 			);
 		}
-		if (item.path) {
-			return (
-				<Link key={`menu-${item.category}`} to={item.path}>
-					<i className={`icon icon-${item.categoryIcon}`} />
-					<div>{i18n[item.translateKey]}</div>
-					{item.category === "ranking" ? (
-						<i className="icon-live" />
-					) : null}
-					{showingEventIcon !== "" ? (
-						<i className={`icon${showingEventIcon}`} />
-					) : null}
-				</Link>
-			);
-		}
-		return (
-			<button
-				key={`menu-${item.category}`}
-				className={selectedCol === item.category ? "active" : ""}
-				onClick={showSubPanel.bind(this, {
-					panel: item.category,
-					popBox: item?.popBox
-				})}>
-				<i className={`icon icon-${item.categoryIcon}`} />
-				<div>{i18n[item.translateKey]}</div>
-				{showingEventIcon !== "" ? (
-					<i className={`icon${showingEventIcon}`} />
-				) : null}
-			</button>
-		);
-	});
+	);
 
 	const subGameArr = gameList({
 		langId: userInfo?.langId,
-		currencyId: userInfo.currencyId
+		currencyName
 	})?.map(item => {
 		const subGame = item.items
 			?.filter(subItem => {

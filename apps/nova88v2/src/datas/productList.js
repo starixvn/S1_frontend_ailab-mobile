@@ -69,19 +69,9 @@ const eventTime = {
 	new_vip: { startDate: "2021/02/05 11:00:00" }
 };
 
-const gameList = ({ langId, currencyId }) => {
+const gameList = ({ langId, currencyName }) => {
 	let list = [];
-	const currencyMap = {
-		cs: "MYR",
-		en: "MYR",
-		th: "THB",
-		id: "IDR",
-		15: "IDR",
-		4: "THB",
-		2: "MYR"
-	};
-	const cur = currencyMap[currencyId] || currencyMap[langId];
-	switch (cur) {
+	switch (currencyName) {
 		case "IDR":
 			list = [
 				{
