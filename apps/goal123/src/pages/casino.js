@@ -264,7 +264,7 @@ class Panel extends React.Component {
 	};
 
 	ClickPlay = freePlay => {
-		if (this.props.userInfo.isLogin) {
+		if (freePlay || this.props.userInfo.isLogin) {
 			GET_CASINO_ENTER_PAGE({
 				tpId: this.state.selGameInfo.tpId,
 				gameId: this.state.selGameInfo.gameId,
