@@ -3,7 +3,7 @@ import { Redirect } from "@reach/router";
 import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
 import { api_ResetPassword } from "../../service/api/accountStrict";
 import { api_CheckResetPwdToken } from "../../service/api/site";
-import Inputbox from "../common/inputbox.password";
+import Inputbox from "../common/inputbox.password.info";
 import { getUrlParameter, passwordCheck } from "../common/common";
 
 export default () => {
@@ -11,8 +11,7 @@ export default () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const [newPsw, setNewPsw] = useState("");
-	const [pswState, setPswState] = useState(false);
-	const [warning, setWarning] = useState({ status: false, msg: "" });
+	const [inputStatus, setInputStatus] = useState({ checked: null, msg: "" });
 	const [redirectPath, setRedirectPath] = useState(null);
 	const isMountedRef = useRef(null);
 
@@ -61,7 +60,7 @@ export default () => {
 						}
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
@@ -87,25 +86,25 @@ export default () => {
 		userInfo.loginFromResetPwd
 	]);
 
-	const showPswHandler = () => {
-		setPswState(!pswState);
-	};
-
 	const EditField = e => {
 		const val = e.target.value;
 		setNewPsw(val);
 	};
 
 	const checkPswHandler = e => {
-		const val = e.target.value;
-		const result = passwordCheck({ val });
-		setWarning({ status: !result.checked, msg: i18n[result.message] });
+		const result = passwordCheck({ val: e.target.value, i18n });
+		setInputStatus(result);
+	};
+
+	const clickInfo = () => {
+		const msg = inputStatus.msg === "" ? i18n.msg_PasswordVaildate : "";
+		setInputStatus({ checked: null, msg });
 	};
 
 	const clickSubmit = () => {
 		if (newPsw === "") {
-			setWarning({ status: true, msg: i18n.msg_PasswordReq });
-		} else if (warning.status === false) {
+			setInputStatus({ checked: false, msg: i18n.msg_PasswordReq });
+		} else {
 			api_ResetPassword({ NewPassword: newPsw }).then(
 				res => {
 					if (isMountedRef.current) {
@@ -145,7 +144,7 @@ export default () => {
 						}
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
@@ -161,16 +160,13 @@ export default () => {
 	return redirectPath === null ? (
 		<>
 			<Inputbox
-				icon="icon-key"
-				inputType={`${!pswState ? "password" : "text"}`}
 				placeholder={i18n.lbl_Password}
 				value={newPsw}
 				onChange={EditField.bind(null)}
 				onBlur={checkPswHandler.bind(null)}
-				Warning={warning}
-				showPsw={pswState}
-				showPswHandler={showPswHandler}
-				ClassName="LoginRule"
+				btnStatus={inputStatus.checked}
+				tip={inputStatus.msg}
+				clickInfo={clickInfo}
 			/>
 			<div className="btn-group">
 				<button className="lightBlue" onClick={clickSubmit}>

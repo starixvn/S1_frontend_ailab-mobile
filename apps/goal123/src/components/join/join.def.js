@@ -1,11 +1,10 @@
 export const initValue = {
 	UserName: "",
 	Password: "",
-	// Email: "",
 	Currency: 0,
 	AffiliateId: "",
-	Checkbox: false,
-	SpecialBonusCode: ""
+	Checkbox: false
+	// SpecialBonusCode: ""
 };
 
 export const initStatus = {
@@ -17,10 +16,6 @@ export const initStatus = {
 		checked: null,
 		msg: ""
 	},
-	// Email: {
-	// checked	: null,
-	// 	msg: ""
-	// },
 	Currency: {
 		checked: null,
 		msg: ""
@@ -32,9 +27,9 @@ export const initStatus = {
 	Checkbox: {
 		checked: null,
 		msg: ""
-	},
-	SpecialBonusCode: {
-		checked: null,
-		msg: ""
 	}
+	// SpecialBonusCode: {
+	// 	checked: null,
+	// 	msg: ""
+	// }
 };

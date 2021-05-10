@@ -8,7 +8,6 @@ import Checkbox from "../common/checkbox";
 import Tips from "./tips";
 import {
 	api_ExistsUserName,
-	// api_ExistsEmail,
 	api_GetSiteCurrencyList,
 	api_GetBanner,
 	api_site_GetAffiliateAgent,
@@ -43,7 +42,7 @@ const Join = ({ hideBtn }) => {
 	const [inputStatus, setInputStatus] = useState(initStatus);
 	const [redirectPath, setRedirectPath] = useState(null);
 	const [banner, setBanner] = useState([]);
-	const [affiliateidExist, setAffiliateidExist] = useState("");
+	const [affiliateidExist, setAffiliateidExist] = useState(null);
 	const [promoPopup, setPromoPopup] = useState(false);
 
 	const isMountedRef = useRef(null);
@@ -121,10 +120,6 @@ const Join = ({ hideBtn }) => {
 			const currencyArr = currencyNum.map(id => {
 				return { id, displayKey: `Currency_${id}` };
 			});
-			// setUserValue(prev => ({
-			// 	...prev,
-			// 	Currency: currencyArr[0]
-			// }));
 			setSiteCurrencyList(() => currencyArr);
 		}
 	};
@@ -134,18 +129,18 @@ const Join = ({ hideBtn }) => {
 		let result = { checked: true, msg: "" };
 
 		if (col === "UserName") {
-			result = await usernameCheck({ val });
+			result = await userNameCheck({ val });
 		} else if (col === "Password") {
 			result = passwordCheck({ val, i18n });
 		}
 
 		setInputStatus(prev => ({
 			...prev,
-			[col]: { checked: result.checked, msg: result.msg }
+			[col]: result
 		}));
 	};
 
-	const usernameCheck = async ({ val }) => {
+	const userNameCheck = async ({ val }) => {
 		let checked = true;
 		let msg = "";
 
@@ -193,25 +188,35 @@ const Join = ({ hideBtn }) => {
 			...prev,
 			[col]: val
 		}));
+
+		if (col === "Checkbox") {
+			setInputStatus(prev => ({
+				...prev,
+				Checkbox: {
+					checked: val,
+					msg: val === false ? i18n.lbl_Check18TCTooltip : ""
+				}
+			}));
+		}
 	};
 
 	const clickInfo = ({ col, info }) => {
 		const _info = inputStatus[col].msg === "" ? i18n[info] : "";
 		setInputStatus(prev => ({
 			...prev,
-			[col]: {
-				checked: null,
-				msg: _info
-			}
+			[col]: { checked: null, msg: _info }
 		}));
 	};
 
 	const clickSubmit = async () => {
 		let checked = null;
-		const UserNameCheck = await usernameCheck({ val: userValue.UserName });
+		const UserNameCheck = await userNameCheck({ val: userValue.UserName });
 		const PasswordCheck = passwordCheck({ val: userValue.Password, i18n });
 
-		checked = UserNameCheck.checked && PasswordCheck.checked;
+		checked =
+			UserNameCheck.checked &&
+			PasswordCheck.checked &&
+			userValue.Checkbox;
 
 		if (checked) {
 			const regData = {
@@ -292,6 +297,11 @@ const Join = ({ hideBtn }) => {
 									msg: message
 								}
 							}));
+						} else if (errorCode === -9) {
+							setInputStatus(prev => ({
+								...prev,
+								AffiliateId: { checked: false, msg: message }
+							}));
 						}
 					}
 				},
@@ -308,13 +318,14 @@ const Join = ({ hideBtn }) => {
 		} else {
 			setInputStatus(prev => ({
 				...prev,
-				UserName: {
-					checked: UserNameCheck.checked,
-					msg: UserNameCheck.message
-				},
-				Password: {
-					checked: PasswordCheck.checked,
-					msg: i18n[PasswordCheck.message]
+				UserName: UserNameCheck,
+				Password: PasswordCheck,
+				Checkbox: {
+					checked: userValue.Checkbox,
+					msg:
+						userValue.Checkbox === false
+							? i18n.lbl_Check18TCTooltip
+							: ""
 				}
 			}));
 		}
@@ -373,8 +384,8 @@ const Join = ({ hideBtn }) => {
 				<Inputbox
 					icon="icon icon-member"
 					placeholder={i18n.lbl_Username}
-					onBlur={checkValue.bind(null, { col: "UserName" })}
-					onChange={EditField.bind(null, { col: "UserName" })}
+					onBlur={checkValue.bind(this, { col: "UserName" })}
+					onChange={EditField.bind(this, { col: "UserName" })}
 					btnStatus={inputStatus.UserName.checked}
 					tip={inputStatus.UserName.msg}
 					value={userValue.UserName}
@@ -385,8 +396,8 @@ const Join = ({ hideBtn }) => {
 				/>
 				<InputboxPWD
 					placeholder={i18n.lbl_Password}
-					onBlur={checkValue.bind(null, { col: "Password" })}
-					onChange={EditField.bind(null, { col: "Password" })}
+					onBlur={checkValue.bind(this, { col: "Password" })}
+					onChange={EditField.bind(this, { col: "Password" })}
 					btnStatus={inputStatus.Password.checked}
 					tip={inputStatus.Password.msg}
 					value={userValue.Password}
@@ -415,8 +426,8 @@ const Join = ({ hideBtn }) => {
 					icon="icon icon-promotion"
 					placeholder={i18n.lbl_JoinPromoCode}
 					value={userValue.SpecialBonusCode}
-					onChange={EditField.bind(null, { col: "SpecialBonusCode" })}
-					onBlur={checkValue.bind(null, { col: "SpecialBonusCode" })}
+					onChange={EditField.bind(this, { col: "SpecialBonusCode" })}
+					onBlur={checkValue.bind(this, { col: "SpecialBonusCode" })}
 				/> */}
 				<Inputbox
 					icon="icon icon-affiliate"

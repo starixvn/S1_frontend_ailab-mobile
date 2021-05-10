@@ -16,33 +16,26 @@ const Inputbox = ({
 	};
 
 	return (
-		<>
-			<div className="inputBox">
-				<div className="inputBoxNew">
-					<i className="icon icon-key" />
-					<input
-						type={showingPsw ? "text" : "password"}
-						placeholder={placeholder}
-						onBlur={onBlur}
-						onChange={onChange}
-						value={value}
-					/>
-					<div className="iconModule">
-						<i
-							className={`icon ${
-								showingPsw ? "icon-eye" : "icon-eye-blocked"
-							}`}
-							onClick={showPswHandler}
-						/>
-						<IptStatus
-							btnStatus={btnStatus}
-							clickInfo={clickInfo}
-						/>
-					</div>
-				</div>
+		<div className="inputBox">
+			<i className="icon icon-key" />
+			<input
+				type={showingPsw ? "text" : "password"}
+				placeholder={placeholder}
+				onBlur={onBlur}
+				onChange={onChange}
+				value={value}
+			/>
+			<div className="icon-module">
+				<i
+					className={`icon ${
+						showingPsw ? "icon-eye" : "icon-eye-blocked"
+					}`}
+					onClick={showPswHandler}
+				/>
+				<IptStatus btnStatus={btnStatus} clickInfo={clickInfo} />
 			</div>
 			{tip ? <div className="tip active">{tip}</div> : null}
-		</>
+		</div>
 	);
 };
 

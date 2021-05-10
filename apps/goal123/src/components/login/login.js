@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { useMatch, Link, useNavigate } from "@reach/router";
 import PropTypes from "prop-types";
-import Inputbox from "../common/inputbox";
-import InputboxPWD from "../common/inputbox.password";
+import Inputbox from "../common/inputbox.info";
+import InputboxPWD from "../common/inputbox.password.info";
 import { LOGIN } from "../../service/auth";
 import {
 	userInfoContext,
@@ -13,30 +13,10 @@ import {
 import path from "../../path";
 import Logo from "../common/logo";
 
-const initState = {
-	UserName: "",
-	Password: "",
-	Checkbox: false
-};
-
-const initWarningState = {
-	UserName: {
-		status: false,
-		msg: ""
-	},
-	Password: {
-		status: false,
-		msg: ""
-	},
-	Checkbox: {
-		status: false,
-		msg: ""
-	}
-};
-
-const warningLangKey = {
-	UserName: "msg_UsernameReq",
-	Password: "msg_PasswordReq"
+const initValue = { UserName: "", Password: "" };
+const initStatus = {
+	UserName: { checked: null, msg: "" },
+	Password: { checked: null, msg: "" }
 };
 
 const LoginPage = ({ ButtonTitle, hideBtn }) => {
@@ -44,9 +24,8 @@ const LoginPage = ({ ButtonTitle, hideBtn }) => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { nav, setNav } = useContext(navContext);
-	const [userValueState, setUserValueState] = useState(initState);
-	const [pswState, setPswState] = useState(false);
-	const [warningState, setWarningState] = useState(initWarningState);
+	const [userValue, setUserValue] = useState(initValue);
+	const [inputStatus, setInputStatus] = useState(initStatus);
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -56,71 +35,56 @@ const LoginPage = ({ ButtonTitle, hideBtn }) => {
 		};
 	});
 
-	const checkValueHandler = (colName, e) => {
+	const checkValue = ({ col }, e) => {
 		const val = e.target.value;
-		setWarningState(prevState => {
-			return {
-				...prevState,
-				[colName]: {
-					...prevState[colName],
-					status: val === "",
-					msg: i18n[warningLangKey[colName]]
-				}
-			};
-		});
+		let msg = "";
+		if (!val) {
+			msg =
+				col === "UserName"
+					? i18n.msg_UsernameReq
+					: i18n.msg_PasswordReq;
+		}
+
+		setInputStatus(prev => ({
+			...prev,
+			[col]: { checked: val !== "", msg }
+		}));
 	};
 
-	const showPswHandler = () => {
-		setPswState(!pswState);
+	const clickInfo = ({ col, info }) => {
+		const _info = inputStatus[col].msg === "" ? i18n[info] : "";
+		setInputStatus(prev => ({
+			...prev,
+			[col]: { checked: null, msg: _info }
+		}));
 	};
 
 	const handleLogin = () => {
-		const checked =
-			userValueState.UserName !== "" && userValueState.Password !== "";
-
-		setWarningState(prevState => {
-			return {
-				...prevState,
-				UserName: {
-					...prevState.UserName,
-					status: userValueState.UserName === "",
-					msg: i18n[warningLangKey.UserName]
-				},
-				Password: {
-					...prevState.Password,
-					status: userValueState.Password === "",
-					msg: i18n[warningLangKey.Password]
-				}
-			};
-		});
+		const checked = userValue.UserName !== "" && userValue.Password !== "";
 
 		if (checked) {
 			const CallBackLogin = (errorCode, message, isLogin, userData) => {
-				if (errorCode === 0) {
-					if (isMountedRef.current) {
+				if (isMountedRef.current) {
+					if (errorCode === 0) {
 						setUserInfo(() => ({
 							...userData,
 							isLogin
 						}));
 						setNav(null);
 						navigate(`/${path.deposit.root}`);
-					}
-				} else if (
-					errorCode === 1101 ||
-					errorCode === 1102 ||
-					errorCode === 9000
-				) {
-					if (isMountedRef.current) {
-						setWarningState(prevState => ({
-							...prevState,
-							UserName: { status: true, msg: message }
+					} else if (
+						errorCode === 1101 ||
+						errorCode === 1102 ||
+						errorCode === 9000
+					) {
+						setInputStatus(prev => ({
+							...prev,
+							UserName: { checked: false, msg: message }
 						}));
-					}
-				} else if (errorCode === 1001) {
-					if (isMountedRef.current) {
-						setWarningState(prevState => ({
-							...prevState,
-							Password: { status: true, msg: message }
+					} else if (errorCode === 1001 || errorCode === 1003) {
+						setInputStatus(prev => ({
+							...prev,
+							Password: { checked: false, msg: message }
 						}));
 					}
 				}
@@ -128,19 +92,32 @@ const LoginPage = ({ ButtonTitle, hideBtn }) => {
 
 			LOGIN(
 				{
-					userName: userValueState.UserName,
-					password: userValueState.Password,
+					userName: userValue.UserName,
+					password: userValue.Password,
 					langId: userInfo.langId
 				},
 				CallBackLogin
 			);
+		} else {
+			const userNameCheck = userValue.UserName !== "";
+			const passwordCheck = userValue.Password !== "";
+			setInputStatus({
+				UserName: {
+					checked: userNameCheck,
+					msg: userNameCheck ? "" : i18n.msg_UsernameReq
+				},
+				Password: {
+					checked: passwordCheck,
+					msg: passwordCheck ? "" : i18n.msg_PasswordReq
+				}
+			});
 		}
 	};
 
 	const handleloginPanel = (show, reset, showBylink) => {
 		if (reset) {
-			setUserValueState(initState);
-			setWarningState(initWarningState);
+			setUserValue(initValue);
+			setInputStatus(initStatus);
 		}
 
 		if (showBylink) {
@@ -156,11 +133,11 @@ const LoginPage = ({ ButtonTitle, hideBtn }) => {
 	const showBylink = useMatch(path.login.root) !== null;
 	const showPanel = showBylink || nav === defNavPanel.login;
 
-	const EditField = (colName, e) => {
-		const { value } = e.target;
-		setUserValueState(prevState => ({
-			...prevState,
-			[colName]: value
+	const EditField = ({ col }, e) => {
+		const val = e.target.value;
+		setUserValue(prev => ({
+			...prev,
+			[col]: val
 		}));
 	};
 
@@ -189,34 +166,33 @@ const LoginPage = ({ ButtonTitle, hideBtn }) => {
 					<span />
 					<span />
 				</div>
-
 				<Logo />
 				<div className="title">{i18n.lbl_Login}</div>
-
 				<Inputbox
-					icon="icon-member"
-					inputType="text"
+					icon="icon icon-member"
 					placeholder={i18n.lbl_Username}
-					onBlur={checkValueHandler.bind(null, "UserName")}
-					onChange={EditField.bind(null, "UserName")}
-					ClassName="JoinRule"
-					Warning={warningState.UserName}
-					value={userValueState.UserName}
+					onBlur={checkValue.bind(this, { col: "UserName" })}
+					onChange={EditField.bind(this, { col: "UserName" })}
+					btnStatus={inputStatus.UserName.checked}
+					tip={inputStatus.UserName.msg}
+					value={userValue.UserName}
+					clickInfo={clickInfo.bind(this, {
+						col: "UserName",
+						info: "msg_UsernameReq"
+					})}
 				/>
-
 				<InputboxPWD
-					icon="icon-key"
-					inputType={`${!pswState ? "password" : "text"}`}
 					placeholder={i18n.lbl_Password}
-					onBlur={checkValueHandler.bind(null, "Password")}
-					onChange={EditField.bind(null, "Password")}
-					showPsw={pswState}
-					showPswHandler={showPswHandler}
-					ClassName="JoinRule"
-					Warning={warningState.Password}
-					value={userValueState.Password}
+					onBlur={checkValue.bind(this, { col: "Password" })}
+					onChange={EditField.bind(this, { col: "Password" })}
+					btnStatus={inputStatus.Password.checked}
+					tip={inputStatus.Password.msg}
+					value={userValue.Password}
+					clickInfo={clickInfo.bind(this, {
+						col: "Password",
+						info: "msg_PasswordReq"
+					})}
 				/>
-
 				<div className="Terms">
 					<Link
 						to={path.forgetPassword.root}
@@ -229,7 +205,6 @@ const LoginPage = ({ ButtonTitle, hideBtn }) => {
 						{i18n.lbl_ForgetPassword}?
 					</Link>
 				</div>
-
 				<button onClick={handleLogin}>{i18n.lbl_Login}</button>
 			</div>
 		</>
