@@ -4148,7 +4148,7 @@ span.important {
 }
 
 .promotions.Expired .promodule {
-  background: #212121;
+  background: #b2b2b2;
 }
 
 .promotions.Expired .promodule img, .promotions.Expired .promodule div:not(.btn-group):not(.claimed) {
@@ -4168,14 +4168,15 @@ span.important {
   left: 50%;
   -webkit-transform: translateX(-50%) translateY(-50%) rotate(-20deg);
           transform: translateX(-50%) translateY(-50%) rotate(-20deg);
-  background: #666;
-  border-radius: 20px;
+  background: #42424261;
+  border-radius: 8px;
+  border: 1px solid #fff;
   font-weight: bold;
-  padding: 1vw 3vw;
-  font-size: 5vw;
+  padding: 2.5vw 4vw;
+  font-size: 6vw;
   font-style: italic;
   z-index: 1;
-  color: #333;
+  color: #fff;
 }
 
 .promotions.Expired .expiredIcon:before {
@@ -4184,8 +4185,7 @@ span.important {
 
 .promotions img {
   width: 100%;
-  -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
-          box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
 }
 
 .promotions .filterBtn {
@@ -7397,5 +7397,72 @@ span.important {
   100% {
     background: url(../img/jpotbg.png) no-repeat center/cover;
   }
+}
+
+.swithModule {
+  text-align: center;
+  color: #5574A7 !important;
+  font-size: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.swithModule .switchBtn {
+  width: 60px;
+  height: 28px;
+  border: 1px solid #f3f3f3;
+  background: #666;
+  border-radius: 28px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+  padding: 5px;
+  margin: 5px;
+}
+
+.swithModule .switchBtn.active {
+  background: #42AC5E;
+  border-color: #42AC5E;
+}
+
+.swithModule .switchBtn.active > span:nth-child(2) {
+  opacity: 0;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+.swithModule .switchBtn > span {
+  color: white;
+  font-size: 12px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.swithModule .switchBtn > div {
+  position: absolute;
+  background: white;
+  width: 26px;
+  height: 26px;
+  border-radius: 26px;
+  left: 0;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+.swithModule .switchBtn > div.active {
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  left: calc(100% - 26px);
 }
 /*# sourceMappingURL=style.css.map */

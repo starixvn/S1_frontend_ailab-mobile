@@ -90,15 +90,16 @@ const Panel = () => {
 
 	return (
 		<>
-			<label className="checkbox autoTransfer">
-				<input type="checkbox" onClick={setWalletTransferStatus} />
-				<i
-					className={`icon icon-checkbox${
-						autoTransfer ? "-checked" : ""
-					}`}
-				/>
-				<span>{i18n.lbl_AutoTransfer}</span>
-			</label>
+			<div className="swithModule">
+				{i18n.lbl_AutoTransfer}
+				<button
+					className={`switchBtn${autoTransfer ? " active" : ""}`}
+					onClick={setWalletTransferStatus}>
+					<span>{autoTransfer ? "ON" : ""}</span>
+					<span>{autoTransfer ? "" : "OFF"}</span>
+					<div className={autoTransfer ? "active" : ""} />
+				</button>
+			</div>
 			{arr}
 			<div className="text-org title">{i18n.lbl_From}</div>
 			<Dropdown
