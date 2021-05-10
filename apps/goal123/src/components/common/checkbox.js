@@ -2,14 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Checkbox = props => {
-	const { className, id, Checked, checkboxHandler, children } = props;
+	const { className, id, Checked, onChange, children } = props;
 	return (
 		<div className={className}>
 			<input
 				type="checkbox"
 				id={id}
 				checked={Checked}
-				onChange={checkboxHandler}
+				onChange={onChange}
 			/>
 			<label htmlFor={id}>
 				<div />
@@ -28,7 +28,7 @@ Checkbox.defaultProps = {
 Checkbox.propTypes = {
 	className: PropTypes.string,
 	id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-	checkboxHandler: PropTypes.func.isRequired,
+	onChange: PropTypes.func.isRequired,
 	children: PropTypes.node.isRequired,
 	Checked: PropTypes.bool
 };

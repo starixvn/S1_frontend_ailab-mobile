@@ -117,10 +117,6 @@ const Join = () => {
 						const currencyArr = currencyNum.map(id => {
 							return { id, displayKey: `Currency_${id}` };
 						});
-						setUserValue(prev => ({
-							...prev,
-							Currency: currencyArr[0]
-						}));
 						setSiteCurrencyList(() => currencyArr);
 					} else {
 						setPopBox({
@@ -436,7 +432,6 @@ const Join = () => {
 				<div className="title">{i18n.lbl_JoinNow}</div>
 				<Inputbox
 					icon="icon icon-member"
-					inputType="text"
 					placeholder={i18n.lbl_Username}
 					onBlur={checkValue.bind(this, { col: "UserName" })}
 					onChange={EditField.bind(this, { col: "UserName" })}
@@ -467,7 +462,6 @@ const Join = () => {
 						selectedIdx={userValue.Currency}
 						options={siteCurrencyList}
 						onSelectItem={selectCurrency}
-						value={userValue.Currency}
 						i18n={i18n}
 					/>
 					<Tips
