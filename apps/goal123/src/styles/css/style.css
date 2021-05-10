@@ -667,6 +667,17 @@ main #Marquee .marquee-box {
   display: flex;
 }
 
+main #Marquee .marquee-box .img {
+  position: absolute;
+  top: -9px;
+  left: 0;
+  z-index: 1;
+}
+
+main #Marquee .marquee-box .text {
+  position: absolute;
+}
+
 main #Marquee > div.open {
   width: calc(100% - 5vw);
   -webkit-animation-name: marquee;

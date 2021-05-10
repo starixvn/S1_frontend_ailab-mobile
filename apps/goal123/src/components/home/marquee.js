@@ -198,18 +198,15 @@ class Marquee extends Component {
 				</button>
 			);
 		});
-
 		const style = this.state.pos === null ? {} : { left: this.state.pos };
 		return this.state.redirectPath === null ? (
 			<div id="Marquee" className="MarqueeNew">
 				<div ref={this.content} className="marquee-box">
-					<div>
+					<div className="img">
 						<img src={horn} alt="" />
 					</div>
 					<div
-						behavior=""
-						direction=""
-						className="marquee-run"
+						className="marquee-run text"
 						ref={this.marquee}
 						style={style}>
 						{rows}

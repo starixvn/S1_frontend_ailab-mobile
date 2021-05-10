@@ -131,7 +131,7 @@ export const defCol = {
 const gameList = [
 	{
 		category: "hotGame",
-		translateKey: "lbl_HotGame",
+		translateKey: "lbl_Hot",
 		img: Menu_HotGame,
 		items: [
 			{
@@ -383,7 +383,7 @@ const gameList = [
 	},
 	{
 		category: "livecasino",
-		translateKey: "lbl_LiveCasino",
+		translateKey: "lbl_Live",
 		img: Menu_LiveCasino,
 		items: [
 			{
