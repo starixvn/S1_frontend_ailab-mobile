@@ -78,7 +78,7 @@ const Panel = () => {
 		if (!checked) {
 			setWarning({
 				status: true,
-				msg: i18n.lbl_AmountTooltip
+				msg: i18n.lbl_AmountTooltip?.replace("{{0}}", 1)
 			});
 		} else {
 			setWarning({

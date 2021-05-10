@@ -1,9 +1,11 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
+import { useNavigate } from "@reach/router";
 import {
 	i18nContext,
 	popBoxContext,
 	msgCountContext,
-	loadingContext
+	loadingContext,
+	userInfoContext
 } from "Context";
 import ReloadSpin from "../common/reloadSpin";
 import GoTopBtn from "../common/goTopBtn";
@@ -12,10 +14,12 @@ import Detail from "./personalMsg.detail";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 
 const Panel = () => {
+	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setMsgCount } = useContext(msgCountContext);
 	const { setLoading } = useContext(loadingContext);
+	const { userInfo } = useContext(userInfoContext);
 	const [msgList, setMsgList] = useState([]);
 	const [msgContent, setMsgContent] = useState([]);
 	const [openContentState, setOpenContentState] = useState(null);
@@ -45,8 +49,12 @@ const Panel = () => {
 	});
 
 	useEffect(() => {
-		GetMsgList({ loading: true });
-	}, []);
+		if (userInfo.isLogin) {
+			GetMsgList({ loading: true });
+		} else {
+			navigate(`/${userInfo.langId}`);
+		}
+	}, [userInfo.isLogin]);
 
 	const GetMsgList = ({ loading }) => {
 		if (!processing) {

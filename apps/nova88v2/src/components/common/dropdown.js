@@ -57,7 +57,9 @@ export class DropdownBox extends Component {
 		return (
 			<>
 				<div
-					className="infoModule"
+					className={`infoModule${
+						this.props.className ? ` ${this.props.className}` : ""
+					}`}
 					data-testid={this.props.testAttr}
 					ref={this.wrapper}>
 					<div
@@ -100,6 +102,7 @@ export class DropdownBox extends Component {
 							{arr}
 						</div>
 					</div>
+					{this.props.rightBtn ?? null}
 				</div>
 				<div className={`tip${this.props.warningMsg ? " active" : ""}`}>
 					{this.props.warningMsg}

@@ -47,7 +47,7 @@ const Nav = ({
 					key={`promo-nav-${n.value}`}
 					className={filterType === n.value ? "active" : ""}
 					onClick={onClickFilter.bind(this, n.value)}>
-					{i18n?.[n.displayKey]}
+					{i18n?.[n.displayKey]?.toUpperCase()}
 				</button>
 			);
 		});

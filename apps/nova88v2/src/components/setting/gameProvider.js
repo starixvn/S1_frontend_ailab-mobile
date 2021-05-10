@@ -100,6 +100,11 @@ const defPlatfrom = [
 		...defGameInfo.oneGame,
 		imgName: "1g"
 	}
+	// {
+	// 	...defGameInfo.Casino_PT,
+	// 	path: path.casino.root,
+	// 	imgName: "pt"
+	// }
 ];
 
 const GameProvider = ({ userInfo, i18n }) => {
@@ -186,8 +191,7 @@ const IndexPage = () => {
 
 	const link = (
 		<Link to={path.setting.root}>
-			<i className="icon icon icon-icon32px_1" />
-			{i18n.lbl_Back}
+			<i className="icon icon-keyboard_arrow_left" />
 		</Link>
 	);
 

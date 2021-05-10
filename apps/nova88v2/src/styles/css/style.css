@@ -7398,6 +7398,7 @@ span.important {
     background: url(../img/jpotbg.png) no-repeat center/cover;
   }
 }
+<<<<<<< HEAD
 
 .swithModule {
   text-align: center;
@@ -7465,4 +7466,6 @@ span.important {
   transition: 0.7s;
   left: calc(100% - 26px);
 }
+=======
+>>>>>>> DEV
 /*# sourceMappingURL=style.css.map */

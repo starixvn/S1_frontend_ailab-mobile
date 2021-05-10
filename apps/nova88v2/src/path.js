@@ -143,5 +143,8 @@ export default {
 	},
 	streaming: {
 		root: "streaming"
+	},
+	myAccount: {
+		root: "myAccount"
 	}
 };

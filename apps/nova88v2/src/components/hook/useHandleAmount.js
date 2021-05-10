@@ -6,7 +6,8 @@ export const useHandleAmount = ({
 	minAmount,
 	maxAmount,
 	i18n,
-	digits = 2
+	digits = 2,
+	lastAmount
 }) => {
 	const _isConvert = isConvert(currencyId);
 	const [amount, setAmount] = useState("");
@@ -15,6 +16,16 @@ export const useHandleAmount = ({
 	useEffect(() => {
 		setAmount("");
 		setWarning("");
+
+		if (lastAmount) {
+			const _amount = _isConvert
+				? Number(lastAmount) / 1000
+				: Number(lastAmount);
+			const result = VaildAmount({ _amount });
+			if (result) {
+				setAmount(_amount);
+			}
+		}
 	}, [minAmount, maxAmount]);
 
 	const SelectAmount = value => {
@@ -31,14 +42,14 @@ export const useHandleAmount = ({
 	};
 
 	const VaildAmount = ({ _amount, displayWarning = true }) => {
-		const result = checkAmount(
-			_amount,
+		const result = checkAmount({
+			amount: _amount,
 			minAmount,
 			maxAmount,
 			_isConvert,
 			i18n,
 			digits
-		);
+		});
 		if (displayWarning) {
 			if (result.status !== 0) {
 				setWarning(result);

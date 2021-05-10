@@ -47,7 +47,8 @@ Radio.defaultProps = {
 	className: "",
 	minAmount: null,
 	maxAmount: null,
-	displayName: ""
+	displayName: "",
+	_isConvert: false
 };
 
 Radio.propTypes = {
@@ -62,7 +63,7 @@ Radio.propTypes = {
 	minAmount: PropTypes.number,
 	maxAmount: PropTypes.number,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	_isConvert: PropTypes.bool.isRequired
+	_isConvert: PropTypes.bool
 };
 
 const BankInfo = ({ displayName, i18n, minAmount, maxAmount, _isConvert }) => {

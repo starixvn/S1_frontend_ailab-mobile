@@ -103,6 +103,13 @@ export const defGameInfo = {
 	LIVEcasinoEB: { gameId: 18, tpId: 18 },
 	LIVEcasinoMW: { gameId: 105, tpId: 5 },
 	Casino_JOKER: { tpId: 9 },
+	Casino_YGG: { tpId: 8 },
+	Casino_GPI: { tpId: 6 },
+	Casino_CQ9: { tpId: 16 },
+	Casino_PT: { tpId: 27, gameId: "0" },
+	Fishing: { gameId: 10, tpId: 7 },
+	FishingSG: { gameId: "F-SF01", tpId: 10 },
+	FishingSGW: { gameId: "F-SF02", tpId: 10 },
 	Indo4d: { gameId: 223, tpId: 1 },
 	NumberGame: { gameId: 161, tpId: 1 }
 };
@@ -116,7 +123,7 @@ const eventTime = {
 	ranking: { startDate: "2021/01/01 12:00:00" },
 	new_vip: { startDate: "2021/03/11 11:00:00" },
 	new_LiveCasino_N2Live: { startDate: "2021/03/12 11:00:00" },
-	casino_pt: { endDate: "2021/05/15 11:00:00" }
+	casino_pt: { endDate: "2021/06/05 11:00:00" }
 };
 
 export const defCol = {

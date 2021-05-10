@@ -41,12 +41,12 @@ import casino_ICG from "../styles/img/casino_ICG.jpg";
 import fish_DBF from "../styles/img/fish_DBF.jpg";
 import fish_FOS from "../styles/img/fish_FOS.jpg";
 import fish_TAP from "../styles/img/fish_TAP.jpg";
-import fish_TOS from "../styles/img/fish_TOS.jpg";
+// import fish_TOS from "../styles/img/fish_TOS.jpg";
 import fishing_CQ9_AB3 from "../styles/img/fish_paradise.jpg";
-import fishing_CQ9_AT05 from "../styles/img/fish_luckyfishing.jpg";
+// import fishing_CQ9_AT05 from "../styles/img/fish_luckyfishing.jpg";
 import fishing_CQ9_AT01 from "../styles/img/fish_oneshotfishing.jpg";
-import fishing_CQ9_AT06 from "../styles/img/fish_watermarginfishing.jpg";
-import fishing_CQ9_AT04 from "../styles/img/fish_thunderfighter.jpg";
+// import fishing_CQ9_AT06 from "../styles/img/fish_watermarginfishing.jpg";
+// import fishing_CQ9_AT04 from "../styles/img/fish_thunderfighter.jpg";
 
 import { defPopBoxType } from "../components/common/popbox";
 import { isEventPeriod } from "../components/common/common";
@@ -70,7 +70,8 @@ const eventTime = {
 	new_poker: { endDate: "2021/03/03 11:00:00" },
 	new_vip: { startDate: "2021/02/05 11:00:00" },
 	new_CQ9_fishing: { endDate: "2021/03/05 11:00:00" },
-	new_LiveCasino_N2Live: { startDate: "2021/03/02 11:00:00" }
+	new_LiveCasino_N2Live: { startDate: "2021/03/02 11:00:00" },
+	new_PT: { endDate: "2021/04/15 11:00:00" }
 };
 
 const gameList = ({ langId }) => [
@@ -116,6 +117,11 @@ const gameList = ({ langId }) => [
 		translateKey: "lbl_LiveCasino",
 		comingSoonImg: Coming_soon,
 		items: [
+			// {
+			// 	...defGameInfo.Casino_PT,
+			// 	img: LIVEcasino_WM,
+			// 	useGotoGame: true
+			// },
 			{
 				...defGameInfo.LIVEcasinoN2,
 				img: LIVEcasino_N2,
@@ -180,6 +186,17 @@ const gameList = ({ langId }) => [
 		translateKey: "lbl_Casino",
 		comingSoonImg: Coming_soon,
 		items: [
+			{
+				...defGameInfo.Casino_PT,
+				parameter: { tpId: defGameInfo.Casino_PT.tpId },
+				img: casino_ICG,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_PT)
+					}
+				]
+			},
 			{
 				tpId: 5,
 				parameter: { tpId: 5 },
@@ -493,6 +510,7 @@ export const defGameInfo = {
 	Casino_YGG: { tpId: 8 },
 	Casino_GPI: { tpId: 6 },
 	Casino_CQ9: { tpId: 16 },
+	Casino_PT: { tpId: 27, gameId: "0" },
 	// Casino_918Kiss: { tpId: 21, needLogin: true },
 	Fishing: { gameId: 10, tpId: 7 },
 	FishingSG: { gameId: "F-SF01", tpId: 10 },

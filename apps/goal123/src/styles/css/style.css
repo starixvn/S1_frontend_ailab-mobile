@@ -215,6 +215,7 @@ header > div .Login {
           justify-content: center;
   pointer-events: none;
   overflow-y: scroll;
+  white-space: normal;
 }
 
 header > div .Join.open,
@@ -1966,6 +1967,33 @@ main.statementPage {
   white-space: nowrap;
   color: #fff;
   border-radius: 0 0 5px 5px;
+}
+
+.mainNew .jackpot {
+  padding: 0 2vw;
+  position: relative;
+}
+
+.mainNew .jackpot .title {
+  background: url(../img/titlebg.png) no-repeat center;
+  background-size: 100%;
+  width: 30%;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+.mainNew .jackpot img {
+  width: 100%;
+}
+
+.mainNew .jackpot .number {
+  position: absolute;
+  top: 60%;
+  left: 47%;
+  font-size: 3.5vw;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  color: white;
 }
 
 .mainNew .vipRanking {
