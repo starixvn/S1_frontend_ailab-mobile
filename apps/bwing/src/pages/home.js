@@ -15,7 +15,6 @@ import GamePanel from "../components/home/gamePanel";
 import LinksPanel from "../components/home/links";
 import MidBanner from "../components/home/banner";
 import EventSwipper from "../components/home/eventSwipper";
-import jackpot from "../styles/img/jackpot.png";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -23,22 +22,12 @@ const IndexPage = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const [redirectPath, setRedirectPath] = useState(null);
 	const { setRoot } = useContext(rootContext);
-	const ticker2 = new Ticker({
-		info: 2,
-		casino: "hotspin88am",
-		currency: "vnd"
-	});
 
 	useEffect(() => {
 		if (redirectPath !== null) {
 			setRedirectPath(null);
 		}
 	}, [redirectPath]);
-
-	useEffect(() => {
-		ticker2.attachToTextBox("tick");
-		ticker2.tick();
-	}, []);
 
 	useEffect(() => {
 		setRoot(true);
@@ -135,11 +124,6 @@ const IndexPage = () => {
 		<>
 			<Slider />
 			<Marquee />
-			<div className="bannerS">
-				<img src={jackpot} alt="" />
-				<p>VND</p>
-				<p id="tick" />
-			</div>
 			<EventSwipper />
 			<MidBanner langId={userInfo.langId} />
 			<GamePanel i18n={i18n} userInfo={userInfo} />
