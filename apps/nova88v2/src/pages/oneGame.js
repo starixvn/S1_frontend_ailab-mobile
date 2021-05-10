@@ -1,13 +1,12 @@
 import React, { useContext } from "react";
 import { Link } from "../route/link";
 import OneGame from "../components/oneGame/oneGame";
-import { userInfoContext, i18nContext } from "../components/common/context";
+import { userInfoContext } from "../components/common/context";
 import useBeforeLoginCheck from "../components/hook/useBeforeLoginCheck";
 import Header from "../components/header/header";
 import Footer from "../components/common/footer";
 
 const IndexPage = () => {
-	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { canSee } = useBeforeLoginCheck({
 		isLogin: userInfo.isLogin,
@@ -15,8 +14,7 @@ const IndexPage = () => {
 	});
 	const link = (
 		<Link to="/">
-			<i className="icon icon icon-icon32px_1" />
-			{i18n.lbl_Back}
+			<i className="icon icon-keyboard_arrow_left" />
 		</Link>
 	);
 

@@ -9,12 +9,14 @@ import {
 	popBoxContext
 } from "../common/context";
 import PageVerify from "./deposit.pageVerify";
-import MobilePay from "./deposit.all.mobilePay";
-import OnlineBanking from "./deposit.all.onlineBanking";
-import LocalBank from "./deposit.all.localBank";
+import MobilePay from "./deposit.mobilePay";
+import OnlineBanking from "./deposit.onlineBanking";
+import LocalBank from "./deposit.localBank";
 import api from "../../service/api";
 import RecentDatas from "./deposit.recentDatas";
 import { number_format, isConvert } from "../common/common";
+import ImportantNote from "./importantNote";
+import UserPaymentSwitch, { useGetUserPaymentData } from "./userPaymentData";
 
 const defPayType = {
 	onlineBank: "onlineBank",
@@ -67,16 +69,22 @@ const Tab = ({ i18n, selected, HandleSelect, paymentList }) => {
 
 const Panel = () => {
 	const navigate = useNavigate();
-	const { selected, HandleSelect } = useHandleSelect();
 	const { i18n } = useContext(i18nContext);
 	const { setLoading } = useContext(loadingContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setbankSlipPopBox } = useContext(bankSlipPopBoxContext);
 	const { setPopBox } = useContext(popBoxContext);
-
+	const { selected, HandleSelect } = useHandleSelect();
+	const {
+		userPaymentData,
+		handleUserPaymentData,
+		userPaymentSwitch,
+		handleUserPaymentSwitch
+	} = useGetUserPaymentData({
+		userInfo
+	});
 	const [paymentList, setPaymentList] = useState({});
 	const [recentDatas, setRecentDatas] = useState([]);
-
 	const [pageVerify, setPageVerify] = useState(true);
 
 	PageVerify(userInfo, i18n, setPopBox, navigate, setPageVerify, false);
@@ -90,11 +98,17 @@ const Panel = () => {
 		};
 	});
 
+	const _userPaymentData =
+		userPaymentData?.payType === selected ? userPaymentData : {};
+
 	let content = (
 		<OnlineBanking
 			payType={selected}
 			creditTimeKey={defPayment[defPayType.onlineBank].creditTimeKey}
 			paymentList={paymentList[defPayType.onlineBank] ?? []}
+			userPaymentData={_userPaymentData}
+			handleUserPaymentData={handleUserPaymentData}
+			userPaymentSwitch={userPaymentSwitch}
 		/>
 	);
 
@@ -104,6 +118,9 @@ const Panel = () => {
 				payType={selected}
 				creditTimeKey={defPayment[defPayType.localBank].creditTimeKey}
 				paymentList={paymentList[defPayType.localBank] ?? []}
+				userPaymentData={_userPaymentData}
+				handleUserPaymentData={handleUserPaymentData}
+				userPaymentSwitch={userPaymentSwitch}
 			/>
 		);
 	} else if (selected === defPayType.mobilePay) {
@@ -112,15 +129,19 @@ const Panel = () => {
 				payType={defPayType.mobilePay}
 				creditTimeKey={defPayment[defPayType.mobilePay].creditTimeKey}
 				paymentList={paymentList[defPayType.mobilePay] ?? []}
+				userPaymentData={_userPaymentData}
+				handleUserPaymentData={handleUserPaymentData}
+				userPaymentSwitch={userPaymentSwitch}
 			/>
 		);
 	}
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
+			let defaultSelect = userPaymentData?.payType ?? "";
+
 			const GetAllPayment = async () => {
 				setLoading(true);
-				let defaultSelect = "";
 
 				const payments = {
 					[defPayType.onlineBank]: [],
@@ -150,7 +171,7 @@ const Panel = () => {
 				} catch (error) {}
 
 				try {
-					const res = await api.payment.GetBankInfoOffList();
+					const res = await api.payment.GetBankInfoOffListStatus();
 					payments[defPayType.localBank] = getDataListResult(res);
 
 					defaultSelect = setDefaultSelect(
@@ -174,7 +195,7 @@ const Panel = () => {
 				if (isMountedRef.current) {
 					setLoading(false);
 					setPaymentList(payments);
-					HandleSelect(defaultSelect);
+					HandleSelect(userPaymentData?.payType ?? defaultSelect);
 				}
 			};
 
@@ -186,7 +207,7 @@ const Panel = () => {
 				}
 			});
 		}
-	}, [userInfo.isLogin]);
+	}, [userInfo.isLogin, userPaymentData.payType]);
 
 	const _isConvert = isConvert(userInfo.currencyId);
 	const SubmitProof = (
@@ -273,9 +294,13 @@ const Panel = () => {
 			});
 		}
 	};
-
 	return (
 		<>
+			<UserPaymentSwitch
+				i18n={i18n}
+				userPaymentSwitch={userPaymentSwitch}
+				handleUserPaymentSwitch={handleUserPaymentSwitch}
+			/>
 			<Tab
 				i18n={i18n}
 				selected={selected}
@@ -288,6 +313,7 @@ const Panel = () => {
 				SubmitProof={SubmitProof}
 				ClickCancel={ClickCancel}
 			/>
+			<ImportantNote i18n={i18n} langId={userInfo.langId} />
 		</>
 	);
 };

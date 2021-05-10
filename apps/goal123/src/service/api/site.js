@@ -1,4 +1,4 @@
-import { siteRequest } from "./base";
+import { siteRequest, defDeviceType } from "./base";
 
 export const defBannerType = {
 	Promotions: 1,
@@ -32,7 +32,10 @@ export const api_CheckSignIn = () => siteRequest.post(`/CheckSignIn/`);
 
 export const api_GetGamelist = () => siteRequest.post(`/GetGamelist`);
 
-export const api_Site_GetGamelistV2 = () => siteRequest.post(`/GetGamelistV2`);
+export const api_Site_GetGameListByDevice = () =>
+	siteRequest.post(`/GetGameListByDevice`, {
+		DeviceType: defDeviceType.Mobile
+	});
 
 export const api_ForgetPwd = ({ Email, langId }) =>
 	siteRequest.post(`/ForgetPwdV2/${langId}`, { Email, flag: 2 });

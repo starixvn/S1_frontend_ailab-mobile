@@ -19,7 +19,7 @@ const BtnBar = ({ isLogin, i18n, msgCount }) => {
 	return isLogin ? (
 		<div className="tag">
 			<Link to={path.profile.root} className="icon icon-member">
-				{i18n.lbl_MyAccount}
+				{i18n.lbl_Profile}
 			</Link>
 			<i />
 			<Link to={path.message.root} className="icon icon-email">
@@ -96,17 +96,49 @@ export default () => {
 				msgCount={msgCount}
 			/>
 			<div className="accordion">
+				{userInfo.isLogin === true ? (
+					<div>
+						<Link
+							className="title icon icon-person"
+							to={path.myAccount.root}>
+							{i18n.lbl_MyAccount}
+						</Link>
+					</div>
+				) : null}
 				<div>
-					<button className="title icon icon-cog">
-						{i18n.lbl_Setting}
-					</button>
+					<Link className="title icon icon-medal" to={path.vip.root}>
+						{i18n.lbl_VIP}
+					</Link>
+				</div>
+				<div>
+					<Link
+						className="title icon icon-film"
+						to={path.streaming.root}>
+						{i18n.lbl_LiveStreaming}
+					</Link>
+				</div>
+				<div>
+					<Link
+						className="title icon icon-trophy"
+						to={path.ranking.root}>
+						{i18n.lbl_Ranking}
+					</Link>
+				</div>
+				<div>
+					<a
+						className="title icon icon-affiliate"
+						href={siteInfo(userInfo.langId).affiliateLink}>
+						{i18n.lbl_Affiliate}
+					</a>
+				</div>
+				<Card btnTitle={i18n.lbl_Languages} btnClass="icon-sphere">
 					{/* <ThemeMode /> */}
 					<LangPanel
 						userInfo={userInfo}
 						setUserInfo={setUserInfo}
 						i18n={i18n}
 					/>
-				</div>
+				</Card>
 				<Card btnTitle={i18n.lbl_OurPolicies} btnClass="icon-policies">
 					<a
 						href={TandC(userInfo.langId).OurPolicies}

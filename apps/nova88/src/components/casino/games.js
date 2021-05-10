@@ -61,7 +61,7 @@ GamePanel.defaultProps = {
 GamePanel.propTypes = {
 	SelectGame: PropTypes.func.isRequired,
 	Games: PropTypes.arrayOf(PropTypes.object),
-	Favorite: PropTypes.arrayOf(PropTypes.object),
+	Favorite: PropTypes.arrayOf(PropTypes.any),
 	SetFavorite: PropTypes.func.isRequired,
 	TpList: PropTypes.objectOf(PropTypes.any).isRequired,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,

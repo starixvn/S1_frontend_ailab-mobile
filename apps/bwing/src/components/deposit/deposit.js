@@ -12,12 +12,14 @@ import PageVerify from "./deposit.pageVerify";
 import MobilePay from "./deposit.mobilePay";
 import OnlineBanking from "./deposit.onlineBanking";
 import LocalBank from "./deposit.localBank";
+import LoadCardPay from "./deposit.loadCardPay";
 import {
 	api_GetDepositInfoRecent,
 	api_GetMobilePayGroupList,
 	api_GetBankInfoOffList,
 	api_GetOnlinePaymentList,
-	api_SetDepositCancel
+	api_SetDepositCancel,
+	api_payment_GetLoadCardPayGroupList
 } from "../../service/api/payment";
 import RecentDatas from "./deposit.recentDatas";
 import { number_format, isConvert } from "../common/common";
@@ -25,7 +27,8 @@ import { number_format, isConvert } from "../common/common";
 const defPayType = {
 	onlineBank: "onlineBank",
 	localBank: "localBank",
-	mobilePay: "mobilePay"
+	mobilePay: "mobilePay",
+	loadCardPay: "loadCardPay"
 };
 
 const defPayment = {
@@ -40,6 +43,10 @@ const defPayment = {
 	[defPayType.onlineBank]: {
 		displayKey: "lbl_OnlineBanking",
 		creditTimeKey: "lbl_Instant"
+	},
+	[defPayType.loadCardPay]: {
+		displayKey: "lbl_TopUpCard",
+		creditTimeKey: "lbl_5mins"
 	}
 };
 
@@ -119,6 +126,14 @@ const Panel = () => {
 				paymentList={paymentList[defPayType.onlineBank] ?? []}
 			/>
 		);
+	} else if (selected === defPayType.loadCardPay) {
+		content = (
+			<LoadCardPay
+				payType={selected}
+				creditTimeKey={defPayment[defPayType.loadCardPay].creditTimeKey}
+				paymentList={paymentList[defPayType.loadCardPay] ?? []}
+			/>
+		);
 	}
 
 	useEffect(() => {
@@ -130,7 +145,8 @@ const Panel = () => {
 				const payments = {
 					[defPayType.mobilePay]: [],
 					[defPayType.onlineBank]: [],
-					[defPayType.localBank]: []
+					[defPayType.localBank]: [],
+					[defPayType.loadCardPay]: []
 				};
 
 				const setDefaultSelect = (currentValue, payType, dataList) =>
@@ -173,6 +189,17 @@ const Panel = () => {
 						defaultSelect,
 						defPayType.onlineBank,
 						payments[defPayType.onlineBank]
+					);
+				} catch (error) {}
+
+				try {
+					const res = await api_payment_GetLoadCardPayGroupList();
+					payments[defPayType.loadCardPay] = getDataListResult(res);
+
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defPayType.loadCardPay,
+						payments[defPayType.loadCardPay]
 					);
 				} catch (error) {}
 

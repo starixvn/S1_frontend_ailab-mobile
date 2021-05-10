@@ -104,6 +104,7 @@ StreamingModule.propTypes = {
 	homeScore: PropTypes.number,
 	awayScore: PropTypes.number,
 	timeStart: PropTypes.string.isRequired,
-	matchID: PropTypes.number.isRequired,
+	matchID: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+		.isRequired,
 	channel: PropTypes.number.isRequired
 };

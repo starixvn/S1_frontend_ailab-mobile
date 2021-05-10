@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
+import { Link } from "../../route/link";
 import {
 	i18nContext,
 	userInfoContext,
@@ -9,8 +10,10 @@ import {
 import config from "../../config";
 import api from "../../service/api";
 import AddBankPanel from "./bankInfo.add";
+import VIPLevel from "../common/vipLevel";
+import path from "../../path";
 
-const BankInfo = () => {
+const BankInfo = ({ prevPage }) => {
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { i18n } = useContext(i18nContext);
@@ -189,7 +192,9 @@ const BankInfo = () => {
 				title={item.bankName}
 				accountNo={item.accountNo}
 				removeAccountHandler={removeAccountHandler.bind(null, item)}
-				image={`${config.imgUrl}/common/images/BankLogo/${item.image}`}
+				image={`${
+					config.cloudImgURL
+				}/SiteSkin/img/BankLogo/${item.image?.toLowerCase()}`}
 			/>
 		);
 	});
@@ -200,9 +205,7 @@ const BankInfo = () => {
 				<>
 					{userInfo?.accountName ? (
 						<>
-							<div className="icon icon-member">
-								<div className="circleAnimation" />
-							</div>
+							<VIPLevel userInfo={userInfo} i18n={i18n} />
 							<div className="name">{userInfo.accountName}</div>
 							<div className="text-center text-gray">
 								{i18n.lbl_ContactCSD}
@@ -211,6 +214,11 @@ const BankInfo = () => {
 					) : null}
 					{custBankInfo && custBankInfo.length < 3 ? (
 						<div className="btn-group">
+							{prevPage === "deposit" ? (
+								<Link to={path.deposit.root} className="cancel">
+									{i18n.lbl_Back}
+								</Link>
+							) : null}
 							<button
 								className="icon icon-plus"
 								onClick={toAddBankAccount}>

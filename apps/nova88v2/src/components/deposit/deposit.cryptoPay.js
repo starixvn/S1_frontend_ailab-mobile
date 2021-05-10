@@ -95,7 +95,9 @@ export const Main = props => {
 			<div key={`deposit-cryptoPay-${p.groupId}-${p.channelId}`}>
 				<Link state={p} to={p.channelName.replace(" ", "")}>
 					<img
-						src={`${config.cloudImgURL}/SiteSkin/img/Payment/${p.groupName}.png`}
+						src={`${
+							config.cloudImgURL
+						}/SiteSkin/img/Payment/${p.groupName?.toLowerCase()}.png`}
 						alt={p.groupName}
 					/>
 				</Link>

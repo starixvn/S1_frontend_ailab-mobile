@@ -8,7 +8,7 @@ import {
 	defPromotionType,
 	defFilterType,
 	defWrapperCol,
-	hideJoinBtnTypes
+	defHideJoinBtnTypes
 } from "../common/def";
 
 import ClaimWithLockedAmount from "./joinBtn.claimWithLockedAmount";
@@ -23,7 +23,7 @@ export default ({
 	func_CallBack,
 	filterType
 }) => {
-	if (hideJoinBtnTypes.includes(promotionInfo.promotionType)) return null;
+	if (defHideJoinBtnTypes.includes(promotionInfo.promotionType)) return null;
 
 	const formatSetting = {
 		[defWrapperCol.formatSetting.isConvertRequired]: false,

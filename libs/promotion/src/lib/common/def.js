@@ -62,7 +62,8 @@ export const defPromotionNav = [
 	defNav.All,
 	defNav.FirstDeposit,
 	defNav.FreeBet,
-	defNav.SpecialBonus
+	defNav.SpecialBonus,
+	defNav.Static
 ];
 
 export const defTabs = {
@@ -101,3 +102,8 @@ export const defUrlParamCols = {
 	tab: "tab",
 	filterType: "filterType"
 };
+
+export const defHideJoinBtnTypes = [
+	defPromotionType.rebate,
+	defPromotionType.static
+];
