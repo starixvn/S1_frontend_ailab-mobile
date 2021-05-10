@@ -197,19 +197,19 @@ const gameList = ({ langId }) => [
 		categoryIcon: "icon_777",
 		translateKey: "lbl_Casino",
 		items: [
-			{
-				...defGameInfo.Casino_PT,
-				parameter: defGameInfo.Casino_PT,
-				spanText: "PT",
-				img: casino_PT,
-				path: path.casino.root,
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.casino_PT)
-					}
-				]
-			},
+			// {
+			// 	...defGameInfo.Casino_PT,
+			// 	parameter: defGameInfo.Casino_PT,
+			// 	spanText: "PT",
+			// 	img: casino_PT,
+			// 	path: path.casino.root,
+			// 	eventIcon: [
+			// 		{
+			// 			icon: defIconType.new,
+			// 			inPeriod: isEventPeriod(eventTime.casino_PT)
+			// 		}
+			// 	]
+			// },
 			{
 				...defGameInfo.Casino_PP,
 				parameter: defGameInfo.Casino_PP,

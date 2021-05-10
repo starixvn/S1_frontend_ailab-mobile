@@ -2812,6 +2812,14 @@ footer > a.active .circleAnimation + span {
   width: calc(100% - 4vw);
 }
 
+.bankSlip span.text {
+  color: white;
+}
+
+.bankSlip .info li {
+  color: white;
+}
+
 .bankSlip .info .title {
   color: #1e85ec;
 }

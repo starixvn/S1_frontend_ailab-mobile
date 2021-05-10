@@ -177,21 +177,23 @@ const Payment = props => {
 				displayKey="groupName"
 				_isConvert={_isConvert}
 			/>
-			<GroupList
-				title={i18n.lbl_SelectChannel}
-				dataList={channelList}
-				SelectPayment={SelectChannel}
-				selected={selChannel?.channelId}
-				mainKey={`deposit-full-${payType}-channelList`}
-				imgKey="groupName"
-				idKey="channelId"
-				bindFullObj={true}
-				prefixImgUrl={`${config.imgUrl}/common/images/MobilePay/`}
-				i18n={i18n}
-				displayKey="channelName"
-				showMinMaxHint={true}
-				_isConvert={_isConvert}
-			/>
+			{channelList?.length > 1 && (
+				<GroupList
+					title={i18n.lbl_SelectChannel}
+					dataList={channelList}
+					SelectPayment={SelectChannel}
+					selected={selChannel?.channelId}
+					mainKey={`deposit-full-${payType}-channelList`}
+					imgKey="groupName"
+					idKey="channelId"
+					bindFullObj={true}
+					prefixImgUrl={`${config.imgUrl}/common/images/MobilePay/`}
+					i18n={i18n}
+					displayKey="channelName"
+					showMinMaxHint={true}
+					_isConvert={_isConvert}
+				/>
+			)}
 			<AmountInput
 				title={i18n.lbl_DepositAmount}
 				channel={selChannel}
