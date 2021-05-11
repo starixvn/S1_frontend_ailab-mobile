@@ -132,7 +132,7 @@ export const useTransfer = ({
 
 	const restoreAll = async ({ tpId }) => {
 		const tpPromiseArr = tpWalletsList
-			.filter(wallet => wallet.balance > 0)
+			.filter(wallet => wallet.balance > 0 && wallet.id !== tpId)
 			.map(wallet =>
 				Transfer({
 					FromTpId: wallet.id,
@@ -157,7 +157,7 @@ export const useTransfer = ({
 		).then(async () => {
 			await GetBalance();
 			await tpWalletsList
-				.filter(wallet => wallet.balance > 0)
+				.filter(wallet => wallet.balance > 0 && wallet.id !== tpId)
 				.map(wallet => GetTpWalletBalance(wallet.id));
 
 			setLoading(false);
