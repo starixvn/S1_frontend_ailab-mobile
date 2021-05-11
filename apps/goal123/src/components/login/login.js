@@ -75,13 +75,14 @@ const LoginPage = ({ ButtonTitle, hideBtn }) => {
 					} else if (
 						errorCode === 1101 ||
 						errorCode === 1102 ||
-						errorCode === 9000
+						errorCode === 9000 ||
+						errorCode === 1103
 					) {
 						setInputStatus(prev => ({
 							...prev,
 							UserName: { checked: false, msg: message }
 						}));
-					} else if (errorCode === 1001 || errorCode === 1003) {
+					} else if (errorCode === 1001) {
 						setInputStatus(prev => ({
 							...prev,
 							Password: { checked: false, msg: message }
