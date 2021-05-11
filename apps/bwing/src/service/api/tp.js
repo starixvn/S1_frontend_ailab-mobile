@@ -33,3 +33,10 @@ export const api_tp_GotoGame = ({
 			fun
 		}
 	});
+
+export const api_tp_TransferEX = ({ FromTpId, ToTpId, Amount }) =>
+	tpRequest.post("/TransferEX", {
+		FromTpId,
+		ToTpId,
+		Amount
+	});
