@@ -325,6 +325,12 @@ header > div .Login .inputBox > .icon-module {
   top: 0;
 }
 
+header > div .Join .inputBox > .icon-module > i.icon,
+header > div .Login .inputBox > .icon-module > i.icon {
+  -webkit-transform: translateY(60%);
+          transform: translateY(60%);
+}
+
 header > div .Join .inputBox i.icon.icon-eye, header > div .Join .inputBox i.icon.icon-eye-blocked,
 header > div .Login .inputBox i.icon.icon-eye,
 header > div .Login .inputBox i.icon.icon-eye-blocked {
@@ -2376,6 +2382,7 @@ footer > a.open .circleAnimation + span {
 .inputBox i.icon.icon-warning, .inputBox i.icon.icon-eye, .inputBox i.icon.icon-eye-blocked, .inputBox i.icon.icon-cross, .inputBox i.icon.icon-checkmark, .inputBox i.icon.icon-information-solid {
   position: initial;
   margin-right: 2vw;
+  margin-left: 1.5vw;
   display: inline-block;
 }
 
@@ -2390,7 +2397,13 @@ footer > a.open .circleAnimation + span {
 .inputBox > .icon-module {
   position: absolute;
   right: 0;
-  top: 0;
+  top: 8px;
+  color: #6f7a8e;
+}
+
+.inputBox > .icon-module > i.icon {
+  -webkit-transform: translateY(15%);
+          transform: translateY(15%);
 }
 
 .LoginRule {
@@ -6527,6 +6540,11 @@ span.important {
   top: 0;
 }
 
+.Join .inputBox > .icon-module > i.icon {
+  -webkit-transform: translateY(60%);
+          transform: translateY(60%);
+}
+
 .Join .inputBox i.icon.icon-eye, .Join .inputBox i.icon.icon-eye-blocked {
   display: none;
 }
@@ -7004,10 +7022,10 @@ span.important {
   color: white;
 }
 
-.depositModule_mobile .inputBox .iconModule,
-.depositModule_online .inputBox .iconModule,
-.depositModule_local .inputBox .iconModule,
-.depositModule_topupMobile .inputBox .iconModule {
+.depositModule_mobile .inputBox .icon-module,
+.depositModule_online .inputBox .icon-module,
+.depositModule_local .inputBox .icon-module,
+.depositModule_topupMobile .inputBox .icon-module {
   position: absolute;
   -webkit-transform: translateY(60%);
           transform: translateY(60%);
@@ -7016,10 +7034,10 @@ span.important {
   color: #6f7a8e;
 }
 
-.depositModule_mobile .inputBox .iconModule .icon,
-.depositModule_online .inputBox .iconModule .icon,
-.depositModule_local .inputBox .iconModule .icon,
-.depositModule_topupMobile .inputBox .iconModule .icon {
+.depositModule_mobile .inputBox .icon-module .icon,
+.depositModule_online .inputBox .icon-module .icon,
+.depositModule_local .inputBox .icon-module .icon,
+.depositModule_topupMobile .inputBox .icon-module .icon {
   position: initial;
   display: inline-block;
   -webkit-transform: translateY(15%);

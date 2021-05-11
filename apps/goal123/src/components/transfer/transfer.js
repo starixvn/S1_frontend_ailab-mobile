@@ -1,12 +1,16 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
-import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
+import {
+	i18nContext,
+	userInfoContext,
+	popBoxContext,
+	loadingContext
+} from "../common/context";
 import { api_Transfer, api_GetTransferRecent } from "../../service/api/tp";
 import { isConvert, number_format } from "../common/common";
 import RecentDatas from "./transfer.recentDatas";
-import InputBox from "../common/inputbox";
+import InputBox from "../common/inputbox.info";
 import Dropdown from "../common/dropdown";
 import ReloadSpin from "../common/reloadSpin";
-import Loading from "../common/loading";
 import { defPopBoxType } from "../common/popbox";
 import {
 	tpWalletsListType,
@@ -20,15 +24,13 @@ const Panel = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const { setLoading } = useContext(loadingContext);
 	const _isConvert = isConvert(userInfo.currencyId);
-
 	const [selectedIdx, setSelectedIdx] = useState(initSelectedIdx);
 	const [transferOptions, setTransferOptions] = useState(initTransferOptions);
-
-	const [amount, setAmount] = useState("1");
-	const [warning, setWarning] = useState({ status: false, msg: "" });
+	const [amount, setAmount] = useState("");
+	const [inputStatus, setInputStatus] = useState({ checked: null, msg: "" });
 	const [recentDatas, setRecentDatas] = useState([]);
-	const [loading, setLoading] = useState(false);
 
 	const { mainWalletInfo, GetBalance } = useGetBalance({
 		isLogin: userInfo.isLogin
@@ -64,30 +66,24 @@ const Panel = () => {
 
 	const VaildAmount = _amount => {
 		const checked = _amount > 0 && _amount !== "";
-		if (!checked) {
-			setWarning({
-				status: true,
-				msg: i18n.lbl_AmountTooltip?.replace("{{0}}", 1)
-			});
-		} else {
-			setWarning({
-				status: false,
-				msg: ""
-			});
-		}
+		const msg = checked ? "" : i18n.lbl_AmountTooltip?.replace("{{0}}", 1);
+
+		setInputStatus({ checked, msg });
 		return checked;
 	};
 
 	const EditAmount = e => {
 		const { value } = e.target;
-		VaildAmount(value);
-		setAmount(value);
+		const _amount = String(value).replace(/^(0+)|[^\d]+/g, "");
+		VaildAmount(_amount);
+		setAmount(_amount);
 	};
 
 	const setMaxAmount = () => {
 		const balance = allWalletsList[selectedIdx.transferFrom]?.balance;
 		const _balance = _isConvert ? Number(balance) / 1000 : Number(balance);
-		_balance > 0 ? setAmount(`${_balance}`) : setAmount("1");
+		VaildAmount(_balance);
+		_balance > 0 ? setAmount(`${_balance}`) : setAmount("");
 	};
 
 	const selectItem = (col, i) => {
@@ -114,6 +110,14 @@ const Panel = () => {
 			...prev,
 			[otherDirection]: _arr
 		}));
+	};
+
+	const clickInfo = () => {
+		const info =
+			inputStatus.msg === ""
+				? i18n.lbl_AmountTooltip?.replace("{{0}}", 1)
+				: "";
+		setInputStatus({ checked: null, msg: info });
 	};
 
 	const clickSubmit = () => {
@@ -157,8 +161,9 @@ const Panel = () => {
 						} else {
 							GetTpWalletBalance(_tpId);
 							GetBalance();
-							setAmount("1");
+							setAmount("");
 							GetTransferRecent();
+							setInputStatus({ checked: null, msg: "" });
 						}
 						setLoading(false);
 					}
@@ -208,12 +213,9 @@ const Panel = () => {
 			);
 		});
 
-	return loading ? (
-		<Loading />
-	) : (
+	return (
 		<>
 			{arr}
-
 			<div className="inputBox">
 				<Dropdown
 					mainKey="transfer-From"
@@ -246,15 +248,17 @@ const Panel = () => {
 				/>
 			</div>
 
-			<div className="inputBox">
-				<InputBox
-					icon="icon-pencil"
-					value={amount}
-					inputType="tel"
-					onChange={EditAmount}
-					Warning={warning}
-				/>
-			</div>
+			<InputBox
+				icon="icon icon-pencil"
+				value={amount}
+				inputType="tel"
+				onChange={EditAmount}
+				btnStatus={inputStatus.checked}
+				tip={inputStatus.msg}
+				clickInfo={clickInfo}
+				onBlur={VaildAmount.bind(this, amount)}
+				numberConvert={true}
+			/>
 
 			<div className="btn-group">
 				<button className="blue" onClick={setMaxAmount}>
