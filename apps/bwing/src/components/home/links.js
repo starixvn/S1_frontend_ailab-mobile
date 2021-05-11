@@ -133,8 +133,8 @@ const defPlatform = [
 	"one789",
 	"icg",
 	"v8",
-	"n2live"
-	// "playtech"
+	"n2live",
+	"playtech"
 ];
 
 const Platforms = ({ i18n }) => {
