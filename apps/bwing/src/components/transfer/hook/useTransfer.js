@@ -92,6 +92,11 @@ export const useTransfer = ({
 						title: i18n.lbl_ImportantNote,
 						content: `[${res.data.errorCode}]${res.data.message}`
 					});
+					if (FromTpId !== 0 && ToTpId !== 0) {
+						GetBalance();
+						GetTpWalletBalance(FromTpId);
+						GetTransferRecent();
+					}
 				} else if (!isMultiple) {
 					if (FromTpId === 0 || ToTpId === 0) {
 						GetBalance();
@@ -152,14 +157,18 @@ export const useTransfer = ({
 						...tpPromiseArr
 				  ]
 				: tpPromiseArr
-		).then(async () => {
-			await GetBalance();
-			await tpWalletsList
-				.filter(wallet => wallet.balance > 0)
-				.map(wallet => GetTpWalletBalance(wallet.id));
+		)
+			.then(async () => {
+				await GetBalance();
+				await tpWalletsList
+					.filter(wallet => wallet.balance > 0)
+					.map(wallet => GetTpWalletBalance(wallet.id));
 
-			setLoading(false);
-		});
+				setLoading(false);
+			})
+			.catch(() => {
+				//
+			});
 	};
 
 	const clickSubmit = async () => {
