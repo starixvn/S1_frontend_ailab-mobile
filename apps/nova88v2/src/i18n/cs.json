@@ -604,5 +604,8 @@
 	"lbl_LossAmount":"亏损金额",
 	"lbl_Percentage":"百分比",
 	"lbl_TotalAmount":"总额",
-	"lbl_ClaimNow":"立即领取"
+	"lbl_ClaimNow":"立即领取",
+
+	"==============Transfer==============":"",
+	"lbl_Fail":"失败"
 }

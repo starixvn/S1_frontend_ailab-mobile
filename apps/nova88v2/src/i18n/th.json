@@ -597,5 +597,8 @@
 	"lbl_LossAmount":"จำนวนเงินที่เสีย",
 	"lbl_Percentage":"เปอร์เซ็นต์",
 	"lbl_TotalAmount":"จำนวนเงินทั้งหมด",
-	"lbl_ClaimNow":"แลกตอนนี้"
+	"lbl_ClaimNow":"แลกตอนนี้",
+
+	"==============Transfer==============":"",
+	"lbl_Fail":"ล้มเหลว"
 }

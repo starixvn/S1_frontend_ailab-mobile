@@ -598,5 +598,8 @@
 	"lbl_LossAmount":"Nilai Kekalahan",
 	"lbl_Percentage":"Persentase",
 	"lbl_TotalAmount":"Jumlah Dana",
-	"lbl_ClaimNow":"Klaim Sekarang"
+	"lbl_ClaimNow":"Klaim Sekarang",
+
+	"==============Transfer==============":"",
+	"lbl_Fail":"Gagal"
 }
