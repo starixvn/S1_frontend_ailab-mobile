@@ -86,10 +86,7 @@ const Panel = () => {
 	};
 
 	const clickInfo = () => {
-		const _msg = i18n.lbl_AmountTooltip.replace(
-			"{{0}}",
-			number_format(1, _isConvert)
-		);
+		const _msg = i18n.lbl_AmountTooltip.replace("{{0}}", 1);
 		setInputStatus({
 			checked: null,
 			msg: inputStatus.msg === "" ? _msg : ""

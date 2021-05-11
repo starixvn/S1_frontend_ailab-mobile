@@ -340,6 +340,14 @@ const Join = () => {
 									msg: message
 								}
 							}));
+						} else if (errorCode === -9) {
+							setInputStatus(prevState => ({
+								...prevState,
+								AffiliateId: {
+									checked: false,
+									msg: message
+								}
+							}));
 						} else {
 							setPopBox({
 								isOpen: true,

@@ -81,12 +81,11 @@ export default () => {
 		}));
 	};
 
-	const clickInfo = ({ col }) => {
-		const info =
-			inputStatus[col].msg === "" ? i18n.lbl_PasswordTooltip : "";
+	const clickInfo = ({ col, info }) => {
+		const _info = inputStatus[col].msg === "" ? i18n[info] : "";
 		setInputStatus(prev => ({
 			...prev,
-			[col]: { checked: null, msg: info }
+			[col]: { checked: null, msg: _info }
 		}));
 	};
 
@@ -180,7 +179,10 @@ export default () => {
 				value={userValue.oldPsw}
 				btnStatus={inputStatus.oldPsw.checked}
 				tip={inputStatus.oldPsw.msg}
-				clickInfo={clickInfo.bind(this, { col: "oldPsw" })}
+				clickInfo={clickInfo.bind(this, {
+					col: "oldPsw",
+					info: "msg_PasswordReq"
+				})}
 			/>
 			<Inputbox
 				placeholder={i18n.lbl_NewPassword}
@@ -189,7 +191,10 @@ export default () => {
 				value={userValue.newPsw}
 				btnStatus={inputStatus.newPsw.checked}
 				tip={inputStatus.newPsw.msg}
-				clickInfo={clickInfo.bind(this, { col: "newPsw" })}
+				clickInfo={clickInfo.bind(this, {
+					col: "newPsw",
+					info: "msg_PasswordVaildate"
+				})}
 			/>
 			<div className="btn-group">
 				<Link className="cancel" to={`/${path.member.root}`}>

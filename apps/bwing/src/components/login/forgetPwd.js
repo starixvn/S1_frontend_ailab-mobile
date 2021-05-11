@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect, useRef } from "react";
 import { Redirect } from "@reach/router";
 import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
 import { api_ForgetPwd } from "../../service/api/site";
-import Inputbox from "../common/inputbox";
+import Inputbox from "../common/inputbox.info";
 import path from "../../path";
 
 export default () => {
@@ -10,7 +10,7 @@ export default () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
 	const [userEmail, setUserEmail] = useState("");
-	const [warning, setWarning] = useState({ status: false, msg: "" });
+	const [inputStatus, setInputStatus] = useState({ checked: null, msg: "" });
 	const isMountedRef = useRef(null);
 	const [redirectPath, setRedirectPath] = useState(null);
 
@@ -37,6 +37,11 @@ export default () => {
 		setUserEmail(val);
 	};
 
+	const clickInfo = () => {
+		const info = inputStatus.msg === "" ? i18n.lbl_EmailRequired : "";
+		setInputStatus({ checked: null, msg: info });
+	};
+
 	const checkEmailHandler = e => {
 		const val = e.target.value;
 		let checked = true;
@@ -53,7 +58,7 @@ export default () => {
 			}
 		}
 
-		setWarning({ status: !checked, msg: message });
+		setInputStatus({ checked, msg: message });
 	};
 
 	const clickSubmit = () => {
@@ -62,8 +67,8 @@ export default () => {
 		};
 
 		if (userEmail === "") {
-			setWarning({ status: true, msg: i18n.msg_MailWrongFormat });
-		} else if (!warning.status) {
+			setInputStatus({ checked: false, msg: i18n.msg_MailWrongFormat });
+		} else {
 			api_ForgetPwd({ Email: userEmail, langId: userInfo.langId }).then(
 				res => {
 					if (isMountedRef.current) {
@@ -92,7 +97,7 @@ export default () => {
 						}
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
@@ -112,14 +117,14 @@ export default () => {
 	return redirectPath === null ? (
 		<>
 			<Inputbox
-				icon="icon-email"
-				inputType="text"
+				icon="icon icon-email"
 				placeholder={i18n.lbl_Email}
 				value={userEmail}
 				onChange={EditField.bind(null)}
 				onBlur={checkEmailHandler.bind(null)}
-				Warning={warning}
-				ClassName="LoginRule"
+				tip={inputStatus.msg}
+				btnStatus={inputStatus.checked}
+				clickInfo={clickInfo}
 			/>
 			<div className="btn-group">
 				<button className="cancel" onClick={ClickBack}>
