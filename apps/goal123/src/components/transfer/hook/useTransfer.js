@@ -2,7 +2,10 @@ import { useContext, useEffect, useState, useRef } from "react";
 import { loadingContext } from "../../common/context";
 import { defIptStatus } from "../../common/inputStatus";
 import { defPopBoxType } from "../../common/popbox";
-import api from "../../../service/api";
+import {
+	api_tp_TransferEX,
+	api_GetTransferRecent
+} from "../../../service/api/tp";
 import { initSelectedIdx, initWarning, transDirection } from "../transfer.def";
 
 export const useTransfer = ({
@@ -17,7 +20,7 @@ export const useTransfer = ({
 }) => {
 	const { setLoading } = useContext(loadingContext);
 	const [selectedIdx, setSelectedIdx] = useState(initSelectedIdx);
-	const [amount, setAmount] = useState("");
+	const [amount, setAmount] = useState("1");
 	const [warning, setWarning] = useState(initWarning);
 	const [recentDatas, setRecentDatas] = useState([]);
 	const allWalletsList = [mainWalletInfo, ...tpWalletsList];
@@ -52,7 +55,7 @@ export const useTransfer = ({
 	};
 
 	const GetTransferRecent = () => {
-		api.tp.GetTransferRecent().then(res => {
+		api_GetTransferRecent().then(res => {
 			if (res.data.errorCode === 0 && isMountedRef.current) {
 				setRecentDatas(res.data.data);
 			}
@@ -68,7 +71,7 @@ export const useTransfer = ({
 		setLoading(true);
 
 		try {
-			const res = await api.tp.TransferEX({
+			const res = await api_tp_TransferEX({
 				FromTpId,
 				ToTpId,
 				Amount: real_amount
@@ -89,6 +92,11 @@ export const useTransfer = ({
 						title: i18n.lbl_ImportantNote,
 						content: `[${res.data.errorCode}]${res.data.message}`
 					});
+					if (FromTpId !== 0 && ToTpId !== 0) {
+						GetBalance();
+						GetTpWalletBalance(FromTpId);
+						GetTransferRecent();
+					}
 				} else if (!isMultiple) {
 					if (FromTpId === 0 || ToTpId === 0) {
 						GetBalance();
@@ -214,7 +222,7 @@ export const useTransfer = ({
 	const setMaxAmount = () => {
 		const balance = allWalletsList[selectedIdx.transferFrom]?.balance;
 		const _balance = _isConvert ? Number(balance) / 1000 : Number(balance);
-		_balance > 0 ? setAmount(`${_balance}`) : setAmount("");
+		_balance > 0 ? setAmount(`${_balance}`) : setAmount("1");
 	};
 
 	return {
@@ -227,6 +235,7 @@ export const useTransfer = ({
 		setMaxAmount,
 		allWalletsList,
 		selectItem,
-		selectedIdx
+		selectedIdx,
+		GetTransferRecent
 	};
 };

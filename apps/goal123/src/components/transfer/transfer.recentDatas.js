@@ -51,6 +51,7 @@ const ReacentDatas = props => {
 					i18n={i18n}
 					className="info infoBlack transfer"
 					memo={item.memo}
+					status={item.status}
 				/>
 			);
 		});
