@@ -432,7 +432,7 @@ const BankInfo = () => {
 						tip={inputStatus.BankAccount.msg}
 						clickInfo={clickInfo.bind(this, {
 							col: "BankAccount",
-							info: "msg_NeedAccountName"
+							info: "lbl_EnterAccountNumber"
 						})}
 					/>
 					<div className="btn-group">

@@ -26,6 +26,7 @@ import {
 	api_UploadReceipt
 } from "../../service/api/payment";
 import { api_SetAccountName } from "../../service/api/accountStrict";
+import Inputbox from "../common/inputbox.info";
 
 const payType = "localBank";
 
@@ -48,11 +49,15 @@ const Payment = props => {
 			? ""
 			: userInfo.accountName
 	);
-	const [realNameTip, setRealNameTip] = useState("");
+	const [realNameStatus, setRealNameStatus] = useState({
+		checked: null,
+		msg: ""
+	});
 
 	const {
 		amount,
-		warning,
+		inputStatus,
+		setInputStatus,
 		SelectAmount,
 		EditAmount,
 		VaildAmount
@@ -74,6 +79,39 @@ const Payment = props => {
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [paymentList.length]);
+
+	const clickInfo = ({ col }) => {
+		if (col === "amount") {
+			const msg = i18n.lbl_AmountTooltip.replace(
+				"{{0}}",
+				number_format(selBank?.minAmount, _isConvert, 0)
+			);
+			setInputStatus({
+				checked: null,
+				msg: inputStatus.msg === "" ? msg : ""
+			});
+		} else {
+			setRealNameStatus({
+				checked: null,
+				msg:
+					realNameStatus.msg === ""
+						? i18n.msg_ConfirmRealNameAlert
+						: ""
+			});
+		}
+	};
+
+	const realNameCheck = () => {
+		let checked = true;
+		let msg = "";
+
+		if (!realName) {
+			checked = false;
+			msg = i18n.msg_EnterRealName;
+		}
+
+		setRealNameStatus({ checked, msg });
+	};
 
 	const SelectBank = bankInfo => {
 		setLoading(true);
@@ -356,9 +394,6 @@ const Payment = props => {
 
 	const HandleAccountName = e => {
 		setRealName(e.target.value);
-		if (!realNameTip) {
-			setRealNameTip("");
-		}
 	};
 
 	const _isConvert = isConvert(userInfo.currencyId);
@@ -395,10 +430,14 @@ const Payment = props => {
 						<span className="text-org">*</span>
 						{i18n.lbl_RealName}
 					</div>
-					<div className="inputBox">
-						<input onChange={HandleAccountName} value={realName} />
-						<div className="tip">{realNameTip}</div>
-					</div>
+					<Inputbox
+						onChange={HandleAccountName}
+						value={realName}
+						onBlur={realNameCheck}
+						btnStatus={realNameStatus.checked}
+						tip={realNameStatus.msg}
+						clickInfo={clickInfo.bind(this, { col: "realName" })}
+					/>
 				</>
 			) : null}
 			<AmountInput
@@ -407,10 +446,12 @@ const Payment = props => {
 				i18n={i18n}
 				_isConvert={_isConvert}
 				amount={amount}
-				tip={warning}
+				tip={inputStatus.msg}
+				btnStatus={inputStatus.checked}
 				SelectAmount={SelectAmount}
 				EditAmount={EditAmount}
 				payType={payType}
+				clickInfo={clickInfo.bind(this, { col: "amount" })}
 			/>
 			<ImportantNotes i18n={i18n} />
 			<div className="btn-group">
