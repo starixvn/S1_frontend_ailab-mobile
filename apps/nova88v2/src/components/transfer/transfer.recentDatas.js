@@ -35,7 +35,7 @@ const RecentDatas = ({ datas }) => {
 				item.direction,
 				item.tpName
 			);
-			const status = item.status === 0 ? i18n.lbl_Success : i18n.lbl_Fail;
+
 			return (
 				<Detail
 					key={`transferRecent-${item.transId}`}
@@ -46,7 +46,7 @@ const RecentDatas = ({ datas }) => {
 					endWallet={_transferDirection.endWallet}
 					i18n={i18n}
 					memo={item.memo}
-					status={status}
+					status={item.status}
 				/>
 			);
 		});

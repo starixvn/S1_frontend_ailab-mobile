@@ -14,6 +14,7 @@ const Detail = ({
 	_isConvert,
 	status
 }) => {
+	const _status = status === 0 ? i18n.lbl_Success : i18n.lbl_Fail;
 	return (
 		<div className="info transfer">
 			<ul>
@@ -31,7 +32,7 @@ const Detail = ({
 				</li>
 				<li>
 					<span className="title">{i18n.lbl_Status}</span>
-					<span>{status}</span>
+					<span>{_status}</span>
 				</li>
 				<li>
 					<span className="title">{i18n.lbl_Amount}</span>
@@ -61,7 +62,7 @@ Detail.defaultProps = {
 	startWallet: "",
 	endWallet: "",
 	memo: "",
-	status: ""
+	status: null
 };
 
 Detail.propTypes = {
@@ -75,7 +76,7 @@ Detail.propTypes = {
 	amount: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 		.isRequired,
 	_isConvert: PropTypes.bool,
-	status: PropTypes.string
+	status: PropTypes.number
 };
 
 export default Detail;

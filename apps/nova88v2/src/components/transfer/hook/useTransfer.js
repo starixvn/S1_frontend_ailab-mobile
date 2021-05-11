@@ -89,6 +89,11 @@ export const useTransfer = ({
 						title: i18n.lbl_ImportantNote,
 						content: `[${res.data.errorCode}]${res.data.message}`
 					});
+					if (FromTpId !== 0 && ToTpId !== 0) {
+						GetBalance();
+						GetTpWalletBalance(FromTpId);
+						GetTransferRecent();
+					}
 				} else if (!isMultiple) {
 					if (FromTpId === 0 || ToTpId === 0) {
 						GetBalance();
