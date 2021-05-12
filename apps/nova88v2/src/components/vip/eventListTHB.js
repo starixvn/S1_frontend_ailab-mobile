@@ -138,8 +138,8 @@ const EventListTHB = ({ i18n }) => {
 				</tr>
 				<tr>
 					<td>0.55%</td>
+					<td>0.55%</td>
 					<td>0.60%</td>
-					<td>0.70%</td>
 					<td>0.80%</td>
 					<td>0.90%</td>
 					<td>1.00%</td>
@@ -149,7 +149,7 @@ const EventListTHB = ({ i18n }) => {
 				</tr>
 				<tr>
 					<td>0.50%</td>
-					<td>0.55%</td>
+					<td>0.50%</td>
 					<td>0.60%</td>
 					<td>0.70%</td>
 					<td>0.80%</td>
@@ -161,10 +161,10 @@ const EventListTHB = ({ i18n }) => {
 				<tr>
 					<td>0.80%</td>
 					<td>0.90%</td>
+					<td>0.90%</td>
 					<td>1.00%</td>
 					<td>1.10%</td>
-					<td>1.30%</td>
-					<td>1.50%</td>
+					<td>1.20%</td>
 				</tr>
 				<tr>
 					<td colSpan="7">{i18n.lbl_Vip_VirtualSport_Rebate}</td>
@@ -172,10 +172,10 @@ const EventListTHB = ({ i18n }) => {
 				<tr>
 					<td>0.80%</td>
 					<td>0.90%</td>
+					<td>0.90%</td>
+					<td>1.00%</td>
 					<td>1.10%</td>
-					<td>1.30%</td>
-					<td>1.50%</td>
-					<td>1.70%</td>
+					<td>1.20%</td>
 				</tr>
 				<tr className="title">
 					<td colSpan="7" className="icon icon-nova88">
@@ -236,10 +236,10 @@ const EventListTHB = ({ i18n }) => {
 				<tr>
 					<td />
 					<td />
-					<td>400,000</td>
-					<td>1,300,000</td>
-					<td>2,300,000</td>
-					<td>{i18n.lbl_Vip_ByInvitation}</td>
+					<td>500,000</td>
+					<td>1,000,000</td>
+					<td>3,000,000</td>
+					<td>5,000,000</td>
 				</tr>
 				<tr>
 					<td colSpan="7">
@@ -249,10 +249,10 @@ const EventListTHB = ({ i18n }) => {
 				<tr>
 					<td />
 					<td />
-					<td>4,000,000</td>
-					<td>13,000,000</td>
-					<td>23,000,000</td>
-					<td>{i18n.lbl_Vip_ByInvitation}</td>
+					<td>5,000,000</td>
+					<td>10,000,000</td>
+					<td>30,000,000</td>
+					<td>50,000,000</td>
 				</tr>
 				<tr>
 					<td colSpan="7">
