@@ -2406,6 +2406,10 @@ footer > a.open .circleAnimation + span {
           transform: translateY(15%);
 }
 
+.inputBox + .open {
+  width: 100%;
+}
+
 .LoginRule {
   height: 0;
   visibility: hidden;

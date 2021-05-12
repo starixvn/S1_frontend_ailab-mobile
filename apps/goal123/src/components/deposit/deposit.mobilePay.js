@@ -202,6 +202,7 @@ const Payment = props => {
 				EditAmount={EditAmount}
 				payType={payType}
 				clickInfo={clickInfo}
+				VaildAmount={VaildAmount.bind(this, { _amount: amount })}
 			/>
 			<div className="btn-group">
 				<button className="lightBlue" onClick={ClickSubmit}>

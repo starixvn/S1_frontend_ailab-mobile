@@ -452,6 +452,7 @@ const Payment = props => {
 				EditAmount={EditAmount}
 				payType={payType}
 				clickInfo={clickInfo.bind(this, { col: "amount" })}
+				VaildAmount={VaildAmount.bind(this, { _amount: amount })}
 			/>
 			<ImportantNotes i18n={i18n} />
 			<div className="btn-group">

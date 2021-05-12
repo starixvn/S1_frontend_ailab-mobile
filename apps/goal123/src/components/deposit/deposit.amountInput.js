@@ -14,7 +14,8 @@ const AmountInput = ({
 	SelectAmount,
 	EditAmount,
 	btnStatus,
-	clickInfo
+	clickInfo,
+	VaildAmount
 }) => {
 	const { amountRule, amountList, minAmount, maxAmount } = channel;
 	let content = null;
@@ -48,6 +49,7 @@ const AmountInput = ({
 							: ""
 					}
 					value={amount}
+					onBlur={VaildAmount}
 				/>
 				<div className="icon-module">
 					(&apos;000)
@@ -72,7 +74,8 @@ const AmountInput = ({
 AmountInput.defaultProps = {
 	tip: "",
 	btnStatus: null,
-	clickInfo: () => null
+	clickInfo: () => null,
+	VaildAmount: () => null
 };
 
 AmountInput.propTypes = {
@@ -87,7 +90,8 @@ AmountInput.propTypes = {
 	EditAmount: PropTypes.func.isRequired,
 	payType: PropTypes.string.isRequired,
 	btnStatus: PropTypes.bool,
-	clickInfo: PropTypes.func
+	clickInfo: PropTypes.func,
+	VaildAmount: PropTypes.func
 };
 
 export default AmountInput;
