@@ -151,15 +151,15 @@ const PlaytechJactpot = () => {
 						casino: "hotspin88am",
 						currency: "vnd"
 				  });
-
 		ticker2?.attachToTextBox("tick");
+		ticker2.SetCurrencySign("");
 		ticker2?.tick();
 	}, []);
 
 	return (
 		<div className="jackpot">
 			<img src={jackpot} alt="" />
-			<p>VEN</p>
+			<p>VND</p>
 			<p id="tick" />
 		</div>
 	);

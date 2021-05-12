@@ -215,7 +215,6 @@ header > div .Login {
           justify-content: center;
   pointer-events: none;
   overflow-y: scroll;
-  white-space: normal;
 }
 
 header > div .Join.open,
@@ -321,6 +320,12 @@ header > div .Login .inputBox > .icon-module {
   position: absolute;
   right: 0;
   top: 0;
+}
+
+header > div .Join .inputBox > .icon-module > i.icon,
+header > div .Login .inputBox > .icon-module > i.icon {
+  -webkit-transform: translateY(60%);
+          transform: translateY(60%);
 }
 
 header > div .Join .inputBox i.icon,
@@ -1969,33 +1974,6 @@ main.statementPage {
   border-radius: 0 0 5px 5px;
 }
 
-.mainNew .jackpot {
-  padding: 0 2vw;
-  position: relative;
-}
-
-.mainNew .jackpot .title {
-  background: url(../img/titlebg.png) no-repeat center;
-  background-size: 100%;
-  width: 30%;
-  padding: 10px;
-  text-transform: uppercase;
-}
-
-.mainNew .jackpot img {
-  width: 100%;
-}
-
-.mainNew .jackpot .number {
-  position: absolute;
-  top: 60%;
-  left: 47%;
-  font-size: 3.5vw;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  color: white;
-}
-
 .mainNew .vipRanking {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2406,6 +2384,7 @@ main.statementPage {
 .inputBox i.icon.icon-warning, .inputBox i.icon.icon-eye, .inputBox i.icon.icon-eye-blocked, .inputBox i.icon.icon-cross, .inputBox i.icon.icon-checkmark, .inputBox i.icon.icon-information-solid {
   position: initial;
   margin-right: 2vw;
+  margin-left: 1.5vw;
   display: inline-block;
 }
 
@@ -2420,7 +2399,13 @@ main.statementPage {
 .inputBox > .icon-module {
   position: absolute;
   right: 0;
-  top: 0;
+  top: 8px;
+  color: #6f7a8e;
+}
+
+.inputBox > .icon-module > i.icon {
+  -webkit-transform: translateY(15%);
+          transform: translateY(15%);
 }
 
 .LoginRule {
@@ -6583,6 +6568,11 @@ span.important {
   position: absolute;
   right: 0;
   top: 0;
+}
+
+.Join .inputBox > .icon-module > i.icon {
+  -webkit-transform: translateY(60%);
+          transform: translateY(60%);
 }
 
 .Join .inputBox i.icon.icon-eye, .Join .inputBox i.icon.icon-eye-blocked {
