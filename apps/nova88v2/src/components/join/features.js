@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import i18nContext from "../common/context";
 
 const FeaturePanel = ({ langId }) => {
 	if (langId === "cs") return <CS />;
@@ -15,22 +16,26 @@ FeaturePanel.propTypes = {
 export default FeaturePanel;
 
 const EN = () => {
+	const { i18n } = useContext(i18nContext);
 	return (
 		<div className="features">
 			<div className="title">
 				<span className="icon icon-star-full" />
-				FEATURES
+				{i18n.lbl_Features}
 			</div>
-			<div className="title">MEMBER BENEFITS</div>
+			<div className="title">{i18n.lbl_MemberBenefits}</div>
 			<ul>
 				<li>
-					<span>55%</span> NOVA88 STARTER PACK
+					<span>55%</span>
+					{i18n.lbl_StarterPack}
 				</li>
 				<li>
-					<span>68%</span> LIVE CASINO WELCOME BONUS
+					<span>68%</span>
+					{i18n.lbl_WelcomeBonus}
 				</li>
 				<li>
-					<span>100%</span> SLOTS WELCOME BONUS
+					<span>100%</span>
+					{i18n.lbl_WelcomeBonusSlots}
 				</li>
 				<li>
 					DAILY REDEPOSIT BONUS UP TO <span>20%</span>
