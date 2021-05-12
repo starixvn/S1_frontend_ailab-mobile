@@ -7,7 +7,6 @@ import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { defBannerType } from "../../service/api/site";
 
 const swipperParam = {
-	spaceBetween: 30,
 	centeredSlides: true,
 	autoplay: {
 		delay: 2500,
