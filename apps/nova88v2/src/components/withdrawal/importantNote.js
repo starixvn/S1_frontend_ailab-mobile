@@ -48,10 +48,6 @@ const EN = () => (
 			withdrawal transaction after 30 minutes to avoid system auto reject.
 		</li>
 		<li>
-			Please take noted that will be 1x rollover required for all deposit
-			made before any withdrawal can be processed.
-		</li>
-		<li>
 			If there is any discrepancy or you may have any other further
 			withdrawal inquiries, kindly contact our{" "}
 			<a
