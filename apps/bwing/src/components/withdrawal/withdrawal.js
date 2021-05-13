@@ -277,7 +277,7 @@ const Panel = () => {
 	const clickInfo = () => {
 		const _msg = i18n.lbl_AmountTooltip.replace(
 			"{{0}}",
-			number_format(1, _isConvert)
+			number_format(withdrawalMin, _isConvert)
 		);
 		setInputStatus({
 			checked: null,

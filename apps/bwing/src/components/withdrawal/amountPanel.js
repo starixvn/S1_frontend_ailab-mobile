@@ -85,7 +85,8 @@ AmountPanel.defaultProps = {
 	_isConvert: false,
 	i18n: {},
 	balanceInfo: {},
-	inputStatus: {}
+	inputStatus: {},
+	VaildAmount: () => null
 };
 
 AmountPanel.propTypes = {
@@ -97,7 +98,8 @@ AmountPanel.propTypes = {
 	EditAmount: PropTypes.func.isRequired,
 	ClickSubmit: PropTypes.func.isRequired,
 	inputStatus: PropTypes.objectOf(PropTypes.any),
-	i18n: PropTypes.objectOf(PropTypes.string)
+	i18n: PropTypes.objectOf(PropTypes.string),
+	VaildAmount: PropTypes.func
 };
 
 export default AmountPanel;

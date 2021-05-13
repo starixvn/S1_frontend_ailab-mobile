@@ -222,8 +222,9 @@ export const useTransfer = ({
 
 	const EditAmount = e => {
 		const { value } = e.target;
-		ValidAmount(value);
-		setAmount(value);
+		const _amount = String(value).replace(/^(0+)|[^\d]+/g, "");
+		ValidAmount(_amount);
+		setAmount(_amount);
 	};
 
 	const setMaxAmount = () => {
