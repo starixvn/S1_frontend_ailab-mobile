@@ -490,6 +490,7 @@
 	"lbl_Vip_Lifetime":"Lifetime",
 	"lbl_Vip_3Months":"3 Months",
 	"lbl_VIP":"VIP",
+	"lbl_Vip_Last_Updated":"LAST UPDATED",
 	"ibi_GameProvider":"Game Provider",
 	"lbl_MysteryBox_EventTitle":"Mystery Box",
 	"lbl_MysteryBox_AlreadyDrawn":"You have already drawn today, please try again tomorrow!",
