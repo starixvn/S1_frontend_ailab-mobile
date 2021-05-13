@@ -12,29 +12,24 @@ const PopBoxTurnover = ({ currencyId, turnover, rollover }) => {
 	return (
 		<div className="popTxt">
 			<div className="account">
-				<div className="info">{i18n.lbl_TurnoverAccmulateHint}</div>
+				<div className="info">
+					<div>{i18n.lbl_TurnoverAccmulateHint}</div>
+					<div className="title">{i18n.lbl_TurnoverAccumulated}</div>
+					<div>
+						<span className="text-org">
+							{`${currency} $${number_format(turnover)} / ${
+								i18n.lbl_Req
+							}. ${currency} ${number_format(rollover)}`}
+						</span>
+					</div>
+				</div>
 				<div className="progressBarModule">
-					<div className="bounsName">
-						{i18n.lbl_TurnoverAccumulated}
-					</div>
-					<div className="turnover">
-						<span>
-							{currency} ${number_format(turnover)}
-						</span>{" "}
-						/ (
-						{`${i18n.lbl_Req}. ${currency} ${number_format(
-							rollover
-						)}`}
-						)
-					</div>
-					<div className="progressBar">
-						<div className="bar">
-							<div
-								className="progress"
-								style={{ width: `${percentage}%` }}
-							/>
-						</div>
-						<div className="percentage">{percentage}%</div>
+					<div className="percentage">{percentage}%</div>
+					<div className="bar">
+						<div
+							className="progress"
+							style={{ width: `${percentage}%` }}
+						/>
 					</div>
 				</div>
 			</div>
