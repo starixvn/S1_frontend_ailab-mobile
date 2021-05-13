@@ -577,5 +577,8 @@
 	"lbl_UserNameCheckTooltip":"6-18 ký tự chữ và số (A-Z, a-z, 0-9)",
 	"lbl_LoadCard":"THẺ CÀO",
 	"lbl_DepositType5":"THẺ CÀO",
-	"lbl_EmailRequired":"Vui lòng điền vào cột địa chỉ Email."
+	"lbl_EmailRequired":"Vui lòng điền vào cột địa chỉ Email.",
+
+	"==============Transfer==============":"",
+	"lbl_Fail":"Thất bại"
 }

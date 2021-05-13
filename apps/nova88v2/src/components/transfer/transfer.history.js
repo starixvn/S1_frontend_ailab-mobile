@@ -72,6 +72,7 @@ const Panel = ({
 				endWallet={_transferDirection.endWallet}
 				i18n={i18n}
 				memo={item.memo}
+				status={item.status}
 			/>
 		);
 	});

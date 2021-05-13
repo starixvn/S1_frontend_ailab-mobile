@@ -12,3 +12,10 @@ export const initTransferOptions = {
 	transferFrom: [],
 	transferTo: []
 };
+
+export const initStatus = { checked: null, msg: "" };
+
+export const transDirection = {
+	from: "transferFrom",
+	to: "transferTo"
+};

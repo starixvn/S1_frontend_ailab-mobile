@@ -577,5 +577,8 @@
 	"lbl_UserNameCheckTooltip":"6-18 alphanumeric (A-Z, a-z, 0-9) characters only.",
 	"lbl_TopUpCard":"TOP-UP CARD",
 	"lbl_DepositType5":"TOP-UP CARD",
-	"lbl_EmailRequired":"Please fill in the email field"
+	"lbl_EmailRequired":"Please fill in the email field",
+	
+	"==============Transfer==============":"",
+	"lbl_Fail":"Failed"
 }

@@ -72,7 +72,7 @@ const defIconType = {
 
 const eventTime = {
 	new_vip: { startDate: "2021/02/05 11:00:00" },
-	casino_PT: { endDate: "2021/06/05 11:00:00" }
+	casino_PT: { endDate: "2021/06/20 11:00:00" }
 };
 
 const gameList = ({ langId, currencyName }) => {
@@ -221,6 +221,19 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "SG",
 							img: casino_SG,
 							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_PT,
+							parameter: defGameInfo.Casino_PT,
+							spanText: "PT",
+							img: casino_PT,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(eventTime.casino_PT)
+								}
+							]
 						},
 						{
 							...defGameInfo.Casino_JOKER,
@@ -509,7 +522,19 @@ const gameList = ({ langId, currencyName }) => {
 							img: casino_JOKER,
 							path: path.casino.root
 						},
-
+						{
+							...defGameInfo.Casino_PT,
+							parameter: defGameInfo.Casino_PT,
+							spanText: "PT",
+							img: casino_PT,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(eventTime.casino_PT)
+								}
+							]
+						},
 						{
 							...defGameInfo.Casino_GPI,
 							parameter: defGameInfo.Casino_GPI,
@@ -807,6 +832,19 @@ const gameList = ({ langId, currencyName }) => {
 							path: path.casino.root
 						},
 						{
+							...defGameInfo.Casino_PT,
+							parameter: defGameInfo.Casino_PT,
+							spanText: "PT",
+							img: casino_PT,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(eventTime.casino_PT)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_YGG,
 							parameter: defGameInfo.Casino_YGG,
 							spanText: "YGG",
@@ -1058,6 +1096,19 @@ const gameList = ({ langId, currencyName }) => {
 					categoryIcon: "icon_777",
 					translateKey: "lbl_Casino",
 					items: [
+						{
+							...defGameInfo.Casino_PT,
+							parameter: defGameInfo.Casino_PT,
+							spanText: "PT",
+							img: casino_PT,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(eventTime.casino_PT)
+								}
+							]
+						},
 						{
 							...defGameInfo.Casino_PP,
 							parameter: defGameInfo.Casino_PP,
