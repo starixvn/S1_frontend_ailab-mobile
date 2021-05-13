@@ -123,7 +123,7 @@ const eventTime = {
 	ranking: { startDate: "2021/01/01 12:00:00" },
 	new_vip: { startDate: "2021/03/11 11:00:00" },
 	new_LiveCasino_N2Live: { startDate: "2021/03/12 11:00:00" },
-	casino_pt: { endDate: "2021/06/05 11:00:00" }
+	casino_pt: { endDate: "2021/06/20 11:00:00" }
 };
 
 export const defCol = {
@@ -317,19 +317,19 @@ const gameList = [
 		translateKey: "lbl_Slots",
 		img: Menu_Slots,
 		items: [
-			// {
-			// 	...defGameInfo.Casino_PT,
-			// 	parameter: defGameInfo.Casino_PT,
-			// 	spanText: "PT",
-			// 	img: Casino_PT,
-			// 	path: path.casino.root,
-			// 	eventIcon: [
-			// 		{
-			// 			icon: defIconType.new,
-			// 			inPeriod: isEventPeriod(eventTime.casino_pt)
-			// 		}
-			// 	]
-			// },
+			{
+				...defGameInfo.Casino_PT,
+				parameter: defGameInfo.Casino_PT,
+				spanText: "PT",
+				img: Casino_PT,
+				path: path.casino.root,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.casino_pt)
+					}
+				]
+			},
 			{
 				...defGameInfo.casino_ICG,
 				parameter: defGameInfo.casino_ICG,

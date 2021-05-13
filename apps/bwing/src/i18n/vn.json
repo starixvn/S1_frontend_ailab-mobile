@@ -575,5 +575,9 @@
 	"lbl_Tournament" : "Vòng đấu",
 	"lbl_Stage": "Giai đoạn",
 	"lbl_LoadCard":"THẺ CÀO",
-	"lbl_DepositType5":"THẺ CÀO"
+	"lbl_DepositType5":"THẺ CÀO",
+
+
+	"==============Transfer==============":"",
+	"lbl_Fail":"Thất bại"
 }
