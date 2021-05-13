@@ -46,6 +46,9 @@ const IndexPage = () => {
 				<LevelList i18n={i18n} langId={userInfo.langId} />
 				<Info langId={userInfo.langId} />
 				<div className="vipPage">
+					<div className="text">
+						{i18n.lbl_Vip_Last_Updated}: 12/05/2021
+					</div>
 					<EventList langId={userInfo.langId} />
 					<FooterBanner
 						langId={userInfo.langId}
