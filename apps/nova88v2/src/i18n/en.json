@@ -87,8 +87,8 @@
 	"lbl_MainWallet": "Main Wallet",
 	"lbl_ID": "ID",
 	"lbl_Login": "Login",
-	"lbl_Date,": "Date",
-	"lbl_Time,": "Time",
+	"lbl_Date": "Date",
+	"lbl_Time": "Time",
 	"lbl_Deposit": "Deposit",
 	"lbl_Transfer": "Transfer",
 	"lbl_Withdrawal": "Withdrawal",
@@ -129,9 +129,9 @@
 	"lbl_Today": "Today",
 	"lbl_BankNumber": "Account Number",
 	"lbl_QuickPick": "Quick Pick",
-	"lbl_TransactionHistory,": "Transaction History",
-	"lbl_WithdrawalHistory,": "Withdrawal History",
-	"lbl_TransferHistory,": "Transfer History",
+	"lbl_TransactionHistory": "Transaction History",
+	"lbl_WithdrawalHistory": "Withdrawal History",
+	"lbl_TransferHistory": "Transfer History",
 	"lbl_From": "From",
 	"lbl_Statement": "Statement",
 	"lbl_DepositAmount": "Deposit Amount",
@@ -273,10 +273,10 @@
 	"lbl_EuroDate2": "13 APR - 12 MAY",
 	"lbl_EuroDate3": "13 MAY - 12 JUN",
 	"lbl_Final": "UEFA EURO 2020 FINAL TOURNAMENT",
-	"lbl_MonthlyTournament ": "MONTHLY TOURNAMENT",
-	"lbl_EuroEventTitle1 ": "UEFA EURO FINAL 2020",
-	"lbl_EuroEventTitle2 ": "UP TO MYR 500,000 PRIZES WORTH!",
-	"lbl_EuroEventTitle3 ": "",
+	"lbl_MonthlyTournament": "MONTHLY TOURNAMENT",
+	"lbl_EuroEventTitle1": "UEFA EURO FINAL 2020",
+	"lbl_EuroEventTitle2": "UP TO MYR 500,000 PRIZES WORTH!",
+	"lbl_EuroEventTitle3": "",
 	"lbl_EuroEventTitle4": "",
 	"lbl_EuroEventTitle5": "",
 	"lbl_AgendaTitle": "MONTHLY DEPOSIT & TURNOVER RACE TOURNAMENT",
@@ -364,6 +364,7 @@
 	"lbl_Memo": "Memo",
 	"lbl_AutoTransfer": "Main Wallet Auto Transfer",
 	"lbl_Direction": "Direction",
+	
 
 	"==============================================Statement====================================": "",
 
@@ -539,5 +540,8 @@
 
 	"==============================================Wallet====================================": "",
 	"lbl_TpWallet_1": "Sportsbook Wallet",
-	"lbl_TpWallet_27": "PT Wallet"
+	"lbl_TpWallet_27": "PT Wallet",
+
+	"==============Important Notice==============":"",
+	"lbl_ImportantNotice":"IMPORTANT NOTICE"
 }

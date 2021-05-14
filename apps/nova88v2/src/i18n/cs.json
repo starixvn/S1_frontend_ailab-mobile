@@ -92,8 +92,8 @@
 	"lbl_MainWallet": "中心钱包",
 	"lbl_ID": "ID",
 	"lbl_Login": "登入",
-	"lbl_Date,": "Date",
-	"lbl_Time,": "Time",
+	"lbl_Date": "Date",
+	"lbl_Time": "Time",
 	"lbl_Deposit": "充值",
 	"lbl_Transfer": "转帐",
 	"lbl_Withdrawal": "提现",
@@ -134,9 +134,9 @@
 	"lbl_Today": "今日",
 	"lbl_BankNumber": "银行账户号码",
 	"lbl_QuickPick": "时间快选",
-	"lbl_TransactionHistory,": "Transaction History",
-	"lbl_WithdrawalHistory,": "Withdrawal History",
-	"lbl_TransferHistory,": "Transfer History",
+	"lbl_TransactionHistory": "Transaction History",
+	"lbl_WithdrawalHistory": "Withdrawal History",
+	"lbl_TransferHistory": "Transfer History",
 	"lbl_From": "从",
 	"lbl_Statement": "账变记录",
 	"lbl_DepositAmount": "充值金额",
@@ -271,10 +271,10 @@
 	"lbl_EuroDate2": "4月 13日 - 5月 12日",
 	"lbl_EuroDate3": "5月 13日 - 6月 12日",
 	"lbl_Final": "2020 欧洲冠军杯决赛",
-	"lbl_MonthlyTournament ": "每月赛程表",
-	"lbl_EuroEventTitle1 ": "2020欧洲杯决赛",
-	"lbl_EuroEventTitle2 ": "高达MYR 500,000奖励！",
-	"lbl_EuroEventTitle3 ": "",
+	"lbl_MonthlyTournament": "每月赛程表",
+	"lbl_EuroEventTitle1": "2020欧洲杯决赛",
+	"lbl_EuroEventTitle2": "高达MYR 500,000奖励！",
+	"lbl_EuroEventTitle3": "",
 	"lbl_EuroEventTitle4": "",
 	"lbl_EuroEventTitle5": "",
 	"lbl_AgendaTitle": "每月存款 和 流水倍数竞赛",
@@ -511,5 +511,8 @@
 
 	"==============================================Wallet====================================": "",
 	"lbl_TpWallet_1": "体育钱包",
-	"lbl_TpWallet_27": "PT钱包"
+	"lbl_TpWallet_27": "PT钱包",
+
+	"==============Important Notice==============":"",
+	"lbl_ImportantNotice":"重要通知"
 }

@@ -86,8 +86,8 @@
     "lbl_MainWallet":"Dompet Utama",
     "lbl_ID":"ID",
     "lbl_Login":"Login",
-    "lbl_Date,":"Waktu",
-    "lbl_Time,":"Time",
+    "lbl_Date":"Waktu",
+    "lbl_Time":"Time",
     "lbl_Deposit":"Setoran",
     "lbl_Transfer":"Transfer",
     "lbl_Withdrawal":"Penarikan",
@@ -128,9 +128,9 @@
     "lbl_Today":"Hari Ini",
     "lbl_BankNumber":"Nomor rekening Bank",
     "lbl_QuickPick":"Pilihan Cepat",
-    "lbl_TransactionHistory,":"Riwayat transaksi",
-    "lbl_WithdrawalHistory,":"Riwayat Penarikan",
-    "lbl_TransferHistory,":"Riwayat Transfer ",
+    "lbl_TransactionHistory":"Riwayat transaksi",
+    "lbl_WithdrawalHistory":"Riwayat Penarikan",
+    "lbl_TransferHistory":"Riwayat Transfer ",
     "lbl_From":"dari",
     "lbl_Statement":"Pernyataan",
     "lbl_DepositAmount":"Jumlah Yang Disetor",
@@ -265,10 +265,10 @@
     "lbl_EuroDate2":"13 APR - 12 MAY",
     "lbl_EuroDate3":"13 MAY - 12 JUN",
     "lbl_Final":"FINAL PIALA EROPA 2020",
-    "lbl_MonthlyTournament ":" TURNAMEN BULANAN",
-    "lbl_EuroEventTitle1 ":"FINAL PIALA EROPA 2020",
-    "lbl_EuroEventTitle2 ":"HADIAH HINGGA IDR 450.000.000",
-    "lbl_EuroEventTitle3 ":"",
+    "lbl_MonthlyTournament":" TURNAMEN BULANAN",
+    "lbl_EuroEventTitle1":"FINAL PIALA EROPA 2020",
+    "lbl_EuroEventTitle2":"HADIAH HINGGA IDR 450.000.000",
+    "lbl_EuroEventTitle3":"",
     "lbl_EuroEventTitle4":"",
     "lbl_EuroEventTitle5":"",
     "lbl_AgendaTitle":"TURNAMEN DEPOSIT BULANAN & TURNOVER",
@@ -521,5 +521,8 @@
 
 	"==============================================Wallet====================================": "",
 	"lbl_TpWallet_1": "Dompet Olahraga",
-	"lbl_TpWallet_27": "Dompet PT"
+	"lbl_TpWallet_27": "Dompet PT",
+
+	"==============Important Notice==============":"",
+	"lbl_ImportantNotice":"PEMBERITAHUAN PENTING"
     }
