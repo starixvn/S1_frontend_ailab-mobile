@@ -356,6 +356,8 @@
     "lbl_Memo":"Memo",
     "lbl_AutoTransfer":"Transfer Otomatis Dompet Utama",
     "lbl_Direction":"Direction",
+    "lbl_Success":"Berhasil",
+	"lbl_Fail":"Gagal",
     "-==================-==========================Statement-===================================":"",
 
     "lbl_TypeName":"Ketik nama",

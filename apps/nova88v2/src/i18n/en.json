@@ -372,6 +372,8 @@
 	"lbl_Memo": "Memo",
 	"lbl_AutoTransfer": "Main Wallet Auto Transfer",
 	"lbl_Direction": "Direction",
+	"lbl_Success":"Success",
+	"lbl_Fail":"Failed",
 	
 
 	"==============================================Statement====================================": "",
