@@ -17,7 +17,11 @@ import Referral from "../components/home/referral";
 import EventSwipper from "../components/home/eventSwipper";
 import HeaderShortcut from "../components/home/headerShortcut";
 import Bottom from "../components/home/bottom";
-import { readCookie, setCookie } from "../components/common/common";
+import {
+	readCookie,
+	setCookie,
+	isEventPeriod
+} from "../components/common/common";
 import path from "../path";
 import api from "../service/api";
 import Header from "../components/header/header";
@@ -96,85 +100,23 @@ const IndexPage = () => {
 				)
 			});
 		}
-		// else {
-		// 	const cookieName = `balanceHint${userInfo.userName}`;
-		// 	if (
-		// 		userInfo.currencyId &&
-		// 		userInfo.userName &&
-		// 		readCookie(cookieName) !== "1" &&
-		// 	) {
-		// 		setCookie(cookieName, "1", 1);
-		// 		api.account.GetWalletInfo().then(res => {
-		// 			if (res.data.errorCode === 0) {
-		// 				const { balance, tpWallets } = res.data.data;
-		// 				const mainWallet = {
-		// 					id: 0,
-		// 					displayKey: "lbl_MainWallet",
-		// 					balance
-		// 				};
-		// 				const tpWalletsArr = tpWallets?.map(i => {
-		// 					return {
-		// 						id: i.tpId,
-		// 						displayKey: i.displayKey,
-		// 						balance: i.balance
-		// 					};
-		// 				});
-
-		// 				const hasBalance =
-		// 					mainWallet.balance ||
-		// 					tpWalletsArr?.filter(t => {
-		// 						return t.balance > 0;
-		// 					}).length >= 1;
-
-		// 				if (!hasBalance) {
-		// 					const RedirectToDeposit = () => {
-		// 						navigate(
-		// 							`/${userInfo.langId}/${path.deposit.root}`
-		// 						);
-		// 						ClosePopUp();
-		// 					};
-
-		// 					setPopBox({
-		// 						isOpen: true,
-		// 						title: i18n.lbl_Notice,
-		// 						content: (
-		// 							<>
-		// 								<p>
-		// 									{`${i18n.msg_BalanceHint} : `}
-		// 									<span className="important">
-		// 										{`${
-		// 											i18n[
-		// 												`Currency_${userInfo.currencyId}`
-		// 											]
-		// 										} 0`}
-		// 									</span>
-		// 								</p>
-		// 								<p>{i18n.msg_DepositHint}</p>
-		// 							</>
-		// 						),
-		// 						hasBtn: true,
-		// 						btnBar: (
-		// 							<div className="btn-group">
-		// 								<button
-		// 									type="submit"
-		// 									className="blue"
-		// 									onClick={ClosePopUp}>
-		// 									{i18n.lbl_Later}
-		// 								</button>
-		// 								<button
-		// 									type="submit"
-		// 									onClick={RedirectToDeposit}
-		// 									className="orange">
-		// 									{i18n.lbl_DepositNow}
-		// 								</button>
-		// 							</div>
-		// 						)
-		// 					});
-		// 				}
-		// 			}
-		// 		});
-		// 	}
-		// }
+		if (
+			isEventPeriod({
+				endDate: "2021/05/18 23:59:59"
+			}) &&
+			userInfo.isLogin === false
+		) {
+			setPopBox({
+				isOpen: true,
+				content: (
+					<img
+						src={`https://image.n88media.com/SiteSkin/img/euro/EURO-RACE-MONTHLY-WINNERS-${userInfo.langId.toUpperCase()}.jpg`}
+						alt="winner"
+					/>
+				),
+				hasBtn: true
+			});
+		}
 	}, [
 		i18n,
 		setPopBox,
@@ -182,7 +124,8 @@ const IndexPage = () => {
 		userInfo.userName,
 		navigate,
 		userInfo.langId,
-		userInfo.isJoin
+		userInfo.isJoin,
+		userInfo.isLogin
 	]);
 
 	useEffect(() => {
