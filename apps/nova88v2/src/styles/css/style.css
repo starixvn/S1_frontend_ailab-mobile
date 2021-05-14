@@ -1180,6 +1180,14 @@ footer > a.active .circleAnimation + span {
           flex-flow: column;
 }
 
+#popup .popTxt img {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 100%;
+  height: auto;
+}
+
 #popup .popTxt img.bankimg {
   width: 20vw;
 }
@@ -7540,9 +7548,9 @@ span.important {
   position: relative;
 }
 
-.jpot div {
+.jpot > div {
   position: absolute;
-  bottom: 12.5vw;
+  bottom: 11.5vw;
   right: 10vw;
   font-size: 5vw;
   width: 55vw;
@@ -7559,9 +7567,29 @@ span.important {
           align-items: center;
 }
 
-.jpot div span {
-  font-size: 16px;
-  font-weight: normal;
+.jpot > div div:first-child {
+  font-size: 20px;
+  margin: auto auto auto 0;
+}
+
+.jpot > div div:nth-child(n+2) {
+  font-size: 24px;
+  width: 18px;
+  height: 30px;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.jpot > div div:nth-child(n+2) span {
+  word-break: break-word;
+  position: absolute;
+  left: 0;
+}
+
+.jpot > div div:nth-child(n+2) span.active {
+  -webkit-animation: jpotxt 2s infinite;
+          animation: jpotxt 2s infinite;
 }
 
 @-webkit-keyframes jpot {
@@ -7585,6 +7613,28 @@ span.important {
   }
   100% {
     background: url(../img/jpotbg.png) no-repeat center/cover;
+  }
+}
+
+@-webkit-keyframes jpotxt {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+  }
+}
+
+@keyframes jpotxt {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
   }
 }
 
