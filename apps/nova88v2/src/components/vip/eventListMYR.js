@@ -104,7 +104,7 @@ const EventListMYR = ({ i18n }) => (
 				<td>80,000</td>
 				<td>100,000</td>
 				<td>300,000</td>
-				<td>Unlimited</td>
+				<td>{i18n.lbl_VIP_unlimited}</td>
 			</tr>
 			{/* <tr>
 					<td colSpan="7">

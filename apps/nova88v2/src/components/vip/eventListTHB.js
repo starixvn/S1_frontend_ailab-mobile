@@ -107,7 +107,7 @@ const EventListTHB = ({ i18n }) => {
 					<td>800,000</td>
 					<td>1,000,000</td>
 					<td>1,500,000</td>
-					<td>Unlimited</td>
+					<td>{i18n.lbl_VIP_unlimited}</td>
 				</tr>
 				{/* <tr>
 						<td colSpan="7">

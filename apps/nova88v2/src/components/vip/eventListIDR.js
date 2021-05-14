@@ -107,7 +107,7 @@ const EventListIDR = ({ i18n }) => {
 					<td>150.000 ('000)</td>
 					<td>200.000 ('000)</td>
 					<td>500.000 ('000)</td>
-					<td>Unlimited</td>
+					<td>{i18n.lbl_VIP_unlimited}</td>
 				</tr>
 				{/* <tr>
 						<td colSpan="7">
