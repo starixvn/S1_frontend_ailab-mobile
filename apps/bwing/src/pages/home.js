@@ -126,7 +126,7 @@ const IndexPage = () => {
 			isEventPeriod({
 				endDate: "2021/05/18 23:59:59"
 			}) &&
-			!userInfo.isLogin
+			userInfo.isLogin === false
 		) {
 			setPopBox({
 				isOpen: true,
@@ -139,7 +139,13 @@ const IndexPage = () => {
 				hasBtn: true
 			});
 		}
-	}, [i18n, setPopBox, userInfo.currencyId, userInfo.userName]);
+	}, [
+		i18n,
+		setPopBox,
+		userInfo.currencyId,
+		userInfo.userName,
+		userInfo.isLogin
+	]);
 
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
