@@ -402,6 +402,8 @@
 	"lbl_Vip_3Months": "三个月",
 	"lbl_VIP": "VIP",
 	"lbl_Club": "俱乐部",
+	"lbl_WithdrawalLimitation":"每日提款限制",
+	"lbl_VIP_unlimited": "无上限",
 	"-==================--=========================MysteryBox--==================================": "",
 	"lbl_Start": "开始",
 	"lbl_MysteryBox_EventTitle": "神秘宝盒",

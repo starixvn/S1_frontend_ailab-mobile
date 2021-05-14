@@ -98,6 +98,17 @@ const EventListTHB = ({ i18n }) => {
 						<i className="icon icon-checkmark" />
 					</td>
 				</tr>
+				<tr>
+					<td colSpan="7">{i18n.lbl_WithdrawalLimitation}</td>
+				</tr>
+				<tr>
+					<td>500,000</td>
+					<td>600,000</td>
+					<td>800,000</td>
+					<td>1,000,000</td>
+					<td>1,500,000</td>
+					<td>{i18n.lbl_VIP_unlimited}</td>
+				</tr>
 				{/* <tr>
 						<td colSpan="7">
 							{i18n.lbl_Vip_Unlimited_Withdrawal_amount}
