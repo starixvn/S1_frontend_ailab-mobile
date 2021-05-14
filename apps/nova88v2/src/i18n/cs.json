@@ -507,5 +507,9 @@
 	"lbl_DepositType1": "网络银行",
 	"lbl_DepositType2": "手机支付",
 	"lbl_DepositType3": "银行卡",
-	"lbl_DepositType4": "加密货币"
+	"lbl_DepositType4": "加密货币",
+
+	"==============================================Wallet====================================": "",
+	"lbl_TpWallet_1": "体育钱包",
+	"lbl_TpWallet_27": "PT钱包"
 }

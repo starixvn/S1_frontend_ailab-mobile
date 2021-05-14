@@ -535,5 +535,9 @@
 	"lbl_DepositType1": "Online Banking",
 	"lbl_DepositType2": "Mobile Payment",
 	"lbl_DepositType3": "Local Bank",
-	"lbl_DepositType4": "Crypto Pay"
+	"lbl_DepositType4": "Crypto Pay",
+
+	"==============================================Wallet====================================": "",
+	"lbl_TpWallet_1": "Sportsbook Wallet",
+	"lbl_TpWallet_27": "PT Wallet"
 }
