@@ -532,5 +532,12 @@
 	"lbl_DepositType1": "Online Banking",
 	"lbl_DepositType2": "Mobile Payment",
 	"lbl_DepositType3": "Local Bank",
-	"lbl_DepositType4": "Crypto Pay"
+	"lbl_DepositType4": "Crypto Pay",
+
+	"==============================================Backup Domain====================================": "",
+
+	"lbl_nova88_backup_website":"Please save the latest NOVA88 domain for backup purposes.",
+	"lbl_kindly_visit_alternate_link_for_better_performance":"Should you feel slowness, kindly visit alternate link for better performance.",
+	"lbl_Copy":"Copy",
+	"lbl_Dont_show_me_again":"Dont show me again"
 }

@@ -503,5 +503,13 @@
 	"lbl_DepositType1": "网络银行",
 	"lbl_DepositType2": "手机支付",
 	"lbl_DepositType3": "银行卡",
-	"lbl_DepositType4": "加密货币"
+	"lbl_DepositType4": "加密货币",
+
+	"==============================================Backup Domain====================================": "",
+
+	"lbl_nova88_backup_website":"请保存NOVA88最新网址以备用。",
+	"lbl_kindly_visit_alternate_link_for_better_performance":"若您遇到加载缓慢情况，请尝试后备链接以获更佳体验。",
+	"lbl_Copy":"复制",
+	"lbl_Dont_show_me_again":"不再显示"
+
 }

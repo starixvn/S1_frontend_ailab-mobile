@@ -23,6 +23,7 @@ import api from "../service/api";
 import Header from "../components/header/header";
 import JoinLoginBar from "../components/home/joinLoginBar";
 import Logo from "../components/common/logo";
+import { defPopBoxType } from "../components/common/popbox";
 
 const IndexPage = () => {
 	const navigate = useNavigate();
@@ -182,6 +183,28 @@ const IndexPage = () => {
 		navigate,
 		userInfo.langId,
 		userInfo.isJoin
+	]);
+
+	useEffect(() => {
+		const cookieName = `${userInfo.userName}-DomainListHint`;
+		if (
+			userInfo.isLogin &&
+			userInfo.currencyId &&
+			readCookie(cookieName) !== "1"
+		) {
+			setPopBox({
+				isOpen: true,
+				title: i18n.lbl_nova88_backup_website,
+				popBoxType: defPopBoxType.DomainList,
+				className: "backupDomain "
+			});
+		}
+	}, [
+		userInfo.isLogin,
+		userInfo.currencyId,
+		i18n,
+		setPopBox,
+		userInfo.userName
 	]);
 
 	return (
