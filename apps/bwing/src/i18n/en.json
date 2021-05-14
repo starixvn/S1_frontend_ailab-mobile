@@ -578,5 +578,7 @@
 	"lbl_DepositType5":"TOP-UP CARD",
 	
 	"==============Transfer==============":"",
-	"lbl_Fail":"Failed"
+	"lbl_Fail":"Failed",
+	"lbl_SabaSport":"Saba Sports",
+	"lbl_BTISport" : "BTI Sports"
 }

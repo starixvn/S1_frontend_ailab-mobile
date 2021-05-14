@@ -4405,6 +4405,79 @@ span.important {
   bottom: 14%;
 }
 
+.bannerS .jpot {
+  width: 95%;
+  padding-bottom: 50%;
+  -webkit-animation: jpot 0.3s infinite;
+  animation: jpot 0.3s infinite;
+  position: relative;
+  background: url(../img/jackpot.png) no-repeat center;
+  background-size: 100%;
+}
+
+.bannerS .jpot > div {
+  position: absolute;
+  top: 72%;
+  right: 12%;
+  width: 74%;
+  text-align: right;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 18px;
+}
+
+.bannerS .jpot > div div:first-child {
+  font-size: 18px;
+  margin: auto auto auto 0;
+}
+
+.bannerS .jpot > div div:nth-child(n + 2) {
+  font-size: 16px;
+  width: 13px;
+  height: 23px;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.bannerS .jpot > div div:nth-child(n + 2) span {
+  word-break: break-word;
+  position: absolute;
+  left: 0;
+}
+
+.bannerS .jpot > div div:nth-child(n + 2) span.active {
+  -webkit-animation: jpotxt 2s infinite;
+          animation: jpotxt 2s infinite;
+}
+
+@-webkit-keyframes jpotxt {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+  }
+}
+
+@keyframes jpotxt {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+  }
+}
+
 .gameArea {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4707,6 +4780,8 @@ span.important {
 .headerT .headerTLogin .login button span {
   font-size: 3vw;
   color: #fff;
+  vertical-align: top;
+  margin-left: 3px;
 }
 
 .headerB {
@@ -5979,6 +6054,7 @@ span.important {
 }
 
 .calculation {
+  display: block;
   width: 100%;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -7764,6 +7840,9 @@ span.important {
   display: unset;
   -ms-flex-item-align: start;
       align-self: flex-start;
+  white-space: nowrap;
+  overflow-x: auto;
+  width: 100%;
 }
 
 .filterBtn button {
@@ -8688,7 +8767,7 @@ span.important {
   background: #1a3055;
   padding: 5px;
   border-radius: 5px 5px 0 0;
-  margin-bottom: 1px;
+  margin-bottom: 0px;
 }
 
 .depositModule_mobile > .title:before,
@@ -8708,7 +8787,6 @@ span.important {
 .depositModule_topupmobile .selectModule {
   background: rgba(12, 26, 63, 0.5);
   border: 1px solid #1d2f62;
-  border-top: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8719,6 +8797,15 @@ span.important {
   padding: 2vw;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+.depositModule_mobile .selectModule.important,
+.depositModule_online .selectModule.important,
+.depositModule_local .selectModule.important,
+.depositModule_topupmobile .selectModule.important {
+  background-color: #373e4f;
+  border-radius: 5px;
+  border: 0;
 }
 
 .depositModule_mobile .selectModule input[type="radio"],
@@ -8835,6 +8922,22 @@ span.important {
 .depositModule_local .selectModule > div .bank > div > div,
 .depositModule_topupmobile .selectModule > div .bank > div > div {
   color: #71d3fb;
+}
+
+.depositModule_mobile .selectModule h1,
+.depositModule_online .selectModule h1,
+.depositModule_local .selectModule h1,
+.depositModule_topupmobile .selectModule h1 {
+  text-align: center;
+  width: 100%;
+  margin: 5px 0;
+}
+
+.depositModule_mobile .selectModule h1.icon::before,
+.depositModule_online .selectModule h1.icon::before,
+.depositModule_local .selectModule h1.icon::before,
+.depositModule_topupmobile .selectModule h1.icon::before {
+  margin-right: 5px;
 }
 
 .depositModule_mobile .inputBox,
@@ -9137,13 +9240,14 @@ span.important {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .input-Area {
   margin-bottom: 2vw;
+  display: block !important;
 }
 
 .input-Area .input-title {
@@ -9208,5 +9312,111 @@ span.important {
 .input-Area .input-group .btn-group {
   width: 70%;
   margin: 0;
+}
+
+.pupDeposit {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.7);
+  top: 0;
+  left: 0;
+  z-index: 10;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.pupDeposit .pupclose {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  width: 30px;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.pupDeposit .pupclose .icon {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.pupDeposit .swiper-pagination {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.pupDeposit .swiper-pagination > span {
+  background-color: #fff;
+  margin: 0 3px;
+}
+
+.pupDeposit .btn-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 8vw;
+}
+
+.pupDeposit .btn-group button {
+  max-width: 170px;
+}
+
+.pupDeposit .swiper-container .swiper-wrapper > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.pupDeposit .swiper-container .swiper-wrapper > div .title {
+  color: #58cdff;
+  font-size: 6vw;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2vw;
+}
+
+.pupDeposit .swiper-container .swiper-wrapper > div .swiper-heigh {
+  height: 70vh;
+  overflow-y: auto;
+  margin-top: 20px;
+}
+
+.pupDeposit .swiper-container .swiper-wrapper > div .swiper-heigh img {
+  width: 100%;
+}
+
+.pupDeposit .swiper-container .swiper-wrapper > div .swiper-heigh p {
+  margin: 20px 0 5px 0;
 }
 /*# sourceMappingURL=style.css.map */

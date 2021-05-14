@@ -579,5 +579,7 @@
 
 
 	"==============Transfer==============":"",
-	"lbl_Fail":"Thất bại"
+	"lbl_Fail":"Thất bại",
+	"lbl_SabaSport":"Saba Sports",
+	"lbl_BTISport" : "BTI Sport"
 }

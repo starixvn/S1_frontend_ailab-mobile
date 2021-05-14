@@ -35,6 +35,9 @@ import liveCasino_EB from "../styles/img/liveGame/liveGame7.png";
 import liveCasino_SA from "../styles/img/liveGame/liveGame8.png";
 import liveCasino_N2 from "../styles/img/liveGame/livegame10.png";
 
+import sabaSports from "../styles/img/sport.png";
+import BTI from "../styles/img/BTI-sport.png";
+
 export const defIconType = {
 	live: " liveIcon",
 	new: " newicon",
@@ -55,7 +58,19 @@ export const productList = langId => {
 	return {
 		sports: {
 			displayKey: "lbl_Sports",
-			...defGameInfo.Sports
+			path: path.sports.root,
+			items: [
+				{
+					displayKey: "lbl_SabaSport",
+					img: sabaSports,
+					...defGameInfo.Sports
+				},
+				{
+					displayKey: "lbl_BTISport",
+					img: BTI,
+					...defGameInfo.BTISport
+				}
+			]
 		},
 		game: {
 			displayKey: "lbl_Games",
