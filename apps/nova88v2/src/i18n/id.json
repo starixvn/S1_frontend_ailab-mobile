@@ -180,6 +180,8 @@
     "lbl_financialLog":"Catatan Keuangan",
     "lbl_To":"Kepada",
     "lbl_Free":"Gratis",
+
+    "-==================-==================Currency-==================-=====================" : "" ,   
     "Currency_1": "SGD",
 	"Currency_12": "GBP",
 	"Currency_13": "RMB",
@@ -194,6 +196,8 @@
 	"Currency_51": "VND",
 	"Currency_6": "EURO",
 	"Currency_9": "AUD",
+    "Currency_61": "INR",
+    
     "-==================-==================Home-==================-=====================" : "" ,   
     "lbl_VirtualSports":"Olahraga maya",
     "lbl_UpcomingMatches":"Pertandingan Mendatang",

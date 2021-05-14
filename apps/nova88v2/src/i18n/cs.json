@@ -186,6 +186,8 @@
 	"lbl_financialLog": "财务日志",
 	"lbl_To": "至",
 	"lbl_Free": "免费",
+
+	"-==================-==================Currency-==================--====================": "",
 	"Currency_1": "SGD",
 	"Currency_12": "GBP",
 	"Currency_13": "RMB",
@@ -200,6 +202,8 @@
 	"Currency_51": "VND",
 	"Currency_6": "EURO",
 	"Currency_9": "AUD",
+	"Currency_61": "INR",
+
 	"-==================-==================Home-==================--====================": "",
 	"lbl_VirtualSports": "虚拟运动",
 	"lbl_UpcomingMatches": "即将开始赛事",
