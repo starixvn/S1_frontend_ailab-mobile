@@ -7662,4 +7662,35 @@ span.important {
   letter-spacing: 2px;
   font-size: 5vw;
 }
+
+.importantNote {
+  background: rgba(19, 77, 174, 0.5);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.importantNote .title {
+  text-align: center;
+  font-size: 14px;
+}
+
+.importantNote .title i {
+  font-weight: normal;
+}
+
+.importantNote .title i::before {
+  font-size: 10px;
+}
+
+.importantNote ul {
+  list-style: decimal;
+  margin-left: 4vw;
+  line-height: 1.5;
+}
+
+.importantNote a {
+  font-weight: bold;
+  color: #134dae;
+}
 /*# sourceMappingURL=style.css.map */
