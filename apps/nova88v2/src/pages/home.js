@@ -6,6 +6,7 @@ import {
 	rootContext
 } from "Context";
 import { useNavigate, Link } from "@reach/router";
+import { Helmet } from "react-helmet";
 import Layout from "../components/common/layout";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
@@ -34,7 +35,155 @@ const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
+	let helmet = {};
+	switch (userInfo.langId) {
+		case "en":
+			helmet = (
+				<Helmet>
+					<link rel="canonical" href="https://www.nova88.net/en/" />
+					<link
+						rel="alternate"
+						href="https://www.nova88.net/en/"
+						hrefLang="en-my"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88gol.com/cs/"
+						hrefLang="zh-my"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88apple.com/th/"
+						hrefLang="th-th"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88-indo.com/id/"
+						hrefLang="id-id"
+					/>
+				</Helmet>
+			);
+			break;
+		case "cs":
+			helmet = (
+				<Helmet>
+					<link
+						rel="canonical"
+						href="https://www.nova88gol.com/cs/"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88.net/en/"
+						hrefLang="en-my"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88gol.com/cs/"
+						hrefLang="zh-my"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88apple.com/th/"
+						hrefLang="th-th"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88-indo.com/id/"
+						hrefLang="id-id"
+					/>
+				</Helmet>
+			);
+			break;
+		case "th":
+			helmet = (
+				<Helmet>
+					<link
+						rel="canonical"
+						href="https://www.nova88apple.com/th/"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88.net/en/"
+						hrefLang="en-my"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88gol.com/cs/"
+						hrefLang="zh-my"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88apple.com/th/"
+						hrefLang="th-th"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88-indo.com/id/"
+						hrefLang="id-id"
+					/>
+				</Helmet>
+			);
+			break;
+		case "id":
+			helmet = (
+				<Helmet>
+					<link
+						rel="canonical"
+						href="https://www.nova88-indo.com/id/"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88.net/en/"
+						hrefLang="en-my"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88gol.com/cs/"
+						hrefLang="zh-my"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88apple.com/th/"
+						hrefLang="th-th"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88-indo.com/id/"
+						hrefLang="id-id"
+					/>
+				</Helmet>
+			);
 
+			break;
+
+		default:
+			helmet = (
+				<Helmet>
+					<link rel="canonical" href="https://www.nova88.net/en/" />
+					<link
+						rel="alternate"
+						href="https://www.nova88.net/en/"
+						hrefLang="en-my"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88gol.com/cs/"
+						hrefLang="zh-my"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88apple.com/th/"
+						hrefLang="th-th"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88-indo.com/id/"
+						hrefLang="id-id"
+					/>
+				</Helmet>
+			);
+			break;
+	}
 	useEffect(() => {
 		setRoot(true);
 		return () => {
@@ -128,27 +277,34 @@ const IndexPage = () => {
 	]);
 
 	return (
-		<Layout header={<Header />}>
-			{userInfo.isLogin ? <HeaderShortcut i18n={i18n} /> : null}
-			<Slider />
-			<Marquee />
-			{userInfo.isLogin ? null : <JoinLoginBar />}
-			<div id="content">
-				<Menu i18n={i18n} userInfo={userInfo} setPopBox={setPopBox} />
-				<Promos i18n={i18n} userInfo={userInfo} />
-				<HotGame i18n={i18n} userInfo={userInfo} />
-				{userInfo.isLogin ? (
-					<Referral
+		<>
+			<Layout header={<Header />}>
+				{userInfo.isLogin ? <HeaderShortcut i18n={i18n} /> : null}
+				<Slider />
+				<Marquee />
+				{userInfo.isLogin ? null : <JoinLoginBar />}
+				<div id="content">
+					<Menu
 						i18n={i18n}
 						userInfo={userInfo}
 						setPopBox={setPopBox}
 					/>
-				) : null}
-				<EventSwipper i18n={i18n} userInfo={userInfo} />
-				<Streaming />
-				<Bottom i18n={i18n} langId={userInfo.langId} />
-			</div>
-		</Layout>
+					<Promos i18n={i18n} userInfo={userInfo} />
+					<HotGame i18n={i18n} userInfo={userInfo} />
+					{userInfo.isLogin ? (
+						<Referral
+							i18n={i18n}
+							userInfo={userInfo}
+							setPopBox={setPopBox}
+						/>
+					) : null}
+					<EventSwipper i18n={i18n} userInfo={userInfo} />
+					<Streaming />
+					<Bottom i18n={i18n} langId={userInfo.langId} />
+				</div>
+			</Layout>
+			{helmet}
+		</>
 	);
 };
 

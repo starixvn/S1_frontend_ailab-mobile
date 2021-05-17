@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Helmet } from "react-helmet";
 import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
 import { Autoplay } from "../components/common/swipperBanner";
@@ -37,6 +38,161 @@ const IndexPage = () => {
 			navigate(path.join.root);
 		}
 	};
+	let helmet = {};
+	switch (userInfo.langId) {
+		case "en":
+			helmet = (
+				<Helmet>
+					<link
+						rel="canonical"
+						href="https://www.nova88.net/en/vip"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88.net/en/vip"
+						hrefLang="en-my"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88gol.com/cs/vip"
+						hrefLang="zh-my"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88apple.com/th/vip"
+						hrefLang="th-th"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88-indo.com/id/vip"
+						hrefLang="id-id"
+					/>
+				</Helmet>
+			);
+			break;
+		case "cs":
+			helmet = (
+				<Helmet>
+					<link
+						rel="canonical"
+						href="https://www.nova88gol.com/cs/vip"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88.net/en/vip"
+						hrefLang="en-my"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88gol.com/cs/vip"
+						hrefLang="zh-my"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88apple.com/th/vip"
+						hrefLang="th-th"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88-indo.com/id/vip"
+						hrefLang="id-id"
+					/>
+				</Helmet>
+			);
+			break;
+		case "th":
+			helmet = (
+				<Helmet>
+					<link
+						rel="canonical"
+						href="https://www.nova88apple.com/th/vip"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88.net/en/vip"
+						hrefLang="en-my"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88gol.com/cs/vip"
+						hrefLang="zh-my"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88apple.com/th/vip"
+						hrefLang="th-th"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88-indo.com/id/vip"
+						hrefLang="id-id"
+					/>
+				</Helmet>
+			);
+			break;
+		case "id":
+			helmet = (
+				<Helmet>
+					<link
+						rel="canonical"
+						href="https://www.nova88-indo.com/id/"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88.net/en/"
+						hrefLang="en-my"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88gol.com/cs/"
+						hrefLang="zh-my"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88apple.com/th/"
+						hrefLang="th-th"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88-indo.com/id/"
+						hrefLang="id-id"
+					/>
+				</Helmet>
+			);
+
+			break;
+
+		default:
+			helmet = (
+				<Helmet>
+					<link
+						rel="canonical"
+						href="https://www.nova88.net/en/vip"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88.net/en/vip"
+						hrefLang="en-my"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88gol.com/cs/vip"
+						hrefLang="zh-my"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88apple.com/th/vip"
+						hrefLang="th-th"
+					/>
+					<link
+						rel="alternate"
+						href="https://www.nova88-indo.com/id/vip"
+						hrefLang="id-id"
+					/>
+				</Helmet>
+			);
+			break;
+	}
 
 	return (
 		<>
@@ -57,6 +213,7 @@ const IndexPage = () => {
 				</div>
 			</main>
 			<Footer />
+			{helmet}
 		</>
 	);
 };
