@@ -10,6 +10,7 @@ import {
 } from "../components/promotion/common/def";
 import Tab, { useHandleTab } from "../components/promotion/components/tab";
 import Nav, { useHandleNav } from "../components/promotion/components/nav";
+import { defMetaData } from "../components/seo/def";
 import config from "../config";
 import staticList from "../datas/promotionList";
 import Layout from "../components/common/layout";
@@ -30,161 +31,11 @@ export default ({ location = {} }) => {
 		isLogin: userInfo.isLogin,
 		tab
 	});
-	let helmet = {};
-	switch (userInfo.langId) {
-		case "en":
-			helmet = (
-				<Helmet>
-					<link
-						rel="canonical"
-						href="https://www.nova88.net/en/promotion"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/promotion"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/promotion"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/promotion"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/promotion"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-			break;
-		case "cs":
-			helmet = (
-				<Helmet>
-					<link
-						rel="canonical"
-						href="https://www.nova88gol.com/cs/promotion"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/promotion"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/promotion"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/promotion"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/promotion"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-			break;
-		case "th":
-			helmet = (
-				<Helmet>
-					<link
-						rel="canonical"
-						href="https://www.nova88gol.com/cs/promotion"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/promotion"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/promotion"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/promotion"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/promotion"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-			break;
-		case "id":
-			helmet = (
-				<Helmet>
-					<link
-						rel="canonical"
-						href="https://www.nova88-indo.com/id/promotion"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/promotion"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/promotion"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/promotion"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/promotion"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-
-			break;
-
-		default:
-			helmet = (
-				<Helmet>
-					<link
-						rel="canonical"
-						href="https://www.nova88.net/en/promotion"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/promotion"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/promotion"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/promotion"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/promotion"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-			break;
-	}
+	const helmet = defMetaData[path.promotion.root]?.[
+		userInfo.langId
+	].links.map(el => {
+		return <link href={el.href} rel={el.rel} hrefLang={el.hrefLang} />;
+	});
 	const nav = (
 		<Nav
 			navBar={defPromotionNav}
@@ -228,7 +79,7 @@ export default ({ location = {} }) => {
 					filterType={filterType}
 				/>
 			</Layout>
-			{helmet}
+			<Helmet>{helmet}</Helmet>
 		</>
 	);
 };

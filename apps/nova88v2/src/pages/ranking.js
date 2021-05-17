@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Helmet } from "react-helmet";
 import { i18nContext, userInfoContext } from "../components/common/context";
-
+import { defMetaData } from "../components/seo/def";
 import Event from "../components/ranking/event";
 import Final from "../components/ranking/final";
 import Record from "../components/ranking/records";
@@ -31,162 +31,12 @@ export default () => {
 			<i className="icon icon-keyboard_arrow_left" />
 		</Link>
 	);
-	let helmet = {};
-	switch (userInfo.langId) {
-		case "en":
-			helmet = (
-				<Helmet>
-					<link
-						rel="canonical"
-						href="https://www.nova88.net/en/leaderBoard"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/leaderBoard"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/leaderBoard"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/leaderBoard"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/leaderBoard"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-			break;
-		case "cs":
-			helmet = (
-				<Helmet>
-					<link
-						rel="canonical"
-						href="https://www.nova88gol.com/cs/leaderBoard"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/leaderBoard"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/leaderBoard"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/leaderBoard"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/leaderBoard"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-			break;
-		case "th":
-			helmet = (
-				<Helmet>
-					<link
-						rel="canonical"
-						href="https://www.nova88apple.com/th/leaderBoard"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/leaderBoard"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/leaderBoard"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/leaderBoard"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/leaderBoard"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-			break;
-		case "id":
-			helmet = (
-				<Helmet>
-					<link
-						rel="canonical"
-						href="https://www.nova88-indo.com/id/leaderBoard"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/leaderBoard"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/leaderBoard"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/leaderBoard"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/leaderBoard"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-
-			break;
-
-		default:
-			helmet = (
-				<Helmet>
-					<link
-						rel="canonical"
-						href="https://www.nova88.net/en/leaderBoard"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/leaderBoard"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/leaderBoard"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/leaderBoard"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/leaderBoard"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-			break;
-	}
-
+	const helmet = defMetaData[path.ranking.root]?.[userInfo.langId].links.map(
+		el => {
+			return <link href={el.href} rel={el.rel} hrefLang={el.hrefLang} />;
+		}
+	);
+	console.log(helmet);
 	return (
 		<>
 			<Header
@@ -236,7 +86,7 @@ export default () => {
 					title="lbl_Records"
 				/>
 			</Layout>
-			{helmet}
+			<Helmet>{helmet}</Helmet>
 		</>
 	);
 };

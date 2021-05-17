@@ -7,6 +7,7 @@ import {
 } from "Context";
 import { useNavigate, Link } from "@reach/router";
 import { Helmet } from "react-helmet";
+import { defMetaData } from "../components/seo/def";
 import Layout from "../components/common/layout";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
@@ -35,155 +36,11 @@ const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
-	let helmet = {};
-	switch (userInfo.langId) {
-		case "en":
-			helmet = (
-				<Helmet>
-					<link rel="canonical" href="https://www.nova88.net/en/" />
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-			break;
-		case "cs":
-			helmet = (
-				<Helmet>
-					<link
-						rel="canonical"
-						href="https://www.nova88gol.com/cs/"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-			break;
-		case "th":
-			helmet = (
-				<Helmet>
-					<link
-						rel="canonical"
-						href="https://www.nova88apple.com/th/"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-			break;
-		case "id":
-			helmet = (
-				<Helmet>
-					<link
-						rel="canonical"
-						href="https://www.nova88-indo.com/id/"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-
-			break;
-
-		default:
-			helmet = (
-				<Helmet>
-					<link rel="canonical" href="https://www.nova88.net/en/" />
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-			break;
-	}
+	const helmet = defMetaData[path.home.root]?.[userInfo.langId].links.map(
+		el => {
+			return <link href={el.href} rel={el.rel} hrefLang={el.hrefLang} />;
+		}
+	);
 	useEffect(() => {
 		setRoot(true);
 		return () => {
@@ -303,7 +160,7 @@ const IndexPage = () => {
 					<Bottom i18n={i18n} langId={userInfo.langId} />
 				</div>
 			</Layout>
-			{helmet}
+			<Helmet>{helmet}</Helmet>
 		</>
 	);
 };

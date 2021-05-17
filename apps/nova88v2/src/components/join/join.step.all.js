@@ -1,10 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Helmet } from "react-helmet";
+
 import { useNavigate, globalHistory, useLocation } from "@reach/router";
 import { i18nContext, userInfoContext } from "../common/context";
+import { defMetaData } from "../seo/def";
 import JoinStep1 from "./join.step1";
 import JoinStep2 from "./join.step2";
 import { initValue, initStatus } from "./join.def";
+import path from "../../path";
 
 const JoinStepAll = () => {
 	const navigate = useNavigate();
@@ -14,161 +17,11 @@ const JoinStepAll = () => {
 	const [step, setStep] = useState(1);
 	const [userValue, setUserValue] = useState(initValue);
 	const [hintStatus, setHintStatus] = useState(initStatus);
-	let helmet = {};
-	switch (userInfo.langId) {
-		case "en":
-			helmet = (
-				<Helmet>
-					<link
-						rel="canonical"
-						href="https://www.nova88.net/en/join"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/join"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/join"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/join"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/join"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-			break;
-		case "cs":
-			helmet = (
-				<Helmet>
-					<link
-						rel="canonical"
-						href="https://www.nova88gol.com/cs/join"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/join"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/join"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/join"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/join"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-			break;
-		case "th":
-			helmet = (
-				<Helmet>
-					<link
-						rel="canonical"
-						href="https://www.nova88apple.com/th/join"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/join"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/join"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/join"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/join"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-			break;
-		case "id":
-			helmet = (
-				<Helmet>
-					<link
-						rel="canonical"
-						href="https://www.nova88-indo.com/id/join"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/join"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/join"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/join"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/join"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-
-			break;
-
-		default:
-			helmet = (
-				<Helmet>
-					<link
-						rel="canonical"
-						href="https://www.nova88.net/en/join"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/join"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/join"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/join"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/join"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-			break;
-	}
+	const helmet = defMetaData[path.join.root]?.[userInfo.langId].links.map(
+		el => {
+			return <link href={el.href} rel={el.rel} hrefLang={el.hrefLang} />;
+		}
+	);
 	useEffect(() => {
 		if (userInfo.isLogin) {
 			navigate(`/${userInfo.langId}`);
@@ -233,7 +86,7 @@ const JoinStepAll = () => {
 					setStep={setStep}
 				/>
 			)}
-			{helmet}
+			<Helmet>{helmet}</Helmet>
 		</>
 	);
 };
