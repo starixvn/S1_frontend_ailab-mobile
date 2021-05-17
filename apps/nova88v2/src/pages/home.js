@@ -27,6 +27,7 @@ import api from "../service/api";
 import Header from "../components/header/header";
 import JoinLoginBar from "../components/home/joinLoginBar";
 import Logo from "../components/common/logo";
+import Jackpot from "../components/home/jackpot";
 
 const IndexPage = () => {
 	const navigate = useNavigate();
@@ -136,6 +137,7 @@ const IndexPage = () => {
 			<div id="content">
 				<Menu i18n={i18n} userInfo={userInfo} setPopBox={setPopBox} />
 				<Promos i18n={i18n} userInfo={userInfo} />
+				<Jackpot i18n={i18n} currencyId={userInfo.currencyId} />
 				<HotGame i18n={i18n} userInfo={userInfo} />
 				{userInfo.isLogin ? (
 					<Referral

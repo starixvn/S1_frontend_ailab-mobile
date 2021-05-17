@@ -1180,6 +1180,14 @@ footer > a.active .circleAnimation + span {
           flex-flow: column;
 }
 
+#popup .popTxt img {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 100%;
+  height: auto;
+}
+
 #popup .popTxt img.bankimg {
   width: 20vw;
 }
@@ -7540,28 +7548,42 @@ span.important {
   position: relative;
 }
 
-.jpot div {
+.jpot > .number {
   position: absolute;
-  bottom: 12.5vw;
+  bottom: 13vw;
   right: 10vw;
-  font-size: 5vw;
   width: 55vw;
-  text-align: right;
-  font-weight: bold;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  overflow: hidden;
 }
 
-.jpot div span {
-  font-size: 16px;
-  font-weight: normal;
+.jpot > .number > div {
+  font-size: 4vw;
+  font-weight: bold;
+}
+
+.jpot > .number > div:first-child {
+  margin: auto auto auto 0;
+}
+
+.jpot > .number > div:nth-child(n+2) {
+  width: 3vw;
+  position: relative;
+}
+
+.jpot > .number > div:nth-child(n+2) > div {
+  position: absolute;
+  top: 0;
+  height: 106.67vw;
+}
+
+.jpot > .number > div:nth-child(n+2) > div > div {
+  height: 5.3335vw;
 }
 
 @-webkit-keyframes jpot {
