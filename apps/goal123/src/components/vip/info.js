@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { i18nContext } from "../common/context";
 
 export const Info = ({ langId }) => {
 	const _info = langId === "en" ? <ENInfo /> : <VNInfo />;
@@ -6,6 +7,7 @@ export const Info = ({ langId }) => {
 };
 
 const ENInfo = () => {
+	const { i18n } = useContext(i18nContext);
 	return (
 		<div className="vipInfo">
 			<div className="vipTitle">VIP Program</div>
@@ -21,11 +23,13 @@ const ENInfo = () => {
 				Enjoy the benefits and privileges with difference membership
 				tier
 			</div>
+			{i18n.lbl_LastUpdated} : 17/05/2021
 		</div>
 	);
 };
 
 const VNInfo = () => {
+	const { i18n } = useContext(i18nContext);
 	return (
 		<div className="vipInfo">
 			<div className="vipTitle">Đặc quyền VIP</div>
@@ -40,6 +44,7 @@ const VNInfo = () => {
 			<div className="vipTitle">
 				Trải nghiệm quyền lợi dành riêng cho từng hạng thành viên.
 			</div>
+			{i18n.lbl_LastUpdated} : 17/05/2021
 		</div>
 	);
 };

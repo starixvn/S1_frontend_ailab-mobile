@@ -528,5 +528,6 @@
 	"lbl_DepositType5":"THẺ CÀO",
 
 	"==============Transfer==============":"",
-	"lbl_Fail":"Thất bại"
+	"lbl_Fail":"Thất bại",
+	"lbl_LastUpdated":"CẬP NHẬT GẦN NHẤT"
 }
