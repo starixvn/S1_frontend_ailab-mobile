@@ -23,7 +23,6 @@ const ENInfo = () => {
 				Enjoy the benefits and privileges with difference membership
 				tier
 			</div>
-			{i18n.lbl_LastUpdated} : 17/05/2021
 		</div>
 	);
 };
@@ -44,7 +43,6 @@ const VNInfo = () => {
 			<div className="vipTitle">
 				Trải nghiệm quyền lợi dành riêng cho từng hạng thành viên.
 			</div>
-			{i18n.lbl_LastUpdated} : 17/05/2021
 		</div>
 	);
 };
