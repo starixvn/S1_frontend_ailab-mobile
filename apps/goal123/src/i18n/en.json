@@ -531,5 +531,6 @@
 	"lbl_Jackpot":"Jackpot",
 	
 	"==============Transfer==============":"",
-	"lbl_Fail":"Failed"
+	"lbl_Fail":"Failed",
+	"lbl_LastUpdated":"LAST UPDATED"
 }
