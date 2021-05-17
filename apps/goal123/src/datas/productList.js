@@ -5,16 +5,6 @@ import Menu_Slots from "../styles/img/sidbar/slots.png";
 import Menu_LiveCasino from "../styles/img/sidbar/livecasino.png";
 import Menu_Fishing from "../styles/img/sidbar/fishing.jpg";
 
-import HotGame_Sports from "../styles/img/hotgame-m/sport.jpg";
-import HotGame_SabaSoccer from "../styles/img/hotgame-m/sabasoccer.jpg";
-import HotGame_Slots from "../styles/img/hotgame-m/slots.jpg";
-import HotGame_SabaClub from "../styles/img/hotgame-m/sabaclub.jpg";
-import HotGame_Fishing from "../styles/img/hotgame-m/fishing.jpg";
-import HotGame_VirtualSports from "../styles/img/hotgame-m/virtual.jpg";
-import HotGame_Keno from "../styles/img/hotgame-m/keno.jpg";
-import HotGame_V8Poker from "../styles/img/hotgame-m/v8poker.jpg";
-import HotGame_ESports from "../styles/img/hotgame-m/esport.jpg";
-
 import Sports_Soccer from "../styles/img/hotgame-m/sports/soccer.png";
 import Sports_SabaSoccer from "../styles/img/hotgame-m/sports/sabasoccer.png";
 import Sports_VirtualSports from "../styles/img/hotgame-m/sports/virtualsports.png";
@@ -143,47 +133,47 @@ const gameList = [
 		items: [
 			{
 				...defGameInfo.Sports,
-				img: HotGame_Sports,
+				img: "https://banner.goal123.org/hotgame/h5/sport.jpg",
 				spanTextKey: "lbl_Sports"
 			},
 			{
 				...defGameInfo.SabaSoccer,
-				img: HotGame_SabaSoccer,
+				img: "https://banner.goal123.org/hotgame/h5/sabasports.jpg",
 				spanTextKey: "lbl_SabaSoccer"
 			},
 			{
-				img: HotGame_Slots,
+				img: "https://banner.goal123.org/hotgame/h5/slot.jpg",
 				spanTextKey: "lbl_Slots",
 				path: path.casino.root
 			},
 			{
 				...defGameInfo.sabaClub,
-				img: HotGame_SabaClub,
+				img: "https://banner.goal123.org/hotgame/h5/sabaclub.jpg",
 				spanTextKey: "lbl_SabaClub"
 			},
 			{
 				...defGameInfo.Fishing,
-				img: HotGame_Fishing,
+				img: "https://banner.goal123.org/hotgame/h5/fishing.jpg",
 				spanTextKey: "lbl_Fishing"
 			},
 			{
 				...defGameInfo.VirtualSports,
-				img: HotGame_VirtualSports,
+				img: "https://banner.goal123.org/hotgame/h5/virtual.jpg",
 				spanTextKey: "lbl_VirtualSports"
 			},
 			{
 				...defGameInfo.Keno,
-				img: HotGame_Keno,
+				img: "https://banner.goal123.org/hotgame/h5/keno.jpg",
 				spanTextKey: "lbl_Keno"
 			},
 			{
 				...defGameInfo.V8Poker,
-				img: HotGame_V8Poker,
+				img: "https://banner.goal123.org/hotgame/h5/v8.jpg",
 				spanTextKey: "lbl_V8Poker"
 			},
 			{
 				...defGameInfo.eSports,
-				img: HotGame_ESports,
+				img: "https://banner.goal123.org/hotgame/h5/esports.jpg",
 				spanTextKey: "lbl_eSports"
 			}
 		]
