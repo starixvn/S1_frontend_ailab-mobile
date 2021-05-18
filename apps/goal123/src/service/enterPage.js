@@ -47,7 +47,8 @@ export const GET_ENTER_PAGE = ({
 	const lobbyUrl = ``;
 	const cashierUrl = `${appUrl}/${path.deposit.root}`;
 	const _errorPageUrl = errorPageUrl(langId);
-	const entPageUrl = `${config.openURL}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&CashierUrl=${cashierUrl}&LobbyUrl=${lobbyUrl}&matchid=${matchid}&errorUrl=${_errorPageUrl}`;
+	let entPageUrl = `${config.openURL}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}
+	&tpId=${tpId}&gameId=${gameId}&CashierUrl=${cashierUrl}&LobbyUrl=${lobbyUrl}&matchid=${matchid}&errorUrl=${_errorPageUrl}`;
 	let result = setResult("", true, _ACTION_TYPE.blank);
 
 	const _tpId = isNaN(tpId) ? tpId : Number(tpId);
@@ -74,6 +75,15 @@ export const GET_ENTER_PAGE = ({
 		} else if (_gameId >= 200) {
 			result = setResult("", true, _ACTION_TYPE.blank, _tpId, _gameId);
 		}
+	} else if (tpId === 29) {
+		result = setResult("", false, _ACTION_TYPE.blank, _tpId, _gameId);
+		entPageUrl = `${
+			config.openURL
+		}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}
+		&tpId=${tpId}&CashierUrl=${cashierUrl}&LobbyUrl=${lobbyUrl}
+		&gameType=sports${
+			isLogin === false ? "&fun=1" : ""
+		}&matchid=${matchid}&errorUrl=${_errorPageUrl}`;
 	} else {
 		result = setResult("", true, _ACTION_TYPE.blank, _tpId, _gameId);
 	}

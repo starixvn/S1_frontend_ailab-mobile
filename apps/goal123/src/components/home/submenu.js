@@ -30,9 +30,18 @@ import useGetTpBalance from "../hook/useGetTpBalance";
 
 const defSubMenus = [
 	{
-		...defGameInfo.Sports,
 		displayKey: "lbl_Sports",
-		icon: "icon icon-sports"
+		icon: "icon icon-sports",
+		subItems: [
+			{
+				displayKey: "lbl_SabaSport",
+				...defGameInfo.Sports
+			},
+			{
+				displayKey: "lbl_BTISport",
+				...defGameInfo.BTISport
+			}
+		]
 	},
 	{
 		displayKey: "lbl_Games",

@@ -1,20 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
 import TandC from "../../service/t_and_c";
-import { siteInfo } from "../../config";
+import config, { siteInfo } from "../../config";
 import HowToDeposit from "../../styles/img/infoicon1.png";
 import HowToWithdrawal from "../../styles/img/infoicon2.png";
 import FAQ from "../../styles/img/infoicon3.png";
-import Partner_AB from "../../styles/img/partner/ab.png";
-import Partner_AE from "../../styles/img/partner/ae.png";
-import Partner_CQ9 from "../../styles/img/partner/cq9.png";
-import Partner_GP from "../../styles/img/partner/gameplay.png";
-import Partner_PG from "../../styles/img/partner/pg.png";
-import Partner_PP from "../../styles/img/partner/pp.png";
-import Partner_SA from "../../styles/img/partner/sa.png";
+import defPlatform from "../setting/defPlatform";
+// import Partner_AB from "../../styles/img/partner/ab.png";
+// import Partner_AE from "../../styles/img/partner/ae.png";
+// import Partner_CQ9 from "../../styles/img/partner/cq9.png";
+// import Partner_GP from "../../styles/img/partner/gameplay.png";
+// import Partner_PG from "../../styles/img/partner/pg.png";
+// import Partner_PP from "../../styles/img/partner/pp.png";
+// import Partner_SA from "../../styles/img/partner/sa.png";
 import Bong88 from "../../styles/img/partner/bong88.png";
 
 const Bottom = ({ i18n, langId }) => {
+	const platformRows = defPlatform.map(item => {
+		return (
+			<img
+				key={`platform-${item}`}
+				alt="logo"
+				src={`${config.imgUrl}/common/images/logo/${item.imgName}.png`}
+			/>
+		);
+	});
 	return (
 		<>
 			<div className="infoCenter">
@@ -51,15 +61,7 @@ const Bottom = ({ i18n, langId }) => {
 				</a>
 			</div>
 			<div className="partner">
-				<div>
-					<img src={Partner_AB} alt="AB" />
-					<img src={Partner_AE} alt="AE" />
-					<img src={Partner_CQ9} alt="CQ9" />
-					<img src={Partner_GP} alt="GP" />
-					<img src={Partner_PG} alt="PG" />
-					<img src={Partner_PP} alt="PP" />
-					<img src={Partner_SA} alt="SA" />
-				</div>
+				<div>{platformRows}</div>
 				<div className="bong88">
 					{i18n.lbl_PoweredBy}
 					<img src={Bong88} alt="Bong88" />

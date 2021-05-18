@@ -531,6 +531,9 @@
 
 	"==============General==============":"",
 	"lbl_Jackpot":"Jackpot",
+	"lbl_SabaSport":"Saba Sports",
+	"lbl_BTISport" : "BTI Sports",
+
 	
 	"==============Transfer==============":"",
 	"lbl_Fail":"Failed",

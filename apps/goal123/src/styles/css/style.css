@@ -7331,6 +7331,10 @@ span.important {
   width: 10vw;
 }
 
+.vipPage .text {
+  margin: 1vw 2vw;
+}
+
 .vipBannerTop {
   position: fixed;
   top: 12vw;
