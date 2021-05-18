@@ -1,0 +1,190 @@
+@charset "UTF-8";
+[data-gwd-group="tc_subtitles"] p {
+  height: auto !important;
+  -webkit-box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-gwd-group="share-panel"] .gwd-grp-zd3g.gwd-p-lqpi {
+  font-size: 15px;
+}
+
+[data-gwd-grp-id="tc_text-addtohomescreen"] {
+  height: auto !important;
+}
+
+[data-gwd-grp-id="tc_text-addtohomescreen"]::before {
+  content: "Add to Home Screen";
+}
+
+[data-gwd-grp-id="tc_text-app-name"]::before, #tc_text-app-name-desktop::before {
+  content: "Nova88";
+}
+
+[data-gwd-grp-id="tc_btn-cancel"] {
+  opacity: .5;
+}
+
+[data-gwd-grp-id="tc_text-cancel"]::before, [data-gwd-grp-id="tc_btn-cancel"]::before {
+  content: "Cancel";
+}
+
+[data-gwd-grp-id="tc_text-addtohome"] {
+  font-weight: bold;
+}
+
+[data-gwd-grp-id="tc_text-addtohome"]::before {
+  content: "Add to Home";
+}
+
+[data-gwd-grp-id="tc_text-add"]::before {
+  content: "Add";
+}
+
+[data-gwd-grp-id="tc_subtitle1"]::before {
+  content: "Tap on the share icon below.";
+}
+
+[data-gwd-grp-id="tc_subtitle2"]::before {
+  content: "Select Add To Home Screen.";
+}
+
+[data-gwd-grp-id="tc_subtitle3"]::before {
+  content: "Rename the app or just tap Done.";
+}
+
+[data-gwd-grp-id="tc_subtitle4"]::before {
+  content: "Now you successfully generate the app shortcut on the home screen.";
+}
+
+html[lang="zh-TW"] [data-gwd-grp-id="tc_text-addtohomescreen"]::before {
+  content: "加入主畫面";
+}
+
+html[lang="zh-TW"] [data-gwd-grp-id="tc_text-cancel"]::before, html[lang="zh-TW"] [data-gwd-grp-id="tc_btn-cancel"]::before {
+  content: "取消";
+}
+
+html[lang="zh-TW"] [data-gwd-grp-id="tc_text-addtohome"]::before {
+  content: "加入主畫面";
+}
+
+html[lang="zh-TW"] [data-gwd-grp-id="tc_text-add"]::before {
+  content: "加入";
+}
+
+html[lang="zh-TW"] [data-gwd-grp-id="tc_subtitle1"]::before {
+  content: "點擊下方分享圖示";
+}
+
+html[lang="zh-TW"] [data-gwd-grp-id="tc_subtitle2"]::before {
+  content: "點擊加入主畫面選項";
+}
+
+html[lang="zh-TW"] [data-gwd-grp-id="tc_subtitle3"]::before {
+  content: "重新命名應用程式名稱或點擊增加";
+}
+
+html[lang="zh-TW"] [data-gwd-grp-id="tc_subtitle4"]::before {
+  content: "現在你已成功在桌面產生此應用程式捷徑";
+}
+
+html[lang="zh-CHS"] [data-gwd-grp-id="tc_text-addtohomescreen"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_text-addtohomescreen"]::before {
+  content: "加入主画面";
+}
+
+html[lang="zh-CHS"] [data-gwd-grp-id="tc_text-cancel"]::before, html[lang="zh-CHS"] [data-gwd-grp-id="tc_btn-cancel"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_text-cancel"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_btn-cancel"]::before {
+  content: "取消";
+}
+
+html[lang="zh-CHS"] [data-gwd-grp-id="tc_text-addtohome"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_text-addtohome"]::before {
+  content: "加入主画面";
+}
+
+html[lang="zh-CHS"] [data-gwd-grp-id="tc_text-add"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_text-add"]::before {
+  content: "加入";
+}
+
+html[lang="zh-CHS"] [data-gwd-grp-id="tc_subtitle1"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_subtitle1"]::before {
+  content: "点击下方分享图示";
+}
+
+html[lang="zh-CHS"] [data-gwd-grp-id="tc_subtitle2"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_subtitle2"]::before {
+  content: "点击加入主画面选项";
+}
+
+html[lang="zh-CHS"] [data-gwd-grp-id="tc_subtitle3"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_subtitle3"]::before {
+  content: "重新命名应用程式名称或点击增加";
+}
+
+html[lang="zh-CHS"] [data-gwd-grp-id="tc_subtitle4"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_subtitle4"]::before {
+  content: "现在你已成功在桌面产生此应用程式捷径";
+}
+
+html[lang="vi-VN"] [data-gwd-grp-id="tc_text-addtohomescreen"]::before {
+  content: "Thêm vào màn hình chính";
+}
+
+html[lang="vi-VN"] [data-gwd-grp-id="tc_text-cancel"]::before, html[lang="vi-VN"] [data-gwd-grp-id="tc_btn-cancel"]::before {
+  content: "Hủy";
+}
+
+html[lang="vi-VN"] [data-gwd-grp-id="tc_text-addtohome"]::before {
+  content: "Thêm vào màn hình chính";
+}
+
+html[lang="vi-VN"] [data-gwd-grp-id="tc_text-add"]::before {
+  content: "Thêm";
+}
+
+html[lang="vi-VN"] [data-gwd-grp-id="tc_subtitle1"] {
+  top: 280px !important;
+}
+
+html[lang="vi-VN"] [data-gwd-grp-id="tc_subtitle1"]::before {
+  content: "Nhấn vào biểu tượng Chia sẻ bên dưới.";
+}
+
+html[lang="vi-VN"] [data-gwd-grp-id="tc_subtitle2"]::before {
+  content: "Chọn Thêm vào màn hình chính";
+}
+
+html[lang="vi-VN"] [data-gwd-grp-id="tc_subtitle3"]::before {
+  content: "Đổi tên ứng dụng nếu muốn hoặc nhấn vào Xong";
+}
+
+html[lang="vi-VN"] [data-gwd-grp-id="tc_subtitle4"]::before {
+  content: "Bạn đã tạo thành công icon ứng dụng trên màn hình chính.";
+}
+
+.back{
+  background: rgba(51,51,51,0.9);
+  color: white;
+  position: absolute;
+  top: 0;
+  padding: 4vw 0;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  animation: back 0.5s linear;
+}
+@keyframes back{
+  0%{
+    top: -10vw;
+  }
+  100%{
+    top: 0;
+  }
+}
+.back a{
+  background: rgba(51,51,51,1);
+  color: white;
+  text-decoration: none;
+  padding: 2vw 3vw;
+  border-radius: 3px;
+}
+a:before{
+  content: '←';
+  font-size: 4vw;
+  margin-right: 2vw;
+}

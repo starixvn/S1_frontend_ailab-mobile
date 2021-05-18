@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import {
 	i18nContext,
 	userInfoContext,
@@ -27,6 +27,7 @@ import api from "../service/api";
 import Header from "../components/header/header";
 import JoinLoginBar from "../components/home/joinLoginBar";
 import Logo from "../components/common/logo";
+import AddToHomePop from "../components/home/addToHomePop";
 
 const IndexPage = () => {
 	const navigate = useNavigate();
@@ -34,6 +35,7 @@ const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
+	const [addToHomePop, setAddToHomePop] = useState(false);
 
 	useEffect(() => {
 		setRoot(true);
@@ -41,6 +43,12 @@ const IndexPage = () => {
 			setRoot(false);
 		};
 	}, [setRoot]);
+
+	useEffect(() => {
+		if (readCookie("addToHome") !== "1") {
+			setAddToHomePop(true);
+		}
+	}, []);
 
 	useEffect(() => {
 		const ClosePopUp = () => {
@@ -147,6 +155,12 @@ const IndexPage = () => {
 				<EventSwipper i18n={i18n} userInfo={userInfo} />
 				<Streaming />
 				<Bottom i18n={i18n} langId={userInfo.langId} />
+				{addToHomePop ? (
+					<AddToHomePop
+						i18n={i18n}
+						setAddToHomePop={setAddToHomePop}
+					/>
+				) : null}
 			</div>
 		</Layout>
 	);

@@ -538,5 +538,10 @@
 	"lbl_TpWallet_27": "Dompet PT",
 
 	"==============Important Notice==============":"",
-	"lbl_ImportantNotice":"PEMBERITAHUAN PENTING"
+	"lbl_ImportantNotice":"PEMBERITAHUAN PENTING",
+
+    "==============Add To Home Screen==============":"",
+	"lbl_AddToHome_Hint":"Bagaimana cara menambahkan layar utama?",
+	"lbl_AddToHome_Tutorial":"Tutorial",
+	"lbl_Dont_show_me_again":"Jangan tampilkan lagi"
     }

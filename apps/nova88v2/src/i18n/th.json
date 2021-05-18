@@ -519,5 +519,10 @@
 	"lbl_TpWallet_27": "กระเป๋าสตางค์ PT",
 
 	"==============Important Notice==============":"",
-	"lbl_ImportantNotice":"ข้อมูลสำคัญ"
+	"lbl_ImportantNotice":"ข้อมูลสำคัญ",
+	
+    "==============Add To Home Screen==============":"",
+	"lbl_AddToHome_Hint":"วิธีเพิ่มหน้าจอหลักมีขั้นตอนอย่างไร?",
+	"lbl_AddToHome_Tutorial":"บทแนะนำ",
+	"lbl_Dont_show_me_again":"ไม่ต้องแสดงอีก"
 }

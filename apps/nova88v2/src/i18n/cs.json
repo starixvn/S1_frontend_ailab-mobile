@@ -528,5 +528,11 @@
 	"lbl_TpWallet_27": "PT钱包",
 
 	"==============Important Notice==============":"",
-	"lbl_ImportantNotice":"重要通知"
+	"lbl_ImportantNotice":"重要通知",
+
+	
+	"==============Add To Home Screen==============":"",
+	"lbl_AddToHome_Hint":"如何添加到主屏？",
+	"lbl_AddToHome_Tutorial":"观看教學",
+	"lbl_Dont_show_me_again":"不再显示"
 }
