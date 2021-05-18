@@ -145,3 +145,22 @@ export const isEventPeriod = ({ startDate, endDate }) => {
 
 	return result;
 };
+
+export const currCustomMapping = {
+	13: "MYR"
+};
+
+export const GetCurrencyName = ({ langId, currencyId, i18n }) => {
+	const langMappingCurr = {
+		en: "MYR",
+		cs: "MYR",
+		id: "IDR",
+		th: "THB"
+	};
+
+	const currency = currencyId
+		? currCustomMapping[currencyId] ?? i18n[`Currency_${currencyId}`]
+		: langMappingCurr[langId];
+
+	return currency;
+};

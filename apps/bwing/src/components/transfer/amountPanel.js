@@ -10,7 +10,6 @@ const AmountPanel = ({
 	warning,
 	clickSubmit,
 	selectedIdx,
-	transferOptions,
 	selectItem,
 	allWalletsList
 }) => {
@@ -28,11 +27,7 @@ const AmountPanel = ({
 				<div className="inputBox">
 					<Dropdown
 						mainKey="transfer-From"
-						options={
-							selectedIdx.transferTo === null
-								? allWalletsList
-								: transferOptions.transferFrom
-						}
+						options={allWalletsList}
 						placeholder={i18n.lbl_TransferFrom}
 						selectedIdx={selectedIdx.transferFrom}
 						i18n={i18n}
@@ -47,11 +42,7 @@ const AmountPanel = ({
 				<div className="inputBox">
 					<Dropdown
 						mainKey="transfer-To"
-						options={
-							selectedIdx.transferFrom === null
-								? allWalletsList
-								: transferOptions.transferTo
-						}
+						options={allWalletsList}
 						placeholder={i18n.lbl_TransferTo}
 						selectedIdx={selectedIdx.transferTo}
 						onSelectItem={selectItem.bind(this, "transferTo")}
@@ -92,7 +83,6 @@ AmountPanel.defaultProps = {
 	i18n: {},
 	warning: {},
 	selectedIdx: null,
-	transferOptions: [],
 	selectItem: null,
 	allWalletsList: []
 };
@@ -107,7 +97,6 @@ AmountPanel.propTypes = {
 	}),
 	clickSubmit: PropTypes.func.isRequired,
 	selectedIdx: PropTypes.objectOf(PropTypes.any),
-	transferOptions: PropTypes.objectOf(PropTypes.any),
 	selectItem: PropTypes.func,
 	allWalletsList: PropTypes.arrayOf(PropTypes.object)
 };
