@@ -98,6 +98,17 @@ const EventListIDR = ({ i18n }) => {
 						<i className="icon icon-checkmark" />
 					</td>
 				</tr>
+				<tr>
+					<td colSpan="7">{i18n.lbl_WithdrawalLimitation}</td>
+				</tr>
+				<tr>
+					<td>80.000 ('000)</td>
+					<td>100.000 ('000)</td>
+					<td>150.000 ('000)</td>
+					<td>200.000 ('000)</td>
+					<td>500.000 ('000)</td>
+					<td>{i18n.lbl_VIP_unlimited}</td>
+				</tr>
 				{/* <tr>
 						<td colSpan="7">
 							{i18n.lbl_Vip_Unlimited_Withdrawal_amount}

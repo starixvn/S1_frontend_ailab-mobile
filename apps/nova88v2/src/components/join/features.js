@@ -71,7 +71,7 @@ const CS = () => {
 					<span>100%</span> 老虎机欢迎红利
 				</li>
 				<li>
-					每周再存红利高达 <span>20%</span>
+					每日再存红利高达 <span>20%</span>
 				</li>
 			</ul>
 			<div className="title">豪享NOVA88尊贵优惠红利与返水</div>

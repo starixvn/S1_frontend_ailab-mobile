@@ -576,7 +576,11 @@
 	"lbl_Stage": "Stage",
 	"lbl_TopUpCard":"TOP-UP CARD",
 	"lbl_DepositType5":"TOP-UP CARD",
+
+	"==============General==============":"",
+	"lbl_Jackpot":"Jackpot",
 	
 	"==============Transfer==============":"",
-	"lbl_Fail":"Failed"
+	"lbl_Fail":"Failed",
+	"lbl_LastUpdated":"LAST UPDATED"
 }

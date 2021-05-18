@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { i18nContext } from "../common/context";
 
 export const Info = ({ langId }) => {
 	const _info = langId === "en" ? <ENInfo /> : <VNInfo />;
@@ -6,6 +7,7 @@ export const Info = ({ langId }) => {
 };
 
 const ENInfo = () => {
+	const { i18n } = useContext(i18nContext);
 	return (
 		<div className="vipInfo">
 			<div className="vipTitle">VIP Program</div>
@@ -26,6 +28,7 @@ const ENInfo = () => {
 };
 
 const VNInfo = () => {
+	const { i18n } = useContext(i18nContext);
 	return (
 		<div className="vipInfo">
 			<div className="vipTitle">Đặc quyền VIP</div>
