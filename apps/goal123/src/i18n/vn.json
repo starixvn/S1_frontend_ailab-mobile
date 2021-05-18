@@ -123,6 +123,7 @@
 	"lbl_Later": "Để sau",
 	"lbl_Limit": "Hạn mức giá trị",
 	"lbl_LiveCasino": "SÒNG BÀI",
+	"lbl_Live": "SÒNG BÀI",
 	"lbl_LiveChat": "Live Chat",
 	"lbl_Loading": "Đang tải",
 	"lbl_Login": "Đăng nhập",
@@ -495,6 +496,7 @@
 	"lbl_VIP":"VIP",
 	"lbl_Balance":"Số dư",
 	"lbl_HotGame":"NỔI BẬT",
+	"lbl_Hot":"NỔI BẬT",
 	"lbl_SabaSoccer":"Bóng Đá Saba",
 	"lbl_Volleyball":"Bóng chuyền",
 	"lbl_Paradise":"THIÊN ĐƯỜNG BẮN CÁ ",
@@ -525,6 +527,12 @@
 	"lbl_TpWallet_27":"Ví PT",
 	"lbl_PromotionRebateAndCashback":"Hoàn trả / Hoàn lại tiền",
 	"lbl_TopUpCard":"THẺ CÀO",
-	"lbl_DepositType5":"THẺ CÀO"
+	"lbl_DepositType5":"THẺ CÀO",
 
+	"==============General==============":"",
+	"lbl_Jackpot":"NỔ HŨ",
+
+	"==============Transfer==============":"",
+	"lbl_Fail":"Thất bại",
+	"lbl_LastUpdated":"CẬP NHẬT GẦN NHẤT"
 }

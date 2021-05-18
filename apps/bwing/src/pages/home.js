@@ -8,7 +8,11 @@ import {
 	popBoxContext,
 	rootContext
 } from "../components/common/context";
-import { readCookie, setCookie } from "../components/common/common";
+import {
+	readCookie,
+	setCookie,
+	isEventPeriod
+} from "../components/common/common";
 import path from "../path";
 import { api_GetWalletInfo } from "../service/api/account";
 import GamePanel from "../components/home/gamePanel";
@@ -16,6 +20,8 @@ import LinksPanel from "../components/home/links";
 import MidBanner from "../components/home/banner";
 import EventSwipper from "../components/home/eventSwipper";
 import jackpot from "../styles/img/jackpot.png";
+import winner_vn from "../styles/img/EURO_Bwing/EURO-Bwing-VN.jpg";
+import winner_en from "../styles/img/EURO_Bwing/EURO-Bwing-EN.jpg";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -127,7 +133,30 @@ const IndexPage = () => {
 				}
 			});
 		}
-	}, [i18n, setPopBox, userInfo.currencyId, userInfo.userName]);
+		if (
+			isEventPeriod({
+				endDate: "2021/05/18 23:59:59"
+			}) &&
+			userInfo.isLogin === false
+		) {
+			setPopBox({
+				isOpen: true,
+				content: (
+					<img
+						src={userInfo.langId === "vn" ? winner_vn : winner_en}
+						alt="winner"
+					/>
+				),
+				hasBtn: true
+			});
+		}
+	}, [
+		i18n,
+		setPopBox,
+		userInfo.currencyId,
+		userInfo.userName,
+		userInfo.isLogin
+	]);
 
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
