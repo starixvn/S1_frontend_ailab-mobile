@@ -1,13 +1,29 @@
-import React, { useEffect, useRef, useState, useMemo } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import PropTypes from "prop-types";
 import useInterval from "../hook/useInterval";
 
-const numberArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+const numberArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-const Jackpot = ({ i18n, currencyId }) => {
+const defCurrenyId = {
+	MYR: 2,
+	THB: 4,
+	RMB: 13,
+	IDR: 15
+};
+
+const langToCurrency = {
+	en: defCurrenyId.MYR,
+	cs: defCurrenyId.MYR,
+	th: defCurrenyId.THB,
+	id: defCurrenyId.IDR
+};
+
+const Jackpot = ({ i18n, userInfo }) => {
 	const jackpotRef = useRef();
-	const _currencyId = currencyId ?? 2;
+	const _currencyId = userInfo.currencyId ?? langToCurrency[userInfo.langId];
 	const _currency = i18n[`Currency_${_currencyId}`];
-	const [value, setValue] = useState("");
+	const [value, setValue] = useState({ curr: "", prev: "" });
+	const animateDelaySec = 800;
 
 	const ticker = new Ticker({
 		info: 2,
@@ -21,77 +37,111 @@ const Jackpot = ({ i18n, currencyId }) => {
 	}, []);
 
 	useInterval(() => {
-		setValue(jackpotRef.current.innerText);
-	}, 2000);
-
+		setValue({
+			curr: jackpotRef.current.innerText,
+			prev: value.curr
+		});
+	}, 2000 + animateDelaySec);
 	return (
-		<div className="jpot">
-			<div className="number">
-				<div>{_currency}</div>
-				<span id="tick" ref={jackpotRef} style={{ display: "none" }} />
-				<ShowingNum value={value} />
-			</div>
-		</div>
+		<>
+			<span id="tick" ref={jackpotRef} style={{ display: "none" }} />
+			{value.curr ? (
+				<div className="jpot">
+					<div className="number">
+						<div>{_currency}</div>
+						<ShowingNum value={value} currency={_currency} />
+					</div>
+				</div>
+			) : null}
+		</>
 	);
 };
 
-const ShowingNum = ({ value }) => {
-	const totalNum = String(value).split(" ")[0];
-	const numArr = totalNum.split("");
+Jackpot.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	userInfo: PropTypes.objectOf(PropTypes.any).isRequired
+};
+
+const ShowingNum = ({ value, currency }) => {
+	let currTotal = [];
+	let prevTotal = [];
+	if (currency === "THB") {
+		currTotal = String(value.curr).substr(1).split("");
+		prevTotal = String(value.prev).substr(1).split("");
+	} else {
+		currTotal = String(value.curr).split(" ")[0].split("");
+		prevTotal = String(value.prev).split(" ")[0].split("");
+	}
 	const elementList = document.querySelectorAll(
 		".jpot .number .numberRow > div.active"
 	);
 
-	const totalAmount = numArr.filter(item => item !== "," && item !== ".");
-	if (totalAmount.length > 0) {
-		totalAmount.forEach((n, idx) => {
-			const elemHeight = 20 * Number(n);
+	const arr = currTotal.map((val, idx) => {
+		const isNumber = !isNaN(Number(val));
+		const key = `jackpot-${idx}line`;
+		let valArr = [];
+
+		if (isNumber) {
+			const prevVal = Number(prevTotal[idx]);
+			if (prevVal <= val) {
+				valArr = numberArray.slice(prevVal, Number(val) + 1);
+			} else {
+				const valArr1 = numberArray.slice(prevVal);
+				const valArr2 = numberArray.slice(0, Number(val) + 1);
+				valArr = [...valArr1, ...valArr2];
+			}
+
+			return (
+				<div className="numberRow" key={key}>
+					<div className="active">
+						{valArr.map((n, i) => (
+							<div key={`jackpot-num-${i}`}>{n}</div>
+						))}
+					</div>
+				</div>
+			);
+		}
+
+		return (
+			<div key={key}>
+				<div>{val}</div>
+			</div>
+		);
+	});
+
+	const currAmount = currTotal.filter(item => item !== "," && item !== ".");
+	if (currAmount.length > 0) {
+		const prevAmount = prevTotal.filter(
+			item => item !== "," && item !== "."
+		);
+
+		currAmount.forEach((n, idx) => {
+			const height =
+				prevAmount[idx] <= n
+					? n - prevAmount[idx]
+					: 10 - Math.abs(n - prevAmount[idx]);
+
+			const elemHeight = 20 * Number(height);
 			const elem = elementList?.[idx];
+
 			if (elem) {
-				elem.animate(
-					{
-						top: `-${elemHeight}px`,
-						direction: "normal, reverse",
-						animationIterationCount: "infinite"
-					},
-					2000
-				);
+				elem.style.top = 0;
+				elem.animate({ top: `-${elemHeight}px` }, 2000);
+
+				Promise.all(
+					elem.getAnimations().map(animation => animation.finished)
+				).then(() => {
+					elem.style.top = `-${elemHeight}px`;
+				});
 			}
 		});
 	}
 
-	const arr = useMemo(
-		() =>
-			numArr.map((num, idx) => {
-				const key = `jackpot-${idx}line`;
-				return <Item key={key} val={num} />;
-			}),
-		[numArr.length]
-	);
-
 	return arr;
 };
 
-const Item = ({ val }) => {
-	const isNumber = !isNaN(Number(val));
-
-	if (isNumber) {
-		return (
-			<div className="numberRow">
-				<div className="active">
-					{numberArr.map((idx, n) => (
-						<div key={`jackpot-num-${idx}`}>{n}</div>
-					))}
-				</div>
-			</div>
-		);
-	}
-
-	return (
-		<div>
-			<div>{val}</div>
-		</div>
-	);
+ShowingNum.propTypes = {
+	value: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
 export default Jackpot;

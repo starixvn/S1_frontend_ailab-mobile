@@ -137,7 +137,7 @@ const IndexPage = () => {
 			<div id="content">
 				<Menu i18n={i18n} userInfo={userInfo} setPopBox={setPopBox} />
 				<Promos i18n={i18n} userInfo={userInfo} />
-				<Jackpot i18n={i18n} currencyId={userInfo.currencyId} />
+				<Jackpot i18n={i18n} userInfo={userInfo} />
 				<HotGame i18n={i18n} userInfo={userInfo} />
 				{userInfo.isLogin ? (
 					<Referral
