@@ -174,7 +174,7 @@ const PlaytechJactpot = () => {
 						currency: "vnd"
 				  });
 		ticker2?.attachToTextBox("tick");
-		ticker2.SetCurrencySign("");
+		ticker2?.SetCurrencySign("");
 		ticker2?.tick();
 	}, []);
 
