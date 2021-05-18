@@ -29,22 +29,12 @@ const IndexPage = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const [redirectPath, setRedirectPath] = useState(null);
 	const { setRoot } = useContext(rootContext);
-	const ticker2 = new Ticker({
-		info: 2,
-		casino: "hotspin88am",
-		currency: "vnd"
-	});
 
 	useEffect(() => {
 		if (redirectPath !== null) {
 			setRedirectPath(null);
 		}
 	}, [redirectPath]);
-
-	useEffect(() => {
-		ticker2.attachToTextBox("tick");
-		ticker2.tick();
-	}, []);
 
 	useEffect(() => {
 		setRoot(true);
@@ -164,16 +154,36 @@ const IndexPage = () => {
 		<>
 			<Slider />
 			<Marquee />
-			<div className="bannerS">
-				<img src={jackpot} alt="" />
-				<p>VND</p>
-				<p id="tick" />
-			</div>
+			<PlaytechJactpot />
 			<EventSwipper />
 			<MidBanner langId={userInfo.langId} />
 			<GamePanel i18n={i18n} userInfo={userInfo} />
 			<LinksPanel i18n={i18n} langId={userInfo.langId} />
 		</>
+	);
+};
+
+const PlaytechJactpot = () => {
+	useEffect(() => {
+		const ticker2 =
+			typeof Ticker === "undefined"
+				? null
+				: new Ticker({
+						info: 2,
+						casino: "hotspin88am",
+						currency: "vnd"
+				  });
+		ticker2?.attachToTextBox("tick");
+		ticker2.SetCurrencySign("");
+		ticker2?.tick();
+	}, []);
+
+	return (
+		<div className="bannerS">
+			<img src={jackpot} alt="" />
+			<p>VND</p>
+			<p id="tick" />
+		</div>
 	);
 };
 
