@@ -87,8 +87,8 @@
 	"lbl_MainWallet": "Main Wallet",
 	"lbl_ID": "ID",
 	"lbl_Login": "Login",
-	"lbl_Date,": "Date",
-	"lbl_Time,": "Time",
+	"lbl_Date": "Date",
+	"lbl_Time": "Time",
 	"lbl_Deposit": "Deposit",
 	"lbl_Transfer": "Transfer",
 	"lbl_Withdrawal": "Withdrawal",
@@ -129,9 +129,9 @@
 	"lbl_Today": "Today",
 	"lbl_BankNumber": "Account Number",
 	"lbl_QuickPick": "Quick Pick",
-	"lbl_TransactionHistory,": "Transaction History",
-	"lbl_WithdrawalHistory,": "Withdrawal History",
-	"lbl_TransferHistory,": "Transfer History",
+	"lbl_TransactionHistory": "Transaction History",
+	"lbl_WithdrawalHistory": "Withdrawal History",
+	"lbl_TransferHistory": "Transfer History",
 	"lbl_From": "From",
 	"lbl_Statement": "Statement",
 	"lbl_DepositAmount": "Deposit Amount",
@@ -181,6 +181,9 @@
 	"lbl_financialLog": "Financial Log",
 	"lbl_To": "To",
 	"lbl_Free": "Free",
+	"lbl_Jackpot":"Jackpot",
+
+	"======================================Currency=========================================": "",
 	"Currency_1": "SGD",
 	"Currency_12": "GBP",
 	"Currency_13": "RMB",
@@ -195,6 +198,7 @@
 	"Currency_51": "VND",
 	"Currency_6": "EURO",
 	"Currency_9": "AUD",
+	"Currency_61": "INR",
 
 	"======================================Home=========================================": "",
 
@@ -270,10 +274,10 @@
 	"lbl_EuroDate2": "13 APR - 12 MAY",
 	"lbl_EuroDate3": "13 MAY - 12 JUN",
 	"lbl_Final": "UEFA EURO 2020 FINAL TOURNAMENT",
-	"lbl_MonthlyTournament ": "MONTHLY TOURNAMENT",
-	"lbl_EuroEventTitle1 ": "UEFA EURO FINAL 2020",
-	"lbl_EuroEventTitle2 ": "UP TO MYR 500,000 PRIZES WORTH!",
-	"lbl_EuroEventTitle3 ": "",
+	"lbl_MonthlyTournament": "MONTHLY TOURNAMENT",
+	"lbl_EuroEventTitle1": "UEFA EURO FINAL 2020",
+	"lbl_EuroEventTitle2": "UP TO MYR 500,000 PRIZES WORTH!",
+	"lbl_EuroEventTitle3": "",
 	"lbl_EuroEventTitle4": "",
 	"lbl_EuroEventTitle5": "",
 	"lbl_AgendaTitle": "MONTHLY DEPOSIT & TURNOVER RACE TOURNAMENT",
@@ -352,6 +356,14 @@
 	"lbl_Deduction": "Offset rollover difference amount",
 	"lbl_WithdrawalAmount": "Withdrawal Amount",
 	"lbl_Wallet_Saba": "Sportsbook Wallet",
+	"lbl_WithdrawalStatus1": "Processing",
+	"lbl_WithdrawalStatus2": "Processing",
+	"lbl_WithdrawalStatus3": "Processing",
+	"lbl_WithdrawalStatus4": "Processing",
+	"lbl_WithdrawalStatus5": "Cancelled",
+	"lbl_WithdrawalStatus6": "Approved",
+	"lbl_WithdrawalStatus7": "Rejected",
+	"lbl_WithdrawalStatus8": "Processing",
 
 	"==============================================Transfer====================================": "",
 
@@ -361,6 +373,9 @@
 	"lbl_Memo": "Memo",
 	"lbl_AutoTransfer": "Main Wallet Auto Transfer",
 	"lbl_Direction": "Direction",
+	"lbl_Success":"Success",
+	"lbl_Fail":"Failed",
+	
 
 	"==============================================Statement====================================": "",
 
@@ -416,6 +431,9 @@
 	"lbl_Vip_Lifetime": "Lifetime",
 	"lbl_Vip_3Months": "3 Months",
 	"lbl_VIP": "VIP",
+	"lbl_Vip_Last_Updated":"LAST UPDATED",
+	"lbl_WithdrawalLimitation":"DAILY WITHDRAWAL LIMITATION",
+	"lbl_VIP_unlimited": "Unlimited",
 
 	"==============================================MysteryBox====================================": "",
 
@@ -532,5 +550,12 @@
 	"lbl_DepositType1": "Online Banking",
 	"lbl_DepositType2": "Mobile Payment",
 	"lbl_DepositType3": "Local Bank",
-	"lbl_DepositType4": "Crypto Pay"
+	"lbl_DepositType4": "Crypto Pay",
+
+	"==============================================Wallet====================================": "",
+	"lbl_TpWallet_1": "Sportsbook Wallet",
+	"lbl_TpWallet_27": "PT Wallet",
+
+	"==============Important Notice==============":"",
+	"lbl_ImportantNotice":"IMPORTANT NOTICE"
 }

@@ -122,7 +122,9 @@ const Menu = ({ i18n, userInfo }) => {
 
 	return (
 		<>
-			<div className="sideBarNew">{gameArr}</div>
+			<div className="sideBarNew">
+				<div>{gameArr}</div>
+			</div>
 			<Autoplay Rows={subPanelArr} params={swipperParam} />
 		</>
 	);

@@ -578,7 +578,11 @@
 	"lbl_TopUpCard":"TOP-UP CARD",
 	"lbl_DepositType5":"TOP-UP CARD",
 	"lbl_EmailRequired":"Please fill in the email field",
+
+	"==============General==============":"",
+	"lbl_Jackpot":"Jackpot",
 	
 	"==============Transfer==============":"",
-	"lbl_Fail":"Failed"
+	"lbl_Fail":"Failed",
+	"lbl_LastUpdated":"LAST UPDATED"
 }

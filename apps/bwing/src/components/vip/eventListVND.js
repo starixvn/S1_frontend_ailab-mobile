@@ -135,10 +135,10 @@ const EventListVND = ({ i18n }) => (
 			</tr>
 			<tr>
 				<td>0.5%</td>
-				<td>0.6%</td>
-				<td>0.7%</td>
-				<td>0.8%</td>
-				<td>0.9%</td>
+				<td>0.55%</td>
+				<td>0.65%</td>
+				<td>0.75%</td>
+				<td>0.85%</td>
 				<td>1%</td>
 			</tr>
 			<tr>
@@ -159,9 +159,9 @@ const EventListVND = ({ i18n }) => (
 				<td>0.7%</td>
 				<td>0.8%</td>
 				<td>0.9%</td>
+				<td>1%</td>
 				<td>1.1%</td>
-				<td>1.3%</td>
-				<td>1.5%</td>
+				<td>1.2%</td>
 			</tr>
 			<tr>
 				<td colSpan="7">{i18n.lbl_Vip_VirtualSport_Rebate}</td>
@@ -170,9 +170,9 @@ const EventListVND = ({ i18n }) => (
 				<td>0.7%</td>
 				<td>0.8%</td>
 				<td>0.9%</td>
+				<td>1%</td>
 				<td>1.1%</td>
-				<td>1.3%</td>
-				<td>1.5%</td>
+				<td>1.2%</td>
 			</tr>
 			<tr className="title">
 				<td colSpan="7" className="icon icon-nova88">
