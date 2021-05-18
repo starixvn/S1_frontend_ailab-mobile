@@ -43,11 +43,6 @@ const IndexPage = () => {
 	}, [setRoot]);
 
 	useEffect(() => {
-		const ClosePopUp = () => {
-			setPopBox({
-				isOpen: false
-			});
-		};
 		if (userInfo.isJoin) {
 			setPopBox({
 				isOpen: true,
@@ -99,21 +94,41 @@ const IndexPage = () => {
 				)
 			});
 		}
-		if (
-			isEventPeriod({
-				endDate: "2021/05/18 23:59:59"
-			}) &&
-			userInfo.isLogin === false
-		) {
+		if (userInfo.isLogin === false) {
+			const ClosePopUp = () => {
+				if (
+					isEventPeriod({
+						endDate: "2021/05/18 23:59:59"
+					})
+				) {
+					setPopBox({
+						isOpen: true,
+						content: (
+							<img
+								src={`https://image.n88media.com/SiteSkin/img/euro/EURO-RACE-MONTHLY-WINNERS-${userInfo.langId.toUpperCase()}.jpg`}
+								alt="winner"
+							/>
+						)
+					});
+				}
+			};
 			setPopBox({
 				isOpen: true,
 				content: (
 					<img
-						src={`https://image.n88media.com/SiteSkin/img/euro/EURO-RACE-MONTHLY-WINNERS-${userInfo.langId.toUpperCase()}.jpg`}
-						alt="winner"
+						src={`https://banner.n88media.com/img/nonlogin/novapopup-380x100_${userInfo.langId}.jpg`}
+						alt="joeCole"
 					/>
 				),
-				hasBtn: true
+				hideCloseBtn: true,
+				hasBtn: true,
+				btnBar: (
+					<div className="btn-group">
+						<button className="orange" onClick={ClosePopUp}>
+							{i18n.lbl_Close}
+						</button>
+					</div>
+				)
 			});
 		}
 	}, [
