@@ -81,10 +81,6 @@ const DomainListPop = () => {
 
 	return (
 		<div className="popTxt">
-			<img
-				src={`${config.cloudImgURL}/SiteSkin/img/backupimg_${userInfo.langId}.jpg`}
-				alt="Backup Domain"
-			/>
 			<p>{i18n.lbl_kindly_visit_alternate_link_for_better_performance}</p>
 			{arr}
 			<div className="text-center">
