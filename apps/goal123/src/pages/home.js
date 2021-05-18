@@ -21,6 +21,7 @@ import HeaderShortcut from "../components/home/headerShortcut";
 import EventSwipper from "../components/home/eventSwipper";
 import MiddlePanel from "../components/home/middlePanel";
 import Bottom from "../components/home/bottom";
+import jackpot from "../styles/img/jackpot.png";
 import winner_vn from "../styles/img/euroEvent/EURO-GOAL-VN.jpg";
 import winner_en from "../styles/img/euroEvent/EURO-GOAL-EN.jpg";
 
@@ -161,10 +162,36 @@ const IndexPage = () => {
 			<EventSwipper userInfo={userInfo} />
 			<Marquee />
 			<Menu i18n={i18n} userInfo={userInfo} />
+			<PlaytechJactpot />
+
 			<MiddlePanel langId={userInfo.langId} i18n={i18n} />
 			<Bottom i18n={i18n} langId={userInfo.langId} />
 			<Submenu />
 		</>
+	);
+};
+
+const PlaytechJactpot = () => {
+	useEffect(() => {
+		const ticker2 =
+			typeof Ticker === "undefined"
+				? null
+				: new Ticker({
+						info: 2,
+						casino: "hotspin88am",
+						currency: "vnd"
+				  });
+		ticker2?.attachToTextBox("tick");
+		ticker2.SetCurrencySign("");
+		ticker2?.tick();
+	}, []);
+
+	return (
+		<div className="jackpot">
+			<img src={jackpot} alt="" />
+			<p>VND</p>
+			<p id="tick" />
+		</div>
 	);
 };
 
