@@ -125,18 +125,20 @@ const ShowingNum = ({ value, currency }) => {
 				prevAmount[idx] <= n
 					? n - prevAmount[idx]
 					: 10 - Math.abs(n - prevAmount[idx]);
-
-			const elemHeight = defaultElementHeight * Number(height);
 			const elem = elementList?.[idx];
 
 			if (elem) {
+				const elemHeight = elem.querySelector("div").offsetHeight;
+				const movingHeight =
+					(elemHeight ?? defaultElementHeight) * Number(height);
+
 				elem.style.top = 0;
-				elem.animate({ top: `-${elemHeight}px` }, 2000);
+				elem.animate({ top: `-${movingHeight}px` }, 2000);
 
 				Promise.all(
 					elem.getAnimations().map(animation => animation.finished)
 				).then(() => {
-					elem.style.top = `-${elemHeight}px`;
+					elem.style.top = `-${movingHeight}px`;
 				});
 			}
 		});
