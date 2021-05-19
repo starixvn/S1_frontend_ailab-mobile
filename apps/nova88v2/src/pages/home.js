@@ -23,7 +23,6 @@ import {
 	isEventPeriod
 } from "../components/common/common";
 import path from "../path";
-import api from "../service/api";
 import Header from "../components/header/header";
 import JoinLoginBar from "../components/home/joinLoginBar";
 import Logo from "../components/common/logo";
@@ -34,6 +33,17 @@ const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
+
+	const midnight_cookie = () => {
+		const now = new Date();
+		const expire = new Date();
+		expire.setFullYear(now.getFullYear());
+		expire.setMonth(now.getMonth());
+		expire.setDate(now.getDate() + 1);
+		expire.setHours(0);
+		expire.setMinutes(0);
+		document.cookie = `homePopboxShowed=true; expires=${expire.toUTCString()}; path="/"`;
+	};
 
 	useEffect(() => {
 		setRoot(true);
@@ -94,7 +104,7 @@ const IndexPage = () => {
 				)
 			});
 		}
-		if (userInfo.isLogin === false) {
+		if (userInfo.isLogin === false && !readCookie("homePopboxShowed")) {
 			const ClosePopUp = () => {
 				if (
 					isEventPeriod({
@@ -110,8 +120,13 @@ const IndexPage = () => {
 							/>
 						)
 					});
+				} else {
+					setPopBox({
+						isOpen: false
+					});
 				}
 			};
+			midnight_cookie();
 			setPopBox({
 				isOpen: true,
 				content: (
