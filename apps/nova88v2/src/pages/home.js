@@ -39,13 +39,15 @@ const useGetDomainList = ({ userInfo, setPopBox, i18n }) => {
 				res => {
 					const { errorCode, data, message } = res.data;
 					if (errorCode === 0) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_nova88_backup_website,
-							popBoxType: defPopBoxType.DomainList,
-							className: "backupDomain ",
-							domainList: data
-						});
+						if (data.length > 0) {
+							setPopBox({
+								isOpen: true,
+								title: i18n.lbl_nova88_backup_website,
+								popBoxType: defPopBoxType.DomainList,
+								className: "backupDomain ",
+								domainList: data
+							});
+						}
 					} else {
 						setPopBox({
 							isOpen: true,
