@@ -125,7 +125,7 @@ const ShowingNum = ({ value, currency }) => {
 					? n - prevAmount[idx]
 					: 10 - Math.abs(n - prevAmount[idx]);
 
-			const elemHeight = 20 * Number(height);
+			const elemHeight = 17 * Number(height);
 			const elem = elementList?.[idx];
 
 			if (elem) {
