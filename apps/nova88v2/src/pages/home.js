@@ -23,6 +23,7 @@ import path from "../path";
 import Header from "../components/header/header";
 import JoinLoginBar from "../components/home/joinLoginBar";
 import Logo from "../components/common/logo";
+import Jackpot from "../components/home/jackpot";
 
 const IndexPage = () => {
 	const navigate = useNavigate();
@@ -140,6 +141,7 @@ const IndexPage = () => {
 						setPopBox={setPopBox}
 					/>
 					<Promos i18n={i18n} userInfo={userInfo} />
+					<Jackpot i18n={i18n} userInfo={userInfo} />
 					<HotGame i18n={i18n} userInfo={userInfo} />
 					{userInfo.isLogin ? (
 						<Referral
