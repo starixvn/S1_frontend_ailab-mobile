@@ -14,6 +14,7 @@ import useHandleLogin from "../components/hook/useHandleLogin";
 import { Link } from "../route/link";
 import path from "../path";
 import { useGotoGame, defSpecialSetting } from "../components/hook/useGotoGame";
+import { GetMetaDataByPage } from "../components/seo/seo";
 
 const eachPageItem = 20;
 
@@ -435,7 +436,13 @@ const IndexPage = props => {
 			<i className="icon icon-keyboard_arrow_left" />
 		</Link>
 	);
+
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
+
+	const helmet = GetMetaDataByPage({
+		path: path.casino.root,
+		langId: userInfo.langId
+	});
 
 	let tpId = props.tpId ?? props.location.state?.tpId;
 	tpId = typeof tpId === "string" && !isNaN(tpId) ? Number(tpId) : tpId;
@@ -452,6 +459,7 @@ const IndexPage = props => {
 				/>
 			</main>
 			<Footer />
+			{helmet}
 		</>
 	);
 };
