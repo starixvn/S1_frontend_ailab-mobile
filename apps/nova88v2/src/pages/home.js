@@ -6,6 +6,7 @@ import {
 	rootContext
 } from "Context";
 import { useNavigate, Link } from "@reach/router";
+import { GetMetaDataByPage } from "../components/seo/seo";
 import Layout from "../components/common/layout";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
@@ -17,17 +18,13 @@ import Referral from "../components/home/referral";
 import EventSwipper from "../components/home/eventSwipper";
 import HeaderShortcut from "../components/home/headerShortcut";
 import Bottom from "../components/home/bottom";
-import {
-	readCookie,
-	setCookie,
-	isEventPeriod
-} from "../components/common/common";
+import { isEventPeriod, readCookie } from "../components/common/common";
 import path from "../path";
-import api from "../service/api";
 import Header from "../components/header/header";
 import JoinLoginBar from "../components/home/joinLoginBar";
 import Logo from "../components/common/logo";
 import AddToHomePop, { iOSSafari } from "../components/home/addToHomePop";
+import Jackpot from "../components/home/jackpot";
 
 const IndexPage = () => {
 	const navigate = useNavigate();
@@ -37,6 +34,10 @@ const IndexPage = () => {
 	const { setRoot } = useContext(rootContext);
 	const [addToHomePop, setAddToHomePop] = useState(false);
 
+	const helmet = GetMetaDataByPage({
+		path: path.home.root,
+		langId: userInfo.langId
+	});
 	useEffect(() => {
 		setRoot(true);
 		return () => {
@@ -136,34 +137,42 @@ const IndexPage = () => {
 	]);
 
 	return (
-		<Layout header={<Header />}>
-			{userInfo.isLogin ? <HeaderShortcut i18n={i18n} /> : null}
-			<Slider />
-			<Marquee />
-			{userInfo.isLogin ? null : <JoinLoginBar />}
-			<div id="content">
-				<Menu i18n={i18n} userInfo={userInfo} setPopBox={setPopBox} />
-				<Promos i18n={i18n} userInfo={userInfo} />
-				<HotGame i18n={i18n} userInfo={userInfo} />
-				{userInfo.isLogin ? (
-					<Referral
+		<>
+			<Layout header={<Header />}>
+				{userInfo.isLogin ? <HeaderShortcut i18n={i18n} /> : null}
+				<Slider />
+				<Marquee />
+				{userInfo.isLogin ? null : <JoinLoginBar />}
+				<div id="content">
+					<Menu
 						i18n={i18n}
 						userInfo={userInfo}
 						setPopBox={setPopBox}
 					/>
-				) : null}
-				<EventSwipper i18n={i18n} userInfo={userInfo} />
-				<Streaming />
-				<Bottom i18n={i18n} langId={userInfo.langId} />
-				{addToHomePop && iOSSafari ? (
-					<AddToHomePop
-						i18n={i18n}
-						setAddToHomePop={setAddToHomePop}
-						langId={userInfo.langId}
-					/>
-				) : null}
-			</div>
-		</Layout>
+					<Promos i18n={i18n} userInfo={userInfo} />
+					<Jackpot i18n={i18n} userInfo={userInfo} />
+					<HotGame i18n={i18n} userInfo={userInfo} />
+					{userInfo.isLogin ? (
+						<Referral
+							i18n={i18n}
+							userInfo={userInfo}
+							setPopBox={setPopBox}
+						/>
+					) : null}
+					<EventSwipper i18n={i18n} userInfo={userInfo} />
+					<Streaming />
+					<Bottom i18n={i18n} langId={userInfo.langId} />
+					{addToHomePop && iOSSafari ? (
+						<AddToHomePop
+							i18n={i18n}
+							setAddToHomePop={setAddToHomePop}
+							langId={userInfo.langId}
+						/>
+					) : null}
+				</div>
+			</Layout>
+			{helmet}
+		</>
 	);
 };
 
