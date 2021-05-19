@@ -200,7 +200,7 @@ export default ({
 					{accountName ? null : (
 						<Inputbox
 							title={i18n.lbl_RealName}
-							value={userValue.accountName}
+							value={userValue.accountName ?? ""}
 							onChange={editField.bind(this, {
 								col: "accountName"
 							})}
@@ -218,7 +218,7 @@ export default ({
 					)}
 					<Inputbox
 						title={i18n.lbl_BankNumber}
-						value={userValue.accountNo}
+						value={userValue.accountNo ?? ""}
 						onChange={editField.bind(this, {
 							col: "accountNo"
 						})}
