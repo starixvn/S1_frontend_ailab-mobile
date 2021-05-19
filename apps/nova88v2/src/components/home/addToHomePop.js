@@ -16,7 +16,9 @@ const AddToHomePop = ({ i18n, setAddToHomePop }) => {
 				<div>
 					{i18n.lbl_AddToHome_Hint}
 					<div>
-						<a>{i18n.lbl_AddToHome_Tutorial}</a>
+						<a href="/ac/teaching.html">
+							{i18n.lbl_AddToHome_Tutorial}
+						</a>
 						<button onClick={clickNotShowing}>
 							{i18n.lbl_Dont_show_me_again}
 						</button>
