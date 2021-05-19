@@ -25,15 +25,19 @@ const Jackpot = ({ i18n, userInfo }) => {
 	const [value, setValue] = useState({ curr: "", prev: "" });
 	const animateDelaySec = 800;
 
-	const ticker = new Ticker({
-		info: 2,
-		casino: "hotspin88am",
-		currency: _currency === "RMB" ? "cny" : _currency?.toLowerCase()
-	});
-
 	useEffect(() => {
-		ticker.attachToTextBox("tick");
-		ticker.tick();
+		try {
+			const ticker = new Ticker({
+				info: 2,
+				casino: "hotspin88am",
+				currency: _currency === "RMB" ? "cny" : _currency?.toLowerCase()
+			});
+
+			ticker.attachToTextBox("tick");
+			ticker.tick();
+		} catch (error) {
+			console.log(error);
+		}
 	}, []);
 
 	useInterval(() => {
