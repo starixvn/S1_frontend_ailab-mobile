@@ -215,6 +215,7 @@ header > div .Login {
           justify-content: center;
   pointer-events: none;
   overflow-y: scroll;
+  white-space: initial;
 }
 
 header > div .Join.open,
@@ -2303,6 +2304,10 @@ main.statementPage {
 .inputBox > .icon-module > i.icon {
   -webkit-transform: translateY(15%);
           transform: translateY(15%);
+}
+
+.inputBox + .open {
+  width: 100%;
 }
 
 .LoginRule {
