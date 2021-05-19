@@ -1,12 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "@reach/router";
-import AppDownloadImg from "../../styles/img/appdownload.jpg";
-import AppDownloadVNImg from "../../styles/img/appdownload_vn.jpg";
-import IOS from "../../styles/img/ios.svg";
-import Android from "../../styles/img/android.svg";
-import VIP from "../../styles/img/home-vip.png";
-import Ranking from "../../styles/img/home-ranking.png";
+import AppDownloadImg from "../../styles/img/downloadbg.png";
+import IOS from "../../styles/img/iosicon.png";
+import Android from "../../styles/img/androidicon.png";
+import VIP from "../../styles/img/vipimg.jpg";
+import Ranking from "../../styles/img/rankingimg.jpg";
 import TandC from "../../service/t_and_c";
 import path from "../../path";
 
@@ -22,11 +21,9 @@ const MiddlePanel = ({ langId, i18n }) => {
 			<div className="vipRanking">
 				<Link to={`/${path.vip.root}`}>
 					<img src={VIP} alt="VIP" />
-					<div>VIP</div>
 				</Link>
 				<Link to={`/${path.leaderBoard.root}`}>
 					<img src={Ranking} alt="Ranking" />
-					<div>{i18n.lbl_Ranking.toUpperCase()}</div>
 				</Link>
 			</div>
 			<div className="downloadNew">
@@ -34,24 +31,19 @@ const MiddlePanel = ({ langId, i18n }) => {
 					target="_blank"
 					rel="noreferrer"
 					href={TandC(langId).AppDownload}>
-					<img
-						src={
-							langId === "en" ? AppDownloadImg : AppDownloadVNImg
-						}
-						alt="APP Download"
-					/>
+					<img src={AppDownloadImg} alt="APP Download" />
 				</a>
 				<a href={APPDownloadLink.IOS}>
-					<div>
+					<button>
 						<img src={IOS} alt="IOS" />
-						<p>IOS</p>
-					</div>
+						IOS
+					</button>
 				</a>
 				<a href={APPDownloadLink.Android}>
-					<div>
+					<button>
 						<img src={Android} alt="Android" />
-						<p>Android</p>
-					</div>
+						Android
+					</button>
 				</a>
 			</div>
 		</>

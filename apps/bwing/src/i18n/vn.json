@@ -577,7 +577,10 @@
 	"lbl_LoadCard":"THẺ CÀO",
 	"lbl_DepositType5":"THẺ CÀO",
 
+	"==============General==============":"",
+	"lbl_Jackpot":"NỔ HŨ",
 
 	"==============Transfer==============":"",
-	"lbl_Fail":"Thất bại"
+	"lbl_Fail":"Thất bại",
+	"lbl_LastUpdated":"CẬP NHẬT GẦN NHẤT"
 }
