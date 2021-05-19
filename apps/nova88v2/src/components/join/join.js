@@ -16,7 +16,6 @@ import { GET_LANG_ID } from "../../service/language";
 import useTip from "../hook/useTip";
 import TandC from "../../service/t_and_c";
 import path from "../../path";
-import config from "../../config";
 import PromoPopup from "./join.promotion";
 import { initValue, initStatus, currencyToAreacode } from "./join.def";
 import areaCode from "../../datas/areaCode";
