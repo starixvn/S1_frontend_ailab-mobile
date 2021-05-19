@@ -1,5 +1,7 @@
+import path from "../../path";
+
 export const defMetaData = {
-	join: {
+	[path.join.root]: {
 		en: {
 			links: [
 				{
@@ -113,7 +115,7 @@ export const defMetaData = {
 			]
 		}
 	},
-	"/": {
+	[path.home.root]: {
 		en: {
 			links: [
 				{
@@ -227,7 +229,7 @@ export const defMetaData = {
 			]
 		}
 	},
-	vip: {
+	[path.vip.root]: {
 		en: {
 			links: [
 				{
@@ -341,7 +343,7 @@ export const defMetaData = {
 			]
 		}
 	},
-	promotion: {
+	[path.promotion.root]: {
 		en: {
 			links: [
 				{
@@ -455,7 +457,7 @@ export const defMetaData = {
 			]
 		}
 	},
-	casino: {
+	[path.casino.root]: {
 		en: {
 			links: [
 				{
@@ -569,7 +571,7 @@ export const defMetaData = {
 			]
 		}
 	},
-	leaderBoard: {
+	[path.ranking.root]: {
 		en: {
 			links: [
 				{

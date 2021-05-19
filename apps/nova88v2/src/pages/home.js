@@ -6,8 +6,7 @@ import {
 	rootContext
 } from "Context";
 import { useNavigate, Link } from "@reach/router";
-import { Helmet } from "react-helmet";
-import { defMetaData } from "../components/seo/def";
+import { GetMetaDataByPage } from "../components/seo/seo";
 import Layout from "../components/common/layout";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
@@ -19,13 +18,8 @@ import Referral from "../components/home/referral";
 import EventSwipper from "../components/home/eventSwipper";
 import HeaderShortcut from "../components/home/headerShortcut";
 import Bottom from "../components/home/bottom";
-import {
-	readCookie,
-	setCookie,
-	isEventPeriod
-} from "../components/common/common";
+import { isEventPeriod } from "../components/common/common";
 import path from "../path";
-import api from "../service/api";
 import Header from "../components/header/header";
 import JoinLoginBar from "../components/home/joinLoginBar";
 import Logo from "../components/common/logo";
@@ -36,11 +30,10 @@ const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
-	const helmet = defMetaData[path.home.root]?.[userInfo.langId].links.map(
-		el => {
-			return <link href={el.href} rel={el.rel} hrefLang={el.hrefLang} />;
-		}
-	);
+	const helmet = GetMetaDataByPage({
+		path: path.home.root,
+		langId: userInfo.langId
+	});
 	useEffect(() => {
 		setRoot(true);
 		return () => {
@@ -160,7 +153,7 @@ const IndexPage = () => {
 					<Bottom i18n={i18n} langId={userInfo.langId} />
 				</div>
 			</Layout>
-			<Helmet>{helmet}</Helmet>
+			{helmet}
 		</>
 	);
 };

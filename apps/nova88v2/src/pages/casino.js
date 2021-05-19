@@ -1,7 +1,6 @@
 import React, { useContext, createRef } from "react";
 import PropTypes from "prop-types";
 import { i18nContext, userInfoContext } from "Context";
-import { Helmet } from "react-helmet";
 import Slider from "../components/casino/slider";
 import defNav from "../components/casino/defNav";
 import Nav from "../components/casino/nav";
@@ -15,6 +14,7 @@ import useHandleLogin from "../components/hook/useHandleLogin";
 import { Link } from "../route/link";
 import path from "../path";
 import { useGotoGame, defSpecialSetting } from "../components/hook/useGotoGame";
+import { GetMetaDataByPage } from "../components/seo/seo";
 
 const eachPageItem = 20;
 
@@ -439,161 +439,10 @@ const IndexPage = props => {
 
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 
-	let helmet = {};
-	switch (userInfo.langId) {
-		case "en":
-			helmet = (
-				<Helmet>
-					<link
-						rel="canonical"
-						href="https://www.nova88.net/en/casino"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/casino"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/casino"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/casino"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/casino"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-			break;
-		case "cs":
-			helmet = (
-				<Helmet>
-					<link
-						rel="canonical"
-						href="https://www.nova88gol.com/cs/casino"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/casino"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/casino"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/casino"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/casino"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-			break;
-		case "th":
-			helmet = (
-				<Helmet>
-					<link
-						rel="canonical"
-						href="https://www.nova88apple.com/th/casino"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/casino"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/casino"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/casino"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/casino"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-			break;
-		case "id":
-			helmet = (
-				<Helmet>
-					<link
-						rel="canonical"
-						href="https://www.nova88-indo.com/id/casino"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/casino"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/casino"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/casino"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/casino"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-
-			break;
-
-		default:
-			helmet = (
-				<Helmet>
-					<link
-						rel="canonical"
-						href="https://www.nova88.net/en/casino"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88.net/en/casino"
-						hrefLang="en-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88gol.com/cs/casino"
-						hrefLang="zh-my"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88apple.com/th/casino"
-						hrefLang="th-th"
-					/>
-					<link
-						rel="alternate"
-						href="https://www.nova88-indo.com/id/casino"
-						hrefLang="id-id"
-					/>
-				</Helmet>
-			);
-			break;
-	}
+	const helmet = GetMetaDataByPage({
+		path: path.casino.root,
+		langId: userInfo.langId
+	});
 
 	let tpId = props.tpId ?? props.location.state?.tpId;
 	tpId = typeof tpId === "string" && !isNaN(tpId) ? Number(tpId) : tpId;

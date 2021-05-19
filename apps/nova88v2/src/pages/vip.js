@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
-import { Helmet } from "react-helmet";
 import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
-import { defMetaData } from "../components/seo/def";
+import { GetMetaDataByPage } from "../components/seo/seo";
 import { Autoplay } from "../components/common/swipperBanner";
 import { userInfoContext, i18nContext } from "../components/common/context";
 import { defBannersUrl, defLevelList } from "../components/vip/def";
@@ -39,11 +38,10 @@ const IndexPage = () => {
 			navigate(path.join.root);
 		}
 	};
-	const helmet = defMetaData[path.vip.root]?.[userInfo.langId].links.map(
-		el => {
-			return <link href={el.href} rel={el.rel} hrefLang={el.hrefLang} />;
-		}
-	);
+	const helmet = GetMetaDataByPage({
+		path: path.vip.root,
+		langId: userInfo.langId
+	});
 
 	return (
 		<>
@@ -64,7 +62,7 @@ const IndexPage = () => {
 				</div>
 			</main>
 			<Footer />
-			<Helmet>{helmet}</Helmet>
+			{helmet}
 		</>
 	);
 };

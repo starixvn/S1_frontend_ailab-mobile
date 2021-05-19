@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import path from "Path";
-import { Helmet } from "react-helmet";
 import { Promotion as uiSetting } from "UISetting";
 import { userInfoContext, i18nContext, popBoxContext } from "Context";
 import { Promotion } from "../components/promotion/promotion";
@@ -10,7 +9,7 @@ import {
 } from "../components/promotion/common/def";
 import Tab, { useHandleTab } from "../components/promotion/components/tab";
 import Nav, { useHandleNav } from "../components/promotion/components/nav";
-import { defMetaData } from "../components/seo/def";
+import { GetMetaDataByPage } from "../components/seo/seo";
 import config from "../config";
 import staticList from "../datas/promotionList";
 import Layout from "../components/common/layout";
@@ -31,10 +30,9 @@ export default ({ location = {} }) => {
 		isLogin: userInfo.isLogin,
 		tab
 	});
-	const helmet = defMetaData[path.promotion.root]?.[
-		userInfo.langId
-	].links.map(el => {
-		return <link href={el.href} rel={el.rel} hrefLang={el.hrefLang} />;
+	const helmet = GetMetaDataByPage({
+		path: path.promotion.root,
+		langId: userInfo.langId
 	});
 	const nav = (
 		<Nav
@@ -79,7 +77,7 @@ export default ({ location = {} }) => {
 					filterType={filterType}
 				/>
 			</Layout>
-			<Helmet>{helmet}</Helmet>
+			{helmet}
 		</>
 	);
 };

@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
-import { Helmet } from "react-helmet";
 import { i18nContext, userInfoContext } from "../components/common/context";
-import { defMetaData } from "../components/seo/def";
+import { GetMetaDataByPage } from "../components/seo/seo";
 import Event from "../components/ranking/event";
 import Final from "../components/ranking/final";
 import Record from "../components/ranking/records";
@@ -31,12 +30,11 @@ export default () => {
 			<i className="icon icon-keyboard_arrow_left" />
 		</Link>
 	);
-	const helmet = defMetaData[path.ranking.root]?.[userInfo.langId].links.map(
-		el => {
-			return <link href={el.href} rel={el.rel} hrefLang={el.hrefLang} />;
-		}
-	);
-	console.log(helmet);
+	const helmet = GetMetaDataByPage({
+		path: path.ranking.root,
+		langId: userInfo.langId
+	});
+
 	return (
 		<>
 			<Header
@@ -86,7 +84,7 @@ export default () => {
 					title="lbl_Records"
 				/>
 			</Layout>
-			<Helmet>{helmet}</Helmet>
+			{helmet}
 		</>
 	);
 };
