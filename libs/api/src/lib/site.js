@@ -65,4 +65,6 @@ export class SiteAPI extends BaseAPI {
 		this.siteRequest.post(`/GetAffiliateAgent`, {
 			AffId
 		});
+
+	GetSupportDomainList = () => this.siteRequest.post(`/GetSupportDomainList`);
 }

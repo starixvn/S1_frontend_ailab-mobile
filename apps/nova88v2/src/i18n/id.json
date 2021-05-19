@@ -532,6 +532,13 @@
 	"lbl_DepositType2": "Pembayaran Via Mobile",
 	"lbl_DepositType3": "Bank Lokal",
 	"lbl_DepositType4": "Pembayaran Crypto",
+    "==============================================Backup Domain====================================": "",
+
+	"lbl_nova88_backup_website":"Mohon simpan domain terbaru NOVA88 untuk keperluan cadangan.",
+	"lbl_kindly_visit_alternate_link_for_better_performance":"Jika Anda merasa lambat, silakan kunjungi tautan alternatif untuk performa yang lebih baik.",
+	"lbl_Copy":"Salinan",
+	"lbl_Dont_show_me_again":"Jangan tampilkan lagi",
+
 
 	"==============================================Wallet====================================": "",
 	"lbl_TpWallet_1": "Dompet Olahraga",
