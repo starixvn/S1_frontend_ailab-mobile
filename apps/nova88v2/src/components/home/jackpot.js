@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import useInterval from "../hook/useInterval";
 
+const defaultElementHeight = 17;
 const numberArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const defCurrenyId = {
@@ -125,7 +126,7 @@ const ShowingNum = ({ value, currency }) => {
 					? n - prevAmount[idx]
 					: 10 - Math.abs(n - prevAmount[idx]);
 
-			const elemHeight = 17 * Number(height);
+			const elemHeight = defaultElementHeight * Number(height);
 			const elem = elementList?.[idx];
 
 			if (elem) {
