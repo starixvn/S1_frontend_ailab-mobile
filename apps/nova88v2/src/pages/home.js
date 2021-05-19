@@ -25,6 +25,52 @@ import JoinLoginBar from "../components/home/joinLoginBar";
 import Logo from "../components/common/logo";
 import { defPopBoxType } from "../components/common/popbox";
 import Jackpot from "../components/home/jackpot";
+import api from "../service/api";
+
+const useGetDomainList = ({ userInfo, setPopBox, i18n }) => {
+	useEffect(() => {
+		const cookieName = `${userInfo.userName}-DomainListHint`;
+		if (
+			userInfo.isLogin &&
+			userInfo.currencyId &&
+			readCookie(cookieName) !== "1"
+		) {
+			api.site.GetSupportDomainList().then(
+				res => {
+					const { errorCode, data, message } = res.data;
+					if (errorCode === 0) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_nova88_backup_website,
+							popBoxType: defPopBoxType.DomainList,
+							className: "backupDomain ",
+							domainList: data
+						});
+					} else {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: message
+						});
+					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						title: i18n.lbl_ImportantNote,
+						content: i18n.msg_ApiServerError
+					});
+				}
+			);
+		}
+	}, [
+		userInfo.isLogin,
+		userInfo.currencyId,
+		i18n,
+		setPopBox,
+		userInfo.userName
+	]);
+};
 
 const IndexPage = () => {
 	const navigate = useNavigate();
@@ -36,6 +82,8 @@ const IndexPage = () => {
 		path: path.home.root,
 		langId: userInfo.langId
 	});
+	useGetDomainList({ setPopBox, userInfo, i18n });
+
 	useEffect(() => {
 		setRoot(true);
 		return () => {
@@ -126,28 +174,6 @@ const IndexPage = () => {
 		userInfo.langId,
 		userInfo.isJoin,
 		userInfo.isLogin
-	]);
-
-	useEffect(() => {
-		const cookieName = `${userInfo.userName}-DomainListHint`;
-		if (
-			userInfo.isLogin &&
-			userInfo.currencyId &&
-			readCookie(cookieName) !== "1"
-		) {
-			setPopBox({
-				isOpen: true,
-				title: i18n.lbl_nova88_backup_website,
-				popBoxType: defPopBoxType.DomainList,
-				className: "backupDomain "
-			});
-		}
-	}, [
-		userInfo.isLogin,
-		userInfo.currencyId,
-		i18n,
-		setPopBox,
-		userInfo.userName
 	]);
 
 	return (

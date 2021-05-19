@@ -4,7 +4,7 @@ import TurnoverAccumulated from "./popbox.turnover";
 import Otp from "./popbox.otp";
 import OneGamePopBox from "./popbox.oneGame";
 import ReferralPopBox from "./popbox.referral";
-import DomainListPop from "../home/domainListPop";
+import DomainListPop from "./popbox.domainList";
 
 export const defPopBoxType = {
 	default: "default",
@@ -42,7 +42,7 @@ const PopUp = () => {
 			break;
 
 		case defPopBoxType.DomainList:
-			content = <DomainListPop />;
+			content = <DomainListPop domainList={popBox.domainList} />;
 			break;
 
 		default:
