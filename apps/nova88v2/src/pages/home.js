@@ -27,7 +27,7 @@ import api from "../service/api";
 import Header from "../components/header/header";
 import JoinLoginBar from "../components/home/joinLoginBar";
 import Logo from "../components/common/logo";
-import AddToHomePop from "../components/home/addToHomePop";
+import AddToHomePop, { iOSSafari } from "../components/home/addToHomePop";
 
 const IndexPage = () => {
 	const navigate = useNavigate();
@@ -155,10 +155,11 @@ const IndexPage = () => {
 				<EventSwipper i18n={i18n} userInfo={userInfo} />
 				<Streaming />
 				<Bottom i18n={i18n} langId={userInfo.langId} />
-				{addToHomePop ? (
+				{addToHomePop && iOSSafari ? (
 					<AddToHomePop
 						i18n={i18n}
 						setAddToHomePop={setAddToHomePop}
+						langId={userInfo.langId}
 					/>
 				) : null}
 			</div>

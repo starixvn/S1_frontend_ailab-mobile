@@ -4509,7 +4509,7 @@
                         <p class="gwd-p-1iae gwd-p-q33x gwd-p-1ukd gwd-grp-1ulm gwd-gen-iyf4gwdanimation gwd-p-uvvw"
                             data-gwd-grp-id="tc_subtitle4"></p>
                     </div>
-                    <div class="back"><a href="../index.html">Back to Nova88</a></div>
+                    <div class="back"><a></a></div>
                     <!-- <gwd-image id="tc_replay" source="replay.svg" scaling="stretch"
                         class="gwd-image-d9y6 gwd-gen-1wv6gwdanimation">
                         <div class="intermediate-element"><img src="./index_files/replay.svg"
@@ -4532,6 +4532,32 @@
             </gwd-page>
         </gwd-pagedeck>
     </gwd-genericad>
+    <script>
+        const currentLocation = window.location.origin;
+        const a = document.querySelector(".back>a");
+        a.href = currentLocation;
+
+        const getUrlParameter = name => {
+	        const paramName = name.replace(/[[]/, "\\[").replace(/[\]]/, "\\]");
+	        const regex = new RegExp(`[\\?&]${paramName}=([^&#]*)`, "i");
+	        const results = regex.exec(window.location.search);
+	        return results === null
+		        ? ""
+		        : decodeURIComponent(results[1].replace(/\+/g, " "));
+        };
+
+        const langId = getUrlParameter("lang");
+        let backText = "Back to Nova88"
+        if (langId === "cs"){
+            backText = "回到 Nova88"
+        } else if (langId === "id"){
+            backText = "Kembali ke Nova88"
+        } else if (langId === "th"){
+            backText = "กลับไปที่หน้า Nova88 สาร"
+        }
+        a.innerHTML = backText;
+
+    </script>
     <script type="text/javascript" id="gwd-init-code">
             (function () {
                 window.onload = function () {
