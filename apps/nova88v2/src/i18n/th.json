@@ -346,6 +346,7 @@
 	"lbl_WithdrawalStatus6": "ยืนยัน",
 	"lbl_WithdrawalStatus7": "ปฎิเสธ",
 	"lbl_WithdrawalStatus8": "กำลังดำเนินการ",
+	"lbl_WithdrawalDailyMinMax": "จำกัดยอดถอน ต่ำสุด/สูงสุด ต่อวัน: {{0}}/{{1}}",
 	"-==================-==========================Transfer-===================================": "",
 	"lbl_MaxAmount": "จำนวนเงินสูงสุด",
 	"lbl_please_select_to_wallet": "กรุณาเลือกกระเป๋าเงินที่ต้องการโอนเข้า",
