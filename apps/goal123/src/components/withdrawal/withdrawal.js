@@ -19,6 +19,7 @@ import RecentDatas from "./withdrawal.recentDatas";
 import ReloadSpin from "../common/reloadSpin";
 import path from "../../path";
 import Loading from "../common/loading";
+import ImportantNote from "./importantNote";
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
@@ -539,6 +540,7 @@ const Panel = () => {
 						ClickCancel={ClickCancel}
 						GetRecentDatas={GetWithdrawalInfoRecent}
 					/>
+					<ImportantNote i18n={i18n} langId={userInfo.langId} />
 				</>
 			)
 		) : null

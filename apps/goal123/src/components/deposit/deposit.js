@@ -21,9 +21,9 @@ import {
 	api_SetDepositCancel,
 	api_payment_GetLoadCardPayGroupList
 } from "../../service/api/payment";
-
 import RecentDatas from "./deposit.recentDatas";
 import { number_format } from "../common/common";
+import ImportantNote from "./importantNote";
 
 const defPayType = {
 	onlineBank: "onlineBank",
@@ -352,6 +352,7 @@ const Panel = () => {
 				ClickCancel={ClickCancel}
 				GetDepositInfoRecent={GetDepositInfoRecent}
 			/>
+			<ImportantNote i18n={i18n} langId={userInfo.langId} />
 		</>
 	);
 };

@@ -534,5 +534,8 @@
 	
 	"==============Transfer==============":"",
 	"lbl_Fail":"Failed",
-	"lbl_LastUpdated":"LAST UPDATED"
+	"lbl_LastUpdated":"LAST UPDATED",
+	
+	"==============Important Notice==============":"",
+	"lbl_ImportantNotice":"IMPORTANT NOTICE"
 }
