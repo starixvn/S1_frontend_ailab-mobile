@@ -15,8 +15,8 @@ export const defBannerActionMode = {
 	RedirectPageOfThisSite: 6
 };
 
-export const api_ExistsUserName = ({ UserName }) =>
-	siteRequest.post(`/ExistsUserName`, { UserName });
+export const api_ExistsUserName = ({ UserName, langId }) =>
+	siteRequest.post(`/ExistsUserName/${langId}`, { UserName });
 
 export const api_ExistsEmail = ({ Email }) =>
 	siteRequest.post(`/ExistsEmail`, { Email });

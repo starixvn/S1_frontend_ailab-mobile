@@ -1,7 +1,7 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import { Redirect } from "@reach/router";
 import PropTypes from "prop-types";
-import Inputbox from "../common/inputbox";
+import Inputbox from "../common/inputbox.info";
 import Dropdown from "../common/dropdown.icon";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import areaCode from "../../datas/areaCode";
@@ -16,7 +16,7 @@ import path from "../../path";
 import { redirectToPrev } from "./profile.redirect";
 import {
 	monthOptions,
-	initWarning,
+	initStatus,
 	initUserValue,
 	infoList
 } from "./profile.def";
@@ -25,18 +25,16 @@ const Panel = () => {
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
-	const [warning, setWarning] = useState(initWarning);
+	const [inputStatus, setInputStatus] = useState(initStatus);
 	const [birthIdx, setBirthIdx] = useState({
 		year: null,
 		month: null,
 		day: null
 	});
 	const [redirectPath, setRedirectPath] = useState(null);
-
 	const _initUserValue = initUserValue(userInfo);
 	const [userValue, setuserValue] = useState(_initUserValue);
-
-	const country = userInfo.country ? userInfo.country : userInfo.perCountry;
+	const country = userInfo.country ?? userInfo.perCountry;
 	const _areaCode = country ? areaCode[country].AreaCode : "";
 	const _infoList = infoList({ i18n, userInfo, _areaCode });
 	const isMountedRef = useRef(null);
@@ -80,15 +78,15 @@ const Panel = () => {
 
 	const checkPhone = async val => {
 		let checked = true;
-		let message = "";
+		let msg = "";
 
 		if (userInfo.phoneNo) {
-			return { checked, message };
+			return { checked, msg };
 		}
 
 		if (val === "" || isNaN(val)) {
 			checked = false;
-			message = i18n.msg_EnterPhoneNumber;
+			msg = i18n.msg_EnterPhoneNumber;
 		} else {
 			try {
 				const res = await api_account_ExistsPhoneNo({
@@ -97,67 +95,67 @@ const Panel = () => {
 				});
 				if (res.data.errorCode === 0 && res.data.data === true) {
 					checked = false;
-					message = i18n.msg_PhoneExisted;
+					msg = i18n.msg_PhoneExisted;
 				}
 			} catch (error) {
 				checked = false;
-				message = i18n.msg_ApiServerError;
+				msg = i18n.msg_ApiServerError;
 			}
 		}
 
-		return { checked, message };
+		return { checked, msg };
 	};
 
 	const checkAccountName = val => {
 		let checked = true;
-		let message = "";
+		let msg = "";
 
 		if (val === "" || val === null || val === undefined) {
 			checked = false;
-			message = i18n.msg_EnterRealName;
+			msg = i18n.msg_EnterRealName;
 		}
 
-		return { checked, message };
+		return { checked, msg };
 	};
 
 	const checkEmail = async val => {
 		let checked = true;
-		let message = "";
+		let msg = "";
 		const regx = /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
 
 		if (userInfo.email) {
-			return { checked, message };
+			return { checked, msg };
 		}
 
 		if (val === "" || val === null) {
 			checked = false;
-			message = i18n.msg_MailWrongFormat;
+			msg = i18n.lbl_EmailRequired;
 		} else if (!regx.test(val)) {
 			checked = false;
-			message = i18n.msg_MailWrongFormat;
+			msg = i18n.msg_MailWrongFormat;
 		} else {
 			try {
 				const res = await api_ExistsEmail({ Email: val });
 
 				if (res.data.errorCode === 0 && res.data.data === true) {
 					checked = false;
-					message = i18n.msg_MailExisted;
+					msg = i18n.msg_MailExisted;
 				}
 			} catch (error) {
 				checked = false;
-				message = i18n.msg_ApiServerError;
+				msg = i18n.msg_ApiServerError;
 			}
 		}
 
-		return { checked, message };
+		return { checked, msg };
 	};
 
 	const checkBirth = () => {
 		let checked = true;
-		let message = "";
+		let msg = "";
 
 		if (userInfo.birth_d && userInfo.birth_m && userInfo.birth_y) {
-			return { checked, message };
+			return { checked, msg };
 		}
 
 		const _year = yearOptions[birthIdx.year]?.value;
@@ -166,37 +164,31 @@ const Panel = () => {
 
 		if (!_year || !_month || !day) {
 			checked = false;
-			message = i18n.msg_SelectBirthDay;
+			msg = i18n.msg_SelectBirthDay;
 		}
 
-		return { checked, message };
+		setInputStatus(prev => ({
+			...prev,
+			Birthday: { checked, msg }
+		}));
+		return { checked, msg };
 	};
 
 	const checkInputboxHandler = async (col, e) => {
 		const val = e.target.value;
-		let checked = true;
-		let msg = "";
+		let result = { checked: true, msg: "" };
 
 		if (col === "AccountName") {
-			const result = checkAccountName(val);
-			checked = result.checked;
-			msg = result.message;
+			result = checkAccountName(val);
 		} else if (col === "Email") {
-			const result = await checkEmail(val);
-			checked = result.checked;
-			msg = result.message;
-		} else {
-			const result = await checkPhone(val);
-			checked = result.checked;
-			msg = result.message;
+			result = await checkEmail(val);
+		} else if (col === "PhoneNo") {
+			result = await checkPhone(val);
 		}
 
-		setWarning(prevState => ({
-			...prevState,
-			[col]: {
-				status: !checked,
-				msg
-			}
+		setInputStatus(prev => ({
+			...prev,
+			[col]: result
 		}));
 	};
 
@@ -210,6 +202,14 @@ const Panel = () => {
 		setuserValue(prevState => ({
 			...prevState,
 			[col]: val
+		}));
+	};
+
+	const clickInfo = ({ col, info }) => {
+		const _info = inputStatus[col].msg === "" ? i18n[info] : "";
+		setInputStatus(prev => ({
+			...prev,
+			[col]: { checked: null, msg: _info }
 		}));
 	};
 
@@ -233,29 +233,17 @@ const Panel = () => {
 					_birthCheck.checked;
 
 				if (!checked) {
-					setWarning(prev => ({
+					setInputStatus(prev => ({
 						...prev,
-						AccountName: {
-							status: !_accountNameCheck.checked,
-							msg: _accountNameCheck.message
-						},
-						Birthday: {
-							status: !_birthCheck.checked,
-							msg: _birthCheck.message
-						},
-						PhoneNo: {
-							status: !_phoneCheck.checked,
-							msg: _phoneCheck.message
-						},
-						Email: {
-							status: !_emailCheck.checked,
-							msg: _emailCheck.message
-						}
+						AccountName: _accountNameCheck,
+						Birthday: _birthCheck,
+						PhoneNo: _phoneCheck,
+						Email: _emailCheck
 					}));
 				}
 				return checked;
 			},
-			err => {
+			() => {
 				return false;
 			}
 		);
@@ -307,9 +295,7 @@ const Panel = () => {
 				api_SetProfile(profileData).then(
 					response => {
 						if (isMountedRef.current) {
-							const { errorCode } = response.data;
-							const { message } = response.data;
-
+							const { errorCode, message } = response.data;
 							if (errorCode === 0) {
 								api_GetCustProfile().then(
 									res => {
@@ -328,13 +314,12 @@ const Panel = () => {
 													isOpen: true,
 													title:
 														i18n.lbl_ImportantNote,
-													content:
-														response.data.message
+													content: message
 												});
 											}
 										}
 									},
-									err => {
+									() => {
 										if (isMountedRef.current) {
 											setPopBox({
 												isOpen: true,
@@ -347,9 +332,9 @@ const Panel = () => {
 
 								redirectToPrev(i18n, setPopBox, closePopbox);
 							} else if (errorCode === 21) {
-								setWarning(prevState => ({
-									...prevState,
-									Phone: { status: true, msg: message }
+								setInputStatus(prev => ({
+									...prev,
+									Phone: { checked: false, msg: message }
 								}));
 							} else {
 								setPopBox({
@@ -360,7 +345,7 @@ const Panel = () => {
 							}
 						}
 					},
-					err => {
+					() => {
 						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
@@ -444,19 +429,24 @@ const Panel = () => {
 			{!userInfo.accountName ? (
 				<>
 					<Inputbox
-						icon="icon-member"
-						inputType="text"
+						icon="icon icon-member"
 						placeholder={i18n.lbl_RealName}
 						onBlur={checkInputboxHandler.bind(null, "AccountName")}
 						onChange={EditField.bind(null, "AccountName")}
-						WarningIcon={warning.AccountName.status}
+						btnStatus={inputStatus.AccountName.checked}
 						value={userValue.AccountName}
+						clickInfo={clickInfo.bind(this, {
+							col: "AccountName",
+							info: "msg_ConfirmRealNameAlert"
+						})}
 					/>
 					<div
-						className={`errortip ${
-							warning.AccountName.status ? "open" : ""
+						className={`open${
+							inputStatus.AccountName.checked === false
+								? " errortip"
+								: ""
 						}`}>
-						{warning.AccountName.msg}
+						{inputStatus.AccountName.msg}
 					</div>
 				</>
 			) : null}
@@ -464,19 +454,24 @@ const Panel = () => {
 			{!userInfo.email ? (
 				<>
 					<Inputbox
-						icon="icon-email"
-						inputType="text"
+						icon="icon icon-email"
 						placeholder={i18n.lbl_Email}
 						onBlur={checkInputboxHandler.bind(null, "Email")}
 						onChange={EditField.bind(null, "Email")}
-						WarningIcon={warning.Email.status}
+						btnStatus={inputStatus.Email.checked}
 						value={userValue.Email}
+						clickInfo={clickInfo.bind(this, {
+							col: "Email",
+							info: "lbl_EmailToolTip"
+						})}
 					/>
 					<div
-						className={`errortip ${
-							warning.Email.status ? "open" : ""
+						className={`open${
+							inputStatus.Email.checked === false
+								? " errortip"
+								: ""
 						}`}>
-						{warning.Email.msg}
+						{inputStatus.Email.msg}
 					</div>
 				</>
 			) : null}
@@ -491,7 +486,7 @@ const Panel = () => {
 					yearSelectedIdx={birthIdx.year}
 					monthSelectedIdx={birthIdx.month}
 					daySelectedIdx={birthIdx.day}
-					Warning={warning.Birthday}
+					tip={inputStatus.Birthday.msg}
 					dropdownStateHandler={dropdownStateHandler}
 				/>
 			) : null}
@@ -499,22 +494,27 @@ const Panel = () => {
 			{!userInfo.phoneNo ? (
 				<div className="inputBox parts">
 					<span className="countryCode">{_areaCode}</span>
-
 					<Inputbox
-						icon="icon-phone"
+						icon="icon icon-phone"
 						inputType="tel"
 						placeholder={i18n.lbl_Phone}
 						onBlur={checkInputboxHandler.bind(null, "PhoneNo")}
 						onChange={EditField.bind(null, "PhoneNo")}
 						value={userValue.PhoneNo}
-						WarningIcon={warning.PhoneNo.status}
+						btnStatus={inputStatus.PhoneNo.checked}
 						maxLength="10"
+						clickInfo={clickInfo.bind(this, {
+							col: "PhoneNo",
+							info: "msg_EnterPhoneNumber"
+						})}
 					/>
 					<div
-						className={`errortip ${
-							warning.PhoneNo.status ? "open" : ""
+						className={`open${
+							inputStatus.PhoneNo.checked === false
+								? " errortip"
+								: ""
 						}`}>
-						{warning.PhoneNo.msg}
+						{inputStatus.PhoneNo.msg}
 					</div>
 				</div>
 			) : null}
@@ -563,9 +563,7 @@ const Birthday = props => {
 				onSelectItem={props.dropdownStateHandler.bind(null, "year")}
 				selectedIdx={props.yearSelectedIdx}
 			/>
-			<div className={`errortip${props.Warning.status ? " open" : ""}`}>
-				{props.Warning.msg}
-			</div>
+			<div className="errortip open">{props.tip}</div>
 		</div>
 	);
 };
@@ -574,7 +572,7 @@ Birthday.defaultProps = {
 	monthSelectedIdx: null,
 	daySelectedIdx: null,
 	yearSelectedIdx: null,
-	Warning: { status: null, msg: "" }
+	tip: ""
 };
 
 Birthday.propTypes = {
@@ -586,10 +584,7 @@ Birthday.propTypes = {
 	daySelectedIdx: PropTypes.number,
 	yearOptions: PropTypes.arrayOf(PropTypes.object).isRequired,
 	yearSelectedIdx: PropTypes.number,
-	Warning: PropTypes.shape({
-		status: PropTypes.bool,
-		msg: PropTypes.string
-	})
+	tip: PropTypes.string
 };
 
 const ColumnItem = props => {

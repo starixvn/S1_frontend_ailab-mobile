@@ -8,7 +8,7 @@ import {
 	defNavPanel,
 	navContext
 } from "./context";
-import JoinPanel from "../join/join";
+import JoinPanel from "../join/join.refactor";
 import LoginPanel from "../login/login";
 import path from "../../path";
 import Logo from "./logo";
