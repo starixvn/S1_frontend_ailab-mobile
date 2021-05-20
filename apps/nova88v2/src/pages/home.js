@@ -34,17 +34,6 @@ const IndexPage = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
 
-	const midnight_cookie = () => {
-		const now = new Date();
-		const expire = new Date();
-		expire.setFullYear(now.getFullYear());
-		expire.setMonth(now.getMonth());
-		expire.setDate(now.getDate() + 1);
-		expire.setHours(0);
-		expire.setMinutes(0);
-		document.cookie = `homePopboxShowed=true; expires=${expire.toUTCString()}; path="/"`;
-	};
-
 	useEffect(() => {
 		setRoot(true);
 		return () => {
@@ -126,7 +115,7 @@ const IndexPage = () => {
 					});
 				}
 			};
-			midnight_cookie();
+			setCookie("homePopboxShowed", true, 1);
 			setPopBox({
 				isOpen: true,
 				content: (
