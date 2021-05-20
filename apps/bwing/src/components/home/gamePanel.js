@@ -4,7 +4,7 @@ import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { navContext, defNavPanel } from "../common/context";
 import { defGameInfo } from "../../datas/productList";
 import { api_GetTpIds } from "../../service/api/site";
-
+import { useGotoGame } from "../hook/useGotoGame";
 import img1 from "../../styles/img/GameList1.png";
 import img2 from "../../styles/img/GameList2.png";
 import img3 from "../../styles/img/GameList3.png";
@@ -125,6 +125,7 @@ const GamePanel = ({ i18n, userInfo }) => {
 	const { setNav } = useContext(navContext);
 	const [tpIds, setTpIds] = useState(null);
 	const isMountedRef = useRef(null);
+	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -154,7 +155,12 @@ const GamePanel = ({ i18n, userInfo }) => {
 		}
 	}, [userInfo.isLogin, i18n]);
 
-	const ClickGame = (tpId, gameId, betType) => {
+	const ClickGame = ({
+		tpId,
+		gameId,
+		betType,
+		useGotoGame: _useGotoGame
+	}) => {
 		GET_ENTER_PAGE({
 			langId: userInfo.langId,
 			tpId,
@@ -163,7 +169,15 @@ const GamePanel = ({ i18n, userInfo }) => {
 			betType,
 			loginCallback: () => {
 				setNav(defNavPanel.login);
-			}
+			},
+			execFunction: _useGotoGame
+				? handleGoToGame.bind(this, {
+						isLogin: userInfo.isLogin === true,
+						langId: userInfo.langId,
+						tpId,
+						gameId
+				  })
+				: null
 		});
 	};
 
@@ -177,7 +191,12 @@ const GamePanel = ({ i18n, userInfo }) => {
 				<div
 					className="gameArea-box"
 					key={`promoGameList-${g.displayKey}`}
-					onClick={ClickGame.bind(this, g.tpId, g.gameId, g.betType)}>
+					onClick={ClickGame.bind(this, {
+						tpId: g.tpId,
+						gameId: g.gameId,
+						betType: g.betType,
+						useGotoGame: g.useGotoGame
+					})}>
 					<img src={g.img} alt={displayText} />
 					<div className="gameArea-box-text">
 						<p>{displayText}</p>

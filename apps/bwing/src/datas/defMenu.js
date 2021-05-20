@@ -34,6 +34,7 @@ import liveCasino_AB from "../styles/img/liveGame/liveGame6.png";
 import liveCasino_EB from "../styles/img/liveGame/liveGame7.png";
 import liveCasino_SA from "../styles/img/liveGame/liveGame8.png";
 import liveCasino_N2 from "../styles/img/liveGame/livegame10.png";
+import liveCasino_PT from "../styles/img/liveGame/livegamePT.png";
 
 export const defIconType = {
 	live: " liveIcon",
@@ -48,7 +49,8 @@ const eventTime = {
 	new_ICG: { endDate: "2021/02/05 11:00:00" },
 	new_CQ9_fishing: { endDate: "2021/03/05 11:00:00" },
 	new_vip: { startDate: "2021/03/11 12:00:00" },
-	new_LiveCasino_N2Live: { startDate: "2021/03/12 11:00:00" }
+	new_LiveCasino_N2Live: { startDate: "2021/03/12 11:00:00" },
+	LiveCasino_PT: { endDate: "2021/06/30 11:00:00" }
 };
 
 export const productList = langId => {
@@ -129,6 +131,19 @@ export const productList = langId => {
 			displayKey: "lbl_LiveCasino",
 			path: path.liveCasino.root,
 			items: [
+				{
+					displayKey: "Playtech",
+					icon: "icon icon-pt",
+					img: liveCasino_PT,
+					...defGameInfo.liveCasino_PT,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.LiveCasino_PT)
+						}
+					],
+					useGotoGame: true
+				},
 				{
 					displayKey: "N2Live",
 					icon: "icon icon-N2LIVE",

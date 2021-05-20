@@ -38,7 +38,8 @@ export const GET_ENTER_PAGE = ({
 	gameId,
 	matchid,
 	isLogin,
-	loginCallback
+	loginCallback,
+	execFunction
 }) => {
 	const appUrl = window.location.origin;
 	const homeUrl = `${appUrl}`;
@@ -80,6 +81,8 @@ export const GET_ENTER_PAGE = ({
 
 	if (!isLogin && result.needLogin) {
 		loginCallback();
+	} else if (execFunction) {
+		execFunction();
 	} else if (result.actionType === _ACTION_TYPE.blank) {
 		window.open(
 			entPageUrl,

@@ -141,6 +141,10 @@
   content: "\e9f0";
 }
 
+.icon-pt:before {
+  content: "\e9ef";
+}
+
 .icon-cock:before {
   content: "\e9b4";
 }
