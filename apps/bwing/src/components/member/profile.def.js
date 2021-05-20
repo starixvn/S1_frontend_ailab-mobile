@@ -10,21 +10,21 @@ export const initUserValue = userInfo => {
 	};
 };
 
-export const initWarning = {
+export const initStatus = {
 	AccountName: {
-		status: false,
+		checked: null,
 		msg: ""
 	},
 	Birthday: {
-		status: false,
+		checked: null,
 		msg: ""
 	},
 	PhoneNo: {
-		status: false,
+		checked: null,
 		msg: ""
 	},
 	Email: {
-		status: false,
+		checked: null,
 		msg: ""
 	}
 };

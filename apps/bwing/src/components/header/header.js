@@ -7,7 +7,8 @@ import {
 	defNavPanel,
 	navContext
 } from "../common/context";
-import JoinPanel from "../join/join";
+// import JoinPanel from "../join/join";
+import JoinPanel from "../join/join.refactor";
 import LoginPanel from "../login/login";
 import path from "../../path";
 import { GET_ENTER_PAGE } from "../../service/enterPage";

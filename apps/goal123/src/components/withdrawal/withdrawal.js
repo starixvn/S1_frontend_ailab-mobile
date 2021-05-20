@@ -1,6 +1,11 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { Redirect } from "@reach/router";
-import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
+import {
+	i18nContext,
+	userInfoContext,
+	popBoxContext,
+	loadingContext
+} from "../common/context";
 import { number_format, isConvert, checkAmount } from "../common/common";
 import {
 	api_GetWithdrawalAvailableBalance,
@@ -13,35 +18,32 @@ import {
 	api_KycCheck,
 	api_payment_GetWithdrawalLimit
 } from "../../service/api/payment";
-import InputBox from "../common/inputbox";
+import InputBox from "../common/inputbox.info";
 import config from "../../config";
 import RecentDatas from "./withdrawal.recentDatas";
 import ReloadSpin from "../common/reloadSpin";
 import path from "../../path";
-import Loading from "../common/loading";
 import ImportantNote from "./importantNote";
+
+const initStatus = { checked: null, msg: "" };
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const { setLoading } = useContext(loadingContext);
 	const [balanceInfo, setBalanceInfo] = useState(null);
 	const _isConvert = isConvert(userInfo.currencyId);
 	const [amount, setAmount] = useState("");
-	const [warning, setWarning] = useState({ status: false, msg: "" });
+	const [inputStatus, setInputStatus] = useState(initStatus);
 	const [selBank, setSelBank] = useState(null);
-	const [bankInfo, setbankInfo] = useState({
-		accountName: "",
-		bankList: []
-	});
+	const [bankInfo, setbankInfo] = useState({ accountName: "", bankList: [] });
 	const [recentDatas, setRecentDatas] = useState([]);
 	const [withdrawalMin, setWithdrawalMin] = useState(0);
-
 	const [redirectPath, setRedirectPath] = useState(null);
 	const [pageVerify, setPageVerify] = useState(true);
-	const [loading, setLoading] = useState(true);
-
 	const isMountedRef = useRef(null);
+
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => {
@@ -93,7 +95,6 @@ const Panel = () => {
 						</div>
 					)
 				});
-
 				setLoading(false);
 				setPageVerify(false);
 			}
@@ -153,15 +154,12 @@ const Panel = () => {
 										</div>
 									)
 								});
-
 								setPageVerify(false);
 							}
 						}
 					}
-
 					return hasBankInfo;
 				});
-
 				return result;
 			};
 
@@ -180,7 +178,7 @@ const Panel = () => {
 											setLoading(false);
 										}
 									},
-									err => {
+									() => {
 										if (isMountedRef.current) {
 											setLoading(false);
 										}
@@ -209,7 +207,8 @@ const Panel = () => {
 		userInfo.isLogin,
 		i18n,
 		setPopBox,
-		pageVerify
+		pageVerify,
+		setLoading
 	]);
 
 	const KycCheck = async UpdatePageVerify => {
@@ -255,24 +254,16 @@ const Panel = () => {
 			i18n,
 			maxAmountAllowUnlimit: false
 		});
-		if (result.status !== 0) {
-			setWarning({
-				status: true,
-				msg: result.msg
-			});
-		} else {
-			setWarning({
-				status: false,
-				msg: ""
-			});
-		}
+
+		setInputStatus({ checked: result.status === 0, msg: result.msg });
 		return result.status === 0;
 	};
 
 	const EditAmount = e => {
 		const { value } = e.target;
-		VaildAmount(value);
-		setAmount(value);
+		const _amount = String(value).replace(/^(0+)|[^\d]+/g, "");
+		VaildAmount(_amount);
+		setAmount(_amount);
 	};
 
 	const ClickSubmit = () => {
@@ -291,6 +282,7 @@ const Panel = () => {
 										if (!kycProcess) {
 											setAmount("");
 											GetBalance();
+											setInputStatus(initStatus);
 											api_GetWithdrawalInfoRecent().then(
 												response => {
 													if (
@@ -477,6 +469,17 @@ const Panel = () => {
 		}
 	};
 
+	const clickInfo = () => {
+		const info =
+			inputStatus.msg === ""
+				? i18n.lbl_AmountTooltip?.replace(
+						"{{0}}",
+						number_format(withdrawalMin, _isConvert)
+				  )
+				: "";
+		setInputStatus({ checked: null, msg: info });
+	};
+
 	const GetWithdrawalInfoRecent = () => {
 		api_GetWithdrawalInfoRecent().then(res => {
 			if (res.data.errorCode === 0 && isMountedRef.current) {
@@ -504,49 +507,52 @@ const Panel = () => {
 		);
 	});
 
-	return redirectPath === null ? (
-		pageVerify ? (
-			loading ? (
-				<Loading />
-			) : (
-				<>
-					<div className="avatar" />
-					<div className="name">{userInfo.userName}</div>
-					<div className="text-org">
-						{i18n.lbl_EligibleWithdrawalAmount}
-					</div>
-					<div className="balance">
-						{i18n[`Currency_${userInfo.currencyId}`]}{" "}
-						{number_format(_availableBalance, _isConvert)}
-						<ReloadSpin func={GetBalance} />
-					</div>
-					<InputBox
-						icon="icon-pencil"
-						value={amount}
-						inputType="tel"
-						onChange={EditAmount}
-						Warning={warning}
-					/>
-					<div className="inputBox">
-						<div className="selectBank">{banks}</div>
-					</div>
-					<div className="btn-group">
-						<button className="lightBlue" onClick={ClickSubmit}>
-							{i18n.lbl_Submit}
-						</button>
-					</div>
-					<RecentDatas
-						Datas={recentDatas}
-						ClickCancel={ClickCancel}
-						GetRecentDatas={GetWithdrawalInfoRecent}
-					/>
-					<ImportantNote i18n={i18n} langId={userInfo.langId} />
-				</>
-			)
-		) : null
-	) : (
-		<Redirect to={redirectPath} noThrow />
-	);
+	let content = null;
+	if (redirectPath !== null) {
+		content = <Redirect to={redirectPath} noThrow />;
+	} else if (pageVerify) {
+		content = (
+			<>
+				<div className="avatar" />
+				<div className="name">{userInfo.userName}</div>
+				<div className="text-org">
+					{i18n.lbl_EligibleWithdrawalAmount}
+				</div>
+				<div className="balance">
+					{i18n[`Currency_${userInfo.currencyId}`]}{" "}
+					{number_format(_availableBalance, _isConvert)}
+					<ReloadSpin func={GetBalance} />
+				</div>
+				<InputBox
+					icon="icon icon-pencil"
+					value={amount}
+					inputType="tel"
+					onChange={EditAmount}
+					btnStatus={inputStatus.checked}
+					tip={inputStatus.msg}
+					clickInfo={clickInfo}
+					numberConvert={true}
+					onBlur={VaildAmount.bind(this, amount)}
+				/>
+				<div className="inputBox">
+					<div className="selectBank">{banks}</div>
+				</div>
+				<div className="btn-group">
+					<button className="lightBlue" onClick={ClickSubmit}>
+						{i18n.lbl_Submit}
+					</button>
+				</div>
+				<RecentDatas
+					Datas={recentDatas}
+					ClickCancel={ClickCancel}
+					GetRecentDatas={GetWithdrawalInfoRecent}
+				/>
+				<ImportantNote i18n={i18n} langId={userInfo.langId} />
+			</>
+		);
+	}
+
+	return content;
 };
 
 export default Panel;

@@ -1,11 +1,10 @@
 import { useContext, useEffect, useState, useRef } from "react";
-import { defIptStatus } from "../../common/inputbox.hint";
 import { defPopBoxType } from "../../common/popbox";
 import {
 	api_tp_TransferEX,
 	api_GetTransferRecent
 } from "../../../service/api/tp";
-import { initSelectedIdx, initWarning, transDirection } from "../transfer.def";
+import { initSelectedIdx, initStatus, transDirection } from "../transfer.def";
 import { loadingContext } from "../../common/context";
 
 export const useTransfer = ({
@@ -21,7 +20,7 @@ export const useTransfer = ({
 	const { setLoading } = useContext(loadingContext);
 	const [selectedIdx, setSelectedIdx] = useState(initSelectedIdx);
 	const [amount, setAmount] = useState("");
-	const [warning, setWarning] = useState(initWarning);
+	const [inputStatus, setInputStatus] = useState(initStatus);
 	const [recentDatas, setRecentDatas] = useState([]);
 	const allWalletsList = [mainWalletInfo, ...tpWalletsList];
 
@@ -36,6 +35,14 @@ export const useTransfer = ({
 	useEffect(() => {
 		GetTransferRecent();
 	}, []);
+
+	const clickInfo = () => {
+		const info =
+			inputStatus.msg === ""
+				? i18n.lbl_AmountTooltip?.replace("{{0}}", 1)
+				: "";
+		setInputStatus({ checked: null, msg: info });
+	};
 
 	const selectItem = (col, i) => {
 		const otherDirection =
@@ -110,7 +117,7 @@ export const useTransfer = ({
 					}
 
 					setAmount("");
-					setWarning(initWarning);
+					setInputStatus(initStatus);
 					GetTransferRecent();
 				}
 
@@ -207,20 +214,21 @@ export const useTransfer = ({
 	const ValidAmount = _amount => {
 		const _checked = _amount > 0 && _amount !== "";
 		if (!_checked) {
-			setWarning({
-				status: defIptStatus.warning,
+			setInputStatus({
+				checked: false,
 				msg: i18n.lbl_AmountTooltip?.replace("{{0}}", 1)
 			});
 		} else {
-			setWarning({ status: defIptStatus.verified, msg: "" });
+			setInputStatus({ checked: true, msg: "" });
 		}
 		return _checked;
 	};
 
 	const EditAmount = e => {
 		const { value } = e.target;
-		ValidAmount(value);
-		setAmount(value);
+		const _amount = String(value).replace(/^(0+)|[^\d]+/g, "");
+		ValidAmount(_amount);
+		setAmount(_amount);
 	};
 
 	const setMaxAmount = () => {
@@ -231,7 +239,7 @@ export const useTransfer = ({
 
 	return {
 		amount,
-		warning,
+		inputStatus,
 		recentDatas,
 		restoreAll,
 		clickSubmit,
@@ -240,6 +248,8 @@ export const useTransfer = ({
 		allWalletsList,
 		selectItem,
 		selectedIdx,
-		GetTransferRecent
+		GetTransferRecent,
+		clickInfo,
+		ValidAmount
 	};
 };
