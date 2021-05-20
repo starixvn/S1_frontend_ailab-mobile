@@ -152,6 +152,7 @@ const Payment = props => {
 							content: i18n.msg_ApiServerError
 						});
 					}
+					setLoading(false);
 				}
 			);
 		}

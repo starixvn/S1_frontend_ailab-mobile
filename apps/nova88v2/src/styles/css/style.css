@@ -6710,29 +6710,15 @@ span.important {
   position: relative;
 }
 
-.upcomingmatches.euro .swiper-slide {
-  background: url(../img/upcomingmatcheseurobg.jpg) no-repeat top center/100% auto;
-}
-
-.upcomingmatches.euro .team > div:first-child {
-  background: url(../img/upcomingmatcheseurotitle.png) no-repeat top center/auto;
-  line-height: 7vw;
-}
-
-.upcomingmatches.euro .team > div:last-child {
-  background: url(../img/upcomingmatcheseurotitledown.png) no-repeat top center/auto;
-  line-height: 7vw;
-}
-
-.upcomingmatches .swiper-pagination {
-  bottom: -4vw !important;
+.upcomingmatches .swiper-container {
+  height: 100%;
 }
 
 .upcomingmatches .swiper-slide {
   background: url(../img/upcomingmatchesbg.jpg) no-repeat top center/100% auto;
 }
 
-.upcomingmatches .team {
+.upcomingmatches .swiper-slide .team {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -6744,9 +6730,10 @@ span.important {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  width: 100%;
 }
 
-.upcomingmatches .team > div {
+.upcomingmatches .swiper-slide .team > div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -6756,17 +6743,17 @@ span.important {
   font-weight: bold;
 }
 
-.upcomingmatches .team > div:first-child {
+.upcomingmatches .swiper-slide .team > div:first-child {
   background: url(../img/upcomingmatchestitle.png) no-repeat top center/auto;
   line-height: 7vw;
 }
 
-.upcomingmatches .team > div:last-child {
+.upcomingmatches .swiper-slide .team > div:last-child {
   background: url(../img/upcomingmatchestitledown.png) no-repeat top center/auto;
   line-height: 7vw;
 }
 
-.upcomingmatches .team > div > div {
+.upcomingmatches .swiper-slide .team > div > div {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -6785,16 +6772,56 @@ span.important {
   text-align: right;
 }
 
-.upcomingmatches .team > div > div.teamR {
+.upcomingmatches .swiper-slide .team > div > div .odds {
+  position: absolute;
+  padding: 0;
+  font-size: 3vw;
+  font-weight: normal;
+  left: 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  top: 8vw;
+}
+
+.upcomingmatches .swiper-slide .team > div > div .odds div {
+  background: #8d5085;
+  border-radius: 30px;
+  padding: 0 4vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  min-width: 10vw;
+  margin: 0 0 1vw;
+}
+
+.upcomingmatches .swiper-slide .team > div > div .odds div:last-child {
+  margin: 0;
+  background: #076475;
+}
+
+.upcomingmatches .swiper-slide .team > div > div.teamR {
   text-align: left;
 }
 
-.upcomingmatches .team > div > div img {
+.upcomingmatches .swiper-slide .team > div > div.teamR .odds {
+  left: unset;
+  right: 2vw;
+}
+
+.upcomingmatches .swiper-slide .team > div > div img {
   width: 15vw;
   margin: 0 0 7vw;
 }
 
-.upcomingmatches .team > div > div.btn-group {
+.upcomingmatches .swiper-slide .team > div > div.btn-group {
   height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
@@ -6806,14 +6833,28 @@ span.important {
           flex: 0.6;
 }
 
-.upcomingmatches .team > div > div.btn-group button {
+.upcomingmatches .swiper-slide .team > div > div.btn-group button {
   padding: 1vw 2vw;
   width: auto;
   background: #e92529;
 }
 
-.upcomingmatches .team > div > div.btn-group button:hover {
+.upcomingmatches .swiper-slide .team > div > div.btn-group button:hover {
   background: #F77A00;
+}
+
+.upcomingmatches .swiper-slide .team.euro {
+  background: url(../img/upcomingmatcheseurobg.jpg) no-repeat top center/100% auto;
+}
+
+.upcomingmatches .swiper-slide .team.euro > div:first-child {
+  background: url(../img/upcomingmatcheseurotitle.png) no-repeat top center/auto;
+  line-height: 7vw;
+}
+
+.upcomingmatches .swiper-slide .team.euro > div:last-child {
+  background: url(../img/upcomingmatcheseurotitledown.png) no-repeat top center/auto;
+  line-height: 7vw;
 }
 
 .liveTvTag {

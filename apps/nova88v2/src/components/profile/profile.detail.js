@@ -3,7 +3,8 @@ import { useNavigate } from "@reach/router";
 import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import PropTypes from "prop-types";
 import Inputbox from "../common/inputbox.hint";
-import Dropdown from "./dropdown.profile";
+import Dropdown from "../common/dropdown.profile";
+import PhoneInputbox from "../common/inputbox.profile";
 import areaCode from "../../datas/areaCode";
 import useTip from "../hook/useTip";
 import {
@@ -26,12 +27,31 @@ const Panel = () => {
 	const [yearSelectedIdx, setYearSelectedIdx] = useState();
 	const [monthSelectedIdx, setMonthSelectedIdx] = useState();
 	const [daySelectedIdx, setDaySelectedIdx] = useState();
+	const [AreaCodeIdx, setAreaCodeIdx] = useState(0);
+
 	const { showTips, showTipHandler } = useTip();
+
 	const country =
 		userInfo.country && userInfo.country !== "null"
 			? userInfo.country
 			: userInfo.perCountry;
 	const isMountedRef = useRef(null);
+
+	const _areaCode = Object.entries(areaCode).find(
+		el => el[0] === userInfo?.perCountry
+	)?.[1]?.AreaCode;
+
+	const areaCodeOptions = Object.values(areaCode)
+		.filter(
+			(el, idx, self) =>
+				idx === self.findIndex(t => el.AreaCode === t.AreaCode)
+		)
+		.map(el => ({
+			value: el.AreaCode,
+			id: el.AreaCode,
+			displayText: el.AreaCode
+		}))
+		.sort((a, b) => (a.id > b.id ? 1 : -1));
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -39,13 +59,13 @@ const Panel = () => {
 		setYearSelectedIdx(1);
 		setMonthSelectedIdx(1);
 		setDaySelectedIdx(1);
+		setAreaCodeIdx(1);
 		return () => {
 			isMountedRef.current = false;
 		};
 	}, []);
 
-	const _areaCode = country ? areaCode[country].AreaCode : "";
-	const _infoList = infoList({ i18n, userInfo, _areaCode });
+	const _infoList = infoList({ i18n, userInfo });
 
 	const yearOptions = [];
 	const dateOptions = [];
@@ -73,8 +93,10 @@ const Panel = () => {
 			setYearSelectedIdx(i);
 		} else if (col === "bday_month") {
 			setMonthSelectedIdx(i);
-		} else {
+		} else if (col === "bday_day") {
 			setDaySelectedIdx(i);
+		} else {
+			setAreaCodeIdx(i);
 		}
 	};
 
@@ -103,7 +125,7 @@ const Panel = () => {
 		} else {
 			try {
 				const res = await api.site.ExistsPhoneNo({
-					AreaCode: _areaCode,
+					AreaCode: areaCodeOptions[AreaCodeIdx]?.value,
 					Phone: val
 				});
 
@@ -217,6 +239,12 @@ const Panel = () => {
 			};
 
 			const setProfile = () => {
+				let _AreaCode = userInfo.areaCode;
+				if (!userInfo.areaCode && userInfo.currencyId === 96) {
+					_AreaCode = areaCodeOptions[AreaCodeIdx]?.value;
+				} else if (!userInfo.areaCode && userInfo.currencyId !== 96) {
+					_AreaCode = _areaCode;
+				}
 				const profileData = {
 					AccountName: userInfo.accountName ?? userValue.accountName,
 					Birth_d: userInfo.birth_d ?? `${daySelectedIdx + 1}`,
@@ -226,8 +254,8 @@ const Panel = () => {
 					Birth_y:
 						userInfo.birth_y ??
 						`${yearOptions[yearSelectedIdx]?.value}`,
-					CountryCode: country,
-					AreaCode: userInfo.areaCode ?? _areaCode,
+					CountryCode: country ?? "",
+					AreaCode: _AreaCode,
 					PhoneNo: userInfo.phoneNo ?? userValue.phoneNo
 				};
 
@@ -246,7 +274,6 @@ const Panel = () => {
 													...prevState,
 													...res.data.data
 												}));
-
 												if (!userInfo.phoneVerified) {
 													openOtpHint();
 												}
@@ -337,10 +364,20 @@ const Panel = () => {
 
 	const arr = _infoList
 		.filter(item => {
-			return (
+			let result =
 				userInfo[item.infoTitle] ||
-				(item.infoTitle === "birth" && item.birth_d)
-			);
+				(item.infoTitle === "birth" && item.birth_d);
+
+			if (
+				result &&
+				userInfo.currencyId === 96 &&
+				(item.infoTitle === "country" ||
+					item.infoTitle === "perCountry")
+			) {
+				result = false;
+			}
+
+			return result;
 		})
 		.map(item => {
 			const _isVerified =
@@ -374,7 +411,6 @@ const Panel = () => {
 					showTips={showTips.includes("accountName")}
 				/>
 			) : null}
-
 			{!userInfo?.birth_d || !userInfo?.birth_m || !userInfo?.birth_y ? (
 				<Birthday
 					i18n={i18n}
@@ -391,21 +427,53 @@ const Panel = () => {
 					dropdownStateHandler={dropdownStateHandler}
 				/>
 			) : null}
-			{!userInfo?.phoneNo ? (
-				<Inputbox
-					areaCode={_areaCode}
-					icon="icon-phone"
-					inputType="tel"
-					placeholder={i18n.lbl_Phone}
-					onBlur={e => checkPhone(e.target.value)}
-					onChange={EditField.bind(null, "phoneNo")}
-					value={userValue.phoneNo}
-					btnStatus={warning.phoneNo.checked}
-					warningMsg={warning.phoneNo.msg}
-					infoText={i18n.lbl_PhoneTooltip}
-					clickInfo={() => showTipHandler("phoneNo")}
-					showTips={showTips.includes("phoneNo")}
-				/>
+			{!userInfo?.phoneNo && userInfo?.currencyId === 96 ? (
+				<div className="infoModule parts">
+					<Dropdown
+						i18n={i18n}
+						mainKey="profile-areaCode"
+						options={areaCodeOptions}
+						colName="areaCode"
+						onSelectItem={dropdownStateHandler.bind(
+							null,
+							"areaCode"
+						)}
+						selectedIdx={AreaCodeIdx}
+						icon="icon icon-phone"
+						hideInfo={true}
+					/>
+					<PhoneInputbox
+						icon="icon-phone"
+						inputType="tel"
+						placeholder={i18n.lbl_Phone}
+						onBlur={e => checkPhone(e.target.value)}
+						onChange={EditField.bind(null, "phoneNo")}
+						value={userValue.phoneNo}
+						btnStatus={warning.phoneNo.checked}
+						warningMsg={warning.phoneNo.msg}
+						infoText={i18n.lbl_PhoneTooltip}
+						clickInfo={() => showTipHandler("phoneNo")}
+						showTips={showTips.includes("phoneNo")}
+					/>
+				</div>
+			) : null}
+			{!userInfo?.phoneNo && userInfo?.currencyId !== 96 ? (
+				<div className="infoModule">
+					<PhoneInputbox
+						icon="icon-phone"
+						inputType="tel"
+						placeholder={i18n.lbl_Phone}
+						onBlur={e => checkPhone(e.target.value)}
+						onChange={EditField.bind(null, "phoneNo")}
+						value={userValue.phoneNo}
+						btnStatus={warning.phoneNo.checked}
+						warningMsg={warning.phoneNo.msg}
+						infoText={i18n.lbl_PhoneTooltip}
+						clickInfo={() => showTipHandler("phoneNo")}
+						showTips={showTips.includes("phoneNo")}
+						areaCode={_areaCode}
+					/>
+				</div>
 			) : null}
 			{!userInfo?.accountName ||
 			!userInfo?.birth_d ||
@@ -416,7 +484,6 @@ const Panel = () => {
 					</button>
 				</div>
 			) : null}
-
 			<div className="info">
 				<ul>{arr}</ul>
 			</div>

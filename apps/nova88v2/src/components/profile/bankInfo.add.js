@@ -144,6 +144,12 @@ const AddBankPanel = ({
 							if (errorCode === 0) {
 								GetCustBankInfo();
 								setCurrentPanel("showBankPanel");
+							} else if (errorCode === -4) {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content: i18n.lbl_DuplicateAddress
+								});
 							} else {
 								setPopBox({
 									isOpen: true,
