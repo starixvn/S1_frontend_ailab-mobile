@@ -20,7 +20,7 @@ const AddToHomePop = ({ i18n, setAddToHomePop, langId }) => {
 							{i18n.lbl_AddToHome_Tutorial}
 						</a>
 						<button onClick={clickNotShowing}>
-							{i18n.lbl_Dont_show_me_again}
+							{i18n.lbl_Skip}
 						</button>
 					</div>
 				</div>
