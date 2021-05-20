@@ -1621,9 +1621,7 @@ footer > a.open {
 .inputBox > .icon-module {
   position: absolute;
   right: 20px;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  top: 13px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2457,6 +2455,7 @@ p.txt-blue12 {
           flex: 1;
   background: #010e33;
   padding: 0 2vw;
+  height: 35px;
 }
 
 .countryCode + .inputBox {
@@ -4393,17 +4392,17 @@ span.important {
 
 .bannerS p {
   position: absolute;
-  font-size: 5vw;
+  font-size: 4vw;
   left: 18%;
-  bottom: 13%;
+  bottom: 14%;
 }
 
 .bannerS p:nth-last-child(1) {
-  left: 33%;
-  font-size: 6vw;
+  left: 34%;
+  font-size: 4vw;
   font-weight: bold;
   letter-spacing: 2px;
-  bottom: 12%;
+  bottom: 14%;
 }
 
 .gameArea {
@@ -5980,6 +5979,7 @@ span.important {
 }
 
 .calculation {
+  display: block;
   width: 100%;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -9130,5 +9130,85 @@ span.important {
 .vipBanner img {
   width: auto;
   height: 100%;
+}
+
+.inputPhone {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.input-Area {
+  margin-bottom: 2vw;
+  display: block !important;
+}
+
+.input-Area .input-title {
+  color: #bac2d2;
+  margin: 2vw 0;
+}
+
+.input-Area .input-title.frame {
+  background-color: #2f4373;
+  color: #fff;
+  padding: 1vw 2vw;
+  margin: 0;
+  border-radius: 3px 3px 0 0;
+  -webkit-transform: translateY(10px);
+          transform: translateY(10px);
+}
+
+.input-Area .input-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 2vw;
+}
+
+.input-Area .input-group .inputBoxNew {
+  background: #010e33;
+  border: 1px solid #7789bd;
+  border-radius: 3px;
+  color: #fff;
+  width: 100%;
+  position: relative;
+  height: 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 2vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.input-Area .input-group .inputBoxNew input {
+  background: transparent;
+  border: 0;
+  width: 100%;
+  color: #fff;
+  font-size: 3.5vw;
+  padding: 0;
+  margin: 0 1vw;
+  outline-style: none;
+}
+
+.input-Area .input-group .inputBoxNew i {
+  margin: 0 2px;
+}
+
+.input-Area .input-group .btn-group {
+  width: 70%;
+  margin: 0;
 }
 /*# sourceMappingURL=style.css.map */

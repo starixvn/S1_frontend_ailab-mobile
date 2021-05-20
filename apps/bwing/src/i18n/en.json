@@ -562,6 +562,7 @@
 	"lbl_DepositLocalBankNotes2":"The bank account is only valid for this transaction. Always check the bank details first before processing your transfer.",
 	"lbl_DepositLocalBankNotes3":"Please choose “Sender bears the transfer fee”.",
 	"lbl_DepositLocalBankNotes4":"Upload your pay slip to speed up processing time.",
+	"lbl_TpWallet_27":"PT Wallet",
 	"lbl_EuroEventTitle1" : "UEFA EURO FINAL 2020",
 	"lbl_EuroEventTitle2" : "UP TO VND 520,000,000 PRIZES WORTH!",
 	"lbl_TournamentPoints" : "TOURNAMENT POINTS",
@@ -572,5 +573,16 @@
 	"lbl_MonthlyTournament" : "MONTHLY TOURNAMENT",
 	"lbl_AgendaTitle" : "MONTHLY DEPOSIT & TURNOVER RACE TOURNAMENT",
 	"lbl_Tournament" : "Tournament",
-	"lbl_Stage": "Stage"
+	"lbl_Stage": "Stage",
+	"lbl_UserNameCheckTooltip":"6-18 alphanumeric (A-Z, a-z, 0-9) characters only.",
+	"lbl_TopUpCard":"TOP-UP CARD",
+	"lbl_DepositType5":"TOP-UP CARD",
+	"lbl_EmailRequired":"Please fill in the email field",
+
+	"==============General==============":"",
+	"lbl_Jackpot":"Jackpot",
+	
+	"==============Transfer==============":"",
+	"lbl_Fail":"Failed",
+	"lbl_LastUpdated":"LAST UPDATED"
 }

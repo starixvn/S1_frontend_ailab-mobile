@@ -29,7 +29,8 @@ const Payment = props => {
 
 	const {
 		amount,
-		warning,
+		inputStatus,
+		setInputStatus,
 		SelectAmount,
 		EditAmount,
 		VaildAmount
@@ -50,6 +51,17 @@ const Payment = props => {
 			isMountedRef.current = false;
 		};
 	}, [paymentList.length]);
+
+	const clickInfo = () => {
+		const msg = i18n.lbl_AmountTooltip.replace(
+			"{{0}}",
+			number_format(selChannel?.minAmount, _isConvert, 0)
+		);
+		setInputStatus({
+			checked: null,
+			msg: inputStatus.msg === "" ? msg : ""
+		});
+	};
 
 	const SelectPayment = groupId => {
 		if (selGroupId !== groupId) {
@@ -110,9 +122,15 @@ const Payment = props => {
 							src={`${config.imgUrl}/common/images/MobilePay/${selChannel.groupName}.png`}
 							alt={selChannel.groupName}
 						/>
-						<div className="tip">
-							<span>{i18n.lbl_DepositAmount} :</span>{" "}
-							{number_format(real_amount, _isConvert, 0)}
+						<div>
+							<ul>
+								<li className="text-lightBlue">
+									{i18n.lbl_DepositAmount} :
+								</li>
+								<li>
+									{number_format(real_amount, _isConvert, 0)}
+								</li>
+							</ul>
 						</div>
 					</>
 				),
@@ -159,31 +177,36 @@ const Payment = props => {
 				displayKey="groupName"
 				_isConvert={_isConvert}
 			/>
-			<GroupList
-				title={i18n.lbl_SelectChannel}
-				dataList={channelList}
-				SelectPayment={SelectChannel}
-				selected={selChannel?.channelId}
-				mainKey={`deposit-full-${payType}-channelList`}
-				imgKey="groupName"
-				idKey="channelId"
-				bindFullObj={true}
-				prefixImgUrl={`${config.imgUrl}/common/images/MobilePay/`}
-				i18n={i18n}
-				displayKey="channelName"
-				showMinMaxHint={true}
-				_isConvert={_isConvert}
-			/>
+			{channelList?.length > 1 && (
+				<GroupList
+					title={i18n.lbl_SelectChannel}
+					dataList={channelList}
+					SelectPayment={SelectChannel}
+					selected={selChannel?.channelId}
+					mainKey={`deposit-full-${payType}-channelList`}
+					imgKey="groupName"
+					idKey="channelId"
+					bindFullObj={true}
+					prefixImgUrl={`${config.imgUrl}/common/images/MobilePay/`}
+					i18n={i18n}
+					displayKey="channelName"
+					showMinMaxHint={true}
+					_isConvert={_isConvert}
+				/>
+			)}
 			<AmountInput
 				title={i18n.lbl_DepositAmount}
 				channel={selChannel}
 				i18n={i18n}
 				_isConvert={_isConvert}
 				amount={amount}
-				tip={warning}
 				SelectAmount={SelectAmount}
 				EditAmount={EditAmount}
 				payType={payType}
+				tip={inputStatus.msg}
+				btnStatus={inputStatus.checked}
+				clickInfo={clickInfo}
+				VaildAmount={VaildAmount.bind(this, { _amount: amount })}
 			/>
 			<div className="btn-group">
 				<button className="blue" onClick={ClickSubmit}>

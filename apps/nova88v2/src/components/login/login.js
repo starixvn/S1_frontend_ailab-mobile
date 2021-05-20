@@ -29,11 +29,6 @@ const initWarningState = {
 	}
 };
 
-const warningLangKey = {
-	UserName: "msg_UsernameReq",
-	Password: "msg_PasswordReq"
-};
-
 const LoginPage = () => {
 	const state = useLocation();
 	const navigate = useNavigate();
@@ -61,12 +56,26 @@ const LoginPage = () => {
 
 	const checkValueHandler = (colName, e) => {
 		let flag = "";
+		const val = e.target.value;
+		let col = "";
 		if (colName === "Password") {
-			if (e.target.value === "") {
+			if (val === "") {
 				flag = false;
+				col = "msg_PasswordReq";
 			}
 		} else {
-			flag = e.target.value !== "";
+			const reg = /^(?=.{6,18}$)(?=.*[a-zA-Z0-9]$)/;
+			if (
+				(val.length < 6 || val.length > 18 || !reg.test(val)) &&
+				val !== ""
+			) {
+				flag = false;
+				col = "lbl_UsernameInvalid";
+			}
+			if (val === "") {
+				flag = false;
+				col = "msg_UsernameReq";
+			}
 		}
 		setWarningState(prevState => {
 			return {
@@ -74,7 +83,7 @@ const LoginPage = () => {
 				[colName]: {
 					...prevState[colName],
 					status: flag,
-					msg: i18n[warningLangKey[colName]]
+					msg: i18n[col]
 				}
 			};
 		});
@@ -85,30 +94,49 @@ const LoginPage = () => {
 	};
 
 	const handleLogin = () => {
-		const checked =
-			userValueState.UserName !== "" && userValueState.Password !== "";
-		let flag = "";
+		// empty
+		// rgiht
+		// pw wrong
+		// username wrong
+		const stat = {
+			pw: { msg: "", checked: true },
+			userName: { msg: "", checked: true }
+		};
+		const reg = /^(?=.{6,18}$)(?=.*[a-zA-Z0-9]$)/;
 		if (userValueState.Password === "") {
-			flag = false;
+			stat.pw.checked = false;
+			stat.pw.msg = "msg_PasswordReq";
 		}
-
+		if (
+			(userValueState.UserName.length < 6 ||
+				userValueState.UserName.length > 18 ||
+				!reg.test(userValueState.UserName)) &&
+			userValueState.UserName !== ""
+		) {
+			stat.userName.checked = false;
+			stat.userName.msg = "lbl_UsernameInvalid";
+		}
+		if (userValueState.UserName === "") {
+			stat.userName.checked = false;
+			stat.userName.msg = "msg_UsernameReq";
+		}
 		setWarningState(prevState => {
 			return {
 				...prevState,
 				UserName: {
 					...prevState.UserName,
-					status: userValueState.UserName !== "",
-					msg: i18n[warningLangKey.UserName]
+					status: stat.userName.checked,
+					msg: i18n[stat.userName.msg]
 				},
 				Password: {
 					...prevState.Password,
-					status: flag,
-					msg: i18n[warningLangKey.Password]
+					status: stat.pw.checked,
+					msg: i18n[stat.pw.msg]
 				}
 			};
 		});
 
-		if (checked) {
+		if (stat.pw.checked && stat.userName.checked) {
 			const CallBackLogin = (errorCode, message, isLogin, userData) => {
 				if (errorCode === 0) {
 					if (isMountedRef.current) {

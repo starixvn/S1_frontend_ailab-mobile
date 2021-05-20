@@ -42,6 +42,9 @@ const Panel = () => {
 		accountName: "",
 		bankList: []
 	});
+	const [withdrawalLimit, setWithdrawalLimit] = useState({
+		withdrawalMin: 0
+	});
 	const { showTips, showTipHandler } = useTip();
 	const [recentDatas, setRecentDatas] = useState([]);
 	const [pageVerify, setPageVerify] = useState(true);
@@ -53,6 +56,16 @@ const Panel = () => {
 			isMountedRef.current = false;
 		};
 	});
+
+	useEffect(() => {
+		if (userInfo.isLogin) {
+			api.payment.GetWithdrawalLimit().then(res => {
+				if (res.data.errorCode === 0 && isMountedRef.current) {
+					setWithdrawalLimit(res.data.data);
+				}
+			});
+		}
+	}, [userInfo.isLogin]);
 
 	useEffect(() => {
 		if (
@@ -279,13 +292,21 @@ const Panel = () => {
 	};
 
 	const VaildAmount = _amount => {
-		const result = checkAmount(
-			_amount,
-			selBank?.minAmount,
-			selBank?.maxAmount,
+		const withdrawalMax =
+			withdrawalLimit.unlimited &&
+			withdrawalLimit.withdrawalAvailableAmount <=
+				balanceInfo?.availableBalance
+				? withdrawalLimit.withdrawalAvailableAmount
+				: balanceInfo?.availableBalance;
+
+		const result = checkAmount({
+			amount: _amount,
+			minAmount: withdrawalLimit.withdrawalMin,
+			maxAmount: withdrawalMax,
 			_isConvert,
-			i18n
-		);
+			i18n,
+			maxAmountAllowUnlimit: false
+		});
 		if (result.status !== 0) {
 			setWarning({
 				status: defIptStatus.warning,
@@ -630,7 +651,25 @@ const Panel = () => {
 				inputType="tel"
 				onChange={EditAmount}
 				clickInfo={() => showTipHandler("amount")}
-				infoText={i18n.lbl_AmountTooltip?.replace("{{0}}", 1)}
+				infoText={i18n.lbl_WithdrawalDailyMinMax
+					?.replace(
+						"{{0}}",
+						!withdrawalLimit.withdrawalMin
+							? 1
+							: number_format(
+									withdrawalLimit.withdrawalMin,
+									_isConvert
+							  )
+					)
+					?.replace(
+						"{{1}}",
+						withdrawalLimit.unlimited
+							? i18n.lbl_Unlimited
+							: number_format(
+									withdrawalLimit.withdrawalAvailableAmount,
+									_isConvert
+							  )
+					)}
 				showTips={showTips.includes("amount")}
 				placeholder={i18n.lbl_Amount}
 				btnStatus={warning.status}

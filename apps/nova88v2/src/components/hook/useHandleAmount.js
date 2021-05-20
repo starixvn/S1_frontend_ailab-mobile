@@ -42,14 +42,14 @@ export const useHandleAmount = ({
 	};
 
 	const VaildAmount = ({ _amount, displayWarning = true }) => {
-		const result = checkAmount(
-			_amount,
+		const result = checkAmount({
+			amount: _amount,
 			minAmount,
 			maxAmount,
 			_isConvert,
 			i18n,
 			digits
-		);
+		});
 		if (displayWarning) {
 			if (result.status !== 0) {
 				setWarning(result);

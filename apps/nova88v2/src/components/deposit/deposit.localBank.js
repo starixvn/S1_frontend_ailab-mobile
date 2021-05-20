@@ -106,13 +106,7 @@ const Payment = props => {
 				obj => obj.sysId === userPaymentData?.sysId
 			);
 			bankIdx = bankIdx === -1 ? 0 : bankIdx;
-			for (const i in paymentList) {
-				if (paymentList[i].status === 1) {
-					bankIdx = paymentList[bankIdx]?.status === 1 ? bankIdx : 0;
-					SelectBank(paymentList[bankIdx]);
-					break;
-				}
-			}
+			SelectBank(paymentList[bankIdx]);
 		}
 		return () => {
 			isMountedRef.current = false;
@@ -356,12 +350,13 @@ const Payment = props => {
 					<>
 						<p>{i18n.lbl_ConfirmDeposit}</p>
 						<img
+							className="bankimg"
 							src={`${
 								config.cloudImgURL
 							}/SiteSkin/img/BankLogo/${selBank.bankLogo?.toLowerCase()}`}
 							alt={selBank.bankName}
 						/>
-						<div className="tip">
+						<div>
 							<span>{i18n.lbl_DepositAmount} :</span>{" "}
 							{number_format(real_amount, _isConvert, 0)}
 						</div>
@@ -507,11 +502,9 @@ const GroupList = ({
 			<div className="info infoAccount" key={_mainKey}>
 				<ul>
 					<li>
-						<div
-							className={`bankName active${
-								data.status === 2 ? " close" : " open"
-							}`}>
+						<div className="bankName active">
 							<img
+								className="bankimg"
 								key={`${_mainKey}-img`}
 								src={`${prefixImgUrl}${
 									imgKeyWithExtension
@@ -536,7 +529,7 @@ const GroupList = ({
 		) : (
 			<div
 				key={_mainKey}
-				className={`bankName${data.status === 2 ? " close" : " open"}`}
+				className="bankName"
 				onClick={SelectPayment.bind(
 					this,
 					bindFullObj ? data : data[idKey]

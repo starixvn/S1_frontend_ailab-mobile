@@ -61,5 +61,6 @@ export const currencyToAreacode = {
 	4: "TH",
 	13: "CS",
 	15: "ID",
-	51: "VN"
+	51: "VN",
+	61: "IN"
 };

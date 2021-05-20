@@ -40,8 +40,12 @@ const IndexPage = props => {
 	);
 };
 
+IndexPage.defaultProps = {
+	children: null
+};
+
 IndexPage.propTypes = {
-	children: PropTypes.node.isRequired
+	children: PropTypes.node
 };
 
 export default IndexPage;

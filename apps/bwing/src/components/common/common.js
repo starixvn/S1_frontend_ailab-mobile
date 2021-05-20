@@ -41,14 +41,15 @@ export const isConvert = currencyId => {
 	return _isConvertList[currencyId] === true;
 };
 
-export const checkAmount = (
+export const checkAmount = ({
 	amount,
 	minAmount,
 	maxAmount,
 	_isConvert,
 	i18n,
-	digits = 2
-) => {
+	digits = 2,
+	maxAmountAllowUnlimit = true
+}) => {
 	let status = 0;
 	let msg = "";
 	if (amount !== null && amount !== undefined) {
@@ -63,9 +64,10 @@ export const checkAmount = (
 				minAmount ? number_format(minAmount, _isConvert, digits) : 0
 			);
 		} else if (
-			minAmount !== 0 &&
-			maxAmount !== 0 &&
-			(num_Amount > maxAmount || num_Amount < minAmount)
+			(minAmount !== 0 &&
+				maxAmount !== 0 &&
+				(num_Amount > maxAmount || num_Amount < minAmount)) ||
+			(!maxAmountAllowUnlimit && num_Amount > maxAmount)
 		) {
 			status = 2;
 			msg = `${number_format(num_Amount, _isConvert, digits)} ${
@@ -79,36 +81,11 @@ export const checkAmount = (
 
 export const getAmountTip = (minAmount, _isConvert, i18n) => {
 	return isNaN(minAmount)
-		? i18n.lbl_AmountTooltip?.replace("{0}", 0)
+		? i18n.lbl_AmountTooltip?.replace("{{0}}", 0)
 		: i18n.lbl_AmountTooltip?.replace(
-				"{0}",
+				"{{0}}",
 				number_format(minAmount, _isConvert)
 		  );
-};
-
-export const checkWithdrawalAmount = (amount, maxAmount, _isConvert, i18n) => {
-	let status = 0;
-	let msg = "";
-	if (amount !== null && amount !== undefined) {
-		let num_Amount = isNaN(amount) ? 0 : Number(amount);
-		if (_isConvert) {
-			num_Amount *= 1000;
-		}
-		if (num_Amount <= 0) {
-			status = 2;
-			msg = getAmountTip(0, _isConvert, i18n);
-		} else if (maxAmount !== 0 && num_Amount > maxAmount) {
-			status = 2;
-			msg = `${number_format(num_Amount, _isConvert)} ${
-				i18n.lbl_NotinLimit
-			}`;
-		}
-	} else {
-		status = 3;
-		msg = getAmountTip(0, _isConvert, i18n);
-	}
-
-	return { status, msg };
 };
 
 export const setCookie = (cookieName, cookieValue, exdays) => {
@@ -148,21 +125,21 @@ export const isEventPeriod = ({ startDate, endDate }) => {
 	return result;
 };
 
-export const passwordCheck = ({ val }) => {
+export const passwordCheck = ({ val, i18n }) => {
 	let checked = true;
-	let message = "";
+	let msg = "";
 
 	const regx = /^(?=.{6,15}$)(?=.*[a-zA-Z0-9])(?=.*[!@#$%^&*]).*$/;
 	if (!val) {
 		checked = false;
-		message = "msg_PasswordReq";
+		msg = i18n.msg_PasswordReq;
 	} else if (val.length < 6 || val.length > 15) {
 		checked = false;
-		message = "msg_PasswordLength";
+		msg = i18n.msg_PasswordLength;
 	} else if (!regx.test(val)) {
 		checked = false;
-		message = "msg_PasswordVaildate";
+		msg = i18n.msg_PasswordVaildate;
 	}
 
-	return { checked, message };
+	return { checked, msg };
 };

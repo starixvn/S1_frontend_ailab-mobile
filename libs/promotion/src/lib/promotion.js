@@ -97,7 +97,7 @@ const PromotionContent = ({ staticList, location, navBar }) => {
 		isLogin: userInfo.isLogin,
 		tab
 	});
-	const { promotion, getPromotionListV2 } = useGetPromotions({
+	const { promotion, getPromotionList } = useGetPromotions({
 		api,
 		userInfo
 	});
@@ -166,7 +166,7 @@ const PromotionContent = ({ staticList, location, navBar }) => {
 			i18n,
 			uiSetting,
 			ruleCols,
-			func_CallBack: getPromotionListV2,
+			func_CallBack: getPromotionList,
 			urlParameters
 		});
 	}

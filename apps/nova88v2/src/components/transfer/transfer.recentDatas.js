@@ -35,6 +35,7 @@ const RecentDatas = ({ datas }) => {
 				item.direction,
 				item.tpName
 			);
+
 			return (
 				<Detail
 					key={`transferRecent-${item.transId}`}
@@ -45,6 +46,7 @@ const RecentDatas = ({ datas }) => {
 					endWallet={_transferDirection.endWallet}
 					i18n={i18n}
 					memo={item.memo}
+					status={item.status}
 				/>
 			);
 		});

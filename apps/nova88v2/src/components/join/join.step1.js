@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link } from "../../route/link";
 import TandC from "../../service/t_and_c";
@@ -8,6 +8,7 @@ import Inputbox from "../common/inputbox.hint";
 import InputboxPWD from "../common/inputbox.password";
 import { getUrlParameter, passwordCheck, getCookie } from "../common/common";
 import FeaturePanel from "./features";
+import { userInfoContext } from "../common/context";
 
 const JoinStep1 = ({
 	i18n,
@@ -23,7 +24,7 @@ const JoinStep1 = ({
 	});
 	const [affiliateidExist, setAffiliateidExist] = useState("");
 	const { showTips, showTipHandler } = useTip([]);
-
+	const { userInfo } = useContext(userInfoContext);
 	const AffId = getUrlParameter("AffId") || getCookie("AffId");
 	useEffect(() => {
 		const AffCode = getUrlParameter("AffCode") || getCookie("AffCode");
@@ -61,7 +62,7 @@ const JoinStep1 = ({
 			...prev,
 			[col]: {
 				checked,
-				msg: msg ? i18n[msg] : ""
+				msg: i18n[msg] ?? msg
 			}
 		}));
 	};
@@ -69,18 +70,21 @@ const JoinStep1 = ({
 	const usernameCheck = async val => {
 		let checked = true;
 		let msg = "";
-
+		const reg = /^(?=.{6,18}$)(?=.*[a-zA-Z0-9]$)/;
 		if (!val) {
 			checked = false;
 			msg = "msg_UsernameReq";
-		} else if (val.length < 6 || val.length > 18) {
+		} else if (val.length < 6 || val.length > 18 || !reg.test(val)) {
 			checked = false;
-			msg = "msg_UsernameLength";
+			msg = "lbl_UsernameInvalid";
 		} else {
-			const res = await api.site.ExistsUserName({ UserName: val });
+			const res = await api.site.ExistsUserName({
+				UserName: val,
+				LangId: userInfo.langId
+			});
 			if (res.data.errorCode === 0 && res.data.data === true) {
 				checked = false;
-				msg = "msg_UsernameNotAvailable";
+				msg = res.data.message;
 			}
 		}
 		return { checked, msg };
@@ -120,7 +124,6 @@ const JoinStep1 = ({
 			setStep(2);
 		}
 	};
-
 	return (
 		<>
 			<div className="Join">

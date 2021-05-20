@@ -132,6 +132,7 @@ const Panel = () => {
 				i18n={i18n}
 				className="info transfer"
 				memo={item.memo}
+				status={item.status}
 			/>
 		);
 	});
@@ -181,6 +182,8 @@ const Panel = () => {
 };
 
 export const TransactionHistory = props => {
+	const _status =
+		props.status === 0 ? props.i18n.lbl_Success : props.i18n.lbl_Fail;
 	return (
 		<div className={props.className}>
 			<ul>
@@ -197,6 +200,10 @@ export const TransactionHistory = props => {
 				<li>
 					<span className="title">{props.i18n.lbl_ID}</span>
 					<span>{props.transId}</span>
+				</li>
+				<li>
+					<span className="title">{props.i18n.lbl_Status}</span>
+					<span>{_status}</span>
 				</li>
 				<li>
 					<span className="title">{props.i18n.lbl_Amount}</span>

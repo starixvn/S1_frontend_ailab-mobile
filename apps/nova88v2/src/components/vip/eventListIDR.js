@@ -98,6 +98,17 @@ const EventListIDR = ({ i18n }) => {
 						<i className="icon icon-checkmark" />
 					</td>
 				</tr>
+				<tr>
+					<td colSpan="7">{i18n.lbl_WithdrawalLimitation}</td>
+				</tr>
+				<tr>
+					<td>80.000 ('000)</td>
+					<td>100.000 ('000)</td>
+					<td>150.000 ('000)</td>
+					<td>200.000 ('000)</td>
+					<td>500.000 ('000)</td>
+					<td>{i18n.lbl_VIP_unlimited}</td>
+				</tr>
 				{/* <tr>
 						<td colSpan="7">
 							{i18n.lbl_Vip_Unlimited_Withdrawal_amount}
@@ -138,8 +149,8 @@ const EventListIDR = ({ i18n }) => {
 				</tr>
 				<tr>
 					<td>0.55%</td>
+					<td>0.55%</td>
 					<td>0.60%</td>
-					<td>0.70%</td>
 					<td>0.80%</td>
 					<td>0.90%</td>
 					<td>1.00%</td>
@@ -149,7 +160,7 @@ const EventListIDR = ({ i18n }) => {
 				</tr>
 				<tr>
 					<td>0.50%</td>
-					<td>0.55%</td>
+					<td>0.50%</td>
 					<td>0.60%</td>
 					<td>0.70%</td>
 					<td>0.80%</td>
@@ -161,10 +172,10 @@ const EventListIDR = ({ i18n }) => {
 				<tr>
 					<td>0.80%</td>
 					<td>0.90%</td>
+					<td>0.90%</td>
 					<td>1.00%</td>
 					<td>1.10%</td>
-					<td>1.30%</td>
-					<td>1.50%</td>
+					<td>1.20%</td>
 				</tr>
 				<tr>
 					<td colSpan="7">{i18n.lbl_Vip_VirtualSport_Rebate}</td>
@@ -172,10 +183,10 @@ const EventListIDR = ({ i18n }) => {
 				<tr>
 					<td>0.80%</td>
 					<td>0.90%</td>
+					<td>0.90%</td>
+					<td>1.00%</td>
 					<td>1.10%</td>
-					<td>1.30%</td>
-					<td>1.50%</td>
-					<td>1.70%</td>
+					<td>1.20%</td>
 				</tr>
 				<tr className="title">
 					<td colSpan="7" className="icon icon-nova88">
@@ -237,9 +248,9 @@ const EventListIDR = ({ i18n }) => {
 					<td />
 					<td />
 					<td>100,000('000)</td>
-					<td>250,000('000)</td>
-					<td>500,000('000)</td>
-					<td>{i18n.lbl_Vip_ByInvitation}</td>
+					<td>300,000('000)</td>
+					<td>600,000('000)</td>
+					<td>1,000,000('000)</td>
 				</tr>
 				<tr>
 					<td colSpan="7">
@@ -249,10 +260,10 @@ const EventListIDR = ({ i18n }) => {
 				<tr>
 					<td />
 					<td />
-					<td>100,000('000)</td>
-					<td>250,000('000)</td>
-					<td>500,000('000)</td>
-					<td>{i18n.lbl_Vip_ByInvitation}</td>
+					<td>1,000,000('000)</td>
+					<td>3,000,000('000)</td>
+					<td>6,000,000('000)</td>
+					<td>10,000,000('000)</td>
 				</tr>
 				<tr>
 					<td colSpan="7">

@@ -22,13 +22,13 @@ const Main = props => {
 	const paymentInfo = props.location.state;
 
 	const VaildAmount = _amount => {
-		const result = checkAmount(
-			_amount,
-			paymentInfo.minAmount,
-			paymentInfo.maxAmount,
+		const result = checkAmount({
+			amount: _amount,
+			minAmount: paymentInfo.minAmount,
+			maxAmount: paymentInfo.maxAmount,
 			_isConvert,
 			i18n
-		);
+		});
 		if (result.status !== 0) {
 			setWarning({
 				status: true,

@@ -6,6 +6,7 @@ import {
 	rootContext
 } from "Context";
 import { useNavigate, Link } from "@reach/router";
+import { GetMetaDataByPage } from "../components/seo/seo";
 import Layout from "../components/common/layout";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
@@ -17,12 +18,46 @@ import Referral from "../components/home/referral";
 import EventSwipper from "../components/home/eventSwipper";
 import HeaderShortcut from "../components/home/headerShortcut";
 import Bottom from "../components/home/bottom";
-import { readCookie, setCookie } from "../components/common/common";
+import { isEventPeriod, readCookie } from "../components/common/common";
 import path from "../path";
-import api from "../service/api";
 import Header from "../components/header/header";
 import JoinLoginBar from "../components/home/joinLoginBar";
 import Logo from "../components/common/logo";
+import { defPopBoxType } from "../components/common/popbox";
+import Jackpot from "../components/home/jackpot";
+import api from "../service/api";
+
+const useGetDomainList = ({ userInfo, setPopBox, i18n }) => {
+	useEffect(() => {
+		const cookieName = `${userInfo.userName}-DomainListHint`;
+		if (
+			userInfo.isLogin &&
+			userInfo.currencyId &&
+			readCookie(cookieName) !== "1"
+		) {
+			api.site.GetSupportDomainList().then(res => {
+				const { errorCode, data, message } = res.data;
+				if (errorCode === 0) {
+					if (data.length > 0) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_nova88_backup_website,
+							popBoxType: defPopBoxType.DomainList,
+							className: "backupDomain ",
+							domainList: data
+						});
+					}
+				}
+			});
+		}
+	}, [
+		userInfo.isLogin,
+		userInfo.currencyId,
+		i18n,
+		setPopBox,
+		userInfo.userName
+	]);
+};
 
 const IndexPage = () => {
 	const navigate = useNavigate();
@@ -30,6 +65,11 @@ const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
+	const helmet = GetMetaDataByPage({
+		path: path.home.root,
+		langId: userInfo.langId
+	});
+	useGetDomainList({ setPopBox, userInfo, i18n });
 
 	useEffect(() => {
 		setRoot(true);
@@ -95,85 +135,23 @@ const IndexPage = () => {
 				)
 			});
 		}
-		// else {
-		// 	const cookieName = `balanceHint${userInfo.userName}`;
-		// 	if (
-		// 		userInfo.currencyId &&
-		// 		userInfo.userName &&
-		// 		readCookie(cookieName) !== "1" &&
-		// 	) {
-		// 		setCookie(cookieName, "1", 1);
-		// 		api.account.GetWalletInfo().then(res => {
-		// 			if (res.data.errorCode === 0) {
-		// 				const { balance, tpWallets } = res.data.data;
-		// 				const mainWallet = {
-		// 					id: 0,
-		// 					displayKey: "lbl_MainWallet",
-		// 					balance
-		// 				};
-		// 				const tpWalletsArr = tpWallets?.map(i => {
-		// 					return {
-		// 						id: i.tpId,
-		// 						displayKey: i.displayKey,
-		// 						balance: i.balance
-		// 					};
-		// 				});
-
-		// 				const hasBalance =
-		// 					mainWallet.balance ||
-		// 					tpWalletsArr?.filter(t => {
-		// 						return t.balance > 0;
-		// 					}).length >= 1;
-
-		// 				if (!hasBalance) {
-		// 					const RedirectToDeposit = () => {
-		// 						navigate(
-		// 							`/${userInfo.langId}/${path.deposit.root}`
-		// 						);
-		// 						ClosePopUp();
-		// 					};
-
-		// 					setPopBox({
-		// 						isOpen: true,
-		// 						title: i18n.lbl_Notice,
-		// 						content: (
-		// 							<>
-		// 								<p>
-		// 									{`${i18n.msg_BalanceHint} : `}
-		// 									<span className="important">
-		// 										{`${
-		// 											i18n[
-		// 												`Currency_${userInfo.currencyId}`
-		// 											]
-		// 										} 0`}
-		// 									</span>
-		// 								</p>
-		// 								<p>{i18n.msg_DepositHint}</p>
-		// 							</>
-		// 						),
-		// 						hasBtn: true,
-		// 						btnBar: (
-		// 							<div className="btn-group">
-		// 								<button
-		// 									type="submit"
-		// 									className="blue"
-		// 									onClick={ClosePopUp}>
-		// 									{i18n.lbl_Later}
-		// 								</button>
-		// 								<button
-		// 									type="submit"
-		// 									onClick={RedirectToDeposit}
-		// 									className="orange">
-		// 									{i18n.lbl_DepositNow}
-		// 								</button>
-		// 							</div>
-		// 						)
-		// 					});
-		// 				}
-		// 			}
-		// 		});
-		// 	}
-		// }
+		if (
+			isEventPeriod({
+				endDate: "2021/05/18 23:59:59"
+			}) &&
+			userInfo.isLogin === false
+		) {
+			setPopBox({
+				isOpen: true,
+				content: (
+					<img
+						src={`https://image.n88media.com/SiteSkin/img/euro/EURO-RACE-MONTHLY-WINNERS-${userInfo.langId.toUpperCase()}.jpg`}
+						alt="winner"
+					/>
+				),
+				hasBtn: true
+			});
+		}
 	}, [
 		i18n,
 		setPopBox,
@@ -181,33 +159,40 @@ const IndexPage = () => {
 		userInfo.userName,
 		navigate,
 		userInfo.langId,
-		userInfo.isJoin
+		userInfo.isJoin,
+		userInfo.isLogin
 	]);
 
 	return (
-		<Layout header={<Header />}>
-			{userInfo.isLogin ? (
-				<HeaderShortcut i18n={i18n} userInfo={userInfo} />
-			) : null}
-			<Slider />
-			<Marquee />
-			{userInfo.isLogin ? null : <JoinLoginBar />}
-			<div id="content">
-				<Menu i18n={i18n} userInfo={userInfo} setPopBox={setPopBox} />
-				<Promos i18n={i18n} userInfo={userInfo} />
-				<HotGame i18n={i18n} userInfo={userInfo} />
-				{userInfo.isLogin ? (
-					<Referral
+		<>
+			<Layout header={<Header />}>
+				{userInfo.isLogin ? <HeaderShortcut i18n={i18n} /> : null}
+				<Slider />
+				<Marquee />
+				{userInfo.isLogin ? null : <JoinLoginBar />}
+				<div id="content">
+					<Menu
 						i18n={i18n}
 						userInfo={userInfo}
 						setPopBox={setPopBox}
 					/>
-				) : null}
-				<EventSwipper i18n={i18n} userInfo={userInfo} />
-				<Streaming />
-				<Bottom i18n={i18n} langId={userInfo.langId} />
-			</div>
-		</Layout>
+					<Promos i18n={i18n} userInfo={userInfo} />
+					<Jackpot i18n={i18n} userInfo={userInfo} />
+					<HotGame i18n={i18n} userInfo={userInfo} />
+					{userInfo.isLogin ? (
+						<Referral
+							i18n={i18n}
+							userInfo={userInfo}
+							setPopBox={setPopBox}
+						/>
+					) : null}
+					<EventSwipper i18n={i18n} userInfo={userInfo} />
+					<Streaming />
+					<Bottom i18n={i18n} langId={userInfo.langId} />
+				</div>
+			</Layout>
+			{helmet}
+		</>
 	);
 };
 

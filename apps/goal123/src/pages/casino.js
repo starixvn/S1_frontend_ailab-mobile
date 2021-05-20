@@ -3,7 +3,7 @@ import Slider from "../components/casino/slider";
 import defNav from "../components/casino/defNav";
 import Nav from "../components/casino/nav";
 import SearchBox from "../components/casino/searchBox";
-import { api_Site_GetGamelistV2 } from "../service/api/site";
+import { api_Site_GetGameListByDevice } from "../service/api/site";
 import Games from "../components/casino/games";
 import {
 	i18nContext,
@@ -49,7 +49,7 @@ class Panel extends React.Component {
 		window.addEventListener("touchmove", this.ScrollBarListener, {
 			passive: false
 		});
-		api_Site_GetGamelistV2().then(res => {
+		api_Site_GetGameListByDevice().then(res => {
 			if (res.data.errorCode === 0) {
 				const _tpList = {};
 				const games = [];
@@ -264,7 +264,7 @@ class Panel extends React.Component {
 	};
 
 	ClickPlay = freePlay => {
-		if (this.props.userInfo.isLogin) {
+		if (freePlay || this.props.userInfo.isLogin) {
 			GET_CASINO_ENTER_PAGE({
 				tpId: this.state.selGameInfo.tpId,
 				gameId: this.state.selGameInfo.gameId,
