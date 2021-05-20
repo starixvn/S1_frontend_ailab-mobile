@@ -160,21 +160,25 @@ const defPageInfo = {
 	sports: {
 		titleKey: "",
 		className: "mainLogin",
-		hideLogo: false
+		hideLogo: false,
+		showMenuBar: true
 	},
 	fishing: {
 		className: "mainLogin",
-		hideLogo: false
+		hideLogo: false,
+		showMenuBar: true
 	},
 	liveCasino: {
 		titleKey: "",
 		className: "mainLogin",
-		hideLogo: false
+		hideLogo: false,
+		showMenuBar: true
 	},
 	games: {
 		titleKey: "",
 		className: "mainLogin",
-		hideLogo: false
+		hideLogo: false,
+		showMenuBar: true
 	}
 };
 
