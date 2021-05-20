@@ -29,7 +29,8 @@ const Payment = props => {
 
 	const {
 		amount,
-		warning,
+		inputStatus,
+		setInputStatus,
 		SelectAmount,
 		EditAmount,
 		VaildAmount
@@ -50,6 +51,17 @@ const Payment = props => {
 			isMountedRef.current = false;
 		};
 	}, [paymentList.length]);
+
+	const clickInfo = () => {
+		const msg = i18n.lbl_AmountTooltip.replace(
+			"{{0}}",
+			number_format(selChannel?.minAmount, _isConvert)
+		);
+		setInputStatus({
+			checked: null,
+			msg: inputStatus.msg === "" ? msg : ""
+		});
+	};
 
 	const SelectPayment = groupId => {
 		if (selGroupId !== groupId) {
@@ -184,10 +196,13 @@ const Payment = props => {
 				i18n={i18n}
 				_isConvert={_isConvert}
 				amount={amount}
-				tip={warning}
+				tip={inputStatus.msg}
+				btnStatus={inputStatus.checked}
 				SelectAmount={SelectAmount}
 				EditAmount={EditAmount}
 				payType={payType}
+				clickInfo={clickInfo}
+				VaildAmount={VaildAmount.bind(this, { _amount: amount })}
 			/>
 			<div className="btn-group">
 				<button className="lightBlue" onClick={ClickSubmit}>

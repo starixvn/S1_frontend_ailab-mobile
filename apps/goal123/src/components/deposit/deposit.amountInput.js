@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { number_format } from "../common/common";
+import { IptStatus } from "../common/inputbox.info";
 
 const AmountInput = ({
 	title,
@@ -11,7 +12,10 @@ const AmountInput = ({
 	_isConvert,
 	amount,
 	SelectAmount,
-	EditAmount
+	EditAmount,
+	btnStatus,
+	clickInfo,
+	VaildAmount
 }) => {
 	const { amountRule, amountList, minAmount, maxAmount } = channel;
 	let content = null;
@@ -45,8 +49,12 @@ const AmountInput = ({
 							: ""
 					}
 					value={amount}
+					onBlur={VaildAmount}
 				/>
-				<div className="iconModule">(&apos;000)</div>
+				<div className="icon-module">
+					(&apos;000)
+					<IptStatus btnStatus={btnStatus} clickInfo={clickInfo} />
+				</div>
 				<div className="tip">{tip}</div>
 			</div>
 		);
@@ -64,7 +72,10 @@ const AmountInput = ({
 };
 
 AmountInput.defaultProps = {
-	tip: ""
+	tip: "",
+	btnStatus: null,
+	clickInfo: () => null,
+	VaildAmount: () => null
 };
 
 AmountInput.propTypes = {
@@ -77,7 +88,10 @@ AmountInput.propTypes = {
 		.isRequired,
 	SelectAmount: PropTypes.func.isRequired,
 	EditAmount: PropTypes.func.isRequired,
-	payType: PropTypes.string.isRequired
+	payType: PropTypes.string.isRequired,
+	btnStatus: PropTypes.bool,
+	clickInfo: PropTypes.func,
+	VaildAmount: PropTypes.func
 };
 
 export default AmountInput;
