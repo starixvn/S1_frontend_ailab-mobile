@@ -353,6 +353,7 @@
 	"lbl_WithdrawalStatus6": "已核准",
 	"lbl_WithdrawalStatus7": "已拒绝",
 	"lbl_WithdrawalStatus8": "处理中",
+	"lbl_WithdrawalDailyMinMax": "每日最低/最高额度： {{0}}/{{1}}",
 	"-==================--=========================Transfer--==================================": "",
 	"lbl_Wallet_Saba": "体育钱包",
 	"lbl_MaxAmount": "总金额",

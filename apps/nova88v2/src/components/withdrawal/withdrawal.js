@@ -42,7 +42,9 @@ const Panel = () => {
 		accountName: "",
 		bankList: []
 	});
-	const [withdrawalMin, setWithdrawalMin] = useState(0);
+	const [withdrawalLimit, setWithdrawalLimit] = useState({
+		withdrawalMin: 0
+	});
 	const { showTips, showTipHandler } = useTip();
 	const [recentDatas, setRecentDatas] = useState([]);
 	const [pageVerify, setPageVerify] = useState(true);
@@ -59,7 +61,7 @@ const Panel = () => {
 		if (userInfo.isLogin) {
 			api.payment.GetWithdrawalLimit().then(res => {
 				if (res.data.errorCode === 0 && isMountedRef.current) {
-					setWithdrawalMin(res.data.data.withdrawalMin);
+					setWithdrawalLimit(res.data.data);
 				}
 			});
 		}
@@ -241,10 +243,17 @@ const Panel = () => {
 	};
 
 	const VaildAmount = _amount => {
+		const withdrawalMax =
+			withdrawalLimit.unlimited &&
+			withdrawalLimit.withdrawalAvailableAmount <=
+				balanceInfo?.availableBalance
+				? withdrawalLimit.withdrawalAvailableAmount
+				: balanceInfo?.availableBalance;
+
 		const result = checkAmount({
 			amount: _amount,
-			minAmount: withdrawalMin,
-			maxAmount: balanceInfo?.availableBalance,
+			minAmount: withdrawalLimit.withdrawalMin,
+			maxAmount: withdrawalMax,
 			_isConvert,
 			i18n,
 			maxAmountAllowUnlimit: false
@@ -546,12 +555,25 @@ const Panel = () => {
 				inputType="tel"
 				onChange={EditAmount}
 				clickInfo={() => showTipHandler("amount")}
-				infoText={i18n.lbl_AmountTooltip?.replace(
-					"{{0}}",
-					!withdrawalMin
-						? 1
-						: number_format(withdrawalMin, _isConvert)
-				)}
+				infoText={i18n.lbl_WithdrawalDailyMinMax
+					?.replace(
+						"{{0}}",
+						!withdrawalLimit.withdrawalMin
+							? 1
+							: number_format(
+									withdrawalLimit.withdrawalMin,
+									_isConvert
+							  )
+					)
+					?.replace(
+						"{{1}}",
+						withdrawalLimit.unlimited
+							? i18n.lbl_Unlimited
+							: number_format(
+									withdrawalLimit.withdrawalAvailableAmount,
+									_isConvert
+							  )
+					)}
 				showTips={showTips.includes("amount")}
 				placeholder={i18n.lbl_Amount}
 				btnStatus={warning.status}

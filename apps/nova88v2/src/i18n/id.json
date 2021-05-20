@@ -350,6 +350,7 @@
 	"lbl_WithdrawalStatus6": "Disetujui",
 	"lbl_WithdrawalStatus7": "Ditolak",
 	"lbl_WithdrawalStatus8": "Sedang dalam proses",
+    "lbl_WithdrawalDailyMinMax": "Min/Maks Limit Harian: {{0}}/{{1}}",
     "-==================-==========================Transfer-===================================":"",
     "lbl_MaxAmount":"Jumlah Maksimal",
     "lbl_please_select_to_wallet":"Silakan pilih dompet masuk dana yang lebih disukai",
