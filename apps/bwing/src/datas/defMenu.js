@@ -50,7 +50,7 @@ const eventTime = {
 	new_CQ9_fishing: { endDate: "2021/03/05 11:00:00" },
 	new_vip: { startDate: "2021/03/11 12:00:00" },
 	new_LiveCasino_N2Live: { startDate: "2021/03/12 11:00:00" },
-	LiveCasino_PT: { endDate: "2021/06/30 11:00:00" }
+	liveCasino_pt: { endDate: "2021/06/30 11:00:00" }
 };
 
 export const productList = langId => {
@@ -139,7 +139,7 @@ export const productList = langId => {
 					eventIcon: [
 						{
 							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.LiveCasino_PT)
+							inPeriod: isEventPeriod(eventTime.liveCasino_pt)
 						}
 					],
 					useGotoGame: true
