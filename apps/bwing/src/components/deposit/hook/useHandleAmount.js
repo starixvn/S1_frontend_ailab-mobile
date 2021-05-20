@@ -4,11 +4,11 @@ import { isConvert, checkAmount } from "../../common/common";
 export const useHandleAmount = ({ currencyId, minAmount, maxAmount, i18n }) => {
 	const _isConvert = isConvert(currencyId);
 	const [amount, setAmount] = useState("");
-	const [warning, setWarning] = useState("");
+	const [inputStatus, setInputStatus] = useState({ checked: null, msg: "" });
 
 	useEffect(() => {
 		setAmount("");
-		setWarning("");
+		setInputStatus({ checked: null, msg: "" });
 	}, [minAmount, maxAmount]);
 
 	const SelectAmount = value => {
@@ -35,14 +35,21 @@ export const useHandleAmount = ({ currencyId, minAmount, maxAmount, i18n }) => {
 		});
 		if (displayWarning) {
 			if (result.status !== 0) {
-				setWarning(result.msg);
+				setInputStatus({ checked: false, msg: result.msg });
 			} else {
-				setWarning("");
+				setInputStatus({ checked: true, msg: "" });
 			}
 		}
 
 		return result.status === 0;
 	};
 
-	return { amount, warning, SelectAmount, EditAmount, VaildAmount };
+	return {
+		amount,
+		inputStatus,
+		setInputStatus,
+		SelectAmount,
+		EditAmount,
+		VaildAmount
+	};
 };

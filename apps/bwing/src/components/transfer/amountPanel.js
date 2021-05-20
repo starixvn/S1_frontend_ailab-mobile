@@ -1,25 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
-import InputBox, { defIptStatus } from "../common/inputbox.hint";
+import InputBox from "../common/inputbox.info";
 import Dropdown from "../common/dropdown";
 
 const AmountPanel = ({
 	i18n,
 	amount,
 	EditAmount,
-	warning,
+	inputStatus,
 	clickSubmit,
 	selectedIdx,
 	selectItem,
-	allWalletsList
+	allWalletsList,
+	clickInfo,
+	_isConvert,
+	ValidAmount
 }) => {
-	let _btnStatus = defIptStatus.default;
-	if (warning.status === true) {
-		_btnStatus = defIptStatus.warning;
-	} else if (warning.status === false) {
-		_btnStatus = defIptStatus.verified;
-	}
-
 	return (
 		<div className="depositInBox">
 			<div>
@@ -51,54 +47,50 @@ const AmountPanel = ({
 					/>
 				</div>
 			</div>
-
-			<div className="inputBoxLevel">
-				<div className="left">
-					<InputBox
-						title={i18n.lbl_Amount}
-						value={amount}
-						inputType="tel"
-						onChange={EditAmount}
-						btnStatus={_btnStatus}
-					/>
-				</div>
-				<div className="right">
-					<div className="btn-group">
-						<button className="blue" onClick={clickSubmit}>
-							{i18n.lbl_transfer_submit}
-						</button>
-					</div>
-				</div>
-			</div>
-			{warning.msg ? (
-				<div className={`tip${warning.msg ? " open" : ""}`}>
-					{warning.msg}
-				</div>
-			) : null}
+			<InputBox
+				title={i18n.lbl_Amount}
+				value={amount}
+				inputType="tel"
+				onChange={EditAmount}
+				btnStatus={inputStatus.checked}
+				tip={inputStatus.msg}
+				submitBtn={true}
+				i18n={i18n}
+				clickSubmit={clickSubmit}
+				clickInfo={clickInfo}
+				numberConvert={_isConvert}
+				onBlur={ValidAmount}
+			/>
 		</div>
 	);
 };
 
 AmountPanel.defaultProps = {
 	i18n: {},
-	warning: {},
+	inputStatus: {},
 	selectedIdx: null,
 	selectItem: null,
-	allWalletsList: []
+	allWalletsList: [],
+	clickInfo: () => null,
+	_isConvert: false,
+	ValidAmount: () => null
 };
 
 AmountPanel.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string),
 	amount: PropTypes.string.isRequired,
 	EditAmount: PropTypes.func.isRequired,
-	warning: PropTypes.shape({
-		status: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+	inputStatus: PropTypes.shape({
+		checked: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 		msg: PropTypes.string
 	}),
 	clickSubmit: PropTypes.func.isRequired,
 	selectedIdx: PropTypes.objectOf(PropTypes.any),
 	selectItem: PropTypes.func,
-	allWalletsList: PropTypes.arrayOf(PropTypes.object)
+	allWalletsList: PropTypes.arrayOf(PropTypes.object),
+	clickInfo: PropTypes.func,
+	_isConvert: PropTypes.bool,
+	ValidAmount: PropTypes.func
 };
 
 export default AmountPanel;

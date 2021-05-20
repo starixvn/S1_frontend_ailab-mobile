@@ -574,8 +574,10 @@
 	"lbl_AgendaTitle" : "ĐUA TOP NẠP VÀ DOANH THU CƯỢC HÀNG THÁNG",
 	"lbl_Tournament" : "Vòng đấu",
 	"lbl_Stage": "Giai đoạn",
+	"lbl_UserNameCheckTooltip":"6-18 ký tự chữ và số (A-Z, a-z, 0-9)",
 	"lbl_LoadCard":"THẺ CÀO",
 	"lbl_DepositType5":"THẺ CÀO",
+	"lbl_EmailRequired":"Vui lòng điền vào cột địa chỉ Email.",
 
 	"==============General==============":"",
 	"lbl_Jackpot":"NỔ HŨ",

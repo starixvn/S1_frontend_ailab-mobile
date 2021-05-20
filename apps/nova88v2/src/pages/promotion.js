@@ -9,6 +9,7 @@ import {
 } from "../components/promotion/common/def";
 import Tab, { useHandleTab } from "../components/promotion/components/tab";
 import Nav, { useHandleNav } from "../components/promotion/components/nav";
+import { GetMetaDataByPage } from "../components/seo/seo";
 import config from "../config";
 import staticList from "../datas/promotionList";
 import Layout from "../components/common/layout";
@@ -28,6 +29,10 @@ export default ({ location = {} }) => {
 		}),
 		isLogin: userInfo.isLogin,
 		tab
+	});
+	const helmet = GetMetaDataByPage({
+		path: path.promotion.root,
+		langId: userInfo.langId
 	});
 	const nav = (
 		<Nav
@@ -52,25 +57,28 @@ export default ({ location = {} }) => {
 	);
 
 	return (
-		<Layout
-			header={header}
-			mainClass={`main promotions${
-				tab === "Processing" ? "" : " Expired"
-			}`}>
-			<Promotion
-				staticList={staticList}
-				config={config}
-				uiSetting={uiSetting}
-				path={path}
-				userInfo={userInfo}
-				i18n={i18n}
-				setPopBox={setPopBox}
-				location={location}
-				tab={tab}
-				nav={nav}
-				filterType={filterType}
-			/>
-		</Layout>
+		<>
+			<Layout
+				header={header}
+				mainClass={`main promotions${
+					tab === "Processing" ? "" : " Expired"
+				}`}>
+				<Promotion
+					staticList={staticList}
+					config={config}
+					uiSetting={uiSetting}
+					path={path}
+					userInfo={userInfo}
+					i18n={i18n}
+					setPopBox={setPopBox}
+					location={location}
+					tab={tab}
+					nav={nav}
+					filterType={filterType}
+				/>
+			</Layout>
+			{helmet}
+		</>
 	);
 };
 

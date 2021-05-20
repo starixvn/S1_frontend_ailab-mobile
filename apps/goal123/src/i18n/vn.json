@@ -528,6 +528,9 @@
 	"lbl_PromotionRebateAndCashback":"Hoàn trả / Hoàn lại tiền",
 	"lbl_TopUpCard":"THẺ CÀO",
 	"lbl_DepositType5":"THẺ CÀO",
+	"lbl_UserNameCheckTooltip":"6-18 ký tự chữ và số (A-Z, a-z, 0-9)",
+	"lbl_EmailRequired":"Vui lòng điền vào cột địa chỉ Email.",
+	"lbl_EnterAccountNumber":"Nhập số tài khoản",
 
 	"==============General==============":"",
 	"lbl_Jackpot":"NỔ HŨ",

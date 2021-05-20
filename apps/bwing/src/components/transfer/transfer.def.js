@@ -1,5 +1,3 @@
-import { defIptStatus } from "../common/inputbox.hint";
-
 export const tpWalletsListType = {
 	allWallets: 0,
 	afterTransWallets: 1
@@ -15,10 +13,7 @@ export const initTransferOptions = {
 	transferTo: []
 };
 
-export const initWarning = {
-	status: defIptStatus.default,
-	msg: ""
-};
+export const initStatus = { checked: null, msg: "" };
 
 export const defDirection = {
 	mainToTp: 1,

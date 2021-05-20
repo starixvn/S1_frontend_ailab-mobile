@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import { isConvert, number_format } from "../common/common";
 import RecentDatas from "./transfer.recentDatas";
-import InputBox from "../common/inputbox";
+import InputBox from "../common/inputbox.info";
 import Dropdown from "../common/dropdown";
 import ReloadSpin from "../common/reloadSpin";
 import { tpWalletsListType } from "./transfer.def";
@@ -26,7 +26,7 @@ const Panel = () => {
 
 	const {
 		amount,
-		warning,
+		inputStatus,
 		recentDatas,
 		clickSubmit,
 		EditAmount,
@@ -34,7 +34,9 @@ const Panel = () => {
 		selectItem,
 		selectedIdx,
 		GetTransferRecent,
-		setMaxAmount
+		setMaxAmount,
+		clickInfo,
+		ValidAmount
 	} = useTransfer({
 		GetBalance,
 		GetTpWalletBalance,
@@ -71,7 +73,6 @@ const Panel = () => {
 	return (
 		<>
 			{arr}
-
 			<div className="inputBox">
 				<Dropdown
 					mainKey="transfer-From"
@@ -96,15 +97,17 @@ const Panel = () => {
 				/>
 			</div>
 
-			<div className="inputBox">
-				<InputBox
-					icon="icon-pencil"
-					value={amount}
-					inputType="tel"
-					onChange={EditAmount}
-					Warning={warning}
-				/>
-			</div>
+			<InputBox
+				icon="icon icon-pencil"
+				value={amount}
+				inputType="tel"
+				onChange={EditAmount}
+				btnStatus={inputStatus.checked}
+				tip={inputStatus.msg}
+				clickInfo={clickInfo}
+				onBlur={ValidAmount.bind(this, amount)}
+				numberConvert={true}
+			/>
 
 			<div className="btn-group">
 				<button className="blue" onClick={setMaxAmount}>

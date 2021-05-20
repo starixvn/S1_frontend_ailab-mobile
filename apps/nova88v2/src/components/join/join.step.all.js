@@ -1,9 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate, globalHistory, useLocation } from "@reach/router";
 import { i18nContext, userInfoContext } from "../common/context";
+import { GetMetaDataByPage } from "../seo/seo";
 import JoinStep1 from "./join.step1";
 import JoinStep2 from "./join.step2";
 import { initValue, initStatus } from "./join.def";
+import path from "../../path";
 
 const JoinStepAll = () => {
 	const navigate = useNavigate();
@@ -13,6 +15,11 @@ const JoinStepAll = () => {
 	const [step, setStep] = useState(1);
 	const [userValue, setUserValue] = useState(initValue);
 	const [hintStatus, setHintStatus] = useState(initStatus);
+
+	const helmet = GetMetaDataByPage({
+		path: path.join.root,
+		langId: userInfo.langId
+	});
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
@@ -78,6 +85,7 @@ const JoinStepAll = () => {
 					setStep={setStep}
 				/>
 			)}
+			{helmet}
 		</>
 	);
 };

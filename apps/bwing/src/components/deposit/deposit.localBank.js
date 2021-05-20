@@ -18,6 +18,7 @@ import {
 import config from "../../config";
 import { isConvert, number_format } from "../common/common";
 import AmountInput from "./deposit.amountInput";
+import InputBox from "../common/inputbox.info";
 import { useHandleAmount } from "./hook/useHandleAmount";
 import Radio from "./deposit.radio";
 import {
@@ -48,11 +49,14 @@ const Payment = props => {
 			? ""
 			: userInfo.accountName
 	);
-	const [realNameTip, setRealNameTip] = useState("");
-
+	const [realNameStatus, setRealNameStatus] = useState({
+		checked: null,
+		msg: ""
+	});
 	const {
 		amount,
-		warning,
+		inputStatus,
+		setInputStatus,
 		SelectAmount,
 		EditAmount,
 		VaildAmount
@@ -362,11 +366,41 @@ const Payment = props => {
 		}
 	};
 
-	const HandleAccountName = e => {
-		setRealName(e.target.value);
-		if (!realNameTip) {
-			setRealNameTip("");
+	const clickInfo = ({ col }) => {
+		if (col === "amount") {
+			const msg = i18n.lbl_AmountTooltip.replace(
+				"{{0}}",
+				number_format(selBank?.minAmount, _isConvert, 0)
+			);
+			setInputStatus({
+				checked: null,
+				msg: inputStatus.msg === "" ? msg : ""
+			});
+		} else {
+			setRealNameStatus({
+				checked: null,
+				msg:
+					realNameStatus.msg === ""
+						? i18n.msg_ConfirmRealNameAlert
+						: ""
+			});
 		}
+	};
+
+	const EditRealName = e => {
+		setRealName(e.target.value);
+	};
+
+	const realNameCheck = () => {
+		let checked = true;
+		let msg = "";
+
+		if (!realName) {
+			checked = false;
+			msg = i18n.msg_EnterRealName;
+		}
+
+		setRealNameStatus({ checked, msg });
 	};
 
 	const _isConvert = isConvert(userInfo.currencyId);
@@ -396,16 +430,16 @@ const Payment = props => {
 				_isConvert={_isConvert}
 			/>
 			{!userInfo.accountName ? (
-				<>
-					<div className="title">
-						<span className="text-org">*</span>
-						{i18n.lbl_RealName}
-					</div>
-					<div className="inputBox">
-						<input onChange={HandleAccountName} value={realName} />
-						<div className="tip">{realNameTip}</div>
-					</div>
-				</>
+				<InputBox
+					title={i18n.lbl_RealName}
+					onChange={EditRealName}
+					onBlur={realNameCheck}
+					value={realName}
+					btnStatus={realNameStatus.checked}
+					tip={realNameStatus.msg}
+					clickInfo={clickInfo.bind(this, { col: "realName" })}
+					isRequired={true}
+				/>
 			) : null}
 			<AmountInput
 				title={i18n.lbl_DepositAmount}
@@ -413,10 +447,13 @@ const Payment = props => {
 				i18n={i18n}
 				_isConvert={_isConvert}
 				amount={amount}
-				tip={warning}
+				btnStatus={inputStatus.checked}
+				tip={inputStatus.msg}
 				SelectAmount={SelectAmount}
 				EditAmount={EditAmount}
 				payType={payType}
+				clickInfo={clickInfo.bind(this, { col: "amount" })}
+				VaildAmount={VaildAmount.bind(this, { _amount: amount })}
 			/>
 			<ImportantNotes i18n={i18n} />
 			<div className="btn-group">

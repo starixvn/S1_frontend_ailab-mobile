@@ -21,7 +21,7 @@ const Inputbox = ({
 			<div className="inputBoxText">
 				<p className="txt-blue12">{title}</p>
 				<input
-					type={inputType}
+					type={inputType ?? "text"}
 					className="textRight"
 					value={value}
 					onChange={onChange}

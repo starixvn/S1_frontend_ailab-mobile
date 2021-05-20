@@ -5979,6 +5979,7 @@ span.important {
 }
 
 .calculation {
+  display: block;
   width: 100%;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -9137,13 +9138,14 @@ span.important {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .input-Area {
   margin-bottom: 2vw;
+  display: block !important;
 }
 
 .input-Area .input-title {
