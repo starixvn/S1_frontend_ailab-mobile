@@ -19,7 +19,7 @@ const Bottom = ({ i18n, langId }) => {
 	const platformRows = defPlatform.map(item => {
 		return (
 			<img
-				key={`platform-${item}`}
+				key={`platform-${item.tpId}`}
 				alt="logo"
 				src={`${config.imgUrl}/common/images/logo/${item.imgName}.png`}
 			/>
