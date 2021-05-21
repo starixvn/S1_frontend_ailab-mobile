@@ -159,7 +159,10 @@ const IndexPage = () => {
 						{getHistoryState.length > 0 ? (
 							<div className="infoList">{arr}</div>
 						) : (
-							<div className="not-found">{i18n.msg_NoData}</div>
+							<div className="not-found">
+								<i className="icon icon-warning" />
+								<p>{i18n.msg_NoData}</p>
+							</div>
 						)}
 					</div>
 				</>

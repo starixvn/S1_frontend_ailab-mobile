@@ -163,7 +163,8 @@ const Panel = () => {
 									<div className="infoList">{arr}</div>
 								) : (
 									<div className="not-found">
-										{i18n.msg_NoData}
+										<i className="icon icon-warning" />
+										<p>{i18n.msg_NoData}</p>
 									</div>
 								)}
 							</div>

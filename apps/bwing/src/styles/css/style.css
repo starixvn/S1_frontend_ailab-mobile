@@ -3335,6 +3335,11 @@ a.clickBtn:before {
   text-align: center;
 }
 
+.not-found .icon {
+  font-size: 6vw;
+  color: #f77a00;
+}
+
 .icon-spinner11.open:before {
   -webkit-animation-name: reload;
           animation-name: reload;
@@ -8762,7 +8767,7 @@ span.important {
   margin-bottom: 10px;
 }
 
-.importantBox h1.icon .importantBox h1::before {
+.importantBox h1.icon::before {
   margin-right: 5px;
 }
 
