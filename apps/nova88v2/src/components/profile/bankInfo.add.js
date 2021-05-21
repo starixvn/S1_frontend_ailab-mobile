@@ -195,7 +195,7 @@ const AddBankPanel = ({
 					hasBtn: true,
 					btnBar: (
 						<div className="btn-group">
-							<button className="blue" onClick={closePopbox}>
+							<button className="white" onClick={closePopbox}>
 								{i18n.lbl_Cancel}
 							</button>
 							<button
@@ -271,7 +271,7 @@ const AddBankPanel = ({
 			/>
 
 			<div className="btn-group">
-				<button className="blue" onClick={toShowBankAccount}>
+				<button className="white" onClick={toShowBankAccount}>
 					{i18n.lbl_Cancel}
 				</button>
 				<button className="orange" onClick={clickSubmit}>

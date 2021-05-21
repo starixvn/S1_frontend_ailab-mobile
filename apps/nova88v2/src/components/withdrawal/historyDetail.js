@@ -28,7 +28,7 @@ const Detail = ({
 		const handleCancel = () => ClickCancel(transId);
 		btnGroup = (
 			<div className="btn-group">
-				<button className="blue" onClick={handleCancel}>
+				<button className="white" onClick={handleCancel}>
 					{i18n.lbl_Cancel}
 				</button>
 			</div>
