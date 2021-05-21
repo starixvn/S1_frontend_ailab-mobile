@@ -356,6 +356,7 @@
 	"lbl_WithdrawalStatus8": "处理中",
 	"lbl_WithdrawalDailyMinMax": "每日最低/最高额度： {{0}}/{{1}}",
 	"lbl_WithdrawalDailyReached":"您已达到每日提款限额",
+	"lbl_Insufficientbalance":"余额不足",
 	"-==================--=========================Transfer--==================================": "",
 	"lbl_Wallet_Saba": "体育钱包",
 	"lbl_MaxAmount": "总金额",

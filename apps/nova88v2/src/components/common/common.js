@@ -51,7 +51,8 @@ export const checkAmount = ({
 	_isConvert,
 	i18n,
 	digits = 2,
-	maxAmountAllowUnlimit = true
+	maxAmountAllowUnlimit = true,
+	hintKey
 }) => {
 	let status = 0;
 	let msg = "";
@@ -60,7 +61,7 @@ export const checkAmount = ({
 		if (_isConvert) {
 			numAmount *= 1000;
 		}
-		if (numAmount <= 0) {
+		if (numAmount <= 0 || (minAmount !== 0 && numAmount < minAmount)) {
 			status = 2;
 			msg = i18n.lbl_AmountTooltip?.replace(
 				"{{0}}",
@@ -74,7 +75,7 @@ export const checkAmount = ({
 		) {
 			status = 2;
 			msg = `${number_format(numAmount, _isConvert, digits)} ${
-				i18n.lbl_NotinLimit
+				i18n[hintKey ?? "lbl_NotinLimit"]
 			}`;
 		}
 	}

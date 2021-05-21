@@ -353,6 +353,7 @@
 	"lbl_WithdrawalStatus8": "Sedang dalam proses",
     "lbl_WithdrawalDailyMinMax": "Min/Maks Limit Harian: {{0}}/{{1}}",
     "lbl_WithdrawalDailyReached":"Batas Harian Anda Tercapai",
+	"lbl_Insufficientbalance":"Saldo tidak mencukupi",
     "-==================-==========================Transfer-===================================":"",
     "lbl_MaxAmount":"Jumlah Maksimal",
     "lbl_please_select_to_wallet":"Silakan pilih dompet masuk dana yang lebih disukai",
