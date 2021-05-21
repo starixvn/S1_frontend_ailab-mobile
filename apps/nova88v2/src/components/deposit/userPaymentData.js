@@ -85,7 +85,7 @@ const UserPaymentSwitch = ({
 	};
 
 	return (
-		<>
+		<div className="rememberMode">
 			<div className="swithModule">
 				<button
 					className={`switchBtn${userPaymentSwitch ? " active" : ""}`}
@@ -98,7 +98,7 @@ const UserPaymentSwitch = ({
 			</div>
 			<button className="icon icon-question" onClick={clickInfo} />
 			<div className={`inputInfo${tip ? " active" : ""}`}>{tip}</div>
-		</>
+		</div>
 	);
 };
 
