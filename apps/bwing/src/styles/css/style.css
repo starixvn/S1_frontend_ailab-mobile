@@ -1829,7 +1829,7 @@ footer > a.open {
 }
 
 .step .stepLine {
-  background: rgba(0, 0, 0, 0.6);
+  background: #3e2724;
   position: absolute;
   width: calc(100% - 4vw);
   height: 2vw;
@@ -1868,6 +1868,7 @@ footer > a.open {
 }
 
 .step .circle {
+  opacity: 0.6;
   background: rgba(247, 122, 0, 0.33);
   width: 12vw;
   height: 12vw;
@@ -1898,6 +1899,20 @@ footer > a.open {
   height: 8vw;
   background: #f77a00;
   font-weight: bold;
+}
+
+.step .circle.active {
+  opacity: 1;
+  background: rgba(247, 122, 0, 0.33);
+}
+
+.step .circle.active > div {
+  background: rgba(247, 122, 0, 0.33);
+}
+
+.step .circle.active > div > div {
+  background: #f77a00;
+  color: white;
 }
 
 .processArea {
@@ -3049,20 +3064,12 @@ a.clickBtn:before {
 
 .casino .slotList .info {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 calc(50% - 1vw);
-          flex: 0 0 calc(50% - 1vw);
+      -ms-flex: 0 0 calc(33% - 4px);
+          flex: 0 0 calc(33% - 4px);
   padding: 0;
-  margin: 2vw 0 0;
+  margin: 2px;
   position: relative;
   line-height: 0;
-}
-
-.casino .slotList .info:nth-child(odd) {
-  margin-right: 1vw;
-}
-
-.casino .slotList .info:nth-child(even) {
-  margin-left: 1vw;
 }
 
 .casino .slotList .info:before {
@@ -3151,6 +3158,7 @@ a.clickBtn:before {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  height: 35px;
 }
 
 .inputdate:first-child {
@@ -4405,6 +4413,79 @@ span.important {
   bottom: 14%;
 }
 
+.bannerS .jpot {
+  width: 95%;
+  padding-bottom: 50%;
+  -webkit-animation: jpot 0.3s infinite;
+  animation: jpot 0.3s infinite;
+  position: relative;
+  background: url(../img/jackpot.png) no-repeat center;
+  background-size: 100%;
+}
+
+.bannerS .jpot > div {
+  position: absolute;
+  top: 72%;
+  right: 12%;
+  width: 74%;
+  text-align: right;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 18px;
+}
+
+.bannerS .jpot > div div:first-child {
+  font-size: 18px;
+  margin: auto auto auto 0;
+}
+
+.bannerS .jpot > div div:nth-child(n + 2) {
+  font-size: 16px;
+  width: 13px;
+  height: 23px;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.bannerS .jpot > div div:nth-child(n + 2) span {
+  word-break: break-word;
+  position: absolute;
+  left: 0;
+}
+
+.bannerS .jpot > div div:nth-child(n + 2) span.active {
+  -webkit-animation: jpotxt 2s infinite;
+          animation: jpotxt 2s infinite;
+}
+
+@-webkit-keyframes jpotxt {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+  }
+}
+
+@keyframes jpotxt {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+  }
+}
+
 .gameArea {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4707,6 +4788,8 @@ span.important {
 .headerT .headerTLogin .login button span {
   font-size: 3vw;
   color: #fff;
+  vertical-align: top;
+  margin-left: 3px;
 }
 
 .headerB {
@@ -5184,6 +5267,10 @@ span.important {
 .depostiImgText div p {
   position: relative;
   margin-bottom: 10px;
+  padding-right: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  word-break: break-all;
 }
 
 .depostiImgText div p span {
@@ -7765,6 +7852,9 @@ span.important {
   display: unset;
   -ms-flex-item-align: start;
       align-self: flex-start;
+  white-space: nowrap;
+  overflow-x: auto;
+  width: 100%;
 }
 
 .filterBtn button {
@@ -8689,7 +8779,7 @@ span.important {
   background: #1a3055;
   padding: 5px;
   border-radius: 5px 5px 0 0;
-  margin-bottom: 1px;
+  margin-bottom: 0px;
 }
 
 .depositModule_mobile > .title:before,
@@ -8709,7 +8799,6 @@ span.important {
 .depositModule_topupmobile .selectModule {
   background: rgba(12, 26, 63, 0.5);
   border: 1px solid #1d2f62;
-  border-top: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8720,6 +8809,49 @@ span.important {
   padding: 2vw;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+.depositModule_mobile .selectModule.important,
+.depositModule_online .selectModule.important,
+.depositModule_local .selectModule.important,
+.depositModule_topupmobile .selectModule.important {
+  background-color: #373e4f;
+  border-radius: 5px;
+  border: 0;
+}
+
+.depositModule_mobile .selectModule.important ol,
+.depositModule_online .selectModule.important ol,
+.depositModule_local .selectModule.important ol,
+.depositModule_topupmobile .selectModule.important ol {
+  padding-left: 15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.depositModule_mobile .selectModule.important ol li,
+.depositModule_online .selectModule.important ol li,
+.depositModule_local .selectModule.important ol li,
+.depositModule_topupmobile .selectModule.important ol li {
+  list-style: decimal;
+  margin-bottom: 3px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.depositModule_mobile .selectModule.important ol li span,
+.depositModule_online .selectModule.important ol li span,
+.depositModule_local .selectModule.important ol li span,
+.depositModule_topupmobile .selectModule.important ol li span {
+  font-weight: bold;
+  color: #fff;
+}
+
+.depositModule_mobile .selectModule.important ol li a,
+.depositModule_online .selectModule.important ol li a,
+.depositModule_local .selectModule.important ol li a,
+.depositModule_topupmobile .selectModule.important ol li a {
+  display: inline;
+  color: #3292f8;
 }
 
 .depositModule_mobile .selectModule input[type="radio"],
@@ -8836,6 +8968,22 @@ span.important {
 .depositModule_local .selectModule > div .bank > div > div,
 .depositModule_topupmobile .selectModule > div .bank > div > div {
   color: #71d3fb;
+}
+
+.depositModule_mobile .selectModule h1,
+.depositModule_online .selectModule h1,
+.depositModule_local .selectModule h1,
+.depositModule_topupmobile .selectModule h1 {
+  text-align: center;
+  width: 100%;
+  margin: 5px 0;
+}
+
+.depositModule_mobile .selectModule h1.icon::before,
+.depositModule_online .selectModule h1.icon::before,
+.depositModule_local .selectModule h1.icon::before,
+.depositModule_topupmobile .selectModule h1.icon::before {
+  margin-right: 5px;
 }
 
 .depositModule_mobile .inputBox,
@@ -9024,6 +9172,11 @@ span.important {
   margin: 2vw 0;
 }
 
+.vipPage .text {
+  margin: 1vw 2vw;
+  color: #71d3fb;
+}
+
 .vipPage .eventList {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9210,5 +9363,406 @@ span.important {
 .input-Area .input-group .btn-group {
   width: 70%;
   margin: 0;
+}
+
+.pupDeposit {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.7);
+  top: 0;
+  left: 0;
+  z-index: 10;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.pupDeposit .pupclose {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  width: 30px;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.pupDeposit .pupclose .icon {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.pupDeposit .swiper-pagination {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.pupDeposit .swiper-pagination > span {
+  background-color: #fff;
+  margin: 0 3px;
+}
+
+.pupDeposit .btn-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 8vw;
+}
+
+.pupDeposit .btn-group button {
+  max-width: 170px;
+}
+
+.pupDeposit .swiper-container .swiper-wrapper > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.pupDeposit .swiper-container .swiper-wrapper > div .title {
+  color: #58cdff;
+  font-size: 6vw;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2vw;
+}
+
+.pupDeposit .swiper-container .swiper-wrapper > div .swiper-heigh {
+  height: 70vh;
+  overflow-y: auto;
+  margin-top: 20px;
+}
+
+.pupDeposit .swiper-container .swiper-wrapper > div .swiper-heigh img {
+  width: 100%;
+}
+
+.pupDeposit .swiper-container .swiper-wrapper > div .swiper-heigh p {
+  margin: 20px 0 5px 0;
+}
+
+.join .logo {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.join .logo img {
+  width: 50%;
+}
+
+.join .switch {
+  width: 100%;
+  background: #434c66;
+  border-radius: 30px;
+  color: #bac2d2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  height: 10vw;
+  margin: 3vw 0;
+}
+
+.join .switch > div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  z-index: 1;
+  padding: 3vw 0;
+}
+
+.join .switch > div.active {
+  color: #070e22;
+}
+
+.join .switch > div.switchBg {
+  position: absolute;
+  background: -webkit-gradient(linear, left top, left bottom, from(#71d3fb), to(#3fb1e0));
+  background: linear-gradient(180deg, #71d3fb, #3fb1e0);
+  width: 50%;
+  height: 100%;
+  border-radius: 30px;
+  left: 0;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  padding: 0;
+}
+
+.join .switch > div.switchBg.right {
+  left: 50%;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+.join .switch + .Join {
+  display: none;
+}
+
+.join .switch + .Join.active {
+  display: block;
+}
+
+.join .Terms a {
+  display: inline;
+  -webkit-text-decoration: revert;
+          text-decoration: revert;
+  color: #03a9f4;
+}
+
+.join .visit {
+  text-align: center;
+  color: #d3d3d3;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 2vw 0 0;
+}
+
+.join .visit .icon-visit:before {
+  font-weight: normal;
+  font-size: 7vw;
+  margin: 0 0 0 2vw;
+}
+
+.join .features {
+  background: #434d66;
+  color: #ffffff;
+  border-radius: 5px;
+  float: left;
+  font-size: 3vw;
+  padding: 0 0 3vw;
+  margin-top: 3vw;
+  width: 100%;
+}
+
+.join .features div,
+.join .features ul {
+  padding: 3vw 3vw 0;
+}
+
+.join .features .title {
+  text-align: left;
+  color: #bac2d2;
+  margin: 0;
+  font-size: 3vw;
+}
+
+.join .features .title:nth-child(1) {
+  background: -webkit-gradient(linear, left top, left bottom, from(#71d3fb), to(#3fb1e0));
+  background: linear-gradient(180deg, #71d3fb, #3fb1e0);
+  color: #070e22;
+  font-size: 4vw;
+  padding: 2vw 3vw;
+  border-radius: 5px 5px 0 0;
+}
+
+.join .features .title span:before {
+  font-size: 4vw;
+  margin-right: 2vw;
+}
+
+.join .features li {
+  list-style: disc;
+  line-height: 24px;
+  margin-left: 3vw;
+}
+
+.join .features li span,
+.join .features li a {
+  font-weight: bold;
+}
+
+.walletMenu {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: rgba(0, 25, 66, 0.9);
+  visibility: hidden;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  opacity: 0;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.walletMenu .walletModule {
+  width: 100%;
+  height: 50vw;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.walletMenu .walletModule > a {
+  position: absolute;
+  top: 40vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  visibility: hidden;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  opacity: 0;
+}
+
+.walletMenu .walletModule > a .circleAnimation {
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.walletMenu .walletModule > a span {
+  margin: 0 0 -15vw;
+}
+
+.walletMenu .walletModule > a:before {
+  position: absolute;
+  border-radius: 100%;
+  width: 8vw;
+  height: 8vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #bac2d2;
+  font-size: 7vw;
+}
+
+.walletMenu .walletModule > a.icon-icon32px_wallet:before {
+  font-size: 5vw;
+}
+
+.walletMenu.active {
+  visibility: visible;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  opacity: 1;
+}
+
+.walletMenu.active .walletModule > a {
+  top: 10vw;
+  visibility: visible;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  opacity: 1;
+}
+
+.walletMenu.active .walletModule > a.icon-icon32px_wallet {
+  -webkit-transform: translateX(-40vw) translateY(15vw);
+          transform: translateX(-40vw) translateY(15vw);
+}
+
+.walletMenu.active .walletModule > a.icon-icon32px_wallet:before {
+  font-size: 5vw;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.walletMenu.active .walletModule > a.icon-icon32px_Withdraw {
+  -webkit-transform: translateX(-25vw) translateY(-5vw);
+          transform: translateX(-25vw) translateY(-5vw);
+}
+
+.walletMenu.active .walletModule > a.icon-icon32px_Withdraw:before {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.walletMenu.active .walletModule > a.icon-icon32px_deposit {
+  -webkit-transform: translateY(-10vw) translateY(-5vw);
+          transform: translateY(-10vw) translateY(-5vw);
+}
+
+.walletMenu.active .walletModule > a.icon-icon32px_Funds-transfer {
+  -webkit-transform: translateX(25vw) translateY(-5vw);
+          transform: translateX(25vw) translateY(-5vw);
+}
+
+.walletMenu.active .walletModule > a.icon-icon32px_History {
+  -webkit-transform: translateX(40vw) translateY(15vw);
+          transform: translateX(40vw) translateY(15vw);
+}
+
+.walletMenu.active .walletModule > a.icon-icon32px_History:before {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.joinSuccess .logo {
+  text-align: center;
+}
+
+.joinSuccess .logo img {
+  width: 50%;
 }
 /*# sourceMappingURL=style.css.map */
