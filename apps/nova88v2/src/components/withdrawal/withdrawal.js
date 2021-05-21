@@ -312,7 +312,8 @@ const Panel = () => {
 				maxAmount: balanceInfo?.availableBalance,
 				_isConvert,
 				i18n,
-				maxAmountAllowUnlimit: false
+				maxAmountAllowUnlimit: false,
+				hintKey: "lbl_Insufficientbalance"
 			});
 		}
 
@@ -536,6 +537,7 @@ const Panel = () => {
 									.then(resRecent => {
 										if (res.data.errorCode === 0) {
 											GetBalance();
+											GetDailyWithdrawalLimit();
 											setRecentDatas(resRecent.data.data);
 										}
 									});
@@ -661,12 +663,16 @@ const Panel = () => {
 					isLogin={userInfo.isLogin}
 				/>
 			</div>
-			<div className="selectBank">
-				{banks}
-				{bankInfo?.bankList?.length < 3 ? (
-					<Link to={path.bankInfo.root} />
-				) : null}
-			</div>
+			{userInfo.currencyId === 96 ? (
+				<div className="bankAccount">{banks}</div>
+			) : (
+				<div className="selectBank">
+					{banks}
+					{bankInfo?.bankList?.length < 3 ? (
+						<Link to={path.bankInfo.root} />
+					) : null}
+				</div>
+			)}
 			<BalancePanel
 				currencyId={userInfo.currencyId}
 				i18n={i18n}
@@ -685,16 +691,6 @@ const Panel = () => {
 				btnStatus={warning.status}
 				warningMsg={warning.msg}
 			/>
-			{userInfo.currencyId === 96 ? (
-				<div className="bankAccount">{banks}</div>
-			) : (
-				<div className="selectBank">
-					{banks}
-					{bankInfo?.bankList?.length < 3 ? (
-						<Link to={path.bankInfo.root} />
-					) : null}
-				</div>
-			)}
 			<div className="text-org">{withdrawalLimitHint}</div>
 			<div className="btn-group">
 				<button
