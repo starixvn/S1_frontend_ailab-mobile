@@ -522,6 +522,23 @@ const Panel = () => {
 		);
 	});
 
+	const withdrawalLimitHint = i18n.lbl_WithdrawalDailyMinMax
+		?.replace(
+			"{{0}}",
+			!withdrawalLimit.withdrawalMin
+				? 1
+				: number_format(withdrawalLimit.withdrawalMin, _isConvert)
+		)
+		?.replace(
+			"{{1}}",
+			withdrawalLimit.unlimited
+				? i18n.lbl_Unlimited
+				: number_format(
+						withdrawalLimit.withdrawalAvailableAmount,
+						_isConvert
+				  )
+		);
+
 	return pageVerify ? (
 		<>
 			<VIPLevel userInfo={userInfo} i18n={i18n} />
@@ -555,30 +572,13 @@ const Panel = () => {
 				inputType="tel"
 				onChange={EditAmount}
 				clickInfo={() => showTipHandler("amount")}
-				infoText={i18n.lbl_WithdrawalDailyMinMax
-					?.replace(
-						"{{0}}",
-						!withdrawalLimit.withdrawalMin
-							? 1
-							: number_format(
-									withdrawalLimit.withdrawalMin,
-									_isConvert
-							  )
-					)
-					?.replace(
-						"{{1}}",
-						withdrawalLimit.unlimited
-							? i18n.lbl_Unlimited
-							: number_format(
-									withdrawalLimit.withdrawalAvailableAmount,
-									_isConvert
-							  )
-					)}
+				infoText={withdrawalLimitHint}
 				showTips={showTips.includes("amount")}
 				placeholder={i18n.lbl_Amount}
 				btnStatus={warning.status}
 				warningMsg={warning.msg}
 			/>
+			<div className="text-org">{withdrawalLimitHint}</div>
 			<div className="btn-group">
 				<button
 					className={amount > 0 ? "" : "gray"}
