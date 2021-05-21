@@ -584,5 +584,9 @@
 	
 	"==============Transfer==============":"",
 	"lbl_Fail":"Failed",
-	"lbl_LastUpdated":"LAST UPDATED"
+	"lbl_LastUpdated":"LAST UPDATED",
+
+	"==============Sports==============":"",
+	"lbl_SabaSport":"Saba Sports",
+	"lbl_BTISport" : "BTI Sports"
 }
