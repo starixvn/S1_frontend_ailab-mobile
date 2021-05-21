@@ -106,19 +106,19 @@ html[lang="zh-CHS"] [data-gwd-grp-id="tc_text-add"]::before, html[lang="zh-CN"] 
 }
 
 html[lang="zh-CHS"] [data-gwd-grp-id="tc_subtitle1"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_subtitle1"]::before {
-  content: "点击下方分享图示";
+  content: "单点以下图标";
 }
 
 html[lang="zh-CHS"] [data-gwd-grp-id="tc_subtitle2"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_subtitle2"]::before {
-  content: "点击加入主画面选项";
+  content: "点选添加到主屏";
 }
 
 html[lang="zh-CHS"] [data-gwd-grp-id="tc_subtitle3"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_subtitle3"]::before {
-  content: "重新命名应用程式名称或点击增加";
+  content: "重新命名软件或单点完成";
 }
 
 html[lang="zh-CHS"] [data-gwd-grp-id="tc_subtitle4"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_subtitle4"]::before {
-  content: "现在你已成功在桌面产生此应用程式捷径";
+  content: "您已成功添加软件到主屏";
 }
 
 html[lang="vi-VN"] [data-gwd-grp-id="tc_text-addtohomescreen"]::before {
@@ -157,31 +157,70 @@ html[lang="vi-VN"] [data-gwd-grp-id="tc_subtitle4"]::before {
   content: "Bạn đã tạo thành công icon ứng dụng trên màn hình chính.";
 }
 
+html[lang="zh-th"] [data-gwd-grp-id="tc_subtitle1"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_subtitle1"]::before {
+  content: "แตะที่ไอคอนแชร์ด้านล่าง";
+}
+
+html[lang="zh-th"] [data-gwd-grp-id="tc_subtitle2"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_subtitle2"]::before {
+  content: "เลือกเพิ่มในหน้าจอหลัก";
+}
+
+html[lang="zh-th"] [data-gwd-grp-id="tc_subtitle3"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_subtitle3"]::before {
+  content: "เปลี่ยนชื่อแอปหรือเพียงแตะเสร็จสิ้น";
+}
+
+html[lang="zh-th"] [data-gwd-grp-id="tc_subtitle4"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_subtitle4"]::before {
+  content: "ขณะนี้คุณสร้างทางลัดของแอปบนหน้าจอหลักสำเร็จแล้ว";
+}
+
+html[lang="zh-id"] [data-gwd-grp-id="tc_subtitle1"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_subtitle1"]::before {
+  content: "Pilih ikon bagikan di bawah.";
+}
+
+html[lang="zh-id"] [data-gwd-grp-id="tc_subtitle2"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_subtitle2"]::before {
+  content: "Pilih Tambahkan Ke Layar Utama.";
+}
+
+html[lang="zh-id"] [data-gwd-grp-id="tc_subtitle3"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_subtitle3"]::before {
+  content: "Ubah nama aplikasi atau pilih Selesai.";
+}
+
+html[lang="zh-id"] [data-gwd-grp-id="tc_subtitle4"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_subtitle4"]::before {
+  content: "Anda telah berhasil membuat jalan pintas aplikasi di layar utama.";
+}
+
+html[lang="zh-hi"] [data-gwd-grp-id="tc_subtitle1"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_subtitle1"]::before {
+  content: "नीचे शेयर आइकन पर टैप करें।";
+}
+
+html[lang="zh-hi"] [data-gwd-grp-id="tc_subtitle2"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_subtitle2"]::before {
+  content: "होम स्क्रीन में जोड़ का चयन करें।";
+}
+
+html[lang="zh-hi"] [data-gwd-grp-id="tc_subtitle3"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_subtitle3"]::before {
+  content: "ऐप का नाम बदलें या केवल डन पर टैप करें।";
+}
+
+html[lang="zh-hi"] [data-gwd-grp-id="tc_subtitle4"]::before, html[lang="zh-CN"] [data-gwd-grp-id="tc_subtitle4"]::before {
+  content: "अब आप होम स्क्रीन पर सफलतापूर्वक ऐप शॉर्टकट जनरेट कर सकते हैं";
+}
 .back{
-  background: rgba(51,51,51,0.9);
+  background: rgba(51,51,51,1);
   color: white;
-  position: absolute;
-  top: 0;
-  padding: 4vw 0;
+  padding: 0.5vw 0;
   width: 100%;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
-  animation: back 0.5s linear;
-}
-@keyframes back{
-  0%{
-    top: -10vw;
-  }
-  100%{
-    top: 0;
-  }
+  position: absolute;
+  top: 0;
+  z-index: 1;
 }
 .back a{
-  background: rgba(51,51,51,1);
   color: white;
   text-decoration: none;
   padding: 2vw 3vw;
   border-radius: 3px;
+  font-size: 3vw;
 }
 a:before{
   content: '←';

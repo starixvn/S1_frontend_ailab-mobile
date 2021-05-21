@@ -1,5 +1,5 @@
-<!-- <!DOCTYPE html> -->
-<html>
+<!DOCTYPE html>
+<html lang="zh-th">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -185,9 +185,19 @@
             opacity: 0.5;
         }
 
-        .gwd-div-1x92 {
+        /* .gwd-div-1x92 {
             height: 100%;
             width: 100%;
+        } */
+        .gwd-div-1x92 {
+            width: 375px;
+            height: 667px;
+            overflow: hidden;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -187.5px;
+            margin-top: -329px;
         }
 
         .gwd-page-2lma {
@@ -4406,7 +4416,8 @@
 </head>
 
 <body>
-
+    
+    <div class="back"><a>กลับไปที่หน้า Nova88 สาร</a></div>
     <gwd-genericad id="gwd-ad">
         <gwd-pagedeck class="gwd-page-container gwd-pagedeck" id="pagedeck" data-gwd-offset-top="0px"
             data-gwd-offset-left="0px">
@@ -4510,7 +4521,6 @@
                         <p class="gwd-p-1iae gwd-p-q33x gwd-p-1ukd gwd-grp-1ulm gwd-gen-iyf4gwdanimation gwd-p-uvvw"
                             data-gwd-grp-id="tc_subtitle4"></p>
                     </div>
-                    <div class="back"><a></a></div>
                     <!-- <gwd-image id="tc_replay" source="replay.svg" scaling="stretch"
                         class="gwd-image-d9y6 gwd-gen-1wv6gwdanimation">
                         <div class="intermediate-element"><img src="./index_files/replay.svg"
@@ -4537,27 +4547,6 @@
         const currentLocation = window.location.origin;
         const a = document.querySelector(".back>a");
         a.href = currentLocation;
-
-        const getUrlParameter = name => {
-	        const paramName = name.replace(/[[]/, "\\[").replace(/[\]]/, "\\]");
-	        const regex = new RegExp(`[\\?&]${paramName}=([^&#]*)`, "i");
-	        const results = regex.exec(window.location.search);
-	        return results === null
-		        ? ""
-		        : decodeURIComponent(results[1].replace(/\+/g, " "));
-        };
-
-        const langId = getUrlParameter("lang");
-        let backText = "Back to Nova88"
-        if (langId === "cs"){
-            backText = "回到 Nova88"
-        } else if (langId === "id"){
-            backText = "Kembali ke Nova88"
-        } else if (langId === "th"){
-            backText = "กลับไปที่หน้า Nova88 สาร"
-        }
-        a.innerHTML = backText;
-
     </script>
     <script type="text/javascript" id="gwd-init-code">
             (function () {
