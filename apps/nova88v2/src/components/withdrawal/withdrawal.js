@@ -313,7 +313,8 @@ const Panel = () => {
 				_isConvert,
 				i18n,
 				maxAmountAllowUnlimit: false,
-				hintKey: "lbl_Insufficientbalance"
+				hintKey: "lbl_Insufficientbalance",
+				digits: 0
 			});
 		}
 
@@ -636,7 +637,7 @@ const Panel = () => {
 			"{{0}}",
 			!withdrawalLimit.withdrawalMin
 				? 1
-				: number_format(withdrawalLimit.withdrawalMin, _isConvert)
+				: number_format(withdrawalLimit.withdrawalMin, _isConvert, 0)
 		)
 		?.replace(
 			"{{1}}",
@@ -644,7 +645,8 @@ const Panel = () => {
 				? i18n.lbl_Unlimited
 				: number_format(
 						withdrawalLimit.withdrawalAvailableAmount,
-						_isConvert
+						_isConvert,
+						0
 				  )
 		);
 
