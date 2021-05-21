@@ -84,7 +84,7 @@ class Panel extends React.Component {
 				}
 
 				if (this.mounted) {
-					const nav = defNav.ALLGAMES.key;
+					const nav = this.props.selNav ?? defNav.ALLGAMES.key;
 					this.setState(
 						{
 							tpList: _tpList,
@@ -444,6 +444,7 @@ const IndexPage = props => {
 		langId: userInfo.langId
 	});
 
+	const selNav = props.location?.state?.nav;
 	let tpId = props.tpId ?? props.location.state?.tpId;
 	tpId = typeof tpId === "string" && !isNaN(tpId) ? Number(tpId) : tpId;
 	return (
@@ -456,6 +457,7 @@ const IndexPage = props => {
 					tpId={tpId}
 					handleLogin={handleLogin}
 					handleGoToGame={handleGoToGame}
+					selNav={selNav}
 				/>
 			</main>
 			<Footer />
