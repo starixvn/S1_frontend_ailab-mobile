@@ -8,11 +8,11 @@ const ImportantNote = ({ langId, i18n }) => {
 
 	if (langId) {
 		return (
-			<div className="selectModule important">
-				<div className="title">
-					<span className="icon icon-information-solid" />{" "}
+			<div className="importantBox">
+				<h1 className="icon icon-information-solid">
+					{" "}
 					{i18n.lbl_ImportantNotice?.toUpperCase()}
-				</div>
+				</h1>
 				{content}
 			</div>
 		);
@@ -22,7 +22,7 @@ const ImportantNote = ({ langId, i18n }) => {
 };
 
 const EN = () => (
-	<ul>
+	<ol type="1">
 		<li>
 			Kindly check with our{" "}
 			<a
@@ -56,11 +56,11 @@ const EN = () => (
 			</a>
 			. Thank you.
 		</li>
-	</ul>
+	</ol>
 );
 
 const VN = () => (
-	<ul>
+	<ol type="1">
 		<li>
 			Kindly check with our{" "}
 			<a
@@ -94,7 +94,7 @@ const VN = () => (
 			</a>
 			. Thank you.
 		</li>
-	</ul>
+	</ol>
 );
 
 ImportantNote.defaultProps = {

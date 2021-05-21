@@ -8,8 +8,9 @@ const ImportantNote = ({ langId, i18n }) => {
 
 	if (langId) {
 		return (
-			<div className="selectModule important">
+			<div className="importantBox">
 				<h1 className="icon icon-information-solid">
+					{" "}
 					{i18n.lbl_ImportantNotice?.toUpperCase()}
 				</h1>
 				{content}
@@ -21,7 +22,7 @@ const ImportantNote = ({ langId, i18n }) => {
 };
 
 const EN = () => (
-	<ol>
+	<ol type="1">
 		<li>
 			Kindly please check for the latest active deposit bank details
 			before you making a deposit.
@@ -59,7 +60,7 @@ const EN = () => (
 );
 
 const VN = () => (
-	<ul>
+	<ol type="1">
 		<li>
 			Kindly please check for the latest active deposit bank details
 			before you making a deposit.
@@ -93,7 +94,7 @@ const VN = () => (
 			</a>{" "}
 			if your transaction is still pending for more than 5 minutes.
 		</li>
-	</ul>
+	</ol>
 );
 
 ImportantNote.defaultProps = {

@@ -8739,6 +8739,55 @@ span.important {
   margin-right: 0;
 }
 
+.importantBox {
+  background: rgba(12, 26, 63, 0.5);
+  border: 1px solid #1d2f62;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 0 0 5px 5px;
+  padding: 2vw;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  background-color: #373e4f;
+  border-radius: 5px;
+  border: 0;
+}
+
+.importantBox h1 {
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.importantBox h1.icon .importantBox h1::before {
+  margin-right: 5px;
+}
+
+.importantBox ol {
+  padding-left: 15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.importantBox ol li {
+  list-style: decimal;
+  margin-bottom: 5px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.importantBox ol li span {
+  font-weight: bold;
+  color: #fff;
+}
+
+.importantBox ol li a {
+  display: inline;
+  color: #3292f8;
+}
+
 .depositModule_mobile,
 .depositModule_online,
 .depositModule_local,
@@ -8809,49 +8858,6 @@ span.important {
   padding: 2vw;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-}
-
-.depositModule_mobile .selectModule.important,
-.depositModule_online .selectModule.important,
-.depositModule_local .selectModule.important,
-.depositModule_topupmobile .selectModule.important {
-  background-color: #373e4f;
-  border-radius: 5px;
-  border: 0;
-}
-
-.depositModule_mobile .selectModule.important ol,
-.depositModule_online .selectModule.important ol,
-.depositModule_local .selectModule.important ol,
-.depositModule_topupmobile .selectModule.important ol {
-  padding-left: 15px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.depositModule_mobile .selectModule.important ol li,
-.depositModule_online .selectModule.important ol li,
-.depositModule_local .selectModule.important ol li,
-.depositModule_topupmobile .selectModule.important ol li {
-  list-style: decimal;
-  margin-bottom: 3px;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.depositModule_mobile .selectModule.important ol li span,
-.depositModule_online .selectModule.important ol li span,
-.depositModule_local .selectModule.important ol li span,
-.depositModule_topupmobile .selectModule.important ol li span {
-  font-weight: bold;
-  color: #fff;
-}
-
-.depositModule_mobile .selectModule.important ol li a,
-.depositModule_online .selectModule.important ol li a,
-.depositModule_local .selectModule.important ol li a,
-.depositModule_topupmobile .selectModule.important ol li a {
-  display: inline;
-  color: #3292f8;
 }
 
 .depositModule_mobile .selectModule input[type="radio"],
