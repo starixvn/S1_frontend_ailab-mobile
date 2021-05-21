@@ -263,7 +263,8 @@ const Panel = () => {
 				maxAmount: balanceInfo?.availableBalance,
 				_isConvert,
 				i18n,
-				maxAmountAllowUnlimit: false
+				maxAmountAllowUnlimit: false,
+				hintKey: "lbl_Insufficientbalance"
 			});
 		}
 
@@ -457,6 +458,7 @@ const Panel = () => {
 									.then(resRecent => {
 										if (res.data.errorCode === 0) {
 											GetBalance();
+											GetDailyWithdrawalLimit();
 											setRecentDatas(resRecent.data.data);
 										}
 									});
