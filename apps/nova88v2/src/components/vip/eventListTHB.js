@@ -250,7 +250,7 @@ const EventListTHB = ({ i18n }) => {
 					<td>500,000</td>
 					<td>1,000,000</td>
 					<td>3,000,000</td>
-					<td>{i18n.lbl_Vip_ByInvitation}</td>
+					<td>5,000,000</td>
 				</tr>
 				<tr>
 					<td colSpan="7">
@@ -263,7 +263,7 @@ const EventListTHB = ({ i18n }) => {
 					<td>5,000,000</td>
 					<td>10,000,000</td>
 					<td>30,000,000</td>
-					<td>{i18n.lbl_Vip_ByInvitation}</td>
+					<td>50,000,000</td>
 				</tr>
 				<tr>
 					<td colSpan="7">

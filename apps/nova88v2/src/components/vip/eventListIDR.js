@@ -250,7 +250,7 @@ const EventListIDR = ({ i18n }) => {
 					<td>100,000('000)</td>
 					<td>300,000('000)</td>
 					<td>600,000('000)</td>
-					<td>{i18n.lbl_Vip_ByInvitation}</td>
+					<td>1,000,000('000)</td>
 				</tr>
 				<tr>
 					<td colSpan="7">
@@ -263,7 +263,7 @@ const EventListIDR = ({ i18n }) => {
 					<td>1,000,000('000)</td>
 					<td>3,000,000('000)</td>
 					<td>6,000,000('000)</td>
-					<td>{i18n.lbl_Vip_ByInvitation}</td>
+					<td>10,000,000('000)</td>
 				</tr>
 				<tr>
 					<td colSpan="7">
