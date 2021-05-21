@@ -33,6 +33,10 @@
   font-size: 18px !important;
 }
 
+.casinoList .icon-pt:before {
+  content: "\e9ef";
+}
+
 .livecasinoList .icon-DG:before {
   font-size: 22px !important;
 }
@@ -51,6 +55,10 @@
 
 .livecasinoList .icon-SA:before {
   font-size: 36px !important;
+}
+
+.icon-topupCard::before {
+  content: "\e9e8";
 }
 
 .icon-WM:before {
@@ -121,6 +129,10 @@
   content: "\e9a6";
 }
 
+.icon-jili:before {
+  content: "\e9f1";
+}
+
 .icon-line:before {
   content: "\e993";
 }
@@ -135,10 +147,6 @@
 
 .icon-saba:before {
   content: "\e9b6";
-}
-
-.icon-BTI:before {
-  content: "\e9f0";
 }
 
 .icon-cock:before {
@@ -1195,13 +1203,5 @@
 
 .icon-live-chat:before {
   content: "\e9ec";
-}
-
-.icon-qrcode:before {
-  content: "\e9ed";
-}
-
-.icon-N2LIVE:before {
-  content: "\e9ee";
 }
 /*# sourceMappingURL=font.css.map */
