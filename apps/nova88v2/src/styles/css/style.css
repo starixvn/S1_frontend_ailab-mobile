@@ -7193,9 +7193,26 @@ span.important {
   color: #5574A7;
 }
 
+.rememberMode {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
+  position: relative;
+}
+
+.rememberMode > .icon {
+  color: #5574A7;
+  position: absolute;
+  right: 0;
+  top: 2vw;
+}
+
 .rememberMode .inputInfo {
   margin: 0 0 2vw;
   word-break: break-word;
+  width: 100%;
 }
 
 .rememberMode .inputInfo:before {
@@ -7203,7 +7220,7 @@ span.important {
   border-width: 0 2vw 2vw 2vw;
   border-style: solid dashed dashed;
   border-color: transparent transparent #a5bbe0 transparent;
-  right: 32.5vw;
+  right: 0.7vw;
   top: -2vw;
 }
 
@@ -7651,8 +7668,8 @@ span.important {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-animation: favourite 1s linear;
-          animation: favourite 1s linear;
+  -webkit-animation: favourite 1.5s linear;
+          animation: favourite 1.5s linear;
 }
 
 .favouriteModule .favourite > div {

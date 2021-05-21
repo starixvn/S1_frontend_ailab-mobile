@@ -366,6 +366,8 @@
 	"lbl_WithdrawalStatus7": "Rejected",
 	"lbl_WithdrawalStatus8": "Processing",
 	"lbl_WithdrawalDailyMinMax": "Daily Min/Max Limit:  {{0}}/{{1}}",
+	"lbl_WithdrawalDailyReached":"Your Daily Limit Reached.",
+	"lbl_Insufficientbalance":"Insufficient balance",
 
 	"==============================================Transfer====================================": "",
 

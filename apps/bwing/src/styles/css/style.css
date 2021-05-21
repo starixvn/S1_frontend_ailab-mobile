@@ -8865,6 +8865,15 @@ span.important {
       flex-wrap: wrap;
 }
 
+.depositModule_mobile .selectModule.important,
+.depositModule_online .selectModule.important,
+.depositModule_local .selectModule.important,
+.depositModule_topupmobile .selectModule.important {
+  background-color: #373e4f;
+  border-radius: 5px;
+  border: 0;
+}
+
 .depositModule_mobile .selectModule input[type="radio"],
 .depositModule_online .selectModule input[type="radio"],
 .depositModule_local .selectModule input[type="radio"],

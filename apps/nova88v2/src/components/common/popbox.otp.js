@@ -107,7 +107,7 @@ const Panel = ({ ClosePopbox }) => {
 								btnBar: (
 									<div className="btn-group">
 										<button
-											className="blue"
+											className="white"
 											onClick={closePopbox}>
 											{i18n.lbl_Cancel}
 										</button>
@@ -178,7 +178,7 @@ const Panel = ({ ClosePopbox }) => {
 				<>
 					{errorMsg}
 					<div className="btn-group">
-						<button className="blue" onClick={closePopbox}>
+						<button className="white" onClick={closePopbox}>
 							{i18n.lbl_Cancel}
 						</button>
 					</div>
