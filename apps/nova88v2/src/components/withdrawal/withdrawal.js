@@ -59,13 +59,17 @@ const Panel = () => {
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
-			api.payment.GetWithdrawalLimit().then(res => {
-				if (res.data.errorCode === 0 && isMountedRef.current) {
-					setWithdrawalLimit(res.data.data);
-				}
-			});
+			GetDailyWithdrawalLimit();
 		}
 	}, [userInfo.isLogin]);
+
+	const GetDailyWithdrawalLimit = () => {
+		api.payment.GetWithdrawalLimit().then(res => {
+			if (res.data.errorCode === 0 && isMountedRef.current) {
+				setWithdrawalLimit(res.data.data);
+			}
+		});
+	};
 
 	useEffect(() => {
 		if (
@@ -243,21 +247,26 @@ const Panel = () => {
 	};
 
 	const VaildAmount = _amount => {
-		const withdrawalMax =
+		let result = {};
+		if (
 			!withdrawalLimit.unlimited &&
-			withdrawalLimit.withdrawalAvailableAmount <=
-				balanceInfo?.availableBalance
-				? withdrawalLimit.withdrawalAvailableAmount
-				: balanceInfo?.availableBalance;
+			_amount > withdrawalLimit.withdrawalAvailableAmount
+		) {
+			result = {
+				status: defIptStatus.warning,
+				msg: i18n.lbl_WithdrawalDailyReached
+			};
+		} else {
+			result = checkAmount({
+				amount: _amount,
+				minAmount: withdrawalLimit.withdrawalMin,
+				maxAmount: balanceInfo?.availableBalance,
+				_isConvert,
+				i18n,
+				maxAmountAllowUnlimit: false
+			});
+		}
 
-		const result = checkAmount({
-			amount: _amount,
-			minAmount: withdrawalLimit.withdrawalMin,
-			maxAmount: withdrawalMax,
-			_isConvert,
-			i18n,
-			maxAmountAllowUnlimit: false
-		});
 		if (result.status !== 0) {
 			setWarning({
 				status: defIptStatus.warning,
@@ -314,6 +323,7 @@ const Panel = () => {
 																resRecent.data
 																	.data
 															);
+															GetDailyWithdrawalLimit();
 															setWarning(
 																initWarning
 															);
