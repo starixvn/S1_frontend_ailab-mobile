@@ -591,7 +591,9 @@ const Panel = () => {
 			<div className="text-org">{withdrawalLimitHint}</div>
 			<div className="btn-group">
 				<button
-					className={amount > 0 ? "" : "gray"}
+					className={
+						warning.status !== defIptStatus.warning ? "" : "gray"
+					}
 					onClick={ClickSubmit}>
 					{i18n.lbl_Submit}
 				</button>
