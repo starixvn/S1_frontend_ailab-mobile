@@ -244,7 +244,7 @@ const Panel = () => {
 
 	const VaildAmount = _amount => {
 		const withdrawalMax =
-			withdrawalLimit.unlimited &&
+			!withdrawalLimit.unlimited &&
 			withdrawalLimit.withdrawalAvailableAmount <=
 				balanceInfo?.availableBalance
 				? withdrawalLimit.withdrawalAvailableAmount
