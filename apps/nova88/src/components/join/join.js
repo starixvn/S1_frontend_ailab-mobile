@@ -609,6 +609,7 @@ const Join = ({ hideBtn = false }) => {
 
 				{userValue.Currency !== null ? (
 					<div className="inputBox parts">
+						<i className="icon icon-phone" />
 						<span className="countryCode">{_areaCode}</span>
 						<Inputbox
 							icon="icon-phone"

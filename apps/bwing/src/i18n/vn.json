@@ -243,7 +243,7 @@
 	"lbl_VirtualSports": "Thể Thao Ảo",
 	"lbl_WaitKYC": "Đang tiến hành xác minh",
 	"lbl_WaitKYCHint": "Cảm ơn bạn đã gửi chứng từ, vui lòng chờ chúng tôi xác minh thông tin",
-	"lbl_Wallet_Saba": "Ví thể thao",
+	"lbl_Wallet_Saba": "Ví Saba",
 	"lbl_Welcome": "Chào mừng",
 	"lbl_WireTransfers": "Chuyển khoản trong nước",
 	"lbl_Withdrawal": "RÚT TIỀN",
@@ -574,12 +574,15 @@
 	"lbl_AgendaTitle" : "ĐUA TOP NẠP VÀ DOANH THU CƯỢC HÀNG THÁNG",
 	"lbl_Tournament" : "Vòng đấu",
 	"lbl_Stage": "Giai đoạn",
+	"lbl_UserNameCheckTooltip":"6-18 ký tự chữ và số (A-Z, a-z, 0-9)",
 	"lbl_LoadCard":"THẺ CÀO",
 	"lbl_DepositType5":"THẺ CÀO",
+	"lbl_EmailRequired":"Vui lòng điền vào cột địa chỉ Email.",
 
+	"==============General==============":"",
+	"lbl_Jackpot":"NỔ HŨ",
 
 	"==============Transfer==============":"",
 	"lbl_Fail":"Thất bại",
-	"lbl_SabaSport":"Saba Sports",
-	"lbl_BTISport" : "BTI Sport"
+	"lbl_LastUpdated":"CẬP NHẬT GẦN NHẤT"
 }

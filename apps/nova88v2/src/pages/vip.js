@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
+import { GetMetaDataByPage } from "../components/seo/seo";
 import { Autoplay } from "../components/common/swipperBanner";
 import { userInfoContext, i18nContext } from "../components/common/context";
 import { defBannersUrl, defLevelList } from "../components/vip/def";
@@ -37,6 +38,10 @@ const IndexPage = () => {
 			navigate(path.join.root);
 		}
 	};
+	const helmet = GetMetaDataByPage({
+		path: path.vip.root,
+		langId: userInfo.langId
+	});
 
 	return (
 		<>
@@ -57,6 +62,7 @@ const IndexPage = () => {
 				</div>
 			</main>
 			<Footer />
+			{helmet}
 		</>
 	);
 };

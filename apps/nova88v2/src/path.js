@@ -144,6 +144,9 @@ export default {
 	streaming: {
 		root: "streaming"
 	},
+	cryptoWallet: {
+		root: "cryptoWallet"
+	},
 	myAccount: {
 		root: "myAccount"
 	}

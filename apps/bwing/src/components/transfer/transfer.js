@@ -26,14 +26,16 @@ const Panel = () => {
 
 	const {
 		amount,
-		warning,
+		inputStatus,
 		recentDatas,
 		clickSubmit,
 		EditAmount,
 		allWalletsList,
 		selectItem,
 		selectedIdx,
-		GetTransferRecent
+		GetTransferRecent,
+		clickInfo,
+		ValidAmount
 	} = useTransfer({
 		GetBalance,
 		GetTpWalletBalance,
@@ -57,11 +59,14 @@ const Panel = () => {
 				i18n={i18n}
 				amount={amount}
 				EditAmount={EditAmount}
-				warning={warning}
+				inputStatus={inputStatus}
 				clickSubmit={clickSubmit}
 				selectedIdx={selectedIdx}
 				selectItem={selectItem}
 				allWalletsList={allWalletsList}
+				clickInfo={clickInfo}
+				_isConvert={_isConvert}
+				ValidAmount={ValidAmount.bind(this, amount)}
 			/>
 			<RecentDatas
 				datas={recentDatas}

@@ -243,7 +243,7 @@
 	"lbl_VirtualSports": "Virtual Sports",
 	"lbl_WaitKYC": "Verification is in progress",
 	"lbl_WaitKYCHint": "Thank you for submitting the required document, kindly bear with us for a moment while the verification is in progress.",
-	"lbl_Wallet_Saba": "Sportsbook Wallet",
+	"lbl_Wallet_Saba": "Saba Wallet",
 	"lbl_Welcome": "Welcome",
 	"lbl_WireTransfers": "Local Bank Transfer",
 	"lbl_Withdrawal": "Withdrawal",
@@ -574,11 +574,15 @@
 	"lbl_AgendaTitle" : "MONTHLY DEPOSIT & TURNOVER RACE TOURNAMENT",
 	"lbl_Tournament" : "Tournament",
 	"lbl_Stage": "Stage",
+	"lbl_UserNameCheckTooltip":"6-18 alphanumeric (A-Z, a-z, 0-9) characters only.",
 	"lbl_TopUpCard":"TOP-UP CARD",
 	"lbl_DepositType5":"TOP-UP CARD",
+	"lbl_EmailRequired":"Please fill in the email field",
+
+	"==============General==============":"",
+	"lbl_Jackpot":"Jackpot",
 	
 	"==============Transfer==============":"",
 	"lbl_Fail":"Failed",
-	"lbl_SabaSport":"Saba Sports",
-	"lbl_BTISport" : "BTI Sports"
+	"lbl_LastUpdated":"LAST UPDATED"
 }

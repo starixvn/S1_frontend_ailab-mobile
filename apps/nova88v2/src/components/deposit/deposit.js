@@ -12,6 +12,7 @@ import PageVerify from "./deposit.pageVerify";
 import MobilePay from "./deposit.mobilePay";
 import OnlineBanking from "./deposit.onlineBanking";
 import LocalBank from "./deposit.localBank";
+import CryptoPay from "./deposit.cryptoPay";
 import api from "../../service/api";
 import RecentDatas from "./deposit.recentDatas";
 import { number_format, isConvert } from "../common/common";
@@ -21,7 +22,8 @@ import UserPaymentSwitch, { useGetUserPaymentData } from "./userPaymentData";
 const defPayType = {
 	onlineBank: "onlineBank",
 	localBank: "localBank",
-	mobilePay: "mobilePay"
+	mobilePay: "mobilePay",
+	cryptoPay: "cryptoPay"
 };
 
 const defPayment = {
@@ -35,6 +37,10 @@ const defPayment = {
 	},
 	[defPayType.mobilePay]: {
 		displayKey: "lbl_MobileDeposit",
+		creditTimeKey: "lbl_5mins"
+	},
+	[defPayType.cryptoPay]: {
+		displayKey: "lbl_CryptoPay",
 		creditTimeKey: "lbl_5mins"
 	}
 };
@@ -100,7 +106,6 @@ const Panel = () => {
 
 	const _userPaymentData =
 		userPaymentData?.payType === selected ? userPaymentData : {};
-
 	let content = (
 		<OnlineBanking
 			payType={selected}
@@ -132,6 +137,14 @@ const Panel = () => {
 				userPaymentData={_userPaymentData}
 				handleUserPaymentData={handleUserPaymentData}
 				userPaymentSwitch={userPaymentSwitch}
+			/>
+		);
+	} else if (selected === defPayType.cryptoPay) {
+		content = (
+			<CryptoPay
+				payType={defPayType.cryptoPay}
+				creditTimeKey={defPayment[defPayType.cryptoPay].creditTimeKey}
+				paymentList={paymentList[defPayType.cryptoPay] ?? []}
 			/>
 		);
 	}
@@ -189,6 +202,17 @@ const Panel = () => {
 						defaultSelect,
 						defPayType.mobilePay,
 						payments[defPayType.mobilePay]
+					);
+				} catch (error) {}
+
+				try {
+					const res = await api.payment.GetCryptoPayInfoList();
+					payments[defPayType.cryptoPay] = getDataListResult(res);
+
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defPayType.cryptoPay,
+						payments[defPayType.cryptoPay]
 					);
 				} catch (error) {}
 

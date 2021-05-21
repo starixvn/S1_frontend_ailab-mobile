@@ -93,7 +93,6 @@ export const Wrapper = ({ children }) => {
 					content: errMsg ?? i18n.msg_ForceLogedoutHint
 				});
 			}
-
 			setUserInfo(prevState => ({
 				isLogin: false,
 				langId: prevState.langId
