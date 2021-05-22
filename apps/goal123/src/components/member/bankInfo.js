@@ -124,15 +124,19 @@ const BankInfo = () => {
 	};
 
 	const EditField = ({ col }, e) => {
-		let val = e.target.value;
+		let setValue = true;
+		const val = e.target.value;
 		if (col === "BankAccount") {
-			val = String(val).replace(/^(0+)|[^\d]+/g, "");
+			const regex = /^[0-9]*$/;
+			setValue = regex.test(val);
 		}
 
-		setUserValue(prev => ({
-			...prev,
-			[col]: val
-		}));
+		if (setValue) {
+			setUserValue(prev => ({
+				...prev,
+				[col]: val
+			}));
+		}
 	};
 
 	const GetCustBankInfo = () => {
