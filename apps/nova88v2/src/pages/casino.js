@@ -398,7 +398,7 @@ class Panel extends React.Component {
 						<div className="btn-group">
 							{this.state.selGameInfo.playFree ? (
 								<button
-									className="blue"
+									className="white"
 									onClick={this.ClickPlay.bind(this, true)}>
 									{this.props.i18n.lbl_FreePlay}
 								</button>

@@ -59,13 +59,17 @@ const Panel = () => {
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
-			api.payment.GetWithdrawalLimit().then(res => {
-				if (res.data.errorCode === 0 && isMountedRef.current) {
-					setWithdrawalLimit(res.data.data);
-				}
-			});
+			GetDailyWithdrawalLimit();
 		}
 	}, [userInfo.isLogin]);
+
+	const GetDailyWithdrawalLimit = () => {
+		api.payment.GetWithdrawalLimit().then(res => {
+			if (res.data.errorCode === 0 && isMountedRef.current) {
+				setWithdrawalLimit(res.data.data);
+			}
+		});
+	};
 
 	useEffect(() => {
 		if (
@@ -292,21 +296,28 @@ const Panel = () => {
 	};
 
 	const VaildAmount = _amount => {
-		const withdrawalMax =
-			withdrawalLimit.unlimited &&
-			withdrawalLimit.withdrawalAvailableAmount <=
-				balanceInfo?.availableBalance
-				? withdrawalLimit.withdrawalAvailableAmount
-				: balanceInfo?.availableBalance;
+		let result = {};
+		if (
+			!withdrawalLimit.unlimited &&
+			_amount > withdrawalLimit.withdrawalAvailableAmount
+		) {
+			result = {
+				status: defIptStatus.warning,
+				msg: i18n.lbl_WithdrawalDailyReached
+			};
+		} else {
+			result = checkAmount({
+				amount: _amount,
+				minAmount: withdrawalLimit.withdrawalMin,
+				maxAmount: balanceInfo?.availableBalance,
+				_isConvert,
+				i18n,
+				maxAmountAllowUnlimit: false,
+				hintKey: "lbl_Insufficientbalance",
+				digits: 0
+			});
+		}
 
-		const result = checkAmount({
-			amount: _amount,
-			minAmount: withdrawalLimit.withdrawalMin,
-			maxAmount: withdrawalMax,
-			_isConvert,
-			i18n,
-			maxAmountAllowUnlimit: false
-		});
 		if (result.status !== 0) {
 			setWarning({
 				status: defIptStatus.warning,
@@ -363,6 +374,7 @@ const Panel = () => {
 																resRecent.data
 																	.data
 															);
+															GetDailyWithdrawalLimit();
 															setWarning(
 																initWarning
 															);
@@ -472,7 +484,7 @@ const Panel = () => {
 					btnBar: (
 						<div className="btn-group">
 							<button
-								className="blue"
+								className="white"
 								onClick={() =>
 									setPopBox(prevState => ({
 										...prevState,
@@ -526,6 +538,7 @@ const Panel = () => {
 									.then(resRecent => {
 										if (res.data.errorCode === 0) {
 											GetBalance();
+											GetDailyWithdrawalLimit();
 											setRecentDatas(resRecent.data.data);
 										}
 									});
@@ -618,6 +631,25 @@ const Panel = () => {
 			);
 		});
 	}
+
+	const withdrawalLimitHint = i18n.lbl_WithdrawalDailyMinMax
+		?.replace(
+			"{{0}}",
+			!withdrawalLimit.withdrawalMin
+				? 1
+				: number_format(withdrawalLimit.withdrawalMin, _isConvert, 0)
+		)
+		?.replace(
+			"{{1}}",
+			withdrawalLimit.unlimited
+				? i18n.lbl_Unlimited
+				: number_format(
+						withdrawalLimit.withdrawalAvailableAmount,
+						_isConvert,
+						0
+				  )
+		);
+
 	return pageVerify ? (
 		<>
 			<VIPLevel userInfo={userInfo} i18n={i18n} />
@@ -633,12 +665,16 @@ const Panel = () => {
 					isLogin={userInfo.isLogin}
 				/>
 			</div>
-			<div className="selectBank">
-				{banks}
-				{bankInfo?.bankList?.length < 3 ? (
-					<Link to={path.bankInfo.root} />
-				) : null}
-			</div>
+			{userInfo.currencyId === 96 ? (
+				<div className="bankAccount">{banks}</div>
+			) : (
+				<div className="selectBank">
+					{banks}
+					{bankInfo?.bankList?.length < 3 ? (
+						<Link to={path.bankInfo.root} />
+					) : null}
+				</div>
+			)}
 			<BalancePanel
 				currencyId={userInfo.currencyId}
 				i18n={i18n}
@@ -651,43 +687,18 @@ const Panel = () => {
 				inputType="tel"
 				onChange={EditAmount}
 				clickInfo={() => showTipHandler("amount")}
-				infoText={i18n.lbl_WithdrawalDailyMinMax
-					?.replace(
-						"{{0}}",
-						!withdrawalLimit.withdrawalMin
-							? 1
-							: number_format(
-									withdrawalLimit.withdrawalMin,
-									_isConvert
-							  )
-					)
-					?.replace(
-						"{{1}}",
-						withdrawalLimit.unlimited
-							? i18n.lbl_Unlimited
-							: number_format(
-									withdrawalLimit.withdrawalAvailableAmount,
-									_isConvert
-							  )
-					)}
+				infoText={withdrawalLimitHint}
 				showTips={showTips.includes("amount")}
 				placeholder={i18n.lbl_Amount}
 				btnStatus={warning.status}
 				warningMsg={warning.msg}
 			/>
-			{userInfo.currencyId === 96 ? (
-				<div className="bankAccount">{banks}</div>
-			) : (
-				<div className="selectBank">
-					{banks}
-					{bankInfo?.bankList?.length < 3 ? (
-						<Link to={path.bankInfo.root} />
-					) : null}
-				</div>
-			)}
+			<div className="text-org">{withdrawalLimitHint}</div>
 			<div className="btn-group">
 				<button
-					className={amount > 0 ? "" : "gray"}
+					className={
+						warning.status !== defIptStatus.warning ? "" : "gray"
+					}
 					onClick={ClickSubmit}>
 					{i18n.lbl_Submit}
 				</button>

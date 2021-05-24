@@ -169,7 +169,7 @@ export const useGotoGame = ({
 									btnBar: (
 										<div className="btn-group">
 											<button
-												className="blue"
+												className="white"
 												onClick={ClickClose}>
 												{i18n.lbl_Cancel}
 											</button>

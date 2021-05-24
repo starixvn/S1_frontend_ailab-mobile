@@ -322,7 +322,7 @@
     "lbl_Referral_link":"Tautan Referensi",
     "lbl_Copy_to_clipboard":"Salin ke clipboard",
     "lbl_WithdrawalTo":"Penarikan Tunai di",
-    "-==================-==========================Withdrawal-===================================":"",
+    "-==========================Withdrawal===================================":"",
 
     "lbl_DepositOver":"Jumlah permintaan penarikan anda melebihi saldo di akun anda ",
     "lbl_WithdrawalOver":"Jumlah permintaan penarikan anda melebihi ketentuan penarikan  ",
@@ -352,6 +352,8 @@
 	"lbl_WithdrawalStatus7": "Ditolak",
 	"lbl_WithdrawalStatus8": "Sedang dalam proses",
     "lbl_WithdrawalDailyMinMax": "Min/Maks Limit Harian: {{0}}/{{1}}",
+    "lbl_WithdrawalDailyReached":"Batas Harian Anda Tercapai",
+	"lbl_Insufficientbalance":"Saldo tidak mencukupi",
     "-==================-==========================Transfer-===================================":"",
     "lbl_MaxAmount":"Jumlah Maksimal",
     "lbl_please_select_to_wallet":"Silakan pilih dompet masuk dana yang lebih disukai",
@@ -478,8 +480,9 @@
     "msg_PasswordLength":"Penjang Karakter kata sandi harus antara 6 hingga 15 karakter.",
     "lbl_Please_enter_Affiliate_ID":"Harap masukkan ID Afiliasi (Pilihan), ini tidak bisa diubah setelah dimasukkan!",
     "lbl_Affiliate_ID":"ID Afiliasi / Referral",
+	"lbl_AfterJoinHint":"Selamat! Anda berhasil mendaftar sebagai member.",
 
-    "-==================-==========================Login-===================================":"",
+    "==========================Login===================================":"",
   
     "lbl_ForgetPassword":"Lupa ID atau Kata Sandi",
     "lbl_ResetPassword":"Atur Ulang Kata Sandi",
