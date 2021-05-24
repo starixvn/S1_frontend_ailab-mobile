@@ -4,13 +4,15 @@ import TurnoverAccumulated from "./popbox.turnover";
 import Otp from "./popbox.otp";
 import OneGamePopBox from "./popbox.oneGame";
 import ReferralPopBox from "./popbox.referral";
+import DomainListPop from "./popbox.domainList";
 
 export const defPopBoxType = {
 	default: "default",
 	TurnoverAccumulated: "TurnoverAccumulated",
 	Otp: "Otp",
 	OneGame: "OneGame",
-	Referral: "Referral"
+	Referral: "Referral",
+	DomainList: "DomainList"
 };
 
 const PopUp = () => {
@@ -37,6 +39,10 @@ const PopUp = () => {
 
 		case defPopBoxType.Referral:
 			content = <ReferralPopBox referralCode={popBox.referralCode} />;
+			break;
+
+		case defPopBoxType.DomainList:
+			content = <DomainListPop domainList={popBox.domainList} />;
 			break;
 
 		default:

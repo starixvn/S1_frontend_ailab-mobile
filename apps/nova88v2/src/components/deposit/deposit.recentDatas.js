@@ -25,6 +25,7 @@ const RecentDatas = ({ Datas, SubmitProof, ClickCancel }) => {
 					key={`deposit-recent-${d.transId}`}
 					status={d.status}
 					transId={d.transId}
+					thirdId={d.thirdId}
 					createTime={d.createTime}
 					amount={d.amount}
 					depositType={d.depositType}

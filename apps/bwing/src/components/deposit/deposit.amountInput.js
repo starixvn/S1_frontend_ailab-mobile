@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { number_format } from "../common/common";
+import { IptStatus } from "../common/inputbox.info";
 
 const AmountInput = ({
 	title,
@@ -11,7 +12,10 @@ const AmountInput = ({
 	_isConvert,
 	amount,
 	SelectAmount,
-	EditAmount
+	EditAmount,
+	btnStatus,
+	clickInfo,
+	VaildAmount
 }) => {
 	const { amountRule, amountList, minAmount, maxAmount } = channel;
 	let content = null;
@@ -31,39 +35,55 @@ const AmountInput = ({
 		content = <div className="buttonBox">{rows}</div>;
 	} else {
 		content = (
-			<div className="inputBox">
-				<input
-					type="tel"
-					onChange={EditAmount}
-					placeholder={
-						minAmount && maxAmount
-							? `${i18n.lbl_MinMaxAmount}: ${number_format(
-									minAmount,
-									false,
-									0
-							  )} / ${number_format(maxAmount, false, 0)}`
-							: ""
-					}
-					value={amount}
-				/>
-				<div className={`tip${tip ? " open" : ""}`}>{tip}</div>
-				<div className="icon-module">(&apos;000)</div>
-			</div>
+			<>
+				<div className="input-group">
+					<div className="inputBoxNew">
+						<input
+							type="tel"
+							placeholder={
+								minAmount && maxAmount
+									? `${
+											i18n.lbl_MinMaxAmount
+									  }: ${number_format(
+											minAmount,
+											false,
+											0
+									  )} / ${number_format(
+											maxAmount,
+											false,
+											0
+									  )}`
+									: ""
+							}
+							onChange={EditAmount}
+							value={amount}
+							onBlur={VaildAmount}
+						/>
+						<span>(000)</span>
+						<IptStatus
+							btnStatus={btnStatus}
+							clickInfo={clickInfo}
+						/>
+					</div>
+				</div>
+				{tip ? <div className="tip open">{tip}</div> : null}
+			</>
 		);
 	}
 	return (
-		<>
-			<div className="title">
-				<span className="text-org">*</span>
-				{title}
+		<div className="input-Area">
+			<div className="input-title frame">
+				<span className="text-org">*</span> {title}
 			</div>
 			{content}
-		</>
+		</div>
 	);
 };
 
 AmountInput.defaultProps = {
-	tip: ""
+	tip: "",
+	btnStatus: null,
+	clickInfo: () => null
 };
 
 AmountInput.propTypes = {
@@ -76,7 +96,9 @@ AmountInput.propTypes = {
 		.isRequired,
 	SelectAmount: PropTypes.func.isRequired,
 	EditAmount: PropTypes.func.isRequired,
-	payType: PropTypes.string.isRequired
+	payType: PropTypes.string.isRequired,
+	btnStatus: PropTypes.bool,
+	clickInfo: PropTypes.func
 };
 
 export default AmountInput;

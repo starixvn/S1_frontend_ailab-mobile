@@ -89,6 +89,25 @@ export const wallet_bankInfo = {
 	}
 };
 
+export const wallet_cryptoWallet = {
+	myWallet: {
+		to: `${path.wallet.root}`,
+		displayKey: "lbl_MyWallet"
+	},
+	bankInfo: {
+		to: path.cryptoWallet.root,
+		displayKey: "lbl_CryptoWallet",
+		mainClass: "main Wallet"
+	}
+};
+
+export const cryptoWalletTabs = {
+	myWallet: {
+		to: `${path.wallet.root}`,
+		displayKey: "lbl_MyWallet"
+	}
+};
+
 export const referral = {
 	transfer: {
 		to: `${path.referral.root}`,

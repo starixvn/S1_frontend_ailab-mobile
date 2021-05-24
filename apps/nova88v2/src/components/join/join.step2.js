@@ -9,6 +9,8 @@ import Dropdown from "../common/dropdown";
 import Birthday from "./join.birth";
 import useTip from "../hook/useTip";
 import TandC from "../../service/t_and_c";
+import AreaCodeDropdown from "../common/dropdown.profile";
+import InputboxPart from "../common/inputbox.profile";
 import { GetYear, GetDayOfMonth } from "../profile/profile.detail";
 import { monthOptions } from "../profile/profile.detail.def";
 import api from "../../service/api";
@@ -35,13 +37,21 @@ const JoinStep2 = ({
 	const isMountedRef = useRef(null);
 	const defaultLangId = userInfo.langId ?? GET_LANG_ID();
 	const _currencyId = siteCurrency[userValue.Currency]?.id;
-	const currencyToCountryCode = _currencyId
-		? currencyToAreacode[_currencyId]
-		: null;
-	const _areaCode =
-		currencyToCountryCode !== null
-			? areaCode[currencyToCountryCode]?.AreaCode
-			: null;
+	const [_areaCode, setAreaCode] = useState(null);
+
+	const [AreaCodeIdx, setAreaCodeIdx] = useState(0);
+
+	const areaCodeOptions = Object.values(areaCode)
+		.filter(
+			(el, idx, self) =>
+				idx === self.findIndex(t => el.AreaCode === t.AreaCode)
+		)
+		.map(el => ({
+			value: el.AreaCode,
+			id: el.AreaCode,
+			displayText: el.AreaCode
+		}))
+		.sort((a, b) => (a.id > b.id ? 1 : -1));
 
 	const yearOptions = [];
 	const startYear = GetYear();
@@ -144,6 +154,14 @@ const JoinStep2 = ({
 			...prev,
 			Currency: { checked: true, msg: "" }
 		}));
+
+		const selCurrencyId = siteCurrency[i]?.id;
+		const currencyToCountryCode = selCurrencyId
+			? areaCode[currencyToAreacode[selCurrencyId]]?.AreaCode
+			: null;
+		if (selCurrencyId !== 96) {
+			setAreaCode(currencyToCountryCode);
+		}
 	};
 
 	const checkValue = async (col, e) => {
@@ -210,7 +228,10 @@ const JoinStep2 = ({
 			msg = "lbl_PhoneTooltip";
 		} else {
 			const res = await api.site.ExistsPhoneNo({
-				AreaCode: _areaCode,
+				AreaCode:
+					_currencyId === 96
+						? areaCodeOptions[AreaCodeIdx].value
+						: _areaCode,
 				Phone: val
 			});
 
@@ -296,7 +317,10 @@ const JoinStep2 = ({
 				PhoneNo: userValue.Phone,
 				CurrencyId: _currencyId,
 				UserLang: defaultLangId,
-				AreaCode: _areaCode,
+				AreaCode:
+					_currencyId === 96
+						? areaCodeOptions[AreaCodeIdx].value
+						: _areaCode,
 				PromoCode: userValue.SpecialBonusCode,
 				Birth_d: userValue.Birth_d + 1,
 				Birth_m: monthOptions[userValue.Birth_m]?.value,
@@ -437,24 +461,50 @@ const JoinStep2 = ({
 				testAttr="Currency"
 				onBlur={checkValue.bind(null, "Currency")}
 			/>
-			{userValue.Currency !== null ? (
-				<div className="infoModule">
-					<Inputbox
+			{/* 如果userValue.Currency已選擇了才顯示 */}
+			{siteCurrency?.[userValue.Currency]?.id !== 96 ? (
+				<Inputbox
+					icon="icon-phone"
+					placeholder={i18n.lbl_Phone}
+					value={userValue.Phone}
+					areaCode={_areaCode}
+					onChange={EditField.bind(null, "Phone")}
+					btnStatus={hintStatus.Phone.checked}
+					warningMsg={hintStatus.Phone.msg}
+					infoText={i18n.lbl_PhoneTooltip}
+					clickInfo={() => showTipHandler("Phone")}
+					showTips={showTips.includes("Phone")}
+					onBlur={checkValue.bind(null, "Phone")}
+					testAttr="Phone"
+				/>
+			) : (
+				<div className="infoModule parts">
+					<AreaCodeDropdown
+						i18n={i18n}
+						mainKey="profile-areaCode"
+						options={areaCodeOptions}
+						colName="areaCode"
+						onSelectItem={i => setAreaCodeIdx(i)}
+						selectedIdx={AreaCodeIdx}
+						icon="icon icon-phone"
+						hideInfo={true}
+					/>
+					<InputboxPart
 						icon="icon-phone"
+						inputType="tel"
 						placeholder={i18n.lbl_Phone}
-						value={userValue.Phone}
-						areaCode={_areaCode}
+						onBlur={checkValue.bind(this, "Phone")}
 						onChange={EditField.bind(null, "Phone")}
+						value={userValue.Phone}
 						btnStatus={hintStatus.Phone.checked}
 						warningMsg={hintStatus.Phone.msg}
 						infoText={i18n.lbl_PhoneTooltip}
 						clickInfo={() => showTipHandler("Phone")}
 						showTips={showTips.includes("Phone")}
-						onBlur={checkValue.bind(null, "Phone")}
-						testAttr="Phone"
 					/>
 				</div>
-			) : null}
+			)}
+
 			<Inputbox
 				icon="icon-member"
 				placeholder={i18n.lbl_RealName}

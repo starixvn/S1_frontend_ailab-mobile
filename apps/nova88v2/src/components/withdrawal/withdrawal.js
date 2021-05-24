@@ -42,7 +42,9 @@ const Panel = () => {
 		accountName: "",
 		bankList: []
 	});
-	const [withdrawalMin, setWithdrawalMin] = useState(0);
+	const [withdrawalLimit, setWithdrawalLimit] = useState({
+		withdrawalMin: 0
+	});
 	const { showTips, showTipHandler } = useTip();
 	const [recentDatas, setRecentDatas] = useState([]);
 	const [pageVerify, setPageVerify] = useState(true);
@@ -57,19 +59,24 @@ const Panel = () => {
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
-			api.payment.GetWithdrawalLimit().then(res => {
-				if (res.data.errorCode === 0 && isMountedRef.current) {
-					setWithdrawalMin(res.data.data.withdrawalMin);
-				}
-			});
+			GetDailyWithdrawalLimit();
 		}
 	}, [userInfo.isLogin]);
+
+	const GetDailyWithdrawalLimit = () => {
+		api.payment.GetWithdrawalLimit().then(res => {
+			if (res.data.errorCode === 0 && isMountedRef.current) {
+				setWithdrawalLimit(res.data.data);
+			}
+		});
+	};
 
 	useEffect(() => {
 		if (
 			userInfo.isLogin &&
 			userInfo.currencyId &&
-			(!userInfo.accountName || !userInfo.phoneNo)
+			(!userInfo.accountName || !userInfo.phoneNo) &&
+			userInfo.currencyId !== 96
 		) {
 			const ClosePopBox = () => {
 				setPopBox({ isOpen: false });
@@ -77,7 +84,6 @@ const Panel = () => {
 					`/${userInfo.langId}/${path.profile.root}?prevPage=${path.withdrawal.root}`
 				);
 			};
-
 			if (isMountedRef.current) {
 				setPopBox({
 					isOpen: true,
@@ -106,6 +112,7 @@ const Panel = () => {
 							res.data.data?.bankInfoDetail &&
 							res.data.data?.bankInfoDetail.length > 0
 						) {
+							setPopBox({ isOpen: false });
 							if (isMountedRef.current) {
 								setbankInfo(() => ({
 									accountName: res.data.data.accountName,
@@ -126,7 +133,27 @@ const Panel = () => {
 								}
 							}
 							hasBankInfo = true;
-						} else {
+						} else if (
+							userInfo.currencyId === 96 &&
+							res.data.data?.uSDTDetail &&
+							res.data.data?.uSDTDetail.length > 0
+						) {
+							setPopBox({ isOpen: false });
+							if (isMountedRef.current) {
+								setbankInfo(() => ({
+									accountName: res.data.data.accountName,
+									bankList: res.data.data.uSDTDetail
+								}));
+								setSelBank(res.data.data.uSDTDetail?.[0]);
+								if (!pageVerify) {
+									setPageVerify(true);
+								}
+							}
+							hasBankInfo = true;
+						} else if (
+							userInfo.currencyId &&
+							userInfo.currencyId !== 96
+						) {
 							const ClosePopBox = () => {
 								setPopBox({ isOpen: false });
 								navigate(
@@ -147,6 +174,34 @@ const Panel = () => {
 												className="blue"
 												onClick={ClosePopBox}>
 												{i18n.lbl_UpdateBankDetail}
+											</button>
+										</div>
+									)
+								});
+								setPageVerify(false);
+							}
+						} else {
+							const ClosePopBox = () => {
+								setPopBox({ isOpen: false });
+								navigate(
+									`/${userInfo.langId}/${path.cryptoWallet.root}`
+								);
+							};
+							if (isMountedRef.current) {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content: i18n.lbl_UpdateCryptoWalletAddr,
+									hasBtn: true,
+									hideCloseBtn: true,
+									btnBar: (
+										<div className="btn-group">
+											<button
+												className="blue"
+												onClick={ClosePopBox}>
+												{
+													i18n.lbl_Btn_UpdateCryptoWallet
+												}
 											</button>
 										</div>
 									)
@@ -241,14 +296,28 @@ const Panel = () => {
 	};
 
 	const VaildAmount = _amount => {
-		const result = checkAmount({
-			amount: _amount,
-			minAmount: withdrawalMin,
-			maxAmount: balanceInfo?.availableBalance,
-			_isConvert,
-			i18n,
-			maxAmountAllowUnlimit: false
-		});
+		let result = {};
+		if (
+			!withdrawalLimit.unlimited &&
+			_amount > withdrawalLimit.withdrawalAvailableAmount
+		) {
+			result = {
+				status: defIptStatus.warning,
+				msg: i18n.lbl_WithdrawalDailyReached
+			};
+		} else {
+			result = checkAmount({
+				amount: _amount,
+				minAmount: withdrawalLimit.withdrawalMin,
+				maxAmount: balanceInfo?.availableBalance,
+				_isConvert,
+				i18n,
+				maxAmountAllowUnlimit: false,
+				hintKey: "lbl_Insufficientbalance",
+				digits: 0
+			});
+		}
+
 		if (result.status !== 0) {
 			setWarning({
 				status: defIptStatus.warning,
@@ -305,6 +374,7 @@ const Panel = () => {
 																resRecent.data
 																	.data
 															);
+															GetDailyWithdrawalLimit();
 															setWarning(
 																initWarning
 															);
@@ -362,38 +432,59 @@ const Panel = () => {
 				const real_amount = _isConvert
 					? Number(amount) * 1000
 					: Number(amount);
+
 				setPopBox({
 					isOpen: true,
 					title: i18n.lbl_ImportantNote,
-					content: (
-						<div>
-							<ul>
-								<li className="text-org">
-									{i18n.lbl_WithdrawalTo} :
-								</li>
-								<li>{selBank?.bankName}</li>
-								<li className="text-org">
-									{i18n.lbl_BankAccountName} :
-								</li>
-								<li>{bankInfo?.accountName}</li>
-								<li className="text-org">
-									{i18n.lbl_BankNumber} :
-								</li>
-								<li>{selBank?.accountNo}</li>
-								<li className="text-org">
-									{i18n.lbl_WithdrawalAmount} :
-								</li>
-								<li>
-									{number_format(real_amount, _isConvert)}
-								</li>
-							</ul>
-						</div>
-					),
+					content:
+						userInfo.currencyId === 96 ? (
+							<div>
+								<ul>
+									<li className="text-org">
+										{i18n.lbl_WithdrawalTo} :
+									</li>
+									<li>{selBank?.nickName}</li>
+									<li className="text-org">
+										{i18n.lbl_CryptoWalletAddress} :
+									</li>
+									<li>{selBank?.usdtAddress}</li>
+									<li className="text-org">
+										{i18n.lbl_WithdrawalAmount} :
+									</li>
+									<li>
+										{number_format(real_amount, _isConvert)}
+									</li>
+								</ul>
+							</div>
+						) : (
+							<div>
+								<ul>
+									<li className="text-org">
+										{i18n.lbl_WithdrawalTo} :
+									</li>
+									<li>{selBank?.bankName}</li>
+									<li className="text-org">
+										{i18n.lbl_BankAccountName} :
+									</li>
+									<li>{bankInfo?.accountName}</li>
+									<li className="text-org">
+										{i18n.lbl_BankNumber} :
+									</li>
+									<li>{selBank?.accountNo}</li>
+									<li className="text-org">
+										{i18n.lbl_WithdrawalAmount} :
+									</li>
+									<li>
+										{number_format(real_amount, _isConvert)}
+									</li>
+								</ul>
+							</div>
+						),
 					hasBtn: true,
 					btnBar: (
 						<div className="btn-group">
 							<button
-								className="blue"
+								className="white"
 								onClick={() =>
 									setPopBox(prevState => ({
 										...prevState,
@@ -406,9 +497,13 @@ const Panel = () => {
 								className="orange"
 								onClick={RedirectToNext.bind(
 									this,
-									selBank.accountNo,
+									userInfo.currencyId === 96
+										? selBank.usdtAddress
+										: selBank.accountNo,
 									real_amount,
-									selBank.sysId
+									userInfo.currencyId !== 96
+										? selBank.sysId
+										: 0
 								)}>
 								{i18n.lbl_Submit}
 							</button>
@@ -420,7 +515,12 @@ const Panel = () => {
 	};
 
 	const SelectBank = b => {
-		if (b.sysId !== selBank?.sysId || b.accountNo !== selBank?.accountNo) {
+		if (
+			b.sysId &&
+			(b.sysId !== selBank?.sysId || b.accountNo !== selBank?.accountNo)
+		) {
+			setSelBank(b);
+		} else if (b.usdtAddress !== selBank?.usdtAddress) {
 			setSelBank(b);
 		}
 	};
@@ -438,6 +538,7 @@ const Panel = () => {
 									.then(resRecent => {
 										if (res.data.errorCode === 0) {
 											GetBalance();
+											GetDailyWithdrawalLimit();
 											setRecentDatas(resRecent.data.data);
 										}
 									});
@@ -485,6 +586,8 @@ const Panel = () => {
 		}
 	};
 
+	let banks = [];
+
 	const showingAmount = (
 		<>
 			{i18n[`Currency_${userInfo.currencyId}`]}{" "}
@@ -492,26 +595,60 @@ const Panel = () => {
 		</>
 	);
 
-	const banks = bankInfo?.bankList?.map(b => {
-		return (
-			<button
-				className={
-					selBank?.sysId === b.sysId &&
-					selBank?.accountNo === b.accountNo
-						? "active"
-						: ""
-				}
-				key={`withdrawal-bank-${b.sysId}-${b.accountNo}`}
-				onClick={SelectBank.bind(this, b)}>
-				<img
-					src={`${
-						config.cloudImgURL
-					}/SiteSkin/img/BankLogo/${b.bankLogo?.toLowerCase()}`}
-					alt={b.bankName}
-				/>
-			</button>
+	if (userInfo.currencyId === 96) {
+		banks = bankInfo?.bankList?.map(b => {
+			return (
+				<div
+					className={`account${
+						selBank?.usdtAddress === b.usdtAddress ? " active" : ""
+					}`}
+					key={`withdrawal-bank-${b.usdtAddress}`}
+					onClick={SelectBank.bind(this, b)}>
+					<div className="nickName">{b.nickName}</div>
+					<div className="icon icon-BTC">{b.usdtAddress}</div>
+				</div>
+			);
+		});
+	} else {
+		banks = bankInfo?.bankList?.map(b => {
+			return (
+				<button
+					className={
+						selBank?.sysId === b.sysId &&
+						selBank?.accountNo === b.accountNo
+							? "active"
+							: ""
+					}
+					key={`withdrawal-bank-${b.sysId}-${b.accountNo}`}
+					onClick={SelectBank.bind(this, b)}>
+					<img
+						src={`${
+							config.cloudImgURL
+						}/SiteSkin/img/BankLogo/${b.bankLogo?.toLowerCase()}`}
+						alt={b.bankName}
+					/>
+				</button>
+			);
+		});
+	}
+
+	const withdrawalLimitHint = i18n.lbl_WithdrawalDailyMinMax
+		?.replace(
+			"{{0}}",
+			!withdrawalLimit.withdrawalMin
+				? 1
+				: number_format(withdrawalLimit.withdrawalMin, _isConvert, 0)
+		)
+		?.replace(
+			"{{1}}",
+			withdrawalLimit.unlimited
+				? i18n.lbl_Unlimited
+				: number_format(
+						withdrawalLimit.withdrawalAvailableAmount,
+						_isConvert,
+						0
+				  )
 		);
-	});
 
 	return pageVerify ? (
 		<>
@@ -528,12 +665,16 @@ const Panel = () => {
 					isLogin={userInfo.isLogin}
 				/>
 			</div>
-			<div className="selectBank">
-				{banks}
-				{bankInfo?.bankList?.length < 3 ? (
-					<Link to={path.bankInfo.root} />
-				) : null}
-			</div>
+			{userInfo.currencyId === 96 ? (
+				<div className="bankAccount">{banks}</div>
+			) : (
+				<div className="selectBank">
+					{banks}
+					{bankInfo?.bankList?.length < 3 ? (
+						<Link to={path.bankInfo.root} />
+					) : null}
+				</div>
+			)}
 			<BalancePanel
 				currencyId={userInfo.currencyId}
 				i18n={i18n}
@@ -546,20 +687,18 @@ const Panel = () => {
 				inputType="tel"
 				onChange={EditAmount}
 				clickInfo={() => showTipHandler("amount")}
-				infoText={i18n.lbl_AmountTooltip?.replace(
-					"{{0}}",
-					!withdrawalMin
-						? 1
-						: number_format(withdrawalMin, _isConvert)
-				)}
+				infoText={withdrawalLimitHint}
 				showTips={showTips.includes("amount")}
 				placeholder={i18n.lbl_Amount}
 				btnStatus={warning.status}
 				warningMsg={warning.msg}
 			/>
+			<div className="text-org">{withdrawalLimitHint}</div>
 			<div className="btn-group">
 				<button
-					className={amount > 0 ? "" : "gray"}
+					className={
+						warning.status !== defIptStatus.warning ? "" : "gray"
+					}
 					onClick={ClickSubmit}>
 					{i18n.lbl_Submit}
 				</button>

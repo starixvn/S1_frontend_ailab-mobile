@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createRef } from "react";
 import moment from "moment";
 import PropTypes from "prop-types";
 import { number_format } from "../common/common";
@@ -24,13 +24,14 @@ const Detail = ({
 	_isConvert,
 	depositType,
 	SubmitProof,
-	i18n
+	i18n,
+	thirdId
 }) => {
 	let btnGroup = null;
 	if (depositType === 3 && (status === 1 || status === 7)) {
 		btnGroup = (
 			<div className="btn-group">
-				<button className="blue" onClick={ClickCancel}>
+				<button className="white" onClick={ClickCancel}>
 					{i18n.lbl_Cancel}
 				</button>
 				<button className="orange openPopup" onClick={SubmitProof}>
@@ -39,6 +40,11 @@ const Detail = ({
 			</div>
 		);
 	}
+	const ipt = createRef();
+	const OnCopy = () => {
+		ipt.current.select();
+		navigator.clipboard.writeText(ipt.current.value);
+	};
 
 	return (
 		<div className="info">
@@ -70,6 +76,22 @@ const Detail = ({
 					</span>
 				</li>
 			</ul>
+
+			<div>
+				<div className="title">TxId</div>
+				<div>{thirdId}</div>
+				<input
+					type="hidden"
+					readOnly={true}
+					defaultValue={thirdId}
+					ref={ipt}
+				/>
+				<button
+					className="icon icon-files-empty"
+					value={thirdId}
+					onClick={OnCopy}
+				/>
+			</div>
 			{btnGroup}
 		</div>
 	);

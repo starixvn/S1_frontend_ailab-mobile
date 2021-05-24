@@ -141,6 +141,7 @@ const Panel = ({
 				createTime={item.createTime}
 				amount={item.amount}
 				depositType={item.depositType}
+				thirdId={item.thirdId}
 				_isConvert={_isConvert}
 				ClickCancel={ClickCancel.bind(this, item.transId)}
 				SubmitProof={SubmitProof.bind(this, { ...item })}

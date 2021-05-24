@@ -86,15 +86,16 @@ const UserPaymentSwitch = ({
 
 	return (
 		<div className="rememberMode">
-			<label className="checkbox autoTransfer">
-				<input type="checkbox" onClick={switchPaymentMode} />
-				<i
-					className={`icon icon-checkbox${
-						userPaymentSwitch ? "-checked" : ""
-					}`}
-				/>
-				<span>{i18n.lbl_DepositLocalbankButton}</span>
-			</label>
+			<div className="swithModule">
+				<button
+					className={`switchBtn${userPaymentSwitch ? " active" : ""}`}
+					onClick={switchPaymentMode}>
+					<span>{userPaymentSwitch ? "ON" : ""}</span>
+					<span>{userPaymentSwitch ? "" : "OFF"}</span>
+					<div className={userPaymentSwitch ? "active" : ""} />
+				</button>
+				{i18n.lbl_DepositLocalbankButton}
+			</div>
 			<button className="icon icon-question" onClick={clickInfo} />
 			<div className={`inputInfo${tip ? " active" : ""}`}>{tip}</div>
 		</div>

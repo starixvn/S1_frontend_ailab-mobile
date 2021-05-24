@@ -1,40 +1,45 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
+import {
+	i18nContext,
+	userInfoContext,
+	popBoxContext,
+	loadingContext
+} from "../common/context";
 import { api_GetBankInfoSysList } from "../../service/api/payment";
 import {
 	api_SetCustBankInfo,
 	api_DelCustBankInfo
 } from "../../service/api/accountStrict";
 import { api_GetCustBankInfo } from "../../service/api/account";
-import Inputbox from "../common/inputbox";
+import Inputbox from "../common/inputbox.info";
 import Dropdown from "../common/dropdown.image";
 import config from "../../config";
-import Loading from "../common/loading";
 
-const initWarningState = {
-	RealName: {
-		status: false,
-		msg: ""
-	},
-	BankAccount: {
-		status: false,
-		msg: ""
-	}
+const panel = { bankList: "bankList", addBank: "addBank" };
+const initStatus = {
+	RealName: { checked: null, msg: "" },
+	BankAccount: { checked: null, msg: "" }
 };
 
 const BankInfo = () => {
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { i18n } = useContext(i18nContext);
-	const [siteBankInfoState, setSiteBankInfoState] = useState([]);
-	const [getBankInfo, setGetBankInfo] = useState([]);
-	const [status, setStatus] = useState(true);
-	const [userValueState, setUserValueState] = useState({});
+	const { setLoading } = useContext(loadingContext);
+	const [siteBankList, setSiteBankList] = useState([]);
+	const [custBankInfo, setCustBankInfo] = useState([]);
+	const [currentPanel, setCurrentPanel] = useState(panel.bankList);
 	const [bankSelectedIdx, setBankSelectedIdx] = useState(0);
-	const [warningState, setWarningState] = useState(initWarningState);
-	const [loading, setLoading] = useState(true);
+	const [inputStatus, setInputStatus] = useState(initStatus);
+
+	const initValue = {
+		RealName: userInfo?.accountName ?? "",
+		BankAccount: ""
+	};
+	const [userValue, setUserValue] = useState(initValue);
 	const isMountedRef = useRef(null);
+
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => {
@@ -43,68 +48,18 @@ const BankInfo = () => {
 	});
 
 	useEffect(() => {
-		if (!userInfo.accountName && isMountedRef.current) {
-			setStatus(true);
-		}
-	}, [userInfo.accountName]);
-
-	useEffect(() => {
 		if (userInfo.isLogin) {
-			setLoading(true);
-			api_GetCustBankInfo().then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							const { data } = res.data;
-							if (data !== null) {
-								const bankInfoDetail =
-									data.bankInfoDetail ?? [];
-								const getBankInfoArr = bankInfoDetail.map(i => {
-									return {
-										bankName: i.bankName,
-										image: i.bankLogo,
-										accountNo: i.accountNo,
-										SysId: i.sysId
-									};
-								});
-								setGetBankInfo(() => getBankInfoArr);
-							}
-						} else {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: res.data.message
-							});
-						}
-						setLoading(false);
-					}
-				},
-				() => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-						setLoading(false);
-					}
-				}
-			);
+			GetCustBankInfo();
 		}
-	}, [
-		i18n.lbl_ImportantNote,
-		i18n.msg_ApiServerError,
-		setPopBox,
-		userInfo.isLogin
-	]);
+	}, [userInfo.isLogin]);
 
 	const toAddBankAccount = () => {
 		setLoading(true);
 		api_GetBankInfoSysList().then(
 			res => {
 				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
-						const { data } = res.data;
+					const { errorCode, data, message } = res.data;
+					if (errorCode === 0) {
 						const bankInfoArr = data.map(i => {
 							return {
 								id: i.sysId,
@@ -114,17 +69,16 @@ const BankInfo = () => {
 								displayText: i.bankName
 							};
 						});
-
-						setSiteBankInfoState(() => bankInfoArr);
-						setStatus(false);
+						setSiteBankList(() => bankInfoArr);
+						setCurrentPanel(currentPanel.bankList);
 						setBankSelectedIdx(0);
-						setWarningState(initWarningState);
-						setUserValueState({});
+						setInputStatus(initStatus);
+						setUserValue(initValue);
 					} else {
 						setPopBox({
 							isOpen: true,
 							title: i18n.lbl_ImportantNote,
-							content: res.data.message
+							content: message
 						});
 					}
 					setLoading(false);
@@ -137,7 +91,6 @@ const BankInfo = () => {
 						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
-
 					setLoading(false);
 				}
 			}
@@ -146,7 +99,7 @@ const BankInfo = () => {
 
 	const toShowBankAccount = () => {
 		setLoading(false);
-		setStatus(true);
+		setCurrentPanel(panel.bankList);
 		setPopBox({ isOpen: false });
 	};
 
@@ -154,45 +107,36 @@ const BankInfo = () => {
 		setBankSelectedIdx(i);
 	};
 
-	const checkInputboxHandler = (col, e) => {
+	const checkValue = ({ col }, e) => {
 		const val = e.target.value;
-		let checked = true;
-		let message = "";
+		let result = { checked: true, msg: "" };
 
 		if (col === "RealName") {
-			if (val === "" || !isNaN(val)) {
-				checked = false;
-				message = i18n.msg_EnterRealName;
-			}
+			result = realNameCheck({ val });
 		} else if (col === "BankAccount") {
-			if (val === "" || isNaN(val)) {
-				checked = false;
-				message = i18n.msg_NeedAccountNo;
-			}
+			result = bankAccountCheck({ val });
 		}
 
-		setUserValueState(prevState => ({
-			...prevState,
-			[col]: val
+		setInputStatus(prev => ({
+			...prev,
+			[col]: result
 		}));
-
-		setWarningState(prevState => {
-			return {
-				...prevState,
-				[col]: {
-					status: !checked,
-					msg: message
-				}
-			};
-		});
 	};
 
-	const EditField = (col, e) => {
+	const EditField = ({ col }, e) => {
+		let setValue = true;
 		const val = e.target.value;
-		setUserValueState(prevState => ({
-			...prevState,
-			[col]: val
-		}));
+		if (col === "BankAccount") {
+			const regex = /^[0-9]*$/;
+			setValue = regex.test(val);
+		}
+
+		if (setValue) {
+			setUserValue(prev => ({
+				...prev,
+				[col]: val
+			}));
+		}
 	};
 
 	const GetCustBankInfo = () => {
@@ -201,8 +145,8 @@ const BankInfo = () => {
 		api_GetCustBankInfo().then(
 			res => {
 				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
-						const { data } = res.data;
+					const { data, errorCode, message } = res.data;
+					if (errorCode === 0) {
 						if (data !== null) {
 							const bankInfoDetail = data.bankInfoDetail ?? [];
 							const getBankInfoArr = bankInfoDetail.map(i => {
@@ -213,20 +157,17 @@ const BankInfo = () => {
 									SysId: i.sysId
 								};
 							});
-							setGetBankInfo(() => getBankInfoArr);
-							setUserInfo(prevState => ({
-								...prevState,
-								accountName: data.accountName
-							}));
+							setCustBankInfo(() => getBankInfoArr);
 							setLoading(false);
 						}
 					} else {
 						setPopBox({
 							isOpen: true,
 							title: i18n.lbl_ImportantNote,
-							content: res.data.message
+							content: message
 						});
 					}
+					setLoading(false);
 				}
 			},
 			() => {
@@ -236,21 +177,22 @@ const BankInfo = () => {
 						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
+					setLoading(false);
 				}
 			}
 		);
 	};
 
-	const removeAccountHandler = val => {
-		setLoading(true);
-
+	const removeAccountHandler = ({ account }) => {
 		const removeAccount = () => {
 			const removeAccountData = {
 				AccountName: userInfo.accountName,
-				AccountNo: val.accountNo,
-				SysId: val.SysId
+				AccountNo: account.accountNo,
+				SysId: account.SysId
 			};
 			setPopBox({ isOpen: false });
+			setLoading(true);
+
 			api_DelCustBankInfo(removeAccountData).then(
 				res => {
 					if (isMountedRef.current) {
@@ -263,6 +205,7 @@ const BankInfo = () => {
 								content: res.data.message
 							});
 						}
+						setLoading(false);
 					}
 				},
 				() => {
@@ -294,185 +237,149 @@ const BankInfo = () => {
 				</div>
 			)
 		});
-		setLoading(false);
 	};
 
-	const realNameCheck = () => {
+	const realNameCheck = ({ val }) => {
 		let checked = true;
-		if (
-			userValueState.RealName === "" ||
-			userValueState.RealName === undefined
-		) {
+		let msg = "";
+		if (!val) {
 			checked = false;
-			setWarningState(prevState => {
-				return {
-					...prevState,
-					RealName: {
-						status: !checked,
-						msg: i18n.msg_EnterRealName
-					}
-				};
-			});
-		} else {
-			checked = true;
-			setWarningState(prevState => {
-				return {
-					...prevState,
-					RealName: {
-						status: !checked,
-						msg: ""
-					}
-				};
-			});
+			msg = i18n.msg_EnterRealName;
 		}
-		return checked;
+		return { checked, msg };
 	};
-	const bankAccountCheck = () => {
+
+	const bankAccountCheck = ({ val }) => {
 		let checked = true;
-		if (
-			userValueState.BankAccount === "" ||
-			userValueState.BankAccount === undefined
-		) {
+		let msg = "";
+		if (!val) {
 			checked = false;
-			setWarningState(prevState => {
-				return {
-					...prevState,
-					BankAccount: {
-						status: !checked,
-						msg: i18n.msg_NeedAccountNo
-					}
-				};
-			});
-		} else {
-			checked = true;
-			setWarningState(prevState => {
-				return {
-					...prevState,
-					BankAccount: {
-						status: !checked,
-						msg: ""
-					}
-				};
-			});
+			msg = i18n.msg_NeedAccountNo;
 		}
-		return checked;
+		return { checked, msg };
 	};
 
-	const checkSubmitHandler = () => {
-		let checked = true;
+	const clickInfo = ({ col, info }) => {
+		const _info = inputStatus[col].msg === "" ? i18n[info] : "";
+		setInputStatus(prev => ({
+			...prev,
+			[col]: { checked: null, msg: _info }
+		}));
+	};
 
-		const SetCustBankInfo = (_checked, hidePopBox) => {
-			if (hidePopBox) {
-				setPopBox({ isOpen: false });
-			}
+	const clickSubmit = () => {
+		const RealNameCheck = realNameCheck({
+			val: userInfo?.accountName ?? userValue.RealName
+		});
+		const BankAccountCheck = bankAccountCheck({
+			val: userValue.BankAccount
+		});
+		const checked = RealNameCheck.checked && BankAccountCheck.checked;
 
-			if (_checked) {
-				const bankInfoData = {
-					AccountName:
-						userInfo.accountName ?? userValueState.RealName,
-					AccountNo: userValueState.BankAccount,
-					SysId: siteBankInfoState[bankSelectedIdx].id
-				};
-				setLoading(true);
-				api_SetCustBankInfo(bankInfoData).then(
-					response => {
-						if (isMountedRef.current) {
-							const { errorCode } = response.data;
-							const { message } = response.data;
+		const SetCustBankInfo = () => {
+			setPopBox({ isOpen: false });
+			const bankInfoData = {
+				AccountName: userInfo.accountName ?? userValue.RealName,
+				AccountNo: userValue.BankAccount,
+				SysId: siteBankList[bankSelectedIdx].id
+			};
 
-							if (errorCode !== 0) {
-								setPopBox({
-									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: message
-								});
-							} else {
-								GetCustBankInfo();
-							}
-							setLoading(false);
-						}
-					},
-					() => {
-						if (isMountedRef.current) {
+			setLoading(true);
+			api_SetCustBankInfo(bankInfoData).then(
+				response => {
+					if (isMountedRef.current) {
+						const { errorCode, message } = response.data;
+						if (errorCode !== 0) {
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
-								content: i18n.msg_ApiServerErrors
+								content: message
 							});
-							setLoading(false);
+						} else {
+							if (!userInfo.accountName) {
+								setUserInfo(prev => ({
+									...prev,
+									accountName: userValue.RealName
+								}));
+							}
+							GetCustBankInfo();
 						}
+						setLoading(false);
 					}
-				);
-				setStatus(true);
-			}
+				},
+				() => {
+					if (isMountedRef.current) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerErrors
+						});
+						setLoading(false);
+					}
+				}
+			);
+			setCurrentPanel(panel.bankList);
 		};
 
-		if (status === false) {
+		if (checked) {
 			if (!userInfo.accountName) {
-				checked = realNameCheck() && bankAccountCheck();
-
 				const closePopbox = () => {
 					setPopBox({ isOpen: false });
 				};
-				if (checked) {
-					setPopBox({
-						isOpen: true,
-						title: i18n.lbl_ImportantNote,
-						content: i18n.msg_ConfirmRealNameAlert,
-						hasBtn: true,
-						btnBar: (
-							<div className="btn-group">
-								<button
-									className="darkGray"
-									onClick={closePopbox}>
-									{i18n.lbl_Cancel}
-								</button>
-								<button
-									className="lightBlue"
-									onClick={SetCustBankInfo.bind(
-										this,
-										checked,
-										true
-									)}>
-									{i18n.lbl_Submit}
-								</button>
-							</div>
-						)
-					});
-				}
+				setPopBox({
+					isOpen: true,
+					title: i18n.lbl_ImportantNote,
+					content: i18n.msg_ConfirmRealNameAlert,
+					hasBtn: true,
+					btnBar: (
+						<div className="btn-group">
+							<button className="darkGray" onClick={closePopbox}>
+								{i18n.lbl_Cancel}
+							</button>
+							<button
+								className="lightBlue"
+								onClick={SetCustBankInfo}>
+								{i18n.lbl_Submit}
+							</button>
+						</div>
+					)
+				});
 			} else {
-				checked = bankAccountCheck();
-				SetCustBankInfo(checked, false);
+				SetCustBankInfo();
 			}
+		} else {
+			setInputStatus({
+				RealName: RealNameCheck,
+				BankAccount: BankAccountCheck
+			});
 		}
 	};
 
-	const arr = getBankInfo.map(item => {
+	const arr = custBankInfo.map(item => {
 		return (
 			<BankAccountItem
 				key={`bankAccount-${item.accountNo}`}
 				title={item.bankName}
 				accountNo={item.accountNo}
-				removeAccountHandler={removeAccountHandler.bind(null, item)}
+				removeAccountHandler={removeAccountHandler.bind(null, {
+					account: item
+				})}
 				image={`${config.imgUrl}/common/images/BankLogo/${item.image}`}
 				className="bankLogo"
-				loading={loading}
 			/>
 		);
 	});
 
-	return loading ? (
-		<Loading />
-	) : (
+	return (
 		<>
 			<div className="avatar" />
 			<div className="name">{userInfo.accountName}</div>
-			{status === true ? (
+			{currentPanel === panel.bankList ? (
 				<>
 					{userInfo.accountName ? (
 						<div className="text-org">{i18n.lbl_ContactCSD}</div>
 					) : null}
-					{getBankInfo && getBankInfo.length < 3 ? (
+					{custBankInfo && custBankInfo.length < 3 ? (
 						<div className="btn-group">
 							<button
 								className="orange"
@@ -482,14 +389,21 @@ const BankInfo = () => {
 							</button>
 						</div>
 					) : null}
+					{custBankInfo && custBankInfo.length > 0 ? (
+						<div className="smallTitle">
+							<i className="icon icon-library" />
+							{i18n.lbl_BankAccount}
+						</div>
+					) : null}
+					<div className="bankAccount">{arr}</div>
 				</>
 			) : (
 				<>
 					<div className="inputBox">
 						<Dropdown
-							mainKey="bankInfo-bankList"
-							options={siteBankInfoState}
-							colName="getBankInfo"
+							mainKey="custBankInfo-bankList"
+							options={siteBankList}
+							colName="custBankInfo"
 							className="bankLogo"
 							ImgURL={`${config.imgUrl}/common/images/BankLogo/`}
 							selectedIdx={bankSelectedIdx}
@@ -498,23 +412,32 @@ const BankInfo = () => {
 					</div>
 					{!userInfo.accountName ? (
 						<Inputbox
-							icon="icon-member"
-							inputType="text"
-							value={userValueState.RealName}
+							icon="icon icon-member"
+							value={userValue.RealName}
 							placeholder={i18n.lbl_RealName}
-							onBlur={checkInputboxHandler.bind(null, "RealName")}
-							onChange={EditField.bind(null, "RealName")}
-							Warning={warningState.RealName}
+							onBlur={checkValue.bind(null, { col: "RealName" })}
+							onChange={EditField.bind(null, { col: "RealName" })}
+							btnStatus={inputStatus.RealName.checked}
+							tip={inputStatus.RealName.msg}
+							clickInfo={clickInfo.bind(this, {
+								col: "RealName",
+								info: "msg_ConfirmRealNameAlert"
+							})}
 						/>
 					) : null}
 					<Inputbox
-						icon="icon-newspaper"
-						Warning={warningState.BankAccount}
+						icon="icon icon-newspaper"
 						inputType="tel"
-						value={userValueState.BankAccount}
+						value={userValue.BankAccount}
 						placeholder={i18n.lbl_BankNumber}
-						onBlur={checkInputboxHandler.bind(null, "BankAccount")}
-						onChange={EditField.bind(null, "BankAccount")}
+						onBlur={checkValue.bind(null, { col: "BankAccount" })}
+						onChange={EditField.bind(null, { col: "BankAccount" })}
+						btnStatus={inputStatus.BankAccount.checked}
+						tip={inputStatus.BankAccount.msg}
+						clickInfo={clickInfo.bind(this, {
+							col: "BankAccount",
+							info: "lbl_EnterAccountNumber"
+						})}
 					/>
 					<div className="btn-group">
 						<button
@@ -522,25 +445,12 @@ const BankInfo = () => {
 							onClick={toShowBankAccount}>
 							{i18n.lbl_Cancel}
 						</button>
-						<button
-							className="lightBlue"
-							onClick={checkSubmitHandler}>
+						<button className="lightBlue" onClick={clickSubmit}>
 							{i18n.lbl_Submit}
 						</button>
 					</div>
 				</>
 			)}
-			{status === true ? (
-				<>
-					{getBankInfo && getBankInfo.length > 0 ? (
-						<div className="smallTitle">
-							<i className="icon icon-library" />
-							{i18n.lbl_BankAccount}
-						</div>
-					) : null}
-					<div className="bankAccount">{arr}</div>
-				</>
-			) : null}
 		</>
 	);
 };
