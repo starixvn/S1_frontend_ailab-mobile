@@ -35,12 +35,12 @@ export const initWarning = {
 	}
 };
 
-export const infoList = ({ i18n = {}, userInfo = {}, _areaCode = "" }) => {
+export const infoList = ({ i18n = {}, userInfo = {} }) => {
 	return [
 		{
 			infoTitle: "phoneNo",
 			colTitle: i18n.lbl_Phone,
-			content: `(${_areaCode})${userInfo.phoneNo}`,
+			content: `(${userInfo.areaCode})${userInfo.phoneNo}`,
 			isVerified: userInfo.phoneVerified
 		},
 		{
@@ -92,6 +92,14 @@ export const infoList = ({ i18n = {}, userInfo = {}, _areaCode = "" }) => {
 			content: date_format(userInfo.lastLogin)
 		}
 	];
+};
+
+export const currencyToAreacode = {
+	2: "MY",
+	4: "TH",
+	13: "CS",
+	15: "ID",
+	51: "VN"
 };
 
 const date_format = v => {

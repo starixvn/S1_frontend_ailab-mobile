@@ -15,28 +15,12 @@ import Announcement from "../pages/announcement";
 
 import Deposit from "../pages/deposit";
 import DepositHome from "../components/deposit/deposit";
-import {
-	Panel as OnlineBanking,
-	Main as OnlineBankingMain
-} from "../components/deposit/deposit.onlineBanking";
-import SetOnlineBanking from "../components/deposit/deposit.onlineBanking.set";
-
-import {
-	Panel as MobilePay,
-	Main as MobilePayMain
-} from "../components/deposit/deposit.mobilePay";
-import SetMobilePay from "../components/deposit/deposit.mobilePay.set";
 
 import {
 	Panel as CryptoPay,
 	Main as CryptoPayMain
 } from "../components/deposit/deposit.cryptoPay";
 import SetCryptoPay from "../components/deposit/deposit.cryptoPay.set";
-
-import {
-	Panel as LocalBank,
-	Main as LocalBankMain
-} from "../components/deposit/deposit.localBank";
 
 import DepositHistory from "../components/deposit/deposit.history";
 

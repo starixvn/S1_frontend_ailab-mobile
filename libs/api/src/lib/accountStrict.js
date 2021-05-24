@@ -54,4 +54,10 @@ export class AccountStrictAPI extends BaseAPI {
 		this.accountStrictRequest.post("/VerifyOTP", {
 			inputOTPcode
 		});
+
+	SetCustUSDTInfo = form =>
+		this.accountStrictRequest.post("/SetCustUSDTInfo", form);
+
+	SetCustUSDTInfoBatch = form =>
+		this.accountStrictRequest.post("/SetCustUSDTInfoBatch", form);
 }

@@ -255,7 +255,7 @@ class Modal extends Component {
 					)} */}
 					<div className="btn-group">
 						<button
-							className="blue closePopup"
+							className="white closePopup"
 							onClick={() => this.onHandlePopBox()}>
 							{i18n.lbl_Cancel}
 						</button>
@@ -265,7 +265,7 @@ class Modal extends Component {
 								this.props.currencyId !== 4 ||
 								(this.props.currencyId === 4 &&
 									bankSlipPopBox.picFileName)
-									? "orange"
+									? "blue"
 									: "gray"
 							} closePopup`}
 							onClick={

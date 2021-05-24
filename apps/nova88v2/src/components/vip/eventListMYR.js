@@ -247,7 +247,7 @@ const EventListMYR = ({ i18n }) => (
 				<td>200,000</td>
 				<td>500,000</td>
 				<td>800,000</td>
-				<td>1,000,000</td>
+				<td>{i18n.lbl_Vip_ByInvitation}</td>
 			</tr>
 			<tr>
 				<td colSpan="7">
@@ -260,7 +260,7 @@ const EventListMYR = ({ i18n }) => (
 				<td>2,000,000</td>
 				<td>5,000,000</td>
 				<td>8,000,000</td>
-				<td>10,000,000</td>
+				<td>{i18n.lbl_Vip_ByInvitation}</td>
 			</tr>
 			<tr>
 				<td colSpan="7">

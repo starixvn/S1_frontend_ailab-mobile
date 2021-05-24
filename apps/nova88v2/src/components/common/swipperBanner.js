@@ -87,7 +87,7 @@ const Panel = ({ ImgFolder = [], params }) => {
 		let redirectLink = null;
 
 		if (b.actionMode === api.site.defBannerActionMode.GoToBonus) {
-			redirectLink = `/${path.promotionInfo.root}?BonusCode=${b.bonusCode}`;
+			redirectLink = `${path.promotionInfo.root}?BonusCode=${b.bonusCode}`;
 		} else if (
 			b.actionMode === api.site.defBannerActionMode.RedirectPageOfThisSite
 		) {

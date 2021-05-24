@@ -8,6 +8,8 @@ import {
 	popBoxContext
 } from "../common/context";
 import Inputbox from "../common/inputbox.hint";
+import AreaCodeDropdown from "../common/dropdown.profile";
+import PhoneInputbox from "../common/inputbox.profile";
 import InputboxPWD from "../common/inputbox.password";
 import Dropdown from "../common/dropdown";
 import Checkbox from "../common/checkbox";
@@ -39,6 +41,20 @@ const Join = () => {
 	const [defaultOption, setDefaultOption] = useState(
 		i18n.lbl_PrefferedCurrency
 	);
+	const [AreaCodeIdx, setAreaCodeIdx] = useState();
+
+	const areaCodeOptions = Object.values(areaCode)
+		.filter(
+			(el, idx, self) =>
+				idx === self.findIndex(t => el.AreaCode === t.AreaCode)
+		)
+		.map(el => ({
+			value: el.AreaCode,
+			id: el.AreaCode,
+			displayText: el.AreaCode
+		}))
+		.sort((a, b) => a.id > b.id);
+
 	const { showTips, showTipHandler } = useTip([]);
 	const [promoPopup, setPromoPopup] = useState(false);
 	const defaultLangId = userInfo.langId ?? GET_LANG_ID();
@@ -56,6 +72,7 @@ const Join = () => {
 		if (userInfo.isLogin) {
 			navigate(`/${userInfo.langId}`);
 		}
+		setAreaCodeIdx(1);
 	}, []);
 
 	useEffect(() => {
@@ -270,7 +287,7 @@ const Join = () => {
 			msg = "lbl_PhoneTooltip";
 		} else {
 			const res = await api.site.ExistsPhoneNo({
-				AreaCode: _areaCode,
+				AreaCode: areaCodeOptions[AreaCodeIdx]?.value,
 				Phone: val
 			});
 
@@ -396,7 +413,7 @@ const Join = () => {
 				PhoneNo: userValue.Phone,
 				CurrencyId: _currencyId,
 				UserLang: defaultLangId,
-				AreaCode: _areaCode,
+				AreaCode: areaCodeOptions[AreaCodeIdx]?.value,
 				PromoCode: userValue.SpecialBonusCode
 			};
 
@@ -569,7 +586,7 @@ const Join = () => {
 					onBlur={checkValue.bind(null, "Currency")}
 				/>
 
-				{userValue.Currency !== null ? (
+				{/* {userValue.Currency !== null ? (
 					<div className="infoModule">
 						<Inputbox
 							icon="icon-phone"
@@ -586,7 +603,32 @@ const Join = () => {
 							testAttr="Phone"
 						/>
 					</div>
-				) : null}
+				) : null} */}
+				<div className="infoModule parts">
+					<AreaCodeDropdown
+						i18n={i18n}
+						mainKey="profile-areaCode"
+						options={areaCodeOptions}
+						colName="areaCode"
+						onSelectItem={i => setAreaCodeIdx(i)}
+						selectedIdx={AreaCodeIdx}
+						icon="icon icon-phone"
+						hideInfo={true}
+					/>
+					<PhoneInputbox
+						icon="icon-phone"
+						inputType="tel"
+						placeholder={i18n.lbl_Phone}
+						onBlur={e => phoneCheck(e.target.value)}
+						onChange={EditField.bind(null, "Phone")}
+						value={userValue.Phone}
+						btnStatus={status.Phone.checked}
+						warningMsg={status.Phone.msg}
+						infoText={i18n.lbl_PhoneTooltip}
+						clickInfo={() => showTipHandler("Phone")}
+						showTips={showTips.includes("Phone")}
+					/>
+				</div>
 
 				<Inputbox
 					icon="icon-promotion"

@@ -53,6 +53,7 @@ export const siteInfo = langId => {
 };
 
 const cloudImgURL = "https://image.n88media.com";
+export const cloudBannerImgURL = "https://banner.n88media.com";
 
 const SiteURL =
 	process.env.NODE_ENV === "production"
