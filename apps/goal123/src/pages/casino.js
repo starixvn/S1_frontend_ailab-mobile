@@ -37,7 +37,7 @@ class Panel extends React.Component {
 				gameType: { idx: 0, value: null }
 			},
 			favorite: [],
-			selNav: Object.keys(defNav)?.[0],
+			selNav: Object.keys(defNav)?.[this.props.selNavIdx ?? 0],
 			imgUrl: ""
 		};
 	}
@@ -84,7 +84,7 @@ class Panel extends React.Component {
 						{
 							tpList: _tpList,
 							gameDatas: games,
-							selNav: nav,
+							selNav: this.props.selNav ?? nav,
 							imgUrl
 						},
 						() => {
@@ -396,6 +396,8 @@ const IndexPage = props => {
 	const { userInfo } = useContext(userInfoContext);
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 
+	const selNav = props.location?.state?.nav;
+	const selNavIdx = Object.keys(defNav).findIndex(key => key === selNav);
 	let tpId = props.tpId ?? props.location.state?.tpId;
 	tpId = typeof tpId === "string" && !isNaN(tpId) ? Number(tpId) : tpId;
 	return (
@@ -405,6 +407,8 @@ const IndexPage = props => {
 			setNav={setNav}
 			tpId={tpId}
 			handleGoToGame={handleGoToGame}
+			selNav={selNav}
+			selNavIdx={selNavIdx === -1 ? 0 : selNavIdx}
 		/>
 	);
 };
