@@ -7854,7 +7854,7 @@ span.important {
 
 .filterBtn {
   margin: 3vw auto;
-  display: unset;
+  display: inline-block;
   -ms-flex-item-align: start;
       align-self: flex-start;
   white-space: nowrap;

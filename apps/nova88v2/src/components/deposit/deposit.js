@@ -307,10 +307,10 @@ const Panel = () => {
 				hasBtn: true,
 				btnBar: (
 					<div className="btn-group">
-						<button className="white" onClick={ClickPopBoxCancel}>
+						<button className="white" onClick={ClickSubmit}>
 							{i18n.lbl_Yes}
 						</button>
-						<button className="orange" onClick={ClickSubmit}>
+						<button className="orange" onClick={ClickPopBoxCancel}>
 							{i18n.lbl_No}
 						</button>
 					</div>
