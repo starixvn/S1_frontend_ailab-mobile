@@ -18,7 +18,11 @@ import Referral from "../components/home/referral";
 import EventSwipper from "../components/home/eventSwipper";
 import HeaderShortcut from "../components/home/headerShortcut";
 import Bottom from "../components/home/bottom";
-import { isEventPeriod, readCookie } from "../components/common/common";
+import {
+	isEventPeriod,
+	readCookie,
+	setCookie
+} from "../components/common/common";
 import path from "../path";
 import Header from "../components/header/header";
 import JoinLoginBar from "../components/home/joinLoginBar";
