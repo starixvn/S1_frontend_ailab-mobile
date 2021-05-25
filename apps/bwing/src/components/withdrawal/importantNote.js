@@ -38,7 +38,7 @@ const EN = () => (
 		</li>
 		<li>
 			Some game provider requires 15 till 30 minutes of report sync time,
-			kindly bear with us during the required sync time
+			kindly bear with us during the required sync time.
 		</li>
 		<li>
 			Please make sure your required turnover is achieve, and submit the
