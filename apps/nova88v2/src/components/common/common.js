@@ -165,3 +165,15 @@ export const GetCurrencyName = ({ langId, currencyId, i18n }) => {
 
 	return currency;
 };
+
+export const throttle = (func, limit) => {
+	let inThrottle;
+	return (...args) => {
+		if (!inThrottle) {
+			func(...args);
+			inThrottle = setTimeout(() => {
+				inThrottle = false;
+			}, limit);
+		}
+	};
+};
