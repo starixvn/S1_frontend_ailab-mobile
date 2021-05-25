@@ -144,7 +144,7 @@ export const passwordCheck = ({ val, i18n }) => {
 	return { checked, msg };
 };
 
-export const throttle = (func, limit, ...argu) => {
+export const throttle = (func, limit) => {
 	let inThrottle;
 	return (...args) => {
 		if (!inThrottle) {

@@ -146,7 +146,7 @@ export const isEventPeriod = ({ startDate, endDate }) => {
 	return result;
 };
 
-export const throttle = (func, limit, ...argu) => {
+export const throttle = (func, limit) => {
 	let inThrottle;
 	return (...args) => {
 		if (!inThrottle) {
