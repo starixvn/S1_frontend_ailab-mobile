@@ -584,5 +584,8 @@
 
 	"==============Transfer==============":"",
 	"lbl_Fail":"Thất bại",
-	"lbl_LastUpdated":"CẬP NHẬT GẦN NHẤT"
+	"lbl_LastUpdated":"CẬP NHẬT GẦN NHẤT",
+
+	"==============Promotion==============":"",
+	"lbl_PromotionRebateAndCashback":"Hoàn trả / Hoàn lại tiền"
 }
