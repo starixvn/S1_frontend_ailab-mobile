@@ -1,21 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { userInfoContext, i18nContext } from "./context";
-import { setCookie } from "./common";
 import { cloudBannerImgURL } from "../../config";
 
-const DomainListPop = ({ domainList, setIsDomainPopOpen }) => {
+const DomainListPop = ({ domainList }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const [notShowingBtn, setNotShowingBtn] = useState(false);
-
-	useEffect(() => {
-		return () => {
-			if (userInfo.userName) {
-				setCookie(`${userInfo.userName}-DomainListHint`, "1", 1);
-				setIsDomainPopOpen(false);
-			}
-		};
-	});
 
 	const clickNotShowing = () => {
 		setNotShowingBtn(prev => !prev);

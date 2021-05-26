@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { readCookie } from "../common/common";
+import { readCookie, setCookie } from "../common/common";
 import { defPopBoxType } from "../common/popbox";
 import api from "../../service/api";
 
@@ -16,13 +16,22 @@ export const useGetDomainList = ({ userInfo, setPopBox, i18n }) => {
 				const { errorCode, data } = res.data;
 				if (errorCode === 0) {
 					if (data.length > 0) {
+						const closePop = () => {
+							setPopBox({ isOpen: false });
+							setCookie(
+								`${userInfo.userName}-DomainListHint`,
+								"1",
+								1
+							);
+							setIsDomainPopOpen(false);
+						};
 						setPopBox({
 							isOpen: true,
 							title: i18n.lbl_nova88_backup_website,
 							popBoxType: defPopBoxType.DomainList,
 							className: "backupDomain ",
 							domainList: data,
-							setIsDomainPopOpen
+							handlePopBox: closePop
 						});
 					} else {
 						setIsDomainPopOpen(false);

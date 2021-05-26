@@ -42,12 +42,7 @@ const PopUp = () => {
 			break;
 
 		case defPopBoxType.DomainList:
-			content = (
-				<DomainListPop
-					domainList={popBox.domainList}
-					setIsDomainPopOpen={popBox.setIsDomainPopOpen}
-				/>
-			);
+			content = <DomainListPop domainList={popBox.domainList} />;
 			break;
 
 		default:
@@ -74,7 +69,7 @@ const PopUp = () => {
 						{popBox.hideCloseBtn === true ? null : (
 							<div
 								className="icon icon-close"
-								onClick={handlePopBox}
+								onClick={popBox.handlePopBox ?? handlePopBox}
 							/>
 						)}
 						{popBox.title ?? i18n.lbl_ImportantNote}
