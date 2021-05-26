@@ -24,6 +24,8 @@ export const useGetDomainList = ({ userInfo, setPopBox, i18n }) => {
 							domainList: data,
 							setIsDomainPopOpen
 						});
+					} else {
+						setIsDomainPopOpen(false);
 					}
 				}
 			});
