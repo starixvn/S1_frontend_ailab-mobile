@@ -1,0 +1,41 @@
+import { useEffect, useState } from "react";
+import { readCookie } from "../common/common";
+import { defPopBoxType } from "../common/popbox";
+import api from "../../service/api";
+
+export const useGetDomainList = ({ userInfo, setPopBox, i18n }) => {
+	const [isDomainPopOpen, setIsDomainPopOpen] = useState(true);
+	useEffect(() => {
+		const cookieName = `${userInfo.userName}-DomainListHint`;
+		if (
+			userInfo.isLogin &&
+			userInfo.currencyId &&
+			readCookie(cookieName) !== "1"
+		) {
+			api.site.GetSupportDomainList().then(res => {
+				const { errorCode, data } = res.data;
+				if (errorCode === 0) {
+					if (data.length > 0) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_nova88_backup_website,
+							popBoxType: defPopBoxType.DomainList,
+							className: "backupDomain ",
+							domainList: data,
+							setIsDomainPopOpen
+						});
+					}
+				}
+			});
+		} else if (readCookie(cookieName) === "1") {
+			setIsDomainPopOpen(false);
+		}
+	}, [
+		userInfo.isLogin,
+		userInfo.currencyId,
+		i18n,
+		setPopBox,
+		userInfo.userName
+	]);
+	return isDomainPopOpen;
+};

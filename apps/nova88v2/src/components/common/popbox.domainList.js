@@ -3,15 +3,16 @@ import { userInfoContext, i18nContext } from "./context";
 import { setCookie } from "./common";
 import { cloudBannerImgURL } from "../../config";
 
-const DomainListPop = ({ domainList }) => {
+const DomainListPop = ({ domainList, setIsDomainPopOpen }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const [notShowingBtn, setNotShowingBtn] = useState(false);
 
 	useEffect(() => {
 		return () => {
-			if (notShowingBtn === true && userInfo.userName) {
-				setCookie(`${userInfo.userName}-DomainListHint`, "1", 7);
+			if (userInfo.userName) {
+				setCookie(`${userInfo.userName}-DomainListHint`, "1", 1);
+				setIsDomainPopOpen(false);
 			}
 		};
 	});

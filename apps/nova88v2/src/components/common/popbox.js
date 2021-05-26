@@ -42,7 +42,12 @@ const PopUp = () => {
 			break;
 
 		case defPopBoxType.DomainList:
-			content = <DomainListPop domainList={popBox.domainList} />;
+			content = (
+				<DomainListPop
+					domainList={popBox.domainList}
+					setIsDomainPopOpen={popBox.setIsDomainPopOpen}
+				/>
+			);
 			break;
 
 		default:
