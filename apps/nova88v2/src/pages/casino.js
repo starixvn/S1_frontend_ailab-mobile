@@ -1,7 +1,6 @@
 import React, { useContext, createRef } from "react";
 import PropTypes from "prop-types";
 import { i18nContext, userInfoContext } from "Context";
-import { throttle } from "../components/common/common";
 import Slider from "../components/casino/slider";
 import defNav from "../components/casino/defNav";
 import Nav from "../components/casino/nav";
@@ -16,6 +15,7 @@ import { Link } from "../route/link";
 import path from "../path";
 import { useGotoGame, defSpecialSetting } from "../components/hook/useGotoGame";
 import { GetMetaDataByPage } from "../components/seo/seo";
+import useSetTimeout from "../components/hook/useSetTimeout";
 
 const eachPageItem = 20;
 
@@ -41,23 +41,6 @@ class Panel extends React.Component {
 			listFixed: false
 		};
 		this.gameList = createRef(null);
-		this.Throttled = throttle((...args) => {
-			GET_CASINO_ENTER_PAGE({
-				tpId: this.state.selGameInfo.tpId,
-				gameId: this.state.selGameInfo.gameId,
-				isFree: args[0],
-				langId: this.props.userInfo.langId,
-				execFunction:
-					this.state.selGameInfo.tpId === defSpecialSetting.playTech
-						? this.props.handleGoToGame.bind(this, {
-								langId: this.props.userInfo.langId,
-								tpId: this.state.selGameInfo.tpId,
-								gameId: this.state.selGameInfo.gameId,
-								isFun: args[0]
-						  })
-						: null
-			});
-		}, 5000);
 	}
 
 	componentDidMount() {
@@ -172,9 +155,6 @@ class Panel extends React.Component {
 			this.setState({ listFixed: true });
 		}
 	};
-	//
-	///
-	//
 
 	componentWillUnmount = () => {
 		this.mounted = false;
@@ -303,28 +283,29 @@ class Panel extends React.Component {
 	};
 
 	ClickPlay = freePlay => {
-		if (!freePlay) {
-			if (this.props.userInfo.isLogin) {
-				this.Throttled(freePlay);
-			} else {
-				this.props.handleLogin();
-			}
-		} else if (freePlay) {
-			GET_CASINO_ENTER_PAGE({
-				tpId: this.state.selGameInfo.tpId,
-				gameId: this.state.selGameInfo.gameId,
-				isFree: freePlay,
-				langId: this.props.userInfo.langId,
-				execFunction:
-					this.state.selGameInfo.tpId === defSpecialSetting.playTech
-						? this.props.handleGoToGame.bind(this, {
-								langId: this.props.userInfo.langId,
-								tpId: this.state.selGameInfo.tpId,
-								gameId: this.state.selGameInfo.gameId,
-								isFun: freePlay
-						  })
-						: null
-			});
+		if (freePlay || this.props.userInfo.isLogin) {
+			this.props.throttle(
+				() =>
+					GET_CASINO_ENTER_PAGE({
+						tpId: this.state.selGameInfo.tpId,
+						gameId: this.state.selGameInfo.gameId,
+						isFree: freePlay,
+						langId: this.props.userInfo.langId,
+						execFunction:
+							this.state.selGameInfo.tpId ===
+							defSpecialSetting.playTech
+								? this.props.handleGoToGame.bind(this, {
+										langId: this.props.userInfo.langId,
+										tpId: this.state.selGameInfo.tpId,
+										gameId: this.state.selGameInfo.gameId,
+										isFun: freePlay
+								  })
+								: null
+					}),
+				freePlay ? 0 : 5000
+			);
+		} else {
+			this.props.handleLogin();
 		}
 	};
 
@@ -453,6 +434,7 @@ class Panel extends React.Component {
 // };
 
 const IndexPage = props => {
+	const { throttle } = useSetTimeout();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { handleLogin } = useHandleLogin();
@@ -481,6 +463,7 @@ const IndexPage = props => {
 					tpId={tpId}
 					handleLogin={handleLogin}
 					handleGoToGame={handleGoToGame}
+					throttle={throttle}
 				/>
 			</main>
 			<Footer />
