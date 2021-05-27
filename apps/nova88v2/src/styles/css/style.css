@@ -6910,6 +6910,7 @@ span.important {
   color: black;
   text-align: center;
   margin: 2vw 0 0;
+  position: relative;
 }
 
 .liveTv > .liveTvModule.icon {
@@ -6921,7 +6922,8 @@ span.important {
 }
 
 .liveTv > .liveTvModule.active > .title {
-  background: url(../img/livetvtitlebggold.png) no-repeat center/75% 100%;
+  background: -webkit-gradient(linear, left bottom, left top, from(#F1D5B6), to(#CDAE8E));
+  background: linear-gradient(to top, #F1D5B6, #CDAE8E);
 }
 
 .liveTv > .liveTvModule.active > .title:before {
@@ -6949,7 +6951,9 @@ span.important {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background: url(../img/livetvtitlebg.png) no-repeat center/75% 100%;
+  background: -webkit-gradient(linear, left top, left bottom, from(#435F8B), to(#6383B9));
+  background: linear-gradient(to bottom, #435F8B, #6383B9);
+  border-radius: 5px 5px 0 0;
   color: white;
   position: relative;
 }
@@ -7578,28 +7582,6 @@ span.important {
   }
   100% {
     background: url(../img/jpotbg.png) no-repeat center/cover;
-  }
-}
-
-@-webkit-keyframes jpotxt {
-  0% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-  100% {
-    -webkit-transform: translateY(-100%);
-            transform: translateY(-100%);
-  }
-}
-
-@keyframes jpotxt {
-  0% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-  100% {
-    -webkit-transform: translateY(-100%);
-            transform: translateY(-100%);
   }
 }
 
