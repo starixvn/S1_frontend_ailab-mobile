@@ -47,8 +47,9 @@ export const GET_ENTER_PAGE = ({
 	const lobbyUrl = ``;
 	const cashierUrl = `${appUrl}/${path.deposit.root}`;
 	const _errorPageUrl = errorPageUrl(langId);
-	let entPageUrl = `${config.openURL}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&CashierUrl=${cashierUrl}&LobbyUrl=${lobbyUrl}&matchid=${matchid}&errorUrl=${_errorPageUrl}`;
+
 	let result = setResult("", true, _ACTION_TYPE.blank);
+	let urlSpecialPattern = "";
 	const _tpId = isNaN(tpId) ? tpId : Number(tpId);
 	const _gameId = isNaN(gameId) ? gameId : Number(gameId);
 	if (_tpId === 1) {
@@ -75,20 +76,14 @@ export const GET_ENTER_PAGE = ({
 		}
 	} else if (_tpId === 29) {
 		result = setResult("", false, _ACTION_TYPE.blank, _tpId, _gameId);
-
-		// 		登入前:
-		// &gameType=sports&fun=1
-
-		// 登入後:
-		// &gameType=sports
-		entPageUrl = `${
-			config.openURL
-		}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&CashierUrl=${cashierUrl}&LobbyUrl=${lobbyUrl}&matchid=${matchid}&gameType=sports${
+		urlSpecialPattern = `&gameType=sports${
 			isLogin === false ? "&fun=1" : ""
-		}&errorUrl=${_errorPageUrl}`;
+		}`;
 	} else {
 		result = setResult("", true, _ACTION_TYPE.blank, _tpId, _gameId);
 	}
+
+	const entPageUrl = `${config.openURL}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&CashierUrl=${cashierUrl}&LobbyUrl=${lobbyUrl}&matchid=${matchid}&errorUrl=${_errorPageUrl}${urlSpecialPattern}`;
 
 	if (!isLogin && result.needLogin) {
 		loginCallback();
