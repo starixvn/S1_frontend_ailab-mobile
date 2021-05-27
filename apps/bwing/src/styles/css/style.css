@@ -7198,7 +7198,7 @@ span.important {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  top: 12.7vh;
+  top: 64%;
   font-size: 12px;
   color: #021e46;
   font-weight: bold;
@@ -7278,7 +7278,7 @@ span.important {
   position: fixed;
   bottom: 10vh;
   right: 3vw;
-  z-index: 2;
+  z-index: 10;
 }
 
 .mystery_close {
