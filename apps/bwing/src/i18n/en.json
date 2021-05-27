@@ -586,6 +586,9 @@
 	"lbl_Fail":"Failed",
 	"lbl_LastUpdated":"LAST UPDATED",
 
+	"==============Promotion==============":"",
+	"lbl_PromotionRebateAndCashback":"Rebate / Cashback",
+
 	"==============Sports==============":"",
 	"lbl_SabaSport":"Saba Sports",
 	"lbl_BTISport" : "BTI Sports"
