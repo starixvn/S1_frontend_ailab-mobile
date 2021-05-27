@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import {
 	i18nContext,
 	userInfoContext,
@@ -23,7 +23,7 @@ import path from "../path";
 import Header from "../components/header/header";
 import JoinLoginBar from "../components/home/joinLoginBar";
 import Logo from "../components/common/logo";
-import AddToHomePop, { iOSSafari } from "../components/home/addToHomePop";
+import AddToHomePop from "../components/home/addToHomePop";
 import { defPopBoxType } from "../components/common/popbox";
 import Jackpot from "../components/home/jackpot";
 import api from "../service/api";
@@ -66,7 +66,6 @@ const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
-	const [addToHomePop, setAddToHomePop] = useState(false);
 
 	const helmet = GetMetaDataByPage({
 		path: path.home.root,
@@ -80,12 +79,6 @@ const IndexPage = () => {
 			setRoot(false);
 		};
 	}, [setRoot]);
-
-	useEffect(() => {
-		if (readCookie("addToHome") !== "1") {
-			setAddToHomePop(true);
-		}
-	}, []);
 
 	useEffect(() => {
 		const ClosePopUp = () => {
@@ -198,13 +191,7 @@ const IndexPage = () => {
 					<EventSwipper i18n={i18n} userInfo={userInfo} />
 					<Streaming />
 					<Bottom i18n={i18n} langId={userInfo.langId} />
-					{addToHomePop && iOSSafari ? (
-						<AddToHomePop
-							i18n={i18n}
-							setAddToHomePop={setAddToHomePop}
-							langId={userInfo.langId}
-						/>
-					) : null}
+					<AddToHomePop i18n={i18n} userInfo={userInfo} />
 				</div>
 			</Layout>
 			{helmet}
