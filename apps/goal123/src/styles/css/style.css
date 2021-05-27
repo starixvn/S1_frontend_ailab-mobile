@@ -3372,20 +3372,20 @@ button.clickBtn:before {
 
 .casino .slotList .info {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 calc(50% - 1vw);
-          flex: 0 0 calc(50% - 1vw);
+      -ms-flex: 0 0 calc(33.333% - 1vw);
+          flex: 0 0 calc(33.333% - 1vw);
   padding: 0;
   margin: 2vw 0 0;
   position: relative;
   line-height: 0;
 }
 
-.casino .slotList .info:nth-child(odd) {
-  margin-right: 1vw;
+.casino .slotList .info:nth-child(3n) {
+  margin-left: 1vw;
 }
 
-.casino .slotList .info:nth-child(even) {
-  margin-left: 1vw;
+.casino .slotList .info:nth-child(3n + 1) {
+  margin-right: 1vw;
 }
 
 .casino .slotList .info:before {
@@ -3419,8 +3419,8 @@ button.clickBtn:before {
   content: "NEW";
   display: block;
   position: absolute;
-  left: 28vw;
-  top: 34vw;
+  left: 14vw;
+  top: 20vw;
   background-color: #f72626;
   padding: 2px 5px;
   border-radius: 5px;
@@ -7096,6 +7096,14 @@ span.important {
   margin-left: 2.5vw;
 }
 
+.depositModule_mobile .inputBox .dropdown > .dropdown-container,
+.depositModule_online .inputBox .dropdown > .dropdown-container,
+.depositModule_local .inputBox .dropdown > .dropdown-container,
+.depositModule_topupMobile .inputBox .dropdown > .dropdown-container {
+  background: #bfc9da;
+  top: calc(6vw + 1px) !important;
+}
+
 .depositModule_mobile .note,
 .depositModule_online .note,
 .depositModule_local .note,
@@ -7641,18 +7649,21 @@ span.important {
 }
 
 .importantNote {
-  background: rgba(19, 77, 174, 0.5);
-  color: white;
+  background: rgba(102, 102, 102, 0.2);
+  color: #666;
   padding: 10px;
   border-radius: 5px;
+  font-size: 12px;
 }
 
 .importantNote .title {
+  color: #666;
   text-align: center;
   font-size: 14px;
 }
 
 .importantNote .title i {
+  color: #134dae;
   font-weight: normal;
 }
 
@@ -7663,12 +7674,16 @@ span.important {
 .importantNote ul {
   list-style: decimal;
   margin-left: 4vw;
-  line-height: 1.5;
+  line-height: 6vw;
 }
 
 .importantNote a {
   font-weight: bold;
   color: #134dae;
+}
+
+.importantNote span {
+  font-weight: bold;
 }
 
 .inputGroup {
@@ -8005,5 +8020,95 @@ span.important {
 
 .features li span, .features li a {
   font-weight: bold;
+}
+
+.topWinner {
+  margin: 2vw auto 5vw auto;
+  padding: 3vw 2vw;
+}
+
+.topWinner .title {
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffd34f), to(#ffc34d));
+  background: linear-gradient(to bottom, #ffd34f 0%, #ffc34d 100%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 5px 10px;
+  color: #1f3258;
+  border-radius: 5px 5px 0 0;
+}
+
+.topWinner .title img {
+  margin-right: 10px;
+}
+
+.topWinner img {
+  width: 30px;
+  margin: 0 5px;
+}
+
+.topWinner ul {
+  height: 180px;
+  overflow-y: scroll;
+  border-radius: 0 0 5px 5px;
+  font-size: 12px;
+}
+
+.topWinner ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.topWinner ul li:nth-child(even) {
+  background: #284985;
+}
+
+.topWinner ul li:nth-child(odd) {
+  background: #4e6ca8;
+}
+
+.topWinner ul li > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 5px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.topWinner ul li .rankOrder {
+  color: white;
+  margin-right: 5px;
+}
+
+.topWinner ul li .rankOrder img {
+  margin-right: 5px;
+  width: auto;
+  height: 40px;
+}
+
+.topWinner ul li .rankMoney {
+  color: #fab617;
+  font-weight: bold;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.topWinner ul li .rankMoney img {
+  margin-right: 5px;
+  width: 15px;
 }
 /*# sourceMappingURL=style.css.map */
