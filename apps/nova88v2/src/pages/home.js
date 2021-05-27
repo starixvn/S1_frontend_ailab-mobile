@@ -27,6 +27,7 @@ import path from "../path";
 import Header from "../components/header/header";
 import JoinLoginBar from "../components/home/joinLoginBar";
 import Logo from "../components/common/logo";
+import AddToHomePop from "../components/home/addToHomePop";
 import { defPopBoxType } from "../components/common/popbox";
 import Jackpot from "../components/home/jackpot";
 import api from "../service/api";
@@ -40,7 +41,7 @@ const useGetDomainList = ({ userInfo, setPopBox, i18n }) => {
 			readCookie(cookieName) !== "1"
 		) {
 			api.site.GetSupportDomainList().then(res => {
-				const { errorCode, data, message } = res.data;
+				const { errorCode, data } = res.data;
 				if (errorCode === 0) {
 					if (data.length > 0) {
 						setPopBox({
@@ -69,6 +70,7 @@ const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
+
 	const helmet = GetMetaDataByPage({
 		path: path.home.root,
 		langId: userInfo.langId
@@ -213,6 +215,7 @@ const IndexPage = () => {
 					<EventSwipper i18n={i18n} userInfo={userInfo} />
 					<Streaming />
 					<Bottom i18n={i18n} langId={userInfo.langId} />
+					<AddToHomePop i18n={i18n} userInfo={userInfo} />
 				</div>
 			</Layout>
 			{helmet}

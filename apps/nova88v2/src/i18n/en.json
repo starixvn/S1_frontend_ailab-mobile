@@ -582,6 +582,11 @@
 	"==============Important Notice==============":"",
 	"lbl_ImportantNotice":"IMPORTANT NOTICE",
 
+	"==============Add To Home Screen==============":"",
+	"lbl_AddToHome_Hint":"How to add home screen?",
+	"lbl_AddToHome_Tutorial":"Tutorial",
+	"lbl_Skip":"Skip",
+
 	"==============Crypto Wallet==============":"",
 	"lbl_CryptoPay":"Crypto Pay",
 	"lbl_CryptoWallet" : "Crypto Wallet",
