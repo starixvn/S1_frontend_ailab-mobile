@@ -17,16 +17,13 @@ const AddToHomePop = ({ i18n, userInfo }) => {
 	const [addToHomePop, setAddToHomePop] = useState(false);
 
 	useEffect(() => {
-		if (
-			userInfo.currencyId &&
-			readCookie(`${userInfo.userName}-AddToHome`) !== "1"
-		) {
+		if (readCookie("AddToHome") !== "1") {
 			setAddToHomePop(true);
 		}
-	}, [userInfo.userName, userInfo.currencyId]);
+	}, []);
 
 	const clickNotShowing = () => {
-		setCookie(`${userInfo.userName}-AddToHome`, "1", 1);
+		setCookie("AddToHome", "1", 1);
 		setAddToHomePop(false);
 	};
 
