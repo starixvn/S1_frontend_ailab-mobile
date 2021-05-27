@@ -21,7 +21,7 @@ export const GET_CASINO_ENTER_PAGE = ({
 		const signupUrl = `${appUrl}/${path.join.root}`;
 		const LoginUrl = `${appUrl}/${path.login.root}`;
 		const _errorPageUrl = errorPageUrl(langId);
-		const entPageUrl = `${config.openURL}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&errorUrl=${_errorPageUrl}`;
+		const entPageUrl = `${config.openURL}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&errorUrl=${_errorPageUrl}&AppType=2`;
 		window
 			.open(
 				`${entPageUrl}&fun=${isFree ? 1 : 0}&gameType=slots`,
@@ -47,9 +47,9 @@ export const GET_ENTER_PAGE = ({
 	const lobbyUrl = ``;
 	const cashierUrl = `${appUrl}/${path.deposit.root}`;
 	const _errorPageUrl = errorPageUrl(langId);
-	const entPageUrl = `${config.openURL}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&CashierUrl=${cashierUrl}&LobbyUrl=${lobbyUrl}&matchid=${matchid}&errorUrl=${_errorPageUrl}`;
-	let result = setResult("", true, _ACTION_TYPE.blank);
 
+	let result = setResult("", true, _ACTION_TYPE.blank);
+	let urlSpecialPattern = "";
 	const _tpId = isNaN(tpId) ? tpId : Number(tpId);
 	const _gameId = isNaN(gameId) ? gameId : Number(gameId);
 	if (_tpId === 1) {
@@ -74,9 +74,17 @@ export const GET_ENTER_PAGE = ({
 		} else if (_gameId >= 200) {
 			result = setResult("", true, _ACTION_TYPE.blank, _tpId, _gameId);
 		}
+	} else if (_tpId === 29) {
+		result = setResult("", false, _ACTION_TYPE.blank, _tpId, _gameId);
+		urlSpecialPattern = `&gameType=sports${
+			isLogin === false ? "&fun=1" : ""
+		}`;
 	} else {
 		result = setResult("", true, _ACTION_TYPE.blank, _tpId, _gameId);
 	}
+
+	const entPageUrl = `${config.openURL}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}
+	&tpId=${tpId}&gameId=${gameId}&CashierUrl=${cashierUrl}&LobbyUrl=${lobbyUrl}&matchid=${matchid}&errorUrl=${_errorPageUrl}&AppType=2${urlSpecialPattern}`;
 
 	if (!isLogin && result.needLogin) {
 		loginCallback();

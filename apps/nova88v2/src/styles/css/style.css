@@ -993,7 +993,7 @@ footer > a.active .circleAnimation + span {
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  background: rgba(85, 116, 167, 0.95);
+  background: rgba(85, 116, 167, 0.8);
   padding: 8vw;
   overflow: auto;
   display: -webkit-box;
@@ -1157,25 +1157,33 @@ footer > a.active .circleAnimation + span {
 }
 
 #popup.backupDomain .pop {
-  border-radius: 10px;
+  border-radius: 5px;
   overflow: hidden;
+  background: transparent !important;
+}
+
+#popup.backupDomain .pop .icon-close {
+  color: white;
 }
 
 #popup.backupDomain .pop .popTit {
-  text-align: center;
   font-size: 4vw;
   width: calc(100% - 6vw);
   padding: 3vw;
+  background: #233d67;
+  color: white;
 }
 
 #popup.backupDomain .pop .popTxt {
   color: #a5aab1;
-  padding: 4vw;
-  width: calc(100% - 8vw);
+  padding: 0;
+  width: 100%;
+  background: white;
 }
 
-#popup.backupDomain .pop .popTxt img {
-  border-radius: 10px;
+#popup.backupDomain .pop .popTxt > div {
+  width: calc(100% - 8vw);
+  padding: 1vw 2vw;
 }
 
 #popup.backupDomain .pop .popTxt .btn-group {
@@ -1192,10 +1200,11 @@ footer > a.active .circleAnimation + span {
 }
 
 #popup.backupDomain .pop .popTxt .url {
-  padding: 2vw;
+  width: calc(100% - 8vw);
+  padding: 1vw 2vw;
   border-radius: 30px;
   border: 1px solid #a5aab1;
-  margin: 2vw 0;
+  margin: 3vw 2vw 1vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1207,12 +1216,12 @@ footer > a.active .circleAnimation + span {
 
 #popup.backupDomain .pop .popTxt .url .copyurl {
   position: absolute;
-  border: 1px solid #5574A7;
   border-radius: 30px;
-  color: #5574A7;
-  padding: 1vw 2.5vw;
+  color: white;
+  padding: 0.5vw 2.5vw 1vw;
   font-size: 3vw;
   right: 0.8vw;
+  background: #5574A7;
 }
 
 #popup.backupDomain .pop .popTxt .text-center {
@@ -6769,7 +6778,7 @@ span.important {
           align-items: center;
   font-size: 3vw;
   margin: 8vw 0 0;
-  text-align: right;
+  text-align: center;
 }
 
 .upcomingmatches .swiper-slide .team > div > div .odds {
@@ -6805,10 +6814,6 @@ span.important {
 .upcomingmatches .swiper-slide .team > div > div .odds div:last-child {
   margin: 0;
   background: #076475;
-}
-
-.upcomingmatches .swiper-slide .team > div > div.teamR {
-  text-align: left;
 }
 
 .upcomingmatches .swiper-slide .team > div > div.teamR .odds {
@@ -6905,6 +6910,7 @@ span.important {
   color: black;
   text-align: center;
   margin: 2vw 0 0;
+  position: relative;
 }
 
 .liveTv > .liveTvModule.icon {
@@ -6916,7 +6922,8 @@ span.important {
 }
 
 .liveTv > .liveTvModule.active > .title {
-  background: url(../img/livetvtitlebggold.png) no-repeat center/75% 100%;
+  background: -webkit-gradient(linear, left bottom, left top, from(#F1D5B6), to(#CDAE8E));
+  background: linear-gradient(to top, #F1D5B6, #CDAE8E);
 }
 
 .liveTv > .liveTvModule.active > .title:before {
@@ -6944,7 +6951,9 @@ span.important {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background: url(../img/livetvtitlebg.png) no-repeat center/75% 100%;
+  background: -webkit-gradient(linear, left top, left bottom, from(#435F8B), to(#6383B9));
+  background: linear-gradient(to bottom, #435F8B, #6383B9);
+  border-radius: 5px 5px 0 0;
   color: white;
   position: relative;
 }

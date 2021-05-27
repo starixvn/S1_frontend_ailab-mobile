@@ -87,6 +87,7 @@ import AngPow from "./pages/angPow";
 import OneGame from "./pages/oneGame";
 import VIP from "./pages/vip";
 import MysteryBox from "./pages/mysteryBox";
+import CryptoWallet from "./pages/cryptoWallet";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -113,7 +114,7 @@ const Index = () => {
 								path={path.referral.sub.history.root}
 							/>
 						</FriendReferral>
-
+						<CryptoWallet path={path.cryptoWallet.root} />
 						<Deposit path={path.deposit.root}>
 							<Deposit path="/" />
 							<DepositHistory path={path.depositHistory.root} />

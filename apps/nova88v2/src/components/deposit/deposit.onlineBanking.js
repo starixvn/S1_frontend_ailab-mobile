@@ -81,6 +81,7 @@ const Payment = props => {
 									res.data.data.length > 0
 								) {
 									setBankList(res.data.data);
+
 									let bankIdx = res.data.data.findIndex(
 										obj =>
 											obj.sysId ===
@@ -89,6 +90,7 @@ const Payment = props => {
 												userPaymentData?.payId
 									);
 									bankIdx = bankIdx === -1 ? 0 : bankIdx;
+
 									SelectBank({
 										groupInfo,
 										bankInfo: res.data.data[bankIdx]
@@ -216,7 +218,7 @@ const Payment = props => {
 					btnBar: (
 						<div className="btn-group">
 							<button
-								className="blue"
+								className="white"
 								onClick={() =>
 									setPopBox(prevState => ({
 										...prevState,
