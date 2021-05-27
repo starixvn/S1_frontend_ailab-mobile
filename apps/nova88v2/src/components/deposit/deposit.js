@@ -93,7 +93,7 @@ const Panel = () => {
 	const [paymentList, setPaymentList] = useState({});
 	const [recentDatas, setRecentDatas] = useState([]);
 	const [pageVerify, setPageVerify] = useState(true);
-	const isDomainPopOpen = useGetDomainList({ setPopBox, userInfo, i18n });
+	const { isDomainPopOpen } = useGetDomainList({ setPopBox, userInfo, i18n });
 
 	const isMountedRef = useRef(null);
 	useEffect(() => {

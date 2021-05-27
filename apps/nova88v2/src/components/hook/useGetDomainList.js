@@ -48,5 +48,5 @@ export const useGetDomainList = ({ userInfo, setPopBox, i18n }) => {
 		setPopBox,
 		userInfo.userName
 	]);
-	return isDomainPopOpen;
+	return { isDomainPopOpen };
 };
