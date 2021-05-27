@@ -144,6 +144,12 @@ const AddBankPanel = ({
 							if (errorCode === 0) {
 								GetCustBankInfo();
 								setCurrentPanel("showBankPanel");
+							} else if (errorCode === -4) {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content: i18n.lbl_DuplicateAddress
+								});
 							} else {
 								setPopBox({
 									isOpen: true,
@@ -189,7 +195,7 @@ const AddBankPanel = ({
 					hasBtn: true,
 					btnBar: (
 						<div className="btn-group">
-							<button className="blue" onClick={closePopbox}>
+							<button className="white" onClick={closePopbox}>
 								{i18n.lbl_Cancel}
 							</button>
 							<button
@@ -265,7 +271,7 @@ const AddBankPanel = ({
 			/>
 
 			<div className="btn-group">
-				<button className="blue" onClick={toShowBankAccount}>
+				<button className="white" onClick={toShowBankAccount}>
 					{i18n.lbl_Cancel}
 				</button>
 				<button className="orange" onClick={clickSubmit}>

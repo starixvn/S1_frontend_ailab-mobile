@@ -18,7 +18,11 @@ import Referral from "../components/home/referral";
 import EventSwipper from "../components/home/eventSwipper";
 import HeaderShortcut from "../components/home/headerShortcut";
 import Bottom from "../components/home/bottom";
-import { isEventPeriod, readCookie } from "../components/common/common";
+import {
+	isEventPeriod,
+	readCookie,
+	setCookie
+} from "../components/common/common";
 import path from "../path";
 import Header from "../components/header/header";
 import JoinLoginBar from "../components/home/joinLoginBar";
@@ -79,11 +83,6 @@ const IndexPage = () => {
 	}, [setRoot]);
 
 	useEffect(() => {
-		const ClosePopUp = () => {
-			setPopBox({
-				isOpen: false
-			});
-		};
 		if (userInfo.isJoin) {
 			setPopBox({
 				isOpen: true,
@@ -135,21 +134,46 @@ const IndexPage = () => {
 				)
 			});
 		}
-		if (
-			isEventPeriod({
-				endDate: "2021/05/18 23:59:59"
-			}) &&
-			userInfo.isLogin === false
-		) {
+		if (userInfo.isLogin === false && !readCookie("homePopboxShowed")) {
+			const ClosePopUp = () => {
+				if (
+					isEventPeriod({
+						endDate: "2021/05/18 23:59:59"
+					})
+				) {
+					setPopBox({
+						isOpen: true,
+						content: (
+							<img
+								src={`https://image.n88media.com/SiteSkin/img/euro/EURO-RACE-MONTHLY-WINNERS-${userInfo.langId.toUpperCase()}.jpg`}
+								alt="winner"
+							/>
+						)
+					});
+				} else {
+					setPopBox({
+						isOpen: false
+					});
+				}
+			};
+			setCookie("homePopboxShowed", true, 1);
 			setPopBox({
 				isOpen: true,
 				content: (
 					<img
-						src={`https://image.n88media.com/SiteSkin/img/euro/EURO-RACE-MONTHLY-WINNERS-${userInfo.langId.toUpperCase()}.jpg`}
-						alt="winner"
+						src={`https://banner.n88media.com/img/nonlogin/novapopup-380x100_${userInfo.langId}.jpg`}
+						alt="joeCole"
 					/>
 				),
-				hasBtn: true
+				hideCloseBtn: true,
+				hasBtn: true,
+				btnBar: (
+					<div className="btn-group">
+						<button className="orange" onClick={ClosePopUp}>
+							{i18n.lbl_Close}
+						</button>
+					</div>
+				)
 			});
 		}
 	}, [

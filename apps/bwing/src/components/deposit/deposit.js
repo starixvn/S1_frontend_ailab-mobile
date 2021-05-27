@@ -32,12 +32,12 @@ const defPayType = {
 };
 
 const defPayment = {
-	[defPayType.mobilePay]: {
-		displayKey: "lbl_MobileDeposit",
-		creditTimeKey: "lbl_5mins"
-	},
 	[defPayType.localBank]: {
 		displayKey: "lbl_WireTransfers",
+		creditTimeKey: "lbl_5mins"
+	},
+	[defPayType.mobilePay]: {
+		displayKey: "lbl_MobileDeposit",
 		creditTimeKey: "lbl_5mins"
 	},
 	[defPayType.onlineBank]: {

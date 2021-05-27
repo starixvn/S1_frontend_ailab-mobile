@@ -161,5 +161,8 @@ export default {
 	},
 	mysteryBox: {
 		root: "mysteryBox"
+	},
+	cryptoWallet: {
+		root: "cryptoWallet"
 	}
 };

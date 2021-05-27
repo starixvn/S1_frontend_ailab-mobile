@@ -37,16 +37,18 @@ export default ({ isLogin, listType }) => {
 			.then(
 				res => {
 					if (res.data.errorCode === 0) {
-						res.data.data?.forEach(i => {
-							GetTpWalletBalance(i.tpId);
-							setTpWalletsList(prev =>
-								updateTpWalletsList({
-									prev,
-									tpId: i.tpId,
-									balance: null
-								})
-							);
-						});
+						if (isMountedRef.current) {
+							res.data.data?.forEach(i => {
+								GetTpWalletBalance(i.tpId);
+								setTpWalletsList(prev =>
+									updateTpWalletsList({
+										prev,
+										tpId: i.tpId,
+										balance: null
+									})
+								);
+							});
+						}
 					} else {
 						setPopBox({
 							isOpen: true,

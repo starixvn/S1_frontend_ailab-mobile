@@ -36,6 +36,25 @@ const EventSwipper = ({ userInfo, i18n }) => {
 		});
 	};
 
+	const isEuroEvent = ({ sportLeaguesId }) => {
+		let isEuro = false;
+		switch (userInfo.langId) {
+			case "cs":
+				isEuro = sportLeaguesId === "欧冠2020";
+				break;
+			case "th":
+				isEuro = sportLeaguesId === "ยูโร 2020";
+				break;
+			case "id":
+				isEuro = sportLeaguesId === "EURO2020";
+				break;
+			default:
+				isEuro = sportLeaguesId === "EURO2020";
+				break;
+		}
+		return isEuro;
+	};
+
 	const arr = banner?.map(event => {
 		const {
 			sportBattleDateTime,
@@ -50,6 +69,7 @@ const EventSwipper = ({ userInfo, i18n }) => {
 			bannerName
 		} = event;
 
+		const euroEvent = isEuroEvent({ sportLeaguesId });
 		const eventTime = moment(sportBattleDateTime).format(
 			"DD/MM/YYYY HH:mm"
 		);
@@ -58,7 +78,7 @@ const EventSwipper = ({ userInfo, i18n }) => {
 			<div
 				key={`hotEvent-${bannerName}`}
 				onClick={goToBet.bind(this, { tpId, gameId, matchId })}>
-				<div className="team">
+				<div className={`team${euroEvent ? " euro" : ""}`}>
 					<div>{sportLeaguesId}</div>
 					<div>
 						<div className="teamL">
