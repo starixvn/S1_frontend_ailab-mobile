@@ -52,7 +52,7 @@ export default process.env.NODE_ENV === "production"
 			// openURL: "http://localhost:60930"
 
 			apiURL: "https://stag.bwing.com",
-			imgUrl: "http://stag.bwing.com",
+			imgUrl: "https://stag.bwing.com",
 			t_and_cURL: "http://stag.bwing.com",
 			openURL: "http://stag.bwing.com"
 	  };

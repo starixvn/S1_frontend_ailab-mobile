@@ -20,8 +20,8 @@ import { useGetBalance } from "./hook";
 
 const defSubMenus = langId => [
 	{
-		...defGameInfo.Sports,
-		displayKey: "lbl_Sports"
+		displayKey: "lbl_Sports",
+		path: `/${path.sports.root}`
 	},
 	// {
 	// 	...defGameInfo.CockFighting,

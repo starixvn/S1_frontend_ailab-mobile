@@ -38,6 +38,9 @@ export const defGameInfo = {
 		tpId: 1,
 		gameId: 200
 	},
+	BTISport: {
+		tpId: 29
+	},
 	casino_ICG: {
 		tpId: 24
 	},
