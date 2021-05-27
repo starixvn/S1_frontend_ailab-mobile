@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import useInterval from "../hook/useInterval";
+import { Link } from "../../route/link";
+import path from "../../path";
+import defNav from "../casino/defNav";
 
 const defaultElementHeight = 17;
 const numberArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -48,7 +51,7 @@ const Jackpot = ({ i18n, userInfo }) => {
 		});
 	}, 2000 + animateDelaySec);
 	return (
-		<>
+		<Link to={path.casino.root} state={{ nav: defNav.PROMO.key }}>
 			<span id="tick" ref={jackpotRef} style={{ display: "none" }} />
 			{value.curr ? (
 				<div className="jpot">
@@ -58,7 +61,7 @@ const Jackpot = ({ i18n, userInfo }) => {
 					</div>
 				</div>
 			) : null}
-		</>
+		</Link>
 	);
 };
 
