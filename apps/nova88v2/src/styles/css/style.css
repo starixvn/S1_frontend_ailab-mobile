@@ -993,7 +993,7 @@ footer > a.active .circleAnimation + span {
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  background: rgba(85, 116, 167, 0.95);
+  background: rgba(85, 116, 167, 0.8);
   padding: 8vw;
   overflow: auto;
   display: -webkit-box;
@@ -1157,25 +1157,33 @@ footer > a.active .circleAnimation + span {
 }
 
 #popup.backupDomain .pop {
-  border-radius: 10px;
+  border-radius: 5px;
   overflow: hidden;
+  background: transparent !important;
+}
+
+#popup.backupDomain .pop .icon-close {
+  color: white;
 }
 
 #popup.backupDomain .pop .popTit {
-  text-align: center;
   font-size: 4vw;
   width: calc(100% - 6vw);
   padding: 3vw;
+  background: #233d67;
+  color: white;
 }
 
 #popup.backupDomain .pop .popTxt {
   color: #a5aab1;
-  padding: 4vw;
-  width: calc(100% - 8vw);
+  padding: 0;
+  width: 100%;
+  background: white;
 }
 
-#popup.backupDomain .pop .popTxt img {
-  border-radius: 10px;
+#popup.backupDomain .pop .popTxt > div {
+  width: calc(100% - 8vw);
+  padding: 1vw 2vw;
 }
 
 #popup.backupDomain .pop .popTxt .btn-group {
@@ -1192,10 +1200,11 @@ footer > a.active .circleAnimation + span {
 }
 
 #popup.backupDomain .pop .popTxt .url {
-  padding: 2vw;
+  width: calc(100% - 8vw);
+  padding: 1vw 2vw;
   border-radius: 30px;
   border: 1px solid #a5aab1;
-  margin: 2vw 0;
+  margin: 3vw 2vw 1vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1207,12 +1216,12 @@ footer > a.active .circleAnimation + span {
 
 #popup.backupDomain .pop .popTxt .url .copyurl {
   position: absolute;
-  border: 1px solid #5574A7;
   border-radius: 30px;
-  color: #5574A7;
-  padding: 1vw 2.5vw;
+  color: white;
+  padding: 0.5vw 2.5vw 1vw;
   font-size: 3vw;
   right: 0.8vw;
+  background: #5574A7;
 }
 
 #popup.backupDomain .pop .popTxt .text-center {
@@ -6769,7 +6778,7 @@ span.important {
           align-items: center;
   font-size: 3vw;
   margin: 8vw 0 0;
-  text-align: right;
+  text-align: center;
 }
 
 .upcomingmatches .swiper-slide .team > div > div .odds {
@@ -6805,10 +6814,6 @@ span.important {
 .upcomingmatches .swiper-slide .team > div > div .odds div:last-child {
   margin: 0;
   background: #076475;
-}
-
-.upcomingmatches .swiper-slide .team > div > div.teamR {
-  text-align: left;
 }
 
 .upcomingmatches .swiper-slide .team > div > div.teamR .odds {
@@ -7193,9 +7198,26 @@ span.important {
   color: #5574A7;
 }
 
+.rememberMode {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
+  position: relative;
+}
+
+.rememberMode > .icon {
+  color: #5574A7;
+  position: absolute;
+  right: 0;
+  top: 2vw;
+}
+
 .rememberMode .inputInfo {
   margin: 0 0 2vw;
   word-break: break-word;
+  width: 100%;
 }
 
 .rememberMode .inputInfo:before {
@@ -7203,7 +7225,7 @@ span.important {
   border-width: 0 2vw 2vw 2vw;
   border-style: solid dashed dashed;
   border-color: transparent transparent #a5bbe0 transparent;
-  right: 32.5vw;
+  right: 0.7vw;
   top: -2vw;
 }
 
@@ -7654,13 +7676,13 @@ span.important {
   height: 100%;
   position: absolute;
   top: 0;
-  z-index: 3;
+  z-index: 9999;
 }
 
 .favouriteModule .favourite {
   position: fixed;
   width: calc(100% - 12vw);
-  height: 15vw;
+  height: 20vw;
   padding: 4vw;
   margin: 0 2vw;
   bottom: 10vw;
@@ -7673,8 +7695,8 @@ span.important {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-animation: favourite 1s linear;
-          animation: favourite 1s linear;
+  -webkit-animation: favourite 1.5s linear;
+          animation: favourite 1.5s linear;
 }
 
 .favouriteModule .favourite > div {
@@ -7707,13 +7729,21 @@ span.important {
   color: white;
   margin-left: 2vw;
   background: #5574A7;
-  padding: 1vw 2vw;
+  padding: 0 2vw;
   border-radius: 5px;
   font-size: 3vw;
+  height: 7vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .favouriteModule .favourite img {
-  width: 15vw;
+  width: 20vw;
+  height: 20vw;
   border-radius: 10px;
   -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
           box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);

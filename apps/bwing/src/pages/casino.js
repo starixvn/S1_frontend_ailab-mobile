@@ -17,6 +17,7 @@ import {
 } from "../service/api/account";
 import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
 import { useGotoGame, defSpecialSetting } from "../components/hook/useGotoGame";
+import useSetTimeout from "../components/hook/useSetTimeout";
 
 const eachPageItem = 20;
 
@@ -37,7 +38,7 @@ class Panel extends React.Component {
 				gameType: { idx: 0, value: null }
 			},
 			favorite: [],
-			selNav: Object.keys(defNav)?.[0],
+			selNav: Object.keys(defNav)?.[this.props.selNavIdx ?? 0],
 			imgUrl: ""
 		};
 	}
@@ -84,7 +85,7 @@ class Panel extends React.Component {
 						{
 							tpList: _tpList,
 							gameDatas: games,
-							selNav: nav,
+							selNav: this.props.selNav ?? nav,
 							imgUrl
 						},
 						() => {
@@ -265,21 +266,26 @@ class Panel extends React.Component {
 
 	ClickPlay = freePlay => {
 		if (freePlay || this.props.userInfo.isLogin) {
-			GET_CASINO_ENTER_PAGE({
-				tpId: this.state.selGameInfo.tpId,
-				gameId: this.state.selGameInfo.gameId,
-				isFree: freePlay,
-				langId: this.props.userInfo.langId,
-				execFunction:
-					this.state.selGameInfo.tpId === defSpecialSetting.playTech
-						? this.props.handleGoToGame.bind(this, {
-								langId: this.props.userInfo.langId,
-								tpId: this.state.selGameInfo.tpId,
-								gameId: this.state.selGameInfo.gameId,
-								isFun: freePlay
-						  })
-						: null
-			});
+			this.props.throttle(
+				() =>
+					GET_CASINO_ENTER_PAGE({
+						tpId: this.state.selGameInfo.tpId,
+						gameId: this.state.selGameInfo.gameId,
+						isFree: freePlay,
+						langId: this.props.userInfo.langId,
+						execFunction:
+							this.state.selGameInfo.tpId ===
+							defSpecialSetting.playTech
+								? this.props.handleGoToGame.bind(this, {
+										langId: this.props.userInfo.langId,
+										tpId: this.state.selGameInfo.tpId,
+										gameId: this.state.selGameInfo.gameId,
+										isFun: freePlay
+								  })
+								: null
+					}),
+				freePlay ? 0 : 5000
+			);
 		} else {
 			this.props.setNav(defNavPanel.login);
 		}
@@ -391,11 +397,14 @@ class Panel extends React.Component {
 }
 
 const IndexPage = props => {
+	const { throttle } = useSetTimeout();
 	const { i18n } = useContext(i18nContext);
 	const { setNav } = useContext(navContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 
+	const selNav = props.location?.state?.nav;
+	const selNavIdx = Object.keys(defNav).findIndex(key => key === selNav);
 	let tpId = props.tpId ?? props.location.state?.tpId;
 	tpId = typeof tpId === "string" && !isNaN(tpId) ? Number(tpId) : tpId;
 	return (
@@ -405,6 +414,9 @@ const IndexPage = props => {
 			setNav={setNav}
 			tpId={tpId}
 			handleGoToGame={handleGoToGame}
+			throttle={throttle}
+			selNav={selNav}
+			selNavIdx={selNavIdx === -1 ? 0 : selNavIdx}
 		/>
 	);
 };
