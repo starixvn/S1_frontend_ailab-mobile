@@ -50,6 +50,7 @@ import PromotionInfo from "./pages/promotionInfo";
 import Games from "./pages/games";
 import Fishing from "./pages/fishing";
 import LiveCasino from "./pages/liveCasino";
+import Sports from "./pages/sports";
 
 import HowToDeposit from "./pages/howToDeposit";
 import HowToWithdraw from "./pages/howToWithdraw";
@@ -163,6 +164,7 @@ const Index = () => {
 						<Whoami path={path.whoami.root} />
 						<Games path={path.games.root} />
 						<Fishing path={path.fishing.root} />
+						<Sports path={path.sports.root} />
 						<LiveCasino path={path.liveCasino.root} />
 						<HowToDeposit path={path.howToDeposit.root} />
 						<HowToWithdraw path={path.howToWithdraw.root} />

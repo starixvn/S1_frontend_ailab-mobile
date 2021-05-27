@@ -222,7 +222,7 @@
 	"lbl_Title": "Bwing",
 	"lbl_To": "To",
 	"lbl_Today": "Today",
-	"lbl_TpWallet_1": "Sportsbook Wallet",
+	"lbl_TpWallet_1": "Saba Wallet",
 	"lbl_TransactionHistory": "Transaction History",
 	"lbl_Transfer": "Transfer",
 	"lbl_TransferFrom": "Transfer From",
@@ -243,7 +243,7 @@
 	"lbl_VirtualSports": "Virtual Sports",
 	"lbl_WaitKYC": "Verification is in progress",
 	"lbl_WaitKYCHint": "Thank you for submitting the required document, kindly bear with us for a moment while the verification is in progress.",
-	"lbl_Wallet_Saba": "Sportsbook Wallet",
+	"lbl_Wallet_Saba": "Saba Wallet",
 	"lbl_Welcome": "Welcome",
 	"lbl_WireTransfers": "Local Bank Transfer",
 	"lbl_Withdrawal": "Withdrawal",
@@ -587,6 +587,9 @@
 	"lbl_LastUpdated":"LAST UPDATED",
 
 	"==============Promotion==============":"",
-	"lbl_PromotionRebateAndCashback":"Rebate / Cashback"
+	"lbl_PromotionRebateAndCashback":"Rebate / Cashback",
 
+	"==============Sports==============":"",
+	"lbl_SabaSport":"Saba Sports",
+	"lbl_BTISport" : "BTI Sports"
 }
