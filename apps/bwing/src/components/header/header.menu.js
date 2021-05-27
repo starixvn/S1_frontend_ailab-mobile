@@ -12,7 +12,7 @@ const HeaderMenu = ({ i18n, OnClickProduct, userInfo }) => {
 					spanText={i18n[product.displayKey]}
 					OnClickProduct={OnClickProduct.bind(this, {
 						...product,
-						lang: userInfo.langId,
+						langId: userInfo.langId,
 						isLogin: userInfo.isLogin
 					})}
 					subIcon={product.items?.filter(
