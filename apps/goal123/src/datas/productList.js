@@ -11,6 +11,7 @@ import Sports_VirtualSports from "../styles/img/hotgame-m/sports/virtualsports.p
 import Sports_ESports from "../styles/img/hotgame-m/sports/e-sports.png";
 import Sports_Basketball from "../styles/img/hotgame-m/sports/baseketball.png";
 import Sports_Volleyball from "../styles/img/hotgame-m/sports/volleyball.png";
+import Sports_BTI from "../styles/img/hotgame-m/sports/bti.png";
 
 import Games_SabaClub from "../styles/img/hotgame-m/games/sabaclub.png";
 import Games_V8Poker from "../styles/img/hotgame-m/games/v8poker.png";
@@ -51,6 +52,7 @@ import path from "../path";
 
 export const defGameInfo = {
 	Sports: { tpId: 1, gameId: 1 },
+	BTISport: { tpId: 29 },
 	SabaSoccer: { tpId: 1, gameId: 997 },
 	VirtualSports: { tpId: 1, gameId: 180 },
 	eSports: { tpId: 1, gameId: 43 },
@@ -187,6 +189,11 @@ const gameList = [
 				...defGameInfo.Sports,
 				img: Sports_Soccer,
 				spanTextKey: "lbl_Soccer"
+			},
+			{
+				...defGameInfo.BTISport,
+				img: Sports_BTI,
+				spanTextKey: "lbl_BTISport"
 			},
 			{
 				...defGameInfo.SabaSoccer,
