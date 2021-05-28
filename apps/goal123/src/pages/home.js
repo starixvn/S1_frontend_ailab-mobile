@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Redirect } from "@reach/router";
+import { Redirect, Link } from "@reach/router";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
 import Menu from "../components/home/menu";
@@ -24,6 +24,7 @@ import Bottom from "../components/home/bottom";
 import jackpot from "../styles/img/jackpot.png";
 import winner_vn from "../styles/img/euroEvent/EURO-GOAL-VN.jpg";
 import winner_en from "../styles/img/euroEvent/EURO-GOAL-EN.jpg";
+import defNav from "../components/casino/defNav";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -187,11 +188,13 @@ const PlaytechJactpot = () => {
 	}, []);
 
 	return (
-		<div className="jackpot">
-			<img src={jackpot} alt="" />
-			<p>VND</p>
-			<p id="tick" />
-		</div>
+		<Link to={path.casino.root} state={{ nav: defNav.PROMO.key }}>
+			<div className="jackpot">
+				<img src={jackpot} alt="" />
+				<p>VND</p>
+				<p id="tick" />
+			</div>
+		</Link>
 	);
 };
 

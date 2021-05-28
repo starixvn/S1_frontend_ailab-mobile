@@ -28,6 +28,7 @@ import Header from "../components/header/header";
 import JoinLoginBar from "../components/home/joinLoginBar";
 import Logo from "../components/common/logo";
 import Jackpot from "../components/home/jackpot";
+import AddToHomePop from "../components/home/addToHomePop";
 
 const IndexPage = () => {
 	const navigate = useNavigate();
@@ -35,6 +36,7 @@ const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
+
 	const helmet = GetMetaDataByPage({
 		path: path.home.root,
 		langId: userInfo.langId
@@ -178,6 +180,7 @@ const IndexPage = () => {
 					<EventSwipper i18n={i18n} userInfo={userInfo} />
 					<Streaming />
 					<Bottom i18n={i18n} langId={userInfo.langId} />
+					<AddToHomePop i18n={i18n} userInfo={userInfo} />
 				</div>
 			</Layout>
 			{helmet}

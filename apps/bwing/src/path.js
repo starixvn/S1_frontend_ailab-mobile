@@ -155,5 +155,8 @@ export default {
 	},
 	vip: {
 		root: "vip"
+	},
+	sports: {
+		root: "sports"
 	}
 };

@@ -163,17 +163,6 @@ const Panel = () => {
 						: [];
 
 				try {
-					const res = await api_GetMobilePayGroupList();
-					payments[defPayType.mobilePay] = getDataListResult(res);
-
-					defaultSelect = setDefaultSelect(
-						defaultSelect,
-						defPayType.mobilePay,
-						payments[defPayType.mobilePay]
-					);
-				} catch (error) {}
-
-				try {
 					const res = await api_GetBankInfoOffList();
 					payments[defPayType.localBank] = getDataListResult(res);
 
@@ -181,6 +170,17 @@ const Panel = () => {
 						defaultSelect,
 						defPayType.localBank,
 						payments[defPayType.localBank]
+					);
+				} catch (error) {}
+
+				try {
+					const res = await api_GetMobilePayGroupList();
+					payments[defPayType.mobilePay] = getDataListResult(res);
+
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defPayType.mobilePay,
+						payments[defPayType.mobilePay]
 					);
 				} catch (error) {}
 

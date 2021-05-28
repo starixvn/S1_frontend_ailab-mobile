@@ -450,6 +450,7 @@
 	"lbl_Percentage":"百分比",
 	"lbl_TotalAmount":"总额",
 	"lbl_ClaimNow":"立即领取",
+	"lbl_ClaimSucceed":"恭喜！ 您已成功领取奖金。",
 
 	"=========================Streaming==================================": "",
 	"lbl_LiveStreaming": "现场视频",
@@ -554,11 +555,12 @@
 
 	"==============Important Notice==============":"",
 	"lbl_ImportantNotice":"重要通知",
+	"lbl_AddToHome_Hint":"如何添加到主屏？",
+	"lbl_AddToHome_Tutorial":"观看教學",
+	"lbl_Skip":"跳过",
 
 	"==============Crypto Wallet==============":"",
-	"lbl_CryptoPay":"加密货币",
 	"lbl_CryptoWallet" : "加密钱包",
-	"lbl_CryptoWalletAddress" : "钱包地址" ,
 	"lbl_CryptoWalletNickName" : "钱包昵称" ,
 	"lbl_CryptoWalletTip2" : "注意：加密钱包一旦提交即无法编辑或取消。任何编辑需求，请联系客服。" ,
 	"lbl_CryptoWalletTip1" : "任何编辑需求，请联系客服。",
