@@ -115,7 +115,8 @@ const eventTime = {
 	ranking: { startDate: "2021/01/01 12:00:00" },
 	new_vip: { startDate: "2021/03/11 11:00:00" },
 	new_LiveCasino_N2Live: { startDate: "2021/03/12 11:00:00" },
-	casino_pt: { endDate: "2021/06/20 11:00:00" }
+	casino_pt: { endDate: "2021/06/20 11:00:00" },
+	new_BTI: { endDate: "2021/06/28 11:00:00" }
 };
 
 export const defCol = {
@@ -193,7 +194,13 @@ const gameList = [
 			{
 				...defGameInfo.BTISport,
 				img: Sports_BTI,
-				spanTextKey: "lbl_BTISport"
+				spanTextKey: "lbl_BTISport",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_BTI)
+					}
+				]
 			},
 			{
 				...defGameInfo.SabaSoccer,
