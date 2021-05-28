@@ -47,7 +47,8 @@ export const LOGIN = async ({ userName, password }, CallbackLogin) => {
 						let _loginUser = {
 							userName,
 							langId: userlangId,
-							isLogin: true
+							isLogin: true,
+							signIn: true
 						};
 
 						if (res_custInfo.data.errorCode === 0) {

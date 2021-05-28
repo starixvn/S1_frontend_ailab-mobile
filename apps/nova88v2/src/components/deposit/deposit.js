@@ -78,7 +78,7 @@ const Panel = () => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { setLoading } = useContext(loadingContext);
-	const { userInfo } = useContext(userInfoContext);
+	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setbankSlipPopBox } = useContext(bankSlipPopBoxContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { selected, HandleSelect } = useHandleSelect();
@@ -93,7 +93,12 @@ const Panel = () => {
 	const [paymentList, setPaymentList] = useState({});
 	const [recentDatas, setRecentDatas] = useState([]);
 	const [pageVerify, setPageVerify] = useState(true);
-	const { isDomainPopOpen } = useGetDomainList({ setPopBox, userInfo, i18n });
+	const { isDomainPopOpen } = useGetDomainList({
+		setPopBox,
+		userInfo,
+		setUserInfo,
+		i18n
+	});
 
 	const isMountedRef = useRef(null);
 	useEffect(() => {
