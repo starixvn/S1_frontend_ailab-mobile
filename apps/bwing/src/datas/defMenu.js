@@ -51,7 +51,8 @@ const eventTime = {
 	new_ICG: { endDate: "2021/02/05 11:00:00" },
 	new_CQ9_fishing: { endDate: "2021/03/05 11:00:00" },
 	new_vip: { startDate: "2021/03/11 12:00:00" },
-	new_LiveCasino_N2Live: { startDate: "2021/03/12 11:00:00" }
+	new_LiveCasino_N2Live: { startDate: "2021/03/12 11:00:00" },
+	new_BTI: { endDate: "2021/06/28 11:00:00" }
 };
 
 export const productList = langId => {
@@ -68,7 +69,13 @@ export const productList = langId => {
 				{
 					displayKey: "lbl_BTISport",
 					img: BTI,
-					...defGameInfo.BTISport
+					...defGameInfo.BTISport,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.new_BTI)
+						}
+					]
 				}
 			]
 		},
