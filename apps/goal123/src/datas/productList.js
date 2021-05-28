@@ -198,7 +198,7 @@ const gameList = [
 				eventIcon: [
 					{
 						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.casino_pt)
+						inPeriod: isEventPeriod(eventTime.new_BTI)
 					}
 				]
 			},
