@@ -3,17 +3,11 @@ import { readCookie, setCookie } from "../common/common";
 import { defPopBoxType } from "../common/popbox";
 import api from "../../service/api";
 
-export const useGetDomainList = ({
-	userInfo,
-	setUserInfo,
-	setPopBox,
-	i18n
-}) => {
+export const useGetDomainList = ({ userInfo, setPopBox, i18n }) => {
 	const [isDomainPopOpen, setIsDomainPopOpen] = useState(true);
 	useEffect(() => {
 		const cookieName = `${userInfo.userName}-DomainListHint`;
 		if (
-			userInfo.signIn &&
 			userInfo.isLogin &&
 			userInfo.currencyId &&
 			readCookie(cookieName) !== "1"
@@ -22,10 +16,6 @@ export const useGetDomainList = ({
 				const { errorCode, data } = res.data;
 				if (errorCode === 0) {
 					if (data.length > 0) {
-						const _userInfo = { ...userInfo };
-						delete _userInfo.signIn;
-						setUserInfo(_userInfo);
-
 						const closePop = () => {
 							setPopBox({ isOpen: false });
 							setCookie(

@@ -78,7 +78,7 @@ const Panel = () => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { setLoading } = useContext(loadingContext);
-	const { userInfo, setUserInfo } = useContext(userInfoContext);
+	const { userInfo } = useContext(userInfoContext);
 	const { setbankSlipPopBox } = useContext(bankSlipPopBoxContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { selected, HandleSelect } = useHandleSelect();
@@ -96,7 +96,6 @@ const Panel = () => {
 	const { isDomainPopOpen } = useGetDomainList({
 		setPopBox,
 		userInfo,
-		setUserInfo,
 		i18n
 	});
 
