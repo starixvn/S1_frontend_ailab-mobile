@@ -69,7 +69,7 @@ const PopUp = () => {
 						{popBox.hideCloseBtn === true ? null : (
 							<div
 								className="icon icon-close"
-								onClick={handlePopBox}
+								onClick={popBox.handlePopBox ?? handlePopBox}
 							/>
 						)}
 						{popBox.title ?? i18n.lbl_ImportantNote}
