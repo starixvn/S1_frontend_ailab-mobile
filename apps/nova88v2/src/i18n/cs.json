@@ -450,6 +450,7 @@
 	"lbl_Percentage":"百分比",
 	"lbl_TotalAmount":"总额",
 	"lbl_ClaimNow":"立即领取",
+	"lbl_ClaimSucceed":"恭喜！ 您已成功领取奖金。",
 
 	"=========================Streaming==================================": "",
 	"lbl_LiveStreaming": "现场视频",

@@ -64,7 +64,7 @@ export default ({
 							func_CallBack();
 						}
 						handlePopBox({
-							content: <p>{i18n?.msg_Updatesuccessful}</p>,
+							content: <p>{i18n?.lbl_ClaimSucceed}</p>,
 							btnBar: (
 								<div className="btn-group">
 									<button
