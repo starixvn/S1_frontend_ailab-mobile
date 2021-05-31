@@ -197,7 +197,9 @@ const GetPageInfo = locationPath => {
 
 	pageInfoKey = pageInfoKey?.length > 0 ? pageInfoKey[0] : null;
 	const pageInfo = defPageInfo[pageInfoKey] ?? null;
-	return pageInfoKey && pageInfo ? { ...pageInfo } : defPageInfo.default;
+	return pageInfoKey && pageInfo
+		? { ...pageInfo, pageInfoKey }
+		: defPageInfo.default;
 };
 
 const Layout = ({ children }) => {
@@ -215,10 +217,15 @@ const Layout = ({ children }) => {
 	}
 
 	const _matchLogin = useMatch(`/${path.login.root}`) !== null;
-	const position =
+	let position =
 		nav === defNavPanel.login || _matchLogin || nav === defNavPanel.join
 			? { position: "fixed" }
 			: {};
+
+	// temp for fix bwing forget pwd issue
+	if (pageInfo.pageInfoKey === "forgetPassword") {
+		position = { paddingTop: "24vw" };
+	}
 
 	return (
 		<>
