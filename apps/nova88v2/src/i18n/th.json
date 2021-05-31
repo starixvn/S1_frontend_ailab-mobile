@@ -85,7 +85,7 @@
 	"lbl_BonusAmount": "จำนวนโบนัส",
 	"lbl_RotationHint_1": "เรียนลูกค้าผู้มีอุปการคุณทุกท่าน",
 	"lbl_Home": "หน้าแรก",
-	"lbl_MainWallet": "วอลเล็ทหลัก",
+	"lbl_MainWallet": "กระเป๋าเงินหลัก",
 	"lbl_ID": "ID",
 	"lbl_Login": "เข้าสู่ระบบ",
 	"lbl_Date": "วันที่",
@@ -360,7 +360,7 @@
 	"lbl_please_select_to_wallet": "กรุณาเลือกกระเป๋าเงินที่ต้องการโอนเข้า",
 	"lbl_please_select_from_wallet": "กรุณาเลือกกระเป๋าเงินที่ต้องการโอนออก",
 	"lbl_Memo": "Memo",
-	"lbl_AutoTransfer": "ย้ายเงินกระเป๋าหลักอัตโนมัติ",
+	"lbl_AutoTransfer": "โอนเงินกระเป๋าหลักอัตโนมัติ",
 	"lbl_Direction": "ทิศทาง",
 	"lbl_Success":"ความสำเร็จ",
 	"lbl_Fail":"ล้มเหลว",
@@ -540,8 +540,8 @@
 	"lbl_DearValuedCustomers":"เรียนลูกค้าผู้มีอุปการะคุณของ Nova88,",
 
 	"==============================================Wallet====================================": "",
-	"lbl_TpWallet_1": "กระเป๋าเงินสปอร์ตบุค",
-	"lbl_TpWallet_27": "กระเป๋าสตางค์ PT",
+	"lbl_TpWallet_1": "กระเป๋าเงินกีฬา",
+	"lbl_TpWallet_27": "กระเป๋าเงิน PT",
 	"lbl_BonusWallet_1": "กระเป๋าเงินโบนัสคาสิโน",
 	"lbl_BonusWallet_2": "กระเป๋าเงินโบนัสคาสิโนสด",
 
