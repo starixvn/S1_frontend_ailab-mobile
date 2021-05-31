@@ -14,7 +14,7 @@ export const defGameInfo = {
 	LIVEcasinoSA: { gameId: 2, tpId: 2 },
 	LIVEcasinoEB: { gameId: 18, tpId: 18 },
 	LIVEcasinoOne789: { tpId: 23, gameId: 2 },
-	// LIVEcasinoN2: { tpId: 28 },
+	LIVEcasinoN2: { tpId: 28 },
 	One789_lottery: { tpId: 23, gameId: 0 },
 	One789_lottery_789: { tpId: 23, gameId: 1 },
 	Casino_ow: { gameId: 208, tpId: 1 },
@@ -37,6 +37,9 @@ export const defGameInfo = {
 	sabaClub: {
 		tpId: 1,
 		gameId: 200
+	},
+	BTISport: {
+		tpId: 29
 	},
 	casino_ICG: {
 		tpId: 24

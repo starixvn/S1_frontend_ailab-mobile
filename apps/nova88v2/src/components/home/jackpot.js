@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import useInterval from "../hook/useInterval";
+import { Link } from "../../route/link";
+import path from "../../path";
+import defNav from "../casino/defNav";
 
 const defaultElementHeight = 17;
 const numberArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -19,15 +22,23 @@ const langToCurrency = {
 	id: defCurrenyId.IDR
 };
 
+const animateDelaySec = 800;
+
 const Jackpot = ({ i18n, userInfo }) => {
 	const jackpotRef = useRef();
+	const intervalTimer = useRef();
 	const _currencyId = userInfo.currencyId ?? langToCurrency[userInfo.langId];
 	const _currency = i18n[`Currency_${_currencyId}`];
 	const [value, setValue] = useState({ curr: "", prev: "" });
-	const animateDelaySec = 800;
+
+	const supportAnimation = typeof document.getAnimations === "function";
 
 	useEffect(() => {
 		try {
+			intervalTimer.current = supportAnimation
+				? 2000 + animateDelaySec
+				: 0;
+
 			const ticker = new Ticker({
 				info: 2,
 				casino: "hotspin88am",
@@ -42,23 +53,28 @@ const Jackpot = ({ i18n, userInfo }) => {
 	}, []);
 
 	useInterval(() => {
-		setValue({
+		setValue(prev => ({
 			curr: jackpotRef.current.innerText,
-			prev: value.curr
-		});
-	}, 2000 + animateDelaySec);
+			prev: prev.curr
+		}));
+	}, intervalTimer.current);
+
 	return (
-		<>
+		<Link to={path.casino.root} state={{ nav: defNav.PROMO.key }}>
 			<span id="tick" ref={jackpotRef} style={{ display: "none" }} />
 			{value.curr ? (
 				<div className="jpot">
 					<div className="number">
 						<div>{_currency}</div>
-						<ShowingNum value={value} currency={_currency} />
+						<ShowingNum
+							value={value}
+							currency={_currency}
+							supportAnimation={supportAnimation}
+						/>
 					</div>
 				</div>
 			) : null}
-		</>
+		</Link>
 	);
 };
 
@@ -67,7 +83,7 @@ Jackpot.propTypes = {
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
-const ShowingNum = ({ value, currency }) => {
+const ShowingNum = ({ value, currency, supportAnimation }) => {
 	let currTotal = [];
 	let prevTotal = [];
 	if (currency === "THB") {
@@ -114,34 +130,45 @@ const ShowingNum = ({ value, currency }) => {
 		);
 	});
 
-	const currAmount = currTotal.filter(item => item !== "," && item !== ".");
-	if (currAmount.length > 0) {
-		const prevAmount = prevTotal.filter(
+	if (supportAnimation) {
+		const currAmount = currTotal.filter(
 			item => item !== "," && item !== "."
 		);
+		if (currAmount.length > 0) {
+			const prevAmount = prevTotal.filter(
+				item => item !== "," && item !== "."
+			);
 
-		currAmount.forEach((n, idx) => {
-			const height =
-				prevAmount[idx] <= n
-					? n - prevAmount[idx]
-					: 10 - Math.abs(n - prevAmount[idx]);
-			const elem = elementList?.[idx];
+			currAmount.forEach((n, idx) => {
+				const height =
+					prevAmount[idx] <= n
+						? n - prevAmount[idx]
+						: 10 - Math.abs(n - prevAmount[idx]);
+				const elem = elementList?.[idx];
 
-			if (elem) {
-				const elemHeight = elem.querySelector("div").offsetHeight;
-				const movingHeight =
-					(elemHeight ?? defaultElementHeight) * Number(height);
+				if (elem) {
+					const elemHeight = elem.querySelector("div").offsetHeight;
+					const movingHeight =
+						(elemHeight ?? defaultElementHeight) * Number(height);
 
-				elem.style.top = 0;
-				elem.animate({ top: `-${movingHeight}px` }, 2000);
+					elem.style.top = 0;
+					if (elem.animate) {
+						elem.animate(
+							{ top: `-${movingHeight}px`, easing: "ease" },
+							2000
+						);
+					}
 
-				Promise.all(
-					elem.getAnimations().map(animation => animation.finished)
-				).then(() => {
-					elem.style.top = `-${movingHeight}px`;
-				});
-			}
-		});
+					Promise.all(
+						elem
+							.getAnimations()
+							.map(animation => animation.finished)
+					).then(() => {
+						elem.style.top = `-${movingHeight}px`;
+					});
+				}
+			});
+		}
 	}
 
 	return arr;

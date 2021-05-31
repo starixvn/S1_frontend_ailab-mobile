@@ -156,6 +156,29 @@ const defPageInfo = {
 		titleKey: "VIP",
 		className: "main vip",
 		hideLogo: true
+	},
+	sports: {
+		titleKey: "",
+		className: "mainLogin",
+		hideLogo: false,
+		showMenuBar: true
+	},
+	fishing: {
+		className: "mainLogin",
+		hideLogo: false,
+		showMenuBar: true
+	},
+	liveCasino: {
+		titleKey: "",
+		className: "mainLogin",
+		hideLogo: false,
+		showMenuBar: true
+	},
+	games: {
+		titleKey: "",
+		className: "mainLogin",
+		hideLogo: false,
+		showMenuBar: true
 	}
 };
 

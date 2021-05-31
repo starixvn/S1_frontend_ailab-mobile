@@ -441,6 +441,7 @@
 	"lbl_Percentage":"เปอร์เซ็นต์",
 	"lbl_TotalAmount":"จำนวนเงินทั้งหมด",
 	"lbl_ClaimNow":"แลกตอนนี้",
+	"lbl_ClaimSucceed":"สำเร็จ! คุณได้รับโบนัสเรียบร้อยแล้ว.",
 
 	"-==========================Streaming===================================": "",
 	"lbl_LiveStreaming": "สตรีมมิงแบบสด",
@@ -546,6 +547,11 @@
 
 	"==============Important Notice==============":"",
 	"lbl_ImportantNotice":"ข้อมูลสำคัญ",
+	
+    "==============Add To Home Screen==============":"",
+	"lbl_AddToHome_Hint":"วิธีเพิ่มหน้าจอหลักมีขั้นตอนอย่างไร?",
+	"lbl_AddToHome_Tutorial":"บทแนะนำ",
+	"lbl_Skip":"ข้าม",
 
 	"==============Crypto Wallet==============":"",
 	"lbl_CryptoPay":"ชำระเงินแบบ Crypto",

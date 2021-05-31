@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from "@reach/router";
 import { productList, defIconType } from "../../datas/defMenu";
+import { api_GetTpIds } from "../../service/api/site";
 
 const HeaderMenu = ({ i18n, OnClickProduct, userInfo }) => {
+	const [showingTpIds, setShowningTpIds] = useState(null);
+
+	useEffect(() => {
+		if (userInfo.isLogin) {
+			api_GetTpIds().then(res => {
+				if (res.data.errorCode === 0) {
+					setShowningTpIds(res.data.data);
+				}
+			});
+		}
+	}, [userInfo.isLogin]);
+
 	const content = Object.values(productList(userInfo.langId)).map(product => {
 		if (!product.path && !product.href) {
 			return (
@@ -12,11 +25,16 @@ const HeaderMenu = ({ i18n, OnClickProduct, userInfo }) => {
 					spanText={i18n[product.displayKey]}
 					OnClickProduct={OnClickProduct.bind(this, {
 						...product,
-						lang: userInfo.langId,
+						langId: userInfo.langId,
 						isLogin: userInfo.isLogin
 					})}
 					subIcon={product.items?.filter(
-						subItem => subItem.eventIcon
+						subItem =>
+							subItem.eventIcon &&
+							(subItem.tpId
+								? showingTpIds === null ||
+								  showingTpIds.includes(subItem.tpId)
+								: true)
 					)}
 					eventIcon={product?.eventIcon}
 				/>
@@ -28,7 +46,14 @@ const HeaderMenu = ({ i18n, OnClickProduct, userInfo }) => {
 				spanText={i18n[product.displayKey]}
 				productPath={product.path}
 				href={product.href}
-				subIcon={product.items?.filter(subItem => subItem.eventIcon)}
+				subIcon={product.items?.filter(
+					subItem =>
+						subItem.eventIcon &&
+						(subItem.tpId
+							? showingTpIds === null ||
+							  showingTpIds.includes(subItem.tpId)
+							: true)
+				)}
 				eventIcon={product?.eventIcon}
 			/>
 		);
