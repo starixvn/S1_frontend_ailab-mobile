@@ -21,9 +21,9 @@ import {
 	api_SetDepositCancel,
 	api_payment_GetLoadCardPayGroupList
 } from "../../service/api/payment";
-
 import RecentDatas from "./deposit.recentDatas";
 import { number_format } from "../common/common";
+import ImportantNote from "./importantNote";
 
 const defPayType = {
 	onlineBank: "onlineBank",
@@ -163,17 +163,6 @@ const Panel = () => {
 						: [];
 
 				try {
-					const res = await api_GetMobilePayGroupList();
-					payments[defPayType.mobilePay] = getDataListResult(res);
-
-					defaultSelect = setDefaultSelect(
-						defaultSelect,
-						defPayType.mobilePay,
-						payments[defPayType.mobilePay]
-					);
-				} catch (error) {}
-
-				try {
 					const res = await api_GetBankInfoOffList();
 					payments[defPayType.localBank] = getDataListResult(res);
 
@@ -181,6 +170,17 @@ const Panel = () => {
 						defaultSelect,
 						defPayType.localBank,
 						payments[defPayType.localBank]
+					);
+				} catch (error) {}
+
+				try {
+					const res = await api_GetMobilePayGroupList();
+					payments[defPayType.mobilePay] = getDataListResult(res);
+
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defPayType.mobilePay,
+						payments[defPayType.mobilePay]
 					);
 				} catch (error) {}
 
@@ -352,6 +352,7 @@ const Panel = () => {
 				ClickCancel={ClickCancel}
 				GetDepositInfoRecent={GetDepositInfoRecent}
 			/>
+			<ImportantNote i18n={i18n} langId={userInfo.langId} />
 		</>
 	);
 };

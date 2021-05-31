@@ -18,8 +18,8 @@ export const GET_CASINO_ENTER_PAGE = ({
 	} else {
 		const appUrl = window.location.origin;
 		const homeUrl = `${appUrl}`;
-		const signupUrl = `${appUrl}/${path.join.root}`;
-		const LoginUrl = `${appUrl}/${path.login.root}`;
+		const signupUrl = `${appUrl}/${langId}/${path.join.root}`;
+		const LoginUrl = `${appUrl}/${langId}/${path.login.root}`;
 		const _errorPageUrl = errorPageUrl(langId);
 		const entPageUrl = `${config.openURL}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&errorUrl=${_errorPageUrl}&AppType=2`;
 		window
@@ -43,10 +43,10 @@ export const GET_ENTER_PAGE = ({
 }) => {
 	const appUrl = window.location.origin;
 	const homeUrl = `${appUrl}`;
-	const signupUrl = `${appUrl}/${path.join.root}`;
-	const LoginUrl = `${appUrl}/${path.login.root}`;
+	const signupUrl = `${appUrl}/${langId}/${path.join.root}`;
+	const LoginUrl = `${appUrl}/${langId}/${path.login.root}`;
 	const lobbyUrl = ``;
-	const cashierUrl = `${appUrl}${path.deposit.root}`;
+	const cashierUrl = `${appUrl}/${langId}/${path.deposit.root}`;
 	const _errorPageUrl = errorPageUrl(langId);
 	const entPageUrl = `${config.openURL}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&CashierUrl=${cashierUrl}&&LobbyUrl=${lobbyUrl}&matchid=${matchid}&errorUrl=${_errorPageUrl}&AppType=2`;
 	let result = setResult("", true, _ACTION_TYPE.blank);

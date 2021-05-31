@@ -35,6 +35,9 @@ import liveCasino_EB from "../styles/img/liveGame/liveGame7.png";
 import liveCasino_SA from "../styles/img/liveGame/liveGame8.png";
 import liveCasino_N2 from "../styles/img/liveGame/livegame10.png";
 
+import sabaSports from "../styles/img/sport.png";
+import BTI from "../styles/img/BTI-sport.png";
+
 export const defIconType = {
 	live: " liveIcon",
 	new: " newicon",
@@ -48,14 +51,33 @@ const eventTime = {
 	new_ICG: { endDate: "2021/02/05 11:00:00" },
 	new_CQ9_fishing: { endDate: "2021/03/05 11:00:00" },
 	new_vip: { startDate: "2021/03/11 12:00:00" },
-	new_LiveCasino_N2Live: { startDate: "2021/03/12 11:00:00" }
+	new_LiveCasino_N2Live: { startDate: "2021/03/12 11:00:00" },
+	new_BTI: { endDate: "2021/06/28 11:00:00" }
 };
 
 export const productList = langId => {
 	return {
 		sports: {
 			displayKey: "lbl_Sports",
-			...defGameInfo.Sports
+			path: path.sports.root,
+			items: [
+				{
+					displayKey: "lbl_SabaSport",
+					img: sabaSports,
+					...defGameInfo.Sports
+				},
+				{
+					displayKey: "lbl_BTISport",
+					img: BTI,
+					...defGameInfo.BTISport,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.new_BTI)
+						}
+					]
+				}
+			]
 		},
 		game: {
 			displayKey: "lbl_Games",

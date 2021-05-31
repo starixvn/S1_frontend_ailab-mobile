@@ -144,8 +144,12 @@ const LoginPage = () => {
 							...userData,
 							isLogin
 						}));
-
-						navigate(`${localStorage.getItem("previousPage")}`);
+						const prevPage = localStorage.getItem("previousPage");
+						navigate(
+							prevPage === "/"
+								? `/${userInfo.langId}/${path.deposit.root}`
+								: prevPage
+						);
 					}
 				} else if (
 					errorCode === 1101 ||

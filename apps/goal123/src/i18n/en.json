@@ -222,7 +222,7 @@
 	"lbl_Title": "Goal123",
 	"lbl_To": "To",
 	"lbl_Today": "Today",
-	"lbl_TpWallet_1": "Sportsbook Wallet",
+	"lbl_TpWallet_1": "Saba Wallet",
 	"lbl_TransactionHistory": "Transaction History",
 	"lbl_Transfer": "Transfer",
 	"lbl_TransferFrom": "Transfer From",
@@ -243,7 +243,7 @@
 	"lbl_VirtualSports": "Virtual Sports",
 	"lbl_WaitKYC": "Verification is in progress",
 	"lbl_WaitKYCHint": "Thank you for submitting the required document, kindly bear with us for a moment while the verification is in progress.",
-	"lbl_Wallet_Saba": "Sportsbook Wallet",
+	"lbl_Wallet_Saba": "Saba Wallet",
 	"lbl_Welcome": "Welcome",
 	"lbl_WireTransfers": "Local Bank Transfer",
 	"lbl_Withdrawal": "Withdrawal",
@@ -531,11 +531,18 @@
 	"lbl_UserNameCheckTooltip":"6-18 alphanumeric (A-Z, a-z, 0-9) characters only.",
 	"lbl_EmailRequired":"Please fill in the email field.",
 	"lbl_EnterAccountNumber":"Enter Account Number",
+	"lbl_ClaimSucceed":"Successful! Your Bonus has been claimed.",
 
 	"==============General==============":"",
 	"lbl_Jackpot":"Jackpot",
+	"lbl_SabaSport":"Saba Sports",
+	"lbl_BTISport" : "BTI Sports",
+
 	
 	"==============Transfer==============":"",
 	"lbl_Fail":"Failed",
-	"lbl_LastUpdated":"LAST UPDATED"
+	"lbl_LastUpdated":"LAST UPDATED",
+	
+	"==============Important Notice==============":"",
+	"lbl_ImportantNotice":"IMPORTANT NOTICE"
 }
