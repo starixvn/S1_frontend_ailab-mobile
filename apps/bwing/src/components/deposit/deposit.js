@@ -23,6 +23,7 @@ import {
 } from "../../service/api/payment";
 import RecentDatas from "./deposit.recentDatas";
 import { number_format, isConvert } from "../common/common";
+import ImportantNote from "./importantNote";
 
 const defPayType = {
 	onlineBank: "onlineBank",
@@ -347,6 +348,7 @@ const Panel = () => {
 				ClickCancel={ClickCancel}
 				ReloadFunc={GetDepositInfoRecent}
 			/>
+			<ImportantNote langId={userInfo.langId} i18n={i18n} />
 		</>
 	);
 };

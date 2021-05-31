@@ -43,7 +43,10 @@ const Games = props => {
 	});
 
 	return games.length === 0 ? (
-		<div className="not-found">{i18n.msg_NoData}</div>
+		<div className="not-found">
+			<i className="icon icon-warning" />
+			<p>{i18n.msg_NoData}</p>
+		</div>
 	) : (
 		<div className="slotList" id="scrollId">
 			{games}
