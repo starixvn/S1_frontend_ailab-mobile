@@ -538,8 +538,12 @@
 	"lbl_SabaSport":"Saba Sports",
 	"lbl_BTISport" : "BTI Sport",
 
-
 	"==============Transfer==============":"",
 	"lbl_Fail":"Thất bại",
-	"lbl_LastUpdated":"CẬP NHẬT GẦN NHẤT"
+	"lbl_LastUpdated":"CẬP NHẬT GẦN NHẤT",
+
+	"==============Add To Home Screen==============":"",
+	"lbl_AddToHome_Hint":"Cách thêm ứng dụng vào màn hình chính",
+	"lbl_AddToHome_Tutorial":"Hướng dẫn",
+	"lbl_Skip":"Bỏ qua"
 }

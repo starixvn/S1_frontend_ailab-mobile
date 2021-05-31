@@ -25,6 +25,7 @@ import jackpot from "../styles/img/jackpot.png";
 import winner_vn from "../styles/img/euroEvent/EURO-GOAL-VN.jpg";
 import winner_en from "../styles/img/euroEvent/EURO-GOAL-EN.jpg";
 import defNav from "../components/casino/defNav";
+import AddToHomePop from "../components/home/addToHomePop";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -168,6 +169,7 @@ const IndexPage = () => {
 			<MiddlePanel langId={userInfo.langId} i18n={i18n} />
 			<Bottom i18n={i18n} langId={userInfo.langId} />
 			<Submenu />
+			<AddToHomePop i18n={i18n} userInfo={userInfo} />
 		</>
 	);
 };
