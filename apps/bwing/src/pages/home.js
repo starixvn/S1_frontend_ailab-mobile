@@ -23,6 +23,7 @@ import jackpot from "../styles/img/jackpot.png";
 import winner_vn from "../styles/img/EURO_Bwing/EURO-Bwing-VN.jpg";
 import winner_en from "../styles/img/EURO_Bwing/EURO-Bwing-EN.jpg";
 import defNav from "../components/casino/defNav";
+import AddToHomePop from "../components/home/addToHomePop";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -160,6 +161,7 @@ const IndexPage = () => {
 			<MidBanner langId={userInfo.langId} />
 			<GamePanel i18n={i18n} userInfo={userInfo} />
 			<LinksPanel i18n={i18n} langId={userInfo.langId} />
+			<AddToHomePop i18n={i18n} userInfo={userInfo} />
 		</>
 	);
 };

@@ -9881,4 +9881,103 @@ span.important {
             transform: translateY(-75%);
   }
 }
+
+.favouriteModule {
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 9999;
+}
+
+.favouriteModule .favourite {
+  position: fixed;
+  width: calc(100% - 12vw);
+  height: 20vw;
+  padding: 4vw;
+  margin: 0 2vw;
+  bottom: 10vw;
+  border-radius: 3px;
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(#dfe1e6));
+  background: linear-gradient(to bottom, white 0%, #dfe1e6 100%);
+  z-index: 1;
+  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-animation: favourite 1.5s linear;
+          animation: favourite 1.5s linear;
+}
+
+.favouriteModule .favourite > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #001942;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: right;
+  font-size: 4vw;
+}
+
+.favouriteModule .favourite > div div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.favouriteModule .favourite > div div a,
+.favouriteModule .favourite > div div button {
+  color: white;
+  margin-left: 2vw;
+  background-color: #429bff;
+  padding: 0 2vw;
+  border-radius: 5px;
+  font-size: 3vw;
+  height: 7vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-transform: uppercase;
+}
+
+.favouriteModule .favourite img {
+  width: 20vw;
+  height: 20vw;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+@-webkit-keyframes favourite {
+  0% {
+    bottom: 220vw;
+  }
+  100% {
+    bottom: 10vw;
+  }
+}
+
+@keyframes favourite {
+  0% {
+    bottom: 220vw;
+  }
+  100% {
+    bottom: 10vw;
+  }
+}
 /*# sourceMappingURL=style.css.map */
