@@ -595,5 +595,10 @@
 
 	"==============Sports==============":"",
 	"lbl_SabaSport":"Saba Sports",
-	"lbl_BTISport" : "BTI Sports"
+	"lbl_BTISport" : "BTI Sports",
+
+	"==============Add To Home Screen==============":"",
+	"lbl_AddToHome_Hint":"How to add home screen?",
+	"lbl_AddToHome_Tutorial":"Tutorial",
+	"lbl_Skip":"Skip"
 }
