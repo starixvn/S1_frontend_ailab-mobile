@@ -9058,7 +9058,7 @@ span.important {
   background: linear-gradient(to bottom, #0d346c, #0e1933);
   color: white;
   border-radius: 3px;
-  font-size: 1vw;
+  font-size: 3vw;
   font-weight: bold;
   padding: 1.5vw 2vw;
 }

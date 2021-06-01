@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { userInfoContext, i18nContext } from "../components/common/context";
 import { GetMetaDataByPage } from "../components/seo/seo";
-import Header from "../components/header/header";
 import Footer from "../components/common/footer";
 import path from "../path";
 import { Link } from "../route/link";
@@ -35,7 +34,6 @@ const IndexPage = () => {
 
 	return (
 		<>
-			<Header title={i18n.lbl_DownloadApp} hideLogo={true} />
 			<main className="main apppage">
 				<div className="app">
 					<div className="appHeader">
