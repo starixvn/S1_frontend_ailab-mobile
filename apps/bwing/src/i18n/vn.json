@@ -595,5 +595,10 @@
 	
 	"==============Sports==============":"",
 	"lbl_SabaSport":"Saba Sports",
-	"lbl_BTISport" : "BTI Sports"
+	"lbl_BTISport" : "BTI Sports",
+
+	"==============Add To Home Screen==============":"",
+	"lbl_AddToHome_Hint":"Cách thêm ứng dụng vào màn hình chính",
+	"lbl_AddToHome_Tutorial":"Hướng dẫn",
+	"lbl_Skip":"Bỏ qua"
 }

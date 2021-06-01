@@ -8127,7 +8127,7 @@ span.important {
   height: 20vw;
   padding: 4vw;
   margin: 0 2vw;
-  bottom: 10vw;
+  bottom: 2vw;
   border-radius: 3px;
   background: #e8e8e8;
   z-index: 1;
@@ -8197,7 +8197,7 @@ span.important {
     bottom: 220vw;
   }
   100% {
-    bottom: 10vw;
+    bottom: 2vw;
   }
 }
 
@@ -8206,7 +8206,7 @@ span.important {
     bottom: 220vw;
   }
   100% {
-    bottom: 10vw;
+    bottom: 2vw;
   }
 }
 /*# sourceMappingURL=style.css.map */
