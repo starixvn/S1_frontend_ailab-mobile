@@ -69,7 +69,7 @@ const defPageInfo = {
 	},
 	forgetPassword: {
 		titleKey: "lbl_ForgetPassword",
-		className: "main",
+		className: "main forget",
 		hideLogo: true
 	},
 	resetPassword: {
@@ -217,15 +217,10 @@ const Layout = ({ children }) => {
 	}
 
 	const _matchLogin = useMatch(`/${path.login.root}`) !== null;
-	let position =
+	const position =
 		nav === defNavPanel.login || _matchLogin || nav === defNavPanel.join
 			? { position: "fixed" }
 			: {};
-
-	// temp for fix bwing forget pwd issue
-	if (pageInfo.pageInfoKey === "forgetPassword") {
-		position = { paddingTop: "24vw" };
-	}
 
 	return (
 		<>
