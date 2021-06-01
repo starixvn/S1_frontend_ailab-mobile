@@ -468,15 +468,16 @@ header button.clickBtn::before {
 
 header .headerButton {
   margin-left: 2vw;
+  white-space: nowrap;
 }
 
 header .headerButton > button {
   border-radius: 3px;
   color: #000;
-  width: 90px;
+  min-width: 70px;
   height: 30px;
   background: #58cdff;
-  margin-left: 5px;
+  margin-left: 3px;
   font-size: 3vw;
 }
 
@@ -1304,6 +1305,10 @@ footer > a.open {
 
 .mainLogin {
   padding-top: 37vw;
+}
+
+.forget {
+  padding-top: 10vh;
 }
 
 .balance {
@@ -4716,7 +4721,7 @@ span.important {
 
 .headerT .headerTLogout .heardTitle {
   margin: 0 auto;
-  font-size: 5vw;
+  font-size: 3vw;
 }
 
 .headerT .headerTLogout img {
@@ -9897,7 +9902,7 @@ span.important {
   height: 20vw;
   padding: 4vw;
   margin: 0 2vw;
-  bottom: 10vw;
+  bottom: 2vw;
   border-radius: 3px;
   background: -webkit-gradient(linear, left top, left bottom, from(white), to(#dfe1e6));
   background: linear-gradient(to bottom, white 0%, #dfe1e6 100%);
