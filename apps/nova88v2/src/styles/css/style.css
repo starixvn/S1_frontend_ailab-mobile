@@ -8829,7 +8829,7 @@ span.important {
   height: 20vw;
   padding: 4vw;
   margin: 0 2vw;
-  bottom: 10vw;
+  bottom: 2vw;
   border-radius: 3px;
   background: -webkit-gradient(linear, left top, left bottom, from(white), to(#ddd));
   background: linear-gradient(to bottom, white, #ddd);
@@ -8898,7 +8898,7 @@ span.important {
     bottom: 220vw;
   }
   100% {
-    bottom: 10vw;
+    bottom: 2vw;
   }
 }
 
@@ -8907,7 +8907,7 @@ span.important {
     bottom: 220vw;
   }
   100% {
-    bottom: 10vw;
+    bottom: 2vw;
   }
 }
 
@@ -9146,7 +9146,7 @@ span.important {
   background: linear-gradient(to bottom, #0d346c, #0e1933);
   color: white;
   border-radius: 3px;
-  font-size: 1vw;
+  font-size: 3vw;
   font-weight: bold;
   padding: 1.5vw 2vw;
   margin: 0 0 0 auto;
