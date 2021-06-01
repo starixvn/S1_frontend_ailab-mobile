@@ -158,7 +158,7 @@ const IndexPage = () => {
 			<Marquee />
 			<PlaytechJactpot />
 			<EventSwipper />
-			<MidBanner langId={userInfo.langId} />
+			{/* <MidBanner langId={userInfo.langId} /> */}
 			<GamePanel i18n={i18n} userInfo={userInfo} />
 			<LinksPanel i18n={i18n} langId={userInfo.langId} />
 			<AddToHomePop i18n={i18n} userInfo={userInfo} />

@@ -145,6 +145,16 @@ const PromotionContent = ({ staticList, location, navBar }) => {
 						})
 					);
 				}
+				if (filterType === defFilterType.rebateAndCashBack) {
+					return (
+						(p.promotionType === defPromotionType.rebate ||
+							p.promotionType === defPromotionType.cashback) &&
+						!isExpiry({
+							...p,
+							isLogin: userInfo.isLogin
+						})
+					);
+				}
 				return (
 					p.promotionType === filterType &&
 					!isExpiry({

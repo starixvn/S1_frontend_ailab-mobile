@@ -546,5 +546,8 @@
 	"==============Add To Home Screen==============":"",
 	"lbl_AddToHome_Hint":"How to add home screen?",
 	"lbl_AddToHome_Tutorial":"Tutorial",
-	"lbl_Skip":"Skip"
+	"lbl_Skip":"Skip",
+	
+	"==============Important Notice==============":"",
+	"lbl_ImportantNotice":"IMPORTANT NOTICE"
 }

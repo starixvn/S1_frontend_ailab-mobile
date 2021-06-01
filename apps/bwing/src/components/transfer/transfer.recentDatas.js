@@ -91,7 +91,10 @@ const ReacentDatas = props => {
 					) : null}
 				</>
 			) : isOpen ? (
-				<div className="not-found">{i18n.msg_NoData}</div>
+				<div className="not-found">
+					<i className="icon icon-warning" />
+					<p>{i18n.msg_NoData}</p>
+				</div>
 			) : null}
 		</>
 	);

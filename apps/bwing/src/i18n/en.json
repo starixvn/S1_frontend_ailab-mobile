@@ -586,6 +586,9 @@
 	"lbl_Fail":"Failed",
 	"lbl_LastUpdated":"LAST UPDATED",
 
+	"==============Important Notice==============":"",
+	"lbl_ImportantNotice":"IMPORTANT NOTICE",
+
 	"==============Promotion==============":"",
 	"lbl_PromotionRebateAndCashback":"Rebate / Cashback",
 	"lbl_ClaimSucceed":"Successful! Your Bonus has been claimed.",

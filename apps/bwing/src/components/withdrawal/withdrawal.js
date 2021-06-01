@@ -24,6 +24,7 @@ import path from "../../path";
 import WalletPanel from "./walletPanel";
 import BankCardPanel from "./bankCardPanel";
 import AmountPanel from "./amountPanel";
+import ImportantNote from "./importantNote";
 
 const initStatus = { checked: null, msg: "" };
 
@@ -594,6 +595,7 @@ const Panel = () => {
 					ClickCancel={ClickCancel}
 					GetRecentDatas={GetWithdrawalInfoRecent}
 				/>
+				<ImportantNote i18n={i18n} langId={userInfo.langId} />
 			</section>
 		);
 	}
