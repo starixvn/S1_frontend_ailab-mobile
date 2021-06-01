@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { userInfoContext, i18nContext } from "Context";
+import { userInfoContext, i18nContext, rootContext } from "Context";
 import { Link } from "@Router";
 import Logo from "../common/logo";
 import path from "../../path";
 import Balance from "./balance";
+import AppDownloadHint from "./appDownloadHint";
 
 const HeaderTitle = ({ title = "", link = "", titleClass = "title", navBar }) =>
 	title ? (
@@ -24,18 +25,20 @@ const Header = ({
 	link,
 	titleClass = "title",
 	navBar,
-	setShowingShortcut,
 	id,
 	hideId
 }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
+	const { root } = useContext(rootContext);
+
 	const headerClassName = !title ? "" : "header";
 
 	return (
 		<header className={headerClassName} id={hideId ? "" : id}>
 			{hideLogo ? null : (
 				<>
+					<AppDownloadHint i18n={i18n} root={root} />
 					{userInfo.isLogin ? (
 						<Balance i18n={i18n} userInfo={userInfo} />
 					) : null}
@@ -88,7 +91,6 @@ Header.defaultProps = {
 	children: null,
 	titleClass: undefined,
 	navBar: null,
-	setShowingShortcut: () => null,
 	id: "header",
 	hideId: false
 };
@@ -101,7 +103,6 @@ Header.propTypes = {
 	children: PropTypes.node,
 	titleClass: PropTypes.string,
 	navBar: PropTypes.node,
-	setShowingShortcut: PropTypes.func,
 	id: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 	hideId: PropTypes.bool
 };

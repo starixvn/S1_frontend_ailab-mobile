@@ -587,5 +587,16 @@
 	"lbl_Wallet_Nickname_Tip" : "Ini hanya pilihan nama pengguna dompet untuk mempermudah identifikasi Anda",
 	"lbl_Wallet_Address_Tip" : "Masukkan hanya huruf (a-z) dan angka (0-9).",
 	"lbl_BankAccountNameHint" : "Silahkan isi nama asli untuk nama akun anda, Bagian ini tidak bisa dirubah jika sudah menekan enter",
-	"lbl_DuplicateAddress" : "Anda telah menyimpan informasi ini."
+	"lbl_DuplicateAddress" : "Anda telah menyimpan informasi ini.",
+
+    "=============Download App===============":"",
+	"lbl_Downloads":"Unduh",
+	"lbl_DownloadAppHint":"Bertaruh kapan saja dimana saja",
+	"lbl_AppDownload":"DOWNLOAD APP",
+	"lbl_iOS":"iOS",
+	"lbl_Android":"Android",
+	"lbl_InstallationTutorial":"Tutorial instalasi",
+	"lbl_iOSAuth":"Autentikasi Kepercayaan Aplikasi iOS",
+	"lbl_appHint1":"Setelah Aplikasi Nova88 diinstal, tap Percayai atau ",
+	"lbl_appHint2":"selesaikan pengaturan seperti di bawah ini."
     }
