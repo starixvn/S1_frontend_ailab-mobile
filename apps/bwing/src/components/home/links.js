@@ -41,11 +41,13 @@ const UserGuide = ({ i18n, langId }) => {
 			</p>
 			<div className="userGuide-box">
 				<div className="userGuide-box__top">
-					<Link
+					<a
 						className="icon icon-GUIDE1"
-						to={path.howToDeposit.root}>
+						href={`${config.t_and_cURL}/SiteSkin/Bwing/Static/Images/How_To_Deposit.mp4`}
+						target="_blank"
+						rel="noreferrer">
 						<span>{i18n.lbl_HowToDepoist}</span>
-					</Link>
+					</a>
 					<Link className="icon icon-GUIDE4" to={path.howToPlay.root}>
 						<span>{i18n.lbl_HowToPlay}</span>
 					</Link>
