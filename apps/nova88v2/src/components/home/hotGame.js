@@ -22,7 +22,7 @@ const HotGame = ({ i18n, userInfo }) => {
 	const { handleLogin } = useHandleLogin();
 
 	const clickGame = ({ tpId, gameId }) => {
-		if (userInfo.isLogin === true) {
+		if (userInfo.isLogin === false) {
 			handleLogin();
 		} else {
 			GET_CASINO_ENTER_PAGE({
