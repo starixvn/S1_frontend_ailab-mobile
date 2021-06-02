@@ -578,12 +578,14 @@
 
 	"=============Download App===============":"",
 	"lbl_Downloads":"下载",
-	"lbl_DownloadAppHint":"随时随地游戏",
+	"lbl_DownloadAppHint":"最棒手机使用体验",
 	"lbl_AppDownload":"下载 APP",
 	"lbl_iOS":"iOS",
 	"lbl_Android":"安卓",
 	"lbl_InstallationTutorial":"安装教学",
 	"lbl_iOSAuth":"iOS 应用程序验证",
 	"lbl_appHint1":"待 Nova88 App 完成安装",
-	"lbl_appHint2":"单点 “Trust” 或完成以下设定"
+	"lbl_appHint2":"单点 “Trust” 或完成以下设定",
+	"lbl_DownloadAppNow": "立即下载 App"
+
 }

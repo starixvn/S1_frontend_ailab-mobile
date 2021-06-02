@@ -27,7 +27,9 @@ const AppDownloadHint = ({ i18n, root }) => {
 				<div>{i18n.lbl_DownloadAppNow}</div>
 				<div>{i18n.lbl_DownloadAppHint}</div>
 			</div>
-			<Link to={path.appDownload.root}>{i18n.lbl_Downloads}</Link>
+			<Link to={path.appDownload.root}>
+				{i18n.lbl_Downloads?.toUpperCase()}
+			</Link>
 		</div>
 	) : null;
 };

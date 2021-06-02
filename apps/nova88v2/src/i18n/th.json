@@ -574,12 +574,14 @@
 
 	"=============Download App===============":"",
 	"lbl_Downloads":"ดาวน์โหลด",
-	"lbl_DownloadAppHint":"เดิมพันทุกที่ทุกเวลา",
+	"lbl_DownloadAppHint":"ประสบการณ์ออนไลน์ผ่านมือถือที่ดีที่สุด",
 	"lbl_AppDownload":"ดาวน์โหลดแอป",
 	"lbl_iOS":"iOS",
 	"lbl_Android":"แอนดรอย",
 	"lbl_InstallationTutorial":"ขั้นตอนการติดตั้ง",
 	"lbl_iOSAuth":"อนุญาตสิทธิ์การเข้าถึงแอป ios",
 	"lbl_appHint1":"เมื่อติดตั้งแอป Nova88 แล้วให้แตะ ”อนุญาต”",
-	"lbl_appHint2":"หรือทำการตั้งค่าตามด้านล่าง"
+	"lbl_appHint2":"หรือทำการตั้งค่าตามด้านล่าง",
+	"lbl_DownloadAppNow": "ดาวน์โหลดแอปตอนนี้"
+
 }

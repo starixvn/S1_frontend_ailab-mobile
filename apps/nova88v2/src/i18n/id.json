@@ -590,13 +590,15 @@
 	"lbl_DuplicateAddress" : "Anda telah menyimpan informasi ini.",
 
     "=============Download App===============":"",
-	"lbl_Downloads":"Unduh",
-	"lbl_DownloadAppHint":"Bertaruh kapan saja dimana saja",
+	"lbl_Downloads":"DOWNLOAD",
+	"lbl_DownloadAppHint":"Pengalaman Mobile Terbaik",
 	"lbl_AppDownload":"DOWNLOAD APP",
 	"lbl_iOS":"iOS",
 	"lbl_Android":"Android",
 	"lbl_InstallationTutorial":"Tutorial instalasi",
 	"lbl_iOSAuth":"Autentikasi Kepercayaan Aplikasi iOS",
 	"lbl_appHint1":"Setelah Aplikasi Nova88 diinstal, tap Percayai atau ",
-	"lbl_appHint2":"selesaikan pengaturan seperti di bawah ini."
+	"lbl_appHint2":"selesaikan pengaturan seperti di bawah ini.",
+	"lbl_DownloadAppNow": "DOWNLOAD APLIKASI sekarang"
+
     }
