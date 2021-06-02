@@ -105,7 +105,7 @@ export default [
 		provider: "YGG",
 		gameTypeKey: gameType.slots,
 		img: LuckyNeko,
-		tpId: 5,
+		tpId: 8,
 		gameId: 7382,
 		productType: defProductType.slots
 	},

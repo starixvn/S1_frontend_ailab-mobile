@@ -104,7 +104,6 @@ const IndexPage = () => {
 				</div>
 			</main>
 			<Footer />
-			{helmet}
 		</>
 	);
 };
