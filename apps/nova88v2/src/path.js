@@ -149,5 +149,8 @@ export default {
 	},
 	myAccount: {
 		root: "myAccount"
+	},
+	appDownload: {
+		root: "appDownload"
 	}
 };
