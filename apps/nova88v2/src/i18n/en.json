@@ -609,13 +609,14 @@
 
 	"=============Download App===============":"",
 	"lbl_Downloads":"Download",
-	"lbl_DownloadAppHint":"Bet anytime anywhere",
+	"lbl_DownloadAppHint":"Best Mobile Experience",
 	"lbl_AppDownload":"APP DOWNLOAD",
 	"lbl_iOS":"iOS",
 	"lbl_Android":"Android",
 	"lbl_InstallationTutorial":"Installation tutorial",
 	"lbl_iOSAuth":"iOS App Trust Authentication",
 	"lbl_appHint1":"Once Nova88 App is installed, tap Trust",
-	"lbl_appHint2":"or complete the setting as below."
+	"lbl_appHint2":"or complete the setting as below.",
+	"lbl_DownloadAppNow": "Download APP now"
 
 }

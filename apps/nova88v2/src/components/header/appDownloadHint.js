@@ -24,7 +24,7 @@ const AppDownloadHint = ({ i18n, root }) => {
 			<button className="icon icon-close" onClick={handleDownloadHint} />
 			<img src={appIng} alt={i18n.lbl_DownloadApp} />
 			<div>
-				<div>{i18n.lbl_DownloadApp}</div>
+				<div>{i18n.lbl_DownloadAppNow}</div>
 				<div>{i18n.lbl_DownloadAppHint}</div>
 			</div>
 			<Link to={path.appDownload.root}>{i18n.lbl_Downloads}</Link>
