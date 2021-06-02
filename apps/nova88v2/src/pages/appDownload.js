@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import { userInfoContext, i18nContext } from "../components/common/context";
-import { GetMetaDataByPage } from "../components/seo/seo";
+import { i18nContext } from "../components/common/context";
 import Footer from "../components/common/footer";
 import path from "../path";
 import { Link } from "../route/link";
@@ -15,18 +14,17 @@ import tutorial2 from "../styles/img/app/in02.png";
 import tutorial3 from "../styles/img/app/in03.png";
 import tutorial4 from "../styles/img/app/in04.png";
 
-const IndexPage = () => {
-	const { userInfo } = useContext(userInfoContext);
-	const { i18n } = useContext(i18nContext);
+const defPhoneType = {
+	ios: "ios",
+	android: "android"
+};
 
-	const helmet = GetMetaDataByPage({
-		path: path.appDownload.root,
-		langId: userInfo.langId
-	});
+const IndexPage = () => {
+	const { i18n } = useContext(i18nContext);
 
 	const clickDownload = phoneType => {
 		const link =
-			phoneType === "ios"
+			phoneType === defPhoneType.ios
 				? "https://nova.mqcfirm.com/"
 				: "https://dl.4ppstore.com/dlapp/Nova88.apk";
 		return typeof window !== "undefined" ? window.open(link) : null;
@@ -55,7 +53,7 @@ const IndexPage = () => {
 										<button
 											onClick={clickDownload.bind(
 												this,
-												"ios"
+												defPhoneType.ios
 											)}>
 											{i18n.lbl_Downloads?.toUpperCase()}
 										</button>
@@ -77,7 +75,7 @@ const IndexPage = () => {
 										<button
 											onClick={clickDownload.bind(
 												this,
-												"android"
+												defPhoneType.android
 											)}>
 											{i18n.lbl_Downloads?.toUpperCase()}
 										</button>
