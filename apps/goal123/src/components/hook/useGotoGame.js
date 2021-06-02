@@ -92,6 +92,8 @@ export const useGotoGame = ({
 					LangId: _langId,
 					gameId: _gameId,
 					fun: _isFun ? "1" : "0",
+					gameType:
+						_tpId === defSpecialSetting.playTech ? "slots" : "",
 					AppType:
 						_tpId === defSpecialSetting.playTech
 							? defGotoGame_AppType.Mobile
