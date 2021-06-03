@@ -1748,6 +1748,34 @@ main .gameList {
   border: 1px solid #e2e2e2;
 }
 
+main .gameList > div .under {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background: #555;
+  padding: 1vw;
+  border-radius: 5px;
+  color: white;
+}
+
+main .gameList > div > a.active, main .gameList > div button.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+}
+
+main .gameList > div > a.active .under, main .gameList > div button.active .under {
+  display: block;
+}
+
 main .gameList > div, main .gameList > a, main .gameList > button {
   display: none;
   -ms-flex-flow: wrap;
@@ -1797,34 +1825,6 @@ main .gameList .icon-new {
   position: absolute;
   right: 1vw;
   bottom: 1vw;
-}
-
-.liveCasino .under {
-  display: none;
-  position: absolute;
-  z-index: 1;
-  background: #555;
-  padding: 1vw;
-  border-radius: 5px;
-  color: white;
-}
-
-.liveCasino > a.active {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-filter: grayscale(1);
-          filter: grayscale(1);
-}
-
-.liveCasino > a.active .under {
-  display: block;
 }
 
 footer {

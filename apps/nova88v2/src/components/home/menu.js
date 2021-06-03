@@ -145,11 +145,6 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 				return showItem;
 			})
 			.map(subItem => {
-				console.log(
-					maintainList,
-					subItem.tpId,
-					maintainList?.includes(subItem.tpId)
-				);
 				return (
 					<SubGame
 						key={`subMenu-${
@@ -221,6 +216,7 @@ const SubGame = ({
 	if (game?.href) {
 		return (
 			<a
+				className={isMaintain ? "active" : ""}
 				href={game.href}
 				target="_blank"
 				rel="noreferrer"
@@ -231,7 +227,7 @@ const SubGame = ({
 				<img src={game.img} alt={i18n[game.spanTextKey]} />
 				<div>{game.spanText || i18n[game.spanTextKey]}</div>
 				{isMaintain ? (
-					<div className="under">{i18n.underMaintenance}</div>
+					<div className="under">{i18n.lbl_underMaintenance}</div>
 				) : (
 					""
 				)}
@@ -241,6 +237,7 @@ const SubGame = ({
 
 	return game?.path ? (
 		<Link
+			className={isMaintain ? "active" : ""}
 			to={game.path}
 			state={game.parameter}
 			tabIndex={isMaintain ? "-1" : 0}>
@@ -250,13 +247,14 @@ const SubGame = ({
 			<img src={game.img} alt={i18n[game.spanTextKey]} />
 			<div>{game.spanText || i18n[game.spanTextKey]}</div>
 			{isMaintain ? (
-				<div className="under">{i18n.underMaintenance}</div>
+				<div className="under">{i18n.lbl_underMaintenance}</div>
 			) : (
 				""
 			)}
 		</Link>
 	) : (
 		<button
+			className={isMaintain ? "active" : ""}
 			disabled={isMaintain}
 			onClick={clickGame.bind(this, {
 				tpId: game.tpId,
