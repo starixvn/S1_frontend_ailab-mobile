@@ -17,13 +17,13 @@ import path from "../path";
 import { api_GetWalletInfo } from "../service/api/account";
 import GamePanel from "../components/home/gamePanel";
 import LinksPanel from "../components/home/links";
-import MidBanner from "../components/home/banner";
 import EventSwipper from "../components/home/eventSwipper";
 import jackpot from "../styles/img/jackpot.png";
 import winner_vn from "../styles/img/EURO_Bwing/EURO-Bwing-VN.jpg";
 import winner_en from "../styles/img/EURO_Bwing/EURO-Bwing-EN.jpg";
 import defNav from "../components/casino/defNav";
 import AddToHomePop from "../components/home/addToHomePop";
+import config from "../config";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -125,22 +125,61 @@ const IndexPage = () => {
 				}
 			});
 		}
-		if (
-			isEventPeriod({
-				endDate: "2021/05/18 23:59:59"
-			}) &&
-			userInfo.isLogin === false
-		) {
-			setPopBox({
-				isOpen: true,
-				content: (
-					<img
-						src={userInfo.langId === "vn" ? winner_vn : winner_en}
-						alt="winner"
-					/>
-				),
-				hasBtn: true
-			});
+
+		if (userInfo.isLogin === false) {
+			const RankingWinnerPopup = () => {
+				if (
+					isEventPeriod({
+						endDate: "2021/05/18 23:59:59"
+					})
+				) {
+					setPopBox({
+						isOpen: true,
+						content: (
+							<img
+								src={
+									userInfo.langId === "vn"
+										? winner_vn
+										: winner_en
+								}
+								alt="winner"
+							/>
+						),
+						hasBtn: true
+					});
+				} else {
+					setPopBox({
+						isOpen: false
+					});
+				}
+			};
+
+			const cookieOfficialAnnounce = "OfficialAnnounce_cookie";
+
+			if (readCookie(cookieOfficialAnnounce)) {
+				RankingWinnerPopup();
+			} else {
+				setCookie(cookieOfficialAnnounce, true, 1);
+				setPopBox({
+					isOpen: true,
+					content: (
+						<img
+							src={`${config.bannerImgUrl}/img/nonlogin/300x300_bwing_${userInfo.langId}.jpg`}
+							alt="OfficialAnnounce"
+						/>
+					),
+					hasBtn: true,
+					btnBar: (
+						<div className="btn-group">
+							<button
+								className="blue"
+								onClick={RankingWinnerPopup}>
+								{i18n.lbl_Close}
+							</button>
+						</div>
+					)
+				});
+			}
 		}
 	}, [
 		i18n,

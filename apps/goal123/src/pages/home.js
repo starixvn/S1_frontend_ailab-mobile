@@ -26,6 +26,7 @@ import winner_vn from "../styles/img/euroEvent/EURO-GOAL-VN.jpg";
 import winner_en from "../styles/img/euroEvent/EURO-GOAL-EN.jpg";
 import defNav from "../components/casino/defNav";
 import AddToHomePop from "../components/home/addToHomePop";
+import config from "../config";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -127,23 +128,61 @@ const IndexPage = () => {
 				}
 			});
 		}
-		// yyyy/mm/dd hh:mm:ss
-		if (
-			isEventPeriod({
-				endDate: "2021/05/18 23:59:59"
-			}) &&
-			userInfo.isLogin === false
-		) {
-			setPopBox({
-				isOpen: true,
-				content: (
-					<img
-						src={userInfo.langId === "vn" ? winner_vn : winner_en}
-						alt="winner"
-					/>
-				),
-				hasBtn: true
-			});
+
+		if (userInfo.isLogin === false) {
+			const RankingWinnerPopup = () => {
+				if (
+					isEventPeriod({
+						endDate: "2021/05/18 23:59:59"
+					})
+				) {
+					setPopBox({
+						isOpen: true,
+						content: (
+							<img
+								src={
+									userInfo.langId === "vn"
+										? winner_vn
+										: winner_en
+								}
+								alt="winner"
+							/>
+						),
+						hasBtn: true
+					});
+				} else {
+					setPopBox({
+						isOpen: false
+					});
+				}
+			};
+
+			const cookieOfficialAnnounce = "OfficialAnnounce_cookie";
+
+			if (readCookie(cookieOfficialAnnounce)) {
+				RankingWinnerPopup();
+			} else {
+				setCookie(cookieOfficialAnnounce, true, 1);
+				setPopBox({
+					isOpen: true,
+					content: (
+						<img
+							src={`${config.bannerImgUrl}/img/nonlogin/300x300_goal_${userInfo.langId}.jpg`}
+							alt="OfficialAnnounce"
+						/>
+					),
+					hasBtn: true,
+					btnBar: (
+						<div className="btn-group">
+							<button
+								className="orange"
+								onClick={RankingWinnerPopup}>
+								{i18n.lbl_Close}
+							</button>
+						</div>
+					)
+				});
+			}
 		}
 	}, [
 		i18n,

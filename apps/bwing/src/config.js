@@ -35,13 +35,16 @@ export const siteInfo = langId => {
 	};
 };
 
+const bannerImgUrl = "https://banner.bw88.io";
+
 export default process.env.NODE_ENV === "production"
 	? {
 			siteName,
 			apiURL: "",
 			openURL: "",
 			imgUrl: "",
-			t_and_cURL: ""
+			t_and_cURL: "",
+			bannerImgUrl
 	  }
 	: {
 			siteName,
@@ -54,5 +57,6 @@ export default process.env.NODE_ENV === "production"
 			apiURL: "https://stag.bwing.com",
 			imgUrl: "https://stag.bwing.com",
 			t_and_cURL: "http://stag.bwing.com",
-			openURL: "http://stag.bwing.com"
+			openURL: "http://stag.bwing.com",
+			bannerImgUrl
 	  };
