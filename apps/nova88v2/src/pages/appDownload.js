@@ -22,14 +22,6 @@ const defPhoneType = {
 const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 
-	const clickDownload = phoneType => {
-		const link =
-			phoneType === defPhoneType.ios
-				? "https://nova.mqcfirm.com/"
-				: "https://dl.4ppstore.com/dlapp/Nova88.apk";
-		return typeof window !== "undefined" ? window.open(link) : null;
-	};
-
 	return (
 		<>
 			<main className="main apppage">
@@ -50,13 +42,14 @@ const IndexPage = () => {
 											<img src={iosLogo} alt="IOS" />
 											{i18n.lbl_iOS}
 										</div>
-										<button
-											onClick={clickDownload.bind(
-												this,
-												defPhoneType.ios
-											)}>
-											{i18n.lbl_Downloads?.toUpperCase()}
-										</button>
+										<a
+											href="https://nova.mqcfirm.com/"
+											target="_blank"
+											rel="noreferrer">
+											<button>
+												{i18n.lbl_Downloads?.toUpperCase()}
+											</button>
+										</a>
 									</div>
 								</div>
 								<div>
@@ -72,13 +65,14 @@ const IndexPage = () => {
 											/>
 											{i18n.lbl_Android}
 										</div>
-										<button
-											onClick={clickDownload.bind(
-												this,
-												defPhoneType.android
-											)}>
-											{i18n.lbl_Downloads?.toUpperCase()}
-										</button>
+										<a
+											href="https://dl.4ppstore.com/dlapp/Nova88.apk"
+											target="_blank"
+											rel="noreferrer">
+											<button>
+												{i18n.lbl_Downloads?.toUpperCase()}
+											</button>
+										</a>
 									</div>
 								</div>
 							</div>
