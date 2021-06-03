@@ -111,16 +111,13 @@ const defIconType = {
 	new: " icon-new"
 };
 
-const eventTime = {
+export const eventTime = {
 	ranking: { startDate: "2021/01/01 12:00:00" },
 	new_vip: { startDate: "2021/03/11 11:00:00" },
 	new_LiveCasino_N2Live: { startDate: "2021/03/12 11:00:00" },
 	casino_pt: { endDate: "2021/06/20 11:00:00" },
-	new_BTI: { endDate: "2021/06/28 11:00:00" }
-};
-
-export const euro_event_time = {
-	endDate: "2021/07/13 12:00:00"
+	new_BTI: { endDate: "2021/06/28 11:00:00" },
+	euro: { endDate: "2021/07/13 12:00:00" }
 };
 
 export const defCol = {

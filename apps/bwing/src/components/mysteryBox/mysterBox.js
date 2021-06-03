@@ -59,7 +59,7 @@ const MysteryBox = () => {
 	return (
 		<>
 			{isEventPeriod(euro_event_time) ? (
-				<img src={bgEuro} alt="bg" />
+				<img className="mysteryBg" src={bgEuro} alt="bg" />
 			) : (
 				<img
 					className="mysteryBg"
