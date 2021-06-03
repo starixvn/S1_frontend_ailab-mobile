@@ -101,8 +101,8 @@ const IndexPage = () => {
 				)
 			});
 		}
-		if (userInfo.isLogin === false && !readCookie("homePopboxShowed")) {
-			const ClosePopUp = () => {
+		if (userInfo.isLogin === false) {
+			const RankingWinnerPopup = () => {
 				if (
 					isEventPeriod({
 						endDate: "2021/05/18 23:59:59"
@@ -123,25 +123,33 @@ const IndexPage = () => {
 					});
 				}
 			};
-			setCookie("homePopboxShowed", true, 1);
-			setPopBox({
-				isOpen: true,
-				content: (
-					<img
-						src={`https://banner.n88media.com/img/nonlogin/novapopup-380x100_${userInfo.langId}.jpg`}
-						alt="joeCole"
-					/>
-				),
-				hideCloseBtn: true,
-				hasBtn: true,
-				btnBar: (
-					<div className="btn-group">
-						<button className="orange" onClick={ClosePopUp}>
-							{i18n.lbl_Close}
-						</button>
-					</div>
-				)
-			});
+
+			const cookieOfficialAnnounce = "OfficialAnnounce_cookie";
+			if (readCookie(cookieOfficialAnnounce)) {
+				RankingWinnerPopup();
+			} else {
+				setCookie(cookieOfficialAnnounce, true, 1);
+				setPopBox({
+					isOpen: true,
+					content: (
+						<img
+							src={`https://banner.n88media.com/img/nonlogin/novapopup-380x100_${userInfo.langId}.jpg`}
+							alt="OfficialAnnounce"
+						/>
+					),
+					hideCloseBtn: true,
+					hasBtn: true,
+					btnBar: (
+						<div className="btn-group">
+							<button
+								className="orange"
+								onClick={RankingWinnerPopup}>
+								{i18n.lbl_Close}
+							</button>
+						</div>
+					)
+				});
+			}
 		}
 	}, [
 		i18n,

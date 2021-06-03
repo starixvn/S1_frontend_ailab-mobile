@@ -8,8 +8,8 @@
       "type": "image/x-icon"
     },
     {
-      "src": "Nova88_256_2_1.png",
-      "sizes": "256x256",
+      "src": "Nova88_PhoneIcon.png",
+      "sizes": "76x76",
       "type": "image/png",
       "purpose": "any maskable"
     }
