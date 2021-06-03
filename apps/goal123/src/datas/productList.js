@@ -119,6 +119,10 @@ const eventTime = {
 	new_BTI: { endDate: "2021/06/28 11:00:00" }
 };
 
+export const euro_event_time = {
+	endDate: "2021/07/13 12:00:00"
+};
+
 export const defCol = {
 	hotGame: "hotGame",
 	sports: "sports",

@@ -5706,18 +5706,18 @@ span.important {
 }
 
 .eventLink.afterlogin {
-  bottom: 12vw;
+  bottom: 15vw;
 }
 
 .eventLink .icon-close {
   width: 6vw;
   height: 6vw;
-  color: #f80b3b;
+  color: #fff;
   position: absolute;
   right: 2vw;
   top: -6vw;
   z-index: 4;
-  background: #e3ce9b;
+  background: rgba(0, 134, 168, 0.8);
   border-radius: 100%;
 }
 
@@ -5738,7 +5738,7 @@ span.important {
 }
 
 .event {
-  width: calc(100% - 6vw);
+  height: 100%;
   padding: 0 3vw 24vw;
   background: #001942 url(../img/event/bg.jpg) no-repeat top center;
   background-size: 120%;
@@ -5752,7 +5752,6 @@ span.important {
 }
 
 .event.goldbox {
-  width: calc(100% - 6vw);
   padding: 0 3vw 24vw;
   background: #f0f4fa url(../img/event/box/bg.jpg) no-repeat top center;
   background-size: 120%;
@@ -5763,6 +5762,11 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.event.goldbox.euro {
+  background: #f0f4fa url(../img/event/box/bg_euro.jpg) no-repeat top center;
+  background-size: 120%;
 }
 
 .event > div[tabindex="-1"] {
