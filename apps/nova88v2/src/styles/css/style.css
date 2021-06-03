@@ -1799,6 +1799,34 @@ main .gameList .icon-new {
   bottom: 1vw;
 }
 
+.liveCasino .under {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background: #555;
+  padding: 1vw;
+  border-radius: 5px;
+  color: white;
+}
+
+.liveCasino > a.active, .liveCasino button.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+}
+
+.liveCasino > a.active .under, .liveCasino button.active .under {
+  display: block;
+}
+
 footer {
   width: 100%;
   position: fixed;
@@ -7118,7 +7146,7 @@ span.important {
 }
 
 .event {
-  background: url(../img/event/mysterybox/bg.jpg) no-repeat top center/120%;
+  background: url(../img/euro/bg.jpg) no-repeat top center/120%;
   width: calc(100% - 6vw);
   height: auto;
   padding: 0 3vw 24vw;
@@ -8291,12 +8319,12 @@ span.important {
 .eventLink .icon-close {
   width: 5vw;
   height: 5vw;
-  color: #5574A7;
+  color: white;
   position: absolute;
   right: 1vw;
   top: -5vw;
   z-index: 4;
-  background: #a5bbe0;
+  background: #0987a9;
   border-radius: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9150,5 +9178,93 @@ span.important {
   font-weight: bold;
   padding: 1.5vw 2vw;
   margin: 0 0 0 auto;
+}
+
+.dragonPayPop ul {
+  color: #5574A7;
+}
+
+.dragonPayPop ul li {
+  margin-left: 4vw;
+  list-style: decimal;
+}
+
+.dragonPayPop .pop {
+  border-radius: 3px;
+}
+
+.dragonPayPop .pop > div {
+  width: 100%;
+}
+
+.dragonPayPop .pop > div span {
+  color: #1E85EC;
+}
+
+.dragonPayPop .pop > div.popTit {
+  background: #233d67;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: white !important;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  padding: 1vw 2vw !important;
+  width: calc(100% - 4vw) !important;
+}
+
+.dragonPayPop .pop > div.popTit img {
+  width: 20vw;
+  position: absolute;
+  left: 1vw;
+}
+
+.dragonPayPop .pop > div.popTit .icon-close {
+  right: 1vw;
+  top: auto;
+  position: absolute;
+}
+
+.dragonPayPop .pop > div.popTxt .sisa {
+  text-align: center;
+  margin: 2vw 0 0;
+}
+
+.dragonPayPop .pop > div.popTxt .sisa div {
+  color: #e92529;
+}
+
+.dragonPayPop .pop > div.popTxt .sisa div:last-child {
+  font-weight: bold;
+}
+
+.dragonPayPop .pop > div.popTxt .guide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-top: 1px dotted #1E85EC;
+  border-bottom: 1px dotted #1E85EC;
+  padding: 2vw 0;
+  margin: 2vw 0 0;
+}
+
+.dragonPayPop .pop > div.popTxt .guide span {
+  color: #e92529;
+}
+
+.dragonPayPop .pop > div.popTxt .guide .qrCode {
+  width: 30vw;
+  margin: 1vw 0;
 }
 /*# sourceMappingURL=style.css.map */
