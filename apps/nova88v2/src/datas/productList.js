@@ -3,6 +3,7 @@ import SabaSoccer from "../styles/img/saba_soccer.png";
 import Basketball from "../styles/img/basketball.png";
 import Tennis from "../styles/img/tennis.png";
 import Cricket from "../styles/img/cricket.png";
+import Wap from "../styles/img/wap.png";
 
 import ESportsAll from "../styles/img/esportALL.png";
 import ESportsCS from "../styles/img/esportCS.png";
@@ -72,7 +73,8 @@ const defIconType = {
 
 const eventTime = {
 	new_vip: { startDate: "2021/02/05 11:00:00" },
-	casino_PT: { endDate: "2021/06/20 11:00:00" }
+	casino_PT: { endDate: "2021/06/20 11:00:00" },
+	new_wap: { endDate: "2021/07/15 11:00:00" }
 };
 
 const gameList = ({ langId, currencyName }) => {
@@ -109,6 +111,18 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.Cricket,
 							img: Cricket,
 							spanTextKey: "lbl_Cricket"
+						},
+						{
+							...defGameInfo.Wap,
+							img: Wap,
+							spanText: "WAP",
+							specialUrl: "&device=wap",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(eventTime.new_wap)
+								}
+							]
 						}
 					]
 				},
@@ -1283,6 +1297,7 @@ export const defGameInfo = {
 	Basketball: { tpId: 1, gameId: 2 },
 	Tennis: { tpId: 1, gameId: 5 },
 	Cricket: { tpId: 1, gameId: 50 },
+	Wap: { tpId: 1, gameId: 1 },
 	ESportAll: { tpId: 1, gameId: 43 },
 	ESportCS: { tpId: 1, gameId: 43, bettype: 1 },
 	ESportDota: { tpId: 1, gameId: 43, bettype: 2 },
