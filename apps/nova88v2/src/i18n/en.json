@@ -314,6 +314,12 @@
 	"lbl_VerifyNow": "Vertify Now",
 	"lbl_Cancel": "Cancel",
 	"lbl_LastLogin": "Last Login",
+	"lbl_CountryTH": "Thailand",
+	"lbl_CountryMY": "Malaysia",
+	"lbl_CountryCS": "China",
+	"lbl_CountryID": "Indonesia",
+	"lbl_CountryIN": "India",
+	"lbl_CountryVN": "Vietnam",
 
 	"==============================================BankInfo====================================": "",
 
