@@ -117,6 +117,7 @@ const gameList = ({ langId, currencyName }) => {
 							img: Wap,
 							spanText: "WAP",
 							specialUrl: "&device=wap",
+							showAfterLogin: true,
 							eventIcon: [
 								{
 									icon: defIconType.new,

@@ -131,6 +131,8 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 					);
 				} else if (showingTpIds) {
 					showItem = showingTpIds.includes(subItem.tpId);
+				} else if (subItem?.showAfterLogin) {
+					showItem = userInfo.isLogin;
 				}
 				if (subItem.forceShow) {
 					showItem = true;
