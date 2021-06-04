@@ -606,11 +606,9 @@
 	"lbl_DownloadApp":"Download App",
 	"lbl_DownloadAppHint":"Bet anytime anywhere",
 	"lbl_Downloads":"Download",
-	"lbl_iOS":"iOS",
-	"lbl_Android":"Android",
+	"lbl_APP_DOWNLOAD":"APP DOWNLOAD",
+	"lbl_Scan_to_Download":"Scan to Download",
 	"lbl_Installation_tutorial":"Installation tutorial",
 	"lbl_iOS_App_Trust_Authentication":"iOS App Trust Authentication",
-	"lbl_appHint1":"Once Nova88 App is installed, tap Trust",
-	"lbl_appHint2":"or complete the setting as below.",
-	"lbl_Download_App_now": "Download APP now"
+	"lbl_Once_Bwing_App_is_installed":"Once Bwing App is installed, tap Trust or complete the setting as below."
 }

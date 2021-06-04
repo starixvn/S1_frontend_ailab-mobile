@@ -8,7 +8,7 @@ import path from "../../path";
 export default ({ i18n, langId }) => {
 	return (
 		<>
-			<AppDownload i18n={i18n} />
+			<AppDownload />
 			<Affiliates i18n={i18n} langId={langId} />
 			<UserGuide i18n={i18n} langId={langId} />
 			<ContactUs i18n={i18n} langId={langId} />
@@ -166,11 +166,21 @@ const Platforms = ({ i18n }) => {
 	);
 };
 
-const AppDownload = ({ i18n }) => {
+const AppDownload = () => {
 	return (
 		<div className="downloadarea">
-			<button>{i18n.lbl_Android}</button>
-			<button>{i18n.lbl_iOS}</button>
+			{/* <a
+				href="https://mars.fadatsai88.com/v1/App?path=bwing_sports_android.apk"
+				target="_blank"
+				rel="noreferrer"> */}
+			<button>Android</button>
+			{/* </a>
+			<a
+				href="https://nova.mqcfirm.com/"
+				target="_blank"
+				rel="noreferrer"> */}
+			<button>iOS</button>
+			{/* </a> */}
 		</div>
 	);
 };

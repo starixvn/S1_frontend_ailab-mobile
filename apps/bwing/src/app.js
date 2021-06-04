@@ -174,7 +174,7 @@ const Index = () => {
 						<AngPow path={path.angPow.root} />
 						<MysteryBox path={path.mysteryBox.root} />
 						<VIP path={path.vip.root} />
-						{/* <AppDownload path={path.appDownload.root} /> */}
+						<AppDownload path={path.appDownload.root} />
 					</Router>
 				</Layout>
 			</LocationProvider>
