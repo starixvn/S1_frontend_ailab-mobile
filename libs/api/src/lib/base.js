@@ -63,5 +63,10 @@ export default class BaseAPI {
 			withCredentials: true,
 			baseURL: `${apiUrl}/api/video`
 		});
+
+		this.cashierRequest = axios.create({
+			withCredentials: true,
+			baseURL: `${apiUrl}`
+		});
 	}
 }

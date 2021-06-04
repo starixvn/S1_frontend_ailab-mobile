@@ -55,9 +55,13 @@ const AmountInput = ({
 							minAmount && maxAmount
 								? `${i18n.lbl_MinMaxAmount}: ${number_format(
 										minAmount,
-										false,
+										_isConvert,
 										0
-								  )} / ${number_format(maxAmount, false, 0)}`
+								  )} / ${number_format(
+										maxAmount,
+										_isConvert,
+										0
+								  )}`
 								: ""
 						}
 						value={amount}
