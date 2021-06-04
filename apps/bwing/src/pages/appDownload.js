@@ -35,7 +35,7 @@ const IndexPage = () => {
 							</div>
 							<img src={androidQRCode} alt="Android QRCode" />
 						</div>
-						<div>
+						{/* <div>
 							<div>
 								<img src={ios} alt="iOS" />
 								<a
@@ -46,10 +46,10 @@ const IndexPage = () => {
 								</a>
 							</div>
 							<img src={iOSQRCode} alt="iOS QRCode" />
-						</div>
+						</div> */}
 					</div>
 				</div>
-				<div className="downloadB">
+				{/* <div className="downloadB">
 					<h1>{i18n.lbl_Installation_tutorial}</h1>
 					<h2>{i18n.lbl_iOS_App_Trust_Authentication}</h2>
 					<p>{i18n.lbl_Once_Bwing_App_is_installed}</p>
@@ -59,7 +59,7 @@ const IndexPage = () => {
 						<img src={tutorial3} alt="tutorial 3" />
 						<img src={tutorial4} alt="tutorial 4" />
 					</div>
-				</div>
+				</div> */}
 			</main>
 			<Footer />
 		</>

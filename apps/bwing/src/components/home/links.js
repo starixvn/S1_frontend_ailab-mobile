@@ -179,7 +179,7 @@ const AppDownload = () => {
 				href="https://nova.mqcfirm.com/"
 				target="_blank"
 				rel="noreferrer"> */}
-			<button>iOS</button>
+			{/* <button>iOS</button> */}
 			{/* </a> */}
 		</div>
 	);
