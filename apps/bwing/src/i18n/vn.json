@@ -600,5 +600,17 @@
 	"==============Add To Home Screen==============":"",
 	"lbl_AddToHome_Hint":"Cách thêm ứng dụng vào màn hình chính",
 	"lbl_AddToHome_Tutorial":"Hướng dẫn",
-	"lbl_Skip":"Bỏ qua"
+	"lbl_Skip":"Bỏ qua",
+
+	"=============Download App===============":"",
+	"lbl_DownloadApp":"Tải App",
+	"lbl_DownloadAppHint":"Cược mọi lúc mọi nơi",
+	"lbl_Downloads":"Tải về",
+	"lbl_iOS":"iOS",
+	"lbl_Android":"Android",
+	"lbl_Installation_tutorial":"Installation tutorial",
+	"lbl_iOS_App_Trust_Authentication":"iOS App Trust Authentication",
+	"lbl_appHint1":"Once Nova88 App is installed, tap Trust",
+	"lbl_appHint2":"or complete the setting as below.",
+	"lbl_Download_App_now": "Download APP now"
 }

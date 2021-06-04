@@ -8,6 +8,7 @@ import path from "../../path";
 export default ({ i18n, langId }) => {
 	return (
 		<>
+			<AppDownload i18n={i18n} />
 			<Affiliates i18n={i18n} langId={langId} />
 			<UserGuide i18n={i18n} langId={langId} />
 			<ContactUs i18n={i18n} langId={langId} />
@@ -162,5 +163,14 @@ const Platforms = ({ i18n }) => {
 				<span>© COPYRIGHT 2020. BWING. ALL RIGHTS RESERVED.</span>
 			</div>
 		</>
+	);
+};
+
+const AppDownload = ({ i18n }) => {
+	return (
+		<div className="downloadarea">
+			<button>{i18n.lbl_Android}</button>
+			<button>{i18n.lbl_iOS}</button>
+		</div>
 	);
 };
