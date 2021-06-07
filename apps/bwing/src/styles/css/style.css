@@ -363,7 +363,8 @@ header .Login button {
 header .Join .Terms,
 header .Login .Terms {
   margin: 1vw auto;
-  line-height: 26px;
+  line-height: 20px;
+  white-space: initial;
 }
 
 header .Join .Terms.error,
@@ -1218,6 +1219,131 @@ footer > a.open {
 
 #popup .popTxt .btn-group {
   margin-top: 5vw;
+}
+
+#popup.backupDomain .pop {
+  border-radius: 5px;
+  overflow: hidden;
+  background: transparent !important;
+}
+
+#popup.backupDomain .pop .icon-close {
+  color: white;
+  position: initial;
+  margin-right: 10px;
+}
+
+#popup.backupDomain .pop .popTit {
+  font-size: 3.5vw;
+  padding: 3vw;
+  background: #348eff;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+#popup.backupDomain .pop .popTxt {
+  color: #fff;
+  padding: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+#popup.backupDomain .pop .popTxt img {
+  width: auto;
+  margin: 10px;
+}
+
+#popup.backupDomain .pop .popTxt > div {
+  padding: 1vw 2vw;
+  margin: 0;
+}
+
+#popup.backupDomain .pop .popTxt .btn-group {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 3vw 0;
+}
+
+#popup.backupDomain .pop .popTxt .btn-group button {
+  border-radius: 30px;
+  padding: 2vw;
+  max-width: 30vw;
+}
+
+#popup.backupDomain .pop .popTxt .url {
+  width: calc(100% - 8vw);
+  padding: 1vw 2vw;
+  border-radius: 30px;
+  border: 1px solid #fff;
+  margin: 3vw 2vw 1vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+#popup.backupDomain .pop .popTxt .url .copyurl {
+  position: absolute;
+  border-radius: 30px;
+  color: white;
+  padding: 0.5vw 2.5vw 1vw;
+  font-size: 3vw;
+  right: 0.8vw;
+  background: #bac2d2;
+}
+
+#popup.backupDomain .pop .popTxt .text-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 3vw 0;
+}
+
+#popup.backupDomain .pop .popTxt .text-center input {
+  display: none;
+}
+
+#popup.backupDomain .pop .popTxt .text-center input[type="checkbox"] + label {
+  margin: 0vw 1vw 0 0;
+  border: 1px solid #f77a00;
+  border-radius: 100%;
+  width: 4vw;
+  height: 4vw;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  vertical-align: middle;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#popup.backupDomain .pop .popTxt .text-center input[type="checkbox"] + label > div {
+  width: 3vw;
+  height: 3vw;
+  background: transparent;
+  margin: auto;
+  border-radius: 100%;
+}
+
+#popup.backupDomain .pop .popTxt .text-center input[type="checkbox"]:checked + label > div {
+  background: #f77a00;
 }
 
 .header {
@@ -7339,7 +7465,7 @@ span.important {
   position: fixed;
   bottom: 10vh;
   right: 3vw;
-  z-index: 10;
+  z-index: 5;
 }
 
 .mystery_close {
@@ -7371,7 +7497,7 @@ span.important {
   width: 100%;
   height: 47vw;
   left: 0;
-  top: 0;
+  top: 12vw;
 }
 
 .mysteryEvent > div {
@@ -10039,6 +10165,284 @@ span.important {
   }
   100% {
     bottom: 10vw;
+  }
+}
+
+.downloadarea {
+  background: url(../img/downloadBg.png) no-repeat;
+  width: 100%;
+  height: 34vh;
+  background-size: 100%;
+  position: relative;
+}
+
+.downloadarea::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(51, 187, 255, 0.5)), to(rgba(35, 117, 235, 0)));
+  background: linear-gradient(to top, rgba(51, 187, 255, 0.5) 0%, rgba(35, 117, 235, 0) 100%);
+  pointer-events: none;
+}
+
+.downloadarea > button,
+.downloadarea a {
+  position: absolute;
+  min-width: 130px;
+  padding: 8px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#33bbff), to(#2375eb));
+  background: linear-gradient(to bottom, #33bbff 0%, #2375eb 100%);
+  right: 10vw;
+  top: 26vw;
+  color: #fff;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.downloadarea > button img,
+.downloadarea a img {
+  width: 15px;
+  margin-right: 5px;
+}
+
+.downloadarea > button:nth-last-child(1),
+.downloadarea a:nth-last-child(1) {
+  top: 40vw;
+}
+
+.downloadArea {
+  padding: 0;
+}
+
+@media screen and (max-width: 700px) {
+  .downloadArea {
+    width: 100%;
+  }
+}
+
+.downloadArea .downloadT {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  background: url(../img/download/downloanBG.png) no-repeat bottom center;
+  background-size: cover;
+}
+
+.downloadArea .downloadT .logo {
+  margin-top: 20vh;
+}
+
+@media screen and (max-width: 700px) {
+  .downloadArea .downloadT .logo {
+    margin-top: 15vh;
+    width: 180px;
+  }
+}
+
+.downloadArea .downloadT h1 {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 10px 0 50px 0;
+}
+
+@media screen and (max-width: 700px) {
+  .downloadArea .downloadT h1 {
+    font-size: 6vw;
+  }
+}
+
+.downloadArea .downloadT .downloadFrame {
+  width: 650px;
+  border-radius: 10px;
+  background: #000;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(65, 197, 255, 0.5)), to(rgba(145, 51, 155, 0.5)));
+  background: linear-gradient(to bottom, rgba(65, 197, 255, 0.5) 0%, rgba(145, 51, 155, 0.5) 100%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-bottom: 210px;
+}
+
+@media screen and (max-width: 700px) {
+  .downloadArea .downloadT .downloadFrame {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 200px;
+  }
+}
+
+.downloadArea .downloadT .downloadFrame p {
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+@media screen and (max-width: 700px) {
+  .downloadArea .downloadT .downloadFrame p {
+    font-size: 4vw;
+  }
+}
+
+.downloadArea .downloadT .downloadFrame > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 40px 0;
+}
+
+@media screen and (max-width: 700px) {
+  .downloadArea .downloadT .downloadFrame > div {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+  }
+}
+
+.downloadArea .downloadT .downloadFrame > div div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 20px;
+}
+
+@media screen and (max-width: 700px) {
+  .downloadArea .downloadT .downloadFrame > div div {
+    margin-right: 0;
+    margin-top: 10px;
+  }
+}
+
+.downloadArea .downloadT .downloadFrame > div div img {
+  margin-bottom: 10px;
+}
+
+.downloadArea .downloadT .downloadFrame > div div button {
+  width: 200px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #3ca3ff), to(#175de6));
+  background: linear-gradient(to bottom, #3ca3ff 1%, #175de6 100%);
+  color: #fff;
+}
+
+.downloadArea .downloadB {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  background: url(../img/download/downloanBG2.png) no-repeat bottom center;
+  background-size: cover;
+}
+
+.downloadArea .downloadB h1 {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 10px 0 50px 0;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 700px) {
+  .downloadArea .downloadB h1 {
+    font-size: 6vw;
+    margin: 10px 0 30px 0;
+  }
+}
+
+.downloadArea .downloadB h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 700px) {
+  .downloadArea .downloadB h2 {
+    font-size: 4vw;
+  }
+}
+
+.downloadArea .downloadB p {
+  font-size: 14px;
+  margin-bottom: 50px;
+}
+
+@media screen and (max-width: 700px) {
+  .downloadArea .downloadB p {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 3vw;
+  }
+}
+
+.downloadArea .downloadB div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 710px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+@media screen and (max-width: 700px) {
+  .downloadArea .downloadB div {
+    width: 90%;
+    margin: 0 auto;
   }
 }
 /*# sourceMappingURL=style.css.map */
