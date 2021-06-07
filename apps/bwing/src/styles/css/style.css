@@ -296,6 +296,7 @@ header .Login .inputBox .JoinRule {
   visibility: hidden;
   opacity: 0;
   margin-top: 1vw;
+  white-space: initial;
 }
 
 header .Join .inputBox .JoinRule.open,
@@ -2829,6 +2830,7 @@ a.clickBtn:before {
 .tip {
   margin-top: 1vw;
   display: none;
+  white-space: initial;
 }
 
 .tip a {
@@ -2847,6 +2849,7 @@ a.clickBtn:before {
   display: none;
   margin-top: 1vw;
   width: 100%;
+  white-space: initial;
 }
 
 .errortip.open {
