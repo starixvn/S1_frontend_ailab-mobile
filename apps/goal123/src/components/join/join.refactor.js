@@ -275,33 +275,25 @@ const Join = ({ hideBtn }) => {
 								}
 							);
 							setNav(null);
-						} else if (
-							errorCode === -2 ||
-							errorCode === -5 ||
-							errorCode === -19
-						) {
-							setInputStatus(prev => ({
-								...prev,
-								UserName: { checked: false, msg: message }
-							}));
-						} else if (errorCode === -3) {
-							setInputStatus(prev => ({
-								...prev,
-								Password: { checked: false, msg: message }
-							}));
-						} else if (errorCode === -7) {
-							setInputStatus(prev => ({
-								...prev,
-								SpecialBonusCode: {
-									checked: false,
-									msg: message
-								}
-							}));
-						} else if (errorCode === -9) {
-							setInputStatus(prev => ({
-								...prev,
-								AffiliateId: { checked: false, msg: message }
-							}));
+						} else {
+							const closePopBox = () => {
+								setPopBox({ isOpen: false });
+							};
+							setPopBox({
+								isOpen: true,
+								title: i18n.lbl_ImportantNote,
+								content: `[${errorCode}] ${message}`,
+								hasBtn: true,
+								btnBar: (
+									<div className="btn-group">
+										<button
+											className="lightBlue"
+											onClick={closePopBox}>
+											{i18n.lbl_Close}
+										</button>
+									</div>
+								)
+							});
 						}
 					}
 				},
