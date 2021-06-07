@@ -12,6 +12,7 @@ import api from "../../service/api";
 import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
 import { useHandleAmount } from "../hook/useHandleAmount";
+import { defPopBoxType } from "../common/popbox";
 
 const payType = "MobilePay";
 
@@ -64,7 +65,7 @@ const Payment = props => {
 
 	const SelectPayment = ({ groupInfo }) => {
 		if (selGroup?.groupId !== groupInfo?.groupId) {
-			setSelGroup(() => groupInfo?.groupId);
+			setSelGroup(() => groupInfo);
 			setLoading(true);
 			api.payment.GetMobilePayInfoList(groupInfo?.groupId).then(
 				res => {
@@ -108,7 +109,6 @@ const Payment = props => {
 
 	const ClickSubmit = () => {
 		const result = VaildAmount({ _amount: amount });
-
 		if (result) {
 			const RedirectToNext = real_amount => {
 				const userData = {
@@ -123,7 +123,7 @@ const Payment = props => {
 					window.location.reload();
 				};
 
-				if (selGroup?.mode === 3) {
+				if (selChannel?.mode === 3) {
 					api.cashier
 						.DepositReqMobilePay({
 							langId: userInfo.langId,
@@ -218,7 +218,7 @@ const Payment = props => {
 				title={i18n.lbl_PaymentModes}
 				dataList={paymentList}
 				SelectPayment={SelectPayment}
-				selected={selGroup.groupId}
+				selected={selGroup?.groupId}
 				mainKey={`deposit-full-${payType}-groupList`}
 				imgKey="groupName"
 				idKey="groupId"

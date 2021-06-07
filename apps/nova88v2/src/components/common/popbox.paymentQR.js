@@ -63,7 +63,7 @@ const Panel = ({ amount, currencyId, imgUrl, handlePopBox }) => {
 
 export const Counter = ({ startUnixTime = null, timeStop }) => {
 	const now = moment().unix();
-	const [count, setCount] = useState((startUnixTime || now) + 2 - now);
+	const [count, setCount] = useState((startUnixTime || now) + 600 - now);
 	const timerRef = useRef(null);
 
 	const secondsToTime = secondsInTime => {
