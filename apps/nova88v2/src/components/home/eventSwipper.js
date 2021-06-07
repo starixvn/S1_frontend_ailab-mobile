@@ -66,7 +66,10 @@ const EventSwipper = ({ userInfo, i18n }) => {
 			tpId,
 			gameId,
 			matchId,
-			bannerName
+			bannerName,
+			homeOdds,
+			awayOdds,
+			handicap
 		} = event;
 
 		const euroEvent = isEuroEvent({ sportLeaguesId });
@@ -82,6 +85,11 @@ const EventSwipper = ({ userInfo, i18n }) => {
 					<div>{sportLeaguesId}</div>
 					<div>
 						<div className="teamL">
+							<OddsAndHandicap
+								odds={homeOdds}
+								hdp={handicap}
+								i18n={i18n}
+							/>
 							<img src={sportTeamsHomePic} alt={sportTeamsHome} />
 							{sportTeamsHome}
 						</div>
@@ -97,6 +105,11 @@ const EventSwipper = ({ userInfo, i18n }) => {
 							</button>
 						</div>
 						<div className="teamR">
+							<OddsAndHandicap
+								odds={awayOdds}
+								hdp={-handicap}
+								i18n={i18n}
+							/>
 							<img src={sportTeamsAwayPic} alt={sportTeamsAway} />
 							{sportTeamsAway}
 						</div>
@@ -115,6 +128,21 @@ const EventSwipper = ({ userInfo, i18n }) => {
 			<Autoplay Rows={arr} params={swipperParam} />
 		</>
 	);
+};
+
+const OddsAndHandicap = ({ odds, hdp, i18n }) => {
+	return odds && hdp ? (
+		<div className="odds">
+			<div>
+				<span>{i18n.lbl_Handicap}</span>
+				<span>{hdp}</span>
+			</div>
+			<div>
+				<span>{i18n.lbl_Odds}</span>
+				<span>{odds}</span>
+			</div>
+		</div>
+	) : null;
 };
 
 EventSwipper.propTypes = {
