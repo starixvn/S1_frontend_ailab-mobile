@@ -10186,7 +10186,8 @@ span.important {
   pointer-events: none;
 }
 
-.downloadarea > button {
+.downloadarea > button,
+.downloadarea a {
   position: absolute;
   min-width: 130px;
   padding: 8px;
@@ -10196,9 +10197,25 @@ span.important {
   top: 26vw;
   color: #fff;
   border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.downloadarea > button:nth-last-child(1) {
+.downloadarea > button img,
+.downloadarea a img {
+  width: 15px;
+  margin-right: 5px;
+}
+
+.downloadarea > button:nth-last-child(1),
+.downloadarea a:nth-last-child(1) {
   top: 40vw;
 }
 
@@ -10301,10 +10318,6 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
   padding: 40px 0;
-}
-
-.downloadArea .downloadT .downloadFrame > div:nth-child(2) {
-  border-bottom: 1px solid #fff;
 }
 
 @media screen and (max-width: 700px) {

@@ -169,18 +169,18 @@ const Platforms = ({ i18n }) => {
 const AppDownload = () => {
 	return (
 		<div className="downloadarea">
-			{/* <a
+			<a
 				href="https://mars.fadatsai88.com/v1/App?path=bwing_sports_android.apk"
 				target="_blank"
-				rel="noreferrer"> */}
-			<button>Android</button>
-			{/* </a>
+				rel="noreferrer">
+				<button>Android</button>
+			</a>
 			<a
 				href="https://nova.mqcfirm.com/"
 				target="_blank"
-				rel="noreferrer"> */}
-			{/* <button>iOS</button> */}
-			{/* </a> */}
+				rel="noreferrer">
+				<button>iOS</button>
+			</a>
 		</div>
 	);
 };

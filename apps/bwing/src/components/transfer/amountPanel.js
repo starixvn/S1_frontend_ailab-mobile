@@ -58,7 +58,7 @@ const AmountPanel = ({
 				i18n={i18n}
 				clickSubmit={clickSubmit}
 				clickInfo={clickInfo}
-				numberConvert={_isConvert}
+				// numberConvert={_isConvert}
 				onBlur={ValidAmount}
 			/>
 		</div>
