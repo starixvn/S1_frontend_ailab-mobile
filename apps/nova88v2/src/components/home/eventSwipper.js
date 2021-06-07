@@ -85,11 +85,6 @@ const EventSwipper = ({ userInfo, i18n }) => {
 					<div>{sportLeaguesId}</div>
 					<div>
 						<div className="teamL">
-							<OddsAndHandicap
-								odds={homeOdds}
-								hdp={handicap}
-								i18n={i18n}
-							/>
 							<img src={sportTeamsHomePic} alt={sportTeamsHome} />
 							{sportTeamsHome}
 						</div>
@@ -105,15 +100,15 @@ const EventSwipper = ({ userInfo, i18n }) => {
 							</button>
 						</div>
 						<div className="teamR">
-							<OddsAndHandicap
-								odds={awayOdds}
-								hdp={-handicap}
-								i18n={i18n}
-							/>
 							<img src={sportTeamsAwayPic} alt={sportTeamsAway} />
 							{sportTeamsAway}
 						</div>
 					</div>
+					<OddsAndHandicap
+						homeOdds={homeOdds}
+						awayOdds={awayOdds}
+						hdp={handicap}
+					/>
 					<div> {eventTime}</div>
 				</div>
 			</div>
@@ -130,18 +125,12 @@ const EventSwipper = ({ userInfo, i18n }) => {
 	);
 };
 
-const OddsAndHandicap = ({ odds, hdp, i18n }) => {
-	return null;
-	return odds && hdp ? (
+const OddsAndHandicap = ({ homeOdds, awayOdds, hdp }) => {
+	return homeOdds && awayOdds ? (
 		<div className="odds">
-			<div>
-				<span>{i18n.lbl_Handicap}</span>
-				<span>{hdp}</span>
-			</div>
-			<div>
-				<span>{i18n.lbl_Odds}</span>
-				<span>{odds}</span>
-			</div>
+			<div id="homeodds">{homeOdds}</div>
+			<div>{Math.abs(hdp)}</div>
+			<div>{awayOdds}</div>
 		</div>
 	) : null;
 };
