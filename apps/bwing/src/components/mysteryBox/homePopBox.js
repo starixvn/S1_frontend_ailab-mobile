@@ -5,6 +5,9 @@ import { rootContext } from "../common/context";
 import path from "../../path";
 import eventImg from "../../styles/img/mystery/homeImg.png";
 import eventImgVN from "../../styles/img/mystery/homeImg_vn.png";
+import { isEventPeriod } from "../common/common";
+import { euro_event_time } from "../../datas/productList";
+import eventImgEuro from "../../styles/img/BW215x231popup.png";
 
 const MysteryBox = ({ langId }) => {
 	const { root, setRoot } = useContext(rootContext);
@@ -18,11 +21,18 @@ const MysteryBox = ({ langId }) => {
 				X
 			</div>
 			<Link to={path.mysteryBox.root}>
-				<img
-					className="mystery"
-					src={langId === "en" ? eventImg : eventImgVN}
-					alt="Mystery Box"
-				/>
+				{isEventPeriod(euro_event_time) ? (
+					<img
+						src={eventImgEuro}
+						className="mystery"
+						alt="Mystery Box"
+					/>
+				) : (
+					<img
+						src={userInfo.langId === "vn" ? eventImgVN : eventImg}
+						alt="Mystery Box"
+					/>
+				)}
 			</Link>
 		</div>
 	) : null;

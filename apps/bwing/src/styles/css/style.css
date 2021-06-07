@@ -4686,6 +4686,62 @@ span.important {
   font-size: 3vw;
 }
 
+.downloanFrame {
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  height: 50px;
+  background-color: #efece7;
+}
+
+.downloanFrame.open {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.downloanFrame .left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.downloanFrame .left .icon-close {
+  display: block;
+  position: inherit;
+  top: 0;
+  font-size: 5vw;
+  margin-left: 10px;
+  color: #000;
+}
+
+.downloanFrame .left img {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+}
+
+.downloanFrame .left .text {
+  width: 150px;
+  margin-left: 10px;
+  color: #000;
+}
+
+.downloanFrame .downBtn {
+  padding: 10px;
+  border: 1px solid #000;
+  margin-right: 10px;
+  color: #000;
+}
+
 .headerT {
   width: 100%;
   background-color: #010e33;
