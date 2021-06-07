@@ -51,8 +51,9 @@ BtnBar.propTypes = {
 	msgCount: PropTypes.number
 };
 
-const Card = ({ children, btnTitle, btnClass }) => {
-	const [open, setOpen] = useState("");
+const Card = ({ children, btnTitle, btnClass, defaultOpen }) => {
+	const _defaultOpen = defaultOpen ? "active" : "";
+	const [open, setOpen] = useState(_defaultOpen);
 	const openToggler = () => {
 		setOpen(prev => (prev === "" ? "active" : ""));
 	};
@@ -131,7 +132,10 @@ export default () => {
 						{i18n.lbl_Affiliate}
 					</a>
 				</div>
-				<Card btnTitle={i18n.lbl_Languages} btnClass="icon-sphere">
+				<Card
+					btnTitle={i18n.lbl_Languages}
+					btnClass="icon-sphere"
+					defaultOpen={true}>
 					{/* <ThemeMode /> */}
 					<LangPanel
 						userInfo={userInfo}
