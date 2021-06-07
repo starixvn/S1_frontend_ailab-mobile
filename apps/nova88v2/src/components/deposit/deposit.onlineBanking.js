@@ -196,7 +196,7 @@ const Payment = props => {
 							if (res.data.errorCode === 0) {
 								setPopBox({
 									isOpen: true,
-									title: i18n.lbl_ImportantNote,
+									title: i18n.lbl_DepositType1,
 									className: "dragonPayPop",
 									popBoxType: defPopBoxType.PaymentQR,
 									amount: real_amount,
