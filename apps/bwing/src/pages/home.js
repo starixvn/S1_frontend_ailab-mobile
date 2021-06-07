@@ -23,6 +23,7 @@ import winner_vn from "../styles/img/EURO_Bwing/EURO-Bwing-VN.jpg";
 import winner_en from "../styles/img/EURO_Bwing/EURO-Bwing-EN.jpg";
 import defNav from "../components/casino/defNav";
 import AddToHomePop from "../components/home/addToHomePop";
+import Top10Winner from "../components/home/top10winner";
 import config from "../config";
 
 const IndexPage = () => {
@@ -196,6 +197,7 @@ const IndexPage = () => {
 			<Slider />
 			<Marquee />
 			<PlaytechJactpot />
+			<Top10Winner i18n={i18n} />
 			<EventSwipper />
 			{/* <MidBanner langId={userInfo.langId} /> */}
 			<GamePanel i18n={i18n} userInfo={userInfo} />
