@@ -106,7 +106,6 @@ const Panel = () => {
 				tip={inputStatus.msg}
 				clickInfo={clickInfo}
 				onBlur={ValidAmount.bind(this, amount)}
-				numberConvert={true}
 			/>
 
 			<div className="btn-group">
