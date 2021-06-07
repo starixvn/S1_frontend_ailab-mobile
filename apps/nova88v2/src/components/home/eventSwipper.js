@@ -131,6 +131,7 @@ const EventSwipper = ({ userInfo, i18n }) => {
 };
 
 const OddsAndHandicap = ({ odds, hdp, i18n }) => {
+	return null;
 	return odds && hdp ? (
 		<div className="odds">
 			<div>
