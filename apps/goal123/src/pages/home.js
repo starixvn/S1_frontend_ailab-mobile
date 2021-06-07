@@ -26,6 +26,7 @@ import winner_vn from "../styles/img/euroEvent/EURO-GOAL-VN.jpg";
 import winner_en from "../styles/img/euroEvent/EURO-GOAL-EN.jpg";
 import defNav from "../components/casino/defNav";
 import AddToHomePop from "../components/home/addToHomePop";
+import Top10Winner from "../components/home/top10winner";
 import config from "../config";
 
 const IndexPage = () => {
@@ -204,7 +205,7 @@ const IndexPage = () => {
 			<Marquee />
 			<Menu i18n={i18n} userInfo={userInfo} />
 			<PlaytechJactpot />
-
+			<Top10Winner i18n={i18n} />
 			<MiddlePanel langId={userInfo.langId} i18n={i18n} />
 			<Bottom i18n={i18n} langId={userInfo.langId} />
 			<Submenu />
