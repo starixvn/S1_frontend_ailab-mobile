@@ -185,7 +185,11 @@
 	"lbl_Free": "Free",
 	"lbl_Jackpot":"Jackpot",
 
-	"======================================Currency=========================================": "",
+	"-==================HotEvent====================": "",
+	"lbl_Odds":"Odds",
+	"lbl_Handicap":"Hdp",
+
+	"-==================Currency====================": "",
 	"Currency_1": "SGD",
 	"Currency_12": "GBP",
 	"Currency_13": "RMB",
@@ -223,8 +227,8 @@
 	"lbl_Paradise": "Paradise",
 	"lbl_Cricket": "Cricket",
 	"lbl_SabaSoccer": "Saba Soccer",
-	"lbl_PlayNow": "Play Now",
-	"lbl_FreePlay": "Free Play",
+	"lbl_PlayNow": "PLAY",
+	"lbl_FreePlay": "DEMO",
 	"lbl_Lottery": "Lottery",
 	"lbl_Tennis": "Tennis",
 	"lbl_Keno": "Keno",
@@ -314,6 +318,12 @@
 	"lbl_VerifyNow": "Vertify Now",
 	"lbl_Cancel": "Cancel",
 	"lbl_LastLogin": "Last Login",
+	"lbl_CountryTH": "Thailand",
+	"lbl_CountryMY": "Malaysia",
+	"lbl_CountryCS": "China",
+	"lbl_CountryID": "Indonesia",
+	"lbl_CountryIN": "India",
+	"lbl_CountryVN": "Vietnam",
 
 	"==============================================BankInfo====================================": "",
 
@@ -567,6 +577,17 @@
 	"lbl_DepositType2": "Mobile Payment",
 	"lbl_DepositType3": "Local Bank",
 	"lbl_DepositType4": "Crypto Pay",
+
+	"==============================================Payment QR====================================": "",
+	"lbl_PaymentDetails":"Payment Details",
+	"lbl_OrderAmount":"Order Amount",
+	"lbl_Pay":"PAY",
+	"lbl_PaymentQRDesc1":"Please transfer the amount.",
+	"lbl_PaymentQRDesc2":"Provided for better experience.",
+	"lbl_ImportantNotes":"Important Notes",
+	"lbl_PaymentQRNote1":"Please do not refresh your browser.",
+	"lbl_PaymentQRNote2":"Please take note of the reference number if any event you need to contact our Customer Serivce for further action.",
+	"lbl_PaymentTimeLeft":"PAYMENT TIME LEFT",
 
 	"==============================================Backup Domain====================================": "",
 

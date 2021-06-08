@@ -387,33 +387,25 @@ const JoinStep2 = ({
 									}
 								}
 							);
-						} else if (
-							errorCode === -2 ||
-							errorCode === -5 ||
-							errorCode === -19
-						) {
-							setHintStatus(prev => ({
-								...prev,
-								UserName: { checked: false, msg: message }
-							}));
-						} else if (errorCode === -3) {
-							setHintStatus(prev => ({
-								...prev,
-								Password: { checked: false, msg: message }
-							}));
-						} else if (errorCode === -7) {
-							setHintStatus(prev => ({
-								...prev,
-								SpecialBonusCode: {
-									checked: false,
-									msg: message
-								}
-							}));
-						} else if (errorCode === -6) {
-							setHintStatus(prev => ({
-								...prev,
-								Phone: { checked: false, msg: message }
-							}));
+						} else {
+							const clickClose = () => {
+								setPopBox({ isOpen: false });
+							};
+							setPopBox({
+								isOpen: true,
+								title: i18n.lbl_ImportantNote,
+								content: `[${errorCode}] ${message}`,
+								hasBtn: true,
+								btnBar: (
+									<div className="btn-group">
+										<button
+											className="orange"
+											onClick={clickClose}>
+											{i18n.lbl_Close}
+										</button>
+									</div>
+								)
+							});
 						}
 					}
 				},

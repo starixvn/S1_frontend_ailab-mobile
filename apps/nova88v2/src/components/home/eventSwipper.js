@@ -66,7 +66,10 @@ const EventSwipper = ({ userInfo, i18n }) => {
 			tpId,
 			gameId,
 			matchId,
-			bannerName
+			bannerName,
+			homeOdds,
+			awayOdds,
+			handicap
 		} = event;
 
 		const euroEvent = isEuroEvent({ sportLeaguesId });
@@ -101,6 +104,11 @@ const EventSwipper = ({ userInfo, i18n }) => {
 							{sportTeamsAway}
 						</div>
 					</div>
+					<OddsAndHandicap
+						homeOdds={homeOdds}
+						awayOdds={awayOdds}
+						hdp={handicap}
+					/>
 					<div> {eventTime}</div>
 				</div>
 			</div>
@@ -115,6 +123,16 @@ const EventSwipper = ({ userInfo, i18n }) => {
 			<Autoplay Rows={arr} params={swipperParam} />
 		</>
 	);
+};
+
+const OddsAndHandicap = ({ homeOdds, awayOdds, hdp }) => {
+	return homeOdds && awayOdds ? (
+		<div className="odds">
+			<div id="homeodds">{homeOdds}</div>
+			<div>{Math.abs(hdp)}</div>
+			<div>{awayOdds}</div>
+		</div>
+	) : null;
 };
 
 EventSwipper.propTypes = {

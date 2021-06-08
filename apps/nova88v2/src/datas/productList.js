@@ -71,10 +71,17 @@ const defIconType = {
 	new: " icon-new"
 };
 
-const eventTime = {
+export const eventTime = {
 	new_vip: { startDate: "2021/02/05 11:00:00" },
 	casino_PT: { endDate: "2021/06/20 11:00:00" },
-	new_wap: { endDate: "2021/07/15 11:00:00" }
+	new_wap: { endDate: "2021/07/15 11:00:00" },
+	euro: {
+		endDate: "2021/07/13 12:00:00"
+	}
+};
+
+export const euro_event_time = {
+	endDate: "2021/07/13 12:00:00"
 };
 
 const gameList = ({ langId, currencyName }) => {

@@ -99,7 +99,7 @@
 	"lbl_Fishing": "Fishing",
 	"lbl_FootballBetting": "Football Betting",
 	"lbl_ForgetPassword": "Forgot your Password ",
-	"lbl_Free": "Free Play",
+	"lbl_Free": "DEMO",
 	"lbl_From": "From",
 	"lbl_GPI": "GPI",
 	"lbl_Games": "Games",
@@ -165,7 +165,7 @@
 	"lbl_PasswordTooltip": "6-18 alphanumeric (A-Z, a-z, 0-9) characters or special characters @$*!%#?&",
 	"lbl_PersonalMsg": "Personal Message",
 	"lbl_Phone": "Phone Number",
-	"lbl_PlayNow": "Play Now",
+	"lbl_PlayNow": "PLAY",
 	"lbl_PreferredCurrencyToolTip": "Preferred currency can not be changed after registration.",
 	"lbl_PrivacyPolicy": "Privacy Policy",
 	"lbl_Profile": "Profile",
@@ -537,6 +537,7 @@
 	"lbl_Jackpot":"Jackpot",
 	"lbl_SabaSport":"Saba Sports",
 	"lbl_BTISport" : "BTI Sports",
+	"lbl_Top10winners": "Top 10 Winners",
 
 	
 	"==============Transfer==============":"",
