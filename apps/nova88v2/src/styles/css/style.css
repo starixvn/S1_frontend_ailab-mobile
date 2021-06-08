@@ -2362,10 +2362,11 @@ footer > a.active .circleAnimation + span {
 
 #popup.backupDomain .pop .popTit {
   font-size: 4vw;
-  width: calc(100% - 6vw);
-  padding: 3vw;
+  width: calc(100% - 8vw);
+  padding: 3vw 5vw 3vw 3vw;
   background: #233d67;
   color: white;
+  max-height: 11vw;
 }
 
 #popup.backupDomain .pop .popTxt {

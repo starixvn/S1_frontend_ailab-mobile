@@ -140,22 +140,22 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.Cricket,
 							img: Cricket,
 							spanTextKey: "lbl_Cricket"
+						},
+						{
+							...defGameInfo.Wap,
+							img: Wap,
+							spanText: "WAP",
+							specialUrl: "&device=wap",
+							showAfterLogin: true,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.new_indo_wap
+									)
+								}
+							]
 						}
-						// {
-						// 	...defGameInfo.Wap,
-						// 	img: Wap,
-						// 	spanText: "WAP",
-						// 	specialUrl: "&device=wap",
-						// 	showAfterLogin: true,
-						// 	eventIcon: [
-						// 		{
-						// 			icon: defIconType.new,
-						// 			inPeriod: isEventPeriod(
-						// 				eventTime.new_indo_wap
-						// 			)
-						// 		}
-						// 	]
-						// }
 					]
 				},
 				{
