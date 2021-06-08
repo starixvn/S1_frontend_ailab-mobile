@@ -48,16 +48,9 @@ export const defIconType = {
 };
 
 const eventTime = {
-	ranking: { startDate: "2021/01/01 12:00:00" },
-	new_one789: { endDate: "2021/01/22 11:00:00" },
-	new_V8Poker: { endDate: "2021/03/05 23:59:59" },
-	new_ICG: { endDate: "2021/02/05 11:00:00" },
-	new_CQ9_fishing: { endDate: "2021/03/05 11:00:00" },
-	new_vip: { startDate: "2021/03/11 12:00:00" },
-	new_LiveCasino_N2Live: { startDate: "2021/03/12 11:00:00" },
-	liveCasino_pt: { endDate: "2021/06/30 11:00:00" },
 	new_BTI: { endDate: "2021/06/28 11:00:00" },
-	new_Km: { endDate: "2021/07/05 11:00:00" }
+	liveCasino_pt: { endDate: "2021/07/08 11:00:00" },
+	new_Km: { endDate: "2021/07/08 11:00:00" }
 };
 
 export const productList = langId => {
@@ -91,13 +84,7 @@ export const productList = langId => {
 				{
 					displayKey: "lbl_V8Poker",
 					img: game_V8Poker,
-					...defGameInfo.V8Poker,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.new_V8Poker)
-						}
-					]
+					...defGameInfo.V8Poker
 				},
 				{
 					...defGameInfo.kingMaker,
@@ -113,24 +100,12 @@ export const productList = langId => {
 				{
 					displayKey: "lbl_TraditionalLottery",
 					img: game_One789LotteryTra,
-					...defGameInfo.One789_lottery,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.new_one789)
-						}
-					]
+					...defGameInfo.One789_lottery
 				},
 				{
 					displayKey: "lbl_789Lottery",
 					img: game_One789Lottery,
-					...defGameInfo.One789_lottery_789,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.new_one789)
-						}
-					]
+					...defGameInfo.One789_lottery_789
 				},
 				{
 					displayKey: "lbl_SabaClub",
@@ -155,13 +130,7 @@ export const productList = langId => {
 		},
 		casino: {
 			displayKey: "lbl_Slots",
-			path: path.casino.root,
-			eventIcon: [
-				{
-					icon: defIconType.new_nav,
-					inPeriod: isEventPeriod(eventTime.new_ICG)
-				}
-			]
+			path: path.casino.root
 		},
 		liveCasino: {
 			displayKey: "lbl_LiveCasino",
@@ -184,27 +153,13 @@ export const productList = langId => {
 					displayKey: "N2Live",
 					icon: "icon icon-N2LIVE",
 					img: liveCasino_N2,
-					...defGameInfo.LIVEcasinoN2,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(
-								eventTime.new_LiveCasino_N2Live
-							)
-						}
-					]
+					...defGameInfo.LIVEcasinoN2
 				},
 				{
 					displayKey: "lbl_liveCasino_789SeDie",
 					icon: "icon icon-one789",
 					img: liveCasino_One789,
-					...defGameInfo.LIVEcasinoOne789,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.new_one789)
-						}
-					]
+					...defGameInfo.LIVEcasinoOne789
 				},
 				{
 					displayKey: "WM",
@@ -264,97 +219,31 @@ export const productList = langId => {
 					displayKey: "lbl_Paradise",
 					img: fishing_CQ9_AB3,
 					icon: "icon icon-cq9",
-					...defGameInfo.Fishing_AB3,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.new_CQ9_fishing)
-						}
-					]
+					...defGameInfo.Fishing_AB3
 				},
-				// {
-				// 	displayKey: "lbl_Lucky_Fishing",
-				// 	img: fishing_CQ9_AT05,
-				// 	icon: "icon icon-cq9",
-				// 	...defGameInfo.Fishing_AT05,
-				// 	eventIcon: [
-				// 		{
-				// 			icon: defIconType.new,
-				// 			inPeriod: isEventPeriod(eventTime.new_CQ9_fishing)
-				// 		}
-				// 	]
-				// },
 				{
 					displayKey: "lbl_Oneshot_Fishing",
 					img: fishing_CQ9_AT01,
 					icon: "icon icon-cq9",
-					...defGameInfo.Fishing_AT01,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.new_CQ9_fishing)
-						}
-					]
+					...defGameInfo.Fishing_AT01
 				},
-				// {
-				// 	displayKey: "lbl_Water_Margin_Fishing",
-				// 	img: fishing_CQ9_AT06,
-				// 	icon: "icon icon-cq9",
-				// 	...defGameInfo.Fishing_AT06,
-				// 	eventIcon: [
-				// 		{
-				// 			icon: defIconType.new,
-				// 			inPeriod: isEventPeriod(eventTime.new_CQ9_fishing)
-				// 		}
-				// 	]
-				// },
-				// {
-				// 	displayKey: "lbl_Thunder_Fighter",
-				// 	img: fishing_CQ9_AT04,
-				// 	icon: "icon icon-cq9",
-				// 	...defGameInfo.Fishing_AT04,
-				// 	eventIcon: [
-				// 		{
-				// 			icon: defIconType.new,
-				// 			inPeriod: isEventPeriod(eventTime.new_CQ9_fishing)
-				// 		}
-				// 	]
-				// },
 				{
 					displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
 					img: fishing_ICG_DB,
 					icon: "icon icon-ICG",
-					...defGameInfo.ICG_DRAGONBALL_FISHING,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.new_ICG)
-						}
-					]
+					...defGameInfo.ICG_DRAGONBALL_FISHING
 				},
 				{
 					displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS",
 					img: fishing_ICG_FOS,
 					icon: "icon icon-ICG",
-					...defGameInfo.ICG_FISHING_OF_SAVIORS,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.new_ICG)
-						}
-					]
+					...defGameInfo.ICG_FISHING_OF_SAVIORS
 				},
 				{
 					displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS",
 					img: fishing_ICG_TTATP,
 					icon: "icon icon-ICG",
-					...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.new_ICG)
-						}
-					]
+					...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS
 				},
 				{
 					displayKey: "lbl_FishingGG",
@@ -386,23 +275,11 @@ export const productList = langId => {
 		},
 		vip: {
 			displayKey: "lbl_VIP",
-			path: path.vip.root,
-			eventIcon: [
-				{
-					icon: defIconType.new_nav,
-					inPeriod: isEventPeriod(eventTime.new_vip)
-				}
-			]
+			path: path.vip.root
 		},
 		ranking: {
 			displayKey: "lbl_Ranking",
-			path: path.leaderBoard.root,
-			eventIcon: [
-				{
-					icon: defIconType.live,
-					inPeriod: isEventPeriod(eventTime.ranking)
-				}
-			]
+			path: path.leaderBoard.root
 		}
 	};
 };

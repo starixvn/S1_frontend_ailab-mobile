@@ -108,13 +108,10 @@ const defIconType = {
 };
 
 export const eventTime = {
-	ranking: { startDate: "2021/01/01 12:00:00" },
-	new_vip: { startDate: "2021/03/11 11:00:00" },
-	new_LiveCasino_N2Live: { startDate: "2021/03/12 11:00:00" },
 	casino_pt: { endDate: "2021/06/20 11:00:00" },
-	liveCasino_pt: { endDate: "2021/06/30 11:00:00" },
+	liveCasino_pt: { endDate: "2021/07/08 11:00:00" },
 	new_BTI: { endDate: "2021/06/28 11:00:00" },
-	new_Km: { endDate: "2021/07/05 11:00:00" },
+	new_Km: { endDate: "2021/07/08 11:00:00" },
 	euro: { endDate: "2021/07/13 12:00:00" }
 };
 
@@ -422,13 +419,7 @@ const gameList = [
 			{
 				...defGameInfo.LIVEcasinoN2,
 				spanText: "N2Live",
-				img: LIVEcasino_N2Live,
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.new_LiveCasino_N2Live)
-					}
-				]
+				img: LIVEcasino_N2Live
 			},
 			{
 				...defGameInfo.LIVEcasinoWM,
