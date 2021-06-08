@@ -17,6 +17,7 @@ import {
 const Menu = ({ i18n, userInfo, setPopBox }) => {
 	const [selectedCol, setSelectedCol] = useState(defCol.sports);
 	const [showingTpIds, setShowningTpIds] = useState(null);
+	const [maintainList, setMaintainList] = useState(null);
 	const { handleLogin } = useHandleLogin();
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 	const navigate = useNavigate();
@@ -43,6 +44,12 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 				}
 			});
 		}
+		api.tp.GetTpMaintainList().then(res => {
+			if (res.data.errorCode === 0 && isMountedRef.current) {
+				const arr = res.data?.data.map(el => el.tpId);
+				setMaintainList(arr);
+			}
+		});
 	}, [setShowningTpIds, userInfo.isLogin]);
 
 	const showSubPanel = ({ panel, popBox }) => {
@@ -157,6 +164,7 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 						userInfo={userInfo}
 						handleLogin={handleLogin}
 						handleGoToGame={handleGoToGame}
+						isMaintain={maintainList?.includes(subItem.tpId)}
 					/>
 				);
 			});
@@ -186,7 +194,14 @@ Menu.propTypes = {
 	setPopBox: PropTypes.func.isRequired
 };
 
-const SubGame = ({ game, i18n, userInfo, handleLogin, handleGoToGame }) => {
+const SubGame = ({
+	game,
+	i18n,
+	userInfo,
+	handleLogin,
+	handleGoToGame,
+	isMaintain
+}) => {
 	const showingEventIcon = getEventIcon({ eventIcon: game?.eventIcon });
 
 	const clickGame = async ({
@@ -226,26 +241,47 @@ const SubGame = ({ game, i18n, userInfo, handleLogin, handleGoToGame }) => {
 
 	if (game?.href) {
 		return (
-			<a href={game.href} target="_blank" rel="noreferrer">
+			<a
+				className={isMaintain ? "active" : ""}
+				href={game.href}
+				target="_blank"
+				rel="noreferrer"
+				tabIndex={isMaintain ? "-1" : 0}>
 				{showingEventIcon !== "" ? (
 					<i className={`icon ${showingEventIcon}`} />
 				) : null}
 				<img src={game.img} alt={i18n[game.spanTextKey]} />
 				<div>{game.spanText || i18n[game.spanTextKey]}</div>
+				{isMaintain ? (
+					<div className="under">{i18n.lbl_underMaintenance}</div>
+				) : (
+					""
+				)}
 			</a>
 		);
 	}
 
 	return game?.path ? (
-		<Link to={game.path} state={game.parameter}>
+		<Link
+			className={isMaintain ? "active" : ""}
+			to={game.path}
+			state={game.parameter}
+			tabIndex={isMaintain ? "-1" : 0}>
 			{showingEventIcon !== "" ? (
 				<i className={`icon ${showingEventIcon}`} />
 			) : null}
 			<img src={game.img} alt={i18n[game.spanTextKey]} />
 			<div>{game.spanText || i18n[game.spanTextKey]}</div>
+			{isMaintain ? (
+				<div className="under">{i18n.lbl_underMaintenance}</div>
+			) : (
+				""
+			)}
 		</Link>
 	) : (
 		<button
+			className={isMaintain ? "active" : ""}
+			disabled={isMaintain}
 			onClick={clickGame.bind(this, {
 				tpId: game.tpId,
 				gameId: game.gameId,
@@ -257,6 +293,11 @@ const SubGame = ({ game, i18n, userInfo, handleLogin, handleGoToGame }) => {
 			) : null}
 			<img src={game.img} alt={i18n[game.spanTextKey]} />
 			<div>{game.spanText || i18n[game.spanTextKey]}</div>
+			{isMaintain ? (
+				<div className="under">{i18n.lbl_underMaintenance}</div>
+			) : (
+				""
+			)}
 		</button>
 	);
 };
@@ -266,7 +307,8 @@ SubGame.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
 	handleLogin: PropTypes.func.isRequired,
-	handleGoToGame: PropTypes.func.isRequired
+	handleGoToGame: PropTypes.func.isRequired,
+	isMaintain: PropTypes.bool.isRequired
 };
 
 export default Menu;

@@ -114,6 +114,8 @@ const defPlatfrom = [
 		imgName: "amb"
 	}
 ];
+//
+//
 
 const GameProvider = ({ userInfo, i18n }) => {
 	const [showingTpIds, setShowingTpIds] = useState([]);
