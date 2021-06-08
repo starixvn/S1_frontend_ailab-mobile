@@ -31,12 +31,12 @@
 	"lbl_Yes": "Yes",
 	"lbl_No": "No",
 	"lbl_RestoreAll": "Restore All",
-	"lbl_Vintage_Club": "Vintage_Club",
-	"lbl_Silver_Club": "Silver_Club",
-	"lbl_Gold_Club": "Gold_Club",
-	"lbl_Titanium_Club": "Titanium_Club",
-	"lbl_Diamond_Club": "Diamond_Club",
-	"lbl_Nova_Club": "Nova_Club",
+	"lbl_Vintage_Club": "VINTAGE CLUB",
+	"lbl_Silver_Club": "SILVER CLUB",
+	"lbl_Gold_Club": "GOLD CLUB",
+	"lbl_Titanium_Club": "TITANIUM CLUB",
+	"lbl_Diamond_Club": "DIAMOND CLUB",
+	"lbl_Nova_Club": "NOVA CLUB",
 	"lbl_ReSend": "Re-send in",
 	"lbl_Minutes": "Minutes",
 	"lbl_Register": "Register",
@@ -92,6 +92,8 @@
 	"lbl_Deposit": "Deposit",
 	"lbl_Transfer": "Transfer",
 	"lbl_Withdrawal": "Withdrawal",
+	"lbl_AllGames": "All Games",
+	"lbl_Req": "Req.",
 	"lbl_Email": "Email",
 	"msg_UsernameReq": "Username is required.",
 	"msg_PasswordReq": "Password is required.",
@@ -183,7 +185,11 @@
 	"lbl_Free": "Free",
 	"lbl_Jackpot":"Jackpot",
 
-	"======================================Currency=========================================": "",
+	"-==================HotEvent====================": "",
+	"lbl_Odds":"Odds",
+	"lbl_Handicap":"Hdp",
+
+	"-==================Currency====================": "",
 	"Currency_1": "SGD",
 	"Currency_12": "GBP",
 	"Currency_13": "RMB",
@@ -221,8 +227,8 @@
 	"lbl_Paradise": "Paradise",
 	"lbl_Cricket": "Cricket",
 	"lbl_SabaSoccer": "Saba Soccer",
-	"lbl_PlayNow": "Play Now",
-	"lbl_FreePlay": "Free Play",
+	"lbl_PlayNow": "PLAY",
+	"lbl_FreePlay": "DEMO",
 	"lbl_Lottery": "Lottery",
 	"lbl_Tennis": "Tennis",
 	"lbl_Keno": "Keno",
@@ -234,7 +240,10 @@
 	"lbl_Notice": "NOTICE",
 	"lbl_Poker": "Poker",
 	"lbl_eSports": "E-Sports",
-
+	"lbl_KingMaker" : "KingMaker",
+	"lbl_Amb" : "Amb",
+	"lbl_Games" : "Games",
+	"lbl_9w" : "9w Sports",
 	"==============================================Casino====================================": "",
 
 	"lbl_AllProvider": "All Platform",
@@ -312,6 +321,12 @@
 	"lbl_VerifyNow": "Vertify Now",
 	"lbl_Cancel": "Cancel",
 	"lbl_LastLogin": "Last Login",
+	"lbl_CountryTH": "Thailand",
+	"lbl_CountryMY": "Malaysia",
+	"lbl_CountryCS": "China",
+	"lbl_CountryID": "Indonesia",
+	"lbl_CountryIN": "India",
+	"lbl_CountryVN": "Vietnam",
 
 	"==============================================BankInfo====================================": "",
 
@@ -325,7 +340,10 @@
 	"lbl_MissionCompleted": "Mission completed",
 	"lbl_RewardAmount": "Rewards Amounts",
 	"lbl_NoOfAchievements": "No. of achievements",
-	"lbl_ReferralStatus": "Your Referral Status",
+	"lbl_ReferralStatus0":"Approved",
+	"lbl_ReferralStatus1":"Processing",
+	"lbl_ReferralStatus2":"Expired",
+	"lbl_ReferralStatus":"Your Referral Status",
 	"lbl_InvitationAccepted": "Invitation Accepted",
 	"lbl_TotalBet": "Total Bet",
 	"lbl_TotalDeposit": "Total Deposit",
@@ -366,6 +384,8 @@
 	"lbl_WithdrawalStatus7": "Rejected",
 	"lbl_WithdrawalStatus8": "Processing",
 	"lbl_WithdrawalDailyMinMax": "Daily Min/Max Limit:  {{0}}/{{1}}",
+	"lbl_WithdrawalDailyReached":"Your Daily Limit Reached.",
+	"lbl_Insufficientbalance":"Insufficient balance",
 
 	"==============================================Transfer====================================": "",
 
@@ -465,6 +485,7 @@
 	"lbl_Percentage":"Percentage",
 	"lbl_TotalAmount":"Total Amount",
 	"lbl_ClaimNow":"Claim Now",
+	"lbl_ClaimSucceed":"Successful! Your Bonus has been claimed.",
 
 	"==============================================Streaming====================================": "",
 
@@ -497,6 +518,7 @@
 	"msg_PasswordLength": "Password must between 6 and 15 characters long.",
 	"lbl_Please_enter_Affiliate_ID": "Please enter Affiliate ID (Optional), it can not change once enter!",
 	"lbl_Affiliate_ID": "Affiliate ID/Referral",
+	"lbl_AfterJoinHint":"Congratulation! You have successfully register as a member.",
 
 	"==============================================Login====================================": "",
 
@@ -559,18 +581,36 @@
 	"lbl_DepositType3": "Local Bank",
 	"lbl_DepositType4": "Crypto Pay",
 
+	"==============================================Payment QR====================================": "",
+	"lbl_PaymentDetails":"Payment Details",
+	"lbl_OrderAmount":"Order Amount",
+	"lbl_Pay":"PAY",
+	"lbl_PaymentQRDesc1":"Please transfer the amount.",
+	"lbl_PaymentQRDesc2":"Provided for better experience.",
+	"lbl_ImportantNotes":"Important Notes",
+	"lbl_PaymentQRNote1":"Please do not refresh your browser.",
+	"lbl_PaymentQRNote2":"Please take note of the reference number if any event you need to contact our Customer Serivce for further action.",
+	"lbl_PaymentTimeLeft":"PAYMENT TIME LEFT",
+
 	"==============================================Backup Domain====================================": "",
 
 	"lbl_nova88_backup_website":"Please save the latest NOVA88 domain for backup purposes.",
 	"lbl_kindly_visit_alternate_link_for_better_performance":"Should you feel slowness, kindly visit alternate link for better performance.",
 	"lbl_Copy":"Copy",
 	"lbl_Dont_show_me_again":"Dont show me again",
+	"lbl_DearValuedCustomers":"Dear Nova88 Valued Customers,",
 	"==============================================Wallet====================================": "",
 	"lbl_TpWallet_1": "Sportsbook Wallet",
 	"lbl_TpWallet_27": "PT Wallet",
-
+	"lbl_BonusWallet_1": "Casino Bonus Wallet",
+	"lbl_BonusWallet_2": "Live Casino Bonus Wallet",
 	"==============Important Notice==============":"",
 	"lbl_ImportantNotice":"IMPORTANT NOTICE",
+
+	"==============Add To Home Screen==============":"",
+	"lbl_AddToHome_Hint":"How to add home screen?",
+	"lbl_AddToHome_Tutorial":"Tutorial",
+	"lbl_Skip":"Skip",
 
 	"==============Crypto Wallet==============":"",
 	"lbl_CryptoPay":"Crypto Pay",
@@ -589,5 +629,18 @@
 	"lbl_Wallet_Nickname_Tip" : "This is on optional wallet nickname to facilitate your identification",
 	"lbl_Wallet_Address_Tip" : "Enter only letters (a-z) and digits(0-9).",
 	"lbl_BankAccountNameHint" : "Please use your real name for account name. This field cannot be changed once entered!",
-	"lbl_DuplicateAddress" : "You have already stored this information."
+	"lbl_DuplicateAddress" : "You have already stored this information.",
+
+	"=============Download App===============":"",
+	"lbl_Downloads":"Download",
+	"lbl_DownloadAppHint":"Best Mobile Experience",
+	"lbl_AppDownload":"APP DOWNLOAD",
+	"lbl_iOS":"iOS",
+	"lbl_Android":"Android",
+	"lbl_InstallationTutorial":"Installation tutorial",
+	"lbl_iOSAuth":"iOS App Trust Authentication",
+	"lbl_appHint1":"Once Nova88 App is installed, tap Trust",
+	"lbl_appHint2":"or complete the setting as below.",
+	"lbl_DownloadAppNow": "Download APP now"
+
 }

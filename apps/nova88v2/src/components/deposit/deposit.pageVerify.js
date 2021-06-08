@@ -7,7 +7,8 @@ export default (
 	setPopBox,
 	navigate,
 	setPageVerify,
-	propsFromParent
+	propsFromParent,
+	isDomainPopOpen
 ) => {
 	useEffect(() => {
 		let mounted = true;
@@ -16,7 +17,8 @@ export default (
 				if (
 					userInfo.isLogin &&
 					userInfo.currencyId &&
-					(!userInfo.accountName || !userInfo.phoneNo)
+					(!userInfo.accountName || !userInfo.phoneNo) &&
+					isDomainPopOpen === false
 				) {
 					const ClosePopBox = () => {
 						setPopBox({ isOpen: false });
@@ -60,6 +62,7 @@ export default (
 		setPopBox,
 		setPageVerify,
 		navigate,
-		propsFromParent
+		propsFromParent,
+		isDomainPopOpen
 	]);
 };

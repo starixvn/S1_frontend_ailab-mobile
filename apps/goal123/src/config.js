@@ -27,13 +27,16 @@ export const siteInfo = langId => {
 	};
 };
 
+const bannerImgUrl = "https://banner.goal123.org";
+
 export default process.env.NODE_ENV === "production"
 	? {
 			siteName,
 			apiURL: "",
 			openURL: "",
 			imgUrl: "",
-			t_and_cURL: ""
+			t_and_cURL: "",
+			bannerImgUrl
 	  }
 	: {
 			siteName,
@@ -44,7 +47,8 @@ export default process.env.NODE_ENV === "production"
 			// openURL: "http://localhost:60930"
 
 			apiURL: "https://stag.goal123.com",
-			imgUrl: "http://stag.goal123.com",
+			imgUrl: "https://stag.goal123.com",
 			t_and_cURL: "http://stag.goal123.com",
-			openURL: "http://stag.goal123.com"
+			openURL: "https://stag.goal123.com",
+			bannerImgUrl
 	  };

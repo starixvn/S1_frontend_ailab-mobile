@@ -23,6 +23,8 @@ import {
 } from "../../service/api/payment";
 import RecentDatas from "./deposit.recentDatas";
 import { number_format, isConvert } from "../common/common";
+import ImportantNote from "./importantNote";
+import { useGetDomainList } from "../hook/useGetDomainList";
 
 const defPayType = {
 	onlineBank: "onlineBank",
@@ -32,12 +34,12 @@ const defPayType = {
 };
 
 const defPayment = {
-	[defPayType.mobilePay]: {
-		displayKey: "lbl_MobileDeposit",
-		creditTimeKey: "lbl_5mins"
-	},
 	[defPayType.localBank]: {
 		displayKey: "lbl_WireTransfers",
+		creditTimeKey: "lbl_5mins"
+	},
+	[defPayType.mobilePay]: {
+		displayKey: "lbl_MobileDeposit",
 		creditTimeKey: "lbl_5mins"
 	},
 	[defPayType.onlineBank]: {
@@ -91,6 +93,12 @@ const Panel = () => {
 	const [recentDatas, setRecentDatas] = useState([]);
 
 	const [pageVerify, setPageVerify] = useState(true);
+
+	useGetDomainList({
+		setPopBox,
+		userInfo,
+		i18n
+	});
 
 	PageVerify(userInfo, i18n, setPopBox, navigate, setPageVerify, false);
 
@@ -160,17 +168,6 @@ const Panel = () => {
 						: [];
 
 				try {
-					const res = await api_GetMobilePayGroupList();
-					payments[defPayType.mobilePay] = getDataListResult(res);
-
-					defaultSelect = setDefaultSelect(
-						defaultSelect,
-						defPayType.mobilePay,
-						payments[defPayType.mobilePay]
-					);
-				} catch (error) {}
-
-				try {
 					const res = await api_GetBankInfoOffList();
 					payments[defPayType.localBank] = getDataListResult(res);
 
@@ -178,6 +175,17 @@ const Panel = () => {
 						defaultSelect,
 						defPayType.localBank,
 						payments[defPayType.localBank]
+					);
+				} catch (error) {}
+
+				try {
+					const res = await api_GetMobilePayGroupList();
+					payments[defPayType.mobilePay] = getDataListResult(res);
+
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defPayType.mobilePay,
+						payments[defPayType.mobilePay]
 					);
 				} catch (error) {}
 
@@ -347,6 +355,7 @@ const Panel = () => {
 				ClickCancel={ClickCancel}
 				ReloadFunc={GetDepositInfoRecent}
 			/>
+			<ImportantNote langId={userInfo.langId} i18n={i18n} />
 		</>
 	);
 };

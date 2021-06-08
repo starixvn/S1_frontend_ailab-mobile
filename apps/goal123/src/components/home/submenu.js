@@ -30,9 +30,18 @@ import useGetTpBalance from "../hook/useGetTpBalance";
 
 const defSubMenus = [
 	{
-		...defGameInfo.Sports,
 		displayKey: "lbl_Sports",
-		icon: "icon icon-sports"
+		icon: "icon icon-sports",
+		subItems: [
+			{
+				displayKey: "lbl_SabaSport",
+				...defGameInfo.Sports
+			},
+			{
+				displayKey: "lbl_BTISport",
+				...defGameInfo.BTISport
+			}
+		]
 	},
 	{
 		displayKey: "lbl_Games",
@@ -41,6 +50,10 @@ const defSubMenus = [
 			{
 				...defGameInfo.sabaClub,
 				displayKey: "lbl_SabaClub"
+			},
+			{
+				...defGameInfo.kingMaker,
+				displayKey: "lbl_KingMaker"
 			},
 			{
 				...defGameInfo.V8Poker,

@@ -296,6 +296,7 @@ header .Login .inputBox .JoinRule {
   visibility: hidden;
   opacity: 0;
   margin-top: 1vw;
+  white-space: initial;
 }
 
 header .Join .inputBox .JoinRule.open,
@@ -363,7 +364,8 @@ header .Login button {
 header .Join .Terms,
 header .Login .Terms {
   margin: 1vw auto;
-  line-height: 26px;
+  line-height: 20px;
+  white-space: initial;
 }
 
 header .Join .Terms.error,
@@ -468,15 +470,16 @@ header button.clickBtn::before {
 
 header .headerButton {
   margin-left: 2vw;
+  white-space: nowrap;
 }
 
 header .headerButton > button {
   border-radius: 3px;
   color: #000;
-  width: 90px;
+  min-width: 70px;
   height: 30px;
   background: #58cdff;
-  margin-left: 5px;
+  margin-left: 3px;
   font-size: 3vw;
 }
 
@@ -1090,8 +1093,8 @@ footer > a.open {
 }
 
 #popup {
-  width: calc(100% - 16vw);
-  height: calc(100% - 16vw);
+  width: 100%;
+  height: 100%;
   position: fixed;
   z-index: 9;
   top: 0;
@@ -1111,6 +1114,8 @@ footer > a.open {
   padding: 8vw;
   overflow: auto;
   display: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   z-index: 10;
 }
 
@@ -1122,7 +1127,6 @@ footer > a.open {
 
 #popup > div {
   border: 1px solid #0c1a3f;
-  padding: 2vw 4vw;
 }
 
 #popup .close {
@@ -1219,6 +1223,132 @@ footer > a.open {
   margin-top: 5vw;
 }
 
+#popup.backupDomain .pop {
+  border-radius: 5px;
+  overflow: hidden;
+  background: transparent !important;
+  width: 100%;
+}
+
+#popup.backupDomain .pop .icon-close {
+  color: white;
+  position: initial;
+  margin-right: 10px;
+}
+
+#popup.backupDomain .pop .popTit {
+  font-size: 3.5vw;
+  padding: 3vw;
+  background: #348eff;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+#popup.backupDomain .pop .popTxt {
+  color: #fff;
+  padding: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+#popup.backupDomain .pop .popTxt img {
+  width: 90%;
+  margin: 10px;
+}
+
+#popup.backupDomain .pop .popTxt > div {
+  padding: 1vw 2vw;
+  margin: 0;
+}
+
+#popup.backupDomain .pop .popTxt .btn-group {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 3vw 0;
+}
+
+#popup.backupDomain .pop .popTxt .btn-group button {
+  border-radius: 30px;
+  padding: 2vw;
+  max-width: 30vw;
+}
+
+#popup.backupDomain .pop .popTxt .url {
+  width: calc(100% - 8vw);
+  padding: 1vw 2vw;
+  border-radius: 30px;
+  border: 1px solid #fff;
+  margin: 3vw 2vw 1vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+#popup.backupDomain .pop .popTxt .url .copyurl {
+  position: absolute;
+  border-radius: 30px;
+  color: white;
+  padding: 0.5vw 2.5vw 1vw;
+  font-size: 3vw;
+  right: 0.8vw;
+  background: #bac2d2;
+}
+
+#popup.backupDomain .pop .popTxt .text-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 3vw 0;
+}
+
+#popup.backupDomain .pop .popTxt .text-center input {
+  display: none;
+}
+
+#popup.backupDomain .pop .popTxt .text-center input[type="checkbox"] + label {
+  margin: 0vw 1vw 0 0;
+  border: 1px solid #f77a00;
+  border-radius: 100%;
+  width: 4vw;
+  height: 4vw;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  vertical-align: middle;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#popup.backupDomain .pop .popTxt .text-center input[type="checkbox"] + label > div {
+  width: 3vw;
+  height: 3vw;
+  background: transparent;
+  margin: auto;
+  border-radius: 100%;
+}
+
+#popup.backupDomain .pop .popTxt .text-center input[type="checkbox"]:checked + label > div {
+  background: #f77a00;
+}
+
 .header {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -1304,6 +1434,10 @@ footer > a.open {
 
 .mainLogin {
   padding-top: 37vw;
+}
+
+.forget {
+  padding-top: 10vh;
 }
 
 .balance {
@@ -2698,6 +2832,7 @@ a.clickBtn:before {
 .tip {
   margin-top: 1vw;
   display: none;
+  white-space: initial;
 }
 
 .tip a {
@@ -2716,6 +2851,7 @@ a.clickBtn:before {
   display: none;
   margin-top: 1vw;
   width: 100%;
+  white-space: initial;
 }
 
 .errortip.open {
@@ -3333,6 +3469,11 @@ a.clickBtn:before {
   color: #fff;
   margin-top: 10vw;
   text-align: center;
+}
+
+.not-found .icon {
+  font-size: 6vw;
+  color: #f77a00;
 }
 
 .icon-spinner11.open:before {
@@ -4390,7 +4531,6 @@ span.important {
           flex-direction: column;
   width: 100%;
   position: relative;
-  border-bottom: 1px solid #101d41;
 }
 
 .bannerS img {
@@ -4506,6 +4646,7 @@ span.important {
   position: relative;
   width: 30vw;
   margin-bottom: 2vw;
+  text-align: center;
 }
 
 .gameArea-box img {
@@ -4676,6 +4817,62 @@ span.important {
   font-size: 3vw;
 }
 
+.downloanFrame {
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  height: 50px;
+  background-color: #efece7;
+}
+
+.downloanFrame.open {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.downloanFrame .left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.downloanFrame .left .icon-close {
+  display: block;
+  position: inherit;
+  top: 0;
+  font-size: 5vw;
+  margin-left: 10px;
+  color: #000;
+}
+
+.downloanFrame .left img {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+}
+
+.downloanFrame .left .text {
+  width: 150px;
+  margin-left: 10px;
+  color: #000;
+}
+
+.downloanFrame .downBtn {
+  padding: 10px;
+  border: 1px solid #000;
+  margin-right: 10px;
+  color: #000;
+}
+
 .headerT {
   width: 100%;
   background-color: #010e33;
@@ -4711,7 +4908,7 @@ span.important {
 
 .headerT .headerTLogout .heardTitle {
   margin: 0 auto;
-  font-size: 5vw;
+  font-size: 3vw;
 }
 
 .headerT .headerTLogout img {
@@ -7193,7 +7390,7 @@ span.important {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  top: 12.7vh;
+  top: 64%;
   font-size: 12px;
   color: #021e46;
   font-weight: bold;
@@ -7273,7 +7470,7 @@ span.important {
   position: fixed;
   bottom: 10vh;
   right: 3vw;
-  z-index: 1;
+  z-index: 5;
 }
 
 .mystery_close {
@@ -7305,7 +7502,7 @@ span.important {
   width: 100%;
   height: 47vw;
   left: 0;
-  top: 0;
+  top: 12vw;
 }
 
 .mysteryEvent > div {
@@ -7849,7 +8046,7 @@ span.important {
 
 .filterBtn {
   margin: 3vw auto;
-  display: unset;
+  display: inline-block;
   -ms-flex-item-align: start;
       align-self: flex-start;
   white-space: nowrap;
@@ -8739,6 +8936,55 @@ span.important {
   margin-right: 0;
 }
 
+.importantBox {
+  background: rgba(12, 26, 63, 0.5);
+  border: 1px solid #1d2f62;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 0 0 5px 5px;
+  padding: 2vw;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  background-color: #373e4f;
+  border-radius: 5px;
+  border: 0;
+}
+
+.importantBox h1 {
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.importantBox h1.icon::before {
+  margin-right: 5px;
+}
+
+.importantBox ol {
+  padding-left: 15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.importantBox ol li {
+  list-style: decimal;
+  margin-bottom: 5px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.importantBox ol li span {
+  font-weight: bold;
+  color: #fff;
+}
+
+.importantBox ol li a {
+  display: inline;
+  color: #3292f8;
+}
+
 .depositModule_mobile,
 .depositModule_online,
 .depositModule_local,
@@ -8809,15 +9055,6 @@ span.important {
   padding: 2vw;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-}
-
-.depositModule_mobile .selectModule.important,
-.depositModule_online .selectModule.important,
-.depositModule_local .selectModule.important,
-.depositModule_topupmobile .selectModule.important {
-  background-color: #373e4f;
-  border-radius: 5px;
-  border: 0;
 }
 
 .depositModule_mobile .selectModule input[type="radio"],
@@ -9730,5 +9967,487 @@ span.important {
 
 .joinSuccess .logo img {
   width: 50%;
+}
+
+.top10Aear {
+  width: 90%;
+  margin: 20px auto;
+  position: relative;
+}
+
+.top10Aear .topImg {
+  position: absolute;
+  bottom: -5px;
+  width: 100%;
+  height: 55px;
+  pointer-events: none;
+  background: url(../img/top10/topImg.png) no-repeat center;
+  background-size: 100%;
+  z-index: 1;
+}
+
+.top10Aear .title {
+  text-align: center;
+  padding: 8px 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(#4dc4ff), to(#3097ff));
+  background: linear-gradient(to bottom, #4dc4ff 0%, #3097ff 100%);
+  border-radius: 10px 10px 0 0;
+}
+
+.top10Aear .top10Box {
+  height: 140px;
+  overflow-y: auto;
+  padding-bottom: 50px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.top10Aear .top10Box > div > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top10Aear .top10Box > div > div:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.top10Aear .top10Box > div > div > div {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 10px;
+}
+
+.top10Aear .top10Box > div > div > div img {
+  margin-right: 5px;
+}
+
+.top10Aear .top10Box > div > div > div.money {
+  color: #ffcd35;
+}
+
+@-webkit-keyframes top10 {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  30% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  80% {
+    -webkit-transform: translateY(-75%);
+            transform: translateY(-75%);
+  }
+  100% {
+    -webkit-transform: translateY(-75%);
+            transform: translateY(-75%);
+  }
+}
+
+@keyframes top10 {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  30% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  80% {
+    -webkit-transform: translateY(-75%);
+            transform: translateY(-75%);
+  }
+  100% {
+    -webkit-transform: translateY(-75%);
+            transform: translateY(-75%);
+  }
+}
+
+.favouriteModule {
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 9999;
+}
+
+.favouriteModule .favourite {
+  position: fixed;
+  width: calc(100% - 12vw);
+  height: 20vw;
+  padding: 4vw;
+  margin: 0 2vw;
+  bottom: 2vw;
+  border-radius: 3px;
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(#dfe1e6));
+  background: linear-gradient(to bottom, white 0%, #dfe1e6 100%);
+  z-index: 1;
+  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-animation: favourite 1.5s linear;
+          animation: favourite 1.5s linear;
+}
+
+.favouriteModule .favourite > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #001942;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: right;
+  font-size: 4vw;
+}
+
+.favouriteModule .favourite > div div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.favouriteModule .favourite > div div a,
+.favouriteModule .favourite > div div button {
+  color: white;
+  margin-left: 2vw;
+  background-color: #429bff;
+  padding: 0 2vw;
+  border-radius: 5px;
+  font-size: 3vw;
+  height: 7vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-transform: uppercase;
+}
+
+.favouriteModule .favourite img {
+  width: 20vw;
+  height: 20vw;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+@-webkit-keyframes favourite {
+  0% {
+    bottom: 220vw;
+  }
+  100% {
+    bottom: 10vw;
+  }
+}
+
+@keyframes favourite {
+  0% {
+    bottom: 220vw;
+  }
+  100% {
+    bottom: 10vw;
+  }
+}
+
+.downloadarea {
+  background: url(../img/downloadBg.png) no-repeat;
+  width: 100%;
+  height: 34vh;
+  background-size: 100%;
+  position: relative;
+}
+
+.downloadarea::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(51, 187, 255, 0.5)), to(rgba(35, 117, 235, 0)));
+  background: linear-gradient(to top, rgba(51, 187, 255, 0.5) 0%, rgba(35, 117, 235, 0) 100%);
+  pointer-events: none;
+}
+
+.downloadarea > button,
+.downloadarea a {
+  position: absolute;
+  min-width: 130px;
+  padding: 8px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#33bbff), to(#2375eb));
+  background: linear-gradient(to bottom, #33bbff 0%, #2375eb 100%);
+  right: 10vw;
+  top: 26vw;
+  color: #fff;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.downloadarea > button img,
+.downloadarea a img {
+  width: 15px;
+  margin-right: 5px;
+}
+
+.downloadarea > button:nth-last-child(1),
+.downloadarea a:nth-last-child(1) {
+  top: 40vw;
+}
+
+.downloadArea {
+  padding: 0;
+}
+
+@media screen and (max-width: 700px) {
+  .downloadArea {
+    width: 100%;
+  }
+}
+
+.downloadArea .downloadT {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  background: url(../img/download/downloanBG.png) no-repeat bottom center;
+  background-size: cover;
+}
+
+.downloadArea .downloadT .logo {
+  margin-top: 20vh;
+}
+
+@media screen and (max-width: 700px) {
+  .downloadArea .downloadT .logo {
+    margin-top: 15vh;
+    width: 180px;
+  }
+}
+
+.downloadArea .downloadT h1 {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 10px 0 50px 0;
+}
+
+@media screen and (max-width: 700px) {
+  .downloadArea .downloadT h1 {
+    font-size: 6vw;
+  }
+}
+
+.downloadArea .downloadT .downloadFrame {
+  width: 650px;
+  border-radius: 10px;
+  background: #000;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(65, 197, 255, 0.5)), to(rgba(145, 51, 155, 0.5)));
+  background: linear-gradient(to bottom, rgba(65, 197, 255, 0.5) 0%, rgba(145, 51, 155, 0.5) 100%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-bottom: 210px;
+}
+
+@media screen and (max-width: 700px) {
+  .downloadArea .downloadT .downloadFrame {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 200px;
+  }
+}
+
+.downloadArea .downloadT .downloadFrame p {
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+@media screen and (max-width: 700px) {
+  .downloadArea .downloadT .downloadFrame p {
+    font-size: 4vw;
+  }
+}
+
+.downloadArea .downloadT .downloadFrame > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 40px 0;
+}
+
+@media screen and (max-width: 700px) {
+  .downloadArea .downloadT .downloadFrame > div {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+  }
+}
+
+.downloadArea .downloadT .downloadFrame > div div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 20px;
+}
+
+@media screen and (max-width: 700px) {
+  .downloadArea .downloadT .downloadFrame > div div {
+    margin-right: 0;
+    margin-top: 10px;
+  }
+}
+
+.downloadArea .downloadT .downloadFrame > div div img {
+  margin-bottom: 10px;
+}
+
+.downloadArea .downloadT .downloadFrame > div div button {
+  width: 200px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #3ca3ff), to(#175de6));
+  background: linear-gradient(to bottom, #3ca3ff 1%, #175de6 100%);
+  color: #fff;
+}
+
+.downloadArea .downloadB {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  background: url(../img/download/downloanBG2.png) no-repeat bottom center;
+  background-size: cover;
+}
+
+.downloadArea .downloadB h1 {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 10px 0 50px 0;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 700px) {
+  .downloadArea .downloadB h1 {
+    font-size: 6vw;
+    margin: 10px 0 30px 0;
+  }
+}
+
+.downloadArea .downloadB h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 700px) {
+  .downloadArea .downloadB h2 {
+    font-size: 4vw;
+  }
+}
+
+.downloadArea .downloadB p {
+  font-size: 14px;
+  margin-bottom: 50px;
+}
+
+@media screen and (max-width: 700px) {
+  .downloadArea .downloadB p {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 3vw;
+  }
+}
+
+.downloadArea .downloadB div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 710px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+@media screen and (max-width: 700px) {
+  .downloadArea .downloadB div {
+    width: 90%;
+    margin: 0 auto;
+  }
 }
 /*# sourceMappingURL=style.css.map */

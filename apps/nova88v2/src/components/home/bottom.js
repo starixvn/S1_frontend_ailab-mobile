@@ -2,10 +2,20 @@ import React from "react";
 import PropTypes from "prop-types";
 import Spokesperson from "../../styles/img/spokesperson.jpg";
 import { siteInfo } from "../../config";
+import { Link } from "../../route/link";
+import appDownloadImg from "../../styles/img/app/appmodule.jpg";
+import path from "../../path";
 
 const Bottom = ({ i18n, langId }) => {
 	return (
 		<>
+			<Link to={path.appDownload.root}>
+				<img
+					className="spokesperson"
+					src={appDownloadImg}
+					alt="Go To Download App"
+				/>
+			</Link>
 			<img className="spokesperson" src={Spokesperson} alt="Endorser" />
 			<div className="aff">
 				<a

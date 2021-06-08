@@ -14,7 +14,7 @@ export const defGameInfo = {
 	LIVEcasinoSA: { gameId: 2, tpId: 2 },
 	LIVEcasinoEB: { gameId: 18, tpId: 18 },
 	LIVEcasinoOne789: { tpId: 23, gameId: 2 },
-	// LIVEcasinoN2: { tpId: 28 },
+	LIVEcasinoN2: { tpId: 28 },
 	One789_lottery: { tpId: 23, gameId: 0 },
 	One789_lottery_789: { tpId: 23, gameId: 1 },
 	Casino_ow: { gameId: 208, tpId: 1 },
@@ -37,6 +37,9 @@ export const defGameInfo = {
 	sabaClub: {
 		tpId: 1,
 		gameId: 200
+	},
+	BTISport: {
+		tpId: 29
 	},
 	casino_ICG: {
 		tpId: 24
@@ -73,7 +76,8 @@ export const defGameInfo = {
 	Fishing_AT04: {
 		tpId: 16,
 		gameId: "AT04"
-	}
+	},
+	kingMaker: { tpId: 11 }
 };
 
 const gameList = langId => [
@@ -115,6 +119,11 @@ const gameList = langId => [
 				...defGameInfo.sabaClub,
 				icon: "game",
 				spanTextKey: "lbl_SabaClub"
+			},
+			{
+				...defGameInfo.kingMaker,
+				icon: "kingMaker",
+				spanTextKey: "lbl_KingMaker"
 			},
 			{
 				...defGameInfo.Fishing,
@@ -201,5 +210,9 @@ const gameList = langId => [
 		]
 	}
 ];
+
+export const euro_event_time = {
+	endDate: "2021/07/13 12:00:00"
+};
 
 export default gameList;

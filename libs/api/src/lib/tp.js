@@ -31,7 +31,8 @@ export class TpAPI extends BaseAPI {
 		TpId,
 		LangId,
 		AppType = defGotoGame_AppType.NativeAPP,
-		fun = null
+		fun = null,
+		gameType = ""
 	}) =>
 		this.tpRequest.post("/GotoGame", {
 			TpId,
@@ -39,7 +40,8 @@ export class TpAPI extends BaseAPI {
 			AppType,
 			inputs: {
 				gameId,
-				fun
+				fun,
+				gameType
 			}
 		});
 }

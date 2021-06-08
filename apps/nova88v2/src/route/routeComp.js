@@ -59,6 +59,7 @@ import MysteryBox from "../pages/mysteryBox";
 import Streaming from "../pages/streaming";
 import CryptoWallet from "../pages/cryptoWallet";
 import MyAccount from "../components/setting/myAccount";
+import AppDownload from "../pages/appDownload";
 
 const RouteComponents = () => {
 	return (
@@ -131,6 +132,7 @@ const RouteComponents = () => {
 			{/* <Kiss918 path={`/:langId/${path.kiss918.root}`} /> */}
 			<Streaming path={`/:langId/${path.streaming.root}`} />
 			<MyAccount path={`/:langId/${path.myAccount.root}`} />
+			<AppDownload path={`/:langId/${path.appDownload.root}`} />
 		</Router>
 	);
 };

@@ -31,7 +31,7 @@ const Detail = ({
 	if (depositType === 3 && (status === 1 || status === 7)) {
 		btnGroup = (
 			<div className="btn-group">
-				<button className="blue" onClick={ClickCancel}>
+				<button className="white" onClick={ClickCancel}>
 					{i18n.lbl_Cancel}
 				</button>
 				<button className="orange openPopup" onClick={SubmitProof}>
@@ -77,21 +77,24 @@ const Detail = ({
 				</li>
 			</ul>
 
-			<div>
-				<div className="title">TxId</div>
-				<div>{thirdId}</div>
-				<input
-					type="hidden"
-					readOnly={true}
-					defaultValue={thirdId}
-					ref={ipt}
-				/>
-				<button
-					className="icon icon-files-empty"
-					value={thirdId}
-					onClick={OnCopy}
-				/>
-			</div>
+			{thirdId && (
+				<div>
+					<div className="title">TxId</div>
+					<div>{thirdId}</div>
+					<input
+						type="hidden"
+						readOnly={true}
+						defaultValue={thirdId}
+						ref={ipt}
+					/>
+					<button
+						className="icon icon-files-empty"
+						value={thirdId}
+						onClick={OnCopy}
+					/>
+				</div>
+			)}
+
 			{btnGroup}
 		</div>
 	);

@@ -3,12 +3,14 @@ import { popBoxContext, i18nContext } from "./context";
 import TurnoverAccumulated from "./popbox.turnover";
 import Otp from "./popbox.otp";
 import Loading from "./popbox.loading";
+import DomainListPop from "./popbox.domainList";
 
 export const defPopBoxType = {
 	default: "default",
 	TurnoverAccumulated: "TurnoverAccumulated",
 	Otp: "Otp",
-	Loading: "Loading"
+	Loading: "Loading",
+	DomainList: "DomainList"
 };
 
 const PopUp = () => {
@@ -39,6 +41,10 @@ const PopUp = () => {
 			content = <Loading />;
 			break;
 
+		case defPopBoxType.DomainList:
+			content = <DomainListPop domainList={popBox.domainList} />;
+			break;
+
 		default:
 			content = (
 				<div className="popTxt">
@@ -50,21 +56,27 @@ const PopUp = () => {
 	}
 
 	return popBox.isOpen ? (
-		<div id="popup" className={`${popBox.isOpen ? "show" : ""}`}>
-			<div className="popTit">
-				{popBox.hideCloseBtn === true ? null : (
-					<div className="close open" onClick={handlePopBox}>
-						<span />
-						<span />
-						<span />
-						<span />
-						<span />
-						<span />
-					</div>
-				)}
-				{popBox.title ?? i18n.lbl_ImportantNote}
+		<div
+			id="popup"
+			className={`${popBox.isOpen ? "show" : ""} ${popBox.className}`}>
+			<div className="pop">
+				<div className="popTit">
+					{popBox.hideCloseBtn === true ? null : (
+						<div
+							className="close open"
+							onClick={popBox.handlePopBox ?? handlePopBox}>
+							<span />
+							<span />
+							<span />
+							<span />
+							<span />
+							<span />
+						</div>
+					)}
+					{popBox.title ?? i18n.lbl_ImportantNote}
+				</div>
+				{content}
 			</div>
-			{content}
 		</div>
 	) : null;
 };

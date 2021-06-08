@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Redirect } from "@reach/router";
+import { Redirect, Link } from "@reach/router";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
 import Menu from "../components/home/menu";
@@ -24,6 +24,11 @@ import Bottom from "../components/home/bottom";
 import jackpot from "../styles/img/jackpot.png";
 import winner_vn from "../styles/img/euroEvent/EURO-GOAL-VN.jpg";
 import winner_en from "../styles/img/euroEvent/EURO-GOAL-EN.jpg";
+import defNav from "../components/casino/defNav";
+import AddToHomePop from "../components/home/addToHomePop";
+import Top10Winner from "../components/home/top10winner";
+import config from "../config";
+import { useGetDomainList } from "../components/hook/useGetDomainList";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -31,6 +36,12 @@ const IndexPage = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
 	const [redirectPath, setRedirectPath] = useState(null);
+
+	const { isDomainPopOpened } = useGetDomainList({
+		setPopBox,
+		userInfo,
+		i18n
+	});
 
 	useEffect(() => {
 		if (redirectPath !== null) {
@@ -50,7 +61,8 @@ const IndexPage = () => {
 		if (
 			userInfo.currencyId &&
 			userInfo.userName &&
-			readCookie(cookieName) !== "1"
+			readCookie(cookieName) !== "1" &&
+			isDomainPopOpened
 		) {
 			setCookie(cookieName, "1", 1);
 			api_GetWalletInfo().then(res => {
@@ -125,30 +137,69 @@ const IndexPage = () => {
 				}
 			});
 		}
-		// yyyy/mm/dd hh:mm:ss
-		if (
-			isEventPeriod({
-				endDate: "2021/05/18 23:59:59"
-			}) &&
-			userInfo.isLogin === false
-		) {
-			setPopBox({
-				isOpen: true,
-				content: (
-					<img
-						src={userInfo.langId === "vn" ? winner_vn : winner_en}
-						alt="winner"
-					/>
-				),
-				hasBtn: true
-			});
+
+		if (userInfo.isLogin === false) {
+			const RankingWinnerPopup = () => {
+				if (
+					isEventPeriod({
+						endDate: "2021/05/18 23:59:59"
+					})
+				) {
+					setPopBox({
+						isOpen: true,
+						content: (
+							<img
+								src={
+									userInfo.langId === "vn"
+										? winner_vn
+										: winner_en
+								}
+								alt="winner"
+							/>
+						),
+						hasBtn: true
+					});
+				} else {
+					setPopBox({
+						isOpen: false
+					});
+				}
+			};
+
+			const cookieOfficialAnnounce = "OfficialAnnounce_cookie";
+
+			if (readCookie(cookieOfficialAnnounce)) {
+				RankingWinnerPopup();
+			} else {
+				setCookie(cookieOfficialAnnounce, true, 1);
+				setPopBox({
+					isOpen: true,
+					content: (
+						<img
+							src={`${config.bannerImgUrl}/img/nonlogin/300x300_goal_${userInfo.langId}.jpg`}
+							alt="OfficialAnnounce"
+						/>
+					),
+					hasBtn: true,
+					btnBar: (
+						<div className="btn-group">
+							<button
+								className="orange"
+								onClick={RankingWinnerPopup}>
+								{i18n.lbl_Close}
+							</button>
+						</div>
+					)
+				});
+			}
 		}
 	}, [
 		i18n,
 		setPopBox,
 		userInfo.currencyId,
 		userInfo.userName,
-		userInfo.isLogin
+		userInfo.isLogin,
+		isDomainPopOpened
 	]);
 
 	return redirectPath !== null ? (
@@ -163,10 +214,11 @@ const IndexPage = () => {
 			<Marquee />
 			<Menu i18n={i18n} userInfo={userInfo} />
 			<PlaytechJactpot />
-
+			<Top10Winner i18n={i18n} />
 			<MiddlePanel langId={userInfo.langId} i18n={i18n} />
 			<Bottom i18n={i18n} langId={userInfo.langId} />
 			<Submenu />
+			<AddToHomePop i18n={i18n} userInfo={userInfo} />
 		</>
 	);
 };
@@ -187,11 +239,13 @@ const PlaytechJactpot = () => {
 	}, []);
 
 	return (
-		<div className="jackpot">
-			<img src={jackpot} alt="" />
-			<p>VND</p>
-			<p id="tick" />
-		</div>
+		<Link to={path.casino.root} state={{ nav: defNav.PROMO.key }}>
+			<div className="jackpot">
+				<img src={jackpot} alt="" />
+				<p>VND</p>
+				<p id="tick" />
+			</div>
+		</Link>
 	);
 };
 

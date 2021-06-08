@@ -13,7 +13,6 @@ const AmountPanel = ({
 	selectItem,
 	allWalletsList,
 	clickInfo,
-	_isConvert,
 	ValidAmount
 }) => {
 	return (
@@ -58,7 +57,6 @@ const AmountPanel = ({
 				i18n={i18n}
 				clickSubmit={clickSubmit}
 				clickInfo={clickInfo}
-				numberConvert={_isConvert}
 				onBlur={ValidAmount}
 			/>
 		</div>
@@ -72,7 +70,6 @@ AmountPanel.defaultProps = {
 	selectItem: null,
 	allWalletsList: [],
 	clickInfo: () => null,
-	_isConvert: false,
 	ValidAmount: () => null
 };
 
@@ -89,7 +86,6 @@ AmountPanel.propTypes = {
 	selectItem: PropTypes.func,
 	allWalletsList: PropTypes.arrayOf(PropTypes.object),
 	clickInfo: PropTypes.func,
-	_isConvert: PropTypes.bool,
 	ValidAmount: PropTypes.func
 };
 

@@ -69,7 +69,7 @@ const defPageInfo = {
 	},
 	forgetPassword: {
 		titleKey: "lbl_ForgetPassword",
-		className: "main",
+		className: "main forget",
 		hideLogo: true
 	},
 	resetPassword: {
@@ -156,6 +156,29 @@ const defPageInfo = {
 		titleKey: "VIP",
 		className: "main vip",
 		hideLogo: true
+	},
+	sports: {
+		titleKey: "",
+		className: "mainLogin",
+		hideLogo: false,
+		showMenuBar: true
+	},
+	fishing: {
+		className: "mainLogin",
+		hideLogo: false,
+		showMenuBar: true
+	},
+	liveCasino: {
+		titleKey: "",
+		className: "mainLogin",
+		hideLogo: false,
+		showMenuBar: true
+	},
+	games: {
+		titleKey: "",
+		className: "mainLogin",
+		hideLogo: false,
+		showMenuBar: true
 	}
 };
 
@@ -174,7 +197,9 @@ const GetPageInfo = locationPath => {
 
 	pageInfoKey = pageInfoKey?.length > 0 ? pageInfoKey[0] : null;
 	const pageInfo = defPageInfo[pageInfoKey] ?? null;
-	return pageInfoKey && pageInfo ? { ...pageInfo } : defPageInfo.default;
+	return pageInfoKey && pageInfo
+		? { ...pageInfo, pageInfoKey }
+		: defPageInfo.default;
 };
 
 const Layout = ({ children }) => {

@@ -99,7 +99,7 @@
 	"lbl_Fishing": "Fishing",
 	"lbl_FootballBetting": "Football Betting",
 	"lbl_ForgetPassword": "Forgot your Password ",
-	"lbl_Free": "Free Play",
+	"lbl_Free": "DEMO",
 	"lbl_From": "From",
 	"lbl_GPI": "GPI",
 	"lbl_Games": "Games",
@@ -165,7 +165,7 @@
 	"lbl_PasswordTooltip": "6-18 alphanumeric (A-Z, a-z, 0-9) characters or special characters @$*!%#?&",
 	"lbl_PersonalMsg": "Personal Message",
 	"lbl_Phone": "Phone Number",
-	"lbl_PlayNow": "Play Now",
+	"lbl_PlayNow": "PLAY",
 	"lbl_PreferredCurrencyToolTip": "Preferred currency can not be changed after registration.",
 	"lbl_PrivacyPolicy": "Privacy Policy",
 	"lbl_Profile": "Profile",
@@ -222,7 +222,7 @@
 	"lbl_Title": "Goal123",
 	"lbl_To": "To",
 	"lbl_Today": "Today",
-	"lbl_TpWallet_1": "Sportsbook Wallet",
+	"lbl_TpWallet_1": "Saba Wallet",
 	"lbl_TransactionHistory": "Transaction History",
 	"lbl_Transfer": "Transfer",
 	"lbl_TransferFrom": "Transfer From",
@@ -243,7 +243,7 @@
 	"lbl_VirtualSports": "Virtual Sports",
 	"lbl_WaitKYC": "Verification is in progress",
 	"lbl_WaitKYCHint": "Thank you for submitting the required document, kindly bear with us for a moment while the verification is in progress.",
-	"lbl_Wallet_Saba": "Sportsbook Wallet",
+	"lbl_Wallet_Saba": "Saba Wallet",
 	"lbl_Welcome": "Welcome",
 	"lbl_WireTransfers": "Local Bank Transfer",
 	"lbl_Withdrawal": "Withdrawal",
@@ -531,11 +531,31 @@
 	"lbl_UserNameCheckTooltip":"6-18 alphanumeric (A-Z, a-z, 0-9) characters only.",
 	"lbl_EmailRequired":"Please fill in the email field.",
 	"lbl_EnterAccountNumber":"Enter Account Number",
+	"lbl_ClaimSucceed":"Successful! Your Bonus has been claimed.",
+	"lbl_KingMaker":"KingMaker",
 
 	"==============General==============":"",
 	"lbl_Jackpot":"Jackpot",
+	"lbl_SabaSport":"Saba Sports",
+	"lbl_BTISport" : "BTI Sports",
+	"lbl_Top10winners": "Top 10 Winners",
+	
+	"==============DomainList==============":"",
+	"lbl_Backup_website" : "Please save the latest GOAL123 domain for backup purposes:",
+	"lbl_Copy":"Copy",
+	"lbl_Dont_show_me_again":"Dont show me again",
+	"lbl_Stay_accessible":"STAY ACCESSIBLE",
+	"lbl_Anytime_anywhere":"Anytime, Anywhere",
 	
 	"==============Transfer==============":"",
 	"lbl_Fail":"Failed",
-	"lbl_LastUpdated":"LAST UPDATED"
+	"lbl_LastUpdated":"LAST UPDATED",
+
+	"==============Add To Home Screen==============":"",
+	"lbl_AddToHome_Hint":"How to add home screen?",
+	"lbl_AddToHome_Tutorial":"Tutorial",
+	"lbl_Skip":"Skip",
+	
+	"==============Important Notice==============":"",
+	"lbl_ImportantNotice":"IMPORTANT NOTICE"
 }

@@ -1,10 +1,20 @@
 import React, { useContext } from "react";
-import { Promotion, defRuleCols } from "@ailab-mobile/promotion";
+import { Promotion, defRuleCols, defNav } from "@ailab-mobile/promotion";
 import config from "Config";
 import path from "Path";
 import { Promotion as uiSetting } from "UISetting";
 import { userInfoContext, i18nContext, popBoxContext } from "Context";
 import staticList from "../datas/promotionList";
+
+const defPromotionNav = [
+	defNav.All,
+	defNav.FirstDeposit,
+	defNav.FreeBet,
+	defNav.ReDeposit,
+	defNav.RebateAndCashBack,
+	defNav.SpecialBonus,
+	defNav.Static
+];
 
 export default ({ location }) => {
 	const { userInfo } = useContext(userInfoContext);
@@ -24,13 +34,13 @@ export default ({ location }) => {
 				defRuleCols.rollOver,
 				defRuleCols.remainingTime
 			]}
-			// navBar={[defNav.All, defNav.FirstDeposit, defNav.ReDeposit]}
 			formatSetting={{
 				isConvertRequired: true,
 				digits: 2,
 				formatRequired: false
 			}}
 			location={location}
+			navBar={defPromotionNav}
 		/>
 	);
 };

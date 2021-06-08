@@ -366,7 +366,7 @@ const Payment = props => {
 				btnBar: (
 					<div className="btn-group">
 						<button
-							className="blue"
+							className="white"
 							onClick={() =>
 								setPopBox(prevState => ({
 									...prevState,

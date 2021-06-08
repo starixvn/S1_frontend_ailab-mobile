@@ -23,6 +23,7 @@ import config from "../../config";
 import RecentDatas from "./withdrawal.recentDatas";
 import ReloadSpin from "../common/reloadSpin";
 import path from "../../path";
+import ImportantNote from "./importantNote";
 
 const initStatus = { checked: null, msg: "" };
 
@@ -546,6 +547,7 @@ const Panel = () => {
 					ClickCancel={ClickCancel}
 					GetRecentDatas={GetWithdrawalInfoRecent}
 				/>
+				<ImportantNote i18n={i18n} langId={userInfo.langId} />
 			</>
 		);
 	}

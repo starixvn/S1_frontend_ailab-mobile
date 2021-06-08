@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Redirect } from "@reach/router";
+import { Redirect, Link } from "@reach/router";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
 import {
@@ -17,11 +17,15 @@ import path from "../path";
 import { api_GetWalletInfo } from "../service/api/account";
 import GamePanel from "../components/home/gamePanel";
 import LinksPanel from "../components/home/links";
-import MidBanner from "../components/home/banner";
 import EventSwipper from "../components/home/eventSwipper";
 import jackpot from "../styles/img/jackpot.png";
 import winner_vn from "../styles/img/EURO_Bwing/EURO-Bwing-VN.jpg";
 import winner_en from "../styles/img/EURO_Bwing/EURO-Bwing-EN.jpg";
+import defNav from "../components/casino/defNav";
+import AddToHomePop from "../components/home/addToHomePop";
+import Top10Winner from "../components/home/top10winner";
+import config from "../config";
+import { useGetDomainList } from "../components/hook/useGetDomainList";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -29,6 +33,12 @@ const IndexPage = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const [redirectPath, setRedirectPath] = useState(null);
 	const { setRoot } = useContext(rootContext);
+
+	const { isDomainPopOpened } = useGetDomainList({
+		setPopBox,
+		userInfo,
+		i18n
+	});
 
 	useEffect(() => {
 		if (redirectPath !== null) {
@@ -48,7 +58,8 @@ const IndexPage = () => {
 		if (
 			userInfo.currencyId &&
 			userInfo.userName &&
-			readCookie(cookieName) !== "1"
+			readCookie(cookieName) !== "1" &&
+			isDomainPopOpened
 		) {
 			setCookie(cookieName, "1", 1);
 			api_GetWalletInfo().then(res => {
@@ -123,29 +134,69 @@ const IndexPage = () => {
 				}
 			});
 		}
-		if (
-			isEventPeriod({
-				endDate: "2021/05/18 23:59:59"
-			}) &&
-			userInfo.isLogin === false
-		) {
-			setPopBox({
-				isOpen: true,
-				content: (
-					<img
-						src={userInfo.langId === "vn" ? winner_vn : winner_en}
-						alt="winner"
-					/>
-				),
-				hasBtn: true
-			});
+
+		if (userInfo.isLogin === false) {
+			const RankingWinnerPopup = () => {
+				if (
+					isEventPeriod({
+						endDate: "2021/05/18 23:59:59"
+					})
+				) {
+					setPopBox({
+						isOpen: true,
+						content: (
+							<img
+								src={
+									userInfo.langId === "vn"
+										? winner_vn
+										: winner_en
+								}
+								alt="winner"
+							/>
+						),
+						hasBtn: true
+					});
+				} else {
+					setPopBox({
+						isOpen: false
+					});
+				}
+			};
+
+			const cookieOfficialAnnounce = "OfficialAnnounce_cookie";
+
+			if (readCookie(cookieOfficialAnnounce)) {
+				RankingWinnerPopup();
+			} else {
+				setCookie(cookieOfficialAnnounce, true, 1);
+				setPopBox({
+					isOpen: true,
+					content: (
+						<img
+							src={`${config.bannerImgUrl}/img/nonlogin/300x300_bwing_${userInfo.langId}.jpg`}
+							alt="OfficialAnnounce"
+						/>
+					),
+					hasBtn: true,
+					btnBar: (
+						<div className="btn-group">
+							<button
+								className="blue"
+								onClick={RankingWinnerPopup}>
+								{i18n.lbl_Close}
+							</button>
+						</div>
+					)
+				});
+			}
 		}
 	}, [
 		i18n,
 		setPopBox,
 		userInfo.currencyId,
 		userInfo.userName,
-		userInfo.isLogin
+		userInfo.isLogin,
+		isDomainPopOpened
 	]);
 
 	return redirectPath !== null ? (
@@ -155,10 +206,12 @@ const IndexPage = () => {
 			<Slider />
 			<Marquee />
 			<PlaytechJactpot />
+			<Top10Winner i18n={i18n} />
 			<EventSwipper />
-			<MidBanner langId={userInfo.langId} />
+			{/* <MidBanner langId={userInfo.langId} /> */}
 			<GamePanel i18n={i18n} userInfo={userInfo} />
 			<LinksPanel i18n={i18n} langId={userInfo.langId} />
+			<AddToHomePop i18n={i18n} userInfo={userInfo} />
 		</>
 	);
 };
@@ -179,11 +232,13 @@ const PlaytechJactpot = () => {
 	}, []);
 
 	return (
-		<div className="bannerS">
-			<img src={jackpot} alt="" />
-			<p>VND</p>
-			<p id="tick" />
-		</div>
+		<Link to={path.casino.root} state={{ nav: defNav.PROMO.key }}>
+			<div className="bannerS">
+				<img src={jackpot} alt="" />
+				<p>VND</p>
+				<p id="tick" />
+			</div>
+		</Link>
 	);
 };
 

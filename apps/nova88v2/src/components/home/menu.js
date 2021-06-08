@@ -8,7 +8,11 @@ import { GET_ENTER_PAGE } from "../../service/enterPage";
 import useHandleLogin from "../hook/useHandleLogin";
 import api from "../../service/api";
 import { GetCurrencyName } from "../common/common";
-import { useGotoGame } from "../hook/useGotoGame";
+import {
+	useGotoGame,
+	defSpecialSetting,
+	open9wSports
+} from "../hook/useGotoGame";
 
 const Menu = ({ i18n, userInfo, setPopBox }) => {
 	const [selectedCol, setSelectedCol] = useState(defCol.sports);
@@ -131,9 +135,14 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 					);
 				} else if (showingTpIds) {
 					showItem = showingTpIds.includes(subItem.tpId);
+				} else if (subItem?.showAfterLogin) {
+					showItem = userInfo.isLogin;
 				}
 				if (subItem.forceShow) {
 					showItem = true;
+				}
+				if (userInfo.isLogin === false && subItem?.hideBeforeLogin) {
+					showItem = false;
 				}
 				return showItem;
 			})
@@ -180,22 +189,39 @@ Menu.propTypes = {
 const SubGame = ({ game, i18n, userInfo, handleLogin, handleGoToGame }) => {
 	const showingEventIcon = getEventIcon({ eventIcon: game?.eventIcon });
 
-	const clickGame = ({ tpId, gameId, useGotoGame: _useGotoGame }) => {
-		GET_ENTER_PAGE({
-			langId: userInfo.langId,
-			tpId,
-			gameId,
-			isLogin: userInfo.isLogin === true,
-			loginCallback: handleLogin,
-			execFunction: _useGotoGame
-				? handleGoToGame.bind(this, {
-						isLogin: userInfo.isLogin === true,
-						langId: userInfo.langId,
-						tpId,
-						gameId
-				  })
-				: null
-		});
+	const clickGame = async ({
+		tpId,
+		gameId,
+		useGotoGame: _useGotoGame,
+		specialUrl
+	}) => {
+		if (tpId === defSpecialSetting.sports_9w) {
+			const result = await handleGoToGame({
+				isLogin: userInfo.isLogin,
+				langId: userInfo.langId,
+				tpId,
+				gameId
+			});
+			const { url, key, userId } = result ?? {};
+			open9wSports({ url, key, userId });
+		} else {
+			GET_ENTER_PAGE({
+				langId: userInfo.langId,
+				tpId,
+				gameId,
+				isLogin: userInfo.isLogin === true,
+				loginCallback: handleLogin,
+				execFunction: _useGotoGame
+					? handleGoToGame.bind(this, {
+							isLogin: userInfo.isLogin === true,
+							langId: userInfo.langId,
+							tpId,
+							gameId
+					  })
+					: null,
+				specialUrl
+			});
+		}
 	};
 
 	if (game?.href) {
@@ -223,7 +249,8 @@ const SubGame = ({ game, i18n, userInfo, handleLogin, handleGoToGame }) => {
 			onClick={clickGame.bind(this, {
 				tpId: game.tpId,
 				gameId: game.gameId,
-				useGotoGame: game.useGotoGame
+				useGotoGame: game.useGotoGame,
+				specialUrl: game?.specialUrl ?? ""
 			})}>
 			{showingEventIcon !== "" ? (
 				<i className={`icon ${showingEventIcon}`} />

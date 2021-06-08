@@ -16,6 +16,10 @@ const gameType = {
 	poker: "lbl_Poker"
 };
 
+export const defProductType = {
+	slots: "slots"
+};
+
 export default [
 	{
 		name: "Baccarat",
@@ -39,7 +43,8 @@ export default [
 		gameTypeKey: gameType.table,
 		img: Belangkai,
 		tpId: 9,
-		gameId: "3uim5ppkiqwk1"
+		gameId: "3uim5ppkiqwk1",
+		productType: defProductType.slots
 	},
 	{
 		name: "Hulu",
@@ -47,7 +52,8 @@ export default [
 		gameTypeKey: gameType.table,
 		img: Hulu,
 		tpId: 9,
-		gameId: "yr1zy9u9xt6zr"
+		gameId: "yr1zy9u9xt6zr",
+		productType: defProductType.slots
 	},
 	{
 		name: "Multihand Blackjack",
@@ -55,7 +61,8 @@ export default [
 		gameTypeKey: gameType.table,
 		img: MultihandBlackjack,
 		tpId: 5,
-		gameId: "bjma"
+		gameId: "bjma",
+		productType: defProductType.slots
 	},
 	{
 		name: "888 Dragon",
@@ -63,7 +70,8 @@ export default [
 		gameTypeKey: gameType.slots,
 		img: Vs1dragon8,
 		tpId: 5,
-		gameId: "vs1dragon8"
+		gameId: "vs1dragon8",
+		productType: defProductType.slots
 	},
 	{
 		name: "Three Star Fortune",
@@ -71,7 +79,8 @@ export default [
 		gameTypeKey: gameType.slots,
 		img: ThreeStarFortune,
 		tpId: 5,
-		gameId: "vs10threestar"
+		gameId: "vs10threestar",
+		productType: defProductType.slots
 	},
 	{
 		name: "5 Fortune Dragons",
@@ -79,7 +88,8 @@ export default [
 		gameTypeKey: gameType.slots,
 		img: FortuneDragons,
 		tpId: 10,
-		gameId: "S-FD01"
+		gameId: "S-FD01",
+		productType: defProductType.slots
 	},
 	{
 		name: "God Of Fortune",
@@ -87,15 +97,17 @@ export default [
 		gameTypeKey: gameType.slots,
 		img: GodOfFortune,
 		tpId: 6,
-		gameId: "godoffortune"
+		gameId: "godoffortune",
+		productType: defProductType.slots
 	},
 	{
 		name: "Lucky Neko",
 		provider: "YGG",
 		gameTypeKey: gameType.slots,
 		img: LuckyNeko,
-		tpId: 5,
-		gameId: 7382
+		tpId: 8,
+		gameId: 7382,
+		productType: defProductType.slots
 	},
 	{
 		name: "Poker",

@@ -18,6 +18,7 @@ import RecentDatas from "./deposit.recentDatas";
 import { number_format, isConvert } from "../common/common";
 import ImportantNote from "./importantNote";
 import UserPaymentSwitch, { useGetUserPaymentData } from "./userPaymentData";
+import { useGetDomainList } from "../hook/useGetDomainList";
 
 const defPayType = {
 	onlineBank: "onlineBank",
@@ -92,8 +93,11 @@ const Panel = () => {
 	const [paymentList, setPaymentList] = useState({});
 	const [recentDatas, setRecentDatas] = useState([]);
 	const [pageVerify, setPageVerify] = useState(true);
-
-	PageVerify(userInfo, i18n, setPopBox, navigate, setPageVerify, false);
+	const { isDomainPopOpen } = useGetDomainList({
+		setPopBox,
+		userInfo,
+		i18n
+	});
 
 	const isMountedRef = useRef(null);
 	useEffect(() => {
@@ -103,6 +107,16 @@ const Panel = () => {
 			setLoading(false);
 		};
 	});
+
+	PageVerify(
+		userInfo,
+		i18n,
+		setPopBox,
+		navigate,
+		setPageVerify,
+		false,
+		isDomainPopOpen
+	);
 
 	const _userPaymentData =
 		userPaymentData?.payType === selected ? userPaymentData : {};
@@ -307,11 +321,11 @@ const Panel = () => {
 				hasBtn: true,
 				btnBar: (
 					<div className="btn-group">
-						<button className="blue" onClick={ClickPopBoxCancel}>
-							{i18n.lbl_Cancel}
+						<button className="white" onClick={ClickSubmit}>
+							{i18n.lbl_Yes}
 						</button>
-						<button className="orange" onClick={ClickSubmit}>
-							{i18n.lbl_Submit}
+						<button className="orange" onClick={ClickPopBoxCancel}>
+							{i18n.lbl_No}
 						</button>
 					</div>
 				)

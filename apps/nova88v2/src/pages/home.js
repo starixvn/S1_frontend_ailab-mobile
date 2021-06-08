@@ -18,46 +18,17 @@ import Referral from "../components/home/referral";
 import EventSwipper from "../components/home/eventSwipper";
 import HeaderShortcut from "../components/home/headerShortcut";
 import Bottom from "../components/home/bottom";
-import { isEventPeriod, readCookie } from "../components/common/common";
+import {
+	isEventPeriod,
+	readCookie,
+	setCookie
+} from "../components/common/common";
 import path from "../path";
 import Header from "../components/header/header";
 import JoinLoginBar from "../components/home/joinLoginBar";
 import Logo from "../components/common/logo";
-import { defPopBoxType } from "../components/common/popbox";
 import Jackpot from "../components/home/jackpot";
-import api from "../service/api";
-
-const useGetDomainList = ({ userInfo, setPopBox, i18n }) => {
-	useEffect(() => {
-		const cookieName = `${userInfo.userName}-DomainListHint`;
-		if (
-			userInfo.isLogin &&
-			userInfo.currencyId &&
-			readCookie(cookieName) !== "1"
-		) {
-			api.site.GetSupportDomainList().then(res => {
-				const { errorCode, data, message } = res.data;
-				if (errorCode === 0) {
-					if (data.length > 0) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_nova88_backup_website,
-							popBoxType: defPopBoxType.DomainList,
-							className: "backupDomain ",
-							domainList: data
-						});
-					}
-				}
-			});
-		}
-	}, [
-		userInfo.isLogin,
-		userInfo.currencyId,
-		i18n,
-		setPopBox,
-		userInfo.userName
-	]);
-};
+import AddToHomePop from "../components/home/addToHomePop";
 
 const IndexPage = () => {
 	const navigate = useNavigate();
@@ -65,11 +36,11 @@ const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
+
 	const helmet = GetMetaDataByPage({
 		path: path.home.root,
 		langId: userInfo.langId
 	});
-	useGetDomainList({ setPopBox, userInfo, i18n });
 
 	useEffect(() => {
 		setRoot(true);
@@ -79,11 +50,6 @@ const IndexPage = () => {
 	}, [setRoot]);
 
 	useEffect(() => {
-		const ClosePopUp = () => {
-			setPopBox({
-				isOpen: false
-			});
-		};
 		if (userInfo.isJoin) {
 			setPopBox({
 				isOpen: true,
@@ -135,22 +101,55 @@ const IndexPage = () => {
 				)
 			});
 		}
-		if (
-			isEventPeriod({
-				endDate: "2021/05/18 23:59:59"
-			}) &&
-			userInfo.isLogin === false
-		) {
-			setPopBox({
-				isOpen: true,
-				content: (
-					<img
-						src={`https://image.n88media.com/SiteSkin/img/euro/EURO-RACE-MONTHLY-WINNERS-${userInfo.langId.toUpperCase()}.jpg`}
-						alt="winner"
-					/>
-				),
-				hasBtn: true
-			});
+		if (userInfo.isLogin === false) {
+			const RankingWinnerPopup = () => {
+				if (
+					isEventPeriod({
+						endDate: "2021/05/18 23:59:59"
+					})
+				) {
+					setPopBox({
+						isOpen: true,
+						content: (
+							<img
+								src={`https://image.n88media.com/SiteSkin/img/euro/EURO-RACE-MONTHLY-WINNERS-${userInfo.langId.toUpperCase()}.jpg`}
+								alt="winner"
+							/>
+						)
+					});
+				} else {
+					setPopBox({
+						isOpen: false
+					});
+				}
+			};
+
+			const cookieOfficialAnnounce = "OfficialAnnounce_cookie";
+			if (readCookie(cookieOfficialAnnounce)) {
+				RankingWinnerPopup();
+			} else {
+				setCookie(cookieOfficialAnnounce, true, 1);
+				setPopBox({
+					isOpen: true,
+					content: (
+						<img
+							src={`https://banner.n88media.com/img/nonlogin/novapopup-380x100_${userInfo.langId}.jpg`}
+							alt="OfficialAnnounce"
+						/>
+					),
+					hideCloseBtn: true,
+					hasBtn: true,
+					btnBar: (
+						<div className="btn-group">
+							<button
+								className="orange"
+								onClick={RankingWinnerPopup}>
+								{i18n.lbl_Close}
+							</button>
+						</div>
+					)
+				});
+			}
 		}
 	}, [
 		i18n,
@@ -189,6 +188,7 @@ const IndexPage = () => {
 					<EventSwipper i18n={i18n} userInfo={userInfo} />
 					<Streaming />
 					<Bottom i18n={i18n} langId={userInfo.langId} />
+					<AddToHomePop i18n={i18n} userInfo={userInfo} />
 				</div>
 			</Layout>
 			{helmet}

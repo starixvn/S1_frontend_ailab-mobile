@@ -28,7 +28,6 @@ export default ({ hideLogo, title, showMenuBar }) => {
 		i18n,
 		setPopBox
 	});
-
 	const OnClickProduct = ({ tpId, gameId, langId, isLogin }) => {
 		return GET_ENTER_PAGE({
 			langId,

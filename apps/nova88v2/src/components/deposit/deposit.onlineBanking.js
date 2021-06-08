@@ -12,6 +12,7 @@ import api from "../../service/api";
 import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
 import { useHandleAmount } from "../hook/useHandleAmount";
+import { defPopBoxType } from "../common/popbox";
 
 const payType = "onlineBanking";
 
@@ -165,7 +166,7 @@ const Payment = props => {
 		const result = VaildAmount({ _amount: amount });
 
 		if (result) {
-			const { payId, channelId } = selGroup;
+			const { payId, channelId, mode } = selGroup;
 			let { sysId } = selbank;
 			let bankLogo = null;
 			let bankName = null;
@@ -177,16 +178,52 @@ const Payment = props => {
 					sysId
 				};
 				handleUserPaymentData({ userData });
-				setPopBox(prevState => ({
-					...prevState,
-					isOpen: false
-				}));
-				window.open(
-					sysId
-						? `${config.openURL}/${userInfo.langId}/Cashier/DepositReqOnlineBanking?sysId=${sysId}&payId=${payId}&ChannelId=${channelId}&Amount=${real_amount}`
-						: `${config.openURL}/${userInfo.langId}/Cashier/DepositReqOnlineBanking?payId=${payId}&ChannelId=${channelId}&Amount=${real_amount}`
-				);
-				window.location.reload();
+
+				const RefreshPage = () => {
+					window.location.reload();
+				};
+
+				if (mode === 3) {
+					api.cashier
+						.DepositReqOnlineBanking({
+							langId: userInfo.langId,
+							sysId,
+							payId,
+							channelId,
+							real_amount
+						})
+						.then(res => {
+							if (res.data.errorCode === 0) {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_DepositType1,
+									className: "dragonPayPop",
+									popBoxType: defPopBoxType.PaymentQR,
+									amount: real_amount,
+									currencyId: userInfo.currencyId,
+									imgUrl: res.data.data.url,
+									handlePopBox: () => {
+										setPopBox(prevState => ({
+											...prevState,
+											isOpen: false
+										}));
+										RefreshPage();
+									}
+								});
+							}
+						});
+				} else {
+					setPopBox(prevState => ({
+						...prevState,
+						isOpen: false
+					}));
+					window.open(
+						sysId
+							? `${config.openURL}/${userInfo.langId}/Cashier/DepositReqOnlineBanking?sysId=${sysId}&payId=${payId}&ChannelId=${channelId}&Amount=${real_amount}`
+							: `${config.openURL}/${userInfo.langId}/Cashier/DepositReqOnlineBanking?payId=${payId}&ChannelId=${channelId}&Amount=${real_amount}`
+					);
+					RefreshPage();
+				}
 			};
 
 			const real_amount = _isConvert ? amount * 1000 : amount;
@@ -218,7 +255,7 @@ const Payment = props => {
 					btnBar: (
 						<div className="btn-group">
 							<button
-								className="blue"
+								className="white"
 								onClick={() =>
 									setPopBox(prevState => ({
 										...prevState,

@@ -7,7 +7,8 @@ import {
 	PaymentAPI,
 	EventsAPI,
 	VideoAPI,
-	PromotionAPI
+	PromotionAPI,
+	CashierAPI
 } from "@ailab-mobile/api";
 
 import config from "../config";
@@ -21,5 +22,6 @@ export default {
 	payment: new PaymentAPI(config),
 	events: new EventsAPI(config),
 	video: new VideoAPI(config),
-	promotion: new PromotionAPI(config)
+	promotion: new PromotionAPI(config),
+	cashier: new CashierAPI(config)
 };
