@@ -131,6 +131,8 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 					);
 				} else if (showingTpIds) {
 					showItem = showingTpIds.includes(subItem.tpId);
+				} else if (subItem?.showAfterLogin) {
+					showItem = userInfo.isLogin;
 				}
 				if (subItem.forceShow) {
 					showItem = true;
@@ -180,7 +182,12 @@ Menu.propTypes = {
 const SubGame = ({ game, i18n, userInfo, handleLogin, handleGoToGame }) => {
 	const showingEventIcon = getEventIcon({ eventIcon: game?.eventIcon });
 
-	const clickGame = ({ tpId, gameId, useGotoGame: _useGotoGame }) => {
+	const clickGame = ({
+		tpId,
+		gameId,
+		useGotoGame: _useGotoGame,
+		specialUrl
+	}) => {
 		GET_ENTER_PAGE({
 			langId: userInfo.langId,
 			tpId,
@@ -194,7 +201,8 @@ const SubGame = ({ game, i18n, userInfo, handleLogin, handleGoToGame }) => {
 						tpId,
 						gameId
 				  })
-				: null
+				: null,
+			specialUrl
 		});
 	};
 
@@ -223,7 +231,8 @@ const SubGame = ({ game, i18n, userInfo, handleLogin, handleGoToGame }) => {
 			onClick={clickGame.bind(this, {
 				tpId: game.tpId,
 				gameId: game.gameId,
-				useGotoGame: game.useGotoGame
+				useGotoGame: game.useGotoGame,
+				specialUrl: game?.specialUrl ?? ""
 			})}>
 			{showingEventIcon !== "" ? (
 				<i className={`icon ${showingEventIcon}`} />
