@@ -55,31 +55,43 @@ export const GET_ENTER_PAGE = ({
 	const _tpId = isNaN(tpId) ? tpId : Number(tpId);
 	const _gameId = isNaN(gameId) ? gameId : Number(gameId);
 	if (_tpId === 1) {
-		if (_gameId === 43 || _gameId === 220 || _gameId === 202) {
-			result = setResult("", true, _ACTION_TYPE.redirect, _tpId, _gameId);
-		} else if (_gameId < 100 || _gameId === 997) {
-			result = setResult(
-				"",
-				false,
-				_ACTION_TYPE.redirect,
-				_tpId,
-				_gameId
-			);
-		} else if (_gameId === 161 || _gameId === 180) {
-			result = setResult(
-				"",
-				false,
-				_ACTION_TYPE.redirect,
-				_tpId,
-				_gameId
-			);
-		} else if (_gameId >= 200) {
-			result = setResult("", true, _ACTION_TYPE.blank, _tpId, _gameId);
+		switch (_gameId) {
+			case _gameId === 43 || _gameId === 220 || _gameId === 202:
+				result = setResult(
+					"",
+					true,
+					_ACTION_TYPE.redirect,
+					_tpId,
+					_gameId
+				);
+				break;
+			case _gameId < 100 ||
+				_gameId === 997 ||
+				_gameId === 161 ||
+				_gameId === 180:
+				result = setResult(
+					"",
+					false,
+					_ACTION_TYPE.redirect,
+					_tpId,
+					_gameId
+				);
+				break;
+			case _gameId >= 200:
+				result = setResult(
+					"",
+					true,
+					_ACTION_TYPE.blank,
+					_tpId,
+					_gameId
+				);
+				break;
+			default:
+				break;
 		}
 	} else {
 		result = setResult("", true, _ACTION_TYPE.blank, _tpId, _gameId);
 	}
-
 	if (!isLogin && result.needLogin) {
 		loginCallback();
 	} else if (execFunction) {

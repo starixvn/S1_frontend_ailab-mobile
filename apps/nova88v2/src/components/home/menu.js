@@ -8,7 +8,11 @@ import { GET_ENTER_PAGE } from "../../service/enterPage";
 import useHandleLogin from "../hook/useHandleLogin";
 import api from "../../service/api";
 import { GetCurrencyName } from "../common/common";
-import { useGotoGame } from "../hook/useGotoGame";
+import {
+	useGotoGame,
+	defSpecialSetting,
+	open9wSports
+} from "../hook/useGotoGame";
 
 const Menu = ({ i18n, userInfo, setPopBox }) => {
 	const [selectedCol, setSelectedCol] = useState(defCol.sports);
@@ -137,6 +141,9 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 				if (subItem.forceShow) {
 					showItem = true;
 				}
+				if (userInfo.isLogin === false && subItem?.hideBeforeLogin) {
+					showItem = false;
+				}
 				return showItem;
 			})
 			.map(subItem => {
@@ -182,28 +189,39 @@ Menu.propTypes = {
 const SubGame = ({ game, i18n, userInfo, handleLogin, handleGoToGame }) => {
 	const showingEventIcon = getEventIcon({ eventIcon: game?.eventIcon });
 
-	const clickGame = ({
+	const clickGame = async ({
 		tpId,
 		gameId,
 		useGotoGame: _useGotoGame,
 		specialUrl
 	}) => {
-		GET_ENTER_PAGE({
-			langId: userInfo.langId,
-			tpId,
-			gameId,
-			isLogin: userInfo.isLogin === true,
-			loginCallback: handleLogin,
-			execFunction: _useGotoGame
-				? handleGoToGame.bind(this, {
-						isLogin: userInfo.isLogin === true,
-						langId: userInfo.langId,
-						tpId,
-						gameId
-				  })
-				: null,
-			specialUrl
-		});
+		if (tpId === defSpecialSetting.sports_9w) {
+			const result = await handleGoToGame({
+				isLogin: userInfo.isLogin,
+				langId: userInfo.langId,
+				tpId,
+				gameId
+			});
+			const { url, key, userId } = result ?? {};
+			open9wSports({ url, key, userId });
+		} else {
+			GET_ENTER_PAGE({
+				langId: userInfo.langId,
+				tpId,
+				gameId,
+				isLogin: userInfo.isLogin === true,
+				loginCallback: handleLogin,
+				execFunction: _useGotoGame
+					? handleGoToGame.bind(this, {
+							isLogin: userInfo.isLogin === true,
+							langId: userInfo.langId,
+							tpId,
+							gameId
+					  })
+					: null,
+				specialUrl
+			});
+		}
 	};
 
 	if (game?.href) {

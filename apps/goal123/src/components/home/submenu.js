@@ -52,6 +52,10 @@ const defSubMenus = [
 				displayKey: "lbl_SabaClub"
 			},
 			{
+				...defGameInfo.kingMaker,
+				displayKey: "lbl_KingMaker"
+			},
+			{
 				...defGameInfo.V8Poker,
 				displayKey: "lbl_V8Poker"
 			},
