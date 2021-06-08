@@ -3,6 +3,8 @@ import BaseAPI, { defDeviceType } from "./base";
 export class TpAPI extends BaseAPI {
 	defGotoGame_AppType = defDeviceType;
 
+	GetTpMaintainList = () => this.siteRequest.post(`/GetTpMaintainList`);
+
 	GetTransferHistory = ({ StartDate, EndDate, PageNumber }) =>
 		this.tpRequest.post("/GetTransferHistory", {
 			StartDate,

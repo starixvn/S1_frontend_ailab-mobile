@@ -19,6 +19,7 @@ import eventImg from "../../styles/img/event/eventlink_en.png";
 import eventVNImg from "../../styles/img/event/eventlink_vn.png";
 import MysteryBox from "../mysteryBox/homePopBox";
 import { eventTime as mysteryBoxEventTime } from "../../pages/mysteryBox";
+import { eventTime } from "../../datas/productList";
 
 const defPageInfo = {
 	default: {
@@ -128,7 +129,9 @@ const defPageInfo = {
 	},
 	mysteryBox: {
 		titleKey: "lbl_MysteryBox_EventTitle",
-		className: "main event goldbox",
+		className: `main event goldbox${
+			isEventPeriod(eventTime.euro) ? " euro" : ""
+		}`,
 		hideLogo: true
 	},
 	vip: {

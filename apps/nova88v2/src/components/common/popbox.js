@@ -5,6 +5,7 @@ import Otp from "./popbox.otp";
 import OneGamePopBox from "./popbox.oneGame";
 import ReferralPopBox from "./popbox.referral";
 import DomainListPop from "./popbox.domainList";
+import PaymentQR from "./popbox.paymentQR";
 
 export const defPopBoxType = {
 	default: "default",
@@ -12,7 +13,8 @@ export const defPopBoxType = {
 	Otp: "Otp",
 	OneGame: "OneGame",
 	Referral: "Referral",
-	DomainList: "DomainList"
+	DomainList: "DomainList",
+	PaymentQR: "PaymentQR"
 };
 
 const PopUp = () => {
@@ -45,6 +47,10 @@ const PopUp = () => {
 			content = <DomainListPop domainList={popBox.domainList} />;
 			break;
 
+		case defPopBoxType.PaymentQR:
+			content = <PaymentQR {...popBox} />;
+			break;
+
 		default:
 			content = (
 				<div className="popTxt">
@@ -59,7 +65,7 @@ const PopUp = () => {
 		<div
 			id="popup"
 			className={`${popBox.className ?? ""}${
-				popBox.isOpen ? "active" : ""
+				popBox.isOpen ? " active" : ""
 			}`}>
 			{popBox.fullPage ? (
 				popBox.content
@@ -77,7 +83,7 @@ const PopUp = () => {
 					{content}
 				</div>
 			) : (
-				specialPopbox
+				content
 			)}
 		</div>
 	);

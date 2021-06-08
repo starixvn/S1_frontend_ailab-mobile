@@ -532,11 +532,21 @@
 	"lbl_EmailRequired":"Vui lòng điền vào cột địa chỉ Email.",
 	"lbl_EnterAccountNumber":"Nhập số tài khoản",
 	"lbl_ClaimSucceed":"Bạn đã nhận khuyến mãi thành công.",
+	"lbl_KingMaker":"King Maker",
 
 	"==============General==============":"",
 	"lbl_Jackpot":"NỔ HŨ",
 	"lbl_SabaSport":"Saba Sports",
 	"lbl_BTISport" : "BTI Sport",
+	"lbl_Top10winners": "TOP 10 NGƯỜI THẮNG",
+
+	"==============DomainList==============":"",
+	"lbl_Backup_website" : "Vui lòng lưu tên miền GOAL123 mới nhất cho mục đích dự phòng của bạn:",
+	"lbl_Copy":"Sao chép",
+	"lbl_Dont_show_me_again":"Đừng cho tôi xem lại",
+	"lbl_Stay_accessible":"CÓ THỂ TRUY CẬP",
+	"lbl_Anytime_anywhere":"Bất cứ lúc nào, bất cứ nơi đâu",
+	
 
 	"==============Transfer==============":"",
 	"lbl_Fail":"Thất bại",

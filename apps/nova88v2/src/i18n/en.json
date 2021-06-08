@@ -185,7 +185,11 @@
 	"lbl_Free": "Free",
 	"lbl_Jackpot":"Jackpot",
 
-	"======================================Currency=========================================": "",
+	"-==================HotEvent====================": "",
+	"lbl_Odds":"Odds",
+	"lbl_Handicap":"Hdp",
+
+	"-==================Currency====================": "",
 	"Currency_1": "SGD",
 	"Currency_12": "GBP",
 	"Currency_13": "RMB",
@@ -236,7 +240,11 @@
 	"lbl_Notice": "NOTICE",
 	"lbl_Poker": "Poker",
 	"lbl_eSports": "E-Sports",
-
+	"lbl_underMaintenance":"Under Maintenance",
+	"lbl_KingMaker" : "King Maker",
+	"lbl_Amb" : "AMB Poker",
+	"lbl_Games" : "Games",
+	"lbl_9w" : "9W Sports",
 	"==============================================Casino====================================": "",
 
 	"lbl_AllProvider": "All Platform",
@@ -573,6 +581,17 @@
 	"lbl_DepositType2": "Mobile Payment",
 	"lbl_DepositType3": "Local Bank",
 	"lbl_DepositType4": "Crypto Pay",
+
+	"==============================================Payment QR====================================": "",
+	"lbl_PaymentDetails":"Payment Details",
+	"lbl_OrderAmount":"Order Amount",
+	"lbl_Pay":"PAY",
+	"lbl_PaymentQRDesc1":"Please transfer the amount.",
+	"lbl_PaymentQRDesc2":"Provided for better experience.",
+	"lbl_ImportantNotes":"Important Notes",
+	"lbl_PaymentQRNote1":"Please do not refresh your browser.",
+	"lbl_PaymentQRNote2":"Please take note of the reference number if any event you need to contact our Customer Serivce for further action.",
+	"lbl_PaymentTimeLeft":"PAYMENT TIME LEFT",
 
 	"==============================================Backup Domain====================================": "",
 

@@ -12,6 +12,7 @@ import api from "../../service/api";
 import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
 import { useHandleAmount } from "../hook/useHandleAmount";
+import { defPopBoxType } from "../common/popbox";
 
 const payType = "MobilePay";
 
@@ -28,7 +29,7 @@ const Payment = props => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { setLoading } = useContext(loadingContext);
 
-	const [selGroupId, setSelGroupId] = useState(null);
+	const [selGroup, setSelGroup] = useState(null);
 	const [selChannel, setChannel] = useState({});
 	const [channelList, setChannelList] = useState([]);
 
@@ -63,8 +64,8 @@ const Payment = props => {
 	}, [paymentList.length, userPaymentData.payType]);
 
 	const SelectPayment = ({ groupInfo }) => {
-		if (selGroupId !== groupInfo?.groupId) {
-			setSelGroupId(() => groupInfo?.groupId);
+		if (selGroup?.groupId !== groupInfo?.groupId) {
+			setSelGroup(() => groupInfo);
 			setLoading(true);
 			api.payment.GetMobilePayInfoList(groupInfo?.groupId).then(
 				res => {
@@ -108,24 +109,57 @@ const Payment = props => {
 
 	const ClickSubmit = () => {
 		const result = VaildAmount({ _amount: amount });
-
 		if (result) {
 			const RedirectToNext = real_amount => {
 				const userData = {
 					payType: "mobilePay",
 					amount: real_amount,
 					channelId: selChannel?.channelId,
-					groupId: selGroupId
+					groupId: selGroup.groupId
 				};
 				handleUserPaymentData({ userData });
-				setPopBox(prevState => ({
-					...prevState,
-					isOpen: false
-				}));
-				window.open(
-					`${config.openURL}/${userInfo.langId}/Cashier/DepositReqMobilePay?ChannelId=${selChannel.channelId}&Amount=${real_amount}`
-				);
-				window.location.reload();
+
+				const RefreshPage = () => {
+					window.location.reload();
+				};
+
+				if (selChannel?.mode === 3) {
+					api.cashier
+						.DepositReqMobilePay({
+							langId: userInfo.langId,
+							channelId: selChannel.channelId,
+							real_amount
+						})
+						.then(res => {
+							if (res.data.errorCode === 0) {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_DepositType2,
+									className: "dragonPayPop",
+									popBoxType: defPopBoxType.PaymentQR,
+									amount: real_amount,
+									currencyId: userInfo.currencyId,
+									imgUrl: res.data.data.url,
+									handlePopBox: () => {
+										setPopBox(prevState => ({
+											...prevState,
+											isOpen: false
+										}));
+										RefreshPage();
+									}
+								});
+							}
+						});
+				} else {
+					setPopBox(prevState => ({
+						...prevState,
+						isOpen: false
+					}));
+					window.open(
+						`${config.openURL}/${userInfo.langId}/Cashier/DepositReqMobilePay?ChannelId=${selChannel.channelId}&Amount=${real_amount}`
+					);
+					RefreshPage();
+				}
 			};
 
 			const real_amount = _isConvert ? amount * 1000 : amount;
@@ -184,7 +218,7 @@ const Payment = props => {
 				title={i18n.lbl_PaymentModes}
 				dataList={paymentList}
 				SelectPayment={SelectPayment}
-				selected={selGroupId}
+				selected={selGroup?.groupId}
 				mainKey={`deposit-full-${payType}-groupList`}
 				imgKey="groupName"
 				idKey="groupId"

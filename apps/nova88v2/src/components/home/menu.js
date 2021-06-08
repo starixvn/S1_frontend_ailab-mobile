@@ -8,11 +8,16 @@ import { GET_ENTER_PAGE } from "../../service/enterPage";
 import useHandleLogin from "../hook/useHandleLogin";
 import api from "../../service/api";
 import { GetCurrencyName } from "../common/common";
-import { useGotoGame } from "../hook/useGotoGame";
+import {
+	useGotoGame,
+	defSpecialSetting,
+	open9wSports
+} from "../hook/useGotoGame";
 
 const Menu = ({ i18n, userInfo, setPopBox }) => {
 	const [selectedCol, setSelectedCol] = useState(defCol.sports);
 	const [showingTpIds, setShowningTpIds] = useState(null);
+	const [maintainList, setMaintainList] = useState(null);
 	const { handleLogin } = useHandleLogin();
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 	const navigate = useNavigate();
@@ -39,6 +44,12 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 				}
 			});
 		}
+		api.tp.GetTpMaintainList().then(res => {
+			if (res.data.errorCode === 0 && isMountedRef.current) {
+				const arr = res.data?.data.map(el => el.tpId);
+				setMaintainList(arr);
+			}
+		});
 	}, [setShowningTpIds, userInfo.isLogin]);
 
 	const showSubPanel = ({ panel, popBox }) => {
@@ -131,9 +142,14 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 					);
 				} else if (showingTpIds) {
 					showItem = showingTpIds.includes(subItem.tpId);
+				} else if (subItem?.showAfterLogin) {
+					showItem = userInfo.isLogin;
 				}
 				if (subItem.forceShow) {
 					showItem = true;
+				}
+				if (userInfo.isLogin === false && subItem?.hideBeforeLogin) {
+					showItem = false;
 				}
 				return showItem;
 			})
@@ -148,6 +164,7 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 						userInfo={userInfo}
 						handleLogin={handleLogin}
 						handleGoToGame={handleGoToGame}
+						isMaintain={maintainList?.includes(subItem.tpId)}
 					/>
 				);
 			});
@@ -177,59 +194,110 @@ Menu.propTypes = {
 	setPopBox: PropTypes.func.isRequired
 };
 
-const SubGame = ({ game, i18n, userInfo, handleLogin, handleGoToGame }) => {
+const SubGame = ({
+	game,
+	i18n,
+	userInfo,
+	handleLogin,
+	handleGoToGame,
+	isMaintain
+}) => {
 	const showingEventIcon = getEventIcon({ eventIcon: game?.eventIcon });
 
-	const clickGame = ({ tpId, gameId, useGotoGame: _useGotoGame }) => {
-		GET_ENTER_PAGE({
-			langId: userInfo.langId,
-			tpId,
-			gameId,
-			isLogin: userInfo.isLogin === true,
-			loginCallback: handleLogin,
-			execFunction: _useGotoGame
-				? handleGoToGame.bind(this, {
-						isLogin: userInfo.isLogin === true,
-						langId: userInfo.langId,
-						tpId,
-						gameId
-				  })
-				: null
-		});
+	const clickGame = async ({
+		tpId,
+		gameId,
+		useGotoGame: _useGotoGame,
+		specialUrl
+	}) => {
+		if (tpId === defSpecialSetting.sports_9w) {
+			const result = await handleGoToGame({
+				isLogin: userInfo.isLogin,
+				langId: userInfo.langId,
+				tpId,
+				gameId
+			});
+			const { url, key, userId } = result ?? {};
+			open9wSports({ url, key, userId });
+		} else {
+			GET_ENTER_PAGE({
+				langId: userInfo.langId,
+				tpId,
+				gameId,
+				isLogin: userInfo.isLogin === true,
+				loginCallback: handleLogin,
+				execFunction: _useGotoGame
+					? handleGoToGame.bind(this, {
+							isLogin: userInfo.isLogin === true,
+							langId: userInfo.langId,
+							tpId,
+							gameId
+					  })
+					: null,
+				specialUrl
+			});
+		}
 	};
 
 	if (game?.href) {
 		return (
-			<a href={game.href} target="_blank" rel="noreferrer">
+			<a
+				className={isMaintain ? "active" : ""}
+				href={game.href}
+				target="_blank"
+				rel="noreferrer"
+				tabIndex={isMaintain ? "-1" : 0}>
 				{showingEventIcon !== "" ? (
 					<i className={`icon ${showingEventIcon}`} />
 				) : null}
 				<img src={game.img} alt={i18n[game.spanTextKey]} />
 				<div>{game.spanText || i18n[game.spanTextKey]}</div>
+				{isMaintain ? (
+					<div className="under">{i18n.lbl_underMaintenance}</div>
+				) : (
+					""
+				)}
 			</a>
 		);
 	}
 
 	return game?.path ? (
-		<Link to={game.path} state={game.parameter}>
+		<Link
+			className={isMaintain ? "active" : ""}
+			to={game.path}
+			state={game.parameter}
+			tabIndex={isMaintain ? "-1" : 0}>
 			{showingEventIcon !== "" ? (
 				<i className={`icon ${showingEventIcon}`} />
 			) : null}
 			<img src={game.img} alt={i18n[game.spanTextKey]} />
 			<div>{game.spanText || i18n[game.spanTextKey]}</div>
+			{isMaintain ? (
+				<div className="under">{i18n.lbl_underMaintenance}</div>
+			) : (
+				""
+			)}
 		</Link>
 	) : (
 		<button
+			className={isMaintain ? "active" : ""}
+			disabled={isMaintain}
 			onClick={clickGame.bind(this, {
 				tpId: game.tpId,
 				gameId: game.gameId,
-				useGotoGame: game.useGotoGame
+				useGotoGame: game.useGotoGame,
+				specialUrl: game?.specialUrl ?? ""
 			})}>
 			{showingEventIcon !== "" ? (
 				<i className={`icon ${showingEventIcon}`} />
 			) : null}
 			<img src={game.img} alt={i18n[game.spanTextKey]} />
 			<div>{game.spanText || i18n[game.spanTextKey]}</div>
+			{isMaintain ? (
+				<div className="under">{i18n.lbl_underMaintenance}</div>
+			) : (
+				""
+			)}
 		</button>
 	);
 };
@@ -239,7 +307,8 @@ SubGame.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
 	handleLogin: PropTypes.func.isRequired,
-	handleGoToGame: PropTypes.func.isRequired
+	handleGoToGame: PropTypes.func.isRequired,
+	isMaintain: PropTypes.bool.isRequired
 };
 
 export default Menu;

@@ -138,7 +138,8 @@ const defPlatform = [
 	"v8",
 	"n2live",
 	"playtech",
-	"bti"
+	"bti",
+	"kingmaker"
 ];
 
 const Platforms = ({ i18n }) => {

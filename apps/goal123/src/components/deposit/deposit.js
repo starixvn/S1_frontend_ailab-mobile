@@ -24,6 +24,7 @@ import {
 import RecentDatas from "./deposit.recentDatas";
 import { number_format } from "../common/common";
 import ImportantNote from "./importantNote";
+import { useGetDomainList } from "../hook/useGetDomainList";
 
 const defPayType = {
 	onlineBank: "onlineBank",
@@ -92,6 +93,12 @@ const Panel = () => {
 	const [recentDatas, setRecentDatas] = useState([]);
 
 	const [pageVerify, setPageVerify] = useState(true);
+
+	useGetDomainList({
+		setPopBox,
+		userInfo,
+		i18n
+	});
 
 	PageVerify(userInfo, i18n, setPopBox, navigate, setPageVerify, false);
 

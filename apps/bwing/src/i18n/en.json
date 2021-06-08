@@ -578,9 +578,11 @@
 	"lbl_TopUpCard":"TOP-UP CARD",
 	"lbl_DepositType5":"TOP-UP CARD",
 	"lbl_EmailRequired":"Please fill in the email field",
+	"lbl_KingMaker":"King Maker",
 
 	"==============General==============":"",
 	"lbl_Jackpot":"Jackpot",
+	"lbl_Top10winners": "Top 10 Winners",
 	
 	"==============Transfer==============":"",
 	"lbl_Fail":"Failed",
@@ -588,6 +590,13 @@
 
 	"==============Important Notice==============":"",
 	"lbl_ImportantNotice":"IMPORTANT NOTICE",
+
+	"==============DomainList==============":"",
+	"lbl_Backup_website" : "Please save the latest Bwing domain for backup purposes:",
+	"lbl_Copy":"Copy",
+	"lbl_Dont_show_me_again":"Dont show me again",
+	"lbl_Stay_accessible":"STAY ACCESSIBLE",
+	"lbl_Anytime_anywhere":"Anytime, Anywhere",
 
 	"==============Promotion==============":"",
 	"lbl_PromotionRebateAndCashback":"Rebate / Cashback",

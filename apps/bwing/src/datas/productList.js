@@ -76,7 +76,8 @@ export const defGameInfo = {
 	Fishing_AT04: {
 		tpId: 16,
 		gameId: "AT04"
-	}
+	},
+	kingMaker: { tpId: 11 }
 };
 
 const gameList = langId => [
@@ -118,6 +119,11 @@ const gameList = langId => [
 				...defGameInfo.sabaClub,
 				icon: "game",
 				spanTextKey: "lbl_SabaClub"
+			},
+			{
+				...defGameInfo.kingMaker,
+				icon: "kingMaker",
+				spanTextKey: "lbl_KingMaker"
 			},
 			{
 				...defGameInfo.Fishing,
@@ -166,6 +172,9 @@ const gameList = langId => [
 		translateKey: "lbl_LiveCasino",
 		items: [
 			{
+				...defGameInfo.Casino_PT
+			},
+			{
 				...defGameInfo.LIVEcasinoDG
 			},
 			{
@@ -201,5 +210,9 @@ const gameList = langId => [
 		]
 	}
 ];
+
+export const euro_event_time = {
+	endDate: "2021/07/13 12:00:00"
+};
 
 export default gameList;

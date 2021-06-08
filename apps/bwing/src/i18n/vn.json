@@ -578,9 +578,11 @@
 	"lbl_LoadCard":"THẺ CÀO",
 	"lbl_DepositType5":"THẺ CÀO",
 	"lbl_EmailRequired":"Vui lòng điền vào cột địa chỉ Email.",
+	"lbl_KingMaker":"King Maker",
 
 	"==============General==============":"",
 	"lbl_Jackpot":"NỔ HŨ",
+	"lbl_Top10winners": "TOP 10 NGƯỜI THẮNG",
 
 	"==============Transfer==============":"",
 	"lbl_Fail":"Thất bại",
@@ -588,6 +590,13 @@
 
 	"==============Important Notice==============":"",
 	"lbl_ImportantNotice":"THÔNG BÁO QUAN TRỌNG",
+
+	"==============DomainList==============":"",
+	"lbl_Backup_website" : "Vui lòng lưu tên miền Bwing mới nhất cho mục đích dự phòng của bạn:",
+	"lbl_Copy":"Sao chép",
+	"lbl_Dont_show_me_again":"Đừng cho tôi xem lại",
+	"lbl_Stay_accessible":"CÓ THỂ TRUY CẬP",
+	"lbl_Anytime_anywhere":"Bất cứ lúc nào, bất cứ nơi đâu",
 
 	"==============Promotion==============":"",
 	"lbl_PromotionRebateAndCashback":"Hoàn trả / Hoàn lại tiền",
