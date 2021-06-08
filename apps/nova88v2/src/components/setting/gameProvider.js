@@ -104,6 +104,14 @@ const defPlatfrom = [
 		...defGameInfo.Casino_PT,
 		path: path.casino.root,
 		imgName: "pt"
+	},
+	{
+		...defGameInfo.kingMaker,
+		imgName: "km"
+	},
+	{
+		...defGameInfo.amb,
+		imgName: "amb"
 	}
 ];
 //

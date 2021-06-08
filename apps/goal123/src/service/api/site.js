@@ -68,3 +68,6 @@ export const api_site_GetAffiliateAgent = ({ AffId }) =>
 
 export const api_site_Signup = (data, langId) =>
 	siteRequest.post(`/Signup/${langId}`, data);
+
+export const GetSupportDomainList = () =>
+	siteRequest.post(`/GetSupportDomainList`);

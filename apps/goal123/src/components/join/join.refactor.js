@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import PropTypes from "prop-types";
-import { useMatch, Redirect } from "@reach/router";
+import { useMatch, Redirect, useNavigate } from "@reach/router";
 import Inputbox from "../common/inputbox.info";
 import InputboxPWD from "../common/inputbox.password.info";
 import Dropdown from "../common/dropdown";
@@ -33,6 +33,7 @@ import { initValue, initStatus } from "./join.def";
 const defaultLangId = GET_LANG_ID();
 
 const Join = ({ hideBtn }) => {
+	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -262,6 +263,8 @@ const Join = ({ hideBtn }) => {
 											};
 										}
 										setUserInfo(_user);
+										setNav(null);
+										navigate(`/${path.deposit.root}`);
 									}
 								},
 								() => {
@@ -275,33 +278,25 @@ const Join = ({ hideBtn }) => {
 								}
 							);
 							setNav(null);
-						} else if (
-							errorCode === -2 ||
-							errorCode === -5 ||
-							errorCode === -19
-						) {
-							setInputStatus(prev => ({
-								...prev,
-								UserName: { checked: false, msg: message }
-							}));
-						} else if (errorCode === -3) {
-							setInputStatus(prev => ({
-								...prev,
-								Password: { checked: false, msg: message }
-							}));
-						} else if (errorCode === -7) {
-							setInputStatus(prev => ({
-								...prev,
-								SpecialBonusCode: {
-									checked: false,
-									msg: message
-								}
-							}));
-						} else if (errorCode === -9) {
-							setInputStatus(prev => ({
-								...prev,
-								AffiliateId: { checked: false, msg: message }
-							}));
+						} else {
+							const closePopBox = () => {
+								setPopBox({ isOpen: false });
+							};
+							setPopBox({
+								isOpen: true,
+								title: i18n.lbl_ImportantNote,
+								content: `[${errorCode}] ${message}`,
+								hasBtn: true,
+								btnBar: (
+									<div className="btn-group">
+										<button
+											className="lightBlue"
+											onClick={closePopBox}>
+											{i18n.lbl_Close}
+										</button>
+									</div>
+								)
+							});
 						}
 					}
 				},

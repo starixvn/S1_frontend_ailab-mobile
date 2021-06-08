@@ -455,7 +455,6 @@ const Payment = props => {
 				clickInfo={clickInfo.bind(this, { col: "amount" })}
 				VaildAmount={VaildAmount.bind(this, { _amount: amount })}
 			/>
-			<ImportantNotes i18n={i18n} />
 			<div className="btn-group">
 				<button
 					className="blue"
@@ -471,23 +470,6 @@ const Payment = props => {
 		</div>
 	);
 };
-
-const ImportantNotes = ({ i18n = {} }) => (
-	<>
-		<div className="title">
-			<span className="text-org">*</span>
-			{i18n.lbl_ImportantNote?.toUpperCase()}
-		</div>
-		<div className="selectModule">
-			<ol>
-				<li>{`1. ${i18n.lbl_DepositLocalBankNotes1}`}</li>
-				<li>{`2. ${i18n.lbl_DepositLocalBankNotes2}`}</li>
-				<li>{`3. ${i18n.lbl_DepositLocalBankNotes3}`}</li>
-				<li>{`4. ${i18n.lbl_DepositLocalBankNotes4}`}</li>
-			</ol>
-		</div>
-	</>
-);
 
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,

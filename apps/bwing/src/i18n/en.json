@@ -100,7 +100,7 @@
 	"lbl_Fishing": "Fishing",
 	"lbl_FootballBetting": "Football Betting",
 	"lbl_ForgetPassword": "Forgot your Password ",
-	"lbl_Free": "Free Play",
+	"lbl_Free": "DEMO",
 	"lbl_From": "From",
 	"lbl_GPI": "GPI",
 	"lbl_Games": "Games",
@@ -165,7 +165,7 @@
 	"lbl_PasswordTooltip": "6-18 alphanumeric (A-Z, a-z, 0-9) characters or special characters @$*!%#?&",
 	"lbl_PersonalMsg": "Personal Message",
 	"lbl_Phone": "Phone Number",
-	"lbl_PlayNow": "Play Now",
+	"lbl_PlayNow": "PLAY",
 	"lbl_PreferredCurrencyToolTip": "Preferred currency can not be changed after registration.",
 	"lbl_PrivacyPolicy": "Privacy Policy",
 	"lbl_Profile": "Profile",
@@ -578,9 +578,11 @@
 	"lbl_TopUpCard":"TOP-UP CARD",
 	"lbl_DepositType5":"TOP-UP CARD",
 	"lbl_EmailRequired":"Please fill in the email field",
+	"lbl_KingMaker":"KingMaker",
 
 	"==============General==============":"",
 	"lbl_Jackpot":"Jackpot",
+	"lbl_Top10winners": "Top 10 Winners",
 	
 	"==============Transfer==============":"",
 	"lbl_Fail":"Failed",
@@ -588,6 +590,13 @@
 
 	"==============Important Notice==============":"",
 	"lbl_ImportantNotice":"IMPORTANT NOTICE",
+
+	"==============DomainList==============":"",
+	"lbl_Backup_website" : "Please save the latest Bwing domain for backup purposes:",
+	"lbl_Copy":"Copy",
+	"lbl_Dont_show_me_again":"Dont show me again",
+	"lbl_Stay_accessible":"STAY ACCESSIBLE",
+	"lbl_Anytime_anywhere":"Anytime, Anywhere",
 
 	"==============Promotion==============":"",
 	"lbl_PromotionRebateAndCashback":"Rebate / Cashback",

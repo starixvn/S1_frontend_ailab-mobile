@@ -23,7 +23,9 @@ import winner_vn from "../styles/img/EURO_Bwing/EURO-Bwing-VN.jpg";
 import winner_en from "../styles/img/EURO_Bwing/EURO-Bwing-EN.jpg";
 import defNav from "../components/casino/defNav";
 import AddToHomePop from "../components/home/addToHomePop";
+import Top10Winner from "../components/home/top10winner";
 import config from "../config";
+import { useGetDomainList } from "../components/hook/useGetDomainList";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -31,6 +33,12 @@ const IndexPage = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const [redirectPath, setRedirectPath] = useState(null);
 	const { setRoot } = useContext(rootContext);
+
+	const { isDomainPopOpened } = useGetDomainList({
+		setPopBox,
+		userInfo,
+		i18n
+	});
 
 	useEffect(() => {
 		if (redirectPath !== null) {
@@ -50,7 +58,8 @@ const IndexPage = () => {
 		if (
 			userInfo.currencyId &&
 			userInfo.userName &&
-			readCookie(cookieName) !== "1"
+			readCookie(cookieName) !== "1" &&
+			isDomainPopOpened
 		) {
 			setCookie(cookieName, "1", 1);
 			api_GetWalletInfo().then(res => {
@@ -186,7 +195,8 @@ const IndexPage = () => {
 		setPopBox,
 		userInfo.currencyId,
 		userInfo.userName,
-		userInfo.isLogin
+		userInfo.isLogin,
+		isDomainPopOpened
 	]);
 
 	return redirectPath !== null ? (
@@ -196,6 +206,7 @@ const IndexPage = () => {
 			<Slider />
 			<Marquee />
 			<PlaytechJactpot />
+			<Top10Winner i18n={i18n} />
 			<EventSwipper />
 			{/* <MidBanner langId={userInfo.langId} /> */}
 			<GamePanel i18n={i18n} userInfo={userInfo} />

@@ -10,7 +10,34 @@ import { popBoxContext, i18nContext } from "../common/context";
 import api from "../../service/api";
 
 export const defSpecialSetting = {
-	playTech: defGameInfo.Casino_PT.tpId
+	playTech: defGameInfo.Casino_PT.tpId,
+	sports_9w: defGameInfo.nineW.tpId
+};
+
+export const open9wSports = ({ url, key, userId }) => {
+	const windowName = "9wSports";
+	const form = document.createElement("form");
+	form.setAttribute("method", "post");
+	form.setAttribute("action", url);
+	form.setAttribute("target", windowName);
+	const addInput = ({ name, value }) => {
+		const hiddenField = document.createElement("input");
+		hiddenField.setAttribute("type", "hidden");
+		hiddenField.setAttribute("name", name);
+		hiddenField.setAttribute("value", value);
+		form.appendChild(hiddenField);
+	};
+
+	addInput({ name: "userId", value: userId });
+	addInput({ name: "key", value: decodeURIComponent(key) });
+	document.body.appendChild(form);
+	window.open(
+		"",
+		windowName,
+		"toolbar=no, menubar=no,scrollbars=no,resizable=no,location=no,directories=no,status=no, top=0, left=0"
+	);
+	form.submit();
+	form.remove();
 };
 
 const launchGame = ({ client, mode, game, lang }) => {
@@ -77,18 +104,18 @@ export const useGotoGame = ({
 			isMountedRef.current = false;
 		};
 	});
-
 	const handleGoToGame = useCallback(
-		({
+		async ({
 			isLogin: _isLogin = true,
 			langId: _langId,
 			tpId: _tpId,
 			gameId: _gameId,
 			isFun: _isFun
 		}) => {
+			let returnData = "";
 			if (_isLogin) {
-				api.tp
-					.GotoGame({
+				try {
+					const res = await api.tp.GotoGame({
 						TpId: _tpId,
 						LangId: _langId,
 						gameId: _gameId,
@@ -99,90 +126,94 @@ export const useGotoGame = ({
 							_tpId === defSpecialSetting.playTech
 								? api.tp.defGotoGame_AppType.Mobile
 								: api.tp.defGotoGame_AppType.NativeAPP
-					})
-					.then(async res => {
-						if (isMountedRef.current) {
-							if (res.data.errorCode === 0 && res.data.message) {
-								const result = JSON.parse(res.data.message);
-								setData(() => result);
-								if (_tpId === defSpecialSetting.playTech) {
-									const {
-										account: username,
-										password,
-										lang,
-										mode
-									} = result;
-
-									await iapiSetCallout("Login", response => {
-										if (response.errorCode) {
-											if (response.errorCode == 48) {
-												setPopBox({
-													isOpen: true,
-													content: `[${response.errorCode}] Login failed, error: ${response.errorCode} ,playerMessage: ${response.actions.PlayerActionShowMessage[0].message}`,
-													hasBtn: true,
-													btnBar: (
-														<div className="btn-group">
-															<button
-																className="blue"
-																onClick={
-																	ClickClose
-																}>
-																OK
-															</button>
-														</div>
-													)
-												});
-											} else {
-												setPopBox({
-													isOpen: true,
-													content: `[${response.errorCode}] Login failed, error: ${response.errorCode} ,playerMessage: ${response.playerMessage}`,
-													hasBtn: true,
-													btnBar: (
-														<div className="btn-group">
-															<button
-																className="blue"
-																onClick={
-																	ClickClose
-																}>
-																OK
-															</button>
-														</div>
-													)
-												});
-											}
-										} else {
-											launchGame({ ...result });
-										}
-									});
-
-									if (mode === "real") {
-										iapiSetClientType("casino");
-										iapiSetClientPlatform("web");
-										iapiLogin(username, password, 1, lang);
-									} else {
-										launchGameWithFunMode({ ...result });
-									}
-								}
-							} else {
-								setPopBox({
-									isOpen: true,
-									content: `[${res.data.errorCode}] ${res.data.message}`,
-									hasBtn: true,
-									btnBar: (
-										<div className="btn-group">
-											<button
-												className="white"
-												onClick={ClickClose}>
-												{i18n.lbl_Cancel}
-											</button>
-										</div>
-									)
-								});
-							}
-						}
 					});
-			}
 
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0 && res.data.message) {
+							const result = JSON.parse(res.data.message);
+							setData(() => result);
+							if (_tpId === defSpecialSetting.playTech) {
+								const {
+									account: username,
+									password,
+									lang,
+									mode
+								} = result;
+
+								await iapiSetCallout("Login", response => {
+									if (response.errorCode) {
+										if (response.errorCode == 48) {
+											setPopBox({
+												isOpen: true,
+												content: `[${response.errorCode}] Login failed, error: ${response.errorCode} ,playerMessage: ${response.actions.PlayerActionShowMessage[0].message}`,
+												hasBtn: true,
+												btnBar: (
+													<div className="btn-group">
+														<button
+															className="blue"
+															onClick={
+																ClickClose
+															}>
+															OK
+														</button>
+													</div>
+												)
+											});
+										} else {
+											setPopBox({
+												isOpen: true,
+												content: `[${response.errorCode}] Login failed, error: ${response.errorCode} ,playerMessage: ${response.playerMessage}`,
+												hasBtn: true,
+												btnBar: (
+													<div className="btn-group">
+														<button
+															className="blue"
+															onClick={
+																ClickClose
+															}>
+															OK
+														</button>
+													</div>
+												)
+											});
+										}
+									} else {
+										launchGame({ ...result });
+									}
+								});
+
+								if (mode === "real") {
+									iapiSetClientType("casino");
+									iapiSetClientPlatform("web");
+									iapiLogin(username, password, 1, lang);
+								} else {
+									launchGameWithFunMode({
+										...result
+									});
+								}
+							} else if (_tpId === defSpecialSetting.sports_9w) {
+								returnData = result;
+							}
+						} else {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`,
+								hasBtn: true,
+								btnBar: (
+									<div className="btn-group">
+										<button
+											className="white"
+											onClick={ClickClose}>
+											{i18n.lbl_Cancel}
+										</button>
+									</div>
+								)
+							});
+						}
+					}
+				} catch (error) {}
+			}
+			return returnData;
 			// eslint-disable-next-line react-hooks/exhaustive-deps
 		},
 		[gameId, isFun, isLogin, langId, tpId, i18n]

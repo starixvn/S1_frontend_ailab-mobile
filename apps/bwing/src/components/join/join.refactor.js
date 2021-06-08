@@ -305,6 +305,7 @@ const Join = () => {
 											};
 										}
 										setUserInfo(_user);
+										navigate(`/${path.deposit.root}`);
 									}
 								},
 								() => {
@@ -318,41 +319,24 @@ const Join = () => {
 								}
 							);
 							setNav(null);
-						} else if (
-							errorCode === -2 ||
-							errorCode === -5 ||
-							errorCode === -19
-						) {
-							setInputStatus(prevState => ({
-								...prevState,
-								UserName: { checked: false, msg: message }
-							}));
-						} else if (errorCode === -3) {
-							setInputStatus(prevState => ({
-								...prevState,
-								Password: { checked: false, msg: message }
-							}));
-						} else if (errorCode === -7) {
-							setInputStatus(prevState => ({
-								...prevState,
-								SpecialBonusCode: {
-									checked: false,
-									msg: message
-								}
-							}));
-						} else if (errorCode === -9) {
-							setInputStatus(prevState => ({
-								...prevState,
-								AffiliateId: {
-									checked: false,
-									msg: message
-								}
-							}));
 						} else {
+							const closePopBox = () => {
+								setPopBox({ isOpen: false });
+							};
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
-								content: `[${errorCode}]${message}`
+								content: `[${errorCode}] ${message}`,
+								hasBtn: true,
+								btnBar: (
+									<div className="btn-group">
+										<button
+											className="submit"
+											onClick={closePopBox}>
+											{i18n.lbl_Close}
+										</button>
+									</div>
+								)
 							});
 						}
 					}

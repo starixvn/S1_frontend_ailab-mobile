@@ -4624,6 +4624,36 @@ button.clickBtn:before {
           align-items: center;
 }
 
+.casino .slotList .info .under {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background: #555;
+  padding: 1vw;
+  border-radius: 5px;
+  color: white;
+  line-height: normal;
+  text-align: center;
+}
+
+.casino .slotList .info.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+}
+
+.casino .slotList .info.active .under {
+  display: block;
+}
+
 .casino .slotList .info:before {
   content: '';
   border-style: solid;
@@ -7958,6 +7988,44 @@ span.important {
   line-height: 7vw;
 }
 
+.upcomingmatches .swiper-slide .team > div.odds {
+  position: absolute;
+  padding: 0;
+  font-size: 3vw;
+  font-weight: normal;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  bottom: 8vw;
+  display: flex;
+  width: 100%;
+  height: auto;
+}
+
+.upcomingmatches .swiper-slide .team > div.odds div {
+  background: #c9c9c9;
+  border-radius: 5px;
+  padding: 0 4vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0 0 1vw 0;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  width: 20vw;
+  color: black;
+  font-weight: bold;
+}
+
+.upcomingmatches .swiper-slide .team > div.odds div:nth-child(2) {
+  background: #e1c3a4;
+  margin: 0 1vw 1vw;
+}
+
 .upcomingmatches .swiper-slide .team > div > div {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -7973,43 +8041,13 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
   font-size: 3vw;
-  margin: 8vw 0 0;
   text-align: center;
 }
 
-.upcomingmatches .swiper-slide .team > div > div .odds {
-  position: absolute;
-  padding: 0;
-  font-size: 3vw;
-  font-weight: normal;
-  left: 2vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
-  top: 8vw;
-}
-
-.upcomingmatches .swiper-slide .team > div > div .odds div {
-  background: #8d5085;
-  border-radius: 30px;
-  padding: 0 4vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  min-width: 10vw;
-  margin: 0 0 1vw;
-}
-
-.upcomingmatches .swiper-slide .team > div > div .odds div:last-child {
-  margin: 0;
-  background: #076475;
+.upcomingmatches .swiper-slide .team > div > div.teamL, .upcomingmatches .swiper-slide .team > div > div .teamR {
+  white-space: normal;
+  height: 24vw;
+  overflow: hidden;
 }
 
 .upcomingmatches .swiper-slide .team > div > div.teamR .odds {
@@ -8019,7 +8057,6 @@ span.important {
 
 .upcomingmatches .swiper-slide .team > div > div img {
   width: 15vw;
-  margin: 0 0 7vw;
 }
 
 .upcomingmatches .swiper-slide .team > div > div.btn-group {

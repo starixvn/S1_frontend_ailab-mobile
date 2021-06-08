@@ -77,21 +77,24 @@ const Detail = ({
 				</li>
 			</ul>
 
-			<div>
-				<div className="title">TxId</div>
-				<div>{thirdId}</div>
-				<input
-					type="hidden"
-					readOnly={true}
-					defaultValue={thirdId}
-					ref={ipt}
-				/>
-				<button
-					className="icon icon-files-empty"
-					value={thirdId}
-					onClick={OnCopy}
-				/>
-			</div>
+			{thirdId && (
+				<div>
+					<div className="title">TxId</div>
+					<div>{thirdId}</div>
+					<input
+						type="hidden"
+						readOnly={true}
+						defaultValue={thirdId}
+						ref={ipt}
+					/>
+					<button
+						className="icon icon-files-empty"
+						value={thirdId}
+						onClick={OnCopy}
+					/>
+				</div>
+			)}
+
 			{btnGroup}
 		</div>
 	);
