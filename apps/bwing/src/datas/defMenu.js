@@ -38,6 +38,8 @@ import liveCasino_N2 from "../styles/img/liveGame/livegame10.png";
 import sabaSports from "../styles/img/sport.png";
 import BTI from "../styles/img/BTI-sport.png";
 
+import kingMaker from "../styles/img/kingmaker.png";
+
 export const defIconType = {
 	live: " liveIcon",
 	new: " newicon",
@@ -52,7 +54,8 @@ const eventTime = {
 	new_CQ9_fishing: { endDate: "2021/03/05 11:00:00" },
 	new_vip: { startDate: "2021/03/11 12:00:00" },
 	new_LiveCasino_N2Live: { startDate: "2021/03/12 11:00:00" },
-	new_BTI: { endDate: "2021/06/28 11:00:00" }
+	new_BTI: { endDate: "2021/06/28 11:00:00" },
+	new_Km: { endDate: "2021/07/05 11:00:00" }
 };
 
 export const productList = langId => {
@@ -91,6 +94,17 @@ export const productList = langId => {
 						{
 							icon: defIconType.new,
 							inPeriod: isEventPeriod(eventTime.new_V8Poker)
+						}
+					]
+				},
+				{
+					...defGameInfo.kingMaker,
+					img: kingMaker,
+					displayKey: "lbl_KingMaker",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.new_Km)
 						}
 					]
 				},

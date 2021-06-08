@@ -76,7 +76,8 @@ export const defGameInfo = {
 	Fishing_AT04: {
 		tpId: 16,
 		gameId: "AT04"
-	}
+	},
+	kingMaker: { tpId: 11 }
 };
 
 const gameList = langId => [
@@ -118,6 +119,11 @@ const gameList = langId => [
 				...defGameInfo.sabaClub,
 				icon: "game",
 				spanTextKey: "lbl_SabaClub"
+			},
+			{
+				...defGameInfo.kingMaker,
+				icon: "kingMaker",
+				spanTextKey: "lbl_KingMaker"
 			},
 			{
 				...defGameInfo.Fishing,

@@ -94,6 +94,10 @@ const defPlatfrom = [
 	{
 		...defGameInfo.BTISport,
 		imgName: "bti"
+	},
+	{
+		...defGameInfo.kingMaker,
+		imgName: "kingmaker"
 	}
 ];
 
