@@ -21,6 +21,7 @@ import LIVEcasino_SA from "../styles/img/sa.png";
 import LIVEcasino_EB from "../styles/img/eb.png";
 // import LIVEcasino_MW from "../styles/img/LIVEcasino_MW.jpg";
 import LIVEcasino_WM from "../styles/img/wm.png";
+import LIVEcasino_PT from "../styles/img/ptc.png";
 
 import casino_PP from "../styles/img/spp.png";
 import casino_ICG from "../styles/img/icg.png";
@@ -78,6 +79,7 @@ const defIconType = {
 export const eventTime = {
 	new_vip: { startDate: "2021/02/05 11:00:00" },
 	casino_PT: { endDate: "2021/06/20 11:00:00" },
+	liveCasino_PT: { endDate: "2021/06/30 11:00:00" },
 	amb: { endDate: "2021/07/05 11:00:00" },
 	km: { endDate: "2021/07/05 11:00:00" },
 	nineW: { endDate: "2021/07/05 11:00:00" },
@@ -192,6 +194,20 @@ const gameList = ({ langId, currencyName }) => {
 					categoryIcon: "livecasino",
 					translateKey: "lbl_LiveCasino",
 					items: [
+						{
+							...defGameInfo.Casino_PT,
+							spanText: "PT",
+							img: LIVEcasino_PT,
+							useGotoGame: true,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_PT
+									)
+								}
+							]
+						},
 						{
 							...defGameInfo.LIVEcasinoAE,
 							spanText: "AE",
@@ -527,6 +543,20 @@ const gameList = ({ langId, currencyName }) => {
 					categoryIcon: "livecasino",
 					translateKey: "lbl_LiveCasino",
 					items: [
+						{
+							...defGameInfo.Casino_PT,
+							spanText: "PT",
+							img: LIVEcasino_PT,
+							useGotoGame: true,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_PT
+									)
+								}
+							]
+						},
 						{
 							...defGameInfo.LIVEcasinoDG,
 							spanText: "DG",
@@ -877,6 +907,20 @@ const gameList = ({ langId, currencyName }) => {
 					categoryIcon: "livecasino",
 					translateKey: "lbl_LiveCasino",
 					items: [
+						{
+							...defGameInfo.Casino_PT,
+							spanText: "PT",
+							img: LIVEcasino_PT,
+							useGotoGame: true,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_PT
+									)
+								}
+							]
+						},
 						{
 							...defGameInfo.LIVEcasinoDG,
 							spanText: "DG",
@@ -1555,6 +1599,20 @@ const gameList = ({ langId, currencyName }) => {
 					categoryIcon: "livecasino",
 					translateKey: "lbl_LiveCasino",
 					items: [
+						{
+							...defGameInfo.Casino_PT,
+							spanText: "PT",
+							img: LIVEcasino_PT,
+							useGotoGame: true,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_PT
+									)
+								}
+							]
+						},
 						{
 							...defGameInfo.LIVEcasinoN2Live,
 							spanText: "N2Live",
