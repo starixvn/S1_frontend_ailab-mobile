@@ -4,7 +4,6 @@ import config, { siteInfo } from "../../config";
 import TandC from "../../service/t_and_c";
 import Bong88 from "../../styles/img/bong88.png";
 import path from "../../path";
-import { isEventPeriod, defAppDownloadEventPeriod } from "../common/common";
 
 export default ({ i18n, langId }) => {
 	return (
@@ -169,7 +168,7 @@ const Platforms = ({ i18n }) => {
 };
 
 const AppDownload = () => {
-	return !isEventPeriod({ ...defAppDownloadEventPeriod }) ? null : (
+	return (
 		<div className="downloadarea">
 			<a
 				href="https://mars.fadatsai88.com/v1/App?path=bwing_sports_android.apk"

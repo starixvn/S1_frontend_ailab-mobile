@@ -19,7 +19,6 @@ import { LOGOUT } from "../../service/auth";
 import Logo from "../img/logo";
 import { useGetBalance } from "./hook";
 import AppDownloadHint from "./appDownloadHint";
-import { isEventPeriod, defAppDownloadEventPeriod } from "../common/common";
 
 export default ({ hideLogo, title, showMenuBar }) => {
 	const { i18n } = useContext(i18nContext);
@@ -72,11 +71,7 @@ export default ({ hideLogo, title, showMenuBar }) => {
 
 	return userInfo.isLogin === null ? null : (
 		<header id="header">
-			{!isEventPeriod({
-				startDate: defAppDownloadEventPeriod.startDate
-			}) ? null : (
-				<AppDownloadHint i18n={i18n} root={root} />
-			)}
+			<AppDownloadHint i18n={i18n} root={root} />
 			<div className="headerT">
 				<div className="headerTLogout">
 					<div className="close noPos" onClick={onClickSubMenu}>

@@ -4,10 +4,6 @@ import Footer from "../components/common/footer";
 import logo from "../styles/img/logo.png";
 import Android from "../styles/img/download/Android.png";
 import androidQRCode from "../styles/img/download/AQR.jpg";
-import {
-	isEventPeriod,
-	defAppDownloadEventPeriod
-} from "../components/common/common";
 
 import ios from "../styles/img/download/ios.png";
 import iOSQRCode from "../styles/img/download/IQR.jpg";
@@ -19,9 +15,7 @@ import tutorial4 from "../styles/img/download/dlimg4.png";
 const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 
-	return !isEventPeriod({
-		startDate: defAppDownloadEventPeriod.startDate
-	}) ? null : (
+	return (
 		<>
 			<main className="downloadArea">
 				<div className="downloadT">

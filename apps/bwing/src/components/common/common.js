@@ -108,8 +108,6 @@ export const deleteCookie = cookieName => {
 	// document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
 };
 
-export const defAppDownloadEventPeriod = { startDate: "2121/06/08 18:30:00" };
-
 export const isEventPeriod = ({ startDate, endDate }) => {
 	const now = new Date();
 	const _startDate = startDate ? new Date(`${startDate} GMT+0700`) : null; // yyyy/mm/dd hh:mm:ss

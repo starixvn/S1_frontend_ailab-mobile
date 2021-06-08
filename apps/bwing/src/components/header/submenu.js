@@ -17,7 +17,7 @@ import LangDropdown from "../common/dropdown.language";
 import { siteInfo } from "../../config";
 import { api_SetLanguage } from "../../service/api/account";
 import { useGetBalance } from "./hook";
-import { isEventPeriod, defAppDownloadEventPeriod } from "../common/common";
+import { isEventPeriod } from "../common/common";
 
 const defSubMenus = langId => [
 	{
@@ -55,8 +55,7 @@ const defSubMenus = langId => [
 	},
 	{
 		displayKey: "lbl_APP_DOWNLOAD",
-		path: `/${path.appDownload.root}`,
-		eventPeriod: { startDate: defAppDownloadEventPeriod.startDate }
+		path: `/${path.appDownload.root}`
 	},
 	{
 		displayKey: "lbl_Affiliates",
