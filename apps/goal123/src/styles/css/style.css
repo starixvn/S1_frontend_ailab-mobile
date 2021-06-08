@@ -1533,7 +1533,7 @@ main.statementPage {
 }
 
 #popup .popTxt .btn-group {
-  margin-top: 5vw;
+  margin-top: 1vw;
 }
 
 #popup.errorPage {
@@ -1565,6 +1565,106 @@ main.statementPage {
 
 #popup .errorInfo img {
   max-width: 120px;
+}
+
+#popup.backupDomain .pop {
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#popup.backupDomain .pop .icon-close {
+  color: white;
+}
+
+#popup.backupDomain .pop .popTit {
+  font-size: 14px;
+  padding-right: 10vw;
+}
+
+#popup.backupDomain .pop .popTxt {
+  font-size: 12px;
+}
+
+#popup.backupDomain .pop .popTxt > div {
+  width: calc(100% - 8vw);
+  padding: 1vw 2vw;
+}
+
+#popup.backupDomain .pop .popTxt > .txt {
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#popup.backupDomain .pop .popTxt .url {
+  width: calc(100% - 8vw);
+  padding: .5vw 2vw;
+  border-radius: 30px;
+  border: 1px solid #4e6ca8;
+  margin: 3vw 2vw 1vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+#popup.backupDomain .pop .popTxt .url .copyurl {
+  position: absolute;
+  border-radius: 30px;
+  color: white;
+  padding: 0.5vw 2.5vw 1vw;
+  font-size: 3vw;
+  right: 0.8vw;
+  background: #5084e4;
+}
+
+#popup.backupDomain .pop .popTxt .text-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 3vw 0;
+  font-size: 13px;
+}
+
+#popup.backupDomain .pop .popTxt .text-center input[type="checkbox"] {
+  display: none;
+}
+
+#popup.backupDomain .pop .popTxt .text-center input[type="checkbox"] + label {
+  margin: .5vw 1vw 0 0;
+  border: 1px solid #f77900;
+  border-radius: 100%;
+  width: 4vw;
+  height: 4vw;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  vertical-align: middle;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#popup.backupDomain .pop .popTxt .text-center input[type="checkbox"] + label > div {
+  width: 3vw;
+  height: 3vw;
+  background: transparent;
+  margin: auto;
+  border-radius: 100%;
+}
+
+#popup.backupDomain .pop .popTxt .text-center input[type="checkbox"]:checked + label > div {
+  background: #f77900;
+}
+
+#popup.backupDomain .pop img {
+  margin-top: 5vw;
 }
 
 .header {
@@ -2460,7 +2560,7 @@ main.statementPage {
 
 .btn-group button.orange,
 .btn-group a.orange {
-  background: #1e85ec;
+  background: #5084e4;
 }
 
 .btn-group button.blue,
@@ -5709,15 +5809,20 @@ span.important {
   bottom: 15vw;
 }
 
+.eventLink.euro .icon-close {
+  color: #fff;
+  background: rgba(0, 134, 168, 0.8);
+}
+
 .eventLink .icon-close {
   width: 6vw;
   height: 6vw;
-  color: #fff;
+  color: #f80b3b;
   position: absolute;
   right: 2vw;
   top: -6vw;
   z-index: 4;
-  background: rgba(0, 134, 168, 0.8);
+  background: #e3ce9b;
   border-radius: 100%;
 }
 

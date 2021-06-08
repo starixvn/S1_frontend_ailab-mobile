@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import PropTypes from "prop-types";
-import { useMatch, Redirect } from "@reach/router";
+import { useMatch, Redirect, useNavigate } from "@reach/router";
 import Inputbox from "../common/inputbox.info";
 import InputboxPWD from "../common/inputbox.password.info";
 import Dropdown from "../common/dropdown";
@@ -33,6 +33,7 @@ import { initValue, initStatus } from "./join.def";
 const defaultLangId = GET_LANG_ID();
 
 const Join = ({ hideBtn }) => {
+	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -262,6 +263,8 @@ const Join = ({ hideBtn }) => {
 											};
 										}
 										setUserInfo(_user);
+										setNav(null);
+										navigate(`/${path.deposit.root}`);
 									}
 								},
 								() => {
