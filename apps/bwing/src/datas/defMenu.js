@@ -171,7 +171,7 @@ export const productList = langId => {
 					displayKey: "Playtech",
 					icon: "icon icon-pt",
 					img: liveCasino_PT,
-					...defGameInfo.liveCasino_PT,
+					...defGameInfo.Casino_PT,
 					eventIcon: [
 						{
 							icon: defIconType.new,
