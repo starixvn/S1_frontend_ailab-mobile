@@ -305,6 +305,7 @@ const Join = () => {
 											};
 										}
 										setUserInfo(_user);
+										navigate(`/${path.deposit.root}`);
 									}
 								},
 								() => {

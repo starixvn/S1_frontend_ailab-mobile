@@ -68,3 +68,6 @@ export const api_site_GetAffiliateAgent = ({ AffId }) =>
 	siteRequest.post(`/GetAffiliateAgent`, {
 		AffId
 	});
+
+export const GetSupportDomainList = () =>
+	siteRequest.post(`/GetSupportDomainList`);

@@ -591,6 +591,13 @@
 	"==============Important Notice==============":"",
 	"lbl_ImportantNotice":"IMPORTANT NOTICE",
 
+	"==============DomainList==============":"",
+	"lbl_Backup_website" : "Please save the latest Bwing domain for backup purposes:",
+	"lbl_Copy":"Copy",
+	"lbl_Dont_show_me_again":"Dont show me again",
+	"lbl_Stay_accessible":"STAY ACCESSIBLE",
+	"lbl_Anytime_anywhere":"Anytime, Anywhere",
+
 	"==============Promotion==============":"",
 	"lbl_PromotionRebateAndCashback":"Rebate / Cashback",
 	"lbl_ClaimSucceed":"Successful! Your Bonus has been claimed.",

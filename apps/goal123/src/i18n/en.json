@@ -539,7 +539,13 @@
 	"lbl_SabaSport":"Saba Sports",
 	"lbl_BTISport" : "BTI Sports",
 	"lbl_Top10winners": "Top 10 Winners",
-
+	
+	"==============DomainList==============":"",
+	"lbl_Backup_website" : "Please save the latest GOAL123 domain for backup purposes:",
+	"lbl_Copy":"Copy",
+	"lbl_Dont_show_me_again":"Dont show me again",
+	"lbl_Stay_accessible":"STAY ACCESSIBLE",
+	"lbl_Anytime_anywhere":"Anytime, Anywhere",
 	
 	"==============Transfer==============":"",
 	"lbl_Fail":"Failed",
