@@ -104,11 +104,11 @@ const EventSwipper = ({ userInfo, i18n }) => {
 							{sportTeamsAway}
 						</div>
 					</div>
-					<OddsAndHandicap
+					{/* <OddsAndHandicap
 						homeOdds={homeOdds}
 						awayOdds={awayOdds}
 						hdp={handicap}
-					/>
+					/> */}
 					<div> {eventTime}</div>
 				</div>
 			</div>
@@ -125,15 +125,15 @@ const EventSwipper = ({ userInfo, i18n }) => {
 	);
 };
 
-const OddsAndHandicap = ({ homeOdds, awayOdds, hdp }) => {
-	return homeOdds && awayOdds ? (
-		<div className="odds">
-			<div id="homeodds">{homeOdds}</div>
-			<div>{Math.abs(hdp)}</div>
-			<div>{awayOdds}</div>
-		</div>
-	) : null;
-};
+// const OddsAndHandicap = ({ homeOdds, awayOdds, hdp }) => {
+// 	return homeOdds && awayOdds ? (
+// 		<div className="odds">
+// 			<div id="homeodds">{homeOdds}</div>
+// 			<div>{Math.abs(hdp)}</div>
+// 			<div>{awayOdds}</div>
+// 		</div>
+// 	) : null;
+// };
 
 EventSwipper.propTypes = {
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
