@@ -158,5 +158,8 @@ export default {
 	},
 	sports: {
 		root: "sports"
+	},
+	appDownload: {
+		root: "appDownload"
 	}
 };

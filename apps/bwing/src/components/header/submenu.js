@@ -53,6 +53,10 @@ const defSubMenus = langId => [
 		path: `/${path.promotion.root}`
 	},
 	{
+		displayKey: "lbl_APP_DOWNLOAD",
+		path: `/${path.appDownload.root}`
+	},
+	{
 		displayKey: "lbl_Affiliates",
 		href: siteInfo(langId).affiliateLink
 	},

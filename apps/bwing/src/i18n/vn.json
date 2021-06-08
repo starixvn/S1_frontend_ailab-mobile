@@ -609,5 +609,15 @@
 	"==============Add To Home Screen==============":"",
 	"lbl_AddToHome_Hint":"Cách thêm ứng dụng vào màn hình chính",
 	"lbl_AddToHome_Tutorial":"Hướng dẫn",
-	"lbl_Skip":"Bỏ qua"
+	"lbl_Skip":"Bỏ qua",
+
+	"=============Download App===============":"",
+	"lbl_DownloadApp":"Tải App",
+	"lbl_DownloadAppHint":"Cược mọi lúc mọi nơi",
+	"lbl_Downloads":"Tải về",
+	"lbl_APP_DOWNLOAD":"TẢI ỨNG DỤNG",
+	"lbl_Scan_to_Download":"Quét để tải về",
+	"lbl_Installation_tutorial":"Hướng dẫn cài đặt",
+	"lbl_iOS_App_Trust_Authentication":"Cách xác nhận tin cậy ứng dụng trên iOS",
+	"lbl_Once_Bwing_App_is_installed":"Khi ứng dụng Bwing được cài đặt, chọn Tin cậy hoặc hoàn thành Cài đặt theo hướng dẫn bên dưới"
 }

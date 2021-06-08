@@ -5,7 +5,8 @@ import {
 	i18nContext,
 	popBoxContext,
 	defNavPanel,
-	navContext
+	navContext,
+	rootContext
 } from "../common/context";
 // import JoinPanel from "../join/join";
 import JoinPanel from "../join/join.refactor";
@@ -17,9 +18,11 @@ import SubMenu from "./submenu";
 import { LOGOUT } from "../../service/auth";
 import Logo from "../img/logo";
 import { useGetBalance } from "./hook";
+import AppDownloadHint from "./appDownloadHint";
 
 export default ({ hideLogo, title, showMenuBar }) => {
 	const { i18n } = useContext(i18nContext);
+	const { root } = useContext(rootContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -68,6 +71,7 @@ export default ({ hideLogo, title, showMenuBar }) => {
 
 	return userInfo.isLogin === null ? null : (
 		<header id="header">
+			<AppDownloadHint i18n={i18n} root={root} />
 			<div className="headerT">
 				<div className="headerTLogout">
 					<div className="close noPos" onClick={onClickSubMenu}>

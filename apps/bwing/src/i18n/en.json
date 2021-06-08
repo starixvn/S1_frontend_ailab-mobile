@@ -609,5 +609,15 @@
 	"==============Add To Home Screen==============":"",
 	"lbl_AddToHome_Hint":"How to add home screen?",
 	"lbl_AddToHome_Tutorial":"Tutorial",
-	"lbl_Skip":"Skip"
+	"lbl_Skip":"Skip",
+
+	"=============Download App===============":"",
+	"lbl_DownloadApp":"Download App",
+	"lbl_DownloadAppHint":"Bet anytime anywhere",
+	"lbl_Downloads":"Download",
+	"lbl_APP_DOWNLOAD":"APP DOWNLOAD",
+	"lbl_Scan_to_Download":"Scan to Download",
+	"lbl_Installation_tutorial":"Installation tutorial",
+	"lbl_iOS_App_Trust_Authentication":"iOS App Trust Authentication",
+	"lbl_Once_Bwing_App_is_installed":"Once Bwing App is installed, tap Trust or complete the setting as below."
 }
