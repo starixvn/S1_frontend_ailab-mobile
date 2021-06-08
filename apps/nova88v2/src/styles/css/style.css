@@ -2410,13 +2410,13 @@ footer > a.active .circleAnimation + span {
 }
 
 #popup.backupDomain .pop .popTxt .url .copyurl {
-  position: absolute;
   border-radius: 30px;
   color: white;
   padding: 0.5vw 2.5vw 1vw;
   font-size: 3vw;
   right: 0.8vw;
   background: #5574A7;
+  margin: auto 0 auto auto;
 }
 
 #popup.backupDomain .pop .popTxt .text-center {
@@ -9302,7 +9302,8 @@ span.important {
 }
 
 .dragonPayPop .pop > div.popTxt .guide .qrCode {
-  width: 30vw;
+  width: 53vw;
   margin: 1vw 0;
+  max-width: none !important;
 }
 /*# sourceMappingURL=style.css.map */
