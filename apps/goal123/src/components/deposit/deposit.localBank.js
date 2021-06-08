@@ -454,7 +454,6 @@ const Payment = props => {
 				clickInfo={clickInfo.bind(this, { col: "amount" })}
 				VaildAmount={VaildAmount.bind(this, { _amount: amount })}
 			/>
-			<ImportantNotes i18n={i18n} />
 			<div className="btn-group">
 				<button
 					className="orange"
@@ -629,21 +628,5 @@ class CopyBtn extends Component {
 CopyBtn.propTypes = {
 	value: PropTypes.string.isRequired
 };
-
-const ImportantNotes = ({ i18n = {} }) => (
-	<>
-		<div className="title important">
-			{i18n.lbl_ImportantNote?.toUpperCase()}
-		</div>
-		<div className="note">
-			<ol>
-				<li>{i18n.lbl_DepositLocalBankNotes1}</li>
-				<li>{i18n.lbl_DepositLocalBankNotes2}</li>
-				<li>{i18n.lbl_DepositLocalBankNotes3}</li>
-				<li>{i18n.lbl_DepositLocalBankNotes4}</li>
-			</ol>
-		</div>
-	</>
-);
 
 export default Payment;
