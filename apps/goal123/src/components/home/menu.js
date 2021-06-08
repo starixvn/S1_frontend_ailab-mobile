@@ -7,6 +7,7 @@ import { getEventIcon } from "./category";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { Autoplay } from "../common/swipperBanner";
 import { api_GetTpIds } from "../../service/api/site";
+import { useGotoGame } from "../hook/useGotoGame";
 
 const swipperParam = {
 	spaceBetween: 5,
@@ -23,6 +24,7 @@ const Menu = ({ i18n, userInfo }) => {
 	const { setNav } = useContext(navContext);
 	const [showingTpIds, setShowningTpIds] = useState(null);
 	const [selectedCol, setSelectedCol] = useState(defCol.hotGame);
+	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -48,7 +50,7 @@ const Menu = ({ i18n, userInfo }) => {
 		}
 	};
 
-	const clickGame = ({ tpId, gameId }) => {
+	const clickGame = ({ tpId, gameId, useGotoGame: _useGotoGame }) => {
 		GET_ENTER_PAGE({
 			langId: userInfo.langId,
 			tpId,
@@ -56,7 +58,15 @@ const Menu = ({ i18n, userInfo }) => {
 			isLogin: userInfo.isLogin === true,
 			loginCallback: () => {
 				setNav(defNavPanel.login);
-			}
+			},
+			execFunction: _useGotoGame
+				? handleGoToGame.bind(this, {
+						isLogin: userInfo.isLogin === true,
+						langId: userInfo.langId,
+						tpId,
+						gameId
+				  })
+				: null
 		});
 	};
 
@@ -161,7 +171,8 @@ const SubGame = ({ game, clickGame, i18n }) => {
 			key={game.spanText || game.spanTextKey}
 			onClick={clickGame.bind(this, {
 				tpId: game.tpId,
-				gameId: game.gameId
+				gameId: game.gameId,
+				useGotoGame: game.useGotoGame
 			})}>
 			{showingEventIcon !== "" ? (
 				<i className={`icon ${showingEventIcon}`} />

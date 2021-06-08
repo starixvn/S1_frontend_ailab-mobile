@@ -47,6 +47,7 @@ import LIVEcasino_PP from "../styles/img/hotgame-m/livecasino/livecasino-pp.png"
 import LIVEcasino_SA from "../styles/img/hotgame-m/livecasino/livecasino-sa.png";
 import LIVEcasino_AE from "../styles/img/hotgame-m/livecasino/livecasino-ae.png";
 import LIVEcasino_EB from "../styles/img/hotgame-m/livecasino/livecasino-ebet.png";
+import LIVEcasino_PT from "../styles/img/hotgame-m/livecasino/livecasino-playtech.png";
 
 import { isEventPeriod } from "../components/common/common";
 import path from "../path";
@@ -111,6 +112,7 @@ export const eventTime = {
 	new_vip: { startDate: "2021/03/11 11:00:00" },
 	new_LiveCasino_N2Live: { startDate: "2021/03/12 11:00:00" },
 	casino_pt: { endDate: "2021/06/20 11:00:00" },
+	liveCasino_pt: { endDate: "2021/06/30 11:00:00" },
 	new_BTI: { endDate: "2021/06/28 11:00:00" },
 	new_Km: { endDate: "2021/07/05 11:00:00" },
 	euro: { endDate: "2021/07/13 12:00:00" }
@@ -405,6 +407,18 @@ const gameList = [
 		translateKey: "lbl_Live",
 		img: Menu_LiveCasino,
 		items: [
+			{
+				...defGameInfo.Casino_PT,
+				spanText: "PT",
+				img: LIVEcasino_PT,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.liveCasino_pt)
+					}
+				],
+				useGotoGame: true
+			},
 			{
 				...defGameInfo.LIVEcasinoN2,
 				spanText: "N2Live",

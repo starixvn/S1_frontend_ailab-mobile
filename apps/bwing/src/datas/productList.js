@@ -172,6 +172,9 @@ const gameList = langId => [
 		translateKey: "lbl_LiveCasino",
 		items: [
 			{
+				...defGameInfo.Casino_PT
+			},
+			{
 				...defGameInfo.LIVEcasinoDG
 			},
 			{
