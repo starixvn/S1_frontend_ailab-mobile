@@ -74,9 +74,9 @@ export default ({ hideLogo, title, showMenuBar }) => {
 		<header id="header">
 			{!isEventPeriod({
 				startDate: defAppDownloadEventPeriod.startDate
-			}) ? (
+			}) ? null : (
 				<AppDownloadHint i18n={i18n} root={root} />
-			) : null}
+			)}
 			<div className="headerT">
 				<div className="headerTLogout">
 					<div className="close noPos" onClick={onClickSubMenu}>
