@@ -75,7 +75,8 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 					(subItem.tpId
 						? showingTpIds === null ||
 						  showingTpIds.includes(subItem.tpId)
-						: true)
+						: true) &&
+					(subItem.hideBeforeLogin ? userInfo.isLogin === true : true)
 			);
 			const showingEventIcon = getEventIcon({
 				subIcon: _subIcon,
@@ -142,8 +143,6 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 					);
 				} else if (showingTpIds) {
 					showItem = showingTpIds.includes(subItem.tpId);
-				} else if (subItem?.showAfterLogin) {
-					showItem = userInfo.isLogin;
 				}
 				if (subItem.forceShow) {
 					showItem = true;
