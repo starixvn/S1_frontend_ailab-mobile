@@ -17,6 +17,7 @@ import LangDropdown from "../common/dropdown.language";
 import { siteInfo } from "../../config";
 import { api_SetLanguage } from "../../service/api/account";
 import { useGetBalance } from "./hook";
+import { isEventPeriod, defAppDownloadEventPeriod } from "../common/common";
 
 const defSubMenus = langId => [
 	{
@@ -54,7 +55,8 @@ const defSubMenus = langId => [
 	},
 	{
 		displayKey: "lbl_APP_DOWNLOAD",
-		path: `/${path.appDownload.root}`
+		path: `/${path.appDownload.root}`,
+		eventPeriod: { startDate: defAppDownloadEventPeriod.startDate }
 	},
 	{
 		displayKey: "lbl_Affiliates",
@@ -179,85 +181,94 @@ const SubMenuList = ({
 		window.open(href, "_blank");
 	};
 
-	const rows = defSubMenus(userInfo.langId).map(s => {
-		const key = `submenu-${s.displayKey}`;
-		let hasSubItem = false;
-		let _subItems = null;
+	const rows = defSubMenus(userInfo.langId)
+		?.filter(s => !s.eventPeriod || isEventPeriod({ ...s.eventPeriod }))
+		.map(s => {
+			const key = `submenu-${s.displayKey}`;
+			let hasSubItem = false;
+			let _subItems = null;
 
-		if (s.subItems) {
-			const subItemContent = s.subItems?.map(c => {
-				return (
-					<li
-						key={`${key}-${c.displayKey}`}
-						onClick={clickGame.bind(this, c)}>
-						{i18n[c.displayKey] ?? c.displayKey}
-						{_subItems}
-					</li>
-				);
-			});
+			if (s.subItems) {
+				const subItemContent = s.subItems?.map(c => {
+					return (
+						<li
+							key={`${key}-${c.displayKey}`}
+							onClick={clickGame.bind(this, c)}>
+							{i18n[c.displayKey] ?? c.displayKey}
+							{_subItems}
+						</li>
+					);
+				});
 
-			hasSubItem = subItemContent.length > 0;
-			if (hasSubItem) {
-				const isOpen = isOpenSubMenu.includes(s.displayKey);
-				_subItems = (
-					<>
-						<div className={`menuNavText${isOpen ? " open" : ""}`}>
-							{i18n[s.displayKey].toUpperCase() ??
-								s.displayKey.toUpperCase()}
-							<i
-								onClick={handleSubMenu.bind(this, s.displayKey)}
-								className={`icon icon-arrow_drop_down${
+				hasSubItem = subItemContent.length > 0;
+				if (hasSubItem) {
+					const isOpen = isOpenSubMenu.includes(s.displayKey);
+					_subItems = (
+						<>
+							<div
+								className={`menuNavText${
 									isOpen ? " open" : ""
-								}`}
-							/>
-						</div>
-						<div className="menuNavOption">
-							<ul>{subItemContent}</ul>
-						</div>
-					</>
+								}`}>
+								{i18n[s.displayKey].toUpperCase() ??
+									s.displayKey.toUpperCase()}
+								<i
+									onClick={handleSubMenu.bind(
+										this,
+										s.displayKey
+									)}
+									className={`icon icon-arrow_drop_down${
+										isOpen ? " open" : ""
+									}`}
+								/>
+							</div>
+							<div className="menuNavOption">
+								<ul>{subItemContent}</ul>
+							</div>
+						</>
+					);
+				}
+			}
+
+			if (s.path) {
+				return (
+					<Link
+						to={s.path}
+						onClick={closeNavPanel}
+						key={key}
+						className="menuNavTitle">
+						{i18n[s.displayKey].toUpperCase() ??
+							s.displayKey.toUpperCase()}
+						{_subItems}
+					</Link>
 				);
 			}
-		}
-
-		if (s.path) {
-			return (
-				<Link
-					to={s.path}
-					onClick={closeNavPanel}
+			if (s.href) {
+				return (
+					<div
+						className="menuNavTitle"
+						key={key}
+						onClick={openLink.bind(this, s.href)}>
+						<div className="menuNavText">
+							{i18n[s.displayKey].toUpperCase() ??
+								s.displayKey.toUpperCase()}
+						</div>
+					</div>
+				);
+			}
+			return hasSubItem ? (
+				<div key={key} className="menuNavTitle">
+					{_subItems}
+				</div>
+			) : (
+				<button
 					key={key}
+					onClick={clickGame.bind(this, s)}
 					className="menuNavTitle">
 					{i18n[s.displayKey].toUpperCase() ??
 						s.displayKey.toUpperCase()}
-					{_subItems}
-				</Link>
+				</button>
 			);
-		}
-		if (s.href) {
-			return (
-				<div
-					className="menuNavTitle"
-					key={key}
-					onClick={openLink.bind(this, s.href)}>
-					<div className="menuNavText">
-						{i18n[s.displayKey].toUpperCase() ??
-							s.displayKey.toUpperCase()}
-					</div>
-				</div>
-			);
-		}
-		return hasSubItem ? (
-			<div key={key} className="menuNavTitle">
-				{_subItems}
-			</div>
-		) : (
-			<button
-				key={key}
-				onClick={clickGame.bind(this, s)}
-				className="menuNavTitle">
-				{i18n[s.displayKey].toUpperCase() ?? s.displayKey.toUpperCase()}
-			</button>
-		);
-	});
+		});
 
 	return <div className="menuNav">{rows}</div>;
 };
