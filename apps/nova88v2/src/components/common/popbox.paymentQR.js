@@ -26,33 +26,33 @@ const Panel = ({ amount, currencyId, imgUrl, handlePopBox }) => {
 
 	return (
 		<div className="popTxt">
-			<div className="title">Payment Details：</div>
+			<div className="title">{`${i18n.lbl_PaymentDetails}：`}</div>
 			<div>
-				Time：<span>{timeText}</span>
+				{`${i18n.lbl_Time}：`}
+				<span>{timeText}</span>
 			</div>
 			<div>
-				Order Amount：<span>{amountText}</span>
+				{`${i18n.lbl_OrderAmount}：`}
+				<span>{amountText}</span>
 			</div>
 			<div className="guide">
 				<img src={imgUrl} className="qrCode" alt="qrcode" />
 				<div>
-					PAY <span>{amountText}</span>
+					{`${i18n.lbl_Pay} `}
+					<span>{amountText}</span>
 				</div>
 				<ul>
-					<li>Please transfer the amount.</li>
-					<li>Provided for better exerience.</li>
+					<li>{i18n.lbl_PaymentQRDesc1}</li>
+					<li>{i18n.lbl_PaymentQRDesc2}</li>
 				</ul>
 			</div>
-			<div className="title">Important Notes：</div>
+			<div className="title">{`${i18n.lbl_ImportantNotes}：`}</div>
 			<ul>
-				<li>Please do not refresh your browser.</li>
-				<li>
-					Please take note of the reference number if any event you
-					need to contact our Customer Service for further action.
-				</li>
+				<li>{i18n.lbl_PaymentQRNote1}</li>
+				<li>{i18n.lbl_PaymentQRNote2}</li>
 			</ul>
 			<div className="sisa">
-				<div>PAYMENT TIME LEFT</div>
+				<div>{i18n.lbl_PaymentTimeLeft}</div>
 				<div>
 					<Counter timeStop={handlePopBox} />
 				</div>
