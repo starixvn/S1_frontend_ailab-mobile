@@ -5,6 +5,7 @@ import { userInfoContext, i18nContext } from "../common/context";
 import path from "../../path";
 import Join from "./join.step.all";
 import Login from "../login/login";
+import Logo from "../common/logo";
 
 const Modal = ({ isLogin, isJoin }) => {
 	const { i18n } = useContext(i18nContext);
@@ -28,14 +29,7 @@ const Modal = ({ isLogin, isJoin }) => {
 				onClick={() => navigate(localStorage.getItem("previousPage"))}>
 				<div className="icon icon-close" />
 			</button>
-			<img
-				src={
-					userInfo.langId === "cs"
-						? "https://image.n88media.com/SiteSkin/img/logo_cs_w.png"
-						: "https://image.n88media.com/SiteSkin/img/logo_en_w.png"
-				}
-				alt="logo"
-			/>
+			<Logo langId={userInfo.langId} isWhite={false} />
 			<button className="switch">
 				<div className={`switchBg${isJoin ? " right" : ""}`} />
 				<div className={`switchLogin${isLogin ? " active" : ""}`}>

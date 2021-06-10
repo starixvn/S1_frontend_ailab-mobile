@@ -755,11 +755,6 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.ICG_DRAGONBALL_FISHING,
 							spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
 							img: fish_DBF
-						},
-						{
-							...defGameInfo.kingMaker,
-							img: kingMaker,
-							spanTextKey: "lbl_KingMaker"
 						}
 					]
 				},
@@ -1780,11 +1775,6 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.FishingSGW,
 							spanTextKey: "lbl_FishingSG2",
 							img: fish_SGW
-						},
-						{
-							...defGameInfo.kingMaker,
-							img: kingMaker,
-							spanTextKey: "lbl_KingMaker"
 						}
 					]
 				},
