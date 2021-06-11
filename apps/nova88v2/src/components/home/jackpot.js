@@ -27,30 +27,41 @@ const animateDelaySec = 800;
 const Jackpot = ({ i18n, userInfo }) => {
 	const jackpotRef = useRef();
 	const intervalTimer = useRef();
-	const _currencyId = userInfo.currencyId ?? langToCurrency[userInfo.langId];
-	const _currency = i18n[`Currency_${_currencyId}`];
+
+	let _currencyId = null;
+
+	if (userInfo.isLogin) {
+		_currencyId = userInfo.currencyId;
+	} else if (userInfo.isLogin === false) {
+		_currencyId = langToCurrency[userInfo.langId];
+	}
+
+	const _currency = _currencyId ? i18n[`Currency_${_currencyId}`] : "";
 	const [value, setValue] = useState({ curr: "", prev: "" });
 
 	const supportAnimation = typeof document.getAnimations === "function";
 
 	useEffect(() => {
-		try {
-			intervalTimer.current = supportAnimation
-				? 2000 + animateDelaySec
-				: 0;
+		if (_currency) {
+			try {
+				intervalTimer.current = supportAnimation
+					? 2000 + animateDelaySec
+					: 0;
 
-			const ticker = new Ticker({
-				info: 2,
-				casino: "hotspin88am",
-				currency: _currency === "RMB" ? "cny" : _currency?.toLowerCase()
-			});
+				const ticker = new Ticker({
+					info: 2,
+					casino: "hotspin88am",
+					currency:
+						_currency === "RMB" ? "cny" : _currency?.toLowerCase()
+				});
 
-			ticker.attachToTextBox("tick");
-			ticker.tick();
-		} catch (error) {
-			console.log(error);
+				ticker.attachToTextBox("tick");
+				ticker.tick();
+			} catch (error) {
+				console.log(error);
+			}
 		}
-	}, []);
+	}, [_currency, supportAnimation]);
 
 	useInterval(() => {
 		setValue(prev => ({

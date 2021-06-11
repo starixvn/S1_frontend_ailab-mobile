@@ -34,7 +34,7 @@ const IndexPage = () => {
 	const rows = selCategory.datas?.map((v, vidx) => {
 		return (
 			<StreamingModule
-				key={`home-streaming-${v.type}-${vidx}`}
+				key={`home-streaming-selCategory-${v.type}-${vidx}`}
 				i18n={i18n}
 				langId={userInfo.langId}
 				isLogin={userInfo.isLogin}

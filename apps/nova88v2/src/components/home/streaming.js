@@ -24,9 +24,9 @@ const Content = () => {
 		isMounted: isMountedRef.current
 	});
 
-	const btns = Object.values(defStreamingCategory).map(t => (
+	const btns = Object.values(defStreamingCategory).map((t, tIdx) => (
 		<button
-			key={`home-streaming-${t.type}`}
+			key={`home-streaming-btns-${t.type}-${tIdx}`}
 			className={`${t.icon}${
 				t.type === selCategory.type ? " active" : ""
 			}`}
@@ -36,10 +36,10 @@ const Content = () => {
 
 	const rows = selCategory.datas
 		?.filter((_, idx) => idx < 3)
-		.map(v => {
+		.map((v, vIdx) => {
 			return (
 				<StreamingModule
-					key={`home-streaming-${v.type}-${v.matchID}`}
+					key={`home-streaming-${v.type}-${v.matchID}-${vIdx}`}
 					i18n={i18n}
 					langId={userInfo.langId}
 					isLogin={userInfo.isLogin}
