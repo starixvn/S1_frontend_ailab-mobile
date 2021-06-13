@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import config from "../config";
 import api from "../service/api";
 
 const IndexPage = () => {
 	const [datas, setDatas] = useState(null);
 	useEffect(() => {
 		let mounted = true;
-		api.site.WhoAMI({ apiURL: config.apiURL }).then(res => {
+		api.site.WhoAMI().then(res => {
 			if (mounted) {
 				setDatas(res.data.data);
 			}
@@ -25,7 +24,7 @@ const IndexPage = () => {
 				</p>
 			);
 		});
-	return <div className="info">{row}</div>;
+	return <div className="important">{row}</div>;
 };
 
 export default IndexPage;

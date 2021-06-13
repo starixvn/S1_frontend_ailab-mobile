@@ -301,13 +301,17 @@ const SubGame = ({
 	);
 };
 
+SubGame.defaultProps = {
+	isMaintain: false
+};
+
 SubGame.propTypes = {
 	game: PropTypes.objectOf(PropTypes.any).isRequired,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
 	handleLogin: PropTypes.func.isRequired,
 	handleGoToGame: PropTypes.func.isRequired,
-	isMaintain: PropTypes.bool.isRequired
+	isMaintain: PropTypes.bool
 };
 
 export default Menu;

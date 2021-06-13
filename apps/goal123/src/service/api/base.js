@@ -1,7 +1,6 @@
 import axios from "axios";
-import config from "../../config";
 
-const rootURL = config.apiURL;
+const rootURL = "";
 
 export const defDeviceType = {
 	Desktop: 1,

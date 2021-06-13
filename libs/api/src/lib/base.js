@@ -8,7 +8,8 @@ export const defDeviceType = {
 
 export default class BaseAPI {
 	constructor(data) {
-		const apiUrl = data.apiURL;
+		// const apiUrl = data.apiURL;
+		const apiUrl = "";
 		this.loginRequest = axios.create({
 			withCredentials: true,
 			baseURL: `${apiUrl}/api/Site`
