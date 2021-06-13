@@ -7,7 +7,7 @@
     "project": "./tsconfig.*?.json"
   },
   "ignorePatterns": ["**/*", "config-overrides.js"],
-  "plugins": ["@typescript-eslint", "@nrwl/nx"],
+  "plugins": ["import","@typescript-eslint", "@nrwl/nx"],
   "extends": [
     "airbnb", 
     "airbnb/hooks",
