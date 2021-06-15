@@ -138,6 +138,8 @@ const Payment = props => {
 									className: "dragonPayPop",
 									popBoxType: defPopBoxType.PaymentQR,
 									amount: real_amount,
+									depositAmount:
+										res.data.data.formData?.DepositAmount,
 									currencyId: userInfo.currencyId,
 									imgUrl: res.data.data.url,
 									handlePopBox: () => {

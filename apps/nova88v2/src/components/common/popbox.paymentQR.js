@@ -5,6 +5,7 @@ import { number_format, isConvert } from "./common";
 
 const Panel = ({
 	amount,
+	depositAmount,
 	currencyId,
 	imgUrl,
 	handlePopBox,
@@ -23,6 +24,10 @@ const Panel = ({
 			isMountedRef.current = false;
 		};
 	});
+
+	const depositAmountText = `${
+		i18n[`Currency_${currencyId}`]
+	} ${number_format(depositAmount, false, 0, isConvert(currencyId))}`;
 
 	const amountText = `${i18n[`Currency_${currencyId}`]} ${number_format(
 		amount,
@@ -63,17 +68,17 @@ const Panel = ({
 				<img src={imgUrl} className="qrCode" alt="qrcode" />
 				<div>
 					{`${i18n.lbl_Pay} `}
-					<span>{amountText}</span>
+					<span>{depositAmountText}</span>
 				</div>
 				<div className="accountInfo">
 					{accountNumber && accountNumber !== "" && (
 						<>
 							<div>
-								{i18n.lbl_Deposit_DragonPayPop_BankName}:
+								{i18n.lbl_Deposit_DragonPayPop_BankName}：
 								{bankName}
 							</div>
 							<div>
-								{i18n.lbl_Deposit_DragonPayPop_AccountName}:
+								{i18n.lbl_Deposit_DragonPayPop_AccountName}：
 								{accountName}
 								<button
 									onClick={() =>
@@ -83,7 +88,7 @@ const Panel = ({
 								</button>
 							</div>
 							<div>
-								{i18n.lbl_Deposit_DragonPayPop_AccountNumber}:
+								{i18n.lbl_Deposit_DragonPayPop_AccountNumber}：
 								{accountNumber}
 								<button
 									onClick={() =>
