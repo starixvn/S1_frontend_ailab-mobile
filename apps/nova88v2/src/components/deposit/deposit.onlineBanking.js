@@ -202,6 +202,12 @@ const Payment = props => {
 									amount: real_amount,
 									currencyId: userInfo.currencyId,
 									imgUrl: res.data.data.url,
+									orderNumber: res.data.data.thirdId,
+									bankName: res.data.data.formData.BankName,
+									accountName:
+										res.data.data.formData.AccountName,
+									accountNumber:
+										res.data.data.formData.AccountNumber,
 									handlePopBox: () => {
 										setPopBox(prevState => ({
 											...prevState,

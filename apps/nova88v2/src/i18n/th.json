@@ -546,6 +546,10 @@
 	"lbl_DepositType2": "จ่ายผ่านมือถือ",
 	"lbl_DepositType3": "ธนาคารในประเทศ",
 	"lbl_DepositType4": "ชำระเงินแบบ Crypto",
+	"lbl_Deposit_DragonPayPop_BankName" : "ชื่อธนาคาร",
+	"lbl_Deposit_DragonPayPop_AccountName" : "ชื่อบัญชี",
+	"lbl_Deposit_DragonPayPop_AccountNumber" : "หมายเลขบัญชี",
+	"lbl_Deposit_DragonPayPop_OrderNumber" : "เลขที่ใบสั่งซื้อ",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails":"รายละเอียดการฝากเงิน",
