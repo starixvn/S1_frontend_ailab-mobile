@@ -69,11 +69,11 @@ const Panel = ({
 					{accountNumber && accountNumber !== "" && (
 						<>
 							<div>
-								{i18n.lbl_Deposit_DragonPayPop_BankName}:
+								{i18n.lbl_Deposit_DragonPayPop_BankName}：
 								{bankName}
 							</div>
 							<div>
-								{i18n.lbl_Deposit_DragonPayPop_AccountName}:
+								{i18n.lbl_Deposit_DragonPayPop_AccountName}：
 								{accountName}
 								<button
 									onClick={() =>
@@ -83,7 +83,7 @@ const Panel = ({
 								</button>
 							</div>
 							<div>
-								{i18n.lbl_Deposit_DragonPayPop_AccountNumber}:
+								{i18n.lbl_Deposit_DragonPayPop_AccountNumber}：
 								{accountNumber}
 								<button
 									onClick={() =>
