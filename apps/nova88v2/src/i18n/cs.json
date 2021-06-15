@@ -554,6 +554,10 @@
 	"lbl_DepositType2": "手机支付",
 	"lbl_DepositType3": "银行卡",
 	"lbl_DepositType4": "加密货币",
+	"lbl_Deposit_DragonPayPop_BankName" : "银行" ,
+	"lbl_Deposit_DragonPayPop_AccountName" : "户口名字",
+	"lbl_Deposit_DragonPayPop_AccountNumber" : "户口号码",
+	"lbl_Deposit_DragonPayPop_OrderNumber" : "订单编号",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails":"付款资讯",

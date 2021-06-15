@@ -9306,4 +9306,32 @@ span.important {
   margin: 1vw 0;
   max-width: none !important;
 }
+
+.accountInfo {
+  margin: 1vw 0;
+}
+
+.accountInfo > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 0 1vw;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.accountInfo > div button {
+  padding: 0.5vw 2vw;
+  background: #5574A7;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 1vw;
+  border-radius: 3px;
+}
 /*# sourceMappingURL=style.css.map */

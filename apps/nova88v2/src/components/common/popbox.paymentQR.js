@@ -3,7 +3,16 @@ import { i18nContext } from "Context";
 import moment from "moment";
 import { number_format, isConvert } from "./common";
 
-const Panel = ({ amount, currencyId, imgUrl, handlePopBox }) => {
+const Panel = ({
+	amount,
+	currencyId,
+	imgUrl,
+	handlePopBox,
+	orderNumber,
+	bankName,
+	accountName,
+	accountNumber
+}) => {
 	const { i18n } = useContext(i18nContext);
 
 	const isMountedRef = useRef(null);
@@ -24,6 +33,15 @@ const Panel = ({ amount, currencyId, imgUrl, handlePopBox }) => {
 
 	const timeText = moment().format("YYYY-MM-DD H:mm:ss");
 
+	const onCopy = ({ val }) => {
+		const virtualInput = document.createElement("input");
+		virtualInput.value = val;
+		document.body.appendChild(virtualInput);
+		virtualInput.select();
+		document.execCommand("copy");
+		document.body.removeChild(virtualInput);
+	};
+
 	return (
 		<div className="popTxt">
 			<div className="title">{`${i18n.lbl_PaymentDetails}：`}</div>
@@ -31,6 +49,12 @@ const Panel = ({ amount, currencyId, imgUrl, handlePopBox }) => {
 				{`${i18n.lbl_Time}：`}
 				<span>{timeText}</span>
 			</div>
+			{orderNumber !== "" && orderNumber && (
+				<div>
+					{`${i18n.lbl_Deposit_DragonPayPop_OrderNumber}：`}
+					<span>{orderNumber}</span>
+				</div>
+			)}
 			<div>
 				{`${i18n.lbl_OrderAmount}：`}
 				<span>{amountText}</span>
@@ -40,6 +64,36 @@ const Panel = ({ amount, currencyId, imgUrl, handlePopBox }) => {
 				<div>
 					{`${i18n.lbl_Pay} `}
 					<span>{amountText}</span>
+				</div>
+				<div className="accountInfo">
+					{accountNumber && accountNumber !== "" && (
+						<>
+							<div>
+								{i18n.lbl_Deposit_DragonPayPop_BankName}:
+								{bankName}
+							</div>
+							<div>
+								{i18n.lbl_Deposit_DragonPayPop_AccountName}:
+								{accountName}
+								<button
+									onClick={() =>
+										onCopy({ val: accountName })
+									}>
+									{i18n.lbl_Copy}
+								</button>
+							</div>
+							<div>
+								{i18n.lbl_Deposit_DragonPayPop_AccountNumber}:
+								{accountNumber}
+								<button
+									onClick={() =>
+										onCopy({ val: accountNumber })
+									}>
+									{i18n.lbl_Copy}
+								</button>
+							</div>
+						</>
+					)}
 				</div>
 				<ul>
 					<li>{i18n.lbl_PaymentQRDesc1}</li>

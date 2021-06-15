@@ -581,6 +581,10 @@
 	"lbl_DepositType2": "Mobile Payment",
 	"lbl_DepositType3": "Local Bank",
 	"lbl_DepositType4": "Crypto Pay",
+	"lbl_Deposit_DragonPayPop_BankName" : "Bank Name" ,
+	"lbl_Deposit_DragonPayPop_OrderNumber" : "Order number",
+	"lbl_Deposit_DragonPayPop_AccountName" : "Account Name",
+	"lbl_Deposit_DragonPayPop_AccountNumber" : "Account Number",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails":"Payment Details",
