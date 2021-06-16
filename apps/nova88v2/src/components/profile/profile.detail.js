@@ -125,7 +125,7 @@ const Panel = () => {
 		} else {
 			try {
 				const res = await api.site.ExistsPhoneNo({
-					AreaCode: areaCodeOptions[AreaCodeIdx]?.value,
+					AreaCode: _areaCode ?? areaCodeOptions[AreaCodeIdx]?.value,
 					Phone: val
 				});
 
