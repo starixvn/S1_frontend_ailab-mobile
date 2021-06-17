@@ -62,7 +62,8 @@ const UserGuide = ({ i18n, langId }) => {
 					<a
 						href={TandC(langId).FAQ}
 						target="_blank"
-						className="icon icon-GUIDE3">
+						className="icon icon-GUIDE3"
+						rel="noreferrer">
 						<span>{i18n.lbl_FAQ}</span>
 					</a>
 				</div>
@@ -82,36 +83,43 @@ const ContactUs = ({ i18n, langId }) => {
 					href={siteInfo(langId).skypeId}
 					target="_blank"
 					className="icon icon-contactUS6"
+					rel="noreferrer"
 				/>
 				<a
 					href={siteInfo(langId).telegramId}
 					target="_blank"
 					className="icon icon-Telegram"
+					rel="noreferrer"
 				/>
 				<a
 					href={siteInfo(langId).zaloId}
 					target="_blank"
 					className="icon icon-zalo"
+					rel="noreferrer"
 				/>
 				<a
 					href={siteInfo(langId).facebookId}
 					target="_blank"
 					className="icon icon-contactUS1"
+					rel="noreferrer"
 				/>
 				<a
 					href={siteInfo(langId).twitterId}
 					target="_blank"
 					className="icon icon-contactUS2"
+					rel="noreferrer"
 				/>
 				<a
 					href={siteInfo(langId).youtubeId}
 					target="_blank"
 					className="icon icon-youtube"
+					rel="noreferrer"
 				/>
 				<a
 					href={siteInfo(langId).tiktokId}
 					target="_blank"
 					className="icon icon-tiktok"
+					rel="noreferrer"
 				/>
 			</div>
 		</div>
@@ -172,8 +180,7 @@ const AppDownload = () => {
 		<div className="downloadarea">
 			<a
 				href="https://mars.fadatsai88.com/v1/App?path=bwing_sports_android.apk"
-				target="_blank"
-				rel="noreferrer">
+				download>
 				<button>Android</button>
 			</a>
 			{/* <a

@@ -43,9 +43,9 @@ const IndexPage = () => {
 											{i18n.lbl_iOS}
 										</div>
 										<a
-											href="https://nova.mqcfirm.com/"
+											href="https://nova.ytfsmm.com/"
 											target="_blank"
-											rel="noreferrer">
+											rel="noreferrer noopener">
 											<button>
 												{i18n.lbl_Downloads?.toUpperCase()}
 											</button>
@@ -67,8 +67,7 @@ const IndexPage = () => {
 										</div>
 										<a
 											href="https://dl.4ppstore.com/dlapp/Nova88.apk"
-											target="_blank"
-											rel="noreferrer">
+											download>
 											<button>
 												{i18n.lbl_Downloads?.toUpperCase()}
 											</button>
