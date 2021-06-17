@@ -180,7 +180,8 @@ const AppDownload = () => {
 		<div className="downloadarea">
 			<a
 				href="https://mars.fadatsai88.com/v1/App?path=bwing_sports_android.apk"
-				download>
+				target="_blank"
+				rel="noreferrer">
 				<button>Android</button>
 			</a>
 			{/* <a

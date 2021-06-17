@@ -29,7 +29,8 @@ const IndexPage = () => {
 								<img src={Android} alt="Android" />
 								<a
 									href="https://mars.fadatsai88.com/v1/App?path=bwing_sports_android.apk"
-									download>
+									target="_blank"
+									rel="noreferrer">
 									<button>Android</button>
 								</a>
 							</div>
