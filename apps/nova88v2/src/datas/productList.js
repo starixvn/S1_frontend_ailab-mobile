@@ -345,7 +345,8 @@ const gameList = ({ langId, currencyName }) => {
 					popBox: {
 						needLogin: true,
 						title: "lbl_Poker",
-						type: defPopBoxType.OneGame
+						type: defPopBoxType.OneGame,
+						...defGameInfo.oneGame
 					}
 				},
 				{
@@ -699,7 +700,8 @@ const gameList = ({ langId, currencyName }) => {
 					popBox: {
 						needLogin: true,
 						title: "lbl_Poker",
-						type: defPopBoxType.OneGame
+						type: defPopBoxType.OneGame,
+						...defGameInfo.oneGame
 					}
 				},
 				{
@@ -1049,7 +1051,8 @@ const gameList = ({ langId, currencyName }) => {
 					popBox: {
 						needLogin: true,
 						title: "lbl_Poker",
-						type: defPopBoxType.OneGame
+						type: defPopBoxType.OneGame,
+						...defGameInfo.oneGame
 					}
 				},
 				{
@@ -1378,7 +1381,8 @@ const gameList = ({ langId, currencyName }) => {
 					popBox: {
 						needLogin: true,
 						title: "lbl_Poker",
-						type: defPopBoxType.OneGame
+						type: defPopBoxType.OneGame,
+						...defGameInfo.oneGame
 					}
 				},
 				{
@@ -1813,7 +1817,8 @@ const gameList = ({ langId, currencyName }) => {
 					popBox: {
 						needLogin: true,
 						title: "lbl_Poker",
-						type: defPopBoxType.OneGame
+						type: defPopBoxType.OneGame,
+						...defGameInfo.oneGame
 					}
 				},
 				{

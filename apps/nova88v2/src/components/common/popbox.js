@@ -36,7 +36,12 @@ const PopUp = () => {
 			break;
 
 		case defPopBoxType.OneGame:
-			content = <OneGamePopBox setRedirect={popBox.setRedirect} />;
+			content = (
+				<OneGamePopBox
+					setRedirect={popBox.setRedirect}
+					tpId={popBox.tpId}
+				/>
+			);
 			break;
 
 		case defPopBoxType.Referral:

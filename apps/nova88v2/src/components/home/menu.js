@@ -6,6 +6,7 @@ import gameList, { defCol } from "../../datas/productList";
 import { getEventIcon } from "./category";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import useHandleLogin from "../hook/useHandleLogin";
+import { useGetTpMaintainList } from "../hook/useGetTpMaintainList";
 import api from "../../service/api";
 import { GetCurrencyName } from "../common/common";
 import {
@@ -17,7 +18,7 @@ import {
 const Menu = ({ i18n, userInfo, setPopBox }) => {
 	const [selectedCol, setSelectedCol] = useState(defCol.sports);
 	const [showingTpIds, setShowningTpIds] = useState(null);
-	const [maintainList, setMaintainList] = useState(null);
+	const { maintainList } = useGetTpMaintainList();
 	const { handleLogin } = useHandleLogin();
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 	const navigate = useNavigate();
@@ -44,24 +45,42 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 				}
 			});
 		}
-		api.tp.GetTpMaintainList().then(res => {
-			if (res.data.errorCode === 0 && isMountedRef.current) {
-				const arr = res.data?.data.map(el => el.tpId);
-				setMaintainList(arr);
-			}
-		});
 	}, [setShowningTpIds, userInfo.isLogin]);
 
 	const showSubPanel = ({ panel, popBox }) => {
 		if (popBox) {
-			popBox.needLogin && !userInfo.isLogin
-				? handleLogin()
-				: setPopBox({
-						isOpen: true,
-						title: i18n[popBox.title],
-						popBoxType: popBox.type,
-						navigate
-				  });
+			if (popBox.needLogin && !userInfo.isLogin) {
+				handleLogin();
+			} else if (
+				maintainList &&
+				maintainList?.some(m => m.tpId === popBox.tpId)
+			) {
+				setPopBox({
+					isOpen: true,
+					title: i18n.lbl_ImportantNote,
+					content: i18n.lbl_underMaintenance,
+					hasBtn: true,
+					btnBar: (
+						<div className="btn-group">
+							<button
+								className="white"
+								onClick={() => {
+									setPopBox({ isOpen: false });
+								}}>
+								OK
+							</button>
+						</div>
+					)
+				});
+			} else {
+				setPopBox({
+					isOpen: true,
+					title: i18n[popBox.title],
+					popBoxType: popBox.type,
+					tpId: popBox.tpId,
+					navigate
+				});
+			}
 		} else if (selectedCol !== panel) {
 			setSelectedCol(panel);
 		}

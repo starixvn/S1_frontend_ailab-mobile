@@ -5,7 +5,7 @@ import oneGameImg from "../../styles/img/onegame/bg.jpg";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { Link } from "../../route/link";
 
-const PopBoxOneGame = () => {
+const PopBoxOneGame = ({ tpId = 13 }) => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -15,7 +15,7 @@ const PopBoxOneGame = () => {
 		GET_ENTER_PAGE({
 			isLogin: userInfo.isLogin,
 			langId: userInfo.langId,
-			tpId: 13
+			tpId
 		});
 	};
 
