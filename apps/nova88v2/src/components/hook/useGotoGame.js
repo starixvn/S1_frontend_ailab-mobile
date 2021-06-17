@@ -96,14 +96,15 @@ export const useGotoGame = ({
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		if (autoGetData) {
+		if (autoGetData && isLogin !== null) {
 			handleGoToGame({ isLogin, langId, tpId, gameId, isFun });
 		}
 
 		return () => {
 			isMountedRef.current = false;
 		};
-	});
+	}, [autoGetData, isLogin, langId]);
+
 	const handleGoToGame = useCallback(
 		async ({
 			isLogin: _isLogin = true,
