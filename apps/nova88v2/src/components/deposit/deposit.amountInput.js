@@ -93,7 +93,6 @@ const AmountInput = ({
 							value={amount}
 						/>
 						<div className="icon-module">
-							{_isConvert && <i className="icon-rate" />}
 							{status ? (
 								<i className="icon icon-errormark" />
 							) : null}
