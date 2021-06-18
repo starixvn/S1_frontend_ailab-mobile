@@ -29,6 +29,7 @@ export const useHandleAmount = ({
 	}, [minAmount, maxAmount]);
 
 	const SelectAmount = value => {
+		VaildAmount({ _amount: value, minAmount, maxAmount, i18n });
 		if (amount !== value) {
 			setAmount(() => value);
 		}
