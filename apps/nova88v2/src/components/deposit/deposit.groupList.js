@@ -55,15 +55,20 @@ const GroupList = ({
 						data?.minAmount &&
 						data?.maxAmount && (
 							<div>
-								{`${i18n.lbl_MinMaxAmount}: ${number_format(
-									data.minAmount,
-									_isConvert,
-									0
-								)} / ${number_format(
-									data.maxAmount,
-									_isConvert,
-									0
-								)}`}
+								<div>
+									{`${i18n.lbl_Min}: ${number_format(
+										data.minAmount,
+										_isConvert,
+										0
+									)}`}
+								</div>
+								<div>
+									{`${i18n.lbl_Max}:  ${number_format(
+										data.maxAmount,
+										_isConvert,
+										0
+									)}`}
+								</div>
 							</div>
 						)}
 				</div>

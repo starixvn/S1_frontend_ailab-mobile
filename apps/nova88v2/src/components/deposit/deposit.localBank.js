@@ -547,19 +547,24 @@ const GroupList = ({
 				<div className="bank">
 					<div>{data[displayKey]}</div>
 
-					<div>
-						{data?.minAmount && data?.maxAmount
-							? `${i18n.lbl_MinMaxAmount}: ${number_format(
+					{data?.minAmount && data?.maxAmount ? (
+						<div>
+							<div>
+								{`${i18n.lbl_Min}: ${number_format(
 									data.minAmount,
 									_isConvert,
 									0
-							  )} / ${number_format(
+								)} `}
+							</div>
+							<div>
+								{`${i18n.lbl_Max}: ${number_format(
 									data.maxAmount,
 									_isConvert,
 									0
-							  )}`
-							: ""}
-					</div>
+								)}`}
+							</div>
+						</div>
+					) : null}
 				</div>
 			</div>
 		);
