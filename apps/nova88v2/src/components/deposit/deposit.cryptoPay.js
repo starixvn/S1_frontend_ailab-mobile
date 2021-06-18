@@ -175,6 +175,7 @@ const Main = props => {
 						? number_format(curSelPayment?.minAmount, _isConvert, 0)
 						: 1
 				)}
+				currencyId={userInfo.currencyId}
 			/>
 			<div className="btn-group">
 				<button className="orange" onClick={ClickSubmit}>
