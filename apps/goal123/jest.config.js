@@ -11,5 +11,7 @@ module.exports = {
 		"^.+\\.[tj]sx?$": "ts-jest"
 	},
 	moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
-	coverageDirectory: "../../coverage/apps/goal123"
+	coverageDirectory: "../../coverage/apps/goal123",
+	collectCoverage: true,
+	coverageReporters: ["html"]
 };
