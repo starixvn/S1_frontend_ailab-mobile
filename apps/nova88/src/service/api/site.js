@@ -13,7 +13,6 @@
 // export const api_ExistsEmail = ({ Email }) =>
 // 	siteRequest.post(`/ExistsEmail`, { Email: Email });
 
-// // export const api_Register = data => siteRequest.post(`/Register/`, data);
 // export const api_Signup = (data, langId) =>
 // 	siteRequest.post(`/Signup/${langId}`, data);
 

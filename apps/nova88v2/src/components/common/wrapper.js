@@ -152,11 +152,19 @@ export const Wrapper = ({ children }) => {
 
 			if (userInfo.userName) {
 				api.account.GetBalnace().then(res => {
-					if (res.data.errorCode === 0 && isMountedRef.current) {
-						setWalletInfo(prevState => ({
-							...prevState,
-							main: res.data.data
-						}));
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							setWalletInfo(prevState => ({
+								...prevState,
+								main: res.data.data
+							}));
+						} else if (res.data.message) {
+							setPopBox({
+								isOpen: true,
+								title: i18n.lbl_ImportantNote,
+								content: `[${res.data.errorCode}]${res.data.message}`
+							});
+						}
 					}
 				});
 			}

@@ -9,7 +9,6 @@ import Tips from "./tips";
 import {
 	api_ExistsUserName,
 	// api_ExistsEmail,
-	// api_Register,
 	api_GetSiteCurrencyList,
 	api_GetBanner,
 	api_site_GetAffiliateAgent,
