@@ -19,7 +19,8 @@ const Inputbox = ({
 	submitBtn,
 	i18n,
 	clickSubmit,
-	isRequired
+	isRequired,
+	testAttr
 }) => {
 	let Title = null;
 	if (title) {
@@ -48,6 +49,7 @@ const Inputbox = ({
 						max={max}
 						disabled={disabled}
 						maxLength={maxLength}
+						data-testid={`${testAttr}_ipt`}
 					/>
 					{numberConvert ? <span>(000)</span> : null}
 					<IptStatus btnStatus={btnStatus} clickInfo={clickInfo} />
@@ -56,7 +58,11 @@ const Inputbox = ({
 					<SubmitBtn i18n={i18n} clickSubmit={clickSubmit} />
 				) : null}
 			</div>
-			{tip ? <div className="tip open">{tip}</div> : null}
+			{tip ? (
+				<div data-testid={`${testAttr}_tip`} className="tip open">
+					{tip}
+				</div>
+			) : null}
 		</div>
 	);
 };
@@ -77,7 +83,8 @@ Inputbox.defaultProps = {
 	submitBtn: false,
 	i18n: {},
 	clickSubmit: () => null,
-	isRequired: false
+	isRequired: false,
+	testAttr: ""
 };
 
 Inputbox.propTypes = {
@@ -98,7 +105,8 @@ Inputbox.propTypes = {
 	submitBtn: PropTypes.bool,
 	i18n: PropTypes.objectOf(PropTypes.string),
 	clickSubmit: PropTypes.func,
-	isRequired: PropTypes.bool
+	isRequired: PropTypes.bool,
+	testAttr: PropTypes.string
 };
 
 export const IptStatus = ({ btnStatus, clickInfo }) => {
@@ -111,6 +119,7 @@ export const IptStatus = ({ btnStatus, clickInfo }) => {
 			return (
 				<i
 					className="icon icon-information-solid"
+					data-testid="showTipBtn"
 					onClick={clickInfo}
 				/>
 			);

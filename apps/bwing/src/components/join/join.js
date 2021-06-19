@@ -272,7 +272,6 @@ const Join = () => {
 				checked = true;
 			}
 		}
-
 		return { checked, message };
 	};
 

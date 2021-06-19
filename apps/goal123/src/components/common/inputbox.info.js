@@ -14,12 +14,14 @@ const Inputbox = ({
 	tip,
 	btnStatus,
 	numberConvert,
-	clickInfo
+	clickInfo,
+	testAttr
 }) => {
 	return (
 		<div className="inputBox">
 			{icon ? <i className={icon} /> : null}
 			<input
+				data-testid={`${testAttr}_ipt`}
 				type={inputType ?? "text"}
 				placeholder={placeholder}
 				onBlur={onBlur}
@@ -33,7 +35,11 @@ const Inputbox = ({
 				{numberConvert ? "('000)" : null}
 				<IptStatus btnStatus={btnStatus} clickInfo={clickInfo} />
 			</div>
-			{tip ? <div className="tip">{tip}</div> : null}
+			{tip ? (
+				<div className="tip" data-testid={`${testAttr}_tip`}>
+					{tip}
+				</div>
+			) : null}
 		</div>
 	);
 };
@@ -79,6 +85,7 @@ export const IptStatus = ({ btnStatus, clickInfo }) => {
 				<i
 					className="icon icon-information-solid"
 					onClick={clickInfo}
+					data-testid="showTipBtn"
 				/>
 			);
 	}

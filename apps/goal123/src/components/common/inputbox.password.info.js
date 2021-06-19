@@ -8,7 +8,8 @@ const Inputbox = ({
 	value,
 	tip,
 	btnStatus,
-	clickInfo
+	clickInfo,
+	testAttr
 }) => {
 	const [showingPsw, setShowingPsw] = useState(false);
 	const showPswHandler = () => {
@@ -19,6 +20,7 @@ const Inputbox = ({
 		<div className="inputBox">
 			<i className="icon icon-key" />
 			<input
+				data-testid={`${testAttr}_ipt`}
 				type={showingPsw ? "text" : "password"}
 				placeholder={placeholder}
 				onBlur={onBlur}
@@ -30,11 +32,16 @@ const Inputbox = ({
 					className={`icon ${
 						showingPsw ? "icon-eye" : "icon-eye-blocked"
 					}`}
+					data-testid="showPsw"
 					onClick={showPswHandler}
 				/>
 				<IptStatus btnStatus={btnStatus} clickInfo={clickInfo} />
 			</div>
-			{tip ? <div className="tip active">{tip}</div> : null}
+			{tip ? (
+				<div className="tip active" data-testid={`${testAttr}_tip`}>
+					{tip}
+				</div>
+			) : null}
 		</div>
 	);
 };

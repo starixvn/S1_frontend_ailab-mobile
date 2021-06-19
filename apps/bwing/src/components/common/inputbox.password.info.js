@@ -10,7 +10,8 @@ const Inputbox = ({
 	tip,
 	btnStatus,
 	title,
-	clickInfo
+	clickInfo,
+	testAttr
 }) => {
 	const [showingPsw, setShowingPsw] = useState(false);
 	const showPswHandler = () => {
@@ -24,6 +25,7 @@ const Inputbox = ({
 				<div className="inputBoxNew">
 					<i className="icon icon-key" />
 					<input
+						data-testid={`${testAttr}_ipt`}
 						type={showingPsw ? "text" : "password"}
 						placeholder={placeholder}
 						onBlur={onBlur}
@@ -34,12 +36,17 @@ const Inputbox = ({
 						className={`icon ${
 							showingPsw ? "icon-eye" : "icon-eye-blocked"
 						}`}
+						data-testid="showPsw"
 						onClick={showPswHandler}
 					/>
 					<IptStatus btnStatus={btnStatus} clickInfo={clickInfo} />
 				</div>
 			</div>
-			{tip ? <div className="tip open">{tip}</div> : null}
+			{tip ? (
+				<div data-testid={`${testAttr}_tip`} className="tip open">
+					{tip}
+				</div>
+			) : null}
 		</div>
 	);
 };
@@ -50,7 +57,8 @@ Inputbox.defaultProps = {
 	tip: "",
 	btnStatus: null,
 	title: null,
-	clickInfo: () => null
+	clickInfo: () => null,
+	testAttr: ""
 };
 
 Inputbox.propTypes = {
@@ -61,7 +69,8 @@ Inputbox.propTypes = {
 	tip: PropTypes.string,
 	btnStatus: PropTypes.bool,
 	title: PropTypes.string,
-	clickInfo: PropTypes.func
+	clickInfo: PropTypes.func,
+	testAttr: PropTypes.string
 };
 
 export default Inputbox;
