@@ -21,8 +21,6 @@ export const api_ExistsUserName = ({ UserName, langId }) =>
 export const api_ExistsEmail = ({ Email }) =>
 	siteRequest.post(`/ExistsEmail`, { Email });
 
-export const api_Register = data => siteRequest.post(`/Register/`, data);
-
 export const api_GetSiteCurrencyList = () =>
 	siteRequest.post(`/GetSiteCurrencyList/`);
 

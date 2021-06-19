@@ -22,7 +22,6 @@ export class SiteAPI extends BaseAPI {
 	ExistsEmail = ({ Email }) =>
 		this.siteRequest.post(`/ExistsEmail`, { Email });
 
-	// Register = data => this.siteRequest.post(`/Register/`, data);
 	Signup = (data, langId) => this.siteRequest.post(`/Signup/${langId}`, data);
 
 	GetSiteCurrencyList = () => this.siteRequest.post(`/GetSiteCurrencyList/`);
