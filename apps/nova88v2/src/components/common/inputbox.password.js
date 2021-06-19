@@ -29,6 +29,7 @@ const Inputbox = props => {
 					) : null}
 					<IptStatus btnStatus={props.checked} />
 					<i
+						data-testid="showPsw"
 						className={`icon ${
 							!props.showPsw ? "icon-eye-blocked" : "icon-eye"
 						}`}
@@ -44,9 +45,8 @@ const Inputbox = props => {
 			</div>
 			{props.checked === false ? (
 				<div
-					className={`tip${
-						props.checked === false ? " active" : ""
-					}`}>
+					className={`tip${props.checked === false ? " active" : ""}`}
+					data-testid={props.testAttr}>
 					{props.warningMsg}
 				</div>
 			) : null}

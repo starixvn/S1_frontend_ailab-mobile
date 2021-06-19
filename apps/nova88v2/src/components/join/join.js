@@ -25,7 +25,7 @@ import { Iov_GetBlackBox } from "../common/iovation";
 import api from "../../service/api";
 import { Link } from "../../route/link";
 
-const Join = () => {
+const Join = ({ initSiteCurrency = [] }) => {
 	const navigate = useNavigate();
 	const state = useLocation();
 	const { i18n } = useContext(i18nContext);
@@ -33,7 +33,9 @@ const Join = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { nav, setNav } = useContext(navContext);
 	const [userValue, setUserValue] = useState(initValue);
-	const [siteCurrency, setSiteCurrencyState] = useState([]);
+
+	const [siteCurrency, setSiteCurrencyState] = useState(initSiteCurrency);
+
 	const [status, setStatus] = useState(initStatus);
 	const [pswState, setPswState] = useState(false);
 	const [banner, setBanner] = useState([]);
@@ -58,7 +60,6 @@ const Join = () => {
 	const { showTips, showTipHandler } = useTip([]);
 	const [promoPopup, setPromoPopup] = useState(false);
 	const defaultLangId = userInfo.langId ?? GET_LANG_ID();
-
 	const isMountedRef = useRef(null);
 	const justMounted = useRef(true);
 	useEffect(() => {
@@ -76,7 +77,7 @@ const Join = () => {
 	}, []);
 
 	useEffect(() => {
-		if (state.state.fromHeader) {
+		if (state.state?.fromHeader) {
 			localStorage.setItem("previousPage", "/");
 		}
 	}, [globalHistory]);

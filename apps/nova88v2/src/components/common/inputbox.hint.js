@@ -46,6 +46,7 @@ const Inputbox = ({
 					<IptStatus btnStatus={btnStatus} />
 					{showInfoIcon && (
 						<i
+							data-testid="showTipBtn"
 							className="icon icon-information"
 							onClick={clickInfo}
 						/>

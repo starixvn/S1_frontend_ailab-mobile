@@ -41,7 +41,6 @@ export class DropdownBox extends Component {
 				/>
 			);
 		});
-
 		let selected = null;
 		if (this.props.options[this.props.selectedIdx]) {
 			const _s = this.props.options[this.props.selectedIdx];
@@ -81,8 +80,11 @@ export class DropdownBox extends Component {
 						<button
 							onBlur={this.props.onBlur}
 							className="dropdown btn"
+							data-testid="dropdown_btn"
 							onClick={this.ClickDropdown}>
-							<span className="text">
+							<span
+								className="text"
+								data-testid={`${this.props.testAttr}_dropdown-text`}>
 								{this.props.defaultOption ?? selected}
 							</span>
 							<i className="icon icon-keyboard_arrow_down" />
@@ -104,7 +106,9 @@ export class DropdownBox extends Component {
 					</div>
 					{this.props.rightBtn ?? null}
 				</div>
-				<div className={`tip${this.props.warningMsg ? " active" : ""}`}>
+				<div
+					className={`tip${this.props.warningMsg ? " active" : ""}`}
+					data-testid={this.props.testAttr}>
 					{this.props.warningMsg}
 				</div>
 			</>
@@ -153,7 +157,10 @@ DropdownBox.propTypes = {
 
 const Item = props => {
 	return (
-		<div className="dropdown-item" onClick={props.onClick}>
+		<div
+			className="dropdown-item"
+			data-testid="dropdown-item"
+			onClick={props.onClick}>
 			<span className="text">{props.displayText}</span>
 		</div>
 	);

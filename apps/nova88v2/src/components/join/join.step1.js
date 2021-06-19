@@ -199,7 +199,9 @@ const JoinStep1 = ({
 					{i18n.lbl_Check18TC2}
 				</div>
 				<div className="btn-group">
-					<button onClick={clickSubmit}>{i18n.lbl_JoinNow}</button>
+					<button data-testid="next" onClick={clickSubmit}>
+						{i18n.lbl_JoinNow}
+					</button>
 				</div>
 				<Link to="/">
 					<div className="visit">
