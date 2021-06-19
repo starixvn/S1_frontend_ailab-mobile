@@ -26,13 +26,16 @@ const Modal = ({ isLogin, isJoin }) => {
 	return isJoin || isLogin ? (
 		<div className="logoSwitch active">
 			<button
+				data-testid="close_join_modal_btn"
 				onClick={() => navigate(localStorage.getItem("previousPage"))}>
 				<div className="icon icon-close" />
 			</button>
 			<Logo langId={userInfo.langId} isWhite={false} />
 			<button className="switch">
 				<div className={`switchBg${isJoin ? " right" : ""}`} />
-				<div className={`switchLogin${isLogin ? " active" : ""}`}>
+				<div
+					className={`switchLogin${isLogin ? " active" : ""}`}
+					data-testid="switch_login_btn">
 					<Link to={path.login.root}>{i18n.lbl_Login}</Link>
 				</div>
 				<div className={`switchJoin${isJoin ? " active" : ""}`}>

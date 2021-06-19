@@ -81,7 +81,7 @@ const JoinStep2 = ({
 			api.site.GetAffiliateAgent({ AffId }).then(
 				res => {
 					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
+						if (res.data?.errorCode === 0) {
 							const { currencyId } = res.data.data;
 							setSiteCurrencyState([
 								{
@@ -113,7 +113,7 @@ const JoinStep2 = ({
 		api.site.GetSiteCurrencyList().then(
 			res => {
 				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
+					if (res.data?.errorCode === 0) {
 						const currencyNum = res.data.data;
 						const currencyArr = currencyNum.map(id => {
 							return { id, displayKey: `Currency_${id}` };
@@ -123,7 +123,7 @@ const JoinStep2 = ({
 						setPopBox({
 							isOpen: true,
 							title: i18n.lbl_ImportantNote,
-							content: res.data.message
+							content: res.data?.message
 						});
 					}
 				}
@@ -200,18 +200,16 @@ const JoinStep2 = ({
 		let checked = true;
 		let msg = "";
 		const regx = /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
-
 		if (!val || !regx.test(val)) {
 			checked = false;
 			msg = "msg_MailWrongFormat";
 		} else {
 			const res = await api.site.ExistsEmail({ Email: val });
-			if (res.data.errorCode === 0 && res.data.data === true) {
+			if (res.data?.errorCode === 0 && res.data?.data === true) {
 				checked = false;
 				msg = "msg_MailExisted";
 			}
 		}
-
 		return { checked, msg };
 	};
 
@@ -219,7 +217,6 @@ const JoinStep2 = ({
 		let checked = true;
 		let msg = "";
 		const regx = /^[0-9\s]*$/;
-
 		if (!val) {
 			checked = false;
 			msg = "lbl_PhoneRequired";
@@ -235,12 +232,11 @@ const JoinStep2 = ({
 				Phone: val
 			});
 
-			if (res.data.errorCode === 0 && res.data.data === true) {
+			if (res.data?.errorCode === 0 && res.data?.data === true) {
 				checked = false;
 				msg = "msg_PhoneExisted";
 			}
 		}
-
 		return { checked, msg };
 	};
 
@@ -266,7 +262,6 @@ const JoinStep2 = ({
 				phoneCheck(userValue.Phone),
 				emailCheck(userValue.Email)
 			]);
-
 			const _phoneCheck = res[0];
 			const _emailCheck = res[1];
 			const _currencyCheck = currencyCheck();
@@ -277,7 +272,6 @@ const JoinStep2 = ({
 				_emailCheck.checked &&
 				_currencyCheck.checked &&
 				_realNameCheck.checked;
-
 			if (!checked) {
 				setHintStatus(prev => ({
 					...prev,
@@ -308,7 +302,6 @@ const JoinStep2 = ({
 
 	const clickSubmit = async () => {
 		const checked = await checkAll();
-
 		if (checked) {
 			const regData = {
 				UserName: userValue.UserName,
@@ -330,7 +323,7 @@ const JoinStep2 = ({
 
 			if (AffId) {
 				const res = await api.site.GetAffiliateAgent({ AffId });
-				if (res.data.errorCode === 0) {
+				if (res.data?.errorCode === 0) {
 					regData.AffId =
 						getUrlParameter("AffId") || getCookie("AffId");
 				} else {
@@ -351,7 +344,6 @@ const JoinStep2 = ({
 				getCookie("AffCode") ||
 				userValue.AffiliateId;
 			regData.blackbox = await Iov_GetBlackBox();
-
 			api.site.Signup(regData, defaultLangId).then(
 				response => {
 					if (isMountedRef.current) {
@@ -521,6 +513,7 @@ const JoinStep2 = ({
 				dropdownStateHandler={birthSelect}
 				checked={hintStatus.Birth.checked}
 				tip={hintStatus.Birth.msg}
+				testAttr="BirthDay"
 			/>
 			<div className="Terms">
 				{i18n.lbl_Check18TC1}
@@ -533,7 +526,9 @@ const JoinStep2 = ({
 				{i18n.lbl_Check18TC2}
 			</div>
 			<div className="btn-group">
-				<button onClick={clickSubmit}>{i18n.lbl_Register}</button>
+				<button onClick={clickSubmit} data-testid="signUpBtn">
+					{i18n.lbl_Register}
+				</button>
 			</div>
 			<Link to="/">
 				<div className="visit">

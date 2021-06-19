@@ -9,11 +9,13 @@ const Birthday = ({
 	dateOptions,
 	daySelectedIdx,
 	yearOptions,
-	yearSelectedIdx
+	yearSelectedIdx,
+	testAttr
 }) => {
 	return (
 		<div className="infoModule parts">
 			<Dropdown
+				testAttr={`${testAttr}_m`}
 				i18n={i18n}
 				mainKey="profile-month"
 				options={monthOptions}
@@ -23,6 +25,7 @@ const Birthday = ({
 				birthDayIcon={true}
 			/>
 			<Dropdown
+				testAttr={`${testAttr}_d`}
 				mainKey="profile-day"
 				options={dateOptions}
 				colName="Birth_d"
@@ -30,6 +33,7 @@ const Birthday = ({
 				selectedIdx={daySelectedIdx}
 			/>
 			<Dropdown
+				testAttr={`${testAttr}_y`}
 				mainKey="profile-year"
 				options={yearOptions}
 				colName="Birth_y"
@@ -91,6 +95,7 @@ class Dropdown extends Component {
 				: this.props.i18n?.[item.displayKey];
 			return (
 				<Item
+					testAttr={this.props.testAttr}
 					key={`${this.props.mainKey}-${item.id ?? i}`}
 					displayText={displayText}
 					onClick={this.SelectItem.bind(this, i)}
@@ -111,12 +116,12 @@ class Dropdown extends Component {
 			selected = this.props.placeholder;
 		}
 		return (
-			<div
-				className="inputBox"
-				data-testid={this.props.testAttr}
-				ref={this.wrapper}>
+			<div className="inputBox" ref={this.wrapper}>
 				{this.props.birthDayIcon && <i className="icon icon-cake" />}
-				<button className="dropdown" onClick={this.ClickDropdown}>
+				<button
+					className="dropdown"
+					onClick={this.ClickDropdown}
+					data-testid={`${this.props.testAttr}_displayText`}>
 					{this.props.defaultOption ?? selected}
 					<i className="icon icon-keyboard_arrow_down" />
 				</button>
@@ -133,7 +138,10 @@ class Dropdown extends Component {
 
 const Item = props => {
 	return (
-		<div className="dropdown-item" onClick={props.onClick}>
+		<div
+			className="dropdown-item"
+			onClick={props.onClick}
+			data-testid={`${props.testAttr}_item`}>
 			{props.displayText}
 		</div>
 	);

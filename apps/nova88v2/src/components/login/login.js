@@ -94,10 +94,6 @@ const LoginPage = () => {
 	};
 
 	const handleLogin = () => {
-		// empty
-		// rgiht
-		// pw wrong
-		// username wrong
 		const stat = {
 			pw: { msg: "", checked: true },
 			userName: { msg: "", checked: true }
@@ -222,6 +218,7 @@ const LoginPage = () => {
 				infoText={i18n.lbl_UsernameTooltip}
 				clickInfo={() => showTipHandler("UserName")}
 				showTips={showTips.includes("UserName")}
+				testAttr="UserName"
 			/>
 
 			<InputboxPWD
@@ -239,9 +236,10 @@ const LoginPage = () => {
 				clickInfo={() => showTipHandler("Password")}
 				showTips={showTips.includes("Password")}
 				checked={warningState.Password.status}
+				testAttr="Password"
 			/>
 
-			<div className="Terms">
+			<div className="Terms" data-testid="forgetpw">
 				<Link
 					to={path.forgetPassword.root}
 					onClick={handleloginPanel.bind(
@@ -254,7 +252,9 @@ const LoginPage = () => {
 				</Link>
 			</div>
 			<div className="btn-group">
-				<button onClick={handleLogin}>{i18n.lbl_Login}</button>
+				<button onClick={handleLogin} data-testid="login_submit">
+					{i18n.lbl_Login}
+				</button>
 			</div>
 
 			<Link to="/">
