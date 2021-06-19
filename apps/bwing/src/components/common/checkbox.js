@@ -4,6 +4,7 @@ const Checkbox = props => {
 	return (
 		<div className={props.className}>
 			<input
+				data-testid={`${props.testAttr}`}
 				type="checkbox"
 				id={props.id}
 				checked={props.checked}

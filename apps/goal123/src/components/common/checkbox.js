@@ -6,6 +6,7 @@ const Checkbox = props => {
 	return (
 		<div className={className}>
 			<input
+				data-testid="iAgree"
 				type="checkbox"
 				id={id}
 				checked={Checked}

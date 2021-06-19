@@ -388,6 +388,7 @@ const Join = ({ hideBtn }) => {
 						col: "UserName",
 						info: "lbl_UsernameTooltip"
 					})}
+					testAttr="Username"
 				/>
 				<InputboxPWD
 					placeholder={i18n.lbl_Password}
@@ -400,6 +401,7 @@ const Join = ({ hideBtn }) => {
 						col: "Password",
 						info: "lbl_PasswordTooltip"
 					})}
+					testAttr="Password"
 				/>
 				<div className="inputBox">
 					<Dropdown

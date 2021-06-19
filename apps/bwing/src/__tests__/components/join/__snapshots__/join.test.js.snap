@@ -1,0 +1,544 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Join tests Join renders correctly 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <button>
+        ĐĂNG KÝ
+      </button>
+      <div
+        class="Join"
+      >
+        <div
+          class="close"
+        >
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+        </div>
+        <img
+          alt="logo"
+          src="logo-euro.png"
+        />
+        <div
+          class="title"
+        >
+          ĐĂNG KÝ
+        </div>
+        <div
+          class="input-Area"
+        >
+          <div
+            class="input-group"
+          >
+            <div
+              class="inputBoxNew"
+            >
+              <i
+                class="icon icon-member"
+              />
+              <input
+                data-testid="Username_ipt"
+                placeholder="Tên truy cập"
+                type=""
+                value=""
+              />
+              <i
+                class="icon icon-information-solid"
+                data-testid="showTipBtn"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="input-Area"
+        >
+          <div
+            class="input-group"
+          >
+            <div
+              class="inputBoxNew"
+            >
+              <i
+                class="icon icon-key"
+              />
+              <input
+                data-testid="Password_ipt"
+                placeholder="Mật Khẩu"
+                type="password"
+                value=""
+              />
+              <i
+                class="icon icon-eye-blocked"
+                data-testid="showPsw"
+              />
+              <i
+                class="icon icon-information-solid"
+                data-testid="showTipBtn"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="inputBox"
+        >
+          <div
+            class="dropdown"
+          >
+            <button
+              class="btn"
+            >
+              <span
+                class="text"
+              >
+                VNĐ
+              </span>
+            </button>
+            <div
+              class="dropdown-container"
+            >
+              <div
+                class="dropdown-item"
+              >
+                <span
+                  class="text"
+                >
+                  VNĐ
+                </span>
+              </div>
+            </div>
+          </div>
+          <i
+            class="icon icon-coin-dollar"
+          />
+          <div
+            class="JoinRule "
+          />
+        </div>
+        <div
+          class="inputPhone parts"
+        >
+          <span
+            class="countryCode"
+          >
+            +84
+          </span>
+          <div
+            class="input-Area"
+          >
+            <div
+              class="input-group"
+            >
+              <div
+                class="inputBoxNew"
+              >
+                <i
+                  class="icon icon-phone"
+                />
+                <input
+                  data-testid="Phone_ipt"
+                  placeholder="Số ĐT"
+                  type="tel"
+                  value=""
+                />
+                <i
+                  class="icon icon-information-solid"
+                  data-testid="showTipBtn"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="errortip open"
+            data-testid="Phone_msg"
+          />
+        </div>
+        <div
+          class="input-Area"
+        >
+          <div
+            class="input-group"
+          >
+            <div
+              class="inputBoxNew"
+            >
+              <i
+                class="icon icon-affiliate"
+              />
+              <input
+                data-testid="_ipt"
+                placeholder="ID đại lý/ Người giới thiệu (nếu có)"
+                type=""
+                value=""
+              />
+              <i
+                class="icon icon-information-solid"
+                data-testid="showTipBtn"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="Terms"
+        >
+          <div>
+            <input
+              data-testid="iAgree1"
+              id="joinTermsCheck"
+              type="checkbox"
+            />
+            <label
+              for="joinTermsCheck"
+            >
+              <div />
+            </label>
+            Tôi đồng ý với 
+              
+            <a
+              href="http://stag.bwing.com/SiteSkin/Bwing/Static/vn/TermsConditions.html"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Điều Khoản và Điều Kiện
+            </a>
+              
+            và
+             
+            <a
+              href="http://stag.bwing.com/SiteSkin/Bwing/Static/vn/RulesandRegulations.html"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Quy Tắc và Quy Định Đặt Cược
+            </a>
+              
+            của
+             
+            Bwing
+          </div>
+          <div>
+            <input
+              data-testid="iAgree2"
+              id="joinAgeCheck"
+              type="checkbox"
+            />
+            <label
+              for="joinAgeCheck"
+            >
+              <div />
+            </label>
+            Tôi xác nhận tôi đã trên 21 tuổi
+          </div>
+        </div>
+        <div
+          class="btn-group"
+        >
+          <button
+            data-testid="signUpBtn"
+          >
+            ĐĂNG KÝ
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <button>
+      ĐĂNG KÝ
+    </button>
+    <div
+      class="Join"
+    >
+      <div
+        class="close"
+      >
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+      </div>
+      <img
+        alt="logo"
+        src="logo-euro.png"
+      />
+      <div
+        class="title"
+      >
+        ĐĂNG KÝ
+      </div>
+      <div
+        class="input-Area"
+      >
+        <div
+          class="input-group"
+        >
+          <div
+            class="inputBoxNew"
+          >
+            <i
+              class="icon icon-member"
+            />
+            <input
+              data-testid="Username_ipt"
+              placeholder="Tên truy cập"
+              type=""
+              value=""
+            />
+            <i
+              class="icon icon-information-solid"
+              data-testid="showTipBtn"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="input-Area"
+      >
+        <div
+          class="input-group"
+        >
+          <div
+            class="inputBoxNew"
+          >
+            <i
+              class="icon icon-key"
+            />
+            <input
+              data-testid="Password_ipt"
+              placeholder="Mật Khẩu"
+              type="password"
+              value=""
+            />
+            <i
+              class="icon icon-eye-blocked"
+              data-testid="showPsw"
+            />
+            <i
+              class="icon icon-information-solid"
+              data-testid="showTipBtn"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="inputBox"
+      >
+        <div
+          class="dropdown"
+        >
+          <button
+            class="btn"
+          >
+            <span
+              class="text"
+            >
+              VNĐ
+            </span>
+          </button>
+          <div
+            class="dropdown-container"
+          >
+            <div
+              class="dropdown-item"
+            >
+              <span
+                class="text"
+              >
+                VNĐ
+              </span>
+            </div>
+          </div>
+        </div>
+        <i
+          class="icon icon-coin-dollar"
+        />
+        <div
+          class="JoinRule "
+        />
+      </div>
+      <div
+        class="inputPhone parts"
+      >
+        <span
+          class="countryCode"
+        >
+          +84
+        </span>
+        <div
+          class="input-Area"
+        >
+          <div
+            class="input-group"
+          >
+            <div
+              class="inputBoxNew"
+            >
+              <i
+                class="icon icon-phone"
+              />
+              <input
+                data-testid="Phone_ipt"
+                placeholder="Số ĐT"
+                type="tel"
+                value=""
+              />
+              <i
+                class="icon icon-information-solid"
+                data-testid="showTipBtn"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="errortip open"
+          data-testid="Phone_msg"
+        />
+      </div>
+      <div
+        class="input-Area"
+      >
+        <div
+          class="input-group"
+        >
+          <div
+            class="inputBoxNew"
+          >
+            <i
+              class="icon icon-affiliate"
+            />
+            <input
+              data-testid="_ipt"
+              placeholder="ID đại lý/ Người giới thiệu (nếu có)"
+              type=""
+              value=""
+            />
+            <i
+              class="icon icon-information-solid"
+              data-testid="showTipBtn"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="Terms"
+      >
+        <div>
+          <input
+            data-testid="iAgree1"
+            id="joinTermsCheck"
+            type="checkbox"
+          />
+          <label
+            for="joinTermsCheck"
+          >
+            <div />
+          </label>
+          Tôi đồng ý với 
+            
+          <a
+            href="http://stag.bwing.com/SiteSkin/Bwing/Static/vn/TermsConditions.html"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Điều Khoản và Điều Kiện
+          </a>
+            
+          và
+           
+          <a
+            href="http://stag.bwing.com/SiteSkin/Bwing/Static/vn/RulesandRegulations.html"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Quy Tắc và Quy Định Đặt Cược
+          </a>
+            
+          của
+           
+          Bwing
+        </div>
+        <div>
+          <input
+            data-testid="iAgree2"
+            id="joinAgeCheck"
+            type="checkbox"
+          />
+          <label
+            for="joinAgeCheck"
+          >
+            <div />
+          </label>
+          Tôi xác nhận tôi đã trên 21 tuổi
+        </div>
+      </div>
+      <div
+        class="btn-group"
+      >
+        <button
+          data-testid="signUpBtn"
+        >
+          ĐĂNG KÝ
+        </button>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

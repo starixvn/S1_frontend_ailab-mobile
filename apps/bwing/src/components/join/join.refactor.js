@@ -209,7 +209,6 @@ const Join = () => {
 				msg = i18n.msg_PhoneExisted;
 			}
 		}
-
 		return { checked, msg };
 	};
 
@@ -434,6 +433,7 @@ const Join = () => {
 						col: "UserName",
 						info: "lbl_UsernameTooltip"
 					})}
+					testAttr="Username"
 				/>
 				<InputboxPWD
 					placeholder={i18n.lbl_Password}
@@ -446,6 +446,7 @@ const Join = () => {
 						col: "Password",
 						info: "lbl_PasswordTooltip"
 					})}
+					testAttr="Password"
 				/>
 				<div className="inputBox">
 					<Dropdown
@@ -477,8 +478,11 @@ const Join = () => {
 							col: "Phone",
 							info: "lbl_PhoneTooltip"
 						})}
+						testAttr="Phone"
 					/>
-					<div className="errortip open">{inputStatus.Phone.msg}</div>
+					<div className="errortip open" data-testid="Phone_msg">
+						{inputStatus.Phone.msg}
+					</div>
 				</div>
 				<Inputbox
 					icon="icon icon-affiliate"
@@ -495,6 +499,7 @@ const Join = () => {
 				/>
 				<div className="Terms">
 					<Checkbox
+						testAttr="iAgree1"
 						checked={userValue.termsCheck}
 						onChange={EditField.bind(this, { col: "termsCheck" })}
 						id="joinTermsCheck">
@@ -515,6 +520,7 @@ const Join = () => {
 						&nbsp; {i18n.lbl_Check18TC3}&nbsp;{config.siteName}
 					</Checkbox>
 					<Checkbox
+						testAttr="iAgree2"
 						id="joinAgeCheck"
 						checked={userValue.ageCheck}
 						onChange={EditField.bind(this, { col: "ageCheck" })}>
@@ -527,7 +533,9 @@ const Join = () => {
 					) : null}
 				</div>
 				<div className="btn-group">
-					<button onClick={clickSubmit}>{i18n.lbl_JoinNow}</button>
+					<button data-testid="signUpBtn" onClick={clickSubmit}>
+						{i18n.lbl_JoinNow}
+					</button>
 				</div>
 			</div>
 			<PromoPopup

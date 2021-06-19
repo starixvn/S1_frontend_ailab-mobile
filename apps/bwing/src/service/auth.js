@@ -26,7 +26,7 @@ export const LOGIN = async ({ userName, password, langId }, CallbackLogin) => {
 		platform = navigator.platform;
 		userAgent = navigator.userAgent;
 		screen = `${window.screen.width}:${window.screen.height}:${window.screen.colorDepth}`;
-		di = document.getElementById("__di").value;
+		di = document.getElementById("__di")?.value;
 	}
 
 	await api_UserLogin(langId, {

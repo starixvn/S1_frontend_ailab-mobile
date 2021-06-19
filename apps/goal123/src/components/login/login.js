@@ -181,6 +181,7 @@ const LoginPage = ({ ButtonTitle, hideBtn }) => {
 						col: "UserName",
 						info: "msg_UsernameReq"
 					})}
+					testAttr="Username"
 				/>
 				<InputboxPWD
 					placeholder={i18n.lbl_Password}
@@ -193,9 +194,11 @@ const LoginPage = ({ ButtonTitle, hideBtn }) => {
 						col: "Password",
 						info: "msg_PasswordReq"
 					})}
+					testAttr="Password"
 				/>
 				<div className="Terms">
 					<Link
+						data-testid="forgetpw"
 						to={path.forgetPassword.root}
 						onClick={handleloginPanel.bind(
 							this,
@@ -206,7 +209,9 @@ const LoginPage = ({ ButtonTitle, hideBtn }) => {
 						{i18n.lbl_ForgetPassword}?
 					</Link>
 				</div>
-				<button onClick={handleLogin}>{i18n.lbl_Login}</button>
+				<button data-testid="login_submit" onClick={handleLogin}>
+					{i18n.lbl_Login}
+				</button>
 			</div>
 		</>
 	);
