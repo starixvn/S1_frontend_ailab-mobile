@@ -49,7 +49,7 @@ export default () => {
 				}
 			});
 		}
-	}, [userInfo]);
+	}, [userInfo.isLogin]);
 
 	const _tpWalletArrs = tpWalletsList.map(t => {
 		return (
