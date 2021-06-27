@@ -119,9 +119,6 @@ export const passwordCheck = ({ val }) => {
 	if (!val) {
 		checked = false;
 		msg = "msg_PasswordReq";
-	} else if (val.length < 6 || val.length > 15) {
-		checked = false;
-		msg = "msg_PasswordLength";
 	} else if (!regx.test(val)) {
 		checked = false;
 		msg = "msg_PasswordVaildate";
