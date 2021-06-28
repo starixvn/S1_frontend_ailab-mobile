@@ -158,6 +158,7 @@ export default () => {
 					col: "oldPwd",
 					info: "msg_PasswordReq"
 				})}
+				testAttr="OldPWD"
 			/>
 			<Inputbox
 				placeholder={i18n.lbl_NewPassword}
@@ -170,12 +171,16 @@ export default () => {
 					col: "newPwd",
 					info: "msg_PasswordVaildate"
 				})}
+				testAttr="NewPWD"
 			/>
 			<div className="btn-group">
 				<Link className="blue" to={`/${path.member.root}`}>
 					{i18n.lbl_Back}
 				</Link>
-				<button className="lightBlue" onClick={clickSubmit}>
+				<button
+					className="lightBlue"
+					data-testid="submit_changePWD_btn"
+					onClick={clickSubmit}>
 					{i18n.lbl_Submit}
 				</button>
 			</div>

@@ -41,6 +41,7 @@ const Inputbox = ({
 				<div className="inputBoxNew">
 					{icon ? <i className={icon} /> : null}
 					<input
+						data-testid={`${testAttr}_ipt`}
 						type={inputType ?? "text"}
 						placeholder={placeholder}
 						onBlur={onBlur}
@@ -59,7 +60,7 @@ const Inputbox = ({
 				) : null}
 			</div>
 			{tip ? (
-				<div data-testid={`${testAttr}_tip`} className="tip open">
+				<div className="tip open" data-testid={`${testAttr}_msg`}>
 					{tip}
 				</div>
 			) : null}
@@ -121,6 +122,7 @@ export const IptStatus = ({ btnStatus, clickInfo }) => {
 					className="icon icon-information-solid"
 					data-testid="showTipBtn"
 					onClick={clickInfo}
+					data-testid="showTipBtn"
 				/>
 			);
 	}

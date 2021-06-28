@@ -111,8 +111,8 @@ describe("Join tests", () => {
 			fireEvent.blur(passwordInput);
 		});
 
-		const userNameError = tree.queryByTestId("Username_tip");
-		const pwError = tree.queryByTestId("Password_tip");
+		const userNameError = tree.queryByTestId("Username_msg");
+		const pwError = tree.queryByTestId("Password_msg");
 
 		expect(userNameError.innerHTML).not.toEqual("");
 		expect(pwError.innerHTML).not.toEqual("");
@@ -125,7 +125,7 @@ describe("Join tests", () => {
 			fireEvent.change(input, { target: { value: "Pet" } });
 			fireEvent.blur(input);
 		});
-		const userNameError = tree.queryByTestId("Username_tip");
+		const userNameError = tree.queryByTestId("Username_msg");
 		expect(userNameError.innerHTML).not.toEqual("");
 	});
 
@@ -138,7 +138,7 @@ describe("Join tests", () => {
 			});
 			fireEvent.blur(input);
 		});
-		const userNameError = tree.queryByTestId("Username_tip");
+		const userNameError = tree.queryByTestId("Username_msg");
 		expect(userNameError.innerHTML).not.toEqual("");
 	});
 
@@ -161,7 +161,7 @@ describe("Join tests", () => {
 		await waitFor(() => {
 			fireEvent.change(input, { target: { value: "sean11" } });
 			fireEvent.blur(input);
-			const userNameError = tree.queryByTestId("Username_tip");
+			const userNameError = tree.queryByTestId("Username_msg");
 			expect(userNameError.innerHTML).not.toEqual("");
 		});
 	});
@@ -173,7 +173,7 @@ describe("Join tests", () => {
 			fireEvent.change(input, { target: { value: "Pet" } });
 			fireEvent.blur(input);
 		});
-		const userNameError = tree.queryByTestId("Password_tip");
+		const userNameError = tree.queryByTestId("Password_msg");
 		expect(userNameError.innerHTML).not.toEqual("");
 	});
 
@@ -186,7 +186,7 @@ describe("Join tests", () => {
 			});
 			fireEvent.blur(input);
 		});
-		const userNameError = tree.queryByTestId("Password_tip");
+		const userNameError = tree.queryByTestId("Password_msg");
 		expect(userNameError.innerHTML).not.toEqual("");
 	});
 
@@ -197,7 +197,7 @@ describe("Join tests", () => {
 			fireEvent.change(input, { target: { value: "|}{" } });
 			fireEvent.blur(input);
 		});
-		const userNameError = tree.queryByTestId("Password_tip");
+		const userNameError = tree.queryByTestId("Password_msg");
 		expect(userNameError.innerHTML).not.toEqual("");
 	});
 
@@ -208,7 +208,7 @@ describe("Join tests", () => {
 			fireEvent.change(input, { target: { value: "fdsaf" } });
 			fireEvent.blur(input);
 		});
-		const userNameError = tree.queryByTestId("Password_tip");
+		const userNameError = tree.queryByTestId("Password_msg");
 		expect(userNameError.innerHTML).not.toEqual("");
 	});
 
@@ -217,7 +217,7 @@ describe("Join tests", () => {
 		await waitFor(() => {
 			fireEvent.click(showTipBtn);
 		});
-		const userNameTip = tree.queryByTestId("Username_tip");
+		const userNameTip = tree.queryByTestId("Username_msg");
 		expect(userNameTip.innerHTML).not.toEqual("");
 	});
 

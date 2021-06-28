@@ -170,9 +170,13 @@ export default () => {
 				btnStatus={inputStatus.checked}
 				tip={inputStatus.msg}
 				clickInfo={clickInfo}
+				testAttr="Password"
 			/>
 			<div className="btn-group">
-				<button className="submit" onClick={clickSubmit}>
+				<button
+					className="submit"
+					data-testid="submit_resetPwd_btn"
+					onClick={clickSubmit}>
 					{i18n.lbl_Submit}
 				</button>
 			</div>
