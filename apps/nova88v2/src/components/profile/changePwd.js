@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect, useRef } from "react";
 import { useNavigate } from "@reach/router";
 import { Link } from "@Router";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
-import path from "Path";
+import path from "../../path";
 import useTip from "../hook/useTip";
 import Inputbox from "../common/inputbox.password";
 import api from "../../service/api";
@@ -205,6 +205,7 @@ const ChangePwd = () => {
 				showTips={showTips.includes("oldPsw")}
 				value={userValueState.oldPsw}
 				showInfoIcon={false}
+				testAttr="OldPWD"
 			/>
 			<Inputbox
 				icon="icon-key"
@@ -221,12 +222,16 @@ const ChangePwd = () => {
 				showTips={showTips.includes("newPsw")}
 				value={userValueState.newPsw}
 				showInfoIcon={true}
+				testAttr="NewPWD"
 			/>
 			<div className="btn-group">
 				<Link className="white" to={`${path.profile.root}`}>
 					{i18n.lbl_Back}
 				</Link>
-				<button className="orange" onClick={clickSubmit}>
+				<button
+					className="orange"
+					onClick={clickSubmit}
+					data-testid="submit_changePWD_btn">
 					{i18n.lbl_Submit}
 				</button>
 			</div>

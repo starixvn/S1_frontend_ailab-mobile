@@ -4,11 +4,11 @@ import IptStatus from "./inputStatus";
 
 const Inputbox = props => {
 	return (
-		<div
-			className={props.infoModule ? "infoModule" : ""}
-			data-testid={props.testAttr}>
+		<div className={props.infoModule ? "infoModule" : ""}>
 			{props.showTips && (
-				<div className="inputInfo active">{props.tips}</div>
+				<div className="inputInfo active" data-testid="password_tip">
+					{props.tips}
+				</div>
 			)}
 			<div
 				className={`inputBox ${
@@ -16,6 +16,7 @@ const Inputbox = props => {
 				}`}>
 				<i className={`icon ${props.icon}`} />
 				<input
+					data-testid={`${props.testAttr}_ipt`}
 					type={props.inputType}
 					placeholder={props.placeholder}
 					onFocus={props.onFocus}
@@ -34,19 +35,23 @@ const Inputbox = props => {
 							!props.showPsw ? "icon-eye-blocked" : "icon-eye"
 						}`}
 						onClick={props.showPswHandler}
+						data-testid="Password_show"
 					/>
 					{props.showInfoIcon && (
 						<i
 							className="icon icon-information"
 							onClick={props.clickInfo}
+							data-testid="showTipBtn"
 						/>
 					)}
 				</div>
 			</div>
 			{props.checked === false ? (
 				<div
-					className={`tip${props.checked === false ? " active" : ""}`}
-					data-testid={props.testAttr}>
+					data-testid={`${props.testAttr}_msg`}
+					className={`tip${
+						props.checked === false ? " active" : ""
+					}`}>
 					{props.warningMsg}
 				</div>
 			) : null}
