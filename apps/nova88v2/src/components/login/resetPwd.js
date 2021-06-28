@@ -29,7 +29,6 @@ const ResetPwd = () => {
 
 	useEffect(() => {
 		const key = getUrlParameter("key");
-
 		if (
 			key &&
 			userInfo.isLogin === false &&
@@ -173,9 +172,13 @@ const ResetPwd = () => {
 				warningMsg={warning.msg}
 				clickInfo={() => showTipHandler("Password")}
 				showTips={showTips.includes("Password")}
+				testAttr="Password"
 			/>
 			<div className="btn-group">
-				<button className="orange" onClick={clickSubmit}>
+				<button
+					className="orange"
+					onClick={clickSubmit}
+					data-testid="submit_resetPwd_btn">
 					{i18n.lbl_Submit}
 				</button>
 			</div>

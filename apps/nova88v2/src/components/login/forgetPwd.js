@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
 import { useNavigate } from "@reach/router";
-import path from "Path";
+import path from "../../path";
 import useTip from "../hook/useTip";
 import Inputbox from "../common/inputbox.hint";
 import Layout from "../common/layout";
@@ -34,7 +34,6 @@ const ForgetPwd = () => {
 		let checked = true;
 		let message = "";
 		const regx = /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
-
 		if (val === "") {
 			checked = false;
 			message = i18n.msg_MailWrongFormat;
@@ -44,7 +43,6 @@ const ForgetPwd = () => {
 				message = i18n.msg_MailWrongFormat;
 			}
 		}
-
 		setWarning({ status: checked, msg: message });
 	};
 
@@ -88,9 +86,10 @@ const ForgetPwd = () => {
 		}
 	};
 
-	const ClickBack = () => {
-		navigate(`/${userInfo.langId}/${path.login.root}`);
-	};
+	// const ClickBack = () => {
+	// 	console.log(navigate);
+	// 	navigate(`/${userInfo.langId}/${path.login.root}`);
+	// };
 
 	return (
 		<>
@@ -106,12 +105,21 @@ const ForgetPwd = () => {
 				infoText={i18n.lbl_ForgetPwdHint}
 				clickInfo={() => showTipHandler("Email")}
 				showTips={showTips.includes("Email")}
+				testAttr="Email"
 			/>
 			<div className="btn-group">
-				<button className="white" onClick={ClickBack}>
+				<button
+					className="white"
+					onClick={() =>
+						navigate(`/${userInfo.langId}/${path.login.root}`)
+					}
+					data-testid="forgetPWD_clickback_btn">
 					{i18n.lbl_Back}
 				</button>
-				<button className="orange" onClick={clickSubmit}>
+				<button
+					className="orange"
+					onClick={clickSubmit}
+					data-testid="submit_forgetPWD_btn">
 					{i18n.lbl_Submit}
 				</button>
 			</div>

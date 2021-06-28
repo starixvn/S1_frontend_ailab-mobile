@@ -20,7 +20,7 @@ const Inputbox = ({
 	showInfoIcon
 }) => {
 	return (
-		<div className="infoModule" data-testid={testAttr}>
+		<div className="infoModule">
 			<div
 				className={`inputInfo ${showTips ? " active" : ""}`}
 				data-testid="inputInfo">
@@ -34,6 +34,7 @@ const Inputbox = ({
 					<i className={`icon ${icon}`} />
 				) : null}
 				<input
+					data-testid={`${testAttr}_ipt`}
 					disabled={disabled}
 					onBlur={onBlur}
 					placeholder={placeholder}
@@ -55,7 +56,7 @@ const Inputbox = ({
 			</div>
 			<div
 				className={`tip${btnStatus === false ? " active" : ""}`}
-				data-testid={testAttr}>
+				data-testid={`${testAttr}_msg`}>
 				{warningMsg}
 			</div>
 		</div>
