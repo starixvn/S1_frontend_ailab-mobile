@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 import React from "react";
 import renderer from "react-test-renderer";
-import BackBtn from "../../../components/deposit/backBtn";
+import BackBtn from "../backBtn";
 
 it("en renders correctly", () => {
 	const tree = renderer

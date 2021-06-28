@@ -125,12 +125,19 @@ export default () => {
 				tip={inputStatus.msg}
 				btnStatus={inputStatus.checked}
 				clickInfo={clickInfo}
+				testAttr="Email"
 			/>
 			<div className="btn-group">
-				<button className="cancel" onClick={ClickBack}>
+				<button
+					className="cancel"
+					data-testid="forgetPWD_clickback_btn"
+					onClick={ClickBack}>
 					{i18n.lbl_Back}
 				</button>
-				<button className="submit" onClick={clickSubmit}>
+				<button
+					className="submit"
+					data-testid="submit_forgetPWD_btn"
+					onClick={clickSubmit}>
 					{i18n.lbl_Submit}
 				</button>
 			</div>

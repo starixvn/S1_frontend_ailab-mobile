@@ -38,12 +38,13 @@ const Inputbox = ({
 						}`}
 						data-testid="showPsw"
 						onClick={showPswHandler}
+						data-testid={`${testAttr}_show`}
 					/>
 					<IptStatus btnStatus={btnStatus} clickInfo={clickInfo} />
 				</div>
 			</div>
 			{tip ? (
-				<div data-testid={`${testAttr}_tip`} className="tip open">
+				<div className="tip open" data-testid={`${testAttr}_msg`}>
 					{tip}
 				</div>
 			) : null}

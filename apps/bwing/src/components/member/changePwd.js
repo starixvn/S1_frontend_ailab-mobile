@@ -183,6 +183,7 @@ export default () => {
 					col: "oldPsw",
 					info: "msg_PasswordReq"
 				})}
+				testAttr="OldPWD"
 			/>
 			<Inputbox
 				placeholder={i18n.lbl_NewPassword}
@@ -195,12 +196,16 @@ export default () => {
 					col: "newPsw",
 					info: "msg_PasswordVaildate"
 				})}
+				testAttr="NewPWD"
 			/>
 			<div className="btn-group">
 				<Link className="cancel" to={`/${path.member.root}`}>
 					{i18n.lbl_Back.toUpperCase()}
 				</Link>
-				<button className="submit" onClick={clickSubmit}>
+				<button
+					className="submit"
+					data-testid="submit_changePWD_btn"
+					onClick={clickSubmit}>
 					{i18n.lbl_change_password_submit}
 				</button>
 			</div>

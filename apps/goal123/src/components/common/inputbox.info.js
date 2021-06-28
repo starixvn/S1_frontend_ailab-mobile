@@ -36,7 +36,7 @@ const Inputbox = ({
 				<IptStatus btnStatus={btnStatus} clickInfo={clickInfo} />
 			</div>
 			{tip ? (
-				<div className="tip" data-testid={`${testAttr}_tip`}>
+				<div className="tip" data-testid={`${testAttr}_msg`}>
 					{tip}
 				</div>
 			) : null}
@@ -55,7 +55,8 @@ Inputbox.defaultProps = {
 	tip: "",
 	btnStatus: null,
 	numberConvert: false,
-	clickInfo: () => null
+	clickInfo: () => null,
+	testAttr: ""
 };
 
 Inputbox.propTypes = {
@@ -71,7 +72,8 @@ Inputbox.propTypes = {
 	tip: PropTypes.string,
 	btnStatus: PropTypes.bool,
 	numberConvert: PropTypes.bool,
-	clickInfo: PropTypes.func
+	clickInfo: PropTypes.func,
+	testAttr: PropTypes.string
 };
 
 export const IptStatus = ({ btnStatus, clickInfo }) => {

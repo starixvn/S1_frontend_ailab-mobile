@@ -34,11 +34,12 @@ const Inputbox = ({
 					}`}
 					data-testid="showPsw"
 					onClick={showPswHandler}
+					data-testid={`${testAttr}_show`}
 				/>
 				<IptStatus btnStatus={btnStatus} clickInfo={clickInfo} />
 			</div>
 			{tip ? (
-				<div className="tip active" data-testid={`${testAttr}_tip`}>
+				<div className="tip active" data-testid={`${testAttr}_msg`}>
 					{tip}
 				</div>
 			) : null}
@@ -51,7 +52,8 @@ Inputbox.defaultProps = {
 	onBlur: () => null,
 	tip: "",
 	btnStatus: null,
-	clickInfo: () => null
+	clickInfo: () => null,
+	testAttr: ""
 };
 
 Inputbox.propTypes = {
@@ -61,7 +63,8 @@ Inputbox.propTypes = {
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 	tip: PropTypes.string,
 	btnStatus: PropTypes.bool,
-	clickInfo: PropTypes.func
+	clickInfo: PropTypes.func,
+	testAttr: PropTypes.string
 };
 
 export const IptStatus = ({ btnStatus, clickInfo }) => {
@@ -75,6 +78,7 @@ export const IptStatus = ({ btnStatus, clickInfo }) => {
 				<i
 					className="icon icon-information-solid"
 					onClick={clickInfo}
+					data-testid="showTipBtn"
 				/>
 			);
 	}

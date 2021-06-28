@@ -75,7 +75,7 @@ describe("Login tests", () => {
 			fireEvent.blur(input);
 		});
 
-		const msg = tree.getByTestId("Username_tip");
+		const msg = tree.getByTestId("Username_msg");
 
 		expect(msg.innerHTML).not.toEqual("");
 	});
@@ -87,7 +87,7 @@ describe("Login tests", () => {
 			fireEvent.blur(input);
 		});
 
-		const msg = tree.getByTestId("Username_tip");
+		const msg = tree.getByTestId("Username_msg");
 
 		expect(msg.innerHTML).not.toEqual("");
 	});
@@ -101,7 +101,7 @@ describe("Login tests", () => {
 			fireEvent.blur(input);
 		});
 
-		const msg = tree.getByTestId("Username_tip");
+		const msg = tree.getByTestId("Username_msg");
 
 		expect(msg.innerHTML).not.toEqual("");
 	});
@@ -113,7 +113,7 @@ describe("Login tests", () => {
 			fireEvent.blur(input);
 		});
 
-		const msg = tree.getByTestId("Password_tip");
+		const msg = tree.getByTestId("Password_msg");
 
 		expect(msg.innerHTML).not.toEqual("");
 	});
