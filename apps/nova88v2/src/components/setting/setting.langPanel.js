@@ -7,7 +7,7 @@ import api from "../../service/api";
 
 const languageList = () => {
 	const _siteInfo = siteInfo();
-	return _siteInfo.siteLangList.map(l => DefLangs[l]);
+	return _siteInfo.siteCountryList.map(l => DefLangs[l]);
 };
 
 const LanguageList = ({ userInfo, setUserInfo, i18n }) => {
@@ -65,47 +65,65 @@ const LanguageList = ({ userInfo, setUserInfo, i18n }) => {
 	};
 
 	const arr = _languageList.map(item => {
+		const isSelected = item.lang.some(l => l.value === userInfo.langId);
 		return (
 			<Item
-				key={`lang-${item.value}`}
-				value={item.value}
-				displayText={item.displayText}
+				key={`lang-${item.country}`}
+				lang={item.lang}
 				img={item.img}
+				country={item.country}
 				userLanguage={userInfo.langId}
 				selectLanguage={selectLanguage}
+				isSelected={isSelected}
 			/>
 		);
 	});
-	return <div className="country">{arr}</div>;
+	return <div className="countryNew">{arr}</div>;
 };
 
 LanguageList.propTypes = {
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	setUserInfo: PropTypes.func.isRequired
 };
 
-const Item = props => {
-	return (
+const Item = ({
+	lang,
+	img,
+	country,
+	userLanguage,
+	selectLanguage,
+	isSelected
+}) => {
+	const langArr = lang.map(l => (
 		<button
-			className={`${props.userLanguage === props.value ? "active" : ""}`}
-			onClick={props.selectLanguage.bind(null, props.value)}>
-			<img src={props.img} alt={props.value} />
-			<span>{props.displayText}</span>
+			key={`lang-${l.value}`}
+			className={userLanguage === l.value ? "active" : ""}
+			onClick={selectLanguage.bind(this, l.value)}>
+			{l.displayText}
 		</button>
+	));
+
+	return (
+		<div className={isSelected ? "active" : ""}>
+			<img src={img} alt={country} />
+			{langArr}
+		</div>
 	);
 };
 
 Item.defaultProps = {
 	userLanguage: null,
-	value: ""
+	isSelected: false
 };
 
 Item.propTypes = {
+	lang: PropTypes.arrayOf(PropTypes.object).isRequired,
 	userLanguage: PropTypes.string,
 	selectLanguage: PropTypes.func.isRequired,
 	img: PropTypes.string.isRequired,
-	value: PropTypes.string,
-	displayText: PropTypes.string.isRequired
+	country: PropTypes.string.isRequired,
+	isSelected: PropTypes.bool
 };
 
 export default LanguageList;

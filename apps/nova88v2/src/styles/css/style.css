@@ -6828,7 +6828,7 @@ span.important {
   transition: 0.7s;
 }
 
-.accordion > div > button:first-child.active ~ a, .accordion > div > button:first-child.active ~ button, .accordion > div > button:first-child.active ~ div.country {
+.accordion > div > button:first-child.active ~ a, .accordion > div > button:first-child.active ~ button, .accordion > div > button:first-child.active ~ div.country, .accordion > div > button:first-child.active ~ div.countryNew {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -6881,6 +6881,61 @@ span.important {
 }
 
 .accordion > div a.country > button.active img, .accordion > div button.country > button.active img, .accordion > div div.country > button.active img {
+  -webkit-box-shadow: 0 0 5px 5px #5574a7;
+          box-shadow: 0 0 5px 5px #5574a7;
+}
+
+.accordion > div a.countryNew, .accordion > div button.countryNew, .accordion > div div.countryNew {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  display: none;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.accordion > div a.countryNew > div, .accordion > div button.countryNew > div, .accordion > div div.countryNew > div {
+  background: transparent;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.accordion > div a.countryNew > div > button, .accordion > div button.countryNew > div > button, .accordion > div div.countryNew > div > button {
+  display: block;
+  border-right: 1px solid #5574A7;
+  background: transparent;
+  padding: 0 4vw;
+}
+
+.accordion > div a.countryNew > div > button:last-child, .accordion > div button.countryNew > div > button:last-child, .accordion > div div.countryNew > div > button:last-child {
+  border: 0;
+}
+
+.accordion > div a.countryNew > div img, .accordion > div button.countryNew > div img, .accordion > div div.countryNew > div img {
+  width: 10vw;
+  height: 10vw;
+  margin: 2vw;
+  border-radius: 100%;
+}
+
+.accordion > div a.countryNew > div.active, .accordion > div button.countryNew > div.active, .accordion > div div.countryNew > div.active {
+  font-weight: bold;
+}
+
+.accordion > div a.countryNew > div.active > button.active, .accordion > div button.countryNew > div.active > button.active, .accordion > div div.countryNew > div.active > button.active {
+  color: #F77A00;
+}
+
+.accordion > div a.countryNew > div.active img, .accordion > div button.countryNew > div.active img, .accordion > div div.countryNew > div.active img {
   -webkit-box-shadow: 0 0 5px 5px #5574a7;
           box-shadow: 0 0 5px 5px #5574a7;
 }
