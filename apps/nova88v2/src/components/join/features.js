@@ -5,6 +5,7 @@ const FeaturePanel = ({ langId }) => {
 	if (langId === "cs") return <CS />;
 	if (langId === "th") return <TH />;
 	if (langId === "id") return <ID />;
+	if (langId === "hi") return <HI />;
 	return <EN />;
 };
 
@@ -149,6 +150,42 @@ const ID = () => {
 					yang lengkap.
 				</li>
 				<li>Deposit dan penarikan cepat dengan berbagai pilihan.</li>
+			</ul>
+		</div>
+	);
+};
+
+const HI = () => {
+	return (
+		<div className="features">
+			<div className="title">
+				<span className="icon icon-star-full" />
+				FEATURES
+			</div>
+			<div className="title">MEMBER BENEFITS</div>
+			<ul>
+				<li>
+					<span>55%</span> NOVA88 स्टार्टर पैक
+				</li>
+				<li>
+					<span>68%</span> लाइव कैसीनो स्वागत बोनस
+				</li>
+				<li>
+					<span>100%</span> स्लॉट्स स्वागत बोनस
+				</li>
+				<li>
+					दैनिक पुनर्वितरण बोनस <span>20%</span> तक
+				</li>
+			</ul>
+			<div className="title">
+				NOVA88 वीआईपी विशेष बोनस और छूट का आनंद लें
+			</div>
+			<ul>
+				<li>
+					बेहतर ऑड्स और पूर्ण गेमप्ले अनुभव के साथ कई उत्पाद
+					प्लेटफॉर्म।
+				</li>
+				<li>कई जमा विकल्पों के साथ शीघ्र जमा और निकासी।</li>
 			</ul>
 		</div>
 	);

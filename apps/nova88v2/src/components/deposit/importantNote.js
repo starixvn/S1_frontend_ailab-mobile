@@ -3,10 +3,17 @@ import PropTypes from "prop-types";
 
 const ImportantNote = ({ langId, i18n }) => {
 	let content = null;
-	if (langId === "en") content = <EN />;
+	if (
+		langId === "en" ||
+		langId === "th_en" ||
+		langId === "id_en" ||
+		langId === "hi_en"
+	)
+		content = <EN />;
 	if (langId === "cs") content = <CS />;
 	if (langId === "th") content = <TH />;
 	if (langId === "id") content = <ID />;
+	if (langId === "hi") content = <HI />;
 
 	if (langId) {
 		return (
@@ -160,6 +167,43 @@ const ID = () => (
 				LIVE CHAT 24/7
 			</a>{" "}
 			kami jika transaksi Anda masih tertunda selama lebih dari 5 menit.
+		</li>
+	</ul>
+);
+
+const HI = () => (
+	<ul>
+		<li>
+			कृपया जमा करने से पहले कृपया नवीनतम सक्रिय जमा बैंक विवरण देखें।
+		</li>
+		<li>
+			<span>&quot;स्थानीय बैंक हस्तांतरण&quot;</span> जमा विकल्प का उपयोग
+			करने के लिए, कृपया लेनदेन में देरी से बचने के लिए लेनदेन जमा करने से
+			पहले हस्तांतरण करें।
+		</li>
+		<li>
+			जमाकर्ता का खाता नाम आपके पंजीकृत पूरे नाम से मेल खाना चाहिए। हम
+			तृतीय पक्ष/कंपनी खाते का उपयोग करके किए गए लेनदेन को प्रोत्साहित
+			नहीं करते हैं।
+		</li>
+		<li>
+			कृपया अपने ऑनलाइन लेनदेन में संदर्भ/टिप्पणी के रूप में
+			<span>&quot;NOVA88&quot;</span> या जुए से संबंधित कोई भी संवेदनशील
+			शब्द न भरें।
+		</li>
+		<li>
+			कृपया ध्यान दें कि किसी भी निकासी को संसाधित करने से पहले किए गए सभी
+			जमाओं के लिए 1x रोलओवर आवश्यक होगा।
+		</li>
+		<li>
+			यदि आपका लेनदेन अभी भी 5 मिनट से अधिक समय से लंबित है तो कृपया हमारे{" "}
+			<a
+				rel="noreferrer"
+				target="_blank"
+				href="https://direct.lc.chat/11638088/">
+				24/7 लाइवचैट
+			</a>{" "}
+			से संपर्क करें।
 		</li>
 	</ul>
 );

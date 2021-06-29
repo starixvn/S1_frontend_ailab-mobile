@@ -3,10 +3,17 @@ import PropTypes from "prop-types";
 
 const ImportantNote = ({ langId, i18n }) => {
 	let content = null;
-	if (langId === "en") content = <EN />;
+	if (
+		langId === "en" ||
+		langId === "th_en" ||
+		langId === "id_en" ||
+		langId === "hi_en"
+	)
+		content = <EN />;
 	if (langId === "cs") content = <CS />;
 	if (langId === "th") content = <TH />;
 	if (langId === "id") content = <ID />;
+	if (langId === "hi") content = <HI />;
 
 	if (langId) {
 		return (
@@ -168,6 +175,45 @@ const ID = () => (
 				LIVE CHAT 24/7
 			</a>{" "}
 			kami. Terima kasih.
+		</li>
+	</ul>
+);
+
+const HI = () => (
+	<ul>
+		<li>
+			यदि आपका लेन-देन 10 मिनट से अधिक समय से लंबित है, तो कृपया हमारी{" "}
+			<a
+				rel="noreferrer"
+				target="_blank"
+				href="https://direct.lc.chat/11638088/">
+				24/7 लाइवचैट
+			</a>{" "}
+			चैट से जांच करें।
+		</li>
+		<li>
+			निकासी बैंक खाते का नाम पंजीकृत पूरे नाम से मेल खाना चाहिए, सदस्य को
+			तीसरे पक्ष के बैंक खाते में निकासी की अनुमति नहीं है।
+		</li>
+		<li>
+			कुछ गेम प्रदाता को 15 से 30 मिनट की रिपोर्ट सिंक समय की आवश्यकता
+			होती है, कृपया आवश्यक सिंक समय के दौरान हमारे साथ रहें।
+		</li>
+		<li>
+			कृपया सुनिश्चित करें कि आपका आवश्यक टर्नओवर हासिल हो गया है, और
+			सिस्टम ऑटो रिजेक्ट से बचने के लिए 30 मिनट के बाद निकासी लेनदेन जमा
+			करें।
+		</li>
+		<li>
+			यदि कोई विसंगति है या आपके पास कोई अन्य निकासी पूछताछ हो सकती है, तो
+			कृपया हमारे{" "}
+			<a
+				rel="noreferrer"
+				target="_blank"
+				href="https://direct.lc.chat/11638088/">
+				24/7 लाइवचैट
+			</a>
+			से संपर्क करें। धन्यवाद।
 		</li>
 	</ul>
 );
