@@ -11,9 +11,12 @@ import { FooterBanner } from "../components/vip/footerBanner";
 import Header from "../components/header/header";
 import Footer from "../components/common/footer";
 import path from "../path";
+import { validImgLang } from "../components/common/common";
 
 const Banners = ({ langId }) => {
-	const rows = defBannersUrl({ langId }).map((b, bIdx) => (
+	const rows = defBannersUrl({
+		langId: validImgLang(langId)
+	}).map((b, bIdx) => (
 		<img
 			key={`VIPBanner-${bIdx}`}
 			src={b}

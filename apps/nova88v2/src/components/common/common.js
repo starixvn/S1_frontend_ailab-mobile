@@ -153,7 +153,11 @@ export const GetCurrencyName = ({ langId, currencyId, i18n }) => {
 		en: "MYR",
 		cs: "MYR",
 		id: "IDR",
-		th: "THB"
+		id_en: "IDR",
+		th: "THB",
+		th_en: "THB",
+		hi: "INR",
+		hi_en: "INR"
 	};
 
 	const currency = currencyId
@@ -161,4 +165,16 @@ export const GetCurrencyName = ({ langId, currencyId, i18n }) => {
 		: langMappingCurr[langId];
 
 	return currency;
+};
+
+export const validImgLang = langId => {
+	if (
+		langId !== "en" &&
+		langId !== "cs" &&
+		langId !== "th" &&
+		langId !== "id"
+	) {
+		return "en";
+	}
+	return langId;
 };

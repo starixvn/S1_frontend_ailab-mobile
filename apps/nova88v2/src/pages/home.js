@@ -21,7 +21,8 @@ import Bottom from "../components/home/bottom";
 import {
 	isEventPeriod,
 	readCookie,
-	setCookie
+	setCookie,
+	validImgLang
 } from "../components/common/common";
 import path from "../path";
 import Header from "../components/header/header";
@@ -112,7 +113,7 @@ const IndexPage = () => {
 						isOpen: true,
 						content: (
 							<img
-								src={`https://image.n88media.com/SiteSkin/img/euro/EURO-RACE-MONTHLY-WINNERS-${userInfo.langId.toUpperCase()}.jpg`}
+								src={`https://image.n88media.com/SiteSkin/img/euro/EURO-RACE-MONTHLY-WINNERS-${_langId.toUpperCase()}.jpg`}
 								alt="winner"
 							/>
 						)
@@ -125,6 +126,7 @@ const IndexPage = () => {
 			};
 
 			const cookieOfficialAnnounce = "OfficialAnnounce_cookie";
+			const _langId = validImgLang(userInfo.langId);
 			if (readCookie(cookieOfficialAnnounce)) {
 				RankingWinnerPopup();
 			} else {
@@ -133,7 +135,7 @@ const IndexPage = () => {
 					isOpen: true,
 					content: (
 						<img
-							src={`https://banner.n88media.com/img/nonlogin/novapopup-380x100_${userInfo.langId}.jpg`}
+							src={`https://banner.n88media.com/img/nonlogin/novapopup-380x100_${_langId}.jpg`}
 							alt="OfficialAnnounce"
 						/>
 					),
