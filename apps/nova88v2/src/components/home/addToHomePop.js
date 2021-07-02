@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import icon from "../../styles/img/icon_256_Nova88_1.png";
-import { setCookie, readCookie } from "../common/common";
+import { setCookie, readCookie, validImgLang } from "../common/common";
 
 const ua = window.navigator.userAgent;
 const iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
@@ -14,6 +14,7 @@ const isSafari =
 const iOSSafari = iOS && isSafari;
 
 const AddToHomePop = ({ i18n, userInfo }) => {
+	const _langId = validImgLang(userInfo.langId);
 	const [addToHomePop, setAddToHomePop] = useState(false);
 
 	useEffect(() => {
@@ -34,7 +35,7 @@ const AddToHomePop = ({ i18n, userInfo }) => {
 				<div>
 					{i18n.lbl_AddToHome_Hint}
 					<div>
-						<a href={`/ac/teaching_${userInfo.langId}.html`}>
+						<a href={`/ac/teaching_${_langId}.html`}>
 							{i18n.lbl_AddToHome_Tutorial}
 						</a>
 						<button onClick={clickNotShowing}>

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { setCookie, readCookie } from "../common/common";
 import { Link } from "../../route/link";
 import path from "../../path";
-import appIng from "../../styles/img/app/appicon.jpg";
+import appImg from "../../styles/img/app/appicon.jpg";
 
 const AppDownloadHint = ({ i18n, root }) => {
 	const [appHint, setAppHint] = useState(false);
@@ -22,7 +22,7 @@ const AppDownloadHint = ({ i18n, root }) => {
 	return root && appHint ? (
 		<div className="appdownload active">
 			<button className="icon icon-close" onClick={handleDownloadHint} />
-			<img src={appIng} alt={i18n.lbl_DownloadApp} />
+			<img src={appImg} alt={i18n.lbl_DownloadApp} />
 			<div>
 				<div>{i18n.lbl_DownloadAppNow}</div>
 				<div>{i18n.lbl_DownloadAppHint}</div>
