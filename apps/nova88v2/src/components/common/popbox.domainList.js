@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { userInfoContext, i18nContext } from "./context";
 import { cloudBannerImgURL } from "../../config";
+import { validImgLang } from "./common";
 
 const DomainListPop = ({ domainList }) => {
 	const { userInfo } = useContext(userInfoContext);
@@ -36,7 +37,9 @@ const DomainListPop = ({ domainList }) => {
 	return (
 		<div className="popTxt">
 			<img
-				src={`${cloudBannerImgURL}/img/backupDomain/backupDomain_${userInfo.langId}.jpg`}
+				src={`${cloudBannerImgURL}/img/backupDomain/backupDomain_${validImgLang(
+					userInfo.langId
+				)}.jpg`}
 				alt="STAY ACCESSIBLE Anytime, Anywhere"
 			/>
 			<div>{i18n.lbl_DearValuedCustomers}</div>

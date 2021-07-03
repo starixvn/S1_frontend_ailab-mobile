@@ -4,14 +4,17 @@ import { defPrize, defEuroTourBtns } from "./def";
 import EuroAgenda from "./euroAgenda";
 import { GET_LANG_ID } from "../../service/language";
 import { GetCurrencyName } from "../common/common";
+import { siteInfo } from "../../config";
 
 export const Prize = ({ currencyId, category, langId, i18n }) => {
 	const currency = GetCurrencyName({ langId, currencyId, i18n });
-	const _landId = GET_LANG_ID(langId);
+	const { siteDefaultLang } = siteInfo(langId);
+	const _langId = GET_LANG_ID(langId);
 
 	const prize = defPrize();
 	return (
-		prize[currency]?.[_landId]?.[category] ?? prize.MYR[_landId][category]
+		prize[currency]?.[_langId]?.[category] ??
+		prize.MYR[siteDefaultLang][category]
 	);
 };
 
