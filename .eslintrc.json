@@ -63,7 +63,8 @@
     "react/prop-types":["warn"],
     "react/no-did-update-set-state":["warn"],
     "react/no-unescaped-entities":["warn"],
-    "new-cap":["off"]
+    "new-cap":["off"],
+    "no-multi-spaces":["warn"]
   },
   "overrides": [
     {
