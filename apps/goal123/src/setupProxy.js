@@ -3,7 +3,13 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 
 module.exports = app => {
 	app.use(
-		["/api", "*/Cashier", "/SiteSkin"],
+		[
+			"/api",
+			"*/Cashier",
+			"/SiteSkin",
+			"*/entPage",
+			"*/liveStreamingEntPage"
+		],
 		createProxyMiddleware({
 			target: "https://stag.goal123.com",
 			changeOrigin: true
