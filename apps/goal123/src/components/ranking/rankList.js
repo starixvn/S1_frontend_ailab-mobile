@@ -14,6 +14,7 @@ const RankItem = ({ Ranking, userName, turnover, isCurrentUser, userRank }) => {
 			<li>
 				<RankImg Ranking={Ranking} />
 				{Ranking}
+				{userRank}
 			</li>
 			<li>{userName}</li>
 			<li>{number_format(turnover)}</li>
@@ -60,7 +61,7 @@ const RankItems = ({ datas, defPrize }) => {
 		return (
 			<RankItem
 				key={`rank-${userName}-${wTurnover}`}
-				Ranking={defPrize[idx]?.rank}
+				Ranking={defPrize[idx]?.rank ? idx + 1 : null}
 				userRank={idx === datas.length - 1 ? rank : null}
 				userName={userName}
 				turnover={wTurnover}
