@@ -29,8 +29,9 @@ const MysteryBox = ({ langId }) => {
 					/>
 				) : (
 					<img
-						src={userInfo.langId === "vn" ? eventImgVN : eventImg}
+						src={langId === "vn" ? eventImgVN : eventImg}
 						alt="Mystery Box"
+						className="mystery"
 					/>
 				)}
 			</Link>
