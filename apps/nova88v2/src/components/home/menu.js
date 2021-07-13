@@ -14,6 +14,7 @@ import {
 	defSpecialSetting,
 	open9wSports
 } from "../hook/useGotoGame";
+import path from "../../path";
 
 const Menu = ({ i18n, userInfo, setPopBox }) => {
 	const [selectedCol, setSelectedCol] = useState(defCol.sports);
@@ -183,6 +184,7 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 						handleLogin={handleLogin}
 						handleGoToGame={handleGoToGame}
 						isMaintain={maintainList?.includes(subItem.tpId)}
+						category={item.category}
 					/>
 				);
 			});
@@ -218,7 +220,8 @@ const SubGame = ({
 	userInfo,
 	handleLogin,
 	handleGoToGame,
-	isMaintain
+	isMaintain,
+	category
 }) => {
 	const showingEventIcon = getEventIcon({ eventIcon: game?.eventIcon });
 
@@ -282,7 +285,11 @@ const SubGame = ({
 	return game?.path ? (
 		<Link
 			className={isMaintain ? "active" : ""}
-			to={game.path}
+			to={
+				category === "slot"
+					? `${path.casino.root}/${game.tpId}`
+					: game.path
+			}
 			state={game.parameter}
 			tabIndex={isMaintain ? "-1" : 0}>
 			{showingEventIcon !== "" ? (
@@ -330,7 +337,8 @@ SubGame.propTypes = {
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
 	handleLogin: PropTypes.func.isRequired,
 	handleGoToGame: PropTypes.func.isRequired,
-	isMaintain: PropTypes.bool
+	isMaintain: PropTypes.bool,
+	category: PropTypes.string.isRequired
 };
 
 export default Menu;

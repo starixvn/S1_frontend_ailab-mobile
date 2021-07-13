@@ -5,7 +5,7 @@ import GameTypes from "./defGameType";
 import Dropdown from "../common/casino.dropdown";
 
 const SearchBox = props => {
-	const { TpList, searchText, provider, gameType } = props;
+	const { TpList, searchText, gameType } = props;
 	const { i18n } = useContext(i18nContext);
 
 	const gameTypeList = [
@@ -48,14 +48,6 @@ const SearchBox = props => {
 		props.EditSearchField(column, e.target.value);
 	};
 
-	const SelectProvider = idx => {
-		props.EditSearchField("provider", {
-			idx,
-			value: providerList[idx].id,
-			init: true
-		});
-	};
-
 	const SelectGameType = idx => {
 		props.EditSearchField("gameType", {
 			idx,
@@ -76,15 +68,6 @@ const SearchBox = props => {
 				</div>
 			</div>
 			<div className="infoModule parts">
-				<Dropdown
-					i18n={i18n}
-					mainKey="casino-gamePlatform"
-					options={providerList}
-					selectedIdx={provider?.idx}
-					onSelectItem={SelectProvider}
-					placeholder="Game Platform"
-					hideInfo={true}
-				/>
 				<Dropdown
 					i18n={i18n}
 					mainKey="casino-gamePlatform"
