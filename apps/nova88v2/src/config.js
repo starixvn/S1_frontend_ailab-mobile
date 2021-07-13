@@ -28,7 +28,7 @@ export const siteInfo = langId => {
 		siteDefaultLang: "en",
 		// siteLangList: ["en", "cs", "th_en", "th", "id_en", "id", "hi_en", "hi"],
 		// siteCountryList: ["MY", "TH", "ID", "HI"],
-		siteLangList: ["en", "cs", "th_en", "th", "id_en", "id"],
+		siteLangList: ["en", "cs", "th", "id"],
 		siteCountryList: ["MY", "TH", "ID"],
 		logo: "https://image.n88media.com/SiteSkin/img/logo.png",
 		description:

@@ -16,7 +16,7 @@ export default {
 		country: "TH",
 		img: th,
 		lang: [
-			{ value: "th_en", displayText: "English" },
+			// { value: "th_en", displayText: "English" },
 			{ value: "th", displayText: "ภาษาไทย" }
 		]
 	},
@@ -24,7 +24,7 @@ export default {
 		country: "ID",
 		img: id,
 		lang: [
-			{ value: "id_en", displayText: "English" },
+			// { value: "id_en", displayText: "English" },
 			{ value: "id", displayText: "Indonesian" }
 		]
 	}
