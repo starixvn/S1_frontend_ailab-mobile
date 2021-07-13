@@ -1920,3 +1920,55 @@ export const defCol = {
 	liveTV: "liveTV",
 	play: "play"
 };
+
+export const slotPlatfrom = [
+	{
+		...defGameInfo.Casino_JOKER,
+		path: path.casino.root,
+		imgName: "jk"
+	},
+	{
+		...defGameInfo.Casino_GPI,
+		path: path.casino.root,
+		imgName: "gp"
+	},
+	{
+		...defGameInfo.Casino_YGG,
+		path: path.casino.root,
+		imgName: "yg"
+	},
+	{
+		...defGameInfo.Casino_PP,
+		path: path.casino.root,
+		imgName: "pp"
+	},
+	{
+		...defGameInfo.Casino_SG,
+		path: path.casino.root,
+		imgName: "sg"
+	},
+	{
+		...defGameInfo.Casino_PG,
+		path: path.casino.root,
+		imgName: "pg"
+	},
+	{
+		...defGameInfo.Casino_CQ9,
+		path: path.casino.root,
+		imgName: "cq9"
+	},
+	{
+		...defGameInfo.casino_ICG,
+		path: path.casino.root,
+		imgName: "icg"
+	},
+	// {
+	// 	...defGameInfo.oneGame,
+	// 	imgName: "1g"
+	// },
+	{
+		...defGameInfo.Casino_PT,
+		path: path.casino.root,
+		imgName: "pt"
+	}
+];

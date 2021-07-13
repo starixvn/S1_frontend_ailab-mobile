@@ -11,7 +11,8 @@ const GamePanel = React.forwardRef((props, ref) => {
 		SetFavorite,
 		TpList,
 		i18n,
-		imgUrl
+		imgUrl,
+		maintainList
 	} = props;
 	const { userInfo } = useContext(userInfoContext);
 
@@ -22,7 +23,11 @@ const GamePanel = React.forwardRef((props, ref) => {
 		const t = TpList[g.tpId];
 		const _isFavorite = Favorite.includes(`${t.value}_${g.gameId}`);
 		games.push(
-			<div className="info" key={`casino-game-${t.value}-${g.gameId}`}>
+			<div
+				className={`info${
+					maintainList.includes(g.tpId) ? " star active" : ""
+				}`}
+				key={`casino-game-${t.value}-${g.gameId}`}>
 				{g.new ? <i className="icon icon-new" /> : null}
 				<img
 					onClick={SelectGame.bind(this, t.value, g)}
@@ -32,6 +37,9 @@ const GamePanel = React.forwardRef((props, ref) => {
 					alt={g.name[userInfo.langId] ?? g.name.en}
 				/>
 				<span>{t.name}</span>
+				{maintainList.includes(g.tpId) && (
+					<span className="under">{i18n.lbl_underMaintenance}</span>
+				)}
 				<span
 					onClick={SetFavorite.bind(this, t.value, g.gameId)}
 					className={`icon icon-star-${
@@ -43,7 +51,7 @@ const GamePanel = React.forwardRef((props, ref) => {
 	});
 
 	return games.length === 0 ? (
-		<div className="nodata icon icon-nodata">
+		<div className="nodata icon icon-nodata" ref={ref}>
 			<div className="txt-white">{i18n.msg_NoData}</div>
 		</div>
 	) : (
@@ -55,7 +63,8 @@ const GamePanel = React.forwardRef((props, ref) => {
 
 GamePanel.defaultProps = {
 	Games: [],
-	Favorite: []
+	Favorite: [],
+	maintainList: []
 };
 
 GamePanel.propTypes = {
@@ -67,7 +76,8 @@ GamePanel.propTypes = {
 	SetFavorite: PropTypes.func.isRequired,
 	TpList: PropTypes.objectOf(PropTypes.any).isRequired,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	imgUrl: PropTypes.string.isRequired
+	imgUrl: PropTypes.string.isRequired,
+	maintainList: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default GamePanel;

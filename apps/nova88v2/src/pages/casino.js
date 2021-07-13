@@ -5,6 +5,7 @@ import Slider from "../components/casino/slider";
 import defNav from "../components/casino/defNav";
 import Nav from "../components/casino/nav";
 import SearchBox from "../components/casino/searchBox";
+import GameProviders from "../components/casino/gameProviders";
 import Games from "../components/casino/games";
 import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
 import api from "../service/api";
@@ -16,6 +17,7 @@ import path from "../path";
 import { useGotoGame, defSpecialSetting } from "../components/hook/useGotoGame";
 import { GetMetaDataByPage } from "../components/seo/seo";
 import useSetTimeout from "../components/hook/useSetTimeout";
+import { slotPlatfrom } from "../datas/productList";
 
 const eachPageItem = 20;
 
@@ -37,10 +39,17 @@ class Panel extends React.Component {
 			},
 			favorite: [],
 			selNav: Object.keys(defNav)?.[props.selNavIdx ?? 0],
+			selProvider: props.tpId,
 			imgUrl: "",
+			maintainList: [],
 			listFixed: false
 		};
 		this.gameList = createRef(null);
+		const first = slotPlatfrom.find(el => el.tpId === props.tpId);
+		this.sorted = slotPlatfrom.filter(el => el.tpId !== first?.tpId);
+		if (first) {
+			this.sorted.unshift(first);
+		}
 	}
 
 	componentDidMount() {
@@ -90,6 +99,7 @@ class Panel extends React.Component {
 						{
 							tpList: _tpList,
 							gameDatas: games,
+							selProvider: this.props.tpId,
 							selNav: nav,
 							imgUrl
 						},
@@ -98,6 +108,29 @@ class Panel extends React.Component {
 						}
 					);
 				}
+			}
+		});
+		api.site.GetTpIds().then(
+			res => {
+				if (res.data.errorCode === 0) {
+					this.sorted = this.sorted.filter(el =>
+						res.data.data.includes(el.tpId)
+					);
+				}
+			},
+			() => {
+				setPopBox({
+					isOpen: true,
+					title: i18n.lbl_ImportantNote,
+					content: i18n.msg_ApiServerError
+				});
+			}
+		);
+
+		api.tp.GetTpMaintainList().then(res => {
+			if (res.data.errorCode === 0) {
+				const arr = res.data?.data.map(el => el.tpId);
+				this.setState({ maintainList: arr });
 			}
 		});
 
@@ -204,6 +237,20 @@ class Panel extends React.Component {
 		}
 	};
 
+	SelectProvider = key => {
+		this.setState(
+			prevState => ({
+				selProvider: prevState.selProvider !== key ? key : "all",
+				displayGames: null,
+				hasMore: true,
+				displayedCount: 0
+			}),
+			() => {
+				this.SetMoreItems();
+			}
+		);
+	};
+
 	CloseSelGame = () => {
 		if (this.mounted) {
 			this.setState({ selGameInfo: null });
@@ -216,6 +263,15 @@ class Panel extends React.Component {
 				selGameInfo: { tpId, ...gameInfo }
 			});
 		}
+	};
+
+	matchKeyword = (name, _keyword) => {
+		const keyword = _keyword.toLowerCase();
+		return (
+			Object.keys(name)?.filter(key => {
+				return name[key].toLowerCase().indexOf(keyword) !== -1;
+			}).length > 0
+		);
 	};
 
 	EditSearchField = (colName, v) => {
@@ -243,21 +299,20 @@ class Panel extends React.Component {
 		}
 	};
 
-	matchKeyword = (name, _keyword) => {
-		const keyword = _keyword.toLowerCase();
-		return (
-			Object.keys(name)?.filter(key => {
-				return name[key].toLowerCase().indexOf(keyword) !== -1;
-			}).length > 0
-		);
-	};
-
-	FilterGames = (_searchInfo, _nav, initGameDatas, initTpList) => {
+	FilterGames = (
+		_searchInfo,
+		_nav,
+		initGameDatas,
+		initTpList,
+		_selProvider
+	) => {
 		const _gameDatas = initGameDatas ?? this.state.gameDatas;
 		const _tpList = initTpList ?? this.state.tpList;
-		const tpId = _searchInfo.provider.value;
+
 		const gameCategory = _searchInfo.gameType.value;
 		const { searchText } = _searchInfo;
+
+		const existTpIdFilter = tpId => this.sorted.some(el => tpId == el.tpId);
 
 		const matchFilter = (_tpId, g) => {
 			const matchNav =
@@ -270,15 +325,16 @@ class Panel extends React.Component {
 			return (
 				matchNav &&
 				(gameCategory === null || g.category1 === gameCategory) &&
-				(searchText === "" || this.matchKeyword(g.name, searchText))
+				(searchText === "" || this.matchKeyword(g.name, searchText)) &&
+				(_selProvider === "all"
+					? existTpIdFilter(g.tpId)
+					: g.tpId === _selProvider)
 			);
 		};
 
 		return _gameDatas?.filter(g => {
 			const tp = _tpList[g.tpId];
-			return (
-				(tpId === null || tp.value === tpId) && matchFilter(tp.value, g)
-			);
+			return matchFilter(tp.value, g);
 		});
 	};
 
@@ -312,6 +368,7 @@ class Panel extends React.Component {
 	SetMoreItems = () => {
 		const _searchInfo = this.state.searchInfo;
 		const _selNav = this.state.selNav;
+		const _selProvider = this.state.selProvider;
 		const initGameDatas = this.state.gameDatas;
 		const initTpList = this.state.tpList;
 		const s = this.state;
@@ -321,7 +378,8 @@ class Panel extends React.Component {
 				_searchInfo,
 				_selNav,
 				initGameDatas,
-				initTpList
+				initTpList,
+				_selProvider
 			);
 			const restCount = _gameDatas?.length - s.displayedCount;
 			const loadCount =
@@ -369,6 +427,13 @@ class Panel extends React.Component {
 					className={`functionList${
 						this.state.listFixed ? " active" : ""
 					}`}>
+					<div className="partnerSelect">
+						<GameProviders
+							selNav={this.state.selProvider}
+							SelectNav={this.SelectProvider}
+							sorted={this.sorted}
+						/>
+					</div>
 					<Nav
 						selNav={this.state.selNav}
 						SelectNav={this.SelectNav}
@@ -380,7 +445,9 @@ class Panel extends React.Component {
 						DefaultProvider={this.props.tpId}
 					/>
 				</div>
+
 				<Games
+					maintainList={this.state.maintainList}
 					SelectGame={this.SelectGame}
 					Games={this.state.displayGames}
 					Favorite={this.state.favorite}
