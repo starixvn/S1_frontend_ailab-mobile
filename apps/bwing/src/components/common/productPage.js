@@ -12,6 +12,7 @@ import {
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import LinksPanel from "../home/links";
 import { productList } from "../../datas/defMenu";
+import { useGetTpMaintainList } from "../hook/useGetTpMaintainList";
 
 const ProductPage = ({ category, titleKey }) => {
 	const { userInfo } = useContext(userInfoContext);
@@ -19,6 +20,7 @@ const ProductPage = ({ category, titleKey }) => {
 	const { setNav } = useContext(navContext);
 	const [tpIds, setTpIds] = useState(null);
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
+	const { maintainList } = useGetTpMaintainList();
 	const _productList = productList(userInfo.langId)[category].items;
 	const isMountedRef = useRef(null);
 
@@ -71,6 +73,7 @@ const ProductPage = ({ category, titleKey }) => {
 		})
 		.map(game => {
 			let showingIcon = "";
+			const underMaintain = maintainList?.includes(game.tpId);
 			if (game.eventIcon) {
 				const eventInPeriodObj = game.eventIcon.find(
 					obj => obj.inPeriod === true
@@ -79,14 +82,25 @@ const ProductPage = ({ category, titleKey }) => {
 			}
 			return (
 				<button
-					className={`gameInBox${showingIcon}`}
+					className={`gameInBox${showingIcon}${
+						underMaintain ? " under" : ""
+					}`}
 					key={`Game-Panel-${game.displayKey}`}
-					onClick={ClickGame.bind(this, {
-						tpId: game.tpId,
-						gameId: game.gameId,
-						betType: game.betType,
-						useGotoGame: game.useGotoGame
-					})}>
+					onClick={
+						underMaintain
+							? () => null
+							: ClickGame.bind(this, {
+									tpId: game.tpId,
+									gameId: game.gameId,
+									betType: game.betType,
+									useGotoGame: game.useGotoGame
+							  })
+					}>
+					{underMaintain ? (
+						<div className="underBtn">
+							{i18n.lbl_underMaintenance}
+						</div>
+					) : null}
 					<img src={game.img} alt={game.displayKey} />
 					<p>
 						<span className={`icon icon-${game.icon}`} />

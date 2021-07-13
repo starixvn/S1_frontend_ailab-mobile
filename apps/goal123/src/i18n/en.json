@@ -557,5 +557,8 @@
 	"lbl_Skip":"Skip",
 	
 	"==============Important Notice==============":"",
-	"lbl_ImportantNotice":"IMPORTANT NOTICE"
+	"lbl_ImportantNotice":"IMPORTANT NOTICE",
+
+	"==============Under Maintenance==============":"",
+	"lbl_underMaintenance":"Under Maintenance"
 }

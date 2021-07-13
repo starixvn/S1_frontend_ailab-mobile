@@ -619,5 +619,8 @@
 	"lbl_Scan_to_Download":"Scan to Download",
 	"lbl_Installation_tutorial":"Installation tutorial",
 	"lbl_iOS_App_Trust_Authentication":"iOS App Trust Authentication",
-	"lbl_Once_Bwing_App_is_installed":"Once Bwing App is installed, tap Trust or complete the setting as below."
+	"lbl_Once_Bwing_App_is_installed":"Once Bwing App is installed, tap Trust or complete the setting as below.",
+	
+	"==============Under Maintenance==============":"",
+	"lbl_underMaintenance":"Under Maintenance"
 }
