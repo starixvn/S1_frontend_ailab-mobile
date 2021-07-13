@@ -8,6 +8,7 @@ import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { Autoplay } from "../common/swipperBanner";
 import { api_GetTpIds } from "../../service/api/site";
 import { useGotoGame } from "../hook/useGotoGame";
+import { useGetTpMaintainList } from "../hook/useGetTpMaintainList";
 
 const swipperParam = {
 	spaceBetween: 5,
@@ -25,6 +26,7 @@ const Menu = ({ i18n, userInfo }) => {
 	const [showingTpIds, setShowningTpIds] = useState(null);
 	const [selectedCol, setSelectedCol] = useState(defCol.hotGame);
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
+	const { maintainList } = useGetTpMaintainList();
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -116,6 +118,7 @@ const Menu = ({ i18n, userInfo }) => {
 					game={subItem}
 					clickGame={clickGame}
 					i18n={i18n}
+					underMaintain={maintainList?.includes(subItem.tpId)}
 				/>
 			);
 		});
@@ -145,15 +148,16 @@ Menu.propTypes = {
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
-const SubGame = ({ game, clickGame, i18n }) => {
+const SubGame = ({ game, clickGame, i18n, underMaintain }) => {
 	const showingEventIcon = getEventIcon({ eventIcon: game?.eventIcon });
 
 	if (game.path) {
 		return (
 			<Link
-				className="game"
+				className={`game${underMaintain ? " active" : ""}`}
 				key={game.spanText || game.spanTextKey}
 				to={`/${game.path}`}
+				style={underMaintain ? { pointerEvents: "none" } : null}
 				state={game.parameter}>
 				{showingEventIcon !== "" ? (
 					<i className={`icon ${showingEventIcon}`} />
@@ -162,18 +166,27 @@ const SubGame = ({ game, clickGame, i18n }) => {
 				<div className="title">
 					{game.spanText || i18n[game.spanTextKey]}
 				</div>
+				{underMaintain ? (
+					<div className="maintenance">
+						{i18n.lbl_underMaintenance}
+					</div>
+				) : null}
 			</Link>
 		);
 	}
 	return (
 		<div
-			className="game"
+			className={`game${underMaintain ? " active" : ""}`}
 			key={game.spanText || game.spanTextKey}
-			onClick={clickGame.bind(this, {
-				tpId: game.tpId,
-				gameId: game.gameId,
-				useGotoGame: game.useGotoGame
-			})}>
+			onClick={
+				underMaintain
+					? () => null
+					: clickGame.bind(this, {
+							tpId: game.tpId,
+							gameId: game.gameId,
+							useGotoGame: game.useGotoGame
+					  })
+			}>
 			{showingEventIcon !== "" ? (
 				<i className={`icon ${showingEventIcon}`} />
 			) : null}
@@ -181,14 +194,22 @@ const SubGame = ({ game, clickGame, i18n }) => {
 			<div className="title">
 				{game.spanText || i18n[game.spanTextKey]}
 			</div>
+			{underMaintain ? (
+				<div className="maintenance">{i18n.lbl_underMaintenance}</div>
+			) : null}
 		</div>
 	);
+};
+
+SubGame.defaultProps = {
+	underMaintain: false
 };
 
 SubGame.propTypes = {
 	game: PropTypes.objectOf(PropTypes.any).isRequired,
 	clickGame: PropTypes.func.isRequired,
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	underMaintain: PropTypes.bool
 };
 
 export default Menu;

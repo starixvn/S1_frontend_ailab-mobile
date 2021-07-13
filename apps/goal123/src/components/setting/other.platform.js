@@ -1,17 +1,27 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { Redirect } from "@reach/router";
 import PropTypes from "prop-types";
-import { navContext, defNavPanel, userInfoContext } from "../common/context";
+import {
+	navContext,
+	defNavPanel,
+	userInfoContext,
+	popBoxContext,
+	i18nContext
+} from "../common/context";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import config from "../../config";
 import { api_GetTpIds } from "../../service/api/site";
 import defPlatfrom from "./defPlatform";
+import { useGetTpMaintainList } from "../hook/useGetTpMaintainList";
 
 const Platform = ({ langId, isLogin }) => {
 	const { setNav } = useContext(navContext);
 	const { userInfo } = useContext(userInfoContext);
+	const { setPopBox } = useContext(popBoxContext);
+	const { i18n } = useContext(i18nContext);
 	const [redirectPath, setRedirectPath] = useState(null);
 	const [tpIds, setTpIds] = useState(null);
+	const { maintainList } = useGetTpMaintainList();
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -43,11 +53,18 @@ const Platform = ({ langId, isLogin }) => {
 	}, [userInfo.isLogin]);
 
 	const ClickItem = ({ _path, urlParams, tpId, gameId }) => {
+		const underMaintain = maintainList?.includes(tpId);
 		const loginCallback = () => {
 			setNav(defNavPanel.login);
 		};
 
-		if (_path) {
+		if (underMaintain) {
+			setPopBox({
+				isOpen: true,
+				title: i18n.lbl_ImportantNote,
+				content: i18n.lbl_underMaintenance
+			});
+		} else if (_path) {
 			setRedirectPath(`/${_path}${urlParams}`);
 		} else {
 			GET_ENTER_PAGE({

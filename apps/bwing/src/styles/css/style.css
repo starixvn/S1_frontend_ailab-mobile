@@ -3219,6 +3219,39 @@ a.clickBtn:before {
   top: 0;
 }
 
+.casino .slotList .info .underBtn {
+  display: none;
+  background-color: #a59f9f;
+  color: #fff;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  padding: 10px;
+  border-radius: 3px;
+  width: 60%;
+  text-align: center;
+  line-height: 12px;
+}
+
+.casino .slotList .info.under {
+  -webkit-filter: grayscale(1);
+}
+
+.casino .slotList .info.under .underBtn {
+  display: block;
+}
+
+.casino .slotList .info.under:hover {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.casino .slotList .info.under:hover .btnGroup {
+  display: none;
+}
+
 .casino .slotList .info span {
   color: #070e22;
   position: absolute;
@@ -6569,6 +6602,30 @@ span.important {
   color: #58cdff;
   font-size: 3vw;
   margin-right: 5px;
+}
+
+.gameInBox .underBtn {
+  display: none;
+  background-color: #a59f9f;
+  color: #fff;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  padding: 5px;
+  white-space: nowrap;
+  border-radius: 3px;
+  text-align: center;
+  z-index: 1;
+}
+
+.gameInBox.under img {
+  -webkit-filter: grayscale(1);
+}
+
+.gameInBox.under .underBtn {
+  display: block;
 }
 
 .guided {
@@ -10247,7 +10304,8 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  background: url(../img/download/downloanBG.png) no-repeat bottom center;
+  height: 1210px;
+  background: url(../img/download/downloanBG.png) no-repeat center;
   background-size: cover;
 }
 
@@ -10374,6 +10432,7 @@ span.important {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #3ca3ff), to(#175de6));
   background: linear-gradient(to bottom, #3ca3ff 1%, #175de6 100%);
   color: #fff;
+  font-size: 18px;
 }
 
 .downloadArea .downloadB {
@@ -10395,7 +10454,7 @@ span.important {
 .downloadArea .downloadB h1 {
   font-size: 40px;
   font-weight: bold;
-  margin: 10px 0 50px 0;
+  margin: 50px 0 50px 0;
   text-transform: uppercase;
 }
 

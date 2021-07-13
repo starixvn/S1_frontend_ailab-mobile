@@ -558,5 +558,9 @@
 	"lbl_Skip":"Bỏ qua",
 	
 	"==============Important Notice==============":"",
-	"lbl_ImportantNotice":"THÔNG BÁO QUAN TRỌNG"
+	"lbl_ImportantNotice":"THÔNG BÁO QUAN TRỌNG",
+
+	
+	"==============Under Maintenance==============":"",
+	"lbl_underMaintenance":"Đang bảo trì"
 }
