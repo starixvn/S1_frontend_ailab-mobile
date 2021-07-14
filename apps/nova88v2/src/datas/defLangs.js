@@ -2,13 +2,22 @@ import ch from "../styles/img/ch.jpg";
 import th from "../styles/img/th.jpg";
 // import hi from "../styles/img/in.jpg";
 import id from "../styles/img/id.jpg";
+import en from "../styles/img/en.jpg";
 
 export default {
+	EN: {
+		country: "EN",
+		img: en,
+		lang: [
+			{ value: "en", displayText: "English" }
+			// { value: "cs", displayText: "简体中文" }
+		]
+	},
 	MY: {
 		country: "MY",
 		img: ch,
 		lang: [
-			{ value: "en", displayText: "English" },
+			// { value: "en", displayText: "English" },
 			{ value: "cs", displayText: "简体中文" }
 		]
 	},
