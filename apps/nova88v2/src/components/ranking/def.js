@@ -140,23 +140,23 @@ export const defPrize = () => ({
 		cs: {
 			[defEuroTourBtns.FinalTournament.value]: [
 				{
-					rank: "冠军",
+					rank: "xi*******23",
 					prize: "HUBLOT Big Bang Gold Ceramic"
 				},
 				{
-					rank: "亚军",
+					rank: "an***ew",
 					prize: `HUBLOT Classic Fusion Aerofusion Chronograph Titanium `
 				},
 				{
-					rank: "季军",
+					rank: "Ch****un",
 					prize: `HUBLOT Classic Fusion Chronograph Titanium Blue `
 				},
-				{ rank: "殿军", prize: `MYR 18,000` },
-				{ rank: "第五名", prize: `MYR 15,000` },
-				{ rank: "第六名", prize: `MYR 13,000` },
-				{ rank: "第七名", prize: `MYR 10,000` },
-				{ rank: "第八名", prize: `MYR 8,000` },
-				{ rank: "第九名", prize: `MYR 5,000` },
+				{ rank: "en*****12", prize: `MYR 18,000` },
+				{ rank: "in******ah", prize: `MYR 15,000` },
+				{ rank: "ed***00", prize: `MYR 13,000` },
+				{ rank: "ch**ai", prize: `MYR 10,000` },
+				{ rank: "qq******99", prize: `MYR 8,000` },
+				{ rank: "Ho***ig", prize: `MYR 5,000` },
 				{ rank: "第十名" }
 			],
 			[defEuroTourBtns.MonthlyTournament.value]: [
@@ -171,23 +171,23 @@ export const defPrize = () => ({
 		en: {
 			[defEuroTourBtns.FinalTournament.value]: [
 				{
-					rank: "CHAMPION",
+					rank: "xi*******23",
 					prize: "HUBLOT Big Bang Gold Ceramic"
 				},
 				{
-					rank: "2nd Runner Up",
+					rank: "an***ew",
 					prize: `HUBLOT Classic Fusion Aerofusion Chronograph Titanium `
 				},
 				{
-					rank: "3rd Runner Up",
+					rank: "Ch****un",
 					prize: `HUBLOT Classic Fusion Chronograph Titanium Blue `
 				},
-				{ rank: "4th Runner Up", prize: `MYR 18,000` },
-				{ rank: "5th Runner Up", prize: `MYR 15,000` },
-				{ rank: "6th Runner Up", prize: `MYR 13,000` },
-				{ rank: "7th Runner Up", prize: `MYR 10,000` },
-				{ rank: "8th Runner Up", prize: `MYR 8,000` },
-				{ rank: "9th Runner Up", prize: `MYR 5,000` },
+				{ rank: "en*****12", prize: `MYR 18,000` },
+				{ rank: "in******ah", prize: `MYR 15,000` },
+				{ rank: "ed***00", prize: `MYR 13,000` },
+				{ rank: "ch**ai", prize: `MYR 10,000` },
+				{ rank: "qq******99", prize: `MYR 8,000` },
+				{ rank: "Ho***ig", prize: `MYR 5,000` },
 				{ rank: "10th Runner Up" }
 			],
 			[defEuroTourBtns.MonthlyTournament.value]: [
@@ -202,23 +202,23 @@ export const defPrize = () => ({
 		id: {
 			[defEuroTourBtns.FinalTournament.value]: [
 				{
-					rank: "PEMENANG",
+					rank: "xi*******23",
 					prize: "HUBLOT Big Bang Gold Ceramic"
 				},
 				{
-					rank: "Juara 2",
+					rank: "an***ew",
 					prize: `HUBLOT Classic Fusion Aerofusion Chronograph Titanium `
 				},
 				{
-					rank: "Juara 3",
+					rank: "Ch****un",
 					prize: `HUBLOT Classic Fusion Chronograph Titanium Blue `
 				},
-				{ rank: "Juara 4", prize: `MYR 18,000` },
-				{ rank: "Juara 5", prize: `MYR 15,000` },
-				{ rank: "Juara 6", prize: `MYR 13,000` },
-				{ rank: "Juara 7", prize: `MYR 10,000` },
-				{ rank: "Juara 8", prize: `MYR 8,000` },
-				{ rank: "Juara 9", prize: `MYR 5,000` },
+				{ rank: "en*****12", prize: `MYR 18,000` },
+				{ rank: "in******ah", prize: `MYR 15,000` },
+				{ rank: "ed***00", prize: `MYR 13,000` },
+				{ rank: "ch**ai", prize: `MYR 10,000` },
+				{ rank: "qq******99", prize: `MYR 8,000` },
+				{ rank: "Ho***ig", prize: `MYR 5,000` },
 				{ rank: "Juara 10" }
 			],
 			[defEuroTourBtns.MonthlyTournament.value]: [
@@ -233,23 +233,23 @@ export const defPrize = () => ({
 		th: {
 			[defEuroTourBtns.FinalTournament.value]: [
 				{
-					rank: "รางวัลชนะเลิศ",
+					rank: "xi*******23",
 					prize: "HUBLOT Big Bang Gold Ceramic"
 				},
 				{
-					rank: "รองชนะเลิศอันดับ 1",
+					rank: "an***ew",
 					prize: `HUBLOT Classic Fusion Aerofusion Chronograph Titanium `
 				},
 				{
-					rank: "รองชนะเลิศอันดับ 2",
+					rank: "Ch****un",
 					prize: `HUBLOT Classic Fusion Chronograph Titanium Blue `
 				},
-				{ rank: "รองชนะเลิศอันดับ 3", prize: `MYR 18,000` },
-				{ rank: "รองชนะเลิศอันดับ 4", prize: `MYR 15,000` },
-				{ rank: "รองชนะเลิศอันดับ 5", prize: `MYR 13,000` },
-				{ rank: "รองชนะเลิศอันดับ 6", prize: `MYR 10,000` },
-				{ rank: "รองชนะเลิศอันดับ 7", prize: `MYR 8,000` },
-				{ rank: "รองชนะเลิศอันดับ 8", prize: `MYR 5,000` },
+				{ rank: "en*****12", prize: `MYR 18,000` },
+				{ rank: "in******ah", prize: `MYR 15,000` },
+				{ rank: "ed***00", prize: `MYR 13,000` },
+				{ rank: "ch**ai", prize: `MYR 10,000` },
+				{ rank: "qq******99", prize: `MYR 8,000` },
+				{ rank: "Ho***ig", prize: `MYR 5,000` },
 				{ rank: "รองชนะเลิศอันดับ 9" }
 			],
 			[defEuroTourBtns.MonthlyTournament.value]: [
@@ -270,7 +270,7 @@ export const defPrize = () => ({
 				{ rank: "季军", prize: `LOGAM MULIA 50g` },
 				{ rank: "殿军", prize: `IDR 35.000.000` },
 				{ rank: "第五名", prize: `IDR 30.000.000` },
-				{ rank: "第六名", prize: `IDR 25.000.000` },
+				{ rank: "He******ah", prize: `IDR 25.000.000` },
 				{ rank: "第七名", prize: `IDR 15.000.000` },
 				{ rank: "第八名", prize: `IDR 8.000.000` },
 				{ rank: "第九名", prize: `IDR 5.000.000` },
@@ -289,7 +289,7 @@ export const defPrize = () => ({
 				{ rank: "3rd Runner Up", prize: `LOGAM MULIA 50g` },
 				{ rank: "4th Runner Up", prize: `IDR 35.000.000` },
 				{ rank: "5th Runner Up", prize: `IDR 30.000.000` },
-				{ rank: "6th Runner Up", prize: `IDR 25.000.000` },
+				{ rank: "He******ah", prize: `IDR 25.000.000` },
 				{ rank: "7th Runner Up", prize: `IDR 15.000.000` },
 				{ rank: "8th Runner Up", prize: `IDR 8.000.000` },
 				{ rank: "9th Runner Up", prize: `IDR 5.000.000` },
@@ -308,7 +308,7 @@ export const defPrize = () => ({
 				{ rank: "Juara 3", prize: `LOGAM MULIA 50g` },
 				{ rank: "Juara 4", prize: `IDR 35.000.000` },
 				{ rank: "Juara 5", prize: `IDR 30.000.000` },
-				{ rank: "Juara 6", prize: `IDR 25.000.000` },
+				{ rank: "He******ah", prize: `IDR 25.000.000` },
 				{ rank: "Juara 7", prize: `IDR 15.000.000` },
 				{ rank: "Juara 8", prize: `IDR 8.000.000` },
 				{ rank: "Juara 9", prize: `IDR 5.000.000` },
@@ -327,7 +327,7 @@ export const defPrize = () => ({
 				{ rank: "รองชนะเลิศอันดับ 2", prize: `LOGAM MULIA 50g` },
 				{ rank: "รองชนะเลิศอันดับ 3", prize: `IDR 35.000.000` },
 				{ rank: "รองชนะเลิศอันดับ 4", prize: `IDR 30.000.000` },
-				{ rank: "รองชนะเลิศอันดับ 5", prize: `IDR 25.000.000` },
+				{ rank: "He******ah", prize: `IDR 25.000.000` },
 				{ rank: "รองชนะเลิศอันดับ 6", prize: `IDR 15.000.000` },
 				{ rank: "รองชนะเลิศอันดับ 7", prize: `IDR 8.000.000` },
 				{ rank: "รองชนะเลิศอันดับ 8", prize: `IDR 5.000.000` },
@@ -344,14 +344,14 @@ export const defPrize = () => ({
 		cs: {
 			[defEuroTourBtns.FinalTournament.value]: [
 				{ rank: "冠军", prize: "THB 80,000 " },
-				{ rank: "亚军", prize: `THB 50,000` },
-				{ rank: "季军", prize: `THB 35,000` },
+				{ rank: "pt****60", prize: `THB 50,000` },
+				{ rank: "Pa**rn", prize: `THB 35,000` },
 				{ rank: "殿军", prize: `THB 30,000` },
-				{ rank: "第五名", prize: `THB 25,000` },
-				{ rank: "第六名", prize: `THB 20,000` },
-				{ rank: "第七名", prize: `THB 15,000` },
-				{ rank: "第八名", prize: `THB 10,000` },
-				{ rank: "第九名", prize: `THB 5,000` },
+				{ rank: "Th********75", prize: `THB 25,000` },
+				{ rank: "ro*******in", prize: `THB 20,000` },
+				{ rank: "oa*****99", prize: `THB 15,000` },
+				{ rank: "Th****st", prize: `THB 10,000` },
+				{ rank: "Hi**gu", prize: `THB 5,000` },
 				{ rank: "第十名" }
 			],
 			[defEuroTourBtns.MonthlyTournament.value]: [
@@ -363,14 +363,14 @@ export const defPrize = () => ({
 		en: {
 			[defEuroTourBtns.FinalTournament.value]: [
 				{ rank: "CHAMPION", prize: "THB 80,000 " },
-				{ rank: "2nd Runner Up", prize: `THB 50,000` },
-				{ rank: "3rd Runner Up", prize: `THB 35,000` },
+				{ rank: "pt****60", prize: `THB 50,000` },
+				{ rank: "Pa**rn", prize: `THB 35,000` },
 				{ rank: "4th Runner Up", prize: `THB 30,000` },
-				{ rank: "5th Runner Up", prize: `THB 25,000` },
-				{ rank: "6th Runner Up", prize: `THB 20,000` },
-				{ rank: "7th Runner Up", prize: `THB 15,000` },
-				{ rank: "8th Runner Up", prize: `THB 10,000` },
-				{ rank: "9th Runner Up", prize: `THB 5,000` },
+				{ rank: "Th********75", prize: `THB 25,000` },
+				{ rank: "ro*******in", prize: `THB 20,000` },
+				{ rank: "oa*****99", prize: `THB 15,000` },
+				{ rank: "Th****st", prize: `THB 10,000` },
+				{ rank: "Hi**gu", prize: `THB 5,000` },
 				{ rank: "10th" }
 			],
 			[defEuroTourBtns.MonthlyTournament.value]: [
@@ -382,14 +382,14 @@ export const defPrize = () => ({
 		id: {
 			[defEuroTourBtns.FinalTournament.value]: [
 				{ rank: "PEMENANG", prize: "THB 80,000 " },
-				{ rank: "Juara 2", prize: `THB 50,000` },
-				{ rank: "Juara 3", prize: `THB 35,000` },
+				{ rank: "pt****60", prize: `THB 50,000` },
+				{ rank: "Pa**rn", prize: `THB 35,000` },
 				{ rank: "Juara 4", prize: `THB 30,000` },
-				{ rank: "Juara 5", prize: `THB 25,000` },
-				{ rank: "Juara 6", prize: `THB 20,000` },
-				{ rank: "Juara 7", prize: `THB 15,000` },
-				{ rank: "Juara 8", prize: `THB 10,000` },
-				{ rank: "Juara 9", prize: `THB 5,000` },
+				{ rank: "Th********75", prize: `THB 25,000` },
+				{ rank: "ro*******in", prize: `THB 20,000` },
+				{ rank: "oa*****99", prize: `THB 15,000` },
+				{ rank: "Th****st", prize: `THB 10,000` },
+				{ rank: "Hi**gu", prize: `THB 5,000` },
 				{ rank: "Juara 10" }
 			],
 			[defEuroTourBtns.MonthlyTournament.value]: [
@@ -401,14 +401,14 @@ export const defPrize = () => ({
 		th: {
 			[defEuroTourBtns.FinalTournament.value]: [
 				{ rank: "รางวัลชนะเลิศ", prize: "THB 80,000 " },
-				{ rank: "รองชนะเลิศอันดับ 1", prize: `THB 50,000` },
-				{ rank: "รองชนะเลิศอันดับ 2", prize: `THB 35,000` },
+				{ rank: "pt****60", prize: `THB 50,000` },
+				{ rank: "Pa**rn", prize: `THB 35,000` },
 				{ rank: "รองชนะเลิศอันดับ 3", prize: `THB 30,000` },
-				{ rank: "รองชนะเลิศอันดับ 4", prize: `THB 25,000` },
-				{ rank: "รองชนะเลิศอันดับ 5", prize: `THB 20,000` },
-				{ rank: "รองชนะเลิศอันดับ 6", prize: `THB 15,000` },
-				{ rank: "รองชนะเลิศอันดับ 7", prize: `THB 10,000` },
-				{ rank: "รองชนะเลิศอันดับ 8", prize: `THB 5,000` },
+				{ rank: "Th********75", prize: `THB 25,000` },
+				{ rank: "ro*******in", prize: `THB 20,000` },
+				{ rank: "oa*****99", prize: `THB 15,000` },
+				{ rank: "Th****st", prize: `THB 10,000` },
+				{ rank: "Hi**gu", prize: `THB 5,000` },
 				{ rank: "รองชนะเลิศอันดับ 9" }
 			],
 			[defEuroTourBtns.MonthlyTournament.value]: [

@@ -141,7 +141,7 @@ export const defPrize = () => ({
 		vn: {
 			[defEuroTourBtns.FinalTournament.value]: [
 				{
-					rank: "VÔ ĐỊCH",
+					rank: "Ad***13",
 					prize: "VND 118,888,000"
 				},
 				{
@@ -149,15 +149,15 @@ export const defPrize = () => ({
 					prize: `VND 78,888,000 `
 				},
 				{
-					rank: "Giải Nhì",
+					rank: "HC******90",
 					prize: `VND 38,888,000 `
 				},
-				{ rank: "Giải Ba", prize: `VND 28,888,000` },
-				{ rank: "Giải Bốn", prize: `VND 23,888,000` },
-				{ rank: "Giải Năm", prize: `VND 19,888,000` },
-				{ rank: "Giải Sáu", prize: `VND 15,888,000` },
-				{ rank: "Giải Bảy", prize: `VND 11,888,000` },
-				{ rank: "Giải Tám", prize: `VND 9,888,000` },
+				{ rank: "Ph**********ng", prize: `VND 28,888,000` },
+				{ rank: "At**21", prize: `VND 23,888,000` },
+				{ rank: "Kh****19", prize: `VND 19,888,000` },
+				{ rank: "Mt****35", prize: `VND 15,888,000` },
+				{ rank: "ga******9k", prize: `VND 11,888,000` },
+				{ rank: "Hy****on", prize: `VND 9,888,000` },
 				{ rank: "Giải Tám" }
 			],
 			[defEuroTourBtns.MonthlyTournament.value]: [
@@ -172,7 +172,7 @@ export const defPrize = () => ({
 		en: {
 			[defEuroTourBtns.FinalTournament.value]: [
 				{
-					rank: "CHAMPION",
+					rank: "Ad***13",
 					prize: "VND 118,888,000"
 				},
 				{
@@ -180,15 +180,15 @@ export const defPrize = () => ({
 					prize: `VND 78,888,000 `
 				},
 				{
-					rank: "2nd Runner Up",
+					rank: "HC******90",
 					prize: `VND 38,888,000 `
 				},
-				{ rank: "3rd Runner Up", prize: `VND 28,888,000` },
-				{ rank: "4th Runner Up", prize: `VND 23,888,000` },
-				{ rank: "5th Runner Up", prize: `VND 19,888,000` },
-				{ rank: "6th Runner Up", prize: `VND 15,888,000` },
-				{ rank: "7th Runner Up", prize: `VND 11,888,000` },
-				{ rank: "8th Runner Up", prize: `VND 9,888,000` },
+				{ rank: "Ph**********ng", prize: `VND 28,888,000` },
+				{ rank: "At**21", prize: `VND 23,888,000` },
+				{ rank: "Kh****19", prize: `VND 19,888,000` },
+				{ rank: "Mt****35", prize: `VND 15,888,000` },
+				{ rank: "ga******9k", prize: `VND 11,888,000` },
+				{ rank: "Hy****on", prize: `VND 9,888,000` },
 				{ rank: "9th Runner Up" }
 			],
 			[defEuroTourBtns.MonthlyTournament.value]: [
