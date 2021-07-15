@@ -7437,6 +7437,15 @@ span.important {
   margin-right: 0;
 }
 
+.eventImg .team .gameName img {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  top: -5px;
+  width: 9%;
+}
+
 .eventImg .teamName {
   width: 100%;
   position: absolute;
@@ -10692,5 +10701,155 @@ span.important {
 
 .inputInfo.active {
   display: block;
+}
+
+.partnerSelect {
+  overflow: scroll;
+  width: 100%;
+  background: #36394d;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 0;
+  margin: 4vw 0 0;
+}
+
+.partnerSelect button {
+  min-width: 30.5vw;
+  padding: 0 1vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 3vw;
+  border-radius: 0px;
+  -webkit-filter: brightness(0.5);
+          filter: brightness(0.5);
+}
+
+.partnerSelect button div {
+  margin-top: -1vw;
+}
+
+.partnerSelect button img {
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  height: 12vw;
+}
+
+.partnerSelect button.active {
+  background: #58cdff;
+  color: white;
+  -webkit-filter: none;
+          filter: none;
+}
+
+.partnerSelect button.active img {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+.slotFunctionNew {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  opacity: 0;
+  z-index: 5;
+}
+
+.slotFunctionNew .icon-cancel-circle {
+  position: absolute;
+  right: 1vw;
+  top: 1vw;
+  color: #000;
+  font-size: 4vw;
+}
+
+.slotFunctionNew.open {
+  visibility: visible;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  opacity: 1;
+}
+
+.slotFunctionNew .title {
+  font-size: 4vw;
+  margin: 0 0 0 5vw;
+  padding-bottom: 2vw;
+  color: #000;
+}
+
+.slotFunctionNew > div {
+  background: #fff;
+  position: relative;
+  width: 85%;
+  margin: 50vw auto 0;
+  border-radius: 5px;
+}
+
+.slotFunctionNew > div .content {
+  text-align: center;
+  padding: 5vw 5vw 0;
+}
+
+.slotFunctionNew > div .content img {
+  width: 100%;
+  max-width: 425px;
+  -webkit-filter: brightness(0.5);
+          filter: brightness(0.5);
+  border-radius: 5px;
+}
+
+.slotFunctionNew > div span.icon {
+  position: absolute;
+  right: 5vw;
+  bottom: 2vw;
+  color: #000;
+  font-size: 4vw;
+}
+
+.slotFunctionNew .btn-group {
+  position: absolute;
+  top: 33%;
+  padding: 0 12vw;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+
+.slotFunctionNew .btn-group a,
+.slotFunctionNew .btn-group button {
+  width: 70%;
+  margin-bottom: 5vw;
+  border: 0;
+  padding: 8px 0;
+}
+
+.slotFunctionNew .btn-group .orange {
+  background: #ff5252;
+  color: #fff;
+}
+
+.slotFunctionNew .btn-group .white {
+  background: #58cdff;
+  color: #fff;
 }
 /*# sourceMappingURL=style.css.map */

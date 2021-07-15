@@ -33,7 +33,7 @@
   font-size: 18px !important;
 }
 
-.casinoList .icon-pt:before {
+.icon-pt:before {
   content: "\e9ef";
 }
 
@@ -1211,5 +1211,9 @@
 
 .icon-kingmaker:before {
   content: "\e9f2";
+}
+
+.icon-N2LIVE:before {
+  content: "\e9ee";
 }
 /*# sourceMappingURL=font.css.map */

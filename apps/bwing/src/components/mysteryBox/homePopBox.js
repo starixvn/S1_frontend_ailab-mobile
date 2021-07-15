@@ -30,9 +30,9 @@ const MysteryBox = ({ langId }) => {
 					/>
 				) : (
 					<img
-						src={langId === "vn" ? eventImgVN : eventImg}
-						alt="Mystery Box"
 						className="mystery"
+						src={userInfo.langId === "vn" ? eventImgVN : eventImg}
+						alt="Mystery Box"
 					/>
 				)}
 			</Link>
