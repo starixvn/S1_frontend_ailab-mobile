@@ -1,22 +1,9 @@
 import React from "react";
+import Marquee from "react-fast-marquee";
 import PropTypes from "prop-types";
 import HotGameList, { defProductType } from "../../datas/hotGameList";
-import { Autoplay } from "../common/swipperBanner";
 import { GET_CASINO_ENTER_PAGE, GET_ENTER_PAGE } from "../../service/enterPage";
 import useHandleLogin from "../hook/useHandleLogin";
-
-const swipperParam = {
-	spaceBetween: 5,
-	slidesPerView: 2,
-	centeredSlides: true,
-	autoplay: {
-		delay: 1250,
-		disableOnInteraction: false
-	},
-	rebuildOnUpdate: true,
-	loop: true,
-	containerClass: "hotGame"
-};
 
 const HotGame = ({ i18n, userInfo }) => {
 	const { handleLogin } = useHandleLogin();
@@ -67,7 +54,9 @@ const HotGame = ({ i18n, userInfo }) => {
 			<div className="moduleTitle icon icon-mediafire">
 				{i18n.lbl_HotGame}
 			</div>
-			<Autoplay Rows={gameArr} params={swipperParam} />
+			<Marquee speed={60} className="hotGame" gradient={false}>
+				{gameArr}
+			</Marquee>
 		</>
 	);
 };

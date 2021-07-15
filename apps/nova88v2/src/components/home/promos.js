@@ -1,22 +1,9 @@
 import React from "react";
+import Marquee from "react-fast-marquee";
 import PropTypes from "prop-types";
 import { Link } from "../../route/link";
 import { useGetPromotions } from "../hook/useGetPromotions";
-import { Autoplay } from "../common/swipperBanner";
 import path from "../../path";
-
-const swipperParam = {
-	spaceBetween: 5,
-	slidesPerView: 2,
-	centeredSlides: true,
-	autoplay: {
-		delay: 1250,
-		disableOnInteraction: false
-	},
-	rebuildOnUpdate: true,
-	loop: true,
-	containerClass: "promos"
-};
 
 const Promos = ({ i18n, userInfo }) => {
 	const { langId, isLogin } = userInfo;
@@ -47,7 +34,9 @@ const Promos = ({ i18n, userInfo }) => {
 			<div className="moduleTitle icon icon-gift">
 				{i18n.lbl_Promotion}
 			</div>
-			<Autoplay Rows={promoArr} params={swipperParam} />
+			<Marquee speed={60} className="promos" gradient={false}>
+				{promoArr}
+			</Marquee>
 		</>
 	);
 };
