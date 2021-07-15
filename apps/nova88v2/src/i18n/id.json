@@ -429,7 +429,7 @@
     "lbl_Vip_Accumulated_Deposit_Within_3_Months":"AKUMULASI DEPOSIT DALAM 3 BULAN",
     "lbl_Vip_Accumulated_Turnover_Within_3_Months":"AKUMULASI TURNOVER DALAM 3 BULAN",
     "lbl_Vip_Ranking_Validity_Membership_renewal":"PERIODE PEMBARUAN PERINGKAT MEMBER",
-    "lbl_Vip_Minimum_Deposit_Count":"JUMLAH DEPOSIT MINIMUM",
+    "lbl_Vip_Minimum_Deposit_Count":"DEPOSIT MIN",
     "lbl_Vip_Minimum_Deposit_Within_Validity_Period":"DEPOSIT MINIMUM PER PERIODE",
     "lbl_Vip_Minimum_Turnover_Within_Validity_Period":"TURNOVER MINIMUM PER PERIODE",
     "lbl_Vip_Normal":"Normal",
@@ -461,13 +461,14 @@
 
     "-============================================Promotion===================================":"",
 
-    "lbl_MaxBonusAmount":"Jumlah Maksimal Bonus",
+    "lbl_MaxBonusAmount":"BONUS MAKS",
 	"lbl_ClaimAmount": "Jumlah Klaim",
 	"lbl_LossAmount":"Nilai Kekalahan",
 	"lbl_Percentage":"Persentase",
 	"lbl_TotalAmount":"Jumlah Dana",
 	"lbl_ClaimNow":"Klaim Sekarang",
     "lbl_ClaimSucceed":"Sukses! Bonus Anda telah diklaim.",
+    "lbl_Cashback":"Cashback",
 
     "-============================================Streaming===================================":"",
  

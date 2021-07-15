@@ -124,7 +124,8 @@ const PromotionContent = ({ staticList, location, navBar }) => {
 			uiSetting,
 			ruleCols,
 			func_CallBack: GetSpecialBonusList,
-			urlParameters
+			urlParameters,
+			config
 		});
 	} else {
 		const datas = promotion?.filter(p => {

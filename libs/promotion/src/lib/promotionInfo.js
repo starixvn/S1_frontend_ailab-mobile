@@ -118,7 +118,6 @@ const PromotionInfoContent = () => {
 	const _isClaimed = isClaimed(promotionInfo);
 	const _isNew = _isClaimed ? false : isNew(promotionInfo);
 	const _isExpiry = isExpiry({ ...promotionInfo, isLogin: userInfo.isLogin });
-
 	const urlParams = {};
 	window.location.search
 		?.substring(1)

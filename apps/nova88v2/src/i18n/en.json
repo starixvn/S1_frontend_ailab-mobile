@@ -447,7 +447,7 @@
 	"lbl_Vip_Accumulated_Deposit_Within_3_Months": "ACCUMULATED DEPOSIT WITHIN 3 MONTHS",
 	"lbl_Vip_Accumulated_Turnover_Within_3_Months": "ACCUMULATED TURNOVER WITHIN 3 MONTHS",
 	"lbl_Vip_Ranking_Validity_Membership_renewal": "RANKING VALIDITY MEMBERSHIP RENEWAL",
-	"lbl_Vip_Minimum_Deposit_Count": "MINIMUM DEPOSIT COUNT",
+	"lbl_Vip_Minimum_Deposit_Count": "MIN DEPOSIT",
 	"lbl_Vip_Minimum_Deposit_Within_Validity_Period": "MINIMUM DEPOSIT WITHIN VALIDITY PERIOD",
 	"lbl_Vip_Minimum_Turnover_Within_Validity_Period": "MINIMUM TURNOVER WITHIN VALIDITY PERIOD",
 	"lbl_Vip_Normal": "Normal",
@@ -480,13 +480,14 @@
 
 	"==============================================Promotion====================================": "",
 
-	"lbl_MaxBonusAmount": "Max Bonus Amount",
+	"lbl_MaxBonusAmount": "Max Bonus",
 	"lbl_ClaimAmount": "Claim Amount",
 	"lbl_LossAmount":"Loss Amount",
 	"lbl_Percentage":"Percentage",
 	"lbl_TotalAmount":"Total Amount",
 	"lbl_ClaimNow":"Claim Now",
 	"lbl_ClaimSucceed":"Successful! Your Bonus has been claimed.",
+	"lbl_Cashback": "Cashback",
 
 	"==============================================Streaming====================================": "",
 

@@ -13,6 +13,8 @@ export default ({
 	userInfo = {},
 	setPopBox,
 	ruleCols = [
+		defRuleCols.minAmount,
+		defRuleCols.bonus,
 		defRuleCols.maxBonus,
 		defRuleCols.rollOver,
 		defRuleCols.remainingTime
@@ -21,10 +23,12 @@ export default ({
 		isConvertRequired: false,
 		digits: undefined,
 		formatRequired: undefined
-	}
+	},
+	visitorCurrency = {}
 }) => (
 	<configContext.Provider
 		value={{
+			visitorCurrency,
 			config,
 			path,
 			uiSetting,

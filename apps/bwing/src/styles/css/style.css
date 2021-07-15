@@ -1480,6 +1480,33 @@ footer > a.open {
   margin: 3vw 0;
 }
 
+.info.promotionInfo ul li > span {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 5px;
+  margin-bottom: 2px;
+}
+
+.info.promotionInfo ul li > span:nth-child(1) {
+  background-color: #1d3062;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.info.promotionInfo ul li > span:nth-child(2) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #1d3062;
+}
+
 .info ul {
   margin-top: 3vw;
 }
@@ -1498,9 +1525,9 @@ footer > a.open {
 }
 
 .info ul li > span:nth-child(2) {
-  -webkit-box-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -7459,6 +7486,36 @@ span.important {
   }
 }
 
+.eventImg .odds {
+  width: 80%;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  bottom: 8vw;
+  font-size: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.eventImg .odds > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.eventImg .odds > div p {
+  margin: 0 5px;
+}
+
+.eventImg .odds > div p:nth-last-child(1) {
+  color: #ff5032;
+}
+
 .angPao_module {
   position: fixed;
   width: 25vw;
@@ -10508,5 +10565,132 @@ span.important {
     width: 90%;
     margin: 0 auto;
   }
+}
+
+.rememberMode {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
+  position: relative;
+}
+
+.rememberMode > .icon {
+  color: #bac2d2;
+  position: absolute;
+  right: 0;
+  top: 2vw;
+  font-size: 20px;
+}
+
+.rememberMode .inputInfo {
+  margin: 0 0 2vw;
+  word-break: break-word;
+  width: 100%;
+}
+
+.rememberMode .inputInfo:before {
+  content: "";
+  border-width: 0 2vw 2vw 2vw;
+  border-style: solid dashed dashed;
+  border-color: transparent transparent #bac2d2 transparent;
+  right: 0.7vw;
+  top: -2vw;
+}
+
+.swithModule {
+  text-align: center;
+  color: #58cdff !important;
+  font-size: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.swithModule .switchBtn {
+  width: 60px;
+  height: 28px;
+  border: 1px solid #f3f3f3;
+  background: #afafaf;
+  border-radius: 28px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+  padding: 5px;
+  margin: 5px;
+}
+
+.swithModule .switchBtn.active {
+  background: green;
+  border-color: green;
+}
+
+.swithModule .switchBtn.active > span:nth-child(2) {
+  opacity: 0;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+.swithModule .switchBtn > span {
+  color: white;
+  font-size: 12px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.swithModule .switchBtn > div {
+  position: absolute;
+  background: white;
+  width: 26px;
+  height: 26px;
+  border-radius: 26px;
+  left: 0;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+.swithModule .switchBtn > div.active {
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  left: calc(100% - 26px);
+}
+
+.inputInfo {
+  text-align: left;
+  display: none;
+  background: #bac2d2;
+  border-radius: 5px;
+  padding: 2vw;
+  position: relative;
+  word-break: break-word;
+  color: #000;
+}
+
+.inputInfo:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-width: 2vw 2vw 0 2vw;
+  border-style: solid dashed dashed;
+  border-color: #bac2d2 transparent transparent;
+  position: absolute;
+  bottom: -2vw;
+  right: 3vw;
+  z-index: 1;
+}
+
+.inputInfo.active {
+  display: block;
 }
 /*# sourceMappingURL=style.css.map */
