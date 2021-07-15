@@ -3,6 +3,7 @@ import moment from "moment";
 import { AutoPlay, ClickLink, useGetBanner } from "../common/swipperBanner";
 import { defBannerType } from "../../service/api/site";
 import { userInfoContext, navContext } from "../common/context";
+import tokyo from "../../styles/img/olympics/logo2.png";
 
 const EventSwipper = memo(() => {
 	const { userInfo } = useContext(userInfoContext);
@@ -19,9 +20,19 @@ const EventSwipper = memo(() => {
 			sportTeamsAwayPic,
 			sportLeaguesId,
 			sportTeamsHome,
-			sportTeamsAway
+			sportTeamsAway,
+			homeOdds,
+			awayOdds,
+			handicap,
+			leaguesId
 		} = b;
 		const datetime = moment(sportBattleDateTime).format("DD/MM HH:mm:ss");
+
+		const hdpSymbol = hdp => {
+			if (hdp === 0) return hdp;
+			return `${hdp < 0 ? "" : "+"} ${hdp}`;
+		};
+
 		return (
 			<div
 				key={`HotEvent-${bIdx}`}
@@ -40,7 +51,16 @@ const EventSwipper = memo(() => {
 							src={sportTeamsHomePic}
 							alt={sportTeamsHome}
 						/>
-						<p className="gameName">{sportLeaguesId}</p>
+						<p className="gameName">
+							{leaguesId === 8 && (
+								<img
+									className="olympicsLogo"
+									src={tokyo}
+									alt="tokyo_olympics_logo"
+								/>
+							)}
+							{sportLeaguesId}
+						</p>
 						<img
 							className="teamL teamR"
 							src={sportTeamsAwayPic}
@@ -50,6 +70,16 @@ const EventSwipper = memo(() => {
 					<div className="teamName">
 						<p>{sportTeamsHome}</p>
 						<p>{sportTeamsAway}</p>
+					</div>
+					<div className="odds">
+						<div>
+							<p>{hdpSymbol(handicap)}</p>
+							<p>{homeOdds}</p>
+						</div>
+						<div>
+							<p>{hdpSymbol(-handicap)}</p>
+							<p>{awayOdds}</p>
+						</div>
 					</div>
 					<div className="time">{datetime}</div>
 				</div>
