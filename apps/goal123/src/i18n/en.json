@@ -326,7 +326,7 @@
 	"lbl_PromoCategory_5":"Expired",
 	"lbl_PromotionCategory1":"First Deposit",
 	"lbl_FreeBet": "Free Bet",
-	"lbl_MinAmount": "Min Amount",
+	"lbl_MinAmount": "MIN DEPOSIT",
 	"lbl_RequireMinAmountHint": "The minimum amount of deposit are required to be at least ",
 	"lbl_RequireMinAmountHint_Back": "Deposit now?",
 	"lbl_VertifyContactConfirm": "Verify your contact number to enjoy our promotions?",
@@ -533,6 +533,7 @@
 	"lbl_EnterAccountNumber":"Enter Account Number",
 	"lbl_ClaimSucceed":"Successful! Your Bonus has been claimed.",
 	"lbl_KingMaker":"King Maker",
+	"lbl_MaxBonusAmount":"Max Bonus",
 
 	"==============General==============":"",
 	"lbl_Jackpot":"Jackpot",

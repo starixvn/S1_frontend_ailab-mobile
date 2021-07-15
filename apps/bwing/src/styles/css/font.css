@@ -129,6 +129,10 @@
   content: "\e9a6";
 }
 
+.icon-mg:before {
+  content: "\e9f3";
+}
+
 .icon-jili:before {
   content: "\e9f1";
 }

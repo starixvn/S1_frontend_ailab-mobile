@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { PromotionInfo, defRuleCols } from "@ailab-mobile/promotion";
+import { PromotionInfo } from "@ailab-mobile/promotion";
 import config from "Config";
 import path from "Path";
 import { Promotion as uiSetting } from "UISetting";
@@ -19,14 +19,10 @@ export default () => {
 			setPopBox={setPopBox}
 			formatSetting={{
 				isConvertRequired: true,
-				digits: 2,
+				digits: 0,
 				formatRequired: false
 			}}
-			ruleCols={[
-				defRuleCols.minAmount,
-				defRuleCols.rollOver,
-				defRuleCols.remainingTime
-			]}
+			visitorCurrency={{ vn: 51, en: 51 }}
 		/>
 	);
 };

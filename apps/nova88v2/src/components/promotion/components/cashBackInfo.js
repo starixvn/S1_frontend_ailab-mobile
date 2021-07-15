@@ -20,6 +20,7 @@ const CashbackInfo = ({ bonusCode, cashBackDetails, i18n, currencyId }) => {
 
 	return (
 		<div className="cashBack">
+			<div className="title">{i18n.lbl_CashBack}</div>
 			<table>
 				<tbody>
 					<tr>

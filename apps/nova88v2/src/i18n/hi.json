@@ -447,7 +447,7 @@
 	"lbl_Vip_Accumulated_Deposit_Within_3_Months": "3 महीने के अंदर जमा की गई कुल राशि",
 	"lbl_Vip_Accumulated_Turnover_Within_3_Months": "3 महीने के भीतर संचित कारोबार",
 	"lbl_Vip_Ranking_Validity_Membership_renewal": "रैंकिंग वैधता सदस्यता नवीनीकरण",
-	"lbl_Vip_Minimum_Deposit_Count": "न्यूनतम जमा गणना",
+	"lbl_Vip_Minimum_Deposit_Count": "न्यूनतम जमा",
 	"lbl_Vip_Minimum_Deposit_Within_Validity_Period": "वैधता अवधि के भीतर न्यूनतम जमा",
 	"lbl_Vip_Minimum_Turnover_Within_Validity_Period": "वैधता अवधि के भीतर न्यूनतम कारोबार",
 	"lbl_Vip_Normal": "साधारण",
@@ -480,13 +480,14 @@
 
 	"==============================================Promotion====================================": "",
 
-	"lbl_MaxBonusAmount": "अधिकतम बोनस राशि",
+	"lbl_MaxBonusAmount": "अधिकतम बोनस",
 	"lbl_ClaimAmount": "दावा राशि",
 	"lbl_LossAmount":"हानि राशि",
 	"lbl_Percentage":"प्रतिशत",
 	"lbl_TotalAmount":"प्रतिशत",
 	"lbl_ClaimNow":"अभी दावा करें",
 	"lbl_ClaimSucceed":"Successful! Your Bonus has been claimed.",
+	"lbl_Cashback": "कैशबैक",
 
 	"==============================================Streaming====================================": "",
 
