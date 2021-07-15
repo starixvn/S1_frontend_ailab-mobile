@@ -11,7 +11,7 @@ import config from "../config";
 import Layout from "../components/common/layout";
 import Header from "../components/header/header";
 import JoinBtn from "../components/promotion/components/joinBtn";
-import { getUrlParameter } from "../components/common/common";
+import { getUrlParameter, isConvert } from "../components/common/common";
 import api from "../service/api";
 
 export default () => {
@@ -115,6 +115,11 @@ export default () => {
 				userInfo={userInfo}
 				i18n={i18n}
 				setPopBox={setPopBox}
+				formatSetting={{
+					isConvertRequired: isConvert(userInfo.currencyId),
+					digits: 0,
+					formatRequired: false
+				}}
 			/>
 		</Layout>
 	);
