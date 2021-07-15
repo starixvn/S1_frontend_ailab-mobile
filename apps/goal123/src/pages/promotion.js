@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
-import { Promotion, defRuleCols, defNav } from "@ailab-mobile/promotion";
+import { Promotion, defNav } from "@ailab-mobile/promotion";
 import config from "Config";
+
 import path from "Path";
 import { Promotion as uiSetting } from "UISetting";
 import { userInfoContext, i18nContext, popBoxContext } from "Context";
@@ -31,16 +32,12 @@ export default ({ location }) => {
 			setPopBox={setPopBox}
 			formatSetting={{
 				isConvertRequired: true,
-				digits: 2,
+				digits: 0,
 				formatRequired: false
 			}}
 			location={location}
-			ruleCols={[
-				defRuleCols.minAmount,
-				defRuleCols.rollOver,
-				defRuleCols.remainingTime
-			]}
 			navBar={defPromotionNav}
+			visitorCurrency={{ vn: 51, en: 51 }}
 		/>
 	);
 };

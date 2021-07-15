@@ -4770,36 +4770,58 @@ input[type="date"] {
   margin: 0;
 }
 
-.slotFunction {
+.slotpopup {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   position: fixed;
-  bottom: 0;
-  -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
-          box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
-  padding: 2vw 2vw 20vw;
-  border-radius: 10px;
-  width: calc(100% - 4vw);
+  top: 0;
   left: 0;
-  background: #f3f3f3;
-  visibility: hidden;
-  -webkit-transition: 0.7s;
-  transition: 0.7s;
-  opacity: 0;
   z-index: 2;
+  display: none;
 }
 
-.slotFunction .icon-cancel-circle {
+.slotpopup.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.slotpopup .slotFunction {
+  position: relative;
+  -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
+          box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  width: calc(100% - 4vw);
+  background: #f3f3f3;
+  width: 80vw;
+  padding: 7vw;
+}
+
+.slotpopup .slotFunction .btn-group .blue {
+  background: -webkit-gradient(linear, left top, left bottom, from(#f1d5b6), to(#cdae8e));
+  background: linear-gradient(to bottom, #f1d5b6, #cdae8e);
+}
+
+.slotpopup .slotFunction .icon-cancel-circle {
   position: absolute;
   right: 2vw;
   top: 2vw;
   color: #F77A00;
 }
 
-.slotFunction .text-org {
+.slotpopup .slotFunction .text-org {
   font-size: 5vw;
   margin: 2vw 0 3vw;
 }
 
-.slotFunction.active {
+.slotpopup .slotFunction.active {
   visibility: visible;
   -webkit-transition: 0.7s;
   transition: 0.7s;
@@ -6842,6 +6864,28 @@ span.important {
   background: rgba(210, 226, 249, 0.6);
 }
 
+.accordion > div a.mode, .accordion > div button.mode, .accordion > div div.mode {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #001942;
+}
+
+.accordion > div a.mode > button, .accordion > div button.mode > button, .accordion > div div.mode > button {
+  width: 10vw;
+  height: 10vw;
+  background: black;
+  margin: 3vw;
+  padding: 0;
+}
+
+.accordion > div a.mode > button.active, .accordion > div button.mode > button.active, .accordion > div div.mode > button.active {
+  color: #5574A7;
+  background: white;
+  -webkit-box-shadow: 0 0 5px 5px #5574a7;
+          box-shadow: 0 0 5px 5px #5574a7;
+}
+
 .accordion > div a.country, .accordion > div button.country, .accordion > div div.country {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -7859,6 +7903,7 @@ span.important {
 .hotGame .hotGamModule, .hotGame .promosModule, .promos .hotGamModule, .promos .promosModule {
   background: #f3f3f3;
   min-width: 45vw;
+  max-width: 45vw;
   color: #666;
   margin: 2vw 2vw 0 0;
   border-radius: 5px;
@@ -7998,10 +8043,6 @@ span.important {
   height: 100%;
 }
 
-.upcomingmatches .swiper-slide {
-  background: url(../img/upcomingmatchesbg.jpg) no-repeat top center/100% auto;
-}
-
 .upcomingmatches .swiper-slide .team {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -8015,6 +8056,13 @@ span.important {
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 100%;
+}
+
+.upcomingmatches .swiper-slide .team > img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 .upcomingmatches .swiper-slide .team > div {
@@ -8130,10 +8178,6 @@ span.important {
   background: #F77A00;
 }
 
-.upcomingmatches .swiper-slide .team.euro {
-  background: url(../img/upcomingmatcheseurobg.jpg) no-repeat top center/100% auto;
-}
-
 .upcomingmatches .swiper-slide .team.euro > div:first-child {
   background: url(../img/upcomingmatcheseurotitle.png) no-repeat top center/auto;
   line-height: 7vw;
@@ -8142,6 +8186,226 @@ span.important {
 .upcomingmatches .swiper-slide .team.euro > div:last-child {
   background: url(../img/upcomingmatcheseurotitledown.png) no-repeat top center/auto;
   line-height: 7vw;
+}
+
+.upcomingmatches .swiper-slide .teamNew {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.upcomingmatches .swiper-slide .teamNew > img {
+  width: 32vw;
+}
+
+.upcomingmatches .swiper-slide .teamNew > img:nth-child(1) {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  z-index: -1;
+}
+
+.upcomingmatches .swiper-slide .teamNew > img + img[src="https://img.n88media.com/Sports/Olympics Tokyo/olympic_logo.png"] + div > div.teamL > div:nth-child(1):before, .upcomingmatches .swiper-slide .teamNew > img + img[src="https://img.n88media.com/Sports/Olympics Tokyo/olympic_logo.png"] + div > div.teamL > div:nth-child(1):after, .upcomingmatches .swiper-slide .teamNew > img + img[src="https://img.n88media.com/Sports/Olympics Tokyo/olympic_logo.png"] + div > div.teamR > div:nth-child(1):before, .upcomingmatches .swiper-slide .teamNew > img + img[src="https://img.n88media.com/Sports/Olympics Tokyo/olympic_logo.png"] + div > div.teamR > div:nth-child(1):after {
+  background: rgba(255, 0, 0, 0.3);
+}
+
+.upcomingmatches .swiper-slide .teamNew > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: bold;
+  padding: 0 1vw;
+  margin: -2vw 0 4vw;
+}
+
+.upcomingmatches .swiper-slide .teamNew > div.odds > div {
+  height: 9vw;
+  background: rgba(29, 54, 98, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: normal;
+}
+
+.upcomingmatches .swiper-slide .teamNew > div.odds > div > div:nth-child(2) {
+  color: #9ac2f3;
+}
+
+.upcomingmatches .swiper-slide .teamNew > div.odds > div:nth-child(2) {
+  background: rgba(7, 58, 139, 0.6);
+}
+
+.upcomingmatches .swiper-slide .teamNew > div > div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 3vw;
+  text-align: center;
+}
+
+.upcomingmatches .swiper-slide .teamNew > div > div.teamL, .upcomingmatches .swiper-slide .teamNew > div > div.teamR {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.upcomingmatches .swiper-slide .teamNew > div > div.teamL > div:nth-child(1), .upcomingmatches .swiper-slide .teamNew > div > div.teamR > div:nth-child(1) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 20vw;
+  height: 20vw;
+}
+
+.upcomingmatches .swiper-slide .teamNew > div > div.teamL > div:nth-child(1):before, .upcomingmatches .swiper-slide .teamNew > div > div.teamL > div:nth-child(1):after, .upcomingmatches .swiper-slide .teamNew > div > div.teamR > div:nth-child(1):before, .upcomingmatches .swiper-slide .teamNew > div > div.teamR > div:nth-child(1):after {
+  content: '';
+  background: rgba(255, 255, 255, 0.3);
+  width: 20vw;
+  height: 20vw;
+  border-radius: 100%;
+  display: block;
+  position: absolute;
+  z-index: 0;
+}
+
+.upcomingmatches .swiper-slide .teamNew > div > div.teamL > div:nth-child(1):after, .upcomingmatches .swiper-slide .teamNew > div > div.teamR > div:nth-child(1):after {
+  width: 18vw;
+  height: 18vw;
+  border-radius: 100%;
+}
+
+.upcomingmatches .swiper-slide .teamNew > div > div.teamL > div:nth-child(2), .upcomingmatches .swiper-slide .teamNew > div > div.teamR > div:nth-child(2) {
+  width: 20vw;
+  height: 8vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.upcomingmatches .swiper-slide .teamNew > div > div.teamL > div:nth-child(3), .upcomingmatches .swiper-slide .teamNew > div > div.teamR > div:nth-child(3) {
+  color: #F77A00;
+}
+
+.upcomingmatches .swiper-slide .teamNew > div > div.teamR .odds {
+  left: unset;
+  right: 2vw;
+}
+
+.upcomingmatches .swiper-slide .teamNew > div > div img {
+  width: 15vw;
+  z-index: 1;
+  position: relative;
+}
+
+.upcomingmatches .swiper-slide .teamNew > div > div.btn-group {
+  margin: auto 0 6vw;
+}
+
+.upcomingmatches .swiper-slide .teamNew > div > div.btn-group button {
+  padding: 1vw 2vw;
+  width: auto;
+  background: #e92529;
+}
+
+.upcomingmatches .swiper-slide .teamNew > div > div.btn-group button:hover {
+  background: #F77A00;
+}
+
+.upcomingmatches .swiper-slide .teamNew.euro {
+  background: url(../img/upcomingmatcheseurobg.jpg) no-repeat top center/100% auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.upcomingmatches .swiper-slide .teamNew.euro > div:first-child {
+  background: url(../img/upcomingmatcheseurotitle.png) no-repeat top center/auto;
+  line-height: 7vw;
+}
+
+.upcomingmatches .swiper-slide .teamNew.euro > div:last-child {
+  background: url(../img/upcomingmatcheseurotitledown.png) no-repeat top center/auto;
+  line-height: 7vw;
+}
+
+.upcomingmatches .swiper-slide .teamNew.euro > div.odds {
+  position: absolute;
+  padding: 0;
+  font-size: 3vw;
+  font-weight: normal;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  bottom: 8vw;
+  display: flex;
+  width: 100%;
+}
+
+.upcomingmatches .swiper-slide .teamNew.euro > div.odds div {
+  background: #c9c9c9;
+  border-radius: 5px;
+  padding: 0 4vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0 0 1vw 0;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  width: 20vw;
+  color: black;
+  font-weight: bold;
+  height: auto;
+}
+
+.upcomingmatches .swiper-slide .teamNew.euro > div.odds div:nth-child(2) {
+  background: #e1c3a4;
+  margin: 0 1vw 1vw;
+}
+
+.upcomingmatches .swiper-slide .teamNew.euro > div > div.teamL, .upcomingmatches .swiper-slide .teamNew.euro > div > div.teamR {
+  white-space: normal;
+  height: 24vw;
+  overflow: hidden;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.upcomingmatches .swiper-slide .teamNew.euro > div > div.btn-group {
+  margin: auto 0 0;
 }
 
 .liveTvTag {
@@ -9438,5 +9702,325 @@ span.important {
           transform: scale(0.9);
   -webkit-transition: 0.7s;
   transition: 0.7s;
+}
+
+.rolloverTitle {
+  font-weight: bold;
+  color: #284985;
+  margin: 2vw 0;
+}
+
+.rolloverList {
+  margin-bottom: 10px;
+}
+
+.rolloverList > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.rolloverList > div > div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border: 1px solid #ccc;
+  color: black;
+  padding: 0 0 0 1vw;
+}
+
+.rolloverList > div > div:nth-child(1) {
+  background: #5E7FB5;
+  color: white;
+}
+
+/*checkspeed*/
+.checkspeed {
+  background: black url(../img/check_speed/bg.jpg) no-repeat center 87px/cover;
+  width: 100%;
+  height: 100%;
+}
+
+.checkspeed img {
+  width: auto;
+  display: block;
+}
+
+.checkspeed button {
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.checkspeed button img {
+  margin: auto;
+}
+
+.checkspeed nav {
+  width: 1200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #03122c;
+  padding: 10px calc((100% - 1200px) / 2);
+  border-bottom: 1px solid #2653ae;
+}
+
+.checkspeed nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.checkspeed nav ul li:nth-child(1) {
+  margin: 0 auto 0 0;
+}
+
+.checkspeed nav ul li:nth-child(2) {
+  border-right: 1px solid white;
+  padding-right: 10px;
+  margin-right: 10px;
+}
+
+.checkspeed nav button {
+  background: #2653ae;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.checkspeed .wallpaper {
+  width: 1200px;
+  position: absolute;
+  left: 50%;
+  margin-left: -600px;
+}
+
+.checkspeed .wallpaper .logo {
+  display: block;
+  width: 150px;
+  height: 66px;
+}
+
+.checkspeed .wallpaper .module {
+  margin-top: 420px;
+  border-radius: 5px;
+  position: relative;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  z-index: 1;
+}
+
+.checkspeed .wallpaper .module .moduleBg {
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: rgba(5, 24, 57, 0.8);
+  z-index: -1;
+}
+
+.checkspeed .wallpaper .module > div {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.checkspeed .wallpaper .module > div.top button > div {
+  margin-top: -30px;
+  text-shadow: 0.1em 0.1em 0em black;
+  font-size: 14px;
+}
+
+.checkspeed .wallpaper .module > div.top > div {
+  text-align: center;
+  margin: 15px 15px 0 0;
+}
+
+.checkspeed .wallpaper .module > div.top > div > div {
+  font-size: 20px;
+}
+
+.checkspeed .wallpaper .module > div.top > div > div:nth-child(2) {
+  font-size: 46px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-shadow: 0 0 0.2em #2b7bdd;
+}
+
+.checkspeed .wallpaper .module > .bottom {
+  -webkit-box-pack: unset;
+      -ms-flex-pack: unset;
+          justify-content: unset;
+}
+
+.checkspeed .wallpaper .module > .bottom > div {
+  margin: 15px 0 0;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-size: 16px;
+}
+
+.checkspeed .wallpaper .module > .bottom > div.left {
+  margin-right: 10px;
+}
+
+.checkspeed .wallpaper .module > .bottom > div.left > div > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 0 15px;
+}
+
+.checkspeed .wallpaper .module > .bottom > div.left > div > div:last-child {
+  margin: 0;
+}
+
+.checkspeed .wallpaper .module > .bottom > div.left > div > div > div {
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+  background: white;
+  color: black;
+  padding: 10px;
+  margin: 0 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 360px;
+}
+
+.checkspeed .wallpaper .module > .bottom > div.left > div > div > button, .checkspeed .wallpaper .module > .bottom > div.left > div > div > a {
+  background-color: #f77900;
+  border-radius: 5px;
+  padding: 8px 10px;
+  color: white;
+  font-family: 'Microsoft YaHei',sans-serif;
+  font-size: xx-small;
+  text-align: center;
+}
+
+.checkspeed .wallpaper .module > .bottom > div.left > div:nth-child(2) {
+  background: rgba(62, 99, 181, 0.6);
+  border-radius: 5px;
+}
+
+.checkspeed .wallpaper .module > .bottom > div.right {
+  border-left: 1px solid #2653ae;
+}
+
+.checkspeed .wallpaper .module > .bottom > div.right > div:nth-child(2) {
+  padding-top: 0;
+}
+
+.checkspeed .wallpaper .module > .bottom > div.right ul {
+  margin-left: 20px;
+}
+
+.checkspeed .wallpaper .module > .bottom > div.right ul li {
+  margin-bottom: 10px;
+  list-style: upper-alpha;
+}
+
+.checkspeed .wallpaper .module > .bottom > div.right ul li div {
+  line-height: 24px;
+}
+
+.checkspeed .wallpaper .module > .bottom > div.right button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#0639b4), to(#062178));
+  background: linear-gradient(#0639b4, #062178);
+  border-radius: 5px;
+  padding: 8px 10px;
+  float: right;
+}
+
+.checkspeed .wallpaper .module > .bottom > div > div {
+  padding: 15px;
+}
+
+.checkspeed .wallpaper .module > .bottom > div > div > div {
+  margin-bottom: 15px;
+}
+
+@media screen and (max-width: 768px), (orientation: portrait) {
+  .checkspeed {
+    background: #0339a2 url(../img/check_speed/bg.jpg) no-repeat top center/cover;
+    height: auto;
+  }
+  .checkspeed .wallpaper {
+    width: 100%;
+    position: unset;
+    margin-left: unset;
+  }
+  .checkspeed .wallpaper nav {
+    width: calc(100% - 6vw);
+    padding: 3vw;
+    position: unset;
+  }
+  .checkspeed .wallpaper nav .logo {
+    margin: 0 auto;
+  }
+  .checkspeed .wallpaper nav .logo img {
+    width: 35vw;
+  }
+  .checkspeed .wallpaper nav button {
+    font-size: 3vw;
+  }
+  .checkspeed .wallpaper .module {
+    width: 95vw;
+    margin: 7vw auto 0;
+  }
+  .checkspeed .wallpaper .module > div {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column;
+            flex-flow: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .checkspeed .wallpaper .module > div.top > div {
+    margin-right: 0;
+  }
+  .checkspeed .wallpaper .module > div.top > div > div {
+    font-size: 5vw;
+  }
+  .checkspeed .wallpaper .module > div.top > div > div:nth-child(2) {
+    font-size: 9vw;
+  }
+  .checkspeed .wallpaper .module > div.top > button > div {
+    font-size: 4vw;
+  }
+  .checkspeed .wallpaper .module > div.bottom > div.left {
+    margin-right: 0;
+  }
+  .checkspeed .wallpaper .module > div.bottom > div.left > div > div > div {
+    max-width: 40vw;
+  }
+  .checkspeed .wallpaper .module > div.bottom > div.left > div > div > button, .checkspeed .wallpaper .module > div.bottom > div.left > div > div > a {
+    padding: 1vw 10px;
+  }
+  .checkspeed .wallpaper .module > div.bottom > div.right {
+    border: 0;
+  }
+  .checkspeed .wallpaper .module > div.bottom > div.right button {
+    float: unset;
+    font-size: 4vw;
+    width: 100%;
+  }
+  .checkspeed .wallpaper .module > div.bottom > div > div {
+    font-size: 3vw;
+  }
 }
 /*# sourceMappingURL=style.css.map */

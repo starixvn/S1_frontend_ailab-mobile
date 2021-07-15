@@ -13,13 +13,15 @@ export default ({
 	userInfo = {},
 	setPopBox,
 	ruleCols = [
+		defRuleCols.minAmount,
+		defRuleCols.bonus,
 		defRuleCols.maxBonus,
 		defRuleCols.rollOver,
 		defRuleCols.remainingTime
 	],
 	formatSetting = {
 		isConvertRequired: false,
-		digits: undefined,
+		digits: 0,
 		formatRequired: undefined
 	}
 }) => (

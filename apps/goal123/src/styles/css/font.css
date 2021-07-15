@@ -59,6 +59,10 @@
   font-size: 4vw !important;
 }
 
+.icon-question:before {
+  content: "\e9d0";
+}
+
 .icon-whatsapp:before {
   content: "\ea93";
 }

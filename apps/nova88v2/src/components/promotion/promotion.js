@@ -100,7 +100,6 @@ const PromotionContent = ({ staticList, location, tab, nav, filterType }) => {
 		api,
 		userInfo
 	});
-
 	const {
 		onChangeSpecialCode,
 		specialCode,

@@ -27,10 +27,43 @@ const RemainingTime = ({ promotionInfo, i18n = {}, isLogin }) => (
 
 const KeyValue = ({ value, displayText }) => (
 	<li>
-		<span className="title">{displayText?.toUpperCase()}</span>
+		<span>{displayText?.toUpperCase()}</span>
 		<span>{value}</span>
 	</li>
 );
+
+const MaxBonus = ({ value, displayText, bonusType }) => {
+	const { userInfo, i18n, visitorCurrency } = useContext(configContext);
+	const _currencyId = userInfo.isLogin
+		? userInfo.currencyId
+		: visitorCurrency[userInfo.langId];
+
+	if (bonusType === 2) return [];
+	return (
+		<li>
+			<span>{displayText?.toUpperCase()}</span>
+			<span>{`${i18n[`Currency_${_currencyId}`]} ${value}`}</span>
+		</li>
+	);
+};
+
+const Bonus = ({ value, displayText, bonusType }) => {
+	const { userInfo, i18n, visitorCurrency } = useContext(configContext);
+	const _currencyId = userInfo.isLogin
+		? userInfo.currencyId
+		: visitorCurrency[userInfo.langId];
+
+	return (
+		<li>
+			<span>{displayText?.toUpperCase()}</span>
+			{bonusType === 1 ? (
+				<span>{`${value} %`}</span>
+			) : (
+				<span>{`${i18n[`Currency_${_currencyId}`]} ${value}`}</span>
+			)}
+		</li>
+	);
+};
 
 const defElems = ({ promotionInfo, i18n = {}, isLogin, formatSetting }) => {
 	return {
@@ -58,14 +91,16 @@ const defElems = ({ promotionInfo, i18n = {}, isLogin, formatSetting }) => {
 			/>
 		),
 		[defRuleCols.bonus]: (
-			<KeyValue
+			<Bonus
+				bonusType={promotionInfo.bonusType}
 				key={`promo-rule-${defRuleCols.bonus}`}
 				displayText={i18n?.lbl_Bonus}
 				value={number_format(promotionInfo.bonus, formatSetting)}
 			/>
 		),
 		[defRuleCols.maxBonus]: (
-			<KeyValue
+			<MaxBonus
+				bonusType={promotionInfo.bonusType}
 				key={`promo-rule-${defRuleCols.maxBonus}`}
 				displayText={i18n?.lbl_MaxBonusAmount}
 				value={number_format(promotionInfo.maxBonus, formatSetting)}
@@ -80,7 +115,6 @@ export default ({ ruleCols, promotionInfo }) => {
 		userInfo: { isLogin },
 		i18n
 	} = useContext(configContext);
-
 	const allElems = defElems({
 		promotionInfo,
 		i18n,
@@ -98,7 +132,7 @@ export default ({ ruleCols, promotionInfo }) => {
 		)
 		.map(col => allElems[col]);
 	return (
-		<div className="info">
+		<div className="info promotionInfo">
 			<ul>{rows}</ul>
 		</div>
 	);

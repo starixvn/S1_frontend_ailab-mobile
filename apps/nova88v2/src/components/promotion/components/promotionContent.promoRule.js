@@ -8,18 +8,14 @@ import ProcessBar from "./processBar";
 const MinAmount = ({ requiredAmount, displayText, formatSetting }) =>
 	requiredAmount > 0 ? (
 		<div>
-			<div className="icon icon-icon32px_money">
-				{displayText?.toUpperCase()}
-			</div>
+			<div>{displayText?.toUpperCase()}</div>
 			<div>{number_format(requiredAmount, formatSetting)}</div>
 		</div>
 	) : null;
 
 const RemainingTime = ({ promotionInfo, i18n = {}, isLogin }) => (
 	<div>
-		<div className="icon icon-icon32px_time">
-			{i18n?.lbl_RemainingTime?.toUpperCase()}
-		</div>
+		<div>{i18n?.lbl_RemainingTime?.toUpperCase()}</div>
 		<div>
 			{RemainTime({
 				promotionInfo,
@@ -30,14 +26,54 @@ const RemainingTime = ({ promotionInfo, i18n = {}, isLogin }) => (
 	</div>
 );
 
+const visitorCurrency = {
+	en: 2,
+	th: 4,
+	id: 15,
+	cs: 2,
+	hi: 61,
+	hi_en: 61,
+	id_en: 15,
+	th_en: 4
+};
+
+const Bonus = ({ value, displayText, bonusType }) => {
+	const { userInfo, i18n } = useContext(configContext);
+	const _currencyId = userInfo.isLogin
+		? userInfo.currencyId
+		: visitorCurrency[userInfo.langId];
+	return (
+		<div>
+			<div>{displayText?.toUpperCase()}</div>
+			{bonusType === 1 ? (
+				<div>{`${value} %`}</div>
+			) : (
+				<div>{`${i18n[`Currency_${_currencyId}`]} ${value}`}</div>
+			)}
+		</div>
+	);
+};
+
 const KeyValue = ({ value, displayText }) => (
 	<div>
-		<div className="icon icon-coin-dollar">
-			{displayText?.toUpperCase()}
-		</div>
+		<div>{displayText?.toUpperCase()}</div>
 		<div>{value}</div>
 	</div>
 );
+
+const MaxBonus = ({ value, displayText, bonusType }) => {
+	const { userInfo, i18n } = useContext(configContext);
+	const _currencyId = userInfo.isLogin
+		? userInfo.currencyId
+		: visitorCurrency[userInfo.langId];
+	if (bonusType === 2) return [];
+	return (
+		<div>
+			<div>{displayText?.toUpperCase()}</div>
+			<div>{`${i18n[`Currency_${_currencyId}`]} ${value}`}</div>
+		</div>
+	);
+};
 
 const defElems = ({ promotionInfo, i18n = {}, isLogin, formatSetting }) => {
 	return {
@@ -45,7 +81,7 @@ const defElems = ({ promotionInfo, i18n = {}, isLogin, formatSetting }) => {
 			<MinAmount
 				key={`promo-rule-${defRuleCols.minAmount}`}
 				requiredAmount={promotionInfo.requiredAmount}
-				displayText={i18n?.lbl_MinAmount}
+				displayText={i18n?.lbl_Vip_Minimum_Deposit_Count}
 				formatSetting={formatSetting}
 			/>
 		),
@@ -65,14 +101,16 @@ const defElems = ({ promotionInfo, i18n = {}, isLogin, formatSetting }) => {
 			/>
 		),
 		[defRuleCols.bonus]: (
-			<KeyValue
+			<Bonus
+				bonusType={promotionInfo.bonusType}
 				key={`promo-rule-${defRuleCols.bonus}`}
 				displayText={i18n?.lbl_Bonus}
 				value={number_format(promotionInfo.bonus, formatSetting)}
 			/>
 		),
 		[defRuleCols.maxBonus]: (
-			<KeyValue
+			<MaxBonus
+				bonusType={promotionInfo.bonusType}
 				key={`promo-rule-${defRuleCols.maxBonus}`}
 				displayText={i18n?.lbl_MaxBonusAmount}
 				value={number_format(promotionInfo.maxBonus, formatSetting)}
@@ -127,7 +165,7 @@ export default ({ ruleCols, promotionInfo }) => {
 		)
 		.map(col => allElems[col]);
 	return (
-		<div className="rollover">
+		<div className="rolloverList">
 			{rows}
 			<ProcessBar
 				{...promotionInfo}

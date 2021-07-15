@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { Link } from "@reach/router";
-import { rootContext } from "../common/context";
+import { rootContext, userInfoContext } from "../common/context";
 import path from "../../path";
 import eventImg from "../../styles/img/mystery/homeImg.png";
 import eventImgVN from "../../styles/img/mystery/homeImg_vn.png";
@@ -11,6 +11,7 @@ import eventImgEuro from "../../styles/img/BW215x231popup.png";
 
 const MysteryBox = ({ langId }) => {
 	const { root, setRoot } = useContext(rootContext);
+	const { userInfo } = useContext(userInfoContext);
 	const closePop = () => {
 		setRoot(false);
 	};
