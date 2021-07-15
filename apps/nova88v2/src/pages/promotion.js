@@ -14,6 +14,7 @@ import config from "../config";
 import staticList from "../datas/promotionList";
 import Layout from "../components/common/layout";
 import Header from "../components/header/header";
+import { isConvert } from "../components/common/common";
 
 export default ({ location = {} }) => {
 	const { userInfo } = useContext(userInfoContext);
@@ -75,6 +76,11 @@ export default ({ location = {} }) => {
 					tab={tab}
 					nav={nav}
 					filterType={filterType}
+					formatSetting={{
+						isConvertRequired: isConvert(userInfo.currencyId),
+						digits: 0,
+						formatRequired: false
+					}}
 				/>
 			</Layout>
 			{helmet}
