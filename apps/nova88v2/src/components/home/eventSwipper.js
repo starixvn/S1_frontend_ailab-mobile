@@ -5,6 +5,7 @@ import { Autoplay, useGetBanner } from "../common/swipperBanner";
 import api from "../../service/api";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import useHandleLogin from "../hook/useHandleLogin";
+import { cloudBannerImgURL } from "../../config";
 
 const swipperParam = {
 	spaceBetween: 30,
@@ -69,24 +70,38 @@ const EventSwipper = ({ userInfo, i18n }) => {
 			bannerName,
 			homeOdds,
 			awayOdds,
-			handicap
+			handicap,
+			leaguesId,
+			logo,
+			backgroundPic
 		} = event;
 
 		const euroEvent = isEuroEvent({ sportLeaguesId });
-		const eventTime = moment(sportBattleDateTime).format(
-			"DD/MM/YYYY HH:mm"
-		);
+		const eventDate = moment(sportBattleDateTime).format("DD/MM/YYYY");
+		const eventTime = moment(sportBattleDateTime).format("HH:mm");
+
+		const hdpSymbol = hdp => {
+			if (hdp === 0) return hdp;
+			return `${hdp < 0 ? "" : "+"} ${hdp}`;
+		};
 
 		return (
 			<div
 				key={`hotEvent-${bannerName}`}
 				onClick={goToBet.bind(this, { tpId, gameId, matchId })}>
-				<div className={`team${euroEvent ? " euro" : ""}`}>
-					<div>{sportLeaguesId}</div>
+				<div className={`${euroEvent ? "team euro" : "teamNew"}`}>
+					<img src={backgroundPic} alt="bg_pic" />
+					<img src={logo} alt={`${leaguesId}_pic`} />
 					<div>
 						<div className="teamL">
-							<img src={sportTeamsHomePic} alt={sportTeamsHome} />
-							{sportTeamsHome}
+							<div>
+								<img
+									src={sportTeamsHomePic}
+									alt={sportTeamsHome}
+								/>
+							</div>
+							<div>{sportTeamsHome}</div>
+							<div>{hdpSymbol(handicap)}</div>
 						</div>
 						<div
 							className="btn-group"
@@ -100,16 +115,30 @@ const EventSwipper = ({ userInfo, i18n }) => {
 							</button>
 						</div>
 						<div className="teamR">
-							<img src={sportTeamsAwayPic} alt={sportTeamsAway} />
-							{sportTeamsAway}
+							<div>
+								<img
+									src={sportTeamsAwayPic}
+									alt={sportTeamsAway}
+								/>
+							</div>
+							<div>{sportTeamsAway}</div>
+							<div>{hdpSymbol(-handicap)}</div>
 						</div>
 					</div>
-					{/* <OddsAndHandicap
-						homeOdds={homeOdds}
-						awayOdds={awayOdds}
-						hdp={handicap}
-					/> */}
-					<div> {eventTime}</div>
+					<div className="odds">
+						<div>
+							<div>{homeOdds}</div>
+							<div>{i18n.lbl_Streaming_Home}</div>
+						</div>
+						<div>
+							<div>{eventDate}</div>
+							<div>{eventTime}</div>
+						</div>
+						<div>
+							<div>{awayOdds}</div>
+							<div>{i18n.lbl_Streaming_Away}</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		);

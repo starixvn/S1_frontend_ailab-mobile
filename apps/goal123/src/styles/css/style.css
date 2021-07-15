@@ -2057,6 +2057,15 @@ main.statementPage {
   }
 }
 
+.mainNew .hotevent .hotDiv .olympic {
+  position: absolute;
+  top: 32%;
+  left: 50%;
+  width: 14vw;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
 .mainNew .MarqueeNew {
   font-size: 12px;
   position: relative;
@@ -3647,17 +3656,6 @@ button.clickBtn:before {
   margin-right: 1vw;
 }
 
-.casino .slotList .info:before {
-  content: "";
-  border-style: solid;
-  border-width: 6vw 9vw;
-  border-color: #fab617 transparent transparent #fab617;
-  border-top-left-radius: 5px;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
 .casino .slotList .info span {
   position: absolute;
   left: 1.5vw;
@@ -3665,13 +3663,17 @@ button.clickBtn:before {
   line-height: initial;
   z-index: 1;
   font-weight: bold;
-  color: #1d3662;
+  color: #e92429;
 }
 
 .casino .slotList .info span.icon {
   right: 1vw;
   left: initial;
   color: white;
+}
+
+.casino .slotList .info span:nth-child(2) {
+  text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px -1px 0 #fff, 1px 1px 0 #fff, -1px 1px 0 #fff, -1px -1px 0 #fff;
 }
 
 .casino .slotList .info span.new-icon::before {
@@ -3902,6 +3904,93 @@ button.clickBtn:before {
 
 .slotFunction .white {
   border: 1px solid #fab617;
+}
+
+.slotFunctionNew {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  opacity: 0;
+  z-index: 5;
+}
+
+.slotFunctionNew .icon-cancel-circle {
+  position: absolute;
+  right: 1vw;
+  top: 1vw;
+  color: #333;
+}
+
+.slotFunctionNew.open {
+  visibility: visible;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  opacity: 1;
+}
+
+.slotFunctionNew .title {
+  font-size: 4vw;
+  margin: 0 0 0 5vw;
+  padding-bottom: 2vw;
+  color: #1f3258;
+}
+
+.slotFunctionNew > div {
+  background: #fff;
+  position: relative;
+  width: 90%;
+  margin: 60vw auto 0;
+  border-radius: 5px;
+}
+
+.slotFunctionNew > div .content {
+  text-align: center;
+  padding: 5vw 5vw 0;
+}
+
+.slotFunctionNew > div .content img {
+  width: 100%;
+  max-width: 425px;
+  -webkit-filter: brightness(0.5);
+          filter: brightness(0.5);
+  border-radius: 5px;
+}
+
+.slotFunctionNew > div span.icon {
+  position: absolute;
+  right: 5vw;
+  bottom: 2vw;
+}
+
+.slotFunctionNew .btn-group {
+  position: absolute;
+  top: 33%;
+  padding: 0 12vw;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+
+.slotFunctionNew .btn-group a, .slotFunctionNew .btn-group button {
+  width: 70%;
+  margin-bottom: 5vw;
+  border: 1px solid #fff;
+}
+
+.slotFunctionNew .btn-group .orange {
+  background: #fab617;
+}
+
+.slotFunctionNew .btn-group .white {
+  background: #1f3258;
+  color: #fff;
 }
 
 .not-found {
@@ -8631,5 +8720,62 @@ span.important {
 
 .swithModule + .icon-question {
   margin-top: 10px;
+}
+
+.partnerSelect {
+  overflow: scroll;
+  width: 100%;
+  background: rgba(178, 178, 178, 0.5);
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 0;
+  margin: 6vw 0 -3vw;
+}
+
+.partnerSelect button {
+  min-width: 30.5vw;
+  padding: 0 1vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 3vw;
+  border-radius: 3px;
+  -webkit-filter: brightness(0.5);
+          filter: brightness(0.5);
+}
+
+.partnerSelect button div {
+  margin-top: -1vw;
+}
+
+.partnerSelect button img {
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  height: 12vw;
+}
+
+.partnerSelect button.active {
+  background: #1e85ec;
+  color: white;
+  -webkit-filter: none;
+          filter: none;
+}
+
+.partnerSelect button.active img {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
 }
 /*# sourceMappingURL=style.css.map */
