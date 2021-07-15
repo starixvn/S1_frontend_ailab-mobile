@@ -4663,7 +4663,14 @@ button.clickBtn:before {
   z-index: 1;
   font-weight: bold;
   color: #F77A00;
-  text-shadow: 1px 0px 0px white, -1px 0px 0px white, 0px 1px 0px white, 0px -1px 0px white, 1px -1px 0px white, 1px 1px 0px white, -1px 1px 0px white, -1px -1px 0px white;
+  text-shadow: 1px 0px 0px white,
+ -1px 0px 0px white,
+ 0px 1px 0px white,
+ 0px -1px 0px white,
+ 1px -1px 0px white,
+ 1px 1px 0px white,
+ -1px 1px 0px white,
+ -1px -1px 0px white;
 }
 
 .casino .slotList .info span.icon {
@@ -9735,11 +9742,11 @@ span.important {
 }
 
 /*checkspeed*/
-.checkspeed {
+/* .checkspeed {
   background: black url(../img/check_speed/bg.jpg) no-repeat center 87px/cover;
   width: 100%;
   height: 100%;
-}
+} */
 
 .checkspeed img {
   width: auto;
@@ -9954,10 +9961,10 @@ span.important {
 }
 
 @media screen and (max-width: 768px), (orientation: portrait) {
-  .checkspeed {
+  /* .checkspeed {
     background: #0339a2 url(../img/check_speed/bg.jpg) no-repeat top center/cover;
     height: auto;
-  }
+  } */
   .checkspeed .wallpaper {
     width: 100%;
     position: unset;
