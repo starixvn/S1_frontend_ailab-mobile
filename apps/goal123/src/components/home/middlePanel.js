@@ -12,7 +12,7 @@ import path from "../../path";
 const APPDownloadLink = {
 	Android:
 		"https://mars.fadatsai88.com/v1/App?path=goal123entry_sports_android.apk",
-	IOS: "https://appdage.com/76B5E24D6EC46B4B"
+	IOS: "https://www.aso008.com/aeFHM7"
 };
 
 const MiddlePanel = ({ langId, i18n }) => {
