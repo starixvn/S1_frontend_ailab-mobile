@@ -30,7 +30,7 @@ export default ({ location }) => {
 			i18n={i18n}
 			setPopBox={setPopBox}
 			formatSetting={{
-				isConvertRequired: true,
+				isConvertRequired: false,
 				digits: 0,
 				formatRequired: false
 			}}
