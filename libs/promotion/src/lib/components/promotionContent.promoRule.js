@@ -70,7 +70,7 @@ const Bonus = ({ value, displayText, bonusType }) => {
 		<li>
 			<span>{displayText?.toUpperCase()}</span>
 			{bonusType === 1 ? (
-				<span>{`${value} %`}</span>
+				<span>{`${value}%`}</span>
 			) : (
 				<span>{`${i18n[`Currency_${_currencyId}`]} ${value}`}</span>
 			)}
