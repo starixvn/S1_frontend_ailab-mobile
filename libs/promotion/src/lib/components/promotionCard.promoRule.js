@@ -74,7 +74,7 @@ const Bonus = ({ value, displayText, bonusType, icon }) => {
 		<>
 			<div className={icon}>{displayText?.toUpperCase()}</div>
 			{bonusType === 1 ? (
-				<div>{`${value} %`}</div>
+				<div>{`${value}%`}</div>
 			) : (
 				<div>{`${i18n[`Currency_${_currencyId}`]} ${value}`}</div>
 			)}
