@@ -4,13 +4,26 @@ import { number_format } from "../common/common";
 import { defRuleCols, defPromotionType } from "../common/def";
 import { configContext } from "../common/context";
 
-const MinAmount = ({ requiredAmount, displayText, formatSetting }) =>
-	requiredAmount > 0 ? (
-		<li>
-			<span className="title">{displayText?.toUpperCase()}</span>
-			<span>{number_format(requiredAmount, formatSetting)}</span>
-		</li>
-	) : null;
+const MinAmount = ({ requiredAmount, displayText, formatSetting }) => {
+	const { userInfo, i18n, visitorCurrency } = useContext(configContext);
+	const _currencyId = userInfo.isLogin
+		? userInfo.currencyId
+		: visitorCurrency[userInfo.langId];
+
+	const value = `${i18n[`Currency_${_currencyId}`]} ${number_format(
+		requiredAmount,
+		formatSetting
+	)}`;
+
+	return (
+		requiredAmount > 0 && (
+			<li>
+				<span className="title">{displayText?.toUpperCase()}</span>
+				<span>{value}</span>
+			</li>
+		)
+	);
+};
 
 const RemainingTime = ({ promotionInfo, i18n = {}, isLogin }) => (
 	<li>
@@ -38,7 +51,7 @@ const MaxBonus = ({ value, displayText, bonusType }) => {
 		? userInfo.currencyId
 		: visitorCurrency[userInfo.langId];
 
-	if (bonusType === 2) return [];
+	if (bonusType === 2) return null;
 	return (
 		<li>
 			<span>{displayText?.toUpperCase()}</span>
@@ -66,8 +79,12 @@ const Bonus = ({ value, displayText, bonusType }) => {
 };
 
 const defElems = ({ promotionInfo, i18n = {}, isLogin, formatSetting }) => {
+	const isStaticOrRebate =
+		promotionInfo.promotionType === defPromotionType.static ||
+		promotionInfo.promotionType === defPromotionType.rebate;
+
 	return {
-		[defRuleCols.minAmount]: (
+		[defRuleCols.minAmount]: !isStaticOrRebate && (
 			<MinAmount
 				key={`promo-rule-${defRuleCols.minAmount}`}
 				requiredAmount={promotionInfo.requiredAmount}
@@ -90,7 +107,7 @@ const defElems = ({ promotionInfo, i18n = {}, isLogin, formatSetting }) => {
 				displayText={i18n?.lbl_RollOver}
 			/>
 		),
-		[defRuleCols.bonus]: (
+		[defRuleCols.bonus]: !isStaticOrRebate && (
 			<Bonus
 				bonusType={promotionInfo.bonusType}
 				key={`promo-rule-${defRuleCols.bonus}`}
@@ -98,7 +115,7 @@ const defElems = ({ promotionInfo, i18n = {}, isLogin, formatSetting }) => {
 				value={number_format(promotionInfo.bonus, formatSetting)}
 			/>
 		),
-		[defRuleCols.maxBonus]: (
+		[defRuleCols.maxBonus]: !isStaticOrRebate && (
 			<MaxBonus
 				bonusType={promotionInfo.bonusType}
 				key={`promo-rule-${defRuleCols.maxBonus}`}
@@ -122,15 +139,7 @@ export default ({ ruleCols, promotionInfo }) => {
 		formatSetting
 	});
 
-	const rows = ruleCols
-		.filter(
-			col =>
-				!(
-					promotionInfo.promotionType === defPromotionType.static &&
-					col === defRuleCols.maxBonus
-				)
-		)
-		.map(col => allElems[col]);
+	const rows = ruleCols.map(col => allElems[col]);
 	return (
 		<div className="info promotionInfo">
 			<ul>{rows}</ul>

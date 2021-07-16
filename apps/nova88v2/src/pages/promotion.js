@@ -77,7 +77,7 @@ export default ({ location = {} }) => {
 					nav={nav}
 					filterType={filterType}
 					formatSetting={{
-						isConvertRequired: isConvert(userInfo.currencyId),
+						isConvertRequired: false,
 						digits: 0,
 						formatRequired: false
 					}}

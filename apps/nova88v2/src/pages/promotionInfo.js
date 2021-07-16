@@ -116,7 +116,7 @@ export default () => {
 				i18n={i18n}
 				setPopBox={setPopBox}
 				formatSetting={{
-					isConvertRequired: isConvert(userInfo.currencyId),
+					isConvertRequired: false,
 					digits: 0,
 					formatRequired: false
 				}}
