@@ -25,14 +25,16 @@ const MinAmount = ({ requiredAmount, displayText, formatSetting }) => {
 		requiredAmount,
 		formatSetting
 	)}`;
-	return requiredAmount > 0 ? (
-		<div>
-			<div className="icon icon-icon32px_money">
-				{displayText?.toUpperCase()}
+	return (
+		requiredAmount > 0 && (
+			<div>
+				<div className="icon icon-icon32px_money">
+					{displayText?.toUpperCase()}
+				</div>
+				<div>{value}</div>
 			</div>
-			<div>{value}</div>
-		</div>
-	) : null;
+		)
+	);
 };
 
 const RemainingTime = ({ promotionInfo, i18n = {}, isLogin }) => (

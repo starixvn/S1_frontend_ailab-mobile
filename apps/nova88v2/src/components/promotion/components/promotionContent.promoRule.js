@@ -26,12 +26,14 @@ const MinAmount = ({ requiredAmount, displayText, formatSetting }) => {
 		formatSetting
 	)}`;
 
-	return requiredAmount > 0 ? (
-		<div>
-			<div>{displayText?.toUpperCase()}</div>
-			<div>{value}</div>
-		</div>
-	) : null;
+	return (
+		requiredAmount > 0 && (
+			<div>
+				<div>{displayText?.toUpperCase()}</div>
+				<div>{value}</div>
+			</div>
+		)
+	);
 };
 
 const RemainingTime = ({ promotionInfo, i18n = {}, isLogin }) => (
@@ -76,7 +78,7 @@ const MaxBonus = ({ value, displayText, bonusType }) => {
 	const _currencyId = userInfo.isLogin
 		? userInfo.currencyId
 		: visitorCurrency[userInfo.langId];
-	if (bonusType === 2) return [];
+	if (bonusType === 2) return null;
 	return (
 		<div>
 			<div>{displayText?.toUpperCase()}</div>
