@@ -27,6 +27,7 @@ import DefLangs from "../../datas/defLangs";
 import { tpWalletsListType } from "../transfer/transfer.def";
 import useGetBalance from "../hook/useGetMainBalance";
 import useGetTpBalance from "../hook/useGetTpBalance";
+import { useGetTpMaintainList } from "../hook/useGetTpMaintainList";
 
 const defSubMenus = [
 	{
@@ -246,6 +247,7 @@ const SubMenuList = ({
 	handleSubMenu,
 	isOpenSubMenu
 }) => {
+	const { maintainList } = useGetTpMaintainList();
 	const clickGame = ({ tpId, gameId }) => {
 		GET_ENTER_PAGE({
 			langId: userInfo.langId,
@@ -258,83 +260,88 @@ const SubMenuList = ({
 		});
 	};
 
-	const rows = defSubMenus.map(s => {
-		const key = `submenu-${s.displayKey}`;
-		let hasSubItem = false;
-		let _subItems = null;
-		if (s.subItems) {
-			const subItemContent = s.subItems?.map(c => {
-				return (
-					<li
-						key={`${key}-${c.displayKey}`}
-						onClick={clickGame.bind(this, c)}>
-						<button>
-							{i18n[c.displayKey]?.toUpperCase() ?? c.displayKey}
-							{_subItems}
-						</button>
-					</li>
-				);
-			});
+	const rows = defSubMenus
+		.filter(s => s.subItems || !maintainList?.includes(s.tpId))
+		.map(s => {
+			const key = `submenu-${s.displayKey}`;
+			let hasSubItem = false;
+			let _subItems = null;
+			if (s.subItems) {
+				const subItemContent = s.subItems
+					?.filter(c => !maintainList?.includes(c.tpId))
+					.map(c => {
+						return (
+							<li
+								key={`${key}-${c.displayKey}`}
+								onClick={clickGame.bind(this, c)}>
+								<button>
+									{i18n[c.displayKey]?.toUpperCase() ??
+										c.displayKey}
+									{_subItems}
+								</button>
+							</li>
+						);
+					});
 
-			hasSubItem = subItemContent.length > 0;
-			if (hasSubItem) {
-				const isOpen = isOpenSubMenu.includes(s.displayKey);
-				_subItems = (
-					<>
-						<i
-							className={`icon icon-keyboard_arrow_right1${
-								isOpen ? " open" : ""
-							}`}
-						/>
-						<ul className={isOpen ? "open" : ""}>
-							{subItemContent}
-						</ul>
-					</>
+				hasSubItem = subItemContent.length > 0;
+				if (hasSubItem) {
+					const isOpen = isOpenSubMenu.includes(s.displayKey);
+					_subItems = (
+						<>
+							<i
+								className={`icon icon-keyboard_arrow_right1${
+									isOpen ? " open" : ""
+								}`}
+							/>
+							<ul className={isOpen ? "open" : ""}>
+								{subItemContent}
+							</ul>
+						</>
+					);
+				}
+			}
+
+			if (s.path) {
+				return (
+					<Link
+						to={`/${s.path}`}
+						onClick={closeNavPanel}
+						key={key}
+						className={s.icon}>
+						{i18n[s.displayKey]?.toUpperCase() ?? s.displayKey}
+						{_subItems}
+					</Link>
 				);
 			}
-		}
-
-		if (s.path) {
-			return (
-				<Link
-					to={`/${s.path}`}
-					onClick={closeNavPanel}
+			if (s.TandCLink) {
+				return (
+					<a
+						key={key}
+						className={s.icon}
+						href={TandC(userInfo.langId)[s.TandCLink]}
+						target="_blank"
+						rel="noreferrer">
+						{i18n[s.displayKey]?.toUpperCase() ?? s.displayKey}
+					</a>
+				);
+			}
+			return hasSubItem ? (
+				<div
 					key={key}
+					onClick={handleSubMenu.bind(this, s.displayKey)}
 					className={s.icon}>
 					{i18n[s.displayKey]?.toUpperCase() ?? s.displayKey}
 					{_subItems}
-				</Link>
-			);
-		}
-		if (s.TandCLink) {
-			return (
-				<a
+				</div>
+			) : (
+				<button
 					key={key}
-					className={s.icon}
-					href={TandC(userInfo.langId)[s.TandCLink]}
-					target="_blank"
-					rel="noreferrer">
+					onClick={clickGame.bind(this, s)}
+					className={s.icon}>
 					{i18n[s.displayKey]?.toUpperCase() ?? s.displayKey}
-				</a>
+				</button>
 			);
-		}
-		return hasSubItem ? (
-			<div
-				key={key}
-				onClick={handleSubMenu.bind(this, s.displayKey)}
-				className={s.icon}>
-				{i18n[s.displayKey]?.toUpperCase() ?? s.displayKey}
-				{_subItems}
-			</div>
-		) : (
-			<button
-				key={key}
-				onClick={clickGame.bind(this, s)}
-				className={s.icon}>
-				{i18n[s.displayKey]?.toUpperCase() ?? s.displayKey}
-			</button>
-		);
-	});
+		});
 
 	return <div className="side-nav">{rows}</div>;
 };
