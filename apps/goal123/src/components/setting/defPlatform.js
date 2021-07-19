@@ -5,99 +5,71 @@ const defPlatfrom = [
 	{
 		...defGameInfo.Sports,
 		parameter: { ...defGameInfo.Sports },
-		imgName: "saba"
+		imgName: "sabaa"
 	},
 	{
-		...defGameInfo.LIVEcasinoAB,
-		imgName: "ab"
-	},
-	{
-		...defGameInfo.Fishing,
-		imgName: "yl"
+		...defGameInfo.BTISport,
+		imgName: "btia"
 	},
 	{
 		...defGameInfo.LIVEcasinoAG,
-		imgName: "ag"
+		imgName: "aga"
 	},
 	{
-		...defGameInfo.Casino_GPI,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_GPI },
-		imgName: "gp"
+		...defGameInfo.LIVEcasinoAE,
+		imgName: "aea"
 	},
 	{
-		...defGameInfo.LIVEcasinoDG,
-		imgName: "dg"
-	},
-	{
-		...defGameInfo.LIVEcasinoSA,
-		imgName: "sa"
-	},
-	{
-		...defGameInfo.Casino_YGG,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_YGG },
-		imgName: "yg"
+		...defGameInfo.LIVEcasinoN2,
+		imgName: "n2liveb"
 	},
 	{
 		...defGameInfo.Casino_PP,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_PP },
-		imgName: "pp"
-	},
-	{
-		...defGameInfo.Casino_SG,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_SG },
-		imgName: "sg"
-	},
-	{
-		...defGameInfo.Casino_PG,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_PG },
-		imgName: "pg"
-	},
-	{
-		...defGameInfo.LIVEcasinoEB,
-		imgName: "eb"
-	},
-	{
-		...defGameInfo.LIVEcasinoWM,
-		imgName: "wm"
-	},
-	{
-		...defGameInfo.Casino_CQ9,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_CQ9 },
-		imgName: "cq9"
-	},
-	{
-		...defGameInfo.casino_ICG,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.casino_ICG },
-		imgName: "icg"
-	},
-	{
-		...defGameInfo.V8Poker,
-		imgName: "v8"
-	},
-	{
-		...defGameInfo.LIVEcasinoN2,
-		imgName: "n2live"
+		imgName: "ppb"
 	},
 	{
 		...defGameInfo.Casino_PT,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_PT },
-		imgName: "playtech"
+		imgName: "playtecha"
 	},
 	{
-		...defGameInfo.BTISport,
-		imgName: "bti"
+		...defGameInfo.Casino_PG,
+		path: path.casino.root,
+		parameter: { ...defGameInfo.Casino_PG },
+		imgName: "pga"
+	},
+	{
+		...defGameInfo.Casino_SG,
+		path: path.casino.root,
+		parameter: { ...defGameInfo.Casino_SG },
+		imgName: "sga"
+	},
+	{
+		...defGameInfo.Casino_YGG,
+		path: path.casino.root,
+		parameter: { ...defGameInfo.Casino_YGG },
+		imgName: "ygb"
+	},
+	{
+		...defGameInfo.Casino_CQ9,
+		path: path.casino.root,
+		parameter: { ...defGameInfo.Casino_CQ9 },
+		imgName: "cq9a"
+	},
+	{
+		...defGameInfo.Fishing,
+		imgName: "yla"
+	},
+	{
+		...defGameInfo.V8Poker,
+		imgName: "v8a"
 	},
 	{
 		...defGameInfo.kingMaker,
-		imgName: "kingmaker"
+		imgName: "kingmakera"
 	}
 ];
 
