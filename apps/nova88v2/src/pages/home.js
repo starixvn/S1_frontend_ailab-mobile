@@ -178,7 +178,7 @@ const IndexPage = () => {
 						setPopBox={setPopBox}
 					/>
 					<Promos i18n={i18n} userInfo={userInfo} />
-					<Jackpot i18n={i18n} userInfo={userInfo} />
+					<EventSwipper i18n={i18n} userInfo={userInfo} />
 					<HotGame i18n={i18n} userInfo={userInfo} />
 					{userInfo.isLogin ? (
 						<Referral
@@ -187,7 +187,7 @@ const IndexPage = () => {
 							setPopBox={setPopBox}
 						/>
 					) : null}
-					<EventSwipper i18n={i18n} userInfo={userInfo} />
+					<Jackpot i18n={i18n} userInfo={userInfo} />
 					<Streaming />
 					<Bottom i18n={i18n} langId={userInfo.langId} />
 					<AddToHomePop i18n={i18n} userInfo={userInfo} />
