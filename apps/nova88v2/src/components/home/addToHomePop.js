@@ -24,7 +24,7 @@ const AddToHomePop = ({ i18n, userInfo }) => {
 	}, []);
 
 	const clickNotShowing = () => {
-		setCookie("AddToHome", "1", 1);
+		setCookie("AddToHome", "1", 7);
 		setAddToHomePop(false);
 	};
 

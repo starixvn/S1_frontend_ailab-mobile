@@ -77,10 +77,10 @@ const SiteURL =
 				// t_and_cURL: "http://localhost:60930",
 				// openURL: "http://localhost:60930"
 
-				apiURL: "https://www.n88dev.com",
-				imgUrl: "http://www.n88dev.com",
-				t_and_cURL: "http://www.n88dev.com",
-				openURL: "http://www.n88dev.com",
+				apiURL: "",
+				imgUrl: "https://www.n88dev.com",
+				t_and_cURL: "https://www.n88dev.com",
+				openURL: "",
 				cloudImgURL
 		  };
 

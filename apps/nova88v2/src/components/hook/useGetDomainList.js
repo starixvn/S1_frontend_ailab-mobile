@@ -21,7 +21,7 @@ export const useGetDomainList = ({ userInfo, setPopBox, i18n }) => {
 							setCookie(
 								`${userInfo.userName}-DomainListHint`,
 								"1",
-								1
+								7
 							);
 							setIsDomainPopOpen(false);
 						};
