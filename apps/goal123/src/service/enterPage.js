@@ -53,6 +53,8 @@ export const GET_ENTER_PAGE = ({
 	let urlSpecialPattern = "";
 	const _tpId = isNaN(tpId) ? tpId : Number(tpId);
 	const _gameId = isNaN(gameId) ? gameId : Number(gameId);
+	const _matchid = isNaN(matchid) ? matchid : Number(matchid);
+
 	if (_tpId === 1) {
 		if (_gameId === 43 || _gameId === 220 || _gameId === 202) {
 			result = setResult("", true, _ACTION_TYPE.redirect, _tpId, _gameId);
@@ -84,8 +86,12 @@ export const GET_ENTER_PAGE = ({
 		result = setResult("", true, _ACTION_TYPE.blank, _tpId, _gameId);
 	}
 
-	const entPageUrl = `${config.openURL}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}
-	&tpId=${tpId}&gameId=${gameId}&CashierUrl=${cashierUrl}&LobbyUrl=${lobbyUrl}&matchid=${matchid}&errorUrl=${_errorPageUrl}&AppType=2${urlSpecialPattern}`;
+	const entPageUrl = `${
+		config.openURL
+	}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}
+	&tpId=${tpId}&gameId=${gameId}&CashierUrl=${cashierUrl}&LobbyUrl=${lobbyUrl}&matchid=${
+		_matchid || ""
+	}&errorUrl=${_errorPageUrl}&AppType=2${urlSpecialPattern}`;
 
 	if (!isLogin && result.needLogin) {
 		loginCallback();

@@ -49,11 +49,12 @@ export const GET_ENTER_PAGE = ({
 	const lobbyUrl = ``;
 	const cashierUrl = `${appUrl}/${langId}/${path.deposit.root}`;
 	const _errorPageUrl = errorPageUrl(langId);
+	const _matchid = isNaN(matchid) ? matchid : Number(matchid);
 	const entPageUrl = `${
 		config.openURL
-	}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&CashierUrl=${cashierUrl}&&LobbyUrl=${lobbyUrl}&matchid=${matchid}&errorUrl=${_errorPageUrl}&AppType=2${
-		specialUrl ?? ""
-	}`;
+	}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&CashierUrl=${cashierUrl}&&LobbyUrl=${lobbyUrl}&matchid=${
+		_matchid || ""
+	}&errorUrl=${_errorPageUrl}&AppType=2${specialUrl ?? ""}`;
 	let result = setResult("", true, _ACTION_TYPE.blank);
 
 	const _tpId = isNaN(tpId) ? tpId : Number(tpId);

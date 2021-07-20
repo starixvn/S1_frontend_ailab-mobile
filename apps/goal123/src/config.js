@@ -46,9 +46,9 @@ export default process.env.NODE_ENV === "production"
 			// t_and_cURL: "http://localhost:60930",
 			// openURL: "http://localhost:60930"
 
-			apiURL: "https://stag.goal123.com",
+			apiURL: "",
 			imgUrl: "https://stag.goal123.com",
-			t_and_cURL: "http://stag.goal123.com",
-			openURL: "https://stag.goal123.com",
+			t_and_cURL: "https://stag.goal123.com",
+			openURL: "",
 			bannerImgUrl
 	  };

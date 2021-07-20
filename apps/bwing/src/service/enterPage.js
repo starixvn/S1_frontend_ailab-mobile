@@ -48,6 +48,7 @@ export const GET_ENTER_PAGE = ({
 	const lobbyUrl = ``;
 	const cashierUrl = `${appUrl}/${path.deposit.root}`;
 	const _errorPageUrl = errorPageUrl(langId);
+	const _matchid = isNaN(matchid) ? matchid : Number(matchid);
 
 	let result = setResult("", true, _ACTION_TYPE.blank);
 	let urlSpecialPattern = "";
@@ -84,7 +85,11 @@ export const GET_ENTER_PAGE = ({
 		result = setResult("", true, _ACTION_TYPE.blank, _tpId, _gameId);
 	}
 
-	const entPageUrl = `${config.openURL}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&CashierUrl=${cashierUrl}&LobbyUrl=${lobbyUrl}&matchid=${matchid}&errorUrl=${_errorPageUrl}&AppType=2${urlSpecialPattern}`;
+	const entPageUrl = `${
+		config.openURL
+	}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&CashierUrl=${cashierUrl}&LobbyUrl=${lobbyUrl}&matchid=${
+		_matchid || ""
+	}&errorUrl=${_errorPageUrl}&AppType=2${urlSpecialPattern}`;
 
 	if (!isLogin && result.needLogin) {
 		loginCallback();
