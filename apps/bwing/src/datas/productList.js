@@ -77,7 +77,8 @@ export const defGameInfo = {
 		tpId: 16,
 		gameId: "AT04"
 	},
-	kingMaker: { tpId: 11 }
+	kingMaker: { tpId: 11 },
+	Casino_Jili: { tpId: 32 }
 };
 
 const gameList = langId => [

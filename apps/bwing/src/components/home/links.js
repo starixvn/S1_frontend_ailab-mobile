@@ -147,7 +147,8 @@ const defPlatform = [
 	"n2live",
 	"playtech",
 	"bti",
-	"kingmaker"
+	"kingmaker",
+	"jili"
 ];
 
 const Platforms = ({ i18n }) => {
