@@ -212,8 +212,4 @@ const gameList = langId => [
 	}
 ];
 
-export const euro_event_time = {
-	endDate: "2021/07/13 12:00:00"
-};
-
 export default gameList;

@@ -15,9 +15,6 @@ import bgImg from "../../styles/img/mystery/bg.png";
 import bgVNImg from "../../styles/img/mystery/bg_vn.png";
 import { useCheckPrize } from "../hook/useCheckPrize";
 import { eventIds } from "../../datas/eventId";
-import { euro_event_time } from "../../datas/productList";
-import bgEuro from "../../styles/img/BW1920x822.jpg";
-import { isEventPeriod } from "../common/common";
 
 const MysteryBox = () => {
 	const { i18n } = useContext(i18nContext);
@@ -58,15 +55,11 @@ const MysteryBox = () => {
 
 	return (
 		<>
-			{isEventPeriod(euro_event_time) ? (
-				<img className="mysteryBg" src={bgEuro} alt="bg" />
-			) : (
-				<img
-					className="mysteryBg"
-					src={userInfo.langId === "en" ? bgImg : bgVNImg}
-					alt="Mystery Box"
-				/>
-			)}
+			<img
+				className="mysteryBg"
+				src={userInfo.langId === "en" ? bgImg : bgVNImg}
+				alt="Mystery Box"
+			/>
 			<div className="animation">
 				<div
 					className={`mysteryBox ${

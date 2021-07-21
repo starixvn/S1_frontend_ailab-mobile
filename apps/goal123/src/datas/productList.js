@@ -52,6 +52,7 @@ import LIVEcasino_PT from "../styles/img/hotgame-m/livecasino/livecasino-playtec
 
 import { isEventPeriod } from "../components/common/common";
 import path from "../path";
+import { eventTime } from "../components/common/eventTime";
 
 export const defGameInfo = {
 	Sports: { tpId: 1, gameId: 1 },
@@ -107,15 +108,6 @@ export const defGameInfo = {
 const defIconType = {
 	live: " icon-live",
 	new: " icon-new"
-};
-
-export const eventTime = {
-	casino_pt: { endDate: "2021/06/20 11:00:00" },
-	liveCasino_pt: { endDate: "2021/07/08 11:00:00" },
-	new_BTI: { endDate: "2021/06/28 11:00:00" },
-	new_Km: { endDate: "2021/07/08 11:00:00" },
-	euro: { endDate: "2021/07/13 12:00:00" },
-	jili: { endDate: "2021/07/18 11:00:00" }
 };
 
 export const defCol = {

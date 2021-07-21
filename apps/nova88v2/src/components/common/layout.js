@@ -13,9 +13,10 @@ import {
 import path from "../../path";
 import Loading from "./loading";
 import { isEventPeriod } from "./common";
-import { eventTime, MysteryBoxPop } from "../../pages/mysteryBox";
+import { MysteryBoxPop } from "../../pages/mysteryBox";
 import Modal from "../join/modal";
 import GotopBtn from "./goTopBtn";
+import { eventTime } from "./eventTime";
 
 const Layout = ({ children, header, mainClass }) => {
 	const navigate = useNavigate();

@@ -62,6 +62,7 @@ import path from "../path";
 import { siteInfo } from "../config";
 import { defPopBoxType } from "../components/common/popbox";
 import { isEventPeriod } from "../components/common/common";
+import { eventTime } from "../components/common/eventTime";
 
 export const productList = {
 	kiss918: {
@@ -75,23 +76,6 @@ export const productList = {
 
 const defIconType = {
 	new: " icon-new"
-};
-
-export const eventTime = {
-	casino_PT: { endDate: "2021/06/20 11:00:00" },
-	liveCasino_PT: { endDate: "2021/07/08 11:00:00" },
-	amb: { endDate: "2021/07/08 11:00:00" },
-	km: { endDate: "2021/07/08 11:00:00" },
-	nineW: { endDate: "2021/07/31 11:00:00" },
-	new_indo_wap: { endDate: "2021/07/08 11:00:00" },
-	euro: {
-		endDate: "2021/07/13 12:00:00"
-	},
-	jili: { endDate: "2021/07/18 11:00:00" }
-};
-
-export const euro_event_time = {
-	endDate: "2021/07/13 12:00:00"
 };
 
 const gameList = ({ langId, currencyName }) => {

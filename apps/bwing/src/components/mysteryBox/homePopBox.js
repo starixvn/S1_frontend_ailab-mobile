@@ -1,15 +1,11 @@
 import React, { useContext } from "react";
-import PropTypes from "prop-types";
 import { Link } from "@reach/router";
 import { rootContext, userInfoContext } from "../common/context";
 import path from "../../path";
 import eventImg from "../../styles/img/mystery/homeImg.png";
 import eventImgVN from "../../styles/img/mystery/homeImg_vn.png";
-import { isEventPeriod } from "../common/common";
-import { euro_event_time } from "../../datas/productList";
-import eventImgEuro from "../../styles/img/BW215x231popup.png";
 
-const MysteryBox = ({ langId }) => {
+const MysteryBox = () => {
 	const { root, setRoot } = useContext(rootContext);
 	const { userInfo } = useContext(userInfoContext);
 	const closePop = () => {
@@ -22,26 +18,14 @@ const MysteryBox = ({ langId }) => {
 				X
 			</div>
 			<Link to={path.mysteryBox.root}>
-				{isEventPeriod(euro_event_time) ? (
-					<img
-						src={eventImgEuro}
-						className="mystery"
-						alt="Mystery Box"
-					/>
-				) : (
-					<img
-						className="mystery"
-						src={userInfo.langId === "vn" ? eventImgVN : eventImg}
-						alt="Mystery Box"
-					/>
-				)}
+				<img
+					className="mystery"
+					src={userInfo.langId === "vn" ? eventImgVN : eventImg}
+					alt="Mystery Box"
+				/>
 			</Link>
 		</div>
 	) : null;
-};
-
-MysteryBox.propTypes = {
-	langId: PropTypes.string.isRequired
 };
 
 export default MysteryBox;
