@@ -11,7 +11,7 @@ import {
 } from "./context";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import LinksPanel from "../home/links";
-import { productList } from "../../datas/defMenu";
+import { productList, defTpCategoryId } from "../../datas/defMenu";
 import { useGetTpMaintainList } from "../hook/useGetTpMaintainList";
 
 const ProductPage = ({ category, titleKey }) => {
@@ -73,7 +73,12 @@ const ProductPage = ({ category, titleKey }) => {
 		})
 		.map(game => {
 			let showingIcon = "";
-			const underMaintain = maintainList?.includes(game.tpId);
+			const underMaintain = maintainList?.some(
+				m =>
+					m.tpId === game.tpId &&
+					(m.tpCategoryId === game.tpCategoryId ||
+						m.tpCategoryId === defTpCategoryId.All)
+			);
 			if (game.eventIcon) {
 				const eventInPeriodObj = game.eventIcon.find(
 					obj => obj.inPeriod === true

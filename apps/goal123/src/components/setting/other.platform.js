@@ -13,6 +13,7 @@ import config from "../../config";
 import { api_GetTpIds } from "../../service/api/site";
 import defPlatfrom from "./defPlatform";
 import { useGetTpMaintainList } from "../hook/useGetTpMaintainList";
+import { defTpCategoryId } from "../../datas/productList";
 
 const Platform = ({ langId, isLogin }) => {
 	const { setNav } = useContext(navContext);
@@ -52,8 +53,13 @@ const Platform = ({ langId, isLogin }) => {
 		}
 	}, [userInfo.isLogin]);
 
-	const ClickItem = ({ _path, urlParams, tpId, gameId }) => {
-		const underMaintain = maintainList?.includes(tpId);
+	const ClickItem = ({ _path, urlParams, tpId, gameId, tpCategoryId }) => {
+		const underMaintain = maintainList?.some(
+			m =>
+				m.tpId === tpId &&
+				(m.tpCategoryId === tpCategoryId ||
+					m.tpCategoryId === defTpCategoryId.All)
+		);
 		const loginCallback = () => {
 			setNav(defNavPanel.login);
 		};

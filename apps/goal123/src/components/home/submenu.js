@@ -13,7 +13,7 @@ import path from "../../path";
 import { api_SetLanguage } from "../../service/api/account";
 import { number_format } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
-import { defGameInfo } from "../../datas/productList";
+import { defGameInfo, defTpCategoryId } from "../../datas/productList";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import ShortcutBar from "./shortcutBar";
 import TandC from "../../service/t_and_c";
@@ -36,11 +36,13 @@ const defSubMenus = [
 		subItems: [
 			{
 				displayKey: "lbl_SabaSport",
-				...defGameInfo.Sports
+				...defGameInfo.Sports,
+				tpCategoryId: defTpCategoryId.Sports
 			},
 			{
 				displayKey: "lbl_BTISport",
-				...defGameInfo.BTISport
+				...defGameInfo.BTISport,
+				tpCategoryId: defTpCategoryId.Sports
 			}
 		]
 	},
@@ -50,23 +52,28 @@ const defSubMenus = [
 		subItems: [
 			{
 				...defGameInfo.sabaClub,
-				displayKey: "lbl_SabaClub"
+				displayKey: "lbl_SabaClub",
+				tpCategoryId: defTpCategoryId.Slots
 			},
 			{
 				...defGameInfo.kingMaker,
-				displayKey: "lbl_KingMaker"
+				displayKey: "lbl_KingMaker",
+				tpCategoryId: defTpCategoryId.Poker
 			},
 			{
 				...defGameInfo.V8Poker,
-				displayKey: "lbl_V8Poker"
+				displayKey: "lbl_V8Poker",
+				tpCategoryId: defTpCategoryId.Poker
 			},
 			{
 				...defGameInfo.Keno,
-				displayKey: "lbl_Keno"
+				displayKey: "lbl_Keno",
+				tpCategoryId: defTpCategoryId.Lottery
 			},
 			{
 				...defGameInfo.lottery,
-				displayKey: "lbl_Lottery"
+				displayKey: "lbl_Lottery",
+				tpCategoryId: defTpCategoryId.Lottery
 			}
 		]
 	},
@@ -76,42 +83,51 @@ const defSubMenus = [
 		subItems: [
 			{
 				...defGameInfo.fish_AB3,
-				displayKey: "lbl_Paradise"
+				displayKey: "lbl_Paradise",
+				tpCategoryId: defTpCategoryId.Fishing
 			},
 			{
 				...defGameInfo.fish_AT01,
-				displayKey: "lbl_Oneshot_Fishing"
+				displayKey: "lbl_Oneshot_Fishing",
+				tpCategoryId: defTpCategoryId.Fishing
 			},
 			{
 				...defGameInfo.ICG_DRAGONBALL_FISHING,
-				displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING"
+				displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
+				tpCategoryId: defTpCategoryId.Fishing
 			},
 			{
 				...defGameInfo.ICG_FISHING_OF_SAVIORS,
-				displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS"
+				displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS",
+				tpCategoryId: defTpCategoryId.Fishing
 			},
 			{
 				...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
-				displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS"
+				displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS",
+				tpCategoryId: defTpCategoryId.Fishing
 			},
 			{
 				...defGameInfo.Fishing,
-				displayKey: "lbl_FishingGG"
+				displayKey: "lbl_FishingGG",
+				tpCategoryId: defTpCategoryId.Fishing
 			},
 			{
 				...defGameInfo.FishingSG,
-				displayKey: "lbl_FishingSG1"
+				displayKey: "lbl_FishingSG1",
+				tpCategoryId: defTpCategoryId.Fishing
 			},
 			{
 				...defGameInfo.FishingSGW,
-				displayKey: "lbl_FishingSG2"
+				displayKey: "lbl_FishingSG2",
+				tpCategoryId: defTpCategoryId.Fishing
 			}
 		]
 	},
 	{
 		...defGameInfo.eSports,
 		displayKey: "lbl_eSports",
-		icon: "icon icon-e-sports"
+		icon: "icon icon-e-sports",
+		tpCategoryId: defTpCategoryId.Sports
 	},
 	{
 		displayKey: "lbl_Slots",
@@ -124,39 +140,48 @@ const defSubMenus = [
 		subItems: [
 			{
 				...defGameInfo.LIVEcasinoN2,
-				displayKey: "N2Live"
+				displayKey: "N2Live",
+				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
 				...defGameInfo.LIVEcasinoWM,
-				displayKey: "WM"
+				displayKey: "WM",
+				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
 				...defGameInfo.LIVEcasinoDG,
-				displayKey: "DG"
+				displayKey: "DG",
+				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
 				...defGameInfo.LIVEcasinoPP,
-				displayKey: "PP"
+				displayKey: "PP",
+				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
 				...defGameInfo.LIVEcasinoAE,
-				displayKey: "AE"
+				displayKey: "AE",
+				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
 				...defGameInfo.LIVEcasinoAG,
-				displayKey: "AG"
+				displayKey: "AG",
+				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
 				...defGameInfo.LIVEcasinoAB,
-				displayKey: "AB"
+				displayKey: "AB",
+				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
 				...defGameInfo.LIVEcasinoSA,
-				displayKey: "SA"
+				displayKey: "SA",
+				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
 				...defGameInfo.LIVEcasinoEB,
-				displayKey: "EB"
+				displayKey: "EB",
+				tpCategoryId: defTpCategoryId.LiveCasino
 			}
 		]
 	},
@@ -248,6 +273,14 @@ const SubMenuList = ({
 	isOpenSubMenu
 }) => {
 	const { maintainList } = useGetTpMaintainList();
+	const isUnderMaintain = ({ tpId, tpCategoryId }) =>
+		maintainList?.some(
+			m =>
+				m.tpId === tpId &&
+				(m.tpCategoryId === tpCategoryId ||
+					m.tpCategoryId === defTpCategoryId.All)
+		);
+
 	const clickGame = ({ tpId, gameId }) => {
 		GET_ENTER_PAGE({
 			langId: userInfo.langId,
@@ -261,14 +294,24 @@ const SubMenuList = ({
 	};
 
 	const rows = defSubMenus
-		.filter(s => s.subItems || !maintainList?.includes(s.tpId))
+		.filter(
+			s =>
+				s.subItems ||
+				!isUnderMaintain({ tpId: s.tpId, tpCategoryId: s.tpCategoryId })
+		)
 		.map(s => {
 			const key = `submenu-${s.displayKey}`;
 			let hasSubItem = false;
 			let _subItems = null;
 			if (s.subItems) {
 				const subItemContent = s.subItems
-					?.filter(c => !maintainList?.includes(c.tpId))
+					?.filter(
+						c =>
+							!isUnderMaintain({
+								tpId: c.tpId,
+								tpCategoryId: c.tpCategoryId
+							})
+					)
 					.map(c => {
 						return (
 							<li

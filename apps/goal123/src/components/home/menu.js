@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { Link } from "@reach/router";
 import { defNavPanel, navContext } from "../common/context";
-import gameList, { defCol } from "../../datas/productList";
+import gameList, { defCol, defTpCategoryId } from "../../datas/productList";
 import { getEventIcon } from "./category";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { Autoplay } from "../common/swipperBanner";
@@ -112,13 +112,19 @@ const Menu = ({ i18n, userInfo }) => {
 				: true;
 		})
 		.map(subItem => {
+			const underMaintain = maintainList?.some(
+				m =>
+					m.tpId === subItem.tpId &&
+					(m.tpCategoryId === defTpCategoryId.All ||
+						m.tpCategoryId === subItem.tpCategoryId)
+			);
 			return (
 				<SubGame
 					key={`${subItem?.spanText ?? i18n[subItem?.spanTextKey]}`}
 					game={subItem}
 					clickGame={clickGame}
 					i18n={i18n}
-					underMaintain={maintainList?.includes(subItem.tpId)}
+					underMaintain={underMaintain}
 				/>
 			);
 		});
