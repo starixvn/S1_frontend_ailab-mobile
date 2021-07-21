@@ -69,7 +69,11 @@ const defPlatfrom = [
 	},
 	{
 		...defGameInfo.kingMaker,
-		imgName: "kingmakera"
+		imgName: "kingmaker"
+	},
+	{
+		...defGameInfo.Casino_Jili,
+		imgName: "jilia"
 	}
 ];
 

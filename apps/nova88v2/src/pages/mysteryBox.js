@@ -8,12 +8,7 @@ import Footer from "../components/common/footer";
 import { Link } from "../route/link";
 import path from "../path";
 import PopImg from "../styles/img/event/mysterybox/eventlink.png";
-import { euro_event_time } from "../datas/productList";
-import euroImg from "../styles/img/euro/eventlink.png";
-
-export const eventTime = {
-	mysteryBox: { startDate: "2021/02/27 00:00:00" }
-};
+import { eventTime } from "../components/common/eventTime";
 
 export const MysteryBoxPop = () => {
 	const { root, setRoot } = useContext(rootContext);
@@ -26,10 +21,7 @@ export const MysteryBoxPop = () => {
 		<div className="eventLink">
 			<button className="icon icon-close" onClick={closePop} />
 			<Link to={path.mysteryBox.root}>
-				<img
-					src={isEventPeriod(euro_event_time) ? euroImg : PopImg}
-					alt="Mystery Box"
-				/>
+				<img src={PopImg} alt="Mystery Box" />
 			</Link>
 		</div>
 	) : null;

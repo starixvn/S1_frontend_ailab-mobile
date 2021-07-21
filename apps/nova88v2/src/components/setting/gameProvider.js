@@ -112,10 +112,12 @@ const defPlatfrom = [
 	{
 		...defGameInfo.amb,
 		imgName: "amb"
+	},
+	{
+		...defGameInfo.Casino_Jili,
+		imgName: "ji"
 	}
 ];
-//
-//
 
 const GameProvider = ({ userInfo, i18n }) => {
 	const [showingTpIds, setShowingTpIds] = useState([]);

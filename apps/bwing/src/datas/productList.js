@@ -77,7 +77,8 @@ export const defGameInfo = {
 		tpId: 16,
 		gameId: "AT04"
 	},
-	kingMaker: { tpId: 11 }
+	kingMaker: { tpId: 11 },
+	Casino_Jili: { tpId: 32 }
 };
 
 const gameList = langId => [
@@ -210,9 +211,5 @@ const gameList = langId => [
 		]
 	}
 ];
-
-export const euro_event_time = {
-	endDate: "2021/07/13 12:00:00"
-};
 
 export default gameList;

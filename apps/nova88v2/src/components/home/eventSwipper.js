@@ -5,7 +5,6 @@ import { Autoplay, useGetBanner } from "../common/swipperBanner";
 import api from "../../service/api";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import useHandleLogin from "../hook/useHandleLogin";
-import { cloudBannerImgURL } from "../../config";
 
 const swipperParam = {
 	spaceBetween: 30,

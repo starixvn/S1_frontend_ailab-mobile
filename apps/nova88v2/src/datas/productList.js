@@ -33,6 +33,7 @@ import casino_SG from "../styles/img/sg.png";
 import casino_PG from "../styles/img/pg.png";
 import casino_OW from "../styles/img/ow.png";
 import casino_PT from "../styles/img/pt.png";
+import casino_Jili from "../styles/img/ji.png";
 // import casino_KISS from "../styles/img/kiss.png";
 
 import fishing_CQ9_AB3 from "../styles/img/pd.png";
@@ -61,6 +62,7 @@ import path from "../path";
 import { siteInfo } from "../config";
 import { defPopBoxType } from "../components/common/popbox";
 import { isEventPeriod } from "../components/common/common";
+import { eventTime } from "../components/common/eventTime";
 
 export const productList = {
 	kiss918: {
@@ -74,22 +76,6 @@ export const productList = {
 
 const defIconType = {
 	new: " icon-new"
-};
-
-export const eventTime = {
-	casino_PT: { endDate: "2021/06/20 11:00:00" },
-	liveCasino_PT: { endDate: "2021/07/08 11:00:00" },
-	amb: { endDate: "2021/07/08 11:00:00" },
-	km: { endDate: "2021/07/08 11:00:00" },
-	nineW: { endDate: "2021/07/31 11:00:00" },
-	new_indo_wap: { endDate: "2021/07/08 11:00:00" },
-	euro: {
-		endDate: "2021/07/13 12:00:00"
-	}
-};
-
-export const euro_event_time = {
-	endDate: "2021/07/13 12:00:00"
 };
 
 const gameList = ({ langId, currencyName }) => {
@@ -269,6 +255,19 @@ const gameList = ({ langId, currencyName }) => {
 							path: path.casino.root
 						},
 						{
+							...defGameInfo.Casino_Jili,
+							parameter: defGameInfo.Casino_Jili,
+							spanText: "Jili",
+							path: path.casino.root,
+							img: casino_Jili,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(eventTime.jili)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_PG,
 							parameter: defGameInfo.Casino_PG,
 							spanText: "PG",
@@ -336,6 +335,14 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "OW",
 							img: casino_OW
 						}
+						// {
+						// ...defGameInfo.Casino_918Kiss,
+						// parameter:defGameInfo.Casino_918Kiss,
+						// spanText: "918Kiss",
+						//     img: casino_KISS,
+						//     path: path.kiss918.root,
+						//     needLogin: true
+						// },
 					]
 				},
 				{
@@ -613,6 +620,19 @@ const gameList = ({ langId, currencyName }) => {
 							path: path.casino.root
 						},
 						{
+							...defGameInfo.Casino_Jili,
+							parameter: defGameInfo.Casino_Jili,
+							spanText: "Jili",
+							img: casino_Jili,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(eventTime.jili)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_SG,
 							parameter: defGameInfo.Casino_SG,
 							spanText: "SG",
@@ -687,9 +707,9 @@ const gameList = ({ langId, currencyName }) => {
 						// ...defGameInfo.Casino_918Kiss,
 						// parameter:defGameInfo.Casino_918Kiss,
 						// spanText: "918Kiss",
-						// 	img: casino_KISS,
-						// 	path: path.kiss918.root,
-						// 	needLogin: true
+						//     img: casino_KISS,
+						//     path: path.kiss918.root,
+						//     needLogin: true
 						// },
 					]
 				},
@@ -967,6 +987,19 @@ const gameList = ({ langId, currencyName }) => {
 							path: path.casino.root
 						},
 						{
+							...defGameInfo.Casino_Jili,
+							parameter: defGameInfo.Casino_Jili,
+							spanText: "Jili",
+							img: casino_Jili,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(eventTime.jili)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_PP,
 							parameter: defGameInfo.Casino_PP,
 							spanText: "PP",
@@ -1028,20 +1061,20 @@ const gameList = ({ langId, currencyName }) => {
 							img: casino_GPI,
 							path: path.casino.root
 						},
-						// {
-						// ...defGameInfo.Casino_918Kiss,
-						// parameter:defGameInfo.Casino_918Kiss,
-						// spanText: "918Kiss",
-						// 	img: casino_KISS,
-						// 	path: path.kiss918.root,
-						// 	needLogin: true
-						// },
 						{
 							...defGameInfo.Casino_OW,
 							parameter: defGameInfo.Casino_OW,
 							spanText: "OW",
 							img: casino_OW
 						}
+						// {
+						// ...defGameInfo.Casino_918Kiss,
+						// parameter:defGameInfo.Casino_918Kiss,
+						// spanText: "918Kiss",
+						//     img: casino_KISS,
+						//     path: path.kiss918.root,
+						//     needLogin: true
+						// },
 					]
 				},
 				{
@@ -1305,6 +1338,19 @@ const gameList = ({ langId, currencyName }) => {
 							path: path.casino.root
 						},
 						{
+							...defGameInfo.Casino_Jili,
+							parameter: defGameInfo.Casino_Jili,
+							spanText: "Jili",
+							img: casino_Jili,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(eventTime.jili)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_PG,
 							parameter: defGameInfo.Casino_PG,
 							spanText: "PG",
@@ -1372,6 +1418,14 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "OW",
 							img: casino_OW
 						}
+						// {
+						// ...defGameInfo.Casino_918Kiss,
+						// parameter:defGameInfo.Casino_918Kiss,
+						// spanText: "918Kiss",
+						//     img: casino_KISS,
+						//     path: path.kiss918.root,
+						//     needLogin: true
+						// },
 					]
 				},
 				{
@@ -1655,6 +1709,19 @@ const gameList = ({ langId, currencyName }) => {
 							]
 						},
 						{
+							...defGameInfo.Casino_Jili,
+							parameter: defGameInfo.Casino_Jili,
+							spanText: "Jili",
+							img: casino_Jili,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(eventTime.jili)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_PP,
 							parameter: defGameInfo.Casino_PP,
 							spanText: "PP",
@@ -1710,20 +1777,20 @@ const gameList = ({ langId, currencyName }) => {
 							img: casino_PG,
 							path: path.casino.root
 						},
-						// {
-						// ...defGameInfo.Casino_918Kiss,
-						// parameter:defGameInfo.Casino_918Kiss,
-						// spanText: "918Kiss",
-						// 	img: casino_KISS,
-						// 	path: path.kiss918.root,
-						// 	needLogin: true
-						// },
 						{
 							...defGameInfo.Casino_OW,
 							parameter: defGameInfo.Casino_OW,
 							spanText: "OW",
 							img: casino_OW
 						}
+						// {
+						// ...defGameInfo.Casino_918Kiss,
+						// parameter:defGameInfo.Casino_918Kiss,
+						// spanText: "918Kiss",
+						//     img: casino_KISS,
+						//     path: path.kiss918.root,
+						//     needLogin: true
+						// },
 					]
 				},
 				{
@@ -1903,7 +1970,8 @@ export const defGameInfo = {
 	},
 	kingMaker: { tpId: 11 },
 	amb: { tpId: 30 },
-	nineW: { tpId: 31 }
+	nineW: { tpId: 31 },
+	Casino_Jili: { tpId: 32 }
 };
 
 export const defCol = {

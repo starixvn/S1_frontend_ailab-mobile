@@ -14,12 +14,10 @@ import {
 import path from "../../path";
 import Loading from "./loading";
 import { isEventPeriod, readCookie } from "./common";
-import { eventTime as angPowEventTime } from "../../pages/angPow";
 import eventImg from "../../styles/img/event/eventlink_en.png";
 import eventVNImg from "../../styles/img/event/eventlink_vn.png";
 import MysteryBox from "../mysteryBox/homePopBox";
-import { eventTime as mysteryBoxEventTime } from "../../pages/mysteryBox";
-import { eventTime } from "../../datas/productList";
+import { eventTime } from "./eventTime";
 
 const defPageInfo = {
 	default: {
@@ -129,9 +127,7 @@ const defPageInfo = {
 	},
 	mysteryBox: {
 		titleKey: "lbl_MysteryBox_EventTitle",
-		className: `main event goldbox${
-			isEventPeriod(eventTime.euro) ? " euro" : ""
-		}`,
+		className: `main event goldbox`,
 		hideLogo: true
 	},
 	vip: {
@@ -214,12 +210,7 @@ const Layout = ({ children }) => {
 				{children}
 				{loading ? <Loading /> : null}
 			</main>
-			{isEventPeriod(angPowEventTime.angPow) ? (
-				<AngPow userInfo={userInfo} />
-			) : null}
-			{isEventPeriod(mysteryBoxEventTime.mysteryBox) &&
-			mysteryBox &&
-			root ? (
+			{isEventPeriod(eventTime.mysteryBox) && mysteryBox && root ? (
 				<MysteryBox userInfo={userInfo} setMysteryBox={setMysteryBox} />
 			) : null}
 			<Footer />

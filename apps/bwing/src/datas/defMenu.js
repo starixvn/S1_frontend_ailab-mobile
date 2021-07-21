@@ -3,6 +3,7 @@ import { siteInfo } from "../config";
 import path from "../path";
 import { defGameInfo } from "./productList";
 import { isEventPeriod } from "../components/common/common";
+import { eventTime } from "../components/common/eventTime";
 
 import game_SabaClub from "../styles/img/sabaclub.png";
 import game_Keno from "../styles/img/keno.png";
@@ -45,12 +46,6 @@ export const defIconType = {
 	live: " liveIcon",
 	new: " newicon",
 	new_nav: " icon icon-newicon"
-};
-
-const eventTime = {
-	new_BTI: { endDate: "2021/06/28 11:00:00" },
-	liveCasino_pt: { endDate: "2021/07/08 11:00:00" },
-	new_Km: { endDate: "2021/07/08 11:00:00" }
 };
 
 export const productList = langId => {
