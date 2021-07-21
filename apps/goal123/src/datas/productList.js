@@ -37,6 +37,7 @@ import Casino_PP from "../styles/img/hotgame-m/slots/slot-pp.png";
 import Casino_PG from "../styles/img/hotgame-m/slots/slot-pg.png";
 import Casino_OW from "../styles/img/hotgame-m/slots/slots-ow.png";
 import Casino_PT from "../styles/img/hotgame-m/slots/slot-pt.png";
+import Casino_Jili from "../styles/img/hotgame-m/slots/slot-jili.png";
 
 import LIVEcasino_N2Live from "../styles/img/hotgame-m/livecasino/livecasino-n2live.png";
 import LIVEcasino_WM from "../styles/img/hotgame-m/livecasino/livecasino-wm.png";
@@ -99,7 +100,8 @@ export const defGameInfo = {
 	Casino_JOKER: { tpId: 9 },
 	Indo4d: { gameId: 223, tpId: 1 },
 	NumberGame: { gameId: 161, tpId: 1 },
-	kingMaker: { tpId: 11 }
+	kingMaker: { tpId: 11 },
+	Casino_Jili: { tpId: 32 }
 };
 
 const defIconType = {
@@ -112,7 +114,8 @@ export const eventTime = {
 	liveCasino_pt: { endDate: "2021/07/08 11:00:00" },
 	new_BTI: { endDate: "2021/06/28 11:00:00" },
 	new_Km: { endDate: "2021/07/08 11:00:00" },
-	euro: { endDate: "2021/07/13 12:00:00" }
+	euro: { endDate: "2021/07/13 12:00:00" },
+	jili: { endDate: "2021/07/18 11:00:00" }
 };
 
 export const defCol = {
@@ -338,6 +341,19 @@ const gameList = [
 					{
 						icon: defIconType.new,
 						inPeriod: isEventPeriod(eventTime.casino_pt)
+					}
+				]
+			},
+			{
+				...defGameInfo.Casino_Jili,
+				parameter: defGameInfo.Casino_Jili,
+				spanText: "Jili",
+				img: Casino_Jili,
+				path: path.casino.root,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.jili)
 					}
 				]
 			},
