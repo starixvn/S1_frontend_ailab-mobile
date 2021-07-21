@@ -2038,5 +2038,10 @@ export const slotPlatfrom = [
 		...defGameInfo.Casino_PT,
 		path: path.casino.root,
 		imgName: "pt"
+	},
+	{
+		...defGameInfo.Casino_Jili,
+		path: path.casino.root,
+		imgName: "ji"
 	}
 ];
