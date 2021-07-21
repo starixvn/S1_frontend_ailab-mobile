@@ -78,6 +78,18 @@ const defIconType = {
 	new: " icon-new"
 };
 
+export const defTpCategoryId = {
+	All: 0,
+	Sports: 1,
+	Slots: 2,
+	LiveCasino: 3,
+	Fishing: 4,
+	Cockfighting: 5,
+	Lottery: 6,
+	VirtualSports: 7,
+	Poker: 8
+};
+
 const gameList = ({ langId, currencyName }) => {
 	let list = [];
 	switch (currencyName) {
@@ -87,6 +99,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "sports",
 					categoryIcon: "soccer",
 					translateKey: "lbl_Sports",
+					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.Soccer,
@@ -148,6 +161,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "virtualsports",
 					categoryIcon: "e-sports",
 					translateKey: "lbl_eSports",
+					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.ESportAll,
@@ -180,6 +194,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "livecasino",
 					categoryIcon: "livecasino",
 					translateKey: "lbl_LiveCasino",
+					tpCategoryId: defTpCategoryId.LiveCasino,
 					items: [
 						{
 							...defGameInfo.Casino_PT,
@@ -246,6 +261,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "slot",
 					categoryIcon: "icon_777",
 					translateKey: "lbl_Casino",
+					tpCategoryId: defTpCategoryId.Slots,
 					items: [
 						{
 							...defGameInfo.Casino_PP,
@@ -349,6 +365,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "poker",
 					categoryIcon: "casino",
 					translateKey: "lbl_Poker",
+					tpCategoryId: defTpCategoryId.Poker,
 					popBox: {
 						needLogin: true,
 						title: "lbl_Poker",
@@ -360,6 +377,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "play",
 					categoryIcon: "play",
 					translateKey: "lbl_Games",
+					tpCategoryId: defTpCategoryId.Poker,
 					items: [
 						{
 							...defGameInfo.amb,
@@ -389,6 +407,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "game",
 					categoryIcon: "game",
 					translateKey: "lbl_Fishing",
+					tpCategoryId: defTpCategoryId.Fishing,
 					items: [
 						{
 							...defGameInfo.FishingSGW,
@@ -416,6 +435,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "kelo",
 					categoryIcon: "kelo",
 					translateKey: "lbl_Lottery",
+					tpCategoryId: defTpCategoryId.Lottery,
 					items: [
 						{
 							...defGameInfo.Indo4d,
@@ -467,6 +487,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "sports",
 					categoryIcon: "soccer",
 					translateKey: "lbl_Sports",
+					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.Soccer,
@@ -513,6 +534,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "virtualsports",
 					categoryIcon: "e-sports",
 					translateKey: "lbl_eSports",
+					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.ESportAll,
@@ -545,6 +567,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "livecasino",
 					categoryIcon: "livecasino",
 					translateKey: "lbl_LiveCasino",
+					tpCategoryId: defTpCategoryId.LiveCasino,
 					items: [
 						{
 							...defGameInfo.Casino_PT,
@@ -611,6 +634,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "slot",
 					categoryIcon: "icon_777",
 					translateKey: "lbl_Casino",
+					tpCategoryId: defTpCategoryId.Slots,
 					items: [
 						{
 							...defGameInfo.Casino_PP,
@@ -717,6 +741,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "poker",
 					categoryIcon: "casino",
 					translateKey: "lbl_Poker",
+					tpCategoryId: defTpCategoryId.Poker,
 					popBox: {
 						needLogin: true,
 						title: "lbl_Poker",
@@ -728,6 +753,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "play",
 					categoryIcon: "play",
 					translateKey: "lbl_Games",
+					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.kingMaker,
@@ -757,6 +783,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "game",
 					categoryIcon: "game",
 					translateKey: "lbl_Fishing",
+					tpCategoryId: defTpCategoryId.Fishing,
 					items: [
 						{
 							...defGameInfo.FishingGG,
@@ -784,6 +811,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "kelo",
 					categoryIcon: "kelo",
 					translateKey: "lbl_Lottery",
+					tpCategoryId: defTpCategoryId.Lottery,
 					items: [
 						{
 							...defGameInfo.Indo4d,
@@ -834,6 +862,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "sports",
 					categoryIcon: "soccer",
 					translateKey: "lbl_Sports",
+					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.Soccer,
@@ -880,6 +909,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "virtualsports",
 					categoryIcon: "e-sports",
 					translateKey: "lbl_eSports",
+					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.ESportAll,
@@ -912,6 +942,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "livecasino",
 					categoryIcon: "livecasino",
 					translateKey: "lbl_LiveCasino",
+					tpCategoryId: defTpCategoryId.LiveCasino,
 					items: [
 						{
 							...defGameInfo.Casino_PT,
@@ -978,6 +1009,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "slot",
 					categoryIcon: "icon_777",
 					translateKey: "lbl_Casino",
+					tpCategoryId: defTpCategoryId.Slots,
 					items: [
 						{
 							...defGameInfo.Casino_PG,
@@ -1081,6 +1113,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "poker",
 					categoryIcon: "casino",
 					translateKey: "lbl_Poker",
+					tpCategoryId: defTpCategoryId.Poker,
 					popBox: {
 						needLogin: true,
 						title: "lbl_Poker",
@@ -1092,6 +1125,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "play",
 					categoryIcon: "play",
 					translateKey: "lbl_Games",
+					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.kingMaker,
@@ -1121,6 +1155,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "game",
 					categoryIcon: "game",
 					translateKey: "lbl_Fishing",
+					tpCategoryId: defTpCategoryId.Fishing,
 					items: [
 						{
 							...defGameInfo.FishingSGW,
@@ -1148,6 +1183,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "kelo",
 					categoryIcon: "kelo",
 					translateKey: "lbl_Lottery",
+					tpCategoryId: defTpCategoryId.Lottery,
 					items: [
 						{
 							...defGameInfo.Indo4d,
@@ -1199,6 +1235,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "sports",
 					categoryIcon: "soccer",
 					translateKey: "lbl_Sports",
+					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.Soccer,
@@ -1245,6 +1282,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "virtualsports",
 					categoryIcon: "e-sports",
 					translateKey: "lbl_eSports",
+					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.ESportAll,
@@ -1277,6 +1315,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "livecasino",
 					categoryIcon: "livecasino",
 					translateKey: "lbl_LiveCasino",
+					tpCategoryId: defTpCategoryId.LiveCasino,
 					items: [
 						{
 							...defGameInfo.LIVEcasinoAE,
@@ -1329,6 +1368,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "slot",
 					categoryIcon: "icon_777",
 					translateKey: "lbl_Casino",
+					tpCategoryId: defTpCategoryId.Slots,
 					items: [
 						{
 							...defGameInfo.Casino_PP,
@@ -1432,6 +1472,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "poker",
 					categoryIcon: "casino",
 					translateKey: "lbl_Poker",
+					tpCategoryId: defTpCategoryId.Poker,
 					popBox: {
 						needLogin: true,
 						title: "lbl_Poker",
@@ -1443,6 +1484,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "play",
 					categoryIcon: "play",
 					translateKey: "lbl_Games",
+					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.amb,
@@ -1472,6 +1514,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "game",
 					categoryIcon: "game",
 					translateKey: "lbl_Fishing",
+					tpCategoryId: defTpCategoryId.Fishing,
 					items: [
 						{
 							...defGameInfo.FishingSGW,
@@ -1499,6 +1542,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "kelo",
 					categoryIcon: "kelo",
 					translateKey: "lbl_Lottery",
+					tpCategoryId: defTpCategoryId.Lottery,
 					items: [
 						{
 							...defGameInfo.Indo4d,
@@ -1550,6 +1594,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "sports",
 					categoryIcon: "soccer",
 					translateKey: "lbl_Sports",
+					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.Soccer,
@@ -1596,6 +1641,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "virtualsports",
 					categoryIcon: "e-sports",
 					translateKey: "lbl_eSports",
+					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.ESportAll,
@@ -1628,6 +1674,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "livecasino",
 					categoryIcon: "livecasino",
 					translateKey: "lbl_LiveCasino",
+					tpCategoryId: defTpCategoryId.LiveCasino,
 					items: [
 						{
 							...defGameInfo.Casino_PT,
@@ -1694,6 +1741,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "slot",
 					categoryIcon: "icon_777",
 					translateKey: "lbl_Casino",
+					tpCategoryId: defTpCategoryId.Slots,
 					items: [
 						{
 							...defGameInfo.Casino_PT,
@@ -1797,6 +1845,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "play",
 					categoryIcon: "play",
 					translateKey: "lbl_Games",
+					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.kingMaker,
@@ -1826,6 +1875,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "game",
 					categoryIcon: "game",
 					translateKey: "lbl_Fishing",
+					tpCategoryId: defTpCategoryId.Fishing,
 					items: [
 						{
 							...defGameInfo.Fishing_AB3,
@@ -1853,6 +1903,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "kelo",
 					categoryIcon: "kelo",
 					translateKey: "lbl_Lottery",
+					tpCategoryId: defTpCategoryId.Lottery,
 					items: [
 						{
 							...defGameInfo.Indo4d,
@@ -1881,6 +1932,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "poker",
 					categoryIcon: "casino",
 					translateKey: "lbl_Poker",
+					tpCategoryId: defTpCategoryId.Poker,
 					popBox: {
 						needLogin: true,
 						title: "lbl_Poker",

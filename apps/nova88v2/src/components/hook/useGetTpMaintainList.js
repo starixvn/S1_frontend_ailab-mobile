@@ -7,8 +7,14 @@ export const useGetTpMaintainList = () => {
 		let isMounted = true;
 		api.tp.GetTpMaintainList().then(res => {
 			if (res.data.errorCode === 0 && isMounted) {
-				const arr = res.data?.data.map(el => el.tpId);
-				setMaintainList(arr);
+				const arr = res.data?.data.map(el => ({
+					tpId: el.tpId,
+					tpCategoryId: el.tpCategoryId
+				}));
+				const set = new Set(arr?.map(item => JSON.stringify(item)));
+				const _arr = [...set]?.map(item => JSON.parse(item));
+
+				setMaintainList(_arr);
 			}
 		});
 

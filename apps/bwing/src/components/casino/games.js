@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { userInfoContext } from "../common/context";
 import Loading from "../common/loading";
 import { useGetTpMaintainList } from "../hook/useGetTpMaintainList";
-import forgetPwd from "../login/forgetPwd";
+import { defTpCategoryId } from "../../datas/defMenu";
 
 const Games = props => {
 	const { userInfo } = useContext(userInfoContext);
@@ -24,7 +24,12 @@ const Games = props => {
 	_Games.forEach(g => {
 		const t = TpList[g.tpId];
 		const _isFavorite = Favorite.includes(`${t.value}_${g.gameId}`);
-		const underMaintain = maintainList.includes(g.tpId);
+		const underMaintain = maintainList?.some(
+			m =>
+				m.tpId === g.tpId &&
+				(m.tpCategoryId === defTpCategoryId.Slots ||
+					m.tpCategoryId === defTpCategoryId.All)
+		);
 		games.push(
 			<div
 				className={`info${underMaintain ? " under" : ""}`}

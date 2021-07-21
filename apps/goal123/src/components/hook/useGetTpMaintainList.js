@@ -10,8 +10,14 @@ export const useGetTpMaintainList = () => {
 		api_site_GetTpMaintainList().then(res => {
 			const { errorCode, data } = res.data;
 			if (errorCode === 0 && isMountedRef) {
-				const arr = data?.map(item => item.tpId);
-				setMaintainList(arr);
+				const arr = data?.map(item => ({
+					tpId: item.tpId,
+					tpCategoryId: item.tpCategoryId
+				}));
+				const set = new Set(arr?.map(item => JSON.stringify(item)));
+				const _arr = [...set]?.map(item => JSON.parse(item));
+
+				setMaintainList(_arr);
 			}
 		});
 
