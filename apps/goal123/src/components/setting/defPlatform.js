@@ -121,7 +121,8 @@ const defPlatfrom = [
 	},
 	{
 		...defGameInfo.Casino_MGP,
-		imgName: "mga"
+		imgName: "mga",
+		category: defTpCategoryId.Slots
 	},
 	{
 		...defGameInfo.Casino_Jili,

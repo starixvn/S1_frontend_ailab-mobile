@@ -388,6 +388,7 @@ const gameList = [
 				spanText: "Jili",
 				img: Casino_Jili,
 				path: path.casino.root,
+				tpCategoryId: defTpCategoryId.Slots,
 				eventIcon: [
 					{
 						icon: defIconType.new,
@@ -401,6 +402,7 @@ const gameList = [
 				spanText: "Microgaming",
 				img: Casino_MGP,
 				path: path.casino.root,
+				tpCategoryId: defTpCategoryId.Slots,
 				eventIcon: [
 					{
 						icon: defIconType.new,
