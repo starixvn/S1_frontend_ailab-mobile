@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "../../../route/link";
 import JoinBtn from "./joinBtn";
 import DetailBtn from "./detailBtn";
-import PromoRule from "./promotionCard.promoRule";
+import PromoRule from "./promoRule";
 import { Stamp } from "./stamp";
 import { defUrlParamCols } from "../common/def";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import JoinBtn from "./joinBtn";
 import DetailBtn from "./detailBtn";
-import PromoRule from "./promotionCard.promoRule";
+import PromoRule from "./promoRule";
 import { Stamp } from "./stamp";
 import { CanJoin } from "../common/common";
 import { defUrlParamCols } from "../common/def";

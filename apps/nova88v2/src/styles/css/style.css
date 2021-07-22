@@ -7254,7 +7254,7 @@ span.important {
 }
 
 .event {
-  background: url(../img/euro/bg.jpg) no-repeat top center/120%;
+  background: url(../img/event/mysterybox/bg.jpg) no-repeat top center/120%;
   width: calc(100% - 6vw);
   height: auto;
   padding: 0 3vw 24vw;
@@ -9721,9 +9721,8 @@ span.important {
 
 /*checkspeed*/
 .checkspeed {
-  background: black url(../img/check_speed/bg.jpg) no-repeat center 87px/cover;
-  width: 100%;
-  height: 100%;
+  background: #0339a2 url(../img/check_speed/bg.jpg) no-repeat top center/cover;
+  height: auto;
 }
 
 .checkspeed img {
@@ -9742,12 +9741,9 @@ span.important {
 }
 
 .checkspeed nav {
-  width: 1200px;
-  position: fixed;
-  top: 0;
-  left: 0;
+  width: calc(100% - 6vw);
+  padding: 3vw;
   background: #03122c;
-  padding: 10px calc((100% - 1200px) / 2);
   border-bottom: 1px solid #2653ae;
 }
 
@@ -9774,13 +9770,13 @@ span.important {
   background: #2653ae;
   padding: 5px 10px;
   border-radius: 5px;
+  font-size: 3vw;
 }
 
 .checkspeed .wallpaper {
-  width: 1200px;
-  position: absolute;
-  left: 50%;
-  margin-left: -600px;
+  width: 100%;
+  position: unset;
+  margin-left: unset;
 }
 
 .checkspeed .wallpaper .logo {
@@ -9790,7 +9786,8 @@ span.important {
 }
 
 .checkspeed .wallpaper .module {
-  margin-top: 420px;
+  width: 95vw;
+  margin: 7vw auto 0;
   border-radius: 5px;
   position: relative;
   padding: 20px;
@@ -9809,6 +9806,13 @@ span.important {
 }
 
 .checkspeed .wallpaper .module > div {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9821,20 +9825,20 @@ span.important {
 .checkspeed .wallpaper .module > div.top button > div {
   margin-top: -30px;
   text-shadow: 0.1em 0.1em 0em black;
-  font-size: 14px;
+  font-size: 4vw;
 }
 
 .checkspeed .wallpaper .module > div.top > div {
   text-align: center;
-  margin: 15px 15px 0 0;
+  margin: 15px 0 0 0;
 }
 
 .checkspeed .wallpaper .module > div.top > div > div {
-  font-size: 20px;
+  font-size: 5vw;
 }
 
 .checkspeed .wallpaper .module > div.top > div > div:nth-child(2) {
-  font-size: 46px;
+  font-size: 9vw;
   font-weight: bold;
   letter-spacing: 3px;
   text-shadow: 0 0 0.2em #2b7bdd;
@@ -9852,10 +9856,6 @@ span.important {
       -ms-flex: 1;
           flex: 1;
   font-size: 16px;
-}
-
-.checkspeed .wallpaper .module > .bottom > div.left {
-  margin-right: 10px;
 }
 
 .checkspeed .wallpaper .module > .bottom > div.left > div > div {
@@ -9883,13 +9883,13 @@ span.important {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 360px;
+  width: 40vw;
 }
 
 .checkspeed .wallpaper .module > .bottom > div.left > div > div > button, .checkspeed .wallpaper .module > .bottom > div.left > div > div > a {
   background-color: #f77900;
   border-radius: 5px;
-  padding: 8px 10px;
+  padding: 1vw;
   color: white;
   font-family: 'Microsoft YaHei',sans-serif;
   font-size: xx-small;
@@ -9899,10 +9899,6 @@ span.important {
 .checkspeed .wallpaper .module > .bottom > div.left > div:nth-child(2) {
   background: rgba(62, 99, 181, 0.6);
   border-radius: 5px;
-}
-
-.checkspeed .wallpaper .module > .bottom > div.right {
-  border-left: 1px solid #2653ae;
 }
 
 .checkspeed .wallpaper .module > .bottom > div.right > div:nth-child(2) {
@@ -9927,86 +9923,17 @@ span.important {
   background: linear-gradient(#0639b4, #062178);
   border-radius: 5px;
   padding: 8px 10px;
-  float: right;
+  font-size: 4vw;
+  width: 100%;
 }
 
 .checkspeed .wallpaper .module > .bottom > div > div {
   padding: 15px;
+  font-size: 3vw;
 }
 
 .checkspeed .wallpaper .module > .bottom > div > div > div {
   margin-bottom: 15px;
-}
-
-@media screen and (max-width: 768px), (orientation: portrait) {
-  .checkspeed {
-    background: #0339a2 url(../img/check_speed/bg.jpg) no-repeat top center/cover;
-    height: auto;
-  }
-  .checkspeed .wallpaper {
-    width: 100%;
-    position: unset;
-    margin-left: unset;
-  }
-  .checkspeed .wallpaper nav {
-    width: calc(100% - 6vw);
-    padding: 3vw;
-    position: unset;
-  }
-  .checkspeed .wallpaper nav .logo {
-    margin: 0 auto;
-  }
-  .checkspeed .wallpaper nav .logo img {
-    width: 35vw;
-  }
-  .checkspeed .wallpaper nav button {
-    font-size: 3vw;
-  }
-  .checkspeed .wallpaper .module {
-    width: 95vw;
-    margin: 7vw auto 0;
-  }
-  .checkspeed .wallpaper .module > div {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-flow: column;
-            flex-flow: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-  .checkspeed .wallpaper .module > div.top > div {
-    margin-right: 0;
-  }
-  .checkspeed .wallpaper .module > div.top > div > div {
-    font-size: 5vw;
-  }
-  .checkspeed .wallpaper .module > div.top > div > div:nth-child(2) {
-    font-size: 9vw;
-  }
-  .checkspeed .wallpaper .module > div.top > button > div {
-    font-size: 4vw;
-  }
-  .checkspeed .wallpaper .module > div.bottom > div.left {
-    margin-right: 0;
-  }
-  .checkspeed .wallpaper .module > div.bottom > div.left > div > div > div {
-    max-width: 40vw;
-  }
-  .checkspeed .wallpaper .module > div.bottom > div.left > div > div > button, .checkspeed .wallpaper .module > div.bottom > div.left > div > div > a {
-    padding: 1vw 10px;
-  }
-  .checkspeed .wallpaper .module > div.bottom > div.right {
-    border: 0;
-  }
-  .checkspeed .wallpaper .module > div.bottom > div.right button {
-    float: unset;
-    font-size: 4vw;
-    width: 100%;
-  }
-  .checkspeed .wallpaper .module > div.bottom > div > div {
-    font-size: 3vw;
-  }
 }
 
 .slotpopup {
