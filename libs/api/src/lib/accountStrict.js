@@ -22,11 +22,12 @@ export class AccountStrictAPI extends BaseAPI {
 			PhoneNo
 		});
 
-	SetCustBankInfo = ({ AccountName, AccountNo, SysId }) =>
+	SetCustBankInfo = ({ AccountName, AccountNo, SysId, IFSCCode }) =>
 		this.accountStrictRequest.post("/SetCustBankInfo", {
 			AccountName,
 			AccountNo,
-			SysId
+			SysId,
+			IFSCCode
 		});
 
 	DelCustBankInfo = ({ AccountName, AccountNo, SysId }) =>

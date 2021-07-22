@@ -618,6 +618,10 @@
 	"lbl_iOSAuth":"iOS 应用程序验证",
 	"lbl_appHint1":"待 Nova88 App 完成安装",
 	"lbl_appHint2":"单点 “Trust” 或完成以下设定",
-	"lbl_DownloadAppNow": "立即下载 App"
+	"lbl_DownloadAppNow": "立即下载 App",
+	
+	"============IFSC Code===============":"",
+	"lbl_IFSCCode":"IFSC Code",
+	"msg_NeedIFSCCode": "Need IFSC Code"
 
 }

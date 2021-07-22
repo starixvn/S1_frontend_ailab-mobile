@@ -615,6 +615,10 @@
 	"lbl_iOSAuth":"อนุญาตสิทธิ์การเข้าถึงแอป ios",
 	"lbl_appHint1":"เมื่อติดตั้งแอป Nova88 แล้วให้แตะ ”อนุญาต”",
 	"lbl_appHint2":"หรือทำการตั้งค่าตามด้านล่าง",
-	"lbl_DownloadAppNow": "ดาวน์โหลดแอปตอนนี้"
+	"lbl_DownloadAppNow": "ดาวน์โหลดแอปตอนนี้",
+	
+	"============IFSC Code===============":"",
+	"lbl_IFSCCode":"IFSC Code",
+	"msg_NeedIFSCCode": "Need IFSC Code"
 
 }
