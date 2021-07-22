@@ -114,8 +114,14 @@ const defPlatfrom = [
 		imgName: "amb"
 	},
 	{
+		...defGameInfo.Casino_MGP,
+		imgName: "mg",
+		path: path.casino.root
+	},
+	{
 		...defGameInfo.Casino_Jili,
-		imgName: "ji"
+		imgName: "ji",
+		path: path.casino.root
 	}
 ];
 

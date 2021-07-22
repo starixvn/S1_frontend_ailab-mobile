@@ -36,6 +36,7 @@ import liveCasino_EB from "../styles/img/liveGame/liveGame7.png";
 import liveCasino_SA from "../styles/img/liveGame/liveGame8.png";
 import liveCasino_N2 from "../styles/img/liveGame/livegame10.png";
 import liveCasino_PT from "../styles/img/liveGame/livegamePT.png";
+import liveCasino_MGP from "../styles/img/liveGame/liveGameMG.png";
 
 import sabaSports from "../styles/img/sport.png";
 import BTI from "../styles/img/BTI-sport.png";
@@ -147,12 +148,30 @@ export const productList = langId => {
 		},
 		casino: {
 			displayKey: "lbl_Slots",
-			path: path.casino.root
+			path: path.casino.root,
+			eventIcon: [
+				{
+					icon: defIconType.new,
+					inPeriod: isEventPeriod(eventTime.casino_MGP)
+				}
+			]
 		},
 		liveCasino: {
 			displayKey: "lbl_LiveCasino",
 			path: path.liveCasino.root,
 			items: [
+				// {
+				// 	displayKey: "Microgaming",
+				// 	icon: "icon icon-mg",
+				// 	img: liveCasino_MGP,
+				// 	...defGameInfo.Casino_MGP,
+				// 	eventIcon: [
+				// 		{
+				// 			icon: defIconType.new,
+				// 			inPeriod: isEventPeriod(eventTime.liveCasino_MGP)
+				// 		}
+				// 	]
+				// },
 				{
 					displayKey: "Playtech",
 					icon: "icon icon-pt",

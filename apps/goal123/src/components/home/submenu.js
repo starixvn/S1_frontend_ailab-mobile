@@ -144,6 +144,10 @@ const defSubMenus = [
 				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
+				...defGameInfo.Casino_MGP,
+				displayKey: "Microgaming"
+			},
+			{
 				...defGameInfo.LIVEcasinoWM,
 				displayKey: "WM",
 				tpCategoryId: defTpCategoryId.LiveCasino

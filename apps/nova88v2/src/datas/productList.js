@@ -22,6 +22,7 @@ import LIVEcasino_EB from "../styles/img/eb.png";
 // import LIVEcasino_MW from "../styles/img/LIVEcasino_MW.jpg";
 import LIVEcasino_WM from "../styles/img/wm.png";
 import LIVEcasino_PT from "../styles/img/ptc.png";
+import LIVEcasino_MGP from "../styles/img/mgp.png";
 
 import casino_PP from "../styles/img/spp.png";
 import casino_ICG from "../styles/img/icg.png";
@@ -33,6 +34,7 @@ import casino_SG from "../styles/img/sg.png";
 import casino_PG from "../styles/img/pg.png";
 import casino_OW from "../styles/img/ow.png";
 import casino_PT from "../styles/img/pt.png";
+import casino_MGP from "../styles/img/mg.png";
 import casino_Jili from "../styles/img/ji.png";
 // import casino_KISS from "../styles/img/kiss.png";
 
@@ -196,6 +198,19 @@ const gameList = ({ langId, currencyName }) => {
 					translateKey: "lbl_LiveCasino",
 					tpCategoryId: defTpCategoryId.LiveCasino,
 					items: [
+						// {
+						// 	...defGameInfo.Casino_MGP,
+						// 	spanText: "Microgaming",
+						// 	img: LIVEcasino_MGP,
+						// 	eventIcon: [
+						// 		{
+						// 			icon: defIconType.new,
+						// 			inPeriod: isEventPeriod(
+						// 				eventTime.casino_MGP
+						// 			)
+						// 		}
+						// 	]
+						// },
 						{
 							...defGameInfo.Casino_PT,
 							spanText: "PT",
@@ -263,6 +278,21 @@ const gameList = ({ langId, currencyName }) => {
 					translateKey: "lbl_Casino",
 					tpCategoryId: defTpCategoryId.Slots,
 					items: [
+						{
+							...defGameInfo.Casino_MGP,
+							parameter: defGameInfo.Casino_MGP,
+							spanText: "Microgaming",
+							img: casino_MGP,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_MGP
+									)
+								}
+							]
+						},
 						{
 							...defGameInfo.Casino_PP,
 							parameter: defGameInfo.Casino_PP,
@@ -569,6 +599,19 @@ const gameList = ({ langId, currencyName }) => {
 					translateKey: "lbl_LiveCasino",
 					tpCategoryId: defTpCategoryId.LiveCasino,
 					items: [
+						// {
+						// 	...defGameInfo.Casino_MGP,
+						// 	spanText: "Microgaming",
+						// 	img: LIVEcasino_MGP,
+						// 	eventIcon: [
+						// 		{
+						// 			icon: defIconType.new,
+						// 			inPeriod: isEventPeriod(
+						// 				eventTime.casino_MGP
+						// 			)
+						// 		}
+						// 	]
+						// },
 						{
 							...defGameInfo.Casino_PT,
 							spanText: "PT",
@@ -636,6 +679,21 @@ const gameList = ({ langId, currencyName }) => {
 					translateKey: "lbl_Casino",
 					tpCategoryId: defTpCategoryId.Slots,
 					items: [
+						{
+							...defGameInfo.Casino_MGP,
+							parameter: defGameInfo.Casino_MGP,
+							spanText: "Microgaming",
+							img: casino_MGP,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_MGP
+									)
+								}
+							]
+						},
 						{
 							...defGameInfo.Casino_PP,
 							parameter: defGameInfo.Casino_PP,
@@ -944,6 +1002,19 @@ const gameList = ({ langId, currencyName }) => {
 					translateKey: "lbl_LiveCasino",
 					tpCategoryId: defTpCategoryId.LiveCasino,
 					items: [
+						// {
+						// 	...defGameInfo.Casino_MGP,
+						// 	spanText: "Microgaming",
+						// 	img: LIVEcasino_MGP,
+						// 	eventIcon: [
+						// 		{
+						// 			icon: defIconType.new,
+						// 			inPeriod: isEventPeriod(
+						// 				eventTime.casino_MGP
+						// 			)
+						// 		}
+						// 	]
+						// },
 						{
 							...defGameInfo.Casino_PT,
 							spanText: "PT",
@@ -1011,6 +1082,21 @@ const gameList = ({ langId, currencyName }) => {
 					translateKey: "lbl_Casino",
 					tpCategoryId: defTpCategoryId.Slots,
 					items: [
+						{
+							...defGameInfo.Casino_MGP,
+							parameter: defGameInfo.Casino_MGP,
+							spanText: "Microgaming",
+							img: casino_MGP,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_MGP
+									)
+								}
+							]
+						},
 						{
 							...defGameInfo.Casino_PG,
 							parameter: defGameInfo.Casino_PG,
@@ -1317,6 +1403,19 @@ const gameList = ({ langId, currencyName }) => {
 					translateKey: "lbl_LiveCasino",
 					tpCategoryId: defTpCategoryId.LiveCasino,
 					items: [
+						// {
+						// 	...defGameInfo.Casino_MGP,
+						// 	spanText: "Microgaming",
+						// 	img: LIVEcasino_MGP,
+						// 	eventIcon: [
+						// 		{
+						// 			icon: defIconType.new,
+						// 			inPeriod: isEventPeriod(
+						// 				eventTime.casino_MGP
+						// 			)
+						// 		}
+						// 	]
+						// },
 						{
 							...defGameInfo.LIVEcasinoAE,
 							spanText: "AE",
@@ -1370,6 +1469,21 @@ const gameList = ({ langId, currencyName }) => {
 					translateKey: "lbl_Casino",
 					tpCategoryId: defTpCategoryId.Slots,
 					items: [
+						{
+							...defGameInfo.Casino_MGP,
+							parameter: defGameInfo.Casino_MGP,
+							spanText: "Microgaming",
+							img: casino_MGP,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_MGP
+									)
+								}
+							]
+						},
 						{
 							...defGameInfo.Casino_PP,
 							parameter: defGameInfo.Casino_PP,
@@ -1676,6 +1790,19 @@ const gameList = ({ langId, currencyName }) => {
 					translateKey: "lbl_LiveCasino",
 					tpCategoryId: defTpCategoryId.LiveCasino,
 					items: [
+						// {
+						// 	...defGameInfo.Casino_MGP,
+						// 	spanText: "Microgaming",
+						// 	img: LIVEcasino_MGP,
+						// 	eventIcon: [
+						// 		{
+						// 			icon: defIconType.new,
+						// 			inPeriod: isEventPeriod(
+						// 				eventTime.casino_MGP
+						// 			)
+						// 		}
+						// 	]
+						// },
 						{
 							...defGameInfo.Casino_PT,
 							spanText: "PT",
@@ -1743,6 +1870,21 @@ const gameList = ({ langId, currencyName }) => {
 					translateKey: "lbl_Casino",
 					tpCategoryId: defTpCategoryId.Slots,
 					items: [
+						{
+							...defGameInfo.Casino_MGP,
+							parameter: defGameInfo.Casino_MGP,
+							spanText: "Microgaming",
+							img: casino_MGP,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_MGP
+									)
+								}
+							]
+						},
 						{
 							...defGameInfo.Casino_PT,
 							parameter: defGameInfo.Casino_PT,
@@ -1988,6 +2130,7 @@ export const defGameInfo = {
 	LIVEcasinoAG: { tpId: 3, gameId: 3 },
 	LIVEcasinoMW: { tpId: 5, gameId: 105 },
 	Casino_All: { tpId: 0 },
+	Casino_MGP: { tpId: 34 },
 	Casino_PP: { tpId: 5 },
 	casino_ICG: { tpId: 24 },
 	Casino_JOKER: { tpId: 9 },
@@ -2095,5 +2238,10 @@ export const slotPlatfrom = [
 		...defGameInfo.Casino_Jili,
 		path: path.casino.root,
 		imgName: "ji"
+	},
+	{
+		...defGameInfo.Casino_MGP,
+		path: path.casino.root,
+		imgName: "mg"
 	}
 ];
