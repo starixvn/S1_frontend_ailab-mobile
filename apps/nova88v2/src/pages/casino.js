@@ -41,7 +41,6 @@ class Panel extends React.Component {
 			selNav: Object.keys(defNav)?.[props.selNavIdx ?? 0],
 			selProvider: props.tpId,
 			imgUrl: "",
-			maintainList: [],
 			listFixed: false
 		};
 		this.gameList = createRef(null);
@@ -126,13 +125,6 @@ class Panel extends React.Component {
 				});
 			}
 		);
-
-		api.tp.GetTpMaintainList().then(res => {
-			if (res.data.errorCode === 0) {
-				const arr = res.data?.data.map(el => el.tpId);
-				this.setState({ maintainList: arr });
-			}
-		});
 
 		if (this.props.userInfo.isLogin) {
 			api.account.GetFavoriteGame().then(res => {
@@ -447,7 +439,6 @@ class Panel extends React.Component {
 				</div>
 
 				<Games
-					maintainList={this.state.maintainList}
 					SelectGame={this.SelectGame}
 					Games={this.state.displayGames}
 					Favorite={this.state.favorite}

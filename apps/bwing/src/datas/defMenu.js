@@ -36,6 +36,7 @@ import liveCasino_EB from "../styles/img/liveGame/liveGame7.png";
 import liveCasino_SA from "../styles/img/liveGame/liveGame8.png";
 import liveCasino_N2 from "../styles/img/liveGame/livegame10.png";
 import liveCasino_PT from "../styles/img/liveGame/livegamePT.png";
+import liveCasino_MGP from "../styles/img/liveGame/liveGameMG.png";
 
 import sabaSports from "../styles/img/sport.png";
 import BTI from "../styles/img/BTI-sport.png";
@@ -48,6 +49,18 @@ export const defIconType = {
 	new_nav: " icon icon-newicon"
 };
 
+export const defTpCategoryId = {
+	All: 0,
+	Sports: 1,
+	Slots: 2,
+	LiveCasino: 3,
+	Fishing: 4,
+	Cockfighting: 5,
+	Lottery: 6,
+	VirtualSports: 7,
+	Poker: 8
+};
+
 export const productList = langId => {
 	return {
 		sports: {
@@ -57,12 +70,14 @@ export const productList = langId => {
 				{
 					displayKey: "lbl_SabaSport",
 					img: sabaSports,
-					...defGameInfo.Sports
+					...defGameInfo.Sports,
+					tpCategoryId: defTpCategoryId.Sports
 				},
 				{
 					displayKey: "lbl_BTISport",
 					img: BTI,
 					...defGameInfo.BTISport,
+					tpCategoryId: defTpCategoryId.Sports,
 					eventIcon: [
 						{
 							icon: defIconType.new,
@@ -79,12 +94,14 @@ export const productList = langId => {
 				{
 					displayKey: "lbl_V8Poker",
 					img: game_V8Poker,
-					...defGameInfo.V8Poker
+					...defGameInfo.V8Poker,
+					tpCategoryId: defTpCategoryId.Poker
 				},
 				{
 					...defGameInfo.kingMaker,
 					img: kingMaker,
 					displayKey: "lbl_KingMaker",
+					tpCategoryId: defTpCategoryId.Poker,
 					eventIcon: [
 						{
 							icon: defIconType.new,
@@ -95,47 +112,72 @@ export const productList = langId => {
 				{
 					displayKey: "lbl_TraditionalLottery",
 					img: game_One789LotteryTra,
-					...defGameInfo.One789_lottery
+					...defGameInfo.One789_lottery,
+					tpCategoryId: defTpCategoryId.Lottery
 				},
 				{
 					displayKey: "lbl_789Lottery",
 					img: game_One789Lottery,
-					...defGameInfo.One789_lottery_789
+					...defGameInfo.One789_lottery_789,
+					tpCategoryId: defTpCategoryId.Lottery
 				},
 				{
 					displayKey: "lbl_SabaClub",
 					img: game_SabaClub,
-					...defGameInfo.sabaClub
+					...defGameInfo.sabaClub,
+					tpCategoryId: defTpCategoryId.Slots
 				},
 				{
 					displayKey: "lbl_Keno",
 					img: game_Keno,
-					...defGameInfo.Keno
+					...defGameInfo.Keno,
+					tpCategoryId: defTpCategoryId.Lottery
 				},
 				{
 					displayKey: "lbl_Lottery",
 					img: game_Lottery,
-					...defGameInfo.lottery
+					...defGameInfo.lottery,
+					tpCategoryId: defTpCategoryId.Lottery
 				}
 			]
 		},
 		eSports: {
 			displayKey: "lbl_eSports",
-			...defGameInfo.eSports
+			...defGameInfo.eSports,
+			tpCategoryId: defTpCategoryId.Sports
 		},
 		casino: {
 			displayKey: "lbl_Slots",
-			path: path.casino.root
+			path: path.casino.root,
+			eventIcon: [
+				{
+					icon: defIconType.new,
+					inPeriod: isEventPeriod(eventTime.casino_MGP)
+				}
+			]
 		},
 		liveCasino: {
 			displayKey: "lbl_LiveCasino",
 			path: path.liveCasino.root,
 			items: [
+				// {
+				// 	displayKey: "Microgaming",
+				// 	icon: "icon icon-mg",
+				// 	img: liveCasino_MGP,
+				// 	...defGameInfo.Casino_MGP,
+				// 	eventIcon: [
+				// 		{
+				// 			icon: defIconType.new,
+				// 			inPeriod: isEventPeriod(eventTime.liveCasino_MGP)
+				// 		}
+				// 	]
+				// },
 				{
 					displayKey: "Playtech",
 					icon: "icon icon-pt",
 					img: liveCasino_PT,
 					...defGameInfo.Casino_PT,
+					tpCategoryId: defTpCategoryId.LiveCasino,
 					eventIcon: [
 						{
 							icon: defIconType.new,
@@ -148,61 +190,71 @@ export const productList = langId => {
 					displayKey: "N2Live",
 					icon: "icon icon-N2LIVE",
 					img: liveCasino_N2,
-					...defGameInfo.LIVEcasinoN2
+					...defGameInfo.LIVEcasinoN2,
+					tpCategoryId: defTpCategoryId.LiveCasino
 				},
 				{
 					displayKey: "lbl_liveCasino_789SeDie",
 					icon: "icon icon-one789",
 					img: liveCasino_One789,
-					...defGameInfo.LIVEcasinoOne789
+					...defGameInfo.LIVEcasinoOne789,
+					tpCategoryId: defTpCategoryId.LiveCasino
 				},
 				{
 					displayKey: "WM",
 					icon: "icon icon-WM",
 					img: liveCasino_WM,
-					...defGameInfo.LIVEcasinoWM
+					...defGameInfo.LIVEcasinoWM,
+					tpCategoryId: defTpCategoryId.LiveCasino
 				},
 				{
 					displayKey: "AG",
 					icon: "icon icon-AG",
 					img: liveCasino_AG,
-					...defGameInfo.LIVEcasinoAG
+					...defGameInfo.LIVEcasinoAG,
+					tpCategoryId: defTpCategoryId.LiveCasino
 				},
 				{
 					displayKey: "PP",
 					icon: "icon icon-PP",
 					img: liveCasino_PP,
-					...defGameInfo.LIVEcasinoPP
+					...defGameInfo.LIVEcasinoPP,
+					tpCategoryId: defTpCategoryId.LiveCasino
 				},
 				{
 					displayKey: "AE",
 					icon: "icon icon-AE",
 					img: liveCasino_AE,
-					...defGameInfo.LIVEcasinoAE
+					...defGameInfo.LIVEcasinoAE,
+					tpCategoryId: defTpCategoryId.LiveCasino
 				},
 				{
 					displayKey: "DG",
 					icon: "icon icon-DG",
 					img: liveCasino_DG,
-					...defGameInfo.LIVEcasinoDG
+					...defGameInfo.LIVEcasinoDG,
+					tpCategoryId: defTpCategoryId.LiveCasino
 				},
 				{
 					displayKey: "AB",
 					icon: "icon icon-AB",
 					img: liveCasino_AB,
-					...defGameInfo.LIVEcasinoAB
+					...defGameInfo.LIVEcasinoAB,
+					tpCategoryId: defTpCategoryId.LiveCasino
 				},
 				{
 					displayKey: "eBET",
 					icon: "icon icon-EB",
 					img: liveCasino_EB,
-					...defGameInfo.LIVEcasinoEB
+					...defGameInfo.LIVEcasinoEB,
+					tpCategoryId: defTpCategoryId.LiveCasino
 				},
 				{
 					displayKey: "SA",
 					icon: "icon icon-SA",
 					img: liveCasino_SA,
-					...defGameInfo.LIVEcasinoSA
+					...defGameInfo.LIVEcasinoSA,
+					tpCategoryId: defTpCategoryId.LiveCasino
 				}
 			]
 		},
@@ -214,49 +266,57 @@ export const productList = langId => {
 					displayKey: "lbl_Paradise",
 					img: fishing_CQ9_AB3,
 					icon: "icon icon-cq9",
-					...defGameInfo.Fishing_AB3
+					...defGameInfo.Fishing_AB3,
+					tpCategoryId: defTpCategoryId.Fishing
 				},
 				{
 					displayKey: "lbl_Oneshot_Fishing",
 					img: fishing_CQ9_AT01,
 					icon: "icon icon-cq9",
-					...defGameInfo.Fishing_AT01
+					...defGameInfo.Fishing_AT01,
+					tpCategoryId: defTpCategoryId.Fishing
 				},
 				{
 					displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
 					img: fishing_ICG_DB,
 					icon: "icon icon-ICG",
-					...defGameInfo.ICG_DRAGONBALL_FISHING
+					...defGameInfo.ICG_DRAGONBALL_FISHING,
+					tpCategoryId: defTpCategoryId.Fishing
 				},
 				{
 					displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS",
 					img: fishing_ICG_FOS,
 					icon: "icon icon-ICG",
-					...defGameInfo.ICG_FISHING_OF_SAVIORS
+					...defGameInfo.ICG_FISHING_OF_SAVIORS,
+					tpCategoryId: defTpCategoryId.Fishing
 				},
 				{
 					displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS",
 					img: fishing_ICG_TTATP,
 					icon: "icon icon-ICG",
-					...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS
+					...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
+					tpCategoryId: defTpCategoryId.Fishing
 				},
 				{
 					displayKey: "lbl_FishingGG",
 					icon: "icon icon-gg",
 					img: fishing_GG,
-					...defGameInfo.Fishing
+					...defGameInfo.Fishing,
+					tpCategoryId: defTpCategoryId.Fishing
 				},
 				{
 					displayKey: "lbl_FishingSG1",
 					icon: "icon icon-SG",
 					img: fishing_SG,
-					...defGameInfo.Fishing_SG
+					...defGameInfo.Fishing_SG,
+					tpCategoryId: defTpCategoryId.Fishing
 				},
 				{
 					displayKey: "lbl_FishingSG2",
 					icon: "icon icon-SG",
 					img: fishing_SGwar,
-					...defGameInfo.Fishing_SGW
+					...defGameInfo.Fishing_SGW,
+					tpCategoryId: defTpCategoryId.Fishing
 				}
 			]
 		},

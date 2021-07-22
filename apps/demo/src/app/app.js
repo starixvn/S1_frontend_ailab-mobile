@@ -1,9 +1,9 @@
 import React from "react";
 import "./app.css";
-import { ReactComponent as Logo } from "./logo.svg";
-import star from "./star.svg";
 import { Route, Link } from "react-router-dom";
 import { Promotion } from "@ailab-mobile/promotion";
+import { ReactComponent as Logo } from "./logo.svg";
+import star from "./star.svg";
 
 export const App = () => {
 	/*
@@ -84,11 +84,12 @@ export const App = () => {
 nx g @nrwl/react:lib ui
 
 # Add a component
-nx g @nrwl/react:component xyz --project ui`}</pre>
+nx g @nrwl/react:component xyz --project ui`}
+     </pre>
 				</details>
 				<details>
 					<summary>View dependency graph</summary>
-					<pre>{`nx dep-graph`}</pre>
+					<pre>nx dep-graph</pre>
 				</details>
 				<details>
 					<summary>Run affected commands</summary>
@@ -100,7 +101,8 @@ nx affected:test
 
 # run e2e tests for current changes
 nx affected:e2e
-  `}</pre>
+  `}
+     </pre>
 				</details>
 			</main>
 

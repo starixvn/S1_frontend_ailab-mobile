@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
 import { Link } from "../../route/link";
-import gameList, { defCol } from "../../datas/productList";
+import gameList, { defCol, defTpCategoryId } from "../../datas/productList";
 import { getEventIcon } from "./category";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import useHandleLogin from "../hook/useHandleLogin";
@@ -48,13 +48,18 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 		}
 	}, [setShowningTpIds, userInfo.isLogin]);
 
-	const showSubPanel = ({ panel, popBox }) => {
+	const showSubPanel = ({ panel, popBox, tpCategoryId }) => {
 		if (popBox) {
 			if (popBox.needLogin && !userInfo.isLogin) {
 				handleLogin();
 			} else if (
 				maintainList &&
-				maintainList?.some(m => m.tpId === popBox.tpId)
+				maintainList?.some(
+					m =>
+						m.tpId === popBox.tpId &&
+						(m.tpCategoryId === tpCategoryId ||
+							m.tpCategoryId === defTpCategoryId.All)
+				)
 			) {
 				setPopBox({
 					isOpen: true,
@@ -138,7 +143,8 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 					className={selectedCol === item.category ? "active" : ""}
 					onClick={showSubPanel.bind(this, {
 						panel: item.category,
-						popBox: item?.popBox
+						popBox: item?.popBox,
+						tpCategoryId: item.tpCategoryId
 					})}>
 					<i className={`icon icon-${item.categoryIcon}`} />
 					<div>{i18n[item.translateKey]}</div>
@@ -173,6 +179,12 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 				return showItem;
 			})
 			.map(subItem => {
+				const isMaintain = maintainList?.some(
+					m =>
+						m.tpId === subItem.tpId &&
+						(m.tpCategoryId === item.tpCategoryId ||
+							m.tpCategoryId === defTpCategoryId.All)
+				);
 				return (
 					<SubGame
 						key={`subMenu-${
@@ -183,7 +195,7 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 						userInfo={userInfo}
 						handleLogin={handleLogin}
 						handleGoToGame={handleGoToGame}
-						isMaintain={maintainList?.includes(subItem.tpId)}
+						isMaintain={isMaintain}
 						category={item.category}
 					/>
 				);
@@ -267,7 +279,7 @@ const SubGame = ({
 				href={game.href}
 				target="_blank"
 				rel="noreferrer"
-				tabIndex={isMaintain ? "-1" : 0}>
+				style={isMaintain ? { pointerEvents: "none" } : null}>
 				{showingEventIcon !== "" ? (
 					<i className={`icon ${showingEventIcon}`} />
 				) : null}
@@ -291,7 +303,7 @@ const SubGame = ({
 					: game.path
 			}
 			state={game.parameter}
-			tabIndex={isMaintain ? "-1" : 0}>
+			style={isMaintain ? { pointerEvents: "none" } : null}>
 			{showingEventIcon !== "" ? (
 				<i className={`icon ${showingEventIcon}`} />
 			) : null}

@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { userInfoContext } from "Context";
 import Loading from "../common/loading";
+import { defTpCategoryId } from "../../datas/productList";
+import { useGetTpMaintainList } from "../hook/useGetTpMaintainList";
 
 const GamePanel = React.forwardRef((props, ref) => {
 	const {
@@ -11,10 +13,10 @@ const GamePanel = React.forwardRef((props, ref) => {
 		SetFavorite,
 		TpList,
 		i18n,
-		imgUrl,
-		maintainList
+		imgUrl
 	} = props;
 	const { userInfo } = useContext(userInfoContext);
+	const { maintainList } = useGetTpMaintainList();
 
 	if (Games === null) return <Loading />;
 
@@ -22,23 +24,31 @@ const GamePanel = React.forwardRef((props, ref) => {
 	Games.forEach(g => {
 		const t = TpList[g.tpId];
 		const _isFavorite = Favorite.includes(`${t.value}_${g.gameId}`);
+		const isMaintain = maintainList?.some(
+			m =>
+				m.tpId === g.tpId &&
+				(m.tpCategoryId === defTpCategoryId.Slots ||
+					m.tpCategoryId === defTpCategoryId.All)
+		);
 		games.push(
 			<div
-				className={`info${
-					maintainList.includes(g.tpId) ? " star active" : ""
-				}`}
+				className={`info${isMaintain ? " star active" : ""}`}
 				key={`casino-game-${t.value}-${g.gameId}`}>
 				{g.new ? <i className="icon icon-new" /> : null}
 				<img
-					onClick={SelectGame.bind(this, t.value, g)}
+					onClick={
+						isMaintain
+							? () => null
+							: SelectGame.bind(this, t.value, g)
+					}
 					src={`${imgUrl}/${TpList[g.tpId]?.name}/${
 						g.imgName[userInfo.langId] ?? g.imgName.en
 					}`}
 					alt={g.name[userInfo.langId] ?? g.name.en}
 				/>
 				<span>{t.name}</span>
-				{maintainList.includes(g.tpId) && (
-					<span className="under">{i18n.lbl_underMaintenance}</span>
+				{isMaintain && (
+					<div className="under">{i18n.lbl_underMaintenance}</div>
 				)}
 				<span
 					onClick={SetFavorite.bind(this, t.value, g.gameId)}
@@ -63,8 +73,7 @@ const GamePanel = React.forwardRef((props, ref) => {
 
 GamePanel.defaultProps = {
 	Games: [],
-	Favorite: [],
-	maintainList: []
+	Favorite: []
 };
 
 GamePanel.propTypes = {
@@ -76,8 +85,7 @@ GamePanel.propTypes = {
 	SetFavorite: PropTypes.func.isRequired,
 	TpList: PropTypes.objectOf(PropTypes.any).isRequired,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	imgUrl: PropTypes.string.isRequired,
-	maintainList: PropTypes.arrayOf(PropTypes.string)
+	imgUrl: PropTypes.string.isRequired
 };
 
 export default GamePanel;
