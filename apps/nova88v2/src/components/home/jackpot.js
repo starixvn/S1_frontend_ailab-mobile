@@ -4,23 +4,10 @@ import useInterval from "../hook/useInterval";
 import { Link } from "../../route/link";
 import path from "../../path";
 import defNav from "../casino/defNav";
+import { langToCurrency } from "../common/common";
 
 const defaultElementHeight = 17;
 const numberArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-export const defCurrenyId = {
-	MYR: 2,
-	THB: 4,
-	RMB: 13,
-	IDR: 15
-};
-
-const langToCurrency = {
-	en: defCurrenyId.MYR,
-	cs: defCurrenyId.MYR,
-	th: defCurrenyId.THB,
-	id: defCurrenyId.IDR
-};
 
 const animateDelaySec = 800;
 

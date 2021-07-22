@@ -6,7 +6,7 @@ import Inputbox from "../common/inputbox.hint";
 import Dropdown from "../common/dropdown.image";
 import { defIptStatus } from "../common/inputStatus";
 import useTip from "../hook/useTip";
-import { currCustomMapping } from "../common/common";
+import { defCurrenyId } from "../common/common";
 
 const initWarning = {
 	RealName: {
@@ -193,7 +193,7 @@ const AddBankPanel = ({
 					val: userValue.BankAccount
 				}).checked;
 
-			if (currCustomMapping[currencyId] === "INR") {
+			if (currencyId === defCurrenyId.INR) {
 				checked = checkInputbox({
 					col: "IFSCCode",
 					val: userValue.IFSCCode
@@ -233,7 +233,7 @@ const AddBankPanel = ({
 				col: "BankAccount",
 				val: userValue.BankAccount
 			}).checked;
-			if (currCustomMapping[currencyId] === "INR") {
+			if (currencyId === defCurrenyId.INR) {
 				checked = checkInputbox({
 					col: "IFSCCode",
 					val: userValue.IFSCCode
@@ -293,7 +293,7 @@ const AddBankPanel = ({
 				clickInfo={() => showTipHandler("BankAccount")}
 			/>
 
-			{currCustomMapping[currencyId] === "INR" ? (
+			{currencyId === defCurrenyId.INR ? (
 				<Inputbox
 					icon="icon-newspaper"
 					value={userValue?.IFSCCode}

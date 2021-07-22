@@ -144,12 +144,29 @@ export const isEventPeriod = ({ startDate, endDate }) => {
 	return result;
 };
 
+// [------- Currency -------
+
 export const currCustomMapping = {
 	2: "MYR",
 	4: "THB",
-	13: "RMB",
+	13: "MYR",
 	15: "IDR",
 	61: "INR"
+};
+
+export const defCurrenyId = {
+	MYR: 2,
+	THB: 4,
+	RMB: 13,
+	IDR: 15,
+	INR: 61
+};
+
+export const langToCurrency = {
+	en: defCurrenyId.MYR,
+	cs: defCurrenyId.MYR,
+	th: defCurrenyId.THB,
+	id: defCurrenyId.IDR
 };
 
 export const GetCurrencyName = ({ langId, currencyId, i18n }) => {
@@ -170,6 +187,8 @@ export const GetCurrencyName = ({ langId, currencyId, i18n }) => {
 
 	return currency;
 };
+
+// ------- Currency -------]
 
 export const validImgLang = langId => {
 	if (
