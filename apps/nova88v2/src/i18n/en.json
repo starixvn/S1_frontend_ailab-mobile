@@ -648,6 +648,10 @@
 	"lbl_iOSAuth":"iOS App Trust Authentication",
 	"lbl_appHint1":"Once Nova88 App is installed, tap Trust",
 	"lbl_appHint2":"or complete the setting as below.",
-	"lbl_DownloadAppNow": "Download APP now"
+	"lbl_DownloadAppNow": "Download APP now",
+
+	"============IFSC Code===============":"",
+	"lbl_IFSCCode":"IFSC Code",
+	"msg_NeedIFSCCode": "Need IFSC Code"
 
 }

@@ -648,6 +648,10 @@
 	"lbl_iOSAuth":"आईओएस ऐप ट्रस्ट प्रमाणीकरण",
 	"lbl_appHint1":"आईओएस नोवा ऐप इंस्टॉल हो गया है,",
 	"lbl_appHint2":"ट्रस्ट पर टैप करें या नीचे दी गई सेटिंग को पूरा करें",
-	"lbl_DownloadAppNow": "अभी ऐप डाउनलोड करें"
+	"lbl_DownloadAppNow": "अभी ऐप डाउनलोड करें",
+	
+	"============IFSC Code===============":"",
+	"lbl_IFSCCode":"IFSC Code",
+	"msg_NeedIFSCCode": "Need IFSC Code"
 
 }

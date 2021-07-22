@@ -632,6 +632,10 @@
 	"lbl_iOSAuth":"Autentikasi Kepercayaan Aplikasi iOS",
 	"lbl_appHint1":"Setelah Aplikasi Nova88 diinstal, tap Percayai atau ",
 	"lbl_appHint2":"selesaikan pengaturan seperti di bawah ini.",
-	"lbl_DownloadAppNow": "DOWNLOAD APLIKASI sekarang"
+	"lbl_DownloadAppNow": "DOWNLOAD APLIKASI sekarang",
+    
+	"============IFSC Code===============":"",
+	"lbl_IFSCCode":"IFSC Code",
+	"msg_NeedIFSCCode": "Need IFSC Code"
 
     }
