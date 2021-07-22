@@ -19,6 +19,7 @@ export const defGameInfo = {
 	One789_lottery_789: { tpId: 23, gameId: 1 },
 	Casino_ow: { gameId: 208, tpId: 1 },
 	Casino_All: { tpId: 0 },
+	Casino_MGP: { tpId: 34 },
 	Casino_PP: { tpId: 5 },
 	Casino_SG: { tpId: 10 },
 	Casino_PG: { tpId: 14 },
@@ -172,6 +173,9 @@ const gameList = langId => [
 		className: "casinoList",
 		translateKey: "lbl_LiveCasino",
 		items: [
+			{
+				...defGameInfo.Casino_MGP
+			},
 			{
 				...defGameInfo.Casino_PT
 			},

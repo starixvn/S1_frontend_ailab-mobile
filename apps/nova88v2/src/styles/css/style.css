@@ -4663,7 +4663,14 @@ button.clickBtn:before {
   z-index: 1;
   font-weight: bold;
   color: #F77A00;
-  text-shadow: 1px 0px 0px white, -1px 0px 0px white, 0px 1px 0px white, 0px -1px 0px white, 1px -1px 0px white, 1px 1px 0px white, -1px 1px 0px white, -1px -1px 0px white;
+  text-shadow: 1px 0px 0px white,
+ -1px 0px 0px white,
+ 0px 1px 0px white,
+ 0px -1px 0px white,
+ 1px -1px 0px white,
+ 1px 1px 0px white,
+ -1px 1px 0px white,
+ -1px -1px 0px white;
 }
 
 .casino .slotList .info span.icon {

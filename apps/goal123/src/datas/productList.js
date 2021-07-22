@@ -37,6 +37,7 @@ import Casino_PP from "../styles/img/hotgame-m/slots/slot-pp.png";
 import Casino_PG from "../styles/img/hotgame-m/slots/slot-pg.png";
 import Casino_OW from "../styles/img/hotgame-m/slots/slots-ow.png";
 import Casino_PT from "../styles/img/hotgame-m/slots/slot-pt.png";
+import Casino_MGP from "../styles/img/hotgame-m/slots/slot-mg.png";
 import Casino_Jili from "../styles/img/hotgame-m/slots/slot-jili.png";
 
 import LIVEcasino_N2Live from "../styles/img/hotgame-m/livecasino/livecasino-n2live.png";
@@ -49,6 +50,7 @@ import LIVEcasino_SA from "../styles/img/hotgame-m/livecasino/livecasino-sa.png"
 import LIVEcasino_AE from "../styles/img/hotgame-m/livecasino/livecasino-ae.png";
 import LIVEcasino_EB from "../styles/img/hotgame-m/livecasino/livecasino-ebet.png";
 import LIVEcasino_PT from "../styles/img/hotgame-m/livecasino/livecasino-playtech.png";
+import LIVEcasino_MGP from "../styles/img/hotgame-m/livecasino/livecasino-mg.png";
 
 import { isEventPeriod } from "../components/common/common";
 import path from "../path";
@@ -88,6 +90,7 @@ export const defGameInfo = {
 	Casino_PG: { tpId: 14 },
 	Casino_PT: { tpId: 27, gameId: "0" },
 	Casino_ow: { gameId: 208, tpId: 1 },
+	Casino_MGP: { tpId: 34 },
 	LIVEcasinoN2: { tpId: 28 },
 	LIVEcasinoWM: { gameId: 20, tpId: 20 },
 	LIVEcasinoDG: { tpId: 4, gameId: 4 },
@@ -393,6 +396,19 @@ const gameList = [
 				]
 			},
 			{
+				...defGameInfo.Casino_MGP,
+				parameter: defGameInfo.Casino_MGP,
+				spanText: "Microgaming",
+				img: Casino_MGP,
+				path: path.casino.root,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.casino_MGP)
+					}
+				]
+			},
+			{
 				...defGameInfo.casino_ICG,
 				parameter: defGameInfo.casino_ICG,
 				spanText: "ICG",
@@ -476,6 +492,17 @@ const gameList = [
 				],
 				useGotoGame: true
 			},
+			// {
+			// 	...defGameInfo.Casino_MGP,
+			// 	spanText: "Microgaming",
+			// 	img: LIVEcasino_MGP,
+			// 	eventIcon: [
+			// 		{
+			// 			icon: defIconType.new,
+			// 			inPeriod: isEventPeriod(eventTime.liveCasino_MGP)
+			// 		}
+			// 	]
+			// },
 			{
 				...defGameInfo.LIVEcasinoN2,
 				spanText: "N2Live",

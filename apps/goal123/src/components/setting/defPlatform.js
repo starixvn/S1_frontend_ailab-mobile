@@ -120,6 +120,10 @@ const defPlatfrom = [
 		category: defTpCategoryId.Poker
 	},
 	{
+		...defGameInfo.Casino_MGP,
+		imgName: "mga"
+	},
+	{
 		...defGameInfo.Casino_Jili,
 		imgName: "jilia",
 		category: defTpCategoryId.Slots

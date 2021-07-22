@@ -148,7 +148,8 @@ const defPlatform = [
 	"playtech",
 	"bti",
 	"kingmaker",
-	"jili"
+	"jili",
+	"mg"
 ];
 
 const Platforms = ({ i18n }) => {
