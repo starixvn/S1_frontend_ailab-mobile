@@ -241,6 +241,7 @@ const BankInfo = ({ prevPage }) => {
 					setPopBox={setPopBox}
 					GetCustBankInfo={GetCustBankInfo}
 					setLoading={setLoading}
+					currencyId={userInfo.currencyId}
 				/>
 			)}
 			{currentPanel === "showBankPanel" && custBankInfo?.length > 0 ? (

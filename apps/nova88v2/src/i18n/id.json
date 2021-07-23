@@ -632,6 +632,30 @@
 	"lbl_iOSAuth":"Autentikasi Kepercayaan Aplikasi iOS",
 	"lbl_appHint1":"Setelah Aplikasi Nova88 diinstal, tap Percayai atau ",
 	"lbl_appHint2":"selesaikan pengaturan seperti di bawah ini.",
-	"lbl_DownloadAppNow": "DOWNLOAD APLIKASI sekarang"
+	"lbl_DownloadAppNow": "DOWNLOAD APLIKASI sekarang",
+
+	"=============Check Speed===============":"",
+	"lbl_CurrentIp" :"Lokasi IP Anda saat ini",
+	"lbl_SetHomePage" :"Atur sebagai homepage",
+	"lbl_AddToFavorite" :"Tambahkan ke Favorit",
+	"lbl_DomainListTip": "Pengingat untuk domain alternatif: Waktu respons lebih sedikit, pemuatan web lebih cepat. Domain yang lebih cepat akan ditampilkan di urutan teratas.",
+	"lbl_EnterWebsite":"Masuk ke halaman web",
+	"lbl_TipTitle":"Jika pusat pemeriksaan kami membantu, silakan simpan dengan mengklik Ctrl + D.",
+	"lbl_StepTitle":"Jika tidak dapat mengakses setelah pemeriksaan ulang, silakan jalankan dengan panduan di bawah ini:",
+	"lbl_OpenIE":"Buka browser IE",
+	"lbl_OpenIESteps":"Buka browser IE, pilih: Tools -> Internet -> Option -> pilih (clear cookies) -> Delete -> Restart IE.",
+	"lbl_Tip1":"Jika Anda mengalami lagging.",
+	"lbl_Tip2":"Silakan buka halaman web dan pilih jaringan alternatif",
+	"lbl_Tip3":"Direkomendasikan untuk penggunaan browser: Google Chrome atau Firefox.",
+	"lbl_Tip4":"Jika Anda melihat itu bukan halaman web resmi Nova88 setelah akses, mungkin layanan DNS Anda telah dibajak. Silakan klik tombol seperti di bawah ini untuk menghapus cache dan akan dilanjutkan setelahnya.",
+	"lbl_ClearCache":"Hapus cache per klik",
+    "lbl_ClickOk":"Klik untuk konfirmasi.",
+    "lbl_Refresh":"Refresh untuk cek",
+    "lbl_AddFavoriteFail":"Favorit gagal. Silahkan gunakan Ctrl+D untuk menambahkan.",
+    "lbl_AddFavoriteTip":"Browser anda tidak mendukung. Silahkan ikuti langkah dibawah untuk menyelesaikan pengaturan: 1. Buka browser. 2. Klik pada pengaturan Webpage. 3. Masukkan:",
+
+	"============IFSC Code===============":"",
+	"lbl_IFSCCode":"IFSC Code",
+	"msg_NeedIFSCCode": "Need IFSC Code"
 
     }

@@ -648,6 +648,29 @@
 	"lbl_iOSAuth":"iOS App Trust Authentication",
 	"lbl_appHint1":"Once Nova88 App is installed, tap Trust",
 	"lbl_appHint2":"or complete the setting as below.",
-	"lbl_DownloadAppNow": "Download APP now"
+	"lbl_DownloadAppNow": "Download APP now",
+	"=============Check Speed===============":"",
+	"lbl_CurrentIp" :"Your current IP location",
+	"lbl_SetHomePage" :"Set as Home page",
+	"lbl_AddToFavorite" :"Add to Favorite",
+	"lbl_DomainListTip": "Gentle reminder of alternate domain: Lesser responding time, web load faster. The faster domain will display on top sequence.",
+	"lbl_EnterWebsite":"Enter webpage",
+	"lbl_TipTitle":"If our check center helps, kindly save it by clicking Ctrl + D.",
+	"lbl_StepTitle":"If not able to access after cross checking, kindly execute with below guides:",
+	"lbl_OpenIE":"Open IE browser",
+	"lbl_OpenIESteps":"Open IE browser, select: Tools -> Internet -> Option -> select (clear cookies) -> Delete -> Restart IE.",
+	"lbl_Tip1":"Should you experience lagging",
+	"lbl_Tip2":"Kindly open webpage and select alternate network",
+	"lbl_Tip3":"Recommended for the usage of browser: Google Chrome or Firefox",
+	"lbl_Tip4":"Should you notice it is not Nova88 official webpage after access, it could be your DNS service been Hijacked. Kindly cilck the button as beloow to clear cache and it shall resume afterwards.",
+	"lbl_ClearCache":"Clear cache per click",
+	"lbl_ClickOk":"Click to confirm.",
+	"lbl_Refresh":"Refresh to check",
+	"lbl_AddFavoriteFail":"Favorite failed. Kindly use Ctrl+D to add accordingly.",
+	"lbl_AddFavoriteTip":"Your browser is not support. Kindly follow step as below to complete the setting: 1. Open browser. 2. Click on Webpage Setting. 3. Key:",
+	
+	"============IFSC Code===============":"",
+	"lbl_IFSCCode":"IFSC Code",
+	"msg_NeedIFSCCode": "Need IFSC Code"
 
 }

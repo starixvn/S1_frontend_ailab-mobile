@@ -144,8 +144,29 @@ export const isEventPeriod = ({ startDate, endDate }) => {
 	return result;
 };
 
+// [------- Currency -------
+
 export const currCustomMapping = {
-	13: "MYR"
+	2: "MYR",
+	4: "THB",
+	13: "MYR",
+	15: "IDR",
+	61: "INR"
+};
+
+export const defCurrenyId = {
+	MYR: 2,
+	THB: 4,
+	RMB: 13,
+	IDR: 15,
+	INR: 61
+};
+
+export const langToCurrency = {
+	en: defCurrenyId.MYR,
+	cs: defCurrenyId.MYR,
+	th: defCurrenyId.THB,
+	id: defCurrenyId.IDR
 };
 
 export const GetCurrencyName = ({ langId, currencyId, i18n }) => {
@@ -167,6 +188,8 @@ export const GetCurrencyName = ({ langId, currencyId, i18n }) => {
 	return currency;
 };
 
+// ------- Currency -------]
+
 export const validImgLang = langId => {
 	if (
 		langId !== "en" &&
@@ -177,4 +200,9 @@ export const validImgLang = langId => {
 		return "en";
 	}
 	return langId;
+};
+
+export const stringLinkify = text => {
+	const pattern = /(\b(https?):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
+	return text.replace(pattern, '<a href="$1" target="_blank">$1</a>');
 };

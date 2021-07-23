@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import DepositRecord from "./depositRecord";
-import PromoRule from "./promotionContent.promoRule";
+import PromoRule from "./promoRule";
 import { Stamp } from "./stamp";
 import { CanJoin } from "../common/common";
 import { defUrlParamCols } from "../common/def";
@@ -27,7 +27,7 @@ const PromoContent = ({
 			})
 				? ""
 				: " Expired"
-		}`}>
+		}${promotionInfo.beenUsed ? " expirModule" : ""}`}>
 		<Stamp
 			_isClaimed={_isClaimed}
 			_isNew={_isNew}
@@ -39,7 +39,11 @@ const PromoContent = ({
 		<div className="protitle">{promotionInfo.title}</div>
 		<div className="text">{promotionInfo.description}</div>
 
-		<PromoRule promotionInfo={promotionInfo} ruleCols={ruleCols} />
+		<PromoRule
+			promotionInfo={promotionInfo}
+			ruleCols={ruleCols}
+			isList={false}
+		/>
 		<CashBackInfo
 			bonusCode={promotionInfo.bonusCode}
 			cashBackDetails={promotionInfo.cashBackDetails}

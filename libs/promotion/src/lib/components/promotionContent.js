@@ -3,7 +3,7 @@ import { Link } from "@reach/router";
 import JoinBtn from "./joinBtn";
 import DepositRecord from "./depositRecord";
 import ProcessBar from "./processBar";
-import PromoRule from "./promotionContent.promoRule";
+import PromoRule from "./promoRule";
 import { Stamp } from "./stamp";
 import { CanJoin } from "../common/common";
 import { defUrlParamCols } from "../common/def";
@@ -24,13 +24,13 @@ export default ({
 }) => (
 	<div
 		className={`promodule${promotionInfo.isJoin ? " open" : ""}${
-			CanJoin({
+			!CanJoin({
 				_isExpiry,
 				canJoin: promotionInfo.canJoin,
 				filterType: urlParameters?.[defUrlParamCols.filterType]
-			})
-				? ""
-				: " Expired"
+			}) || promotionInfo.beenUsed
+				? " Expired"
+				: ""
 		}`}>
 		<Stamp
 			_isClaimed={_isClaimed}
@@ -38,6 +38,7 @@ export default ({
 			_isExpiry={_isExpiry}
 			filterType={urlParameters?.[defUrlParamCols.filterType]}
 			canJoin={promotionInfo.canJoin}
+			uiSetting={uiSetting}
 		/>
 		<img src={promotionInfo.banner} alt={promotionInfo.title} />
 		<Link
@@ -64,7 +65,11 @@ export default ({
 			{...promotionInfo}
 			RefreshProcessBar={RefreshProcessBar.bind(this, promotionInfo)}
 		/>
-		<PromoRule promotionInfo={promotionInfo} ruleCols={ruleCols} />
+		<PromoRule
+			promotionInfo={promotionInfo}
+			ruleCols={ruleCols}
+			isList={false}
+		/>
 		<div
 			className="text"
 			dangerouslySetInnerHTML={{

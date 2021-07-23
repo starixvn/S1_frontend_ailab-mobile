@@ -16,7 +16,7 @@ const visitorCurrency = {
 	th_en: 4
 };
 
-const MinAmount = ({ requiredAmount, displayText, formatSetting }) => {
+const MinAmount = ({ requiredAmount, displayText, formatSetting, isList }) => {
 	const { userInfo, i18n } = useContext(configContext);
 	const _currencyId = userInfo.isLogin
 		? userInfo.currencyId
@@ -25,20 +25,23 @@ const MinAmount = ({ requiredAmount, displayText, formatSetting }) => {
 		requiredAmount,
 		formatSetting
 	)}`;
-
 	return (
 		requiredAmount > 0 && (
 			<div>
-				<div>{displayText?.toUpperCase()}</div>
+				<div className={isList ? "icon icon-icon32px_money" : ""}>
+					{displayText?.toUpperCase()}
+				</div>
 				<div>{value}</div>
 			</div>
 		)
 	);
 };
 
-const RemainingTime = ({ promotionInfo, i18n = {}, isLogin }) => (
+const RemainingTime = ({ promotionInfo, i18n = {}, isLogin, isList }) => (
 	<div>
-		<div>{i18n?.lbl_RemainingTime?.toUpperCase()}</div>
+		<div className={isList ? "icon icon-icon32px_time" : ""}>
+			{i18n?.lbl_RemainingTime?.toUpperCase()}
+		</div>
 		<div>
 			{RemainTime({
 				promotionInfo,
@@ -49,14 +52,23 @@ const RemainingTime = ({ promotionInfo, i18n = {}, isLogin }) => (
 	</div>
 );
 
-const Bonus = ({ value, displayText, bonusType }) => {
+const KeyValue = ({ value, displayText, icon, isList }) => (
+	<div>
+		<div className={isList ? icon : ""}>{displayText?.toUpperCase()}</div>
+		<div>{value}</div>
+	</div>
+);
+
+const Bonus = ({ value, displayText, bonusType, icon, isList }) => {
 	const { userInfo, i18n } = useContext(configContext);
 	const _currencyId = userInfo.isLogin
 		? userInfo.currencyId
 		: visitorCurrency[userInfo.langId];
 	return (
 		<div>
-			<div>{displayText?.toUpperCase()}</div>
+			<div className={isList ? icon : ""}>
+				{displayText?.toUpperCase()}
+			</div>
 			{bonusType === 1 ? (
 				<div>{`${value}%`}</div>
 			) : (
@@ -66,14 +78,7 @@ const Bonus = ({ value, displayText, bonusType }) => {
 	);
 };
 
-const KeyValue = ({ value, displayText }) => (
-	<div>
-		<div>{displayText?.toUpperCase()}</div>
-		<div>{value}</div>
-	</div>
-);
-
-const MaxBonus = ({ value, displayText, bonusType }) => {
+const MaxBonus = ({ value, displayText, bonusType, icon, isList }) => {
 	const { userInfo, i18n } = useContext(configContext);
 	const _currencyId = userInfo.isLogin
 		? userInfo.currencyId
@@ -81,13 +86,21 @@ const MaxBonus = ({ value, displayText, bonusType }) => {
 	if (bonusType === 2) return null;
 	return (
 		<div>
-			<div>{displayText?.toUpperCase()}</div>
+			<div className={isList ? icon : ""}>
+				{displayText?.toUpperCase()}
+			</div>
 			<div>{`${i18n[`Currency_${_currencyId}`]} ${value}`}</div>
 		</div>
 	);
 };
 
-const defElems = ({ promotionInfo, i18n = {}, isLogin, formatSetting }) => {
+const defElems = ({
+	promotionInfo,
+	i18n = {},
+	isLogin,
+	formatSetting,
+	isList
+}) => {
 	const isStaticOrRebate =
 		promotionInfo.promotionType === defPromotionType.static ||
 		promotionInfo.promotionType === defPromotionType.rebate;
@@ -99,6 +112,7 @@ const defElems = ({ promotionInfo, i18n = {}, isLogin, formatSetting }) => {
 				requiredAmount={promotionInfo.requiredAmount}
 				displayText={i18n?.lbl_Vip_Minimum_Deposit_Count}
 				formatSetting={formatSetting}
+				isList={isList}
 			/>
 		),
 		[defRuleCols.remainingTime]: (
@@ -107,47 +121,55 @@ const defElems = ({ promotionInfo, i18n = {}, isLogin, formatSetting }) => {
 				promotionInfo={promotionInfo}
 				i18n={i18n}
 				isLogin={isLogin}
+				isList={isList}
 			/>
 		),
 		[defRuleCols.rollOver]: (
 			<KeyValue
 				key={`promo-rule-${defRuleCols.rollOver}`}
-				value={`${promotionInfo.rollOver}x`}
+				i18n={i18n}
 				displayText={i18n?.lbl_RollOver}
+				isList={isList}
+				icon="icon icon-icon32px_"
+				value={`${promotionInfo.rollOver}x`}
 			/>
 		),
 		[defRuleCols.bonus]: !isStaticOrRebate && (
 			<Bonus
-				bonusType={promotionInfo.bonusType}
 				key={`promo-rule-${defRuleCols.bonus}`}
 				displayText={i18n?.lbl_Bonus}
 				value={number_format(promotionInfo.bonus, formatSetting)}
+				icon="icon icon-promotion"
+				bonusType={promotionInfo.bonusType}
+				isList={isList}
 			/>
 		),
 		[defRuleCols.maxBonus]: !isStaticOrRebate && (
 			<MaxBonus
-				bonusType={promotionInfo.bonusType}
 				key={`promo-rule-${defRuleCols.maxBonus}`}
 				displayText={i18n?.lbl_MaxBonusAmount}
 				value={number_format(promotionInfo.maxBonus, formatSetting)}
+				icon="icon icon-icon32px_money"
+				bonusType={promotionInfo.bonusType}
+				isList={isList}
 			/>
 		)
 	};
 };
 
-export default ({ ruleCols, promotionInfo }) => {
+export default ({ ruleCols, promotionInfo, isList = true }) => {
 	const {
 		formatSetting,
 		userInfo: { isLogin },
 		i18n,
 		api
 	} = useContext(configContext);
-
 	const allElems = defElems({
 		promotionInfo,
 		i18n,
 		isLogin,
-		formatSetting
+		formatSetting,
+		isList
 	});
 	const isMountedRef = useRef(null);
 	const RefreshProcessBar = ({ bonusCode, tpId, categoryId }) => {
@@ -174,7 +196,7 @@ export default ({ ruleCols, promotionInfo }) => {
 
 	const rows = ruleCols.map(col => allElems[col]);
 	return (
-		<div className="rolloverList">
+		<div className={isList ? "rollover" : "rolloverList"}>
 			{rows}
 			<ProcessBar
 				{...promotionInfo}

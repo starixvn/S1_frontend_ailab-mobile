@@ -152,5 +152,8 @@ export default {
 	},
 	appDownload: {
 		root: "appDownload"
+	},
+	checkSpeed: {
+		root: "speed"
 	}
 };

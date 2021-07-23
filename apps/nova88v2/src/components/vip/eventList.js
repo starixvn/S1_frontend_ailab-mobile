@@ -3,20 +3,7 @@ import { i18nContext, userInfoContext } from "../common/context";
 import THBList from "./eventListTHB";
 import IDRList from "./eventListIDR";
 import MYRList from "./eventListMYR";
-
-const defCurrenyId = {
-	MYR: 2,
-	THB: 4,
-	RMB: 13,
-	IDR: 15
-};
-
-const langToCurrency = {
-	en: defCurrenyId.MYR,
-	cs: defCurrenyId.MYR,
-	th: defCurrenyId.THB,
-	id: defCurrenyId.IDR
-};
+import { defCurrenyId, langToCurrency } from "../common/common";
 
 export const EventList = ({ langId }) => {
 	const { i18n } = useContext(i18nContext);

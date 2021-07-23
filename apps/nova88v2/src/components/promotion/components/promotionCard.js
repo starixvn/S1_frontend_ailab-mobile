@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "../../../route/link";
 import JoinBtn from "./joinBtn";
 import DetailBtn from "./detailBtn";
-import PromoRule from "./promotionCard.promoRule";
+import PromoRule from "./promoRule";
 import { Stamp } from "./stamp";
 import { defUrlParamCols } from "../common/def";
 
@@ -20,7 +20,10 @@ const PromotionCard = ({
 	urlParameters,
 	userInfo
 }) => (
-	<div className={`promodule${_isClaimed ? " active" : ""}`}>
+	<div
+		className={`promodule${_isClaimed ? " active" : ""}${
+			p.beenUsed ? " expirModule" : ""
+		}`}>
 		<div className="expiredIcon" />
 		<Stamp
 			_isClaimed={_isClaimed}

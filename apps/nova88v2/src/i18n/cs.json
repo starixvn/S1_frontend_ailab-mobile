@@ -618,6 +618,29 @@
 	"lbl_iOSAuth":"iOS 应用程序验证",
 	"lbl_appHint1":"待 Nova88 App 完成安装",
 	"lbl_appHint2":"单点 “Trust” 或完成以下设定",
-	"lbl_DownloadAppNow": "立即下载 App"
+	"lbl_DownloadAppNow": "立即下载 App",
+	
+	"============IFSC Code===============":"",
+	"lbl_IFSCCode":"IFSC Code",
+	"msg_NeedIFSCCode": "Need IFSC Code",
 
+	"=============Check Speed===============":"",
+	"lbl_CurrentIp" :"您当前的IP位置",
+	"lbl_SetHomePage" :"设为首页",
+	"lbl_AddToFavorite" :"加入收藏",
+	"lbl_DomainListTip": "备用网址温馨提示：反应时间越小，网站速度越快，越快的网址排在越上面",
+	"lbl_EnterWebsite":"进入网站",
+	"lbl_TipTitle":"如果我们的检查中心对您有帮助请按Ctrl+D收藏",
+	"lbl_StepTitle":"如果检测后不能登录请按以下方法操作：",
+	"lbl_OpenIE":"打开IE浏览器",
+	"lbl_OpenIESteps":"打开IE浏览器，选择：工具-> Internet选项-> 再选择 (删除历史浏览记录)-> 删除-> 重启IE",
+	"lbl_Tip1":"如果您体验过程中出现卡顿",
+	"lbl_Tip2":"请在您打开本界面选择其它线路看看",
+	"lbl_Tip3":"建议使用谷歌或火狐浏览器",
+	"lbl_Tip4":"假如你登陆后发现为非Nova88官方网站，可能您的 DNS服务被劫持，请点击下面的按钮清除浏览器缓存， 即可恢复正常使用",
+	"lbl_ClearCache":"一键清除缓存",
+	"lbl_ClickOk":"点击确定。",
+	"lbl_Refresh":"刷新检测",
+	"lbl_AddFavoriteFail":"加入收藏失败，请使用Ctrl+D进行添加",
+	"lbl_AddFavoriteTip":"您的浏览器不支持，请按照下面步骤操作：1.打开浏览器设置。2.点击设置网页。3.输入："
 }

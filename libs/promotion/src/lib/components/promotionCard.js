@@ -1,7 +1,7 @@
 import React from "react";
 import JoinBtn from "./joinBtn";
 import DetailBtn from "./detailBtn";
-import PromoRule from "./promotionCard.promoRule";
+import PromoRule from "./promoRule";
 import { Stamp } from "./stamp";
 import { CanJoin } from "../common/common";
 import { defUrlParamCols } from "../common/def";
@@ -20,13 +20,13 @@ export default ({
 }) => (
 	<div
 		className={`promodule${_isClaimed ? " open" : ""}${
-			CanJoin({
+			!CanJoin({
 				_isExpiry,
 				canJoin: p.canJoin,
 				filterType: urlParameters?.[defUrlParamCols.filterType]
-			})
-				? ""
-				: " Expired"
+			}) || p.beenUsed
+				? " Expired"
+				: ""
 		}`}>
 		<Stamp
 			_isClaimed={_isClaimed}
@@ -34,6 +34,7 @@ export default ({
 			_isExpiry={_isExpiry}
 			filterType={urlParameters?.[defUrlParamCols.filterType]}
 			canJoin={p.canJoin}
+			uiSetting={uiSetting}
 		/>
 		<img src={imgSRC} alt={p.bonusCode ?? ""} />
 		<div className="protitle">{p.title}</div>

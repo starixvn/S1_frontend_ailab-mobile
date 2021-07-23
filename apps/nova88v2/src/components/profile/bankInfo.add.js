@@ -6,6 +6,7 @@ import Inputbox from "../common/inputbox.hint";
 import Dropdown from "../common/dropdown.image";
 import { defIptStatus } from "../common/inputStatus";
 import useTip from "../hook/useTip";
+import { defCurrenyId } from "../common/common";
 
 const initWarning = {
 	RealName: {
@@ -13,6 +14,10 @@ const initWarning = {
 		msg: ""
 	},
 	BankAccount: {
+		status: defIptStatus.default,
+		msg: ""
+	},
+	IFSCCode: {
 		status: defIptStatus.default,
 		msg: ""
 	}
@@ -24,7 +29,8 @@ const AddBankPanel = ({
 	i18n,
 	setPopBox,
 	GetCustBankInfo,
-	setLoading
+	setLoading,
+	currencyId
 }) => {
 	const [siteBankInfoState, setSiteBankInfoState] = useState([]);
 	const [bankSelectedIdx, setBankSelectedIdx] = useState(0);
@@ -93,10 +99,13 @@ const AddBankPanel = ({
 
 		if (!val) {
 			checked = false;
-			message =
-				col === "RealName"
-					? i18n.msg_EnterRealName
-					: i18n.msg_NeedAccountNo;
+			if (col === "RealName") {
+				message = i18n.msg_EnterRealName;
+			} else if (col === "BankAccount") {
+				message = i18n.msg_NeedAccountNo;
+			} else {
+				message = i18n.msg_NeedIFSCCode;
+			}
 		}
 
 		setWarning(prev => ({
@@ -135,7 +144,8 @@ const AddBankPanel = ({
 				const bankInfoData = {
 					AccountName: accountName ?? userValue.RealName,
 					AccountNo: userValue.BankAccount,
-					SysId: siteBankInfoState[bankSelectedIdx].id
+					SysId: siteBankInfoState[bankSelectedIdx].id,
+					IFSCCode: userValue?.IFSCCode ?? null
 				};
 				api.accountStrict.SetCustBankInfo(bankInfoData).then(
 					response => {
@@ -183,6 +193,13 @@ const AddBankPanel = ({
 					val: userValue.BankAccount
 				}).checked;
 
+			if (currencyId === defCurrenyId.INR) {
+				checked = checkInputbox({
+					col: "IFSCCode",
+					val: userValue.IFSCCode
+				}).checked;
+			}
+
 			const closePopbox = () => {
 				setPopBox({ isOpen: false });
 			};
@@ -216,6 +233,12 @@ const AddBankPanel = ({
 				col: "BankAccount",
 				val: userValue.BankAccount
 			}).checked;
+			if (currencyId === defCurrenyId.INR) {
+				checked = checkInputbox({
+					col: "IFSCCode",
+					val: userValue.IFSCCode
+				}).checked;
+			}
 			SetCustBankInfo(checked, false);
 		}
 	};
@@ -270,6 +293,24 @@ const AddBankPanel = ({
 				clickInfo={() => showTipHandler("BankAccount")}
 			/>
 
+			{currencyId === defCurrenyId.INR ? (
+				<Inputbox
+					icon="icon-newspaper"
+					value={userValue?.IFSCCode}
+					placeholder={i18n.lbl_IFSCCode}
+					onBlur={checkInputbox.bind(this, {
+						col: "IFSCCode",
+						val: userValue.IFSCCode
+					})}
+					onChange={EditField.bind(null, "IFSCCode")}
+					btnStatus={warning.IFSCCode.status}
+					warningMsg={warning.IFSCCode.msg}
+					showTips={showTips.includes("IFSCCode")}
+					infoText={i18n.msg_NeedIFSCCode}
+					clickInfo={() => showTipHandler("IFSCCode")}
+				/>
+			) : null}
+
 			<div className="btn-group">
 				<button className="white" onClick={toShowBankAccount}>
 					{i18n.lbl_Cancel}
@@ -292,7 +333,8 @@ AddBankPanel.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	setPopBox: PropTypes.func.isRequired,
 	GetCustBankInfo: PropTypes.func.isRequired,
-	setLoading: PropTypes.func.isRequired
+	setLoading: PropTypes.func.isRequired,
+	currencyId: PropTypes.number.isRequired
 };
 
 export default AddBankPanel;
