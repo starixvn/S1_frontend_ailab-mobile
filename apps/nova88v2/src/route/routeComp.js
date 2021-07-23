@@ -60,6 +60,7 @@ import Streaming from "../pages/streaming";
 import CryptoWallet from "../pages/cryptoWallet";
 import MyAccount from "../components/setting/myAccount";
 import AppDownload from "../pages/appDownload";
+import CheckSpeed from "../pages/checkSpeed";
 
 const RouteComponents = () => {
 	return (
@@ -133,6 +134,7 @@ const RouteComponents = () => {
 			<Streaming path={`/:langId/${path.streaming.root}`} />
 			<MyAccount path={`/:langId/${path.myAccount.root}`} />
 			<AppDownload path={`/:langId/${path.appDownload.root}`} />
+			<CheckSpeed path={`/:langId/${path.checkSpeed.root}`} />
 		</Router>
 	);
 };
