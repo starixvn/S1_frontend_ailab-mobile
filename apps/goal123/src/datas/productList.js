@@ -471,7 +471,6 @@ const gameList = [
 				parameter: defGameInfo.Casino_ow,
 				spanText: "OW",
 				img: Casino_OW,
-				path: path.casino.root,
 				tpCategoryId: defTpCategoryId.Slots
 			}
 		]

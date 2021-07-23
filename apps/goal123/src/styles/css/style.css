@@ -4568,6 +4568,7 @@ span.important {
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
+  pointer-events: none;
 }
 
 .kyc {
@@ -5419,50 +5420,6 @@ span.important {
 
 .rollover .icon {
   color: #1e85ec;
-}
-
-.rolloverNew {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 12px;
-  font-weight: bold;
-  margin: 10px 0;
-  text-align: left;
-}
-
-.rolloverNew > div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  line-height: 40px;
-  color: white;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.rolloverNew > div:first-child {
-  background: #F5AC23;
-}
-
-.rolloverNew > div:nth-child(2) {
-  background: #fff;
-  color: #1f3258;
-}
-
-.rolloverNew > div > div {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  text-align: center;
-  border-top: 1px solid #afafaf;
-}
-
-.rolloverNew > div > div:first-child {
-  border-top: 0px;
 }
 
 .resend {
