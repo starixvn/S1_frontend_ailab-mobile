@@ -226,7 +226,7 @@ export default ({
 	} else if (
 		promotionInfo &&
 		!_isExpiry &&
-		promotionInfo.beenUsed === false &&
+		!promotionInfo.beenUsed &&
 		(userInfo.isLogin === false ||
 			(_canJoin && userInfo.isLogin && !promotionInfo.isJoin))
 	) {
