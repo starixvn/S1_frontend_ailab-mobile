@@ -12,32 +12,34 @@ export const useGetDomainList = ({ userInfo, setPopBox, i18n }) => {
 			userInfo.currencyId &&
 			readCookie(cookieName) !== "1"
 		) {
-			api.site.GetSupportDomainList().then(res => {
-				const { errorCode, data } = res.data;
-				if (errorCode === 0) {
-					if (data.length > 0) {
-						const closePop = () => {
-							setPopBox({ isOpen: false });
-							setCookie(
-								`${userInfo.userName}-DomainListHint`,
-								"1",
-								7
-							);
+			api.site
+				.GetSupportDomainList({ langId: userInfo.langId })
+				.then(res => {
+					const { errorCode, data } = res.data;
+					if (errorCode === 0) {
+						if (data.length > 0) {
+							const closePop = () => {
+								setPopBox({ isOpen: false });
+								setCookie(
+									`${userInfo.userName}-DomainListHint`,
+									"1",
+									7
+								);
+								setIsDomainPopOpen(false);
+							};
+							setPopBox({
+								isOpen: true,
+								title: i18n.lbl_nova88_backup_website,
+								popBoxType: defPopBoxType.DomainList,
+								className: "backupDomain ",
+								domainList: data,
+								handlePopBox: closePop
+							});
+						} else {
 							setIsDomainPopOpen(false);
-						};
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_nova88_backup_website,
-							popBoxType: defPopBoxType.DomainList,
-							className: "backupDomain ",
-							domainList: data,
-							handlePopBox: closePop
-						});
-					} else {
-						setIsDomainPopOpen(false);
+						}
 					}
-				}
-			});
+				});
 		} else if (readCookie(cookieName) === "1") {
 			setIsDomainPopOpen(false);
 		}
