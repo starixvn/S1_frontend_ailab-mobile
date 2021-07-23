@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { i18nContext } from "../components/common/context";
+import { i18nContext, userInfoContext } from "../components/common/context";
 import api from "../service/api";
 import y from "../styles/img/check_speed/y.png";
 import n from "../styles/img/check_speed/n.png";
@@ -10,6 +10,7 @@ import path from "../path";
 
 const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
+	const { userInfo } = useContext(userInfoContext);
 	const [list, setList] = useState([]);
 	const [ip, setIp] = useState("");
 	const _GetIp = async () => {
@@ -19,7 +20,7 @@ const IndexPage = () => {
 
 	const _GetSupportDomainList = () => {
 		api.site
-			.GetSupportDomainList()
+			.GetSupportDomainList({ langId: userInfo.langId })
 			.then(async res => {
 				if (res.data.errorCode === 0) {
 					res.data.data.forEach(el => {
