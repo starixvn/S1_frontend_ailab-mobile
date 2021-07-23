@@ -20,7 +20,10 @@ const PromotionCard = ({
 	urlParameters,
 	userInfo
 }) => (
-	<div className={`promodule${_isClaimed ? " active" : ""}`}>
+	<div
+		className={`promodule${_isClaimed ? " active" : ""}${
+			p.beenUsed ? " expirModule" : ""
+		}`}>
 		<div className="expiredIcon" />
 		<Stamp
 			_isClaimed={_isClaimed}

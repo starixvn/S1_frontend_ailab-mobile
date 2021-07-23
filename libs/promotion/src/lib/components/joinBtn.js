@@ -220,19 +220,34 @@ export default ({
 		filterType === defFilterType.specialBonus && !promotionInfo.canJoin
 	);
 
-	return redirectPath !== null ? (
-		<Redirect to={redirectPath} noThrow />
-	) : userInfo.isLogin === false && !_isExpiry ? (
-		<Link
-			className={uiSetting.joinBtn ?? "btn-check"}
-			to={`/${path.login.root}`}>
-			{i18n?.lbl_PromoJoinNow}
-		</Link>
-	) : _canJoin && userInfo.isLogin && !promotionInfo.isJoin && !_isExpiry ? (
-		<button
-			className={uiSetting.joinBtn ?? "btn-check"}
-			onClick={onJoinPromotion.bind(this, promotionInfo)}>
-			{i18n?.lbl_PromoJoinNow}
-		</button>
-	) : null;
+	let btnResult = null;
+	if (redirectPath !== null) {
+		btnResult = <Redirect to={redirectPath} noThrow />;
+	} else if (
+		promotionInfo &&
+		!_isExpiry &&
+		promotionInfo.beenUsed === false &&
+		(userInfo.isLogin === false ||
+			(_canJoin && userInfo.isLogin && !promotionInfo.isJoin))
+	) {
+		if (userInfo.isLogin === false && !_isExpiry) {
+			btnResult = (
+				<Link
+					className={uiSetting.joinBtn ?? "btn-check"}
+					to={`/${path.login.root}`}>
+					{i18n?.lbl_PromoJoinNow}
+				</Link>
+			);
+		} else {
+			btnResult = (
+				<button
+					className={uiSetting.joinBtn ?? "btn-check"}
+					onClick={onJoinPromotion.bind(this, promotionInfo)}>
+					{i18n?.lbl_PromoJoinNow}
+				</button>
+			);
+		}
+	}
+
+	return btnResult;
 };

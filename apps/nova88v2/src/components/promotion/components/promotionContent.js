@@ -27,7 +27,7 @@ const PromoContent = ({
 			})
 				? ""
 				: " Expired"
-		}`}>
+		}${promotionInfo.beenUsed ? " expirModule" : ""}`}>
 		<Stamp
 			_isClaimed={_isClaimed}
 			_isNew={_isNew}

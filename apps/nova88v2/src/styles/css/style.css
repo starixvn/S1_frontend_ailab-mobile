@@ -4663,14 +4663,7 @@ button.clickBtn:before {
   z-index: 1;
   font-weight: bold;
   color: #F77A00;
-  text-shadow: 1px 0px 0px white,
- -1px 0px 0px white,
- 0px 1px 0px white,
- 0px -1px 0px white,
- 1px -1px 0px white,
- 1px 1px 0px white,
- -1px 1px 0px white,
- -1px -1px 0px white;
+  text-shadow: 1px 0px 0px white, -1px 0px 0px white, 0px 1px 0px white, 0px -1px 0px white, 1px -1px 0px white, 1px 1px 0px white, -1px 1px 0px white, -1px -1px 0px white;
 }
 
 .casino .slotList .info span.icon {
@@ -5570,6 +5563,11 @@ span.important {
 
 .promotions .promodule.active .rollover, .promotions .proInfomodule.active .rollover {
   border-color: #4F4F4F;
+}
+
+.promotions .promodule.expirModule, .promotions .proInfomodule.expirModule {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
 }
 
 .promotions .promodule .inputBox, .promotions .proInfomodule .inputBox {
@@ -9969,6 +9967,10 @@ span.important {
   z-index: 0;
   width: 80vw;
   padding: 7vw;
+}
+
+.slotpopup .slotFunction > img {
+  width: 100%;
 }
 
 .slotpopup .slotFunction .btn-group .blue {

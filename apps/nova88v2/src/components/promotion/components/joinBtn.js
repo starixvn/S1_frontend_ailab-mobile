@@ -115,6 +115,15 @@ export default ({
 			});
 	};
 
+	const _isExpiry = isExpiry({
+		...promotionInfo,
+		isLogin: userInfo.isLogin
+	});
+
+	const _canJoin = !(
+		filterType === defFilterType.specialBonus && !promotionInfo?.canJoin
+	);
+
 	const onJoinPromotion = (_promo = {}) => {
 		if (userInfo.isLogin !== false) {
 			if (
@@ -219,36 +228,34 @@ export default ({
 			} else {
 				SetClaimPromotion({ bonusCode: _promo.bonusCode });
 			}
+		} else if (userInfo.isLogin === false && !_isExpiry) {
+			handleLogin();
 		}
 	};
-
-	const _isExpiry = isExpiry({
-		...promotionInfo,
-		isLogin: userInfo.isLogin
-	});
-
-	const _canJoin = !(
-		filterType === defFilterType.specialBonus && !promotionInfo?.canJoin
-	);
 
 	const joinNowDisplayText =
 		promotionInfo?.promotionType === defPromotionType.cashback
 			? i18n?.lbl_ClaimNow
 			: i18n?.lbl_PromoJoinNow;
 
-	return redirectPath !== null ? (
-		<Redirect to={redirectPath} noThrow />
-	) : userInfo.isLogin === false && !_isExpiry ? (
-		<button
-			className={uiSetting.joinBtn ?? "btn-check"}
-			onClick={() => handleLogin()}>
-			{joinNowDisplayText}
-		</button>
-	) : _canJoin && userInfo.isLogin && !promotionInfo?.isJoin && !_isExpiry ? (
-		<button
-			className={uiSetting.joinBtn ?? "btn-check"}
-			onClick={onJoinPromotion.bind(this, promotionInfo)}>
-			{joinNowDisplayText}
-		</button>
-	) : null;
+	let btnResult = null;
+	if (redirectPath !== null) {
+		btnResult = <Redirect to={redirectPath} noThrow />;
+	} else if (
+		promotionInfo &&
+		!_isExpiry &&
+		promotionInfo.beenUsed === false &&
+		(userInfo.isLogin === false ||
+			(_canJoin && userInfo.isLogin && !promotionInfo.isJoin))
+	) {
+		btnResult = (
+			<button
+				className={uiSetting.joinBtn ?? "btn-check"}
+				onClick={onJoinPromotion.bind(this, promotionInfo)}>
+				{joinNowDisplayText}
+			</button>
+		);
+	}
+
+	return btnResult;
 };

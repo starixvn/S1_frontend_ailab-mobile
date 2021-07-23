@@ -6,13 +6,18 @@ export const Stamp = ({
 	_isNew,
 	_isExpiry,
 	filterType,
-	canJoin
+	canJoin,
+	uiSetting
 }) => {
 	const _canJoin = !(filterType === defFilterType.specialBonus && !canJoin);
 
-	return _isClaimed ? (
-		<div className="claimed" />
-	) : _canJoin && _isNew && !_isExpiry ? (
-		<div className="new active" />
-	) : null;
+	return (
+		<>
+			{_isClaimed && <div className="claimed" />}
+			{_canJoin && _isNew && !_isExpiry && <div className="new active" />}
+			{_isExpiry && uiSetting?.expiredIcon && (
+				<div className={uiSetting?.expiredIcon}>Expired</div>
+			)}
+		</>
+	);
 };

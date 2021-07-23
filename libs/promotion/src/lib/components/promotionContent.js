@@ -24,13 +24,13 @@ export default ({
 }) => (
 	<div
 		className={`promodule${promotionInfo.isJoin ? " open" : ""}${
-			CanJoin({
+			!CanJoin({
 				_isExpiry,
 				canJoin: promotionInfo.canJoin,
 				filterType: urlParameters?.[defUrlParamCols.filterType]
-			})
-				? ""
-				: " Expired"
+			}) || promotionInfo.beenUsed
+				? " Expired"
+				: ""
 		}`}>
 		<Stamp
 			_isClaimed={_isClaimed}
@@ -38,6 +38,7 @@ export default ({
 			_isExpiry={_isExpiry}
 			filterType={urlParameters?.[defUrlParamCols.filterType]}
 			canJoin={promotionInfo.canJoin}
+			uiSetting={uiSetting}
 		/>
 		<img src={promotionInfo.banner} alt={promotionInfo.title} />
 		<Link
