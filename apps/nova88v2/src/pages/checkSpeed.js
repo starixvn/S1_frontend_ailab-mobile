@@ -10,10 +10,17 @@ import path from "../path";
 
 const getVerifyAPIUrl = url => {
 	let tmpUrl = "";
-	if (url.split(".") >= 3) {
-		tmpUrl = url.replace("://www.", "://m.");
+
+	if (/^http|https/.test(url)) {
+		if (url.split(".").length >= 3) {
+			tmpUrl = url.replace("://www.", "://m.");
+		} else {
+			tmpUrl = url.replace("://", "://m.");
+		}
+	} else if (/^www./.test(tmpUrl)) {
+		tmpUrl = url.replace(/^www./, "m.");
 	} else {
-		tmpUrl = url.replace("://", "://m.");
+		tmpUrl = `m.${url}`;
 	}
 
 	return `${tmpUrl}${tmpUrl.slice(-1) === "/" ? "" : "/"}api/speed`;
