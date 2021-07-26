@@ -6598,7 +6598,7 @@ span.important {
   content: "NEW";
   position: absolute;
   top: 5px;
-  right: 5px;
+  left: 5px;
   padding: 3px 5px;
   background-color: #58cdff;
   color: #0c1a3f;
@@ -10761,7 +10761,7 @@ span.important {
 }
 
 .slotFunctionNew {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100vh;
   top: 0;
