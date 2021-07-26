@@ -9,7 +9,7 @@ import { siteInfo } from "../config";
 import path from "../path";
 
 const getVerifyAPIUrl = url => {
-	let tmpUrl = "";
+	let tmpUrl = url;
 
 	if (/^http|https/.test(url)) {
 		if (url.split(".").length >= 3) {
@@ -17,9 +17,9 @@ const getVerifyAPIUrl = url => {
 		} else {
 			tmpUrl = url.replace("://", "://m.");
 		}
-	} else if (/^www./.test(tmpUrl)) {
+	} else if (/^www./.test(url)) {
 		tmpUrl = url.replace(/^www./, "m.");
-	} else {
+	} else if (/^(?!m.)/.test(url)) {
 		tmpUrl = `m.${url}`;
 	}
 
