@@ -4770,58 +4770,36 @@ input[type="date"] {
   margin: 0;
 }
 
-.slotpopup {
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+.slotFunction {
   position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  display: none;
-}
-
-.slotpopup.active {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.slotpopup .slotFunction {
-  position: relative;
+  bottom: 0;
   -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
           box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
+  padding: 2vw 2vw 20vw;
   border-radius: 10px;
   width: calc(100% - 4vw);
+  left: 0;
   background: #f3f3f3;
-  width: 80vw;
-  padding: 7vw;
+  visibility: hidden;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  opacity: 0;
+  z-index: 2;
 }
 
-.slotpopup .slotFunction .btn-group .blue {
-  background: -webkit-gradient(linear, left top, left bottom, from(#f1d5b6), to(#cdae8e));
-  background: linear-gradient(to bottom, #f1d5b6, #cdae8e);
-}
-
-.slotpopup .slotFunction .icon-cancel-circle {
+.slotFunction .icon-cancel-circle {
   position: absolute;
   right: 2vw;
   top: 2vw;
   color: #F77A00;
 }
 
-.slotpopup .slotFunction .text-org {
+.slotFunction .text-org {
   font-size: 5vw;
   margin: 2vw 0 3vw;
 }
 
-.slotpopup .slotFunction.active {
+.slotFunction.active {
   visibility: visible;
   -webkit-transition: 0.7s;
   transition: 0.7s;
@@ -9888,7 +9866,20 @@ span.important {
   margin: 0 0 15px;
 }
 
-.checkspeed .wallpaper .module > .bottom > div.left > div > div:last-child {
+.checkspeed .wallpaper .module > .bottom > div.left > div > div.time {
+  margin-left: 11vw;
+  margin-top: -2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.checkspeed .wallpaper .module > .bottom > div.left > div > div.time span {
+  margin-left: 5px;
+  color: #fab617;
+}
+
+.checkspeed .wallpaper .module > .bottom > div.left > div > div:last-child:not(.time) {
   margin: 0;
 }
 
