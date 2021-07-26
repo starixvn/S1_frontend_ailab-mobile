@@ -174,7 +174,7 @@ export const productList = langId => {
 				// },
 
 				{
-					displayKey: "PP",
+					displayKey: "Pragmatic Play",
 					icon: "icon icon-PP",
 					img: liveCasino_PP,
 					...defGameInfo.LIVEcasinoPP,
@@ -209,35 +209,34 @@ export const productList = langId => {
 					tpCategoryId: defTpCategoryId.LiveCasino
 				},
 				{
-					displayKey: "WM",
+					displayKey: "WM Casino",
 					icon: "icon icon-WM",
 					img: liveCasino_WM,
 					...defGameInfo.LIVEcasinoWM,
 					tpCategoryId: defTpCategoryId.LiveCasino
 				},
 				{
-					displayKey: "AG",
+					displayKey: "Asia Gaming",
 					icon: "icon icon-AG",
 					img: liveCasino_AG,
-					...defGameInfo.LIVEcasinoAG,
-					tpCategoryId: defTpCategoryId.LiveCasino
+					...defGameInfo.LIVEcasinoAG
 				},
 				{
-					displayKey: "AE",
+					displayKey: "AE Casino",
 					icon: "icon icon-AE",
 					img: liveCasino_AE,
 					...defGameInfo.LIVEcasinoAE,
 					tpCategoryId: defTpCategoryId.LiveCasino
 				},
 				{
-					displayKey: "DG",
+					displayKey: "Dream Gaming",
 					icon: "icon icon-DG",
 					img: liveCasino_DG,
 					...defGameInfo.LIVEcasinoDG,
 					tpCategoryId: defTpCategoryId.LiveCasino
 				},
 				{
-					displayKey: "AB",
+					displayKey: "Allbet",
 					icon: "icon icon-AB",
 					img: liveCasino_AB,
 					...defGameInfo.LIVEcasinoAB,
@@ -251,7 +250,7 @@ export const productList = langId => {
 					tpCategoryId: defTpCategoryId.LiveCasino
 				},
 				{
-					displayKey: "SA",
+					displayKey: "SA Gaming",
 					icon: "icon icon-SA",
 					img: liveCasino_SA,
 					...defGameInfo.LIVEcasinoSA,
