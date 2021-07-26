@@ -212,6 +212,11 @@ const gameList = ({ langId, currencyName }) => {
 						// 	]
 						// },
 						{
+							...defGameInfo.LIVEcasinoPP,
+							spanText: "PP",
+							img: LIVEcasino_PP
+						},
+						{
 							...defGameInfo.Casino_PT,
 							spanText: "PT",
 							img: LIVEcasino_PT,
@@ -251,11 +256,6 @@ const gameList = ({ langId, currencyName }) => {
 							img: LIVEcasino_WM
 						},
 						{
-							...defGameInfo.LIVEcasinoPP,
-							spanText: "PP",
-							img: LIVEcasino_PP
-						},
-						{
 							...defGameInfo.LIVEcasinoSA,
 							spanText: "SA",
 							img: LIVEcasino_SA
@@ -279,6 +279,13 @@ const gameList = ({ langId, currencyName }) => {
 					tpCategoryId: defTpCategoryId.Slots,
 					items: [
 						{
+							...defGameInfo.Casino_PP,
+							parameter: defGameInfo.Casino_PP,
+							spanText: "PP",
+							img: casino_PP,
+							path: path.casino.root
+						},
+						{
 							...defGameInfo.Casino_MGP,
 							parameter: defGameInfo.Casino_MGP,
 							spanText: "Microgaming",
@@ -292,13 +299,6 @@ const gameList = ({ langId, currencyName }) => {
 									)
 								}
 							]
-						},
-						{
-							...defGameInfo.Casino_PP,
-							parameter: defGameInfo.Casino_PP,
-							spanText: "PP",
-							img: casino_PP,
-							path: path.casino.root
 						},
 						{
 							...defGameInfo.Casino_Jili,
@@ -613,6 +613,11 @@ const gameList = ({ langId, currencyName }) => {
 						// 	]
 						// },
 						{
+							...defGameInfo.LIVEcasinoPP,
+							spanText: "PP",
+							img: LIVEcasino_PP
+						},
+						{
 							...defGameInfo.Casino_PT,
 							spanText: "PT",
 							img: LIVEcasino_PT,
@@ -635,11 +640,6 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.LIVEcasinoAE,
 							spanText: "AE",
 							img: LIVEcasino_AE
-						},
-						{
-							...defGameInfo.LIVEcasinoPP,
-							spanText: "PP",
-							img: LIVEcasino_PP
 						},
 						{
 							...defGameInfo.LIVEcasinoSA,
@@ -680,6 +680,13 @@ const gameList = ({ langId, currencyName }) => {
 					tpCategoryId: defTpCategoryId.Slots,
 					items: [
 						{
+							...defGameInfo.Casino_PP,
+							parameter: defGameInfo.Casino_PP,
+							spanText: "PP",
+							img: casino_PP,
+							path: path.casino.root
+						},
+						{
 							...defGameInfo.Casino_MGP,
 							parameter: defGameInfo.Casino_MGP,
 							spanText: "Microgaming",
@@ -693,13 +700,6 @@ const gameList = ({ langId, currencyName }) => {
 									)
 								}
 							]
-						},
-						{
-							...defGameInfo.Casino_PP,
-							parameter: defGameInfo.Casino_PP,
-							spanText: "PP",
-							img: casino_PP,
-							path: path.casino.root
 						},
 						{
 							...defGameInfo.Casino_Jili,
@@ -1015,6 +1015,12 @@ const gameList = ({ langId, currencyName }) => {
 						// 		}
 						// 	]
 						// },
+
+						{
+							...defGameInfo.LIVEcasinoPP,
+							spanText: "PP",
+							img: LIVEcasino_PP
+						},
 						{
 							...defGameInfo.Casino_PT,
 							spanText: "PT",
@@ -1060,11 +1066,6 @@ const gameList = ({ langId, currencyName }) => {
 							img: LIVEcasino_WM
 						},
 						{
-							...defGameInfo.LIVEcasinoPP,
-							spanText: "PP",
-							img: LIVEcasino_PP
-						},
-						{
 							...defGameInfo.LIVEcasinoEB,
 							spanText: "EB",
 							img: LIVEcasino_EB
@@ -1082,6 +1083,13 @@ const gameList = ({ langId, currencyName }) => {
 					translateKey: "lbl_Casino",
 					tpCategoryId: defTpCategoryId.Slots,
 					items: [
+						{
+							...defGameInfo.Casino_PP,
+							parameter: defGameInfo.Casino_PP,
+							spanText: "PP",
+							img: casino_PP,
+							path: path.casino.root
+						},
 						{
 							...defGameInfo.Casino_MGP,
 							parameter: defGameInfo.Casino_MGP,
@@ -1116,13 +1124,6 @@ const gameList = ({ langId, currencyName }) => {
 									inPeriod: isEventPeriod(eventTime.jili)
 								}
 							]
-						},
-						{
-							...defGameInfo.Casino_PP,
-							parameter: defGameInfo.Casino_PP,
-							spanText: "PP",
-							img: casino_PP,
-							path: path.casino.root
 						},
 						{
 							...defGameInfo.Casino_JOKER,
@@ -1416,6 +1417,12 @@ const gameList = ({ langId, currencyName }) => {
 						// 		}
 						// 	]
 						// },
+
+						{
+							...defGameInfo.LIVEcasinoPP,
+							spanText: "PP",
+							img: LIVEcasino_PP
+						},
 						{
 							...defGameInfo.LIVEcasinoAE,
 							spanText: "AE",
@@ -1442,11 +1449,6 @@ const gameList = ({ langId, currencyName }) => {
 							img: LIVEcasino_WM
 						},
 						{
-							...defGameInfo.LIVEcasinoPP,
-							spanText: "PP",
-							img: LIVEcasino_PP
-						},
-						{
 							...defGameInfo.LIVEcasinoSA,
 							spanText: "SA",
 							img: LIVEcasino_SA
@@ -1470,6 +1472,13 @@ const gameList = ({ langId, currencyName }) => {
 					tpCategoryId: defTpCategoryId.Slots,
 					items: [
 						{
+							...defGameInfo.Casino_PP,
+							parameter: defGameInfo.Casino_PP,
+							spanText: "PP",
+							img: casino_PP,
+							path: path.casino.root
+						},
+						{
 							...defGameInfo.Casino_MGP,
 							parameter: defGameInfo.Casino_MGP,
 							spanText: "Microgaming",
@@ -1483,13 +1492,6 @@ const gameList = ({ langId, currencyName }) => {
 									)
 								}
 							]
-						},
-						{
-							...defGameInfo.Casino_PP,
-							parameter: defGameInfo.Casino_PP,
-							spanText: "PP",
-							img: casino_PP,
-							path: path.casino.root
 						},
 						{
 							...defGameInfo.Casino_Jili,
@@ -1803,6 +1805,12 @@ const gameList = ({ langId, currencyName }) => {
 						// 		}
 						// 	]
 						// },
+
+						{
+							...defGameInfo.LIVEcasinoPP,
+							spanText: "PP",
+							img: LIVEcasino_PP
+						},
 						{
 							...defGameInfo.Casino_PT,
 							spanText: "PT",
@@ -1848,11 +1856,6 @@ const gameList = ({ langId, currencyName }) => {
 							img: LIVEcasino_AE
 						},
 						{
-							...defGameInfo.LIVEcasinoPP,
-							spanText: "PP",
-							img: LIVEcasino_PP
-						},
-						{
 							...defGameInfo.LIVEcasinoDG,
 							spanText: "DG",
 							img: LIVEcasino_DG
@@ -1870,6 +1873,13 @@ const gameList = ({ langId, currencyName }) => {
 					translateKey: "lbl_Casino",
 					tpCategoryId: defTpCategoryId.Slots,
 					items: [
+						{
+							...defGameInfo.Casino_PP,
+							parameter: defGameInfo.Casino_PP,
+							spanText: "PP",
+							img: casino_PP,
+							path: path.casino.root
+						},
 						{
 							...defGameInfo.Casino_MGP,
 							parameter: defGameInfo.Casino_MGP,
@@ -1910,13 +1920,6 @@ const gameList = ({ langId, currencyName }) => {
 									inPeriod: isEventPeriod(eventTime.jili)
 								}
 							]
-						},
-						{
-							...defGameInfo.Casino_PP,
-							parameter: defGameInfo.Casino_PP,
-							spanText: "PP",
-							img: casino_PP,
-							path: path.casino.root
 						},
 						{
 							...defGameInfo.casino_ICG,
