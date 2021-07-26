@@ -139,6 +139,11 @@ const defSubMenus = [
 		icon: "icon icon-livecasino",
 		subItems: [
 			{
+				...defGameInfo.LIVEcasinoPP,
+				displayKey: "PP",
+				tpCategoryId: defTpCategoryId.LiveCasino
+			},
+			{
 				...defGameInfo.LIVEcasinoN2,
 				displayKey: "N2Live",
 				tpCategoryId: defTpCategoryId.LiveCasino
@@ -155,11 +160,6 @@ const defSubMenus = [
 			{
 				...defGameInfo.LIVEcasinoDG,
 				displayKey: "DG",
-				tpCategoryId: defTpCategoryId.LiveCasino
-			},
-			{
-				...defGameInfo.LIVEcasinoPP,
-				displayKey: "PP",
 				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
