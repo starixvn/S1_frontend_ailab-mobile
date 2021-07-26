@@ -172,6 +172,14 @@ export const productList = langId => {
 				// 		}
 				// 	]
 				// },
+
+				{
+					displayKey: "PP",
+					icon: "icon icon-PP",
+					img: liveCasino_PP,
+					...defGameInfo.LIVEcasinoPP,
+					tpCategoryId: defTpCategoryId.LiveCasino
+				},
 				{
 					displayKey: "Playtech",
 					icon: "icon icon-pt",
@@ -212,13 +220,6 @@ export const productList = langId => {
 					icon: "icon icon-AG",
 					img: liveCasino_AG,
 					...defGameInfo.LIVEcasinoAG,
-					tpCategoryId: defTpCategoryId.LiveCasino
-				},
-				{
-					displayKey: "PP",
-					icon: "icon icon-PP",
-					img: liveCasino_PP,
-					...defGameInfo.LIVEcasinoPP,
 					tpCategoryId: defTpCategoryId.LiveCasino
 				},
 				{

@@ -369,6 +369,14 @@ const gameList = [
 		img: Menu_Slots,
 		items: [
 			{
+				...defGameInfo.Casino_PP,
+				parameter: defGameInfo.Casino_PP,
+				spanText: "PP",
+				img: Casino_PP,
+				path: path.casino.root,
+				tpCategoryId: defTpCategoryId.Slots
+			},
+			{
 				...defGameInfo.Casino_PT,
 				parameter: defGameInfo.Casino_PT,
 				spanText: "PT",
@@ -451,14 +459,6 @@ const gameList = [
 				tpCategoryId: defTpCategoryId.Slots
 			},
 			{
-				...defGameInfo.Casino_PP,
-				parameter: defGameInfo.Casino_PP,
-				spanText: "PP",
-				img: Casino_PP,
-				path: path.casino.root,
-				tpCategoryId: defTpCategoryId.Slots
-			},
-			{
 				...defGameInfo.Casino_PG,
 				parameter: defGameInfo.Casino_PG,
 				spanText: "PG",
@@ -480,6 +480,12 @@ const gameList = [
 		translateKey: "lbl_Live",
 		img: Menu_LiveCasino,
 		items: [
+			{
+				...defGameInfo.LIVEcasinoPP,
+				spanText: "PP",
+				img: LIVEcasino_PP,
+				tpCategoryId: defTpCategoryId.LiveCasino
+			},
 			{
 				...defGameInfo.Casino_PT,
 				spanText: "PT",
@@ -520,12 +526,6 @@ const gameList = [
 				...defGameInfo.LIVEcasinoDG,
 				spanText: "DG",
 				img: LIVEcasino_DG,
-				tpCategoryId: defTpCategoryId.LiveCasino
-			},
-			{
-				...defGameInfo.LIVEcasinoPP,
-				spanText: "PP",
-				img: LIVEcasino_PP,
 				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{

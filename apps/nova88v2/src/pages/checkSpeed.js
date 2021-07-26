@@ -39,7 +39,10 @@ const IndexPage = () => {
 
 	const checkURL = async URL => {
 		try {
-			const { status } = await axios.head(URL);
+			const { status } = await axios.head(
+				`${URL}${URL.slice(-1) === "/" ? "" : "/"}api/speed`
+			);
+
 			if (status === 200) {
 				setList(prev => {
 					const fails = [];
