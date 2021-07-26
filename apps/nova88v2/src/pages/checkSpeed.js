@@ -8,6 +8,17 @@ import start from "../styles/img/check_speed/start.png";
 import { siteInfo } from "../config";
 import path from "../path";
 
+const getVerifyAPIUrl = url => {
+	let tmpUrl = "";
+	if (url.split(".") >= 3) {
+		tmpUrl = url.replace("://www.", "://m.");
+	} else {
+		tmpUrl = url.replace("://", "://m.");
+	}
+
+	return `${tmpUrl}${tmpUrl.slice(-1) === "/" ? "" : "/"}api/speed`;
+};
+
 const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -39,9 +50,7 @@ const IndexPage = () => {
 
 	const checkURL = async URL => {
 		try {
-			const { status } = await axios.head(
-				`${URL}${URL.slice(-1) === "/" ? "" : "/"}api/speed`
-			);
+			const { status } = await axios.head(getVerifyAPIUrl(URL));
 
 			if (status === 200) {
 				setList(prev => {
