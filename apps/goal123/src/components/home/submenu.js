@@ -140,7 +140,7 @@ const defSubMenus = [
 		subItems: [
 			{
 				...defGameInfo.LIVEcasinoPP,
-				displayKey: "PP",
+				displayKey: "Pragmatic Play",
 				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
@@ -149,43 +149,37 @@ const defSubMenus = [
 				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
-				...defGameInfo.Casino_MGP,
-				displayKey: "Microgaming"
+				...defGameInfo.LIVEcasinoN2,
+				displayKey: "n2-LIVE"
 			},
 			{
 				...defGameInfo.LIVEcasinoWM,
-				displayKey: "WM",
-				tpCategoryId: defTpCategoryId.LiveCasino
+				displayKey: "WM Casino"
 			},
 			{
 				...defGameInfo.LIVEcasinoDG,
-				displayKey: "DG",
+				displayKey: "Dream Gaming",
 				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
 				...defGameInfo.LIVEcasinoAE,
-				displayKey: "AE",
-				tpCategoryId: defTpCategoryId.LiveCasino
+				displayKey: "AE Casino"
 			},
 			{
 				...defGameInfo.LIVEcasinoAG,
-				displayKey: "AG",
-				tpCategoryId: defTpCategoryId.LiveCasino
+				displayKey: "Asia Gaming"
 			},
 			{
 				...defGameInfo.LIVEcasinoAB,
-				displayKey: "AB",
-				tpCategoryId: defTpCategoryId.LiveCasino
+				displayKey: "Allbet"
 			},
 			{
 				...defGameInfo.LIVEcasinoSA,
-				displayKey: "SA",
-				tpCategoryId: defTpCategoryId.LiveCasino
+				displayKey: "SA Gaming"
 			},
 			{
 				...defGameInfo.LIVEcasinoEB,
-				displayKey: "EB",
-				tpCategoryId: defTpCategoryId.LiveCasino
+				displayKey: "eBET"
 			}
 		]
 	},
