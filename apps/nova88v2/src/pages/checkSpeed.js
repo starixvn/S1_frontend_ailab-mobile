@@ -63,6 +63,7 @@ const IndexPage = () => {
 	};
 
 	const _GetSupportDomainList = () => {
+		setList([]);
 		api.site
 			.GetSupportDomainList({ langId: userInfo.langId })
 			.then(async res => {
