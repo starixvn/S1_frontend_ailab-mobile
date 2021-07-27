@@ -1,9 +1,9 @@
-import Menu_HotGame from "../styles/img/sidbar/hotgmae.png";
-import Menu_Sports from "../styles/img/sidbar/sports.png";
-import Menu_Games from "../styles/img/sidbar/games.png";
-import Menu_Slots from "../styles/img/sidbar/slots.png";
-import Menu_LiveCasino from "../styles/img/sidbar/livecasino.png";
-import Menu_Fishing from "../styles/img/sidbar/fishing.jpg";
+import Menu_HotGame from "../styles/img/hotgameicon/hot.png";
+import Menu_Sports from "../styles/img/hotgameicon/sport.png";
+import Menu_Games from "../styles/img/hotgameicon/games.png";
+import Menu_Slots from "../styles/img/hotgameicon/slots.png";
+import Menu_LiveCasino from "../styles/img/hotgameicon/live.png";
+import Menu_Fishing from "../styles/img/hotgameicon/fishing.png";
 
 import Sports_Soccer from "../styles/img/hotgame-m/sports/soccer.png";
 import Sports_SabaSoccer from "../styles/img/hotgame-m/sports/sabasoccer.png";
@@ -371,7 +371,7 @@ const gameList = [
 			{
 				...defGameInfo.Casino_PP,
 				parameter: defGameInfo.Casino_PP,
-				spanText: "PP",
+				spanText: "Pragmatic Play",
 				img: Casino_PP,
 				path: path.casino.root,
 				tpCategoryId: defTpCategoryId.Slots
@@ -379,7 +379,7 @@ const gameList = [
 			{
 				...defGameInfo.Casino_PT,
 				parameter: defGameInfo.Casino_PT,
-				spanText: "PT",
+				spanText: "Playtech",
 				img: Casino_PT,
 				path: path.casino.root,
 				tpCategoryId: defTpCategoryId.Slots,
@@ -421,7 +421,7 @@ const gameList = [
 			{
 				...defGameInfo.casino_ICG,
 				parameter: defGameInfo.casino_ICG,
-				spanText: "ICG",
+				spanText: "Iconic Gaming",
 				img: Casino_ICG,
 				path: path.casino.root,
 				tpCategoryId: defTpCategoryId.Slots
@@ -437,7 +437,7 @@ const gameList = [
 			{
 				...defGameInfo.Casino_GPI,
 				parameter: defGameInfo.Casino_GPI,
-				spanText: "GPI",
+				spanText: "Game Play",
 				img: Casino_GPI,
 				path: path.casino.root,
 				tpCategoryId: defTpCategoryId.Slots
@@ -445,7 +445,7 @@ const gameList = [
 			{
 				...defGameInfo.Casino_YGG,
 				parameter: defGameInfo.Casino_YGG,
-				spanText: "YGG",
+				spanText: "YGGDrassil",
 				img: Casino_YGG,
 				path: path.casino.root,
 				tpCategoryId: defTpCategoryId.Slots
@@ -453,7 +453,7 @@ const gameList = [
 			{
 				...defGameInfo.Casino_SG,
 				parameter: defGameInfo.Casino_SG,
-				spanText: "SG",
+				spanText: "Spadegaming",
 				img: Casino_SG,
 				path: path.casino.root,
 				tpCategoryId: defTpCategoryId.Slots
@@ -461,7 +461,7 @@ const gameList = [
 			{
 				...defGameInfo.Casino_PG,
 				parameter: defGameInfo.Casino_PG,
-				spanText: "PG",
+				spanText: "PG Soft",
 				img: Casino_PG,
 				path: path.casino.root,
 				tpCategoryId: defTpCategoryId.Slots
@@ -469,7 +469,7 @@ const gameList = [
 			{
 				...defGameInfo.Casino_ow,
 				parameter: defGameInfo.Casino_ow,
-				spanText: "OW",
+				spanText: "Saba Casino",
 				img: Casino_OW,
 				tpCategoryId: defTpCategoryId.Slots
 			}
@@ -482,13 +482,13 @@ const gameList = [
 		items: [
 			{
 				...defGameInfo.LIVEcasinoPP,
-				spanText: "PP",
+				spanText: "Pragmatic Play",
 				img: LIVEcasino_PP,
 				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
 				...defGameInfo.Casino_PT,
-				spanText: "PT",
+				spanText: "Playtech",
 				img: LIVEcasino_PT,
 				tpCategoryId: defTpCategoryId.LiveCasino,
 				eventIcon: [
@@ -510,51 +510,52 @@ const gameList = [
 			// 		}
 			// 	]
 			// },
+
 			{
 				...defGameInfo.LIVEcasinoN2,
-				spanText: "N2Live",
+				spanText: "n2-LIVE",
 				img: LIVEcasino_N2Live,
 				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
 				...defGameInfo.LIVEcasinoWM,
-				spanText: "WM",
+				spanText: "WM Casino",
 				img: LIVEcasino_WM,
 				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
 				...defGameInfo.LIVEcasinoDG,
-				spanText: "DG",
+				spanText: "Dream Gaming",
 				img: LIVEcasino_DG,
 				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
 				...defGameInfo.LIVEcasinoAE,
-				spanText: "AE",
+				spanText: "AE Casino",
 				img: LIVEcasino_AE,
 				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
 				...defGameInfo.LIVEcasinoAG,
-				spanText: "AG",
+				spanText: "Asia Gaming",
 				img: LIVEcasino_AG,
 				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
 				...defGameInfo.LIVEcasinoAB,
-				spanText: "AB",
+				spanText: "Allbet",
 				img: LIVEcasino_AB,
 				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
 				...defGameInfo.LIVEcasinoSA,
-				spanText: "SA",
+				spanText: "SA Gaming",
 				img: LIVEcasino_SA,
 				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
 				...defGameInfo.LIVEcasinoEB,
-				spanText: "EB",
+				spanText: "eBET",
 				img: LIVEcasino_EB,
 				tpCategoryId: defTpCategoryId.LiveCasino
 			}

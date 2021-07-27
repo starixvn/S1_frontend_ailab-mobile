@@ -107,10 +107,7 @@ const ProductPage = ({ category, titleKey }) => {
 						</div>
 					) : null}
 					<img src={game.img} alt={game.displayKey} />
-					<p>
-						<span className={`icon icon-${game.icon}`} />
-						{i18n[game.displayKey] ?? game.displayKey}
-					</p>
+					<p>{i18n[game.displayKey] ?? game.displayKey}</p>
 				</button>
 			);
 		});

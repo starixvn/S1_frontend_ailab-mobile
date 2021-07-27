@@ -213,12 +213,12 @@ const gameList = ({ langId, currencyName }) => {
 						// },
 						{
 							...defGameInfo.LIVEcasinoPP,
-							spanText: "PP",
+							spanText: "Pragmatic Play",
 							img: LIVEcasino_PP
 						},
 						{
 							...defGameInfo.Casino_PT,
-							spanText: "PT",
+							spanText: "Playtech",
 							img: LIVEcasino_PT,
 							useGotoGame: true,
 							eventIcon: [
@@ -232,42 +232,42 @@ const gameList = ({ langId, currencyName }) => {
 						},
 						{
 							...defGameInfo.LIVEcasinoAE,
-							spanText: "AE",
+							spanText: "AE Casino",
 							img: LIVEcasino_AE
 						},
 						{
 							...defGameInfo.LIVEcasinoAG,
-							spanText: "AG",
+							spanText: "Asia Gaming",
 							img: LIVEcasino_AG
 						},
 						{
 							...defGameInfo.LIVEcasinoEB,
-							spanText: "EB",
+							spanText: "eBET",
 							img: LIVEcasino_EB
 						},
 						{
 							...defGameInfo.LIVEcasinoDG,
-							spanText: "DG",
+							spanText: "Dream Gaming",
 							img: LIVEcasino_DG
 						},
 						{
 							...defGameInfo.LIVEcasinoWM,
-							spanText: "WM",
+							spanText: "WM Casino",
 							img: LIVEcasino_WM
 						},
 						{
 							...defGameInfo.LIVEcasinoSA,
-							spanText: "SA",
+							spanText: "SA Gaming",
 							img: LIVEcasino_SA
 						},
 						{
 							...defGameInfo.LIVEcasinoAB,
-							spanText: "AB",
+							spanText: "Allbet",
 							img: LIVEcasino_AB
 						},
 						{
 							...defGameInfo.LIVEcasinoN2Live,
-							spanText: "N2Live",
+							spanText: "n2-LIVE",
 							img: LIVEcasino_N2Live
 						}
 					]
@@ -281,7 +281,7 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.Casino_PP,
 							parameter: defGameInfo.Casino_PP,
-							spanText: "PP",
+							spanText: "Pragmatic Play",
 							img: casino_PP,
 							path: path.casino.root
 						},
@@ -316,21 +316,21 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.Casino_PG,
 							parameter: defGameInfo.Casino_PG,
-							spanText: "PG",
+							spanText: "PG Soft",
 							img: casino_PG,
 							path: path.casino.root
 						},
 						{
 							...defGameInfo.Casino_SG,
 							parameter: defGameInfo.Casino_SG,
-							spanText: "SG",
+							spanText: "Spadegaming",
 							img: casino_SG,
 							path: path.casino.root
 						},
 						{
 							...defGameInfo.Casino_PT,
 							parameter: defGameInfo.Casino_PT,
-							spanText: "PT",
+							spanText: "Playtech",
 							img: casino_PT,
 							path: path.casino.root,
 							eventIcon: [
@@ -357,28 +357,28 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.casino_ICG,
 							parameter: defGameInfo.casino_ICG,
-							spanText: "ICG",
+							spanText: "Iconic Gaming",
 							img: casino_ICG,
 							path: path.casino.root
 						},
 						{
 							...defGameInfo.Casino_GPI,
 							parameter: defGameInfo.Casino_GPI,
-							spanText: "GPI",
+							spanText: "Game Play",
 							img: casino_GPI,
 							path: path.casino.root
 						},
 						{
 							...defGameInfo.Casino_YGG,
 							parameter: defGameInfo.Casino_YGG,
-							spanText: "YGG",
+							spanText: "YGGDrassil",
 							img: casino_YGG,
 							path: path.casino.root
 						},
 						{
 							...defGameInfo.Casino_OW,
 							parameter: defGameInfo.Casino_OW,
-							spanText: "OW",
+							spanText: "Saba Casino",
 							img: casino_OW
 						}
 						// {
@@ -614,12 +614,12 @@ const gameList = ({ langId, currencyName }) => {
 						// },
 						{
 							...defGameInfo.LIVEcasinoPP,
-							spanText: "PP",
+							spanText: "Pragmatic Play",
 							img: LIVEcasino_PP
 						},
 						{
 							...defGameInfo.Casino_PT,
-							spanText: "PT",
+							spanText: "Playtech",
 							img: LIVEcasino_PT,
 							useGotoGame: true,
 							eventIcon: [
@@ -633,42 +633,42 @@ const gameList = ({ langId, currencyName }) => {
 						},
 						{
 							...defGameInfo.LIVEcasinoDG,
-							spanText: "DG",
+							spanText: "Dream Gaming",
 							img: LIVEcasino_DG
 						},
 						{
 							...defGameInfo.LIVEcasinoAE,
-							spanText: "AE",
+							spanText: "AE Casino",
 							img: LIVEcasino_AE
 						},
 						{
 							...defGameInfo.LIVEcasinoSA,
-							spanText: "SA",
+							spanText: "SA Gaming",
 							img: LIVEcasino_SA
 						},
 						{
 							...defGameInfo.LIVEcasinoAB,
-							spanText: "AB",
+							spanText: "Allbet",
 							img: LIVEcasino_AB
 						},
 						{
 							...defGameInfo.LIVEcasinoAG,
-							spanText: "AG",
+							spanText: "Asia Gaming",
 							img: LIVEcasino_AG
 						},
 						{
 							...defGameInfo.LIVEcasinoWM,
-							spanText: "WM",
+							spanText: "WM Casino",
 							img: LIVEcasino_WM
 						},
 						{
 							...defGameInfo.LIVEcasinoEB,
-							spanText: "EB",
+							spanText: "eBET",
 							img: LIVEcasino_EB
 						},
 						{
 							...defGameInfo.LIVEcasinoN2Live,
-							spanText: "N2Live",
+							spanText: "n2-LIVE",
 							img: LIVEcasino_N2Live
 						}
 					]
@@ -682,7 +682,7 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.Casino_PP,
 							parameter: defGameInfo.Casino_PP,
-							spanText: "PP",
+							spanText: "Pragmatic Play",
 							img: casino_PP,
 							path: path.casino.root
 						},
@@ -717,14 +717,14 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.Casino_SG,
 							parameter: defGameInfo.Casino_SG,
-							spanText: "SG",
+							spanText: "Spadegaming",
 							img: casino_SG,
 							path: path.casino.root
 						},
 						{
 							...defGameInfo.Casino_YGG,
 							parameter: defGameInfo.Casino_YGG,
-							spanText: "YGG",
+							spanText: "YGGDrassil",
 							img: casino_YGG,
 							path: path.casino.root
 						},
@@ -739,7 +739,7 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.Casino_PT,
 							parameter: defGameInfo.Casino_PT,
-							spanText: "PT",
+							spanText: "Playtech",
 							img: casino_PT,
 							path: path.casino.root,
 							eventIcon: [
@@ -752,7 +752,7 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.Casino_GPI,
 							parameter: defGameInfo.Casino_GPI,
-							spanText: "GPI",
+							spanText: "Game Play",
 							img: casino_GPI,
 							path: path.casino.root
 						},
@@ -768,20 +768,20 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.casino_ICG,
 							parameter: defGameInfo.casino_ICG,
-							spanText: "ICG",
+							spanText: "Iconic Gaming",
 							img: casino_ICG,
 							path: path.casino.root
 						},
 						{
 							...defGameInfo.Casino_OW,
 							parameter: defGameInfo.Casino_OW,
-							spanText: "OW",
+							spanText: "Saba Casino",
 							img: casino_OW
 						},
 						{
 							...defGameInfo.Casino_PG,
 							parameter: defGameInfo.Casino_PG,
-							spanText: "PG",
+							spanText: "PG Soft",
 							img: casino_PG,
 							path: path.casino.root
 						}
@@ -1018,12 +1018,12 @@ const gameList = ({ langId, currencyName }) => {
 
 						{
 							...defGameInfo.LIVEcasinoPP,
-							spanText: "PP",
+							spanText: "Pragmatic Play",
 							img: LIVEcasino_PP
 						},
 						{
 							...defGameInfo.Casino_PT,
-							spanText: "PT",
+							spanText: "Playtech",
 							img: LIVEcasino_PT,
 							useGotoGame: true,
 							eventIcon: [
@@ -1037,42 +1037,42 @@ const gameList = ({ langId, currencyName }) => {
 						},
 						{
 							...defGameInfo.LIVEcasinoDG,
-							spanText: "DG",
+							spanText: "Dream Gaming",
 							img: LIVEcasino_DG
 						},
 						{
 							...defGameInfo.LIVEcasinoAE,
-							spanText: "AE",
+							spanText: "AE Casino",
 							img: LIVEcasino_AE
 						},
 						{
 							...defGameInfo.LIVEcasinoSA,
-							spanText: "SA",
+							spanText: "SA Gaming",
 							img: LIVEcasino_SA
 						},
 						{
 							...defGameInfo.LIVEcasinoAB,
-							spanText: "AB",
+							spanText: "Allbet",
 							img: LIVEcasino_AB
 						},
 						{
 							...defGameInfo.LIVEcasinoAG,
-							spanText: "AG",
+							spanText: "Asia Gaming",
 							img: LIVEcasino_AG
 						},
 						{
 							...defGameInfo.LIVEcasinoWM,
-							spanText: "WM",
+							spanText: "WM Casino",
 							img: LIVEcasino_WM
 						},
 						{
 							...defGameInfo.LIVEcasinoEB,
-							spanText: "EB",
+							spanText: "eBET",
 							img: LIVEcasino_EB
 						},
 						{
 							...defGameInfo.LIVEcasinoN2Live,
-							spanText: "N2Live",
+							spanText: "n2-LIVE",
 							img: LIVEcasino_N2Live
 						}
 					]
@@ -1086,7 +1086,7 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.Casino_PP,
 							parameter: defGameInfo.Casino_PP,
-							spanText: "PP",
+							spanText: "Pragmatic Play",
 							img: casino_PP,
 							path: path.casino.root
 						},
@@ -1108,7 +1108,7 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.Casino_PG,
 							parameter: defGameInfo.Casino_PG,
-							spanText: "PG",
+							spanText: "PG Soft",
 							img: casino_PG,
 							path: path.casino.root
 						},
@@ -1135,21 +1135,21 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.Casino_SG,
 							parameter: defGameInfo.Casino_SG,
-							spanText: "SG",
+							spanText: "Spadegaming",
 							img: casino_SG,
 							path: path.casino.root
 						},
 						{
 							...defGameInfo.casino_ICG,
 							parameter: defGameInfo.casino_ICG,
-							spanText: "ICG",
+							spanText: "Iconic Gaming",
 							img: casino_ICG,
 							path: path.casino.root
 						},
 						{
 							...defGameInfo.Casino_PT,
 							parameter: defGameInfo.Casino_PT,
-							spanText: "PT",
+							spanText: "Playtech",
 							img: casino_PT,
 							path: path.casino.root,
 							eventIcon: [
@@ -1162,7 +1162,7 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.Casino_YGG,
 							parameter: defGameInfo.Casino_YGG,
-							spanText: "YGG",
+							spanText: "YGGDrassil",
 							img: casino_YGG,
 							path: path.casino.root
 						},
@@ -1176,14 +1176,14 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.Casino_GPI,
 							parameter: defGameInfo.Casino_GPI,
-							spanText: "GPI",
+							spanText: "Game Play",
 							img: casino_GPI,
 							path: path.casino.root
 						},
 						{
 							...defGameInfo.Casino_OW,
 							parameter: defGameInfo.Casino_OW,
-							spanText: "OW",
+							spanText: "Saba Casino",
 							img: casino_OW
 						}
 						// {
@@ -1420,47 +1420,47 @@ const gameList = ({ langId, currencyName }) => {
 
 						{
 							...defGameInfo.LIVEcasinoPP,
-							spanText: "PP",
+							spanText: "Pragmatic Play",
 							img: LIVEcasino_PP
 						},
 						{
 							...defGameInfo.LIVEcasinoAE,
-							spanText: "AE",
+							spanText: "AE Casino",
 							img: LIVEcasino_AE
 						},
 						{
 							...defGameInfo.LIVEcasinoAG,
-							spanText: "AG",
+							spanText: "Asia Gaming",
 							img: LIVEcasino_AG
 						},
 						{
 							...defGameInfo.LIVEcasinoEB,
-							spanText: "EB",
+							spanText: "eBET",
 							img: LIVEcasino_EB
 						},
 						{
 							...defGameInfo.LIVEcasinoDG,
-							spanText: "DG",
+							spanText: "Dream Gaming",
 							img: LIVEcasino_DG
 						},
 						{
 							...defGameInfo.LIVEcasinoWM,
-							spanText: "WM",
+							spanText: "WM Casino",
 							img: LIVEcasino_WM
 						},
 						{
 							...defGameInfo.LIVEcasinoSA,
-							spanText: "SA",
+							spanText: "SA Gaming",
 							img: LIVEcasino_SA
 						},
 						{
 							...defGameInfo.LIVEcasinoAB,
-							spanText: "AB",
+							spanText: "Allbet",
 							img: LIVEcasino_AB
 						},
 						{
 							...defGameInfo.LIVEcasinoN2Live,
-							spanText: "N2Live",
+							spanText: "n2-LIVE",
 							img: LIVEcasino_N2Live
 						}
 					]
@@ -1474,7 +1474,7 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.Casino_PP,
 							parameter: defGameInfo.Casino_PP,
-							spanText: "PP",
+							spanText: "Pragmatic Play",
 							img: casino_PP,
 							path: path.casino.root
 						},
@@ -1509,21 +1509,21 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.Casino_PG,
 							parameter: defGameInfo.Casino_PG,
-							spanText: "PG",
+							spanText: "PG Soft",
 							img: casino_PG,
 							path: path.casino.root
 						},
 						{
 							...defGameInfo.Casino_SG,
 							parameter: defGameInfo.Casino_SG,
-							spanText: "SG",
+							spanText: "Spadegaming",
 							img: casino_SG,
 							path: path.casino.root
 						},
 						{
 							...defGameInfo.Casino_PT,
 							parameter: defGameInfo.Casino_PT,
-							spanText: "PT",
+							spanText: "Playtech",
 							img: casino_PT,
 							path: path.casino.root,
 							eventIcon: [
@@ -1550,28 +1550,28 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.casino_ICG,
 							parameter: defGameInfo.casino_ICG,
-							spanText: "ICG",
+							spanText: "Iconic Gaming",
 							img: casino_ICG,
 							path: path.casino.root
 						},
 						{
 							...defGameInfo.Casino_GPI,
 							parameter: defGameInfo.Casino_GPI,
-							spanText: "GPI",
+							spanText: "Game Play",
 							img: casino_GPI,
 							path: path.casino.root
 						},
 						{
 							...defGameInfo.Casino_YGG,
 							parameter: defGameInfo.Casino_YGG,
-							spanText: "YGG",
+							spanText: "YGGDrassil",
 							img: casino_YGG,
 							path: path.casino.root
 						},
 						{
 							...defGameInfo.Casino_OW,
 							parameter: defGameInfo.Casino_OW,
-							spanText: "OW",
+							spanText: "Saba Casino",
 							img: casino_OW
 						}
 						// {
@@ -1808,12 +1808,12 @@ const gameList = ({ langId, currencyName }) => {
 
 						{
 							...defGameInfo.LIVEcasinoPP,
-							spanText: "PP",
+							spanText: "Pragmatic Play",
 							img: LIVEcasino_PP
 						},
 						{
 							...defGameInfo.Casino_PT,
-							spanText: "PT",
+							spanText: "Playtech",
 							img: LIVEcasino_PT,
 							useGotoGame: true,
 							eventIcon: [
@@ -1827,42 +1827,42 @@ const gameList = ({ langId, currencyName }) => {
 						},
 						{
 							...defGameInfo.LIVEcasinoN2Live,
-							spanText: "N2Live",
+							spanText: "n2-LIVE",
 							img: LIVEcasino_N2Live
 						},
 						{
 							...defGameInfo.LIVEcasinoWM,
-							spanText: "WM",
+							spanText: "WM Casino",
 							img: LIVEcasino_WM
 						},
 						{
 							...defGameInfo.LIVEcasinoAB,
-							spanText: "AB",
+							spanText: "Allbet",
 							img: LIVEcasino_AB
 						},
 						{
 							...defGameInfo.LIVEcasinoEB,
-							spanText: "EB",
+							spanText: "eBET",
 							img: LIVEcasino_EB
 						},
 						{
 							...defGameInfo.LIVEcasinoSA,
-							spanText: "SA",
+							spanText: "SA Gaming",
 							img: LIVEcasino_SA
 						},
 						{
 							...defGameInfo.LIVEcasinoAE,
-							spanText: "AE",
+							spanText: "AE Casino",
 							img: LIVEcasino_AE
 						},
 						{
 							...defGameInfo.LIVEcasinoDG,
-							spanText: "DG",
+							spanText: "Dream Gaming",
 							img: LIVEcasino_DG
 						},
 						{
 							...defGameInfo.LIVEcasinoAG,
-							spanText: "AG",
+							spanText: "Asia Gaming",
 							img: LIVEcasino_AG
 						}
 					]
@@ -1876,7 +1876,7 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.Casino_PP,
 							parameter: defGameInfo.Casino_PP,
-							spanText: "PP",
+							spanText: "Pragmatic Play",
 							img: casino_PP,
 							path: path.casino.root
 						},
@@ -1898,7 +1898,7 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.Casino_PT,
 							parameter: defGameInfo.Casino_PT,
-							spanText: "PT",
+							spanText: "Playtech",
 							img: casino_PT,
 							path: path.casino.root,
 							eventIcon: [
@@ -1924,7 +1924,7 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.casino_ICG,
 							parameter: defGameInfo.casino_ICG,
-							spanText: "ICG",
+							spanText: "Iconic Gaming",
 							img: casino_ICG,
 							path: path.casino.root
 						},
@@ -1945,35 +1945,35 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.Casino_GPI,
 							parameter: defGameInfo.Casino_GPI,
-							spanText: "GPI",
+							spanText: "Game Play",
 							img: casino_GPI,
 							path: path.casino.root
 						},
 						{
 							...defGameInfo.Casino_YGG,
 							parameter: defGameInfo.Casino_YGG,
-							spanText: "YGG",
+							spanText: "YGGDrassil",
 							img: casino_YGG,
 							path: path.casino.root
 						},
 						{
 							...defGameInfo.Casino_SG,
 							parameter: defGameInfo.Casino_SG,
-							spanText: "SG",
+							spanText: "Spadegaming",
 							img: casino_SG,
 							path: path.casino.root
 						},
 						{
 							...defGameInfo.Casino_PG,
 							parameter: defGameInfo.Casino_PG,
-							spanText: "PG",
+							spanText: "PG Soft",
 							img: casino_PG,
 							path: path.casino.root
 						},
 						{
 							...defGameInfo.Casino_OW,
 							parameter: defGameInfo.Casino_OW,
-							spanText: "OW",
+							spanText: "Saba Casino",
 							img: casino_OW
 						}
 						// {
