@@ -669,7 +669,7 @@
 	"lbl_Refresh":"Refresh to check",
 	"lbl_AddFavoriteFail":"Favorite failed. Kindly use Ctrl+D to add accordingly.",
 	"lbl_AddFavoriteTip":"Your browser is not support. Kindly follow step as below to complete the setting: 1. Open browser. 2. Click on Webpage Setting. 3. Key:",
-	
+	"lbl_ResponseTime":"Response Time",
 	"============IFSC Code===============":"",
 	"lbl_IFSCCode":"IFSC Code",
 	"msg_NeedIFSCCode": "Need IFSC Code"

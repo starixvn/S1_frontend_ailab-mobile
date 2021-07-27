@@ -9866,7 +9866,20 @@ span.important {
   margin: 0 0 15px;
 }
 
-.checkspeed .wallpaper .module > .bottom > div.left > div > div:last-child {
+.checkspeed .wallpaper .module > .bottom > div.left > div > div.time {
+  margin-left: 11vw;
+  margin-top: -2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.checkspeed .wallpaper .module > .bottom > div.left > div > div.time span {
+  margin-left: 5px;
+  color: #fab617;
+}
+
+.checkspeed .wallpaper .module > .bottom > div.left > div > div:last-child:not(.time) {
   margin: 0;
 }
 
