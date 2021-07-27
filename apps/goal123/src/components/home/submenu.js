@@ -145,16 +145,13 @@ const defSubMenus = [
 			},
 			{
 				...defGameInfo.LIVEcasinoN2,
-				displayKey: "N2Live",
+				displayKey: "n2-LIVE",
 				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
-				...defGameInfo.LIVEcasinoN2,
-				displayKey: "n2-LIVE"
-			},
-			{
 				...defGameInfo.LIVEcasinoWM,
-				displayKey: "WM Casino"
+				displayKey: "WM Casino",
+				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
 				...defGameInfo.LIVEcasinoDG,
@@ -163,23 +160,28 @@ const defSubMenus = [
 			},
 			{
 				...defGameInfo.LIVEcasinoAE,
-				displayKey: "AE Casino"
+				displayKey: "AE Casino",
+				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
 				...defGameInfo.LIVEcasinoAG,
-				displayKey: "Asia Gaming"
+				displayKey: "Asia Gaming",
+				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
 				...defGameInfo.LIVEcasinoAB,
-				displayKey: "Allbet"
+				displayKey: "Allbet",
+				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
 				...defGameInfo.LIVEcasinoSA,
-				displayKey: "SA Gaming"
+				displayKey: "SA Gaming",
+				tpCategoryId: defTpCategoryId.LiveCasino
 			},
 			{
 				...defGameInfo.LIVEcasinoEB,
-				displayKey: "eBET"
+				displayKey: "eBET",
+				tpCategoryId: defTpCategoryId.LiveCasino
 			}
 		]
 	},
