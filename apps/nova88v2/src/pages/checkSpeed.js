@@ -26,6 +26,32 @@ const getVerifyAPIUrl = url => {
 	return `${tmpUrl}${tmpUrl.slice(-1) === "/" ? "" : "/"}api/speed`;
 };
 
+axios.interceptors.request.use(
+	config => {
+		config.metadata = { startTime: new Date() };
+		return config;
+	},
+	error => {
+		return Promise.reject(error);
+	}
+);
+
+axios.interceptors.response.use(
+	response => {
+		response.config.metadata.endTime = new Date();
+		response.duration =
+			response.config.metadata.endTime -
+			response.config.metadata.startTime;
+		return response;
+	},
+	error => {
+		error.config.metadata.endTime = new Date();
+		error.duration =
+			error.config.metadata.endTime - error.config.metadata.startTime;
+		return Promise.reject(error);
+	}
+);
+
 const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -57,7 +83,7 @@ const IndexPage = () => {
 
 	const checkURL = async URL => {
 		try {
-			const { status } = await axios.head(getVerifyAPIUrl(URL));
+			const { status, duration } = await axios.head(getVerifyAPIUrl(URL));
 
 			if (status === 200) {
 				setList(prev => {
@@ -67,18 +93,25 @@ const IndexPage = () => {
 					});
 
 					const arr = prev.filter(el => el.available === true);
-					arr.push({ domainName: URL, available: true });
+					arr.push({
+						domainName: URL,
+						available: true,
+						duration
+					});
 
 					return [...arr, ...fails];
 				});
 			} else {
 				setList(prev => [
 					...prev,
-					{ domainName: URL, available: false }
+					{ domainName: URL, available: false, duration }
 				]);
 			}
 		} catch (error) {
-			setList(prev => [...prev, { domainName: URL, available: false }]);
+			setList(prev => [
+				...prev,
+				{ domainName: URL, available: false, duration: error.duration }
+			]);
 		}
 	};
 
@@ -147,19 +180,25 @@ const IndexPage = () => {
 							<div>{i18n.lbl_DomainListTip}</div>
 							<div>
 								{list.map(el => (
-									<div key={el.domainName}>
-										{el.available ? (
-											<img src={y} alt="V" />
-										) : (
-											<img src={n} alt="X" />
-										)}
+									<>
+										<div key={el.domainName}>
+											{el.available ? (
+												<img src={y} alt="V" />
+											) : (
+												<img src={n} alt="X" />
+											)}
 
-										<div>{el.domainName}</div>
+											<div>{el.domainName}</div>
 
-										<a href={el.domainName}>
-											{i18n.lbl_EnterWebsite}
-										</a>
-									</div>
+											<a href={el.domainName}>
+												{i18n.lbl_EnterWebsite}
+											</a>
+										</div>
+										<div className="time" key={el.duration}>
+											{i18n.lbl_ResponseTime} :
+											<span>{el.duration}</span>
+										</div>
+									</>
 								))}
 							</div>
 						</div>

@@ -636,7 +636,7 @@
 	"lbl_Refresh":"รีเฟรชเพื่อตรวจสอบ",
 	"lbl_AddFavoriteFail":"รายการโปรดล้มเหลว กรุณาใช้ Ctrl+D เพื่อเพิ่มตามนั้น",
 	"lbl_AddFavoriteTip":"เบราว์เซอร์ของคุณไม่รองรับ, กรุณาทำตามขั้นตอนด้านล่างเพื่อทำการตั้งค่าให้สำเร็จ: 1. เปิดเบราว์เซอร์  2. คลิกที่การตั้งค่าหน้าเว็บ  3. คีย์:",
-
+	"lbl_ResponseTime":"Response Time",
 	"============IFSC Code===============":"",
 	"lbl_IFSCCode":"IFSC Code",
 	"msg_NeedIFSCCode": "Need IFSC Code"
