@@ -643,5 +643,5 @@
 	"lbl_Refresh":"刷新检测",
 	"lbl_AddFavoriteFail":"加入收藏失败，请使用Ctrl+D进行添加",
 	"lbl_AddFavoriteTip":"您的浏览器不支持，请按照下面步骤操作：1.打开浏览器设置。2.点击设置网页。3.输入：",
-	"lbl_ResponseTime":"Response Time"
+	"lbl_ResponseTime":"响应时间"
 }
