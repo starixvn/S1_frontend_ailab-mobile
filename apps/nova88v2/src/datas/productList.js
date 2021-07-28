@@ -51,7 +51,8 @@ import movietv from "../styles/img/movietv.png";
 
 // import Cockfighting from "../styles/img/cockfighting.jpg";
 
-import id4d from "../styles/img/tablegame.png";
+import tableGame from "../styles/img/tablegame.png";
+import id4d from "../styles/img/indo4d.png";
 import Keno from "../styles/img/keno.png";
 import Lottery from "../styles/img/lottery.png";
 import number_game from "../styles/img/numbergame.png";
@@ -471,7 +472,7 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.Indo4d,
 							img: id4d,
 							spanTextKey: "lbl_Indo4d",
-							allowCurrency: [4, 15]
+							allowCurrency: [15]
 						},
 						{
 							...defGameInfo.Keno,
@@ -487,10 +488,14 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.NumberGame,
 							img: number_game,
 							spanTextKey: "lbl_NumberGame"
+						},
+						{
+							...defGameInfo.tableGame,
+							img: tableGame,
+							spanTextKey: "lbl_TableGame"
 						}
 					]
 				},
-
 				{
 					category: "affiliate",
 					categoryIcon: "affiliate",
@@ -875,7 +880,7 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.Indo4d,
 							img: id4d,
 							spanTextKey: "lbl_Indo4d",
-							allowCurrency: [4, 15]
+							allowCurrency: [15]
 						},
 						{
 							...defGameInfo.Keno,
@@ -891,6 +896,11 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.NumberGame,
 							img: number_game,
 							spanTextKey: "lbl_NumberGame"
+						},
+						{
+							...defGameInfo.tableGame,
+							img: tableGame,
+							spanTextKey: "lbl_TableGame"
 						}
 					]
 				},
@@ -1276,7 +1286,7 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.Indo4d,
 							img: id4d,
 							spanTextKey: "lbl_Indo4d",
-							allowCurrency: [4, 15]
+							allowCurrency: [15]
 						},
 						{
 							...defGameInfo.Keno,
@@ -1292,10 +1302,14 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.NumberGame,
 							img: number_game,
 							spanTextKey: "lbl_NumberGame"
+						},
+						{
+							...defGameInfo.tableGame,
+							img: tableGame,
+							spanTextKey: "lbl_TableGame"
 						}
 					]
 				},
-
 				{
 					category: "affiliate",
 					categoryIcon: "affiliate",
@@ -1664,7 +1678,7 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.Indo4d,
 							img: id4d,
 							spanTextKey: "lbl_Indo4d",
-							allowCurrency: [4, 15]
+							allowCurrency: [15]
 						},
 						{
 							...defGameInfo.Keno,
@@ -1680,10 +1694,14 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.NumberGame,
 							img: number_game,
 							spanTextKey: "lbl_NumberGame"
+						},
+						{
+							...defGameInfo.tableGame,
+							img: tableGame,
+							spanTextKey: "lbl_TableGame"
 						}
 					]
 				},
-
 				{
 					category: "affiliate",
 					categoryIcon: "affiliate",
@@ -2054,7 +2072,7 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.Indo4d,
 							img: id4d,
 							spanTextKey: "lbl_Indo4d",
-							allowCurrency: [4, 15]
+							allowCurrency: [15]
 						},
 						{
 							...defGameInfo.Keno,
@@ -2070,6 +2088,11 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.NumberGame,
 							img: number_game,
 							spanTextKey: "lbl_NumberGame"
+						},
+						{
+							...defGameInfo.tableGame,
+							img: tableGame,
+							spanTextKey: "lbl_TableGame"
 						}
 					]
 				},
@@ -2169,7 +2192,11 @@ export const defGameInfo = {
 	kingMaker: { tpId: 11 },
 	amb: { tpId: 30 },
 	nineW: { tpId: 31 },
-	Casino_Jili: { tpId: 32 }
+	Casino_Jili: { tpId: 32 },
+	tableGame: {
+		tpId: 1,
+		gameId: 222
+	}
 };
 
 export const defCol = {
