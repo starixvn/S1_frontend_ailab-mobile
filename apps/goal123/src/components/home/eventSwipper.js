@@ -5,7 +5,7 @@ import { defNavPanel, navContext, i18nContext } from "../common/context";
 import { Autoplay, useGetBanner } from "../common/swipperBanner";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { defBannerType } from "../../service/api/site";
-import olympic from "../../styles/img/oly_logo.png";
+// import olympic from "../../styles/img/oly_logo.png";
 
 const swipperParam = {
 	centeredSlides: true,
@@ -54,8 +54,8 @@ const EventSwipper = ({ userInfo }) => {
 			bannerName,
 			handicap,
 			homeOdds,
-			awayOdds,
-			leaguesId
+			awayOdds
+			// leaguesId
 		} = event;
 
 		const eventDate = moment(sportBattleDateTime).format("DD/MM");
@@ -92,9 +92,9 @@ const EventSwipper = ({ userInfo }) => {
 						<span>{eventTime}</span>
 					</div>
 				</div>
-				{leaguesId === 8 && (
+				{/* {leaguesId === 8 && (
 					<img className="olympic" src={olympic} alt="olympic" />
-				)}
+				)} */}
 				<div className="btn">
 					<button>{i18n.lbl_BetNow}</button>
 				</div>
