@@ -1967,7 +1967,7 @@ main.statementPage {
 
 .mainNew .hotevent .hotDiv .teamL img {
   position: absolute;
-  top: 0;
+  top: -.5vw;
   width: 5vw;
   left: 34%;
 }
@@ -2015,7 +2015,7 @@ main.statementPage {
 
 .mainNew .hotevent .hotDiv .teamR img {
   position: absolute;
-  top: 0px;
+  top: -.5vw;
   width: 5vw;
   right: 34%;
 }

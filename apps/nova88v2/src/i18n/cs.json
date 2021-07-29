@@ -621,8 +621,8 @@
 	"lbl_DownloadAppNow": "立即下载 App",
 	
 	"============IFSC Code===============":"",
-	"lbl_IFSCCode":"IFSC Code",
-	"msg_NeedIFSCCode": "Need IFSC Code",
+	"lbl_IFSCCode":"IFSC代码",
+	"msg_NeedIFSCCode": "请输入 IFSC 代码",
 
 	"=============Check Speed===============":"",
 	"lbl_CurrentIp" :"您当前的IP位置",

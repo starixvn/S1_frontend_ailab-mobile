@@ -672,6 +672,6 @@
 	"lbl_ResponseTime":"Response Time",
 	"============IFSC Code===============":"",
 	"lbl_IFSCCode":"IFSC Code",
-	"msg_NeedIFSCCode": "Need IFSC Code"
+	"msg_NeedIFSCCode": "Please enter the IFSC code."
 
 }
