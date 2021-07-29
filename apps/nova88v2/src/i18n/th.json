@@ -638,7 +638,7 @@
 	"lbl_AddFavoriteTip":"เบราว์เซอร์ของคุณไม่รองรับ, กรุณาทำตามขั้นตอนด้านล่างเพื่อทำการตั้งค่าให้สำเร็จ: 1. เปิดเบราว์เซอร์  2. คลิกที่การตั้งค่าหน้าเว็บ  3. คีย์:",
 	"lbl_ResponseTime":"เวลาตอบสนอง",
 	"============IFSC Code===============":"",
-	"lbl_IFSCCode":"IFSC Code",
-	"msg_NeedIFSCCode": "Need IFSC Code"
+	"lbl_IFSCCode":"รหัส IFSC",
+	"msg_NeedIFSCCode": "กรุณากรอกรหัส IFSC"
 
 }
