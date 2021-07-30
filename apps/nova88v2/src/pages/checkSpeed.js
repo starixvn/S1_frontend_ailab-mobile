@@ -195,10 +195,14 @@ const IndexPage = () => {
 												{i18n.lbl_EnterWebsite}
 											</a>
 										</div>
-										<div className="time" key={el.duration}>
-											{i18n.lbl_ResponseTime} :
-											<span>{el.duration}</span>
-										</div>
+										{el.available && (
+											<div
+												className="time"
+												key={el.duration}>
+												{i18n.lbl_ResponseTime} :
+												<span>{el.duration}</span>
+											</div>
+										)}
 									</>
 								))}
 							</div>
