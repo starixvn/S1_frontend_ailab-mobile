@@ -16,6 +16,7 @@ import HistoryFilter from "../common/historyFilter";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import ReloadSpin from "../common/reloadSpin";
 import Loading from "../common/loading";
+import BankSlip from "./bankSlip";
 
 const Panel = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -245,6 +246,7 @@ const Panel = () => {
 					)}
 				</div>
 			) : null}
+			<BankSlip />
 		</>
 	);
 };

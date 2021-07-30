@@ -15,6 +15,7 @@ import HistoryFilter from "../common/historyFilter";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import ReloadSpin from "../common/reloadSpin";
 import Loading from "../common/loading";
+import BankSlip from "./bankSlip";
 
 const Panel = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -209,40 +210,43 @@ const Panel = () => {
 	});
 
 	return (
-		<div className="depositBox">
-			<HistoryFilter submitHandler={submitHandler} />
-			{loading ? (
-				<Loading />
-			) : getHistoryState ? (
-				<>
-					<div
-						className="textArea"
-						style={{ padding: "2vw 0 4vw 2vw" }}>
-						{i18n.msg_AmountFormatTip}
-					</div>
-					<div className="recent open">
-						<div className="recentTransactions">
-							<ReloadSpin
-								func={submitHandler.bind(
-									this,
-									filterData?.StartDate,
-									filterData?.EndDate,
-									true
-								)}
-							/>
+		<>
+			<div className="depositBox">
+				<HistoryFilter submitHandler={submitHandler} />
+				{loading ? (
+					<Loading />
+				) : getHistoryState ? (
+					<>
+						<div
+							className="textArea"
+							style={{ padding: "2vw 0 4vw 2vw" }}>
+							{i18n.msg_AmountFormatTip}
 						</div>
-						{getHistoryState.length > 0 ? (
-							<div className="infoList">{arr}</div>
-						) : (
-							<div className="not-found">
-								<i className="icon icon-warning" />
-								<p>{i18n.msg_NoData}</p>
+						<div className="recent open">
+							<div className="recentTransactions">
+								<ReloadSpin
+									func={submitHandler.bind(
+										this,
+										filterData?.StartDate,
+										filterData?.EndDate,
+										true
+									)}
+								/>
 							</div>
-						)}
-					</div>
-				</>
-			) : null}
-		</div>
+							{getHistoryState.length > 0 ? (
+								<div className="infoList">{arr}</div>
+							) : (
+								<div className="not-found">
+									<i className="icon icon-warning" />
+									<p>{i18n.msg_NoData}</p>
+								</div>
+							)}
+						</div>
+					</>
+				) : null}
+			</div>
+			<BankSlip />
+		</>
 	);
 };
 
