@@ -135,9 +135,9 @@ export default {
 	howToPlay: {
 		root: "howToPlay"
 	},
-	leaderBoard: {
-		root: "leaderBoard"
-	},
+	// leaderBoard: {
+	// 	root: "leaderBoard"
+	// },
 	angPow: {
 		root: "angPow"
 	},

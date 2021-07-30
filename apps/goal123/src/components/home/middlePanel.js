@@ -4,7 +4,7 @@ import { Link } from "@reach/router";
 import AppDownloadImg from "../../styles/img/downloadbg.png";
 import IOS from "../../styles/img/iosicon.png";
 import Android from "../../styles/img/androidicon.png";
-import VIP from "../../styles/img/vipimg.jpg";
+import VIP from "../../styles/img/vipimgb.jpg";
 import Ranking from "../../styles/img/rankingimg.jpg";
 import TandC from "../../service/t_and_c";
 import path from "../../path";
@@ -22,9 +22,9 @@ const MiddlePanel = ({ langId, i18n }) => {
 				<Link to={`/${path.vip.root}`}>
 					<img src={VIP} alt="VIP" />
 				</Link>
-				<Link to={`/${path.leaderBoard.root}`}>
+				{/* <Link to={`/${path.leaderBoard.root}`}>
 					<img src={Ranking} alt="Ranking" />
-				</Link>
+				</Link> */}
 			</div>
 			<div className="downloadNew">
 				<a
