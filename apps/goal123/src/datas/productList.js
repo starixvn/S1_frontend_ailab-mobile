@@ -470,8 +470,8 @@ const gameList = [
 				...defGameInfo.Casino_ow,
 				parameter: defGameInfo.Casino_ow,
 				spanText: "Saba Casino",
-				img: Casino_OW,
-				tpCategoryId: defTpCategoryId.Slots
+				img: Casino_OW
+				// tpCategoryId: defTpCategoryId.Slots
 			}
 		]
 	},
