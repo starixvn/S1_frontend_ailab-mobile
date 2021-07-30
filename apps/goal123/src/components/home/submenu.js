@@ -199,12 +199,12 @@ const defSubMenus = [
 		displayKey: "lbl_VIP",
 		path: path.vip.root,
 		icon: "icon icon-vip"
-	},
-	{
-		displayKey: "lbl_Ranking",
-		path: path.leaderBoard.root,
-		icon: "icon icon-icon32px_top"
 	}
+	// {
+	// 	displayKey: "lbl_Ranking",
+	// 	path: path.leaderBoard.root,
+	// 	icon: "icon icon-icon32px_top"
+	// }
 ];
 
 export default () => {
