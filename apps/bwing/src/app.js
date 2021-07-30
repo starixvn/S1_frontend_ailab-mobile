@@ -170,7 +170,7 @@ const Index = () => {
 						<HowToDeposit path={path.howToDeposit.root} />
 						<HowToWithdraw path={path.howToWithdraw.root} />
 						<HowToPlay path={path.howToPlay.root} />
-						<Ranking path={path.leaderBoard.root} />
+						{/* <Ranking path={path.leaderBoard.root} /> */}
 						<AngPow path={path.angPow.root} />
 						<MysteryBox path={path.mysteryBox.root} />
 						<VIP path={path.vip.root} />

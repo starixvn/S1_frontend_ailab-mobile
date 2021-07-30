@@ -322,10 +322,10 @@ export const productList = langId => {
 		vip: {
 			displayKey: "lbl_VIP",
 			path: path.vip.root
-		},
-		ranking: {
-			displayKey: "lbl_Ranking",
-			path: path.leaderBoard.root
 		}
+		// ranking: {
+		// 	displayKey: "lbl_Ranking",
+		// 	path: path.leaderBoard.root
+		// }
 	};
 };

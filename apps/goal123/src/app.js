@@ -158,7 +158,7 @@ const Index = () => {
 						<Casino path={`${path.casino.root}/:tpId`} />
 						<Other path={path.other.root} />
 						<Whoami path={path.whoami.root} />
-						<Ranking path={path.leaderBoard.root} />
+						{/* <Ranking path={path.leaderBoard.root} /> */}
 						<AngPow path={path.angPow.root} />
 						<MysteryBox path={path.mysteryBox.root} />
 						<VIP path={path.vip.root} />
