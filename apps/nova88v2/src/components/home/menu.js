@@ -179,12 +179,20 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 				return showItem;
 			})
 			.map(subItem => {
-				const isMaintain = maintainList?.some(
-					m =>
-						m.tpId === subItem.tpId &&
-						(m.tpCategoryId === item.tpCategoryId ||
-							m.tpCategoryId === defTpCategoryId.All)
-				);
+				const isMaintain = maintainList?.some(m => {
+					let result = false;
+					if (m.tpId === subItem.tpId) {
+						if (m.tpCategoryId === defTpCategoryId.All) {
+							result = true;
+						} else if (subItem.tpCategoryId) {
+							result = m.tpCategoryId === subItem.tpCategoryId;
+						} else {
+							result = m.tpCategoryId === item.tpCategoryId;
+						}
+					}
+
+					return result;
+				});
 				return (
 					<SubGame
 						key={`subMenu-${
