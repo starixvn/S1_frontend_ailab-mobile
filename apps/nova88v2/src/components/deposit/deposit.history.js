@@ -12,6 +12,7 @@ import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import GoTopBtn from "../common/goTopBtn";
 import api from "../../service/api";
 import Detail from "./historyDetail";
+import BankSlip from "./bankSlip";
 
 const Panel = ({
 	history,
@@ -171,7 +172,12 @@ const Panel = ({
 		subContent = <div className="recent active">{infoList}</div>;
 	}
 
-	return subContent;
+	return (
+		<>
+			{subContent}
+			<BankSlip />
+		</>
+	);
 };
 
 Panel.defaultProps = {
