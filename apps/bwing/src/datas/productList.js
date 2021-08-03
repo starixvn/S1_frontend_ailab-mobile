@@ -1,4 +1,5 @@
 import { siteInfo } from "../config";
+import path from "../path";
 
 export const defGameInfo = {
 	Sports: { tpId: 1, gameId: 1 },
@@ -213,6 +214,60 @@ const gameList = langId => [
 				spanTextKey: "lbl_Affiliates"
 			}
 		]
+	}
+];
+
+export const slotPlatform = [
+	{
+		...defGameInfo.Casino_JOKER,
+		path: path.casino.root,
+		imgName: "jk"
+	},
+	{
+		...defGameInfo.Casino_GPI,
+		path: path.casino.root,
+		imgName: "gp"
+	},
+	{
+		...defGameInfo.Casino_YGG,
+		path: path.casino.root,
+		imgName: "yg"
+	},
+	{
+		...defGameInfo.Casino_PP,
+		path: path.casino.root,
+		imgName: "pp"
+	},
+	{
+		...defGameInfo.Casino_SG,
+		path: path.casino.root,
+		imgName: "sg"
+	},
+	{
+		...defGameInfo.Casino_PG,
+		path: path.casino.root,
+		imgName: "pg"
+	},
+	{
+		...defGameInfo.Casino_CQ9,
+		path: path.casino.root,
+		imgName: "cq9"
+	},
+	{
+		...defGameInfo.casino_ICG,
+		path: path.casino.root,
+		imgName: "icg"
+	},
+	{
+		...defGameInfo.Casino_PT,
+		path: path.casino.root,
+		imgName: "playtech"
+	},
+	{ ...defGameInfo.Casino_Jili, path: path.casino.root, imgName: "jili" },
+	{
+		...defGameInfo.Casino_MGP,
+		path: path.casino.root,
+		imgName: "mg"
 	}
 ];
 

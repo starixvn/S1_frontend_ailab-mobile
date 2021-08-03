@@ -9,7 +9,9 @@ import path from "../../path";
 
 const JoinStepAll = () => {
 	const navigate = useNavigate();
-	const state = useLocation();
+	const {
+		state: { previousPage }
+	} = useLocation();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const [step, setStep] = useState(1);
@@ -28,8 +30,8 @@ const JoinStepAll = () => {
 	}, []);
 
 	useEffect(() => {
-		if (state.state?.fromHeader) {
-			localStorage.setItem("previousPage", "/");
+		if (previousPage) {
+			localStorage.setItem("previousPage", previousPage);
 		}
 	}, [globalHistory]);
 

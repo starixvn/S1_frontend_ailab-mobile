@@ -30,7 +30,9 @@ const initWarningState = {
 };
 
 const LoginPage = () => {
-	const state = useLocation();
+	const {
+		state: { previousPage }
+	} = useLocation();
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -40,7 +42,6 @@ const LoginPage = () => {
 	const [warningState, setWarningState] = useState(initWarningState);
 	const isMountedRef = useRef(null);
 	const { showTips, showTipHandler } = useTip();
-
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => {
@@ -49,8 +50,8 @@ const LoginPage = () => {
 	});
 
 	useEffect(() => {
-		if (state.state.fromHeader) {
-			localStorage.setItem("previousPage", "/");
+		if (previousPage) {
+			localStorage.setItem("previousPage", previousPage);
 		}
 	}, [globalHistory]);
 
@@ -144,7 +145,10 @@ const LoginPage = () => {
 						navigate(
 							prevPage === "/"
 								? `/${userInfo.langId}/${path.deposit.root}`
-								: prevPage
+								: prevPage,
+							{
+								state: { fromModal: true }
+							}
 						);
 					}
 				} else if (

@@ -9986,6 +9986,35 @@ span.important {
   width: 100%;
 }
 
+.slotpopup .slotFunction .text-org {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.slotpopup .slotFunction .gameTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.slotpopup .slotFunction .gameTitle span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #5574A7;
+}
+
+.slotpopup .slotFunction .gameTitle span.icon-star-full {
+  color: #F77A00;
+}
+
 .slotpopup .slotFunction .btn-group .blue {
   background: -webkit-gradient(linear, left top, left bottom, from(#f1d5b6), to(#cdae8e));
   background: linear-gradient(to bottom, #f1d5b6, #cdae8e);

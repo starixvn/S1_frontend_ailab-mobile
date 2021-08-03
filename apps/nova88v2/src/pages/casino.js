@@ -1,6 +1,7 @@
 import React, { useContext, createRef } from "react";
 import PropTypes from "prop-types";
 import { i18nContext, userInfoContext } from "Context";
+import { useLocation } from "@reach/router";
 import Slider from "../components/casino/slider";
 import defNav from "../components/casino/defNav";
 import Nav from "../components/casino/nav";
@@ -17,7 +18,7 @@ import path from "../path";
 import { useGotoGame, defSpecialSetting } from "../components/hook/useGotoGame";
 import { GetMetaDataByPage } from "../components/seo/seo";
 import useSetTimeout from "../components/hook/useSetTimeout";
-import { slotPlatfrom } from "../datas/productList";
+import gameList from "../datas/productList";
 
 const eachPageItem = 20;
 
@@ -44,11 +45,21 @@ class Panel extends React.Component {
 			listFixed: false
 		};
 		this.gameList = createRef(null);
-		const first = slotPlatfrom.find(el => el.tpId === props.tpId);
-		this.sorted = slotPlatfrom.filter(el => el.tpId !== first?.tpId);
-		if (first) {
-			this.sorted.unshift(first);
-		}
+		this.sorted = [];
+		gameList({
+			langId: props.userInfo.langId ?? "en",
+			currencyName: ""
+		}).forEach(el => {
+			if (el.category === "slot") {
+				el.items.forEach(game => {
+					if (game.tpId === props.tpId) {
+						this.sorted.unshift(game);
+					} else if (game.providerImgName) {
+						this.sorted.push(game);
+					}
+				});
+			}
+		});
 	}
 
 	componentDidMount() {
@@ -137,6 +148,11 @@ class Panel extends React.Component {
 					}
 				}
 			});
+		}
+		const obj = JSON.parse(localStorage.getItem("selGameInfo"));
+
+		if (this.props.fromModal) {
+			this.setState({ selGameInfo: obj });
 		}
 	}
 
@@ -305,7 +321,6 @@ class Panel extends React.Component {
 		const { searchText } = _searchInfo;
 
 		const existTpIdFilter = tpId => this.sorted.some(el => tpId == el.tpId);
-
 		const matchFilter = (_tpId, g) => {
 			const matchNav =
 				(_nav === defNav.NEW.key && g.new === true) ||
@@ -353,7 +368,7 @@ class Panel extends React.Component {
 				freePlay ? 0 : 5000
 			);
 		} else {
-			this.props.handleLogin();
+			this.props.handleLogin(this.state.selGameInfo);
 		}
 	};
 
@@ -411,6 +426,12 @@ class Panel extends React.Component {
 		this.trigger = false;
 	};
 
+	IsFavorite = () => {
+		return this.state.favorite.includes(
+			`${this.state.selProvider}_${this.state.selGameInfo.gameId}`
+		);
+	};
+
 	render() {
 		return (
 			<>
@@ -448,30 +469,65 @@ class Panel extends React.Component {
 					imgUrl={this.state.imgUrl}
 					ref={this.gameList}
 				/>
+
 				{this.state.selGameInfo === null ? null : (
-					<div className="slotFunction active">
-						<div className="title text-org">
-							{this.state.selGameInfo.name[
-								this.props.userInfo.langId
-							] ?? this.state.selGameInfo.name.en}
-						</div>
-						<button
-							className="icon icon-cancel-circle"
-							onClick={this.CloseSelGame}
-						/>
-						<div className="btn-group">
-							{this.state.selGameInfo.playFree ? (
-								<button
-									className="white"
-									onClick={this.ClickPlay.bind(this, true)}>
-									{this.props.i18n.lbl_FreePlay}
-								</button>
-							) : null}
+					<div className="slotpopup active">
+						<div className="slotFunction">
+							<img
+								src={`${this.state.imgUrl}/${
+									this.state.tpList[
+										this.state.selGameInfo.tpId
+									]?.name
+								}/${
+									this.state.selGameInfo.imgName[
+										this.props.userInfo.langId
+									] ?? this.state.selGameInfo.imgName.en
+								}`}
+								alt={
+									this.state.selGameInfo.name[
+										this.props.userInfo.langId
+									] ?? this.state.selGameInfo.name.en
+								}
+							/>
+							<div className="gameTitle">
+								<div className="title text-org">
+									{this.state.selGameInfo.name[
+										this.props.userInfo.langId
+									] ?? this.state.selGameInfo.name.en}
+								</div>
+								<span
+									onClick={() =>
+										this.SetFavorite(
+											this.state.selProvider,
+											this.state.selGameInfo.gameId
+										)
+									}
+									className={`icon icon-star-${
+										this.IsFavorite() ? "full" : "empty"
+									}`}
+								/>
+							</div>
 							<button
-								className="orange"
-								onClick={this.ClickPlay.bind(this, false)}>
-								{this.props.i18n.lbl_PlayNow}
-							</button>
+								className="icon icon-cancel-circle"
+								onClick={this.CloseSelGame}
+							/>
+							<div className="btn-group">
+								<button
+									className="blue"
+									onClick={this.ClickPlay.bind(this, false)}>
+									{this.props.i18n.lbl_PlayNow}
+								</button>
+								{this.state.selGameInfo.playFree ? (
+									<button
+										className="orange"
+										onClick={this.ClickPlay.bind(
+											this,
+											true
+										)}>
+										{this.props.i18n.lbl_FreePlay}
+									</button>
+								) : null}
+							</div>
 						</div>
 					</div>
 				)}
@@ -518,6 +574,7 @@ const IndexPage = props => {
 			<Header title={i18n.lbl_Casino} hideLogo={true} link={link} />
 			<main className="main casino">
 				<Panel
+					fromModal={props.location.state.fromModal}
 					i18n={i18n}
 					userInfo={userInfo}
 					tpId={tpId}

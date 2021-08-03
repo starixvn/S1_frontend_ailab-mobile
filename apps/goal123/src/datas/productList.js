@@ -382,6 +382,7 @@ const gameList = [
 				spanText: "Playtech",
 				img: Casino_PT,
 				path: path.casino.root,
+				providerImgName: "playtech",
 				tpCategoryId: defTpCategoryId.Slots,
 				eventIcon: [
 					{
@@ -396,6 +397,7 @@ const gameList = [
 				spanText: "Jili",
 				img: Casino_Jili,
 				path: path.casino.root,
+				providerImgName: "jili",
 				tpCategoryId: defTpCategoryId.Slots,
 				eventIcon: [
 					{
@@ -411,6 +413,7 @@ const gameList = [
 				img: Casino_MGP,
 				path: path.casino.root,
 				tpCategoryId: defTpCategoryId.Slots,
+				providerImgName: "mg",
 				eventIcon: [
 					{
 						icon: defIconType.new,
@@ -424,6 +427,7 @@ const gameList = [
 				spanText: "Iconic Gaming",
 				img: Casino_ICG,
 				path: path.casino.root,
+				providerImgName: "icg",
 				tpCategoryId: defTpCategoryId.Slots
 			},
 			{
@@ -432,6 +436,7 @@ const gameList = [
 				spanText: "CQ9",
 				img: Casino_CQ9,
 				path: path.casino.root,
+				providerImgName: "cq9",
 				tpCategoryId: defTpCategoryId.Slots
 			},
 			{
@@ -440,6 +445,7 @@ const gameList = [
 				spanText: "Game Play",
 				img: Casino_GPI,
 				path: path.casino.root,
+				providerImgName: "gp",
 				tpCategoryId: defTpCategoryId.Slots
 			},
 			{
@@ -448,6 +454,7 @@ const gameList = [
 				spanText: "YGGDrassil",
 				img: Casino_YGG,
 				path: path.casino.root,
+				providerImgName: "yg",
 				tpCategoryId: defTpCategoryId.Slots
 			},
 			{
@@ -456,6 +463,7 @@ const gameList = [
 				spanText: "Spadegaming",
 				img: Casino_SG,
 				path: path.casino.root,
+				providerImgName: "sg",
 				tpCategoryId: defTpCategoryId.Slots
 			},
 			{
@@ -464,6 +472,7 @@ const gameList = [
 				spanText: "PG Soft",
 				img: Casino_PG,
 				path: path.casino.root,
+				providerImgName: "pg",
 				tpCategoryId: defTpCategoryId.Slots
 			},
 			{
