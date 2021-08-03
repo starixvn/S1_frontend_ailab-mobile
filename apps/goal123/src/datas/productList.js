@@ -374,7 +374,8 @@ const gameList = [
 				spanText: "Pragmatic Play",
 				img: Casino_PP,
 				path: path.casino.root,
-				tpCategoryId: defTpCategoryId.Slots
+				tpCategoryId: defTpCategoryId.Slots,
+				providerImgName: "pp"
 			},
 			{
 				...defGameInfo.Casino_PT,
