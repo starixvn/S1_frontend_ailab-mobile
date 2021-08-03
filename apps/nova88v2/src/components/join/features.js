@@ -25,9 +25,6 @@ const EN = () => {
 			<div className="title">MEMBER BENEFITS</div>
 			<ul>
 				<li>
-					<span>55%</span> NOVA88 STARTER PACK
-				</li>
-				<li>
 					<span>68%</span> LIVE CASINO WELCOME BONUS
 				</li>
 				<li>
@@ -35,6 +32,9 @@ const EN = () => {
 				</li>
 				<li>
 					DAILY REDEPOSIT BONUS UP TO <span>20%</span>
+				</li>
+				<li>
+					DAILY CASH REBATE UP TO <span>1.20%</span>
 				</li>
 			</ul>
 			<div className="title">
@@ -63,9 +63,6 @@ const CS = () => {
 			<div className="title">会员福利</div>
 			<ul>
 				<li>
-					<span>55%</span> NOVA88 新会员套餐
-				</li>
-				<li>
 					<span>68%</span> 真人娱乐欢迎红利
 				</li>
 				<li>
@@ -73,6 +70,9 @@ const CS = () => {
 				</li>
 				<li>
 					每日再存红利高达 <span>20%</span>
+				</li>
+				<li>
+					每日现金返水 高达 <span>1.2%</span>
 				</li>
 			</ul>
 			<div className="title">豪享NOVA88尊贵优惠红利与返水</div>
@@ -94,9 +94,6 @@ const TH = () => {
 			<div className="title">สิทธิประโยชน์ของสมาชิก</div>
 			<ul>
 				<li>
-					<span>126%</span> สปอร์ตบุ๊ค โบนัสต้อนรับ
-				</li>
-				<li>
 					โบนัสต้อนรับคาสิโนสด <span>100%</span>
 				</li>
 				<li>
@@ -104,6 +101,9 @@ const TH = () => {
 				</li>
 				<li>
 					โบนัสเงินฝากทุกวันมากถึง <span>20%</span>
+				</li>
+				<li>
+					โบนัสคืนเงินรายวันสูงถึง <span>1.20%</span>
 				</li>
 			</ul>
 			<div className="title">
@@ -129,16 +129,16 @@ const ID = () => {
 			<div className="title">MANFAAT MEMBER</div>
 			<ul>
 				<li>
-					<span>55%</span> NOVA88 STARTER PACK
-				</li>
-				<li>
-					WELCOME BONUS <span>100%</span> LIVE CASINO
+					WELCOME BONUS <span>150%</span> LIVE CASINO
 				</li>
 				<li>
 					WELCOME BONUS <span>100%</span> SLOT MESIN
 				</li>
 				<li>
 					BONUS REDEPOSIT HARIAN HINGGA <span>20%</span>
+				</li>
+				<li>
+					REBATE CASH HARIAN HINGGA <span>1.2%</span>
 				</li>
 			</ul>
 			<div className="title">
