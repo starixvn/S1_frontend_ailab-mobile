@@ -3,7 +3,10 @@ import Slider from "../components/casino/slider";
 import defNav from "../components/casino/defNav";
 import Nav from "../components/casino/nav";
 import SearchBox from "../components/casino/searchBox";
-import { api_Site_GetGameListByDevice } from "../service/api/site";
+import {
+	api_Site_GetGameListByDevice,
+	api_GetTpIds
+} from "../service/api/site";
 import Games from "../components/casino/games";
 import {
 	i18nContext,
@@ -18,6 +21,8 @@ import {
 import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
 import { useGotoGame, defSpecialSetting } from "../components/hook/useGotoGame";
 import useSetTimeout from "../components/hook/useSetTimeout";
+import GameProviders from "../components/casino/gameProviders";
+import { slotPlatform } from "../datas/productList";
 
 const eachPageItem = 20;
 
@@ -39,7 +44,9 @@ class Panel extends React.Component {
 			},
 			favorite: [],
 			selNav: Object.keys(defNav)?.[this.props.selNavIdx ?? 0],
-			imgUrl: ""
+			imgUrl: "",
+			selProvider: {},
+			filteredPlatForm: []
 		};
 	}
 
@@ -96,6 +103,31 @@ class Panel extends React.Component {
 			}
 		});
 
+		api_GetTpIds().then(
+			res => {
+				if (res.data.errorCode === 0) {
+					this.setState(
+						{
+							filteredPlatForm: slotPlatform.filter(el =>
+								res.data.data.includes(el.tpId)
+							)
+						},
+						() =>
+							this.setState(prevState => ({
+								selProvider: prevState.filteredPlatForm[0].tpId
+							}))
+					);
+				}
+			},
+			() => {
+				setPopBox({
+					isOpen: true,
+					title: i18n.lbl_ImportantNote,
+					content: i18n.msg_ApiServerError
+				});
+			}
+		);
+
 		if (this.props.userInfo.isLogin) {
 			api_GetFavoriteGame().then(res => {
 				if (res.data.errorCode === 0 && res.data.data) {
@@ -116,6 +148,20 @@ class Panel extends React.Component {
 		window.removeEventListener("touchmove", this.ScrollBarListener, {
 			passive: false
 		});
+	};
+
+	SelectProvider = key => {
+		this.setState(
+			prevState => ({
+				selProvider: prevState.selProvider !== key ? key : "all",
+				displayGames: null,
+				hasMore: true,
+				displayedCount: 0
+			}),
+			() => {
+				this.SetMoreItems();
+			}
+		);
 	};
 
 	ScrollBarListener = () => {
@@ -234,13 +280,17 @@ class Panel extends React.Component {
 		);
 	};
 
-	FilterGames = (_searchInfo, _nav, initGameDatas, initTpList) => {
+	FilterGames = (
+		_searchInfo,
+		_nav,
+		initGameDatas,
+		initTpList,
+		_selProvider
+	) => {
 		const _gameDatas = initGameDatas ?? this.state.gameDatas;
 		const _tpList = initTpList ?? this.state.tpList;
-		const tpId = _searchInfo.provider.value;
 		const gameCategory = _searchInfo.gameType.value;
 		const { searchText } = _searchInfo;
-
 		const matchFilter = (_tpId, g) => {
 			const matchNav =
 				(_nav === defNav.NEW.key && g.new === true) ||
@@ -252,15 +302,14 @@ class Panel extends React.Component {
 			return (
 				matchNav &&
 				(gameCategory === null || g.category1 === gameCategory) &&
-				(searchText === "" || this.matchKeyword(g.name, searchText))
+				(searchText === "" || this.matchKeyword(g.name, searchText)) &&
+				g.tpId === _selProvider
 			);
 		};
 
 		return _gameDatas?.filter(g => {
 			const tp = _tpList[g.tpId];
-			return (
-				(tpId === null || tp.value === tpId) && matchFilter(tp.value, g)
-			);
+			return matchFilter(tp.value, g);
 		});
 	};
 
@@ -295,6 +344,7 @@ class Panel extends React.Component {
 		const _searchInfo = this.state.searchInfo;
 		const _selNav = this.state.selNav;
 		const initGameDatas = this.state.gameDatas;
+		const _selProvider = this.state.selProvider;
 		const initTpList = this.state.tpList;
 		const s = this.state;
 		if (s.hasMore && initGameDatas) {
@@ -302,7 +352,8 @@ class Panel extends React.Component {
 				_searchInfo,
 				_selNav,
 				initGameDatas,
-				initTpList
+				initTpList,
+				_selProvider
 			);
 			const restCount = _gameDatas?.length - s.displayedCount;
 			const loadCount =
@@ -346,6 +397,13 @@ class Panel extends React.Component {
 		return (
 			<>
 				<Slider />
+				<div className="partnerSelect">
+					<GameProviders
+						selNav={this.state.selProvider}
+						SelectNav={this.SelectProvider}
+						slotPlatform={this.state.filteredPlatForm}
+					/>
+				</div>
 				<Nav selNav={this.state.selNav} SelectNav={this.SelectNav} />
 				<SearchBox
 					TpList={this.state.tpList}
@@ -365,29 +423,54 @@ class Panel extends React.Component {
 				/>
 
 				{this.state.selGameInfo === null ? null : (
-					<div className="slotFunction open">
-						<div className="title text-blue">
-							{this.state.selGameInfo.name[
-								this.props.userInfo.langId
-							] ?? this.state.selGameInfo.name.en}
-						</div>
-						<button
-							className="icon icon-cancel-circle"
-							onClick={this.CloseSelGame}
-						/>
-						<div className="btn-group">
-							{this.state.selGameInfo.playFree ? (
-								<button
-									className="white"
-									onClick={this.ClickPlay.bind(this, true)}>
-									{this.props.i18n.lbl_Free}
-								</button>
-							) : null}
+					<div className="slotFunctionNew open">
+						<div>
 							<button
-								className="blue"
-								onClick={this.ClickPlay.bind(this, false)}>
-								{this.props.i18n.lbl_PlayNow}
-							</button>
+								className="icon icon-cancel-circle"
+								onClick={this.CloseSelGame}
+							/>
+							<div className="content">
+								<img
+									src={`${this.state.imgUrl}/${
+										this.state.tpList[
+											this.state.selGameInfo.tpId
+										]?.name
+									}/${
+										this.state.selGameInfo.imgName[
+											this.props.userInfo.langId
+										] ?? this.state.selGameInfo.imgName.en
+									}`}
+									alt={
+										this.state.selGameInfo.name[
+											this.props.userInfo.langId
+										] ?? this.state.selGameInfo.name.en
+									}
+								/>
+								<div className="mask" />
+							</div>
+							<div className="title text-blue">
+								{this.state.selGameInfo.name[
+									this.props.userInfo.langId
+								] ?? this.state.selGameInfo.name.en}
+							</div>
+
+							<div className="btn-group">
+								{this.state.selGameInfo.playFree ? (
+									<button
+										className="white"
+										onClick={this.ClickPlay.bind(
+											this,
+											true
+										)}>
+										{this.props.i18n.lbl_Free}
+									</button>
+								) : null}
+								<button
+									className="orange"
+									onClick={this.ClickPlay.bind(this, false)}>
+									{this.props.i18n.lbl_PlayNow}
+								</button>
+							</div>
 						</div>
 					</div>
 				)}

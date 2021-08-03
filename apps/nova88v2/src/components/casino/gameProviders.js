@@ -11,10 +11,10 @@ const GameProviders = props => {
 				className={selNav === k.tpId ? "active" : ""}
 				onClick={SelectNav.bind(this, k.tpId)}>
 				<img
-					src={`${config.cloudImgURL}/SiteSkin/img/logo/${k.imgName}${
-						selNav === k.tpId ? "a" : ""
-					}.png`}
-					alt={k.imgName}
+					src={`${config.cloudImgURL}/SiteSkin/img/logo/${
+						k.providerImgName
+					}${selNav === k.tpId ? "a" : ""}.png`}
+					alt={k.providerImgName}
 				/>
 			</button>
 		);

@@ -15,7 +15,7 @@ import path from "../../path";
 import { siteInfo } from "../../config";
 import TandC from "../../service/t_and_c";
 
-const BtnBar = ({ isLogin, i18n, msgCount }) => {
+const BtnBar = ({ isLogin, i18n, msgCount, langId }) => {
 	return isLogin ? (
 		<div className="tag">
 			<Link to={path.profile.root} className="icon icon-member">
@@ -33,9 +33,17 @@ const BtnBar = ({ isLogin, i18n, msgCount }) => {
 		</div>
 	) : (
 		<div className="tag">
-			<Link to={path.join.root}>{i18n.lbl_JoinNow}</Link>
+			<Link
+				to={path.join.root}
+				state={{ previousPage: `/${langId}/setting` }}>
+				{i18n.lbl_JoinNow}
+			</Link>
 			<i />
-			<Link to={path.login.root}>{i18n.lbl_Login}</Link>
+			<Link
+				to={path.login.root}
+				state={{ previousPage: `/${langId}/setting` }}>
+				{i18n.lbl_Login}
+			</Link>
 		</div>
 	);
 };

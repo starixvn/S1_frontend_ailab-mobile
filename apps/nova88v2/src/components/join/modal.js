@@ -27,7 +27,11 @@ const Modal = ({ isLogin, isJoin }) => {
 		<div className="logoSwitch active">
 			<button
 				data-testid="close_join_modal_btn"
-				onClick={() => navigate(localStorage.getItem("previousPage"))}>
+				onClick={() =>
+					navigate(localStorage.getItem("previousPage"), {
+						state: { fromModal: true }
+					})
+				}>
 				<div className="icon icon-close" />
 			</button>
 			<Logo langId={userInfo.langId} isWhite={false} />
