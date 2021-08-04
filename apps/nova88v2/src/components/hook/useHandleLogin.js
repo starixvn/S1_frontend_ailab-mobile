@@ -18,12 +18,24 @@ const useHandleLogin = () => {
 		return arr[2];
 	};
 
-	const handleLogin = selGameInfo => {
+	const handleLogin = ({
+		selGameInfo,
+		selProvider,
+		searchInfo,
+		selNav
+	} = {}) => {
 		localStorage.setItem("previousPage", currentPages());
+		const prevScreen = {
+			selGameInfo,
+			selProvider,
+			searchText: searchInfo?.searchText,
+			selGameType: searchInfo?.gameType,
+			selNav
+		};
 		if (!selGameInfo) {
-			localStorage.removeItem("selGameInfo");
+			localStorage.removeItem("prevScreen");
 		} else {
-			localStorage.setItem("selGameInfo", JSON.stringify(selGameInfo));
+			localStorage.setItem("prevScreen", JSON.stringify(prevScreen));
 		}
 
 		navigate(`/${userInfo.langId}/${path.login.root}`);

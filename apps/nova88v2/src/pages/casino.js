@@ -42,24 +42,10 @@ class Panel extends React.Component {
 			selNav: Object.keys(defNav)?.[props.selNavIdx ?? 0],
 			selProvider: props.tpId,
 			imgUrl: "",
-			listFixed: false
+			listFixed: false,
+			sorted: []
 		};
 		this.gameList = createRef(null);
-		this.sorted = [];
-		gameList({
-			langId: props.userInfo.langId ?? "en",
-			currencyName: ""
-		}).forEach(el => {
-			if (el.category === "slot") {
-				el.items.forEach(game => {
-					if (game.tpId === props.tpId) {
-						this.sorted.unshift(game);
-					} else if (game.providerImgName) {
-						this.sorted.push(game);
-					}
-				});
-			}
-		});
 	}
 
 	componentDidMount() {
@@ -74,6 +60,9 @@ class Panel extends React.Component {
 		window.addEventListener("touchmove", this.setListFixed, {
 			passive: false
 		});
+
+		const sort = [];
+
 		api.site.GetGameListByDevice().then(res => {
 			if (res.data.errorCode === 0) {
 				const _tpList = {};
@@ -105,38 +94,70 @@ class Panel extends React.Component {
 
 				if (this.mounted) {
 					const nav = this.props.selNav ?? defNav.ALLGAMES.key;
-					this.setState(
-						{
-							tpList: _tpList,
-							gameDatas: games,
-							selProvider: this.props.tpId,
-							selNav: nav,
-							imgUrl
-						},
-						() => {
-							this.SetMoreItems();
+					const _tplistArr = Object.keys(_tpList);
+					gameList({
+						langId: this.props.userInfo.langId ?? "en",
+						currencyName: ""
+					}).forEach(el => {
+						if (el.category === "slot") {
+							el.items.forEach(game => {
+								if (
+									_tplistArr.indexOf(game.tpId.toString()) > 0
+								) {
+									if (game.tpId === this.props.tpId) {
+										sort.unshift(game);
+									} else if (game.providerImgName) {
+										sort.push(game);
+									}
+								}
+							});
 						}
-					);
+					});
+					if (!this.props.fromModal) {
+						this.setState(
+							{
+								sorted: sort,
+								tpList: _tpList,
+								gameDatas: games,
+								selProvider: this.props.tpId,
+								selNav: nav,
+								imgUrl
+							},
+							() => {
+								this.SetMoreItems();
+							}
+						);
+					} else {
+						const {
+							selGameInfo,
+							selProvider,
+							searchText,
+							selGameType,
+							selNav
+						} = JSON.parse(localStorage.getItem("prevScreen"));
+						this.setState(
+							prev => ({
+								selGameInfo,
+								selProvider,
+								searchInfo: {
+									searchText,
+									gameType: selGameType,
+									...prev.searchInfo.provider
+								},
+								selNav,
+								sorted: sort,
+								tpList: _tpList,
+								gameDatas: games,
+								imgUrl
+							}),
+							() => {
+								this.SetMoreItems();
+							}
+						);
+					}
 				}
 			}
 		});
-		api.site.GetTpIds().then(
-			res => {
-				if (res.data.errorCode === 0) {
-					this.sorted = this.sorted.filter(el =>
-						res.data.data.includes(el.tpId)
-					);
-				}
-			},
-			() => {
-				setPopBox({
-					isOpen: true,
-					title: i18n.lbl_ImportantNote,
-					content: i18n.msg_ApiServerError
-				});
-			}
-		);
-
 		if (this.props.userInfo.isLogin) {
 			api.account.GetFavoriteGame().then(res => {
 				if (res.data.errorCode === 0 && res.data.data) {
@@ -148,11 +169,6 @@ class Panel extends React.Component {
 					}
 				}
 			});
-		}
-		const obj = JSON.parse(localStorage.getItem("selGameInfo"));
-
-		if (this.props.fromModal) {
-			this.setState({ selGameInfo: obj });
 		}
 	}
 
@@ -320,7 +336,6 @@ class Panel extends React.Component {
 		const gameCategory = _searchInfo.gameType.value;
 		const { searchText } = _searchInfo;
 
-		const existTpIdFilter = tpId => this.sorted.some(el => tpId == el.tpId);
 		const matchFilter = (_tpId, g) => {
 			const matchNav =
 				(_nav === defNav.NEW.key && g.new === true) ||
@@ -333,9 +348,7 @@ class Panel extends React.Component {
 				matchNav &&
 				(gameCategory === null || g.category1 === gameCategory) &&
 				(searchText === "" || this.matchKeyword(g.name, searchText)) &&
-				(_selProvider === "all"
-					? existTpIdFilter(g.tpId)
-					: g.tpId === _selProvider)
+				(_selProvider === "all" ? true : g.tpId === _selProvider)
 			);
 		};
 
@@ -368,7 +381,12 @@ class Panel extends React.Component {
 				freePlay ? 0 : 5000
 			);
 		} else {
-			this.props.handleLogin(this.state.selGameInfo);
+			this.props.handleLogin({
+				selGameInfo: this.state.selGameInfo,
+				selProvider: this.state.selProvider,
+				searchInfo: this.state.searchInfo,
+				selNav: this.state.selNav
+			});
 		}
 	};
 
@@ -444,7 +462,7 @@ class Panel extends React.Component {
 						<GameProviders
 							selNav={this.state.selProvider}
 							SelectNav={this.SelectProvider}
-							sorted={this.sorted}
+							sorted={this.state.sorted}
 						/>
 					</div>
 					<Nav

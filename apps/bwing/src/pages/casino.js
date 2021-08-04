@@ -74,7 +74,6 @@ class Panel extends React.Component {
 						});
 					}
 				});
-
 				if (games.length) {
 					for (let i = 0; i < games.length; i++) {
 						const idx = Math.floor(Math.random() * games.length);
@@ -88,45 +87,31 @@ class Panel extends React.Component {
 
 				if (this.mounted) {
 					const nav = defNav.ALLGAMES.key;
+					const _tplistArr = Object.keys(_tpList);
+					const _platForm = slotPlatform.filter(el =>
+						_tplistArr.includes(el.tpId.toString())
+					);
 					this.setState(
 						{
+							filteredPlatForm: _platForm,
 							tpList: _tpList,
 							gameDatas: games,
 							selNav: this.props.selNav ?? nav,
 							imgUrl
 						},
 						() => {
-							this.SetMoreItems();
+							this.setState(
+								prevState => ({
+									selProvider:
+										prevState.filteredPlatForm[0].tpId
+								}),
+								() => this.SetMoreItems()
+							);
 						}
 					);
 				}
 			}
 		});
-
-		api_GetTpIds().then(
-			res => {
-				if (res.data.errorCode === 0) {
-					this.setState(
-						{
-							filteredPlatForm: slotPlatform.filter(el =>
-								res.data.data.includes(el.tpId)
-							)
-						},
-						() =>
-							this.setState(prevState => ({
-								selProvider: prevState.filteredPlatForm[0].tpId
-							}))
-					);
-				}
-			},
-			() => {
-				setPopBox({
-					isOpen: true,
-					title: i18n.lbl_ImportantNote,
-					content: i18n.msg_ApiServerError
-				});
-			}
-		);
 
 		if (this.props.userInfo.isLogin) {
 			api_GetFavoriteGame().then(res => {
@@ -303,7 +288,7 @@ class Panel extends React.Component {
 				matchNav &&
 				(gameCategory === null || g.category1 === gameCategory) &&
 				(searchText === "" || this.matchKeyword(g.name, searchText)) &&
-				g.tpId === _selProvider
+				(_selProvider === "all" ? true : g.tpId === _selProvider)
 			);
 		};
 
