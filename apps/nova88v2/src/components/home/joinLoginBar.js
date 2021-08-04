@@ -3,7 +3,7 @@ import { i18nContext } from "../common/context";
 import { Link } from "../../route/link";
 import path from "../../path";
 
-const HeaderBtn = () => {
+const HeaderBtn = ({ langId }) => {
 	const { i18n } = useContext(i18nContext);
 
 	return (
@@ -11,13 +11,13 @@ const HeaderBtn = () => {
 			<Link
 				className="joinBtn"
 				to={path.join.root}
-				state={{ fromHeader: true }}>
+				state={{ previousPage: `/${langId}` }}>
 				{i18n.lbl_JoinNow.toUpperCase()}
 			</Link>
 			<Link
 				className="loginBtn"
 				to={path.login.root}
-				state={{ fromHeader: true }}>
+				state={{ previousPage: `/${langId}` }}>
 				{i18n.lbl_Login.toUpperCase()}
 			</Link>
 		</div>
