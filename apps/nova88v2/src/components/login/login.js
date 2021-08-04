@@ -141,15 +141,7 @@ const LoginPage = () => {
 							...userData,
 							isLogin
 						}));
-						const prevPage = localStorage.getItem("previousPage");
-						navigate(
-							prevPage === "/"
-								? `/${userInfo.langId}/${path.deposit.root}`
-								: prevPage,
-							{
-								state: { fromModal: true }
-							}
-						);
+						navigate(`/${userInfo.langId}/${path.deposit.root}`);
 					}
 				} else if (
 					errorCode === 1101 ||

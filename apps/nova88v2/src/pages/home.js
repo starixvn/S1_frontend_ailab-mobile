@@ -170,7 +170,9 @@ const IndexPage = () => {
 				{userInfo.isLogin ? <HeaderShortcut i18n={i18n} /> : null}
 				<Slider />
 				<Marquee />
-				{userInfo.isLogin ? null : <JoinLoginBar />}
+				{userInfo.isLogin ? null : (
+					<JoinLoginBar langId={userInfo.langId} />
+				)}
 				<div id="content">
 					<Menu
 						i18n={i18n}
