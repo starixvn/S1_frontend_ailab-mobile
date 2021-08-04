@@ -45,20 +45,9 @@ class Panel extends React.Component {
 			favorite: [],
 			selNav: Object.keys(defNav)?.[this.props.selNavIdx ?? 0],
 			imgUrl: "",
-			selProvider: props.tpId
+			selProvider: props.tpId,
+			sorted: []
 		};
-		this.sorted = [];
-		gameList.forEach(el => {
-			if (el.category === "slots") {
-				el.items.forEach(game => {
-					if (game.tpId === props.tpId) {
-						this.sorted.unshift(game);
-					} else if (game.providerImgName) {
-						this.sorted.push(game);
-					}
-				});
-			}
-		});
 	}
 
 	componentDidMount() {
@@ -68,6 +57,8 @@ class Panel extends React.Component {
 		window.addEventListener("touchmove", this.ScrollBarListener, {
 			passive: false
 		});
+
+		const sort = [];
 
 		api_Site_GetGameListByDevice().then(res => {
 			if (res.data.errorCode === 0) {
@@ -99,8 +90,26 @@ class Panel extends React.Component {
 				}
 				if (this.mounted) {
 					const nav = defNav.ALLGAMES.key;
+					const _tplistArr = Object.keys(_tpList);
+					gameList.forEach(el => {
+						if (el.category === "slots") {
+							el.items.forEach(game => {
+								if (
+									_tplistArr.indexOf(game.tpId.toString()) > 0
+								) {
+									if (game.tpId === this.props.tpId) {
+										sort.unshift(game);
+									} else if (game.providerImgName) {
+										sort.push(game);
+									}
+								}
+							});
+						}
+					});
+
 					this.setState(
 						{
+							sorted: sort,
 							tpList: _tpList,
 							selProvider: this.props.tpId,
 							gameDatas: games,
@@ -115,22 +124,6 @@ class Panel extends React.Component {
 			}
 		});
 
-		api_GetTpIds().then(
-			res => {
-				if (res.data.errorCode === 0) {
-					this.sorted = this.sorted.filter(el =>
-						res.data.data.includes(el.tpId)
-					);
-				}
-			},
-			() => {
-				setPopBox({
-					isOpen: true,
-					title: i18n.lbl_ImportantNote,
-					content: i18n.msg_ApiServerError
-				});
-			}
-		);
 		if (this.props.userInfo.isLogin) {
 			api_GetFavoriteGame().then(res => {
 				if (res.data.errorCode === 0 && res.data.data) {
@@ -294,7 +287,6 @@ class Panel extends React.Component {
 		const _tpList = initTpList ?? this.state.tpList;
 		const gameCategory = _searchInfo.gameType?.value;
 		const { searchText } = _searchInfo;
-		const existTpIdFilter = tpId => this.sorted.some(el => tpId == el.tpId);
 
 		const matchFilter = (_tpId, g) => {
 			const matchNav =
@@ -308,9 +300,7 @@ class Panel extends React.Component {
 				matchNav &&
 				(gameCategory === null || g.category1 === gameCategory) &&
 				(searchText === "" || this.matchKeyword(g.name, searchText)) &&
-				(_selProvider === "all"
-					? existTpIdFilter(g.tpId)
-					: g.tpId === _selProvider)
+				(_selProvider === "all" ? true : g.tpId === _selProvider)
 			);
 		};
 
@@ -408,7 +398,7 @@ class Panel extends React.Component {
 					<GameProviders
 						selNav={this.state.selProvider}
 						SelectNav={this.SelectProvider}
-						sorted={this.sorted}
+						sorted={this.state.sorted}
 					/>
 				</div>
 				<Nav selNav={this.state.selNav} SelectNav={this.SelectNav} />
