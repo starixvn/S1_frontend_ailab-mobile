@@ -106,6 +106,9 @@ const AddBankPanel = ({
 			} else {
 				message = i18n.msg_NeedIFSCCode;
 			}
+		} else if (col === "IFSCCode" && val.length !== 11) {
+			checked = false;
+			message = i18n.msg_IFSCCodeLength;
 		}
 
 		setWarning(prev => ({
@@ -120,7 +123,14 @@ const AddBankPanel = ({
 	};
 
 	const EditField = (col, e) => {
-		const val = e.target.value;
+		let val = e.target.value;
+
+		if (col === "BankAccount") {
+			val = val.replace(/^(0+)|[^\d]+/g, "");
+		} else if (col === "IFSCCode") {
+			val = val.replace(/[\W]/g, "");
+		}
+
 		setUserValue(prev => ({
 			...prev,
 			[col]: val
@@ -308,6 +318,7 @@ const AddBankPanel = ({
 					showTips={showTips.includes("IFSCCode")}
 					infoText={i18n.msg_NeedIFSCCode}
 					clickInfo={() => showTipHandler("IFSCCode")}
+					maxLength={11}
 				/>
 			) : null}
 

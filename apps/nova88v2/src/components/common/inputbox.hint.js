@@ -17,7 +17,8 @@ const Inputbox = ({
 	onBlur,
 	disabled,
 	testAttr,
-	showInfoIcon
+	showInfoIcon,
+	maxLength
 }) => {
 	return (
 		<div className="infoModule">
@@ -42,6 +43,7 @@ const Inputbox = ({
 					className="textRight"
 					value={value}
 					onChange={onChange}
+					maxLength={maxLength}
 				/>
 				<div className="icon-module">
 					<IptStatus btnStatus={btnStatus} />
@@ -77,7 +79,8 @@ Inputbox.defaultProps = {
 	onBlur: () => null,
 	testAttr: "",
 	value: "",
-	showInfoIcon: true
+	showInfoIcon: true,
+	maxLength: null
 };
 
 Inputbox.propTypes = {
@@ -95,7 +98,8 @@ Inputbox.propTypes = {
 	btnStatus: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 	onBlur: PropTypes.oneOfType([PropTypes.func]),
 	testAttr: PropTypes.string,
-	showInfoIcon: PropTypes.bool
+	showInfoIcon: PropTypes.bool,
+	maxLength: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 export default Inputbox;

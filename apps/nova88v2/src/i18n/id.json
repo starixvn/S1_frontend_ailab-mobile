@@ -654,8 +654,10 @@
     "lbl_AddFavoriteFail":"Favorit gagal. Silahkan gunakan Ctrl+D untuk menambahkan.",
     "lbl_AddFavoriteTip":"Browser anda tidak mendukung. Silahkan ikuti langkah dibawah untuk menyelesaikan pengaturan: 1. Buka browser. 2. Klik pada pengaturan Webpage. 3. Masukkan:",
     "lbl_ResponseTime":"Waktu Respon",
+
 	"============IFSC Code===============":"",
 	"lbl_IFSCCode":"Kode IFSC",
-	"msg_NeedIFSCCode": "Silakan masukkan kode IFSC"
+	"msg_NeedIFSCCode": "Silakan masukkan kode IFSC",
+	"msg_IFSCCodeLength": "Kode IFSC harus 11 karakter"
 
     }

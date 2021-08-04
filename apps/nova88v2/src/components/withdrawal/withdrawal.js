@@ -7,7 +7,12 @@ import {
 	popBoxContext,
 	loadingContext
 } from "../common/context";
-import { number_format, isConvert, checkAmount } from "../common/common";
+import {
+	number_format,
+	isConvert,
+	checkAmount,
+	defCurrenyId
+} from "../common/common";
 import InputBox from "../common/inputbox.hint";
 import { defIptStatus } from "../common/inputStatus";
 import config from "../../config";
@@ -345,11 +350,18 @@ const Panel = () => {
 				const RedirectToNext = async (
 					accountNo,
 					_real_amount,
-					sysId
+					sysId,
+					ifscCode
 				) => {
 					const blackbox = await Iov_GetBlackBox();
 					api.payment
-						.WithdrawalReq(accountNo, _real_amount, sysId, blackbox)
+						.WithdrawalReq(
+							accountNo,
+							_real_amount,
+							sysId,
+							blackbox,
+							ifscCode
+						)
 						.then(
 							res => {
 								if (isMountedRef.current) {
@@ -477,6 +489,15 @@ const Panel = () => {
 									<li>
 										{number_format(real_amount, _isConvert)}
 									</li>
+									{userInfo.currencyId ===
+									defCurrenyId.INR ? (
+										<>
+											<li className="text-org">
+												{i18n.lbl_IFSCCode} :
+											</li>
+											<li>{selBank.ifscCode}</li>
+										</>
+									) : null}
 								</ul>
 							</div>
 						),
@@ -503,7 +524,10 @@ const Panel = () => {
 									real_amount,
 									userInfo.currencyId !== 96
 										? selBank.sysId
-										: 0
+										: 0,
+									userInfo.currencyId === defCurrenyId.INR
+										? selBank.ifscCode
+										: null
 								)}>
 								{i18n.lbl_Submit}
 							</button>
@@ -668,12 +692,19 @@ const Panel = () => {
 			{userInfo.currencyId === 96 ? (
 				<div className="bankAccount">{banks}</div>
 			) : (
-				<div className="selectBank">
-					{banks}
-					{bankInfo?.bankList?.length < 3 ? (
-						<Link to={path.bankInfo.root} />
+				<>
+					<div className="selectBank">
+						{banks}
+						{bankInfo?.bankList?.length < 3 ? (
+							<Link to={path.bankInfo.root} />
+						) : null}
+					</div>
+					{userInfo.currencyId === defCurrenyId.INR ? (
+						<div className="ifsc">
+							{i18n.lbl_IFSCCode}:<span>{selBank?.ifscCode}</span>
+						</div>
 					) : null}
-				</div>
+				</>
 			)}
 			<BalancePanel
 				currencyId={userInfo.currencyId}

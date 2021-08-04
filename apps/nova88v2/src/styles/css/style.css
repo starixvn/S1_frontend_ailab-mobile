@@ -10019,4 +10019,17 @@ span.important {
   background: -webkit-gradient(linear, left top, left bottom, from(#f1d5b6), to(#cdae8e));
   background: linear-gradient(to bottom, #f1d5b6, #cdae8e);
 }
+
+.ifsc {
+  font-size: 4vw;
+  color: #5574A7;
+  margin-top: 1vw;
+  background: white;
+  padding: 2vw;
+  border: 1px solid #e6e6e6;
+}
+
+.ifsc span {
+  color: #F77A00;
+}
 /*# sourceMappingURL=style.css.map */

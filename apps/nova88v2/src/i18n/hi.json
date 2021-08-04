@@ -670,8 +670,10 @@
 	"lbl_AddFavoriteFail":"पसंदीदा विफल। तदनुसार जोड़ने के लिए कृपया Ctrl + D का उपयोग करें।",
 	"lbl_AddFavoriteTip":"आपका ब्राउज़र समर्थित नहीं है। सेटिंग को पूरा करने के लिए कृपया नीचे दिए गए दिशा निर्देश का पालन करें: 1. ब्राउज़र खोलें। 2. वेबपेज कि सेटिंग पर क्लिक करें। 3. कुंजी:",
 	"lbl_ResponseTime":"Response Time",
+
 	"============IFSC Code===============":"",
 	"lbl_IFSCCode":"IFSC कोड",
-	"msg_NeedIFSCCode": "कृपया IFSC कोड दर्ज करें"
+	"msg_NeedIFSCCode": "कृपया IFSC कोड दर्ज करें",
+	"msg_IFSCCodeLength": "IFSC code must be 11 characters."
 
 }

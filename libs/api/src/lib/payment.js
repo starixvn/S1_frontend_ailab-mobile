@@ -81,12 +81,13 @@ export class PaymentAPI extends BaseAPI {
 			GroupId
 		});
 
-	WithdrawalReq = (AccountNo, amount, sysId, blackbox) =>
+	WithdrawalReq = (AccountNo, amount, sysId, blackbox, IFSCCode) =>
 		this.paymentRequest.post("/WithdrawalReq", {
 			AccountNo,
 			amount,
 			sysId,
-			blackbox
+			blackbox,
+			IFSCCode
 		});
 
 	GetWithdrawalInfoRecent = () =>
