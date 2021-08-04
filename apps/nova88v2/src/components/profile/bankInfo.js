@@ -13,6 +13,7 @@ import config from "../../config";
 import api from "../../service/api";
 import AddBankPanel from "./bankInfo.add";
 import VIPLevel from "../common/vipLevel";
+import { defCurrenyId } from "../common/common";
 
 const BankInfo = ({ prevPage }) => {
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -51,7 +52,8 @@ const BankInfo = ({ prevPage }) => {
 										bankName: i.bankName,
 										image: i.bankLogo,
 										accountNo: i.accountNo,
-										SysId: i.sysId
+										SysId: i.sysId,
+										ifscCode: i?.ifscCode
 									};
 								});
 								setCustBankInfo(() => getBankInfoArr);
@@ -95,7 +97,8 @@ const BankInfo = ({ prevPage }) => {
 									bankName: i.bankName,
 									image: i.bankLogo,
 									accountNo: i.accountNo,
-									SysId: i.sysId
+									SysId: i.sysId,
+									ifscCode: i?.ifscCode
 								};
 							});
 							setCustBankInfo(getBankInfoArr);
@@ -201,6 +204,9 @@ const BankInfo = ({ prevPage }) => {
 				image={`${
 					config.cloudImgURL
 				}/SiteSkin/img/BankLogo/${item.image?.toLowerCase()}`}
+				i18n={i18n}
+				ifscCode={item?.ifscCode}
+				currencyId={userInfo.currencyId}
 			/>
 		);
 	});
@@ -265,6 +271,11 @@ const BankAccountItem = props => {
 			<div className="info">
 				<span className="title text-org">{props.title}</span>
 				<span>{props.accountNo}</span>
+				{props.currencyId === defCurrenyId.INR ? (
+					<div>
+						{props.i18n.lbl_IFSCCode}: {props.ifscCode}
+					</div>
+				) : null}
 			</div>
 			<button
 				className="icon icon-bin clickBtn"
@@ -274,11 +285,20 @@ const BankAccountItem = props => {
 	);
 };
 
+BankAccountItem.defaultProps = {
+	i18n: null,
+	ifscCode: null,
+	currencyId: null
+};
+
 BankAccountItem.propTypes = {
 	image: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
 	accountNo: PropTypes.string.isRequired,
-	removeAccountHandler: PropTypes.func.isRequired
+	removeAccountHandler: PropTypes.func.isRequired,
+	i18n: PropTypes.objectOf(PropTypes.string),
+	ifscCode: PropTypes.string,
+	currencyId: PropTypes.number
 };
 
 export default BankInfo;

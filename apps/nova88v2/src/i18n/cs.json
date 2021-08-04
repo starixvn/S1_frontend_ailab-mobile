@@ -623,6 +623,7 @@
 	"============IFSC Code===============":"",
 	"lbl_IFSCCode":"IFSC代码",
 	"msg_NeedIFSCCode": "请输入 IFSC 代码",
+	"msg_IFSCCodeLength": "IFSC 代码需有 11字元",
 
 	"=============Check Speed===============":"",
 	"lbl_CurrentIp" :"您当前的IP位置",
