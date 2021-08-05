@@ -219,6 +219,11 @@ const gameList = langId => [
 
 export const slotPlatform = [
 	{
+		...defGameInfo.Casino_PP,
+		path: path.casino.root,
+		imgName: "pp"
+	},
+	{
 		...defGameInfo.Casino_JOKER,
 		path: path.casino.root,
 		imgName: "jk"
@@ -232,11 +237,6 @@ export const slotPlatform = [
 		...defGameInfo.Casino_YGG,
 		path: path.casino.root,
 		imgName: "yg"
-	},
-	{
-		...defGameInfo.Casino_PP,
-		path: path.casino.root,
-		imgName: "pp"
 	},
 	{
 		...defGameInfo.Casino_SG,

@@ -95,7 +95,8 @@ class Panel extends React.Component {
 						if (el.category === "slots") {
 							el.items.forEach(game => {
 								if (
-									_tplistArr.indexOf(game.tpId.toString()) > 0
+									_tplistArr.indexOf(game.tpId.toString()) >
+									-1
 								) {
 									if (game.tpId === this.props.tpId) {
 										sort.unshift(game);
@@ -403,10 +404,8 @@ class Panel extends React.Component {
 				</div>
 				<Nav selNav={this.state.selNav} SelectNav={this.SelectNav} />
 				<SearchBox
-					TpList={this.state.tpList}
 					{...this.state.searchInfo}
 					EditSearchField={this.EditSearchField}
-					DefaultProvider={this.props.tpId}
 				/>
 
 				<Games

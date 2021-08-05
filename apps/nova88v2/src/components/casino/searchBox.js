@@ -5,7 +5,7 @@ import GameTypes from "./defGameType";
 import Dropdown from "../common/casino.dropdown";
 
 const SearchBox = props => {
-	const { TpList, searchText, gameType } = props;
+	const { searchText, gameType } = props;
 	const { i18n } = useContext(i18nContext);
 
 	const gameTypeList = [
@@ -17,32 +17,6 @@ const SearchBox = props => {
 			};
 		})
 	];
-
-	const providerList = [
-		{ id: null, displayText: i18n.lbl_AllProvider },
-		...Object.keys(TpList)?.map(k => {
-			const d = TpList[k];
-			return {
-				id: d.value,
-				displayText: d.displayKey ? i18n[d.displayKey] : d.displayText
-			};
-		})
-	];
-
-	useEffect(() => {
-		if (!props.provider?.init) {
-			const defaultProviderIdx = providerList.findIndex(
-				p => p.id === props.DefaultProvider
-			);
-			if (defaultProviderIdx !== -1) {
-				props.EditSearchField("provider", {
-					idx: defaultProviderIdx,
-					value: providerList[defaultProviderIdx].id,
-					init: true
-				});
-			}
-		}
-	}, [i18n, props, providerList]);
 
 	const EditField = (column, e) => {
 		props.EditSearchField(column, e.target.value);
@@ -83,15 +57,10 @@ const SearchBox = props => {
 };
 
 SearchBox.defaultProps = {
-	gameType: {},
-	provider: {},
-	DefaultProvider: null
+	gameType: {}
 };
 
 SearchBox.propTypes = {
-	TpList: PropTypes.objectOf(PropTypes.object).isRequired,
-	provider: PropTypes.objectOf(PropTypes.any),
-	DefaultProvider: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	EditSearchField: PropTypes.func.isRequired,
 	searchText: PropTypes.string.isRequired,
 	gameType: PropTypes.objectOf(PropTypes.any)
