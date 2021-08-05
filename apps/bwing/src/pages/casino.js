@@ -391,10 +391,8 @@ class Panel extends React.Component {
 				</div>
 				<Nav selNav={this.state.selNav} SelectNav={this.SelectNav} />
 				<SearchBox
-					TpList={this.state.tpList}
 					{...this.state.searchInfo}
 					EditSearchField={this.EditSearchField}
-					DefaultProvider={this.props.tpId}
 				/>
 
 				<Games

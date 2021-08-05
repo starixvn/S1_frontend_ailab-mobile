@@ -17,46 +17,12 @@ const SearchBox = props => {
 		})
 	];
 
-	const providerList = [
-		{ id: null, displayText: i18n.lbl_AllProvider },
-		...Object.keys(props.TpList)?.map(k => {
-			const d = props.TpList[k];
-			return {
-				id: d.value,
-				displayText: d.displayKey ? i18n[d.displayKey] : d.displayText
-			};
-		})
-	];
-
-	useEffect(() => {
-		if (!props.provider?.init) {
-			const defaultProviderIdx = providerList.findIndex(
-				p => p.id === props.DefaultProvider
-			);
-			if (defaultProviderIdx !== -1) {
-				props.EditSearchField("provider", {
-					idx: defaultProviderIdx,
-					value: providerList[defaultProviderIdx].id,
-					init: true
-				});
-			}
-		}
-	}, [i18n, props, providerList]);
-
 	const HandleOpenAdvance = () => {
 		setOpenAdvance(prevState => !prevState);
 	};
 
 	const EditField = (column, e) => {
 		props.EditSearchField(column, e.target.value);
-	};
-
-	const SelectProvider = idx => {
-		props.EditSearchField("provider", {
-			idx,
-			value: providerList[idx].id,
-			init: true
-		});
 	};
 
 	const SelectGameType = idx => {
@@ -82,16 +48,6 @@ const SearchBox = props => {
 				/>
 			</div>
 			<div className={`filterSelect${openAdvance ? " open" : ""}`}>
-				<div className="inputBox">
-					<Dropdown
-						i18n={i18n}
-						mainKey="casino-gamePlatform"
-						options={providerList}
-						selectedIdx={props.provider?.idx}
-						onSelectItem={SelectProvider}
-						placeholder="Game Platform"
-					/>
-				</div>
 				<div className="inputBox">
 					<Dropdown
 						i18n={i18n}

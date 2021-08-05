@@ -1,7 +1,6 @@
 import React, { useContext, createRef } from "react";
 import PropTypes from "prop-types";
 import { i18nContext, userInfoContext } from "Context";
-import { useLocation } from "@reach/router";
 import Slider from "../components/casino/slider";
 import defNav from "../components/casino/defNav";
 import Nav from "../components/casino/nav";
@@ -19,6 +18,7 @@ import { useGotoGame, defSpecialSetting } from "../components/hook/useGotoGame";
 import { GetMetaDataByPage } from "../components/seo/seo";
 import useSetTimeout from "../components/hook/useSetTimeout";
 import gameList from "../datas/productList";
+import { GetCurrencyName } from "../components/common/common";
 
 const eachPageItem = 20;
 
@@ -35,7 +35,6 @@ class Panel extends React.Component {
 			gameDatas: null,
 			searchInfo: {
 				searchText: "",
-				provider: { idx: 0, value: null, init: false },
 				gameType: { idx: 0, value: null }
 			},
 			favorite: [],
@@ -95,14 +94,19 @@ class Panel extends React.Component {
 				if (this.mounted) {
 					const nav = this.props.selNav ?? defNav.ALLGAMES.key;
 					const _tplistArr = Object.keys(_tpList);
+
 					gameList({
 						langId: this.props.userInfo.langId ?? "en",
-						currencyName: ""
+						currencyName: GetCurrencyName({
+							langId: this.props.userInfo.langId ?? "en",
+							i18n: this.props.i18n
+						})
 					}).forEach(el => {
 						if (el.category === "slot") {
 							el.items.forEach(game => {
 								if (
-									_tplistArr.indexOf(game.tpId.toString()) > 0
+									_tplistArr.indexOf(game.tpId.toString()) >
+									-1
 								) {
 									if (game.tpId === this.props.tpId) {
 										sort.unshift(game);
@@ -134,22 +138,30 @@ class Panel extends React.Component {
 							searchText,
 							selGameType,
 							selNav
-						} = JSON.parse(localStorage.getItem("prevScreen"));
+						} = JSON.parse(localStorage.getItem("prevScreen")) || {
+							selGameInfo: null,
+							selNav: Object.keys(defNav)?.[
+								this.props.selNavIdx ?? 0
+							],
+							selProvider: this.props.tpId,
+							selGameType: { idx: 0, value: null },
+							searchText: ""
+						};
+
 						this.setState(
-							prev => ({
+							{
 								selGameInfo,
 								selProvider,
 								searchInfo: {
 									searchText,
-									gameType: selGameType,
-									...prev.searchInfo.provider
+									gameType: selGameType
 								},
 								selNav,
 								sorted: sort,
 								tpList: _tpList,
 								gameDatas: games,
 								imgUrl
-							}),
+							},
 							() => {
 								this.SetMoreItems();
 							}
@@ -279,6 +291,8 @@ class Panel extends React.Component {
 		if (this.mounted) {
 			this.setState({ selGameInfo: null });
 		}
+		localStorage.removeItem("previousPage");
+		localStorage.removeItem("prevScreen");
 	};
 
 	SelectGame = (tpId, gameInfo) => {
@@ -470,10 +484,8 @@ class Panel extends React.Component {
 						SelectNav={this.SelectNav}
 					/>
 					<SearchBox
-						TpList={this.state.tpList}
 						{...this.state.searchInfo}
 						EditSearchField={this.EditSearchField}
-						DefaultProvider={this.props.tpId}
 					/>
 				</div>
 

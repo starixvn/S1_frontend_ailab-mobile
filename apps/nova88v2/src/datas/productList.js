@@ -283,6 +283,7 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.Casino_PP,
 							parameter: defGameInfo.Casino_PP,
 							spanText: "Pragmatic Play",
+							providerImgName: "pp",
 							img: casino_PP,
 							path: path.casino.root
 						},
@@ -290,6 +291,7 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.Casino_MGP,
 							parameter: defGameInfo.Casino_MGP,
 							spanText: "Microgaming",
+							providerImgName: "mg",
 							img: casino_MGP,
 							path: path.casino.root,
 							eventIcon: [
@@ -306,6 +308,7 @@ const gameList = ({ langId, currencyName }) => {
 							parameter: defGameInfo.Casino_Jili,
 							spanText: "Jili",
 							path: path.casino.root,
+							providerImgName: "ji",
 							img: casino_Jili,
 							eventIcon: [
 								{
@@ -318,6 +321,7 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.Casino_PG,
 							parameter: defGameInfo.Casino_PG,
 							spanText: "PG Soft",
+							providerImgName: "pg",
 							img: casino_PG,
 							path: path.casino.root
 						},
@@ -325,6 +329,7 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.Casino_SG,
 							parameter: defGameInfo.Casino_SG,
 							spanText: "Spadegaming",
+							providerImgName: "sg",
 							img: casino_SG,
 							path: path.casino.root
 						},
@@ -332,6 +337,7 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.Casino_PT,
 							parameter: defGameInfo.Casino_PT,
 							spanText: "Playtech",
+							providerImgName: "pt",
 							img: casino_PT,
 							path: path.casino.root,
 							eventIcon: [
@@ -346,35 +352,40 @@ const gameList = ({ langId, currencyName }) => {
 							parameter: defGameInfo.Casino_JOKER,
 							spanText: "JOKER",
 							img: casino_JOKER,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "jk"
 						},
 						{
 							...defGameInfo.Casino_CQ9,
 							parameter: defGameInfo.Casino_CQ9,
 							spanText: "CQ9",
 							img: casino_CQ9,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "cq9"
 						},
 						{
 							...defGameInfo.casino_ICG,
 							parameter: defGameInfo.casino_ICG,
 							spanText: "Iconic Gaming",
 							img: casino_ICG,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "icg"
 						},
 						{
 							...defGameInfo.Casino_GPI,
 							parameter: defGameInfo.Casino_GPI,
 							spanText: "Game Play",
 							img: casino_GPI,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "gp"
 						},
 						{
 							...defGameInfo.Casino_YGG,
 							parameter: defGameInfo.Casino_YGG,
 							spanText: "YGGDrassil",
 							img: casino_YGG,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "yg"
 						},
 						{
 							...defGameInfo.Casino_OW,
@@ -689,7 +700,8 @@ const gameList = ({ langId, currencyName }) => {
 							parameter: defGameInfo.Casino_PP,
 							spanText: "Pragmatic Play",
 							img: casino_PP,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "pp"
 						},
 						{
 							...defGameInfo.Casino_MGP,
@@ -697,6 +709,7 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Microgaming",
 							img: casino_MGP,
 							path: path.casino.root,
+							providerImgName: "mg",
 							eventIcon: [
 								{
 									icon: defIconType.new,
@@ -712,6 +725,7 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Jili",
 							img: casino_Jili,
 							path: path.casino.root,
+							providerImgName: "ji",
 							eventIcon: [
 								{
 									icon: defIconType.new,
@@ -723,6 +737,7 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.Casino_SG,
 							parameter: defGameInfo.Casino_SG,
 							spanText: "Spadegaming",
+							providerImgName: "sg",
 							img: casino_SG,
 							path: path.casino.root
 						},
@@ -731,7 +746,8 @@ const gameList = ({ langId, currencyName }) => {
 							parameter: defGameInfo.Casino_YGG,
 							spanText: "YGGDrassil",
 							img: casino_YGG,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "yg"
 						},
 
 						{
@@ -739,7 +755,8 @@ const gameList = ({ langId, currencyName }) => {
 							parameter: defGameInfo.Casino_JOKER,
 							spanText: "JOKER",
 							img: casino_JOKER,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "jk"
 						},
 						{
 							...defGameInfo.Casino_PT,
@@ -747,6 +764,7 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Playtech",
 							img: casino_PT,
 							path: path.casino.root,
+							providerImgName: "pt",
 							eventIcon: [
 								{
 									icon: defIconType.new,
@@ -759,7 +777,8 @@ const gameList = ({ langId, currencyName }) => {
 							parameter: defGameInfo.Casino_GPI,
 							spanText: "Game Play",
 							img: casino_GPI,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "gp"
 						},
 
 						{
@@ -767,7 +786,8 @@ const gameList = ({ langId, currencyName }) => {
 							parameter: defGameInfo.Casino_CQ9,
 							spanText: "CQ9",
 							img: casino_CQ9,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "cq9"
 						},
 
 						{
@@ -775,7 +795,8 @@ const gameList = ({ langId, currencyName }) => {
 							parameter: defGameInfo.casino_ICG,
 							spanText: "Iconic Gaming",
 							img: casino_ICG,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "icg"
 						},
 						{
 							...defGameInfo.Casino_OW,
@@ -788,7 +809,8 @@ const gameList = ({ langId, currencyName }) => {
 							parameter: defGameInfo.Casino_PG,
 							spanText: "PG Soft",
 							img: casino_PG,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "pg"
 						}
 						// {
 						// ...defGameInfo.Casino_918Kiss,
@@ -1098,7 +1120,8 @@ const gameList = ({ langId, currencyName }) => {
 							parameter: defGameInfo.Casino_PP,
 							spanText: "Pragmatic Play",
 							img: casino_PP,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "pp"
 						},
 						{
 							...defGameInfo.Casino_MGP,
@@ -1106,6 +1129,7 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Microgaming",
 							img: casino_MGP,
 							path: path.casino.root,
+							providerImgName: "mg",
 							eventIcon: [
 								{
 									icon: defIconType.new,
@@ -1120,7 +1144,8 @@ const gameList = ({ langId, currencyName }) => {
 							parameter: defGameInfo.Casino_PG,
 							spanText: "PG Soft",
 							img: casino_PG,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "pg"
 						},
 						{
 							...defGameInfo.Casino_Jili,
@@ -1128,6 +1153,7 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Jili",
 							img: casino_Jili,
 							path: path.casino.root,
+							providerImgName: "ji",
 							eventIcon: [
 								{
 									icon: defIconType.new,
@@ -1140,21 +1166,24 @@ const gameList = ({ langId, currencyName }) => {
 							parameter: defGameInfo.Casino_JOKER,
 							spanText: "JOKER",
 							img: casino_JOKER,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "jk"
 						},
 						{
 							...defGameInfo.Casino_SG,
 							parameter: defGameInfo.Casino_SG,
 							spanText: "Spadegaming",
 							img: casino_SG,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "sg"
 						},
 						{
 							...defGameInfo.casino_ICG,
 							parameter: defGameInfo.casino_ICG,
 							spanText: "Iconic Gaming",
 							img: casino_ICG,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "icg"
 						},
 						{
 							...defGameInfo.Casino_PT,
@@ -1162,6 +1191,7 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Playtech",
 							img: casino_PT,
 							path: path.casino.root,
+							providerImgName: "pt",
 							eventIcon: [
 								{
 									icon: defIconType.new,
@@ -1174,21 +1204,24 @@ const gameList = ({ langId, currencyName }) => {
 							parameter: defGameInfo.Casino_YGG,
 							spanText: "YGGDrassil",
 							img: casino_YGG,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "yg"
 						},
 						{
 							...defGameInfo.Casino_CQ9,
 							parameter: defGameInfo.Casino_CQ9,
 							spanText: "CQ9",
 							img: casino_CQ9,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "cq9"
 						},
 						{
 							...defGameInfo.Casino_GPI,
 							parameter: defGameInfo.Casino_GPI,
 							spanText: "Game Play",
 							img: casino_GPI,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "gp"
 						},
 						{
 							...defGameInfo.Casino_OW,
@@ -1490,7 +1523,8 @@ const gameList = ({ langId, currencyName }) => {
 							parameter: defGameInfo.Casino_PP,
 							spanText: "Pragmatic Play",
 							img: casino_PP,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "pp"
 						},
 						{
 							...defGameInfo.Casino_MGP,
@@ -1498,6 +1532,7 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Microgaming",
 							img: casino_MGP,
 							path: path.casino.root,
+							providerImgName: "mg",
 							eventIcon: [
 								{
 									icon: defIconType.new,
@@ -1513,6 +1548,7 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Jili",
 							img: casino_Jili,
 							path: path.casino.root,
+							providerImgName: "ji",
 							eventIcon: [
 								{
 									icon: defIconType.new,
@@ -1525,14 +1561,16 @@ const gameList = ({ langId, currencyName }) => {
 							parameter: defGameInfo.Casino_PG,
 							spanText: "PG Soft",
 							img: casino_PG,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "pg"
 						},
 						{
 							...defGameInfo.Casino_SG,
 							parameter: defGameInfo.Casino_SG,
 							spanText: "Spadegaming",
 							img: casino_SG,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "sg"
 						},
 						{
 							...defGameInfo.Casino_PT,
@@ -1540,6 +1578,7 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Playtech",
 							img: casino_PT,
 							path: path.casino.root,
+							providerImgName: "pt",
 							eventIcon: [
 								{
 									icon: defIconType.new,
@@ -1552,35 +1591,40 @@ const gameList = ({ langId, currencyName }) => {
 							parameter: defGameInfo.Casino_JOKER,
 							spanText: "JOKER",
 							img: casino_JOKER,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "jk"
 						},
 						{
 							...defGameInfo.Casino_CQ9,
 							parameter: defGameInfo.Casino_CQ9,
 							spanText: "CQ9",
 							img: casino_CQ9,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "cq9"
 						},
 						{
 							...defGameInfo.casino_ICG,
 							parameter: defGameInfo.casino_ICG,
 							spanText: "Iconic Gaming",
 							img: casino_ICG,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "icg"
 						},
 						{
 							...defGameInfo.Casino_GPI,
 							parameter: defGameInfo.Casino_GPI,
 							spanText: "Game Play",
 							img: casino_GPI,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "gp"
 						},
 						{
 							...defGameInfo.Casino_YGG,
 							parameter: defGameInfo.Casino_YGG,
 							spanText: "YGGDrassil",
 							img: casino_YGG,
-							path: path.casino.root
+							path: path.casino.root,
+							providerImgName: "yg"
 						},
 						{
 							...defGameInfo.Casino_OW,
