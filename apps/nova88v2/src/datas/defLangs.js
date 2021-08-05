@@ -1,6 +1,6 @@
 import ch from "../styles/img/ch.jpg";
 import th from "../styles/img/th.jpg";
-import hi from "../styles/img/in.jpg";
+// import hi from "../styles/img/in.jpg";
 import id from "../styles/img/id.jpg";
 
 export default {
@@ -27,13 +27,13 @@ export default {
 			{ value: "id_en", displayText: "English" },
 			{ value: "id", displayText: "Indonesian" }
 		]
-	},
-	HI: {
-		country: "HI",
-		img: hi,
-		lang: [
-			{ value: "hi_en", displayText: "English" },
-			{ value: "hi", displayText: "Hindi" }
-		]
 	}
+	// HI: {
+	// 	country: "HI",
+	// 	img: hi,
+	// 	lang: [
+	// 		{ value: "hi_en", displayText: "English" },
+	// 		{ value: "hi", displayText: "Hindi" }
+	// 	]
+	// }
 };
