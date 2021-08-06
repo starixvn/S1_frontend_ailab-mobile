@@ -174,7 +174,8 @@ const Payment = props => {
 				idKey="groupId"
 				prefixImgUrl={`${config.imgUrl}/common/images/MobilePay/`}
 				i18n={i18n}
-				displayKey="groupName"
+				displayKey="channelName"
+				showMinMaxHint={true}
 				_isConvert={_isConvert}
 			/>
 			{channelList?.length > 1 && (
