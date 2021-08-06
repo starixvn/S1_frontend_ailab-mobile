@@ -225,7 +225,8 @@ const Payment = props => {
 				imgKey="groupName"
 				idKey="groupId"
 				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/MobilePay/`}
-				displayKey="groupName"
+				displayKey="channelName"
+				showMinMaxHint={true}
 				_isConvert={_isConvert}
 			/>
 			{channelList?.length > 1 && (
