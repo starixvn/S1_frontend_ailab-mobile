@@ -126,7 +126,7 @@ const AddBankPanel = ({
 		let val = e.target.value;
 
 		if (col === "BankAccount") {
-			val = val.replace(/^(0+)|[^\d]+/g, "");
+			val = val.replace(/\D/g, "");
 		} else if (col === "IFSCCode") {
 			val = val.replace(/[\W]/g, "");
 		}
