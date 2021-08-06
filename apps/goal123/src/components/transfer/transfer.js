@@ -9,6 +9,7 @@ import { tpWalletsListType } from "./transfer.def";
 import useGetBalance from "../hook/useGetMainBalance";
 import useGetTpBalance from "../hook/useGetTpBalance";
 import { useTransfer } from "./hook/useTransfer";
+import useHandleAutoTransfer from "./hook/useHandleAutoTransfer";
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
@@ -22,6 +23,10 @@ const Panel = () => {
 	const { tpWalletsList, GetTpWalletBalance } = useGetTpBalance({
 		isLogin: userInfo.isLogin,
 		listType: tpWalletsListType.allWallets
+	});
+	const { autoTransfer, setWalletTransferStatus } = useHandleAutoTransfer({
+		i18n,
+		setPopBox
 	});
 
 	const {
@@ -72,6 +77,16 @@ const Panel = () => {
 
 	return (
 		<>
+			<div className="swithModule">
+				{i18n.lbl_Main_Wallet_Auto_Transfer}
+				<button
+					className={`switchBtn${autoTransfer ? " active" : ""}`}
+					onClick={setWalletTransferStatus}>
+					<span>{autoTransfer ? "ON" : ""}</span>
+					<span>{autoTransfer ? "" : "OFF"}</span>
+					<div className={autoTransfer ? "active" : ""} />
+				</button>
+			</div>
 			{arr}
 			<div className="inputBox">
 				<Dropdown

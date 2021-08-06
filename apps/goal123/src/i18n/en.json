@@ -551,6 +551,7 @@
 	"==============Transfer==============":"",
 	"lbl_Fail":"Failed",
 	"lbl_LastUpdated":"LAST UPDATED",
+	"lbl_Main_Wallet_Auto_Transfer":"Main Wallet Auto Transfer",
 
 	"==============Add To Home Screen==============":"",
 	"lbl_AddToHome_Hint":"How to add home screen?",

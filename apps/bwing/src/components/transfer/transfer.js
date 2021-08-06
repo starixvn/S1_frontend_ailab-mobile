@@ -4,6 +4,7 @@ import { isConvert } from "../common/common";
 import RecentDatas from "./transfer.recentDatas";
 import WalletPanel from "./walletPanel";
 import AmountPanel from "./amountPanel";
+import AutoTransfer from "./autoTransfer";
 import useGetBalance from "../hook/useGetMainBalance";
 import useGetTpBalance from "../hook/useGetTpBalance";
 import { useTransfer } from "./hook/useTransfer";
@@ -48,31 +49,34 @@ const Panel = () => {
 	});
 
 	return (
-		<div className="depositBox">
-			<WalletPanel
-				i18n={i18n}
-				walletInfo={allWalletsList}
-				GetBalance={GetBalance}
-				GetTpWalletBalance={GetTpWalletBalance}
-			/>
-			<AmountPanel
-				i18n={i18n}
-				amount={amount}
-				EditAmount={EditAmount}
-				inputStatus={inputStatus}
-				clickSubmit={clickSubmit}
-				selectedIdx={selectedIdx}
-				selectItem={selectItem}
-				allWalletsList={allWalletsList}
-				clickInfo={clickInfo}
-				_isConvert={_isConvert}
-				ValidAmount={ValidAmount.bind(this, amount)}
-			/>
-			<RecentDatas
-				datas={recentDatas}
-				GetRecentDatas={GetTransferRecent}
-			/>
-		</div>
+		<>
+			<AutoTransfer i18n={i18n} setPopBox={setPopBox} />
+			<div className="depositBox">
+				<WalletPanel
+					i18n={i18n}
+					walletInfo={allWalletsList}
+					GetBalance={GetBalance}
+					GetTpWalletBalance={GetTpWalletBalance}
+				/>
+				<AmountPanel
+					i18n={i18n}
+					amount={amount}
+					EditAmount={EditAmount}
+					inputStatus={inputStatus}
+					clickSubmit={clickSubmit}
+					selectedIdx={selectedIdx}
+					selectItem={selectItem}
+					allWalletsList={allWalletsList}
+					clickInfo={clickInfo}
+					_isConvert={_isConvert}
+					ValidAmount={ValidAmount.bind(this, amount)}
+				/>
+				<RecentDatas
+					datas={recentDatas}
+					GetRecentDatas={GetTransferRecent}
+				/>
+			</div>
+		</>
 	);
 };
 
