@@ -9,14 +9,14 @@ import path from "../../path";
 
 const JoinStepAll = () => {
 	const navigate = useNavigate();
-	const {
-		state: { previousPage }
-	} = useLocation();
+	const { state } = useLocation();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const [step, setStep] = useState(1);
 	const [userValue, setUserValue] = useState(initValue);
 	const [hintStatus, setHintStatus] = useState(initStatus);
+
+	const previousPage = state?.previousPage ?? `/${userInfo.langId}`;
 
 	const helmet = GetMetaDataByPage({
 		path: path.join.root,

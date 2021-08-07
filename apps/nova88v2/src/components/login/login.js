@@ -30,9 +30,7 @@ const initWarningState = {
 };
 
 const LoginPage = () => {
-	const {
-		state: { previousPage }
-	} = useLocation();
+	const { state } = useLocation();
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -54,6 +52,8 @@ const LoginPage = () => {
 			localStorage.setItem("previousPage", previousPage);
 		}
 	}, [globalHistory]);
+
+	const previousPage = state?.previousPage ?? `/${userInfo.langId}`;
 
 	const checkValueHandler = (colName, e) => {
 		let flag = "";
