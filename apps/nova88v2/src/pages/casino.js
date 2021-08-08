@@ -117,6 +117,7 @@ class Panel extends React.Component {
 							});
 						}
 					});
+
 					if (!this.props.fromModal) {
 						this.setState(
 							{
@@ -124,7 +125,7 @@ class Panel extends React.Component {
 								tpList: _tpList,
 								gameDatas: games,
 								selProvider: this.props.tpId,
-								selNav: nav,
+								selNav: nav ?? 0,
 								imgUrl
 							},
 							() => {
@@ -276,7 +277,7 @@ class Panel extends React.Component {
 	SelectProvider = key => {
 		this.setState(
 			prevState => ({
-				selProvider: prevState.selProvider !== key ? key : "all",
+				selProvider: prevState.selProvider !== key ? key : null,
 				displayGames: null,
 				hasMore: true,
 				displayedCount: 0
@@ -362,7 +363,7 @@ class Panel extends React.Component {
 				matchNav &&
 				(gameCategory === null || g.category1 === gameCategory) &&
 				(searchText === "" || this.matchKeyword(g.name, searchText)) &&
-				(_selProvider === "all" ? true : g.tpId === _selProvider)
+				(_selProvider ? g.tpId === _selProvider : true)
 			);
 		};
 
@@ -604,7 +605,7 @@ const IndexPage = props => {
 			<Header title={i18n.lbl_Casino} hideLogo={true} link={link} />
 			<main className="main casino">
 				<Panel
-					fromModal={props.location.state.fromModal}
+					fromModal={props.location.state?.fromModal}
 					i18n={i18n}
 					userInfo={userInfo}
 					tpId={tpId}
