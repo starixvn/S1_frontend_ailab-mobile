@@ -23,9 +23,12 @@ const GameProviders = props => {
 	return rows;
 };
 
+GameProviders.defaultProps = {
+	selNav: null
+};
+
 GameProviders.propTypes = {
-	selNav: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-		.isRequired,
+	selNav: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	SelectNav: PropTypes.func.isRequired
 };
 

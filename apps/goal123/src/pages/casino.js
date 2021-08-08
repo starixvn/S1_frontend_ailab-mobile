@@ -3,10 +3,7 @@ import Slider from "../components/casino/slider";
 import defNav from "../components/casino/defNav";
 import Nav from "../components/casino/nav";
 import SearchBox from "../components/casino/searchBox";
-import {
-	api_Site_GetGameListByDevice,
-	api_GetTpIds
-} from "../service/api/site";
+import { api_Site_GetGameListByDevice } from "../service/api/site";
 import Games from "../components/casino/games";
 import {
 	i18nContext,
@@ -117,9 +114,7 @@ class Panel extends React.Component {
 							selNav: this.props.selNav ?? nav,
 							imgUrl
 						},
-						() => {
-							this.SetMoreItems();
-						}
+						() => this.SetMoreItems()
 					);
 				}
 			}
@@ -150,7 +145,7 @@ class Panel extends React.Component {
 	SelectProvider = key => {
 		this.setState(
 			prevState => ({
-				selProvider: prevState.selProvider !== key ? key : "all",
+				selProvider: prevState.selProvider !== key ? key : null,
 				displayGames: null,
 				hasMore: true,
 				displayedCount: 0
@@ -301,7 +296,7 @@ class Panel extends React.Component {
 				matchNav &&
 				(gameCategory === null || g.category1 === gameCategory) &&
 				(searchText === "" || this.matchKeyword(g.name, searchText)) &&
-				(_selProvider === "all" ? true : g.tpId === _selProvider)
+				(_selProvider ? g.tpId === _selProvider : true)
 			);
 		};
 
