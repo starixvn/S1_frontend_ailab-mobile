@@ -674,6 +674,6 @@
 	"============IFSC Code===============":"",
 	"lbl_IFSCCode":"IFSC कोड",
 	"msg_NeedIFSCCode": "कृपया IFSC कोड दर्ज करें",
-	"msg_IFSCCodeLength": "IFSC code must be 11 characters."
+	"msg_IFSCCodeLength": "IFSC कोड 11 अक्षर का होना चाहिए"
 
 }
