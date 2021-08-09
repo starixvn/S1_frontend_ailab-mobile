@@ -6,6 +6,7 @@ const defPlatfrom = [
 		...defGameInfo.Sports,
 		parameter: { ...defGameInfo.Sports },
 		imgName: "sabaa",
+		otherPlatformImg: "sabab",
 		tpCategoryId: defTpCategoryId.Sports
 	},
 	{
@@ -25,14 +26,16 @@ const defPlatfrom = [
 	},
 	{
 		...defGameInfo.LIVEcasinoN2,
-		imgName: "n2liveb",
+		imgName: "n2livea",
+		otherPlatformImg: "n2liveb",
 		tpCategoryId: defTpCategoryId.LiveCasino
 	},
 	{
 		...defGameInfo.Casino_PP,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_PP },
-		imgName: "ppb",
+		imgName: "ppa",
+		otherPlatformImg: "ppb",
 		tpCategoryId: defTpCategoryId.Slots
 	},
 	{
@@ -65,7 +68,8 @@ const defPlatfrom = [
 		...defGameInfo.Casino_YGG,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_YGG },
-		imgName: "ygb",
+		imgName: "yga",
+		otherPlatformImg: "ygb",
 		tpCategoryId: defTpCategoryId.Slots
 	},
 	{

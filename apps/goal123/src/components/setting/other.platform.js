@@ -102,7 +102,9 @@ const Platform = ({ langId, isLogin }) => {
 				<img
 					key={key}
 					alt={p.imgName}
-					src={`${config.imgUrl}/common/images/logo/${p.imgName}.png`}
+					src={`${config.imgUrl}/common/images/logo/${
+						p.otherPlatformImg ?? p.imgName
+					}.png`}
 					onClick={ClickItem.bind(this, {
 						...p,
 						urlParams: _urlParams
