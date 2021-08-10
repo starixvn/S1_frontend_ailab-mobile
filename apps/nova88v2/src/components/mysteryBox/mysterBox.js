@@ -51,7 +51,6 @@ const MysteryBox = () => {
 			setCurrentTab(tab);
 		}
 	};
-
 	return (
 		<>
 			<div className="eventTitle">

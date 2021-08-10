@@ -23,9 +23,9 @@ const ReloadSpin = ({ func, className, content }) => {
 			}
 		}, 1500);
 	};
-
 	return (
 		<button
+			data-testid="reloadSpin"
 			className={`${className ?? "icon icon-spinner11 clickBtn"}${
 				spin ? " active" : ""
 			}`}

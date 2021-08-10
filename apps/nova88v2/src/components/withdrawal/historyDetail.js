@@ -28,7 +28,10 @@ const Detail = ({
 		const handleCancel = () => ClickCancel(transId);
 		btnGroup = (
 			<div className="btn-group">
-				<button className="white" onClick={handleCancel}>
+				<button
+					className="white"
+					onClick={handleCancel}
+					data-testid="history-cancel-btn">
 					{i18n.lbl_Cancel}
 				</button>
 			</div>
@@ -47,7 +50,7 @@ const Detail = ({
 				</li>
 				<li>
 					<span className="title">{i18n.lbl_ID}</span>
-					<span>{transId}</span>
+					<span data-testid="transId">{transId}</span>
 				</li>
 				<li>
 					<span className="title">{i18n.lbl_Amount}</span>
@@ -55,7 +58,9 @@ const Detail = ({
 				</li>
 				<li>
 					<span className="title">{i18n.lbl_Status}</span>
-					<span className={defIconStatus[status]}>
+					<span
+						className={defIconStatus[status]}
+						data-testid="historyStatus">
 						{i18n[`lbl_WithdrawalStatus${status}`]}
 					</span>
 				</li>

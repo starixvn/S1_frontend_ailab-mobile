@@ -47,6 +47,7 @@ const Panel = () => {
 		accountName: "",
 		bankList: []
 	});
+
 	const [withdrawalLimit, setWithdrawalLimit] = useState({
 		withdrawalMin: 0
 	});
@@ -61,7 +62,6 @@ const Panel = () => {
 			isMountedRef.current = false;
 		};
 	});
-
 	useEffect(() => {
 		if (userInfo.isLogin) {
 			GetDailyWithdrawalLimit();
@@ -322,7 +322,6 @@ const Panel = () => {
 				digits: 0
 			});
 		}
-
 		if (result.status !== 0) {
 			setWarning({
 				status: defIptStatus.warning,
@@ -444,7 +443,6 @@ const Panel = () => {
 				const real_amount = _isConvert
 					? Number(amount) * 1000
 					: Number(amount);
-
 				setPopBox({
 					isOpen: true,
 					title: i18n.lbl_ImportantNote,
@@ -515,6 +513,7 @@ const Panel = () => {
 								{i18n.lbl_Cancel}
 							</button>
 							<button
+								data-testid="RedirectToNext"
 								className="orange"
 								onClick={RedirectToNext.bind(
 									this,
@@ -611,7 +610,6 @@ const Panel = () => {
 	};
 
 	let banks = [];
-
 	const showingAmount = (
 		<>
 			{i18n[`Currency_${userInfo.currencyId}`]}{" "}
@@ -627,6 +625,7 @@ const Panel = () => {
 						selBank?.usdtAddress === b.usdtAddress ? " active" : ""
 					}`}
 					key={`withdrawal-bank-${b.usdtAddress}`}
+					data-testid="crypto-address-icon"
 					onClick={SelectBank.bind(this, b)}>
 					<div className="nickName">{b.nickName}</div>
 					<div className="icon icon-BTC">{b.usdtAddress}</div>
@@ -644,6 +643,7 @@ const Panel = () => {
 							: ""
 					}
 					key={`withdrawal-bank-${b.sysId}-${b.accountNo}`}
+					data-testid="bank-icon"
 					onClick={SelectBank.bind(this, b)}>
 					<img
 						src={`${
@@ -723,6 +723,7 @@ const Panel = () => {
 				placeholder={i18n.lbl_Amount}
 				btnStatus={warning.status}
 				warningMsg={warning.msg}
+				testAttr="withdrawal_amount"
 			/>
 			<div className="text-org">{withdrawalLimitHint}</div>
 			<div className="btn-group">
@@ -730,6 +731,7 @@ const Panel = () => {
 					className={
 						warning.status !== defIptStatus.warning ? "" : "gray"
 					}
+					data-testid="submit_withdrawal"
 					onClick={ClickSubmit}>
 					{i18n.lbl_Submit}
 				</button>
