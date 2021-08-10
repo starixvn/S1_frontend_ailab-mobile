@@ -1,0 +1,891 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile Detail render correctly when user already filled all information(phone not verified) 1`] = `
+<div
+  className="info"
+>
+  <div />
+  <ul>
+    <li>
+      <span
+        className="title"
+      >
+        Username
+      </span>
+      <span>
+        qatest22
+      </span>
+    </li>
+    <li>
+      <span
+        className="title"
+      >
+        Country
+      </span>
+      <span>
+        Vietnam
+      </span>
+    </li>
+    <li>
+      <span
+        className="title"
+      >
+        Email
+      </span>
+      <span>
+        qatest22@abc.com
+      </span>
+    </li>
+    <li>
+      <span
+        className="title"
+      >
+        Phone Number
+      </span>
+      <span>
+        <span>
+          (+84)456987
+        </span>
+        <button
+          className="otpBtn"
+          onClick={[Function]}
+        >
+          <span>
+            lbl_Unverified
+          </span>
+          <span
+            className="icon icon-error"
+          />
+        </button>
+      </span>
+    </li>
+    <li>
+      <span
+        className="title"
+      >
+        Real Name
+      </span>
+      <span>
+        test22
+      </span>
+    </li>
+    <li>
+      <span
+        className="title"
+      >
+        Birthday
+      </span>
+      <span>
+        02/02/1999
+      </span>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Profile Detail render correctly when user already filled all information(phone verified) 1`] = `
+<div
+  className="info"
+>
+  <div />
+  <ul>
+    <li>
+      <span
+        className="title"
+      >
+        Username
+      </span>
+      <span>
+        qatest22
+      </span>
+    </li>
+    <li>
+      <span
+        className="title"
+      >
+        Country
+      </span>
+      <span>
+        Vietnam
+      </span>
+    </li>
+    <li>
+      <span
+        className="title"
+      >
+        Email
+      </span>
+      <span>
+        qatest22@abc.com
+      </span>
+    </li>
+    <li>
+      <span
+        className="title"
+      >
+        Phone Number
+      </span>
+      <span>
+        <span>
+          (+84)456987
+        </span>
+        <span
+          className="otpBtn ver"
+        >
+          <i
+            className="icon icon-icon32px_check"
+          />
+        </span>
+      </span>
+    </li>
+    <li>
+      <span
+        className="title"
+      >
+        Real Name
+      </span>
+      <span>
+        test22
+      </span>
+    </li>
+    <li>
+      <span
+        className="title"
+      >
+        Birthday
+      </span>
+      <span>
+        02/02/1999
+      </span>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Profile Detail renders correctly when user haven't update profile 1`] = `
+Array [
+  <div
+    className="info"
+  >
+    <div />
+    <ul>
+      <li>
+        <span
+          className="title"
+        >
+          Username
+        </span>
+        <span>
+          qatest22
+        </span>
+      </li>
+    </ul>
+  </div>,
+  <div
+    className="input-Area"
+    data-testid="accountName_inputBox"
+  >
+    <div
+      className="input-title"
+    >
+      Real Name
+    </div>
+    <div
+      className="input-group"
+    >
+      <div
+        className="inputBoxNew"
+      >
+        <input
+          data-testid="accountName_ipt"
+          disabled={false}
+          max={null}
+          maxLength={null}
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder=""
+          type=""
+          value=""
+        />
+        <i
+          className="icon icon-information-solid"
+          data-testid="showTipBtn"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>,
+  <div
+    className="input-Area"
+    data-testid="email_inputBox"
+  >
+    <div
+      className="input-title"
+    >
+      Email
+    </div>
+    <div
+      className="input-group"
+    >
+      <div
+        className="inputBoxNew"
+      >
+        <input
+          data-testid="email_ipt"
+          disabled={false}
+          max={null}
+          maxLength={null}
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder=""
+          type=""
+          value=""
+        />
+        <i
+          className="icon icon-information-solid"
+          data-testid="showTipBtn"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>,
+  <div
+    className="input-title"
+  >
+    Birthday
+  </div>,
+  <label
+    className="inputdate"
+    data-testid="birth"
+  >
+    <input
+      max="2000-06-21"
+      onBlur={[Function]}
+      onChange={[Function]}
+      type="date"
+      value=""
+    />
+    <i
+      className="icon icon-information-solid"
+      data-testid="showTipBtn"
+      onClick={[Function]}
+    />
+    <div
+      className="iconModule"
+    >
+      <span
+        className="icon icon-calendar"
+      />
+    </div>
+  </label>,
+  <div
+    className="errortip open"
+    data-testid="birth_tip"
+  >
+    
+  </div>,
+  <div
+    className="input-title"
+  >
+    Phone Number
+  </div>,
+  <div
+    className="inputPhone parts"
+    data-testid="phoneCol"
+  >
+    <span
+      className="countryCode"
+    >
+      
+    </span>
+    <div
+      className="input-Area"
+      data-testid="phone_inputBox"
+    >
+      <div
+        className="input-group"
+      >
+        <div
+          className="inputBoxNew"
+        >
+          <input
+            data-testid="phone_ipt"
+            disabled={false}
+            max={null}
+            maxLength="10"
+            onBlur={[Function]}
+            onChange={[Function]}
+            placeholder=""
+            type="tel"
+            value=""
+          />
+          <i
+            className="icon icon-information-solid"
+            data-testid="showTipBtn"
+            onClick={[Function]}
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="errortip open"
+    >
+      
+    </div>
+  </div>,
+  <div
+    className="btn-group"
+  >
+    <a
+      className="purple"
+      href="/changePassword"
+      onClick={[Function]}
+    >
+      CHANGE PASSWORD
+    </a>
+    <button
+      className="blue"
+      data-testid="submitBtn"
+      onClick={[Function]}
+    >
+      Submit
+    </button>
+  </div>,
+]
+`;
+
+exports[`Profile Detail should render accountName input when user didn't have accountName 1`] = `
+Array [
+  <div
+    className="info"
+  >
+    <div />
+    <ul>
+      <li>
+        <span
+          className="title"
+        >
+          Username
+        </span>
+        <span>
+          qatest22
+        </span>
+      </li>
+      <li>
+        <span
+          className="title"
+        >
+          Country
+        </span>
+        <span>
+          Vietnam
+        </span>
+      </li>
+      <li>
+        <span
+          className="title"
+        >
+          Email
+        </span>
+        <span>
+          qatest22@abc.com
+        </span>
+      </li>
+      <li>
+        <span
+          className="title"
+        >
+          Phone Number
+        </span>
+        <span>
+          <span>
+            (+84)456987
+          </span>
+          <button
+            className="otpBtn"
+            onClick={[Function]}
+          >
+            <span>
+              lbl_Unverified
+            </span>
+            <span
+              className="icon icon-error"
+            />
+          </button>
+        </span>
+      </li>
+      <li>
+        <span
+          className="title"
+        >
+          Birthday
+        </span>
+        <span>
+          02/02/1999
+        </span>
+      </li>
+    </ul>
+  </div>,
+  <div
+    className="input-Area"
+    data-testid="accountName_inputBox"
+  >
+    <div
+      className="input-title"
+    >
+      Real Name
+    </div>
+    <div
+      className="input-group"
+    >
+      <div
+        className="inputBoxNew"
+      >
+        <input
+          data-testid="accountName_ipt"
+          disabled={false}
+          max={null}
+          maxLength={null}
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder=""
+          type=""
+          value=""
+        />
+        <i
+          className="icon icon-information-solid"
+          data-testid="showTipBtn"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>,
+  <div
+    className="btn-group"
+  >
+    <a
+      className="purple"
+      href="/changePassword"
+      onClick={[Function]}
+    >
+      CHANGE PASSWORD
+    </a>
+    <button
+      className="blue"
+      data-testid="submitBtn"
+      onClick={[Function]}
+    >
+      Submit
+    </button>
+  </div>,
+]
+`;
+
+exports[`Profile Detail should render birth dropdown when user didn't have birth 1`] = `
+Array [
+  <div
+    className="info"
+  >
+    <div />
+    <ul>
+      <li>
+        <span
+          className="title"
+        >
+          Username
+        </span>
+        <span>
+          qatest22
+        </span>
+      </li>
+      <li>
+        <span
+          className="title"
+        >
+          Country
+        </span>
+        <span>
+          Vietnam
+        </span>
+      </li>
+      <li>
+        <span
+          className="title"
+        >
+          Email
+        </span>
+        <span>
+          qatest22@abc.com
+        </span>
+      </li>
+      <li>
+        <span
+          className="title"
+        >
+          Phone Number
+        </span>
+        <span>
+          <span>
+            (+84)456987
+          </span>
+          <button
+            className="otpBtn"
+            onClick={[Function]}
+          >
+            <span>
+              lbl_Unverified
+            </span>
+            <span
+              className="icon icon-error"
+            />
+          </button>
+        </span>
+      </li>
+      <li>
+        <span
+          className="title"
+        >
+          Real Name
+        </span>
+        <span>
+          test22
+        </span>
+      </li>
+    </ul>
+  </div>,
+  <div
+    className="input-title"
+  >
+    Birthday
+  </div>,
+  <label
+    className="inputdate"
+    data-testid="birth"
+  >
+    <input
+      max="2000-06-21"
+      onBlur={[Function]}
+      onChange={[Function]}
+      type="date"
+      value=""
+    />
+    <i
+      className="icon icon-information-solid"
+      data-testid="showTipBtn"
+      onClick={[Function]}
+    />
+    <div
+      className="iconModule"
+    >
+      <span
+        className="icon icon-calendar"
+      />
+    </div>
+  </label>,
+  <div
+    className="errortip open"
+    data-testid="birth_tip"
+  >
+    
+  </div>,
+  <div
+    className="btn-group"
+  >
+    <a
+      className="purple"
+      href="/changePassword"
+      onClick={[Function]}
+    >
+      CHANGE PASSWORD
+    </a>
+    <button
+      className="blue"
+      data-testid="submitBtn"
+      onClick={[Function]}
+    >
+      Submit
+    </button>
+  </div>,
+]
+`;
+
+exports[`Profile Detail should render email input when user didn't have email 1`] = `
+Array [
+  <div
+    className="info"
+  >
+    <div />
+    <ul>
+      <li>
+        <span
+          className="title"
+        >
+          Username
+        </span>
+        <span>
+          qatest22
+        </span>
+      </li>
+      <li>
+        <span
+          className="title"
+        >
+          Country
+        </span>
+        <span>
+          Vietnam
+        </span>
+      </li>
+      <li>
+        <span
+          className="title"
+        >
+          Phone Number
+        </span>
+        <span>
+          <span>
+            (+84)9875464651318
+          </span>
+          <button
+            className="otpBtn"
+            onClick={[Function]}
+          >
+            <span>
+              lbl_Unverified
+            </span>
+            <span
+              className="icon icon-error"
+            />
+          </button>
+        </span>
+      </li>
+      <li>
+        <span
+          className="title"
+        >
+          Real Name
+        </span>
+        <span>
+          test22
+        </span>
+      </li>
+    </ul>
+  </div>,
+  <div
+    className="input-Area"
+    data-testid="email_inputBox"
+  >
+    <div
+      className="input-title"
+    >
+      Email
+    </div>
+    <div
+      className="input-group"
+    >
+      <div
+        className="inputBoxNew"
+      >
+        <input
+          data-testid="email_ipt"
+          disabled={false}
+          max={null}
+          maxLength={null}
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder=""
+          type=""
+          value=""
+        />
+        <i
+          className="icon icon-information-solid"
+          data-testid="showTipBtn"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>,
+  <div
+    className="input-title"
+  >
+    Birthday
+  </div>,
+  <label
+    className="inputdate"
+    data-testid="birth"
+  >
+    <input
+      max="2000-06-21"
+      onBlur={[Function]}
+      onChange={[Function]}
+      type="date"
+      value=""
+    />
+    <i
+      className="icon icon-information-solid"
+      data-testid="showTipBtn"
+      onClick={[Function]}
+    />
+    <div
+      className="iconModule"
+    >
+      <span
+        className="icon icon-calendar"
+      />
+    </div>
+  </label>,
+  <div
+    className="errortip open"
+    data-testid="birth_tip"
+  >
+    
+  </div>,
+  <div
+    className="btn-group"
+  >
+    <a
+      className="purple"
+      href="/changePassword"
+      onClick={[Function]}
+    >
+      CHANGE PASSWORD
+    </a>
+    <button
+      className="blue"
+      data-testid="submitBtn"
+      onClick={[Function]}
+    >
+      Submit
+    </button>
+  </div>,
+]
+`;
+
+exports[`Profile Detail should render phone input when user didn't have phone number 1`] = `
+Array [
+  <div
+    className="info"
+  >
+    <div />
+    <ul>
+      <li>
+        <span
+          className="title"
+        >
+          Username
+        </span>
+        <span>
+          qatest22
+        </span>
+      </li>
+      <li>
+        <span
+          className="title"
+        >
+          Country
+        </span>
+        <span>
+          Vietnam
+        </span>
+      </li>
+      <li>
+        <span
+          className="title"
+        >
+          Email
+        </span>
+        <span>
+          qatest22@abc.com
+        </span>
+      </li>
+      <li>
+        <span
+          className="title"
+        >
+          Real Name
+        </span>
+        <span>
+          test22
+        </span>
+      </li>
+      <li>
+        <span
+          className="title"
+        >
+          Birthday
+        </span>
+        <span>
+          02/02/1999
+        </span>
+      </li>
+    </ul>
+  </div>,
+  <div
+    className="input-title"
+  >
+    Phone Number
+  </div>,
+  <div
+    className="inputPhone parts"
+    data-testid="phoneCol"
+  >
+    <span
+      className="countryCode"
+    >
+      +84
+    </span>
+    <div
+      className="input-Area"
+      data-testid="phone_inputBox"
+    >
+      <div
+        className="input-group"
+      >
+        <div
+          className="inputBoxNew"
+        >
+          <input
+            data-testid="phone_ipt"
+            disabled={false}
+            max={null}
+            maxLength="10"
+            onBlur={[Function]}
+            onChange={[Function]}
+            placeholder=""
+            type="tel"
+            value=""
+          />
+          <i
+            className="icon icon-information-solid"
+            data-testid="showTipBtn"
+            onClick={[Function]}
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="errortip open"
+    >
+      
+    </div>
+  </div>,
+  <div
+    className="btn-group"
+  >
+    <a
+      className="purple"
+      href="/changePassword"
+      onClick={[Function]}
+    >
+      CHANGE PASSWORD
+    </a>
+    <button
+      className="blue"
+      data-testid="submitBtn"
+      onClick={[Function]}
+    >
+      Submit
+    </button>
+  </div>,
+]
+`;

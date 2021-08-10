@@ -35,7 +35,7 @@ const Inputbox = ({
 		}
 	}
 	return (
-		<div className="input-Area">
+		<div className="input-Area" data-testid={`${testAttr}_inputBox`}>
 			{Title}
 			<div className="input-group">
 				<div className="inputBoxNew">
@@ -158,10 +158,11 @@ export const InputboxDate = ({
 	value,
 	max,
 	btnStatus,
-	clickInfo
+	clickInfo,
+	testAttr
 }) => {
 	return (
-		<label className="inputdate">
+		<label className="inputdate" data-testid={testAttr}>
 			<input
 				type="date"
 				onBlur={onBlur}
@@ -180,7 +181,8 @@ export const InputboxDate = ({
 InputboxDate.defaultProps = {
 	max: null,
 	btnStatus: null,
-	clickInfo: () => null
+	clickInfo: () => null,
+	testAttr: null
 };
 
 InputboxDate.propTypes = {
@@ -189,7 +191,8 @@ InputboxDate.propTypes = {
 	value: PropTypes.string.isRequired,
 	max: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	btnStatus: PropTypes.bool,
-	clickInfo: PropTypes.func
+	clickInfo: PropTypes.func,
+	testAttr: PropTypes.string
 };
 
 export default Inputbox;

@@ -27,7 +27,9 @@ const Inputbox = ({
 				{infoText}
 			</div>
 
-			<div className={`inputBox ${btnStatus === false ? "error" : ""}`}>
+			<div
+				className={`inputBox ${btnStatus === false ? "error" : ""}`}
+				data-testid={testAttr}>
 				{areaCode ? (
 					<i className={`icon ${icon}`}>{areaCode}</i>
 				) : icon ? (

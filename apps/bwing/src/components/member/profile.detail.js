@@ -429,6 +429,7 @@ const Panel = () => {
 					tip={inputStatus.AccountName.msg}
 					value={userValue.AccountName}
 					clickInfo={clickInfo.bind(this, "AccountName")}
+					testAttr="accountName"
 				/>
 			) : null}
 
@@ -441,6 +442,7 @@ const Panel = () => {
 					btnStatus={inputStatus.Email.checked}
 					tip={inputStatus.Email.msg}
 					clickInfo={clickInfo.bind(this, "Email")}
+					testAttr="email"
 				/>
 			) : null}
 
@@ -454,8 +456,9 @@ const Panel = () => {
 						max={moment(legalDate).format("YYYY-MM-DD")}
 						clickInfo={clickInfo.bind(this, "Birthday")}
 						btnStatus={inputStatus.Birthday.checked}
+						testAttr="birth"
 					/>
-					<div className="errortip open">
+					<div className="errortip open" data-testid="birth_tip">
 						{inputStatus.Birthday.msg}
 					</div>
 				</>
@@ -464,7 +467,7 @@ const Panel = () => {
 			{!userInfo.phoneNo ? (
 				<>
 					<div className="input-title">{i18n.lbl_Phone}</div>
-					<div className="inputPhone parts">
+					<div className="inputPhone parts" data-testid="phoneCol">
 						<span className="countryCode">{_areaCode}</span>
 						<Inputbox
 							inputType="tel"
@@ -474,6 +477,7 @@ const Panel = () => {
 							btnStatus={inputStatus.PhoneNo.checked}
 							clickInfo={clickInfo.bind(this, "PhoneNo")}
 							maxLength="10"
+							testAttr="phone"
 						/>
 						<div className="errortip open">
 							{inputStatus.PhoneNo.msg}
@@ -492,7 +496,10 @@ const Panel = () => {
 						to={`/${path.changePassword.root}`}>
 						{i18n.lbl_ChangePassword.toUpperCase()}
 					</Link>
-					<button className="blue" onClick={checkSubmitHandler}>
+					<button
+						className="blue"
+						onClick={checkSubmitHandler}
+						data-testid="submitBtn">
 						{i18n.lbl_Submit}
 					</button>
 				</div>

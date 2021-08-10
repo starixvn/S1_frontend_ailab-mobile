@@ -171,7 +171,12 @@ const Panel = () => {
 	};
 
 	const EditField = (col, e) => {
-		const val = e.target.value;
+		let val = e.target.value;
+
+		if (col === "phoneNo") {
+			val = val.replace(/\D/g, "");
+		}
+
 		setUserValue(prevState => ({
 			...prevState,
 			[col]: val
@@ -409,6 +414,7 @@ const Panel = () => {
 					infoText={i18n.lbl_UsernameTooltip}
 					clickInfo={() => showTipHandler("accountName")}
 					showTips={showTips.includes("accountName")}
+					testAttr="accountName"
 				/>
 			) : null}
 			{!userInfo?.birth_d || !userInfo?.birth_m || !userInfo?.birth_y ? (
@@ -425,6 +431,7 @@ const Panel = () => {
 					warningMsg={warning.birth.msg}
 					tip={warning.birth.msg}
 					dropdownStateHandler={dropdownStateHandler}
+					testAttr="birthday"
 				/>
 			) : null}
 			{!userInfo?.phoneNo && userInfo?.currencyId === 96 ? (
@@ -441,6 +448,7 @@ const Panel = () => {
 						selectedIdx={AreaCodeIdx}
 						icon="icon icon-phone"
 						hideInfo={true}
+						testAttr="phoneDropdown"
 					/>
 					<PhoneInputbox
 						icon="icon-phone"
@@ -454,6 +462,7 @@ const Panel = () => {
 						infoText={i18n.lbl_PhoneTooltip}
 						clickInfo={() => showTipHandler("phoneNo")}
 						showTips={showTips.includes("phoneNo")}
+						testAttr="phoneInput"
 					/>
 				</div>
 			) : null}
@@ -472,13 +481,14 @@ const Panel = () => {
 						clickInfo={() => showTipHandler("phoneNo")}
 						showTips={showTips.includes("phoneNo")}
 						areaCode={_areaCode}
+						testAttr="phoneInput"
 					/>
 				</div>
 			) : null}
 			{!userInfo?.accountName ||
 			!userInfo?.birth_d ||
 			!userInfo?.phoneNo ? (
-				<div className="btn-group">
+				<div className="btn-group" data-testid="submitBtn">
 					<button className="orange" onClick={clickSubmit}>
 						{i18n.lbl_Submit}
 					</button>
@@ -508,6 +518,7 @@ const Birthday = props => {
 				hideInfo={true}
 				birthDayIcon={true}
 				hideTip={true}
+				testAttr="bday_month"
 			/>
 			<Dropdown
 				mainKey="profile-day"
@@ -517,6 +528,7 @@ const Birthday = props => {
 				selectedIdx={props.daySelectedIdx}
 				hideInfo={true}
 				hideTip={true}
+				testAttr="bday_day"
 			/>
 			<Dropdown
 				mainKey="profile-year"
@@ -529,6 +541,7 @@ const Birthday = props => {
 				selectedIdx={props.yearSelectedIdx}
 				hideTip={true}
 				hideInfo={true}
+				testAttr="bday_year"
 			/>
 		</div>
 	);
