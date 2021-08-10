@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Step panel reders correctly in step 1 1`] = `
+<div
+  className="processArea"
+  data-testid="step"
+>
+  <div
+    className="process active"
+  >
+    <span>
+      Add New Account
+    </span>
+  </div>
+  <div
+    className="process"
+  >
+    <span>
+      Choose Bank Name
+    </span>
+  </div>
+  <div
+    className="process"
+  >
+    <span>
+      Bound Bank Card
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Step panel reders correctly in step 2 1`] = `
+<div
+  className="processArea"
+  data-testid="step"
+>
+  <div
+    className="process active"
+  >
+    <span>
+      Add New Account
+    </span>
+  </div>
+  <div
+    className="process active"
+  >
+    <span>
+      Choose Bank Name
+    </span>
+  </div>
+  <div
+    className="process"
+  >
+    <span>
+      Bound Bank Card
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Step panel reders correctly in step 3 1`] = `
+<div
+  className="processArea"
+  data-testid="step"
+>
+  <div
+    className="process active"
+  >
+    <span>
+      Add New Account
+    </span>
+  </div>
+  <div
+    className="process active"
+  >
+    <span>
+      Choose Bank Name
+    </span>
+  </div>
+  <div
+    className="process active"
+  >
+    <span>
+      Bound Bank Card
+    </span>
+  </div>
+</div>
+`;

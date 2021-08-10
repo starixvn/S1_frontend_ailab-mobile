@@ -62,7 +62,10 @@ export class DropdownBox extends Component {
 				: null;
 		}
 		return (
-			<div className="inputBox" ref={this.wrapper}>
+			<div
+				className="inputBox"
+				ref={this.wrapper}
+				data-testid={this.props.testAttr}>
 				<button
 					className={`dropdown${
 						this.state.isOpen ? " dropdownbank" : ""
@@ -90,7 +93,8 @@ DropdownBox.defaultProps = {
 	colName: "",
 	clickDropdown: null,
 	i18n: {},
-	selectedIdx: null
+	selectedIdx: null,
+	testAttr: null
 };
 
 DropdownBox.propTypes = {
@@ -102,7 +106,8 @@ DropdownBox.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string),
 	ImgURL: PropTypes.string.isRequired,
 	className: PropTypes.string.isRequired,
-	options: PropTypes.arrayOf(PropTypes.object).isRequired
+	options: PropTypes.arrayOf(PropTypes.object).isRequired,
+	testAttr: PropTypes.string
 };
 
 const Item = props => {

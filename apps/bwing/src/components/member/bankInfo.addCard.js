@@ -162,7 +162,7 @@ export default ({
 	let content = null;
 	if (step === defStep.initPanel) {
 		content = (
-			<div className="btn-group">
+			<div className="btn-group" data-testid="addAccountBtn">
 				<button className="blue" onClick={clickAddBtn}>
 					{i18n.lbl_AddBankAccount}
 				</button>
@@ -171,13 +171,13 @@ export default ({
 	} else if (step === defStep.bankPanel) {
 		content = (
 			<>
-				<div className="depositInBox">
+				<div className="depositInBox" data-testid="bankPanel">
 					<div className="depositTitle textLeft">
 						<h1>{i18n.lbl_Step_SelectBank.toUpperCase()}</h1>
 					</div>
 					<div className="depositImgArea">{arr}</div>
 				</div>
-				<div className="btn-group">
+				<div className="btn-group" data-testid="backBtn">
 					<button className="left" onClick={toPrevStep}>
 						<span className="icon icon-arrow-left2" />
 						{i18n.lbl_Back}
@@ -188,7 +188,7 @@ export default ({
 	} else {
 		content = (
 			<>
-				<div className="depositInBox">
+				<div className="depositInBox" data-testid="accountPanel">
 					<div className="depositTitle textLeft">
 						<h1>{i18n.lbl_EnterAccountNumber.toUpperCase()}</h1>
 					</div>
@@ -217,6 +217,7 @@ export default ({
 							clickInfo={clickInfo.bind(this, {
 								col: "accountName"
 							})}
+							testAttr="accountName"
 						/>
 					)}
 					<Inputbox
@@ -235,6 +236,7 @@ export default ({
 						clickInfo={clickInfo.bind(this, {
 							col: "accountNo"
 						})}
+						testAttr="bankAccount"
 					/>
 					<div className="btn-group">
 						<button className="blue" onClick={clickSubmit}>
@@ -242,7 +244,7 @@ export default ({
 						</button>
 					</div>
 				</div>
-				<div className="btn-group">
+				<div className="btn-group" data-testid="backBtn">
 					<button className="left" onClick={toPrevStep}>
 						<span className="icon icon-arrow-left2" />
 						{i18n.lbl_Back}

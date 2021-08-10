@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile links renders correctly 1`] = `
+Array [
+  <div
+    className="btn-group"
+  >
+    <a
+      className="lightBlue"
+      href="/changePassword"
+      onClick={[Function]}
+    >
+      Change Password
+    </a>
+  </div>,
+  <div
+    className="btn-group"
+  >
+    <a
+      className="lightBlue"
+      href="/other"
+      onClick={[Function]}
+    >
+      Other
+    </a>
+  </div>,
+  <div
+    className="btn-group"
+  >
+    <button
+      className="lightBlue"
+      onClick={[Function]}
+    >
+      Logout
+    </button>
+  </div>,
+]
+`;

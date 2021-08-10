@@ -122,7 +122,6 @@ export const IptStatus = ({ btnStatus, clickInfo }) => {
 					className="icon icon-information-solid"
 					data-testid="showTipBtn"
 					onClick={clickInfo}
-					data-testid="showTipBtn"
 				/>
 			);
 	}

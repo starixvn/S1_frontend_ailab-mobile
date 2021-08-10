@@ -4,7 +4,8 @@ import * as reach from "@reach/router";
 import * as api from "../../../service/api/site";
 import * as account_api from "../../../service/api/account";
 import { Wrapper } from "../../common/wrapper";
-import ChangePWD from "../../member/changePwd";
+import ChangePWD from "../changePwd";
+import * as ct from "../../common/context";
 
 jest.spyOn(reach, "useLocation");
 jest.spyOn(reach, "useNavigate");
@@ -30,7 +31,7 @@ describe("ChangePWD tests", () => {
 		},
 		userInfo: {
 			langId: "en",
-			isLogin: false
+			isLogin: true
 		},
 		setPopBox: () => ({}),
 		i18n: {},
@@ -54,7 +55,16 @@ describe("ChangePWD tests", () => {
 			tree = render(
 				<reach.LocationProvider history={history}>
 					<Wrapper {...wrapperFakeData}>
-						<ChangePWD />
+						<ct.userInfoContext.Provider
+							value={{
+								userInfo: {
+									langId: "en",
+									isLogin: true
+								},
+								setUserInfo: () => null
+							}}>
+							<ChangePWD />
+						</ct.userInfoContext.Provider>
 					</Wrapper>
 				</reach.LocationProvider>
 			);
@@ -82,8 +92,8 @@ describe("ChangePWD tests", () => {
 	it(`Show tip button works fine`, async () => {
 		const btn = tree.getAllByTestId("showTipBtn")[0];
 		fireEvent.click(btn);
-		const tip = tree.getByTestId("OldPWD_msg");
-		expect(tip.innerHTML).not.toEqual("");
+		const errorMsg = tree.getByTestId("OldPWD_msg");
+		expect(errorMsg.innerHTML).not.toEqual("");
 	});
 
 	it(`Show password button works fine`, async () => {
