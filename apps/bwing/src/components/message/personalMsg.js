@@ -319,7 +319,11 @@ const Panel = () => {
 				<>
 					<div className="functionList">
 						<label className="checkbox">
-							<input type="checkbox" onChange={selectAll} />
+							<input
+								type="checkbox"
+								onChange={selectAll}
+								data-testid="selectAll"
+							/>
 							<i
 								className={`icon icon-checkbox ${
 									isSelectedAll ? "open" : ""
@@ -331,6 +335,7 @@ const Panel = () => {
 							<button
 								className="icon icon-bin clickBtn"
 								onClick={delMsg}
+								data-testid="deleteMsg"
 							/>
 							<ReloadSpin func={GetMsgList} />
 						</div>
@@ -356,11 +361,18 @@ const Item = props => {
 	const linkContent = hasLink ? stringLinkify(props.content) : "";
 
 	return (
-		<div className={`account ${props.isRead ? " read" : ""}`}>
+		<div
+			data-testid="isRead"
+			className={`account ${props.isRead ? " read" : ""}`}>
 			<div className="info">
 				<label className="checkbox">
-					<input type="checkbox" onChange={props.onChange} />
+					<input
+						type="checkbox"
+						data-testid="msgChkbox"
+						onChange={props.onChange}
+					/>
 					<i
+						data-testid="checkIcon"
 						className={`icon icon-checkbox${
 							props.isChecked ? " open" : ""
 						}`}
@@ -376,16 +388,20 @@ const Item = props => {
 					className={`icon icon-circle-right ${
 						props.isOpen ? " open" : ""
 					}`}
+					data-testid="openBtn"
 					onClick={props.onClick}
 				/>
 			</div>
 			{hasLink ? (
 				<div
+					data-testid="msgCard"
 					className={`content ${props.isOpen ? " open" : ""}`}
 					dangerouslySetInnerHTML={{ __html: linkContent }}
 				/>
 			) : (
-				<div className={`content ${props.isOpen ? " open" : ""}`}>
+				<div
+					data-testid="msgCard"
+					className={`content ${props.isOpen ? " open" : ""}`}>
 					<pre>{props.content}</pre>
 				</div>
 			)}

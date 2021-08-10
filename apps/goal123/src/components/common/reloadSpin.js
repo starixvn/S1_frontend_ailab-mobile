@@ -26,6 +26,7 @@ const ReloadSpin = props => {
 
 	return (
 		<button
+			data-testid="refeshBtn"
 			className={`icon icon-spinner11 clickBtn${spin ? " open" : ""}`}
 			onClick={clickSpin}
 		/>
