@@ -49,6 +49,7 @@ const Panel = ({ submitHandler }) => {
 	const quickSelectArr = quickPickList.map((item, i) => {
 		return (
 			<button
+				data-testid={`quick_btn_${item.displayKey}`}
 				key={`quickSelect-${item.displayKey}`}
 				className={i === selectedIdx ? "active" : ""}
 				onClick={clickQuickSelect.bind(this, i)}>
@@ -85,6 +86,7 @@ const Panel = ({ submitHandler }) => {
 
 					<div className="btn-group">
 						<button
+							data-testid="submit-history-filter"
 							onClick={submitHandler.bind(this, {
 								startDay: dateRange.startDate,
 								endDay: dateRange.endDate,
@@ -148,7 +150,13 @@ const Inputbox = ({ value, onChange, max }) => {
 	return (
 		<div className="inputBox">
 			<i className="icon icon-calendar" />
-			<input type="date" value={value} onChange={onChange} max={max} />
+			<input
+				type="date"
+				data-testid="dateIpt"
+				value={value}
+				onChange={onChange}
+				max={max}
+			/>
 		</div>
 	);
 };

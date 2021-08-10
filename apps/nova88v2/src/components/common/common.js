@@ -58,9 +58,11 @@ export const checkAmount = ({
 	let msg = "";
 	if (amount !== null && amount !== undefined) {
 		let numAmount = isNaN(amount) ? 0 : Number(amount);
+
 		if (_isConvert) {
 			numAmount *= 1000;
 		}
+
 		if (numAmount <= 0 || (minAmount !== 0 && numAmount < minAmount)) {
 			status = 2;
 			msg = i18n.lbl_AmountTooltip?.replace(
@@ -79,7 +81,6 @@ export const checkAmount = ({
 			}`;
 		}
 	}
-
 	return { status, msg };
 };
 

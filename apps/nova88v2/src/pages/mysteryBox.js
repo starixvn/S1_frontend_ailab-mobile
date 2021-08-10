@@ -36,7 +36,6 @@ const IndexPage = () => {
 			navigate("/");
 		}
 	}, [navigate]);
-
 	return (
 		<>
 			<Header title={i18n.lbl_MysteryBox_EventTitle} hideLogo={true} />
