@@ -439,13 +439,15 @@ const Panel = () => {
 							col: "AccountName",
 							info: "msg_ConfirmRealNameAlert"
 						})}
+						testAttr="accountName"
 					/>
 					<div
 						className={`open${
 							inputStatus.AccountName.checked === false
 								? " errortip"
 								: ""
-						}`}>
+						}`}
+						data-testid="accountNameTip">
 						{inputStatus.AccountName.msg}
 					</div>
 				</>
@@ -464,13 +466,15 @@ const Panel = () => {
 							col: "Email",
 							info: "lbl_EmailToolTip"
 						})}
+						testAttr="email"
 					/>
 					<div
 						className={`open${
 							inputStatus.Email.checked === false
 								? " errortip"
 								: ""
-						}`}>
+						}`}
+						data-testid="emailTip">
 						{inputStatus.Email.msg}
 					</div>
 				</>
@@ -492,7 +496,7 @@ const Panel = () => {
 			) : null}
 
 			{!userInfo.phoneNo ? (
-				<div className="inputBox parts">
+				<div className="inputBox parts" data-testid="phoneCol">
 					<span className="countryCode">{_areaCode}</span>
 					<Inputbox
 						icon="icon icon-phone"
@@ -507,13 +511,15 @@ const Panel = () => {
 							col: "PhoneNo",
 							info: "msg_EnterPhoneNumber"
 						})}
+						testAttr="phone"
 					/>
 					<div
 						className={`open${
 							inputStatus.PhoneNo.checked === false
 								? " errortip"
 								: ""
-						}`}>
+						}`}
+						data-testid="phoneTip">
 						{inputStatus.PhoneNo.msg}
 					</div>
 				</div>
@@ -523,7 +529,7 @@ const Panel = () => {
 			!userInfo.birth_d ||
 			!userInfo.phoneNo ||
 			!userInfo.email ? (
-				<div className="btn-group">
+				<div className="btn-group" data-testid="submitBtn">
 					<button className="lightBlue" onClick={checkSubmitHandler}>
 						{i18n.lbl_Submit}
 					</button>
@@ -548,6 +554,7 @@ const Birthday = props => {
 				onSelectItem={props.dropdownStateHandler.bind(null, "month")}
 				selectedIdx={props.monthSelectedIdx}
 				icon="icon icon-cake"
+				testAttr="bday_month"
 			/>
 			<Dropdown
 				mainKey="profile-day"
@@ -555,6 +562,7 @@ const Birthday = props => {
 				colName="bday_day"
 				onSelectItem={props.dropdownStateHandler.bind(null, "day")}
 				selectedIdx={props.daySelectedIdx}
+				testAttr="bday_day"
 			/>
 			<Dropdown
 				mainKey="profile-year"
@@ -562,8 +570,11 @@ const Birthday = props => {
 				colName="bday_year"
 				onSelectItem={props.dropdownStateHandler.bind(null, "year")}
 				selectedIdx={props.yearSelectedIdx}
+				testAttr="bday_year"
 			/>
-			<div className="errortip open">{props.tip}</div>
+			<div className="errortip open" data-testid="birthTip">
+				{props.tip}
+			</div>
 		</div>
 	);
 };
