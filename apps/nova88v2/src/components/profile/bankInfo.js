@@ -218,7 +218,9 @@ const BankInfo = ({ prevPage }) => {
 					{userInfo?.accountName ? (
 						<>
 							<VIPLevel userInfo={userInfo} i18n={i18n} />
-							<div className="name">{userInfo.accountName}</div>
+							<div className="name" data-testid="accountName">
+								{userInfo.accountName}
+							</div>
 							<div className="text-center text-gray">
 								{i18n.lbl_ContactCSD}
 							</div>
@@ -233,7 +235,8 @@ const BankInfo = ({ prevPage }) => {
 							) : null}
 							<button
 								className="icon icon-plus"
-								onClick={toAddBankAccount}>
+								onClick={toAddBankAccount}
+								data-testid="addAccountBtn">
 								{i18n.lbl_AddNewAccount}
 							</button>
 						</div>
@@ -255,7 +258,9 @@ const BankInfo = ({ prevPage }) => {
 					<div className="text-center text-org icon icon-library">
 						{i18n.lbl_BankAccount}
 					</div>
-					<div className="bankAccount">{arr}</div>
+					<div className="bankAccount" data-testid="accountList">
+						{arr}
+					</div>
 				</>
 			) : null}
 		</>

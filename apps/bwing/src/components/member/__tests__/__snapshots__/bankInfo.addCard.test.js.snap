@@ -1,0 +1,180 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add account panel renders correctly 1`] = `
+Array [
+  <div
+    className="depositInBox"
+    data-testid="accountPanel"
+  >
+    <div
+      className="depositTitle textLeft"
+    >
+      <h1>
+        ENTER ACCOUNT NUMBER
+      </h1>
+    </div>
+    <div
+      className="depositImgArea"
+    >
+      <div
+        className="img3Box"
+      >
+        <img
+          alt="BankLogo"
+          src="https://stag.bwing.com/common/images/BankLogo/ACB.png"
+        />
+      </div>
+    </div>
+    <div
+      className="input-Area"
+    >
+      <div
+        className="input-group"
+      >
+        <div
+          className="inputBoxNew"
+        >
+          <input
+            data-testid="accountName_ipt"
+            disabled={false}
+            max={null}
+            maxLength={null}
+            onBlur={[Function]}
+            onChange={[Function]}
+            placeholder="Please enter your real name."
+            type=""
+            value=""
+          />
+          <i
+            className="icon icon-information-solid"
+            data-testid="showTipBtn"
+            onClick={[Function]}
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="input-Area"
+    >
+      <div
+        className="input-title"
+      >
+        Account Number
+      </div>
+      <div
+        className="input-group"
+      >
+        <div
+          className="inputBoxNew"
+        >
+          <input
+            data-testid="bankAccount_ipt"
+            disabled={false}
+            max={null}
+            maxLength={null}
+            onBlur={[Function]}
+            onChange={[Function]}
+            placeholder="1111 2222 3333 4444"
+            type=""
+            value=""
+          />
+          <i
+            className="icon icon-information-solid"
+            data-testid="showTipBtn"
+            onClick={[Function]}
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="btn-group"
+    >
+      <button
+        className="blue"
+        onClick={[Function]}
+      >
+        SUBMIT
+      </button>
+    </div>
+  </div>,
+  <div
+    className="btn-group"
+    data-testid="backBtn"
+  >
+    <button
+      className="left"
+      onClick={[Function]}
+    >
+      <span
+        className="icon icon-arrow-left2"
+      />
+    </button>
+  </div>,
+]
+`;
+
+exports[`Init panel renders correctly 1`] = `
+<div
+  className="btn-group"
+  data-testid="addAccountBtn"
+>
+  <button
+    className="blue"
+    onClick={[Function]}
+  >
+    Add New Bank Account
+  </button>
+</div>
+`;
+
+exports[`Select bank panel renders correctly 1`] = `
+Array [
+  <div
+    className="depositInBox"
+    data-testid="bankPanel"
+  >
+    <div
+      className="depositTitle textLeft"
+    >
+      <h1>
+        SELECT BANK
+      </h1>
+    </div>
+    <div
+      className="depositImgArea"
+    >
+      <div
+        className="img3Box"
+      >
+        <img
+          alt="Asia Commercial Bank"
+          onClick={[Function]}
+          src="https://stag.bwing.com/common/images/BankLogo/ACB.png"
+        />
+      </div>
+      <div
+        className="img3Box"
+      >
+        <img
+          alt="BIDV"
+          onClick={[Function]}
+          src="https://stag.bwing.com/common/images/BankLogo/BIDV.png"
+        />
+      </div>
+    </div>
+  </div>,
+  <div
+    className="btn-group"
+    data-testid="backBtn"
+  >
+    <button
+      className="left"
+      onClick={[Function]}
+    >
+      <span
+        className="icon icon-arrow-left2"
+      />
+    </button>
+  </div>,
+]
+`;

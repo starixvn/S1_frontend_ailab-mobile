@@ -264,6 +264,7 @@ const AddBankPanel = ({
 					ImgURL={`${config.cloudImgURL}/SiteSkin/img/BankLogo/`}
 					selectedIdx={bankSelectedIdx}
 					onSelectItem={dropdownStateHandler}
+					testAttr="bankList"
 				/>
 			</div>
 
@@ -283,6 +284,7 @@ const AddBankPanel = ({
 					showTips={showTips.includes("RealName")}
 					infoText={i18n.msg_ConfirmRealNameAlert}
 					clickInfo={() => showTipHandler("RealName")}
+					testAttr="RealName"
 				/>
 			) : null}
 
@@ -301,6 +303,7 @@ const AddBankPanel = ({
 				showTips={showTips.includes("BankAccount")}
 				infoText={i18n.msg_NeedAccountNo}
 				clickInfo={() => showTipHandler("BankAccount")}
+				testAttr="BankAccount"
 			/>
 
 			{currencyId === defCurrenyId.INR ? (
@@ -322,7 +325,7 @@ const AddBankPanel = ({
 				/>
 			) : null}
 
-			<div className="btn-group">
+			<div className="btn-group" data-testid="btnGroup">
 				<button className="white" onClick={toShowBankAccount}>
 					{i18n.lbl_Cancel}
 				</button>

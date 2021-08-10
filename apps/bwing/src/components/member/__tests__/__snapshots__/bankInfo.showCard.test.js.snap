@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Show accout panel have no account renders correctly 1`] = `
+<div
+  className="depositTitle textLeft borderTop"
+  data-testid="showCardPanel"
+>
+  <h1>
+    BANK ACCOUNT
+  </h1>
+  <p>
+    Number of bank account
+    : 
+    0
+    /3
+  </p>
+</div>
+`;
+
+exports[`Show accout panel have two accounts renders correctly 1`] = `
+Array [
+  <div
+    className="depositTitle textLeft borderTop"
+    data-testid="showCardPanel"
+  >
+    <h1>
+      BANK ACCOUNT
+    </h1>
+    <p>
+      Number of bank account
+      : 
+      2
+      /3
+    </p>
+  </div>,
+  <div
+    className="bankCard"
+    data-testid="account"
+  >
+    <img
+      alt="BankLogo"
+      src="https://stag.bwing.com/common/images/BankLogo/undefined"
+    />
+    <p>
+      346457568
+    </p>
+    <button
+      aria-label="delBankAccount"
+      className="icon icon-bin clickBtn"
+      onClick={[Function]}
+    />
+  </div>,
+  <div
+    className="bankCard"
+    data-testid="account"
+  >
+    <img
+      alt="BankLogo"
+      src="https://stag.bwing.com/common/images/BankLogo/undefined"
+    />
+    <p>
+      23543647
+    </p>
+    <button
+      aria-label="delBankAccount"
+      className="icon icon-bin clickBtn"
+      onClick={[Function]}
+    />
+  </div>,
+]
+`;

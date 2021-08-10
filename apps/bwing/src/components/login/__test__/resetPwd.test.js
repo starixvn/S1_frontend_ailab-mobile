@@ -4,7 +4,7 @@ import * as reach from "@reach/router";
 import * as api from "../../../service/api/site";
 import * as accountStrict_api from "../../../service/api/accountStrict";
 import { Wrapper } from "../../common/wrapper";
-import ResetPWD from "../../login/resetPwd";
+import ResetPWD from "../resetPwd";
 import * as common from "../../common/common";
 import * as ct from "../../common/context";
 

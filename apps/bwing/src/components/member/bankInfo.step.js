@@ -29,7 +29,11 @@ const Panel = ({ step, i18n }) => {
 		);
 	});
 
-	return <div className="processArea">{rows}</div>;
+	return (
+		<div className="processArea" data-testid="step">
+			{rows}
+		</div>
+	);
 };
 
 export default Panel;

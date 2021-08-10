@@ -159,7 +159,7 @@ const BankInfo = () => {
 	return loading ? (
 		<Loading />
 	) : (
-		<section className="depositBox">
+		<section className="depositBox" data-testid="bankInfo">
 			<p className="depositBox-text">{i18n.lbl_BankInfo_Hint}</p>
 			<Step i18n={i18n} step={step} />
 			{userInfo?.accountName ? (
@@ -179,7 +179,7 @@ const BankInfo = () => {
 							</p>
 						</div>
 					</div>
-					{tip ? <div>{tip}</div> : null}
+					{tip ? <div data-testid="accountNameTip">{tip}</div> : null}
 				</>
 			) : null}
 

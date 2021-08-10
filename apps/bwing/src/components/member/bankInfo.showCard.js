@@ -88,7 +88,8 @@ export default ({ i18n, accountName, custBankList, reload }) => {
 		return (
 			<div
 				className="bankCard"
-				key={`bankCard-${item.SysId}-${item.accountNo}`}>
+				key={`bankCard-${item.SysId}-${item.accountNo}`}
+				data-testid="account">
 				<img
 					alt="BankLogo"
 					src={`${config.imgUrl}/common/images/BankLogo/${item.image}`}
@@ -111,7 +112,9 @@ export default ({ i18n, accountName, custBankList, reload }) => {
 		<Loading />
 	) : (
 		<>
-			<div className="depositTitle textLeft borderTop">
+			<div
+				className="depositTitle textLeft borderTop"
+				data-testid="showCardPanel">
 				<h1>{i18n.lbl_BankAccount.toUpperCase()}</h1>
 				<p>
 					{i18n.lbl_NumberOfBankAccounts}: {custBankList?.length ?? 0}

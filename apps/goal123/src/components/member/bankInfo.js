@@ -373,14 +373,18 @@ const BankInfo = () => {
 	return (
 		<>
 			<div className="avatar" />
-			<div className="name">{userInfo.accountName}</div>
+			<div className="name" data-testid="accountName">
+				{userInfo.accountName}
+			</div>
 			{currentPanel === panel.bankList ? (
 				<>
 					{userInfo.accountName ? (
-						<div className="text-org">{i18n.lbl_ContactCSD}</div>
+						<div className="text-org" data-testid="accountNameTip">
+							{i18n.lbl_ContactCSD}
+						</div>
 					) : null}
 					{custBankInfo && custBankInfo.length < 3 ? (
-						<div className="btn-group">
+						<div className="btn-group" data-testid="addAccountBtn">
 							<button
 								className="orange"
 								onClick={toAddBankAccount}>
@@ -390,12 +394,16 @@ const BankInfo = () => {
 						</div>
 					) : null}
 					{custBankInfo && custBankInfo.length > 0 ? (
-						<div className="smallTitle">
+						<div
+							className="smallTitle"
+							data-testid="accountListTitle">
 							<i className="icon icon-library" />
 							{i18n.lbl_BankAccount}
 						</div>
 					) : null}
-					<div className="bankAccount">{arr}</div>
+					<div className="bankAccount" data-testid="accountList">
+						{arr}
+					</div>
 				</>
 			) : (
 				<>
@@ -408,6 +416,7 @@ const BankInfo = () => {
 							ImgURL={`${config.imgUrl}/common/images/BankLogo/`}
 							selectedIdx={bankSelectedIdx}
 							onSelectItem={dropdownStateHandler}
+							testAttr="bankList"
 						/>
 					</div>
 					{!userInfo.accountName ? (
@@ -423,6 +432,7 @@ const BankInfo = () => {
 								col: "RealName",
 								info: "msg_ConfirmRealNameAlert"
 							})}
+							testAttr="accountName"
 						/>
 					) : null}
 					<Inputbox
@@ -438,8 +448,9 @@ const BankInfo = () => {
 							col: "BankAccount",
 							info: "lbl_EnterAccountNumber"
 						})}
+						testAttr="account"
 					/>
-					<div className="btn-group">
+					<div className="btn-group" data-testid="addPanelBtn">
 						<button
 							className="darkGray"
 							onClick={toShowBankAccount}>
@@ -457,7 +468,7 @@ const BankInfo = () => {
 
 const BankAccountItem = props => {
 	return (
-		<div className="account">
+		<div className="account" data-testid="account">
 			<div className={props.className}>
 				<img src={props.image} alt="" />
 			</div>

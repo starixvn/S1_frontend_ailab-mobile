@@ -61,6 +61,7 @@ export default () => {
 				balance={t.balance}
 				func_GetBalance={GetTpWalletBalance.bind(this, t.id)}
 				bonusWallet={bonusWallet[t.id]}
+				testAttr={t.displayKey}
 			/>
 		);
 	});
@@ -74,6 +75,7 @@ export default () => {
 				balance={mainWalletInfo.balance}
 				func_GetBalance={GetBalance}
 				bonusWallet={bonusWallet[0]}
+				testAttr="mainWallet"
 			/>
 			{_tpWalletArrs}
 		</>
@@ -86,7 +88,8 @@ const Wallet = ({
 	titleKey,
 	balance,
 	func_GetBalance,
-	bonusWallet
+	bonusWallet,
+	testAttr
 }) => {
 	const _bonusWallet =
 		bonusWallet &&
@@ -107,7 +110,7 @@ const Wallet = ({
 			});
 
 	return (
-		<div className="account">
+		<div className="account" data-testid={testAttr}>
 			<div className="info">
 				<span className="title">{i18n[titleKey]}</span>
 				<div>
@@ -128,7 +131,8 @@ Wallet.defaultProps = {
 	func_GetBalance: null,
 	bonusWallet: [],
 	currencyId: null,
-	balance: 0
+	balance: 0,
+	testAttr: null
 };
 
 Wallet.propTypes = {
@@ -137,5 +141,6 @@ Wallet.propTypes = {
 	titleKey: PropTypes.string,
 	balance: PropTypes.number,
 	func_GetBalance: PropTypes.func,
-	bonusWallet: PropTypes.arrayOf(PropTypes.object)
+	bonusWallet: PropTypes.arrayOf(PropTypes.object),
+	testAttr: PropTypes.string
 };
