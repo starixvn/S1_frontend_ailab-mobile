@@ -56,6 +56,7 @@ import id4d from "../styles/img/indo4d.png";
 import Keno from "../styles/img/keno.png";
 import Lottery from "../styles/img/lottery.png";
 import number_game from "../styles/img/numbergame.png";
+import TCG from "../styles/img/tcg.png";
 
 import kingMaker from "../styles/img/km.png";
 import amb from "../styles/img/amb.png";
@@ -480,6 +481,17 @@ const gameList = ({ langId, currencyName }) => {
 					tpCategoryId: defTpCategoryId.Lottery,
 					items: [
 						{
+							...defGameInfo.TCG,
+							img: TCG,
+							spanTextKey: "lbl_TCG",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(eventTime.tcg)
+								}
+							]
+						},
+						{
 							...defGameInfo.Indo4d,
 							img: id4d,
 							spanTextKey: "lbl_Indo4d",
@@ -899,6 +911,17 @@ const gameList = ({ langId, currencyName }) => {
 					tpCategoryId: defTpCategoryId.Lottery,
 					items: [
 						{
+							...defGameInfo.TCG,
+							img: TCG,
+							spanTextKey: "lbl_TCG",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(eventTime.tcg)
+								}
+							]
+						},
+						{
 							...defGameInfo.Indo4d,
 							img: id4d,
 							spanTextKey: "lbl_Indo4d",
@@ -1316,6 +1339,17 @@ const gameList = ({ langId, currencyName }) => {
 					tpCategoryId: defTpCategoryId.Lottery,
 					items: [
 						{
+							...defGameInfo.TCG,
+							img: TCG,
+							spanTextKey: "lbl_TCG",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(eventTime.tcg)
+								}
+							]
+						},
+						{
 							...defGameInfo.Indo4d,
 							img: id4d,
 							spanTextKey: "lbl_Indo4d",
@@ -1719,6 +1753,17 @@ const gameList = ({ langId, currencyName }) => {
 					tpCategoryId: defTpCategoryId.Lottery,
 					items: [
 						{
+							...defGameInfo.TCG,
+							img: TCG,
+							spanTextKey: "lbl_TCG",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(eventTime.tcg)
+								}
+							]
+						},
+						{
 							...defGameInfo.Indo4d,
 							img: id4d,
 							spanTextKey: "lbl_Indo4d",
@@ -2116,6 +2161,17 @@ const gameList = ({ langId, currencyName }) => {
 					tpCategoryId: defTpCategoryId.Lottery,
 					items: [
 						{
+							...defGameInfo.TCG,
+							img: TCG,
+							spanTextKey: "lbl_TCG",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(eventTime.tcg)
+								}
+							]
+						},
+						{
 							...defGameInfo.Indo4d,
 							img: id4d,
 							spanTextKey: "lbl_Indo4d",
@@ -2240,6 +2296,7 @@ export const defGameInfo = {
 	amb: { tpId: 30 },
 	nineW: { tpId: 31 },
 	Casino_Jili: { tpId: 32 },
+	TCG: { tpId: 33 },
 	tableGame: {
 		tpId: 1,
 		gameId: 222

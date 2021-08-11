@@ -1,5 +1,6 @@
 {
 	"-==================-==================General-==================-=====================" : "" ,  
+    "lbl_TCG" :"TCG",
     "lbl_PromotionRebateAndCashback":"Rebate / Cashback",
     "lbl_Max":"Maksimum",
     "lbl_Min":"Minimum",

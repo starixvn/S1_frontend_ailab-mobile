@@ -51,6 +51,11 @@ const defSubMenus = [
 		icon: "icon icon-kelo",
 		subItems: [
 			{
+				...defGameInfo.tcg,
+				displayKey: "lbl_tcg",
+				tpCategoryId: defTpCategoryId.Lottery
+			},
+			{
 				...defGameInfo.sabaClub,
 				displayKey: "lbl_SabaClub",
 				tpCategoryId: defTpCategoryId.Slots

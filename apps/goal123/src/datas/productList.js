@@ -17,6 +17,7 @@ import Games_SabaClub from "../styles/img/hotgame-m-new/games/sabaclub.png";
 import Games_V8Poker from "../styles/img/hotgame-m-new/games/v8poker.png";
 import Games_Keno from "../styles/img/hotgame-m-new/games/keno.png";
 import Games_Lottery from "../styles/img/hotgame-m-new/games/lottery.png";
+import Games_TCG from "../styles/img/hotgame-m-new/games/tcg.png";
 import kingMaker from "../styles/img/hotgame-m-new/games/kingmaker.png";
 
 import Fishing_Paradise from "../styles/img/hotgame-m-new/fishing/fishing-paradise.png";
@@ -105,7 +106,8 @@ export const defGameInfo = {
 	Indo4d: { gameId: 223, tpId: 1 },
 	NumberGame: { gameId: 161, tpId: 1 },
 	kingMaker: { tpId: 11 },
-	Casino_Jili: { tpId: 32 }
+	Casino_Jili: { tpId: 32 },
+	tcg: { tpId: 33 }
 };
 
 const defIconType = {
@@ -305,6 +307,18 @@ const gameList = [
 				img: Games_Lottery,
 				spanTextKey: "lbl_Lottery",
 				tpCategoryId: defTpCategoryId.Lottery
+			},
+			{
+				...defGameInfo.tcg,
+				img: Games_TCG,
+				spanTextKey: "lbl_tcg",
+				tpCategoryId: defTpCategoryId.Lottery,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.tcg)
+					}
+				]
 			}
 		]
 	},
