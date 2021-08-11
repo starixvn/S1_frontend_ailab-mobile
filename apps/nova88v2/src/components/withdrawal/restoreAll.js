@@ -66,7 +66,10 @@ const RestoreAll = ({ i18n, setLoading, GetBalance, setPopBox, isLogin }) => {
 	};
 
 	return (
-		<button className="icon icon-history clickBtn" onClick={restoreAll}>
+		<button
+			className="icon icon-history clickBtn"
+			onClick={restoreAll}
+			data-testid="restoreAll">
 			{i18n.lbl_RestoreAll}
 		</button>
 	);

@@ -43,6 +43,7 @@ const Inputbox = ({
 					className="textRight"
 					value={value}
 					onChange={onChange}
+					data-testid={`${testAttr}_ipt`}
 					maxLength={maxLength}
 				/>
 				<div className="icon-module">

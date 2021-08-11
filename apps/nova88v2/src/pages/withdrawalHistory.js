@@ -27,7 +27,6 @@ const IndexPage = props => {
 			filter={<Filter submitHandler={submitFilter} />}
 		/>
 	);
-
 	return (
 		<Layout
 			header={header}

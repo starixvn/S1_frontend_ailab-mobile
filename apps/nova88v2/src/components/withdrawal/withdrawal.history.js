@@ -21,7 +21,6 @@ const Panel = ({
 	const _isConvert = isConvert(userInfo.currencyId);
 	const [processing, setProcessing] = useState(false);
 	const isMountedRef = useRef(null);
-
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => {

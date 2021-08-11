@@ -18,7 +18,7 @@ const Inputbox = ({
 	testAttr
 }) => {
 	return (
-		<div className="inputBox">
+		<div className="inputBox" data-testid={`${testAttr}_inputBox`}>
 			{icon ? <i className={icon} /> : null}
 			<input
 				data-testid={`${testAttr}_ipt`}
@@ -56,7 +56,7 @@ Inputbox.defaultProps = {
 	btnStatus: null,
 	numberConvert: false,
 	clickInfo: () => null,
-	testAttr: ""
+	testAttr: null
 };
 
 Inputbox.propTypes = {

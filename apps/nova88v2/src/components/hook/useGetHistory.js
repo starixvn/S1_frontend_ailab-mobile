@@ -29,7 +29,6 @@ export default ({ api }) => {
 			};
 			setFilterData(transactionData);
 		}
-
 		setClickSubmit(true);
 		api({
 			...transactionData,

@@ -25,6 +25,7 @@ export default props => {
 
 	return (
 		<button
+			data-testid="refeshBtn"
 			className={`${props.className ?? "icon icon-spinner11"}${
 				props.btnActive !== false ? " clickBtn" : ""
 			}${spin ? " open" : ""}`}

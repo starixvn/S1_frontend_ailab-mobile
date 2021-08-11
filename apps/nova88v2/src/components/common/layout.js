@@ -42,7 +42,6 @@ const Layout = ({ children, header, mainClass }) => {
 			: {};
 
 	const _mainClass = mainClass ?? "";
-
 	return (
 		<>
 			<RotationHint i18n={i18n} />

@@ -56,6 +56,7 @@ export class IconDropdown extends Component {
 			<div
 				ref={this.wrapper}
 				className={`dropdown${this.state.isOpen ? " open" : ""}`}
+				data-testid={this.props.testAttr}
 				onClick={this.ClickDropdown}>
 				<a className="btn">
 					<i
@@ -80,7 +81,8 @@ IconDropdown.defaultProps = {
 	placeholder: "",
 	icon: null,
 	selectedIdx: null,
-	i18n: {}
+	i18n: {},
+	testAttr: null
 };
 
 IconDropdown.propTypes = {
@@ -90,7 +92,8 @@ IconDropdown.propTypes = {
 	mainKey: PropTypes.string,
 	selectedIdx: PropTypes.number,
 	placeholder: PropTypes.string,
-	icon: PropTypes.string
+	icon: PropTypes.string,
+	testAttr: PropTypes.string
 };
 
 const Item = props => {

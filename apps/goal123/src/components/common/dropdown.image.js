@@ -63,7 +63,8 @@ export class DropdownBox extends Component {
 			<div
 				ref={this.wrapper}
 				className={`dropdown${this.state.isOpen ? " open" : ""}`}
-				onClick={this.ClickDropdown}>
+				onClick={this.ClickDropdown}
+				data-testid={this.props.testAttr}>
 				<button className="btn">
 					<div className={this.props.className}>
 						<img src={selectedImg} alt="" />
@@ -88,7 +89,8 @@ DropdownBox.defaultProps = {
 	mainKey: "",
 	className: "",
 	i18n: {},
-	clickDropdown: null
+	clickDropdown: null,
+	testAttr: null
 };
 
 DropdownBox.propTypes = {
@@ -100,7 +102,8 @@ DropdownBox.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string),
 	ImgURL: PropTypes.string.isRequired,
 	className: PropTypes.string,
-	clickDropdown: PropTypes.func
+	clickDropdown: PropTypes.func,
+	testAttr: PropTypes.string
 };
 
 const Item = props => {

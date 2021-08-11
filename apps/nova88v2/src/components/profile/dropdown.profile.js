@@ -60,14 +60,16 @@ export class DropdownBox extends Component {
 					<div
 						className={`inputInfo ${
 							this.props.showTips ? " active" : ""
-						}`}>
+						}`}
+						data-testid={`${this.props.testAttr}_tip`}>
 						{this.props.infoText}
 					</div>
 				)}
 				<div
 					className={`inputBox ${
 						this.props.checked === false ? "error" : ""
-					}`}>
+					}`}
+					data-testid={`${this.props.testAttr}_dropdown`}>
 					{this.props.colName === "Currency" && (
 						<i className="icon icon-coin-dollar" />
 					)}
@@ -98,7 +100,9 @@ export class DropdownBox extends Component {
 						{arr}
 					</div>
 				</div>
-				<div className={`tip${this.props.warningMsg ? " active" : ""}`}>
+				<div
+					className={`tip${this.props.warningMsg ? " active" : ""}`}
+					data-testid={`${this.props.testAttr}_warningMsg`}>
 					{this.props.warningMsg}
 				</div>
 			</>
@@ -121,7 +125,8 @@ DropdownBox.defaultProps = {
 	hideInfo: false,
 	onBlur: () => null,
 	birthDayIcon: false,
-	hideTip: false
+	hideTip: false,
+	testAttr: null
 };
 
 DropdownBox.propTypes = {
@@ -142,7 +147,8 @@ DropdownBox.propTypes = {
 	hideInfo: PropTypes.bool,
 	onBlur: PropTypes.func,
 	birthDayIcon: PropTypes.bool,
-	hideTip: PropTypes.bool
+	hideTip: PropTypes.bool,
+	testAttr: PropTypes.string
 };
 
 const Item = props => {

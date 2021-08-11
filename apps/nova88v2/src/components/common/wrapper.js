@@ -28,6 +28,7 @@ export const Wrapper = ({ children }) => {
 		hasBtn: false,
 		btnBar: null
 	});
+
 	const [nav, setNav] = useState(null);
 	const [walletInfo, setWalletInfo] = useState({
 		main: null
