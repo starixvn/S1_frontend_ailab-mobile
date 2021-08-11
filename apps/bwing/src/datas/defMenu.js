@@ -11,6 +11,7 @@ import game_Lottery from "../styles/img/lottery/lottery-lottery.png";
 import game_One789Lottery from "../styles/img/lottery/lottery-789.png";
 import traditionalLottery from "../styles/img/lottery/lottery-tl.png";
 import game_V8Poker from "../styles/img/lottery/lottery-v8poker.png";
+import game_tcg from "../styles/img/lottery/lottery-TCG.png";
 
 import fishing_GG from "../styles/img/fish/fish-fworld.png";
 import fishing_SG from "../styles/img/fish/fish-fg.png";
@@ -90,6 +91,18 @@ export const productList = langId => {
 			displayKey: "lbl_Games",
 			path: path.games.root,
 			items: [
+				{
+					displayKey: "lbl_tcg",
+					img: game_tcg,
+					...defGameInfo.tcg,
+					tpCategoryId: defTpCategoryId.Lottery,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.tcg)
+						}
+					]
+				},
 				{
 					displayKey: "lbl_V8Poker",
 					img: game_V8Poker,
