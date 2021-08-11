@@ -80,7 +80,8 @@ export const defGameInfo = {
 		gameId: "AT04"
 	},
 	kingMaker: { tpId: 11 },
-	Casino_Jili: { tpId: 32 }
+	Casino_Jili: { tpId: 32 },
+	tcg: { tpId: 33 }
 };
 
 const gameList = langId => [
@@ -142,6 +143,11 @@ const gameList = langId => [
 				...defGameInfo.lottery,
 				icon: "lottery",
 				spanTextKey: "lbl_Lottery"
+			},
+			{
+				...defGameInfo.tcg,
+				icon: "tcg",
+				spanTextKey: "lbl_tcg"
 			}
 		]
 	},
