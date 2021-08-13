@@ -4,20 +4,13 @@ import Footer from "../components/common/footer";
 import path from "../path";
 import { Link } from "../route/link";
 import toHomeLogo from "../styles/img/app/applogo.png";
-import iosQRCode from "../styles/img/app/ios_en.png";
 import iosLogo from "../styles/img/app/ios.png";
-import androidQRCode from "../styles/img/app/android_en.png";
 import androidLogo from "../styles/img/app/and.png";
 import iosIcon from "../styles/img/app/iosicon.png";
 import tutorial1 from "../styles/img/app/in01.png";
 import tutorial2 from "../styles/img/app/in02.png";
 import tutorial3 from "../styles/img/app/in03.png";
 import tutorial4 from "../styles/img/app/in04.png";
-
-const defPhoneType = {
-	ios: "ios",
-	android: "android"
-};
 
 const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
@@ -36,14 +29,17 @@ const IndexPage = () => {
 						<div className="scan">
 							<div>
 								<div>
-									<img src={iosQRCode} alt="IOS QRCode" />
+									<img
+										src="https://image.n88media.com/SiteSkin/img/ios_qr.png"
+										alt="IOS QRCode"
+									/>
 									<div>
 										<div>
 											<img src={iosLogo} alt="IOS" />
 											{i18n.lbl_iOS}
 										</div>
 										<a
-											href="https://nova.appdlweb.com"
+											href="https://nova.jsybyny.com"
 											target="_blank"
 											rel="noreferrer noopener">
 											<button>
@@ -54,7 +50,7 @@ const IndexPage = () => {
 								</div>
 								<div>
 									<img
-										src={androidQRCode}
+										src="https://image.n88media.com/SiteSkin/img/android_qr.png"
 										alt="Android QRCode"
 									/>
 									<div>
