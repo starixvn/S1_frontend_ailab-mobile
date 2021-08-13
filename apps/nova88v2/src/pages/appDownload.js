@@ -11,6 +11,7 @@ import tutorial1 from "../styles/img/app/in01.png";
 import tutorial2 from "../styles/img/app/in02.png";
 import tutorial3 from "../styles/img/app/in03.png";
 import tutorial4 from "../styles/img/app/in04.png";
+import { cloudImgURL } from "../config";
 
 const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
@@ -30,7 +31,7 @@ const IndexPage = () => {
 							<div>
 								<div>
 									<img
-										src="https://image.n88media.com/SiteSkin/img/ios_qr.png"
+										src={`${cloudImgURL}/SiteSkin/img/ios_qr.png`}
 										alt="IOS QRCode"
 									/>
 									<div>
@@ -50,7 +51,7 @@ const IndexPage = () => {
 								</div>
 								<div>
 									<img
-										src="https://image.n88media.com/SiteSkin/img/android_qr.png"
+										src={`${cloudImgURL}/SiteSkin/img/android_qr.png`}
 										alt="Android QRCode"
 									/>
 									<div>

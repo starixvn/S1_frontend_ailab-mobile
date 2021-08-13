@@ -7,7 +7,7 @@ export const FooterBanner = ({ langId, openJoinPop }) => {
 	return (
 		<div className="vipBanner" onClick={openJoinPop}>
 			<img
-				src={`https://image.n88media.com/VIP/img/${_langId}/vip_program_${_langId}.jpg`}
+				src={`https://image.0814media.net/VIP/img/${_langId}/vip_program_${_langId}.jpg`}
 				alt="VIP Programme"
 			/>
 		</div>

@@ -113,7 +113,7 @@ const IndexPage = () => {
 						isOpen: true,
 						content: (
 							<img
-								src={`https://image.n88media.com/SiteSkin/img/euro/EURO-RACE-MONTHLY-WINNERS-${_langId.toUpperCase()}.jpg`}
+								src={`https://image.0814media.net/SiteSkin/img/euro/EURO-RACE-MONTHLY-WINNERS-${_langId.toUpperCase()}.jpg`}
 								alt="winner"
 							/>
 						)
@@ -135,7 +135,7 @@ const IndexPage = () => {
 					isOpen: true,
 					content: (
 						<img
-							src={`https://banner.n88media.com/img/nonlogin/novapopup-380x100_${_langId}.jpg`}
+							src={`https://banner.0814media.net/img/nonlogin/novapopup-380x100_${_langId}.jpg`}
 							alt="OfficialAnnounce"
 						/>
 					),

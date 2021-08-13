@@ -4663,7 +4663,14 @@ button.clickBtn:before {
   z-index: 1;
   font-weight: bold;
   color: #F77A00;
-  text-shadow: 1px 0px 0px white, -1px 0px 0px white, 0px 1px 0px white, 0px -1px 0px white, 1px -1px 0px white, 1px 1px 0px white, -1px 1px 0px white, -1px -1px 0px white;
+  text-shadow: 1px 0px 0px white,
+ -1px 0px 0px white,
+ 0px 1px 0px white,
+ 0px -1px 0px white,
+ 1px -1px 0px white,
+ 1px 1px 0px white,
+ -1px 1px 0px white,
+ -1px -1px 0px white;
 }
 
 .casino .slotList .info span.icon {
@@ -6367,7 +6374,7 @@ span.important {
 }
 
 .rankingEuro {
-  background: url(https://image.n88media.com/SiteSkin/img/body-bg.jpg) no-repeat top center/auto 100%;
+  background: url(https://image.0814media.net/SiteSkin/img/body-bg.jpg) no-repeat top center/auto 100%;
   height: calc(100% - 45vw);
   padding: 25vw 4vw 20vw;
 }
@@ -6971,7 +6978,7 @@ span.important {
   width: -webkit-min-content;
   width: -moz-min-content;
   width: min-content;
-  background: url(https://image.n88media.com/VIP/img/vipbg.png?v=89af371e) no-repeat center/100% auto;
+  background: url(https://image.0814media.net/VIP/img/vipbg.png?v=89af371e) no-repeat center/100% auto;
   padding-top: 10vw;
 }
 
@@ -8189,7 +8196,7 @@ span.important {
   z-index: -1;
 }
 
-.upcomingmatches .swiper-slide .teamNew > img + img[src="https://img.n88media.com/Sports/Olympics Tokyo/olympic_logo.png"] + div > div.teamL > div:nth-child(1):before, .upcomingmatches .swiper-slide .teamNew > img + img[src="https://img.n88media.com/Sports/Olympics Tokyo/olympic_logo.png"] + div > div.teamL > div:nth-child(1):after, .upcomingmatches .swiper-slide .teamNew > img + img[src="https://img.n88media.com/Sports/Olympics Tokyo/olympic_logo.png"] + div > div.teamR > div:nth-child(1):before, .upcomingmatches .swiper-slide .teamNew > img + img[src="https://img.n88media.com/Sports/Olympics Tokyo/olympic_logo.png"] + div > div.teamR > div:nth-child(1):after {
+.upcomingmatches .swiper-slide .teamNew > img + img[src="https://img.0814media.net/Sports/Olympics Tokyo/olympic_logo.png"] + div > div.teamL > div:nth-child(1):before, .upcomingmatches .swiper-slide .teamNew > img + img[src="https://img.0814media.net/Sports/Olympics Tokyo/olympic_logo.png"] + div > div.teamL > div:nth-child(1):after, .upcomingmatches .swiper-slide .teamNew > img + img[src="https://img.0814media.net/Sports/Olympics Tokyo/olympic_logo.png"] + div > div.teamR > div:nth-child(1):before, .upcomingmatches .swiper-slide .teamNew > img + img[src="https://img.0814media.net/Sports/Olympics Tokyo/olympic_logo.png"] + div > div.teamR > div:nth-child(1):after {
   background: rgba(255, 0, 0, 0.3);
 }
 

@@ -5,7 +5,7 @@ const siteName = "Nova88";
 export const siteId = 1;
 
 export const errorPageUrl = langId =>
-	`https://error.n88media.com/404/index_${validImgLang(langId)}.html`;
+	`https://error.0814media.net/404/index_${validImgLang(langId)}.html`;
 
 const getAffiliate = langId => {
 	if (typeof window === `undefined`) return "";
@@ -30,7 +30,7 @@ export const siteInfo = langId => {
 		// siteCountryList: ["MY", "TH", "ID", "HI"],
 		siteLangList: ["en", "cs", "th_en", "th", "id_en", "id"],
 		siteCountryList: ["MY", "CS", "TH", "ID"],
-		logo: "https://image.n88media.com/SiteSkin/img/logo.png",
+		logo: "https://image.0814media.net/SiteSkin/img/logo.png",
 		description:
 			"Nova88 is the world leading sportsbook offering one of the kind gambling experience in live betting covering all sports, casino, slots, keno, esports, rng casino, fantasy sports, virtual sports, lottery, live casino, live dealer, bingo, and racing.",
 		iosIcon: "Nova88_256_2.png",
@@ -52,12 +52,12 @@ export const siteInfo = langId => {
 			}
 		},
 		staticPromotions:
-			"https://image.n88media.com/NovaPromotion/promotionList.json"
+			"https://image.0814media.net/NovaPromotion/promotionList.json"
 	};
 };
 
-const cloudImgURL = "https://image.n88media.com";
-export const cloudBannerImgURL = "https://banner.n88media.com";
+export const cloudImgURL = "https://image.0814media.net";
+export const cloudBannerImgURL = "https://banner.0814media.net";
 
 const SiteURL =
 	process.env.NODE_ENV === "production"

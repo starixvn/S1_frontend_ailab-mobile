@@ -69,7 +69,7 @@ const HotGame = ({ i18n, userInfo }) => {
 		return (
 			<div key={`hotGame-${game.name}`} className="hotGamModule">
 				<img
-					src={`https://banner.n88media.com/img/hotgame/${game.imgUrl}.jpg`}
+					src={`https://banner.0814media.net/img/hotgame/${game.imgUrl}.jpg`}
 					alt={game.name}
 				/>
 				<div>{game.name}</div>

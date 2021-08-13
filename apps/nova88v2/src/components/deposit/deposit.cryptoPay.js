@@ -5,7 +5,7 @@ import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
 import PageVerify from "./deposit.pageVerify";
-import config from "../../config";
+import config, { cloudImgURL } from "../../config";
 import { isConvert, number_format } from "../common/common";
 import { useHandleAmount } from "../hook/useHandleAmount";
 import path from "../../path";
@@ -154,7 +154,7 @@ const Main = props => {
 				mainKey="deposit-full-cryptoPay-groupList"
 				imgKey="payName"
 				idKey="groupId"
-				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/Payment/`}
+				prefixImgUrl={`${cloudImgURL}/SiteSkin/img/Payment/`}
 				displayKey="payName"
 				_isConvert={_isConvert}
 				showMinMaxHint={true}
