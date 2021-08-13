@@ -120,6 +120,11 @@ const gameList = langId => [
 		translateKey: "lbl_Games",
 		items: [
 			{
+				...defGameInfo.tcg,
+				icon: "tcg",
+				spanTextKey: "lbl_tcg"
+			},
+			{
 				...defGameInfo.sabaClub,
 				icon: "game",
 				spanTextKey: "lbl_SabaClub"
@@ -143,11 +148,6 @@ const gameList = langId => [
 				...defGameInfo.lottery,
 				icon: "lottery",
 				spanTextKey: "lbl_Lottery"
-			},
-			{
-				...defGameInfo.tcg,
-				icon: "tcg",
-				spanTextKey: "lbl_tcg"
 			}
 		]
 	},

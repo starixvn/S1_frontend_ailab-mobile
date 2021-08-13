@@ -273,6 +273,18 @@ const gameList = [
 		img: Menu_Games,
 		items: [
 			{
+				...defGameInfo.tcg,
+				img: Games_TCG,
+				spanTextKey: "lbl_tcg",
+				tpCategoryId: defTpCategoryId.Lottery,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.tcg)
+					}
+				]
+			},
+			{
 				...defGameInfo.sabaClub,
 				img: Games_SabaClub,
 				spanTextKey: "lbl_SabaClub",
@@ -307,18 +319,6 @@ const gameList = [
 				img: Games_Lottery,
 				spanTextKey: "lbl_Lottery",
 				tpCategoryId: defTpCategoryId.Lottery
-			},
-			{
-				...defGameInfo.tcg,
-				img: Games_TCG,
-				spanTextKey: "lbl_tcg",
-				tpCategoryId: defTpCategoryId.Lottery,
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.tcg)
-					}
-				]
 			}
 		]
 	},
