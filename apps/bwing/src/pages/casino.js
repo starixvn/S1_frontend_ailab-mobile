@@ -42,8 +42,8 @@ class Panel extends React.Component {
 			favorite: [],
 			selNav: Object.keys(defNav)?.[this.props.selNavIdx ?? 0],
 			imgUrl: "",
-			selProvider: {},
-			filteredPlatForm: []
+			selProvider: this.props.tpId ?? {},
+			sorted: []
 		};
 	}
 
@@ -54,6 +54,7 @@ class Panel extends React.Component {
 		window.addEventListener("touchmove", this.ScrollBarListener, {
 			passive: false
 		});
+		const sort = [];
 		api_Site_GetGameListByDevice().then(res => {
 			if (res.data.errorCode === 0) {
 				const _tpList = {};
@@ -85,17 +86,23 @@ class Panel extends React.Component {
 				if (this.mounted) {
 					const nav = defNav.ALLGAMES.key;
 					const _tplistArr = Object.keys(_tpList);
-					const _platForm = slotPlatform.filter(el =>
-						_tplistArr.includes(el.tpId.toString())
-					);
+					slotPlatform.forEach(el => {
+						if (_tplistArr.indexOf(el.tpId.toString()) > -1) {
+							if (el.tpId === this.props.tpId) {
+								sort.unshift(el);
+							} else if (el.imgName) {
+								sort.push(el);
+							}
+						}
+					});
 					this.setState(
 						{
-							filteredPlatForm: _platForm,
+							sorted: sort,
 							tpList: _tpList,
+							selProvider: this.props.tpId,
 							gameDatas: games,
 							selNav: this.props.selNav ?? nav,
-							imgUrl,
-							selProvider: this.props.tpId
+							imgUrl
 						},
 						() => this.SetMoreItems()
 					);
@@ -376,7 +383,7 @@ class Panel extends React.Component {
 					<GameProviders
 						selNav={this.state.selProvider}
 						SelectNav={this.SelectProvider}
-						slotPlatform={this.state.filteredPlatForm}
+						sorted={this.state.sorted}
 					/>
 				</div>
 				<Nav selNav={this.state.selNav} SelectNav={this.SelectNav} />

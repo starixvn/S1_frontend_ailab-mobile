@@ -3,8 +3,8 @@ import { userInfoContext, i18nContext, navContext, defNavPanel } from "Context";
 import {
 	useMatch,
 	useNavigate,
-	useLocation,
-	globalHistory
+	globalHistory,
+	useLocation
 } from "@reach/router";
 import { Link } from "@Router";
 import useTip from "../hook/useTip";
@@ -30,8 +30,8 @@ const initWarningState = {
 };
 
 const LoginPage = () => {
-	const { state } = useLocation();
 	const navigate = useNavigate();
+	const { state } = useLocation();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { nav, setNav } = useContext(navContext);
@@ -40,20 +40,13 @@ const LoginPage = () => {
 	const [warningState, setWarningState] = useState(initWarningState);
 	const isMountedRef = useRef(null);
 	const { showTips, showTipHandler } = useTip();
+
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => {
 			isMountedRef.current = false;
 		};
 	});
-
-	useEffect(() => {
-		if (previousPage) {
-			localStorage.setItem("previousPage", previousPage);
-		}
-	}, [globalHistory]);
-
-	const previousPage = state?.previousPage ?? `/${userInfo.langId}`;
 
 	const checkValueHandler = (colName, e) => {
 		let flag = "";

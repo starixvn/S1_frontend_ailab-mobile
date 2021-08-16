@@ -16,8 +16,6 @@ const JoinStepAll = () => {
 	const [userValue, setUserValue] = useState(initValue);
 	const [hintStatus, setHintStatus] = useState(initStatus);
 
-	const previousPage = state?.previousPage ?? `/${userInfo.langId}`;
-
 	const helmet = GetMetaDataByPage({
 		path: path.join.root,
 		langId: userInfo.langId
@@ -28,12 +26,6 @@ const JoinStepAll = () => {
 			navigate(`/${userInfo.langId}`);
 		}
 	}, []);
-
-	useEffect(() => {
-		if (previousPage) {
-			localStorage.setItem("previousPage", previousPage);
-		}
-	}, [globalHistory]);
 
 	const EditField = (col, e) => {
 		const val = e.target.value;
