@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { useNavigate } from "@reach/router";
+import { useNavigate, useLocation } from "@reach/router";
 import { Link } from "../../route/link";
 import { userInfoContext, i18nContext } from "../common/context";
 import path from "../../path";
@@ -8,8 +8,10 @@ import Login from "../login/login";
 import Logo from "../common/logo";
 
 const Modal = ({ isLogin, isJoin }) => {
-	const { i18n } = useContext(i18nContext);
+	const { state } = useLocation();
 	const { userInfo } = useContext(userInfoContext);
+	const previousPage = state?.previousPage ?? `/${userInfo.langId}`;
+	const { i18n } = useContext(i18nContext);
 	const navigate = useNavigate();
 	const content = isJoin ? (
 		<Join showModal={isJoin} />
@@ -28,7 +30,7 @@ const Modal = ({ isLogin, isJoin }) => {
 			<button
 				data-testid="close_join_modal_btn"
 				onClick={() =>
-					navigate(localStorage.getItem("previousPage"), {
+					navigate(previousPage, {
 						state: { fromModal: true }
 					})
 				}>
@@ -40,10 +42,14 @@ const Modal = ({ isLogin, isJoin }) => {
 				<div
 					className={`switchLogin${isLogin ? " active" : ""}`}
 					data-testid="switch_login_btn">
-					<Link to={path.login.root}>{i18n.lbl_Login}</Link>
+					<Link to={path.login.root} state={{ previousPage }}>
+						{i18n.lbl_Login}
+					</Link>
 				</div>
 				<div className={`switchJoin${isJoin ? " active" : ""}`}>
-					<Link to={path.join.root}>{i18n.lbl_JoinNow}</Link>
+					<Link to={path.join.root} state={{ previousPage }}>
+						{i18n.lbl_JoinNow}
+					</Link>
 				</div>
 			</button>
 			{content}

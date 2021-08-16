@@ -34,14 +34,14 @@ const BtnBar = ({ isLogin, i18n, msgCount, langId }) => {
 	) : (
 		<div className="tag">
 			<Link
-				to={path.join.root}
-				state={{ previousPage: `/${langId}/setting` }}>
+				state={{ previousPage: `/${langId}/setting` }}
+				to={path.join.root}>
 				{i18n.lbl_JoinNow}
 			</Link>
 			<i />
 			<Link
-				to={path.login.root}
-				state={{ previousPage: `/${langId}/setting` }}>
+				state={{ previousPage: `/${langId}/setting` }}
+				to={path.login.root}>
 				{i18n.lbl_Login}
 			</Link>
 		</div>

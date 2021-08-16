@@ -292,7 +292,6 @@ class Panel extends React.Component {
 		if (this.mounted) {
 			this.setState({ selGameInfo: null });
 		}
-		localStorage.removeItem("previousPage");
 		localStorage.removeItem("prevScreen");
 	};
 

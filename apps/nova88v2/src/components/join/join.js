@@ -27,7 +27,7 @@ import { Link } from "../../route/link";
 
 const Join = ({ initSiteCurrency = [] }) => {
 	const navigate = useNavigate();
-	const state = useLocation();
+	const { state } = useLocation();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -35,7 +35,6 @@ const Join = ({ initSiteCurrency = [] }) => {
 	const [userValue, setUserValue] = useState(initValue);
 
 	const [siteCurrency, setSiteCurrencyState] = useState(initSiteCurrency);
-
 	const [status, setStatus] = useState(initStatus);
 	const [pswState, setPswState] = useState(false);
 	const [banner, setBanner] = useState([]);
@@ -75,12 +74,6 @@ const Join = ({ initSiteCurrency = [] }) => {
 		}
 		setAreaCodeIdx(1);
 	}, []);
-
-	useEffect(() => {
-		if (state.state?.fromHeader) {
-			localStorage.setItem("previousPage", "/");
-		}
-	}, [globalHistory]);
 
 	useEffect(() => {
 		const refId = getCookie("RefId");

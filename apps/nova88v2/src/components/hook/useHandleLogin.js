@@ -24,7 +24,6 @@ const useHandleLogin = () => {
 		searchInfo,
 		selNav
 	} = {}) => {
-		localStorage.setItem("previousPage", currentPages());
 		const prevScreen = {
 			selGameInfo,
 			selProvider,
@@ -38,7 +37,9 @@ const useHandleLogin = () => {
 			localStorage.setItem("prevScreen", JSON.stringify(prevScreen));
 		}
 
-		navigate(`/${userInfo.langId}/${path.login.root}`);
+		navigate(`/${userInfo.langId}/${path.login.root}`, {
+			state: { previousPage: currentPages() }
+		});
 	};
 
 	return { handleLogin };

@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import config from "../../config";
 
 const GameProviders = props => {
-	const { selNav, SelectNav, slotPlatform } = props;
-	const rows = slotPlatform.map(k => {
+	const { selNav, SelectNav, sorted } = props;
+	const rows = sorted.map(k => {
 		return (
 			<button
 				key={`casino-nav-${k.tpId}`}
