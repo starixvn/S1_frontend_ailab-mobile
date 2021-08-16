@@ -6,7 +6,7 @@ import {
 	popBoxContext,
 	loadingContext
 } from "../common/context";
-import config from "../../config";
+import config, { cloudImgURL } from "../../config";
 import { isConvert, number_format } from "../common/common";
 import api from "../../service/api";
 import GroupList from "./deposit.groupList";
@@ -248,9 +248,7 @@ const Payment = props => {
 							<p>{i18n.lbl_ConfirmDeposit}</p>
 							<img
 								className="bankimg"
-								src={`${
-									config.cloudImgURL
-								}/SiteSkin/img/BankLogo/${bankLogo?.toLowerCase()}`}
+								src={`${cloudImgURL}/SiteSkin/img/BankLogo/${bankLogo?.toLowerCase()}`}
 								alt={bankName}
 							/>
 							<div>
@@ -304,7 +302,7 @@ const Payment = props => {
 				mainKey={`deposit-full-${payType}-groupList`}
 				imgKey="payName"
 				idKey="payId"
-				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/Payment/`}
+				prefixImgUrl={`${cloudImgURL}/SiteSkin/img/Payment/`}
 				bindFullObj={true}
 				displayKey="payName"
 				showMinMaxHint={true}
@@ -320,7 +318,7 @@ const Payment = props => {
 				imgKey="bankLogo"
 				idKey="sysId"
 				bindFullObj={true}
-				prefixImgUrl={`${config.cloudImgURL}/SiteSkin/img/BankLogo/`}
+				prefixImgUrl={`${cloudImgURL}/SiteSkin/img/BankLogo/`}
 				imgKeyWithExtension={true}
 				bindingItem={selGroup}
 				displayKey="bankName"

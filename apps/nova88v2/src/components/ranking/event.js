@@ -4,7 +4,7 @@ import { defEuroTourBtns } from "./def";
 import BtnBar from "../common/btnBar";
 import { useHandleSelect } from "./hook";
 import PrizeList from "./prize";
-import config from "../../config";
+import { cloudImgURL } from "../../config";
 
 const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
 	const { selected, handleSelect } = useHandleSelect({
@@ -38,7 +38,7 @@ const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
 			<PrizeList userInfo={userInfo} category={selected} i18n={i18n} />
 			<div className="btn-group">
 				<a
-					href={`${config.cloudImgURL}/NovaPromotion/UEFAEuro/${userInfo.langId}.html`}
+					href={`${cloudImgURL}/NovaPromotion/UEFAEuro/${userInfo.langId}.html`}
 					target="_blank"
 					rel="noreferrer"
 					className="orange openPopup">

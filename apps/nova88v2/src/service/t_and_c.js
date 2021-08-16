@@ -1,4 +1,4 @@
-import config from "../config";
+import config, { cloudImgURL } from "../config";
 
 export default langId => {
 	return {
@@ -13,8 +13,6 @@ export default langId => {
 		AboutUs: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/AboutUs.html`,
 		Terms: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/Terms.html`,
 		ContactUs: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/ContactUs.html`,
-		Referral: `${
-			config.cloudImgURL
-		}/NovaPromotion/referral/${langId.toUpperCase()}.html`
+		Referral: `${cloudImgURL}/NovaPromotion/referral/${langId.toUpperCase()}.html`
 	};
 };
