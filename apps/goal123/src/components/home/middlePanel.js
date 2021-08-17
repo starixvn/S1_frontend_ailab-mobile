@@ -5,14 +5,16 @@ import AppDownloadImg from "../../styles/img/downloadbg.png";
 import IOS from "../../styles/img/iosicon.png";
 import Android from "../../styles/img/androidicon.png";
 import VIP from "../../styles/img/vipimgb.jpg";
-import Ranking from "../../styles/img/rankingimg.jpg";
 import TandC from "../../service/t_and_c";
 import path from "../../path";
 
 const APPDownloadLink = {
 	Android:
 		"https://mars.fadatsai88.com/v1/App?path=goal123entry_sports_android.apk",
-	IOS: "https://www.aso008.com/aeFHM7"
+	IOS: {
+		en: "https://www.aso008.com/aeFHM7",
+		vn: "https://www.aso.cool/PFwm"
+	}
 };
 
 const MiddlePanel = ({ langId, i18n }) => {
@@ -33,7 +35,7 @@ const MiddlePanel = ({ langId, i18n }) => {
 					href={TandC(langId).AppDownload}>
 					<img src={AppDownloadImg} alt="APP Download" />
 				</a>
-				<a href={APPDownloadLink.IOS}>
+				<a href={APPDownloadLink.IOS[langId] ?? ""}>
 					<button>
 						<img src={IOS} alt="IOS" />
 						IOS
