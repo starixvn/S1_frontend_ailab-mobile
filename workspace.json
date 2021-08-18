@@ -199,7 +199,10 @@
 					"builder": "@nrwl/workspace:run-commands",
 					"outputs": ["dist/apps/goal123"],
 					"options": {
-						"command": "node ../../node_modules/react-app-rewired/bin/index.js build",
+						"commands":[
+							"(git rev-parse HEAD & git rev-parse --abbrev-ref HEAD & git config user.name) > public/rnt.txt",
+							"node ../../node_modules/react-app-rewired/bin/index.js build"
+						],
 						"cwd": "apps/goal123"
 					}
 				},
@@ -265,7 +268,10 @@
 					"builder": "@nrwl/workspace:run-commands",
 					"outputs": ["dist/apps/bwing"],
 					"options": {
-						"command": "node ../../node_modules/react-app-rewired/bin/index.js build",
+						"commands": [
+							"(git rev-parse HEAD & git rev-parse --abbrev-ref HEAD & git config user.name) > public/rnt.txt",
+							"node ../../node_modules/react-app-rewired/bin/index.js build"
+						],
 						"cwd": "apps/bwing"
 					}
 				},
@@ -440,7 +446,10 @@
 					"builder": "@nrwl/workspace:run-commands",
 					"outputs": ["dist/apps/nova88v2"],
 					"options": {
-						"command": "node ../../node_modules/react-app-rewired/bin/index.js build",
+						"commands":[
+							"(git rev-parse HEAD & git rev-parse --abbrev-ref HEAD & git config user.name) > public/rnt.txt",
+							"node ../../node_modules/react-app-rewired/bin/index.js build"
+						],
 						"cwd": "apps/nova88v2"
 					}
 				},
