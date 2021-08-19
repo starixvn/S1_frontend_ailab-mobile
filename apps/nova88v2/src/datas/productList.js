@@ -2290,7 +2290,7 @@ export const defGameInfo = {
 	oneGame: { tpId: 13 },
 	sabaClub: {
 		tpId: 1,
-		gameId: 200
+		gameId: 171
 	},
 	kingMaker: { tpId: 11 },
 	amb: { tpId: 30 },

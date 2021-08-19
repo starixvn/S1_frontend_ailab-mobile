@@ -148,6 +148,34 @@ html {
   left: calc(50% - 3px);
 }
 
+@media screen and (min-width: 690px) and (max-width: 769px) {
+  .close.open span:nth-child(1) {
+    top: -6px;
+  }
+  .close.open span:nth-child(2) {
+    top: -6px;
+    left: calc(50% - 7px);
+  }
+  .close.open span:nth-child(6) {
+    top: 9px;
+    left: calc(50% - 7px);
+  }
+}
+
+@media screen and (min-width: 550px) and (max-width: 691px) {
+  .close.open span:nth-child(1) {
+    top: -5px;
+  }
+  .close.open span:nth-child(2) {
+    top: -5px;
+    left: calc(50% - 7px);
+  }
+  .close.open span:nth-child(6) {
+    top: 9px;
+    left: calc(50% - 7px);
+  }
+}
+
 header {
   position: fixed;
   top: 0;
@@ -193,6 +221,18 @@ header > div .logo {
 
 header > div .logo img {
   width: 100%;
+}
+
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  header > div .logo img {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  header > div .logo {
+    padding: 0 5vw 0 0;
+  }
 }
 
 header > div .Join,
@@ -504,6 +544,12 @@ header > div .headerBtnOut .icon-chat .amount {
   padding: 0.5vw;
 }
 
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  header > div .headerBtnOut button {
+    font-size: 16px;
+  }
+}
+
 header > div .headerBtnIn {
   color: #eaa378;
   -webkit-box-align: center;
@@ -556,6 +602,25 @@ header > div .headerBtnIn .icon .amount {
   -webkit-transform: scale(0.7);
           transform: scale(0.7);
   padding: 0.5vw;
+}
+
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  header > div .headerBtnIn .icon .amount {
+    width: 4vw;
+    height: 4vw;
+    margin-top: -7vw;
+    margin-left: 1vw;
+    font-size: 2vw;
+  }
+}
+
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  header > div .headerBtnIn {
+    font-size: 16px;
+  }
+  header > div .headerBtnIn img {
+    width: 45px;
+  }
 }
 
 main {
@@ -659,6 +724,13 @@ main #Marquee > div.open {
           animation-iteration-count: infinite;
 }
 
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  main #Marquee {
+    border-radius: 30px;
+    font-size: 16px;
+  }
+}
+
 main .sideBarNew {
   width: 100%;
   position: relative;
@@ -675,6 +747,12 @@ main .sideBarNew::before {
   right: 0%;
   z-index: 2;
   pointer-events: none;
+}
+
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  main .sideBarNew::before {
+    height: 100px;
+  }
 }
 
 main .sideBarNew div {
@@ -729,6 +807,16 @@ main .sideBarNew div > button::before {
 
 main .sideBarNew div > button img {
   width: 35px;
+}
+
+@media screen and (min-width: 425px) and (max-width: 769px) {
+  main .sideBarNew div > button {
+    width: 20%;
+    height: 100px;
+  }
+  main .sideBarNew div > button img {
+    width: 50px;
+  }
 }
 
 @-webkit-keyframes newicon {
@@ -1796,6 +1884,12 @@ main.statementPage {
   word-break: break-all;
 }
 
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  .mainNew .walletBox > div.side-info {
+    font-size: 16px;
+  }
+}
+
 .mainNew .walletBox > div.content {
   width: 55%;
   display: -webkit-box;
@@ -1834,6 +1928,12 @@ main.statementPage {
   line-height: 13px;
 }
 
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  .mainNew .walletBox > div > a {
+    font-size: 14px;
+  }
+}
+
 .mainNew .hotevent {
   width: 100%;
   height: 23vw;
@@ -1862,6 +1962,13 @@ main.statementPage {
   top: 3%;
 }
 
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  .mainNew .hotevent .hotDiv h1 {
+    font-size: 16px;
+    top: 5.5%;
+  }
+}
+
 .mainNew .hotevent .hotDiv > div {
   position: relative;
   width: 40%;
@@ -1876,6 +1983,12 @@ main.statementPage {
           align-items: center;
   color: #fff;
   font-size: 12px;
+}
+
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  .mainNew .hotevent .hotDiv > div {
+    font-size: 16px;
+  }
 }
 
 .mainNew .hotevent .hotDiv > div.time {
@@ -1895,6 +2008,12 @@ main.statementPage {
   white-space: nowrap;
 }
 
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  .mainNew .hotevent .hotDiv > div.time {
+    top: 56%;
+  }
+}
+
 .mainNew .hotevent .hotDiv > div.odds {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1902,6 +2021,12 @@ main.statementPage {
   width: 100%;
   position: absolute;
   bottom: 1%;
+}
+
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  .mainNew .hotevent .hotDiv > div.odds {
+    bottom: 4%;
+  }
 }
 
 .mainNew .hotevent .hotDiv > div.odds > div {
@@ -1957,7 +2082,13 @@ main.statementPage {
 }
 
 .mainNew .hotevent .hotDiv > div.btn a, .mainNew .hotevent .hotDiv > div.btn button {
-  font-size: 10px;
+  font-size: 2.6vw;
+}
+
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  .mainNew .hotevent .hotDiv > div.btn a, .mainNew .hotevent .hotDiv > div.btn button {
+    font-size: 2.4vw;
+  }
 }
 
 .mainNew .hotevent .hotDiv .teamL {
@@ -1981,6 +2112,14 @@ main.statementPage {
   white-space: nowrap;
   overflow: hidden;
   text-align: center;
+}
+
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  .mainNew .hotevent .hotDiv .teamL p {
+    top: 2%;
+    right: 6%;
+    width: 100px;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -2029,6 +2168,14 @@ main.statementPage {
   white-space: nowrap;
   overflow: hidden;
   text-align: center;
+}
+
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  .mainNew .hotevent .hotDiv .teamR p {
+    top: 2%;
+    left: 6%;
+    width: 100px;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -2128,6 +2275,12 @@ main.statementPage {
   border-radius: 0 0 5px 5px;
 }
 
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  .mainNew .gameBox > div .gamelistNew .game .title {
+    font-size: 16px;
+  }
+}
+
 .mainNew .gameBox > div .gamelistNew .game.active {
   -webkit-filter: grayscale(1);
           filter: grayscale(1);
@@ -2145,6 +2298,12 @@ main.statementPage {
   font-size: 10px;
   background-color: #272727;
   color: #fff;
+}
+
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  .mainNew .gameBox > div .gamelistNew .game.active .maintenance {
+    left: 4vw;
+  }
 }
 
 .mainNew .gameBox > div .gamelistNew .game .maintenance {
@@ -2274,8 +2433,10 @@ main.statementPage {
   color: #fff;
 }
 
-.mainNew .partner .bong88 img {
-  width: 20%;
+@media screen and (min-width: 600px) and (max-width: 769px) {
+  .mainNew .partner {
+    height: 24vh;
+  }
 }
 
 .main {
@@ -3823,6 +3984,12 @@ button.clickBtn:before {
   background: #1e85ec;
 }
 
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  .filterBtn button {
+    font-size: 16px;
+  }
+}
+
 .search {
   width: calc(100% - 10vw);
   padding: 2vw 0 2vw 8vw;
@@ -3852,46 +4019,6 @@ button.clickBtn:before {
   width: -webkit-min-content;
   width: -moz-min-content;
   width: min-content;
-}
-
-.slotFunction {
-  position: fixed;
-  bottom: 0;
-  -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
-          box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
-  padding: 2vw 2vw 20vw;
-  border-radius: 10px;
-  width: calc(100% - 4vw);
-  left: 0;
-  background: #f0eff5;
-  visibility: hidden;
-  -webkit-transition: 0.7s;
-  transition: 0.7s;
-  opacity: 0;
-  z-index: 1;
-}
-
-.slotFunction .icon-cancel-circle {
-  position: absolute;
-  right: 2vw;
-  top: 2vw;
-  color: #333;
-}
-
-.slotFunction .text-org {
-  font-size: 5vw;
-  margin: 2vw 0 3vw;
-}
-
-.slotFunction.open {
-  visibility: visible;
-  -webkit-transition: 0.7s;
-  transition: 0.7s;
-  opacity: 1;
-}
-
-.slotFunction .white {
-  border: 1px solid #fab617;
 }
 
 .slotFunctionNew {
@@ -3979,6 +4106,17 @@ button.clickBtn:before {
 .slotFunctionNew .btn-group .white {
   background: #1f3258;
   color: #fff;
+}
+
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  .slotFunctionNew > div {
+    margin: 20vw auto 0;
+    width: 66%;
+  }
+  .slotFunctionNew .btn-group {
+    top: 30%;
+    padding: 0 10vw;
+  }
 }
 
 .not-found {
@@ -4362,6 +4500,13 @@ span.important {
   padding: 2vw 5vw;
 }
 
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  .promotions .filterBtn button {
+    width: 25%;
+    font-size: 16px;
+  }
+}
+
 .promotions .claimed {
   position: absolute;
   background: rgba(216, 59, 53, 0.8);
@@ -4569,6 +4714,12 @@ span.important {
   background: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   pointer-events: none;
+}
+
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  .promotions div.promodule .protitle, .promotions div.promodule .text {
+    margin-bottom: 10px;
+  }
 }
 
 .kyc {
@@ -5422,6 +5573,16 @@ span.important {
   color: #1e85ec;
 }
 
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  .rollover div {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  .rollover div .icon::before {
+    padding-right: 10px;
+  }
+}
+
 .resend {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5805,6 +5966,14 @@ span.important {
   margin-right: 5px;
 }
 
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  .downloadNew > a button {
+    width: 240px;
+    font-size: 16px;
+    padding: 15px 0;
+  }
+}
+
 .appDownload {
   background: #f5ac23;
   width: 100%;
@@ -5859,6 +6028,18 @@ span.important {
 .appDownload .left button,
 .appDownload .left a {
   color: #000;
+}
+
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  .appDownload {
+    font-size: 16px;
+  }
+  .appDownload img {
+    max-width: 70px;
+  }
+  .appDownload .download-btn {
+    font-size: 16px;
+  }
 }
 
 #popup.active {
@@ -6088,10 +6269,25 @@ span.important {
   vertical-align: middle;
 }
 
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  .eventLink .icon-close {
+    right: -1vw;
+    top: -3vw;
+    width: 4vw;
+    height: 4vw;
+  }
+}
+
 .eventLink img {
   -webkit-animation: routate linear infinite alternate 0.8s;
           animation: routate linear infinite alternate 0.8s;
   width: 85px;
+}
+
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  .eventLink img {
+    width: 120px;
+  }
 }
 
 .eventLink.active {
@@ -7456,6 +7652,14 @@ span.important {
   margin-left: 2.5vw;
 }
 
+.depositModule_mobile .inputBox .tip img,
+.depositModule_online .inputBox .tip img,
+.depositModule_local .inputBox .tip img,
+.depositModule_topupMobile .inputBox .tip img {
+  width: 102%;
+  margin-left: -2.5vw;
+}
+
 .depositModule_mobile .inputBox .dropdown > .dropdown-container,
 .depositModule_online .inputBox .dropdown > .dropdown-container,
 .depositModule_local .inputBox .dropdown > .dropdown-container,
@@ -7468,16 +7672,18 @@ span.important {
 .depositModule_online .note,
 .depositModule_local .note,
 .depositModule_topupMobile .note {
-  background: rgba(19, 77, 174, 0.5);
-  color: #ffffff;
+  background: rgba(102, 102, 102, 0.2);
+  color: #666;
   padding: 2vw;
+  border-radius: 5px;
+  font-size: 13px;
 }
 
 .depositModule_mobile .note ol,
 .depositModule_online .note ol,
 .depositModule_local .note ol,
 .depositModule_topupMobile .note ol {
-  list-style-type: decimal !important;
+  list-style-type: "* " !important;
   padding-left: 4vw;
 }
 
@@ -7515,6 +7721,13 @@ span.important {
 .depositModule_local a.clickBtn:before,
 .depositModule_topupMobile a.clickBtn:before {
   font-size: 4vw;
+}
+
+.depositModule_mobile .title .text-org,
+.depositModule_online .title .text-org,
+.depositModule_local .title .text-org,
+.depositModule_topupMobile .title .text-org {
+  color: #fab617;
 }
 
 .vip {
@@ -8470,6 +8683,13 @@ span.important {
 .topWinner ul li .rankMoney img {
   margin-right: 5px;
   width: 15px;
+}
+
+@media screen and (min-width: 550px) and (max-width: 769px) {
+  .topWinner ul {
+    height: 220px;
+    font-size: 16px;
+  }
 }
 
 .favouriteModule {

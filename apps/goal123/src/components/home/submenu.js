@@ -57,7 +57,7 @@ const defSubMenus = [
 			},
 			{
 				...defGameInfo.sabaClub,
-				displayKey: "lbl_SabaClub",
+				displayKey: "lbl_Vgaming",
 				tpCategoryId: defTpCategoryId.Slots
 			},
 			{

@@ -134,7 +134,7 @@ export const productList = langId => {
 					tpCategoryId: defTpCategoryId.Lottery
 				},
 				{
-					displayKey: "lbl_SabaClub",
+					displayKey: "lbl_Vgaming",
 					img: game_SabaClub,
 					...defGameInfo.sabaClub,
 					tpCategoryId: defTpCategoryId.Slots
