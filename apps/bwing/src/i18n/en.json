@@ -162,7 +162,7 @@
 	"lbl_PPCasino": "Western Suite",
 	"lbl_Passport": "Passport",
 	"lbl_Password": "Password",
-	"lbl_PasswordTooltip": "6-18 alphanumeric (A-Z, a-z, 0-9) characters or special characters @$*!%#?&",
+	"lbl_PasswordTooltip": "Password must be 6-15 characters only.",
 	"lbl_PersonalMsg": "Personal Message",
 	"lbl_Phone": "Phone Number",
 	"lbl_PlayNow": "PLAY",

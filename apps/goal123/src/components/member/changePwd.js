@@ -169,7 +169,7 @@ export default () => {
 				tip={inputStatus.newPwd.msg}
 				clickInfo={clickInfo.bind(this, {
 					col: "newPwd",
-					info: "msg_PasswordVaildate"
+					info: "lbl_PasswordTooltip"
 				})}
 				testAttr="NewPWD"
 			/>

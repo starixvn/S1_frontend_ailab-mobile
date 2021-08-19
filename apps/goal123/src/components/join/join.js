@@ -726,7 +726,7 @@ const Join = ({ hideBtn }) => {
 					showPswHandler={showPswHandler}
 					ClassName="JoinRule"
 					showTips={showTipsState.Password}
-					Tips={i18n.msg_PasswordVaildate}
+					Tips={i18n.lbl_PasswordTooltip}
 					Warning={warningState.Password}
 					value={userValueState.Password}
 				/>

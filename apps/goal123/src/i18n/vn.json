@@ -162,7 +162,7 @@
 	"lbl_PPCasino": "Sảnh Western",
 	"lbl_Passport": "Hộ chiếu",
 	"lbl_Password": "Mật khẩu",
-	"lbl_PasswordTooltip": "6-18 ký tự chữ và số (A-Z, a-z, 0-9) hoặc Ký tự đặc biệt @$*!%#?&",
+	"lbl_PasswordTooltip": "Mật khẩu phải có 6-15 ký tự.",
 	"lbl_PersonalMsg": "Tin nhắn khách hàng",
 	"lbl_Phone": "Số ĐT",
 	"lbl_PlayNow": "THAM GIA",
