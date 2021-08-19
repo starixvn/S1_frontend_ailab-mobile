@@ -98,7 +98,7 @@ export default () => {
 		setInputStatus({ checked, msg });
 	};
 	const clickInfo = () => {
-		const info = inputStatus.msg === "" ? i18n.msg_PasswordVaildate : "";
+		const info = inputStatus.msg === "" ? i18n.lbl_PasswordTooltip : "";
 		setInputStatus({ checked: null, msg: info });
 	};
 

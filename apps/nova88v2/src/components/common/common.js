@@ -116,7 +116,7 @@ export const passwordCheck = ({ val }) => {
 	let checked = true;
 	let msg = "";
 
-	const regx = /^(?=.{6,15}$)(?=.*[a-zA-Z0-9])(?=.*[!@#$%^&*]).*$/;
+	const regx = /^(?=.*[a-zA-Z0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,15}$/;
 	if (!val) {
 		checked = false;
 		msg = "msg_PasswordReq";

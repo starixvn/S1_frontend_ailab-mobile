@@ -114,16 +114,13 @@ export const passwordCheck = ({ val, i18n }) => {
 	let checked = true;
 	let msg = "";
 
-	const regx = /^(?=.{6,15}$)(?=.*[a-zA-Z0-9])(?=.*[!@#$%^&*]).*$/;
+	const regx = /^(?=.{6,15}$)[a-zA-Z0-9!@#$%^&*]*$/;
 	if (!val) {
 		checked = false;
 		msg = i18n.msg_PasswordReq;
-	} else if (val.length < 6 || val.length > 15) {
-		checked = false;
-		msg = i18n.msg_PasswordLength;
 	} else if (!regx.test(val)) {
 		checked = false;
-		msg = i18n.msg_PasswordVaildate;
+		msg = i18n.lbl_PasswordTooltip;
 	}
 
 	return { checked, msg };
