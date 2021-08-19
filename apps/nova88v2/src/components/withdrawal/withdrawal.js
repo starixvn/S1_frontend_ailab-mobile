@@ -302,9 +302,12 @@ const Panel = () => {
 
 	const VaildAmount = _amount => {
 		let result = {};
+		const real_amount = _isConvert
+			? Number(_amount) * 1000
+			: Number(_amount);
 		if (
 			!withdrawalLimit.unlimited &&
-			_amount > withdrawalLimit.withdrawalAvailableAmount
+			real_amount > withdrawalLimit.withdrawalAvailableAmount
 		) {
 			result = {
 				status: defIptStatus.warning,
