@@ -2862,6 +2862,10 @@ a.clickBtn:before {
   white-space: initial;
 }
 
+.tip img {
+  width: 100%;
+}
+
 .tip a {
   color: #f77a00;
   text-decoration: underline;
@@ -9330,7 +9334,7 @@ span.important {
   padding: 2vw;
   padding-right: 14vw;
   border-radius: 0;
-  text-align: right;
+  text-align: left;
 }
 
 .depositModule_mobile .inputBox input::-webkit-input-placeholder,
@@ -10855,5 +10859,12 @@ span.important {
 .slotFunctionNew .btn-group .white {
   background: #58cdff;
   color: #fff;
+}
+
+.note {
+  background-color: #373e4f;
+  padding: 2vw;
+  border-radius: 5px;
+  font-size: 13px;
 }
 /*# sourceMappingURL=style.css.map */

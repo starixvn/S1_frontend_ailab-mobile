@@ -13,7 +13,7 @@ import Sports_Basketball from "../styles/img/hotgame-m-new/sports/baseketball.pn
 import Sports_Volleyball from "../styles/img/hotgame-m-new/sports/volleyball.png";
 import Sports_BTI from "../styles/img/hotgame-m-new/sports/bti.png";
 
-import Games_SabaClub from "../styles/img/hotgame-m-new/games/sabaclub.png";
+import Games_VGaming from "../styles/img/hotgame-m-new/games/vg.png";
 import Games_V8Poker from "../styles/img/hotgame-m-new/games/v8poker.png";
 import Games_Keno from "../styles/img/hotgame-m-new/games/keno.png";
 import Games_Lottery from "../styles/img/hotgame-m-new/games/lottery.png";
@@ -66,7 +66,7 @@ export const defGameInfo = {
 	Basketball: { tpId: 1, gameId: 2 },
 	Volleyball: { tpId: 1, gameId: 6 },
 	// CockFighting: { tpId: 17 },
-	sabaClub: { tpId: 1, gameId: 200 },
+	sabaClub: { tpId: 1, gameId: 171 },
 	V8Poker: { gameId: 0, tpId: 25 },
 	Keno: { gameId: 202, tpId: 1 },
 	lottery: { gameId: 220, tpId: 1 },
@@ -163,7 +163,7 @@ const gameList = [
 			{
 				...defGameInfo.sabaClub,
 				img: "https://banner.goal123.org/hotgame/h5/sabaclub.jpg",
-				spanTextKey: "lbl_SabaClub",
+				spanTextKey: "lbl_Vgaming",
 				tpCategoryId: defTpCategoryId.Slots
 			},
 			{
@@ -286,8 +286,8 @@ const gameList = [
 			},
 			{
 				...defGameInfo.sabaClub,
-				img: Games_SabaClub,
-				spanTextKey: "lbl_SabaClub",
+				img: Games_VGaming,
+				spanTextKey: "lbl_Vgaming",
 				tpCategoryId: defTpCategoryId.Slots
 			},
 			{

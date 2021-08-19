@@ -38,7 +38,7 @@ export const defGameInfo = {
 	NumberGame: { gameId: 161, tpId: 1 },
 	sabaClub: {
 		tpId: 1,
-		gameId: 200
+		gameId: 171
 	},
 	BTISport: {
 		tpId: 29
@@ -127,7 +127,7 @@ const gameList = langId => [
 			{
 				...defGameInfo.sabaClub,
 				icon: "game",
-				spanTextKey: "lbl_SabaClub"
+				spanTextKey: "lbl_Vgaming"
 			},
 			{
 				...defGameInfo.kingMaker,
