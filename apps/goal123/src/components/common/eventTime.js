@@ -6,5 +6,9 @@ export const eventTime = {
 	new_Km: { endDate: "2021/07/08 11:00:00" },
 	jili: { endDate: "2021/08/21 11:00:00" },
 	tcg: { endDate: "2021/09/11 11:00:00" },
-	casino_MGP: { endDate: "2021/08/22 11:00:00" }
+	casino_MGP: { endDate: "2021/08/22 11:00:00" },
+	nationalIndependenceDayTheme: {
+		startDate: "2021/08/24 00:00:00",
+		endDate: "2021/09/10 12:00:00"
+	}
 };
