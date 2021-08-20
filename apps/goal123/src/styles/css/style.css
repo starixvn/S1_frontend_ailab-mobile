@@ -773,7 +773,7 @@ main .sideBarNew div > button {
   position: relative;
   color: #fff;
   text-transform: uppercase;
-  font-size: 2vw;
+  font-size: 2.6vw;
   background: -webkit-gradient(linear, left top, left bottom, from(#334d80), to(#4263a6));
   background: linear-gradient(to bottom, #334d80 0%, #4263a6 100%);
   -webkit-box-shadow: 0 1px 2px #1a2843 inset;
@@ -1915,7 +1915,7 @@ main.statementPage {
       -ms-flex-pack: center;
           justify-content: center;
   color: #052561;
-  font-size: 1.5vw;
+  font-size: 12px;
   width: 33.3%;
   text-align: center;
 }
