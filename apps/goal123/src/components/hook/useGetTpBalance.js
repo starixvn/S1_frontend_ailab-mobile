@@ -1,18 +1,18 @@
 import { useEffect, useState, useRef, useCallback, useContext } from "react";
-import { i18nContext, popBoxContext } from "../common/context";
+import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
 import {
 	api_account_GetTpWalletList,
 	api_account_GetTpWalletBalance
 } from "../../service/api/account";
 
-const updateTpWalletsList = ({ prev, tpId, balance = null }) => {
+const updateTpWalletsList = ({ prev, tpId, balance = null, tpName }) => {
 	const tpWalletIdx = prev.findIndex(wallet => wallet.id === tpId);
 	if (tpWalletIdx !== -1) {
 		prev[tpWalletIdx].balance = balance;
 	} else {
 		prev.push({
 			id: tpId,
-			displayKey: `lbl_TpWallet_${tpId}`,
+			tpName,
 			balance
 		});
 	}
@@ -20,6 +20,7 @@ const updateTpWalletsList = ({ prev, tpId, balance = null }) => {
 };
 
 export default ({ isLogin, listType }) => {
+	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const [tpWalletsList, setTpWalletsList] = useState([]);
@@ -34,7 +35,8 @@ export default ({ isLogin, listType }) => {
 
 	const GetTpWalletList = useCallback(() => {
 		api_account_GetTpWalletList({
-			ListType: listType
+			ListType: listType,
+			langId: userInfo.langId
 		}).then(
 			res => {
 				if (res.data.errorCode === 0) {
@@ -44,7 +46,8 @@ export default ({ isLogin, listType }) => {
 							updateTpWalletsList({
 								prev,
 								tpId: i.tpId,
-								balance: null
+								balance: null,
+								tpName: i.tpName
 							})
 						);
 					});

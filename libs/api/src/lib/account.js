@@ -55,8 +55,8 @@ export class AccountAPI extends BaseAPI {
 			PromoCategoryId
 		});
 
-	GetTpWalletList = ({ ListType }) =>
-		this.accountRequest.post("/GetTpWalletList", {
+	GetTpWalletList = ({ ListType, langId }) =>
+		this.accountRequest.post(`/GetTpWalletList/${langId}`, {
 			ListType
 		});
 

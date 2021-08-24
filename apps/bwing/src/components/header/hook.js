@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
+import { userInfoContext } from "../common/context";
 import {
 	api_GetBalnace,
 	api_account_GetTpWalletList,
@@ -8,6 +9,7 @@ import { number_format } from "../common/common";
 import { tpWalletsListType } from "../transfer/transfer";
 
 export const useGetBalance = ({ isLogin, i18n, setPopBox }) => {
+	const { userInfo } = useContext(userInfoContext);
 	const [mainWalletBalance, setMainWalletBalance] = useState(0);
 	const [tpWalletsList, setTpWalletsList] = useState([]);
 	const isMountedRef = useRef(null);
@@ -52,7 +54,8 @@ export const useGetBalance = ({ isLogin, i18n, setPopBox }) => {
 		);
 
 		api_account_GetTpWalletList({
-			ListType: tpWalletsListType.allWallets
+			ListType: tpWalletsListType.allWallets,
+			langId: userInfo?.langId
 		}).then(
 			res => {
 				if (isMountedRef.current) {
