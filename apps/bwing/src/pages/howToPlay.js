@@ -25,7 +25,7 @@ export default () => {
 				<br />
 				• Check the box "I agree to the Bwing Terms and Conditions and
 				the Bwing Rules and Regulations."" and the box "I confirm I am
-				over 21 years old".
+				over 18 years old".
 				<br />• Click "REGISTER"
 			</p>
 			<img src={play1} alt="" />
@@ -83,7 +83,7 @@ export default () => {
 				<br />
 				• Đánh dấu vào ô "Tôi đồng ý với Điều Khoản và Điều Kiện và Quy
 				Tắc và Quy Định Đặt Cược của Bwing."" và ô "Tôi xác nhận tôi đã
-				trên 21 tuổi"
+				trên 18 tuổi"
 				<br />• Chọn nút "ĐĂNG KÝ"
 			</p>
 			<img src={play1_vn} alt="" />
