@@ -632,7 +632,7 @@ ColumnItem.propTypes = {
 };
 
 const GetYear = () => {
-	return new Date().getFullYear() - 21;
+	return new Date().getFullYear() - 18;
 };
 
 const GetDayOfMonth = (year, month) => {
