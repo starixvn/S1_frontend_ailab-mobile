@@ -1,12 +1,18 @@
 import React, { useContext, useState } from "react";
 import { Match } from "@reach/router";
 import PropTypes from "prop-types";
-import { userInfoContext, i18nContext, msgCountContext } from "Context";
 import { Link } from "@Router";
+import {
+	userInfoContext,
+	i18nContext,
+	msgCountContext,
+	rootContext
+} from "./context";
 import path from "../../path";
 
 const Footer = () => {
 	const { userInfo } = useContext(userInfoContext);
+	const { root } = useContext(rootContext);
 	const { i18n } = useContext(i18nContext);
 	const { msgCount } = useContext(msgCountContext);
 	const [openWalletMenu, setOpenWalletMenu] = useState(false);
@@ -20,7 +26,7 @@ const Footer = () => {
 			<footer id="footer">
 				<Match path={`/:langId/${path.home.root}`}>
 					{props => {
-						const isMatch = props.match !== null;
+						const isMatch = props.match !== null || root;
 						return (
 							<Link
 								to={path.home.root}
@@ -80,7 +86,7 @@ const Footer = () => {
 			<footer id="footer">
 				<Match path={`/:langId/${path.home.root}`}>
 					{props => {
-						const isMatch = props.match !== null;
+						const isMatch = props.match !== null || root;
 						return (
 							<Link
 								onClick={handleWalletMenu.bind(this, true)}
