@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "@reach/router";
 import { i18nContext, rootContext } from "../components/common/context";
 import MysteryBox from "../components/mysteryBox/mysterBox";
@@ -11,13 +11,20 @@ import PopImg from "../styles/img/event/mysterybox/eventlink.png";
 import { eventTime } from "../components/common/eventTime";
 
 export const MysteryBoxPop = () => {
-	const { root, setRoot } = useContext(rootContext);
+	const { root } = useContext(rootContext);
+	const [isShow, setIsShow] = useState(true);
+
+	useEffect(() => {
+		if (root && !isShow) {
+			setIsShow(true);
+		}
+	}, [root]);
 
 	const closePop = () => {
-		setRoot(false);
+		setIsShow(false);
 	};
 
-	return root ? (
+	return root && isShow ? (
 		<div className="eventLink">
 			<button className="icon icon-close" onClick={closePop} />
 			<Link to={path.mysteryBox.root}>
