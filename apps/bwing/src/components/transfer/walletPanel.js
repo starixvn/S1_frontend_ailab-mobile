@@ -20,7 +20,7 @@ const WalletPanel = ({ i18n, walletInfo, GetBalance, GetTpWalletBalance }) => {
 										: "Sportsbook-Wallet"
 								}`}
 							/>
-							{item.tpName?.toUpperCase() ??
+							{item.displayText?.toUpperCase() ??
 								i18n[item.displayKey]?.toUpperCase()}
 						</p>
 						<p>{number_format(item.balance, false)}</p>

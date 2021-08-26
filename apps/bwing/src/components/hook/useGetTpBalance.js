@@ -13,7 +13,7 @@ const updateTpWalletsList = ({ prev, tpId, balance = null, tpName }) => {
 		prev.push({
 			id: tpId,
 			balance,
-			tpName
+			displayText: tpName
 		});
 	}
 	return [...prev].sort((a, b) => a.id - b.id);

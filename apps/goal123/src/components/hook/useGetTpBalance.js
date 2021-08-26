@@ -12,7 +12,7 @@ const updateTpWalletsList = ({ prev, tpId, balance = null, tpName }) => {
 	} else {
 		prev.push({
 			id: tpId,
-			tpName,
+			displayText: tpName,
 			balance
 		});
 	}
