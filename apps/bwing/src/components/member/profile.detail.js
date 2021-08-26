@@ -26,7 +26,7 @@ const Panel = () => {
 	const _areaCode = country ? areaCode[country].AreaCode : "";
 
 	const _infoList = infoList(i18n, userInfo, _areaCode);
-	const legalDate = moment().subtract(21, "year");
+	const legalDate = moment().subtract(18, "year");
 
 	const isMountedRef = useRef(null);
 	const [redirectPath, setRedirectPath] = useState(null);

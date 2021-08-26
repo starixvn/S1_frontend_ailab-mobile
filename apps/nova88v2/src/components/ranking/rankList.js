@@ -3,24 +3,57 @@ import PropTypes from "prop-types";
 import moment from "moment";
 import { userInfoContext } from "../common/context";
 import { number_format } from "../common/common";
+import { cloudImgURL } from "../../config";
 
-const RankItem = ({ Ranking, userName, turnover, isCurrentUser, userRank }) => {
-	const rank = Number(Ranking);
+const RankItem = ({
+	Ranking,
+	userName,
+	wTurnover,
+	isCurrentUser,
+	userRank,
+	status,
+	i18n = {}
+}) => {
 	let trophy = "";
-	if (rank === 1 || rank === 2 || rank === 3) trophy = "icon icon-trophy";
+	let rankString = `${i18n.lbl_RankPrefix} ${Ranking + 1} ${
+		i18n.lbl_RankPostfix
+	}`;
+
+	if (userRank === "999+") {
+		rankString = userRank;
+	} else if (userRank > 4 && userRank < 999) {
+		rankString = `${i18n.lbl_RankPrefix} ${userRank} ${i18n.lbl_RankPostfix}`;
+	} else {
+		if (Ranking === 0) rankString = i18n.lbl_Champion;
+		if (Ranking === 1) rankString = i18n.lbl_2nd;
+		if (Ranking === 2) rankString = i18n.lbl_3rd;
+		if (Ranking === 3) rankString = i18n.lbl_4th;
+	}
+	if (Ranking > 2) {
+		trophy = `${cloudImgURL}/SiteSkin/img/gold.png`;
+	} else {
+		trophy = `${cloudImgURL}/SiteSkin/img/no${Ranking + 1}.png`;
+	}
+	let _status = "icon icon-minus";
+	if (status === -1) _status = "icon icon-arrow_drop_down";
+	if (status === 1) _status = "icon icon-arrow_drop_up";
 	return (
-		<ul className={isCurrentUser ? "userRank" : ""}>
-			<li className={trophy}>{userRank ?? Ranking}</li>
-			<li>{userName}</li>
-			<li>{number_format(turnover)}</li>
-		</ul>
+		<li className={isCurrentUser ? `userRank` : ""}>
+			<div>
+				<img src={trophy} alt="prize" />
+				{rankString}
+			</div>
+			<div>{userName}</div>
+			<div className={_status} />
+			<div>{number_format(wTurnover)}</div>
+		</li>
 	);
 };
 
 RankItem.propTypes = {
 	isCurrentUser: PropTypes.bool.isRequired,
 	userName: PropTypes.string.isRequired,
-	turnover: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+	wTurnover: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 		.isRequired,
 	Ranking: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 		.isRequired
@@ -34,23 +67,24 @@ RankItem.propTypes = {
 	userRank: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	isCurrentUser: PropTypes.bool.isRequired,
 	userName: PropTypes.string.isRequired,
-	turnover: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+	wTurnover: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 		.isRequired,
 	Ranking: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 		.isRequired
 };
 
-const RankItems = ({ datas, defPrize }) => {
+const RankItems = ({ datas, i18n }) => {
 	return datas?.map((data, idx) => {
-		const { userName, wTurnover, rank } = data;
-
+		const { userName, wTurnover, status, rank } = data;
 		return (
 			<RankItem
 				key={`rank-${userName}-${wTurnover}`}
-				Ranking={defPrize[idx]?.rank}
-				userRank={idx === datas.length - 1 ? rank : null}
+				Ranking={idx}
+				userRank={rank ?? -1}
 				userName={userName}
-				turnover={wTurnover}
+				wTurnover={wTurnover}
+				status={status}
+				i18n={i18n}
 				isCurrentUser={Boolean(rank)}
 			/>
 		);
@@ -74,18 +108,21 @@ const RankList = ({
 					<div className="txt-white">{i18n.msg_NoData}</div>
 				</div>
 			) : (
-				<div className="list active">
+				<div className="rankList">
 					<ul>
-						<li>{i18n.lbl_Ranking}</li>
-						<li>{i18n.lbl_Username}</li>
-						<li>{i18n.lbl_Points}</li>
+						<li>
+							<div>{i18n.lbl_Ranking}</div>
+							<div>{i18n.lbl_Username}</div>
+							<div>{i18n.lbl_Status}</div>
+							<div>{i18n.lbl_Points}</div>
+						</li>
+						<RankItems
+							datas={datas}
+							userInfo={userInfo}
+							i18n={i18n}
+							defPrize={defPrize}
+						/>
 					</ul>
-					<RankItems
-						datas={datas}
-						userInfo={userInfo}
-						i18n={i18n}
-						defPrize={defPrize}
-					/>
 				</div>
 			)}
 			{isLastEvent ? null : (
@@ -111,7 +148,10 @@ RankList.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	loading: PropTypes.bool,
 	datas: PropTypes.arrayOf(PropTypes.object),
-	defPrize: PropTypes.objectOf(PropTypes.object),
+	defPrize: PropTypes.oneOfType([
+		PropTypes.arrayOf(PropTypes.object),
+		PropTypes.objectOf(PropTypes.object)
+	]),
 	lastUpdTime: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.instanceOf(Date)
