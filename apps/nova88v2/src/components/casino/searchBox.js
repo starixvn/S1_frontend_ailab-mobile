@@ -17,7 +17,6 @@ const SearchBox = props => {
 			};
 		})
 	];
-
 	const EditField = (column, e) => {
 		props.EditSearchField(column, e.target.value);
 	};

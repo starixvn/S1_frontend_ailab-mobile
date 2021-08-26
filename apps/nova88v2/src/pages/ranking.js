@@ -2,13 +2,11 @@ import React, { useContext } from "react";
 import { i18nContext, userInfoContext } from "../components/common/context";
 import { GetMetaDataByPage } from "../components/seo/seo";
 import Event from "../components/ranking/event";
-import Final from "../components/ranking/final";
 import Record from "../components/ranking/records";
-import { defBtns, defElemType, defEuroBtns } from "../components/ranking/def";
+import { defBtns, defElemType } from "../components/ranking/def";
 import { useHandleSelect } from "../components/ranking/hook";
 import useHandleLogin from "../components/hook/useHandleLogin";
 import BtnBar from "../components/common/btnBar";
-import TournamentPoints from "../components/ranking/tournamentPoints";
 import Layout from "../components/common/layout";
 import Header from "../components/header/header";
 import { Link } from "../route/link";
@@ -47,41 +45,39 @@ export default () => {
 					selected={selected}
 					handleSelect={handleSelect}
 					mainKey="leader-board-btnBar"
-					defBtns={defEuroBtns}
+					defBtns={defBtns}
 					btnListClass="quickSelect"
 					isLogin={isLogin}
 				/>
 			</Header>
-			<Layout mainClass="main rankingEuro" header={false}>
+			<Layout mainClass="main rankingNew" header={false}>
 				<Event
-					isOpen={
-						defEuroBtns[selected].elemType === defElemType.Event
-					}
-					i18n={i18n}
-					userInfo={userInfo}
-				/>
-				<Final
-					isOpen={
-						defEuroBtns[selected].elemType === defElemType.Final
-					}
-					i18n={i18n}
-					userInfo={userInfo}
-				/>
-				<TournamentPoints
-					isOpen={
-						defEuroBtns[selected].elemType ===
-						defElemType.Tournament
-					}
+					isOpen={defBtns[selected].elemType === defElemType.Event}
 					i18n={i18n}
 					userInfo={userInfo}
 				/>
 				<Record
+					isOpen={defBtns[selected].elemType === defElemType.Ranking}
+					i18n={i18n}
+					userInfo={userInfo}
+					title={defBtns.Ranking.displayKey}
+					customTopNum={50}
+				/>
+				<Record
 					isOpen={
-						defEuroBtns[selected].elemType === defElemType.Record
+						defBtns[selected].elemType === defElemType.GamesPoint
 					}
 					i18n={i18n}
 					userInfo={userInfo}
-					title="lbl_Records"
+					title={defBtns.GamesPoint.displayKey}
+					customTopNum={50}
+				/>
+				<Record
+					isOpen={defBtns[selected].elemType === defElemType.Result}
+					i18n={i18n}
+					userInfo={userInfo}
+					title={defBtns.Result.displayKey}
+					customTopNum={30}
 				/>
 			</Layout>
 			{helmet}

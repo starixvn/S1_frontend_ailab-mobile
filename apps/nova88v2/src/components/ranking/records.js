@@ -2,11 +2,18 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import RankList from "./rankList";
-import { useGetRanking, useHandleSelectDay } from "./hook";
-import { defDayBtns, defEuroDateBtns, defEuroTourBtns } from "./def";
+import {
+	useGetRankWithStatus,
+	useHandleSelectDay,
+	useHandleSelectMonth,
+	useHandleSelect,
+	useGetMonthRank
+} from "./hook";
+import { defDayBtns, defBtnsOfCategory, defBtns } from "./def";
 import BtnBar from "../common/btnBar";
 import { loadingContext } from "../common/context";
 import { Prize } from "./prize";
+import DropDown from "../common/dropdown";
 
 const Records = ({
 	isOpen,
@@ -18,49 +25,111 @@ const Records = ({
 	const defPrize = Prize({
 		currencyId,
 		langId,
-		i18n,
-		category: defEuroTourBtns.FinalTournament.value
+		i18n
 	});
-	const { loading, setLoading } = useContext(loadingContext);
-	const currentDate = moment().format("YYYY-MM-DD");
-	let selected = "2021021";
-	if (moment(currentDate).isBetween("2021-03-13", "2021-04-12")) {
-		selected = defEuroDateBtns[2021021].value;
-	} else if (moment(currentDate).isBetween("2021-04-13", "2021-05-12")) {
-		selected = defEuroDateBtns[2021022].value;
-	} else if (moment(currentDate).isBetween("2021-05-13", "2021-06-12")) {
-		selected = defEuroDateBtns[2021023].value;
-	} else if (moment(currentDate).isAfter("2021-06-12")) {
-		selected = defEuroDateBtns[2021024].value;
+	const today = moment().format("YYYY-MM");
+	const dateStart = moment("2021-8-1");
+	const dateEnd = moment(today);
+	const months = [];
+
+	while (
+		dateEnd > dateStart ||
+		dateStart.format("M") === dateEnd.format("M")
+	) {
+		months.push(dateStart.format("M"));
+		dateStart.add(1, "month");
 	}
 
+	const monthItems = months.map((el, idx) => {
+		const year = idx > 3 ? 2022 : 2021;
+		const twoDigits = el.length < 2 ? `0${el}` : el;
+		const str = `${year}-${twoDigits}-01`;
+		return {
+			value: str,
+			id: idx,
+			displayText: `${i18n[`lbl_Month${el}`]} ${year}`
+		};
+	});
+	const defaultVal =
+		title === defBtns.GamesPoint.displayKey
+			? defBtnsOfCategory.Sports.value
+			: 0;
+	const { loading, setLoading } = useContext(loadingContext);
 	const { selectedDay, handleSelectDay } = useHandleSelectDay();
-	const { datas, lastUpdTime } = useGetRanking({
+	const { selectedMonth, handleSelectMonth } = useHandleSelectMonth({
+		initVal: { selectedVal: monthItems[0]?.value, selectedIdx: 0 }
+	});
+	const { selected, handleSelect } = useHandleSelect({
+		defaultSelect: defaultVal,
+		isLogin
+	});
+	const { datas, lastUpdTime } = useGetRankWithStatus({
 		isOpen,
-		selected,
 		BeforeDays: isLastEvent ? 0 : selectedDay,
 		isLogin,
 		userName,
 		setLoading,
-		isLastEvent
+		customTopNum: 50,
+		selected
 	});
 
+	const { monthDatas } = useGetMonthRank({
+		isOpen,
+		SelectDays: selectedMonth.selectedVal,
+		isLogin,
+		userName,
+		setLoading,
+		customTopNum: 30,
+		isMonth: true
+	});
+	const SelectMonth = idx => {
+		handleSelectMonth({
+			selectedVal: monthItems[idx].value,
+			selectedIdx: idx
+		});
+	};
+
 	return (
-		<div className={`records${isOpen ? " active" : ""}`}>
-			<div className="title">{i18n[title]}</div>
-			<BtnBar
-				title={i18n.lbl_Date}
-				i18n={i18n}
-				selected={selectedDay}
-				handleSelect={handleSelectDay}
-				mainKey="leader-board-records-dayBtnBar"
-				defBtns={defDayBtns}
-			/>
+		<div className={`rankEvent${isOpen ? " active" : ""}`}>
+			<div className="text-blue">{i18n[title]?.toUpperCase()}</div>
+			{title === defBtns.Result.displayKey && (
+				<DropDown
+					i18n={i18n}
+					mainKey="rank-Result"
+					options={monthItems}
+					selectedIdx={selectedMonth.selectedIdx}
+					onSelectItem={SelectMonth}
+					hideInfo={true}
+				/>
+			)}
+
+			{title === defBtns.GamesPoint.displayKey && (
+				<BtnBar
+					title={i18n.lbl_Date}
+					i18n={i18n}
+					selected={selected}
+					handleSelect={handleSelect}
+					mainKey="leader-board-records-GPBtnBar"
+					defBtns={defBtnsOfCategory}
+				/>
+			)}
+
+			{title === defBtns.Ranking.displayKey && (
+				<BtnBar
+					title={i18n.lbl_Date}
+					i18n={i18n}
+					selected={selectedDay}
+					handleSelect={handleSelectDay}
+					mainKey="leader-board-records-rankBtnBar"
+					defBtns={defDayBtns}
+				/>
+			)}
+
 			<RankList
 				isLastEvent={isLastEvent}
 				loading={loading}
 				i18n={i18n}
-				datas={datas}
+				datas={title === defBtns.Result.displayKey ? monthDatas : datas}
 				selected="records"
 				lastUpdTime={lastUpdTime}
 				defPrize={defPrize}

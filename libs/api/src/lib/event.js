@@ -7,6 +7,26 @@ export class EventsAPI extends BaseAPI {
 		liveCasino: 3
 	};
 
+	GetLeaderboardListMonth = ({
+		lBCategoryId = 0,
+		TopNum,
+		SelectDays,
+		EventCode
+	}) =>
+		this.evnetsRequest.post(`/GetLeaderboardListMonth/`, {
+			lBCategoryId,
+			TopNum,
+			SelectDays,
+			EventCode
+		});
+
+	GetCustRankMonth = ({ LBCategoryId = 0, SelectDays, EventCode }) =>
+		this.evnetsRequest.post(`/GetCustRankMonth/`, {
+			LBCategoryId,
+			SelectDays,
+			EventCode
+		});
+
 	GetLeaderboardList = ({ lBCategoryId, TopNum = 10, BeforeDays = 0 }) =>
 		this.evnetsRequest.post(`/GetLeaderboardList/`, {
 			lBCategoryId,
@@ -36,6 +56,19 @@ export class EventsAPI extends BaseAPI {
 	GetCustRankV2 = ({ LBCategoryId, BeforeDays = 0, EventCode }) =>
 		this.evnetsRequest.post(`/GetCustRankV2/`, {
 			LBCategoryId,
+			BeforeDays,
+			EventCode
+		});
+
+	GetLeaderboardListV3 = ({
+		lBCategoryId,
+		TopNum = 10,
+		BeforeDays = 0,
+		EventCode
+	}) =>
+		this.evnetsRequest.post(`/GetLeaderboardListV3/`, {
+			lBCategoryId,
+			TopNum,
 			BeforeDays,
 			EventCode
 		});
