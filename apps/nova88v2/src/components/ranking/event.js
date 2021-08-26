@@ -25,7 +25,9 @@ const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
 
 	const tncURL = async () => {
 		try {
-			const _URL = `${cloudImgURL}/NovaPromotion/ranking_new_tnc/${userInfo.langId}.html`;
+			const _URL = `${cloudImgURL}/NovaPromotion/ranking_new_tnc/${
+				userInfo.langId === "en" ? "cs_en" : userInfo.langId
+			}.html`;
 			await axios.get(_URL);
 			setURL(_URL);
 		} catch (error) {
