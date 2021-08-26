@@ -8,14 +8,9 @@ const useHandleLogin = () => {
 	const navigate = useNavigate();
 
 	const currentPages = () => {
-		const arr = window.location.pathname.split("/");
-		if (!arr[2]) {
-			return `/${userInfo.langId}`;
-		}
-		if (arr[3]) {
-			return `/${userInfo.langId}/${arr[2]}/${arr[3]}`;
-		}
-		return arr[2];
+		const redirect = window.location.pathname;
+		const query = window.location.search;
+		return `${redirect}${query}`;
 	};
 
 	const handleLogin = ({
