@@ -66,7 +66,7 @@ const SiteURL =
 				apiURL: "",
 				openURL: "",
 				imgUrl: "",
-				t_and_cURL: "",
+				t_and_cURL: "https://image.0814media.net",
 				cloudImgURL
 		  }
 		: {
