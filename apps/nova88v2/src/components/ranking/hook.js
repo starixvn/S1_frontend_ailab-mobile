@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../../service/api";
-import { defBtns, defDayBtns } from "./def";
+import { defDayBtns, defBtnsOfCategory } from "./def";
 
 const SetUpdTime = () => {
 	const now = new Date();
@@ -21,31 +21,32 @@ const getTopNum = isLastEvent => {
 	return isLastEvent ? lastTimeTopNum : topNum;
 };
 
-const handleEventCode = ({ isLastEvent, selected }) => {
+const handleEventCode = ({ isMonth = false }) => {
 	const defEventCode = {
-		current: "202101",
+		current: "2021051",
+		month: "2021052",
 		prev: "xmas2020"
 	};
 
-	return isLastEvent ? defEventCode.current : selected;
+	return isMonth ? defEventCode.month : defEventCode.current;
 };
 
-export const useGetRanking = ({
+export const useGetRankWithStatus = ({
 	isOpen,
 	selected,
 	BeforeDays = 0,
 	isLogin,
 	userName,
 	setLoading,
-	isLastEvent = false
+	customTopNum = 0
 }) => {
 	const [datas, setDatas] = useState([]);
 	const [lastUpdTime, setLastUpdTime] = useState(SetUpdTime());
 
 	useEffect(() => {
 		if (isOpen && isLogin) {
-			const EventCode = handleEventCode({ isLastEvent, selected });
-			const lBCategoryId = defBtns[selected]?.lBCategoryId || 0;
+			const EventCode = handleEventCode({ selected });
+			const lBCategoryId = defBtnsOfCategory[selected]?.lBCategoryId || 0;
 			const beforeDays = isNaN(BeforeDays)
 				? Number(defDayBtns.Yesterday.value)
 				: Number(BeforeDays);
@@ -53,8 +54,8 @@ export const useGetRanking = ({
 				setLoading(true);
 
 				try {
-					const TopNum = getTopNum(isLastEvent);
-					const res = await api.events.GetLeaderboardListV2({
+					const TopNum = customTopNum;
+					const res = await api.events.GetLeaderboardListV3({
 						lBCategoryId,
 						TopNum,
 						BeforeDays: beforeDays,
@@ -73,7 +74,8 @@ export const useGetRanking = ({
 							if (custRankRes.data.errorCode === 0) {
 								const {
 									custRank,
-									point
+									point,
+									status
 								} = custRankRes.data.data;
 
 								setDatas(() => {
@@ -86,7 +88,8 @@ export const useGetRanking = ({
 									if (custRank <= TopNum && custRank !== 0) {
 										rankDatas[custRank - 1] = {
 											...rankDatas[custRank - 1],
-											rank
+											rank,
+											status
 										};
 										result = rankDatas;
 									} else {
@@ -95,7 +98,8 @@ export const useGetRanking = ({
 											{
 												userName,
 												wTurnover: point,
-												rank
+												rank,
+												status
 											}
 										];
 									}
@@ -124,10 +128,105 @@ export const useGetRanking = ({
 		isLogin,
 		userName,
 		setLoading,
-		isLastEvent
+		customTopNum
 	]);
 
 	return { datas, lastUpdTime };
+};
+
+export const useGetMonthRank = ({
+	isOpen,
+	SelectDays,
+	isLogin,
+	userName,
+	setLoading,
+	customTopNum = 0,
+	isMonth
+}) => {
+	const [datas, setDatas] = useState([]);
+	const [lastUpdTime, setLastUpdTime] = useState(SetUpdTime());
+
+	useEffect(() => {
+		if (isOpen && isLogin) {
+			const EventCode = handleEventCode({ isMonth });
+			const GetRankingDatas = async () => {
+				setLoading(true);
+
+				try {
+					const TopNum = customTopNum;
+					const res = await api.events.GetLeaderboardListMonth({
+						lBCategoryId: 0,
+						TopNum,
+						SelectDays,
+						EventCode
+					});
+
+					if (res.data.errorCode === 0) {
+						const rankDatas = res.data.data;
+						if (rankDatas?.length > 0) {
+							const custRankRes = await api.events.GetCustRankMonth(
+								{
+									LBCategoryId: 0,
+									SelectDays,
+									EventCode
+								}
+							);
+
+							if (custRankRes.data.errorCode === 0) {
+								const {
+									custRank,
+									point
+								} = custRankRes.data.data;
+								setDatas(() => {
+									const rank =
+										custRank > 999 || custRank === 0
+											? "999+"
+											: custRank;
+
+									let result = [];
+									if (custRank <= TopNum && custRank !== 0) {
+										rankDatas[custRank - 1] = {
+											...rankDatas[custRank - 1],
+											rank
+										};
+										result = rankDatas;
+									} else {
+										result = [
+											...rankDatas,
+											{
+												userName,
+												wTurnover: point,
+												rank
+											}
+										];
+									}
+									return result;
+								});
+							}
+						} else {
+							setDatas([]);
+						}
+					}
+					setLoading(false);
+					setLastUpdTime(SetUpdTime());
+				} catch (error) {
+					setLoading(false);
+				}
+			};
+
+			GetRankingDatas();
+		}
+	}, [
+		SelectDays,
+		isOpen,
+		setDatas,
+		isLogin,
+		userName,
+		setLoading,
+		customTopNum
+	]);
+
+	return { monthDatas: datas, lastUpdTime };
 };
 
 export const useHandleSelect = ({
@@ -155,11 +254,20 @@ export const useHandleSelect = ({
 };
 
 export const useHandleSelectDay = () => {
-	const [selectedDay, setSelectedDay] = useState(defDayBtns.Yesterday.value);
+	const [selectedDay, setSelectedDay] = useState(defDayBtns.Today.value);
 
 	const handleSelectDay = value => {
 		setSelectedDay(value);
 	};
 
 	return { selectedDay, handleSelectDay };
+};
+
+export const useHandleSelectMonth = ({ initVal }) => {
+	const [selectedMonth, setSelectedMonth] = useState(initVal);
+	const handleSelectMonth = ({ selectedVal, selectedIdx }) => {
+		setSelectedMonth({ selectedVal, selectedIdx });
+	};
+
+	return { selectedMonth, handleSelectMonth };
 };

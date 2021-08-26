@@ -13,7 +13,9 @@ export const defElemType = {
 	EuroDate3: "EuroDate3",
 	EuroDate4: "EuroDate4",
 	FinalTournament: "FinalTournament",
-	MonthlyTournament: "MonthlyTournament"
+	MonthlyTournament: "MonthlyTournament",
+	Result: "Result",
+	GamesPoint: "GamesPoint"
 };
 
 export const defBtnsOfCategory = {
@@ -47,16 +49,27 @@ export const defBtns = {
 		elemType: defElemType.Event,
 		beforeLogin: true
 	},
-	...defBtnsOfCategory,
-	Records: {
-		displayKey: "lbl_Records",
-		value: "Records",
-		elemType: defElemType.Record
+	// ...defBtnsOfCategory,
+	// Records: {
+	// 	displayKey: "lbl_Records",
+	// 	value: "Records",
+	// 	elemType: defElemType.Record
+	// },
+
+	Ranking: {
+		displayKey: "lbl_Ranking",
+		value: "Ranking",
+		elemType: defElemType.Ranking
 	},
-	LastEvent: {
-		displayKey: "lbl_Last_Event",
-		value: "LastEvent",
-		elemType: defElemType.LastEvent
+	GamesPoint: {
+		displayKey: "lbl_GamesPoint",
+		value: "GamesPoint",
+		elemType: defElemType.GamesPoint
+	},
+	Result: {
+		displayKey: "lbl_Result",
+		value: "Result",
+		elemType: defElemType.Result
 	}
 };
 
@@ -121,6 +134,10 @@ export const defEuroTourBtns = {
 };
 
 export const defDayBtns = {
+	Today: {
+		displayKey: "lbl_Today",
+		value: 0
+	},
 	Yesterday: {
 		displayKey: "lbl_YesterDay",
 		value: 1
@@ -138,316 +155,1190 @@ export const defDayBtns = {
 export const defPrize = () => ({
 	MYR: {
 		cs: {
-			[defEuroTourBtns.FinalTournament.value]: [
-				{
-					rank: "xi*******23",
-					prize: "HUBLOT Big Bang Gold Ceramic"
-				},
-				{
-					rank: "an***ew",
-					prize: `HUBLOT Classic Fusion Aerofusion Chronograph Titanium `
-				},
-				{
-					rank: "Ch****un",
-					prize: `HUBLOT Classic Fusion Chronograph Titanium Blue `
-				},
-				{ rank: "en*****12", prize: `MYR 18,000` },
-				{ rank: "in******ah", prize: `MYR 15,000` },
-				{ rank: "ed***00", prize: `MYR 13,000` },
-				{ rank: "ch**ai", prize: `MYR 10,000` },
-				{ rank: "qq******99", prize: `MYR 8,000` },
-				{ rank: "Ho***ig", prize: `MYR 5,000` },
-				{ rank: "第十名" }
-			],
-			[defEuroTourBtns.MonthlyTournament.value]: [
+			prizeList: [
 				{
 					rank: "冠军",
-					prize: "MYR 8,000"
-				},
-				{ rank: "亚军", prize: `MYR 5,000` },
-				{ rank: "季军", prize: `MYR 3,000` }
-			]
-		},
-		en: {
-			[defEuroTourBtns.FinalTournament.value]: [
-				{
-					rank: "xi*******23",
-					prize: "HUBLOT Big Bang Gold Ceramic"
+					prizes: ["300,000", "30,000", "10,000"]
 				},
 				{
-					rank: "an***ew",
-					prize: `HUBLOT Classic Fusion Aerofusion Chronograph Titanium `
+					rank: "亚军",
+					prizes: ["250,000", "25,000", "8,000"]
 				},
 				{
-					rank: "Ch****un",
-					prize: `HUBLOT Classic Fusion Chronograph Titanium Blue `
+					rank: "季军",
+					prizes: ["180,000", "18,000", "6,000"]
 				},
-				{ rank: "en*****12", prize: `MYR 18,000` },
-				{ rank: "in******ah", prize: `MYR 15,000` },
-				{ rank: "ed***00", prize: `MYR 13,000` },
-				{ rank: "ch**ai", prize: `MYR 10,000` },
-				{ rank: "qq******99", prize: `MYR 8,000` },
-				{ rank: "Ho***ig", prize: `MYR 5,000` },
-				{ rank: "10th Runner Up" }
+				{
+					rank: "殿军",
+					prizes: ["150,000", "15,000", "5,000"]
+				},
+				{
+					rank: "第五名",
+					prizes: ["120,000", "12,000", "4,000"]
+				},
+				{
+					rank: "第六名",
+					prizes: ["100,000", "10,000", "3,000"]
+				},
+				{
+					rank: "第七名",
+					prizes: ["90,000", "9,000", "2,000"]
+				},
+				{ rank: "第八名", prizes: ["80,000", "8,000", "1,000"] },
+				{
+					rank: "第九 - 第30名",
+					prizes: ["50,000", "5,000", "500"]
+				}
 			],
-			[defEuroTourBtns.MonthlyTournament.value]: [
+			pointCalculation: [
 				{
-					rank: "CHAMPION",
-					prize: "MYR 8,000"
+					rank: "体育",
+					prizes: ["100", "1"]
 				},
-				{ rank: "2nd Runner Up", prize: `MYR 5,000` },
-				{ rank: "3rd Runner Up", prize: `MYR 3,000` }
+				{
+					rank: "电子游戏",
+					prizes: ["500", "1"]
+				},
+				{
+					rank: "真人娱乐",
+					prizes: ["1000", "1"]
+				}
 			]
 		},
 		id: {
-			[defEuroTourBtns.FinalTournament.value]: [
-				{
-					rank: "xi*******23",
-					prize: "HUBLOT Big Bang Gold Ceramic"
-				},
-				{
-					rank: "an***ew",
-					prize: `HUBLOT Classic Fusion Aerofusion Chronograph Titanium `
-				},
-				{
-					rank: "Ch****un",
-					prize: `HUBLOT Classic Fusion Chronograph Titanium Blue `
-				},
-				{ rank: "en*****12", prize: `MYR 18,000` },
-				{ rank: "in******ah", prize: `MYR 15,000` },
-				{ rank: "ed***00", prize: `MYR 13,000` },
-				{ rank: "ch**ai", prize: `MYR 10,000` },
-				{ rank: "qq******99", prize: `MYR 8,000` },
-				{ rank: "Ho***ig", prize: `MYR 5,000` },
-				{ rank: "Juara 10" }
-			],
-			[defEuroTourBtns.MonthlyTournament.value]: [
+			prizeList: [
 				{
 					rank: "PEMENANG",
-					prize: "MYR 8,000"
+					prizes: ["300,000", "30,000", "10,000"]
 				},
-				{ rank: "Juara 2", prize: `MYR 5,000` },
-				{ rank: "Juara 3", prize: `MYR 3,000` }
+				{
+					rank: "JUARA 2",
+					prizes: ["250,000", "25,000", "8,000"]
+				},
+				{
+					rank: "JUARA 3",
+					prizes: ["180,000", "18,000", "6,000"]
+				},
+				{
+					rank: "JUARA 4",
+					prizes: ["150,000", "15,000", "5,000"]
+				},
+				{
+					rank: "JUARA 5",
+					prizes: ["120,000", "12,000", "4,000"]
+				},
+				{
+					rank: "JUARA 6",
+					prizes: ["100,000", "10,000", "3,000"]
+				},
+				{
+					rank: "JUARA 7",
+					prizes: ["90,000", "9,000", "2,000"]
+				},
+				{
+					rank: "JUARA 8",
+					prizes: ["80,000", "8,000", "1,000"]
+				},
+				{
+					rank: "JUARA 9 - 30",
+					prizes: ["50,000", "5,000", "500"]
+				}
+			],
+			pointCalculation: [
+				{
+					rank: "SPORTS",
+					prizes: ["100", "1"]
+				},
+				{
+					rank: "SLOTS",
+					prizes: ["500", "1"]
+				},
+				{
+					rank: "LIVE CASINO",
+					prizes: ["1000", "1"]
+				}
+			]
+		},
+		en: {
+			prizeList: [
+				{
+					rank: "CHAMPION",
+					prizes: ["300,000", "30,000", "10,000"]
+				},
+				{
+					rank: "1st Runner Up",
+					prizes: ["250,000", "25,000", "8,000"]
+				},
+				{
+					rank: "2nd Runner Up",
+					prizes: ["180,000", "18,000", "6,000"]
+				},
+				{
+					rank: "3rd Runner Up",
+					prizes: ["150,000", "15,000", "5,000"]
+				},
+				{
+					rank: "4th Runner Up",
+					prizes: ["120,000", "12,000", "4,000"]
+				},
+				{
+					rank: "5th Runner Up",
+					prizes: ["100,000", "10,000", "3,000"]
+				},
+				{
+					rank: "6th Runner Up",
+					prizes: ["90,000", "9,000", "2,000"]
+				},
+				{
+					rank: "7th Runner Up",
+					prizes: ["80,000", "8,000", "1,000"]
+				},
+				{
+					rank: "RANK 9th - 30th",
+					prizes: ["50,000", "5,000", "500"]
+				}
+			],
+			pointCalculation: [
+				{
+					rank: "SPORTS",
+					prizes: ["100", "1"]
+				},
+				{
+					rank: "SLOTS",
+					prizes: ["500", "1"]
+				},
+				{
+					rank: "LIVE CASINO",
+					prizes: ["1000", "1"]
+				}
 			]
 		},
 		th: {
-			[defEuroTourBtns.FinalTournament.value]: [
-				{
-					rank: "xi*******23",
-					prize: "HUBLOT Big Bang Gold Ceramic"
-				},
-				{
-					rank: "an***ew",
-					prize: `HUBLOT Classic Fusion Aerofusion Chronograph Titanium `
-				},
-				{
-					rank: "Ch****un",
-					prize: `HUBLOT Classic Fusion Chronograph Titanium Blue `
-				},
-				{ rank: "en*****12", prize: `MYR 18,000` },
-				{ rank: "in******ah", prize: `MYR 15,000` },
-				{ rank: "ed***00", prize: `MYR 13,000` },
-				{ rank: "ch**ai", prize: `MYR 10,000` },
-				{ rank: "qq******99", prize: `MYR 8,000` },
-				{ rank: "Ho***ig", prize: `MYR 5,000` },
-				{ rank: "รองชนะเลิศอันดับ 9" }
-			],
-			[defEuroTourBtns.MonthlyTournament.value]: [
+			prizeList: [
 				{
 					rank: "รางวัลชนะเลิศ",
-					prize: "MYR 8,000"
+					prizes: ["300,000", "30,000", "10,000"]
 				},
-				{ rank: "รองชนะเลิศอันดับ 2", prize: `MYR 5,000` },
-				{ rank: "รองชนะเลิศอันดับ 3", prize: `MYR 3,000` }
+				{
+					rank: "รองชนะเลิศอันดับ 1",
+					prizes: ["250,000", "25,000", "8,000"]
+				},
+				{
+					rank: "รองชนะเลิศอันดับ 2",
+					prizes: ["180,000", "18,000", "6,000"]
+				},
+				{
+					rank: "รองชนะเลิศอันดับ 3",
+					prizes: ["150,000", "15,000", "5,000"]
+				},
+				{
+					rank: "รองชนะเลิศอันดับ 4",
+					prizes: ["120,000", "12,000", "4,000"]
+				},
+				{
+					rank: "รองชนะเลิศอันดับ 5",
+					prizes: ["100,000", "10,000", "3,000"]
+				},
+				{
+					rank: "รองชนะเลิศอันดับ 6",
+					prizes: ["90,000", "9,000", "2,000"]
+				},
+				{
+					rank: "รองชนะเลิศอันดับ 7",
+					prizes: ["80,000", "8,000", "1,000"]
+				},
+				{
+					rank: "อันดับที่ 9 - 30",
+					prizes: ["50,000", "5,000", "500"]
+				}
+			],
+			pointCalculation: [
+				{
+					rank: "กีฬา",
+					prizes: ["100", "1"]
+				},
+				{
+					rank: "สล็อต",
+					prizes: ["500", "1"]
+				},
+				{
+					rank: "คาสิโนสด",
+					prizes: ["1000", "1"]
+				}
+			]
+		},
+		th_en: {
+			prizeList: [
+				{
+					rank: "CHAMPION",
+					prizes: ["300,000", "30,000", "10,000"]
+				},
+				{
+					rank: "1st Runner Up",
+					prizes: ["250,000", "25,000", "8,000"]
+				},
+				{
+					rank: "2nd Runner Up",
+					prizes: ["180,000", "18,000", "6,000"]
+				},
+				{
+					rank: "3rd Runner Up",
+					prizes: ["150,000", "15,000", "5,000"]
+				},
+				{
+					rank: "4th Runner Up",
+					prizes: ["120,000", "12,000", "4,000"]
+				},
+				{
+					rank: "5th Runner Up",
+					prizes: ["100,000", "10,000", "3,000"]
+				},
+				{
+					rank: "6th Runner Up",
+					prizes: ["90,000", "9,000", "2,000"]
+				},
+				{
+					rank: "7th Runner Up",
+					prizes: ["80,000", "8,000", "1,000"]
+				},
+				{
+					rank: "RANK 9th - 30th",
+					prizes: ["50,000", "5,000", "500"]
+				}
+			],
+			pointCalculation: [
+				{
+					rank: "SPORTS",
+					prizes: ["100", "1"]
+				},
+				{
+					rank: "SLOTS",
+					prizes: ["500", "1"]
+				},
+				{
+					rank: "LIVE CASINO",
+					prizes: ["1000", "1"]
+				}
+			]
+		},
+		id_en: {
+			prizeList: [
+				{
+					rank: "CHAMPION",
+					prizes: ["300,000", "30,000", "10,000"]
+				},
+				{
+					rank: "1st Runner Up",
+					prizes: ["250,000", "25,000", "8,000"]
+				},
+				{
+					rank: "2nd Runner Up",
+					prizes: ["180,000", "18,000", "6,000"]
+				},
+				{
+					rank: "3rd Runner Up",
+					prizes: ["150,000", "15,000", "5,000"]
+				},
+				{
+					rank: "4th Runner Up",
+					prizes: ["120,000", "12,000", "4,000"]
+				},
+				{
+					rank: "5th Runner Up",
+					prizes: ["100,000", "10,000", "3,000"]
+				},
+				{
+					rank: "6th Runner Up",
+					prizes: ["90,000", "9,000", "2,000"]
+				},
+				{
+					rank: "7th Runner Up",
+					prizes: ["80,000", "8,000", "1,000"]
+				},
+				{
+					rank: "RANK 9th - 30th",
+					prizes: ["50,000", "5,000", "500"]
+				}
+			],
+			pointCalculation: [
+				{
+					rank: "SPORTS",
+					prizes: ["100", "1"]
+				},
+				{
+					rank: "SLOTS",
+					prizes: ["500", "1"]
+				},
+				{
+					rank: "LIVE CASINO",
+					prizes: ["1000", "1"]
+				}
+			]
+		},
+		hi_en: {
+			prizeList: [
+				{
+					rank: "CHAMPION",
+					prizes: ["300,000", "30,000", "10,000"]
+				},
+				{
+					rank: "1st Runner Up",
+					prizes: ["250,000", "25,000", "8,000"]
+				},
+				{
+					rank: "2nd Runner Up",
+					prizes: ["180,000", "18,000", "6,000"]
+				},
+				{
+					rank: "3rd Runner Up",
+					prizes: ["150,000", "15,000", "5,000"]
+				},
+				{
+					rank: "4th Runner Up",
+					prizes: ["120,000", "12,000", "4,000"]
+				},
+				{
+					rank: "5th Runner Up",
+					prizes: ["100,000", "10,000", "3,000"]
+				},
+				{
+					rank: "6th Runner Up",
+					prizes: ["90,000", "9,000", "2,000"]
+				},
+				{
+					rank: "7th Runner Up",
+					prizes: ["80,000", "8,000", "1,000"]
+				},
+				{
+					rank: "RANK 9th - 30th",
+					prizes: ["50,000", "5,000", "500"]
+				}
+			],
+			pointCalculation: [
+				{
+					rank: "SPORTS",
+					prizes: ["100", "1"]
+				},
+				{
+					rank: "SLOTS",
+					prizes: ["500", "1"]
+				},
+				{
+					rank: "LIVE CASINO",
+					prizes: ["1000", "1"]
+				}
+			]
+		},
+		hi: {
+			prizeList: [
+				{
+					rank: "CHAMPION",
+					prizes: ["300,000", "30,000", "10,000"]
+				},
+				{
+					rank: "1st Runner Up",
+					prizes: ["250,000", "25,000", "8,000"]
+				},
+				{
+					rank: "2nd Runner Up",
+					prizes: ["180,000", "18,000", "6,000"]
+				},
+				{
+					rank: "3rd Runner Up",
+					prizes: ["150,000", "15,000", "5,000"]
+				},
+				{
+					rank: "4th Runner Up",
+					prizes: ["120,000", "12,000", "4,000"]
+				},
+				{
+					rank: "5th Runner Up",
+					prizes: ["100,000", "10,000", "3,000"]
+				},
+				{
+					rank: "6th Runner Up",
+					prizes: ["90,000", "9,000", "2,000"]
+				},
+				{
+					rank: "7th Runner Up",
+					prizes: ["80,000", "8,000", "1,000"]
+				},
+				{
+					rank: "RANK 9th - 30th",
+					prizes: ["50,000", "5,000", "500"]
+				}
+			],
+			pointCalculation: [
+				{
+					rank: "SPORTS",
+					prizes: ["100", "1"]
+				},
+				{
+					rank: "SLOTS",
+					prizes: ["500", "1"]
+				},
+				{
+					rank: "LIVE CASINO",
+					prizes: ["1000", "1"]
+				}
 			]
 		}
 	},
 	IDR: {
 		cs: {
-			[defEuroTourBtns.FinalTournament.value]: [
-				{ rank: "冠军", prize: "LOGAM MULIA 100g" },
-				{ rank: "亚军", prize: `LOGAM MULIA 75g` },
-				{ rank: "季军", prize: `LOGAM MULIA 50g` },
-				{ rank: "殿军", prize: `IDR 35.000.000` },
-				{ rank: "第五名", prize: `IDR 30.000.000` },
-				{ rank: "He******ah", prize: `IDR 25.000.000` },
-				{ rank: "第七名", prize: `IDR 15.000.000` },
-				{ rank: "第八名", prize: `IDR 8.000.000` },
-				{ rank: "第九名", prize: `IDR 5.000.000` },
-				{ rank: "第十名" }
+			prizeList: [
+				{
+					rank: "冠军",
+					prizes: ["400,000,000", "13,500", "15,000,000"]
+				},
+				{
+					rank: "亚军",
+					prizes: ["300,000,000", "10,000", "12,000,000"]
+				},
+				{
+					rank: "季军",
+					prizes: ["220,000,000", "7,300", "8,500,000"]
+				},
+				{
+					rank: "殿军",
+					prizes: ["180,000,000", "6,000", "6,500,000"]
+				},
+				{
+					rank: "第五名",
+					prizes: ["150,000,000", "5,000", "5,000,000"]
+				},
+				{
+					rank: "第六名",
+					prizes: ["130,000,000", "4,300", "3,500,000"]
+				},
+				{
+					rank: "第七名",
+					prizes: ["100,000,000", "3,300", "2,000,000"]
+				},
+				{
+					rank: "第八名",
+					prizes: ["65,000,000", "2,000", "1,000,000"]
+				},
+				{
+					rank: "第九 - 第30名",
+					prizes: ["35,000,000", "1,200", "500,000"]
+				}
 			],
-			[defEuroTourBtns.MonthlyTournament.value]: [
-				{ rank: "冠军", prize: "IDR 15.000.000" },
-				{ rank: "亚军", prize: `IDR 12.000.000` },
-				{ rank: "季军", prize: `IDR 8.000.000` }
-			]
-		},
-		en: {
-			[defEuroTourBtns.FinalTournament.value]: [
-				{ rank: "CHAMPION", prize: "LOGAM MULIA 100g" },
-				{ rank: "2nd Runner Up", prize: `LOGAM MULIA 75g` },
-				{ rank: "3rd Runner Up", prize: `LOGAM MULIA 50g` },
-				{ rank: "4th Runner Up", prize: `IDR 35.000.000` },
-				{ rank: "5th Runner Up", prize: `IDR 30.000.000` },
-				{ rank: "He******ah", prize: `IDR 25.000.000` },
-				{ rank: "7th Runner Up", prize: `IDR 15.000.000` },
-				{ rank: "8th Runner Up", prize: `IDR 8.000.000` },
-				{ rank: "9th Runner Up", prize: `IDR 5.000.000` },
-				{ rank: "10th Runner Up" }
-			],
-			[defEuroTourBtns.MonthlyTournament.value]: [
-				{ rank: "CHAMPION", prize: "IDR 15.000.000" },
-				{ rank: "2nd Runner Up", prize: `IDR 12.000.000` },
-				{ rank: "3rd Runner Up", prize: `IDR 8.000.000` }
+			pointCalculation: [
+				{
+					rank: "体育",
+					prizes: ["300,000", "1"]
+				},
+				{
+					rank: "电子游戏",
+					prizes: ["1,000,000", "1"]
+				},
+				{
+					rank: "真人娱乐",
+					prizes: ["2,500,000", "1"]
+				}
 			]
 		},
 		id: {
-			[defEuroTourBtns.FinalTournament.value]: [
-				{ rank: "PEMENANG", prize: "LOGAM MULIA 100g" },
-				{ rank: "Juara 2", prize: `LOGAM MULIA 75g` },
-				{ rank: "Juara 3", prize: `LOGAM MULIA 50g` },
-				{ rank: "Juara 4", prize: `IDR 35.000.000` },
-				{ rank: "Juara 5", prize: `IDR 30.000.000` },
-				{ rank: "He******ah", prize: `IDR 25.000.000` },
-				{ rank: "Juara 7", prize: `IDR 15.000.000` },
-				{ rank: "Juara 8", prize: `IDR 8.000.000` },
-				{ rank: "Juara 9", prize: `IDR 5.000.000` },
-				{ rank: "Juara 10" }
+			prizeList: [
+				{
+					rank: "PEMENANG",
+					prizes: ["400,000,000", "13,500", "15,000,000"]
+				},
+				{
+					rank: "JUARA 2",
+					prizes: ["300,000,000", "10,000", "12,000,000"]
+				},
+				{
+					rank: "JUARA 3",
+					prizes: ["220,000,000", "7,300", "8,500,000"]
+				},
+				{
+					rank: "JUARA 4",
+					prizes: ["180,000,000", "6,000", "6,500,000"]
+				},
+				{
+					rank: "JUARA 5",
+					prizes: ["150,000,000", "5,000", "5,000,000"]
+				},
+				{
+					rank: "JUARA 6",
+					prizes: ["130,000,000", "4,300", "3,500,000"]
+				},
+				{
+					rank: "JUARA 7",
+					prizes: ["100,000,000", "3,300", "2,000,000"]
+				},
+				{
+					rank: "JUARA 8",
+					prizes: ["65,000,000", "2,000", "1,000,000"]
+				},
+				{
+					rank: "JUARA 9 - 30",
+					prizes: ["35,000,000", "1,200", "500,000"]
+				}
 			],
-			[defEuroTourBtns.MonthlyTournament.value]: [
-				{ rank: "PEMENANG", prize: "IDR 15.000.000" },
-				{ rank: "Juara 2", prize: `IDR 12.000.000` },
-				{ rank: "Juara 3", prize: `IDR 8.000.000` }
+			pointCalculation: [
+				{
+					rank: "SPORTS",
+					prizes: ["300,000", "1"]
+				},
+				{
+					rank: "SLOTS",
+					prizes: ["1,000,000", "1"]
+				},
+				{
+					rank: "LIVE CASINO",
+					prizes: ["2,500,000", "1"]
+				}
+			]
+		},
+		en: {
+			prizeList: [
+				{
+					rank: "CHAMPION",
+					prizes: ["400,000,000", "13,500", "15,000,000"]
+				},
+				{
+					rank: "1st Runner Up",
+					prizes: ["300,000,000", "10,000", "12,000,000"]
+				},
+				{
+					rank: "2nd Runner Up",
+					prizes: ["220,000,000", "7,300", "8,500,000"]
+				},
+				{
+					rank: "3rd Runner Up",
+					prizes: ["180,000,000", "6,000", "6,500,000"]
+				},
+				{
+					rank: "4th Runner Up",
+					prizes: ["150,000,000", "5,000", "5,000,000"]
+				},
+				{
+					rank: "5th Runner Up",
+					prizes: ["130,000,000", "4,300", "3,500,000"]
+				},
+				{
+					rank: "6th Runner Up",
+					prizes: ["100,000,000", "3,300", "2,000,000"]
+				},
+				{
+					rank: "7th Runner Up",
+					prizes: ["65,000,000", "2,000", "1,000,000"]
+				},
+				{
+					rank: "RANK 9th - 30th",
+					prizes: ["35,000,000", "1,200", "500,000"]
+				}
+			],
+			pointCalculation: [
+				{
+					rank: "SPORTS",
+					prizes: ["300,000", "1"]
+				},
+				{
+					rank: "SLOTS",
+					prizes: ["1,000,000", "1"]
+				},
+				{
+					rank: "LIVE CASINO",
+					prizes: ["2,500,000", "1"]
+				}
 			]
 		},
 		th: {
-			[defEuroTourBtns.FinalTournament.value]: [
-				{ rank: "รางวัลชนะเลิศ", prize: "LOGAM MULIA 100g" },
-				{ rank: "รองชนะเลิศอันดับ 1", prize: `LOGAM MULIA 75g` },
-				{ rank: "รองชนะเลิศอันดับ 2", prize: `LOGAM MULIA 50g` },
-				{ rank: "รองชนะเลิศอันดับ 3", prize: `IDR 35.000.000` },
-				{ rank: "รองชนะเลิศอันดับ 4", prize: `IDR 30.000.000` },
-				{ rank: "He******ah", prize: `IDR 25.000.000` },
-				{ rank: "รองชนะเลิศอันดับ 6", prize: `IDR 15.000.000` },
-				{ rank: "รองชนะเลิศอันดับ 7", prize: `IDR 8.000.000` },
-				{ rank: "รองชนะเลิศอันดับ 8", prize: `IDR 5.000.000` },
-				{ rank: "รองชนะเลิศอันดับ 9" }
+			prizeList: [
+				{
+					rank: "รางวัลชนะเลิศ",
+					prizes: ["400,000,000", "13,500", "15,000,000"]
+				},
+				{
+					rank: "รองชนะเลิศอันดับ 1",
+					prizes: ["300,000,000", "10,000", "12,000,000"]
+				},
+				{
+					rank: "รองชนะเลิศอันดับ 2",
+					prizes: ["220,000,000", "7,300", "8,500,000"]
+				},
+				{
+					rank: "รองชนะเลิศอันดับ 3",
+					prizes: ["180,000,000", "6,000", "6,500,000"]
+				},
+				{
+					rank: "รองชนะเลิศอันดับ 4",
+					prizes: ["150,000,000", "5,000", "5,000,000"]
+				},
+				{
+					rank: "รองชนะเลิศอันดับ 5",
+					prizes: ["130,000,000", "4,300", "3,500,000"]
+				},
+				{
+					rank: "รองชนะเลิศอันดับ 6",
+					prizes: ["100,000,000", "3,300", "2,000,000"]
+				},
+				{
+					rank: "รองชนะเลิศอันดับ 7",
+					prizes: ["65,000,000", "2,000", "1,000,000"]
+				},
+				{
+					rank: "อันดับที่ 9 - 30",
+					prizes: ["35,000,000", "1,200", "500,000"]
+				}
 			],
-			[defEuroTourBtns.MonthlyTournament.value]: [
-				{ rank: "รางวัลชนะเลิศ", prize: "IDR 15.000.000" },
-				{ rank: "รองชนะเลิศอันดับ 2", prize: `IDR 12.000.000` },
-				{ rank: "รองชนะเลิศอันดับ 3", prize: `IDR 8.000.000` }
+			pointCalculation: [
+				{
+					rank: "กีฬา",
+					prizes: ["300,000", "1"]
+				},
+				{
+					rank: "สล็อต",
+					prizes: ["1,000,000", "1"]
+				},
+				{
+					rank: "คาสิโนสด",
+					prizes: ["2,500,000", "1"]
+				}
+			]
+		},
+		th_en: {
+			prizeList: [
+				{
+					rank: "CHAMPION",
+					prizes: ["400,000,000", "13,500", "15,000,000"]
+				},
+				{
+					rank: "1st Runner Up",
+					prizes: ["300,000,000", "10,000", "12,000,000"]
+				},
+				{
+					rank: "2nd Runner Up",
+					prizes: ["220,000,000", "7,300", "8,500,000"]
+				},
+				{
+					rank: "3rd Runner Up",
+					prizes: ["180,000,000", "6,000", "6,500,000"]
+				},
+				{
+					rank: "4th Runner Up",
+					prizes: ["150,000,000", "5,000", "5,000,000"]
+				},
+				{
+					rank: "5th Runner Up",
+					prizes: ["130,000,000", "4,300", "3,500,000"]
+				},
+				{
+					rank: "6th Runner Up",
+					prizes: ["100,000,000", "3,300", "2,000,000"]
+				},
+				{
+					rank: "7th Runner Up",
+					prizes: ["65,000,000", "2,000", "1,000,000"]
+				},
+				{
+					rank: "RANK 9th - 30th",
+					prizes: ["35,000,000", "1,200", "500,000"]
+				}
+			],
+			pointCalculation: [
+				{
+					rank: "SPORTS",
+					prizes: ["300,000", "1"]
+				},
+				{
+					rank: "SLOTS",
+					prizes: ["1,000,000", "1"]
+				},
+				{
+					rank: "LIVE CASINO",
+					prizes: ["2,500,000", "1"]
+				}
+			]
+		},
+		id_en: {
+			prizeList: [
+				{
+					rank: "CHAMPION",
+					prizes: ["400,000,000", "13,500", "15,000,000"]
+				},
+				{
+					rank: "1st Runner Up",
+					prizes: ["300,000,000", "10,000", "12,000,000"]
+				},
+				{
+					rank: "2nd Runner Up",
+					prizes: ["220,000,000", "7,300", "8,500,000"]
+				},
+				{
+					rank: "3rd Runner Up",
+					prizes: ["180,000,000", "6,000", "6,500,000"]
+				},
+				{
+					rank: "4th Runner Up",
+					prizes: ["150,000,000", "5,000", "5,000,000"]
+				},
+				{
+					rank: "5th Runner Up",
+					prizes: ["130,000,000", "4,300", "3,500,000"]
+				},
+				{
+					rank: "6th Runner Up",
+					prizes: ["100,000,000", "3,300", "2,000,000"]
+				},
+				{
+					rank: "7th Runner Up",
+					prizes: ["65,000,000", "2,000", "1,000,000"]
+				},
+				{
+					rank: "RANK 9th - 30th",
+					prizes: ["35,000,000", "1,200", "500,000"]
+				}
+			],
+			pointCalculation: [
+				{
+					rank: "SPORTS",
+					prizes: ["300,000", "1"]
+				},
+				{
+					rank: "SLOTS",
+					prizes: ["1,000,000", "1"]
+				},
+				{
+					rank: "LIVE CASINO",
+					prizes: ["2,500,000", "1"]
+				}
+			]
+		},
+		hi_en: {
+			prizeList: [
+				{
+					rank: "CHAMPION",
+					prizes: ["400,000,000", "13,500", "15,000,000"]
+				},
+				{
+					rank: "1st Runner Up",
+					prizes: ["300,000,000", "10,000", "12,000,000"]
+				},
+				{
+					rank: "2nd Runner Up",
+					prizes: ["220,000,000", "7,300", "8,500,000"]
+				},
+				{
+					rank: "3rd Runner Up",
+					prizes: ["180,000,000", "6,000", "6,500,000"]
+				},
+				{
+					rank: "4th Runner Up",
+					prizes: ["150,000,000", "5,000", "5,000,000"]
+				},
+				{
+					rank: "5th Runner Up",
+					prizes: ["130,000,000", "4,300", "3,500,000"]
+				},
+				{
+					rank: "6th Runner Up",
+					prizes: ["100,000,000", "3,300", "2,000,000"]
+				},
+				{
+					rank: "7th Runner Up",
+					prizes: ["65,000,000", "2,000", "1,000,000"]
+				},
+				{
+					rank: "RANK 9th - 30th",
+					prizes: ["35,000,000", "1,200", "500,000"]
+				}
+			],
+			pointCalculation: [
+				{
+					rank: "SPORTS",
+					prizes: ["300,000", "1"]
+				},
+				{
+					rank: "SLOTS",
+					prizes: ["1,000,000", "1"]
+				},
+				{
+					rank: "LIVE CASINO",
+					prizes: ["2,500,000", "1"]
+				}
 			]
 		}
 	},
 	THB: {
 		cs: {
-			[defEuroTourBtns.FinalTournament.value]: [
-				{ rank: "冠军", prize: "THB 80,000 " },
-				{ rank: "pt****60", prize: `THB 50,000` },
-				{ rank: "Pa**rn", prize: `THB 35,000` },
-				{ rank: "殿军", prize: `THB 30,000` },
-				{ rank: "Th********75", prize: `THB 25,000` },
-				{ rank: "ro*******in", prize: `THB 20,000` },
-				{ rank: "oa*****99", prize: `THB 15,000` },
-				{ rank: "Th****st", prize: `THB 10,000` },
-				{ rank: "Hi**gu", prize: `THB 5,000` },
-				{ rank: "第十名" }
+			prizeList: [
+				{
+					rank: "冠军",
+					prizes: ["1,200,000", "24,000", "50,000"]
+				},
+				{
+					rank: "亚军",
+					prizes: ["1,100,000", "22,000", "40,000"]
+				},
+				{
+					rank: "季军",
+					prizes: ["950,000", "19,000", "35,000"]
+				},
+				{
+					rank: "殿军",
+					prizes: ["800,000", "16,000", "25,000"]
+				},
+				{
+					rank: "第五名",
+					prizes: ["700,000", "14,000", "20,000"]
+				},
+				{
+					rank: "第六名",
+					prizes: ["600,000", "12,000", "15,000"]
+				},
+				{
+					rank: "第七名",
+					prizes: ["500,000", "10,000", "10,000"]
+				},
+				{ rank: "第八名", prizes: ["400,000", "8,000", "5,000"] },
+				{
+					rank: "第九 - 第30名",
+					prizes: ["300,000", "6,000", "3,000"]
+				}
 			],
-			[defEuroTourBtns.MonthlyTournament.value]: [
-				{ rank: "冠军", prize: "THB 15,000 " },
-				{ rank: "亚军", prize: `THB 12,000` },
-				{ rank: "季军", prize: `THB 8,000` }
-			]
-		},
-		en: {
-			[defEuroTourBtns.FinalTournament.value]: [
-				{ rank: "CHAMPION", prize: "THB 80,000 " },
-				{ rank: "pt****60", prize: `THB 50,000` },
-				{ rank: "Pa**rn", prize: `THB 35,000` },
-				{ rank: "4th Runner Up", prize: `THB 30,000` },
-				{ rank: "Th********75", prize: `THB 25,000` },
-				{ rank: "ro*******in", prize: `THB 20,000` },
-				{ rank: "oa*****99", prize: `THB 15,000` },
-				{ rank: "Th****st", prize: `THB 10,000` },
-				{ rank: "Hi**gu", prize: `THB 5,000` },
-				{ rank: "10th" }
-			],
-			[defEuroTourBtns.MonthlyTournament.value]: [
-				{ rank: "CHAMPION", prize: "THB 15,000 " },
-				{ rank: "2nd Runner Up", prize: `THB 12,000` },
-				{ rank: "3rd Runner Up", prize: `THB 8,000` }
+			pointCalculation: [
+				{
+					rank: "体育",
+					prizes: ["500", "1"]
+				},
+				{
+					rank: "电子游戏",
+					prizes: ["3000", "1"]
+				},
+				{
+					rank: "真人娱乐",
+					prizes: ["6000", "1"]
+				}
 			]
 		},
 		id: {
-			[defEuroTourBtns.FinalTournament.value]: [
-				{ rank: "PEMENANG", prize: "THB 80,000 " },
-				{ rank: "pt****60", prize: `THB 50,000` },
-				{ rank: "Pa**rn", prize: `THB 35,000` },
-				{ rank: "Juara 4", prize: `THB 30,000` },
-				{ rank: "Th********75", prize: `THB 25,000` },
-				{ rank: "ro*******in", prize: `THB 20,000` },
-				{ rank: "oa*****99", prize: `THB 15,000` },
-				{ rank: "Th****st", prize: `THB 10,000` },
-				{ rank: "Hi**gu", prize: `THB 5,000` },
-				{ rank: "Juara 10" }
+			prizeList: [
+				{
+					rank: "PEMENANG",
+					prizes: ["1,200,000", "24,000", "50,000"]
+				},
+				{
+					rank: "JUARA 2",
+					prizes: ["1,100,000", "22,000", "40,000"]
+				},
+				{
+					rank: "JUARA 3",
+					prizes: ["950,000", "19,000", "35,000"]
+				},
+				{
+					rank: "JUARA 4",
+					prizes: ["800,000", "16,000", "25,000"]
+				},
+				{
+					rank: "JUARA 5",
+					prizes: ["700,000", "14,000", "20,000"]
+				},
+				{
+					rank: "JUARA 6",
+					prizes: ["600,000", "12,000", "15,000"]
+				},
+				{
+					rank: "JUARA 7",
+					prizes: ["500,000", "10,000", "10,000"]
+				},
+				{
+					rank: "JUARA 8",
+					prizes: ["400,000", "8,000", "5,000"]
+				},
+				{
+					rank: "JUARA 9 - 30",
+					prizes: ["300,000", "6,000", "3,000"]
+				}
 			],
-			[defEuroTourBtns.MonthlyTournament.value]: [
-				{ rank: "รางวัลชนะเลิศ", prize: "THB 15,000 " },
-				{ rank: "รองชนะเลิศอันดับ 1", prize: `THB 12,000` },
-				{ rank: "รองชนะเลิศอันดับ 2", prize: `THB 8,000` }
+			pointCalculation: [
+				{
+					rank: "SPORTS",
+					prizes: ["500", "1"]
+				},
+				{
+					rank: "SLOTS",
+					prizes: ["3000", "1"]
+				},
+				{
+					rank: "LIVE CASINO",
+					prizes: ["6000", "1"]
+				}
+			]
+		},
+		en: {
+			prizeList: [
+				{
+					rank: "CHAMPION",
+					prizes: ["1,200,000", "24,000", "50,000"]
+				},
+				{
+					rank: "1st Runner Up",
+					prizes: ["1,100,000", "22,000", "40,000"]
+				},
+				{
+					rank: "2nd Runner Up",
+					prizes: ["950,000", "19,000", "35,000"]
+				},
+				{
+					rank: "3rd Runner Up",
+					prizes: ["800,000", "16,000", "25,000"]
+				},
+				{
+					rank: "4th Runner Up",
+					prizes: ["700,000", "14,000", "20,000"]
+				},
+				{
+					rank: "5th Runner Up",
+					prizes: ["600,000", "12,000", "15,000"]
+				},
+				{
+					rank: "6th Runner Up",
+					prizes: ["500,000", "10,000", "10,000"]
+				},
+				{
+					rank: "7th Runner Up",
+					prizes: ["400,000", "8,000", "5,000"]
+				},
+				{
+					rank: "RANK 9th - 30th",
+					prizes: ["300,000", "6,000", "3,000"]
+				}
+			],
+			pointCalculation: [
+				{
+					rank: "SPORTS",
+					prizes: ["500", "1"]
+				},
+				{
+					rank: "SLOTS",
+					prizes: ["3000", "1"]
+				},
+				{
+					rank: "LIVE CASINO",
+					prizes: ["6000", "1"]
+				}
 			]
 		},
 		th: {
-			[defEuroTourBtns.FinalTournament.value]: [
-				{ rank: "รางวัลชนะเลิศ", prize: "THB 80,000 " },
-				{ rank: "pt****60", prize: `THB 50,000` },
-				{ rank: "Pa**rn", prize: `THB 35,000` },
-				{ rank: "รองชนะเลิศอันดับ 3", prize: `THB 30,000` },
-				{ rank: "Th********75", prize: `THB 25,000` },
-				{ rank: "ro*******in", prize: `THB 20,000` },
-				{ rank: "oa*****99", prize: `THB 15,000` },
-				{ rank: "Th****st", prize: `THB 10,000` },
-				{ rank: "Hi**gu", prize: `THB 5,000` },
-				{ rank: "รองชนะเลิศอันดับ 9" }
+			prizeList: [
+				{
+					rank: "รางวัลชนะเลิศ",
+					prizes: ["1,200,000", "24,000", "50,000"]
+				},
+				{
+					rank: "รองชนะเลิศอันดับ 1",
+					prizes: ["1,100,000", "22,000", "40,000"]
+				},
+				{
+					rank: "รองชนะเลิศอันดับ 2",
+					prizes: ["950,000", "19,000", "35,000"]
+				},
+				{
+					rank: "รองชนะเลิศอันดับ 3",
+					prizes: ["800,000", "16,000", "25,000"]
+				},
+				{
+					rank: "รองชนะเลิศอันดับ 4",
+					prizes: ["700,000", "14,000", "20,000"]
+				},
+				{
+					rank: "รองชนะเลิศอันดับ 5",
+					prizes: ["600,000", "12,000", "15,000"]
+				},
+				{
+					rank: "รองชนะเลิศอันดับ 6",
+					prizes: ["500,000", "10,000", "10,000"]
+				},
+				{
+					rank: "รองชนะเลิศอันดับ 7",
+					prizes: ["400,000", "8,000", "5,000"]
+				},
+				{
+					rank: "อันดับที่ 9 - 30",
+					prizes: ["300,000", "6,000", "3,000"]
+				}
 			],
-			[defEuroTourBtns.MonthlyTournament.value]: [
-				{ rank: "รางวัลชนะเลิศ", prize: "THB 15,000 " },
-				{ rank: "รองชนะเลิศอันดับ 1", prize: `THB 12,000` },
-				{ rank: "รองชนะเลิศอันดับ 2", prize: `THB 8,000` }
+			pointCalculation: [
+				{
+					rank: "กีฬา",
+					prizes: ["500", "1"]
+				},
+				{
+					rank: "สล็อต",
+					prizes: ["3000", "1"]
+				},
+				{
+					rank: "คาสิโนสด",
+					prizes: ["6000", "1"]
+				}
+			]
+		},
+		id_en: {
+			prizeList: [
+				{
+					rank: "CHAMPION",
+					prizes: ["1,200,000", "24,000", "50,000"]
+				},
+				{
+					rank: "1st Runner Up",
+					prizes: ["1,100,000", "22,000", "40,000"]
+				},
+				{
+					rank: "2nd Runner Up",
+					prizes: ["950,000", "19,000", "35,000"]
+				},
+				{
+					rank: "3rd Runner Up",
+					prizes: ["800,000", "16,000", "25,000"]
+				},
+				{
+					rank: "4th Runner Up",
+					prizes: ["700,000", "14,000", "20,000"]
+				},
+				{
+					rank: "5th Runner Up",
+					prizes: ["600,000", "12,000", "15,000"]
+				},
+				{
+					rank: "6th Runner Up",
+					prizes: ["500,000", "10,000", "10,000"]
+				},
+				{
+					rank: "7th Runner Up",
+					prizes: ["400,000", "8,000", "5,000"]
+				},
+				{
+					rank: "RANK 9th - 30th",
+					prizes: ["300,000", "6,000", "3,000"]
+				}
+			],
+			pointCalculation: [
+				{
+					rank: "SPORTS",
+					prizes: ["500", "1"]
+				},
+				{
+					rank: "SLOTS",
+					prizes: ["3000", "1"]
+				},
+				{
+					rank: "LIVE CASINO",
+					prizes: ["6000", "1"]
+				}
+			]
+		},
+		hi_en: {
+			prizeList: [
+				{
+					rank: "CHAMPION",
+					prizes: ["1,200,000", "24,000", "50,000"]
+				},
+				{
+					rank: "1st Runner Up",
+					prizes: ["1,100,000", "22,000", "40,000"]
+				},
+				{
+					rank: "2nd Runner Up",
+					prizes: ["950,000", "19,000", "35,000"]
+				},
+				{
+					rank: "3rd Runner Up",
+					prizes: ["800,000", "16,000", "25,000"]
+				},
+				{
+					rank: "4th Runner Up",
+					prizes: ["700,000", "14,000", "20,000"]
+				},
+				{
+					rank: "5th Runner Up",
+					prizes: ["600,000", "12,000", "15,000"]
+				},
+				{
+					rank: "6th Runner Up",
+					prizes: ["500,000", "10,000", "10,000"]
+				},
+				{
+					rank: "7th Runner Up",
+					prizes: ["400,000", "8,000", "5,000"]
+				},
+				{
+					rank: "RANK 9th - 30th",
+					prizes: ["300,000", "6,000", "3,000"]
+				}
+			],
+			pointCalculation: [
+				{
+					rank: "SPORTS",
+					prizes: ["500", "1"]
+				},
+				{
+					rank: "SLOTS",
+					prizes: ["3000", "1"]
+				},
+				{
+					rank: "LIVE CASINO",
+					prizes: ["6000", "1"]
+				}
+			]
+		},
+		th_en: {
+			prizeList: [
+				{
+					rank: "CHAMPION",
+					prizes: ["1,200,000", "24,000", "50,000"]
+				},
+				{
+					rank: "1st Runner Up",
+					prizes: ["1,100,000", "22,000", "40,000"]
+				},
+				{
+					rank: "2nd Runner Up",
+					prizes: ["950,000", "19,000", "35,000"]
+				},
+				{
+					rank: "3rd Runner Up",
+					prizes: ["800,000", "16,000", "25,000"]
+				},
+				{
+					rank: "4th Runner Up",
+					prizes: ["700,000", "14,000", "20,000"]
+				},
+				{
+					rank: "5th Runner Up",
+					prizes: ["600,000", "12,000", "15,000"]
+				},
+				{
+					rank: "6th Runner Up",
+					prizes: ["500,000", "10,000", "10,000"]
+				},
+				{
+					rank: "7th Runner Up",
+					prizes: ["400,000", "8,000", "5,000"]
+				},
+				{
+					rank: "RANK 9th - 30th",
+					prizes: ["300,000", "6,000", "3,000"]
+				}
+			],
+			pointCalculation: [
+				{
+					rank: "SPORTS",
+					prizes: ["500", "1"]
+				},
+				{
+					rank: "SLOTS",
+					prizes: ["3000", "1"]
+				},
+				{
+					rank: "LIVE CASINO",
+					prizes: ["6000", "1"]
+				}
 			]
 		}
-	},
-	RMB: {
-		[defBtnsOfCategory.Sports.value]: [
-			{
-				rank: "1",
-				prize: "MacBook Pro 13 M1 256GB"
-			},
-			{ rank: "2", prize: `iPad Air 64GB Wi-Fi+Cellular ` },
-			{ rank: "3", prize: `iPad 10.2inch 128GB Wi-Fi ` },
-			{ rank: "4", prize: `988 紅包` },
-			{ rank: "5", prize: `888 紅包` },
-			{ rank: "6", prize: `788 紅包` },
-			{ rank: "7", prize: `688 紅包` },
-			{ rank: "8", prize: `588 紅包` },
-			{ rank: "9", prize: `188 紅包` },
-			{ rank: "10", prize: `88 紅包` }
-		],
-		[defBtnsOfCategory.LiveCasino.value]: [
-			{
-				rank: "1",
-				prize: "MacBook Pro 13 M1 256GB"
-			},
-			{ rank: "2", prize: `iPad Air 64GB Wi-Fi+Cellular ` },
-			{ rank: "3", prize: `iPad 10.2inch 128GB Wi-Fi ` },
-			{ rank: "4", prize: `988 紅包` },
-			{ rank: "5", prize: `888 紅包` },
-			{ rank: "6", prize: `788 紅包` },
-			{ rank: "7", prize: `688 紅包` },
-			{ rank: "8", prize: `588 紅包` },
-			{ rank: "9", prize: `188 紅包` },
-			{ rank: "10", prize: `88 紅包` }
-		]
 	}
 });

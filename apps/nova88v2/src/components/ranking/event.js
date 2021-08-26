@@ -1,51 +1,101 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { defEuroTourBtns } from "./def";
-import BtnBar from "../common/btnBar";
-import { useHandleSelect } from "./hook";
+import axios from "axios";
+import ball from "../../styles/img/ranking/ball.png";
+import slot from "../../styles/img/ranking/slot.png";
+import casino from "../../styles/img/ranking/casino.png";
 import PrizeList from "./prize";
-import { cloudImgURL } from "../../config";
+import { defPrize } from "./def";
+import { GET_LANG_ID } from "../../service/language";
+import { GetCurrencyName } from "../common/common";
+import { cloudImgURL, siteInfo } from "../../config";
 
 const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
-	const { selected, handleSelect } = useHandleSelect({
-		defaultSelect: defEuroTourBtns.FinalTournament.value
+	const { siteDefaultLang } = siteInfo(userInfo.langId);
+	const [URL, setURL] = useState("");
+	const getPrize = Prize({
+		currencyId: userInfo.currencyId,
+		langId: userInfo.langId,
+		i18n
 	});
 
+	useEffect(() => {
+		tncURL();
+	}, []);
+
+	const tncURL = async () => {
+		try {
+			const _URL = `${cloudImgURL}/NovaPromotion/ranking_new_tnc/${userInfo.langId}.html`;
+			await axios.get(_URL);
+			setURL(_URL);
+		} catch (error) {
+			setURL(
+				`${cloudImgURL}/NovaPromotion/ranking_new_tnc/${siteDefaultLang}.html`
+			);
+		}
+	};
+	const rows = getPrize?.map((item, index) => {
+		const { rank, prizes } = item;
+		let img;
+		if (index === 0) img = ball;
+		if (index === 1) img = slot;
+		if (index === 2) img = casino;
+		return (
+			<li key={`prize-${rank}`}>
+				<div>
+					{img && <img src={img} alt="prize" />}
+					{rank}
+				</div>
+				{prizes.map(prize => (
+					<div key={`prize-${rank}-${prize}`}>{prize}</div>
+				))}
+			</li>
+		);
+	});
 	return (
 		<div className={`rankEvent${isOpen ? " active" : ""}`}>
-			<div className="title">{i18n.lbl_Event}</div>
-			<div className="eventTitle">
-				{userInfo?.langId === "th" ? (
-					<>
-						<p>{i18n.lbl_EuroEventTitle3}</p>
-						<p>{i18n.lbl_EuroEventTitle4}</p>
-						<p>{i18n.lbl_EuroEventTitle5}</p>
-					</>
-				) : (
-					<>
-						<p>{i18n.lbl_EuroEventTitle1}</p>
-						<p>{i18n.lbl_EuroEventTitle2}</p>
-					</>
-				)}
+			<div className="title">
+				NOVA88 {i18n.lbl_MonthlyTournament}
+				<div>{i18n.lbl_BePartsOfUs}</div>
 			</div>
-			<BtnBar
-				i18n={i18n}
-				selected={selected}
-				handleSelect={handleSelect}
-				mainKey="leader-board-records-btnsOfCategory"
-				defBtns={defEuroTourBtns}
-			/>
-			<PrizeList userInfo={userInfo} category={selected} i18n={i18n} />
+			<div className="rankList">
+				<div className="title">
+					{i18n.lbl_Points.toUpperCase()}{" "}
+					{i18n.lbl_Calculation.toUpperCase()}
+				</div>
+				<ul>
+					<li>
+						<div>{i18n.lbl_Product.toUpperCase()}</div>
+						<div>{i18n.lbl_Turnover.toUpperCase()}</div>
+						<div>{i18n.lbl_Points.toUpperCase()}</div>
+					</li>
+					{rows}
+				</ul>
+				<div className="title">{i18n.lbl_MonthlyTournament}</div>
+				<PrizeList userInfo={userInfo} i18n={i18n} />
+			</div>
+
 			<div className="btn-group">
 				<a
-					href={`${cloudImgURL}/NovaPromotion/UEFAEuro/${userInfo.langId}.html`}
+					href={URL}
 					target="_blank"
 					rel="noreferrer"
 					className="orange openPopup">
-					{i18n.lbl_MoreDetails}
+					{i18n.lbl_TermsAndConditions}
 				</a>
 			</div>
 		</div>
+	);
+};
+
+const Prize = ({ currencyId, langId, i18n }) => {
+	const currency = GetCurrencyName({ langId, currencyId, i18n });
+	const { siteDefaultLang } = siteInfo(langId);
+	const _langId = GET_LANG_ID(langId);
+	const prize = defPrize();
+	return (
+		prize[currency]?.[_langId]?.pointCalculation ??
+		prize.MYR[siteDefaultLang].pointCalculation
 	);
 };
 
