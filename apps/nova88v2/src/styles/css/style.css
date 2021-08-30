@@ -4663,14 +4663,7 @@ button.clickBtn:before {
   z-index: 1;
   font-weight: bold;
   color: #F77A00;
-  text-shadow: 1px 0px 0px white,
- -1px 0px 0px white,
- 0px 1px 0px white,
- 0px -1px 0px white,
- 1px -1px 0px white,
- 1px 1px 0px white,
- -1px 1px 0px white,
- -1px -1px 0px white;
+  text-shadow: 1px 0px 0px white, -1px 0px 0px white, 0px 1px 0px white, 0px -1px 0px white, 1px -1px 0px white, 1px 1px 0px white, -1px 1px 0px white, -1px -1px 0px white;
 }
 
 .casino .slotList .info span.icon {
@@ -9771,6 +9764,9 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .accountInfo > div button {
