@@ -6,7 +6,7 @@ export const eventTime = {
 	tcg: { endDate: "2021/09/11 11:00:00" },
 	casino_MGP: { endDate: "2021/08/22 11:00:00" },
 	nationalIndependenceDayTheme: {
-		startDate: "2021/08/24 00:00:00",
-		endDate: "2021/09/10 12:00:00"
+		startDate: "2021/08/24 00:00:00"
+		// endDate: "2021/09/10 12:00:00"
 	}
 };
