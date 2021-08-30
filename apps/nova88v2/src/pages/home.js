@@ -109,6 +109,7 @@ const IndexPage = () => {
 						endDate: "2021/05/18 23:59:59"
 					})
 				) {
+					const _langId = validImgLang(userInfo.langId);
 					setPopBox({
 						isOpen: true,
 						content: (
@@ -125,33 +126,7 @@ const IndexPage = () => {
 				}
 			};
 
-			const cookieOfficialAnnounce = "OfficialAnnounce_cookie";
-			const _langId = validImgLang(userInfo.langId);
-			if (readCookie(cookieOfficialAnnounce)) {
-				RankingWinnerPopup();
-			} else {
-				setCookie(cookieOfficialAnnounce, true, 1);
-				setPopBox({
-					isOpen: true,
-					content: (
-						<img
-							src={`https://banner.0814media.net/img/nonlogin/novapopup-380x100_${_langId}.jpg`}
-							alt="OfficialAnnounce"
-						/>
-					),
-					hideCloseBtn: true,
-					hasBtn: true,
-					btnBar: (
-						<div className="btn-group">
-							<button
-								className="orange"
-								onClick={RankingWinnerPopup}>
-								{i18n.lbl_Close}
-							</button>
-						</div>
-					)
-				});
-			}
+			RankingWinnerPopup();
 		}
 	}, [
 		i18n,
