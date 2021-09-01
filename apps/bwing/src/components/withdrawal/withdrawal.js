@@ -24,6 +24,7 @@ import path from "../../path";
 import WalletPanel from "./walletPanel";
 import BankCardPanel from "./bankCardPanel";
 import AmountPanel from "./amountPanel";
+import { defIptStatus } from "../common/inputbox.hint";
 import ImportantNote from "./importantNote";
 
 const initStatus = { checked: null, msg: "" };
@@ -43,7 +44,9 @@ const Panel = () => {
 		bankList: []
 	});
 	const [recentDatas, setRecentDatas] = useState([]);
-	const [withdrawalMin, setWithdrawalMin] = useState(0);
+	const [withdrawalLimit, setWithdrawalLimit] = useState({
+		withdrawalMin: 0
+	});
 	const [redirectPath, setRedirectPath] = useState(null);
 	const [pageVerify, setPageVerify] = useState(true);
 
@@ -63,11 +66,7 @@ const Panel = () => {
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
-			api_payment_GetWithdrawalLimit().then(res => {
-				if (res.data.errorCode === 0 && isMountedRef.current) {
-					setWithdrawalMin(res.data.data.withdrawalMin);
-				}
-			});
+			getWithdrawalLimit();
 		}
 	}, [userInfo.isLogin]);
 
@@ -236,6 +235,14 @@ const Panel = () => {
 		return executeKycProcess;
 	};
 
+	const getWithdrawalLimit = () => {
+		api_payment_GetWithdrawalLimit().then(res => {
+			if (res.data.errorCode === 0 && isMountedRef.current) {
+				setWithdrawalLimit(res.data.data);
+			}
+		});
+	};
+
 	const GetBalance = () => {
 		if (pageVerify) {
 			api_GetWithdrawalAvailableBalance().then(res => {
@@ -253,14 +260,32 @@ const Panel = () => {
 			: 0;
 
 	const VaildAmount = _amount => {
-		const result = checkAmount({
-			amount: _amount,
-			minAmount: withdrawalMin,
-			maxAmount: balanceInfo?.availableBalance,
-			_isConvert,
-			i18n,
-			maxAmountAllowUnlimit: false
-		});
+		let result = {};
+		const real_amount = _isConvert
+			? Number(_amount) * 1000
+			: Number(_amount);
+
+		if (
+			!withdrawalLimit.unlimited &&
+			real_amount > withdrawalLimit.withdrawalAvailableAmount
+		) {
+			result = {
+				status: defIptStatus.warning,
+				msg: i18n.lbl_WithdrawalDailyReached
+			};
+		} else {
+			result = checkAmount({
+				amount: _amount,
+				minAmount: withdrawalLimit.withdrawalMin,
+				maxAmount: balanceInfo?.availableBalance,
+				_isConvert,
+				i18n,
+				maxAmountAllowUnlimit: false,
+				hintKey: "lbl_Insufficientbalance",
+				digits: 0
+			});
+		}
+
 		if (result.status !== 0) {
 			setInputStatus({ checked: false, msg: result.msg });
 		} else {
@@ -278,7 +303,7 @@ const Panel = () => {
 	const clickInfo = () => {
 		const _msg = i18n.lbl_AmountTooltip.replace(
 			"{{0}}",
-			number_format(withdrawalMin, _isConvert)
+			number_format(withdrawalLimit.withdrawalMin, _isConvert, 0)
 		);
 		setInputStatus({
 			checked: null,
@@ -302,6 +327,7 @@ const Panel = () => {
 										if (!kycProcess) {
 											setAmount("");
 											setInputStatus(initStatus);
+											getWithdrawalLimit();
 											setSelBank(null);
 											api_GetWithdrawalAvailableBalance().then(
 												resBalance => {
@@ -339,21 +365,24 @@ const Panel = () => {
 											i18n.lbl_RolloverOver
 										}: ${number_format(
 											parseFloat(res.data.message),
-											_isConvert
+											_isConvert,
+											0
 										)}`;
 									} else if (res.data.errorCode === -2) {
 										content = `${
 											i18n.lbl_DepositOver
 										}: ${number_format(
 											parseFloat(res.data.message),
-											_isConvert
+											_isConvert,
+											0
 										)}`;
 									} else if (res.data.errorCode === -3) {
 										content = `${
 											i18n.lbl_WithdrawalOver
 										}: ${number_format(
 											parseFloat(res.data.message),
-											_isConvert
+											_isConvert,
+											0
 										)}`;
 									}
 									setPopBox({
@@ -401,7 +430,11 @@ const Panel = () => {
 								<li>
 									{i18n.lbl_WithdrawalAmount}
 									<span>
-										{number_format(real_amount, _isConvert)}
+										{number_format(
+											real_amount,
+											_isConvert,
+											0
+										)}
 									</span>
 								</li>
 							</ul>
@@ -500,6 +533,7 @@ const Panel = () => {
 										if (resRecent.data.errorCode === 0) {
 											setRecentDatas(resRecent.data.data);
 											GetBalance();
+											getWithdrawalLimit();
 										}
 									}
 								);
@@ -555,6 +589,24 @@ const Panel = () => {
 		});
 	};
 
+	const withdrawalLimitHint = i18n.lbl_WithdrawalDailyMinMax
+		?.replace(
+			"{{0}}",
+			!withdrawalLimit.withdrawalMin
+				? 1
+				: number_format(withdrawalLimit.withdrawalMin, _isConvert, 0)
+		)
+		?.replace(
+			"{{1}}",
+			withdrawalLimit.unlimited
+				? i18n.lbl_Unlimited
+				: number_format(
+						withdrawalLimit.withdrawalAvailableAmount,
+						_isConvert,
+						0
+				  )
+		);
+
 	let content = null;
 	if (redirectPath !== null) {
 		content = <Redirect to={redirectPath} noThrow />;
@@ -588,6 +640,7 @@ const Panel = () => {
 						clickInfo={clickInfo}
 						inputStatus={inputStatus}
 						VaildAmount={VaildAmount}
+						withdrawalLimitHint={withdrawalLimitHint}
 					/>
 				</div>
 				<RecentDatas

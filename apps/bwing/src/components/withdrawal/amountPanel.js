@@ -13,7 +13,8 @@ const AmountPanel = ({
 	ClickSubmit,
 	inputStatus,
 	clickInfo,
-	VaildAmount
+	VaildAmount,
+	withdrawalLimitHint
 }) => {
 	return (
 		<div className="subModule">
@@ -25,7 +26,8 @@ const AmountPanel = ({
 							<div>
 								{number_format(
 									balanceInfo?.balance,
-									_isConvert
+									_isConvert,
+									0
 								)}
 							</div>
 						</div>
@@ -37,7 +39,8 @@ const AmountPanel = ({
 							<div>
 								{number_format(
 									balanceInfo?.deduction,
-									_isConvert
+									_isConvert,
+									0
 								)}
 							</div>
 						</div>
@@ -49,7 +52,8 @@ const AmountPanel = ({
 							<span>
 								{number_format(
 									balanceInfo?.availableBalance,
-									_isConvert
+									_isConvert,
+									0
 								)}
 							</span>
 						</div>
@@ -70,11 +74,16 @@ const AmountPanel = ({
 					onBlur={e => VaildAmount(e.target.value)}
 					submitBtn={true}
 					btnStatus={inputStatus.checked}
-					tip={inputStatus.msg}
 					i18n={i18n}
 					clickSubmit={ClickSubmit}
 					clickInfo={clickInfo}
 				/>
+
+				<div className={`errorTip ${inputStatus.msg ? "active" : ""}`}>
+					{inputStatus.msg}
+				</div>
+
+				<div className="tip active">{withdrawalLimitHint}</div>
 			</div>
 		</div>
 	);
@@ -86,7 +95,8 @@ AmountPanel.defaultProps = {
 	i18n: {},
 	balanceInfo: {},
 	inputStatus: {},
-	VaildAmount: () => null
+	VaildAmount: () => null,
+	withdrawalLimitHint: ""
 };
 
 AmountPanel.propTypes = {
@@ -99,7 +109,8 @@ AmountPanel.propTypes = {
 	ClickSubmit: PropTypes.func.isRequired,
 	inputStatus: PropTypes.objectOf(PropTypes.any),
 	i18n: PropTypes.objectOf(PropTypes.string),
-	VaildAmount: PropTypes.func
+	VaildAmount: PropTypes.func,
+	withdrawalLimitHint: PropTypes.string
 };
 
 export default AmountPanel;

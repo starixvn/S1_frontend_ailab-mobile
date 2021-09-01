@@ -1469,6 +1469,7 @@ main.statementPage {
   display: flex;
   color: white;
   min-height: 7vw;
+  font-size: 3vw;
 }
 
 .dropdown > .btn .bankLogo {
@@ -1982,7 +1983,7 @@ main.statementPage {
       -ms-flex-align: center;
           align-items: center;
   color: #fff;
-  font-size: 1.8vw;
+  font-size: 2.4vw;
 }
 
 @media screen and (min-width: 550px) and (max-width: 1024px) {
@@ -2188,15 +2189,6 @@ main.statementPage {
   .mainNew .hotevent .hotDiv .teamR p {
     width: 42px;
   }
-}
-
-.mainNew .hotevent .hotDiv .olympic {
-  position: absolute;
-  top: 32%;
-  left: 50%;
-  width: 14vw;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
 }
 
 .mainNew .MarqueeNew {
@@ -2586,7 +2578,7 @@ main.statementPage {
 .info ul li {
   float: left;
   width: 50%;
-  line-height: 24px;
+  line-height: 6vw;
 }
 
 .info ul li span {
@@ -5040,6 +5032,7 @@ span.important {
   background: #1e85ec;
   border-radius: 5px;
   padding: 1vw;
+  font-size: 2vw;
 }
 
 .otpBtn span {
@@ -8842,6 +8835,12 @@ span.important {
   top: 2vw;
 }
 
+@media screen and (min-width: 550px) and (max-width: 1024px) {
+  .rememberMode > .icon {
+    top: 0;
+  }
+}
+
 .rememberMode .inputInfo {
   margin: 0 0 2vw;
   word-break: break-word;
@@ -8860,7 +8859,7 @@ span.important {
 .swithModule {
   text-align: center;
   color: #5084e4 !important;
-  font-size: 12px;
+  font-size: 2.6vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8927,6 +8926,28 @@ span.important {
 
 .swithModule + .icon-question {
   margin-top: 10px;
+}
+
+@media screen and (min-width: 550px) and (max-width: 1024px) {
+  .swithModule {
+    font-size: 3.5vw;
+  }
+  .swithModule .switchBtn {
+    width: 90px;
+    height: 40px;
+  }
+  .swithModule .switchBtn > span {
+    color: white;
+    font-size: 20px;
+    font-weight: normal;
+    margin: 0;
+  }
+  .swithModule .switchBtn > div {
+    position: absolute;
+    background: white;
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .partnerSelect {

@@ -820,13 +820,31 @@ footer {
   border-radius: 5px 5px 0 0;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (min-width: 768px) {
   footer {
     height: 12vw;
   }
   footer > a .circleAnimation .icon::before {
     font-size: 5vw;
   }
+}
+
+footer.footerNew > a {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+footer.footerNew > a > div {
+  position: relative;
+}
+
+footer.footerNew > a > div:before {
+  font-size: 5vw;
 }
 
 footer > a {
@@ -2728,6 +2746,12 @@ input {
   font-size: 3.5vw;
 }
 
+@media screen and (min-width: 768px) {
+  input {
+    padding: 0;
+  }
+}
+
 input::-webkit-input-placeholder {
   color: #bac2d2;
 }
@@ -3396,6 +3420,12 @@ a.clickBtn:before {
   -webkit-appearance: inherit !important;
   font-size: 12px;
   padding: 2vw 0;
+}
+
+@media screen and (max-width: 1024px) {
+  .inputdate input[type="date"] {
+    padding: 0;
+  }
 }
 
 .inputdate input[type="date"] ~ .iconModule {
@@ -4661,6 +4691,12 @@ span.important {
   margin: auto auto auto 0;
 }
 
+@media screen and (min-width: 768px) {
+  .bannerS .jpot > div div:first-child {
+    font-size: 4vw;
+  }
+}
+
 .bannerS .jpot > div div:nth-child(n + 2) {
   font-size: 16px;
   width: 13px;
@@ -4668,6 +4704,14 @@ span.important {
   text-align: center;
   overflow: hidden;
   position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .bannerS .jpot > div div:nth-child(n + 2) {
+    font-size: 4vw;
+    width: 30px;
+    height: 50px;
+  }
 }
 
 .bannerS .jpot > div div:nth-child(n + 2) span {
@@ -7420,6 +7464,12 @@ span.important {
   }
 }
 
+@media screen and (min-width: 768px) {
+  .eventImg {
+    height: 23vh;
+  }
+}
+
 .eventImg .team {
   width: 100%;
   display: -webkit-box;
@@ -7442,6 +7492,12 @@ span.important {
   width: 42.5vw;
   text-align: center;
   font-size: 12px;
+}
+
+@media screen and (min-width: 768px) {
+  .eventImg .team p {
+    font-size: 24px;
+  }
 }
 
 .eventImg .team .teamL {
@@ -7484,6 +7540,13 @@ span.important {
   }
 }
 
+@media screen and (min-width: 768px) {
+  .eventImg .teamName {
+    top: 12.8vh;
+    padding: 0 10vw;
+  }
+}
+
 .eventImg .teamName p {
   width: 34vw;
   color: #021e46;
@@ -7493,6 +7556,12 @@ span.important {
   white-space: nowrap;
   text-overflow: ellipsis;
   text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .eventImg .teamName p {
+    width: 30vw;
+  }
 }
 
 .eventImg .time {
@@ -7512,6 +7581,13 @@ span.important {
   }
 }
 
+@media screen and (min-width: 768px) {
+  .eventImg .time {
+    top: 17.6vh;
+    font-size: 20px;
+  }
+}
+
 .eventImg .odds {
   width: 80%;
   position: absolute;
@@ -7528,6 +7604,13 @@ span.important {
           justify-content: space-between;
 }
 
+@media screen and (min-width: 768px) {
+  .eventImg .odds {
+    bottom: 5vw;
+    font-size: 20px;
+  }
+}
+
 .eventImg .odds > div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7536,6 +7619,12 @@ span.important {
 
 .eventImg .odds > div p {
   margin: 0 5px;
+}
+
+@media screen and (min-width: 768px) {
+  .eventImg .odds > div p {
+    margin: 0 15px;
+  }
 }
 
 .eventImg .odds > div p:nth-last-child(1) {
@@ -10142,6 +10231,12 @@ span.important {
           box-sizing: border-box;
 }
 
+@media screen and (min-width: 768px) {
+  .top10Aear .top10Box {
+    height: 300px;
+  }
+}
+
 .top10Aear .top10Box > div > div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10151,6 +10246,12 @@ span.important {
           align-items: center;
   height: 40px;
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media screen and (min-width: 768px) {
+  .top10Aear .top10Box > div > div {
+    height: 60px;
+  }
 }
 
 .top10Aear .top10Box > div > div:nth-child(even) {
@@ -10875,5 +10976,21 @@ span.important {
   padding: 2vw;
   border-radius: 5px;
   font-size: 13px;
+}
+
+.errorTip {
+  width: 100%;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  font-size: 12px;
+  display: none;
+  color: #ff4c4c;
+}
+
+.errorTip.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 /*# sourceMappingURL=style.css.map */

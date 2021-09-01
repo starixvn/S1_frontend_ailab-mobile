@@ -19,6 +19,7 @@ import {
 	api_payment_GetWithdrawalLimit
 } from "../../service/api/payment";
 import InputBox from "../common/inputbox.info";
+import { defIptStatus } from "../common/inputStatus";
 import config from "../../config";
 import RecentDatas from "./withdrawal.recentDatas";
 import ReloadSpin from "../common/reloadSpin";
@@ -39,7 +40,9 @@ const Panel = () => {
 	const [selBank, setSelBank] = useState(null);
 	const [bankInfo, setbankInfo] = useState({ accountName: "", bankList: [] });
 	const [recentDatas, setRecentDatas] = useState([]);
-	const [withdrawalMin, setWithdrawalMin] = useState(0);
+	const [withdrawalLimit, setWithdrawalLimit] = useState({
+		withdrawalMin: 0
+	});
 	const [redirectPath, setRedirectPath] = useState(null);
 	const [pageVerify, setPageVerify] = useState(true);
 	const isMountedRef = useRef(null);
@@ -59,11 +62,7 @@ const Panel = () => {
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
-			api_payment_GetWithdrawalLimit().then(res => {
-				if (res.data.errorCode === 0 && isMountedRef.current) {
-					setWithdrawalMin(res.data.data.withdrawalMin);
-				}
-			});
+			getWithdrawalLimit();
 		}
 	}, [userInfo.isLogin]);
 
@@ -229,6 +228,14 @@ const Panel = () => {
 		return executeKycProcess;
 	};
 
+	const getWithdrawalLimit = () => {
+		api_payment_GetWithdrawalLimit().then(res => {
+			if (res.data.errorCode === 0 && isMountedRef.current) {
+				setWithdrawalLimit(res.data.data);
+			}
+		});
+	};
+
 	const GetBalance = () => {
 		if (pageVerify) {
 			api_GetWithdrawalAvailableBalance().then(res => {
@@ -246,14 +253,31 @@ const Panel = () => {
 			: 0;
 
 	const VaildAmount = _amount => {
-		const result = checkAmount({
-			amount: _amount,
-			minAmount: withdrawalMin,
-			maxAmount: balanceInfo?.availableBalance,
-			_isConvert,
-			i18n,
-			maxAmountAllowUnlimit: false
-		});
+		let result = {};
+		const real_amount = _isConvert
+			? Number(_amount) * 1000
+			: Number(_amount);
+
+		if (
+			!withdrawalLimit.unlimited &&
+			real_amount > withdrawalLimit.withdrawalAvailableAmount
+		) {
+			result = {
+				status: defIptStatus.warning,
+				msg: i18n.lbl_WithdrawalDailyReached
+			};
+		} else {
+			result = checkAmount({
+				amount: _amount,
+				minAmount: withdrawalLimit.withdrawalMin,
+				maxAmount: balanceInfo?.availableBalance,
+				_isConvert,
+				i18n,
+				maxAmountAllowUnlimit: false,
+				hintKey: "lbl_Insufficientbalance",
+				digits: 0
+			});
+		}
 
 		setInputStatus({ checked: result.status === 0, msg: result.msg });
 		return result.status === 0;
@@ -282,6 +306,7 @@ const Panel = () => {
 										if (!kycProcess) {
 											setAmount("");
 											GetBalance();
+											getWithdrawalLimit();
 											setInputStatus(initStatus);
 											api_GetWithdrawalInfoRecent().then(
 												response => {
@@ -307,21 +332,24 @@ const Panel = () => {
 											i18n.lbl_RolloverOver
 										}: ${number_format(
 											parseFloat(res.data.message),
-											_isConvert
+											_isConvert,
+											0
 										)}`;
 									} else if (res.data.errorCode === -2) {
 										content = `${
 											i18n.lbl_DepositOver
 										}: ${number_format(
 											parseFloat(res.data.message),
-											_isConvert
+											_isConvert,
+											0
 										)}`;
 									} else if (res.data.errorCode === -3) {
 										content = `${
 											i18n.lbl_WithdrawalOver
 										}: ${number_format(
 											parseFloat(res.data.message),
-											_isConvert
+											_isConvert,
+											0
 										)}`;
 									}
 									setPopBox({
@@ -369,7 +397,11 @@ const Panel = () => {
 								<li>
 									{i18n.lbl_WithdrawalAmount}
 									<span>
-										{number_format(real_amount, _isConvert)}
+										{number_format(
+											real_amount,
+											_isConvert,
+											0
+										)}
 									</span>
 								</li>
 							</ul>
@@ -423,6 +455,7 @@ const Panel = () => {
 									if (response.data.errorCode === 0) {
 										setRecentDatas(res.data.data);
 										GetBalance();
+										getWithdrawalLimit();
 									}
 								});
 							} else {
@@ -474,7 +507,11 @@ const Panel = () => {
 			inputStatus.msg === ""
 				? i18n.lbl_AmountTooltip?.replace(
 						"{{0}}",
-						number_format(withdrawalMin, _isConvert)
+						number_format(
+							withdrawalLimit.withdrawalMin,
+							_isConvert,
+							0
+						)
 				  )
 				: "";
 		setInputStatus({ checked: null, msg: info });
@@ -507,6 +544,24 @@ const Panel = () => {
 		);
 	});
 
+	const withdrawalLimitHint = i18n.lbl_WithdrawalDailyMinMax
+		?.replace(
+			"{{0}}",
+			!withdrawalLimit.withdrawalMin
+				? 1
+				: number_format(withdrawalLimit.withdrawalMin, _isConvert, 0)
+		)
+		?.replace(
+			"{{1}}",
+			withdrawalLimit.unlimited
+				? i18n.lbl_Unlimited
+				: number_format(
+						withdrawalLimit.withdrawalAvailableAmount,
+						_isConvert,
+						0
+				  )
+		);
+
 	let content = null;
 	if (redirectPath !== null) {
 		content = <Redirect to={redirectPath} noThrow />;
@@ -520,7 +575,7 @@ const Panel = () => {
 				</div>
 				<div className="balance">
 					{i18n[`Currency_${userInfo.currencyId}`]}{" "}
-					{number_format(_availableBalance, _isConvert)}
+					{number_format(_availableBalance, _isConvert, 0)}
 					<ReloadSpin func={GetBalance} />
 				</div>
 				<InputBox
@@ -534,6 +589,9 @@ const Panel = () => {
 					numberConvert={true}
 					onBlur={VaildAmount.bind(this, amount)}
 				/>
+
+				<div className="tip">{withdrawalLimitHint}</div>
+
 				<div className="inputBox">
 					<div className="selectBank">{banks}</div>
 				</div>
