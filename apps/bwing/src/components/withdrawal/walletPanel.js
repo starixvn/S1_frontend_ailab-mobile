@@ -19,7 +19,7 @@ export default ({ i18n, availableBalance, GetWithdrawalAvailableBalance }) => {
 				<span className="icon icon-icon32px_money">
 					{i18n.lbl_EligibleWithdrawalAmount}
 				</span>
-				<span>{number_format(availableBalance, _isConvert)}</span>
+				<span>{number_format(availableBalance, _isConvert, 0)}</span>
 				<ReloadSpin
 					func={GetWithdrawalAvailableBalance}
 					btnActive={false}

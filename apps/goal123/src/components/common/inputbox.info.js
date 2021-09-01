@@ -18,7 +18,9 @@ const Inputbox = ({
 	testAttr
 }) => {
 	return (
-		<div className="inputBox" data-testid={`${testAttr}_inputBox`}>
+		<div
+			className={`inputBox ${btnStatus === false ? "error" : ""}`}
+			data-testid={`${testAttr}_inputBox`}>
 			{icon ? <i className={icon} /> : null}
 			<input
 				data-testid={`${testAttr}_ipt`}
@@ -36,7 +38,9 @@ const Inputbox = ({
 				<IptStatus btnStatus={btnStatus} clickInfo={clickInfo} />
 			</div>
 			{tip ? (
-				<div className="tip" data-testid={`${testAttr}_msg`}>
+				<div
+					className={`tip ${btnStatus === false ? "error" : ""}`}
+					data-testid={`${testAttr}_msg`}>
 					{tip}
 				</div>
 			) : null}

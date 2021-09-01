@@ -95,6 +95,19 @@ const EventListVND = ({ i18n }) => (
 					<i className="icon icon-checkmark" />
 				</td>
 			</tr>
+
+			<tr>
+				<td colSpan="7">{i18n.lbl_Vip_Daily_Limit}</td>
+			</tr>
+			<tr>
+				<td>200,000,000</td>
+				<td>300,000,000</td>
+				<td>500,000,000</td>
+				<td>1,000,000,000</td>
+				<td>2,000,000,000</td>
+				<td>{i18n.lbl_Vip_ByInvitation}</td>
+			</tr>
+
 			{/* <tr>
 					<td colSpan="7">
 						{i18n.lbl_Vip_Unlimited_Withdrawal_amount}
@@ -213,10 +226,10 @@ const EventListVND = ({ i18n }) => (
 			</tr>
 			<tr>
 				<td />
-				<td>88,000,000</td>
-				<td>168,000,000</td>
-				<td>388,000,000</td>
-				<td>888,000,000</td>
+				<td>200,000,000</td>
+				<td>600,000,000</td>
+				<td>1,500,000,000</td>
+				<td>3,000,000,000</td>
 				<td>{i18n.lbl_Vip_ByInvitation}</td>
 			</tr>
 			<tr className="title">
@@ -233,9 +246,9 @@ const EventListVND = ({ i18n }) => (
 			<tr>
 				<td />
 				<td />
-				<td>468,000,000</td>
-				<td>788,000,000</td>
-				<td>1,388,000,000</td>
+				<td>300,000,000</td>
+				<td>750,000,000</td>
+				<td>3,000,000,000</td>
 				<td>{i18n.lbl_Vip_ByInvitation}</td>
 			</tr>
 			<tr>
@@ -246,9 +259,9 @@ const EventListVND = ({ i18n }) => (
 			<tr>
 				<td />
 				<td />
-				<td>10,888,000,000</td>
-				<td>20,888,000,000</td>
-				<td>50,888,000,000</td>
+				<td>3,000,000,000</td>
+				<td>7,500,000,000</td>
+				<td>30,000,000,000</td>
 				<td>{i18n.lbl_Vip_ByInvitation}</td>
 			</tr>
 			<tr>

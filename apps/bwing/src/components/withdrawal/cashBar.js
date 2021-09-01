@@ -118,7 +118,7 @@ export default ({
 					className="cashPoint">
 					<span style={spanStyle}>
 						{`$${number_format(resultAmount)} ${
-							_isConvert ? "('000)" : ""
+							(_isConvert ? "('000)" : "", 0)
 						}`}
 					</span>
 				</div>
