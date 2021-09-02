@@ -10,7 +10,7 @@ import {
 import { isExpiry, isClaimed, isNew } from "./common/common";
 import Card, { CardForStatic } from "./components/promotionCard";
 import Nav, { useHandleNav } from "./components/nav";
-import Tab, { useHandleTab } from "./components/tab";
+import { useHandleTab } from "./components/tab";
 import Wrapper from "./common/wrapper";
 import { configContext } from "./common/context";
 import SpecialBonusCodeInputBox from "./components/specialBonusCodeInputBox";
@@ -54,12 +54,10 @@ const setPromotionCards = ({
 		const imgSRC = p.banner;
 		const _isClaimed = isClaimed(p);
 		const _isNew = _isClaimed ? false : isNew(p);
-		const _isExpiry = tab === defTabs.Expired.key;
 		return (
 			<Card
 				key={`promotion-${userInfo.langId}-${p.bonusCode}`}
 				p={p}
-				_isExpiry={_isExpiry}
 				_isClaimed={_isClaimed}
 				_isNew={_isNew}
 				imgSRC={imgSRC}
@@ -128,45 +126,39 @@ const PromotionContent = ({ staticList, location, navBar }) => {
 		});
 	} else {
 		const datas = promotion?.filter(p => {
-			if (tab === defTabs.Processing.key) {
-				if (filterType === defFilterType.all) {
-					return !isExpiry({
-						...p,
-						isLogin: userInfo.isLogin
-					});
-				}
-				if (filterType === defFilterType.firstDeposit) {
-					return (
-						(p.promotionType === filterType ||
-							p.promotionType === defPromotionType.walletBonus) &&
-						!isExpiry({
-							...p,
-							isLogin: userInfo.isLogin
-						})
-					);
-				}
-				if (filterType === defFilterType.rebateAndCashBack) {
-					return (
-						(p.promotionType === defPromotionType.rebate ||
-							p.promotionType === defPromotionType.cashback) &&
-						!isExpiry({
-							...p,
-							isLogin: userInfo.isLogin
-						})
-					);
-				}
+			if (filterType === defFilterType.all) {
+				return !isExpiry({
+					...p,
+					isLogin: userInfo.isLogin
+				});
+			}
+			if (filterType === defFilterType.firstDeposit) {
 				return (
-					p.promotionType === filterType &&
+					(p.promotionType === filterType ||
+						p.promotionType === defPromotionType.walletBonus) &&
 					!isExpiry({
 						...p,
 						isLogin: userInfo.isLogin
 					})
 				);
 			}
-			return isExpiry({
-				...p,
-				isLogin: userInfo.isLogin
-			});
+			if (filterType === defFilterType.rebateAndCashBack) {
+				return (
+					(p.promotionType === defPromotionType.rebate ||
+						p.promotionType === defPromotionType.cashback) &&
+					!isExpiry({
+						...p,
+						isLogin: userInfo.isLogin
+					})
+				);
+			}
+			return (
+				p.promotionType === filterType &&
+				!isExpiry({
+					...p,
+					isLogin: userInfo.isLogin
+				})
+			);
 		});
 
 		rows = setPromotionCards({
@@ -202,7 +194,6 @@ const PromotionContent = ({ staticList, location, navBar }) => {
 
 	return (
 		<>
-			<Tab i18n={i18n} tab={tab} onClickTab={onClickTab} />
 			<Nav
 				navBar={navBar}
 				i18n={i18n}

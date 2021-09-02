@@ -1,6 +1,5 @@
 import React, { useContext, useRef, useEffect, useState } from "react";
 import { Link, Redirect } from "@reach/router";
-import { isExpiry } from "../common/common";
 import {
 	defBonusType,
 	defPromotionType,
@@ -211,11 +210,6 @@ export default ({
 		}
 	};
 
-	const _isExpiry = isExpiry({
-		...promotionInfo,
-		isLogin: userInfo.isLogin
-	});
-
 	const _canJoin = !(
 		filterType === defFilterType.specialBonus && !promotionInfo.canJoin
 	);
@@ -225,12 +219,11 @@ export default ({
 		btnResult = <Redirect to={redirectPath} noThrow />;
 	} else if (
 		promotionInfo &&
-		!_isExpiry &&
 		!promotionInfo.beenUsed &&
 		(userInfo.isLogin === false ||
 			(_canJoin && userInfo.isLogin && !promotionInfo.isJoin))
 	) {
-		if (userInfo.isLogin === false && !_isExpiry) {
+		if (userInfo.isLogin === false) {
 			btnResult = (
 				<Link
 					className={uiSetting.joinBtn ?? "btn-check"}

@@ -10,7 +10,6 @@ import CashBackInfo from "./cashBackInfo";
 const PromoContent = ({
 	promotionInfo,
 	i18n = {},
-	_isExpiry,
 	_isClaimed,
 	_isNew,
 	ruleCols,
@@ -21,7 +20,6 @@ const PromoContent = ({
 	<div
 		className={`${Class}${promotionInfo.isJoin ? " active" : ""}${
 			CanJoin({
-				_isExpiry,
 				canJoin: promotionInfo.canJoin,
 				filterType: urlParameters?.[defUrlParamCols.filterType]
 			})
@@ -31,7 +29,6 @@ const PromoContent = ({
 		<Stamp
 			_isClaimed={_isClaimed}
 			_isNew={_isNew}
-			_isExpiry={_isExpiry}
 			filterType={urlParameters?.[defUrlParamCols.filterType]}
 			canJoin={promotionInfo.canJoin}
 		/>

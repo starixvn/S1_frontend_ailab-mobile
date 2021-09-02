@@ -1,7 +1,6 @@
 export const defPromoStatus = {
 	running: 1,
 	Canceled: 2,
-	Expiry: 3,
 	Fulfill: 4,
 	TransferOut: 5
 };
@@ -69,11 +68,7 @@ export const defPromotionNav = [
 export const defTabs = {
 	Processing: {
 		key: "Processing",
-		displayKey: "lbl_Processing"
-	},
-	Expired: {
-		key: "Expired",
-		displayKey: "lbl_Expired"
+		displayKey: "lbl_Promotion"
 	}
 };
 

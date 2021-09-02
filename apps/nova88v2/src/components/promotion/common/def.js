@@ -71,11 +71,7 @@ export const defPromotionNav = [
 export const defTabs = {
 	Processing: {
 		key: "Processing",
-		displayKey: "lbl_Processing"
-	},
-	Expired: {
-		key: "Expired",
-		displayKey: "lbl_Expired"
+		displayKey: "lbl_Promotion"
 	}
 };
 

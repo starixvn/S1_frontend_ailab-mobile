@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import { getUrlParameter } from "@ailab-mobile/common";
-import { isClaimed, isNew, isExpiry } from "./common/common";
+import { isClaimed, isNew } from "./common/common";
 import PromotionContent from "./components/promotionContent";
 import Wrapper from "./common/wrapper";
 import { configContext } from "./common/context";
@@ -117,7 +117,6 @@ const PromotionInfoContent = () => {
 	const { popBox } = uiSetting;
 	const _isClaimed = isClaimed(promotionInfo);
 	const _isNew = _isClaimed ? false : isNew(promotionInfo);
-	const _isExpiry = isExpiry({ ...promotionInfo, isLogin: userInfo.isLogin });
 	const urlParams = {};
 	window.location.search
 		?.substring(1)
@@ -137,7 +136,6 @@ const PromotionInfoContent = () => {
 			uiSetting={{ popBox }}
 			promotionInfo={promotionInfo}
 			i18n={i18n}
-			_isExpiry={_isExpiry}
 			_isClaimed={_isClaimed}
 			_isNew={_isNew}
 			GetPromotionDetail={GetPromotionDetail}

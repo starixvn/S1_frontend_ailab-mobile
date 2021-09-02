@@ -9,7 +9,6 @@ import { defUrlParamCols } from "../common/def";
 
 const PromotionCard = ({
 	p,
-	_isExpiry,
 	_isClaimed,
 	_isNew,
 	imgSRC,
@@ -28,7 +27,6 @@ const PromotionCard = ({
 		<Stamp
 			_isClaimed={_isClaimed}
 			_isNew={_isNew}
-			_isExpiry={_isExpiry}
 			filterType={urlParameters?.[defUrlParamCols.filterType]}
 			canJoin={p.canJoin}
 		/>
@@ -58,7 +56,6 @@ const PromotionCard = ({
 
 PromotionCard.defaultProps = {
 	p: {},
-	_isExpiry: false,
 	_isClaimed: false,
 	_isNew: false,
 	imgSRC: "",
@@ -72,7 +69,6 @@ PromotionCard.defaultProps = {
 
 PromotionCard.propTypes = {
 	p: PropTypes.objectOf(PropTypes.any),
-	_isExpiry: PropTypes.bool,
 	_isClaimed: PropTypes.bool,
 	_isNew: PropTypes.bool,
 	imgSRC: PropTypes.string,

@@ -2,7 +2,6 @@ import React, { useContext, useRef, useEffect, useState } from "react";
 import { userInfoContext, i18nContext } from "Context";
 import { Redirect } from "@reach/router";
 import path from "../../../path";
-import { isExpiry } from "../common/common";
 import {
 	defBonusType,
 	defPromotionType,
@@ -115,11 +114,6 @@ export default ({
 			});
 	};
 
-	const _isExpiry = isExpiry({
-		...promotionInfo,
-		isLogin: userInfo.isLogin
-	});
-
 	const _canJoin = !(
 		filterType === defFilterType.specialBonus && !promotionInfo?.canJoin
 	);
@@ -228,7 +222,7 @@ export default ({
 			} else {
 				SetClaimPromotion({ bonusCode: _promo.bonusCode });
 			}
-		} else if (userInfo.isLogin === false && !_isExpiry) {
+		} else if (userInfo.isLogin === false) {
 			handleLogin();
 		}
 	};
@@ -243,7 +237,6 @@ export default ({
 		btnResult = <Redirect to={redirectPath} noThrow />;
 	} else if (
 		promotionInfo &&
-		!_isExpiry &&
 		!promotionInfo.beenUsed &&
 		(userInfo.isLogin === false ||
 			(_canJoin && userInfo.isLogin && !promotionInfo.isJoin))

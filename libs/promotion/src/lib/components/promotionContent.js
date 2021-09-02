@@ -25,7 +25,6 @@ export default ({
 	<div
 		className={`promodule${promotionInfo.isJoin ? " open" : ""}${
 			!CanJoin({
-				_isExpiry,
 				canJoin: promotionInfo.canJoin,
 				filterType: urlParameters?.[defUrlParamCols.filterType]
 			}) || promotionInfo.beenUsed
