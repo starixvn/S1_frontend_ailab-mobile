@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { defPromotionNav, defTabs, defFilterType } from "../common/def";
+import { defPromotionNav, defFilterType } from "../common/def";
 
 export const useHandleNav = ({
 	defaultValue = defFilterType.all,
@@ -13,13 +13,6 @@ export const useHandleNav = ({
 	const onClickFilter = value => {
 		setFilterType(value);
 	};
-
-	useEffect(() => {
-		if (tab === defTabs.Expired.key) {
-			setFilterType(defFilterType.all);
-		}
-	}, [tab]);
-
 	useEffect(() => {
 		const afterLogin = navBar.find(n => n.value === filterType)?.afterLogin;
 		if (afterLogin && !isLogin) {

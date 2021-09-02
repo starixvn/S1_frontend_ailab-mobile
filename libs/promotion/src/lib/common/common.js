@@ -22,7 +22,7 @@ export const isExpiry = ({
 		isJoin &&
 		promotionType !== defPromotionType.rebate &&
 		promotionType !== defPromotionType.cashback
-		? moment(moment.unix(custExpiryTime)).isBefore(new moment())
+		? moment(custExpiryTime).isBefore(new moment())
 		: moment(moment.unix(periodTo)).isBefore(new moment());
 };
 
@@ -51,9 +51,6 @@ export const number_format = (number, formatSetting = {}) => {
 	});
 };
 
-export const CanJoin = ({ _isExpiry, canJoin, filterType }) => {
-	return !(
-		_isExpiry ||
-		(!canJoin && filterType == defFilterType.specialBonus)
-	);
+export const CanJoin = ({ canJoin, filterType }) => {
+	return !(!canJoin && filterType == defFilterType.specialBonus);
 };

@@ -8,7 +8,6 @@ import { defUrlParamCols } from "../common/def";
 
 export default ({
 	p,
-	_isExpiry,
 	_isClaimed,
 	_isNew,
 	imgSRC,
@@ -21,7 +20,6 @@ export default ({
 	<div
 		className={`promodule${_isClaimed ? " open" : ""}${
 			!CanJoin({
-				_isExpiry,
 				canJoin: p.canJoin,
 				filterType: urlParameters?.[defUrlParamCols.filterType]
 			}) || p.beenUsed
@@ -31,7 +29,6 @@ export default ({
 		<Stamp
 			_isClaimed={_isClaimed}
 			_isNew={_isNew}
-			_isExpiry={_isExpiry}
 			filterType={urlParameters?.[defUrlParamCols.filterType]}
 			canJoin={p.canJoin}
 			uiSetting={uiSetting}

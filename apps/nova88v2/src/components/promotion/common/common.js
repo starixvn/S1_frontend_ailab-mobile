@@ -22,7 +22,7 @@ export const isExpiry = ({
 		isJoin &&
 		promotionType !== defPromotionType.rebate &&
 		promotionType !== defPromotionType.cashback
-		? moment(moment.unix(custExpiryTime)).isBefore(new moment())
+		? moment(custExpiryTime).isBefore(new moment())
 		: moment(moment.unix(periodTo)).isBefore(new moment());
 };
 

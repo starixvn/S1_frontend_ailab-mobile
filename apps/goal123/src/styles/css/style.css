@@ -4483,7 +4483,7 @@ span.important {
 .promotions .filterBtn {
   width: 100%;
   overflow-x: auto;
-  margin: 14vw 0 3vw;
+  margin: 3vw 0 3vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4533,7 +4533,7 @@ span.important {
   content: "CLAIMED";
 }
 
-.promotions .tag ~ div.promodule {
+.promotions .filterBtn ~ div.promodule {
   padding: 3vw;
   border: 1px dotted #1e85ec;
   margin-bottom: 3vw;
@@ -4548,21 +4548,21 @@ span.important {
   position: relative;
 }
 
-.promotions .tag ~ div.promodule.open {
+.promotions .filterBtn ~ div.promodule.open {
   background: #5f6672;
 }
 
-.promotions .tag ~ div.promodule.open .claimed {
+.promotions .filterBtn ~ div.promodule.open .claimed {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.promotions .tag ~ div.promodule.open .btn-group button:nth-child(2) {
+.promotions .filterBtn ~ div.promodule.open .btn-group button:nth-child(2) {
   display: none;
 }
 
-.promotions .tag ~ div.promodule .protitle {
+.promotions .filterBtn ~ div.promodule .protitle {
   margin-top: 1vw;
   color: #1e85ec;
   font-weight: bold;
@@ -4572,7 +4572,7 @@ span.important {
   white-space: nowrap;
 }
 
-.promotions .tag ~ div.promodule .text {
+.promotions .filterBtn ~ div.promodule .text {
   max-width: calc(100% - 1vw);
   padding-left: 1vw;
   overflow: hidden;
@@ -4580,7 +4580,7 @@ span.important {
   white-space: nowrap;
 }
 
-.promotions .tag ~ div.promodule .text + .btn-group button {
+.promotions .filterBtn ~ div.promodule .text + .btn-group button {
   padding: 1vw;
 }
 

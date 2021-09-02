@@ -59,7 +59,6 @@ Promotion.propTypes = {
 
 const setPromotionCards = ({
 	datas,
-	tab,
 	userInfo,
 	i18n,
 	uiSetting,
@@ -71,13 +70,11 @@ const setPromotionCards = ({
 		const imgSRC = p.banner;
 		const _isClaimed = isClaimed(p);
 		const _isNew = _isClaimed ? false : isNew(p);
-		const _isExpiry = tab === defTabs.Expired.key;
 		return (
 			<Card
 				userInfo={userInfo}
 				key={`promotion-${userInfo.langId}-${p.bonusCode}`}
 				p={p}
-				_isExpiry={_isExpiry}
 				_isClaimed={_isClaimed}
 				_isNew={_isNew}
 				imgSRC={imgSRC}
@@ -114,22 +111,13 @@ const PromotionContent = ({ staticList, location, tab, nav, filterType }) => {
 	};
 	let rows = [];
 	if (filterType === defFilterType.specialBonus) {
-		let datas = [];
-		if (tab === defTabs.Processing.key) {
-			datas = specialBonusDatas.filter(p => {
-				return !isExpiry({
-					...p,
-					isLogin: userInfo.isLogin
-				});
+		const datas = specialBonusDatas.filter(p => {
+			return !isExpiry({
+				...p,
+				isLogin: userInfo.isLogin
 			});
-		} else {
-			datas = specialBonusDatas.filter(p => {
-				return isExpiry({
-					...p,
-					isLogin: userInfo.isLogin
-				});
-			});
-		}
+		});
+
 		rows = setPromotionCards({
 			datas,
 			tab,
@@ -142,87 +130,46 @@ const PromotionContent = ({ staticList, location, tab, nav, filterType }) => {
 		});
 	} else {
 		const datas = promotion?.filter(p => {
-			if (tab === defTabs.Processing.key) {
-				if (filterType === defFilterType.all) {
-					return !isExpiry({
-						...p,
-						isLogin: userInfo.isLogin
-					});
-				}
-				if (filterType === defFilterType.firstDeposit) {
-					return (
-						(p.promotionType === filterType ||
-							p.promotionType === defPromotionType.walletBonus) &&
-						!isExpiry({
-							...p,
-							isLogin: userInfo.isLogin
-						})
-					);
-				}
-				if (filterType === defFilterType.rebateAndCashBack) {
-					return (
-						(p.promotionType === defPromotionType.rebate ||
-							p.promotionType === defPromotionType.cashback) &&
-						!isExpiry({
-							...p,
-							isLogin: userInfo.isLogin
-						})
-					);
-				}
-				if (
-					filterType !== defFilterType.all ||
-					filterType !== defFilterType.firstDeposit ||
-					filterType !== defFilterType.rebateAndCashBack
-				) {
-					return (
-						p.promotionType === filterType &&
-						!isExpiry({
-							...p,
-							isLogin: userInfo.isLogin
-						})
-					);
-				}
-			} else {
-				if (filterType === defFilterType.all) {
-					return isExpiry({
-						...p,
-						isLogin: userInfo.isLogin
-					});
-				}
-				if (filterType === defFilterType.firstDeposit) {
-					return (
-						(p.promotionType === filterType ||
-							p.promotionType === defPromotionType.walletBonus) &&
-						isExpiry({
-							...p,
-							isLogin: userInfo.isLogin
-						})
-					);
-				}
-				if (filterType === defFilterType.rebateAndCashBack) {
-					return (
-						(p.promotionType === defPromotionType.rebate ||
-							p.promotionType === defPromotionType.cashback) &&
-						isExpiry({
-							...p,
-							isLogin: userInfo.isLogin
-						})
-					);
-				}
-				if (
-					filterType !== defFilterType.all ||
-					filterType !== defFilterType.firstDeposit ||
-					filterType !== defFilterType.rebateAndCashBack
-				) {
-					return (
-						p.promotionType === filterType &&
-						isExpiry({
-							...p,
-							isLogin: userInfo.isLogin
-						})
-					);
-				}
+			if (filterType === defFilterType.all) {
+				return !isExpiry({
+					...p,
+					isLogin: userInfo.isLogin
+				});
 			}
+			if (filterType === defFilterType.firstDeposit) {
+				return (
+					(p.promotionType === filterType ||
+						p.promotionType === defPromotionType.walletBonus) &&
+					!isExpiry({
+						...p,
+						isLogin: userInfo.isLogin
+					})
+				);
+			}
+			if (filterType === defFilterType.rebateAndCashBack) {
+				return (
+					(p.promotionType === defPromotionType.rebate ||
+						p.promotionType === defPromotionType.cashback) &&
+					!isExpiry({
+						...p,
+						isLogin: userInfo.isLogin
+					})
+				);
+			}
+			if (
+				filterType !== defFilterType.all ||
+				filterType !== defFilterType.firstDeposit ||
+				filterType !== defFilterType.rebateAndCashBack
+			) {
+				return (
+					p.promotionType === filterType &&
+					!isExpiry({
+						...p,
+						isLogin: userInfo.isLogin
+					})
+				);
+			}
+
 			return false;
 		});
 
