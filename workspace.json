@@ -195,6 +195,14 @@
 			"projectType": "application",
 			"schematics": {},
 			"architect": {
+				"autobuild": {
+					"builder": "@nrwl/workspace:run-commands",
+					"outputs": ["dist/apps/goal123"],
+					"options": {
+						"command":"node ../../node_modules/react-app-rewired/bin/index.js build",
+						"cwd": "apps/goal123"
+					}
+				},
 				"build": {
 					"builder": "@nrwl/workspace:run-commands",
 					"outputs": ["dist/apps/goal123"],
@@ -264,6 +272,14 @@
 			"projectType": "application",
 			"schematics": {},
 			"architect": {
+				"autobuild": {
+					"builder": "@nrwl/workspace:run-commands",
+					"outputs": ["dist/apps/bwing"],
+					"options": {
+						"command": "node ../../node_modules/react-app-rewired/bin/index.js build",
+						"cwd": "apps/bwing"
+					}
+				},
 				"build": {
 					"builder": "@nrwl/workspace:run-commands",
 					"outputs": ["dist/apps/bwing"],
@@ -442,6 +458,14 @@
 			"projectType": "application",
 			"schematics": {},
 			"architect": {
+				"autobuild": {
+					"builder": "@nrwl/workspace:run-commands",
+					"outputs": ["dist/apps/nova88v2"],
+					"options": {
+						"command":"node ../../node_modules/react-app-rewired/bin/index.js build",
+						"cwd": "apps/nova88v2"
+					}
+				},
 				"build": {
 					"builder": "@nrwl/workspace:run-commands",
 					"outputs": ["dist/apps/nova88v2"],

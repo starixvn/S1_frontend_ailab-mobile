@@ -12,6 +12,7 @@ pipeline {
         }
         stage('Build') {
             steps {
+                sh '(git rev-parse HEAD & git rev-parse --abbrev-ref HEAD) > apps/bwing/public/rnt.txt'
                 sh 'npx nx build bwing --skip-nx-cache'
             }
         }
