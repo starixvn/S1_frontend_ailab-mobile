@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+    tools {nodejs "nodejs"}
+    stages {
+        stage('Install dependencies') {
+            when {
+                changeset "package.json"
+            }
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'npx nx build bwing --skip-nx-cache'
+            }
+        }
+        stage('Zip'){
+            steps {
+                dir("dist/apps/bwing"){
+                    script {
+                        env.commitHash = sh (script: 'git rev-parse --short HEAD', returnStdout: true).trim()
+                    }
+                    sh 'zip -r mobile-bwing-${commitHash} *'
+                    sh 'curl -v -u admin:123456 --upload-file mobile-bwing-${commitHash}.zip http://172.31.28.233:8081/repository/artifacts/Frontend/mobile-bwing-${commitHash}.zip'
+                    sh 'echo mobile-bwing-${commitHash}'
+                }
+            }
+        }
+    }
+}

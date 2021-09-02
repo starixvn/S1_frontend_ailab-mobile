@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+    tools {nodejs "nodejs"}
+    stages {
+        stage('Install dependencies') {
+            when {
+                changeset "package.json"
+            }
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'npx nx build goal123 --skip-nx-cache'
+            }
+        }
+        stage('Zip'){
+            steps {
+                dir("dist/apps/goal123"){
+                    script {
+                        env.commitHash = sh (script: 'git rev-parse --short HEAD', returnStdout: true).trim()
+                    }
+                    sh 'zip -r mobile-goal123-${commitHash} *'
+                    sh 'curl -v -u admin:123456 --upload-file mobile-goal123-${commitHash}.zip http://172.31.28.233:8081/repository/artifacts/Frontend/mobile-goal123-${commitHash}.zip'
+                    sh 'echo mobile-goal123-${commitHash}'
+                }
+            }
+        }
+    }
+}
