@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh '(git rev-parse HEAD & git rev-parse --abbrev-ref HEAD) > apps/goal123/public/rnt.txt'
+                sh '(git rev-parse --short=7 HEAD & git rev-parse --abbrev-ref HEAD) > apps/goal123/public/rnt.txt'
                 sh 'npx nx autobuild goal123 --skip-nx-cache'
             }
         }
