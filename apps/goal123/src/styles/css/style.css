@@ -7677,7 +7677,7 @@ span.important {
   color: #666;
   padding: 2vw;
   border-radius: 5px;
-  font-size: 2vw;
+  font-size: 3.2vw;
 }
 
 .depositModule_mobile .note ol,
@@ -8227,13 +8227,13 @@ span.important {
   color: #666;
   padding: 10px;
   border-radius: 5px;
-  font-size: 2.3vw;
+  font-size: 3.2vw;
 }
 
 .importantNote .title {
   color: #666;
   text-align: center;
-  font-size: 2.8vw;
+  font-size: 3.5vw;
 }
 
 .importantNote .title i {
