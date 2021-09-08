@@ -627,6 +627,15 @@
 	"lbl_Once_Bwing_App_is_installed": "Khi ứng dụng Bwing được cài đặt, chọn Tin cậy hoặc hoàn thành Cài đặt theo hướng dẫn bên dưới",
 	"lbl_BetNow": "CƯỢC NGAY",
 
-	"==============Under Maintenance==============": "",
-	"lbl_underMaintenance": "Đang bảo trì"
+	"==============Under Maintenance==============":"",
+	"lbl_underMaintenance":"Đang bảo trì",
+
+	"==============Loadcard Payment==============":"",
+	"lbl_TopUpCard":"THẺ CÀO",
+	"lbl_CardCode":"Mã số thẻ",
+	"lbl_CardSerial":"Số seri",
+	"lbl_CardValue":"Mệnh giá thẻ",
+	"msg_PleaseEnterCardCode":"Vui lòng điền mã số thẻ",
+	"msg_PleaseEnterCardSerial":"Vui lòng điền số seri thẻ"
+
 }

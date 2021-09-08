@@ -554,6 +554,16 @@
 	"lbl_Stay_accessible": "STAY ACCESSIBLE",
 	"lbl_Anytime_anywhere": "Anytime, Anywhere",
 
+	"==============Under Maintenance==============":"",
+	"lbl_underMaintenance":"Under Maintenance",
+
+	"==============Loadcard Payment==============":"",
+	"lbl_CardCode":"Card Code",
+	"lbl_CardSerial":"Card Serial",
+	"lbl_CardValue":"Card Value",
+	"msg_PleaseEnterCardCode":"Please enter card code.",
+	"msg_PleaseEnterCardSerial":"Please enter card serial.",
+
 	"==============Transfer==============": "",
 	"lbl_Fail": "Failed",
 	"lbl_LastUpdated": "LAST UPDATED",
@@ -566,8 +576,6 @@
 
 	"==============Important Notice==============": "",
 	"lbl_ImportantNotice": "IMPORTANT NOTICE",
-	"lbl_BetNow": "Bet Now",
+	"lbl_BetNow": "Bet Now"
 
-	"==============Under Maintenance==============": "",
-	"lbl_underMaintenance": "Under Maintenance"
 }
