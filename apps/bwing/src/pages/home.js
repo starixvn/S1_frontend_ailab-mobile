@@ -156,11 +156,12 @@ const IndexPage = () => {
 						),
 						hasBtn: true
 					});
-				} else {
-					setPopBox({
-						isOpen: false
-					});
 				}
+				// else {
+				// 	setPopBox({
+				// 		isOpen: false
+				// 	});
+				// }
 			};
 
 			const cookieOfficialAnnounce = "OfficialAnnounce_cookie";

@@ -102,32 +102,32 @@ const IndexPage = () => {
 				)
 			});
 		}
-		if (userInfo.isLogin === false) {
-			const RankingWinnerPopup = () => {
-				if (
-					isEventPeriod({
-						endDate: "2021/05/18 23:59:59"
-					})
-				) {
-					const _langId = validImgLang(userInfo.langId);
-					setPopBox({
-						isOpen: true,
-						content: (
-							<img
-								src={`https://image.0814media.net/SiteSkin/img/euro/EURO-RACE-MONTHLY-WINNERS-${_langId.toUpperCase()}.jpg`}
-								alt="winner"
-							/>
-						)
-					});
-				} else {
-					setPopBox({
-						isOpen: false
-					});
-				}
-			};
+		// if (userInfo.isLogin === false) {
+		// 	const RankingWinnerPopup = () => {
+		// 		if (
+		// 			isEventPeriod({
+		// 				endDate: "2021/05/18 23:59:59"
+		// 			})
+		// 		) {
+		// 			const _langId = validImgLang(userInfo.langId);
+		// 			setPopBox({
+		// 				isOpen: true,
+		// 				content: (
+		// 					<img
+		// 						src={`https://image.0814media.net/SiteSkin/img/euro/EURO-RACE-MONTHLY-WINNERS-${_langId.toUpperCase()}.jpg`}
+		// 						alt="winner"
+		// 					/>
+		// 				)
+		// 			});
+		// 		} else {
+		// 			setPopBox({
+		// 				isOpen: false
+		// 			});
+		// 		}
+		// 	};
 
-			RankingWinnerPopup();
-		}
+		// 	RankingWinnerPopup();
+		// }
 	}, [
 		i18n,
 		setPopBox,
