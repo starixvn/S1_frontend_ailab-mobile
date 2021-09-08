@@ -9,7 +9,7 @@ import { getUrlParameter, passwordCheck } from "../common/common";
 export default () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
-	const { userInfo, setUserInfo } = useContext(userInfoContext);
+	const { setUserInfo } = useContext(userInfoContext);
 	const [newPsw, setNewPsw] = useState("");
 	const [inputStatus, setInputStatus] = useState({ checked: null, msg: "" });
 	const [redirectPath, setRedirectPath] = useState(null);
@@ -30,33 +30,17 @@ export default () => {
 
 	useEffect(() => {
 		const key = getUrlParameter("key");
-		if (
-			key &&
-			userInfo.isLogin === false &&
-			userInfo.loginFromResetPwd === undefined
-		) {
+		if (key) {
 			api_CheckResetPwdToken(key).then(
 				res => {
 					if (isMountedRef.current) {
-						if (res.data.errorCode === 1) {
-							setRedirectPath("/");
+						if (res.data.errorCode === 0) {
 							setUserInfo(prevState => ({
 								...prevState,
 								isLogin: true
 							}));
-						} else if (res.data.errorCode === 0) {
-							setUserInfo(prevState => ({
-								...prevState,
-								isLogin: true,
-								loginFromResetPwd: true
-							}));
 						} else {
 							setRedirectPath("/");
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: i18n.msg_ApiServerError
-							});
 						}
 					}
 				},
@@ -70,21 +54,10 @@ export default () => {
 					}
 				}
 			);
-		} else if (
-			userInfo.isLogin &&
-			!userInfo.loginFromResetPwd &&
-			isMountedRef.current
-		) {
+		} else if (isMountedRef.current) {
 			setRedirectPath("/");
 		}
-	}, [
-		redirectPath,
-		i18n,
-		setPopBox,
-		setUserInfo,
-		userInfo.isLogin,
-		userInfo.loginFromResetPwd
-	]);
+	}, [redirectPath, i18n, setPopBox, setUserInfo]);
 
 	const EditField = e => {
 		const val = e.target.value;

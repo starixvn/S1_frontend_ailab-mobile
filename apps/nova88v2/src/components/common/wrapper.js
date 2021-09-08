@@ -87,13 +87,11 @@ export const Wrapper = ({ children }) => {
 
 	const OnlineCheckCallBack = (errorCode, errMsg) => {
 		if (errorCode !== 0 && isMountedRef.current) {
-			if (!userInfo.loginFromResetPwd) {
-				setPopBox({
-					isOpen: true,
-					title: i18n.lbl_ImportantNote,
-					content: errMsg ?? i18n.msg_ForceLogedoutHint
-				});
-			}
+			setPopBox({
+				isOpen: true,
+				title: i18n.lbl_ImportantNote,
+				content: errMsg ?? i18n.msg_ForceLogedoutHint
+			});
 			setUserInfo(prevState => ({
 				isLogin: false,
 				langId: prevState.langId

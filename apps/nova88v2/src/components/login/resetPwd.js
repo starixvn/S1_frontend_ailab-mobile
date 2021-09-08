@@ -29,33 +29,17 @@ const ResetPwd = () => {
 
 	useEffect(() => {
 		const key = getUrlParameter("key");
-		if (
-			key &&
-			userInfo.isLogin === false &&
-			userInfo.loginFromResetPwd === undefined
-		) {
+		if (key) {
 			api.site.CheckResetPwdToken(key).then(
 				res => {
 					if (isMountedRef.current) {
-						if (res.data.errorCode === 1) {
-							navigate(`/${userInfo.langId}`);
+						if (res.data.errorCode === 0) {
 							setUserInfo(prevState => ({
 								...prevState,
 								isLogin: true
 							}));
-						} else if (res.data.errorCode === 0) {
-							setUserInfo(prevState => ({
-								...prevState,
-								isLogin: true,
-								loginFromResetPwd: true
-							}));
 						} else {
 							navigate(`/${userInfo.langId}`);
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: i18n.msg_ApiServerError
-							});
 						}
 					}
 				},
@@ -69,11 +53,7 @@ const ResetPwd = () => {
 					}
 				}
 			);
-		} else if (
-			userInfo.isLogin &&
-			isMountedRef.current &&
-			!userInfo.loginFromResetPwd
-		) {
+		} else if (isMountedRef.current) {
 			navigate(`/${userInfo.langId}`);
 		}
 	}, [
