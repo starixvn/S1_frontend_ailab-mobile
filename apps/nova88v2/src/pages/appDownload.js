@@ -40,7 +40,7 @@ const IndexPage = () => {
 											{i18n.lbl_iOS}
 										</div>
 										<a
-											href="https://nova.jsybyny.com"
+											href="https://nova.appdlweb.com"
 											target="_blank"
 											rel="noreferrer noopener">
 											<button>
