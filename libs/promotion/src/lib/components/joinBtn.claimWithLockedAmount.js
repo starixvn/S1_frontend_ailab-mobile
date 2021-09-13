@@ -36,11 +36,16 @@ export const useJoinPromotion = ({
 		requiredAmount,
 		maxAmount
 	}) => {
+		const _trimAmount =
+			typeof _claimAmount === "string"
+				? _claimAmount.replace(/[, ]+/g, "").trim()
+				: _claimAmount;
+
 		const numClaimAmount =
 			formatSetting[defWrapperCol.formatSetting.isConvertRequired] ||
 			formatSetting[defWrapperCol.formatSetting.formatRequired]
-				? Number(_claimAmount) * 1000
-				: Number(_claimAmount);
+				? Number(_trimAmount) * 1000
+				: Number(_trimAmount);
 
 		if (
 			checkClaimAmount({
