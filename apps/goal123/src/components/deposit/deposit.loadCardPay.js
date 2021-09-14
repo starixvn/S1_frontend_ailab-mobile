@@ -152,7 +152,7 @@ const Payment = props => {
 						cardSerial: cardData.cardSerial,
 						real_amount
 					}).then(res => {
-						const { errorCode, data } = res.data;
+						const { errorCode, data, message } = res.data;
 						if (errorCode === 0) {
 							setPopBox({
 								isOpen: true,
@@ -168,6 +168,19 @@ const Payment = props => {
 										</button>
 									</div>
 								),
+								handlePopBox: () => {
+									setPopBox(prevState => ({
+										...prevState,
+										isOpen: false
+									}));
+									refreshPage();
+								}
+							});
+						} else {
+							setPopBox({
+								isOpen: true,
+								title: i18n.lbl_ImportantNote,
+								content: `[${errorCode}]${message}`,
 								handlePopBox: () => {
 									setPopBox(prevState => ({
 										...prevState,

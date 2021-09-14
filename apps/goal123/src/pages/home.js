@@ -160,15 +160,12 @@ const IndexPage = () => {
 						hasBtn: true
 					});
 				}
-				// else {
-				// 	setPopBox({
-				// 		isOpen: false
-				// 	});
-				// }
+			};
+			const closePopbox = () => {
+				setPopBox({ isOpen: false });
 			};
 
 			const cookieOfficialAnnounce = "OfficialAnnounce_cookie";
-
 			if (readCookie(cookieOfficialAnnounce)) {
 				RankingWinnerPopup();
 			} else {
@@ -184,9 +181,7 @@ const IndexPage = () => {
 					hasBtn: true,
 					btnBar: (
 						<div className="btn-group">
-							<button
-								className="orange"
-								onClick={RankingWinnerPopup}>
+							<button className="orange" onClick={closePopbox}>
 								{i18n.lbl_Close}
 							</button>
 						</div>
