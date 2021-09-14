@@ -204,5 +204,7 @@ export const validImgLang = langId => {
 
 export const stringLinkify = text => {
 	const pattern = /(\b(https?):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
-	return text.replace(pattern, '<a href="$1" target="_blank">$1</a>');
+	return text
+		.replace(pattern, '<a href="$1" target="_blank">$1</a>')
+		.replaceAll("\n", "<br />");
 };
