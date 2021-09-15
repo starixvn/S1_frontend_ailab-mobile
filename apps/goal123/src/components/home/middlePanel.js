@@ -11,10 +11,7 @@ import path from "../../path";
 const APPDownloadLink = {
 	Android:
 		"https://mars.fadatsai88.com/v1/App?path=goal123entry_sports_android.apk",
-	IOS: {
-		en: "https://www.aso008.com/aeFHM7",
-		vn: "https://www.aso.cool/PFwm"
-	}
+	IOS: "https://helloios.net/emRS39"
 };
 
 const MiddlePanel = ({ langId, i18n }) => {
@@ -35,7 +32,7 @@ const MiddlePanel = ({ langId, i18n }) => {
 					href={TandC(langId).AppDownload}>
 					<img src={AppDownloadImg} alt="APP Download" />
 				</a>
-				<a href={APPDownloadLink.IOS[langId] ?? ""}>
+				<a href={APPDownloadLink.IOS ?? ""}>
 					<button>
 						<img src={IOS} alt="IOS" />
 						IOS
