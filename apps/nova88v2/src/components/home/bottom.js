@@ -36,7 +36,7 @@ const Bottom = ({ i18n, langId }) => {
 				/>
 				<a
 					className="icon icon-instagram"
-					href="https://www.instagram.com/nova88.net_official"
+					href="https://www.instagram.com/nova88_official/"
 					target="_blank"
 					rel="noreferrer noopener"
 				/>

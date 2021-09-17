@@ -29,7 +29,7 @@ const ContactUs = ({ i18n }) => {
 				</div>
 			</a>
 			<a
-				href="https://www.instagram.com/nova88.net_official/"
+				href="https://www.instagram.com/nova88_official/"
 				target="_blank"
 				rel="noreferrer noopener">
 				<i className="icon icon-instagram" />

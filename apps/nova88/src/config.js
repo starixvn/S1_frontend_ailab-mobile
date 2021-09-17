@@ -46,7 +46,7 @@ export const siteInfo = langId => {
 			},
 			ig: {
 				icon: "instagram",
-				link: "https://www.instagram.com/nova88.net_official",
+				link: "https://www.instagram.com/nova88_official/",
 				displayKey: "lbl_Instagram"
 			},
 			youtube: {
