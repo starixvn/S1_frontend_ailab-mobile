@@ -11,7 +11,7 @@ import {
 } from "./context";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import LinksPanel from "../home/links";
-import { productList, defTpCategoryId } from "../../datas/defMenu";
+import { productList } from "../../datas/defMenu";
 import { useGetTpMaintainList } from "../hook/useGetTpMaintainList";
 
 const ProductPage = ({ category, titleKey }) => {
@@ -45,7 +45,8 @@ const ProductPage = ({ category, titleKey }) => {
 		tpId,
 		gameId,
 		betType,
-		useGotoGame: _useGotoGame
+		useGotoGame: _useGotoGame,
+		tpGameType
 	}) => {
 		GET_ENTER_PAGE({
 			langId: userInfo.langId,
@@ -61,9 +62,11 @@ const ProductPage = ({ category, titleKey }) => {
 						isLogin: userInfo.isLogin === true,
 						langId: userInfo.langId,
 						tpId,
-						gameId
+						gameId,
+						tpGameType
 				  })
-				: null
+				: null,
+			tpGameType
 		});
 	};
 
@@ -74,10 +77,7 @@ const ProductPage = ({ category, titleKey }) => {
 		.map(game => {
 			let showingIcon = "";
 			const underMaintain = maintainList?.some(
-				m =>
-					m.tpId === game.tpId &&
-					(m.tpCategoryId === game.tpCategoryId ||
-						m.tpCategoryId === defTpCategoryId.All)
+				m => m.tpId === game.tpId && m.tpGameType === game.tpGameType
 			);
 			if (game.eventIcon) {
 				const eventInPeriodObj = game.eventIcon.find(
@@ -98,7 +98,8 @@ const ProductPage = ({ category, titleKey }) => {
 									tpId: game.tpId,
 									gameId: game.gameId,
 									betType: game.betType,
-									useGotoGame: game.useGotoGame
+									useGotoGame: game.useGotoGame,
+									tpGameType: game.tpGameType
 							  })
 					}>
 					{underMaintain ? (

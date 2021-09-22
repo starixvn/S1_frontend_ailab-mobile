@@ -36,7 +36,8 @@ const EventSwipper = ({ userInfo }) => {
 			isLogin: userInfo.isLogin,
 			loginCallback: () => {
 				setNav(defNavPanel.login);
-			}
+			},
+			tpGameType: 1
 		});
 	};
 

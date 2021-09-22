@@ -31,7 +31,7 @@ export default ({ hideLogo, title, showMenuBar }) => {
 		i18n,
 		setPopBox
 	});
-	const OnClickProduct = ({ tpId, gameId, langId, isLogin }) => {
+	const OnClickProduct = ({ tpId, gameId, langId, isLogin, tpGameType }) => {
 		return GET_ENTER_PAGE({
 			langId,
 			tpId,
@@ -39,7 +39,8 @@ export default ({ hideLogo, title, showMenuBar }) => {
 			isLogin: isLogin === true,
 			loginCallback: () => {
 				setNav(defNavPanel.login);
-			}
+			},
+			tpGameType
 		});
 	};
 

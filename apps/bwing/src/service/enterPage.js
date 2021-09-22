@@ -11,7 +11,8 @@ export const GET_CASINO_ENTER_PAGE = ({
 	gameId,
 	isFree,
 	langId,
-	execFunction
+	execFunction,
+	tpGameType
 }) => {
 	if (execFunction) {
 		execFunction();
@@ -21,7 +22,9 @@ export const GET_CASINO_ENTER_PAGE = ({
 		const signupUrl = `${appUrl}/${path.join.root}`;
 		const LoginUrl = `${appUrl}/${path.login.root}`;
 		const _errorPageUrl = errorPageUrl(langId);
-		const entPageUrl = `${config.openURL}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&errorUrl=${_errorPageUrl}&AppType=2`;
+		const _tpGameType = tpGameType ? `&tpGameType=${tpGameType}` : "";
+		const entPageUrl = `${config.openURL}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&errorUrl=${_errorPageUrl}&AppType=2${_tpGameType}`;
+
 		window
 			.open(
 				`${entPageUrl}&fun=${isFree ? 1 : 0}&gameType=slots`,
@@ -39,7 +42,8 @@ export const GET_ENTER_PAGE = ({
 	matchid,
 	isLogin,
 	loginCallback,
-	execFunction
+	execFunction,
+	tpGameType
 }) => {
 	const appUrl = window.location.origin;
 	const homeUrl = `${appUrl}`;
@@ -49,6 +53,7 @@ export const GET_ENTER_PAGE = ({
 	const cashierUrl = `${appUrl}/${path.deposit.root}`;
 	const _errorPageUrl = errorPageUrl(langId);
 	const _matchid = isNaN(matchid) ? matchid : Number(matchid);
+	const _tpGameType = tpGameType ? `&tpGameType=${tpGameType}` : "";
 
 	let result = setResult("", true, _ACTION_TYPE.blank);
 	let urlSpecialPattern = "";
@@ -89,7 +94,7 @@ export const GET_ENTER_PAGE = ({
 		config.openURL
 	}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&CashierUrl=${cashierUrl}&LobbyUrl=${lobbyUrl}&matchid=${
 		_matchid || ""
-	}&errorUrl=${_errorPageUrl}&AppType=2${urlSpecialPattern}`;
+	}&errorUrl=${_errorPageUrl}&AppType=2${urlSpecialPattern}${_tpGameType}`;
 
 	if (!isLogin && result.needLogin) {
 		loginCallback();

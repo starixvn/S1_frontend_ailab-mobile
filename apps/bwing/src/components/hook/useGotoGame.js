@@ -99,7 +99,8 @@ export const useGotoGame = ({
 			langId: _langId,
 			tpId: _tpId,
 			gameId: _gameId,
-			isFun: _isFun
+			isFun: _isFun,
+			tpGameType
 		}) => {
 			if (_isLogin) {
 				api_tp_GotoGame({
@@ -112,7 +113,8 @@ export const useGotoGame = ({
 					AppType:
 						_tpId === defSpecialSetting.playTech
 							? defGotoGame_AppType.Mobile
-							: defGotoGame_AppType.NativeAPP
+							: defGotoGame_AppType.NativeAPP,
+					tpGameType: String(tpGameType)
 				}).then(async res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0 && res.data.message) {
@@ -176,6 +178,15 @@ export const useGotoGame = ({
 									launchGameWithFunMode({ ...result });
 								}
 							}
+						} else if (
+							res.data.errorCode === 3000 &&
+							res.data.message
+						) {
+							window.open(
+								res.data.message,
+								"Under Maintenance",
+								"toolbar=no, menubar=no,scrollbars=no,resizable=no,location=no,directories=no,status=no, top=0, left=0"
+							);
 						} else {
 							setPopBox({
 								isOpen: true,

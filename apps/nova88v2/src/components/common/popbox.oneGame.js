@@ -15,7 +15,8 @@ const PopBoxOneGame = ({ tpId = 13 }) => {
 		GET_ENTER_PAGE({
 			isLogin: userInfo.isLogin,
 			langId: userInfo.langId,
-			tpId
+			tpId,
+			tpGameType: 41
 		});
 	};
 

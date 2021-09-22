@@ -1,4 +1,4 @@
-import { defTpCategoryId } from "./productList";
+import { defSlotTpGameType } from "./productList";
 
 const gameType = {
 	table: "lbl_TableGame",
@@ -8,6 +8,11 @@ const gameType = {
 
 export const defProductType = {
 	slots: "slots"
+};
+
+const otherTpGameType = {
+	OWVirtualGames: 22,
+	KMPoker: 52
 };
 
 export default ({ currencyName }) => {
@@ -22,7 +27,7 @@ export default ({ currencyName }) => {
 					tpId: 10,
 					gameId: "S-GK01",
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.SG.tpGameType
 				},
 				{
 					name: "Thor Infinity Reels",
@@ -32,7 +37,7 @@ export default ({ currencyName }) => {
 					tpId: 8,
 					gameId: 1035,
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.YGG.tpGameType
 				},
 				{
 					name: "Mahjong Ways Two",
@@ -42,7 +47,7 @@ export default ({ currencyName }) => {
 					tpId: 14,
 					gameId: 74,
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.MG.tpGameType
 				},
 				{
 					name: "Fire Queen 2",
@@ -52,7 +57,7 @@ export default ({ currencyName }) => {
 					tpId: 16,
 					gameId: 186,
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.CQ9.tpGameType
 				},
 				{
 					name: "Gates of Olympus",
@@ -62,7 +67,7 @@ export default ({ currencyName }) => {
 					tpId: 5,
 					gameId: "vs20olympgate",
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.PP.tpGameType
 				},
 				{
 					name: "God Of Fortune",
@@ -72,7 +77,7 @@ export default ({ currencyName }) => {
 					tpId: 6,
 					gameId: "godoffortune",
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.GPI.tpGameType
 				},
 				{
 					name: "Zhao Cai Jin Bao Jackpot",
@@ -82,7 +87,7 @@ export default ({ currencyName }) => {
 					tpId: 27,
 					gameId: "Zhao Cai Jin Bao Jackpot",
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.PT.tpGameType
 				},
 				{
 					name: "SUPREME CAISHEN",
@@ -92,7 +97,7 @@ export default ({ currencyName }) => {
 					tpId: 9,
 					gameId: "byz81hmsq748k",
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.Joker.tpGameType
 				},
 				{
 					name: "Houyi's Legend",
@@ -102,7 +107,7 @@ export default ({ currencyName }) => {
 					tpId: 24,
 					gameId: "cm00034",
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.Iconic.tpGameType
 				},
 				{
 					name: "Baccarat",
@@ -112,7 +117,7 @@ export default ({ currencyName }) => {
 					tpId: 1,
 					gameId: 208,
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.Saba.tpGameType
 				},
 				{
 					name: "Virtual Games",
@@ -122,7 +127,7 @@ export default ({ currencyName }) => {
 					tpId: 1,
 					gameId: 245,
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: otherTpGameType.OWVirtualGames
 				}
 			];
 		case "IDR":
@@ -135,7 +140,7 @@ export default ({ currencyName }) => {
 					tpId: 10,
 					gameId: "S-FD01",
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.SG.tpGameType
 				},
 				{
 					name: "Thor Infinity Reels",
@@ -145,7 +150,7 @@ export default ({ currencyName }) => {
 					tpId: 8,
 					gameId: 1035,
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.YGG.tpGameType
 				},
 				{
 					name: "Mahjong Ways Two",
@@ -155,7 +160,7 @@ export default ({ currencyName }) => {
 					tpId: 14,
 					gameId: 74,
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.PG.tpGameType
 				},
 				{
 					name: "Jumping Mobile",
@@ -165,7 +170,7 @@ export default ({ currencyName }) => {
 					tpId: 16,
 					gameId: 105,
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.CQ9.tpGameType
 				},
 				{
 					name: "Gates of Olympus",
@@ -175,7 +180,7 @@ export default ({ currencyName }) => {
 					tpId: 5,
 					gameId: "vs20olympgate",
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.PP.tpGameType
 				},
 				{
 					name: "God Of Fortune",
@@ -185,7 +190,7 @@ export default ({ currencyName }) => {
 					tpId: 6,
 					gameId: "godoffortune",
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.GPI.tpGameType
 				},
 				{
 					name: "Gem Queen",
@@ -195,7 +200,7 @@ export default ({ currencyName }) => {
 					tpId: 27,
 					gameId: "gemq",
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.PT.tpGameType
 				},
 				{
 					name: "SUPREME CAISHEN",
@@ -205,7 +210,7 @@ export default ({ currencyName }) => {
 					tpId: 9,
 					gameId: "byz81hmsq748k",
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.Joker.tpGameType
 				},
 				{
 					name: "Houyi's Legend",
@@ -215,7 +220,7 @@ export default ({ currencyName }) => {
 					tpId: 24,
 					gameId: "cm00034",
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.Iconic.tpGameType
 				},
 				{
 					name: "Baccarat",
@@ -225,7 +230,7 @@ export default ({ currencyName }) => {
 					tpId: 1,
 					gameId: 208,
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.Saba.tpGameType
 				},
 				{
 					name: "Virtual Games",
@@ -235,7 +240,7 @@ export default ({ currencyName }) => {
 					tpId: 1,
 					gameId: 245,
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: otherTpGameType.OWVirtualGames
 				}
 			];
 		case "INR":
@@ -246,7 +251,7 @@ export default ({ currencyName }) => {
 					gameTypeKey: gameType.poker,
 					imgUrl: "andar_bahar",
 					tpId: 11,
-					tpCategoryId: defTpCategoryId.Poker
+					tpGameType: otherTpGameType.KMPoker
 				},
 				{
 					name: "Jhandi Munda",
@@ -254,7 +259,7 @@ export default ({ currencyName }) => {
 					gameTypeKey: gameType.poker,
 					imgUrl: "jhandi_munda",
 					tpId: 11,
-					tpCategoryId: defTpCategoryId.Poker
+					tpGameType: otherTpGameType.KMPoker
 				},
 				{
 					name: "Archer",
@@ -264,7 +269,7 @@ export default ({ currencyName }) => {
 					tpId: 27,
 					gameId: "arc",
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.PT.tpGameType
 				},
 				{
 					name: "God Of Fortune",
@@ -274,7 +279,7 @@ export default ({ currencyName }) => {
 					tpId: 6,
 					gameId: "godoffortune",
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.GPI.tpGameType
 				},
 				{
 					name: "Thor Infinity Reels",
@@ -284,7 +289,7 @@ export default ({ currencyName }) => {
 					tpId: 8,
 					gameId: 1035,
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.YGG.tpGameType
 				},
 				{
 					name: "Gates of Olympus",
@@ -294,7 +299,7 @@ export default ({ currencyName }) => {
 					tpId: 5,
 					gameId: "vs20olympgate",
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.PP.tpGameType
 				},
 				{
 					name: "Houyi's Legend",
@@ -304,7 +309,7 @@ export default ({ currencyName }) => {
 					tpId: 24,
 					gameId: "cm00034",
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.Iconic.tpGameType
 				},
 				{
 					name: "Sky Lantern",
@@ -314,7 +319,7 @@ export default ({ currencyName }) => {
 					tpId: 16,
 					gameId: 146,
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.CQ9.tpGameType
 				},
 				{
 					name: "Sonya Blackjack",
@@ -324,7 +329,7 @@ export default ({ currencyName }) => {
 					tpId: 8,
 					gameId: 21001,
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.YGG.tpGameType
 				},
 				{
 					name: "Baccarat",
@@ -334,7 +339,7 @@ export default ({ currencyName }) => {
 					tpId: 1,
 					gameId: 208,
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.Saba.tpGameType
 				},
 				{
 					name: "Virtual Games",
@@ -344,7 +349,7 @@ export default ({ currencyName }) => {
 					tpId: 1,
 					gameId: 245,
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: otherTpGameType.OWVirtualGames
 				}
 			];
 		default:
@@ -357,7 +362,7 @@ export default ({ currencyName }) => {
 					tpId: 10,
 					gameId: "S-FD01",
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.SG.tpGameType
 				},
 				{
 					name: "Thor Infinity Reels",
@@ -367,7 +372,7 @@ export default ({ currencyName }) => {
 					tpId: 8,
 					gameId: 1035,
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.YGG.tpGameType
 				},
 				{
 					name: "Sky Lantern",
@@ -377,7 +382,7 @@ export default ({ currencyName }) => {
 					tpId: 16,
 					gameId: 146,
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.CQ9.tpGameType
 				},
 				{
 					name: "Gates of Olympus",
@@ -387,7 +392,7 @@ export default ({ currencyName }) => {
 					tpId: 5,
 					gameId: "vs20olympgate",
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.PP.tpGameType
 				},
 				{
 					name: "God Of Fortune",
@@ -397,7 +402,7 @@ export default ({ currencyName }) => {
 					tpId: 6,
 					gameId: "godoffortune",
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.GPI.tpGameType
 				},
 				{
 					name: "Archer",
@@ -407,7 +412,7 @@ export default ({ currencyName }) => {
 					tpId: 27,
 					gameId: "arc",
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.PT.tpGameType
 				},
 				{
 					name: "LUCKY GOD",
@@ -417,7 +422,7 @@ export default ({ currencyName }) => {
 					tpId: 9,
 					gameId: "dhdirsn3m3xia",
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.Joker.tpGameType
 				},
 				{
 					name: "Houyi's Legend",
@@ -427,7 +432,7 @@ export default ({ currencyName }) => {
 					tpId: 24,
 					gameId: "cm00034",
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.Iconic.tpGameType
 				},
 				{
 					name: "Baccarat",
@@ -437,7 +442,7 @@ export default ({ currencyName }) => {
 					tpId: 1,
 					gameId: 208,
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.Saba.tpGameType
 				},
 				{
 					name: "Sonya Blackjack",
@@ -447,7 +452,7 @@ export default ({ currencyName }) => {
 					tpId: 8,
 					gameId: 21001,
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: defSlotTpGameType.YGG.tpGameType
 				},
 				{
 					name: "Virtual Games",
@@ -457,7 +462,7 @@ export default ({ currencyName }) => {
 					tpId: 1,
 					gameId: 245,
 					productType: defProductType.slots,
-					tpCategoryId: defTpCategoryId.Slots
+					tpGameType: otherTpGameType.OWVirtualGames
 				}
 			];
 	}

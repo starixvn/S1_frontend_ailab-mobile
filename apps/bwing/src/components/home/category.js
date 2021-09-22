@@ -24,7 +24,7 @@ const Category = props => {
 	const { setPopBox } = useContext(popBoxContext);
 	const [showingTpIds, setShowingTpIds] = useState(null);
 
-	const clickGame = ({ tpId, gameId, _path }) => {
+	const clickGame = ({ tpId, gameId, _path, tpGameType }) => {
 		if (_path) {
 			setRedirect({
 				redirect: true,
@@ -38,7 +38,8 @@ const Category = props => {
 				isLogin: userInfo.isLogin === true,
 				loginCallback: () => {
 					setNav(defNavPanel.login);
-				}
+				},
+				tpGameType
 			});
 		}
 	};
@@ -308,7 +309,8 @@ const ProductItem = props => {
 			target={props.href ? "_blank" : null}
 			onClick={!props.href ? props.clickGame : null}
 			ref={props._ref}
-			className={props.isShow ? "open" : ""}>
+			className={props.isShow ? "open" : ""}
+			rel="noreferrer">
 			<img src={props.img} alt={props.icon ?? ""} />
 			{props.spanText ? (
 				<span className={`icon icon-${props.icon}`}>
