@@ -7,7 +7,7 @@ import {
 	loadingContext
 } from "../common/context";
 import config from "../../config";
-import { isConvert, number_format } from "../common/common";
+import { isConvert, number_format, getWindowOpenUrl } from "../common/common";
 import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
 import { useHandleAmount } from "./hook/useHandleAmount";
@@ -15,6 +15,7 @@ import { api_payment_GetLoadCardPayInfoList } from "../../service/api/payment";
 import Inputbox from "../common/inputbox.info";
 import CardInfo from "../../styles/img/cardinfo.png";
 import { api_cashier_DepositReqLoadCardPay } from "../../service/api/cashier";
+import PromoList from "./promoList";
 
 const payType = "LoadCardPay";
 const initCardDataStatus = {
@@ -23,7 +24,7 @@ const initCardDataStatus = {
 };
 
 const Payment = props => {
-	const { paymentList, creditTimeKey } = props;
+	const { paymentList, creditTimeKey, promoList } = props;
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -31,6 +32,7 @@ const Payment = props => {
 	const [selChannel, setSelChannel] = useState({});
 	const [cardData, setCardData] = useState({ cardCode: "", cardSerial: "" });
 	const [cardDataStatus, setCardDataStatus] = useState(initCardDataStatus);
+	const [custBonusCode, setCustBonusCode] = useState(null);
 
 	const {
 		amount,
@@ -139,6 +141,14 @@ const Payment = props => {
 		if (result) {
 			const RedirectToNext = real_amount => {
 				const { mode, channelId } = selChannel;
+				const param = {
+					ChannelId: channelId,
+					Code: cardData.cardCode,
+					Serial: cardData.cardSerial,
+					Amount: real_amount,
+					BonusCode: custBonusCode
+				};
+
 				const refreshPage = () => {
 					window.location.reload();
 				};
@@ -146,10 +156,7 @@ const Payment = props => {
 				if (mode === 3) {
 					api_cashier_DepositReqLoadCardPay({
 						langId: userInfo.langId,
-						channelId,
-						cardCode: cardData.cardCode,
-						cardSerial: cardData.cardSerial,
-						real_amount
+						...param
 					}).then(res => {
 						const { errorCode, data, message } = res.data;
 						if (errorCode === 0) {
@@ -191,13 +198,14 @@ const Payment = props => {
 						}
 					});
 				} else {
+					const mainUrl = `${config.openURL}/${userInfo.langId}/Cashier/DepositReqLoadCardPay`;
+					const windowOpenUrl = getWindowOpenUrl({ mainUrl, param });
+					window.open(windowOpenUrl);
+
 					setPopBox(prevState => ({
 						...prevState,
 						isOpen: false
 					}));
-					window.open(
-						`${config.openURL}/${userInfo.langId}/Cashier/DepositReqLoadCardPay?ChannelId=${selChannel.channelId}&Code=${cardData.cardCode}&Serial=${cardData.cardSerial}&Amount=${real_amount}`
-					);
 					refreshPage();
 				}
 			};
@@ -325,6 +333,11 @@ const Payment = props => {
 				clickInfo={clickInfo}
 			/>
 			<Note langId={userInfo.langId} />
+			<PromoList
+				promoList={promoList}
+				i18n={i18n}
+				setCustBonusCode={setCustBonusCode}
+			/>
 			<div className="btn-group">
 				<button
 					className={canSubmit ? "blue" : "darkGray"}
@@ -336,9 +349,14 @@ const Payment = props => {
 	);
 };
 
+Payment.defaultProps = {
+	promoList: []
+};
+
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
-	creditTimeKey: PropTypes.string.isRequired
+	creditTimeKey: PropTypes.string.isRequired,
+	promoList: PropTypes.arrayOf(PropTypes.object)
 };
 
 const Note = ({ langId }) => {

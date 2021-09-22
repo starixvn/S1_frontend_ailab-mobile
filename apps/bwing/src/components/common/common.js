@@ -160,3 +160,13 @@ export const stringLinkify = text => {
 		.replace(pattern, '<a href="$1" target="_blank">$1</a>')
 		.replaceAll("\n", "<br />");
 };
+
+export const getWindowOpenUrl = ({ mainUrl, param }) => {
+	const paramArray = Object.entries(param);
+	const paramString = paramArray
+		.filter(arr => Boolean(arr[1]))
+		.map(arr => arr.join("="))
+		.join("&");
+
+	return `${mainUrl}?${paramString}`;
+};

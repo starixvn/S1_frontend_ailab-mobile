@@ -7,7 +7,7 @@ import {
 	loadingContext
 } from "../common/context";
 import config from "../../config";
-import { isConvert, number_format } from "../common/common";
+import { isConvert, number_format, getWindowOpenUrl } from "../common/common";
 import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
 import { useHandleAmount } from "./hook/useHandleAmount";
@@ -15,11 +15,12 @@ import {
 	api_GetOnlineBankInfoSysList,
 	api_GetOnlineBankInfo
 } from "../../service/api/payment";
+import PromoList from "./promoList";
 
 const payType = "onlineBanking";
 
 const Payment = props => {
-	const { paymentList, creditTimeKey } = props;
+	const { paymentList, creditTimeKey, promoList } = props;
 
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -29,6 +30,7 @@ const Payment = props => {
 	const [selGroup, setSelGroup] = useState(null);
 	const [selbank, setBank] = useState({});
 	const [bankList, setBankList] = useState([]);
+	const [custBonusCode, setCustBonusCode] = useState(null);
 
 	const {
 		amount,
@@ -148,16 +150,22 @@ const Payment = props => {
 			let bankName = null;
 
 			const RedirectToNext = real_amount => {
+				const mainUrl = `${config.openURL}/${userInfo.langId}/Cashier/DepositReqOnlineBanking`;
+				const param = {
+					sysId,
+					payId,
+					ChannelId: channelId,
+					Amount: real_amount,
+					BonusCode: custBonusCode
+				};
+				const windowOpenUrl = getWindowOpenUrl({ mainUrl, param });
+				window.open(windowOpenUrl);
+
 				setPopBox(prevState => ({
 					...prevState,
 					isOpen: false
 				}));
-				window.open(
-					`${
-						`${config.openURL}/${userInfo.langId}/Cashier/DepositReqOnlineBanking` +
-						"?sysId="
-					}${sysId}&payId=${payId}&ChannelId=${channelId}&Amount=${real_amount}`
-				);
+
 				window.location.reload();
 			};
 
@@ -269,6 +277,11 @@ const Payment = props => {
 				clickInfo={clickInfo}
 				VaildAmount={VaildAmount.bind(this, { _amount: amount })}
 			/>
+			<PromoList
+				promoList={promoList}
+				i18n={i18n}
+				setCustBonusCode={setCustBonusCode}
+			/>
 			<div className="btn-group">
 				<button className="lightBlue" onClick={ClickSubmit}>
 					{i18n.lbl_Submit}
@@ -278,9 +291,14 @@ const Payment = props => {
 	);
 };
 
+Payment.defaultProps = {
+	promoList: []
+};
+
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
-	creditTimeKey: PropTypes.string.isRequired
+	creditTimeKey: PropTypes.string.isRequired,
+	promoList: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default Payment;

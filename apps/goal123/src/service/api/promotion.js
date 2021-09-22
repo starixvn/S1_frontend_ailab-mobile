@@ -1,4 +1,16 @@
-// import { promotionRequest, defDeviceType } from "./base";
+import { promotionRequest, defDeviceType } from "./base";
+
+export const api_GetDepositPromotionList = ({ langId }) =>
+	promotionRequest.post(`/GetDepositPromotionList/${langId}`, {
+		DeviceType: defDeviceType.Mobile
+	});
+
+export const api_SetDepositPromotionQueue = ({ langId, TransId, BonusCode }) =>
+	promotionRequest.post(`/SetDepositPromotionQueue/${langId}`, {
+		TransId,
+		BonusCode,
+		DeviceType: defDeviceType.Mobile
+	});
 
 // export const api_promotion_GetPromotionDetail = ({ langId, BonusCode }) =>
 // 	promotionRequest.post(`/GetPromotionDetail/${langId}`, {
