@@ -17,7 +17,8 @@ export const ClickLink = ({
 	bannerLink,
 	lang,
 	isLogin,
-	handleLogin
+	handleLogin,
+	tpGameType
 }) => {
 	if (actionMode === api.site.defBannerActionMode.OpenWindow) {
 		window.open(bannerLink, "_blank");
@@ -34,7 +35,8 @@ export const ClickLink = ({
 			gameId,
 			matchid: matchId,
 			isLogin: isLogin === true,
-			loginCallback: handleLogin
+			loginCallback: handleLogin,
+			tpGameType
 		});
 	}
 };

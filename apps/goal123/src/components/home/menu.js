@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { Link } from "@reach/router";
 import { defNavPanel, navContext } from "../common/context";
-import gameList, { defCol, defTpCategoryId } from "../../datas/productList";
+import gameList, { defCol } from "../../datas/productList";
 import { getEventIcon } from "./category";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { Autoplay } from "../common/swipperBanner";
@@ -52,7 +52,12 @@ const Menu = ({ i18n, userInfo }) => {
 		}
 	};
 
-	const clickGame = ({ tpId, gameId, useGotoGame: _useGotoGame }) => {
+	const clickGame = ({
+		tpId,
+		gameId,
+		useGotoGame: _useGotoGame,
+		tpGameType
+	}) => {
 		GET_ENTER_PAGE({
 			langId: userInfo.langId,
 			tpId,
@@ -66,9 +71,11 @@ const Menu = ({ i18n, userInfo }) => {
 						isLogin: userInfo.isLogin === true,
 						langId: userInfo.langId,
 						tpId,
-						gameId
+						gameId,
+						tpGameType
 				  })
-				: null
+				: null,
+			tpGameType
 		});
 	};
 
@@ -115,8 +122,7 @@ const Menu = ({ i18n, userInfo }) => {
 			const underMaintain = maintainList?.some(
 				m =>
 					m.tpId === subItem.tpId &&
-					(m.tpCategoryId === defTpCategoryId.All ||
-						m.tpCategoryId === subItem.tpCategoryId)
+					m.tpGameType === subItem.tpGameType
 			);
 			return (
 				<SubGame
@@ -190,7 +196,8 @@ const SubGame = ({ game, clickGame, i18n, underMaintain }) => {
 					: clickGame.bind(this, {
 							tpId: game.tpId,
 							gameId: game.gameId,
-							useGotoGame: game.useGotoGame
+							useGotoGame: game.useGotoGame,
+							tpGameType: game.tpGameType
 					  })
 			}>
 			{showingEventIcon !== "" ? (

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { userInfoContext } from "../common/context";
 import Loading from "../common/loading";
 import { useGetTpMaintainList } from "../hook/useGetTpMaintainList";
-import { defTpCategoryId } from "../../datas/defMenu";
+import { defSlotTpGameType } from "../../datas/defMenu";
 
 const Games = props => {
 	const { userInfo } = useContext(userInfoContext);
@@ -27,8 +27,7 @@ const Games = props => {
 		const underMaintain = maintainList?.some(
 			m =>
 				m.tpId === g.tpId &&
-				(m.tpCategoryId === defTpCategoryId.Slots ||
-					m.tpCategoryId === defTpCategoryId.All)
+				m.tpGameType === defSlotTpGameType[t.name].tpGameType
 		);
 		games.push(
 			<div

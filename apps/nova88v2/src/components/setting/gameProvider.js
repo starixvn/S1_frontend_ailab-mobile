@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import path from "../../path";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
-import { defGameInfo, defTpCategoryId } from "../../datas/productList";
+import { defGameInfo } from "../../datas/productList";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { cloudImgURL } from "../../config";
 import Header from "../header/header";
@@ -15,12 +15,12 @@ const defPlatfrom = [
 	{
 		...defGameInfo.Soccer,
 		imgName: "saba",
-		tpCategoryId: defTpCategoryId.Sports
+		tpGameType: 1
 	},
 	{
 		...defGameInfo.LIVEcasinoAB,
 		imgName: "ab",
-		tpCategoryId: defTpCategoryId.LiveCasino
+		tpGameType: 6
 	},
 	// {
 	// 	...defGameInfo.Fishing,
@@ -29,124 +29,122 @@ const defPlatfrom = [
 	{
 		...defGameInfo.LIVEcasinoAG,
 		imgName: "ag",
-		tpCategoryId: defTpCategoryId.LiveCasino
+		tpGameType: 8
 	},
 	{
 		...defGameInfo.Casino_JOKER,
 		path: path.casino.root,
 		imgName: "jk",
-		tpCategoryId: defTpCategoryId.Slots
+		tpGameType: 13
 	},
 	{
 		...defGameInfo.Casino_GPI,
 		path: path.casino.root,
 		imgName: "gp",
-		tpCategoryId: defTpCategoryId.Slots
+		tpGameType: 11
 	},
 	{
 		...defGameInfo.LIVEcasinoDG,
 		imgName: "dg",
-		tpCategoryId: defTpCategoryId.LiveCasino
+		tpGameType: 10
 	},
 	{
 		...defGameInfo.LIVEcasinoSA,
 		imgName: "sa",
-		tpCategoryId: defTpCategoryId.LiveCasino
+		tpGameType: 9
 	},
 	{
 		...defGameInfo.Casino_YGG,
 		path: path.casino.root,
 		imgName: "yg",
-		tpCategoryId: defTpCategoryId.Slots
+		tpGameType: 14
 	},
 	{
 		...defGameInfo.Casino_PP,
 		path: path.casino.root,
 		imgName: "pp",
-		tpCategoryId: defTpCategoryId.Slots
+		tpGameType: 7
 	},
 	{
 		...defGameInfo.Casino_SG,
 		path: path.casino.root,
 		imgName: "sg",
-		tpCategoryId: defTpCategoryId.Slots
+		tpGameType: 15
 	},
 	{
 		...defGameInfo.Casino_PG,
 		path: path.casino.root,
 		imgName: "pg",
-		tpCategoryId: defTpCategoryId.Slots
+		tpGameType: 17
 	},
 	{
 		...defGameInfo.LIVEcasinoAE,
 		imgName: "ae",
-		tpCategoryId: defTpCategoryId.LiveCasino
+		tpGameType: 18
 	},
 	{
 		...defGameInfo.LIVEcasinoEB,
 		imgName: "eb",
-		tpCategoryId: defTpCategoryId.LiveCasino
+		tpGameType: 28
 	},
 	// {
 	// 	...defGameInfo.LIVEcasinoMW,
 	// 	imgName: "mw",
-	// tpCategoryId: defTpCategoryId.LiveCasino
 	// },
 	{
 		...defGameInfo.LIVEcasinoWM,
 		imgName: "wm",
-		tpCategoryId: defTpCategoryId.LiveCasino
+		tpGameType: 32
 	},
 	{
 		...defGameInfo.Casino_CQ9,
 		path: path.casino.root,
 		imgName: "cq9",
-		tpCategoryId: defTpCategoryId.Slots
+		tpGameType: 29
 	},
 	{
 		...defGameInfo.casino_ICG,
 		path: path.casino.root,
 		imgName: "icg",
-		tpCategoryId: defTpCategoryId.Slots
+		tpGameType: 39
 	},
 	// {
 	// 	...defGameInfo.Casino_918Kiss,
 	// 	imgName: "kiss",
 	// 	path: path.kiss918.root,
-	// tpCategoryId: defTpCategoryId.Slots
 	// },
 	{
 		...defGameInfo.oneGame,
 		imgName: "1g",
-		tpCategoryId: defTpCategoryId.Poker
+		tpGameType: 41
 	},
 	{
 		...defGameInfo.Casino_PT,
 		path: path.casino.root,
 		imgName: "pt",
-		tpCategoryId: defTpCategoryId.Slots
+		tpGameType: 48
 	},
 	{
 		...defGameInfo.kingMaker,
 		imgName: "km",
-		tpCategoryId: defTpCategoryId.Poker
+		tpGameType: 52
 	},
 	{
 		...defGameInfo.amb,
 		imgName: "amb",
-		tpCategoryId: defTpCategoryId.Poker
+		tpGameType: 50
 	},
 	{
 		...defGameInfo.Casino_MGP,
 		imgName: "mg",
 		path: path.casino.root,
-		tpCategoryId: defTpCategoryId.Slots
+		tpGameType: 58
 	},
 	{
 		...defGameInfo.Casino_Jili,
 		imgName: "ji",
 		path: path.casino.root,
-		tpCategoryId: defTpCategoryId.Slots
+		tpGameType: 53
 	}
 ];
 
@@ -187,7 +185,7 @@ const GameProvider = ({ userInfo, i18n }) => {
 	}, [isLogin, i18n]);
 
 	const ClickItem = itemInfo => {
-		const { tpId, gameId, underMaintain } = itemInfo;
+		const { tpId, gameId, underMaintain, tpGameType } = itemInfo;
 		if (underMaintain) {
 			setPopBox({
 				isOpen: true,
@@ -200,7 +198,8 @@ const GameProvider = ({ userInfo, i18n }) => {
 				langId,
 				tpId,
 				gameId,
-				loginCallback: handleLogin
+				loginCallback: handleLogin,
+				tpGameType
 			});
 		}
 	};
@@ -211,10 +210,7 @@ const GameProvider = ({ userInfo, i18n }) => {
 		)
 		.map(p => {
 			const underMaintain = maintainList?.some(
-				m =>
-					m.tpId === p.tpId &&
-					(m.tpCategoryId === p.tpCategoryId ||
-						m.tpCategoryId === defTpCategoryId.All)
+				m => m.tpId === p.tpId && m.tpGameType === p.tpGameType
 			);
 
 			return p.path && !underMaintain ? (
@@ -233,7 +229,8 @@ const GameProvider = ({ userInfo, i18n }) => {
 					onClick={ClickItem.bind(this, {
 						tpId: p.tpId,
 						gameId: p.gameId,
-						underMaintain
+						underMaintain,
+						tpGameType: p.tpGameType
 					})}>
 					<img
 						src={`${cloudImgURL}/SiteSkin/img/logo/${p.imgName}.png`}

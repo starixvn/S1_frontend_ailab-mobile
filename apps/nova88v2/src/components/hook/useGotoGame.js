@@ -126,7 +126,8 @@ export const useGotoGame = ({
 			langId: _langId,
 			tpId: _tpId,
 			gameId: _gameId,
-			isFun: _isFun
+			isFun: _isFun,
+			tpGameType
 		}) => {
 			let returnData = "";
 			if (_isLogin) {
@@ -141,7 +142,8 @@ export const useGotoGame = ({
 						AppType:
 							_tpId === defSpecialSetting.playTech
 								? api.tp.defGotoGame_AppType.Mobile
-								: api.tp.defGotoGame_AppType.NativeAPP
+								: api.tp.defGotoGame_AppType.NativeAPP,
+						tpGameType: String(tpGameType)
 					});
 
 					if (isMountedRef.current) {
@@ -210,6 +212,15 @@ export const useGotoGame = ({
 							} else if (_tpId === defSpecialSetting.sports_9w) {
 								returnData = result;
 							}
+						} else if (
+							res.data.errorCode === 3000 &&
+							res.data.message
+						) {
+							window.open(
+								res.data.message,
+								"Under Maintenance",
+								"toolbar=no, menubar=no,scrollbars=no,resizable=no,location=no,directories=no,status=no, top=0, left=0"
+							);
 						} else {
 							setPopBox({
 								isOpen: true,

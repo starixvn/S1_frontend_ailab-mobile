@@ -6,7 +6,6 @@ import HotGameList, { defProductType } from "../../datas/hotGameList";
 import { GET_CASINO_ENTER_PAGE, GET_ENTER_PAGE } from "../../service/enterPage";
 import useHandleLogin from "../hook/useHandleLogin";
 import { useGetTpMaintainList } from "../hook/useGetTpMaintainList";
-import { defTpCategoryId } from "../../datas/productList";
 import { GetCurrencyName } from "../common/common";
 
 const HotGame = ({ i18n, userInfo }) => {
@@ -20,13 +19,10 @@ const HotGame = ({ i18n, userInfo }) => {
 		i18n
 	});
 
-	const clickGame = ({ tpId, gameId, productType, tpCategoryId }) => {
+	const clickGame = ({ tpId, gameId, productType, tpGameType }) => {
 		if (
 			maintainList?.some(
-				m =>
-					m.tpId === tpId &&
-					(m.tpCategoryId === tpCategoryId ||
-						m.tpCategoryId === defTpCategoryId.All)
+				m => m.tpId === tpId && m.tpGameType === tpGameType
 			)
 		) {
 			setPopBox({
@@ -52,7 +48,8 @@ const HotGame = ({ i18n, userInfo }) => {
 				langId: userInfo.langId,
 				tpId,
 				gameId,
-				isFree: false
+				isFree: false,
+				tpGameType
 			});
 		} else {
 			GET_ENTER_PAGE({
@@ -60,7 +57,8 @@ const HotGame = ({ i18n, userInfo }) => {
 				tpId,
 				gameId,
 				isLogin: userInfo.isLogin,
-				loginCallback: handleLogin
+				loginCallback: handleLogin,
+				tpGameType
 			});
 		}
 	};
@@ -80,7 +78,7 @@ const HotGame = ({ i18n, userInfo }) => {
 							tpId: game?.tpId,
 							gameId: game?.gameId,
 							productType: game?.productType,
-							tpCategoryId: game.tpCategoryId
+							tpGameType: game.tpGameType
 						})}>
 						{i18n.lbl_PlayNow.toUpperCase()}
 					</button>

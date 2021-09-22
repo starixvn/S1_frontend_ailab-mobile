@@ -23,7 +23,8 @@ export const api_tp_GotoGame = ({
 	LangId,
 	AppType = defGotoGame_AppType.NativeAPP,
 	fun = null,
-	gameType = ""
+	gameType = "",
+	tpGameType
 }) =>
 	tpRequest.post("/GotoGame", {
 		TpId,
@@ -32,7 +33,8 @@ export const api_tp_GotoGame = ({
 		inputs: {
 			gameId,
 			fun,
-			gameType
+			gameType,
+			tpGameType
 		}
 	});
 

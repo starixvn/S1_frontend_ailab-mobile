@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
-import { navContext, defNavPanel } from "../common/context";
+import { navContext, defNavPanel, popBoxContext } from "../common/context";
 import { defGameInfo } from "../../datas/productList";
 import { api_GetTpIds } from "../../service/api/site";
 import { useGotoGame } from "../hook/useGotoGame";
@@ -20,97 +20,113 @@ import img12 from "../../styles/img/GameList12.png";
 import one789_TraditionalLottery from "../../styles/img/GameList16.png";
 import one789_LiveCasino from "../../styles/img/GameList13.png";
 import one789_Lottery from "../../styles/img/GameList14.png";
+import { useGetTpMaintainList } from "../hook/useGetTpMaintainList";
 
 const defGameList = [
 	{
 		...defGameInfo.Sports,
 		img: img1,
-		displayKey: "lbl_Soccer"
+		displayKey: "lbl_Soccer",
+		tpGameType: 1
 	},
 	{
 		...defGameInfo.One789_lottery,
 		img: one789_TraditionalLottery,
-		displayKey: "lbl_TraditionalLottery"
+		displayKey: "lbl_TraditionalLottery",
+		tpGameType: 35
 	},
 
 	{
 		...defGameInfo.One789_lottery_789,
 		img: one789_Lottery,
-		displayKey: "lbl_789Lottery"
+		displayKey: "lbl_789Lottery",
+		tpGameType: 36
 	},
 	{
 		...defGameInfo.LIVEcasinoOne789,
 		img: one789_LiveCasino,
-		displayKey: "lbl_liveCasino_789SeDie"
+		displayKey: "lbl_liveCasino_789SeDie",
+		tpGameType: 37
 	},
 	{
 		img: img2,
 		displayKey: "lbl_Saba1Club1",
 		tpId: 1,
 		gameId: 200,
-		betType: 1613
+		betType: 1613,
+		tpGameType: 25
 	},
 	{
 		img: img3,
 		displayKey: "lbl_Saba1Club2",
 		tpId: 1,
 		gameId: 200,
-		betType: 1620
+		betType: 1620,
+		tpGameType: 25
 	},
 	{
 		img: img4,
 		displayKey: "lbl_Saba1Club3",
 		tpId: 1,
 		gameId: 200,
-		betType: 1612
+		betType: 1612,
+		tpGameType: 25
 	},
 	{
 		img: img5,
 		displayKey: "lbl_Saba1Club5",
 		tpId: 1,
 		gameId: 200,
-		betType: 1614
+		betType: 1614,
+		tpGameType: 25
 	},
 	{
 		img: img6,
 		displayKey: "AE Baccarat",
 		tpId: 15,
-		gameId: 15
+		gameId: 15,
+		tpGameType: 18
 	},
 	{
 		img: img7,
 		displayKey: "lbl_dream_gaming_se_die",
-		tpId: 4
+		tpId: 4,
+		tpGameType: 10
 	},
 	{
 		img: img8,
 		displayKey: "lbl_eSports",
 		tpId: 1,
-		gameId: 43
+		gameId: 43,
+		tpGameType: 10
 	},
 	{
 		img: img9,
 		displayKey: "lbl_FishingGG",
 		tpId: 7,
-		gameId: 10
+		gameId: 1,
+		tpGameType: 12
 	},
 	{
 		img: img10,
 		displayKey: "lbl_VirtualSports",
 		tpId: 1,
-		gameId: 180
+		gameId: 180,
+		tpGameType: 3
 	},
 	{
 		img: img11,
 		displayKey: "lbl_Keno",
 		tpId: 1,
-		gameId: 202
+		gameId: 202,
+		tpGameType: 5
 	},
 	{
 		img: img12,
 		displayKey: "lbl_Lottery",
 		tpId: 1,
-		gameId: 220
+		gameId: 220,
+		tpGameType: 19
 	}
 	// {
 	// 	img: require("../../styles/img/GameList8.jpg"),
@@ -123,9 +139,11 @@ const defGameList = [
 
 const GamePanel = ({ i18n, userInfo }) => {
 	const { setNav } = useContext(navContext);
+	const { setPopBox } = useContext(popBoxContext);
 	const [tpIds, setTpIds] = useState(null);
 	const isMountedRef = useRef(null);
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
+	const { maintainList } = useGetTpMaintainList();
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -159,26 +177,39 @@ const GamePanel = ({ i18n, userInfo }) => {
 		tpId,
 		gameId,
 		betType,
-		useGotoGame: _useGotoGame
+		useGotoGame: _useGotoGame,
+		tpGameType
 	}) => {
-		GET_ENTER_PAGE({
-			langId: userInfo.langId,
-			tpId,
-			gameId,
-			isLogin: userInfo.isLogin,
-			betType,
-			loginCallback: () => {
-				setNav(defNavPanel.login);
-			},
-			execFunction: _useGotoGame
-				? handleGoToGame.bind(this, {
-						isLogin: userInfo.isLogin === true,
-						langId: userInfo.langId,
-						tpId,
-						gameId
-				  })
-				: null
-		});
+		const underMaintain = maintainList?.some(
+			m => m.tpId === tpId && m.tpGameType === tpGameType
+		);
+		if (underMaintain) {
+			setPopBox({
+				isOpen: true,
+				content: i18n.lbl_underMaintenance
+			});
+		} else {
+			GET_ENTER_PAGE({
+				langId: userInfo.langId,
+				tpId,
+				gameId,
+				isLogin: userInfo.isLogin,
+				betType,
+				loginCallback: () => {
+					setNav(defNavPanel.login);
+				},
+				execFunction: _useGotoGame
+					? handleGoToGame.bind(this, {
+							isLogin: userInfo.isLogin === true,
+							langId: userInfo.langId,
+							tpId,
+							gameId,
+							tpGameType
+					  })
+					: null,
+				tpGameType
+			});
+		}
 	};
 
 	const rows = defGameList
@@ -195,7 +226,8 @@ const GamePanel = ({ i18n, userInfo }) => {
 						tpId: g.tpId,
 						gameId: g.gameId,
 						betType: g.betType,
-						useGotoGame: g.useGotoGame
+						useGotoGame: g.useGotoGame,
+						tpGameType: g.tpGameType
 					})}>
 					<img src={g.img} alt={displayText} />
 					<div className="gameArea-box-text">

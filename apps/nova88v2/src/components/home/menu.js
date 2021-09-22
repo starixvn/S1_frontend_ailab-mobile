@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
 import { Link } from "../../route/link";
-import gameList, { defCol, defTpCategoryId } from "../../datas/productList";
+import gameList, { defCol } from "../../datas/productList";
 import { getEventIcon } from "./category";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import useHandleLogin from "../hook/useHandleLogin";
@@ -48,17 +48,14 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 		}
 	}, [setShowningTpIds, userInfo.isLogin]);
 
-	const showSubPanel = ({ panel, popBox, tpCategoryId }) => {
+	const showSubPanel = ({ panel, popBox, tpGameType }) => {
 		if (popBox) {
 			if (popBox.needLogin && !userInfo.isLogin) {
 				handleLogin();
 			} else if (
 				maintainList &&
 				maintainList?.some(
-					m =>
-						m.tpId === popBox.tpId &&
-						(m.tpCategoryId === tpCategoryId ||
-							m.tpCategoryId === defTpCategoryId.All)
+					m => m.tpId === popBox.tpId && m.tpGameType === tpGameType
 				)
 			) {
 				setPopBox({
@@ -144,7 +141,7 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 					onClick={showSubPanel.bind(this, {
 						panel: item.category,
 						popBox: item?.popBox,
-						tpCategoryId: item.tpCategoryId
+						tpGameType: item?.tpGameType
 					})}>
 					<i className={`icon icon-${item.categoryIcon}`} />
 					<div>{i18n[item.translateKey]}</div>
@@ -179,20 +176,11 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 				return showItem;
 			})
 			.map(subItem => {
-				const isMaintain = maintainList?.some(m => {
-					let result = false;
-					if (m.tpId === subItem.tpId) {
-						if (m.tpCategoryId === defTpCategoryId.All) {
-							result = true;
-						} else if (subItem.tpCategoryId) {
-							result = m.tpCategoryId === subItem.tpCategoryId;
-						} else {
-							result = m.tpCategoryId === item.tpCategoryId;
-						}
-					}
-
-					return result;
-				});
+				const isMaintain = maintainList?.some(
+					m =>
+						m.tpId === subItem.tpId &&
+						m.tpGameType === subItem.tpGameType
+				);
 				return (
 					<SubGame
 						key={`subMenu-${
@@ -249,14 +237,16 @@ const SubGame = ({
 		tpId,
 		gameId,
 		useGotoGame: _useGotoGame,
-		specialUrl
+		specialUrl,
+		tpGameType
 	}) => {
 		if (tpId === defSpecialSetting.sports_9w) {
 			const result = await handleGoToGame({
 				isLogin: userInfo.isLogin,
 				langId: userInfo.langId,
 				tpId,
-				gameId
+				gameId,
+				tpGameType
 			});
 			const { url, key, userId } = result ?? {};
 			open9wSports({ url, key, userId });
@@ -272,10 +262,12 @@ const SubGame = ({
 							isLogin: userInfo.isLogin === true,
 							langId: userInfo.langId,
 							tpId,
-							gameId
+							gameId,
+							tpGameType
 					  })
 					: null,
-				specialUrl
+				specialUrl,
+				tpGameType
 			});
 		}
 	};
@@ -331,7 +323,8 @@ const SubGame = ({
 				tpId: game.tpId,
 				gameId: game.gameId,
 				useGotoGame: game.useGotoGame,
-				specialUrl: game?.specialUrl ?? ""
+				specialUrl: game?.specialUrl ?? "",
+				tpGameType: game.tpGameType
 			})}>
 			{showingEventIcon !== "" ? (
 				<i className={`icon ${showingEventIcon}`} />

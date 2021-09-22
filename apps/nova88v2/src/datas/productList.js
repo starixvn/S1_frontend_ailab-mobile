@@ -82,16 +82,19 @@ const defIconType = {
 	new: " icon-new"
 };
 
-export const defTpCategoryId = {
-	All: 0,
-	Sports: 1,
-	Slots: 2,
-	LiveCasino: 3,
-	Fishing: 4,
-	Cockfighting: 5,
-	Lottery: 6,
-	VirtualSports: 7,
-	Poker: 8
+export const defSlotTpGameType = {
+	Saba: { tpId: 1, tpGameType: 4 },
+	PP: { tpId: 5, tpGameType: 7 },
+	GPI: { tpId: 6, tpGameType: 11 },
+	Joker: { tpId: 9, tpGameType: 13 },
+	YGG: { tpId: 8, tpGameType: 14 },
+	SG: { tpId: 10, tpGameType: 15 },
+	PG: { tpId: 14, tpGameType: 17 },
+	CQ9: { tpId: 16, tpGameType: 29 },
+	Iconic: { tpId: 24, tpGameType: 39 },
+	PT: { tpId: 27, tpGameType: 46 },
+	JILI: { tpId: 32, tpGameType: 53 },
+	MG: { tpId: 34, tpGameType: 57 }
 };
 
 const gameList = ({ langId, currencyName }) => {
@@ -103,12 +106,12 @@ const gameList = ({ langId, currencyName }) => {
 					category: "sports",
 					categoryIcon: "soccer",
 					translateKey: "lbl_Sports",
-					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.Soccer,
 							img: Soccer,
-							spanTextKey: "lbl_Soccer"
+							spanTextKey: "lbl_Soccer",
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.Wap,
@@ -116,14 +119,7 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "WAP",
 							specialUrl: "&device=wap",
 							hideBeforeLogin: true,
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(
-										eventTime.new_indo_wap
-									)
-								}
-							]
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.nineW,
@@ -137,27 +133,32 @@ const gameList = ({ langId, currencyName }) => {
 							],
 							allowCurrency: [61],
 							hideBeforeLogin: true,
-							useGotoGame: true
+							useGotoGame: true,
+							tpGameType: 51
 						},
 						{
 							...defGameInfo.SabaSoccer,
 							img: SabaSoccer,
-							spanTextKey: "lbl_SabaSoccer"
+							spanTextKey: "lbl_SabaSoccer",
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.Basketball,
 							img: Basketball,
-							spanTextKey: "lbl_Basketball"
+							spanTextKey: "lbl_Basketball",
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.Tennis,
 							img: Tennis,
-							spanTextKey: "lbl_Tennis"
+							spanTextKey: "lbl_Tennis",
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.Cricket,
 							img: Cricket,
-							spanTextKey: "lbl_Cricket"
+							spanTextKey: "lbl_Cricket",
+							tpGameType: 1
 						}
 					]
 				},
@@ -165,32 +166,36 @@ const gameList = ({ langId, currencyName }) => {
 					category: "virtualsports",
 					categoryIcon: "e-sports",
 					translateKey: "lbl_eSports",
-					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.ESportAll,
 							spanTextKey: "lbl_All",
-							img: ESportsAll
+							img: ESportsAll,
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.ESportAll,
 							spanText: "CS:GO",
-							img: ESportsCS
+							img: ESportsCS,
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.ESportAll,
 							spanText: "DOTA2",
-							img: ESportsDota
+							img: ESportsDota,
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.ESportAll,
 							spanText: "KOG",
-							img: ESportsKOG
+							img: ESportsKOG,
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.ESportAll,
 							spanText: "LOL",
-							img: ESportsLOL
+							img: ESportsLOL,
+							tpGameType: 1
 						}
 					]
 				},
@@ -198,7 +203,6 @@ const gameList = ({ langId, currencyName }) => {
 					category: "livecasino",
 					categoryIcon: "livecasino",
 					translateKey: "lbl_LiveCasino",
-					tpCategoryId: defTpCategoryId.LiveCasino,
 					items: [
 						// {
 						// 	...defGameInfo.Casino_MGP,
@@ -211,66 +215,69 @@ const gameList = ({ langId, currencyName }) => {
 						// 				eventTime.casino_MGP
 						// 			)
 						// 		}
-						// 	]
+						// 	],
+						// tpGameType: 58,
 						// },
 						{
 							...defGameInfo.LIVEcasinoPP,
 							spanText: "Pragmatic Play",
-							img: LIVEcasino_PP
+							img: LIVEcasino_PP,
+							tpGameType: 16
 						},
 						{
 							...defGameInfo.Casino_PT,
 							spanText: "Playtech",
 							img: LIVEcasino_PT,
 							useGotoGame: true,
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(
-										eventTime.liveCasino_PT
-									)
-								}
-							]
+							tpGameType: 48
 						},
 						{
 							...defGameInfo.LIVEcasinoAE,
 							spanText: "AE Casino",
-							img: LIVEcasino_AE
+							img: LIVEcasino_AE,
+							tpGameType: 18
 						},
 						{
 							...defGameInfo.LIVEcasinoAG,
 							spanText: "Asia Gaming",
-							img: LIVEcasino_AG
+							img: LIVEcasino_AG,
+							tpGameType: 8
 						},
 						{
 							...defGameInfo.LIVEcasinoEB,
 							spanText: "eBET",
-							img: LIVEcasino_EB
+							img: LIVEcasino_EB,
+							tpGameType: 28
 						},
 						{
 							...defGameInfo.LIVEcasinoDG,
 							spanText: "Dream Gaming",
-							img: LIVEcasino_DG
+							img: LIVEcasino_DG,
+							tpGameType: 10
 						},
 						{
 							...defGameInfo.LIVEcasinoWM,
 							spanText: "WM Casino",
-							img: LIVEcasino_WM
+							img: LIVEcasino_WM,
+							tpGameType: 32
 						},
 						{
 							...defGameInfo.LIVEcasinoSA,
 							spanText: "SA Gaming",
-							img: LIVEcasino_SA
+							img: LIVEcasino_SA,
+							tpGameType: 9
 						},
 						{
 							...defGameInfo.LIVEcasinoAB,
 							spanText: "Allbet",
-							img: LIVEcasino_AB
+							img: LIVEcasino_AB,
+							tpGameType: 6
 						},
 						{
 							...defGameInfo.LIVEcasinoN2Live,
 							spanText: "n2-LIVE",
-							img: LIVEcasino_N2Live
+							img: LIVEcasino_N2Live,
+							tpGameType: 45
 						}
 					]
 				},
@@ -278,7 +285,6 @@ const gameList = ({ langId, currencyName }) => {
 					category: "slot",
 					categoryIcon: "icon_777",
 					translateKey: "lbl_Casino",
-					tpCategoryId: defTpCategoryId.Slots,
 					items: [
 						{
 							...defGameInfo.Casino_PP,
@@ -286,7 +292,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Pragmatic Play",
 							providerImgName: "pp",
 							img: casino_PP,
-							path: path.casino.root
+							path: path.casino.root,
+							tpGameType: 7
 						},
 						{
 							...defGameInfo.Casino_MGP,
@@ -302,7 +309,8 @@ const gameList = ({ langId, currencyName }) => {
 										eventTime.casino_MGP
 									)
 								}
-							]
+							],
+							tpGameType: 57
 						},
 						{
 							...defGameInfo.Casino_Jili,
@@ -316,7 +324,8 @@ const gameList = ({ langId, currencyName }) => {
 									icon: defIconType.new,
 									inPeriod: isEventPeriod(eventTime.jili)
 								}
-							]
+							],
+							tpGameType: 53
 						},
 						{
 							...defGameInfo.Casino_PG,
@@ -324,7 +333,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "PG Soft",
 							providerImgName: "pg",
 							img: casino_PG,
-							path: path.casino.root
+							path: path.casino.root,
+							tpGameType: 17
 						},
 						{
 							...defGameInfo.Casino_SG,
@@ -332,7 +342,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Spadegaming",
 							providerImgName: "sg",
 							img: casino_SG,
-							path: path.casino.root
+							path: path.casino.root,
+							tpGameType: 15
 						},
 						{
 							...defGameInfo.Casino_PT,
@@ -341,12 +352,7 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "pt",
 							img: casino_PT,
 							path: path.casino.root,
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(eventTime.casino_PT)
-								}
-							]
+							tpGameType: 46
 						},
 						{
 							...defGameInfo.Casino_JOKER,
@@ -354,7 +360,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "JOKER",
 							img: casino_JOKER,
 							path: path.casino.root,
-							providerImgName: "jk"
+							providerImgName: "jk",
+							tpGameType: 13
 						},
 						{
 							...defGameInfo.Casino_CQ9,
@@ -362,7 +369,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "CQ9",
 							img: casino_CQ9,
 							path: path.casino.root,
-							providerImgName: "cq9"
+							providerImgName: "cq9",
+							tpGameType: 29
 						},
 						{
 							...defGameInfo.casino_ICG,
@@ -370,7 +378,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Iconic Gaming",
 							img: casino_ICG,
 							path: path.casino.root,
-							providerImgName: "icg"
+							providerImgName: "icg",
+							tpGameType: 39
 						},
 						{
 							...defGameInfo.Casino_GPI,
@@ -378,7 +387,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Game Play",
 							img: casino_GPI,
 							path: path.casino.root,
-							providerImgName: "gp"
+							providerImgName: "gp",
+							tpGameType: 11
 						},
 						{
 							...defGameInfo.Casino_YGG,
@@ -386,13 +396,15 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "YGGDrassil",
 							img: casino_YGG,
 							path: path.casino.root,
-							providerImgName: "yg"
+							providerImgName: "yg",
+							tpGameType: 14
 						},
 						{
 							...defGameInfo.Casino_OW,
 							parameter: defGameInfo.Casino_OW,
 							spanText: "Saba Casino",
-							img: casino_OW
+							img: casino_OW,
+							tpGameType: 4
 						}
 						// {
 						// ...defGameInfo.Casino_918Kiss,
@@ -408,7 +420,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "poker",
 					categoryIcon: "casino",
 					translateKey: "lbl_Poker",
-					tpCategoryId: defTpCategoryId.Poker,
+					tpGameType: 41,
 					popBox: {
 						needLogin: true,
 						title: "lbl_Poker",
@@ -420,29 +432,18 @@ const gameList = ({ langId, currencyName }) => {
 					category: "play",
 					categoryIcon: "play",
 					translateKey: "lbl_Games",
-					tpCategoryId: defTpCategoryId.Poker,
 					items: [
 						{
 							...defGameInfo.amb,
 							img: amb,
 							spanTextKey: "lbl_Amb",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(eventTime.amb)
-								}
-							]
+							tpGameType: 50
 						},
 						{
 							...defGameInfo.kingMaker,
 							img: kingMaker,
 							spanTextKey: "lbl_KingMaker",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(eventTime.km)
-								}
-							]
+							tpGameType: 52
 						}
 					]
 				},
@@ -450,27 +451,30 @@ const gameList = ({ langId, currencyName }) => {
 					category: "game",
 					categoryIcon: "game",
 					translateKey: "lbl_Fishing",
-					tpCategoryId: defTpCategoryId.Fishing,
 					items: [
 						{
 							...defGameInfo.FishingSGW,
 							spanTextKey: "lbl_FishingSG2",
-							img: fish_SGW
+							img: fish_SGW,
+							tpGameType: 31
 						},
 						{
 							...defGameInfo.ICG_DRAGONBALL_FISHING,
 							spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
-							img: fish_DBF
+							img: fish_DBF,
+							tpGameType: 40
 						},
 						{
 							...defGameInfo.Fishing_AB3,
 							spanTextKey: "lbl_Paradise",
-							img: fishing_CQ9_AB3
+							img: fishing_CQ9_AB3,
+							tpGameType: 44
 						},
 						{
 							...defGameInfo.FishingGG,
 							spanTextKey: "lbl_FishingGG",
-							img: fish_GG
+							img: fish_GG,
+							tpGameType: 12
 						}
 					]
 				},
@@ -478,12 +482,12 @@ const gameList = ({ langId, currencyName }) => {
 					category: "kelo",
 					categoryIcon: "kelo",
 					translateKey: "lbl_Lottery",
-					tpCategoryId: defTpCategoryId.Lottery,
 					items: [
 						{
 							...defGameInfo.TCG,
 							img: TCG,
 							spanTextKey: "lbl_TCG",
+							tpGameType: 54,
 							eventIcon: [
 								{
 									icon: defIconType.new,
@@ -495,27 +499,32 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.Indo4d,
 							img: id4d,
 							spanTextKey: "lbl_Indo4d",
-							allowCurrency: [15]
+							allowCurrency: [15],
+							tpGameType: 20
 						},
 						{
 							...defGameInfo.Keno,
 							img: Keno,
-							spanTextKey: "lbl_Keno"
+							spanTextKey: "lbl_Keno",
+							tpGameType: 5
 						},
 						{
 							...defGameInfo.lottery,
 							img: Lottery,
-							spanTextKey: "lbl_Lottery"
+							spanTextKey: "lbl_Lottery",
+							tpGameType: 19
 						},
 						{
 							...defGameInfo.NumberGame,
 							img: number_game,
-							spanTextKey: "lbl_NumberGame"
+							spanTextKey: "lbl_NumberGame",
+							tpGameType: 2
 						},
 						{
 							...defGameInfo.tableGame,
 							img: tableGame,
-							spanTextKey: "lbl_TableGame"
+							spanTextKey: "lbl_TableGame",
+							tpGameType: 23
 						}
 					]
 				},
@@ -545,12 +554,12 @@ const gameList = ({ langId, currencyName }) => {
 					category: "sports",
 					categoryIcon: "soccer",
 					translateKey: "lbl_Sports",
-					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.Soccer,
 							img: Soccer,
-							spanTextKey: "lbl_Soccer"
+							spanTextKey: "lbl_Soccer",
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.nineW,
@@ -564,27 +573,32 @@ const gameList = ({ langId, currencyName }) => {
 							],
 							allowCurrency: [61],
 							hideBeforeLogin: true,
-							useGotoGame: true
+							useGotoGame: true,
+							tpGameType: 51
 						},
 						{
 							...defGameInfo.SabaSoccer,
 							img: SabaSoccer,
-							spanTextKey: "lbl_SabaSoccer"
+							spanTextKey: "lbl_SabaSoccer",
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.Basketball,
 							img: Basketball,
-							spanTextKey: "lbl_Basketball"
+							spanTextKey: "lbl_Basketball",
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.Tennis,
 							img: Tennis,
-							spanTextKey: "lbl_Tennis"
+							spanTextKey: "lbl_Tennis",
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.Cricket,
 							img: Cricket,
-							spanTextKey: "lbl_Cricket"
+							spanTextKey: "lbl_Cricket",
+							tpGameType: 1
 						}
 					]
 				},
@@ -592,32 +606,36 @@ const gameList = ({ langId, currencyName }) => {
 					category: "virtualsports",
 					categoryIcon: "e-sports",
 					translateKey: "lbl_eSports",
-					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.ESportAll,
 							spanTextKey: "lbl_All",
-							img: ESportsAll
+							img: ESportsAll,
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.ESportAll,
 							spanText: "CS:GO",
-							img: ESportsCS
+							img: ESportsCS,
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.ESportAll,
 							spanText: "DOTA2",
-							img: ESportsDota
+							img: ESportsDota,
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.ESportAll,
 							spanText: "KOG",
-							img: ESportsKOG
+							img: ESportsKOG,
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.ESportAll,
 							spanText: "LOL",
-							img: ESportsLOL
+							img: ESportsLOL,
+							tpGameType: 1
 						}
 					]
 				},
@@ -625,12 +643,12 @@ const gameList = ({ langId, currencyName }) => {
 					category: "livecasino",
 					categoryIcon: "livecasino",
 					translateKey: "lbl_LiveCasino",
-					tpCategoryId: defTpCategoryId.LiveCasino,
 					items: [
 						// {
 						// 	...defGameInfo.Casino_MGP,
 						// 	spanText: "Microgaming",
 						// 	img: LIVEcasino_MGP,
+						// tpGameType: 58,
 						// 	eventIcon: [
 						// 		{
 						// 			icon: defIconType.new,
@@ -643,61 +661,63 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.LIVEcasinoPP,
 							spanText: "Pragmatic Play",
-							img: LIVEcasino_PP
+							img: LIVEcasino_PP,
+							tpGameType: 16
 						},
 						{
 							...defGameInfo.Casino_PT,
 							spanText: "Playtech",
 							img: LIVEcasino_PT,
 							useGotoGame: true,
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(
-										eventTime.liveCasino_PT
-									)
-								}
-							]
+							tpGameType: 48
 						},
 						{
 							...defGameInfo.LIVEcasinoDG,
 							spanText: "Dream Gaming",
-							img: LIVEcasino_DG
+							img: LIVEcasino_DG,
+							tpGameType: 10
 						},
 						{
 							...defGameInfo.LIVEcasinoAE,
 							spanText: "AE Casino",
-							img: LIVEcasino_AE
+							img: LIVEcasino_AE,
+							tpGameType: 18
 						},
 						{
 							...defGameInfo.LIVEcasinoSA,
 							spanText: "SA Gaming",
-							img: LIVEcasino_SA
+							img: LIVEcasino_SA,
+							tpGameType: 9
 						},
 						{
 							...defGameInfo.LIVEcasinoAB,
 							spanText: "Allbet",
-							img: LIVEcasino_AB
+							img: LIVEcasino_AB,
+							tpGameType: 6
 						},
 						{
 							...defGameInfo.LIVEcasinoAG,
 							spanText: "Asia Gaming",
-							img: LIVEcasino_AG
+							img: LIVEcasino_AG,
+							tpGameType: 8
 						},
 						{
 							...defGameInfo.LIVEcasinoWM,
 							spanText: "WM Casino",
-							img: LIVEcasino_WM
+							img: LIVEcasino_WM,
+							tpGameType: 32
 						},
 						{
 							...defGameInfo.LIVEcasinoEB,
 							spanText: "eBET",
-							img: LIVEcasino_EB
+							img: LIVEcasino_EB,
+							tpGameType: 28
 						},
 						{
 							...defGameInfo.LIVEcasinoN2Live,
 							spanText: "n2-LIVE",
-							img: LIVEcasino_N2Live
+							img: LIVEcasino_N2Live,
+							tpGameType: 45
 						}
 					]
 				},
@@ -705,7 +725,6 @@ const gameList = ({ langId, currencyName }) => {
 					category: "slot",
 					categoryIcon: "icon_777",
 					translateKey: "lbl_Casino",
-					tpCategoryId: defTpCategoryId.Slots,
 					items: [
 						{
 							...defGameInfo.Casino_PP,
@@ -713,7 +732,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Pragmatic Play",
 							img: casino_PP,
 							path: path.casino.root,
-							providerImgName: "pp"
+							providerImgName: "pp",
+							tpGameType: 7
 						},
 						{
 							...defGameInfo.Casino_MGP,
@@ -722,6 +742,7 @@ const gameList = ({ langId, currencyName }) => {
 							img: casino_MGP,
 							path: path.casino.root,
 							providerImgName: "mg",
+							tpGameType: 57,
 							eventIcon: [
 								{
 									icon: defIconType.new,
@@ -738,6 +759,7 @@ const gameList = ({ langId, currencyName }) => {
 							img: casino_Jili,
 							path: path.casino.root,
 							providerImgName: "ji",
+							tpGameType: 53,
 							eventIcon: [
 								{
 									icon: defIconType.new,
@@ -751,7 +773,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Spadegaming",
 							providerImgName: "sg",
 							img: casino_SG,
-							path: path.casino.root
+							path: path.casino.root,
+							tpGameType: 15
 						},
 						{
 							...defGameInfo.Casino_YGG,
@@ -759,16 +782,17 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "YGGDrassil",
 							img: casino_YGG,
 							path: path.casino.root,
-							providerImgName: "yg"
+							providerImgName: "yg",
+							tpGameType: 14
 						},
-
 						{
 							...defGameInfo.Casino_JOKER,
 							parameter: defGameInfo.Casino_JOKER,
 							spanText: "JOKER",
 							img: casino_JOKER,
 							path: path.casino.root,
-							providerImgName: "jk"
+							providerImgName: "jk",
+							tpGameType: 13
 						},
 						{
 							...defGameInfo.Casino_PT,
@@ -777,12 +801,7 @@ const gameList = ({ langId, currencyName }) => {
 							img: casino_PT,
 							path: path.casino.root,
 							providerImgName: "pt",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(eventTime.casino_PT)
-								}
-							]
+							tpGameType: 46
 						},
 						{
 							...defGameInfo.Casino_GPI,
@@ -790,31 +809,33 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Game Play",
 							img: casino_GPI,
 							path: path.casino.root,
-							providerImgName: "gp"
+							providerImgName: "gp",
+							tpGameType: 11
 						},
-
 						{
 							...defGameInfo.Casino_CQ9,
 							parameter: defGameInfo.Casino_CQ9,
 							spanText: "CQ9",
 							img: casino_CQ9,
 							path: path.casino.root,
-							providerImgName: "cq9"
+							providerImgName: "cq9",
+							tpGameType: 29
 						},
-
 						{
 							...defGameInfo.casino_ICG,
 							parameter: defGameInfo.casino_ICG,
 							spanText: "Iconic Gaming",
 							img: casino_ICG,
 							path: path.casino.root,
-							providerImgName: "icg"
+							providerImgName: "icg",
+							tpGameType: 39
 						},
 						{
 							...defGameInfo.Casino_OW,
 							parameter: defGameInfo.Casino_OW,
 							spanText: "Saba Casino",
-							img: casino_OW
+							img: casino_OW,
+							tpGameType: 4
 						},
 						{
 							...defGameInfo.Casino_PG,
@@ -822,7 +843,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "PG Soft",
 							img: casino_PG,
 							path: path.casino.root,
-							providerImgName: "pg"
+							providerImgName: "pg",
+							tpGameType: 17
 						}
 						// {
 						// ...defGameInfo.Casino_918Kiss,
@@ -838,7 +860,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "poker",
 					categoryIcon: "casino",
 					translateKey: "lbl_Poker",
-					tpCategoryId: defTpCategoryId.Poker,
+					tpGameType: 41,
 					popBox: {
 						needLogin: true,
 						title: "lbl_Poker",
@@ -850,29 +872,18 @@ const gameList = ({ langId, currencyName }) => {
 					category: "play",
 					categoryIcon: "play",
 					translateKey: "lbl_Games",
-					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.kingMaker,
 							img: kingMaker,
 							spanTextKey: "lbl_KingMaker",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(eventTime.km)
-								}
-							]
+							tpGameType: 52
 						},
 						{
 							...defGameInfo.amb,
 							img: amb,
 							spanTextKey: "lbl_Amb",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(eventTime.amb)
-								}
-							]
+							tpGameType: 50
 						}
 					]
 				},
@@ -880,27 +891,30 @@ const gameList = ({ langId, currencyName }) => {
 					category: "game",
 					categoryIcon: "game",
 					translateKey: "lbl_Fishing",
-					tpCategoryId: defTpCategoryId.Fishing,
 					items: [
 						{
 							...defGameInfo.FishingGG,
 							spanTextKey: "lbl_FishingGG",
-							img: fish_GG
+							img: fish_GG,
+							tpGameType: 12
 						},
 						{
 							...defGameInfo.FishingSGW,
 							spanTextKey: "lbl_FishingSG2",
-							img: fish_SGW
+							img: fish_SGW,
+							tpGameType: 31
 						},
 						{
 							...defGameInfo.Fishing_AB3,
 							spanTextKey: "lbl_Paradise",
-							img: fishing_CQ9_AB3
+							img: fishing_CQ9_AB3,
+							tpGameType: 44
 						},
 						{
 							...defGameInfo.ICG_DRAGONBALL_FISHING,
 							spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
-							img: fish_DBF
+							img: fish_DBF,
+							tpGameType: 40
 						}
 					]
 				},
@@ -908,12 +922,12 @@ const gameList = ({ langId, currencyName }) => {
 					category: "kelo",
 					categoryIcon: "kelo",
 					translateKey: "lbl_Lottery",
-					tpCategoryId: defTpCategoryId.Lottery,
 					items: [
 						{
 							...defGameInfo.TCG,
 							img: TCG,
 							spanTextKey: "lbl_TCG",
+							tpGameType: 54,
 							eventIcon: [
 								{
 									icon: defIconType.new,
@@ -925,27 +939,32 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.Indo4d,
 							img: id4d,
 							spanTextKey: "lbl_Indo4d",
-							allowCurrency: [15]
+							allowCurrency: [15],
+							tpGameType: 20
 						},
 						{
 							...defGameInfo.Keno,
 							img: Keno,
-							spanTextKey: "lbl_Keno"
+							spanTextKey: "lbl_Keno",
+							tpGameType: 5
 						},
 						{
 							...defGameInfo.lottery,
 							img: Lottery,
-							spanTextKey: "lbl_Lottery"
+							spanTextKey: "lbl_Lottery",
+							tpGameType: 19
 						},
 						{
 							...defGameInfo.NumberGame,
 							img: number_game,
-							spanTextKey: "lbl_NumberGame"
+							spanTextKey: "lbl_NumberGame",
+							tpGameType: 2
 						},
 						{
 							...defGameInfo.tableGame,
 							img: tableGame,
-							spanTextKey: "lbl_TableGame"
+							spanTextKey: "lbl_TableGame",
+							tpGameType: 23
 						}
 					]
 				},
@@ -975,17 +994,18 @@ const gameList = ({ langId, currencyName }) => {
 					category: "sports",
 					categoryIcon: "soccer",
 					translateKey: "lbl_Sports",
-					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.Soccer,
 							img: Soccer,
-							spanTextKey: "lbl_Soccer"
+							spanTextKey: "lbl_Soccer",
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.SabaSoccer,
 							img: SabaSoccer,
-							spanTextKey: "lbl_SabaSoccer"
+							spanTextKey: "lbl_SabaSoccer",
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.nineW,
@@ -999,22 +1019,26 @@ const gameList = ({ langId, currencyName }) => {
 							],
 							allowCurrency: [61],
 							hideBeforeLogin: true,
-							useGotoGame: true
+							useGotoGame: true,
+							tpGameType: 51
 						},
 						{
 							...defGameInfo.Basketball,
 							img: Basketball,
-							spanTextKey: "lbl_Basketball"
+							spanTextKey: "lbl_Basketball",
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.Tennis,
 							img: Tennis,
-							spanTextKey: "lbl_Tennis"
+							spanTextKey: "lbl_Tennis",
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.Cricket,
 							img: Cricket,
-							spanTextKey: "lbl_Cricket"
+							spanTextKey: "lbl_Cricket",
+							tpGameType: 1
 						}
 					]
 				},
@@ -1022,32 +1046,36 @@ const gameList = ({ langId, currencyName }) => {
 					category: "virtualsports",
 					categoryIcon: "e-sports",
 					translateKey: "lbl_eSports",
-					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.ESportAll,
 							spanTextKey: "lbl_All",
-							img: ESportsAll
+							img: ESportsAll,
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.ESportAll,
 							spanText: "CS:GO",
-							img: ESportsCS
+							img: ESportsCS,
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.ESportAll,
 							spanText: "DOTA2",
-							img: ESportsDota
+							img: ESportsDota,
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.ESportAll,
 							spanText: "KOG",
-							img: ESportsKOG
+							img: ESportsKOG,
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.ESportAll,
 							spanText: "LOL",
-							img: ESportsLOL
+							img: ESportsLOL,
+							tpGameType: 1
 						}
 					]
 				},
@@ -1055,7 +1083,6 @@ const gameList = ({ langId, currencyName }) => {
 					category: "livecasino",
 					categoryIcon: "livecasino",
 					translateKey: "lbl_LiveCasino",
-					tpCategoryId: defTpCategoryId.LiveCasino,
 					items: [
 						// {
 						// 	...defGameInfo.Casino_MGP,
@@ -1069,66 +1096,68 @@ const gameList = ({ langId, currencyName }) => {
 						// 			)
 						// 		}
 						// 	]
+						// tpGameType: 58,
 						// },
-
 						{
 							...defGameInfo.LIVEcasinoPP,
 							spanText: "Pragmatic Play",
-							img: LIVEcasino_PP
+							img: LIVEcasino_PP,
+							tpGameType: 16
 						},
 						{
 							...defGameInfo.Casino_PT,
 							spanText: "Playtech",
 							img: LIVEcasino_PT,
 							useGotoGame: true,
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(
-										eventTime.liveCasino_PT
-									)
-								}
-							]
+							tpGameType: 48
 						},
 						{
 							...defGameInfo.LIVEcasinoDG,
 							spanText: "Dream Gaming",
-							img: LIVEcasino_DG
+							img: LIVEcasino_DG,
+							tpGameType: 10
 						},
 						{
 							...defGameInfo.LIVEcasinoAE,
 							spanText: "AE Casino",
-							img: LIVEcasino_AE
+							img: LIVEcasino_AE,
+							tpGameType: 18
 						},
 						{
 							...defGameInfo.LIVEcasinoSA,
 							spanText: "SA Gaming",
-							img: LIVEcasino_SA
+							img: LIVEcasino_SA,
+							tpGameType: 9
 						},
 						{
 							...defGameInfo.LIVEcasinoAB,
 							spanText: "Allbet",
-							img: LIVEcasino_AB
+							img: LIVEcasino_AB,
+							tpGameType: 6
 						},
 						{
 							...defGameInfo.LIVEcasinoAG,
 							spanText: "Asia Gaming",
-							img: LIVEcasino_AG
+							img: LIVEcasino_AG,
+							tpGameType: 8
 						},
 						{
 							...defGameInfo.LIVEcasinoWM,
 							spanText: "WM Casino",
-							img: LIVEcasino_WM
+							img: LIVEcasino_WM,
+							tpGameType: 32
 						},
 						{
 							...defGameInfo.LIVEcasinoEB,
 							spanText: "eBET",
-							img: LIVEcasino_EB
+							img: LIVEcasino_EB,
+							tpGameType: 28
 						},
 						{
 							...defGameInfo.LIVEcasinoN2Live,
 							spanText: "n2-LIVE",
-							img: LIVEcasino_N2Live
+							img: LIVEcasino_N2Live,
+							tpGameType: 45
 						}
 					]
 				},
@@ -1136,7 +1165,6 @@ const gameList = ({ langId, currencyName }) => {
 					category: "slot",
 					categoryIcon: "icon_777",
 					translateKey: "lbl_Casino",
-					tpCategoryId: defTpCategoryId.Slots,
 					items: [
 						{
 							...defGameInfo.Casino_PP,
@@ -1144,7 +1172,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Pragmatic Play",
 							img: casino_PP,
 							path: path.casino.root,
-							providerImgName: "pp"
+							providerImgName: "pp",
+							tpGameType: 7
 						},
 						{
 							...defGameInfo.Casino_MGP,
@@ -1160,7 +1189,8 @@ const gameList = ({ langId, currencyName }) => {
 										eventTime.casino_MGP
 									)
 								}
-							]
+							],
+							tpGameType: 57
 						},
 						{
 							...defGameInfo.Casino_PG,
@@ -1168,7 +1198,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "PG Soft",
 							img: casino_PG,
 							path: path.casino.root,
-							providerImgName: "pg"
+							providerImgName: "pg",
+							tpGameType: 17
 						},
 						{
 							...defGameInfo.Casino_Jili,
@@ -1182,7 +1213,8 @@ const gameList = ({ langId, currencyName }) => {
 									icon: defIconType.new,
 									inPeriod: isEventPeriod(eventTime.jili)
 								}
-							]
+							],
+							tpGameType: 53
 						},
 						{
 							...defGameInfo.Casino_JOKER,
@@ -1190,7 +1222,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "JOKER",
 							img: casino_JOKER,
 							path: path.casino.root,
-							providerImgName: "jk"
+							providerImgName: "jk",
+							tpGameType: 13
 						},
 						{
 							...defGameInfo.Casino_SG,
@@ -1198,7 +1231,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Spadegaming",
 							img: casino_SG,
 							path: path.casino.root,
-							providerImgName: "sg"
+							providerImgName: "sg",
+							tpGameType: 15
 						},
 						{
 							...defGameInfo.casino_ICG,
@@ -1206,7 +1240,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Iconic Gaming",
 							img: casino_ICG,
 							path: path.casino.root,
-							providerImgName: "icg"
+							providerImgName: "icg",
+							tpGameType: 39
 						},
 						{
 							...defGameInfo.Casino_PT,
@@ -1215,12 +1250,7 @@ const gameList = ({ langId, currencyName }) => {
 							img: casino_PT,
 							path: path.casino.root,
 							providerImgName: "pt",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(eventTime.casino_PT)
-								}
-							]
+							tpGameType: 46
 						},
 						{
 							...defGameInfo.Casino_YGG,
@@ -1228,7 +1258,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "YGGDrassil",
 							img: casino_YGG,
 							path: path.casino.root,
-							providerImgName: "yg"
+							providerImgName: "yg",
+							tpGameType: 14
 						},
 						{
 							...defGameInfo.Casino_CQ9,
@@ -1236,7 +1267,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "CQ9",
 							img: casino_CQ9,
 							path: path.casino.root,
-							providerImgName: "cq9"
+							providerImgName: "cq9",
+							tpGameType: 29
 						},
 						{
 							...defGameInfo.Casino_GPI,
@@ -1244,13 +1276,15 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Game Play",
 							img: casino_GPI,
 							path: path.casino.root,
-							providerImgName: "gp"
+							providerImgName: "gp",
+							tpGameType: 11
 						},
 						{
 							...defGameInfo.Casino_OW,
 							parameter: defGameInfo.Casino_OW,
 							spanText: "Saba Casino",
-							img: casino_OW
+							img: casino_OW,
+							tpGameType: 4
 						}
 						// {
 						// ...defGameInfo.Casino_918Kiss,
@@ -1266,7 +1300,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "poker",
 					categoryIcon: "casino",
 					translateKey: "lbl_Poker",
-					tpCategoryId: defTpCategoryId.Poker,
+					tpGameType: 41,
 					popBox: {
 						needLogin: true,
 						title: "lbl_Poker",
@@ -1278,29 +1312,18 @@ const gameList = ({ langId, currencyName }) => {
 					category: "play",
 					categoryIcon: "play",
 					translateKey: "lbl_Games",
-					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.kingMaker,
 							img: kingMaker,
 							spanTextKey: "lbl_KingMaker",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(eventTime.km)
-								}
-							]
+							tpGameType: 52
 						},
 						{
 							...defGameInfo.amb,
 							img: amb,
 							spanTextKey: "lbl_Amb",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(eventTime.amb)
-								}
-							]
+							tpGameType: 50
 						}
 					]
 				},
@@ -1308,27 +1331,30 @@ const gameList = ({ langId, currencyName }) => {
 					category: "game",
 					categoryIcon: "game",
 					translateKey: "lbl_Fishing",
-					tpCategoryId: defTpCategoryId.Fishing,
 					items: [
 						{
 							...defGameInfo.FishingSGW,
 							spanTextKey: "lbl_FishingSG2",
-							img: fish_SGW
+							img: fish_SGW,
+							tpGameType: 31
 						},
 						{
 							...defGameInfo.Fishing_AB3,
 							spanTextKey: "lbl_Paradise",
-							img: fishing_CQ9_AB3
+							img: fishing_CQ9_AB3,
+							tpGameType: 44
 						},
 						{
 							...defGameInfo.FishingGG,
 							spanTextKey: "lbl_FishingGG",
-							img: fish_GG
+							img: fish_GG,
+							tpGameType: 12
 						},
 						{
 							...defGameInfo.ICG_DRAGONBALL_FISHING,
 							spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
-							img: fish_DBF
+							img: fish_DBF,
+							tpGameType: 40
 						}
 					]
 				},
@@ -1336,7 +1362,6 @@ const gameList = ({ langId, currencyName }) => {
 					category: "kelo",
 					categoryIcon: "kelo",
 					translateKey: "lbl_Lottery",
-					tpCategoryId: defTpCategoryId.Lottery,
 					items: [
 						{
 							...defGameInfo.TCG,
@@ -1347,33 +1372,39 @@ const gameList = ({ langId, currencyName }) => {
 									icon: defIconType.new,
 									inPeriod: isEventPeriod(eventTime.tcg)
 								}
-							]
+							],
+							tpGameType: 54
 						},
 						{
 							...defGameInfo.Indo4d,
 							img: id4d,
 							spanTextKey: "lbl_Indo4d",
-							allowCurrency: [15]
+							allowCurrency: [15],
+							tpGameType: 20
 						},
 						{
 							...defGameInfo.Keno,
 							img: Keno,
-							spanTextKey: "lbl_Keno"
+							spanTextKey: "lbl_Keno",
+							tpGameType: 5
 						},
 						{
 							...defGameInfo.lottery,
 							img: Lottery,
-							spanTextKey: "lbl_Lottery"
+							spanTextKey: "lbl_Lottery",
+							tpGameType: 19
 						},
 						{
 							...defGameInfo.NumberGame,
 							img: number_game,
-							spanTextKey: "lbl_NumberGame"
+							spanTextKey: "lbl_NumberGame",
+							tpGameType: 2
 						},
 						{
 							...defGameInfo.tableGame,
 							img: tableGame,
-							spanTextKey: "lbl_TableGame"
+							spanTextKey: "lbl_TableGame",
+							tpGameType: 23
 						}
 					]
 				},
@@ -1403,17 +1434,18 @@ const gameList = ({ langId, currencyName }) => {
 					category: "sports",
 					categoryIcon: "soccer",
 					translateKey: "lbl_Sports",
-					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.Soccer,
 							img: Soccer,
-							spanTextKey: "lbl_Soccer"
+							spanTextKey: "lbl_Soccer",
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.SabaSoccer,
 							img: SabaSoccer,
-							spanTextKey: "lbl_SabaSoccer"
+							spanTextKey: "lbl_SabaSoccer",
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.nineW,
@@ -1427,22 +1459,26 @@ const gameList = ({ langId, currencyName }) => {
 							],
 							allowCurrency: [61],
 							hideBeforeLogin: true,
-							useGotoGame: true
+							useGotoGame: true,
+							tpGameType: 51
 						},
 						{
 							...defGameInfo.Basketball,
 							img: Basketball,
-							spanTextKey: "lbl_Basketball"
+							spanTextKey: "lbl_Basketball",
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.Tennis,
 							img: Tennis,
-							spanTextKey: "lbl_Tennis"
+							spanTextKey: "lbl_Tennis",
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.Cricket,
 							img: Cricket,
-							spanTextKey: "lbl_Cricket"
+							spanTextKey: "lbl_Cricket",
+							tpGameType: 1
 						}
 					]
 				},
@@ -1450,32 +1486,36 @@ const gameList = ({ langId, currencyName }) => {
 					category: "virtualsports",
 					categoryIcon: "e-sports",
 					translateKey: "lbl_eSports",
-					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.ESportAll,
 							spanTextKey: "lbl_All",
-							img: ESportsAll
+							img: ESportsAll,
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.ESportAll,
 							spanText: "CS:GO",
-							img: ESportsCS
+							img: ESportsCS,
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.ESportAll,
 							spanText: "DOTA2",
-							img: ESportsDota
+							img: ESportsDota,
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.ESportAll,
 							spanText: "KOG",
-							img: ESportsKOG
+							img: ESportsKOG,
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.ESportAll,
 							spanText: "LOL",
-							img: ESportsLOL
+							img: ESportsLOL,
+							tpGameType: 1
 						}
 					]
 				},
@@ -1483,7 +1523,6 @@ const gameList = ({ langId, currencyName }) => {
 					category: "livecasino",
 					categoryIcon: "livecasino",
 					translateKey: "lbl_LiveCasino",
-					tpCategoryId: defTpCategoryId.LiveCasino,
 					items: [
 						// {
 						// 	...defGameInfo.Casino_MGP,
@@ -1496,53 +1535,62 @@ const gameList = ({ langId, currencyName }) => {
 						// 				eventTime.casino_MGP
 						// 			)
 						// 		}
-						// 	]
+						// 	],
+						// tpGameType: 58,
 						// },
-
 						{
 							...defGameInfo.LIVEcasinoPP,
 							spanText: "Pragmatic Play",
-							img: LIVEcasino_PP
+							img: LIVEcasino_PP,
+							tpGameType: 16
 						},
 						{
 							...defGameInfo.LIVEcasinoAE,
 							spanText: "AE Casino",
-							img: LIVEcasino_AE
+							img: LIVEcasino_AE,
+							tpGameType: 18
 						},
 						{
 							...defGameInfo.LIVEcasinoAG,
 							spanText: "Asia Gaming",
-							img: LIVEcasino_AG
+							img: LIVEcasino_AG,
+							tpGameType: 8
 						},
 						{
 							...defGameInfo.LIVEcasinoEB,
 							spanText: "eBET",
-							img: LIVEcasino_EB
+							img: LIVEcasino_EB,
+							tpGameType: 28
 						},
 						{
 							...defGameInfo.LIVEcasinoDG,
 							spanText: "Dream Gaming",
-							img: LIVEcasino_DG
+							img: LIVEcasino_DG,
+							tpGameType: 10
 						},
 						{
 							...defGameInfo.LIVEcasinoWM,
 							spanText: "WM Casino",
-							img: LIVEcasino_WM
+							img: LIVEcasino_WM,
+							tpGameType: 32
 						},
 						{
 							...defGameInfo.LIVEcasinoSA,
 							spanText: "SA Gaming",
-							img: LIVEcasino_SA
+							img: LIVEcasino_SA,
+							tpGameType: 9
 						},
 						{
 							...defGameInfo.LIVEcasinoAB,
 							spanText: "Allbet",
-							img: LIVEcasino_AB
+							img: LIVEcasino_AB,
+							tpGameType: 6
 						},
 						{
 							...defGameInfo.LIVEcasinoN2Live,
 							spanText: "n2-LIVE",
-							img: LIVEcasino_N2Live
+							img: LIVEcasino_N2Live,
+							tpGameType: 45
 						}
 					]
 				},
@@ -1550,7 +1598,6 @@ const gameList = ({ langId, currencyName }) => {
 					category: "slot",
 					categoryIcon: "icon_777",
 					translateKey: "lbl_Casino",
-					tpCategoryId: defTpCategoryId.Slots,
 					items: [
 						{
 							...defGameInfo.Casino_PP,
@@ -1558,7 +1605,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Pragmatic Play",
 							img: casino_PP,
 							path: path.casino.root,
-							providerImgName: "pp"
+							providerImgName: "pp",
+							tpGameType: 7
 						},
 						{
 							...defGameInfo.Casino_MGP,
@@ -1574,7 +1622,8 @@ const gameList = ({ langId, currencyName }) => {
 										eventTime.casino_MGP
 									)
 								}
-							]
+							],
+							tpGameType: 57
 						},
 						{
 							...defGameInfo.Casino_Jili,
@@ -1588,7 +1637,8 @@ const gameList = ({ langId, currencyName }) => {
 									icon: defIconType.new,
 									inPeriod: isEventPeriod(eventTime.jili)
 								}
-							]
+							],
+							tpGameType: 53
 						},
 						{
 							...defGameInfo.Casino_PG,
@@ -1596,7 +1646,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "PG Soft",
 							img: casino_PG,
 							path: path.casino.root,
-							providerImgName: "pg"
+							providerImgName: "pg",
+							tpGameType: 17
 						},
 						{
 							...defGameInfo.Casino_SG,
@@ -1604,7 +1655,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Spadegaming",
 							img: casino_SG,
 							path: path.casino.root,
-							providerImgName: "sg"
+							providerImgName: "sg",
+							tpGameType: 15
 						},
 						{
 							...defGameInfo.Casino_PT,
@@ -1613,12 +1665,7 @@ const gameList = ({ langId, currencyName }) => {
 							img: casino_PT,
 							path: path.casino.root,
 							providerImgName: "pt",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(eventTime.casino_PT)
-								}
-							]
+							tpGameType: 46
 						},
 						{
 							...defGameInfo.Casino_JOKER,
@@ -1626,7 +1673,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "JOKER",
 							img: casino_JOKER,
 							path: path.casino.root,
-							providerImgName: "jk"
+							providerImgName: "jk",
+							tpGameType: 13
 						},
 						{
 							...defGameInfo.Casino_CQ9,
@@ -1634,7 +1682,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "CQ9",
 							img: casino_CQ9,
 							path: path.casino.root,
-							providerImgName: "cq9"
+							providerImgName: "cq9",
+							tpGameType: 29
 						},
 						{
 							...defGameInfo.casino_ICG,
@@ -1642,7 +1691,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Iconic Gaming",
 							img: casino_ICG,
 							path: path.casino.root,
-							providerImgName: "icg"
+							providerImgName: "icg",
+							tpGameType: 39
 						},
 						{
 							...defGameInfo.Casino_GPI,
@@ -1650,7 +1700,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Game Play",
 							img: casino_GPI,
 							path: path.casino.root,
-							providerImgName: "gp"
+							providerImgName: "gp",
+							tpGameType: 11
 						},
 						{
 							...defGameInfo.Casino_YGG,
@@ -1658,13 +1709,15 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "YGGDrassil",
 							img: casino_YGG,
 							path: path.casino.root,
-							providerImgName: "yg"
+							providerImgName: "yg",
+							tpGameType: 14
 						},
 						{
 							...defGameInfo.Casino_OW,
 							parameter: defGameInfo.Casino_OW,
 							spanText: "Saba Casino",
-							img: casino_OW
+							img: casino_OW,
+							tpGameType: 4
 						}
 						// {
 						// ...defGameInfo.Casino_918Kiss,
@@ -1680,7 +1733,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "poker",
 					categoryIcon: "casino",
 					translateKey: "lbl_Poker",
-					tpCategoryId: defTpCategoryId.Poker,
+					tpGameType: 41,
 					popBox: {
 						needLogin: true,
 						title: "lbl_Poker",
@@ -1692,29 +1745,18 @@ const gameList = ({ langId, currencyName }) => {
 					category: "play",
 					categoryIcon: "play",
 					translateKey: "lbl_Games",
-					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.amb,
 							img: amb,
 							spanTextKey: "lbl_Amb",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(eventTime.amb)
-								}
-							]
+							tpGameType: 50
 						},
 						{
 							...defGameInfo.kingMaker,
 							img: kingMaker,
 							spanTextKey: "lbl_KingMaker",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(eventTime.km)
-								}
-							]
+							tpGameType: 52
 						}
 					]
 				},
@@ -1722,27 +1764,30 @@ const gameList = ({ langId, currencyName }) => {
 					category: "game",
 					categoryIcon: "game",
 					translateKey: "lbl_Fishing",
-					tpCategoryId: defTpCategoryId.Fishing,
 					items: [
 						{
 							...defGameInfo.FishingSGW,
 							spanTextKey: "lbl_FishingSG2",
-							img: fish_SGW
+							img: fish_SGW,
+							tpGameType: 31
 						},
 						{
 							...defGameInfo.ICG_DRAGONBALL_FISHING,
 							spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
-							img: fish_DBF
+							img: fish_DBF,
+							tpGameType: 40
 						},
 						{
 							...defGameInfo.Fishing_AB3,
 							spanTextKey: "lbl_Paradise",
-							img: fishing_CQ9_AB3
+							img: fishing_CQ9_AB3,
+							tpGameType: 44
 						},
 						{
 							...defGameInfo.FishingGG,
 							spanTextKey: "lbl_FishingGG",
-							img: fish_GG
+							img: fish_GG,
+							tpGameType: 12
 						}
 					]
 				},
@@ -1750,7 +1795,6 @@ const gameList = ({ langId, currencyName }) => {
 					category: "kelo",
 					categoryIcon: "kelo",
 					translateKey: "lbl_Lottery",
-					tpCategoryId: defTpCategoryId.Lottery,
 					items: [
 						{
 							...defGameInfo.TCG,
@@ -1761,33 +1805,39 @@ const gameList = ({ langId, currencyName }) => {
 									icon: defIconType.new,
 									inPeriod: isEventPeriod(eventTime.tcg)
 								}
-							]
+							],
+							tpGameType: 54
 						},
 						{
 							...defGameInfo.Indo4d,
 							img: id4d,
 							spanTextKey: "lbl_Indo4d",
-							allowCurrency: [15]
+							allowCurrency: [15],
+							tpGameType: 20
 						},
 						{
 							...defGameInfo.Keno,
 							img: Keno,
-							spanTextKey: "lbl_Keno"
+							spanTextKey: "lbl_Keno",
+							tpGameType: 5
 						},
 						{
 							...defGameInfo.lottery,
 							img: Lottery,
-							spanTextKey: "lbl_Lottery"
+							spanTextKey: "lbl_Lottery",
+							tpGameType: 19
 						},
 						{
 							...defGameInfo.NumberGame,
 							img: number_game,
-							spanTextKey: "lbl_NumberGame"
+							spanTextKey: "lbl_NumberGame",
+							tpGameType: 2
 						},
 						{
 							...defGameInfo.tableGame,
 							img: tableGame,
-							spanTextKey: "lbl_TableGame"
+							spanTextKey: "lbl_TableGame",
+							tpGameType: 23
 						}
 					]
 				},
@@ -1817,12 +1867,12 @@ const gameList = ({ langId, currencyName }) => {
 					category: "sports",
 					categoryIcon: "soccer",
 					translateKey: "lbl_Sports",
-					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.Soccer,
 							img: Soccer,
-							spanTextKey: "lbl_Soccer"
+							spanTextKey: "lbl_Soccer",
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.nineW,
@@ -1836,27 +1886,32 @@ const gameList = ({ langId, currencyName }) => {
 							],
 							allowCurrency: [61],
 							hideBeforeLogin: true,
-							useGotoGame: true
+							useGotoGame: true,
+							tpGameType: 51
 						},
 						{
 							...defGameInfo.SabaSoccer,
 							img: SabaSoccer,
-							spanTextKey: "lbl_SabaSoccer"
+							spanTextKey: "lbl_SabaSoccer",
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.Basketball,
 							img: Basketball,
-							spanTextKey: "lbl_Basketball"
+							spanTextKey: "lbl_Basketball",
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.Tennis,
 							img: Tennis,
-							spanTextKey: "lbl_Tennis"
+							spanTextKey: "lbl_Tennis",
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.Cricket,
 							img: Cricket,
-							spanTextKey: "lbl_Cricket"
+							spanTextKey: "lbl_Cricket",
+							tpGameType: 1
 						}
 					]
 				},
@@ -1864,32 +1919,36 @@ const gameList = ({ langId, currencyName }) => {
 					category: "virtualsports",
 					categoryIcon: "e-sports",
 					translateKey: "lbl_eSports",
-					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.ESportAll,
 							spanTextKey: "lbl_All",
-							img: ESportsAll
+							img: ESportsAll,
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.ESportAll,
 							spanText: "CS:GO",
-							img: ESportsCS
+							img: ESportsCS,
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.ESportAll,
 							spanText: "DOTA2",
-							img: ESportsDota
+							img: ESportsDota,
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.ESportAll,
 							spanText: "KOG",
-							img: ESportsKOG
+							img: ESportsKOG,
+							tpGameType: 1
 						},
 						{
 							...defGameInfo.ESportAll,
 							spanText: "LOL",
-							img: ESportsLOL
+							img: ESportsLOL,
+							tpGameType: 1
 						}
 					]
 				},
@@ -1897,7 +1956,6 @@ const gameList = ({ langId, currencyName }) => {
 					category: "livecasino",
 					categoryIcon: "livecasino",
 					translateKey: "lbl_LiveCasino",
-					tpCategoryId: defTpCategoryId.LiveCasino,
 					items: [
 						// {
 						// 	...defGameInfo.Casino_MGP,
@@ -1911,66 +1969,68 @@ const gameList = ({ langId, currencyName }) => {
 						// 			)
 						// 		}
 						// 	]
+						// tpGameType: 58,
 						// },
-
 						{
 							...defGameInfo.LIVEcasinoPP,
 							spanText: "Pragmatic Play",
-							img: LIVEcasino_PP
+							img: LIVEcasino_PP,
+							tpGameType: 16
 						},
 						{
 							...defGameInfo.Casino_PT,
 							spanText: "Playtech",
 							img: LIVEcasino_PT,
 							useGotoGame: true,
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(
-										eventTime.liveCasino_PT
-									)
-								}
-							]
+							tpGameType: 48
 						},
 						{
 							...defGameInfo.LIVEcasinoN2Live,
 							spanText: "n2-LIVE",
-							img: LIVEcasino_N2Live
+							img: LIVEcasino_N2Live,
+							tpGameType: 45
 						},
 						{
 							...defGameInfo.LIVEcasinoWM,
 							spanText: "WM Casino",
-							img: LIVEcasino_WM
+							img: LIVEcasino_WM,
+							tpGameType: 32
 						},
 						{
 							...defGameInfo.LIVEcasinoAB,
 							spanText: "Allbet",
-							img: LIVEcasino_AB
+							img: LIVEcasino_AB,
+							tpGameType: 6
 						},
 						{
 							...defGameInfo.LIVEcasinoEB,
 							spanText: "eBET",
-							img: LIVEcasino_EB
+							img: LIVEcasino_EB,
+							tpGameType: 28
 						},
 						{
 							...defGameInfo.LIVEcasinoSA,
 							spanText: "SA Gaming",
-							img: LIVEcasino_SA
+							img: LIVEcasino_SA,
+							tpGameType: 9
 						},
 						{
 							...defGameInfo.LIVEcasinoAE,
 							spanText: "AE Casino",
-							img: LIVEcasino_AE
+							img: LIVEcasino_AE,
+							tpGameType: 18
 						},
 						{
 							...defGameInfo.LIVEcasinoDG,
 							spanText: "Dream Gaming",
-							img: LIVEcasino_DG
+							img: LIVEcasino_DG,
+							tpGameType: 10
 						},
 						{
 							...defGameInfo.LIVEcasinoAG,
 							spanText: "Asia Gaming",
-							img: LIVEcasino_AG
+							img: LIVEcasino_AG,
+							tpGameType: 8
 						}
 					]
 				},
@@ -1978,7 +2038,6 @@ const gameList = ({ langId, currencyName }) => {
 					category: "slot",
 					categoryIcon: "icon_777",
 					translateKey: "lbl_Casino",
-					tpCategoryId: defTpCategoryId.Slots,
 					items: [
 						{
 							...defGameInfo.Casino_PP,
@@ -1986,7 +2045,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Pragmatic Play",
 							providerImgName: "pp",
 							img: casino_PP,
-							path: path.casino.root
+							path: path.casino.root,
+							tpGameType: 7
 						},
 						{
 							...defGameInfo.Casino_MGP,
@@ -2002,7 +2062,8 @@ const gameList = ({ langId, currencyName }) => {
 										eventTime.casino_MGP
 									)
 								}
-							]
+							],
+							tpGameType: 57
 						},
 						{
 							...defGameInfo.Casino_PT,
@@ -2011,12 +2072,7 @@ const gameList = ({ langId, currencyName }) => {
 							img: casino_PT,
 							path: path.casino.root,
 							providerImgName: "pt",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(eventTime.casino_PT)
-								}
-							]
+							tpGameType: 46
 						},
 						{
 							...defGameInfo.Casino_Jili,
@@ -2030,7 +2086,8 @@ const gameList = ({ langId, currencyName }) => {
 									icon: defIconType.new,
 									inPeriod: isEventPeriod(eventTime.jili)
 								}
-							]
+							],
+							tpGameType: 53
 						},
 						{
 							...defGameInfo.casino_ICG,
@@ -2038,7 +2095,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Iconic Gaming",
 							img: casino_ICG,
 							path: path.casino.root,
-							providerImgName: "icg"
+							providerImgName: "icg",
+							tpGameType: 39
 						},
 						{
 							...defGameInfo.Casino_JOKER,
@@ -2046,7 +2104,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "JOKER",
 							img: casino_JOKER,
 							path: path.casino.root,
-							providerImgName: "jk"
+							providerImgName: "jk",
+							tpGameType: 13
 						},
 						{
 							...defGameInfo.Casino_CQ9,
@@ -2054,7 +2113,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "CQ9",
 							img: casino_CQ9,
 							path: path.casino.root,
-							providerImgName: "cq9"
+							providerImgName: "cq9",
+							tpGameType: 29
 						},
 						{
 							...defGameInfo.Casino_GPI,
@@ -2062,7 +2122,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Game Play",
 							img: casino_GPI,
 							path: path.casino.root,
-							providerImgName: "gp"
+							providerImgName: "gp",
+							tpGameType: 11
 						},
 						{
 							...defGameInfo.Casino_YGG,
@@ -2070,7 +2131,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "YGGDrassil",
 							img: casino_YGG,
 							path: path.casino.root,
-							providerImgName: "yg"
+							providerImgName: "yg",
+							tpGameType: 14
 						},
 						{
 							...defGameInfo.Casino_SG,
@@ -2078,7 +2140,8 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "Spadegaming",
 							img: casino_SG,
 							path: path.casino.root,
-							providerImgName: "sg"
+							providerImgName: "sg",
+							tpGameType: 15
 						},
 						{
 							...defGameInfo.Casino_PG,
@@ -2086,13 +2149,15 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "PG Soft",
 							img: casino_PG,
 							path: path.casino.root,
-							providerImgName: "pg"
+							providerImgName: "pg",
+							tpGameType: 17
 						},
 						{
 							...defGameInfo.Casino_OW,
 							parameter: defGameInfo.Casino_OW,
 							spanText: "Saba Casino",
-							img: casino_OW
+							img: casino_OW,
+							tpGameType: 4
 						}
 					]
 				},
@@ -2100,29 +2165,18 @@ const gameList = ({ langId, currencyName }) => {
 					category: "play",
 					categoryIcon: "play",
 					translateKey: "lbl_Games",
-					tpCategoryId: defTpCategoryId.Sports,
 					items: [
 						{
 							...defGameInfo.kingMaker,
 							img: kingMaker,
 							spanTextKey: "lbl_KingMaker",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(eventTime.km)
-								}
-							]
+							tpGameType: 52
 						},
 						{
 							...defGameInfo.amb,
 							img: amb,
 							spanTextKey: "lbl_Amb",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(eventTime.amb)
-								}
-							]
+							tpGameType: 50
 						}
 					]
 				},
@@ -2130,27 +2184,30 @@ const gameList = ({ langId, currencyName }) => {
 					category: "game",
 					categoryIcon: "game",
 					translateKey: "lbl_Fishing",
-					tpCategoryId: defTpCategoryId.Fishing,
 					items: [
 						{
 							...defGameInfo.Fishing_AB3,
 							spanTextKey: "lbl_Paradise",
-							img: fishing_CQ9_AB3
+							img: fishing_CQ9_AB3,
+							tpGameType: 44
 						},
 						{
 							...defGameInfo.ICG_DRAGONBALL_FISHING,
 							spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
-							img: fish_DBF
+							img: fish_DBF,
+							tpGameType: 40
 						},
 						{
 							...defGameInfo.FishingGG,
 							spanTextKey: "lbl_FishingGG",
-							img: fish_GG
+							img: fish_GG,
+							tpGameType: 12
 						},
 						{
 							...defGameInfo.FishingSGW,
 							spanTextKey: "lbl_FishingSG2",
-							img: fish_SGW
+							img: fish_SGW,
+							tpGameType: 31
 						}
 					]
 				},
@@ -2158,7 +2215,6 @@ const gameList = ({ langId, currencyName }) => {
 					category: "kelo",
 					categoryIcon: "kelo",
 					translateKey: "lbl_Lottery",
-					tpCategoryId: defTpCategoryId.Lottery,
 					items: [
 						{
 							...defGameInfo.TCG,
@@ -2169,33 +2225,39 @@ const gameList = ({ langId, currencyName }) => {
 									icon: defIconType.new,
 									inPeriod: isEventPeriod(eventTime.tcg)
 								}
-							]
+							],
+							tpGameType: 54
 						},
 						{
 							...defGameInfo.Indo4d,
 							img: id4d,
 							spanTextKey: "lbl_Indo4d",
-							allowCurrency: [15]
+							allowCurrency: [15],
+							tpGameType: 20
 						},
 						{
 							...defGameInfo.Keno,
 							img: Keno,
-							spanTextKey: "lbl_Keno"
+							spanTextKey: "lbl_Keno",
+							tpGameType: 5
 						},
 						{
 							...defGameInfo.lottery,
 							img: Lottery,
-							spanTextKey: "lbl_Lottery"
+							spanTextKey: "lbl_Lottery",
+							tpGameType: 19
 						},
 						{
 							...defGameInfo.NumberGame,
 							img: number_game,
-							spanTextKey: "lbl_NumberGame"
+							spanTextKey: "lbl_NumberGame",
+							tpGameType: 2
 						},
 						{
 							...defGameInfo.tableGame,
 							img: tableGame,
-							spanTextKey: "lbl_TableGame"
+							spanTextKey: "lbl_TableGame",
+							tpGameType: 23
 						}
 					]
 				},
@@ -2203,7 +2265,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "poker",
 					categoryIcon: "casino",
 					translateKey: "lbl_Poker",
-					tpCategoryId: defTpCategoryId.Poker,
+					tpGameType: 41,
 					popBox: {
 						needLogin: true,
 						title: "lbl_Poker",

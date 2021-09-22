@@ -32,7 +32,8 @@ const EventSwipper = ({ userInfo, i18n }) => {
 			gameId,
 			matchid: matchId,
 			isLogin: userInfo.isLogin,
-			loginCallback: handleLogin
+			loginCallback: handleLogin,
+			tpGameType: 1
 		});
 	};
 

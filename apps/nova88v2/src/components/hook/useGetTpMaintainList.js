@@ -9,7 +9,7 @@ export const useGetTpMaintainList = () => {
 			if (res.data.errorCode === 0 && isMounted) {
 				const arr = res.data?.data.map(el => ({
 					tpId: el.tpId,
-					tpCategoryId: el.tpCategoryId
+					tpGameType: el.tpGameType
 				}));
 				const set = new Set(arr?.map(item => JSON.stringify(item)));
 				const _arr = [...set]?.map(item => JSON.parse(item));

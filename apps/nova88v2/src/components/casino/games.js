@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { userInfoContext } from "Context";
 import Loading from "../common/loading";
-import { defTpCategoryId } from "../../datas/productList";
 import { useGetTpMaintainList } from "../hook/useGetTpMaintainList";
+import { defSlotTpGameType } from "../../datas/productList";
 
 const GamePanel = React.forwardRef((props, ref) => {
 	const {
@@ -27,8 +27,7 @@ const GamePanel = React.forwardRef((props, ref) => {
 		const isMaintain = maintainList?.some(
 			m =>
 				m.tpId === g.tpId &&
-				(m.tpCategoryId === defTpCategoryId.Slots ||
-					m.tpCategoryId === defTpCategoryId.All)
+				m.tpGameType === defSlotTpGameType[t.name].tpGameType
 		);
 		games.push(
 			<div

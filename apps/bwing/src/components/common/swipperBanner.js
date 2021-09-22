@@ -19,7 +19,8 @@ export const ClickLink = ({
 	bannerLink,
 	lang,
 	isLogin,
-	setNav
+	setNav,
+	tpGameType
 }) => {
 	const HandleLogin = () => {
 		setNav(defNavPanel.login);
@@ -38,7 +39,8 @@ export const ClickLink = ({
 			gameId,
 			matchid: matchId,
 			isLogin: isLogin === true,
-			loginCallback: HandleLogin
+			loginCallback: HandleLogin,
+			tpGameType
 		});
 	}
 };

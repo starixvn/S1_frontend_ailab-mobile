@@ -1,4 +1,4 @@
-import { defGameInfo, defTpCategoryId } from "../../datas/productList";
+import { defGameInfo } from "../../datas/productList";
 import path from "../../path";
 
 const defPlatfrom = [
@@ -7,28 +7,28 @@ const defPlatfrom = [
 		parameter: { ...defGameInfo.Sports },
 		imgName: "sabaa",
 		otherPlatformImg: "sabab",
-		tpCategoryId: defTpCategoryId.Sports
+		tpGameType: 1
 	},
 	{
 		...defGameInfo.BTISport,
 		imgName: "btia",
-		category: defTpCategoryId.Sports
+		tpGameType: 49
 	},
 	{
 		...defGameInfo.LIVEcasinoAG,
 		imgName: "aga",
-		tpCategoryId: defTpCategoryId.LiveCasino
+		tpGameType: 8
 	},
 	{
 		...defGameInfo.LIVEcasinoAE,
 		imgName: "aea",
-		tpCategoryId: defTpCategoryId.LiveCasino
+		tpGameType: 18
 	},
 	{
 		...defGameInfo.LIVEcasinoN2,
 		imgName: "n2livea",
 		otherPlatformImg: "n2liveb",
-		tpCategoryId: defTpCategoryId.LiveCasino
+		tpGameType: 45
 	},
 	{
 		...defGameInfo.Casino_PP,
@@ -36,33 +36,33 @@ const defPlatfrom = [
 		parameter: { ...defGameInfo.Casino_PP },
 		imgName: "ppa",
 		otherPlatformImg: "ppb",
-		tpCategoryId: defTpCategoryId.Slots
+		tpGameType: 16
 	},
 	{
 		...defGameInfo.Casino_MGP,
 		imgName: "mga",
-		category: defTpCategoryId.Slots
+		tpGameType: 58
 	},
 	{
 		...defGameInfo.Casino_PT,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_PT },
 		imgName: "playtecha",
-		tpCategoryId: defTpCategoryId.Slots
+		tpGameType: 46
 	},
 	{
 		...defGameInfo.Casino_PG,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_PG },
 		imgName: "pga",
-		tpCategoryId: defTpCategoryId.Slots
+		tpGameType: 17
 	},
 	{
 		...defGameInfo.Casino_SG,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_SG },
 		imgName: "sga",
-		tpCategoryId: defTpCategoryId.Slots
+		tpGameType: 15
 	},
 	{
 		...defGameInfo.Casino_YGG,
@@ -70,34 +70,34 @@ const defPlatfrom = [
 		parameter: { ...defGameInfo.Casino_YGG },
 		imgName: "yga",
 		otherPlatformImg: "ygb",
-		tpCategoryId: defTpCategoryId.Slots
+		tpGameType: 14
 	},
 	{
 		...defGameInfo.Casino_CQ9,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_CQ9 },
 		imgName: "cq9a",
-		tpCategoryId: defTpCategoryId.Slots
+		tpGameType: 29
 	},
 	{
 		...defGameInfo.Casino_Jili,
 		imgName: "jilia",
-		category: defTpCategoryId.Slots
+		tpGameType: 53
 	},
 	{
 		...defGameInfo.Fishing,
 		imgName: "yla",
-		tpCategoryId: defTpCategoryId.Fishing
+		tpGameType: 12
 	},
 	{
 		...defGameInfo.V8Poker,
 		imgName: "v8a",
-		tpCategoryId: defTpCategoryId.Poker
+		tpGameType: 42
 	},
 	{
 		...defGameInfo.kingMaker,
 		imgName: "kingmakera",
-		category: defTpCategoryId.Poker
+		tpGameType: 52
 	}
 ];
 

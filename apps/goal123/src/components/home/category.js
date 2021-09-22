@@ -26,7 +26,7 @@ const Category = props => {
 	const [showingTpIds, setShowingTpIds] = useState(null);
 
 	const clickGame = gameInfo => {
-		const { tpId, gameId, path: _path } = gameInfo;
+		const { tpId, gameId, path: _path, tpGameType } = gameInfo;
 		if (_path) {
 			setRedirect({
 				redirect: true,
@@ -40,7 +40,8 @@ const Category = props => {
 				isLogin: userInfo.isLogin === true,
 				loginCallback: () => {
 					setNav(defNavPanel.login);
-				}
+				},
+				tpGameType
 			});
 		}
 	};
@@ -376,7 +377,8 @@ const ProductItem = ({
 			ref={_ref}
 			className={`${isShow ? "open " : ""}${
 				eventIcon ? `icon${showingEventIcon}` : ""
-			}`}>
+			}`}
+			rel="noreferrer">
 			<img src={img} alt={icon ?? ""} />
 			{spanText ? (
 				<span className={`icon icon-${icon}`}>{spanText}</span>

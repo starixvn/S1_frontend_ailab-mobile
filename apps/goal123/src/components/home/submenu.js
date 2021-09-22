@@ -13,7 +13,7 @@ import path from "../../path";
 import { api_SetLanguage } from "../../service/api/account";
 import { number_format } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
-import { defGameInfo, defTpCategoryId } from "../../datas/productList";
+import { defGameInfo } from "../../datas/productList";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import ShortcutBar from "./shortcutBar";
 import TandC from "../../service/t_and_c";
@@ -37,12 +37,12 @@ const defSubMenus = [
 			{
 				displayKey: "lbl_SabaSport",
 				...defGameInfo.Sports,
-				tpCategoryId: defTpCategoryId.Sports
+				tpGameType: 1
 			},
 			{
 				displayKey: "lbl_BTISport",
 				...defGameInfo.BTISport,
-				tpCategoryId: defTpCategoryId.Sports
+				tpGameType: 49
 			}
 		]
 	},
@@ -53,32 +53,32 @@ const defSubMenus = [
 			{
 				...defGameInfo.tcg,
 				displayKey: "lbl_tcg",
-				tpCategoryId: defTpCategoryId.Lottery
+				tpGameType: 55
 			},
 			{
 				...defGameInfo.sabaClub,
 				displayKey: "lbl_Vgaming",
-				tpCategoryId: defTpCategoryId.Slots
+				tpGameType: 59
 			},
 			{
 				...defGameInfo.kingMaker,
 				displayKey: "lbl_KingMaker",
-				tpCategoryId: defTpCategoryId.Poker
+				tpGameType: 52
 			},
 			{
 				...defGameInfo.V8Poker,
 				displayKey: "lbl_V8Poker",
-				tpCategoryId: defTpCategoryId.Poker
+				tpGameType: 42
 			},
 			{
 				...defGameInfo.Keno,
 				displayKey: "lbl_Keno",
-				tpCategoryId: defTpCategoryId.Lottery
+				tpGameType: 5
 			},
 			{
 				...defGameInfo.lottery,
 				displayKey: "lbl_Lottery",
-				tpCategoryId: defTpCategoryId.Lottery
+				tpGameType: 19
 			}
 		]
 	},
@@ -89,42 +89,42 @@ const defSubMenus = [
 			{
 				...defGameInfo.fish_AB3,
 				displayKey: "lbl_Paradise",
-				tpCategoryId: defTpCategoryId.Fishing
+				tpGameType: 44
 			},
 			{
 				...defGameInfo.fish_AT01,
 				displayKey: "lbl_Oneshot_Fishing",
-				tpCategoryId: defTpCategoryId.Fishing
+				tpGameType: 44
 			},
 			{
 				...defGameInfo.ICG_DRAGONBALL_FISHING,
 				displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
-				tpCategoryId: defTpCategoryId.Fishing
+				tpGameType: 40
 			},
 			{
 				...defGameInfo.ICG_FISHING_OF_SAVIORS,
 				displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS",
-				tpCategoryId: defTpCategoryId.Fishing
+				tpGameType: 40
 			},
 			{
 				...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
 				displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS",
-				tpCategoryId: defTpCategoryId.Fishing
+				tpGameType: 40
 			},
 			{
 				...defGameInfo.Fishing,
 				displayKey: "lbl_FishingGG",
-				tpCategoryId: defTpCategoryId.Fishing
+				tpGameType: 12
 			},
 			{
 				...defGameInfo.FishingSG,
 				displayKey: "lbl_FishingSG1",
-				tpCategoryId: defTpCategoryId.Fishing
+				tpGameType: 31
 			},
 			{
 				...defGameInfo.FishingSGW,
 				displayKey: "lbl_FishingSG2",
-				tpCategoryId: defTpCategoryId.Fishing
+				tpGameType: 31
 			}
 		]
 	},
@@ -132,7 +132,7 @@ const defSubMenus = [
 		...defGameInfo.eSports,
 		displayKey: "lbl_eSports",
 		icon: "icon icon-e-sports",
-		tpCategoryId: defTpCategoryId.Sports
+		tpGameType: 1
 	},
 	{
 		displayKey: "lbl_Slots",
@@ -146,47 +146,47 @@ const defSubMenus = [
 			{
 				...defGameInfo.LIVEcasinoPP,
 				displayKey: "Pragmatic Play",
-				tpCategoryId: defTpCategoryId.LiveCasino
+				tpGameType: 16
 			},
 			{
 				...defGameInfo.LIVEcasinoN2,
 				displayKey: "n2-LIVE",
-				tpCategoryId: defTpCategoryId.LiveCasino
+				tpGameType: 45
 			},
 			{
 				...defGameInfo.LIVEcasinoWM,
 				displayKey: "WM Casino",
-				tpCategoryId: defTpCategoryId.LiveCasino
+				tpGameType: 32
 			},
 			{
 				...defGameInfo.LIVEcasinoDG,
 				displayKey: "Dream Gaming",
-				tpCategoryId: defTpCategoryId.LiveCasino
+				tpGameType: 10
 			},
 			{
 				...defGameInfo.LIVEcasinoAE,
 				displayKey: "AE Casino",
-				tpCategoryId: defTpCategoryId.LiveCasino
+				tpGameType: 18
 			},
 			{
 				...defGameInfo.LIVEcasinoAG,
 				displayKey: "Asia Gaming",
-				tpCategoryId: defTpCategoryId.LiveCasino
+				tpGameType: 8
 			},
 			{
 				...defGameInfo.LIVEcasinoAB,
 				displayKey: "Allbet",
-				tpCategoryId: defTpCategoryId.LiveCasino
+				tpGameType: 6
 			},
 			{
 				...defGameInfo.LIVEcasinoSA,
 				displayKey: "SA Gaming",
-				tpCategoryId: defTpCategoryId.LiveCasino
+				tpGameType: 9
 			},
 			{
 				...defGameInfo.LIVEcasinoEB,
 				displayKey: "eBET",
-				tpCategoryId: defTpCategoryId.LiveCasino
+				tpGameType: 28
 			}
 		]
 	},
@@ -278,15 +278,10 @@ const SubMenuList = ({
 	isOpenSubMenu
 }) => {
 	const { maintainList } = useGetTpMaintainList();
-	const isUnderMaintain = ({ tpId, tpCategoryId }) =>
-		maintainList?.some(
-			m =>
-				m.tpId === tpId &&
-				(m.tpCategoryId === tpCategoryId ||
-					m.tpCategoryId === defTpCategoryId.All)
-		);
+	const isUnderMaintain = ({ tpId, tpGameType }) =>
+		maintainList?.some(m => m.tpId === tpId && m.tpGameType === tpGameType);
 
-	const clickGame = ({ tpId, gameId }) => {
+	const clickGame = ({ tpId, gameId, tpGameType }) => {
 		GET_ENTER_PAGE({
 			langId: userInfo.langId,
 			tpId,
@@ -294,7 +289,8 @@ const SubMenuList = ({
 			isLogin: userInfo.isLogin === true,
 			loginCallback: () => {
 				setNav(defNavPanel.login);
-			}
+			},
+			tpGameType
 		});
 	};
 
@@ -302,7 +298,7 @@ const SubMenuList = ({
 		.filter(
 			s =>
 				s.subItems ||
-				!isUnderMaintain({ tpId: s.tpId, tpCategoryId: s.tpCategoryId })
+				!isUnderMaintain({ tpId: s.tpId, tpGameType: s.tpGameType })
 		)
 		.map(s => {
 			const key = `submenu-${s.displayKey}`;
@@ -314,7 +310,7 @@ const SubMenuList = ({
 						c =>
 							!isUnderMaintain({
 								tpId: c.tpId,
-								tpCategoryId: c.tpCategoryId
+								tpGameType: c.tpGameType
 							})
 					)
 					.map(c => {

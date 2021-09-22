@@ -17,7 +17,7 @@ import path from "../path";
 import { useGotoGame, defSpecialSetting } from "../components/hook/useGotoGame";
 import { GetMetaDataByPage } from "../components/seo/seo";
 import useSetTimeout from "../components/hook/useSetTimeout";
-import gameList from "../datas/productList";
+import gameList, { defSlotTpGameType } from "../datas/productList";
 import { GetCurrencyName } from "../components/common/common";
 
 const eachPageItem = 20;
@@ -388,9 +388,14 @@ class Panel extends React.Component {
 										langId: this.props.userInfo.langId,
 										tpId: this.state.selGameInfo.tpId,
 										gameId: this.state.selGameInfo.gameId,
-										isFun: freePlay
+										isFun: freePlay,
+										tpGameType:
+											defSlotTpGameType.PT.tpGameType
 								  })
-								: null
+								: null,
+						tpGameType: Object.values(defSlotTpGameType).find(
+							obj => this.state.selGameInfo.tpId === obj.tpId
+						).tpGameType
 					}),
 				freePlay ? 0 : 5000
 			);

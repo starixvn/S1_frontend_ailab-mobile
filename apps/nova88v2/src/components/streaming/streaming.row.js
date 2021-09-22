@@ -34,7 +34,8 @@ export const StreamingModule = ({
 			gameId: gameId || 1,
 			matchid: matchID,
 			isLogin: isLogin === true,
-			loginCallback: handleLogin
+			loginCallback: handleLogin,
+			tpGameType: 1
 		});
 	};
 

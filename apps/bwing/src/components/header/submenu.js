@@ -164,7 +164,7 @@ const SubMenuList = ({
 	handleSubMenu,
 	isOpenSubMenu
 }) => {
-	const clickGame = ({ tpId, gameId }) => {
+	const clickGame = ({ tpId, gameId, tpGameType }) => {
 		GET_ENTER_PAGE({
 			langId: userInfo.langId,
 			tpId,
@@ -172,7 +172,8 @@ const SubMenuList = ({
 			isLogin: userInfo.isLogin === true,
 			loginCallback: () => {
 				setNav(defNavPanel.login);
-			}
+			},
+			tpGameType
 		});
 	};
 
