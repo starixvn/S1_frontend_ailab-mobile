@@ -29,7 +29,7 @@ const HeaderShortcut = ({ userInfo, i18n }) => {
 
 	const clickReloadSpin = () => {
 		GetBalance();
-		GetTpWalletList();
+		GetTpWalletList({ langId: userInfo.langId });
 	};
 
 	const clickEye = () => {

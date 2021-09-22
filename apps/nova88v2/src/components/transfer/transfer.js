@@ -56,7 +56,6 @@ const Panel = () => {
 		i18n,
 		_isConvert
 	});
-
 	const arr = allWalletsList
 		.filter(wallet => {
 			return wallet.balance !== null;
@@ -65,7 +64,9 @@ const Panel = () => {
 			return (
 				<div className="account" key={`transfer-wallet-${wallet.id}`}>
 					<div className="info">
-						<span className="title">{i18n[wallet.displayKey]}</span>
+						<span className="title">
+							{i18n[wallet.displayKey] ?? wallet.displayText}
+						</span>
 						<div>{number_format(wallet.balance, _isConvert)}</div>
 					</div>
 					<div className="btn-group transferAll">

@@ -61,7 +61,9 @@ const Panel = () => {
 			return (
 				<div className="account" key={`transfer-wallet-${wallet.id}`}>
 					<div className="info">
-						<span className="title">{i18n[wallet.displayKey]}</span>
+						<span className="title">
+							{i18n[wallet.displayKey] ?? wallet.displayText}
+						</span>
 						<div>{number_format(wallet.balance, false)}</div>
 					</div>
 					<ReloadSpin
