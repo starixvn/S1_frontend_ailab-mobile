@@ -58,12 +58,11 @@ const Wallet = () => {
 	Object.values(bonusWallets).forEach(w => {
 		total += w.bonus;
 	});
-
 	const _tpWalletArrs = tpWallets.map(t => {
 		return (
 			<TpWalletItem
 				key={`tpWallet-${t.id}`}
-				title={i18n[t.displayKey]}
+				title={t.tpName}
 				currencyId={userInfo.currencyId}
 				balance={t.balance}
 				bonusWallet={bonusWallets[t.id]}

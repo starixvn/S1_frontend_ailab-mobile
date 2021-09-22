@@ -428,7 +428,7 @@ const WalletInfo = ({ i18n, userInfo }) => {
 
 	const clickReloadSpin = () => {
 		GetBalance();
-		GetTpWalletList();
+		GetTpWalletList({ langId: userInfo.langId });
 	};
 
 	const clickEye = () => {
