@@ -27,11 +27,13 @@ import {
 	api_UploadReceipt
 } from "../../service/api/payment";
 import { api_SetAccountName } from "../../service/api/accountStrict";
+import PromoList, { setCustPromo } from "./promoList";
+import ImportantNotes from "./importantNote";
 
 const payType = "localBank";
 
 const Payment = props => {
-	const { paymentList, creditTimeKey } = props;
+	const { paymentList, creditTimeKey, promoList } = props;
 
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -53,6 +55,8 @@ const Payment = props => {
 		checked: null,
 		msg: ""
 	});
+	const [custBonusCode, setCustBonusCode] = useState(null);
+
 	const {
 		amount,
 		inputStatus,
@@ -150,7 +154,7 @@ const Payment = props => {
 									window.location.reload();
 								};
 
-								if (bankSlipPopBox.receipt) {
+								if (bankSlipPopBox.receipt || custBonusCode) {
 									const UploadReceipt = async () => {
 										try {
 											const formData = new FormData();
@@ -197,8 +201,18 @@ const Payment = props => {
 											CloseDoneDepositPopup();
 										}
 									};
-
 									UploadReceipt();
+
+									if (custBonusCode) {
+										setCustPromo({
+											langId: userInfo.langId,
+											TransId: res.data.data.transId,
+											BonusCode: custBonusCode,
+											setPopBox,
+											i18n,
+											toNextStep: CloseDoneDepositPopup
+										});
+									}
 								} else {
 									CloseDoneDepositPopup();
 								}
@@ -455,6 +469,12 @@ const Payment = props => {
 				clickInfo={clickInfo.bind(this, { col: "amount" })}
 				VaildAmount={VaildAmount.bind(this, { _amount: amount })}
 			/>
+			<PromoList
+				promoList={promoList}
+				i18n={i18n}
+				setCustBonusCode={setCustBonusCode}
+			/>
+			<ImportantNotes i18n={i18n} />
 			<div className="btn-group">
 				<button
 					className="blue"
@@ -471,9 +491,14 @@ const Payment = props => {
 	);
 };
 
+Payment.defaultProps = {
+	promoList: []
+};
+
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
-	creditTimeKey: PropTypes.string.isRequired
+	creditTimeKey: PropTypes.string.isRequired,
+	promoList: PropTypes.arrayOf(PropTypes.objectOf)
 };
 
 const GroupList = ({

@@ -25,6 +25,7 @@ import RecentDatas from "./deposit.recentDatas";
 import { number_format } from "../common/common";
 import ImportantNote from "./importantNote";
 import { useGetDomainList } from "../hook/useGetDomainList";
+import { useGetDepositPromotionList } from "./promoList";
 
 const defPayType = {
 	onlineBank: "onlineBank",
@@ -93,6 +94,10 @@ const Panel = () => {
 	const [recentDatas, setRecentDatas] = useState([]);
 
 	const [pageVerify, setPageVerify] = useState(true);
+	const { promoList } = useGetDepositPromotionList({
+		langId: userInfo.langId,
+		i18n
+	});
 
 	useGetDomainList({
 		setPopBox,
@@ -116,6 +121,7 @@ const Panel = () => {
 			payType={defPayType.mobilePay}
 			creditTimeKey={defPayment[defPayType.mobilePay].creditTimeKey}
 			paymentList={paymentList[defPayType.mobilePay] ?? []}
+			promoList={promoList}
 		/>
 	);
 
@@ -125,6 +131,7 @@ const Panel = () => {
 				payType={selected}
 				creditTimeKey={defPayment[defPayType.localBank].creditTimeKey}
 				paymentList={paymentList[defPayType.localBank] ?? []}
+				promoList={promoList}
 			/>
 		);
 	} else if (selected === defPayType.onlineBank) {
@@ -133,6 +140,7 @@ const Panel = () => {
 				payType={selected}
 				creditTimeKey={defPayment[defPayType.onlineBank].creditTimeKey}
 				paymentList={paymentList[defPayType.onlineBank] ?? []}
+				promoList={promoList}
 			/>
 		);
 	} else if (selected === defPayType.loadCardPay) {
@@ -141,6 +149,7 @@ const Panel = () => {
 				payType={selected}
 				creditTimeKey={defPayment[defPayType.loadCardPay].creditTimeKey}
 				paymentList={paymentList[defPayType.loadCardPay] ?? []}
+				promoList={promoList}
 			/>
 		);
 	}

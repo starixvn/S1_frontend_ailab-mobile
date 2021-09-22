@@ -2,11 +2,14 @@ import { cashierRequest } from "./base";
 
 export const api_cashier_DepositReqLoadCardPay = ({
 	langId,
-	channelId,
-	cardCode,
-	cardSerial,
-	real_amount
+	ChannelId,
+	Code,
+	Serial,
+	Amount,
+	BonusCode
 }) =>
 	cashierRequest.post(
-		`/${langId}/Cashier/DepositReqLoadCardPay?ChannelId=${channelId}&Code=${cardCode}&Serial=${cardSerial}&Amount=${real_amount}`
+		`/${langId}/Cashier/DepositReqLoadCardPay?ChannelId=${ChannelId}&Code=${Code}&Serial=${Serial}&Amount=${Amount}${
+			BonusCode ? `&BonusCode=${BonusCode}` : ""
+		}`
 	);

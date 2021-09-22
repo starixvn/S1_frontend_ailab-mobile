@@ -547,6 +547,19 @@
 	"lbl_BTISport": "BTI Sports",
 	"lbl_Top10winners": "Top 10 Winners",
 
+	"==============Add To Home Screen==============":"",
+	"lbl_AddToHome_Hint":"How to add home screen?",
+	"lbl_AddToHome_Tutorial":"Tutorial",
+	"lbl_Skip":"Skip",
+	
+	"==============Important Notice==============":"",
+	"lbl_ImportantNotice":"IMPORTANT NOTICE",
+
+	"==============Deposit Promotion==============":"",
+	"lbl_Select_Bonus":"Select Bonus",
+	"lbl_None":"None",
+	"lbl_BetNow":"Bet Now",
+
 	"==============DomainList==============": "",
 	"lbl_Backup_website": "Please save the latest GOAL123 domain for backup purposes:",
 	"lbl_Copy": "Copy",
@@ -567,15 +580,6 @@
 	"==============Transfer==============": "",
 	"lbl_Fail": "Failed",
 	"lbl_LastUpdated": "LAST UPDATED",
-	"lbl_Main_Wallet_Auto_Transfer": "Main Wallet Auto Transfer",
-
-	"==============Add To Home Screen==============": "",
-	"lbl_AddToHome_Hint": "How to add home screen?",
-	"lbl_AddToHome_Tutorial": "Tutorial",
-	"lbl_Skip": "Skip",
-
-	"==============Important Notice==============": "",
-	"lbl_ImportantNotice": "IMPORTANT NOTICE",
-	"lbl_BetNow": "Bet Now"
+	"lbl_Main_Wallet_Auto_Transfer": "Main Wallet Auto Transfer"
 
 }
