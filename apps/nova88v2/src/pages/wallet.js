@@ -62,7 +62,7 @@ const Wallet = () => {
 		return (
 			<TpWalletItem
 				key={`tpWallet-${t.id}`}
-				title={t.tpName}
+				title={t.displayText}
 				currencyId={userInfo.currencyId}
 				balance={t.balance}
 				bonusWallet={bonusWallets[t.id]}
