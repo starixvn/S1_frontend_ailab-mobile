@@ -16,7 +16,7 @@ const Footer = () => {
 	const { i18n } = useContext(i18nContext);
 	if (userInfo.isLogin === false) {
 		return (
-			<footer>
+			<footer className="footerNew">
 				<Match path={path.promotion.root}>
 					{props => {
 						const isMatch = props.match !== null;
@@ -24,9 +24,7 @@ const Footer = () => {
 							<Link
 								to={path.promotion.root}
 								className={isMatch ? "open" : ""}>
-								<div className="circleAnimation">
-									<div className="icon icon-gift" />
-								</div>
+								<div className="icon icon-gift" />
 								<span>{i18n.lbl_Promotion}</span>
 							</Link>
 						);
@@ -40,9 +38,7 @@ const Footer = () => {
 							<Link
 								to={path.home.root}
 								className={isMatch ? "open" : ""}>
-								<div className="circleAnimation">
-									<div className="icon icon-home" />
-								</div>
+								<div className="icon icon-home" />
 								<span>{i18n.lbl_Home}</span>
 							</Link>
 						);
@@ -54,10 +50,9 @@ const Footer = () => {
 					href={`https://direct.lc.chat/${siteInfo().liveChatId}/${
 						defChatLangSubUrl[userInfo.langId] ?? ""
 					}`}
-					className="">
-					<div className="circleAnimation">
-						<div className="icon icon-contact" />
-					</div>
+					className=""
+					rel="noreferrer">
+					<div className="icon icon-contact" />
 					<span>{i18n.lbl_LiveChat}</span>
 				</a>
 
@@ -69,9 +64,7 @@ const Footer = () => {
 							<Link
 								to={path.other.root}
 								className={isMatch ? "open" : ""}>
-								<div className="circleAnimation">
-									<div className="icon icon-other" />
-								</div>
+								<div className="icon icon-other" />
 								<span>{i18n.lbl_Other}</span>
 							</Link>
 						);
@@ -81,7 +74,7 @@ const Footer = () => {
 		);
 	}
 	return (
-		<footer>
+		<footer className="footerNew">
 			<Match path={path.promotion.root}>
 				{props => {
 					const isMatch = props.match !== null;
@@ -89,9 +82,7 @@ const Footer = () => {
 						<Link
 							to={path.promotion.root}
 							className={isMatch ? "open" : ""}>
-							<div className="circleAnimation">
-								<div className="icon icon-gift" />
-							</div>
+							<div className="icon icon-gift" />
 							<span>{i18n.lbl_Promotion}</span>
 						</Link>
 					);
@@ -108,9 +99,7 @@ const Footer = () => {
 						<Link
 							to={path.statement.root}
 							className={isMatch ? "open" : ""}>
-							<div className="circleAnimation">
-								<div className="icon icon-statement1" />
-							</div>
+							<div className="icon icon-statement1" />
 							<span>{i18n.lbl_Statement}</span>
 						</Link>
 					);
@@ -124,9 +113,7 @@ const Footer = () => {
 						<Link
 							to={path.home.root}
 							className={isMatch ? "open" : ""}>
-							<div className="circleAnimation">
-								<div className="icon icon-home" />
-							</div>
+							<div className="icon icon-home" />
 							<span>{i18n.lbl_Home}</span>
 						</Link>
 					);
@@ -138,10 +125,9 @@ const Footer = () => {
 				href={`https://direct.lc.chat/${siteInfo().liveChatId}/${
 					defChatLangSubUrl[userInfo.langId] ?? ""
 				}`}
-				className="">
-				<div className="circleAnimation">
-					<div className="icon icon-contact" />
-				</div>
+				className=""
+				rel="noreferrer">
+				<div className="icon icon-contact" />
 				<span>{i18n.lbl_LiveChat}</span>
 			</a>
 
@@ -155,9 +141,7 @@ const Footer = () => {
 						<Link
 							to={path.member.root}
 							className={isMatch ? "open" : ""}>
-							<div className="circleAnimation">
-								<div className="icon icon-member" />
-							</div>
+							<div className="icon icon-member" />
 							<span>{i18n.lbl_Me}</span>
 						</Link>
 					);
