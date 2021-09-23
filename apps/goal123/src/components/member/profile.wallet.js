@@ -61,7 +61,7 @@ export default () => {
 				func_GetBalance={GetTpWalletBalance.bind(this, t.id)}
 				bonusWallet={bonusWallet[t.id]}
 				testAttr={t.tpName}
-				tpName={t.tpName}
+				tpName={t.displayText}
 			/>
 		);
 	});
