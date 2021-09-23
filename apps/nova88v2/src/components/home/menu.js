@@ -6,7 +6,10 @@ import gameList, { defCol } from "../../datas/productList";
 import { getEventIcon } from "./category";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import useHandleLogin from "../hook/useHandleLogin";
-import { useGetTpMaintainList } from "../hook/useGetTpMaintainList";
+import {
+	useGetTpMaintainList,
+	defTpGameType
+} from "../hook/useGetTpMaintainList";
 import api from "../../service/api";
 import { GetCurrencyName } from "../common/common";
 import {
@@ -55,7 +58,10 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 			} else if (
 				maintainList &&
 				maintainList?.some(
-					m => m.tpId === popBox.tpId && m.tpGameType === tpGameType
+					m =>
+						m.tpId === popBox.tpId &&
+						(m.tpGameType === tpGameType ||
+							m.tpGameType === defTpGameType.All)
 				)
 			) {
 				setPopBox({
@@ -179,7 +185,8 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 				const isMaintain = maintainList?.some(
 					m =>
 						m.tpId === subItem.tpId &&
-						m.tpGameType === subItem.tpGameType
+						(m.tpGameType === subItem.tpGameType ||
+							m.tpGameType === defTpGameType.All)
 				);
 				return (
 					<SubGame

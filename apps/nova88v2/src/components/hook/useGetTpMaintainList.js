@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import api from "../../service/api";
 
+export const defTpGameType = {
+	All: 0
+};
+
 export const useGetTpMaintainList = () => {
 	const [maintainList, setMaintainList] = useState(null);
 	useEffect(() => {
