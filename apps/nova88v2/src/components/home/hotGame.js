@@ -5,7 +5,10 @@ import { popBoxContext } from "../common/context";
 import HotGameList, { defProductType } from "../../datas/hotGameList";
 import { GET_CASINO_ENTER_PAGE, GET_ENTER_PAGE } from "../../service/enterPage";
 import useHandleLogin from "../hook/useHandleLogin";
-import { useGetTpMaintainList } from "../hook/useGetTpMaintainList";
+import {
+	useGetTpMaintainList,
+	defTpGameType
+} from "../hook/useGetTpMaintainList";
 import { GetCurrencyName } from "../common/common";
 
 const HotGame = ({ i18n, userInfo }) => {
@@ -22,7 +25,10 @@ const HotGame = ({ i18n, userInfo }) => {
 	const clickGame = ({ tpId, gameId, productType, tpGameType }) => {
 		if (
 			maintainList?.some(
-				m => m.tpId === tpId && m.tpGameType === tpGameType
+				m =>
+					m.tpId === tpId &&
+					(m.tpGameType === tpGameType ||
+						m.tpGameType === defTpGameType.All)
 			)
 		) {
 			setPopBox({

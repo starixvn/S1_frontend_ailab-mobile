@@ -8,7 +8,10 @@ import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { Autoplay } from "../common/swipperBanner";
 import { api_GetTpIds } from "../../service/api/site";
 import { useGotoGame } from "../hook/useGotoGame";
-import { useGetTpMaintainList } from "../hook/useGetTpMaintainList";
+import {
+	useGetTpMaintainList,
+	defTpGameType
+} from "../hook/useGetTpMaintainList";
 
 const swipperParam = {
 	spaceBetween: 5,
@@ -122,7 +125,8 @@ const Menu = ({ i18n, userInfo }) => {
 			const underMaintain = maintainList?.some(
 				m =>
 					m.tpId === subItem.tpId &&
-					m.tpGameType === subItem.tpGameType
+					(m.tpGameType === subItem.tpGameType ||
+						m.tpGameType === defTpGameType.All)
 			);
 			return (
 				<SubGame

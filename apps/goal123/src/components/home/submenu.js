@@ -27,7 +27,10 @@ import DefLangs from "../../datas/defLangs";
 import { tpWalletsListType } from "../transfer/transfer.def";
 import useGetBalance from "../hook/useGetMainBalance";
 import useGetTpBalance from "../hook/useGetTpBalance";
-import { useGetTpMaintainList } from "../hook/useGetTpMaintainList";
+import {
+	useGetTpMaintainList,
+	defTpGameType
+} from "../hook/useGetTpMaintainList";
 
 const defSubMenus = [
 	{
@@ -279,7 +282,12 @@ const SubMenuList = ({
 }) => {
 	const { maintainList } = useGetTpMaintainList();
 	const isUnderMaintain = ({ tpId, tpGameType }) =>
-		maintainList?.some(m => m.tpId === tpId && m.tpGameType === tpGameType);
+		maintainList?.some(
+			m =>
+				m.tpId === tpId &&
+				(m.tpGameType === tpGameType ||
+					m.tpGameType === defTpGameType.All)
+		);
 
 	const clickGame = ({ tpId, gameId, tpGameType }) => {
 		GET_ENTER_PAGE({

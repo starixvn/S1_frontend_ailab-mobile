@@ -9,7 +9,10 @@ import { Link } from "../../route/link";
 import api from "../../service/api";
 import Footer from "../common/footer";
 import useHandleLogin from "../hook/useHandleLogin";
-import { useGetTpMaintainList } from "../hook/useGetTpMaintainList";
+import {
+	useGetTpMaintainList,
+	defTpGameType
+} from "../hook/useGetTpMaintainList";
 
 const defPlatfrom = [
 	{
@@ -210,7 +213,10 @@ const GameProvider = ({ userInfo, i18n }) => {
 		)
 		.map(p => {
 			const underMaintain = maintainList?.some(
-				m => m.tpId === p.tpId && m.tpGameType === p.tpGameType
+				m =>
+					m.tpId === p.tpId &&
+					(m.tpGameType === p.tpGameType ||
+						m.tpGameType === defTpGameType.All)
 			);
 
 			return p.path && !underMaintain ? (

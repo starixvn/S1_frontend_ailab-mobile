@@ -20,7 +20,10 @@ import img12 from "../../styles/img/GameList12.png";
 import one789_TraditionalLottery from "../../styles/img/GameList16.png";
 import one789_LiveCasino from "../../styles/img/GameList13.png";
 import one789_Lottery from "../../styles/img/GameList14.png";
-import { useGetTpMaintainList } from "../hook/useGetTpMaintainList";
+import {
+	useGetTpMaintainList,
+	defTpGameType
+} from "../hook/useGetTpMaintainList";
 
 const defGameList = [
 	{
@@ -181,7 +184,10 @@ const GamePanel = ({ i18n, userInfo }) => {
 		tpGameType
 	}) => {
 		const underMaintain = maintainList?.some(
-			m => m.tpId === tpId && m.tpGameType === tpGameType
+			m =>
+				m.tpId === tpId &&
+				(m.tpGameType === tpGameType ||
+					m.tpGameType === defTpGameType.All)
 		);
 		if (underMaintain) {
 			setPopBox({

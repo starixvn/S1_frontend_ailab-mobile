@@ -12,7 +12,10 @@ import {
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import LinksPanel from "../home/links";
 import { productList } from "../../datas/defMenu";
-import { useGetTpMaintainList } from "../hook/useGetTpMaintainList";
+import {
+	useGetTpMaintainList,
+	defTpGameType
+} from "../hook/useGetTpMaintainList";
 
 const ProductPage = ({ category, titleKey }) => {
 	const { userInfo } = useContext(userInfoContext);
@@ -77,7 +80,10 @@ const ProductPage = ({ category, titleKey }) => {
 		.map(game => {
 			let showingIcon = "";
 			const underMaintain = maintainList?.some(
-				m => m.tpId === game.tpId && m.tpGameType === game.tpGameType
+				m =>
+					m.tpId === game.tpId &&
+					(m.tpGameType === game.tpGameType ||
+						m.tpGameType === defTpGameType.All)
 			);
 			if (game.eventIcon) {
 				const eventInPeriodObj = game.eventIcon.find(
