@@ -38,7 +38,7 @@ class Panel extends React.Component {
 				gameType: { idx: 0, value: null }
 			},
 			favorite: [],
-			selNav: Object.keys(defNav)?.[props.selNavIdx ?? 0],
+			selNav: Object.keys(defNav)?.[props.selNavIdx],
 			selProvider: props.tpId,
 			imgUrl: "",
 			listFixed: false,
@@ -92,7 +92,7 @@ class Panel extends React.Component {
 				}
 
 				if (this.mounted) {
-					const nav = this.props.selNav ?? defNav.ALLGAMES.key;
+					const nav = this.props.selNav ?? defNav.FEATURED.key;
 					const _tplistArr = Object.keys(_tpList);
 
 					gameList({
@@ -617,7 +617,7 @@ const IndexPage = props => {
 					handleGoToGame={handleGoToGame}
 					throttle={throttle}
 					selNav={selNav}
-					selNavIdx={selNavIdx === -1 ? 0 : selNavIdx}
+					selNavIdx={selNavIdx === -1 ? 3 : selNavIdx}
 				/>
 			</main>
 			<Footer />
