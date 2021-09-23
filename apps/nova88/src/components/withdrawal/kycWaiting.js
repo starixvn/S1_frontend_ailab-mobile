@@ -37,7 +37,7 @@ export default () => {
 				const result = await api.account.GetCustBankInfo().then(res => {
 					let hasBankInfo = false;
 					if (res.data.errorCode === 0) {
-						if (res.data.data?.bankInfoDetail) {
+						if (res.data.data?.bankInfoDetail?.length) {
 							hasBankInfo = true;
 						} else if (isMountedRef.current) {
 							setRedirectPath(`/${path.withdrawal.root}`);
