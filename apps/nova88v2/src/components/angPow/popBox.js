@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import api from "../../service/api";
 import { loadingContext } from "../common/context";
 import { siteId } from "../../config";
-import eventImg from "../../styles/img/event/angpao_inf.png";
-import eventIdImg from "../../styles/img/event/angpao_inf_id.png";
+// import eventImg from "../../styles/img/event/angpao_inf.png";
+// import eventIdImg from "../../styles/img/event/angpao_inf_id.png";
 
 const useDrawPrize = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 	const { setLoading } = useContext(loadingContext);
@@ -97,11 +97,11 @@ const AngPowPopBox = ({
 		<div id="popup" className="active">
 			<div className="popangpao">
 				<div className="redbox">
-					<img
+					{/* <img
 						className="redbox"
 						src={langId === "id" ? eventIdImg : eventImg}
 						alt={i18n.lbl_AngPow}
-					/>
+					/> */}
 				</div>
 				<div className="coin" />
 				<div className="coin" />
