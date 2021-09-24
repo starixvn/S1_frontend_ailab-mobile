@@ -1482,6 +1482,7 @@ header > a {
 
 header > a > img {
   height: 9vw;
+  margin-left: 3vw;
 }
 
 header .headerInfo {
@@ -2981,7 +2982,7 @@ footer > a.active .circleAnimation + span {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  min-width: 37vw;
+  width: 37vw;
   height: 12vw;
   padding-left: 4vw;
 }
@@ -3027,6 +3028,10 @@ footer > a.active .circleAnimation + span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.Balance ~ a img {
+  margin-left: 0;
 }
 
 .balance {
