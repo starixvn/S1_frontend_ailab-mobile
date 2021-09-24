@@ -6,7 +6,7 @@ import React, {
 	lazy,
 	Suspense
 } from "react";
-import kiss from "../../styles/img/kiss.jpg";
+import kiss from "../../styles/img/918/banner.jpg";
 import { popBoxContext, userInfoContext, i18nContext } from "../common/context";
 import api from "../../service/api";
 import { productList } from "../../datas/productList";

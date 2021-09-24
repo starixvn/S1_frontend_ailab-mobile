@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
 import path from "../../path";
-import oneGameImg from "../../styles/img/onegame/bg.jpg";
+import oneGameImg from "../../styles/img/1g/banner.jpg";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { Link } from "../../route/link";
 
