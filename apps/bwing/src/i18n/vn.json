@@ -584,6 +584,8 @@
 	"lbl_EmailRequired": "Vui lòng điền vào cột địa chỉ Email.",
 	"lbl_KingMaker": "King Maker",
 	"lbl_tcg": "Lô Đề",
+	"lbl_DepositPromoMsg1": "Vui lòng xác minh tài khoản của bạn để được hưởng các chương trình khuyến mãi có sẵn.",
+
 	"==============General==============": "",
 	"lbl_Jackpot": "NỔ HŨ",
 	"lbl_Top10winners": "TOP 10 NGƯỜI THẮNG",
@@ -611,21 +613,21 @@
 	"lbl_SabaSport": "Saba Sports",
 	"lbl_BTISport": "BTI Sports",
 
-	"==============Deposit Promotion==============":"",
-	"lbl_Select_Bonus":"Chọn khuyến mãi",
-	"lbl_None":"Không áp dụng",
+	"==============Deposit Promotion==============": "",
+	"lbl_Select_Bonus": "Chọn khuyến mãi",
+	"lbl_None": "Không áp dụng",
 
-	"=============Download App===============":"",
-	"lbl_DownloadApp":"Tải App",
-	"lbl_DownloadAppHint":"Cược mọi lúc mọi nơi",
-	"lbl_Downloads":"Tải về",
-	"lbl_APP_DOWNLOAD":"TẢI ỨNG DỤNG",
-	"lbl_Scan_to_Download":"Quét để tải về",
-	"lbl_Installation_tutorial":"Hướng dẫn cài đặt",
-	"lbl_iOS_App_Trust_Authentication":"Cách xác nhận tin cậy ứng dụng trên iOS",
-	"lbl_Once_Bwing_App_is_installed":"Khi ứng dụng Bwing được cài đặt, chọn Tin cậy hoặc hoàn thành Cài đặt theo hướng dẫn bên dưới",
-	"lbl_BetNow":"CƯỢC NGAY",
-	
+	"=============Download App===============": "",
+	"lbl_DownloadApp": "Tải App",
+	"lbl_DownloadAppHint": "Cược mọi lúc mọi nơi",
+	"lbl_Downloads": "Tải về",
+	"lbl_APP_DOWNLOAD": "TẢI ỨNG DỤNG",
+	"lbl_Scan_to_Download": "Quét để tải về",
+	"lbl_Installation_tutorial": "Hướng dẫn cài đặt",
+	"lbl_iOS_App_Trust_Authentication": "Cách xác nhận tin cậy ứng dụng trên iOS",
+	"lbl_Once_Bwing_App_is_installed": "Khi ứng dụng Bwing được cài đặt, chọn Tin cậy hoặc hoàn thành Cài đặt theo hướng dẫn bên dưới",
+	"lbl_BetNow": "CƯỢC NGAY",
+
 	"==============Add To Home Screen==============": "",
 	"lbl_AddToHome_Hint": "Cách thêm ứng dụng vào màn hình chính",
 	"lbl_AddToHome_Tutorial": "Hướng dẫn",
@@ -634,12 +636,11 @@
 	"==============Under Maintenance==============": "",
 	"lbl_underMaintenance": "Đang bảo trì",
 
-	"==============Loadcard Payment==============":"",
-	"lbl_TopUpCard":"THẺ CÀO",
-	"lbl_CardCode":"Mã số thẻ",
-	"lbl_CardSerial":"Số seri",
-	"lbl_CardValue":"Mệnh giá thẻ",
-	"msg_PleaseEnterCardCode":"Vui lòng điền mã số thẻ",
-	"msg_PleaseEnterCardSerial":"Vui lòng điền số seri thẻ"
-
+	"==============Loadcard Payment==============": "",
+	"lbl_TopUpCard": "THẺ CÀO",
+	"lbl_CardCode": "Mã số thẻ",
+	"lbl_CardSerial": "Số seri",
+	"lbl_CardValue": "Mệnh giá thẻ",
+	"msg_PleaseEnterCardCode": "Vui lòng điền mã số thẻ",
+	"msg_PleaseEnterCardSerial": "Vui lòng điền số seri thẻ"
 }

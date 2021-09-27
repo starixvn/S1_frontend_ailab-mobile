@@ -6,7 +6,7 @@ import {
 	api_SetDepositPromotionQueue
 } from "../../service/api/promotion";
 
-const PromoList = ({ i18n, setCustBonusCode, promoList }) => {
+const PromoList = ({ i18n, setCustBonusCode, promoList, depositPromoMsg }) => {
 	const [selectedIdx, setSelectedIdx] = useState(promoList?.length - 1);
 
 	const selectPromo = i => {
@@ -16,7 +16,7 @@ const PromoList = ({ i18n, setCustBonusCode, promoList }) => {
 		}
 	};
 
-	return promoList?.length > 1 ? (
+	return (
 		<>
 			<div className="title">{i18n.lbl_Select_Bonus}</div>
 			<div className="inputBox">
@@ -25,9 +25,11 @@ const PromoList = ({ i18n, setCustBonusCode, promoList }) => {
 					selectedIdx={selectedIdx}
 					onSelectItem={selectPromo}
 				/>
+
+				<div className="tip">{depositPromoMsg}</div>
 			</div>
 		</>
-	) : null;
+	);
 };
 
 PromoList.defaultProps = {
@@ -37,7 +39,8 @@ PromoList.defaultProps = {
 PromoList.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	setCustBonusCode: PropTypes.func.isRequired,
-	promoList: PropTypes.arrayOf(PropTypes.objectOf)
+	promoList: PropTypes.arrayOf(PropTypes.objectOf),
+	depositPromoMsg: PropTypes.string.isRequired
 };
 
 export const setCustPromo = ({
