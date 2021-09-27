@@ -231,6 +231,7 @@ export const productList = langId => {
 				{
 					displayKey: "Asia Gaming",
 					img: liveCasino_AG,
+					...defGameInfo.LIVEcasinoAG,
 					tpGameType: 8
 				},
 				{
