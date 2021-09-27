@@ -99,6 +99,10 @@ const Panel = () => {
 		i18n
 	});
 
+	const depositPromoMsg = userInfo?.phoneVerified
+		? ""
+		: i18n.lbl_DepositPromoMsg1;
+
 	useGetDomainList({
 		setPopBox,
 		userInfo,
@@ -122,6 +126,7 @@ const Panel = () => {
 			creditTimeKey={defPayment[defPayType.mobilePay].creditTimeKey}
 			paymentList={paymentList[defPayType.mobilePay] ?? []}
 			promoList={promoList}
+			depositPromoMsg={depositPromoMsg}
 		/>
 	);
 
@@ -132,6 +137,7 @@ const Panel = () => {
 				creditTimeKey={defPayment[defPayType.localBank].creditTimeKey}
 				paymentList={paymentList[defPayType.localBank] ?? []}
 				promoList={promoList}
+				depositPromoMsg={depositPromoMsg}
 			/>
 		);
 	} else if (selected === defPayType.onlineBank) {
@@ -141,6 +147,7 @@ const Panel = () => {
 				creditTimeKey={defPayment[defPayType.onlineBank].creditTimeKey}
 				paymentList={paymentList[defPayType.onlineBank] ?? []}
 				promoList={promoList}
+				depositPromoMsg={depositPromoMsg}
 			/>
 		);
 	} else if (selected === defPayType.loadCardPay) {
@@ -150,6 +157,7 @@ const Panel = () => {
 				creditTimeKey={defPayment[defPayType.loadCardPay].creditTimeKey}
 				paymentList={paymentList[defPayType.loadCardPay] ?? []}
 				promoList={promoList}
+				depositPromoMsg={depositPromoMsg}
 			/>
 		);
 	}

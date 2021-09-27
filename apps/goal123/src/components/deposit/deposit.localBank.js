@@ -33,7 +33,7 @@ import ImportantNotes from "./importantNote";
 const payType = "localBank";
 
 const Payment = props => {
-	const { paymentList, creditTimeKey, promoList } = props;
+	const { paymentList, creditTimeKey, promoList, depositPromoMsg } = props;
 
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -468,6 +468,7 @@ const Payment = props => {
 			/>
 			<PromoList
 				promoList={promoList}
+				depositPromoMsg={depositPromoMsg}
 				i18n={i18n}
 				setCustBonusCode={setCustBonusCode}
 			/>
@@ -495,7 +496,8 @@ Payment.defaultProps = {
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
 	creditTimeKey: PropTypes.string.isRequired,
-	promoList: PropTypes.arrayOf(PropTypes.object)
+	promoList: PropTypes.arrayOf(PropTypes.object),
+	depositPromoMsg: PropTypes.string.isRequired
 };
 
 const GroupList = ({

@@ -17,7 +17,7 @@ import PromoList from "./promoList";
 const payType = "MobilePay";
 
 const Payment = props => {
-	const { paymentList, creditTimeKey, promoList } = props;
+	const { paymentList, creditTimeKey, promoList, depositPromoMsg } = props;
 
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -219,6 +219,7 @@ const Payment = props => {
 			/>
 			<PromoList
 				promoList={promoList}
+				depositPromoMsg={depositPromoMsg}
 				i18n={i18n}
 				setCustBonusCode={setCustBonusCode}
 			/>
@@ -238,7 +239,8 @@ Payment.defaultProps = {
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
 	creditTimeKey: PropTypes.string.isRequired,
-	promoList: PropTypes.arrayOf(PropTypes.objectOf)
+	promoList: PropTypes.arrayOf(PropTypes.objectOf),
+	depositPromoMsg: PropTypes.string.isRequired
 };
 
 export default Payment;
