@@ -539,6 +539,7 @@
 	"lbl_ClaimSucceed": "Bạn đã nhận khuyến mãi thành công.",
 	"lbl_KingMaker": "King Maker",
 	"lbl_tcg": "Lô Đề",
+	"lbl_DepositPromoMsg1": "Vui lòng xác minh tài khoản của bạn để được hưởng các chương trình khuyến mãi có sẵn.",
 
 	"==============General==============": "",
 	"lbl_Jackpot": "NỔ HŨ",
@@ -559,27 +560,26 @@
 	"lbl_LastUpdated": "CẬP NHẬT GẦN NHẤT",
 	"lbl_Main_Wallet_Auto_Transfer": "Chuyển tự động Ví chính",
 
-	"==============Add To Home Screen==============":"",
-	"lbl_AddToHome_Hint":"Cách thêm ứng dụng vào màn hình chính",
-	"lbl_AddToHome_Tutorial":"Hướng dẫn",
-	"lbl_Skip":"Bỏ qua",
-	
-	"==============Important Notice==============":"",
-	"lbl_ImportantNotice":"THÔNG BÁO QUAN TRỌNG",
-	
-	"==============Deposit Promotion==============":"",
-	"lbl_Select_Bonus":"Chọn khuyến mãi",
-	"lbl_None":"Không áp dụng",
-	"lbl_BetNow":"CƯỢC NGAY",
-	
-	"==============Under Maintenance==============":"",
-	"lbl_underMaintenance":"Đang bảo trì",
+	"==============Add To Home Screen==============": "",
+	"lbl_AddToHome_Hint": "Cách thêm ứng dụng vào màn hình chính",
+	"lbl_AddToHome_Tutorial": "Hướng dẫn",
+	"lbl_Skip": "Bỏ qua",
 
-	"==============Loadcard Payment==============":"",
-	"lbl_CardCode":"Mã số thẻ",
-	"lbl_CardSerial":"Số seri",
-	"lbl_CardValue":"Mệnh giá thẻ",
-	"msg_PleaseEnterCardCode":"Vui lòng điền mã số thẻ",
-	"msg_PleaseEnterCardSerial":"Vui lòng điền số seri thẻ"
+	"==============Important Notice==============": "",
+	"lbl_ImportantNotice": "THÔNG BÁO QUAN TRỌNG",
 
+	"==============Deposit Promotion==============": "",
+	"lbl_Select_Bonus": "Chọn khuyến mãi",
+	"lbl_None": "Không áp dụng",
+	"lbl_BetNow": "CƯỢC NGAY",
+
+	"==============Under Maintenance==============": "",
+	"lbl_underMaintenance": "Đang bảo trì",
+
+	"==============Loadcard Payment==============": "",
+	"lbl_CardCode": "Mã số thẻ",
+	"lbl_CardSerial": "Số seri",
+	"lbl_CardValue": "Mệnh giá thẻ",
+	"msg_PleaseEnterCardCode": "Vui lòng điền mã số thẻ",
+	"msg_PleaseEnterCardSerial": "Vui lòng điền số seri thẻ"
 }

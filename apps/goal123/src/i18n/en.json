@@ -540,6 +540,7 @@
 	"lbl_KingMaker": "King Maker",
 	"lbl_MaxBonusAmount": "Max Bonus",
 	"lbl_tcg": "TCG",
+	"lbl_DepositPromoMsg1": "Please proceed to verify your account to entitle available promotions.",
 
 	"==============General==============": "",
 	"lbl_Jackpot": "Jackpot",
@@ -547,18 +548,18 @@
 	"lbl_BTISport": "BTI Sports",
 	"lbl_Top10winners": "Top 10 Winners",
 
-	"==============Add To Home Screen==============":"",
-	"lbl_AddToHome_Hint":"How to add home screen?",
-	"lbl_AddToHome_Tutorial":"Tutorial",
-	"lbl_Skip":"Skip",
-	
-	"==============Important Notice==============":"",
-	"lbl_ImportantNotice":"IMPORTANT NOTICE",
+	"==============Add To Home Screen==============": "",
+	"lbl_AddToHome_Hint": "How to add home screen?",
+	"lbl_AddToHome_Tutorial": "Tutorial",
+	"lbl_Skip": "Skip",
 
-	"==============Deposit Promotion==============":"",
-	"lbl_Select_Bonus":"Select Bonus",
-	"lbl_None":"None",
-	"lbl_BetNow":"Bet Now",
+	"==============Important Notice==============": "",
+	"lbl_ImportantNotice": "IMPORTANT NOTICE",
+
+	"==============Deposit Promotion==============": "",
+	"lbl_Select_Bonus": "Select Bonus",
+	"lbl_None": "None",
+	"lbl_BetNow": "Bet Now",
 
 	"==============DomainList==============": "",
 	"lbl_Backup_website": "Please save the latest GOAL123 domain for backup purposes:",
@@ -567,19 +568,18 @@
 	"lbl_Stay_accessible": "STAY ACCESSIBLE",
 	"lbl_Anytime_anywhere": "Anytime, Anywhere",
 
-	"==============Under Maintenance==============":"",
-	"lbl_underMaintenance":"Under Maintenance",
+	"==============Under Maintenance==============": "",
+	"lbl_underMaintenance": "Under Maintenance",
 
-	"==============Loadcard Payment==============":"",
-	"lbl_CardCode":"Card Code",
-	"lbl_CardSerial":"Card Serial",
-	"lbl_CardValue":"Card Value",
-	"msg_PleaseEnterCardCode":"Please enter card code.",
-	"msg_PleaseEnterCardSerial":"Please enter card serial.",
+	"==============Loadcard Payment==============": "",
+	"lbl_CardCode": "Card Code",
+	"lbl_CardSerial": "Card Serial",
+	"lbl_CardValue": "Card Value",
+	"msg_PleaseEnterCardCode": "Please enter card code.",
+	"msg_PleaseEnterCardSerial": "Please enter card serial.",
 
 	"==============Transfer==============": "",
 	"lbl_Fail": "Failed",
 	"lbl_LastUpdated": "LAST UPDATED",
 	"lbl_Main_Wallet_Auto_Transfer": "Main Wallet Auto Transfer"
-
 }
