@@ -62,3 +62,8 @@ export const cashierRequest = axios.create({
 	withCredentials: true,
 	baseURL: `${rootURL}`
 });
+
+export const playerRequest = axios.create({
+	withCredentials: true,
+	baseURL: `${rootURL}/api/Player`
+});

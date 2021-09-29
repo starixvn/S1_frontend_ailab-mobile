@@ -9006,4 +9006,108 @@ span.important {
   -webkit-transition: 0.7s;
   transition: 0.7s;
 }
+
+.app_page {
+  padding: 0 3vw 24vw;
+  background: #001942 url(../img/appdownload/bg.jpg) no-repeat top center;
+  text-align: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.app_page > div {
+  padding-top: 55px;
+}
+
+.app_page > div .logo img {
+  width: 135px;
+  margin: 20px auto 10px;
+}
+
+.app_page > div .visual {
+  display: block;
+  width: 250px;
+  margin: auto auto 50px;
+}
+
+.app_page > div .title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0 auto 30px;
+  text-shadow: 0 0 0.2rem #c8dbf8, 0 0 0.5rem #4eb5cf, 0 -0.5rem 0.7rem #1c7cd4, 0 0.5rem 0.9rem #1933c5;
+  -webkit-animation: shine 1s forwards;
+          animation: shine 1s forwards;
+}
+
+.app_page > div .subtitle {
+  color: #fff;
+  line-height: 1.5;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.app_page > div .subtitle > div {
+  display: block;
+  font-size: 1.5rem;
+}
+
+.app_page > div .qrcode .qrcode-item {
+  margin: 0 0 50px;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.app_page > div .qrcode .qrcode-item img {
+  width: 65px;
+  display: block;
+  margin: 10px auto;
+}
+
+.app_page > div a, .app_page > div button {
+  padding: 8px 15px;
+  background: linear-gradient(130deg, #3f5efb 0%, #fc466b 100%);
+  -webkit-box-shadow: 1px 2px 5px #7db8f0be;
+          box-shadow: 1px 2px 5px #7db8f0be;
+  color: #fff;
+  margin: 10px auto 20px auto;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.app_page > div .tutorial img {
+  width: 80%;
+  max-width: 450px;
+}
+
+@media screen and (min-width: 550px) and (max-width: 1024px) {
+  .app_page > div {
+    padding-top: 100px;
+  }
+  .app_page > div .logo img {
+    width: 200px;
+  }
+  .app_page > div .title {
+    font-size: 1rem;
+  }
+  .app_page > div .subtitle {
+    font-size: .8rem;
+  }
+  .app_page > div .subtitle > div {
+    font-size: 1rem;
+  }
+  .app_page > div .visual {
+    width: 350px;
+  }
+}
 /*# sourceMappingURL=style.css.map */

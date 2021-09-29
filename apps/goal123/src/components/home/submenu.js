@@ -200,7 +200,7 @@ const defSubMenus = [
 	},
 	{
 		displayKey: "lbl_APPDownload",
-		TandCLink: "AppDownload",
+		href: `${window.location.origin}/${path.appDownload.root}`,
 		icon: "icon icon-mobile"
 	},
 	{
@@ -365,18 +365,19 @@ const SubMenuList = ({
 					</Link>
 				);
 			}
-			if (s.TandCLink) {
+			if (s.href) {
 				return (
 					<a
 						key={key}
 						className={s.icon}
-						href={TandC(userInfo.langId)[s.TandCLink]}
+						href={s.href}
 						target="_blank"
 						rel="noreferrer">
 						{i18n[s.displayKey]?.toUpperCase() ?? s.displayKey}
 					</a>
 				);
 			}
+
 			return hasSubItem ? (
 				<div
 					key={key}

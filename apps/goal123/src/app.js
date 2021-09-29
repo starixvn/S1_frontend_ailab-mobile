@@ -59,6 +59,7 @@ import ReferFriends from "./components/referral/referFriends";
 import ReferralHistory from "./components/referral/referral.history";
 
 import VIP from "./pages/vip";
+import AppDownload from "./pages/appDownload";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -162,6 +163,7 @@ const Index = () => {
 						<AngPow path={path.angPow.root} />
 						<MysteryBox path={path.mysteryBox.root} />
 						<VIP path={path.vip.root} />
+						<AppDownload path={path.appDownload.root} />
 					</Router>
 				</Layout>
 			</LocationProvider>

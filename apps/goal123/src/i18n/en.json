@@ -581,5 +581,11 @@
 	"==============Transfer==============": "",
 	"lbl_Fail": "Failed",
 	"lbl_LastUpdated": "LAST UPDATED",
-	"lbl_Main_Wallet_Auto_Transfer": "Main Wallet Auto Transfer"
+	"lbl_Main_Wallet_Auto_Transfer": "Main Wallet Auto Transfer",
+
+	"■■■■■■■■■■■■■■■■■■■■ app download ■■■■■■■■■■■■■■■■■■■■": "",
+	"lbl_Installation_tutorial": "Installation tutorial",
+	"lbl_Appdownload_Subtitle": "Once {{site}} App is installed, tap Trust or complete the setting as below.",
+	"lbl_Scan_to_Download": "Scan to Download",
+	"lbl_iOS_App_Trust_Authentication": "iOS App Trust Authentication"
 }
