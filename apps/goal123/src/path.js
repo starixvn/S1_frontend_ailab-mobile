@@ -142,5 +142,8 @@ export default {
 	},
 	vip: {
 		root: "vip"
+	},
+	appDownload: {
+		root: "appDownload"
 	}
 };

@@ -581,5 +581,11 @@
 	"lbl_CardSerial": "Số seri",
 	"lbl_CardValue": "Mệnh giá thẻ",
 	"msg_PleaseEnterCardCode": "Vui lòng điền mã số thẻ",
-	"msg_PleaseEnterCardSerial": "Vui lòng điền số seri thẻ"
+	"msg_PleaseEnterCardSerial": "Vui lòng điền số seri thẻ",
+
+	"■■■■■■■■■■■■■■■■■■■■ app download ■■■■■■■■■■■■■■■■■■■■": "",
+	"lbl_Installation_tutorial": "Hướng dẫn cài đặt",
+	"lbl_Appdownload_Subtitle": "Once {{site}} App is installed, tap Trust or complete the setting as below.",
+	"lbl_Scan_to_Download": "Quét để tải về",
+	"lbl_iOS_App_Trust_Authentication": "Cách xác nhận tin cậy ứng dụng trên iOS"
 }

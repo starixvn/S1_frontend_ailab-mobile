@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
+import QRCode from "qrcode.react";
 import { i18nContext } from "../components/common/context";
+import { useAppDownLoad } from "../components/appDownload/useAppDownLoad";
 import Footer from "../components/common/footer";
 import path from "../path";
 import { Link } from "../route/link";
@@ -11,10 +13,13 @@ import tutorial1 from "../styles/img/app/in01.png";
 import tutorial2 from "../styles/img/app/in02.png";
 import tutorial3 from "../styles/img/app/in03.png";
 import tutorial4 from "../styles/img/app/in04.png";
-import { cloudImgURL } from "../config";
 
 const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
+	const { appLinkDatas } = useAppDownLoad();
+
+	const andriodDownLoadUrl = appLinkDatas?.Andriod?.downloadLink ?? "";
+	const IOSDownloadUrl = appLinkDatas?.IOS?.downloadLink ?? "";
 
 	return (
 		<>
@@ -29,48 +34,57 @@ const IndexPage = () => {
 						<div className="appTitle">{i18n.lbl_AppDownload}</div>
 						<div className="scan">
 							<div>
-								<div>
-									<img
-										src={`${cloudImgURL}/SiteSkin/img/ios_qr.png`}
-										alt="IOS QRCode"
-									/>
+								{IOSDownloadUrl && (
 									<div>
+										<QRCode
+											value={IOSDownloadUrl}
+											renderAs="svg"
+											size={70}
+											includeMargin={true}
+										/>
 										<div>
-											<img src={iosLogo} alt="IOS" />
-											{i18n.lbl_iOS}
+											<div>
+												<img src={iosLogo} alt="IOS" />
+												{i18n.lbl_iOS}
+											</div>
+											<a
+												href={IOSDownloadUrl}
+												target="_blank"
+												rel="noreferrer noopener">
+												<button>
+													{i18n.lbl_Downloads?.toUpperCase()}
+												</button>
+											</a>
 										</div>
-										<a
-											href="https://nova.appdlweb.com"
-											target="_blank"
-											rel="noreferrer noopener">
-											<button>
-												{i18n.lbl_Downloads?.toUpperCase()}
-											</button>
-										</a>
 									</div>
-								</div>
-								<div>
-									<img
-										src={`${cloudImgURL}/SiteSkin/img/android_qr.png`}
-										alt="Android QRCode"
-									/>
+								)}
+
+								{andriodDownLoadUrl && (
 									<div>
+										<QRCode
+											value={andriodDownLoadUrl}
+											renderAs="svg"
+											size={70}
+											includeMargin={true}
+										/>
 										<div>
-											<img
-												src={androidLogo}
-												alt="Android"
-											/>
-											{i18n.lbl_Android}
+											<div>
+												<img
+													src={androidLogo}
+													alt="Android"
+												/>
+												{i18n.lbl_Android}
+											</div>
+											<a
+												href={andriodDownLoadUrl}
+												download>
+												<button>
+													{i18n.lbl_Downloads?.toUpperCase()}
+												</button>
+											</a>
 										</div>
-										<a
-											href="https://dl.4ppstore.com/dlapp/Nova88.apk"
-											download>
-											<button>
-												{i18n.lbl_Downloads?.toUpperCase()}
-											</button>
-										</a>
 									</div>
-								</div>
+								)}
 							</div>
 						</div>
 						<div className="install">

@@ -1,14 +1,15 @@
 import React from "react";
-import { Link } from "@reach/router";
+import { Link, useNavigate } from "@reach/router";
 import config, { siteInfo } from "../../config";
 import TandC from "../../service/t_and_c";
 import Bong88 from "../../styles/img/bong88.png";
 import path from "../../path";
+import { useAppDownLoad } from "../appDownload/useAppDownLoad";
 
 export default ({ i18n, langId }) => {
 	return (
 		<>
-			<AppDownload />
+			<AppDownload i18n={i18n} langId={langId} />
 			<Affiliates i18n={i18n} langId={langId} />
 			<UserGuide i18n={i18n} langId={langId} />
 			<ContactUs i18n={i18n} langId={langId} />
@@ -178,20 +179,35 @@ const Platforms = ({ i18n }) => {
 };
 
 const AppDownload = () => {
+	const navigate = useNavigate();
+	const { appLinkDatas } = useAppDownLoad();
+
+	const andriodDownLoadUrl = appLinkDatas?.Andriod?.downloadLink ?? "";
+	const IOSDownloadUrl = appLinkDatas?.IOS?.downloadLink ?? "";
+
 	return (
-		<div className="downloadarea">
-			<a
-				href="https://mars.fadatsai88.com/v1/App?path=bwing_sports_android.apk"
-				target="_blank"
-				rel="noreferrer">
-				<button>Android</button>
-			</a>
-			{/* <a
-				href="https://nova.mqcfirm.com/"
-				target="_blank"
-				rel="noreferrer">
-				<button>iOS</button>
-			</a> */}
+		<div
+			className="downloadarea"
+			onClick={() => navigate(`/${path.appDownload.root}`)}>
+			{andriodDownLoadUrl && (
+				<a
+					onClick={e => e.stopPropagation()}
+					href={andriodDownLoadUrl}
+					target="_blank"
+					rel="noreferrer">
+					<button>Android</button>
+				</a>
+			)}
+
+			{IOSDownloadUrl && (
+				<a
+					onClick={e => e.stopPropagation()}
+					href={IOSDownloadUrl}
+					target="_blank"
+					rel="noreferrer">
+					<button>iOS</button>
+				</a>
+			)}
 		</div>
 	);
 };

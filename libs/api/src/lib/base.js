@@ -69,5 +69,10 @@ export default class BaseAPI {
 			withCredentials: true,
 			baseURL: `${apiUrl}`
 		});
+
+		this.playerRequest = axios.create({
+			withCredentials: true,
+			baseURL: `${apiUrl}/api/Player`
+		});
 	}
 }

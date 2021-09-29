@@ -5,16 +5,15 @@ import AppDownloadImg from "../../styles/img/downloadbg.png";
 import IOS from "../../styles/img/iosicon.png";
 import Android from "../../styles/img/androidicon.png";
 import VIP from "../../styles/img/vipimgb.jpg";
-import TandC from "../../service/t_and_c";
 import path from "../../path";
-
-const APPDownloadLink = {
-	Android:
-		"https://mars.fadatsai88.com/v1/App?path=goal123entry_sports_android.apk",
-	IOS: "https://helloios.net/emRS39"
-};
+import { useAppDownLoad } from "../appDownload/useAppDownLoad";
 
 const MiddlePanel = ({ langId, i18n }) => {
+	const { appLinkDatas } = useAppDownLoad();
+
+	const andriodDownLoadUrl = appLinkDatas?.Andriod?.downloadLink ?? "";
+	const IOSDownloadUrl = appLinkDatas?.IOS?.downloadLink ?? "";
+
 	return (
 		<>
 			<div className="vipRanking">
@@ -29,21 +28,30 @@ const MiddlePanel = ({ langId, i18n }) => {
 				<a
 					target="_blank"
 					rel="noreferrer"
-					href={TandC(langId).AppDownload}>
+					href={`${window.location.origin}/${path.appDownload.root}`}>
 					<img src={AppDownloadImg} alt="APP Download" />
 				</a>
-				<a href={APPDownloadLink.IOS ?? ""}>
-					<button>
-						<img src={IOS} alt="IOS" />
-						IOS
-					</button>
-				</a>
-				<a href={APPDownloadLink.Android}>
-					<button>
-						<img src={Android} alt="Android" />
-						Android
-					</button>
-				</a>
+
+				{IOSDownloadUrl && (
+					<a href={IOSDownloadUrl} target="_blank" rel="noreferrer">
+						<button>
+							<img src={IOS} alt="IOS" />
+							IOS
+						</button>
+					</a>
+				)}
+
+				{andriodDownLoadUrl && (
+					<a
+						href={andriodDownLoadUrl}
+						target="_blank"
+						rel="noreferrer">
+						<button>
+							<img src={Android} alt="Android" />
+							Android
+						</button>
+					</a>
+				)}
 			</div>
 		</>
 	);

@@ -8,3 +8,4 @@ export * from "./lib/tp";
 export * from "./lib/event";
 export * from "./lib/video";
 export * from "./lib/cashier";
+export * from "./lib/player";
