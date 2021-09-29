@@ -4,6 +4,8 @@ pipeline {
     environment{
         node_modules_exists = fileExists 'node_modules'
         auto_deploy = fileExists 'deploy.yml'
+        site = 'nova88'
+        project_name = 'nova88v2'
     }
     stages {
         stage('Install dependencies') {
@@ -19,19 +21,19 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh '(git rev-parse --short=7 HEAD & git rev-parse --abbrev-ref HEAD) > apps/nova88v2/public/rnt.txt'
-                sh 'npx nx autobuild nova88v2 --skip-nx-cache'
+                sh '(git rev-parse --short=7 HEAD & git rev-parse --abbrev-ref HEAD) > apps/${project_name}/public/rnt.txt'
+                sh 'npx nx autobuild ${project_name} --skip-nx-cache'
             }
         }
         stage('Zip'){
             steps {
-                dir("dist/apps/nova88v2"){
+                dir("dist/apps/${project_name}"){
                     script {
                         env.commitHash = sh (script: 'git rev-parse --short=7 HEAD', returnStdout: true).trim()
                     }
-                    sh 'zip -r mobile-nova88-${commitHash} *'
-                    sh 'curl -v -u admin:123456 --upload-file mobile-nova88-${commitHash}.zip http://172.31.28.233:8081/repository/artifacts/Frontend/mobile/nova88/mobile-nova88-${commitHash}.zip'
-                    sh 'echo mobile-nova88-${commitHash}'
+                    sh 'zip -r mobile-${site}-${commitHash} *'
+                    sh 'curl -v -u admin:123456 --upload-file mobile-${site}-${commitHash}.zip http://172.31.28.233:8081/repository/artifacts/Frontend/mobile/${site}/mobile-${site}-${commitHash}.zip'
+                    sh 'echo mobile-${site}-${commitHash}'
                 }
             }
         }
@@ -40,7 +42,7 @@ pipeline {
                 expression { auto_deploy == 'true' }
             }
             steps {
-                sh 'ansible-playbook -i Dev.yml deploy.yml --extra-vars "commitId=${commitHash} site=nova88 platform=mobile host=mobile-nova88"'
+                sh 'ansible-playbook -i Dev.yml deploy.yml --extra-vars "commitId=${commitHash} site=${site} platform=mobile host=mobile-${site}"'
             }
         }
     }

@@ -1,0 +1,49 @@
+pipeline {
+    agent any
+    tools {nodejs "nodejs"}
+    environment{
+        node_modules_exists = fileExists 'node_modules'
+        auto_deploy = fileExists 'deploy.yml'
+        site = 'goal123'
+        project_name = 'goal123'
+    }
+    stages {
+        stage('Install dependencies') {
+            when {
+                anyOf {
+                    changeset "package.json"
+                    expression { node_modules_exists == 'false' }
+                }
+            }
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh '(git rev-parse --short=7 HEAD & git rev-parse --abbrev-ref HEAD) > apps/${project_name}/public/rnt.txt'
+                sh 'npx nx autobuild ${project_name} --skip-nx-cache'
+            }
+        }
+        stage('Zip'){
+            steps {
+                dir("dist/apps/${project_name}"){
+                    script {
+                        env.commitHash = sh (script: 'git rev-parse --short=7 HEAD', returnStdout: true).trim()
+                    }
+                    sh 'zip -r mobile-${site}-${commitHash} *'
+                    sh 'curl -v -u admin:123456 --upload-file mobile-${site}-${commitHash}.zip http://13.213.82.69:8081/repository/artifacts/Frontend/mobile/${site}/release/mobile-${site}-${commitHash}.zip'
+                    sh 'echo mobile-${site}-${commitHash}'
+                }
+            }
+        }
+        stage('Deploy') {
+            when {
+                expression { auto_deploy == 'true' }
+            }
+            steps {
+                sh 'ansible-playbook -i Release.yml deploy.release.yml --extra-vars "commitId=${commitHash} site=${site} platform=mobile host=mobile-${site} env=release"'
+            }
+        }
+    }
+}
