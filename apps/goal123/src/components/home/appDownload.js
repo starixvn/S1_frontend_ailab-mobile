@@ -1,7 +1,7 @@
 import React from "react";
 import appIng from "../../styles/img/Appicon.png";
 import { setCookie } from "../common/common";
-import TandC from "../../service/t_and_c";
+import path from "../../path";
 
 export default ({ i18n, cookieName, langId, setAppHint }) => {
 	const handleDownloadHint = () => {
@@ -26,7 +26,7 @@ export default ({ i18n, cookieName, langId, setAppHint }) => {
 				target="_blank"
 				rel="noreferrer"
 				onClick={handleDownloadHint}
-				href={TandC(langId).AppDownload}>
+				href={`${window.location.origin}/${path.appDownload.root}`}>
 				{i18n.lbl_Downloads}
 			</a>
 		</div>
