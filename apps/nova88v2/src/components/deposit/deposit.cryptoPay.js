@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useRef } from "react";
+import React, { useContext, useState, useEffect, useRef, useMemo } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
 import { i18nContext, userInfoContext, popBoxContext } from "Context";
@@ -8,7 +8,8 @@ import PageVerify from "./deposit.pageVerify";
 import config, { cloudImgURL } from "../../config";
 import { isConvert, number_format } from "../common/common";
 import { useHandleAmount } from "../hook/useHandleAmount";
-import path from "../../path";
+import api from "../../service/api";
+import { defPopBoxType } from "../common/popbox";
 
 export const Panel = props => props.children;
 
@@ -16,33 +17,44 @@ const Main = props => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
-	const { paymentList } = props;
+	const { paymentList, userPaymentData, handleUserPaymentData } = props;
 	const { setPopBox } = useContext(popBoxContext);
 	const _isConvert = isConvert(userInfo.currencyId);
-	const [selGroupId, setSelGroupId] = useState(paymentList[0].groupId);
-
+	const [selGroup, setSelGroup] = useState({});
+	const [selChannel, setSelChannel] = useState({});
 	const [pageVerify, setPageVerify] = useState(true);
-	const curSelPayment = paymentList.find(el => el.groupId === selGroupId);
-
-	const { amount, warning, EditAmount, VaildAmount } = useHandleAmount({
+	const [groupList, setGroupList] = useState([]);
+	const isMountedRef = useRef(null);
+	const {
+		amount,
+		warning,
+		EditAmount,
+		VaildAmount,
+		SelectAmount
+	} = useHandleAmount({
 		currencyId: userInfo.currencyId,
-		minAmount: curSelPayment?.minAmount,
-		maxAmount: curSelPayment?.maxAmount,
+		minAmount: selChannel?.minAmount,
+		maxAmount: selChannel?.maxAmount,
 		i18n,
-		digits: 0
+		digits: 0,
+		lastAmount: userPaymentData?.amount
 	});
-
 	const SelectPayment = ({ groupInfo }) => {
-		if (selGroupId !== groupInfo?.groupId) {
-			setSelGroupId(() => groupInfo?.groupId);
+		if (selGroup.groupId !== groupInfo?.groupId) {
+			setSelGroup(groupInfo);
+		}
+	};
+
+	const SelectChannel = ({ groupInfo }) => {
+		if (selChannel.channelId !== groupInfo?.channelId) {
+			setSelChannel(groupInfo);
 		}
 	};
 
 	const ClickSubmit = () => {
 		if (pageVerify) {
 			const confirmAmount =
-				curSelPayment.amountRule === 3 &&
-				curSelPayment.amountList?.length > 0
+				selChannel.amountRule === 3 && selChannel.amountList?.length > 0
 					? amount / 1000
 					: amount;
 
@@ -50,14 +62,59 @@ const Main = props => {
 
 			if (result) {
 				const RedirectToNext = real_amount => {
-					setPopBox(prevState => ({
-						...prevState,
-						isOpen: false
-					}));
-					navigate(`/${userInfo.langId}/${path.deposit.root}`);
-					window.open(
-						`${config.openURL}/${userInfo.langId}/Cashier/DepositReqCryptoPay?ChannelId=${curSelPayment.channelId}&Amount=${real_amount}`
-					);
+					const userData = {
+						payType: "cryptoPay",
+						amount: real_amount,
+						channelId: selChannel?.channelId,
+						groupId: selGroup.groupId
+					};
+					handleUserPaymentData({ userData });
+
+					if (selChannel?.mode === 3) {
+						api.cashier
+							.DepositReqCryptoPay({
+								langId: userInfo.langId,
+								channelId: selChannel.channelId,
+								real_amount
+							})
+							.then(res => {
+								if (res.data.errorCode === 0) {
+									const { formData } = res.data.data;
+
+									setPopBox({
+										isOpen: true,
+										title: i18n.lbl_DepositType4,
+										className: "dragonPayPop",
+										popBoxType: defPopBoxType.PaymentQR,
+										amount: real_amount,
+										depositAmount: formData?.DepositAmount,
+										currencyId: userInfo.currencyId,
+										QRcodeURL: res.data.data.url,
+										RequestAmount: Number(
+											formData?.RequestAmount
+										).toString(),
+										Rate: Number(formData?.Rate).toString(),
+										Token: formData?.Token,
+										handlePopBox: () => {
+											setPopBox(prevState => ({
+												...prevState,
+												isOpen: false
+											}));
+											window.location.reload();
+										}
+									});
+								}
+							});
+					} else {
+						setPopBox(prevState => ({
+							...prevState,
+							isOpen: false
+						}));
+						window.open(
+							`${config.openURL}/${userInfo.langId}/Cashier/DepositReqCryptoPay?ChannelId=${selChannel.channelId}&Amount=${real_amount}`
+						);
+						window.location.reload();
+					}
 				};
 
 				const real_amount = _isConvert
@@ -70,7 +127,11 @@ const Main = props => {
 						<>
 							<p>{i18n.lbl_ConfirmDeposit}</p>
 
-							<div className="icon icon-BTC" />
+							<img
+								className="bankimg"
+								src={`${cloudImgURL}/SiteSkin/img/CryptoPay/${selChannel.channelName?.toLowerCase()}.png`}
+								alt={selChannel.channelName}
+							/>
 							<div>
 								<ul>
 									<li className="text-org">
@@ -78,18 +139,6 @@ const Main = props => {
 									</li>
 									<li>
 										{number_format(real_amount, _isConvert)}
-									</li>
-									<li className="text-org">
-										{i18n.lbl_ExchangeRate} :
-									</li>
-									<li>{curSelPayment.sellRate}</li>
-									<li className="text-org">
-										{i18n.lbl_ExchangeAmount} :
-									</li>
-									<li>
-										{(real_amount / curSelPayment.sellRate)
-											.toFixed(8)
-											.replace(/\.0+$/, "")}
 									</li>
 								</ul>
 							</div>
@@ -122,14 +171,71 @@ const Main = props => {
 			}
 		}
 	};
+	const removeDuplicate = () => {
+		const map = {};
+		const arr = [];
+		for (let i = 0; i < paymentList?.length; i++) {
+			const pay = paymentList[i];
+			if (!map[pay.groupId]) map[pay.groupId] = pay;
 
-	const isMountedRef = useRef(null);
+			const curItem = map[pay.groupId];
+
+			if (pay.minAmount) {
+				if (!curItem.groupMin) curItem.groupMin = pay.minAmount;
+				curItem.groupMin = Math.min(curItem.groupMin, pay.minAmount);
+			}
+			if (pay.maxAmount) {
+				if (!curItem.groupMax) curItem.groupMax = pay.maxAmount;
+				curItem.groupMax = Math.max(curItem.groupMax, pay.maxAmount);
+			}
+		}
+		// eslint-disable-next-line guard-for-in
+		for (const key in map) {
+			arr.push(map[key]);
+		}
+		return arr;
+	};
+
+	const usePrevious = value => {
+		const ref = useRef();
+		useEffect(() => {
+			ref.current = value;
+		});
+		return ref.current;
+	};
+	const prevGroup = usePrevious(selGroup);
+
+	useEffect(() => {
+		setGroupList(removeDuplicate());
+		let lastGroupIdx = paymentList.findIndex(
+			obj => obj.groupId === userPaymentData?.groupId
+		);
+		lastGroupIdx = lastGroupIdx === -1 ? 0 : lastGroupIdx;
+		SelectPayment({ groupInfo: paymentList[lastGroupIdx] });
+	}, []);
+
 	useEffect(() => {
 		isMountedRef.current = true;
+		if (
+			Object.keys(selChannel)?.length === 0 ||
+			prevGroup?.groupId !== selGroup?.groupId
+		) {
+			const lastChannel = paymentList.find(
+				obj => obj.channelId === userPaymentData?.channelId
+			);
+			SelectChannel({
+				groupInfo:
+					lastChannel && lastChannel.groupId === selGroup.groupId
+						? lastChannel
+						: paymentList.find(
+								el => el.groupId === selGroup?.groupId
+						  )
+			});
+		}
 		return () => {
 			isMountedRef.current = false;
 		};
-	});
+	}, [selGroup]);
 
 	PageVerify(
 		userInfo,
@@ -145,34 +251,51 @@ const Main = props => {
 			<div className="title text-org icon icon-BTC">
 				{`${i18n.lbl_CreditTime}: ${i18n[props.creditTimeKey]}`}
 			</div>
-
 			<GroupList
 				title={i18n.lbl_PaymentModes}
-				dataList={paymentList}
+				dataList={groupList}
 				SelectPayment={SelectPayment}
-				selected={selGroupId}
+				selected={selGroup?.groupId}
 				mainKey="deposit-full-cryptoPay-groupList"
 				imgKey="payName"
 				idKey="groupId"
 				prefixImgUrl={`${cloudImgURL}/SiteSkin/img/Payment/`}
 				displayKey="payName"
 				_isConvert={_isConvert}
-				showMinMaxHint={true}
+				isCrypto={true}
 			/>
+
+			<GroupList
+				title={i18n.lbl_SelectChannel}
+				dataList={paymentList.filter(
+					payment => payment.groupId === selGroup.groupId
+				)}
+				SelectPayment={SelectChannel}
+				selected={selChannel?.channelId}
+				mainKey="deposit-full-cryptoPay-channelList"
+				imgKey="channelName"
+				idKey="channelId"
+				isCrypto={true}
+				prefixImgUrl={`${cloudImgURL}/SiteSkin/img/CryptoPay/`}
+				displayKey="channelName"
+				_isConvert={_isConvert}
+			/>
+
 			<AmountInput
 				title={i18n.lbl_DepositAmount}
-				channel={curSelPayment}
+				channel={selChannel}
 				i18n={i18n}
 				_isConvert={_isConvert}
 				amount={amount}
 				msg={warning.msg}
 				status={warning.status}
 				EditAmount={EditAmount}
+				SelectAmount={SelectAmount}
 				payType="cryptoPay"
 				tip={i18n.lbl_AmountTooltip?.replace(
 					"{{0}}",
-					curSelPayment?.minAmount
-						? number_format(curSelPayment?.minAmount, _isConvert, 0)
+					selChannel?.minAmount
+						? number_format(selChannel?.minAmount, _isConvert, 0)
 						: 1
 				)}
 				currencyId={userInfo.currencyId}
@@ -187,11 +310,16 @@ const Main = props => {
 };
 
 Main.defaultProps = {
-	location: {}
+	location: {},
+	userPaymentData: {},
+	handleUserPaymentData: () => null
 };
 
 Main.propTypes = {
-	location: PropTypes.objectOf(PropTypes.any)
+	location: PropTypes.objectOf(PropTypes.any),
+	paymentList: PropTypes.arrayOf(PropTypes.any).isRequired,
+	userPaymentData: PropTypes.objectOf(PropTypes.any),
+	handleUserPaymentData: PropTypes.func
 };
 
 export default Main;

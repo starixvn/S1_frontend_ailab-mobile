@@ -4,7 +4,7 @@ import { useNavigate } from "@reach/router";
 import Layout from "../components/common/layout";
 import { Link } from "../route/link";
 import path from "../path";
-import TabPage from "../components/common/tabPage";
+import TabPage, { getMainClass } from "../components/common/tabPage";
 import { i18nContext, userInfoContext } from "../components/common/context";
 import api from "../service/api";
 import { number_format, isConvert } from "../components/common/common";
@@ -12,6 +12,7 @@ import { tpWalletsListType } from "../components/transfer/transfer.def";
 import ReloadSpin from "../components/common/reloadSpin";
 import useGetBalance from "../components/hook/useGetMainBalance";
 import useGetTpBalance from "../components/hook/useGetTpBalance";
+import { myWallet as bankInfoTabs } from "../datas/defTabs";
 
 const Wallet = () => {
 	const navigate = useNavigate();
@@ -204,38 +205,16 @@ BonusWallet.propTypes = {
 	bonusWallet: PropTypes.objectOf(PropTypes.any)
 };
 
-const IndexPage = () => {
-	const [tab, setTab] = useState({});
-	const { userInfo } = useContext(userInfoContext);
-	useEffect(() => {
-		if (userInfo.currencyId && userInfo.currencyId === 96) {
-			setTab({
-				myWallet: {
-					to: `${path.wallet.root}`,
-					displayKey: "lbl_MyWallet"
-				},
-				cryptoWallet: {
-					to: path.cryptoWallet.root,
-					displayKey: "lbl_CryptoWallet"
-				}
-			});
-		} else if (userInfo.currencyId && userInfo.currencyId !== 96) {
-			setTab({
-				myWallet: {
-					to: `${path.wallet.root}`,
-					displayKey: "lbl_MyWallet"
-				},
-				bankInfo: {
-					to: path.bankInfo.root,
-					displayKey: "lbl_BankInfo"
-				}
-			});
-		}
-	}, [userInfo]);
-	const header = <TabPage defTabs={tab} />;
+const IndexPage = props => {
+	const defTabs = bankInfoTabs;
+	const header = <TabPage defTabs={defTabs} />;
+	const { prevPage } = props?.location?.state;
+
 	return (
-		<Layout header={header} mainClass="main Wallet">
-			<Wallet />
+		<Layout
+			header={header}
+			mainClass={getMainClass({ defTabs, location: props })}>
+			<Wallet prevPage={prevPage} />
 		</Layout>
 	);
 };

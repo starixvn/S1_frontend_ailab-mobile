@@ -18,4 +18,9 @@ export class CashierAPI extends BaseAPI {
 		this.cashierRequest.get(
 			`/${langId}/Cashier/DepositReqMobilePay?ChannelId=${channelId}&Amount=${real_amount}`
 		);
+
+	DepositReqCryptoPay = ({ langId, channelId, real_amount }) =>
+		this.cashierRequest.get(
+			`/${langId}/Cashier/DepositReqCryptoPay?ChannelId=${channelId}&Amount=${real_amount}`
+		);
 }

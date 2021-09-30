@@ -61,4 +61,14 @@ export class AccountStrictAPI extends BaseAPI {
 
 	SetCustUSDTInfoBatch = form =>
 		this.accountStrictRequest.post("/SetCustUSDTInfoBatch", form);
+
+	GetOTPVerifyInfo = () =>
+		this.accountStrictRequest.post("/GetOTPVerifyInfo");
+
+	DelCustUSDTInfo = ({ USDTAddress, NickName, AccountName }) =>
+		this.accountStrictRequest.post("/DelCustUSDTInfo", {
+			USDTAddress,
+			NickName,
+			AccountName
+		});
 }

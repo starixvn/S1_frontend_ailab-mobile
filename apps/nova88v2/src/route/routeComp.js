@@ -99,6 +99,10 @@ const RouteComponents = () => {
 			<DepositHistory path={`/:langId/${path.depositHistory.root}`} />
 
 			<Withdrawal path={`/:langId/${path.withdrawal.root}`} />
+			<Withdrawal
+				path={`/:langId/${path.cryptoWithdrawal.root}`}
+				isCrypto={true}
+			/>
 			<WithdrawalHistory
 				path={`/:langId/${path.withdrawalHistory.root}`}
 			/>

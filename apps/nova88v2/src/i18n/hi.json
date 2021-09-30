@@ -398,7 +398,10 @@
 	"lbl_WithdrawalDailyMinMax": "दैनिक न्यूनतम/अधिकतम सीमा:  {{0}}/{{1}}",
 	"lbl_WithdrawalDailyReached":"Your Daily Limit Reached.",
 	"lbl_Insufficientbalance":"Insufficient balance",
-
+	"lbl_CryptoWithdrawal":"Crypto Withdrawal",
+	"lbl_ReceiveUSDT":"Receive USDT Amount",
+	"lbl_WithdrawalCryptoNote":"提款金額僅供參考，實際到帳金額將由當時匯率決定",
+	
 	"==============================================Transfer====================================": "",
 
 	"lbl_MaxAmount": "स्पोर्ट्सबुक वॉलेट",
@@ -631,14 +634,14 @@
 	"lbl_Skip":"छोड़ें",
 
 	"==============Crypto Wallet==============":"",
-	"lbl_CryptoPay":"क्रिप्टो भुगतान",
+	"lbl_CryptoPay":"क्रिप्टो पे",
 	"lbl_CryptoWallet" : "क्रिप्टो वॉलेट",
 	"lbl_CryptoWalletAddress" : "वॉलेट का पता" ,
 	"lbl_CryptoWalletNickName" : "वॉलेट उपनाम" ,
 	"lbl_CryptoWalletTip2" : "कृपया ध्यान दें: एक बार क्रिप्टो वॉलेट जमा हो जाने के बाद, इसे संशोधित/हटाया नहीं जा सकता है। संशोधन के किसी भी अनुरोध के लिए, कृपया सीएसडी से संपर्क करें।" ,
 	"lbl_CryptoWalletTip1" : "संशोधन के किसी भी अनुरोध के लिए कृपया सीएसडी से संपर्क करें।",
 	"lbl_Add_Crypto_Wallet":"क्रिप्टो वॉलेट जोड़ें",
-	"lbl_NotERC20WalletAddr":"ERC-20 संगत वॉलेट पता होना चाहिए",
+	"lbl_NotERC20WalletAddr":"ERC-20 / TRC-20 संगत वॉलेट पता होना चाहिए",
 	"lbl_UpdateCryptoWalletAddr": "निकासी करने से पहले कृपया अपना क्रिप्टो वॉलेट पता अपडेट करें।",
 	"lbl_Btn_UpdateCryptoWallet": "क्रिप्टो वॉलेट अपडेट करें",
 	"lbl_Optional": "वैकल्पिक",
@@ -648,6 +651,10 @@
 	"lbl_Wallet_Address_Tip" : "केवल अक्षर (a-z) और अंक (0-9) दर्ज करें।",
 	"lbl_BankAccountNameHint" : "कृपया खाते के नाम के लिए अपने वास्तविक नाम का उपयोग करें। एक बार दर्ज करने के बाद इस फ़ील्ड को नहीं बदला जा सकता है!",
 	"lbl_DuplicateAddress" : "आप पहले ही यह जानकारी संग्रहीत कर चुके हैं।",
+	"lbl_Rate":"Rate",
+	"lbl_USDT_Amount":"USDT Amount",
+	"lbl_Crypto_OTP":"Phone number (OTP) verification are require before deposit for Crypto service.",
+
 
 	"=============Download App===============":"",
 	"lbl_Downloads":"डाउनलोड",

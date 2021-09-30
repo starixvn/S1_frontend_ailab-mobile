@@ -71,6 +71,9 @@ export class DropdownBox extends Component {
 						className={`inputBox ${
 							this.props.checked === false ? "error" : ""
 						}`}>
+						{this.props.showDot && (
+							<span className="text-red">*</span>
+						)}
 						{this.props.colName === "Currency" && (
 							<i className="icon icon-coin-dollar" />
 						)}
@@ -131,7 +134,8 @@ DropdownBox.defaultProps = {
 	testAttr: "",
 	hideInfo: false,
 	onBlur: () => null,
-	birthDayIcon: false
+	birthDayIcon: false,
+	showDot: false
 };
 
 DropdownBox.propTypes = {
@@ -152,7 +156,8 @@ DropdownBox.propTypes = {
 	testAttr: PropTypes.string,
 	hideInfo: PropTypes.bool,
 	onBlur: PropTypes.func,
-	birthDayIcon: PropTypes.bool
+	birthDayIcon: PropTypes.bool,
+	showDot: PropTypes.bool
 };
 
 const Item = props => {

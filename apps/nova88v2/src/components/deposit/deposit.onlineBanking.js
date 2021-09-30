@@ -305,7 +305,6 @@ const Payment = props => {
 				prefixImgUrl={`${cloudImgURL}/SiteSkin/img/Payment/`}
 				bindFullObj={true}
 				displayKey="payName"
-				showMinMaxHint={true}
 				_isConvert={_isConvert}
 			/>
 			<GroupList

@@ -68,6 +68,9 @@ export default {
 	withdrawal: {
 		root: "withdrawal"
 	},
+	cryptoWithdrawal: {
+		root: "cryptoWithdrawal"
+	},
 	withdrawalHistory: {
 		root: "withdrawalHistory"
 	},

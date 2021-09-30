@@ -40,11 +40,11 @@ const Detail = ({
 			</div>
 		);
 	}
-	const ipt = createRef();
-	const OnCopy = () => {
-		ipt.current.select();
-		navigator.clipboard.writeText(ipt.current.value);
-	};
+	// const ipt = createRef();
+	// const OnCopy = () => {
+	// 	ipt.current.select();
+	// 	navigator.clipboard.writeText(ipt.current.value);
+	// };
 
 	return (
 		<div className="info">
@@ -79,9 +79,9 @@ const Detail = ({
 
 			{thirdId && (
 				<div>
-					<div className="title">TxId</div>
+					<div className="title">{i18n.lbl_Action}</div>
 					<div>{thirdId}</div>
-					<input
+					{/* <input
 						type="hidden"
 						readOnly={true}
 						defaultValue={thirdId}
@@ -91,7 +91,7 @@ const Detail = ({
 						className="icon icon-files-empty"
 						value={thirdId}
 						onClick={OnCopy}
-					/>
+					/> */}
 				</div>
 			)}
 
