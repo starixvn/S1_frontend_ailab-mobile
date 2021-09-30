@@ -105,7 +105,7 @@
 	"lbl_TermsConditions": "บข้อกำหนดและเงื่อนไข",
 	"lbl_TermsAndConditions": "บข้อกำหนดและเงื่อนไข",
 	"msg_EnterRealName": "โปรดใส่ชื่อจริง",
-	"lbl_RealName": "ชื่อจริง",
+	"lbl_RealName": "ชื่อ-นามสกุลจริง",
 	"msg_MailWrongFormat": "รูปแบบอีเมล์ไม่ถูกต้อง",
 	"msg_PasswordVaildate": "* รหัสผ่านต้องมีความยาว 6-15 ตัว ประกอบด้วยตัวอักษรและตัวเลขและอักขระพิเศษ (!@#$%^&*).",
 	"lbl_Phone": "หมายเลขโทรศัพท์",
