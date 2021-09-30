@@ -18,10 +18,13 @@ const Inputbox = ({
 	disabled,
 	testAttr,
 	showInfoIcon,
-	maxLength
+	maxLength,
+	children,
+	_class,
+	showDot
 }) => {
 	return (
-		<div className="infoModule">
+		<div className={`infoModule ${_class}`}>
 			<div
 				className={`inputInfo ${showTips ? " active" : ""}`}
 				data-testid="inputInfo">
@@ -29,6 +32,7 @@ const Inputbox = ({
 			</div>
 
 			<div className={`inputBox ${btnStatus === false ? "error" : ""}`}>
+				{showDot && <span className="text-red">*</span>}
 				{areaCode ? (
 					<i className={`icon ${icon}`}>{areaCode}</i>
 				) : icon ? (
@@ -57,6 +61,7 @@ const Inputbox = ({
 					)}
 				</div>
 			</div>
+			{children}
 			<div
 				className={`tip${btnStatus === false ? " active" : ""}`}
 				data-testid={`${testAttr}_msg`}>
@@ -81,7 +86,10 @@ Inputbox.defaultProps = {
 	testAttr: "",
 	value: "",
 	showInfoIcon: true,
-	maxLength: null
+	maxLength: null,
+	children: null,
+	_class: "",
+	showDot: false
 };
 
 Inputbox.propTypes = {
@@ -100,7 +108,10 @@ Inputbox.propTypes = {
 	onBlur: PropTypes.oneOfType([PropTypes.func]),
 	testAttr: PropTypes.string,
 	showInfoIcon: PropTypes.bool,
-	maxLength: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+	maxLength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	children: PropTypes.node,
+	_class: PropTypes.string,
+	showDot: PropTypes.bool
 };
 
 export default Inputbox;

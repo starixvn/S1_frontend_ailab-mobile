@@ -6,6 +6,7 @@ import OneGamePopBox from "./popbox.oneGame";
 import ReferralPopBox from "./popbox.referral";
 import DomainListPop from "./popbox.domainList";
 import PaymentQR from "./popbox.paymentQR";
+import AddCryptoWallet from "./popbox.addCrypto";
 
 export const defPopBoxType = {
 	default: "default",
@@ -14,7 +15,8 @@ export const defPopBoxType = {
 	OneGame: "OneGame",
 	Referral: "Referral",
 	DomainList: "DomainList",
-	PaymentQR: "PaymentQR"
+	PaymentQR: "PaymentQR",
+	AddCryptoWallet: "AddCryptoWallet"
 };
 
 const PopUp = () => {
@@ -54,6 +56,10 @@ const PopUp = () => {
 
 		case defPopBoxType.PaymentQR:
 			content = <PaymentQR {...popBox} />;
+			break;
+
+		case defPopBoxType.AddCryptoWallet:
+			content = <AddCryptoWallet {...popBox} />;
 			break;
 
 		default:

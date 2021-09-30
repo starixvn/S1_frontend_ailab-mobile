@@ -90,6 +90,13 @@ export class PaymentAPI extends BaseAPI {
 			IFSCCode
 		});
 
+	WithdrawalUSDTReq = (AccountNo, amount, blackbox) =>
+		this.paymentRequest.post("/WithdrawalUSDTReq", {
+			AccountNo,
+			amount,
+			blackbox
+		});
+
 	GetWithdrawalInfoRecent = () =>
 		this.paymentRequest.post("/GetWithdrawalInfoRecent");
 
@@ -154,4 +161,10 @@ export class PaymentAPI extends BaseAPI {
 		this.paymentRequest.post("/GetBankInfoOffListStatus", { queryType: 1 });
 
 	GetWithdrawalLimit = () => this.paymentRequest.post("/GetWithdrawalLimit");
+
+	GetExchangeInfo = ({ Amount }) =>
+		this.paymentRequest.post("/GetExchangeInfo", { Amount });
+
+	GetSupportNetwork = () =>
+		this.paymentRequest.post("/GetSupportNetwork", { CurrencyId: 96 });
 }

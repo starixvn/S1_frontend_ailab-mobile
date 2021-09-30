@@ -29,7 +29,19 @@ export const withdrawal = {
 	withdrawal: {
 		to: `${path.withdrawal.root}`,
 		displayKey: "lbl_Withdrawal",
-		mainClass: "main"
+		mainClass: "main",
+		subTabs: {
+			withdrawal: {
+				to: path.withdrawal.root,
+				displayKey: "lbl_Withdrawal",
+				mainClass: "main crypto"
+			},
+			cryptoWithdrawal: {
+				to: path.cryptoWithdrawal.root,
+				displayKey: "lbl_CryptoWithdrawal",
+				mainClass: "main crypto"
+			}
+		}
 	},
 	withdrawalHistory: {
 		to: `${path.withdrawalHistory.root}`,
@@ -77,34 +89,27 @@ export const statement_financialLog = {
 	}
 };
 
-export const wallet_bankInfo = {
+export const myWallet = {
 	myWallet: {
 		to: `${path.wallet.root}`,
-		displayKey: "lbl_MyWallet"
+		displayKey: "lbl_MyWallet",
+		mainClass: "main"
 	},
 	bankInfo: {
 		to: path.bankInfo.root,
 		displayKey: "lbl_BankInfo",
-		mainClass: "main"
-	}
-};
-
-export const wallet_cryptoWallet = {
-	myWallet: {
-		to: `${path.wallet.root}`,
-		displayKey: "lbl_MyWallet"
-	},
-	bankInfo: {
-		to: path.cryptoWallet.root,
-		displayKey: "lbl_CryptoWallet",
-		mainClass: "main Wallet"
-	}
-};
-
-export const cryptoWalletTabs = {
-	myWallet: {
-		to: `${path.wallet.root}`,
-		displayKey: "lbl_MyWallet"
+		subTabs: {
+			bankInfo: {
+				to: path.bankInfo.root,
+				displayKey: "lbl_BankInfo",
+				mainClass: "main Wallet"
+			},
+			cryptoWallet: {
+				to: path.cryptoWallet.root,
+				displayKey: "lbl_CryptoWallet",
+				mainClass: "main Wallet"
+			}
+		}
 	}
 };
 

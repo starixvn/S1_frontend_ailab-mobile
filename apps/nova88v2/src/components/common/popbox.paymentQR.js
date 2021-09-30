@@ -1,6 +1,8 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import { i18nContext } from "Context";
 import moment from "moment";
+import QRCode from "qrcode.react";
+import PropTypes from "prop-types";
 import { number_format, isConvert } from "./common";
 
 const Panel = ({
@@ -12,7 +14,11 @@ const Panel = ({
 	orderNumber,
 	bankName,
 	accountName,
-	accountNumber
+	accountNumber,
+	Token,
+	Rate,
+	RequestAmount,
+	QRcodeURL
 }) => {
 	const { i18n } = useContext(i18nContext);
 
@@ -65,13 +71,46 @@ const Panel = ({
 				<span>{amountText}</span>
 			</div>
 			<div className="guide">
-				<img src={imgUrl} className="qrCode" alt="qrcode" />
+				{QRcodeURL ? (
+					<>
+						<QRCode
+							className="qrCode"
+							id="refQRcode"
+							value={QRcodeURL}
+						/>
+						<div>{QRcodeURL}</div>
+						<button onClick={() => onCopy({ val: QRcodeURL })}>
+							{i18n.lbl_Copy}
+						</button>
+					</>
+				) : (
+					<img src={imgUrl} className="qrCode" alt="qrcode" />
+				)}
 				<div>
 					{`${i18n.lbl_Pay} `}
 					<span>{depositAmountText}</span>
 				</div>
 				<div className="accountInfo">
-					{accountNumber && accountNumber !== "" && (
+					{Token?.length > 0 && (
+						<div>
+							{i18n.lbl_Method}：{Token}
+						</div>
+					)}
+					{Rate?.length > 0 && (
+						<div>
+							{i18n.lbl_Rate}：{Rate}
+						</div>
+					)}
+					{RequestAmount?.length > 0 && (
+						<div>
+							{i18n.lbl_USDT_Amount}：{RequestAmount}
+							<button
+								onClick={() => onCopy({ val: RequestAmount })}>
+								{i18n.lbl_Copy}
+							</button>
+						</div>
+					)}
+					{accountNumber?.length > 0 && (
 						<>
 							<div>
 								{i18n.lbl_Deposit_DragonPayPop_BankName}：
@@ -155,6 +194,38 @@ export const Counter = ({ startUnixTime = null, timeStop }) => {
 	}, [count]);
 
 	return ` ( ${secondsToTime(count)} ) `;
+};
+
+Panel.defaultProps = {
+	amount: "",
+	depositAmount: "",
+	currencyId: 2,
+	handlePopBox: () => null,
+	imgUrl: "",
+	orderNumber: "",
+	bankName: "",
+	accountName: "",
+	accountNumber: "",
+	Token: "",
+	Rate: "",
+	RequestAmount: "",
+	QRcodeURL: ""
+};
+
+Panel.propTypes = {
+	amount: PropTypes.string,
+	depositAmount: PropTypes.string,
+	currencyId: PropTypes.number,
+	handlePopBox: PropTypes.func,
+	imgUrl: PropTypes.string,
+	orderNumber: PropTypes.string,
+	bankName: PropTypes.string,
+	accountName: PropTypes.string,
+	accountNumber: PropTypes.string,
+	Token: PropTypes.string,
+	Rate: PropTypes.string,
+	RequestAmount: PropTypes.string,
+	QRcodeURL: PropTypes.string
 };
 
 export default Panel;

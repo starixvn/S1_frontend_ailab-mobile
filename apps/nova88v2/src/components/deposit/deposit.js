@@ -156,6 +156,8 @@ const Panel = () => {
 	} else if (selected === defPayType.cryptoPay) {
 		content = (
 			<CryptoPay
+				userPaymentData={_userPaymentData}
+				handleUserPaymentData={handleUserPaymentData}
 				payType={defPayType.cryptoPay}
 				creditTimeKey={defPayment[defPayType.cryptoPay].creditTimeKey}
 				paymentList={paymentList[defPayType.cryptoPay] ?? []}
@@ -173,7 +175,8 @@ const Panel = () => {
 				const payments = {
 					[defPayType.onlineBank]: [],
 					[defPayType.localBank]: [],
-					[defPayType.mobilePay]: []
+					[defPayType.mobilePay]: [],
+					[defPayType.cryptoPay]: []
 				};
 
 				const setDefaultSelect = (currentValue, payType, dataList) =>
@@ -218,11 +221,9 @@ const Panel = () => {
 						payments[defPayType.mobilePay]
 					);
 				} catch (error) {}
-
 				try {
 					const res = await api.payment.GetCryptoPayInfoList();
 					payments[defPayType.cryptoPay] = getDataListResult(res);
-
 					defaultSelect = setDefaultSelect(
 						defaultSelect,
 						defPayType.cryptoPay,

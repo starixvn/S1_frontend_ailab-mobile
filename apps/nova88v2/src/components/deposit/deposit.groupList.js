@@ -16,9 +16,8 @@ const GroupList = ({
 	prefixImgUrl,
 	imgKeyWithExtension,
 	displayKey,
-	channel,
 	_isConvert,
-	showMinMaxHint
+	isCrypto
 }) => {
 	const { i18n } = useContext(i18nContext);
 	const rows = dataList?.map(data => {
@@ -28,15 +27,15 @@ const GroupList = ({
 			<div
 				className={`bankName${isSelect ? " active" : ""}`}
 				key={_mainKey}
-				onClick={() =>
+				onClick={() => {
 					SelectPayment({
 						groupInfo:
-							idKey === "payId" || idKey === "groupId"
+							idKey === "payId" || idKey === "groupId" || isCrypto
 								? data
 								: bindingItem,
 						bankInfo: bindFullObj ? data : data[idKey]
-					})
-				}>
+					});
+				}}>
 				<img
 					src={`${prefixImgUrl}${
 						imgKeyWithExtension
@@ -48,29 +47,26 @@ const GroupList = ({
 				<i className="icon icon-icon32px_check" />
 				<div className="bank">
 					<div>{data[displayKey]}</div>
-					{((displayKey === "bankName" && !channel) ||
-						displayKey === "payName" ||
-						displayKey === "channelName") &&
-						showMinMaxHint &&
-						data?.minAmount &&
-						data?.maxAmount && (
+					<div>
+						{data?.minAmount > 0 && (
 							<div>
-								<div>
-									{`${i18n.lbl_Min}: ${number_format(
-										data.minAmount,
-										_isConvert,
-										0
-									)}`}
-								</div>
-								<div>
-									{`${i18n.lbl_Max}:  ${number_format(
-										data.maxAmount,
-										_isConvert,
-										0
-									)}`}
-								</div>
+								{`${i18n.lbl_Min}: ${number_format(
+									data.groupMin || data.minAmount,
+									_isConvert,
+									0
+								)}`}
 							</div>
 						)}
+						{data?.maxAmount > 0 && (
+							<div>
+								{`${i18n.lbl_Max}:  ${number_format(
+									data.groupMax || data.maxAmount,
+									_isConvert,
+									0
+								)}`}
+							</div>
+						)}
+					</div>
 				</div>
 			</div>
 		);
@@ -90,14 +86,13 @@ const GroupList = ({
 };
 
 GroupList.defaultProps = {
-	dataList: null,
+	dataList: [],
 	selected: null,
 	bindFullObj: false,
 	imgKeyWithExtension: false,
 	bindingItem: null,
 	displayKey: "",
-	channel: null,
-	showMinMaxHint: false
+	isCrypto: false
 };
 
 GroupList.propTypes = {
@@ -117,9 +112,8 @@ GroupList.propTypes = {
 	imgKeyWithExtension: PropTypes.bool,
 	bindingItem: PropTypes.objectOf(PropTypes.any),
 	displayKey: PropTypes.string,
-	channel: PropTypes.objectOf(PropTypes.any),
 	_isConvert: PropTypes.bool.isRequired,
-	showMinMaxHint: PropTypes.bool
+	isCrypto: PropTypes.bool
 };
 
 export default GroupList;

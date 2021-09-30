@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
+import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
 import { Link } from "@Router";
 import {
@@ -13,9 +14,10 @@ import {
 	checkAmount,
 	defCurrenyId
 } from "../common/common";
+import { defPopBoxType } from "../common/popbox";
 import InputBox from "../common/inputbox.hint";
 import { defIptStatus } from "../common/inputStatus";
-import config, { cloudImgURL } from "../../config";
+import { cloudImgURL } from "../../config";
 import RecentDatas from "./withdrawal.recentDatas";
 import ReloadSpin from "../common/reloadSpin";
 import path from "../../path";
@@ -32,10 +34,10 @@ const initWarning = {
 	msg: ""
 };
 
-const Panel = () => {
+const Panel = ({ isCrypto }) => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
-	const { userInfo } = useContext(userInfoContext);
+	const { setUserInfo, userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setLoading } = useContext(loadingContext);
 	const [balanceInfo, setBalanceInfo] = useState(null);
@@ -80,8 +82,7 @@ const Panel = () => {
 		if (
 			userInfo.isLogin &&
 			userInfo.currencyId &&
-			(!userInfo.accountName || !userInfo.phoneNo) &&
-			userInfo.currencyId !== 96
+			(!userInfo.accountName || !userInfo.phoneNo)
 		) {
 			const ClosePopBox = () => {
 				setPopBox({ isOpen: false });
@@ -113,7 +114,27 @@ const Panel = () => {
 				const result = await api.account.GetCustBankInfo().then(res => {
 					let hasBankInfo = false;
 					if (res.data.errorCode === 0) {
-						if (res.data.data?.bankInfoDetail?.length) {
+						if (isCrypto) {
+							if (res.data.data?.uSDTDetail.length > 0) {
+								setPopBox({ isOpen: false });
+								if (isMountedRef.current) {
+									setbankInfo(() => ({
+										accountName:
+											res.data?.data?.accountName,
+										bankList:
+											res.data?.data?.uSDTDetail || []
+									}));
+									setSelBank(res.data?.data?.uSDTDetail?.[0]);
+									if (!pageVerify) {
+										setPageVerify(true);
+									}
+								}
+								hasBankInfo = true;
+							}
+						} else if (
+							res.data.data?.bankInfoDetail &&
+							res.data.data?.bankInfoDetail.length > 0
+						) {
 							setPopBox({ isOpen: false });
 							if (isMountedRef.current) {
 								setbankInfo(() => ({
@@ -135,81 +156,6 @@ const Panel = () => {
 								}
 							}
 							hasBankInfo = true;
-						} else if (
-							userInfo.currencyId === 96 &&
-							res.data.data?.uSDTDetail &&
-							res.data.data?.uSDTDetail.length > 0
-						) {
-							setPopBox({ isOpen: false });
-							if (isMountedRef.current) {
-								setbankInfo(() => ({
-									accountName: res.data.data.accountName,
-									bankList: res.data.data.uSDTDetail
-								}));
-								setSelBank(res.data.data.uSDTDetail?.[0]);
-								if (!pageVerify) {
-									setPageVerify(true);
-								}
-							}
-							hasBankInfo = true;
-						} else if (
-							userInfo.currencyId &&
-							userInfo.currencyId !== 96
-						) {
-							const ClosePopBox = () => {
-								setPopBox({ isOpen: false });
-								navigate(
-									`/${userInfo.langId}/${path.bankInfo.root}`
-								);
-							};
-
-							if (isMountedRef.current) {
-								setPopBox({
-									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: i18n.lbl_UpdateBankInfo,
-									hasBtn: true,
-									hideCloseBtn: true,
-									btnBar: (
-										<div className="btn-group">
-											<button
-												className="blue"
-												onClick={ClosePopBox}>
-												{i18n.lbl_UpdateBankDetail}
-											</button>
-										</div>
-									)
-								});
-								setPageVerify(false);
-							}
-						} else {
-							const ClosePopBox = () => {
-								setPopBox({ isOpen: false });
-								navigate(
-									`/${userInfo.langId}/${path.cryptoWallet.root}`
-								);
-							};
-							if (isMountedRef.current) {
-								setPopBox({
-									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: i18n.lbl_UpdateCryptoWalletAddr,
-									hasBtn: true,
-									hideCloseBtn: true,
-									btnBar: (
-										<div className="btn-group">
-											<button
-												className="blue"
-												onClick={ClosePopBox}>
-												{
-													i18n.lbl_Btn_UpdateCryptoWallet
-												}
-											</button>
-										</div>
-									)
-								});
-								setPageVerify(false);
-							}
 						}
 					}
 					return hasBankInfo;
@@ -342,6 +288,58 @@ const Panel = () => {
 		setAmount(value);
 	};
 
+	const checkAccount = () => {
+		if (bankInfo?.bankList?.length > 0) {
+			ClickSubmit();
+		} else if (isCrypto) {
+			const ClosePopBox = () => {
+				setPopBox({ isOpen: false });
+				navigate(`/${userInfo.langId}/${path.cryptoWallet.root}`);
+			};
+
+			if (isMountedRef.current) {
+				setPopBox({
+					isOpen: true,
+					title: i18n.lbl_ImportantNote,
+					content: i18n.lbl_UpdateCryptoWalletAddr,
+					hasBtn: true,
+					hideCloseBtn: true,
+					btnBar: (
+						<div className="btn-group">
+							<button className="blue" onClick={ClosePopBox}>
+								{i18n.lbl_Btn_UpdateCryptoWallet}
+							</button>
+						</div>
+					)
+				});
+				setPageVerify(false);
+			}
+		} else {
+			const ClosePopBox = () => {
+				setPopBox({ isOpen: false });
+				navigate(`/${userInfo.langId}/${path.bankInfo.root}`);
+			};
+
+			if (isMountedRef.current) {
+				setPopBox({
+					isOpen: true,
+					title: i18n.lbl_ImportantNote,
+					content: i18n.lbl_UpdateBankInfo,
+					hasBtn: true,
+					hideCloseBtn: true,
+					btnBar: (
+						<div className="btn-group">
+							<button className="blue" onClick={ClosePopBox}>
+								{i18n.lbl_UpdateBankDetail}
+							</button>
+						</div>
+					)
+				});
+				setPageVerify(false);
+			}
+		}
+	};
+
 	const ClickSubmit = () => {
 		if (pageVerify) {
 			const result = VaildAmount(amount);
@@ -353,120 +351,189 @@ const Panel = () => {
 					ifscCode
 				) => {
 					const blackbox = await Iov_GetBlackBox();
-					api.payment
-						.WithdrawalReq(
-							accountNo,
-							_real_amount,
-							sysId,
-							blackbox,
-							ifscCode
-						)
-						.then(
-							res => {
-								if (isMountedRef.current) {
-									if (
-										res.data.errorCode === 0 ||
-										res.data.errorCode === 2
-									) {
-										KycCheck(false).then(kycProcess => {
-											if (!kycProcess) {
-												setAmount("");
-												api.payment
-													.GetWithdrawalInfoRecent()
-													.then(resRecent => {
-														if (
-															resRecent.data
-																.errorCode ===
-																0 &&
-															isMountedRef.current
-														) {
-															GetBalance();
-															setRecentDatas(
-																resRecent.data
-																	.data
-															);
-															GetDailyWithdrawalLimit();
-															setWarning(
-																initWarning
-															);
-														}
-													});
-											}
-										});
+					try {
+						const res = isCrypto
+							? await api.payment.WithdrawalUSDTReq(
+									accountNo,
+									_real_amount,
+									blackbox
+							  )
+							: await api.payment.WithdrawalReq(
+									accountNo,
+									_real_amount,
+									sysId,
+									blackbox,
+									ifscCode
+							  );
 
-										setPopBox({ isOpen: false });
-									} else {
-										let content = res.data.message;
-										if (res.data.errorCode === -1) {
-											content = `${
-												i18n.lbl_RolloverOver
-											}: ${number_format(
-												parseFloat(res.data.message),
-												_isConvert
-											)}`;
-										} else if (res.data.errorCode === -2) {
-											content = `${
-												i18n.lbl_DepositOver
-											}: ${number_format(
-												parseFloat(res.data.message),
-												_isConvert
-											)}`;
-										} else if (res.data.errorCode === -3) {
-											content = `${
-												i18n.lbl_WithdrawalOver
-											}: ${number_format(
-												parseFloat(res.data.message),
-												_isConvert
-											)}`;
-										}
-										setPopBox({
-											isOpen: true,
-											title: i18n.lbl_ImportantNote,
-											content,
-											hasBtn: false
-										});
+						if (isMountedRef.current) {
+							if (
+								res.data.errorCode === 0 ||
+								res.data.errorCode === 2
+							) {
+								KycCheck(false).then(kycProcess => {
+									if (!kycProcess) {
+										setAmount("");
+										api.payment
+											.GetWithdrawalInfoRecent()
+											.then(resRecent => {
+												if (
+													resRecent.data.errorCode ===
+														0 &&
+													isMountedRef.current
+												) {
+													GetBalance();
+													setRecentDatas(
+														resRecent.data.data
+													);
+													GetDailyWithdrawalLimit();
+													setWarning(initWarning);
+												}
+											});
 									}
+								});
+
+								setPopBox({ isOpen: false });
+							} else {
+								let content = res.data.message;
+								if (res.data.errorCode === -1) {
+									content = `${
+										i18n.lbl_RolloverOver
+									}: ${number_format(
+										parseFloat(res.data.message),
+										_isConvert
+									)}`;
+								} else if (res.data.errorCode === -2) {
+									content = `${
+										i18n.lbl_DepositOver
+									}: ${number_format(
+										parseFloat(res.data.message),
+										_isConvert
+									)}`;
+								} else if (res.data.errorCode === -3) {
+									content = `${
+										i18n.lbl_WithdrawalOver
+									}: ${number_format(
+										parseFloat(res.data.message),
+										_isConvert
+									)}`;
 								}
-							},
-							() => {
-								if (isMountedRef.current) {
-									setPopBox({
-										isOpen: true,
-										title: i18n.lbl_ImportantNote,
-										content: i18n.msg_ApiServerError
-									});
-								}
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content,
+									hasBtn: false
+								});
 							}
-						);
+						}
+					} catch (error) {
+						if (isMountedRef.current) {
+							setPopBox({
+								isOpen: true,
+								title: i18n.lbl_ImportantNote,
+								content: i18n.msg_ApiServerError
+							});
+						}
+					}
 				};
 
 				const real_amount = _isConvert
 					? Number(amount) * 1000
 					: Number(amount);
-				setPopBox({
-					isOpen: true,
-					title: i18n.lbl_ImportantNote,
-					content:
-						userInfo.currencyId === 96 ? (
-							<div>
-								<ul>
-									<li className="text-org">
-										{i18n.lbl_WithdrawalTo} :
-									</li>
-									<li>{selBank?.nickName}</li>
-									<li className="text-org">
-										{i18n.lbl_CryptoWalletAddress} :
-									</li>
-									<li>{selBank?.usdtAddress}</li>
-									<li className="text-org">
-										{i18n.lbl_WithdrawalAmount} :
-									</li>
-									<li>
-										{number_format(real_amount, _isConvert)}
-									</li>
-								</ul>
-							</div>
-						) : (
+
+				if (isCrypto) {
+					api.payment
+						.GetExchangeInfo({ Amount: real_amount })
+						.then(res => {
+							if (
+								res.data.errorCode === 0 &&
+								isMountedRef.current
+							) {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content: (
+										<div>
+											<ul>
+												<li className="text-org">
+													{i18n.lbl_WithdrawalTo} :
+												</li>
+												<li>{selBank?.nickName}</li>
+												<li className="text-org">
+													{
+														i18n.lbl_CryptoWalletAddress
+													}{" "}
+													:
+												</li>
+												<li>{selBank?.usdtAddress}</li>
+												<li className="text-org">
+													{i18n.lbl_WithdrawalAmount}{" "}
+													:
+												</li>
+												<li>
+													{number_format(
+														real_amount,
+														_isConvert
+													)}
+												</li>
+												<li className="text-org">
+													{`${i18n.lbl_ReceiveUSDT} :`}
+												</li>
+												<li>
+													{Number(
+														res.data.data.to_Amount
+													).toString()}
+												</li>
+												<li className="text-org">
+													{`${i18n.lbl_WithdrawalCryptoNote}`}
+												</li>
+											</ul>
+										</div>
+									),
+									hasBtn: true,
+									btnBar: (
+										<div className="btn-group">
+											<button
+												className="white"
+												onClick={() =>
+													setPopBox(prevState => ({
+														...prevState,
+														isOpen: false
+													}))
+												}>
+												{i18n.lbl_Cancel}
+											</button>
+											<button
+												data-testid="RedirectToNext"
+												className="orange"
+												onClick={RedirectToNext.bind(
+													this,
+													selBank.usdtAddress,
+													real_amount,
+													0,
+													userInfo.currencyId ===
+														defCurrenyId.INR
+														? selBank.ifscCode
+														: null
+												)}>
+												{i18n.lbl_Submit}
+											</button>
+										</div>
+									)
+								});
+							} else if (res.data.errorCode !== 0) {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content: i18n.msg_ApiServerError
+								});
+							}
+						});
+				} else {
+					setPopBox({
+						isOpen: true,
+						title: i18n.lbl_ImportantNote,
+						content: (
 							<div>
 								<ul>
 									<li className="text-org">
@@ -499,40 +566,37 @@ const Panel = () => {
 								</ul>
 							</div>
 						),
-					hasBtn: true,
-					btnBar: (
-						<div className="btn-group">
-							<button
-								className="white"
-								onClick={() =>
-									setPopBox(prevState => ({
-										...prevState,
-										isOpen: false
-									}))
-								}>
-								{i18n.lbl_Cancel}
-							</button>
-							<button
-								data-testid="RedirectToNext"
-								className="orange"
-								onClick={RedirectToNext.bind(
-									this,
-									userInfo.currencyId === 96
-										? selBank.usdtAddress
-										: selBank.accountNo,
-									real_amount,
-									userInfo.currencyId !== 96
-										? selBank.sysId
-										: 0,
-									userInfo.currencyId === defCurrenyId.INR
-										? selBank.ifscCode
-										: null
-								)}>
-								{i18n.lbl_Submit}
-							</button>
-						</div>
-					)
-				});
+						hasBtn: true,
+						btnBar: (
+							<div className="btn-group">
+								<button
+									className="white"
+									onClick={() =>
+										setPopBox(prevState => ({
+											...prevState,
+											isOpen: false
+										}))
+									}>
+									{i18n.lbl_Cancel}
+								</button>
+								<button
+									data-testid="RedirectToNext"
+									className="orange"
+									onClick={RedirectToNext.bind(
+										this,
+										selBank.accountNo,
+										real_amount,
+										selBank.sysId,
+										userInfo.currencyId === defCurrenyId.INR
+											? selBank.ifscCode
+											: null
+									)}>
+									{i18n.lbl_Submit}
+								</button>
+							</div>
+						)
+					});
+				}
 			}
 		}
 	};
@@ -608,6 +672,157 @@ const Panel = () => {
 			});
 		}
 	};
+	const closePopbox = () => {
+		navigate(`/${userInfo.langId}/${path.profile.root}`);
+		setPopBox({ isOpen: false });
+	};
+
+	const GetCustBankInfo = () => {
+		api.account.GetCustBankInfo().then(
+			res => {
+				if (isMountedRef.current) {
+					if (res.data.errorCode === 0) {
+						const resData = res.data.data;
+						if (resData) {
+							setUserInfo(prev => ({
+								...prev,
+								accountName: resData.accountName
+							}));
+							setbankInfo(() => ({
+								accountName: resData.accountName,
+								bankList: resData.uSDTDetail
+							}));
+						}
+					} else {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.msg_ApiServerError
+						});
+					}
+					setLoading(false);
+				}
+			},
+			() => {
+				if (isMountedRef.current) {
+					setLoading(false);
+					setPopBox({
+						isOpen: true,
+						title: i18n.lbl_ImportantNote,
+						content: i18n.msg_ApiServerError
+					});
+				}
+			}
+		);
+	};
+
+	const addCryptoWallet = () => {
+		if (userInfo.isLogin) {
+			if (!userInfo.phoneVerified) {
+				setPopBox({
+					isOpen: true,
+					title: i18n.lbl_ImportantNote,
+					content: i18n.lbl_UpdatePersonalInfo,
+					hasBtn: true,
+					hideCloseBtn: true,
+					btnBar: (
+						<div className="btn-group">
+							<button onClick={closePopbox}>
+								{i18n.lbl_UpdatePersonalDetail}
+							</button>
+						</div>
+					)
+				});
+			} else {
+				setPopBox({
+					title: i18n.lbl_Add_Crypto_Wallet,
+					isOpen: true,
+					popBoxType: defPopBoxType.AddCryptoWallet,
+					GetCustBankInfo
+				});
+			}
+		} else {
+			api.accountStrict.GetCustProfile().then(res_custInfo => {
+				if (res_custInfo.data.errorCode === 0 && isMountedRef.current) {
+					const { data } = res_custInfo.data;
+					if (!data.phoneVerified) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.lbl_Crypto_OTP,
+							hasBtn: true,
+							hideCloseBtn: true,
+							btnBar: (
+								<div className="btn-group">
+									<button onClick={closePopbox}>
+										{i18n.lbl_UpdatePersonalDetail}
+									</button>
+								</div>
+							)
+						});
+					} else {
+						setPopBox({
+							title: i18n.lbl_Add_Crypto_Wallet,
+							isOpen: true,
+							popBoxType: defPopBoxType.AddCryptoWallet,
+							GetCustBankInfo
+						});
+					}
+				}
+			});
+		}
+	};
+
+	const delUSDTwallet = ({ USDTAddress, NickName, AccountName }) => {
+		setPopBox({
+			isOpen: true,
+			title: i18n.lbl_ImportantNote,
+			content: i18n.lbl_CheckConfirm,
+			hasBtn: true,
+			btnBar: (
+				<div className="btn-group">
+					<button
+						className="white"
+						onClick={() =>
+							removeAccount({
+								USDTAddress,
+								NickName,
+								AccountName
+							})
+						}>
+						{i18n.lbl_Yes}
+					</button>
+					<button className="orange" onClick={closePopbox}>
+						{i18n.lbl_No}
+					</button>
+				</div>
+			)
+		});
+	};
+
+	const removeAccount = ({ USDTAddress, NickName, AccountName }) => {
+		api.accountStrict
+			.DelCustUSDTInfo({ USDTAddress, NickName, AccountName })
+			.then(res => {
+				if (res.data.errorCode === 0) {
+					GetCustBankInfo();
+					setPopBox({ isOpen: false });
+				} else {
+					setPopBox({
+						isOpen: true,
+						title: i18n.lbl_ImportantNote,
+						content: res.data.message
+					});
+				}
+			})
+			.catch(() => {
+				setPopBox({
+					isOpen: true,
+					title: i18n.lbl_ImportantNote,
+					content: i18n.msg_ApiServerError
+				});
+			});
+	};
 
 	let banks = [];
 	const showingAmount = (
@@ -616,8 +831,7 @@ const Panel = () => {
 			{number_format(balanceInfo?.availableBalance ?? 0, _isConvert)}
 		</>
 	);
-
-	if (userInfo.currencyId === 96) {
+	if (isCrypto) {
 		banks = bankInfo?.bankList?.map(b => {
 			return (
 				<div
@@ -629,9 +843,26 @@ const Panel = () => {
 					onClick={SelectBank.bind(this, b)}>
 					<div className="nickName">{b.nickName}</div>
 					<div className="icon icon-BTC">{b.usdtAddress}</div>
+					<button
+						onClick={() =>
+							delUSDTwallet({
+								USDTAddress: b.usdtAddress,
+								NickName: b.nickName,
+								AccountName: userInfo.accountName
+							})
+						}
+						className="icon icon-bin clickBtn"
+					/>
 				</div>
 			);
 		});
+		if (banks?.length < 3) {
+			banks?.push(
+				<div className="account" onClick={addCryptoWallet}>
+					<div className="icon icon-plus text-org" />
+				</div>
+			);
+		}
 	} else {
 		banks = bankInfo?.bankList?.map(b => {
 			return (
@@ -671,7 +902,6 @@ const Panel = () => {
 						0
 				  )
 		);
-
 	return pageVerify ? (
 		<>
 			<VIPLevel userInfo={userInfo} i18n={i18n} />
@@ -687,7 +917,7 @@ const Panel = () => {
 					isLogin={userInfo.isLogin}
 				/>
 			</div>
-			{userInfo.currencyId === 96 ? (
+			{isCrypto ? (
 				<div className="bankAccount">{banks}</div>
 			) : (
 				<>
@@ -730,7 +960,7 @@ const Panel = () => {
 						warning.status !== defIptStatus.warning ? "" : "gray"
 					}
 					data-testid="submit_withdrawal"
-					onClick={ClickSubmit}>
+					onClick={checkAccount}>
 					{i18n.lbl_Submit}
 				</button>
 			</div>
@@ -741,3 +971,11 @@ const Panel = () => {
 };
 
 export default Panel;
+
+Panel.defaultProps = {
+	isCrypto: false
+};
+
+Panel.propTypes = {
+	isCrypto: PropTypes.bool
+};

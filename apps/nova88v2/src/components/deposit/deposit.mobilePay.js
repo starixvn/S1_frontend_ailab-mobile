@@ -224,7 +224,6 @@ const Payment = props => {
 				idKey="groupId"
 				prefixImgUrl={`${cloudImgURL}/SiteSkin/img/MobilePay/`}
 				displayKey="channelName"
-				showMinMaxHint={true}
 				_isConvert={_isConvert}
 			/>
 			{channelList?.length > 1 && (
@@ -241,7 +240,6 @@ const Payment = props => {
 					prefixImgUrl={`${cloudImgURL}/SiteSkin/img/MobilePay/`}
 					displayKey="channelName"
 					_isConvert={_isConvert}
-					showMinMaxHint={true}
 				/>
 			)}
 			<AmountInput
