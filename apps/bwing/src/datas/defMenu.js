@@ -75,19 +75,19 @@ export const productList = langId => {
 					img: sabaSports,
 					...defGameInfo.Sports,
 					tpGameType: 1
-				},
-				{
-					displayKey: "lbl_BTISport",
-					img: BTI,
-					...defGameInfo.BTISport,
-					tpGameType: 49,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.new_BTI)
-						}
-					]
 				}
+				// {
+				// 	displayKey: "lbl_BTISport",
+				// 	img: BTI,
+				// 	...defGameInfo.BTISport,
+				// 	tpGameType: 49,
+				// 	eventIcon: [
+				// 		{
+				// 			icon: defIconType.new,
+				// 			inPeriod: isEventPeriod(eventTime.new_BTI)
+				// 		}
+				// 	]
+				// }
 			]
 		},
 		game: {

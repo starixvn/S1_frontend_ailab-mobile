@@ -211,18 +211,18 @@ const gameList = [
 				spanTextKey: "lbl_Soccer",
 				tpGameType: 1
 			},
-			{
-				...defGameInfo.BTISport,
-				img: Sports_BTI,
-				spanTextKey: "lbl_BTISport",
-				tpGameType: 49,
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.new_BTI)
-					}
-				]
-			},
+			// {
+			// 	...defGameInfo.BTISport,
+			// 	img: Sports_BTI,
+			// 	spanTextKey: "lbl_BTISport",
+			// 	tpGameType: 49,
+			// 	eventIcon: [
+			// 		{
+			// 			icon: defIconType.new,
+			// 			inPeriod: isEventPeriod(eventTime.new_BTI)
+			// 		}
+			// 	]
+			// },
 			{
 				...defGameInfo.SabaSoccer,
 				img: Sports_SabaSoccer,

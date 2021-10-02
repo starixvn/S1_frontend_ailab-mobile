@@ -41,12 +41,12 @@ const defSubMenus = [
 				displayKey: "lbl_SabaSport",
 				...defGameInfo.Sports,
 				tpGameType: 1
-			},
-			{
-				displayKey: "lbl_BTISport",
-				...defGameInfo.BTISport,
-				tpGameType: 49
 			}
+			// {
+			// 	displayKey: "lbl_BTISport",
+			// 	...defGameInfo.BTISport,
+			// 	tpGameType: 49
+			// }
 		]
 	},
 	{

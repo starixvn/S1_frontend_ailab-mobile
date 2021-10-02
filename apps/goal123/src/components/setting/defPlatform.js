@@ -9,11 +9,11 @@ const defPlatfrom = [
 		otherPlatformImg: "sabab",
 		tpGameType: 1
 	},
-	{
-		...defGameInfo.BTISport,
-		imgName: "btia",
-		tpGameType: 49
-	},
+	// {
+	// 	...defGameInfo.BTISport,
+	// 	imgName: "btia",
+	// 	tpGameType: 49
+	// },
 	{
 		...defGameInfo.LIVEcasinoAG,
 		imgName: "aga",
