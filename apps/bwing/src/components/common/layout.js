@@ -246,6 +246,10 @@ class RotationHint extends Component {
 		window.removeEventListener("orientationchange", this.OnRotate);
 	}
 
+	componentDidMount() {
+		window.addEventListener("orientationchange", this.OnRotate);
+	}
+
 	rotationChange = () => {
 		switch (window.orientation) {
 			case 0:
@@ -265,10 +269,6 @@ class RotationHint extends Component {
 		const rotateClass = this.rotationChange();
 		this.setState({ rotateClass });
 	};
-
-	UNSAFE_componentDidMount() {
-		window.addEventListener("orientationchange", this.OnRotate);
-	}
 
 	render() {
 		return (
