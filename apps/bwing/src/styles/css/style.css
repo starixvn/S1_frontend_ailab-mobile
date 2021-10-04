@@ -4215,7 +4215,7 @@ span.important {
   bottom: 0;
   padding: 5vw;
   background: #001942;
-  z-index: 9;
+  z-index: 11;
   display: none;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
