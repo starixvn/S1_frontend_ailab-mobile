@@ -5,6 +5,7 @@ import { siteInfo } from "../../config";
 import { Link } from "../../route/link";
 import appDownloadImg from "../../styles/img/app/appmodule.jpg";
 import path from "../../path";
+import PagcorLicensee from "../../styles/img/licenses.png";
 
 const Bottom = ({ i18n, langId }) => {
 	return (
@@ -28,6 +29,10 @@ const Bottom = ({ i18n, langId }) => {
 				<p>{i18n.lbl_Cookie_Reminder}</p>
 			</div>
 			<div className="social">
+				<div>
+					<div>{i18n.lbl_Gaming_License}</div>
+					<img src={PagcorLicensee} alt="pagcor licensee" />
+				</div>
 				<a
 					className="icon icon-facebook"
 					href="https://www.facebook.com/nova88official/"

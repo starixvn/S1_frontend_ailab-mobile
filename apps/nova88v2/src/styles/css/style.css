@@ -8729,6 +8729,9 @@ span.important {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .social a {
@@ -8736,7 +8739,7 @@ span.important {
   width: 10vw;
   height: 10vw;
   background: #c0cce2;
-  margin: 4vw 0 10vw 2vw;
+  margin: 5vw 2vw 5vw 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8746,6 +8749,23 @@ span.important {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.social > div {
+  color: #5574A7;
+  margin: auto auto auto 2vw;
+  font-size: 3vw;
+  font-weight: bold;
+}
+
+.social > div div {
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+  margin: auto auto 1vw -2vw;
+}
+
+.social > div img {
+  width: 20vw;
 }
 
 .spokesperson {
@@ -10249,5 +10269,29 @@ span.important {
 
 .addAddresspop .infoModule.parts .btn-group button {
   padding: 0;
+}
+
+.backstage ol, .backstage ul, .backstage li {
+  list-style: revert;
+  margin: revert;
+  padding: revert;
+  border: revert;
+  font-size: revert;
+  font: revert;
+  vertical-align: revert;
+}
+
+.backstage h1, .backstage h2, .backstage h3, .backstage h4, .backstage h5, .backstage h6, .backstage strong {
+  font-size: revert;
+  margin: revert;
+  padding: revert;
+  border: revert;
+  font-size: revert;
+  font: revert;
+  vertical-align: revert;
+}
+
+.backstage img {
+  width: 100% !important;
 }
 /*# sourceMappingURL=style.css.map */
