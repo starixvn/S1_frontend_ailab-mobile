@@ -225,7 +225,7 @@ header .Login {
   top: 0;
   left: 0;
   color: #fff;
-  z-index: 5;
+  z-index: 6;
   background: rgba(0, 25, 66, 0.95);
   visibility: hidden;
   -webkit-transition: 0.7s;
@@ -1657,6 +1657,85 @@ footer > a.open {
 
 .info.infoAccount li .title {
   font-weight: bold;
+}
+
+.cashBack {
+  background: #1d2f62;
+  padding: 2vw;
+  border-radius: 5px;
+  border: 1px solid #7789bd54;
+  margin: 2vw 0;
+}
+
+.cashBack .title {
+  color: #fff;
+  margin: 1vw;
+}
+
+.cashBack table {
+  color: #fff;
+  font-size: 3vw;
+  width: 100%;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #010e33;
+}
+
+.cashBack table tr {
+  border: 1px solid #7789bd54;
+}
+
+.cashBack table tr:nth-child(1) {
+  background: #58cdff;
+  color: #010e33;
+}
+
+.cashBack table tr:nth-child(1) td {
+  border: 1px solid #7789bd54;
+}
+
+@media screen and (max-width: 320px) {
+  .cashBack table tr:nth-child(1) td {
+    white-space: pre-wrap;
+    line-height: 2.8vw;
+  }
+}
+
+.cashBack table tr:nth-child(even) {
+  background: #1d306280;
+}
+
+.cashBack table tr:nth-last-child(-n+3) {
+  width: 100%;
+  background: transparent;
+}
+
+.cashBack table tr:nth-last-child(-n+3) td {
+  border-right: 0;
+}
+
+.cashBack table tr:nth-last-child(-n+3) td span {
+  white-space: nowrap;
+  color: #58cdff;
+}
+
+.cashBack table tr:nth-last-child(-n+3) td span:nth-child(1) {
+  min-width: 25vw;
+}
+
+.cashBack table tr td {
+  padding: 1vw;
+  line-height: 18px;
+  white-space: nowrap;
+  border: 1px solid #7789bd54;
+  max-width: 22vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cashBack table tr td:last-child {
+  border: 0;
 }
 
 .inputBoxText {
@@ -10992,5 +11071,29 @@ span.important {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.backstage ol, .backstage ul, .backstage li {
+  list-style: revert;
+  margin: revert;
+  padding: revert;
+  border: revert;
+  font-size: revert;
+  font: revert;
+  vertical-align: revert;
+}
+
+.backstage h1, .backstage h2, .backstage h3, .backstage h4, .backstage h5, .backstage h6, .backstage strong {
+  font-size: revert;
+  margin: revert;
+  padding: revert;
+  border: revert;
+  font-size: revert;
+  font: revert;
+  vertical-align: revert;
+}
+
+.backstage img {
+  width: 100% !important;
 }
 /*# sourceMappingURL=style.css.map */

@@ -587,5 +587,12 @@
 	"lbl_Installation_tutorial": "Hướng dẫn cài đặt",
 	"lbl_Appdownload_Subtitle": "Once {{site}} App is installed, tap Trust or complete the setting as below.",
 	"lbl_Scan_to_Download": "Quét để tải về",
-	"lbl_iOS_App_Trust_Authentication": "Cách xác nhận tin cậy ứng dụng trên iOS"
+	"lbl_iOS_App_Trust_Authentication": "Cách xác nhận tin cậy ứng dụng trên iOS",
+
+	"==============Promotion Cashback==============": "",
+	"lbl_Cashback": "Hoàn cược thua",
+	"lbl_LossAmount": "Tiền cược thua",
+	"lbl_Percentage": "Tỷ lệ",
+	"lbl_TotalAmount": "Tổng số tiền",
+	"lbl_ClaimAmount": "Số tiền đạt"
 }
