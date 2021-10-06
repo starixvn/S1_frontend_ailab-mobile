@@ -4639,7 +4639,8 @@ span.important {
 }
 
 .promotions div.promodule .protitle {
-  margin-top: 1vw;
+  margin-top: 4vw;
+  line-height: 1.2;
   color: #fab617;
   font-weight: bold;
   padding-left: 1vw;
@@ -4659,6 +4660,8 @@ span.important {
 
 .promotions div.promodule .text ol li {
   list-style: decimal;
+  line-height: 1.2;
+  margin-bottom: 2vw;
 }
 
 .promotions div.promodule .text ol li a {
@@ -4668,9 +4671,13 @@ span.important {
 
 .promotions div.promodule .info {
   border-bottom: 1px dotted #fab617;
-  padding-bottom: 3vw;
-  margin-bottom: 5vw;
+  padding: 0 1vw 3vw 0;
+  margin-bottom: 2vw;
   color: #76a0ef;
+}
+
+.promotions div.promodule .info ul {
+  font-size: 2.5vw;
 }
 
 .promotions div.promodule .info ul li {
@@ -9109,5 +9116,96 @@ span.important {
   .app_page > div .visual {
     width: 350px;
   }
+}
+
+.Straight-lock .text {
+  color: #cfcfcf !important;
+}
+
+.backstage ol, .backstage ul, .backstage li {
+  list-style: revert;
+  margin: revert;
+  padding: revert;
+  border: revert;
+  font-size: revert;
+  font: revert;
+  vertical-align: revert;
+}
+
+.backstage h1, .backstage h2, .backstage h3, .backstage h4, .backstage h5, .backstage h6, .backstage strong {
+  font-size: revert;
+  margin: revert;
+  padding: revert;
+  border: revert;
+  font-size: revert;
+  font: revert;
+  vertical-align: revert;
+}
+
+.backstage img {
+  width: 100% !important;
+}
+
+.cashBack {
+  padding: 1vw;
+  border-radius: 5px;
+  margin: 0 0 3vw;
+}
+
+.cashBack .title {
+  color: #fab617;
+  margin: 0 0 2vw;
+}
+
+.cashBack table {
+  color: #284985;
+  font-size: 3vw;
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+  background: white;
+}
+
+.cashBack table tr:nth-child(1) {
+  background: #4e6ca8;
+  color: white;
+  font-weight: bold;
+}
+
+.cashBack table tr:nth-child(even) {
+  background: rgba(78, 108, 168, 0.3);
+}
+
+.cashBack table tr:nth-last-child(3) {
+  border-top: 1px solid #4e6ca8;
+}
+
+.cashBack table tr:nth-last-child(-n+3) {
+  font-weight: bold;
+  width: 100%;
+  background: transparent;
+}
+
+.cashBack table tr:nth-last-child(-n+3) td {
+  border-right: 0;
+}
+
+.cashBack table tr:nth-last-child(-n+3) td span {
+  white-space: nowrap;
+}
+
+.cashBack table tr:nth-last-child(-n+3) td span:nth-child(1) {
+  min-width: 25vw;
+}
+
+.cashBack table tr td {
+  border-right: 1px solid #4e6ca8;
+  padding: 1vw;
+  line-height: 18px;
+  white-space: nowrap;
+}
+
+.cashBack table tr td:last-child {
+  border: 0;
 }
 /*# sourceMappingURL=style.css.map */

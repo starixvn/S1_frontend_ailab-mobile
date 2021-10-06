@@ -7,6 +7,7 @@ import PromoRule from "./promoRule";
 import { Stamp } from "./stamp";
 import { CanJoin } from "../common/common";
 import { defUrlParamCols } from "../common/def";
+import CashBackInfo from "./cashBackInfo";
 
 export default ({
 	path,
@@ -69,6 +70,8 @@ export default ({
 			ruleCols={ruleCols}
 			isList={false}
 		/>
+
+		<CashBackInfo cashBackDetails={promotionInfo.cashBackDetails} />
 		<div
 			className="text"
 			dangerouslySetInnerHTML={{

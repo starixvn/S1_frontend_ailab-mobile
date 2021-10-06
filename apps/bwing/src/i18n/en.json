@@ -641,5 +641,12 @@
 	"==============Add To Home Screen==============": "",
 	"lbl_AddToHome_Hint": "How to add home screen?",
 	"lbl_AddToHome_Tutorial": "Tutorial",
-	"lbl_Skip": "Skip"
+	"lbl_Skip": "Skip",
+
+	"==============Promotion Cashback==============": "",
+	"lbl_Cashback": "Cashback",
+	"lbl_LossAmount": "Loss Amount",
+	"lbl_Percentage": "Percentage",
+	"lbl_TotalAmount": "Total Amount",
+	"lbl_ClaimAmount": "Claim Amount"
 }
