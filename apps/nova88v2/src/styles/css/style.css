@@ -1217,7 +1217,6 @@ a {
 }
 
 body, html {
-  overflow-x: hidden;
   background: #ecf3fd;
   height: 100%;
   font-size: 12px;
@@ -1627,6 +1626,7 @@ header button.clickBtn::before {
 main {
   width: 100%;
   padding: 12vw 0 15vw;
+  overflow: hidden;
 }
 
 main.active {
@@ -1639,6 +1639,7 @@ main.stopScroll {
 
 main .swiper-container {
   position: relative;
+  overflow: hidden;
 }
 
 main .swiper-container .swiper-slide.swiper-slide-active {
@@ -1660,6 +1661,16 @@ main .banner {
   display: block;
   top: 12vw;
   z-index: 3;
+}
+
+main #content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
 }
 
 main .sideBar {
@@ -8048,7 +8059,6 @@ span.important {
   display: -ms-flexbox;
   display: flex;
   padding: 0 2vw;
-  margin: 0 0 7vw;
   position: relative;
 }
 
@@ -10271,7 +10281,7 @@ span.important {
   padding: 0;
 }
 
-.backstage ol, .backstage ul, .backstage li {
+.backstage ol, .backstage ul, .backstage li, .backstage ins, .backstage p, .backstage pre, .backstage del, .backstage em, .backstage span {
   list-style: revert;
   margin: revert;
   padding: revert;
