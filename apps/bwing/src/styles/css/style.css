@@ -94,7 +94,6 @@ a {
 body,
 html {
   width: 100%;
-  overflow-x: hidden;
   background: #070e22;
   color: #fff;
   height: 100%;
@@ -11073,7 +11072,7 @@ span.important {
   display: flex;
 }
 
-.backstage ol, .backstage ul, .backstage li {
+.backstage ol, .backstage ul, .backstage li, .backstage ins, .backstage p, .backstage pre, .backstage del, .backstage em, .backstage span {
   list-style: revert;
   margin: revert;
   padding: revert;
