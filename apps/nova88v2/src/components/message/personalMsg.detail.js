@@ -1,7 +1,6 @@
 import React from "react";
 import moment from "moment";
 import PropTypes from "prop-types";
-import { stringLinkify } from "../common/common";
 
 const Detail = ({
 	showDate,
@@ -13,9 +12,6 @@ const Detail = ({
 	onChange,
 	isChecked
 }) => {
-	const hasLink = content.includes("http://") || content.includes("https://");
-	const linkContent = hasLink ? stringLinkify(content) : "";
-
 	return (
 		<div
 			className={`account${isRead ? "" : " noread"}${
@@ -43,16 +39,10 @@ const Detail = ({
 					onClick={onClick}
 				/>
 			</div>
-			{hasLink ? (
-				<div
-					className="content"
-					dangerouslySetInnerHTML={{ __html: linkContent }}
-				/>
-			) : (
-				<div className="content">
-					<pre>{content}</pre>
-				</div>
-			)}
+			<div
+				className="content backstage"
+				dangerouslySetInnerHTML={{ __html: content }}
+			/>
 		</div>
 	);
 };

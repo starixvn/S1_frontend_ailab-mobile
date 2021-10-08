@@ -10,7 +10,6 @@ import {
 } from "../../service/api/account";
 import ReloadSpin from "../common/reloadSpin";
 import Loading from "../common/loading";
-import { stringLinkify } from "../common/common";
 
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 
@@ -356,11 +355,6 @@ const Panel = () => {
 };
 
 const Item = props => {
-	const hasLink =
-		props.content?.includes("http://") ||
-		props.content?.includes("https://");
-	const linkContent = hasLink ? stringLinkify(props.content) : "";
-
 	return (
 		<div
 			data-testid="isRead"
@@ -393,19 +387,11 @@ const Item = props => {
 					onClick={props.onClick}
 				/>
 			</div>
-			{hasLink ? (
-				<div
-					data-testid="msgCard"
-					className={`content ${props.isOpen ? " open" : ""}`}
-					dangerouslySetInnerHTML={{ __html: linkContent }}
-				/>
-			) : (
-				<div
-					data-testid="msgCard"
-					className={`content ${props.isOpen ? " open" : ""}`}>
-					<pre>{props.content}</pre>
-				</div>
-			)}
+			<div
+				data-testid="msgCard"
+				className={`content backstage${props.isOpen ? " open" : ""}`}
+				dangerouslySetInnerHTML={{ __html: props.content }}
+			/>
 		</div>
 	);
 };
