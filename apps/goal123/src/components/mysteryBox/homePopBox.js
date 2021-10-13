@@ -13,7 +13,7 @@ const MysteryBox = ({ userInfo, setMysteryBox }) => {
 	return (
 		<div className={`eventLink${userInfo.isLogin ? " afterlogin" : ""}`}>
 			<button className="icon icon-close" onClick={closePop} />
-			<Link to={path.mysteryBox.root}>
+			<Link to={`/${path.mysteryBox.root}`}>
 				<img
 					src={userInfo.langId === "vn" ? eventVNImg : eventImg}
 					alt="Mystery Box"

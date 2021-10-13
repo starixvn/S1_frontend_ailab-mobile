@@ -69,6 +69,10 @@ html {
   height: 100%;
 }
 
+#root > div {
+  height: 100%;
+}
+
 .close {
   width: 6vw;
   height: 4.5vw;
@@ -623,8 +627,6 @@ header > div .headerBtnIn .icon .amount {
 }
 
 main {
-  width: 100%;
-  height: calc(100% - 12vw);
   padding-top: 12vw;
   background: #f3f3f3;
 }
@@ -1032,6 +1034,61 @@ main .gameList .icon-trophy:after {
 
 main.statementPage {
   padding-top: 20vw;
+}
+
+.main {
+  width: 100%;
+  height: auto;
+  min-height: calc(100% - 16vw);
+  background-color: #f2f4f7;
+  padding: 26vw 4vw 24vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.main.ranking {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  background: url(../img/ranking/bg-m.jpg) no-repeat top center/auto 100%;
+}
+
+.main.depositmain {
+  width: calc(100% - 8vw);
+  height: calc(100% - 50vw);
+  background-color: #f2f4f7;
+  padding: 26vw 4vw 24vw;
+  -webkit-box-pack: unset;
+      -ms-flex-pack: unset;
+          justify-content: unset;
+  overflow: scroll;
+  min-height: revert;
+  -webkit-box-sizing: revert;
+          box-sizing: revert;
+}
+
+.main.casino {
+  width: calc(100% - 8vw);
+  height: calc(100% - 71vw);
+  padding: 35vw 4vw 24vw;
+  position: relative;
+  -webkit-box-pack: unset;
+      -ms-flex-pack: unset;
+          justify-content: unset;
+  overflow: scroll;
+  min-height: revert;
+  -webkit-box-sizing: revert;
+          box-sizing: revert;
 }
 
 @-webkit-keyframes MoveTopDown {
@@ -2433,33 +2490,6 @@ main.statementPage {
   }
 }
 
-.main {
-  width: 100%;
-  height: auto;
-  min-height: calc(100% - 50vw);
-  background-color: #f2f4f7;
-  padding: 26vw 4vw 24vw;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.main.ranking {
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  background: url(../img/ranking/bg-m.jpg) no-repeat top center/auto 100%;
-}
-
 .avatar {
   width: -webkit-min-content;
   width: -moz-min-content;
@@ -3314,7 +3344,7 @@ main.statementPage {
 }
 
 .bankSlip {
-  position: absolute;
+  position: fixed;
   background: rgba(255, 255, 255, 0.95);
   top: 0;
   left: 0;
@@ -3763,16 +3793,6 @@ button.clickBtn:before {
   bottom: 1.5vw;
 }
 
-.casino {
-  width: 100%;
-  min-height: calc(100% - 71vw);
-  padding: 35vw 4vw 24vw;
-  position: relative;
-  -webkit-box-pack: normal;
-      -ms-flex-pack: normal;
-          justify-content: normal;
-}
-
 .casino .swiper-container {
   position: absolute;
   left: 0;
@@ -4025,7 +4045,7 @@ button.clickBtn:before {
 }
 
 .slotFunctionNew {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100vh;
   top: 0;

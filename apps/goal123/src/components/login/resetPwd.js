@@ -5,6 +5,7 @@ import { api_ResetPassword } from "../../service/api/accountStrict";
 import { api_CheckResetPwdToken } from "../../service/api/site";
 import Inputbox from "../common/inputbox.password.info";
 import { getUrlParameter, passwordCheck } from "../common/common";
+import Layout from "../common/layout";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
@@ -131,7 +132,7 @@ export default () => {
 	};
 
 	return redirectPath === null ? (
-		<>
+		<Layout title={i18n.lbl_ResetPassword}>
 			<Inputbox
 				placeholder={i18n.lbl_Password}
 				value={newPsw}
@@ -150,7 +151,7 @@ export default () => {
 					{i18n.lbl_Submit}
 				</button>
 			</div>
-		</>
+		</Layout>
 	) : (
 		<Redirect to={redirectPath} noThrow />
 	);

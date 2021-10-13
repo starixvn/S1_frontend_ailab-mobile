@@ -17,6 +17,21 @@ import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import ReloadSpin from "../common/reloadSpin";
 import Loading from "../common/loading";
 import BankSlip from "./bankSlip";
+import Layout from "../common/layout";
+import TabPage from "../common/tabPage";
+import path from "../../path";
+
+const defTabs = {
+	default: {
+		to: `/${path.deposit.root}`,
+		displayKey: "lbl_Deposit",
+		excludeMath: path.depositHistory.root
+	},
+	History: {
+		to: `/${path.depositHistory.root}`,
+		displayKey: "lbl_DepositHistory"
+	}
+};
 
 const Panel = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -28,7 +43,13 @@ const Panel = () => {
 	const [processing, setProcessing] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [clickSubmit, setClickSubmit] = useState(false);
-	const { setbankSlipPopBox } = useContext(bankSlipPopBoxContext);
+	const [bankSlipPopBox, setbankSlipPopBox] = useState({
+		isOpen: false,
+		depositTime: null,
+		picFileName: "",
+		refId: "",
+		receipt: null
+	});
 
 	const [pageInfo, setPageInfo] = useState({ pageNumber: 0, totalPages: 0 });
 	const isMountedRef = useRef(null);
@@ -212,42 +233,49 @@ const Panel = () => {
 		);
 	});
 
+	if (loading) return <Loading />;
+
 	return (
-		<>
-			<HistoryFilter submitHandler={submitHandler} />
-			{loading ? (
-				<Loading />
-			) : getHistoryState ? (
-				<div className="recent open">
-					<div className="recentTransactions">
-						<div className="smallTitle">
-							<i className="icon icon-history" />
-							{i18n.lbl_TransactionHistory}
-						</div>
-						<ReloadSpin
-							func={submitHandler.bind(this, {
-								startDay: filterData?.StartDate,
-								endDay: filterData?.EndDate,
-								isUnix: true
-							})}
-						/>
-					</div>
-					{getHistoryState.length > 0 ? (
-						<>
-							<div className="txt-blue2">
-								{i18n.msg_AmountFormatTip}
+		<Layout title={i18n.lbl_Deposit} mainClass="main depositmain">
+			<bankSlipPopBoxContext.Provider
+				value={{ bankSlipPopBox, setbankSlipPopBox }}>
+				<TabPage defTabs={defTabs}>
+					<HistoryFilter submitHandler={submitHandler} />
+					{getHistoryState && (
+						<div className="recent open">
+							<div className="recentTransactions">
+								<div className="smallTitle">
+									<i className="icon icon-history" />
+									{i18n.lbl_TransactionHistory}
+								</div>
+								<ReloadSpin
+									func={submitHandler.bind(this, {
+										startDay: filterData?.StartDate,
+										endDay: filterData?.EndDate,
+										isUnix: true
+									})}
+								/>
 							</div>
-							<div className="infoList">{arr}</div>
-						</>
-					) : (
-						<div className="nodata icon icon-nodata">
-							<div className="txt-white">{i18n.msg_NoData}</div>
+							{getHistoryState.length > 0 ? (
+								<>
+									<div className="txt-blue2">
+										{i18n.msg_AmountFormatTip}
+									</div>
+									<div className="infoList">{arr}</div>
+								</>
+							) : (
+								<div className="nodata icon icon-nodata">
+									<div className="txt-white">
+										{i18n.msg_NoData}
+									</div>
+								</div>
+							)}
 						</div>
 					)}
-				</div>
-			) : null}
-			<BankSlip />
-		</>
+				</TabPage>
+				<BankSlip />
+			</bankSlipPopBoxContext.Provider>
+		</Layout>
 	);
 };
 

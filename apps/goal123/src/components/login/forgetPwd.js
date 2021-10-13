@@ -4,6 +4,7 @@ import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
 import { api_ForgetPwd } from "../../service/api/site";
 import Inputbox from "../common/inputbox.info";
 import path from "../../path";
+import Layout from "../common/layout";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
@@ -108,7 +109,7 @@ export default () => {
 	};
 
 	return redirectPath === null ? (
-		<>
+		<Layout title={i18n.lbl_ForgetPassword}>
 			<Inputbox
 				icon="icon icon-email"
 				placeholder={i18n.lbl_Email}
@@ -134,7 +135,7 @@ export default () => {
 					{i18n.lbl_Submit}
 				</button>
 			</div>
-		</>
+		</Layout>
 	) : (
 		<Redirect to={redirectPath} noThrow />
 	);

@@ -29,6 +29,8 @@ import AddToHomePop from "../components/home/addToHomePop";
 import Top10Winner from "../components/home/top10winner";
 import config from "../config";
 import { useGetDomainList } from "../components/hook/useGetDomainList";
+import Layout from "../components/common/layout";
+import Header from "../components/common/header";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -36,6 +38,7 @@ const IndexPage = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
 	const [redirectPath, setRedirectPath] = useState(null);
+	const [appHint, setAppHint] = useState(false);
 
 	const { isDomainPopOpened } = useGetDomainList({
 		setPopBox,
@@ -198,10 +201,26 @@ const IndexPage = () => {
 		isDomainPopOpened
 	]);
 
+	useEffect(() => {
+		const cookieName = `appDownloadHint${userInfo.userName}`;
+
+		if (userInfo.userName && readCookie(cookieName) !== "1") {
+			setAppHint(true);
+		}
+	}, [userInfo.currencyId, userInfo.userName]);
+
+	const header = (
+		<Header
+			hideLogo={false}
+			showingAppHint={appHint}
+			setAppHint={setAppHint}
+		/>
+	);
+
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
 	) : (
-		<>
+		<Layout header={header} mainClass="mainNew">
 			{userInfo.isLogin ? (
 				<HeaderShortcut userInfo={userInfo} i18n={i18n} />
 			) : null}
@@ -215,7 +234,7 @@ const IndexPage = () => {
 			<Bottom i18n={i18n} langId={userInfo.langId} />
 			<Submenu />
 			<AddToHomePop i18n={i18n} userInfo={userInfo} />
-		</>
+		</Layout>
 	);
 };
 
@@ -235,7 +254,7 @@ const PlaytechJactpot = () => {
 	}, []);
 
 	return (
-		<Link to={path.casino.root} state={{ nav: defNav.PROMO.key }}>
+		<Link to={`/${path.casino.root}`} state={{ nav: defNav.PROMO.key }}>
 			<div className="jackpot">
 				<img src={jackpot} alt="" />
 				<p>VND</p>

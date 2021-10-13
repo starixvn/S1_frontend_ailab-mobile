@@ -70,13 +70,14 @@ const Header = ({ title, hideLogo, showingAppHint, setAppHint }) => {
 };
 
 Header.defaultProps = {
+	title: null,
 	hideLogo: null,
 	showingAppHint: false,
 	setAppHint: () => null
 };
 
 Header.propTypes = {
-	title: PropTypes.string.isRequired,
+	title: PropTypes.string,
 	hideLogo: PropTypes.bool,
 	showingAppHint: PropTypes.bool,
 	setAppHint: PropTypes.func
@@ -139,7 +140,7 @@ const HeaderBtn = () => {
 				<p onClick={ClickUserName}>{userInfo.userName}</p>
 				<div className="headerButton">
 					<Link
-						to={path.message.root}
+						to={`/${path.message.root}`}
 						className="icon icon-email active">
 						{msgCount ? (
 							<span className="amount">{msgCount}</span>

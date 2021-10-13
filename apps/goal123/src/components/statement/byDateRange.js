@@ -110,9 +110,9 @@ const ByDateRange = props => {
 		);
 	});
 
-	return loading ? (
-		<Loading />
-	) : datas !== null ? (
+	if (loading) return <Loading />;
+
+	return datas !== null ? (
 		<>
 			<Breadcrumbs
 				locationInfo={props}

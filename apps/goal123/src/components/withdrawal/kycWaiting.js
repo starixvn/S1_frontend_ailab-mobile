@@ -5,6 +5,7 @@ import { api_KycCheck } from "../../service/api/payment";
 import { api_GetCustBankInfo } from "../../service/api/account";
 import path from "../../path";
 import Loading from "../common/loading";
+import Layout from "../common/layout";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
@@ -64,7 +65,7 @@ export default () => {
 								setLoading(false);
 							}
 						},
-						res => {
+						() => {
 							if (isMountedRef.current) {
 								setLoading(false);
 							}
@@ -75,12 +76,12 @@ export default () => {
 		}
 	}, [userInfo.isLogin]);
 
-	return redirectPath !== null ? (
-		<Redirect to={redirectPath} noThrow />
-	) : loading ? (
-		<Loading />
-	) : (
-		<>
+	if (redirectPath !== null) return <Redirect to={redirectPath} noThrow />;
+
+	if (loading) return <Loading />;
+
+	return (
+		<Layout title={i18n.lbl_WaitKYC} mainClass="main kyc">
 			<div className="step">
 				<div className="stepLine">
 					<div className="stepBar100" />
@@ -98,6 +99,6 @@ export default () => {
 			</div>
 			<div className="icon icon-like" />
 			<span className="text-center">{i18n.lbl_WaitKYCHint}</span>
-		</>
+		</Layout>
 	);
 };

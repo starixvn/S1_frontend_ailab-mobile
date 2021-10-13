@@ -4,6 +4,20 @@ import PropTypes from "prop-types";
 import { userInfoContext, popBoxContext, i18nContext } from "../common/context";
 import { api_GetAnnouncement } from "../../service/api/message";
 import Loading from "../common/loading";
+import Layout from "../common/layout";
+import TabPage from "../common/tabPage";
+import path from "../../path";
+
+const defTabs = {
+	default: {
+		to: `/${path.message.root}`,
+		displayKey: "lbl_PersonalMsg"
+	},
+	History: {
+		to: `/${path.announcement.root}`,
+		displayKey: "lbl_Announcement"
+	}
+};
 
 const Panel = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -38,7 +52,7 @@ const Panel = () => {
 					setLoading(false);
 				}
 			},
-			err => {
+			() => {
 				if (mounted) {
 					setPopBox({
 						isOpen: true,
@@ -78,12 +92,15 @@ const Panel = () => {
 		);
 	});
 
+	if (loading) return <Loading />;
+
 	return (
-		<>
-			{loading ? <Loading /> : null}
-			<div className="functionList" />
-			{arr}
-		</>
+		<Layout title={i18n.lbl_Message} mainClass="main Announcement">
+			<TabPage defTabs={defTabs}>
+				<div className="functionList" />
+				{arr}
+			</TabPage>
+		</Layout>
 	);
 };
 
