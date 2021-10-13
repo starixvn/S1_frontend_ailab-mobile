@@ -2675,7 +2675,6 @@ footer > a.active .circleAnimation + span {
   width: calc(100% - 8vw);
   height: calc(100% - 40vw);
   padding: 20vw 4vw;
-  overflow: scroll;
 }
 
 .main > .icon-member {
@@ -5497,7 +5496,6 @@ span.important {
           justify-content: flex-start;
   width: calc(100% - 8vw);
   height: auto;
-  height: calc(100% - 55vw);
   padding: 30vw 4vw 25vw;
 }
 
