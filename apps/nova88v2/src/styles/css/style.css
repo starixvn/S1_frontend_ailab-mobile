@@ -2673,7 +2673,8 @@ footer > a.active .circleAnimation + span {
 
 .main {
   width: calc(100% - 8vw);
-  height: calc(100% - 40vw);
+  min-height: 100%;
+  height: auto;
   padding: 20vw 4vw;
 }
 
@@ -2720,7 +2721,6 @@ footer > a.active .circleAnimation + span {
 }
 
 .Wallet {
-  height: calc(100% - 55vw);
   padding: 30vw 4vw 25vw;
 }
 
@@ -3575,12 +3575,10 @@ footer > a.active .circleAnimation + span {
 
 .history {
   padding: 45vw 4vw 20vw;
-  height: calc(100% - 65vw);
 }
 
 .statement {
   padding: 55vw 4vw 20vw;
-  height: calc(100% - 75vw);
 }
 
 .btn-group {
@@ -4385,12 +4383,10 @@ button.clickBtn:before {
 }
 
 .Message {
-  height: calc(100% - 65vw);
   padding: 40vw 4vw 25vw;
 }
 
 .Announcement {
-  height: calc(100% - 55vw);
   padding: 30vw 4vw 25vw;
 }
 
@@ -4591,7 +4587,6 @@ button.clickBtn:before {
 
 .casino {
   width: calc(100% - 8vw);
-  height: calc(100% - 127vw);
   padding: 103vw 4vw 24vw;
   position: relative;
 }
@@ -5495,7 +5490,6 @@ span.important {
       -ms-flex-pack: start;
           justify-content: flex-start;
   width: calc(100% - 8vw);
-  height: auto;
   padding: 30vw 4vw 25vw;
 }
 
@@ -6336,7 +6330,6 @@ span.important {
 }
 
 .rankingNew {
-  height: calc(100% - 50vw);
   padding: 30vw 4vw 20vw;
   width: calc(100% - 8vw);
   -webkit-box-pack: start;
@@ -6473,7 +6466,6 @@ span.important {
 
 .ranking, .rankingEuro {
   width: calc(100% - 8vw);
-  height: calc(100% - 60vw);
   padding: 40vw 4vw 20vw;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
@@ -6736,7 +6728,6 @@ span.important {
 }
 
 .referral {
-  height: calc(100% - 40vw);
   padding: 20vw 4vw 20vw;
 }
 
@@ -6863,7 +6854,6 @@ span.important {
 
 .more {
   padding: 12vw 0 20vw;
-  height: calc(100% - 32vw);
   overflow: scroll;
   background: #ecf3fd;
 }
@@ -7258,7 +7248,6 @@ span.important {
 
 .vip {
   width: 100%;
-  height: calc(100% - 25vw);
   padding: 12vw 0 25vw;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
@@ -9477,7 +9466,6 @@ span.important {
 .apppage {
   padding: 0 0 13vw 0;
   width: 100%;
-  height: calc(100% - 13vw);
 }
 
 .apppage .app {
@@ -10253,7 +10241,6 @@ span.important {
 }
 
 .crypto {
-  height: calc(100% - 50vw);
   padding: 30vw 4vw 20vw;
 }
 
