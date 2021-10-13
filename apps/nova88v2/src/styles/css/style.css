@@ -2673,6 +2673,7 @@ footer > a.active .circleAnimation + span {
 
 .main {
   width: calc(100% - 8vw);
+  min-height: 100%;
   height: auto;
   padding: 20vw 4vw;
 }
@@ -6853,7 +6854,6 @@ span.important {
 
 .more {
   padding: 12vw 0 20vw;
-  height: calc(100% - 32vw);
   overflow: scroll;
   background: #ecf3fd;
 }
