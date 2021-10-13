@@ -130,14 +130,14 @@ const IndexPage = () => {
 		);
 	});
 
-	return redirectPath !== null ? (
-		<Redirect to="/" noThrow />
-	) : (
+	if (redirectPath !== null) return <Redirect to="/" noThrow />;
+
+	if (loading) return <Loading />;
+
+	return (
 		<>
 			<HistoryFilter submitHandler={submitHandler} />
-			{loading ? (
-				<Loading />
-			) : getHistoryState ? (
+			{getHistoryState ? (
 				<div className="recent open">
 					<div className="recentTransactions">
 						<div className="smallTitle">

@@ -11,6 +11,7 @@ import { defBannersUrl, defLevelList } from "../components/vip/def";
 import { EventList } from "../components/vip/eventList";
 import { Info } from "../components/vip/info";
 import { FooterBanner } from "../components/vip/footerBanner";
+import Layout from "../components/common/layout";
 
 const swipperParams = {
 	spaceBetween: 30,
@@ -54,7 +55,7 @@ const IndexPage = () => {
 	};
 
 	return (
-		<>
+		<Layout title={i18n.lbl_VIP} mainClass="main vip">
 			<Banners langId={userInfo.langId} />
 			<LevelList i18n={i18n} />
 			<Info langId={userInfo.langId} />
@@ -66,7 +67,7 @@ const IndexPage = () => {
 					openJoinPop={openJoinPop}
 				/>
 			</div>
-		</>
+		</Layout>
 	);
 };
 

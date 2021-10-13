@@ -125,8 +125,8 @@ export const Wrapper = ({ children }) => {
 				},
 				error => {
 					if (
-						error.response !== null &&
-						error.response.status === 401 &&
+						error.response &&
+						error.response?.status === 401 &&
 						isMountedRef.current
 					) {
 						OnlineCheckCallBack(error.response.status);

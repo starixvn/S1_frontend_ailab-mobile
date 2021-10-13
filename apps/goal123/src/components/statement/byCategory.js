@@ -99,9 +99,9 @@ const ByCategory = props => {
 		);
 	});
 
-	return loading ? (
-		<Loading />
-	) : datas !== null && !props.path.includes("/:game") ? (
+	if (loading) return <Loading />;
+
+	return datas !== null && !props.path.includes("/:game") ? (
 		<>
 			<Breadcrumbs
 				locationInfo={props}

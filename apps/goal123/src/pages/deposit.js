@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import TabPage from "../components/common/tabPage";
 import path from "../path";
 import BankSlip from "../components/deposit/bankSlip";
-import { bankSlipPopBoxContext } from "../components/common/context";
+import {
+	bankSlipPopBoxContext,
+	i18nContext
+} from "../components/common/context";
 import Deposit from "../components/deposit/deposit";
+import Layout from "../components/common/layout";
 
 const defTabs = {
 	default: {
@@ -12,12 +16,13 @@ const defTabs = {
 		excludeMath: path.depositHistory.root
 	},
 	History: {
-		to: path.depositHistory.root,
+		to: `/${path.depositHistory.root}`,
 		displayKey: "lbl_DepositHistory"
 	}
 };
 
-const IndexPage = props => {
+const IndexPage = () => {
+	const { i18n } = useContext(i18nContext);
 	const [bankSlipPopBox, setbankSlipPopBox] = useState({
 		isOpen: false,
 		depositTime: null,
@@ -27,17 +32,15 @@ const IndexPage = props => {
 	});
 
 	return (
-		<bankSlipPopBoxContext.Provider
-			value={{ bankSlipPopBox, setbankSlipPopBox }}>
-			{props.children ? (
-				<TabPage defTabs={defTabs}>{props.children}</TabPage>
-			) : (
-				<>
+		<Layout title={i18n.lbl_Deposit} mainClass="main depositmain">
+			<bankSlipPopBoxContext.Provider
+				value={{ bankSlipPopBox, setbankSlipPopBox }}>
+				<TabPage defTabs={defTabs}>
 					<Deposit />
-					<BankSlip />
-				</>
-			)}
-		</bankSlipPopBoxContext.Provider>
+				</TabPage>
+				<BankSlip />
+			</bankSlipPopBoxContext.Provider>
+		</Layout>
 	);
 };
 

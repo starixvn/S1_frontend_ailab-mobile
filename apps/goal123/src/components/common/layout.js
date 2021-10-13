@@ -1,6 +1,6 @@
 import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { useMatch, useLocation, Link } from "@reach/router";
+import { useMatch, Link } from "@reach/router";
 import Footer from "./footer";
 import Header from "./header";
 import {
@@ -13,165 +13,28 @@ import {
 } from "./context";
 import path from "../../path";
 import Loading from "./loading";
-import { isEventPeriod, readCookie } from "./common";
+import { isEventPeriod } from "./common";
 import eventImg from "../../styles/img/event/eventlink_en.png";
 import eventVNImg from "../../styles/img/event/eventlink_vn.png";
 import MysteryBox from "../mysteryBox/homePopBox";
 import { eventTime } from "./eventTime";
 
-const defPageInfo = {
-	default: {
-		titleKey: "",
-		className: "mainNew",
-		hideLogo: false
-	},
-	member: {
-		titleKey: "lbl_MyAccount",
-		className: "main",
-		hideLogo: true
-	},
-	deposit: {
-		titleKey: "lbl_Deposit",
-		className: "main",
-		hideLogo: true
-	},
-	withdrawal: {
-		titleKey: "lbl_Withdrawal",
-		className: "main",
-		hideLogo: true
-	},
-	transfer: {
-		titleKey: "lbl_Transfer",
-		className: "main",
-		hideLogo: true
-	},
-	statement: {
-		titleKey: "lbl_Statement",
-		className: "main statementPage",
-		hideLogo: true
-	},
-	message: {
-		titleKey: "lbl_Message",
-		className: "main Message",
-		hideLogo: true
-	},
-	[`/message/announcement`]: {
-		titleKey: "lbl_Message",
-		className: "main Announcement",
-		hideLogo: true
-	},
-	casino: {
-		titleKey: "lbl_Slots",
-		className: "main casino",
-		hideLogo: true
-	},
-	forgetPassword: {
-		titleKey: "lbl_ForgetPassword",
-		className: "main",
-		hideLogo: true
-	},
-	resetPassword: {
-		titleKey: "lbl_ResetPassword",
-		className: "main",
-		hideLogo: true
-	},
-	changePassword: {
-		titleKey: "lbl_ChangePassword",
-		className: "main",
-		hideLogo: true
-	},
-	other: {
-		titleKey: "lbl_Other",
-		className: "main",
-		hideLogo: true
-	},
-	promotion: {
-		titleKey: "lbl_Promotion",
-		className: "main promotions",
-		hideLogo: true
-	},
-	kyc: {
-		titleKey: "lbl_SubmitPhotoId",
-		className: "main kyc",
-		hideLogo: true
-	},
-	kycWaiting: {
-		titleKey: "lbl_WaitKYC",
-		className: "main kyc",
-		hideLogo: true
-	},
-	whoami: {
-		titleKey: "Who AM I",
-		className: "main",
-		hideLogo: true
-	},
-	financialLog: {
-		titleKey: "lbl_FinancialLog",
-		className: "main",
-		hideLogo: true
-	},
-	leaderBoard: {
-		titleKey: "lbl_Ranking",
-		className: "main ranking",
-		hideLogo: true
-	},
-	angPow: {
-		titleKey: "lbl_NewYearAngPow",
-		className: "main event",
-		hideLogo: true
-	},
-	referral: {
-		titleKey: "lbl_friendReferral",
-		className: "main",
-		hideLogo: true
-	},
-	mysteryBox: {
-		titleKey: "lbl_MysteryBox_EventTitle",
-		className: `main event goldbox`,
-		hideLogo: true
-	},
-	vip: {
-		titleKey: "VIP",
-		className: "main vip",
-		hideLogo: true
-	}
-};
+// const defPageInfo = {
+// 	leaderBoard: {
+// 		titleKey: "lbl_Ranking",
+// 		className: "main ranking",
+// 		hideLogo: true
+// 	},
+// };
 
-const GetPageInfo = locationPath => {
-	const result = defPageInfo[locationPath];
-	if (result) {
-		return result;
-	}
-	let pageInfoKey =
-		locationPath === "/"
-			? []
-			: Object.keys(path).filter(p => {
-					const _location = locationPath.split("/");
-					return _location?.[1] === path[p].root;
-			  });
-
-	pageInfoKey = pageInfoKey?.length > 0 ? pageInfoKey[0] : null;
-	const pageInfo = defPageInfo[pageInfoKey] ?? null;
-	return pageInfoKey && pageInfo
-		? {
-				titleKey: pageInfo.titleKey,
-				className: pageInfo.className,
-				hideLogo: pageInfo.hideLogo
-		  }
-		: defPageInfo.default;
-};
-
-const Layout = ({ children }) => {
+const Layout = ({ children, header, mainClass = "main", title, appHint }) => {
 	const { i18n } = useContext(i18nContext);
 	const { nav } = useContext(navContext);
 	const { loading } = useContext(loadingContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { root } = useContext(rootContext);
-	const [appHint, setAppHint] = useState(false);
-	const [mysteryBox, setMysteryBox] = useState(false);
 
-	const location = useLocation();
-	const pageInfo = GetPageInfo(location.pathname);
+	const [mysteryBox, setMysteryBox] = useState(false);
 
 	const _matchLogin = useMatch(`/${path.login.root}`) !== null;
 	const position =
@@ -185,27 +48,14 @@ const Layout = ({ children }) => {
 		}
 	}, [root]);
 
-	useEffect(() => {
-		const cookieName = `appDownloadHint${userInfo.userName}`;
-
-		if (userInfo.userName && readCookie(cookieName) !== "1") {
-			setAppHint(true);
-		}
-	}, [userInfo.currencyId, userInfo.userName]);
-
 	return (
 		<>
 			<RotationHint i18n={i18n} />
-			<Header
-				title={i18n[pageInfo.titleKey] ?? pageInfo.titleKey}
-				hideLogo={pageInfo.hideLogo}
-				showingAppHint={appHint && root}
-				setAppHint={setAppHint}
-			/>
+			{header ?? <Header title={title} hideLogo={true} />}
 			<main
 				style={position}
-				className={`${pageInfo.className ?? ""}${
-					appHint && root ? " openAppDownload" : ""
+				className={`${mainClass ?? ""}${
+					appHint ? " openAppDownload" : ""
 				}`}>
 				{children}
 				{loading ? <Loading /> : null}
@@ -287,7 +137,7 @@ const AngPow = ({ userInfo }) => {
 	return root ? (
 		<div className={`eventLink ${userInfo.isLogin ? "afterlogin" : ""}`}>
 			<button className="icon icon-close" onClick={closePop} />
-			<Link to={path.angPow.root}>
+			<Link to={`${path.angPow.root}`}>
 				<img
 					src={userInfo.langId === "vn" ? eventVNImg : eventImg}
 					alt="Ang pow"

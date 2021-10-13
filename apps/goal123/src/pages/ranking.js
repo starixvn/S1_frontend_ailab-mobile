@@ -12,6 +12,7 @@ import { defBtns, defElemType, defEuroBtns } from "../components/ranking/def";
 import { useHandleSelect } from "../components/ranking/hook";
 import BtnBar from "../components/common/btnBar";
 import TournamentPoints from "../components/ranking/tournamentPoints";
+import Layout from "../components/common/layout";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
@@ -29,7 +30,7 @@ export default () => {
 	});
 
 	return (
-		<>
+		<Layout title={i18n.lbl_Ranking} mainClass="main ranking">
 			<BtnBar
 				i18n={i18n}
 				selected={selected}
@@ -62,6 +63,6 @@ export default () => {
 				userInfo={userInfo}
 				title="lbl_Records"
 			/>
-		</>
+		</Layout>
 	);
 };

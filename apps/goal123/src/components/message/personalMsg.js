@@ -10,8 +10,21 @@ import {
 } from "../../service/api/account";
 import ReloadSpin from "../common/reloadSpin";
 import Loading from "../common/loading";
-
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
+import Layout from "../common/layout";
+import TabPage from "../common/tabPage";
+import path from "../../path";
+
+const defTabs = {
+	default: {
+		to: `/${path.message.root}`,
+		displayKey: "lbl_PersonalMsg"
+	},
+	announcement: {
+		to: `/${path.announcement.root}`,
+		displayKey: "lbl_Announcement"
+	}
+};
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
@@ -314,43 +327,41 @@ const Panel = () => {
 		);
 	});
 
+	if (loading) return <Loading />;
+
 	return (
-		<>
-			{loading ? (
-				<Loading />
-			) : (
-				<>
-					<div className="functionList">
-						<label className="checkbox">
-							<input
-								type="checkbox"
-								data-testid="selectAll"
-								onChange={selectAll}
-							/>
-							<i
-								className={`icon icon-checkbox ${
-									isSelectedAll ? "open" : ""
-								}`}
-							/>
-							{i18n.lbl_SelectAll}
-						</label>
-						<div className="smallBtn-group">
-							<button
-								data-testid="deleteMsg"
-								className="icon icon-bin clickBtn"
-								onClick={delMsg}
-							/>
-							<ReloadSpin func={GetMsgList} />
-						</div>
+		<Layout title={i18n.lbl_Message} mainClass="main Message">
+			<TabPage defTabs={defTabs}>
+				<div className="functionList">
+					<label className="checkbox">
+						<input
+							type="checkbox"
+							data-testid="selectAll"
+							onChange={selectAll}
+						/>
+						<i
+							className={`icon icon-checkbox ${
+								isSelectedAll ? "open" : ""
+							}`}
+						/>
+						{i18n.lbl_SelectAll}
+					</label>
+					<div className="smallBtn-group">
+						<button
+							data-testid="deleteMsg"
+							className="icon icon-bin clickBtn"
+							onClick={delMsg}
+						/>
+						<ReloadSpin func={GetMsgList} />
 					</div>
-					{getMsgList.length > 0 ? (
-						<>{arr}</>
-					) : (
-						<div className="not-found">{i18n.msg_NoData}</div>
-					)}
-				</>
-			)}
-		</>
+				</div>
+				{getMsgList.length > 0 ? (
+					arr
+				) : (
+					<div className="not-found">{i18n.msg_NoData}</div>
+				)}
+			</TabPage>
+		</Layout>
 	);
 };
 

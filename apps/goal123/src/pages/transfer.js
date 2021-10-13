@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import TabPage from "../components/common/tabPage";
 import path from "../path";
+import Layout from "../components/common/layout";
+import { i18nContext } from "../components/common/context";
 
 const defTabs = {
 	default: {
@@ -15,7 +17,13 @@ const defTabs = {
 };
 
 const IndexPage = props => {
-	return <TabPage defTabs={defTabs}>{props.children}</TabPage>;
+	const { i18n } = useContext(i18nContext);
+
+	return (
+		<Layout title={i18n.lbl_Transfer}>
+			<TabPage defTabs={defTabs}>{props.children}</TabPage>
+		</Layout>
+	);
 };
 
 export default IndexPage;
