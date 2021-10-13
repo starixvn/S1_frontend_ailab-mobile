@@ -244,10 +244,10 @@ const Panel = () => {
 	};
 
 	const _availableBalance =
-		balanceInfo?.availableBalance !== null ||
+		balanceInfo?.availableBalance !== null &&
 		balanceInfo?.availableBalance !== undefined
 			? balanceInfo?.availableBalance
-			: 0;
+			: null;
 
 	const VaildAmount = _amount => {
 		let result = {};
@@ -570,11 +570,14 @@ const Panel = () => {
 				<div className="text-org">
 					{i18n.lbl_EligibleWithdrawalAmount}
 				</div>
-				<div className="balance">
-					{i18n[`Currency_${userInfo.currencyId}`]}{" "}
-					{number_format(_availableBalance, _isConvert, 0)}
-					<ReloadSpin func={GetBalance} />
-				</div>
+				{_availableBalance === null ? null : (
+					<div className="balance">
+						{`${
+							i18n[`Currency_${userInfo.currencyId}`]
+						} ${number_format(_availableBalance, _isConvert, 0)}`}
+						<ReloadSpin func={GetBalance} />
+					</div>
+				)}
 				<InputBox
 					icon="icon icon-pencil"
 					value={amount}

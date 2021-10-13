@@ -35,36 +35,6 @@ export default {
 	depositHistory: {
 		root: "depositHistory"
 	},
-	depositOld: {
-		root: "deposit",
-		sub: {
-			root: "/",
-			onlineBank: {
-				root: "onlineBank",
-				sub: {
-					root: "/",
-					setOnlineBanking: {
-						root: ":payName"
-					}
-				}
-			},
-			mobilePay: {
-				root: "mobilePay",
-				sub: {
-					root: "/",
-					setMobilePay: {
-						root: ":channelName"
-					}
-				}
-			},
-			localBank: {
-				root: "localBank"
-			},
-			history: {
-				root: "history"
-			}
-		}
-	},
 	withdrawal: {
 		root: "withdrawal",
 		sub: {
@@ -90,13 +60,10 @@ export default {
 		root: "financialLog"
 	},
 	message: {
-		root: "message",
-		sub: {
-			root: "/",
-			announcement: {
-				root: "announcement"
-			}
-		}
+		root: "message"
+	},
+	announcement: {
+		root: "announcement"
 	},
 	casino: {
 		root: "casino"

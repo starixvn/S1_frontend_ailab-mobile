@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import TabPage from "../components/common/tabPage";
 import path from "../path";
 import FinancialLog from "../components/statement/financialLog";
+import Layout from "../components/common/layout";
+import { i18nContext } from "../components/common/context";
 
 const defTabs = {
 	defaultStatement: {
@@ -15,10 +17,14 @@ const defTabs = {
 };
 
 const IndexPage = () => {
+	const { i18n } = useContext(i18nContext);
+
 	return (
-		<TabPage defTabs={defTabs}>
-			<FinancialLog />
-		</TabPage>
+		<Layout title={i18n.lbl_FinancialLog}>
+			<TabPage defTabs={defTabs}>
+				<FinancialLog />
+			</TabPage>
+		</Layout>
 	);
 };
 

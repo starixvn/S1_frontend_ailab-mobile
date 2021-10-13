@@ -10,12 +10,12 @@ const Footer = () => {
 	if (userInfo.isLogin === false) {
 		return (
 			<footer className="footerNew">
-				<Match path={path.promotion.root}>
+				<Match path={`/${path.promotion.root}`}>
 					{props => {
 						const isMatch = props.match !== null;
 						return (
 							<Link
-								to={path.promotion.root}
+								to={`/${path.promotion.root}`}
 								className={isMatch ? "open" : ""}>
 								<div className="circleAnimation">
 									<div className="icon icon-promotion" />
@@ -53,13 +53,13 @@ const Footer = () => {
 					<span>{i18n.lbl_LiveChat}</span>
 				</a>
 
-				<Match path={path.other.root}>
+				<Match path={`/${path.other.root}`}>
 					{props => {
 						const isMatch =
 							props.location.pathname === `/${path.other.root}`;
 						return (
 							<Link
-								to={path.other.root}
+								to={`/${path.other.root}`}
 								className={isMatch ? "open" : ""}>
 								<div className="circleAnimation">
 									<div className="icon icon-more" />
@@ -74,12 +74,12 @@ const Footer = () => {
 	}
 	return (
 		<footer className="footerNew">
-			<Match path={path.promotion.root}>
+			<Match path={`/${path.promotion.root}`}>
 				{props => {
 					const isMatch = props.match !== null;
 					return (
 						<Link
-							to={path.promotion.root}
+							to={`/${path.promotion.root}`}
 							className={isMatch ? "open" : ""}>
 							<div className="circleAnimation">
 								<div className="icon icon-promotion" />
@@ -90,7 +90,7 @@ const Footer = () => {
 				}}
 			</Match>
 
-			<Match path={`${path.statement.root}/*`}>
+			<Match path={`/${path.statement.root}/*`}>
 				{props => {
 					const isMatch =
 						props.match !== null ||
@@ -98,7 +98,7 @@ const Footer = () => {
 							`/${path.financialLog.root}`;
 					return (
 						<Link
-							to={path.statement.root}
+							to={`/${path.statement.root}`}
 							className={isMatch ? "open" : ""}>
 							<div className="circleAnimation">
 								<div className="icon icon-statement1" />
@@ -136,7 +136,7 @@ const Footer = () => {
 				<span>{i18n.lbl_LiveChat}</span>
 			</a>
 
-			<Match path={path.member.root}>
+			<Match path={`/${path.member.root}`}>
 				{props => {
 					const isMatch =
 						props.location.pathname === `/${path.member.root}` ||
@@ -144,7 +144,7 @@ const Footer = () => {
 							`/${path.member.root}/${path.member.sub.bankInfo.root}`;
 					return (
 						<Link
-							to={path.member.root}
+							to={`/${path.member.root}`}
 							className={isMatch ? "open" : ""}>
 							<div className="circleAnimation">
 								<div className="icon icon-member" />
@@ -154,24 +154,6 @@ const Footer = () => {
 					);
 				}}
 			</Match>
-			{/* <Match path={path.setting.root}>
-				{props => {
-					const isMatch =
-						props.location.pathname === `/${path.setting.root}` ||
-						props.location.pathname ===
-							`/${path.setting.root}/${path.setting.sub.other.root}`;
-					return (
-						<Link
-							to={path.setting.root}
-							className={isMatch ? "open" : ""}>
-							<div className="circleAnimation">
-								<div className="icon icon-cog" />
-							</div>
-							<span>{i18n.lbl_Setting}</span>
-						</Link>
-					);
-				}}
-			</Match> */}
 		</footer>
 	);
 };

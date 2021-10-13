@@ -20,6 +20,7 @@ import { useGotoGame, defSpecialSetting } from "../components/hook/useGotoGame";
 import useSetTimeout from "../components/hook/useSetTimeout";
 import GameProviders from "../components/casino/gameProviders";
 import gameList, { defSlotTpGameType } from "../datas/productList";
+import Layout from "../components/common/layout";
 
 const eachPageItem = 20;
 
@@ -487,16 +488,18 @@ const IndexPage = props => {
 	let tpId = props.tpId ?? props.location.state?.tpId;
 	tpId = typeof tpId === "string" && !isNaN(tpId) ? Number(tpId) : tpId;
 	return (
-		<Panel
-			i18n={i18n}
-			userInfo={userInfo}
-			setNav={setNav}
-			tpId={tpId}
-			handleGoToGame={handleGoToGame}
-			throttle={throttle}
-			selNav={selNav}
-			selNavIdx={selNavIdx === -1 ? 0 : selNavIdx}
-		/>
+		<Layout title={`${i18n.lbl_Slots}`} mainClass="main casino">
+			<Panel
+				i18n={i18n}
+				userInfo={userInfo}
+				setNav={setNav}
+				tpId={tpId}
+				handleGoToGame={handleGoToGame}
+				throttle={throttle}
+				selNav={selNav}
+				selNavIdx={selNavIdx === -1 ? 0 : selNavIdx}
+			/>
+		</Layout>
 	);
 };
 

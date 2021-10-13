@@ -4,25 +4,28 @@ import config from "Config";
 import path from "Path";
 import { Promotion as uiSetting } from "UISetting";
 import { userInfoContext, i18nContext, popBoxContext } from "Context";
+import Layout from "../components/common/layout";
 
 export default () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	return (
-		<PromotionInfo
-			config={config}
-			uiSetting={uiSetting}
-			path={path}
-			userInfo={userInfo}
-			i18n={i18n}
-			setPopBox={setPopBox}
-			formatSetting={{
-				isConvertRequired: false,
-				digits: 0,
-				formatRequired: false
-			}}
-			visitorCurrency={{ vn: 51, en: 51 }}
-		/>
+		<Layout title={i18n.lbl_Promotion} mainClass="main promotions">
+			<PromotionInfo
+				config={config}
+				uiSetting={uiSetting}
+				path={path}
+				userInfo={userInfo}
+				i18n={i18n}
+				setPopBox={setPopBox}
+				formatSetting={{
+					isConvertRequired: false,
+					digits: 0,
+					formatRequired: false
+				}}
+				visitorCurrency={{ vn: 51, en: 51 }}
+			/>
+		</Layout>
 	);
 };

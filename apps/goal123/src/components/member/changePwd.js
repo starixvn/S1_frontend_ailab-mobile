@@ -5,6 +5,7 @@ import { api_ChangePassword } from "../../service/api/account";
 import path from "../../path";
 import Inputbox from "../common/inputbox.password.info";
 import { passwordCheck } from "../common/common";
+import Layout from "../common/layout";
 
 const initValue = { oldPwd: "", newPwd: "" };
 const initStatus = {
@@ -146,7 +147,7 @@ export default () => {
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
 	) : (
-		<>
+		<Layout title={i18n.lbl_ChangePassword}>
 			<Inputbox
 				placeholder={i18n.lbl_OldPassword}
 				onBlur={checkPsw.bind(this, { col: "oldPwd" })}
@@ -184,6 +185,6 @@ export default () => {
 					{i18n.lbl_Submit}
 				</button>
 			</div>
-		</>
+		</Layout>
 	);
 };
