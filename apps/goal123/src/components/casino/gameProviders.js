@@ -9,6 +9,7 @@ const GameProviders = props => {
 			<button
 				key={`casino-nav-${k.tpId}`}
 				className={selNav === k.tpId ? "active" : ""}
+				data-testid={`gameProvider_${k.tpId}`}
 				onClick={SelectNav.bind(this, k.tpId)}>
 				<img
 					src={`${config.imgUrl}/common/images/logo/${

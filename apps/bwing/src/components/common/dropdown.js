@@ -81,7 +81,10 @@ export class DropdownBox extends Component {
 
 const Item = props => {
 	return (
-		<div className="dropdown-item" onClick={props.onClick}>
+		<div
+			className="dropdown-item"
+			data-testid="dp-item"
+			onClick={props.onClick}>
 			<span className="text">{props.displayText}</span>
 		</div>
 	);

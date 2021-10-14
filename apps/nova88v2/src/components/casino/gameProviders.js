@@ -7,6 +7,7 @@ const GameProviders = props => {
 	const rows = sorted.map(k => {
 		return (
 			<button
+				data-testid={`gameProvider_${k.tpId}`}
 				key={`casino-nav-${k.tpId}`}
 				className={selNav === k.tpId ? "active" : ""}
 				onClick={SelectNav.bind(this, k.tpId)}>

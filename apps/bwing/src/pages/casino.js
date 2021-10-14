@@ -443,6 +443,7 @@ class Panel extends React.Component {
 							<div className="btn-group">
 								{this.state.selGameInfo.playFree ? (
 									<button
+										data-testid="clickFreePlay"
 										className="white"
 										onClick={this.ClickPlay.bind(
 											this,
@@ -452,6 +453,7 @@ class Panel extends React.Component {
 									</button>
 								) : null}
 								<button
+									data-testid="clickPlay"
 									className="orange"
 									onClick={this.ClickPlay.bind(this, false)}>
 									{this.props.i18n.lbl_PlayNow}

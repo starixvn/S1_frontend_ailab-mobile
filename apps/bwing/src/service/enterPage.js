@@ -31,7 +31,7 @@ export const GET_CASINO_ENTER_PAGE = ({
 				`Tp_${tpId}`,
 				"toolbar=no, menubar=no,scrollbars=no,resizable=no,location=no,directories=no,status=no, top=0, left=0"
 			)
-			.focus();
+			?.focus();
 	}
 };
 

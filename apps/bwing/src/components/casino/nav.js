@@ -9,6 +9,7 @@ const Nav = props => {
 		const _nav = defNav[k];
 		return (
 			<button
+				data-testid={`nav_${_nav.key}`}
 				key={`casino-nav-${k}`}
 				className={props.selNav === k ? "open" : ""}
 				onClick={props.SelectNav.bind(this, k)}>

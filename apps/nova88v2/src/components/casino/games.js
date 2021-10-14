@@ -39,6 +39,7 @@ const GamePanel = React.forwardRef((props, ref) => {
 				key={`casino-game-${t.value}-${g.gameId}`}>
 				{g.new ? <i className="icon icon-new" /> : null}
 				<img
+					data-testid="gameImg"
 					onClick={
 						isMaintain
 							? () => null
@@ -49,12 +50,13 @@ const GamePanel = React.forwardRef((props, ref) => {
 					}`}
 					alt={g.name[userInfo.langId] ?? g.name.en}
 				/>
-				<span>{t.name}</span>
+				<span data-testid="providerName">{t.name}</span>
 				{isMaintain && (
 					<div className="under">{i18n.lbl_underMaintenance}</div>
 				)}
 				<span
 					onClick={SetFavorite.bind(this, t.value, g.gameId)}
+					data-testid="favBtn"
 					className={`icon icon-star-${
 						_isFavorite ? "full" : "empty"
 					}`}
@@ -62,9 +64,8 @@ const GamePanel = React.forwardRef((props, ref) => {
 			</div>
 		);
 	});
-
 	return games.length === 0 ? (
-		<div className="nodata icon icon-nodata" ref={ref}>
+		<div data-testid="noData" className="nodata icon icon-nodata" ref={ref}>
 			<div className="txt-white">{i18n.msg_NoData}</div>
 		</div>
 	) : (
