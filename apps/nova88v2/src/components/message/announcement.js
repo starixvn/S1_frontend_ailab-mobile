@@ -97,6 +97,7 @@ const Item = props => {
 					<span>{moment(props.showTime).format("MM/DD/YYYY")}</span>
 				</div>
 				<button
+					data-testid="displayBtn"
 					className={`icon icon-keyboard_arrow_down${
 						props.isOpen ? " active" : ""
 					}`}

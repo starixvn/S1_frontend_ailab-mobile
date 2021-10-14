@@ -29,6 +29,7 @@ const ReloadSpin = ({ func, className, content }) => {
 			className={`${className ?? "icon icon-spinner11 clickBtn"}${
 				spin ? " active" : ""
 			}`}
+			data-testid="refeshBtn"
 			onClick={clickSpin}>
 			{content}
 		</button>

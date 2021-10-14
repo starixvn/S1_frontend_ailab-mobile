@@ -196,6 +196,7 @@ const Panel = () => {
 		const allId = msgList.map(item => {
 			return item.id;
 		});
+
 		if (checkboxList.length === msgList.length) {
 			setCheckboxList([]);
 			setIsSelectedAll(false);
@@ -242,7 +243,6 @@ const Panel = () => {
 		const closePopBox = () => {
 			setPopBox({ isOpen: false });
 		};
-
 		if (checkboxList.length !== 0) {
 			setPopBox({
 				isOpen: true,
@@ -320,7 +320,11 @@ const Panel = () => {
 		<>
 			<div className="functionList">
 				<label className="checkbox">
-					<input type="checkbox" onChange={selectAll} />
+					<input
+						type="checkbox"
+						data-testid="selectAll"
+						onChange={selectAll}
+					/>
 					<i
 						className={`icon icon-checkbox${
 							isSelectedAll ? "-checked" : ""
@@ -333,10 +337,15 @@ const Panel = () => {
 						checkboxList.length > 0 ? " active" : ""
 					}`}>
 					<button
+						data-testid="readMsg"
 						className="icon icon-icon32px_openmail"
 						onClick={readSelectedMsg}
 					/>
-					<button className="icon icon-bin" onClick={delMsg} />
+					<button
+						className="icon icon-bin"
+						data-testid="deleteMsg"
+						onClick={delMsg}
+					/>
 					<ReloadSpin
 						func={GetMsgList.bind(this, { loading: false })}
 						className="icon icon-spinner11"
