@@ -1,0 +1,536 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logged in casino tests Casino renders correctly 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="swiper-container swiper-container-initialized swiper-container-horizontal"
+      >
+        <div
+          class="swiper-wrapper"
+          style="webkit-transition-duration: 300ms; transition-duration: 300ms; webkit-transform: translate3d(NaNpx, 0px, 0px); transform: translate3d(NaNpx, 0px, 0px);"
+        >
+          <button
+            class="swiper-slide swiper-slide-duplicate"
+            data-swiper-slide-index="2"
+          >
+            <img
+              alt="Casino"
+              class="banner"
+              src="https://m.nova88.net/CMS/Nova88/Casino/en/Casino.jpg"
+            />
+          </button>
+          <button
+            class="swiper-slide"
+            data-swiper-slide-index="0"
+          >
+            <img
+              alt="PP"
+              class="banner"
+              src="https://image.n88media.com/Promotion/en/nova88_MYR.jpg"
+            />
+          </button>
+          <a
+            class="swiper-slide"
+            data-swiper-slide-index="1"
+            href="/casino"
+          >
+            <img
+              alt="Joker"
+              class="banner"
+              src="https://image.n88media.com/SiteSkin/img/banner-joker.jpg"
+            />
+          </a>
+          <button
+            class="swiper-slide"
+            data-swiper-slide-index="2"
+          >
+            <img
+              alt="Casino"
+              class="banner"
+              src="https://m.nova88.net/CMS/Nova88/Casino/en/Casino.jpg"
+            />
+          </button>
+          <button
+            class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active"
+            data-swiper-slide-index="0"
+          >
+            <img
+              alt="PP"
+              class="banner"
+              src="https://image.n88media.com/Promotion/en/nova88_MYR.jpg"
+            />
+          </button>
+        </div>
+        <div
+          class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"
+        />
+        <span
+          aria-atomic="true"
+          aria-live="assertive"
+          class="swiper-notification"
+        />
+      </div>
+      <div
+        class="partnerSelect"
+      >
+        <button
+          class=""
+          data-testid="gameProvider_5"
+        >
+          <img
+            alt="pp"
+            src="https://stag.bwing.com/common/images/logo/pp.png"
+          />
+        </button>
+        <button
+          class=""
+          data-testid="gameProvider_6"
+        >
+          <img
+            alt="gp"
+            src="https://stag.bwing.com/common/images/logo/gp.png"
+          />
+        </button>
+      </div>
+      <div
+        class="inputBox filterBtn"
+      >
+        <button
+          class="open"
+          data-testid="nav_ALLGAMES"
+        >
+          Tất cả trò chơi
+        </button>
+        <button
+          class=""
+          data-testid="nav_PROMO"
+        >
+          NỔ HŨ
+        </button>
+        <button
+          class=""
+          data-testid="nav_NEW"
+        >
+          Mới
+        </button>
+        <button
+          class=""
+          data-testid="nav_FEATURED"
+        >
+          Nổi bật
+        </button>
+        <button
+          class=""
+          data-testid="nav_FAVOURITE"
+        >
+          Yêu thích
+        </button>
+      </div>
+      <div
+        class="inputBox"
+      >
+        <i
+          class="icon icon-search"
+        />
+        <input
+          class="search"
+          data-testid="searchBox"
+          placeholder="Tìm kiếm trò chơi"
+          value="bas"
+        />
+        <button
+          class="icon icon-equalizer filter"
+        />
+      </div>
+      <div
+        class="filterSelect"
+      >
+        <div
+          class="inputBox"
+        >
+          <div
+            class="dropdown"
+          >
+            <button
+              class="btn"
+            >
+              <span
+                class="text"
+              >
+                Tất cả thể loại
+              </span>
+            </button>
+            <div
+              class="dropdown-container"
+            >
+              <div
+                class="dropdown-item"
+                data-testid="dp-item"
+              >
+                <span
+                  class="text"
+                >
+                  Tất cả thể loại
+                </span>
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="dp-item"
+              >
+                <span
+                  class="text"
+                >
+                  Bàn cược
+                </span>
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="dp-item"
+              >
+                <span
+                  class="text"
+                >
+                  QUAY HŨ
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="slotList"
+        id="scrollId"
+      >
+        <div
+          class="info"
+        >
+          <img
+            alt="Release the Kraken"
+            data-testid="gameImg"
+            src="https://img.n88media.com/PP/release-the-kraken-en.jpg"
+          />
+          <span
+            data-testid="providerName"
+          >
+            PP
+          </span>
+          <span
+            class="icon icon-star-empty"
+            data-testid="favBtn"
+          />
+        </div>
+        <div
+          class="info"
+        >
+          <img
+            alt="Baseball"
+            data-testid="gameImg"
+            src="https://img.n88media.com/GPI/baseball-en.jpg"
+          />
+          <span
+            data-testid="providerName"
+          >
+            GPI
+          </span>
+          <span
+            class="icon icon-star-empty"
+            data-testid="favBtn"
+          />
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="swiper-container swiper-container-initialized swiper-container-horizontal"
+    >
+      <div
+        class="swiper-wrapper"
+        style="webkit-transition-duration: 300ms; transition-duration: 300ms; webkit-transform: translate3d(NaNpx, 0px, 0px); transform: translate3d(NaNpx, 0px, 0px);"
+      >
+        <button
+          class="swiper-slide swiper-slide-duplicate"
+          data-swiper-slide-index="2"
+        >
+          <img
+            alt="Casino"
+            class="banner"
+            src="https://m.nova88.net/CMS/Nova88/Casino/en/Casino.jpg"
+          />
+        </button>
+        <button
+          class="swiper-slide"
+          data-swiper-slide-index="0"
+        >
+          <img
+            alt="PP"
+            class="banner"
+            src="https://image.n88media.com/Promotion/en/nova88_MYR.jpg"
+          />
+        </button>
+        <a
+          class="swiper-slide"
+          data-swiper-slide-index="1"
+          href="/casino"
+        >
+          <img
+            alt="Joker"
+            class="banner"
+            src="https://image.n88media.com/SiteSkin/img/banner-joker.jpg"
+          />
+        </a>
+        <button
+          class="swiper-slide"
+          data-swiper-slide-index="2"
+        >
+          <img
+            alt="Casino"
+            class="banner"
+            src="https://m.nova88.net/CMS/Nova88/Casino/en/Casino.jpg"
+          />
+        </button>
+        <button
+          class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active"
+          data-swiper-slide-index="0"
+        >
+          <img
+            alt="PP"
+            class="banner"
+            src="https://image.n88media.com/Promotion/en/nova88_MYR.jpg"
+          />
+        </button>
+      </div>
+      <div
+        class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"
+      />
+      <span
+        aria-atomic="true"
+        aria-live="assertive"
+        class="swiper-notification"
+      />
+    </div>
+    <div
+      class="partnerSelect"
+    >
+      <button
+        class=""
+        data-testid="gameProvider_5"
+      >
+        <img
+          alt="pp"
+          src="https://stag.bwing.com/common/images/logo/pp.png"
+        />
+      </button>
+      <button
+        class=""
+        data-testid="gameProvider_6"
+      >
+        <img
+          alt="gp"
+          src="https://stag.bwing.com/common/images/logo/gp.png"
+        />
+      </button>
+    </div>
+    <div
+      class="inputBox filterBtn"
+    >
+      <button
+        class="open"
+        data-testid="nav_ALLGAMES"
+      >
+        Tất cả trò chơi
+      </button>
+      <button
+        class=""
+        data-testid="nav_PROMO"
+      >
+        NỔ HŨ
+      </button>
+      <button
+        class=""
+        data-testid="nav_NEW"
+      >
+        Mới
+      </button>
+      <button
+        class=""
+        data-testid="nav_FEATURED"
+      >
+        Nổi bật
+      </button>
+      <button
+        class=""
+        data-testid="nav_FAVOURITE"
+      >
+        Yêu thích
+      </button>
+    </div>
+    <div
+      class="inputBox"
+    >
+      <i
+        class="icon icon-search"
+      />
+      <input
+        class="search"
+        data-testid="searchBox"
+        placeholder="Tìm kiếm trò chơi"
+        value="bas"
+      />
+      <button
+        class="icon icon-equalizer filter"
+      />
+    </div>
+    <div
+      class="filterSelect"
+    >
+      <div
+        class="inputBox"
+      >
+        <div
+          class="dropdown"
+        >
+          <button
+            class="btn"
+          >
+            <span
+              class="text"
+            >
+              Tất cả thể loại
+            </span>
+          </button>
+          <div
+            class="dropdown-container"
+          >
+            <div
+              class="dropdown-item"
+              data-testid="dp-item"
+            >
+              <span
+                class="text"
+              >
+                Tất cả thể loại
+              </span>
+            </div>
+            <div
+              class="dropdown-item"
+              data-testid="dp-item"
+            >
+              <span
+                class="text"
+              >
+                Bàn cược
+              </span>
+            </div>
+            <div
+              class="dropdown-item"
+              data-testid="dp-item"
+            >
+              <span
+                class="text"
+              >
+                QUAY HŨ
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="slotList"
+      id="scrollId"
+    >
+      <div
+        class="info"
+      >
+        <img
+          alt="Release the Kraken"
+          data-testid="gameImg"
+          src="https://img.n88media.com/PP/release-the-kraken-en.jpg"
+        />
+        <span
+          data-testid="providerName"
+        >
+          PP
+        </span>
+        <span
+          class="icon icon-star-empty"
+          data-testid="favBtn"
+        />
+      </div>
+      <div
+        class="info"
+      >
+        <img
+          alt="Baseball"
+          data-testid="gameImg"
+          src="https://img.n88media.com/GPI/baseball-en.jpg"
+        />
+        <span
+          data-testid="providerName"
+        >
+          GPI
+        </span>
+        <span
+          class="icon icon-star-empty"
+          data-testid="favBtn"
+        />
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

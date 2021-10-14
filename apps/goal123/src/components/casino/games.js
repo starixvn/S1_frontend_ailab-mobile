@@ -39,6 +39,7 @@ const Games = props => {
 				className={`info${underMaintain ? " active" : ""}`}
 				key={`casino-game-${t.value}-${g.gameId}`}>
 				<img
+					data-testid="gameImg"
 					onClick={
 						underMaintain
 							? () => null
@@ -49,8 +50,9 @@ const Games = props => {
 					}`}
 					alt={g.name[userInfo.langId] ?? g.name.en}
 				/>
-				<span>{t.name}</span>
+				<span data-testid="providerName">{t.name}</span>
 				<span
+					data-testid="favBtn"
 					onClick={SetFavorite.bind(this, t.value, g.gameId)}
 					className={`icon icon-star-${
 						_isFavorite ? "full" : "empty"
@@ -67,7 +69,9 @@ const Games = props => {
 	});
 
 	return games.length === 0 ? (
-		<div className="not-found">{i18n.msg_NoData}</div>
+		<div className="not-found" data-testid="not-found">
+			{i18n.msg_NoData}
+		</div>
 	) : (
 		<div className="slotList" id="scrollId">
 			{games}

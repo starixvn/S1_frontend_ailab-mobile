@@ -37,6 +37,7 @@ const SearchBox = props => {
 			<div className="inputBox">
 				<i className="icon icon-search" />
 				<input
+					data-testid="searchBox"
 					className="search"
 					placeholder={i18n.lbl_SearchGames}
 					value={props.searchText}
