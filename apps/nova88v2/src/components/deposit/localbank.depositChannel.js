@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "../../route/link";
 import Dropdown from "../common/dropdown";
 import path from "../../path";
@@ -27,27 +27,50 @@ export const defDepositChannel = [
 	}
 ];
 
-const DepositChannel = ({ i18n, DepositChannelProps, BankAccountProps }) => {
+const DepositChannel = ({
+	i18n,
+	DepositChannelProps,
+	BankAccountProps,
+	userPaymentData
+}) => {
 	return (
 		<>
-			<Channel i18n={i18n} DepositChannelProps={DepositChannelProps} />
+			<Channel
+				i18n={i18n}
+				DepositChannelProps={DepositChannelProps}
+				userPaymentData={userPaymentData?.fromChannel}
+			/>
 			{DepositChannelProps.selDepositChannel !== null &&
 			(defDepositChannel[DepositChannelProps.selDepositChannel].value ===
 				defDepChannelValue.OnlineBanking ||
 				defDepositChannel[DepositChannelProps.selDepositChannel]
 					.value === defDepChannelValue.ATM) ? (
-				<BankAccount i18n={i18n} BankAccountProps={BankAccountProps} />
+				<BankAccount
+					i18n={i18n}
+					BankAccountProps={BankAccountProps}
+					userPaymentData={userPaymentData}
+				/>
 			) : null}
 		</>
 	);
 };
 
-const Channel = ({ i18n, DepositChannelProps }) => {
+const Channel = ({ i18n, DepositChannelProps, userPaymentData }) => {
 	const {
 		selDepositChannel,
 		HandleDepositChannel,
 		depositChannelWarning
 	} = DepositChannelProps;
+
+	useEffect(() => {
+		if (userPaymentData) {
+			const idx = Object.values(defDepChannelValue).findIndex(
+				i => i === userPaymentData
+			);
+			HandleDepositChannel(idx);
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	return (
 		<>
@@ -74,13 +97,25 @@ const Channel = ({ i18n, DepositChannelProps }) => {
 	);
 };
 
-const BankAccount = ({ i18n, BankAccountProps }) => {
+const BankAccount = ({ i18n, BankAccountProps, userPaymentData }) => {
 	const {
 		HandleBankAccount,
 		selBankAccount,
 		custBankInfo,
 		bankAccountlWarning
 	} = BankAccountProps;
+
+	useEffect(() => {
+		if (userPaymentData && custBankInfo) {
+			const idx = custBankInfo.findIndex(
+				obj =>
+					obj.SysId === userPaymentData?.fromSysId &&
+					obj.accountNo === userPaymentData?.fromAccountNum
+			);
+			HandleBankAccount(idx);
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [custBankInfo]);
 
 	const rightBtn =
 		custBankInfo.length < 3 ? (
