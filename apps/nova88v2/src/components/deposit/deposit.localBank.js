@@ -259,6 +259,18 @@ const Payment = props => {
 											amount: real_amount,
 											sysId
 										};
+
+										if (Object.keys(channelData)?.length) {
+											userData.localBankChannel = channelData;
+										} else if (selDepositChannel) {
+											userData.localBankChannel = {
+												fromChannel:
+													defDepositChannel[
+														selDepositChannel
+													]?.value
+											};
+										}
+
 										handleUserPaymentData({ userData });
 
 										setProcessing(false);
@@ -449,6 +461,7 @@ const Payment = props => {
 					custBankInfo,
 					bankAccountlWarning
 				}}
+				userPaymentData={userPaymentData?.localBankChannel}
 			/>
 			<div className="btn-group">
 				<button
