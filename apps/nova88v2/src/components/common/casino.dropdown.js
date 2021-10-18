@@ -55,47 +55,39 @@ export class DropdownBox extends Component {
 			selected = this.props.placeholder;
 		}
 		return (
-			<>
-				{/* <div
-					className="infoModule"
-					data-testid={this.props.testAttr}
-					> */}
-				<div
-					ref={this.wrapper}
-					className={`inputBox ${
-						this.props.checked === false ? "error" : ""
-					}`}>
-					{this.props.colName === "Currency" && (
-						<i className="icon icon-coin-dollar" />
-					)}
-					{this.props.birthDayIcon && (
-						<i className="icon icon-cake" />
-					)}
-					<button
-						onBlur={this.props.onBlur}
-						className="dropdown btn"
-						onClick={this.ClickDropdown}>
-						<span className="text">
-							{this.props.defaultOption ?? selected}
-						</span>
-						<i className="icon icon-keyboard_arrow_down" />
-					</button>
-					{this.props.hideInfo ? null : (
-						<div className="icon-module">
-							<i
-								className="icon icon-information"
-								onClick={this.props.clickInfo}
-							/>
-						</div>
-					)}
-					<div
-						className={`dropdown-container${
-							this.state.isOpen ? " active" : ""
-						}`}>
-						{arr}
+			<div
+				ref={this.wrapper}
+				className={`inputBox ${
+					this.props.checked === false ? "error" : ""
+				}`}>
+				{this.props.colName === "Currency" && (
+					<i className="icon icon-coin-dollar" />
+				)}
+				{this.props.birthDayIcon && <i className="icon icon-cake" />}
+				<button
+					onBlur={this.props.onBlur}
+					className="dropdown btn"
+					onClick={this.ClickDropdown}>
+					<span className="text">
+						{this.props.defaultOption ?? selected}
+					</span>
+					<i className="icon icon-keyboard_arrow_down" />
+				</button>
+				{this.props.hideInfo ? null : (
+					<div className="icon-module">
+						<i
+							className="icon icon-information"
+							onClick={this.props.clickInfo}
+						/>
 					</div>
+				)}
+				<div
+					className={`dropdown-container${
+						this.state.isOpen ? " active" : ""
+					}`}>
+					{arr}
 				</div>
-			</>
+			</div>
 		);
 	}
 }
@@ -133,7 +125,10 @@ DropdownBox.propTypes = {
 
 const Item = props => {
 	return (
-		<div className="dropdown-item" onClick={props.onClick}>
+		<div
+			className="dropdown-item"
+			data-testid={`dp-item-${props.displayText}`}
+			onClick={props.onClick}>
 			<span className="text">{props.displayText}</span>
 		</div>
 	);

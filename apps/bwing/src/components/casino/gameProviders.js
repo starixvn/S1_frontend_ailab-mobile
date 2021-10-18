@@ -8,6 +8,7 @@ const GameProviders = props => {
 		return (
 			<button
 				key={`casino-nav-${k.tpId}`}
+				data-testid={`gameProvider_${k.tpId}`}
 				className={selNav === k.tpId ? "active" : ""}
 				onClick={SelectNav.bind(this, k.tpId)}>
 				<img

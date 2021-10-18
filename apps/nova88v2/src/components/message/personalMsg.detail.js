@@ -14,13 +14,19 @@ const Detail = ({
 }) => {
 	return (
 		<div
+			data-testid="msgCard"
 			className={`account${isRead ? "" : " noread"}${
 				isOpen ? " active" : ""
 			}`}>
 			<div className="info">
 				<label className="checkbox">
-					<input type="checkbox" onChange={onChange} />
+					<input
+						type="checkbox"
+						data-testid="msgChkbox"
+						onChange={onChange}
+					/>
 					<i
+						data-testid="checkIcon"
 						className={`icon icon-checkbox${
 							isChecked ? "-checked" : ""
 						}`}
@@ -36,6 +42,7 @@ const Detail = ({
 					className={`icon icon-keyboard_arrow_down ${
 						isOpen ? " active" : ""
 					}`}
+					data-testid="openBtn"
 					onClick={onClick}
 				/>
 			</div>

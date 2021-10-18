@@ -49,7 +49,6 @@ class Panel extends React.Component {
 
 	componentDidMount() {
 		this.mounted = true;
-
 		window.addEventListener("mousewheel", this.ScrollBarListener, false);
 		window.addEventListener("touchmove", this.ScrollBarListener, {
 			passive: false
@@ -90,7 +89,6 @@ class Panel extends React.Component {
 						games[idx] = tempEle1;
 					}
 				}
-
 				if (this.mounted) {
 					const nav = this.props.selNav ?? defNav.FEATURED.key;
 					const _tplistArr = Object.keys(_tpList);
@@ -365,7 +363,6 @@ class Panel extends React.Component {
 				(_selProvider ? g.tpId === _selProvider : true)
 			);
 		};
-
 		return _gameDatas?.filter(g => {
 			const tp = _tpList[g.tpId];
 			return matchFilter(tp.value, g);
@@ -416,7 +413,6 @@ class Panel extends React.Component {
 		const initGameDatas = this.state.gameDatas;
 		const initTpList = this.state.tpList;
 		const s = this.state;
-
 		if (s.hasMore && initGameDatas) {
 			const _gameDatas = this.FilterGames(
 				_searchInfo,
@@ -440,6 +436,7 @@ class Panel extends React.Component {
 				const new_count = s.displayedCount + newItem.length;
 				if (this.mounted) {
 					const displayGames = s.displayGames ?? [];
+
 					this.setState({
 						displayGames: [...displayGames, ...newItem],
 						hasMore: new_count < _gameDatas?.length,
@@ -549,11 +546,13 @@ class Panel extends React.Component {
 							<div className="btn-group">
 								<button
 									className="blue"
+									data-testid="clickPlay"
 									onClick={this.ClickPlay.bind(this, false)}>
 									{this.props.i18n.lbl_PlayNow}
 								</button>
 								{this.state.selGameInfo.playFree ? (
 									<button
+										data-testid="clickFreePlay"
 										className="orange"
 										onClick={this.ClickPlay.bind(
 											this,

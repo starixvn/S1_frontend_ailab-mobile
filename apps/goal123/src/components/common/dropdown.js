@@ -103,7 +103,10 @@ const Item = props => {
 		props.onClick(props.idx);
 	};
 	return (
-		<div className="dropdown-item" onClick={handleClick}>
+		<div
+			className="dropdown-item"
+			data-testid="dp-item"
+			onClick={handleClick}>
 			<span className="text">{props.displayText}</span>
 		</div>
 	);
