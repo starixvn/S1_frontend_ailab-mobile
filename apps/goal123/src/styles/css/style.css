@@ -208,9 +208,6 @@ header > div {
       -ms-flex-align: center;
           align-items: center;
   padding: 0 4vw;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   white-space: nowrap;
 }
 
@@ -220,10 +217,6 @@ header > div > a > img {
 
 header > div .logo {
   margin: 0 8vw;
-}
-
-header > div .logo img {
-  width: 100%;
 }
 
 @media screen and (min-width: 550px) and (max-width: 1024px) {
@@ -359,8 +352,8 @@ header > div .Login button.switchBar > div.active {
 header > div .Join button.switchBar > div.switchBg,
 header > div .Login button.switchBar > div.switchBg {
   position: absolute;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #4d6ba7), to(#1b3159));
-  background: linear-gradient(180deg, #4d6ba7 0, #1b3159);
+  background: -webkit-gradient(linear, left top, left bottom, from(#95aacf), to(#bdcbe2));
+  background: linear-gradient(to bottom, #95aacf, #bdcbe2);
   width: 50%;
   height: 100%;
   border-radius: 30px;
