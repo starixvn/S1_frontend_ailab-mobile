@@ -9,12 +9,11 @@ import {
 } from "../components/promotion/common/def";
 import Tab, { useHandleTab } from "../components/promotion/components/tab";
 import Nav, { useHandleNav } from "../components/promotion/components/nav";
-import { GetMetaDataByPage } from "../components/seo/seo";
+import { SEO } from "../components/seo/seo";
 import config from "../config";
 import staticList from "../datas/promotionList";
 import Layout from "../components/common/layout";
 import Header from "../components/header/header";
-import { isConvert } from "../components/common/common";
 
 export default ({ location = {} }) => {
 	const { userInfo } = useContext(userInfoContext);
@@ -31,10 +30,7 @@ export default ({ location = {} }) => {
 		isLogin: userInfo.isLogin,
 		tab
 	});
-	const helmet = GetMetaDataByPage({
-		path: path.promotion.root,
-		langId: userInfo.langId
-	});
+
 	const nav = (
 		<Nav
 			navBar={defPromotionNav}
@@ -83,7 +79,11 @@ export default ({ location = {} }) => {
 					}}
 				/>
 			</Layout>
-			{helmet}
+			<SEO
+				path={path.promotion.root}
+				langId={userInfo.langId}
+				isLogin={userInfo.isLogin}
+			/>
 		</>
 	);
 };

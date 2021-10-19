@@ -6,7 +6,7 @@ import {
 	rootContext
 } from "Context";
 import { useNavigate, Link } from "@reach/router";
-import { GetMetaDataByPage } from "../components/seo/seo";
+import { SEO } from "../components/seo/seo";
 import Layout from "../components/common/layout";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
@@ -18,12 +18,12 @@ import Referral from "../components/home/referral";
 import EventSwipper from "../components/home/eventSwipper";
 import HeaderShortcut from "../components/home/headerShortcut";
 import Bottom from "../components/home/bottom";
-import {
-	isEventPeriod,
-	readCookie,
-	setCookie,
-	validImgLang
-} from "../components/common/common";
+// import {
+// 	isEventPeriod,
+// 	readCookie,
+// 	setCookie,
+// 	validImgLang
+// } from "../components/common/common";
 import path from "../path";
 import Header from "../components/header/header";
 import JoinLoginBar from "../components/home/joinLoginBar";
@@ -37,11 +37,6 @@ const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
-
-	const helmet = GetMetaDataByPage({
-		path: path.home.root,
-		langId: userInfo.langId
-	});
 
 	useEffect(() => {
 		setRoot(true);
@@ -170,7 +165,12 @@ const IndexPage = () => {
 					<AddToHomePop i18n={i18n} userInfo={userInfo} />
 				</div>
 			</Layout>
-			{helmet}
+			<SEO
+				path={path.home.root}
+				langId={userInfo.langId}
+				isLogin={userInfo.isLogin}
+				getFromAPI={userInfo.isLogin === false}
+			/>
 		</>
 	);
 };
