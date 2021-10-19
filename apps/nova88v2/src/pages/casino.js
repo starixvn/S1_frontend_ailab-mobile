@@ -15,7 +15,7 @@ import useHandleLogin from "../components/hook/useHandleLogin";
 import { Link } from "../route/link";
 import path from "../path";
 import { useGotoGame, defSpecialSetting } from "../components/hook/useGotoGame";
-import { GetMetaDataByPage } from "../components/seo/seo";
+import { SEO } from "../components/seo/seo";
 import useSetTimeout from "../components/hook/useSetTimeout";
 import gameList, { defSlotTpGameType } from "../datas/productList";
 import { GetCurrencyName } from "../components/common/common";
@@ -594,11 +594,6 @@ const IndexPage = props => {
 
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 
-	const helmet = GetMetaDataByPage({
-		path: path.casino.root,
-		langId: userInfo.langId
-	});
-
 	const selNav = props.location?.state?.nav;
 	const selNavIdx = Object.keys(defNav).findIndex(key => key === selNav);
 	let tpId = props.tpId ?? props.location.state?.tpId;
@@ -620,7 +615,11 @@ const IndexPage = props => {
 				/>
 			</main>
 			<Footer />
-			{helmet}
+			<SEO
+				path={path.casino.root}
+				langId={userInfo.langId}
+				isLogin={userInfo.isLogin}
+			/>
 		</>
 	);
 };

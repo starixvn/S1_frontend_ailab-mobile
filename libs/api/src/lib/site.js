@@ -67,4 +67,6 @@ export class SiteAPI extends BaseAPI {
 
 	GetSupportDomainList = ({ langId }) =>
 		this.siteRequest.post(`/GetSupportDomainList/${langId ?? ""}`);
+
+	Seo = () => this.siteRequest.post(`/seo`);
 }
