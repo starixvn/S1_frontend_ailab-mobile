@@ -91,16 +91,21 @@ const Panel = ({ ImgFolder = [], params }) => {
 
 	const rows = banner?.map((b, bIdx) => {
 		let redirectLink = null;
+		let { actionMode } = b;
 
 		if (b.actionMode === defBannerActionMode.GoToBonus) {
 			redirectLink = `/${path.promotionInfo.root}?BonusCode=${b.bonusCode}`;
 		} else if (
 			b.actionMode === defBannerActionMode.RedirectPageOfThisSite
 		) {
-			redirectLink =
-				!userInfo.isLogin && NeedLoginRoute.includes(b.urlRouter)
-					? null
-					: `/${b.urlRouter}`;
+			if (b.urlRouter === "sports") {
+				actionMode = defBannerActionMode.GoToGame;
+			} else {
+				redirectLink =
+					!userInfo.isLogin && NeedLoginRoute.includes(b.urlRouter)
+						? null
+						: `/${b.urlRouter}`;
+			}
 		}
 
 		if (redirectLink) {
@@ -129,7 +134,8 @@ const Panel = ({ ImgFolder = [], params }) => {
 					...b,
 					isLogin: userInfo.isLogin,
 					lang: userInfo.langId,
-					setNav
+					setNav,
+					actionMode
 				})}>
 				<img
 					src={b.bannerMobileUrl}
