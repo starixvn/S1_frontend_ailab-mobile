@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { i18nContext, userInfoContext } from "../components/common/context";
-import { GetMetaDataByPage } from "../components/seo/seo";
+import { SEO } from "../components/seo/seo";
 import Event from "../components/ranking/event";
 import Record from "../components/ranking/records";
 import { defBtns, defElemType } from "../components/ranking/def";
@@ -28,10 +28,6 @@ export default () => {
 			<i className="icon icon-keyboard_arrow_left" />
 		</Link>
 	);
-	const helmet = GetMetaDataByPage({
-		path: path.ranking.root,
-		langId: userInfo.langId
-	});
 
 	return (
 		<>
@@ -80,7 +76,11 @@ export default () => {
 					customTopNum={30}
 				/>
 			</Layout>
-			{helmet}
+			<SEO
+				path={path.ranking.root}
+				langId={userInfo.langId}
+				isLogin={userInfo.isLogin}
+			/>
 		</>
 	);
 };
