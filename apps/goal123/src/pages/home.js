@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Redirect, Link } from "@reach/router";
+import { Redirect, Link, useNavigate } from "@reach/router";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
 import Menu from "../components/home/menu";
@@ -39,7 +39,7 @@ const IndexPage = () => {
 	const { setRoot } = useContext(rootContext);
 	const [redirectPath, setRedirectPath] = useState(null);
 	const [appHint, setAppHint] = useState(false);
-
+	const navigate = useNavigate();
 	const { isDomainPopOpened } = useGetDomainList({
 		setPopBox,
 		userInfo,
@@ -172,6 +172,10 @@ const IndexPage = () => {
 			if (readCookie(cookieOfficialAnnounce)) {
 				RankingWinnerPopup();
 			} else {
+				const toDownloadPage = () => {
+					navigate(`/${path.appDownload.root}`);
+					setPopBox({ isOpen: false });
+				};
 				setCookie(cookieOfficialAnnounce, true, 1);
 				setPopBox({
 					isOpen: true,
@@ -179,6 +183,7 @@ const IndexPage = () => {
 						<img
 							src={`${config.bannerImgUrl}/img/nonlogin/300x300_goal_${userInfo.langId}.jpg`}
 							alt="OfficialAnnounce"
+							onClick={toDownloadPage}
 						/>
 					),
 					hasBtn: true,
