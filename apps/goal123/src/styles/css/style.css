@@ -1025,18 +1025,12 @@ main .gameList .icon-trophy:after {
           animation: flash linear infinite alternate 1s;
 }
 
-main.statementPage {
-  padding-top: 20vw;
-}
-
 .main {
-  width: 100%;
+  width: calc(100% - 8vw);
   height: auto;
-  min-height: calc(100% - 16vw);
+  min-height: 100%;
   background-color: #f2f4f7;
-  padding: 26vw 4vw 24vw;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  padding: 26vw 4vw 40vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1044,9 +1038,6 @@ main.statementPage {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 .main.ranking {
@@ -1058,28 +1049,28 @@ main.statementPage {
 
 .main.depositmain {
   width: calc(100% - 8vw);
-  height: calc(100% - 50vw);
+  height: auto;
   background-color: #f2f4f7;
   padding: 26vw 4vw 24vw;
   -webkit-box-pack: unset;
       -ms-flex-pack: unset;
           justify-content: unset;
   overflow: scroll;
-  min-height: revert;
+  min-height: 100%;
   -webkit-box-sizing: revert;
           box-sizing: revert;
 }
 
 .main.casino {
   width: calc(100% - 8vw);
-  height: calc(100% - 71vw);
+  height: auto;
   padding: 35vw 4vw 24vw;
   position: relative;
   -webkit-box-pack: unset;
       -ms-flex-pack: unset;
           justify-content: unset;
   overflow: scroll;
-  min-height: revert;
+  min-height: 100%;
   -webkit-box-sizing: revert;
           box-sizing: revert;
 }
@@ -1807,14 +1798,12 @@ main.statementPage {
 }
 
 .header {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   border-bottom: 0;
 }
 
 .header .title {
   font-size: 5vw;
+  margin: 0 auto;
 }
 
 .title {
@@ -1870,6 +1859,7 @@ main.statementPage {
   background-color: #f2f4f7;
   padding-bottom: 55px;
   height: auto;
+  min-height: 100%;
 }
 
 .mainNew .bannerNew {
@@ -2267,6 +2257,7 @@ main.statementPage {
 
 .mainNew .gameBox {
   position: relative;
+  overflow: hidden;
 }
 
 .mainNew .gameBox > div .gamelistNew {
@@ -4076,7 +4067,7 @@ button.clickBtn:before {
   background: #fff;
   position: relative;
   width: 90%;
-  margin: 60vw auto 0;
+  margin: 50vw auto 0;
   border-radius: 5px;
 }
 
@@ -4486,7 +4477,7 @@ span.important {
           justify-content: flex-start;
   height: auto;
   min-height: calc(100% - 39vw);
-  padding: 15vw 3vw 24vw;
+  padding: 15vw 4vw 24vw;
 }
 
 .promotions img {
@@ -6319,8 +6310,8 @@ span.important {
 }
 
 .event {
-  height: 100%;
-  padding: 0 3vw 24vw;
+  height: auto;
+  padding: 0 4vw 24vw;
   background: #001942 url(../img/event/bg.jpg) no-repeat top center;
   background-size: 120%;
   -webkit-box-pack: start;
@@ -6333,7 +6324,7 @@ span.important {
 }
 
 .event.goldbox {
-  padding: 0 3vw 24vw;
+  padding: 0 4vw 24vw;
   background: #f0f4fa url(../img/event/box/bg.jpg) no-repeat top center;
   background-size: 120%;
   -webkit-box-pack: start;
@@ -7755,7 +7746,7 @@ span.important {
 }
 
 .vip {
-  padding: 12vw 0 90vw;
+  padding: 12vw 0 20vw;
   width: 100%;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
@@ -9035,8 +9026,8 @@ span.important {
 }
 
 .app_page {
-  padding: 0 3vw 24vw;
-  background: #001942 url(../img/appdownload/bg.jpg) no-repeat top center;
+  padding: 0 4vw 24vw;
+  background: #001942 url(../img/appdownload/bg.jpg) no-repeat top center/cover;
   text-align: center;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
