@@ -766,7 +766,7 @@ const Join = ({ hideBtn }) => {
 				{/* <Inputbox
 					icon="icon-promotion"
 					ClassName="JoinRule"
-					placeholder={i18n.lbl_JoinPromoCode}
+					placeholder={i18n.lbl_PromoCode}
 					value={userValueState.SpecialBonusCode}
 					onChange={EditField.bind(null, "SpecialBonusCode")}
 					onBlur={() =>

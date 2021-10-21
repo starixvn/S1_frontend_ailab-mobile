@@ -42,7 +42,7 @@
 	"lbl_Cancel": "Hủy",
 	"lbl_CancelConfirm": "Bạn có chắc muốn hủy? Không thể khôi phục lại sau khi hủy!",
 	"lbl_Cash": "Cash",
-	"lbl_Casino": "CASINO",
+	"lbl_Casino": "SÒNG BÀI",
 	"lbl_ChangeAmount": "Chuyển đổi số dư",
 	"lbl_ChangePassword": "Đổi Mật Khẩu",
 	"lbl_Check18TC1": "Tôi đồng ý với ",
@@ -461,7 +461,7 @@
 	"lbl_DepositLocalBankNotes4": "Vui lòng tải biên lai ngân hàng để giao dịch được xử lý nhanh hơn.",
 	"lbl_Max": "Lớn nhất",
 	"lbl_Min": "Nhỏ nhất",
-	"lbl_JoinPromoCode": "Mã khuyến mãi",
+	"lbl_PromoCode": "Mã khuyến mãi",
 	"lbl_Vintage_Club": "HẠNG ĐỒNG",
 	"lbl_Silver_Club": "HẠNG BẠC",
 	"lbl_Gold_Club": "HẠNG VÀNG",
@@ -594,5 +594,14 @@
 	"lbl_LossAmount": "Tiền cược thua",
 	"lbl_Percentage": "Tỷ lệ",
 	"lbl_TotalAmount": "Tổng số tiền",
-	"lbl_ClaimAmount": "Số tiền đạt"
+	"lbl_ClaimAmount": "Số tiền đạt",
+
+	"==============Promotion Filter==============": "",
+	"lbl_NewMember": "THƯỞNG CHÀO MỪNG",
+	"lbl_Special": "ĐẶC BIỆT",
+	"lbl_Sportsbook": "THỂ THAO",
+	"lbl_Promotion_Casino": "SÒNG BÀI",
+	"lbl_Promotion_All": "HIỂN THỊ TẤT CẢ",
+	"lbl_Promotion_Slot": "QUAY HŨ"
+
 }
