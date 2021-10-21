@@ -503,6 +503,10 @@
 	"lbl_ClaimNow":"Claim Now",
 	"lbl_ClaimSucceed":"Successful! Your Bonus has been claimed.",
 	"lbl_Cashback": "Cashback",
+	"lbl_NewMember": "NEW MEMBER",
+	"lbl_Special": "SPECIAL",
+	"lbl_Sportsbook": "Sportsbook",
+	"lbl_Promotion_Slot": "SLOT",
 
 	"==============================================Streaming====================================": "",
 
@@ -521,7 +525,7 @@
 	"==============================================Join====================================": "",
 
 	"lbl_Check18TC1": "By clicking the JOIN NOW button, I hereby acknowledge that I am above 21 years old and have read and accepted your ",
-	"lbl_JoinPromoCode": "Promo Code",
+	"lbl_PromoCode": "Promo Code",
 	"lbl_Check18TC2": ".",
 	"lbl_PreferredCurrencyToolTip": "Preferred currency can not be changed after registration.",
 	"lbl_Check18TC3": "of",

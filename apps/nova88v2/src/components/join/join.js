@@ -626,12 +626,12 @@ const Join = ({ initSiteCurrency = [] }) => {
 
 				<Inputbox
 					icon="icon-promotion"
-					placeholder={i18n.lbl_JoinPromoCode}
+					placeholder={i18n.lbl_PromoCode}
 					value={userValue.SpecialBonusCode}
 					onChange={EditField.bind(null, "SpecialBonusCode")}
 					warningMsg={status.SpecialBonusCode.msg}
 					btnStatus={status.SpecialBonusCode.checked}
-					infoText={i18n.lbl_JoinPromoCode}
+					infoText={i18n.lbl_PromoCode}
 					clickInfo={() => showTipHandler("SpecialBonusCode")}
 					showTips={showTips.includes("SpecialBonusCode")}
 					testAttr="SpecialBonusCode"

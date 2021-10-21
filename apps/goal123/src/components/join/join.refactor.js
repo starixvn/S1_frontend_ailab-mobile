@@ -421,7 +421,7 @@ const Join = ({ hideBtn }) => {
 				</div>
 				{/* <Inputbox
 					icon="icon icon-promotion"
-					placeholder={i18n.lbl_JoinPromoCode}
+					placeholder={i18n.lbl_PromoCode}
 					value={userValue.SpecialBonusCode}
 					onChange={EditField.bind(this, { col: "SpecialBonusCode" })}
 					onBlur={checkValue.bind(this, { col: "SpecialBonusCode" })}

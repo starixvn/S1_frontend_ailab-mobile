@@ -525,7 +525,7 @@
 	"lbl_UploadReceipt": "Tải biên lai ngân hàng",
 	"lbl_Max": "Lớn nhất",
 	"lbl_Min": "Nhỏ nhất",
-	"lbl_JoinPromoCode": "Mã khuyến mãi",
+	"lbl_PromoCode": "Mã khuyến mãi",
 	"lbl_Vintage_Club": "HẠNG ĐỒNG",
 	"lbl_Silver_Club": "HẠNG BẠC",
 	"lbl_Gold_Club": "HẠNG VÀNG",
@@ -649,5 +649,14 @@
 	"lbl_LossAmount": "Tiền cược thua",
 	"lbl_Percentage": "Tỷ lệ",
 	"lbl_TotalAmount": "Tổng số tiền",
-	"lbl_ClaimAmount": "Số tiền đạt"
+	"lbl_ClaimAmount": "Số tiền đạt",
+
+	"==============Promotion Filter==============": "",
+	"lbl_NewMember": "THƯỞNG CHÀO MỪNG",
+	"lbl_Special": "ĐẶC BIỆT",
+	"lbl_Sportsbook": "THỂ THAO",
+	"lbl_Promotion_Casino": "SÒNG BÀI",
+	"lbl_Promotion_All": "HIỂN THỊ TẤT CẢ",
+	"lbl_Promotion_Slot": "QUAY HŨ"
+
 }

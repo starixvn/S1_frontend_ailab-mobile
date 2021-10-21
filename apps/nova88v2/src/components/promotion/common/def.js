@@ -17,13 +17,14 @@ export const defPromotionType = {
 };
 
 export const defFilterType = {
-	all: 0,
-	firstDeposit: defPromotionType.firstDeposit, //
-	freeBet: defPromotionType.freeBet, //
-	specialBonus: 9991,
-	reDeposit: defPromotionType.reDeposit, //
-	rebateAndCashBack: "6_7", //
-	static: defPromotionType.static
+	all: "all",
+	expiry: "expiry",
+	firstDeposit: "firstDeposit",
+	other: "other",
+	sportsbook: "sportsbook",
+	liveCasino: "liveCasino",
+	slots: "slots",
+	specialBonus: "specialBonus"
 };
 
 export const defNav = {
@@ -32,40 +33,40 @@ export const defNav = {
 		value: defFilterType.all
 	},
 	FirstDeposit: {
-		displayKey: "lbl_PromotionCategory1",
+		displayKey: "lbl_NewMember",
 		value: defFilterType.firstDeposit
 	},
-	FreeBet: {
-		displayKey: "lbl_FreeBet",
-		value: defFilterType.freeBet
+	Other: {
+		displayKey: "lbl_Special",
+		value: defFilterType.other
+	},
+	Sportsbook: {
+		displayKey: "lbl_Sportsbook",
+		value: defFilterType.sportsbook
+	},
+	LiveCasino: {
+		displayKey: "lbl_LiveCasino",
+		value: defFilterType.liveCasino
+	},
+	Slots: {
+		displayKey: "lbl_Promotion_Slot",
+		value: defFilterType.slots
 	},
 	SpecialBonus: {
-		displayKey: "lbl_SpecialBonus",
+		displayKey: "lbl_PromoCode",
 		value: defFilterType.specialBonus,
 		afterLogin: true
-	},
-	ReDeposit: {
-		displayKey: "lbl_Redeposit_Promo",
-		value: defFilterType.reDeposit
-	},
-	RebateAndCashBack: {
-		displayKey: "lbl_PromotionRebateAndCashback",
-		value: defFilterType.rebateAndCashBack
-	},
-	Static: {
-		displayKey: "lbl_Other",
-		value: defFilterType.static
 	}
 };
 
 export const defPromotionNav = [
 	defNav.All,
 	defNav.FirstDeposit,
-	defNav.FreeBet,
-	defNav.ReDeposit,
-	defNav.RebateAndCashBack,
-	defNav.SpecialBonus,
-	defNav.Static
+	defNav.Other,
+	defNav.Sportsbook,
+	defNav.LiveCasino,
+	defNav.Slots,
+	defNav.SpecialBonus
 ];
 
 export const defTabs = {
@@ -105,3 +106,19 @@ export const defHideJoinBtnTypes = [
 	defPromotionType.rebate,
 	defPromotionType.static
 ];
+
+export const defWalletType = {
+	Transfer: 0,
+	Seamless: 1
+};
+
+export const defCategoryId = {
+	Slots: 1,
+	LiveCasino: 2,
+	Fish: 3,
+	SabaSports: 4,
+	Lottery: 5,
+	Sports: 6,
+	PtSlots: 7,
+	PtLiveCasino: 8
+};
