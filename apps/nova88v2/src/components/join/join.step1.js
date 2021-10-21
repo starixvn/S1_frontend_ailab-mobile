@@ -178,12 +178,12 @@ const JoinStep1 = ({
 				/>
 				<Inputbox
 					icon="icon-promotion"
-					placeholder={i18n.lbl_JoinPromoCode}
+					placeholder={i18n.lbl_PromoCode}
 					value={userValue.SpecialBonusCode}
 					onChange={EditField.bind(null, "SpecialBonusCode")}
 					warningMsg={hintStatus.SpecialBonusCode.msg}
 					btnStatus={hintStatus.SpecialBonusCode.checked}
-					infoText={i18n.lbl_JoinPromoCode}
+					infoText={i18n.lbl_PromoCode}
 					clickInfo={() => showTipHandler("SpecialBonusCode")}
 					showTips={showTips.includes("SpecialBonusCode")}
 					testAttr="SpecialBonusCode"

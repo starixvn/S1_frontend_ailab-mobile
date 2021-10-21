@@ -487,6 +487,10 @@
 	"lbl_ClaimNow":"Klaim Sekarang",
     "lbl_ClaimSucceed":"Sukses! Bonus Anda telah diklaim.",
     "lbl_Cashback":"Cashback",
+    "lbl_NewMember": "MEMBER BARU",
+	"lbl_Special": "SPESIAL",
+	"lbl_Sportsbook": "Sportsbook",
+	"lbl_Promotion_Slot": "SLOT",
 
     "-============================================Streaming===================================":"",
  
@@ -506,7 +510,7 @@
     "-============================================Join===================================":"",
 
     "lbl_Check18TC1":"Dengan meng-klik GABUNG SEKARANG, saya menyatakan hahwa saya berumur diatas 21 tahun dan telah membaca dan menyetujui ",
-    "lbl_JoinPromoCode":"Kode Promo",
+    "lbl_PromoCode":"Kode Promo",
     "lbl_Check18TC2":".",
     "lbl_PreferredCurrencyToolTip":"Mata uang yang dipilih tidak dapat diubah setelah melakukan pendaftaran.",
     "lbl_Check18TC3":"Dari",

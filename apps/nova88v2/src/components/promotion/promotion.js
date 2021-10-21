@@ -5,7 +5,9 @@ import {
 	defFilterType,
 	defPromotionType,
 	defTabs,
-	defUrlParamCols
+	defUrlParamCols,
+	defWalletType,
+	defCategoryId
 } from "./common/def";
 import { isExpiry, isClaimed, isNew } from "./common/common";
 import Card, { CardForStatic } from "./components/promotionCard";
@@ -138,7 +140,7 @@ const PromotionContent = ({ staticList, location, tab, nav, filterType }) => {
 			}
 			if (filterType === defFilterType.firstDeposit) {
 				return (
-					(p.promotionType === filterType ||
+					(p.promotionType === defPromotionType.firstDeposit ||
 						p.promotionType === defPromotionType.walletBonus) &&
 					!isExpiry({
 						...p,
@@ -146,20 +148,52 @@ const PromotionContent = ({ staticList, location, tab, nav, filterType }) => {
 					})
 				);
 			}
-			if (filterType === defFilterType.rebateAndCashBack) {
+
+			if (filterType === defFilterType.sportsbook) {
 				return (
-					(p.promotionType === defPromotionType.rebate ||
-						p.promotionType === defPromotionType.cashback) &&
+					p.categoryId === defCategoryId.SabaSports &&
 					!isExpiry({
 						...p,
 						isLogin: userInfo.isLogin
 					})
 				);
 			}
+
+			if (filterType === defFilterType.liveCasino) {
+				return (
+					p.walletType === defWalletType.Seamless &&
+					p.categoryId === defCategoryId.LiveCasino &&
+					!isExpiry({
+						...p,
+						isLogin: userInfo.isLogin
+					})
+				);
+			}
+
+			if (filterType === defFilterType.slots) {
+				return (
+					p.walletType === defWalletType.Seamless &&
+					p.categoryId === defCategoryId.Slots &&
+					!isExpiry({
+						...p,
+						isLogin: userInfo.isLogin
+					})
+				);
+			}
+
+			if (filterType === defFilterType.other) {
+				return (
+					p.promotionType === defPromotionType.static &&
+					!isExpiry({
+						...p,
+						isLogin: userInfo.isLogin
+					})
+				);
+			}
+
 			if (
 				filterType !== defFilterType.all ||
-				filterType !== defFilterType.firstDeposit ||
-				filterType !== defFilterType.rebateAndCashBack
+				filterType !== defFilterType.firstDeposit
 			) {
 				return (
 					p.promotionType === filterType &&

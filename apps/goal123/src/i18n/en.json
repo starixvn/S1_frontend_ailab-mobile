@@ -461,7 +461,7 @@
 	"lbl_DepositLocalBankNotes4": "Upload your pay slip to speed up processing time.",
 	"lbl_Max": "Max",
 	"lbl_Min": "Min",
-	"lbl_JoinPromoCode": "Promo Code",
+	"lbl_PromoCode": "Promo Code",
 	"lbl_Vintage_Club": "BRONZE CLUB",
 	"lbl_Silver_Club": "SILVER CLUB",
 	"lbl_Gold_Club": "GOLD CLUB",
@@ -594,5 +594,14 @@
 	"lbl_LossAmount": "Loss Amount",
 	"lbl_Percentage": "Percentage",
 	"lbl_TotalAmount": "Total Amount",
-	"lbl_ClaimAmount": "Claim Amount"
+	"lbl_ClaimAmount": "Claim Amount",
+
+	"==============Promotion Filter==============": "",
+	"lbl_NewMember": "NEW MEMBER",
+	"lbl_Special": "SPECIAL",
+	"lbl_Sportsbook": "Sportsbook",
+	"lbl_Promotion_Casino": "CASINO",
+	"lbl_Promotion_All": "ALL",
+	"lbl_Promotion_Slot": "SLOT"
+
 }

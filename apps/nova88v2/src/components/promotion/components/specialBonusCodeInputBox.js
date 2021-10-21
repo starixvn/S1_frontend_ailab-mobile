@@ -2,7 +2,7 @@ import React from "react";
 import { defFilterType, defTabs } from "../common/def";
 
 const SpecialBonusCodeInputBox = ({
-	i18n: { lbl_Submit, lbl_SpecialBonusCode },
+	i18n: { lbl_Submit, lbl_PromoCode },
 	value,
 	onChange,
 	onSubmit,
@@ -17,7 +17,7 @@ const SpecialBonusCodeInputBox = ({
 		<div className="infoModule parts">
 			<div className="inputBox">
 				<input
-					placeholder={lbl_SpecialBonusCode}
+					placeholder={lbl_PromoCode}
 					value={value}
 					onChange={onChange}
 				/>
