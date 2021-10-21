@@ -95,7 +95,7 @@ const Panel = ({ ImgFolder = [], params }) => {
 			b.actionMode === api.site.defBannerActionMode.RedirectPageOfThisSite
 		) {
 			if (b.urlRouter === "sports") {
-				actionMode = defBannerActionMode.GoToGame;
+				actionMode = api.site.defBannerActionMode.GoToGame;
 			} else {
 				redirectLink =
 					!userInfo.isLogin && NeedLoginRoute.includes(b.urlRouter)
