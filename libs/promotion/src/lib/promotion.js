@@ -157,8 +157,9 @@ const PromotionContent = ({ staticList, location, navBar }) => {
 
 			if (filterType === defFilterType.liveCasino) {
 				return (
-					p.walletType === defWalletType.Seamless &&
-					p.categoryId === defCategoryId.LiveCasino &&
+					(p.categoryId === defCategoryId.PtLiveCasino ||
+						(p.walletType === defWalletType.Seamless &&
+							p.categoryId === defCategoryId.LiveCasino)) &&
 					!isExpiry({
 						...p,
 						isLogin: userInfo.isLogin
@@ -168,8 +169,9 @@ const PromotionContent = ({ staticList, location, navBar }) => {
 
 			if (filterType === defFilterType.slots) {
 				return (
-					p.walletType === defWalletType.Seamless &&
-					p.categoryId === defCategoryId.Slots &&
+					(p.categoryId === defCategoryId.PtSlots ||
+						(p.walletType === defWalletType.Seamless &&
+							p.categoryId === defCategoryId.Slots)) &&
 					!isExpiry({
 						...p,
 						isLogin: userInfo.isLogin
