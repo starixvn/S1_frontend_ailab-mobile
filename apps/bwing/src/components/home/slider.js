@@ -22,6 +22,7 @@ export default () => {
 		<SwipperBanner
 			ImgFolder={[defBannerType.Promotions]}
 			params={swipperParam}
+			swiperClass="hotevent"
 		/>
 	);
 };

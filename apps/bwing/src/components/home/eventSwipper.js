@@ -87,7 +87,7 @@ const EventSwipper = memo(() => {
 		);
 	});
 
-	return <AutoPlay Rows={rows} />;
+	return <AutoPlay Rows={rows} swiperClass="hotevent" />;
 });
 
 export default EventSwipper;
