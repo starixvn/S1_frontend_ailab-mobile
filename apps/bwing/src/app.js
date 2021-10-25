@@ -56,7 +56,7 @@ import HowToDeposit from "./pages/howToDeposit";
 import HowToWithdraw from "./pages/howToWithdraw";
 import HowToPlay from "./pages/howToPlay";
 
-import Ranking from "./pages/ranking";
+// import Ranking from "./pages/ranking";
 import AngPow from "./pages/angPow";
 import MysteryBox from "./pages/mysteryBox";
 import VIP from "./pages/vip";
@@ -66,8 +66,11 @@ import ReferFriends from "./components/referral/referFriends";
 import ReferralHistory from "./components/referral/referral.history";
 import AppDownload from "./pages/appDownload";
 
+import Streaming from "./pages/streaming";
+
 const Index = () => {
 	const history = createHistory(window);
+
 	return (
 		<Wrapper>
 			<LocationProvider history={history}>
@@ -96,39 +99,6 @@ const Index = () => {
 							<Deposit path="/" />
 							<DepositHistory path={path.depositHistory.root} />
 						</Deposit>
-
-						{/* <Deposit path={path.deposit.root}>
-							<DepositHome path={path.deposit.sub.root} />
-							<OnlineBanking
-								path={path.deposit.sub.onlineBank.root}>
-								<OnlineBankingMain
-									path={path.deposit.sub.onlineBank.sub.root}
-								/>
-								<SetOnlineBanking
-									path={
-										path.deposit.sub.onlineBank.sub
-											.setOnlineBanking.root
-									}
-								/>
-							</OnlineBanking>
-							<MobilePay path={path.deposit.sub.mobilePay.root}>
-								<MobilePayMain
-									path={path.deposit.sub.mobilePay.sub.root}
-								/>
-								<SetMobilePay
-									path={
-										path.deposit.sub.mobilePay.sub
-											.setMobilePay.root
-									}
-								/>
-							</MobilePay>
-							<LocalBank path={path.deposit.sub.localBank.root}>
-								<LocalBankMain path="/" />
-							</LocalBank>
-							<DepositHistory
-								path={path.deposit.sub.history.root}
-							/>
-						</Deposit> */}
 						<Withdrawal path={path.withdrawal.root}>
 							<WithdrawalHome path={path.withdrawal.sub.root} />
 							<WithdrawalHistory
@@ -175,6 +145,7 @@ const Index = () => {
 						<MysteryBox path={path.mysteryBox.root} />
 						<VIP path={path.vip.root} />
 						<AppDownload path={path.appDownload.root} />
+						<Streaming path={path.streaming.root} />
 					</Router>
 				</Layout>
 			</LocationProvider>

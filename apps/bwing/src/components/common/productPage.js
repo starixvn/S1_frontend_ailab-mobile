@@ -2,7 +2,8 @@ import React, { useContext, useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { api_GetTpIds } from "../../service/api/site";
 import { useGotoGame } from "../hook/useGotoGame";
-
+import { sportStreamDef } from "../../datas/productList";
+import { getUrlParameter } from "./common";
 import {
 	i18nContext,
 	userInfoContext,
@@ -26,6 +27,11 @@ const ProductPage = ({ category, titleKey }) => {
 	const { maintainList } = useGetTpMaintainList();
 	const _productList = productList(userInfo.langId)[category].items;
 	const isMountedRef = useRef(null);
+	const sport_game = getUrlParameter("game");
+	const sport_tpId = sportStreamDef[sport_game]?.tpId;
+	const sport_gameId = sportStreamDef[sport_game]?.gameId;
+	const matchid = getUrlParameter("matchid");
+	const sport_tpGameType = sportStreamDef[sport_game]?.tpGameType;
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -41,9 +47,22 @@ const ProductPage = ({ category, titleKey }) => {
 					setTpIds(res.data.data);
 				}
 			});
+			if (sport_game) {
+				GET_ENTER_PAGE({
+					langId: userInfo.langId,
+					tpId: sport_tpId,
+					gameId: sport_gameId,
+					isLogin: userInfo.isLogin,
+					betType: null,
+					loginCallback: () => {
+						setNav(defNavPanel.login);
+					},
+					execFunction: null,
+					tpGameType: sport_tpGameType
+				});
+			}
 		}
 	}, [userInfo.isLogin, i18n]);
-
 	const ClickGame = ({
 		tpId,
 		gameId,

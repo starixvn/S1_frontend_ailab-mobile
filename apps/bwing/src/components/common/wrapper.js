@@ -37,6 +37,7 @@ export const Wrapper = ({ children }) => {
 	const [theme, setTheme] = useState(themeList.default);
 
 	const isMountedRef = useRef(null);
+
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => {

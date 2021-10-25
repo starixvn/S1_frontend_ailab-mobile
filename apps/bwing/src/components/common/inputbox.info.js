@@ -20,7 +20,8 @@ const Inputbox = ({
 	i18n,
 	clickSubmit,
 	isRequired,
-	testAttr
+	testAttr,
+	_class
 }) => {
 	let Title = null;
 	if (title) {
@@ -35,7 +36,7 @@ const Inputbox = ({
 		}
 	}
 	return (
-		<div className="input-Area" data-testid={`${testAttr}_inputBox`}>
+		<div className={_class} data-testid={`${testAttr}_inputBox`}>
 			{Title}
 			<div className="input-group">
 				<div className="inputBoxNew">
@@ -85,10 +86,12 @@ Inputbox.defaultProps = {
 	i18n: {},
 	clickSubmit: () => null,
 	isRequired: false,
-	testAttr: ""
+	testAttr: "",
+	_class: "input-Area"
 };
 
 Inputbox.propTypes = {
+	_class: PropTypes.string,
 	icon: PropTypes.string,
 	inputType: PropTypes.string,
 	placeholder: PropTypes.string,

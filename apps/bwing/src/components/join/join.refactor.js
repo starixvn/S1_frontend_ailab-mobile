@@ -30,7 +30,7 @@ import Logo from "../img/logo";
 import areaCode from "../../datas/areaCode";
 import { initValue, initStatus, currencyToAreacode } from "./join.def";
 
-const Join = () => {
+const Join = ({ hideBtn = false }) => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -400,9 +400,11 @@ const Join = () => {
 
 	return (
 		<>
-			<button onClick={handleJoinPanel.bind(this, openPanel)}>
-				{i18n.lbl_JoinNow.toUpperCase()}
-			</button>
+			{!hideBtn && (
+				<button onClick={handleJoinPanel.bind(this, openPanel)}>
+					{i18n.lbl_JoinNow.toUpperCase()}
+				</button>
+			)}
 			<div className={`Join${openPanel ? " open" : ""}`}>
 				<div
 					className={`close${openPanel ? " open" : ""}`}
@@ -467,6 +469,7 @@ const Join = () => {
 				<div className="inputPhone parts">
 					<span className="countryCode">{_areaCode}</span>
 					<Inputbox
+						_class="input-Area"
 						icon="icon icon-phone"
 						inputType="tel"
 						placeholder={i18n.lbl_Phone}

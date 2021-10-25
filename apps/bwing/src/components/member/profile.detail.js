@@ -417,7 +417,7 @@ const Panel = () => {
 	) : (
 		<>
 			<div className="info">
-				<div>{i18n.lbl_ProfileModifyWarning}</div>
+				<div className="text">{i18n.lbl_ProfileModifyWarning}</div>
 				<ul>{arr}</ul>
 			</div>
 			{!userInfo.accountName ? (
@@ -467,9 +467,10 @@ const Panel = () => {
 			{!userInfo.phoneNo ? (
 				<>
 					<div className="input-title">{i18n.lbl_Phone}</div>
-					<div className="inputPhone parts" data-testid="phoneCol">
+					<div className="inputBox parts" data-testid="phoneCol">
 						<span className="countryCode">{_areaCode}</span>
 						<Inputbox
+							_class="inputBox"
 							inputType="tel"
 							onBlur={checkInputboxHandler.bind(null, "PhoneNo")}
 							onChange={EditField.bind(null, "PhoneNo")}
@@ -509,29 +510,39 @@ const Panel = () => {
 };
 
 const ColumnItem = props => {
+	const col = () => {
+		if (props.infoTitle === "phoneNo") {
+			if (props.isVerified) {
+				return (
+					<button className="otpBtn ver">
+						<span>{props.i18n.lbl_Verified}</span>
+						<span className="icon icon-icon32px_check" />
+					</button>
+				);
+			}
+			return (
+				<button className="otpBtn" onClick={props.clickOtp}>
+					<span>{props.i18n.lbl_Unverified}</span>
+					<span className="icon icon-error" />
+				</button>
+			);
+		}
+		return null;
+	};
 	return (
-		<li>
-			<span className="title">{props.title}</span>
-			{props.infoTitle !== "phoneNo" ? (
-				<span>{props.content}</span>
-			) : (
-				<span>
-					<span>{props.content}</span>
-					{props.isVerified ? (
-						<span className="otpBtn ver">
-							<i className="icon icon-icon32px_check">
-								{props.i18n.lbl_Verified}
-							</i>
-						</span>
-					) : (
-						<button className="otpBtn" onClick={props.clickOtp}>
-							<span>{props.i18n.lbl_Unverified}</span>
-							<span className="icon icon-error" />
-						</button>
-					)}
-				</span>
-			)}
-		</li>
+		<>
+			<div className="title">{props.title}</div>
+			<li className={props.infoTitle === "phoneNo" ? "phone" : ""}>
+				{props.infoTitle !== "phoneNo" ? (
+					<div>{props.content}</div>
+				) : (
+					<div>
+						<div>{props.content}</div>
+					</div>
+				)}
+			</li>
+			{col()}
+		</>
 	);
 };
 
