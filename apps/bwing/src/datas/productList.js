@@ -1,229 +1,77 @@
-import { siteInfo } from "../config";
 import path from "../path";
 
 export const defGameInfo = {
-	Sports: { tpId: 1, gameId: 1 },
-	CockFighting: { tpId: 17 },
-	VirtualSports: { tpId: 1, gameId: 180 },
-	eSports: { tpId: 1, gameId: 43 },
-	LIVEcasinoWM: { tpId: 20, gameId: 20 },
-	LIVEcasinoDG: { tpId: 4, gameId: 4 },
-	LIVEcasinoPP: { gameId: 101, tpId: 5 },
-	LIVEcasinoAE: { gameId: 15, tpId: 15 },
-	LIVEcasinoAG: { gameId: 3, tpId: 3 },
-	LIVEcasinoAB: { gameId: 12, tpId: 12 },
-	LIVEcasinoSA: { gameId: 2, tpId: 2 },
-	LIVEcasinoEB: { gameId: 18, tpId: 18 },
-	LIVEcasinoOne789: { tpId: 23, gameId: 2 },
-	LIVEcasinoN2: { tpId: 28 },
-	One789_lottery: { tpId: 23, gameId: 0 },
-	One789_lottery_789: { tpId: 23, gameId: 1 },
-	Casino_ow: { gameId: 208, tpId: 1 },
+	Sports: { tpId: 1, gameId: 1, tpGameType: 1 },
+	CockFighting: { tpId: 17, tpGameType: 27 },
+	VirtualSports: { tpId: 1, gameId: 180, tpGameType: 3 },
+	eSports: { tpId: 1, gameId: 43, tpGameType: 1 },
+	LIVEcasinoWM: { tpId: 20, gameId: 20, tpGameType: 32 },
+	LIVEcasinoDG: { tpId: 4, gameId: 4, tpGameType: 10 },
+	LIVEcasinoPP: { gameId: 101, tpId: 5, tpGameType: 16 },
+	LIVEcasinoAE: { gameId: 15, tpId: 15, tpGameType: 18 },
+	LIVEcasinoAG: { gameId: 3, tpId: 3, tpGameType: 8 },
+	LIVEcasinoAB: { gameId: 12, tpId: 12, tpGameType: 6 },
+	LIVEcasinoSA: { gameId: 2, tpId: 2, tpGameType: 9 },
+	LIVEcasinoEB: { gameId: 18, tpId: 18, tpGameType: 28 },
+	LIVEcasinoOne789: { tpId: 23, gameId: 2, tpGameType: 37 },
+	LIVEcasinoN2: { tpId: 28, tpGameType: 45 },
+	LIVEcasinoEVO: { tpId: 36, gameId: 0, tpGameType: 63 },
+	LIVEcasino_MGP: { tpId: 34, tpGameType: 58 },
+	LIVEcasino_PT: { tpId: 27, gameId: "0", tpGameType: 48 },
+	One789_lottery: { tpId: 23, gameId: 0, tpGameType: 35 },
+	One789_lottery_789: { tpId: 23, gameId: 1, tpGameType: 36 },
+	Casino_ow: { gameId: 208, tpId: 1, tpGameType: 4 },
 	Casino_All: { tpId: 0 },
-	Casino_MGP: { tpId: 34 },
-	Casino_PP: { tpId: 5 },
-	Casino_SG: { tpId: 10 },
-	Casino_PG: { tpId: 14 },
-	Casino_JOKER: { tpId: 9 },
-	Casino_YGG: { tpId: 8 },
-	Casino_GPI: { tpId: 6 },
-	Casino_CQ9: { tpId: 16 },
-	Casino_PT: { tpId: 27, gameId: "0" },
-	Fishing: { gameId: 10, tpId: 7 },
-	Fishing_SG: { gameId: "F-SF01", tpId: 10 },
-	Fishing_SGW: { gameId: "F-SF02", tpId: 10 },
-	Indo4d: { gameId: 223, tpId: 1 },
-	Keno: { gameId: 202, tpId: 1 },
-	lottery: { gameId: 220, tpId: 1 },
-	NumberGame: { gameId: 161, tpId: 1 },
-	sabaClub: {
-		tpId: 1,
-		gameId: 171
-	},
-	BTISport: {
-		tpId: 29
-	},
-	casino_ICG: {
-		tpId: 24
-	},
-	ICG_DRAGONBALL_FISHING: {
-		tpId: 24,
-		gameId: "cmf0001"
-	},
-	ICG_FISHING_OF_SAVIORS: {
-		tpId: 24,
-		gameId: "cmf0002"
-	},
+	Casino_MGP: { tpId: 34, tpGameType: 57 },
+	Casino_PP: { tpId: 5, tpGameType: 7 },
+	Casino_SG: { tpId: 10, tpGameType: 15 },
+	Casino_PG: { tpId: 14, tpGameType: 17 },
+	Casino_JOKER: { tpId: 9, tpGameType: 13 },
+	Casino_YGG: { tpId: 8, tpGameType: 14 },
+	Casino_GPI: { tpId: 6, tpGameType: 11 },
+	Casino_CQ9: { tpId: 16, tpGameType: 29 },
+	Casino_PT: { tpId: 27, gameId: "0", tpGameType: 46 },
+	Casino_NetEnt: { tpId: 37, tpGameType: 64 },
+	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
+	Fishing: { gameId: 10, tpId: 7, tpGameType: 12 },
+	Fishing_SG: { gameId: "F-SF01", tpId: 10, tpGameType: 31 },
+	Fishing_SGW: { gameId: "F-SF02", tpId: 10, tpGameType: 31 },
+	Indo4d: { gameId: 223, tpId: 1, tpGameType: 20 },
+	Keno: { gameId: 202, tpId: 1, tpGameType: 5 },
+	lottery: { gameId: 220, tpId: 1, tpGameType: 25 },
+	NumberGame: { gameId: 161, tpId: 1, tpGameType: 2 },
+	sabaClub: { tpId: 1, gameId: 171, tpGameType: 59 },
+	// BTISport: { tpId: 29, tpGameType: 49 },
+	casino_ICG: { tpId: 24, tpGameType: 39 },
+	ICG_DRAGONBALL_FISHING: { tpId: 24, gameId: "cmf0001", tpGameType: 40 },
+	ICG_FISHING_OF_SAVIORS: { tpId: 24, gameId: "cmf0002", tpGameType: 40 },
 	ICG_THE_TYRANT_AND_THE_PRINCESS: {
 		tpId: 24,
-		gameId: "cmf0003"
+		gameId: "cmf0003",
+		tpGameType: 40
 	},
-	V8Poker: { gameId: 0, tpId: 25 },
-	Fishing_AB3: {
-		tpId: 16,
-		gameId: "AB3"
-	},
-	Fishing_AT05: {
-		tpId: 16,
-		gameId: "AT05"
-	},
-	Fishing_AT01: {
-		tpId: 16,
-		gameId: "AT01"
-	},
-	Fishing_AT06: {
-		tpId: 16,
-		gameId: "AT06"
-	},
-	Fishing_AT04: {
-		tpId: 16,
-		gameId: "AT04"
-	},
-	kingMaker: { tpId: 11 },
-	Casino_Jili: { tpId: 32 },
-	tcg: { tpId: 33 }
+	V8Poker: { gameId: 0, tpId: 25, tpGameType: 42 },
+	Fishing_AB3: { tpId: 16, gameId: "AB3", tpGameType: 44 },
+	Fishing_AT05: { tpId: 16, gameId: "AT05", tpGameType: 44 },
+	Fishing_AT01: { tpId: 16, gameId: "AT01", tpGameType: 44 },
+	Fishing_AT06: { tpId: 16, gameId: "AT06", tpGameType: 44 },
+	Fishing_AT04: { tpId: 16, gameId: "AT04", tpGameType: 44 },
+	kingMaker: { tpId: 11, tpGameType: 52 },
+	Casino_Jili: { tpId: 32, tpGameType: 53 },
+	tcg: { tpId: 33, tpGameType: 55 }
 };
 
-const gameList = langId => [
-	{
-		category: "sports",
-		categoryIcon: "sports",
-		translateKey: "lbl_Sports",
-		items: [
-			{
-				...defGameInfo.Sports,
-				icon: "soccer",
-				spanTextKey: "lbl_Sports"
-			},
-			{
-				...defGameInfo.VirtualSports,
-				icon: "virtual-sports",
-				spanTextKey: "lbl_VirtualSports"
-			}
-		]
-	},
-	{
-		category: "cockFighting",
-		categoryIcon: "e-sports",
-		translateKey: "lbl_CockFighting",
-		items: [
-			{
-				...defGameInfo.CockFighting,
-				icon: "e-sports",
-				spanTextKey: "lbl_CockFighting"
-			}
-		]
-	},
-	{
-		category: "game",
-		categoryIcon: "game",
-		translateKey: "lbl_Games",
-		items: [
-			{
-				...defGameInfo.tcg,
-				icon: "tcg",
-				spanTextKey: "lbl_tcg"
-			},
-			{
-				...defGameInfo.sabaClub,
-				icon: "game",
-				spanTextKey: "lbl_Vgaming"
-			},
-			{
-				...defGameInfo.kingMaker,
-				icon: "kingMaker",
-				spanTextKey: "lbl_KingMaker"
-			},
-			{
-				...defGameInfo.Fishing,
-				icon: "game",
-				spanTextKey: "lbl_Fishing"
-			},
-			{
-				...defGameInfo.Keno,
-				icon: "keno",
-				spanTextKey: "lbl_Keno"
-			},
-			{
-				...defGameInfo.lottery,
-				icon: "lottery",
-				spanTextKey: "lbl_Lottery"
-			}
-		]
-	},
-	{
-		category: "eSports",
-		categoryIcon: "e-sports",
-		translateKey: "lbl_eSports",
-		items: [
-			{
-				...defGameInfo.eSports,
-				icon: "e-sports",
-				spanTextKey: "lbl_eSports"
-			}
-		]
-	},
-	{
-		category: "slots",
-		categoryIcon: "casino",
-		translateKey: "lbl_Slots",
-		items: [
-			{
-				...defGameInfo.Casino_All,
-				parameter: { tpId: defGameInfo.Casino_All.tpId }
-			}
-		]
-	},
-	{
-		category: "livecasino",
-		categoryIcon: "livecasino",
-		className: "casinoList",
-		translateKey: "lbl_LiveCasino",
-		items: [
-			{
-				...defGameInfo.Casino_MGP
-			},
-			{
-				...defGameInfo.Casino_PT
-			},
-			{
-				...defGameInfo.LIVEcasinoDG
-			},
-			{
-				...defGameInfo.LIVEcasinoPP
-			},
-			{
-				...defGameInfo.LIVEcasinoAE
-			},
-			{
-				...defGameInfo.LIVEcasinoAG
-			},
-			{
-				...defGameInfo.LIVEcasinoAB
-			},
-			{
-				...defGameInfo.LIVEcasinoSA
-			},
-			{
-				...defGameInfo.LIVEcasinoEB
-			}
-		]
-	},
-	{
-		category: "affiliate",
-		categoryIcon: "affiliate",
-		translateKey: "lbl_Affiliates",
-		href: siteInfo(langId).affiliateLink,
-		items: [
-			{
-				icon: "affiliate",
-				spanTextKey: "lbl_Affiliates"
-			}
-		]
-	}
-];
-
 export const slotPlatform = [
+	{
+		...defGameInfo.Casino_NetEnt,
+		path: path.casino.root,
+		imgName: "ne"
+	},
+	{
+		...defGameInfo.Casino_RedTiger,
+		path: path.casino.root,
+		imgName: "rt"
+	},
 	{
 		...defGameInfo.Casino_PP,
 		path: path.casino.root,
@@ -277,4 +125,85 @@ export const slotPlatform = [
 	}
 ];
 
-export default gameList;
+export const sportStreamDef = {
+	sportSaba: {
+		tpId: 1,
+		gameId: 1,
+		name: "soccer",
+		tpGameType: 1
+	},
+	sabaClub: {
+		tpId: 1,
+		gameId: 171,
+		name: "sabaClub",
+		tpGameType: 59
+	},
+	// sportBti: {
+	// 	tpId: 29,
+	// 	name: "sportBti",
+	// 	tpGameType: 49
+	// },
+	eSport: {
+		tpId: 1,
+		gameId: 43,
+		name: "eSport",
+		tpGameType: 1
+	},
+	soccer: {
+		tpId: 1,
+		gameId: 1,
+		name: "soccer",
+		tpGameType: 1
+	},
+	basketball: {
+		gameId: 2,
+		tpId: 1,
+		name: "basketball",
+		tpGameType: 1
+	},
+	badminton: {
+		gameId: 9,
+		tpId: 1,
+		name: "badminton",
+		tpGameType: 1
+	},
+	football: {
+		gameId: 3,
+		tpId: 1,
+		name: "football",
+		tpGameType: 1
+	},
+	tennis: {
+		gameId: 5,
+		tpId: 1,
+		name: "tennis",
+		tpGameType: 1
+	},
+	hockey: {
+		gameId: 4,
+		tpId: 1,
+		name: "hockey",
+		tpGameType: 1
+	},
+	baseball: {
+		gameId: 8,
+		tpId: 1,
+		name: "baseball",
+		tpGameType: 1
+	}
+};
+
+export const defCol = {
+	sports: "sports",
+	virtualsports: "virtualsports",
+	livecasino: "livecasino",
+	slot: "slot",
+	game: "game",
+	cockFighting: "cockFighting",
+	kelo: "kelo",
+	poker: "poker",
+	affiliate: "affiliate",
+	ranking: "ranking",
+	liveTV: "liveTV",
+	play: "play"
+};

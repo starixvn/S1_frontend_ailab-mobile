@@ -172,7 +172,8 @@ const defSwipperConfig = {
 		clickable: true
 	},
 	rebuildOnUpdate: true,
-	observer: true
+	observer: true,
+	containerClass: "hotevent swiper-container"
 };
 
 export const AutoPlay = props => {

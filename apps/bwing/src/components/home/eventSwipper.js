@@ -51,6 +51,7 @@ const EventSwipper = memo(() => {
 							src={sportTeamsHomePic}
 							alt={sportTeamsHome}
 						/>
+						<div className="time">{datetime}</div>
 						<p className="gameName">
 							{leaguesId === 8 && (
 								<img
@@ -67,7 +68,7 @@ const EventSwipper = memo(() => {
 							alt={sportTeamsAway}
 						/>
 					</div>
-					<div className="teamName">
+					<div className="homeaway">
 						<p>{sportTeamsHome}</p>
 						<p>{sportTeamsAway}</p>
 					</div>
@@ -81,7 +82,6 @@ const EventSwipper = memo(() => {
 							<p>{awayOdds}</p>
 						</div>
 					</div>
-					<div className="time">{datetime}</div>
 				</div>
 			</div>
 		);

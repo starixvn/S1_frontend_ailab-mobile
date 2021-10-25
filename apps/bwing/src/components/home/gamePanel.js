@@ -2,142 +2,60 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { navContext, defNavPanel, popBoxContext } from "../common/context";
-import { defGameInfo } from "../../datas/productList";
 import { api_GetTpIds } from "../../service/api/site";
 import { useGotoGame } from "../hook/useGotoGame";
-import img1 from "../../styles/img/GameList1.png";
-import img2 from "../../styles/img/GameList2.png";
-import img3 from "../../styles/img/GameList3.png";
-import img4 from "../../styles/img/GameList4.png";
-import img5 from "../../styles/img/GameList5.png";
-import img6 from "../../styles/img/GameList15.png";
-import img7 from "../../styles/img/GameList7.png";
-import img8 from "../../styles/img/GameList8.png";
-import img9 from "../../styles/img/GameList9.png";
-import img10 from "../../styles/img/GameList10.png";
-import img11 from "../../styles/img/GameList11.png";
-import img12 from "../../styles/img/GameList12.png";
-import one789_TraditionalLottery from "../../styles/img/GameList16.png";
-import one789_LiveCasino from "../../styles/img/GameList13.png";
-import one789_Lottery from "../../styles/img/GameList14.png";
+import path from "../../path";
+import { productList } from "../../datas/defMenu";
+import { defGameInfo } from "../../datas/productList";
+import img789lottery from "../../styles/img/maingame/789lottery.png";
+import img789se from "../../styles/img/maingame/789se.png";
+import imgVgaming from "../../styles/img/maingame/vgaming.png";
+import imgVirtual from "../../styles/img/maingame/virtual.png";
+import imgSabakeno from "../../styles/img/maingame/sabakeno.png";
+
 import {
 	useGetTpMaintainList,
 	defTpGameType
 } from "../hook/useGetTpMaintainList";
 
+const defGameType = {
+	default: "default",
+	casino: "casino"
+};
+
 const defGameList = [
 	{
-		...defGameInfo.Sports,
-		img: img1,
-		displayKey: "lbl_Soccer",
-		tpGameType: 1
-	},
-	{
-		...defGameInfo.One789_lottery,
-		img: one789_TraditionalLottery,
-		displayKey: "lbl_TraditionalLottery",
-		tpGameType: 35
-	},
-
-	{
 		...defGameInfo.One789_lottery_789,
-		img: one789_Lottery,
 		displayKey: "lbl_789Lottery",
-		tpGameType: 36
+		img: img789lottery,
+		gameType: defGameType.default
 	},
 	{
 		...defGameInfo.LIVEcasinoOne789,
-		img: one789_LiveCasino,
 		displayKey: "lbl_liveCasino_789SeDie",
-		tpGameType: 37
+		img: img789se,
+		gameType: defGameType.default
 	},
 	{
-		img: img2,
-		displayKey: "lbl_Saba1Club1",
-		tpId: 1,
-		gameId: 200,
-		betType: 1613,
-		tpGameType: 25
+		...defGameInfo.sabaClub,
+		displayKey: "lbl_Vgaming",
+		img: imgVgaming,
+		gameType: defGameType.default
 	},
 	{
-		img: img3,
-		displayKey: "lbl_Saba1Club2",
-		tpId: 1,
-		gameId: 200,
-		betType: 1620,
-		tpGameType: 25
-	},
-	{
-		img: img4,
-		displayKey: "lbl_Saba1Club3",
-		tpId: 1,
-		gameId: 200,
-		betType: 1612,
-		tpGameType: 25
-	},
-	{
-		img: img5,
-		displayKey: "lbl_Saba1Club5",
-		tpId: 1,
-		gameId: 200,
-		betType: 1614,
-		tpGameType: 25
-	},
-	{
-		img: img6,
-		displayKey: "AE Baccarat",
-		tpId: 15,
-		gameId: 15,
-		tpGameType: 18
-	},
-	{
-		img: img7,
-		displayKey: "lbl_dream_gaming_se_die",
-		tpId: 4,
-		tpGameType: 10
-	},
-	{
-		img: img8,
-		displayKey: "lbl_eSports",
-		tpId: 1,
-		gameId: 43,
-		tpGameType: 10
-	},
-	{
-		img: img9,
-		displayKey: "lbl_FishingGG",
-		tpId: 7,
-		gameId: 1,
-		tpGameType: 12
-	},
-	{
-		img: img10,
+		...defGameInfo.VirtualSports,
+		subPath: path.sports.root,
 		displayKey: "lbl_VirtualSports",
-		tpId: 1,
-		gameId: 180,
-		tpGameType: 3
+		img: imgVirtual,
+		gameType: defGameType.default,
+		parameter: { ...productList.virtualSports }
 	},
 	{
-		img: img11,
+		...defGameInfo.Keno,
 		displayKey: "lbl_Keno",
-		tpId: 1,
-		gameId: 202,
-		tpGameType: 5
-	},
-	{
-		img: img12,
-		displayKey: "lbl_Lottery",
-		tpId: 1,
-		gameId: 220,
-		tpGameType: 19
+		img: imgSabakeno,
+		gameType: defGameType.default
 	}
-	// {
-	// 	img: require("../../styles/img/GameList8.jpg"),
-	// 	displayKey: "lbl_Casino_PP_FireStrike",
-	// 	tpId: 5,
-	// 	gameId: "vs10firestrike",
-	// 	linkType: defLinkType.casino
-	// }
 ];
 
 const GamePanel = ({ i18n, userInfo }) => {
@@ -189,6 +107,7 @@ const GamePanel = ({ i18n, userInfo }) => {
 				(m.tpGameType === tpGameType ||
 					m.tpGameType === defTpGameType.All)
 		);
+
 		if (underMaintain) {
 			setPopBox({
 				isOpen: true,
@@ -224,9 +143,15 @@ const GamePanel = ({ i18n, userInfo }) => {
 		})
 		.map(g => {
 			const displayText = i18n[g.displayKey] ?? g.displayKey;
+			const underMaintain = maintainList?.some(
+				m =>
+					m.tpId === g.tpId &&
+					(m.tpGameType === g.tpGameType ||
+						m.tpGameType === defTpGameType.All)
+			);
 			return (
-				<div
-					className="gameArea-box"
+				<a
+					className={underMaintain ? "under" : ""}
 					key={`promoGameList-${g.displayKey}`}
 					onClick={ClickGame.bind(this, {
 						tpId: g.tpId,
@@ -236,14 +161,13 @@ const GamePanel = ({ i18n, userInfo }) => {
 						tpGameType: g.tpGameType
 					})}>
 					<img src={g.img} alt={displayText} />
-					<div className="gameArea-box-text">
-						<p>{displayText}</p>
-					</div>
-				</div>
+					<div className="title">{displayText}</div>
+					<div className="underBtn">{i18n.lbl_underMaintenance}</div>
+				</a>
 			);
 		});
 
-	return <div className="gameArea">{rows}</div>;
+	return <div className="maingame">{rows}</div>;
 };
 
 GamePanel.defaultProps = {

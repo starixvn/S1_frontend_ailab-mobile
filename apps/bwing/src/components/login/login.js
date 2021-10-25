@@ -29,7 +29,7 @@ const initStatus = {
 	}
 };
 
-const LoginPage = ({ ButtonTitle, hideBtn }) => {
+const LoginPage = ({ ButtonTitle, hideBtn = false }) => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -154,7 +154,9 @@ const LoginPage = ({ ButtonTitle, hideBtn }) => {
 	return (
 		<>
 			{hideBtn ? null : (
-				<button onClick={handleloginPanel.bind(this, showPanel)}>
+				<button
+					className="login"
+					onClick={handleloginPanel.bind(this, showPanel)}>
 					{ButtonTitle}
 				</button>
 			)}

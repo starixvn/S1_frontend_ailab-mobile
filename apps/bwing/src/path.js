@@ -161,5 +161,8 @@ export default {
 	},
 	appDownload: {
 		root: "appDownload"
+	},
+	streaming: {
+		root: "streaming"
 	}
 };
