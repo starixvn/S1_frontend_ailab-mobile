@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Redirect, Link, useNavigate } from "@reach/router";
+import { Redirect, Link, useLocation, useNavigate } from "@reach/router";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
 import {
 	i18nContext,
 	userInfoContext,
 	popBoxContext,
-	rootContext
+	rootContext,
+	navContext
 } from "../components/common/context";
 import {
 	readCookie,
@@ -14,10 +15,15 @@ import {
 	isEventPeriod
 } from "../components/common/common";
 import path from "../path";
+import { GetPageInfo } from "../components/common/layout";
 import { api_GetWalletInfo } from "../service/api/account";
+import Streaming from "../components/home/streaming";
 import GamePanel from "../components/home/gamePanel";
+import JoinPanel from "../components/join/join.refactor";
+import LoginPanel from "../components/login/login";
 import LinksPanel from "../components/home/links";
 import EventSwipper from "../components/home/eventSwipper";
+import HotGameSwipper from "../components/home/hotGameSwipper";
 import jackpot from "../styles/img/jackpot.png";
 import winner_vn from "../styles/img/EURO_Bwing/EURO-Bwing-VN.jpg";
 import winner_en from "../styles/img/EURO_Bwing/EURO-Bwing-EN.jpg";
@@ -26,6 +32,7 @@ import AddToHomePop from "../components/home/addToHomePop";
 import Top10Winner from "../components/home/top10winner";
 import config from "../config";
 import { useGetDomainList } from "../components/hook/useGetDomainList";
+import GameList from "../components/home/menu";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -39,6 +46,15 @@ const IndexPage = () => {
 		userInfo,
 		i18n
 	});
+
+	const { root } = useContext(rootContext);
+
+	const location = useLocation();
+	const pageInfo = GetPageInfo(location.pathname);
+
+	if (root) {
+		pageInfo.className = userInfo.isLogin ? "mainLogin" : "mainLogout";
+	}
 
 	useEffect(() => {
 		if (redirectPath !== null) {
@@ -206,11 +222,23 @@ const IndexPage = () => {
 		<>
 			<Slider />
 			<Marquee />
+			{userInfo.isLogin === false && (
+				<div className="loginbut">
+					<LoginPanel
+						hideBtn={false}
+						ButtonTitle={i18n.lbl_Login.toUpperCase()}
+					/>
+					<JoinPanel hideBtn={false} />
+				</div>
+			)}
+			<GameList i18n={i18n} userInfo={userInfo} />
+			<EventSwipper />
+			<GamePanel i18n={i18n} userInfo={userInfo} />
+			<HotGameSwipper i18n={i18n} userInfo={userInfo} />
 			<PlaytechJactpot />
 			<Top10Winner i18n={i18n} />
-			<EventSwipper />
+			<Streaming />
 			{/* <MidBanner langId={userInfo.langId} /> */}
-			<GamePanel i18n={i18n} userInfo={userInfo} />
 			<LinksPanel i18n={i18n} langId={userInfo.langId} />
 			<AddToHomePop i18n={i18n} userInfo={userInfo} />
 		</>

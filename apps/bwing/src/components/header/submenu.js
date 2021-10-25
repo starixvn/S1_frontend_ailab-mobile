@@ -8,64 +8,17 @@ import {
 	defNavPanel,
 	popBoxContext
 } from "../common/context";
-import path from "../../path";
 // import ReloadSpin from "../common/reloadSpin";
-import { defGameInfo } from "../../datas/productList";
+import { defSubMenus } from "../../datas/defMenu";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
+import {
+	useGetTpMaintainList,
+	defTpGameType
+} from "../hook/useGetTpMaintainList";
 import ShortcutBar from "./shortcutBar";
 import LangDropdown from "../common/dropdown.language";
-import { siteInfo } from "../../config";
 import { api_SetLanguage } from "../../service/api/account";
 import { useGetBalance } from "./hook";
-import { isEventPeriod } from "../common/common";
-
-const defSubMenus = langId => [
-	{
-		displayKey: "lbl_Sports",
-		path: `/${path.sports.root}`
-	},
-	// {
-	// 	...defGameInfo.CockFighting,
-	// 	displayKey: "lbl_CockFighting",
-	// 	icon: "icon icon-cock"
-	// },
-	{
-		displayKey: "lbl_Games",
-		path: `/${path.games.root}`
-	},
-	{
-		...defGameInfo.eSports,
-		displayKey: "lbl_eSports"
-	},
-	{
-		displayKey: "lbl_Slots",
-		path: `/${path.casino.root}`
-	},
-	{
-		displayKey: "lbl_LiveCasino",
-		path: `/${path.liveCasino.root}`
-	},
-	{
-		displayKey: "lbl_Fishing",
-		path: `/${path.fishing.root}`
-	},
-	{
-		displayKey: "lbl_Promotions",
-		path: `/${path.promotion.root}`
-	},
-	{
-		displayKey: "lbl_APP_DOWNLOAD",
-		path: `/${path.appDownload.root}`
-	},
-	{
-		displayKey: "lbl_Affiliates",
-		href: siteInfo(langId).affiliateLink
-	},
-	{
-		displayKey: "lbl_Other",
-		path: `/${path.other.root}`
-	}
-];
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
@@ -73,7 +26,7 @@ export default () => {
 	const { nav, setNav } = useContext(navContext);
 	const [isOpenSubMenu, setIsOpenSubMenu] = useState([]);
 	const { setPopBox } = useContext(popBoxContext);
-
+	const { maintainList } = useGetTpMaintainList();
 	const { allBalance } = useGetBalance({
 		isLogin: userInfo.isLogin,
 		i18n,
@@ -151,6 +104,7 @@ export default () => {
 				closeNavPanel={closeNavPanel}
 				handleSubMenu={handleSubMenu}
 				isOpenSubMenu={isOpenSubMenu}
+				maintainList={maintainList}
 			/>
 		</div>
 	);
@@ -162,8 +116,17 @@ const SubMenuList = ({
 	setNav,
 	closeNavPanel,
 	handleSubMenu,
-	isOpenSubMenu
+	isOpenSubMenu,
+	maintainList
 }) => {
+	const isUnderMaintain = ({ tpId, tpGameType }) =>
+		maintainList?.some(
+			m =>
+				m.tpId === tpId &&
+				(m.tpGameType === tpGameType ||
+					m.tpGameType === defTpGameType.All)
+		);
+
 	const clickGame = ({ tpId, gameId, tpGameType }) => {
 		GET_ENTER_PAGE({
 			langId: userInfo.langId,
@@ -176,29 +139,46 @@ const SubMenuList = ({
 			tpGameType
 		});
 	};
-
 	const openLink = href => {
 		window.open(href, "_blank");
 	};
-
-	const rows = defSubMenus(userInfo.langId)
-		?.filter(s => !s.eventPeriod || isEventPeriod({ ...s.eventPeriod }))
+	const rows = defSubMenus()
+		?.filter(
+			s =>
+				s.subItems ||
+				!isUnderMaintain({ tpId: s.tpId, tpGameType: s.tpGameType })
+		)
 		.map(s => {
 			const key = `submenu-${s.displayKey}`;
 			let hasSubItem = false;
 			let _subItems = null;
 
 			if (s.subItems) {
-				const subItemContent = s.subItems?.map(c => {
-					return (
-						<li
-							key={`${key}-${c.displayKey}`}
-							onClick={clickGame.bind(this, c)}>
-							{i18n[c.displayKey] ?? c.displayKey}
-							{_subItems}
-						</li>
-					);
-				});
+				const subItemContent = s.subItems
+					?.filter(
+						c =>
+							!isUnderMaintain({
+								tpId: c.tpId,
+								tpGameType: c.tpGameType
+							})
+					)
+					.map(c => {
+						return (
+							<li
+								key={`${key}-${c.displayKey}`}
+								onClick={() =>
+									clickGame({
+										tpId: c.tpId,
+										gameId: c.gameId,
+										userInfo,
+										tpGameType: c.tpGameType
+									})
+								}>
+								{i18n[c.displayKey] ?? c.displayKey}
+								{_subItems}
+							</li>
+						);
+					});
 
 				hasSubItem = subItemContent.length > 0;
 				if (hasSubItem) {
@@ -228,7 +208,6 @@ const SubMenuList = ({
 					);
 				}
 			}
-
 			if (s.path) {
 				return (
 					<Link
@@ -236,8 +215,8 @@ const SubMenuList = ({
 						onClick={closeNavPanel}
 						key={key}
 						className="menuNavTitle">
-						{i18n[s.displayKey].toUpperCase() ??
-							s.displayKey.toUpperCase()}
+						{i18n[s.displayKey]?.toUpperCase() ??
+							s.displayKey?.toUpperCase()}
 						{_subItems}
 					</Link>
 				);
@@ -249,8 +228,8 @@ const SubMenuList = ({
 						key={key}
 						onClick={openLink.bind(this, s.href)}>
 						<div className="menuNavText">
-							{i18n[s.displayKey].toUpperCase() ??
-								s.displayKey.toUpperCase()}
+							{i18n[s.displayKey]?.toUpperCase() ??
+								s.displayKey?.toUpperCase()}
 						</div>
 					</div>
 				);
@@ -264,8 +243,8 @@ const SubMenuList = ({
 					key={key}
 					onClick={clickGame.bind(this, s)}
 					className="menuNavTitle">
-					{i18n[s.displayKey].toUpperCase() ??
-						s.displayKey.toUpperCase()}
+					{i18n[s.displayKey]?.toUpperCase() ??
+						s.displayKey?.toUpperCase()}
 				</button>
 			);
 		});

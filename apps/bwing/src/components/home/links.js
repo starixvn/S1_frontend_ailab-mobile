@@ -5,6 +5,7 @@ import TandC from "../../service/t_and_c";
 import Bong88 from "../../styles/img/bong88.png";
 import path from "../../path";
 import { useAppDownLoad } from "../appDownload/useAppDownLoad";
+import { defPlatform } from "./defPlatform";
 
 export default ({ i18n, langId }) => {
 	return (
@@ -127,40 +128,10 @@ const ContactUs = ({ i18n, langId }) => {
 	);
 };
 
-const defPlatform = [
-	"saba",
-	"ab",
-	"yl",
-	"ag",
-	"gp",
-	"dg",
-	"sa",
-	"yg",
-	"pp",
-	"sg",
-	"pg",
-	"ae",
-	"wm",
-	"cq9",
-	"one789",
-	"icg",
-	"v8",
-	"n2live",
-	"playtech",
-	"bti",
-	"kingmaker",
-	"jili",
-	"mg"
-];
-
 const Platforms = ({ i18n }) => {
 	const platformRows = defPlatform.map(item => {
 		return (
-			<img
-				key={`platform-${item}`}
-				alt="logo"
-				src={`${config.imgUrl}/common/images/logo/${item}.png`}
-			/>
+			<img key={`platform-${item.name}`} alt={item.name} src={item.img} />
 		);
 	});
 

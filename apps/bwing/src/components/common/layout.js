@@ -1,12 +1,10 @@
 import React, { useContext, Component } from "react";
 import PropTypes from "prop-types";
-import { useMatch, useLocation, Link } from "@reach/router";
+import { useLocation, Link } from "@reach/router";
 import Footer from "./footer";
 import Header from "../header/header";
 import {
-	navContext,
 	i18nContext,
-	defNavPanel,
 	loadingContext,
 	rootContext,
 	userInfoContext
@@ -19,7 +17,7 @@ import eventVNImg from "../../styles/img/event/angPao_vn.png";
 import MysteryBox from "../mysteryBox/homePopBox";
 import { eventTime } from "./eventTime";
 
-const defPageInfo = {
+export const defPageInfo = {
 	default: {
 		titleKey: "",
 		className: "",
@@ -158,36 +156,51 @@ const defPageInfo = {
 	},
 	sports: {
 		titleKey: "",
-		className: "mainLogin",
+		className: "main",
 		hideLogo: false,
 		showMenuBar: true
 	},
 	fishing: {
-		className: "mainLogin",
+		className: "main",
 		hideLogo: false,
 		showMenuBar: true
 	},
 	liveCasino: {
 		titleKey: "",
-		className: "mainLogin",
+		className: "main",
 		hideLogo: false,
 		showMenuBar: true
 	},
 	games: {
 		titleKey: "",
-		className: "mainLogin",
+		className: "main",
 		hideLogo: false,
 		showMenuBar: true
+	},
+	streaming: {
+		titleKey: "lbl_LiveStreaming",
+		className: "main",
+		hideLogo: true,
+		showMenuBar: true,
+		customHeader: true
+	},
+	home: {
+		titleKey: "",
+		className: "",
+		hideLogo: false,
+		showMenuBar: true,
+		hideBtn: true,
+		hideModal: true
 	}
 };
 
-const GetPageInfo = locationPath => {
+export const GetPageInfo = locationPath => {
 	const result = defPageInfo[locationPath];
 	if (result) {
 		return result;
 	}
 	let pageInfoKey =
-		locationPath === "/"
+		locationPath === path.home.root
 			? []
 			: Object.keys(path).filter(p => {
 					const _location = locationPath.split("/");
@@ -196,6 +209,7 @@ const GetPageInfo = locationPath => {
 
 	pageInfoKey = pageInfoKey?.length > 0 ? pageInfoKey[0] : null;
 	const pageInfo = defPageInfo[pageInfoKey] ?? null;
+	if (locationPath === path.home.root) return defPageInfo.home;
 	return pageInfoKey && pageInfo
 		? { ...pageInfo, pageInfoKey }
 		: defPageInfo.default;
@@ -203,11 +217,9 @@ const GetPageInfo = locationPath => {
 
 const Layout = ({ children }) => {
 	const { i18n } = useContext(i18nContext);
-	const { nav } = useContext(navContext);
 	const { loading } = useContext(loadingContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { root } = useContext(rootContext);
-
 	const location = useLocation();
 	const pageInfo = GetPageInfo(location.pathname);
 
@@ -215,24 +227,24 @@ const Layout = ({ children }) => {
 		pageInfo.className = userInfo.isLogin ? "mainLogin" : "mainLogout";
 	}
 
-	const _matchLogin = useMatch(`/${path.login.root}`) !== null;
-	const position =
-		nav === defNavPanel.login || _matchLogin || nav === defNavPanel.join
-			? { position: "fixed" }
-			: {};
-
 	return (
 		<>
 			<RotationHint i18n={i18n} />
-			<Header
-				title={i18n[pageInfo.titleKey] ?? pageInfo.titleKey}
-				hideLogo={pageInfo.hideLogo}
-				showMenuBar={pageInfo.showMenuBar === true}
-			/>
-			<main style={position} className={pageInfo.className ?? ""}>
-				{children}
-				{loading ? <Loading /> : null}
-			</main>
+			{pageInfo.customHeader ? (
+				children
+			) : (
+				<>
+					<Header
+						hideModal={pageInfo.hideModal}
+						hideBtn={pageInfo.hideBtn}
+						title={i18n[pageInfo.titleKey] ?? pageInfo.titleKey}
+						hideLogo={pageInfo.hideLogo}
+						showMenuBar={pageInfo.showMenuBar === true}
+					/>
+					<main className={pageInfo.className ?? ""}>{children}</main>
+				</>
+			)}
+			{loading ? <Loading /> : null}
 			<Footer />
 			{isEventPeriod(eventTime.mysteryBox) ? <MysteryBox /> : null}
 		</>

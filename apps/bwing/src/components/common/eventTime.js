@@ -8,5 +8,8 @@ export const eventTime = {
 	nationalIndependenceDayTheme: {
 		startDate: "2021/08/24 00:00:00"
 		// endDate: "2021/09/10 12:00:00"
-	}
+	},
+	liveCasino_evo: { endDate: "2021/10/27 11:00:00" },
+	casino_NetEnt: { endDate: "2021/10/27 11:00:00" },
+	casino_RedTiger: { endDate: "2021/10/27 11:00:00" }
 };

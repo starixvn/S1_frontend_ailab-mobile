@@ -8,5 +8,5 @@ const getLogo = () =>
 	isEventPeriod(eventTime.nationalIndependenceDayTheme) ? EventLogo : Logo;
 
 export default () => {
-	return <img src={getLogo()} alt="logo" />;
+	return <img className="logoImg" src={getLogo()} alt="logo" />;
 };

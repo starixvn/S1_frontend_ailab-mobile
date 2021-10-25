@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Link } from "@reach/router";
+import { Link, useNavigate } from "@reach/router";
 import { productList, defIconType } from "../../datas/defMenu";
 import { api_GetTpIds } from "../../service/api/site";
 
-const HeaderMenu = ({ i18n, OnClickProduct, userInfo }) => {
+const HeaderMenu = ({ i18n, userInfo }) => {
 	const [showingTpIds, setShowningTpIds] = useState(null);
 
 	useEffect(() => {
@@ -23,11 +23,7 @@ const HeaderMenu = ({ i18n, OnClickProduct, userInfo }) => {
 				<ProductItem
 					key={`header-menu-${product.displayKey}`}
 					spanText={i18n[product.displayKey]}
-					OnClickProduct={OnClickProduct.bind(this, {
-						...product,
-						langId: userInfo.langId,
-						isLogin: userInfo.isLogin
-					})}
+					icon_img={product.icon_img}
 					subIcon={product.items?.filter(
 						subItem =>
 							subItem.eventIcon &&
@@ -44,6 +40,7 @@ const HeaderMenu = ({ i18n, OnClickProduct, userInfo }) => {
 			<ProductLinkItem
 				key={`header-menu-${product.displayKey}`}
 				spanText={i18n[product.displayKey]}
+				icon_img={product.icon_img}
 				productPath={product.path}
 				href={product.href}
 				subIcon={product.items?.filter(
@@ -64,16 +61,22 @@ const HeaderMenu = ({ i18n, OnClickProduct, userInfo }) => {
 
 HeaderMenu.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	OnClickProduct: PropTypes.func.isRequired,
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
-const ProductItem = ({ spanText, OnClickProduct, subIcon, eventIcon }) => {
+const ProductItem = ({
+	spanText,
+	OnClickProduct,
+	subIcon,
+	eventIcon,
+	icon_img
+}) => {
 	const showingEventIcon = getEventIcon({ subIcon, eventIcon });
 	return (
-		<button onClick={OnClickProduct} className={`nav${showingEventIcon}`}>
+		<div onClick={OnClickProduct} className={`nav${showingEventIcon}`}>
+			<img src={icon_img} alt={spanText} />
 			{spanText.toUpperCase()}
-		</button>
+		</div>
 	);
 };
 
@@ -94,22 +97,28 @@ const ProductLinkItem = ({
 	productPath,
 	href,
 	subIcon,
-	eventIcon
+	eventIcon,
+	icon_img
 }) => {
 	const { pathname } = window.location;
 	const showingEventIcon = getEventIcon({ subIcon, eventIcon });
+	const navigate = useNavigate();
 
 	return productPath ? (
-		<Link
-			to={`/${productPath}`}
+		<div
+			onClick={() => navigate(`/${productPath}`)}
 			className={`nav${showingEventIcon} ${
 				pathname === `/${productPath}` ? " active" : ""
 			}`}>
+			<img src={icon_img} alt={spanText} />
 			{spanText.toUpperCase()}
-		</Link>
+		</div>
 	) : (
-		<a target="_blank" rel="noreferrer" href={href} className="nav">
-			{spanText.toUpperCase()}
+		<a href={href}>
+			<div className="nav">
+				<img src={icon_img} alt={spanText} />
+				{spanText.toUpperCase()}
+			</div>
 		</a>
 	);
 };

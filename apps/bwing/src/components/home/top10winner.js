@@ -45,7 +45,7 @@ const Top10winner = ({ i18n }) => {
 		getRank();
 	}, []);
 	return (
-		<div className="top10Aear">
+		<div className="top10win">
 			<div className="topImg" />
 			<div className="title">{i18n.lbl_Top10winners}</div>
 			<div className="top10Box">
