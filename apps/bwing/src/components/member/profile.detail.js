@@ -470,7 +470,7 @@ const Panel = () => {
 					<div className="inputBox parts" data-testid="phoneCol">
 						<span className="countryCode">{_areaCode}</span>
 						<Inputbox
-							_class="inputBox"
+							_class="input-Area"
 							inputType="tel"
 							onBlur={checkInputboxHandler.bind(null, "PhoneNo")}
 							onChange={EditField.bind(null, "PhoneNo")}
