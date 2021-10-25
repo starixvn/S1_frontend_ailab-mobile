@@ -47,8 +47,8 @@ export const defPlatform = [
 	{ name: "kingmaker", img: kingmaker },
 	// { name: "bti", img: bti },
 	{ name: "jili", img: jili },
-	{ name: "mg", img: mg },
-	{ name: "evo", img: evo },
-	{ name: "ne", img: ne },
-	{ name: "redtiger", img: redtiger }
+	{ name: "mg", img: mg }
+	// { name: "evo", img: evo },
+	// { name: "ne", img: ne },
+	// { name: "redtiger", img: redtiger }
 ];
