@@ -143,7 +143,7 @@ const Platforms = ({ i18n }) => {
 				<img src={Bong88} alt="" />
 			</div>
 			<div className="copyright">
-				<span>© COPYRIGHT 2020. BWING. ALL RIGHTS RESERVED.</span>
+				<span>{`© COPYRIGHT ${new Date().getFullYear()}. BWING. ALL RIGHTS RESERVED.`}</span>
 			</div>
 		</>
 	);
