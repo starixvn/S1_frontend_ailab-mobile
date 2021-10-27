@@ -65,7 +65,7 @@ const BankInfo = () => {
 								id: i.sysId,
 								sysId: i.sysId,
 								bankName: i.bankName,
-								image: i.bankLogo,
+								image: i.bankLogo?.toLowerCase(),
 								displayText: i.bankName
 							};
 						});
@@ -364,7 +364,9 @@ const BankInfo = () => {
 				removeAccountHandler={removeAccountHandler.bind(null, {
 					account: item
 				})}
-				image={`${config.imgUrl}/common/images/BankLogo/${item.image}`}
+				image={`${
+					config.imgUrl
+				}/common/images/BankLogo/${item.image?.toLowerCase()}`}
 				className="bankLogo"
 			/>
 		);

@@ -220,7 +220,9 @@ const Payment = props => {
 					<>
 						<p>{i18n.lbl_ConfirmDeposit}</p>
 						<img
-							src={`${config.imgUrl}/common/images/LoadCardPay/${selChannel.groupName}.png`}
+							src={`${
+								config.imgUrl
+							}/common/images/LoadCardPay/${selChannel.groupName?.toLowerCase()}.png`}
 							alt={selChannel.channelName}
 						/>
 						<div>

@@ -92,7 +92,9 @@ export default ({ i18n, accountName, custBankList, reload }) => {
 				data-testid="account">
 				<img
 					alt="BankLogo"
-					src={`${config.imgUrl}/common/images/BankLogo/${item.image}`}
+					src={`${
+						config.imgUrl
+					}/common/images/BankLogo/${item.image?.toLowerCase()}`}
 				/>
 				<p>{item.accountNo}</p>
 				<button

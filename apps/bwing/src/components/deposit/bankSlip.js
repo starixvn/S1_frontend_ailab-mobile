@@ -245,7 +245,9 @@ class Content extends Component {
 									)
 								}>
 								<img
-									src={`${config.imgUrl}/common/images/BankLogo/${bankSlipPopBox.bankLogo}`}
+									src={`${
+										config.imgUrl
+									}/common/images/BankLogo/${bankSlipPopBox.bankLogo?.toLowerCase()}`}
 									alt={bankSlipPopBox.bankName}
 								/>
 								<span>{bankSlipPopBox.bankName}</span>
