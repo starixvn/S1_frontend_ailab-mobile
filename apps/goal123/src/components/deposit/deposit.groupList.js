@@ -28,7 +28,9 @@ const GroupList = ({
 				id={`${_mainKey}-radio`}
 				radioGroup={mainKey}
 				imgUrl={`${prefixImgUrl}${
-					imgKeyWithExtension ? data[imgKey] : `${data[imgKey]}.png`
+					imgKeyWithExtension
+						? data[imgKey]?.toLowerCase()
+						: `${data[imgKey]?.toLowerCase()}.png`
 				}`}
 				imgAlt={data[imgKey] ?? ""}
 				onChange={SelectPayment.bind(

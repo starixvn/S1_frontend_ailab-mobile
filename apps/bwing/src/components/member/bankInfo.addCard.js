@@ -152,7 +152,9 @@ export default ({
 			<div className="img3Box" key={`addBankAccount-${item.sysId}`}>
 				<img
 					onClick={selectBank.bind(this, i)}
-					src={`${config.imgUrl}/common/images/BankLogo/${item.bankLogo}`}
+					src={`${
+						config.imgUrl
+					}/common/images/BankLogo/${item.bankLogo?.toLowerCase()}`}
 					alt={item.bankName}
 				/>
 			</div>
@@ -196,7 +198,11 @@ export default ({
 						<div className="img3Box">
 							<img
 								alt="BankLogo"
-								src={`${config.imgUrl}/common/images/BankLogo/${siteBankList[bankSelectedIdx]?.bankLogo}`}
+								src={`${
+									config.imgUrl
+								}/common/images/BankLogo/${siteBankList[
+									bankSelectedIdx
+								]?.bankLogo?.toLowerCase()}`}
 							/>
 						</div>
 					</div>

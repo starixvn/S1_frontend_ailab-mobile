@@ -128,7 +128,9 @@ const Payment = props => {
 					<>
 						<p>{i18n.lbl_ConfirmDeposit}</p>
 						<img
-							src={`${config.imgUrl}/common/images/MobilePay/${selChannel.groupName}.png`}
+							src={`${
+								config.imgUrl
+							}/common/images/MobilePay/${selChannel.groupName?.toLowerCase()}.png`}
 							alt={selChannel.groupName}
 						/>
 						<div className="tip">

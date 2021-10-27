@@ -534,7 +534,9 @@ const Panel = () => {
 				key={`withdrawal-bank-${b.sysId}-${b.accountNo}`}
 				onClick={SelectBank.bind(this, b)}>
 				<img
-					src={`${config.imgUrl}/common/images/BankLogo/${b.bankLogo}`}
+					src={`${
+						config.imgUrl
+					}/common/images/BankLogo/${b.bankLogo?.toLowerCase()}`}
 					alt={b.bankName}
 				/>
 			</button>

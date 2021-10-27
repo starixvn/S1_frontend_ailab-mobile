@@ -251,7 +251,9 @@ const Payment = props => {
 						<>
 							<p>{i18n.lbl_ConfirmDeposit}</p>
 							<img
-								src={`${config.imgUrl}/common/images/BankLogo/${selBank.bankLogo}`}
+								src={`${
+									config.imgUrl
+								}/common/images/BankLogo/${selBank.bankLogo?.toLowerCase()}`}
 								alt={selBank.bankName}
 							/>
 							<div>
@@ -529,7 +531,9 @@ const GroupList = ({
 				id={`${_mainKey}-radio`}
 				radioGroup={mainKey}
 				imgUrl={`${prefixImgUrl}${
-					imgKeyWithExtension ? data[imgKey] : `${data[imgKey]}.png`
+					imgKeyWithExtension
+						? data[imgKey]?.toLowerCase()
+						: `${data[imgKey]?.toLowerCase()}.png`
 				}`}
 				imgAlt={data[imgKey] ?? ""}
 				onChange={SelectPayment.bind(

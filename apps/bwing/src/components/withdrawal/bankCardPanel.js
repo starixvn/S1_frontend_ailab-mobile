@@ -132,7 +132,9 @@ const BankCard = props => {
 			<div className="addBankInfo">
 				<div className="bankName">
 					<img
-						src={`${config.imgUrl}/common/images/BankLogo/${props.bankLogo}`}
+						src={`${
+							config.imgUrl
+						}/common/images/BankLogo/${props.bankLogo?.toLowerCase()}`}
 						alt={props.bankName}
 					/>
 				</div>

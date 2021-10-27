@@ -139,7 +139,9 @@ const Main = props => {
 				<div className="account">
 					<div className="bankLogo">
 						<img
-							src={`${config.imgUrl}/common/images/MobilePay/${paymentInfo.groupName}.png`}
+							src={`${
+								config.imgUrl
+							}/common/images/MobilePay/${paymentInfo.groupName?.toLowerCase()}.png`}
 							alt={paymentInfo.groupName}
 						/>
 					</div>

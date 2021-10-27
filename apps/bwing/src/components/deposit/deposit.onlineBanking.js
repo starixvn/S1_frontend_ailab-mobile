@@ -182,7 +182,9 @@ const Payment = props => {
 						<>
 							<p>{i18n.lbl_ConfirmDeposit}</p>
 							<img
-								src={`${config.imgUrl}/common/images/BankLogo/${bankLogo}`}
+								src={`${
+									config.imgUrl
+								}/common/images/BankLogo/${bankLogo?.toLowerCase()}`}
 								alt={bankName}
 							/>
 							<div>
