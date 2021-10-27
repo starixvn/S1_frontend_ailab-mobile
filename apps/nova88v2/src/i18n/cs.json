@@ -394,6 +394,7 @@
 	"lbl_CryptoWithdrawal":"加密货币提款",
 	"lbl_ReceiveUSDT":"USDT款项到账",
 	"lbl_WithdrawalCryptoNote":"汇率仅供参考, 详细到帐金额将由当时汇率决定",
+	
 	"-==================--=========================Transfer--==================================": "",
 	"lbl_Wallet_Saba": "体育钱包",
 	"lbl_MaxAmount": "总金额",
@@ -633,6 +634,8 @@
 	"lbl_Rate":"汇率",
 	"lbl_USDT_Amount":"泰达币金额",
 	"lbl_Crypto_OTP":"使用虚拟货币存款服务前，请先完成手机 OTP 验证。",
+	"lbl_CashbackAmount": "返现金额",
+	"lbl_ReceivedAmount": "到账金额",
 
 	"=============Download App===============":"",
 	"lbl_Downloads":"下载",

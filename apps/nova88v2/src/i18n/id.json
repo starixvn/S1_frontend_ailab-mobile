@@ -646,6 +646,8 @@
     "lbl_Rate":"Kurs",
     "lbl_USDT_Amount":"Jumlah USDT",
     "lbl_Crypto_OTP":"Verifikasi nomor telepon (OTP) diperlukan sebelum deposit untuk layanan Crypto.",
+    "lbl_CashbackAmount": "Jumlah Cashback",
+	"lbl_ReceivedAmount": "Jumlah yang diterima",
 
 
     "=============Download App===============":"",

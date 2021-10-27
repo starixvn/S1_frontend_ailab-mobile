@@ -1,7 +1,12 @@
 import React, { useContext, useState, useEffect, useRef, useMemo } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
-import { i18nContext, userInfoContext, popBoxContext } from "Context";
+import {
+	i18nContext,
+	userInfoContext,
+	popBoxContext,
+	loadingContext
+} from "Context";
 import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
 import PageVerify from "./deposit.pageVerify";
@@ -15,6 +20,7 @@ export const Panel = props => props.children;
 
 const Main = props => {
 	const navigate = useNavigate();
+	const { setLoading } = useContext(loadingContext);
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { paymentList, userPaymentData, handleUserPaymentData } = props;
@@ -71,6 +77,7 @@ const Main = props => {
 					handleUserPaymentData({ userData });
 
 					if (selChannel?.mode === 3) {
+						setLoading(true);
 						api.cashier
 							.DepositReqCryptoPay({
 								langId: userInfo.langId,
@@ -79,8 +86,29 @@ const Main = props => {
 							})
 							.then(res => {
 								if (res.data.errorCode === 0) {
+									setLoading(false);
 									const { formData } = res.data.data;
+									const promoContent = {
+										cashbackAmount: null,
+										receivedAmount: null,
+										PromotionRate: null,
+										Promotion: null
+									};
+									if (formData?.Promotion === "1") {
+										promoContent.cashbackAmount =
+											formData?.PromotionAmount;
+										promoContent.receivedAmount =
+											Number(formData?.PromotionAmount) +
+											Number(formData?.DepositAmount);
+										promoContent.PromotionRate = `${Number(
+											res.data.data.formData
+												?.PromotionRate
+										)
+											.toFixed(2)}%`;
 
+										promoContent.Promotion =
+											formData?.Promotion;
+									}
 									setPopBox({
 										isOpen: true,
 										title: i18n.lbl_DepositType4,
@@ -89,6 +117,13 @@ const Main = props => {
 										amount: real_amount,
 										depositAmount: formData?.DepositAmount,
 										currencyId: userInfo.currencyId,
+										cashbackAmount:
+											promoContent.cashbackAmount,
+										receivedAmount:
+											promoContent.receivedAmount,
+										PromotionRate:
+											promoContent.PromotionRate,
+										promoContent: promoContent.Promotion,
 										QRcodeURL: res.data.data.url,
 										RequestAmount: Number(
 											formData?.RequestAmount
