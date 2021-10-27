@@ -18,7 +18,11 @@ const Panel = ({
 	Token,
 	Rate,
 	RequestAmount,
-	QRcodeURL
+	QRcodeURL,
+	promoContent,
+	cashbackAmount,
+	PromotionRate,
+	receivedAmount
 }) => {
 	const { i18n } = useContext(i18nContext);
 
@@ -33,13 +37,12 @@ const Panel = ({
 
 	const depositAmountText = `${
 		i18n[`Currency_${currencyId}`]
-	} ${number_format(depositAmount, false, 0, isConvert(currencyId))}`;
+	} ${number_format(depositAmount, isConvert(currencyId), 0)}`;
 
 	const amountText = `${i18n[`Currency_${currencyId}`]} ${number_format(
 		amount,
-		false,
-		0,
-		isConvert(currencyId)
+		isConvert(currencyId),
+		0
 	)}`;
 
 	const timeText = moment().format("YYYY-MM-DD H:mm:ss");
@@ -70,6 +73,28 @@ const Panel = ({
 				{`${i18n.lbl_OrderAmount}：`}
 				<span>{amountText}</span>
 			</div>
+			{promoContent === "1" && (
+				<>
+					<div>
+						{`${i18n.lbl_CashbackAmount}：`}
+						<span>
+							{`${number_format(
+								cashbackAmount,
+								isConvert(currencyId)
+							)}(${PromotionRate})`}
+						</span>
+					</div>
+					<div>
+						{`${i18n.lbl_ReceivedAmount}：`}
+						<span>
+							{number_format(
+								receivedAmount,
+								isConvert(currencyId)
+							)}
+						</span>
+					</div>
+				</>
+			)}
 			<div className="guide">
 				{QRcodeURL ? (
 					<>
@@ -209,9 +234,12 @@ Panel.defaultProps = {
 	Token: "",
 	Rate: "",
 	RequestAmount: "",
-	QRcodeURL: ""
+	QRcodeURL: "",
+	promoContent: null,
+	cashbackAmount: null,
+	PromotionRate: null,
+	receivedAmount: null
 };
-
 Panel.propTypes = {
 	amount: PropTypes.string,
 	depositAmount: PropTypes.string,
@@ -225,7 +253,11 @@ Panel.propTypes = {
 	Token: PropTypes.string,
 	Rate: PropTypes.string,
 	RequestAmount: PropTypes.string,
-	QRcodeURL: PropTypes.string
+	QRcodeURL: PropTypes.string,
+	promoContent: PropTypes.string,
+	cashbackAmount: PropTypes.string,
+	PromotionRate: PropTypes.string,
+	receivedAmount: PropTypes.string
 };
 
 export default Panel;
