@@ -1,15 +1,21 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { Redirect } from "@reach/router";
-import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
+import {
+	i18nContext,
+	popBoxContext,
+	userInfoContext,
+	defNavPanel,
+	navContext
+} from "../common/context";
 import { api_ForgetPwd } from "../../service/api/site";
 import Inputbox from "../common/inputbox.info";
-import path from "../../path";
 import Layout from "../common/layout";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
+	const { setNav } = useContext(navContext);
 	const [userEmail, setUserEmail] = useState("");
 	const [inputStatus, setInputStatus] = useState({ checked: null, msg: "" });
 	const isMountedRef = useRef(null);
@@ -105,7 +111,8 @@ export default () => {
 	};
 
 	const ClickBack = () => {
-		setRedirectPath(`/${path.login.root}`);
+		setRedirectPath("/");
+		setNav(defNavPanel.login);
 	};
 
 	return redirectPath === null ? (
