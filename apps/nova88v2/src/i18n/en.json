@@ -659,6 +659,8 @@
 	"lbl_Rate":"Rate",
 	"lbl_USDT_Amount":"USDT Amount",
 	"lbl_Crypto_OTP":"Phone number (OTP) verification are require before deposit for Crypto service.",
+	"lbl_CashbackAmount": "Cashback amount",
+	"lbl_ReceivedAmount": "Received amount",
 
 	"=============Download App===============":"",
 	"lbl_Downloads":"Download",
