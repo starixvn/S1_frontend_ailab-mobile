@@ -13,6 +13,7 @@ import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
 import { useHandleAmount } from "../hook/useHandleAmount";
 import { defPopBoxType } from "../common/popbox";
+import PromoList from "./promoList";
 
 const payType = "onlineBanking";
 
@@ -21,7 +22,9 @@ const Payment = props => {
 		paymentList,
 		creditTimeKey,
 		userPaymentData,
-		handleUserPaymentData
+		handleUserPaymentData,
+		promoList,
+		asyncPromotionConfirmPopBox
 	} = props;
 
 	const { i18n } = useContext(i18nContext);
@@ -32,6 +35,10 @@ const Payment = props => {
 	const [selGroup, setSelGroup] = useState(null);
 	const [selbank, setBank] = useState({});
 	const [bankList, setBankList] = useState([]);
+	const [depositPromo, setDepositPromo] = useState({
+		bonusCode: null,
+		requiredAmount: null
+	});
 
 	const {
 		amount,
@@ -162,10 +169,20 @@ const Payment = props => {
 			);
 	};
 
-	const ClickSubmit = () => {
+	const ClickSubmit = async () => {
 		const result = VaildAmount({ _amount: amount });
 
 		if (result) {
+			if (
+				userInfo.phoneVerified &&
+				depositPromo.requiredAmount &&
+				amount < depositPromo.requiredAmount
+			) {
+				const success = await asyncPromotionConfirmPopBox();
+
+				if (!success) return;
+			}
+
 			const { payId, channelId, mode } = selGroup;
 			let { sysId } = selbank;
 			let bankLogo = null;
@@ -177,6 +194,7 @@ const Payment = props => {
 					payId,
 					sysId
 				};
+
 				handleUserPaymentData({ userData });
 
 				const RefreshPage = () => {
@@ -190,7 +208,8 @@ const Payment = props => {
 							sysId,
 							payId,
 							channelId,
-							real_amount
+							real_amount,
+							bonusCode: depositPromo.bonusCode
 						})
 						.then(res => {
 							if (res.data.errorCode === 0) {
@@ -225,11 +244,22 @@ const Payment = props => {
 						...prevState,
 						isOpen: false
 					}));
-					window.open(
-						sysId
-							? `${config.openURL}/${userInfo.langId}/Cashier/DepositReqOnlineBanking?sysId=${sysId}&payId=${payId}&ChannelId=${channelId}&Amount=${real_amount}`
-							: `${config.openURL}/${userInfo.langId}/Cashier/DepositReqOnlineBanking?payId=${payId}&ChannelId=${channelId}&Amount=${real_amount}`
-					);
+
+					const baseUrl = `${config.openURL}/${userInfo.langId}/Cashier/DepositReqOnlineBanking`;
+
+					const paramsUrl = [
+						`payId=${payId}`,
+						`ChannelId=${channelId}`,
+						`Amount=${real_amount}`,
+						sysId && `sysId=${sysId}`,
+						depositPromo.bonusCode &&
+							`BonusCode=${depositPromo.bonusCode}`
+					]
+						.filter(Boolean)
+						.join("&");
+
+					window.open(`${baseUrl}?${paramsUrl}`);
+
 					RefreshPage();
 				}
 			};
@@ -353,6 +383,16 @@ const Payment = props => {
 				}
 				currencyId={userInfo.currencyId}
 			/>
+
+			<PromoList
+				i18n={i18n}
+				amount={Number(amount)}
+				phoneVerified={userInfo.phoneVerified}
+				currencyId={userInfo.currencyId}
+				promoList={promoList}
+				setDepositPromo={setDepositPromo}
+			/>
+
 			<div className="btn-group">
 				<button className="orange" onClick={ClickSubmit}>
 					{i18n.lbl_Submit}
@@ -364,14 +404,17 @@ const Payment = props => {
 
 Payment.defaultProps = {
 	userPaymentData: {},
-	handleUserPaymentData: () => null
+	handleUserPaymentData: () => null,
+	promoList: []
 };
 
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
 	creditTimeKey: PropTypes.string.isRequired,
 	userPaymentData: PropTypes.objectOf(PropTypes.any),
-	handleUserPaymentData: PropTypes.func
+	handleUserPaymentData: PropTypes.func,
+	promoList: PropTypes.arrayOf(PropTypes.objectOf),
+	asyncPromotionConfirmPopBox: PropTypes.func.isRequired
 };
 
 export default Payment;
