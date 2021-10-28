@@ -4,7 +4,6 @@ import path from "../../path";
 const defPlatfrom = [
 	{
 		...defGameInfo.Sports,
-		parameter: { ...defGameInfo.Sports },
 		imgName: "sabaa",
 		otherPlatformImg: "sabab"
 	},
@@ -31,6 +30,12 @@ const defPlatfrom = [
 		parameter: { ...defGameInfo.Casino_PP },
 		imgName: "ppa",
 		otherPlatformImg: "ppb"
+	},
+	{
+		...defGameInfo.Casino_MGP,
+		path: path.casino.root,
+		parameter: { ...defGameInfo.Casino_MGP },
+		imgName: "mga"
 	},
 	{
 		...defGameInfo.LIVEcasinoMGP,
@@ -69,6 +74,8 @@ const defPlatfrom = [
 	},
 	{
 		...defGameInfo.Casino_Jili,
+		path: path.casino.root,
+		parameter: { ...defGameInfo.Casino_Jili },
 		imgName: "jilia"
 	},
 	{

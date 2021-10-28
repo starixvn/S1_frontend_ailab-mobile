@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import { Redirect } from "@reach/router";
+import { Link } from "@reach/router";
 import PropTypes from "prop-types";
 import {
 	navContext,
@@ -22,7 +22,6 @@ const Platform = ({ langId, isLogin }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { i18n } = useContext(i18nContext);
-	const [redirectPath, setRedirectPath] = useState(null);
 	const [tpIds, setTpIds] = useState(null);
 	const { maintainList } = useGetTpMaintainList();
 	const isMountedRef = useRef(null);
@@ -55,13 +54,7 @@ const Platform = ({ langId, isLogin }) => {
 		}
 	}, [userInfo.isLogin]);
 
-	const ClickItem = ({ _path, urlParams, tpId, gameId, tpGameType }) => {
-		const underMaintain = maintainList?.some(
-			m =>
-				m.tpId === tpId &&
-				(m.tpGameType === tpGameType ||
-					m.tpGameType === defTpGameType.All)
-		);
+	const ClickItem = ({ tpId, gameId, tpGameType, underMaintain }) => {
 		const loginCallback = () => {
 			setNav(defNavPanel.login);
 		};
@@ -72,8 +65,6 @@ const Platform = ({ langId, isLogin }) => {
 				title: i18n.lbl_ImportantNote,
 				content: i18n.lbl_underMaintenance
 			});
-		} else if (_path) {
-			setRedirectPath(`/${_path}${urlParams}`);
 		} else {
 			GET_ENTER_PAGE({
 				isLogin,
@@ -92,16 +83,27 @@ const Platform = ({ langId, isLogin }) => {
 		})
 		.map(p => {
 			const key = `other-platform-${p.tpId}-${p.gameId}`;
-			let params = null;
-			if (p.parameter) {
-				params = Object.keys(p.parameter).map(_key => {
-					return `${_key}=${p.parameter[key]}`;
-				});
+			const underMaintain = maintainList?.some(
+				m =>
+					m.tpId === p.tpId &&
+					(m.tpGameType === p.tpGameType ||
+						m.tpGameType === defTpGameType.All)
+			);
+
+			if (underMaintain && p.parameter) {
+				return null;
 			}
 
-			const _urlParams = params !== null ? `?${params.join("&")}` : "";
-
-			return (
+			return p.parameter ? (
+				<Link key={key} to={`/${p.path}`} state={p.parameter}>
+					<img
+						alt={p.imgName}
+						src={`${config.imgUrl}/common/images/logo/${
+							p.otherPlatformImg ?? p.imgName
+						}.png`}
+					/>
+				</Link>
+			) : (
 				<img
 					key={key}
 					alt={p.imgName}
@@ -110,17 +112,13 @@ const Platform = ({ langId, isLogin }) => {
 					}.png`}
 					onClick={ClickItem.bind(this, {
 						...p,
-						urlParams: _urlParams
+						underMaintain
 					})}
 				/>
 			);
 		});
 
-	return redirectPath !== null ? (
-		<Redirect to={redirectPath} noThrow />
-	) : (
-		<div className="partner-bar">{rows}</div>
-	);
+	return <div className="partner-bar">{rows}</div>;
 };
 
 Platform.defaultProps = {

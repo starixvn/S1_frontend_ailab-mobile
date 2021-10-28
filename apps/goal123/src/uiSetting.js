@@ -1,5 +1,6 @@
 export const Promotion = {
 	joinBtn: "yellow",
 	detailBtn: "orange",
-	expiredIcon: "expiredIcon"
+	expiredIcon: "expiredIcon",
+	description: "text dark"
 };

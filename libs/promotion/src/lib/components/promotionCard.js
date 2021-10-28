@@ -35,7 +35,7 @@ export default ({
 		/>
 		<img src={imgSRC} alt={p.bonusCode ?? ""} />
 		<div className="protitle">{p.title}</div>
-		<div className="text">{p.description}</div>
+		<div className={uiSetting?.description ?? "text"}>{p.description}</div>
 		<PromoRule promotionInfo={p} ruleCols={ruleCols} />
 		<div className="btn-group">
 			<DetailBtn
@@ -65,7 +65,9 @@ export const CardForStatic = ({
 	<div className="promodule">
 		<img src={p.imgUrl?.[langId]} alt={p.bonusCode ?? ""} />
 		<div className="protitle">{p.title?.[langId]}</div>
-		<div className="text">{p.description?.[langId]}</div>
+		<div className={uiSetting?.description ?? "text"}>
+			{p.description?.[langId]}
+		</div>
 		<div className="btn-group">
 			<a
 				className={uiSetting?.detailBtn ?? "white"}
