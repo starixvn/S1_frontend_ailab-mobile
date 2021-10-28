@@ -6,21 +6,49 @@ export class CashierAPI extends BaseAPI {
 		sysId,
 		payId,
 		channelId,
-		real_amount
-	}) =>
-		this.cashierRequest.get(
-			`/${langId}/Cashier/DepositReqOnlineBanking?payId=${payId}&ChannelId=${channelId}&Amount=${real_amount}${
-				sysId ? `&sysId=${sysId}` : ""
-			}`
-		);
+		real_amount,
+		bonusCode
+	}) => {
+		const paramsUrl = [
+			`payId=${payId}`,
+			`ChannelId=${channelId}`,
+			`Amount=${real_amount}`,
+			sysId && `sysId=${sysId}`,
+			bonusCode && `BonusCode=${bonusCode}`
+		]
+			.filter(Boolean)
+			.join("&");
 
-	DepositReqMobilePay = ({ langId, channelId, real_amount }) =>
-		this.cashierRequest.get(
-			`/${langId}/Cashier/DepositReqMobilePay?ChannelId=${channelId}&Amount=${real_amount}`
+		return this.cashierRequest.get(
+			`/${langId}/Cashier/DepositReqOnlineBanking?${paramsUrl}`
 		);
+	};
 
-	DepositReqCryptoPay = ({ langId, channelId, real_amount }) =>
-		this.cashierRequest.get(
-			`/${langId}/Cashier/DepositReqCryptoPay?ChannelId=${channelId}&Amount=${real_amount}`
+	DepositReqMobilePay = ({ langId, channelId, real_amount, bonusCode }) => {
+		const paramsUrl = [
+			`ChannelId=${channelId}`,
+			`Amount=${real_amount}`,
+			bonusCode && `BonusCode=${bonusCode}`
+		]
+			.filter(Boolean)
+			.join("&");
+
+		return this.cashierRequest.get(
+			`/${langId}/Cashier/DepositReqMobilePay?${paramsUrl}`
 		);
+	};
+
+	DepositReqCryptoPay = ({ langId, channelId, real_amount, bonusCode }) => {
+		const paramsUrl = [
+			`ChannelId=${channelId}`,
+			`Amount=${real_amount}`,
+			bonusCode && `BonusCode=${bonusCode}`
+		]
+			.filter(Boolean)
+			.join("&");
+
+		return this.cashierRequest.get(
+			`/${langId}/Cashier/DepositReqCryptoPay?${paramsUrl}`
+		);
+	};
 }

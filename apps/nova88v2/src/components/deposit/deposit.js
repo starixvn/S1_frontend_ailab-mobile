@@ -19,6 +19,7 @@ import { number_format, isConvert } from "../common/common";
 import ImportantNote from "./importantNote";
 import UserPaymentSwitch, { useGetUserPaymentData } from "./userPaymentData";
 import { useGetDomainList } from "../hook/useGetDomainList";
+import { useGetDepositPromotionList } from "./promoList";
 
 const defPayType = {
 	onlineBank: "onlineBank",
@@ -98,6 +99,14 @@ const Panel = () => {
 		userInfo,
 		i18n
 	});
+	const { promoList } = useGetDepositPromotionList({
+		langId: userInfo.langId,
+		i18n
+	});
+
+	const depositPromoMsg = userInfo?.phoneVerified
+		? ""
+		: i18n.lbl_Nova_DepositPromoMsg1;
 
 	const isMountedRef = useRef(null);
 	useEffect(() => {
@@ -118,6 +127,38 @@ const Panel = () => {
 		isDomainPopOpen
 	);
 
+	const asyncPromotionConfirmPopBox = () =>
+		new Promise(resolve =>
+			setPopBox({
+				isOpen: true,
+				title: i18n.lbl_Information,
+				content: (
+					<>
+						<div>{i18n.lbl_Deposit_Promotion_Pop_Msg1}</div>
+
+						<div className="btn-group">
+							<button
+								className="blue"
+								onClick={() => {
+									setPopBox({ isOpen: false });
+									resolve(true);
+								}}>
+								{i18n.lbl_Deposit_Promotion_Button_Proceed}
+							</button>
+							<button
+								className="white"
+								onClick={() => {
+									setPopBox({ isOpen: false });
+									resolve(false);
+								}}>
+								{i18n.lbl_Deposit_Promotion_Button_Back}
+							</button>
+						</div>
+					</>
+				)
+			})
+		);
+
 	const _userPaymentData =
 		userPaymentData?.payType === selected ? userPaymentData : {};
 	let content = (
@@ -128,6 +169,9 @@ const Panel = () => {
 			userPaymentData={_userPaymentData}
 			handleUserPaymentData={handleUserPaymentData}
 			userPaymentSwitch={userPaymentSwitch}
+			promoList={promoList}
+			depositPromoMsg={depositPromoMsg}
+			asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
 		/>
 	);
 
@@ -140,6 +184,9 @@ const Panel = () => {
 				userPaymentData={_userPaymentData}
 				handleUserPaymentData={handleUserPaymentData}
 				userPaymentSwitch={userPaymentSwitch}
+				promoList={promoList}
+				depositPromoMsg={depositPromoMsg}
+				asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
 			/>
 		);
 	} else if (selected === defPayType.mobilePay) {
@@ -151,6 +198,8 @@ const Panel = () => {
 				userPaymentData={_userPaymentData}
 				handleUserPaymentData={handleUserPaymentData}
 				userPaymentSwitch={userPaymentSwitch}
+				promoList={promoList}
+				asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
 			/>
 		);
 	} else if (selected === defPayType.cryptoPay) {
@@ -161,6 +210,8 @@ const Panel = () => {
 				payType={defPayType.cryptoPay}
 				creditTimeKey={defPayment[defPayType.cryptoPay].creditTimeKey}
 				paymentList={paymentList[defPayType.cryptoPay] ?? []}
+				promoList={promoList}
+				asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
 			/>
 		);
 	}

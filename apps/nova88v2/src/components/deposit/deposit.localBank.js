@@ -24,6 +24,7 @@ import DepositChannel, {
 	defDepChannelValue,
 	defDepositChannel
 } from "./localbank.depositChannel";
+import PromoList, { setCustPromo } from "./promoList";
 
 const payType = "localBank";
 
@@ -54,7 +55,9 @@ const Payment = props => {
 		paymentList,
 		creditTimeKey,
 		userPaymentData,
-		handleUserPaymentData
+		handleUserPaymentData,
+		promoList,
+		asyncPromotionConfirmPopBox
 	} = props;
 
 	const { i18n } = useContext(i18nContext);
@@ -68,6 +71,10 @@ const Payment = props => {
 	const [selBank, setBank] = useState({});
 	const [accountInfo, setAccountInfo] = useState({});
 	const [custBankInfo, setCustBankInfo] = useState([]);
+	const [depositPromo, setDepositPromo] = useState({
+		bonusCode: null,
+		requiredAmount: null
+	});
 
 	const {
 		amount,
@@ -201,7 +208,7 @@ const Payment = props => {
 		}));
 	};
 
-	const ClickSubmit = () => {
+	const ClickSubmit = async () => {
 		let result =
 			selBank.sysId && amount !== "" && VaildAmount({ _amount: amount });
 
@@ -221,6 +228,16 @@ const Payment = props => {
 		}
 
 		if (result && !processing) {
+			if (
+				userInfo.phoneVerified &&
+				depositPromo.requiredAmount &&
+				amount < depositPromo.requiredAmount
+			) {
+				const success = await asyncPromotionConfirmPopBox();
+
+				if (!success) return;
+			}
+
 			const RedirectToNext = (real_amount, sysId) => {
 				setLoading(true);
 				setPopBox(prevState => ({
@@ -250,9 +267,13 @@ const Payment = props => {
 						...channelData
 					})
 					.then(
-						res => {
+						async res => {
 							if (isMountedRef.current) {
 								if (res.data.errorCode === 0) {
+									const RefreshPage = () => {
+										window.location.reload();
+									};
+
 									const CloseDoneDepositPopup = () => {
 										const userData = {
 											payType: "localBank",
@@ -274,61 +295,71 @@ const Payment = props => {
 										handleUserPaymentData({ userData });
 
 										setProcessing(false);
-										window.location.reload();
 									};
 
-									if (bankSlipPopBox.receipt) {
-										const UploadReceipt = async () => {
-											try {
-												const formData = new FormData();
-												formData.append(
-													"TransId",
-													res.data.data.transId
-												);
-												formData.append(
-													"Receipt",
-													bankSlipPopBox.receipt
-												);
+									const UploadReceipt = async () => {
+										try {
+											const formData = new FormData();
+											formData.append(
+												"TransId",
+												res.data.data.transId
+											);
+											formData.append(
+												"Receipt",
+												bankSlipPopBox.receipt
+											);
 
-												const resUploadReceipt = await api.payment.UploadReceipt(
-													formData
-												);
+											const resUploadReceipt = await api.payment.UploadReceipt(
+												formData
+											);
 
-												if (
-													resUploadReceipt.data
-														.errorCode !== 0
-												) {
-													setPopBox(prevState => ({
-														...prevState,
-														title:
-															i18n.lbl_ImportantNote,
-														content: result.message,
-														isOpen: true,
-														hasBtn: true,
-														btnBar: (
-															<div className="btn-group">
-																<button
-																	className="orange"
-																	onClick={
-																		CloseDoneDepositPopup
-																	}>
-																	OK
-																</button>
-															</div>
-														)
-													}));
-												} else {
-													CloseDoneDepositPopup();
-												}
-											} catch (error) {
+											if (
+												resUploadReceipt.data
+													.errorCode !== 0
+											) {
+												setPopBox(prevState => ({
+													...prevState,
+													title:
+														i18n.lbl_ImportantNote,
+													content: result.message,
+													isOpen: true,
+													hasBtn: true,
+													btnBar: (
+														<div className="btn-group">
+															<button
+																className="orange"
+																onClick={
+																	CloseDoneDepositPopup
+																}>
+																OK
+															</button>
+														</div>
+													)
+												}));
+											} else {
 												CloseDoneDepositPopup();
 											}
-										};
+										} catch (error) {
+											CloseDoneDepositPopup();
+										}
+									};
 
-										UploadReceipt();
-									} else {
-										CloseDoneDepositPopup();
-									}
+									await Promise.all([
+										bankSlipPopBox.receipt &&
+											UploadReceipt(),
+										depositPromo.bonusCode &&
+											setCustPromo({
+												langId: userInfo.langId,
+												TransId: res.data.data.transId,
+												BonusCode:
+													depositPromo.bonusCode,
+												setPopBox,
+												i18n,
+												toNextStep: CloseDoneDepositPopup
+											})
+									]);
+
+									RefreshPage();
 								} else {
 									setPopBox(() => ({
 										isOpen: true,
@@ -463,6 +494,16 @@ const Payment = props => {
 				}}
 				userPaymentData={userPaymentData?.localBankChannel}
 			/>
+
+			<PromoList
+				i18n={i18n}
+				amount={Number(amount)}
+				phoneVerified={userInfo.phoneVerified}
+				currencyId={userInfo.currencyId}
+				promoList={promoList}
+				setDepositPromo={setDepositPromo}
+			/>
+
 			<div className="btn-group">
 				<button
 					className={canSubmit ? "orange" : "gray"}
@@ -480,14 +521,17 @@ const Payment = props => {
 
 Payment.defaultProps = {
 	userPaymentData: {},
-	handleUserPaymentData: () => null
+	handleUserPaymentData: () => null,
+	promoList: []
 };
 
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
 	creditTimeKey: PropTypes.string.isRequired,
 	userPaymentData: PropTypes.objectOf(PropTypes.any),
-	handleUserPaymentData: PropTypes.func
+	handleUserPaymentData: PropTypes.func,
+	promoList: PropTypes.arrayOf(PropTypes.objectOf),
+	asyncPromotionConfirmPopBox: PropTypes.func.isRequired
 };
 
 const GroupList = ({

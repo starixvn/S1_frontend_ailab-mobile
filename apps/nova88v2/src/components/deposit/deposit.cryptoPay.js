@@ -15,6 +15,7 @@ import { isConvert, number_format } from "../common/common";
 import { useHandleAmount } from "../hook/useHandleAmount";
 import api from "../../service/api";
 import { defPopBoxType } from "../common/popbox";
+import PromoList from "./promoList";
 
 export const Panel = props => props.children;
 
@@ -23,13 +24,24 @@ const Main = props => {
 	const { setLoading } = useContext(loadingContext);
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
-	const { paymentList, userPaymentData, handleUserPaymentData } = props;
+	const {
+		paymentList,
+		userPaymentData,
+		handleUserPaymentData,
+		promoList,
+		asyncPromotionConfirmPopBox
+	} = props;
 	const { setPopBox } = useContext(popBoxContext);
 	const _isConvert = isConvert(userInfo.currencyId);
 	const [selGroup, setSelGroup] = useState({});
 	const [selChannel, setSelChannel] = useState({});
 	const [pageVerify, setPageVerify] = useState(true);
 	const [groupList, setGroupList] = useState([]);
+	const [depositPromo, setDepositPromo] = useState({
+		bonusCode: null,
+		requiredAmount: null
+	});
+
 	const isMountedRef = useRef(null);
 	const {
 		amount,
@@ -45,6 +57,7 @@ const Main = props => {
 		digits: 0,
 		lastAmount: userPaymentData?.amount
 	});
+
 	const SelectPayment = ({ groupInfo }) => {
 		if (selGroup.groupId !== groupInfo?.groupId) {
 			setSelGroup(groupInfo);
@@ -57,7 +70,7 @@ const Main = props => {
 		}
 	};
 
-	const ClickSubmit = () => {
+	const ClickSubmit = async () => {
 		if (pageVerify) {
 			const confirmAmount =
 				selChannel.amountRule === 3 && selChannel.amountList?.length > 0
@@ -67,6 +80,16 @@ const Main = props => {
 			const result = VaildAmount({ _amount: confirmAmount });
 
 			if (result) {
+				if (
+					userInfo.phoneVerified &&
+					depositPromo.requiredAmount &&
+					amount < depositPromo.requiredAmount
+				) {
+					const success = await asyncPromotionConfirmPopBox();
+
+					if (!success) return;
+				}
+
 				const RedirectToNext = real_amount => {
 					const userData = {
 						payType: "cryptoPay",
@@ -74,6 +97,7 @@ const Main = props => {
 						channelId: selChannel?.channelId,
 						groupId: selGroup.groupId
 					};
+
 					handleUserPaymentData({ userData });
 
 					if (selChannel?.mode === 3) {
@@ -82,7 +106,8 @@ const Main = props => {
 							.DepositReqCryptoPay({
 								langId: userInfo.langId,
 								channelId: selChannel.channelId,
-								real_amount
+								real_amount,
+								bonusCode: depositPromo.bonusCode
 							})
 							.then(res => {
 								if (res.data.errorCode === 0) {
@@ -145,9 +170,19 @@ const Main = props => {
 							...prevState,
 							isOpen: false
 						}));
-						window.open(
-							`${config.openURL}/${userInfo.langId}/Cashier/DepositReqCryptoPay?ChannelId=${selChannel.channelId}&Amount=${real_amount}`
-						);
+
+						const baseUrl = `${config.openURL}/${userInfo.langId}/Cashier/DepositReqCryptoPay`;
+
+						const paramsUrl = [
+							`ChannelId=${selChannel.channelId}`,
+							`Amount=${real_amount}`,
+							custBonusCode &&
+								`BonusCode=${depositPromo.bonusCode}`
+						]
+							.filter(Boolean)
+							.join("&");
+
+						window.open(`${baseUrl}?${paramsUrl}`);
 						window.location.reload();
 					}
 				};
@@ -206,6 +241,7 @@ const Main = props => {
 			}
 		}
 	};
+
 	const removeDuplicate = () => {
 		const map = {};
 		const arr = [];
@@ -335,6 +371,16 @@ const Main = props => {
 				)}
 				currencyId={userInfo.currencyId}
 			/>
+
+			<PromoList
+				i18n={i18n}
+				amount={Number(amount)}
+				phoneVerified={userInfo.phoneVerified}
+				currencyId={userInfo.currencyId}
+				promoList={promoList}
+				setDepositPromo={setDepositPromo}
+			/>
+
 			<div className="btn-group">
 				<button className="orange" onClick={ClickSubmit}>
 					{i18n.lbl_Submit}
@@ -347,14 +393,17 @@ const Main = props => {
 Main.defaultProps = {
 	location: {},
 	userPaymentData: {},
-	handleUserPaymentData: () => null
+	handleUserPaymentData: () => null,
+	promoList: []
 };
 
 Main.propTypes = {
 	location: PropTypes.objectOf(PropTypes.any),
 	paymentList: PropTypes.arrayOf(PropTypes.any).isRequired,
 	userPaymentData: PropTypes.objectOf(PropTypes.any),
-	handleUserPaymentData: PropTypes.func
+	handleUserPaymentData: PropTypes.func,
+	promoList: PropTypes.arrayOf(PropTypes.objectOf),
+	asyncPromotionConfirmPopBox: PropTypes.func.isRequired
 };
 
 export default Main;

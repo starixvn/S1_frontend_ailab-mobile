@@ -37,4 +37,16 @@ export class PromotionAPI extends BaseAPI {
 			SpecialCode,
 			DeviceType: defDeviceType.Mobile
 		});
+
+	GetDepositPromotionList = ({ langId }) =>
+		this.promotionRequest.post(`/GetDepositPromotionList/${langId}`, {
+			DeviceType: defDeviceType.Mobile
+		});
+
+	SetDepositPromotionQueue = ({ langId, TransId, BonusCode }) =>
+		this.promotionRequest.post(`/SetDepositPromotionQueue/${langId}`, {
+			TransId,
+			BonusCode,
+			DeviceType: defDeviceType.Mobile
+		});
 }
