@@ -38,10 +38,6 @@ const defPlatfrom = [
 		imgName: "mga"
 	},
 	{
-		...defGameInfo.LIVEcasinoMGP,
-		imgName: "mga"
-	},
-	{
 		...defGameInfo.Casino_PT,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_PT },
