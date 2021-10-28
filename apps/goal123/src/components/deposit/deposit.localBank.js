@@ -556,8 +556,8 @@ const GroupList = ({
 							radioGroup={mainKey}
 							imgUrl={`${prefixImgUrl}${
 								imgKeyWithExtension
-									? data[imgKey]
-									: `${data[imgKey]}.png`
+									? data[imgKey]?.toLowerCase()
+									: `${data[imgKey]?.toLowerCase()}.png`
 							}`}
 							imgAlt={data[imgKey] ?? ""}
 							onChange={SelectPayment.bind(
