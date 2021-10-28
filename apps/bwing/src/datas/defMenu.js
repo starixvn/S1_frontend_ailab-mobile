@@ -100,14 +100,13 @@ export const productList = langId => {
 				{
 					displayKey: "lbl_SabaSport",
 					img: sabaSports,
-					...defGameInfo.Sports,
-					tpGameType: 1
+					...defGameInfo.Sports
 				}
 				// {
 				// 	displayKey: "lbl_BTISport",
 				// 	img: BTI,
 				// 	...defGameInfo.BTISport,
-				// 	tpGameType: 49,
+				// 	eventIcon: [
 				// 		{
 				// 			inPeriod: isEventPeriod(eventTime.new_BTI)
 				// 		}
@@ -185,32 +184,32 @@ export const productList = langId => {
 			displayKey: "lbl_Slots",
 			icon_img: slot,
 			items: [
-				{
-					...defGameInfo.Casino_NetEnt,
-					parameter: defGameInfo.Casino_NetEnt,
-					path: path.casino.root,
-					displayKey: "NetEnt",
-					img: ne,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.casino_NetEnt)
-						}
-					]
-				},
-				{
-					...defGameInfo.Casino_RedTiger,
-					parameter: defGameInfo.Casino_RedTiger,
-					path: path.casino.root,
-					displayKey: "Red Tiger",
-					img: red,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.casino_RedTiger)
-						}
-					]
-				},
+				// {
+				// 	...defGameInfo.Casino_NetEnt,
+				// 	parameter: defGameInfo.Casino_NetEnt,
+				// 	path: path.casino.root,
+				// 	displayKey: "NetEnt",
+				// 	img: ne,
+				// 	eventIcon: [
+				// 		{
+				// 			icon: defIconType.new,
+				// 			inPeriod: isEventPeriod(eventTime.casino_NetEnt)
+				// 		}
+				// 	]
+				// },
+				// {
+				// 	...defGameInfo.Casino_RedTiger,
+				// 	parameter: defGameInfo.Casino_RedTiger,
+				// 	path: path.casino.root,
+				// 	displayKey: "Red Tiger",
+				// 	img: red,
+				// 	eventIcon: [
+				// 		{
+				// 			icon: defIconType.new,
+				// 			inPeriod: isEventPeriod(eventTime.casino_RedTiger)
+				// 		}
+				// 	]
+				// },
 				{
 					...defGameInfo.Casino_PP,
 					parameter: defGameInfo.Casino_PP,
@@ -316,7 +315,7 @@ export const productList = langId => {
 				// 	displayKey: "Microgaming",
 				// 	icon: "icon icon-mg",
 				// 	img: liveCasino_MGP,
-				// 	...defGameInfo.LIVEcasino_MGP,
+				// 	...defGameInfo.LIVEcasinoMGP,
 				// 	eventIcon: [
 				// 		{
 				// 			icon: defIconType.new,
@@ -324,17 +323,17 @@ export const productList = langId => {
 				// 		}
 				// 	]
 				// },
-				{
-					displayKey: "Evolution Gaming",
-					img: liveCasino_EVO,
-					...defGameInfo.LIVEcasinoEVO,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.liveCasino_evo)
-						}
-					]
-				},
+				// {
+				// 	displayKey: "Evolution Gaming",
+				// 	img: liveCasino_EVO,
+				// 	...defGameInfo.LIVEcasinoEVO,
+				// 	eventIcon: [
+				// 		{
+				// 			icon: defIconType.new,
+				// 			inPeriod: isEventPeriod(eventTime.liveCasino_evo)
+				// 		}
+				// 	]
+				// },
 				{
 					displayKey: "Pragmatic Play",
 					icon: "icon icon-PP",
@@ -345,7 +344,7 @@ export const productList = langId => {
 					displayKey: "Playtech",
 					icon: "icon icon-pt",
 					img: liveCasino_PT,
-					...defGameInfo.LIVEcasino_PT,
+					...defGameInfo.LIVEcasinoPT,
 					eventIcon: [
 						{
 							icon: defIconType.new,

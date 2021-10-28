@@ -6,98 +6,82 @@ const defPlatfrom = [
 		...defGameInfo.Sports,
 		parameter: { ...defGameInfo.Sports },
 		imgName: "sabaa",
-		otherPlatformImg: "sabab",
-		tpGameType: 1
+		otherPlatformImg: "sabab"
 	},
 	// {
 	// 	...defGameInfo.BTISport,
 	// 	imgName: "btia",
-	// 	tpGameType: 49
 	// },
 	{
 		...defGameInfo.LIVEcasinoAG,
-		imgName: "aga",
-		tpGameType: 8
+		imgName: "aga"
 	},
 	{
 		...defGameInfo.LIVEcasinoAE,
-		imgName: "aea",
-		tpGameType: 18
+		imgName: "aea"
 	},
 	{
 		...defGameInfo.LIVEcasinoN2,
 		imgName: "n2livea",
-		otherPlatformImg: "n2liveb",
-		tpGameType: 45
+		otherPlatformImg: "n2liveb"
 	},
 	{
 		...defGameInfo.Casino_PP,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_PP },
 		imgName: "ppa",
-		otherPlatformImg: "ppb",
-		tpGameType: 16
+		otherPlatformImg: "ppb"
 	},
 	{
-		...defGameInfo.Casino_MGP,
-		imgName: "mga",
-		tpGameType: 58
+		...defGameInfo.LIVEcasinoMGP,
+		imgName: "mga"
 	},
 	{
 		...defGameInfo.Casino_PT,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_PT },
-		imgName: "playtecha",
-		tpGameType: 46
+		imgName: "playtecha"
 	},
 	{
 		...defGameInfo.Casino_PG,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_PG },
-		imgName: "pga",
-		tpGameType: 17
+		imgName: "pga"
 	},
 	{
 		...defGameInfo.Casino_SG,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_SG },
-		imgName: "sga",
-		tpGameType: 15
+		imgName: "sga"
 	},
 	{
 		...defGameInfo.Casino_YGG,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_YGG },
 		imgName: "yga",
-		otherPlatformImg: "ygb",
-		tpGameType: 14
+		otherPlatformImg: "ygb"
 	},
 	{
 		...defGameInfo.Casino_CQ9,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_CQ9 },
-		imgName: "cq9a",
-		tpGameType: 29
+		imgName: "cq9a"
 	},
 	{
 		...defGameInfo.Casino_Jili,
-		imgName: "jilia",
-		tpGameType: 53
+		imgName: "jilia"
 	},
 	{
 		...defGameInfo.Fishing,
-		imgName: "yla",
-		tpGameType: 12
+		imgName: "yla"
 	},
 	{
 		...defGameInfo.V8Poker,
-		imgName: "v8a",
-		tpGameType: 42
+		imgName: "v8a"
 	},
 	{
 		...defGameInfo.kingMaker,
-		imgName: "kingmakera",
-		tpGameType: 52
+		imgName: "kingmakera"
 	}
 ];
 

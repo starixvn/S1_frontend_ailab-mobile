@@ -58,56 +58,62 @@ import path from "../path";
 import { eventTime } from "../components/common/eventTime";
 
 export const defGameInfo = {
-	Sports: { tpId: 1, gameId: 1 },
-	BTISport: { tpId: 29 },
-	SabaSoccer: { tpId: 1, gameId: 997 },
-	VirtualSports: { tpId: 1, gameId: 180 },
-	eSports: { tpId: 1, gameId: 43 },
-	Basketball: { tpId: 1, gameId: 2 },
-	Volleyball: { tpId: 1, gameId: 6 },
-	// CockFighting: { tpId: 17 },
-	sabaClub: { tpId: 1, gameId: 171 },
-	V8Poker: { gameId: 0, tpId: 25 },
-	Keno: { gameId: 202, tpId: 1 },
-	lottery: { gameId: 220, tpId: 1 },
-	fish_AB3: { tpId: 16, gameId: "AB3" },
-	fish_AT05: { tpId: 16, gameId: "AT05" },
-	fish_AT01: { tpId: 16, gameId: "AT01" },
-	fish_AT06: { tpId: 16, gameId: "AT06" },
-	fish_AT04: { tpId: 16, gameId: "AT04" },
-	ICG_DRAGONBALL_FISHING: { tpId: 24, gameId: "cmf0001" },
-	ICG_FISHING_OF_SAVIORS: { tpId: 24, gameId: "cmf0002" },
-	ICG_THE_TYRANT_AND_THE_PRINCESS: { tpId: 24, gameId: "cmf0003" },
-	Fishing: { gameId: 10, tpId: 7 },
-	FishingSG: { gameId: "F-SF01", tpId: 10 },
-	FishingSGW: { gameId: "F-SF02", tpId: 10 },
+	Sports: { tpId: 1, gameId: 1, tpGameType: 1 },
+	BTISport: { tpId: 29, tpGameType: 49 },
+	SabaSoccer: { tpId: 1, gameId: 997, tpGameType: 1 },
+	VirtualSports: { tpId: 1, gameId: 180, tpGameType: 3 },
+	eSports: { tpId: 1, gameId: 43, tpGameType: 1 },
+	Basketball: { tpId: 1, gameId: 2, tpGameType: 1 },
+	Volleyball: { tpId: 1, gameId: 6, tpGameType: 1 },
+	// CockFighting: { tpId: 17, tpGameType: 27 },
+	sabaClub: { tpId: 1, gameId: 171, tpGameType: 59 },
+	V8Poker: { gameId: 0, tpId: 25, tpGameType: 42 },
+	Keno: { gameId: 202, tpId: 1, tpGameType: 5 },
+	lottery: { gameId: 220, tpId: 1, tpGameType: 19 },
+	fish_AB3: { tpId: 16, gameId: "AB3", tpGameType: 44 },
+	fish_AT05: { tpId: 16, gameId: "AT05", tpGameType: 44 },
+	fish_AT01: { tpId: 16, gameId: "AT01", tpGameType: 44 },
+	fish_AT06: { tpId: 16, gameId: "AT06", tpGameType: 44 },
+	fish_AT04: { tpId: 16, gameId: "AT04", tpGameType: 44 },
+	ICG_DRAGONBALL_FISHING: { tpId: 24, gameId: "cmf0001", tpGameType: 40 },
+	ICG_FISHING_OF_SAVIORS: { tpId: 24, gameId: "cmf0002", tpGameType: 40 },
+	ICG_THE_TYRANT_AND_THE_PRINCESS: {
+		tpId: 24,
+		gameId: "cmf0003",
+		tpGameType: 40
+	},
+	Fishing: { gameId: 10, tpId: 7, tpGameType: 12 },
+	FishingSG: { gameId: "F-SF01", tpId: 10, tpGameType: 31 },
+	FishingSGW: { gameId: "F-SF02", tpId: 10, tpGameType: 31 },
 	Casino_All: { tpId: 0 },
-	casino_ICG: { tpId: 24 },
-	Casino_CQ9: { tpId: 16 },
-	Casino_GPI: { tpId: 6 },
-	Casino_YGG: { tpId: 8 },
-	Casino_SG: { tpId: 10 },
-	Casino_PP: { tpId: 5 },
-	Casino_PG: { tpId: 14 },
-	Casino_PT: { tpId: 27, gameId: "0" },
-	Casino_ow: { gameId: 208, tpId: 1 },
-	Casino_MGP: { tpId: 34 },
-	LIVEcasinoN2: { tpId: 28 },
-	LIVEcasinoWM: { gameId: 20, tpId: 20 },
-	LIVEcasinoDG: { tpId: 4, gameId: 4 },
-	LIVEcasinoPP: { gameId: 101, tpId: 5 },
-	LIVEcasinoAE: { gameId: 15, tpId: 15 },
-	LIVEcasinoAG: { gameId: 3, tpId: 3 },
-	LIVEcasinoAB: { gameId: 12, tpId: 12 },
-	LIVEcasinoSA: { gameId: 2, tpId: 2 },
-	LIVEcasinoEB: { gameId: 18, tpId: 18 },
+	casino_ICG: { tpId: 24, tpGameType: 39 },
+	Casino_CQ9: { tpId: 16, tpGameType: 29 },
+	Casino_GPI: { tpId: 6, tpGameType: 11 },
+	Casino_YGG: { tpId: 8, tpGameType: 14 },
+	Casino_SG: { tpId: 10, tpGameType: 15 },
+	Casino_PP: { tpId: 5, tpGameType: 7 },
+	Casino_PG: { tpId: 14, tpGameType: 17 },
+	Casino_PT: { tpId: 27, gameId: "0", tpGameType: 46 },
+	Casino_ow: { gameId: 208, tpId: 1, tpGameType: 4 },
+	Casino_MGP: { tpId: 34, tpGameType: 57 },
+	LIVEcasinoN2: { tpId: 28, tpGameType: 45 },
+	LIVEcasinoWM: { gameId: 20, tpId: 20, tpGameType: 32 },
+	LIVEcasinoDG: { tpId: 4, gameId: 4, tpGameType: 10 },
+	LIVEcasinoPP: { gameId: 101, tpId: 5, tpGameType: 16 },
+	LIVEcasinoAE: { gameId: 15, tpId: 15, tpGameType: 18 },
+	LIVEcasinoAG: { gameId: 3, tpId: 3, tpGameType: 8 },
+	LIVEcasinoAB: { gameId: 12, tpId: 12, tpGameType: 6 },
+	LIVEcasinoSA: { gameId: 2, tpId: 2, tpGameType: 9 },
+	LIVEcasinoEB: { gameId: 18, tpId: 18, tpGameType: 28 },
 	LIVEcasinoMW: { gameId: 105, tpId: 5 },
-	Casino_JOKER: { tpId: 9 },
-	Indo4d: { gameId: 223, tpId: 1 },
-	NumberGame: { gameId: 161, tpId: 1 },
-	kingMaker: { tpId: 11 },
-	Casino_Jili: { tpId: 32 },
-	tcg: { tpId: 33 }
+	LIVEcasinoPT: { tpId: 27, gameId: "0", tpGameType: 48 },
+	LIVEcasinoMGP: { tpId: 34, tpGameType: 58 },
+	Casino_JOKER: { tpId: 9, tpGameType: 13 },
+	Indo4d: { gameId: 223, tpId: 1, tpGameType: 20 },
+	NumberGame: { gameId: 161, tpId: 1, tpGameType: 2 },
+	kingMaker: { tpId: 11, tpGameType: 52 },
+	Casino_Jili: { tpId: 32, tpGameType: 53 },
+	tcg: { tpId: 33, tpGameType: 55 }
 };
 
 const defIconType = {
@@ -148,14 +154,12 @@ const gameList = [
 			{
 				...defGameInfo.Sports,
 				img: "https://banner.goal123.org/hotgame/h5/sport.jpg",
-				spanTextKey: "lbl_Sports",
-				tpGameType: 1
+				spanTextKey: "lbl_Sports"
 			},
 			{
 				...defGameInfo.SabaSoccer,
 				img: "https://banner.goal123.org/hotgame/h5/sabasports.jpg",
-				spanTextKey: "lbl_SabaSoccer",
-				tpGameType: 1
+				spanTextKey: "lbl_SabaSoccer"
 			},
 			{
 				img: "https://banner.goal123.org/hotgame/h5/slot.jpg",
@@ -165,38 +169,32 @@ const gameList = [
 			{
 				...defGameInfo.sabaClub,
 				img: "https://banner.goal123.org/hotgame/h5/sabaclub.jpg",
-				spanTextKey: "lbl_Vgaming",
-				tpGameType: 59
+				spanTextKey: "lbl_Vgaming"
 			},
 			{
 				...defGameInfo.Fishing,
 				img: "https://banner.goal123.org/hotgame/h5/fishing.jpg",
-				spanTextKey: "lbl_Fishing",
-				tpGameType: 12
+				spanTextKey: "lbl_Fishing"
 			},
 			{
 				...defGameInfo.VirtualSports,
 				img: "https://banner.goal123.org/hotgame/h5/virtual.jpg",
-				spanTextKey: "lbl_VirtualSports",
-				tpGameType: 3
+				spanTextKey: "lbl_VirtualSports"
 			},
 			{
 				...defGameInfo.Keno,
 				img: "https://banner.goal123.org/hotgame/h5/keno.jpg",
-				spanTextKey: "lbl_Keno",
-				tpGameType: 5
+				spanTextKey: "lbl_Keno"
 			},
 			{
 				...defGameInfo.V8Poker,
 				img: "https://banner.goal123.org/hotgame/h5/v8.jpg",
-				spanTextKey: "lbl_V8Poker",
-				tpGameType: 42
+				spanTextKey: "lbl_V8Poker"
 			},
 			{
 				...defGameInfo.eSports,
 				img: "https://banner.goal123.org/hotgame/h5/esports.jpg",
-				spanTextKey: "lbl_eSports",
-				tpGameType: 1
+				spanTextKey: "lbl_eSports"
 			}
 		]
 	},
@@ -208,14 +206,12 @@ const gameList = [
 			{
 				...defGameInfo.Sports,
 				img: Sports_Soccer,
-				spanTextKey: "lbl_Soccer",
-				tpGameType: 1
+				spanTextKey: "lbl_Soccer"
 			},
 			// {
 			// 	...defGameInfo.BTISport,
 			// 	img: Sports_BTI,
 			// 	spanTextKey: "lbl_BTISport",
-			// 	tpGameType: 49,
 			// 	eventIcon: [
 			// 		{
 			// 			icon: defIconType.new,
@@ -226,32 +222,27 @@ const gameList = [
 			{
 				...defGameInfo.SabaSoccer,
 				img: Sports_SabaSoccer,
-				spanTextKey: "lbl_SabaSoccer",
-				tpGameType: 1
+				spanTextKey: "lbl_SabaSoccer"
 			},
 			{
 				...defGameInfo.VirtualSports,
 				img: Sports_VirtualSports,
-				spanTextKey: "lbl_VirtualSports",
-				tpGameType: 3
+				spanTextKey: "lbl_VirtualSports"
 			},
 			{
 				...defGameInfo.eSports,
 				img: Sports_ESports,
-				spanTextKey: "lbl_eSports",
-				tpGameType: 1
+				spanTextKey: "lbl_eSports"
 			},
 			{
 				...defGameInfo.Basketball,
 				img: Sports_Basketball,
-				spanTextKey: "lbl_Basketball",
-				tpGameType: 1
+				spanTextKey: "lbl_Basketball"
 			},
 			{
 				...defGameInfo.Volleyball,
 				img: Sports_Volleyball,
-				spanTextKey: "lbl_Volleyball",
-				tpGameType: 1
+				spanTextKey: "lbl_Volleyball"
 			}
 		]
 	},
@@ -277,7 +268,6 @@ const gameList = [
 				...defGameInfo.tcg,
 				img: Games_TCG,
 				spanTextKey: "lbl_tcg",
-				tpGameType: 55,
 				eventIcon: [
 					{
 						icon: defIconType.new,
@@ -288,14 +278,12 @@ const gameList = [
 			{
 				...defGameInfo.sabaClub,
 				img: Games_VGaming,
-				spanTextKey: "lbl_Vgaming",
-				tpGameType: 59
+				spanTextKey: "lbl_Vgaming"
 			},
 			{
 				...defGameInfo.kingMaker,
 				img: kingMaker,
 				spanTextKey: "lbl_KingMaker",
-				tpGameType: 52,
 				eventIcon: [
 					{
 						icon: defIconType.new,
@@ -306,20 +294,17 @@ const gameList = [
 			{
 				...defGameInfo.V8Poker,
 				img: Games_V8Poker,
-				spanTextKey: "lbl_V8Poker",
-				tpGameType: 42
+				spanTextKey: "lbl_V8Poker"
 			},
 			{
 				...defGameInfo.Keno,
 				img: Games_Keno,
-				spanTextKey: "lbl_Keno",
-				tpGameType: 5
+				spanTextKey: "lbl_Keno"
 			},
 			{
 				...defGameInfo.lottery,
 				img: Games_Lottery,
-				spanTextKey: "lbl_Lottery",
-				tpGameType: 19
+				spanTextKey: "lbl_Lottery"
 			}
 		]
 	},
@@ -331,50 +316,42 @@ const gameList = [
 			{
 				...defGameInfo.fish_AB3,
 				img: Fishing_Paradise,
-				spanTextKey: "lbl_Paradise",
-				tpGameType: 44
+				spanTextKey: "lbl_Paradise"
 			},
 			{
 				...defGameInfo.fish_AT01,
 				img: Fishing_Oneshot,
-				spanTextKey: "lbl_Oneshot_Fishing",
-				tpGameType: 44
+				spanTextKey: "lbl_Oneshot_Fishing"
 			},
 			{
 				...defGameInfo.ICG_DRAGONBALL_FISHING,
 				img: Fishing_DragonBall,
-				spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
-				tpGameType: 40
+				spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING"
 			},
 			{
 				...defGameInfo.ICG_FISHING_OF_SAVIORS,
 				img: Fishing_Saviors,
-				spanTextKey: "lbl_Game_ICG_FISHING_OF_SAVIORS",
-				tpGameType: 40
+				spanTextKey: "lbl_Game_ICG_FISHING_OF_SAVIORS"
 			},
 			{
 				...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
 				img: Fishing_TheTyrant,
-				spanTextKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS",
-				tpGameType: 40
+				spanTextKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS"
 			},
 			{
 				...defGameInfo.Fishing,
 				img: Fishing_FishingWorld,
-				spanTextKey: "lbl_FishingGG",
-				tpGameType: 12
+				spanTextKey: "lbl_FishingGG"
 			},
 			{
 				...defGameInfo.FishingSG,
 				img: Fishing_FishingGod,
-				spanTextKey: "lbl_FishingSG1",
-				tpGameType: 31
+				spanTextKey: "lbl_FishingSG1"
 			},
 			{
 				...defGameInfo.FishingSGW,
 				img: Fishing_FishingWar,
-				spanTextKey: "lbl_FishingSG2",
-				tpGameType: 31
+				spanTextKey: "lbl_FishingSG2"
 			}
 		]
 	},
@@ -389,7 +366,6 @@ const gameList = [
 				spanText: "Pragmatic Play",
 				img: Casino_PP,
 				path: path.casino.root,
-				tpGameType: 7,
 				providerImgName: "pp"
 			},
 			{
@@ -399,7 +375,6 @@ const gameList = [
 				img: Casino_PT,
 				path: path.casino.root,
 				providerImgName: "playtech",
-				tpGameType: 46,
 				eventIcon: [
 					{
 						icon: defIconType.new,
@@ -414,7 +389,6 @@ const gameList = [
 				img: Casino_Jili,
 				path: path.casino.root,
 				providerImgName: "jili",
-				tpGameType: 53,
 				eventIcon: [
 					{
 						icon: defIconType.new,
@@ -428,7 +402,6 @@ const gameList = [
 				spanText: "Microgaming",
 				img: Casino_MGP,
 				path: path.casino.root,
-				tpGameType: 57,
 				providerImgName: "mg",
 				eventIcon: [
 					{
@@ -443,8 +416,7 @@ const gameList = [
 				spanText: "Iconic Gaming",
 				img: Casino_ICG,
 				path: path.casino.root,
-				providerImgName: "icg",
-				tpGameType: 39
+				providerImgName: "icg"
 			},
 			{
 				...defGameInfo.Casino_CQ9,
@@ -452,8 +424,7 @@ const gameList = [
 				spanText: "CQ9",
 				img: Casino_CQ9,
 				path: path.casino.root,
-				providerImgName: "cq9",
-				tpGameType: 29
+				providerImgName: "cq9"
 			},
 			{
 				...defGameInfo.Casino_GPI,
@@ -461,8 +432,7 @@ const gameList = [
 				spanText: "Game Play",
 				img: Casino_GPI,
 				path: path.casino.root,
-				providerImgName: "gp",
-				tpGameType: 11
+				providerImgName: "gp"
 			},
 			{
 				...defGameInfo.Casino_YGG,
@@ -470,8 +440,7 @@ const gameList = [
 				spanText: "YGGDrassil",
 				img: Casino_YGG,
 				path: path.casino.root,
-				providerImgName: "yg",
-				tpGameType: 14
+				providerImgName: "yg"
 			},
 			{
 				...defGameInfo.Casino_SG,
@@ -479,8 +448,7 @@ const gameList = [
 				spanText: "Spadegaming",
 				img: Casino_SG,
 				path: path.casino.root,
-				providerImgName: "sg",
-				tpGameType: 15
+				providerImgName: "sg"
 			},
 			{
 				...defGameInfo.Casino_PG,
@@ -488,15 +456,13 @@ const gameList = [
 				spanText: "PG Soft",
 				img: Casino_PG,
 				path: path.casino.root,
-				providerImgName: "pg",
-				tpGameType: 17
+				providerImgName: "pg"
 			},
 			{
 				...defGameInfo.Casino_ow,
 				parameter: defGameInfo.Casino_ow,
 				spanText: "Saba Casino",
-				img: Casino_OW,
-				tpGameType: 4
+				img: Casino_OW
 			}
 		]
 	},
@@ -508,14 +474,12 @@ const gameList = [
 			{
 				...defGameInfo.LIVEcasinoPP,
 				spanText: "Pragmatic Play",
-				img: LIVEcasino_PP,
-				tpGameType: 16
+				img: LIVEcasino_PP
 			},
 			{
-				...defGameInfo.Casino_PT,
+				...defGameInfo.LIVEcasinoPT,
 				spanText: "Playtech",
 				img: LIVEcasino_PT,
-				tpGameType: 48,
 				eventIcon: [
 					{
 						icon: defIconType.new,
@@ -525,10 +489,9 @@ const gameList = [
 				useGotoGame: true
 			},
 			// {
-			// 	...defGameInfo.Casino_MGP,
+			// 	...defGameInfo.LIVEcasinoMGP,
 			// 	spanText: "Microgaming",
 			// 	img: LIVEcasino_MGP,
-			// 	tpGameType: 58,
 			// 	eventIcon: [
 			// 		{
 			// 			icon: defIconType.new,
@@ -539,50 +502,42 @@ const gameList = [
 			{
 				...defGameInfo.LIVEcasinoN2,
 				spanText: "n2-LIVE",
-				img: LIVEcasino_N2Live,
-				tpGameType: 45
+				img: LIVEcasino_N2Live
 			},
 			{
 				...defGameInfo.LIVEcasinoWM,
 				spanText: "WM Casino",
-				img: LIVEcasino_WM,
-				tpGameType: 32
+				img: LIVEcasino_WM
 			},
 			{
 				...defGameInfo.LIVEcasinoDG,
 				spanText: "Dream Gaming",
-				img: LIVEcasino_DG,
-				tpGameType: 10
+				img: LIVEcasino_DG
 			},
 			{
 				...defGameInfo.LIVEcasinoAE,
 				spanText: "AE Casino",
-				img: LIVEcasino_AE,
-				tpGameType: 18
+				img: LIVEcasino_AE
 			},
 			{
 				...defGameInfo.LIVEcasinoAG,
 				spanText: "Asia Gaming",
-				img: LIVEcasino_AG,
-				tpGameType: 8
+				img: LIVEcasino_AG
 			},
 			{
 				...defGameInfo.LIVEcasinoAB,
 				spanText: "Allbet",
-				img: LIVEcasino_AB,
-				tpGameType: 6
+				img: LIVEcasino_AB
 			},
 			{
 				...defGameInfo.LIVEcasinoSA,
 				spanText: "SA Gaming",
-				img: LIVEcasino_SA,
-				tpGameType: 9
+				img: LIVEcasino_SA
 			},
 			{
 				...defGameInfo.LIVEcasinoEB,
 				spanText: "eBET",
-				img: LIVEcasino_EB,
-				tpGameType: 28
+				img: LIVEcasino_EB
 			}
 		]
 	}
