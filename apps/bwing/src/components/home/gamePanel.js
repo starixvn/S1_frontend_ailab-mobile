@@ -12,7 +12,6 @@ import img789se from "../../styles/img/maingame/789se.png";
 import imgVgaming from "../../styles/img/maingame/vgaming.png";
 import imgVirtual from "../../styles/img/maingame/virtual.png";
 import imgSabakeno from "../../styles/img/maingame/sabakeno.png";
-
 import {
 	useGetTpMaintainList,
 	defTpGameType

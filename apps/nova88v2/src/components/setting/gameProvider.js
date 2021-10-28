@@ -17,13 +17,11 @@ import {
 const defPlatfrom = [
 	{
 		...defGameInfo.Soccer,
-		imgName: "saba",
-		tpGameType: 1
+		imgName: "saba"
 	},
 	{
 		...defGameInfo.LIVEcasinoAB,
-		imgName: "ab",
-		tpGameType: 6
+		imgName: "ab"
 	},
 	// {
 	// 	...defGameInfo.Fishing,
@@ -31,64 +29,53 @@ const defPlatfrom = [
 	// },
 	{
 		...defGameInfo.LIVEcasinoAG,
-		imgName: "ag",
-		tpGameType: 8
+		imgName: "ag"
 	},
 	{
 		...defGameInfo.Casino_JOKER,
 		path: path.casino.root,
-		imgName: "jk",
-		tpGameType: 13
+		imgName: "jk"
 	},
 	{
 		...defGameInfo.Casino_GPI,
 		path: path.casino.root,
-		imgName: "gp",
-		tpGameType: 11
+		imgName: "gp"
 	},
 	{
 		...defGameInfo.LIVEcasinoDG,
-		imgName: "dg",
-		tpGameType: 10
+		imgName: "dg"
 	},
 	{
 		...defGameInfo.LIVEcasinoSA,
-		imgName: "sa",
-		tpGameType: 9
+		imgName: "sa"
 	},
 	{
 		...defGameInfo.Casino_YGG,
 		path: path.casino.root,
-		imgName: "yg",
-		tpGameType: 14
+		imgName: "yg"
 	},
 	{
 		...defGameInfo.Casino_PP,
 		path: path.casino.root,
-		imgName: "pp",
-		tpGameType: 7
+		imgName: "pp"
 	},
 	{
 		...defGameInfo.Casino_SG,
 		path: path.casino.root,
-		imgName: "sg",
-		tpGameType: 15
+		imgName: "sg"
 	},
 	{
 		...defGameInfo.Casino_PG,
 		path: path.casino.root,
-		imgName: "pg",
-		tpGameType: 17
+		imgName: "pg"
 	},
 	{
 		...defGameInfo.LIVEcasinoAE,
-		imgName: "ae",
-		tpGameType: 18
+		imgName: "ae"
 	},
 	{
 		...defGameInfo.LIVEcasinoEB,
-		imgName: "eb",
-		tpGameType: 28
+		imgName: "eb"
 	},
 	// {
 	// 	...defGameInfo.LIVEcasinoMW,
@@ -96,20 +83,17 @@ const defPlatfrom = [
 	// },
 	{
 		...defGameInfo.LIVEcasinoWM,
-		imgName: "wm",
-		tpGameType: 32
+		imgName: "wm"
 	},
 	{
 		...defGameInfo.Casino_CQ9,
 		path: path.casino.root,
-		imgName: "cq9",
-		tpGameType: 29
+		imgName: "cq9"
 	},
 	{
 		...defGameInfo.casino_ICG,
 		path: path.casino.root,
-		imgName: "icg",
-		tpGameType: 39
+		imgName: "icg"
 	},
 	// {
 	// 	...defGameInfo.Casino_918Kiss,
@@ -118,36 +102,30 @@ const defPlatfrom = [
 	// },
 	{
 		...defGameInfo.oneGame,
-		imgName: "1g",
-		tpGameType: 41
+		imgName: "1g"
 	},
 	{
 		...defGameInfo.Casino_PT,
 		path: path.casino.root,
-		imgName: "pt",
-		tpGameType: 48
+		imgName: "pt"
 	},
 	{
 		...defGameInfo.kingMaker,
-		imgName: "km",
-		tpGameType: 52
+		imgName: "km"
 	},
 	{
 		...defGameInfo.amb,
-		imgName: "amb",
-		tpGameType: 50
+		imgName: "amb"
 	},
 	{
 		...defGameInfo.Casino_MGP,
 		imgName: "mg",
-		path: path.casino.root,
-		tpGameType: 58
+		path: path.casino.root
 	},
 	{
 		...defGameInfo.Casino_Jili,
 		imgName: "ji",
-		path: path.casino.root,
-		tpGameType: 53
+		path: path.casino.root
 	}
 ];
 

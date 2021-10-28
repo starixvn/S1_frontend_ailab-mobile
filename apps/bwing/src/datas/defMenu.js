@@ -100,14 +100,13 @@ export const productList = langId => {
 				{
 					displayKey: "lbl_SabaSport",
 					img: sabaSports,
-					...defGameInfo.Sports,
-					tpGameType: 1
+					...defGameInfo.Sports
 				}
 				// {
 				// 	displayKey: "lbl_BTISport",
 				// 	img: BTI,
 				// 	...defGameInfo.BTISport,
-				// 	tpGameType: 49,
+				// 	eventIcon: [
 				// 		{
 				// 			inPeriod: isEventPeriod(eventTime.new_BTI)
 				// 		}
@@ -316,7 +315,7 @@ export const productList = langId => {
 				// 	displayKey: "Microgaming",
 				// 	icon: "icon icon-mg",
 				// 	img: liveCasino_MGP,
-				// 	...defGameInfo.LIVEcasino_MGP,
+				// 	...defGameInfo.LIVEcasinoMGP,
 				// 	eventIcon: [
 				// 		{
 				// 			icon: defIconType.new,
@@ -345,7 +344,7 @@ export const productList = langId => {
 					displayKey: "Playtech",
 					icon: "icon icon-pt",
 					img: liveCasino_PT,
-					...defGameInfo.LIVEcasino_PT,
+					...defGameInfo.LIVEcasinoPT,
 					eventIcon: [
 						{
 							icon: defIconType.new,

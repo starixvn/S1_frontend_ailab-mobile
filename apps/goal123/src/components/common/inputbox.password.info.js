@@ -17,7 +17,7 @@ const Inputbox = ({
 	};
 
 	return (
-		<div className="inputBox">
+		<div className={`inputBox${btnStatus === false ? " error" : ""}`}>
 			<i className="icon icon-key" />
 			<input
 				data-testid={`${testAttr}_ipt`}
@@ -39,7 +39,11 @@ const Inputbox = ({
 				<IptStatus btnStatus={btnStatus} clickInfo={clickInfo} />
 			</div>
 			{tip ? (
-				<div className="tip active" data-testid={`${testAttr}_msg`}>
+				<div
+					className={`tip active${
+						btnStatus === false ? " error" : ""
+					}`}
+					data-testid={`${testAttr}_msg`}>
 					{tip}
 				</div>
 			) : null}
