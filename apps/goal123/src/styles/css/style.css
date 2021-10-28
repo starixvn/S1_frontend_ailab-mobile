@@ -3056,7 +3056,7 @@ input[type="file"] {
 button.clickBtn {
   background: #fff;
   border-radius: 100%;
-  padding: 4vw;
+  padding: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
