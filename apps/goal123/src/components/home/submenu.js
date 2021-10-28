@@ -39,13 +39,11 @@ const defSubMenus = [
 		subItems: [
 			{
 				displayKey: "lbl_SabaSport",
-				...defGameInfo.Sports,
-				tpGameType: 1
+				...defGameInfo.Sports
 			}
 			// {
 			// 	displayKey: "lbl_BTISport",
 			// 	...defGameInfo.BTISport,
-			// 	tpGameType: 49
 			// }
 		]
 	},
@@ -55,33 +53,27 @@ const defSubMenus = [
 		subItems: [
 			{
 				...defGameInfo.tcg,
-				displayKey: "lbl_tcg",
-				tpGameType: 55
+				displayKey: "lbl_tcg"
 			},
 			{
 				...defGameInfo.sabaClub,
-				displayKey: "lbl_Vgaming",
-				tpGameType: 59
+				displayKey: "lbl_Vgaming"
 			},
 			{
 				...defGameInfo.kingMaker,
-				displayKey: "lbl_KingMaker",
-				tpGameType: 52
+				displayKey: "lbl_KingMaker"
 			},
 			{
 				...defGameInfo.V8Poker,
-				displayKey: "lbl_V8Poker",
-				tpGameType: 42
+				displayKey: "lbl_V8Poker"
 			},
 			{
 				...defGameInfo.Keno,
-				displayKey: "lbl_Keno",
-				tpGameType: 5
+				displayKey: "lbl_Keno"
 			},
 			{
 				...defGameInfo.lottery,
-				displayKey: "lbl_Lottery",
-				tpGameType: 19
+				displayKey: "lbl_Lottery"
 			}
 		]
 	},
@@ -91,51 +83,42 @@ const defSubMenus = [
 		subItems: [
 			{
 				...defGameInfo.fish_AB3,
-				displayKey: "lbl_Paradise",
-				tpGameType: 44
+				displayKey: "lbl_Paradise"
 			},
 			{
 				...defGameInfo.fish_AT01,
-				displayKey: "lbl_Oneshot_Fishing",
-				tpGameType: 44
+				displayKey: "lbl_Oneshot_Fishing"
 			},
 			{
 				...defGameInfo.ICG_DRAGONBALL_FISHING,
-				displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
-				tpGameType: 40
+				displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING"
 			},
 			{
 				...defGameInfo.ICG_FISHING_OF_SAVIORS,
-				displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS",
-				tpGameType: 40
+				displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS"
 			},
 			{
 				...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
-				displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS",
-				tpGameType: 40
+				displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS"
 			},
 			{
 				...defGameInfo.Fishing,
-				displayKey: "lbl_FishingGG",
-				tpGameType: 12
+				displayKey: "lbl_FishingGG"
 			},
 			{
 				...defGameInfo.FishingSG,
-				displayKey: "lbl_FishingSG1",
-				tpGameType: 31
+				displayKey: "lbl_FishingSG1"
 			},
 			{
 				...defGameInfo.FishingSGW,
-				displayKey: "lbl_FishingSG2",
-				tpGameType: 31
+				displayKey: "lbl_FishingSG2"
 			}
 		]
 	},
 	{
 		...defGameInfo.eSports,
 		displayKey: "lbl_eSports",
-		icon: "icon icon-e-sports",
-		tpGameType: 1
+		icon: "icon icon-e-sports"
 	},
 	{
 		displayKey: "lbl_Slots",
@@ -148,48 +131,39 @@ const defSubMenus = [
 		subItems: [
 			{
 				...defGameInfo.LIVEcasinoPP,
-				displayKey: "Pragmatic Play",
-				tpGameType: 16
+				displayKey: "Pragmatic Play"
 			},
 			{
 				...defGameInfo.LIVEcasinoN2,
-				displayKey: "n2-LIVE",
-				tpGameType: 45
+				displayKey: "n2-LIVE"
 			},
 			{
 				...defGameInfo.LIVEcasinoWM,
-				displayKey: "WM Casino",
-				tpGameType: 32
+				displayKey: "WM Casino"
 			},
 			{
 				...defGameInfo.LIVEcasinoDG,
-				displayKey: "Dream Gaming",
-				tpGameType: 10
+				displayKey: "Dream Gaming"
 			},
 			{
 				...defGameInfo.LIVEcasinoAE,
-				displayKey: "AE Casino",
-				tpGameType: 18
+				displayKey: "AE Casino"
 			},
 			{
 				...defGameInfo.LIVEcasinoAG,
-				displayKey: "Asia Gaming",
-				tpGameType: 8
+				displayKey: "Asia Gaming"
 			},
 			{
 				...defGameInfo.LIVEcasinoAB,
-				displayKey: "Allbet",
-				tpGameType: 6
+				displayKey: "Allbet"
 			},
 			{
 				...defGameInfo.LIVEcasinoSA,
-				displayKey: "SA Gaming",
-				tpGameType: 9
+				displayKey: "SA Gaming"
 			},
 			{
 				...defGameInfo.LIVEcasinoEB,
-				displayKey: "eBET",
-				tpGameType: 28
+				displayKey: "eBET"
 			}
 		]
 	},
