@@ -5,7 +5,7 @@ import MyWallet from "../pages/wallet";
 import Promotion from "../pages/promotion";
 import Casino from "../pages/casino";
 
-import path from "../path";
+import path, { defSpecialPath } from "../path";
 import Home from "../pages/home";
 
 import ForgetPwd from "../components/login/forgetPwd";
@@ -48,7 +48,7 @@ import ChangePwd from "../components/profile/changePwd";
 import Kyc from "../components/withdrawal/kyc";
 import KycWaiting from "../components/withdrawal/kycWaiting";
 
-import Kiss918 from "../pages/918kiss";
+// import Kiss918 from "../pages/918kiss";
 
 import FriendReferral from "../pages/referral";
 // import ReferFriends from "../components/referral/referFriends";
@@ -61,6 +61,7 @@ import CryptoWallet from "../pages/cryptoWallet";
 import MyAccount from "../components/setting/myAccount";
 import AppDownload from "../pages/appDownload";
 import CheckSpeed from "../pages/checkSpeed";
+import AppEntPage from "../pages/appEntPage";
 
 const RouteComponents = () => {
 	return (
@@ -139,6 +140,7 @@ const RouteComponents = () => {
 			<MyAccount path={`/:langId/${path.myAccount.root}`} />
 			<AppDownload path={`/:langId/${path.appDownload.root}`} />
 			<CheckSpeed path={`/:langId/${path.checkSpeed.root}`} />
+			<AppEntPage path={`/${defSpecialPath.appentpage}`} />
 		</Router>
 	);
 };

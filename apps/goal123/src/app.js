@@ -1,6 +1,6 @@
 import React from "react";
 import { Router, createHistory, LocationProvider } from "@reach/router";
-import path from "./path";
+import path, { defSpecialPath } from "./path";
 import { Wrapper } from "./components/common/wrapper";
 import PopBox from "./components/common/popbox";
 import Home from "./pages/home";
@@ -55,6 +55,7 @@ import ReferFriends from "./components/referral/referFriends";
 import ReferralHistory from "./components/referral/referral.history";
 
 import VIP from "./pages/vip";
+import AppEntPage from "./pages/appEntPage";
 import AppDownload from "./pages/appDownload";
 
 const Index = () => {
@@ -118,6 +119,7 @@ const Index = () => {
 					<MysteryBox path={path.mysteryBox.root} />
 					<VIP path={path.vip.root} />
 					<AppDownload path={path.appDownload.root} />
+					<AppEntPage path={`/${defSpecialPath.appentpage}`} />
 				</Router>
 			</LocationProvider>
 			<PopBox />
