@@ -202,7 +202,7 @@ const Detail = ({
 				<li>
 					<span className="title">{i18n.lbl_SettledTime}</span>
 					<span>
-						{moment(settledTime).format("YYYY/MM/DD hh:mm:ss")}
+						{moment(settledTime).format("YYYY/MM/DD HH:mm:ss")}
 					</span>
 				</li>
 			</ul>
