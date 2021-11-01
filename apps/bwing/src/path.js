@@ -166,3 +166,7 @@ export default {
 		root: "streaming"
 	}
 };
+
+export const defSpecialPath = {
+	appentpage: "appEntPage"
+};

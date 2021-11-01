@@ -114,3 +114,7 @@ export default {
 		root: "appDownload"
 	}
 };
+
+export const defSpecialPath = {
+	appentpage: "appEntPage"
+};

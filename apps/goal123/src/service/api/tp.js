@@ -24,6 +24,7 @@ export const api_tp_GotoGame = ({
 	AppType = defGotoGame_AppType.NativeAPP,
 	fun = null,
 	gameType = "",
+	token = "",
 	tpGameType
 }) =>
 	tpRequest.post("/GotoGame", {
@@ -34,6 +35,7 @@ export const api_tp_GotoGame = ({
 			gameId,
 			fun,
 			gameType,
+			token,
 			tpGameType
 		}
 	});

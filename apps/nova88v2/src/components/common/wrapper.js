@@ -9,6 +9,15 @@ import useInterval from "../hook/useInterval";
 import { getUrlParameter, setCookie, deleteCookie } from "./common";
 import i18nConfig from "../../i18n/config";
 import api from "../../service/api";
+import { defSpecialPath } from "../../path";
+
+const isSpecialPath = () => {
+	return (
+		defSpecialPath[
+			`${window.location.pathname?.substring(1)}`?.toLowerCase()
+		] !== undefined
+	);
+};
 
 export const Wrapper = ({ children }) => {
 	const [i18n, seti18n] = useState(i18nConfig());
@@ -75,14 +84,16 @@ export const Wrapper = ({ children }) => {
 	}, []);
 
 	useEffect(() => {
-		IS_LOGGED_IN().then(isLogin => {
-			if (isLogin !== userInfo.isLogin && isMountedRef.current) {
-				setUserInfo(prevState => ({
-					...prevState,
-					isLogin
-				}));
-			}
-		});
+		if (!isSpecialPath()) {
+			IS_LOGGED_IN().then(isLogin => {
+				if (isLogin !== userInfo.isLogin && isMountedRef.current) {
+					setUserInfo(prevState => ({
+						...prevState,
+						isLogin
+					}));
+				}
+			});
+		}
 	}, [userInfo.isLogin]);
 
 	const OnlineCheckCallBack = (errorCode, errMsg) => {
@@ -123,7 +134,7 @@ export const Wrapper = ({ children }) => {
 				}
 			);
 		},
-		userInfo.isLogin ? 10000 : null
+		userInfo.isLogin && !isSpecialPath() ? 10000 : null
 	);
 
 	useEffect(() => {

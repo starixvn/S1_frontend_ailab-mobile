@@ -160,3 +160,7 @@ export default {
 		root: "speed"
 	}
 };
+
+export const defSpecialPath = {
+	appentpage: "appEntPage"
+};
