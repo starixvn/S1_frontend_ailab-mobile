@@ -9,6 +9,11 @@ import { defGameInfo } from "../../datas/productList";
 import { popBoxContext, i18nContext } from "../common/context";
 import { api_tp_GotoGame, defGotoGame_AppType } from "../../service/api/tp";
 
+export const defOpenType = {
+	_blank: "_blank",
+	_self: "_self"
+};
+
 export const defSpecialSetting = {
 	playTech: defGameInfo.Casino_PT.tpId
 };
@@ -28,7 +33,13 @@ const playTechLaunchGame = (client, game, mode, openType) => {
 	iapiLaunchClient(client, game, mode, openType);
 };
 
-const launchGame = ({ client, mode, game, lang }) => {
+const launchGame = ({
+	client,
+	mode,
+	game,
+	lang,
+	openType = defOpenType._blank
+}) => {
 	const real = mode == "real" ? 1 : 0;
 	// Optional Variables
 	const lobbyUrl = "";
@@ -42,7 +53,7 @@ const launchGame = ({ client, mode, game, lang }) => {
 			client,
 			`language=${lang}&real=${real}&lobby=${lobbyUrl}&logout=${logoutUrl}&deposit=${depositUrl}&support=${supportUrl}&backurl=${lobbyUrl}`
 		);
-		playTechLaunchGame(client, game, mode, "_blank");
+		playTechLaunchGame(client, game, mode, openType);
 	}
 
 	// Live Games
@@ -51,14 +62,20 @@ const launchGame = ({ client, mode, game, lang }) => {
 			client,
 			`&launch_alias=${game}&language=${lang}&real=${real}&lobby=${lobbyUrl}&logout=${logoutUrl}&deposit=${depositUrl}&support=${supportUrl}`
 		);
-		playTechLaunchGame(client, null, mode, "_blank");
+		playTechLaunchGame(client, null, mode, openType);
 	}
 };
 
-const launchGameWithFunMode = ({ client, game, lang, mode }) => {
+const launchGameWithFunMode = ({
+	client,
+	game,
+	lang,
+	mode,
+	openType = defOpenType._blank
+}) => {
 	if (client === "ngm_desktop" || client === "ngm_mobile") {
 		iapiSetClientParams(client, `language=${lang}&real=0`);
-		playTechLaunchGame(client, game, mode, "_blank");
+		playTechLaunchGame(client, game, mode, openType);
 	}
 };
 
@@ -100,6 +117,8 @@ export const useGotoGame = ({
 			tpId: _tpId,
 			gameId: _gameId,
 			isFun: _isFun,
+			token,
+			openType = defOpenType._blank,
 			tpGameType
 		}) => {
 			if (_isLogin) {
@@ -114,6 +133,7 @@ export const useGotoGame = ({
 						_tpId === defSpecialSetting.playTech
 							? defGotoGame_AppType.Mobile
 							: defGotoGame_AppType.NativeAPP,
+					token: token ?? "",
 					tpGameType: String(tpGameType)
 				}).then(async res => {
 					if (isMountedRef.current) {
@@ -166,7 +186,7 @@ export const useGotoGame = ({
 											});
 										}
 									} else {
-										launchGame({ ...result });
+										launchGame({ ...result, openType });
 									}
 								});
 
@@ -175,7 +195,10 @@ export const useGotoGame = ({
 									iapiSetClientPlatform("web");
 									iapiLogin(username, password, 1, lang);
 								} else {
-									launchGameWithFunMode({ ...result });
+									launchGameWithFunMode({
+										...result,
+										openType
+									});
 								}
 							}
 						} else if (
