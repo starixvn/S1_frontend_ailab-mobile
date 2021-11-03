@@ -6,6 +6,8 @@ import Bong88 from "../../styles/img/bong88.png";
 import path from "../../path";
 import { useAppDownLoad } from "../appDownload/useAppDownLoad";
 import { defPlatform } from "./defPlatform";
+import androidIcon from "../../styles/img/AndroidIcon.png";
+import iosIcon from "../../styles/img/iosIcon.png";
 
 export default ({ i18n, langId }) => {
 	return (
@@ -166,7 +168,8 @@ const AppDownload = () => {
 					href={andriodDownLoadUrl}
 					target="_blank"
 					rel="noreferrer">
-					<button>Android</button>
+					<img src={androidIcon} alt="android icon" />
+					Android
 				</a>
 			)}
 
@@ -176,7 +179,8 @@ const AppDownload = () => {
 					href={IOSDownloadUrl}
 					target="_blank"
 					rel="noreferrer">
-					<button>iOS</button>
+					<img src={iosIcon} alt="ios icon" />
+					iOS
 				</a>
 			)}
 		</div>
