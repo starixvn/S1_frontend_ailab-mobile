@@ -25,7 +25,7 @@ export const StreamingModule = ({
 	gameId
 }) => {
 	const navigate = useNavigate();
-	const { handleLogin } = useHandleLogin();
+	const { handleLogin, handleJoin } = useHandleLogin();
 	const ClickBetNow = e => {
 		e.stopPropagation();
 		GET_ENTER_PAGE({
@@ -46,7 +46,7 @@ export const StreamingModule = ({
 					`${config.openURL}/${langId}/liveStreamingEntPage?ch=${channel}`
 				);
 			} else {
-				handleLogin();
+				handleJoin();
 			}
 		} else {
 			navigate(`/${langId}/${path.streaming.root}`);

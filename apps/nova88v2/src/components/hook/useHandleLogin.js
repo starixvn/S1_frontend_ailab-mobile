@@ -37,7 +37,31 @@ const useHandleLogin = () => {
 		});
 	};
 
-	return { handleLogin };
+	const handleJoin = ({
+		selGameInfo,
+		selProvider,
+		searchInfo,
+		selNav
+	} = {}) => {
+		const prevScreen = {
+			selGameInfo,
+			selProvider,
+			searchText: searchInfo?.searchText,
+			selGameType: searchInfo?.gameType,
+			selNav
+		};
+		if (!selGameInfo) {
+			localStorage.removeItem("prevScreen");
+		} else {
+			localStorage.setItem("prevScreen", JSON.stringify(prevScreen));
+		}
+
+		navigate(`/${userInfo.langId}/${path.join.root}`, {
+			state: { previousPage: currentPages() }
+		});
+	};
+
+	return { handleLogin, handleJoin };
 };
 
 export default useHandleLogin;
