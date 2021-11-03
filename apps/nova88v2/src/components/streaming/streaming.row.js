@@ -25,7 +25,7 @@ export const StreamingModule = ({
 	gameId
 }) => {
 	const navigate = useNavigate();
-	const { handleLogin } = useHandleLogin();
+	const { handleLogin, handleJoin } = useHandleLogin();
 	const ClickBetNow = e => {
 		e.stopPropagation();
 		GET_ENTER_PAGE({
@@ -41,9 +41,13 @@ export const StreamingModule = ({
 
 	const ClickLiveTv = () => {
 		if (isStreamingPage) {
-			window.open(
-				`${config.openURL}/${langId}/liveStreamingEntPage?ch=${channel}`
-			);
+			if (isLogin) {
+				window.open(
+					`${config.openURL}/${langId}/liveStreamingEntPage?ch=${channel}`
+				);
+			} else {
+				handleJoin();
+			}
 		} else {
 			navigate(`/${langId}/${path.streaming.root}`);
 		}
@@ -90,7 +94,9 @@ StreamingModule.defaultProps = {
 	isStreamingPage: false,
 	homeScore: null,
 	awayScore: null,
-	isLogin: null
+	isLogin: null,
+	tpId: null,
+	gameId: null
 };
 
 StreamingModule.propTypes = {
@@ -107,5 +113,7 @@ StreamingModule.propTypes = {
 	timeStart: PropTypes.string.isRequired,
 	matchID: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 		.isRequired,
-	channel: PropTypes.number.isRequired
+	channel: PropTypes.number.isRequired,
+	tpId: PropTypes.number,
+	gameId: PropTypes.number
 };
