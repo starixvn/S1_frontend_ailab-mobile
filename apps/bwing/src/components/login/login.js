@@ -208,7 +208,7 @@ const LoginPage = ({ ButtonTitle, hideBtn = false }) => {
 				<div className="Terms">
 					<Link
 						data-testid="forgetpw"
-						to={path.forgetPassword.root}
+						to={`/${path.forgetPassword.root}`}
 						onClick={handleloginPanel.bind(
 							this,
 							showPanel,

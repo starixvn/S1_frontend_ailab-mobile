@@ -261,7 +261,7 @@ const SubGame = ({
 			className={`${showingEventIcon} ${isMaintain ? "active" : ""}`}
 			to={
 				category === "slot"
-					? `${path.casino.root}/${game.tpId}`
+					? `/${path.casino.root}/${game.tpId}`
 					: game.path
 			}
 			state={game.parameter}

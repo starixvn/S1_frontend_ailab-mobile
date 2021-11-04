@@ -261,7 +261,7 @@ const PlaytechJactpot = () => {
 	}, []);
 
 	return (
-		<Link to={path.casino.root} state={{ nav: defNav.PROMO.key }}>
+		<Link to={`/${path.casino.root}`} state={{ nav: defNav.PROMO.key }}>
 			<div className="bannerS">
 				<img src={jackpot} alt="" />
 				<p>VND</p>
