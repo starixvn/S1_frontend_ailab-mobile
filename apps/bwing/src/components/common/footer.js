@@ -22,7 +22,7 @@ const Footer = () => {
 						const isMatch = props.match !== null;
 						return (
 							<Link
-								to={path.promotion.root}
+								to={`/${path.promotion.root}`}
 								className={isMatch ? "open" : ""}>
 								<div className="icon icon-gift" />
 								<span>{i18n.lbl_Promotion}</span>
@@ -62,7 +62,7 @@ const Footer = () => {
 							props.location.pathname === `/${path.other.root}`;
 						return (
 							<Link
-								to={path.other.root}
+								to={`/${path.other.root}`}
 								className={isMatch ? "open" : ""}>
 								<div className="icon icon-other" />
 								<span>{i18n.lbl_Other}</span>
@@ -80,7 +80,7 @@ const Footer = () => {
 					const isMatch = props.match !== null;
 					return (
 						<Link
-							to={path.promotion.root}
+							to={`/${path.promotion.root}`}
 							className={isMatch ? "open" : ""}>
 							<div className="icon icon-gift" />
 							<span>{i18n.lbl_Promotion}</span>
@@ -97,7 +97,7 @@ const Footer = () => {
 							`/${path.financialLog.root}`;
 					return (
 						<Link
-							to={path.statement.root}
+							to={`/${path.statement.root}`}
 							className={isMatch ? "open" : ""}>
 							<div className="icon icon-statement1" />
 							<span>{i18n.lbl_Statement}</span>
@@ -139,7 +139,7 @@ const Footer = () => {
 							`/${path.member.root}/${path.member.sub.bankInfo.root}`;
 					return (
 						<Link
-							to={path.member.root}
+							to={`/${path.member.root}`}
 							className={isMatch ? "open" : ""}>
 							<div className="icon icon-member" />
 							<span>{i18n.lbl_Me}</span>

@@ -17,7 +17,7 @@ const MysteryBox = () => {
 			<div className="mystery_close" onClick={closePop}>
 				X
 			</div>
-			<Link to={path.mysteryBox.root}>
+			<Link to={`/${path.mysteryBox.root}`}>
 				<img
 					className="mystery"
 					src={userInfo.langId === "vn" ? eventImgVN : eventImg}

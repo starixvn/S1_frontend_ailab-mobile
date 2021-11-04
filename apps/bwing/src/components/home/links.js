@@ -53,14 +53,16 @@ const UserGuide = ({ i18n, langId }) => {
 						rel="noreferrer">
 						<span>{i18n.lbl_HowToDepoist}</span>
 					</a>
-					<Link className="icon icon-GUIDE4" to={path.howToPlay.root}>
+					<Link
+						className="icon icon-GUIDE4"
+						to={`/${path.howToPlay.root}`}>
 						<span>{i18n.lbl_HowToPlay}</span>
 					</Link>
 				</div>
 				<div className="userGuide-box__top userGuide-box__bottom">
 					<Link
 						className="icon icon-GUIDE2"
-						to={path.howToWithdraw.root}>
+						to={`/${path.howToWithdraw.root}`}>
 						<span>{i18n.lbl_HowToWithdrawal}</span>
 					</Link>
 					<a

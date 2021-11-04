@@ -117,20 +117,11 @@ const BeforeLogin = ({
 				<span />
 				<span />
 			</div>
-			<div className="title">{title}</div>
+			{title && <div className="heardTitle">{title}</div>}
 			{!hideLogo && (
 				<Link to={path.home.root}>
 					<Logo />
 				</Link>
-			)}
-			{!hideModal && (
-				<div className="headerButton">
-					<LoginPanel
-						hideBtn={true}
-						ButtonTitle={i18n.lbl_Login.toUpperCase()}
-					/>
-					<JoinPanel hideBtn={true} />
-				</div>
 			)}
 		</div>
 	) : null;
@@ -181,7 +172,12 @@ const AfterLogin = ({
 							<span>{allBalance}</span>
 						</a>
 						<Link to={`/${path.member.root}`}>
-							<img src={vipImg[userLevel - 1]} alt="bwing_vip" />
+							{userLevel >= 0 && (
+								<img
+									src={vipImg[userLevel - 1]}
+									alt="bwing_vip"
+								/>
+							)}
 							<span>{userName}</span>
 						</Link>
 						<Link
