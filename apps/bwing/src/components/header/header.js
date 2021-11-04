@@ -123,6 +123,15 @@ const BeforeLogin = ({
 					<Logo />
 				</Link>
 			)}
+			{!hideModal && (
+				<div className="headerButton">
+					<LoginPanel
+						hideBtn={true}
+						ButtonTitle={i18n.lbl_Login.toUpperCase()}
+					/>
+					<JoinPanel hideBtn={true} />
+				</div>
+			)}
 		</div>
 	) : null;
 };

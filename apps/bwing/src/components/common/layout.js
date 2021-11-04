@@ -22,7 +22,8 @@ export const defPageInfo = {
 		titleKey: "",
 		className: "",
 		hideLogo: false,
-		showMenuBar: true
+		showMenuBar: true,
+		hideModal: true
 	},
 	member: {
 		titleKey: "lbl_MyAccount",
