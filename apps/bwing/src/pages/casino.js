@@ -324,7 +324,9 @@ class Panel extends React.Component {
 				freePlay ? 0 : 5000
 			);
 		} else {
-			this.props.setNav(defNavPanel.login);
+			this.setState({ selGameInfo: null }, () =>
+				this.props.setNav(defNavPanel.login)
+			);
 		}
 	};
 
