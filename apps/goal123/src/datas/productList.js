@@ -474,7 +474,13 @@ const gameList = [
 			{
 				...defGameInfo.LIVEcasinoPP,
 				spanText: "Pragmatic Play",
-				img: LIVEcasino_PP
+				img: LIVEcasino_PP,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.liveCasino_pp)
+					}
+				]
 			},
 			{
 				...defGameInfo.LIVEcasinoPT,

@@ -338,6 +338,12 @@ export const productList = langId => {
 					displayKey: "Pragmatic Play",
 					icon: "icon icon-PP",
 					img: liveCasino_PP,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.liveCasino_pp)
+						}
+					],
 					...defGameInfo.LIVEcasinoPP
 				},
 				{
