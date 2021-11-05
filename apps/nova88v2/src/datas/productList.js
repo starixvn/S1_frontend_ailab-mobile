@@ -208,7 +208,15 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.LIVEcasinoPP,
 							spanText: "Pragmatic Play",
-							img: LIVEcasino_PP
+							img: LIVEcasino_PP,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_pp
+									)
+								}
+							]
 						},
 						{
 							...defGameInfo.LIVEcasino_PT,
@@ -602,7 +610,15 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.LIVEcasinoPP,
 							spanText: "Pragmatic Play",
-							img: LIVEcasino_PP
+							img: LIVEcasino_PP,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_pp
+									)
+								}
+							]
 						},
 						{
 							...defGameInfo.LIVEcasino_PT,
@@ -996,7 +1012,15 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.LIVEcasinoPP,
 							spanText: "Pragmatic Play",
-							img: LIVEcasino_PP
+							img: LIVEcasino_PP,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_pp
+									)
+								}
+							]
 						},
 						{
 							...defGameInfo.LIVEcasino_PT,
@@ -1390,7 +1414,15 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.LIVEcasinoPP,
 							spanText: "Pragmatic Play",
-							img: LIVEcasino_PP
+							img: LIVEcasino_PP,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_pp
+									)
+								}
+							]
 						},
 						{
 							...defGameInfo.LIVEcasinoAE,
@@ -1778,7 +1810,15 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.LIVEcasinoPP,
 							spanText: "Pragmatic Play",
-							img: LIVEcasino_PP
+							img: LIVEcasino_PP,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_pp
+									)
+								}
+							]
 						},
 						{
 							...defGameInfo.LIVEcasino_PT,
