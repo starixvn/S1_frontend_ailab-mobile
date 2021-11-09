@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import { defMetaData } from "./def";
 import api from "../../service/api";
 
-const useGetSEODatas = ({ getFromAPI = false }) => {
+export const useGetSEODatas = ({ getFromAPI = false }) => {
 	const [SEODatas, setSEODatas] = useState(null);
 	useEffect(() => {
 		const GetDatas = async () => {
