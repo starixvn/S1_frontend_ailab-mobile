@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import Spokesperson from "../../styles/img/spokesperson.jpg";
 import { siteInfo } from "../../config";
 import { Link } from "../../route/link";
 import appDownloadImg from "../../styles/img/app/appmodule.jpg";
 import path from "../../path";
-import PagcorLicensee from "../../styles/img/licenses.png";
+import { useGetSEODatas } from "../seo/seo";
+// import PagcorLicensee from "../../styles/img/licenses.png";
 
 const Bottom = ({ i18n, langId }) => {
 	return (
@@ -29,10 +30,7 @@ const Bottom = ({ i18n, langId }) => {
 				<p>{i18n.lbl_Cookie_Reminder}</p>
 			</div>
 			<div className="social">
-				<div>
-					<div>{i18n.lbl_Gaming_License}</div>
-					<img src={PagcorLicensee} alt="pagcor licensee" />
-				</div>
+				<License i18n={i18n} />
 				<a
 					className="icon icon-facebook"
 					href="https://www.facebook.com/nova88official/"
@@ -65,6 +63,37 @@ const Bottom = ({ i18n, langId }) => {
 Bottom.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	langId: PropTypes.string.isRequired
+};
+
+const License = ({ i18n }) => {
+	const { SEODatas } = useGetSEODatas({ getFromAPI: true });
+	const showLicenseLogo = SEODatas?.activeDomain ?? false;
+
+	useEffect(() => {
+		try {
+			if (showLicenseLogo) {
+				apg_a7019fa5_9f9a_468b_92da_4890f6a6e4a7.init();
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	}, [showLicenseLogo]);
+
+	return (
+		<div>
+			{showLicenseLogo && (
+				<>
+					<div>{i18n.lbl_Gaming_License}</div>
+					<div
+						id="apg-a7019fa5-9f9a-468b-92da-4890f6a6e4a7"
+						data-apg-seal-id="a7019fa5-9f9a-468b-92da-4890f6a6e4a7"
+						data-apg-image-size="48"
+						data-apg-image-type="basic-small"
+					/>
+				</>
+			)}
+		</div>
+	);
 };
 
 export default Bottom;
