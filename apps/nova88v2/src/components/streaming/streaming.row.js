@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import moment from "moment";
 import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
@@ -6,6 +6,7 @@ import { GET_ENTER_PAGE } from "../../service/enterPage";
 import useHandleLogin from "../hook/useHandleLogin";
 import config from "../../config";
 import path from "../../path";
+import { popBoxContext } from "../common/context";
 
 export const StreamingModule = ({
 	i18n,
@@ -22,8 +23,10 @@ export const StreamingModule = ({
 	matchID,
 	channel,
 	tpId,
-	gameId
+	gameId,
+	actStatus
 }) => {
+	const { setPopBox } = useContext(popBoxContext);
 	const navigate = useNavigate();
 	const { handleLogin, handleJoin } = useHandleLogin();
 	const ClickBetNow = e => {
@@ -42,9 +45,30 @@ export const StreamingModule = ({
 	const ClickLiveTv = () => {
 		if (isStreamingPage) {
 			if (isLogin) {
-				window.open(
-					`${config.openURL}/${langId}/liveStreamingEntPage?ch=${channel}`
-				);
+				if (actStatus === 1) {
+					setPopBox({
+						isOpen: true,
+						content: i18n.lbl_streaming_please_make_deposit,
+						hasBtn: true,
+						btnBar: (
+							<div className="btn-group">
+								<button
+									className="blue"
+									onClick={() =>
+										setPopBox(() => ({
+											isOpen: false
+										}))
+									}>
+									{i18n.lbl_Close}
+								</button>
+							</div>
+						)
+					});
+				} else {
+					window.open(
+						`${config.openURL}/${langId}/liveStreamingEntPage?ch=${channel}`
+					);
+				}
 			} else {
 				handleJoin();
 			}
@@ -96,7 +120,8 @@ StreamingModule.defaultProps = {
 	awayScore: null,
 	isLogin: null,
 	tpId: null,
-	gameId: null
+	gameId: null,
+	actStatus: 1
 };
 
 StreamingModule.propTypes = {
@@ -115,5 +140,6 @@ StreamingModule.propTypes = {
 		.isRequired,
 	channel: PropTypes.number.isRequired,
 	tpId: PropTypes.number,
-	gameId: PropTypes.number
+	gameId: PropTypes.number,
+	actStatus: PropTypes.number
 };

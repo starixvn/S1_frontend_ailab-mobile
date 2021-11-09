@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import moment from "moment";
 import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
-import { navContext, defNavPanel } from "../common/context";
+import { navContext, defNavPanel, popBoxContext } from "../common/context";
 import { sportStreamDef } from "../../datas/productList";
 import config from "../../config";
 import path from "../../path";
@@ -24,8 +24,10 @@ export const StreamingModule = ({
 	matchID,
 	channel,
 	tpId,
-	gameId
+	gameId,
+	actStatus
 }) => {
+	const { setPopBox } = useContext(popBoxContext);
 	const navigate = useNavigate();
 	const { setNav } = useContext(navContext);
 	const handleLogin = () => {
@@ -36,6 +38,25 @@ export const StreamingModule = ({
 		if (isStreamingPage) {
 			if (!isLogin) {
 				handleLogin();
+			} else if (actStatus === 1) {
+				setPopBox({
+					isOpen: true,
+					content: i18n.lbl_streaming_please_make_deposit,
+					hasBtn: true,
+					btnBar: (
+						<div className="btn-group">
+							<button
+								className="blue"
+								onClick={() =>
+									setPopBox(() => ({
+										isOpen: false
+									}))
+								}>
+								{i18n.lbl_Close}
+							</button>
+						</div>
+					)
+				});
 			} else {
 				window.open(
 					`${config.openURL}/${langId}/liveStreamingEntPage?ch=${channel}`
@@ -138,7 +159,8 @@ StreamingModule.defaultProps = {
 	isStreamingPage: false,
 	homeScore: null,
 	awayScore: null,
-	isLogin: null
+	isLogin: null,
+	actStatus: 1
 };
 
 StreamingModule.propTypes = {
@@ -155,5 +177,6 @@ StreamingModule.propTypes = {
 	timeStart: PropTypes.string.isRequired,
 	matchID: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 		.isRequired,
-	channel: PropTypes.number.isRequired
+	channel: PropTypes.number.isRequired,
+	actStatus: PropTypes.number
 };
