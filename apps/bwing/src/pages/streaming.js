@@ -33,6 +33,7 @@ const IndexPage = () => {
 			isStreamingPage={true}
 			tpId={selCategory.tpId}
 			gameId={selCategory.gameId}
+			actStatus={userInfo.actStatus}
 			{...v}
 		/>
 	));

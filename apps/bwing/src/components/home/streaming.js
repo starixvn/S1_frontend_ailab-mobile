@@ -25,6 +25,7 @@ const Content = () => {
 			i18n={i18n}
 			langId={userInfo.langId}
 			isLogin={userInfo.isLogin}
+			actStatus={userInfo.actStatus}
 			{...v}
 		/>
 	));
