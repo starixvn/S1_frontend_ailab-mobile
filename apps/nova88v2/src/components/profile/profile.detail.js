@@ -603,7 +603,7 @@ ColumnItem.propTypes = {
 };
 
 export const GetYear = () => {
-	return new Date().getFullYear() - 21;
+	return new Date().getFullYear() - 18;
 };
 
 export const GetDayOfMonth = (year, month) => {
