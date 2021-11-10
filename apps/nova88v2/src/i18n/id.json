@@ -510,12 +510,12 @@
 
 	"-============================================Join===================================": "",
 
-	"lbl_Check18TC1": "Dengan meng-klik GABUNG SEKARANG, saya menyatakan hahwa saya berumur diatas 21 tahun dan telah membaca dan menyetujui ",
+	"lbl_Check18TC1": "Dengan meng-klik GABUNG SEKARANG, saya menyatakan hahwa saya berumur diatas 18 tahun dan telah membaca dan menyetujui ",
 	"lbl_PromoCode": "Kode Promo",
 	"lbl_Check18TC2": ".",
 	"lbl_PreferredCurrencyToolTip": "Mata uang yang dipilih tidak dapat diubah setelah melakukan pendaftaran.",
 	"lbl_Check18TC3": "Dari",
-	"lbl_Check18TC4": "Saya mengakui bahwa saya setidaknya berusia atau 21 tahun atau diatas.",
+	"lbl_Check18TC4": "Saya mengakui bahwa saya setidaknya berusia atau 18 tahun atau diatas.",
 	"msg_UsernameNotAvailable": "Nama pengguna tidak lagi tersedia.",
 	"lbl_EmailToolTip": "Email tidak bisa dirubah jika sudah diajukan",
 	"msg_UsernameLength": "Panjang Karakter nama pengguna harus antara 6 dan 18 karakter.",
