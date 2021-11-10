@@ -525,12 +525,12 @@
 	
 	"==============================================Join====================================": "",
 
-	"lbl_Check18TC1": "By clicking the JOIN NOW button, I hereby acknowledge that I am above 21 years old and have read and accepted your ",
+	"lbl_Check18TC1": "By clicking the JOIN NOW button, I hereby acknowledge that I am above 18 years old and have read and accepted your ",
 	"lbl_PromoCode": "Promo Code",
 	"lbl_Check18TC2": ".",
 	"lbl_PreferredCurrencyToolTip": "Preferred currency can not be changed after registration.",
 	"lbl_Check18TC3": "of",
-	"lbl_Check18TC4": "I acknowledge I am at least 21 years of age.",
+	"lbl_Check18TC4": "I acknowledge I am at least 18 years of age.",
 	"msg_UsernameNotAvailable": "Username is no longer available.",
 	"lbl_EmailToolTip": "Email cannot be changed after submission.",
 	"msg_UsernameLength": "Username must between 6 and 18 characters long.",
