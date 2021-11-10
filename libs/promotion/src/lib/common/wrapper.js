@@ -24,7 +24,8 @@ export default ({
 		digits: undefined,
 		formatRequired: undefined
 	},
-	visitorCurrency = {}
+	visitorCurrency = {},
+	handleLogin
 }) => (
 	<configContext.Provider
 		value={{
@@ -45,7 +46,8 @@ export default ({
 						? isConvert(userInfo.currencyId)
 						: formatSetting.formatRequired,
 				[defWrapperCol.formatSetting.digits]: formatSetting.digits
-			}
+			},
+			handleLogin
 		}}>
 		{children}
 	</configContext.Provider>

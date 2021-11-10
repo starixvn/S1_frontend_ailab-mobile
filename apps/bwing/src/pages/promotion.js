@@ -3,13 +3,25 @@ import { Promotion } from "@ailab-mobile/promotion";
 import config from "Config";
 import path from "Path";
 import { Promotion as uiSetting } from "UISetting";
-import { userInfoContext, i18nContext, popBoxContext } from "Context";
+import {
+	userInfoContext,
+	i18nContext,
+	popBoxContext,
+	navContext,
+	defNavPanel
+} from "../components/common/context";
 import staticList from "../datas/promotionList";
 
 export default ({ location }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const { setNav } = useContext(navContext);
+
+	const handleLogin = () => {
+		setNav(defNavPanel.login);
+	};
+
 	return (
 		<Promotion
 			staticList={staticList}
@@ -26,6 +38,7 @@ export default ({ location }) => {
 			}}
 			location={location}
 			visitorCurrency={{ vn: 51, en: 51 }}
+			handleLogin={handleLogin}
 		/>
 	);
 };

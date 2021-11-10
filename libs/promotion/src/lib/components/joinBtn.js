@@ -19,9 +19,14 @@ export default ({
 }) => {
 	if (defHideJoinBtnTypes.includes(promotionInfo.promotionType)) return null;
 
-	const { path, userInfo, i18n, api, formatSetting } = useContext(
-		configContext
-	);
+	const {
+		path,
+		userInfo,
+		i18n,
+		api,
+		formatSetting,
+		handleLogin
+	} = useContext(configContext);
 	const { handlePopBox, handleErrorPopBox, clickClose } = useHandlePopBox();
 	const isMountedRef = useRef(null);
 	const [redirectPath, setRedirectPath] = useState(null);
@@ -224,7 +229,13 @@ export default ({
 			(_canJoin && userInfo.isLogin && !promotionInfo.isJoin))
 	) {
 		if (userInfo.isLogin === false) {
-			btnResult = (
+			btnResult = handleLogin ? (
+				<button
+					className={uiSetting.joinBtn ?? "btn-check"}
+					onClick={handleLogin}>
+					{i18n?.lbl_PromoJoinNow}
+				</button>
+			) : (
 				<Link
 					className={uiSetting.joinBtn ?? "btn-check"}
 					to={`/${path.login.root}`}>
