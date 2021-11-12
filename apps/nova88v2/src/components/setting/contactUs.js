@@ -48,6 +48,17 @@ const ContactUs = ({ i18n }) => {
 					<div className="text-org">NOVA88official</div>
 				</div>
 			</a>
+			<a
+				href="https://t.me/Nova88Support1"
+				target="_blank"
+				rel="noreferrer noopener">
+				<i className="icon icon-telegram" />
+				<div>
+					{i18n.lbl_Telegram}
+
+					<div className="text-org">NOVA88official</div>
+				</div>
+			</a>
 			<div>
 				<img src={lineQRCode} alt="Line QR Code" />
 				<div>Line</div>
