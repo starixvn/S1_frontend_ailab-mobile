@@ -15,5 +15,6 @@ export const eventTime = {
 	liveCasino_pp: {
 		startDate: "2021/11/10 10:00:00",
 		endDate: "2021/12/31 22:59:59"
-	}
+	},
+	promo: { startDate: "2021/11/11 11:00:00" }
 };

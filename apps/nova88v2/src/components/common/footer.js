@@ -50,6 +50,7 @@ const Footer = () => {
 								}`}>
 								<div className="circleAnimation" />
 								<span>{i18n.lbl_Promotion}</span>
+								<div className="icon icon-mediafire">HOT</div>
 							</Link>
 						);
 					}}
@@ -112,6 +113,7 @@ const Footer = () => {
 								}`}>
 								<div className="circleAnimation" />
 								<span>{i18n.lbl_Promotion}</span>
+								<div className="icon icon-mediafire">HOT</div>
 							</Link>
 						);
 					}}

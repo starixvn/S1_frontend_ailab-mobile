@@ -117,8 +117,8 @@ export const defGameInfo = {
 };
 
 const defIconType = {
-	live: " icon-live",
-	new: " icon-new"
+	live: " liveicon",
+	new: " newicon"
 };
 
 export const defCol = {

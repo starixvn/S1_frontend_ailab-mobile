@@ -17,6 +17,7 @@ const Footer = () => {
 							<Link
 								to={`/${path.promotion.root}`}
 								className={isMatch ? "open" : ""}>
+								<div className="hoticon" />
 								<div className="circleAnimation">
 									<div className="icon icon-promotion" />
 								</div>
@@ -81,6 +82,7 @@ const Footer = () => {
 						<Link
 							to={`/${path.promotion.root}`}
 							className={isMatch ? "open" : ""}>
+							<div className="hoticon" />
 							<div className="circleAnimation">
 								<div className="icon icon-promotion" />
 							</div>

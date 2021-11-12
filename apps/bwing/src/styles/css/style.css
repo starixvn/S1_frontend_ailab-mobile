@@ -115,13 +115,6 @@ html {
   z-index: 1;
 }
 
-@media screen and (min-width: 768px) {
-  .close {
-    width: 5vw;
-    height: 1.2vh;
-  }
-}
-
 .close span {
   position: absolute;
   height: 2px;
@@ -512,7 +505,7 @@ main .swiper-container .swiper-slide.swiper-slide-active {
 
 main .banner {
   display: block;
-  top: 12vh;
+  top: 12vw;
   z-index: 3;
   height: 37.5vw;
 }
@@ -629,9 +622,10 @@ main .gameList > div .under {
   display: none;
   position: absolute;
   z-index: 1;
-  background: #555;
-  padding: 1vw;
-  border-radius: 5px;
+  background: #555555db;
+  padding: 0.8vw;
+  margin: 0.8vw;
+  border-radius: 2px;
   color: white;
 }
 
@@ -649,13 +643,13 @@ main .gameList > div.active, main .gameList > a.active, main .gameList > button.
 
 main .gameList > div > div, main .gameList > div > a, main .gameList > div > button, main .gameList > a > div, main .gameList > a > a, main .gameList > a > button, main .gameList > button > div, main .gameList > button > a, main .gameList > button > button {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 27vw;
-          flex: 0 0 27vw;
-  margin: 2vw;
+      -ms-flex: 0 0 29vw;
+          flex: 0 0 29vw;
+  margin: 1.2vw;
   text-align: center;
   position: relative;
   border: 1px solid #1d2f62;
-  border-radius: 10px;
+  border-radius: 5px;
   background: #0c1a3f;
   overflow: hidden;
   -webkit-box-orient: vertical;
@@ -685,11 +679,25 @@ main .gameList > div > div.active .under, main .gameList > div > a.active .under
 main .gameList > div > div.newicon::before, main .gameList > div > a.newicon::before, main .gameList > div > button.newicon::before, main .gameList > a > div.newicon::before, main .gameList > a > a.newicon::before, main .gameList > a > button.newicon::before, main .gameList > button > div.newicon::before, main .gameList > button > a.newicon::before, main .gameList > button > button.newicon::before {
   content: "NEW";
   position: absolute;
-  top: 5px;
-  left: 5px;
-  padding: 3px 5px;
+  top: 2px;
+  left: 2px;
+  padding: 3px;
   background-color: #58cdff;
   color: #0c1a3f;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+main .gameList > div > div.hoticon::before, main .gameList > div > a.hoticon::before, main .gameList > div > button.hoticon::before, main .gameList > a > div.hoticon::before, main .gameList > a > a.hoticon::before, main .gameList > a > button.hoticon::before, main .gameList > button > div.hoticon::before, main .gameList > button > a.hoticon::before, main .gameList > button > button.hoticon::before {
+  content: "HOT";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  padding: 3px 5px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f85f05), to(#f20505));
+  background: linear-gradient(#f85f05, #f20505);
+  color: #fff;
   border-radius: 3px;
   font-size: 12px;
   font-weight: bold;
@@ -823,6 +831,23 @@ footer.footerNew > a > div:before {
   font-size: 5vw;
 }
 
+footer .hoticon::before {
+  content: "HOT";
+  position: absolute;
+  top: -2px;
+  padding: 0 3px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f85e05bd), to(#f20505bd));
+  background: linear-gradient(#f85e05bd, #f20505bd);
+  color: #fff;
+  border-radius: 0 0 3px 3px;
+  font-size: 2.5vw;
+  line-height: 16px;
+  font-weight: 600;
+  z-index: 2;
+  -webkit-animation: newicon 0.5s linear infinite alternate;
+          animation: newicon 0.5s linear infinite alternate;
+}
+
 footer > a {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 0px;
@@ -857,7 +882,7 @@ footer > a .circleAnimation {
 
 footer > a .circleAnimation > div {
   position: relative;
-  bottom: -10.5vw;
+  bottom: -12vw;
 }
 
 footer > a .circleAnimation > div:before {
@@ -1347,6 +1372,90 @@ footer > a.open {
   background: #f77a00;
 }
 
+#popup.promoinfo {
+  padding: 0;
+  top: 100%;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+#popup.promoinfo.active {
+  top: 0;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+#popup.promoinfo .pop {
+  width: 100%;
+  height: 100%;
+  margin: 0 0 auto;
+}
+
+#popup.promoinfo .pop .icon-close {
+  color: white;
+  position: absolute;
+  color: #58cdff;
+  right: 2vw;
+  top: 3vw;
+  left: unset;
+}
+
+#popup.promoinfo .pop .popTit {
+  font-size: 3.5vw;
+  padding: 3vw;
+  background: #1d2f62;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  z-index: 1;
+}
+
+#popup.promoinfo .promotions {
+  width: 100%;
+  overflow: auto;
+  margin-top: 10vw;
+  height: calc(100% - 10vw);
+}
+
+#popup.promoinfo .promotions div.promodule {
+  margin-bottom: 0;
+  height: calc(100% - 6vw);
+}
+
+#popup.promoinfo .promotions div.promodule .text {
+  padding-bottom: 10vw;
+}
+
+#popup.promoinfo .promotions .btnGroup button, #popup.promoinfo .promotions .btnGroup a {
+  width: 100%;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f85f05), to(#f20505));
+  background: linear-gradient(180deg, #f85f05, #f20505);
+  border-radius: 3px;
+  color: #fff;
+  padding: 2vw 3vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  line-height: 3vw;
+}
+
+#popup.promoinfo .promotions div .cashBack {
+  border: 0;
+  background: transparent;
+  border-top: 1px solid #7789bd54;
+  margin: 2vw 0;
+  padding: 0;
+  border-radius: 0;
+  overflow: hidden;
+}
+
 .header {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -1358,6 +1467,24 @@ footer > a.open {
 
 .header .title {
   font-size: 3vw;
+}
+
+.header ~ .Login, .header ~ .Join {
+  text-align: center;
+  z-index: 11;
+}
+
+.header ~ .Login img[alt="logo"], .header ~ .Join img[alt="logo"] {
+  margin: 3vw auto;
+}
+
+.header ~ .Login .Terms, .header ~ .Join .Terms {
+  text-align: left;
+}
+
+#header ~ .Login, #header ~ .Join {
+  text-align: center;
+  z-index: 11;
 }
 
 .title {
@@ -1487,7 +1614,7 @@ footer > a.open {
 }
 
 .forget {
-  padding-top: 10vh;
+  padding-top: 15vw;
 }
 
 .balance {
@@ -2061,6 +2188,23 @@ footer > a.open {
   color: #070e22;
 }
 
+.btn-group button.btn-check,
+.btn-group a.btn-check {
+  background: -webkit-gradient(linear, left bottom, left top, from(#41b2e1), to(#6fd1fa));
+  background: linear-gradient(to top, #41b2e1, #6fd1fa);
+  color: black;
+  white-space: nowrap;
+  max-width: none;
+  border-radius: 0;
+}
+
+.btn-group button.orange,
+.btn-group a.orange {
+  background: -webkit-gradient(linear, left bottom, left top, from(#f20c05), to(#f85f05));
+  background: linear-gradient(to top, #f20c05, #f85f05);
+  color: white;
+}
+
 .btn-group button.blue, .btn-group button.submit,
 .btn-group a.blue,
 .btn-group a.submit {
@@ -2237,7 +2381,7 @@ footer > a.open {
 
 .processArea {
   width: 100%;
-  height: 7vh;
+  height: 12vw;
   margin-top: 2vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2484,7 +2628,7 @@ p.txt-blue12 {
 }
 
 .bankCard img {
-  height: 10vh;
+  height: 18vw;
 }
 
 .bankCard p {
@@ -2795,7 +2939,7 @@ p.txt-blue12 {
 
 @media screen and (min-width: 768px) {
   .countryCode {
-    height: 6vh;
+    height: 7.8vw;
     margin: 2vw 2vw 0 0;
   }
 }
@@ -3429,10 +3573,10 @@ a.clickBtn:before {
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   padding: 10px;
-  border-radius: 3px;
+  border-radius: 2px;
   width: 60%;
   text-align: center;
-  line-height: 3vh;
+  line-height: 5vw;
 }
 
 .casino .slotList .info.under {
@@ -4026,32 +4170,6 @@ span.important {
           box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
 }
 
-.promotions .claimed {
-  position: absolute;
-  background: rgba(233, 37, 41, 0.8);
-  width: 17vw;
-  height: 17vw;
-  border-radius: 100%;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-  display: none;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 3vw;
-  color: white;
-  top: 2vw;
-  left: 2vw;
-  z-index: 1;
-}
-
-.promotions .claimed:before {
-  content: "CLAIMED";
-}
-
 .promotions .tag ~ div.promodule {
   padding: 3vw;
   border: 1px dotted #58cdff;
@@ -4109,6 +4227,9 @@ span.important {
   background: transparent;
   line-height: 24px;
   position: relative;
+  background: #081129;
+  border: 1px solid #182852;
+  margin-bottom: 10px;
 }
 
 .promotions div.promodule.open img {
@@ -4120,6 +4241,73 @@ span.important {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.promotions div.promodule.expired {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+}
+
+.promotions div.promodule .claimed {
+  position: absolute;
+  display: none;
+  top: 13px;
+  left: -2px;
+  background: #afafaf;
+  border-bottom-right-radius: 10px;
+  width: 28px;
+  height: 25px;
+  padding: 0 20px;
+  color: #000;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: bold;
+  font-size: 12px;
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+  -webkit-transform: rotate(-20deg) skewX(-20deg);
+          transform: rotate(-20deg) skewX(-20deg);
+  z-index: 1;
+}
+
+.promotions div.promodule .claimed:before {
+  content: "CLAIMED";
+}
+
+.promotions div.promodule .new {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  top: 13px;
+  left: -2px;
+  background: #e92529;
+  border-bottom-right-radius: 10px;
+  width: 28px;
+  height: 25px;
+  padding: 0 20px;
+  color: white;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: bold;
+  font-size: 12px;
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+  -webkit-transform: rotate(-20deg) skewX(-20deg);
+          transform: rotate(-20deg) skewX(-20deg);
+  z-index: 1;
+}
+
+.promotions div.promodule .new:before {
+  content: "NEW";
 }
 
 .promotions div.promodule .btn-cancel {
@@ -4137,7 +4325,6 @@ span.important {
 }
 
 .promotions div.promodule .btn-check {
-  background: #58cdff;
   color: #070e22;
   padding: 0 2vw;
   border-radius: 3px;
@@ -4165,8 +4352,8 @@ span.important {
   margin-left: 0;
   margin-top: -1px;
   width: 100%;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4195,12 +4382,15 @@ span.important {
   color: #58cdff;
   font-weight: bold;
   padding-left: 1vw;
+  font-size: 4vw;
 }
 
 .promotions div.promodule .text {
   max-width: calc(100% - 1vw);
   padding-left: 1vw;
   word-wrap: break-word;
+  line-height: 5.5vw;
+  margin-top: 1vw;
 }
 
 .promotions div.promodule .text ul {
@@ -4453,7 +4643,7 @@ span.important {
   margin-top: 2vw;
   background: #1d2f62;
   padding: 2vw;
-  border-radius: 5px;
+  border-radius: 3px;
   color: #fff;
 }
 
@@ -4619,7 +4809,7 @@ span.important {
           filter: grayscale(1);
 }
 
-.minAmount {
+.depositSlip {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4629,33 +4819,33 @@ span.important {
       flex-wrap: wrap;
 }
 
-.minAmount > div {
+.depositSlip > div {
   display: none;
   width: 100%;
   font-weight: bold;
 }
 
-.minAmount > div:nth-child(n + 3), .minAmount > div:nth-child(1) {
+.depositSlip > div:nth-child(n + 3), .depositSlip > div:nth-child(1) {
   display: none;
 }
 
-.minAmount > div:nth-child(n + 3).open, .minAmount > div:nth-child(1).open {
+.depositSlip > div:nth-child(n + 3).open, .depositSlip > div:nth-child(1).open {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.minAmount > div:first-child > div {
+.depositSlip > div:first-child > div {
   color: #58cdff;
 }
 
-.minAmount > div:last-child {
+.depositSlip > div:last-child {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.minAmount > div > div {
+.depositSlip > div > div {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -4664,40 +4854,8 @@ span.important {
   color: white;
 }
 
-.minAmount > div > div:last-child {
+.depositSlip > div > div:last-child {
   text-align: right;
-}
-
-.new {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#71d3fb), to(#3fb1e0));
-  background: linear-gradient(180deg, #71d3fb, #3fb1e0);
-  border-radius: 100%;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  color: white;
-  display: none;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-}
-
-.new:before {
-  content: "NEW";
-}
-
-.new.active {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .nodata {
@@ -4932,7 +5090,7 @@ span.important {
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   padding: 3px;
-  border-radius: 3px;
+  border-radius: 2px;
   width: 70%;
   text-align: center;
   line-height: 10px;
@@ -4958,25 +5116,11 @@ span.important {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 30px;
-  line-height: 30px;
+  height: 8vw;
+  line-height: 8vw;
   text-align: center;
   background: -webkit-gradient(linear, left top, left bottom, from(#4dc4ff), to(#3097ff));
   background: linear-gradient(to bottom, #4dc4ff 0%, #3097ff 100%);
-}
-
-@media screen and (min-height: 800px) {
-  .maingame > a .title {
-    height: 3vh;
-    line-height: 24px;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .maingame > a .title {
-    height: 5vh;
-    line-height: 48px;
-  }
 }
 
 .hotgame {
@@ -5540,21 +5684,44 @@ span.important {
   border-radius: 0 0 3px 3px;
   font-size: 12px;
   line-height: 16px;
-  font-weight: bold;
+  font-weight: 600;
   margin-bottom: 20px;
   -webkit-animation: newicon 0.5s linear infinite alternate;
           animation: newicon 0.5s linear infinite alternate;
 }
 
-.headerB .nav.liveIcon::before {
+.headerB .nav.hoticon::before {
+  content: "HOT";
+  position: absolute;
+  top: -10px;
+  padding: 0 5px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f85f05), to(#f20505));
+  background: linear-gradient(#f85f05, #f20505);
+  color: #fff;
+  border-radius: 0 0 3px 3px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  -webkit-animation: newicon 0.5s linear infinite alternate;
+          animation: newicon 0.5s linear infinite alternate;
+}
+
+.headerB .nav.liveicon::before {
   content: "LIVE";
   position: absolute;
   top: -10px;
-  left: -15px;
-  font-weight: bold;
+  padding: 0 5px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#05f86a), to(#04ac5d));
+  background: linear-gradient(#05f86a, #04ac5d);
+  color: #0c1a3f;
+  border-radius: 0 0 3px 3px;
   font-size: 12px;
-  -webkit-animation: newicon 0.8s linear infinite alternate;
-          animation: newicon 0.8s linear infinite alternate;
+  line-height: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  -webkit-animation: newicon 0.5s linear infinite alternate;
+          animation: newicon 0.5s linear infinite alternate;
 }
 
 @-webkit-keyframes newicon {
@@ -5655,7 +5822,7 @@ span.important {
 .Login .title {
   text-align: center;
   font-size: 6vw;
-  margin: 2vh auto;
+  margin: 3vw auto;
   font-weight: bold;
 }
 
@@ -5735,7 +5902,7 @@ span.important {
   color: #fff;
   padding: 3vw;
   width: 100%;
-  margin: 4vh auto;
+  margin: 7vw auto;
 }
 
 @media screen and (min-width: 768px) {
@@ -5808,7 +5975,7 @@ span.important {
   position: fixed;
   top: 0px;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   overflow-y: auto;
   background-color: #010e33;
   z-index: 10;
@@ -7333,7 +7500,7 @@ span.important {
           transform: translateX(-50%);
   padding: 5px;
   white-space: nowrap;
-  border-radius: 3px;
+  border-radius: 2px;
   text-align: center;
   z-index: 1;
 }
@@ -7981,7 +8148,7 @@ span.important {
           align-items: flex-start;
   background: url(../img/Bwing-404M.jpg) no-repeat center;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-size: cover;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -8089,18 +8256,6 @@ span.important {
   position: relative;
 }
 
-@media screen and (min-height: 800px) {
-  .eventImg {
-    height: 18vh;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .eventImg {
-    height: 27vh;
-  }
-}
-
 .eventImg .team {
   width: 100%;
   display: -webkit-box;
@@ -8165,7 +8320,7 @@ span.important {
 .eventImg .homeaway {
   width: 100%;
   position: absolute;
-  top: 11vh;
+  top: 22vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8175,19 +8330,6 @@ span.important {
   padding: 0 25px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-}
-
-@media screen and (min-height: 800px) {
-  .eventImg .homeaway {
-    top: 9.2vh;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .eventImg .homeaway {
-    top: 14.8vh;
-    padding: 0 10vw;
-  }
 }
 
 .eventImg .homeaway p {
@@ -8207,74 +8349,13 @@ span.important {
   }
 }
 
-.eventImg .teamName {
-  width: 100%;
-  position: absolute;
-  top: 13.4vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 0 10px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-@media screen and (min-height: 800px) {
-  .eventImg .teamName {
-    top: 11.2vh;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .eventImg .teamName {
-    top: 18.5vh;
-    padding: 0 5vw;
-  }
-}
-
-.eventImg .teamName p {
-  width: 40vw;
-  color: #fff;
-  text-transform: uppercase;
-  font-weight: bold;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  text-align: left;
-}
-
-@media screen and (min-width: 768px) {
-  .eventImg .teamName p {
-    width: 30vw;
-  }
-}
-
-.eventImg .teamName p:last-child {
-  text-align: right;
-}
-
 .eventImg .time {
   position: absolute;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  top: 3.6vh;
+  top: 7vw;
   color: #fff;
-}
-
-@media screen and (min-height: 800px) {
-  .eventImg .time {
-    top: 3vh;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .eventImg .time {
-    top: 5vh;
-  }
 }
 
 .eventImg .odds {
@@ -8300,33 +8381,10 @@ span.important {
   color: #ff5032;
 }
 
-.angPao_module {
-  position: fixed;
-  width: 25vw;
-  height: 25vw;
-  bottom: 10vh;
-  right: 3vw;
-  z-index: 1;
-}
-
-.angPao_close {
-  background: #ff4741;
-  color: white;
-  position: absolute;
-  right: 0vw;
-  top: -5vw;
-  width: 20px;
-  line-height: 20px;
-  border-radius: 100%;
-  z-index: 1;
-  text-align: center;
-}
-
 .angPao {
   position: fixed;
   width: 25vw;
   height: 25vw;
-  bottom: 10vh;
   right: 3vw;
   -webkit-animation: angPao 1s ease-in-out infinite alternate;
           animation: angPao 1s ease-in-out infinite alternate;
@@ -8364,9 +8422,435 @@ span.important {
   }
 }
 
+.luckyboxEvent .luckyboxBg {
+  position: absolute;
+  width: 100%;
+  height: 70vw;
+  left: 0;
+}
+
+.luckyboxEvent > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.luckyboxEvent > div .luckyout {
+  position: relative;
+  top: 7vw;
+  width: 70vw;
+  height: 70vw;
+}
+
+.luckyboxEvent > div .luckyout ~ .filterBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 10vw;
+}
+
+.luckyboxEvent > div .luckyout .pin {
+  width: 16vw;
+  position: absolute;
+  left: 50%;
+  top: -5vw;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 5;
+  -webkit-filter: brightness(125%);
+          filter: brightness(125%);
+}
+
+.luckyboxEvent > div .luckyout .pin ~ img {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+}
+
+.luckyboxEvent > div .luckyout .wheelbox {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+  z-index: 1;
+}
+
+.luckyboxEvent > div .luckyout .wheelbox img {
+  width: 60px;
+  height: 60px;
+}
+
+.luckyboxEvent > div .luckyout .wheel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url(../img/luckybox/spinya.png) no-repeat center;
+  background-size: 100%;
+}
+
+.luckyboxEvent > div .luckyout .wheel.active {
+  -webkit-animation: wheel 1s 3 linear;
+          animation: wheel 1s 3 linear;
+}
+
+.luckyboxEvent > div .luckyout .wheel li {
+  list-style: none;
+  position: absolute;
+  width: 105px;
+  height: 105px;
+  right: 50%;
+  top: 50%;
+  -webkit-transform-origin: 100% 100%;
+          transform-origin: 100% 100%;
+  margin-top: -28vw;
+  color: #fcd874;
+  font-size: 2vw;
+  font-weight: 700;
+}
+
+.luckyboxEvent > div .luckyout .wheel li:nth-of-type(odd) {
+  color: #fdbc30;
+}
+
+.luckyboxEvent > div .luckyout .wheel li p {
+  position: absolute;
+  font-weight: bold;
+  top: 58px;
+  left: 100px;
+  -webkit-transform: skew(-67.5deg) rotate(-67.5deg);
+          transform: skew(-67.5deg) rotate(-67.5deg);
+  -webkit-writing-mode: vertical-lr;
+      -ms-writing-mode: tb-lr;
+          writing-mode: vertical-lr;
+  text-align: right;
+}
+
+.luckyboxEvent > div .luckyout .wheel li:nth-child(1) {
+  -webkit-transform: rotate(0deg) skew(67.5deg);
+          transform: rotate(0deg) skew(67.5deg);
+}
+
+.luckyboxEvent > div .luckyout .wheel li:nth-child(2) {
+  -webkit-transform: rotate(22.5deg) skew(67.5deg);
+          transform: rotate(22.5deg) skew(67.5deg);
+}
+
+.luckyboxEvent > div .luckyout .wheel li:nth-child(3) {
+  -webkit-transform: rotate(45deg) skew(67.5deg);
+          transform: rotate(45deg) skew(67.5deg);
+}
+
+.luckyboxEvent > div .luckyout .wheel li:nth-child(4) {
+  -webkit-transform: rotate(67.5deg) skew(67.5deg);
+          transform: rotate(67.5deg) skew(67.5deg);
+}
+
+.luckyboxEvent > div .luckyout .wheel li:nth-child(5) {
+  -webkit-transform: rotate(90deg) skew(67.5deg);
+          transform: rotate(90deg) skew(67.5deg);
+}
+
+.luckyboxEvent > div .luckyout .wheel li:nth-child(6) {
+  -webkit-transform: rotate(112.5deg) skew(67.5deg);
+          transform: rotate(112.5deg) skew(67.5deg);
+}
+
+.luckyboxEvent > div .luckyout .wheel li:nth-child(7) {
+  -webkit-transform: rotate(135deg) skew(67.5deg);
+          transform: rotate(135deg) skew(67.5deg);
+}
+
+.luckyboxEvent > div .luckyout .wheel li:nth-child(8) {
+  -webkit-transform: rotate(157.5deg) skew(67.5deg);
+          transform: rotate(157.5deg) skew(67.5deg);
+}
+
+.luckyboxEvent > div .luckyout .wheel li:nth-child(9) {
+  -webkit-transform: rotate(180deg) skew(67.5deg);
+          transform: rotate(180deg) skew(67.5deg);
+}
+
+.luckyboxEvent > div .luckyout .wheel li:nth-child(10) {
+  -webkit-transform: rotate(202.5deg) skew(67.5deg);
+          transform: rotate(202.5deg) skew(67.5deg);
+}
+
+.luckyboxEvent > div .luckyout .wheel li:nth-child(11) {
+  -webkit-transform: rotate(225deg) skew(67.5deg);
+          transform: rotate(225deg) skew(67.5deg);
+}
+
+.luckyboxEvent > div .luckyout .wheel li:nth-child(12) {
+  -webkit-transform: rotate(247.5deg) skew(67.5deg);
+          transform: rotate(247.5deg) skew(67.5deg);
+}
+
+.luckyboxEvent > div .luckyout .wheel li:nth-child(13) {
+  -webkit-transform: rotate(270deg) skew(67.5deg);
+          transform: rotate(270deg) skew(67.5deg);
+}
+
+.luckyboxEvent > div .luckyout .wheel li:nth-child(14) {
+  -webkit-transform: rotate(292.5deg) skew(67.5deg);
+          transform: rotate(292.5deg) skew(67.5deg);
+}
+
+.luckyboxEvent > div .luckyout .wheel li:nth-child(15) {
+  -webkit-transform: rotate(315deg) skew(67.5deg);
+          transform: rotate(315deg) skew(67.5deg);
+}
+
+.luckyboxEvent > div .luckyout .wheel li:nth-child(16) {
+  -webkit-transform: rotate(337.5deg) skew(67.5deg);
+          transform: rotate(337.5deg) skew(67.5deg);
+}
+
+@-webkit-keyframes wheel {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    -webkit-filter: brightness(80%);
+            filter: brightness(80%);
+  }
+  75% {
+    -webkit-filter: brightness(150%);
+            filter: brightness(150%);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+    -webkit-filter: brightness(200%);
+            filter: brightness(200%);
+  }
+}
+
+@keyframes wheel {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    -webkit-filter: brightness(80%);
+            filter: brightness(80%);
+  }
+  75% {
+    -webkit-filter: brightness(150%);
+            filter: brightness(150%);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+    -webkit-filter: brightness(200%);
+            filter: brightness(200%);
+  }
+}
+
+.luckyboxEvent .eventModule {
+  display: none;
+  text-align: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: rgba(28, 28, 28, 0.5);
+  margin-bottom: 5vw;
+  color: white;
+  font-size: 3vw;
+  padding: 3vw 3vw 5vw;
+}
+
+.luckyboxEvent .eventModule li {
+  list-style: decimal;
+  margin-left: 3vw;
+  margin-top: 3vw;
+  text-align: left;
+}
+
+.luckyboxEvent .eventModule.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.luckyboxEvent .eventModule .title {
+  background: transparent;
+  font-size: 5vw;
+  color: #58cdff;
+  width: auto;
+  margin: 2vw 0;
+}
+
+.luckyboxEvent .eventModule .title:nth-child(5) {
+  color: #f77a00;
+  margin-top: 8vw;
+}
+
+.luckyboxEvent .eventModule .text-gray:nth-child(3) {
+  margin-bottom: 3vw;
+}
+
+.luckyboxEvent .eventModule .text-gray:nth-child(6) {
+  text-align: left;
+}
+
+.luckyboxEvent .eventModule .more {
+  background: -webkit-gradient(linear, left top, left bottom, from(#58cdff), to(#259ccf));
+  background: linear-gradient(to bottom, #58cdff, #259ccf);
+  border: 1px solid #58cdff;
+  width: 150px;
+  line-height: 35px;
+  color: #000;
+  text-align: center;
+  border-radius: 20px;
+  margin-bottom: 40px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.luckyboxEvent .eventList {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  font-weight: bold;
+  color: black;
+  display: none;
+}
+
+.luckyboxEvent .eventList.active {
+  display: table;
+}
+
+.luckyboxEvent .eventList tr {
+  background: white;
+}
+
+.luckyboxEvent .eventList tr td {
+  border: 1px solid #151923;
+  padding: 5px;
+  text-align: center;
+  width: 50%;
+  vertical-align: middle;
+  height: 20px;
+  color: #fff;
+}
+
+.luckyboxEvent .eventList tr td:nth-child(2) div {
+  width: 70px;
+  margin: auto;
+  text-align: right;
+}
+
+.luckyboxEvent .eventList tr td .icon {
+  font-weight: normal;
+}
+
+.luckyboxEvent .eventList tr:first-child {
+  background: #58cdff;
+}
+
+.luckyboxEvent .eventList tr:first-child td {
+  color: #151923;
+}
+
+.luckyboxEvent .eventList tr:nth-child(even) {
+  background: #333333bb;
+}
+
+.luckyboxEvent .eventList tr:nth-child(odd):not(:nth-child(1)) {
+  background: #212121bb;
+}
+
+#popup.luckyboxPop.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#popup.luckyboxPop .pop {
+  position: relative;
+  width: 80vw;
+  height: 70vw;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  text-align: center;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  padding: 0;
+  font-size: 4vw;
+  z-index: 2;
+  border: 1px solid #58cdff;
+}
+
+#popup.luckyboxPop .pop.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#popup.luckyboxPop .pop .icon-close {
+  color: #58cdff;
+  position: absolute;
+  left: auto;
+  right: 3vw;
+  top: 4vw;
+}
+
+#popup.luckyboxPop .pop .title {
+  width: 100%;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-bottom: 1px solid #58cdff;
+  margin-bottom: 6vw;
+  color: #58cdff;
+}
+
+#popup.luckyboxPop .pop .am {
+  width: 80%;
+  background: #58cdffbb;
+  border-radius: 3px;
+  font-size: 8vw;
+  font-weight: bold;
+  color: #001942;
+  border: 1px solid #87ddff;
+  text-align: center;
+  line-height: 50px;
+  margin: 6vw 0;
+}
+
 .mystery_module {
   position: fixed;
-  bottom: 10vh;
+  bottom: 20vw;
   right: 3vw;
   z-index: 4;
 }
@@ -10476,7 +10960,7 @@ span.important {
 .pupDeposit {
   position: fixed;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   overflow: auto;
   background: rgba(0, 0, 0, 0.7);
   top: 0;
@@ -10566,7 +11050,7 @@ span.important {
 }
 
 .pupDeposit .swiper-container .swiper-wrapper > div .swiper-heigh {
-  height: 70vh;
+  height: 124vw;
   overflow-y: auto;
   margin-top: 20px;
 }
@@ -11090,20 +11574,8 @@ span.important {
 .top10Aear .title a {
   position: absolute;
   right: 10px;
-  top: 2.5vh;
+  top: 2.5vw;
   font-weight: lighter;
-}
-
-@media screen and (min-height: 800px) {
-  .top10Aear .title a {
-    top: 2.2vh;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .top10Aear .title a {
-    top: 1.5vh;
-  }
 }
 
 .top10Aear .top10Box {
@@ -11580,21 +12052,9 @@ span.important {
 .downloadarea {
   background: url(../img/downloadBg.png) no-repeat;
   width: 100%;
-  height: 34vh;
+  height: 71vw;
   background-size: 100%;
   position: relative;
-}
-
-@media screen and (min-height: 800px) {
-  .downloadarea {
-    height: 28vh;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .downloadarea {
-    height: 40vh;
-  }
 }
 
 .downloadarea::before {
@@ -11616,7 +12076,7 @@ span.important {
   background: -webkit-gradient(linear, left top, left bottom, from(#33bbff), to(#2375eb));
   background: linear-gradient(to bottom, #33bbff 0%, #2375eb 100%);
   right: 10vw;
-  top: 16vh;
+  top: 28vw;
   color: #fff;
   border-radius: 5vw;
   display: -webkit-box;
@@ -11630,20 +12090,6 @@ span.important {
           align-items: center;
 }
 
-@media screen and (min-height: 800px) {
-  .downloadarea > button,
-  .downloadarea a {
-    top: 12vh;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .downloadarea > button,
-  .downloadarea a {
-    top: 18vh;
-  }
-}
-
 .downloadarea > button img,
 .downloadarea a img {
   width: 3.2vw;
@@ -11652,21 +12098,7 @@ span.important {
 
 .downloadarea > button:nth-last-child(1),
 .downloadarea a:nth-last-child(1) {
-  top: 22vh;
-}
-
-@media screen and (min-height: 800px) {
-  .downloadarea > button:nth-last-child(1),
-  .downloadarea a:nth-last-child(1) {
-    top: 18vh;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .downloadarea > button:nth-last-child(1),
-  .downloadarea a:nth-last-child(1) {
-    top: 25vh;
-  }
+  top: 40vw;
 }
 
 .downloadArea {
@@ -11697,14 +12129,7 @@ span.important {
 }
 
 .downloadArea .downloadT .logo {
-  margin-top: 20vh;
-}
-
-@media screen and (max-width: 700px) {
-  .downloadArea .downloadT .logo {
-    margin-top: 15vh;
-    width: 180px;
-  }
+  margin-top: 26vw;
 }
 
 .downloadArea .downloadT h1 {
@@ -12084,7 +12509,7 @@ span.important {
 .slotFunctionNew {
   position: fixed;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.5);

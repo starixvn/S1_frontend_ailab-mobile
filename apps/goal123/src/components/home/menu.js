@@ -100,7 +100,7 @@ const Menu = ({ i18n, userInfo }) => {
 			<button
 				key={`menu-${item.category}`}
 				className={`${selectedCol === item.category ? "active" : ""}${
-					showingEventIcon !== "" ? ` icon${showingEventIcon}` : ""
+					showingEventIcon !== "" ? ` ${showingEventIcon}` : ""
 				}`}
 				onClick={showSubPanel.bind(this, {
 					panel: item.category
@@ -176,7 +176,7 @@ const SubGame = ({ game, clickGame, i18n, underMaintain }) => {
 				style={underMaintain ? { pointerEvents: "none" } : null}
 				state={game.parameter}>
 				{showingEventIcon !== "" ? (
-					<i className={`icon ${showingEventIcon}`} />
+					<div className={` ${showingEventIcon}`} />
 				) : null}
 				<img src={game.img} alt={game.spanText || game.spanTextKey} />
 				<div className="title">
@@ -205,7 +205,7 @@ const SubGame = ({ game, clickGame, i18n, underMaintain }) => {
 					  })
 			}>
 			{showingEventIcon !== "" ? (
-				<i className={`icon ${showingEventIcon}`} />
+				<div className={` ${showingEventIcon}`} />
 			) : null}
 			<img src={game.img} alt={game.spanText || game.spanTextKey} />
 			<div className="title">
