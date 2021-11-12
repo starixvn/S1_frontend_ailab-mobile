@@ -68,9 +68,10 @@ import sg from "../styles/img/slot/sg.png";
 import ygg from "../styles/img/slot/ygg.png";
 
 export const defIconType = {
-	live: " liveIcon",
+	live: " liveicon",
 	new: " newicon",
-	new_nav: " newicon"
+	new_nav: " newicon",
+	hot: " hoticon"
 };
 
 export const defSlotTpGameType = {
@@ -466,7 +467,13 @@ export const productList = langId => {
 			category: "promotion",
 			displayKey: "lbl_Promotions",
 			path: path.promotion.root,
-			icon_img: promo
+			icon_img: promo,
+			eventIcon: [
+				{
+					icon: defIconType.hot,
+					inPeriod: isEventPeriod(eventTime.promo)
+				}
+			]
 		},
 		affiliate: {
 			category: "affiliate",
