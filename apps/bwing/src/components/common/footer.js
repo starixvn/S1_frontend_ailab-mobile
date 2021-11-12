@@ -23,8 +23,8 @@ const Footer = () => {
 						return (
 							<Link
 								to={`/${path.promotion.root}`}
-								className={isMatch ? "open" : ""}>
-								<div className="icon icon-gift" />
+								className={`${isMatch ? "open" : ""} hoticon`}>
+								<div className="icon icon-promotion" />
 								<span>{i18n.lbl_Promotion}</span>
 							</Link>
 						);
@@ -81,8 +81,8 @@ const Footer = () => {
 					return (
 						<Link
 							to={`/${path.promotion.root}`}
-							className={isMatch ? "open" : ""}>
-							<div className="icon icon-gift" />
+							className={`${isMatch ? "open" : ""} hoticon`}>
+							<div className="icon icon-promotion" />
 							<span>{i18n.lbl_Promotion}</span>
 						</Link>
 					);

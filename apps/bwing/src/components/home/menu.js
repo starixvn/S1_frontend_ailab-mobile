@@ -358,7 +358,7 @@ const ProductLinkItem = ({
 	if (productPath) {
 		return (
 			<Link to={`/${productPath}`}>
-				<div className="nav">
+				<div className={`nav${showingEventIcon}`}>
 					<img src={icon_img} alt={spanText} />
 					{spanText.toUpperCase()}
 				</div>
