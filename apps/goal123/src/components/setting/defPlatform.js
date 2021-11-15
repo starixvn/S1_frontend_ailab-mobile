@@ -85,6 +85,12 @@ const defPlatfrom = [
 	{
 		...defGameInfo.kingMaker,
 		imgName: "kingmakera"
+	},
+	{
+		...defGameInfo.Casino_RedTiger,
+		path: path.casino.root,
+		parameter: { ...defGameInfo.Casino_RedTiger },
+		imgName: "rta"
 	}
 ];
 

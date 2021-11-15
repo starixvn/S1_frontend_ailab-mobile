@@ -62,20 +62,20 @@ export const defGameInfo = {
 };
 
 export const slotPlatform = [
+	{
+		...defGameInfo.Casino_PP,
+		path: path.casino.root,
+		imgName: "pp"
+	},
 	// {
 	// 	...defGameInfo.Casino_NetEnt,
 	// 	path: path.casino.root,
 	// 	imgName: "ne"
 	// },
-	// {
-	// 	...defGameInfo.Casino_RedTiger,
-	// 	path: path.casino.root,
-	// 	imgName: "rt"
-	// },
 	{
-		...defGameInfo.Casino_PP,
+		...defGameInfo.Casino_RedTiger,
 		path: path.casino.root,
-		imgName: "pp"
+		imgName: "rt"
 	},
 	{
 		...defGameInfo.Casino_JOKER,
