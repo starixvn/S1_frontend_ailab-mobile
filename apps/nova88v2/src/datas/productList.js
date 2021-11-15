@@ -23,6 +23,7 @@ import LIVEcasino_EB from "../styles/img/eb.png";
 import LIVEcasino_WM from "../styles/img/wm.png";
 import LIVEcasino_PT from "../styles/img/ptc.png";
 import LIVEcasino_MGP from "../styles/img/mgp.png";
+import LIVEcasino_EVO from "../styles/img/ev.png";
 
 import casino_PP from "../styles/img/spp.png";
 import casino_ICG from "../styles/img/icg.png";
@@ -36,6 +37,8 @@ import casino_OW from "../styles/img/ow.png";
 import casino_PT from "../styles/img/pt.png";
 import casino_MGP from "../styles/img/mg.png";
 import casino_Jili from "../styles/img/ji.png";
+import casino_NetEnt from "../styles/img/nt.png";
+import casino_RedTiger from "../styles/img/rt.png";
 // import casino_KISS from "../styles/img/kiss.png";
 
 import fishing_CQ9_AB3 from "../styles/img/pd.png";
@@ -85,6 +88,7 @@ const defIconType = {
 export const defSlotTpGameType = {
 	Saba: { tpId: 1, tpGameType: 4 },
 	PP: { tpId: 5, tpGameType: 7 },
+	NetEnt: { tpId: 37, tpGameType: 64 },
 	GPI: { tpId: 6, tpGameType: 11 },
 	Joker: { tpId: 9, tpGameType: 13 },
 	YGG: { tpId: 8, tpGameType: 14 },
@@ -94,7 +98,8 @@ export const defSlotTpGameType = {
 	Iconic: { tpId: 24, tpGameType: 39 },
 	PT: { tpId: 27, tpGameType: 46 },
 	JILI: { tpId: 32, tpGameType: 53 },
-	MG: { tpId: 34, tpGameType: 57 }
+	MG: { tpId: 34, tpGameType: 57 },
+	RedTiger: { tpId: 38, tpGameType: 65 }
 };
 
 const gameList = ({ langId, currencyName }) => {
@@ -219,6 +224,20 @@ const gameList = ({ langId, currencyName }) => {
 							]
 						},
 						{
+							...defGameInfo.LIVEcasinoEVO,
+							spanText: "Evolution Gaming",
+							img: LIVEcasino_EVO,
+							tpGameType: 63,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_EVO
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.LIVEcasino_PT,
 							spanText: "Playtech",
 							img: LIVEcasino_PT,
@@ -280,6 +299,23 @@ const gameList = ({ langId, currencyName }) => {
 							path: path.casino.root
 						},
 						{
+							...defGameInfo.Casino_NetEnt,
+							parameter: defGameInfo.Casino_NetEnt,
+							spanText: "NetEnt",
+							providerImgName: "nt",
+							img: casino_NetEnt,
+							path: path.casino.root,
+							tpGameType: 64,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_NetEnt
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_MGP,
 							parameter: defGameInfo.Casino_MGP,
 							spanText: "Microgaming",
@@ -324,6 +360,23 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "sg",
 							img: casino_SG,
 							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_RedTiger,
+							parameter: defGameInfo.Casino_RedTiger,
+							spanText: "Red Tiger",
+							providerImgName: "rt",
+							img: casino_RedTiger,
+							path: path.casino.root,
+							tpGameType: 65,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_RedTiger
+									)
+								}
+							]
 						},
 						{
 							...defGameInfo.Casino_PT,
@@ -621,6 +674,20 @@ const gameList = ({ langId, currencyName }) => {
 							]
 						},
 						{
+							...defGameInfo.LIVEcasinoEVO,
+							spanText: "Evolution Gaming",
+							img: LIVEcasino_EVO,
+							tpGameType: 63,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_EVO
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.LIVEcasino_PT,
 							spanText: "Playtech",
 							img: LIVEcasino_PT,
@@ -682,6 +749,23 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "pp"
 						},
 						{
+							...defGameInfo.Casino_NetEnt,
+							parameter: defGameInfo.Casino_NetEnt,
+							spanText: "NetEnt",
+							providerImgName: "nt",
+							img: casino_NetEnt,
+							path: path.casino.root,
+							tpGameType: 64,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_NetEnt
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_MGP,
 							parameter: defGameInfo.Casino_MGP,
 							spanText: "Microgaming",
@@ -718,6 +802,23 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "sg",
 							img: casino_SG,
 							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_RedTiger,
+							parameter: defGameInfo.Casino_RedTiger,
+							spanText: "Red Tiger",
+							providerImgName: "rt",
+							img: casino_RedTiger,
+							path: path.casino.root,
+							tpGameType: 65,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_RedTiger
+									)
+								}
+							]
 						},
 						{
 							...defGameInfo.Casino_YGG,
@@ -1023,6 +1124,20 @@ const gameList = ({ langId, currencyName }) => {
 							]
 						},
 						{
+							...defGameInfo.LIVEcasinoEVO,
+							spanText: "Evolution Gaming",
+							img: LIVEcasino_EVO,
+							tpGameType: 63,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_EVO
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.LIVEcasino_PT,
 							spanText: "Playtech",
 							img: LIVEcasino_PT,
@@ -1084,6 +1199,23 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "pp"
 						},
 						{
+							...defGameInfo.Casino_NetEnt,
+							parameter: defGameInfo.Casino_NetEnt,
+							spanText: "NetEnt",
+							providerImgName: "nt",
+							img: casino_NetEnt,
+							path: path.casino.root,
+							tpGameType: 64,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_NetEnt
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_MGP,
 							parameter: defGameInfo.Casino_MGP,
 							spanText: "Microgaming",
@@ -1136,6 +1268,23 @@ const gameList = ({ langId, currencyName }) => {
 							img: casino_SG,
 							path: path.casino.root,
 							providerImgName: "sg"
+						},
+						{
+							...defGameInfo.Casino_RedTiger,
+							parameter: defGameInfo.Casino_RedTiger,
+							spanText: "Red Tiger",
+							providerImgName: "rt",
+							img: casino_RedTiger,
+							path: path.casino.root,
+							tpGameType: 65,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_RedTiger
+									)
+								}
+							]
 						},
 						{
 							...defGameInfo.casino_ICG,
@@ -1425,6 +1574,20 @@ const gameList = ({ langId, currencyName }) => {
 							]
 						},
 						{
+							...defGameInfo.LIVEcasinoEVO,
+							spanText: "Evolution Gaming",
+							img: LIVEcasino_EVO,
+							tpGameType: 63,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_EVO
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.LIVEcasinoAE,
 							spanText: "AE Casino",
 							img: LIVEcasino_AE
@@ -1480,6 +1643,23 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "pp"
 						},
 						{
+							...defGameInfo.Casino_NetEnt,
+							parameter: defGameInfo.Casino_NetEnt,
+							spanText: "NetEnt",
+							providerImgName: "nt",
+							img: casino_NetEnt,
+							path: path.casino.root,
+							tpGameType: 64,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_NetEnt
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_MGP,
 							parameter: defGameInfo.Casino_MGP,
 							spanText: "Microgaming",
@@ -1524,6 +1704,23 @@ const gameList = ({ langId, currencyName }) => {
 							img: casino_SG,
 							path: path.casino.root,
 							providerImgName: "sg"
+						},
+						{
+							...defGameInfo.Casino_RedTiger,
+							parameter: defGameInfo.Casino_RedTiger,
+							spanText: "Red Tiger",
+							providerImgName: "rt",
+							img: casino_RedTiger,
+							path: path.casino.root,
+							tpGameType: 65,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_RedTiger
+									)
+								}
+							]
 						},
 						{
 							...defGameInfo.Casino_PT,
@@ -1821,6 +2018,19 @@ const gameList = ({ langId, currencyName }) => {
 							]
 						},
 						{
+							...defGameInfo.LIVEcasinoEVO,
+							spanText: "Evolution Gaming",
+							img: LIVEcasino_EVO,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_EVO
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.LIVEcasino_PT,
 							spanText: "Playtech",
 							img: LIVEcasino_PT,
@@ -1880,6 +2090,23 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "pp",
 							img: casino_PP,
 							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_NetEnt,
+							parameter: defGameInfo.Casino_NetEnt,
+							spanText: "NetEnt",
+							providerImgName: "nt",
+							img: casino_NetEnt,
+							path: path.casino.root,
+							tpGameType: 64,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_NetEnt
+									)
+								}
+							]
 						},
 						{
 							...defGameInfo.Casino_MGP,
@@ -1966,6 +2193,23 @@ const gameList = ({ langId, currencyName }) => {
 							img: casino_SG,
 							path: path.casino.root,
 							providerImgName: "sg"
+						},
+						{
+							...defGameInfo.Casino_RedTiger,
+							parameter: defGameInfo.Casino_RedTiger,
+							spanText: "Red Tiger",
+							providerImgName: "rt",
+							img: casino_RedTiger,
+							path: path.casino.root,
+							tpGameType: 65,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_RedTiger
+									)
+								}
+							]
 						},
 						{
 							...defGameInfo.Casino_PG,
@@ -2132,6 +2376,7 @@ export const defGameInfo = {
 	LIVEcasinoMW: { tpId: 5, gameId: 105, tpGameType: 8 },
 	LIVEcasinoMGP: { tpId: 34, tpGameType: 58 },
 	LIVEcasino_PT: { tpId: 27, gameId: "0", tpGameType: 48 },
+	LIVEcasinoEVO: { tpId: 36, gameId: 0, tpGameType: 63 },
 	Casino_All: { tpId: 0 },
 	Casino_MGP: { tpId: 34, tpGameType: 57 },
 	Casino_PP: { tpId: 5, tpGameType: 7 },
@@ -2145,6 +2390,8 @@ export const defGameInfo = {
 	Casino_PT: { tpId: 27, gameId: "0", tpGameType: 46 },
 	// Casino_918Kiss: { tpId: 21, needLogin: true , tpGameType: 33 },
 	Casino_OW: { tpId: 1, gameId: 208, tpGameType: 4 },
+	Casino_NetEnt: { tpId: 37, tpGameType: 64 },
+	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
 	Fishing_AB3: { tpId: 16, gameId: "AB3", tpGameType: 44 },
 	Fishing_AT05: { tpId: 16, gameId: "AT05", tpGameType: 44 },
 	// Fishing_AT01: { tpId: 16, gameId: "AT01", tpGameType: 44 },

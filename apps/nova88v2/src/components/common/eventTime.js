@@ -9,8 +9,11 @@ export const eventTime = {
 	jili: { endDate: "2021/08/21 11:00:00" },
 	tcg: { endDate: "2021/09/11 11:00:00" },
 	casino_MGP: { endDate: "2021/08/22 11:00:00" },
+	casino_RedTiger: { endDate: "2021/12/15 11:00:00" },
 	liveCasino_pp: {
 		startDate: "2021/11/10 11:00:00",
 		endDate: "2021/12/31 23:59:59"
-	}
+	},
+	casino_NetEnt: { endDate: "2021/12/15 11:00:00" },
+	liveCasino_EVO: { endDate: "2021/12/15 11:00:00" }
 };

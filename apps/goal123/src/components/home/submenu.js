@@ -163,7 +163,12 @@ const defSubMenus = [
 			},
 			{
 				...defGameInfo.LIVEcasinoEB,
-				displayKey: "eBET"
+				displayKey: "eBET",
+				tpGameType: 28
+			},
+			{
+				...defGameInfo.LIVEcasinoEVO,
+				displayKey: "Evolution Gaming"
 			}
 		]
 	},

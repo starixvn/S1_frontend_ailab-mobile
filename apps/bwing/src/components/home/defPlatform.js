@@ -17,11 +17,12 @@ import icg from "../../styles/img/partner/icg.png";
 import v8 from "../../styles/img/partner/v8.png";
 import n2live from "../../styles/img/partner/n2live.png";
 import playtech from "../../styles/img/partner/pt.png";
+import bti from "../../styles/img/partner/BTI.png";
 import kingmaker from "../../styles/img/partner/kingmaker.png";
 import jili from "../../styles/img/partner/jili.png";
 import mg from "../../styles/img/partner/mg.png";
-import evo from "../../styles/img/partner/evo.png";
 import ne from "../../styles/img/partner/ne.png";
+import evo from "../../styles/img/partner/evo.png";
 import redtiger from "../../styles/img/partner/red.png";
 
 export const defPlatform = [
@@ -47,8 +48,8 @@ export const defPlatform = [
 	{ name: "kingmaker", img: kingmaker },
 	// { name: "bti", img: bti },
 	{ name: "jili", img: jili },
-	{ name: "mg", img: mg }
-	// { name: "evo", img: evo },
-	// { name: "ne", img: ne },
-	// { name: "redtiger", img: redtiger }
+	{ name: "mg", img: mg },
+	{ name: "ne", img: ne },
+	{ name: "evo", img: evo },
+	{ name: "redtiger", img: redtiger }
 ];

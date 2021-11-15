@@ -185,32 +185,6 @@ export const productList = langId => {
 			displayKey: "lbl_Slots",
 			icon_img: slot,
 			items: [
-				// {
-				// 	...defGameInfo.Casino_NetEnt,
-				// 	parameter: defGameInfo.Casino_NetEnt,
-				// 	path: path.casino.root,
-				// 	displayKey: "NetEnt",
-				// 	img: ne,
-				// 	eventIcon: [
-				// 		{
-				// 			icon: defIconType.new,
-				// 			inPeriod: isEventPeriod(eventTime.casino_NetEnt)
-				// 		}
-				// 	]
-				// },
-				// {
-				// 	...defGameInfo.Casino_RedTiger,
-				// 	parameter: defGameInfo.Casino_RedTiger,
-				// 	path: path.casino.root,
-				// 	displayKey: "Red Tiger",
-				// 	img: red,
-				// 	eventIcon: [
-				// 		{
-				// 			icon: defIconType.new,
-				// 			inPeriod: isEventPeriod(eventTime.casino_RedTiger)
-				// 		}
-				// 	]
-				// },
 				{
 					...defGameInfo.Casino_PP,
 					parameter: defGameInfo.Casino_PP,
@@ -218,6 +192,32 @@ export const productList = langId => {
 					icon: "icon icon-PP",
 					displayKey: "Pragmatic Play",
 					img: pp
+				},
+				{
+					...defGameInfo.Casino_NetEnt,
+					parameter: defGameInfo.Casino_NetEnt,
+					path: path.casino.root,
+					displayKey: "NetEnt",
+					img: ne,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.casino_NetEnt)
+						}
+					]
+				},
+				{
+					...defGameInfo.Casino_RedTiger,
+					parameter: defGameInfo.Casino_RedTiger,
+					path: path.casino.root,
+					displayKey: "Red Tiger",
+					img: red,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.casino_RedTiger)
+						}
+					]
 				},
 				{
 					...defGameInfo.Casino_MGP,
@@ -256,7 +256,6 @@ export const productList = langId => {
 					parameter: defGameInfo.Casino_CQ9,
 					path: path.casino.root,
 					img: cq9,
-					// isNew: true,
 					icon: "icon icon-cq9",
 					displayKey: "CQ9"
 				},
@@ -299,12 +298,6 @@ export const productList = langId => {
 					icon: "icon icon-OW",
 					displayKey: "Saba Casino"
 				}
-			],
-			eventIcon: [
-				{
-					icon: defIconType.new,
-					inPeriod: isEventPeriod(eventTime.casino_MGP)
-				}
 			]
 		},
 		liveCasino: {
@@ -324,17 +317,6 @@ export const productList = langId => {
 				// 		}
 				// 	]
 				// },
-				// {
-				// 	displayKey: "Evolution Gaming",
-				// 	img: liveCasino_EVO,
-				// 	...defGameInfo.LIVEcasinoEVO,
-				// 	eventIcon: [
-				// 		{
-				// 			icon: defIconType.new,
-				// 			inPeriod: isEventPeriod(eventTime.liveCasino_evo)
-				// 		}
-				// 	]
-				// },
 				{
 					displayKey: "Pragmatic Play",
 					icon: "icon icon-PP",
@@ -346,6 +328,17 @@ export const productList = langId => {
 						}
 					],
 					...defGameInfo.LIVEcasinoPP
+				},
+				{
+					displayKey: "Evolution Gaming",
+					img: liveCasino_EVO,
+					...defGameInfo.LIVEcasinoEVO,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.liveCasino_evo)
+						}
+					]
 				},
 				{
 					displayKey: "Playtech",

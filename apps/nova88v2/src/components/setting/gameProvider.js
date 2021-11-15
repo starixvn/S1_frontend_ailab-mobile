@@ -126,6 +126,20 @@ const defPlatfrom = [
 		...defGameInfo.Casino_Jili,
 		imgName: "ji",
 		path: path.casino.root
+	},
+	{
+		...defGameInfo.Casino_NetEnt,
+		imgName: "nt",
+		path: path.casino.root
+	},
+	{
+		...defGameInfo.LIVEcasinoEVO,
+		imgName: "ev"
+	},
+	{
+		...defGameInfo.Casino_RedTiger,
+		imgName: "rt",
+		path: path.casino.root
 	}
 ];
 
