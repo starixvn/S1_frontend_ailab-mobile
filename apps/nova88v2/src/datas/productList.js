@@ -36,6 +36,7 @@ import casino_OW from "../styles/img/ow.png";
 import casino_PT from "../styles/img/pt.png";
 import casino_MGP from "../styles/img/mg.png";
 import casino_Jili from "../styles/img/ji.png";
+import casino_RedTiger from "../styles/img/rt.png";
 // import casino_KISS from "../styles/img/kiss.png";
 
 import fishing_CQ9_AB3 from "../styles/img/pd.png";
@@ -94,7 +95,8 @@ export const defSlotTpGameType = {
 	Iconic: { tpId: 24, tpGameType: 39 },
 	PT: { tpId: 27, tpGameType: 46 },
 	JILI: { tpId: 32, tpGameType: 53 },
-	MG: { tpId: 34, tpGameType: 57 }
+	MG: { tpId: 34, tpGameType: 57 },
+	RedTiger: { tpId: 38, tpGameType: 65 }
 };
 
 const gameList = ({ langId, currencyName }) => {
@@ -324,6 +326,23 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "sg",
 							img: casino_SG,
 							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_RedTiger,
+							parameter: defGameInfo.Casino_RedTiger,
+							spanText: "Red Tiger",
+							providerImgName: "rt",
+							img: casino_RedTiger,
+							path: path.casino.root,
+							tpGameType: 65,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_RedTiger
+									)
+								}
+							]
 						},
 						{
 							...defGameInfo.Casino_PT,
@@ -718,6 +737,23 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "sg",
 							img: casino_SG,
 							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_RedTiger,
+							parameter: defGameInfo.Casino_RedTiger,
+							spanText: "Red Tiger",
+							providerImgName: "rt",
+							img: casino_RedTiger,
+							path: path.casino.root,
+							tpGameType: 65,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_RedTiger
+									)
+								}
+							]
 						},
 						{
 							...defGameInfo.Casino_YGG,
@@ -1138,6 +1174,23 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "sg"
 						},
 						{
+							...defGameInfo.Casino_RedTiger,
+							parameter: defGameInfo.Casino_RedTiger,
+							spanText: "Red Tiger",
+							providerImgName: "rt",
+							img: casino_RedTiger,
+							path: path.casino.root,
+							tpGameType: 65,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_RedTiger
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.casino_ICG,
 							parameter: defGameInfo.casino_ICG,
 							spanText: "Iconic Gaming",
@@ -1524,6 +1577,23 @@ const gameList = ({ langId, currencyName }) => {
 							img: casino_SG,
 							path: path.casino.root,
 							providerImgName: "sg"
+						},
+						{
+							...defGameInfo.Casino_RedTiger,
+							parameter: defGameInfo.Casino_RedTiger,
+							spanText: "Red Tiger",
+							providerImgName: "rt",
+							img: casino_RedTiger,
+							path: path.casino.root,
+							tpGameType: 65,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_RedTiger
+									)
+								}
+							]
 						},
 						{
 							...defGameInfo.Casino_PT,
@@ -1968,6 +2038,23 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "sg"
 						},
 						{
+							...defGameInfo.Casino_RedTiger,
+							parameter: defGameInfo.Casino_RedTiger,
+							spanText: "Red Tiger",
+							providerImgName: "rt",
+							img: casino_RedTiger,
+							path: path.casino.root,
+							tpGameType: 65,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_RedTiger
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_PG,
 							parameter: defGameInfo.Casino_PG,
 							spanText: "PG Soft",
@@ -2145,6 +2232,7 @@ export const defGameInfo = {
 	Casino_PT: { tpId: 27, gameId: "0", tpGameType: 46 },
 	// Casino_918Kiss: { tpId: 21, needLogin: true , tpGameType: 33 },
 	Casino_OW: { tpId: 1, gameId: 208, tpGameType: 4 },
+	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
 	Fishing_AB3: { tpId: 16, gameId: "AB3", tpGameType: 44 },
 	Fishing_AT05: { tpId: 16, gameId: "AT05", tpGameType: 44 },
 	// Fishing_AT01: { tpId: 16, gameId: "AT01", tpGameType: 44 },

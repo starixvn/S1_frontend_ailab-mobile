@@ -185,6 +185,14 @@ export const productList = langId => {
 			displayKey: "lbl_Slots",
 			icon_img: slot,
 			items: [
+				{
+					...defGameInfo.Casino_PP,
+					parameter: defGameInfo.Casino_PP,
+					path: path.casino.root,
+					icon: "icon icon-PP",
+					displayKey: "Pragmatic Play",
+					img: pp
+				},
 				// {
 				// 	...defGameInfo.Casino_NetEnt,
 				// 	parameter: defGameInfo.Casino_NetEnt,
@@ -198,26 +206,18 @@ export const productList = langId => {
 				// 		}
 				// 	]
 				// },
-				// {
-				// 	...defGameInfo.Casino_RedTiger,
-				// 	parameter: defGameInfo.Casino_RedTiger,
-				// 	path: path.casino.root,
-				// 	displayKey: "Red Tiger",
-				// 	img: red,
-				// 	eventIcon: [
-				// 		{
-				// 			icon: defIconType.new,
-				// 			inPeriod: isEventPeriod(eventTime.casino_RedTiger)
-				// 		}
-				// 	]
-				// },
 				{
-					...defGameInfo.Casino_PP,
-					parameter: defGameInfo.Casino_PP,
+					...defGameInfo.Casino_RedTiger,
+					parameter: defGameInfo.Casino_RedTiger,
 					path: path.casino.root,
-					icon: "icon icon-PP",
-					displayKey: "Pragmatic Play",
-					img: pp
+					displayKey: "Red Tiger",
+					img: red,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.casino_RedTiger)
+						}
+					]
 				},
 				{
 					...defGameInfo.Casino_MGP,
@@ -303,7 +303,7 @@ export const productList = langId => {
 			eventIcon: [
 				{
 					icon: defIconType.new,
-					inPeriod: isEventPeriod(eventTime.casino_MGP)
+					inPeriod: isEventPeriod(eventTime.casino_RedTiger)
 				}
 			]
 		},
