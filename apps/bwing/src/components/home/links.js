@@ -4,8 +4,8 @@ import config, { siteInfo } from "../../config";
 import TandC from "../../service/t_and_c";
 import Bong88 from "../../styles/img/bong88.png";
 import path from "../../path";
-import { useAppDownLoad } from "../appDownload/useAppDownLoad";
 import { defPlatform } from "./defPlatform";
+import { useAppDownLoad } from "../appDownload/useAppDownLoad";
 import androidIcon from "../../styles/img/AndroidIcon.png";
 import iosIcon from "../../styles/img/iosIcon.png";
 
