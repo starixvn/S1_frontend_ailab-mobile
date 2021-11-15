@@ -5742,7 +5742,8 @@ span.important {
 }
 
 .promotions .promodule .btn-check, .promotions .proInfomodule .btn-check {
-  background: #F77A00;
+  background: -webkit-gradient(linear, left top, left bottom, from(#F1D5B6), to(#CDAE8E));
+  background: linear-gradient(to bottom, #F1D5B6, #CDAE8E);
   padding: 0 2vw;
   border-radius: 3px;
   display: -webkit-inline-box;
