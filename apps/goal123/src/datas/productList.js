@@ -53,6 +53,7 @@ import LIVEcasino_AE from "../styles/img/hotgame-m-new/livecasino/livecasino-ae.
 import LIVEcasino_EB from "../styles/img/hotgame-m-new/livecasino/livecasino-ebet.png";
 import LIVEcasino_PT from "../styles/img/hotgame-m-new/livecasino/livecasino-playtech.png";
 import LIVEcasino_MGP from "../styles/img/hotgame-m-new/livecasino/livecasino-mg.png";
+import LIVEcasino_EVO from "../styles/img/hotgame-m-new/livecasino/livecasino-evolution.png";
 
 import { isEventPeriod } from "../components/common/common";
 import path from "../path";
@@ -97,6 +98,8 @@ export const defGameInfo = {
 	Casino_PT: { tpId: 27, gameId: "0", tpGameType: 46 },
 	Casino_ow: { gameId: 208, tpId: 1, tpGameType: 4 },
 	Casino_MGP: { tpId: 34, tpGameType: 57 },
+	Casino_JOKER: { tpId: 9, tpGameType: 13 },
+	Casino_Jili: { tpId: 32, tpGameType: 53 },
 	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
 	LIVEcasinoN2: { tpId: 28, tpGameType: 45 },
 	LIVEcasinoWM: { gameId: 20, tpId: 20, tpGameType: 32 },
@@ -108,13 +111,12 @@ export const defGameInfo = {
 	LIVEcasinoSA: { gameId: 2, tpId: 2, tpGameType: 9 },
 	LIVEcasinoEB: { gameId: 18, tpId: 18, tpGameType: 28 },
 	LIVEcasinoMW: { gameId: 105, tpId: 5 },
+	LIVEcasinoEVO: { gameId: 0, tpId: 36, tpGameType: 63 },
 	LIVEcasinoPT: { tpId: 27, gameId: "0", tpGameType: 48 },
 	LIVEcasinoMGP: { tpId: 34, tpGameType: 58 },
-	Casino_JOKER: { tpId: 9, tpGameType: 13 },
 	Indo4d: { gameId: 223, tpId: 1, tpGameType: 20 },
 	NumberGame: { gameId: 161, tpId: 1, tpGameType: 2 },
 	kingMaker: { tpId: 11, tpGameType: 52 },
-	Casino_Jili: { tpId: 32, tpGameType: 53 },
 	tcg: { tpId: 33, tpGameType: 55 }
 };
 
@@ -496,6 +498,18 @@ const gameList = [
 					{
 						icon: defIconType.new,
 						inPeriod: isEventPeriod(eventTime.liveCasino_pp)
+					}
+				]
+			},
+			{
+				...defGameInfo.LIVEcasinoEVO,
+				spanText: "Evolution Gaming",
+				img: LIVEcasino_EVO,
+				tpGameType: 63,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.liveCasino_evo)
 					}
 				]
 			},

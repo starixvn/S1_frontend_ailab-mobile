@@ -23,6 +23,7 @@ import LIVEcasino_EB from "../styles/img/eb.png";
 import LIVEcasino_WM from "../styles/img/wm.png";
 import LIVEcasino_PT from "../styles/img/ptc.png";
 import LIVEcasino_MGP from "../styles/img/mgp.png";
+import LIVEcasino_EVO from "../styles/img/ev.png";
 
 import casino_PP from "../styles/img/spp.png";
 import casino_ICG from "../styles/img/icg.png";
@@ -216,6 +217,20 @@ const gameList = ({ langId, currencyName }) => {
 									icon: defIconType.new,
 									inPeriod: isEventPeriod(
 										eventTime.liveCasino_pp
+									)
+								}
+							]
+						},
+						{
+							...defGameInfo.LIVEcasinoEVO,
+							spanText: "Evolution Gaming",
+							img: LIVEcasino_EVO,
+							tpGameType: 63,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_EVO
 									)
 								}
 							]
@@ -640,6 +655,20 @@ const gameList = ({ langId, currencyName }) => {
 							]
 						},
 						{
+							...defGameInfo.LIVEcasinoEVO,
+							spanText: "Evolution Gaming",
+							img: LIVEcasino_EVO,
+							tpGameType: 63,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_EVO
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.LIVEcasino_PT,
 							spanText: "Playtech",
 							img: LIVEcasino_PT,
@@ -1054,6 +1083,20 @@ const gameList = ({ langId, currencyName }) => {
 									icon: defIconType.new,
 									inPeriod: isEventPeriod(
 										eventTime.liveCasino_pp
+									)
+								}
+							]
+						},
+						{
+							...defGameInfo.LIVEcasinoEVO,
+							spanText: "Evolution Gaming",
+							img: LIVEcasino_EVO,
+							tpGameType: 63,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_EVO
 									)
 								}
 							]
@@ -1478,6 +1521,20 @@ const gameList = ({ langId, currencyName }) => {
 							]
 						},
 						{
+							...defGameInfo.LIVEcasinoEVO,
+							spanText: "Evolution Gaming",
+							img: LIVEcasino_EVO,
+							tpGameType: 63,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_EVO
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.LIVEcasinoAE,
 							spanText: "AE Casino",
 							img: LIVEcasino_AE
@@ -1891,6 +1948,19 @@ const gameList = ({ langId, currencyName }) => {
 							]
 						},
 						{
+							...defGameInfo.LIVEcasinoEVO,
+							spanText: "Evolution Gaming",
+							img: LIVEcasino_EVO,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_EVO
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.LIVEcasino_PT,
 							spanText: "Playtech",
 							img: LIVEcasino_PT,
@@ -2219,6 +2289,7 @@ export const defGameInfo = {
 	LIVEcasinoMW: { tpId: 5, gameId: 105, tpGameType: 8 },
 	LIVEcasinoMGP: { tpId: 34, tpGameType: 58 },
 	LIVEcasino_PT: { tpId: 27, gameId: "0", tpGameType: 48 },
+	LIVEcasinoEVO: { tpId: 36, gameId: 0, tpGameType: 63 },
 	Casino_All: { tpId: 0 },
 	Casino_MGP: { tpId: 34, tpGameType: 57 },
 	Casino_PP: { tpId: 5, tpGameType: 7 },

@@ -49,7 +49,7 @@ export const defPlatform = [
 	// { name: "bti", img: bti },
 	{ name: "jili", img: jili },
 	{ name: "mg", img: mg },
-	// { name: "evo", img: evo },
+	{ name: "evo", img: evo },
 	// { name: "ne", img: ne },
 	{ name: "redtiger", img: redtiger }
 ];

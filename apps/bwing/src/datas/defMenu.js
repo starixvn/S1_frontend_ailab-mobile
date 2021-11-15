@@ -256,7 +256,6 @@ export const productList = langId => {
 					parameter: defGameInfo.Casino_CQ9,
 					path: path.casino.root,
 					img: cq9,
-					// isNew: true,
 					icon: "icon icon-cq9",
 					displayKey: "CQ9"
 				},
@@ -324,17 +323,6 @@ export const productList = langId => {
 				// 		}
 				// 	]
 				// },
-				// {
-				// 	displayKey: "Evolution Gaming",
-				// 	img: liveCasino_EVO,
-				// 	...defGameInfo.LIVEcasinoEVO,
-				// 	eventIcon: [
-				// 		{
-				// 			icon: defIconType.new,
-				// 			inPeriod: isEventPeriod(eventTime.liveCasino_evo)
-				// 		}
-				// 	]
-				// },
 				{
 					displayKey: "Pragmatic Play",
 					icon: "icon icon-PP",
@@ -346,6 +334,17 @@ export const productList = langId => {
 						}
 					],
 					...defGameInfo.LIVEcasinoPP
+				},
+				{
+					displayKey: "Evolution Gaming",
+					img: liveCasino_EVO,
+					...defGameInfo.LIVEcasinoEVO,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.liveCasino_evo)
+						}
+					]
 				},
 				{
 					displayKey: "Playtech",
