@@ -193,19 +193,19 @@ export const productList = langId => {
 					displayKey: "Pragmatic Play",
 					img: pp
 				},
-				// {
-				// 	...defGameInfo.Casino_NetEnt,
-				// 	parameter: defGameInfo.Casino_NetEnt,
-				// 	path: path.casino.root,
-				// 	displayKey: "NetEnt",
-				// 	img: ne,
-				// 	eventIcon: [
-				// 		{
-				// 			icon: defIconType.new,
-				// 			inPeriod: isEventPeriod(eventTime.casino_NetEnt)
-				// 		}
-				// 	]
-				// },
+				{
+					...defGameInfo.Casino_NetEnt,
+					parameter: defGameInfo.Casino_NetEnt,
+					path: path.casino.root,
+					displayKey: "NetEnt",
+					img: ne,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.casino_NetEnt)
+						}
+					]
+				},
 				{
 					...defGameInfo.Casino_RedTiger,
 					parameter: defGameInfo.Casino_RedTiger,
@@ -297,12 +297,6 @@ export const productList = langId => {
 					img: ow,
 					icon: "icon icon-OW",
 					displayKey: "Saba Casino"
-				}
-			],
-			eventIcon: [
-				{
-					icon: defIconType.new,
-					inPeriod: isEventPeriod(eventTime.casino_RedTiger)
 				}
 			]
 		},

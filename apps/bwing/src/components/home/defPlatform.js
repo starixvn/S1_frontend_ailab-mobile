@@ -21,8 +21,8 @@ import bti from "../../styles/img/partner/BTI.png";
 import kingmaker from "../../styles/img/partner/kingmaker.png";
 import jili from "../../styles/img/partner/jili.png";
 import mg from "../../styles/img/partner/mg.png";
-import evo from "../../styles/img/partner/evo.png";
 import ne from "../../styles/img/partner/ne.png";
+import evo from "../../styles/img/partner/evo.png";
 import redtiger from "../../styles/img/partner/red.png";
 
 export const defPlatform = [
@@ -49,7 +49,7 @@ export const defPlatform = [
 	// { name: "bti", img: bti },
 	{ name: "jili", img: jili },
 	{ name: "mg", img: mg },
+	{ name: "ne", img: ne },
 	{ name: "evo", img: evo },
-	// { name: "ne", img: ne },
 	{ name: "redtiger", img: redtiger }
 ];

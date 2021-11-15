@@ -67,11 +67,11 @@ export const slotPlatform = [
 		path: path.casino.root,
 		imgName: "pp"
 	},
-	// {
-	// 	...defGameInfo.Casino_NetEnt,
-	// 	path: path.casino.root,
-	// 	imgName: "ne"
-	// },
+	{
+		...defGameInfo.Casino_NetEnt,
+		path: path.casino.root,
+		imgName: "ne"
+	},
 	{
 		...defGameInfo.Casino_RedTiger,
 		path: path.casino.root,
