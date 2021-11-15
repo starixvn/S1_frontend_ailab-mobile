@@ -87,6 +87,12 @@ const defPlatfrom = [
 		imgName: "kingmakera"
 	},
 	{
+		...defGameInfo.Casino_NetEnt,
+		path: path.casino.root,
+		parameter: { ...defGameInfo.Casino_NetEnt },
+		imgName: "ne"
+	},
+	{
 		...defGameInfo.LIVEcasinoEVO,
 		imgName: "evolutiona"
 	},

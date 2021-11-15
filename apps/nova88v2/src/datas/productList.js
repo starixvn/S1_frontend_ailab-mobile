@@ -37,6 +37,7 @@ import casino_OW from "../styles/img/ow.png";
 import casino_PT from "../styles/img/pt.png";
 import casino_MGP from "../styles/img/mg.png";
 import casino_Jili from "../styles/img/ji.png";
+import casino_NetEnt from "../styles/img/nt.png";
 import casino_RedTiger from "../styles/img/rt.png";
 // import casino_KISS from "../styles/img/kiss.png";
 
@@ -87,6 +88,7 @@ const defIconType = {
 export const defSlotTpGameType = {
 	Saba: { tpId: 1, tpGameType: 4 },
 	PP: { tpId: 5, tpGameType: 7 },
+	NetEnt: { tpId: 37, tpGameType: 64 },
 	GPI: { tpId: 6, tpGameType: 11 },
 	Joker: { tpId: 9, tpGameType: 13 },
 	YGG: { tpId: 8, tpGameType: 14 },
@@ -295,6 +297,23 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "pp",
 							img: casino_PP,
 							path: path.casino.root
+						},
+						{
+							...defGameInfo.Casino_NetEnt,
+							parameter: defGameInfo.Casino_NetEnt,
+							spanText: "NetEnt",
+							providerImgName: "nt",
+							img: casino_NetEnt,
+							path: path.casino.root,
+							tpGameType: 64,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_NetEnt
+									)
+								}
+							]
 						},
 						{
 							...defGameInfo.Casino_MGP,
@@ -730,6 +749,23 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "pp"
 						},
 						{
+							...defGameInfo.Casino_NetEnt,
+							parameter: defGameInfo.Casino_NetEnt,
+							spanText: "NetEnt",
+							providerImgName: "nt",
+							img: casino_NetEnt,
+							path: path.casino.root,
+							tpGameType: 64,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_NetEnt
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_MGP,
 							parameter: defGameInfo.Casino_MGP,
 							spanText: "Microgaming",
@@ -1163,6 +1199,23 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "pp"
 						},
 						{
+							...defGameInfo.Casino_NetEnt,
+							parameter: defGameInfo.Casino_NetEnt,
+							spanText: "NetEnt",
+							providerImgName: "nt",
+							img: casino_NetEnt,
+							path: path.casino.root,
+							tpGameType: 64,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_NetEnt
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_MGP,
 							parameter: defGameInfo.Casino_MGP,
 							spanText: "Microgaming",
@@ -1588,6 +1641,23 @@ const gameList = ({ langId, currencyName }) => {
 							img: casino_PP,
 							path: path.casino.root,
 							providerImgName: "pp"
+						},
+						{
+							...defGameInfo.Casino_NetEnt,
+							parameter: defGameInfo.Casino_NetEnt,
+							spanText: "NetEnt",
+							providerImgName: "nt",
+							img: casino_NetEnt,
+							path: path.casino.root,
+							tpGameType: 64,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_NetEnt
+									)
+								}
+							]
 						},
 						{
 							...defGameInfo.Casino_MGP,
@@ -2022,6 +2092,23 @@ const gameList = ({ langId, currencyName }) => {
 							path: path.casino.root
 						},
 						{
+							...defGameInfo.Casino_NetEnt,
+							parameter: defGameInfo.Casino_NetEnt,
+							spanText: "NetEnt",
+							providerImgName: "nt",
+							img: casino_NetEnt,
+							path: path.casino.root,
+							tpGameType: 64,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_NetEnt
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_MGP,
 							parameter: defGameInfo.Casino_MGP,
 							spanText: "Microgaming",
@@ -2303,6 +2390,7 @@ export const defGameInfo = {
 	Casino_PT: { tpId: 27, gameId: "0", tpGameType: 46 },
 	// Casino_918Kiss: { tpId: 21, needLogin: true , tpGameType: 33 },
 	Casino_OW: { tpId: 1, gameId: 208, tpGameType: 4 },
+	Casino_NetEnt: { tpId: 37, tpGameType: 64 },
 	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
 	Fishing_AB3: { tpId: 16, gameId: "AB3", tpGameType: 44 },
 	Fishing_AT05: { tpId: 16, gameId: "AT05", tpGameType: 44 },

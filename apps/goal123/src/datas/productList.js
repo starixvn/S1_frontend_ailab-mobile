@@ -40,6 +40,7 @@ import Casino_OW from "../styles/img/hotgame-m-new/slots/slots-ow.png";
 import Casino_PT from "../styles/img/hotgame-m-new/slots/slot-pt.png";
 import Casino_MGP from "../styles/img/hotgame-m-new/slots/slot-mg.png";
 import Casino_Jili from "../styles/img/hotgame-m-new/slots/slot-jili.png";
+import Casino_NetEnt from "../styles/img/hotgame-m-new/slots/slot-ne.png";
 import Casino_RedTiger from "../styles/img/hotgame-m-new/slots/slot-rt.png";
 
 import LIVEcasino_N2Live from "../styles/img/hotgame-m-new/livecasino/livecasino-n2live.png";
@@ -98,6 +99,7 @@ export const defGameInfo = {
 	Casino_PT: { tpId: 27, gameId: "0", tpGameType: 46 },
 	Casino_ow: { gameId: 208, tpId: 1, tpGameType: 4 },
 	Casino_MGP: { tpId: 34, tpGameType: 57 },
+	Casino_NetEnt: { tpId: 37, tpGameType: 64 },
 	Casino_JOKER: { tpId: 9, tpGameType: 13 },
 	Casino_Jili: { tpId: 32, tpGameType: 53 },
 	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
@@ -147,6 +149,7 @@ export const defSlotTpGameType = {
 	PT: { tpId: 27, tpGameType: 46 },
 	JILI: { tpId: 32, tpGameType: 53 },
 	MG: { tpId: 34, tpGameType: 57 },
+	NetEnt: { tpId: 37, tpGameType: 64 },
 	RedTiger: { tpId: 38, tpGameType: 65 }
 };
 
@@ -372,6 +375,20 @@ const gameList = [
 				img: Casino_PP,
 				path: path.casino.root,
 				providerImgName: "pp"
+			},
+			{
+				...defGameInfo.Casino_NetEnt,
+				parameter: defGameInfo.Casino_NetEnt,
+				spanText: "NetEnt",
+				img: Casino_NetEnt,
+				path: path.casino.root,
+				providerImgName: "ne",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.casino_NetEnt)
+					}
+				]
 			},
 			{
 				...defGameInfo.Casino_RedTiger,

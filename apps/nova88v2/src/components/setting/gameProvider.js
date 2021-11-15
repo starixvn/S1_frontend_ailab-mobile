@@ -128,6 +128,11 @@ const defPlatfrom = [
 		path: path.casino.root
 	},
 	{
+		...defGameInfo.Casino_NetEnt,
+		imgName: "nt",
+		path: path.casino.root
+	},
+	{
 		...defGameInfo.LIVEcasinoEVO,
 		imgName: "ev"
 	},
