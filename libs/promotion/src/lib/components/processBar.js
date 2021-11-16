@@ -21,10 +21,12 @@ export default ({
 	if (
 		isJoin &&
 		promotionType !== defPromotionType.cashback &&
-		promotionType !== defPromotionType.rebate
+		promotionType !== defPromotionType.rebate &&
+		status !== defPromoStatus.Fulfill &&
+		status !== defPromoStatus.Canceled
 	) {
 		const percentage =
-			status === defPromoStatus.Fulfill || custTurnOver >= custRollOver
+			custTurnOver >= custRollOver
 				? 100
 				: ((custTurnOver / custRollOver) * 100).toFixed(2);
 		return (
