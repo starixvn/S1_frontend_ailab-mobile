@@ -60,12 +60,16 @@ export default ({ currencyName }) => {
 					tpGameType: defSlotTpGameType.CQ9.tpGameType
 				},
 				{
-					name: "Gates of Olympus",
+					displayKey: "lbl_HotGames_Nova88_Olympus",
+					name: "Nova88 Olympus",
 					provider: "PP",
 					gameTypeKey: gameType.slots,
-					imgUrl: "gates_of_olympus",
+					imgUrl: {
+						default: "88_of_olympus_en",
+						cs: "88_of_olympus_cs"
+					},
 					tpId: 5,
-					gameId: "vs20olympgate",
+					gameId: "vs20olympnova88",
 					productType: defProductType.slots,
 					tpGameType: defSlotTpGameType.PP.tpGameType
 				},
@@ -173,12 +177,16 @@ export default ({ currencyName }) => {
 					tpGameType: defSlotTpGameType.CQ9.tpGameType
 				},
 				{
-					name: "Gates of Olympus",
+					displayKey: "lbl_HotGames_Nova88_Olympus",
+					name: "Nova88 Olympus",
 					provider: "PP",
 					gameTypeKey: gameType.slots,
-					imgUrl: "gates_of_olympus",
+					imgUrl: {
+						default: "88_of_olympus_en",
+						cs: "88_of_olympus_cs"
+					},
 					tpId: 5,
-					gameId: "vs20olympgate",
+					gameId: "vs20olympnova88",
 					productType: defProductType.slots,
 					tpGameType: defSlotTpGameType.PP.tpGameType
 				},
@@ -292,12 +300,16 @@ export default ({ currencyName }) => {
 					tpGameType: defSlotTpGameType.YGG.tpGameType
 				},
 				{
-					name: "Gates of Olympus",
+					displayKey: "lbl_HotGames_Nova88_Olympus",
+					name: "Nova88 Olympus",
 					provider: "PP",
 					gameTypeKey: gameType.slots,
-					imgUrl: "gates_of_olympus",
+					imgUrl: {
+						default: "88_of_olympus_en",
+						cs: "88_of_olympus_cs"
+					},
 					tpId: 5,
-					gameId: "vs20olympgate",
+					gameId: "vs20olympnova88",
 					productType: defProductType.slots,
 					tpGameType: defSlotTpGameType.PP.tpGameType
 				},
@@ -385,12 +397,16 @@ export default ({ currencyName }) => {
 					tpGameType: defSlotTpGameType.CQ9.tpGameType
 				},
 				{
-					name: "Gates of Olympus",
+					displayKey: "lbl_HotGames_Nova88_Olympus",
+					name: "Nova88 Olympus",
 					provider: "PP",
 					gameTypeKey: gameType.slots,
-					imgUrl: "gates_of_olympus",
+					imgUrl: {
+						default: "88_of_olympus_en",
+						cs: "88_of_olympus_cs"
+					},
 					tpId: 5,
-					gameId: "vs20olympgate",
+					gameId: "vs20olympnova88",
 					productType: defProductType.slots,
 					tpGameType: defSlotTpGameType.PP.tpGameType
 				},

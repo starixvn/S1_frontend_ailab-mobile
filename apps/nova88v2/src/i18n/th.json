@@ -680,5 +680,8 @@
 	"lbl_Nova_DepositPromoMsg2": "* จำนวนเงินฝากขั้นต่ำที่ต้องการคือ ",
 	"lbl_Deposit_Promotion_Pop_Msg1": "จำนวนเงินฝากของคุณไม่มีสิทธิ์สำหรับโปรโมชั่นนี้. จำนวนเงินฝากของคุณไม่มีสิทธิ์สำหรับโปรโมชั่นนี้",
 	"lbl_Deposit_Promotion_Button_Proceed": "ดำเนินการProceed",
-	"lbl_Deposit_Promotion_Button_Back": "ย้อนกลับ"
+	"lbl_Deposit_Promotion_Button_Back": "ย้อนกลับ",
+
+	"==============HotGames==============": "",
+	"lbl_HotGames_Nova88_Olympus":"Nova88 Olympus"
 }

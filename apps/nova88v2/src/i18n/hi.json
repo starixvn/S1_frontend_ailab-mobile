@@ -708,5 +708,8 @@
 	"lbl_Nova_DepositPromoMsg2": "* न्यूनतम। आवश्यक जमा राशि है ",
 	"lbl_Deposit_Promotion_Pop_Msg1": "आपकी जमा राशि इस पदोन्नति के लिए योग्य नहीं है क्या आप बिना किसी पदोन्नति चयन के आगे बढ़ना चाहते हैं?",
 	"lbl_Deposit_Promotion_Button_Proceed": "आगे बढ़ना",
-	"lbl_Deposit_Promotion_Button_Back": "वापस"
+	"lbl_Deposit_Promotion_Button_Back": "वापस",
+
+	"==============HotGames==============": "",
+	"lbl_HotGames_Nova88_Olympus":"Nova88 Olympus"
 }

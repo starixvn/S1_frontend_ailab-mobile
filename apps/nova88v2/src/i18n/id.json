@@ -696,5 +696,8 @@
 	"lbl_Nova_DepositPromoMsg2": "* Min. jumlah deposit yang diperlukan adalah ",
 	"lbl_Deposit_Promotion_Pop_Msg1": "Jumlah deposit Anda tidak memenuhi syarat untuk promosi ini. Apakah Anda ingin melanjutkan tanpa promosi?",
 	"lbl_Deposit_Promotion_Button_Proceed": "Lanjut",
-	"lbl_Deposit_Promotion_Button_Back": "Kembali"
+	"lbl_Deposit_Promotion_Button_Back": "Kembali",
+
+	"==============HotGames==============": "",
+	"lbl_HotGames_Nova88_Olympus":"Nova88 Olympus"
 }
