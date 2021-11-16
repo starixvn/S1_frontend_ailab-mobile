@@ -709,5 +709,8 @@
 	"lbl_Nova_DepositPromoMsg2": "* Min. desposit amount required is",
 	"lbl_Deposit_Promotion_Pop_Msg1": "Your deposit amount does not eligible for this promotion. Do you wish to proceed without any promotion selection??",
 	"lbl_Deposit_Promotion_Button_Proceed": "Proceed",
-	"lbl_Deposit_Promotion_Button_Back": "Back"
+	"lbl_Deposit_Promotion_Button_Back": "Back",
+
+	"==============HotGames==============": "",
+	"lbl_HotGames_Nova88_Olympus":"Nova88 Olympus"
 }

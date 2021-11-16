@@ -70,13 +70,21 @@ const HotGame = ({ i18n, userInfo }) => {
 	};
 
 	const gameArr = HotGameList({ currencyName }).map(game => {
+		const displayName = i18n[game.displayKey] ?? game.name;
+		const gameImgName =
+			game.imgUrl?.[userInfo.langId] ??
+			game.imgUrl?.default ??
+			game.imgUrl;
+
 		return (
-			<div key={`hotGame-${game.name}`} className="hotGamModule">
+			<div
+				key={`hotGame-${game.gameId}-${game.tpId}`}
+				className="hotGamModule">
 				<img
-					src={`https://banner.0814media.net/img/hotgame/${game.imgUrl}.jpg`}
-					alt={game.name}
+					src={`https://banner.0814media.net/img/hotgame/${gameImgName}.jpg`}
+					alt={displayName}
 				/>
-				<div>{game.name}</div>
+				<div>{displayName}</div>
 				<div>{`${i18n[game.gameTypeKey]} ${game.provider}`}</div>
 				<div className="btn-group">
 					<button

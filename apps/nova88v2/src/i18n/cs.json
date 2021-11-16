@@ -684,5 +684,8 @@
 	"lbl_Nova_DepositPromoMsg2": "* 最低存款额为",
 	"lbl_Deposit_Promotion_Pop_Msg1": "您的存款金额不符合此优惠。是否继续存款不领取优惠？",
 	"lbl_Deposit_Promotion_Button_Proceed": "继续",
-	"lbl_Deposit_Promotion_Button_Back": "返回"
+	"lbl_Deposit_Promotion_Button_Back": "返回",
+
+	"==============HotGames==============": "",
+	"lbl_HotGames_Nova88_Olympus":"Nova88 奥林匹斯"
 }
