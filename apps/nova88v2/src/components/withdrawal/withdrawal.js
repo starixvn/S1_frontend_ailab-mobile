@@ -722,7 +722,7 @@ const Panel = ({ isCrypto }) => {
 				setPopBox({
 					isOpen: true,
 					title: i18n.lbl_ImportantNote,
-					content: i18n.lbl_UpdatePersonalInfo,
+					content: i18n.lbl_Crypto_OTP,
 					hasBtn: true,
 					hideCloseBtn: true,
 					btnBar: (
