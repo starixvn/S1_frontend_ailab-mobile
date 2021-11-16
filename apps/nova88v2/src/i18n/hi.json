@@ -659,7 +659,7 @@
 	"lbl_DuplicateAddress": "आप पहले ही यह जानकारी संग्रहीत कर चुके हैं।",
 	"lbl_Rate": "Rate",
 	"lbl_USDT_Amount": "USDT Amount",
-	"lbl_Crypto_OTP": "Phone number (OTP) verification are require before deposit for Crypto service.",
+	"lbl_Crypto_OTP": "क्रिप्टो सेवा का उपयोग करने से पहले फोन नंबर (ओटीपी) सत्यापन आवश्यक है।",
 	"lbl_CashbackAmount": "कैशबैक राशि",
 	"lbl_ReceivedAmount": "प्राप्त राशि",
 

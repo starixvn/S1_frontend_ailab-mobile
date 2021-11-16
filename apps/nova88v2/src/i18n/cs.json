@@ -635,7 +635,7 @@
 	"lbl_DuplicateAddress": "您已经存储此信息。",
 	"lbl_Rate": "汇率",
 	"lbl_USDT_Amount": "泰达币金额",
-	"lbl_Crypto_OTP": "使用虚拟货币存款服务前，请先完成手机 OTP 验证。",
+	"lbl_Crypto_OTP": "使用虚拟货币服务前，请先完成手机 OTP 验证。",
 	"lbl_CashbackAmount": "返现金额",
 	"lbl_ReceivedAmount": "到账金额",
 

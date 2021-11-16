@@ -660,7 +660,7 @@
 	"lbl_DuplicateAddress": "You have already stored this information.",
 	"lbl_Rate": "Rate",
 	"lbl_USDT_Amount": "USDT Amount",
-	"lbl_Crypto_OTP": "Phone number (OTP) verification are require before deposit for Crypto service.",
+	"lbl_Crypto_OTP": "Phone number (OTP) verification are required before using Crypto service.",
 	"lbl_CashbackAmount": "Cashback Amount",
 	"lbl_ReceivedAmount": "Received Amount",
 
