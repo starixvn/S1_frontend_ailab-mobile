@@ -5708,6 +5708,10 @@ span.important {
   border-radius: 3px;
 }
 
+.promotions .promodule .btn-group button, .promotions .promodule .btn-group a, .promotions .proInfomodule .btn-group button, .promotions .proInfomodule .btn-group a {
+  font-weight: bold;
+}
+
 .promotions .promodule.active .claimed, .promotions .proInfomodule.active .claimed {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -8865,6 +8869,7 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: 7vw 0;
 }
 
 .social a {
@@ -8872,7 +8877,7 @@ span.important {
   width: 10vw;
   height: 10vw;
   background: #c0cce2;
-  margin: 5vw 2vw 5vw 0;
+  margin: 0 2vw 0 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8886,15 +8891,13 @@ span.important {
 
 .social > div {
   color: #5574A7;
-  margin: auto auto auto 2vw;
+  margin: -4vw auto auto 2vw;
   font-size: 3vw;
   font-weight: bold;
 }
 
-.social > div div {
-  -webkit-transform: scale(0.8);
-          transform: scale(0.8);
-  margin: auto auto 1vw -2vw;
+.social > div > div {
+  margin: auto auto 1vw 1vw;
 }
 
 .social > div img {
@@ -9599,7 +9602,7 @@ span.important {
   height: 100%;
   position: absolute;
   top: 0;
-  z-index: 9999;
+  z-index: 9;
 }
 
 .favouriteModule .favourite {
@@ -10543,14 +10546,14 @@ span.important {
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  background: url(../img/event/wheel/bg.jpg) no-repeat top center/140vw, -webkit-gradient(linear, left top, right top, from(#100d41), to(#250333));
-  background: url(../img/event/wheel/bg.jpg) no-repeat top center/140vw, linear-gradient(to right, #100d41, #250333);
+  background: url(../img/event/wheel/bg.jpg) no-repeat top center/175vw, -webkit-gradient(linear, left top, right top, from(#100d41), to(#250333));
+  background: url(../img/event/wheel/bg.jpg) no-repeat top center/175vw, linear-gradient(to right, #100d41, #250333);
   padding: 0 0 24vw;
 }
 
 .wheelEvent .eventTitleBg {
-  width: 39vw;
-  height: 9vw;
+  width: 56vw;
+  height: 13vw;
   background: url(../img/event/wheel/event_title_bg.png) no-repeat top center/cover;
   margin: auto;
   display: -webkit-box;
@@ -10566,7 +10569,7 @@ span.important {
 }
 
 .wheelEvent .eventTitleBg .eventTitle {
-  margin-top: 2vw;
+  margin-top: 2.5vw;
   background: -webkit-linear-gradient(top, #f0b52d 30%, #fffccf 40%, #e2a625 65%, #ff6c00 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -10576,6 +10579,9 @@ span.important {
           filter: drop-shadow(0px 3px 1px #922707);
   text-align: center;
   letter-spacing: 0.4vw;
+  width: 44vw;
+  font-size: 4vw;
+  line-height: 4vw;
 }
 
 .wheelEvent > div[tabindex="-1"] {
@@ -10606,7 +10612,8 @@ span.important {
 }
 
 .wheelEvent .wheelModule > img {
-  width: 50vw;
+  width: 60vw;
+  margin-top: -1vw;
   z-index: 1;
 }
 
@@ -10626,12 +10633,13 @@ span.important {
 }
 
 .wheelEvent .wheelModule .wheel {
-  width: 45vw;
-  height: 45vw;
+  width: 60vw;
+  height: 60vw;
   position: absolute;
   background: url(../img/event/wheel/wheelbg.png) no-repeat center/cover;
   border-radius: 100%;
   margin-top: 1vw;
+  font-weight: bold;
 }
 
 .wheelEvent .wheelModule .wheel ul li {
@@ -10741,8 +10749,8 @@ span.important {
 }
 
 .wheelEvent .wheelModule .wheel.active {
-  -webkit-animation: wheel 1s 3 linear;
-          animation: wheel 1s 3 linear;
+  -webkit-animation: wheel 1s linear infinite;
+          animation: wheel 1s linear infinite;
 }
 
 @-webkit-keyframes wheel {
@@ -10855,6 +10863,7 @@ span.important {
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
+  width: 100%;
 }
 
 .wheelEvent .info .eventList {
@@ -10907,8 +10916,8 @@ span.important {
   color: white;
 }
 
-.wheelEvent ~ #popup {
-  background: rgba(0, 0, 0, 0.8);
+.wheelPopModule {
+  background: rgba(0, 0, 0, 0.8) !important;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -10917,16 +10926,18 @@ span.important {
           justify-content: center;
 }
 
-.wheelEvent ~ #popup .wheelPop {
+.wheelPopModule .wheelPop {
   border-radius: 15px;
   border: 3px solid #409ed0;
   padding: 1vw;
   overflow: unset;
   text-align: center;
   position: relative;
+  background: white;
+  width: 100%;
 }
 
-.wheelEvent ~ #popup .wheelPop > div:not(.animation) {
+.wheelPopModule .wheelPop > div:not(.animation) {
   background: #4b126d;
   -webkit-box-shadow: rgba(227, 0, 188, 0.6) 0px 0px 1px 6px, white 0px 0px 2px 2px, rgba(255, 255, 255, 0.3) 0 0 5px 5px inset, rgba(234, 14, 181, 0.8) 0 0 10px 10px inset;
           box-shadow: rgba(227, 0, 188, 0.6) 0px 0px 1px 6px, white 0px 0px 2px 2px, rgba(255, 255, 255, 0.3) 0 0 5px 5px inset, rgba(234, 14, 181, 0.8) 0 0 10px 10px inset;
@@ -10936,7 +10947,7 @@ span.important {
   position: relative;
 }
 
-.wheelEvent ~ #popup .wheelPop > div:not(.animation) .icon-close {
+.wheelPopModule .wheelPop > div:not(.animation) .icon-close {
   position: absolute;
   top: 1vw;
   right: 1vw;
@@ -10957,11 +10968,11 @@ span.important {
           align-items: center;
 }
 
-.wheelEvent ~ #popup .wheelPop > div:not(.animation) .icon-close:before {
+.wheelPopModule .wheelPop > div:not(.animation) .icon-close:before {
   margin: 0 0 0 1px;
 }
 
-.wheelEvent ~ #popup .wheelPop > div:not(.animation) .title {
+.wheelPopModule .wheelPop > div:not(.animation) .title {
   color: white;
   font: bold 7vw 'Noto Sans Display', sans-serif;
   background: -webkit-gradient(linear, left top, left bottom, from(white), color-stop(60%, white), color-stop(70%, #90efff), to(#90efff));
@@ -10978,12 +10989,12 @@ span.important {
   margin-bottom: 2vw;
 }
 
-.wheelEvent ~ #popup .wheelPop > div:not(.animation) .title + div {
+.wheelPopModule .wheelPop > div:not(.animation) .title + div {
   color: #88ffff;
   font-size: 4vw;
 }
 
-.wheelEvent ~ #popup .wheelPop > div:not(.animation) .am {
+.wheelPopModule .wheelPop > div:not(.animation) .am {
   font-weight: bold;
   color: #88ffff;
   background: #21042f;
@@ -10996,7 +11007,7 @@ span.important {
   width: 55vw;
 }
 
-.wheelEvent ~ #popup .wheelPop .animation {
+.wheelPopModule .wheelPop .animation {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -11015,14 +11026,14 @@ span.important {
   background: transparent;
 }
 
-.wheelEvent ~ #popup .wheelPop .animation.active .coin {
+.wheelPopModule .wheelPop .animation.active .coin {
   -webkit-animation: coin1 1s ease-in-out infinite;
           animation: coin1 1s ease-in-out infinite;
   -webkit-transform: rotate(5deg);
           transform: rotate(5deg);
 }
 
-.wheelEvent ~ #popup .wheelPop .animation .coin {
+.wheelPopModule .wheelPop .animation .coin {
   position: absolute;
   top: 130px;
   right: 50px;
@@ -11031,7 +11042,7 @@ span.important {
   background: url(../img/event/wheel/coin.png) no-repeat center/cover;
 }
 
-.wheelEvent ~ #popup .wheelPop .animation .coin:nth-child(2) {
+.wheelPopModule .wheelPop .animation .coin:nth-child(2) {
   top: 100px;
   left: 150px;
   width: 90px;
@@ -11042,7 +11053,7 @@ span.important {
           animation-delay: .2s;
 }
 
-.wheelEvent ~ #popup .wheelPop .animation .coin:nth-child(3) {
+.wheelPopModule .wheelPop .animation .coin:nth-child(3) {
   left: 70px;
   -webkit-animation-delay: 1.5s;
           animation-delay: 1.5s;
@@ -11050,7 +11061,7 @@ span.important {
           transform: rotate(240deg);
 }
 
-.wheelEvent ~ #popup .wheelPop .animation .coin:nth-child(4) {
+.wheelPopModule .wheelPop .animation .coin:nth-child(4) {
   top: 110px;
   left: 40px;
   -webkit-animation-delay: .3s;
@@ -11059,7 +11070,7 @@ span.important {
           transform: rotate(150deg);
 }
 
-.wheelEvent ~ #popup .wheelPop .animation .coin:nth-child(5) {
+.wheelPopModule .wheelPop .animation .coin:nth-child(5) {
   top: 110px;
   width: 80px;
   height: 61px;
@@ -11115,22 +11126,5 @@ span.important {
             transform: rotate(300deg);
     opacity: 0;
   }
-}
-
-.social #apg-a7019fa5-9f9a-468b-92da-4890f6a6e4a7 {
-  width: 20vw;
-  height: 20vw;
-}
-
-.social #apg-a7019fa5-9f9a-468b-92da-4890f6a6e4a7 div {
-  width: 20vw;
-  height: 20vw;
-  overflow: revert !important;
-}
-
-.social #apg-a7019fa5-9f9a-468b-92da-4890f6a6e4a7 a {
-  width: 20vw;
-  height: 20vw;
-  margin: 0 0 10vw 0;
 }
 /*# sourceMappingURL=style.css.map */
