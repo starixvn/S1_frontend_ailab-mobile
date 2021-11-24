@@ -928,7 +928,7 @@ main .sideBarNew div > button img {
 .dropdown > .dropdown-container {
   display: none;
   position: absolute;
-  background: #fff;
+  background: #bfc9da;
   z-index: 1;
   border: 1px solid #284985;
   border-top: 0;
@@ -983,7 +983,7 @@ main .sideBarNew div > button img {
   display: flex;
   color: white;
   min-height: 7vw;
-  font-size: 3vw;
+  font-size: 4vw;
 }
 
 .dropdown > .btn .bankLogo {
@@ -1090,11 +1090,12 @@ main .sideBarNew div > button img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0 5vw;
+  padding: 2vw 4vw;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border: 1px solid #294985;
   background: #eaf1ff;
+  font-size: 3.5vw;
   color: #052561;
 }
 
@@ -1227,7 +1228,7 @@ main .sideBarNew div > button img {
   padding: 0.5vw 2.5vw 1vw;
   font-size: 3vw;
   right: 0.8vw;
-  background: #5084e4;
+  background: #6395f1;
 }
 
 #popup.backupDomain .pop .popTxt .text-center {
@@ -1313,7 +1314,7 @@ main .sideBarNew div > button img {
 }
 
 #popup.goldbox .eventpop .icon-close {
-  color: #5084e4;
+  color: #6395f1;
   position: absolute;
   right: 3vw;
   top: 4vw;
@@ -1389,6 +1390,181 @@ main .sideBarNew div > button img {
   width: calc(100% - 8vw) !important;
 }
 
+#popup.cryptoAddpop .popTxt .dropdown .btn {
+  font-size: 3.5vw;
+}
+
+#popup.cryptoAddpop .popTxt .dropdown .dropdown-container {
+  top: 8vw;
+}
+
+#popup.cryptoAddpop .popTxt .txt-red {
+  margin-right: 1vw;
+}
+
+#popup.cryptoAddpop .popTxt input {
+  padding: 2vw 2vw 2vw 4vw;
+}
+
+#popup.cryptoAddpop .popTxt .infoModule {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  margin: 2vw 0;
+}
+
+#popup.cryptoAddpop .popTxt .infoModule .inputBox {
+  margin: 0;
+  width: 100%;
+}
+
+#popup.cryptoAddpop .popTxt .infoModule .inputBox input {
+  font-size: 3.5vw;
+}
+
+#popup.cryptoAddpop .popTxt .infoModule .inputBox input + .txt-red {
+  position: absolute;
+  top: 1vw;
+  left: 2vw;
+  font-size: 3vw;
+}
+
+#popup.cryptoAddpop .popTxt .infoModule .inputBox .icon {
+  -webkit-transform: translateY(14%);
+          transform: translateY(14%);
+}
+
+#popup.cryptoAddpop .popTxt .infoModule .inputBox .icon::before {
+  font-size: 4vw;
+}
+
+#popup.cryptoAddpop .popTxt .infoModule.parts {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+#popup.cryptoAddpop .popTxt .infoModule.parts .inputBox {
+  width: 50vw;
+}
+
+#popup.cryptoAddpop .popTxt .infoModule.parts .btn-group {
+  margin: 0;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+}
+
+#popup.cryptoAddpop .popTxt .infoModule.parts .btn-group button, #popup.cryptoAddpop .popTxt .infoModule.parts .btn-group a {
+  font-size: 3.5vw;
+}
+
+#popup.cryptopop .popTxt {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+#popup.cryptopop .popTxt > div {
+  margin: 0 0 1vw 0;
+  word-break: break-all;
+}
+
+#popup.cryptoPaypop .popTxt {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+#popup.cryptoPaypop .popTxt > div {
+  margin: 0;
+}
+
+#popup.cryptoPaypop .popTxt > div span {
+  color: #6395f1;
+}
+
+#popup.cryptoPaypop .popTxt > div.sisa {
+  color: #d83b35;
+  text-align: center;
+  margin: 2vw auto;
+}
+
+#popup.cryptoPaypop .popTxt > div.sisa > div:nth-child(2) {
+  font-weight: bold;
+}
+
+#popup.cryptoPaypop .popTxt > div li {
+  background: none;
+  margin: 0 0 0 4vw;
+  padding: 0;
+  display: revert;
+}
+
+#popup.cryptoPaypop .guide {
+  border-top: 1px dotted #b2b2b2;
+  border-bottom: 1px dotted #b2b2b2;
+  padding: 2.5vw 0;
+  margin: 2.5vw 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+#popup.cryptoPaypop .guide .accountInfo {
+  margin: 2.5vw 0 0;
+}
+
+#popup.cryptoPaypop .guide .accountInfo > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 0 1vw;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#popup.cryptoPaypop .guide .copyBtn {
+  background: #4e6ca8;
+  padding: 1vw;
+  margin: 0 5px;
+  border-radius: 2px;
+  color: #ffffff;
+}
+
+#popup.cryptoPaypop .guide img {
+  width: 40vw;
+  margin: 0;
+}
+
+#popup.cryptoPaypop ul li {
+  margin-left: 4vw;
+  list-style: decimal;
+}
+
+.txt-red {
+  color: #d83b35;
+}
+
 .header {
   border-bottom: 0;
 }
@@ -1418,15 +1594,14 @@ main .sideBarNew div > button img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   background: #fff;
   left: 0;
   z-index: 2;
 }
 
 .tag a {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1439,8 +1614,9 @@ main .sideBarNew div > button img {
   height: 12vw;
   border-bottom: 3px solid transparent;
   color: #666;
-  font-size: 4.5vw;
+  font-size: 4vw;
   text-align: center;
+  white-space: nowrap;
 }
 
 .tag a.open {
@@ -2446,6 +2622,23 @@ main .sideBarNew div > button img {
   color: red;
 }
 
+.inputBox .iconModule {
+  position: absolute;
+  -webkit-transform: translateY(60%);
+          transform: translateY(60%);
+  right: 1vw;
+  top: -2.5vw;
+  color: #6f7a8e;
+}
+
+.inputBox .iconModule .icon {
+  position: initial;
+  display: inline-block;
+  -webkit-transform: translateY(15%);
+          transform: translateY(15%);
+  margin-right: 0;
+}
+
 .LoginRule {
   height: 0;
   visibility: hidden;
@@ -2492,7 +2685,7 @@ main .sideBarNew div > button img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 4vw;
+  font-size: 3.5vw;
 }
 
 .btn-group button i,
@@ -2529,7 +2722,7 @@ main .sideBarNew div > button img {
 
 .btn-group button.orange,
 .btn-group a.orange {
-  background: #5084e4;
+  background: #6395f1;
 }
 
 .btn-group button.blue,
@@ -2558,6 +2751,21 @@ main .sideBarNew div > button img {
 .btn-group button.darkGray,
 .btn-group a.darkGray {
   background: #666;
+}
+
+.btn-group button.addAccount,
+.btn-group a.addAccount {
+  height: 15vw;
+  position: relative;
+}
+
+.btn-group button.addAccount .icon-plus1,
+.btn-group a.addAccount .icon-plus1 {
+  margin: auto;
+  position: absolute;
+  color: #1f3258;
+  top: calc(50% - 2vw);
+  left: calc(50% - 2.5vw);
 }
 
 .statementPage a.blue {
@@ -2589,7 +2797,7 @@ main .sideBarNew div > button img {
       flex-wrap: wrap;
 }
 
-.selectBank button {
+.selectBank button, .selectBank a {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 calc(100% / 3 - 1vw);
           flex: 0 0 calc(100% / 3 - 1vw);
@@ -2602,9 +2810,10 @@ main .sideBarNew div > button img {
   border-radius: 5px;
   overflow: hidden;
   line-height: 0;
+  background: #ffffff;
 }
 
-.selectBank button.open {
+.selectBank button.open, .selectBank a.open {
   border: 2px solid #1e85ec;
 }
 
@@ -2855,6 +3064,7 @@ main .sideBarNew div > button img {
           justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  font-size: 3.5vw;
   color: #052561;
 }
 
@@ -2900,6 +3110,35 @@ main .sideBarNew div > button img {
 
 .account .tip span {
   display: initial;
+}
+
+.account .icon-crypto {
+  color: #b2b2b2;
+  word-break: break-all;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.account .icon-crypto::before {
+  color: #6395f1;
+  margin-right: 1vw;
+}
+
+.account .nickname {
+  color: #ffffff;
+  font-weight: bold;
+  bottom: 2vw;
+  width: 100%;
 }
 
 .smallTitle {
@@ -5093,10 +5332,6 @@ span.important {
   white-space: nowrap;
 }
 
-.promotions .filterBtn ~ div.promodule .text + .btn-group button {
-  padding: 1vw;
-}
-
 .promotions div.promodule {
   border: 0;
   background: transparent;
@@ -5636,7 +5871,7 @@ span.important {
   height: 6vw;
   color: #f80b3b;
   position: absolute;
-  right: 2vw;
+  right: 0;
   top: -6vw;
   z-index: 4;
   background: #e3ce9b;
@@ -5661,13 +5896,7 @@ span.important {
 .eventLink img {
   -webkit-animation: routate linear infinite alternate 0.8s;
           animation: routate linear infinite alternate 0.8s;
-  width: 85px;
-}
-
-@media screen and (min-width: 550px) and (max-width: 1024px) {
-  .eventLink img {
-    width: 120px;
-  }
+  width: 28vw;
 }
 
 .eventLink.active {
@@ -5678,31 +5907,21 @@ span.important {
   bottom: 48vw;
 }
 
-.eventLink.wheel a {
-  position: relative;
-}
-
-.eventLink.wheel a img {
-  width: 28vw;
+.eventLink.wheel img {
   position: absolute;
   top: 0;
   right: 0;
 }
 
-.eventLink.wheel a img.spin {
+.eventLink.wheel img.spin {
   z-index: 2;
 }
 
-.eventLink.wheel a img.inner {
-  -webkit-animation: wheel 1.5s linear infinite;
-          animation: wheel 1.5s linear infinite;
+.eventLink.wheel img.inner {
+  margin-top: 0.25vw;
+  -webkit-animation: wheel 1.5s infinite;
+          animation: wheel 1.5s infinite;
   z-index: 1;
-}
-
-.eventLink.wheel a img.note {
-  width: 42vw;
-  z-index: 3;
-  right: -12vw;
 }
 
 .event {
@@ -6432,7 +6651,8 @@ span.important {
 .depositModule_mobile,
 .depositModule_online,
 .depositModule_local,
-.depositModule_topupMobile {
+.depositModule_topupMobile,
+.depositModule_Crpyto {
   background: rgba(213, 228, 255, 0.4);
   border: 1px solid #1e85ec;
   padding: 3vw;
@@ -6445,14 +6665,16 @@ span.important {
 .depositModule_mobile.open,
 .depositModule_online.open,
 .depositModule_local.open,
-.depositModule_topupMobile.open {
+.depositModule_topupMobile.open,
+.depositModule_Crpyto.open {
   display: block;
 }
 
 .depositModule_mobile > .title,
 .depositModule_online > .title,
 .depositModule_local > .title,
-.depositModule_topupMobile > .title {
+.depositModule_topupMobile > .title,
+.depositModule_Crpyto > .title {
   margin: 5vw 0 2vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6465,7 +6687,8 @@ span.important {
 .depositModule_mobile > .title:not(.text-org),
 .depositModule_online > .title:not(.text-org),
 .depositModule_local > .title:not(.text-org),
-.depositModule_topupMobile > .title:not(.text-org) {
+.depositModule_topupMobile > .title:not(.text-org),
+.depositModule_Crpyto > .title:not(.text-org) {
   font-weight: normal;
   background: #134dae;
   padding: 5px;
@@ -6480,14 +6703,17 @@ span.important {
 .depositModule_local > .title:before,
 .depositModule_local > .title span,
 .depositModule_topupMobile > .title:before,
-.depositModule_topupMobile > .title span {
+.depositModule_topupMobile > .title span,
+.depositModule_Crpyto > .title:before,
+.depositModule_Crpyto > .title span {
   margin-right: 1vw;
 }
 
 .depositModule_mobile > .title.important,
 .depositModule_online > .title.important,
 .depositModule_local > .title.important,
-.depositModule_topupMobile > .title.important {
+.depositModule_topupMobile > .title.important,
+.depositModule_Crpyto > .title.important {
   font-weight: bold;
   color: white;
 }
@@ -6495,7 +6721,8 @@ span.important {
 .depositModule_mobile .selectModule,
 .depositModule_online .selectModule,
 .depositModule_local .selectModule,
-.depositModule_topupMobile .selectModule {
+.depositModule_topupMobile .selectModule,
+.depositModule_Crpyto .selectModule {
   background: rgba(19, 77, 174, 0.5);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6513,14 +6740,16 @@ span.important {
 .depositModule_mobile .selectModule input[type="radio"],
 .depositModule_online .selectModule input[type="radio"],
 .depositModule_local .selectModule input[type="radio"],
-.depositModule_topupMobile .selectModule input[type="radio"] {
+.depositModule_topupMobile .selectModule input[type="radio"],
+.depositModule_Crpyto .selectModule input[type="radio"] {
   display: none;
 }
 
 .depositModule_mobile .selectModule input[type="radio"] + label,
 .depositModule_online .selectModule input[type="radio"] + label,
 .depositModule_local .selectModule input[type="radio"] + label,
-.depositModule_topupMobile .selectModule input[type="radio"] + label {
+.depositModule_topupMobile .selectModule input[type="radio"] + label,
+.depositModule_Crpyto .selectModule input[type="radio"] + label {
   border: 1px solid white;
   width: 4vw;
   height: 4vw;
@@ -6539,7 +6768,8 @@ span.important {
 .depositModule_mobile .selectModule input[type="radio"]:checked + label div,
 .depositModule_online .selectModule input[type="radio"]:checked + label div,
 .depositModule_local .selectModule input[type="radio"]:checked + label div,
-.depositModule_topupMobile .selectModule input[type="radio"]:checked + label div {
+.depositModule_topupMobile .selectModule input[type="radio"]:checked + label div,
+.depositModule_Crpyto .selectModule input[type="radio"]:checked + label div {
   width: 3vw;
   height: 3vw;
   background: white;
@@ -6548,7 +6778,8 @@ span.important {
 .depositModule_mobile .selectModule > div,
 .depositModule_online .selectModule > div,
 .depositModule_local .selectModule > div,
-.depositModule_topupMobile .selectModule > div {
+.depositModule_topupMobile .selectModule > div,
+.depositModule_Crpyto .selectModule > div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -6560,13 +6791,14 @@ span.important {
           justify-content: center;
   width: 100%;
   margin: 2vw 0;
-  font-size: 2vw;
+  font-size: 3vw;
 }
 
 .depositModule_mobile .selectModule > div .bank,
 .depositModule_online .selectModule > div .bank,
 .depositModule_local .selectModule > div .bank,
-.depositModule_topupMobile .selectModule > div .bank {
+.depositModule_topupMobile .selectModule > div .bank,
+.depositModule_Crpyto .selectModule > div .bank {
   color: white;
   margin: 0 1vw 0;
 }
@@ -6574,7 +6806,8 @@ span.important {
 .depositModule_mobile .selectModule > div .bank > div,
 .depositModule_online .selectModule > div .bank > div,
 .depositModule_local .selectModule > div .bank > div,
-.depositModule_topupMobile .selectModule > div .bank > div {
+.depositModule_topupMobile .selectModule > div .bank > div,
+.depositModule_Crpyto .selectModule > div .bank > div {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -6584,14 +6817,16 @@ span.important {
 .depositModule_mobile .selectModule > div .bank > div:last-child,
 .depositModule_online .selectModule > div .bank > div:last-child,
 .depositModule_local .selectModule > div .bank > div:last-child,
-.depositModule_topupMobile .selectModule > div .bank > div:last-child {
+.depositModule_topupMobile .selectModule > div .bank > div:last-child,
+.depositModule_Crpyto .selectModule > div .bank > div:last-child {
   color: white;
 }
 
 .depositModule_mobile .selectModule > div.info,
 .depositModule_online .selectModule > div.info,
 .depositModule_local .selectModule > div.info,
-.depositModule_topupMobile .selectModule > div.info {
+.depositModule_topupMobile .selectModule > div.info,
+.depositModule_Crpyto .selectModule > div.info {
   width: calc(100% - 12vw);
   padding: 2vw 5vw;
   background: #adccff;
@@ -6602,7 +6837,8 @@ span.important {
 .depositModule_mobile .selectModule > div.info .checkBank,
 .depositModule_online .selectModule > div.info .checkBank,
 .depositModule_local .selectModule > div.info .checkBank,
-.depositModule_topupMobile .selectModule > div.info .checkBank {
+.depositModule_topupMobile .selectModule > div.info .checkBank,
+.depositModule_Crpyto .selectModule > div.info .checkBank {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -6614,7 +6850,8 @@ span.important {
 .depositModule_mobile .selectModule > div .bankName,
 .depositModule_online .selectModule > div .bankName,
 .depositModule_local .selectModule > div .bankName,
-.depositModule_topupMobile .selectModule > div .bankName {
+.depositModule_topupMobile .selectModule > div .bankName,
+.depositModule_Crpyto .selectModule > div .bankName {
   width: 20vw;
   background: white;
   border-radius: 5px;
@@ -6624,7 +6861,8 @@ span.important {
 .depositModule_mobile .selectModule > div .bankName img,
 .depositModule_online .selectModule > div .bankName img,
 .depositModule_local .selectModule > div .bankName img,
-.depositModule_topupMobile .selectModule > div .bankName img {
+.depositModule_topupMobile .selectModule > div .bankName img,
+.depositModule_Crpyto .selectModule > div .bankName img {
   width: 100%;
   vertical-align: middle;
 }
@@ -6632,7 +6870,8 @@ span.important {
 .depositModule_mobile .inputBox,
 .depositModule_online .inputBox,
 .depositModule_local .inputBox,
-.depositModule_topupMobile .inputBox {
+.depositModule_topupMobile .inputBox,
+.depositModule_Crpyto .inputBox {
   position: relative;
   margin: 2px 0 2vw;
   color: white;
@@ -6641,7 +6880,8 @@ span.important {
 .depositModule_mobile .inputBox .iconModule,
 .depositModule_online .inputBox .iconModule,
 .depositModule_local .inputBox .iconModule,
-.depositModule_topupMobile .inputBox .iconModule {
+.depositModule_topupMobile .inputBox .iconModule,
+.depositModule_Crpyto .inputBox .iconModule {
   position: absolute;
   -webkit-transform: translateY(60%);
           transform: translateY(60%);
@@ -6653,7 +6893,8 @@ span.important {
 .depositModule_mobile .inputBox .iconModule .icon,
 .depositModule_online .inputBox .iconModule .icon,
 .depositModule_local .inputBox .iconModule .icon,
-.depositModule_topupMobile .inputBox .iconModule .icon {
+.depositModule_topupMobile .inputBox .iconModule .icon,
+.depositModule_Crpyto .inputBox .iconModule .icon {
   position: initial;
   display: inline-block;
   -webkit-transform: translateY(15%);
@@ -6664,7 +6905,8 @@ span.important {
 .depositModule_mobile .inputBox input,
 .depositModule_online .inputBox input,
 .depositModule_local .inputBox input,
-.depositModule_topupMobile .inputBox input {
+.depositModule_topupMobile .inputBox input,
+.depositModule_Crpyto .inputBox input {
   padding: 2vw;
   border-radius: 0;
   text-align: left;
@@ -6676,42 +6918,48 @@ span.important {
 .depositModule_mobile .inputBox input::-webkit-input-placeholder,
 .depositModule_online .inputBox input::-webkit-input-placeholder,
 .depositModule_local .inputBox input::-webkit-input-placeholder,
-.depositModule_topupMobile .inputBox input::-webkit-input-placeholder {
+.depositModule_topupMobile .inputBox input::-webkit-input-placeholder,
+.depositModule_Crpyto .inputBox input::-webkit-input-placeholder {
   color: #6f7a8e;
 }
 
 .depositModule_mobile .inputBox input:-ms-input-placeholder,
 .depositModule_online .inputBox input:-ms-input-placeholder,
 .depositModule_local .inputBox input:-ms-input-placeholder,
-.depositModule_topupMobile .inputBox input:-ms-input-placeholder {
+.depositModule_topupMobile .inputBox input:-ms-input-placeholder,
+.depositModule_Crpyto .inputBox input:-ms-input-placeholder {
   color: #6f7a8e;
 }
 
 .depositModule_mobile .inputBox input::-ms-input-placeholder,
 .depositModule_online .inputBox input::-ms-input-placeholder,
 .depositModule_local .inputBox input::-ms-input-placeholder,
-.depositModule_topupMobile .inputBox input::-ms-input-placeholder {
+.depositModule_topupMobile .inputBox input::-ms-input-placeholder,
+.depositModule_Crpyto .inputBox input::-ms-input-placeholder {
   color: #6f7a8e;
 }
 
 .depositModule_mobile .inputBox input::placeholder,
 .depositModule_online .inputBox input::placeholder,
 .depositModule_local .inputBox input::placeholder,
-.depositModule_topupMobile .inputBox input::placeholder {
+.depositModule_topupMobile .inputBox input::placeholder,
+.depositModule_Crpyto .inputBox input::placeholder {
   color: #6f7a8e;
 }
 
 .depositModule_mobile .inputBox .tip,
 .depositModule_online .inputBox .tip,
 .depositModule_local .inputBox .tip,
-.depositModule_topupMobile .inputBox .tip {
+.depositModule_topupMobile .inputBox .tip,
+.depositModule_Crpyto .inputBox .tip {
   margin-left: 2.5vw;
 }
 
 .depositModule_mobile .inputBox .tip img,
 .depositModule_online .inputBox .tip img,
 .depositModule_local .inputBox .tip img,
-.depositModule_topupMobile .inputBox .tip img {
+.depositModule_topupMobile .inputBox .tip img,
+.depositModule_Crpyto .inputBox .tip img {
   width: 102%;
   margin-left: -2.5vw;
 }
@@ -6719,7 +6967,8 @@ span.important {
 .depositModule_mobile .inputBox .dropdown > .dropdown-container,
 .depositModule_online .inputBox .dropdown > .dropdown-container,
 .depositModule_local .inputBox .dropdown > .dropdown-container,
-.depositModule_topupMobile .inputBox .dropdown > .dropdown-container {
+.depositModule_topupMobile .inputBox .dropdown > .dropdown-container,
+.depositModule_Crpyto .inputBox .dropdown > .dropdown-container {
   background: #bfc9da;
   top: calc(6vw + 1px) !important;
 }
@@ -6727,7 +6976,8 @@ span.important {
 .depositModule_mobile .note,
 .depositModule_online .note,
 .depositModule_local .note,
-.depositModule_topupMobile .note {
+.depositModule_topupMobile .note,
+.depositModule_Crpyto .note {
   background: rgba(102, 102, 102, 0.2);
   color: #666;
   padding: 2vw;
@@ -6738,7 +6988,8 @@ span.important {
 .depositModule_mobile .note ol,
 .depositModule_online .note ol,
 .depositModule_local .note ol,
-.depositModule_topupMobile .note ol {
+.depositModule_topupMobile .note ol,
+.depositModule_Crpyto .note ol {
   list-style-type: "* " !important;
   padding-left: 4vw;
 }
@@ -6746,14 +6997,16 @@ span.important {
 .depositModule_mobile .note ol li,
 .depositModule_online .note ol li,
 .depositModule_local .note ol li,
-.depositModule_topupMobile .note ol li {
+.depositModule_topupMobile .note ol li,
+.depositModule_Crpyto .note ol li {
   margin: 1vw;
 }
 
 .depositModule_mobile a.clickBtn,
 .depositModule_online a.clickBtn,
 .depositModule_local a.clickBtn,
-.depositModule_topupMobile a.clickBtn {
+.depositModule_topupMobile a.clickBtn,
+.depositModule_Crpyto a.clickBtn {
   background: #f0eff5;
   border-radius: 100%;
   padding: 0;
@@ -6775,14 +7028,16 @@ span.important {
 .depositModule_mobile a.clickBtn:before,
 .depositModule_online a.clickBtn:before,
 .depositModule_local a.clickBtn:before,
-.depositModule_topupMobile a.clickBtn:before {
+.depositModule_topupMobile a.clickBtn:before,
+.depositModule_Crpyto a.clickBtn:before {
   font-size: 4vw;
 }
 
 .depositModule_mobile .title .text-org,
 .depositModule_online .title .text-org,
 .depositModule_local .title .text-org,
-.depositModule_topupMobile .title .text-org {
+.depositModule_topupMobile .title .text-org,
+.depositModule_Crpyto .title .text-org {
   color: #fab617;
 }
 
@@ -6793,6 +7048,7 @@ span.important {
   width: 110%;
   margin-left: -5%;
   margin-top: 3vw;
+  font-size: 3.5vw;
 }
 
 .switchTag div {
@@ -6804,7 +7060,7 @@ span.important {
   padding: 2vw;
   border-radius: 3px 3px 0 0;
   text-align: center;
-  margin-right: 2px;
+  margin-right: .5vw;
   background: rgba(0, 0, 0, 0.3);
 }
 
@@ -7074,7 +7330,7 @@ span.important {
 
 .topWinner {
   margin: 2vw auto 5vw auto;
-  padding: 3vw 2vw;
+  padding: 3vw 4vw;
 }
 
 .topWinner .title {
@@ -7305,7 +7561,7 @@ span.important {
 }
 
 .rememberMode > .icon {
-  color: #5084e4;
+  color: #6395f1;
   position: absolute;
   right: 0;
   top: 2vw;
@@ -7334,7 +7590,7 @@ span.important {
 
 .swithModule {
   text-align: center;
-  color: #5084e4 !important;
+  color: #6395f1 !important;
   font-size: 2.6vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7689,6 +7945,7 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
   margin: 12vw 0 0;
+  overflow: hidden;
 }
 
 .wheelEvent .eventPage {
@@ -7738,6 +7995,15 @@ span.important {
   text-align: center;
 }
 
+.wheelEvent .eventTitleBg.vietnam {
+  width: 50vw;
+  height: 10vw;
+}
+
+.wheelEvent .eventTitleBg.vietnam .eventTitle {
+  margin-top: -3.5vw;
+}
+
 .wheelEvent > div[tabindex="-1"] {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7766,7 +8032,7 @@ span.important {
 }
 
 .wheelEvent .wheelModule > img {
-  width: 50vw;
+  width: 60vw;
   z-index: 1;
 }
 
@@ -7786,12 +8052,12 @@ span.important {
 }
 
 .wheelEvent .wheelModule .wheel {
-  width: 45vw;
-  height: 45vw;
+  width: 55vw;
+  height: 55vw;
   position: absolute;
   background: url(../img/event/wheel/wheel_inner.png) no-repeat center/cover;
   border-radius: 100%;
-  margin-top: 1vw;
+  margin-top: .85vw;
 }
 
 .wheelEvent .wheelModule .wheel ul li {
@@ -7814,7 +8080,7 @@ span.important {
 .wheelEvent .wheelModule .wheel ul li p {
   position: absolute;
   font-size: 3vw;
-  top: 34vw;
+  top: 35vw;
   left: 53vw;
   -webkit-transform: skew(-67.5deg) rotate(-67.5deg) scale(0.8);
           transform: skew(-67.5deg) rotate(-67.5deg) scale(0.8);
@@ -8083,8 +8349,8 @@ span.important {
   border: 2px solid transparent;
 }
 
-.wheelEvent ~ #popup {
-  background: rgba(0, 0, 0, 0.8);
+.wheelPopModule {
+  background: rgba(0, 0, 0, 0.8) !important;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -8093,9 +8359,9 @@ span.important {
           justify-content: center;
 }
 
-.wheelEvent ~ #popup .wheelPop {
+.wheelPopModule .wheelPop {
   border-radius: 5px;
-  border: 1px solid #F364F3;
+  border: 1px solid #F364F3 !important;
   background: rgba(0, 0, 0, 0.5);
   padding: 1vw;
   overflow: unset;
@@ -8103,7 +8369,7 @@ span.important {
   position: relative;
 }
 
-.wheelEvent ~ #popup .wheelPop .icon-close {
+.wheelPopModule .wheelPop .icon-close {
   position: absolute;
   top: 1vw;
   right: 1vw;
@@ -8122,16 +8388,16 @@ span.important {
           align-items: center;
 }
 
-.wheelEvent ~ #popup .wheelPop .icon-close:before {
+.wheelPopModule .wheelPop .icon-close:before {
   margin: 0 0 0 1px;
 }
 
-.wheelEvent ~ #popup .wheelPop > div {
+.wheelPopModule .wheelPop > div {
   padding: 2vw 5vw;
   font-size: 2.5vw;
 }
 
-.wheelEvent ~ #popup .wheelPop > div.title {
+.wheelPopModule .wheelPop > div.title {
   color: white;
   font-size: 6vw;
   font-weight: bold;
@@ -8150,7 +8416,7 @@ span.important {
   pointer-events: none;
 }
 
-.wheelEvent ~ #popup .wheelPop > div.am {
+.wheelPopModule .wheelPop > div.am {
   font-weight: bold;
   color: #ffffff;
   background: #3b0158;

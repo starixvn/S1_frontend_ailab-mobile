@@ -59,6 +59,14 @@
   font-size: 4vw !important;
 }
 
+.icon-money:before {
+  content: "\e9d6";
+}
+
+.icon-crypto:before {
+  content: "\e9d3";
+}
+
 .icon-question:before {
   content: "\e9d0";
 }
