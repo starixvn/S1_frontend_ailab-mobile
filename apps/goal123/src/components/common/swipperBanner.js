@@ -10,6 +10,8 @@ import {
 	api_site_GetBannerV3,
 	defBannerActionMode
 } from "../../service/api/site";
+import { useGotoGame } from "../hook/useGotoGame";
+import { defGameInfo } from "../../datas/productList";
 
 export const ClickLink = ({
 	tpId,
@@ -89,6 +91,42 @@ const Panel = ({ ImgFolder = [], params }) => {
 	const { setNav } = useContext(navContext);
 	const { banner } = useGetBanner({ langId: userInfo.langId, ImgFolder });
 
+	const { handleGoToGame } = useGotoGame({
+		isLogin: userInfo.isLogin,
+		langId: userInfo.langId,
+		autoGetData: false
+	});
+
+	const handleClick = ({
+		tpId,
+		gameId,
+		matchId,
+		actionMode,
+		bannerLink,
+		tpGameType
+	}) => {
+		if (Number(tpId) === defGameInfo.Casino_PT.tpId)
+			return handleGoToGame({
+				isLogin: userInfo.isLogin,
+				langId: userInfo.langId,
+				tpId: Number(tpId),
+				gameId,
+				tpGameType
+			});
+
+		return ClickLink({
+			tpId,
+			gameId,
+			matchId,
+			actionMode,
+			bannerLink,
+			tpGameType,
+			isLogin: userInfo.isLogin,
+			lang: userInfo.langId,
+			setNav
+		});
+	};
+
 	const rows = banner?.map((b, bIdx) => {
 		let redirectLink = null;
 		let { actionMode } = b;
@@ -130,13 +168,7 @@ const Panel = ({ ImgFolder = [], params }) => {
 		return (
 			<button
 				key={`${userInfo.langId}-${bIdx}`}
-				onClick={ClickLink.bind(this, {
-					...b,
-					isLogin: userInfo.isLogin,
-					lang: userInfo.langId,
-					setNav,
-					actionMode
-				})}>
+				onClick={() => handleClick(b)}>
 				<img
 					src={b.bannerMobileUrl}
 					className="banner"
