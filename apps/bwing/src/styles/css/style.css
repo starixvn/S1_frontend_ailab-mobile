@@ -490,7 +490,7 @@ main.stopScroll {
 }
 
 main .swiper-container {
-  z-index: 4;
+  z-index: 1;
   background: transparent;
 }
 
@@ -1201,6 +1201,15 @@ footer > a.open {
   font-size: 20vw;
 }
 
+#popup .popTxt .dropdown {
+  padding: 1vw 2vw;
+}
+
+#popup .popTxt .dropdown .btn span {
+  color: #e92529;
+  margin-right: 1vw;
+}
+
 #popup .popTxt img {
   width: 100%;
   border-radius: 5px;
@@ -1456,6 +1465,211 @@ footer > a.open {
   overflow: hidden;
 }
 
+#popup.addCryptoPop .pop {
+  border-radius: 5px;
+  overflow: hidden;
+  width: 100%;
+}
+
+#popup.addCryptoPop .pop .icon-close {
+  color: #fff;
+  font-size: 4vw;
+  position: absolute;
+  right: 2vw;
+  top: 3vw;
+  left: unset;
+}
+
+#popup.addCryptoPop .pop .popTit {
+  font-size: 4vw;
+  padding: 3vw;
+  color: #58cdff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#popup.addCryptoPop .pop .popTit span {
+  margin: 0 auto;
+  font-weight: bold;
+}
+
+#popup.addCryptoPop .pop .popTxt {
+  color: #fff;
+  padding: 0;
+  width: 100%;
+}
+
+#popup.addCryptoPop .pop .popTxt > div {
+  padding: 1vw 2vw;
+  margin: 0;
+}
+
+#popup.addCryptoPop .pop .popTxt > div.input-Area {
+  margin-bottom: 2vw;
+}
+
+#popup.addCryptoPop .pop .popTxt > div.input-Area input {
+  padding: 2vw 3vw;
+}
+
+#popup.addCryptoPop .pop .popTxt > div.input-Area .tip {
+  text-align: left;
+}
+
+#popup.addCryptoPop .pop .popTxt > div.start::before {
+  position: absolute;
+  line-height: 8vw;
+  margin-left: 2vw;
+  content: "*";
+  color: #e92529;
+}
+
+#popup.addCryptoPop .pop .popTxt > div.crypotOtp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#popup.addCryptoPop .pop .popTxt > div.crypotOtp .orange {
+  width: 27vw;
+  height: 10.5vw;
+  border-radius: 3px;
+  background: -webkit-gradient(linear, left bottom, left top, from(#f20c05), to(#f85f05));
+  background: linear-gradient(to top, #f20c05, #f85f05);
+  color: white;
+  margin-left: 2vw;
+}
+
+#popup.addCryptoPop .pop .btn-group button {
+  margin: 2vw;
+  border-radius: 3px;
+}
+
+#popup.addCryptoPop .pop .btn-group button.btn-cancel {
+  background: #afafaf;
+  color: #070e22;
+}
+
+#popup.cryptoPay .pop {
+  line-height: 5vw;
+}
+
+#popup.cryptoPay .pop .icon-close {
+  color: #fff;
+  font-size: 4vw;
+  position: absolute;
+  right: 2vw;
+  top: 3vw;
+  left: unset;
+}
+
+#popup.cryptoPay .pop .popTit {
+  font-size: 4vw;
+  padding: 3vw;
+  color: #58cdff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#popup.cryptoPay .pop .popTit span {
+  margin: 0 auto;
+  font-weight: bold;
+}
+
+#popup.cryptoPay .pop .cryptolist {
+  border-bottom: 1px solid #666;
+  padding: 3vw 0;
+  margin: 0 2vw;
+}
+
+#popup.cryptoPay .pop .cryptolist ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#popup.cryptoPay .pop .cryptolist ul li:nth-child(odd) {
+  font-weight: bold;
+  color: #58cdff;
+  margin-right: 1vw;
+}
+
+#popup.cryptoPay .pop .icon-files-empty {
+  width: 6vw;
+  height: 4vw;
+  border-radius: 2vw;
+  background: #58cdff;
+  border: 1px solid #1a2b58;
+  color: #0c1a3f;
+  font-weight: 500;
+  margin-left: 2vw;
+}
+
+#popup.cryptoPay .pop .cryptoGuide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #666;
+  padding-bottom: 3vw;
+}
+
+#popup.cryptoPay .pop .cryptoGuide img {
+  width: 28vw;
+  margin: 2vw auto;
+  padding: 2vw;
+}
+
+#popup.cryptoPay .pop .cryptoGuide ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#popup.cryptoPay .pop .cryptoGuide ul li:nth-child(odd) {
+  font-weight: bold;
+  color: #58cdff;
+  margin-right: 2vw;
+}
+
+#popup.cryptoPay .pop .txt-crypto {
+  color: #afafaf;
+  padding: 4vw 0;
+}
+
+#popup.cryptoPay .pop .txt-crypto ul li {
+  margin-left: 5vw;
+  list-style: decimal;
+  white-space: pre-wrap;
+  color: #afafaf;
+  line-height: 4vw;
+}
+
+#popup.cryptoPay .pop .btn-group button {
+  padding: 0;
+  margin: 2vw;
+  border-radius: 3px;
+}
+
+#popup.cryptoPay .pop .btn-group button.btn-cancel {
+  background: #afafaf;
+  color: #070e22;
+}
+
 .header {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -1498,19 +1712,17 @@ footer > a.open {
   display: -ms-flexbox;
   display: flex;
   border-bottom: 1px solid #1d2f62;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   background: #070e22;
   left: 0;
   z-index: 2;
   text-transform: uppercase;
+  position: fixed;
+  top: 13vw;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .tag a {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1523,6 +1735,7 @@ footer > a.open {
   height: 12vw;
   border-bottom: 2px solid transparent;
   color: #58cdff;
+  white-space: nowrap;
 }
 
 .tag a.open {
@@ -1547,6 +1760,7 @@ footer > a.open {
 
 .sporttv > .tag {
   width: 100%;
+  position: fixed;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1589,7 +1803,7 @@ footer > a.open {
 }
 
 .main {
-  width: calc(100% - 20px);
+  width: calc(100% - 8vw);
   height: auto;
   min-height: 100%;
   background: #070e22;
@@ -1601,8 +1815,7 @@ footer > a.open {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding-bottom: 24vw;
-  padding-top: 12.5vw;
+  padding: 26vw 4vw 24vw;
 }
 
 .mainLogin {
@@ -1934,7 +2147,7 @@ footer > a.open {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   position: relative;
-  height: 35px;
+  height: 9vw;
   margin: 2vw 0;
 }
 
@@ -2116,7 +2329,7 @@ footer > a.open {
   width: 100%;
   color: #58cdff;
   border-radius: 3px;
-  height: 35px;
+  height: 9vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2164,6 +2377,7 @@ footer > a.open {
 
 .btn-group button i.icon-circle-right,
 .btn-group a i.icon-circle-right {
+  font-weight: lighter;
   pointer-events: none;
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
@@ -2453,6 +2667,7 @@ footer > a.open {
 }
 
 .depositBox,
+.cryptoBox,
 .withdrawalBox {
   padding: 10px;
   -webkit-box-sizing: border-box;
@@ -2477,6 +2692,90 @@ footer > a.open {
 
 .depositInBox .inputBoxText p.txt-blue12 {
   width: inherit;
+}
+
+.cryptoInBox {
+  width: calc(100% - 4vw);
+  background-color: #0c1a3f;
+  border: 1px solid #1d2f62;
+  border-radius: 5px;
+  margin-top: 2vw;
+  padding: 2vw;
+}
+
+.cryptoInBox > p {
+  padding-top: 2vw;
+}
+
+.cryptoInBox .inputBoxText p.txt-blue12 {
+  width: inherit;
+}
+
+.cryptoInBox + .txt-lightgray {
+  margin-top: 2vw;
+  text-align: center;
+}
+
+.cryptoCard {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 2vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-bottom: 3vw;
+}
+
+.cryptoCard > div {
+  padding-top: 2vw;
+  color: #000;
+  word-break: break-all;
+}
+
+.cryptoCard > div.cryptoName {
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cryptoCard > div.cryptoName span {
+  font-weight: bold;
+  color: #000;
+  font-size: 3.5vw;
+}
+
+.cryptoCard > div.cryptoName .icon-BTC {
+  font-size: 6vw;
+  color: #58cdff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cryptoCard > div.cryptoName .icon-BTC:before {
+  margin-right: 1vw;
+}
+
+.cryptoCard > div.cryptoName button.clickBtn, .cryptoCard > div.cryptoName a.clickBtn {
+  background: transparent;
+  border: 0;
+  height: revert;
+  width: revert;
+  margin: 0 0 0 auto;
+  color: #333;
+}
+
+.cryptoCard > div.cryptoName button.clickBtn:before, .cryptoCard > div.cryptoName a.clickBtn:before {
+  font-size: 4vw;
 }
 
 p.txt-blue12 {
@@ -2966,7 +3265,7 @@ p.txt-blue12 {
 }
 
 .txt-lightgray {
-  color: #aeb2bc;
+  color: #afafaf;
 }
 
 .input-title {
@@ -4162,6 +4461,7 @@ span.important {
           justify-content: flex-start;
   height: auto;
   min-height: calc(100% - 39vw);
+  margin-top: -10vw;
 }
 
 .promotions img {
@@ -6130,9 +6430,9 @@ span.important {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -6142,6 +6442,8 @@ span.important {
           box-sizing: border-box;
   margin: 20px 0;
   box-sizing: border-box;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .menu .depositArea button,
@@ -6164,6 +6466,7 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: 2vw;
 }
 
 .menu .menuNav {
@@ -6578,7 +6881,7 @@ span.important {
 }
 
 .inputBoxLevel .left .inputBoxText {
-  height: 35px;
+  height: 9vw;
 }
 
 .inputBoxLevel .right {
@@ -6954,6 +7257,218 @@ span.important {
   width: calc(100% - 20px);
 }
 
+.addCrypto {
+  background: #0c1a3f;
+  padding: 2vw;
+  border-radius: 5px;
+  border: 1px solid #1a2b58;
+  margin: 2vw 0;
+}
+
+.addCrypto .addCryptoName {
+  background: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.addCrypto .addCryptoName.noBank {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  cursor: pointer;
+  min-height: auto;
+  background: #3a4d80;
+  border: 1px solid #4d5e8e;
+  position: relative;
+}
+
+.addCrypto .addCryptoName.noBank .icon-plus {
+  position: absolute;
+  left: 10px;
+}
+
+.addCrypto .addCryptoName .icon-BTC {
+  font-size: 6vw;
+  color: #58cdff;
+  position: static;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.addCrypto .addCryptoName .addCryptoInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  min-width: 100%;
+}
+
+.addCrypto .addCryptoName .addCryptoInfo > div {
+  margin-top: 3vw;
+}
+
+.addCrypto .addCryptoName .addCryptoInfo:last-child {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  color: black;
+}
+
+.addCrypto .addCryptoName .addCryptoInfo:last-child span {
+  margin-right: 2vw;
+}
+
+.addCrypto .addCryptoName .addCryptoInfo .cryptoName span {
+  color: #070e22;
+  font-size: 4vw;
+  font-weight: bold;
+  margin-left: 2vw;
+}
+
+.addCrypto .addCryptoName .addCryptoInfo .cryptoName + div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.addCrypto .addCryptoName .addCryptoInfo .cryptoName img {
+  width: 30vw;
+}
+
+.addCrypto .addCryptoName .addCryptoInfo .icon-bin {
+  font-size: 4vw;
+  color: #56607b;
+  position: static;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 3vw;
+}
+
+.addCrypto .addCryptoName button.icon,
+.addCrypto .addCryptoName a.icon {
+  font-size: 4vw;
+  position: absolute;
+  right: 0;
+  bottom: -40px;
+  color: #58cdff;
+}
+
+.addCrypto .addCryptoName .icon-plus {
+  font-size: 4vw;
+}
+
+.addCrypto + div.subModuleList {
+  margin: 2vw 0;
+}
+
+.addCrypto + div.subModuleList .subModuleBody {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.addCrypto + div.subModuleList .subModuleBody > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.addCrypto + div.subModuleList .subModuleBody > div.txt-lightgray {
+  margin: 4vw 0;
+}
+
+.addCrypto + div.subModuleList .subModuleBody > div > .bankName {
+  margin-right: 2vw;
+  margin-top: 0;
+}
+
+.addCrypto + div.subModuleList .subModuleBody > div.calculation {
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.addCrypto + div.subModuleList .subModuleBody > div.inputBtn {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 4vw 0;
+}
+
+.addCrypto + div.subModuleList .subModuleBody > div.inputBtn .btnGroup {
+  margin: 10px 0 5px;
+}
+
+.addCrypto + div.subModuleList .subModuleBody > div.smallList {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.addCrypto + div.subModuleList .subModuleBody > div.smallList li {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin: auto 10px auto;
+}
+
+.addCrypto + div.subModuleList .subModuleBody > div.smallList li:first-child {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.addCrypto + div.subModuleList .subModuleBody > div.smallList li.accountNumber {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.addCrypto + div.subModuleList .subModuleBody > div.smallList li.accountNumber span {
+  margin-right: 5px;
+  background: none;
+  color: white;
+}
+
+.addCrypto + div.subModuleList .subModuleBody ul li {
+  width: calc(25% - 20px);
+}
+
+.addCrypto + div.subModuleList .subModuleBody ul li a,
+.addCrypto + div.subModuleList .subModuleBody ul li button {
+  padding: 5px 10px;
+  width: calc(100% - 20px);
+}
+
 .subModuleList {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7259,32 +7774,32 @@ span.important {
 
 .cashBar {
   background: #3b4d80;
-  height: 10px;
+  height: 2.2vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   border-radius: 30px;
   position: relative;
-  margin: 40px 0;
+  margin: 10vw 0;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: calc(100% - 80px);
+  width: calc(100% - 20vw);
 }
 
 .cashBar:before {
   content: "Min";
   position: absolute;
-  left: -40px;
+  left: -10vw;
 }
 
 .cashBar:after {
   content: "Max";
   position: absolute;
-  right: -40px;
+  right: -10vw;
 }
 
 .cashBar .cashLine {
@@ -7359,7 +7874,7 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 35px;
+  height: 9vw;
 }
 
 .inputModuleRow .inputBox .input-title {
@@ -7382,7 +7897,7 @@ span.important {
 }
 
 .inputModuleRow .btn-group {
-  height: 35px;
+  height: 9vw;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -8422,6 +8937,10 @@ span.important {
   }
 }
 
+.luckyboxEvent {
+  padding: 13vw 4vw 24vw;
+}
+
 .luckyboxEvent .luckyboxBg {
   position: absolute;
   width: 100%;
@@ -8445,8 +8964,9 @@ span.important {
 .luckyboxEvent > div .luckyout {
   position: relative;
   top: 7vw;
-  width: 70vw;
-  height: 70vw;
+  width: 85vw;
+  height: 85vw;
+  margin: auto;
 }
 
 .luckyboxEvent > div .luckyout ~ .filterBtn {
@@ -8463,7 +8983,7 @@ span.important {
   top: -5vw;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  z-index: 5;
+  z-index: 4;
   -webkit-filter: brightness(125%);
           filter: brightness(125%);
 }
@@ -8495,18 +9015,19 @@ span.important {
   height: 100%;
   background: url(../img/luckybox/spinya.png) no-repeat center;
   background-size: 100%;
+  overflow: hidden;
 }
 
 .luckyboxEvent > div .luckyout .wheel.active {
-  -webkit-animation: wheel 1s 3 linear;
-          animation: wheel 1s 3 linear;
+  -webkit-animation: wheel 1s linear infinite;
+          animation: wheel 1s linear infinite;
 }
 
 .luckyboxEvent > div .luckyout .wheel li {
   list-style: none;
   position: absolute;
-  width: 105px;
-  height: 105px;
+  width: 28vw;
+  height: 28vw;
   right: 50%;
   top: 50%;
   -webkit-transform-origin: 100% 100%;
@@ -8524,14 +9045,15 @@ span.important {
 .luckyboxEvent > div .luckyout .wheel li p {
   position: absolute;
   font-weight: bold;
-  top: 58px;
-  left: 100px;
+  top: 25.8vw;
+  left: 25.8vw;
   -webkit-transform: skew(-67.5deg) rotate(-67.5deg);
           transform: skew(-67.5deg) rotate(-67.5deg);
   -webkit-writing-mode: vertical-lr;
       -ms-writing-mode: tb-lr;
           writing-mode: vertical-lr;
   text-align: right;
+  white-space: nowrap;
 }
 
 .luckyboxEvent > div .luckyout .wheel li:nth-child(1) {
@@ -10370,7 +10892,8 @@ span.important {
 .depositModule_mobile,
 .depositModule_online,
 .depositModule_local,
-.depositModule_topupmobile {
+.depositModule_topupmobile,
+.depositModule_crptopay {
   background: rgba(1, 14, 51, 0.5);
   border: 1px solid #1d2f62;
   padding: 3vw;
@@ -10382,14 +10905,16 @@ span.important {
 .depositModule_mobile.open,
 .depositModule_online.open,
 .depositModule_local.open,
-.depositModule_topupmobile.open {
+.depositModule_topupmobile.open,
+.depositModule_crptopay.open {
   display: block;
 }
 
 .depositModule_mobile > .title,
 .depositModule_online > .title,
 .depositModule_local > .title,
-.depositModule_topupmobile > .title {
+.depositModule_topupmobile > .title,
+.depositModule_crptopay > .title {
   margin: 5vw 0 2vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10402,7 +10927,8 @@ span.important {
 .depositModule_mobile > .title:not(.text-org),
 .depositModule_online > .title:not(.text-org),
 .depositModule_local > .title:not(.text-org),
-.depositModule_topupmobile > .title:not(.text-org) {
+.depositModule_topupmobile > .title:not(.text-org),
+.depositModule_crptopay > .title:not(.text-org) {
   font-weight: normal;
   background: #1a3055;
   padding: 5px;
@@ -10417,14 +10943,17 @@ span.important {
 .depositModule_local > .title:before,
 .depositModule_local > .title span,
 .depositModule_topupmobile > .title:before,
-.depositModule_topupmobile > .title span {
+.depositModule_topupmobile > .title span,
+.depositModule_crptopay > .title:before,
+.depositModule_crptopay > .title span {
   margin-right: 1vw;
 }
 
 .depositModule_mobile .selectModule,
 .depositModule_online .selectModule,
 .depositModule_local .selectModule,
-.depositModule_topupmobile .selectModule {
+.depositModule_topupmobile .selectModule,
+.depositModule_crptopay .selectModule {
   background: rgba(12, 26, 63, 0.5);
   border: 1px solid #1d2f62;
   display: -webkit-box;
@@ -10442,14 +10971,16 @@ span.important {
 .depositModule_mobile .selectModule input[type="radio"],
 .depositModule_online .selectModule input[type="radio"],
 .depositModule_local .selectModule input[type="radio"],
-.depositModule_topupmobile .selectModule input[type="radio"] {
+.depositModule_topupmobile .selectModule input[type="radio"],
+.depositModule_crptopay .selectModule input[type="radio"] {
   display: none;
 }
 
 .depositModule_mobile .selectModule input[type="radio"] + label,
 .depositModule_online .selectModule input[type="radio"] + label,
 .depositModule_local .selectModule input[type="radio"] + label,
-.depositModule_topupmobile .selectModule input[type="radio"] + label {
+.depositModule_topupmobile .selectModule input[type="radio"] + label,
+.depositModule_crptopay .selectModule input[type="radio"] + label {
   border: 1px solid #71d3fb;
   width: 4vw;
   height: 4vw;
@@ -10469,7 +11000,8 @@ span.important {
 .depositModule_mobile .selectModule input[type="radio"]:checked + label div,
 .depositModule_online .selectModule input[type="radio"]:checked + label div,
 .depositModule_local .selectModule input[type="radio"]:checked + label div,
-.depositModule_topupmobile .selectModule input[type="radio"]:checked + label div {
+.depositModule_topupmobile .selectModule input[type="radio"]:checked + label div,
+.depositModule_crptopay .selectModule input[type="radio"]:checked + label div {
   width: 3vw;
   height: 3vw;
   background: #58cdff;
@@ -10478,7 +11010,8 @@ span.important {
 .depositModule_mobile .selectModule > div,
 .depositModule_online .selectModule > div,
 .depositModule_local .selectModule > div,
-.depositModule_topupmobile .selectModule > div {
+.depositModule_topupmobile .selectModule > div,
+.depositModule_crptopay .selectModule > div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10495,7 +11028,8 @@ span.important {
 .depositModule_mobile .selectModule > div.info,
 .depositModule_online .selectModule > div.info,
 .depositModule_local .selectModule > div.info,
-.depositModule_topupmobile .selectModule > div.info {
+.depositModule_topupmobile .selectModule > div.info,
+.depositModule_crptopay .selectModule > div.info {
   width: calc(100% - 12vw);
   padding: 2vw 4vw;
   background: rgba(26, 48, 85, 0.95);
@@ -10506,7 +11040,8 @@ span.important {
 .depositModule_mobile .selectModule > div.info .checkBank,
 .depositModule_online .selectModule > div.info .checkBank,
 .depositModule_local .selectModule > div.info .checkBank,
-.depositModule_topupmobile .selectModule > div.info .checkBank {
+.depositModule_topupmobile .selectModule > div.info .checkBank,
+.depositModule_crptopay .selectModule > div.info .checkBank {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10518,14 +11053,16 @@ span.important {
 .depositModule_mobile .selectModule > div.info ul,
 .depositModule_online .selectModule > div.info ul,
 .depositModule_local .selectModule > div.info ul,
-.depositModule_topupmobile .selectModule > div.info ul {
+.depositModule_topupmobile .selectModule > div.info ul,
+.depositModule_crptopay .selectModule > div.info ul {
   width: 100%;
 }
 
 .depositModule_mobile .selectModule > div .bankName,
 .depositModule_online .selectModule > div .bankName,
 .depositModule_local .selectModule > div .bankName,
-.depositModule_topupmobile .selectModule > div .bankName {
+.depositModule_topupmobile .selectModule > div .bankName,
+.depositModule_crptopay .selectModule > div .bankName {
   width: 20vw;
   background: white;
   border-radius: 5px;
@@ -10536,7 +11073,8 @@ span.important {
 .depositModule_mobile .selectModule > div .bankName img,
 .depositModule_online .selectModule > div .bankName img,
 .depositModule_local .selectModule > div .bankName img,
-.depositModule_topupmobile .selectModule > div .bankName img {
+.depositModule_topupmobile .selectModule > div .bankName img,
+.depositModule_crptopay .selectModule > div .bankName img {
   width: 100%;
   vertical-align: middle;
 }
@@ -10544,21 +11082,24 @@ span.important {
 .depositModule_mobile .selectModule > div .bank,
 .depositModule_online .selectModule > div .bank,
 .depositModule_local .selectModule > div .bank,
-.depositModule_topupmobile .selectModule > div .bank {
+.depositModule_topupmobile .selectModule > div .bank,
+.depositModule_crptopay .selectModule > div .bank {
   width: 55vw;
 }
 
 .depositModule_mobile .selectModule > div .bank > div > div,
 .depositModule_online .selectModule > div .bank > div > div,
 .depositModule_local .selectModule > div .bank > div > div,
-.depositModule_topupmobile .selectModule > div .bank > div > div {
+.depositModule_topupmobile .selectModule > div .bank > div > div,
+.depositModule_crptopay .selectModule > div .bank > div > div {
   color: #71d3fb;
 }
 
 .depositModule_mobile .selectModule h1,
 .depositModule_online .selectModule h1,
 .depositModule_local .selectModule h1,
-.depositModule_topupmobile .selectModule h1 {
+.depositModule_topupmobile .selectModule h1,
+.depositModule_crptopay .selectModule h1 {
   text-align: center;
   width: 100%;
   margin: 5px 0;
@@ -10567,21 +11108,24 @@ span.important {
 .depositModule_mobile .selectModule h1.icon::before,
 .depositModule_online .selectModule h1.icon::before,
 .depositModule_local .selectModule h1.icon::before,
-.depositModule_topupmobile .selectModule h1.icon::before {
+.depositModule_topupmobile .selectModule h1.icon::before,
+.depositModule_crptopay .selectModule h1.icon::before {
   margin-right: 5px;
 }
 
 .depositModule_mobile .inputBox,
 .depositModule_online .inputBox,
 .depositModule_local .inputBox,
-.depositModule_topupmobile .inputBox {
+.depositModule_topupmobile .inputBox,
+.depositModule_crptopay .inputBox {
   margin: 2px 0 2vw;
 }
 
 .depositModule_mobile .inputBox input,
 .depositModule_online .inputBox input,
 .depositModule_local .inputBox input,
-.depositModule_topupmobile .inputBox input {
+.depositModule_topupmobile .inputBox input,
+.depositModule_crptopay .inputBox input {
   padding: 2vw;
   padding-right: 14vw;
   border-radius: 0;
@@ -10591,42 +11135,48 @@ span.important {
 .depositModule_mobile .inputBox input::-webkit-input-placeholder,
 .depositModule_online .inputBox input::-webkit-input-placeholder,
 .depositModule_local .inputBox input::-webkit-input-placeholder,
-.depositModule_topupmobile .inputBox input::-webkit-input-placeholder {
+.depositModule_topupmobile .inputBox input::-webkit-input-placeholder,
+.depositModule_crptopay .inputBox input::-webkit-input-placeholder {
   color: #afafaf;
 }
 
 .depositModule_mobile .inputBox input:-ms-input-placeholder,
 .depositModule_online .inputBox input:-ms-input-placeholder,
 .depositModule_local .inputBox input:-ms-input-placeholder,
-.depositModule_topupmobile .inputBox input:-ms-input-placeholder {
+.depositModule_topupmobile .inputBox input:-ms-input-placeholder,
+.depositModule_crptopay .inputBox input:-ms-input-placeholder {
   color: #afafaf;
 }
 
 .depositModule_mobile .inputBox input::-ms-input-placeholder,
 .depositModule_online .inputBox input::-ms-input-placeholder,
 .depositModule_local .inputBox input::-ms-input-placeholder,
-.depositModule_topupmobile .inputBox input::-ms-input-placeholder {
+.depositModule_topupmobile .inputBox input::-ms-input-placeholder,
+.depositModule_crptopay .inputBox input::-ms-input-placeholder {
   color: #afafaf;
 }
 
 .depositModule_mobile .inputBox input::placeholder,
 .depositModule_online .inputBox input::placeholder,
 .depositModule_local .inputBox input::placeholder,
-.depositModule_topupmobile .inputBox input::placeholder {
+.depositModule_topupmobile .inputBox input::placeholder,
+.depositModule_crptopay .inputBox input::placeholder {
   color: #afafaf;
 }
 
 .depositModule_mobile .inputBox .tip,
 .depositModule_online .inputBox .tip,
 .depositModule_local .inputBox .tip,
-.depositModule_topupmobile .inputBox .tip {
+.depositModule_topupmobile .inputBox .tip,
+.depositModule_crptopay .inputBox .tip {
   margin-left: 2.5vw;
 }
 
 .depositModule_mobile .btn-group,
 .depositModule_online .btn-group,
 .depositModule_local .btn-group,
-.depositModule_topupmobile .btn-group {
+.depositModule_topupmobile .btn-group,
+.depositModule_crptopay .btn-group {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10639,7 +11189,9 @@ span.important {
 .depositModule_local .btn-group a,
 .depositModule_local .btn-group button,
 .depositModule_topupmobile .btn-group a,
-.depositModule_topupmobile .btn-group button {
+.depositModule_topupmobile .btn-group button,
+.depositModule_crptopay .btn-group a,
+.depositModule_crptopay .btn-group button {
   width: 50vw;
   margin: auto;
   background: -webkit-gradient(linear, left top, left bottom, from(#71d3fb), to(#3fb1e0));
@@ -10654,7 +11206,9 @@ span.important {
 .depositModule_local .btn-group a.darkGray,
 .depositModule_local .btn-group button.darkGray,
 .depositModule_topupmobile .btn-group a.darkGray,
-.depositModule_topupmobile .btn-group button.darkGray {
+.depositModule_topupmobile .btn-group button.darkGray,
+.depositModule_crptopay .btn-group a.darkGray,
+.depositModule_crptopay .btn-group button.darkGray {
   background: #666;
 }
 
@@ -10665,14 +11219,17 @@ span.important {
 .depositModule_local .btn-group a:first-child,
 .depositModule_local .btn-group button:first-child,
 .depositModule_topupmobile .btn-group a:first-child,
-.depositModule_topupmobile .btn-group button:first-child {
+.depositModule_topupmobile .btn-group button:first-child,
+.depositModule_crptopay .btn-group a:first-child,
+.depositModule_crptopay .btn-group button:first-child {
   margin-right: 0.5vw;
 }
 
 .depositModule_mobile + .btn-group,
 .depositModule_online + .btn-group,
 .depositModule_local + .btn-group,
-.depositModule_topupmobile + .btn-group {
+.depositModule_topupmobile + .btn-group,
+.depositModule_crptopay + .btn-group {
   width: 100%;
   margin: 3vw 0;
 }
@@ -12734,5 +13291,79 @@ span.important {
 
 .backstage img {
   width: 100% !important;
+}
+
+.wheelModuel {
+  position: fixed;
+  z-index: 2;
+  bottom: 24vw;
+  right: 4vw;
+}
+
+.wheelModuel img {
+  -webkit-animation: wheelImg 1.5s ease infinite alternate;
+          animation: wheelImg 1.5s ease infinite alternate;
+}
+
+@-webkit-keyframes wheelImg {
+  0% {
+    -webkit-transform: scale(1) translate(-50%, -50%);
+            transform: scale(1) translate(-50%, -50%);
+    -webkit-filter: brightness(90%);
+            filter: brightness(90%);
+  }
+  100% {
+    -webkit-transform: scale(0.92) translate(-54.3%, -54.3%);
+            transform: scale(0.92) translate(-54.3%, -54.3%);
+    -webkit-filter: brightness(150%);
+            filter: brightness(150%);
+  }
+}
+
+@keyframes wheelImg {
+  0% {
+    -webkit-transform: scale(1) translate(-50%, -50%);
+            transform: scale(1) translate(-50%, -50%);
+    -webkit-filter: brightness(90%);
+            filter: brightness(90%);
+  }
+  100% {
+    -webkit-transform: scale(0.92) translate(-54.3%, -54.3%);
+            transform: scale(0.92) translate(-54.3%, -54.3%);
+    -webkit-filter: brightness(150%);
+            filter: brightness(150%);
+  }
+}
+
+.wheelModuel .icon_close {
+  background: #71d3fb;
+  color: #fff;
+  font-weight: bold;
+  position: absolute;
+  right: -2vw;
+  top: -5vw;
+  width: 4.5vw;
+  height: 4.5vw;
+  border-radius: 100%;
+  text-align: center;
+  z-index: 2;
+}
+
+.wheelModuel .luckwheel {
+  position: absolute;
+  width: 30vw;
+  height: 30vw;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.wheelModuel .luckwheelw {
+  width: 22vw;
+  height: 22vw;
+  -webkit-animation: wheel 1s infinite;
+          animation: wheel 1s infinite;
 }
 /*# sourceMappingURL=style.css.map */
