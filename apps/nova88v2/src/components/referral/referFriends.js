@@ -4,6 +4,7 @@ import stepImg_en from "../../styles/img/refbanner-en.png";
 import stepImg_cs from "../../styles/img/refbanner-cs.png";
 import stepImg_th from "../../styles/img/refbanner-th.png";
 import stepImg_id from "../../styles/img/refbanner-id.png";
+import stepImg_hi from "../../styles/img/refbanner-hi.png";
 import { isConvert } from "../common/common";
 import Links from "./referral.links";
 import Summary from "./referral.summary";
@@ -25,6 +26,9 @@ export default () => {
 			break;
 		case "id":
 			_stepImg = stepImg_id;
+			break;
+		case "hi":
+			_stepImg = stepImg_hi;
 			break;
 		default:
 			_stepImg = stepImg_en;

@@ -11,11 +11,18 @@ import { FooterBanner } from "../components/vip/footerBanner";
 import Header from "../components/header/header";
 import Footer from "../components/common/footer";
 import path from "../path";
-import { validImgLang } from "../components/common/common";
+import { defCurrenyId } from "../components/common/common";
+import { useHandleAllowCurrencies } from "../components/hook/useHandleAllowCurrencies";
+
+export const vipAllowCurrencies = [
+	defCurrenyId.MYR,
+	defCurrenyId.THB,
+	defCurrenyId.IDR
+];
 
 const Banners = ({ langId }) => {
 	const rows = defBannersUrl({
-		langId: validImgLang(langId)
+		langId: langId.includes("_en") ? "en" : langId
 	}).map((b, bIdx) => (
 		<img
 			key={`VIPBanner-${bIdx}`}
@@ -35,6 +42,14 @@ const IndexPage = () => {
 	const navigate = useNavigate();
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
+	useHandleAllowCurrencies({
+		allowCurrencies: vipAllowCurrencies,
+		isLogin: userInfo.isLogin,
+		currencyId: userInfo.currencyId,
+		langId: userInfo.langId,
+		redirectPath: `/${userInfo.langId}`,
+		i18n
+	});
 
 	const openJoinPop = () => {
 		if (!userInfo.isLogin) {

@@ -12,6 +12,9 @@ export const Info = ({ langId }) => {
 		case "id":
 			_info = <IDInfo />;
 			break;
+		case "hi":
+			_info = <HIInfo />;
+			break;
 		default:
 			_info = <ENInfo />;
 			break;
@@ -87,6 +90,26 @@ const IDInfo = () => {
 			tingkat yang lebih tinggi.
 			<div className="vipTitle">
 				Nikmati keuntungan dan keistimewaan dalam tingkatan member
+			</div>
+		</div>
+	);
+};
+
+const HIInfo = () => {
+	return (
+		<div className="vipInfo">
+			<div className="vipTitle">वीआईपी कार्यक्रम</div>
+			Nova88 ने अपना वीआईपी पुरस्कार कार्यक्रम शुरू किया है ताकि सदस्य
+			अच्छी सेवाओं, अधिक पुरस्कारों और बेहतर अनुभव प्राप्त कर सकें। जब
+			आपका टियर अपग्रेड हो जाए तो अधिक से अधिक अनुलाभों और पात्रताओं की
+			खोज करें। हम आपका इंतज़ार कर रहे हैं!
+			<div className="vipTitle">अवलोकन</div>
+			हमने सदस्यता स्तरों को विंटेज क्लब, सिल्वर क्लब, गोल्ड क्लब,
+			टाइटेनियम क्लब, डायमंड क्लब और नोवा क्लब में वर्गीकृत किया है। जब आप
+			उच्च स्तर प्राप्त करते हैं तो हमारे सभी विशेषाधिकार उत्पादों और
+			सेवाओं का आनंद लें।
+			<div className="vipTitle">
+				भिन्न सदस्यता स्तर के साथ लाभों और विशेषाधिकारों का आनंद लें
 			</div>
 		</div>
 	);

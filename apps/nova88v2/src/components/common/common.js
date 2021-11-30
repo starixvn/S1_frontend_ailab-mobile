@@ -167,7 +167,11 @@ export const langToCurrency = {
 	en: defCurrenyId.MYR,
 	cs: defCurrenyId.MYR,
 	th: defCurrenyId.THB,
-	id: defCurrenyId.IDR
+	th_en: defCurrenyId.THB,
+	id: defCurrenyId.IDR,
+	id_en: defCurrenyId.IDR,
+	hi: defCurrenyId.INR,
+	hi_en: defCurrenyId.INR
 };
 
 export const GetCurrencyName = ({ langId, currencyId, i18n }) => {

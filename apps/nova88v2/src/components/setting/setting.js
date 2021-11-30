@@ -14,6 +14,8 @@ import ThemeMode from "./setting.themeMode";
 import path from "../../path";
 import { siteInfo } from "../../config";
 import TandC from "../../service/t_and_c";
+import { defCurrenyId, langToCurrency } from "../common/common";
+import { getLeaderBoardSupportCurrencyId } from "../ranking/def";
 
 const BtnBar = ({ isLogin, i18n, msgCount, langId }) => {
 	return isLogin ? (
@@ -85,6 +87,8 @@ export default () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
+	const _currencyId = userInfo.currencyId ?? langToCurrency[userInfo.langId];
+
 	const handleLogout = () => {
 		LOGOUT(() => {
 			setUserInfo(prevState => ({
@@ -114,11 +118,15 @@ export default () => {
 						</Link>
 					</div>
 				) : null}
-				<div>
-					<Link className="title icon icon-medal" to={path.vip.root}>
-						{i18n.lbl_VIP}
-					</Link>
-				</div>
+				{_currencyId === defCurrenyId.INR ? null : (
+					<div>
+						<Link
+							className="title icon icon-medal"
+							to={path.vip.root}>
+							{i18n.lbl_VIP}
+						</Link>
+					</div>
+				)}
 				<div>
 					<Link
 						className="title icon icon-film"
@@ -126,20 +134,24 @@ export default () => {
 						{i18n.lbl_LiveStreaming}
 					</Link>
 				</div>
-				<div>
-					<Link
-						className="title icon icon-trophy"
-						to={path.ranking.root}>
-						{i18n.lbl_Ranking}
-					</Link>
-				</div>
-				<div>
-					<a
-						className="title icon icon-affiliate"
-						href={siteInfo(userInfo.langId).affiliateLink}>
-						{i18n.lbl_Affiliate}
-					</a>
-				</div>
+				{getLeaderBoardSupportCurrencyId().includes(_currencyId) && (
+					<div>
+						<Link
+							className="title icon icon-trophy"
+							to={path.ranking.root}>
+							{i18n.lbl_Ranking}
+						</Link>
+					</div>
+				)}
+				{_currencyId === defCurrenyId.INR ? null : (
+					<div>
+						<a
+							className="title icon icon-affiliate"
+							href={siteInfo(userInfo.langId).affiliateLink}>
+							{i18n.lbl_Affiliate}
+						</a>
+					</div>
+				)}
 				<Card
 					btnTitle={i18n.lbl_Languages}
 					btnClass="icon-sphere"
@@ -206,12 +218,14 @@ export default () => {
 						rel="noreferrer noopener">
 						{i18n.lbl_AboutUs}
 					</a>
-					<a
-						href={`${siteInfo(userInfo.langId).affiliateLink}`}
-						target="_blank"
-						rel="noreferrer noopener">
-						{i18n.lbl_Affiliate}
-					</a>
+					{_currencyId === defCurrenyId.INR ? null : (
+						<a
+							href={`${siteInfo(userInfo.langId).affiliateLink}`}
+							target="_blank"
+							rel="noreferrer noopener">
+							{i18n.lbl_Affiliate}
+						</a>
+					)}
 					<Link to={path.contactUs.root}>{i18n.lbl_ContactUs}</Link>
 					<a
 						href={TandC(userInfo.langId).Terms}

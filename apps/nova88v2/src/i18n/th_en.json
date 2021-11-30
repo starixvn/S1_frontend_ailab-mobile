@@ -219,6 +219,8 @@
 	"lbl_LIVE_SPORT": "LIVE SPORTS",
 	"lbl_Game_ICG_DRAGONBALL_FISHING": "Dragonball Fishing",
 	"lbl_Game_ICG_FISHING_OF_SAVIORS": "Fishing Of Saviors",
+	"lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS":"The Tyrant And The Princess",
+	"lbl_Oneshot_Fishing":"Oneshot Fishing",
 	"lbl_FishingSG1": "Fishing God",
 	"lbl_FishingSG2": "Fishing War",
 	"lbl_TableGame": "Table Game",
@@ -243,11 +245,21 @@
 	"lbl_Notice": "NOTICE",
 	"lbl_Poker": "Poker",
 	"lbl_eSports": "E-Sports",
+<<<<<<< HEAD
+	"lbl_underMaintenance":"Under Maintenance",
+	"lbl_KingMaker" : "King Maker",
+	"lbl_Amb" : "AMB Poker",
+	"lbl_Games" : "Games",
+	"lbl_9w" : "Nova88 Exchange",
+	"lbl_Exchange" : "Exchange",
+	
+=======
 	"lbl_underMaintenance": "Under Maintenance",
 	"lbl_KingMaker": "King Maker",
 	"lbl_Amb": "AMB Poker",
 	"lbl_Games": "Games",
 	"lbl_9w": "9W Sports",
+>>>>>>> DEV
 	"==============================================Casino====================================": "",
 
 	"lbl_AllProvider": "All Platform",
