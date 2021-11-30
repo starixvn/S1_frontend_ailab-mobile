@@ -19,7 +19,7 @@ const initStatus = {
 	Password: { checked: null, msg: "" }
 };
 
-const LoginPage = ({ ButtonTitle, hideBtn }) => {
+const LoginPage = () => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -143,14 +143,7 @@ const LoginPage = ({ ButtonTitle, hideBtn }) => {
 	};
 
 	return (
-		<>
-			{hideBtn ? null : (
-				<button
-					className="loginBtn"
-					onClick={handleloginPanel.bind(this, showPanel)}>
-					{ButtonTitle}
-				</button>
-			)}
+		userInfo.isLogin === false && (
 			<div className={`Login${showPanel ? " open" : ""}`}>
 				<div
 					className={`close${showPanel ? " open" : ""}`}
@@ -213,18 +206,8 @@ const LoginPage = ({ ButtonTitle, hideBtn }) => {
 					{i18n.lbl_Login}
 				</button>
 			</div>
-		</>
+		)
 	);
-};
-
-LoginPage.defaultProps = {
-	ButtonTitle: "",
-	hideBtn: null
-};
-
-LoginPage.propTypes = {
-	ButtonTitle: PropTypes.string,
-	hideBtn: PropTypes.bool
 };
 
 export default LoginPage;

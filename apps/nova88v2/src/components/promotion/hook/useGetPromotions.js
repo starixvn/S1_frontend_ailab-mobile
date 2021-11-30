@@ -15,18 +15,46 @@ export const useGetPromotions = ({ userInfo: { langId } }) => {
 	const getPromotionList = useCallback(() => {
 		api.promotion.GetPromotionList({ langId }).then(res => {
 			if (res.data.errorCode === 0 && isMountedRef.current) {
-				// const result = res.data.data.sort((a, b) =>
-				// 	a.periodFrom > b.periodFrom ? -1 : 1
-				// );
-
 				setPromotion(res.data.data);
 			}
 		});
 	}, [langId]);
 
+	const refreshProcessBar = ({ bonusCode, tpId, categoryId }) => {
+		api.account
+			.GetCustSpecificBonus({
+				BonusCode: bonusCode,
+				TpId: tpId,
+				PromoCategoryId: categoryId
+			})
+			.then(({ data: { data, errorCode } }) => {
+				const success = errorCode === 0;
+				if (success) {
+					let idx = null;
+					let newPromoList = [];
+
+					idx = promotion.findIndex(
+						x =>
+							x.bonusCode === bonusCode &&
+							x.tpId === tpId &&
+							x.categoryId === categoryId
+					);
+					if (idx !== -1) {
+						newPromoList = [...promotion];
+						if (data) {
+							newPromoList[idx].custRollOver = data.rollover;
+							newPromoList[idx].custTurnOver = data.turnover;
+						}
+					}
+
+					setPromotion(newPromoList);
+				}
+			});
+	};
+
 	useEffect(() => {
 		getPromotionList();
 	}, [getPromotionList]);
 
-	return { promotion, getPromotionList };
+	return { promotion, getPromotionList, refreshProcessBar };
 };

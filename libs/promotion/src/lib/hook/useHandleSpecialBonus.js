@@ -47,11 +47,50 @@ export const useHandleSpecialBonus = ({ api, langId, filterType }) => {
 				langId
 			});
 			if (getDataRes.data.errorCode === 0) {
-				setSpecialBonusDatas(getDataRes.data.data);
+				setSpecialBonusDatas(() =>
+					getDataRes.data?.data?.map(promo => ({
+						...promo,
+						filterType: defFilterType.specialBonus
+					}))
+				);
 			}
 		} catch (error) {
 			console.log(error);
 		}
+	};
+
+	const refreshProcessBar = ({ bonusCode, tpId, categoryId }) => {
+		api.account
+			.GetCustSpecificBonus({
+				BonusCode: bonusCode,
+				TpId: tpId,
+				PromoCategoryId: categoryId
+			})
+			.then(({ data: { data, errorCode } }) => {
+				const success = errorCode === 0;
+				if (success) {
+					let idx = null;
+					let newPromoList = [];
+
+					idx = specialBonusDatas.findIndex(
+						x =>
+							x.bonusCode === bonusCode &&
+							x.tpId === tpId &&
+							x.categoryId === categoryId
+					);
+
+					if (idx !== -1) {
+						newPromoList = [...specialBonusDatas];
+
+						if (data) {
+							newPromoList[idx].custRollOver = data.rollover;
+							newPromoList[idx].custTurnOver = data.turnover;
+						}
+					}
+
+					setSpecialBonusDatas(newPromoList);
+				}
+			});
 	};
 
 	return {
@@ -59,6 +98,7 @@ export const useHandleSpecialBonus = ({ api, langId, filterType }) => {
 		specialCode,
 		onSubmitSpecialCode,
 		specialBonusDatas,
-		GetSpecialBonusList
+		GetSpecialBonusList,
+		refreshProcessBar
 	};
 };

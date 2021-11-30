@@ -16,7 +16,6 @@ import {
 } from "../components/common/common";
 import path from "../path";
 import { api_GetWalletInfo } from "../service/api/account";
-import Submenu from "../components/home/submenu";
 import HeaderShortcut from "../components/home/headerShortcut";
 import EventSwipper from "../components/home/eventSwipper";
 import MiddlePanel from "../components/home/middlePanel";
@@ -219,6 +218,7 @@ const IndexPage = () => {
 			hideLogo={false}
 			showingAppHint={appHint}
 			setAppHint={setAppHint}
+			hasSideMenu={true}
 		/>
 	);
 
@@ -237,7 +237,6 @@ const IndexPage = () => {
 			<Top10Winner i18n={i18n} />
 			<MiddlePanel langId={userInfo.langId} i18n={i18n} />
 			<Bottom i18n={i18n} langId={userInfo.langId} />
-			<Submenu />
 			<AddToHomePop i18n={i18n} userInfo={userInfo} />
 		</Layout>
 	);

@@ -487,6 +487,9 @@
 	"lbl_Special": "พิเศษ",
 	"lbl_Sportsbook": "สปอร์ตบุ๊ค",
 	"lbl_Promotion_Slot": "สล็อต",
+	"lbl_More_Info": "ข้อมูลเพิ่มเติม",
+	"lbl_Apply_Now": "สมัครตอนนี้",
+	"lbl_promo_all_promos":"โปรโมชั่นทั้งหมด",
 
 	"-==========================Streaming===================================": "",
 	"lbl_LiveStreaming": "สตรีมมิงแบบสด",

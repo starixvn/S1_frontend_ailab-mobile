@@ -7,15 +7,27 @@ import {
 	userInfoContext,
 	i18nContext,
 	popBoxContext,
+	promoPopBox,
 	navContext,
 	defNavPanel
 } from "../components/common/context";
 import staticList from "../datas/promotionList";
+import PromotionWrapper from "../components/promotion/wrapper";
+import { siteInfo } from "../config";
 
 export default ({ location }) => {
+	return (
+		<PromotionWrapper>
+			<Content location={location} />
+		</PromotionWrapper>
+	);
+};
+
+const Content = ({ location }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const { promoBox, setPromoBox } = useContext(promoPopBox);
 	const { setNav } = useContext(navContext);
 
 	const handleLogin = () => {
@@ -38,6 +50,9 @@ export default ({ location }) => {
 			}}
 			location={location}
 			visitorCurrency={{ vn: 51, en: 51 }}
+			promoBox={promoBox}
+			setPromoBox={setPromoBox}
+			liveChatId={siteInfo(userInfo.langId).liveChatId}
 			handleLogin={handleLogin}
 		/>
 	);

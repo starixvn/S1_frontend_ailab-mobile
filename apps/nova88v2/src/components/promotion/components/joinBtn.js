@@ -16,7 +16,6 @@ import useHandleLogin from "../../hook/useHandleLogin";
 import api from "../../../service/api";
 
 export default ({
-	uiSetting = {},
 	promotionInfo,
 	func_GetPromotionDetail,
 	func_CallBack,
@@ -68,10 +67,7 @@ export default ({
 								<div className="btn-group">
 									<button
 										onClick={clickClose}
-										className={
-											uiSetting.popBox?.submitBtn ??
-											"btn-check"
-										}>
+										className="btn-check">
 										OK
 									</button>
 								</div>
@@ -89,26 +85,20 @@ export default ({
 							btnBar: (
 								<div className="btn-group">
 									<button
-										className={
-											uiSetting.popBox?.cancelBtn ??
-											"blue"
-										}
+										className="blue"
 										onClick={clickClose}>
 										{i18n?.lbl_Later}
 									</button>
 									<button
 										onClick={RedirectToProfile}
-										className={
-											uiSetting.popBox?.submitBtn ??
-											"btn-check"
-										}>
+										className="btn-check">
 										{i18n?.lbl_GoNow}
 									</button>
 								</div>
 							)
 						});
 					} else {
-						handleErrorPopBox({ ...res.data, uiSetting });
+						handleErrorPopBox({ ...res.data });
 					}
 				}
 			});
@@ -134,18 +124,12 @@ export default ({
 					content: <p>{i18n?.lbl_UpdatePersonalInfoPromotion}</p>,
 					btnBar: (
 						<div className="btn-group">
-							<button
-								className={
-									uiSetting.popBox?.cancelBtn ?? "blue"
-								}
-								onClick={clickClose}>
+							<button className="blue" onClick={clickClose}>
 								{i18n?.lbl_Cancel}
 							</button>
 							<button
 								onClick={RedirectToProfile}
-								className={
-									uiSetting.popBox?.submitBtn ?? "btn-check"
-								}>
+								className="btn-check">
 								{i18n?.lbl_GoNow}
 							</button>
 						</div>
@@ -176,18 +160,12 @@ export default ({
 					),
 					btnBar: (
 						<div className="btn-group">
-							<button
-								className={
-									uiSetting.popBox?.cancelBtn ?? "blue"
-								}
-								onClick={clickClose}>
+							<button className="blue" onClick={clickClose}>
 								{i18n?.lbl_Later}
 							</button>
 							<button
 								onClick={RedirectToDeposit}
-								className={
-									uiSetting.popBox?.submitBtn ?? "btn-check"
-								}>
+								className="btn-check">
 								{i18n?.lbl_DepositNow}
 							</button>
 						</div>
@@ -204,7 +182,6 @@ export default ({
 					handlePopBox({
 						content: (
 							<ClaimWithLockedAmount
-								uiSetting={uiSetting}
 								promotionInfo={promotionInfo}
 								ClosePopBox={clickClose}
 								SetClaimPromotion={SetClaimPromotion}
@@ -243,9 +220,9 @@ export default ({
 	) {
 		btnResult = (
 			<button
-				className={uiSetting.joinBtn ?? "btn-check"}
+				className="orange"
 				onClick={onJoinPromotion.bind(this, promotionInfo)}>
-				{joinNowDisplayText}
+				{joinNowDisplayText?.toUpperCase()}
 			</button>
 		);
 	}

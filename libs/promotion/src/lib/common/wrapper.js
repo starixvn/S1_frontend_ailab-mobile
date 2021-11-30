@@ -1,5 +1,5 @@
 import React from "react";
-import { PromotionAPI } from "@ailab-mobile/api";
+import { PromotionAPI, AccountAPI } from "@ailab-mobile/api";
 import { isConvert } from "@ailab-mobile/common";
 import { configContext } from "./context";
 import { defWrapperCol, defRuleCols } from "./def";
@@ -25,30 +25,41 @@ export default ({
 		formatRequired: undefined
 	},
 	visitorCurrency = {},
+	promoBox,
+	setPromoBox,
+	liveChatId,
 	handleLogin
-}) => (
-	<configContext.Provider
-		value={{
-			visitorCurrency,
-			config,
-			path,
-			uiSetting,
-			i18n,
-			userInfo,
-			setPopBox,
-			api: { promotion: new PromotionAPI({ apiURL: config?.apiURL }) },
-			ruleCols,
-			formatSetting: {
-				[defWrapperCol.formatSetting.isConvertRequired]:
-					formatSetting.isConvertRequired,
-				[defWrapperCol.formatSetting.formatRequired]:
-					formatSetting.formatRequired === undefined
-						? isConvert(userInfo.currencyId)
-						: formatSetting.formatRequired,
-				[defWrapperCol.formatSetting.digits]: formatSetting.digits
-			},
-			handleLogin
-		}}>
-		{children}
-	</configContext.Provider>
-);
+}) => {
+	return (
+		<configContext.Provider
+			value={{
+				visitorCurrency,
+				config,
+				path,
+				uiSetting,
+				i18n,
+				userInfo,
+				setPopBox,
+				api: {
+					promotion: new PromotionAPI({ apiURL: config?.apiURL }),
+					account: new AccountAPI({ apiURL: config?.apiURL })
+				},
+				ruleCols,
+				formatSetting: {
+					[defWrapperCol.formatSetting.isConvertRequired]:
+						formatSetting.isConvertRequired,
+					[defWrapperCol.formatSetting.formatRequired]:
+						formatSetting.formatRequired === undefined
+							? isConvert(userInfo.currencyId)
+							: formatSetting.formatRequired,
+					[defWrapperCol.formatSetting.digits]: formatSetting.digits
+				},
+				promoBox,
+				setPromoBox,
+				liveChatId,
+				handleLogin
+			}}>
+			{children}
+		</configContext.Provider>
+	);
+};

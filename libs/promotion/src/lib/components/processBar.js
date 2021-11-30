@@ -10,20 +10,21 @@ export default ({
 	RefreshProcessBar,
 	promotionType,
 	isJoin,
-	status
+	status,
+	config = {}
 }) => {
 	const {
 		i18n,
 		userInfo: { currencyId },
 		formatSetting
-	} = useContext(configContext);
+	} = useContext(configContext) ?? config;
 
 	if (
 		isJoin &&
-		promotionType !== defPromotionType.cashback &&
-		promotionType !== defPromotionType.rebate &&
 		status !== defPromoStatus.Fulfill &&
-		status !== defPromoStatus.Canceled
+		status !== defPromoStatus.Canceled &&
+		promotionType !== defPromotionType.cashback &&
+		promotionType !== defPromotionType.rebate
 	) {
 		const percentage =
 			custTurnOver >= custRollOver

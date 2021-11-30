@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import path from "Path";
-import { Promotion as uiSetting } from "UISetting";
-import { userInfoContext, i18nContext, popBoxContext } from "Context";
+import { userInfoContext, i18nContext } from "Context";
 import { Promotion } from "../components/promotion/promotion";
 import {
 	defUrlParamCols,
@@ -10,15 +9,14 @@ import {
 import Tab, { useHandleTab } from "../components/promotion/components/tab";
 import Nav, { useHandleNav } from "../components/promotion/components/nav";
 import { SEO } from "../components/seo/seo";
-import config from "../config";
 import staticList from "../datas/promotionList";
 import Layout from "../components/common/layout";
 import Header from "../components/header/header";
+import Wrapper from "../components/promotion/common/wrapper";
 
 export default ({ location = {} }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
-	const { setPopBox } = useContext(popBoxContext);
 	const { tab, onClickTab } = useHandleTab({
 		defaultValue: getFilterType({ location, column: defUrlParamCols.tab })
 	});
@@ -54,45 +52,32 @@ export default ({ location = {} }) => {
 	);
 
 	return (
-		<>
+		<Wrapper>
 			<Layout
 				header={header}
 				mainClass={`main promotions${
 					tab === "Processing" ? "" : " Expired"
 				}`}>
-				<Promotion
-					staticList={staticList}
-					config={config}
-					uiSetting={uiSetting}
-					path={path}
-					userInfo={userInfo}
-					i18n={i18n}
-					setPopBox={setPopBox}
-					location={location}
-					tab={tab}
-					nav={nav}
-					filterType={filterType}
-					formatSetting={{
-						isConvertRequired: false,
-						digits: 0,
-						formatRequired: false
-					}}
-				/>
+				<Promotion staticList={staticList} filterType={filterType} />
 			</Layout>
 			<SEO
 				path={path.promotion.root}
 				langId={userInfo.langId}
 				isLogin={userInfo.isLogin}
 			/>
-		</>
+		</Wrapper>
 	);
 };
 
 const getFilterType = ({ location, column }) => {
 	const state = location?.state;
-	return state?.[column]
-		? isNaN(state?.[column])
+
+	if (state?.[column]) {
+		return isNaN(state?.[column])
 			? state?.[column]
-			: Number(state?.[column])
-		: undefined;
+			: Number(state?.[column]);
+	}
+
+	// eslint-disable-next-line consistent-return
+	return undefined;
 };

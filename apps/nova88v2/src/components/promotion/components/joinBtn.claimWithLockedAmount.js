@@ -77,7 +77,6 @@ export const Button = ({ className, onClick, displayText }) => (
 );
 
 export default ({
-	uiSetting,
 	promotionInfo,
 	ClosePopBox,
 	SetClaimPromotion,
@@ -113,12 +112,11 @@ export default ({
 			</div>
 			<div className="btn-group">
 				<Button
-					className={uiSetting.popBox?.cancelBtn ?? "white"}
+					className="white"
 					onClick={ClosePopBox}
 					displayText={i18n?.lbl_Cancel}
 				/>
 				<Button
-					className={uiSetting.popBox?.submitBtn}
 					onClick={onJoinPromotion.bind(this, {
 						...promotionInfo,
 						_claimAmount: claimAmount

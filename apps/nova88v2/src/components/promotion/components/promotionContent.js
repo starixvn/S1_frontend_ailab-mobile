@@ -1,46 +1,60 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "@reach/router";
 import DepositRecord from "./depositRecord";
 import PromoRule from "./promoRule";
-import { Stamp } from "./stamp";
-import { CanJoin } from "../common/common";
-import { defUrlParamCols } from "../common/def";
+import { defPromotionType } from "../common/def";
 import CashBackInfo from "./cashBackInfo";
+import JoinBtn from "./joinBtn";
+import ProcessBar from "./processBar";
+import path from "../../../path";
 
 const PromoContent = ({
 	promotionInfo,
 	i18n = {},
-	_isClaimed,
-	_isNew,
 	ruleCols,
 	currencyId,
-	urlParameters = {},
-	Class = "promodule"
+	refreshProcessBar,
+	langId,
+	showAllPromosBtn,
+	filterType,
+	processBarInfo
 }) => (
-	<div
-		className={`${Class}${promotionInfo.isJoin ? " active" : ""}${
-			CanJoin({
-				canJoin: promotionInfo.canJoin,
-				filterType: urlParameters?.[defUrlParamCols.filterType]
-			})
-				? ""
-				: " Expired"
-		}${promotionInfo.beenUsed ? " expirModule" : ""}`}>
-		<Stamp
-			_isClaimed={_isClaimed}
-			_isNew={_isNew}
-			filterType={urlParameters?.[defUrlParamCols.filterType]}
-			canJoin={promotionInfo.canJoin}
-		/>
-		<img src={promotionInfo.banner} alt={promotionInfo.title} />
+	<div className="proInfomodule">
+		<div className="btn-group">
+			{promotionInfo.promotionType === defPromotionType.static ? (
+				<a
+					className="red"
+					rel="noreferrer"
+					target="_blank"
+					href="https://direct.lc.chat/11638088/">
+					{i18n.lbl_Apply_Now}
+				</a>
+			) : (
+				<JoinBtn
+					promotionInfo={promotionInfo}
+					filterType={filterType}
+				/>
+			)}
+			{showAllPromosBtn && (
+				<Link to={`/${langId}/${path.promotion.root}`}>
+					{i18n.lbl_promo_all_promos}
+				</Link>
+			)}
+		</div>
 		<div className="protitle">{promotionInfo.title}</div>
 		<div className="text">{promotionInfo.description}</div>
-
-		<PromoRule
-			promotionInfo={promotionInfo}
-			ruleCols={ruleCols}
-			isList={false}
+		<ProcessBar
+			{...promotionInfo}
+			custRollOver={
+				processBarInfo?.custRollOver ?? promotionInfo.custRollOver
+			}
+			custTurnOver={
+				processBarInfo?.custTurnOver ?? promotionInfo.custTurnOver
+			}
+			RefreshProcessBar={refreshProcessBar.bind(this, promotionInfo)}
 		/>
+		<PromoRule promotionInfo={promotionInfo} ruleCols={ruleCols} />
 		<CashBackInfo
 			bonusCode={promotionInfo.bonusCode}
 			cashBackDetails={promotionInfo.cashBackDetails}
@@ -51,7 +65,7 @@ const PromoContent = ({
 			promotionInfo={promotionInfo}
 			i18n={i18n}
 			currencyId={currencyId}
-			filterType={urlParameters?.[defUrlParamCols.filterType]}
+			filterType={filterType}
 		/>
 		<div
 			className="text"
@@ -63,12 +77,10 @@ const PromoContent = ({
 );
 
 PromoContent.defaultProps = {
-	Class: "promodule",
 	currencyId: null
 };
 
 PromoContent.propTypes = {
-	Class: PropTypes.string,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	currencyId: PropTypes.number
 };

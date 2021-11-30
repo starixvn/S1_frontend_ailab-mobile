@@ -4,8 +4,14 @@ import { number_format } from "../common/common";
 import { defRuleCols, defPromotionType } from "../common/def";
 import { configContext } from "../common/context";
 
-const MinAmount = ({ requiredAmount, displayText, formatSetting, isList }) => {
-	const { userInfo, i18n, visitorCurrency } = useContext(configContext);
+const MinAmount = ({
+	requiredAmount,
+	displayText,
+	formatSetting,
+	isList,
+	config
+}) => {
+	const { userInfo, i18n, visitorCurrency } = config;
 	const _currencyId = userInfo.isLogin
 		? userInfo.currencyId
 		: visitorCurrency[userInfo.langId];
@@ -68,13 +74,13 @@ const KeyValue = ({ value, displayText, icon, isList }) =>
 		</>
 	) : (
 		<li>
-			<span>{displayText?.toUpperCase()}</span>
+			<span className="title">{displayText?.toUpperCase()}</span>
 			<span>{value}</span>
 		</li>
 	);
 
-const Bonus = ({ value, displayText, bonusType, icon, isList }) => {
-	const { userInfo, i18n, visitorCurrency } = useContext(configContext);
+const Bonus = ({ value, displayText, bonusType, icon, isList, config }) => {
+	const { userInfo, i18n, visitorCurrency } = config;
 	const _currencyId = userInfo.isLogin
 		? userInfo.currencyId
 		: visitorCurrency[userInfo.langId];
@@ -89,7 +95,7 @@ const Bonus = ({ value, displayText, bonusType, icon, isList }) => {
 		</>
 	) : (
 		<li>
-			<span>{displayText?.toUpperCase()}</span>
+			<span className="title">{displayText?.toUpperCase()}</span>
 			{bonusType === 1 ? (
 				<span>{`${value}%`}</span>
 			) : (
@@ -99,8 +105,8 @@ const Bonus = ({ value, displayText, bonusType, icon, isList }) => {
 	);
 };
 
-const MaxBonus = ({ value, displayText, bonusType, icon, isList }) => {
-	const { userInfo, i18n, visitorCurrency } = useContext(configContext);
+const MaxBonus = ({ value, displayText, bonusType, icon, isList, config }) => {
+	const { userInfo, i18n, visitorCurrency } = config;
 	const _currencyId = userInfo.isLogin
 		? userInfo.currencyId
 		: visitorCurrency[userInfo.langId];
@@ -112,7 +118,7 @@ const MaxBonus = ({ value, displayText, bonusType, icon, isList }) => {
 		</>
 	) : (
 		<li>
-			<span>{displayText?.toUpperCase()}</span>
+			<span className="title">{displayText?.toUpperCase()}</span>
 			<span>{`${i18n[`Currency_${_currencyId}`]} ${value}`}</span>
 		</li>
 	);
@@ -123,7 +129,8 @@ const defElems = ({
 	i18n = {},
 	isLogin,
 	formatSetting,
-	isList
+	isList,
+	config
 }) => {
 	const isStaticOrRebate =
 		promotionInfo.promotionType === defPromotionType.static ||
@@ -137,6 +144,7 @@ const defElems = ({
 				displayText={i18n?.lbl_Vip_Minimum_Deposit_Count}
 				formatSetting={formatSetting}
 				isList={isList}
+				config={config}
 			/>
 		),
 		[defRuleCols.remainingTime]: (
@@ -146,6 +154,7 @@ const defElems = ({
 				i18n={i18n}
 				isLogin={isLogin}
 				isList={isList}
+				config={config}
 			/>
 		),
 		[defRuleCols.rollOver]: (
@@ -156,6 +165,7 @@ const defElems = ({
 				isList={isList}
 				icon="icon icon-icon32px_"
 				value={`${promotionInfo.rollOver}x`}
+				config={config}
 			/>
 		),
 		[defRuleCols.bonus]: !isStaticOrRebate && (
@@ -166,6 +176,7 @@ const defElems = ({
 				icon="icon icon-promotion"
 				bonusType={promotionInfo.bonusType}
 				isList={isList}
+				config={config}
 			/>
 		),
 		[defRuleCols.maxBonus]: !isStaticOrRebate && (
@@ -176,23 +187,26 @@ const defElems = ({
 				icon="icon icon-icon32px_money"
 				bonusType={promotionInfo.bonusType}
 				isList={isList}
+				config={config}
 			/>
 		)
 	};
 };
 
-export default ({ ruleCols, promotionInfo, isList = true }) => {
+export default ({ ruleCols, promotionInfo, isList = true, config = {} }) => {
 	const {
 		formatSetting,
 		userInfo: { isLogin },
 		i18n
-	} = useContext(configContext);
+	} = useContext(configContext) ?? config;
+
 	const allElems = defElems({
 		promotionInfo,
 		i18n,
 		isLogin,
 		formatSetting,
-		isList
+		isList,
+		config
 	});
 
 	const rows = ruleCols.map(col => allElems[col]);

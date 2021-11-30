@@ -194,10 +194,10 @@ const defSubMenus = [
 	// }
 ];
 
-export default () => {
+export default ({ handleSideMenuPanel, isOpenSideMenu }) => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
-	const { nav, setNav } = useContext(navContext);
+	const { setNav } = useContext(navContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const [isOpenSubMenu, setIsOpenSubMenu] = useState([]);
 
@@ -210,14 +210,12 @@ export default () => {
 	};
 
 	const closeNavPanel = () => {
-		setNav(() => null);
+		handleSideMenuPanel(false);
 		setIsOpenSubMenu([]);
 	};
 
-	const openPanel = nav === defNavPanel.subMenu;
-
 	return (
-		<div className={`submenuNew${openPanel ? " open" : ""}`}>
+		<div className={`submenuNew${isOpenSideMenu ? " open" : ""}`}>
 			<div className="close open" onClick={closeNavPanel}>
 				<span />
 				<span />

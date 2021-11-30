@@ -5,11 +5,9 @@ import {
 	userInfoContext,
 	i18nContext,
 	msgCountContext,
-	defNavPanel,
-	navContext
+	navContext,
+	defNavPanel
 } from "./context";
-import JoinPanel from "../join/join.refactor";
-import LoginPanel from "../login/login";
 import path from "../../path";
 import Logo from "./logo";
 import vipClub1 from "../../styles/img/vip/vip1.png";
@@ -19,25 +17,21 @@ import vipClub4 from "../../styles/img/vip/vip4.png";
 import vipClub5 from "../../styles/img/vip/vip5.png";
 import vipClub6 from "../../styles/img/vip/vip6.png";
 import AppDownloadHint from "../home/appDownload";
+import Submenu from "../home/submenu";
 
-const HeaderTitle = ({ title }) => (
-	<>
-		<div className="title">{title}</div>
-		<LoginPanel hideBtn={true} />
-		<JoinPanel hideBtn={true} />
-	</>
-);
-
-HeaderTitle.propTypes = {
-	title: PropTypes.string.isRequired
-};
-
-const Header = ({ title, hideLogo, showingAppHint, setAppHint }) => {
-	const { setNav } = useContext(navContext);
+const Header = ({
+	title,
+	hideLogo,
+	showingAppHint,
+	setAppHint,
+	hasSideMenu = false
+}) => {
+	const [isOpenSideMenu, setIsOpenSideMenu] = useState(false);
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
-	const showSubMenu = () => {
-		setNav(defNavPanel.subMenu);
+
+	const handleSideMenuPanel = isOpen => {
+		setIsOpenSideMenu(isOpen);
 	};
 
 	return (
@@ -54,7 +48,7 @@ const Header = ({ title, hideLogo, showingAppHint, setAppHint }) => {
 				{hideLogo ? null : (
 					<>
 						<div className="menuBtnNew">
-							<button onClick={showSubMenu}>
+							<button onClick={() => handleSideMenuPanel(true)}>
 								<span>≡</span>
 							</button>
 						</div>
@@ -63,7 +57,13 @@ const Header = ({ title, hideLogo, showingAppHint, setAppHint }) => {
 						</a>
 					</>
 				)}
-				{title ? <HeaderTitle title={title} /> : <HeaderBtn />}
+				{title ? <div className="title">{title}</div> : <HeaderBtn />}
+				{hasSideMenu && (
+					<Submenu
+						handleSideMenuPanel={handleSideMenuPanel}
+						isOpenSideMenu={isOpenSideMenu}
+					/>
+				)}
 			</div>
 		</header>
 	);
@@ -73,17 +73,20 @@ Header.defaultProps = {
 	title: null,
 	hideLogo: null,
 	showingAppHint: false,
-	setAppHint: () => null
+	setAppHint: () => null,
+	hasSideMenu: false
 };
 
 Header.propTypes = {
 	title: PropTypes.string,
 	hideLogo: PropTypes.bool,
 	showingAppHint: PropTypes.bool,
-	setAppHint: PropTypes.func
+	setAppHint: PropTypes.func,
+	hasSideMenu: PropTypes.bool
 };
 
 const HeaderBtn = () => {
+	const { setNav } = useContext(navContext);
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { msgCount } = useContext(msgCountContext);
@@ -152,8 +155,16 @@ const HeaderBtn = () => {
 	} else {
 		display = (
 			<div className="headerBtnOut open">
-				<JoinPanel />
-				<LoginPanel ButtonTitle={i18n.lbl_Login.toUpperCase()} />
+				<button
+					className="registerBtn"
+					onClick={() => setNav(defNavPanel.join)}>
+					{i18n.lbl_JoinNow.toUpperCase()}
+				</button>
+				<button
+					className="loginBtn"
+					onClick={() => setNav(defNavPanel.login)}>
+					{i18n.lbl_Login.toUpperCase()}
+				</button>
 			</div>
 		);
 	}

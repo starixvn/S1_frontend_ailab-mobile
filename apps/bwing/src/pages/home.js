@@ -7,7 +7,8 @@ import {
 	userInfoContext,
 	popBoxContext,
 	rootContext,
-	navContext
+	navContext,
+	defNavPanel
 } from "../components/common/context";
 import {
 	readCookie,
@@ -19,8 +20,6 @@ import { GetPageInfo } from "../components/common/layout";
 import { api_GetWalletInfo } from "../service/api/account";
 import Streaming from "../components/home/streaming";
 import GamePanel from "../components/home/gamePanel";
-import JoinPanel from "../components/join/join.refactor";
-import LoginPanel from "../components/login/login";
 import LinksPanel from "../components/home/links";
 import EventSwipper from "../components/home/eventSwipper";
 import HotGameSwipper from "../components/home/hotGameSwipper";
@@ -33,10 +32,12 @@ import Top10Winner from "../components/home/top10winner";
 import config from "../config";
 import { useGetDomainList } from "../components/hook/useGetDomainList";
 import GameList from "../components/home/menu";
+import { defPopBoxType } from "../components/common/popbox";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
+	const { setNav } = useContext(navContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const [redirectPath, setRedirectPath] = useState(null);
 	const { setRoot } = useContext(rootContext);
@@ -224,11 +225,14 @@ const IndexPage = () => {
 			<Marquee />
 			{userInfo.isLogin === false && (
 				<div className="loginbut">
-					<LoginPanel
-						hideBtn={false}
-						ButtonTitle={i18n.lbl_Login.toUpperCase()}
-					/>
-					<JoinPanel hideBtn={false} />
+					<button
+						className="login"
+						onClick={() => setNav(defNavPanel.login)}>
+						{i18n.lbl_Login.toUpperCase()}
+					</button>
+					<button onClick={() => setNav(defNavPanel.join)}>
+						{i18n.lbl_JoinNow.toUpperCase()}
+					</button>
 				</div>
 			)}
 			<GameList i18n={i18n} userInfo={userInfo} />
