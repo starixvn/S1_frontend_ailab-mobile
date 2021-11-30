@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import Spokesperson from "../../styles/img/spokesperson.jpg";
-import { siteInfo } from "../../config";
+import { siteInfo, cloudBannerImgURL } from "../../config";
 import { Link } from "../../route/link";
 import appDownloadImg from "../../styles/img/app/appmodule.jpg";
 import path from "../../path";
@@ -83,7 +83,13 @@ const License = ({ i18n }) => {
 		<div>
 			{showLicenseLogo && (
 				<>
-					<div>{i18n.lbl_Gaming_License}</div>
+					<div>
+						{i18n.lbl_Gaming_License}
+						<img
+							src={`${cloudBannerImgURL}/img/license_tick.png`}
+							alt="vaild gaming license"
+						/>
+					</div>
 					<div
 						id="apg-a7019fa5-9f9a-468b-92da-4890f6a6e4a7"
 						data-apg-seal-id="a7019fa5-9f9a-468b-92da-4890f6a6e4a7"

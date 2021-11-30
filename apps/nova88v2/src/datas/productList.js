@@ -405,7 +405,7 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.casino_ICG,
 							parameter: defGameInfo.casino_ICG,
-							spanText: "Iconic Gaming",
+							spanText: "Astro Tech",
 							img: casino_ICG,
 							path: path.casino.root,
 							providerImgName: "icg"
@@ -863,7 +863,7 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.casino_ICG,
 							parameter: defGameInfo.casino_ICG,
-							spanText: "Iconic Gaming",
+							spanText: "Astro Tech",
 							img: casino_ICG,
 							path: path.casino.root,
 							providerImgName: "icg"
@@ -1289,7 +1289,7 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.casino_ICG,
 							parameter: defGameInfo.casino_ICG,
-							spanText: "Iconic Gaming",
+							spanText: "Astro Tech",
 							img: casino_ICG,
 							path: path.casino.root,
 							providerImgName: "icg"
@@ -1749,7 +1749,7 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.casino_ICG,
 							parameter: defGameInfo.casino_ICG,
-							spanText: "Iconic Gaming",
+							spanText: "Astro Tech",
 							img: casino_ICG,
 							path: path.casino.root,
 							providerImgName: "icg"
@@ -2149,7 +2149,7 @@ const gameList = ({ langId, currencyName }) => {
 						{
 							...defGameInfo.casino_ICG,
 							parameter: defGameInfo.casino_ICG,
-							spanText: "Iconic Gaming",
+							spanText: "Astro Tech",
 							img: casino_ICG,
 							path: path.casino.root,
 							providerImgName: "icg"

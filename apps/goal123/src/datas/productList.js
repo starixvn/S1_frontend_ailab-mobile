@@ -449,7 +449,7 @@ const gameList = [
 			{
 				...defGameInfo.casino_ICG,
 				parameter: defGameInfo.casino_ICG,
-				spanText: "Iconic Gaming",
+				spanText: "Astro Tech",
 				img: Casino_ICG,
 				path: path.casino.root,
 				providerImgName: "icg"

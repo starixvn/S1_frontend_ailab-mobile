@@ -249,7 +249,7 @@ export const productList = langId => {
 					path: path.casino.root,
 					img: icg,
 					icon: "icon icon-ICG",
-					displayKey: "Iconic Gaming"
+					displayKey: "Astro Tech"
 				},
 				{
 					...defGameInfo.Casino_CQ9,
