@@ -5,8 +5,8 @@ import Header from "../header/header";
 import path from "../../path";
 import { Link } from "../../route/link";
 import lineQRCode from "../../styles/img/line.jpg";
-import whatsappQRCode from "../../styles/img/whatsapp.jpg";
 import Footer from "../common/footer";
+import { cloudBannerImgURL } from "../../config";
 
 const ContactUs = ({ i18n }) => {
 	return (
@@ -64,7 +64,10 @@ const ContactUs = ({ i18n }) => {
 				<div>Line</div>
 			</div>
 			<div>
-				<img src={whatsappQRCode} alt="Whatsapp QR Code" />
+				<img
+					src={`${cloudBannerImgURL}/img/whatsapp.jpg`}
+					alt="Whatsapp QR Code"
+				/>
 				<div>Whatsapp</div>
 			</div>
 		</>
