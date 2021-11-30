@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { Link } from "../../../route/link";
 import JoinBtn from "./joinBtn";
 import DetailBtn from "./detailBtn";
-import PromoRule from "./promoRule";
 import { Stamp } from "./stamp";
-import { defUrlParamCols } from "../common/def";
+import ProcessBar from "./processBar";
+// import PromoRule from "./promoRule";
 
 const PromotionCard = ({
 	p,
@@ -15,40 +15,48 @@ const PromotionCard = ({
 	func_CallBack,
 	i18n = {},
 	uiSetting,
-	ruleCols,
-	urlParameters,
-	userInfo
+	userInfo,
+	// ruleCols,
+	promotionInfo,
+	RefreshProcessBar,
+	clickMoreInfo,
+	filterType
 }) => (
 	<div
 		className={`promodule${_isClaimed ? " active" : ""}${
 			p.beenUsed ? " expirModule" : ""
 		}`}>
-		<div className="expiredIcon" />
 		<Stamp
 			_isClaimed={_isClaimed}
 			_isNew={_isNew}
-			filterType={urlParameters?.[defUrlParamCols.filterType]}
+			filterType={filterType}
 			canJoin={p.canJoin}
 		/>
 		<img src={imgSRC} alt={p.bonusCode ?? ""} />
 		<div className="protitle">{p.title}</div>
 		<div className="text">{p.description}</div>
-		<PromoRule promotionInfo={p} ruleCols={ruleCols} />
+		{/* <PromoRule promotionInfo={p} ruleCols={ruleCols} /> */}
+		<ProcessBar
+			{...promotionInfo}
+			RefreshProcessBar={RefreshProcessBar.bind(this, promotionInfo)}
+		/>
 		<div className="btn-group">
-			<DetailBtn
-				displayText_Detail={i18n?.lbl_Details}
-				bonusCode={p.bonusCode}
-				urlParameters={urlParameters}
-				userInfo={userInfo}
-				promotionType={p.promotionType}
-				promotionLink={p.promotionLink}
-				promotionAction={p.promotionAction}
-			/>
 			<JoinBtn
 				promotionInfo={p}
 				func_CallBack={func_CallBack}
 				uiSetting={uiSetting}
-				filterType={urlParameters?.[defUrlParamCols.filterType]}
+				filterType={filterType}
+			/>
+			<DetailBtn
+				displayText_Detail={i18n?.lbl_More_Info}
+				promotionType={p.promotionType}
+				promotionLink={p.promotionLink}
+				promotionAction={p.promotionAction}
+				clickMoreInfo={clickMoreInfo.bind(
+					this,
+					userInfo.langId,
+					p.bonusCode
+				)}
 			/>
 		</div>
 	</div>
@@ -62,8 +70,6 @@ PromotionCard.defaultProps = {
 	func_CallBack: () => null,
 	i18n: {},
 	uiSetting: {},
-	ruleCols: [],
-	urlParameters: {},
 	userInfo: {}
 };
 
@@ -75,8 +81,6 @@ PromotionCard.propTypes = {
 	func_CallBack: PropTypes.func,
 	i18n: PropTypes.objectOf(PropTypes.any),
 	uiSetting: PropTypes.objectOf(PropTypes.any),
-	ruleCols: PropTypes.arrayOf(PropTypes.any),
-	urlParameters: PropTypes.objectOf(PropTypes.any),
 	userInfo: PropTypes.objectOf(PropTypes.any)
 };
 

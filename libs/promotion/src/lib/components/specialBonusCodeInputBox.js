@@ -1,5 +1,5 @@
 import React from "react";
-import { defFilterType, defTabs } from "../common/def";
+import { defFilterType } from "../common/def";
 
 const SpecialBonusCodeInputBox = ({
 	i18n: { lbl_Submit, lbl_PromoCode },
@@ -8,12 +8,9 @@ const SpecialBonusCodeInputBox = ({
 	onSubmit,
 	filterType,
 	isLogin,
-	tab,
 	uiSetting = {}
 }) => {
-	return tab === defTabs.Processing.key &&
-		isLogin &&
-		filterType === defFilterType.specialBonus ? (
+	return isLogin && filterType === defFilterType.specialBonus ? (
 		<div className="inputBox specialBonus">
 			<input
 				className="specialBonus"

@@ -43,7 +43,7 @@ export const Content = ({
 	formatSetting
 }) => (
 	<>
-		<div className="minAmount">
+		<div className="depositSlip">
 			<div className={isOpen ? "open" : ""}>
 				<div>{i18n?.lbl_ID}</div>
 				<div>{i18n?.lbl_Amount}</div>

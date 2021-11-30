@@ -32,7 +32,7 @@ import { initValue, initStatus } from "./join.def";
 
 const defaultLangId = GET_LANG_ID();
 
-const Join = ({ hideBtn }) => {
+const Join = () => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -349,145 +349,140 @@ const Join = ({ hideBtn }) => {
 		setPromoPopup(false);
 	};
 
-	return redirectPath === null ? (
-		<>
-			{hideBtn ? null : (
-				<button
-					className="registerBtn"
-					onClick={handleJoinPanel.bind(this, openPanel)}>
-					{i18n.lbl_JoinNow.toUpperCase()}
-				</button>
-			)}
-			<div className={`Join${openPanel ? " open" : ""}`}>
-				<div
-					className={`close${openPanel ? " open" : ""}`}
-					onClick={handleJoinPanel.bind(
-						this,
-						openPanel,
-						true,
-						showBylink
-					)}>
-					<span />
-					<span />
-					<span />
-					<span />
-					<span />
-					<span />
-				</div>
-				<Logo />
-				<div className="title">{i18n.lbl_JoinNow}</div>
-				<Inputbox
-					icon="icon icon-member"
-					placeholder={i18n.lbl_Username}
-					onBlur={checkValue.bind(this, { col: "UserName" })}
-					onChange={EditField.bind(this, { col: "UserName" })}
-					btnStatus={inputStatus.UserName.checked}
-					tip={inputStatus.UserName.msg}
-					value={userValue.UserName}
-					clickInfo={clickInfo.bind(this, {
-						col: "UserName",
-						info: "lbl_UsernameTooltip"
-					})}
-					testAttr="Username"
-				/>
-				<InputboxPWD
-					placeholder={i18n.lbl_Password}
-					onBlur={checkValue.bind(this, { col: "Password" })}
-					onChange={EditField.bind(this, { col: "Password" })}
-					btnStatus={inputStatus.Password.checked}
-					tip={inputStatus.Password.msg}
-					value={userValue.Password}
-					clickInfo={clickInfo.bind(this, {
-						col: "Password",
-						info: "lbl_PasswordTooltip"
-					})}
-					testAttr="Password"
-				/>
-				<div className="inputBox">
-					<Dropdown
-						colName="Currency"
-						mainKey="join-curr"
-						selectedIdx={userValue.Currency}
-						options={siteCurrencyList}
-						onSelectItem={selectCurrency}
-						i18n={i18n}
+	if (redirectPath) {
+		return <Redirect to="/" noThrow={true} />;
+	}
+
+	return (
+		userInfo.isLogin === false && (
+			<>
+				<div className={`Join${openPanel ? " open" : ""}`}>
+					<div
+						className={`close${openPanel ? " open" : ""}`}
+						onClick={handleJoinPanel.bind(
+							this,
+							openPanel,
+							true,
+							showBylink
+						)}>
+						<span />
+						<span />
+						<span />
+						<span />
+						<span />
+						<span />
+					</div>
+					<Logo />
+					<div className="title">{i18n.lbl_JoinNow}</div>
+					<Inputbox
+						icon="icon icon-member"
+						placeholder={i18n.lbl_Username}
+						onBlur={checkValue.bind(this, { col: "UserName" })}
+						onChange={EditField.bind(this, { col: "UserName" })}
+						btnStatus={inputStatus.UserName.checked}
+						tip={inputStatus.UserName.msg}
+						value={userValue.UserName}
+						clickInfo={clickInfo.bind(this, {
+							col: "UserName",
+							info: "lbl_UsernameTooltip"
+						})}
+						testAttr="Username"
 					/>
-					<Tips
-						Icon="icon-coin-dollar"
-						ClassName="JoinRule"
-						IsOpen={Boolean(inputStatus.Currency.msg)}>
-						{inputStatus.Currency.msg}
-					</Tips>
-				</div>
-				{/* <Inputbox
+					<InputboxPWD
+						placeholder={i18n.lbl_Password}
+						onBlur={checkValue.bind(this, { col: "Password" })}
+						onChange={EditField.bind(this, { col: "Password" })}
+						btnStatus={inputStatus.Password.checked}
+						tip={inputStatus.Password.msg}
+						value={userValue.Password}
+						clickInfo={clickInfo.bind(this, {
+							col: "Password",
+							info: "lbl_PasswordTooltip"
+						})}
+						testAttr="Password"
+					/>
+					<div className="inputBox">
+						<Dropdown
+							colName="Currency"
+							mainKey="join-curr"
+							selectedIdx={userValue.Currency}
+							options={siteCurrencyList}
+							onSelectItem={selectCurrency}
+							i18n={i18n}
+						/>
+						<Tips
+							Icon="icon-coin-dollar"
+							ClassName="JoinRule"
+							IsOpen={Boolean(inputStatus.Currency.msg)}>
+							{inputStatus.Currency.msg}
+						</Tips>
+					</div>
+					{/* <Inputbox
 					icon="icon icon-promotion"
 					placeholder={i18n.lbl_PromoCode}
 					value={userValue.SpecialBonusCode}
 					onChange={EditField.bind(this, { col: "SpecialBonusCode" })}
 					onBlur={checkValue.bind(this, { col: "SpecialBonusCode" })}
 				/> */}
-				<Inputbox
-					icon="icon icon-affiliate"
-					placeholder={i18n.lbl_Affiliate_ID}
-					value={affiliateidExist ?? userValue.AffiliateId}
-					onChange={EditField.bind(this, { col: "AffiliateId" })}
-					btnStatus={inputStatus.AffiliateId.checked}
-					tip={inputStatus.AffiliateId.msg}
-					disabled={Boolean(affiliateidExist)}
-					clickInfo={clickInfo.bind(this, {
-						col: "AffiliateId",
-						info: "lbl_Please_enter_Affiliate_ID"
-					})}
-				/>
-				<Checkbox
-					Checked={userValue.Checkbox}
-					className={`Terms${
-						inputStatus.Checkbox.checked === false ? " error" : ""
-					}`}
-					onChange={EditField.bind(this, { col: "Checkbox" })}
-					id="c1">
-					{i18n.lbl_Check18TC1} &nbsp;
-					<a
-						target="_blank"
-						rel="noreferrer"
-						href={TandC(userInfo.langId).terms}>
-						{i18n.lbl_TermsConditions}
-					</a>
-					&nbsp; {i18n.lbl_Check18TC2}&nbsp;
-					<a
-						target="_blank"
-						rel="noreferrer"
-						href={TandC(userInfo.langId).rule}>
-						{i18n.lbl_RuleRegulations}
-					</a>
-					&nbsp; {i18n.lbl_Check18TC3}&nbsp;{config.siteName}
-					.&nbsp;
-					{i18n.lbl_Check18TC4}
-				</Checkbox>
-				<div className="JoinRule open">{inputStatus.Checkbox.msg}</div>
-				<div className="btn-group">
-					<button onClick={clickSubmit}>{i18n.lbl_JoinNow}</button>
+					<Inputbox
+						icon="icon icon-affiliate"
+						placeholder={i18n.lbl_Affiliate_ID}
+						value={affiliateidExist ?? userValue.AffiliateId}
+						onChange={EditField.bind(this, { col: "AffiliateId" })}
+						btnStatus={inputStatus.AffiliateId.checked}
+						tip={inputStatus.AffiliateId.msg}
+						disabled={Boolean(affiliateidExist)}
+						clickInfo={clickInfo.bind(this, {
+							col: "AffiliateId",
+							info: "lbl_Please_enter_Affiliate_ID"
+						})}
+					/>
+					<Checkbox
+						Checked={userValue.Checkbox}
+						className={`Terms${
+							inputStatus.Checkbox.checked === false
+								? " error"
+								: ""
+						}`}
+						onChange={EditField.bind(this, { col: "Checkbox" })}
+						id="c1">
+						{i18n.lbl_Check18TC1} &nbsp;
+						<a
+							target="_blank"
+							rel="noreferrer"
+							href={TandC(userInfo.langId).terms}>
+							{i18n.lbl_TermsConditions}
+						</a>
+						&nbsp; {i18n.lbl_Check18TC2}&nbsp;
+						<a
+							target="_blank"
+							rel="noreferrer"
+							href={TandC(userInfo.langId).rule}>
+							{i18n.lbl_RuleRegulations}
+						</a>
+						&nbsp; {i18n.lbl_Check18TC3}&nbsp;{config.siteName}
+						.&nbsp;
+						{i18n.lbl_Check18TC4}
+					</Checkbox>
+					<div className="JoinRule open">
+						{inputStatus.Checkbox.msg}
+					</div>
+					<div className="btn-group">
+						<button onClick={clickSubmit}>
+							{i18n.lbl_JoinNow}
+						</button>
+					</div>
 				</div>
-			</div>
-			<PromoPopup
-				banner={banner}
-				ImgFolder="Promotion"
-				ClickClose={ClosePromoPopup}
-				title={i18n.lbl_Welcome}
-				isOpen={promoPopup}
-			/>
-		</>
-	) : (
-		<Redirect to="/" noThrow={true} />
+				<PromoPopup
+					banner={banner}
+					ImgFolder="Promotion"
+					ClickClose={ClosePromoPopup}
+					title={i18n.lbl_Welcome}
+					isOpen={promoPopup}
+				/>
+			</>
+		)
 	);
-};
-
-Join.defaultProps = {
-	hideBtn: null
-};
-
-Join.propTypes = {
-	hideBtn: PropTypes.bool
 };
 
 export default Join;

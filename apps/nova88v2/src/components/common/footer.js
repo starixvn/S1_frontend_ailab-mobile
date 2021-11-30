@@ -41,7 +41,10 @@ const Footer = () => {
 				</Match>
 				<Match path={`/:langId/${path.promotion.root}`}>
 					{props => {
-						const isMatch = props.match !== null;
+						const isMatch =
+							props.match !== null ||
+							props.location.pathname ===
+								`/${path.promotionInfo.root}`;
 						return (
 							<Link
 								to={path.promotion.root}
@@ -103,7 +106,10 @@ const Footer = () => {
 				</Match>
 				<Match path={`/:langId/${path.promotion.root}`}>
 					{props => {
-						const isMatch = props.match !== null;
+						const isMatch =
+							props.match !== null ||
+							props.location.pathname ===
+								`/${path.promotionInfo.root}`;
 						return (
 							<Link
 								onClick={handleWalletMenu.bind(this, true)}

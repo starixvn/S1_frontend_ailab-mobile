@@ -57,6 +57,8 @@ import ReferralHistory from "./components/referral/referral.history";
 import VIP from "./pages/vip";
 import AppEntPage from "./pages/appEntPage";
 import AppDownload from "./pages/appDownload";
+import Login from "./components/login/login";
+import Join from "./components/join/join.refactor";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -121,6 +123,8 @@ const Index = () => {
 					<AppDownload path={path.appDownload.root} />
 					<AppEntPage path={`/${defSpecialPath.appentpage}`} />
 				</Router>
+				<Join />
+				<Login />
 			</LocationProvider>
 			<PopBox />
 		</Wrapper>

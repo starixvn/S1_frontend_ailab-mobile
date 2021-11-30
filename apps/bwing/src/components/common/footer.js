@@ -19,7 +19,10 @@ const Footer = () => {
 			<footer className="footerNew">
 				<Match path={path.promotion.root}>
 					{props => {
-						const isMatch = props.match !== null;
+						const isMatch =
+							props.match !== null ||
+							props.location.pathname ===
+								`/${path.promotionInfo.root}`;
 						return (
 							<Link
 								to={`/${path.promotion.root}`}
@@ -77,7 +80,10 @@ const Footer = () => {
 		<footer className="footerNew">
 			<Match path={path.promotion.root}>
 				{props => {
-					const isMatch = props.match !== null;
+					const isMatch =
+						props.match !== null ||
+						props.location.pathname ===
+							`/${path.promotionInfo.root}`;
 					return (
 						<Link
 							to={`/${path.promotion.root}`}

@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { configContext } from "../common/context";
 import { number_format } from "../common/common";
 
-const CashBackInfo = ({ cashBackDetails }) => {
-	const { i18n, formatSetting } = useContext(configContext);
+const CashBackInfo = ({ cashBackDetails, config }) => {
+	const { i18n, formatSetting } = useContext(configContext) ?? config;
 
 	if (!cashBackDetails) return null;
 

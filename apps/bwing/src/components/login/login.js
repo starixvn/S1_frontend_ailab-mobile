@@ -29,7 +29,7 @@ const initStatus = {
 	}
 };
 
-const LoginPage = ({ ButtonTitle, hideBtn = false }) => {
+const LoginPage = () => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -152,88 +152,69 @@ const LoginPage = ({ ButtonTitle, hideBtn = false }) => {
 	};
 
 	return (
-		<>
-			{hideBtn ? null : (
-				<button
-					className="login"
-					onClick={handleloginPanel.bind(this, showPanel)}>
-					{ButtonTitle}
-				</button>
-			)}
-			<div className={`Login${showPanel ? " open" : ""}`}>
-				<div
-					className={`close${showPanel ? " open" : ""}`}
+		<div className={`Login${showPanel ? " open" : ""}`}>
+			<div
+				className={`close${showPanel ? " open" : ""}`}
+				onClick={handleloginPanel.bind(
+					this,
+					showPanel,
+					true,
+					showBylink
+				)}>
+				<span />
+				<span />
+				<span />
+				<span />
+				<span />
+				<span />
+			</div>
+			<Logo />
+			<div className="title">{i18n.lbl_Login}</div>
+			<Inputbox
+				icon="icon icon-member"
+				placeholder={i18n.lbl_Username}
+				onBlur={checkValue.bind(null, { col: "UserName" })}
+				onChange={EditField.bind(null, { col: "UserName" })}
+				value={userValue.UserName}
+				btnStatus={inputStatus.UserName.checked}
+				tip={inputStatus.UserName.msg}
+				clickInfo={clickInfo.bind(this, {
+					col: "UserName",
+					info: "msg_UsernameReq"
+				})}
+				testAttr="Username"
+			/>
+			<InputboxPWD
+				placeholder={i18n.lbl_Password}
+				onBlur={checkValue.bind(null, { col: "Password" })}
+				onChange={EditField.bind(null, { col: "Password" })}
+				value={userValue.Password}
+				btnStatus={inputStatus.Password.checked}
+				tip={inputStatus.Password.msg}
+				clickInfo={clickInfo.bind(this, {
+					col: "Password",
+					info: "msg_PasswordReq"
+				})}
+				testAttr="Password"
+			/>
+			<div className="Terms">
+				<Link
+					data-testid="forgetpw"
+					to={`/${path.forgetPassword.root}`}
 					onClick={handleloginPanel.bind(
 						this,
 						showPanel,
 						true,
 						showBylink
 					)}>
-					<span />
-					<span />
-					<span />
-					<span />
-					<span />
-					<span />
-				</div>
-				<Logo />
-				<div className="title">{i18n.lbl_Login}</div>
-				<Inputbox
-					icon="icon icon-member"
-					placeholder={i18n.lbl_Username}
-					onBlur={checkValue.bind(null, { col: "UserName" })}
-					onChange={EditField.bind(null, { col: "UserName" })}
-					value={userValue.UserName}
-					btnStatus={inputStatus.UserName.checked}
-					tip={inputStatus.UserName.msg}
-					clickInfo={clickInfo.bind(this, {
-						col: "UserName",
-						info: "msg_UsernameReq"
-					})}
-					testAttr="Username"
-				/>
-				<InputboxPWD
-					placeholder={i18n.lbl_Password}
-					onBlur={checkValue.bind(null, { col: "Password" })}
-					onChange={EditField.bind(null, { col: "Password" })}
-					value={userValue.Password}
-					btnStatus={inputStatus.Password.checked}
-					tip={inputStatus.Password.msg}
-					clickInfo={clickInfo.bind(this, {
-						col: "Password",
-						info: "msg_PasswordReq"
-					})}
-					testAttr="Password"
-				/>
-				<div className="Terms">
-					<Link
-						data-testid="forgetpw"
-						to={`/${path.forgetPassword.root}`}
-						onClick={handleloginPanel.bind(
-							this,
-							showPanel,
-							true,
-							showBylink
-						)}>
-						{i18n.lbl_ForgetPassword}?
-					</Link>
-				</div>
-				<button data-testid="login_submit" onClick={handleLogin}>
-					{i18n.lbl_Login}
-				</button>
+					{i18n.lbl_ForgetPassword}?
+				</Link>
 			</div>
-		</>
+			<button data-testid="login_submit" onClick={handleLogin}>
+				{i18n.lbl_Login}
+			</button>
+		</div>
 	);
-};
-
-LoginPage.defaultProps = {
-	ButtonTitle: "",
-	hideBtn: null
-};
-
-LoginPage.propTypes = {
-	ButtonTitle: PropTypes.string,
-	hideBtn: PropTypes.bool
 };
 
 export default LoginPage;

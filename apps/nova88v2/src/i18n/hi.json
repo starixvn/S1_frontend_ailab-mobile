@@ -56,7 +56,7 @@
 	"lbl_RemainingTime": "शेष समय",
 	"lbl_RollOver": "रोल ओवर",
 	"lbl_TurnoverAccumulated": "टर्नओवर संचित",
-	"lbl_PromoJoinNow": "अब जुडे/ अब शामिल हों",
+	"lbl_PromoJoinNow": "अब जुडे",
 	"lbl_GoNow": "अब जाए!",
 	"lbl_Affiliate": "शाखा",
 	"lbl_RemindPrefferedCurrency": "पसंदीदा मुद्रा आवश्यक है",
@@ -510,6 +510,9 @@
 	"lbl_Special": "विशेष",
 	"lbl_Sportsbook": "खेल",
 	"lbl_Promotion_Slot": "स्लॉट खेल",
+	"lbl_More_Info": "और जानकारी",
+	"lbl_Apply_Now": "अभी अप्लाई करें",
+	"lbl_promo_all_promos":"सभी प्रचार",
 
 	"==============================================Streaming====================================": "",
 

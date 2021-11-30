@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { defFilterType } from "../common/def";
 import { useHandlePopBox } from "./useHandlePopBox";
+import api from "../../../service/api";
 
-export const useHandleSpecialBonus = ({ api, langId, filterType }) => {
+export const useHandleSpecialBonus = ({ langId, filterType }) => {
 	const [specialBonusDatas, setSpecialBonusDatas] = useState([]);
 	const [specialCode, setSpecialCode] = useState("");
 	const { handleErrorPopBox } = useHandlePopBox();
@@ -54,11 +55,44 @@ export const useHandleSpecialBonus = ({ api, langId, filterType }) => {
 		}
 	};
 
+	const refreshProcessBar = ({ bonusCode, tpId, categoryId }) => {
+		api.account
+			.GetCustSpecificBonus({
+				BonusCode: bonusCode,
+				TpId: tpId,
+				PromoCategoryId: categoryId
+			})
+			.then(({ data: { data, errorCode } }) => {
+				const success = errorCode === 0;
+				if (success) {
+					let idx = null;
+					let newPromoList = [];
+
+					idx = specialBonusDatas.findIndex(
+						x =>
+							x.bonusCode === bonusCode &&
+							x.tpId === tpId &&
+							x.categoryId === categoryId
+					);
+					if (idx !== -1) {
+						newPromoList = [...specialBonusDatas];
+						if (data) {
+							newPromoList[idx].custRollOver = data.rollover;
+							newPromoList[idx].custTurnOver = data.turnover;
+						}
+					}
+
+					setSpecialBonusDatas(newPromoList);
+				}
+			});
+	};
+
 	return {
 		onChangeSpecialCode,
 		specialCode,
 		onSubmitSpecialCode,
 		specialBonusDatas,
-		GetSpecialBonusList
+		GetSpecialBonusList,
+		refreshProcessBar
 	};
 };

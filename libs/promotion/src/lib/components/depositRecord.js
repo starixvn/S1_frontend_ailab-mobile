@@ -4,8 +4,12 @@ import SingleRecord from "./depositRecord.singleRecord";
 import MultipleRecord from "./depositRecord.multiRecord";
 
 export default ({ i18n = {}, promotionInfo, currencyId, filterType }) => {
+	const isSpecialBonus =
+		promotionInfo.filterType === defFilterType.specialBonus ||
+		filterType === defFilterType.specialBonus;
+
 	if (
-		filterType !== defFilterType.specialBonus &&
+		!isSpecialBonus &&
 		promotionInfo.canJoin &&
 		!promotionInfo.isJoin &&
 		(promotionInfo.promotionType === defPromotionType.reDeposit ||

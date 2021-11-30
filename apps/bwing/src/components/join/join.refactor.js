@@ -30,7 +30,7 @@ import Logo from "../img/logo";
 import areaCode from "../../datas/areaCode";
 import { initValue, initStatus, currencyToAreacode } from "./join.def";
 
-const Join = ({ hideBtn = false }) => {
+const Join = () => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -400,11 +400,6 @@ const Join = ({ hideBtn = false }) => {
 
 	return (
 		<>
-			{!hideBtn && (
-				<button onClick={handleJoinPanel.bind(this, openPanel)}>
-					{i18n.lbl_JoinNow.toUpperCase()}
-				</button>
-			)}
 			<div className={`Join${openPanel ? " open" : ""}`}>
 				<div
 					className={`close${openPanel ? " open" : ""}`}

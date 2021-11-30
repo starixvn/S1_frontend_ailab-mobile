@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { defPromotionNav, defTabs, defFilterType } from "../common/def";
+import { defPromotionNav, defFilterType } from "../common/def";
 
 export const useHandleNav = ({
 	defaultValue = defFilterType.all,
 	isLogin,
-	tab,
 	navBar = defPromotionNav
 }) => {
 	const [filterType, setFilterType] = useState(defaultValue);

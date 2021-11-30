@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Link, Redirect } from "@reach/router";
 import {
 	defBonusType,
@@ -7,7 +7,6 @@ import {
 	defHideJoinBtnTypes
 } from "../common/def";
 import ClaimWithLockedAmount from "./joinBtn.claimWithLockedAmount";
-import { configContext } from "../common/context";
 import { useHandlePopBox } from "../hook/useHandlePopBox";
 
 export default ({
@@ -15,19 +14,21 @@ export default ({
 	promotionInfo,
 	func_GetPromotionDetail,
 	func_CallBack,
-	filterType
+	filterType,
+	config
 }) => {
-	if (defHideJoinBtnTypes.includes(promotionInfo.promotionType)) return null;
+	const { path, userInfo, i18n, api, formatSetting, handleLogin } = config;
 
-	const {
-		path,
-		userInfo,
-		i18n,
-		api,
-		formatSetting,
-		handleLogin
-	} = useContext(configContext);
-	const { handlePopBox, handleErrorPopBox, clickClose } = useHandlePopBox();
+	if (
+		!promotionInfo ||
+		defHideJoinBtnTypes.includes(promotionInfo.promotionType)
+	) {
+		return null;
+	}
+
+	const { handlePopBox, handleErrorPopBox, clickClose } = useHandlePopBox(
+		config
+	);
 	const isMountedRef = useRef(null);
 	const [redirectPath, setRedirectPath] = useState(null);
 
@@ -52,7 +53,11 @@ export default ({
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
 						if (func_GetPromotionDetail) {
-							func_GetPromotionDetail(userInfo.langId, bonusCode);
+							func_GetPromotionDetail(
+								userInfo.langId,
+								bonusCode,
+								filterType
+							);
 						} else if (func_CallBack) {
 							func_CallBack();
 						}
@@ -187,7 +192,8 @@ export default ({
 				userInfo.isLogin &&
 				_promo.canJoin &&
 				(_promo.promotionType === defPromotionType.reDeposit ||
-					(filterType === defFilterType.specialBonus &&
+					((filterType === defFilterType.specialBonus ||
+						_promo.filterType === defFilterType.specialBonus) &&
 						_promo.promotionType === defPromotionType.firstDeposit))
 			) {
 				if (_promo.bonusType === defBonusType.Percentage) {
@@ -216,10 +222,13 @@ export default ({
 	};
 
 	const _canJoin = !(
-		filterType === defFilterType.specialBonus && !promotionInfo.canJoin
+		(filterType === defFilterType.specialBonus ||
+			promotionInfo.filterType === defFilterType.specialBonus) &&
+		!promotionInfo.canJoin
 	);
 
 	let btnResult = null;
+
 	if (redirectPath !== null) {
 		btnResult = <Redirect to={redirectPath} noThrow />;
 	} else if (
@@ -228,18 +237,23 @@ export default ({
 		(userInfo.isLogin === false ||
 			(_canJoin && userInfo.isLogin && !promotionInfo.isJoin))
 	) {
+		const joinNowDisplayText =
+			promotionInfo.promotionType === defPromotionType.cashback
+				? i18n?.lbl_ClaimNow?.toUpperCase()
+				: i18n?.lbl_PromoJoinNow?.toUpperCase();
+
 		if (userInfo.isLogin === false) {
 			btnResult = handleLogin ? (
 				<button
 					className={uiSetting.joinBtn ?? "btn-check"}
 					onClick={handleLogin}>
-					{i18n?.lbl_PromoJoinNow}
+					{joinNowDisplayText}
 				</button>
 			) : (
 				<Link
 					className={uiSetting.joinBtn ?? "btn-check"}
 					to={`/${path.login.root}`}>
-					{i18n?.lbl_PromoJoinNow}
+					{joinNowDisplayText}
 				</Link>
 			);
 		} else {
@@ -247,7 +261,7 @@ export default ({
 				<button
 					className={uiSetting.joinBtn ?? "btn-check"}
 					onClick={onJoinPromotion.bind(this, promotionInfo)}>
-					{i18n?.lbl_PromoJoinNow}
+					{joinNowDisplayText}
 				</button>
 			);
 		}

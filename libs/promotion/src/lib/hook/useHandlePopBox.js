@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { configContext } from "../common/context";
 
-export const useHandlePopBox = () => {
-	const { setPopBox, i18n } = useContext(configContext);
+export const useHandlePopBox = config => {
+	const { setPopBox, i18n } = useContext(configContext) ?? config ?? {};
 
 	const clickClose = () => {
 		setPopBox({ isOpen: false });

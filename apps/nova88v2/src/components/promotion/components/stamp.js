@@ -4,9 +4,13 @@ import { defFilterType } from "../common/def";
 export const Stamp = ({ _isClaimed, _isNew, filterType, canJoin }) => {
 	const _canJoin = !(filterType === defFilterType.specialBonus && !canJoin);
 
-	return _isClaimed ? (
-		<div className="claimed" />
-	) : _canJoin && _isNew ? (
-		<div className="new active" />
-	) : null;
+	if (_isClaimed) {
+		return <div className="claimed" />;
+	}
+
+	if (_canJoin && _isNew) {
+		return <div className="new active" />;
+	}
+
+	return null;
 };

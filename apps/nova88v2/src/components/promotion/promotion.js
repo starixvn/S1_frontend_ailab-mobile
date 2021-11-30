@@ -4,46 +4,24 @@ import PropTypes from "prop-types";
 import {
 	defFilterType,
 	defPromotionType,
-	defTabs,
-	defUrlParamCols,
 	defWalletType,
 	defCategoryId
 } from "./common/def";
 import { isExpiry, isClaimed, isNew } from "./common/common";
 import Card, { CardForStatic } from "./components/promotionCard";
-import Wrapper from "./common/wrapper";
 import { configContext } from "./common/context";
 import SpecialBonusCodeInputBox from "./components/specialBonusCodeInputBox";
 import { useHandleSpecialBonus } from "./hook/useHandleSpecialBonus";
 import { useGetPromotions } from "./hook/useGetPromotions";
+import { useHandlePromotionInfo } from "./promotionInfo.popbox";
 
-export const Promotion = ({
-	staticList,
-	location,
-	tab,
-	filterType,
-	nav,
-	...rest
-}) => {
-	return (
-		<Wrapper {...rest}>
-			<PromotionContent
-				staticList={staticList}
-				location={location}
-				nav={nav}
-				tab={tab}
-				filterType={filterType}
-			/>
-		</Wrapper>
-	);
-};
+export const Promotion = ({ staticList, filterType }) => (
+	<PromotionContent staticList={staticList} filterType={filterType} />
+);
 
 Promotion.defaultProps = {
 	formatSetting: {},
 	staticList: [],
-	location: {},
-	tab: "",
-	nav: {},
 	filterType: 0
 };
 
@@ -53,9 +31,6 @@ Promotion.propTypes = {
 		digits: PropTypes.number
 	}),
 	staticList: PropTypes.arrayOf(PropTypes.any),
-	location: PropTypes.objectOf(PropTypes.any),
-	tab: PropTypes.string,
-	nav: PropTypes.node,
 	filterType: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
@@ -66,7 +41,9 @@ const setPromotionCards = ({
 	uiSetting,
 	ruleCols,
 	func_CallBack,
-	urlParameters
+	filterType,
+	RefreshProcessBar,
+	clickMoreInfo
 }) => {
 	return datas.map(p => {
 		const imgSRC = p.banner;
@@ -74,43 +51,52 @@ const setPromotionCards = ({
 		const _isNew = _isClaimed ? false : isNew(p);
 		return (
 			<Card
-				userInfo={userInfo}
 				key={`promotion-${userInfo.langId}-${p.bonusCode}`}
-				p={p}
 				_isClaimed={_isClaimed}
 				_isNew={_isNew}
 				imgSRC={imgSRC}
 				func_CallBack={func_CallBack}
 				i18n={i18n}
 				uiSetting={uiSetting}
+				userInfo={userInfo}
+				p={p}
 				ruleCols={ruleCols}
-				urlParameters={urlParameters}
+				filterType={filterType}
+				promotionInfo={p}
+				RefreshProcessBar={RefreshProcessBar}
+				clickMoreInfo={clickMoreInfo}
 			/>
 		);
 	});
 };
 
-const PromotionContent = ({ staticList, location, tab, nav, filterType }) => {
+const PromotionContent = ({ staticList, filterType }) => {
+	const { getPromotionDetail } = useHandlePromotionInfo({ filterType });
+
+	const clickMoreInfo = (langId, bonusCode) => {
+		getPromotionDetail(langId, bonusCode);
+	};
+
 	const { uiSetting, userInfo, i18n, api, ruleCols } = useContext(
 		configContext
 	);
 
-	const { promotion, getPromotionList } = useGetPromotions({
-		api,
-		userInfo
-	});
+	const { promotion, getPromotionList, refreshProcessBar } = useGetPromotions(
+		{
+			api,
+			userInfo
+		}
+	);
+
 	const {
 		onChangeSpecialCode,
 		specialCode,
 		onSubmitSpecialCode,
 		specialBonusDatas,
-		GetSpecialBonusList
-	} = useHandleSpecialBonus({ api, langId: userInfo.langId, filterType });
+		GetSpecialBonusList,
+		refreshProcessBar: specialBonusRefreshProcessBar
+	} = useHandleSpecialBonus({ langId: userInfo.langId, filterType });
 
-	const urlParameters = {
-		[defUrlParamCols.tab]: tab,
-		[defUrlParamCols.filterType]: filterType
-	};
 	let rows = [];
 	if (filterType === defFilterType.specialBonus) {
 		const datas = specialBonusDatas.filter(p => {
@@ -122,13 +108,14 @@ const PromotionContent = ({ staticList, location, tab, nav, filterType }) => {
 
 		rows = setPromotionCards({
 			datas,
-			tab,
 			userInfo,
 			i18n,
 			uiSetting,
 			ruleCols,
 			func_CallBack: GetSpecialBonusList,
-			urlParameters
+			filterType,
+			RefreshProcessBar: specialBonusRefreshProcessBar,
+			clickMoreInfo
 		});
 	} else {
 		const datas = promotion?.filter(p => {
@@ -211,17 +198,18 @@ const PromotionContent = ({ staticList, location, tab, nav, filterType }) => {
 
 		rows = setPromotionCards({
 			datas,
-			tab,
 			userInfo,
 			i18n,
 			uiSetting,
 			ruleCols,
 			func_CallBack: getPromotionList,
-			urlParameters
+			filterType,
+			RefreshProcessBar: refreshProcessBar,
+			clickMoreInfo
 		});
 	}
 	const staticRows =
-		tab === defTabs.Processing.key && filterType === defFilterType.all
+		filterType === defFilterType.all
 			? staticList?.map(p => {
 					return (
 						<CardForStatic
@@ -243,14 +231,12 @@ const PromotionContent = ({ staticList, location, tab, nav, filterType }) => {
 	return (
 		<>
 			<SpecialBonusCodeInputBox
-				tab={tab}
-				filterType={filterType}
 				i18n={i18n}
-				onChange={onChangeSpecialCode}
 				value={specialCode}
+				onChange={onChangeSpecialCode}
 				onSubmit={onSubmitSpecialCode}
+				filterType={filterType}
 				isLogin={userInfo.isLogin}
-				uiSetting={uiSetting}
 			/>
 			{rows}
 			{staticRows}

@@ -3513,6 +3513,12 @@ footer > a.active .circleAnimation + span {
   z-index: 1;
 }
 
+.inputBox.readonly {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+  z-index: 0;
+}
+
 .inputBox .bankLogo {
   -webkit-box-flex: 1;
       -ms-flex: 1;

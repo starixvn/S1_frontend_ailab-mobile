@@ -1,77 +1,71 @@
 import React from "react";
-import { Link } from "@reach/router";
 import JoinBtn from "./joinBtn";
 import DepositRecord from "./depositRecord";
 import ProcessBar from "./processBar";
 import PromoRule from "./promoRule";
-import { Stamp } from "./stamp";
-import { CanJoin } from "../common/common";
-import { defUrlParamCols } from "../common/def";
+import { defPromotionType } from "../common/def";
 import CashBackInfo from "./cashBackInfo";
 
 export default ({
-	path,
-	uiSetting = {},
 	promotionInfo,
-	i18n = {},
-	_isExpiry,
-	_isClaimed,
-	_isNew,
 	GetPromotionDetail,
 	RefreshProcessBar,
-	ruleCols,
-	currencyId,
-	urlParameters = {}
+	config = {},
+	filterType,
+	processBarInfo
 }) => (
-	<div
-		className={`promodule${promotionInfo.isJoin ? " open" : ""}${
-			!CanJoin({
-				canJoin: promotionInfo.canJoin,
-				filterType: urlParameters?.[defUrlParamCols.filterType]
-			}) || promotionInfo.beenUsed
-				? " Expired"
-				: ""
-		}`}>
-		<Stamp
-			_isClaimed={_isClaimed}
-			_isNew={_isNew}
-			_isExpiry={_isExpiry}
-			filterType={urlParameters?.[defUrlParamCols.filterType]}
-			canJoin={promotionInfo.canJoin}
-			uiSetting={uiSetting}
-		/>
-		<img src={promotionInfo.banner} alt={promotionInfo.title} />
-		<Link
-			className="btn-cancel"
-			to={`/${path.promotion.root}`}
-			state={urlParameters}>
-			{i18n?.lbl_Back}
-		</Link>
-		<JoinBtn
-			promotionInfo={promotionInfo}
-			func_GetPromotionDetail={GetPromotionDetail}
-			uiSetting={uiSetting}
-			filterType={urlParameters?.[defUrlParamCols.filterType]}
-		/>
+	<div className="promodule">
+		<div className={config?.uiSetting?.btnGroup ?? btnGroup}>
+			{promotionInfo.promotionType === defPromotionType.static ? (
+				<a
+					className={config?.uiSetting.joinBtn ?? "btn-check"}
+					rel="noreferrer"
+					target="_blank"
+					href={`https://direct.lc.chat/${config.liveChatId}/`}>
+					{config?.i18n.lbl_Apply_Now}
+				</a>
+			) : (
+				<JoinBtn
+					promotionInfo={promotionInfo}
+					func_GetPromotionDetail={GetPromotionDetail}
+					uiSetting={config?.uiSetting}
+					filterType={filterType}
+					config={config}
+					isLogin={config?.userInfo}
+				/>
+			)}
+		</div>
+
 		<div className="protitle">{promotionInfo.title}</div>
 		<div className="text">{promotionInfo.description}</div>
 		<DepositRecord
 			promotionInfo={promotionInfo}
-			i18n={i18n}
-			currencyId={currencyId}
-			filterType={urlParameters?.[defUrlParamCols.filterType]}
+			i18n={config?.i18n}
+			currencyId={config?.userInfo?.currencyId}
+			filterType={filterType}
 		/>
 		<ProcessBar
 			{...promotionInfo}
+			custRollOver={
+				processBarInfo?.custRollOver ?? promotionInfo.custRollOver
+			}
+			custTurnOver={
+				processBarInfo?.custTurnOver ?? promotionInfo.custTurnOver
+			}
 			RefreshProcessBar={RefreshProcessBar.bind(this, promotionInfo)}
+			config={config}
 		/>
 		<PromoRule
 			promotionInfo={promotionInfo}
-			ruleCols={ruleCols}
+			ruleCols={config?.ruleCols}
 			isList={false}
+			config={config}
 		/>
 
-		<CashBackInfo cashBackDetails={promotionInfo.cashBackDetails} />
+		<CashBackInfo
+			cashBackDetails={promotionInfo.cashBackDetails}
+			config={config}
+		/>
 		<div
 			className="text"
 			dangerouslySetInnerHTML={{
