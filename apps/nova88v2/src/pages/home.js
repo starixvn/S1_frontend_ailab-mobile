@@ -161,7 +161,11 @@ const IndexPage = () => {
 					) : null}
 					<Jackpot i18n={i18n} userInfo={userInfo} />
 					<Streaming />
-					<Bottom i18n={i18n} langId={userInfo.langId} />
+					<Bottom
+						i18n={i18n}
+						langId={userInfo.langId}
+						currencyId={userInfo.currencyId}
+					/>
 					<AddToHomePop i18n={i18n} userInfo={userInfo} />
 				</div>
 			</Layout>

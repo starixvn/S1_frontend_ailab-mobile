@@ -43,10 +43,12 @@ import casino_RedTiger from "../styles/img/rt.png";
 
 import fishing_CQ9_AB3 from "../styles/img/pd.png";
 import fish_DBF from "../styles/img/df.png";
-import fish_TAP from "../styles/img/tap.png";
+import fish_TheTyrant from "../styles/img/tap.png";
 import fish_GG from "../styles/img/ffw.png";
-import fish_SG from "../styles/img/fg.png";
+import fish_FishingGod from "../styles/img/fg.png";
 import fish_SGW from "../styles/img/fw.png";
+import fish_Oneshot from "../styles/img/of.png";
+import fish_Saviors from "../styles/img/fos.png";
 
 import livesports from "../styles/img/livesports.png";
 
@@ -60,16 +62,15 @@ import Keno from "../styles/img/keno.png";
 import Lottery from "../styles/img/lottery.png";
 import number_game from "../styles/img/numbergame.png";
 import TCG from "../styles/img/tcg.png";
-
 import kingMaker from "../styles/img/km.png";
 import amb from "../styles/img/amb.png";
 import nineW from "../styles/img/9w.png";
-
 import path from "../path";
 import { siteInfo } from "../config";
 import { defPopBoxType } from "../components/common/popbox";
 import { isEventPeriod, defCurrenyId } from "../components/common/common";
 import { eventTime } from "../components/common/eventTime";
+import { getLeaderBoardSupportCurrencyId } from "../components/ranking/def";
 
 export const productList = {
 	kiss918: {
@@ -123,20 +124,6 @@ const gameList = ({ langId, currencyName }) => {
 							spanText: "WAP",
 							specialUrl: "&device=wap",
 							hideBeforeLogin: true
-						},
-						{
-							...defGameInfo.nineW,
-							img: nineW,
-							spanTextKey: "lbl_9w",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(eventTime.nineW)
-								}
-							],
-							allowCurrency: [defCurrenyId.INR],
-							hideBeforeLogin: true,
-							useGotoGame: true
 						},
 						{
 							...defGameInfo.SabaSoccer,
@@ -227,7 +214,6 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.LIVEcasinoEVO,
 							spanText: "Evolution Gaming",
 							img: LIVEcasino_EVO,
-							tpGameType: 63,
 							eventIcon: [
 								{
 									icon: defIconType.new,
@@ -305,7 +291,6 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "nt",
 							img: casino_NetEnt,
 							path: path.casino.root,
-							tpGameType: 64,
 							eventIcon: [
 								{
 									icon: defIconType.new,
@@ -368,7 +353,6 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "rt",
 							img: casino_RedTiger,
 							path: path.casino.root,
-							tpGameType: 65,
 							eventIcon: [
 								{
 									icon: defIconType.new,
@@ -558,7 +542,8 @@ const gameList = ({ langId, currencyName }) => {
 					category: "ranking",
 					categoryIcon: "ranking",
 					translateKey: "lbl_Ranking",
-					path: path.ranking.root
+					path: path.ranking.root,
+					allowCurrency: [...getLeaderBoardSupportCurrencyId()]
 				}
 			];
 			break;
@@ -573,20 +558,6 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.Soccer,
 							img: Soccer,
 							spanTextKey: "lbl_Soccer"
-						},
-						{
-							...defGameInfo.nineW,
-							img: nineW,
-							spanTextKey: "lbl_9w",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(eventTime.nineW)
-								}
-							],
-							allowCurrency: [defCurrenyId.INR],
-							hideBeforeLogin: true,
-							useGotoGame: true
 						},
 						{
 							...defGameInfo.SabaSoccer,
@@ -677,7 +648,6 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.LIVEcasinoEVO,
 							spanText: "Evolution Gaming",
 							img: LIVEcasino_EVO,
-							tpGameType: 63,
 							eventIcon: [
 								{
 									icon: defIconType.new,
@@ -755,7 +725,6 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "nt",
 							img: casino_NetEnt,
 							path: path.casino.root,
-							tpGameType: 64,
 							eventIcon: [
 								{
 									icon: defIconType.new,
@@ -810,7 +779,6 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "rt",
 							img: casino_RedTiger,
 							path: path.casino.root,
-							tpGameType: 65,
 							eventIcon: [
 								{
 									icon: defIconType.new,
@@ -1008,7 +976,8 @@ const gameList = ({ langId, currencyName }) => {
 					category: "ranking",
 					categoryIcon: "ranking",
 					translateKey: "lbl_Ranking",
-					path: path.ranking.root
+					path: path.ranking.root,
+					allowCurrency: [...getLeaderBoardSupportCurrencyId()]
 				}
 			];
 			break;
@@ -1028,20 +997,6 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.SabaSoccer,
 							img: SabaSoccer,
 							spanTextKey: "lbl_SabaSoccer"
-						},
-						{
-							...defGameInfo.nineW,
-							img: nineW,
-							spanTextKey: "lbl_9w",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(eventTime.nineW)
-								}
-							],
-							allowCurrency: [defCurrenyId.INR],
-							hideBeforeLogin: true,
-							useGotoGame: true
 						},
 						{
 							...defGameInfo.Basketball,
@@ -1127,7 +1082,6 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.LIVEcasinoEVO,
 							spanText: "Evolution Gaming",
 							img: LIVEcasino_EVO,
-							tpGameType: 63,
 							eventIcon: [
 								{
 									icon: defIconType.new,
@@ -1276,7 +1230,6 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "rt",
 							img: casino_RedTiger,
 							path: path.casino.root,
-							tpGameType: 65,
 							eventIcon: [
 								{
 									icon: defIconType.new,
@@ -1458,7 +1411,8 @@ const gameList = ({ langId, currencyName }) => {
 					category: "ranking",
 					categoryIcon: "ranking",
 					translateKey: "lbl_Ranking",
-					path: path.ranking.root
+					path: path.ranking.root,
+					allowCurrency: [...getLeaderBoardSupportCurrencyId()]
 				}
 			];
 			break;
@@ -1470,6 +1424,11 @@ const gameList = ({ langId, currencyName }) => {
 					translateKey: "lbl_Sports",
 					items: [
 						{
+							...defGameInfo.Cricket,
+							img: Cricket,
+							spanTextKey: "lbl_Cricket"
+						},
+						{
 							...defGameInfo.Soccer,
 							img: Soccer,
 							spanTextKey: "lbl_Soccer"
@@ -1480,20 +1439,6 @@ const gameList = ({ langId, currencyName }) => {
 							spanTextKey: "lbl_SabaSoccer"
 						},
 						{
-							...defGameInfo.nineW,
-							img: nineW,
-							spanTextKey: "lbl_9w",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(eventTime.nineW)
-								}
-							],
-							allowCurrency: [defCurrenyId.INR],
-							hideBeforeLogin: true,
-							useGotoGame: true
-						},
-						{
 							...defGameInfo.Basketball,
 							img: Basketball,
 							spanTextKey: "lbl_Basketball"
@@ -1502,11 +1447,20 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.Tennis,
 							img: Tennis,
 							spanTextKey: "lbl_Tennis"
-						},
+						}
+					]
+				},
+				{
+					category: "exchange",
+					categoryIcon: "sports",
+					translateKey: "lbl_Exchange",
+					items: [
 						{
-							...defGameInfo.Cricket,
-							img: Cricket,
-							spanTextKey: "lbl_Cricket"
+							...defGameInfo.nineW,
+							img: nineW,
+							spanTextKey: "lbl_9w",
+							allowCurrency: [defCurrenyId.INR],
+							useGotoGame: true
 						}
 					]
 				},
@@ -1577,7 +1531,6 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.LIVEcasinoEVO,
 							spanText: "Evolution Gaming",
 							img: LIVEcasino_EVO,
-							tpGameType: 63,
 							eventIcon: [
 								{
 									icon: defIconType.new,
@@ -1588,19 +1541,10 @@ const gameList = ({ langId, currencyName }) => {
 							]
 						},
 						{
-							...defGameInfo.LIVEcasinoAE,
-							spanText: "AE Casino",
-							img: LIVEcasino_AE
-						},
-						{
-							...defGameInfo.LIVEcasinoAG,
-							spanText: "Asia Gaming",
-							img: LIVEcasino_AG
-						},
-						{
-							...defGameInfo.LIVEcasinoEB,
-							spanText: "eBET",
-							img: LIVEcasino_EB
+							...defGameInfo.LIVEcasino_PT,
+							spanText: "Playtech",
+							img: LIVEcasino_PT,
+							useGotoGame: true
 						},
 						{
 							...defGameInfo.LIVEcasinoDG,
@@ -1608,9 +1552,9 @@ const gameList = ({ langId, currencyName }) => {
 							img: LIVEcasino_DG
 						},
 						{
-							...defGameInfo.LIVEcasinoWM,
-							spanText: "WM Casino",
-							img: LIVEcasino_WM
+							...defGameInfo.LIVEcasinoAE,
+							spanText: "AE Casino",
+							img: LIVEcasino_AE
 						},
 						{
 							...defGameInfo.LIVEcasinoSA,
@@ -1621,6 +1565,21 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.LIVEcasinoAB,
 							spanText: "Allbet",
 							img: LIVEcasino_AB
+						},
+						{
+							...defGameInfo.LIVEcasinoAG,
+							spanText: "Asia Gaming",
+							img: LIVEcasino_AG
+						},
+						{
+							...defGameInfo.LIVEcasinoWM,
+							spanText: "WM Casino",
+							img: LIVEcasino_WM
+						},
+						{
+							...defGameInfo.LIVEcasinoEB,
+							spanText: "eBET",
+							img: LIVEcasino_EB
 						},
 						{
 							...defGameInfo.LIVEcasinoN2Live,
@@ -1649,7 +1608,6 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "nt",
 							img: casino_NetEnt,
 							path: path.casino.root,
-							tpGameType: 64,
 							eventIcon: [
 								{
 									icon: defIconType.new,
@@ -1690,14 +1648,6 @@ const gameList = ({ langId, currencyName }) => {
 							]
 						},
 						{
-							...defGameInfo.Casino_PG,
-							parameter: defGameInfo.Casino_PG,
-							spanText: "PG Soft",
-							img: casino_PG,
-							path: path.casino.root,
-							providerImgName: "pg"
-						},
-						{
 							...defGameInfo.Casino_SG,
 							parameter: defGameInfo.Casino_SG,
 							spanText: "Spadegaming",
@@ -1706,29 +1656,12 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "sg"
 						},
 						{
-							...defGameInfo.Casino_RedTiger,
-							parameter: defGameInfo.Casino_RedTiger,
-							spanText: "Red Tiger",
-							providerImgName: "rt",
-							img: casino_RedTiger,
+							...defGameInfo.Casino_YGG,
+							parameter: defGameInfo.Casino_YGG,
+							spanText: "YGGDrassil",
+							img: casino_YGG,
 							path: path.casino.root,
-							tpGameType: 65,
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(
-										eventTime.casino_RedTiger
-									)
-								}
-							]
-						},
-						{
-							...defGameInfo.Casino_PT,
-							parameter: defGameInfo.Casino_PT,
-							spanText: "Playtech",
-							img: casino_PT,
-							path: path.casino.root,
-							providerImgName: "pt"
+							providerImgName: "yg"
 						},
 						{
 							...defGameInfo.Casino_JOKER,
@@ -1737,6 +1670,39 @@ const gameList = ({ langId, currencyName }) => {
 							img: casino_JOKER,
 							path: path.casino.root,
 							providerImgName: "jk"
+						},
+						{
+							...defGameInfo.Casino_PT,
+							parameter: defGameInfo.Casino_PT,
+							spanText: "Playtech",
+							img: casino_PT,
+							path: path.casino.root,
+							providerImgName: "pt",
+							tpGameType: 46
+						},
+						{
+							...defGameInfo.Casino_GPI,
+							parameter: defGameInfo.Casino_GPI,
+							spanText: "Game Play",
+							img: casino_GPI,
+							path: path.casino.root,
+							providerImgName: "gp"
+						},
+						{
+							...defGameInfo.Casino_RedTiger,
+							parameter: defGameInfo.Casino_RedTiger,
+							spanText: "Red Tiger",
+							providerImgName: "rt",
+							img: casino_RedTiger,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_RedTiger
+									)
+								}
+							]
 						},
 						{
 							...defGameInfo.Casino_CQ9,
@@ -1755,26 +1721,18 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "icg"
 						},
 						{
-							...defGameInfo.Casino_GPI,
-							parameter: defGameInfo.Casino_GPI,
-							spanText: "Game Play",
-							img: casino_GPI,
-							path: path.casino.root,
-							providerImgName: "gp"
-						},
-						{
-							...defGameInfo.Casino_YGG,
-							parameter: defGameInfo.Casino_YGG,
-							spanText: "YGGDrassil",
-							img: casino_YGG,
-							path: path.casino.root,
-							providerImgName: "yg"
-						},
-						{
 							...defGameInfo.Casino_OW,
 							parameter: defGameInfo.Casino_OW,
 							spanText: "Saba Casino",
 							img: casino_OW
+						},
+						{
+							...defGameInfo.Casino_PG,
+							parameter: defGameInfo.Casino_PG,
+							spanText: "PG Soft",
+							img: casino_PG,
+							path: path.casino.root,
+							providerImgName: "pg"
 						}
 						// {
 						// ...defGameInfo.Casino_918Kiss,
@@ -1885,24 +1843,6 @@ const gameList = ({ langId, currencyName }) => {
 							spanTextKey: "lbl_TableGame"
 						}
 					]
-				},
-				{
-					category: "affiliate",
-					categoryIcon: "affiliate",
-					translateKey: "lbl_Affiliate",
-					href: `${siteInfo(langId).affiliateLink}`
-				},
-				{
-					category: "vip",
-					categoryIcon: "vip",
-					translateKey: "lbl_VIP",
-					path: path.vip.root
-				},
-				{
-					category: "ranking",
-					categoryIcon: "ranking",
-					translateKey: "lbl_Ranking",
-					path: path.ranking.root
 				}
 			];
 			break;
@@ -1917,20 +1857,6 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.Soccer,
 							img: Soccer,
 							spanTextKey: "lbl_Soccer"
-						},
-						{
-							...defGameInfo.nineW,
-							img: nineW,
-							spanTextKey: "lbl_9w",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(eventTime.nineW)
-								}
-							],
-							allowCurrency: [defCurrenyId.INR],
-							hideBeforeLogin: true,
-							useGotoGame: true
 						},
 						{
 							...defGameInfo.SabaSoccer,
@@ -2343,7 +2269,8 @@ const gameList = ({ langId, currencyName }) => {
 					category: "ranking",
 					categoryIcon: "ranking",
 					translateKey: "lbl_Ranking",
-					path: path.ranking.root
+					path: path.ranking.root,
+					allowCurrency: [...getLeaderBoardSupportCurrencyId()]
 				}
 			];
 	}

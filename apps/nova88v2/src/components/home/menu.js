@@ -11,7 +11,7 @@ import {
 	defTpGameType
 } from "../hook/useGetTpMaintainList";
 import api from "../../service/api";
-import { GetCurrencyName } from "../common/common";
+import { GetCurrencyName, langToCurrency } from "../common/common";
 import {
 	useGotoGame,
 	defSpecialSetting,
@@ -95,8 +95,18 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 		}
 	};
 
-	const gameArr = gameList({ langId: userInfo?.langId, currencyName }).map(
-		item => {
+	const gameArr = gameList({ langId: userInfo?.langId, currencyName })
+		?.filter(item => {
+			if (item?.allowCurrency) {
+				const currencyId = userInfo.lastLogin
+					? userInfo?.currencyId
+					: langToCurrency[userInfo?.langId];
+				return item?.allowCurrency.includes(currencyId);
+			}
+
+			return true;
+		})
+		.map(item => {
 			const _subIcon = item?.items?.filter(
 				subItem =>
 					subItem.eventIcon &&
@@ -156,8 +166,7 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 					) : null}
 				</button>
 			);
-		}
-	);
+		});
 
 	const subGameArr = gameList({
 		langId: userInfo?.langId,
@@ -247,7 +256,7 @@ const SubGame = ({
 		specialUrl,
 		tpGameType
 	}) => {
-		if (tpId === defSpecialSetting.sports_9w) {
+		if (tpId === defSpecialSetting.sports_9w && userInfo.isLogin) {
 			const result = await handleGoToGame({
 				isLogin: userInfo.isLogin,
 				langId: userInfo.langId,

@@ -1,9 +1,14 @@
 import React, { useContext } from "react";
+import { Redirect } from "@reach/router";
 import { i18nContext, userInfoContext } from "../components/common/context";
 import { SEO } from "../components/seo/seo";
 import Event from "../components/ranking/event";
 import Record from "../components/ranking/records";
-import { defBtns, defElemType } from "../components/ranking/def";
+import {
+	defBtns,
+	defElemType,
+	getLeaderBoardSupportCurrencyId
+} from "../components/ranking/def";
 import { useHandleSelect } from "../components/ranking/hook";
 import useHandleLogin from "../components/hook/useHandleLogin";
 import BtnBar from "../components/common/btnBar";
@@ -11,6 +16,7 @@ import Layout from "../components/common/layout";
 import Header from "../components/header/header";
 import { Link } from "../route/link";
 import path from "../path";
+import { langToCurrency } from "../components/common/common";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
@@ -28,6 +34,15 @@ export default () => {
 			<i className="icon icon-keyboard_arrow_left" />
 		</Link>
 	);
+
+	if (userInfo.isLogin !== false && !userInfo.lastLogin) return null;
+
+	const allowCurrencies = getLeaderBoardSupportCurrencyId();
+	const currencyId = userInfo?.currencyId ?? langToCurrency[userInfo?.langId];
+
+	if (!allowCurrencies.includes(currencyId)) {
+		return <Redirect to={`/${userInfo.langId}`} noThrow />;
+	}
 
 	return (
 		<>
