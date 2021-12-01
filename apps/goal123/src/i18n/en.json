@@ -602,6 +602,12 @@
 	"lbl_Sportsbook": "Sportsbook",
 	"lbl_Promotion_Casino": "CASINO",
 	"lbl_Promotion_All": "ALL",
-	"lbl_Promotion_Slot": "SLOT"
+	"lbl_Promotion_Slot": "SLOT",
+
+	"==============Promotion==============": "",
+	"lbl_More_Info": "MORE INFO",
+	"lbl_Apply_Now": "APPLY NOW",
+	"lbl_promo_all_promos":"ALL PROMOS",
+	"lbl_ClaimNow": "CLAIM NOW"
 
 }

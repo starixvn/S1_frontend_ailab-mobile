@@ -12,24 +12,26 @@ const SingleRecord = ({
 	promotionType,
 	formatSetting
 }) => {
+	const _depositAmount = `${i18n?.[`Currency_${currencyId}`]} ${number_format(
+		depositAmount,
+		formatSetting
+	)}`;
+
 	return canJoin &&
 		!isJoin &&
 		(promotionType === defPromotionType.reDeposit ||
 			promotionType === defPromotionType.firstDeposit) ? (
-		<div className="minAmount">
-			<div>
-				<div>{i18n?.lbl_ID}</div>
-				<div>{depositId}</div>
-			</div>
-			<div>
-				<div>{i18n?.lbl_DepositAmount}</div>
-				<div>
-					{`${i18n?.[`Currency_${currencyId}`]} ${number_format(
-						depositAmount,
-						formatSetting
-					)}`}
-				</div>
-			</div>
+		<div className="info promotionInfo minAmount">
+			<ul>
+				<li>
+					<span className="title">{i18n?.lbl_ID}</span>
+					<span>{depositId}</span>
+				</li>
+				<li>
+					<span className="title">{i18n?.lbl_DepositAmount}</span>
+					<span>{_depositAmount}</span>
+				</li>
+			</ul>
 		</div>
 	) : null;
 };

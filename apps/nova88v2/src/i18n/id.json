@@ -218,6 +218,8 @@
 	"lbl_LIVE_SPORT": "LIVE SPORTS",
 	"lbl_Game_ICG_DRAGONBALL_FISHING": "Dragonball Fishing",
 	"lbl_Game_ICG_FISHING_OF_SAVIORS": "Fishing Of Saviors",
+	"lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS":"The Tyrant And The Princess",
+	"lbl_Oneshot_Fishing":"Oneshot Fishing",
 	"lbl_FishingSG1": "Pancingan Tuhan",
 	"lbl_FishingSG2": "Perang Pancing",
 	"lbl_TableGame": "Table Game",
@@ -246,7 +248,9 @@
 	"lbl_KingMaker": "King Maker",
 	"lbl_Amb": "AMB Poker",
 	"lbl_Games": "Permainan",
-	"lbl_9w": "9W Sports",
+	"lbl_9w" : "Nova88 Exchange",
+	"lbl_Exchange" : "Bertukar",
+	
 	"-==================-==================Casino-==================-=====================": "",
 	"lbl_AllProvider": "Semua Platform",
 	"lbl_AllGameType": "Semua Kategori",
@@ -492,6 +496,9 @@
 	"lbl_Special": "SPESIAL",
 	"lbl_Sportsbook": "Sportsbook",
 	"lbl_Promotion_Slot": "SLOT",
+	"lbl_More_Info": "RINCIAN",
+	"lbl_Apply_Now": "MELAMAR",
+	"lbl_promo_all_promos":"SEMUA PROMO",
 
 	"-============================================Streaming===================================": "",
 

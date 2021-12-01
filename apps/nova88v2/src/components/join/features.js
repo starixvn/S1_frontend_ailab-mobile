@@ -4,8 +4,11 @@ import PropTypes from "prop-types";
 const FeaturePanel = ({ langId }) => {
 	if (langId === "cs") return <CS />;
 	if (langId === "th") return <TH />;
+	if (langId === "th_en") return <TH_EN />;
 	if (langId === "id") return <ID />;
+	if (langId === "id_en") return <ID_EN />;
 	if (langId === "hi") return <HI />;
+	if (langId === "hi_en") return <HI_EN />;
 	return <EN />;
 };
 
@@ -26,6 +29,44 @@ const EN = () => {
 			<ul>
 				<li>
 					<span>68%</span> LIVE CASINO WELCOME BONUS
+				</li>
+				<li>
+					<span>100%</span> SLOTS WELCOME BONUS
+				</li>
+				<li>
+					DAILY REDEPOSIT BONUS UP TO <span>20%</span>
+				</li>
+				<li>
+					DAILY CASH REBATE UP TO <span>1.20%</span>
+				</li>
+			</ul>
+			<div className="title">
+				ENJOY NOVA88 VIP EXCLUSIVE BONUS & REBATES
+			</div>
+			<ul>
+				<li>
+					Multiple product platforms with better odds and full
+					gameplay experience.
+				</li>
+				<li>
+					Speedy deposit and withdrawal with multiple deposit option.
+				</li>
+			</ul>
+		</div>
+	);
+};
+
+const TH_EN = () => {
+	return (
+		<div className="features">
+			<div className="title">
+				<span className="icon icon-star-full" />
+				FEATURES
+			</div>
+			<div className="title">MEMBER BENEFITS</div>
+			<ul>
+				<li>
+					<span>100%</span> LIVE CASINO WELCOME BONUS
 				</li>
 				<li>
 					<span>100%</span> SLOTS WELCOME BONUS
@@ -119,6 +160,44 @@ const TH = () => {
 	);
 };
 
+const ID_EN = () => {
+	return (
+		<div className="features">
+			<div className="title">
+				<span className="icon icon-star-full" />
+				FEATURES
+			</div>
+			<div className="title">MEMBER BENEFITS</div>
+			<ul>
+				<li>
+					<span>150%</span> LIVE CASINO WELCOME BONUS
+				</li>
+				<li>
+					<span>100%</span> SLOTS WELCOME BONUS
+				</li>
+				<li>
+					DAILY REDEPOSIT BONUS UP TO <span>20%</span>
+				</li>
+				<li>
+					DAILY CASH REBATE UP TO <span>1.20%</span>
+				</li>
+			</ul>
+			<div className="title">
+				ENJOY NOVA88 VIP EXCLUSIVE BONUS & REBATES
+			</div>
+			<ul>
+				<li>
+					Multiple product platforms with better odds and full
+					gameplay experience.
+				</li>
+				<li>
+					Speedy deposit and withdrawal with multiple deposit option.
+				</li>
+			</ul>
+		</div>
+	);
+};
+
 const ID = () => {
 	return (
 		<div className="features">
@@ -155,6 +234,38 @@ const ID = () => {
 	);
 };
 
+const HI_EN = () => {
+	return (
+		<div className="features">
+			<div className="title">
+				<span className="icon icon-star-full" />
+				FEATURES
+			</div>
+			<div className="title">MEMBER BENEFITS</div>
+			<ul>
+				<li>
+					<span>150%</span> SLOTS WELCOME BONUS
+				</li>
+				<li>
+					DAILY REDEPOSIT BONUS UP TO <span>20%</span>
+				</li>
+			</ul>
+			<div className="title">
+				ENJOY NOVA88 VIP EXCLUSIVE BONUS & REBATES
+			</div>
+			<ul>
+				<li>
+					Multiple product platforms with better odds and full
+					gameplay experience.
+				</li>
+				<li>
+					Speedy deposit and withdrawal with multiple deposit option.
+				</li>
+			</ul>
+		</div>
+	);
+};
+
 const HI = () => {
 	return (
 		<div className="features">
@@ -165,13 +276,7 @@ const HI = () => {
 			<div className="title">MEMBER BENEFITS</div>
 			<ul>
 				<li>
-					<span>55%</span> NOVA88 स्टार्टर पैक
-				</li>
-				<li>
-					<span>68%</span> लाइव कैसीनो स्वागत बोनस
-				</li>
-				<li>
-					<span>100%</span> स्लॉट्स स्वागत बोनस
+					<span>150%</span> स्लॉट्स स्वागत बोनस
 				</li>
 				<li>
 					दैनिक पुनर्वितरण बोनस <span>20%</span> तक

@@ -8,7 +8,7 @@ import {
 } from "../common/context";
 import path from "../../path";
 
-const ShortcutBar = () => {
+const ShortcutBar = ({ closeSubMenu }) => {
 	const { i18n } = useContext(i18nContext);
 	const { setNav } = useContext(navContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -28,7 +28,7 @@ const ShortcutBar = () => {
 			_passProps = { ...passProps, to: "/", onClick: ShowLogin };
 		}
 
-		return <Link {..._passProps} onClick={() => setNav(null)} />;
+		return <Link {..._passProps} onClick={closeSubMenu} />;
 	};
 
 	return (

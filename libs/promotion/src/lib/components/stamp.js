@@ -6,14 +6,17 @@ export const Stamp = ({
 	_isNew,
 	filterType,
 	canJoin,
-	uiSetting
+	uiSetting = {}
 }) => {
 	const _canJoin = !(filterType === defFilterType.specialBonus && !canJoin);
 
-	return (
-		<>
-			{_isClaimed && <div className="claimed" />}
-			{_canJoin && _isNew && <div className="new active" />}
-		</>
-	);
+	if (_isClaimed && uiSetting.defStamp?.claimed) {
+		return <div className={uiSetting.defStamp?.claimed} />;
+	}
+
+	if (_canJoin && _isNew && uiSetting.defStamp?.new) {
+		return <div className={uiSetting.defStamp?.new} />;
+	}
+
+	return null;
 };

@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { i18nContext, popBoxContext } from "Context";
 
 export const useHandlePopBox = () => {
 	const { i18n } = useContext(i18nContext);
-	const { popBox, setPopBox } = useContext(popBoxContext);
+	const { setPopBox } = useContext(popBoxContext);
 
 	const clickClose = () => {
 		setPopBox({ isOpen: false });
@@ -11,8 +11,7 @@ export const useHandlePopBox = () => {
 
 	const handleErrorPopBox = ({
 		message = i18n.msg_ApiServerError,
-		errorCode = 999,
-		uiSetting = {}
+		errorCode = 999
 	}) => {
 		setPopBox({
 			isOpen: true,
@@ -21,9 +20,7 @@ export const useHandlePopBox = () => {
 			hasBtn: true,
 			btnBar: (
 				<div className="btn-group">
-					<button
-						onClick={clickClose}
-						className={uiSetting.popBox?.submitBtn ?? "btn-check"}>
+					<button onClick={clickClose} className="btn-check">
 						{i18n.lbl_Close}
 					</button>
 				</div>

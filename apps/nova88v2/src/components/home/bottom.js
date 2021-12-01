@@ -5,10 +5,13 @@ import { siteInfo, cloudBannerImgURL } from "../../config";
 import { Link } from "../../route/link";
 import appDownloadImg from "../../styles/img/app/appmodule.jpg";
 import path from "../../path";
+import { defCurrenyId, langToCurrency } from "../common/common";
 import { useGetSEODatas } from "../seo/seo";
 // import PagcorLicensee from "../../styles/img/licenses.png";
 
-const Bottom = ({ i18n, langId }) => {
+const Bottom = ({ i18n, langId, currencyId }) => {
+	const _currencyId = currencyId ?? langToCurrency[langId];
+
 	return (
 		<>
 			<Link to={path.appDownload.root}>
@@ -24,7 +27,12 @@ const Bottom = ({ i18n, langId }) => {
 					className="title"
 					href={`${siteInfo(langId).affiliateLink}`}
 					target="_blank"
-					rel="noreferrer noopener">
+					rel="noreferrer noopener"
+					style={
+						_currencyId === defCurrenyId.INR
+							? { pointerEvents: "none" }
+							: null
+					}>
 					{i18n.lbl_AffiliateProgram}
 				</a>
 				<p>{i18n.lbl_Cookie_Reminder}</p>

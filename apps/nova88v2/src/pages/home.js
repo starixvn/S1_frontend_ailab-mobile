@@ -30,6 +30,7 @@ import JoinLoginBar from "../components/home/joinLoginBar";
 import Logo from "../components/common/logo";
 import Jackpot from "../components/home/jackpot";
 import AddToHomePop from "../components/home/addToHomePop";
+import PromotionWrapper from "../components/promotion/common/wrapper";
 
 const IndexPage = () => {
 	const navigate = useNavigate();
@@ -135,7 +136,7 @@ const IndexPage = () => {
 	]);
 
 	return (
-		<>
+		<PromotionWrapper>
 			<Layout header={<Header />}>
 				{userInfo.isLogin ? <HeaderShortcut i18n={i18n} /> : null}
 				<Slider />
@@ -161,7 +162,11 @@ const IndexPage = () => {
 					) : null}
 					<Jackpot i18n={i18n} userInfo={userInfo} />
 					<Streaming />
-					<Bottom i18n={i18n} langId={userInfo.langId} />
+					<Bottom
+						i18n={i18n}
+						langId={userInfo.langId}
+						currencyId={userInfo.currencyId}
+					/>
 					<AddToHomePop i18n={i18n} userInfo={userInfo} />
 				</div>
 			</Layout>
@@ -171,7 +176,7 @@ const IndexPage = () => {
 				isLogin={userInfo.isLogin}
 				getFromAPI={userInfo.isLogin === false}
 			/>
-		</>
+		</PromotionWrapper>
 	);
 };
 

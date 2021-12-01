@@ -20,10 +20,10 @@ import LangDropdown from "../common/dropdown.language";
 import { api_SetLanguage } from "../../service/api/account";
 import { useGetBalance } from "./hook";
 
-export default () => {
+export default ({ handleSideMenuPanel, isOpenSideMenu }) => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
-	const { nav, setNav } = useContext(navContext);
+	const { setNav } = useContext(navContext);
 	const [isOpenSubMenu, setIsOpenSubMenu] = useState([]);
 	const { setPopBox } = useContext(popBoxContext);
 	const { maintainList } = useGetTpMaintainList();
@@ -42,7 +42,7 @@ export default () => {
 	};
 
 	const closeNavPanel = () => {
-		setNav(() => null);
+		handleSideMenuPanel(false);
 		setIsOpenSubMenu([]);
 	};
 
@@ -60,10 +60,8 @@ export default () => {
 		}
 	};
 
-	const openPanel = nav === defNavPanel.subMenu;
-
 	return (
-		<div className={`menu${openPanel ? " active" : ""}`}>
+		<div className={`menu${isOpenSideMenu ? " active" : ""}`}>
 			<button onClick={closeNavPanel} className="icon icon-close" />
 
 			<div className="menuTop">
@@ -96,7 +94,9 @@ export default () => {
 				/>
 			</div>
 
-			{userInfo.isLogin ? <ShortcutBar /> : null}
+			{userInfo.isLogin && (
+				<ShortcutBar closeSubMenu={() => handleSideMenuPanel(false)} />
+			)}
 			<SubMenuList
 				i18n={i18n}
 				userInfo={userInfo}

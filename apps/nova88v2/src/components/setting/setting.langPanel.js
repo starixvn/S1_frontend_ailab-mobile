@@ -1,19 +1,12 @@
 import React, { useContext, useRef, useEffect } from "react";
 import { popBoxContext } from "Context";
 import PropTypes from "prop-types";
-import { siteInfo } from "../../config";
 import DefLangs from "../../datas/defLangs";
 import api from "../../service/api";
 
-const languageList = () => {
-	const _siteInfo = siteInfo();
-	return _siteInfo.siteCountryList.map(l => DefLangs[l]);
-};
-
 const LanguageList = ({ userInfo, setUserInfo, i18n }) => {
 	const { setPopBox } = useContext(popBoxContext);
-	const _languageList = languageList();
-
+	const languageList = Object.values(DefLangs);
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -64,20 +57,31 @@ const LanguageList = ({ userInfo, setUserInfo, i18n }) => {
 		}
 	};
 
-	const arr = _languageList.map(item => {
-		const isSelected = item.lang.some(l => l.value === userInfo.langId);
-		return (
-			<Item
-				key={`lang-${item.country}`}
-				lang={item.lang}
-				img={item.img}
-				country={item.country}
-				userLanguage={userInfo.langId}
-				selectLanguage={selectLanguage}
-				isSelected={isSelected}
-			/>
-		);
-	});
+	const availableCurrencyId = languageList.find(
+		item => item.currencyId === userInfo.currencyId
+	);
+
+	const arr = languageList
+		.filter(item =>
+			userInfo.isLogin && userInfo.currencyId && availableCurrencyId
+				? item.currencyId === userInfo.currencyId
+				: true
+		)
+		.map(item => {
+			const isSelected = item.lang.some(l => l.value === userInfo.langId);
+			return (
+				<Item
+					key={`lang-${item.country}`}
+					lang={item.lang}
+					img={item.img}
+					country={item.country}
+					userLanguage={userInfo.langId}
+					selectLanguage={selectLanguage}
+					isSelected={isSelected}
+					countryName={item.countryName}
+				/>
+			);
+		});
 	return <div className="countryNew">{arr}</div>;
 };
 
@@ -93,7 +97,8 @@ const Item = ({
 	country,
 	userLanguage,
 	selectLanguage,
-	isSelected
+	isSelected,
+	countryName
 }) => {
 	const langArr = lang.map(l => (
 		<button
@@ -106,7 +111,10 @@ const Item = ({
 
 	return (
 		<div className={isSelected ? "active" : ""}>
-			<img src={img} alt={country} />
+			<div className="countryName">
+				<img src={img} alt={country} />
+				{countryName}
+			</div>
 			{langArr}
 		</div>
 	);
@@ -123,7 +131,8 @@ Item.propTypes = {
 	selectLanguage: PropTypes.func.isRequired,
 	img: PropTypes.string.isRequired,
 	country: PropTypes.string.isRequired,
-	isSelected: PropTypes.bool
+	isSelected: PropTypes.bool,
+	countryName: PropTypes.string.isRequired
 };
 
 export default LanguageList;

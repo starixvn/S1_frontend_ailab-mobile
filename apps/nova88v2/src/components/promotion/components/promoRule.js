@@ -1,9 +1,8 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext } from "react";
 import RemainTime from "../common/remainTime";
 import { number_format } from "../common/common";
 import { defRuleCols, defPromotionType } from "../common/def";
 import { configContext } from "../common/context";
-import ProcessBar from "./processBar";
 
 const visitorCurrency = {
 	en: 2,
@@ -16,7 +15,12 @@ const visitorCurrency = {
 	th_en: 4
 };
 
-const MinAmount = ({ requiredAmount, displayText, formatSetting, isList }) => {
+const MinAmount = ({
+	requiredAmount,
+	displayText,
+	formatSetting,
+	showIcon
+}) => {
 	const { userInfo, i18n } = useContext(configContext);
 	const _currencyId = userInfo.isLogin
 		? userInfo.currencyId
@@ -28,7 +32,7 @@ const MinAmount = ({ requiredAmount, displayText, formatSetting, isList }) => {
 	return (
 		requiredAmount > 0 && (
 			<div>
-				<div className={isList ? "icon icon-icon32px_money" : ""}>
+				<div className={showIcon ? "icon icon-icon32px_money" : ""}>
 					{displayText?.toUpperCase()}
 				</div>
 				<div>{value}</div>
@@ -37,9 +41,9 @@ const MinAmount = ({ requiredAmount, displayText, formatSetting, isList }) => {
 	);
 };
 
-const RemainingTime = ({ promotionInfo, i18n = {}, isLogin, isList }) => (
+const RemainingTime = ({ promotionInfo, i18n = {}, isLogin, showIcon }) => (
 	<div>
-		<div className={isList ? "icon icon-icon32px_time" : ""}>
+		<div className={showIcon ? "icon icon-icon32px_time" : ""}>
 			{i18n?.lbl_RemainingTime?.toUpperCase()}
 		</div>
 		<div>
@@ -52,21 +56,21 @@ const RemainingTime = ({ promotionInfo, i18n = {}, isLogin, isList }) => (
 	</div>
 );
 
-const KeyValue = ({ value, displayText, icon, isList }) => (
+const KeyValue = ({ value, displayText, icon, showIcon }) => (
 	<div>
-		<div className={isList ? icon : ""}>{displayText?.toUpperCase()}</div>
+		<div className={showIcon ? icon : ""}>{displayText?.toUpperCase()}</div>
 		<div>{value}</div>
 	</div>
 );
 
-const Bonus = ({ value, displayText, bonusType, icon, isList }) => {
+const Bonus = ({ value, displayText, bonusType, icon, showIcon }) => {
 	const { userInfo, i18n } = useContext(configContext);
 	const _currencyId = userInfo.isLogin
 		? userInfo.currencyId
 		: visitorCurrency[userInfo.langId];
 	return (
 		<div>
-			<div className={isList ? icon : ""}>
+			<div className={showIcon ? icon : ""}>
 				{displayText?.toUpperCase()}
 			</div>
 			{bonusType === 1 ? (
@@ -78,7 +82,7 @@ const Bonus = ({ value, displayText, bonusType, icon, isList }) => {
 	);
 };
 
-const MaxBonus = ({ value, displayText, bonusType, icon, isList }) => {
+const MaxBonus = ({ value, displayText, bonusType, icon, showIcon }) => {
 	const { userInfo, i18n } = useContext(configContext);
 	const _currencyId = userInfo.isLogin
 		? userInfo.currencyId
@@ -86,7 +90,7 @@ const MaxBonus = ({ value, displayText, bonusType, icon, isList }) => {
 	if (bonusType === 2) return null;
 	return (
 		<div>
-			<div className={isList ? icon : ""}>
+			<div className={showIcon ? icon : ""}>
 				{displayText?.toUpperCase()}
 			</div>
 			<div>{`${i18n[`Currency_${_currencyId}`]} ${value}`}</div>
@@ -99,7 +103,7 @@ const defElems = ({
 	i18n = {},
 	isLogin,
 	formatSetting,
-	isList
+	showIcon
 }) => {
 	const isStaticOrRebate =
 		promotionInfo.promotionType === defPromotionType.static ||
@@ -112,7 +116,7 @@ const defElems = ({
 				requiredAmount={promotionInfo.requiredAmount}
 				displayText={i18n?.lbl_Vip_Minimum_Deposit_Count}
 				formatSetting={formatSetting}
-				isList={isList}
+				showIcon={showIcon}
 			/>
 		),
 		[defRuleCols.remainingTime]: (
@@ -121,7 +125,7 @@ const defElems = ({
 				promotionInfo={promotionInfo}
 				i18n={i18n}
 				isLogin={isLogin}
-				isList={isList}
+				showIcon={showIcon}
 			/>
 		),
 		[defRuleCols.rollOver]: (
@@ -129,9 +133,9 @@ const defElems = ({
 				key={`promo-rule-${defRuleCols.rollOver}`}
 				i18n={i18n}
 				displayText={i18n?.lbl_RollOver}
-				isList={isList}
 				icon="icon icon-icon32px_"
 				value={`${promotionInfo.rollOver}x`}
+				showIcon={showIcon}
 			/>
 		),
 		[defRuleCols.bonus]: !isStaticOrRebate && (
@@ -141,7 +145,7 @@ const defElems = ({
 				value={number_format(promotionInfo.bonus, formatSetting)}
 				icon="icon icon-promotion"
 				bonusType={promotionInfo.bonusType}
-				isList={isList}
+				showIcon={showIcon}
 			/>
 		),
 		[defRuleCols.maxBonus]: !isStaticOrRebate && (
@@ -151,57 +155,32 @@ const defElems = ({
 				value={number_format(promotionInfo.maxBonus, formatSetting)}
 				icon="icon icon-icon32px_money"
 				bonusType={promotionInfo.bonusType}
-				isList={isList}
+				showIcon={showIcon}
 			/>
 		)
 	};
 };
 
-export default ({ ruleCols, promotionInfo, isList = true }) => {
+export default ({
+	ruleCols,
+	promotionInfo,
+	className = "rolloverList",
+	showIcon = false
+}) => {
 	const {
 		formatSetting,
 		userInfo: { isLogin },
-		i18n,
-		api
+		i18n
 	} = useContext(configContext);
+
 	const allElems = defElems({
 		promotionInfo,
 		i18n,
 		isLogin,
 		formatSetting,
-		isList
+		showIcon
 	});
-	const isMountedRef = useRef(null);
-	const RefreshProcessBar = ({ bonusCode, tpId, categoryId }) => {
-		api.promotion
-			.GetCustSpecificBonus({
-				BonusCode: bonusCode,
-				TpId: tpId,
-				PromoCategoryId: categoryId
-			})
-			.then(res => {
-				if (
-					isMountedRef.current &&
-					res.data.errorCode === 0 &&
-					res.data.data
-				) {
-					setPromotionInfo(prevS => ({
-						...prevS,
-						custRollOver: res.data.data.rollover,
-						custTurnOver: res.data.data.turnover
-					}));
-				}
-			});
-	};
 
-	const rows = ruleCols.map(col => allElems[col]);
-	return (
-		<div className={isList ? "rollover" : "rolloverList"}>
-			{rows}
-			<ProcessBar
-				{...promotionInfo}
-				RefreshProcessBar={RefreshProcessBar.bind(this, promotionInfo)}
-			/>
-		</div>
-	);
+	const rows = ruleCols?.map(col => allElems[col]);
+	return <div className={className}>{rows}</div>;
 };

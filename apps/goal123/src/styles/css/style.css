@@ -903,7 +903,7 @@ main .sideBarNew div > button img {
           align-items: center;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 1vw 2vw;
+  padding: 2vw;
 }
 
 .dropdown:before {
@@ -935,7 +935,7 @@ main .sideBarNew div > button img {
   width: 100%;
   margin-left: -1px;
   left: 0;
-  top: calc(12vw + 1px);
+  top: calc(8vw + 1px);
   max-height: 45vw;
   overflow-y: scroll;
 }
@@ -1009,6 +1009,10 @@ main .sideBarNew div > button img {
           flex: 4;
   text-align: left;
   margin-left: 2vw;
+}
+
+.dropdown.countryCode {
+  padding: 0 2vw;
 }
 
 #popup {
@@ -1462,6 +1466,10 @@ main .sideBarNew div > button img {
 
 #popup.cryptoAddpop .popTxt .infoModule.parts .btn-group button, #popup.cryptoAddpop .popTxt .infoModule.parts .btn-group a {
   font-size: 3.5vw;
+}
+
+#popup.cryptoAddpop .popTxt .infoModule .icon-module {
+  top: .6vw;
 }
 
 #popup.cryptopop .popTxt {
@@ -2323,7 +2331,10 @@ main .sideBarNew div > button img {
 }
 
 .avatar img {
-  width: 30vw;
+  width: 26vw;
+  padding: 5vw;
+  position: relative;
+  z-index: 1;
 }
 
 .avatar div {
@@ -2331,6 +2342,41 @@ main .sideBarNew div > button img {
   padding: 1vw;
   border-radius: 5px;
   text-align: center;
+}
+
+.avatar .circle {
+  position: absolute;
+  width: 30vw;
+  height: 30vw;
+  left: calc(50% - 16vw);
+  top: calc(50% - 21vw);
+  border-radius: 50%;
+  background: url(../img/vip/vipbg.png) center/contain;
+  -webkit-animation: breathing alternate 2s infinite;
+          animation: breathing alternate 2s infinite;
+  z-index: 0;
+}
+
+@-webkit-keyframes breathing {
+  0% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes breathing {
+  0% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
 }
 
 .viplv {
@@ -2601,7 +2647,7 @@ main .sideBarNew div > button img {
 .inputBox > .icon-module {
   position: absolute;
   right: 0;
-  top: 8px;
+  top: 2vw;
   color: #6f7a8e;
 }
 
@@ -2637,6 +2683,10 @@ main .sideBarNew div > button img {
   -webkit-transform: translateY(15%);
           transform: translateY(15%);
   margin-right: 0;
+}
+
+.inputBox .icon-member::before {
+  font-size: 5vw !important;
 }
 
 .LoginRule {
@@ -3139,6 +3189,19 @@ main .sideBarNew div > button img {
   font-weight: bold;
   bottom: 2vw;
   width: 100%;
+}
+
+.account.open {
+  background: #fff;
+  border: 1px solid #6395f1;
+}
+
+.account.open .nickname {
+  color: #1f3258;
+}
+
+.account.open .icon-crypto {
+  color: #4e6ca8;
 }
 
 .smallTitle {
@@ -6847,6 +6910,31 @@ span.important {
           align-items: center;
 }
 
+.depositModule_mobile .selectModule > div .checkCrypto,
+.depositModule_online .selectModule > div .checkCrypto,
+.depositModule_local .selectModule > div .checkCrypto,
+.depositModule_topupMobile .selectModule > div .checkCrypto,
+.depositModule_Crpyto .selectModule > div .checkCrypto {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.depositModule_mobile .selectModule > div .checkCrypto > div,
+.depositModule_online .selectModule > div .checkCrypto > div,
+.depositModule_local .selectModule > div .checkCrypto > div,
+.depositModule_topupMobile .selectModule > div .checkCrypto > div,
+.depositModule_Crpyto .selectModule > div .checkCrypto > div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 50vw;
+}
+
 .depositModule_mobile .selectModule > div .bankName,
 .depositModule_online .selectModule > div .bankName,
 .depositModule_local .selectModule > div .bankName,
@@ -6970,7 +7058,6 @@ span.important {
 .depositModule_topupMobile .inputBox .dropdown > .dropdown-container,
 .depositModule_Crpyto .inputBox .dropdown > .dropdown-container {
   background: #bfc9da;
-  top: calc(6vw + 1px) !important;
 }
 
 .depositModule_mobile .note,
@@ -8568,5 +8655,243 @@ span.important {
 .Join .Terms input[type="checkbox"]:checked + label > div,
 .Login .Terms input[type="checkbox"]:checked + label > div {
   background: #1e85ec;
+}
+
+.profileInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.profileInfo > div {
+  background: #e2e2e2;
+  border-radius: 5px;
+  padding: 5vw;
+}
+
+.profileInfo > div .title {
+  color: #1f3258;
+  margin: 0 0 2vw 0;
+}
+
+.profileInfo .securityRate {
+  margin: 0 0 2vw;
+}
+
+.profileInfo .securityRate .title.weak span {
+  color: #d83b35;
+}
+
+.profileInfo .securityRate .title.weak ~ .rateBar > div:nth-child(1)::before {
+  background: #d83b35;
+}
+
+.profileInfo .securityRate .title.normal span {
+  color: #fab617;
+}
+
+.profileInfo .securityRate .title.normal ~ .rateBar > div:nth-child(1)::before {
+  background: #fab617;
+}
+
+.profileInfo .securityRate .title.normal ~ .rateBar > div:nth-child(2)::before {
+  background: #fab617;
+}
+
+.profileInfo .securityRate .title.strong span {
+  color: #259076;
+}
+
+.profileInfo .securityRate .title.strong ~ .rateBar > div::before {
+  background: #259076;
+}
+
+.profileInfo .securityRate .title span {
+  margin-left: 2vw;
+}
+
+.profileInfo .securityRate .rateBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.profileInfo .securityRate .rateBar > div {
+  margin: 2vw 2vw 0 0;
+}
+
+.profileInfo .securityRate .rateBar > div::before {
+  content: "";
+  display: block;
+  width: 75px;
+  height: 10px;
+  background: #b2b2b2;
+  border-radius: 5px;
+}
+
+.profileInfo .securityRate .rateBar > div:nth-child(3) {
+  margin-right: 0;
+}
+
+.profileInfo .verification .items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.profileInfo .verification .items > div {
+  background: #f3f3f3;
+  width: 14vw;
+  height: 14vw;
+  border-radius: 7vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  margin-right: 2vw;
+  cursor: pointer;
+}
+
+.profileInfo .verification .items > div img {
+  width: 8vw;
+}
+
+.profileInfo .verification .items > div .icon {
+  position: absolute;
+  bottom: -1vw;
+  right: -1vw;
+  width: 5vw;
+  height: 5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 3vw;
+  color: #fff;
+}
+
+.profileInfo .verification .items > div .icon::before {
+  font-size: 3vw;
+}
+
+.profileInfo .verification .items > div .icon-checkmark {
+  background: #259076;
+  padding: 1px;
+  display: none;
+}
+
+.profileInfo .verification .items > div .icon-money {
+  background: #fab617;
+  padding: 1px;
+}
+
+.profileInfo .verification .items > div.active {
+  background: #b2b2b2;
+  cursor: unset;
+}
+
+.profileInfo .verification .items > div.active .icon-checkmark {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.profileInfo .verification .items > div.active .icon-money {
+  display: none;
+}
+
+.profileInfo .verification .items > div.open .itemInfo {
+  display: block;
+  opacity: 1;
+}
+
+.profileInfo .verification .items > div .itemInfo {
+  background: rgba(78, 108, 168, 0.95);
+  color: #e8e8e8;
+  padding: 3vw;
+  font-size: 3.5vw;
+  border-radius: 5px;
+  z-index: 1;
+  position: absolute;
+  top: 15vw;
+  left: -2vw;
+  width: 80vw;
+  display: none;
+  opacity: 0;
+}
+
+.profileInfo .verification .items > div .itemInfo::before {
+  content: "";
+  position: absolute;
+  top: -3.35vw;
+  left: 5.5vw;
+  border-left: 3.5vw solid transparent;
+  border-right: 3.5vw solid transparent;
+  border-bottom: 3.5vw solid rgba(78, 108, 168, 0.9);
+}
+
+.profileInfo .verification .items > div .itemInfo .title {
+  display: block;
+  font-weight: bold;
+  color: #fff;
+}
+
+.profileInfo .verification .items > div.email .itemInfo {
+  -webkit-transform: translateX(-16vw);
+          transform: translateX(-16vw);
+}
+
+.profileInfo .verification .items > div.email .itemInfo::before {
+  left: 21.5vw;
+}
+
+.profileInfo .verification .items > div.phone .itemInfo {
+  -webkit-transform: translateX(-32vw);
+          transform: translateX(-32vw);
+}
+
+.profileInfo .verification .items > div.phone .itemInfo::before {
+  left: 37.5vw;
+}
+
+.profileInfo ~ .info ul li {
+  float: unset;
+  width: 100%;
+  margin: 0 0 2vw 0;
+}
+
+.profileInfo ~ .info ul li .otpBtn {
+  background: #fab617;
+  border-radius: 3px;
+  padding: 1.5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 1vw;
+}
+
+.profileInfo ~ .info ul li span img {
+  margin-left: 1vw;
 }
 /*# sourceMappingURL=style.css.map */

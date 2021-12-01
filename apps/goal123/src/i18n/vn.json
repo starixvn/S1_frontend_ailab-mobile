@@ -602,6 +602,11 @@
 	"lbl_Sportsbook": "THỂ THAO",
 	"lbl_Promotion_Casino": "SÒNG BÀI",
 	"lbl_Promotion_All": "HIỂN THỊ TẤT CẢ",
-	"lbl_Promotion_Slot": "QUAY HŨ"
+	"lbl_Promotion_Slot": "QUAY HŨ",
 
+	"==============Promotion==============": "",
+	"lbl_More_Info": "THÊM THÔNG TIN",
+	"lbl_Apply_Now": "THAM GIA NGAY",
+	"lbl_promo_all_promos":"TẤT CẢ KHUYẾN MÃI",
+	"lbl_ClaimNow": "NHẬN NGAY"
 }

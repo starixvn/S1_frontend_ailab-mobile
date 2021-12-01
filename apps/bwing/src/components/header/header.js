@@ -1,10 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "@reach/router";
 import {
 	userInfoContext,
 	i18nContext,
 	popBoxContext,
-	defNavPanel,
 	navContext,
 	rootContext
 } from "../common/context";
@@ -14,8 +13,6 @@ import { LOGOUT } from "../../service/auth";
 import Logo from "../img/logo";
 import { useGetBalance } from "./hook";
 import AppDownloadHint from "./appDownloadHint";
-import JoinPanel from "../join/join.refactor";
-import LoginPanel from "../login/login";
 import Filter from "./filter";
 import vip1 from "../../styles/img/vip/vip1.png";
 import vip2 from "../../styles/img/vip/vip2.png";
@@ -24,13 +21,8 @@ import vip4 from "../../styles/img/vip/vip4.png";
 import vip5 from "../../styles/img/vip/vip5.png";
 import vip6 from "../../styles/img/vip/vip6.png";
 
-export default ({
-	hideLogo,
-	title,
-	hideModal,
-	selCategory,
-	handleSelectCategory
-}) => {
+export default ({ hideLogo, title, selCategory, handleSelectCategory }) => {
+	const [isOpenSideMenu, setIsOpenSideMenu] = useState(false);
 	const { i18n } = useContext(i18nContext);
 	const { root } = useContext(rootContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -43,8 +35,8 @@ export default ({
 		setPopBox
 	});
 
-	const onClickSubMenu = () => {
-		setNav(() => defNavPanel.subMenu);
+	const handleSideMenuPanel = isOpen => {
+		setIsOpenSideMenu(isOpen);
 	};
 
 	const handleLogout = () => {
@@ -64,18 +56,13 @@ export default ({
 			<AppDownloadHint i18n={i18n} root={root} />
 			<div className="headerT">
 				<BeforeLogin
-					onClickSubMenu={onClickSubMenu}
+					onClickSubMenu={() => handleSideMenuPanel(true)}
 					isShow={userInfo.isLogin === false}
-					i18n={i18n}
-					currencyId={userInfo.currencyId}
-					userName={userInfo.userName}
-					allBalance={allBalance}
 					title={title}
-					hideModal={hideModal}
 					hideLogo={hideLogo}
 				/>
 				<AfterLogin
-					onClickSubMenu={onClickSubMenu}
+					onClickSubMenu={() => handleSideMenuPanel(true)}
 					isShow={userInfo.isLogin === true}
 					hideLogo={hideLogo}
 					i18n={i18n}
@@ -94,19 +81,15 @@ export default ({
 					selected={selCategory.type}
 				/>
 			)}
-			<SubMenu />
+			<SubMenu
+				handleSideMenuPanel={handleSideMenuPanel}
+				isOpenSideMenu={isOpenSideMenu}
+			/>
 		</header>
 	);
 };
 
-const BeforeLogin = ({
-	onClickSubMenu,
-	isShow,
-	title,
-	hideModal,
-	i18n,
-	hideLogo
-}) => {
+const BeforeLogin = ({ onClickSubMenu, isShow, title, hideLogo }) => {
 	return isShow ? (
 		<div className="headerTLogout">
 			<div className="close noPos" onClick={onClickSubMenu}>
@@ -123,33 +106,24 @@ const BeforeLogin = ({
 					<Logo />
 				</Link>
 			)}
-			{!hideModal && (
-				<div className="headerButton">
-					<LoginPanel
-						hideBtn={true}
-						ButtonTitle={i18n.lbl_Login.toUpperCase()}
-					/>
-					<JoinPanel hideBtn={true} />
-				</div>
-			)}
 		</div>
 	) : null;
 };
 
 const AfterLogin = ({
+	onClickSubMenu,
+	isShow,
 	i18n,
 	currencyId,
 	userName,
+	userLevel,
 	allBalance,
-	isShow,
-	onClickSubMenu,
 	handleLogout,
 	hideLogo,
 	title,
-	userLevel,
 	vipImg
 }) =>
-	isShow ? (
+	isShow && (
 		<>
 			<div className="headerTLogout">
 				<div className="close noPos" onClick={onClickSubMenu}>
@@ -197,4 +171,4 @@ const AfterLogin = ({
 				</div>
 			)}
 		</>
-	) : null;
+	);

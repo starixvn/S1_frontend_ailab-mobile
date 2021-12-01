@@ -16,6 +16,8 @@ import eventImg from "../../styles/img/event/angPao_en.png";
 import eventVNImg from "../../styles/img/event/angPao_vn.png";
 import MysteryBox from "../mysteryBox/homePopBox";
 import { eventTime } from "./eventTime";
+import Login from "../login/login";
+import Join from "../join/join.refactor";
 
 export const defPageInfo = {
 	default: {
@@ -242,12 +244,18 @@ const Layout = ({ children }) => {
 						hideLogo={pageInfo.hideLogo}
 						showMenuBar={pageInfo.showMenuBar === true}
 					/>
-					<main className={pageInfo.className ?? ""}>{children}</main>
+					<Join />
+					<Login />
+					<main className={pageInfo.className ?? ""}>
+						{isEventPeriod(eventTime.mysteryBox) ? (
+							<MysteryBox />
+						) : null}
+						{children}
+					</main>
 				</>
 			)}
 			{loading ? <Loading /> : null}
 			<Footer />
-			{isEventPeriod(eventTime.mysteryBox) ? <MysteryBox /> : null}
 		</>
 	);
 };

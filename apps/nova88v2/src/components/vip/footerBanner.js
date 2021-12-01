@@ -1,9 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { validImgLang } from "../common/common";
 
 export const FooterBanner = ({ langId, openJoinPop }) => {
-	const _langId = validImgLang(langId);
+	const _langId = langId.includes("_en") ? "en" : langId;
 	return (
 		<div className="vipBanner" onClick={openJoinPop}>
 			<img

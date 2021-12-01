@@ -1,13 +1,19 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
 import PropTypes from "prop-types";
-import { Link } from "../../route/link";
 import { useGetPromotions } from "../hook/useGetPromotions";
-import path from "../../path";
+import { useHandlePromotionInfo } from "../promotion/promotionInfo.popbox";
 
 const Promos = ({ i18n, userInfo }) => {
 	const { langId, isLogin } = userInfo;
 	const { promotionList } = useGetPromotions({ langId, isLogin });
+	const { getPromotionDetail } = useHandlePromotionInfo({
+		showAllPromosBtn: true
+	});
+
+	const clickPromotion = bonusCode => {
+		getPromotionDetail(langId, bonusCode);
+	};
 
 	const promoArr = promotionList.map(promo => {
 		const { banner, title, description, bonusCode } = promo;
@@ -19,11 +25,11 @@ const Promos = ({ i18n, userInfo }) => {
 				<div>{title}</div>
 				<div>{description}</div>
 				<div className="btn-group">
-					<Link
+					<button
 						className="blue"
-						to={`${path.promotionInfo.root}?BonusCode=${bonusCode}`}>
-						{i18n.lbl_Details}
-					</Link>
+						onClick={clickPromotion.bind(this, bonusCode)}>
+						{i18n.lbl_More_Info}
+					</button>
 				</div>
 			</div>
 		);

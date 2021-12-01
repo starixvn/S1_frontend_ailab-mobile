@@ -1,4 +1,5 @@
 import api from "../../service/api";
+import { defCurrenyId } from "../common/common";
 
 export const defElemType = {
 	Event: "Event",
@@ -151,6 +152,9 @@ export const defDayBtns = {
 		value: 3
 	}
 };
+
+export const getLeaderBoardSupportCurrencyId = () =>
+	Object.keys(defPrize()).map(key => defCurrenyId[key]);
 
 export const defPrize = () => ({
 	MYR: {
