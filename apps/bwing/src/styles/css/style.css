@@ -3826,6 +3826,7 @@ a.clickBtn:before {
   -webkit-box-pack: normal;
       -ms-flex-pack: normal;
           justify-content: normal;
+  padding-top: 12.5vw;
 }
 
 .casino .swiper-container {
@@ -3851,31 +3852,20 @@ a.clickBtn:before {
   line-height: 0;
 }
 
-.casino .slotList .info:before {
-  content: "";
-  border-style: solid;
-  border-width: 6vw 9vw;
-  border-color: #58cdff transparent transparent #58cdff;
-  border-top-left-radius: 5px;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
 .casino .slotList .info .underBtn {
   display: none;
-  background-color: #a59f9f;
+  background-color: rgba(51, 51, 51, 0.8);
   color: #fff;
   position: absolute;
   top: 30%;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  padding: 10px;
+  padding: 3vw;
   border-radius: 2px;
   width: 60%;
   text-align: center;
-  line-height: 5vw;
+  line-height: 3vw;
 }
 
 .casino .slotList .info.under {
@@ -3904,12 +3894,14 @@ a.clickBtn:before {
   line-height: initial;
   z-index: 1;
   font-weight: bold;
+  text-shadow: 1px 0 0 #58cdff, -1px 0 0 #58cdff, 0 1px 0 #58cdff, 0 -1px 0 #58cdff, 1px -1px 0 #58cdff, 1px 1px 0 #58cdff, -1px 1px 0 #58cdff, -1px -1px 0 #58cdff;
 }
 
 .casino .slotList .info span.icon {
   right: 1vw;
   left: initial;
   color: #fff;
+  text-shadow: none;
 }
 
 .casino .slotList .info img {
@@ -5049,6 +5041,12 @@ span.important {
 
 .otpBtn.ver .icon:before {
   font-size: 4vw;
+}
+
+.otpBtn.ver img {
+  width: 3vw;
+  height: 3vw;
+  margin-left: 1vw;
 }
 
 .otpLoading {
@@ -13365,5 +13363,250 @@ span.important {
   height: 22vw;
   -webkit-animation: wheel 1s infinite;
           animation: wheel 1s infinite;
+}
+
+.profileGrade .grade {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.profileGrade .grade .txt-lightgray {
+  text-align: center;
+  margin-bottom: 3vw;
+}
+
+.profileGrade .grade .user {
+  width: calc(100% - 6vw);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 3vw;
+  padding: 3vw;
+  background: #010e33;
+  border: 1px solid #7789bd54;
+  border-radius: 3px;
+}
+
+.profileGrade .grade .user .txt-blue15 {
+  font-weight: bold;
+  color: #58cdff;
+  margin-bottom: 5vw;
+}
+
+.profileGrade .grade .user .txt-blue15 span {
+  width: 100%;
+  height: 6vw;
+  color: #070e22;
+  background: #58cdff;
+  border: 1px solid #1a2b58;
+  padding: .5vw 2vw;
+  border-radius: 3px;
+  margin-left: 3vw;
+}
+
+.profileGrade .grade .user .hint {
+  width: calc(100%-5vw);
+  font-size: 3vw;
+  color: #afafaf;
+  background: rgba(12, 26, 63, 0.9);
+  border: 1px solid #1a2b58;
+  border-radius: 3px;
+  text-align: left;
+  padding: 1vw 2vw;
+  margin-top: 2vw;
+  display: none;
+}
+
+.profileGrade .grade .user .hint.active {
+  display: block;
+}
+
+.profileGrade .grade .user .hint span {
+  color: #64789b;
+  display: block;
+  font-size: 3.5vw;
+}
+
+.profileGrade .grade .user .item {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  position: relative;
+}
+
+.profileGrade .grade .user .item button {
+  width: 12vw;
+  height: 12vw;
+  border-radius: 5px;
+  font-size: 6vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #0c1a3f;
+  border: 1px solid #1a2b58;
+  margin-right: 5vw;
+  color: #fff;
+}
+
+.profileGrade .grade .user .item button:hover {
+  border: 2px solid #243a6e;
+}
+
+.profileGrade .grade .user .item button:hover img {
+  -webkit-filter: brightness(120%);
+          filter: brightness(120%);
+  -webkit-animation: overturn 1s ease-in-out normal infinite;
+          animation: overturn 1s ease-in-out normal infinite;
+}
+
+@-webkit-keyframes overturn {
+  0% {
+    -webkit-transform: translateY(-35%);
+            transform: translateY(-35%);
+  }
+  40% {
+    -webkit-transform: rotateY(0deg) rotateX(180deg);
+            transform: rotateY(0deg) rotateX(180deg);
+  }
+  80% {
+    -webkit-transform: rotateY(0deg) rotateX(-180deg);
+            transform: rotateY(0deg) rotateX(-180deg);
+  }
+  100% {
+    -webkit-transform: rotateY(0deg) rotateX(180deg) translateZ(10px);
+            transform: rotateY(0deg) rotateX(180deg) translateZ(10px);
+  }
+}
+
+@keyframes overturn {
+  0% {
+    -webkit-transform: translateY(-35%);
+            transform: translateY(-35%);
+  }
+  40% {
+    -webkit-transform: rotateY(0deg) rotateX(180deg);
+            transform: rotateY(0deg) rotateX(180deg);
+  }
+  80% {
+    -webkit-transform: rotateY(0deg) rotateX(-180deg);
+            transform: rotateY(0deg) rotateX(-180deg);
+  }
+  100% {
+    -webkit-transform: rotateY(0deg) rotateX(180deg) translateZ(10px);
+            transform: rotateY(0deg) rotateX(180deg) translateZ(10px);
+  }
+}
+
+.profileGrade .grade .user .item button img {
+  width: 4vw;
+  height: 4vw;
+  position: absolute;
+  margin: 6vw 0 0 6vw;
+}
+
+.profileGrade .grade .user .item button.active {
+  color: #070e22;
+  background: #58cdff;
+}
+
+.profileGrade .grade .user .item button.active img {
+  display: none;
+}
+
+.profileGrade .grade .user .item button.active:hover {
+  border: 2px solid #58cdff;
+}
+
+.profileGrade .grade .level {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-top: 20px;
+}
+
+.profileGrade .grade .level > div {
+  width: 90px;
+  height: 8px;
+  border-radius: 15px;
+  margin-right: 10px;
+}
+
+.profileGrade .grade .level > div.weak {
+  background: rgba(250, 182, 23, 0.2);
+}
+
+.profileGrade .grade .level > div.nomal {
+  background: rgba(5, 248, 106, 0.2);
+}
+
+.profileGrade .grade .level > div.good {
+  background: rgba(88, 205, 255, 0.2);
+}
+
+.profileGrade .grade .level > div.active.weak {
+  background: #fab617;
+}
+
+.profileGrade .grade .level > div.active.nomal {
+  background: #05f86a;
+}
+
+.profileGrade .grade .level > div.active.good {
+  background: #58cdff;
+}
+
+.info .hint {
+  width: calc(100%-5vw);
+  font-size: 3vw;
+  color: #afafaf;
+  background: rgba(12, 26, 63, 0.9);
+  border: 1px solid #1a2b58;
+  border-radius: 3px;
+  text-align: left;
+  padding: 1vw 2vw;
+  margin: 2vw 0;
+  display: none;
+}
+
+.info .hint.active {
+  display: block;
+}
+
+.info .hint span {
+  color: #64789b;
+  display: block;
+  font-size: 3.5vw;
 }
 /*# sourceMappingURL=style.css.map */
