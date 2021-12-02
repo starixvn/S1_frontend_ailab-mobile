@@ -105,7 +105,7 @@ export default ({ currencyName }) => {
 				},
 				{
 					name: "Houyi's Legend",
-					provider: "ICG",
+					provider: "Astro Tech",
 					gameTypeKey: gameType.slots,
 					imgUrl: "houyi's_legend",
 					tpId: 24,
@@ -222,7 +222,7 @@ export default ({ currencyName }) => {
 				},
 				{
 					name: "Houyi's Legend",
-					provider: "ICG",
+					provider: "Astro Tech",
 					gameTypeKey: gameType.slots,
 					imgUrl: "houyi's_legend",
 					tpId: 24,
@@ -315,7 +315,7 @@ export default ({ currencyName }) => {
 				},
 				{
 					name: "Houyi's Legend",
-					provider: "ICG",
+					provider: "Astro Tech",
 					gameTypeKey: gameType.slots,
 					imgUrl: "houyi's_legend",
 					tpId: 24,
@@ -442,7 +442,7 @@ export default ({ currencyName }) => {
 				},
 				{
 					name: "Houyi's Legend",
-					provider: "ICG",
+					provider: "Astro Tech",
 					gameTypeKey: gameType.slots,
 					imgUrl: "houyi's_legend",
 					tpId: 24,

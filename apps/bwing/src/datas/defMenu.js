@@ -635,11 +635,11 @@ export const defSubMenus = () => [
 			{
 				...defGameInfo.LIVEcasinoEB,
 				displayKey: "eBET"
-			},
-			{
-				...defGameInfo.LIVEcasinoEVO,
-				displayKey: "Evolution Gaming"
 			}
+			// {
+			// 	...defGameInfo.LIVEcasinoEVO,
+			// 	displayKey: "Evolution Gaming"
+			// }
 		]
 	},
 	{
