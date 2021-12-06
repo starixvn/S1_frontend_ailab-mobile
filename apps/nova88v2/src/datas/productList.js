@@ -1784,9 +1784,19 @@ const gameList = ({ langId, currencyName }) => {
 							img: fish_SGW
 						},
 						{
-							...defGameInfo.ICG_DRAGONBALL_FISHING,
-							spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
-							img: fish_DBF
+							...defGameInfo.FishingSG,
+							spanTextKey: "lbl_FishingSG1",
+							img: fish_FishingGod
+						},
+						{
+							...defGameInfo.FishingGG,
+							spanTextKey: "lbl_FishingGG",
+							img: fish_GG
+						},
+						{
+							...defGameInfo.Fishing_AT01,
+							spanTextKey: "lbl_Oneshot_Fishing",
+							img: fish_Oneshot
 						},
 						{
 							...defGameInfo.Fishing_AB3,
@@ -1794,9 +1804,20 @@ const gameList = ({ langId, currencyName }) => {
 							img: fishing_CQ9_AB3
 						},
 						{
-							...defGameInfo.FishingGG,
-							spanTextKey: "lbl_FishingGG",
-							img: fish_GG
+							...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
+							spanTextKey:
+								"lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS",
+							img: fish_TheTyrant
+						},
+						{
+							...defGameInfo.ICG_DRAGONBALL_FISHING,
+							spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
+							img: fish_DBF
+						},
+						{
+							...defGameInfo.ICG_FISHING_OF_SAVIORS,
+							spanTextKey: "lbl_Game_ICG_FISHING_OF_SAVIORS",
+							img: fish_Saviors
 						}
 					]
 				},
@@ -2321,13 +2342,18 @@ export const defGameInfo = {
 	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
 	Fishing_AB3: { tpId: 16, gameId: "AB3", tpGameType: 44 },
 	Fishing_AT05: { tpId: 16, gameId: "AT05", tpGameType: 44 },
-	// Fishing_AT01: { tpId: 16, gameId: "AT01", tpGameType: 44 },
+	Fishing_AT01: { tpId: 16, gameId: "AT01", tpGameType: 44 },
 	Fishing_AT06: { tpId: 16, gameId: "AT06", tpGameType: 44 },
 	Fishing_AT04: { tpId: 16, gameId: "AT04", tpGameType: 44 },
+	ICG_THE_TYRANT_AND_THE_PRINCESS: {
+		tpId: 24,
+		gameId: "cmf0003",
+		tpGameType: 40
+	},
 	ICG_DRAGONBALL_FISHING: { tpId: 24, gameId: "cmf0001", tpGameType: 40 },
-	// ICG_FISHING_OF_SAVIORS: { tpId: 24, gameId: "cmf0002", tpGameType: 40 },
+	ICG_FISHING_OF_SAVIORS: { tpId: 24, gameId: "cmf0002", tpGameType: 40 },
 	FishingGG: { tpId: 7, gameId: 10, tpGameType: 12 },
-	// FishingSG: { tpId: 10, gameId: "F-SF01" , tpGameType: 31},
+	FishingSG: { tpId: 10, gameId: "F-SF01", tpGameType: 31 },
 	FishingSGW: { tpId: 10, gameId: "F-SF02", tpGameType: 31 },
 	CockFighting: { tpId: 17, tpGameType: 27 },
 	// VirtualSports: { tpId: 1, gameId: 180, tpGameType: 3 },

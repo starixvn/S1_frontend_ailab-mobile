@@ -1,6 +1,32 @@
-# AilabMobile
+# AiLab-Mobile
 
 This project was generated using [Nx](https://nx.dev).
+
+---
+
+## Development server
+
+Run `nx serve {my-app}` for a dev server. The app will automatically reload if you change any of the source files.
+
+**Nova88** 
+Run `nx serve nova88v2`
+Will auto navigate to http://localhost:30012
+
+**Goal123** 
+Run `nx serve goal123`
+Will auto navigate to http://localhost:3002
+
+**Bwing** 
+Run `nx serve bwing`
+Will auto navigate to http://localhost:3003
+
+---
+
+## Git commit format
+
+Please refer to the file ./.gitmessage.txt
+
+---
 
 <p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
 
