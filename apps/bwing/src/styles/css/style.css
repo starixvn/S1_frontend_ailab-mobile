@@ -1659,6 +1659,10 @@ footer > a.open {
   line-height: 4vw;
 }
 
+#popup.cryptoPay .pop .sisa {
+  text-align: center;
+}
+
 #popup.cryptoPay .pop .btn-group button {
   padding: 0;
   margin: 2vw;
@@ -1666,6 +1670,85 @@ footer > a.open {
 }
 
 #popup.cryptoPay .pop .btn-group button.btn-cancel {
+  background: #afafaf;
+  color: #070e22;
+}
+
+#popup.cryptoNote .pop {
+  width: 85vw;
+  line-height: 7vw;
+}
+
+#popup.cryptoNote .pop .icon-close {
+  color: #fff;
+  font-size: 4vw;
+  position: absolute;
+  right: 2vw;
+  top: 3vw;
+  left: unset;
+}
+
+#popup.cryptoNote .pop .popTit {
+  font-size: 4vw;
+  padding: 3vw;
+  color: #58cdff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#popup.cryptoNote .pop .popTit span {
+  margin: 0 auto;
+  font-weight: bold;
+}
+
+#popup.cryptoNote .pop .popTxt {
+  padding: 3vw 0;
+  text-align: left;
+}
+
+#popup.cryptoNote .pop .popTxt ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  margin-bottom: 5vw;
+}
+
+#popup.cryptoNote .pop .popTxt ul li {
+  width: 100%;
+  word-wrap: break-word;
+}
+
+#popup.cryptoNote .pop .popTxt ul li:nth-child(odd) {
+  font-weight: bold;
+  color: #58cdff;
+  margin-right: 1vw;
+}
+
+#popup.cryptoNote .pop .popTxt > div {
+  border-top: 1px solid #666;
+}
+
+#popup.cryptoNote .pop .popTxt .txt-cryptoNote {
+  color: #afafaf;
+  padding: 4vw 0;
+  text-align: center;
+}
+
+#popup.cryptoNote .pop .btn-group button {
+  padding: 0;
+  margin: 2vw;
+  border-radius: 3px;
+}
+
+#popup.cryptoNote .pop .btn-group button.btn-cancel {
   background: #afafaf;
   color: #070e22;
 }
@@ -1697,7 +1780,6 @@ footer > a.open {
 }
 
 #header ~ .Login, #header ~ .Join {
-  text-align: center;
   z-index: 11;
 }
 
@@ -1712,6 +1794,9 @@ footer > a.open {
   display: -ms-flexbox;
   display: flex;
   border-bottom: 1px solid #1d2f62;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background: #070e22;
   left: 0;
   z-index: 2;
@@ -1720,6 +1805,13 @@ footer > a.open {
   top: 13vw;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+}
+
+.tag.scroll {
+  overflow-x: auto;
+  -webkit-box-pack: unset;
+      -ms-flex-pack: unset;
+          justify-content: unset;
 }
 
 .tag a {
@@ -1736,6 +1828,7 @@ footer > a.open {
   border-bottom: 2px solid transparent;
   color: #58cdff;
   white-space: nowrap;
+  margin: 0 3.5vw;
 }
 
 .tag a.open {
@@ -7278,6 +7371,10 @@ span.important {
       flex-wrap: wrap;
 }
 
+.addCrypto .addCryptoName.active {
+  border: 3px solid #58cdff;
+}
+
 .addCrypto .addCryptoName.noBank {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9009,8 +9106,8 @@ span.important {
 
 .luckyboxEvent > div .luckyout .wheel {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 85vw;
+  height: 85vw;
   background: url(../img/luckybox/spinya.png) no-repeat center;
   background-size: 100%;
   overflow: hidden;
@@ -9024,16 +9121,15 @@ span.important {
 .luckyboxEvent > div .luckyout .wheel li {
   list-style: none;
   position: absolute;
-  width: 28vw;
-  height: 28vw;
+  width: 55vw;
+  height: 55vw;
   right: 50%;
   top: 50%;
   -webkit-transform-origin: 100% 100%;
           transform-origin: 100% 100%;
-  margin-top: -28vw;
+  margin-top: -55vw;
   color: #fcd874;
-  font-size: 2vw;
-  font-weight: 700;
+  font-size: 3vw;
 }
 
 .luckyboxEvent > div .luckyout .wheel li:nth-of-type(odd) {
@@ -9042,9 +9138,10 @@ span.important {
 
 .luckyboxEvent > div .luckyout .wheel li p {
   position: absolute;
-  font-weight: bold;
-  top: 25.8vw;
-  left: 25.8vw;
+  font-size: 3vw;
+  height: 26vw;
+  top: 33vw;
+  left: 53vw;
   -webkit-transform: skew(-67.5deg) rotate(-67.5deg);
           transform: skew(-67.5deg) rotate(-67.5deg);
   -webkit-writing-mode: vertical-lr;
@@ -9208,7 +9305,7 @@ span.important {
 }
 
 .luckyboxEvent .eventModule .title:nth-child(5) {
-  color: #f77a00;
+  color: #58cdff;
   margin-top: 8vw;
 }
 
