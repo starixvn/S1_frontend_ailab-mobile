@@ -10915,6 +10915,15 @@ span.important {
   width: 100%;
 }
 
+.wheelEvent .info > div.nodata:before {
+  color: #e300bc;
+}
+
+.wheelEvent .info > div.nodata .txt-white {
+  background: transparent;
+  color: #fb60aa;
+}
+
 .wheelEvent .info .eventList {
   width: calc(100% - 12vw);
   margin: auto;
