@@ -87,4 +87,9 @@ export class EventsAPI extends BaseAPI {
 		this.evnetsRequest.post(`/GetCustDrawPrizeList/`, {
 			eventId
 		});
+
+	GetDisplayDrawPrizeList = ({ eventId }) =>
+		this.evnetsRequest.post(`/GetDisplayDrawPrizeList/`, {
+			eventId
+		});
 }

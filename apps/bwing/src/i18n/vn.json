@@ -680,6 +680,14 @@
 	"lbl_Sportsbook": "THỂ THAO",
 	"lbl_Promotion_Casino": "SÒNG BÀI",
 	"lbl_Promotion_All": "HIỂN THỊ TẤT CẢ",
-	"lbl_Promotion_Slot": "QUAY HŨ"
+	"lbl_Promotion_Slot": "QUAY HŨ",
+
+	"===============Lucky wheel===================":"",
+	"lbl_Rewards": "thưởng",
+	"lbl_My": "Phần",
+	"lbl_LuckyWheel": "VÒNG QUAY MAY MẮN",
+	"lbl_Conditions": "ĐIỀU KIỆN THƯỞNG",
+	"lbl_MyLuckyWheelRewards":"PHẦN THƯỞNG CỦA TÔI",
+	"lbl_MysteryBox_MemberEligibility": "Nạp tiền hôm nay, trúng lớn ngày mai"
 
 }

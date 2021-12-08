@@ -2871,6 +2871,90 @@ footer > a.open {
   font-size: 4vw;
 }
 
+.cryptoInBox {
+  width: calc(100% - 4vw);
+  background-color: #0c1a3f;
+  border: 1px solid #1d2f62;
+  border-radius: 5px;
+  margin-top: 2vw;
+  padding: 2vw;
+}
+
+.cryptoInBox > p {
+  padding-top: 2vw;
+}
+
+.cryptoInBox .inputBoxText p.txt-blue12 {
+  width: inherit;
+}
+
+.cryptoInBox + .txt-lightgray {
+  margin-top: 2vw;
+  text-align: center;
+}
+
+.cryptoCard {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 2vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-bottom: 3vw;
+}
+
+.cryptoCard > div {
+  padding-top: 2vw;
+  color: #000;
+  word-break: break-all;
+}
+
+.cryptoCard > div.cryptoName {
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cryptoCard > div.cryptoName span {
+  font-weight: bold;
+  color: #000;
+  font-size: 3.5vw;
+}
+
+.cryptoCard > div.cryptoName .icon-BTC {
+  font-size: 6vw;
+  color: #58cdff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cryptoCard > div.cryptoName .icon-BTC:before {
+  margin-right: 1vw;
+}
+
+.cryptoCard > div.cryptoName button.clickBtn, .cryptoCard > div.cryptoName a.clickBtn {
+  background: transparent;
+  border: 0;
+  height: revert;
+  width: revert;
+  margin: 0 0 0 auto;
+  color: #333;
+}
+
+.cryptoCard > div.cryptoName button.clickBtn:before, .cryptoCard > div.cryptoName a.clickBtn:before {
+  font-size: 4vw;
+}
+
 p.txt-blue12 {
   width: inherit;
   white-space: nowrap;
@@ -7292,6 +7376,222 @@ span.important {
 }
 
 .addBank + div.subModuleList .subModuleBody > div.inputBtn {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 20px 0;
+}
+
+.addBank + div.subModuleList .subModuleBody > div.inputBtn .btnGroup {
+  margin: 10px 0 5px;
+}
+
+.addBank + div.subModuleList .subModuleBody > div.smallList {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.addBank + div.subModuleList .subModuleBody > div.smallList li {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin: auto 10px auto;
+}
+
+.addBank + div.subModuleList .subModuleBody > div.smallList li:first-child {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.addBank + div.subModuleList .subModuleBody > div.smallList li.accountNumber {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.addBank + div.subModuleList .subModuleBody > div.smallList li.accountNumber span {
+  margin-right: 5px;
+  background: none;
+  color: white;
+}
+
+.addBank + div.subModuleList .subModuleBody ul li {
+  width: calc(25% - 20px);
+}
+
+.addBank + div.subModuleList .subModuleBody ul li a,
+.addBank + div.subModuleList .subModuleBody ul li button {
+  padding: 5px 10px;
+  width: calc(100% - 20px);
+}
+
+.addCrypto {
+  background: #0c1a3f;
+  padding: 2vw;
+  border-radius: 5px;
+  border: 1px solid #1a2b58;
+  margin: 2vw 0;
+}
+
+.addCrypto .addCryptoName {
+  background: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.addCrypto .addCryptoName.active {
+  border: 3px solid #58cdff;
+}
+
+.addCrypto .addCryptoName.noBank {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  cursor: pointer;
+  min-height: auto;
+  background: #3a4d80;
+  border: 1px solid #4d5e8e;
+  position: relative;
+}
+
+.addCrypto .addCryptoName.noBank .icon-plus {
+  position: absolute;
+  left: 10px;
+}
+
+.addCrypto .addCryptoName .icon-BTC {
+  font-size: 6vw;
+  color: #58cdff;
+  position: static;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.addCrypto .addCryptoName .addCryptoInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  min-width: 100%;
+}
+
+.addCrypto .addCryptoName .addCryptoInfo > div {
+  margin-top: 3vw;
+}
+
+.addCrypto .addCryptoName .addCryptoInfo:last-child {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  color: black;
+}
+
+.addCrypto .addCryptoName .addCryptoInfo:last-child span {
+  margin-right: 2vw;
+}
+
+.addCrypto .addCryptoName .addCryptoInfo .cryptoName span {
+  color: #070e22;
+  font-size: 4vw;
+  font-weight: bold;
+  margin-left: 2vw;
+}
+
+.addCrypto .addCryptoName .addCryptoInfo .cryptoName + div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.addCrypto .addCryptoName .addCryptoInfo .cryptoName img {
+  width: 30vw;
+}
+
+.addCrypto .addCryptoName .addCryptoInfo .icon-bin {
+  font-size: 4vw;
+  color: #56607b;
+  position: static;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 3vw;
+}
+
+.addCrypto .addCryptoName button.icon,
+.addCrypto .addCryptoName a.icon {
+  font-size: 4vw;
+  position: absolute;
+  right: 0;
+  bottom: -40px;
+  color: #58cdff;
+}
+
+.addCrypto .addCryptoName .icon-plus {
+  font-size: 4vw;
+}
+
+.addCrypto + div.subModuleList {
+  margin: 2vw 0;
+}
+
+.addCrypto + div.subModuleList .subModuleBody {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.addCrypto + div.subModuleList .subModuleBody > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.addCrypto + div.subModuleList .subModuleBody > div.txt-lightgray {
+  margin: 4vw 0;
+}
+
+.addCrypto + div.subModuleList .subModuleBody > div > .bankName {
+  margin-right: 2vw;
+  margin-top: 0;
+}
+
+.addCrypto + div.subModuleList .subModuleBody > div.calculation {
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.addCrypto + div.subModuleList .subModuleBody > div.inputBtn {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
