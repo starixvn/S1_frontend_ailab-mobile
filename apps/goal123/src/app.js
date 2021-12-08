@@ -48,7 +48,7 @@ import PromotionInfo from "./pages/promotionInfo";
 
 // import Ranking from "./pages/ranking";
 // import AngPow from "./pages/angPow";
-// import MysteryBox from "./pages/mysteryBox";
+import MysteryBox from "./pages/mysteryBox";
 import LuckyWheel from "./pages/luckyWheel";
 
 import FriendReferral from "./pages/referral";
@@ -119,7 +119,7 @@ const Index = () => {
 					<Whoami path={path.whoami.root} />
 					{/* <Ranking path={path.leaderBoard.root} /> */}
 					{/* <AngPow path={path.angPow.root} /> */}
-					{/* <MysteryBox path={path.mysteryBox.root} /> */}
+					<MysteryBox path={path.mysteryBox.root} />
 					<LuckyWheel path={path.luckyWheel.root} />
 					<VIP path={path.vip.root} />
 					<AppDownload path={path.appDownload.root} />
