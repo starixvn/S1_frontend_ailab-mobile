@@ -15,6 +15,7 @@ import { isEventPeriod } from "./common";
 import eventImg from "../../styles/img/event/angPao_en.png";
 import eventVNImg from "../../styles/img/event/angPao_vn.png";
 import LuckyWheel from "../luckyWheel/homePopBox";
+import MysteryBox from "../mysteryBox/homePopBox";
 import { eventTime } from "./eventTime";
 import Login from "../login/login";
 import Join from "../join/join.refactor";
@@ -147,11 +148,11 @@ export const defPageInfo = {
 		className: "main",
 		hideLogo: true
 	},
-	// mysteryBox: {
-	// 	titleKey: "lbl_MysteryBox_EventTitle",
-	// 	className: "main mysteryEvent",
-	// 	hideLogo: true
-	// },
+	mysteryBox: {
+		titleKey: "lbl_MysteryBox_EventTitle",
+		className: "main mysteryEvent",
+		hideLogo: true
+	},
 	vip: {
 		titleKey: "VIP",
 		className: "main vip",
@@ -237,9 +238,7 @@ const Layout = ({ children }) => {
 	}
 
 	useEffect(() => {
-		if (root) {
-			setLuckyWheel(true);
-		}
+		if (root) setLuckyWheel(true);
 	}, [root]);
 
 	return (
@@ -263,9 +262,11 @@ const Layout = ({ children }) => {
 			)}
 			{loading ? <Loading /> : null}
 			<Footer />
-			{isEventPeriod(eventTime.luckyWheel) && luckyWheel && root ? (
+			{isEventPeriod(eventTime.luckyWheel) && luckyWheel && root && (
 				<LuckyWheel setLuckyWheel={setLuckyWheel} />
-			) : null}
+			)}
+
+			{isEventPeriod(eventTime.mysteryBox) && root && <MysteryBox />}
 		</>
 	);
 };

@@ -16,7 +16,7 @@ import Loading from "./loading";
 import { isEventPeriod } from "./common";
 import eventImg from "../../styles/img/event/eventlink_en.png";
 import eventVNImg from "../../styles/img/event/eventlink_vn.png";
-// import MysteryBox from "../mysteryBox/homePopBox";
+import MysteryBox from "../mysteryBox/homePopBox";
 import { eventTime } from "./eventTime";
 import LuckyWheel from "../luckyWheel/homePopBox";
 
@@ -35,7 +35,6 @@ const Layout = ({ children, header, mainClass = "main", title, appHint }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { root } = useContext(rootContext);
 
-	// const [mysteryBox, setMysteryBox] = useState(false);
 	const [luckyWheel, setLuckyWheel] = useState(false);
 
 	const _matchLogin = useMatch(`/${path.login.root}`) !== null;
@@ -43,12 +42,6 @@ const Layout = ({ children, header, mainClass = "main", title, appHint }) => {
 		nav === defNavPanel.login || _matchLogin || nav === defNavPanel.join
 			? { position: "fixed" }
 			: {};
-
-	// useEffect(() => {
-	// 	if (root) {
-	// 		setMysteryBox(true);
-	// 	}
-	// }, [root]);
 
 	useEffect(() => {
 		if (root) {
@@ -68,9 +61,9 @@ const Layout = ({ children, header, mainClass = "main", title, appHint }) => {
 				{children}
 				{loading ? <Loading /> : null}
 			</main>
-			{/* {isEventPeriod(eventTime.mysteryBox) && mysteryBox && root ? (
-				<MysteryBox userInfo={userInfo} setMysteryBox={setMysteryBox} />
-			) : null} */}
+			{isEventPeriod(eventTime.mysteryBox) && root && (
+				<MysteryBox userInfo={userInfo} />
+			)}
 			{isEventPeriod(eventTime.luckyWheel) && root && luckyWheel ? (
 				<LuckyWheel userInfo={userInfo} setLuckyWheel={setLuckyWheel} />
 			) : null}

@@ -14,6 +14,7 @@ import path from "../../path";
 import Loading from "./loading";
 import { isEventPeriod } from "./common";
 import { LuckyWheelPop } from "../../pages/luckyWheel";
+import { MysteryBoxPop } from "../../pages/mysteryBox";
 import Modal from "../join/modal";
 import GotopBtn from "./goTopBtn";
 import { eventTime } from "./eventTime";
@@ -51,6 +52,7 @@ const Layout = ({ children, header, mainClass }) => {
 				{loading ? <Loading /> : null}
 			</main>
 			{isEventPeriod(eventTime.luckyWheel) ? <LuckyWheelPop /> : null}
+			{isEventPeriod(eventTime.mysteryBox) ? <MysteryBoxPop /> : null}
 			<Footer />
 			{userInfo.isLogin === false && (isJoinPage || isLoginPage) && (
 				<Modal isJoin={isJoinPage} isLogin={isLoginPage} />
