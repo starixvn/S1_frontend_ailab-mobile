@@ -144,6 +144,9 @@ export default {
 	mysteryBox: {
 		root: "mysteryBox"
 	},
+	luckyWheel: {
+		root: "luckyWheel"
+	},
 	streaming: {
 		root: "streaming"
 	},

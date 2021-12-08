@@ -55,7 +55,8 @@ import FriendReferral from "../pages/referral";
 import ReferralHistory from "../pages/referralHistory";
 import OneGame from "../pages/oneGame";
 import VIP from "../pages/vip";
-import MysteryBox from "../pages/mysteryBox";
+// import MysteryBox from "../pages/mysteryBox";
+import LuckyWheel from "../pages/luckyWheel";
 import Streaming from "../pages/streaming";
 import CryptoWallet from "../pages/cryptoWallet";
 import MyAccount from "../components/setting/myAccount";
@@ -134,7 +135,8 @@ const RouteComponents = () => {
 
 			<OneGame path={`/:langId/${path.oneGame.root}`} />
 			<VIP path={`/:langId/${path.vip.root}`} />
-			<MysteryBox path={`/:langId/${path.mysteryBox.root}`} />
+			{/* <MysteryBox path={`/:langId/${path.mysteryBox.root}`} /> */}
+			<LuckyWheel path={`/:langId/${path.luckyWheel.root}`} />
 			{/* <Kiss918 path={`/:langId/${path.kiss918.root}`} /> */}
 			<Streaming path={`/:langId/${path.streaming.root}`} />
 			<MyAccount path={`/:langId/${path.myAccount.root}`} />

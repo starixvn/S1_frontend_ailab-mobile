@@ -604,6 +604,13 @@
 	"lbl_Promotion_All": "ALL",
 	"lbl_Promotion_Slot": "SLOT",
 
+	"==============Mystery Box=====================":"",
+	"lbl_My": "My",
+	"lbl_LuckyWheel": "LUCKY WHEEL",
+	"lbl_Conditions": "Conditions",
+	"lbl_RewardsCondition": "Rewards Condition",
+	"lbl_OtherConditions": "Other Conditions",
+	
 	"==============Promotion==============": "",
 	"lbl_More_Info": "MORE INFO",
 	"lbl_Apply_Now": "APPLY NOW",

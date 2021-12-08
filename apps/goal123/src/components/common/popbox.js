@@ -59,24 +59,28 @@ const PopUp = () => {
 		<div
 			id="popup"
 			className={`${popBox.isOpen ? "show" : ""} ${popBox.className}`}>
-			<div className="pop">
-				<div className="popTit">
-					{popBox.hideCloseBtn === true ? null : (
-						<div
-							className="close open"
-							onClick={popBox.handlePopBox ?? handlePopBox}>
-							<span />
-							<span />
-							<span />
-							<span />
-							<span />
-							<span />
-						</div>
-					)}
-					{popBox.title ?? i18n.lbl_ImportantNote}
+			{popBox.custContent ? (
+				popBox.custContent
+			) : (
+				<div className="pop">
+					<div className="popTit">
+						{popBox.hideCloseBtn === true ? null : (
+							<div
+								className="close open"
+								onClick={popBox.handlePopBox ?? handlePopBox}>
+								<span />
+								<span />
+								<span />
+								<span />
+								<span />
+								<span />
+							</div>
+						)}
+						{popBox.title ?? i18n.lbl_ImportantNote}
+					</div>
+					{content}
 				</div>
-				{content}
-			</div>
+			)}
 		</div>
 	) : null;
 };

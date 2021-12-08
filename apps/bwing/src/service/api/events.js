@@ -55,3 +55,8 @@ export const api_events_GetCustDrawPrizeList = ({ eventId }) =>
 	eventRequest.post(`/GetCustDrawPrizeList/`, {
 		eventId
 	});
+
+export const api_events_GetDisplayDrawPrizeList = ({ eventId }) =>
+	eventRequest.post(`/GetDisplayDrawPrizeList/`, {
+		eventId
+	});

@@ -480,6 +480,9 @@
 
 	"lbl_Start": "शुरू करे ",
 	"lbl_MysteryBox_EventTitle": "रहस्यमय बॉक्स",
+	"lbl_My": "My",
+	"lbl_LuckyBox": "LUCKY WHEEL",
+	"lbl_Conditions": "Conditions",
 	"lbl_MysteryBox_AlreadyDrawn": "आप आज ही ड्रा कर चुके हैं, कृपया कल पुन: प्रयास करें!",
 	"lbl_MysteryBox_OtherConditions1": "प्रत्येक सदस्य प्रति दिन केवल एक बार भाग ले सकता है।",
 	"lbl_MysteryBox_OtherConditions2": "प्रचार समाप्त होने तक सदस्य प्रतिदिन खेल सकता हैं।",

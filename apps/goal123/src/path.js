@@ -107,6 +107,9 @@ export default {
 	mysteryBox: {
 		root: "mysteryBox"
 	},
+	luckyWheel: {
+		root: "luckyWheel"
+	},
 	vip: {
 		root: "vip"
 	},

@@ -185,7 +185,6 @@ export const GetCurrencyName = ({ langId, currencyId, i18n }) => {
 		hi: "INR",
 		hi_en: "INR"
 	};
-
 	const currency = currencyId
 		? currCustomMapping[currencyId] ?? i18n[`Currency_${currencyId}`]
 		: langMappingCurr[langId];

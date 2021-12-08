@@ -13,7 +13,7 @@ import {
 import path from "../../path";
 import Loading from "./loading";
 import { isEventPeriod } from "./common";
-import { MysteryBoxPop } from "../../pages/mysteryBox";
+import { LuckyWheelPop } from "../../pages/luckyWheel";
 import Modal from "../join/modal";
 import GotopBtn from "./goTopBtn";
 import { eventTime } from "./eventTime";
@@ -50,7 +50,7 @@ const Layout = ({ children, header, mainClass }) => {
 				{children}
 				{loading ? <Loading /> : null}
 			</main>
-			{isEventPeriod(eventTime.mysteryBox) ? <MysteryBoxPop /> : null}
+			{isEventPeriod(eventTime.luckyWheel) ? <LuckyWheelPop /> : null}
 			<Footer />
 			{userInfo.isLogin === false && (isJoinPage || isLoginPage) && (
 				<Modal isJoin={isJoinPage} isLogin={isLoginPage} />
