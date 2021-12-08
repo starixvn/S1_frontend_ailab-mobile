@@ -1,4 +1,4 @@
-import React, { useContext, Component } from "react";
+import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useLocation, Link } from "@reach/router";
 import Footer from "./footer";
@@ -14,7 +14,7 @@ import Loading from "./loading";
 import { isEventPeriod } from "./common";
 import eventImg from "../../styles/img/event/angPao_en.png";
 import eventVNImg from "../../styles/img/event/angPao_vn.png";
-import MysteryBox from "../mysteryBox/homePopBox";
+import LuckyWheel from "../luckyWheel/homePopBox";
 import { eventTime } from "./eventTime";
 import Login from "../login/login";
 import Join from "../join/join.refactor";
@@ -147,11 +147,11 @@ export const defPageInfo = {
 		className: "main",
 		hideLogo: true
 	},
-	mysteryBox: {
-		titleKey: "lbl_MysteryBox_EventTitle",
-		className: "main mysteryEvent",
-		hideLogo: true
-	},
+	// mysteryBox: {
+	// 	titleKey: "lbl_MysteryBox_EventTitle",
+	// 	className: "main mysteryEvent",
+	// 	hideLogo: true
+	// },
 	vip: {
 		titleKey: "VIP",
 		className: "main vip",
@@ -194,6 +194,11 @@ export const defPageInfo = {
 		showMenuBar: true,
 		hideBtn: true,
 		hideModal: true
+	},
+	luckyWheel: {
+		titleKey: "lbl_LuckyWheel",
+		className: "main luckyboxEvent",
+		hideLogo: true
 	}
 };
 
@@ -225,10 +230,17 @@ const Layout = ({ children }) => {
 	const { root } = useContext(rootContext);
 	const location = useLocation();
 	const pageInfo = GetPageInfo(location.pathname);
+	const [luckyWheel, setLuckyWheel] = useState(false);
 
 	if (root) {
 		pageInfo.className = userInfo.isLogin ? "mainLogin" : "mainLogout";
 	}
+
+	useEffect(() => {
+		if (root) {
+			setLuckyWheel(true);
+		}
+	}, [root]);
 
 	return (
 		<>
@@ -246,16 +258,14 @@ const Layout = ({ children }) => {
 					/>
 					<Join />
 					<Login />
-					<main className={pageInfo.className ?? ""}>
-						{isEventPeriod(eventTime.mysteryBox) ? (
-							<MysteryBox />
-						) : null}
-						{children}
-					</main>
+					<main className={pageInfo.className ?? ""}>{children}</main>
 				</>
 			)}
 			{loading ? <Loading /> : null}
 			<Footer />
+			{isEventPeriod(eventTime.luckyWheel) && luckyWheel && root ? (
+				<LuckyWheel setLuckyWheel={setLuckyWheel} />
+			) : null}
 		</>
 	);
 };

@@ -481,6 +481,9 @@
 
 	"lbl_Start": "Start",
 	"lbl_MysteryBox_EventTitle": "Mystery Box",
+	"lbl_My": "My",
+	"lbl_LuckyBox": "LUCKY WHEEL",
+	"lbl_Conditions": "Conditions",
 	"lbl_MysteryBox_AlreadyDrawn": "You have already drawn today, please try again tomorrow!",
 	"lbl_MysteryBox_OtherConditions1": "Each member can participant once per day only.",
 	"lbl_MysteryBox_OtherConditions2": "Member able to participate daily until the promotion end.",

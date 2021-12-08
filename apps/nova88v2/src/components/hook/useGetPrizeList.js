@@ -6,8 +6,8 @@ export const useGetPrizeList = ({
 	userInfo,
 	setPopBox,
 	setLoading,
-	canDrawPrize,
-	eventId
+	eventId,
+	canDrawPrize
 }) => {
 	const [history, setHistory] = useState([]);
 	const isMountedRef = useRef(null);
@@ -48,7 +48,7 @@ export const useGetPrizeList = ({
 				}
 			);
 		}
-	}, [i18n, setPopBox, userInfo, setLoading, canDrawPrize, eventId]);
+	}, [i18n, setPopBox, userInfo, setLoading, eventId, canDrawPrize]);
 
 	return { history };
 };

@@ -58,7 +58,7 @@ import HowToPlay from "./pages/howToPlay";
 
 // import Ranking from "./pages/ranking";
 import AngPow from "./pages/angPow";
-import MysteryBox from "./pages/mysteryBox";
+// import MysteryBox from "./pages/mysteryBox";
 import VIP from "./pages/vip";
 
 import FriendReferral from "./pages/referral";
@@ -68,6 +68,7 @@ import AppDownload from "./pages/appDownload";
 
 import AppEntPage from "./pages/appEntPage";
 import Streaming from "./pages/streaming";
+import LuckyWheel from "./pages/luckyWheel";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -143,7 +144,8 @@ const Index = () => {
 						<HowToPlay path={path.howToPlay.root} />
 						{/* <Ranking path={path.leaderBoard.root} /> */}
 						<AngPow path={path.angPow.root} />
-						<MysteryBox path={path.mysteryBox.root} />
+						{/* <MysteryBox path={path.mysteryBox.root} /> */}
+						<LuckyWheel path={path.luckyWheel.root} />
 						<VIP path={path.vip.root} />
 						<AppDownload path={path.appDownload.root} />
 						<AppEntPage path={`/${defSpecialPath.appentpage}`} />

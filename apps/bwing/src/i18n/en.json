@@ -679,6 +679,14 @@
 	"lbl_Sportsbook": "Sportsbook",
 	"lbl_Promotion_Casino": "CASINO",
 	"lbl_Promotion_All": "ALL",
-	"lbl_Promotion_Slot": "SLOT"
+	"lbl_Promotion_Slot": "SLOT",
+
+	"===============Lucky wheel===================":"",
+	"lbl_Rewards": "Rewards",
+	"lbl_My": "My",
+	"lbl_LuckyWheel": "LUCKY WHEEL",
+	"lbl_Conditions": "Conditions",
+	"lbl_MyLuckyWheelRewards":"MY LUCKY WHEEL REWARDS",
+	"lbl_MysteryBox_MemberEligibility": "Deposit Today Get Your Rewards Tomorrow."
 
 }

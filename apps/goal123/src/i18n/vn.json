@@ -603,6 +603,13 @@
 	"lbl_Promotion_Casino": "SÒNG BÀI",
 	"lbl_Promotion_All": "HIỂN THỊ TẤT CẢ",
 	"lbl_Promotion_Slot": "QUAY HŨ",
+	
+	"==============Lucky wheel=====================":"",
+	"lbl_My": "Phần",
+	"lbl_LuckyWheel": "VÒNG QUAY MAY MẮN",
+	"lbl_Conditions": "ĐIỀU KIỆN KHÁC",
+	"lbl_RewardsCondition": "Điều kiện nhận thưởng",
+	"lbl_OtherConditions": "ĐIỀU KIỆN KHÁC",
 
 	"==============Promotion==============": "",
 	"lbl_More_Info": "THÊM THÔNG TIN",
