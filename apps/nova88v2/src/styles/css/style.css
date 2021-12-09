@@ -1885,6 +1885,87 @@ footer > a {
   color: #6F6F6F;
 }
 
+footer > a.icon-menu {
+  position: relative;
+}
+
+footer > a.icon-menu .msgPop {
+  position: absolute;
+  font-size: 3vw;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  top: -1vw;
+  right: 5vw;
+  background: white;
+  border: 1px solid #1E85EC;
+  padding: 2vw;
+  text-align: center;
+  border-radius: 3px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  white-space: nowrap;
+}
+
+footer > a.icon-menu .msgPop button {
+  background: #1E85EC;
+  color: white;
+  width: 4vw;
+  height: 4vw;
+  border-radius: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 3vw;
+  margin: 0 0 0 2vw;
+  position: revert;
+}
+
+footer > a.icon-menu .msgPop button::before {
+  -webkit-transform: scale(0.7);
+          transform: scale(0.7);
+}
+
+footer > a.icon-menu .msgPop:before {
+  border-color: #1E85EC transparent transparent transparent;
+  border-style: solid solid solid;
+  border-width: 8px;
+  bottom: -1px;
+  content: "";
+  height: 0;
+  right: 2.5vw;
+  position: absolute;
+  width: 0;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+}
+
+footer > a.icon-menu .msgPop:after {
+  border-color: white transparent transparent transparent;
+  border-style: solid solid solid solid;
+  border-width: 8px;
+  bottom: 0;
+  content: "";
+  height: 0;
+  right: 2.5vw;
+  position: absolute;
+  width: 0;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+}
+
 footer > a .icon-mediafire {
   position: absolute;
   top: -2vw;
@@ -4489,8 +4570,8 @@ button.clickBtn:before {
 
 #goTop {
   position: fixed;
-  bottom: 15vw;
-  right: 6vw;
+  bottom: 25vw;
+  right: 5vw;
   width: 10vw;
   height: 10vw;
   background: #5574A7;
@@ -8507,16 +8588,6 @@ span.important {
   background: #F77A00;
 }
 
-.upcomingmatches .swiper-slide .team.euro > div:first-child {
-  background: url(../img/upcomingmatcheseurotitle.png) no-repeat top center/auto;
-  line-height: 7vw;
-}
-
-.upcomingmatches .swiper-slide .team.euro > div:last-child {
-  background: url(../img/upcomingmatcheseurotitledown.png) no-repeat top center/auto;
-  line-height: 7vw;
-}
-
 .upcomingmatches .swiper-slide .teamNew {
   height: 100%;
   width: 100%;
@@ -8660,81 +8731,6 @@ span.important {
 
 .upcomingmatches .swiper-slide .teamNew > div > div.btn-group button:hover {
   background: #F77A00;
-}
-
-.upcomingmatches .swiper-slide .teamNew.euro {
-  background: url(../img/upcomingmatcheseurobg.jpg) no-repeat top center/100% auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.upcomingmatches .swiper-slide .teamNew.euro > div:first-child {
-  background: url(../img/upcomingmatcheseurotitle.png) no-repeat top center/auto;
-  line-height: 7vw;
-}
-
-.upcomingmatches .swiper-slide .teamNew.euro > div:last-child {
-  background: url(../img/upcomingmatcheseurotitledown.png) no-repeat top center/auto;
-  line-height: 7vw;
-}
-
-.upcomingmatches .swiper-slide .teamNew.euro > div.odds {
-  position: absolute;
-  padding: 0;
-  font-size: 3vw;
-  font-weight: normal;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  bottom: 8vw;
-  display: flex;
-  width: 100%;
-}
-
-.upcomingmatches .swiper-slide .teamNew.euro > div.odds div {
-  background: #c9c9c9;
-  border-radius: 5px;
-  padding: 0 4vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin: 0 0 1vw 0;
-  -webkit-box-flex: 0;
-      -ms-flex: none;
-          flex: none;
-  width: 20vw;
-  color: black;
-  font-weight: bold;
-  height: auto;
-}
-
-.upcomingmatches .swiper-slide .teamNew.euro > div.odds div:nth-child(2) {
-  background: #e1c3a4;
-  margin: 0 1vw 1vw;
-}
-
-.upcomingmatches .swiper-slide .teamNew.euro > div > div.teamL, .upcomingmatches .swiper-slide .teamNew.euro > div > div.teamR {
-  white-space: normal;
-  height: 24vw;
-  overflow: hidden;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-
-.upcomingmatches .swiper-slide .teamNew.euro > div > div.btn-group {
-  margin: auto 0 0;
 }
 
 .liveTvTag {
@@ -8905,7 +8901,7 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 7vw 0;
+  margin: 7vw 0 20vw;
 }
 
 .social a {
@@ -8925,11 +8921,16 @@ span.important {
           justify-content: center;
 }
 
+.social a.icon-envelope:before {
+  font-size: 5vw;
+}
+
 .social > div {
   color: #5574A7;
   margin: -4vw auto auto 2vw;
   font-size: 3vw;
   font-weight: bold;
+  white-space: nowrap;
 }
 
 .social > div > div {
@@ -9019,7 +9020,7 @@ span.important {
 .eventLink {
   position: fixed;
   right: 1vw;
-  bottom: 20vw;
+  bottom: 24vw;
   z-index: 1;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9065,7 +9066,6 @@ span.important {
 
 .eventLink .wheelModule {
   width: 35vw;
-  height: 35vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

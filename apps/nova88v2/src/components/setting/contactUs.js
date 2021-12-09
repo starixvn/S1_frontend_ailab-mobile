@@ -59,6 +59,17 @@ const ContactUs = ({ i18n }) => {
 					<div className="text-org">NOVA88official</div>
 				</div>
 			</a>
+			<a
+				href="mailto:support@nova88.com"
+				target="_blank"
+				rel="noreferrer noopener">
+				<i className="icon icon-envelope" />
+				<div>
+					{i18n.lbl_Email}
+
+					<div className="text-org">NOVA88official</div>
+				</div>
+			</a>
 			<div>
 				<img src={lineQRCode} alt="Line QR Code" />
 				<div>Line</div>

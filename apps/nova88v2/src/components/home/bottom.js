@@ -63,6 +63,12 @@ const Bottom = ({ i18n, langId, currencyId }) => {
 					target="_blank"
 					rel="noreferrer noopener"
 				/>
+				<a
+					className="icon icon-envelope"
+					href="mailto:support@nova88.com"
+					target="_blank"
+					rel="noreferrer noopener"
+				/>
 			</div>
 		</>
 	);
