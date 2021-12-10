@@ -1896,8 +1896,8 @@ footer > a.icon-menu .msgPop {
           transform: translateY(-100%);
   top: -1vw;
   right: 5vw;
-  background: white;
-  border: 1px solid #1E85EC;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f77900), to(#f55c00));
+  background: linear-gradient(to bottom, #f77900, #f55c00);
   padding: 2vw;
   text-align: center;
   border-radius: 3px;
@@ -1911,11 +1911,15 @@ footer > a.icon-menu .msgPop {
       -ms-flex-pack: center;
           justify-content: center;
   white-space: nowrap;
+  color: white;
+  font-weight: bold;
+  -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 footer > a.icon-menu .msgPop button {
-  background: #1E85EC;
-  color: white;
+  background: white;
+  color: #F77A00;
   width: 4vw;
   height: 4vw;
   border-radius: 100%;
@@ -1938,22 +1942,8 @@ footer > a.icon-menu .msgPop button::before {
           transform: scale(0.7);
 }
 
-footer > a.icon-menu .msgPop:before {
-  border-color: #1E85EC transparent transparent transparent;
-  border-style: solid solid solid;
-  border-width: 8px;
-  bottom: -1px;
-  content: "";
-  height: 0;
-  right: 2.5vw;
-  position: absolute;
-  width: 0;
-  -webkit-transform: translateY(100%);
-          transform: translateY(100%);
-}
-
 footer > a.icon-menu .msgPop:after {
-  border-color: white transparent transparent transparent;
+  border-color: #f55c00 transparent transparent;
   border-style: solid solid solid solid;
   border-width: 8px;
   bottom: 0;
@@ -9020,8 +9010,8 @@ span.important {
 .eventLink {
   position: fixed;
   right: 1vw;
-  bottom: 24vw;
-  z-index: 1;
+  bottom: 25vw;
+  z-index: 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9066,6 +9056,7 @@ span.important {
 
 .eventLink .wheelModule {
   width: 35vw;
+  height: 35vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
