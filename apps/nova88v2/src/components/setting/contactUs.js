@@ -74,13 +74,13 @@ const ContactUs = ({ i18n }) => {
 				<img src={lineQRCode} alt="Line QR Code" />
 				<div>Line</div>
 			</div>
-			<div>
+			{/* <div>
 				<img
 					src={`${cloudBannerImgURL}/img/whatsapp.jpg`}
 					alt="Whatsapp QR Code"
 				/>
 				<div>Whatsapp</div>
-			</div>
+			</div> */}
 		</>
 	);
 };
