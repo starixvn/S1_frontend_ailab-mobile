@@ -4,13 +4,17 @@ import TurnoverAccumulated from "./popbox.turnover";
 import Otp from "./popbox.otp";
 import Loading from "./popbox.loading";
 import DomainListPop from "./popbox.domainList";
+import AddCryptoWallet from "./popbox.addCrypto";
+import PaymentQR from "./popbox.paymentQR";
 
 export const defPopBoxType = {
 	default: "default",
 	TurnoverAccumulated: "TurnoverAccumulated",
 	Otp: "Otp",
 	Loading: "Loading",
-	DomainList: "DomainList"
+	DomainList: "DomainList",
+	AddCryptoWallet: "AddCryptoWallet",
+	paymentQR: "paymentQR"
 };
 
 const PopUp = () => {
@@ -43,6 +47,14 @@ const PopUp = () => {
 
 		case defPopBoxType.DomainList:
 			content = <DomainListPop domainList={popBox.domainList} />;
+			break;
+
+		case defPopBoxType.AddCryptoWallet:
+			content = <AddCryptoWallet {...popBox} />;
+			break;
+
+		case defPopBoxType.paymentQR:
+			content = <PaymentQR {...popBox} />;
 			break;
 
 		default:

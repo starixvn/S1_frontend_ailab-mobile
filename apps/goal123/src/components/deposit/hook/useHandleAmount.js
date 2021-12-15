@@ -40,7 +40,6 @@ export const useHandleAmount = ({ currencyId, minAmount, maxAmount, i18n }) => {
 				setInputStatus({ checked: true, msg: "" });
 			}
 		}
-
 		return result.status === 0;
 	};
 

@@ -17,13 +17,17 @@ const GroupList = ({
 	i18n,
 	displayKey,
 	showMinMaxHint,
-	_isConvert
+	_isConvert,
+	className,
+	bankClassName
 }) => {
 	const rows = dataList?.map(data => {
 		const _mainKey = `${mainKey}-${data[idKey]}`;
 		const { minAmount, maxAmount } = showMinMaxHint ? data : {};
 		return (
 			<Radio
+				bankClassName={bankClassName}
+				className={className}
 				key={_mainKey}
 				id={`${_mainKey}-radio`}
 				radioGroup={mainKey}
@@ -65,7 +69,9 @@ GroupList.defaultProps = {
 	imgKeyWithExtension: false,
 	bindingItem: null,
 	showMinMaxHint: false,
-	displayKey: ""
+	displayKey: "",
+	className: "",
+	bankClassName: ""
 };
 
 GroupList.propTypes = {
@@ -87,7 +93,9 @@ GroupList.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	showMinMaxHint: PropTypes.bool,
 	displayKey: PropTypes.string,
-	_isConvert: PropTypes.bool.isRequired
+	_isConvert: PropTypes.bool.isRequired,
+	className: PropTypes.string,
+	bankClassName: PropTypes.string
 };
 
 export default GroupList;

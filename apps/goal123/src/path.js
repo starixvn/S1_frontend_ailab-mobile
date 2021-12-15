@@ -23,6 +23,9 @@ export default {
 			}
 		}
 	},
+	cryptoWallet: {
+		root: "cryptoWallet"
+	},
 	login: {
 		root: "login"
 	},
@@ -41,8 +44,14 @@ export default {
 			root: "/",
 			history: {
 				root: "history"
+			},
+			cryptoWithdrawal: {
+				root: "cryptoWithdrawal"
 			}
 		}
+	},
+	cryptoWithdrawal: {
+		root: "cryptoWithdrawal"
 	},
 	transfer: {
 		root: "transfer",

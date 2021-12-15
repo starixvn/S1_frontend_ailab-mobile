@@ -15,11 +15,19 @@ const defTabs = {
 	bankInfo: {
 		to: path.member.sub.bankInfo.root,
 		displayKey: "lbl_BankInfo"
+	},
+	cryptoWallet: {
+		to: path.member.sub.cryptoWallet.root,
+		displayKey: "lbl_CryptoWallet"
 	}
 };
 
 const IndexPage = props => {
-	return <TabPage defTabs={defTabs}>{props.children}</TabPage>;
+	return (
+		<TabPage defTabs={defTabs} showScroll={true} multipleExclude={true}>
+			{props.children}
+		</TabPage>
+	);
 };
 
 export default IndexPage;

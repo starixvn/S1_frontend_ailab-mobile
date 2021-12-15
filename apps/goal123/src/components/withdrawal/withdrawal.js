@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
-import { Redirect } from "@reach/router";
+import { Redirect, Link } from "@reach/router";
 import {
 	i18nContext,
 	userInfoContext,
@@ -98,11 +98,11 @@ const Panel = () => {
 				setPageVerify(false);
 			}
 		} else if (userInfo.isLogin) {
-			const CheckBankInfo = async () => {
-				const result = await api_GetCustBankInfo().then(res => {
-					let hasBankInfo = false;
+			api_GetCustBankInfo()
+				.then(res => {
 					if (res.data.errorCode === 0) {
 						if (res.data.data?.bankInfoDetail?.length) {
+							setPopBox({ isOpen: false });
 							if (isMountedRef.current) {
 								setbankInfo(() => ({
 									accountName: res.data.data.accountName,
@@ -124,76 +124,44 @@ const Panel = () => {
 									setPageVerify(true);
 								}
 							}
-							hasBankInfo = true;
-						} else {
-							const ClosePopBox = () => {
-								setPopBox({ isOpen: false });
-								setRedirectPath(
-									`/${path.member.root}/${path.member.sub.bankInfo.root}`
-								);
-							};
-
-							if (isMountedRef.current) {
-								setPopBox({
-									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: i18n.lbl_UpdateBankInfo,
-									hasBtn: true,
-									hideCloseBtn: true,
-									btnBar: (
-										<div className="btn-group">
-											<button
-												className="blue"
-												onClick={ClosePopBox}>
-												{i18n.lbl_UpdateBankDetail}
-											</button>
-										</div>
-									)
-								});
-								setPageVerify(false);
-							}
 						}
 					}
-					return hasBankInfo;
-				});
-				return result;
-			};
+				})
+				.catch(err => console.error(err));
 
-			CheckBankInfo().then(hasBankInfo => {
-				if (hasBankInfo) {
-					KycCheck(true).then(kycProcess => {
-						if (!kycProcess) {
-							if (userInfo.isLogin) {
-								api_GetWithdrawalAvailableBalance().then(
-									res => {
-										if (
-											res.data.errorCode === 0 &&
-											isMountedRef.current
-										) {
-											setBalanceInfo(res.data.data);
-											setLoading(false);
-										}
-									},
-									() => {
-										if (isMountedRef.current) {
-											setLoading(false);
-										}
-									}
-								);
-
-								api_GetWithdrawalInfoRecent().then(res => {
-									if (
-										res.data.errorCode === 0 &&
-										isMountedRef.current
-									) {
-										setRecentDatas(res.data.data);
-									}
-								});
+			KycCheck(true)
+				.then(kycProcess => {
+					if (!kycProcess) {
+						api_GetWithdrawalAvailableBalance().then(
+							res => {
+								if (
+									res.data.errorCode === 0 &&
+									isMountedRef.current
+								) {
+									setBalanceInfo(res.data.data);
+									setLoading(false);
+								}
+							},
+							() => {
+								if (isMountedRef.current) {
+									setLoading(false);
+								}
 							}
-						}
-					});
-				}
-			});
+						);
+
+						api_GetWithdrawalInfoRecent()
+							.then(res => {
+								if (
+									res.data.errorCode === 0 &&
+									isMountedRef.current
+								) {
+									setRecentDatas(res.data.data);
+								}
+							})
+							.catch(err => console.error(err));
+					}
+				})
+				.catch(err => console.error(err));
 		}
 	}, [
 		userInfo.accountName,
@@ -290,6 +258,34 @@ const Panel = () => {
 	const ClickSubmit = () => {
 		if (pageVerify) {
 			const result = VaildAmount(amount);
+			if (!bankInfo?.bankList?.length) {
+				const ClosePopBox = () => {
+					setPopBox({ isOpen: false });
+					setRedirectPath(
+						`/${path.member.root}/${path.member.sub.bankInfo.root}`
+					);
+				};
+
+				if (isMountedRef.current) {
+					setPopBox({
+						isOpen: true,
+						title: i18n.lbl_ImportantNote,
+						content: i18n.lbl_UpdateBankInfo,
+						hasBtn: true,
+						hideCloseBtn: true,
+						btnBar: (
+							<div className="btn-group">
+								<button className="blue" onClick={ClosePopBox}>
+									{i18n.lbl_UpdateBankDetail}
+								</button>
+							</div>
+						)
+					});
+
+					setPageVerify(false);
+				}
+				return;
+			}
 			if (result) {
 				const RedirectToNext = (accountNo, _realAmount, sysId) => {
 					api_WithdrawalReq(accountNo, _realAmount, sysId).then(
@@ -595,8 +591,17 @@ const Panel = () => {
 				<div className="tip">{withdrawalLimitHint}</div>
 
 				<div className="inputBox">
-					<div className="selectBank">{banks}</div>
+					<div className="selectBank">
+						{banks}
+						{bankInfo?.bankList?.length < 3 && (
+							<Link
+								to={`/${path.member.root}/${path.member.sub.bankInfo.root}`}>
+								<i className="icon icon-plus1" />
+							</Link>
+						)}
+					</div>
 				</div>
+
 				<div className="btn-group">
 					<button className="lightBlue" onClick={ClickSubmit}>
 						{i18n.lbl_Submit}

@@ -13,13 +13,15 @@ import MobilePay from "./deposit.mobilePay";
 import OnlineBanking from "./deposit.onlineBanking";
 import LocalBank from "./deposit.localBank";
 import LoadCardPay from "./deposit.loadCardPay";
+import CryptoPay from "./deposit.cryptoPay";
 import {
 	api_GetDepositInfoRecent,
 	api_GetMobilePayGroupList,
 	api_GetBankInfoOffList,
 	api_GetOnlinePaymentList,
 	api_SetDepositCancel,
-	api_payment_GetLoadCardPayGroupList
+	api_payment_GetLoadCardPayGroupList,
+	api_GetCryptoPayInfoList
 } from "../../service/api/payment";
 import RecentDatas from "./deposit.recentDatas";
 import { number_format, isConvert } from "../common/common";
@@ -31,7 +33,8 @@ const defPayType = {
 	onlineBank: "onlineBank",
 	localBank: "localBank",
 	mobilePay: "mobilePay",
-	loadCardPay: "loadCardPay"
+	loadCardPay: "loadCardPay",
+	cryptoPay: "cryptoPay"
 };
 
 const defPayment = {
@@ -49,6 +52,10 @@ const defPayment = {
 	},
 	[defPayType.loadCardPay]: {
 		displayKey: "lbl_TopUpCard",
+		creditTimeKey: "lbl_5mins"
+	},
+	[defPayType.cryptoPay]: {
+		displayKey: "lbl_CryptoPay",
 		creditTimeKey: "lbl_5mins"
 	}
 };
@@ -159,6 +166,16 @@ const Panel = () => {
 				depositPromoMsg={depositPromoMsg}
 			/>
 		);
+	} else if (selected === defPayType.cryptoPay) {
+		content = (
+			<CryptoPay
+				payType={selected}
+				creditTimeKey={defPayment[defPayType.cryptoPay].creditTimeKey}
+				paymentList={paymentList[defPayType.cryptoPay] ?? []}
+				promoList={promoList}
+				depositPromoMsg={depositPromoMsg}
+			/>
+		);
 	}
 
 	useEffect(() => {
@@ -171,7 +188,8 @@ const Panel = () => {
 					[defPayType.mobilePay]: [],
 					[defPayType.onlineBank]: [],
 					[defPayType.localBank]: [],
-					[defPayType.loadCardPay]: []
+					[defPayType.loadCardPay]: [],
+					[defPayType.cryptoPay]: []
 				};
 
 				const setDefaultSelect = (currentValue, payType, dataList) =>
@@ -225,6 +243,17 @@ const Panel = () => {
 						defaultSelect,
 						defPayType.loadCardPay,
 						payments[defPayType.loadCardPay]
+					);
+				} catch (error) {}
+
+				try {
+					const res = await api_GetCryptoPayInfoList();
+					payments[defPayType.cryptoPay] = getDataListResult(res);
+
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defType.cryptoPay,
+						payments[defPayType.cryptoPay]
 					);
 				} catch (error) {}
 

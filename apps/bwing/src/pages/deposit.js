@@ -30,7 +30,9 @@ const IndexPage = props => {
 		<bankSlipPopBoxContext.Provider
 			value={{ bankSlipPopBox, setbankSlipPopBox }}>
 			{props.children ? (
-				<TabPage defTabs={defTabs}>{props.children}</TabPage>
+				<TabPage defTabs={defTabs} multipleExclude={true}>
+					{props.children}
+				</TabPage>
 			) : (
 				<Deposit />
 			)}

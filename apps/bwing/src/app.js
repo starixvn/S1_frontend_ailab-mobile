@@ -12,11 +12,13 @@ import BankInfo from "./components/member/bankInfo";
 import Member from "./pages/member";
 
 import Deposit from "./pages/deposit";
+import CryptoWallet from "./components/member/cryptoWallet";
 import DepositHistory from "./components/deposit/deposit.history";
 
 import Withdrawal from "./pages/withdrawal";
 import WithdrawalHome from "./components/withdrawal/withdrawal";
 import WithdrawalHistory from "./components/withdrawal/withdrawal.history";
+import WithdrawalCrypto from "./components/withdrawal/withdrawal.crypto";
 
 import Transfer from "./pages/transfer";
 import TransferHome from "./components/transfer/transfer";
@@ -89,6 +91,9 @@ const Index = () => {
 						<Member path={path.member.root}>
 							<Profile path={path.member.sub.root} />
 							<BankInfo path={path.member.sub.bankInfo.root} />
+							<CryptoWallet
+								path={path.member.sub.cryptoWallet.root}
+							/>
 						</Member>
 						<FriendReferral path={path.referral.root}>
 							<ReferFriends path={path.referral.sub.root} />
@@ -105,6 +110,9 @@ const Index = () => {
 							<WithdrawalHome path={path.withdrawal.sub.root} />
 							<WithdrawalHistory
 								path={path.withdrawal.sub.history.root}
+							/>
+							<WithdrawalCrypto
+								path={path.withdrawal.sub.cryptoWithdrawal.root}
 							/>
 						</Withdrawal>
 						<Kyc path={path.kyc.root} />
