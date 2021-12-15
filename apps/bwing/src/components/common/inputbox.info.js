@@ -21,7 +21,9 @@ const Inputbox = ({
 	clickSubmit,
 	isRequired,
 	testAttr,
-	_class
+	_class,
+	hideInfoBtn,
+	inputBoxNewClass
 }) => {
 	let Title = null;
 	if (title) {
@@ -39,7 +41,7 @@ const Inputbox = ({
 		<div className={_class} data-testid={`${testAttr}_inputBox`}>
 			{Title}
 			<div className="input-group">
-				<div className="inputBoxNew">
+				<div className={`inputBoxNew ${inputBoxNewClass ?? ""}`}>
 					{icon ? <i className={icon} /> : null}
 					<input
 						data-testid={`${testAttr}_ipt`}
@@ -51,10 +53,13 @@ const Inputbox = ({
 						max={max}
 						disabled={disabled}
 						maxLength={maxLength}
-						data-testid={`${testAttr}_ipt`}
 					/>
 					{numberConvert ? <span>(000)</span> : null}
-					<IptStatus btnStatus={btnStatus} clickInfo={clickInfo} />
+					<IptStatus
+						hideInfoBtn={hideInfoBtn}
+						btnStatus={btnStatus}
+						clickInfo={clickInfo}
+					/>
 				</div>
 				{submitBtn ? (
 					<SubmitBtn i18n={i18n} clickSubmit={clickSubmit} />
@@ -87,7 +92,8 @@ Inputbox.defaultProps = {
 	clickSubmit: () => null,
 	isRequired: false,
 	testAttr: "",
-	_class: "input-Area"
+	_class: "input-Area",
+	inputBoxNewClass: ""
 };
 
 Inputbox.propTypes = {
@@ -110,16 +116,18 @@ Inputbox.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string),
 	clickSubmit: PropTypes.func,
 	isRequired: PropTypes.bool,
-	testAttr: PropTypes.string
+	testAttr: PropTypes.string,
+	inputBoxNewClass: PropTypes.string
 };
 
-export const IptStatus = ({ btnStatus, clickInfo }) => {
+export const IptStatus = ({ btnStatus, clickInfo, hideInfoBtn }) => {
 	switch (btnStatus) {
 		case false:
 			return <i className="icon icon-cross textRed" />;
 		case true:
 			return <i className="icon icon-checkmark textGreen" />;
 		default:
+			if (hideInfoBtn) return null;
 			return (
 				<i
 					className="icon icon-information-solid"
@@ -132,12 +140,14 @@ export const IptStatus = ({ btnStatus, clickInfo }) => {
 
 IptStatus.defaultProps = {
 	btnStatus: null,
-	clickInfo: () => null
+	clickInfo: () => null,
+	hideInfoBtn: false
 };
 
 IptStatus.propTypes = {
 	btnStatus: PropTypes.bool,
-	clickInfo: PropTypes.func
+	clickInfo: PropTypes.func,
+	hideInfoBtn: PropTypes.bool
 };
 
 const SubmitBtn = ({ i18n, clickSubmit }) => {

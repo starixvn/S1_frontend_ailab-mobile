@@ -1633,6 +1633,17 @@ main .sideBarNew div > button img {
   font-weight: bold;
 }
 
+.tag.scrollBar {
+  overflow: scroll;
+  -webkit-box-pack: unset;
+      -ms-flex-pack: unset;
+          justify-content: unset;
+}
+
+.tag.scrollBar a {
+  margin: 0 3.5vw;
+}
+
 .mainNew {
   background: url(../img/hotgamebg.png) center top;
   background-color: #f2f4f7;
@@ -2608,6 +2619,15 @@ main .sideBarNew div > button img {
           flex: 2.5;
 }
 
+.inputBox.disable {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+}
+
+.inputBox.disable .dropdown {
+  color: #696969;
+}
+
 .inputBox .dropdown i.icon {
   position: initial;
   -webkit-transform: translateY(0);
@@ -2884,6 +2904,11 @@ main .sideBarNew div > button img {
 
 .selectBank img {
   width: 100%;
+}
+
+.selectBank i.icon-plus1 {
+  top: 50%;
+  left: calc(50% - 2.5vw);
 }
 
 .step {
@@ -3205,7 +3230,7 @@ main .sideBarNew div > button img {
 }
 
 .smallTitle {
-  margin: 2vw 0;
+  margin: 3vw 0 2.5vw;
   padding-left: 2vw;
   color: #052561;
   display: -webkit-box;
@@ -6990,6 +7015,14 @@ span.important {
   margin-right: 0;
 }
 
+.depositModule_mobile .inputBox .icon-module,
+.depositModule_online .inputBox .icon-module,
+.depositModule_local .inputBox .icon-module,
+.depositModule_topupMobile .inputBox .icon-module,
+.depositModule_Crpyto .inputBox .icon-module {
+  top: 1.5vw;
+}
+
 .depositModule_mobile .inputBox input,
 .depositModule_online .inputBox input,
 .depositModule_local .inputBox input,
@@ -7009,6 +7042,7 @@ span.important {
 .depositModule_topupMobile .inputBox input::-webkit-input-placeholder,
 .depositModule_Crpyto .inputBox input::-webkit-input-placeholder {
   color: #6f7a8e;
+  font-size: 3vw;
 }
 
 .depositModule_mobile .inputBox input:-ms-input-placeholder,
@@ -7017,6 +7051,7 @@ span.important {
 .depositModule_topupMobile .inputBox input:-ms-input-placeholder,
 .depositModule_Crpyto .inputBox input:-ms-input-placeholder {
   color: #6f7a8e;
+  font-size: 3vw;
 }
 
 .depositModule_mobile .inputBox input::-ms-input-placeholder,
@@ -7025,6 +7060,7 @@ span.important {
 .depositModule_topupMobile .inputBox input::-ms-input-placeholder,
 .depositModule_Crpyto .inputBox input::-ms-input-placeholder {
   color: #6f7a8e;
+  font-size: 3vw;
 }
 
 .depositModule_mobile .inputBox input::placeholder,
@@ -7033,6 +7069,7 @@ span.important {
 .depositModule_topupMobile .inputBox input::placeholder,
 .depositModule_Crpyto .inputBox input::placeholder {
   color: #6f7a8e;
+  font-size: 3vw;
 }
 
 .depositModule_mobile .inputBox .tip,

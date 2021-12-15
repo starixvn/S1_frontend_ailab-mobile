@@ -13,3 +13,22 @@ export const api_cashier_DepositReqLoadCardPay = ({
 			BonusCode ? `&BonusCode=${BonusCode}` : ""
 		}`
 	);
+
+export const api_depositReqCryptoPay = ({
+	langId,
+	channelId,
+	real_amount,
+	bonusCode
+}) => {
+	const paramsUrl = [
+		`ChannelId=${channelId}`,
+		`Amount=${real_amount}`,
+		bonusCode && `BonusCode=${bonusCode}`
+	]
+		.filter(Boolean)
+		.join("&");
+
+	return cashierRequest.get(
+		`/${langId}/Cashier/DepositReqCryptoPay?${paramsUrl}`
+	);
+};

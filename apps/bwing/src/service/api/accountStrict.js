@@ -59,3 +59,19 @@ export const api_VerifyOTP = ({ inputOTPcode }) =>
 
 export const api_SetAccountName = ({ name }) =>
 	accountStrictRequest.post("/SetAccountName", { name });
+
+export const api_SetCustUSDTInfo = form =>
+	accountStrictRequest.post("/SetCustUSDTInfo", form);
+
+export const api_SetCustUSDTInfoBatch = form =>
+	accountStrictRequest.post("/SetCustUSDTInfoBatch", form);
+
+export const api_GetOTPVerifyInfo = () =>
+	accountStrictRequest.post("/GetOTPVerifyInfo");
+
+export const api_DelCustUSDTInfo = ({ USDTAddress, NickName, AccountName }) =>
+	accountStrictRequest.post("/DelCustUSDTInfo", {
+		USDTAddress,
+		NickName,
+		AccountName
+	});

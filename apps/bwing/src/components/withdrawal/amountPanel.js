@@ -14,7 +14,8 @@ const AmountPanel = ({
 	inputStatus,
 	clickInfo,
 	VaildAmount,
-	withdrawalLimitHint
+	withdrawalLimitHint,
+	currencyId
 }) => {
 	return (
 		<div className="subModule">
@@ -23,6 +24,7 @@ const AmountPanel = ({
 					<div>
 						<div>{i18n.lbl_Balance}</div>
 						<div>
+							{i18n[`Currency_${currencyId}`]}
 							<div>
 								{number_format(
 									balanceInfo?.balance,
@@ -36,6 +38,7 @@ const AmountPanel = ({
 					<div>
 						<div>{i18n.lbl_Deduction}</div>
 						<div>
+							{i18n[`Currency_${currencyId}`]}
 							<div>
 								{number_format(
 									balanceInfo?.deduction,
@@ -49,13 +52,16 @@ const AmountPanel = ({
 					<div>
 						<div>{i18n.lbl_EligibleWithdrawalAmount}</div>
 						<div>
-							<span>
-								{number_format(
-									balanceInfo?.availableBalance,
-									_isConvert,
-									0
-								)}
-							</span>
+							{i18n[`Currency_${currencyId}`]}
+							<div>
+								<span>
+									{number_format(
+										balanceInfo?.availableBalance,
+										_isConvert,
+										0
+									)}
+								</span>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -96,7 +102,8 @@ AmountPanel.defaultProps = {
 	balanceInfo: {},
 	inputStatus: {},
 	VaildAmount: () => null,
-	withdrawalLimitHint: ""
+	withdrawalLimitHint: "",
+	currencyId: ""
 };
 
 AmountPanel.propTypes = {
@@ -110,7 +117,8 @@ AmountPanel.propTypes = {
 	inputStatus: PropTypes.objectOf(PropTypes.any),
 	i18n: PropTypes.objectOf(PropTypes.string),
 	VaildAmount: PropTypes.func,
-	withdrawalLimitHint: PropTypes.string
+	withdrawalLimitHint: PropTypes.string,
+	currencyId: PropTypes.string
 };
 
 export default AmountPanel;

@@ -15,7 +15,9 @@ const Inputbox = ({
 	btnStatus,
 	numberConvert,
 	clickInfo,
-	testAttr
+	testAttr,
+	important,
+	hideInfoBtn
 }) => {
 	return (
 		<div
@@ -33,9 +35,14 @@ const Inputbox = ({
 				disabled={disabled}
 				maxLength={maxLength}
 			/>
+			{important && <span className="txt-red">*</span>}
 			<div className="icon-module">
 				{numberConvert ? "('000)" : null}
-				<IptStatus btnStatus={btnStatus} clickInfo={clickInfo} />
+				<IptStatus
+					btnStatus={btnStatus}
+					clickInfo={clickInfo}
+					hideInfoBtn={hideInfoBtn}
+				/>
 			</div>
 			{tip ? (
 				<div
@@ -60,7 +67,9 @@ Inputbox.defaultProps = {
 	btnStatus: null,
 	numberConvert: false,
 	clickInfo: () => null,
-	testAttr: null
+	testAttr: null,
+	important: false,
+	hideInfoBtn: false
 };
 
 Inputbox.propTypes = {
@@ -77,16 +86,19 @@ Inputbox.propTypes = {
 	btnStatus: PropTypes.bool,
 	numberConvert: PropTypes.bool,
 	clickInfo: PropTypes.func,
-	testAttr: PropTypes.string
+	testAttr: PropTypes.string,
+	important: PropTypes.bool,
+	hideInfoBtn: PropTypes.bool
 };
 
-export const IptStatus = ({ btnStatus, clickInfo }) => {
+export const IptStatus = ({ btnStatus, clickInfo, hideInfoBtn }) => {
 	switch (btnStatus) {
 		case false:
 			return <i className="icon icon-cross" />;
 		case true:
 			return <i className="icon icon-checkmark" />;
 		default:
+			if (hideInfoBtn) return null;
 			return (
 				<i
 					className="icon icon-information-solid"
@@ -99,12 +111,14 @@ export const IptStatus = ({ btnStatus, clickInfo }) => {
 
 IptStatus.defaultProps = {
 	btnStatus: null,
-	clickInfo: () => null
+	clickInfo: () => null,
+	hideInfoBtn: false
 };
 
 IptStatus.propTypes = {
 	btnStatus: PropTypes.bool,
-	clickInfo: PropTypes.func
+	clickInfo: PropTypes.func,
+	hideInfoBtn: PropTypes.bool
 };
 
 export default Inputbox;
