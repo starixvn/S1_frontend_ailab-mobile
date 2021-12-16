@@ -14,10 +14,11 @@ const Radio = ({
 	minAmount,
 	maxAmount,
 	i18n,
-	_isConvert
+	_isConvert,
+	bankClassName
 }) => {
 	return (
-		<div className={className}>
+		<div className={isSelect ? className : ""}>
 			<input
 				type="radio"
 				name={radioGroup}
@@ -38,6 +39,8 @@ const Radio = ({
 				minAmount={minAmount}
 				maxAmount={maxAmount}
 				_isConvert={_isConvert}
+				bankClassName={bankClassName}
+				isSelect={isSelect}
 			/>
 		</div>
 	);
@@ -48,7 +51,8 @@ Radio.defaultProps = {
 	minAmount: null,
 	maxAmount: null,
 	displayName: "",
-	_isConvert: false
+	_isConvert: false,
+	bankClassName: ""
 };
 
 Radio.propTypes = {
@@ -63,24 +67,34 @@ Radio.propTypes = {
 	minAmount: PropTypes.number,
 	maxAmount: PropTypes.number,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	_isConvert: PropTypes.bool
+	_isConvert: PropTypes.bool,
+	bankClassName: PropTypes.string
 };
 
-const BankInfo = ({ displayName, i18n, minAmount, maxAmount, _isConvert }) => {
+const BankInfo = ({
+	displayName,
+	bankClassName,
+	i18n,
+	minAmount,
+	maxAmount,
+	_isConvert,
+	isSelect
+}) => {
+	const _class = bankClassName && isSelect ? bankClassName : "bank";
 	return displayName ? (
-		<div className="bank">
+		<div className={_class}>
 			<div>{displayName}</div>
 			{minAmount === null || maxAmount === null ? null : (
 				<div>
 					<div>
-						{`${i18n.lbl_Min}: ${
+						{`${i18n?.lbl_Min}: ${
 							minAmount === 0
 								? i18n.lbl_Unlimited
 								: number_format(minAmount, _isConvert, 0)
 						}`}
 					</div>
 					<div>
-						{`${i18n.lbl_Max}: ${
+						{`${i18n?.lbl_Max}: ${
 							maxAmount === 0
 								? i18n.lbl_Unlimited
 								: number_format(maxAmount, _isConvert, 0)
@@ -95,7 +109,9 @@ const BankInfo = ({ displayName, i18n, minAmount, maxAmount, _isConvert }) => {
 BankInfo.defaultProps = {
 	minAmount: null,
 	maxAmount: null,
-	displayName: ""
+	displayName: "",
+	bankClassName: "",
+	isSelect: false
 };
 
 BankInfo.propTypes = {
@@ -103,7 +119,9 @@ BankInfo.propTypes = {
 	minAmount: PropTypes.number,
 	maxAmount: PropTypes.number,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	_isConvert: PropTypes.bool.isRequired
+	_isConvert: PropTypes.bool.isRequired,
+	bankClassName: PropTypes.string,
+	isSelect: PropTypes.bool
 };
 
 export default Radio;

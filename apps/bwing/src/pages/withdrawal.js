@@ -11,11 +11,19 @@ const defTabs = {
 	History: {
 		to: path.withdrawal.sub.history.root,
 		displayKey: "lbl_WithdrawalHistory"
+	},
+	CryptoWithdrawal: {
+		to: path.withdrawal.sub.cryptoWithdrawal.root,
+		displayKey: "lbl_CryptoWithdrawal"
 	}
 };
 
 const IndexPage = props => {
-	return <TabPage defTabs={defTabs}>{props.children}</TabPage>;
+	return (
+		<TabPage defTabs={defTabs} multipleExclude={true} showScroll={true}>
+			{props.children}
+		</TabPage>
+	);
 };
 
 export default IndexPage;

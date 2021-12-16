@@ -41,7 +41,6 @@ const Main = props => {
 		bonusCode: null,
 		requiredAmount: null
 	});
-
 	const isMountedRef = useRef(null);
 	const {
 		amount,
@@ -128,8 +127,7 @@ const Main = props => {
 										promoContent.PromotionRate = `${Number(
 											res.data.data.formData
 												?.PromotionRate
-										)
-											.toFixed(2)}%`;
+										).toFixed(2)}%`;
 
 										promoContent.Promotion =
 											formData?.Promotion;

@@ -63,6 +63,7 @@ export class DropdownBox extends Component {
 				className={`dropdown${this.state.isOpen ? " open" : ""}`}
 				onClick={this.ClickDropdown}>
 				<button className="btn">
+					{this.props.important && <span className="txt-red">*</span>}
 					<span className="text">{selected}</span>
 				</button>
 				<div
@@ -83,7 +84,8 @@ DropdownBox.defaultProps = {
 	placeholder: "",
 	i18n: {},
 	clickDropdown: null,
-	selectedIdx: null
+	selectedIdx: null,
+	important: false
 };
 
 DropdownBox.propTypes = {
@@ -94,7 +96,8 @@ DropdownBox.propTypes = {
 	selectedIdx: PropTypes.number,
 	mainKey: PropTypes.string,
 	clickDropdown: PropTypes.func,
-	placeholder: PropTypes.string
+	placeholder: PropTypes.string,
+	important: PropTypes.bool
 };
 
 const Item = props => {

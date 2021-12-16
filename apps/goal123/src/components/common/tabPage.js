@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Redirect, Link, useMatch } from "@reach/router";
 import { i18nContext, userInfoContext } from "./context";
 
-const IndexPage = ({ defTabs, children, beforeLogin }) => {
+const IndexPage = ({ defTabs, children, beforeLogin, showScroll }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const [redirectPath, setRedirectPath] = useState(null);
@@ -39,7 +39,9 @@ const IndexPage = ({ defTabs, children, beforeLogin }) => {
 
 	return (
 		<>
-			<div className="tag">{items}</div>
+			<div className={`tag${showScroll ? " scrollBar" : ""}`}>
+				{items}
+			</div>
 			{children}
 		</>
 	);
@@ -47,20 +49,21 @@ const IndexPage = ({ defTabs, children, beforeLogin }) => {
 
 IndexPage.defaultProps = {
 	defTabs: {},
-	beforeLogin: false
+	beforeLogin: false,
+	showScroll: false
 };
 
 IndexPage.propTypes = {
 	defTabs: PropTypes.objectOf(PropTypes.object),
 	children: PropTypes.node.isRequired,
-	beforeLogin: PropTypes.bool
+	beforeLogin: PropTypes.bool,
+	showScroll: PropTypes.bool
 };
 
 const TabItem = ({ i18n, tabItem }) => {
 	const matchTo = useMatch(`${tabItem.to}/*`) !== null;
 	const matchExclude = useMatch(`${tabItem.excludeMath}/*`) !== null;
 	const match = matchTo && (!tabItem.excludeMath || !matchExclude);
-
 	return (
 		<Link to={tabItem.to} className={match ? "open" : ""}>
 			{i18n[tabItem.displayKey]}
@@ -69,6 +72,27 @@ const TabItem = ({ i18n, tabItem }) => {
 };
 
 TabItem.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	tabItem: PropTypes.objectOf(PropTypes.string).isRequired
+};
+
+TabItem.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	tabItem: PropTypes.objectOf(PropTypes.string).isRequired
+};
+
+const AutoHidingTabs = ({ i18n, tabItem }) => {
+	const match = useMatch(`${tabItem.to}/`);
+
+	return !match && <Link to={tabItem.to}>{i18n[tabItem.displayKey]}</Link>;
+};
+
+AutoHidingTabs.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	tabItem: PropTypes.objectOf(PropTypes.string).isRequired
+};
+
+AutoHidingTabs.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	tabItem: PropTypes.objectOf(PropTypes.string).isRequired
 };

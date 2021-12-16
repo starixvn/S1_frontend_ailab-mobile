@@ -15,8 +15,12 @@ const defTabs = {
 		displayKey: "lbl_Referral"
 	},
 	bankInfo: {
-		to: path.member.sub.bankInfo.root,
+		to: `/${path.member.root}/${path.member.sub.bankInfo.root}`,
 		displayKey: "lbl_BankInfo"
+	},
+	cryptoWallet: {
+		to: `/${path.cryptoWallet.root}`,
+		displayKey: "lbl_CryptoWallet"
 	}
 };
 

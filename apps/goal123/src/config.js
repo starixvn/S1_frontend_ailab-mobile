@@ -29,6 +29,8 @@ export const siteInfo = langId => {
 
 const bannerImgUrl = "https://banner.goal123.org";
 
+export const usdtImgUrl = "https://payment.goal123.org";
+
 export default process.env.NODE_ENV === "production"
 	? {
 			siteName,

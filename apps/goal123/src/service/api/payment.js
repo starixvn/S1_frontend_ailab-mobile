@@ -37,6 +37,9 @@ export const api_GetStatement = ({ StartDate, EndDate, PageNumber }) =>
 		PageNumber
 	});
 
+export const api_GetCryptoPayInfoList = () =>
+	paymentRequest.post("/GetCryptoPayInfoList");
+
 export const api_GetBankInfoOffList = () =>
 	paymentRequest.post("/GetBankInfoOffList");
 
@@ -147,3 +150,12 @@ export const api_payment_GetLoadCardPayInfoList = ({ groupId }) =>
 
 export const api_payment_GetWithdrawalLimit = () =>
 	paymentRequest.post("/GetWithdrawalLimit");
+
+export const api_payment_GetSupportNetwork = () =>
+	paymentRequest.post("/GetSupportNetwork", { CurrencyId: 96 });
+
+export const api_WithdrawalUSDTReq = (AccountNo, amount) =>
+	paymentRequest.post("/WithdrawalUSDTReq", {
+		AccountNo,
+		amount
+	});

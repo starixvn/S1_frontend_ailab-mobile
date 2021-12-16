@@ -328,6 +328,12 @@ export const TransactionHistory = props => {
 					<span>{i18n[`lbl_DepositStatus${props.status}`]}</span>
 				</li>
 			</ul>
+			{props.thirdId && (
+				<div>
+					<div className="title">{i18n.lbl_Action}</div>
+					<div>{thirdId}</div>
+				</div>
+			)}
 			{btnGroup}
 		</div>
 	);

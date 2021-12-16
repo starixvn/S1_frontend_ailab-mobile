@@ -17,6 +17,9 @@ export default {
 			root: "/",
 			bankInfo: {
 				root: "bankinfo"
+			},
+			cryptoWallet: {
+				root: "cryptoWallet"
 			}
 		}
 	},
@@ -68,6 +71,9 @@ export default {
 			root: "/",
 			history: {
 				root: "history"
+			},
+			cryptoWithdrawal: {
+				root: "cryptoWithdrawal"
 			}
 		}
 	},
