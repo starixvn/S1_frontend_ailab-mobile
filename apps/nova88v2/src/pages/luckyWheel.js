@@ -20,6 +20,7 @@ import PopImg from "../styles/img/event/wheel/eventlinkbg.png";
 import spin1 from "../styles/img/event/wheel/eventlinkimg.png";
 import spin2 from "../styles/img/event/wheel/eventlinkwin.png";
 import { eventTime } from "../components/common/eventTime";
+import GoTopBtn from "../components/common/goTopBtn";
 
 const CURRENCY_PERMISSION = [
 	defCurrenyId.MYR,
@@ -110,6 +111,7 @@ const IndexPage = () => {
 				<LuckyWheel />
 			</main>
 			<Footer />
+			<GoTopBtn />
 		</>
 	);
 };

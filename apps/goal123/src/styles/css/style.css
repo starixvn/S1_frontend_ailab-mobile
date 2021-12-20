@@ -412,6 +412,75 @@ header > div .headerBtnIn .icon .amount {
   }
 }
 
+header > div .headerBtnIn .itemInfo {
+  background: rgba(250, 182, 23, 0.95);
+  -webkit-box-shadow: rgba(250, 182, 23, 0.6) 0.75vw 0.75vw;
+          box-shadow: rgba(250, 182, 23, 0.6) 0.75vw 0.75vw;
+  color: #284985;
+  padding: 3vw 10vw 3vw 5vw;
+  font-size: 3.5vw;
+  border-radius: 1vw;
+  font-weight: bold;
+  z-index: 1;
+  position: absolute;
+  top: 12vw;
+  right: 1vw;
+  width: 45vw;
+  height: auto;
+}
+
+header > div .headerBtnIn .itemInfo > div {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+header > div .headerBtnIn .itemInfo::before {
+  content: "";
+  position: absolute;
+  top: -3vw;
+  right: 2vw;
+  border-left: 3vw solid transparent;
+  border-right: 3vw solid transparent;
+  border-bottom: 3vw solid rgba(250, 182, 23, 0.95);
+}
+
+header > div .headerBtnIn .itemInfo::after {
+  content: "";
+  position: absolute;
+  top: -3vw;
+  left: -2vw;
+  width: 7vw;
+  height: 7vw;
+  background: url(../img/bell.png) center/cover;
+  -webkit-animation: routate2 linear infinite alternate 0.8s;
+          animation: routate2 linear infinite alternate 0.8s;
+}
+
+header > div .headerBtnIn .itemInfo .icon-close {
+  position: absolute;
+  top: 3vw;
+  right: 3vw;
+  background: #f0eff5;
+  width: 4.5vw;
+  height: 4.5vw;
+  border-radius: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #fab617;
+}
+
+header > div .headerBtnIn .itemInfo .icon-close::before {
+  font-size: 2.5vw;
+}
+
 main {
   padding-top: 12vw;
   background: #f3f3f3;
@@ -2622,10 +2691,17 @@ main .sideBarNew div > button img {
 .inputBox.disable {
   -webkit-filter: grayscale(1);
           filter: grayscale(1);
+  z-index: 1;
 }
 
 .inputBox.disable .dropdown {
   color: #696969;
+}
+
+.inputBox.readonly {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+  z-index: 0;
 }
 
 .inputBox .dropdown i.icon {
@@ -2881,6 +2957,8 @@ main .sideBarNew div > button img {
   overflow: hidden;
   line-height: 0;
   background: #ffffff;
+  position: relative;
+  min-height: 16.5vw;
 }
 
 .selectBank button.open, .selectBank a.open {
@@ -3193,9 +3271,9 @@ main .sideBarNew div > button img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -5943,7 +6021,7 @@ span.important {
 .eventLink {
   position: fixed;
   right: 1vw;
-  bottom: 16vw;
+  bottom: 34vw;
   z-index: 4;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5992,7 +6070,7 @@ span.important {
 }
 
 .eventLink.wheel {
-  bottom: 48vw;
+  bottom: 65vw;
 }
 
 .eventLink.wheel img {
@@ -6278,6 +6356,36 @@ span.important {
   100% {
     -webkit-transform: rotate(2deg);
     transform: rotate(2deg);
+  }
+}
+
+@-webkit-keyframes routate2 {
+  0% {
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
+  }
+  50% {
+    -webkit-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+  }
+  100% {
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes routate2 {
+  0% {
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
+  }
+  50% {
+    -webkit-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+  }
+  100% {
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
   }
 }
 
@@ -8930,5 +9038,29 @@ span.important {
 
 .profileInfo ~ .info ul li span img {
   margin-left: 1vw;
+}
+
+#goTop {
+  position: fixed;
+  bottom: 20vw;
+  right: 2vw;
+  width: 10vw;
+  height: 10vw;
+  background: rgba(250, 182, 23, 0.85);
+  border-radius: 100%;
+  z-index: 1;
+}
+
+#goTop i {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #fff;
 }
 /*# sourceMappingURL=style.css.map */

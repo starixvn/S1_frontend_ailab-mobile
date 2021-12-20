@@ -13,6 +13,7 @@ import tutorial1 from "../styles/img/app/in01.png";
 import tutorial2 from "../styles/img/app/in02.png";
 import tutorial3 from "../styles/img/app/in03.png";
 import tutorial4 from "../styles/img/app/in04.png";
+import GoTopBtn from "../components/common/goTopBtn";
 
 const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
@@ -108,6 +109,7 @@ const IndexPage = () => {
 				</div>
 			</main>
 			<Footer />
+			<GoTopBtn />
 		</>
 	);
 };
