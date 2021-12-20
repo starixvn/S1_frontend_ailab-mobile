@@ -19,6 +19,7 @@ import MysteryBox from "../mysteryBox/homePopBox";
 import { eventTime } from "./eventTime";
 import Login from "../login/login";
 import Join from "../join/join.refactor";
+import GoTopBtn from "./goTopBtn";
 
 export const defPageInfo = {
 	default: {
@@ -267,6 +268,7 @@ const Layout = ({ children }) => {
 			)}
 
 			{isEventPeriod(eventTime.mysteryBox) && root && <MysteryBox />}
+			{pageInfo.goTopBtn === false ? null : <GoTopBtn />}
 		</>
 	);
 };

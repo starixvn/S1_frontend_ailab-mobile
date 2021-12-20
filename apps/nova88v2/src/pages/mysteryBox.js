@@ -9,6 +9,7 @@ import { Link } from "../route/link";
 import path from "../path";
 import PopImg from "../styles/img/event/mysterybox/eventlink.png";
 import { eventTime } from "../components/common/eventTime";
+import GoTopBtn from "../components/common/goTopBtn";
 
 export const MysteryBoxPop = () => {
 	const { root } = useContext(rootContext);
@@ -50,6 +51,7 @@ const IndexPage = () => {
 				<MysteryBox />
 			</main>
 			<Footer />
+			<GoTopBtn />
 		</>
 	);
 };

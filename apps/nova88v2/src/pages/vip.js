@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
-import { SEO } from "../components/seo/seo";
 import { Autoplay } from "../components/common/swipperBanner";
 import { userInfoContext, i18nContext } from "../components/common/context";
 import { defBannersUrl, defLevelList } from "../components/vip/def";
@@ -9,10 +8,10 @@ import { EventList } from "../components/vip/eventList";
 import { Info } from "../components/vip/info";
 import { FooterBanner } from "../components/vip/footerBanner";
 import Header from "../components/header/header";
-import Footer from "../components/common/footer";
 import path from "../path";
 import { defCurrenyId } from "../components/common/common";
 import { useHandleAllowCurrencies } from "../components/hook/useHandleAllowCurrencies";
+import Layout from "../components/common/layout";
 
 export const vipAllowCurrencies = [
 	defCurrenyId.MYR,
@@ -42,6 +41,8 @@ const IndexPage = () => {
 	const navigate = useNavigate();
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
+	const header = <Header title="VIP" hideLogo={true} />;
+
 	useHandleAllowCurrencies({
 		allowCurrencies: vipAllowCurrencies,
 		isLogin: userInfo.isLogin,
@@ -58,30 +59,21 @@ const IndexPage = () => {
 	};
 
 	return (
-		<>
-			<Header title="VIP" hideLogo={true} />
-			<main className="main vip">
-				<Banners langId={userInfo.langId} />
-				<LevelList i18n={i18n} langId={userInfo.langId} />
-				<Info langId={userInfo.langId} />
-				<div className="vipPage">
-					<div className="text">
-						{i18n.lbl_Vip_Last_Updated}: 01/10/2021
-					</div>
-					<EventList langId={userInfo.langId} />
-					<FooterBanner
-						langId={userInfo.langId}
-						openJoinPop={openJoinPop}
-					/>
+		<Layout header={header} mainClass="main vip" SEOPath={path.vip.root}>
+			<Banners langId={userInfo.langId} />
+			<LevelList i18n={i18n} langId={userInfo.langId} />
+			<Info langId={userInfo.langId} />
+			<div className="vipPage">
+				<div className="text">
+					{i18n.lbl_Vip_Last_Updated}: 01/10/2021
 				</div>
-			</main>
-			<Footer />
-			<SEO
-				path={path.vip.root}
-				langId={userInfo.langId}
-				isLogin={userInfo.isLogin}
-			/>
-		</>
+				<EventList langId={userInfo.langId} />
+				<FooterBanner
+					langId={userInfo.langId}
+					openJoinPop={openJoinPop}
+				/>
+			</div>
+		</Layout>
 	);
 };
 

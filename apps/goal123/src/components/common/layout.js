@@ -19,6 +19,7 @@ import eventVNImg from "../../styles/img/event/eventlink_vn.png";
 import MysteryBox from "../mysteryBox/homePopBox";
 import { eventTime } from "./eventTime";
 import LuckyWheel from "../luckyWheel/homePopBox";
+import GoTopBtn from "./goTopBtn";
 
 // const defPageInfo = {
 // 	leaderBoard: {
@@ -28,7 +29,14 @@ import LuckyWheel from "../luckyWheel/homePopBox";
 // 	},
 // };
 
-const Layout = ({ children, header, mainClass = "main", title, appHint }) => {
+const Layout = ({
+	children,
+	header,
+	mainClass = "main",
+	title,
+	appHint,
+	goTopBtn
+}) => {
 	const { i18n } = useContext(i18nContext);
 	const { nav } = useContext(navContext);
 	const { loading } = useContext(loadingContext);
@@ -68,12 +76,18 @@ const Layout = ({ children, header, mainClass = "main", title, appHint }) => {
 				<LuckyWheel userInfo={userInfo} setLuckyWheel={setLuckyWheel} />
 			) : null}
 			<Footer />
+			{goTopBtn && <GoTopBtn />}
 		</>
 	);
 };
 
+Layout.defaultProps = {
+	goTopBtn: true
+};
+
 Layout.propTypes = {
-	children: PropTypes.node.isRequired
+	children: PropTypes.node.isRequired,
+	goTopBtn: PropTypes.bool
 };
 
 class RotationHint extends Component {
