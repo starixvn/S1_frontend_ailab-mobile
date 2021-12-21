@@ -10,15 +10,14 @@ import Games from "../components/casino/games";
 import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
 import api from "../service/api";
 import Header from "../components/header/header";
-import Footer from "../components/common/footer";
 import useHandleLogin from "../components/hook/useHandleLogin";
 import { Link } from "../route/link";
 import path from "../path";
 import { useGotoGame, defSpecialSetting } from "../components/hook/useGotoGame";
-import { SEO } from "../components/seo/seo";
 import useSetTimeout from "../components/hook/useSetTimeout";
 import gameList, { defSlotTpGameType } from "../datas/productList";
 import { GetCurrencyName } from "../components/common/common";
+import Layout from "../components/common/layout";
 
 const eachPageItem = 20;
 
@@ -596,31 +595,28 @@ const IndexPage = props => {
 
 	const selNav = props.location?.state?.nav;
 	const selNavIdx = Object.keys(defNav).findIndex(key => key === selNav);
+	const header = (
+		<Header title={i18n.lbl_Casino} hideLogo={true} link={link} />
+	);
 	let tpId = props.tpId ?? props.location.state?.tpId;
 	tpId = typeof tpId === "string" && !isNaN(tpId) ? Number(tpId) : tpId;
 	return (
-		<>
-			<Header title={i18n.lbl_Casino} hideLogo={true} link={link} />
-			<main className="main casino">
-				<Panel
-					fromModal={props.location.state?.fromModal}
-					i18n={i18n}
-					userInfo={userInfo}
-					tpId={tpId}
-					handleLogin={handleLogin}
-					handleGoToGame={handleGoToGame}
-					throttle={throttle}
-					selNav={selNav}
-					selNavIdx={selNavIdx === -1 ? 3 : selNavIdx}
-				/>
-			</main>
-			<Footer />
-			<SEO
-				path={path.casino.root}
-				langId={userInfo.langId}
-				isLogin={userInfo.isLogin}
+		<Layout
+			header={header}
+			mainClass="main casino"
+			SEOPath={path.casino.root}>
+			<Panel
+				fromModal={props.location.state?.fromModal}
+				i18n={i18n}
+				userInfo={userInfo}
+				tpId={tpId}
+				handleLogin={handleLogin}
+				handleGoToGame={handleGoToGame}
+				throttle={throttle}
+				selNav={selNav}
+				selNavIdx={selNavIdx === -1 ? 3 : selNavIdx}
 			/>
-		</>
+		</Layout>
 	);
 };
 

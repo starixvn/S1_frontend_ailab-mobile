@@ -16,10 +16,11 @@ import { isEventPeriod } from "./common";
 import { LuckyWheelPop } from "../../pages/luckyWheel";
 import { MysteryBoxPop } from "../../pages/mysteryBox";
 import Modal from "../join/modal";
-import GotopBtn from "./goTopBtn";
+import GoTopBtn from "./goTopBtn";
 import { eventTime } from "./eventTime";
+import { SEO } from "../seo/seo";
 
-const Layout = ({ children, header, mainClass }) => {
+const Layout = ({ children, header, mainClass, goTopBtn, SEOPath }) => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { nav } = useContext(navContext);
@@ -57,9 +58,14 @@ const Layout = ({ children, header, mainClass }) => {
 			{userInfo.isLogin === false && (isJoinPage || isLoginPage) && (
 				<Modal isJoin={isJoinPage} isLogin={isLoginPage} />
 			)}
-			{useMatch(`/${userInfo.langId}/${path.promotion.root}`) && (
-				<GotopBtn />
+			{SEOPath && (
+				<SEO
+					path={SEOPath}
+					langId={userInfo.langId}
+					isLogin={userInfo.isLogin}
+				/>
 			)}
+			{goTopBtn && <GoTopBtn />}
 		</>
 	);
 };
@@ -123,13 +129,17 @@ class RotationHint extends Component {
 Layout.defaultProps = {
 	children: null,
 	header: null,
-	mainClass: null
+	mainClass: null,
+	goTopBtn: true,
+	SEOPath: null
 };
 
 Layout.propTypes = {
 	children: PropTypes.node,
 	header: PropTypes.node,
-	mainClass: PropTypes.string
+	mainClass: PropTypes.string,
+	goTopBtn: PropTypes.bool,
+	SEOPath: PropTypes.string
 };
 
 RotationHint.propTypes = {

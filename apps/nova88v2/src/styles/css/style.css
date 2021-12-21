@@ -1917,6 +1917,13 @@ footer > a.icon-menu .msgPop {
           box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
+footer > a.icon-menu .msgPop > div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 40vw;
+}
+
 footer > a.icon-menu .msgPop button {
   background: white;
   color: #F77A00;
@@ -9010,8 +9017,8 @@ span.important {
 .eventLink {
   position: fixed;
   right: 1vw;
-  bottom: 25vw;
-  z-index: 2;
+  bottom: 30vw;
+  z-index: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

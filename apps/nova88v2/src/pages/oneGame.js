@@ -4,7 +4,7 @@ import OneGame from "../components/oneGame/oneGame";
 import { userInfoContext } from "../components/common/context";
 import useBeforeLoginCheck from "../components/hook/useBeforeLoginCheck";
 import Header from "../components/header/header";
-import Footer from "../components/common/footer";
+import Layout from "../components/common/layout";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -17,15 +17,12 @@ const IndexPage = () => {
 			<i className="icon icon-keyboard_arrow_left" />
 		</Link>
 	);
+	const header = <Header title="One Game" hideLogo={true} link={link} />;
 
 	return canSee ? (
-		<>
-			<Header title="One Game" hideLogo={true} link={link} />
-			<main className="installGuide">
-				<OneGame />
-			</main>
-			<Footer />
-		</>
+		<Layout header={header} mainClass="installGuide">
+			<OneGame />
+		</Layout>
 	) : null;
 };
 
