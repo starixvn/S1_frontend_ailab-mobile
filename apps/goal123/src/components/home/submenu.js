@@ -1,7 +1,7 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from "@reach/router";
-import Logo from "../../styles/img/logo.png";
+import Logo from "../common/logo";
 import {
 	userInfoContext,
 	i18nContext,
@@ -224,7 +224,7 @@ export default ({ handleSideMenuPanel, isOpenSideMenu }) => {
 				<span />
 				<span />
 			</div>
-			<img src={Logo} alt="Goal123" />
+			<Logo />
 			{userInfo.isLogin ? (
 				<>
 					<WalletInfo i18n={i18n} userInfo={userInfo} />
