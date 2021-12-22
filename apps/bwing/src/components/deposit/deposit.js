@@ -252,7 +252,7 @@ const Panel = () => {
 
 					defaultSelect = setDefaultSelect(
 						defaultSelect,
-						defType.cryptoPay,
+						defPayType.cryptoPay,
 						payments[defPayType.cryptoPay]
 					);
 				} catch (error) {}
