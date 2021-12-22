@@ -243,7 +243,7 @@ const Panel = () => {
 
 					defaultSelect = setDefaultSelect(
 						defaultSelect,
-						defType.loadCardPay,
+						defPayType.loadCardPay,
 						payments[defPayType.loadCardPay]
 					);
 				} catch (error) {}
@@ -254,7 +254,7 @@ const Panel = () => {
 
 					defaultSelect = setDefaultSelect(
 						defaultSelect,
-						defType.cryptoPay,
+						defPayType.cryptoPay,
 						payments[defPayType.cryptoPay]
 					);
 				} catch (error) {}
