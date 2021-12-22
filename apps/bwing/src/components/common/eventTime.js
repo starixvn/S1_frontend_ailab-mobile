@@ -20,5 +20,8 @@ export const eventTime = {
 		startDate: "2021/11/10 10:00:00",
 		endDate: "2021/12/31 22:59:59"
 	},
-	promo: { startDate: "2021/11/11 11:00:00" }
+	promo: { startDate: "2021/11/11 11:00:00" },
+	logoEvent: {
+		endDate: "2022/01/05 11:00:00"
+	}
 };
