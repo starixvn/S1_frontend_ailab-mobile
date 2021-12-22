@@ -3,9 +3,7 @@ import PropTypes from "prop-types";
 import { cloudImgURL } from "../../config";
 
 const getLogo = ({ langId, isWhite }) =>
-	`${cloudImgURL}/SiteSkin/img/logo_${langId === "cs" ? "cs" : "en"}${
-		isWhite ? "" : "_w"
-	}.png`;
+	`${cloudImgURL}/SiteSkin/img/logo_en${isWhite ? "" : "_w"}.png`;
 
 const Logo = ({ langId, isWhite }) => {
 	return <img src={getLogo({ langId, isWhite })} alt="logo" />;
