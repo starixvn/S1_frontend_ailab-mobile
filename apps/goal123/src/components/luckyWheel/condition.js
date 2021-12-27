@@ -9,8 +9,13 @@ const Condition = ({ i18n }) => {
 				{i18n.lbl_RewardsCondition?.toUpperCase()}
 				<div className="title">GOAL123 {i18n.lbl_LuckyWheel}</div>
 				<div>{`${i18n.lbl_Start}： ${eventTime.luckyWheel.startDate} GMT+07:00`}</div>
-				<div>{i18n.lbl_MysteryBox_MemberEligibility}</div>
-				<div>{i18n.lbl_MysteryBox_OtherConditions}</div>
+				<div>{i18n.lbl_LuckyWheel_MemberEligibility}</div>
+				<div>
+					{i18n.lbl_LuckyWheel_MinDeposit.replace(
+						"{{amount}}",
+						"50,000"
+					)}
+				</div>
 			</div>
 
 			<div className="other title">

@@ -728,6 +728,6 @@
 	"lbl_LuckyWheel": "LUCKY WHEEL",
 	"lbl_Conditions": "Conditions",
 	"lbl_MyLuckyWheelRewards":"MY LUCKY WHEEL REWARDS",
-	"lbl_MysteryBox_MemberEligibility": "Deposit Today Get Your Rewards Tomorrow."
-
+	"lbl_MysteryBox_MemberEligibility": "Deposit Today Get Your Rewards Tomorrow.",
+	"lbl_LuckyWheel_MinDeposit":"Min Deposit VND {{amount}}"
 }
