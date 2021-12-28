@@ -529,6 +529,7 @@
 	"lbl_KingMaker": "King Maker",
 	"lbl_tcg": "Lô Đề",
 	"lbl_DepositPromoMsg1": "Vui lòng xác minh tài khoản của bạn để được hưởng các chương trình khuyến mãi có sẵn.",
+	"lbl_DepositPromoMsg2": "* Yêu cầu nạp tiền tối thiểu",
 
 	"==============General==============": "",
 	"lbl_Jackpot": "NỔ HŨ",
@@ -657,7 +658,7 @@
 	"==============Promotion==============": "",
 	"lbl_More_Info": "THÊM THÔNG TIN",
 	"lbl_Apply_Now": "THAM GIA NGAY",
-	"lbl_promo_all_promos":"TẤT CẢ KHUYẾN MÃI",
+	"lbl_promo_all_promos": "TẤT CẢ KHUYẾN MÃI",
 	"lbl_ClaimNow": "NHẬN NGAY",
 
 	"===============Lucky wheel===================":"",
