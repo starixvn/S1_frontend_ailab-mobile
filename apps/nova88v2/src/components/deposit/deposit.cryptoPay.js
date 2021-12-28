@@ -29,7 +29,8 @@ const Main = props => {
 		userPaymentData,
 		handleUserPaymentData,
 		promoList,
-		asyncPromotionConfirmPopBox
+		asyncPromotionConfirmPopBox,
+		checkDepositSpecialCode
 	} = props;
 	const { setPopBox } = useContext(popBoxContext);
 	const _isConvert = isConvert(userInfo.currencyId);
@@ -39,7 +40,8 @@ const Main = props => {
 	const [groupList, setGroupList] = useState([]);
 	const [depositPromo, setDepositPromo] = useState({
 		bonusCode: null,
-		requiredAmount: null
+		requiredAmount: null,
+		specialCode: ""
 	});
 	const isMountedRef = useRef(null);
 	const {
@@ -89,6 +91,18 @@ const Main = props => {
 					if (!success) return;
 				}
 
+				let { bonusCode } = depositPromo;
+
+				if (depositPromo.specialCode) {
+					bonusCode = await checkDepositSpecialCode(
+						depositPromo.specialCode
+					);
+
+					if (!bonusCode) {
+						return;
+					}
+				}
+
 				const RedirectToNext = real_amount => {
 					const userData = {
 						payType: "cryptoPay",
@@ -106,7 +120,7 @@ const Main = props => {
 								langId: userInfo.langId,
 								channelId: selChannel.channelId,
 								real_amount,
-								bonusCode: depositPromo.bonusCode
+								bonusCode
 							})
 							.then(res => {
 								if (res.data.errorCode === 0) {
@@ -174,8 +188,7 @@ const Main = props => {
 						const paramsUrl = [
 							`ChannelId=${selChannel.channelId}`,
 							`Amount=${real_amount}`,
-							custBonusCode &&
-								`BonusCode=${depositPromo.bonusCode}`
+							bonusCode && `BonusCode=${bonusCode}`
 						]
 							.filter(Boolean)
 							.join("&");
@@ -373,9 +386,9 @@ const Main = props => {
 			<PromoList
 				i18n={i18n}
 				amount={Number(amount)}
-				phoneVerified={userInfo.phoneVerified}
-				currencyId={userInfo.currencyId}
+				userInfo={userInfo}
 				promoList={promoList}
+				depositPromo={depositPromo}
 				setDepositPromo={setDepositPromo}
 			/>
 
@@ -401,7 +414,8 @@ Main.propTypes = {
 	userPaymentData: PropTypes.objectOf(PropTypes.any),
 	handleUserPaymentData: PropTypes.func,
 	promoList: PropTypes.arrayOf(PropTypes.objectOf),
-	asyncPromotionConfirmPopBox: PropTypes.func.isRequired
+	asyncPromotionConfirmPopBox: PropTypes.func.isRequired,
+	checkDepositSpecialCode: PropTypes.func.isRequired
 };
 
 export default Main;

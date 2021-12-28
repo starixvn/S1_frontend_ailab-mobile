@@ -24,7 +24,8 @@ const Payment = props => {
 		userPaymentData,
 		handleUserPaymentData,
 		promoList,
-		asyncPromotionConfirmPopBox
+		asyncPromotionConfirmPopBox,
+		checkDepositSpecialCode
 	} = props;
 
 	const { i18n } = useContext(i18nContext);
@@ -37,7 +38,8 @@ const Payment = props => {
 	const [bankList, setBankList] = useState([]);
 	const [depositPromo, setDepositPromo] = useState({
 		bonusCode: null,
-		requiredAmount: null
+		requiredAmount: null,
+		specialCode: ""
 	});
 
 	const {
@@ -183,6 +185,18 @@ const Payment = props => {
 				if (!success) return;
 			}
 
+			let { bonusCode } = depositPromo;
+
+			if (depositPromo.specialCode) {
+				bonusCode = await checkDepositSpecialCode(
+					depositPromo.specialCode
+				);
+
+				if (!bonusCode) {
+					return;
+				}
+			}
+
 			const { payId, channelId, mode } = selGroup;
 			let { sysId } = selbank;
 			let bankLogo = null;
@@ -209,7 +223,7 @@ const Payment = props => {
 							payId,
 							channelId,
 							real_amount,
-							bonusCode: depositPromo.bonusCode
+							bonusCode
 						})
 						.then(res => {
 							if (res.data.errorCode === 0) {
@@ -252,8 +266,7 @@ const Payment = props => {
 						`ChannelId=${channelId}`,
 						`Amount=${real_amount}`,
 						sysId && `sysId=${sysId}`,
-						depositPromo.bonusCode &&
-							`BonusCode=${depositPromo.bonusCode}`
+						bonusCode && `BonusCode=${bonusCode}`
 					]
 						.filter(Boolean)
 						.join("&");
@@ -387,9 +400,9 @@ const Payment = props => {
 			<PromoList
 				i18n={i18n}
 				amount={Number(amount)}
-				phoneVerified={userInfo.phoneVerified}
-				currencyId={userInfo.currencyId}
+				userInfo={userInfo}
 				promoList={promoList}
+				depositPromo={depositPromo}
 				setDepositPromo={setDepositPromo}
 			/>
 
@@ -414,7 +427,8 @@ Payment.propTypes = {
 	userPaymentData: PropTypes.objectOf(PropTypes.any),
 	handleUserPaymentData: PropTypes.func,
 	promoList: PropTypes.arrayOf(PropTypes.objectOf),
-	asyncPromotionConfirmPopBox: PropTypes.func.isRequired
+	asyncPromotionConfirmPopBox: PropTypes.func.isRequired,
+	checkDepositSpecialCode: PropTypes.func.isRequired
 };
 
 export default Payment;

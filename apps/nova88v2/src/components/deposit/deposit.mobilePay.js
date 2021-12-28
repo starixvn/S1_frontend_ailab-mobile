@@ -24,7 +24,8 @@ const Payment = props => {
 		userPaymentData,
 		handleUserPaymentData,
 		promoList,
-		asyncPromotionConfirmPopBox
+		asyncPromotionConfirmPopBox,
+		checkDepositSpecialCode
 	} = props;
 
 	const { i18n } = useContext(i18nContext);
@@ -37,7 +38,8 @@ const Payment = props => {
 	const [channelList, setChannelList] = useState([]);
 	const [depositPromo, setDepositPromo] = useState({
 		bonusCode: null,
-		requiredAmount: null
+		requiredAmount: null,
+		specialCode: ""
 	});
 
 	const {
@@ -127,6 +129,18 @@ const Payment = props => {
 				if (!success) return;
 			}
 
+			let { bonusCode } = depositPromo;
+
+			if (depositPromo.specialCode) {
+				bonusCode = await checkDepositSpecialCode(
+					depositPromo.specialCode
+				);
+
+				if (!bonusCode) {
+					return;
+				}
+			}
+
 			const RedirectToNext = real_amount => {
 				const userData = {
 					payType: "mobilePay",
@@ -147,7 +161,7 @@ const Payment = props => {
 							langId: userInfo.langId,
 							channelId: selChannel.channelId,
 							real_amount,
-							bonusCode: depositPromo.bonusCode
+							bonusCode
 						})
 						.then(res => {
 							if (res.data.errorCode === 0) {
@@ -182,8 +196,7 @@ const Payment = props => {
 					const paramsUrl = [
 						`ChannelId=${selChannel.channelId}`,
 						`Amount=${real_amount}`,
-						depositPromo.bonusCode &&
-							`BonusCode=${depositPromo.bonusCode}`
+						bonusCode && `BonusCode=${bonusCode}`
 					]
 						.filter(Boolean)
 						.join("&");
@@ -194,6 +207,7 @@ const Payment = props => {
 			};
 
 			const real_amount = _isConvert ? amount * 1000 : amount;
+
 			setPopBox({
 				isOpen: true,
 				title: i18n.lbl_ImportantNote,
@@ -294,9 +308,9 @@ const Payment = props => {
 			<PromoList
 				i18n={i18n}
 				amount={Number(amount)}
-				phoneVerified={userInfo.phoneVerified}
-				currencyId={userInfo.currencyId}
+				userInfo={userInfo}
 				promoList={promoList}
+				depositPromo={depositPromo}
 				setDepositPromo={setDepositPromo}
 			/>
 
@@ -321,7 +335,8 @@ Payment.propTypes = {
 	userPaymentData: PropTypes.objectOf(PropTypes.any),
 	handleUserPaymentData: PropTypes.func,
 	promoList: PropTypes.arrayOf(PropTypes.objectOf),
-	asyncPromotionConfirmPopBox: PropTypes.func.isRequired
+	asyncPromotionConfirmPopBox: PropTypes.func.isRequired,
+	checkDepositSpecialCode: PropTypes.func.isRequired
 };
 
 export default Payment;

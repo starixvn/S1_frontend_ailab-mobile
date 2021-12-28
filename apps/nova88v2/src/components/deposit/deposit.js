@@ -159,6 +159,33 @@ const Panel = () => {
 			})
 		);
 
+	const checkDepositSpecialCode = async specialCode =>
+		api.payment.CheckDepositSpecialCode(specialCode).then(
+			res => {
+				if (!isMountedRef.current) return;
+
+				const { message, errorCode, data } = res.data;
+
+				// eslint-disable-next-line consistent-return
+				if (errorCode === 0) return data.bonusCode;
+
+				setPopBox({
+					isOpen: true,
+					title: i18n.lbl_ImportantNote,
+					content: `[${errorCode}]${message}`
+				});
+			},
+			() => {
+				if (!isMountedRef.current) return;
+
+				setPopBox({
+					isOpen: true,
+					title: i18n.lbl_ImportantNote,
+					content: i18n.msg_ApiServerError
+				});
+			}
+		);
+
 	const _userPaymentData =
 		userPaymentData?.payType === selected ? userPaymentData : {};
 	let content = (
@@ -172,6 +199,7 @@ const Panel = () => {
 			promoList={promoList}
 			depositPromoMsg={depositPromoMsg}
 			asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
+			checkDepositSpecialCode={checkDepositSpecialCode}
 		/>
 	);
 
@@ -187,6 +215,7 @@ const Panel = () => {
 				promoList={promoList}
 				depositPromoMsg={depositPromoMsg}
 				asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
+				checkDepositSpecialCode={checkDepositSpecialCode}
 			/>
 		);
 	} else if (selected === defPayType.mobilePay) {
@@ -200,6 +229,7 @@ const Panel = () => {
 				userPaymentSwitch={userPaymentSwitch}
 				promoList={promoList}
 				asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
+				checkDepositSpecialCode={checkDepositSpecialCode}
 			/>
 		);
 	} else if (selected === defPayType.cryptoPay) {
@@ -212,6 +242,7 @@ const Panel = () => {
 				paymentList={paymentList[defPayType.cryptoPay] ?? []}
 				promoList={promoList}
 				asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
+				checkDepositSpecialCode={checkDepositSpecialCode}
 			/>
 		);
 	}
