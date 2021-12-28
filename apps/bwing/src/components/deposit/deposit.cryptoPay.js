@@ -28,8 +28,7 @@ const Main = props => {
 		paymentList,
 		userPaymentData,
 		handleUserPaymentData,
-		promoList,
-		depositPromoMsg
+		promoList
 	} = props;
 	const { setPopBox } = useContext(popBoxContext);
 	const _isConvert = isConvert(userInfo.currencyId);
@@ -37,7 +36,11 @@ const Main = props => {
 	const [selChannel, setSelChannel] = useState({});
 	const [pageVerify, setPageVerify] = useState(true);
 	const [groupList, setGroupList] = useState([]);
-	const [custBonusCode, setCustBonusCode] = useState(null);
+	const [depositPromo, setDepositPromo] = useState({
+		bonusCode: null,
+		requiredAmount: null,
+		specialCode: ""
+	});
 
 	const isMountedRef = useRef(null);
 
@@ -112,7 +115,7 @@ const Main = props => {
 							langId: userInfo.langId,
 							channelId: selChannel.channelId,
 							real_amount,
-							bonusCode: custBonusCode
+							bonusCode: depositPromo.bonusCode
 						}).then(res => {
 							if (res.data.errorCode === 0) {
 								setLoading(false);
@@ -175,7 +178,7 @@ const Main = props => {
 						const paramsUrl = [
 							`ChannelId=${selChannel.channelId}`,
 							`Amount=${real_amount}`,
-							custBonusCode &&
+							depositPromo.bonusCode &&
 								`BonusCode=${depositPromo.bonusCode}`
 						]
 							.filter(Boolean)
@@ -373,8 +376,9 @@ const Main = props => {
 			<PromoList
 				i18n={i18n}
 				promoList={promoList}
-				depositPromoMsg={depositPromoMsg}
-				setCustBonusCode={setCustBonusCode}
+				depositPromo={depositPromo}
+				setDepositPromo={setDepositPromo}
+				userInfo={userInfo}
 			/>
 
 			<div className="btn-group">
@@ -400,8 +404,7 @@ Main.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.any).isRequired,
 	userPaymentData: PropTypes.objectOf(PropTypes.any),
 	handleUserPaymentData: PropTypes.func,
-	promoList: PropTypes.arrayOf(PropTypes.objectOf),
-	depositPromoMsg: PropTypes.string.isRequired
+	promoList: PropTypes.arrayOf(PropTypes.objectOf)
 };
 
 export default Main;
