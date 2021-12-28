@@ -21,6 +21,7 @@ import {
 	api_GetOnlinePaymentList,
 	api_SetDepositCancel,
 	api_payment_GetLoadCardPayGroupList,
+	api_payment_CheckDepositSpecialCode,
 	api_GetCryptoPayInfoList
 } from "../../service/api/payment";
 import RecentDatas from "./deposit.recentDatas";
@@ -106,10 +107,6 @@ const Panel = () => {
 		i18n
 	});
 
-	const depositPromoMsg = userInfo?.phoneVerified
-		? ""
-		: i18n.lbl_DepositPromoMsg1;
-
 	useGetDomainList({
 		setPopBox,
 		userInfo,
@@ -126,13 +123,40 @@ const Panel = () => {
 		};
 	});
 
+	const checkDepositSpecialCode = async specialCode =>
+		api_payment_CheckDepositSpecialCode(specialCode).then(
+			res => {
+				if (!isMountedRef.current) return;
+
+				const { message, errorCode, data } = res.data;
+
+				// eslint-disable-next-line consistent-return
+				if (errorCode === 0) return data.bonusCode;
+
+				setPopBox({
+					isOpen: true,
+					title: i18n.lbl_ImportantNote,
+					content: `[${errorCode}]${message}`
+				});
+			},
+			() => {
+				if (!isMountedRef.current) return;
+
+				setPopBox({
+					isOpen: true,
+					title: i18n.lbl_ImportantNote,
+					content: i18n.msg_ApiServerError
+				});
+			}
+		);
+
 	let content = (
 		<MobilePay
 			payType={defPayType.mobilePay}
 			creditTimeKey={defPayment[defPayType.mobilePay].creditTimeKey}
 			paymentList={paymentList[defPayType.mobilePay] ?? []}
 			promoList={promoList}
-			depositPromoMsg={depositPromoMsg}
+			checkDepositSpecialCode={checkDepositSpecialCode}
 		/>
 	);
 
@@ -143,7 +167,7 @@ const Panel = () => {
 				creditTimeKey={defPayment[defPayType.localBank].creditTimeKey}
 				paymentList={paymentList[defPayType.localBank] ?? []}
 				promoList={promoList}
-				depositPromoMsg={depositPromoMsg}
+				checkDepositSpecialCode={checkDepositSpecialCode}
 			/>
 		);
 	} else if (selected === defPayType.onlineBank) {
@@ -153,7 +177,7 @@ const Panel = () => {
 				creditTimeKey={defPayment[defPayType.onlineBank].creditTimeKey}
 				paymentList={paymentList[defPayType.onlineBank] ?? []}
 				promoList={promoList}
-				depositPromoMsg={depositPromoMsg}
+				checkDepositSpecialCode={checkDepositSpecialCode}
 			/>
 		);
 	} else if (selected === defPayType.loadCardPay) {
@@ -163,7 +187,7 @@ const Panel = () => {
 				creditTimeKey={defPayment[defPayType.loadCardPay].creditTimeKey}
 				paymentList={paymentList[defPayType.loadCardPay] ?? []}
 				promoList={promoList}
-				depositPromoMsg={depositPromoMsg}
+				checkDepositSpecialCode={checkDepositSpecialCode}
 			/>
 		);
 	} else if (selected === defPayType.cryptoPay) {

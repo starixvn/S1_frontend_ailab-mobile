@@ -24,7 +24,12 @@ const initCardDataStatus = {
 };
 
 const Payment = props => {
-	const { paymentList, creditTimeKey, promoList, depositPromoMsg } = props;
+	const {
+		paymentList,
+		creditTimeKey,
+		promoList,
+		checkDepositSpecialCode
+	} = props;
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -32,7 +37,12 @@ const Payment = props => {
 	const [selChannel, setSelChannel] = useState({});
 	const [cardData, setCardData] = useState({ cardCode: "", cardSerial: "" });
 	const [cardDataStatus, setCardDataStatus] = useState(initCardDataStatus);
-	const [custBonusCode, setCustBonusCode] = useState(null);
+
+	const [depositPromo, setDepositPromo] = useState({
+		bonusCode: null,
+		requiredAmount: null,
+		specialCode: ""
+	});
 
 	const {
 		amount,
@@ -132,13 +142,25 @@ const Payment = props => {
 		return checked;
 	};
 
-	const ClickSubmit = () => {
+	const ClickSubmit = async () => {
 		const result =
 			checkValue({ col: "cardCode", val: cardData.cardCode }) &&
 			checkValue({ col: "cardSerial", val: cardData.cardSerial }) &&
 			VaildAmount({ _amount: amount });
 
 		if (result) {
+			let { bonusCode } = depositPromo;
+
+			if (depositPromo.specialCode) {
+				bonusCode = await checkDepositSpecialCode(
+					depositPromo.specialCode
+				);
+
+				if (!bonusCode) {
+					return;
+				}
+			}
+
 			const RedirectToNext = real_amount => {
 				const { mode, channelId } = selChannel;
 				const param = {
@@ -146,7 +168,7 @@ const Payment = props => {
 					Code: cardData.cardCode,
 					Serial: cardData.cardSerial,
 					Amount: real_amount,
-					BonusCode: custBonusCode
+					BonusCode: bonusCode
 				};
 
 				const refreshPage = () => {
@@ -335,12 +357,16 @@ const Payment = props => {
 				clickInfo={clickInfo}
 			/>
 			<Note langId={userInfo.langId} />
+
 			<PromoList
+				amount={Number(amount)}
 				promoList={promoList}
-				depositPromoMsg={depositPromoMsg}
 				i18n={i18n}
-				setCustBonusCode={setCustBonusCode}
+				userInfo={userInfo}
+				depositPromo={depositPromo}
+				setDepositPromo={setDepositPromo}
 			/>
+
 			<div className="btn-group">
 				<button
 					className={canSubmit ? "blue" : "darkGray"}
@@ -360,7 +386,7 @@ Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
 	creditTimeKey: PropTypes.string.isRequired,
 	promoList: PropTypes.arrayOf(PropTypes.object),
-	depositPromoMsg: PropTypes.string.isRequired
+	checkDepositSpecialCode: PropTypes.func.isRequired
 };
 
 const Note = ({ langId }) => {

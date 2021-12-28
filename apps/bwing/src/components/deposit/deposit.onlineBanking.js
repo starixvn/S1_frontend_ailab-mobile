@@ -20,7 +20,12 @@ import PromoList from "./promoList";
 const payType = "onlineBanking";
 
 const Payment = props => {
-	const { paymentList, creditTimeKey, promoList, depositPromoMsg } = props;
+	const {
+		paymentList,
+		creditTimeKey,
+		promoList,
+		checkDepositSpecialCode
+	} = props;
 
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -30,7 +35,12 @@ const Payment = props => {
 	const [selGroup, setSelGroup] = useState(null);
 	const [selbank, setBank] = useState({});
 	const [bankList, setBankList] = useState([]);
-	const [custBonusCode, setCustBonusCode] = useState(null);
+
+	const [depositPromo, setDepositPromo] = useState({
+		bonusCode: null,
+		requiredAmount: null,
+		specialCode: ""
+	});
 
 	const {
 		amount,
@@ -140,7 +150,7 @@ const Payment = props => {
 		);
 	};
 
-	const ClickSubmit = () => {
+	const ClickSubmit = async () => {
 		const result = VaildAmount({ _amount: amount });
 
 		if (result) {
@@ -149,6 +159,18 @@ const Payment = props => {
 			let bankLogo = null;
 			let bankName = null;
 
+			let { bonusCode } = depositPromo;
+
+			if (depositPromo.specialCode) {
+				bonusCode = await checkDepositSpecialCode(
+					depositPromo.specialCode
+				);
+
+				if (!bonusCode) {
+					return;
+				}
+			}
+
 			const RedirectToNext = real_amount => {
 				const mainUrl = `${config.openURL}/${userInfo.langId}/Cashier/DepositReqOnlineBanking`;
 				const param = {
@@ -156,7 +178,7 @@ const Payment = props => {
 					payId,
 					ChannelId: channelId,
 					Amount: real_amount,
-					BonusCode: custBonusCode
+					BonusCode: bonusCode
 				};
 				const windowOpenUrl = getWindowOpenUrl({ mainUrl, param });
 				window.open(windowOpenUrl);
@@ -287,12 +309,16 @@ const Payment = props => {
 				VaildAmount={VaildAmount.bind(this, { _amount: amount })}
 				clickInfo={clickInfo}
 			/>
+
 			<PromoList
+				amount={Number(amount)}
 				promoList={promoList}
-				depositPromoMsg={depositPromoMsg}
 				i18n={i18n}
-				setCustBonusCode={setCustBonusCode}
+				userInfo={userInfo}
+				depositPromo={depositPromo}
+				setDepositPromo={setDepositPromo}
 			/>
+
 			<div className="btn-group">
 				<button className="blue" onClick={ClickSubmit}>
 					{i18n.lbl_Submit}
@@ -310,7 +336,7 @@ Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
 	creditTimeKey: PropTypes.string.isRequired,
 	promoList: PropTypes.arrayOf(PropTypes.objectOf),
-	depositPromoMsg: PropTypes.string.isRequired
+	checkDepositSpecialCode: PropTypes.func.isRequired
 };
 
 export default Payment;

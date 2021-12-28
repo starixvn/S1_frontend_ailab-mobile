@@ -2808,7 +2808,7 @@ footer > a.open {
   width: 2.9vw;
   height: calc(100% + 2px);
   left: 0;
-  background: url(../img/stepAfter.png) no-repeat center/cover;
+  background: url(https://banner.bw88.io/h5/img/stepAfter.png) no-repeat center/cover;
 }
 
 .processArea .process:after {
@@ -2817,7 +2817,7 @@ footer > a.open {
   width: 2.9vw;
   height: calc(100% + 2px);
   right: -2.9vw;
-  background: url(../img/stepAfter.png) no-repeat center/cover;
+  background: url(https://banner.bw88.io/h5/img/stepAfter.png) no-repeat center/cover;
 }
 
 .processArea .process.active {
@@ -2831,7 +2831,7 @@ footer > a.open {
 
 .processArea .process.active:after {
   content: "";
-  background: url(../img/stepAfter_a.png) no-repeat center/cover;
+  background: url(https://banner.bw88.io/h5/img/stepAfter_a.png) no-repeat center/cover;
   z-index: 1;
 }
 
@@ -4379,7 +4379,7 @@ a.clickBtn:before {
 #Loading div {
   width: 260px;
   height: 94px;
-  background: url(../img/loading_logo.png);
+  background: url(https://banner.bw88.io/h5/img/loading_logo.png);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5426,7 +5426,7 @@ span.important {
   -webkit-animation: jpot 0.3s infinite;
   animation: jpot 0.3s infinite;
   position: relative;
-  background: url(../img/jackpot.png) no-repeat center;
+  background: url(https://banner.bw88.io/h5/img/jackpot.png) no-repeat center;
   background-size: 100%;
 }
 
@@ -8965,7 +8965,7 @@ span.important {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  background: url(../img/Bwing-404M.jpg) no-repeat center;
+  background: url(https://banner.bw88.io/h5/img/Bwing-404M.jpg) no-repeat center;
   width: 100%;
   height: 100%;
   background-size: cover;
@@ -9069,7 +9069,7 @@ span.important {
 .eventImg {
   width: 97%;
   height: 35.5vw;
-  background: url(../img/eventBg.png) no-repeat;
+  background: url(https://banner.bw88.io/h5/img/eventBg.png) no-repeat;
   background-size: 100%;
   margin: 0 auto;
   position: relative;
@@ -9317,7 +9317,7 @@ span.important {
   position: absolute;
   width: 85vw;
   height: 85vw;
-  background: url(../img/luckybox/spinya.png) no-repeat center;
+  background: url(https://banner.bw88.io/h5/img/luckybox/spinya.png) no-repeat center;
   background-size: 100%;
   overflow: hidden;
 }
@@ -9727,7 +9727,7 @@ span.important {
 }
 
 .mysteryEvent > div .animation .mysteryBox {
-  background: url(../img/mystery/box.png) bottom;
+  background: url(https://banner.bw88.io/h5/img/mystery/box.png) bottom;
   width: 30vw;
   height: 30vw;
   background-size: 100%;
@@ -9924,7 +9924,7 @@ span.important {
 }
 
 .mysteryPop .mysteryOpen {
-  background: url(../img/mystery/boxOpen.png) no-repeat center;
+  background: url(https://banner.bw88.io/h5/img/mystery/boxOpen.png) no-repeat center;
   width: 70vw;
   height: 70vw;
   background-size: contain;
@@ -10040,212 +10040,9 @@ span.important {
   margin: 6vw 0;
 }
 
-.event {
-  width: 100%;
-  background-size: 120%;
-  position: relative;
-}
-
-.event .angpaoBg {
-  position: absolute;
-  width: 100%;
-  height: 47vw;
-  left: 0;
-  top: 0;
-}
-
-.event > div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
 .animation {
   height: 47vw;
   overflow: hidden;
-}
-
-.animation .angpao {
-  background: url(../img/event/box.png) bottom;
-  width: 35vw;
-  height: 30vw;
-  background-size: 100%;
-  position: relative;
-  cursor: pointer;
-  -webkit-animation: box 2s ease-in-out infinite alternate;
-          animation: box 2s ease-in-out infinite alternate;
-  padding-top: 45px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  margin: 0 auto;
-  margin-top: 50px;
-}
-
-.animation .angpao.pop {
-  width: 70vw;
-  height: 60vw;
-  margin: 0 auto;
-  padding-top: 70px;
-}
-
-.animation .angpao.pop .top {
-  -webkit-transform: rotateX(90deg);
-          transform: rotateX(90deg);
-}
-
-.animation .angpao.pop .top2 {
-  -webkit-transform: rotateX(0deg);
-          transform: rotateX(0deg);
-  top: -32px;
-  height: 20vw;
-}
-
-.animation .angpao.pop .top2 .badge {
-  top: -32px;
-  left: calc(50% - 40px);
-  width: 20vw;
-  height: 10vw;
-}
-
-.animation .angpao.pop .textBox {
-  line-height: 50px;
-}
-
-.animation .angpao.pop .moneyArea {
-  display: block;
-}
-
-.animation .angpao.pop .moneyArea .l {
-  width: 10vw;
-  height: 10vw;
-}
-
-.animation .angpao.pop .moneyArea .l:nth-child(3) {
-  left: 200px;
-}
-
-.animation .angpao.pop .moneyArea .l:nth-child(2) {
-  left: 180px;
-}
-
-.animation .angpao.active .top {
-  -webkit-transform: rotateX(90deg);
-          transform: rotateX(90deg);
-  -webkit-animation: top1 0.3s forwards;
-          animation: top1 0.3s forwards;
-}
-
-.animation .angpao.active .top2 {
-  -webkit-transform: rotateX(0deg);
-          transform: rotateX(0deg);
-  -webkit-animation: top2 0.3s 0.2s forwards;
-          animation: top2 0.3s 0.2s forwards;
-}
-
-.animation .angpao.active .moneyArea {
-  display: block;
-}
-
-.animation .angpao.active .textBox .bigtitle {
-  display: none;
-}
-
-.animation .angpao.active .textBox .time {
-  display: block;
-}
-
-.animation .angpao.active .redbox {
-  background: url(../img/event/box.png) no-repeat center/cover;
-}
-
-.animation .angpao .top {
-  position: absolute;
-  top: -1px;
-  background: url(../img/event/top1.png) no-repeat center;
-  width: 100%;
-  height: 9vw;
-  background-size: 100%;
-  border-radius: 0 0 10px 10px;
-  -webkit-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
-  -webkit-transform-origin: top;
-          transform-origin: top;
-  -webkit-transition: 1s;
-  transition: 1s;
-  z-index: 1;
-}
-
-.animation .angpao .top .badge {
-  position: absolute;
-  top: 20px;
-  left: calc(50% - 12px);
-  background: url(../img/event/badge.png) no-repeat center;
-  background-size: 100%;
-  width: 6vw;
-  height: 6vw;
-  background-size: 100%;
-  border-radius: 50%;
-  -webkit-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
-}
-
-.animation .angpao .top2 {
-  position: absolute;
-  top: -25px;
-  background: url(../img/event/top2.png) no-repeat center;
-  width: 100%;
-  height: 9vw;
-  background-size: 100%;
-  border-radius: 10px 10px 0 0;
-  -webkit-box-shadow: 0px -2px 3px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px -2px 3px rgba(0, 0, 0, 0.2);
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  -webkit-transform-origin: bottom;
-          transform-origin: bottom;
-  -webkit-transform: rotateX(90deg);
-          transform: rotateX(90deg);
-  z-index: 0;
-}
-
-.animation .angpao .top2 .badge {
-  position: absolute;
-  top: -7px;
-  left: calc(50% - 12px);
-  background: url(../img/event/badge.png) no-repeat top;
-  background-size: 100%;
-  width: 6vw;
-  height: 3vw;
-  border-radius: 50px 50px 0 0;
-  -webkit-box-shadow: 0px -3px 3px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px -3px 3px rgba(0, 0, 0, 0.2);
-}
-
-.animation .angpao .textBox {
-  width: 80%;
-  line-height: 30px;
-  border-radius: 5px;
-  border: 1px solid #ffedbb;
-  background: -webkit-gradient(linear, left top, left bottom, from(#783535), to(#280b0b));
-  background: linear-gradient(to bottom, #783535 0%, #280b0b 100%);
-  margin: 0 auto;
-  text-align: center;
-}
-
-.animation .angpao .textBox p {
-  margin: 0;
-  font-size: 12px;
-  font-weight: bold;
-  color: #ffcf6f;
-  white-space: nowrap;
-}
-
-.animation .angpao .textBox .time {
-  display: none;
 }
 
 .filterBtn {
@@ -10277,209 +10074,6 @@ span.important {
 
 .popangpao.active {
   display: block;
-}
-
-.moneyArea {
-  position: absolute;
-  top: -25px;
-  display: none;
-  -webkit-animation: moneyArea 0.8s linear;
-          animation: moneyArea 0.8s linear;
-}
-
-.moneyArea .box {
-  position: absolute;
-  width: 100%;
-  height: 10vw;
-  background-image: url(../img/event/moneyAll.png);
-  background-size: 100%;
-  background-repeat: no-repeat;
-  z-index: 2;
-}
-
-.moneyArea .l {
-  position: absolute;
-  bottom: -30px;
-  left: 10px;
-  width: 5vw;
-  height: 5vw;
-  background-image: url(../img/event/money.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  -webkit-transform: rotate(-320deg);
-          transform: rotate(-320deg);
-  -webkit-animation: l 1s ease-in-out infinite;
-          animation: l 1s ease-in-out infinite;
-}
-
-.moneyArea .l:nth-child(2) {
-  bottom: -30px;
-  left: 20px;
-  -webkit-transform: rotate(190deg);
-          transform: rotate(190deg);
-  -webkit-animation-delay: 0.2s;
-          animation-delay: 0.2s;
-}
-
-.moneyArea .l:nth-child(3) {
-  bottom: -30px;
-  left: 40px;
-  -webkit-animation-delay: 0.2 0.5s;
-          animation-delay: 0.2 0.5s;
-  -webkit-transform: rotate(240deg);
-          transform: rotate(240deg);
-}
-
-.moneyArea .l:nth-child(4) {
-  bottom: -30px;
-  left: 70px;
-  -webkit-animation-delay: 0.3s;
-          animation-delay: 0.3s;
-  -webkit-transform: rotate(150deg);
-          transform: rotate(150deg);
-}
-
-.moneyArea .l:nth-child(5) {
-  bottom: -30px;
-  left: 100px;
-  -webkit-animation-delay: 0.5s;
-          animation-delay: 0.5s;
-  -webkit-transform: rotate(300deg);
-          transform: rotate(300deg);
-}
-
-@-webkit-keyframes l {
-  0% {
-    margin-top: 0px;
-  }
-  100% {
-    margin-bottom: 250px;
-    -webkit-transform: scale(1.5);
-            transform: scale(1.5);
-    opacity: 0;
-  }
-}
-
-@keyframes l {
-  0% {
-    margin-top: 0px;
-  }
-  100% {
-    margin-bottom: 250px;
-    -webkit-transform: scale(1.5);
-            transform: scale(1.5);
-    opacity: 0;
-  }
-}
-
-@-webkit-keyframes moneyArea {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes moneyArea {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes box {
-  0% {
-    -webkit-transform: translateY(5%);
-            transform: translateY(5%);
-    -webkit-box-shadow: 0 0 0 rgba(255, 253, 151, 0);
-            box-shadow: 0 0 0 rgba(255, 253, 151, 0);
-  }
-  100% {
-    -webkit-transform: translateY(-5%);
-            transform: translateY(-5%);
-    -webkit-box-shadow: 0 0 15px rgba(255, 253, 151, 0.8);
-            box-shadow: 0 0 15px rgba(255, 253, 151, 0.8);
-  }
-}
-
-@keyframes box {
-  0% {
-    -webkit-transform: translateY(5%);
-            transform: translateY(5%);
-    -webkit-box-shadow: 0 0 0 rgba(255, 253, 151, 0);
-            box-shadow: 0 0 0 rgba(255, 253, 151, 0);
-  }
-  100% {
-    -webkit-transform: translateY(-5%);
-            transform: translateY(-5%);
-    -webkit-box-shadow: 0 0 15px rgba(255, 253, 151, 0.8);
-            box-shadow: 0 0 15px rgba(255, 253, 151, 0.8);
-  }
-}
-
-@-webkit-keyframes light {
-  0% {
-    opacity: 0.3;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes light {
-  0% {
-    opacity: 0.3;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes top1 {
-  0% {
-    -webkit-transform: rotateX(0deg);
-            transform: rotateX(0deg);
-  }
-  100% {
-    -webkit-transform: rotateX(90deg);
-            transform: rotateX(90deg);
-  }
-}
-
-@keyframes top1 {
-  0% {
-    -webkit-transform: rotateX(0deg);
-            transform: rotateX(0deg);
-  }
-  100% {
-    -webkit-transform: rotateX(90deg);
-            transform: rotateX(90deg);
-  }
-}
-
-@-webkit-keyframes top2 {
-  0% {
-    -webkit-transform: rotateX(90deg);
-            transform: rotateX(90deg);
-  }
-  100% {
-    -webkit-transform: rotateX(0deg);
-            transform: rotateX(0deg);
-  }
-}
-
-@keyframes top2 {
-  0% {
-    -webkit-transform: rotateX(90deg);
-            transform: rotateX(90deg);
-  }
-  100% {
-    -webkit-transform: rotateX(0deg);
-            transform: rotateX(0deg);
-  }
 }
 
 #popup.active {
@@ -10672,323 +10266,6 @@ span.important {
 
 .eventList tr:nth-child(odd):not(:nth-child(1)) {
   background: #212121;
-}
-
-.angpao {
-  background: url(../img/event/box.png) bottom;
-  width: 35vw;
-  height: 30vw;
-  background-size: 100%;
-  position: relative;
-  cursor: pointer;
-  -webkit-animation: box 2s ease-in-out infinite alternate;
-          animation: box 2s ease-in-out infinite alternate;
-  padding-top: 45px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  margin: 0 auto;
-  margin-top: 50px;
-}
-
-.angpao.pop {
-  width: 70vw;
-  height: 60vw;
-  margin: 0 auto;
-  padding-top: 70px;
-}
-
-.angpao.pop .top {
-  -webkit-transform: rotateX(90deg);
-          transform: rotateX(90deg);
-}
-
-.angpao.pop .top2 {
-  -webkit-transform: rotateX(0deg);
-          transform: rotateX(0deg);
-  top: -32px;
-  height: 20vw;
-}
-
-.angpao.pop .top2 .badge {
-  top: -32px;
-  left: calc(50% - 40px);
-  width: 20vw;
-  height: 10vw;
-}
-
-.angpao.pop .textBox {
-  line-height: 50px;
-}
-
-.angpao.pop .moneyArea {
-  display: block;
-}
-
-.angpao.pop .moneyArea .l {
-  width: 10vw;
-  height: 10vw;
-}
-
-.angpao.pop .moneyArea .l:nth-child(3) {
-  left: 200px;
-}
-
-.angpao.pop .moneyArea .l:nth-child(2) {
-  left: 180px;
-}
-
-.angpao.active .top {
-  -webkit-transform: rotateX(90deg);
-          transform: rotateX(90deg);
-  -webkit-animation: top1 0.3s forwards;
-          animation: top1 0.3s forwards;
-}
-
-.angpao.active .top2 {
-  -webkit-transform: rotateX(0deg);
-          transform: rotateX(0deg);
-  -webkit-animation: top2 0.3s 0.2s forwards;
-          animation: top2 0.3s 0.2s forwards;
-}
-
-.angpao.active .moneyArea {
-  display: block;
-}
-
-.angpao.active .textBox .bigtitle {
-  display: none;
-}
-
-.angpao.active .textBox .time {
-  display: block;
-}
-
-.angpao.active .redbox {
-  background: url(../img/event/box.png) no-repeat center/cover;
-}
-
-.angpao .top {
-  position: absolute;
-  top: -1px;
-  background: url(../img/event/top1.png) no-repeat center;
-  width: 100%;
-  height: 9vw;
-  background-size: 100%;
-  border-radius: 0 0 10px 10px;
-  -webkit-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
-  -webkit-transform-origin: top;
-          transform-origin: top;
-  -webkit-transition: 1s;
-  transition: 1s;
-  z-index: 1;
-}
-
-.angpao .top .badge {
-  position: absolute;
-  top: 20px;
-  left: calc(50% - 12px);
-  background: url(../img/event/badge.png) no-repeat center;
-  background-size: 100%;
-  width: 6vw;
-  height: 6vw;
-  background-size: 100%;
-  border-radius: 50%;
-  -webkit-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
-}
-
-.angpao .top2 {
-  position: absolute;
-  top: -25px;
-  background: url(../img/event/top2.png) no-repeat center;
-  width: 100%;
-  height: 9vw;
-  background-size: 100%;
-  border-radius: 10px 10px 0 0;
-  -webkit-box-shadow: 0px -2px 3px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px -2px 3px rgba(0, 0, 0, 0.2);
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  -webkit-transform-origin: bottom;
-          transform-origin: bottom;
-  -webkit-transform: rotateX(90deg);
-          transform: rotateX(90deg);
-  z-index: 0;
-}
-
-.angpao .top2 .badge {
-  position: absolute;
-  top: -7px;
-  left: calc(50% - 12px);
-  background: url(../img/event/badge.png) no-repeat top;
-  background-size: 100%;
-  width: 6vw;
-  height: 3vw;
-  border-radius: 50px 50px 0 0;
-  -webkit-box-shadow: 0px -3px 3px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px -3px 3px rgba(0, 0, 0, 0.2);
-}
-
-.angpao .textBox {
-  width: 80%;
-  line-height: 30px;
-  border-radius: 5px;
-  border: 1px solid #ffedbb;
-  background: -webkit-gradient(linear, left top, left bottom, from(#783535), to(#280b0b));
-  background: linear-gradient(to bottom, #783535 0%, #280b0b 100%);
-  margin: 0 auto;
-  text-align: center;
-}
-
-.angpao .textBox p {
-  margin: 0;
-  font-size: 12px;
-  font-weight: bold;
-  color: #ffcf6f;
-  white-space: nowrap;
-}
-
-.angpao .textBox .time {
-  display: none;
-}
-
-.gold {
-  background: url(../img/event/goldbox.png) no-repeat bottom;
-  background-size: 100%;
-  width: 70vw;
-  height: 60vw;
-  margin: 0 auto;
-  padding-top: 70px;
-  position: absolute;
-  display: none;
-  cursor: pointer;
-}
-
-.gold.active {
-  display: block;
-  -webkit-animation: switch 0.8s ease-in-out;
-          animation: switch 0.8s ease-in-out;
-}
-
-.gold .textBox {
-  width: 200px;
-  border-radius: 5px;
-  border: 1px solid #ffedbb;
-  background: -webkit-gradient(linear, left top, left bottom, from(#9a6031), to(#56361c));
-  background: linear-gradient(to bottom, #9a6031 0%, #56361c 100%);
-  margin: 0 auto;
-  margin-top: 135px;
-  text-align: center;
-}
-
-.gold .textBox p {
-  margin: 0;
-  font-size: 14px;
-  font-weight: bold;
-  color: #ffcf6f;
-  padding: 10px 0;
-}
-
-.gold .moneyArea {
-  display: block;
-  position: absolute;
-  top: -80px;
-  -webkit-animation: moneyArea 0.8s 1s linear;
-          animation: moneyArea 0.8s 1s linear;
-}
-
-.gold .moneyArea .box {
-  position: absolute;
-  width: 350px;
-  height: 145px;
-  background-image: url(../img/event/gold.png);
-  background-size: 100%;
-  background-repeat: no-repeat;
-  z-index: 2;
-  top: 41px;
-  left: -47px;
-}
-
-.gold .moneyArea .l {
-  position: absolute;
-  bottom: -230px;
-  left: 30px;
-  width: 30vw;
-  height: 10vw;
-  background-image: url(../img/event/gold1.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  -webkit-transform: rotate(-320deg);
-          transform: rotate(-320deg);
-  -webkit-animation: gold 1s ease-in-out infinite;
-          animation: gold 1s ease-in-out infinite;
-}
-
-.gold .moneyArea .l:nth-child(2) {
-  bottom: -230px;
-  left: 45px;
-  -webkit-transform: rotate(190deg);
-          transform: rotate(190deg);
-  -webkit-animation-delay: 0.2s;
-          animation-delay: 0.2s;
-}
-
-.gold .moneyArea .l:nth-child(3) {
-  bottom: -230px;
-  left: 75px;
-  -webkit-animation-delay: 0.5s;
-          animation-delay: 0.5s;
-  -webkit-transform: rotate(240deg);
-          transform: rotate(240deg);
-}
-
-.gold .moneyArea .l:nth-child(4) {
-  bottom: -230px;
-  left: 100px;
-  -webkit-animation-delay: 0.3s;
-          animation-delay: 0.3s;
-  -webkit-transform: rotate(150deg);
-          transform: rotate(150deg);
-}
-
-.gold .moneyArea .l:nth-child(5) {
-  bottom: -230px;
-  left: 145px;
-  -webkit-animation-delay: 0.5s;
-          animation-delay: 0.5s;
-  -webkit-transform: rotate(300deg);
-          transform: rotate(300deg);
-}
-
-@-webkit-keyframes gold {
-  0% {
-    margin-top: 0px;
-  }
-  70% {
-    opacity: 1;
-  }
-  100% {
-    margin-bottom: 250px;
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
-    opacity: 0;
-  }
-}
-
-@keyframes gold {
-  0% {
-    margin-top: 0px;
-  }
-  70% {
-    opacity: 1;
-  }
-  100% {
-    margin-bottom: 250px;
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
-    opacity: 0;
-  }
 }
 
 .breadcrumb {
@@ -12574,7 +11851,7 @@ span.important {
   top: 8px;
   width: 25px;
   height: 18px;
-  background-image: url(../img/youtubeIcon.png);
+  background-image: url(https://banner.bw88.io/h5/img/youtubeIcon.png);
 }
 
 .top10Aear .top10Box > div > div.liveBox > div .youtube.close {
@@ -12774,14 +12051,14 @@ span.important {
   top: 2vw;
   width: 25px;
   height: 18px;
-  background-image: url(../img/youtubeIcon.png);
+  background-image: url(https://banner.bw88.io/h5/img/youtubeIcon.png);
 }
 
 @media screen and (min-width: 768px) {
   .liverightModule .livelist .liveBox > div .youtube {
     width: 50px;
     height: 35px;
-    background-image: url(../img/youtubeIcon-1.png);
+    background-image: url(https://banner.bw88.io/h5/img/youtubeIcon-1.png);
   }
 }
 
@@ -12906,7 +12183,7 @@ span.important {
 }
 
 .downloadarea {
-  background: url(../img/downloadBg.png) no-repeat;
+  background: url(https://banner.bw88.io/h5/img/downloadBg.png) no-repeat;
   width: 100%;
   height: 71vw;
   background-size: 100%;
@@ -12980,7 +12257,7 @@ span.important {
           align-items: center;
   width: 100%;
   height: 1210px;
-  background: url(../img/download/downloanBG.png) no-repeat center;
+  background: url(https://banner.bw88.io/h5/img/download/downloanBG.png) no-repeat center;
   background-size: cover;
 }
 
@@ -13115,7 +12392,7 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  background: url(../img/download/downloanBG2.png) no-repeat bottom center;
+  background: url(https://banner.bw88.io/h5/img/download/downloanBG2.png) no-repeat bottom center;
   background-size: cover;
 }
 

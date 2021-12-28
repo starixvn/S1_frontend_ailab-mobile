@@ -33,7 +33,12 @@ import ImportantNotes from "./importantNote";
 const payType = "localBank";
 
 const Payment = props => {
-	const { paymentList, creditTimeKey, promoList, depositPromoMsg } = props;
+	const {
+		paymentList,
+		creditTimeKey,
+		promoList,
+		checkDepositSpecialCode
+	} = props;
 
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -55,7 +60,12 @@ const Payment = props => {
 		checked: null,
 		msg: ""
 	});
-	const [custBonusCode, setCustBonusCode] = useState(null);
+
+	const [depositPromo, setDepositPromo] = useState({
+		bonusCode: null,
+		requiredAmount: null,
+		specialCode: ""
+	});
 
 	const {
 		amount,
@@ -126,7 +136,7 @@ const Payment = props => {
 		}));
 	};
 
-	const ClickSubmit = () => {
+	const ClickSubmit = async () => {
 		const checkAccountName = !!userInfo.accountName || !!realName;
 		const result =
 			selBank.sysId &&
@@ -135,6 +145,18 @@ const Payment = props => {
 			checkAccountName;
 
 		if (result && !processing) {
+			let { bonusCode } = depositPromo;
+
+			if (depositPromo.specialCode) {
+				bonusCode = await checkDepositSpecialCode(
+					depositPromo.specialCode
+				);
+
+				if (!bonusCode) {
+					return;
+				}
+			}
+
 			const RedirectToNext = (real_amount, sysId) => {
 				setLoading(true);
 				setPopBox(prevState => ({
@@ -154,7 +176,7 @@ const Payment = props => {
 									window.location.reload();
 								};
 
-								if (bankSlipPopBox.receipt || custBonusCode) {
+								if (bankSlipPopBox.receipt || bonusCode) {
 									const UploadReceipt = async () => {
 										try {
 											const formData = new FormData();
@@ -203,11 +225,11 @@ const Payment = props => {
 									};
 									UploadReceipt();
 
-									if (custBonusCode) {
+									if (bonusCode) {
 										setCustPromo({
 											langId: userInfo.langId,
 											TransId: res.data.data.transId,
-											BonusCode: custBonusCode,
+											BonusCode: bonusCode,
 											setPopBox,
 											i18n,
 											toNextStep: CloseDoneDepositPopup
@@ -471,12 +493,16 @@ const Payment = props => {
 				clickInfo={clickInfo.bind(this, { col: "amount" })}
 				VaildAmount={VaildAmount.bind(this, { _amount: amount })}
 			/>
+
 			<PromoList
+				amount={Number(amount)}
 				promoList={promoList}
-				depositPromoMsg={depositPromoMsg}
 				i18n={i18n}
-				setCustBonusCode={setCustBonusCode}
+				userInfo={userInfo}
+				depositPromo={depositPromo}
+				setDepositPromo={setDepositPromo}
 			/>
+
 			<ImportantNotes i18n={i18n} />
 			<div className="btn-group">
 				<button
@@ -502,7 +528,7 @@ Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
 	creditTimeKey: PropTypes.string.isRequired,
 	promoList: PropTypes.arrayOf(PropTypes.objectOf),
-	depositPromoMsg: PropTypes.string.isRequired
+	checkDepositSpecialCode: PropTypes.func.isRequired
 };
 
 const GroupList = ({

@@ -587,6 +587,7 @@
 	"lbl_KingMaker": "King Maker",
 	"lbl_tcg": "Lô Đề",
 	"lbl_DepositPromoMsg1": "Vui lòng xác minh tài khoản của bạn để được hưởng các chương trình khuyến mãi có sẵn.",
+	"lbl_DepositPromoMsg2": "Yêu cầu nạp tiền tối thiểu",
 
 	"==============General==============": "",
 	"lbl_Jackpot": "NỔ HŨ",
@@ -612,7 +613,7 @@
 	"lbl_ClaimSucceed": "Bạn đã nhận khuyến mãi thành công.",
 	"lbl_More_Info": "THÊM THÔNG TIN",
 	"lbl_Apply_Now": "THAM GIA NGAY",
-	"lbl_promo_all_promos":"TẤT CẢ KHUYẾN MÃI",
+	"lbl_promo_all_promos": "TẤT CẢ KHUYẾN MÃI",
 	"lbl_ClaimNow": "NHẬN NGAY",
 
 	"==============Sports==============": "",
@@ -667,7 +668,7 @@
 	"lbl_Streaming_Home": "Home",
 	"lbl_Streaming_Away": "Away",
 	"lbl_More": "Thêm",
-	"lbl_streaming_please_make_deposit":"Vui lòng nạp 1 khoản tiền tối thiểu để có thể trải nghiệm trò chơi trực tuyến.",
+	"lbl_streaming_please_make_deposit": "Vui lòng nạp 1 khoản tiền tối thiểu để có thể trải nghiệm trò chơi trực tuyến.",
 
 	"==============Promotion Cashback==============": "",
 	"lbl_Cashback": "Hoàn cược thua",
@@ -729,7 +730,7 @@
 	"lbl_My": "Phần",
 	"lbl_LuckyWheel": "VÒNG QUAY MAY MẮN",
 	"lbl_Conditions": "ĐIỀU KIỆN THƯỞNG",
-	"lbl_MyLuckyWheelRewards":"PHẦN THƯỞNG CỦA TÔI",
+	"lbl_MyLuckyWheelRewards": "PHẦN THƯỞNG CỦA TÔI",
 	"lbl_MysteryBox_MemberEligibility": "Nạp tiền hôm nay, trúng lớn ngày mai",
 	"lbl_LuckyWheel_MinDeposit":"Nạp tối thiểu {{amount}} VND"
 
