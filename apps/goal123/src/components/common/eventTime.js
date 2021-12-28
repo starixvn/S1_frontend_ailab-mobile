@@ -23,6 +23,6 @@ export const eventTime = {
 	},
 	liveCasino_evo: { endDate: "2021/12/15 11:00:00" },
 	logoEvent: {
-		endDate: "2022/01/05 11:00:00"
+		endDate: "2022/01/03 11:00:00"
 	}
 };
