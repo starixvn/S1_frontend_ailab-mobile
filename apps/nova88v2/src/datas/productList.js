@@ -446,11 +446,6 @@ const gameList = ({ langId, currencyName }) => {
 					translateKey: "lbl_Games",
 					items: [
 						{
-							...defGameInfo.amb,
-							img: amb,
-							spanTextKey: "lbl_Amb"
-						},
-						{
 							...defGameInfo.kingMaker,
 							img: kingMaker,
 							spanTextKey: "lbl_KingMaker"
@@ -883,11 +878,6 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.kingMaker,
 							img: kingMaker,
 							spanTextKey: "lbl_KingMaker"
-						},
-						{
-							...defGameInfo.amb,
-							img: amb,
-							spanTextKey: "lbl_Amb"
 						}
 					]
 				},
@@ -1776,11 +1766,6 @@ const gameList = ({ langId, currencyName }) => {
 					translateKey: "lbl_Games",
 					items: [
 						{
-							...defGameInfo.amb,
-							img: amb,
-							spanTextKey: "lbl_Amb"
-						},
-						{
 							...defGameInfo.kingMaker,
 							img: kingMaker,
 							spanTextKey: "lbl_KingMaker"
@@ -2197,11 +2182,6 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.kingMaker,
 							img: kingMaker,
 							spanTextKey: "lbl_KingMaker"
-						},
-						{
-							...defGameInfo.amb,
-							img: amb,
-							spanTextKey: "lbl_Amb"
 						}
 					]
 				},
