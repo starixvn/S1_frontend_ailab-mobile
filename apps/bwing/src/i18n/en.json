@@ -587,6 +587,7 @@
 	"lbl_KingMaker": "King Maker",
 	"lbl_tcg": "TCG",
 	"lbl_DepositPromoMsg1": "Please proceed to verify your account to entitle available promotions.",
+	"lbl_DepositPromoMsg2": "* Min. desposit amount required is",
 
 	"==============General==============": "",
 	"lbl_Jackpot": "Jackpot",
@@ -612,7 +613,7 @@
 	"lbl_ClaimSucceed": "Successful! Your Bonus has been claimed.",
 	"lbl_More_Info": "MORE INFO",
 	"lbl_Apply_Now": "APPLY NOW",
-	"lbl_promo_all_promos":"ALL PROMOS",
+	"lbl_promo_all_promos": "ALL PROMOS",
 	"lbl_ClaimNow": "CLAIM NOW",
 
 	"==============Sports==============": "",
@@ -666,7 +667,7 @@
 	"lbl_Streaming_Home": "Home",
 	"lbl_Streaming_Away": "Away",
 	"lbl_More": "More",
-	"lbl_streaming_please_make_deposit":"Please make a Min Deposit to enjoy our LIVE STREAMING.",
+	"lbl_streaming_please_make_deposit": "Please make a Min Deposit to enjoy our LIVE STREAMING.",
 
 	"==============Promotion Cashback==============": "",
 	"lbl_Cashback": "Cashback",
@@ -727,7 +728,7 @@
 	"lbl_My": "My",
 	"lbl_LuckyWheel": "LUCKY WHEEL",
 	"lbl_Conditions": "Conditions",
-	"lbl_MyLuckyWheelRewards":"MY LUCKY WHEEL REWARDS",
+	"lbl_MyLuckyWheelRewards": "MY LUCKY WHEEL REWARDS",
 	"lbl_MysteryBox_MemberEligibility": "Deposit Today Get Your Rewards Tomorrow.",
 	"lbl_LuckyWheel_MinDeposit":"Min Deposit VND {{amount}}"
 }

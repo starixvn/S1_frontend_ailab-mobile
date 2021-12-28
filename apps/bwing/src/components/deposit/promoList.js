@@ -1,36 +1,130 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import PropTypes from "prop-types";
+import { useNavigate } from "@reach/router";
+import { popBoxContext } from "Context";
 import Dropdown from "../common/dropdown";
+import { isConvert, number_format } from "../common/common";
+
 import {
 	api_GetDepositPromotionList,
 	api_SetDepositPromotionQueue
 } from "../../service/api/promotion";
+import path from "../../path";
 
-const PromoList = ({ i18n, setCustBonusCode, promoList, depositPromoMsg }) => {
+const isOTPVerified = ({
+	phoneVerified,
+	accountName,
+	birth_d,
+	birth_m,
+	birth_y
+}) => Boolean(phoneVerified && accountName && birth_d && birth_m && birth_y);
+
+const PromoList = ({
+	i18n,
+	amount,
+	promoList,
+	userInfo,
+	depositPromo,
+	setDepositPromo
+}) => {
 	const [selectedIdx, setSelectedIdx] = useState(promoList?.length - 1);
+
+	const { setPopBox } = useContext(popBoxContext);
+	const navigate = useNavigate();
+
+	const { phoneVerified, currencyId } = userInfo || {};
+
+	const noneIdx = promoList.length - 1;
+
+	const closePopbox = () => {
+		setPopBox({ isOpen: false });
+	};
+
+	const openVerificationPopBox = bonusCode => {
+		const RedirectToProfile = () => {
+			navigate(
+				`/${path.member.root}?prevPage=${path.deposit.root}&BonusCode=${bonusCode}`
+			);
+			closePopbox();
+		};
+
+		setPopBox({
+			isOpen: true,
+			title: i18n.lbl_ImportantNote,
+			content: i18n.msg_OTPHint,
+			hasBtn: true,
+			hideCloseBtn: true,
+			btnBar: (
+				<div className="btn-group">
+					<button className="blue" onClick={closePopbox}>
+						{i18n?.lbl_Later}
+					</button>
+					<button onClick={RedirectToProfile} className="btn-check">
+						{i18n.lbl_GoNow}
+					</button>
+				</div>
+			)
+		});
+	};
 
 	const selectPromo = i => {
 		if (i !== selectedIdx) {
 			setSelectedIdx(i);
-			setCustBonusCode(promoList[i].bonusCode);
+
+			setDepositPromo(promoList[i]);
+
+			if (!isOTPVerified(userInfo)) {
+				openVerificationPopBox(promoList[i].bonusCode);
+			}
 		}
 	};
 
-	const depositPromoMsgClass = ["tip", depositPromoMsg && "open"]
+	const onChangeInput = e => {
+		setSelectedIdx(noneIdx);
+		setDepositPromo({ specialCode: e.target.value });
+	};
+
+	const selectClassName = ["inputBox", depositPromo?.specialCode && "gray"]
 		.filter(Boolean)
 		.join(" ");
+
+	const inputClassName = ["input-Area", depositPromo?.bonusCode && "gray"]
+		.filter(Boolean)
+		.join(" ");
+
+	const input = depositPromo?.specialCode ?? "";
 
 	return (
 		<>
 			<div className="title">{i18n.lbl_Select_Bonus}</div>
-			<div className="inputBox">
+			<div className={selectClassName}>
 				<Dropdown
 					options={promoList}
 					selectedIdx={selectedIdx}
 					onSelectItem={selectPromo}
 				/>
 			</div>
-			<div className={depositPromoMsgClass}>{depositPromoMsg}</div>
+
+			<div className={inputClassName}>
+				<div className="input-group">
+					<div className="inputBoxNew">
+						<input
+							value={input}
+							placeholder={i18n.lbl_PromoCode}
+							onChange={onChangeInput}
+							type="tel"
+						/>
+					</div>
+				</div>
+			</div>
+
+			<DepositPromoTip
+				i18n={i18n}
+				amount={amount}
+				phoneVerified={phoneVerified}
+				currencyId={currencyId}
+				requiredAmount={promoList[selectedIdx]?.requiredAmount}
+			/>
 		</>
 	);
 };
@@ -41,9 +135,55 @@ PromoList.defaultProps = {
 
 PromoList.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	setCustBonusCode: PropTypes.func.isRequired,
+	amount: PropTypes.number.isRequired,
+	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
 	promoList: PropTypes.arrayOf(PropTypes.objectOf),
-	depositPromoMsg: PropTypes.string.isRequired
+	depositPromo: PropTypes.func.isRequired,
+	setDepositPromo: PropTypes.func.isRequired
+};
+
+const DepositPromoTip = ({
+	i18n,
+	amount,
+	phoneVerified,
+	currencyId,
+	requiredAmount
+}) => {
+	const _isConvert = isConvert(currencyId);
+	const real_amount = _isConvert ? amount * 1000 : amount;
+
+	const depositPromoMsgActive = !phoneVerified || requiredAmount;
+
+	const depositPromoMsgClass = ["tip", depositPromoMsgActive && "open"]
+		.filter(Boolean)
+		.join(" ");
+
+	const tip = () => {
+		if (phoneVerified == false) return i18n.lbl_DepositPromoMsg1;
+
+		if (requiredAmount && real_amount < requiredAmount)
+			return `${i18n.lbl_DepositPromoMsg2} ${
+				i18n[`Currency_${currencyId}`]
+			} ${number_format(requiredAmount, _isConvert, 0)}`;
+
+		return "";
+	};
+
+	return <div className={depositPromoMsgClass}>{tip()}</div>;
+};
+
+DepositPromoTip.defaultProps = {
+	phoneVerified: null,
+	currencyId: null,
+	requiredAmount: null
+};
+
+DepositPromoTip.propTypes = {
+	i18n: PropTypes.func.isRequired,
+	amount: PropTypes.number.isRequired,
+	phoneVerified: PropTypes.bool,
+	currencyId: PropTypes.number,
+	requiredAmount: PropTypes.number
 };
 
 export const setCustPromo = ({
