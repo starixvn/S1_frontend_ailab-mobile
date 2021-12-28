@@ -65,6 +65,8 @@ import TCG from "../styles/img/tcg.png";
 import kingMaker from "../styles/img/km.png";
 import amb from "../styles/img/amb.png";
 import nineW from "../styles/img/9w.png";
+import MPoker from "../styles/img/mp.png";
+
 import path from "../path";
 import { siteInfo } from "../config";
 import { defPopBoxType } from "../components/common/popbox";
@@ -1313,6 +1315,18 @@ const gameList = ({ langId, currencyName }) => {
 					translateKey: "lbl_Games",
 					items: [
 						{
+							...defGameInfo.MPoker,
+							img: MPoker,
+							spanText: "MPoker",
+							tpGameType: 60,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(eventTime.MPoker)
+								}
+							]
+						},
+						{
 							...defGameInfo.kingMaker,
 							img: kingMaker,
 							spanTextKey: "lbl_KingMaker"
@@ -2368,7 +2382,8 @@ export const defGameInfo = {
 	nineW: { tpId: 31, tpGameType: 51 },
 	Casino_Jili: { tpId: 32, tpGameType: 53 },
 	TCG: { tpId: 33, tpGameType: 54 },
-	tableGame: { tpId: 1, gameId: 222, tpGameType: 23 }
+	tableGame: { tpId: 1, gameId: 222, tpGameType: 23 },
+	MPoker: { tpId: 35, tpGameType: 60 }
 };
 
 export const defCol = {

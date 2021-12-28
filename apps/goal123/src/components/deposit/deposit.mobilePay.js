@@ -17,7 +17,12 @@ import PromoList from "./promoList";
 const payType = "MobilePay";
 
 const Payment = props => {
-	const { paymentList, creditTimeKey, promoList, depositPromoMsg } = props;
+	const {
+		paymentList,
+		creditTimeKey,
+		promoList,
+		checkDepositSpecialCode
+	} = props;
 
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -27,7 +32,11 @@ const Payment = props => {
 	const [selGroupId, setSelGroupId] = useState(null);
 	const [selChannel, setChannel] = useState({});
 	const [channelList, setChannelList] = useState([]);
-	const [custBonusCode, setCustBonusCode] = useState(null);
+	const [depositPromo, setDepositPromo] = useState({
+		bonusCode: null,
+		requiredAmount: null,
+		specialCode: ""
+	});
 
 	const {
 		amount,
@@ -98,16 +107,28 @@ const Payment = props => {
 		setChannel(channel);
 	};
 
-	const ClickSubmit = () => {
+	const ClickSubmit = async () => {
 		const result = VaildAmount({ _amount: amount });
 
 		if (result) {
+			let { bonusCode } = depositPromo;
+
+			if (depositPromo.specialCode) {
+				bonusCode = await checkDepositSpecialCode(
+					depositPromo.specialCode
+				);
+
+				if (!bonusCode) {
+					return;
+				}
+			}
+
 			const RedirectToNext = real_amount => {
 				const mainUrl = `${config.openURL}/${userInfo.langId}/Cashier/DepositReqMobilePay`;
 				const param = {
 					ChannelId: selChannel.channelId,
 					Amount: real_amount,
-					BonusCode: custBonusCode
+					BonusCode: depositPromo.bonusCode
 				};
 				const windowOpenUrl = getWindowOpenUrl({ mainUrl, param });
 				window.open(windowOpenUrl);
@@ -216,12 +237,16 @@ const Payment = props => {
 				clickInfo={clickInfo}
 				VaildAmount={VaildAmount.bind(this, { _amount: amount })}
 			/>
+
 			<PromoList
+				amount={Number(amount)}
 				promoList={promoList}
-				depositPromoMsg={depositPromoMsg}
 				i18n={i18n}
-				setCustBonusCode={setCustBonusCode}
+				userInfo={userInfo}
+				depositPromo={depositPromo}
+				setDepositPromo={setDepositPromo}
 			/>
+
 			<div className="btn-group">
 				<button className="lightBlue" onClick={ClickSubmit}>
 					{i18n.lbl_Submit}
@@ -239,7 +264,7 @@ Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
 	creditTimeKey: PropTypes.string.isRequired,
 	promoList: PropTypes.arrayOf(PropTypes.object),
-	depositPromoMsg: PropTypes.string.isRequired
+	checkDepositSpecialCode: PropTypes.func.isRequired
 };
 
 export default Payment;

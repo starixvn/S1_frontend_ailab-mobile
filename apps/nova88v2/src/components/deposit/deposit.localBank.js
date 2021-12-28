@@ -57,7 +57,8 @@ const Payment = props => {
 		userPaymentData,
 		handleUserPaymentData,
 		promoList,
-		asyncPromotionConfirmPopBox
+		asyncPromotionConfirmPopBox,
+		checkDepositSpecialCode
 	} = props;
 
 	const { i18n } = useContext(i18nContext);
@@ -73,7 +74,8 @@ const Payment = props => {
 	const [custBankInfo, setCustBankInfo] = useState([]);
 	const [depositPromo, setDepositPromo] = useState({
 		bonusCode: null,
-		requiredAmount: null
+		requiredAmount: null,
+		specialCode: ""
 	});
 
 	const {
@@ -238,6 +240,18 @@ const Payment = props => {
 				if (!success) return;
 			}
 
+			let { bonusCode } = depositPromo;
+
+			if (depositPromo.specialCode) {
+				bonusCode = await checkDepositSpecialCode(
+					depositPromo.specialCode
+				);
+
+				if (!bonusCode) {
+					return;
+				}
+			}
+
 			const RedirectToNext = (real_amount, sysId) => {
 				setLoading(true);
 				setPopBox(prevState => ({
@@ -347,12 +361,11 @@ const Payment = props => {
 									await Promise.all([
 										bankSlipPopBox.receipt &&
 											UploadReceipt(),
-										depositPromo.bonusCode &&
+										bonusCode &&
 											setCustPromo({
 												langId: userInfo.langId,
 												TransId: res.data.data.transId,
-												BonusCode:
-													depositPromo.bonusCode,
+												BonusCode: bonusCode,
 												setPopBox,
 												i18n,
 												toNextStep: CloseDoneDepositPopup
@@ -498,9 +511,9 @@ const Payment = props => {
 			<PromoList
 				i18n={i18n}
 				amount={Number(amount)}
-				phoneVerified={userInfo.phoneVerified}
-				currencyId={userInfo.currencyId}
+				userInfo={userInfo}
 				promoList={promoList}
+				depositPromo={depositPromo}
 				setDepositPromo={setDepositPromo}
 			/>
 
@@ -531,7 +544,8 @@ Payment.propTypes = {
 	userPaymentData: PropTypes.objectOf(PropTypes.any),
 	handleUserPaymentData: PropTypes.func,
 	promoList: PropTypes.arrayOf(PropTypes.objectOf),
-	asyncPromotionConfirmPopBox: PropTypes.func.isRequired
+	asyncPromotionConfirmPopBox: PropTypes.func.isRequired,
+	checkDepositSpecialCode: PropTypes.func.isRequired
 };
 
 const GroupList = ({

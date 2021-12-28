@@ -53,6 +53,15 @@ export class DropdownBox extends Component {
 		} else {
 			selected = this.props.placeholder;
 		}
+
+		const inputBoxClassName = [
+			`inputBox`,
+			...this.props.inputBoxClassName,
+			this.props.checked === false && "error"
+		]
+			.filter(Boolean)
+			.join(" ");
+
 		return (
 			<>
 				<div
@@ -67,10 +76,7 @@ export class DropdownBox extends Component {
 						}`}>
 						{this.props.infoText}
 					</div>
-					<div
-						className={`inputBox ${
-							this.props.checked === false ? "error" : ""
-						}`}>
+					<div className={inputBoxClassName}>
 						{this.props.showDot && (
 							<span className="text-red">*</span>
 						)}
@@ -135,7 +141,9 @@ DropdownBox.defaultProps = {
 	hideInfo: false,
 	onBlur: () => null,
 	birthDayIcon: false,
-	showDot: false
+	showDot: false,
+	className: "",
+	inputBoxClassName: []
 };
 
 DropdownBox.propTypes = {
@@ -157,7 +165,9 @@ DropdownBox.propTypes = {
 	hideInfo: PropTypes.bool,
 	onBlur: PropTypes.func,
 	birthDayIcon: PropTypes.bool,
-	showDot: PropTypes.bool
+	showDot: PropTypes.bool,
+	className: PropTypes.string,
+	inputBoxClassName: PropTypes.arrayOf(PropTypes.any)
 };
 
 const Item = props => {
