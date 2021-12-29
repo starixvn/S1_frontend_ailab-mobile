@@ -4,7 +4,6 @@ import { useNavigate } from "@reach/router";
 import { popBoxContext } from "Context";
 import Dropdown from "../common/dropdown";
 import api from "../../service/api";
-import { defPopBoxType } from "../common/popbox";
 import path from "../../path";
 
 import { isConvert, number_format } from "../common/common";

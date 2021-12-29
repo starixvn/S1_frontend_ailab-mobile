@@ -197,7 +197,6 @@ const Panel = () => {
 				creditTimeKey={defPayment[defPayType.cryptoPay].creditTimeKey}
 				paymentList={paymentList[defPayType.cryptoPay] ?? []}
 				promoList={promoList}
-				depositPromoMsg={depositPromoMsg}
 			/>
 		);
 	}

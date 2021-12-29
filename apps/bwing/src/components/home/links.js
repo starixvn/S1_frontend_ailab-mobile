@@ -48,7 +48,7 @@ const UserGuide = ({ i18n, langId }) => {
 				<div className="userGuide-box__top">
 					<a
 						className="icon icon-GUIDE1"
-						href={`${config.t_and_cURL}/SiteSkin/Bwing/Static/Images/How_To_Deposit.mp4`}
+						href={`${config.t_and_cURL}/SiteSkin/Bwing/Static/images/How_To_Deposit.mp4`}
 						target="_blank"
 						rel="noreferrer">
 						<span>{i18n.lbl_HowToDepoist}</span>
