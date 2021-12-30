@@ -126,12 +126,17 @@ const RankList = ({
 				</div>
 			)}
 			{isLastEvent ? null : (
-				<div className="text">
-					{i18n.lbl_LastUpdTime?.replace(
-						"{{time}}",
-						moment(lastUpdTime).format("YYYY-MM-DD H:mm:ss")
-					)}
-				</div>
+				<>
+					<div className="text">
+						{i18n.lbl_LastUpdTime?.replace(
+							"{{time}}",
+							moment(lastUpdTime).format("YYYY-MM-DD HH:mm:ss")
+						)}
+					</div>
+					<div className="text" style={{ fontWeight: 600 }}>
+						{i18n.lbl_Ranking_EndDate}
+					</div>
+				</>
 			)}
 		</>
 	);
