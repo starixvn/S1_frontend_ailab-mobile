@@ -1,18 +1,25 @@
 import { useEffect, useState } from "react";
 import api from "../../service/api";
 import { defDayBtns, defBtnsOfCategory } from "./def";
+import { isEventPeriod } from "../common/common";
 
 const SetUpdTime = () => {
-	const now = new Date();
-	const minutes = now.getMinutes() > 30 ? 30 : 0;
-	return new Date(
-		now.getFullYear(),
-		now.getMonth(),
-		now.getDate(),
-		now.getHours(),
-		minutes,
-		0
-	);
+	const endDate = "2021/12/31 23:59:59";
+
+	if (isEventPeriod({ endDate })) {
+		const now = new Date();
+		const minutes = now.getMinutes() > 30 ? 30 : 0;
+		return new Date(
+			now.getFullYear(),
+			now.getMonth(),
+			now.getDate(),
+			now.getHours(),
+			minutes,
+			0
+		);
+	}
+
+	return new Date(endDate);
 };
 
 const getTopNum = isLastEvent => {
