@@ -77,9 +77,9 @@ const Main = props => {
 		amount !== "" &&
 		VaildAmount({ _amount: amount, displayWarning: false });
 
-	const SelectPayment = ({ groupInfo }) => {
-		if (selGroup.groupId !== groupInfo?.groupId) {
-			setSelGroup(groupInfo);
+	const SelectPayment = groupId => {
+		if (selGroup.groupId !== groupId) {
+			setSelGroup({ groupId });
 		}
 	};
 
@@ -284,7 +284,7 @@ const Main = props => {
 			obj => obj.groupId === userPaymentData?.groupId
 		);
 		lastGroupIdx = lastGroupIdx === -1 ? 0 : lastGroupIdx;
-		SelectPayment({ groupInfo: paymentList[lastGroupIdx] });
+		SelectPayment(paymentList[lastGroupIdx]?.groupId);
 	}, []);
 
 	useEffect(() => {
