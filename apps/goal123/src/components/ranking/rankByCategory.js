@@ -10,7 +10,8 @@ const Ranking = ({ isOpen, i18n = {}, userInfo: { isLogin, userName } }) => {
 		isOpen,
 		isLogin,
 		userName,
-		setLoading
+		setLoading,
+		i18n
 	});
 
 	return (

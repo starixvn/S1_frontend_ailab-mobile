@@ -34,7 +34,8 @@ const Final = ({
 		selected,
 		isLogin,
 		userName,
-		setLoading
+		setLoading,
+		i18n
 	});
 
 	return (

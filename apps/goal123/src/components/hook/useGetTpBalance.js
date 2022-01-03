@@ -54,15 +54,13 @@ export default ({ isLogin, listType }) => {
 				} else {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
-						content: `[${res.data.errorCode}]${res.data.message}`
+						content: `[${res.data.errorCode}] ${res.data.message}`
 					});
 				}
 			},
 			() => {
 				setPopBox({
 					isOpen: true,
-					title: i18n.lbl_ImportantNote,
 					content: i18n.msg_ApiServerError
 				});
 			}
@@ -70,24 +68,31 @@ export default ({ isLogin, listType }) => {
 	}, [listType, setPopBox, i18n]);
 
 	const GetTpWalletBalance = tpId => {
-		api_account_GetTpWalletBalance({ TpId: tpId }).then(res => {
-			if (res.data.errorCode === 0) {
-				const _datas = res.data.data;
-				setTpWalletsList(prev =>
-					updateTpWalletsList({
-						prev,
-						tpId: _datas.tpId,
-						balance: _datas.balance
-					})
-				);
-			} else {
+		api_account_GetTpWalletBalance({ TpId: tpId }).then(
+			res => {
+				if (res.data.errorCode === 0) {
+					const _datas = res.data.data;
+					setTpWalletsList(prev =>
+						updateTpWalletsList({
+							prev,
+							tpId: _datas.tpId,
+							balance: _datas.balance
+						})
+					);
+				} else {
+					setPopBox({
+						isOpen: true,
+						content: `[${res.data.errorCode}] ${res.data.message}`
+					});
+				}
+			},
+			() => {
 				setPopBox({
 					isOpen: true,
-					title: i18n.lbl_ImportantNote,
-					content: `[${res.data.errorCode}]${res.data.message}`
+					content: i18n.msg_ApiServerError
 				});
 			}
-		});
+		);
 	};
 
 	useEffect(() => {

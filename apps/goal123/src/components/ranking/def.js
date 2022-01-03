@@ -1,5 +1,3 @@
-import api from "../../service/api/events";
-
 export const defElemType = {
 	Event: "Event",
 	Ranking: "Ranking",

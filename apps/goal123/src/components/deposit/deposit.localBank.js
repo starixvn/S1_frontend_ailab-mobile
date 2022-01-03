@@ -134,6 +134,11 @@ const Payment = props => {
 					if (res.data.errorCode === 0) {
 						setAccountInfo(res.data.data);
 						setBank(bankInfo);
+					} else {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
 					}
 					setLoading(false);
 				}
@@ -142,7 +147,6 @@ const Payment = props => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
 					setLoading(false);
@@ -288,7 +292,6 @@ const Payment = props => {
 						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
 								content: i18n.msg_ApiServerError
 							});
 							setLoading(false);
@@ -367,7 +370,7 @@ const Payment = props => {
 								setPopBox(prevState => ({
 									...prevState,
 									title: i18n.lbl_ImportantNote,
-									content: res.data.message,
+									content: `[${res.data.errorCode}] ${res.data.message}`,
 									hasBtn: true,
 									btnBar: (
 										<div className="btn-group">

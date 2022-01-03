@@ -151,35 +151,74 @@ export const Wrapper = ({ children }) => {
 	useEffect(() => {
 		if (userInfo.isLogin) {
 			if (!userInfo.regTime) {
-				api_GetCustProfile().then(resCustInfo => {
-					if (
-						resCustInfo.data.errorCode === 0 &&
-						isMountedRef.current
-					) {
-						const { data } = resCustInfo.data;
-						setUserInfo(prevState => ({
-							...prevState,
-							...data
-						}));
+				api_GetCustProfile().then(
+					resCustInfo => {
+						if (
+							resCustInfo.data.errorCode === 0 &&
+							isMountedRef.current
+						) {
+							const { data } = resCustInfo.data;
+							setUserInfo(prevState => ({
+								...prevState,
+								...data
+							}));
+						} else if (resCustInfo.data.errorCode !== 0) {
+							setPopBox({
+								isOpen: true,
+								content: `[${resCustInfo.data.errorCode}] ${resCustInfo.data.message}`
+							});
+						}
+					},
+					() => {
+						setPopBox({
+							isOpen: true,
+							content: i18n.msg_ApiServerError
+						});
 					}
-				});
+				);
 			}
 
-			api_GetMsgCount().then(res => {
-				if (res.data.errorCode === 0 && isMountedRef.current) {
-					setMsgCount(res.data.data);
+			api_GetMsgCount().then(
+				res => {
+					if (res.data.errorCode === 0 && isMountedRef.current) {
+						setMsgCount(res.data.data);
+					} else if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
 				}
-			});
+			);
 
 			if (userInfo.userName) {
-				api_GetBalnace().then(res => {
-					if (res.data.errorCode === 0 && isMountedRef.current) {
-						setWalletInfo(prevState => ({
-							...prevState,
-							main: res.data.data
-						}));
+				api_GetBalnace().then(
+					res => {
+						if (res.data.errorCode === 0 && isMountedRef.current) {
+							setWalletInfo(prevState => ({
+								...prevState,
+								main: res.data.data
+							}));
+						} else if (res.data.errorCode !== 0) {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
+						}
+					},
+					() => {
+						setPopBox({
+							isOpen: true,
+							content: i18n.msg_ApiServerError
+						});
 					}
-				});
+				);
 			}
 		} else if (isMountedRef.current) {
 			setMsgCount(0);

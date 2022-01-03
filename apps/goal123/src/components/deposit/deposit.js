@@ -105,7 +105,8 @@ const Panel = () => {
 	const [pageVerify, setPageVerify] = useState(true);
 	const { promoList } = useGetDepositPromotionList({
 		langId: userInfo.langId,
-		i18n
+		i18n,
+		setPopBox
 	});
 
 	useGetDomainList({
@@ -237,7 +238,15 @@ const Panel = () => {
 						defPayType.localBank,
 						payments[defPayType.localBank]
 					);
-				} catch (error) {}
+					if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				} catch (error) {
+					console.error(error);
+				}
 
 				try {
 					const res = await api_GetMobilePayGroupList();
@@ -248,7 +257,15 @@ const Panel = () => {
 						defPayType.mobilePay,
 						payments[defPayType.mobilePay]
 					);
-				} catch (error) {}
+					if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				} catch (error) {
+					console.error(error);
+				}
 
 				try {
 					const res = await api_GetOnlinePaymentList();
@@ -259,7 +276,15 @@ const Panel = () => {
 						defPayType.onlineBank,
 						payments[defPayType.onlineBank]
 					);
-				} catch (error) {}
+					if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				} catch (error) {
+					console.error(error);
+				}
 
 				try {
 					const res = await api_payment_GetLoadCardPayGroupList();
@@ -270,7 +295,15 @@ const Panel = () => {
 						defPayType.loadCardPay,
 						payments[defPayType.loadCardPay]
 					);
-				} catch (error) {}
+					if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				} catch (error) {
+					console.error(error);
+				}
 
 				try {
 					const res = await api_GetCryptoPayInfoList();
@@ -281,7 +314,15 @@ const Panel = () => {
 						defPayType.cryptoPay,
 						payments[defPayType.cryptoPay]
 					);
-				} catch (error) {}
+					if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				} catch (error) {
+					console.error(error);
+				}
 
 				if (isMountedRef.current) {
 					setLoading(false);
@@ -292,11 +333,24 @@ const Panel = () => {
 
 			GetAllPayment();
 
-			api_GetDepositInfoRecent().then(res => {
-				if (res.data.errorCode === 0 && isMountedRef.current) {
-					setRecentDatas(res.data.data);
+			api_GetDepositInfoRecent().then(
+				res => {
+					if (res.data.errorCode === 0 && isMountedRef.current) {
+						setRecentDatas(res.data.data);
+					} else if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
 				}
-			});
+			);
 		}
 	}, [userInfo.isLogin]);
 
@@ -336,16 +390,28 @@ const Panel = () => {
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 0) {
-								api_GetDepositInfoRecent().then(resRecent => {
-									if (resRecent.data.errorCode === 0) {
-										setRecentDatas(resRecent.data.data);
+								api_GetDepositInfoRecent().then(
+									resRecent => {
+										if (resRecent.data.errorCode === 0) {
+											setRecentDatas(resRecent.data.data);
+										} else {
+											setPopBox({
+												isOpen: true,
+												content: `[${resRecent.data.errorCode}] ${resRecent.data.message}`
+											});
+										}
+									},
+									() => {
+										setPopBox({
+											isOpen: true,
+											content: i18n.msg_ApiServerError
+										});
 									}
-								});
+								);
 							} else {
 								setPopBox({
 									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: res.data.message
+									content: `[${res.data.errorCode}] ${res.data.message}`
 								});
 							}
 						}
@@ -354,7 +420,6 @@ const Panel = () => {
 						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
 								content: i18n.msg_ApiServerError
 							});
 						}
@@ -396,8 +461,7 @@ const Panel = () => {
 					} else {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: res.data.message
+							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
 				}
@@ -406,7 +470,6 @@ const Panel = () => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
 				}

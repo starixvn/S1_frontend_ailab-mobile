@@ -9,7 +9,8 @@ import {
 	i18nContext,
 	userInfoContext,
 	navContext,
-	defNavPanel
+	defNavPanel,
+	popBoxContext
 } from "../components/common/context";
 import {
 	api_SetFavoriteGame,
@@ -58,80 +59,109 @@ class Panel extends React.Component {
 
 		const sort = [];
 
-		api_Site_GetGameListByDevice().then(res => {
-			if (res.data.errorCode === 0) {
-				const _tpList = {};
-				const games = [];
+		api_Site_GetGameListByDevice().then(
+			res => {
+				if (res.data.errorCode === 0) {
+					const _tpList = {};
+					const games = [];
 
-				const { imgUrl, providerList } = res.data.data;
-				providerList?.forEach(t => {
-					_tpList[t.value] = { ...t };
-					if (t.gameList?.data) {
-						t.gameList.data.forEach(g => {
-							games.push({
-								tpId: t.value,
-								...g
-							});
-						});
-					}
-				});
-
-				if (games.length) {
-					for (let i = 0; i < games.length; i++) {
-						const idx = Math.floor(Math.random() * games.length);
-						const tempEle1 = games[i];
-						const tempEle2 = games[idx];
-
-						games[i] = tempEle2;
-						games[idx] = tempEle1;
-					}
-				}
-				if (this.mounted) {
-					const nav = defNav.ALLGAMES.key;
-					const _tplistArr = Object.keys(_tpList);
-					gameList.forEach(el => {
-						if (el.category === "slots") {
-							el.items.forEach(game => {
-								if (
-									_tplistArr.indexOf(game.tpId.toString()) >
-									-1
-								) {
-									if (game.tpId === this.props.tpId) {
-										sort.unshift(game);
-									} else if (game.providerImgName) {
-										sort.push(game);
-									}
-								}
+					const { imgUrl, providerList } = res.data.data;
+					providerList?.forEach(t => {
+						_tpList[t.value] = { ...t };
+						if (t.gameList?.data) {
+							t.gameList.data.forEach(g => {
+								games.push({
+									tpId: t.value,
+									...g
+								});
 							});
 						}
 					});
 
-					this.setState(
-						{
-							sorted: sort,
-							tpList: _tpList,
-							selProvider: this.props.tpId,
-							gameDatas: games,
-							selNav: this.props.selNav ?? nav,
-							imgUrl
-						},
-						() => this.SetMoreItems()
-					);
+					if (games.length) {
+						for (let i = 0; i < games.length; i++) {
+							const idx = Math.floor(
+								Math.random() * games.length
+							);
+							const tempEle1 = games[i];
+							const tempEle2 = games[idx];
+
+							games[i] = tempEle2;
+							games[idx] = tempEle1;
+						}
+					}
+					if (this.mounted) {
+						const nav = defNav.ALLGAMES.key;
+						const _tplistArr = Object.keys(_tpList);
+						gameList.forEach(el => {
+							if (el.category === "slots") {
+								el.items.forEach(game => {
+									if (
+										_tplistArr.indexOf(
+											game.tpId.toString()
+										) > -1
+									) {
+										if (game.tpId === this.props.tpId) {
+											sort.unshift(game);
+										} else if (game.providerImgName) {
+											sort.push(game);
+										}
+									}
+								});
+							}
+						});
+
+						this.setState(
+							{
+								sorted: sort,
+								tpList: _tpList,
+								selProvider: this.props.tpId,
+								gameDatas: games,
+								selNav: this.props.selNav ?? nav,
+								imgUrl
+							},
+							() => this.SetMoreItems()
+						);
+					}
+				} else {
+					this.props.setPopBox({
+						isOpen: true,
+						content: `[${res.data.errorCode}] ${res.data.message}`
+					});
 				}
+			},
+			() => {
+				this.props.setPopBox({
+					isOpen: true,
+					content: this.props.i18n.msg_ApiServerError
+				});
 			}
-		});
+		);
 
 		if (this.props.userInfo.isLogin) {
-			api_GetFavoriteGame().then(res => {
-				if (res.data.errorCode === 0 && res.data.data) {
-					const fav = res.data.data.map(f => {
-						return `${f.providerId}_${f.gameId}`;
-					});
-					if (this.mounted) {
-						this.setState({ favorite: fav });
+			api_GetFavoriteGame().then(
+				res => {
+					if (res.data.errorCode === 0 && res.data.data) {
+						const fav = res.data.data.map(f => {
+							return `${f.providerId}_${f.gameId}`;
+						});
+						if (this.mounted) {
+							this.setState({ favorite: fav });
+						}
+					} else if (res.data.errorCode !== 0) {
+						this.props.setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
 					}
+				},
+				() => {
+					this.props.setPopBox({
+						isOpen: true,
+						content: this.props.i18n.msg_ApiServerError
+					});
 				}
-			});
+			);
 		}
 	}
 
@@ -483,6 +513,7 @@ const IndexPage = props => {
 	const { i18n } = useContext(i18nContext);
 	const { setNav } = useContext(navContext);
 	const { userInfo } = useContext(userInfoContext);
+	const { setPopBox } = useContext(popBoxContext);
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 
 	const selNav = props.location?.state?.nav;
@@ -500,6 +531,7 @@ const IndexPage = props => {
 				throttle={throttle}
 				selNav={selNav}
 				selNavIdx={selNavIdx === -1 ? 0 : selNavIdx}
+				setPopBox={setPopBox}
 			/>
 		</Layout>
 	);

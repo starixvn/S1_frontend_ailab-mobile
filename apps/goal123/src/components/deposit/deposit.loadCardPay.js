@@ -77,6 +77,11 @@ const Payment = props => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
 						setSelChannel(res.data.data?.[0]);
+					} else {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
 					}
 					setLoading(false);
 				}
@@ -85,7 +90,6 @@ const Payment = props => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
 					setLoading(false);
@@ -179,46 +183,54 @@ const Payment = props => {
 					api_cashier_DepositReqLoadCardPay({
 						langId: userInfo.langId,
 						...param
-					}).then(res => {
-						const { errorCode, data, message } = res.data;
-						if (errorCode === 0) {
+					}).then(
+						res => {
+							const { errorCode, data, message } = res.data;
+							if (errorCode === 0) {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content: <p>{data.formData.Message}</p>,
+									hasBtn: true,
+									btnBar: (
+										<div className="btn-group">
+											<button
+												className="lightBlue"
+												onClick={refreshPage}>
+												OK
+											</button>
+										</div>
+									),
+									handlePopBox: () => {
+										setPopBox(prevState => ({
+											...prevState,
+											isOpen: false
+										}));
+										refreshPage();
+									}
+								});
+							} else {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content: `[${errorCode}] ${message}`,
+									handlePopBox: () => {
+										setPopBox(prevState => ({
+											...prevState,
+											isOpen: false
+										}));
+										refreshPage();
+									}
+								});
+							}
+						},
+						() => {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: <p>{data.formData.Message}</p>,
-								hasBtn: true,
-								btnBar: (
-									<div className="btn-group">
-										<button
-											className="lightBlue"
-											onClick={refreshPage}>
-											OK
-										</button>
-									</div>
-								),
-								handlePopBox: () => {
-									setPopBox(prevState => ({
-										...prevState,
-										isOpen: false
-									}));
-									refreshPage();
-								}
-							});
-						} else {
-							setPopBox({
-								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: `[${errorCode}]${message}`,
-								handlePopBox: () => {
-									setPopBox(prevState => ({
-										...prevState,
-										isOpen: false
-									}));
-									refreshPage();
-								}
+								content: i18n.msg_ApiServerError
 							});
 						}
-					});
+					);
 				} else {
 					const mainUrl = `${config.openURL}/${userInfo.langId}/Cashier/DepositReqLoadCardPay`;
 					const windowOpenUrl = getWindowOpenUrl({ mainUrl, param });

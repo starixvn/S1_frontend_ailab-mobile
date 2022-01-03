@@ -40,7 +40,8 @@ const Records = ({
 		isLogin,
 		userName,
 		setLoading,
-		isLastEvent
+		isLastEvent,
+		i18n
 	});
 
 	return (
