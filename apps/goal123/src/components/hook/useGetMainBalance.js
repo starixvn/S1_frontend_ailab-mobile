@@ -16,24 +16,31 @@ export default ({ isLogin }) => {
 	});
 
 	const GetBalance = useCallback(() => {
-		api_GetBalnace().then(res => {
-			if (isMountedRef.current) {
-				if (res.data.errorCode === 0) {
-					const mainWalletData = {
-						id: 0,
-						displayKey: "lbl_MainWallet",
-						balance: res.data.data
-					};
-					setMainWalletInfo(mainWalletData);
-				} else {
-					setPopBox({
-						isOpen: true,
-						title: i18n.lbl_ImportantNote,
-						content: `[${res.data.errorCode}]${res.data.message}`
-					});
+		api_GetBalnace().then(
+			res => {
+				if (isMountedRef.current) {
+					if (res.data.errorCode === 0) {
+						const mainWalletData = {
+							id: 0,
+							displayKey: "lbl_MainWallet",
+							balance: res.data.data
+						};
+						setMainWalletInfo(mainWalletData);
+					} else {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
 				}
+			},
+			() => {
+				setPopBox({
+					isOpen: true,
+					content: i18n.msg_ApiServerError
+				});
 			}
-		});
+		);
 	}, [setPopBox, i18n]);
 
 	useEffect(() => {

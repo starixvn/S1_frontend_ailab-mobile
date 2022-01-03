@@ -78,8 +78,7 @@ const IndexPage = () => {
 						if (errorCode !== 0) {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: `[${response.data.errorCode}]${response.data.message}`
+								content: `[${response.data.errorCode}] ${response.data.message}`
 							});
 						} else {
 							setGetHistoryState(response.data.data);
@@ -98,11 +97,10 @@ const IndexPage = () => {
 						setLoading(false);
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 

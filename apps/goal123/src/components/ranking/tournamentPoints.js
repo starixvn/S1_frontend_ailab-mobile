@@ -26,7 +26,8 @@ const TournamentPoints = ({ isOpen, userInfo, i18n = {} }) => {
 		isLogin,
 		userName,
 		setLoading,
-		selected
+		selected,
+		i18n
 	});
 	const defPrize = Prize({
 		currencyId,

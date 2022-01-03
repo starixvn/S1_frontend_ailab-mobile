@@ -81,7 +81,10 @@ class Modal extends Component {
 						if (result.errorCode === 0) {
 							alert(this.props.i18n.lbl_UploadSuccess);
 						} else {
-							alert(result.message);
+							this.props.setPopBox({
+								isOpen: true,
+								content: `[${result.errorCode}] ${result.message}`
+							});
 						}
 					}
 				},
@@ -89,8 +92,7 @@ class Modal extends Component {
 					if (this.isMountedRef) {
 						this.props.setPopBox({
 							isOpen: true,
-							title: this.props.i18n.lbl_ImportantNote,
-							content: "API Server Error."
+							content: this.props.i18n.msg_ApiServerError
 						});
 					}
 				}
@@ -118,7 +120,10 @@ class Modal extends Component {
 						if (res.data.errorCode === 0) {
 							this.props.handlePopBox();
 						} else {
-							alert(res.message);
+							this.props.setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
 						}
 
 						this.setState({ processing: false });
@@ -128,8 +133,7 @@ class Modal extends Component {
 					if (this.isMountedRef) {
 						this.props.setPopBox({
 							isOpen: true,
-							title: this.props.i18n.lbl_ImportantNote,
-							content: "API Server Error."
+							content: this.props.i18n.msg_ApiServerError
 						});
 
 						this.setState({ processing: false });

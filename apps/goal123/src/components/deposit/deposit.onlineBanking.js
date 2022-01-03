@@ -92,11 +92,10 @@ const Payment = props => {
 								setBankList(res.data.data);
 								SelectBank(res.data.data[0], groupInfo);
 							}
-						} else if (isMountedRef.current) {
+						} else {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: res.data.message
+								content: `[${res.data.errorCode}] ${res.data.message}`
 							});
 						}
 
@@ -108,7 +107,6 @@ const Payment = props => {
 						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
 								content: i18n.msg_ApiServerError
 							});
 							setLoading(false);
@@ -131,8 +129,7 @@ const Payment = props => {
 					} else {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: res.data.message
+							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
 				}
@@ -141,7 +138,6 @@ const Payment = props => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
 				}

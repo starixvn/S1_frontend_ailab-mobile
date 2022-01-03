@@ -128,14 +128,27 @@ const Join = ({ hideBtn }) => {
 		const showBylink = window.location.pathname === `/${path.join.root}`;
 		const openPanel = showBylink || nav === defNavPanel.join;
 		if (refId && openPanel) {
-			api_GetBanner("Promotion", refId, userInfo.langId).then(res => {
-				if (res.data.errorCode === 0 && isMountedRef.current) {
-					if (res.data.data.length > 0) {
-						setBanner(res.data.data);
-						setPromoPopup(true);
+			api_GetBanner("Promotion", refId, userInfo.langId).then(
+				res => {
+					if (res.data.errorCode === 0 && isMountedRef.current) {
+						if (res.data.data.length > 0) {
+							setBanner(res.data.data);
+							setPromoPopup(true);
+						}
+					} else if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
 					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
 				}
-			});
+			);
 		}
 	}, [nav, userInfo.langId]);
 
@@ -161,6 +174,10 @@ const Join = ({ hideBtn }) => {
 							setSiteCurrencyState(() => [currencyData]);
 						} else {
 							GetSiteCurrencyList();
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
 						}
 					}
 				},
@@ -168,7 +185,6 @@ const Join = ({ hideBtn }) => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 					}
@@ -205,8 +221,7 @@ const Join = ({ hideBtn }) => {
 					} else {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: res.data.message
+							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
 				}
@@ -215,7 +230,6 @@ const Join = ({ hideBtn }) => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
 				}
@@ -317,8 +331,7 @@ const Join = ({ hideBtn }) => {
 							} else {
 								setPopBox({
 									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: res.data.message
+									content: `[${res.errorCode}] ${res.message}`
 								});
 							}
 						}
@@ -327,7 +340,6 @@ const Join = ({ hideBtn }) => {
 						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
 								content: i18n.msg_ApiServerError
 							});
 						}
@@ -568,8 +580,7 @@ const Join = ({ hideBtn }) => {
 			api_site_Signup(regData, userInfo.langId).then(
 				response => {
 					if (isMountedRef.current) {
-						const { errorCode } = response.data;
-						const { message } = response.data;
+						const { errorCode, message } = response.data;
 						if (errorCode === 0) {
 							api_GetCustProfile().then(
 								res => {
@@ -584,6 +595,11 @@ const Join = ({ hideBtn }) => {
 												..._user,
 												...res.data.data
 											};
+										} else {
+											setPopBox({
+												isOpen: true,
+												content: `[${res.data.errorCode}] ${res.data.message}`
+											});
 										}
 										setUserInfo(_user);
 									}
@@ -592,7 +608,6 @@ const Join = ({ hideBtn }) => {
 									if (isMountedRef.current) {
 										setPopBox({
 											isOpen: true,
-											title: i18n.lbl_ImportantNote,
 											content: i18n.msg_ApiServerError
 										});
 									}
@@ -618,6 +633,11 @@ const Join = ({ hideBtn }) => {
 								...prevState,
 								SpecialBonusCode: { status: true, msg: message }
 							}));
+						} else {
+							setPopBox({
+								isOpen: true,
+								content: `[${errorCode}] ${message}`
+							});
 						}
 					}
 				},
@@ -625,7 +645,6 @@ const Join = ({ hideBtn }) => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 					}

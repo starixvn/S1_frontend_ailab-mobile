@@ -80,18 +80,16 @@ const Panel = () => {
 					} else {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: res.data.message
+							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
 					setLoading(false);
 				}
 			},
-			err => {
+			() => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
 					setLoading(false);
@@ -122,18 +120,16 @@ const Panel = () => {
 						} else {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: res.data.message
+								content: `[${res.data.errorCode}] ${res.data.message}`
 							});
 						}
 						setProcessing(false);
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 						setProcessing(false);
@@ -181,21 +177,15 @@ const Panel = () => {
 												} else {
 													setPopBox({
 														isOpen: true,
-														title:
-															i18n.lbl_ImportantNote,
-														content:
-															response.data
-																.message
+														content: `[${response.data.errorCode}] ${response.data.message}`
 													});
 												}
 											}
 										},
-										err => {
+										() => {
 											if (isMountedRef.current) {
 												setPopBox({
 													isOpen: true,
-													title:
-														i18n.lbl_ImportantNote,
 													content:
 														i18n.msg_ApiServerError
 												});
@@ -206,19 +196,17 @@ const Panel = () => {
 							} else {
 								setPopBox({
 									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: res.data.message
+									content: `[${res.data.errorCode}] ${res.data.message}`
 								});
 							}
 							setProcessing(false);
 							setOpenContentState(id);
 						}
 					},
-					err => {
+					() => {
 						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
 								content: i18n.msg_ApiServerError
 							});
 							setProcessing(false);
@@ -265,17 +253,15 @@ const Panel = () => {
 						} else {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: res.data.message
+								content: `[${res.data.errorCode}] ${res.data.message}`
 							});
 						}
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 					}

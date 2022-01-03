@@ -1,7 +1,12 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
-import { defNavPanel, navContext, i18nContext } from "../common/context";
+import {
+	defNavPanel,
+	navContext,
+	i18nContext,
+	popBoxContext
+} from "../common/context";
 import { Autoplay, useGetBanner } from "../common/swipperBanner";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { defBannerType } from "../../service/api/site";
@@ -21,10 +26,13 @@ const swipperParam = {
 const EventSwipper = ({ userInfo }) => {
 	const { i18n } = useContext(i18nContext);
 	const { setNav } = useContext(navContext);
+	const { setPopBox } = useContext(popBoxContext);
 	const { banner } = useGetBanner({
 		langId: userInfo.langId,
 		ImgFolder: [defBannerType.HotEvent],
-		params: { swipperParam }
+		params: { swipperParam },
+		setPopBox,
+		i18n
 	});
 
 	const goToBet = ({ tpId, gameId, matchId }) => {

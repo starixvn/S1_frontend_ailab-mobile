@@ -59,14 +59,27 @@ const Join = () => {
 		const showBylink = window.location.pathname === `/${path.join.root}`;
 		const openPanel = showBylink || nav === defNavPanel.join;
 		if (refId && openPanel) {
-			api_GetBanner("Promotion", refId, userInfo.langId).then(res => {
-				if (res.data.errorCode === 0 && isMountedRef.current) {
-					if (res.data.data.length > 0) {
-						setBanner(res.data.data);
-						setPromoPopup(true);
+			api_GetBanner("Promotion", refId, userInfo.langId).then(
+				res => {
+					if (res.data.errorCode === 0 && isMountedRef.current) {
+						if (res.data.data.length > 0) {
+							setBanner(res.data.data);
+							setPromoPopup(true);
+						}
+					} else if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
 					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
 				}
-			});
+			);
 		}
 	}, [nav, userInfo.langId]);
 
@@ -86,6 +99,10 @@ const Join = () => {
 							};
 							setSiteCurrencyList(() => [currencyData]);
 						} else {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
 							GetSiteCurrencyList();
 						}
 					}
@@ -94,7 +111,6 @@ const Join = () => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 					}
@@ -122,6 +138,11 @@ const Join = () => {
 				return { id, displayKey: `Currency_${id}` };
 			});
 			setSiteCurrencyList(() => currencyArr);
+		} else {
+			setPopBox({
+				isOpen: true,
+				content: `[${res.data.errorCode}] ${res.data.message}`
+			});
 		}
 	};
 
@@ -163,6 +184,11 @@ const Join = () => {
 			if (res.data.errorCode === 0 && res.data.data === true) {
 				checked = false;
 				msg = res.data.message;
+			} else if (res.data.errorCode !== 0) {
+				setPopBox({
+					isOpen: true,
+					content: `[${res.data.errorCode}] ${res.data.message}`
+				});
 			}
 		}
 
@@ -233,6 +259,11 @@ const Join = () => {
 				if (res.data.errorCode === 0) {
 					regData.AffId =
 						getUrlParameter("AffId") || getCookie("AffId");
+				} else {
+					setPopBox({
+						isOpen: true,
+						content: `[${res.data.errorCode}] ${res.data.message}`
+					});
 				}
 			}
 
@@ -279,23 +310,9 @@ const Join = () => {
 							);
 							setNav(null);
 						} else {
-							const closePopBox = () => {
-								setPopBox({ isOpen: false });
-							};
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: `[${errorCode}] ${message}`,
-								hasBtn: true,
-								btnBar: (
-									<div className="btn-group">
-										<button
-											className="lightBlue"
-											onClick={closePopBox}>
-											{i18n.lbl_Close}
-										</button>
-									</div>
-								)
+								content: `[${errorCode}] ${message}`
 							});
 						}
 					}
@@ -304,7 +321,6 @@ const Join = () => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 					}
