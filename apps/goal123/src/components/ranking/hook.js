@@ -40,7 +40,8 @@ export const useGetRanking = ({
 	isLogin,
 	userName,
 	setLoading,
-	isLastEvent = false
+	isLastEvent = false,
+	i18n
 }) => {
 	const [datas, setDatas] = useState([]);
 	const [lastUpdTime, setLastUpdTime] = useState(SetUpdTime());
@@ -105,14 +106,28 @@ export const useGetRanking = ({
 
 									return result;
 								});
+							} else {
+								setPopBox({
+									isOpen: true,
+									content: `[${custRankRes.data.errorCode}] ${custRankRes.data.message}`
+								});
 							}
 						} else {
 							setDatas([]);
 						}
+					} else {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
 					}
 					setLoading(false);
 					setLastUpdTime(SetUpdTime());
 				} catch (error) {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
 					setLoading(false);
 				}
 			};

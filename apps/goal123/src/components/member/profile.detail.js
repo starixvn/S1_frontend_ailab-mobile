@@ -96,10 +96,17 @@ const Panel = () => {
 				if (res.data.errorCode === 0 && res.data.data === true) {
 					checked = false;
 					msg = i18n.msg_PhoneExisted;
+				} else if (res.data.errorCode !== 0) {
+					setPopBox({
+						isOpen: true,
+						content: `[${res.data.errorCode}] ${res.data.message}`
+					});
 				}
 			} catch (error) {
-				checked = false;
-				msg = i18n.msg_ApiServerError;
+				setPopBox({
+					isOpen: true,
+					content: i18n.msg_ApiServerError
+				});
 			}
 		}
 
@@ -140,10 +147,17 @@ const Panel = () => {
 				if (res.data.errorCode === 0 && res.data.data === true) {
 					checked = false;
 					msg = i18n.msg_MailExisted;
+				} else if (res.data.errorCode !== 0) {
+					setPopBox({
+						isOpen: true,
+						content: `[${res.data.errorCode}] ${res.data.message}`
+					});
 				}
 			} catch (error) {
-				checked = false;
-				msg = i18n.msg_ApiServerError;
+				setPopBox({
+					isOpen: true,
+					content: i18n.msg_ApiServerError
+				});
 			}
 		}
 
@@ -312,9 +326,7 @@ const Panel = () => {
 											} else {
 												setPopBox({
 													isOpen: true,
-													title:
-														i18n.lbl_ImportantNote,
-													content: message
+													content: `[${res.data.errorCode}] ${res.data.message}`
 												});
 											}
 										}
@@ -323,7 +335,6 @@ const Panel = () => {
 										if (isMountedRef.current) {
 											setPopBox({
 												isOpen: true,
-												title: i18n.lbl_ImportantNote,
 												content: i18n.msg_ApiServerError
 											});
 										}
@@ -339,8 +350,7 @@ const Panel = () => {
 							} else {
 								setPopBox({
 									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: message
+									content: `[${errorCode}] ${message}`
 								});
 							}
 						}
@@ -349,7 +359,6 @@ const Panel = () => {
 						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
 								content: i18n.msg_ApiServerError
 							});
 						}

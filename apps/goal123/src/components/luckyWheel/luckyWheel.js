@@ -122,7 +122,7 @@ const LuckyWheel = () => {
 					} else {
 						setPopBox({
 							isOpen: true,
-							content: `[${errorCode}]${message}`
+							content: `[${errorCode}] ${message}`
 						});
 						setCanDrawPrize({
 							status: false,
@@ -137,7 +137,6 @@ const LuckyWheel = () => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 						setLoading(false);

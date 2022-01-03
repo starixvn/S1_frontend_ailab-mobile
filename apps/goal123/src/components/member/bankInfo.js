@@ -78,7 +78,7 @@ const BankInfo = () => {
 						setPopBox({
 							isOpen: true,
 							title: i18n.lbl_ImportantNote,
-							content: message
+							content: `[${errorCode}] ${message}`
 						});
 					}
 					setLoading(false);
@@ -88,7 +88,6 @@ const BankInfo = () => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
 					setLoading(false);
@@ -164,7 +163,7 @@ const BankInfo = () => {
 						setPopBox({
 							isOpen: true,
 							title: i18n.lbl_ImportantNote,
-							content: message
+							content: `[${errorCode}] ${message}`
 						});
 					}
 					setLoading(false);
@@ -202,7 +201,7 @@ const BankInfo = () => {
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
-								content: res.data.message
+								content: `[${res.data.errorCode}] ${res.data.message}`
 							});
 						}
 						setLoading(false);
@@ -293,7 +292,7 @@ const BankInfo = () => {
 							setPopBox({
 								isOpen: true,
 								title: i18n.lbl_ImportantNote,
-								content: message
+								content: `[${errorCode}] ${message}`
 							});
 						} else {
 							if (!userInfo.accountName) {

@@ -14,30 +14,43 @@ export const useGetDomainList = ({ userInfo, setPopBox, i18n }) => {
 			readCookie(cookieName) !== "1" &&
 			window.location.pathname === `/${path.deposit.root}`
 		) {
-			GetSupportDomainList().then(res => {
-				const { errorCode, data } = res.data;
-				if (errorCode === 0) {
-					if (data.length > 0) {
-						const closePop = () => {
-							setPopBox({ isOpen: false });
-							setCookie(
-								`${userInfo.userName}-DomainListHint`,
-								"1",
-								1
-							);
-						};
+			GetSupportDomainList().then(
+				res => {
+					const { errorCode, data } = res.data;
+					if (errorCode === 0) {
+						if (data.length > 0) {
+							const closePop = () => {
+								setPopBox({ isOpen: false });
+								setCookie(
+									`${userInfo.userName}-DomainListHint`,
+									"1",
+									1
+								);
+							};
+							setPopBox({
+								isOpen: true,
+								title: i18n.lbl_Backup_website,
+								popBoxType: defPopBoxType.DomainList,
+								className: "backupDomain ",
+								domainList: data,
+								handlePopBox: closePop
+							});
+							setIsDomainPopOpened(true);
+						}
+					} else {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_Backup_website,
-							popBoxType: defPopBoxType.DomainList,
-							className: "backupDomain ",
-							domainList: data,
-							handlePopBox: closePop
+							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
-						setIsDomainPopOpened(true);
 					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
 				}
-			});
+			);
 		} else if (
 			window.location.pathname !== `/${path.deposit.root}` &&
 			readCookie(cookieName) !== "1"

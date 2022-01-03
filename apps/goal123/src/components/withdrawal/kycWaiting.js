@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { Redirect } from "@reach/router";
-import { i18nContext, userInfoContext } from "../common/context";
+import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import { api_KycCheck } from "../../service/api/payment";
 import { api_GetCustBankInfo } from "../../service/api/account";
 import path from "../../path";
@@ -10,6 +10,7 @@ import Layout from "../common/layout";
 export default () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
+	const { setPopBox } = useContext(popBoxContext);
 	const [redirectPath, setRedirectPath] = useState(null);
 	const isMountedRef = useRef(null);
 	const [loading, setLoading] = useState(true);
@@ -36,21 +37,34 @@ export default () => {
 	useEffect(() => {
 		if (userInfo.isLogin) {
 			const CheckBankInfo = async () => {
-				const result = await api_GetCustBankInfo().then(res => {
-					let hasBankInfo = false;
-					if (res.data.errorCode === 0) {
-						if (
-							res.data.data?.bankInfoDetail?.length ||
-							res.data.data?.uSDTDetail?.length
-						) {
-							hasBankInfo = true;
-						} else if (isMountedRef.current) {
-							setRedirectPath(`/${path.withdrawal.root}`);
+				const result = await api_GetCustBankInfo().then(
+					res => {
+						let hasBankInfo = false;
+						if (res.data.errorCode === 0) {
+							if (
+								res.data.data?.bankInfoDetail?.length ||
+								res.data.data?.uSDTDetail?.length
+							) {
+								hasBankInfo = true;
+							} else if (isMountedRef.current) {
+								setRedirectPath(`/${path.withdrawal.root}`);
+							}
+						} else {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
 						}
-					}
 
-					return hasBankInfo;
-				});
+						return hasBankInfo;
+					},
+					() => {
+						setPopBox({
+							isOpen: true,
+							content: i18n.msg_ApiServerError
+						});
+					}
+				);
 
 				return result;
 			};
@@ -70,6 +84,10 @@ export default () => {
 						},
 						() => {
 							if (isMountedRef.current) {
+								setPopBox({
+									isOpen: true,
+									content: i18n.msg_ApiServerError
+								});
 								setLoading(false);
 							}
 						}
