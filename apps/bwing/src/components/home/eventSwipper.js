@@ -2,15 +2,24 @@ import React, { memo, useContext } from "react";
 import moment from "moment";
 import { AutoPlay, ClickLink, useGetBanner } from "../common/swipperBanner";
 import { defBannerType } from "../../service/api/site";
-import { userInfoContext, navContext } from "../common/context";
+import {
+	userInfoContext,
+	navContext,
+	popBoxContext,
+	i18nContext
+} from "../common/context";
 import tokyo from "../../styles/img/olympics/logo2.png";
 
 const EventSwipper = memo(() => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
+	const { setPopBox } = useContext(popBoxContext);
+	const { i18n } = useContext(i18nContext);
 	const { banner } = useGetBanner({
 		langId: userInfo.langId,
-		ImgFolder: [defBannerType.HotEvent]
+		ImgFolder: [defBannerType.HotEvent],
+		setPopBox,
+		i18n
 	});
 
 	const rows = banner?.map((b, bIdx) => {

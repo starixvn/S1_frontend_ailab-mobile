@@ -3,7 +3,13 @@ import React, { useEffect, useState, useContext, useRef } from "react";
 import PropTypes from "prop-types";
 import Swiper from "react-id-swiper";
 import { Link } from "@reach/router";
-import { userInfoContext, navContext, defNavPanel } from "./context";
+import {
+	userInfoContext,
+	navContext,
+	defNavPanel,
+	popBoxContext,
+	i18nContext
+} from "./context";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import path from "../../path";
 import {
@@ -49,7 +55,7 @@ export const ClickLink = ({
 
 const NeedLoginRoute = [];
 
-export const useGetBanner = ({ langId, ImgFolder }) => {
+export const useGetBanner = ({ langId, ImgFolder, setPopBox, i18n }) => {
 	const [banner, setBanner] = useState([]);
 
 	useEffect(() => {
@@ -64,13 +70,24 @@ export const useGetBanner = ({ langId, ImgFolder }) => {
 						BannerType
 					});
 
-					if (res.data.errorCode === 0 && mounted) {
-						setBanner(prev => [...prev, ...res.data.data]);
+					if (mounted) {
+						if (res.data.errorCode === 0) {
+							setBanner(prev => [...prev, ...res.data.data]);
+						} else {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
+						}
 					}
 				});
 
 				return true;
 			} catch (error) {
+				setPopBox({
+					isOpen: true,
+					content: i18n.msg_ApiServerError
+				});
 				return false;
 			}
 		};
@@ -89,7 +106,14 @@ export const useGetBanner = ({ langId, ImgFolder }) => {
 const Panel = ({ ImgFolder = [], params, swiperClass }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
-	const { banner } = useGetBanner({ langId: userInfo.langId, ImgFolder });
+	const { setPopBox } = useContext(popBoxContext);
+	const { i18n } = useContext(i18nContext);
+	const { banner } = useGetBanner({
+		langId: userInfo.langId,
+		ImgFolder,
+		setPopBox,
+		i18n
+	});
 
 	const { handleGoToGame } = useGotoGame({
 		isLogin: userInfo.isLogin,

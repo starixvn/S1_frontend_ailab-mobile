@@ -203,15 +203,13 @@ export const setCustPromo = ({
 				} else {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
-						content: `[${errorCode}]${message}`
+						content: `[${errorCode}] ${message}`
 					});
 				}
 			},
 			() => {
 				setPopBox({
 					isOpen: true,
-					title: i18n.lbl_ImportantNote,
 					content: i18n.msg_ApiServerError
 				});
 			}
@@ -231,22 +229,37 @@ export const useGetDepositPromotionList = ({ langId, i18n }) => {
 	});
 
 	useEffect(() => {
-		api_GetDepositPromotionList({ langId }).then(res => {
-			const { errorCode, data } = res.data;
-			if (isMountedRef.current && errorCode === 0) {
-				const _promoList = data?.map((promo, i) => ({
-					id: i,
-					displayText: promo.title,
-					bonusCode: promo.bonusCode
-				}));
-				const none = {
-					id: data.length,
-					displayText: i18n.lbl_None,
-					bonusCode: null
-				};
-				setPromoList([..._promoList, none]);
+		api_GetDepositPromotionList({ langId }).then(
+			res => {
+				const { errorCode, data, message } = res.data;
+				if (isMountedRef.current) {
+					if (errorCode === 0) {
+						const _promoList = data?.map((promo, i) => ({
+							id: i,
+							displayText: promo.title,
+							bonusCode: promo.bonusCode
+						}));
+						const none = {
+							id: data.length,
+							displayText: i18n.lbl_None,
+							bonusCode: null
+						};
+						setPromoList([..._promoList, none]);
+					} else {
+						setPopBox({
+							isOpen: true,
+							content: `[${errorCode}] ${message}`
+						});
+					}
+				}
+			},
+			() => {
+				setPopBox({
+					isOpen: true,
+					content: i18n.msg_ApiServerError
+				});
 			}
-		});
+		);
 	}, [langId, i18n]);
 
 	return { promoList };

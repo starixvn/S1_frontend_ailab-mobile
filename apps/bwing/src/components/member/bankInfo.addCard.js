@@ -119,8 +119,7 @@ export default ({
 						if (res.data.errorCode !== 0) {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: res.data.message
+								content: `[${res.data.errorCode}] ${res.data.message}`
 							});
 						} else {
 							setUserValue({});
@@ -133,7 +132,6 @@ export default ({
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerErrors
 						});
 					}

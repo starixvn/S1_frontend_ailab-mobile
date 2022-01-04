@@ -50,15 +50,21 @@ const Category = props => {
 		if (userInfo.isLogin) {
 			api_GetTpIds().then(
 				res => {
-					if (res.data.errorCode === 0 && mounted) {
-						setShowingTpIds(res.data.data);
+					if (mounted) {
+						if (res.data.errorCode === 0) {
+							setShowingTpIds(res.data.data);
+						} else {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
+						}
 					}
 				},
-				err => {
+				() => {
 					if (mounted) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 					}

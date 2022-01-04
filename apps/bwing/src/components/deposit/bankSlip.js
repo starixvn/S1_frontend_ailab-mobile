@@ -82,7 +82,10 @@ class Content extends Component {
 						if (result.errorCode === 0) {
 							alert(this.props.i18n.lbl_UploadSuccess);
 						} else {
-							alert(result.message);
+							this.props.setPopBox({
+								isOpen: true,
+								content: `[${result.errorCode}] ${result.message}`
+							});
 						}
 					}
 				},
@@ -90,8 +93,7 @@ class Content extends Component {
 					if (this.isMountedRef) {
 						this.props.setPopBox({
 							isOpen: true,
-							title: this.props.i18n.lbl_ImportantNote,
-							content: "API Server Error."
+							content: this.props.i18n.msg_ApiServerError
 						});
 					}
 				}

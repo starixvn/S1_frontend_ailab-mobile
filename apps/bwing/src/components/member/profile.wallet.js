@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { i18nContext, userInfoContext } from "../common/context";
+import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import { number_format } from "../common/common";
 import { api_account_GetCustBonusWallet } from "../../service/api/account";
 import ReloadSpin from "../common/reloadSpin";
@@ -12,6 +12,7 @@ import useGetTpBalance from "../hook/useGetTpBalance";
 export default () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
+	const { setPopBox } = useContext(popBoxContext);
 	const [bonusWallet, setBonusWallet] = useState({});
 
 	const { mainWalletInfo, GetBalance } = useGetBalance();
@@ -30,28 +31,43 @@ export default () => {
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
-			api_account_GetCustBonusWallet().then(res => {
-				if (res.data.errorCode === 0 && isMountedRef.current) {
-					const result = {};
-					res.data.data.forEach(b => {
-						if (result.tpId) {
-							result[b.tpId].push({
-								...b
+			api_account_GetCustBonusWallet().then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							const result = {};
+							res.data.data.forEach(b => {
+								if (result.tpId) {
+									result[b.tpId].push({
+										...b
+									});
+								} else {
+									result[b.tpId] = [{ ...b }];
+								}
 							});
+							setBonusWallet(result);
 						} else {
-							result[b.tpId] = [{ ...b }];
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
 						}
+					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
 					});
-					setBonusWallet(result);
 				}
-			});
+			);
 		}
 	}, [userInfo.isLogin]);
 
 	const _tpWalletArrs = tpWalletsList.map(t => {
 		return (
 			<Wallet
-				key={`profile-tpWallet-${t.tpId}`}
+				key={`profile-tpWallet-${t.id}`}
 				i18n={i18n}
 				currencyId={userInfo.currencyId}
 				balance={t.balance}

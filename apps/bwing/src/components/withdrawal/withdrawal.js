@@ -136,15 +136,13 @@ const Panel = () => {
 					} else {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
 				})
-				.catch(err =>
+				.catch(() =>
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					})
 				);
@@ -154,16 +152,24 @@ const Panel = () => {
 					if (!kycProcess) {
 						api_GetWithdrawalAvailableBalance().then(
 							res => {
-								if (
-									res.data.errorCode === 0 &&
-									isMountedRef.current
-								) {
-									setBalanceInfo(res.data.data);
-									setLoading(false);
+								if (isMountedRef.current) {
+									if (res.data.errorCode === 0) {
+										setBalanceInfo(res.data.data);
+										setLoading(false);
+									} else {
+										setPopBox({
+											isOpen: true,
+											content: `[${res.data.errorCode}] ${res.data.message}`
+										});
+									}
 								}
 							},
 							() => {
 								if (isMountedRef.current) {
+									setPopBox({
+										isOpen: true,
+										content: i18n.msg_ApiServerError
+									});
 									setLoading(false);
 								}
 							}
@@ -171,26 +177,28 @@ const Panel = () => {
 
 						api_GetWithdrawalInfoRecent()
 							.then(res => {
-								if (
-									res.data.errorCode === 0 &&
-									isMountedRef.current
-								) {
-									setRecentDatas(res.data.data);
+								if (isMountedRef.current) {
+									if (res.data.errorCode === 0) {
+										setRecentDatas(res.data.data);
+									} else {
+										setPopBox({
+											isOpen: true,
+											content: `[${res.data.errorCode}] ${res.data.message}`
+										});
+									}
 								}
 							})
-							.catch(err =>
+							.catch(() =>
 								setPopBox({
 									isOpen: true,
-									title: i18n.lbl_ImportantNote,
 									content: i18n.msg_ApiServerError
 								})
 							);
 					}
 				})
-				.catch(err =>
+				.catch(() =>
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					})
 				);
@@ -225,20 +233,50 @@ const Panel = () => {
 	};
 
 	const getWithdrawalLimit = () => {
-		api_payment_GetWithdrawalLimit().then(res => {
-			if (res.data.errorCode === 0 && isMountedRef.current) {
-				setWithdrawalLimit(res.data.data);
+		api_payment_GetWithdrawalLimit().then(
+			res => {
+				if (isMountedRef.current) {
+					if (res.data.errorCode === 0) {
+						setWithdrawalLimit(res.data.data);
+					} else {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				}
+			},
+			() => {
+				setPopBox({
+					isOpen: true,
+					content: i18n.msg_ApiServerError
+				});
 			}
-		});
+		);
 	};
 
 	const GetBalance = () => {
 		if (pageVerify) {
-			api_GetWithdrawalAvailableBalance().then(res => {
-				if (res.data.errorCode === 0 && isMountedRef.current) {
-					setBalanceInfo(res.data.data);
+			api_GetWithdrawalAvailableBalance().then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							setBalanceInfo(res.data.data);
+						} else {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
+						}
+					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
 				}
-			});
+			);
 		}
 	};
 
@@ -348,28 +386,56 @@ const Panel = () => {
 											setSelBank(null);
 											api_GetWithdrawalAvailableBalance().then(
 												resBalance => {
-													if (
-														resBalance.data
-															.errorCode === 0 &&
-														isMountedRef.current
-													) {
-														setBalanceInfo(
-															resBalance.data.data
-														);
+													if (isMountedRef.current) {
+														if (
+															resBalance.data
+																.errorCode === 0
+														) {
+															setBalanceInfo(
+																resBalance.data
+																	.data
+															);
+														} else {
+															setPopBox({
+																isOpen: true,
+																content: `[${resBalance.data.errorCode}] ${resBalance.data.message}`
+															});
+														}
 													}
+												},
+												() => {
+													setPopBox({
+														isOpen: true,
+														content:
+															i18n.msg_ApiServerError
+													});
 												}
 											);
 											api_GetWithdrawalInfoRecent().then(
 												resRecent => {
-													if (
-														resRecent.data
-															.errorCode === 0 &&
-														isMountedRef.current
-													) {
-														setRecentDatas(
-															resRecent.data.data
-														);
+													if (isMountedRef.current) {
+														if (
+															resRecent.data
+																.errorCode === 0
+														) {
+															setRecentDatas(
+																resRecent.data
+																	.data
+															);
+														} else {
+															setPopBox({
+																isOpen: true,
+																content: `[${resRecent.data.errorCode}] ${resRecent.data.message}`
+															});
+														}
 													}
+												},
+												() => {
+													setPopBox({
+														isOpen: true,
+														content:
+															i18n.msg_ApiServerError
+													});
 												}
 											);
 										}
@@ -415,7 +481,6 @@ const Panel = () => {
 							if (isMountedRef.current) {
 								setPopBox({
 									isOpen: true,
-									title: i18n.lbl_ImportantNote,
 									content: i18n.msg_ApiServerError
 								});
 							}
@@ -520,7 +585,6 @@ const Panel = () => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
 					setLoading(false);
@@ -551,13 +615,23 @@ const Panel = () => {
 											setRecentDatas(resRecent.data.data);
 											GetBalance();
 											getWithdrawalLimit();
+										} else {
+											setPopBox({
+												isOpen: true,
+												content: `[${resRecent.data.errorCode}] ${resRecent.data.message}`
+											});
 										}
+									},
+									() => {
+										setPopBox({
+											isOpen: true,
+											content: i18n.msg_ApiServerError
+										});
 									}
 								);
 							} else {
 								setPopBox({
 									isOpen: true,
-									title: i18n.lbl_ImportantNote,
 									content: `[${res.data.errorCode}] ${res.data.message}`
 								});
 							}
@@ -567,7 +641,6 @@ const Panel = () => {
 						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
 								content: i18n.msg_ApiServerError
 							});
 						}
@@ -599,11 +672,26 @@ const Panel = () => {
 	};
 
 	const GetWithdrawalInfoRecent = () => {
-		api_GetWithdrawalInfoRecent().then(res => {
-			if (res.data.errorCode === 0 && isMountedRef.current) {
-				setRecentDatas(res.data.data);
+		api_GetWithdrawalInfoRecent().then(
+			res => {
+				if (isMountedRef.current) {
+					if (res.data.errorCode === 0) {
+						setRecentDatas(res.data.data);
+					} else {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				}
+			},
+			() => {
+				setPopBox({
+					isOpen: true,
+					content: i18n.msg_ApiServerError
+				});
 			}
-		});
+		);
 	};
 
 	const withdrawalLimitHint = i18n.lbl_WithdrawalDailyMinMax

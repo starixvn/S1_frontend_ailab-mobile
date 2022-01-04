@@ -36,17 +36,15 @@ export const useGetBalance = ({ isLogin, i18n, setPopBox }) => {
 					} else {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: `[${res.data.errorCode}]${res.data.message}`
+							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
 				}
 			},
-			err => {
+			() => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
 				}
@@ -89,13 +87,17 @@ export const useGetBalance = ({ isLogin, i18n, setPopBox }) => {
 												tpWalletData
 											]);
 										}
+									} else {
+										setPopBox({
+											isOpen: true,
+											content: `[${resBalance.data.errorCode}] ${resBalance.data.message}`
+										});
 									}
 								},
-								err => {
+								() => {
 									if (isMountedRef.current) {
 										setPopBox({
 											isOpen: true,
-											title: i18n.lbl_ImportantNote,
 											content: i18n.msg_ApiServerError
 										});
 									}
@@ -105,17 +107,15 @@ export const useGetBalance = ({ isLogin, i18n, setPopBox }) => {
 					} else {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: `[${res.data.errorCode}]${res.data.message}`
+							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
 				}
 			},
-			err => {
+			() => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
 				}

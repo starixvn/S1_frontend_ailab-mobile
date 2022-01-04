@@ -105,14 +105,25 @@ export const useGetRanking = ({
 
 									return result;
 								});
+							} else {
+								setPopBox({
+									isOpen: true,
+									content: `[${custRankRes.data.errorCode}] ${custRankRes.data.message}`
+								});
 							}
 						} else {
 							setDatas([]);
 						}
+					} else {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
 					}
 					setLoading(false);
 					setLastUpdTime(SetUpdTime());
 				} catch (error) {
+					console.error(error);
 					setLoading(false);
 				}
 			};

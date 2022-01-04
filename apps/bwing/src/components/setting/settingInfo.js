@@ -43,7 +43,7 @@ export default () => {
 
 	useEffect(() => {
 		if (userInfo.langId && isMountedRef.current) {
-			setUserLanguage(prevState => {
+			setUserLanguage(() => {
 				return _languageList.find(l => l.value === userInfo.langId) ===
 					undefined
 					? "en"
@@ -69,17 +69,15 @@ export default () => {
 							} else {
 								setPopBox({
 									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: res.data.message
+									content: `[${res.data.errorCode}] ${res.data.message}`
 								});
 							}
 						}
 					},
-					err => {
+					() => {
 						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
 								content: i18n.msg_ApiServerError
 							});
 						}

@@ -28,25 +28,34 @@ export const useHandleStreamList = ({ selCategory }) => {
 	const [videoList, setVideoList] = useState([]);
 
 	useEffect(() => {
-		api_GetLiveStreamingList(userInfo.langId).then(res => {
-			if (res.data.errorCode === 0) {
-				if (window.location.pathname !== path.home.root) {
-					setAll(res.data.data);
-					setVideoList(
-						res.data.data.filter(v => v.type === selCategory?.type)
-					);
+		api_GetLiveStreamingList(userInfo.langId).then(
+			res => {
+				if (res.data.errorCode === 0) {
+					if (window.location.pathname !== path.home.root) {
+						setAll(res.data.data);
+						setVideoList(
+							res.data.data.filter(
+								v => v.type === selCategory?.type
+							)
+						);
+					} else {
+						setAll(res.data.data);
+						setVideoList(res.data.data);
+					}
 				} else {
-					setAll(res.data.data);
-					setVideoList(res.data.data);
+					setPopBox({
+						isOpen: true,
+						content: `[${res.data.errorCode}] ${res.data.message}`
+					});
 				}
-			} else if (res.data.errorCode !== 0) {
+			},
+			() => {
 				setPopBox({
 					isOpen: true,
-					title: i18n.lbl_ImportantNote,
-					content: `errorCode: ${res.data.errorCode} / msg: ${res.data.message}`
+					content: i18n.msg_ApiServerError
 				});
 			}
-		});
+		);
 	}, [userInfo.langId]);
 
 	useEffect(() => {

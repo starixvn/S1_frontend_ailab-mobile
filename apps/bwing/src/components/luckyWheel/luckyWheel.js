@@ -52,11 +52,21 @@ const LuckyWheel = () => {
 		api_events_GetDisplayDrawPrizeList({ eventId: eventIds.luckyWheel })
 			.then(res => {
 				setLoading(false);
-				setPrizeList(res.data.data);
+				if (res.data.errorCode === 0) {
+					setPrizeList(res.data.data);
+				} else {
+					setPopBox({
+						isOpen: true,
+						content: `[${res.data.errorCode}] ${res.data.message}`
+					});
+				}
 			})
-			.catch(err => {
+			.catch(() => {
 				setLoading(false);
-				console.error(err);
+				setPopBox({
+					isOpen: true,
+					content: i18n.msg_ApiServerError
+				});
 			});
 	}, []);
 
@@ -128,7 +138,7 @@ const LuckyWheel = () => {
 					} else {
 						setPopBox({
 							isOpen: true,
-							content: `[${errorCode}]${message}`
+							content: `[${errorCode}] ${message}`
 						});
 						setCanDrawPrize({
 							status: false,
@@ -140,14 +150,11 @@ const LuckyWheel = () => {
 					setLoading(false);
 				},
 				() => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
-						});
-						setLoading(false);
-					}
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
+					setLoading(false);
 				}
 			);
 		} else if (canDrawPrize.status === false) {
