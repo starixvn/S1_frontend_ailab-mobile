@@ -172,22 +172,24 @@ const CryptoWallet = () => {
 				<img src={levelInfo.imgUrl} alt={levelInfo.levelName} />
 				<button>{levelName}</button>
 			</div>
-			<div className="cryptoInBox">
-				<div className="textFlex textArea">
-					<p>
-						{" "}
-						<span className="icon icon-icon32px_Profile" />
-						{i18n.lbl_BankAccountName}
-					</p>
-					<p>
-						{userInfo.accountName}
-						<span
-							onClick={() => setTip(prev => !prev)}
-							className="icon icon-information-solid"
-						/>
-					</p>
+			{userInfo.accountName && (
+				<div className="cryptoInBox">
+					<div className="textFlex textArea">
+						<p>
+							{" "}
+							<span className="icon icon-icon32px_Profile" />
+							{i18n.lbl_BankAccountName}
+						</p>
+						<p>
+							{userInfo.accountName}
+							<span
+								onClick={() => setTip(prev => !prev)}
+								className="icon icon-information-solid"
+							/>
+						</p>
+					</div>
 				</div>
-			</div>
+			)}
 
 			{tip && (
 				<div data-testid="accountNameTip">{i18n.lbl_ContactCSD}</div>
