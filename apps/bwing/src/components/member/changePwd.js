@@ -129,18 +129,7 @@ export default () => {
 						} else {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: res.data.message,
-								hasBtn: true,
-								btnBar: (
-									<div className="btn-group">
-										<button
-											className="blue"
-											onClick={closePopbox}>
-											{i18n.lbl_Confirm}
-										</button>
-									</div>
-								)
+								content: `[${res.data.errorCode}] ${res.data.message}`
 							});
 						}
 					}
@@ -149,7 +138,6 @@ export default () => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 					}

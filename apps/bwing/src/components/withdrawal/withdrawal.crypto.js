@@ -126,26 +126,49 @@ const Panel = () => {
 				setPageVerify(false);
 			}
 		} else if (userInfo.isLogin) {
-			api_payment_GetWithdrawalLimit().then(res => {
-				if (res.data.errorCode === 0 && isMountedRef.current) {
-					setWithdrawalLimit(res.data.data.usdtList);
+			api_payment_GetWithdrawalLimit().then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							setWithdrawalLimit(res.data.data.usdtList);
+						} else {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
+						}
+					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
 				}
-			});
+			);
 			KycCheck(true)
 				.then(kycProcess => {
 					if (!kycProcess) {
 						api_GetWithdrawalAvailableBalance().then(
 							res => {
-								if (
-									res.data.errorCode === 0 &&
-									isMountedRef.current
-								) {
-									setBalanceInfo(res.data.data);
-									setLoading(false);
+								if (isMountedRef.current) {
+									if (res.data.errorCode === 0) {
+										setBalanceInfo(res.data.data);
+										setLoading(false);
+									} else {
+										setPopBox({
+											isOpen: true,
+											content: `[${res.data.errorCode}] ${res.data.message}`
+										});
+									}
 								}
 							},
 							() => {
 								if (isMountedRef.current) {
+									setPopBox({
+										isOpen: true,
+										content: i18n.msg_ApiServerError
+									});
 									setLoading(false);
 								}
 							}
@@ -153,17 +176,31 @@ const Panel = () => {
 
 						api_GetWithdrawalInfoRecent()
 							.then(res => {
-								if (
-									res.data.errorCode === 0 &&
-									isMountedRef.current
-								) {
-									setRecentDatas(res.data.data);
+								if (isMountedRef.current) {
+									if (res.data.errorCode === 0) {
+										setRecentDatas(res.data.data);
+									} else {
+										setPopBox({
+											isOpen: true,
+											content: `[${res.data.errorCode}] ${res.data.message}`
+										});
+									}
 								}
 							})
-							.catch(err => console.error(err));
+							.catch(() => {
+								setPopBox({
+									isOpen: true,
+									content: i18n.msg_ApiServerError
+								});
+							});
 					}
 				})
-				.catch(err => console.error(err));
+				.catch(() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
+				});
 		}
 	}, [
 		userInfo.accountName,
@@ -226,36 +263,69 @@ const Panel = () => {
 						limit: null,
 						withdrawalLimitHint: limitHint(null)
 					});
+				} else {
+					setPopBox({
+						isOpen: true,
+						content: `[${res.data.errorCode}] ${res.data.message}`
+					});
 				}
 			})
-			.catch(err => console.error(err));
+			.catch(() => {
+				setPopBox({
+					isOpen: true,
+					content: i18n.msg_ApiServerError
+				});
+			});
 	};
 
 	const KycCheck = async UpdatePageVerify => {
-		const executeKycProcess = await api_KycCheck().then(res => {
-			if (isMountedRef.current) {
-				if (res.data.errorCode === 1) {
-					setRedirectPath(`/${path.kyc.root}`);
-				} else if (res.data.errorCode === 2) {
-					setRedirectPath(`/${path.kycWaiting.root}`);
-				} else if (isMountedRef.current && UpdatePageVerify) {
-					setPageVerify(true);
+		const executeKycProcess = await api_KycCheck().then(
+			res => {
+				if (isMountedRef.current) {
+					if (res.data.errorCode === 1) {
+						setRedirectPath(`/${path.kyc.root}`);
+					} else if (res.data.errorCode === 2) {
+						setRedirectPath(`/${path.kycWaiting.root}`);
+					} else if (isMountedRef.current && UpdatePageVerify) {
+						setPageVerify(true);
+					}
 				}
-			}
 
-			return res.data.errorCode === 1 || res.data.errorCode === 2;
-		});
+				return res.data.errorCode === 1 || res.data.errorCode === 2;
+			},
+			() => {
+				setPopBox({
+					isOpen: true,
+					content: i18n.msg_ApiServerError
+				});
+			}
+		);
 
 		return executeKycProcess;
 	};
 
 	const GetBalance = () => {
 		if (pageVerify) {
-			api_GetWithdrawalAvailableBalance().then(res => {
-				if (res.data.errorCode === 0 && isMountedRef.current) {
-					setBalanceInfo(res.data.data);
+			api_GetWithdrawalAvailableBalance().then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							setBalanceInfo(res.data.data);
+						} else {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
+						}
+					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
 				}
-			});
+			);
 		}
 	};
 
@@ -357,26 +427,41 @@ const Panel = () => {
 								res.data.errorCode === 0 ||
 								res.data.errorCode === 2
 							) {
-								KycCheck(false).then(kycProcess => {
-									if (!kycProcess) {
-										setAmount("");
-										GetBalance();
-										setInputStatus(initStatus);
-										api_GetWithdrawalInfoRecent().then(
-											response => {
-												if (
-													response.data.errorCode ===
-														0 &&
-													isMountedRef.current
-												) {
-													setRecentDatas(
-														response.data.data
-													);
+								KycCheck(false).then(
+									kycProcess => {
+										if (!kycProcess) {
+											setAmount("");
+											GetBalance();
+											setInputStatus(initStatus);
+											api_GetWithdrawalInfoRecent().then(
+												response => {
+													if (isMountedRef.current) {
+														if (
+															response.data
+																.errorCode === 0
+														) {
+															setRecentDatas(
+																response.data
+																	.data
+															);
+														} else {
+															setPopBox({
+																isOpen: true,
+																content: `[${response.data.errorCode}] ${response.data.message}`
+															});
+														}
+													}
 												}
-											}
-										);
+											);
+										}
+									},
+									() => {
+										setPopBox({
+											isOpen: true,
+											content: i18n.msg_ApiServerError
+										});
 									}
-								});
+								);
 
 								setPopBox({ isOpen: false });
 							} else {
@@ -418,7 +503,6 @@ const Panel = () => {
 						console.error(error);
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 					}
@@ -495,17 +579,29 @@ const Panel = () => {
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 0) {
-								api_GetWithdrawalInfoRecent().then(response => {
-									if (response.data.errorCode === 0) {
-										setRecentDatas(response.data.data);
-										GetBalance();
+								api_GetWithdrawalInfoRecent().then(
+									response => {
+										if (response.data.errorCode === 0) {
+											setRecentDatas(response.data.data);
+											GetBalance();
+										} else {
+											setPopBox({
+												isOpen: true,
+												content: `[${response.data.errorCode}] ${response.data.message}`
+											});
+										}
+									},
+									() => {
+										setPopBox({
+											isOpen: true,
+											content: i18n.msg_ApiServerError
+										});
 									}
-								});
+								);
 							} else {
 								setPopBox({
 									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: res.data.message
+									content: `[${res.data.errorCode}] ${res.data.message}`
 								});
 							}
 						}
@@ -514,7 +610,6 @@ const Panel = () => {
 						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
 								content: i18n.msg_ApiServerError
 							});
 						}
@@ -584,15 +679,13 @@ const Panel = () => {
 				} else {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
-						content: res.data.message
+						content: `[${res.data.errorCode}] ${res.data.message}`
 					});
 				}
 			})
 			.catch(() => {
 				setPopBox({
 					isOpen: true,
-					title: i18n.lbl_ImportantNote,
 					content: i18n.msg_ApiServerError
 				});
 			});
@@ -615,11 +708,26 @@ const Panel = () => {
 	};
 
 	const GetWithdrawalInfoRecent = () => {
-		api_GetWithdrawalInfoRecent().then(res => {
-			if (res.data.errorCode === 0 && isMountedRef.current) {
-				setRecentDatas(res.data.data);
+		api_GetWithdrawalInfoRecent().then(
+			res => {
+				if (isMountedRef.current) {
+					if (res.data.errorCode === 0) {
+						setRecentDatas(res.data.data);
+					} else {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				}
+			},
+			() => {
+				setPopBox({
+					isOpen: true,
+					content: i18n.msg_ApiServerError
+				});
 			}
-		});
+		);
 	};
 
 	const addCryptoWallet = () => {

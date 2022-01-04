@@ -79,18 +79,22 @@ const AddCryptoWallet = ({ GetCustBankInfo }) => {
 	useEffect(() => {
 		api_payment_GetSupportNetwork()
 			.then(res => {
-				if (res.data.errorCode === 0 && res.data?.data) {
-					const options = res.data.data.map(el => ({
+				if (res.data.errorCode === 0) {
+					const options = res.data?.data.map(el => ({
 						id: el.network,
 						displayText: el.network
 					}));
 					set_network_opt(options);
+				} else {
+					setPopBox({
+						isOpen: true,
+						content: `[${res.data.errorCode}] ${res.data.message}`
+					});
 				}
 			})
 			.catch(() => {
 				setPopBox({
 					isOpen: true,
-					title: i18n.lbl_ImportantNote,
 					content: i18n.msg_ApiServerError
 				});
 			});
@@ -100,14 +104,18 @@ const AddCryptoWallet = ({ GetCustBankInfo }) => {
 					if (response.data?.data?.startUnixTime) {
 						setStartUnixTime(response.data.data.startUnixTime);
 						setTimer(true);
+					} else if (response.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${response.data.errorCode}] ${response.data.message}`
+						});
 					}
 				}
 			},
-			err => {
+			() => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
 				}
@@ -176,28 +184,15 @@ const AddCryptoWallet = ({ GetCustBankInfo }) => {
 					} else {
 						setPopBox({
 							isOpen: true,
-							content:
-								response.data.message ||
-								i18n.msg_ApiServerError,
-							hasBtn: true,
-							btnBar: (
-								<div className="btn-group">
-									<button
-										className="white"
-										onClick={closePopbox}>
-										{i18n.lbl_Confirm}
-									</button>
-								</div>
-							)
+							content: `[${response.data.errorCode}] ${response.data.message}`
 						});
 					}
 				}
 			},
-			err => {
+			() => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
 				}
@@ -235,17 +230,7 @@ const AddCryptoWallet = ({ GetCustBankInfo }) => {
 									} else {
 										setPopBox({
 											isOpen: true,
-											content: `[${res.data.errorCode}] ${res.data.message}`,
-											hasBtn: true,
-											btnBar: (
-												<div className="btn-group">
-													<button
-														className="white"
-														onClick={closePopbox}>
-														{i18n.lbl_Confirm}
-													</button>
-												</div>
-											)
+											content: `[${res.data.errorCode}] ${res.data.message}`
 										});
 									}
 								}
@@ -254,7 +239,6 @@ const AddCryptoWallet = ({ GetCustBankInfo }) => {
 								if (!isMountedRef.current) return;
 								setPopBox({
 									isOpen: true,
-									title: i18n.lbl_ImportantNote,
 									content: i18n.msg_ApiServerError
 								});
 							}
@@ -279,7 +263,6 @@ const AddCryptoWallet = ({ GetCustBankInfo }) => {
 				.catch(() => {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
 				});

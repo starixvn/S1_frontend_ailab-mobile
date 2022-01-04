@@ -49,7 +49,7 @@ export const useDrawPrize = ({
 
 						setPopBox({
 							isOpen: true,
-							content: `[${errorCode}]${message}`
+							content: `[${errorCode}] ${message}`
 						});
 					}
 					setLoading(false);
@@ -59,7 +59,6 @@ export const useDrawPrize = ({
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
 					setLoading(false);
