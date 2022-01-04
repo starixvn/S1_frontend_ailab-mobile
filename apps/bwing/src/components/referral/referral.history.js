@@ -58,12 +58,11 @@ const Panel = () => {
 			}).then(
 				response => {
 					if (isMountedRef.current) {
-						const { errorCode } = response.data;
+						const { errorCode, message } = response.data;
 						if (errorCode !== 0) {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: response.data.message
+								content: `[${errorCode}] ${message}`
 							});
 						} else {
 							setHistory(response.data.data);
@@ -85,7 +84,6 @@ const Panel = () => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 						setProcessing(false);

@@ -76,15 +76,21 @@ const GamePanel = ({ i18n, userInfo }) => {
 		if (userInfo.isLogin) {
 			api_GetTpIds().then(
 				res => {
-					if (res.data.errorCode === 0 && isMountedRef.current) {
-						setTpIds(res.data.data);
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							setTpIds(res.data.data);
+						} else {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
+						}
 					}
 				},
 				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 					}

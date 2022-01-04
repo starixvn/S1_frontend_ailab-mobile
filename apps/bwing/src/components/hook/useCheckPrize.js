@@ -12,7 +12,7 @@ export const useCheckPrize = ({ i18n, setPopBox, isLogin, eventId, count }) => {
 		api_events_CheckDrawPrize({ eventId }).then(
 			res => {
 				if (isMountedRef.current) {
-					const { errorCode } = res.data;
+					const { errorCode, message } = res.data;
 					if (errorCode === 0) {
 						setCanDrawPrize({
 							status: true,
@@ -31,7 +31,7 @@ export const useCheckPrize = ({ i18n, setPopBox, isLogin, eventId, count }) => {
 					} else {
 						setPopBox({
 							isOpen: true,
-							content: `[${errorCode}]${res.data.message}`
+							content: `[${errorCode}] ${message}`
 						});
 						setCanDrawPrize({
 							status: false,
@@ -44,7 +44,6 @@ export const useCheckPrize = ({ i18n, setPopBox, isLogin, eventId, count }) => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
 				}

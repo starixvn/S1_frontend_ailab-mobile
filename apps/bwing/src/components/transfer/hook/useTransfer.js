@@ -96,8 +96,7 @@ export const useTransfer = ({
 				} else if (res.data.errorCode !== 0) {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
-						content: `[${res.data.errorCode}]${res.data.message}`
+						content: `[${res.data.errorCode}] ${res.data.message}`
 					});
 					if (FromTpId !== 0 && ToTpId !== 0) {
 						GetBalance();
@@ -129,7 +128,6 @@ export const useTransfer = ({
 			if (isMountedRef.current) {
 				setPopBox({
 					isOpen: true,
-					title: i18n.lbl_ImportantNote,
 					content: i18n.msg_ApiServerError
 				});
 

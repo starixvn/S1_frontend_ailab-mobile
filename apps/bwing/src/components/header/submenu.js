@@ -52,7 +52,7 @@ export default ({ handleSideMenuPanel, isOpenSideMenu }) => {
 				try {
 					await api_SetLanguage(langId);
 				} catch (error) {
-					//
+					console.error(error);
 				}
 			}
 

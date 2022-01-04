@@ -79,77 +79,90 @@ const IndexPage = () => {
 			isDomainPopOpened
 		) {
 			setCookie(cookieName, "1", 1);
-			api_GetWalletInfo().then(res => {
-				if (res.data.errorCode === 0) {
-					const { data } = res.data;
-					const mainWallet = {
-						id: 0,
-						displayKey: "lbl_MainWallet",
-						balance: data?.balance
-					};
-					const tpWalletsArr = data?.tpWallets.map(i => {
-						return {
-							id: i.tpId,
-							displayKey: i.displayKey,
-							balance: i.balance
+			api_GetWalletInfo().then(
+				res => {
+					if (res.data.errorCode === 0) {
+						const { data } = res.data;
+						const mainWallet = {
+							id: 0,
+							displayKey: "lbl_MainWallet",
+							balance: data?.balance
 						};
-					});
+						const tpWalletsArr = data?.tpWallets.map(i => {
+							return {
+								id: i.tpId,
+								displayKey: i.displayKey,
+								balance: i.balance
+							};
+						});
 
-					const hasBalance =
-						mainWallet.balance ||
-						tpWalletsArr?.filter(t => {
-							return t.balance > 0;
-						}).length >= 1;
+						const hasBalance =
+							mainWallet.balance ||
+							tpWalletsArr?.filter(t => {
+								return t.balance > 0;
+							}).length >= 1;
 
-					if (!hasBalance) {
-						const ClosePopUp = () => {
+						if (!hasBalance) {
+							const ClosePopUp = () => {
+								setPopBox({
+									isOpen: false
+								});
+							};
+
+							const RedirectToDeposit = () => {
+								setRedirectPath(`/${path.deposit.root}`);
+								ClosePopUp();
+							};
+
 							setPopBox({
-								isOpen: false
+								isOpen: true,
+								title: i18n.lbl_Notice,
+								content: (
+									<>
+										<p>
+											{`${i18n.msg_BalanceHint} : `}
+											<span className="important">
+												{`${
+													i18n[
+														`Currency_${userInfo.currencyId}`
+													]
+												} 0`}
+											</span>
+										</p>
+										<p>{i18n.msg_DepositHint}</p>
+									</>
+								),
+								hasBtn: true,
+								btnBar: (
+									<div className="btn-group">
+										<button
+											className="cancel"
+											onClick={ClosePopUp}>
+											{i18n.lbl_Later}
+										</button>
+										<button
+											onClick={RedirectToDeposit}
+											className="submit">
+											{i18n.lbl_DepositNow}
+										</button>
+									</div>
+								)
 							});
-						};
-
-						const RedirectToDeposit = () => {
-							setRedirectPath(`/${path.deposit.root}`);
-							ClosePopUp();
-						};
-
+						}
+					} else {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_Notice,
-							content: (
-								<>
-									<p>
-										{`${i18n.msg_BalanceHint} : `}
-										<span className="important">
-											{`${
-												i18n[
-													`Currency_${userInfo.currencyId}`
-												]
-											} 0`}
-										</span>
-									</p>
-									<p>{i18n.msg_DepositHint}</p>
-								</>
-							),
-							hasBtn: true,
-							btnBar: (
-								<div className="btn-group">
-									<button
-										className="cancel"
-										onClick={ClosePopUp}>
-										{i18n.lbl_Later}
-									</button>
-									<button
-										onClick={RedirectToDeposit}
-										className="submit">
-										{i18n.lbl_DepositNow}
-									</button>
-								</div>
-							)
+							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
 				}
-			});
+			);
 		}
 
 		if (userInfo.isLogin === false) {
@@ -240,7 +253,7 @@ const IndexPage = () => {
 			<GamePanel i18n={i18n} userInfo={userInfo} />
 			<HotGameSwipper i18n={i18n} userInfo={userInfo} />
 			<PlaytechJactpot />
-			<Top10Winner i18n={i18n} />
+			<Top10Winner i18n={i18n} setPopBox={setPopBox} />
 			<Streaming />
 			{/* <MidBanner langId={userInfo.langId} /> */}
 			<LinksPanel i18n={i18n} langId={userInfo.langId} />

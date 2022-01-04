@@ -39,17 +39,30 @@ export default () => {
 	useEffect(() => {
 		if (userInfo.isLogin) {
 			const CheckBankInfo = async () => {
-				const result = await api_GetCustBankInfo().then(res => {
-					let hasBankInfo = false;
-					if (res.data.errorCode === 0) {
-						if (res.data.data?.bankInfoDetail?.length) {
-							hasBankInfo = true;
-						} else if (isMountedRef.current) {
-							setRedirectPath(`/${path.withdrawal.root}`);
+				const result = await api_GetCustBankInfo().then(
+					res => {
+						let hasBankInfo = false;
+						if (res.data.errorCode === 0) {
+							if (res.data.data?.bankInfoDetail?.length) {
+								hasBankInfo = true;
+							} else if (isMountedRef.current) {
+								setRedirectPath(`/${path.withdrawal.root}`);
+							}
+						} else {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
 						}
+						return hasBankInfo;
+					},
+					() => {
+						setPopBox({
+							isOpen: true,
+							content: i18n.msg_ApiServerError
+						});
 					}
-					return hasBankInfo;
-				});
+				);
 
 				return result;
 			};
@@ -67,8 +80,12 @@ export default () => {
 								setLoading(false);
 							}
 						},
-						err => {
+						() => {
 							if (isMountedRef.current) {
+								setPopBox({
+									isOpen: true,
+									content: i18n.msg_ApiServerError
+								});
 								setLoading(false);
 							}
 						}
@@ -99,19 +116,17 @@ export default () => {
 						} else {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: res.message
+								content: `[${res.errorCode}] ${res.message}`
 							});
 						}
 						setProcessing(false);
 						setLoading(false);
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 						setProcessing(false);

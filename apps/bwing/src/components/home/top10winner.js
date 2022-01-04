@@ -14,7 +14,7 @@ import no10 from "../../styles/img/top10/no10.png";
 import money from "../../styles/img/top10/money.png";
 import { number_format } from "../common/common";
 
-const Top10winner = ({ i18n }) => {
+const Top10winner = ({ i18n, setPopBox }) => {
 	const numMap = {
 		1: no1,
 		2: no2,
@@ -39,8 +39,18 @@ const Top10winner = ({ i18n }) => {
 				});
 				if (res.data.errorCode === 0) {
 					setRank(res.data.data);
+				} else {
+					setPopBox({
+						isOpen: true,
+						content: `[${res.data.errorCode}] ${res.data.message}`
+					});
 				}
-			} catch (error) {}
+			} catch (error) {
+				setPopBox({
+					isOpen: true,
+					content: i18n.msg_ApiServerError
+				});
+			}
 		};
 		getRank();
 	}, []);

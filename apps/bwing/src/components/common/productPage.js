@@ -42,11 +42,26 @@ const ProductPage = ({ category, titleKey }) => {
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
-			api_GetTpIds().then(res => {
-				if (res.data.errorCode === 0 && isMountedRef.current) {
-					setTpIds(res.data.data);
+			api_GetTpIds().then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							setTpIds(res.data.data);
+						} else {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
+						}
+					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
 				}
-			});
+			);
 			if (sport_game) {
 				GET_ENTER_PAGE({
 					langId: userInfo.langId,

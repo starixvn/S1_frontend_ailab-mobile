@@ -59,14 +59,29 @@ const Join = () => {
 		const showBylink = window.location.pathname === `/${path.join.root}`;
 		const openPanel = showBylink || nav === defNavPanel.join;
 		if (refId && openPanel) {
-			api_GetBanner("Promotion", refId, userInfo.langId).then(res => {
-				if (res.data.errorCode === 0 && isMountedRef.current) {
-					if (res.data.data.length > 0) {
-						setBanner(res.data.data);
-						setPromoPopup(true);
+			api_GetBanner("Promotion", refId, userInfo.langId).then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							if (res.data.data.length > 0) {
+								setBanner(res.data.data);
+								setPromoPopup(true);
+							}
+						} else {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
+						}
 					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
 				}
-			});
+			);
 		}
 	}, [nav, userInfo.langId]);
 
@@ -94,7 +109,6 @@ const Join = () => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 					}
@@ -121,8 +135,7 @@ const Join = () => {
 					} else {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: res.data.message
+							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
 				}
@@ -131,7 +144,6 @@ const Join = () => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
 				}
@@ -179,9 +191,16 @@ const Join = () => {
 				UserName: val,
 				langId: userInfo.langId
 			});
-			if (res.data.errorCode === 0 && res.data.data === true) {
-				checked = false;
-				msg = res.data.message;
+			if (res.data.errorCode === 0) {
+				if (res.data.data === true) {
+					checked = false;
+					msg = res.data.message;
+				}
+			} else {
+				setPopBox({
+					isOpen: true,
+					content: `[${res.data.errorCode}] ${res.data.message}`
+				});
 			}
 		}
 
@@ -204,9 +223,16 @@ const Join = () => {
 				AreaCode: _areaCode,
 				Phone: val
 			});
-			if (res.data.errorCode === 0 && res.data.data === true) {
-				checked = false;
-				msg = i18n.msg_PhoneExisted;
+			if (res.data.errorCode === 0) {
+				if (res.data.data === true) {
+					checked = false;
+					msg = i18n.msg_PhoneExisted;
+				}
+			} else {
+				setPopBox({
+					isOpen: true,
+					content: `[${res.data.errorCode}] ${res.data.message}`
+				});
 			}
 		}
 		return { checked, msg };
@@ -274,6 +300,11 @@ const Join = () => {
 				if (res.data.errorCode === 0) {
 					regData.AffId =
 						getUrlParameter("AffId") || getCookie("AffId");
+				} else {
+					setPopBox({
+						isOpen: true,
+						content: `[${res.data.errorCode}] ${res.data.message}`
+					});
 				}
 			}
 
@@ -302,6 +333,11 @@ const Join = () => {
 												..._user,
 												...res_custInfo.data.data
 											};
+										} else {
+											setPopBox({
+												isOpen: true,
+												content: `[${res_custInfo.data.errorCode}] ${res_custInfo.data.message}`
+											});
 										}
 										setUserInfo(_user);
 										navigate(`/${path.deposit.root}`);
@@ -311,7 +347,6 @@ const Join = () => {
 									if (isMountedRef.current) {
 										setPopBox({
 											isOpen: true,
-											title: i18n.lbl_ImportantNote,
 											content: i18n.msg_ApiServerError
 										});
 									}
@@ -319,23 +354,9 @@ const Join = () => {
 							);
 							setNav(null);
 						} else {
-							const closePopBox = () => {
-								setPopBox({ isOpen: false });
-							};
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: `[${errorCode}] ${message}`,
-								hasBtn: true,
-								btnBar: (
-									<div className="btn-group">
-										<button
-											className="submit"
-											onClick={closePopBox}>
-											{i18n.lbl_Close}
-										</button>
-									</div>
-								)
+								content: `[${errorCode}] ${message}`
 							});
 						}
 					}
@@ -344,7 +365,6 @@ const Join = () => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 					}

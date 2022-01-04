@@ -1,19 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link, useNavigate } from "@reach/router";
+import { popBoxContext } from "../common/context";
 import { productList, defIconType } from "../../datas/defMenu";
 import { api_GetTpIds } from "../../service/api/site";
 
 const HeaderMenu = ({ i18n, userInfo }) => {
+	const { setPopBox } = useContext(popBoxContext);
 	const [showingTpIds, setShowningTpIds] = useState(null);
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
-			api_GetTpIds().then(res => {
-				if (res.data.errorCode === 0) {
-					setShowningTpIds(res.data.data);
+			api_GetTpIds().then(
+				res => {
+					if (res.data.errorCode === 0) {
+						setShowningTpIds(res.data.data);
+					} else {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
 				}
-			});
+			);
 		}
 	}, [userInfo.isLogin]);
 
