@@ -199,15 +199,17 @@ const CryptoWallet = () => {
 	));
 	return (
 		<>
-			<>
-				<div className="icon icon-member">
-					<div className="circleAnimation" />
-				</div>
-				<div className="name">{userInfo.userName}</div>
-				<div className="text-center text-gray">
-					{i18n.lbl_CryptoWalletTip1}
-				</div>
-			</>
+			{userInfo.accountName && (
+				<>
+					<div className="icon icon-member">
+						<div className="circleAnimation" />
+					</div>
+					<div className="name">{userInfo.accountName}</div>
+					<div className="text-center text-gray">
+						{i18n.lbl_CryptoWalletTip1}
+					</div>
+				</>
+			)}
 			{(wallets?.length < 3 || !wallets) && (
 				<div className="btn-group">
 					<button
