@@ -43,11 +43,24 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
-			api.site.GetTpIds().then(res => {
-				if (res.data.errorCode === 0 && isMountedRef.current) {
-					setShowningTpIds(res.data.data);
+			api.site.GetTpIds().then(
+				res => {
+					if (res.data.errorCode === 0 && isMountedRef.current) {
+						setShowningTpIds(res.data.data);
+					} else if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
 				}
-			});
+			);
 		}
 	}, [setShowningTpIds, userInfo.isLogin]);
 

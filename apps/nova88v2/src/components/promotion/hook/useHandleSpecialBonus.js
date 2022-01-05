@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { defFilterType } from "../common/def";
-import { useHandlePopBox } from "./useHandlePopBox";
+import { popBoxContext, i18nContext } from "../../common/context";
 import api from "../../../service/api";
 
 export const useHandleSpecialBonus = ({ langId, filterType }) => {
+	const { setPopBox } = useContext(popBoxContext);
+	const { i18n } = useContext(i18nContext);
 	const [specialBonusDatas, setSpecialBonusDatas] = useState([]);
 	const [specialCode, setSpecialCode] = useState("");
-	const { handleErrorPopBox } = useHandlePopBox();
 
 	useEffect(() => {
 		if (filterType === defFilterType.specialBonus) {
@@ -29,14 +30,18 @@ export const useHandleSpecialBonus = ({ langId, filterType }) => {
 				if (res.data.errorCode === 0) {
 					setSpecialCode("");
 				} else {
-					handleErrorPopBox({
-						message: res.data.message,
-						errorCode: res.data.errorCode
+					setPopBox({
+						isOpen: true,
+						content: `[${res.data.errorCode}] ${res.data.message}`
 					});
 				}
 				GetSpecialBonusList(specialCode);
 			}
 		} catch (error) {
+			setPopBox({
+				isOpen: true,
+				content: i18n.msg_ApiServerError
+			});
 			setSpecialCode("");
 		}
 	};
@@ -49,9 +54,17 @@ export const useHandleSpecialBonus = ({ langId, filterType }) => {
 			});
 			if (getDataRes.data.errorCode === 0) {
 				setSpecialBonusDatas(getDataRes.data.data);
+			} else {
+				setPopBox({
+					isOpen: true,
+					content: `[${getDataRes.data.errorCode}] ${getDataRes.data.message}`
+				});
 			}
 		} catch (error) {
-			console.log(error);
+			setPopBox({
+				isOpen: true,
+				content: i18n.msg_ApiServerError
+			});
 		}
 	};
 
@@ -62,7 +75,7 @@ export const useHandleSpecialBonus = ({ langId, filterType }) => {
 				TpId: tpId,
 				PromoCategoryId: categoryId
 			})
-			.then(({ data: { data, errorCode } }) => {
+			.then(({ data: { data, errorCode, message } }) => {
 				const success = errorCode === 0;
 				if (success) {
 					let idx = null;
@@ -83,6 +96,11 @@ export const useHandleSpecialBonus = ({ langId, filterType }) => {
 					}
 
 					setSpecialBonusDatas(newPromoList);
+				} else {
+					setPopBox({
+						isOpen: true,
+						content: `[${errorCode}] ${message}`
+					});
 				}
 			});
 	};

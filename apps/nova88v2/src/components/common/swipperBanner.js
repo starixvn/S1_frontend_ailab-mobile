@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Swiper from "react-id-swiper";
 import { Link } from "../../route/link";
 import useHandleLogin from "../hook/useHandleLogin";
-import { userInfoContext } from "./context";
+import { userInfoContext, popBoxContext } from "./context";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import path from "../../path";
 import api from "../../service/api";
@@ -46,6 +46,7 @@ export const ClickLink = ({
 const NeedLoginRoute = [path.kiss918.root, path.referral.root];
 
 export const useGetBanner = ({ langId, ImgFolder }) => {
+	const { setPopBox } = useContext(popBoxContext);
 	const [banner, setBanner] = useState([]);
 
 	useEffect(() => {
@@ -62,11 +63,20 @@ export const useGetBanner = ({ langId, ImgFolder }) => {
 
 					if (res.data.errorCode === 0 && mounted) {
 						setBanner(prev => [...prev, ...res.data.data]);
+					} else if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
 					}
 				});
 
 				return true;
 			} catch (error) {
+				setPopBox({
+					isOpen: true,
+					content: i18n.msg_ApiServerError
+				});
 				return false;
 			}
 		};

@@ -5,7 +5,7 @@ import { isClaimed, isNew } from "./common/common";
 import PromotionContent from "./components/promotionContent";
 import Wrapper from "./common/wrapper";
 import { configContext } from "./common/context";
-import { useHandlePopBox } from "./hook/useHandlePopBox";
+import { popBoxContext } from "../common/context";
 
 export const PromotionInfo = props => (
 	<Wrapper {...props}>
@@ -28,7 +28,7 @@ const PromotionInfoContent = () => {
 	const { path, userInfo, i18n, uiSetting, api, ruleCols } = useContext(
 		configContext
 	);
-	const { handleErrorPopBox } = useHandlePopBox();
+	const { setPopBox } = useContext(popBoxContext);
 	const [promotionInfo, setPromotionInfo] = useState(null);
 	const isMountedRef = useRef(null);
 
@@ -54,13 +54,19 @@ const PromotionInfoContent = () => {
 							if (res.data.errorCode === 0) {
 								setPromotionInfo(res.data.data);
 							} else {
-								handleErrorPopBox({ ...res.data, uiSetting });
+								setPopBox({
+									isOpen: true,
+									content: `[${res.data.errorCode}] ${res.data.message}`
+								});
 							}
 						}
 					},
 					() => {
 						if (isMountedRef.current) {
-							handleErrorPopBox({ uiSetting });
+							setPopBox({
+								isOpen: true,
+								content: i18n.msg_ApiServerError
+							});
 						}
 					}
 				);
@@ -79,13 +85,19 @@ const PromotionInfoContent = () => {
 						if (res.data.errorCode === 0) {
 							setPromotionInfo(res.data.data);
 						} else {
-							handleErrorPopBox({ ...res.data, uiSetting });
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
 						}
 					}
 				},
 				() => {
 					if (isMountedRef.current) {
-						handleErrorPopBox({ uiSetting });
+						setPopBox({
+							isOpen: true,
+							content: i18n.msg_ApiServerError
+						});
 					}
 				}
 			);

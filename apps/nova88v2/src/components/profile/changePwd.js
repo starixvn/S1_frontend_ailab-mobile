@@ -151,18 +151,7 @@ const ChangePwd = () => {
 							} else {
 								setPopBox({
 									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: res.data.message,
-									hasBtn: true,
-									btnBar: (
-										<div className="btn-group">
-											<button
-												className="orange"
-												onClick={closePopbox}>
-												OK
-											</button>
-										</div>
-									)
+									content: `[${res.data.errorCode}] ${res.data.message}`
 								});
 							}
 						}
@@ -171,7 +160,6 @@ const ChangePwd = () => {
 						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
 								content: i18n.msg_ApiServerError
 							});
 						}

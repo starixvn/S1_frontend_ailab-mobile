@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useEffect, useState } from "react";
-import { userInfoContext, i18nContext } from "Context";
+import { userInfoContext, i18nContext, popBoxContext } from "Context";
 import { Redirect } from "@reach/router";
 import path from "../../../path";
 import {
@@ -9,7 +9,6 @@ import {
 	defWrapperCol,
 	defHideJoinBtnTypes
 } from "../common/def";
-
 import ClaimWithLockedAmount from "./joinBtn.claimWithLockedAmount";
 import { useHandlePopBox } from "../hook/useHandlePopBox";
 import useHandleLogin from "../../hook/useHandleLogin";
@@ -31,8 +30,8 @@ export default ({
 
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
-
-	const { handlePopBox, handleErrorPopBox, clickClose } = useHandlePopBox();
+	const { setPopBox } = useContext(popBoxContext);
+	const { handlePopBox, clickClose } = useHandlePopBox();
 	const isMountedRef = useRef(null);
 	const [redirectPath, setRedirectPath] = useState(null);
 	const { handleLogin } = useHandleLogin();
@@ -53,55 +52,78 @@ export default ({
 						? Number(LockedAmount)
 						: 0
 			})
-			.then(res => {
-				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
-						if (func_GetPromotionDetail) {
-							func_GetPromotionDetail(userInfo.langId, bonusCode);
-						} else if (func_CallBack) {
-							func_CallBack();
+			.then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							if (func_GetPromotionDetail) {
+								func_GetPromotionDetail(
+									userInfo.langId,
+									bonusCode
+								);
+							} else if (func_CallBack) {
+								func_CallBack();
+							}
+							handlePopBox({
+								content: <p>{i18n?.lbl_ClaimSucceed}</p>,
+								btnBar: (
+									<div className="btn-group">
+										<button
+											onClick={clickClose}
+											className={
+												uiSetting.popBox?.submitBtn ??
+												"btn-check"
+											}>
+											OK
+										</button>
+									</div>
+								)
+							});
+						} else if (res.data.errorCode === -5) {
+							const RedirectToProfile = () => {
+								setRedirectPath(
+									`/${userInfo.langId}/${path.profile.root}?prevPage=${path.promotionInfo.root}&BonusCode=${bonusCode}`
+								);
+								clickClose();
+							};
+							handlePopBox({
+								content: <p>{i18n?.msg_OTPHint}</p>,
+								btnBar: (
+									<div className="btn-group">
+										<button
+											className={
+												uiSetting.popBox?.cancelBtn ??
+												"blue"
+											}
+											onClick={clickClose}>
+											{i18n?.lbl_Later}
+										</button>
+										<button
+											onClick={RedirectToProfile}
+											className={
+												uiSetting.popBox?.submitBtn ??
+												"btn-check"
+											}>
+											{i18n?.lbl_GoNow}
+										</button>
+									</div>
+								)
+							});
+						} else {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
 						}
-						handlePopBox({
-							content: <p>{i18n?.lbl_ClaimSucceed}</p>,
-							btnBar: (
-								<div className="btn-group">
-									<button
-										onClick={clickClose}
-										className="btn-check">
-										OK
-									</button>
-								</div>
-							)
-						});
-					} else if (res.data.errorCode === -5) {
-						const RedirectToProfile = () => {
-							setRedirectPath(
-								`/${userInfo.langId}/${path.profile.root}?prevPage=${path.promotionInfo.root}&BonusCode=${bonusCode}`
-							);
-							clickClose();
-						};
-						handlePopBox({
-							content: <p>{i18n?.msg_OTPHint}</p>,
-							btnBar: (
-								<div className="btn-group">
-									<button
-										className="blue"
-										onClick={clickClose}>
-										{i18n?.lbl_Later}
-									</button>
-									<button
-										onClick={RedirectToProfile}
-										className="btn-check">
-										{i18n?.lbl_GoNow}
-									</button>
-								</div>
-							)
-						});
-					} else {
-						handleErrorPopBox({ ...res.data });
 					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
 				}
-			});
+			);
 	};
 
 	const _canJoin = !(

@@ -164,13 +164,17 @@ const GameProvider = ({ userInfo, i18n }) => {
 				res => {
 					if (res.data.errorCode === 0 && isMountedRef.current) {
 						setShowingTpIds(res.data.data);
+					} else if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
 					}
 				},
 				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 					}

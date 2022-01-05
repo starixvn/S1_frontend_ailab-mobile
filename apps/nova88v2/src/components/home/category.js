@@ -56,13 +56,17 @@ const Category = props => {
 				res => {
 					if (res.data.errorCode === 0 && mounted) {
 						setCasinoTpIds(res.data.data);
+					} else if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
 					}
 				},
 				() => {
 					if (mounted) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 					}

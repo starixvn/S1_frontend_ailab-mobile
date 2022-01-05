@@ -30,15 +30,28 @@ export const useGetPromotions = ({ langId, isLogin, filterExpiry = true }) => {
 	});
 
 	const getPromotionList = useCallback(() => {
-		api.promotion.GetPromotionList({ langId }).then(res => {
-			if (res.data.errorCode === 0 && isMountedRef.current) {
-				const result = res.data.data.sort((a, b) =>
-					a.periodFrom > b.periodFrom ? -1 : 1
-				);
+		api.promotion.GetPromotionList({ langId }).then(
+			res => {
+				if (res.data.errorCode === 0 && isMountedRef.current) {
+					const result = res.data.data.sort((a, b) =>
+						a.periodFrom > b.periodFrom ? -1 : 1
+					);
 
-				setPromotion(result);
+					setPromotion(result);
+				} else if (res.data.errorCode !== 0) {
+					setPopBox({
+						isOpen: true,
+						content: `[${res.data.errorCode}] ${res.data.message}`
+					});
+				}
+			},
+			() => {
+				setPopBox({
+					isOpen: true,
+					content: i18n.msg_ApiServerError
+				});
 			}
-		});
+		);
 	}, [langId]);
 
 	useEffect(() => {

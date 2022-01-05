@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { i18nContext, userInfoContext } from "Context";
+import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import { number_format, isConvert } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
 import BonusWallet from "./profile.wallet.bonus";
@@ -12,6 +12,7 @@ import useGetTpBalance from "../hook/useGetTpBalance";
 export default () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
+	const { setPopBox } = useContext(popBoxContext);
 	const [bonusWallet, setBonusWallet] = useState({});
 
 	const { mainWalletInfo, GetBalance } = useGetBalance({
@@ -33,21 +34,34 @@ export default () => {
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
-			api.account.GetCustBonusWallet().then(res => {
-				if (res.data.errorCode === 0 && isMountedRef.current) {
-					const result = {};
-					res.data.data.forEach(b => {
-						if (result.tpId) {
-							result[b.tpId].push({
-								...b
-							});
-						} else {
-							result[b.tpId] = [{ ...b }];
-						}
+			api.account.GetCustBonusWallet().then(
+				res => {
+					if (res.data.errorCode === 0 && isMountedRef.current) {
+						const result = {};
+						res.data.data.forEach(b => {
+							if (result.tpId) {
+								result[b.tpId].push({
+									...b
+								});
+							} else {
+								result[b.tpId] = [{ ...b }];
+							}
+						});
+						setBonusWallet(result);
+					} else if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
 					});
-					setBonusWallet(result);
 				}
-			});
+			);
 		}
 	}, [userInfo.isLogin]);
 

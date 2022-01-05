@@ -147,7 +147,6 @@ const Payment = props => {
 						} else {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
 								content: `[${res.data.errorCode}]${res.data.message}`
 							});
 						}
@@ -157,7 +156,6 @@ const Payment = props => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 					}
@@ -175,6 +173,11 @@ const Payment = props => {
 					if (res.data.errorCode === 0) {
 						setAccountInfo(res.data.data);
 						setBank(bankInfo);
+					} else {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
 					}
 					setLoading(false);
 				}
@@ -183,7 +186,6 @@ const Payment = props => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
 					setLoading(false);
@@ -335,7 +337,7 @@ const Payment = props => {
 													...prevState,
 													title:
 														i18n.lbl_ImportantNote,
-													content: result.message,
+													content: `[${resUploadReceipt.data.errorCode}] ${resUploadReceipt.data.message}`,
 													isOpen: true,
 													hasBtn: true,
 													btnBar: (
@@ -354,6 +356,10 @@ const Payment = props => {
 												CloseDoneDepositPopup();
 											}
 										} catch (error) {
+											setPopBox({
+												isOpen: true,
+												content: i18n.msg_ApiServerError
+											});
 											CloseDoneDepositPopup();
 										}
 									};
@@ -376,8 +382,7 @@ const Payment = props => {
 								} else {
 									setPopBox(() => ({
 										isOpen: true,
-										title: i18n.lbl_ImportantNote,
-										content: i18n.msg_WrongAmount
+										content: `[${res.data.errorCode}] ${res.data.message}`
 									}));
 									setLoading(false);
 								}
@@ -387,7 +392,6 @@ const Payment = props => {
 							if (isMountedRef.current) {
 								setPopBox({
 									isOpen: true,
-									title: i18n.lbl_ImportantNote,
 									content: i18n.msg_ApiServerError
 								});
 								setLoading(false);

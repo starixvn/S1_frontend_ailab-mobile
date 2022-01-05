@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import api from "../../service/api";
 import { defDayBtns, defBtnsOfCategory } from "./def";
+import { popBoxContext, i18nContext } from "../common/context";
 import { isEventPeriod } from "../common/common";
 
 const SetUpdTime = () => {
@@ -22,12 +23,6 @@ const SetUpdTime = () => {
 	return new Date(endDate);
 };
 
-const getTopNum = isLastEvent => {
-	const topNum = 10;
-	const lastTimeTopNum = 10;
-	return isLastEvent ? lastTimeTopNum : topNum;
-};
-
 const handleEventCode = ({ isMonth = false }) => {
 	const defEventCode = {
 		current: "2021051",
@@ -47,6 +42,8 @@ export const useGetRankWithStatus = ({
 	setLoading,
 	customTopNum = 0
 }) => {
+	const { setPopBox } = useContext(popBoxContext);
+	const { i18n } = useContext(i18nContext);
 	const [datas, setDatas] = useState([]);
 	const [lastUpdTime, setLastUpdTime] = useState(SetUpdTime());
 
@@ -113,14 +110,28 @@ export const useGetRankWithStatus = ({
 
 									return result;
 								});
+							} else {
+								setPopBox({
+									isOpen: true,
+									content: `[${custRankRes.data.errorCode}] ${custRankRes.data.message}`
+								});
 							}
 						} else {
 							setDatas([]);
 						}
+					} else {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
 					}
 					setLoading(false);
 					setLastUpdTime(SetUpdTime());
 				} catch (error) {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
 					setLoading(false);
 				}
 			};

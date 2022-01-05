@@ -35,7 +35,7 @@ export default ({ i18n, setPopBox }) => {
 					} else {
 						setPopBox({
 							isOpen: true,
-							content: `[${errorCode}]${message}`
+							content: `[${errorCode}] ${message}`
 						});
 					}
 				}
@@ -60,7 +60,7 @@ export default ({ i18n, setPopBox }) => {
 					} else {
 						setPopBox({
 							isOpen: true,
-							content: `[${errorCode}]${message}`
+							content: `[${errorCode}] ${message}`
 						});
 					}
 				}
