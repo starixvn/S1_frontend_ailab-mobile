@@ -66,12 +66,14 @@ const PromoList = ({
 
 	const selectPromo = i => {
 		if (i !== selectedIdx) {
-			setSelectedIdx(i);
-			setDepositPromo(promoList[i]);
-
 			if (!isOTPVerified(userInfo)) {
 				openVerificationPopBox(promoList[i].bonusCode);
+
+				return;
 			}
+
+			setSelectedIdx(i);
+			setDepositPromo(promoList[i]);
 		}
 	};
 
