@@ -149,6 +149,39 @@ const Main = props => {
 											promoContent.Promotion =
 												formData?.Promotion;
 										}
+										setPopBox({
+											isOpen: true,
+											title: i18n.lbl_DepositType4,
+											className: "dragonPayPop",
+											popBoxType: defPopBoxType.PaymentQR,
+											amount: real_amount,
+											depositAmount:
+												formData?.DepositAmount,
+											currencyId: userInfo.currencyId,
+											cashbackAmount:
+												promoContent.cashbackAmount,
+											receivedAmount:
+												promoContent.receivedAmount,
+											PromotionRate:
+												promoContent.PromotionRate,
+											promoContent:
+												promoContent.Promotion,
+											QRcodeURL: res.data.data.url,
+											RequestAmount: Number(
+												formData?.RequestAmount
+											).toString(),
+											Rate: Number(
+												formData?.Rate
+											).toString(),
+											Token: formData?.Token,
+											handlePopBox: () => {
+												setPopBox(prevState => ({
+													...prevState,
+													isOpen: false
+												}));
+												window.location.reload();
+											}
+										});
 									} else {
 										setPopBox({
 											isOpen: true,
