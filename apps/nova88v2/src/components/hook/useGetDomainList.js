@@ -12,10 +12,9 @@ export const useGetDomainList = ({ userInfo, setPopBox, i18n }) => {
 			userInfo.currencyId &&
 			readCookie(cookieName) !== "1"
 		) {
-			api.site
-				.GetSupportDomainList({ langId: userInfo.langId })
-				.then(res => {
-					const { errorCode, data } = res.data;
+			api.site.GetSupportDomainList({ langId: userInfo.langId }).then(
+				res => {
+					const { errorCode, data, message } = res.data;
 					if (errorCode === 0) {
 						if (data.length > 0) {
 							const closePop = () => {
@@ -38,8 +37,20 @@ export const useGetDomainList = ({ userInfo, setPopBox, i18n }) => {
 						} else {
 							setIsDomainPopOpen(false);
 						}
+					} else {
+						setPopBox({
+							isOpen: true,
+							content: `[${errorCode}] ${message}`
+						});
 					}
-				});
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
+				}
+			);
 		} else if (readCookie(cookieName) === "1") {
 			setIsDomainPopOpen(false);
 		}

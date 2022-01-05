@@ -22,20 +22,27 @@ const ConditionPanel = ({ userInfo, i18n, _isConvert, setPopBox }) => {
 
 	useEffect(() => {
 		if (userInfo.isLogin === true && isMountedRef.current) {
-			api.account.GetReferralSetting().then(res => {
-				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
-						if (res.data.data.length > 0)
-							setReferralData(res.data.data[0]);
-					} else {
-						setPopBox({
-							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: `[${res.data.errorCode}]${res.data.message}`
-						});
+			api.account.GetReferralSetting().then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							if (res.data.data.length > 0)
+								setReferralData(res.data.data[0]);
+						} else {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
+						}
 					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
 				}
-			});
+			);
 		}
 	}, [userInfo.isLogin, i18n, setPopBox]);
 

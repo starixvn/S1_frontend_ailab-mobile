@@ -17,12 +17,6 @@ const useGotoGame = ({ isLogin, langId, tpId }) => {
 	const { i18n } = useContext(i18nContext);
 	const [data, setData] = useState({ account: "", password: "" });
 
-	const ClickClose = () => {
-		setPopBox(() => ({
-			isOpen: false
-		}));
-	};
-
 	useEffect(() => {
 		let mounted = true;
 		if (isLogin) {
@@ -31,30 +25,28 @@ const useGotoGame = ({ isLogin, langId, tpId }) => {
 					TpId: tpId,
 					LangId: langId
 				})
-				.then(res => {
-					if (
-						res.data.errorCode === 0 &&
-						mounted &&
-						res.data.message
-					) {
-						setData(() => JSON.parse(res.data.message));
-					} else {
+				.then(
+					res => {
+						if (
+							res.data.errorCode === 0 &&
+							mounted &&
+							res.data.message
+						) {
+							setData(() => JSON.parse(res.data.message));
+						} else if (res.data.errorCode !== 0) {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
+						}
+					},
+					() => {
 						setPopBox({
 							isOpen: true,
-							content: `[${res.data.errorCode}] ${res.data.message}`,
-							hasBtn: true,
-							btnBar: (
-								<div className="btn-group">
-									<button
-										className="blue"
-										onClick={ClickClose}>
-										{i18n.lbl_Cancel}
-									</button>
-								</div>
-							)
+							content: i18n.msg_ApiServerError
 						});
 					}
-				});
+				);
 		}
 
 		return () => {

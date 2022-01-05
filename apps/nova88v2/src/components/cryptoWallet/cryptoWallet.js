@@ -36,8 +36,7 @@ const CryptoWallet = () => {
 					} else {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
+							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
 				}
@@ -46,7 +45,6 @@ const CryptoWallet = () => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
 				}
@@ -96,15 +94,13 @@ const CryptoWallet = () => {
 				} else {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
-						content: res.data.message
+						content: `[${res.data.errorCode}] ${res.data.message}`
 					});
 				}
 			})
 			.catch(() => {
 				setPopBox({
 					isOpen: true,
-					title: i18n.lbl_ImportantNote,
 					content: i18n.msg_ApiServerError
 				});
 			});
@@ -141,39 +137,55 @@ const CryptoWallet = () => {
 				});
 			}
 		} else {
-			api.accountStrict.GetCustProfile().then(res_custInfo => {
-				if (res_custInfo.data.errorCode === 0 && isMountedRef.current) {
-					const { data } = res_custInfo.data;
-					if (!data.phoneVerified) {
+			api.accountStrict.GetCustProfile().then(
+				res_custInfo => {
+					if (
+						res_custInfo.data.errorCode === 0 &&
+						isMountedRef.current
+					) {
+						const { data } = res_custInfo.data;
+						if (!data.phoneVerified) {
+							setPopBox({
+								isOpen: true,
+								title: i18n.lbl_ImportantNote,
+								content: i18n.lbl_Crypto_OTP,
+								hasBtn: true,
+								hideCloseBtn: true,
+								btnBar: (
+									<div className="btn-group">
+										<button
+											onClick={() =>
+												closePopbox(
+													`/${userInfo.langId}/${path.profile.root}`
+												)
+											}>
+											{i18n.lbl_UpdatePersonalDetail}
+										</button>
+									</div>
+								)
+							});
+						} else {
+							setPopBox({
+								title: i18n.lbl_Add_Crypto_Wallet,
+								isOpen: true,
+								popBoxType: defPopBoxType.AddCryptoWallet,
+								GetCustBankInfo
+							});
+						}
+					} else if (res_custInfo.data.errorCode !== 0) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.lbl_Crypto_OTP,
-							hasBtn: true,
-							hideCloseBtn: true,
-							btnBar: (
-								<div className="btn-group">
-									<button
-										onClick={() =>
-											closePopbox(
-												`/${userInfo.langId}/${path.profile.root}`
-											)
-										}>
-										{i18n.lbl_UpdatePersonalDetail}
-									</button>
-								</div>
-							)
-						});
-					} else {
-						setPopBox({
-							title: i18n.lbl_Add_Crypto_Wallet,
-							isOpen: true,
-							popBoxType: defPopBoxType.AddCryptoWallet,
-							GetCustBankInfo
+							content: `[${res_custInfo.data.errorCode}] ${res_custInfo.data.message}`
 						});
 					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
 				}
-			});
+			);
 		}
 	};
 

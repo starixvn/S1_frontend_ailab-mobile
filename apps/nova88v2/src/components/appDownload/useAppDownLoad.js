@@ -6,16 +6,7 @@ export const useAppDownLoad = () => {
 	const isMountedRef = useRef(null);
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
-
 	const [appLinkDatas, setAppLinkData] = useState([]);
-
-	const errorPopBox = message => {
-		setPopBox({
-			isOpen: true,
-			title: i18n.lbl_ImportantNote,
-			content: message
-		});
-	};
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -42,13 +33,18 @@ export const useAppDownLoad = () => {
 
 						setAppLinkData(newData);
 					} else {
-						errorPopBox(message || `[${errorCode}] error`);
+						setPopBox({
+							isOpen: true,
+							content: `[${errorCode}] ${message}`
+						});
 					}
 				})
 				.catch(() => {
 					if (!isMountedRef.current) return;
-
-					errorPopBox(i18n.msg_ApiServerError);
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
 				});
 		};
 

@@ -71,11 +71,24 @@ const Panel = ({ isCrypto }) => {
 	}, [userInfo.isLogin]);
 
 	const GetDailyWithdrawalLimit = () => {
-		api.payment.GetWithdrawalLimit().then(res => {
-			if (res.data.errorCode === 0 && isMountedRef.current) {
-				setWithdrawalLimit(res.data.data);
+		api.payment.GetWithdrawalLimit().then(
+			res => {
+				if (res.data.errorCode === 0 && isMountedRef.current) {
+					setWithdrawalLimit(res.data.data);
+				} else if (res.data.errorCode !== 0) {
+					setPopBox({
+						isOpen: true,
+						content: `[${res.data.errorCode}] ${res.data.message}`
+					});
+				}
+			},
+			() => {
+				setPopBox({
+					isOpen: true,
+					content: i18n.msg_ApiServerError
+				});
 			}
-		});
+		);
 	};
 
 	useEffect(() => {
@@ -111,55 +124,72 @@ const Panel = ({ isCrypto }) => {
 			}
 		} else if (userInfo.isLogin) {
 			const CheckBankInfo = async () => {
-				const result = await api.account.GetCustBankInfo().then(res => {
-					let hasBankInfo = false;
-					if (res.data.errorCode === 0) {
-						if (isCrypto) {
-							if (res.data.data?.uSDTDetail.length > 0) {
+				const result = await api.account.GetCustBankInfo().then(
+					res => {
+						let hasBankInfo = false;
+						if (res.data.errorCode === 0) {
+							if (isCrypto) {
+								if (res.data.data?.uSDTDetail.length > 0) {
+									setPopBox({ isOpen: false });
+									if (isMountedRef.current) {
+										setbankInfo(() => ({
+											accountName:
+												res.data?.data?.accountName,
+											bankList:
+												res.data?.data?.uSDTDetail || []
+										}));
+										setSelBank(
+											res.data?.data?.uSDTDetail?.[0]
+										);
+										if (!pageVerify) {
+											setPageVerify(true);
+										}
+									}
+									hasBankInfo = true;
+								}
+							} else if (
+								res.data.data?.bankInfoDetail &&
+								res.data.data?.bankInfoDetail.length > 0
+							) {
 								setPopBox({ isOpen: false });
 								if (isMountedRef.current) {
 									setbankInfo(() => ({
-										accountName:
-											res.data?.data?.accountName,
-										bankList:
-											res.data?.data?.uSDTDetail || []
+										accountName: res.data.data.accountName,
+										bankList: res.data.data.bankInfoDetail
 									}));
-									setSelBank(res.data?.data?.uSDTDetail?.[0]);
+									const defAccountIdx = res.data.data?.bankInfoDetail.findIndex(
+										obj =>
+											obj.accountNo ===
+											res.data.data?.defAccountNo
+									);
+									setSelBank(
+										res.data.data.bankInfoDetail?.[
+											defAccountIdx === -1
+												? 0
+												: defAccountIdx
+										]
+									);
 									if (!pageVerify) {
 										setPageVerify(true);
 									}
 								}
 								hasBankInfo = true;
 							}
-						} else if (
-							res.data.data?.bankInfoDetail &&
-							res.data.data?.bankInfoDetail.length > 0
-						) {
-							setPopBox({ isOpen: false });
-							if (isMountedRef.current) {
-								setbankInfo(() => ({
-									accountName: res.data.data.accountName,
-									bankList: res.data.data.bankInfoDetail
-								}));
-								const defAccountIdx = res.data.data?.bankInfoDetail.findIndex(
-									obj =>
-										obj.accountNo ===
-										res.data.data?.defAccountNo
-								);
-								setSelBank(
-									res.data.data.bankInfoDetail?.[
-										defAccountIdx === -1 ? 0 : defAccountIdx
-									]
-								);
-								if (!pageVerify) {
-									setPageVerify(true);
-								}
-							}
-							hasBankInfo = true;
+						} else {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
 						}
+						return hasBankInfo;
+					},
+					() => {
+						setPopBox({
+							isOpen: true,
+							content: i18n.msg_ApiServerError
+						});
 					}
-					return hasBankInfo;
-				});
+				);
 				return result;
 			};
 
@@ -177,26 +207,49 @@ const Panel = ({ isCrypto }) => {
 												isMountedRef.current
 											) {
 												setBalanceInfo(res.data.data);
-												setLoading(false);
+											} else if (
+												res.data.errorCode !== 0
+											) {
+												setPopBox({
+													isOpen: true,
+													content: `[${res.data.errorCode}] ${res.data.message}`
+												});
 											}
+											setLoading(false);
 										},
 										() => {
 											if (isMountedRef.current) {
+												setPopBox({
+													isOpen: true,
+													content:
+														i18n.msg_ApiServerError
+												});
 												setLoading(false);
 											}
 										}
 									);
 
-								api.payment
-									.GetWithdrawalInfoRecent()
-									.then(res => {
+								api.payment.GetWithdrawalInfoRecent().then(
+									res => {
 										if (
 											res.data.errorCode === 0 &&
 											isMountedRef.current
 										) {
 											setRecentDatas(res.data.data);
+										} else if (res.data.errorCode !== 0) {
+											setPopBox({
+												isOpen: true,
+												content: `[${res.data.errorCode}] ${res.data.message}`
+											});
 										}
-									});
+									},
+									() => {
+										setPopBox({
+											isOpen: true,
+											content: i18n.msg_ApiServerError
+										});
+									}
+								);
 							}
 						}
 					});
@@ -226,6 +279,11 @@ const Panel = ({ isCrypto }) => {
 					navigate(`/${userInfo.langId}/${path.kycWaiting.root}`);
 				} else if (isMountedRef.current && UpdatePageVerify) {
 					setPageVerify(true);
+				} else if (res.data.errorCode !== 0) {
+					setPopBox({
+						isOpen: true,
+						content: `[${res.data.errorCode}] ${res.data.message}`
+					});
 				}
 			}
 			return res.data.errorCode === 1 || res.data.errorCode === 2;
@@ -235,11 +293,24 @@ const Panel = ({ isCrypto }) => {
 
 	const GetBalance = () => {
 		if (pageVerify) {
-			api.account.GetWithdrawalAvailableBalance().then(res => {
-				if (res.data.errorCode === 0 && isMountedRef.current) {
-					setBalanceInfo(res.data.data);
+			api.account.GetWithdrawalAvailableBalance().then(
+				res => {
+					if (res.data.errorCode === 0 && isMountedRef.current) {
+						setBalanceInfo(res.data.data);
+					} else if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
 				}
-			});
+			);
 		}
 	};
 
@@ -388,6 +459,14 @@ const Panel = ({ isCrypto }) => {
 													);
 													GetDailyWithdrawalLimit();
 													setWarning(initWarning);
+												} else if (
+													resRecent.data.errorCode !==
+													0
+												) {
+													setPopBox({
+														isOpen: true,
+														content: `[${resRecent.data.errorCode}] ${resRecent.data.message}`
+													});
 												}
 											});
 									}
@@ -430,7 +509,6 @@ const Panel = ({ isCrypto }) => {
 						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
 								content: i18n.msg_ApiServerError
 							});
 						}
@@ -442,9 +520,8 @@ const Panel = ({ isCrypto }) => {
 					: Number(amount);
 
 				if (isCrypto) {
-					api.payment
-						.GetExchangeInfo({ Amount: real_amount })
-						.then(res => {
+					api.payment.GetExchangeInfo({ Amount: real_amount }).then(
+						res => {
 							if (
 								res.data.errorCode === 0 &&
 								isMountedRef.current
@@ -524,11 +601,17 @@ const Panel = ({ isCrypto }) => {
 							} else if (res.data.errorCode !== 0) {
 								setPopBox({
 									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: i18n.msg_ApiServerError
+									content: `[${res.data.errorCode}] ${res.data.message}`
 								});
 							}
-						});
+						},
+						() => {
+							setPopBox({
+								isOpen: true,
+								content: i18n.msg_ApiServerError
+							});
+						}
+					);
 				} else {
 					setPopBox({
 						isOpen: true,
@@ -620,20 +703,30 @@ const Panel = ({ isCrypto }) => {
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 0) {
-								api.payment
-									.GetWithdrawalInfoRecent()
-									.then(resRecent => {
-										if (res.data.errorCode === 0) {
+								api.payment.GetWithdrawalInfoRecent().then(
+									resRecent => {
+										if (resRecent.data.errorCode === 0) {
 											GetBalance();
 											GetDailyWithdrawalLimit();
 											setRecentDatas(resRecent.data.data);
+										} else {
+											setPopBox({
+												isOpen: true,
+												content: `[${resRecent.data.errorCode}] ${resRecent.data.message}`
+											});
 										}
-									});
+									},
+									() => {
+										setPopBox({
+											isOpen: true,
+											content: i18n.msg_ApiServerError
+										});
+									}
+								);
 							} else {
 								setPopBox({
 									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: res.data.message
+									content: `[${res.data.errorCode}] ${res.data.message}`
 								});
 							}
 						}
@@ -642,7 +735,6 @@ const Panel = ({ isCrypto }) => {
 						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
 								content: i18n.msg_ApiServerError
 							});
 						}
@@ -696,8 +788,7 @@ const Panel = ({ isCrypto }) => {
 					} else {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.msg_ApiServerError
+							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
 					setLoading(false);
@@ -708,7 +799,6 @@ const Panel = ({ isCrypto }) => {
 					setLoading(false);
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
 				}
@@ -742,34 +832,50 @@ const Panel = ({ isCrypto }) => {
 				});
 			}
 		} else {
-			api.accountStrict.GetCustProfile().then(res_custInfo => {
-				if (res_custInfo.data.errorCode === 0 && isMountedRef.current) {
-					const { data } = res_custInfo.data;
-					if (!data.phoneVerified) {
+			api.accountStrict.GetCustProfile().then(
+				res_custInfo => {
+					if (
+						res_custInfo.data.errorCode === 0 &&
+						isMountedRef.current
+					) {
+						const { data } = res_custInfo.data;
+						if (!data.phoneVerified) {
+							setPopBox({
+								isOpen: true,
+								title: i18n.lbl_ImportantNote,
+								content: i18n.lbl_Crypto_OTP,
+								hasBtn: true,
+								hideCloseBtn: true,
+								btnBar: (
+									<div className="btn-group">
+										<button onClick={closePopbox}>
+											{i18n.lbl_UpdatePersonalDetail}
+										</button>
+									</div>
+								)
+							});
+						} else {
+							setPopBox({
+								title: i18n.lbl_Add_Crypto_Wallet,
+								isOpen: true,
+								popBoxType: defPopBoxType.AddCryptoWallet,
+								GetCustBankInfo
+							});
+						}
+					} else if (res_custInfo.data.errorCode !== 0) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: i18n.lbl_Crypto_OTP,
-							hasBtn: true,
-							hideCloseBtn: true,
-							btnBar: (
-								<div className="btn-group">
-									<button onClick={closePopbox}>
-										{i18n.lbl_UpdatePersonalDetail}
-									</button>
-								</div>
-							)
-						});
-					} else {
-						setPopBox({
-							title: i18n.lbl_Add_Crypto_Wallet,
-							isOpen: true,
-							popBoxType: defPopBoxType.AddCryptoWallet,
-							GetCustBankInfo
+							content: `[${res_custInfo.data.errorCode}] ${res_custInfo.data.message}`
 						});
 					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
 				}
-			});
+			);
 		}
 	};
 
@@ -810,15 +916,13 @@ const Panel = ({ isCrypto }) => {
 				} else {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
-						content: res.data.message
+						content: `[${res.data.errorCode}] ${res.data.message}`
 					});
 				}
 			})
 			.catch(() => {
 				setPopBox({
 					isOpen: true,
-					title: i18n.lbl_ImportantNote,
 					content: i18n.msg_ApiServerError
 				});
 			});

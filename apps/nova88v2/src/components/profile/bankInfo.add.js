@@ -52,7 +52,7 @@ const AddBankPanel = ({
 			res => {
 				if (isMountedRef.current) {
 					const { data, errorCode, message } = res.data;
-					if (res.data.errorCode === 0) {
+					if (errorCode === 0) {
 						const bankInfoArr = data.map(i => {
 							return {
 								id: i.sysId,
@@ -69,8 +69,7 @@ const AddBankPanel = ({
 					} else {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: `[${errorCode}]${message}`
+							content: `[${errorCode}] ${message}`
 						});
 					}
 					setLoading(false);
@@ -80,7 +79,6 @@ const AddBankPanel = ({
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
 					setLoading(false);
@@ -173,8 +171,7 @@ const AddBankPanel = ({
 							} else {
 								setPopBox({
 									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: `[${errorCode}]${message}`
+									content: `[${errorCode}] ${message}`
 								});
 							}
 							setLoading(false);
@@ -184,7 +181,6 @@ const AddBankPanel = ({
 						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
 								content: i18n.msg_ApiServerErrors
 							});
 							setLoading(false);

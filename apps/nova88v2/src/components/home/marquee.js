@@ -96,54 +96,61 @@ class Marquee extends Component {
 	};
 
 	GetAnnouncement = langId => {
-		api.message.GetAnnouncement(langId).then(res => {
-			if (res.data.errorCode === 0) {
-				const resData = res.data.data;
-				const stateData = this.state.datas;
-				let upd = false;
-				if (resData.length !== 0 && stateData.length !== 0) {
-					for (const d in resData) {
-						if (
-							!stateData.find(
-								x =>
-									x.id === resData[d].id &&
-									x.subject === resData[d].subject &&
-									x.content === resData[d].content
-							)
-						) {
-							upd = true;
-							break;
+		api.message.GetAnnouncement(langId).then(
+			res => {
+				if (res.data.errorCode === 0) {
+					const resData = res.data.data;
+					const stateData = this.state.datas;
+					let upd = false;
+					if (resData.length !== 0 && stateData.length !== 0) {
+						for (const d in resData) {
+							if (
+								!stateData.find(
+									x =>
+										x.id === resData[d].id &&
+										x.subject === resData[d].subject &&
+										x.content === resData[d].content
+								)
+							) {
+								upd = true;
+								break;
+							}
+						}
+					} else {
+						upd = true;
+					}
+
+					if (upd) {
+						if (this.intervalId_Pos === undefined) {
+							this.intervalId_Pos = setInterval(this.SetPos, 25);
+						}
+
+						if (this.isMountedRef) {
+							this.setState({
+								datas: res.data.data.map(item => {
+									return {
+										...item,
+										subject: item.subject,
+										content: item.content
+									};
+								})
+							});
 						}
 					}
-				} else {
-					upd = true;
+				} else if (res.data.errorCode !== 0) {
+					this.props.setPopBox({
+						isOpen: true,
+						content: `[${res.data.errorCode}] ${res.data.message}`
+					});
 				}
-
-				if (upd) {
-					if (this.intervalId_Pos === undefined) {
-						this.intervalId_Pos = setInterval(this.SetPos, 25);
-					}
-
-					if (this.isMountedRef) {
-						this.setState({
-							datas: res.data.data.map(item => {
-								return {
-									...item,
-									subject: item.subject,
-									content: item.content
-								};
-							})
-						});
-					}
-				}
-			} else if (this.isMountedRef) {
-				this.props.setPopBox({
+			},
+			() => {
+				setPopBox({
 					isOpen: true,
-					title: this.props.i18n.lbl_ImportantNote,
-					content: res.data.message
+					content: i18n.msg_ApiServerError
 				});
 			}
-		});
+		);
 	};
 
 	ClickMarquee = item => {

@@ -118,7 +118,7 @@ const LuckyWheel = () => {
 					} else {
 						setPopBox({
 							isOpen: true,
-							content: `[${errorCode}]${message}`
+							content: `[${errorCode}] ${message}`
 						});
 						setCanDrawPrize({
 							status: false,

@@ -7,7 +7,6 @@ import {
 } from "Context";
 import PropTypes from "prop-types";
 import moment from "moment";
-import Loading from "../common/loading";
 import api from "../../service/api";
 import GoTopBtn from "../common/goTopBtn";
 
@@ -25,23 +24,31 @@ const Panel = () => {
 			setLoading(true);
 		}
 
-		api.message.GetAnnouncement(userInfo.langId).then(res => {
-			if (mounted) {
-				if (res.data.errorCode === 0) {
-					const { data } = res.data;
-					if (mounted) {
-						setGetAnnouncement(data);
+		api.message.GetAnnouncement(userInfo.langId).then(
+			res => {
+				if (mounted) {
+					if (res.data.errorCode === 0) {
+						const { data } = res.data;
+						if (mounted) {
+							setGetAnnouncement(data);
+						}
+					} else {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
 					}
-				} else {
-					setPopBox({
-						isOpen: true,
-						title: i18n.lbl_ImportantNote,
-						content: res.data.message
-					});
+					setLoading(false);
 				}
+			},
+			() => {
+				setPopBox({
+					isOpen: true,
+					content: i18n.msg_ApiServerError
+				});
 				setLoading(false);
 			}
-		});
+		);
 	}, [
 		i18n.lbl_ImportantNote,
 		i18n.msg_ApiServerError,

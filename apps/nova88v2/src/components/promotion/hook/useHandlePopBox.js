@@ -16,7 +16,7 @@ export const useHandlePopBox = () => {
 		setPopBox({
 			isOpen: true,
 			title: i18n.lbl_ImportantNote,
-			content: <p>{`[${errorCode}] ${message}`}</p>,
+			content: errorCode ? `[${errorCode}] ${message}` : message,
 			hasBtn: true,
 			btnBar: (
 				<div className="btn-group">

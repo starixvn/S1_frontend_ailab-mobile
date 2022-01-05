@@ -100,7 +100,6 @@ export const Wrapper = ({ children }) => {
 		if (errorCode !== 0 && isMountedRef.current) {
 			setPopBox({
 				isOpen: true,
-				title: i18n.lbl_ImportantNote,
 				content: errMsg ?? i18n.msg_ForceLogedoutHint
 			});
 			setUserInfo(prevState => ({
@@ -140,43 +139,76 @@ export const Wrapper = ({ children }) => {
 	useEffect(() => {
 		if (userInfo.isLogin) {
 			if (!userInfo.regTime) {
-				api.accountStrict.GetCustProfile().then(res_custInfo => {
-					if (
-						res_custInfo.data.errorCode === 0 &&
-						isMountedRef.current
-					) {
-						const { data } = res_custInfo.data;
-						setUserInfo(prevState => ({
-							...prevState,
-							...data
-						}));
-					}
-				});
-			}
-
-			api.account.GetMsgCount().then(res => {
-				if (res.data.errorCode === 0 && isMountedRef.current) {
-					setMsgCount(res.data.data);
-				}
-			});
-
-			if (userInfo.userName) {
-				api.account.GetBalnace().then(res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							setWalletInfo(prevState => ({
+				api.accountStrict.GetCustProfile().then(
+					res_custInfo => {
+						if (
+							res_custInfo.data.errorCode === 0 &&
+							isMountedRef.current
+						) {
+							const { data } = res_custInfo.data;
+							setUserInfo(prevState => ({
 								...prevState,
-								main: res.data.data
+								...data
 							}));
-						} else if (res.data.message) {
+						} else if (res_custInfo.data.errorCode !== 0) {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: `[${res.data.errorCode}]${res.data.message}`
+								content: `[${res_custInfo.data.errorCode}] ${res_custInfo.data.message}`
 							});
 						}
+					},
+					() => {
+						setPopBox({
+							isOpen: true,
+							content: i18n.msg_ApiServerError
+						});
 					}
-				});
+				);
+			}
+
+			api.account.GetMsgCount().then(
+				res => {
+					if (res.data.errorCode === 0 && isMountedRef.current) {
+						setMsgCount(res.data.data);
+					} else if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
+				}
+			);
+
+			if (userInfo.userName) {
+				api.account.GetBalnace().then(
+					res => {
+						if (isMountedRef.current) {
+							if (res.data.errorCode === 0) {
+								setWalletInfo(prevState => ({
+									...prevState,
+									main: res.data.data
+								}));
+							} else {
+								setPopBox({
+									isOpen: true,
+									content: `[${res.data.errorCode}] ${res.data.message}`
+								});
+							}
+						}
+					},
+					() => {
+						setPopBox({
+							isOpen: true,
+							content: i18n.msg_ApiServerError
+						});
+					}
+				);
 			}
 
 			// if (match?.["*"]) {

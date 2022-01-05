@@ -1,5 +1,10 @@
 import React, { useContext, useEffect, useRef } from "react";
-import { i18nContext, userInfoContext, loadingContext } from "Context";
+import {
+	i18nContext,
+	userInfoContext,
+	loadingContext,
+	popBoxContext
+} from "Context";
 import { useNavigate } from "@reach/router";
 import path from "Path";
 import api from "../../service/api";
@@ -9,7 +14,7 @@ import Header from "../header/header";
 export default () => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
-
+	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setLoading } = useContext(loadingContext);
 	const isMountedRef = useRef(null);
@@ -30,23 +35,37 @@ export default () => {
 	useEffect(() => {
 		if (userInfo.isLogin) {
 			const CheckBankInfo = async () => {
-				const result = await api.account.GetCustBankInfo().then(res => {
-					let hasBankInfo = false;
-					if (res.data.errorCode === 0) {
-						if (
-							res.data.data?.bankInfoDetail?.length ||
-							res.data.data?.uSDTDetail?.length
-						) {
-							hasBankInfo = true;
-						} else if (isMountedRef.current) {
-							navigate(
-								`/${userInfo.langId}/${path.withdrawal.root}`
-							);
+				const result = await api.account.GetCustBankInfo().then(
+					res => {
+						let hasBankInfo = false;
+						if (res.data.errorCode === 0) {
+							if (
+								res.data.data?.bankInfoDetail?.length ||
+								res.data.data?.uSDTDetail?.length
+							) {
+								hasBankInfo = true;
+							} else if (isMountedRef.current) {
+								navigate(
+									`/${userInfo.langId}/${path.withdrawal.root}`
+								);
+							}
+							return hasBankInfo;
 						}
+						if (res.data.errorCode !== 0) {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
+						}
+						return result;
+					},
+					() => {
+						setPopBox({
+							isOpen: true,
+							content: i18n.msg_ApiServerError
+						});
 					}
-					return hasBankInfo;
-				});
-				return result;
+				);
 			};
 
 			CheckBankInfo().then(hasBankInfo => {

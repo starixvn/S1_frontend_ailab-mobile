@@ -172,7 +172,6 @@ export default ({
 		userInfo: { isLogin },
 		i18n
 	} = useContext(configContext);
-
 	const allElems = defElems({
 		promotionInfo,
 		i18n,

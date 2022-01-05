@@ -85,6 +85,11 @@ const JoinStep1 = ({
 			if (res.data.errorCode === 0 && res.data.data === true) {
 				checked = false;
 				msg = res.data.message;
+			} else if (res.data.errorCode !== 0) {
+				setPopBox({
+					isOpen: true,
+					content: `[${res.data.errorCode}] ${res.data.message}`
+				});
 			}
 		}
 		return { checked, msg };
