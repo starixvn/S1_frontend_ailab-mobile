@@ -70,12 +70,14 @@ const PromoList = ({
 
 	const selectPromo = i => {
 		if (i !== selectedIdx) {
-			setSelectedIdx(i);
-			setDepositPromo(promoList[i]);
-
 			if (!isOTPVerified(userInfo)) {
 				openVerificationPopBox(promoList[i].bonusCode);
+
+				return;
 			}
+
+			setSelectedIdx(i);
+			setDepositPromo(promoList[i]);
 		}
 	};
 
@@ -148,7 +150,7 @@ const DepositPromoTip = ({
 	const real_amount = _isConvert ? amount * 1000 : amount;
 
 	const tip = () => {
-		if (phoneVerified !== false) return i18n.lbl_DepositPromoMsg1;
+		if (phoneVerified === false) return i18n.lbl_DepositPromoMsg1;
 
 		if (requiredAmount && real_amount < requiredAmount)
 			return `${i18n.lbl_DepositPromoMsg2} ${
