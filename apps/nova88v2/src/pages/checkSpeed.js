@@ -1,6 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { i18nContext, userInfoContext } from "../components/common/context";
+import {
+	i18nContext,
+	userInfoContext,
+	popBoxContext
+} from "../components/common/context";
 import api from "../service/api";
 import y from "../styles/img/check_speed/y.png";
 import n from "../styles/img/check_speed/n.png";
@@ -55,6 +59,7 @@ axios.interceptors.response.use(
 const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
+	const { setPopBox } = useContext(popBoxContext);
 	const [list, setList] = useState([]);
 	const [ip, setIp] = useState("");
 	const _GetIp = async () => {
@@ -72,10 +77,18 @@ const IndexPage = () => {
 						checkURL(el.domainName);
 					});
 				} else {
-					console.error(res.data.message);
+					setPopBox({
+						isOpen: true,
+						content: `[${res.data.errorCode}] ${res.data.message}`
+					});
 				}
 			})
-			.catch(err => console.error(err));
+			.catch(() => {
+				setPopBox({
+					isOpen: true,
+					content: i18n.msg_ApiServerError
+				});
+			});
 	};
 	useEffect(() => {
 		_GetSupportDomainList();

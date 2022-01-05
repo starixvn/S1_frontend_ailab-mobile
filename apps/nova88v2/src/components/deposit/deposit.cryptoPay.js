@@ -122,61 +122,47 @@ const Main = props => {
 								real_amount,
 								bonusCode
 							})
-							.then(res => {
-								if (res.data.errorCode === 0) {
-									setLoading(false);
-									const { formData } = res.data.data;
-									const promoContent = {
-										cashbackAmount: null,
-										receivedAmount: null,
-										PromotionRate: null,
-										Promotion: null
-									};
-									if (formData?.Promotion === "1") {
-										promoContent.cashbackAmount =
-											formData?.PromotionAmount;
-										promoContent.receivedAmount =
-											Number(formData?.PromotionAmount) +
-											Number(formData?.DepositAmount);
-										promoContent.PromotionRate = `${Number(
-											res.data.data.formData
-												?.PromotionRate
-										).toFixed(2)}%`;
+							.then(
+								res => {
+									if (res.data.errorCode === 0) {
+										setLoading(false);
+										const { formData } = res.data.data;
+										const promoContent = {
+											cashbackAmount: null,
+											receivedAmount: null,
+											PromotionRate: null,
+											Promotion: null
+										};
+										if (formData?.Promotion === "1") {
+											promoContent.cashbackAmount =
+												formData?.PromotionAmount;
+											promoContent.receivedAmount =
+												Number(
+													formData?.PromotionAmount
+												) +
+												Number(formData?.DepositAmount);
+											promoContent.PromotionRate = `${Number(
+												res.data.data.formData
+													?.PromotionRate
+											).toFixed(2)}%`;
 
-										promoContent.Promotion =
-											formData?.Promotion;
+											promoContent.Promotion =
+												formData?.Promotion;
+										}
+									} else {
+										setPopBox({
+											isOpen: true,
+											content: `[${res.data.errorCode}] ${res.data.message}`
+										});
 									}
+								},
+								() => {
 									setPopBox({
 										isOpen: true,
-										title: i18n.lbl_DepositType4,
-										className: "dragonPayPop",
-										popBoxType: defPopBoxType.PaymentQR,
-										amount: real_amount,
-										depositAmount: formData?.DepositAmount,
-										currencyId: userInfo.currencyId,
-										cashbackAmount:
-											promoContent.cashbackAmount,
-										receivedAmount:
-											promoContent.receivedAmount,
-										PromotionRate:
-											promoContent.PromotionRate,
-										promoContent: promoContent.Promotion,
-										QRcodeURL: res.data.data.url,
-										RequestAmount: Number(
-											formData?.RequestAmount
-										).toString(),
-										Rate: Number(formData?.Rate).toString(),
-										Token: formData?.Token,
-										handlePopBox: () => {
-											setPopBox(prevState => ({
-												...prevState,
-												isOpen: false
-											}));
-											window.location.reload();
-										}
+										content: i18n.msg_ApiServerError
 									});
 								}
-							});
+							);
 					} else {
 						setPopBox(prevState => ({
 							...prevState,

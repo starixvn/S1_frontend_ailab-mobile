@@ -106,11 +106,10 @@ const Payment = props => {
 										bankInfo: res.data.data[bankIdx]
 									});
 								}
-							} else if (isMountedRef.current) {
+							} else if (res.data.errorCode !== 0) {
 								setPopBox({
 									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: res.data.message
+									content: `[${res.data.errorCode}] ${res.data.message}`
 								});
 							}
 
@@ -122,7 +121,6 @@ const Payment = props => {
 							if (isMountedRef.current) {
 								setPopBox({
 									isOpen: true,
-									title: i18n.lbl_ImportantNote,
 									content: i18n.msg_ApiServerError
 								});
 								setLoading(false);
@@ -153,8 +151,7 @@ const Payment = props => {
 						} else {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: res.data.message
+								content: `[${res.data.errorCode}] ${res.data.message}`
 							});
 						}
 					}
@@ -163,7 +160,6 @@ const Payment = props => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 					}
@@ -225,34 +221,50 @@ const Payment = props => {
 							real_amount,
 							bonusCode
 						})
-						.then(res => {
-							if (res.data.errorCode === 0) {
+						.then(
+							res => {
+								if (res.data.errorCode === 0) {
+									setPopBox({
+										isOpen: true,
+										title: i18n.lbl_DepositType1,
+										className: "dragonPayPop",
+										popBoxType: defPopBoxType.PaymentQR,
+										amount: real_amount,
+										depositAmount:
+											res.data.data.formData
+												.DepositAmount,
+										currencyId: userInfo.currencyId,
+										imgUrl: res.data.data.url,
+										orderNumber: res.data.data.thirdId,
+										bankName:
+											res.data.data.formData.BankName,
+										accountName:
+											res.data.data.formData.AccountName,
+										accountNumber:
+											res.data.data.formData
+												.AccountNumber,
+										handlePopBox: () => {
+											setPopBox(prevState => ({
+												...prevState,
+												isOpen: false
+											}));
+											RefreshPage();
+										}
+									});
+								} else {
+									setPopBox({
+										isOpen: true,
+										content: `[${res.data.errorCode}] ${res.data.message}`
+									});
+								}
+							},
+							() => {
 								setPopBox({
 									isOpen: true,
-									title: i18n.lbl_DepositType1,
-									className: "dragonPayPop",
-									popBoxType: defPopBoxType.PaymentQR,
-									amount: real_amount,
-									depositAmount:
-										res.data.data.formData.DepositAmount,
-									currencyId: userInfo.currencyId,
-									imgUrl: res.data.data.url,
-									orderNumber: res.data.data.thirdId,
-									bankName: res.data.data.formData.BankName,
-									accountName:
-										res.data.data.formData.AccountName,
-									accountNumber:
-										res.data.data.formData.AccountNumber,
-									handlePopBox: () => {
-										setPopBox(prevState => ({
-											...prevState,
-											isOpen: false
-										}));
-										RefreshPage();
-									}
+									content: i18n.msg_ApiServerError
 								});
 							}
-						});
+						);
 				} else {
 					setPopBox(prevState => ({
 						...prevState,

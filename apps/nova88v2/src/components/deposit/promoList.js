@@ -205,8 +205,7 @@ export const setCustPromo = ({
 					} else {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: `[${errorCode}]${message}`
+							content: `[${errorCode}] ${message}`
 						});
 					}
 				},
@@ -234,7 +233,7 @@ export const useGetDepositPromotionList = ({ langId, i18n }) => {
 
 	useEffect(() => {
 		api.promotion.GetDepositPromotionList({ langId }).then(res => {
-			const { errorCode, data } = res.data;
+			const { errorCode, data, message } = res.data;
 			if (isMountedRef.current && errorCode === 0) {
 				const _promoList = data?.map((promo, i) => ({
 					id: i,
@@ -251,6 +250,11 @@ export const useGetDepositPromotionList = ({ langId, i18n }) => {
 				};
 
 				setPromoList([none, ..._promoList]);
+			} else if (errorCode !== 0) {
+				setPopBox({
+					isOpen: true,
+					content: `[${errorCode}] ${message}`
+				});
 			}
 		});
 	}, [langId, i18n]);

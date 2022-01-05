@@ -77,8 +77,7 @@ const ByCategory = props => {
 						} else {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: `[${res.data.errorCode}]${res.data.message}`
+								content: `[${res.data.errorCode}] ${res.data.message}`
 							});
 						}
 						setLoading(false);
@@ -88,7 +87,6 @@ const ByCategory = props => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 						setLoading(false);

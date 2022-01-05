@@ -32,8 +32,7 @@ const LanguageList = ({ userInfo, setUserInfo, i18n }) => {
 							} else {
 								setPopBox({
 									isOpen: true,
-									title: i18n.lbl_ImportantNote,
-									content: res.data.message
+									content: `[${res.data.errorCode}] ${res.data.message}`
 								});
 							}
 						}
@@ -42,7 +41,6 @@ const LanguageList = ({ userInfo, setUserInfo, i18n }) => {
 						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
 								content: i18n.msg_ApiServerError
 							});
 						}

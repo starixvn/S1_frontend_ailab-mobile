@@ -91,6 +91,10 @@ const JoinStep2 = ({
 							]);
 						} else {
 							GetSiteCurrencyList();
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
 						}
 					}
 				},
@@ -98,7 +102,6 @@ const JoinStep2 = ({
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 					}
@@ -122,8 +125,7 @@ const JoinStep2 = ({
 					} else {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: res.data?.message
+							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
 				}
@@ -132,7 +134,6 @@ const JoinStep2 = ({
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
 				}
@@ -208,6 +209,11 @@ const JoinStep2 = ({
 			if (res.data?.errorCode === 0 && res.data?.data === true) {
 				checked = false;
 				msg = "msg_MailExisted";
+			} else if (res.data.errorCode !== 0) {
+				setPopBox({
+					isOpen: true,
+					content: `[${res.data.errorCode}] ${res.data.message}`
+				});
 			}
 		}
 		return { checked, msg };
@@ -235,6 +241,11 @@ const JoinStep2 = ({
 			if (res.data?.errorCode === 0 && res.data?.data === true) {
 				checked = false;
 				msg = "msg_PhoneExisted";
+			} else if (res.data.errorCode !== 0) {
+				setPopBox({
+					isOpen: true,
+					content: `[${res.data.errorCode}] ${res.data.message}`
+				});
 			}
 		}
 		return { checked, msg };
@@ -365,6 +376,11 @@ const JoinStep2 = ({
 												..._user,
 												...res_custInfo.data.data
 											};
+										} else {
+											setPopBox({
+												isOpen: true,
+												content: `[${res_custInfo.data.errorCode}] ${res_custInfo.data.message}`
+											});
 										}
 										setUserInfo(_user);
 									}
@@ -373,30 +389,15 @@ const JoinStep2 = ({
 									if (isMountedRef.current) {
 										setPopBox({
 											isOpen: true,
-											title: i18n.lbl_ImportantNote,
 											content: i18n.msg_ApiServerError
 										});
 									}
 								}
 							);
 						} else {
-							const clickClose = () => {
-								setPopBox({ isOpen: false });
-							};
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: `[${errorCode}] ${message}`,
-								hasBtn: true,
-								btnBar: (
-									<div className="btn-group">
-										<button
-											className="orange"
-											onClick={clickClose}>
-											{i18n.lbl_Close}
-										</button>
-									</div>
-								)
+								content: `[${errorCode}] ${message}`
 							});
 						}
 					}
@@ -405,7 +406,6 @@ const JoinStep2 = ({
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 					}

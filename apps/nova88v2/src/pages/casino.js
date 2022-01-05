@@ -1,6 +1,6 @@
 import React, { useContext, createRef } from "react";
 import PropTypes from "prop-types";
-import { i18nContext, userInfoContext } from "Context";
+import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import Slider from "../components/casino/slider";
 import defNav from "../components/casino/defNav";
 import Nav from "../components/casino/nav";
@@ -60,125 +60,156 @@ class Panel extends React.Component {
 
 		const sort = [];
 
-		api.site.GetGameListByDevice().then(res => {
-			if (res.data.errorCode === 0) {
-				const _tpList = {};
-				const games = [];
+		api.site.GetGameListByDevice().then(
+			res => {
+				if (res.data.errorCode === 0) {
+					const _tpList = {};
+					const games = [];
 
-				const { imgUrl, providerList } = res.data.data;
-				providerList?.forEach(t => {
-					_tpList[t.value] = { ...t };
-					if (t.gameList?.data) {
-						t.gameList.data.forEach(g => {
-							games.push({
-								tpId: t.value,
-								...g
-							});
-						});
-					}
-				});
-
-				if (games.length) {
-					for (let i = 0; i < games.length; i++) {
-						const idx = Math.floor(Math.random() * games.length);
-						const tempEle1 = games[i];
-						const tempEle2 = games[idx];
-
-						games[i] = tempEle2;
-						games[idx] = tempEle1;
-					}
-				}
-				if (this.mounted) {
-					const nav = this.props.selNav ?? defNav.FEATURED.key;
-					const _tplistArr = Object.keys(_tpList);
-
-					gameList({
-						langId: this.props.userInfo.langId ?? "en",
-						currencyName: GetCurrencyName({
-							langId: this.props.userInfo.langId ?? "en",
-							i18n: this.props.i18n
-						})
-					}).forEach(el => {
-						if (el.category === "slot") {
-							el.items.forEach(game => {
-								if (
-									_tplistArr.indexOf(game.tpId.toString()) >
-									-1
-								) {
-									if (game.tpId === this.props.tpId) {
-										sort.unshift(game);
-									} else if (game.providerImgName) {
-										sort.push(game);
-									}
-								}
+					const { imgUrl, providerList } = res.data.data;
+					providerList?.forEach(t => {
+						_tpList[t.value] = { ...t };
+						if (t.gameList?.data) {
+							t.gameList.data.forEach(g => {
+								games.push({
+									tpId: t.value,
+									...g
+								});
 							});
 						}
 					});
 
-					if (!this.props.fromModal) {
-						this.setState(
-							{
-								sorted: sort,
-								tpList: _tpList,
-								gameDatas: games,
-								selProvider: this.props.tpId,
-								selNav: nav ?? 0,
-								imgUrl
-							},
-							() => {
-								this.SetMoreItems();
-							}
-						);
-					} else {
-						const {
-							selGameInfo,
-							selProvider,
-							searchText,
-							selGameType,
-							selNav
-						} = JSON.parse(localStorage.getItem("prevScreen")) || {
-							selGameInfo: null,
-							selNav: Object.keys(defNav)?.[
-								this.props.selNavIdx ?? 0
-							],
-							selProvider: this.props.tpId,
-							selGameType: { idx: 0, value: null },
-							searchText: ""
-						};
+					if (games.length) {
+						for (let i = 0; i < games.length; i++) {
+							const idx = Math.floor(
+								Math.random() * games.length
+							);
+							const tempEle1 = games[i];
+							const tempEle2 = games[idx];
 
-						this.setState(
-							{
+							games[i] = tempEle2;
+							games[idx] = tempEle1;
+						}
+					}
+					if (this.mounted) {
+						const nav = this.props.selNav ?? defNav.FEATURED.key;
+						const _tplistArr = Object.keys(_tpList);
+
+						gameList({
+							langId: this.props.userInfo.langId ?? "en",
+							currencyName: GetCurrencyName({
+								langId: this.props.userInfo.langId ?? "en",
+								i18n: this.props.i18n
+							})
+						}).forEach(el => {
+							if (el.category === "slot") {
+								el.items.forEach(game => {
+									if (
+										_tplistArr.indexOf(
+											game.tpId.toString()
+										) > -1
+									) {
+										if (game.tpId === this.props.tpId) {
+											sort.unshift(game);
+										} else if (game.providerImgName) {
+											sort.push(game);
+										}
+									}
+								});
+							}
+						});
+
+						if (!this.props.fromModal) {
+							this.setState(
+								{
+									sorted: sort,
+									tpList: _tpList,
+									gameDatas: games,
+									selProvider: this.props.tpId,
+									selNav: nav ?? 0,
+									imgUrl
+								},
+								() => {
+									this.SetMoreItems();
+								}
+							);
+						} else {
+							const {
 								selGameInfo,
 								selProvider,
-								searchInfo: {
-									searchText,
-									gameType: selGameType
+								searchText,
+								selGameType,
+								selNav
+							} = JSON.parse(
+								localStorage.getItem("prevScreen")
+							) || {
+								selGameInfo: null,
+								selNav: Object.keys(defNav)?.[
+									this.props.selNavIdx ?? 0
+								],
+								selProvider: this.props.tpId,
+								selGameType: { idx: 0, value: null },
+								searchText: ""
+							};
+
+							this.setState(
+								{
+									selGameInfo,
+									selProvider,
+									searchInfo: {
+										searchText,
+										gameType: selGameType
+									},
+									selNav,
+									sorted: sort,
+									tpList: _tpList,
+									gameDatas: games,
+									imgUrl
 								},
-								selNav,
-								sorted: sort,
-								tpList: _tpList,
-								gameDatas: games,
-								imgUrl
-							},
-							() => {
-								this.SetMoreItems();
-							}
-						);
+								() => {
+									this.SetMoreItems();
+								}
+							);
+						}
 					}
-				}
-			}
-		});
-		if (this.props.userInfo.isLogin) {
-			api.account.GetFavoriteGame().then(res => {
-				if (res.data.errorCode === 0 && res.data.data) {
-					const fav = res.data.data.map(f => {
-						return `${f.providerId}_${f.gameId}`;
+				} else {
+					this.props.setPopBox({
+						isOpen: true,
+						content: `[${res.data.errorCode}] ${res.data.message}`
 					});
-					if (this.mounted) {
-						this.setState({ favorite: fav });
-					}
 				}
-			});
+			},
+			() => {
+				this.props.setPopBox({
+					isOpen: true,
+					content: this.props.i18n.msg_ApiServerError
+				});
+			}
+		);
+		if (this.props.userInfo.isLogin) {
+			api.account.GetFavoriteGame().then(
+				res => {
+					if (res.data.errorCode === 0 && res.data.data) {
+						const fav = res.data.data.map(f => {
+							return `${f.providerId}_${f.gameId}`;
+						});
+						if (this.mounted) {
+							this.setState({ favorite: fav });
+						}
+					} else if (res.data.errorCode !== 0) {
+						this.props.setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				},
+				() => {
+					this.props.setPopBox({
+						isOpen: true,
+						content: this.props.i18n.msg_ApiServerError
+					});
+				}
+			);
 		}
 	}
 
@@ -251,7 +282,23 @@ class Panel extends React.Component {
 			this.setState({ favorite: newFav, displayGames });
 		}
 		if (this.props.userInfo.isLogin) {
-			api.account.SetFavoriteGame(tpId, gameId, isRemove);
+			api.account.SetFavoriteGame(tpId, gameId, isRemove).then(
+				res => {
+					const { errorCode, message } = res.data;
+					if (errorCode !== 0) {
+						this.props.setPopBox({
+							isOpen: true,
+							content: `[${errorCode}] ${message}`
+						});
+					}
+				},
+				() => {
+					this.props.setPopBox({
+						isOpen: true,
+						content: this.props.i18n.msg_ApiServerError
+					});
+				}
+			);
 		}
 	};
 
@@ -584,6 +631,7 @@ const IndexPage = props => {
 	const { throttle } = useSetTimeout();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
+	const { setPopBox } = useContext(popBoxContext);
 	const { handleLogin } = useHandleLogin();
 	const link = (
 		<Link to={path.home.root}>
@@ -615,6 +663,7 @@ const IndexPage = props => {
 				throttle={throttle}
 				selNav={selNav}
 				selNavIdx={selNavIdx === -1 ? 3 : selNavIdx}
+				setPopBox={setPopBox}
 			/>
 		</Layout>
 	);

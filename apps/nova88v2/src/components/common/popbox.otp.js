@@ -36,20 +36,17 @@ const Panel = ({ ClosePopbox }) => {
 							setErrorMsg(i18n.msg_API_SendOTPSMS_5002);
 						} else {
 							setErrorMsg(
-								response.data.message
-									? response.data.message
-									: "Something went wrong"
+								`[${response.data.errorCode}] ${response.data.message}`
 							);
 						}
 						setLoading(false);
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setLoading(false);
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 					}
@@ -102,27 +99,16 @@ const Panel = ({ ClosePopbox }) => {
 							setLoading(false);
 							setPopBox({
 								isOpen: true,
-								content: res.data.message,
-								hasBtn: true,
-								btnBar: (
-									<div className="btn-group">
-										<button
-											className="white"
-											onClick={closePopbox}>
-											{i18n.lbl_Cancel}
-										</button>
-									</div>
-								)
+								content: `[${res.data.errorCode}] ${res.data.message}`
 							});
 						}
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setLoading(false);
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 					}
@@ -142,17 +128,18 @@ const Panel = ({ ClosePopbox }) => {
 					} else if (response.data.errorCode === 5002) {
 						setErrorMsg(i18n.msg_API_SendOTPSMS_5002);
 					} else {
-						setErrorMsg(response.data.message);
+						setErrorMsg(
+							`[${response.data.errorCode}] ${response.data.message}`
+						);
 					}
 					setLoading(false);
 				}
 			},
-			err => {
+			() => {
 				if (isMountedRef.current) {
 					setLoading(false);
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
 				}

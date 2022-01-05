@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Helmet } from "react-helmet";
 import { defMetaData } from "./def";
 import api from "../../service/api";
+import { popBoxContext, i18nContext } from "../common/context";
 
 export const useGetSEODatas = ({ getFromAPI = false }) => {
+	const { setPopBox } = useContext(popBoxContext);
+	const { i18n } = useContext(i18nContext);
 	const [SEODatas, setSEODatas] = useState(null);
 	useEffect(() => {
 		const GetDatas = async () => {
@@ -12,8 +15,18 @@ export const useGetSEODatas = ({ getFromAPI = false }) => {
 					const res = await api.site.Seo();
 					if (res.data.errorCode === 0) {
 						setSEODatas(res.data.data ?? {});
+					} else {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
 					}
-				} catch (error) {}
+				} catch (error) {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
+				}
 			}
 		};
 		GetDatas();

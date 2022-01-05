@@ -36,7 +36,7 @@ const RestoreAll = ({ i18n, setLoading, GetBalance, setPopBox, isLogin }) => {
 						} else {
 							setPopBox({
 								isOpen: true,
-								content: `[${errorCode}]${message}`
+								content: `[${errorCode}] ${message}`
 							});
 						}
 						setLoading(false);

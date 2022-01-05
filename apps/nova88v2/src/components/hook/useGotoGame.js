@@ -245,21 +245,16 @@ export const useGotoGame = ({
 						} else {
 							setPopBox({
 								isOpen: true,
-								content: `[${res.data.errorCode}] ${res.data.message}`,
-								hasBtn: true,
-								btnBar: (
-									<div className="btn-group">
-										<button
-											className="white"
-											onClick={ClickClose}>
-											{i18n.lbl_Cancel}
-										</button>
-									</div>
-								)
+								content: `[${res.data.errorCode}] ${res.data.message}`
 							});
 						}
 					}
-				} catch (error) {}
+				} catch (error) {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
+				}
 			}
 			return returnData;
 			// eslint-disable-next-line react-hooks/exhaustive-deps

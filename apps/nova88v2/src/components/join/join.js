@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
-import { useNavigate, useLocation, globalHistory } from "@reach/router";
+import { useNavigate } from "@reach/router";
 import {
 	userInfoContext,
 	i18nContext,
@@ -27,7 +27,6 @@ import { Link } from "../../route/link";
 
 const Join = ({ initSiteCurrency = [] }) => {
 	const navigate = useNavigate();
-	const { state } = useLocation();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -80,16 +79,27 @@ const Join = ({ initSiteCurrency = [] }) => {
 		const showBylink = window.location.pathname === `/${path.join.root}`;
 		const openPanel = showBylink || nav === defNavPanel.join;
 		if (refId && openPanel) {
-			api.site
-				.GetBanner("Promotion", refId, userInfo.langId)
-				.then(res => {
+			api.site.GetBanner("Promotion", refId, userInfo.langId).then(
+				res => {
 					if (res.data.errorCode === 0 && isMountedRef.current) {
 						if (res.data.data.length > 0) {
 							setBanner(res.data.data);
 							setPromoPopup(true);
 						}
+					} else if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
 					}
-				});
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
+				}
+			);
 		}
 	}, [nav, userInfo.langId]);
 
@@ -126,7 +136,6 @@ const Join = ({ initSiteCurrency = [] }) => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 					}
@@ -157,8 +166,7 @@ const Join = ({ initSiteCurrency = [] }) => {
 					} else {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
-							content: res.data.message
+							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
 				}
@@ -167,7 +175,6 @@ const Join = ({ initSiteCurrency = [] }) => {
 				if (isMountedRef.current) {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: i18n.msg_ApiServerError
 					});
 				}
@@ -243,6 +250,11 @@ const Join = ({ initSiteCurrency = [] }) => {
 			if (res.data.errorCode === 0 && res.data.data === true) {
 				checked = false;
 				msg = "msg_UsernameNotAvailable";
+			} else if (res.data.errorCode !== 0) {
+				setPopBox({
+					isOpen: true,
+					content: `[${res.data.errorCode}] ${res.data.message}`
+				});
 			}
 		}
 
@@ -262,6 +274,11 @@ const Join = ({ initSiteCurrency = [] }) => {
 			if (res.data.errorCode === 0 && res.data.data === true) {
 				checked = false;
 				msg = "msg_MailExisted";
+			} else if (res.data.errorCode !== 0) {
+				setPopBox({
+					isOpen: true,
+					content: `[${res.data.errorCode}] ${res.data.message}`
+				});
 			}
 		}
 
@@ -288,6 +305,11 @@ const Join = ({ initSiteCurrency = [] }) => {
 			if (res.data.errorCode === 0 && res.data.data === true) {
 				checked = false;
 				msg = "msg_PhoneExisted";
+			} else if (res.data.errorCode !== 0) {
+				setPopBox({
+					isOpen: true,
+					content: `[${res.data.errorCode}] ${res.data.message}`
+				});
 			}
 		}
 
@@ -424,6 +446,11 @@ const Join = ({ initSiteCurrency = [] }) => {
 							msg: res.data.message
 						}
 					}));
+				} else {
+					setPopBox({
+						isOpen: true,
+						content: `[${res.data.errorCode}] ${res.data.message}`
+					});
 				}
 			}
 
@@ -438,8 +465,7 @@ const Join = ({ initSiteCurrency = [] }) => {
 			api.site.Signup(regData, defaultLangId).then(
 				response => {
 					if (isMountedRef.current) {
-						const { errorCode } = response.data;
-						const { message } = response.data;
+						const { errorCode, message } = response.data;
 						setStatus(initStatus);
 						if (errorCode === 0) {
 							api.accountStrict.GetCustProfile().then(
@@ -456,6 +482,11 @@ const Join = ({ initSiteCurrency = [] }) => {
 												..._user,
 												...res_custInfo.data.data
 											};
+										} else {
+											setPopBox({
+												isOpen: true,
+												content: `[${res_custInfo.data.errorCode}] ${res_custInfo.data.message}`
+											});
 										}
 										setUserInfo(_user);
 									}
@@ -498,14 +529,18 @@ const Join = ({ initSiteCurrency = [] }) => {
 								...prevState,
 								Phone: { checked: false, msg: message }
 							}));
+						} else {
+							setPopBox({
+								isOpen: true,
+								content: `[${errorCode}] ${message}`
+							});
 						}
 					}
 				},
-				err => {
+				() => {
 					if (isMountedRef.current) {
 						setPopBox({
 							isOpen: true,
-							title: i18n.lbl_ImportantNote,
 							content: i18n.msg_ApiServerError
 						});
 					}
