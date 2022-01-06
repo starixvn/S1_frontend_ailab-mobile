@@ -6,7 +6,6 @@ import api from "../../service/api";
 
 const LanguageList = ({ userInfo, setUserInfo, i18n }) => {
 	const { setPopBox } = useContext(popBoxContext);
-	const languageList = Object.values(DefLangs);
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -55,13 +54,17 @@ const LanguageList = ({ userInfo, setUserInfo, i18n }) => {
 		}
 	};
 
+	const isLogin = userInfo.isLogin && userInfo.currencyId;
+
+	const languageList = Object.values(DefLangs(isLogin));
+
 	const availableCurrencyId = languageList.find(
 		item => item.currencyId === userInfo.currencyId
 	);
 
 	const arr = languageList
 		.filter(item =>
-			userInfo.isLogin && userInfo.currencyId && availableCurrencyId
+			isLogin && availableCurrencyId
 				? item.currencyId === userInfo.currencyId
 				: true
 		)
