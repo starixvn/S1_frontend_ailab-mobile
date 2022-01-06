@@ -114,6 +114,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "sports",
 					categoryIcon: "soccer",
 					translateKey: "lbl_Sports",
+					menuId: 1,
 					items: [
 						{
 							...defGameInfo.Soccer,
@@ -153,6 +154,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "virtualsports",
 					categoryIcon: "e-sports",
 					translateKey: "lbl_eSports",
+					menuId: 2,
 					items: [
 						{
 							...defGameInfo.ESportAll,
@@ -185,6 +187,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "livecasino",
 					categoryIcon: "livecasino",
 					translateKey: "lbl_LiveCasino",
+					menuId: 3,
 					items: [
 						// {
 						// 	...defGameInfo.LIVEcasinoMGP,
@@ -277,6 +280,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "slot",
 					categoryIcon: "icon_777",
 					translateKey: "lbl_Casino",
+					menuId: 4,
 					items: [
 						{
 							...defGameInfo.Casino_PP,
@@ -433,6 +437,7 @@ const gameList = ({ langId, currencyName }) => {
 					categoryIcon: "casino",
 					translateKey: "lbl_Poker",
 					tpGameType: defGameInfo.oneGame.tpGameType,
+					menuId: 5,
 					popBox: {
 						needLogin: true,
 						title: "lbl_Poker",
@@ -444,6 +449,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "play",
 					categoryIcon: "play",
 					translateKey: "lbl_Games",
+					menuId: 6,
 					items: [
 						{
 							...defGameInfo.kingMaker,
@@ -456,6 +462,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "game",
 					categoryIcon: "game",
 					translateKey: "lbl_Fishing",
+					menuId: 7,
 					items: [
 						{
 							...defGameInfo.FishingSGW,
@@ -483,6 +490,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "kelo",
 					categoryIcon: "kelo",
 					translateKey: "lbl_Lottery",
+					menuId: 8,
 					items: [
 						{
 							...defGameInfo.TCG,
@@ -550,6 +558,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "sports",
 					categoryIcon: "soccer",
 					translateKey: "lbl_Sports",
+					menuId: 1,
 					items: [
 						{
 							...defGameInfo.Soccer,
@@ -582,6 +591,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "virtualsports",
 					categoryIcon: "e-sports",
 					translateKey: "lbl_eSports",
+					menuId: 2,
 					items: [
 						{
 							...defGameInfo.ESportAll,
@@ -614,6 +624,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "livecasino",
 					categoryIcon: "livecasino",
 					translateKey: "lbl_LiveCasino",
+					menuId: 3,
 					items: [
 						// {
 						// 	...defGameInfo.LIVEcasinoMGP,
@@ -706,6 +717,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "slot",
 					categoryIcon: "icon_777",
 					translateKey: "lbl_Casino",
+					menuId: 4,
 					items: [
 						{
 							...defGameInfo.Casino_PP,
@@ -862,6 +874,7 @@ const gameList = ({ langId, currencyName }) => {
 					categoryIcon: "casino",
 					translateKey: "lbl_Poker",
 					tpGameType: defGameInfo.oneGame.tpGameType,
+					menuId: 5,
 					popBox: {
 						needLogin: true,
 						title: "lbl_Poker",
@@ -873,6 +886,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "play",
 					categoryIcon: "play",
 					translateKey: "lbl_Games",
+					menuId: 6,
 					items: [
 						{
 							...defGameInfo.kingMaker,
@@ -885,6 +899,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "game",
 					categoryIcon: "game",
 					translateKey: "lbl_Fishing",
+					menuId: 7,
 					items: [
 						{
 							...defGameInfo.FishingGG,
@@ -912,6 +927,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "kelo",
 					categoryIcon: "kelo",
 					translateKey: "lbl_Lottery",
+					menuId: 8,
 					items: [
 						{
 							...defGameInfo.TCG,
@@ -979,6 +995,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "sports",
 					categoryIcon: "soccer",
 					translateKey: "lbl_Sports",
+					menuId: 1,
 					items: [
 						{
 							...defGameInfo.Soccer,
@@ -1011,6 +1028,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "virtualsports",
 					categoryIcon: "e-sports",
 					translateKey: "lbl_eSports",
+					menuId: 2,
 					items: [
 						{
 							...defGameInfo.ESportAll,
@@ -1043,6 +1061,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "livecasino",
 					categoryIcon: "livecasino",
 					translateKey: "lbl_LiveCasino",
+					menuId: 3,
 					items: [
 						// {
 						// 	...defGameInfo.LIVEcasinoMGP,
@@ -1135,6 +1154,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "slot",
 					categoryIcon: "icon_777",
 					translateKey: "lbl_Casino",
+					menuId: 4,
 					items: [
 						{
 							...defGameInfo.Casino_PP,
@@ -1292,6 +1312,7 @@ const gameList = ({ langId, currencyName }) => {
 					categoryIcon: "casino",
 					translateKey: "lbl_Poker",
 					tpGameType: defGameInfo.oneGame.tpGameType,
+					menuId: 5,
 					popBox: {
 						needLogin: true,
 						title: "lbl_Poker",
@@ -1303,6 +1324,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "play",
 					categoryIcon: "play",
 					translateKey: "lbl_Games",
+					menuId: 6,
 					items: [
 						{
 							...defGameInfo.MPoker,
@@ -1332,6 +1354,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "game",
 					categoryIcon: "game",
 					translateKey: "lbl_Fishing",
+					menuId: 7,
 					items: [
 						{
 							...defGameInfo.FishingSGW,
@@ -1359,6 +1382,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "kelo",
 					categoryIcon: "kelo",
 					translateKey: "lbl_Lottery",
+					menuId: 8,
 					items: [
 						{
 							...defGameInfo.TCG,
@@ -1426,6 +1450,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "sports",
 					categoryIcon: "soccer",
 					translateKey: "lbl_Sports",
+					menuId: 1,
 					items: [
 						{
 							...defGameInfo.Cricket,
@@ -1472,6 +1497,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "virtualsports",
 					categoryIcon: "e-sports",
 					translateKey: "lbl_eSports",
+					menuId: 2,
 					items: [
 						{
 							...defGameInfo.ESportAll,
@@ -1504,6 +1530,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "livecasino",
 					categoryIcon: "livecasino",
 					translateKey: "lbl_LiveCasino",
+					menuId: 3,
 					items: [
 						// {
 						// 	...defGameInfo.LIVEcasinoMGP,
@@ -1596,6 +1623,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "slot",
 					categoryIcon: "icon_777",
 					translateKey: "lbl_Casino",
+					menuId: 4,
 					items: [
 						{
 							...defGameInfo.Casino_PP,
@@ -1753,6 +1781,7 @@ const gameList = ({ langId, currencyName }) => {
 					categoryIcon: "casino",
 					translateKey: "lbl_Poker",
 					tpGameType: defGameInfo.oneGame.tpGameType,
+					menuId: 5,
 					popBox: {
 						needLogin: true,
 						title: "lbl_Poker",
@@ -1764,6 +1793,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "play",
 					categoryIcon: "play",
 					translateKey: "lbl_Games",
+					menuId: 6,
 					items: [
 						{
 							...defGameInfo.kingMaker,
@@ -1776,6 +1806,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "game",
 					categoryIcon: "game",
 					translateKey: "lbl_Fishing",
+					menuId: 7,
 					items: [
 						{
 							...defGameInfo.FishingSGW,
@@ -1824,6 +1855,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "kelo",
 					categoryIcon: "kelo",
 					translateKey: "lbl_Lottery",
+					menuId: 8,
 					items: [
 						{
 							...defGameInfo.TCG,
@@ -1872,6 +1904,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "sports",
 					categoryIcon: "soccer",
 					translateKey: "lbl_Sports",
+					menuId: 1,
 					items: [
 						{
 							...defGameInfo.Soccer,
@@ -1904,6 +1937,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "virtualsports",
 					categoryIcon: "e-sports",
 					translateKey: "lbl_eSports",
+					menuId: 2,
 					items: [
 						{
 							...defGameInfo.ESportAll,
@@ -1936,6 +1970,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "livecasino",
 					categoryIcon: "livecasino",
 					translateKey: "lbl_LiveCasino",
+					menuId: 3,
 					items: [
 						// {
 						// 	...defGameInfo.LIVEcasinoMGP,
@@ -2028,6 +2063,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "slot",
 					categoryIcon: "icon_777",
 					translateKey: "lbl_Casino",
+					menuId: 4,
 					items: [
 						{
 							...defGameInfo.Casino_PP,
@@ -2177,6 +2213,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "play",
 					categoryIcon: "play",
 					translateKey: "lbl_Games",
+					menuId: 6,
 					items: [
 						{
 							...defGameInfo.kingMaker,
@@ -2189,6 +2226,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "game",
 					categoryIcon: "game",
 					translateKey: "lbl_Fishing",
+					menuId: 7,
 					items: [
 						{
 							...defGameInfo.Fishing_AB3,
@@ -2216,6 +2254,7 @@ const gameList = ({ langId, currencyName }) => {
 					category: "kelo",
 					categoryIcon: "kelo",
 					translateKey: "lbl_Lottery",
+					menuId: 8,
 					items: [
 						{
 							...defGameInfo.TCG,
@@ -2261,6 +2300,7 @@ const gameList = ({ langId, currencyName }) => {
 					categoryIcon: "casino",
 					translateKey: "lbl_Poker",
 					tpGameType: defGameInfo.oneGame.tpGameType,
+					menuId: 5,
 					popBox: {
 						needLogin: true,
 						title: "lbl_Poker",
