@@ -1,28 +1,49 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Marquee from "react-fast-marquee";
 import PropTypes from "prop-types";
 import { popBoxContext } from "../common/context";
-import HotGameList, { defProductType } from "../../datas/hotGameList";
+import { defSlotTpGameType } from "../../datas/productList";
+import { defProductType } from "../../datas/hotGameList";
+import { useGotoGame } from "../hook/useGotoGame";
 import { GET_CASINO_ENTER_PAGE, GET_ENTER_PAGE } from "../../service/enterPage";
 import useHandleLogin from "../hook/useHandleLogin";
 import {
 	useGetTpMaintainList,
 	defTpGameType
 } from "../hook/useGetTpMaintainList";
-import { GetCurrencyName } from "../common/common";
+import api from "../../service/api";
 
 const HotGame = ({ i18n, userInfo }) => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { handleLogin } = useHandleLogin();
 	const { maintainList } = useGetTpMaintainList();
+	const [gameList, setGameList] = useState([]);
+	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 
-	const currencyName = GetCurrencyName({
-		langId: userInfo.langId,
-		currencyId: userInfo.currencyId,
-		i18n
-	});
+	useEffect(() => {
+		api.site
+			.GetHotGames({ langId: userInfo.langId })
+			.then(res => {
+				if (res.data.errorCode === 0) {
+					setGameList(res.data.data);
+				} else {
+					setPopBox({
+						isOpen: true,
+						title: i18n.lbl_ImportantNote,
+						content: `[${res.data.errorCode}] ${res.data.message}`
+					});
+				}
+			})
+			.catch(err => console.error(err));
+	}, []);
 
-	const clickGame = ({ tpId, gameId, productType, tpGameType }) => {
+	const clickGame = ({
+		tpId,
+		gameId,
+		tpCategory,
+		tpGameType,
+		specialUrl
+	}) => {
 		if (
 			maintainList?.some(
 				m =>
@@ -49,7 +70,24 @@ const HotGame = ({ i18n, userInfo }) => {
 			});
 		} else if (userInfo.isLogin === false) {
 			handleLogin();
-		} else if (productType === defProductType.slots) {
+		} else if (tpId === defSlotTpGameType.PT.tpId) {
+			GET_ENTER_PAGE({
+				langId: userInfo.langId,
+				tpId,
+				gameId,
+				isLogin: userInfo.isLogin === true,
+				loginCallback: handleLogin,
+				execFunction: handleGoToGame.bind(this, {
+					isLogin: userInfo.isLogin === true,
+					langId: userInfo.langId,
+					tpId,
+					gameId,
+					tpGameType
+				}),
+				specialUrl: specialUrl ?? "",
+				tpGameType
+			});
+		} else if (tpCategory === defProductType.Slots) {
 			GET_CASINO_ENTER_PAGE({
 				langId: userInfo.langId,
 				tpId,
@@ -69,30 +107,24 @@ const HotGame = ({ i18n, userInfo }) => {
 		}
 	};
 
-	const gameArr = HotGameList({ currencyName }).map(game => {
-		const displayName = i18n[game.displayKey] ?? game.name;
-		const gameImgName =
-			game.imgUrl?.[userInfo.langId] ??
-			game.imgUrl?.default ??
-			game.imgUrl;
-
+	const gameArr = gameList?.map(game => {
 		return (
-			<div
-				key={`hotGame-${game.gameId}-${game.tpId}`}
-				className="hotGamModule">
-				<img
-					src={`https://banner.0814media.net/img/hotgame/${gameImgName}.jpg`}
-					alt={displayName}
-				/>
-				<div>{displayName}</div>
-				<div>{`${i18n[game.gameTypeKey]} ${game.provider}`}</div>
+			<div key={`hotGame-${game.gameName}`} className="hotGamModule">
+				<img src={game.gameLogo} alt={game.gameName} />
+				<div>{game.gameName}</div>
+				<div>
+					{`${i18n[`lbl_tpCategory_${game.tpCategory}`]} ${
+						game.tpName
+					}`}
+				</div>
 				<div className="btn-group">
 					<button
 						onClick={clickGame.bind(this, {
 							tpId: game?.tpId,
 							gameId: game?.gameId,
-							productType: game?.productType,
-							tpGameType: game.tpGameType
+							tpCategory: game?.tpCategory,
+							tpGameType: game.tpGameType,
+							specialUrl: game?.specialUrl ?? ""
 						})}>
 						{i18n.lbl_PlayNow.toUpperCase()}
 					</button>
@@ -102,14 +134,16 @@ const HotGame = ({ i18n, userInfo }) => {
 	});
 
 	return (
-		<>
-			<div className="moduleTitle icon icon-mediafire">
-				{i18n.lbl_HotGame}
-			</div>
-			<Marquee speed={60} className="hotGame" gradient={false}>
-				{gameArr}
-			</Marquee>
-		</>
+		gameArr && (
+			<>
+				<div className="moduleTitle icon icon-mediafire">
+					{i18n.lbl_HotGame}
+				</div>
+				<Marquee speed={60} className="hotGame" gradient={false}>
+					{gameArr}
+				</Marquee>
+			</>
+		)
 	);
 };
 

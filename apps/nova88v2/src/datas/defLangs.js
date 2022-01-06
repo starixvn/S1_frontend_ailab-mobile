@@ -4,7 +4,7 @@ import hi from "../styles/img/in.jpg";
 import id from "../styles/img/id.jpg";
 import { defCurrenyId } from "../components/common/common";
 
-export default {
+export default isLogin => ({
 	MY: {
 		country: "MY",
 		img: ch,
@@ -18,10 +18,16 @@ export default {
 	TH: {
 		country: "TH",
 		img: th,
-		lang: [
-			{ value: "th_en", displayText: "English" },
-			{ value: "th", displayText: "ภาษาไทย" }
-		],
+		lang: isLogin
+			? [
+					{ value: "th_en", displayText: "English" },
+					{ value: "th", displayText: "ภาษาไทย" },
+					{ value: "cs", displayText: "简体中文" }
+			  ]
+			: [
+					{ value: "th_en", displayText: "English" },
+					{ value: "th", displayText: "ภาษาไทย" }
+			  ],
 		countryName: "Thailand",
 		currencyId: defCurrenyId.THB
 	},
@@ -45,4 +51,4 @@ export default {
 		countryName: "India",
 		currencyId: defCurrenyId.INR
 	}
-};
+});

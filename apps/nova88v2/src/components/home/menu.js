@@ -22,6 +22,7 @@ import path from "../../path";
 const Menu = ({ i18n, userInfo, setPopBox }) => {
 	const [selectedCol, setSelectedCol] = useState(defCol.sports);
 	const [showingTpIds, setShowningTpIds] = useState(null);
+	const [sortedMenu, setSortedMenu] = useState([]);
 	const { maintainList } = useGetTpMaintainList();
 	const { handleLogin } = useHandleLogin();
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
@@ -63,6 +64,34 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 			);
 		}
 	}, [setShowningTpIds, userInfo.isLogin]);
+
+	useEffect(() => {
+		api.site.GetMenuOfGames().then(
+			res => {
+				if (isMountedRef.current) {
+					const { data, errorCode, message } = res.data;
+					if (data && errorCode === 0) {
+						setSortedMenu(data);
+					} else if (errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: `[${errorCode}]${message}`
+						});
+					}
+				}
+			},
+			() => {
+				if (isMountedRef.current) {
+					setPopBox({
+						isOpen: true,
+						title: i18n.lbl_ImportantNote,
+						content: i18n.msg_ApiServerError
+					});
+				}
+			}
+		);
+	}, [i18n, setPopBox]);
 
 	const showSubPanel = ({ panel, popBox, tpGameType }) => {
 		if (popBox) {
@@ -185,7 +214,28 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 		langId: userInfo?.langId,
 		currencyName
 	})?.map(item => {
-		const subGame = item.items
+		let _subGame = [];
+		const sortedMenuItems = sortedMenu.find(
+			obj => obj.menuId === item.menuId
+		)?.menuItems;
+
+		if (sortedMenuItems && item.items) {
+			_subGame = item.items?.map(subItem => {
+				const sort = sortedMenuItems.find(
+					sortedItem =>
+						subItem.tpId === sortedItem.tpId &&
+						subItem.tpGameType === sortedItem.tpGameType &&
+						(!sortedItem.gameId ||
+							String(subItem.gameId) ===
+								String(sortedItem.gameId))
+				)?.sort;
+				return { ...subItem, sort: sort ?? item.items?.length + 1 };
+			});
+			_subGame = _subGame.sort((a, b) => a.sort - b.sort);
+		}
+		_subGame = _subGame.length > 0 ? _subGame : item.items;
+
+		const subGame = _subGame
 			?.filter(subItem => {
 				let showItem = true;
 				if (subItem?.allowCurrency && userInfo?.currencyId) {
