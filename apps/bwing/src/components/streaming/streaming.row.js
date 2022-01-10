@@ -4,9 +4,8 @@ import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
 import { navContext, defNavPanel, popBoxContext } from "../common/context";
 import { sportStreamDef } from "../../datas/productList";
-import config from "../../config";
+import config, { bannerImgUrl } from "../../config";
 import path from "../../path";
-import vsIcon from "../../styles/img/vsIcon.png";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 
 export const StreamingModule = ({
@@ -137,7 +136,7 @@ export const StreamingModule = ({
 				<div className={nowPlaying ? " active" : ""}>
 					<div className="point">{homeScore ?? 0}</div>
 					<div>
-						<img src={vsIcon} alt="" />
+						<img src={`${bannerImgUrl}/h5/img/vsIcon.png`} alt="" />
 						<p>
 							{nowPlaying
 								? "LIVE"

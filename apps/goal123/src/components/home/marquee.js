@@ -11,7 +11,7 @@ import {
 } from "../common/context";
 import { GET_LANG_ID } from "../../service/language";
 import path from "../../path";
-import horn from "../../styles/img/marqueeicon.png";
+import { bannerImgUrl } from "../../config";
 
 const Panel = () => {
 	const { nav, setNav } = useContext(navContext);
@@ -210,7 +210,10 @@ class Marquee extends Component {
 			<div id="Marquee" className="MarqueeNew">
 				<div ref={this.content} className="marquee-box">
 					<div className="img">
-						<img src={horn} alt="" />
+						<img
+							src={`${bannerImgUrl}/h5/img/marqueeicon.png`}
+							alt=""
+						/>
 					</div>
 					<div
 						className="marquee-run text"

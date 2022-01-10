@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import config from "../../config";
+import { bannerImgUrl } from "../../config";
 
 const GameProviders = props => {
 	const { selNav, SelectNav, sorted } = props;
@@ -12,9 +12,9 @@ const GameProviders = props => {
 				data-testid={`gameProvider_${k.tpId}`}
 				onClick={SelectNav.bind(this, k.tpId)}>
 				<img
-					src={`${config.imgUrl}/common/images/logo/${
-						k.providerImgName
-					}${selNav === k.tpId ? "a" : ""}.png`}
+					src={`${bannerImgUrl}/h5/img/footer/${k.providerImgName}${
+						selNav === k.tpId ? "a" : ""
+					}.png`}
 					alt={k.providerImgName}
 				/>
 			</button>

@@ -1,15 +1,30 @@
 import React from "react";
-import LoadingLogo from "../../styles/img/loading_star.png";
+import { bannerImgUrl } from "../../config";
 
 export default () => {
 	return (
 		<div id="Loading" className="open">
 			<div>
-				<img src={LoadingLogo} alt="loading" />
-				<img src={LoadingLogo} alt="loading" />
-				<img src={LoadingLogo} alt="loading" />
-				<img src={LoadingLogo} alt="loading" />
-				<img src={LoadingLogo} alt="loading" />
+				<img
+					src={`${bannerImgUrl}/h5/img/loading_star.png`}
+					alt="loading"
+				/>
+				<img
+					src={`${bannerImgUrl}/h5/img/loading_star.png`}
+					alt="loading"
+				/>
+				<img
+					src={`${bannerImgUrl}/h5/img/loading_star.png`}
+					alt="loading"
+				/>
+				<img
+					src={`${bannerImgUrl}/h5/img/loading_star.png`}
+					alt="loading"
+				/>
+				<img
+					src={`${bannerImgUrl}/h5/img/loading_star.png`}
+					alt="loading"
+				/>
 			</div>
 		</div>
 	);

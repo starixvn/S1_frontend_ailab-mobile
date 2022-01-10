@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import eventImg from "../../styles/img/event/mysterybox/angpao_backa.png";
 import { useDrawPrize } from "../hook/useDrawPrize";
 import { eventIds } from "../../datas/eventId";
+import { cloudBannerImgURL } from "../../config";
 
 const MysteryBoxPop = ({
 	i18n,
@@ -35,7 +35,11 @@ const MysteryBoxPop = ({
 	return prize ? (
 		<div id="popup" className="active">
 			<div className="eventpop">
-				<img className="redbox" src={eventImg} alt="Mystery Box" />
+				<img
+					className="redbox"
+					src={`${cloudBannerImgURL}/h5/img/event/mysterybox/angpao_backa.png`}
+					alt="Mystery Box"
+				/>
 				<div className="coin" />
 				<div className="coin" />
 				<div className="coin" />

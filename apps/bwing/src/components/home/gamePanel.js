@@ -7,15 +7,11 @@ import { useGotoGame } from "../hook/useGotoGame";
 import path from "../../path";
 import { productList } from "../../datas/defMenu";
 import { defGameInfo } from "../../datas/productList";
-import img789lottery from "../../styles/img/maingame/789lottery.png";
-import img789se from "../../styles/img/maingame/789se.png";
-import imgVgaming from "../../styles/img/maingame/vgaming.png";
-import imgVirtual from "../../styles/img/maingame/virtual.png";
-import imgSabakeno from "../../styles/img/maingame/sabakeno.png";
 import {
 	useGetTpMaintainList,
 	defTpGameType
 } from "../hook/useGetTpMaintainList";
+import { bannerImgUrl } from "../../config";
 
 const defGameType = {
 	default: "default",
@@ -26,33 +22,33 @@ const defGameList = [
 	{
 		...defGameInfo.One789_lottery_789,
 		displayKey: "lbl_789Lottery",
-		img: img789lottery,
+		img: `${bannerImgUrl}/h5/img/maingame/789lottery.png`,
 		gameType: defGameType.default
 	},
 	{
 		...defGameInfo.LIVEcasinoOne789,
 		displayKey: "lbl_liveCasino_789SeDie",
-		img: img789se,
+		img: `${bannerImgUrl}/h5/img/maingame/789se.png`,
 		gameType: defGameType.default
 	},
 	{
 		...defGameInfo.sabaClub,
 		displayKey: "lbl_Vgaming",
-		img: imgVgaming,
+		img: `${bannerImgUrl}/h5/img/maingame/vgaming.png`,
 		gameType: defGameType.default
 	},
 	{
 		...defGameInfo.VirtualSports,
 		subPath: path.sports.root,
 		displayKey: "lbl_VirtualSports",
-		img: imgVirtual,
+		img: `${bannerImgUrl}/h5/img/maingame/virtual.png`,
 		gameType: defGameType.default,
 		parameter: { ...productList.virtualSports }
 	},
 	{
 		...defGameInfo.Keno,
 		displayKey: "lbl_Keno",
-		img: imgSabakeno,
+		img: `${bannerImgUrl}/h5/img/maingame/sabakeno.png`,
 		gameType: defGameType.default
 	}
 ];

@@ -9,12 +9,11 @@ import Condition from "./condition";
 import History from "./history";
 import { useCheckPrize } from "../hook/useCheckPrize";
 import { eventIds } from "../../datas/eventId";
-import wheelcover from "../../styles/img/event/wheel/wheelcover.png";
-import btnimg from "../../styles/img/event/wheel/wheelbtn.png";
 import api from "../../service/api";
 import PopBoxLuckyWheel from "../common/popbox.luckyWheel";
 import useCounter from "../hook/useCounter";
 import useHandleLogin from "../hook/useHandleLogin";
+import { cloudBannerImgURL } from "../../config";
 
 const LuckyWheel = () => {
 	const { handleLogin } = useHandleLogin();
@@ -161,9 +160,15 @@ const LuckyWheel = () => {
 				</div>
 			</div>
 			<div className="wheelModule">
-				<img src={wheelcover} alt="wheelcover" />
+				<img
+					src={`${cloudBannerImgURL}/h5/img/event/wheel/wheelcover.png`}
+					alt="wheelcover"
+				/>
 				<button onClick={spin}>
-					<img src={btnimg} alt="spinner" />
+					<img
+						src={`${cloudBannerImgURL}/h5/img/event/wheel/wheelbtn.png`}
+						alt="spinner"
+					/>
 				</button>
 
 				<div

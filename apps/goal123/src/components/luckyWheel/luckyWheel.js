@@ -11,15 +11,13 @@ import Condition from "./condition";
 import History from "./history";
 import { useCheckPrize } from "../hook/useCheckPrize";
 import { eventIds } from "../../datas/eventIds";
-import wheelcover from "../../styles/img/event/wheel/wheel.png";
-import spinbtn_en from "../../styles/img/event/wheel/spinbtn_en.png";
-import spinbtn_vn from "../../styles/img/event/wheel/spinbtn_vn.png";
 import {
 	api_events_DrawPrize,
 	api_events_GetDisplayDrawPrizeList
 } from "../../service/api/events";
 import PopBoxLuckyWheel from "../common/popbox.luckyWheel";
 import useCounter from "../hook/useCounter";
+import { bannerImgUrl } from "../../config";
 
 const LuckyWheel = () => {
 	const { i18n } = useContext(i18nContext);
@@ -161,10 +159,17 @@ const LuckyWheel = () => {
 				<div className="eventTitle">{i18n.lbl_LuckyWheel}</div>
 			</div>
 			<div className="wheelModule">
-				<img src={wheelcover} alt="wheelcover" />
+				<img
+					src={`${bannerImgUrl}/h5/img/event/wheel/wheel.png`}
+					alt="wheelcover"
+				/>
 				<button onClick={_spin}>
 					<img
-						src={userInfo.langId === "vn" ? spinbtn_vn : spinbtn_en}
+						src={
+							userInfo.langId === "vn"
+								? `${bannerImgUrl}/h5/img/event/wheel/spinbtn_vn.png`
+								: `${bannerImgUrl}/h5/img/event/wheel/spinbtn_en.png`
+						}
 						alt="spinner"
 					/>
 				</button>

@@ -1,13 +1,10 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import Spokesperson from "../../styles/img/spokesperson.jpg";
 import { siteInfo, cloudBannerImgURL } from "../../config";
 import { Link } from "../../route/link";
-import appDownloadImg from "../../styles/img/app/appmodule.jpg";
 import path from "../../path";
 import { defCurrenyId, langToCurrency } from "../common/common";
 import { useGetSEODatas } from "../seo/seo";
-// import PagcorLicensee from "../../styles/img/licenses.png";
 
 const Bottom = ({ i18n, langId, currencyId }) => {
 	const _currencyId = currencyId ?? langToCurrency[langId];
@@ -17,11 +14,15 @@ const Bottom = ({ i18n, langId, currencyId }) => {
 			<Link to={path.appDownload.root}>
 				<img
 					className="spokesperson"
-					src={appDownloadImg}
+					src={`${cloudBannerImgURL}/h5/img/app/appmodule.jpg`}
 					alt="Go To Download App"
 				/>
 			</Link>
-			<img className="spokesperson" src={Spokesperson} alt="Endorser" />
+			<img
+				className="spokesperson"
+				src={`${cloudBannerImgURL}/h5/img/spokesperson.jpg`}
+				alt="Endorser"
+			/>
 			<div className="aff">
 				<a
 					className="title"
