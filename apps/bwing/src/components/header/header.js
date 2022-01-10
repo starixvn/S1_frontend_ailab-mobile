@@ -14,12 +14,7 @@ import Logo from "../img/logo";
 import { useGetBalance } from "./hook";
 import AppDownloadHint from "./appDownloadHint";
 import Filter from "./filter";
-import vip1 from "../../styles/img/vip/vip1.png";
-import vip2 from "../../styles/img/vip/vip2.png";
-import vip3 from "../../styles/img/vip/vip3.png";
-import vip4 from "../../styles/img/vip/vip4.png";
-import vip5 from "../../styles/img/vip/vip5.png";
-import vip6 from "../../styles/img/vip/vip6.png";
+import { bannerImgUrl } from "../../config";
 
 export default ({ hideLogo, title, selCategory, handleSelectCategory }) => {
 	const [isOpenSideMenu, setIsOpenSideMenu] = useState(false);
@@ -49,7 +44,14 @@ export default ({ hideLogo, title, selCategory, handleSelectCategory }) => {
 		});
 	};
 
-	const vipImg = [vip1, vip2, vip3, vip4, vip5, vip6];
+	const vipImg = [
+		`${bannerImgUrl}/h5/img/vip/vip1.png`,
+		`${bannerImgUrl}/h5/img/vip/vip2.png`,
+		`${bannerImgUrl}/h5/img/vip/vip3.png`,
+		`${bannerImgUrl}/h5/img/vip/vip4.png`,
+		`${bannerImgUrl}/h5/img/vip/vip5.png`,
+		`${bannerImgUrl}/h5/img/vip/vip6.png`
+	];
 
 	return (
 		<header id="header">

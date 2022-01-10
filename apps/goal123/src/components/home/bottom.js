@@ -1,19 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import TandC from "../../service/t_and_c";
-import config, { siteInfo } from "../../config";
-import HowToDeposit from "../../styles/img/infoicon1.png";
-import HowToWithdrawal from "../../styles/img/infoicon2.png";
-import FAQ from "../../styles/img/infoicon3.png";
+import { siteInfo, bannerImgUrl } from "../../config";
 import defPlatform from "../setting/defPlatform";
-// import Partner_AB from "../../styles/img/partner/ab.png";
-// import Partner_AE from "../../styles/img/partner/ae.png";
-// import Partner_CQ9 from "../../styles/img/partner/cq9.png";
-// import Partner_GP from "../../styles/img/partner/gameplay.png";
-// import Partner_PG from "../../styles/img/partner/pg.png";
-// import Partner_PP from "../../styles/img/partner/pp.png";
-// import Partner_SA from "../../styles/img/partner/sa.png";
-import Bong88 from "../../styles/img/partner/bong88.png";
 
 const Bottom = ({ i18n, langId }) => {
 	const platformRows = defPlatform.map(item => {
@@ -21,7 +10,7 @@ const Bottom = ({ i18n, langId }) => {
 			<img
 				key={`platform-${item.tpId}`}
 				alt="logo"
-				src={`${config.imgUrl}/common/images/logo/${item.imgName}.png`}
+				src={`${bannerImgUrl}/h5/img/footer/${item.imgName}.png`}
 			/>
 		);
 	});
@@ -34,21 +23,30 @@ const Bottom = ({ i18n, langId }) => {
 						target="_blank"
 						rel="noreferrer"
 						href={TandC(langId).HowToDeposit}>
-						<img src={HowToDeposit} alt="How To Deposit" />
+						<img
+							src={`${bannerImgUrl}/h5/img/infoicon1.png`}
+							alt="How To Deposit"
+						/>
 						<p>{i18n.lbl_HowToDepoist}</p>
 					</a>
 					<a
 						target="_blank"
 						rel="noreferrer"
 						href={TandC(langId).HowToWithdraw}>
-						<img src={HowToWithdrawal} alt="How To Withdrawal" />
+						<img
+							src={`${bannerImgUrl}/h5/img/infoicon2.png`}
+							alt="How To Withdrawal"
+						/>
 						<p>{i18n.lbl_HowToWithdraw}</p>
 					</a>
 					<a
 						target="_blank"
 						rel="noreferrer"
 						href={TandC(langId).FAQ}>
-						<img src={FAQ} alt="FAQ" />
+						<img
+							src={`${bannerImgUrl}/h5/img/infoicon3.png`}
+							alt="FAQ"
+						/>
 						<p>{i18n.lbl_FAQ.toUpperCase()}</p>
 					</a>
 				</div>
@@ -64,7 +62,10 @@ const Bottom = ({ i18n, langId }) => {
 				<div>{platformRows}</div>
 				<div className="bong88">
 					{i18n.lbl_PoweredBy}
-					<img src={Bong88} alt="Bong88" />
+					<img
+						src={`${bannerImgUrl}/h5/img/bong88.png`}
+						alt="Bong88"
+					/>
 				</div>
 			</div>
 		</>

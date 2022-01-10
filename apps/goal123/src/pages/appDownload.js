@@ -3,18 +3,9 @@ import { useNavigate } from "@reach/router";
 import { i18nContext } from "../components/common/context";
 import { useAppDownLoad } from "../components/appDownload/useAppDownLoad";
 import path from "../path";
-
 import Footer from "../components/common/footer";
-
-import logo from "../styles/img/appdownload/logo.png";
-import bgImg from "../styles/img/appdownload/bg-item.png";
-import androidImg from "../styles/img/appdownload/android.svg";
-import iosImg from "../styles/img/appdownload/ios.svg";
-import tutorial1 from "../styles/img/appdownload/1.png";
-import tutorial2 from "../styles/img/appdownload/2.png";
-import tutorial3 from "../styles/img/appdownload/3.png";
-import tutorial4 from "../styles/img/appdownload/4.png";
 import Layout from "../components/common/layout";
+import { bannerImgUrl } from "../config";
 
 const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
@@ -30,15 +21,25 @@ const IndexPage = () => {
 				<div
 					className="logo"
 					onClick={() => navigate(`${path.home.root}`)}>
-					<img src={logo} alt="logo" />
+					<img
+						src={`${bannerImgUrl}/h5/img/appdownload/logo.png`}
+						alt="logo"
+					/>
 				</div>
 				<div className="title">{i18n.lbl_APPDownload}</div>
-				<img className="visual" src={bgImg} alt="bg-img" />
+				<img
+					className="visual"
+					src={`${bannerImgUrl}/h5/img/appdownload/bg-item.png`}
+					alt="bg-img"
+				/>
 				<div className="qrcode">
 					<div className="container">
 						{andriodDownLoadUrl && (
 							<div className="qrcode-item">
-								<img src={androidImg} alt="android-img" />
+								<img
+									src={`${bannerImgUrl}/h5/img/appdownload/android.svg`}
+									alt="android-img"
+								/>
 								Android
 								<a
 									className="download"
@@ -52,7 +53,10 @@ const IndexPage = () => {
 
 						{IOSDownloadUrl && (
 							<div className="qrcode-item">
-								<img src={iosImg} alt="ios-img" />
+								<img
+									src={`${bannerImgUrl}/h5/img/appdownload/ios.svg`}
+									alt="ios-img"
+								/>
 								iOS
 								<a
 									className="download"
@@ -76,16 +80,28 @@ const IndexPage = () => {
 				</div>
 				<div className="tutorial">
 					<div className="item">
-						<img src={tutorial1} alt="tutorial-1" />
+						<img
+							src={`${bannerImgUrl}/h5/img/appdownload/1.png`}
+							alt="tutorial-1"
+						/>
 					</div>
 					<div className="item">
-						<img src={tutorial2} alt="tutorial-2" />
+						<img
+							src={`${bannerImgUrl}/h5/img/appdownload/2.png`}
+							alt="tutorial-2"
+						/>
 					</div>
 					<div className="item">
-						<img src={tutorial3} alt="tutorial-3" />
+						<img
+							src={`${bannerImgUrl}/h5/img/appdownload/3.png`}
+							alt="tutorial-3"
+						/>
 					</div>
 					<div className="item">
-						<img src={tutorial4} alt="tutorial-4" />
+						<img
+							src={`${bannerImgUrl}/h5/img/appdownload/4.png`}
+							alt="tutorial-4"
+						/>
 					</div>
 				</div>
 			</div>

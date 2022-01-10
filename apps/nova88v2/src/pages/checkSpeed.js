@@ -6,10 +6,7 @@ import {
 	popBoxContext
 } from "../components/common/context";
 import api from "../service/api";
-import y from "../styles/img/check_speed/y.png";
-import n from "../styles/img/check_speed/n.png";
-import start from "../styles/img/check_speed/start.png";
-import { siteInfo } from "../config";
+import { siteInfo, cloudBannerImgURL } from "../config";
 import path from "../path";
 
 const getVerifyAPIUrl = url => {
@@ -183,7 +180,10 @@ const IndexPage = () => {
 							<div>{ip}</div>
 						</div>
 						<button>
-							<img src={start} alt="start" />
+							<img
+								src={`${cloudBannerImgURL}/h5/img/check_speed/start.png`}
+								alt="start"
+							/>
 							<div onClick={_GetSupportDomainList}>
 								{i18n.lbl_Refresh}
 							</div>
@@ -197,9 +197,15 @@ const IndexPage = () => {
 									<>
 										<div key={el.domainName}>
 											{el.available ? (
-												<img src={y} alt="V" />
+												<img
+													src={`${cloudBannerImgURL}/h5/img/check_speed/y.png`}
+													alt="V"
+												/>
 											) : (
-												<img src={n} alt="X" />
+												<img
+													src={`${cloudBannerImgURL}/h5/img/check_speed/n.png`}
+													alt="X"
+												/>
 											)}
 
 											<div>{el.domainName}</div>

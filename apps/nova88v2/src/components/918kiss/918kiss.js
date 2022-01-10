@@ -6,11 +6,11 @@ import React, {
 	lazy,
 	Suspense
 } from "react";
-import kiss from "../../styles/img/918/banner.jpg";
 import { popBoxContext, userInfoContext, i18nContext } from "../common/context";
 import api from "../../service/api";
 import { productList } from "../../datas/productList";
 import AppDownload from "./appDownload";
+import { cloudBannerImgURL } from "../../config";
 
 const useGotoGame = ({ isLogin, langId, tpId }) => {
 	const { setPopBox } = useContext(popBoxContext);
@@ -87,7 +87,10 @@ const Kiss918 = () => {
 	return (
 		<section>
 			<div className="banner">
-				<img src={kiss} alt="918 kiss banner" />
+				<img
+					src={`${cloudBannerImgURL}/h5/img/918/banner.jpg`}
+					alt="918 kiss banner"
+				/>
 			</div>
 
 			<div className="copyinfo">

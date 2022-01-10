@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
 import { userInfoContext, i18nContext } from "../common/context";
-import oneGameImg from "../../styles/img/1g/banner.jpg";
-import QRCode from "../../styles/img/1g/qr.png";
 import { productList } from "../../datas/productList";
 import ButtonWithCopyBtn from "../common/btnWithCopyBtn";
 import { useGotoGame } from "../hook/useGotoGame";
+import { cloudBannerImgURL } from "../../config";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
@@ -24,7 +23,11 @@ export default () => {
 	return (
 		<section>
 			<div className="banner">
-				<img src={oneGameImg} className="banner" alt="one game" />
+				<img
+					src={`${cloudBannerImgURL}/h5/img/1g/banner.jpg`}
+					className="banner"
+					alt="one game"
+				/>
 			</div>
 
 			<div className="copyinfo">
@@ -42,7 +45,10 @@ export default () => {
 						{i18n.lbl_DownloadApp.toUpperCase()}
 					</button>
 				</div>
-				<img src={QRCode} alt="one game QR code" />
+				<img
+					src={`${cloudBannerImgURL}/h5/img/1g/qr.png`}
+					alt="one game QR code"
+				/>
 			</div>
 		</section>
 	);

@@ -1,13 +1,6 @@
 import React, { useContext } from "react";
 import { userInfoContext } from "../components/common/context";
-import play1 from "../styles/img/HowPlay/play1.png";
-import play2 from "../styles/img/HowPlay/play2.png";
-import play3 from "../styles/img/HowPlay/play3.png";
-import play4 from "../styles/img/HowPlay/play4.png";
-import play1_vn from "../styles/img/HowPlay/play-vn1.png";
-import play2_vn from "../styles/img/HowPlay/play-vn2.png";
-import play3_vn from "../styles/img/HowPlay/play-vn3.png";
-import play4_vn from "../styles/img/HowPlay/play-vn4.png";
+import { bannerImgUrl } from "../config";
 
 export default () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -28,7 +21,7 @@ export default () => {
 				over 18 years old".
 				<br />• Click "REGISTER"
 			</p>
-			<img src={play1} alt="" />
+			<img src={`${bannerImgUrl}/h5/img/HowPlay/play1.png`} alt="" />
 			<p>
 				Step 2: Sign in and deposit
 				<br />
@@ -36,7 +29,7 @@ export default () => {
 				deposit into your Bwing account. Your balance will appear at the
 				top of the screen as shown.
 			</p>
-			<img src={play2} alt="" />
+			<img src={`${bannerImgUrl}/h5/img/HowPlay/play2.png`} alt="" />
 			<p className="annotation">
 				See also: How to send money Bwing (hyperlink)
 			</p>
@@ -54,12 +47,12 @@ export default () => {
 				Choose "Transfer Funds" at the top of the page or in the Cashier
 				section.
 			</p>
-			<img src={play3} alt="" />
+			<img src={`${bannerImgUrl}/h5/img/HowPlay/play3.png`} alt="" />
 			<p className="annotation">
 				Choose your wallet, and enter the amount you want to transfer.
 				Then, press the button "Transfer" to complete.
 			</p>
-			<img src={play4} alt="" />
+			<img src={`${bannerImgUrl}/h5/img/HowPlay/play4.png`} alt="" />
 			<p>
 				Step 4: Place a bet
 				<br />
@@ -86,14 +79,14 @@ export default () => {
 				trên 18 tuổi"
 				<br />• Chọn nút "ĐĂNG KÝ"
 			</p>
-			<img src={play1_vn} alt="" />
+			<img src={`${bannerImgUrl}/h5/img/HowPlay/play-vn1.png`} alt="" />
 			<p>
 				Bước 2: Đăng nhập và nạp tiền Đăng nhập vào tài khoản Bwing và
 				chọn phương thức gửi tiền bất kỳ để thực hiện nạp tiền vào tài
 				khoản Bwing. Số dư sẽ hiện lên phía trên cùng màn hình như hình
 				minh họa.
 			</p>
-			<img src={play2_vn} alt="" />
+			<img src={`${bannerImgUrl}/h5/img/HowPlay/play-vn2.png`} alt="" />
 			<p className="annotation">Xem thêm: Cách gửi tiền Bwing</p>
 			<p>
 				Bước 3: Chuyển quỹ để chơi trò yêu thích Tài khoản Bwing sẽ có
@@ -109,8 +102,8 @@ export default () => {
 				Chọn nút "Chuyển quỹ" ở đầu trang, hoặc bấm vào mũi tên cạnh số
 				tiền trong tài khoản vào chọn "Chuyển quỹ".
 			</p>
-			<img src={play3_vn} alt="" />
-			<img src={play4_vn} alt="" />
+			<img src={`${bannerImgUrl}/h5/img/HowPlay/play-vn3.png`} alt="" />
+			<img src={`${bannerImgUrl}/h5/img/HowPlay/play-vn4.png`} alt="" />
 			<p>
 				Bước 4: Đặt cược
 				<br />

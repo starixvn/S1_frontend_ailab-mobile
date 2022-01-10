@@ -20,13 +20,12 @@ import HeaderShortcut from "../components/home/headerShortcut";
 import EventSwipper from "../components/home/eventSwipper";
 import MiddlePanel from "../components/home/middlePanel";
 import Bottom from "../components/home/bottom";
-import jackpot from "../styles/img/jackpot.png";
 import winner_vn from "../styles/img/euroEvent/EURO-GOAL-VN.jpg";
 import winner_en from "../styles/img/euroEvent/EURO-GOAL-EN.jpg";
 import defNav from "../components/casino/defNav";
 import AddToHomePop from "../components/home/addToHomePop";
 import Top10Winner from "../components/home/top10winner";
-import config from "../config";
+import { bannerImgUrl } from "../config";
 import { useGetDomainList } from "../components/hook/useGetDomainList";
 import Layout from "../components/common/layout";
 import Header from "../components/common/header";
@@ -193,7 +192,7 @@ const IndexPage = () => {
 					isOpen: true,
 					content: (
 						<img
-							src={`${config.bannerImgUrl}/img/nonlogin/300x300_goal_${userInfo.langId}.jpg`}
+							src={`${bannerImgUrl}/img/nonlogin/300x300_goal_${userInfo.langId}.jpg`}
 							alt="OfficialAnnounce"
 							onClick={toDownloadPage}
 						/>
@@ -273,7 +272,7 @@ const PlaytechJactpot = () => {
 	return (
 		<Link to={`/${path.casino.root}`} state={{ nav: defNav.PROMO.key }}>
 			<div className="jackpot">
-				<img src={jackpot} alt="" />
+				<img src={`${bannerImgUrl}/h5/img/jackpot.png`} alt="" />
 				<p>VND</p>
 				<p id="tick" />
 			</div>

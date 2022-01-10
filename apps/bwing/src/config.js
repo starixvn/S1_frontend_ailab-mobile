@@ -35,7 +35,7 @@ export const siteInfo = langId => {
 	};
 };
 
-const bannerImgUrl = "https://banner.bw88.io";
+export const bannerImgUrl = "https://banner.bw88.io";
 
 export const usdtImgUrl = "https://payment.bw88.io";
 
@@ -45,7 +45,7 @@ export default process.env.NODE_ENV === "production"
 			apiURL: "",
 			openURL: "",
 			imgUrl: "",
-			t_and_cURL: "",
+			t_and_cURL: "https://image.0814media.net",
 			bannerImgUrl
 	  }
 	: {
@@ -58,7 +58,7 @@ export default process.env.NODE_ENV === "production"
 
 			apiURL: "",
 			imgUrl: "https://stag.bwing.com",
-			t_and_cURL: "https://stag.bwing.com",
+			t_and_cURL: "https://image.0814media.net",
 			openURL: "",
 			bannerImgUrl
 	  };

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { i18nContext } from "./context";
-import backupImg from "../../styles/img/backupdomian.jpg";
+import { bannerImgUrl } from "../../config";
 
 const DomainListPop = ({ domainList }) => {
 	const { i18n } = useContext(i18nContext);
@@ -34,7 +34,10 @@ const DomainListPop = ({ domainList }) => {
 
 	return (
 		<div className="popTxt">
-			<img src={backupImg} alt="STAY ACCESSIBLE Anytime, Anywhere" />
+			<img
+				src={`${bannerImgUrl}/h5/img/backupdomian.jpg`}
+				alt="STAY ACCESSIBLE Anytime, Anywhere"
+			/>
 			<div className="txt">{i18n.lbl_Stay_accessible}</div>
 			<div className="txt">{i18n.lbl_Anytime_anywhere}</div>
 

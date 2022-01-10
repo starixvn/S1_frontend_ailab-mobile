@@ -3,7 +3,7 @@ import { Link } from "@reach/router";
 import PropTypes from "prop-types";
 import { setCookie, readCookie } from "../common/common";
 import path from "../../path";
-import downloadIcon from "../../styles/img/downloadIcon.png";
+import { bannerImgUrl } from "../../config";
 
 const AppDownloadHint = ({ i18n, root }) => {
 	const [appHint, setAppHint] = useState(false);
@@ -26,7 +26,10 @@ const AppDownloadHint = ({ i18n, root }) => {
 					className="icon icon-close"
 					onClick={handleDownloadHint}
 				/>
-				<img src={downloadIcon} alt={i18n.lbl_DownloadApp} />
+				<img
+					src={`${bannerImgUrl}/h5/img/downloadIcon.png`}
+					alt={i18n.lbl_DownloadApp}
+				/>
 				<div className="text">
 					<p>{i18n.lbl_DownloadApp}</p>
 					<p>{i18n.lbl_DownloadAppHint}</p>
