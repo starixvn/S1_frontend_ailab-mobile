@@ -39,11 +39,11 @@ const defPayment = {
 	},
 	[defPayType.mobilePay]: {
 		displayKey: "lbl_MobileDeposit",
-		creditTimeKey: "lbl_5mins"
+		creditTimeKey: "lbl_Instant"
 	},
 	[defPayType.cryptoPay]: {
 		displayKey: "lbl_CryptoPay",
-		creditTimeKey: "lbl_5mins"
+		creditTimeKey: "lbl_Instant"
 	}
 };
 
