@@ -396,6 +396,45 @@ const gameList = ({ langId, currencyName }) => {
 					menuId: 7,
 					items: [
 						{
+							...defGameInfo.FishingHaiba,
+							spanTextKey: "lbl_Fishing_Haiba",
+							img: `${cloudBannerImgURL}/h5/img/hb.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.fishing_Joker
+									)
+								}
+							]
+						},
+						{
+							...defGameInfo.FishingHappyFish5,
+							spanTextKey: "lbl_Fishing_Hunting_Happy_Fish_5",
+							img: `${cloudBannerImgURL}/h5/img/hf5.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.fishing_Joker
+									)
+								}
+							]
+						},
+						{
+							...defGameInfo.FishingMonsterAwaken,
+							spanTextKey: "lbl_Fishing_Hunting_Monster_Awaken",
+							img: `${cloudBannerImgURL}/h5/img/ma.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.fishing_Joker
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.FishingSGW,
 							spanTextKey: "lbl_FishingSG2",
 							img: `${cloudBannerImgURL}/h5/img/fw.png`
@@ -832,6 +871,45 @@ const gameList = ({ langId, currencyName }) => {
 					translateKey: "lbl_Fishing",
 					menuId: 7,
 					items: [
+						{
+							...defGameInfo.FishingHaiba,
+							spanTextKey: "lbl_Fishing_Haiba",
+							img: `${cloudBannerImgURL}/h5/img/hb.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.fishing_Joker
+									)
+								}
+							]
+						},
+						{
+							...defGameInfo.FishingHappyFish5,
+							spanTextKey: "lbl_Fishing_Hunting_Happy_Fish_5",
+							img: `${cloudBannerImgURL}/h5/img/hf5.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.fishing_Joker
+									)
+								}
+							]
+						},
+						{
+							...defGameInfo.FishingMonsterAwaken,
+							spanTextKey: "lbl_Fishing_Hunting_Monster_Awaken",
+							img: `${cloudBannerImgURL}/h5/img/ma.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.fishing_Joker
+									)
+								}
+							]
+						},
 						{
 							...defGameInfo.FishingGG,
 							spanTextKey: "lbl_FishingGG",
@@ -1288,6 +1366,45 @@ const gameList = ({ langId, currencyName }) => {
 					menuId: 7,
 					items: [
 						{
+							...defGameInfo.FishingHaiba,
+							spanTextKey: "lbl_Fishing_Haiba",
+							img: `${cloudBannerImgURL}/h5/img/hb.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.fishing_Joker
+									)
+								}
+							]
+						},
+						{
+							...defGameInfo.FishingHappyFish5,
+							spanTextKey: "lbl_Fishing_Hunting_Happy_Fish_5",
+							img: `${cloudBannerImgURL}/h5/img/hf5.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.fishing_Joker
+									)
+								}
+							]
+						},
+						{
+							...defGameInfo.FishingMonsterAwaken,
+							spanTextKey: "lbl_Fishing_Hunting_Monster_Awaken",
+							img: `${cloudBannerImgURL}/h5/img/ma.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.fishing_Joker
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.FishingSGW,
 							spanTextKey: "lbl_FishingSG2",
 							img: `${cloudBannerImgURL}/h5/img/fw.png`
@@ -1740,6 +1857,45 @@ const gameList = ({ langId, currencyName }) => {
 					menuId: 7,
 					items: [
 						{
+							...defGameInfo.FishingHaiba,
+							spanTextKey: "lbl_Fishing_Haiba",
+							img: `${cloudBannerImgURL}/h5/img/hb.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.fishing_Joker
+									)
+								}
+							]
+						},
+						{
+							...defGameInfo.FishingHappyFish5,
+							spanTextKey: "lbl_Fishing_Hunting_Happy_Fish_5",
+							img: `${cloudBannerImgURL}/h5/img/hf5.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.fishing_Joker
+									)
+								}
+							]
+						},
+						{
+							...defGameInfo.FishingMonsterAwaken,
+							spanTextKey: "lbl_Fishing_Hunting_Monster_Awaken",
+							img: `${cloudBannerImgURL}/h5/img/ma.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.fishing_Joker
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.FishingSGW,
 							spanTextKey: "lbl_FishingSG2",
 							img: `${cloudBannerImgURL}/h5/img/fw.png`
@@ -2160,6 +2316,45 @@ const gameList = ({ langId, currencyName }) => {
 					menuId: 7,
 					items: [
 						{
+							...defGameInfo.FishingHaiba,
+							spanTextKey: "lbl_Fishing_Haiba",
+							img: `${cloudBannerImgURL}/h5/img/hb.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.fishing_Joker
+									)
+								}
+							]
+						},
+						{
+							...defGameInfo.FishingHappyFish5,
+							spanTextKey: "lbl_Fishing_Hunting_Happy_Fish_5",
+							img: `${cloudBannerImgURL}/h5/img/hf5.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.fishing_Joker
+									)
+								}
+							]
+						},
+						{
+							...defGameInfo.FishingMonsterAwaken,
+							spanTextKey: "lbl_Fishing_Hunting_Monster_Awaken",
+							img: `${cloudBannerImgURL}/h5/img/ma.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.fishing_Joker
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.Fishing_AB3,
 							spanTextKey: "lbl_Paradise",
 							img: `${cloudBannerImgURL}/h5/img/pd.png`
@@ -2317,6 +2512,9 @@ export const defGameInfo = {
 	},
 	ICG_DRAGONBALL_FISHING: { tpId: 24, gameId: "cmf0001", tpGameType: 40 },
 	ICG_FISHING_OF_SAVIORS: { tpId: 24, gameId: "cmf0002", tpGameType: 40 },
+	FishingHaiba: { tpId: 9, gameId: "kk8nqm3cfwtng", tpGameType: 66 },
+	FishingHappyFish5: { tpId: 9, gameId: "st5cmuqnaxycn", tpGameType: 66 },
+	FishingMonsterAwaken: { tpId: 9, gameId: "1jeqx59c7ztqg", tpGameType: 66 },
 	FishingGG: { tpId: 7, gameId: 10, tpGameType: 12 },
 	FishingSG: { tpId: 10, gameId: "F-SF01", tpGameType: 31 },
 	FishingSGW: { tpId: 10, gameId: "F-SF02", tpGameType: 31 },
