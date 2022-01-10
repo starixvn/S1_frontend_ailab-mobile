@@ -161,6 +161,9 @@ export default {
 	},
 	checkSpeed: {
 		root: "speed"
+	},
+	um: {
+		root: "um"
 	}
 };
 
