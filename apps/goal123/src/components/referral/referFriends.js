@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
 import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
-import stepImg_en from "../../styles/img/refbanner-en.png";
-import stepImg_vn from "../../styles/img/refbanner-vn.png";
 import Links from "./referral.links";
 import Summary from "./referral.summary";
 import Condition from "./referral.condition";
+import { bannerImgUrl } from "../../config";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
@@ -16,7 +15,11 @@ export default () => {
 			<Summary userInfo={userInfo} i18n={i18n} setPopBox={setPopBox} />
 			<img
 				className="refbanner"
-				src={userInfo.langId === "en" ? stepImg_en : stepImg_vn}
+				src={
+					userInfo.langId === "en"
+						? `${bannerImgUrl}/h5/img/refbanner-en.png`
+						: `${bannerImgUrl}/h5/img/refbanner-vn.png`
+				}
 				alt="referral step banner"
 			/>
 			<Condition userInfo={userInfo} i18n={i18n} setPopBox={setPopBox} />

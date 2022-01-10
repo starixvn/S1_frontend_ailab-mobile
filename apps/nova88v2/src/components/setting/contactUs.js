@@ -4,7 +4,6 @@ import { i18nContext } from "../common/context";
 import Header from "../header/header";
 import path from "../../path";
 import { Link } from "../../route/link";
-import lineQRCode from "../../styles/img/line.jpg";
 import Footer from "../common/footer";
 import { cloudBannerImgURL } from "../../config";
 
@@ -71,7 +70,10 @@ const ContactUs = ({ i18n }) => {
 				</div>
 			</a>
 			<div>
-				<img src={lineQRCode} alt="Line QR Code" />
+				<img
+					src={`${cloudBannerImgURL}/img/line.jpg`}
+					alt="Line QR Code"
+				/>
 				<div>Line</div>
 			</div>
 			<div>

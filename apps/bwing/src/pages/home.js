@@ -23,16 +23,14 @@ import GamePanel from "../components/home/gamePanel";
 import LinksPanel from "../components/home/links";
 import EventSwipper from "../components/home/eventSwipper";
 import HotGameSwipper from "../components/home/hotGameSwipper";
-import jackpot from "../styles/img/jackpot.png";
 import winner_vn from "../styles/img/EURO_Bwing/EURO-Bwing-VN.jpg";
 import winner_en from "../styles/img/EURO_Bwing/EURO-Bwing-EN.jpg";
 import defNav from "../components/casino/defNav";
 import AddToHomePop from "../components/home/addToHomePop";
 import Top10Winner from "../components/home/top10winner";
-import config from "../config";
+import { bannerImgUrl } from "../config";
 import { useGetDomainList } from "../components/hook/useGetDomainList";
 import GameList from "../components/home/menu";
-import { defPopBoxType } from "../components/common/popbox";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -205,7 +203,7 @@ const IndexPage = () => {
 					isOpen: true,
 					content: (
 						<img
-							src={`${config.bannerImgUrl}/img/nonlogin/300x300_bwing_${userInfo.langId}.jpg`}
+							src={`${bannerImgUrl}/img/nonlogin/300x300_bwing_${userInfo.langId}.jpg`}
 							alt="OfficialAnnounce"
 							onClick={toDownloadPage}
 						/>
@@ -280,7 +278,7 @@ const PlaytechJactpot = () => {
 	return (
 		<Link to={`/${path.casino.root}`} state={{ nav: defNav.PROMO.key }}>
 			<div className="bannerS">
-				<img src={jackpot} alt="" />
+				<img src={`${bannerImgUrl}/h5/img/jackpot.png`} alt="" />
 				<p>VND</p>
 				<p id="tick" />
 			</div>

@@ -14,8 +14,6 @@ import {
 import path from "../../path";
 import Loading from "./loading";
 import { isEventPeriod } from "./common";
-import eventImg from "../../styles/img/event/eventlink_en.png";
-import eventVNImg from "../../styles/img/event/eventlink_vn.png";
 import MysteryBox from "../mysteryBox/homePopBox";
 import { eventTime } from "./eventTime";
 import LuckyWheel from "../luckyWheel/homePopBox";
@@ -146,31 +144,8 @@ class RotationHint extends Component {
 	}
 }
 
-const AngPow = ({ userInfo }) => {
-	const { root, setRoot } = useContext(rootContext);
-	const closePop = () => {
-		setRoot(false);
-	};
-
-	return root ? (
-		<div className={`eventLink ${userInfo.isLogin ? "afterlogin" : ""}`}>
-			<button className="icon icon-close" onClick={closePop} />
-			<Link to={`${path.angPow.root}`}>
-				<img
-					src={userInfo.langId === "vn" ? eventVNImg : eventImg}
-					alt="Ang pow"
-				/>
-			</Link>
-		</div>
-	) : null;
-};
-
 RotationHint.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired
-};
-
-AngPow.propTypes = {
-	userInfo: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
 export default Layout;

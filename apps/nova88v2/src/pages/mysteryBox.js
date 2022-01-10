@@ -7,9 +7,9 @@ import Header from "../components/header/header";
 import Footer from "../components/common/footer";
 import { Link } from "../route/link";
 import path from "../path";
-import PopImg from "../styles/img/event/mysterybox/eventlink.png";
 import { eventTime } from "../components/common/eventTime";
 import GoTopBtn from "../components/common/goTopBtn";
+import { cloudBannerImgURL } from "../config";
 
 export const MysteryBoxPop = () => {
 	const { root } = useContext(rootContext);
@@ -29,7 +29,10 @@ export const MysteryBoxPop = () => {
 		<div className="eventLink">
 			<button className="icon icon-close" onClick={closePop} />
 			<Link to={path.mysteryBox.root}>
-				<img src={PopImg} alt="Mystery Box" />
+				<img
+					src={`${cloudBannerImgURL}/h5/img/event/mysterybox/eventlink.png`}
+					alt="Mystery Box"
+				/>
 			</Link>
 		</div>
 	) : null;

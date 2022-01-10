@@ -1,31 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { api_events_GetLeaderboardListV2 } from "../../service/api/events";
-
-import no1 from "../../styles/img/top10/no1.png";
-import no2 from "../../styles/img/top10/no2.png";
-import no3 from "../../styles/img/top10/no3.png";
-import no4 from "../../styles/img/top10/no4.png";
-import no5 from "../../styles/img/top10/no5.png";
-import no6 from "../../styles/img/top10/no6.png";
-import no7 from "../../styles/img/top10/no7.png";
-import no8 from "../../styles/img/top10/no8.png";
-import no9 from "../../styles/img/top10/no9.png";
-import no10 from "../../styles/img/top10/no10.png";
-import money from "../../styles/img/top10/money.png";
+import { bannerImgUrl } from "../../config";
 import { number_format } from "../common/common";
 
 const Top10winner = ({ i18n, setPopBox }) => {
 	const numMap = {
-		1: no1,
-		2: no2,
-		3: no3,
-		4: no4,
-		5: no5,
-		6: no6,
-		7: no7,
-		8: no8,
-		9: no9,
-		10: no10
+		1: `${bannerImgUrl}/h5/img/top10/no1.png`,
+		2: `${bannerImgUrl}/h5/img/top10/no2.png`,
+		3: `${bannerImgUrl}/h5/img/top10/no3.png`,
+		4: `${bannerImgUrl}/h5/img/top10/no4.png`,
+		5: `${bannerImgUrl}/h5/img/top10/no5.png`,
+		6: `${bannerImgUrl}/h5/img/top10/no6.png`,
+		7: `${bannerImgUrl}/h5/img/top10/no7.png`,
+		8: `${bannerImgUrl}/h5/img/top10/no8.png`,
+		9: `${bannerImgUrl}/h5/img/top10/no9.png`,
+		10: `${bannerImgUrl}/h5/img/top10/no10.png`
 	};
 	const [rank, setRank] = useState([]);
 	useEffect(() => {
@@ -67,7 +56,10 @@ const Top10winner = ({ i18n, setPopBox }) => {
 								<p>{el.userName}</p>
 							</div>
 							<div className="money">
-								<img src={money} alt="money" />
+								<img
+									src={`${bannerImgUrl}/h5/img/top10/money.png`}
+									alt="money"
+								/>
 								<p>{number_format(el.wTurnover)}</p>
 							</div>
 						</div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import icon from "../../styles/img/icon_256_Nova88_1.png";
 import { setCookie, readCookie, validImgLang } from "../common/common";
+import { cloudBannerImgURL } from "../../config";
 
 const ua = window.navigator.userAgent;
 const iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
@@ -31,7 +31,10 @@ const AddToHomePop = ({ i18n, userInfo }) => {
 	return addToHomePop && iOSSafari ? (
 		<div className="favouriteModule">
 			<div className="favourite">
-				<img src={icon} alt="Nova88" />
+				<img
+					src={`${cloudBannerImgURL}/h5/img/icon_256_Nova88_1.png`}
+					alt="Nova88"
+				/>
 				<div>
 					{i18n.lbl_AddToHome_Hint}
 					<div>

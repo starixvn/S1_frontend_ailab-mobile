@@ -2,8 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "@reach/router";
 import { rootContext } from "../common/context";
 import path from "../../path";
-import luckwheel from "../../styles/img/luckybox/homeImg.png";
-import luckwheelw from "../../styles/img/luckybox/homeImg-w.png";
+import { bannerImgUrl } from "../../config";
 
 const LuckyWheel = ({ setLuckyWheel }) => {
 	const { root, setRoot } = useContext(rootContext);
@@ -21,12 +20,12 @@ const LuckyWheel = ({ setLuckyWheel }) => {
 				<Link to={`/${path.luckyWheel.root}`}>
 					<img
 						className="luckwheel"
-						src={luckwheel}
+						src={`${bannerImgUrl}/h5/img/luckybox/homeImg.png`}
 						alt="luckyWheel"
 					/>
 					<img
 						className="luckwheelw"
-						src={luckwheelw}
+						src={`${bannerImgUrl}/h5/img/luckybox/homeImg-w.png`}
 						alt="luckyWheel"
 					/>
 				</Link>

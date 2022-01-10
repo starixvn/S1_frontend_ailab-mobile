@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import ball from "../../styles/img/ranking/ball.png";
-import slot from "../../styles/img/ranking/slot.png";
-import casino from "../../styles/img/ranking/casino.png";
 import PrizeList from "./prize";
 import { defPrize } from "./def";
 import { GET_LANG_ID } from "../../service/language";
 import { GetCurrencyName } from "../common/common";
-import { cloudImgURL, siteInfo } from "../../config";
+import { cloudImgURL, siteInfo, cloudBannerImgURL } from "../../config";
 
 const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
 	const [URL, setURL] = useState("");
@@ -34,9 +31,9 @@ const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
 	const rows = getPrize?.map((item, index) => {
 		const { rank, prizes } = item;
 		let img;
-		if (index === 0) img = ball;
-		if (index === 1) img = slot;
-		if (index === 2) img = casino;
+		if (index === 0) img = `${cloudBannerImgURL}/h5/img/ranking/ball.png`;
+		if (index === 1) img = `${cloudBannerImgURL}/h5/img/ranking/slot.png`;
+		if (index === 2) img = `${cloudBannerImgURL}/h5/img/ranking/casino.png`;
 		return (
 			<li key={`prize-${rank}`}>
 				<div>

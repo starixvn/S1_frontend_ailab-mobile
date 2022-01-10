@@ -16,11 +16,9 @@ import Header from "../components/header/header";
 import Footer from "../components/common/footer";
 import { Link } from "../route/link";
 import path from "../path";
-import PopImg from "../styles/img/event/wheel/eventlinkbg.png";
-import spin1 from "../styles/img/event/wheel/eventlinkimg.png";
-import spin2 from "../styles/img/event/wheel/eventlinkwin.png";
 import { eventTime } from "../components/common/eventTime";
 import GoTopBtn from "../components/common/goTopBtn";
+import { cloudBannerImgURL } from "../config";
 
 const CURRENCY_PERMISSION = [
 	defCurrenyId.MYR,
@@ -71,15 +69,18 @@ export const LuckyWheelPop = () => {
 				<button className="icon icon-close" onClick={closePop} />
 
 				<Link to={path.luckyWheel.root} className="wheelModule">
-					<img src={PopImg} alt="luckyWheel Box" />
+					<img
+						src={`${cloudBannerImgURL}/h5/img/event/wheel/eventlinkbg.png`}
+						alt="luckyWheel Box"
+					/>
 					<img
 						className="eventlinkimg"
-						src={spin1}
+						src={`${cloudBannerImgURL}/h5/img/event/wheel/eventlinkimg.png`}
 						alt="luckyWheel Box"
 					/>
 					<img
 						className="eventlinkwin"
-						src={spin2}
+						src={`${cloudBannerImgURL}/h5/img/event/wheel/eventlinkwin.png`}
 						alt="luckyWheel Box"
 					/>
 				</Link>

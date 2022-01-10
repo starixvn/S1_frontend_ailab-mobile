@@ -5,7 +5,7 @@ import { api_KycCheck } from "../../service/api/payment";
 import { api_GetCustBankInfo } from "../../service/api/account";
 import path from "../../path";
 import Loading from "../common/loading";
-import kycProgressingImg from "../../styles/img/gear.png";
+import { bannerImgUrl } from "../../config";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
@@ -106,7 +106,10 @@ export default () => {
 				<div className="subModuleBody column">
 					<span className="title text-org">{i18n.lbl_WaitKYC}</span>
 					<div className="txt-lightgray">{i18n.lbl_WaitKYCHint}</div>
-					<img src={kycProgressingImg} className="gear" />
+					<img
+						src={`${bannerImgUrl}/h5/img/gear.png`}
+						className="gear"
+					/>
 				</div>
 			</div>
 		</div>

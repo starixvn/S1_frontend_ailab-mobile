@@ -16,13 +16,7 @@ import ReloadSpin from "../common/reloadSpin";
 import { defGameInfo } from "../../datas/productList";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import ShortcutBar from "./shortcutBar";
-import TandC from "../../service/t_and_c";
-import Skype from "../../styles/img/sk_1.png";
-import Telegram from "../../styles/img/te_1.png";
-import Zalo from "../../styles/img/zalo_1.png";
-import Lang_en from "../../styles/img/en.jpg";
-import Lang_vn from "../../styles/img/vn.jpg";
-import { siteInfo } from "../../config";
+import { siteInfo, bannerImgUrl } from "../../config";
 import DefLangs from "../../datas/defLangs";
 import { tpWalletsListType } from "../transfer/transfer.def";
 import useGetBalance from "../hook/useGetMainBalance";
@@ -456,19 +450,19 @@ const ContactUs = ({ i18n }) => {
 				href="skype:live:.cid.d357533c71e50fb5?chat"
 				target="_blank"
 				rel="noreferrer noopener">
-				<img src={Skype} alt="skype" />
+				<img src={`${bannerImgUrl}/h5/img/sk_1.png`} alt="skype" />
 			</a>
 			<a
 				href="https://t.me/Goal123csd"
 				target="_blank"
 				rel="noreferrer noopener">
-				<img src={Telegram} alt="telegram" />
+				<img src={`${bannerImgUrl}/h5/img/te_1.png`} alt="telegram" />
 			</a>
 			<a
 				href="https://zalo.me/Goal123csd"
 				target="_blank"
 				rel="noreferrer noopener">
-				<img src={Zalo} alt="zalo" />
+				<img src={`${bannerImgUrl}/h5/img/zalo_1.png`} alt="zalo" />
 			</a>
 		</div>
 	);
@@ -551,13 +545,13 @@ const LangSwitch = ({ setPopBox, userInfo, setUserInfo }) => {
 			<div
 				className={userInfo.langId === "en" ? "open" : ""}
 				onClick={selectLanguage.bind(this, "en")}>
-				<img src={Lang_en} alt="English" />
+				<img src={`${bannerImgUrl}/h5/img/en.jpg`} alt="English" />
 				English
 			</div>
 			<div
 				className={userInfo.langId === "vn" ? "open" : ""}
 				onClick={selectLanguage.bind(this, "vn")}>
-				<img src={Lang_vn} alt="Tiếng Việt" />
+				<img src={`${bannerImgUrl}/h5/img/vn.jpg`} alt="Tiếng Việt" />
 				Tiếng Việt
 			</div>
 		</div>

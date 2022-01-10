@@ -1,13 +1,10 @@
 import React from "react";
 import { Link, useNavigate } from "@reach/router";
-import config, { siteInfo } from "../../config";
+import config, { siteInfo, bannerImgUrl } from "../../config";
 import TandC from "../../service/t_and_c";
-import Bong88 from "../../styles/img/bong88.png";
 import path from "../../path";
 import { defPlatform } from "./defPlatform";
 import { useAppDownLoad } from "../appDownload/useAppDownLoad";
-import androidIcon from "../../styles/img/AndroidIcon.png";
-import iosIcon from "../../styles/img/iosIcon.png";
 
 export default ({ i18n, langId }) => {
 	return (
@@ -144,7 +141,7 @@ const Platforms = ({ i18n }) => {
 			<div className="partner">
 				<div className="partner-bar">{platformRows}</div>
 				<span>{i18n.lbl_PoweredBy?.toUpperCase()}</span>
-				<img src={Bong88} alt="" />
+				<img src={`${bannerImgUrl}/h5/img/bong88.png`} alt="" />
 			</div>
 			<div className="copyright">
 				<span>{`© COPYRIGHT ${new Date().getFullYear()}. BWING. ALL RIGHTS RESERVED.`}</span>
@@ -170,7 +167,10 @@ const AppDownload = () => {
 					href={andriodDownLoadUrl}
 					target="_blank"
 					rel="noreferrer">
-					<img src={androidIcon} alt="android icon" />
+					<img
+						src={`${bannerImgUrl}/h5/img/androidIcon.png`}
+						alt="android icon"
+					/>
 					Android
 				</a>
 			)}
@@ -181,7 +181,10 @@ const AppDownload = () => {
 					href={IOSDownloadUrl}
 					target="_blank"
 					rel="noreferrer">
-					<img src={iosIcon} alt="ios icon" />
+					<img
+						src={`${bannerImgUrl}/h5/img/iosIcon.png`}
+						alt="ios icon"
+					/>
 					iOS
 				</a>
 			)}

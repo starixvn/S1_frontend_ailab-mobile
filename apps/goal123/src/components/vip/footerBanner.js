@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import BannerEN from "../../styles/img/vip/vip_program_en.jpg";
-import BannerVN from "../../styles/img/vip/vip_program_vn.jpg";
+import { bannerImgUrl } from "../../config";
 
 export const FooterBanner = ({ langId, openJoinPop }) => {
-	const _banner = langId === "en" ? BannerEN : BannerVN;
+	const _banner =
+		langId === "en"
+			? `${bannerImgUrl}/h5/img/vip/vip_program_en.jpg`
+			: `${bannerImgUrl}/h5/img/vip/vip_program_vn.jpg`;
 	return (
 		<div className="vipBanner" onClick={openJoinPop}>
 			<img src={_banner} alt="VIP Programme" />

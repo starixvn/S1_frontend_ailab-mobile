@@ -1,14 +1,10 @@
 import React, { useContext } from "react";
 import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
-import stepImg_en from "../../styles/img/refbanner-en.png";
-import stepImg_cs from "../../styles/img/refbanner-cs.png";
-import stepImg_th from "../../styles/img/refbanner-th.png";
-import stepImg_id from "../../styles/img/refbanner-id.png";
-import stepImg_hi from "../../styles/img/refbanner-hi.png";
 import { isConvert } from "../common/common";
 import Links from "./referral.links";
 import Summary from "./referral.summary";
 import Condition from "./referral.condition";
+import { cloudBannerImgURL } from "../../config";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
@@ -19,19 +15,19 @@ export default () => {
 	let _stepImg;
 	switch (userInfo.langId) {
 		case "cs":
-			_stepImg = stepImg_cs;
+			_stepImg = `${cloudBannerImgURL}/h5/img/refbanner-cs.png`;
 			break;
 		case "th":
-			_stepImg = stepImg_th;
+			_stepImg = `${cloudBannerImgURL}/h5/img/refbanner-th.png`;
 			break;
 		case "id":
-			_stepImg = stepImg_id;
+			_stepImg = `${cloudBannerImgURL}/h5/img/refbanner-id.png`;
 			break;
 		case "hi":
-			_stepImg = stepImg_hi;
+			_stepImg = `${cloudBannerImgURL}/h5/img/refbanner-hi.png`;
 			break;
 		default:
-			_stepImg = stepImg_en;
+			_stepImg = `${cloudBannerImgURL}/h5/img/refbanner-en.png`;
 			break;
 	}
 

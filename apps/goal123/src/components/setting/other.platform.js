@@ -9,7 +9,7 @@ import {
 	i18nContext
 } from "../common/context";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
-import config from "../../config";
+import { bannerImgUrl } from "../../config";
 import { api_GetTpIds } from "../../service/api/site";
 import defPlatfrom from "./defPlatform";
 import {
@@ -102,7 +102,7 @@ const Platform = ({ langId, isLogin }) => {
 				<Link key={key} to={`/${p.path}`} state={p.parameter}>
 					<img
 						alt={p.imgName}
-						src={`${config.imgUrl}/common/images/logo/${
+						src={`${bannerImgUrl}/h5/img/footer/${
 							p.otherPlatformImg ?? p.imgName
 						}.png`}
 					/>
@@ -111,7 +111,7 @@ const Platform = ({ langId, isLogin }) => {
 				<img
 					key={key}
 					alt={p.imgName}
-					src={`${config.imgUrl}/common/images/logo/${
+					src={`${bannerImgUrl}/h5/img/footer/${
 						p.otherPlatformImg ?? p.imgName
 					}.png`}
 					onClick={ClickItem.bind(this, {

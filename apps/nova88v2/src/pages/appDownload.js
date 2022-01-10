@@ -5,14 +5,7 @@ import { useAppDownLoad } from "../components/appDownload/useAppDownLoad";
 import Footer from "../components/common/footer";
 import path from "../path";
 import { Link } from "../route/link";
-import toHomeLogo from "../styles/img/app/applogo.png";
-import iosLogo from "../styles/img/app/ios.png";
-import androidLogo from "../styles/img/app/and.png";
-import iosIcon from "../styles/img/app/iosicon.png";
-import tutorial1 from "../styles/img/app/in01.png";
-import tutorial2 from "../styles/img/app/in02.png";
-import tutorial3 from "../styles/img/app/in03.png";
-import tutorial4 from "../styles/img/app/in04.png";
+import { cloudBannerImgURL } from "../config";
 import GoTopBtn from "../components/common/goTopBtn";
 
 const IndexPage = () => {
@@ -28,7 +21,10 @@ const IndexPage = () => {
 				<div className="app">
 					<div className="appHeader">
 						<Link to={path.home.root}>
-							<img src={toHomeLogo} alt="Back To Nova88" />
+							<img
+								src={`${cloudBannerImgURL}/h5/img/app/applogo.png`}
+								alt="Back To Nova88"
+							/>
 						</Link>
 					</div>
 					<div className="appPage">
@@ -45,7 +41,10 @@ const IndexPage = () => {
 										/>
 										<div>
 											<div>
-												<img src={iosLogo} alt="IOS" />
+												<img
+													src={`${cloudBannerImgURL}/h5/img/app/ios.png`}
+													alt="IOS"
+												/>
 												{i18n.lbl_iOS}
 											</div>
 											<a
@@ -71,7 +70,7 @@ const IndexPage = () => {
 										<div>
 											<div>
 												<img
-													src={androidLogo}
+													src={`${cloudBannerImgURL}/h5/img/app/and.png`}
 													alt="Android"
 												/>
 												{i18n.lbl_Android}
@@ -93,16 +92,31 @@ const IndexPage = () => {
 								{i18n.lbl_InstallationTutorial?.toUpperCase()}
 							</div>
 							<div>
-								<img src={iosIcon} alt="IOS Icon" />
+								<img
+									src={`${cloudBannerImgURL}/h5/img/app/iosicon.png`}
+									alt="IOS Icon"
+								/>
 								{i18n.lbl_iOSAuth}
 							</div>
 							<div>{i18n.lbl_appHint1}</div>
 							<div>{i18n.lbl_appHint2}</div>
 							<div>
-								<img src={tutorial1} alt="Tutorial 1" />
-								<img src={tutorial2} alt="Tutorial 2" />
-								<img src={tutorial3} alt="Tutorial 3" />
-								<img src={tutorial4} alt="Tutorial 4" />
+								<img
+									src={`${cloudBannerImgURL}/h5/img/app/in01.png`}
+									alt="Tutorial 1"
+								/>
+								<img
+									src={`${cloudBannerImgURL}/h5/img/app/in02.png`}
+									alt="Tutorial 2"
+								/>
+								<img
+									src={`${cloudBannerImgURL}/h5/img/app/in03.png`}
+									alt="Tutorial 3"
+								/>
+								<img
+									src={`${cloudBannerImgURL}/h5/img/app/in04.png`}
+									alt="Tutorial 4"
+								/>
 							</div>
 						</div>
 					</div>
