@@ -201,6 +201,9 @@ export const defPageInfo = {
 		titleKey: "lbl_LuckyWheel",
 		className: "main luckyboxEvent",
 		hideLogo: true
+	},
+	um: {
+		onlyContent: true
 	}
 };
 
@@ -242,7 +245,9 @@ const Layout = ({ children }) => {
 		if (root) setLuckyWheel(true);
 	}, [root]);
 
-	return (
+	return pageInfo.onlyContent ? (
+		children
+	) : (
 		<>
 			<RotationHint i18n={i18n} />
 			{pageInfo.customHeader ? (

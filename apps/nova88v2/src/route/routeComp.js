@@ -63,6 +63,7 @@ import MyAccount from "../components/setting/myAccount";
 import AppDownload from "../pages/appDownload";
 import CheckSpeed from "../pages/checkSpeed";
 import AppEntPage from "../pages/appEntPage";
+import UMPage from "../pages/um";
 
 const RouteComponents = () => {
 	return (
@@ -143,6 +144,8 @@ const RouteComponents = () => {
 			<AppDownload path={`/:langId/${path.appDownload.root}`} />
 			<CheckSpeed path={`/:langId/${path.checkSpeed.root}`} />
 			<AppEntPage path={`/${defSpecialPath.appentpage}`} />
+			<UMPage path={`/:langId/${path.um.root}`} />
+			<UMPage path={`/${path.um.root}`} />
 		</Router>
 	);
 };

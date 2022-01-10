@@ -173,6 +173,9 @@ export default {
 	},
 	streaming: {
 		root: "streaming"
+	},
+	um: {
+		root: "um"
 	}
 };
 
