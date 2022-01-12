@@ -3,6 +3,7 @@ import { i18nContext, popBoxContext, userInfoContext } from "Context";
 import path from "../../path";
 import { Link } from "../../route/link";
 import { cloudBannerImgURL } from "../../config";
+import { GET_ENTER_PAGE } from "../../service/enterPage";
 
 const PopBoxOneGame = ({ tpId = 13 }) => {
 	const { i18n } = useContext(i18nContext);
