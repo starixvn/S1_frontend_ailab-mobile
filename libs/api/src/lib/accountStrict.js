@@ -71,4 +71,10 @@ export class AccountStrictAPI extends BaseAPI {
 			NickName,
 			AccountName
 		});
+
+	SendOTPEmail = () =>
+		this.accountStrictRequest.post("/SendOTPEmail", { route: "profile" });
+
+	VerifyEmail = ({ langId, key, code }) =>
+		this.accountStrictRequest.post(`/VerifyEmail/${langId}`, { key, code });
 }

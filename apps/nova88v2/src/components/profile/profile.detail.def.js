@@ -44,6 +44,12 @@ export const infoList = ({ i18n = {}, userInfo = {} }) => {
 			isVerified: userInfo.phoneVerified
 		},
 		{
+			infoTitle: "email",
+			colTitle: i18n.lbl_Email,
+			content: userInfo.email,
+			isVerified: userInfo.emailVerified
+		},
+		{
 			infoTitle: "accountName",
 			colTitle: i18n.lbl_RealName,
 			content: userInfo.accountName
@@ -77,11 +83,6 @@ export const infoList = ({ i18n = {}, userInfo = {} }) => {
 					: i18n[`lbl_Country${userInfo.perCountry}`]
 		},
 		{
-			infoTitle: "email",
-			colTitle: i18n.lbl_Email,
-			content: userInfo.email
-		},
-		{
 			infoTitle: "regTime",
 			colTitle: i18n.lbl_RegisterTime,
 			content: date_format(userInfo.regTime)
@@ -100,6 +101,11 @@ export const currencyToAreacode = {
 	13: "CS",
 	15: "ID",
 	51: "VN"
+};
+
+export const otpCol = {
+	phone: "phoneNo",
+	email: "email"
 };
 
 const date_format = v => {

@@ -78,8 +78,8 @@
 	"lbl_MobileVerify": "Verifikasi telepon",
 	"lbl_MinAmount": "Jumlah Minimal",
 	"lbl_VertifyContactConfirm": "Verifikasi nomor kontak Anda untuk menikmati promosi kami?",
-	"msg_OTP_Invalid": "Invalid OTP Code",
-	"msg_VerifyCodeTip": "Please enter the verification number",
+	"msg_OTP_Invalid": "Kode OTP tidak valid",
+	"msg_VerifyCodeTip": "Silakan masukkan kode OTP.",
 	"lbl_RotationHint_2": "Untuk menghadirkan pengalaman dan produk yang lebih baik",
 	"lbl_ProfileModifyWarning": "Pastikan keamanan akun Anda, Data Anda tidak dapat diubah atau modifikasi setelah diajukan",
 	"lbl_NumberGame": "Permainan Angka",
@@ -218,8 +218,8 @@
 	"lbl_LIVE_SPORT": "LIVE SPORTS",
 	"lbl_Game_ICG_DRAGONBALL_FISHING": "Dragonball Fishing",
 	"lbl_Game_ICG_FISHING_OF_SAVIORS": "Fishing Of Saviors",
-	"lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS": "The Tyrant And The Princess",
-	"lbl_Oneshot_Fishing": "Oneshot Fishing",
+	"lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS":"The Tyrant And The Princess",
+	"lbl_Oneshot_Fishing":"Oneshot Fishing",
 	"lbl_FishingSG1": "Pancingan Tuhan",
 	"lbl_FishingSG2": "Perang Pancing",
 	"lbl_TableGame": "Table Game",
@@ -352,6 +352,23 @@
 	"lbl_CountryID": "Indonesia",
 	"lbl_CountryIN": "India",
 	"lbl_CountryVN": "Vietnam",
+	"lbl_EmailVerification": "Verifikasi email",
+	"lbl_ProfileVerification": "Verifikasi Profil",
+	"lbl_UserVerification": "Verifikasi Pengguna",
+	"lbl_AccountSafety": "Keamanan Akun",
+	"lbl_Excellent": "Bagus sekali",
+	"lbl_Normal": "Normal",
+	"lbl_Weak": "Lemah",
+	"lbl_ProfileVerificationHint1": "Isi informasi pribadi Anda.",
+	"lbl_ProfileVerificationHint2": "(nama asli dan tanggal lahir)",
+	"lbl_EmailVerificationHint1": "Verifikasi 'Alamat Email' Anda untuk tingkat keamanan yang lebih",
+	"lbl_EmailVerificationHint2": "baik dan dapatkan hadiah {currency} {amount}.",
+	"lbl_PhoneVerification": "Verifikasi Nomor Telepon",
+	"lbl_PhoneVerificationHint1": "Verifikasi 'Nomor Telepon' Anda untuk tingkat keamanan yang lebih",
+	"lbl_PhoneVerificationHint2": "baik dan dapatkan hadiah {currency} {amount}.",
+	"lbl_EmailOTPHint": "Kode Verifikasi Email telah dikirim ke kotak surat terdaftar Anda.",
+	"lbl_EmailVerifiedMsg": "Luar biasa! Email Anda telah diverifikasi!",
+
 	"-==================-==========================BankInfo-===================================": "",
 	"lbl_ContactCSD": "Untuk setiap permintaan modifikasi, silakan hubungi CSD.",
 	"msg_NeedAccountNo": "Butuh Nomor Rekening",
@@ -514,7 +531,7 @@
 	"lbl_Promotion_Slot": "SLOT",
 	"lbl_More_Info": "RINCIAN",
 	"lbl_Apply_Now": "AJUKAN",
-	"lbl_promo_all_promos": "SEMUA PROMO",
+	"lbl_promo_all_promos":"SEMUA PROMO",
 
 	"-============================================Streaming===================================": "",
 
@@ -722,5 +739,5 @@
 	"lbl_Deposit_Promotion_Button_Back": "Kembali",
 
 	"==============HotGames==============": "",
-	"lbl_HotGames_Nova88_Olympus": "Nova88 Olympus"
+	"lbl_HotGames_Nova88_Olympus":"Nova88 Olympus"
 }
