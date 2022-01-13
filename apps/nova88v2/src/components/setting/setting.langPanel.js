@@ -56,7 +56,7 @@ const LanguageList = ({ userInfo, setUserInfo, i18n }) => {
 
 	const isLogin = userInfo.isLogin && userInfo.currencyId;
 
-	const languageList = Object.values(DefLangs(isLogin));
+	const languageList = Object.values(DefLangs);
 
 	const availableCurrencyId = languageList.find(
 		item => item.currencyId === userInfo.currencyId

@@ -1,7 +1,7 @@
 import { defCurrenyId } from "../components/common/common";
 import { cloudBannerImgURL } from "../config";
 
-export default isLogin => ({
+export default {
 	MY: {
 		country: "MY",
 		img: `${cloudBannerImgURL}/h5/img/ch.jpg`,
@@ -15,16 +15,10 @@ export default isLogin => ({
 	TH: {
 		country: "TH",
 		img: `${cloudBannerImgURL}/h5/img/th.jpg`,
-		lang: isLogin
-			? [
-					{ value: "th_en", displayText: "English" },
-					{ value: "th", displayText: "ภาษาไทย" },
-					{ value: "cs", displayText: "简体中文" }
-			  ]
-			: [
-					{ value: "th_en", displayText: "English" },
-					{ value: "th", displayText: "ภาษาไทย" }
-			  ],
+		lang: [
+			{ value: "th_en", displayText: "English" },
+			{ value: "th", displayText: "ภาษาไทย" }
+		],
 		countryName: "Thailand",
 		currencyId: defCurrenyId.THB
 	},
@@ -48,4 +42,4 @@ export default isLogin => ({
 		countryName: "India",
 		currencyId: defCurrenyId.INR
 	}
-});
+};
