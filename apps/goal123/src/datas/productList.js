@@ -25,7 +25,7 @@ export const defGameInfo = {
 	ICG_FISHING_OF_SAVIORS: { tpId: 24, gameId: "cmf0002", tpGameType: 40 },
 	ICG_THE_TYRANT_AND_THE_PRINCESS: {
 		tpId: 24,
-		gameId: "cmf0003",
+		gameId: "cmf0006",
 		tpGameType: 40
 	},
 	Fishing: { gameId: 10, tpId: 7, tpGameType: 12 },
