@@ -47,7 +47,7 @@ export const defGameInfo = {
 	ICG_FISHING_OF_SAVIORS: { tpId: 24, gameId: "cmf0002", tpGameType: 40 },
 	ICG_THE_TYRANT_AND_THE_PRINCESS: {
 		tpId: 24,
-		gameId: "cmf0003",
+		gameId: "cmf0006",
 		tpGameType: 40
 	},
 	V8Poker: { gameId: 0, tpId: 25, tpGameType: 42 },
