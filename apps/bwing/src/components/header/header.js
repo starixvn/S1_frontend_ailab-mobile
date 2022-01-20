@@ -15,6 +15,7 @@ import { useGetBalance } from "./hook";
 import AppDownloadHint from "./appDownloadHint";
 import Filter from "./filter";
 import { bannerImgUrl } from "../../config";
+import MsgPopup from "./msgPopup";
 
 export default ({ hideLogo, title, selCategory, handleSelectCategory }) => {
 	const [isOpenSideMenu, setIsOpenSideMenu] = useState(false);
@@ -75,6 +76,7 @@ export default ({ hideLogo, title, selCategory, handleSelectCategory }) => {
 					handleLogout={handleLogout}
 					title={title}
 					vipImg={vipImg}
+					userInfo={userInfo}
 				/>
 			</div>
 			{handleSelectCategory && (
@@ -123,54 +125,59 @@ const AfterLogin = ({
 	handleLogout,
 	hideLogo,
 	title,
-	vipImg
-}) =>
-	isShow && (
-		<>
-			<div className="headerTLogout">
-				<div className="close noPos" onClick={onClickSubMenu}>
-					<span />
-					<span />
-					<span />
-					<span />
-					<span />
-					<span />
-				</div>
-				<div className="title">{title}</div>
-				{!hideLogo && (
-					<Link to={path.home.root}>
-						<Logo />
-					</Link>
-				)}
-				<button onClick={handleLogout} className="icon icon-exit" />
-			</div>
-			{!hideLogo && (
-				<div className="headerTLogin">
-					<div className="login">
-						<Link
-							to={`/${path.deposit.root}`}
-							className="login-btn">
-							{i18n.lbl_Deposit.toUpperCase()}
-						</Link>
-						<a className="icon icon-wallteIcon">
-							<span>{i18n[`Currency_${currencyId}`]} </span>
-							<span>{allBalance}</span>
-						</a>
-						<Link to={`/${path.member.root}`}>
-							{userLevel >= 0 && (
-								<img
-									src={vipImg[userLevel - 1]}
-									alt="bwing_vip"
-								/>
-							)}
-							<span>{userName}</span>
-						</Link>
-						<Link
-							to={`/${path.message.root}`}
-							className="icon icon-mailIcon"
-						/>
+	vipImg,
+	userInfo
+}) => {
+	return (
+		isShow && (
+			<>
+				<div className="headerTLogout">
+					<div className="close noPos" onClick={onClickSubMenu}>
+						<span />
+						<span />
+						<span />
+						<span />
+						<span />
+						<span />
 					</div>
+					<div className="title">{title}</div>
+					{!hideLogo && (
+						<Link to={path.home.root}>
+							<Logo />
+						</Link>
+					)}
+					<button onClick={handleLogout} className="icon icon-exit" />
 				</div>
-			)}
-		</>
+				{!hideLogo && (
+					<div className="headerTLogin">
+						<div className="login">
+							<Link
+								to={`/${path.deposit.root}`}
+								className="login-btn">
+								{i18n.lbl_Deposit.toUpperCase()}
+							</Link>
+							<a className="icon icon-wallteIcon">
+								<span>{i18n[`Currency_${currencyId}`]} </span>
+								<span>{allBalance}</span>
+							</a>
+							<Link to={`/${path.member.root}`}>
+								{userLevel >= 0 && (
+									<img
+										src={vipImg[userLevel - 1]}
+										alt="bwing_vip"
+									/>
+								)}
+								<span>{userName}</span>
+							</Link>
+							<Link
+								to={`/${path.message.root}`}
+								className="icon icon-mailIcon">
+								<MsgPopup isLogin={userInfo.isLogin} />
+							</Link>
+						</div>
+					</div>
+				)}
+			</>
+		)
 	);
+};
