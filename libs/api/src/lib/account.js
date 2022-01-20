@@ -87,4 +87,8 @@ export class AccountAPI extends BaseAPI {
 
 	SetWalletTransferStatus = ({ AutoTransfer }) =>
 		this.accountRequest.post("/SetWalletTransferStatus", { AutoTransfer });
+
+	GetPopupMsg = () => this.accountRequest.post("/GetPopupMsg");
+
+	SetPopupMsgRead = () => this.accountRequest.post("/SetPopupMsgRead");
 }

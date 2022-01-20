@@ -13,6 +13,7 @@ import Logo from "./logo";
 import AppDownloadHint from "../home/appDownload";
 import Submenu from "../home/submenu";
 import { bannerImgUrl } from "../../config";
+import MsgPopup from "./msgPopup";
 
 const Header = ({
 	title,
@@ -144,6 +145,7 @@ const HeaderBtn = () => {
 							<span className="amount">{msgCount}</span>
 						) : null}
 					</Link>
+					<MsgPopup isLogin={userInfo.isLogin} />
 				</div>
 			</div>
 		);
