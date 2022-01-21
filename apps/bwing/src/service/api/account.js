@@ -91,3 +91,9 @@ export const api_account_GetWalletTransferStatus = () =>
 
 export const api_account_SetWalletTransferStatus = ({ AutoTransfer }) =>
 	accountRequest.post("/SetWalletTransferStatus", { AutoTransfer });
+
+export const api_account_GetPopupMsg = () =>
+	accountRequest.post("/GetPopupMsg");
+
+export const api_account_SetPopupMsgRead = () =>
+	accountRequest.post("/SetPopupMsgRead");

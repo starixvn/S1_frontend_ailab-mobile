@@ -2808,7 +2808,7 @@ footer > a.open {
   width: 2.9vw;
   height: calc(100% + 2px);
   left: 0;
-  background: url(https://banner.bw88.io/h5/img/stepAfter.png) no-repeat center/cover;
+  background: url(https://banner.bw88.io/h5/img/stepafter.png) no-repeat center/cover;
 }
 
 .processArea .process:after {
@@ -2817,7 +2817,7 @@ footer > a.open {
   width: 2.9vw;
   height: calc(100% + 2px);
   right: -2.9vw;
-  background: url(https://banner.bw88.io/h5/img/stepAfter.png) no-repeat center/cover;
+  background: url(https://banner.bw88.io/h5/img/stepafter.png) no-repeat center/cover;
 }
 
 .processArea .process.active {
@@ -2831,7 +2831,7 @@ footer > a.open {
 
 .processArea .process.active:after {
   content: "";
-  background: url(https://banner.bw88.io/h5/img/stepAfter_a.png) no-repeat center/cover;
+  background: url(https://banner.bw88.io/h5/img/stepafter_a.png) no-repeat center/cover;
   z-index: 1;
 }
 
@@ -8965,7 +8965,7 @@ span.important {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  background: url(https://banner.bw88.io/h5/img/Bwing-404M.jpg) no-repeat center;
+  background: url(https://banner.bw88.io/h5/img/bwing-404m.jpg) no-repeat center;
   width: 100%;
   height: 100%;
   background-size: cover;
@@ -9069,7 +9069,7 @@ span.important {
 .eventImg {
   width: 97%;
   height: 35.5vw;
-  background: url(https://banner.bw88.io/h5/img/eventBg.png) no-repeat;
+  background: url(https://banner.bw88.io/h5/img/eventbg.png) no-repeat;
   background-size: 100%;
   margin: 0 auto;
   position: relative;
@@ -12183,7 +12183,7 @@ span.important {
 }
 
 .downloadarea {
-  background: url(https://banner.bw88.io/h5/img/downloadBg.png) no-repeat;
+  background: url(https://banner.bw88.io/h5/img/downloadbg.png) no-repeat;
   width: 100%;
   height: 71vw;
   background-size: 100%;
@@ -12257,7 +12257,7 @@ span.important {
           align-items: center;
   width: 100%;
   height: 1210px;
-  background: url(https://banner.bw88.io/h5/img/download/downloanBG.png) no-repeat center;
+  background: url(https://banner.bw88.io/h5/img/download/downloanbg.png) no-repeat center;
   background-size: cover;
 }
 
@@ -12392,7 +12392,7 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  background: url(https://banner.bw88.io/h5/img/download/downloanBG2.png) no-repeat bottom center;
+  background: url(https://banner.bw88.io/h5/img/download/downloanbg2.png) no-repeat bottom center;
   background-size: cover;
 }
 
@@ -13049,6 +13049,7 @@ span.important {
   border: 1px solid #1a2b58;
   margin-right: 5vw;
   color: #fff;
+  position: relative;
 }
 
 .profileGrade .grade .user .item button:hover {
@@ -13110,6 +13111,22 @@ span.important {
 .profileGrade .grade .user .item button.active {
   color: #070e22;
   background: #58cdff;
+}
+
+.profileGrade .grade .user .item button.active::after {
+  content: "\e98b";
+  position: absolute;
+  font-family: "icomoon";
+  font-size: 3vw;
+  font-weight: bold;
+  bottom: .5vw;
+  right: .5vw;
+  color: #070e22;
+  width: 4vw;
+  height: 4vw;
+  background: #05f86a;
+  border-radius: 50%;
+  line-height: 5vw;
 }
 
 .profileGrade .grade .user .item button.active img {

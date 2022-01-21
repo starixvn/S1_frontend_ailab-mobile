@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Match } from "@reach/router";
+
 import PropTypes from "prop-types";
 import { Link } from "@Router";
 import {
@@ -9,6 +10,7 @@ import {
 	rootContext
 } from "./context";
 import path from "../../path";
+import MsgPopup from "./msgPopup";
 
 const Footer = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -158,6 +160,7 @@ const Footer = () => {
 								{msgCount > 0 ? (
 									<div className="icon icon-envelope" />
 								) : null}
+								<MsgPopup isLogin={userInfo.isLogin} />
 								<div className="circleAnimation" />
 								<span>{i18n.lbl_More}</span>
 							</Link>
