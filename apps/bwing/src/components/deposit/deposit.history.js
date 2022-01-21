@@ -305,7 +305,7 @@ export const TransactionHistory = props => {
 			{props.thirdId && (
 				<div>
 					<div className="title">{i18n.lbl_Action}</div>
-					<div>{thirdId}</div>
+					<div>{props.thirdId}</div>
 				</div>
 			)}
 			{btnGroup}
