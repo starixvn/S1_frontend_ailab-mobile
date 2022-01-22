@@ -5,8 +5,7 @@ import {
 	popBoxContext,
 	rootContext
 } from "Context";
-import { useNavigate, Link } from "@reach/router";
-import { SEO } from "../components/seo/seo";
+import { SEO, useGetSEODatas } from "../components/seo/seo";
 import Layout from "../components/common/layout";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
@@ -18,26 +17,23 @@ import Referral from "../components/home/referral";
 import EventSwipper from "../components/home/eventSwipper";
 import HeaderShortcut from "../components/home/headerShortcut";
 import Bottom from "../components/home/bottom";
-// import {
-// 	isEventPeriod,
-// 	readCookie,
-// 	setCookie,
-// 	validImgLang
-// } from "../components/common/common";
+import { isEventPeriod, readCookie } from "../components/common/common";
 import path from "../path";
 import Header from "../components/header/header";
 import JoinLoginBar from "../components/home/joinLoginBar";
-import Logo from "../components/common/logo";
 import Jackpot from "../components/home/jackpot";
 import AddToHomePop from "../components/home/addToHomePop";
 import PromotionWrapper from "../components/promotion/common/wrapper";
+import NewYear, {
+	defEventPeriod as NewYearEventPeriod
+} from "../components/common/popbox.newYear";
 
 const IndexPage = () => {
-	const navigate = useNavigate();
-	const { userInfo, setUserInfo } = useContext(userInfoContext);
+	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
+	const { SEODatas } = useGetSEODatas({ getFromAPI: true });
 
 	useEffect(() => {
 		setRoot(true);
@@ -47,93 +43,88 @@ const IndexPage = () => {
 	}, [setRoot]);
 
 	useEffect(() => {
-		if (userInfo.isJoin) {
-			setPopBox({
-				isOpen: true,
-				title: i18n.lbl_Notice,
-				fullPage: true,
-				content: (
-					<div className="joinSuccess">
-						<Logo langId={userInfo.langId} />
-						<div className="step">
-							<div className="stepLine">
-								<div className="stepBar100" />
-							</div>
-							<div className="circle active">
-								<div>
-									<div className="icon icon-checkmark" />
-								</div>
-							</div>
-							<div className="circle active">
-								<div>
-									<div className="icon icon-checkmark" />
-								</div>
-							</div>
-							<div className="circle active">
-								<div>
-									<div className="icon icon-checkmark" />
-								</div>
-							</div>
-						</div>
-						<div className="Join">
-							<div className="Terms">
-								{i18n.lbl_AfterJoinHint}
-							</div>
-							<Link
-								onClick={() => {
-									setPopBox({
-										isOpen: false
-									});
-									setUserInfo(prev => ({
-										...prev,
-										isJoin: false
-									}));
-								}}
-								className="btn-group"
-								to={`/${userInfo.langId}/${path.deposit.root}`}>
-								<button>{i18n.lbl_DepositNow}</button>
-							</Link>
-						</div>
-					</div>
-				)
-			});
-		}
-		// if (userInfo.isLogin === false) {
-		// 	const RankingWinnerPopup = () => {
-		// 		if (
-		// 			isEventPeriod({
-		// 				endDate: "2021/05/18 23:59:59"
-		// 			})
-		// 		) {
-		// 			const _langId = validImgLang(userInfo.langId);
-		// 			setPopBox({
-		// 				isOpen: true,
-		// 				content: (
-		// 					<img
-		// 						src={`https://image.0814media.net/SiteSkin/img/euro/EURO-RACE-MONTHLY-WINNERS-${_langId.toUpperCase()}.jpg`}
-		// 						alt="winner"
-		// 					/>
-		// 				)
-		// 			});
-		// 		} else {
-		// 			setPopBox({
-		// 				isOpen: false
-		// 			});
-		// 		}
-		// 	};
+		if (isEventPeriod(NewYearEventPeriod))
+			if (SEODatas) {
+				const langId = SEODatas.defaultLang ?? userInfo.langId;
 
-		// 	RankingWinnerPopup();
-		// }
-	}, [
-		i18n,
-		setPopBox,
-		userInfo.currencyId,
-		userInfo.userName,
-		navigate,
-		userInfo.langId,
-		userInfo.isJoin,
-		userInfo.isLogin
-	]);
+				if (
+					!langId.includes("hi") &&
+					!readCookie(`NewYear-${window.location.hostname}`)
+				) {
+					setPopBox({
+						isOpen: true,
+						fullPage: true,
+						className: "angpaopop",
+						content: (
+							<NewYear langId={langId} setPopBox={setPopBox} />
+						)
+					});
+				}
+			}
+	}, [SEODatas, userInfo.langId]);
+
+	// useEffect(() => {
+	// 	if (userInfo.isJoin) {
+	// 		setPopBox({
+	// 			isOpen: true,
+	// 			title: i18n.lbl_Notice,
+	// 			fullPage: true,
+	// 			content: (
+	// 				<div className="joinSuccess">
+	// 					<Logo langId={userInfo.langId} />
+	// 					<div className="step">
+	// 						<div className="stepLine">
+	// 							<div className="stepBar100" />
+	// 						</div>
+	// 						<div className="circle active">
+	// 							<div>
+	// 								<div className="icon icon-checkmark" />
+	// 							</div>
+	// 						</div>
+	// 						<div className="circle active">
+	// 							<div>
+	// 								<div className="icon icon-checkmark" />
+	// 							</div>
+	// 						</div>
+	// 						<div className="circle active">
+	// 							<div>
+	// 								<div className="icon icon-checkmark" />
+	// 							</div>
+	// 						</div>
+	// 					</div>
+	// 					<div className="Join">
+	// 						<div className="Terms">
+	// 							{i18n.lbl_AfterJoinHint}
+	// 						</div>
+	// 						<Link
+	// 							onClick={() => {
+	// 								setPopBox({
+	// 									isOpen: false
+	// 								});
+	// 								setUserInfo(prev => ({
+	// 									...prev,
+	// 									isJoin: false
+	// 								}));
+	// 							}}
+	// 							className="btn-group"
+	// 							to={`/${userInfo.langId}/${path.deposit.root}`}>
+	// 							<button>{i18n.lbl_DepositNow}</button>
+	// 						</Link>
+	// 					</div>
+	// 				</div>
+	// 			)
+	// 		});
+	// 	}
+	// }, [
+	// 	i18n,
+	// 	setPopBox,
+	// 	userInfo.currencyId,
+	// 	userInfo.userName,
+	// 	navigate,
+	// 	userInfo.langId,
+	// 	userInfo.isJoin,
+	// 	userInfo.isLogin
+	// ]);
 
 	return (
 		<PromotionWrapper>
