@@ -77,11 +77,6 @@ const Component = ({ setPopBox, langId }) => {
 				alt="new year popup"
 			/>
 			<img
-				className="cloud"
-				src={`${cloudBannerImgURL}/h5/img/angpaopop/cloud.png`}
-				alt="new year popup"
-			/>
-			<img
 				className="tiger"
 				src={`${cloudBannerImgURL}/h5/img/angpaopop/tiger.png`}
 				alt="new year popup"
