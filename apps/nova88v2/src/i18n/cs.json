@@ -622,6 +622,7 @@
 	"lbl_Deposit_DragonPayPop_AccountName": "户口名字",
 	"lbl_Deposit_DragonPayPop_AccountNumber": "户口号码",
 	"lbl_Deposit_DragonPayPop_OrderNumber": "订单编号",
+	"lbl_AutoDeposit": "Auto Deposit",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "付款资讯",

@@ -644,6 +644,7 @@
 	"lbl_Deposit_DragonPayPop_OrderNumber" : "क्रम संख्या",
 	"lbl_Deposit_DragonPayPop_AccountName" : "खाते का नाम",
 	"lbl_Deposit_DragonPayPop_AccountNumber" : "खाता संख्या",
+	"lbl_AutoDeposit": "Auto Deposit",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails":"भुगतान विवरण",

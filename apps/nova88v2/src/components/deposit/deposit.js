@@ -13,29 +13,35 @@ import MobilePay from "./deposit.mobilePay";
 import OnlineBanking from "./deposit.onlineBanking";
 import LocalBank from "./deposit.localBank";
 import CryptoPay from "./deposit.cryptoPay";
+import AutoDeposit from "./deposit.autoDeposit";
 import api from "../../service/api";
 import RecentDatas from "./deposit.recentDatas";
-import { number_format, isConvert } from "../common/common";
+import { number_format, isConvert, defCurrenyId } from "../common/common";
 import ImportantNote from "./importantNote";
 import UserPaymentSwitch, { useGetUserPaymentData } from "./userPaymentData";
 import { useGetDomainList } from "../hook/useGetDomainList";
 import { useGetDepositPromotionList } from "./promoList";
 
 const defPayType = {
-	onlineBank: "onlineBank",
+	autoDeposit: "autoDeposit",
 	localBank: "localBank",
+	onlineBank: "onlineBank",
 	mobilePay: "mobilePay",
 	cryptoPay: "cryptoPay"
 };
 
 const defPayment = {
-	[defPayType.onlineBank]: {
-		displayKey: "lbl_OnlineBanking",
+	[defPayType.autoDeposit]: {
+		displayKey: "lbl_AutoDeposit",
 		creditTimeKey: "lbl_Instant"
 	},
 	[defPayType.localBank]: {
 		displayKey: "lbl_WireTransfers",
 		creditTimeKey: "lbl_5mins"
+	},
+	[defPayType.onlineBank]: {
+		displayKey: "lbl_OnlineBanking",
+		creditTimeKey: "lbl_Instant"
 	},
 	[defPayType.mobilePay]: {
 		displayKey: "lbl_MobileDeposit",
@@ -188,11 +194,12 @@ const Panel = () => {
 
 	const _userPaymentData =
 		userPaymentData?.payType === selected ? userPaymentData : {};
+
 	let content = (
-		<OnlineBanking
+		<AutoDeposit
 			payType={selected}
-			creditTimeKey={defPayment[defPayType.onlineBank].creditTimeKey}
-			paymentList={paymentList[defPayType.onlineBank] ?? []}
+			creditTimeKey={defPayment[defPayType.autoDeposit].creditTimeKey}
+			bankList={paymentList[defPayType.autoDeposit] ?? []}
 			userPaymentData={_userPaymentData}
 			handleUserPaymentData={handleUserPaymentData}
 			userPaymentSwitch={userPaymentSwitch}
@@ -209,6 +216,21 @@ const Panel = () => {
 				payType={selected}
 				creditTimeKey={defPayment[defPayType.localBank].creditTimeKey}
 				paymentList={paymentList[defPayType.localBank] ?? []}
+				userPaymentData={_userPaymentData}
+				handleUserPaymentData={handleUserPaymentData}
+				userPaymentSwitch={userPaymentSwitch}
+				promoList={promoList}
+				depositPromoMsg={depositPromoMsg}
+				asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
+				checkDepositSpecialCode={checkDepositSpecialCode}
+			/>
+		);
+	} else if (selected === defPayType.onlineBank) {
+		content = (
+			<OnlineBanking
+				payType={selected}
+				creditTimeKey={defPayment[defPayType.onlineBank].creditTimeKey}
+				paymentList={paymentList[defPayType.onlineBank] ?? []}
 				userPaymentData={_userPaymentData}
 				handleUserPaymentData={handleUserPaymentData}
 				userPaymentSwitch={userPaymentSwitch}
@@ -255,8 +277,9 @@ const Panel = () => {
 				setLoading(true);
 
 				const payments = {
-					[defPayType.onlineBank]: [],
+					[defPayType.autoDeposit]: [],
 					[defPayType.localBank]: [],
+					[defPayType.onlineBank]: [],
 					[defPayType.mobilePay]: [],
 					[defPayType.cryptoPay]: []
 				};
@@ -272,13 +295,13 @@ const Panel = () => {
 						: [];
 
 				try {
-					const res = await api.payment.GetOnlinePaymentList();
-					payments[defPayType.onlineBank] = getDataListResult(res);
+					const res = await api.payment.GetAutoChannelBankGroupList();
+					payments[defPayType.autoDeposit] = getDataListResult(res);
 
 					defaultSelect = setDefaultSelect(
 						defaultSelect,
-						defPayType.onlineBank,
-						payments[defPayType.onlineBank]
+						defPayType.autoDeposit,
+						payments[defPayType.autoDeposit]
 					);
 					if (res.data.errorCode !== 0) {
 						setPopBox({
@@ -298,6 +321,25 @@ const Panel = () => {
 						defaultSelect,
 						defPayType.localBank,
 						payments[defPayType.localBank]
+					);
+					if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				} catch (error) {
+					console.error(error);
+				}
+
+				try {
+					const res = await api.payment.GetOnlinePaymentList();
+					payments[defPayType.onlineBank] = getDataListResult(res);
+
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defPayType.onlineBank,
+						payments[defPayType.onlineBank]
 					);
 					if (res.data.errorCode !== 0) {
 						setPopBox({
@@ -371,7 +413,7 @@ const Panel = () => {
 				}
 			);
 		}
-	}, [userInfo.isLogin, userPaymentData.payType]);
+	}, [userInfo.isLogin, userPaymentData.payType, userInfo.currencyId]);
 
 	const _isConvert = isConvert(userInfo.currencyId);
 	const SubmitProof = (
