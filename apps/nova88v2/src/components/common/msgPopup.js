@@ -27,8 +27,10 @@ export default function Component({ isLogin }) {
 	};
 
 	useEffect(() => {
-		GetPopupMsg();
-	}, []);
+		if (isLogin) {
+			GetPopupMsg();
+		}
+	}, [isLogin]);
 
 	useInterval(
 		() => {
