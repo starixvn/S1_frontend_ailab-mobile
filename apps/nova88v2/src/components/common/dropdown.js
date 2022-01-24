@@ -143,7 +143,7 @@ DropdownBox.defaultProps = {
 	birthDayIcon: false,
 	showDot: false,
 	className: "",
-	inputBoxClassName: []
+	inputBoxClassName: ""
 };
 
 DropdownBox.propTypes = {
@@ -167,7 +167,7 @@ DropdownBox.propTypes = {
 	birthDayIcon: PropTypes.bool,
 	showDot: PropTypes.bool,
 	className: PropTypes.string,
-	inputBoxClassName: PropTypes.arrayOf(PropTypes.any)
+	inputBoxClassName: PropTypes.string
 };
 
 const Item = props => {

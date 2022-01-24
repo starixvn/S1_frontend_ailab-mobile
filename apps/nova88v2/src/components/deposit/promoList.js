@@ -179,7 +179,7 @@ DepositPromoTip.defaultProps = {
 };
 
 DepositPromoTip.propTypes = {
-	i18n: PropTypes.func.isRequired,
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	amount: PropTypes.number.isRequired,
 	phoneVerified: PropTypes.bool,
 	currencyId: PropTypes.number,
