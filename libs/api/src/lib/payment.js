@@ -173,4 +173,7 @@ export class PaymentAPI extends BaseAPI {
 			SpecialCode,
 			DeviceType: defDeviceType.Mobile
 		});
+
+	GetAutoChannelBankGroupList = () =>
+		this.paymentRequest.post("/GetAutoChannelBankGroupList");
 }
