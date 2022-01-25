@@ -33,7 +33,8 @@ export const defSlotTpGameType = {
 	PT: { tpId: 27, tpGameType: 46 },
 	JILI: { tpId: 32, tpGameType: 53 },
 	MG: { tpId: 34, tpGameType: 57 },
-	RedTiger: { tpId: 38, tpGameType: 65 }
+	RedTiger: { tpId: 38, tpGameType: 65 },
+	AdvantPlay: { tpId: 39, tpGameType: 67 }
 };
 
 const gameList = ({ langId, currencyName }) => {
@@ -213,6 +214,22 @@ const gameList = ({ langId, currencyName }) => {
 					translateKey: "lbl_Casino",
 					menuId: 4,
 					items: [
+						{
+							...defGameInfo.Casino_AdvantPlay,
+							parameter: defGameInfo.Casino_AdvantPlay,
+							spanText: "AdvantPlay",
+							providerImgName: "ap",
+							img: `${cloudBannerImgURL}/h5/img/ap.png`,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_AdvantPlay
+									)
+								}
+							]
+						},
 						{
 							...defGameInfo.Casino_PP,
 							parameter: defGameInfo.Casino_PP,
@@ -690,6 +707,22 @@ const gameList = ({ langId, currencyName }) => {
 					menuId: 4,
 					items: [
 						{
+							...defGameInfo.Casino_AdvantPlay,
+							parameter: defGameInfo.Casino_AdvantPlay,
+							spanText: "AdvantPlay",
+							providerImgName: "ap",
+							img: `${cloudBannerImgURL}/h5/img/ap.png`,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_AdvantPlay
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_PP,
 							parameter: defGameInfo.Casino_PP,
 							spanText: "Pragmatic Play",
@@ -1165,6 +1198,22 @@ const gameList = ({ langId, currencyName }) => {
 					translateKey: "lbl_Casino",
 					menuId: 4,
 					items: [
+						{
+							...defGameInfo.Casino_AdvantPlay,
+							parameter: defGameInfo.Casino_AdvantPlay,
+							spanText: "AdvantPlay",
+							providerImgName: "ap",
+							img: `${cloudBannerImgURL}/h5/img/ap.png`,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_AdvantPlay
+									)
+								}
+							]
+						},
 						{
 							...defGameInfo.Casino_PP,
 							parameter: defGameInfo.Casino_PP,
@@ -1674,6 +1723,22 @@ const gameList = ({ langId, currencyName }) => {
 					menuId: 4,
 					items: [
 						{
+							...defGameInfo.Casino_AdvantPlay,
+							parameter: defGameInfo.Casino_AdvantPlay,
+							spanText: "AdvantPlay",
+							providerImgName: "ap",
+							img: `${cloudBannerImgURL}/h5/img/ap.png`,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_AdvantPlay
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_PP,
 							parameter: defGameInfo.Casino_PP,
 							spanText: "Pragmatic Play",
@@ -2153,6 +2218,22 @@ const gameList = ({ langId, currencyName }) => {
 					menuId: 4,
 					items: [
 						{
+							...defGameInfo.Casino_AdvantPlay,
+							parameter: defGameInfo.Casino_AdvantPlay,
+							spanText: "AdvantPlay",
+							providerImgName: "ap",
+							img: `${cloudBannerImgURL}/h5/img/ap.png`,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_AdvantPlay
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_PP,
 							parameter: defGameInfo.Casino_PP,
 							spanText: "Pragmatic Play",
@@ -2167,7 +2248,6 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "nt",
 							img: `${cloudBannerImgURL}/h5/img/nt.png`,
 							path: path.casino.root,
-							tpGameType: 64,
 							eventIcon: [
 								{
 									icon: defIconType.new,
@@ -2499,6 +2579,7 @@ export const defGameInfo = {
 	// Casino_918Kiss: { tpId: 21, needLogin: true , tpGameType: 33 },
 	Casino_OW: { tpId: 1, gameId: 208, tpGameType: 4 },
 	Casino_NetEnt: { tpId: 37, tpGameType: 64 },
+	Casino_AdvantPlay: { tpId: 39, tpGameType: 67 },
 	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
 	Fishing_AB3: { tpId: 16, gameId: "AB3", tpGameType: 44 },
 	Fishing_AT05: { tpId: 16, gameId: "AT05", tpGameType: 44 },

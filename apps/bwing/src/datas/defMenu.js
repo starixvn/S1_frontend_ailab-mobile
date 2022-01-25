@@ -26,7 +26,8 @@ export const defSlotTpGameType = {
 	JILI: { tpId: 32, tpGameType: 53 },
 	MG: { tpId: 34, tpGameType: 57 },
 	NetEnt: { tpId: 37, tpGameType: 64 },
-	RedTiger: { tpId: 38, tpGameType: 65 }
+	RedTiger: { tpId: 38, tpGameType: 65 },
+	AdvantPlay: { tpId: 39, tpGameType: 67 }
 };
 
 export const productList = langId => {
@@ -130,6 +131,19 @@ export const productList = langId => {
 					icon: "icon icon-PP",
 					displayKey: "Pragmatic Play",
 					img: `${bannerImgUrl}/h5/img/slot/pp.png`
+				},
+				{
+					...defGameInfo.Casino_AdvantPlay,
+					parameter: defGameInfo.Casino_AdvantPlay,
+					path: path.casino.root,
+					displayKey: "AdvantPlay",
+					img: `${bannerImgUrl}/h5/img/slot/ap.png`,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.casino_AdvantPlay)
+						}
+					]
 				},
 				{
 					...defGameInfo.Casino_NetEnt,
