@@ -16,7 +16,7 @@ export const eventTime = {
 	liveCasino_evo: { endDate: "2021/12/15 11:00:00" },
 	casino_NetEnt: { endDate: "2021/12/15 11:00:00" },
 	casino_RedTiger: { endDate: "2021/12/15 11:00:00" },
-	casino_AdvantPlay: { startDate: "2022/01/10 11:00:00" },
+	casino_AdvantPlay: { startDate: "2022/02/25 11:00:00" },
 	liveCasino_pp: {
 		startDate: "2021/11/10 10:00:00",
 		endDate: "2021/12/31 22:59:59"
