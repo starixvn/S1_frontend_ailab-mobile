@@ -46,6 +46,7 @@ export const defGameInfo = {
 	Casino_JOKER: { tpId: 9, tpGameType: 13 },
 	Casino_Jili: { tpId: 32, tpGameType: 53 },
 	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
+	Casino_AdvantPlay: { tpId: 39, tpGameType: 67 },
 	LIVEcasinoN2: { tpId: 28, tpGameType: 45 },
 	LIVEcasinoWM: { gameId: 20, tpId: 20, tpGameType: 32 },
 	LIVEcasinoDG: { tpId: 4, gameId: 4, tpGameType: 10 },
@@ -93,7 +94,8 @@ export const defSlotTpGameType = {
 	JILI: { tpId: 32, tpGameType: 53 },
 	MG: { tpId: 34, tpGameType: 57 },
 	NetEnt: { tpId: 37, tpGameType: 64 },
-	RedTiger: { tpId: 38, tpGameType: 65 }
+	RedTiger: { tpId: 38, tpGameType: 65 },
+	AdvantPlay: { tpId: 39, tpGameType: 67 }
 };
 
 const gameList = [
@@ -318,6 +320,20 @@ const gameList = [
 				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-pp.png`,
 				path: path.casino.root,
 				providerImgName: "pp"
+			},
+			{
+				...defGameInfo.Casino_AdvantPlay,
+				parameter: defGameInfo.Casino_AdvantPlay,
+				spanText: "AdvantPlay",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-ap.png`,
+				path: path.casino.root,
+				providerImgName: "ap",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.casino_AdvantPlay)
+					}
+				]
 			},
 			{
 				...defGameInfo.Casino_NetEnt,
