@@ -17,7 +17,8 @@ const GroupList = ({
 	imgKeyWithExtension,
 	displayKey,
 	_isConvert,
-	isCrypto
+	isCrypto,
+	titleClassName
 }) => {
 	const { i18n } = useContext(i18nContext);
 	const rows = dataList?.map(data => {
@@ -75,7 +76,10 @@ const GroupList = ({
 	return (
 		dataList?.length > 0 && (
 			<>
-				<div className="title">
+				<div
+					className={`title${
+						titleClassName ? ` ${titleClassName}` : ""
+					}`}>
 					<span className="text-org">*</span>
 					{title}
 				</div>
@@ -92,7 +96,8 @@ GroupList.defaultProps = {
 	imgKeyWithExtension: false,
 	bindingItem: null,
 	displayKey: "",
-	isCrypto: false
+	isCrypto: false,
+	titleClassName: ""
 };
 
 GroupList.propTypes = {
@@ -113,7 +118,8 @@ GroupList.propTypes = {
 	bindingItem: PropTypes.objectOf(PropTypes.any),
 	displayKey: PropTypes.string,
 	_isConvert: PropTypes.bool.isRequired,
-	isCrypto: PropTypes.bool
+	isCrypto: PropTypes.bool,
+	titleClassName: PropTypes.string
 };
 
 export default GroupList;

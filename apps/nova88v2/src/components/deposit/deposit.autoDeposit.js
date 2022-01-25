@@ -187,6 +187,7 @@ const Payment = props => {
 			</div>
 			<GroupList
 				title={i18n.lbl_SelectBank}
+				titleClassName="fast"
 				channel={selbank}
 				dataList={bankList}
 				SelectPayment={SelectBank}

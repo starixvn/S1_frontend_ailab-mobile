@@ -100,16 +100,8 @@
   content: "\e9c7";
 }
 
-.icon-mega:before {
-  content: "\e9c3";
-}
-
 .icon-livechat1:before {
   content: "\e9db";
-}
-
-.icon-ICG:before {
-  content: "\e9c4";
 }
 
 .icon-cock:before {
@@ -144,28 +136,12 @@
   content: "\e9ba";
 }
 
-.icon-cq9:before {
-  content: "\e9b9";
-}
-
-.icon-kiss:before {
-  content: "\e9b8";
-}
-
 .icon-nodata:before {
   content: "\e9b4";
 }
 
 .icon-new:before {
   content: "\e9b2";
-}
-
-.icon-WM:before {
-  content: "\e9b1";
-}
-
-.icon-MW:before {
-  content: "\e9b0";
 }
 
 .icon-USDC:before {
@@ -244,14 +220,6 @@
   content: "\e993";
 }
 
-.icon-EB:before {
-  content: "\e990";
-}
-
-.icon-VNPay:before {
-  content: "\e991";
-}
-
 .icon-saba:before {
   content: "\e98c";
 }
@@ -270,10 +238,6 @@
 
 .icon-icon_service:before {
   content: "\e987";
-}
-
-.icon-AE:before {
-  content: "\e983";
 }
 
 .icon-icon32px_:before {
@@ -420,56 +384,12 @@
   content: "\e91e";
 }
 
-.icon-Unionpay:before {
-  content: "\e93d";
-}
-
-.icon-Alipay:before {
-  content: "\e93e";
-}
-
-.icon-JDpay:before {
-  content: "\e940";
-}
-
-.icon-ThaiQR:before {
-  content: "\e941";
-}
-
-.icon-WeChatPay:before {
-  content: "\e943";
-}
-
 .icon-virtual-sports:before {
   content: "\e93a";
 }
 
 .icon-statement1:before {
   content: "\e938";
-}
-
-.icon-GPI:before {
-  content: "\e945";
-}
-
-.icon-JOKER:before {
-  content: "\e946";
-}
-
-.icon-OW:before {
-  content: "\e947";
-}
-
-.icon-PG:before {
-  content: "\e948";
-}
-
-.icon-SG:before {
-  content: "\e949";
-}
-
-.icon-YGG:before {
-  content: "\e94a";
 }
 
 .icon-statement:before {
@@ -484,26 +404,6 @@
   content: "\e932";
 }
 
-.icon-AB:before {
-  content: "\e92b";
-}
-
-.icon-AG:before {
-  content: "\e92c";
-}
-
-.icon-DG:before {
-  content: "\e92d";
-}
-
-.icon-PP:before {
-  content: "\e92e";
-}
-
-.icon-SA:before {
-  content: "\e92f";
-}
-
 .icon-hockey:before {
   content: "\e930";
 }
@@ -514,42 +414,6 @@
 
 .icon-ow-casino:before {
   content: "\e92a";
-}
-
-.icon-CirclePay:before {
-  content: "\e91f";
-}
-
-.icon-Eeziepay:before {
-  content: "\e920";
-}
-
-.icon-Help2Pay:before {
-  content: "\e922";
-}
-
-.icon-OneClickPay:before {
-  content: "\e923";
-}
-
-.icon-VN:before {
-  content: "\e924";
-}
-
-.icon-paytrust88:before {
-  content: "\e93c";
-}
-
-.icon-MOMO:before {
-  content: "\e926";
-}
-
-.icon-VIETTELPAY:before {
-  content: "\e927";
-}
-
-.icon-ZALO:before {
-  content: "\e928";
 }
 
 .icon-member:before {
