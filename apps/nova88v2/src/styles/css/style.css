@@ -7367,6 +7367,19 @@ span.important {
   margin-right: 1vw;
 }
 
+.depositModule > .title > span.text-org {
+  color: white;
+}
+
+.depositModule > .title.fast:after {
+  content: '';
+  background: url(https://banner.0814media.net/desktop/img/fast-icon.png) no-repeat center/cover;
+  display: block;
+  width: 14vw;
+  height: 4vw;
+  margin-left: 1vw;
+}
+
 .depositModule .selectModule {
   background: #f5f5f5;
   display: -webkit-box;
