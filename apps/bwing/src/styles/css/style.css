@@ -1822,6 +1822,31 @@ footer > a.open {
   color: #070e22;
 }
 
+#popup .angpao {
+  padding: 0;
+  position: relative;
+  overflow: revert;
+}
+
+#popup .angpao img {
+  width: 80vw;
+}
+
+#popup .angpao .icon-close {
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 100%;
+  font-size: 4vw;
+  width: 8vw;
+  height: 8vw;
+  position: absolute;
+  right: 0;
+  left: revert;
+  line-height: 4vw;
+  text-align: center;
+  border: 2px solid white;
+}
+
 .header {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
