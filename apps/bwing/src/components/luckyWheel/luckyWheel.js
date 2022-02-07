@@ -16,11 +16,8 @@ import {
 	api_events_GetDisplayDrawPrizeList
 } from "../../service/api/events";
 import PopBoxLuckyWheel from "../common/popbox.luckyWheel";
-import luckyBg from "../../styles/img/luckybox/bg.jpg";
-import spingo from "../../styles/img/luckybox/spingo.png";
-import pin from "../../styles/img/luckybox/pin.png";
-import spin from "../../styles/img/luckybox/spin.png";
 import useCounter from "../hook/useCounter";
+import { bannerImgUrl } from "../../config";
 
 const defTabs = {
 	condition: true,
@@ -168,13 +165,27 @@ const LuckyWheel = () => {
 
 	return (
 		<>
-			<img className="luckyboxBg" src={luckyBg} alt="luckywheel" />
+			<img
+				className="luckyboxBg"
+				src={`${bannerImgUrl}/h5/img/luckybox/bg.jpg`}
+				alt="luckywheel"
+			/>
 			<div>
 				<div className="luckyout">
-					<img className="pin" src={pin} alt="wheelcover" />
-					<img src={spin} alt="wheelcover" />
+					<img
+						className="pin"
+						src={`${bannerImgUrl}/h5/img/luckybox/pin.png`}
+						alt="wheelcover"
+					/>
+					<img
+						src={`${bannerImgUrl}/h5/img/luckybox/spin.png`}
+						alt="wheelcover"
+					/>
 					<button className="wheelbox" onClick={_spin}>
-						<img src={spingo} alt="spinner" />
+						<img
+							src={`${bannerImgUrl}/h5/img/luckybox/spingo.png`}
+							alt="spinner"
+						/>
 					</button>
 
 					<div

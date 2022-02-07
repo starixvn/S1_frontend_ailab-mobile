@@ -1,10 +1,13 @@
 import React from "react";
-import Logo from "../../styles/img/logo_event2.png";
-import EventLogo from "../../styles/img/logo_event.png";
 import { isEventPeriod } from "./common";
 import { eventTime } from "./eventTime";
+import { bannerImgUrl } from "../../config";
 
-const getLogo = () => (isEventPeriod(eventTime.logoEvent) ? EventLogo : Logo);
+const getLogo = () => {
+	return isEventPeriod(eventTime.logoEvent)
+		? `${bannerImgUrl}/h5/img/logo_event.png`
+		: `${bannerImgUrl}/h5/img/logo.png`;
+};
 
 export default () => {
 	return <img src={getLogo()} alt="logo" />;

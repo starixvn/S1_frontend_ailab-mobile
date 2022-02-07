@@ -33,6 +33,7 @@ export const defGameInfo = {
 	Casino_PT: { tpId: 27, gameId: "0", tpGameType: 46 },
 	Casino_NetEnt: { tpId: 37, tpGameType: 64 },
 	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
+	Casino_AdvantPlay: { tpId: 39, tpGameType: 67 },
 	Fishing: { gameId: 10, tpId: 7, tpGameType: 12 },
 	Fishing_SG: { gameId: "F-SF01", tpId: 10, tpGameType: 31 },
 	Fishing_SGW: { gameId: "F-SF02", tpId: 10, tpGameType: 31 },
@@ -47,7 +48,7 @@ export const defGameInfo = {
 	ICG_FISHING_OF_SAVIORS: { tpId: 24, gameId: "cmf0002", tpGameType: 40 },
 	ICG_THE_TYRANT_AND_THE_PRINCESS: {
 		tpId: 24,
-		gameId: "cmf0003",
+		gameId: "cmf0006",
 		tpGameType: 40
 	},
 	V8Poker: { gameId: 0, tpId: 25, tpGameType: 42 },
@@ -66,6 +67,11 @@ export const slotPlatform = [
 		...defGameInfo.Casino_PP,
 		path: path.casino.root,
 		imgName: "pp"
+	},
+	{
+		...defGameInfo.Casino_AdvantPlay,
+		path: path.casino.root,
+		imgName: "ap"
 	},
 	{
 		...defGameInfo.Casino_NetEnt,

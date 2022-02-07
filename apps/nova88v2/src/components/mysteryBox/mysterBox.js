@@ -10,10 +10,10 @@ import Condition from "./condition";
 import History from "./history";
 import PopBox from "./popBox";
 import Counter from "./counter";
-import eventImg from "../../styles/img/event/mysterybox/angpao_inf.png";
 import { useCheckPrize } from "../hook/useCheckPrize";
 import { eventIds } from "../../datas/eventId";
 import path from "../../path";
+import { cloudBannerImgURL } from "../../config";
 
 const MysteryBox = () => {
 	const navigate = useNavigate();
@@ -61,7 +61,10 @@ const MysteryBox = () => {
 					canDrawPrize === false ? " active" : ""
 				}`}
 				onClick={openBox}>
-				<img src={eventImg} alt="Mystery Box" />
+				<img
+					src={`${cloudBannerImgURL}/h5/img/event/mysterybox/angpao_inf.png`}
+					alt="Mystery Box"
+				/>
 				{canDrawPrize === false ? (
 					<Counter i18n={i18n} setCanDrawPrize={setCanDrawPrize} />
 				) : null}

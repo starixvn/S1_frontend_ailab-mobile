@@ -1565,6 +1565,45 @@ main .sideBarNew div > button img {
   list-style: decimal;
 }
 
+#popup.angpao_pop {
+  background: rgba(31, 50, 88, 0.85);
+}
+
+#popup.angpao_pop .popTxt {
+  background: transparent;
+  border: 0;
+  position: relative;
+}
+
+#popup.angpao_pop .popTxt img {
+  max-width: 365px;
+}
+
+#popup.angpao_pop .popTxt .icon-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #c53131;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: .5vw;
+  border-radius: 50%;
+  width: 6vw;
+  height: 6vw;
+}
+
+#popup.angpao_pop .popTxt .icon-close::before {
+  font-size: 4vw;
+}
+
 .txt-red {
   color: #d83b35;
 }

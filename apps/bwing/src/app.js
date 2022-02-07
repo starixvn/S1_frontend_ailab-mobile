@@ -71,6 +71,7 @@ import AppDownload from "./pages/appDownload";
 import AppEntPage from "./pages/appEntPage";
 import Streaming from "./pages/streaming";
 import LuckyWheel from "./pages/luckyWheel";
+import UMPage from "./pages/um";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -158,6 +159,7 @@ const Index = () => {
 						<AppDownload path={path.appDownload.root} />
 						<AppEntPage path={`/${defSpecialPath.appentpage}`} />
 						<Streaming path={path.streaming.root} />
+						<UMPage path={path.um.root} />
 					</Router>
 				</Layout>
 			</LocationProvider>

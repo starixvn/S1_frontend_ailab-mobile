@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import api from "../../service/api";
 import { loadingContext } from "../common/context";
 import { siteId } from "../../config";
-// import eventImg from "../../styles/img/event/angpao_inf.png";
-// import eventIdImg from "../../styles/img/event/angpao_inf_id.png";
 
 const useDrawPrize = ({ i18n, setAngPowPop, setCanDrawPrize, setPopBox }) => {
 	const { setLoading } = useContext(loadingContext);

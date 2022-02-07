@@ -11,7 +11,8 @@ import {
 	monthOptions,
 	initWarning,
 	initValue,
-	infoList
+	infoList,
+	otpCol
 } from "./profile.detail.def";
 import { defPopBoxType } from "../common/popbox";
 import { redirectToPrev } from "./profile.redirect";
@@ -242,7 +243,9 @@ const Panel = () => {
 							<button className="white" onClick={closePopbox}>
 								{i18n.lbl_Later}
 							</button>
-							<button className="orange" onClick={clickOtp}>
+							<button
+								className="orange"
+								onClick={clickOtp.bind(this, otpCol.phone)}>
 								{i18n.lbl_VerifyNow}
 							</button>
 						</div>
@@ -352,19 +355,56 @@ const Panel = () => {
 		}
 	};
 
-	const clickOtp = () => {
-		const ClosePopbox = ({ _redirectPath }) => {
-			setPopBox({ isOpen: false });
-			if (_redirectPath) {
-				navigate(`/${userInfo.langId}/${_redirectPath}`);
-			}
-		};
+	const clickOtp = col => {
+		if (col === otpCol.phone) {
+			const ClosePopbox = ({ _redirectPath }) => {
+				setPopBox({ isOpen: false });
+				if (_redirectPath) {
+					navigate(`/${userInfo.langId}/${_redirectPath}`);
+				}
+			};
 
-		setPopBox({
-			isOpen: true,
-			popBoxType: defPopBoxType.Otp,
-			ClosePopbox
-		});
+			setPopBox({
+				isOpen: true,
+				popBoxType: defPopBoxType.Otp,
+				ClosePopbox
+			});
+		} else if (col === otpCol.email) {
+			api.accountStrict.SendOTPEmail().then(
+				res => {
+					const { errorCode, message } = res.data;
+					if (errorCode === 0) {
+						setPopBox({
+							isOpen: true,
+							content: i18n.lbl_EmailOTPHint,
+							hasBtn: true,
+							btnBar: (
+								<div className="btn-group">
+									<button
+										className="blue"
+										onClick={() => {
+											setPopBox({ isOpen: false });
+										}}>
+										OK
+									</button>
+								</div>
+							)
+						});
+					} else {
+						setPopBox({
+							isOpen: true,
+							content: `[${errorCode}] ${message}`
+						});
+					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
+				}
+			);
+		}
 	};
 
 	const arr = _infoList
@@ -385,9 +425,6 @@ const Panel = () => {
 			return result;
 		})
 		.map(item => {
-			const _isVerified =
-				item.infoTitle === "phoneNo" ? item.isVerified : null;
-
 			return (
 				<ColumnItem
 					key={`profile-${item.infoTitle}`}
@@ -395,7 +432,7 @@ const Panel = () => {
 					content={item.content}
 					infoTitle={item.infoTitle}
 					clickOtp={clickOtp}
-					isVerified={_isVerified}
+					isVerified={item.isVerified}
 					i18n={i18n}
 				/>
 			);
@@ -489,14 +526,10 @@ const Panel = () => {
 			!userInfo?.birth_d ||
 			!userInfo?.phoneNo ? (
 				<div className="btn-group" data-testid="submitBtn">
-					<button className="orange" onClick={clickSubmit}>
-						{i18n.lbl_Submit}
-					</button>
+					<button onClick={clickSubmit}>{i18n.lbl_Submit}</button>
 				</div>
 			) : null}
-			<div className="info">
-				<ul>{arr}</ul>
-			</div>
+			<div className="profile">{arr}</div>
 		</>
 	);
 };
@@ -564,40 +597,51 @@ Birthday.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
-const ColumnItem = props => {
+const ColumnItem = ({
+	title,
+	content,
+	isVerified,
+	infoTitle,
+	clickOtp,
+	i18n
+}) => {
 	return (
-		<>
-			<li>
-				<span className="title">
-					{props.title}
-					{props.isVerified ? (
-						<i className="icon icon-checkmark" />
-					) : null}
-				</span>
-				<span>{props.content}</span>
-			</li>
-			{props.infoTitle === "phoneNo" && !props.isVerified && (
-				<li>
-					<button className="otpBtn" onClick={props.clickOtp}>
-						<span className="icon icon-mobile" />
-						<span>{props.i18n.lbl_MobileVerify}</span>
+		<div>
+			<div>{title}</div>
+			<div>
+				{content}&nbsp;
+				{isVerified && <span className="icon icon-Shield" />}
+				{!isVerified && Object.values(otpCol).includes(infoTitle) && (
+					<button
+						className={`icon btn-org ${
+							infoTitle === otpCol.phone
+								? "icon-mobile"
+								: "icon-envelope"
+						}`}
+						onClick={clickOtp.bind(this, infoTitle)}>
+						<span>
+							{infoTitle === otpCol.phone
+								? i18n.lbl_MobileVerify
+								: i18n.lbl_EmailVerification}
+						</span>
 					</button>
-				</li>
-			)}
-		</>
+				)}
+			</div>
+		</div>
 	);
 };
 
 ColumnItem.defaultProps = {
 	isVerified: false,
-	content: ""
+	content: "",
+	clickOtp: () => null
 };
 
 ColumnItem.propTypes = {
 	title: PropTypes.string.isRequired,
 	isVerified: PropTypes.bool,
 	infoTitle: PropTypes.string.isRequired,
-	clickOtp: PropTypes.func.isRequired,
+	clickOtp: PropTypes.func,
 	content: PropTypes.string,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired
 };

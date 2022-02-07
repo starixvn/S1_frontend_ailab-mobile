@@ -124,6 +124,9 @@ export default {
 	},
 	appDownload: {
 		root: "appDownload"
+	},
+	um: {
+		root: "um"
 	}
 };
 

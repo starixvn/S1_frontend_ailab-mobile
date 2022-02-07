@@ -37,9 +37,9 @@ const EN = () => (
 			before you making a deposit.
 		</li>
 		<li>
-			For using <span>&quot;Local Bank Transfer&quot;</span> deposit
-			option, please make the transfer done before submit the transaction
-			to avoid the transaction delay.
+			For using <span>&quot;Bank Transfer&quot;</span> deposit option,
+			please make the transfer done before submit the transaction to avoid
+			the transaction delay.
 		</li>
 		<li>
 			Depositor&apos;s <span>ACCOUNT NAME</span> must match with your
@@ -141,7 +141,7 @@ const ID = () => (
 		</li>
 		<li>
 			Untuk menggunakan opsi penyetoran{" "}
-			<span>&quot;Transfer Bank Lokal&quot;</span>, harap lakukan transfer
+			<span>&quot;Transfer Bank&quot;</span>, harap lakukan transfer
 			sebelum mengajukan transaksi untuk menghindari penundaan transaksi.
 		</li>
 		<li>

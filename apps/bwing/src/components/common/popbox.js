@@ -63,7 +63,9 @@ const PopUp = () => {
 	return popBox.isOpen ? (
 		<div
 			id="popup"
-			style={popBox.isOpen ? { display: "block" } : {}}
+			style={
+				popBox.isOpen ? { display: popBox.displayStyle ?? "block" } : {}
+			}
 			className={popBox.className}>
 			{popBox.custContent ? (
 				popBox.custContent

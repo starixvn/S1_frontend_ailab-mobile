@@ -20,16 +20,16 @@ import HeaderShortcut from "../components/home/headerShortcut";
 import EventSwipper from "../components/home/eventSwipper";
 import MiddlePanel from "../components/home/middlePanel";
 import Bottom from "../components/home/bottom";
-import jackpot from "../styles/img/jackpot.png";
-import winner_vn from "../styles/img/euroEvent/EURO-GOAL-VN.jpg";
-import winner_en from "../styles/img/euroEvent/EURO-GOAL-EN.jpg";
 import defNav from "../components/casino/defNav";
 import AddToHomePop from "../components/home/addToHomePop";
 import Top10Winner from "../components/home/top10winner";
-import config from "../config";
+import { bannerImgUrl } from "../config";
 import { useGetDomainList } from "../components/hook/useGetDomainList";
 import Layout from "../components/common/layout";
 import Header from "../components/common/header";
+import NewYear, {
+	defEventPeriod as NewYearEventPeriod
+} from "../components/common/popbox.newYear";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -39,7 +39,8 @@ const IndexPage = () => {
 	const [redirectPath, setRedirectPath] = useState(null);
 	const [appHint, setAppHint] = useState(false);
 	const navigate = useNavigate();
-	const { isDomainPopOpened } = useGetDomainList({
+
+	useGetDomainList({
 		setPopBox,
 		userInfo,
 		i18n
@@ -59,131 +60,106 @@ const IndexPage = () => {
 	}, []);
 
 	useEffect(() => {
-		const cookieName = `balanceHint${userInfo.userName}`;
-		if (
-			userInfo.currencyId &&
-			userInfo.userName &&
-			readCookie(cookieName) !== "1" &&
-			isDomainPopOpened
-		) {
-			setCookie(cookieName, "1", 1);
-			api_GetWalletInfo().then(
-				res => {
-					if (res.data.errorCode === 0) {
-						const { data } = res.data;
-						const mainWallet = {
-							id: 0,
-							displayKey: "lbl_MainWallet",
-							balance: data?.balance
-						};
-						const tpWalletsArr = data?.tpWallets.map(i => {
-							return {
+		const displayDepositPopup = () => {
+			const cookieName = `balanceHint${userInfo.userName}`;
+			if (
+				userInfo.currencyId &&
+				userInfo.userName &&
+				readCookie(cookieName) !== "1"
+			) {
+				setCookie(cookieName, "1", 1);
+				api_GetWalletInfo().then(
+					res => {
+						if (res.data.errorCode === 0) {
+							const { data } = res.data;
+							const mainWallet = {
+								id: 0,
+								displayKey: "lbl_MainWallet",
+								balance: data?.balance
+							};
+							const tpWalletsArr = data?.tpWallets.map(i => ({
 								id: i.tpId,
 								displayKey: i.displayKey,
 								balance: i.balance
-							};
-						});
+							}));
 
-						const hasBalance =
-							mainWallet.balance ||
-							tpWalletsArr?.filter(t => {
-								return t.balance > 0;
-							}).length >= 1;
+							const hasBalance =
+								mainWallet.balance ||
+								tpWalletsArr?.filter(t => t.balance > 0)
+									.length >= 1;
 
-						if (!hasBalance) {
-							const ClosePopUp = () => {
+							if (!hasBalance) {
+								const RedirectToDeposit = () => {
+									setRedirectPath(`/${path.deposit.root}`);
+									setPopBox({
+										isOpen: false
+									});
+								};
+
 								setPopBox({
-									isOpen: false
+									isOpen: true,
+									title: i18n.lbl_Notice,
+									content: (
+										<>
+											<p>
+												{`${i18n.msg_BalanceHint} : `}
+												<span className="important">
+													{`${
+														i18n[
+															`Currency_${userInfo.currencyId}`
+														]
+													} 0`}
+												</span>
+											</p>
+											<p>{i18n.msg_DepositHint}</p>
+										</>
+									),
+									hasBtn: true,
+									btnBar: (
+										<div className="btn-group">
+											<button
+												className="blue"
+												onClick={openNextPopUp}>
+												{i18n.lbl_Later}
+											</button>
+											<button
+												onClick={RedirectToDeposit}
+												className="orange">
+												{i18n.lbl_DepositNow}
+											</button>
+										</div>
+									),
+									handlePopBox: openNextPopUp
 								});
-							};
-
-							const RedirectToDeposit = () => {
-								setRedirectPath(`/${path.deposit.root}`);
-								ClosePopUp();
-							};
-
+							}
+						} else {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_Notice,
-								content: (
-									<>
-										<p>
-											{`${i18n.msg_BalanceHint} : `}
-											<span className="important">
-												{`${
-													i18n[
-														`Currency_${userInfo.currencyId}`
-													]
-												} 0`}
-											</span>
-										</p>
-										<p>{i18n.msg_DepositHint}</p>
-									</>
-								),
-								hasBtn: true,
-								btnBar: (
-									<div className="btn-group">
-										<button
-											className="blue"
-											onClick={ClosePopUp}>
-											{i18n.lbl_Later}
-										</button>
-										<button
-											onClick={RedirectToDeposit}
-											className="orange">
-											{i18n.lbl_DepositNow}
-										</button>
-									</div>
-								)
+								content: `[${res.data.errorCode}] ${res.data.message}`,
+								handlePopBox: openNextPopUp
 							});
 						}
-					} else {
+					},
+					() => {
 						setPopBox({
 							isOpen: true,
-							content: `[${res.data.errorCode}] ${res.data.message}`
+							content: i18n.msg_ApiServerError,
+							handlePopBox: openNextPopUp
 						});
 					}
-				},
-				() => {
-					setPopBox({
-						isOpen: true,
-						content: i18n.msg_ApiServerError
-					});
-				}
-			);
-		}
-
-		if (userInfo.isLogin === false) {
-			const RankingWinnerPopup = () => {
-				if (
-					isEventPeriod({
-						endDate: "2021/05/18 23:59:59"
-					})
-				) {
-					setPopBox({
-						isOpen: true,
-						content: (
-							<img
-								src={
-									userInfo.langId === "vn"
-										? winner_vn
-										: winner_en
-								}
-								alt="winner"
-							/>
-						),
-						hasBtn: true
-					});
-				}
-			};
-			const closePopbox = () => {
-				setPopBox({ isOpen: false });
-			};
-
-			const cookieOfficialAnnounce = "OfficialAnnounce_cookie";
-			if (readCookie(cookieOfficialAnnounce)) {
-				RankingWinnerPopup();
+				);
 			} else {
+				openNextPopUp();
+			}
+		};
+
+		const displayAnnouncePopup = () => {
+			const cookieOfficialAnnounce = "OfficialAnnounce_cookie";
+			if (
+				userInfo.isLogin === false &&
+				!isEventPeriod(NewYearEventPeriod) &&
+				!readCookie(cookieOfficialAnnounce)
+			) {
 				const toDownloadPage = () => {
 					navigate(`/${path.appDownload.root}`);
 					setPopBox({ isOpen: false });
@@ -193,7 +169,7 @@ const IndexPage = () => {
 					isOpen: true,
 					content: (
 						<img
-							src={`${config.bannerImgUrl}/img/nonlogin/300x300_goal_${userInfo.langId}.jpg`}
+							src={`${bannerImgUrl}/img/nonlogin/300x300_goal_${userInfo.langId}.jpg`}
 							alt="OfficialAnnounce"
 							onClick={toDownloadPage}
 						/>
@@ -201,13 +177,54 @@ const IndexPage = () => {
 					hasBtn: true,
 					btnBar: (
 						<div className="btn-group">
-							<button className="orange" onClick={closePopbox}>
+							<button className="orange" onClick={openNextPopUp}>
 								{i18n.lbl_Close}
 							</button>
 						</div>
+					),
+					handlePopBox: openNextPopUp
+				});
+			} else {
+				openNextPopUp();
+			}
+		};
+
+		const displayNewYearPopup = () => {
+			if (
+				isEventPeriod(NewYearEventPeriod) &&
+				!readCookie(`NewYear-${window.location.hostname}`)
+			) {
+				setPopBox({
+					isOpen: true,
+					className: "angpao_pop active",
+					custContent: (
+						<NewYear
+							onClickClose={openNextPopUp}
+							langId={userInfo.langId}
+						/>
 					)
 				});
+			} else {
+				openNextPopUp();
 			}
+		};
+
+		const popUpStack = [
+			displayDepositPopup,
+			displayNewYearPopup,
+			displayAnnouncePopup
+		];
+
+		const openNextPopUp = () => {
+			if (popUpStack.length) {
+				popUpStack.pop()();
+			} else {
+				setPopBox({ isOpen: false });
+			}
+		};
+
+		if (userInfo.isLogin !== null) {
+			openNextPopUp();
 		}
 	}, [
 		i18n,
@@ -215,7 +232,7 @@ const IndexPage = () => {
 		userInfo.currencyId,
 		userInfo.userName,
 		userInfo.isLogin,
-		isDomainPopOpened
+		userInfo.langId
 	]);
 
 	useEffect(() => {
@@ -273,7 +290,7 @@ const PlaytechJactpot = () => {
 	return (
 		<Link to={`/${path.casino.root}`} state={{ nav: defNav.PROMO.key }}>
 			<div className="jackpot">
-				<img src={jackpot} alt="" />
+				<img src={`${bannerImgUrl}/h5/img/jackpot.png`} alt="" />
 				<p>VND</p>
 				<p id="tick" />
 			</div>

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { i18nContext } from "./context";
-import LoadingLogo from "../../styles/img/logo.png";
+import { bannerImgUrl } from "../../config";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
@@ -15,16 +15,28 @@ const Loading = ({ loadingDisplayText }) => {
 			<div className="container">
 				<div>
 					<div>
-						<img src={LoadingLogo} alt="Goal123" />
+						<img
+							src={`${bannerImgUrl}/h5/img/logo.png`}
+							alt="Goal123"
+						/>
 					</div>
 					<div>
-						<img src={LoadingLogo} alt="Goal123" />
+						<img
+							src={`${bannerImgUrl}/h5/img/logo.png`}
+							alt="Goal123"
+						/>
 					</div>
 					<div>
-						<img src={LoadingLogo} alt="Goal123" />
+						<img
+							src={`${bannerImgUrl}/h5/img/logo.png`}
+							alt="Goal123"
+						/>
 					</div>
 					<div>
-						<img src={LoadingLogo} alt="Goal123" />
+						<img
+							src={`${bannerImgUrl}/h5/img/logo.png`}
+							alt="Goal123"
+						/>
 					</div>
 				</div>
 				<div className="text">{loadingDisplayText}...</div>

@@ -10,14 +10,10 @@ import {
 } from "./context";
 import path from "../../path";
 import Logo from "./logo";
-import vipClub1 from "../../styles/img/vip/vip1.png";
-import vipClub2 from "../../styles/img/vip/vip2.png";
-import vipClub3 from "../../styles/img/vip/vip3.png";
-import vipClub4 from "../../styles/img/vip/vip4.png";
-import vipClub5 from "../../styles/img/vip/vip5.png";
-import vipClub6 from "../../styles/img/vip/vip6.png";
 import AppDownloadHint from "../home/appDownload";
 import Submenu from "../home/submenu";
+import { bannerImgUrl } from "../../config";
+import MsgPopup from "./msgPopup";
 
 const Header = ({
 	title,
@@ -119,22 +115,22 @@ const HeaderBtn = () => {
 		let medalImg = null;
 		switch (userInfo.userLevel) {
 			case 2:
-				medalImg = vipClub2;
+				medalImg = `${bannerImgUrl}/h5/img/vip/vip2.png`;
 				break;
 			case 3:
-				medalImg = vipClub3;
+				medalImg = `${bannerImgUrl}/h5/img/vip/vip3.png`;
 				break;
 			case 4:
-				medalImg = vipClub4;
+				medalImg = `${bannerImgUrl}/h5/img/vip/vip4.png`;
 				break;
 			case 5:
-				medalImg = vipClub5;
+				medalImg = `${bannerImgUrl}/h5/img/vip/vip5.png`;
 				break;
 			case 6:
-				medalImg = vipClub6;
+				medalImg = `${bannerImgUrl}/h5/img/vip/vip6.png`;
 				break;
 			default:
-				medalImg = vipClub1;
+				medalImg = `${bannerImgUrl}/h5/img/vip/vip1.png`;
 				break;
 		}
 		display = (
@@ -149,6 +145,7 @@ const HeaderBtn = () => {
 							<span className="amount">{msgCount}</span>
 						) : null}
 					</Link>
+					<MsgPopup isLogin={userInfo.isLogin} />
 				</div>
 			</div>
 		);

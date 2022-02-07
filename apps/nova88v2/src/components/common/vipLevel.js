@@ -21,6 +21,7 @@ const csMap = {
 const VIPLevel = ({ userInfo, i18n }) => {
 	return (
 		<div className="vip_mark">
+			<div className="circleAnimation" />
 			<img
 				src={`https://image.0814media.net/VIP/img/vip0${
 					userInfo?.userLevel ?? 1

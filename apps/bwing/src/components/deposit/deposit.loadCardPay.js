@@ -6,14 +6,13 @@ import {
 	popBoxContext,
 	loadingContext
 } from "../common/context";
-import config from "../../config";
+import config, { bannerImgUrl } from "../../config";
 import { isConvert, number_format, getWindowOpenUrl } from "../common/common";
 import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
 import { useHandleAmount } from "./hook/useHandleAmount";
 import { api_payment_GetLoadCardPayInfoList } from "../../service/api/payment";
 import Inputbox from "../common/inputbox.info";
-import CardInfo from "../../styles/img/cardinfo.png";
 import { api_cashier_DepositReqLoadCardPay } from "../../service/api/cashier";
 import PromoList from "./promoList";
 
@@ -99,7 +98,9 @@ const Payment = props => {
 
 	const clickInfo = ({ col }) => {
 		if (col === "cardCode" || col === "cardSerial") {
-			const img = <img src={CardInfo} alt={col} />;
+			const img = (
+				<img src={`${bannerImgUrl}/h5/img/cardinfo.png`} alt={col} />
+			);
 			const _msg = cardDataStatus[col].msg === "" ? img : "";
 			setCardDataStatus(prev => ({
 				...prev,

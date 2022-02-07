@@ -41,7 +41,7 @@ const defPlatfrom = [
 		...defGameInfo.Casino_PT,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_PT },
-		imgName: "playtecha"
+		imgName: "pta"
 	},
 	{
 		...defGameInfo.Casino_PG,
@@ -101,6 +101,12 @@ const defPlatfrom = [
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_RedTiger },
 		imgName: "rta"
+	},
+	{
+		...defGameInfo.Casino_AdvantPlay,
+		path: path.casino.root,
+		parameter: { ...defGameInfo.Casino_AdvantPlay },
+		imgName: "ap"
 	}
 ];
 

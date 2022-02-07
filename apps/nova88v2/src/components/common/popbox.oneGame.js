@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
 import path from "../../path";
-import oneGameImg from "../../styles/img/1g/banner.jpg";
-import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { Link } from "../../route/link";
+import { cloudBannerImgURL } from "../../config";
+import { GET_ENTER_PAGE } from "../../service/enterPage";
 
 const PopBoxOneGame = ({ tpId = 13 }) => {
 	const { i18n } = useContext(i18nContext);
@@ -22,7 +22,11 @@ const PopBoxOneGame = ({ tpId = 13 }) => {
 
 	return (
 		<div className="popTxt">
-			<img src={oneGameImg} className="banner" alt="One Game" />
+			<img
+				src={`${cloudBannerImgURL}/h5/img/1g/banner.jpg`}
+				className="banner"
+				alt="One Game"
+			/>
 			<div className="btn-group">
 				<button className="orange" onClick={goToGame}>
 					{i18n.lbl_GoToGame.toUpperCase()}

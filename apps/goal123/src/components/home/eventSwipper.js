@@ -10,7 +10,6 @@ import {
 import { Autoplay, useGetBanner } from "../common/swipperBanner";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { defBannerType } from "../../service/api/site";
-// import olympic from "../../styles/img/oly_logo.png";
 
 const swipperParam = {
 	centeredSlides: true,
