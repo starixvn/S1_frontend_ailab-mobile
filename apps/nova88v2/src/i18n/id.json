@@ -584,7 +584,7 @@
 	"lbl_DepositChannel_4": "Setor Melalui Teller Bank",
 	"lbl_DepositChannel": "Saluran Deposit",
 	"lbl_LocalBankDepositChannelTip": "Silahkan Pilih Saluran Bank Anda melakukan Setoran Bank Lokal",
-	"lbl_LocalBankBankAccountTip": "Please select which bank account you deposited from the local bank.",
+	"lbl_LocalBankBankAccountTip": "Pilih rekening bank yang digunakan untuk setoran.",
 	"lbl_BankDetails": "Rincian Bank",
 	"lbl_DepositLocalbankButton": "Ingat mode terakhir yang digunakan",
 	"lbl_DepositLocalbankButtonInfo": "Ingat bank yang Anda gunakan untuk deposit terakhir. Jika bank yang Anda pilih sudah tutup, mohon pilih kembali.",
