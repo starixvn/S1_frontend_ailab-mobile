@@ -30,7 +30,9 @@ export const api_CheckSignIn = () => siteRequest.post(`/CheckSignIn/`);
 
 export const api_Site_GetGameListByDevice = () =>
 	siteRequest.post(`/GetGameListByDevice`, {
-		DeviceType: defDeviceType.Mobile
+		DeviceType: window?.ReactNativeWebView
+			? defDeviceType.NativeAPP
+			: defDeviceType.Mobile
 	});
 
 export const api_ForgetPwd = ({ Email, langId }) =>

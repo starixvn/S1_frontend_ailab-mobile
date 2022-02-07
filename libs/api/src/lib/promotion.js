@@ -4,19 +4,25 @@ export class PromotionAPI extends BaseAPI {
 	GetPromotionDetail = ({ langId, BonusCode }) =>
 		this.promotionRequest.post(`/GetPromotionDetail/${langId}`, {
 			BonusCode,
-			DeviceType: defDeviceType.Mobile
+			DeviceType: window?.ReactNativeWebView
+				? defDeviceType.NativeAPP
+				: defDeviceType.Mobile
 		});
 
 	SetClaimPromotion = ({ langId, BonusCode, LockedAmount }) =>
 		this.promotionRequest.post(`/SetClaimPromotion/${langId}`, {
 			BonusCode,
 			LockedAmount,
-			DeviceType: defDeviceType.Mobile
+			DeviceType: window?.ReactNativeWebView
+				? defDeviceType.NativeAPP
+				: defDeviceType.Mobile
 		});
 
 	GetPromotionList = ({ langId }) =>
 		this.promotionRequest.post(`/GetPromotionListV3/${langId}`, {
-			DeviceType: defDeviceType.Mobile
+			DeviceType: window?.ReactNativeWebView
+				? defDeviceType.NativeAPP
+				: defDeviceType.Mobile
 		});
 
 	GetCustSpecificBonus = ({ BonusCode, TpId, PromoCategoryId }) =>
