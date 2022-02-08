@@ -14,8 +14,8 @@ export class AccountAPI extends BaseAPI {
 
 	GetCustBankInfo = () => this.accountRequest.post("/GetCustBankInfo");
 
-	GetMsgList = ({ PageNumber }) =>
-		this.accountRequest.post("/GetMsgList", { PageNumber });
+	GetMsgList = ({ PageNumber, PageSize }) =>
+		this.accountRequest.post("/GetMsgList", { PageNumber, PageSize });
 
 	GetMsgContent = MsgId =>
 		this.accountRequest.post("/GetMsgContent", {

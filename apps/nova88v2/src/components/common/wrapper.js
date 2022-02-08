@@ -43,6 +43,12 @@ export const Wrapper = ({ children }) => {
 		main: null
 	});
 
+	const [popUp, setPopUp] = useState({
+		popupMessage: "",
+		id: "",
+		pageNumber: ""
+	});
+
 	const [msgCount, setMsgCount] = useState(0);
 	const [theme, setTheme] = useState(themeList.default);
 
@@ -232,30 +238,32 @@ export const Wrapper = ({ children }) => {
 	}, [userInfo.langId]);
 
 	return (
-		<ct.userInfoContext.Provider value={{ userInfo, setUserInfo }}>
-			<ct.i18nContext.Provider value={{ i18n, seti18n }}>
-				<ct.walletInfoContext.Provider
-					value={{ walletInfo, setWalletInfo }}>
-					<ct.themeContext.Provider value={{ theme, setTheme }}>
-						<ct.popBoxContext.Provider
-							value={{ popBox, setPopBox }}>
-							<ct.navContext.Provider value={{ nav, setNav }}>
-								<ct.msgCountContext.Provider
-									value={{ msgCount, setMsgCount }}>
-									<ct.loadingContext.Provider
-										value={{ loading, setLoading }}>
-										<ct.rootContext.Provider
-											value={{ root, setRoot }}>
-											{children}
-										</ct.rootContext.Provider>
-									</ct.loadingContext.Provider>
-								</ct.msgCountContext.Provider>
-							</ct.navContext.Provider>
-						</ct.popBoxContext.Provider>
-					</ct.themeContext.Provider>
-				</ct.walletInfoContext.Provider>
-			</ct.i18nContext.Provider>
-		</ct.userInfoContext.Provider>
+		<ct.popUpMsgContext.Provider value={{ setPopUp, popUp }}>
+			<ct.userInfoContext.Provider value={{ userInfo, setUserInfo }}>
+				<ct.i18nContext.Provider value={{ i18n, seti18n }}>
+					<ct.walletInfoContext.Provider
+						value={{ walletInfo, setWalletInfo }}>
+						<ct.themeContext.Provider value={{ theme, setTheme }}>
+							<ct.popBoxContext.Provider
+								value={{ popBox, setPopBox }}>
+								<ct.navContext.Provider value={{ nav, setNav }}>
+									<ct.msgCountContext.Provider
+										value={{ msgCount, setMsgCount }}>
+										<ct.loadingContext.Provider
+											value={{ loading, setLoading }}>
+											<ct.rootContext.Provider
+												value={{ root, setRoot }}>
+												{children}
+											</ct.rootContext.Provider>
+										</ct.loadingContext.Provider>
+									</ct.msgCountContext.Provider>
+								</ct.navContext.Provider>
+							</ct.popBoxContext.Provider>
+						</ct.themeContext.Provider>
+					</ct.walletInfoContext.Provider>
+				</ct.i18nContext.Provider>
+			</ct.userInfoContext.Provider>
+		</ct.popUpMsgContext.Provider>
 	);
 };
 

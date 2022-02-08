@@ -215,7 +215,7 @@ header > div {
 }
 
 header > div > a > img {
-  width: 30vw;
+  width: 35vw;
   vertical-align: middle;
 }
 
@@ -3768,6 +3768,7 @@ button.clickBtn:before {
 .introduction span {
   width: 100%;
   margin: 2px 0;
+  word-break: break-word;
 }
 
 .introduction span:nth-last-child(1) {
