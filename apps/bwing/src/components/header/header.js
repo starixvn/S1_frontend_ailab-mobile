@@ -1,5 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "@reach/router";
+import useInterval from "../hook/useInterval";
 import {
 	userInfoContext,
 	i18nContext,
@@ -172,7 +173,7 @@ const AfterLogin = ({
 							<Link
 								to={`/${path.message.root}`}
 								className="icon icon-mailIcon">
-								<MsgPopup isLogin={userInfo.isLogin} />
+								<MsgPopup userInfo={userInfo} />
 							</Link>
 						</div>
 					</div>

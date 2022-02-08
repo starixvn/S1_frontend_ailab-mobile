@@ -4669,6 +4669,7 @@ button.clickBtn:before {
 
 .functionList ~ .account .info .title {
   font-weight: bold;
+  word-break: break-all;
 }
 
 .functionList ~ .account .icon-keyboard_arrow_down {

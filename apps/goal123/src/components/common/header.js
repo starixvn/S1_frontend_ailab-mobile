@@ -145,7 +145,7 @@ const HeaderBtn = () => {
 							<span className="amount">{msgCount}</span>
 						) : null}
 					</Link>
-					<MsgPopup isLogin={userInfo.isLogin} />
+					<MsgPopup userInfo={userInfo} />
 				</div>
 			</div>
 		);

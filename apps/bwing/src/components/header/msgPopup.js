@@ -1,21 +1,36 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "@reach/router";
 import PropTypes from "prop-types";
 import useInterval from "../hook/useInterval";
 import {
 	api_account_GetPopupMsg,
 	api_account_SetPopupMsgRead
 } from "../../service/api/account";
+import path from "../../path";
 
-export default function Component({ isLogin }) {
-	const [popUpMsg, setPopUpMsg] = useState("");
+export default function Component({ userInfo }) {
+	const navigate = useNavigate();
+	const [popUp, setPopUp] = useState({
+		popupMessage: "",
+		id: "",
+		pageNumber: ""
+	});
 
 	const GetPopupMsg = () => {
 		try {
 			api_account_GetPopupMsg().then(res => {
 				if (res.data.data) {
-					setPopUpMsg(res.data.data.popupMessage);
+					setPopUp({
+						popupMessage: res.data.data.popupMessage,
+						id: res.data.data.id,
+						pageNumber: res.data.data.pageNumber
+					});
 				} else {
-					setPopUpMsg("");
+					setPopUp({
+						popupMessage: "",
+						id: "",
+						pageNumber: ""
+					});
 				}
 			});
 		} catch (error) {}
@@ -24,44 +39,54 @@ export default function Component({ isLogin }) {
 	const ReadPopupMsg = () => {
 		api_account_SetPopupMsgRead().then(res => {
 			if (res.data.errorCode === 0) {
-				setPopUpMsg("");
+				GetPopupMsg();
 			}
 		});
 	};
 
 	useEffect(() => {
-		if (isLogin) {
+		if (userInfo?.isLogin) {
 			GetPopupMsg();
 		}
-	}, [isLogin]);
+	}, [userInfo?.isLogin]);
 
 	useInterval(
 		() => {
 			GetPopupMsg();
 		},
-		isLogin ? 30000 : null
+		userInfo?.isLogin ? 30000 : null
 	);
 
-	return (
-		popUpMsg && (
+	return popUp.id !== "" ? (
+		<div
+			className="mailtipPop"
+			onClick={e => {
+				e.preventDefault();
+				e.stopPropagation();
+			}}>
 			<div
-				className="mailtipPop"
+				className="icon icon-close"
 				onClick={e => {
 					e.preventDefault();
 					e.stopPropagation();
+					ReadPopupMsg();
+				}}
+			/>
+			<span
+				className="txt"
+				onClick={() => {
+					navigate(`/${path.message.root}`, {
+						state: {
+							id: popUp.id,
+							pageNumber: popUp.pageNumber,
+							popupShowed: false
+						}
+					});
 				}}>
-				<div
-					className="icon icon-close"
-					onClick={e => {
-						e.preventDefault();
-						e.stopPropagation();
-						ReadPopupMsg();
-					}}
-				/>
-				<span className="txt">{popUpMsg}</span>
-			</div>
-		)
-	);
+				{popUp.popupMessage}
+			</span>
+		</div>
+	) : null;
 }
 
 Component.defaultProps = {

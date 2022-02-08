@@ -160,7 +160,7 @@ const Footer = () => {
 								{msgCount > 0 ? (
 									<div className="icon icon-envelope" />
 								) : null}
-								<MsgPopup isLogin={userInfo.isLogin} />
+								<MsgPopup userInfo={userInfo} />
 								<div className="circleAnimation" />
 								<span>{i18n.lbl_More}</span>
 							</Link>

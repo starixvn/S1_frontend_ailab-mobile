@@ -1,6 +1,13 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import moment from "moment";
-import { i18nContext, popBoxContext, msgCountContext } from "../common/context";
+import PropTypes, { any } from "prop-types";
+import { useLocation, useNavigate } from "@reach/router";
+import {
+	i18nContext,
+	popBoxContext,
+	msgCountContext,
+	userInfoContext
+} from "../common/context";
 import {
 	api_GetMsgList,
 	api_GetMsgContent,
@@ -16,6 +23,10 @@ const Panel = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setMsgCount } = useContext(msgCountContext);
+	const { userInfo } = useContext(userInfoContext);
+	const location = useLocation();
+	const showMessageRef = useRef(null);
+	const navigate = useNavigate();
 	const [getMsgList, setGetMsgList] = useState([]);
 	const [getMsgContent, setGetMsgContent] = useState([]);
 	const [openContentState, setOpenContentState] = useState(null);
@@ -37,63 +48,70 @@ const Panel = () => {
 		setProcessing,
 		true
 	);
-
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => {
 			isMountedRef.current = false;
 		};
 	});
+
+	useEffect(() => {
+		if (
+			location?.state?.pageNumber > 1 &&
+			!location?.state?.popupShowed &&
+			showMessageRef.current
+		) {
+			showMessageRef.current?.scrollIntoView({
+				behavior: "smooth"
+			});
+			location.state.popupShowed = true;
+		}
+	}, [getMsgContent, showMessageRef]);
+
 	useEffect(() => {
 		isMountedRef.current = true;
 		setLoading(true);
-		api_GetMsgList({ PageNumber: 1 }).then(
-			res => {
-				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
-						const { data } = res.data;
-						if (data !== null) {
-							setGetMsgList(data);
 
-							if (res.data.totalPages >= res.data.pageNumber) {
-								setPageInfo(() => ({
-									totalPages: res.data.totalPages,
-									pageNumber: res.data.pageNumber
-								}));
-							}
-						}
-					} else {
-						setPopBox({
-							isOpen: true,
-							content: `[${res.data.errorCode}] ${res.data.message}`
-						});
-					}
-					setLoading(false);
-				}
-			},
-			() => {
-				if (isMountedRef.current) {
-					setPopBox({
-						isOpen: true,
-						content: i18n.msg_ApiServerError
-					});
-					setLoading(false);
-				}
-			}
-		);
-	}, [i18n.lbl_ImportantNote, i18n.msg_ApiServerError, setPopBox]);
+		if (userInfo.isLogin) {
+			GetMsgList({
+				pageNumber: location?.state?.pageNumber
+			});
+		} else {
+			navigate(`/${userInfo.langId}`);
+		}
+	}, [userInfo.isLogin, location.state]);
 
-	const GetMsgList = () => {
+	const GetMsgList = ({ pageNumber }) => {
 		if (!processing) {
 			setProcessing(true);
-			api_GetMsgList({ PageNumber: 1 }).then(
+			api_GetMsgList({
+				PageNumber: 1,
+				PageSize: pageNumber ? pageNumber * 5 : 5
+			}).then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
 							const { data } = res.data;
 							if (data !== null) {
 								setGetMsgList(data);
-								if (
+								const msg = data.find(
+									el => el.id === location.state.id
+								);
+								if (pageNumber && msg) {
+									if (
+										openContentState !== location.state.id
+									) {
+										openContent(
+											location.state.id,
+											msg.flag
+										);
+									}
+
+									setPageInfo(() => ({
+										totalPages: res.data.totalPages,
+										pageNumber
+									}));
+								} else if (
 									res.data.totalPages >= res.data.pageNumber
 								) {
 									setPageInfo(() => ({
@@ -109,6 +127,7 @@ const Panel = () => {
 							});
 						}
 						setProcessing(false);
+						setLoading(false);
 					}
 				},
 				() => {
@@ -118,6 +137,7 @@ const Panel = () => {
 							content: i18n.msg_ApiServerError
 						});
 						setProcessing(false);
+						setLoading(false);
 					}
 				}
 			);
@@ -293,93 +313,107 @@ const Panel = () => {
 				isRead={item.flag}
 				onChange={checkboxHandler.bind(null, item)}
 				isChecked={_checked}
+				showMessageRef={showMessageRef}
 			/>
 		);
 	});
 
-	return (
+	return loading ? (
+		<Loading />
+	) : (
 		<>
-			{loading ? (
-				<Loading />
+			<div className="functionList">
+				<label className="checkbox">
+					<input
+						type="checkbox"
+						onChange={selectAll}
+						data-testid="selectAll"
+					/>
+					<i
+						className={`icon icon-checkbox ${
+							isSelectedAll ? "open" : ""
+						}`}
+					/>
+					{i18n.lbl_SelectAll}
+				</label>
+				<div className="smallBtn-group">
+					<button
+						className="icon icon-bin clickBtn"
+						onClick={delMsg}
+						data-testid="deleteMsg"
+					/>
+					<ReloadSpin func={GetMsgList} />
+				</div>
+			</div>
+			{getMsgList.length > 0 ? (
+				<>{arr}</>
 			) : (
-				<>
-					<div className="functionList">
-						<label className="checkbox">
-							<input
-								type="checkbox"
-								onChange={selectAll}
-								data-testid="selectAll"
-							/>
-							<i
-								className={`icon icon-checkbox ${
-									isSelectedAll ? "open" : ""
-								}`}
-							/>
-							{i18n.lbl_SelectAll}
-						</label>
-						<div className="smallBtn-group">
-							<button
-								className="icon icon-bin clickBtn"
-								onClick={delMsg}
-								data-testid="deleteMsg"
-							/>
-							<ReloadSpin func={GetMsgList} />
-						</div>
-					</div>
-					{getMsgList.length > 0 ? (
-						<>{arr}</>
-					) : (
-						<div className="not-found">
-							<i className="icon icon-warning" />
-							<p>{i18n.msg_NoData}</p>
-						</div>
-					)}
-				</>
+				<div className="not-found">
+					<i className="icon icon-warning" />
+					<p>{i18n.msg_NoData}</p>
+				</div>
 			)}
 		</>
 	);
 };
 
-const Item = props => {
-	return (
-		<div
-			data-testid="isRead"
-			className={`account ${props.isRead ? " read" : ""}`}>
-			<div className="info">
-				<label className="checkbox">
-					<input
-						type="checkbox"
-						data-testid="msgChkbox"
-						onChange={props.onChange}
-					/>
-					<i
-						data-testid="checkIcon"
-						className={`icon icon-checkbox${
-							props.isChecked ? " open" : ""
-						}`}
-					/>
-				</label>
-				<div className="introduction">
-					<span className="title">{props.title}</span>
-					<span>
-						{moment(props.showDate).format("MM/DD/YYYY h:mm:ss A")}
-					</span>
-				</div>
-				<button
-					className={`icon icon-circle-right ${
-						props.isOpen ? " open" : ""
-					}`}
-					data-testid="openBtn"
-					onClick={props.onClick}
+const Item = props => (
+	<div
+		ref={props.showMessageRef}
+		data-testid="isRead"
+		className={`account ${props.isRead ? " read" : ""}`}>
+		<div className="info">
+			<label className="checkbox">
+				<input
+					type="checkbox"
+					data-testid="msgChkbox"
+					onChange={props.onChange}
 				/>
+				<i
+					data-testid="checkIcon"
+					className={`icon icon-checkbox${
+						props.isChecked ? " open" : ""
+					}`}
+				/>
+			</label>
+			<div className="introduction">
+				<span className="title">{props.title}</span>
+				<span>
+					{moment(props.showDate).format("MM/DD/YYYY h:mm:ss A")}
+				</span>
 			</div>
-			<div
-				data-testid="msgCard"
-				className={`content backstage${props.isOpen ? " open" : ""}`}
-				dangerouslySetInnerHTML={{ __html: props.content }}
+			<button
+				className={`icon icon-circle-right ${
+					props.isOpen ? " open" : ""
+				}`}
+				data-testid="openBtn"
+				onClick={props.onClick}
 			/>
 		</div>
-	);
+		<div
+			data-testid="msgCard"
+			className={`content backstage${props.isOpen ? " open" : ""}`}
+			dangerouslySetInnerHTML={{ __html: props.content }}
+		/>
+	</div>
+);
+
+Item.defaultProps = {
+	isRead: null,
+	isChecked: null,
+	isOpen: null,
+	showMessageRef: null
+};
+
+Item.propTypes = {
+	isRead: PropTypes.bool,
+	onChange: PropTypes.func.isRequired,
+	isChecked: PropTypes.bool,
+	title: PropTypes.string.isRequired,
+	showDate: PropTypes.string.isRequired,
+	isOpen: PropTypes.bool,
+	onClick: PropTypes.func.isRequired,
+	showMessageRef: PropTypes.objectOf(PropTypes.any)
 };
 
 export default Panel;
