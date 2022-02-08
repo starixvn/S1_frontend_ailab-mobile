@@ -1,7 +1,13 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import moment from "moment";
 import PropTypes from "prop-types";
-import { i18nContext, popBoxContext, msgCountContext } from "../common/context";
+import { useLocation, useNavigate } from "@reach/router";
+import {
+	i18nContext,
+	popBoxContext,
+	msgCountContext,
+	userInfoContext
+} from "../common/context";
 import {
 	api_GetMsgList,
 	api_GetMsgContent,
@@ -30,6 +36,10 @@ const Panel = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setMsgCount } = useContext(msgCountContext);
+	const { userInfo } = useContext(userInfoContext);
+	const location = useLocation();
+	const showMessageRef = useRef(null);
+	const navigate = useNavigate();
 	const [getMsgList, setGetMsgList] = useState([]);
 	const [getMsgContent, setGetMsgContent] = useState([]);
 	const [openContentState, setOpenContentState] = useState(null);
@@ -60,55 +70,62 @@ const Panel = () => {
 	});
 
 	useEffect(() => {
+		if (
+			location?.state?.pageNumber > 1 &&
+			!location?.state?.popupShowed &&
+			showMessageRef.current
+		) {
+			showMessageRef.current?.scrollIntoView({
+				behavior: "smooth"
+			});
+			location.state.popupShowed = true;
+		}
+	}, [getMsgContent, showMessageRef]);
+
+	useEffect(() => {
 		isMountedRef.current = true;
 		setLoading(true);
-		api_GetMsgList({ PageNumber: 1 }).then(
-			res => {
-				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
-						const { data } = res.data;
-						if (data !== null) {
-							setGetMsgList(data);
 
-							if (res.data.totalPages >= res.data.pageNumber) {
-								setPageInfo(() => ({
-									totalPages: res.data.totalPages,
-									pageNumber: res.data.pageNumber
-								}));
-							}
-						}
-					} else {
-						setPopBox({
-							isOpen: true,
-							content: `[${res.data.errorCode}] ${res.data.message}`
-						});
-					}
-					setLoading(false);
-				}
-			},
-			() => {
-				if (isMountedRef.current) {
-					setPopBox({
-						isOpen: true,
-						content: i18n.msg_ApiServerError
-					});
-					setLoading(false);
-				}
-			}
-		);
-	}, [i18n.lbl_ImportantNote, i18n.msg_ApiServerError, setPopBox]);
+		if (userInfo.isLogin) {
+			GetMsgList({
+				pageNumber: location?.state?.pageNumber
+			});
+		} else {
+			navigate(`/${userInfo.langId}`);
+		}
+	}, [userInfo.isLogin, location.state]);
 
-	const GetMsgList = () => {
+	const GetMsgList = ({ pageNumber }) => {
 		if (!processing) {
 			setProcessing(true);
-			api_GetMsgList({ PageNumber: 1 }).then(
+			api_GetMsgList({
+				PageNumber: 1,
+				PageSize: pageNumber ? pageNumber * 5 : 5
+			}).then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
 							const { data } = res.data;
 							if (data !== null) {
 								setGetMsgList(data);
-								if (
+								const msg = data.find(
+									el => el.id === location.state.id
+								);
+								if (pageNumber && msg) {
+									if (
+										openContentState !== location.state.id
+									) {
+										openContent(
+											location.state.id,
+											msg.flag
+										);
+									}
+
+									setPageInfo(() => ({
+										totalPages: res.data.totalPages,
+										pageNumber
+									}));
+								} else if (
 									res.data.totalPages >= res.data.pageNumber
 								) {
 									setPageInfo(() => ({
@@ -124,6 +141,7 @@ const Panel = () => {
 							});
 						}
 						setProcessing(false);
+						setLoading(false);
 					}
 				},
 				() => {
@@ -133,6 +151,7 @@ const Panel = () => {
 							content: i18n.msg_ApiServerError
 						});
 						setProcessing(false);
+						setLoading(false);
 					}
 				}
 			);
@@ -309,6 +328,7 @@ const Panel = () => {
 				isRead={item.flag}
 				onChange={checkboxHandler.bind(null, item)}
 				isChecked={_checked}
+				showMessageRef={showMessageRef}
 			/>
 		);
 	});
@@ -351,52 +371,52 @@ const Panel = () => {
 	);
 };
 
-const Item = props => {
-	return (
-		<div
-			data-testid="isRead"
-			className={`account ${props.isRead ? " read" : ""}`}>
-			<div className="info">
-				<label className="checkbox">
-					<input
-						data-testid="msgChkbox"
-						type="checkbox"
-						onChange={props.onChange}
-					/>
-					<i
-						data-testid="checkIcon"
-						className={`icon icon-checkbox${
-							props.isChecked ? " open" : ""
-						}`}
-					/>
-				</label>
-				<div className="introduction">
-					<span className="title">{props.title}</span>
-					<span>
-						{moment(props.showDate).format("MM/DD/YYYY h:mm:ss A")}
-					</span>
-				</div>
-				<button
-					data-testid="openBtn"
-					className={`icon icon-circle-right ${
-						props.isOpen ? " open" : ""
-					}`}
-					onClick={props.onClick}
+const Item = props => (
+	<div
+		ref={props.showMessageRef}
+		data-testid="isRead"
+		className={`account ${props.isRead ? " read" : ""}`}>
+		<div className="info">
+			<label className="checkbox">
+				<input
+					data-testid="msgChkbox"
+					type="checkbox"
+					onChange={props.onChange}
 				/>
+				<i
+					data-testid="checkIcon"
+					className={`icon icon-checkbox${
+						props.isChecked ? " open" : ""
+					}`}
+				/>
+			</label>
+			<div className="introduction">
+				<span className="title">{props.title}</span>
+				<span>
+					{moment(props.showDate).format("MM/DD/YYYY h:mm:ss A")}
+				</span>
 			</div>
-			<div
-				data-testid="msgCard"
-				className={`content backstage${props.isOpen ? " open" : ""}`}
-				dangerouslySetInnerHTML={{ __html: props.content }}
+			<button
+				data-testid="openBtn"
+				className={`icon icon-circle-right ${
+					props.isOpen ? " open" : ""
+				}`}
+				onClick={props.onClick}
 			/>
 		</div>
-	);
-};
+		<div
+			data-testid="msgCard"
+			className={`content backstage${props.isOpen ? " open" : ""}`}
+			dangerouslySetInnerHTML={{ __html: props.content }}
+		/>
+	</div>
+);
 
 Item.defaultProps = {
 	isRead: null,
 	isChecked: null,
-	isOpen: null
+	isOpen: null,
+	showMessageRef: null
 };
 
 Item.propTypes = {
@@ -407,7 +427,7 @@ Item.propTypes = {
 	showDate: PropTypes.string.isRequired,
 	isOpen: PropTypes.bool,
 	onClick: PropTypes.func.isRequired,
-	content: PropTypes.string.isRequired
+	showMessageRef: PropTypes.objectOf(PropTypes.any)
 };
 
 export default Panel;

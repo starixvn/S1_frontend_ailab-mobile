@@ -10,49 +10,47 @@ const Detail = ({
 	isOpen,
 	isRead,
 	onChange,
-	isChecked
-}) => {
-	return (
-		<div
-			data-testid="msgCard"
-			className={`account${isRead ? "" : " noread"}${
-				isOpen ? " active" : ""
-			}`}>
-			<div className="info">
-				<label className="checkbox">
-					<input
-						type="checkbox"
-						data-testid="msgChkbox"
-						onChange={onChange}
-					/>
-					<i
-						data-testid="checkIcon"
-						className={`icon icon-checkbox${
-							isChecked ? "-checked" : ""
-						}`}
-					/>
-				</label>
-				<div className="introduction">
-					<span className="title">{title}</span>
-					<span>
-						{moment(showDate).format("MM/DD/YYYY h:mm:ss A")}
-					</span>
-				</div>
-				<button
-					className={`icon icon-keyboard_arrow_down ${
-						isOpen ? " active" : ""
-					}`}
-					data-testid="openBtn"
-					onClick={onClick}
+	isChecked,
+	showMessageRef = null
+}) => (
+	<div
+		ref={showMessageRef}
+		data-testid="msgCard"
+		className={`account${isRead ? "" : " noread"}${
+			isOpen ? " active" : ""
+		}`}>
+		<div className="info">
+			<label className="checkbox">
+				<input
+					type="checkbox"
+					data-testid="msgChkbox"
+					onChange={onChange}
 				/>
+				<i
+					data-testid="checkIcon"
+					className={`icon icon-checkbox${
+						isChecked ? "-checked" : ""
+					}`}
+				/>
+			</label>
+			<div className="introduction">
+				<span className="title">{title}</span>
+				<span>{moment(showDate).format("MM/DD/YYYY h:mm:ss A")}</span>
 			</div>
-			<div
-				className="content backstage"
-				dangerouslySetInnerHTML={{ __html: content }}
+			<button
+				className={`icon icon-keyboard_arrow_down ${
+					isOpen ? " active" : ""
+				}`}
+				data-testid="openBtn"
+				onClick={onClick}
 			/>
 		</div>
-	);
-};
+		<div
+			className="content backstage"
+			dangerouslySetInnerHTML={{ __html: content }}
+		/>
+	</div>
+);
 
 Detail.defaultProps = {
 	isRead: false,
@@ -62,11 +60,11 @@ Detail.defaultProps = {
 };
 
 Detail.propTypes = {
-	onChange: PropTypes.func.isRequired,
-	title: PropTypes.string.isRequired,
 	isRead: PropTypes.bool,
 	isChecked: PropTypes.bool,
 	isOpen: PropTypes.bool,
+	onChange: PropTypes.func.isRequired,
+	title: PropTypes.string.isRequired,
 	onClick: PropTypes.func.isRequired,
 	content: PropTypes.string,
 	showDate: PropTypes.oneOfType([

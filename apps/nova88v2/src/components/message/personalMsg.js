@@ -1,17 +1,19 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
-import { useNavigate } from "@reach/router";
+import { useNavigate, useLocation } from "@reach/router";
 import {
 	i18nContext,
 	popBoxContext,
 	msgCountContext,
 	loadingContext,
-	userInfoContext
+	userInfoContext,
+	popUpMsgContext
 } from "Context";
 import ReloadSpin from "../common/reloadSpin";
 import GoTopBtn from "../common/goTopBtn";
 import api from "../../service/api";
 import Detail from "./personalMsg.detail";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
+import useGetPopUpMsg from "../hook/useGetPopUpMsg";
 
 const Panel = () => {
 	const navigate = useNavigate();
@@ -20,6 +22,10 @@ const Panel = () => {
 	const { setMsgCount } = useContext(msgCountContext);
 	const { setLoading } = useContext(loadingContext);
 	const { userInfo } = useContext(userInfoContext);
+	const { setPopUp } = useContext(popUpMsgContext);
+	const { GetPopupMsg } = useGetPopUpMsg({ setPopUp });
+	const location = useLocation();
+	const showMessageRef = useRef(null);
 	const [msgList, setMsgList] = useState([]);
 	const [msgContent, setMsgContent] = useState([]);
 	const [openContentState, setOpenContentState] = useState(null);
@@ -50,63 +56,103 @@ const Panel = () => {
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
-			GetMsgList({ loading: true });
+			GetMsgList({
+				loading: true,
+				pageNumber: location?.state?.pageNumber
+			});
 		} else {
 			navigate(`/${userInfo.langId}`);
 		}
-	}, [userInfo.isLogin]);
+	}, [userInfo.isLogin, location.state]);
 
-	const GetMsgList = ({ loading }) => {
+	useEffect(() => {
+		if (
+			location?.state?.pageNumber > 1 &&
+			!location?.state?.popupShowed &&
+			showMessageRef.current
+		) {
+			showMessageRef.current?.scrollIntoView({
+				behavior: "smooth"
+			});
+			location.state.popupShowed = true;
+		}
+	}, [msgContent, showMessageRef]);
+
+	const GetMsgList = ({ loading, pageNumber }) => {
 		if (!processing) {
 			if (loading) {
 				setLoading(true);
 			}
 			setProcessing(true);
-			api.account.GetMsgList({ PageNumber: 1 }).then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							const { data } = res.data;
-							if (data !== null) {
-								setMsgList(data);
-								if (
-									res.data.totalPages >= res.data.pageNumber
-								) {
-									setPageInfo(() => ({
-										totalPages: res.data.totalPages,
-										pageNumber: res.data.pageNumber
-									}));
+			api.account
+				.GetMsgList({
+					PageNumber: 1,
+					PageSize: pageNumber ? pageNumber * 5 : 5
+				})
+				.then(
+					res => {
+						if (isMountedRef.current) {
+							if (res.data.errorCode === 0) {
+								const { data } = res.data;
+								if (data !== null) {
+									setMsgList(data);
+									const msg = data.find(
+										el => el.id === location.state.id
+									);
+
+									if (pageNumber && msg) {
+										if (
+											openContentState !==
+											location.state.id
+										) {
+											openContent(
+												location.state.id,
+												msg.flag
+											);
+										}
+
+										setPageInfo(() => ({
+											totalPages: res.data.totalPages,
+											pageNumber
+										}));
+									} else if (
+										res.data.totalPages >=
+										res.data.pageNumber
+									) {
+										setPageInfo(() => ({
+											totalPages: res.data.totalPages,
+											pageNumber: res.data.pageNumber
+										}));
+									}
 								}
+							} else {
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_ImportantNote,
+									content: `[${res.data.errorCode}] ${res.data.message}`
+								});
 							}
-						} else {
+							setLoading(false);
+							setProcessing(false);
+						}
+					},
+					() => {
+						if (isMountedRef.current) {
 							setPopBox({
 								isOpen: true,
-								title: i18n.lbl_ImportantNote,
-								content: `[${res.data.errorCode}] ${res.data.message}`
+								content: i18n.msg_ApiServerError
 							});
+							setLoading(false);
+							setProcessing(false);
 						}
-						setLoading(false);
-						setProcessing(false);
 					}
-				},
-				() => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							content: i18n.msg_ApiServerError
-						});
-						setLoading(false);
-						setProcessing(false);
-					}
-				}
-			);
+				);
 		}
 	};
 
 	const openContent = (id, flag) => {
 		if (!processing) {
 			setProcessing(true);
-
 			if (openContentState === id) {
 				setOpenContentState(null);
 				setProcessing(false);
@@ -213,6 +259,7 @@ const Panel = () => {
 								})
 							);
 							setCheckboxList([]);
+							GetPopupMsg();
 						} else {
 							setPopBox({
 								isOpen: true,
@@ -303,6 +350,7 @@ const Panel = () => {
 				isRead={item.flag}
 				onChange={checkboxHandler.bind(null, item)}
 				isChecked={_checked}
+				showMessageRef={showMessageRef}
 			/>
 		);
 	});
