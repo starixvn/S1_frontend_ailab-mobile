@@ -276,7 +276,7 @@ const Main = props => {
 		const map = {};
 		const arr = [];
 		for (let i = 0; i < paymentList?.length; i++) {
-			const pay = paymentList[i];
+			const pay = { ...paymentList[i] };
 			if (!map[pay.groupId]) map[pay.groupId] = pay;
 
 			const curItem = map[pay.groupId];
@@ -346,6 +346,8 @@ const Main = props => {
 		setPageVerify,
 		props.location.state?.paymentList?.length >= 0
 	);
+
+	console.log(paymentList);
 
 	return (
 		<div className="depositModule active">
