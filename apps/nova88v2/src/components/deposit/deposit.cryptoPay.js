@@ -347,8 +347,6 @@ const Main = props => {
 		props.location.state?.paymentList?.length >= 0
 	);
 
-	console.log(paymentList);
-
 	return (
 		<div className="depositModule active">
 			<div className="title text-org icon icon-BTC">
