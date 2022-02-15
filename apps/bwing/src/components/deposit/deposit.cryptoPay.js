@@ -265,7 +265,7 @@ const Main = props => {
 		const map = {};
 		const arr = [];
 		for (let i = 0; i < paymentList?.length; i++) {
-			const pay = paymentList[i];
+			const pay = { ...paymentList[i] };
 			if (!map[pay.groupId]) map[pay.groupId] = pay;
 
 			const curItem = map[pay.groupId];
