@@ -125,14 +125,6 @@ export const productList = langId => {
 			icon_img: `${bannerImgUrl}/h5/img/gameicon/slot.png`,
 			items: [
 				{
-					...defGameInfo.Casino_PP,
-					parameter: defGameInfo.Casino_PP,
-					path: path.casino.root,
-					icon: "icon icon-PP",
-					displayKey: "Pragmatic Play",
-					img: `${bannerImgUrl}/h5/img/slot/pp.png`
-				},
-				{
 					...defGameInfo.Casino_AdvantPlay,
 					parameter: defGameInfo.Casino_AdvantPlay,
 					path: path.casino.root,
@@ -144,6 +136,14 @@ export const productList = langId => {
 							inPeriod: isEventPeriod(eventTime.casino_AdvantPlay)
 						}
 					]
+				},
+				{
+					...defGameInfo.Casino_PP,
+					parameter: defGameInfo.Casino_PP,
+					path: path.casino.root,
+					icon: "icon icon-PP",
+					displayKey: "Pragmatic Play",
+					img: `${bannerImgUrl}/h5/img/slot/pp.png`
 				},
 				{
 					...defGameInfo.Casino_NetEnt,
