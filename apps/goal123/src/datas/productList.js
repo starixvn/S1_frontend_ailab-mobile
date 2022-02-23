@@ -314,14 +314,6 @@ const gameList = [
 		img: `${bannerImgUrl}/h5/img/hotgameicon/slots.png`,
 		items: [
 			{
-				...defGameInfo.Casino_PP,
-				parameter: defGameInfo.Casino_PP,
-				spanText: "Pragmatic Play",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-pp.png`,
-				path: path.casino.root,
-				providerImgName: "pp"
-			},
-			{
 				...defGameInfo.Casino_AdvantPlay,
 				parameter: defGameInfo.Casino_AdvantPlay,
 				spanText: "AdvantPlay",
@@ -334,6 +326,14 @@ const gameList = [
 						inPeriod: isEventPeriod(eventTime.casino_AdvantPlay)
 					}
 				]
+			},
+			{
+				...defGameInfo.Casino_PP,
+				parameter: defGameInfo.Casino_PP,
+				spanText: "Pragmatic Play",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-pp.png`,
+				path: path.casino.root,
+				providerImgName: "pp"
 			},
 			{
 				...defGameInfo.Casino_NetEnt,

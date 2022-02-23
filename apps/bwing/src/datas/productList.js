@@ -64,14 +64,14 @@ export const defGameInfo = {
 
 export const slotPlatform = [
 	{
-		...defGameInfo.Casino_PP,
-		path: path.casino.root,
-		imgName: "pp"
-	},
-	{
 		...defGameInfo.Casino_AdvantPlay,
 		path: path.casino.root,
 		imgName: "ap"
+	},
+	{
+		...defGameInfo.Casino_PP,
+		path: path.casino.root,
+		imgName: "pp"
 	},
 	{
 		...defGameInfo.Casino_NetEnt,

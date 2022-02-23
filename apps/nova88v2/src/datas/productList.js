@@ -211,6 +211,22 @@ const gameList = ({ langId, currencyName }) => {
 					translateKey: "lbl_Casino",
 					items: [
 						{
+							...defGameInfo.Casino_AdvantPlay,
+							parameter: defGameInfo.Casino_AdvantPlay,
+							spanText: "AdvantPlay",
+							providerImgName: "ap",
+							img: `${cloudBannerImgURL}/h5/img/ap.png`,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_AdvantPlay
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_PP,
 							parameter: defGameInfo.Casino_PP,
 							spanText: "Pragmatic Play",
@@ -353,22 +369,6 @@ const gameList = ({ langId, currencyName }) => {
 								defCurrenyId.IDR,
 								defCurrenyId.MYR,
 								defCurrenyId.THB
-							]
-						},
-						{
-							...defGameInfo.Casino_AdvantPlay,
-							parameter: defGameInfo.Casino_AdvantPlay,
-							spanText: "AdvantPlay",
-							providerImgName: "ap",
-							img: `${cloudBannerImgURL}/h5/img/ap.png`,
-							path: path.casino.root,
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(
-										eventTime.casino_AdvantPlay
-									)
-								}
 							]
 						}
 						// {
@@ -745,6 +745,22 @@ const gameList = ({ langId, currencyName }) => {
 					translateKey: "lbl_Casino",
 					items: [
 						{
+							...defGameInfo.Casino_AdvantPlay,
+							parameter: defGameInfo.Casino_AdvantPlay,
+							spanText: "AdvantPlay",
+							providerImgName: "ap",
+							img: `${cloudBannerImgURL}/h5/img/ap.png`,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_AdvantPlay
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_PP,
 							parameter: defGameInfo.Casino_PP,
 							spanText: "Pragmatic Play",
@@ -887,23 +903,6 @@ const gameList = ({ langId, currencyName }) => {
 								defCurrenyId.IDR,
 								defCurrenyId.MYR,
 								defCurrenyId.THB
-							]
-						},
-
-						{
-							...defGameInfo.Casino_AdvantPlay,
-							parameter: defGameInfo.Casino_AdvantPlay,
-							spanText: "AdvantPlay",
-							providerImgName: "ap",
-							img: `${cloudBannerImgURL}/h5/img/ap.png`,
-							path: path.casino.root,
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(
-										eventTime.casino_AdvantPlay
-									)
-								}
 							]
 						}
 						// {
@@ -1280,6 +1279,22 @@ const gameList = ({ langId, currencyName }) => {
 					translateKey: "lbl_Casino",
 					items: [
 						{
+							...defGameInfo.Casino_AdvantPlay,
+							parameter: defGameInfo.Casino_AdvantPlay,
+							spanText: "AdvantPlay",
+							providerImgName: "ap",
+							img: `${cloudBannerImgURL}/h5/img/ap.png`,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_AdvantPlay
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_PP,
 							parameter: defGameInfo.Casino_PP,
 							spanText: "Pragmatic Play",
@@ -1423,22 +1438,6 @@ const gameList = ({ langId, currencyName }) => {
 								defCurrenyId.IDR,
 								defCurrenyId.MYR,
 								defCurrenyId.THB
-							]
-						},
-						{
-							...defGameInfo.Casino_AdvantPlay,
-							parameter: defGameInfo.Casino_AdvantPlay,
-							spanText: "AdvantPlay",
-							providerImgName: "ap",
-							img: `${cloudBannerImgURL}/h5/img/ap.png`,
-							path: path.casino.root,
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(
-										eventTime.casino_AdvantPlay
-									)
-								}
 							]
 						}
 						// {
@@ -1830,6 +1829,22 @@ const gameList = ({ langId, currencyName }) => {
 					translateKey: "lbl_Casino",
 					items: [
 						{
+							...defGameInfo.Casino_AdvantPlay,
+							parameter: defGameInfo.Casino_AdvantPlay,
+							spanText: "AdvantPlay",
+							providerImgName: "ap",
+							img: `${cloudBannerImgURL}/h5/img/ap.png`,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_AdvantPlay
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_PP,
 							parameter: defGameInfo.Casino_PP,
 							spanText: "Pragmatic Play",
@@ -1973,22 +1988,6 @@ const gameList = ({ langId, currencyName }) => {
 								defCurrenyId.IDR,
 								defCurrenyId.MYR,
 								defCurrenyId.THB
-							]
-						},
-						{
-							...defGameInfo.Casino_AdvantPlay,
-							parameter: defGameInfo.Casino_AdvantPlay,
-							spanText: "AdvantPlay",
-							providerImgName: "ap",
-							img: `${cloudBannerImgURL}/h5/img/ap.png`,
-							path: path.casino.root,
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(
-										eventTime.casino_AdvantPlay
-									)
-								}
 							]
 						}
 						// {
