@@ -131,6 +131,7 @@
 	"lbl_Login": "Login",
 	"lbl_Logout": "Logout",
 	"lbl_Lottery": "Lottery",
+	"lbl_tableGame": "Table Game",
 	"lbl_MainWallet": "Main Wallet",
 	"lbl_MaxAmount": "Max Amount",
 	"lbl_Me": "Me",
@@ -634,8 +635,8 @@
 	"lbl_PaymentQRNote1": "Please do not refresh your browser.",
 	"lbl_PaymentQRNote2": "Please take note of the reference number if any event you need to contact our Customer Serivce for further action.",
 	"lbl_PaymentTimeLeft": "PAYMENT TIME LEFT",
-	
-	"==============Mystery Box=====================":"",
+
+	"==============Mystery Box=====================": "",
 	"lbl_My": "My",
 	"lbl_Conditions": "Conditions",
 	"lbl_RewardsCondition": "Rewards Condition",
@@ -653,15 +654,15 @@
 	"lbl_MysteryBox_Congratulations": "Congratulations",
 	"lbl_MysteryBox_CreditedAccount1": "You are rewarded today",
 	"lbl_MysteryBox_CreditedAccount2": "please come back again tomorrow!",
-	
+
 	"==============Promotion==============": "",
 	"lbl_More_Info": "MORE INFO",
 	"lbl_Apply_Now": "APPLY NOW",
-	"lbl_promo_all_promos":"ALL PROMOS",
+	"lbl_promo_all_promos": "ALL PROMOS",
 	"lbl_ClaimNow": "CLAIM NOW",
 
-	"===============Lucky wheel===================":"",
+	"===============Lucky wheel===================": "",
 	"lbl_LuckyWheel_MemberEligibility": "Deposit Today Get Your Rewards Tomorrow.",
 	"lbl_LuckyWheel": "LUCKY WHEEL",
-	"lbl_LuckyWheel_MinDeposit":"Min Deposit VND {{amount}}"
+	"lbl_LuckyWheel_MinDeposit": "Min Deposit VND {{amount}}"
 }
