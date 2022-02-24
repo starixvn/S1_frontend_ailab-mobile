@@ -68,6 +68,10 @@ const defSubMenus = [
 			{
 				...defGameInfo.lottery,
 				displayKey: "lbl_Lottery"
+			},
+			{
+				...defGameInfo.tableGame,
+				displayKey: "lbl_tableGame"
 			}
 		]
 	},

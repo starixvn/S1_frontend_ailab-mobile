@@ -217,8 +217,8 @@
 	"lbl_LIVE_SPORT": "กีฬาสด",
 	"lbl_Game_ICG_DRAGONBALL_FISHING": "Dragonball Fishing",
 	"lbl_Game_ICG_FISHING_OF_SAVIORS": "Fishing Of Saviors",
-	"lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS":"The Tyrant And The Princess",
-	"lbl_Oneshot_Fishing":"จับปลานัดเดียว",
+	"lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS": "The Tyrant And The Princess",
+	"lbl_Oneshot_Fishing": "จับปลานัดเดียว",
 	"lbl_FishingSG1": "พระเจ้าตกปลา",
 	"lbl_FishingSG2": "สงครามตกปลา",
 	"lbl_TableGame": "เกมส์โต๊ะ",
@@ -246,6 +246,7 @@
 	"lbl_underMaintenance": "อยู่ระหว่างการบำรุงรักษา",
 	"lbl_KingMaker": "King Maker",
 	"lbl_Amb": "AMB Poker",
+	"lbl_Vgaming": "Vgaming",
 	"lbl_Games": "เกม",
 	"lbl_9w": "Nova88 Exchange",
 	"lbl_Exchange": "แลกเปลี่ยน",
@@ -253,15 +254,15 @@
 	"lbl_Fishing_Hunting_Happy_Fish_5": "Happy Fish 5",
 	"lbl_Fishing_Hunting_Monster_Awaken": "Monster Awaken",
 
-	"lbl_tpCategory_1" : "กีฬา",
-	"lbl_tpCategory_2" : "สล็อต",
-	"lbl_tpCategory_3" : "คาสิโนสด",
-	"lbl_tpCategory_4" : "ยิงปลา",
-	"lbl_tpCategory_5" : "CockFighting",
-	"lbl_tpCategory_6" : "ลอตเตอรี่",
-	"lbl_tpCategory_7" : "กีฬาจำลอง",
-	"lbl_tpCategory_8" : "โป๊กเกอร์",
-	
+	"lbl_tpCategory_1": "กีฬา",
+	"lbl_tpCategory_2": "สล็อต",
+	"lbl_tpCategory_3": "คาสิโนสด",
+	"lbl_tpCategory_4": "ยิงปลา",
+	"lbl_tpCategory_5": "CockFighting",
+	"lbl_tpCategory_6": "ลอตเตอรี่",
+	"lbl_tpCategory_7": "กีฬาจำลอง",
+	"lbl_tpCategory_8": "โป๊กเกอร์",
+
 	"-==================-==========================Casino-===================================": "",
 	"lbl_AllProvider": "แพลตฟอร์มทั้งหมด",
 	"lbl_AllGameType": "ทุกหมวดหมู่",
@@ -522,7 +523,7 @@
 	"lbl_Promotion_Slot": "สล็อต",
 	"lbl_More_Info": "ข้อมูลเพิ่มเติม",
 	"lbl_Apply_Now": "สมัครตอนนี้",
-	"lbl_promo_all_promos":"โปรโมชั่นทั้งหมด",
+	"lbl_promo_all_promos": "โปรโมชั่นทั้งหมด",
 
 	"-==========================Streaming===================================": "",
 	"lbl_LiveStreaming": "สตรีมมิงแบบสด",
@@ -724,5 +725,5 @@
 	"lbl_Deposit_Promotion_Button_Back": "ย้อนกลับ",
 
 	"==============HotGames==============": "",
-	"lbl_HotGames_Nova88_Olympus":"Nova88 Olympus"
+	"lbl_HotGames_Nova88_Olympus": "Nova88 Olympus"
 }
