@@ -219,8 +219,8 @@
 	"lbl_LIVE_SPORT": "LIVE SPORTS",
 	"lbl_Game_ICG_DRAGONBALL_FISHING": "Dragonball Fishing",
 	"lbl_Game_ICG_FISHING_OF_SAVIORS": "Fishing Of Saviors",
-	"lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS":"The Tyrant And The Princess",
-	"lbl_Oneshot_Fishing":"Oneshot Fishing",
+	"lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS": "The Tyrant And The Princess",
+	"lbl_Oneshot_Fishing": "Oneshot Fishing",
 	"lbl_FishingSG1": "Fishing God",
 	"lbl_FishingSG2": "Fishing War",
 	"lbl_TableGame": "Table Game",
@@ -248,6 +248,7 @@
 	"lbl_underMaintenance": "Under Maintenance",
 	"lbl_KingMaker": "King Maker",
 	"lbl_Amb": "AMB Poker",
+	"lbl_Vgaming": "Vgaming",
 	"lbl_Games": "Games",
 	"lbl_9w": "Nova88 Exchange",
 	"lbl_Exchange": "Exchange",
@@ -255,15 +256,15 @@
 	"lbl_Fishing_Hunting_Happy_Fish_5": "Happy Fish 5",
 	"lbl_Fishing_Hunting_Monster_Awaken": "Monster Awaken",
 
-	"lbl_tpCategory_1" : "Sports",
-	"lbl_tpCategory_2" : "Slots",
-	"lbl_tpCategory_3" : "Casino",
-	"lbl_tpCategory_4" : "Fishing",
-	"lbl_tpCategory_5" : "CockFighting",
-	"lbl_tpCategory_6" : "Lottery",
-	"lbl_tpCategory_7" : "Virtual Sports",
-	"lbl_tpCategory_8" : "Poker",
-	
+	"lbl_tpCategory_1": "Sports",
+	"lbl_tpCategory_2": "Slots",
+	"lbl_tpCategory_3": "Casino",
+	"lbl_tpCategory_4": "Fishing",
+	"lbl_tpCategory_5": "CockFighting",
+	"lbl_tpCategory_6": "Lottery",
+	"lbl_tpCategory_7": "Virtual Sports",
+	"lbl_tpCategory_8": "Poker",
+
 	"==============================================Casino====================================": "",
 
 	"lbl_AllProvider": "All Platform",
@@ -545,7 +546,7 @@
 	"lbl_Promotion_Slot": "SLOT",
 	"lbl_More_Info": "MORE INFO",
 	"lbl_Apply_Now": "APPLY NOW",
-	"lbl_promo_all_promos":"ALL PROMOS",
+	"lbl_promo_all_promos": "ALL PROMOS",
 
 	"==============================================Streaming====================================": "",
 
@@ -753,5 +754,5 @@
 	"lbl_Deposit_Promotion_Button_Back": "Back",
 
 	"==============HotGames==============": "",
-	"lbl_HotGames_Nova88_Olympus":"Nova88 Olympus"
+	"lbl_HotGames_Nova88_Olympus": "Nova88 Olympus"
 }
