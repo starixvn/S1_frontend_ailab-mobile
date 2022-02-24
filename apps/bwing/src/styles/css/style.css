@@ -271,7 +271,7 @@ header .Login > .close {
 header .Join > img,
 header .Login > img {
   width: 40vw;
-  margin: 3vw calc(50% - 15vw);
+  margin: 3vw calc(50% - 20vw);
 }
 
 header .Join .title,
@@ -3874,8 +3874,6 @@ a.clickBtn:before {
 
 .functionList ~ .account .info .title {
   color: #fff;
-  word-break: break-all;
-  width: 95%;
 }
 
 .functionList ~ .account.read:before {
@@ -11283,7 +11281,7 @@ span.important {
 .Join > img,
 .Login > img {
   width: 40vw;
-  margin: 3vw calc(50% - 20vw);
+  margin: 3vw calc(50% - 15vw);
 }
 
 .Join .title,

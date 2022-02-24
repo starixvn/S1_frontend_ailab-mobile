@@ -16,6 +16,7 @@ export const defGameInfo = {
 	V8Poker: { gameId: 0, tpId: 25, tpGameType: 42 },
 	Keno: { gameId: 202, tpId: 1, tpGameType: 5 },
 	lottery: { gameId: 220, tpId: 1, tpGameType: 19 },
+	tableGame: { gameId: 222, tpId: 1, tpGameType: 23 },
 	fish_AB3: { tpId: 16, gameId: "AB3", tpGameType: 44 },
 	fish_AT05: { tpId: 16, gameId: "AT05", tpGameType: 44 },
 	fish_AT01: { tpId: 16, gameId: "AT01", tpGameType: 44 },
@@ -258,6 +259,17 @@ const gameList = [
 				...defGameInfo.lottery,
 				img: `${bannerImgUrl}/h5/img/hotgame/games/lottery.png`,
 				spanTextKey: "lbl_Lottery"
+			},
+			{
+				...defGameInfo.tableGame,
+				img: `${bannerImgUrl}/h5/img/hotgame/games/tablegame.png`,
+				spanTextKey: "lbl_tableGame",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.tableGame)
+					}
+				]
 			}
 		]
 	},

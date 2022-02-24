@@ -131,6 +131,7 @@
 	"lbl_Login": "Đăng nhập",
 	"lbl_Logout": "Thoát",
 	"lbl_Lottery": "Xổ số",
+	"lbl_tableGame": "Trò chơi trên bàn",
 	"lbl_MainWallet": "Ví chính",
 	"lbl_MaxAmount": "Tiền tối đa",
 	"lbl_Me": "Tôi",
@@ -597,7 +598,7 @@
 	"==============Crypto Wallet==============": "",
 	"lbl_CryptoPay": "Thanh toán bằng tiền ảo",
 	"lbl_CryptoWallet": "Ví tiền ảo",
-	"lbl_Number_Of_Wallet":	"Số ví tiền ảo",
+	"lbl_Number_Of_Wallet": "Số ví tiền ảo",
 	"lbl_CryptoWalletAddress": "Địa chỉ ví",
 	"lbl_CryptoWalletNickName": "Tên người dùng ví",
 	"lbl_CryptoWalletTip2": "Lưu ý: Ví tiền ảo sau khi đăng ký không thể điều chỉnh. Vui lòng liên hệ bộ phận Chăm sóc Khách hàng để được hỗ trợ.",
@@ -624,7 +625,7 @@
 	"lbl_Yes": "Đồng Ý",
 	"lbl_No": "Không",
 	"lbl_SelectCryptoHint": "Chọn Ví tiền ảo",
-	
+
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "Thông tin thanh toán",
 	"lbl_OrderAmount": "Số tiền thanh toán",
@@ -635,8 +636,8 @@
 	"lbl_PaymentQRNote1": "Vui lòng không làm mới trình duyệt.",
 	"lbl_PaymentQRNote2": "Giữ lại số tham chiếu khi cần liên hệ với bộ phận Chăm sóc Khách hàng để được hỗ trợ.",
 	"lbl_PaymentTimeLeft": "THỜI GIAN THANH TOÁN CÒN LẠI",
-	
-	"==============Lucky wheel=====================":"",
+
+	"==============Lucky wheel=====================": "",
 	"lbl_My": "Phần",
 	"lbl_Conditions": "ĐIỀU KIỆN KHÁC",
 	"lbl_RewardsCondition": "Điều kiện nhận thưởng",
@@ -661,8 +662,8 @@
 	"lbl_promo_all_promos": "TẤT CẢ KHUYẾN MÃI",
 	"lbl_ClaimNow": "NHẬN NGAY",
 
-	"===============Lucky wheel===================":"",
+	"===============Lucky wheel===================": "",
 	"lbl_LuckyWheel": "VÒNG QUAY MAY MẮN",
 	"lbl_LuckyWheel_MemberEligibility": "Nạp tiền hôm nay, trúng lớn ngày mai",
-	"lbl_LuckyWheel_MinDeposit":"Nạp tối thiểu {{amount}} VND"
+	"lbl_LuckyWheel_MinDeposit": "Nạp tối thiểu {{amount}} VND"
 }

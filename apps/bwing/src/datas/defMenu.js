@@ -110,6 +110,17 @@ export const productList = langId => {
 					displayKey: "lbl_Lottery",
 					img: `${bannerImgUrl}/h5/img/lottery/lottery-lottery.png`,
 					...defGameInfo.lottery
+				},
+				{
+					displayKey: "lbl_tableGame",
+					img: `${bannerImgUrl}/h5/img/lottery/lottery-table.png`,
+					...defGameInfo.tableGame,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.tableGame)
+						}
+					]
 				}
 			]
 		},
@@ -489,6 +500,10 @@ export const defSubMenus = () => [
 			{
 				...defGameInfo.lottery,
 				displayKey: "lbl_Lottery"
+			},
+			{
+				...defGameInfo.tableGame,
+				displayKey: "lbl_tableGame"
 			}
 		]
 	},

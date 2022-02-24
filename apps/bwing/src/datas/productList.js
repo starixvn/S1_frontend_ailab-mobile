@@ -40,6 +40,7 @@ export const defGameInfo = {
 	Indo4d: { gameId: 223, tpId: 1, tpGameType: 20 },
 	Keno: { gameId: 202, tpId: 1, tpGameType: 5 },
 	lottery: { gameId: 220, tpId: 1, tpGameType: 19 },
+	tableGame: { gameId: 222, tpId: 1, tpGameType: 23 },
 	NumberGame: { gameId: 161, tpId: 1, tpGameType: 2 },
 	sabaClub: { tpId: 1, gameId: 171, tpGameType: 59 },
 	// BTISport: { tpId: 29, tpGameType: 49 },
