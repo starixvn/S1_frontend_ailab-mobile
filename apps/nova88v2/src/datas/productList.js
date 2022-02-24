@@ -421,6 +421,19 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.kingMaker,
 							img: `${cloudBannerImgURL}/h5/img/km.png`,
 							spanTextKey: "lbl_KingMaker"
+						},
+						{
+							...defGameInfo.sabaClub,
+							img: `${cloudBannerImgURL}/h5/img/vg.png`,
+							spanTextKey: "lbl_Vgaming",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.game_Vgaming
+									)
+								}
+							]
 						}
 					]
 				},
@@ -955,6 +968,19 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.kingMaker,
 							img: `${cloudBannerImgURL}/h5/img/km.png`,
 							spanTextKey: "lbl_KingMaker"
+						},
+						{
+							...defGameInfo.sabaClub,
+							img: `${cloudBannerImgURL}/h5/img/vg.png`,
+							spanTextKey: "lbl_Vgaming",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.game_Vgaming
+									)
+								}
+							]
 						}
 					]
 				},
@@ -1490,6 +1516,19 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.kingMaker,
 							img: `${cloudBannerImgURL}/h5/img/km.png`,
 							spanTextKey: "lbl_KingMaker"
+						},
+						{
+							...defGameInfo.sabaClub,
+							img: `${cloudBannerImgURL}/h5/img/vg.png`,
+							spanTextKey: "lbl_Vgaming",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.game_Vgaming
+									)
+								}
+							]
 						}
 					]
 				},
@@ -2040,6 +2079,19 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.kingMaker,
 							img: `${cloudBannerImgURL}/h5/img/km.png`,
 							spanTextKey: "lbl_KingMaker"
+						},
+						{
+							...defGameInfo.sabaClub,
+							img: `${cloudBannerImgURL}/h5/img/vg.png`,
+							spanTextKey: "lbl_Vgaming",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.game_Vgaming
+									)
+								}
+							]
 						}
 					]
 				},

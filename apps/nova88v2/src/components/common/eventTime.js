@@ -22,5 +22,6 @@ export const eventTime = {
 	casino_NetEnt: { endDate: "2021/12/15 11:00:00" },
 	casino_AdvantPlay: { endDate: "2022/02/25 11:00:00" },
 	liveCasino_EVO: { endDate: "2021/12/15 11:00:00" },
-	fishing_Joker: { endDate: "2022/02/10 11:00:00" }
+	fishing_Joker: { endDate: "2022/02/10 11:00:00" },
+	game_Vgaming: { startDate: "2022/02/16:10:00:00" }
 };
