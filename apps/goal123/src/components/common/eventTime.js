@@ -26,5 +26,5 @@ export const eventTime = {
 	logoEvent: {
 		endDate: "2022/01/03 11:00:00"
 	},
-	tableGame: { startDate: "2022/03/24 11:00:00" }
+	tableGame: { endDate: "2022/03/24 11:00:00" }
 };
