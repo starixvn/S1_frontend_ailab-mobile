@@ -27,18 +27,10 @@ const EN = () => {
 			</div>
 			<div className="title">MEMBER BENEFITS</div>
 			<ul>
-				<li>
-					<span>68%</span> LIVE CASINO WELCOME BONUS
-				</li>
-				<li>
-					<span>100%</span> SLOTS WELCOME BONUS
-				</li>
-				<li>
-					DAILY REDEPOSIT BONUS UP TO <span>20%</span>
-				</li>
-				<li>
-					DAILY CASH REBATE UP TO <span>1.20%</span>
-				</li>
+				<li>SPORTSBOOK WELCOME BONUS</li>
+				<li>LIVE CASINO WELCOME BONUS</li>
+				<li>SLOT GAME WELCOME BONUS</li>
+				<li>DAILY CASH REBATE UP TO 2.1%</li>
 			</ul>
 			<div className="title">
 				ENJOY NOVA88 VIP EXCLUSIVE BONUS & REBATES
@@ -65,18 +57,10 @@ const TH_EN = () => {
 			</div>
 			<div className="title">MEMBER BENEFITS</div>
 			<ul>
-				<li>
-					<span>100%</span> LIVE CASINO WELCOME BONUS
-				</li>
-				<li>
-					<span>100%</span> SLOTS WELCOME BONUS
-				</li>
-				<li>
-					DAILY REDEPOSIT BONUS UP TO <span>20%</span>
-				</li>
-				<li>
-					DAILY CASH REBATE UP TO <span>1.20%</span>
-				</li>
+				<li>SPORTSBOOK WELCOME BONUS</li>
+				<li>LIVE CASINO WELCOME BONUS</li>
+				<li>SLOT GAME WELCOME BONUS</li>
+				<li>DAILY CASH REBATE UP TO 2.1%</li>
 			</ul>
 			<div className="title">
 				ENJOY NOVA88 VIP EXCLUSIVE BONUS & REBATES
@@ -103,18 +87,10 @@ const CS = () => {
 			</div>
 			<div className="title">会员福利</div>
 			<ul>
-				<li>
-					<span>68%</span> 真人娱乐欢迎红利
-				</li>
-				<li>
-					<span>100%</span> 老虎机欢迎红利
-				</li>
-				<li>
-					每日再存红利高达 <span>20%</span>
-				</li>
-				<li>
-					每日现金返水 高达 <span>1.2%</span>
-				</li>
+				<li>体育博彩迎新首存红利</li>
+				<li>真人娱乐迎新首存红利</li>
+				<li>老虎机迎新首存红利</li>
+				<li>每日现金返水 高达 2.1%</li>
 			</ul>
 			<div className="title">豪享NOVA88尊贵优惠红利与返水</div>
 			<ul>
@@ -134,18 +110,10 @@ const TH = () => {
 			</div>
 			<div className="title">สิทธิประโยชน์ของสมาชิก</div>
 			<ul>
-				<li>
-					โบนัสต้อนรับคาสิโนสด <span>100%</span>
-				</li>
-				<li>
-					โบนัสต้อนรับสล็อต <span>100%</span>
-				</li>
-				<li>
-					โบนัสเงินฝากทุกวันมากถึง <span>20%</span>
-				</li>
-				<li>
-					โบนัสคืนเงินรายวันสูงถึง <span>1.20%</span>
-				</li>
+				<li>โบนัสต้อนรับสมาชิกใหม่ สปอร์ตบุ๊ค</li>
+				<li>โบนัสต้อนรับสมาชิกใหม่ คาสิโนสด</li>
+				<li>โบนัสต้อนรับสมาชิกใหม่ เกมสล็อต</li>
+				<li>เงินคืนยอดเล่นรายวัน สูงสุด 2.1%</li>
 			</ul>
 			<div className="title">
 				เพลิดเพลินไปกับ NOVA88 โบนัสและเงินคืนพิเศษ
@@ -169,18 +137,10 @@ const ID_EN = () => {
 			</div>
 			<div className="title">MEMBER BENEFITS</div>
 			<ul>
-				<li>
-					<span>150%</span> LIVE CASINO WELCOME BONUS
-				</li>
-				<li>
-					<span>100%</span> SLOTS WELCOME BONUS
-				</li>
-				<li>
-					DAILY REDEPOSIT BONUS UP TO <span>20%</span>
-				</li>
-				<li>
-					DAILY CASH REBATE UP TO <span>1.20%</span>
-				</li>
+				<li>SPORTSBOOK WELCOME BONUS</li>
+				<li>LIVE CASINO WELCOME BONUS</li>
+				<li>SLOT GAME WELCOME BONUS</li>
+				<li>DAILY CASH REBATE UP TO 2.1%</li>
 			</ul>
 			<div className="title">
 				ENJOY NOVA88 VIP EXCLUSIVE BONUS & REBATES
@@ -207,18 +167,10 @@ const ID = () => {
 			</div>
 			<div className="title">MANFAAT MEMBER</div>
 			<ul>
-				<li>
-					WELCOME BONUS <span>150%</span> LIVE CASINO
-				</li>
-				<li>
-					WELCOME BONUS <span>100%</span> SLOT MESIN
-				</li>
-				<li>
-					BONUS REDEPOSIT HARIAN HINGGA <span>20%</span>
-				</li>
-				<li>
-					REBATE CASH HARIAN HINGGA <span>1.2%</span>
-				</li>
+				<li>BONUS SPORTSBOOK</li>
+				<li>BONUS LIVE CASINO</li>
+				<li>BONUS SLOT MESIN</li>
+				<li>REBATE HARIAN HINGGA 2.1%</li>
 			</ul>
 			<div className="title">
 				NIKMATI BONUS & REBATE EKSKLUSIF NOVA88 VIP
@@ -243,12 +195,10 @@ const HI_EN = () => {
 			</div>
 			<div className="title">MEMBER BENEFITS</div>
 			<ul>
-				<li>
-					<span>150%</span> SLOTS WELCOME BONUS
-				</li>
-				<li>
-					DAILY REDEPOSIT BONUS UP TO <span>20%</span>
-				</li>
+				<li>SPORTSBOOK WELCOME BONUS</li>
+				<li>LIVE CASINO WELCOME BONUS</li>
+				<li>SLOT GAME WELCOME BONUS</li>
+				<li>DAILY CASH REBATE UP TO 2.1%</li>
 			</ul>
 			<div className="title">
 				ENJOY NOVA88 VIP EXCLUSIVE BONUS & REBATES
@@ -275,12 +225,10 @@ const HI = () => {
 			</div>
 			<div className="title">MEMBER BENEFITS</div>
 			<ul>
-				<li>
-					<span>150%</span> स्लॉट्स स्वागत बोनस
-				</li>
-				<li>
-					दैनिक पुनर्वितरण बोनस <span>20%</span> तक
-				</li>
+				<li>स्पोर्ट्सबुक वेलकम बोनस</li>
+				<li>लाइव कैसीनो वेलकम बोनस</li>
+				<li>स्लॉट्स गेम वेलकम बोनस</li>
+				<li>2.1% तक की दैनिक नकद छूट</li>
 			</ul>
 			<div className="title">
 				NOVA88 वीआईपी विशेष बोनस और छूट का आनंद लें
