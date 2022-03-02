@@ -4026,6 +4026,7 @@ a.clickBtn:before {
 .casino .swiper-container {
   left: 0;
   top: 2vw;
+  overflow: revert;
 }
 
 .casino .slotList {
