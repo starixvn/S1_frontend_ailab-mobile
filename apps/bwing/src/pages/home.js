@@ -169,7 +169,8 @@ const IndexPage = () => {
 			if (
 				userInfo.isLogin === false &&
 				!isEventPeriod(NewYearEventPeriod) &&
-				!readCookie(cookieOfficialAnnounce)
+				!readCookie(cookieOfficialAnnounce) &&
+				!window?.ReactNativeWebView
 			) {
 				const toDownloadPage = () => {
 					navigate(`/${path.appDownload.root}`);
