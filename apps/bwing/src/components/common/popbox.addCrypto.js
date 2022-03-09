@@ -1,10 +1,9 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { i18nContext, userInfoContext, popBoxContext } from "Context";
-import WAValidator from "multicoin-address-validator";
 import DropDown from "./dropdown";
 import Inputbox from "./inputbox.info";
 import OTPInputbox from "./inputbox";
-import { api_payment_GetSupportNetwork } from "../../service/api/payment";
+import { api_payment_GetSupportCryptoInfo } from "../../service/api/payment";
 import {
 	api_SendOTPSMS,
 	api_VerifyOTP,
@@ -43,8 +42,6 @@ const defStatus = {
 	}
 };
 
-const cryptoCurrency = [{ id: 96, displayKey: "Currency_96" }];
-
 const AddCryptoWallet = ({ GetCustBankInfo }) => {
 	const { setPopBox } = useContext(popBoxContext);
 	const [startUnixTime, setStartUnixTime] = useState(null);
@@ -55,6 +52,10 @@ const AddCryptoWallet = ({ GetCustBankInfo }) => {
 	const [selectedNetWork, setSelNetWork] = useState(0);
 	const [status, setStatus] = useState(defStatus);
 	const [network_opt, set_network_opt] = useState([]);
+	const [cryptoSettings, setCryptoSettings] = useState({
+		allNetworks: [],
+		allCurrencies: []
+	});
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -68,23 +69,52 @@ const AddCryptoWallet = ({ GetCustBankInfo }) => {
 		nickName: "",
 		usdtAddress: "",
 		network: "",
-		currencyId: 96,
+		currencyId: "",
 		OTP: ""
 	});
 
 	useEffect(() => {
-		onSelNetWork(0, "displayText");
-	}, [network_opt]);
+		onSelCurrency(0, "currencyId");
+	}, [cryptoSettings]);
 
 	useEffect(() => {
-		api_payment_GetSupportNetwork()
+		const opts = cryptoSettings?.allNetworks?.filter(
+			el => el.id === cryptoSettings.allCurrencies[selectedCurrency].id
+		);
+		set_network_opt(opts);
+	}, [selectedCurrency]);
+
+	useEffect(() => {
+		setWalletDatas(prev => ({
+			...prev,
+			network: network_opt[selectedNetWork]?.displayText
+		}));
+	}, [network_opt, selectedNetWork]);
+
+	useEffect(() => {
+		api_payment_GetSupportCryptoInfo()
 			.then(res => {
-				if (res.data.errorCode === 0) {
-					const options = res.data?.data.map(el => ({
-						id: el.network,
-						displayText: el.network
-					}));
-					set_network_opt(options);
+				if (res.data.errorCode === 0 && res.data?.data) {
+					const allNetworks = res.data?.data.cryptoNetwork.map(
+						el => ({
+							id: el.currencyId,
+							displayText: el.network
+						})
+					);
+					const allCurrencies = res.data?.data.cryptoCurrency.map(
+						el => ({
+							id: el.currencyId,
+							displayText: el.currencyName
+						})
+					);
+					setCryptoSettings({
+						allNetworks,
+						allCurrencies
+					});
+
+					set_network_opt(
+						allNetworks.filter(el => el.id === allCurrencies[0].id)
+					);
 				} else {
 					setPopBox({
 						isOpen: true,
@@ -140,10 +170,7 @@ const AddCryptoWallet = ({ GetCustBankInfo }) => {
 		let message = "";
 
 		if (_colType === colType.usdtAddress) {
-			const isValidAddress =
-				WAValidator.validate(_val, "usdt") ||
-				WAValidator.validate(_val, "trx");
-			if (isValidAddress) {
+			if (_val !== "") {
 				_status = true;
 			} else {
 				message = i18n.lbl_NotERC20WalletAddr;
@@ -269,21 +296,19 @@ const AddCryptoWallet = ({ GetCustBankInfo }) => {
 		}
 	};
 
-	const onSelNetWork = (i, displayText) => {
+	const onSelNetWork = i => {
 		setSelNetWork(i);
-		setWalletDatas(prev => ({
-			...prev,
-			network: network_opt[i]?.[displayText]
-		}));
 	};
 
-	const onSelCurrency = (i, id) => {
+	const onSelCurrency = i => {
 		setSelCurrency(i);
 		setWalletDatas(prev => ({
 			...prev,
-			currencyId: cryptoCurrency[i]?.[id]
+			currencyId: cryptoSettings?.allCurrencies[i]?.id
 		}));
+		onSelNetWork(0);
 	};
+
 	return (
 		<div className="popTxt">
 			<div className="txt-lightgray">
@@ -294,7 +319,7 @@ const AddCryptoWallet = ({ GetCustBankInfo }) => {
 					mainKey="crypto-curr"
 					colName="id"
 					selectedIdx={selectedCurrency}
-					options={cryptoCurrency}
+					options={cryptoSettings?.allCurrencies}
 					onSelectItem={onSelCurrency}
 					i18n={i18n}
 					requireIcon={true}

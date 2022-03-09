@@ -44,7 +44,8 @@ export const infoList = (i18n, userInfo, _areaCode) => {
 		{
 			infoTitle: "email",
 			colTitle: i18n.lbl_Email,
-			content: userInfo.email
+			content: userInfo.email,
+			isVerified: userInfo.emailVerified
 		},
 		{
 			infoTitle: "phoneNo",
@@ -70,6 +71,11 @@ export const infoList = (i18n, userInfo, _areaCode) => {
 			birth_y: userInfo.birth_y
 		}
 	];
+};
+
+export const otpCol = {
+	phone: "phoneNo",
+	email: "email"
 };
 
 const birthFormat = ({ day, month, year }) => {

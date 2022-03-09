@@ -83,7 +83,8 @@ export const infoList = ({ i18n, userInfo, _areaCode }) => {
 		{
 			infoTitle: "email",
 			colTitle: i18n.lbl_Email,
-			content: userInfo.email
+			content: userInfo.email,
+			isVerified: userInfo.emailVerified
 		},
 		{
 			infoTitle: "regTime",
@@ -96,6 +97,11 @@ export const infoList = ({ i18n, userInfo, _areaCode }) => {
 			content: date_format(userInfo.lastLogin)
 		}
 	];
+};
+
+export const otpCol = {
+	phone: "phoneNo",
+	email: "email"
 };
 
 const date_format = v => {

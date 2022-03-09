@@ -22,7 +22,8 @@ const Panel = ({
 	promoContent,
 	cashbackAmount,
 	PromotionRate,
-	receivedAmount
+	receivedAmount,
+	currencyName
 }) => {
 	const { i18n } = useContext(i18nContext);
 
@@ -130,7 +131,8 @@ const Panel = ({
 					)}
 					{RequestAmount?.length > 0 && (
 						<div>
-							{i18n.lbl_USDT_Amount}：{RequestAmount}
+							{`${currencyName} ${i18n.lbl_Amount}`}：
+							{RequestAmount}
 							<button
 								className="copyBtn"
 								onClick={() => onCopy({ val: RequestAmount })}>

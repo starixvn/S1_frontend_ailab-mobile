@@ -27,7 +27,7 @@ export const number_format = (
 
 	return (
 		arr[0].replace(re, "$1,") +
-		(arr.length === 2 ? `.${arr[1]}` : "") +
+		(arr.length === 2 && digits > 0 ? `.${arr[1]}` : "") +
 		(IsConvertRequired ? " ('000)" : "")
 	);
 };
