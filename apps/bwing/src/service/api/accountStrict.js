@@ -1,4 +1,5 @@
 import { accountStrictRequest } from "./base";
+import path from "../../path";
 
 export const api_GetCustProfile = () =>
 	accountStrictRequest.post("/GetCustProfile");
@@ -59,6 +60,12 @@ export const api_VerifyOTP = ({ inputOTPcode }) =>
 
 export const api_SetAccountName = ({ name }) =>
 	accountStrictRequest.post("/SetAccountName", { name });
+
+export const api_SendOTPEmail = () =>
+	accountStrictRequest.post("/SendOTPEmail", { route: path.member.root });
+
+export const api_VerifyEmail = ({ langId, key, code }) =>
+	accountStrictRequest.post(`/VerifyEmail/${langId}`, { key, code });
 
 export const api_SetCustUSDTInfo = form =>
 	accountStrictRequest.post("/SetCustUSDTInfo", form);

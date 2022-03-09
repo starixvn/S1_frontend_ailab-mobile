@@ -1,4 +1,5 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 import { Redirect, Link } from "@reach/router";
 import moment from "moment";
 import Inputbox, { InputboxDate } from "../common/inputbox.info";
@@ -6,14 +7,15 @@ import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import areaCode from "../../datas/areaCode";
 import {
 	api_SetProfile,
-	api_GetCustProfile
+	api_GetCustProfile,
+	api_SendOTPEmail
 } from "../../service/api/accountStrict";
 import { api_ExistsEmail } from "../../service/api/site";
 import { api_account_ExistsPhoneNo } from "../../service/api/account";
 import { defPopBoxType } from "../common/popbox";
 import path from "../../path";
 import { redirectToPrev } from "./profile.redirect";
-import { infoList, initUserValue, initStatus } from "./profile.def";
+import { infoList, initUserValue, initStatus, otpCol } from "./profile.def";
 
 const Panel = () => {
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -252,7 +254,9 @@ const Panel = () => {
 							<button className="gray" onClick={closePopbox}>
 								{i18n.lbl_Later}
 							</button>
-							<button className="blue" onClick={clickOtp}>
+							<button
+								className="blue"
+								onClick={clickOtp.bind(this, otpCol.phone)}>
 								{i18n.lbl_VerifyNow}
 							</button>
 						</div>
@@ -360,19 +364,56 @@ const Panel = () => {
 		}
 	};
 
-	const clickOtp = () => {
-		const ClosePopbox = ({ _redirectPath }) => {
-			setPopBox({ isOpen: false });
-			if (_redirectPath) {
-				setRedirectPath(_redirectPath);
-			}
-		};
+	const clickOtp = col => {
+		if (col === otpCol.phone) {
+			const ClosePopbox = ({ _redirectPath }) => {
+				setPopBox({ isOpen: false });
+				if (_redirectPath) {
+					setRedirectPath(_redirectPath);
+				}
+			};
 
-		setPopBox({
-			isOpen: true,
-			popBoxType: defPopBoxType.Otp,
-			ClosePopbox
-		});
+			setPopBox({
+				isOpen: true,
+				popBoxType: defPopBoxType.Otp,
+				ClosePopbox
+			});
+		} else if (otpCol.email) {
+			api_SendOTPEmail().then(
+				res => {
+					const { errorCode, message } = res.data;
+					if (errorCode === 0) {
+						setPopBox({
+							isOpen: true,
+							content: i18n.lbl_EmailOTPHint,
+							hasBtn: true,
+							btnBar: (
+								<div className="btn-group">
+									<button
+										className="submit"
+										onClick={() => {
+											setPopBox({ isOpen: false });
+										}}>
+										OK
+									</button>
+								</div>
+							)
+						});
+					} else {
+						setPopBox({
+							isOpen: true,
+							content: `[${errorCode}] ${message}`
+						});
+					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
+				}
+			);
+		}
 	};
 
 	const clickInfo = col => {
@@ -403,9 +444,6 @@ const Panel = () => {
 			);
 		})
 		.map(item => {
-			const _isVerified =
-				item.infoTitle === "phoneNo" ? item.isVerified : null;
-
 			return (
 				<ColumnItem
 					key={`profile-${item.infoTitle}`}
@@ -413,7 +451,7 @@ const Panel = () => {
 					content={item.content}
 					infoTitle={item.infoTitle}
 					clickOtp={clickOtp}
-					isVerified={_isVerified}
+					isVerified={item.isVerified}
 					i18n={i18n}
 				/>
 			);
@@ -424,7 +462,6 @@ const Panel = () => {
 	) : (
 		<>
 			<div className="info">
-				<div className="text">{i18n.lbl_ProfileModifyWarning}</div>
 				<ul>{arr}</ul>
 			</div>
 			{!userInfo.accountName ? (
@@ -473,8 +510,8 @@ const Panel = () => {
 
 			{!userInfo.phoneNo ? (
 				<>
-					<div className="input-title">{i18n.lbl_Phone}</div>
-					<div className="inputBox parts" data-testid="phoneCol">
+					<div className="title">{i18n.lbl_Phone}</div>
+					<div className="inputPhone parts" data-testid="phoneCol">
 						<span className="countryCode">{_areaCode}</span>
 						<Inputbox
 							_class="input-Area"
@@ -516,41 +553,57 @@ const Panel = () => {
 	);
 };
 
-const ColumnItem = props => {
-	const col = () => {
-		if (props.infoTitle === "phoneNo") {
-			if (props.isVerified) {
-				return (
-					<button className="otpBtn ver">
-						<span>{props.i18n.lbl_Verified}</span>
-						<span className="icon icon-icon32px_check" />
-					</button>
-				);
-			}
-			return (
-				<button className="otpBtn" onClick={props.clickOtp}>
-					<span>{props.i18n.lbl_Unverified}</span>
-					<span className="icon icon-error" />
-				</button>
-			);
-		}
-		return null;
-	};
+const ColumnItem = ({
+	i18n,
+	infoTitle,
+	title,
+	content,
+	clickOtp,
+	isVerified
+}) => {
 	return (
 		<>
-			<div className="title">{props.title}</div>
-			<li className={props.infoTitle === "phoneNo" ? "phone" : ""}>
-				{props.infoTitle !== "phoneNo" ? (
-					<div>{props.content}</div>
-				) : (
+			<div className="title">{title}</div>
+			<li className={infoTitle === "phoneNo" ? "phone" : ""}>
+				{infoTitle === "phoneNo" ? (
 					<div>
-						<div>{props.content}</div>
+						<div>{content}</div>
 					</div>
+				) : (
+					<div>{content}</div>
 				)}
 			</li>
-			{col()}
+			{isVerified && (
+				<button className="otpBtn ver">
+					<span>{i18n.lbl_Verified}</span>
+					<span className="icon icon-icon32px_check" />
+				</button>
+			)}
+			{!isVerified && Object.values(otpCol).includes(infoTitle) && (
+				<button
+					className="otpBtn"
+					onClick={clickOtp.bind(this, infoTitle)}>
+					<span>{i18n.lbl_Unverified}</span>
+					<span className="icon icon-error" />
+				</button>
+			)}
 		</>
 	);
+};
+
+ColumnItem.defaultProps = {
+	clickOtp: () => null,
+	isVerified: false,
+	content: null
+};
+
+ColumnItem.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	infoTitle: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
+	content: PropTypes.string,
+	clickOtp: PropTypes.func,
+	isVerified: PropTypes.bool
 };
 
 export default Panel;
