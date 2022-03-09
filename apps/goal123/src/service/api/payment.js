@@ -10,14 +10,8 @@ export const api_GetDepositInfoHistory = ({ StartDate, EndDate, PageNumber }) =>
 		PageNumber
 	});
 
-export const api_GetOnlinePaymentList = () =>
-	paymentRequest.post("/GetOnlinePaymentList");
-
-export const api_GetOnlineBankInfoSysList = ({ payId }) =>
-	paymentRequest.post("/GetOnlineBankInfoSysList", { payId });
-
-export const api_GetOnlineBankInfo = ({ payId, sysId }) =>
-	paymentRequest.post("/GetOnlineBankInfo", { payId, sysId });
+export const api_GetAutoChannelBankGroupList = () =>
+	paymentRequest.post("/GetAutoChannelBankGroupList");
 
 export const api_GetWithdrawalInfoHistory = ({
 	StartDate,
@@ -164,4 +158,12 @@ export const api_WithdrawalUSDTReq = (AccountNo, amount) =>
 	paymentRequest.post("/WithdrawalUSDTReq", {
 		AccountNo,
 		amount
+	});
+
+export const api_GetQRPayGroupList = () =>
+	paymentRequest.post("/GetQRPayGroupList");
+
+export const api_GetQRPayInfoList = GroupId =>
+	paymentRequest.post("/GetQRPayInfoList", {
+		GroupId
 	});

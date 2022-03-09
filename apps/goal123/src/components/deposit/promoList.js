@@ -135,7 +135,7 @@ PromoList.propTypes = {
 	amount: PropTypes.number.isRequired,
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
 	promoList: PropTypes.arrayOf(PropTypes.objectOf),
-	depositPromo: PropTypes.func.isRequired,
+	depositPromo: PropTypes.objectOf(PropTypes.any).isRequired,
 	setDepositPromo: PropTypes.func.isRequired
 };
 
@@ -170,7 +170,7 @@ DepositPromoTip.defaultProps = {
 };
 
 DepositPromoTip.propTypes = {
-	i18n: PropTypes.func.isRequired,
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	amount: PropTypes.number.isRequired,
 	phoneVerified: PropTypes.bool,
 	currencyId: PropTypes.number,

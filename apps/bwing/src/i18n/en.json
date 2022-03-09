@@ -87,7 +87,7 @@
 	"lbl_DepositTime": "Deposit Time",
 	"lbl_DepositType1": "Online Banking",
 	"lbl_DepositType2": "Mobile Payment",
-	"lbl_DepositType3": "Local Bank",
+	"lbl_DepositType3": "Bank Transfer",
 	"lbl_DepositType4": "Crypto Pay",
 	"lbl_Details": "Details",
 	"lbl_Direction": "Direction",
@@ -248,7 +248,7 @@
 	"lbl_WaitKYCHint": "Thank you for submitting the required document, kindly bear with us for a moment while the verification is in progress.",
 	"lbl_Wallet_Saba": "Saba Wallet",
 	"lbl_Welcome": "Welcome",
-	"lbl_WireTransfers": "Local Bank Transfer",
+	"lbl_WireTransfers": "Bank Transfer",
 	"lbl_Withdrawal": "Withdrawal",
 	"lbl_WithdrawalAmount": "Withdrawal Amount",
 	"lbl_WithdrawalHistory": "Withdrawal History",
@@ -686,7 +686,7 @@
 	"lbl_Promotion_Slot": "SLOT",
 
 	"==============Crypto Wallet==============": "",
-	"lbl_CryptoPay": "Crypto Pay",
+	"lbl_CryptoPay": "Crypto",
 	"lbl_CryptoWallet": "Crypto Wallet",
 	"lbl_Number_Of_Wallet": "Number of wallet",
 	"lbl_CryptoWalletAddress": "Wallet Address",
@@ -731,5 +731,9 @@
 	"lbl_Conditions": "Conditions",
 	"lbl_MyLuckyWheelRewards": "MY LUCKY WHEEL REWARDS",
 	"lbl_MysteryBox_MemberEligibility": "Deposit Today Get Your Rewards Tomorrow.",
-	"lbl_LuckyWheel_MinDeposit": "Min Deposit VND {{amount}}"
+	"lbl_LuckyWheel_MinDeposit":"Min Deposit VND {{amount}}",
+	
+	"===============QR Pay===================":"",
+	"lbl_QRPay": "QR Pay",
+	"lbl_DepositType6": "QR Pay"
 }
