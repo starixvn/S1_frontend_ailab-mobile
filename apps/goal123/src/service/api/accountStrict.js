@@ -69,9 +69,15 @@ export const api_SetCustUSDTInfoBatch = form =>
 export const api_GetOTPVerifyInfo = () =>
 	accountStrictRequest.post("/GetOTPVerifyInfo");
 
-export const api_DelCustUSDTInfo = ({ USDTAddress, NickName, AccountName }) =>
+export const api_DelCustUSDTInfo = ({
+	USDTAddress,
+	NickName,
+	AccountName,
+	CurrencyId
+}) =>
 	accountStrictRequest.post("/DelCustUSDTInfo", {
 		USDTAddress,
 		NickName,
-		AccountName
+		AccountName,
+		CurrencyId
 	});

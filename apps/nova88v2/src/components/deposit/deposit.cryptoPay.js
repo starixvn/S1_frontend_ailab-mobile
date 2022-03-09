@@ -167,6 +167,8 @@ const Main = props => {
 											promoContent:
 												promoContent.Promotion,
 											QRcodeURL: res.data.data.url,
+											currencyName:
+												selChannel?.currencyName,
 											RequestAmount: Number(
 												formData?.RequestAmount
 											).toString(),

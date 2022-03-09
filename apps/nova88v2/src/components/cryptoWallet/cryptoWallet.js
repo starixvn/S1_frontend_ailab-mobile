@@ -57,7 +57,12 @@ const CryptoWallet = () => {
 		setPopBox({ isOpen: false });
 	};
 
-	const delUSDTwallet = ({ USDTAddress, NickName, AccountName }) => {
+	const delUSDTwallet = ({
+		USDTAddress,
+		NickName,
+		AccountName,
+		CurrencyId
+	}) => {
 		setPopBox({
 			isOpen: true,
 			title: i18n.lbl_ImportantNote,
@@ -71,7 +76,8 @@ const CryptoWallet = () => {
 							removeAccount({
 								USDTAddress,
 								NickName,
-								AccountName
+								AccountName,
+								CurrencyId
 							})
 						}>
 						{i18n.lbl_Yes}
@@ -84,9 +90,14 @@ const CryptoWallet = () => {
 		});
 	};
 
-	const removeAccount = ({ USDTAddress, NickName, AccountName }) => {
+	const removeAccount = ({
+		USDTAddress,
+		NickName,
+		AccountName,
+		CurrencyId
+	}) => {
 		api.accountStrict
-			.DelCustUSDTInfo({ USDTAddress, NickName, AccountName })
+			.DelCustUSDTInfo({ USDTAddress, NickName, AccountName, CurrencyId })
 			.then(res => {
 				if (res.data.errorCode === 0) {
 					GetCustBankInfo();
@@ -196,13 +207,19 @@ const CryptoWallet = () => {
 	const wallets = walletInfo?.map(item => (
 		<div key={item.usdtAddress} className="account">
 			<div className="nickName">{item.nickName}</div>
+			<div className="nickName">
+				{item.currencyName === item.network
+					? item.currencyName
+					: `${item.currencyName}-${item.network}`}
+			</div>
 			<div className="icon icon-BTC">{item.usdtAddress}</div>
 			<button
 				onClick={() =>
 					delUSDTwallet({
 						USDTAddress: item.usdtAddress,
 						NickName: item.nickName,
-						AccountName: userInfo.accountName
+						AccountName: userInfo.accountName,
+						CurrencyId: item.currencyId
 					})
 				}
 				className="icon icon-bin clickBtn"

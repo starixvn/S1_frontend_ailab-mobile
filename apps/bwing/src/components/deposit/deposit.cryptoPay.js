@@ -164,6 +164,7 @@ const Main = props => {
 										currencyId: userInfo.currencyId,
 										cashbackAmount:
 											promoContent.cashbackAmount,
+										currencyName: selChannel?.currencyName,
 										receivedAmount:
 											promoContent.receivedAmount,
 										PromotionRate:

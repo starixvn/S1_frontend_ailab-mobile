@@ -645,7 +645,7 @@ const Panel = () => {
 			"{{0}}",
 			!withdrawalLimit.withdrawalMin
 				? 1
-				: number_format(withdrawalLimit.withdrawalMin, _isConvert, 0)
+				: number_format(withdrawalLimit.withdrawalMin, _isConvert, 2)
 		)
 		?.replace(
 			"{{1}}",
@@ -654,7 +654,7 @@ const Panel = () => {
 				: number_format(
 						withdrawalLimit.withdrawalAvailableAmount,
 						_isConvert,
-						0
+						2
 				  )
 		);
 

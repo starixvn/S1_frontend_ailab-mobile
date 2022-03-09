@@ -97,6 +97,14 @@ export class PaymentAPI extends BaseAPI {
 			blackbox
 		});
 
+	WithdrawalCryptoReq = ({ AccountNo, amount, blackbox, CurrencyId }) =>
+		this.paymentRequest.post("/WithdrawalCryptoReq", {
+			AccountNo,
+			amount,
+			blackbox,
+			CurrencyId
+		});
+
 	GetWithdrawalInfoRecent = () =>
 		this.paymentRequest.post("/GetWithdrawalInfoRecent");
 
@@ -162,11 +170,15 @@ export class PaymentAPI extends BaseAPI {
 
 	GetWithdrawalLimit = () => this.paymentRequest.post("/GetWithdrawalLimit");
 
-	GetExchangeInfo = ({ Amount }) =>
-		this.paymentRequest.post("/GetExchangeInfo", { Amount });
+	GetExchangeInfo = ({ Amount, CurrencyName, Network }) =>
+		this.paymentRequest.post("/GetExchangeInfo", {
+			Amount,
+			CurrencyName,
+			Network
+		});
 
-	GetSupportNetwork = () =>
-		this.paymentRequest.post("/GetSupportNetwork", { CurrencyId: 96 });
+	GetSupportCryptoInfo = () =>
+		this.paymentRequest.post("/GetSupportCryptoInfo");
 
 	CheckDepositSpecialCode = SpecialCode =>
 		this.paymentRequest.post(`/CheckDepositSpecialCode`, {
