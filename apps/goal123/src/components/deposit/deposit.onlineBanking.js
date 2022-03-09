@@ -1,20 +1,11 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import {
-	i18nContext,
-	userInfoContext,
-	popBoxContext,
-	loadingContext
-} from "../common/context";
+import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import config from "../../config";
 import { isConvert, number_format, getWindowOpenUrl } from "../common/common";
 import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
 import { useHandleAmount } from "./hook/useHandleAmount";
-import {
-	api_GetOnlineBankInfoSysList,
-	api_GetOnlineBankInfo
-} from "../../service/api/payment";
 import PromoList from "./promoList";
 
 const payType = "onlineBanking";
@@ -30,17 +21,14 @@ const Payment = props => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
-	const { setLoading } = useContext(loadingContext);
 
-	const [selGroup, setSelGroup] = useState(null);
-	const [selbank, setBank] = useState({});
-	const [bankList, setBankList] = useState([]);
-
+	const [selbank, setSelBank] = useState({});
 	const [depositPromo, setDepositPromo] = useState({
 		bonusCode: null,
 		requiredAmount: null,
 		specialCode: ""
 	});
+
 	const {
 		amount,
 		inputStatus,
@@ -59,7 +47,7 @@ const Payment = props => {
 	useEffect(() => {
 		isMountedRef.current = true;
 		if (paymentList.length > 0) {
-			SelectPayment(paymentList[0]);
+			SelectBank(paymentList[0]);
 		}
 		return () => {
 			isMountedRef.current = false;
@@ -77,83 +65,17 @@ const Payment = props => {
 		});
 	};
 
-	const SelectPayment = groupInfo => {
-		if (selGroup?.payId !== groupInfo.payId) {
-			setSelGroup(groupInfo);
-			if (groupInfo.selBank) {
-				setLoading(true);
-				api_GetOnlineBankInfoSysList({ payId: groupInfo.payId }).then(
-					res => {
-						if (res.data.errorCode === 0) {
-							if (
-								isMountedRef.current &&
-								res.data.data.length > 0
-							) {
-								setBankList(res.data.data);
-								SelectBank(res.data.data[0], groupInfo);
-							}
-						} else {
-							setPopBox({
-								isOpen: true,
-								content: `[${res.data.errorCode}] ${res.data.message}`
-							});
-						}
-
-						if (isMountedRef.current) {
-							setLoading(false);
-						}
-					},
-					() => {
-						if (isMountedRef.current) {
-							setPopBox({
-								isOpen: true,
-								content: i18n.msg_ApiServerError
-							});
-							setLoading(false);
-						}
-					}
-				);
-			}
+	const SelectBank = bankInfo => {
+		if (selbank.sysId !== bankInfo.sysId) {
+			setSelBank(bankInfo);
 		}
-	};
-
-	const SelectBank = (bankInfo, groupInfo) => {
-		api_GetOnlineBankInfo({
-			payId: groupInfo.payId,
-			sysId: bankInfo.sysId
-		}).then(
-			res => {
-				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
-						setBank(res.data.data);
-					} else {
-						setPopBox({
-							isOpen: true,
-							content: `[${res.data.errorCode}] ${res.data.message}`
-						});
-					}
-				}
-			},
-			() => {
-				if (isMountedRef.current) {
-					setPopBox({
-						isOpen: true,
-						content: i18n.msg_ApiServerError
-					});
-				}
-			}
-		);
 	};
 
 	const ClickSubmit = async () => {
 		const result = VaildAmount({ _amount: amount });
 
 		if (result) {
-			const { payId, channelId } = selGroup;
-			let { sysId } = selGroup;
-			let bankLogo = null;
-			let bankName = null;
-
+			const { sysId, bankLogo, bankName } = selbank;
 			let { bonusCode } = depositPromo;
 
 			if (depositPromo.specialCode) {
@@ -167,11 +89,9 @@ const Payment = props => {
 			}
 
 			const RedirectToNext = real_amount => {
-				const mainUrl = `${config.openURL}/${userInfo.langId}/Cashier/DepositReqOnlineBanking`;
+				const mainUrl = `${config.openURL}/${userInfo.langId}/Cashier/DepositReqBankAutoChannel`;
 				const param = {
 					sysId,
-					payId,
-					ChannelId: channelId,
 					Amount: real_amount,
 					BonusCode: depositPromo.bonusCode
 				};
@@ -187,56 +107,45 @@ const Payment = props => {
 			};
 
 			const real_amount = _isConvert ? amount * 1000 : amount;
-			if (selGroup.selBank) {
-				sysId = selbank.sysId;
-				bankLogo = selbank.bankLogo;
-				bankName = selbank.bankName;
-
-				setPopBox({
-					isOpen: true,
-					title: i18n.lbl_ImportantNote,
-					content: (
-						<>
-							<p>{i18n.lbl_ConfirmDeposit}</p>
-							<img
-								src={`${
-									config.imgUrl
-								}/common/images/BankLogo/${bankLogo?.toLowerCase()}`}
-								alt={bankName}
-							/>
-							<div className="tip">
-								<span>{i18n.lbl_DepositAmount} :</span>{" "}
-								{number_format(real_amount, _isConvert, 0)}
-							</div>
-						</>
-					),
-					hasBtn: true,
-					btnBar: (
-						<div className="btn-group">
-							<button
-								className="darkGray"
-								onClick={() =>
-									setPopBox(prevState => ({
-										...prevState,
-										isOpen: false
-									}))
-								}>
-								{i18n.lbl_Cancel}
-							</button>
-							<button
-								className="lightBlue"
-								onClick={RedirectToNext.bind(
-									this,
-									real_amount
-								)}>
-								{i18n.lbl_Submit}
-							</button>
+			setPopBox({
+				isOpen: true,
+				title: i18n.lbl_ImportantNote,
+				content: (
+					<>
+						<p>{i18n.lbl_ConfirmDeposit}</p>
+						<img
+							src={`${
+								config.imgUrl
+							}/common/images/BankLogo/${bankLogo?.toLowerCase()}`}
+							alt={bankName}
+						/>
+						<div className="tip">
+							<span>{i18n.lbl_DepositAmount} :</span>{" "}
+							{number_format(real_amount, _isConvert, 0)}
 						</div>
-					)
-				});
-			} else {
-				RedirectToNext(real_amount);
-			}
+					</>
+				),
+				hasBtn: true,
+				btnBar: (
+					<div className="btn-group">
+						<button
+							className="darkGray"
+							onClick={() =>
+								setPopBox(prevState => ({
+									...prevState,
+									isOpen: false
+								}))
+							}>
+							{i18n.lbl_Cancel}
+						</button>
+						<button
+							className="lightBlue"
+							onClick={RedirectToNext.bind(this, real_amount)}>
+							{i18n.lbl_Submit}
+						</button>
+					</div>
+				)
+			});
 		}
 	};
 
@@ -247,44 +156,26 @@ const Payment = props => {
 			<div className="title text-org">
 				{`${i18n.lbl_CreditTime}: ${i18n[creditTimeKey]}`}
 			</div>
+
 			<GroupList
-				title={i18n.lbl_PaymentModes}
+				title={i18n.lbl_SelectBank}
 				dataList={paymentList}
-				SelectPayment={SelectPayment}
-				selected={selGroup?.payId}
-				mainKey={`deposit-full-${payType}-groupList`}
-				imgKey="payName"
-				idKey="payId"
-				prefixImgUrl={`${config.imgUrl}/common/images/Payment/`}
+				SelectPayment={SelectBank}
+				selected={selbank?.sysId}
+				mainKey={`deposit-full-${payType}-bankList`}
+				imgKey="bankLogo"
+				idKey="sysId"
 				bindFullObj={true}
+				prefixImgUrl={`${config.imgUrl}/common/images/BankLogo/`}
+				imgKeyWithExtension={true}
+				displayKey="bankName"
 				i18n={i18n}
-				displayKey="payName"
 				_isConvert={_isConvert}
-				showMinMaxHint={true}
 			/>
-			{selGroup?.selBank ? (
-				<GroupList
-					title={i18n.lbl_SelectBank}
-					dataList={bankList}
-					SelectPayment={SelectBank}
-					selected={selbank?.sysId}
-					mainKey={`deposit-full-${payType}-bankList`}
-					imgKey="bankLogo"
-					idKey="sysId"
-					bindFullObj={true}
-					prefixImgUrl={`${config.imgUrl}/common/images/BankLogo/`}
-					imgKeyWithExtension={true}
-					bindingItem={selGroup}
-					displayKey="bankName"
-					i18n={i18n}
-					_isConvert={_isConvert}
-				/>
-			) : null}
+
 			<AmountInput
 				title={i18n.lbl_DepositAmount}
-				channel={
-					selGroup?.selBank ? selbank : { ...selbank, ...selGroup }
-				}
+				channel={selbank}
 				i18n={i18n}
 				_isConvert={_isConvert}
 				amount={amount}

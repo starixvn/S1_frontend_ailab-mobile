@@ -28,7 +28,8 @@ const Main = props => {
 		paymentList,
 		userPaymentData,
 		handleUserPaymentData,
-		promoList
+		promoList,
+		checkDepositSpecialCode
 	} = props;
 	const { setPopBox } = useContext(popBoxContext);
 	const _isConvert = isConvert(userInfo.currencyId);
@@ -99,6 +100,18 @@ const Main = props => {
 			const result = VaildAmount({ _amount: confirmAmount });
 
 			if (result) {
+				let { bonusCode } = depositPromo;
+
+				if (depositPromo.specialCode) {
+					bonusCode = await checkDepositSpecialCode(
+						depositPromo.specialCode
+					);
+
+					if (!bonusCode) {
+						return;
+					}
+				}
+
 				const RedirectToNext = real_amount => {
 					const userData = {
 						payType: "cryptoPay",
@@ -391,6 +404,7 @@ const Main = props => {
 			/>
 
 			<PromoList
+				amount={Number(amount)}
 				i18n={i18n}
 				promoList={promoList}
 				depositPromo={depositPromo}
@@ -421,7 +435,8 @@ Main.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.any).isRequired,
 	userPaymentData: PropTypes.objectOf(PropTypes.any),
 	handleUserPaymentData: PropTypes.func,
-	promoList: PropTypes.arrayOf(PropTypes.objectOf)
+	promoList: PropTypes.arrayOf(PropTypes.objectOf),
+	checkDepositSpecialCode: PropTypes.func.isRequired
 };
 
 export default Main;
