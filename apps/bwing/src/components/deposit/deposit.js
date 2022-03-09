@@ -14,15 +14,17 @@ import OnlineBanking from "./deposit.onlineBanking";
 import LocalBank from "./deposit.localBank";
 import LoadCardPay from "./deposit.loadCardPay";
 import CryptoPay from "./deposit.cryptoPay";
+import QRPay from "./deposit.qrPay";
 import {
 	api_GetDepositInfoRecent,
 	api_GetMobilePayGroupList,
 	api_GetBankInfoOffList,
-	api_GetOnlinePaymentList,
+	api_GetAutoChannelBankGroupList,
 	api_SetDepositCancel,
 	api_payment_GetLoadCardPayGroupList,
 	api_payment_CheckDepositSpecialCode,
-	api_GetCryptoPayInfoList
+	api_GetCryptoPayInfoList,
+	api_GetQRPayGroupList
 } from "../../service/api/payment";
 import RecentDatas from "./deposit.recentDatas";
 import { number_format, isConvert } from "../common/common";
@@ -35,7 +37,8 @@ const defPayType = {
 	localBank: "localBank",
 	mobilePay: "mobilePay",
 	loadCardPay: "loadCardPay",
-	cryptoPay: "cryptoPay"
+	cryptoPay: "cryptoPay",
+	qrPay: "qrPay"
 };
 
 const defPayment = {
@@ -57,6 +60,10 @@ const defPayment = {
 	},
 	[defPayType.cryptoPay]: {
 		displayKey: "lbl_CryptoPay",
+		creditTimeKey: "lbl_Instant"
+	},
+	[defPayType.qrPay]: {
+		displayKey: "lbl_QRPay",
 		creditTimeKey: "lbl_Instant"
 	}
 };
@@ -197,6 +204,16 @@ const Panel = () => {
 				creditTimeKey={defPayment[defPayType.cryptoPay].creditTimeKey}
 				paymentList={paymentList[defPayType.cryptoPay] ?? []}
 				promoList={promoList}
+				checkDepositSpecialCode={checkDepositSpecialCode}
+			/>
+		);
+	} else if (selected === defPayType.qrPay) {
+		content = (
+			<QRPay
+				creditTimeKey={defPayment[defPayType.qrPay].creditTimeKey}
+				paymentList={paymentList[defPayType.qrPay] ?? []}
+				promoList={promoList}
+				checkDepositSpecialCode={checkDepositSpecialCode}
 			/>
 		);
 	}
@@ -212,7 +229,8 @@ const Panel = () => {
 					[defPayType.onlineBank]: [],
 					[defPayType.localBank]: [],
 					[defPayType.loadCardPay]: [],
-					[defPayType.cryptoPay]: []
+					[defPayType.cryptoPay]: [],
+					[defPayType.qrPay]: []
 				};
 
 				const setDefaultSelect = (currentValue, payType, dataList) =>
@@ -252,7 +270,7 @@ const Panel = () => {
 				}
 
 				try {
-					const res = await api_GetOnlinePaymentList();
+					const res = await api_GetAutoChannelBankGroupList();
 					payments[defPayType.onlineBank] = getDataListResult(res);
 
 					defaultSelect = setDefaultSelect(
@@ -285,6 +303,19 @@ const Panel = () => {
 						defaultSelect,
 						defPayType.cryptoPay,
 						payments[defPayType.cryptoPay]
+					);
+				} catch (error) {
+					console.error(error);
+				}
+
+				try {
+					const res = await api_GetQRPayGroupList();
+					payments[defPayType.qrPay] = getDataListResult(res);
+
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defPayType.qrPay,
+						payments[defPayType.qrPay]
 					);
 				} catch (error) {
 					console.error(error);

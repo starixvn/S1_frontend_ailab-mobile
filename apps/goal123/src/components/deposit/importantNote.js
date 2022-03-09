@@ -28,9 +28,9 @@ const EN = () => (
 			before you making a deposit.
 		</li>
 		<li>
-			For using <span>&quot;Local Bank Transfer&quot;</span> deposit
-			option, please make the transfer done before submit the transaction
-			to avoid the transaction delay.
+			For using <span>&quot;Bank Transfer&quot;</span> deposit option,
+			please make the transfer done before submit the transaction to avoid
+			the transaction delay.
 		</li>
 		<li>
 			Depositor&apos;s <span>ACCOUNT NAME</span> must match with your
@@ -66,9 +66,9 @@ const VN = () => (
 			trước khi gửi tiền.
 		</li>
 		<li>
-			Nếu chọn <span>&quot;Chuyển khoản Ngân hàng&quot;</span>, vui lòng
-			thực hiện chuyển khoản trước khi thực hiện lệnh gửi để tránh giao
-			dịch bị chậm.
+			Nếu chọn <span>&quot;Chuyển khoản&quot;</span>, vui lòng thực hiện
+			chuyển khoản trước khi thực hiện lệnh gửi để tránh giao dịch bị
+			chậm.
 		</li>
 		<li>
 			<span>TÊN TÀI KHOẢN</span> người gửi phải trùng với họ tên đăng ký.
