@@ -65,11 +65,12 @@ export class AccountStrictAPI extends BaseAPI {
 	GetOTPVerifyInfo = () =>
 		this.accountStrictRequest.post("/GetOTPVerifyInfo");
 
-	DelCustUSDTInfo = ({ USDTAddress, NickName, AccountName }) =>
+	DelCustUSDTInfo = ({ USDTAddress, NickName, AccountName, CurrencyId }) =>
 		this.accountStrictRequest.post("/DelCustUSDTInfo", {
 			USDTAddress,
 			NickName,
-			AccountName
+			AccountName,
+			CurrencyId
 		});
 
 	SendOTPEmail = () =>

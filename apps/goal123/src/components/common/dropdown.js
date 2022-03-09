@@ -36,7 +36,7 @@ export class DropdownBox extends Component {
 				<Item
 					key={`${this.props.mainKey}-${
 						item.id ?? item.displayKey ?? i
-					}`}
+					}-${displayText}`}
 					displayText={displayText}
 					idx={i}
 					onClick={this.SelectItem}

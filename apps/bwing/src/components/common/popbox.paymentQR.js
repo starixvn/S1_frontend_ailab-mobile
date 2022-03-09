@@ -19,7 +19,8 @@ const Panel = ({
 	promoContent,
 	cashbackAmount,
 	PromotionRate,
-	receivedAmount
+	receivedAmount,
+	currencyName
 }) => {
 	const { i18n } = useContext(i18nContext);
 
@@ -131,7 +132,7 @@ const Panel = ({
 				)}
 				{RequestAmount?.length > 0 && (
 					<ul>
-						<li>{i18n.lbl_USDT_Amount}：</li>
+						<li>{`${currencyName} ${i18n.lbl_Amount}`}：</li>
 						<li>{RequestAmount}</li>
 						<button
 							className="icon icon-files-empty"

@@ -157,6 +157,22 @@ export const api_WithdrawalUSDTReq = (AccountNo, amount) =>
 		amount
 	});
 
+export const api_payment_GetSupportCryptoInfo = () =>
+	paymentRequest.post("/GetSupportCryptoInfo");
+
+export const api_WithdrawalCryptoReq = ({
+	AccountNo,
+	amount,
+	blackbox,
+	CurrencyId
+}) =>
+	paymentRequest.post("/WithdrawalCryptoReq", {
+		AccountNo,
+		amount,
+		blackbox,
+		CurrencyId
+	});
+
 export const api_payment_GetSupportNetwork = () =>
 	paymentRequest.post("/GetSupportNetwork", { CurrencyId: 96 });
 

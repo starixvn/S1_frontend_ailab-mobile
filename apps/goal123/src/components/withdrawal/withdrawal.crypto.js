@@ -16,7 +16,7 @@ import {
 	api_SetWithdrawalCancel,
 	api_KycCheck,
 	api_payment_GetWithdrawalLimit,
-	api_WithdrawalUSDTReq
+	api_WithdrawalCryptoReq
 } from "../../service/api/payment";
 import { api_DelCustUSDTInfo } from "../../service/api/accountStrict";
 import InputBox from "../common/inputbox.info";
@@ -87,7 +87,11 @@ const Panel = () => {
 			return;
 		}
 		const curNetwork = selBank?.network;
-		const limit = allWithdrawalLimit.find(el => el.network === curNetwork);
+		const limit = allWithdrawalLimit.find(
+			el =>
+				el.network === curNetwork &&
+				el.currencyId === selBank?.currencyId
+		);
 		setInputStatus(initStatus);
 		setLimitInfo({ withdrawalLimitHint: limitHint(limit), limit });
 	}, [selBank, i18n, allWithdrawalLimit]);
@@ -244,12 +248,13 @@ const Panel = () => {
 				"{{0}}/{{1}}",
 				i18n.lbl_Unlimited
 			);
+
 		return i18n.lbl_WithdrawalDailyMinMax
 			?.replace(
 				"{{0}}",
 				!limit?.withdrawalMin
 					? 1
-					: number_format(limit?.withdrawalMin, _isConvert, 0)
+					: number_format(limit?.withdrawalMin, _isConvert, 2)
 			)
 			?.replace(
 				"{{1}}",
@@ -258,7 +263,7 @@ const Panel = () => {
 					: number_format(
 							limit?.withdrawalAvailableAmount,
 							_isConvert,
-							0
+							2
 					  )
 			);
 	};
@@ -414,10 +419,11 @@ const Panel = () => {
 			if (result) {
 				const RedirectToNext = async (accountNo, _realAmount) => {
 					try {
-						const res = await api_WithdrawalUSDTReq(
-							accountNo,
-							_realAmount
-						);
+						const res = await api_WithdrawalCryptoReq({
+							AccountNo: accountNo,
+							amount: _realAmount,
+							CurrencyId: selBank.currencyId
+						});
 						if (isMountedRef.current) {
 							if (
 								res.data.errorCode === 0 ||
@@ -559,9 +565,14 @@ const Panel = () => {
 	};
 
 	const SelectBank = b => {
-		if (b.usdtAddress !== selBank?.usdtAddress) {
-			setSelBank(b);
-		}
+		console.log(b, selBank);
+		if (
+			b.usdtAddress === selBank?.usdtAddress &&
+			b.currencyId === selBank?.currencyId
+		)
+			return;
+
+		setSelBank(b);
 	};
 
 	const ClickCancel = transId => {
@@ -666,7 +677,12 @@ const Panel = () => {
 		}
 	};
 
-	const delUSDTwallet = ({ USDTAddress, NickName, AccountName }) => {
+	const delUSDTwallet = ({
+		USDTAddress,
+		NickName,
+		AccountName,
+		CurrencyId
+	}) => {
 		setPopBox({
 			isOpen: true,
 			title: i18n.lbl_ImportantNote,
@@ -680,7 +696,8 @@ const Panel = () => {
 							removeAccount({
 								USDTAddress,
 								NickName,
-								AccountName
+								AccountName,
+								CurrencyId
 							})
 						}>
 						{i18n.lbl_Yes}
@@ -695,8 +712,13 @@ const Panel = () => {
 		});
 	};
 
-	const removeAccount = ({ USDTAddress, NickName, AccountName }) => {
-		api_DelCustUSDTInfo({ USDTAddress, NickName, AccountName })
+	const removeAccount = ({
+		USDTAddress,
+		NickName,
+		AccountName,
+		CurrencyId
+	}) => {
+		api_DelCustUSDTInfo({ USDTAddress, NickName, AccountName, CurrencyId })
 			.then(res => {
 				if (res.data.errorCode === 0) {
 					GetCustBankInfo();
@@ -754,25 +776,32 @@ const Panel = () => {
 			}
 		);
 	};
-
+	console.log(selBank);
 	const banks = bankInfo?.uSDTDetail?.map(b => {
 		return (
 			<div
 				className={
-					selBank?.usdtAddress === b.usdtAddress
+					selBank?.usdtAddress === b.usdtAddress &&
+					selBank?.currencyName === b.currencyName
 						? "account open"
 						: "account"
 				}
-				key={`withdrawal-bank-${b.usdtAddress}`}
+				key={`withdrawal-bank-${b.usdtAddress}-${b.currencyId}`}
 				onClick={SelectBank.bind(this, b)}>
 				<div className="nickname">{b?.nickName}</div>
+				<div className="nickname">
+					{b.currencyName === b.network
+						? b.currencyName
+						: `${b.currencyName}-${b.network}`}
+				</div>
 				<div className="icon icon-crypto">{b?.usdtAddress}</div>
 				<button
 					onClick={() =>
 						delUSDTwallet({
 							USDTAddress: b.usdtAddress,
 							NickName: b.nickName,
-							AccountName: userInfo.accountName
+							AccountName: userInfo.accountName,
+							CurrencyId: b.currencyId
 						})
 					}
 					className="icon icon-bin clickBtn"
