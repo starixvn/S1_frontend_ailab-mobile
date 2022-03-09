@@ -4026,6 +4026,7 @@ a.clickBtn:before {
 .casino .swiper-container {
   left: 0;
   top: 2vw;
+  overflow: revert;
 }
 
 .casino .slotList {
@@ -6440,7 +6441,7 @@ span.important {
 .Join > img,
 .Login > img {
   width: 40vw;
-  margin: 3vw calc(50% - 15vw);
+  margin: 3vw calc(50% - 20vw);
 }
 
 .Join .title,
@@ -11281,7 +11282,7 @@ span.important {
 .Join > img,
 .Login > img {
   width: 40vw;
-  margin: 3vw calc(50% - 15vw);
+  margin: 3vw calc(50% - 20vw);
 }
 
 .Join .title,

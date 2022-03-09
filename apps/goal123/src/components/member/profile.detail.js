@@ -7,7 +7,8 @@ import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import areaCode from "../../datas/areaCode";
 import {
 	api_SetProfile,
-	api_GetCustProfile
+	api_GetCustProfile,
+	api_SendOTPEmail
 } from "../../service/api/accountStrict";
 import { api_ExistsEmail } from "../../service/api/site";
 import { api_account_ExistsPhoneNo } from "../../service/api/account";
@@ -18,8 +19,10 @@ import {
 	monthOptions,
 	initStatus,
 	initUserValue,
-	infoList
+	infoList,
+	otpCol
 } from "./profile.def";
+import verifiedIcon from "../../styles/img/protection.png";
 
 const Panel = () => {
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -286,7 +289,9 @@ const Panel = () => {
 							<button className="blue" onClick={closePopbox}>
 								{i18n.lbl_Later}
 							</button>
-							<button className="orange" onClick={clickOtp}>
+							<button
+								className="orange"
+								onClick={clickOtp.bind(this, otpCol.phone)}>
 								{i18n.lbl_VerifyNow}
 							</button>
 						</div>
@@ -392,19 +397,59 @@ const Panel = () => {
 		}
 	};
 
-	const clickOtp = () => {
-		const ClosePopbox = ({ _redirectPath }) => {
-			setPopBox({ isOpen: false });
-			if (_redirectPath) {
-				setRedirectPath(_redirectPath);
-			}
-		};
-
-		setPopBox({
-			isOpen: true,
-			popBoxType: defPopBoxType.Otp,
-			ClosePopbox
-		});
+	const clickOtp = col => {
+		if (col === otpCol.phone) {
+			const ClosePopbox = ({ _redirectPath }) => {
+				setPopBox({ isOpen: false });
+				if (_redirectPath) {
+					setRedirectPath(_redirectPath);
+				}
+			};
+			setPopBox({
+				isOpen: true,
+				popBoxType: defPopBoxType.Otp,
+				ClosePopbox
+			});
+		} else if (otpCol.email) {
+			api_SendOTPEmail().then(
+				res => {
+					const { errorCode, message } = res.data;
+					if (errorCode === 0) {
+						setPopBox({
+							isOpen: true,
+							content: (
+								<div className="title">
+									{i18n.lbl_EmailOTPHint}
+								</div>
+							),
+							hasBtn: true,
+							btnBar: (
+								<div className="btn-group">
+									<button
+										className="lightBlue"
+										onClick={() => {
+											setPopBox({ isOpen: false });
+										}}>
+										OK
+									</button>
+								</div>
+							)
+						});
+					} else {
+						setPopBox({
+							isOpen: true,
+							content: `[${errorCode}] ${message}`
+						});
+					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
+				}
+			);
+		}
 	};
 
 	const arr = _infoList
@@ -415,9 +460,6 @@ const Panel = () => {
 			);
 		})
 		.map(item => {
-			const _isVerified =
-				item.infoTitle === "phoneNo" ? item.isVerified : null;
-
 			return (
 				<ColumnItem
 					key={`profile-${item.infoTitle}`}
@@ -425,7 +467,7 @@ const Panel = () => {
 					content={item.content}
 					infoTitle={item.infoTitle}
 					clickOtp={clickOtp}
-					isVerified={_isVerified}
+					isVerified={item.isVerified}
 					i18n={i18n}
 				/>
 			);
@@ -607,37 +649,56 @@ Birthday.propTypes = {
 	tip: PropTypes.string
 };
 
-const ColumnItem = props => {
+const ColumnItem = ({
+	title,
+	content,
+	isVerified,
+	infoTitle,
+	clickOtp,
+	i18n
+}) => {
 	return (
 		<li>
-			<span className="title">
-				{props.title}
-				{props.isVerified ? (
-					<i className="icon icon-checkmark" />
-				) : null}
+			<span className="title">{title}</span>
+			<span>
+				{content}
+				{isVerified && <img src={verifiedIcon} alt="Verified" />}
 			</span>
-			<span>{props.content}</span>
-			{props.infoTitle === "phoneNo" && !props.isVerified ? (
-				<button className="otpBtn" onClick={props.clickOtp}>
-					<span className="icon icon-mobile" />
-					<span>{props.i18n.lbl_MobileVerify}</span>
+			{!isVerified && Object.values(otpCol).includes(infoTitle) && (
+				<button
+					className="otpBtn"
+					onClick={clickOtp.bind(this, infoTitle)}>
+					<span
+						className={`icon ${
+							infoTitle === otpCol.phone
+								? "icon-mobile"
+								: "icon-email"
+						}`}
+					/>
+					<span>
+						{infoTitle === otpCol.phone
+							? i18n.lbl_PhoneVerification
+							: i18n.lbl_EmailVerification}
+					</span>
 				</button>
-			) : null}
+			)}
 		</li>
 	);
 };
 
 ColumnItem.defaultProps = {
-	isVerified: null
+	isVerified: false,
+	clickOtp: () => null,
+	content: null
 };
 
 ColumnItem.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	title: PropTypes.string.isRequired,
 	isVerified: PropTypes.bool,
-	content: PropTypes.string.isRequired,
+	content: PropTypes.string,
 	infoTitle: PropTypes.string.isRequired,
-	clickOtp: PropTypes.func.isRequired
+	clickOtp: PropTypes.func
 };
 
 const GetYear = () => {
