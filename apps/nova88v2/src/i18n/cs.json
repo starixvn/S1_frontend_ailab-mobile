@@ -150,7 +150,7 @@
 	"lbl_Message": "信息",
 	"lbl_ImportantNote": "温馨提醒",
 	"msg_ForceLogedout": "已登出！请重新登录后再试！",
-	"lbl_AmountTooltip": "金额不得小于{{0}}",
+	"lbl_AmountTooltip": "最低金额不低于{{0}}",
 	"lbl_BankAccountName": "账户名称",
 	"lbl_SelectAll": "全选",
 	"lbl_RecentTransactions": "最近交易",
