@@ -292,7 +292,8 @@ const Join = () => {
 				UserLang: userInfo.langId,
 				PhoneNo: userValue.Phone,
 				AreaCode: _areaCode,
-				PromoCode: userValue.SpecialBonusCode
+				PromoCode: userValue.SpecialBonusCode,
+				ReferralUrl: document.referrer
 			};
 
 			if (AffId) {
