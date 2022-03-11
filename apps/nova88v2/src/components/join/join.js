@@ -430,7 +430,8 @@ const Join = ({ initSiteCurrency = [] }) => {
 				CurrencyId: _currencyId,
 				UserLang: defaultLangId,
 				AreaCode: areaCodeOptions[AreaCodeIdx]?.value,
-				PromoCode: userValue.SpecialBonusCode
+				PromoCode: userValue.SpecialBonusCode,
+				ReferralUrl: document.referrer
 			};
 
 			if (AffId) {

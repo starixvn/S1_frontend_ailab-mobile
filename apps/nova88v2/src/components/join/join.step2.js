@@ -329,7 +329,8 @@ const JoinStep2 = ({
 				Birth_d: userValue.Birth_d + 1,
 				Birth_m: monthOptions[userValue.Birth_m]?.value,
 				Birth_y: yearOptions[userValue.Birth_y]?.value,
-				RealName: userValue.RealName
+				RealName: userValue.RealName,
+				ReferralUrl: document.referrer
 			};
 
 			if (AffId) {
