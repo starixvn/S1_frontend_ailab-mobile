@@ -251,7 +251,8 @@ const Join = () => {
 				Userpwd: userValue.Password,
 				CurrencyId: siteCurrencyList[userValue.Currency]?.id,
 				UserLang: defaultLangId,
-				PromoCode: userValue.SpecialBonusCode
+				PromoCode: userValue.SpecialBonusCode,
+				ReferralUrl: document.referrer
 			};
 
 			if (AffId) {

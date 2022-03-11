@@ -559,7 +559,8 @@ const Join = ({ hideBtn }) => {
 				// Email: userValueState.Email,
 				CurrencyId: userValueState.Currency.id,
 				UserLang: defaultLangId,
-				PromoCode: userValueState.SpecialBonusCode
+				PromoCode: userValueState.SpecialBonusCode,
+				ReferralUrl: document.referrer
 			};
 
 			if (AffId) {
