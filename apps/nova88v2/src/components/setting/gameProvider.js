@@ -145,6 +145,11 @@ const defPlatfrom = [
 		...defGameInfo.Casino_AdvantPlay,
 		imgName: "ap",
 		path: path.casino.root
+	},
+	{
+		...defGameInfo.Casino_Habanero,
+		imgName: "ho",
+		path: path.casino.root
 	}
 ];
 

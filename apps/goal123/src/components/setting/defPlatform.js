@@ -107,6 +107,12 @@ const defPlatfrom = [
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_AdvantPlay },
 		imgName: "ap"
+	},
+	{
+		...defGameInfo.Casino_Habanero,
+		path: path.casino.root,
+		parameter: { ...defGameInfo.Casino_Habanero },
+		imgName: "habaneroa"
 	}
 ];
 

@@ -34,6 +34,7 @@ export const defGameInfo = {
 	Casino_NetEnt: { tpId: 37, tpGameType: 64 },
 	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
 	Casino_AdvantPlay: { tpId: 39, tpGameType: 67 },
+	Casino_Habanero: { tpId: 40, tpGameType: 68 },
 	Fishing: { gameId: 10, tpId: 7, tpGameType: 12 },
 	Fishing_SG: { gameId: "F-SF01", tpId: 10, tpGameType: 31 },
 	Fishing_SGW: { gameId: "F-SF02", tpId: 10, tpGameType: 31 },
@@ -73,6 +74,11 @@ export const slotPlatform = [
 		...defGameInfo.Casino_PP,
 		path: path.casino.root,
 		imgName: "pp"
+	},
+	{
+		...defGameInfo.Casino_Habanero,
+		path: path.casino.root,
+		imgName: "ho"
 	},
 	{
 		...defGameInfo.Casino_NetEnt,

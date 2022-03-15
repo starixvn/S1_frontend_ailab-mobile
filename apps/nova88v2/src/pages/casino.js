@@ -15,7 +15,7 @@ import { Link } from "../route/link";
 import path from "../path";
 import { useGotoGame, defSpecialSetting } from "../components/hook/useGotoGame";
 import useSetTimeout from "../components/hook/useSetTimeout";
-import gameList, { defSlotTpGameType } from "../datas/productList";
+import gameList, { defGameInfo } from "../datas/productList";
 import { GetCurrencyName } from "../components/common/common";
 import Layout from "../components/common/layout";
 
@@ -433,10 +433,10 @@ class Panel extends React.Component {
 										gameId: this.state.selGameInfo.gameId,
 										isFun: freePlay,
 										tpGameType:
-											defSlotTpGameType.PT.tpGameType
+											defGameInfo.Casino_PT.tpGameType
 								  })
 								: null,
-						tpGameType: Object.values(defSlotTpGameType).find(
+						tpGameType: Object.values(defGameInfo).find(
 							obj => this.state.selGameInfo.tpId === obj.tpId
 						).tpGameType
 					}),
