@@ -27,5 +27,6 @@ export const defPlatform = [
 	{ name: "ne", img: `${bannerImgUrl}/h5/img/partner/ne.png` },
 	{ name: "evo", img: `${bannerImgUrl}/h5/img/partner/evo.png` },
 	{ name: "redtiger", img: `${bannerImgUrl}/h5/img/partner/red.png` },
-	{ name: "ap", img: `${bannerImgUrl}/h5/img/partner/ap.png` }
+	{ name: "ap", img: `${bannerImgUrl}/h5/img/partner/ap.png` },
+	{ name: "ho", img: `${bannerImgUrl}/h5/img/partner/ho.png` }
 ];

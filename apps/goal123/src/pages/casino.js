@@ -20,7 +20,7 @@ import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
 import { useGotoGame, defSpecialSetting } from "../components/hook/useGotoGame";
 import useSetTimeout from "../components/hook/useSetTimeout";
 import GameProviders from "../components/casino/gameProviders";
-import gameList, { defSlotTpGameType } from "../datas/productList";
+import gameList, { defGameInfo } from "../datas/productList";
 import Layout from "../components/common/layout";
 
 const eachPageItem = 20;
@@ -355,10 +355,10 @@ class Panel extends React.Component {
 										gameId: this.state.selGameInfo.gameId,
 										isFun: freePlay,
 										tpGameType:
-											defSlotTpGameType.PT.tpGameType
+											defGameInfo.Casino_PT.tpGameType
 								  })
 								: null,
-						tpGameType: Object.values(defSlotTpGameType).find(
+						tpGameType: Object.values(defGameInfo).find(
 							obj => this.state.selGameInfo.tpId === obj.tpId
 						).tpGameType
 					}),

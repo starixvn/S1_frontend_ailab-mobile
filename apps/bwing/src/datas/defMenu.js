@@ -157,6 +157,19 @@ export const productList = langId => {
 					img: `${bannerImgUrl}/h5/img/slot/pp.png`
 				},
 				{
+					...defGameInfo.Casino_Habanero,
+					parameter: defGameInfo.Casino_Habanero,
+					path: path.casino.root,
+					displayKey: "Habanero",
+					img: `${bannerImgUrl}/h5/img/slot/ho.png`,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.casino_Habanero)
+						}
+					]
+				},
+				{
 					...defGameInfo.Casino_NetEnt,
 					parameter: defGameInfo.Casino_NetEnt,
 					path: path.casino.root,
