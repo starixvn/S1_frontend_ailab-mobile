@@ -235,6 +235,22 @@ const gameList = ({ langId, currencyName }) => {
 							path: path.casino.root
 						},
 						{
+							...defGameInfo.Casino_Habanero,
+							parameter: defGameInfo.Casino_Habanero,
+							spanText: "Habanero",
+							providerImgName: "ho",
+							img: `${cloudBannerImgURL}/h5/img/ho.png`,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_Habanero
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_NetEnt,
 							parameter: defGameInfo.Casino_NetEnt,
 							spanText: "NetEnt",
@@ -782,6 +798,22 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "pp"
 						},
 						{
+							...defGameInfo.Casino_Habanero,
+							parameter: defGameInfo.Casino_Habanero,
+							spanText: "Habanero",
+							providerImgName: "ho",
+							img: `${cloudBannerImgURL}/h5/img/ho.png`,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_Habanero
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_NetEnt,
 							parameter: defGameInfo.Casino_NetEnt,
 							spanText: "NetEnt",
@@ -1327,6 +1359,22 @@ const gameList = ({ langId, currencyName }) => {
 							img: `${cloudBannerImgURL}/h5/img/spp.png`,
 							path: path.casino.root,
 							providerImgName: "pp"
+						},
+						{
+							...defGameInfo.Casino_Habanero,
+							parameter: defGameInfo.Casino_Habanero,
+							spanText: "Habanero",
+							providerImgName: "ho",
+							img: `${cloudBannerImgURL}/h5/img/ho.png`,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_Habanero
+									)
+								}
+							]
 						},
 						{
 							...defGameInfo.Casino_NetEnt,
@@ -1892,6 +1940,22 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "pp"
 						},
 						{
+							...defGameInfo.Casino_Habanero,
+							parameter: defGameInfo.Casino_Habanero,
+							spanText: "Habanero",
+							providerImgName: "ho",
+							img: `${cloudBannerImgURL}/h5/img/ho.png`,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_Habanero
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_NetEnt,
 							parameter: defGameInfo.Casino_NetEnt,
 							spanText: "NetEnt",
@@ -2421,6 +2485,22 @@ const gameList = ({ langId, currencyName }) => {
 							path: path.casino.root
 						},
 						{
+							...defGameInfo.Casino_Habanero,
+							parameter: defGameInfo.Casino_Habanero,
+							spanText: "Habanero",
+							providerImgName: "ho",
+							img: `${cloudBannerImgURL}/h5/img/ho.png`,
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.casino_Habanero
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_NetEnt,
 							parameter: defGameInfo.Casino_NetEnt,
 							spanText: "NetEnt",
@@ -2761,6 +2841,7 @@ export const defGameInfo = {
 	Casino_NetEnt: { tpId: 37, tpGameType: 64 },
 	Casino_AdvantPlay: { tpId: 39, tpGameType: 67 },
 	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
+	Casino_Habanero: { tpId: 40, tpGameType: 68 },
 	Fishing_AB3: { tpId: 16, gameId: "AB3", tpGameType: 44 },
 	Fishing_AT05: { tpId: 16, gameId: "AT05", tpGameType: 44 },
 	Fishing_AT01: { tpId: 16, gameId: "AT01", tpGameType: 44 },

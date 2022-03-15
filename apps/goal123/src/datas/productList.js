@@ -48,6 +48,7 @@ export const defGameInfo = {
 	Casino_Jili: { tpId: 32, tpGameType: 53 },
 	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
 	Casino_AdvantPlay: { tpId: 39, tpGameType: 67 },
+	Casino_Habanero: { tpId: 40, tpGameType: 68 },
 	LIVEcasinoN2: { tpId: 28, tpGameType: 45 },
 	LIVEcasinoWM: { gameId: 20, tpId: 20, tpGameType: 32 },
 	LIVEcasinoDG: { tpId: 4, gameId: 4, tpGameType: 10 },
@@ -346,6 +347,20 @@ const gameList = [
 				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-pp.png`,
 				path: path.casino.root,
 				providerImgName: "pp"
+			},
+			{
+				...defGameInfo.Casino_Habanero,
+				parameter: defGameInfo.Casino_Habanero,
+				spanText: "Habanero",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-habanero.png`,
+				path: path.casino.root,
+				providerImgName: "habanero",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.casino_Habanero)
+					}
+				]
 			},
 			{
 				...defGameInfo.Casino_NetEnt,
