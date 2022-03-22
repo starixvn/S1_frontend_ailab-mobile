@@ -80,10 +80,6 @@ const Panel = () => {
 
 	useEffect(() => {
 		if (!bankInfo.uSDTDetail?.length) {
-			setLimitInfo({
-				limit: null,
-				withdrawalLimitHint: limitHint(null)
-			});
 			return;
 		}
 		const curNetwork = selBank?.network;
@@ -140,6 +136,17 @@ const Panel = () => {
 			api_payment_GetWithdrawalLimit().then(
 				res => {
 					if (res.data.errorCode === 0 && isMountedRef.current) {
+						const limit = {
+							unlimited: false,
+							withdrawalAvailableAmount:
+								res.data.data?.withdrawalAvailableAmount,
+							withdrawalMin: res.data.data?.withdrawalMin
+						};
+
+						setLimitInfo({
+							limit,
+							withdrawalLimitHint: limitHint(limit)
+						});
 						setWithdrawalLimit(res.data.data.usdtList);
 					} else if (res.data.errorCode !== 0) {
 						setPopBox({
