@@ -271,10 +271,6 @@ const Panel = () => {
 						}));
 					}
 					setSelBank(null);
-					setLimitInfo({
-						limit: null,
-						withdrawalLimitHint: limitHint(null)
-					});
 				} else {
 					setPopBox({
 						isOpen: true,
