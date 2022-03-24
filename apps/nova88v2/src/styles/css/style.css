@@ -140,6 +140,10 @@ a {
   font-family: 'Microsoft YaHei',sans-serif;
 }
 
+.icon-windows:before {
+  content: "\eac2";
+}
+
 .icon-Shield:before {
   content: "\e9e2";
 }
@@ -2983,6 +2987,22 @@ footer > a.active .circleAnimation + span {
 
 .title .icon-checkmark:before {
   color: white;
+}
+
+.title.col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .tag {
@@ -6256,45 +6276,48 @@ span.important {
 }
 
 .installGuide {
+  background: #2d023a url(https://banner.0814media.net/h5/img/918/bg.jpg) no-repeat center top/180vw;
   width: calc(100% - 8vw);
-  height: calc(100% - 36vw);
-  padding: 16vw 4vw 20vw;
+  height: calc(100% - 40vw);
+  padding: 20vw 4vw 20vw;
   overflow: scroll;
 }
 
 .installGuide section {
   border-radius: 3px;
   padding: 4vw;
-  background: #D2E2F9;
-}
-
-.installGuide section .banner {
-  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  background: transparent;
 }
 
-.installGuide section .banner img {
-  width: 100%;
+.installGuide section > img {
+  width: 80vw;
+  margin: auto;
 }
 
 .installGuide section .copyinfo {
+  color: white;
   margin: 2vw 0 0;
-  color: #5574A7;
 }
 
 .installGuide section .copyinfo .inputBox {
-  background: black;
+  background: white;
+  border: 1px solid #c211a1;
+  margin: 0;
+}
+
+.installGuide section .copyinfo .btn-group button {
+  background: #c211a1;
 }
 
 .installGuide section .downloadModule {
   margin: 2vw 0;
-  background: rgba(165, 187, 224, 0.3);
-  border: 1px solid #a5bbe0;
   padding: 2vw;
   position: relative;
   text-align: center;
@@ -6304,7 +6327,7 @@ span.important {
 .installGuide section .downloadModule .guideMark {
   position: absolute;
   width: calc(100% - 40vw);
-  height: calc(100% - 6vw);
+  height: calc(100% - 4vw);
   top: 0;
   left: 0;
   display: -webkit-box;
@@ -6316,9 +6339,9 @@ span.important {
   z-index: 2;
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
-  border-color: rgba(18, 73, 165, 0.5);
+  border-color: rgba(0, 0, 0, 0.5);
   border-style: solid;
-  border-width: 3vw 20vw;
+  border-width: 2vw 20vw;
   background: transparent;
   pointer-events: none;
 }
@@ -6331,6 +6354,44 @@ span.important {
 .installGuide section .downloadModule .downloadSelect {
   display: none;
   margin: 1vw 0 0;
+}
+
+.installGuide section .downloadModule .downloadSelect.active {
+  display: block;
+  color: white;
+}
+
+.installGuide section .downloadModule .downloadSelect.active button, .installGuide section .downloadModule .downloadSelect.active a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #18012c;
+  border: 1px solid #c211a1;
+  border-radius: 50px;
+  width: 100%;
+  padding: 1vw 0;
+  font-size: xx-small;
+  margin-bottom: 4vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.installGuide section .downloadModule .downloadSelect.active button .icon, .installGuide section .downloadModule .downloadSelect.active a .icon {
+  margin-right: 3vw;
+}
+
+.installGuide section .downloadModule .downloadSelect.active button .icon.icon-android, .installGuide section .downloadModule .downloadSelect.active a .icon.icon-android {
+  color: #5aff2c;
+}
+
+.installGuide section .downloadModule .downloadSelect.active button .icon.icon-windows, .installGuide section .downloadModule .downloadSelect.active a .icon.icon-windows {
+  color: #0ad9f5;
 }
 
 .installGuide section .downloadModule .downloadSelect > div {
@@ -6371,12 +6432,6 @@ span.important {
   padding: 2vw;
 }
 
-.installGuide section .downloadModule .downloadSelect.active {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .installGuide section .downloadModule .downloadSelect .sysName {
   width: 100%;
   text-align: center;
@@ -6397,13 +6452,21 @@ span.important {
   overflow: unset;
 }
 
-.installGuide section .swiper-container img {
-  width: 45vw;
-  margin: 0 1vw;
+.installGuide.mega {
+  background: url(https://banner.0814media.net/h5/img/megabg.jpg) no-repeat center top/cover;
 }
 
-.installGuide section .swiper-container .swiper-slide {
-  width: 100% !important;
+.installGuide.mega section .copyinfo .inputBox {
+  border: 1px solid #0ad9f5;
+}
+
+.installGuide.mega section .copyinfo .btn-group button {
+  background: #0ad9f5;
+}
+
+.installGuide.mega section .copyinfo + .downloadModule .downloadSelect.active button, .installGuide.mega section .copyinfo + .downloadModule .downloadSelect.active a {
+  background: #01075b;
+  border: 1px solid #1EECBB;
 }
 
 .partner img {
@@ -7526,6 +7589,68 @@ span.important {
 
 .depositModule .selectModule .bankName.active .icon-icon32px_check {
   display: block;
+}
+
+.depositModule .selectModule .traverse {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  overflow-x: hidden;
+}
+
+.depositModule .selectModule .traverse .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.depositModule .selectModule .traverse .item span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.depositModule .selectModule .traverse .item span .icon-line {
+  width: 7vw;
+  height: 7vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 5px;
+  background: #07b802;
+  margin-left: 2vw;
+}
+
+.depositModule .selectModule .traverse .item span .icon-line::before {
+  font-size: 6vw;
+  color: #fff;
 }
 
 .submenu {
@@ -9281,7 +9406,7 @@ span.important {
   margin: 0 0 1vw;
 }
 
-.partnerSelect button {
+.partnerSelect button, .partnerSelect a {
   min-width: 30.5vw;
   padding: 0 1vw;
   display: -webkit-box;
@@ -9300,11 +9425,11 @@ span.important {
           filter: brightness(70%) contrast(50%) sepia(1) hue-rotate(170deg);
 }
 
-.partnerSelect button div {
+.partnerSelect button div, .partnerSelect a div {
   margin-top: -1vw;
 }
 
-.partnerSelect button img {
+.partnerSelect button img, .partnerSelect a img {
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
   -webkit-transition: 0.7s;
@@ -9312,14 +9437,14 @@ span.important {
   height: 12vw;
 }
 
-.partnerSelect button.active {
+.partnerSelect button.active, .partnerSelect a.active {
   background: #284985;
   color: white;
   -webkit-filter: none;
           filter: none;
 }
 
-.partnerSelect button.active img {
+.partnerSelect button.active img, .partnerSelect a.active img {
   -webkit-transform: scale(0.9);
           transform: scale(0.9);
   -webkit-transition: 0.7s;

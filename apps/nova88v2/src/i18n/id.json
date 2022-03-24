@@ -211,7 +211,9 @@
 	"Currency_96": "USDT",
 
 	"-==================-==================Home-==================-=====================": "",
-	"lbl_VirtualSports": "Olahraga maya",
+	
+	"lbl_VirtualGames":"Permainan Virtual",
+	"lbl_VirtualSports": "Olahraga Virtual",
 	"lbl_UpcomingMatches": "Pertandingan Mendatang",
 	"lbl_AffiliateProgram": "Program Afiliasi",
 	"lbl_Cookie_Reminder": "Nova88 menggunakan cookie untuk meningkatkan pengalaman situs web Anda. Dengan tetap berada di situs web, Anda menyetujui penggunaan cookie ini.",

@@ -244,6 +244,7 @@
 	"lbl_Username": "Username",
 	"lbl_UsernameTooltip": "For security, we suggest that your username does not contain your real name.",
 	"lbl_VirtualSports": "Virtual Sports",
+	"lbl_VirtualGames": "Virtual Games",
 	"lbl_WaitKYC": "Verification is in progress",
 	"lbl_WaitKYCHint": "Thank you for submitting the required document, kindly bear with us for a moment while the verification is in progress.",
 	"lbl_Wallet_Saba": "Saba Wallet",
