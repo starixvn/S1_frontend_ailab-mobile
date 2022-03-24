@@ -188,4 +188,7 @@ export class PaymentAPI extends BaseAPI {
 
 	GetAutoChannelBankGroupList = () =>
 		this.paymentRequest.post("/GetAutoChannelBankGroupList");
+
+	GetLineChannelForDpeosit = () =>
+		this.paymentRequest.post("/GetLineChannelForDpeosit");
 }

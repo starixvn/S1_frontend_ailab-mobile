@@ -3,6 +3,7 @@ import React, { useEffect, useState, useContext } from "react";
 import PropTypes from "prop-types";
 import Swiper from "react-id-swiper";
 import { Link } from "../../route/link";
+import { cloudBannerImgURL } from "../../config";
 import useHandleLogin from "../hook/useHandleLogin";
 import { userInfoContext, popBoxContext } from "./context";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
@@ -194,6 +195,43 @@ Panel.defaultProps = {
 Panel.propTypes = {
 	ImgFolder: PropTypes.arrayOf(PropTypes.any),
 	params: PropTypes.objectOf(PropTypes.any)
+};
+
+export const BannerWithStaticImages = ({
+	length,
+	langId,
+	redirectLink = ""
+}) => {
+	const rows = [];
+	const params = {
+		spaceBetween: 30,
+		centeredSlides: true,
+		autoplay: false,
+		pagination: {
+			el: ".swiper-pagination",
+			clickable: true
+		},
+		rebuildOnUpdate: true
+	};
+	for (let i = 0; i < length; i++) {
+		rows.push(
+			<a key={`${langId}-${i}`} href={redirectLink}>
+				<img
+					src={`${cloudBannerImgURL}/h5/img/line/ling-${i + 1}_${
+						langId === "th" ? "th" : "en"
+					}.png`}
+					className="item"
+				/>
+			</a>
+		);
+	}
+	return (
+		<div className="depositModule active">
+			<div className="downloadModule">
+				<Autoplay Rows={rows} params={params} />
+			</div>
+		</div>
+	);
 };
 
 export const Autoplay = props => {
