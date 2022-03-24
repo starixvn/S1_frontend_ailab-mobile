@@ -7,7 +7,6 @@ export const defGameInfo = {
 	Sports: { tpId: 1, gameId: 1, tpGameType: 1 },
 	BTISport: { tpId: 29, tpGameType: 49 },
 	SabaSoccer: { tpId: 1, gameId: 997, tpGameType: 1 },
-	VirtualSports: { tpId: 1, gameId: 180, tpGameType: 3 },
 	eSports: { tpId: 1, gameId: 43, tpGameType: 1 },
 	Basketball: { tpId: 1, gameId: 2, tpGameType: 1 },
 	Volleyball: { tpId: 1, gameId: 6, tpGameType: 1 },
@@ -65,7 +64,9 @@ export const defGameInfo = {
 	Indo4d: { gameId: 223, tpId: 1, tpGameType: 20 },
 	NumberGame: { gameId: 161, tpId: 1, tpGameType: 2 },
 	kingMaker: { tpId: 11, tpGameType: 52 },
-	tcg: { tpId: 33, tpGameType: 55 }
+	tcg: { tpId: 33, tpGameType: 55 },
+	VirtualGame: { tpId: 1, gameId: 245, tpGameType: 22 }, // 單一錢包 (目前不支援)
+	VirtualSports: { tpId: 1, gameId: 192, tpGameType: 24 } // 單一錢包 {tpId:41, tpGameType:72, gameId:192}
 };
 
 const defIconType = {
@@ -133,7 +134,7 @@ const gameList = [
 			},
 			{
 				...defGameInfo.VirtualSports,
-				img: `${bannerImgUrl}/h5/img/hotgame/virtual.jpg`,
+				img: `${bannerImgUrl}/h5/img/hotgame/sports/betradar.png`,
 				spanTextKey: "lbl_VirtualSports"
 			},
 			{
@@ -180,11 +181,6 @@ const gameList = [
 				spanTextKey: "lbl_SabaSoccer"
 			},
 			{
-				...defGameInfo.VirtualSports,
-				img: `${bannerImgUrl}/h5/img/hotgame/sports/virtualsports.png`,
-				spanTextKey: "lbl_VirtualSports"
-			},
-			{
 				...defGameInfo.eSports,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/e-sports.png`,
 				spanTextKey: "lbl_eSports"
@@ -198,6 +194,17 @@ const gameList = [
 				...defGameInfo.Volleyball,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/volleyball.png`,
 				spanTextKey: "lbl_Volleyball"
+			},
+			{
+				...defGameInfo.VirtualSports,
+				img: `${bannerImgUrl}/h5/img/hotgame/sports/betradar.png`,
+				spanTextKey: "lbl_VirtualSports",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.sports_virtualSports)
+					}
+				]
 			}
 		]
 	},
@@ -269,6 +276,17 @@ const gameList = [
 					{
 						icon: defIconType.new,
 						inPeriod: isEventPeriod(eventTime.tableGame)
+					}
+				]
+			},
+			{
+				...defGameInfo.VirtualGame,
+				img: `${bannerImgUrl}/h5/img/hotgame/games/virtualgames.png`,
+				spanTextKey: "lbl_VirtualGames",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.game_virtualGame)
 					}
 				]
 			}

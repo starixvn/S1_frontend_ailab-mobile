@@ -41,6 +41,19 @@ export const productList = langId => {
 					displayKey: "lbl_SabaSport",
 					img: `${bannerImgUrl}/h5/img/sport/sabasport.png`,
 					...defGameInfo.Sports
+				},
+				{
+					displayKey: "lbl_VirtualSports",
+					img: `${bannerImgUrl}/h5/img/sport/virtualSport.png`,
+					...defGameInfo.VirtualSports,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(
+								eventTime.sports_virtualSports
+							)
+						}
+					]
 				}
 				// {
 				// 	displayKey: "lbl_BTISport",
@@ -119,6 +132,17 @@ export const productList = langId => {
 						{
 							icon: defIconType.new,
 							inPeriod: isEventPeriod(eventTime.tableGame)
+						}
+					]
+				},
+				{
+					displayKey: "lbl_VirtualGames",
+					img: `${bannerImgUrl}/h5/img/lottery/virtual.png`,
+					...defGameInfo.VirtualGame,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.game_virtualGame)
 						}
 					]
 				}

@@ -78,6 +78,19 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.Cricket,
 							img: `${cloudBannerImgURL}/h5/img/cricket.png`,
 							spanTextKey: "lbl_Cricket"
+						},
+						{
+							...defGameInfo.VirtualSports,
+							img: `${cloudBannerImgURL}/h5/img/betradarsoccer.png`,
+							spanTextKey: "lbl_VirtualSports",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.sports_virtualSports
+									)
+								}
+							]
 						}
 					]
 				},
@@ -450,6 +463,19 @@ const gameList = ({ langId, currencyName }) => {
 									)
 								}
 							]
+						},
+						{
+							...defGameInfo.VirtualGame,
+							img: `${cloudBannerImgURL}/h5/img/virtualgames.png`,
+							spanTextKey: "lbl_VirtualGames",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.game_virtualGame
+									)
+								}
+							]
 						}
 					]
 				},
@@ -641,6 +667,19 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.Cricket,
 							img: `${cloudBannerImgURL}/h5/img/cricket.png`,
 							spanTextKey: "lbl_Cricket"
+						},
+						{
+							...defGameInfo.VirtualSports,
+							img: `${cloudBannerImgURL}/h5/img/betradarsoccer.png`,
+							spanTextKey: "lbl_VirtualSports",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.sports_virtualSports
+									)
+								}
+							]
 						}
 					]
 				},
@@ -1013,6 +1052,19 @@ const gameList = ({ langId, currencyName }) => {
 									)
 								}
 							]
+						},
+						{
+							...defGameInfo.VirtualGame,
+							img: `${cloudBannerImgURL}/h5/img/virtualgames.png`,
+							spanTextKey: "lbl_VirtualGames",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.game_virtualGame
+									)
+								}
+							]
 						}
 					]
 				},
@@ -1204,6 +1256,19 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.Cricket,
 							img: `${cloudBannerImgURL}/h5/img/cricket.png`,
 							spanTextKey: "lbl_Cricket"
+						},
+						{
+							...defGameInfo.VirtualSports,
+							img: `${cloudBannerImgURL}/h5/img/betradarsoccer.png`,
+							spanTextKey: "lbl_VirtualSports",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.sports_virtualSports
+									)
+								}
+							]
 						}
 					]
 				},
@@ -1577,6 +1642,19 @@ const gameList = ({ langId, currencyName }) => {
 									)
 								}
 							]
+						},
+						{
+							...defGameInfo.VirtualGame,
+							img: `${cloudBannerImgURL}/h5/img/virtualgames.png`,
+							spanTextKey: "lbl_VirtualGames",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.game_virtualGame
+									)
+								}
+							]
 						}
 					]
 				},
@@ -1768,6 +1846,19 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.Tennis,
 							img: `${cloudBannerImgURL}/h5/img/tennis.png`,
 							spanTextKey: "lbl_Tennis"
+						},
+						{
+							...defGameInfo.VirtualSports,
+							img: `${cloudBannerImgURL}/h5/img/betradarsoccer.png`,
+							spanTextKey: "lbl_VirtualSports",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.sports_virtualSports
+									)
+								}
+							]
 						}
 					]
 				},
@@ -2156,6 +2247,19 @@ const gameList = ({ langId, currencyName }) => {
 									)
 								}
 							]
+						},
+						{
+							...defGameInfo.VirtualGame,
+							img: `${cloudBannerImgURL}/h5/img/virtualgames.png`,
+							spanTextKey: "lbl_VirtualGames",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.game_virtualGame
+									)
+								}
+							]
 						}
 					]
 				},
@@ -2328,6 +2432,19 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.Cricket,
 							img: `${cloudBannerImgURL}/h5/img/cricket.png`,
 							spanTextKey: "lbl_Cricket"
+						},
+						{
+							...defGameInfo.VirtualSports,
+							img: `${cloudBannerImgURL}/h5/img/betradarsoccer.png`,
+							spanTextKey: "lbl_VirtualSports",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.sports_virtualSports
+									)
+								}
+							]
 						}
 					]
 				},
@@ -2649,6 +2766,19 @@ const gameList = ({ langId, currencyName }) => {
 							...defGameInfo.kingMaker,
 							img: `${cloudBannerImgURL}/h5/img/km.png`,
 							spanTextKey: "lbl_KingMaker"
+						},
+						{
+							...defGameInfo.VirtualGame,
+							img: `${cloudBannerImgURL}/h5/img/virtualgames.png`,
+							spanTextKey: "lbl_VirtualGames",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.game_virtualGame
+									)
+								}
+							]
 						}
 					]
 				},
@@ -2874,7 +3004,9 @@ export const defGameInfo = {
 	Casino_Jili: { tpId: 32, tpGameType: 53 },
 	TCG: { tpId: 33, tpGameType: 54 },
 	tableGame: { tpId: 1, gameId: 222, tpGameType: 23 },
-	MPoker: { tpId: 35, tpGameType: 60 }
+	MPoker: { tpId: 35, tpGameType: 60 },
+	VirtualGame: { tpId: 1, gameId: 245, tpGameType: 22 }, // 單一錢包 (目前不支援)
+	VirtualSports: { tpId: 1, gameId: 192, tpGameType: 24 } // 單一錢包 {tpId:41, tpGameType:72, gameId:192}
 };
 
 export const defCol = {

@@ -24,5 +24,7 @@ export const eventTime = {
 	liveCasino_EVO: { endDate: "2021/12/15 11:00:00" },
 	fishing_Joker: { endDate: "2022/02/10 11:00:00" },
 	casino_Habanero: { endDate: "2022/04/15 11:00:00" },
-	game_Vgaming: { endDate: "2022/03/24 11:00:00" }
+	game_Vgaming: { endDate: "2022/03/24 11:00:00" },
+	game_virtualGame: { endDate: "2022/04/24 11:00:00" },
+	sports_virtualSports: { endDate: "2022/04/24 11:00:00" }
 };
