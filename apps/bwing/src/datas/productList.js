@@ -3,7 +3,6 @@ import path from "../path";
 export const defGameInfo = {
 	Sports: { tpId: 1, gameId: 1, tpGameType: 1 },
 	CockFighting: { tpId: 17, tpGameType: 27 },
-	VirtualSports: { tpId: 1, gameId: 180, tpGameType: 3 },
 	eSports: { tpId: 1, gameId: 43, tpGameType: 1 },
 	LIVEcasinoWM: { tpId: 20, gameId: 20, tpGameType: 32 },
 	LIVEcasinoDG: { tpId: 4, gameId: 4, tpGameType: 10 },
@@ -61,7 +60,9 @@ export const defGameInfo = {
 	Fishing_AT04: { tpId: 16, gameId: "AT04", tpGameType: 44 },
 	kingMaker: { tpId: 11, tpGameType: 52 },
 	Casino_Jili: { tpId: 32, tpGameType: 53 },
-	tcg: { tpId: 33, tpGameType: 55 }
+	tcg: { tpId: 33, tpGameType: 55 },
+	VirtualGame: { tpId: 1, gameId: 245, tpGameType: 22 }, // 單一錢包 (目前不支援)
+	VirtualSports: { tpId: 1, gameId: 192, tpGameType: 24 } // 單一錢包 {tpId:41, tpGameType:72, gameId:192}
 };
 
 export const slotPlatform = [
