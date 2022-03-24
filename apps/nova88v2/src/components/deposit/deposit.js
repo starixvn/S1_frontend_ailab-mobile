@@ -405,7 +405,7 @@ const Panel = () => {
 				}
 
 				try {
-					if (userInfo.currencyId === 4) {
+					if (userInfo.currencyId === defCurrenyId.THB) {
 						const res = await api.payment.GetLineChannelForDpeosit();
 
 						payments[defPayType.linePay].lineLink =
