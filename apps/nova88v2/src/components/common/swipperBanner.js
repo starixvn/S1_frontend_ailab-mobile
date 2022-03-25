@@ -204,7 +204,7 @@ export const BannerWithStaticImages = ({
 }) => {
 	const rows = [];
 	const params = {
-		spaceBetween: 30,
+		spaceBetween: 200,
 		centeredSlides: true,
 		autoplay: false,
 		pagination: {
