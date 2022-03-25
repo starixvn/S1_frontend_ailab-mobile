@@ -275,7 +275,10 @@ const Panel = () => {
 				checkDepositSpecialCode={checkDepositSpecialCode}
 			/>
 		);
-	} else if (selected === defPayType.linePay) {
+	} else if (
+		selected === defPayType.linePay &&
+		paymentList[defPayType.linePay].lineLink
+	) {
 		content = (
 			<LinePay
 				redirectLink={paymentList[defPayType.linePay].lineLink}
