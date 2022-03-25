@@ -412,7 +412,7 @@ const Panel = () => {
 						const res = await api.payment.GetLineChannelForDpeosit();
 
 						payments[defPayType.linePay].lineLink =
-							res.data.data.link;
+							res.data?.data?.link;
 						payments[defPayType.linePay].openLink = true;
 
 						defaultSelect = setDefaultSelect(
