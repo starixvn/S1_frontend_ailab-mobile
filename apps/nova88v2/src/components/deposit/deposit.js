@@ -413,7 +413,9 @@ const Panel = () => {
 
 						payments[defPayType.linePay].lineLink =
 							res.data?.data?.link;
-						payments[defPayType.linePay].openLink = true;
+						if (res.data?.data?.link) {
+							payments[defPayType.linePay].openLink = true;
+						}
 
 						defaultSelect = setDefaultSelect(
 							defaultSelect,
