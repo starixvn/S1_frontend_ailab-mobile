@@ -211,6 +211,7 @@ export const BannerWithStaticImages = ({
 			el: ".swiper-pagination",
 			clickable: true
 		},
+		loop: true,
 		rebuildOnUpdate: true
 	};
 	for (let i = 0; i < length; i++) {
