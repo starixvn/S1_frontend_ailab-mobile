@@ -143,15 +143,13 @@ export default () => {
 						</Link>
 					</div>
 				)}
-				{_currencyId === defCurrenyId.INR ? null : (
-					<div>
-						<a
-							className="title icon icon-affiliate"
-							href={siteInfo(userInfo.langId).affiliateLink}>
-							{i18n.lbl_Affiliate}
-						</a>
-					</div>
-				)}
+				<div>
+					<a
+						className="title icon icon-affiliate"
+						href={siteInfo(userInfo.langId).affiliateLink}>
+						{i18n.lbl_Affiliate}
+					</a>
+				</div>
 				<Card
 					btnTitle={i18n.lbl_Languages}
 					btnClass="icon-sphere"
@@ -218,14 +216,12 @@ export default () => {
 						rel="noreferrer noopener">
 						{i18n.lbl_AboutUs}
 					</a>
-					{_currencyId === defCurrenyId.INR ? null : (
-						<a
-							href={`${siteInfo(userInfo.langId).affiliateLink}`}
-							target="_blank"
-							rel="noreferrer noopener">
-							{i18n.lbl_Affiliate}
-						</a>
-					)}
+					<a
+						href={`${siteInfo(userInfo.langId).affiliateLink}`}
+						target="_blank"
+						rel="noreferrer noopener">
+						{i18n.lbl_Affiliate}
+					</a>
 					<Link to={path.contactUs.root}>{i18n.lbl_ContactUs}</Link>
 					<a
 						href={TandC(userInfo.langId).Terms}
