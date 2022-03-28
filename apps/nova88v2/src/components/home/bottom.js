@@ -28,12 +28,7 @@ const Bottom = ({ i18n, langId, currencyId }) => {
 					className="title"
 					href={`${siteInfo(langId).affiliateLink}`}
 					target="_blank"
-					rel="noreferrer noopener"
-					style={
-						_currencyId === defCurrenyId.INR
-							? { pointerEvents: "none" }
-							: null
-					}>
+					rel="noreferrer noopener">
 					{i18n.lbl_AffiliateProgram}
 				</a>
 				<p>{i18n.lbl_Cookie_Reminder}</p>
