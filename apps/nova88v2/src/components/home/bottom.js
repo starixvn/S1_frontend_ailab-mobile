@@ -87,6 +87,7 @@ const License = ({ i18n }) => {
 	useEffect(() => {
 		try {
 			if (showLicenseLogo) {
+				apg_a7019fa5_9f9a_468b_92da_4890f6a6e4a7.init();
 				xcm_226e4de2_30aa_4077_951b_d440012994f3.init();
 			}
 		} catch (error) {
@@ -105,12 +106,20 @@ const License = ({ i18n }) => {
 							alt="vaild gaming license"
 						/>
 					</div>
-					<div
-						id="xcm-226e4de2-30aa-4077-951b-d440012994f3"
-						data-xcm-seal-id="226e4de2-30aa-4077-951b-d440012994f3"
-						data-xcm-image-size="48"
-						data-xcm-image-type="basic-small"
-					/>
+					<div>
+						<div
+							id="apg-a7019fa5-9f9a-468b-92da-4890f6a6e4a7"
+							data-apg-seal-id="a7019fa5-9f9a-468b-92da-4890f6a6e4a7"
+							data-apg-image-size="48"
+							data-apg-image-type="basic-small"
+						/>
+						<div
+							id="xcm-226e4de2-30aa-4077-951b-d440012994f3"
+							data-xcm-seal-id="226e4de2-30aa-4077-951b-d440012994f3"
+							data-xcm-image-size="36"
+							data-xcm-image-type="basic-small"
+						/>
+					</div>
 				</>
 			)}
 		</div>
