@@ -233,6 +233,7 @@ export const BannerWithStaticImages = ({
 	return (
 		<div className="depositModule active">
 			<div className="downloadModule">
+				<div className="guideMark" />
 				<Autoplay Rows={rows} params={params} />
 			</div>
 		</div>
