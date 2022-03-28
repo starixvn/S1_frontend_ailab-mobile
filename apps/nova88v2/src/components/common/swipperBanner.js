@@ -215,7 +215,11 @@ export const BannerWithStaticImages = ({
 	};
 	for (let i = 0; i < length; i++) {
 		rows.push(
-			<a key={`${langId}-${i}`} href={redirectLink}>
+			<a
+				key={`${langId}-${i}`}
+				href={redirectLink}
+				target="_blank"
+				rel="noreferrer">
 				<img
 					src={`${cloudBannerImgURL}/h5/img/line/ling-${i + 1}_${
 						langId === "th" ? "th" : "en"

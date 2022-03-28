@@ -41,6 +41,10 @@ const defPayment = {
 		displayKey: "lbl_WireTransfers",
 		creditTimeKey: "lbl_5mins"
 	},
+	[defPayType.linePay]: {
+		displayKey: "lbl_Line",
+		creditTimeKey: "lbl_Instant"
+	},
 	[defPayType.onlineBank]: {
 		displayKey: "lbl_OnlineBanking",
 		creditTimeKey: "lbl_Instant"
@@ -51,10 +55,6 @@ const defPayment = {
 	},
 	[defPayType.cryptoPay]: {
 		displayKey: "lbl_CryptoPay",
-		creditTimeKey: "lbl_Instant"
-	},
-	[defPayType.linePay]: {
-		displayKey: "lbl_Line",
 		creditTimeKey: "lbl_Instant"
 	}
 };
