@@ -107,7 +107,8 @@ class Panel extends React.Component {
 									if (
 										_tplistArr.indexOf(
 											game.tpId.toString()
-										) > -1
+										) > -1 ||
+										game.alwaysShowOnSlotLobby
 									) {
 										if (game.tpId === this.props.tpId) {
 											sort.unshift(game);

@@ -64,6 +64,7 @@ import AppDownload from "../pages/appDownload";
 import CheckSpeed from "../pages/checkSpeed";
 import AppEntPage from "../pages/appEntPage";
 import UMPage from "../pages/um";
+import Mega888 from "../pages/mega888";
 
 const RouteComponents = () => {
 	return (
@@ -146,6 +147,7 @@ const RouteComponents = () => {
 			<AppEntPage path={`/${defSpecialPath.appentpage}`} />
 			<UMPage path={`/:langId/${path.um.root}`} />
 			<UMPage path={`/${path.um.root}`} />
+			<Mega888 path={`/:langId/${path.mega888.root}`} />
 		</Router>
 	);
 };
