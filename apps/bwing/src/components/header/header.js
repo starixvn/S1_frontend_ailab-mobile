@@ -1,6 +1,5 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "@reach/router";
-import useInterval from "../hook/useInterval";
 import {
 	userInfoContext,
 	i18nContext,
@@ -107,9 +106,9 @@ const BeforeLogin = ({ onClickSubMenu, isShow, title, hideLogo }) => {
 			</div>
 			{title && <div className="heardTitle">{title}</div>}
 			{!hideLogo && (
-				<Link to={path.home.root}>
+				<a href="/">
 					<Logo />
-				</Link>
+				</a>
 			)}
 		</div>
 	) : null;
@@ -143,9 +142,9 @@ const AfterLogin = ({
 					</div>
 					<div className="title">{title}</div>
 					{!hideLogo && (
-						<Link to={path.home.root}>
+						<a href="/">
 							<Logo />
-						</Link>
+						</a>
 					)}
 					<button onClick={handleLogout} className="icon icon-exit" />
 				</div>
