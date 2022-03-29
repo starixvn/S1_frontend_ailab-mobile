@@ -12,6 +12,10 @@ export const productList = {
 	},
 	oneGame: {
 		tpId: 13
+	},
+	mega888: {
+		tpId: 22,
+		tpGameType: 34
 	}
 };
 
@@ -248,6 +252,21 @@ const gameList = ({ langId, currencyName }) => {
 							path: path.casino.root
 						},
 						{
+							...productList.mega888,
+							parameter: productList.mega888,
+							spanText: "Mega888",
+							providerImgName: "mega",
+							img: `${cloudBannerImgURL}/h5/img/mega888.png`,
+							path: path.mega888.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(eventTime.mega888)
+								}
+							],
+							alwaysShowOnSlotLobby: true
+						},
+						{
 							...defGameInfo.Casino_Habanero,
 							parameter: defGameInfo.Casino_Habanero,
 							spanText: "Habanero",
@@ -400,6 +419,7 @@ const gameList = ({ langId, currencyName }) => {
 								defCurrenyId.THB
 							]
 						}
+
 						// {
 						// ...defGameInfo.Casino_918Kiss,
 						// parameter:defGameInfo.Casino_918Kiss,
@@ -837,6 +857,21 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "pp"
 						},
 						{
+							...productList.mega888,
+							parameter: productList.mega888,
+							spanText: "Mega888",
+							providerImgName: "mega",
+							img: `${cloudBannerImgURL}/h5/img/mega888.png`,
+							path: path.mega888.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(eventTime.mega888)
+								}
+							],
+							alwaysShowOnSlotLobby: true
+						},
+						{
 							...defGameInfo.Casino_Habanero,
 							parameter: defGameInfo.Casino_Habanero,
 							spanText: "Habanero",
@@ -989,6 +1024,7 @@ const gameList = ({ langId, currencyName }) => {
 								defCurrenyId.THB
 							]
 						}
+
 						// {
 						// ...defGameInfo.Casino_918Kiss,
 						// parameter:defGameInfo.Casino_918Kiss,
@@ -1426,6 +1462,21 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "pp"
 						},
 						{
+							...productList.mega888,
+							parameter: productList.mega888,
+							spanText: "Mega888",
+							providerImgName: "mega",
+							img: `${cloudBannerImgURL}/h5/img/mega888.png`,
+							path: path.mega888.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(eventTime.mega888)
+								}
+							],
+							alwaysShowOnSlotLobby: true
+						},
+						{
 							...defGameInfo.Casino_Habanero,
 							parameter: defGameInfo.Casino_Habanero,
 							spanText: "Habanero",
@@ -1579,6 +1630,7 @@ const gameList = ({ langId, currencyName }) => {
 								defCurrenyId.THB
 							]
 						}
+
 						// {
 						// ...defGameInfo.Casino_918Kiss,
 						// parameter:defGameInfo.Casino_918Kiss,
@@ -3005,6 +3057,7 @@ export const defGameInfo = {
 	TCG: { tpId: 33, tpGameType: 54 },
 	tableGame: { tpId: 1, gameId: 222, tpGameType: 23 },
 	MPoker: { tpId: 35, tpGameType: 60 },
+	Mega888: { tpId: 22, tpGameType: 34 },
 	VirtualGame: { tpId: 1, gameId: 245, tpGameType: 22 }, // 單一錢包 (目前不支援)
 	VirtualSports: { tpId: 1, gameId: 192, tpGameType: 24 } // 單一錢包 {tpId:41, tpGameType:72, gameId:192}
 };

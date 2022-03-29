@@ -112,7 +112,9 @@ export const useGotoGame = ({
 	tpId,
 	gameId,
 	isFun = false,
-	autoGetData = true
+	autoGetData = true,
+	tpGameType: _tpGameType = null,
+	allowBeforeLogin = false
 }) => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { i18n } = useContext(i18nContext);
@@ -128,14 +130,26 @@ export const useGotoGame = ({
 
 	useEffect(() => {
 		isMountedRef.current = true;
-		if (autoGetData && isLogin !== null) {
-			handleGoToGame({ isLogin, langId, tpId, gameId, isFun });
+
+		if (
+			!(isLogin === false && allowBeforeLogin) &&
+			autoGetData &&
+			isLogin
+		) {
+			handleGoToGame({
+				isLogin,
+				langId,
+				tpId,
+				gameId,
+				isFun,
+				tpGameType: _tpGameType
+			});
 		}
 
 		return () => {
 			isMountedRef.current = false;
 		};
-	}, [autoGetData, isLogin, langId]);
+	}, [autoGetData, isLogin, langId, _tpGameType]);
 
 	const handleGoToGame = useCallback(
 		async ({

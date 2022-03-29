@@ -164,6 +164,9 @@ export default {
 	},
 	um: {
 		root: "um"
+	},
+	mega888: {
+		root: "mega888"
 	}
 };
 
