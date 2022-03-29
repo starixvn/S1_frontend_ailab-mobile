@@ -305,38 +305,8 @@ const SubGame = ({
 		}
 	};
 
-	if (game?.href) {
-		return (
-			<a
-				className={isMaintain ? "active" : ""}
-				href={game.href}
-				target="_blank"
-				rel="noreferrer"
-				style={isMaintain ? { pointerEvents: "none" } : null}>
-				{showingEventIcon !== "" ? (
-					<i className={`icon ${showingEventIcon}`} />
-				) : null}
-				<img src={game.img} alt={i18n[game.spanTextKey]} />
-				<div>{game.spanText || i18n[game.spanTextKey]}</div>
-				{isMaintain ? (
-					<div className="under">{i18n.lbl_underMaintenance}</div>
-				) : (
-					""
-				)}
-			</a>
-		);
-	}
-
-	return game?.path ? (
-		<Link
-			className={isMaintain ? "active" : ""}
-			to={
-				category === "slot"
-					? `${path.casino.root}/${game.tpId}`
-					: game.path
-			}
-			state={game.parameter}
-			style={isMaintain ? { pointerEvents: "none" } : null}>
+	const content = (
+		<>
 			{showingEventIcon !== "" ? (
 				<i className={`icon ${showingEventIcon}`} />
 			) : null}
@@ -347,6 +317,46 @@ const SubGame = ({
 			) : (
 				""
 			)}
+		</>
+	);
+
+	if (game.needLogin && userInfo.isLogin === false) {
+		return (
+			<button
+				className={isMaintain ? "active" : ""}
+				disabled={isMaintain}
+				onClick={handleLogin}>
+				{content}
+			</button>
+		);
+	}
+
+	if (game?.href) {
+		return (
+			<a
+				className={isMaintain ? "active" : ""}
+				href={game.href}
+				target="_blank"
+				rel="noreferrer"
+				style={isMaintain ? { pointerEvents: "none" } : null}>
+				{content}
+			</a>
+		);
+	}
+
+	return game?.path ? (
+		<Link
+			className={isMaintain ? "active" : ""}
+			to={
+				game.path
+					? game.path
+					: category === "slot"
+					? `${path.casino.root}/${game.tpId}`
+					: game.path
+			}
+			state={game.parameter}
+			style={isMaintain ? { pointerEvents: "none" } : null}>
+			{content}
 		</Link>
 	) : (
 		<button
@@ -359,16 +369,7 @@ const SubGame = ({
 				specialUrl: game?.specialUrl ?? "",
 				tpGameType: game.tpGameType
 			})}>
-			{showingEventIcon !== "" ? (
-				<i className={`icon ${showingEventIcon}`} />
-			) : null}
-			<img src={game.img} alt={i18n[game.spanTextKey]} />
-			<div>{game.spanText || i18n[game.spanTextKey]}</div>
-			{isMaintain ? (
-				<div className="under">{i18n.lbl_underMaintenance}</div>
-			) : (
-				""
-			)}
+			{content}
 		</button>
 	);
 };
