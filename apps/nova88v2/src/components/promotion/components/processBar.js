@@ -10,7 +10,8 @@ export default ({
 	RefreshProcessBar,
 	promotionType,
 	isJoin,
-	status
+	status,
+	fullFillType
 }) => {
 	const { i18n, formatSetting } = useContext(configContext);
 
@@ -28,7 +29,11 @@ export default ({
 		return (
 			<div className="account">
 				<div className="info">
-					<span>{i18n?.lbl_TurnoverAccumulated}</span>
+					<span>
+						{fullFillType === 2
+							? i18n?.lbl_WinOverAccumulated
+							: i18n?.lbl_TurnoverAccumulated}
+					</span>
 					<span>
 						{number_format(custTurnOver, formatSetting)}/
 						{number_format(custRollOver, formatSetting)}
