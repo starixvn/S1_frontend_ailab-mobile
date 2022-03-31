@@ -14,6 +14,7 @@ import OnlineBanking from "./deposit.onlineBanking";
 import LocalBank from "./deposit.localBank";
 import CryptoPay from "./deposit.cryptoPay";
 import AutoDeposit from "./deposit.autoDeposit";
+import LinePay from "./deposit.linePay";
 import api from "../../service/api";
 import RecentDatas from "./deposit.recentDatas";
 import { number_format, isConvert, defCurrenyId } from "../common/common";
@@ -27,7 +28,8 @@ const defPayType = {
 	localBank: "localBank",
 	onlineBank: "onlineBank",
 	mobilePay: "mobilePay",
-	cryptoPay: "cryptoPay"
+	cryptoPay: "cryptoPay",
+	linePay: "linePay"
 };
 
 const defPayment = {
@@ -38,6 +40,10 @@ const defPayment = {
 	[defPayType.localBank]: {
 		displayKey: "lbl_WireTransfers",
 		creditTimeKey: "lbl_5mins"
+	},
+	[defPayType.linePay]: {
+		displayKey: "lbl_Line",
+		creditTimeKey: "lbl_Instant"
 	},
 	[defPayType.onlineBank]: {
 		displayKey: "lbl_OnlineBanking",
@@ -65,7 +71,9 @@ const useHandleSelect = defaultSelect => {
 
 const Tab = ({ i18n, selected, HandleSelect, paymentList }) => {
 	const rows = Object.keys(defPayment)
-		.filter(key => paymentList[key]?.length > 0)
+		.filter(
+			key => paymentList[key]?.length > 0 || paymentList[key]?.openLink
+		)
 		.map(key => {
 			const pay = defPayment[key];
 			return (
@@ -267,6 +275,16 @@ const Panel = () => {
 				checkDepositSpecialCode={checkDepositSpecialCode}
 			/>
 		);
+	} else if (
+		selected === defPayType.linePay &&
+		paymentList[defPayType.linePay].lineLink
+	) {
+		content = (
+			<LinePay
+				redirectLink={paymentList[defPayType.linePay].lineLink}
+				langId={userInfo.langId}
+			/>
+		);
 	}
 
 	useEffect(() => {
@@ -281,7 +299,8 @@ const Panel = () => {
 					[defPayType.localBank]: [],
 					[defPayType.onlineBank]: [],
 					[defPayType.mobilePay]: [],
-					[defPayType.cryptoPay]: []
+					[defPayType.cryptoPay]: [],
+					[defPayType.linePay]: []
 				};
 
 				const setDefaultSelect = (currentValue, payType, dataList) =>
@@ -383,6 +402,32 @@ const Panel = () => {
 							isOpen: true,
 							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
+					}
+				} catch (error) {
+					console.error(error);
+				}
+
+				try {
+					if (userInfo.currencyId === defCurrenyId.THB) {
+						const res = await api.payment.GetLineChannelForDpeosit();
+
+						payments[defPayType.linePay].lineLink =
+							res.data?.data?.link;
+						if (res.data?.data?.link) {
+							payments[defPayType.linePay].openLink = true;
+						}
+
+						defaultSelect = setDefaultSelect(
+							defaultSelect,
+							defPayType.linePay,
+							payments[defPayType.linePay]
+						);
+						if (res.data.errorCode !== 0) {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
+						}
 					}
 				} catch (error) {
 					console.error(error);
