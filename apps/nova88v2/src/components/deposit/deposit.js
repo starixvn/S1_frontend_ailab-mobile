@@ -423,10 +423,7 @@ const Panel = () => {
 							payments[defPayType.linePay]
 						);
 						if (res.data.errorCode !== 0) {
-							setPopBox({
-								isOpen: true,
-								content: `[${res.data.errorCode}] ${res.data.message}`
-							});
+							console.error(res.data);
 						}
 					}
 				} catch (error) {
