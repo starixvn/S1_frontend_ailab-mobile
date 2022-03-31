@@ -619,6 +619,7 @@
 	"lbl_Deposit_DragonPayPop_AccountNumber": "หมายเลขบัญชี",
 	"lbl_Deposit_DragonPayPop_OrderNumber": "เลขที่ใบสั่งซื้อ",
 	"lbl_AutoDeposit": "Auto Deposit",
+	"lbl_Line":"LINE",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "รายละเอียดการฝากเงิน",
