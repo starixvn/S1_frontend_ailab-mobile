@@ -525,7 +525,8 @@
 	"lbl_More_Info": "ข้อมูลเพิ่มเติม",
 	"lbl_Apply_Now": "สมัครตอนนี้",
 	"lbl_promo_all_promos": "โปรโมชั่นทั้งหมด",
-
+	"lbl_WinOver": "วินโอเวอร์",
+	"lbl_WinOverAccumulated": "วินโอเวอร์",
 	"-==========================Streaming===================================": "",
 	"lbl_LiveStreaming": "สตรีมมิงแบบสด",
 	"lbl_Streaming_FOOTBALL": "ฟุตบอล",

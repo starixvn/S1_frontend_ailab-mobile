@@ -132,7 +132,11 @@ const defElems = ({
 			<KeyValue
 				key={`promo-rule-${defRuleCols.rollOver}`}
 				i18n={i18n}
-				displayText={i18n?.lbl_RollOver}
+				displayText={
+					promotionInfo.fullFillType === 2
+						? i18n?.lbl_WinOver
+						: i18n?.lbl_RollOver
+				}
 				icon="icon icon-icon32px_"
 				value={`${promotionInfo.rollOver}x`}
 				showIcon={showIcon}
