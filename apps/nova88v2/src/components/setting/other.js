@@ -103,12 +103,12 @@ export default () => {
 						{i18n.lbl_ContactUs}
 					</a>
 				</div>
-				{socialMedia && socialMedia.length > 0 ? (
+				{/* {socialMedia && socialMedia.length > 0 ? (
 					<div>
 						<span>{i18n.lbl_SocialMedia}</span>
 						{socialMedia}
 					</div>
-				) : null}
+				) : null} */}
 			</div>
 			<div className="partner">
 				<Platform langId={userInfo.langId} isLogin={userInfo.isLogin} />

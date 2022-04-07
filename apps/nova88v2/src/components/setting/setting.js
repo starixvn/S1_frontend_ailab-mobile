@@ -233,7 +233,7 @@ export default () => {
 						{i18n.ibi_GameProvider}
 					</Link>
 				</Card>
-				<Card btnTitle={i18n.lbl_SocialMedia} btnClass="icon-facebook2">
+				{/* <Card btnTitle={i18n.lbl_SocialMedia} btnClass="icon-facebook2">
 					<a
 						href={`${
 							siteInfo(userInfo.langId).socialMedia.fb.link
@@ -258,7 +258,7 @@ export default () => {
 						rel="noreferrer noopener">
 						Instagram
 					</a>
-				</Card>
+				</Card> */}
 				{userInfo.isLogin ? (
 					<div>
 						<button

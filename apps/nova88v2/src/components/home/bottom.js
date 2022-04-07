@@ -35,7 +35,7 @@ const Bottom = ({ i18n, langId, currencyId }) => {
 			</div>
 			<div className="social">
 				<License i18n={i18n} />
-				<a
+				{/* <a
 					className="icon icon-facebook"
 					href="https://www.facebook.com/nova88official/"
 					target="_blank"
@@ -64,7 +64,7 @@ const Bottom = ({ i18n, langId, currencyId }) => {
 					href="mailto:support@nova88.com"
 					target="_blank"
 					rel="noreferrer noopener"
-				/>
+				/> */}
 			</div>
 		</>
 	);

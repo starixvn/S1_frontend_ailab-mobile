@@ -17,7 +17,7 @@ const ContactUs = ({ i18n }) => {
 				<i className="icon icon-chat" />
 				<div>{i18n.lbl_LiveChat}</div>
 			</a>
-			<a
+			{/* <a
 				href="https://www.facebook.com/nova88official/"
 				target="_blank"
 				rel="noreferrer noopener">
@@ -82,7 +82,7 @@ const ContactUs = ({ i18n }) => {
 					alt="Whatsapp QR Code"
 				/>
 				<div>Whatsapp</div>
-			</div>
+			</div> */}
 		</>
 	);
 };
