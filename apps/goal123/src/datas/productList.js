@@ -345,6 +345,35 @@ const gameList = [
 		img: `${bannerImgUrl}/h5/img/hotgameicon/slots.png`,
 		items: [
 			{
+				...defGameInfo.Casino_NetEnt,
+				parameter: defGameInfo.Casino_NetEnt,
+				spanText: "NetEnt",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-ne.png`,
+				path: path.casino.root,
+				providerImgName: "ne",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.casino_NetEnt)
+					}
+				]
+			},
+			{
+				...defGameInfo.Casino_RedTiger,
+				parameter: defGameInfo.Casino_RedTiger,
+				spanText: "Red Tiger",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-rt.png`,
+				path: path.casino.root,
+				providerImgName: "rt",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.casino_RedTiger)
+					}
+				]
+			},
+
+			{
 				...defGameInfo.Casino_AdvantPlay,
 				parameter: defGameInfo.Casino_AdvantPlay,
 				spanText: "AdvantPlay",
@@ -377,35 +406,6 @@ const gameList = [
 					{
 						icon: defIconType.new,
 						inPeriod: isEventPeriod(eventTime.casino_Habanero)
-					}
-				]
-			},
-
-			{
-				...defGameInfo.Casino_RedTiger,
-				parameter: defGameInfo.Casino_RedTiger,
-				spanText: "Red Tiger",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-rt.png`,
-				path: path.casino.root,
-				providerImgName: "rt",
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.casino_RedTiger)
-					}
-				]
-			},
-			{
-				...defGameInfo.Casino_NetEnt,
-				parameter: defGameInfo.Casino_NetEnt,
-				spanText: "NetEnt",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-ne.png`,
-				path: path.casino.root,
-				providerImgName: "ne",
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.casino_NetEnt)
 					}
 				]
 			},
