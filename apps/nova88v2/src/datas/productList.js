@@ -109,22 +109,22 @@ const gameList = ({ langId, currencyName }) => {
 							img: `${cloudBannerImgURL}/h5/img/esportALL.png`
 						},
 						{
-							...defGameInfo.ESportAll,
+							...defGameInfo.ESportDota,
 							spanText: "DOTA2",
 							img: `${cloudBannerImgURL}/h5/img/esportDOTA2.png`
 						},
 						{
-							...defGameInfo.ESportAll,
+							...defGameInfo.ESportLOL,
 							spanText: "LOL",
 							img: `${cloudBannerImgURL}/h5/img/esportLOL.png`
 						},
 						{
-							...defGameInfo.ESportAll,
+							...defGameInfo.ESportCS,
 							spanText: "CS:GO",
 							img: `${cloudBannerImgURL}/h5/img/esportCS.png`
 						},
 						{
-							...defGameInfo.ESportAll,
+							...defGameInfo.ESportKOG,
 							spanText: "KOG",
 							img: `${cloudBannerImgURL}/h5/img/esportKOG.png`
 						}
@@ -714,22 +714,22 @@ const gameList = ({ langId, currencyName }) => {
 							img: `${cloudBannerImgURL}/h5/img/esportALL.png`
 						},
 						{
-							...defGameInfo.ESportAll,
+							...defGameInfo.ESportDota,
 							spanText: "DOTA2",
 							img: `${cloudBannerImgURL}/h5/img/esportDOTA2.png`
 						},
 						{
-							...defGameInfo.ESportAll,
+							...defGameInfo.ESportLOL,
 							spanText: "LOL",
 							img: `${cloudBannerImgURL}/h5/img/esportLOL.png`
 						},
 						{
-							...defGameInfo.ESportAll,
+							...defGameInfo.ESportCS,
 							spanText: "CS:GO",
 							img: `${cloudBannerImgURL}/h5/img/esportCS.png`
 						},
 						{
-							...defGameInfo.ESportAll,
+							...defGameInfo.ESportKOG,
 							spanText: "KOG",
 							img: `${cloudBannerImgURL}/h5/img/esportKOG.png`
 						}
@@ -1319,22 +1319,22 @@ const gameList = ({ langId, currencyName }) => {
 							img: `${cloudBannerImgURL}/h5/img/esportALL.png`
 						},
 						{
-							...defGameInfo.ESportAll,
+							...defGameInfo.ESportDota,
 							spanText: "DOTA2",
 							img: `${cloudBannerImgURL}/h5/img/esportDOTA2.png`
 						},
 						{
-							...defGameInfo.ESportAll,
+							...defGameInfo.ESportLOL,
 							spanText: "LOL",
 							img: `${cloudBannerImgURL}/h5/img/esportLOL.png`
 						},
 						{
-							...defGameInfo.ESportAll,
+							...defGameInfo.ESportCS,
 							spanText: "CS:GO",
 							img: `${cloudBannerImgURL}/h5/img/esportCS.png`
 						},
 						{
-							...defGameInfo.ESportAll,
+							...defGameInfo.ESportKOG,
 							spanText: "KOG",
 							img: `${cloudBannerImgURL}/h5/img/esportKOG.png`
 						}
@@ -1939,23 +1939,23 @@ const gameList = ({ langId, currencyName }) => {
 							img: `${cloudBannerImgURL}/h5/img/esportALL.png`
 						},
 						{
-							...defGameInfo.ESportAll,
+							...defGameInfo.ESportDota,
 							spanText: "DOTA2",
 							img: `${cloudBannerImgURL}/h5/img/esportDOTA2.png`
 						},
 						{
-							...defGameInfo.ESportAll,
+							...defGameInfo.ESportLOL,
 							spanText: "LOL",
 							img: `${cloudBannerImgURL}/h5/img/esportLOL.png`
 						},
 						{
-							...defGameInfo.ESportAll,
+							...defGameInfo.ESportCS,
 							spanText: "CS:GO",
 							img: `${cloudBannerImgURL}/h5/img/esportCS.png`
 						},
 
 						{
-							...defGameInfo.ESportAll,
+							...defGameInfo.ESportKOG,
 							spanText: "KOG",
 							img: `${cloudBannerImgURL}/h5/img/esportKOG.png`
 						}
@@ -2511,22 +2511,22 @@ const gameList = ({ langId, currencyName }) => {
 							img: `${cloudBannerImgURL}/h5/img/esportALL.png`
 						},
 						{
-							...defGameInfo.ESportAll,
+							...defGameInfo.ESportCS,
 							spanText: "CS:GO",
 							img: `${cloudBannerImgURL}/h5/img/esportCS.png`
 						},
 						{
-							...defGameInfo.ESportAll,
+							...defGameInfo.ESportDota,
 							spanText: "DOTA2",
 							img: `${cloudBannerImgURL}/h5/img/esportDOTA2.png`
 						},
 						{
-							...defGameInfo.ESportAll,
+							...defGameInfo.ESportKOG,
 							spanText: "KOG",
 							img: `${cloudBannerImgURL}/h5/img/esportKOG.png`
 						},
 						{
-							...defGameInfo.ESportAll,
+							...defGameInfo.ESportLOL,
 							spanText: "LOL",
 							img: `${cloudBannerImgURL}/h5/img/esportLOL.png`
 						}
@@ -2990,10 +2990,10 @@ export const defGameInfo = {
 	Cricket: { tpId: 1, gameId: 50, tpGameType: 1 },
 	Wap: { tpId: 1, gameId: 1, tpGameType: 1 },
 	ESportAll: { tpId: 1, gameId: 43, tpGameType: 1 },
-	ESportCS: { tpId: 1, gameId: 43, bettype: 1, tpGameType: 1 },
-	ESportDota: { tpId: 1, gameId: 43, bettype: 2, tpGameType: 1 },
-	ESportKOG: { tpId: 1, gameId: 43, bettype: 3, tpGameType: 1 },
-	ESportLOL: { tpId: 1, gameId: 43, bettype: 4, tpGameType: 1 },
+	ESportCS: { tpId: 1, gameId: 43, bettype: 3, tpGameType: 1 },
+	ESportDota: { tpId: 1, gameId: 43, bettype: 1, tpGameType: 1 },
+	ESportKOG: { tpId: 1, gameId: 43, bettype: 4, tpGameType: 1 },
+	ESportLOL: { tpId: 1, gameId: 43, bettype: 2, tpGameType: 1 },
 	LIVEcasinoN2Live: { tpId: 28, tpGameType: 45 },
 	LIVEcasinoWM: { tpId: 20, gameId: 20, tpGameType: 32 },
 	LIVEcasinoAB: { tpId: 12, gameId: 12, tpGameType: 6 },
