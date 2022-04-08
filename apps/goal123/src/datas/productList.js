@@ -380,20 +380,7 @@ const gameList = [
 					}
 				]
 			},
-			{
-				...defGameInfo.Casino_NetEnt,
-				parameter: defGameInfo.Casino_NetEnt,
-				spanText: "NetEnt",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-ne.png`,
-				path: path.casino.root,
-				providerImgName: "ne",
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.casino_NetEnt)
-					}
-				]
-			},
+
 			{
 				...defGameInfo.Casino_RedTiger,
 				parameter: defGameInfo.Casino_RedTiger,
@@ -405,6 +392,20 @@ const gameList = [
 					{
 						icon: defIconType.new,
 						inPeriod: isEventPeriod(eventTime.casino_RedTiger)
+					}
+				]
+			},
+			{
+				...defGameInfo.Casino_NetEnt,
+				parameter: defGameInfo.Casino_NetEnt,
+				spanText: "NetEnt",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-ne.png`,
+				path: path.casino.root,
+				providerImgName: "ne",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.casino_NetEnt)
 					}
 				]
 			},

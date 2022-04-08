@@ -283,21 +283,22 @@ const gameList = ({ langId, currencyName }) => {
 							]
 						},
 						{
-							...defGameInfo.Casino_NetEnt,
-							parameter: defGameInfo.Casino_NetEnt,
-							spanText: "NetEnt",
-							providerImgName: "nt",
-							img: `${cloudBannerImgURL}/h5/img/nt.png`,
+							...defGameInfo.Casino_RedTiger,
+							parameter: defGameInfo.Casino_RedTiger,
+							spanText: "Red Tiger",
+							providerImgName: "rt",
+							img: `${cloudBannerImgURL}/h5/img/rt.png`,
 							path: path.casino.root,
 							eventIcon: [
 								{
 									icon: defIconType.new,
 									inPeriod: isEventPeriod(
-										eventTime.casino_NetEnt
+										eventTime.casino_RedTiger
 									)
 								}
 							]
 						},
+
 						{
 							...defGameInfo.Casino_MGP,
 							parameter: defGameInfo.Casino_MGP,
@@ -353,17 +354,17 @@ const gameList = ({ langId, currencyName }) => {
 							path: path.casino.root
 						},
 						{
-							...defGameInfo.Casino_RedTiger,
-							parameter: defGameInfo.Casino_RedTiger,
-							spanText: "Red Tiger",
-							providerImgName: "rt",
-							img: `${cloudBannerImgURL}/h5/img/rt.png`,
+							...defGameInfo.Casino_NetEnt,
+							parameter: defGameInfo.Casino_NetEnt,
+							spanText: "NetEnt",
+							providerImgName: "nt",
+							img: `${cloudBannerImgURL}/h5/img/nt.png`,
 							path: path.casino.root,
 							eventIcon: [
 								{
 									icon: defIconType.new,
 									inPeriod: isEventPeriod(
-										eventTime.casino_RedTiger
+										eventTime.casino_NetEnt
 									)
 								}
 							]
@@ -888,17 +889,17 @@ const gameList = ({ langId, currencyName }) => {
 							]
 						},
 						{
-							...defGameInfo.Casino_NetEnt,
-							parameter: defGameInfo.Casino_NetEnt,
-							spanText: "NetEnt",
-							providerImgName: "nt",
-							img: `${cloudBannerImgURL}/h5/img/nt.png`,
+							...defGameInfo.Casino_RedTiger,
+							parameter: defGameInfo.Casino_RedTiger,
+							spanText: "Red Tiger",
+							providerImgName: "rt",
+							img: `${cloudBannerImgURL}/h5/img/rt.png`,
 							path: path.casino.root,
 							eventIcon: [
 								{
 									icon: defIconType.new,
 									inPeriod: isEventPeriod(
-										eventTime.casino_NetEnt
+										eventTime.casino_RedTiger
 									)
 								}
 							]
@@ -958,21 +959,22 @@ const gameList = ({ langId, currencyName }) => {
 							path: path.casino.root
 						},
 						{
-							...defGameInfo.Casino_RedTiger,
-							parameter: defGameInfo.Casino_RedTiger,
-							spanText: "Red Tiger",
-							providerImgName: "rt",
-							img: `${cloudBannerImgURL}/h5/img/rt.png`,
+							...defGameInfo.Casino_NetEnt,
+							parameter: defGameInfo.Casino_NetEnt,
+							spanText: "NetEnt",
+							providerImgName: "nt",
+							img: `${cloudBannerImgURL}/h5/img/nt.png`,
 							path: path.casino.root,
 							eventIcon: [
 								{
 									icon: defIconType.new,
 									inPeriod: isEventPeriod(
-										eventTime.casino_RedTiger
+										eventTime.casino_NetEnt
 									)
 								}
 							]
 						},
+
 						{
 							...defGameInfo.Casino_PT,
 							parameter: defGameInfo.Casino_PT,
@@ -1492,19 +1494,19 @@ const gameList = ({ langId, currencyName }) => {
 								}
 							]
 						},
+
 						{
-							...defGameInfo.Casino_NetEnt,
-							parameter: defGameInfo.Casino_NetEnt,
-							spanText: "NetEnt",
-							providerImgName: "nt",
-							img: `${cloudBannerImgURL}/h5/img/nt.png`,
+							...defGameInfo.Casino_RedTiger,
+							parameter: defGameInfo.Casino_RedTiger,
+							spanText: "Red Tiger",
+							providerImgName: "rt",
+							img: `${cloudBannerImgURL}/h5/img/rt.png`,
 							path: path.casino.root,
-							tpGameType: 64,
 							eventIcon: [
 								{
 									icon: defIconType.new,
 									inPeriod: isEventPeriod(
-										eventTime.casino_NetEnt
+										eventTime.casino_RedTiger
 									)
 								}
 							]
@@ -1564,17 +1566,18 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "sg"
 						},
 						{
-							...defGameInfo.Casino_RedTiger,
-							parameter: defGameInfo.Casino_RedTiger,
-							spanText: "Red Tiger",
-							providerImgName: "rt",
-							img: `${cloudBannerImgURL}/h5/img/rt.png`,
+							...defGameInfo.Casino_NetEnt,
+							parameter: defGameInfo.Casino_NetEnt,
+							spanText: "NetEnt",
+							providerImgName: "nt",
+							img: `${cloudBannerImgURL}/h5/img/nt.png`,
 							path: path.casino.root,
+							tpGameType: 64,
 							eventIcon: [
 								{
 									icon: defIconType.new,
 									inPeriod: isEventPeriod(
-										eventTime.casino_RedTiger
+										eventTime.casino_NetEnt
 									)
 								}
 							]
@@ -2099,17 +2102,17 @@ const gameList = ({ langId, currencyName }) => {
 							]
 						},
 						{
-							...defGameInfo.Casino_NetEnt,
-							parameter: defGameInfo.Casino_NetEnt,
-							spanText: "NetEnt",
-							providerImgName: "nt",
-							img: `${cloudBannerImgURL}/h5/img/nt.png`,
+							...defGameInfo.Casino_RedTiger,
+							parameter: defGameInfo.Casino_RedTiger,
+							spanText: "Red Tiger",
+							providerImgName: "rt",
+							img: `${cloudBannerImgURL}/h5/img/rt.png`,
 							path: path.casino.root,
 							eventIcon: [
 								{
 									icon: defIconType.new,
 									inPeriod: isEventPeriod(
-										eventTime.casino_NetEnt
+										eventTime.casino_RedTiger
 									)
 								}
 							]
@@ -2169,17 +2172,17 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "sg"
 						},
 						{
-							...defGameInfo.Casino_RedTiger,
-							parameter: defGameInfo.Casino_RedTiger,
-							spanText: "Red Tiger",
-							providerImgName: "rt",
-							img: `${cloudBannerImgURL}/h5/img/rt.png`,
+							...defGameInfo.Casino_NetEnt,
+							parameter: defGameInfo.Casino_NetEnt,
+							spanText: "NetEnt",
+							providerImgName: "nt",
+							img: `${cloudBannerImgURL}/h5/img/nt.png`,
 							path: path.casino.root,
 							eventIcon: [
 								{
 									icon: defIconType.new,
 									inPeriod: isEventPeriod(
-										eventTime.casino_RedTiger
+										eventTime.casino_NetEnt
 									)
 								}
 							]
@@ -2669,18 +2672,20 @@ const gameList = ({ langId, currencyName }) => {
 								}
 							]
 						},
+
 						{
-							...defGameInfo.Casino_NetEnt,
-							parameter: defGameInfo.Casino_NetEnt,
-							spanText: "NetEnt",
-							providerImgName: "nt",
-							img: `${cloudBannerImgURL}/h5/img/nt.png`,
+							...defGameInfo.Casino_RedTiger,
+							parameter: defGameInfo.Casino_RedTiger,
+							spanText: "Red Tiger",
+							providerImgName: "rt",
+							img: `${cloudBannerImgURL}/h5/img/rt.png`,
 							path: path.casino.root,
+							tpGameType: 65,
 							eventIcon: [
 								{
 									icon: defIconType.new,
 									inPeriod: isEventPeriod(
-										eventTime.casino_NetEnt
+										eventTime.casino_RedTiger
 									)
 								}
 							]
@@ -2772,18 +2777,17 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "sg"
 						},
 						{
-							...defGameInfo.Casino_RedTiger,
-							parameter: defGameInfo.Casino_RedTiger,
-							spanText: "Red Tiger",
-							providerImgName: "rt",
-							img: `${cloudBannerImgURL}/h5/img/rt.png`,
+							...defGameInfo.Casino_NetEnt,
+							parameter: defGameInfo.Casino_NetEnt,
+							spanText: "NetEnt",
+							providerImgName: "nt",
+							img: `${cloudBannerImgURL}/h5/img/nt.png`,
 							path: path.casino.root,
-							tpGameType: 65,
 							eventIcon: [
 								{
 									icon: defIconType.new,
 									inPeriod: isEventPeriod(
-										eventTime.casino_RedTiger
+										eventTime.casino_NetEnt
 									)
 								}
 							]
