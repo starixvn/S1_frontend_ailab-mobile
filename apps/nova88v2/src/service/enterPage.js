@@ -44,7 +44,8 @@ export const GET_ENTER_PAGE = ({
 	loginCallback,
 	execFunction,
 	specialUrl,
-	tpGameType
+	tpGameType,
+	bettype
 }) => {
 	const appUrl = window.location.origin;
 	const homeUrl = `${appUrl}`;
@@ -55,12 +56,16 @@ export const GET_ENTER_PAGE = ({
 	const _errorPageUrl = errorPageUrl(langId);
 	const _matchid = isNaN(matchid) ? matchid : Number(matchid);
 	const _tpGameType = tpGameType ? `&tpGameType=${tpGameType}` : "";
+	const _betType = bettype ? `&bettype=${bettype}` : "";
 
 	const entPageUrl = `${
 		config.openURL
 	}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&CashierUrl=${cashierUrl}&&LobbyUrl=${lobbyUrl}&matchid=${
 		_matchid || ""
-	}&errorUrl=${_errorPageUrl}&AppType=2${specialUrl ?? ""}${_tpGameType}`;
+	}&errorUrl=${_errorPageUrl}&AppType=2${
+		specialUrl ?? ""
+	}${_tpGameType}${_betType}`;
+
 	let result = setResult("", true, _ACTION_TYPE.blank);
 
 	const _tpId = isNaN(tpId) ? tpId : Number(tpId);

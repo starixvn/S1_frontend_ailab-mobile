@@ -271,7 +271,8 @@ const SubGame = ({
 		gameId,
 		useGotoGame: _useGotoGame,
 		specialUrl,
-		tpGameType
+		tpGameType,
+		bettype
 	}) => {
 		if (tpId === defSpecialSetting.sports_9w && userInfo.isLogin) {
 			const result = await handleGoToGame({
@@ -300,7 +301,8 @@ const SubGame = ({
 					  })
 					: null,
 				specialUrl,
-				tpGameType
+				tpGameType,
+				bettype
 			});
 		}
 	};
@@ -367,7 +369,8 @@ const SubGame = ({
 				gameId: game.gameId,
 				useGotoGame: game.useGotoGame,
 				specialUrl: game?.specialUrl ?? "",
-				tpGameType: game.tpGameType
+				tpGameType: game.tpGameType,
+				bettype: game?.bettype
 			})}>
 			{content}
 		</button>
