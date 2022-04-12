@@ -171,10 +171,12 @@ const Payment = props => {
 		const result = VaildAmount({ _amount: amount });
 
 		if (result) {
+			const resultAmount = _isConvert ? amount * 1000 : Number(amount);
+
 			if (
 				userInfo.phoneVerified &&
 				depositPromo.requiredAmount &&
-				amount < depositPromo.requiredAmount
+				resultAmount < depositPromo.requiredAmount
 			) {
 				const success = await asyncPromotionConfirmPopBox();
 
