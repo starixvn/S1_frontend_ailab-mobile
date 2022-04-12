@@ -138,7 +138,11 @@ const defElems = ({
 						: i18n?.lbl_RollOver
 				}
 				icon="icon icon-icon32px_"
-				value={`${promotionInfo.rollOver}x`}
+				value={`${
+					promotionInfo.fullFillType === 2
+						? promotionInfo.winOver
+						: promotionInfo.rollOver
+				}x`}
 				showIcon={showIcon}
 			/>
 		),
