@@ -127,13 +127,13 @@ export default () => {
 						</Link>
 					</div>
 				)}
-				<div>
+				{/* <div>
 					<Link
 						className="title icon icon-film"
 						to={path.streaming.root}>
 						{i18n.lbl_LiveStreaming}
 					</Link>
-				</div>
+				</div> */}
 				{getLeaderBoardSupportCurrencyId().includes(_currencyId) && (
 					<div>
 						<Link
