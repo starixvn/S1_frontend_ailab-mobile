@@ -7,13 +7,18 @@ import {
 	loadingContext
 } from "../common/context";
 import config, { cloudImgURL } from "../../config";
-import { isConvert, number_format } from "../common/common";
+import { isConvert, number_format, defCurrenyId } from "../common/common";
 import api from "../../service/api";
 import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
 import { useHandleAmount } from "../hook/useHandleAmount";
 import { defPopBoxType } from "../common/popbox";
 import PromoList from "./promoList";
+import useTip from "../hook/useTip";
+
+const defInputCol = {
+	payAccount: "payAccount"
+};
 
 const payType = "MobilePay";
 
@@ -41,7 +46,9 @@ const Payment = props => {
 		requiredAmount: null,
 		specialCode: ""
 	});
+	const [payAccount, setPayAccount] = useState({ value: "", tip: "" });
 
+	const { showTips, showTipHandler } = useTip();
 	const {
 		amount,
 		warning,
@@ -118,9 +125,30 @@ const Payment = props => {
 		setChannel(bankInfo);
 	};
 
-	const ClickSubmit = async () => {
-		const result = VaildAmount({ _amount: amount });
+	const onChangeInput = ({ col, val }) => {
+		if (col === defInputCol.payAccount) {
+			setPayAccount({ value: val, tip: "" });
+		}
+	};
 
+	const ClickSubmit = async () => {
+		const checkPayAccount = () => {
+			if (
+				userInfo.currencyId === defCurrenyId.INR &&
+				selChannel?.payName === "TenPay" &&
+				!payAccount.value
+			) {
+				setPayAccount(prev => ({
+					...prev,
+					tip: i18n.lbl_PleaseEnterUPI
+				}));
+
+				return false;
+			}
+			return true;
+		};
+
+		const result = checkPayAccount() && VaildAmount({ _amount: amount });
 		if (result) {
 			const resultAmount = _isConvert ? amount * 1000 : Number(amount);
 
@@ -215,7 +243,8 @@ const Payment = props => {
 					const paramsUrl = [
 						`ChannelId=${selChannel.channelId}`,
 						`Amount=${real_amount}`,
-						bonusCode && `BonusCode=${bonusCode}`
+						bonusCode && `BonusCode=${bonusCode}`,
+						payAccount.value && `PayAccount=${payAccount.value}`
 					]
 						.filter(Boolean)
 						.join("&");
@@ -285,7 +314,7 @@ const Payment = props => {
 				imgKey="groupName"
 				idKey="groupId"
 				prefixImgUrl={`${cloudImgURL}/SiteSkin/img/MobilePay/`}
-				displayKey="channelName"
+				displayKey="groupName"
 				_isConvert={_isConvert}
 			/>
 			{channelList?.length > 1 && (
@@ -296,7 +325,7 @@ const Payment = props => {
 					SelectPayment={SelectChannel}
 					selected={selChannel?.channelId}
 					mainKey={`deposit-full-${payType}-channelList`}
-					imgKey="groupName"
+					imgKey="payName"
 					idKey="channelId"
 					bindFullObj={true}
 					prefixImgUrl={`${cloudImgURL}/SiteSkin/img/MobilePay/`}
@@ -304,6 +333,52 @@ const Payment = props => {
 					_isConvert={_isConvert}
 				/>
 			)}
+			{userInfo.currencyId === defCurrenyId.INR &&
+				selChannel?.payName === "TenPay" && (
+					<>
+						<div className="title">
+							<span className="text-org">*</span>
+							{selGroup?.groupName}
+						</div>
+						<div className="selectModule">
+							<div className="infoModule">
+								<div
+									className={`inputInfo${
+										showTips.includes("payAccount")
+											? " active"
+											: ""
+									}`}>
+									{i18n.lbl_EnterYourUPIHint2}
+								</div>
+								<div
+									className={`inputBox${
+										payAccount.tip ? " error" : ""
+									}`}>
+									<i className="icon icon-pencil" />
+									<input
+										value={payAccount.value}
+										placeholder={i18n.lbl_EnterYourUPIHint1}
+										onChange={e =>
+											onChangeInput({
+												val: e.target.value,
+												col: defInputCol.payAccount
+											})
+										}
+									/>
+									<div className="icon-module">
+										<i
+											className="icon icon-information"
+											onClick={() =>
+												showTipHandler("payAccount")
+											}
+										/>
+									</div>
+								</div>
+								<div className="tip">{payAccount.tip}</div>
+							</div>
+						</div>
+					</>
+				)}
 			<AmountInput
 				title={i18n.lbl_DepositAmount}
 				channel={selChannel}

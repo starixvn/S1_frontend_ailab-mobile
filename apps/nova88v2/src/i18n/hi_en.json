@@ -650,6 +650,9 @@
 	"lbl_Deposit_DragonPayPop_AccountName": "Account Name",
 	"lbl_Deposit_DragonPayPop_AccountNumber": "Account Number",
 	"lbl_AutoDeposit": "Auto Deposit",
+	"lbl_EnterYourUPIHint1":"ENTER YOUR UPI",
+	"lbl_EnterYourUPIHint2":"(Paytm/Phope/Googlepay... etc)",
+	"lbl_PleaseEnterUPI":"Please enter UPI",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "Payment Details",
