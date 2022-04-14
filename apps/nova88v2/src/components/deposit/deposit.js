@@ -450,7 +450,7 @@ const Panel = () => {
 						});
 					}
 				},
-				() => {
+				error => {
 					console.error(error);
 				}
 			);
