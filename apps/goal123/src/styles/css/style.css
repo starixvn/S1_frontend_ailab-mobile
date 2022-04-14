@@ -1301,7 +1301,7 @@ main .sideBarNew div > button img {
   padding: 0.5vw 2.5vw 1vw;
   font-size: 3vw;
   right: 0.8vw;
-  background: #6395f1;
+  background: #5084e4;
 }
 
 #popup.backupDomain .pop .popTxt .text-center {
@@ -1490,7 +1490,7 @@ main .sideBarNew div > button img {
 }
 
 #popup.cryptoPaypop .popTxt > div span {
-  color: #6395f1;
+  color: #5084e4;
 }
 
 #popup.cryptoPaypop .popTxt > div.sisa {
@@ -2751,6 +2751,12 @@ main .sideBarNew div > button img {
   font-size: 5vw !important;
 }
 
+.inputBox + .tip .times {
+  color: red;
+  margin-right: 1vw;
+  display: block;
+}
+
 .LoginRule {
   height: 0;
   visibility: hidden;
@@ -2834,7 +2840,7 @@ main .sideBarNew div > button img {
 
 .btn-group button.orange,
 .btn-group a.orange {
-  background: #6395f1;
+  background: #5084e4;
 }
 
 .btn-group button.blue,
@@ -3249,7 +3255,7 @@ main .sideBarNew div > button img {
 }
 
 .account .icon-crypto::before {
-  color: #6395f1;
+  color: #5084e4;
   margin-right: 1vw;
 }
 
@@ -3262,7 +3268,7 @@ main .sideBarNew div > button img {
 
 .account.open {
   background: #fff;
-  border: 1px solid #6395f1;
+  border: 1px solid #5084e4;
 }
 
 .account.open .nickname {
@@ -7545,7 +7551,7 @@ span.important {
 }
 
 .rememberMode > .icon {
-  color: #6395f1;
+  color: #5084e4;
   position: absolute;
   right: 0;
   top: 2vw;
@@ -7574,7 +7580,7 @@ span.important {
 
 .swithModule {
   text-align: center;
-  color: #6395f1 !important;
+  color: #5084e4 !important;
   font-size: 2.6vw;
   display: -webkit-box;
   display: -ms-flexbox;
