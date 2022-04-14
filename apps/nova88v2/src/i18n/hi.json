@@ -648,6 +648,9 @@
 	"lbl_Deposit_DragonPayPop_AccountName": "खाते का नाम",
 	"lbl_Deposit_DragonPayPop_AccountNumber": "खाता संख्या",
 	"lbl_AutoDeposit": "Auto Deposit",
+	"lbl_EnterYourUPIHint1":"अपना भरें UPI",
+	"lbl_EnterYourUPIHint2":"(पेटीएम/फोनपे/गूगलपे...आदि)",
+	"lbl_PleaseEnterUPI":"कृपया UPI दर्ज करें।",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "भुगतान विवरण",
