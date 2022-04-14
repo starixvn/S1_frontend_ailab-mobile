@@ -10,7 +10,7 @@ import Layout from "../components/common/layout";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
 import Menu from "../components/home/menu";
-import Streaming from "../components/home/streaming";
+import LiveCasino from "../components/home/liveCasino";
 import Promos from "../components/home/promos";
 import HotGame from "../components/home/hotGame";
 import Referral from "../components/home/referral";
@@ -152,7 +152,8 @@ const IndexPage = () => {
 						/>
 					) : null}
 					<Jackpot i18n={i18n} userInfo={userInfo} />
-					<Streaming />
+					{/* <Streaming /> */}
+					{/* <LiveCasino /> */}
 					<Bottom
 						i18n={i18n}
 						langId={userInfo.langId}
