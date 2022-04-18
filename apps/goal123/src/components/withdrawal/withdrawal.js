@@ -316,6 +316,11 @@ const Panel = () => {
 	};
 
 	const ClickSubmit = () => {
+		if (
+			withdrawalLimit.maxTimes > 0 &&
+			withdrawalLimit.withdrawalTimes >= withdrawalLimit.maxTimes
+		)
+			return;
 		if (pageVerify) {
 			const result = VaildAmount(amount);
 			if (!bankInfo?.bankList?.length) {
@@ -689,7 +694,20 @@ const Panel = () => {
 					onBlur={VaildAmount.bind(this, amount)}
 				/>
 
-				<div className="tip">{withdrawalLimitHint}</div>
+				<div className="tip">
+					{withdrawalLimit && (
+						<span className="times">
+							{`${i18n.lbl_Times}: ${
+								withdrawalLimit.withdrawalTimes
+							} / ${
+								withdrawalLimit.maxTimes
+									? withdrawalLimit.maxTimes
+									: i18n.lbl_Unlimited
+							}`}
+						</span>
+					)}
+					{withdrawalLimitHint}
+				</div>
 
 				<div className="inputBox">
 					<div className="selectBank">

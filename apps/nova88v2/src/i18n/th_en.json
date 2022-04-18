@@ -445,6 +445,7 @@
 	"lbl_CryptoWithdrawal": "Crypto Withdrawal",
 	"lbl_ReceiveUSDT": "Receive USDT Amount",
 	"lbl_WithdrawalCryptoNote": "提款金額僅供參考，實際到帳金額將由當時匯率決定",
+	"lbl_Times":"Times",
 
 	"==============================================Transfer====================================": "",
 

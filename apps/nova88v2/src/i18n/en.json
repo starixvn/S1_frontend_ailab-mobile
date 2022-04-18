@@ -444,6 +444,7 @@
 	"lbl_Insufficientbalance": "Insufficient balance",
 	"lbl_CryptoWithdrawal": "Crypto Withdrawal",
 	"lbl_ReceiveUSDT": "Receive USDT Amount",
+	"lbl_Times":"Times",
 	"lbl_WithdrawalCryptoNote": "Conversion rate serves as reference purposes only, exact amount shall refer the latest rate.",
 
 	"==============================================Transfer====================================": "",
