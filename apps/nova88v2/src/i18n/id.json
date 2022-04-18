@@ -434,6 +434,7 @@
 	"lbl_Insufficientbalance": "Saldo tidak mencukupi",
 	"lbl_CryptoWithdrawal": "Penarikan Kripto",
 	"lbl_ReceiveUSDT": "Terima jumlah USDT",
+	"lbl_Times":"Kali",
 	"lbl_WithdrawalCryptoNote": "Nilai konversi berfungsi sebagai tujuan referensi saja, jumlah yang tepat akan mengacu pada nilai terbaru.",
 
 	"-==================-==========================Transfer-===================================": "",

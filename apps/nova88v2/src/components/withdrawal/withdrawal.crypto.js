@@ -68,7 +68,9 @@ const Panel = () => {
 						unlimited: false,
 						withdrawalAvailableAmount:
 							res.data.data?.withdrawalAvailableAmount,
-						withdrawalMin: res.data.data?.withdrawalMin
+						withdrawalMin: res.data.data?.withdrawalMin,
+						maxTimes: res.data.data.maxTimes,
+						withdrawalTimes: res.data.data.withdrawalTimes
 					};
 
 					setLimitInfo({
@@ -912,11 +914,36 @@ const Panel = () => {
 				warningMsg={warning.msg}
 				testAttr="withdrawal_amount"
 			/>
-			<div className="text-org">{limitInfo.withdrawalLimitHint}</div>
+			<div className="text-org">
+				{limitInfo?.limit && (
+					<span>
+						{`${i18n.lbl_Times}: ${
+							limitInfo?.limit.withdrawalTimes
+						} / ${
+							limitInfo.limit.maxTimes
+								? limitInfo.limit.maxTimes
+								: i18n.lbl_Unlimited
+						}`}
+					</span>
+				)}
+				{limitInfo.withdrawalLimitHint}
+			</div>
 			<div className="btn-group">
 				<button
 					className={
-						warning.status !== defIptStatus.warning ? "" : "gray"
+						warning.status !== defIptStatus.warning &&
+						!(
+							limitInfo?.limit?.maxTimes > 0 &&
+							limitInfo?.limit?.withdrawalTimes >=
+								limitInfo?.limit?.maxTimes
+						)
+							? ""
+							: "gray"
+					}
+					disabled={
+						limitInfo?.limit?.maxTimes > 0 &&
+						limitInfo?.limit?.withdrawalTimes >=
+							limitInfo?.limit?.maxTimes
 					}
 					data-testid="submit_withdrawal"
 					onClick={checkAccount}>

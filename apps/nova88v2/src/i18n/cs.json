@@ -436,6 +436,7 @@
 	"lbl_Insufficientbalance": "余额不足",
 	"lbl_CryptoWithdrawal": "加密货币提款",
 	"lbl_ReceiveUSDT": "USDT款项到账",
+	"lbl_Times":"次数",
 	"lbl_WithdrawalCryptoNote": "汇率仅供参考, 详细到帐金额将由当时汇率决定",
 
 	"-==================--=========================Transfer--==================================": "",

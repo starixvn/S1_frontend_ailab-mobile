@@ -339,6 +339,11 @@ const Panel = () => {
 	};
 
 	const ClickSubmit = () => {
+		if (
+			withdrawalLimit.maxTimes > 0 &&
+			withdrawalLimit.withdrawalTimes >= withdrawalLimit.maxTimes
+		)
+			return;
 		if (pageVerify) {
 			const result = VaildAmount(amount) && selBank;
 			if (!bankInfo?.bankList?.length) {
@@ -745,6 +750,7 @@ const Panel = () => {
 						clickInfo={clickInfo}
 						inputStatus={inputStatus}
 						VaildAmount={VaildAmount}
+						withdrawalLimit={withdrawalLimit}
 						withdrawalLimitHint={withdrawalLimitHint}
 					/>
 				</div>
