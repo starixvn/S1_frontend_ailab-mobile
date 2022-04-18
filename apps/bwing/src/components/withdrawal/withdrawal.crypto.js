@@ -134,7 +134,9 @@ const Panel = () => {
 								unlimited: false,
 								withdrawalAvailableAmount:
 									res.data.data?.withdrawalAvailableAmount,
-								withdrawalMin: res.data.data?.withdrawalMin
+								withdrawalMin: res.data.data?.withdrawalMin,
+								maxTimes: res.data.data.maxTimes,
+								withdrawalTimes: res.data.data.withdrawalTimes
 							};
 
 							setLimitInfo({
@@ -413,6 +415,11 @@ const Panel = () => {
 	};
 
 	const ClickSubmit = () => {
+		if (
+			limitInfo.limit.maxTimes > 0 &&
+			limitInfo.limit.withdrawalTimes >= limitInfo.limit.maxTimes
+		)
+			return;
 		if (pageVerify) {
 			const result = VaildAmount(amount);
 			if (!selBank) {
@@ -884,6 +891,7 @@ const Panel = () => {
 						clickInfo={clickInfo}
 						inputStatus={inputStatus}
 						VaildAmount={VaildAmount}
+						withdrawalLimit={limitInfo?.limit}
 						withdrawalLimitHint={limitInfo.withdrawalLimitHint}
 					/>
 				</div>

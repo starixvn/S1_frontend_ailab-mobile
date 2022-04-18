@@ -442,6 +442,7 @@
 	"lbl_Insufficientbalance": "अपर्याप्त शेषराशि",
 	"lbl_CryptoWithdrawal": "Crypto Withdrawal",
 	"lbl_ReceiveUSDT": "Receive USDT Amount",
+	"lbl_Times":"बारी",
 	"lbl_WithdrawalCryptoNote": "Conversion rate serves as reference purposes only, exact amount shall refer the latest rate.",
 
 	"==============================================Transfer====================================": "",

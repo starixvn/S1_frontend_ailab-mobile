@@ -14,6 +14,7 @@ const AmountPanel = ({
 	inputStatus,
 	clickInfo,
 	VaildAmount,
+	withdrawalLimit,
 	withdrawalLimitHint,
 	currencyId
 }) => {
@@ -89,7 +90,20 @@ const AmountPanel = ({
 					{inputStatus.msg}
 				</div>
 
-				<div className="tip active">{withdrawalLimitHint}</div>
+				<div className="tip active">
+					{withdrawalLimit && (
+						<span className="times">
+							{`${i18n.lbl_Times}: ${
+								withdrawalLimit.withdrawalTimes
+							} / ${
+								withdrawalLimit.maxTimes
+									? withdrawalLimit.maxTimes
+									: i18n.lbl_Unlimited
+							}`}
+						</span>
+					)}
+					{withdrawalLimitHint}
+				</div>
 			</div>
 		</div>
 	);

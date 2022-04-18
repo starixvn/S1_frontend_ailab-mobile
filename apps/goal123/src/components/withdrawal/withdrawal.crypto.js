@@ -140,9 +140,10 @@ const Panel = () => {
 							unlimited: false,
 							withdrawalAvailableAmount:
 								res.data.data?.withdrawalAvailableAmount,
-							withdrawalMin: res.data.data?.withdrawalMin
+							withdrawalMin: res.data.data?.withdrawalMin,
+							maxTimes: res.data.data.maxTimes,
+							withdrawalTimes: res.data.data.withdrawalTimes
 						};
-
 						setLimitInfo({
 							limit,
 							withdrawalLimitHint: limitHint(limit)
@@ -409,6 +410,11 @@ const Panel = () => {
 	};
 
 	const ClickSubmit = () => {
+		if (
+			limitInfo.limit.maxTimes > 0 &&
+			limitInfo.limit.withdrawalTimes >= limitInfo.limit.maxTimes
+		)
+			return;
 		if (pageVerify) {
 			const result = VaildAmount(amount);
 			if (!selBank) {
@@ -779,7 +785,6 @@ const Panel = () => {
 			}
 		);
 	};
-	console.log(selBank);
 	const banks = bankInfo?.uSDTDetail?.map(b => {
 		return (
 			<div
@@ -844,7 +849,20 @@ const Panel = () => {
 					onBlur={VaildAmount.bind(this, amount)}
 				/>
 
-				<div className="tip">{limitInfo.withdrawalLimitHint}</div>
+				<div className="tip">
+					{limitInfo?.limit && (
+						<span className="times">
+							{`${i18n.lbl_Times}: ${
+								limitInfo.limit.withdrawalTimes
+							} / ${
+								limitInfo.limit.maxTimes
+									? limitInfo.limit.maxTimes
+									: i18n.lbl_Unlimited
+							}`}
+						</span>
+					)}
+					{limitInfo.withdrawalLimitHint}
+				</div>
 
 				{bankInfo?.uSDTDetail?.length < 3 && (
 					<div className="btn-group">

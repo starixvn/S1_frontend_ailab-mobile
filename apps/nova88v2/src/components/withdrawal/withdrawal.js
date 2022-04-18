@@ -710,11 +710,32 @@ const Panel = () => {
 				warningMsg={warning.msg}
 				testAttr="withdrawal_amount"
 			/>
-			<div className="text-org">{withdrawalLimitHint}</div>
+			<div className="text-org">
+				<span>
+					{`${i18n.lbl_Times}: ${withdrawalLimit.withdrawalTimes} / ${
+						withdrawalLimit.maxTimes
+							? withdrawalLimit?.maxTimes
+							: i18n.lbl_Unlimited
+					}`}
+				</span>
+				{withdrawalLimitHint}
+			</div>
 			<div className="btn-group">
 				<button
 					className={
-						warning.status !== defIptStatus.warning ? "" : "gray"
+						warning.status !== defIptStatus.warning &&
+						!(
+							withdrawalLimit.maxTimes > 0 &&
+							withdrawalLimit.withdrawalTimes >=
+								withdrawalLimit.maxTimes
+						)
+							? ""
+							: "gray"
+					}
+					disabled={
+						withdrawalLimit.maxTimes > 0 &&
+						withdrawalLimit.withdrawalTimes >=
+							withdrawalLimit.maxTimes
 					}
 					data-testid="submit_withdrawal"
 					onClick={checkAccount}>
