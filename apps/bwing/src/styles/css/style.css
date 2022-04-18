@@ -3449,6 +3449,7 @@ a.clickBtn:before {
   margin-top: 1vw;
   display: none;
   white-space: initial;
+  width: 100%;
 }
 
 .tip img {
@@ -10625,6 +10626,7 @@ span.important {
 .input-Area {
   margin-bottom: 2vw;
   display: block !important;
+  width: 100%;
 }
 
 .input-Area .input-title {
