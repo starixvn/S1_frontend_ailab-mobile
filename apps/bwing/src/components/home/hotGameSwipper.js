@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Marquee from "react-fast-marquee";
 import PropTypes from "prop-types";
 import { popBoxContext, navContext, defNavPanel } from "../common/context";
@@ -7,118 +7,17 @@ import {
 	useGetTpMaintainList,
 	defTpGameType
 } from "../hook/useGetTpMaintainList";
-import { bannerImgUrl } from "../../config";
-
-const defGameType = {
-	default: "default",
-	casino: "casino"
-};
-
-export const defGameList = [
-	{
-		name: "Mahjong Ways Two",
-		provider: "PG",
-		providerImg: `${bannerImgUrl}/h5/img/hotgame/pg.png`,
-		img: `${bannerImgUrl}/h5/img/hotgame/hotgame1.jpg`,
-		tpId: 14,
-		gameId: "mahjong-ways2",
-		gameType: defGameType.casino,
-		tpGameType: 17
-	},
-	{
-		name: "Treasures of Aztec",
-		provider: "PG",
-		providerImg: `${bannerImgUrl}/h5/img/hotgame/pg.png`,
-		img: `${bannerImgUrl}/h5/img/hotgame/hotgame2.jpg`,
-		tpId: 14,
-		gameId: "treasures-aztec",
-		gameType: defGameType.casino,
-		tpGameType: 17
-	},
-	{
-		name: "5 God beasts",
-		provider: "CQ9",
-		providerImg: `${bannerImgUrl}/h5/img/hotgame/cq9.png`,
-		img: `${bannerImgUrl}/h5/img/hotgame/hotgame3.jpg`,
-		tpId: 16,
-		gameId: 117,
-		gameType: defGameType.casino,
-		tpGameType: 29
-	},
-	{
-		name: "Hercules",
-		provider: "CQ9",
-		providerImg: `${bannerImgUrl}/h5/img/hotgame/cq9.png`,
-		img: `${bannerImgUrl}/h5/img/hotgame/hotgame4.jpg`,
-		tpId: 16,
-		gameId: 161,
-		gameType: defGameType.casino,
-		tpGameType: 29
-	},
-	{
-		name: "Three Star Fortune",
-		provider: "PP",
-		providerImg: `${bannerImgUrl}/h5/img/hotgame/pp.png`,
-		img: `${bannerImgUrl}/h5/img/hotgame/hotgame5.jpg`,
-		tpId: 5,
-		gameId: "vs10threestar",
-		gameType: defGameType.casino,
-		tpGameType: 7
-	},
-	{
-		name: "5 Lions Gold",
-		provider: "PP",
-		providerImg: `${bannerImgUrl}/h5/img/hotgame/pp.png`,
-		img: `${bannerImgUrl}/h5/img/hotgame/hotgame6.jpg`,
-		tpId: 5,
-		gameId: "vs243lionsgold",
-		gameType: defGameType.casino,
-		tpGameType: 7
-	},
-	{
-		name: "Dancing Fever",
-		provider: "Spade",
-		providerImg: `${bannerImgUrl}/h5/img/hotgame/sg.png`,
-		img: `${bannerImgUrl}/h5/img/hotgame/hotgame7.jpg`,
-		tpId: 10,
-		gameId: "S-DF02",
-		gameType: defGameType.casino,
-		tpGameType: 15
-	},
-	{
-		name: "5 Fortune Dragons",
-		provider: "Spade",
-		providerImg: `${bannerImgUrl}/h5/img/hotgame/sg.png`,
-		img: `${bannerImgUrl}/h5/img/hotgame/hotgame8.jpg`,
-		tpId: 10,
-		gameId: "S-FD01",
-		gameType: defGameType.casino,
-		tpGameType: 15
-	},
-	{
-		name: "Thor Infinity Reels",
-		provider: "YGG",
-		providerImg: `${bannerImgUrl}/h5/img/hotgame/ygg.png`,
-		img: `${bannerImgUrl}/h5/img/hotgame/hotgame9.jpg`,
-		tpId: 8,
-		gameId: "1035",
-		gameType: defGameType.casino,
-		tpGameType: 14
-	},
-	{
-		name: "Lucky Neko",
-		provider: "YGG",
-		providerImg: `${bannerImgUrl}/h5/img/hotgame/ygg.png`,
-		img: `${bannerImgUrl}/h5/img/hotgame/hotgame10.jpg`,
-		tpId: 8,
-		gameId: "7382",
-		gameType: defGameType.casino,
-		tpGameType: 14
-	}
-];
+import { api_site_GetHotGames } from "../../service/api/site";
 
 export const defProductType = {
-	slots: "slots"
+	Sports: 1,
+	Slots: 2,
+	LiveCasino: 3,
+	Fishing: 4,
+	CockFighting: 5,
+	Lottery: 6,
+	VirtualSports: 7,
+	Poker: 8
 };
 
 const HotGameSwipper = ({ i18n, userInfo }) => {
@@ -129,7 +28,24 @@ const HotGameSwipper = ({ i18n, userInfo }) => {
 	};
 	const { maintainList } = useGetTpMaintainList();
 
-	const clickGame = ({ tpId, gameId, productType, tpGameType }) => {
+	const [gameList, setGameList] = useState([]);
+
+	useEffect(() => {
+		api_site_GetHotGames({ langId: userInfo.langId })
+			.then(res => {
+				if (res.data.errorCode === 0) {
+					setGameList(res.data.data);
+				} else {
+					errorPopBox(
+						res.data.message || "error",
+						res.data.errorCode
+					);
+				}
+			})
+			.catch(() => errorPopBox());
+	}, []);
+
+	const clickGame = ({ tpId, gameId, tpCategory, tpGameType }) => {
 		if (
 			maintainList?.some(
 				m =>
@@ -156,7 +72,7 @@ const HotGameSwipper = ({ i18n, userInfo }) => {
 			});
 		} else if (userInfo.isLogin === false) {
 			handleLogin();
-		} else if (productType === defProductType.slots) {
+		} else if (tpCategory === defProductType.slots) {
 			GET_CASINO_ENTER_PAGE({
 				langId: userInfo.langId,
 				tpId,
@@ -176,21 +92,21 @@ const HotGameSwipper = ({ i18n, userInfo }) => {
 		}
 	};
 
-	const rows = defGameList.map(g => {
+	const rows = gameList.map(g => {
 		return (
 			<a
 				className="hotGamModule"
-				key={`hotgamelist-${g.tpId}-${g.gameId}-${g.gameType}`}
+				key={`hotgamelist-${g.tpId}-${g.gameId}-${g.tpCategory}`}
 				onClick={clickGame.bind(this, {
 					tpId: g?.tpId,
 					gameId: g?.gameId,
-					productType: g?.productType,
+					tpCategory: g?.tpCategory,
 					tpGameType: g.tpGameType
 				})}>
-				<img className="gameimg" src={g.img} alt="" />
+				<img className="gameimg" src={g.gameLogo} alt="" />
 				<div className="title">
-					<p>{g.name}</p>
-					<img src={g.providerImg} alt="" />
+					<p>{g.gameName}</p>
+					<img src={g.tpLogo} alt="" />
 				</div>
 			</a>
 		);
