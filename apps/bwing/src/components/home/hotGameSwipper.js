@@ -36,13 +36,13 @@ const HotGameSwipper = ({ i18n, userInfo }) => {
 				if (res.data.errorCode === 0) {
 					setGameList(res.data.data);
 				} else {
-					errorPopBox(
-						res.data.message || "error",
-						res.data.errorCode
-					);
+					setPopBox({
+						isOpen: true,
+						content: `[${res.data.errorCode}] ${res.data.message}`
+					});
 				}
 			})
-			.catch(() => errorPopBox());
+			.catch(err => console.error(err));
 	}, []);
 
 	const clickGame = ({ tpId, gameId, tpCategory, tpGameType }) => {
