@@ -38,7 +38,9 @@ export const defSlotTpGameType = {
 	JILI: { tpId: 32, tpGameType: 53 },
 	MG: { tpId: 34, tpGameType: 57 },
 	RedTiger: { tpId: 38, tpGameType: 65 },
-	AdvantPlay: { tpId: 39, tpGameType: 67 }
+	AdvantPlay: { tpId: 39, tpGameType: 67 },
+	Mega888: { tpId: 22, tpGameType: 34 },
+	Habanero: { tpId: 40, tpGameType: 68 }
 };
 
 const gameList = ({ langId, currencyName }) => {

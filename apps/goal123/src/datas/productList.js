@@ -87,7 +87,6 @@ export const defSlotTpGameType = {
 	Saba: { tpId: 1, tpGameType: 4 },
 	PP: { tpId: 5, tpGameType: 7 },
 	GPI: { tpId: 6, tpGameType: 11 },
-	Joker: { tpId: 9, tpGameType: 13 },
 	YGG: { tpId: 8, tpGameType: 14 },
 	SG: { tpId: 10, tpGameType: 15 },
 	PG: { tpId: 14, tpGameType: 17 },
@@ -98,7 +97,8 @@ export const defSlotTpGameType = {
 	MG: { tpId: 34, tpGameType: 57 },
 	NetEnt: { tpId: 37, tpGameType: 64 },
 	RedTiger: { tpId: 38, tpGameType: 65 },
-	AdvantPlay: { tpId: 39, tpGameType: 67 }
+	AdvantPlay: { tpId: 39, tpGameType: 67 },
+	Habanero: { tpId: 40, tpGameType: 68 }
 };
 
 const gameList = [
