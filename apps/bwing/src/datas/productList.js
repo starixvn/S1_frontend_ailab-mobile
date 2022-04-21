@@ -139,6 +139,24 @@ export const slotPlatform = [
 	}
 ];
 
+export const defSlotTpGameType = {
+	Saba: { tpId: 1, tpGameType: 4 },
+	PP: { tpId: 5, tpGameType: 7 },
+	GPI: { tpId: 6, tpGameType: 11 },
+	YGG: { tpId: 8, tpGameType: 14 },
+	SG: { tpId: 10, tpGameType: 15 },
+	PG: { tpId: 14, tpGameType: 17 },
+	CQ9: { tpId: 16, tpGameType: 29 },
+	Iconic: { tpId: 24, tpGameType: 39 },
+	PT: { tpId: 27, tpGameType: 46 },
+	JILI: { tpId: 32, tpGameType: 53 },
+	MG: { tpId: 34, tpGameType: 57 },
+	NetEnt: { tpId: 37, tpGameType: 64 },
+	RedTiger: { tpId: 38, tpGameType: 65 },
+	AdvantPlay: { tpId: 39, tpGameType: 67 },
+	Habanero: { tpId: 40, tpGameType: 68 }
+};
+
 export const sportStreamDef = {
 	sportSaba: {
 		tpId: 1,
