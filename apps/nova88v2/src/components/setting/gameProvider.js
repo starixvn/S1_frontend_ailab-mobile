@@ -3,6 +3,7 @@ import path from "../../path";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import { defGameInfo } from "../../datas/productList";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
+import { defCurrenyId, langToCurrency } from "../common/common";
 import { cloudImgURL } from "../../config";
 import Header from "../header/header";
 import { Link } from "../../route/link";
@@ -53,6 +54,12 @@ const defPlatfrom = [
 		...defGameInfo.Casino_YGG,
 		path: path.casino.root,
 		imgName: "yg"
+	},
+	{
+		...defGameInfo.Casino_AMB,
+		path: path.casino.root,
+		imgName: "am",
+		allowCurrencies: new Set([defCurrenyId.THB])
 	},
 	{
 		...defGameInfo.Casino_PP,
@@ -158,7 +165,7 @@ const GameProvider = ({ userInfo, i18n }) => {
 	const [showingTpIds, setShowingTpIds] = useState([]);
 	const { handleLogin } = useHandleLogin();
 	const isMountedRef = useRef(null);
-	const { isLogin, langId } = userInfo;
+	const { isLogin, langId, currencyId } = userInfo;
 	const { maintainList } = useGetTpMaintainList();
 
 	useEffect(() => {
@@ -213,10 +220,22 @@ const GameProvider = ({ userInfo, i18n }) => {
 		}
 	};
 
+	const filters = el => {
+		let flag = true;
+		if (showingTpIds.length) {
+			flag = showingTpIds.includes(el.tpId) && flag;
+		}
+		if (el.allowCurrencies) {
+			flag =
+				el.allowCurrencies.has(currencyId ?? langToCurrency[langId]) &&
+				flag;
+		}
+
+		return flag;
+	};
+
 	const rows = defPlatfrom
-		.filter(obj =>
-			showingTpIds.length > 0 ? showingTpIds.includes(obj.tpId) : true
-		)
+		.filter(obj => filters(obj))
 		.map(p => {
 			const underMaintain = maintainList?.some(
 				m =>
@@ -227,7 +246,7 @@ const GameProvider = ({ userInfo, i18n }) => {
 
 			return p.path && !underMaintain ? (
 				<Link
-					key={`gameProvider-${p.tpId}-${p.gameId}`}
+					key={`gameProvider-${p.tpId}-${p.gameId}-${p.tpGameType}`}
 					to={p.path}
 					state={{ tpId: p.tpId, gameId: p.gameId }}>
 					<img
@@ -237,7 +256,7 @@ const GameProvider = ({ userInfo, i18n }) => {
 				</Link>
 			) : (
 				<button
-					key={`gameProvider-${p.tpId}-${p.gameId}`}
+					key={`gameProvider-${p.tpId}-${p.gameId}-${p.tpGameType}`}
 					onClick={ClickItem.bind(this, {
 						tpId: p.tpId,
 						gameId: p.gameId,

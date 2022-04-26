@@ -30,6 +30,7 @@ export const defSlotTpGameType = {
 	GPI: { tpId: 6, tpGameType: 11 },
 	Joker: { tpId: 9, tpGameType: 13 },
 	YGG: { tpId: 8, tpGameType: 14 },
+	AMBSLot: { tpId: 30, tpGameType: 76 },
 	SG: { tpId: 10, tpGameType: 15 },
 	PG: { tpId: 14, tpGameType: 17 },
 	CQ9: { tpId: 16, tpGameType: 29 },
@@ -1602,6 +1603,21 @@ const gameList = ({ langId, currencyName }) => {
 							providerImgName: "yg"
 						},
 						{
+							...defGameInfo.Casino_AMB,
+							parameter: defGameInfo.Casino_AMB,
+							spanText: "AMBSlot",
+							img: `${cloudBannerImgURL}/h5/img/am.png`,
+							providerImgName: "am",
+							allowCurrency: [defCurrenyId.THB],
+							path: path.casino.root,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(eventTime.ambSlot)
+								}
+							]
+						},
+						{
 							...defGameInfo.Casino_CQ9,
 							parameter: defGameInfo.Casino_CQ9,
 							spanText: "CQ9",
@@ -3034,6 +3050,7 @@ export const defGameInfo = {
 	Casino_AdvantPlay: { tpId: 39, tpGameType: 67 },
 	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
 	Casino_Habanero: { tpId: 40, tpGameType: 68 },
+	Casino_AMB: { tpId: 30, tpGameType: 76 },
 	Fishing_AB3: { tpId: 16, gameId: "AB3", tpGameType: 44 },
 	Fishing_AT05: { tpId: 16, gameId: "AT05", tpGameType: 44 },
 	Fishing_AT01: { tpId: 16, gameId: "AT01", tpGameType: 44 },
