@@ -119,6 +119,17 @@ const EventListMYR = ({ i18n }) => (
 					<td>{i18n.lbl_Vip_Status1}</td>
 					<td>{i18n.lbl_Vip_Status1}</td>
 				</tr> */}
+			<tr>
+				<td colSpan="7">{i18n.lbl_DAILY_TRANSACTIONS_COUNT}</td>
+			</tr>
+			<tr>
+				<td>10</td>
+				<td>10</td>
+				<td>15</td>
+				<td>15</td>
+				<td>20</td>
+				<td>{i18n.lbl_VIP_unlimited}</td>
+			</tr>
 			<tr className="title">
 				<td colSpan="7" className="icon icon-nova88">
 					{i18n.lbl_Vip_Exclusive_Bonus}

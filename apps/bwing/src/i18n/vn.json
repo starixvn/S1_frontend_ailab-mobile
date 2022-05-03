@@ -538,6 +538,8 @@
 	"lbl_Diamond_Club": "HẠNG KIM CƯƠNG",
 	"lbl_BWING_Club": "BWING VVVIP",
 	"lbl_Vip_Service_Support": "HỖ TRỢ KHÁCH HÀNG",
+	"lbl_DAILY_TRANSACTIONS_COUNT": "SỐ LẦN GIAO DỊCH HÀNG NGÀY",
+	"lbl_Vip_Daily_Limit": "HẠN MỨC RÚT TIỀN HÀNG NGÀY",
 	"lbl_Vip_Deposit_Priority": "ƯU TIÊN NẠP TIỀN",
 	"lbl_Vip_WithDrawal_Priority": "ƯU TIÊN RÚT TIỀN",
 	"lbl_Vip_Service_Support_At_Date": "HỖ TRỢ 24/7",

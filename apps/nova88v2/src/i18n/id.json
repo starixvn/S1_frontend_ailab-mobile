@@ -502,7 +502,10 @@
 	"lbl_Start": "Mulai",
 	"lbl_Vip_Last_Updated": "UPDATE TERAKHIR",
 	"lbl_WithdrawalLimitation": "LIMIT PENARIKAN HARIAN",
-	"lbl_VIP_unlimited": "Unlimited",
+	"lbl_VIP_unlimited": "Tidak terbatas",
+	"lbl_DAILY_TRANSACTIONS_COUNT": "JUMLAH TRANSAKSI HARIAN",
+
+
 	"-============================================MysteryBox===================================": "",
 
 	"lbl_MysteryBox_EventTitle": "Mystery Box",
