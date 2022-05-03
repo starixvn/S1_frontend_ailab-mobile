@@ -495,6 +495,9 @@
 	"lbl_Vip_Last_Updated": "ล่าสุดเมื่อวันที่",
 	"lbl_WithdrawalLimitation": "ยอดถอนสูงสุดต่อวัน",
 	"lbl_VIP_unlimited": "พิเศษที่สุด",
+	"lbl_DAILY_TRANSACTIONS_COUNT": "จำนวนธุรกรรมรายวัน",
+
+
 	"-==========================MysteryBox===================================": "",
 	"lbl_Start": "เริ่ม",
 	"lbl_MysteryBox_EventTitle": "กล่องปริศนา",
