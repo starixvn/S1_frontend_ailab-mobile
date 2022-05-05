@@ -3980,14 +3980,14 @@ footer > a.active .circleAnimation + span {
   padding: 0;
 }
 
-.btn-group.transferAll .blue {
+.btn-group.transferAll .blue, .btn-group.transferAll .red {
   width: 20vw;
   min-width: 20vw;
   height: 100%;
   font-weight: bold;
 }
 
-.btn-group.transferAll .blue.active {
+.btn-group.transferAll .blue.active, .btn-group.transferAll .red.active {
   color: #c6d4f1;
 }
 
@@ -4887,7 +4887,7 @@ button.clickBtn:before {
   z-index: 1;
   font-weight: bold;
   color: #F77A00;
-  text-shadow: 1px 0px 0px white, -1px 0px 0px white, 0px 1px 0px white, 0px -1px 0px white, 1px -1px 0px white, 1px 1px 0px white, -1px 1px 0px white, -1px -1px 0px white;
+  text-shadow: 1px 0px 0px white, -1px 0px 0px white, 0px 1px 0px white, 0px -1px 0px white, 1px -1px 0px white, 1px 1px 0px white, -1px 1px 0px white, -1px -1px 0px white;
 }
 
 .casino .slotList .info span.icon {

@@ -7,7 +7,11 @@ import { defIptStatus } from "../common/inputStatus";
 import Dropdown from "../common/dropdown";
 import ReloadSpin from "../common/reloadSpin";
 import useTip from "../hook/useTip";
-import { tpWalletsListType, transDirection } from "./transfer.def";
+import {
+	tpWalletsListType,
+	transDirection,
+	defWalletMode
+} from "./transfer.def";
 import useGetBalance from "../hook/useGetMainBalance";
 import useGetTpBalance from "../hook/useGetTpBalance";
 import useHandelAutoTrnasfer from "./autoTransfer";
@@ -56,11 +60,12 @@ const Panel = () => {
 		i18n,
 		_isConvert
 	});
+
 	const arr = allWalletsList
 		.filter(wallet => {
 			return wallet.balance !== null;
 		})
-		.map(wallet => {
+		.map((wallet, i) => {
 			return (
 				<div className="account" key={`transfer-wallet-${wallet.id}`}>
 					<div className="info">
@@ -77,13 +82,23 @@ const Panel = () => {
 									: GetTpWalletBalance.bind(this, wallet.id)
 							}
 						/>
-						<button
-							className="blue"
-							onClick={restoreAll.bind(this, {
-								tpId: wallet.id
-							})}>
-							<div>{i18n.lbl_RestoreAll}</div>
-						</button>
+						{wallet.walletMode === defWalletMode.special ? (
+							<button
+								className="red"
+								onClick={() =>
+									selectItem(transDirection.to, i)
+								}>
+								<div>{i18n.lbl_Manual}</div>
+							</button>
+						) : (
+							<button
+								className="blue"
+								onClick={restoreAll.bind(this, {
+									tpId: wallet.id
+								})}>
+								<div>{i18n.lbl_RestoreAll}</div>
+							</button>
+						)}
 					</div>
 				</div>
 			);
