@@ -1,10 +1,14 @@
 import { useContext, useEffect, useState, useRef } from "react";
-import { tsRestType } from "@babel/types";
 import { loadingContext } from "../../common/context";
 import { defIptStatus } from "../../common/inputStatus";
 import { defPopBoxType } from "../../common/popbox";
 import api from "../../../service/api";
-import { initSelectedIdx, initWarning, transDirection } from "../transfer.def";
+import {
+	initSelectedIdx,
+	initWarning,
+	transDirection,
+	defTransferAction
+} from "../transfer.def";
 
 export const useTransfer = ({
 	GetBalance,
@@ -77,7 +81,8 @@ export const useTransfer = ({
 		FromTpId,
 		ToTpId,
 		real_amount,
-		isMultiple = false
+		isMultiple = false,
+		TransferAction
 	}) => {
 		setLoading(true);
 
@@ -85,7 +90,8 @@ export const useTransfer = ({
 			const res = await api.tp.TransferEX({
 				FromTpId,
 				ToTpId,
-				Amount: real_amount
+				Amount: real_amount,
+				TransferAction
 			});
 
 			if (isMountedRef.current) {
@@ -150,7 +156,8 @@ export const useTransfer = ({
 					FromTpId: wallet.id,
 					ToTpId: tpId,
 					real_amount: wallet.balance,
-					isMultiple: true
+					isMultiple: true,
+					TransferAction: defTransferAction.restoreAll
 				})
 			);
 
@@ -161,7 +168,8 @@ export const useTransfer = ({
 							FromTpId: 0,
 							ToTpId: tpId,
 							real_amount: mainWalletInfo.balance,
-							isMultiple: true
+							isMultiple: true,
+							TransferAction: defTransferAction.restoreAll
 						}),
 						...tpPromiseArr
 				  ]
@@ -191,7 +199,8 @@ export const useTransfer = ({
 			Transfer({
 				FromTpId: allWalletsList[selectedIdx.transferFrom].id,
 				ToTpId: allWalletsList[selectedIdx.transferTo].id,
-				real_amount
+				real_amount,
+				TransferAction: defTransferAction.transfer
 			});
 		} else if (
 			selectedIdx.transferFrom === null ||

@@ -2,7 +2,13 @@ import { useEffect, useState, useRef, useCallback, useContext } from "react";
 import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
 import api from "../../service/api";
 
-const updateTpWalletsList = ({ prev, tpId, balance = null, tpName }) => {
+const updateTpWalletsList = ({
+	prev,
+	tpId,
+	balance = null,
+	tpName,
+	walletMode
+}) => {
 	const tpWalletIdx = prev.findIndex(wallet => wallet.id === tpId);
 	if (tpWalletIdx !== -1) {
 		prev[tpWalletIdx].balance = balance;
@@ -10,7 +16,8 @@ const updateTpWalletsList = ({ prev, tpId, balance = null, tpName }) => {
 		prev.push({
 			id: tpId,
 			balance,
-			displayText: tpName
+			displayText: tpName,
+			walletMode
 		});
 	}
 	return [...prev].sort((a, b) => a.id - b.id);
@@ -47,7 +54,8 @@ export default ({ isLogin, listType }) => {
 										prev,
 										tpId: i.tpId,
 										balance: null,
-										tpName: i.tpName
+										tpName: i.tpName,
+										walletMode: i.walletMode
 									})
 								);
 							});
