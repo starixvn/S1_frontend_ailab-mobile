@@ -29,3 +29,13 @@ export const transDirection = {
 	from: "transferFrom",
 	to: "transferTo"
 };
+
+export const defTransferAction = {
+	transfer: 1,
+	restoreAll: 2
+};
+
+export const defWalletMode = {
+	normal: 1,
+	special: 2
+};
