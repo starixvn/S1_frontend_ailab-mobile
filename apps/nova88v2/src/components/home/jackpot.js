@@ -39,7 +39,7 @@ const Jackpot = ({ i18n, userInfo }) => {
 					info: 2,
 					casino: "hotspin88am",
 					currency:
-						_currency === "RMB" ? "cny" : _currency?.toLowerCase()
+						_currency === "CNY" ? "cny" : _currency?.toLowerCase()
 				});
 
 				ticker.attachToTextBox("tick");

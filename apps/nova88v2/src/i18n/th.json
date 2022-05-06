@@ -195,7 +195,7 @@
 	"-==================Currency=====================": "",
 	"Currency_1": "SGD",
 	"Currency_12": "GBP",
-	"Currency_13": "RMB",
+	"Currency_13": "CNY",
 	"Currency_15": "IDR",
 	"Currency_2": "MYR",
 	"Currency_20": "UUS",
@@ -209,6 +209,8 @@
 	"Currency_9": "AUD",
 	"Currency_61": "INR",
 	"Currency_96": "USDT",
+	"Currency_74": "BDT",
+	
 	"-==================-==================Home-==================-=====================": "",
 	"lbl_VirtualGames":"เกมเสมือนจริง",
 	"lbl_VirtualSports": "กีฬาเสมือนจริง",

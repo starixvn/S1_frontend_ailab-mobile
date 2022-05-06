@@ -446,7 +446,6 @@ const JoinStep2 = ({
 				testAttr="Currency"
 				onBlur={checkValue.bind(null, "Currency")}
 			/>
-			{/* 如果userValue.Currency已選擇了才顯示 */}
 			{siteCurrency?.[userValue.Currency]?.id !== 96 ? (
 				<Inputbox
 					icon="icon-phone"

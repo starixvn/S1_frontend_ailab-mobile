@@ -146,6 +146,16 @@ export const isEventPeriod = ({ startDate, endDate }) => {
 
 // [------- Currency -------
 
+export const defCurrencyToClass = {
+	2: "ch",
+	3: "gb",
+	4: "th",
+	13: "cs",
+	15: "id",
+	61: "in",
+	74: "bd"
+};
+
 export const currCustomMapping = {
 	2: "MYR",
 	4: "THB",
@@ -157,7 +167,7 @@ export const currCustomMapping = {
 export const defCurrenyId = {
 	MYR: 2,
 	THB: 4,
-	RMB: 13,
+	CNY: 13,
 	IDR: 15,
 	INR: 61
 };

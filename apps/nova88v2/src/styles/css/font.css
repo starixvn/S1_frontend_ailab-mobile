@@ -80,6 +80,10 @@
   font-family: 'Microsoft YaHei',sans-serif;
 }
 
+.icon-line-bold:before {
+  content: "\e91f";
+}
+
 .icon-windows:before {
   content: "\eac2";
 }

@@ -140,6 +140,10 @@ a {
   font-family: 'Microsoft YaHei',sans-serif;
 }
 
+.icon-line-bold:before {
+  content: "\e91f";
+}
+
 .icon-windows:before {
   content: "\eac2";
 }
@@ -1192,6 +1196,39 @@ div[tabindex="-1"] {
   transition: 0.7s;
 }
 
+.divider {
+  border-bottom: 1px solid #5574A7;
+  line-height: 0.08;
+  text-align: center;
+  margin: 8vw 0 .5vw;
+}
+
+.divider > span {
+  background: #D2E2F9;
+  padding: .5vw 2vw;
+  color: #233d67;
+}
+
+.divider + .register-line {
+  padding-bottom: 5vw;
+  border-bottom: 1px solid #5574A7;
+}
+
+.register-line {
+  margin: 6vw 0;
+  color: #5574A7;
+  text-align: center;
+  font-size: 3.5vw;
+}
+
+.register-line .icon {
+  margin-right: 1vw;
+}
+
+.register-line + .divider {
+  margin: .5vw 0 8vw;
+}
+
 .Login {
   height: 0;
   visibility: hidden;
@@ -1220,13 +1257,20 @@ div[tabindex="-1"] {
   text-align: center;
 }
 
-.Join .dropdown .btn {
-  padding: 0;
-  background: transparent;
+.Join .dropdown.btn > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .Join .dropdown .dropdown-item {
   padding: 3vw;
+}
+
+.Join .flag:before {
+  border: 1px solid #ccc;
+  width: 16px;
+  height: 16px;
 }
 
 .Join .inputBox i.icon.icon-minus, .Join .inputBox i.icon.icon-plus {
@@ -4058,6 +4102,18 @@ footer > a.active .circleAnimation + span {
 
 .btn-group button.red, .btn-group a.red, .btn-group .submit.red {
   background: #e92529;
+}
+
+.btn-group button.btn-line, .btn-group a.btn-line, .btn-group .submit.btn-line {
+  background: #07b802;
+  color: white;
+  line-height: 1;
+  padding: 2vw;
+  margin: 0;
+}
+
+.btn-group button.btn-line .icon, .btn-group a.btn-line .icon, .btn-group .submit.btn-line .icon {
+  font-size: 18px;
 }
 
 .btn-group a {
@@ -8577,6 +8633,14 @@ span.important {
   top: -2vw;
 }
 
+.rememberMode .inputInfo span {
+  display: block;
+  color: #e92529;
+  font-weight: bold;
+  text-align: center;
+  font-size: 3.25vw;
+}
+
 .nickName {
   font-weight: bold;
   margin-bottom: 2vw;
@@ -10661,12 +10725,13 @@ span.important {
 }
 
 .userVerification > div:last-child > div.icon-email .description {
-  -webkit-transform: translate(-37vw, 12vw);
-          transform: translate(-37vw, 12vw);
+  width: 83vw;
+  -webkit-transform: translate(-39vw, 12vw);
+          transform: translate(-39vw, 12vw);
 }
 
 .userVerification > div:last-child > div.icon-email .description:before, .userVerification > div:last-child > div.icon-email .description:after {
-  left: 38vw;
+  left: 40vw;
 }
 
 .userVerification > div:last-child > div.icon-mobile:before {
@@ -10674,6 +10739,7 @@ span.important {
 }
 
 .userVerification > div:last-child > div.icon-mobile .description {
+  width: 85vw;
   -webkit-transform: translate(-52vw, 12vw);
           transform: translate(-52vw, 12vw);
 }
@@ -10880,5 +10946,48 @@ span.important {
           box-sizing: border-box;
   -webkit-transition: 0.6s;
   transition: 0.6s;
+}
+
+.flag:before {
+  content: "";
+  display: block;
+  border-radius: 100%;
+  margin-right: 5px;
+}
+
+.flag.ch:before {
+  background: url(https://banner.0814media.net/desktop/img/flag/ch.jpg) no-repeat top left/cover;
+}
+
+.flag.cs:before {
+  background: url(https://banner.0814media.net/desktop/img/flag/cs.jpg) no-repeat top left/cover;
+}
+
+.flag.en:before {
+  background: url(https://banner.0814media.net/desktop/img/flag/en.jpg) no-repeat top left/cover;
+}
+
+.flag.th:before {
+  background: url(https://banner.0814media.net/desktop/img/flag/th.jpg) no-repeat top left/cover;
+}
+
+.flag.id:before {
+  background: url(https://banner.0814media.net/desktop/img/flag/id.jpg) no-repeat top left/cover;
+}
+
+.flag.vn:before {
+  background: url(https://banner.0814media.net/desktop/img/flag/vn.jpg) no-repeat top left/cover;
+}
+
+.flag.in:before {
+  background: url(https://banner.0814media.net/desktop/img/flag/in.jpg) no-repeat top left/cover;
+}
+
+.flag.bd:before {
+  background: url(https://banner.0814media.net/desktop/img/flag/bd.jpg) no-repeat top left/cover;
+}
+
+.flag.gb:before {
+  background: url(https://banner.0814media.net/desktop/img/flag/gb.jpg) no-repeat top left/cover;
 }
 /*# sourceMappingURL=style.css.map */
