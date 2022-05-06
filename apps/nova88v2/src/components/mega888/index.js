@@ -8,7 +8,7 @@ import { cloudBannerImgURL } from "../../config";
 
 const downloadLink = {
 	ios:
-		"itms-services://?action=download-manifest&url=https://appsetup.huafaw.com/ios/plist/Mega888_0.plist",
+		"itms-services://?action=download-manifest&url=https://appsetup.gdsenmu.com/ios/plist/Mega888_1.plist",
 	android: "https://appsetup.huafaw.com/apk/Mega888_V1.2.apk",
 	windows: "https://appsetup.huafaw.com/pc/Mega888.zip"
 };
