@@ -1,5 +1,6 @@
 import React, { Component, createRef } from "react";
 import PropTypes from "prop-types";
+import { defCurrencyToClass } from "./common";
 
 export class DropdownBox extends Component {
 	constructor(props) {
@@ -35,6 +36,7 @@ export class DropdownBox extends Component {
 				: this.props.i18n?.[item.displayKey];
 			return (
 				<Item
+					currencyId={item.id}
 					key={`${this.props.mainKey}-${item.id ?? i}-${displayText}`}
 					displayText={displayText}
 					onClick={this.SelectItem.bind(this, i)}
@@ -91,11 +93,25 @@ export class DropdownBox extends Component {
 							className="dropdown btn"
 							data-testid="dropdown_btn"
 							onClick={this.ClickDropdown}>
-							<span
-								className="text"
-								data-testid={`${this.props.testAttr}_dropdown-text`}>
-								{this.props.defaultOption ?? selected}
-							</span>
+							<div>
+								{this.props.options[this.props.selectedIdx] && (
+									<div
+										className={`flag ${
+											defCurrencyToClass[
+												this.props.options[
+													this.props.selectedIdx
+												].id
+											]
+										}`}
+									/>
+								)}
+								<span
+									className="text"
+									data-testid={`${this.props.testAttr}_dropdown-text`}>
+									{this.props.defaultOption ?? selected}
+								</span>
+							</div>
+
 							<i className="icon icon-keyboard_arrow_down" />
 						</button>
 						{this.props.hideInfo ? null : (
@@ -176,6 +192,11 @@ const Item = props => {
 			className="dropdown-item"
 			data-testid="dropdown-item"
 			onClick={props.onClick}>
+			{props.currencyId && (
+				<div
+					className={`flag ${defCurrencyToClass[props.currencyId]}`}
+				/>
+			)}
 			<span className="text">{props.displayText}</span>
 		</div>
 	);
