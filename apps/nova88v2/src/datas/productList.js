@@ -3103,3 +3103,7 @@ export const defCol = {
 	liveTV: "liveTV",
 	play: "play"
 };
+
+export const defDeepLinkId = {
+	mega888: 1
+};
