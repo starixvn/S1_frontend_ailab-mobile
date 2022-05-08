@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Swiper from "react-id-swiper";
 import { userInfoContext, i18nContext } from "../common/context";
-import { productList } from "../../datas/productList";
+import { productList, defDeepLinkId } from "../../datas/productList";
 import ButtonWithCopyBtn from "../common/btnWithCopyBtn";
 import { useGotoGame } from "../hook/useGotoGame";
-import { cloudBannerImgURL } from "../../config";
+import { cloudBannerImgURL, siteInfo } from "../../config";
+import api from "../../service/api";
 
 const downloadLink = {
 	ios:
@@ -13,9 +14,18 @@ const downloadLink = {
 	windows: "https://appsetup.huafaw.com/pc/Mega888.zip"
 };
 
+const defType = {
+	Android: 1,
+	IOS: 2,
+	WindowsPC: 3
+};
+
 export default () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
+	const isMountedRef = useRef(null);
+	const [linkList, setLinkList] = useState([]);
+
 	const { data } = useGotoGame({
 		isLogin: userInfo.isLogin,
 		langId: userInfo.langId,
@@ -23,6 +33,45 @@ export default () => {
 		tpGameType: productList.mega888.tpGameType,
 		allowBeforeLogin: true
 	});
+
+	useEffect(() => {
+		isMountedRef.current = true;
+		return () => {
+			isMountedRef.current = false;
+		};
+	});
+
+	useEffect(() => {
+		api.player
+			.GetDeepLink({
+				deepLinkId: defDeepLinkId.mega888,
+				siteId: siteInfo(userInfo.langId).siteId
+			})
+			.then(
+				res => {
+					if (!isMountedRef.current) return;
+
+					const { errorCode, message, data: _data } = res.data;
+					if (errorCode === 0) {
+						setLinkList(_data);
+					} else {
+						setPopBox({
+							isOpen: true,
+							content: `[${errorCode}] ${message}`
+						});
+					}
+				},
+				() => {
+					if (!isMountedRef.current) return;
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
+				}
+			);
+	}, []);
+
+	const getLink = type => linkList?.find(el => type === el.type)?.deepLink;
 
 	return (
 		<section>
@@ -41,7 +90,7 @@ export default () => {
 			<div className="downloadModule">
 				<div className="downloadSelect active">
 					<a
-						href={downloadLink.android}
+						href={getLink(defType.Android) ?? downloadLink.android}
 						target="_blank"
 						rel="noreferrer">
 						<i className="icon icon-android" />
@@ -51,7 +100,10 @@ export default () => {
 							APK
 						</div>
 					</a>
-					<a target="_blank" rel="noreferrer" href={downloadLink.ios}>
+					<a
+						target="_blank"
+						rel="noreferrer"
+						href={getLink(defType.IOS) ?? downloadLink.ios}>
 						<i className="icon icon-appleinc" />
 						<div>
 							{i18n.lbl_app_for_ios}
