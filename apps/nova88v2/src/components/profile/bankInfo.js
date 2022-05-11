@@ -214,7 +214,7 @@ const BankInfo = ({ prevPage }) => {
 								{userInfo.accountName}
 							</div>
 							<div className="text-center text-gray">
-								{i18n.lbl_ContactCSD}
+								{i18n.lbl_BankAccountHint}
 							</div>
 						</>
 					) : null}

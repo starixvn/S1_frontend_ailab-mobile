@@ -383,6 +383,8 @@
 	"lbl_ContactCSD": "Untuk setiap permintaan modifikasi, silakan hubungi CSD.",
 	"msg_NeedAccountNo": "Butuh Nomor Rekening",
 	"lbl_AddNewAccount": "Tambahkan akun baru",
+	"lbl_BankAccountHint": "Nama Akun harus sesuai dengan Pemilik Rekening Bank",
+
 	"-==================-==========================FriendReferral-===================================": "",
 	"lbl_Share_with_friend": "Pilih penawaran favorit Anda untuk Referensikan Teman Anda Sekarang!",
 	"lbl_MissionCompleted": "Misi selesai",

@@ -1,6 +1,7 @@
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useCallback, useRef, useContext } from "react";
 import moment from "moment";
 import api from "../../service/api";
+import { popBoxContext, i18nContext } from "../common/context";
 import { defPromotionType } from "../promotion/common/def";
 
 const isExpiry = ({
@@ -19,6 +20,8 @@ const isExpiry = ({
 };
 
 export const useGetPromotions = ({ langId, isLogin, filterExpiry = true }) => {
+	const { i18n } = useContext(i18nContext);
+	const { setPopBox } = useContext(popBoxContext);
 	const [promotion, setPromotion] = useState([]);
 	const isMountedRef = useRef(null);
 
