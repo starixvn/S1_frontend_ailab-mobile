@@ -9,7 +9,7 @@ export default ({ i18n, availableBalance, GetWithdrawalAvailableBalance }) => {
 	const _isConvert = isConvert(userInfo.currencyId);
 
 	const showRealNameTip = () => {
-		const tip = realNameTip === "" ? i18n.lbl_ContactCSD : "";
+		const tip = realNameTip === "" ? i18n.lbl_BankAccountHint : "";
 		setRealNameTip(tip);
 	};
 

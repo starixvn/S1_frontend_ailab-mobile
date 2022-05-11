@@ -387,6 +387,8 @@
 	"lbl_ContactCSD": "如有任何修改需求，请联系客服。",
 	"msg_NeedAccountNo": "需要帐户号码",
 	"lbl_AddNewAccount": "新增账户",
+	"lbl_BankAccountHint": "用户注册名需与银行户口名称一致",
+
 	"-==================--=========================FriendReferral--==================================": "",
 	"lbl_Share_with_friend": "选择您最喜欢的优惠并立即推荐您的朋友！",
 	"lbl_MissionCompleted": "任务已完成",

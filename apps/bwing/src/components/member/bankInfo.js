@@ -146,7 +146,7 @@ const BankInfo = () => {
 	};
 
 	const showTip = () => {
-		const _tip = tip === "" ? i18n.lbl_ContactCSD : "";
+		const _tip = tip === "" ? i18n.lbl_BankAccountHint : "";
 		setTip(_tip);
 	};
 

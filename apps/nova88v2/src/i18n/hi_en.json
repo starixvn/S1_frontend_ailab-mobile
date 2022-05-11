@@ -389,6 +389,7 @@
 	"lbl_ContactCSD": "For any request of modification, please contact CSD.",
 	"msg_NeedAccountNo": "Need Account Number",
 	"lbl_AddNewAccount": "Add New Account",
+	"lbl_BankAccountHint": "Account Name must match with Bank Account Holder",
 
 	"==============================================FriendReferral====================================": "",
 

@@ -186,7 +186,7 @@ const CryptoWallet = () => {
 			<div className="name">{userInfo.accountName}</div>
 			{userInfo.accountName ? (
 				<div className="text-org" data-testid="accountNameTip">
-					{i18n.lbl_ContactCSD}
+					{i18n.lbl_BankAccountHint}
 				</div>
 			) : null}
 			{/* <div className="text-center text-gray">

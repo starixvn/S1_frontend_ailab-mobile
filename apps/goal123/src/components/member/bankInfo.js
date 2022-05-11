@@ -381,7 +381,7 @@ const BankInfo = () => {
 				<>
 					{userInfo.accountName ? (
 						<div className="text-org" data-testid="accountNameTip">
-							{i18n.lbl_ContactCSD}
+							{i18n.lbl_BankAccountHint}
 						</div>
 					) : null}
 					{custBankInfo && custBankInfo.length < 3 ? (
