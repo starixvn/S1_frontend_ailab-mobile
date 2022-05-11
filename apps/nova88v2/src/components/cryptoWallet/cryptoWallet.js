@@ -235,7 +235,7 @@ const CryptoWallet = () => {
 					</div>
 					<div className="name">{userInfo.accountName}</div>
 					<div className="text-center text-gray">
-						{i18n.lbl_CryptoWalletTip1}
+						{i18n.lbl_BankAccountHint}
 					</div>
 				</>
 			)}

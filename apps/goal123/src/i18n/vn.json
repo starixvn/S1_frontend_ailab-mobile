@@ -552,6 +552,7 @@
 	"lbl_Fail": "Thất bại",
 	"lbl_LastUpdated": "CẬP NHẬT GẦN NHẤT",
 	"lbl_Main_Wallet_Auto_Transfer": "Chuyển tự động Ví chính",
+	"lbl_BankAccountHint": "Họ tên đăng nhập phải khớp với Tài khoản ngân hàng",
 
 	"==============Add To Home Screen==============": "",
 	"lbl_AddToHome_Hint": "Cách thêm ứng dụng vào màn hình chính",

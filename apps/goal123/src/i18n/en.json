@@ -575,6 +575,7 @@
 	"lbl_Fail": "Failed",
 	"lbl_LastUpdated": "LAST UPDATED",
 	"lbl_Main_Wallet_Auto_Transfer": "Main Wallet Auto Transfer",
+	"lbl_BankAccountHint": "Account Name must match with Bank Account Holder",
 
 	"■■■■■■■■■■■■■■■■■■■■ app download ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_Installation_tutorial": "Installation tutorial",

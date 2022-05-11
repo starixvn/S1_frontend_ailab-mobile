@@ -209,7 +209,9 @@ const CryptoWallet = () => {
 			)}
 
 			{tip && (
-				<div data-testid="accountNameTip">{i18n.lbl_ContactCSD}</div>
+				<div data-testid="accountNameTip">
+					{i18n.lbl_BankAccountHint}
+				</div>
 			)}
 
 			{(wallets?.length < 3 || !wallets) && (
