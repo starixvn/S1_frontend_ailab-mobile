@@ -16,7 +16,7 @@ import {
 	loadingContext
 } from "../common/context";
 import { cloudImgURL } from "../../config";
-import { isConvert, number_format } from "../common/common";
+import { isConvert, number_format, defCurrenyId } from "../common/common";
 import AmountInput from "./deposit.amountInput";
 import { useHandleAmount } from "../hook/useHandleAmount";
 import api from "../../service/api";
@@ -82,14 +82,14 @@ const Payment = props => {
 		amount,
 		warning,
 		SelectAmount,
-		EditAmount,
+		EditLocalBankAmount,
 		VaildAmount
 	} = useHandleAmount({
 		currencyId: userInfo.currencyId,
 		minAmount: selBank?.minAmount,
 		maxAmount: selBank?.maxAmount,
 		i18n,
-		digits: 0,
+		digits: userInfo.currencyId === defCurrenyId.IDR ? 3 : 2,
 		lastAmount: userPaymentData?.amount
 	});
 
@@ -486,7 +486,7 @@ const Payment = props => {
 				_isConvert={_isConvert}
 				amount={amount}
 				SelectAmount={SelectAmount}
-				EditAmount={EditAmount}
+				EditAmount={EditLocalBankAmount}
 				payType={payType}
 				tip={i18n.lbl_AmountTooltip?.replace(
 					"{{0}}",

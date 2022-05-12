@@ -72,7 +72,7 @@ const Payment = props => {
 		inputStatus,
 		setInputStatus,
 		SelectAmount,
-		EditAmount,
+		EditLocalBankAmount,
 		VaildAmount
 	} = useHandleAmount({
 		currencyId: userInfo.currencyId,
@@ -488,7 +488,7 @@ const Payment = props => {
 				btnStatus={inputStatus.checked}
 				tip={inputStatus.msg}
 				SelectAmount={SelectAmount}
-				EditAmount={EditAmount}
+				EditAmount={EditLocalBankAmount}
 				payType={payType}
 				clickInfo={clickInfo.bind(this, { col: "amount" })}
 				VaildAmount={VaildAmount.bind(this, { _amount: amount })}
