@@ -145,7 +145,7 @@ const defSubMenus = [
 			},
 			{
 				...defGameInfo.LIVEcasinoAE,
-				displayKey: "AE Casino"
+				displayKey: "AE Sexy"
 			},
 			{
 				...defGameInfo.LIVEcasinoAG,

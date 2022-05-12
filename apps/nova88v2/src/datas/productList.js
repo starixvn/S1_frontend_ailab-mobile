@@ -190,7 +190,7 @@ const gameList = ({ langId, currencyName }) => {
 						},
 						{
 							...defGameInfo.LIVEcasinoAE,
-							spanText: "AE Casino",
+							spanText: "AE Sexy",
 							img: `${cloudBannerImgURL}/h5/img/ae.png`
 						},
 						{
@@ -795,7 +795,7 @@ const gameList = ({ langId, currencyName }) => {
 						},
 						{
 							...defGameInfo.LIVEcasinoAE,
-							spanText: "AE Casino",
+							spanText: "AE Sexy",
 							img: `${cloudBannerImgURL}/h5/img/ae.png`
 						},
 						{
@@ -1400,7 +1400,7 @@ const gameList = ({ langId, currencyName }) => {
 						},
 						{
 							...defGameInfo.LIVEcasinoAE,
-							spanText: "AE Casino",
+							spanText: "AE Sexy",
 							img: `${cloudBannerImgURL}/h5/img/ae.png`
 						},
 						{
@@ -2036,7 +2036,7 @@ const gameList = ({ langId, currencyName }) => {
 						},
 						{
 							...defGameInfo.LIVEcasinoAE,
-							spanText: "AE Casino",
+							spanText: "AE Sexy",
 							img: `${cloudBannerImgURL}/h5/img/ae.png`
 						},
 						{
@@ -2627,7 +2627,7 @@ const gameList = ({ langId, currencyName }) => {
 						},
 						{
 							...defGameInfo.LIVEcasinoAE,
-							spanText: "AE Casino",
+							spanText: "AE Sexy",
 							img: `${cloudBannerImgURL}/h5/img/ae.png`
 						},
 						{
