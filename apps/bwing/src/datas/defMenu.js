@@ -374,7 +374,7 @@ export const productList = langId => {
 					...defGameInfo.LIVEcasinoAG
 				},
 				{
-					displayKey: "AE Casino",
+					displayKey: "AE Sexy",
 					icon: "icon icon-AE",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-ae.png`,
 					...defGameInfo.LIVEcasinoAE
@@ -622,7 +622,7 @@ export const defSubMenus = () => [
 			},
 			{
 				...defGameInfo.LIVEcasinoAE,
-				displayKey: "AE Casino"
+				displayKey: "AE Sexy"
 			},
 			{
 				...defGameInfo.LIVEcasinoAG,
