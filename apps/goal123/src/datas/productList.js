@@ -574,7 +574,7 @@ const gameList = [
 			},
 			{
 				...defGameInfo.LIVEcasinoAE,
-				spanText: "AE Casino",
+				spanText: "AE Sexy",
 				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-ae.png`
 			},
 			{
