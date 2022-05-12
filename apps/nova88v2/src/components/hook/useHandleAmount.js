@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { isConvert, checkAmount } from "../common/common";
+import { isConvert, checkAmount, defCurrenyId } from "../common/common";
 
 export const useHandleAmount = ({
 	currencyId,
@@ -29,7 +29,7 @@ export const useHandleAmount = ({
 	}, [minAmount, maxAmount]);
 
 	const SelectAmount = value => {
-		VaildAmount({ _amount: value, minAmount, maxAmount, i18n });
+		VaildAmount({ _amount: value });
 		if (amount !== value) {
 			setAmount(() => value);
 		}
@@ -38,7 +38,32 @@ export const useHandleAmount = ({
 	const EditAmount = e => {
 		const { value } = e.target;
 		const _amount = String(value).replace(/^(0+)|[^\d]+/g, "");
-		VaildAmount({ _amount, minAmount, maxAmount, i18n });
+		VaildAmount({ _amount });
+		setAmount(_amount);
+	};
+
+	const EditLocalBankAmount = e => {
+		const { value } = e.target;
+		let _amount = String(value).replace(/^(0+)|[^\d.]+/g, "");
+
+		if (_amount.includes(".")) {
+			_amount = _amount.replace(/\.{2,}/g, ".");
+			_amount = _amount
+				.replace(".", "$#$")
+				.replace(/\./g, "")
+				.replace("$#$", ".");
+
+			if (currencyId === defCurrenyId.IDR) {
+				_amount = _amount.replace(
+					/^(\-)*(\d+)\.(\d\d\d).*$/,
+					"$1$2.$3"
+				);
+			} else {
+				_amount = _amount.replace(/^(\-)*(\d+)\.(\d\d).*$/, "$1$2.$3");
+			}
+		}
+
+		VaildAmount({ _amount });
 		setAmount(_amount);
 	};
 
@@ -65,5 +90,12 @@ export const useHandleAmount = ({
 		return result.status === 0;
 	};
 
-	return { amount, warning, SelectAmount, EditAmount, VaildAmount };
+	return {
+		amount,
+		warning,
+		SelectAmount,
+		EditAmount,
+		VaildAmount,
+		EditLocalBankAmount
+	};
 };
