@@ -40,6 +40,7 @@ const AmountInput = ({
 					<div className="inputBoxNew">
 						<input
 							type="tel"
+							inputMode={payType === "localBank" ? "decimal" : ""}
 							placeholder={
 								minAmount && maxAmount
 									? `${
