@@ -120,5 +120,7 @@ export const defCategoryId = {
 	Lottery: 5,
 	Sports: 6,
 	PtSlots: 7,
-	PtLiveCasino: 8
+	PtLiveCasino: 8,
+	SBSW: 9,
+	Mega888SlotRNGFishing: 10
 };
