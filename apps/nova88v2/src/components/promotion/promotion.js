@@ -161,6 +161,7 @@ const PromotionContent = ({ staticList, filterType }) => {
 			if (filterType === defFilterType.slots) {
 				return (
 					(p.categoryId === defCategoryId.PtSlots ||
+						p.categoryId === defCategoryId.Mega888SlotRNGFishing ||
 						(p.walletType === defWalletType.Seamless &&
 							p.categoryId === defCategoryId.Slots)) &&
 					!isExpiry({
