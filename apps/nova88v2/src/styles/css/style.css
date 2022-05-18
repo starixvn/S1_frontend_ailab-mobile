@@ -3726,6 +3726,58 @@ footer > a.active .circleAnimation + span {
   color: #5574A7;
 }
 
+.infoModule.parts .phone {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.infoModule.parts .phone .inputBox input {
+  width: 100%;
+}
+
+.infoModule.parts .phone .inputBox .dropdown {
+  width: 130px;
+}
+
+.infoModule.parts .phone .inputBox .dropdown .icon {
+  margin-left: -2rem;
+  background: #ecf3fd;
+}
+
+.infoModule.parts .phone .dropdown-container {
+  width: 91.5vw;
+}
+
+.infoModule.parts .phone .dropdown-container .inputBox {
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.infoModule.parts .phone .dropdown-container .inputBox input::-webkit-input-placeholder {
+  color: #6b6b6b;
+}
+
+.infoModule.parts .phone .dropdown-container .inputBox input:-ms-input-placeholder {
+  color: #6b6b6b;
+}
+
+.infoModule.parts .phone .dropdown-container .inputBox input::-ms-input-placeholder {
+  color: #6b6b6b;
+}
+
+.infoModule.parts .phone .dropdown-container .inputBox input::placeholder {
+  color: #6b6b6b;
+}
+
+.infoModule.parts .phone .dropdown-container .dropdown-item {
+  padding-left: 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 .infoModule.parts .inputBox {
   -webkit-box-flex: 1;
       -ms-flex: auto;
@@ -3772,7 +3824,22 @@ footer > a.active .circleAnimation + span {
 }
 
 .infoModule.parts .inputInfo + .inputBox .icon-phone + input {
-  width: 20vw;
+  width: 23vw;
+}
+
+.infoModule.parts-xs .inputBox {
+  -ms-flex-flow: nowrap;
+      flex-flow: nowrap;
+}
+
+.infoModule.parts-xs .inputBox:nth-child(1) {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 23vw;
+          flex: 0 0 23vw;
+}
+
+.infoModule.parts-xs .inputBox:nth-child(n+2) {
+  margin: 1vw 0 1vw 1vw;
 }
 
 .infoModule + .text-org span {
@@ -7225,6 +7292,12 @@ span.important {
   margin: 0 2vw 0 0;
 }
 
+.contact > div canvas, .contact a canvas {
+  width: 25vw !important;
+  height: auto !important;
+  margin-right: 2vw;
+}
+
 .contact > div i, .contact a i {
   width: 12vw;
   height: 12vw;
@@ -7618,6 +7691,17 @@ span.important {
   font-size: 5vw;
 }
 
+.depositModule .selectModule .bankName.pending .mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(40, 73, 133, 0.6);
+  border-radius: 5px;
+  z-index: 1;
+}
+
 .depositModule .selectModule .bankName .bank {
   margin: 0 0 0 3vw;
   position: absolute;
@@ -7650,7 +7734,13 @@ span.important {
   right: 0.5vw;
   bottom: -1vw;
   color: #F77A00;
+  z-index: 2;
   display: none;
+}
+
+.depositModule .selectModule .bankName .icon-icon32px_check::before {
+  background: #fff;
+  border-radius: 10vw;
 }
 
 .depositModule .selectModule .bankName.active {
@@ -9223,7 +9313,7 @@ span.important {
       -ms-flex-flow: column;
           flex-flow: column;
   width: 100%;
-  margin-top: 64vw;
+  margin-top: 90vw;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -9351,6 +9441,101 @@ span.important {
   width: -moz-max-content;
   width: max-content;
   margin: auto;
+}
+
+.apppage .appPage .install .installStep {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.apppage .appPage .install .installStep > div {
+  width: calc(100% - 10vw);
+  margin-bottom: 10vw;
+  position: relative;
+}
+
+.apppage .appPage .install .installStep > div:before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-width: 3vw 3vw 0 3vw;
+  border-style: solid dashed dashed;
+  border-color: #F77A00 transparent transparent;
+  position: absolute;
+  bottom: -6vw;
+  right: calc(50% - 3vw);
+  z-index: 1;
+}
+
+.apppage .appPage .install .installStep > div:nth-last-child(1):before {
+  display: none;
+}
+
+.apppage .appPage .install .installStep > div img {
+  width: 61vw;
+}
+
+.apppage .appPage .install .installStep > div > div span {
+  display: block;
+  color: #F77A00;
+  font-size: 4vw;
+  margin-bottom: 1vw;
+}
+
+.apppage .appPage .install .downloadModule {
+  width: 100%;
+  margin: 2vw 0 10vw;
+  padding: 3vw;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+.apppage .appPage .install .downloadModule .swiper-container {
+  position: relative;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow: unset;
+}
+
+.apppage .appPage .install .downloadModule .swiper-container img {
+  width: 52vw;
+}
+
+.apppage .appPage .install .downloadModule .swiper-container .swiper-slide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.apppage .appPage .install .downloadModule .swiper-container .swiper-slide > div span {
+  display: block;
+  font-size: 4vw;
+  color: #F77A00;
+}
+
+.apppage .appPage .install .downloadModule .swiper-pagination-bullets {
+  bottom: -3vw;
 }
 
 .appdownload {
