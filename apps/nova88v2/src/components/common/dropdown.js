@@ -40,6 +40,7 @@ export class DropdownBox extends Component {
 					key={`${this.props.mainKey}-${item.id ?? i}-${displayText}`}
 					displayText={displayText}
 					onClick={this.SelectItem.bind(this, i)}
+					flag={this.props.flag}
 				/>
 			);
 		});
@@ -192,7 +193,7 @@ const Item = props => {
 			className="dropdown-item"
 			data-testid="dropdown-item"
 			onClick={props.onClick}>
-			{props.currencyId && (
+			{props.flag && props.currencyId && (
 				<div
 					className={`flag ${defCurrencyToClass[props.currencyId]}`}
 				/>
