@@ -445,6 +445,7 @@ const JoinStep2 = ({
 				i18n={i18n}
 				testAttr="Currency"
 				onBlur={checkValue.bind(null, "Currency")}
+				flag={true}
 			/>
 			{siteCurrency?.[userValue.Currency]?.id !== 96 ? (
 				<Inputbox
