@@ -76,4 +76,11 @@ export class SiteAPI extends BaseAPI {
 		});
 
 	GetMenuOfGames = () => this.siteRequest.post(`/GetMenuOfGames`);
+
+	GetSocialChannel = ({ currencyId, langId, displayPage }) =>
+		this.siteRequest.post("GetSocialChannel", {
+			CurrencyId: currencyId,
+			LangId: langId,
+			DisplayPage: displayPage
+		});
 }
