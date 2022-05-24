@@ -460,6 +460,8 @@
 	"lbl_Success": "Success",
 	"lbl_Fail": "Failed",
 	"lbl_Manual": "Manual",
+	"lbl_Caution": "CAUTION!",
+	"lbl_AutoTransferHint": "Auto Transfer will transfer all your fund to the game. If any running bonus within, your fund will be locked in the designated wallet that entered.", 
 
 	"==============================================Statement====================================": "",
 

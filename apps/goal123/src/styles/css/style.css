@@ -3505,6 +3505,11 @@ button.clickBtn:before {
 .tip {
   margin-top: 1vw;
   color: #052561;
+  display: none;
+}
+
+.tip.open {
+  display: block;
 }
 
 .tip a {
@@ -5401,7 +5406,9 @@ span.important {
 
 .promotions img {
   width: 100%;
-  margin-bottom: 2vw;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  border-radius: 5px;
 }
 
 .promotions .filterBtn {
@@ -6846,6 +6853,41 @@ span.important {
   vertical-align: middle;
 }
 
+.depositModule_mobile .input-group,
+.depositModule_online .input-group,
+.depositModule_local .input-group,
+.depositModule_topupMobile .input-group,
+.depositModule_Crpyto .input-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+}
+
+.depositModule_mobile .input-group .inputBox,
+.depositModule_online .input-group .inputBox,
+.depositModule_local .input-group .inputBox,
+.depositModule_topupMobile .input-group .inputBox,
+.depositModule_Crpyto .input-group .inputBox {
+  width: 100%;
+}
+
+.depositModule_mobile .input-group button,
+.depositModule_online .input-group button,
+.depositModule_local .input-group button,
+.depositModule_topupMobile .input-group button,
+.depositModule_Crpyto .input-group button {
+  width: 3rem;
+  height: 2.3rem;
+  color: #fff;
+  background: #141f33;
+  border-radius: 3px;
+  margin: 2px 0 0 2px;
+}
+
 .depositModule_mobile .inputBox,
 .depositModule_online .inputBox,
 .depositModule_local .inputBox,
@@ -6990,6 +7032,23 @@ span.important {
 .depositModule_topupMobile .note ol li,
 .depositModule_Crpyto .note ol li {
   margin: 1vw;
+}
+
+.depositModule_mobile .note p,
+.depositModule_online .note p,
+.depositModule_local .note p,
+.depositModule_topupMobile .note p,
+.depositModule_Crpyto .note p {
+  font-weight: bold;
+  color: #cf0404;
+}
+
+.depositModule_mobile .note p span,
+.depositModule_online .note p span,
+.depositModule_local .note p span,
+.depositModule_topupMobile .note p span,
+.depositModule_Crpyto .note p span {
+  margin-right: .5rem;
 }
 
 .depositModule_mobile a.clickBtn,
@@ -7554,12 +7613,12 @@ span.important {
   color: #5084e4;
   position: absolute;
   right: 0;
-  top: 2vw;
+  top: 5vw;
 }
 
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   .rememberMode > .icon {
-    top: 0;
+    top: 1.75vw;
   }
 }
 
@@ -7567,6 +7626,7 @@ span.important {
   margin: 0 0 2vw;
   word-break: break-word;
   width: 100%;
+  font-size: 3vw;
 }
 
 .rememberMode .inputInfo:before {
@@ -7576,6 +7636,14 @@ span.important {
   border-color: transparent transparent #284985 transparent;
   right: 0.7vw;
   top: -2vw;
+}
+
+.rememberMode .inputInfo span {
+  display: block;
+  color: #fab617;
+  font-size: 3.5vw;
+  font-weight: bold;
+  text-align: center;
 }
 
 .swithModule {
