@@ -603,6 +603,8 @@
 	"lbl_LastUpdated": "CẬP NHẬT GẦN NHẤT",
 	"lbl_Main_Wallet_Auto_Transfer": "Chuyển tự động Ví chính",
 	"lbl_BankAccountHint": "Họ tên đầy đủ phải khớp với tài khoản ngân hàng",
+	"lbl_Caution": "CHÚ Ý!",
+	"lbl_AutoTransferHint": "Chuyển quỹ tự động sẽ chuyển toàn bộ số dư vào trong trò chơi. Nếu có bất kỳ khuyến mãi nào đang vận hành, số dư của quý khách sẽ khóa cùng với ví Khuyến mãi được chỉ định.", 
 
 	"==============Important Notice==============": "",
 	"lbl_ImportantNotice": "THÔNG BÁO QUAN TRỌNG",

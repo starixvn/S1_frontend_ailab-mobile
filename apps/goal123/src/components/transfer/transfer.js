@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import { isConvert, number_format } from "../common/common";
 import RecentDatas from "./transfer.recentDatas";
@@ -15,6 +15,7 @@ const Panel = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const [autoTransferHint, setAutoTransferHint] = useState(false);
 	const _isConvert = isConvert(userInfo.currencyId);
 
 	const { mainWalletInfo, GetBalance } = useGetBalance({
@@ -53,6 +54,37 @@ const Panel = () => {
 		_isConvert
 	});
 
+	const onChangeAutoTransfer = () => {
+		if (autoTransfer === false) {
+			setPopBox({
+				isOpen: true,
+				title: i18n.lbl_Caution,
+				content: i18n.lbl_AutoTransferHint,
+				hasBtn: true,
+				btnBar: (
+					<div className="btn-group">
+						<button
+							className="orange"
+							onClick={setWalletTransferStatus}>
+							OK
+						</button>
+						<button
+							className="darkGray"
+							onClick={() => setPopBox({ isOpen: false })}>
+							{i18n.lbl_Cancel}
+						</button>
+					</div>
+				)
+			});
+		} else {
+			setWalletTransferStatus();
+		}
+	};
+
+	const clickTip = () => {
+		setAutoTransferHint(prev => !prev);
+	};
+
 	const arr = allWalletsList
 		.filter(wallet => {
 			return wallet.balance !== null;
@@ -79,15 +111,26 @@ const Panel = () => {
 
 	return (
 		<>
-			<div className="swithModule">
-				{i18n.lbl_Main_Wallet_Auto_Transfer}
-				<button
-					className={`switchBtn${autoTransfer ? " active" : ""}`}
-					onClick={setWalletTransferStatus}>
-					<span>{autoTransfer ? "ON" : ""}</span>
-					<span>{autoTransfer ? "" : "OFF"}</span>
-					<div className={autoTransfer ? "active" : ""} />
-				</button>
+			<div className="rememberMode">
+				<div className="swithModule">
+					{i18n.lbl_Main_Wallet_Auto_Transfer}
+					<button
+						className={`switchBtn${autoTransfer ? " active" : ""}`}
+						onClick={onChangeAutoTransfer}>
+						<span>{autoTransfer ? "ON" : ""}</span>
+						<span>{autoTransfer ? "" : "OFF"}</span>
+						<div className={autoTransfer ? "active" : ""} />
+					</button>
+				</div>
+				<div
+					className="icon icon-information-solid"
+					onClick={clickTip}
+				/>
+				<div
+					className={`inputInfo${autoTransferHint ? " active" : ""}`}>
+					<span>{i18n.lbl_Caution}</span>
+					{i18n.lbl_AutoTransferHint}
+				</div>
 			</div>
 			{arr}
 			<div className="inputBox">

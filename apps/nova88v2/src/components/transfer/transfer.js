@@ -14,7 +14,7 @@ import {
 } from "./transfer.def";
 import useGetBalance from "../hook/useGetMainBalance";
 import useGetTpBalance from "../hook/useGetTpBalance";
-import useHandelAutoTrnasfer from "./autoTransfer";
+import useHandelAutoTrnasfer from "./hook/autoTransfer";
 import { useTransfer } from "./hook/useTransfer";
 
 const Panel = () => {
@@ -61,6 +61,33 @@ const Panel = () => {
 		_isConvert
 	});
 
+	const onChangeAutoTransfer = () => {
+		if (autoTransfer === false) {
+			setPopBox({
+				isOpen: true,
+				title: i18n.lbl_Caution,
+				content: i18n.lbl_AutoTransferHint,
+				hasBtn: true,
+				btnBar: (
+					<div className="btn-group">
+						<button
+							className="blue"
+							onClick={setWalletTransferStatus}>
+							OK
+						</button>
+						<button
+							className="gray"
+							onClick={() => setPopBox({ isOpen: false })}>
+							{i18n.lbl_Cancel}
+						</button>
+					</div>
+				)
+			});
+		} else {
+			setWalletTransferStatus();
+		}
+	};
+
 	const arr = allWalletsList
 		.filter(wallet => {
 			return wallet.balance !== null;
@@ -106,15 +133,28 @@ const Panel = () => {
 
 	return (
 		<>
-			<div className="swithModule">
-				{i18n.lbl_AutoTransfer}
+			<div className="rememberMode">
+				<div className="swithModule">
+					{i18n.lbl_AutoTransfer}
+					<button
+						className={`switchBtn${autoTransfer ? " active" : ""}`}
+						onClick={onChangeAutoTransfer}>
+						<span>{autoTransfer ? "ON" : ""}</span>
+						<span>{autoTransfer ? "" : "OFF"}</span>
+						<div className={autoTransfer ? "active" : ""} />
+					</button>
+				</div>
 				<button
-					className={`switchBtn${autoTransfer ? " active" : ""}`}
-					onClick={setWalletTransferStatus}>
-					<span>{autoTransfer ? "ON" : ""}</span>
-					<span>{autoTransfer ? "" : "OFF"}</span>
-					<div className={autoTransfer ? "active" : ""} />
-				</button>
+					className="icon icon-information"
+					onClick={() => showTipHandler("autoTransfer")}
+				/>
+				<div
+					className={`inputInfo${
+						showTips.includes("autoTransfer") ? " active" : ""
+					}`}>
+					<span>{i18n.lbl_Caution}</span>
+					{i18n.lbl_AutoTransferHint}
+				</div>
 			</div>
 			{arr}
 			<div className="text-org title">{i18n.lbl_From}</div>

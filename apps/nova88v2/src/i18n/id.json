@@ -450,6 +450,8 @@
 	"lbl_Success": "Berhasil",
 	"lbl_Fail": "Gagal",
 	"lbl_Manual": "Manual",
+	"lbl_Caution": "PERINGATAN!",
+	"lbl_AutoTransferHint": "Auto Transfer akan mentransfer semua dana Anda ke permainan. Jika ada bonus berjalan di dalam, dana Anda akan dikunci di dompet yang ditunjuk.", 
 
 	"-==================-==========================Statement-===================================": "",
 
