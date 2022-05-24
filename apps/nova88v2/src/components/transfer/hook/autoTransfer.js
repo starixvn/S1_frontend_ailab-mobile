@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import api from "../../service/api";
+import api from "../../../service/api";
 
 const AutoTransferStatus = {
 	noData: 0,
@@ -57,6 +57,7 @@ export default ({ i18n, setPopBox }) => {
 					const { errorCode, message } = res.data;
 					if (errorCode === 0) {
 						setAutoTransfer(!autoTransfer);
+						setPopBox({ isOpen: false });
 					} else {
 						setPopBox({
 							isOpen: true,
