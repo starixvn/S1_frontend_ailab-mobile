@@ -2264,18 +2264,18 @@ const gameList = ({ langId, currencyName }) => {
 						// },
 					]
 				},
-				{
-					category: "poker",
-					categoryIcon: "casino",
-					translateKey: "lbl_Poker",
-					tpGameType: defGameInfo.oneGame.tpGameType,
-					popBox: {
-						needLogin: true,
-						title: "lbl_Poker",
-						type: defPopBoxType.OneGame,
-						...defGameInfo.oneGame
-					}
-				},
+				// {
+				// 	category: "poker",
+				// 	categoryIcon: "casino",
+				// 	translateKey: "lbl_Poker",
+				// 	tpGameType: defGameInfo.oneGame.tpGameType,
+				// 	popBox: {
+				// 		needLogin: true,
+				// 		title: "lbl_Poker",
+				// 		type: defPopBoxType.OneGame,
+				// 		...defGameInfo.oneGame
+				// 	}
+				// },
 				{
 					category: "play",
 					categoryIcon: "play",

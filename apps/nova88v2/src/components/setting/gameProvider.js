@@ -109,7 +109,12 @@ const defPlatfrom = [
 	// },
 	{
 		...defGameInfo.oneGame,
-		imgName: "1g"
+		imgName: "1g",
+		allowCurrencies: new Set([
+			defCurrenyId.MYR,
+			defCurrenyId.THB,
+			defCurrenyId.IDR
+		])
 	},
 	{
 		...defGameInfo.Casino_PT,
