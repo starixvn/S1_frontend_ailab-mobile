@@ -34,11 +34,11 @@ const defSubMenus = [
 			{
 				displayKey: "lbl_SabaSport",
 				...defGameInfo.Sports
+			},
+			{
+				displayKey: "lbl_BTISport",
+				...defGameInfo.BTISport
 			}
-			// {
-			// 	displayKey: "lbl_BTISport",
-			// 	...defGameInfo.BTISport,
-			// }
 		]
 	},
 	{

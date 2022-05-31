@@ -43,6 +43,17 @@ export const productList = langId => {
 					...defGameInfo.Sports
 				},
 				{
+					displayKey: "lbl_BTISport",
+					img: `${bannerImgUrl}/h5/img/sport/btisport.png`,
+					...defGameInfo.BTISport,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.new_BTI)
+						}
+					]
+				},
+				{
 					displayKey: "lbl_VirtualSports",
 					img: `${bannerImgUrl}/h5/img/sport/virtualSport.png`,
 					...defGameInfo.VirtualSports,
@@ -55,16 +66,6 @@ export const productList = langId => {
 						}
 					]
 				}
-				// {
-				// 	displayKey: "lbl_BTISport",
-				//  img: `${bannerImgUrl}/h5/img/sport/btisport.png`,
-				// 	...defGameInfo.BTISport,
-				// 	eventIcon: [
-				// 		{
-				// 			inPeriod: isEventPeriod(eventTime.new_BTI)
-				// 		}
-				//
-				// }
 			]
 		},
 		game: {
@@ -495,11 +496,11 @@ export const defSubMenus = () => [
 			{
 				displayKey: "lbl_SabaSport",
 				...defGameInfo.Sports
+			},
+			{
+				displayKey: "lbl_BTISport",
+				...defGameInfo.BTISport
 			}
-			// {
-			// 	displayKey: "lbl_BTISport",
-			// 	...defGameInfo.BTISport
-			// }
 		]
 	},
 	{

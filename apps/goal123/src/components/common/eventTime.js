@@ -6,7 +6,7 @@ export const eventTime = {
 	luckyWheel: { startDate: "2021/12/13 00:00:00" },
 	casino_pt: { endDate: "2021/06/20 11:00:00" },
 	liveCasino_pt: { endDate: "2021/07/08 11:00:00" },
-	new_BTI: { endDate: "2021/06/28 11:00:00" },
+	new_BTI: { endDate: "2023/06/28 11:00:00" },
 	new_Km: { endDate: "2021/07/08 11:00:00" },
 	jili: { endDate: "2021/08/21 11:00:00" },
 	tcg: { endDate: "2021/09/11 11:00:00" },

@@ -43,7 +43,7 @@ export const defGameInfo = {
 	tableGame: { gameId: 222, tpId: 1, tpGameType: 23 },
 	NumberGame: { gameId: 161, tpId: 1, tpGameType: 2 },
 	sabaClub: { tpId: 1, gameId: 171, tpGameType: 59 },
-	// BTISport: { tpId: 29, tpGameType: 49 },
+	BTISport: { tpId: 29, tpGameType: 49 },
 	casino_ICG: { tpId: 24, tpGameType: 39 },
 	ICG_DRAGONBALL_FISHING: { tpId: 24, gameId: "cmf0001", tpGameType: 40 },
 	ICG_FISHING_OF_SAVIORS: { tpId: 24, gameId: "cmf0002", tpGameType: 40 },
@@ -170,11 +170,11 @@ export const sportStreamDef = {
 		name: "sabaClub",
 		tpGameType: 59
 	},
-	// sportBti: {
-	// 	tpId: 29,
-	// 	name: "sportBti",
-	// 	tpGameType: 49
-	// },
+	sportBti: {
+		tpId: 29,
+		name: "sportBti",
+		tpGameType: 49
+	},
 	eSport: {
 		tpId: 1,
 		gameId: 43,
