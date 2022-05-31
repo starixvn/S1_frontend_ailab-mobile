@@ -733,7 +733,13 @@
 	"lbl_appHint1": "आईओएस नोवा ऐप इंस्टॉल हो गया है,",
 	"lbl_appHint2": "ट्रस्ट पर टैप करें या नीचे दी गई सेटिंग को पूरा करें",
 	"lbl_DownloadAppNow": "अभी ऐप डाउनलोड करें",
-
+	"lbl_Step": "चरण {{step}}",
+	"lbl_DownloadAppStep1": "Nova88 साइट से Apple iOS डाउनलोड बटन पर क्लिक करें।",
+	"lbl_DownloadAppStep2": "ऐप पूर्वावलोकन पृष्ठ पर रीडायरेक्ट करने के लिए 'Get App' पर क्लिक करें",
+	"lbl_DownloadAppStep3": "आप 'Nova88' ऐप के बजाय ऐपस्टोर पर 'Mini Puzzle Game' पर रीडायरेक्ट करेंगे",
+	"lbl_DownloadAppStep3-1": "'Mini Puzzle Game' ऐप इंस्टॉल करने के लिए 'Ge' पर क्लिक करें",
+	"lbl_DownloadAppStep4": "'Nova88' ऐप लॉन्च करने के लिए 'Mini Puzzle Game",
+	
 	"=============Check Speed===============": "",
 	"lbl_CurrentIp": "आपका वर्तमान आईपी स्थान",
 	"lbl_SetHomePage": "मुखपृष्ठ के रूप में स्थित करे",

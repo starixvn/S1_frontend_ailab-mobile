@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import QRCode from "qrcode.react";
+import PropTypes from "prop-types";
+import Swiper from "react-id-swiper";
 import { i18nContext } from "../components/common/context";
 import { useAppDownLoad } from "../components/appDownload/useAppDownLoad";
 import Footer from "../components/common/footer";
@@ -100,7 +102,10 @@ const IndexPage = () => {
 							</div>
 							<div>{i18n.lbl_appHint1}</div>
 							<div>{i18n.lbl_appHint2}</div>
-							<div>
+							<div className="installWrapper">
+								<InstallGuide i18n={i18n} />
+							</div>
+							{/* <div>
 								<img
 									src={`${cloudBannerImgURL}/h5/img/app/in01.png`}
 									alt="Tutorial 1"
@@ -117,7 +122,7 @@ const IndexPage = () => {
 									src={`${cloudBannerImgURL}/h5/img/app/in04.png`}
 									alt="Tutorial 4"
 								/>
-							</div>
+							</div> */}
 						</div>
 					</div>
 				</div>
@@ -126,6 +131,79 @@ const IndexPage = () => {
 			<GoTopBtn />
 		</>
 	);
+};
+
+const InstallGuide = ({ i18n }) => {
+	const params = {
+		centeredSlides: true,
+		spaceBetween: 30,
+		pagination: {
+			el: ".swiper-pagination",
+			clickable: true
+		},
+		rebuildOnUpdate: true
+	};
+
+	return (
+		<div className="downloadModule">
+			<Swiper {...params}>
+				<div className="swiper-slide">
+					<img
+						src={`${cloudBannerImgURL}/h5/img/app/Step1.png`}
+						alt="step1"
+					/>
+					<div>
+						<span>
+							{i18n.lbl_Step.replace("{{step}}", 1).toUpperCase()}
+						</span>
+						{i18n.lbl_DownloadAppStep1}
+					</div>
+				</div>
+				<div className="swiper-slide">
+					<img
+						src={`${cloudBannerImgURL}/h5/img/app/Step2.png`}
+						alt="step2"
+					/>
+					<div>
+						<span>
+							{i18n.lbl_Step.replace("{{step}}", 2).toUpperCase()}
+						</span>
+						{i18n.lbl_DownloadAppStep2}
+					</div>
+				</div>
+				<div className="swiper-slide">
+					<img
+						src={`${cloudBannerImgURL}/h5/img/app/Step3.png`}
+						alt="step3"
+					/>
+					<div>
+						<span>
+							{i18n.lbl_Step.replace("{{step}}", 3).toUpperCase()}
+						</span>
+						{i18n.lbl_DownloadAppStep3}
+						<br />
+						{i18n["lbl_DownloadAppStep3-1"]}
+					</div>
+				</div>
+				<div className="swiper-slide">
+					<img
+						src={`${cloudBannerImgURL}/h5/img/app/Step4.png`}
+						alt="step4"
+					/>
+					<div>
+						<span>
+							{i18n.lbl_Step.replace("{{step}}", 4).toUpperCase()}
+						</span>
+						{i18n.lbl_DownloadAppStep4}
+					</div>
+				</div>
+			</Swiper>
+		</div>
+	);
+};
+
+InstallGuide.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
 export default IndexPage;
