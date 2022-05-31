@@ -7,10 +7,10 @@ const defPlatfrom = [
 		imgName: "sabaa",
 		otherPlatformImg: "sabab"
 	},
-	// {
-	// 	...defGameInfo.BTISport,
-	// 	imgName: "btia",
-	// },
+	{
+		...defGameInfo.BTISport,
+		imgName: "btia"
+	},
 	{
 		...defGameInfo.LIVEcasinoAG,
 		imgName: "aga"

@@ -34,11 +34,11 @@ const defSubMenus = [
 			{
 				displayKey: "lbl_SabaSport",
 				...defGameInfo.Sports
+			},
+			{
+				displayKey: "lbl_BTISport",
+				...defGameInfo.BTISport
 			}
-			// {
-			// 	displayKey: "lbl_BTISport",
-			// 	...defGameInfo.BTISport,
-			// }
 		]
 	},
 	{
@@ -192,7 +192,7 @@ const defSubMenus = [
 	// }
 ];
 
-export default ({ handleSideMenuPanel, isOpenSideMenu }) => {
+const SubMenu = ({ handleSideMenuPanel, isOpenSideMenu }) => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
@@ -246,6 +246,13 @@ export default ({ handleSideMenuPanel, isOpenSideMenu }) => {
 		</div>
 	);
 };
+
+SubMenu.propTypes = {
+	handleSideMenuPanel: PropTypes.func.isRequired,
+	isOpenSideMenu: PropTypes.bool.isRequired
+};
+
+export default SubMenu;
 
 const SubMenuList = ({
 	i18n,

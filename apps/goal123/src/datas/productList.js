@@ -164,17 +164,17 @@ const gameList = [
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/soccer.png`,
 				spanTextKey: "lbl_Soccer"
 			},
-			// {
-			// 	...defGameInfo.BTISport,
-			//  img: `${bannerImgUrl}/h5/img/hotgame/sports/bti.png`,
-			// 	spanTextKey: "lbl_BTISport",
-			// 	eventIcon: [
-			// 		{
-			// 			icon: defIconType.new,
-			// 			inPeriod: isEventPeriod(eventTime.new_BTI)
-			// 		}
-			// 	]
-			// },
+			{
+				...defGameInfo.BTISport,
+				img: `${bannerImgUrl}/h5/img/hotgame/sports/bti.png`,
+				spanTextKey: "lbl_BTISport",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.new_BTI)
+					}
+				]
+			},
 			{
 				...defGameInfo.SabaSoccer,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/sabasoccer.png`,
