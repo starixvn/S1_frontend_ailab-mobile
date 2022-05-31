@@ -149,7 +149,7 @@ a {
 }
 
 .icon-Shield:before {
-  content: "\e9e2";
+  content: "\e920";
 }
 
 .icon-medal:before {
@@ -4181,10 +4181,20 @@ footer > a.active .circleAnimation + span {
 
 .btn-group button.btn-line .icon, .btn-group a.btn-line .icon, .btn-group .submit.btn-line .icon {
   font-size: 18px;
+  margin-right: 1vw;
+}
+
+.btn-group button.btn-line.active, .btn-group a.btn-line.active, .btn-group .submit.btn-line.active {
+  background: #069c02;
 }
 
 .btn-group a {
   padding: 2vw;
+}
+
+.btn-group + .txt-line {
+  text-align: center;
+  color: #284985;
 }
 
 .bankAccount {
@@ -9491,7 +9501,6 @@ span.important {
 }
 
 .apppage .appPage .install .downloadModule {
-  width: 100%;
   margin: 2vw 0 10vw;
   padding: 3vw;
   position: relative;
@@ -9508,11 +9517,12 @@ span.important {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  width: 75vw;
   overflow: unset;
 }
 
 .apppage .appPage .install .downloadModule .swiper-container img {
-  width: 52vw;
+  width: 52vw !important;
 }
 
 .apppage .appPage .install .downloadModule .swiper-container .swiper-slide {
@@ -9526,6 +9536,8 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 55vw;
+  margin-bottom: 5vw;
 }
 
 .apppage .appPage .install .downloadModule .swiper-container .swiper-slide > div span {
@@ -11052,6 +11064,10 @@ span.important {
   display: none;
 }
 
+.profile + .btn-group a, .profile + .btn-group button {
+  width: 100%;
+}
+
 .nav {
   background: white;
   position: absolute;
@@ -11174,5 +11190,50 @@ span.important {
 
 .flag.gb:before {
   background: url(https://banner.0814media.net/desktop/img/flag/gb.jpg) no-repeat top left/cover;
+}
+
+.addressModule {
+  margin-top: 5vw;
+  padding-bottom: 3vw;
+  margin-bottom: 3vw;
+  border-bottom: 1px solid #a5bbe0;
+}
+
+.addressModule .title {
+  font-size: 4vw;
+  text-align: center;
+  color: #284985;
+  padding-bottom: 3vw;
+  margin-bottom: 3vw;
+  border-bottom: 1px solid #a5bbe0;
+}
+
+.addressModule .title span {
+  font-size: 3vw;
+  color: #a5bbe0;
+  display: block;
+  width: 100%;
+  margin-top: 3vw;
+}
+
+.addressModule .title + .subtitle {
+  font-size: 4vw;
+  text-align: center;
+}
+
+.addressModule .subtitle {
+  font-size: 3.35vw;
+  color: #284985;
+  width: 100%;
+}
+
+.addressModule .addressContent {
+  margin: 3vw auto;
+  color: #284985;
+  text-align: center;
+}
+
+.addressModule .addressContent > div {
+  margin: 2vw auto;
 }
 /*# sourceMappingURL=style.css.map */

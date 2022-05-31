@@ -733,6 +733,12 @@
 	"lbl_appHint1": "Once Nova88 App is installed, tap Trust",
 	"lbl_appHint2": "or complete the setting as below.",
 	"lbl_DownloadAppNow": "Download APP now",
+	"lbl_Step": "Langkah {{step}}",
+	"lbl_DownloadAppStep1": "Klik tombol unduh Apple iOS dari situs Nova88.",
+	"lbl_DownloadAppStep2": "Klik 'Dapatkan Aplikasi' untuk mengarahkan ke halaman pratinjau aplikasi",
+	"lbl_DownloadAppStep3": "Anda akan dialihkan ke 'Mini Puzzle Game' di AppStore bukan aplikasi 'Nova88' ",
+	"lbl_DownloadAppStep3-1": "Klik 'Get' untuk mengunduh aplikasi 'Mini Puzzle Game'",
+	"lbl_DownloadAppStep4": "Buka 'Mini Puzzle Game' untuk meluncurkan aplikasi 'Nova88'",
 
 	"=============Check Speed===============": "",
 	"lbl_CurrentIp": "Your current IP location",
