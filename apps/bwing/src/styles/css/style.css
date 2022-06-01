@@ -442,6 +442,7 @@ main .gameList > div > div, main .gameList > div > a, main .gameList > div > but
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
+  color: #fff;
 }
 
 main .gameList > div > div.active, main .gameList > div > a.active, main .gameList > div > button.active, main .gameList > a > div.active, main .gameList > a > a.active, main .gameList > a > button.active, main .gameList > button > div.active, main .gameList > button > a.active, main .gameList > button > button.active {
@@ -3214,12 +3215,13 @@ p.txt-blue12 {
   background: #010e33;
   padding: 0 2vw;
   height: 9vw;
+  margin: 0;
 }
 
 @media screen and (min-width: 768px) {
   .countryCode {
     height: 7.8vw;
-    margin: 2vw 2vw 0 0;
+    margin: 0;
   }
 }
 
@@ -6158,6 +6160,20 @@ span.important {
     -webkit-transform: scale(1.13);
             transform: scale(1.13);
   }
+}
+
+.headerB .nav.event img {
+  width: 12vw;
+  height: 13vw;
+}
+
+.headerB .nav.event.active {
+  padding: 10px;
+}
+
+.headerB .nav.event.active img {
+  -webkit-filter: none;
+          filter: none;
 }
 
 .hotevent {
@@ -9204,6 +9220,857 @@ span.important {
   background: #212121bb;
 }
 
+.worldCup {
+  padding-top: 14vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(65%, #090E22), to(#41011B));
+  background: linear-gradient(#090E22 65%, #41011B 100%);
+  position: relative;
+}
+
+.worldCup .banner {
+  width: 100vw;
+  height: 80vw;
+  z-index: 1;
+}
+
+.worldCup .logo {
+  height: 35vw;
+  position: absolute;
+  top: 60vw;
+  z-index: 2;
+}
+
+.worldCup .txtBox .info {
+  width: 98vw;
+  text-align: center;
+  font-weight: bold;
+  border: 0;
+}
+
+.worldCup .txtBox .info .bonus {
+  font-size: 9vw;
+  font-weight: bolder;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #efe698), color-stop(35%, #fefebe), color-stop(50%, #f8d65a), color-stop(60%, #c79522), color-stop(65%, #e0b31b), to(#fed86b));
+  background: linear-gradient(to bottom, #efe698 20%, #fefebe 35%, #f8d65a 50%, #c79522 60%, #e0b31b 65%, #fed86b 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 0.5px #faa719;
+  letter-spacing: 1px;
+  font-family: "Arial Black";
+  -webkit-filter: drop-shadow(1vw 1.1vw 0 #946507);
+          filter: drop-shadow(1vw 1.1vw 0 #946507);
+  position: relative;
+}
+
+.worldCup .txtBox .info .bonus::before {
+  content: "";
+  width: 94vw;
+  height: 16vw;
+  background: url(https://banner.bw88.io/img/worldcup/light.png) no-repeat;
+  opacity: .9;
+  -webkit-filter: brightness(120%);
+          filter: brightness(120%);
+  position: absolute;
+  bottom: -.5vw;
+  left: -8vw;
+}
+
+@media screen and (min-width: 768px) {
+  .worldCup .txtBox .info .bonus:before {
+    bottom: -4.5vw;
+    left: 10vw;
+  }
+}
+
+.worldCup .txtBox .info .bonus span {
+  font-size: 6vw;
+}
+
+.worldCup .txtBox .info .txt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 5vw;
+  color: #fff;
+  margin-top: 3vw;
+}
+
+.worldCup .txtBox .info .yellow, .worldCup .txtBox .info .green {
+  width: 85%;
+  margin: 3vw auto;
+}
+
+.worldCup .txtBox .info .yellow {
+  color: #FFBF00;
+  font-size: 4vw;
+}
+
+.worldCup .txtBox .info .green {
+  color: #00CFB7;
+}
+
+.worldCup .topwire {
+  width: 100%;
+}
+
+.worldCup .title {
+  font-size: 5vw;
+  color: #00CFB7;
+  margin: 1rem;
+  text-align: center;
+}
+
+.worldCup .discover, .worldCup .discover1 {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.worldCup .discover::before, .worldCup .discover1::before {
+  content: "";
+  width: 17vw;
+  height: 24vw;
+  background: url(https://banner.bw88.io/img/worldcup/h5mo.png) no-repeat, 50%;
+  position: absolute;
+  top: -17vw;
+  left: -6vw;
+  -webkit-animation: bg 5s ease-in-out infinite;
+          animation: bg 5s ease-in-out infinite;
+}
+
+.worldCup .discover .list, .worldCup .discover1 .list {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.worldCup .discover .item, .worldCup .discover1 .item {
+  width: calc(100% / 2 - 2vw);
+  font-size: 3vw;
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+.worldCup .discover .item img, .worldCup .discover1 .item img {
+  width: 100%;
+}
+
+.worldCup .discover .item::before, .worldCup .discover1 .item::before {
+  content: "";
+  width: 100%;
+  height: 5px;
+  background: #FF4700;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.worldCup .discover .item .hoverBox, .worldCup .discover1 .item .hoverBox {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: rgba(255, 71, 0, 0.7);
+  border-radius: 3px;
+  font-weight: bolder;
+  bottom: -100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.worldCup .discover .item .hoverBox > div, .worldCup .discover1 .item .hoverBox > div {
+  width: 100%;
+  color: #fff;
+  font-size: 3.5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.worldCup .discover .item .hoverBox > div .img, .worldCup .discover1 .item .hoverBox > div .img {
+  width: 28vw;
+  height: 4.5vw;
+  background: url(https://banner.bw88.io/img/worldcup/my.png) no-repeat center;
+  margin: 6vw auto;
+}
+
+.worldCup .discover .item .hoverBox > div span, .worldCup .discover1 .item .hoverBox > div span {
+  font-weight: normal;
+  font-size: 3.5vw;
+}
+
+.worldCup .discover .item:hover img, .worldCup .discover .item.active img, .worldCup .discover1 .item:hover img, .worldCup .discover1 .item.active img {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  -webkit-transition: .5s ease-in;
+  transition: .5s ease-in;
+}
+
+.worldCup .discover .item:hover .hoverBox, .worldCup .discover .item.active .hoverBox, .worldCup .discover1 .item:hover .hoverBox, .worldCup .discover1 .item.active .hoverBox {
+  bottom: 0;
+  -webkit-transition: .6s ease-in;
+  transition: .6s ease-in;
+  -webkit-box-shadow: inset 0 0 4rem #D80241;
+          box-shadow: inset 0 0 4rem #D80241;
+}
+
+.worldCup .discover1::before {
+  content: "";
+  width: 25vw;
+  height: 30vw;
+  background: url(https://banner.bw88.io/img/worldcup/h5mp.png) no-repeat;
+  left: 74vw;
+  -webkit-animation: bg 5s ease-in-out infinite;
+          animation: bg 5s ease-in-out infinite;
+}
+
+.worldCup .discover1 .item {
+  background: rgba(1, 14, 51, 0.9);
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+}
+
+.worldCup .discover1 .item::before {
+  background: #550065;
+}
+
+.worldCup .discover1 .item .hoverBox {
+  background: #550065;
+  bottom: -75%;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.worldCup .discover1 .item .hoverBox > div {
+  margin-top: 2vw;
+}
+
+.worldCup .discover1 .item .hoverBox > div .img, .worldCup .discover1 .item .hoverBox > div img {
+  margin: 1vw auto;
+  -webkit-transform: scale(0.6);
+          transform: scale(0.6);
+}
+
+.worldCup .discover1 .item:hover img, .worldCup .discover1 .item.active img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-filter: drop-shadow(0 0 1rem #330b74);
+          filter: drop-shadow(0 0 1rem #330b74);
+}
+
+.worldCup .discover1 .item:hover .hoverBox, .worldCup .discover1 .item.active .hoverBox {
+  background: rgba(85, 0, 101, 0.7);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: inset 0 0 3rem #170229;
+          box-shadow: inset 0 0 3rem #170229;
+}
+
+.worldCup .discover1 .item:hover .hoverBox > div img, .worldCup .discover1 .item.active .hoverBox > div img {
+  width: 10vw;
+}
+
+.worldCup .playoff {
+  width: 110%;
+  margin: 2rem 0;
+}
+
+.worldCup .predict {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+}
+
+.worldCup .predict::before {
+  content: "";
+  width: 64px;
+  height: 125px;
+  background: url(https://banner.bw88.io/img/worldcup/h5mo1.png);
+  position: absolute;
+  top: -3.5rem;
+  -webkit-animation: bg 5s ease-in-out infinite;
+          animation: bg 5s ease-in-out infinite;
+}
+
+.worldCup .predict .ticketModule {
+  width: 100%;
+  background: rgba(216, 2, 65, 0.6);
+  border-radius: 5px;
+  border: 1px solid #D80241;
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  margin-bottom: 1rem;
+}
+
+.worldCup .predict .ticketModule .titleBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  background: #FF4700;
+  color: #fff;
+  font-size: 4.5vw;
+  font-weight: bold;
+  line-height: 4rem;
+}
+
+.worldCup .predict .ticketModule .ticketBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  padding: 0 3vw 3vw;
+  margin-top: 12vw;
+}
+
+.worldCup .predict .ticketModule .ticketBar .bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  border: 1px solid #D80241;
+  background: #fff;
+  border-radius: 15px;
+  position: relative;
+}
+
+.worldCup .predict .ticketModule .ticketBar .bar > div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  height: 3.5vw;
+  position: relative;
+  border-radius: 5px;
+  font-size: 3.5vw;
+  line-height: 5vw;
+  text-align: center;
+}
+
+.worldCup .predict .ticketModule .ticketBar .bar > div span {
+  content: "50,000";
+  color: #00CFB7;
+  position: absolute;
+  right: 0;
+  top: -5vw;
+}
+
+.worldCup .predict .ticketModule .ticketBar .bar > div .phase {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 17vw;
+  height: 5vw;
+  color: #fff;
+  font-weight: bold;
+  background: #D80241;
+  border-radius: 5px;
+  margin: 6vw 0 0 9vw;
+  position: relative;
+}
+
+.worldCup .predict .ticketModule .ticketBar .bar > div .phase::before {
+  width: 5vw;
+  height: 3vw;
+  content: "";
+  -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+          clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background: #D80241;
+  position: absolute;
+  top: -2.5vw;
+}
+
+.worldCup .predict .ticketModule .ticketBar .bar .almost {
+  background: -webkit-gradient(linear, left top, right top, color-stop(30%, #D80241), color-stop(50%, #fff));
+  background: linear-gradient(to right, #D80241 30%, #fff 50%);
+  border-radius: 0px;
+  -webkit-animation: move .8s ease-in-out infinite;
+          animation: move .8s ease-in-out infinite;
+}
+
+.worldCup .predict .ticketModule .ticketBar .bar .almost:last-child {
+  border-radius: 15px 0 0 15px;
+}
+
+@-webkit-keyframes move {
+  50% {
+    -webkit-filter: brightness(120%);
+            filter: brightness(120%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(15%, #D80241), color-stop(20%, #fff));
+    background: linear-gradient(to right, #D80241 15%, #fff 20%);
+  }
+  100% {
+    background: -webkit-gradient(linear, left top, right top, color-stop(30%, #D80241), color-stop(50%, #fff));
+    background: linear-gradient(to right, #D80241 30%, #fff 50%);
+  }
+}
+
+@keyframes move {
+  50% {
+    -webkit-filter: brightness(120%);
+            filter: brightness(120%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(15%, #D80241), color-stop(20%, #fff));
+    background: linear-gradient(to right, #D80241 15%, #fff 20%);
+  }
+  100% {
+    background: -webkit-gradient(linear, left top, right top, color-stop(30%, #D80241), color-stop(50%, #fff));
+    background: linear-gradient(to right, #D80241 30%, #fff 50%);
+  }
+}
+
+.worldCup .predict .ticketModule .ticketBar .bar .active {
+  background: #D80241;
+  border-radius: 0px;
+}
+
+.worldCup .predict .ticketModule .ticketBar .bar .active:first-child, .worldCup .predict .ticketModule .ticketBar .bar .active:last-child {
+  border-radius: 15px 0 0 15px;
+}
+
+.worldCup .predict .ticketModule .ticketBar .amountBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #fff;
+  border-radius: 3px;
+  border: 2px solid #D80241;
+  margin-top: 15vw;
+  font-weight: bold;
+}
+
+.worldCup .predict .ticketModule .ticketBar .amountBox .deposit {
+  border-left: 2px solid #D80241;
+  color: #0088E7;
+  padding: 0 1.5vw;
+  margin: 3vw;
+}
+
+.worldCup .predict .ticketModule .ticketBar .amountBox .deposit .amount {
+  display: block;
+  color: #810235;
+  font-size: 4vw;
+}
+
+.worldCup .predict .ticketModule .ticketBar .amountBox .deposit .amount span {
+  font-size: 3.5vw;
+  font-weight: normal;
+}
+
+.worldCup .predict .ticketModule:nth-child(2) {
+  width: 100%;
+}
+
+.worldCup .predict .ticketModule .ticketBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1.5vw;
+}
+
+.worldCup .predict .ticketModule .ticketBox .ticket {
+  width: calc( 96% - 6vw);
+  background: #74012f;
+  border-radius: 3px;
+  padding: 3vw;
+  position: relative;
+  margin: 3vw 1.5vw 3vw 1.5vw;
+}
+
+.worldCup .predict .ticketModule .ticketBox .ticket .pic {
+  height: 18vw;
+  border-radius: 3px;
+  border: 1px solid #D80241;
+  background: #00081f url(https://banner.bw88.io/img/worldcup/tkt.png) no-repeat center bottom/45%;
+  padding-top: 3vw;
+}
+
+.worldCup .predict .ticketModule .ticketBox .ticket .txt {
+  color: #00CFB7;
+  font-size: 8vw;
+  font-weight: bolder;
+}
+
+.worldCup .predict .ticketModule .ticketBox .ticket .txt span {
+  font-size: 4vw;
+  border-left: 2px solid #D80241;
+  line-height: 8vw;
+  padding-left: 3vw;
+}
+
+.worldCup .predict .ticketModule .ticketBox .ticket .subModule {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.worldCup .predict .ticketModule .ticketBox .ticket .subModule .inputBox {
+  position: relative;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  margin: 3vw 0 0 0;
+  z-index: 1;
+}
+
+.worldCup .predict .ticketModule .ticketBox .ticket .subModule .inputBox:first-child {
+  z-index: 2;
+}
+
+.worldCup .predict .ticketModule .ticketBox .ticket .subModule .inputBox .dropdown {
+  width: auto;
+  background: #D80241;
+  border: 1px solid #810235;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.worldCup .predict .ticketModule .ticketBox .ticket .subModule .inputBox .dropdown .btn {
+  width: 100%;
+  color: #fff;
+  font-size: 3.5vw;
+}
+
+.worldCup .predict .ticketModule .ticketBox .ticket .subModule .inputBox .dropdown .dropdown-container {
+  background: rgba(216, 2, 65, 0.7);
+  border: 1px solid #810235;
+  border-top: 0;
+  margin-top: 3vw;
+}
+
+.worldCup .predict .ticketModule .ticketBox .ticket .subModule .inputBox .dropdown .dropdown-container .dropdown-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  color: #fff;
+  font-size: 3.5vw;
+}
+
+.worldCup .predict .ticketModule .ticketBox .ticket .subModule .inputBox .dropdown .dropdown-container .dropdown-item img {
+  width: 30px;
+  height: 20px;
+  margin-right: 3vw;
+}
+
+.worldCup .predict .ticketModule .ticketBox .ticket .subModule .inputBox .dropdown .dropdown-container .dropdown-item:hover {
+  color: #00CFB7;
+  font-weight: bold;
+}
+
+.worldCup .predict .ticketModule .ticketBox .ticket .subModule .grop {
+  width: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid #D80241;
+  padding: 3vw 2vw;
+  margin-top: 3vw;
+  font-size: 3.5vw;
+}
+
+.worldCup .predict .ticketModule .ticketBox .ticket .subModule .grop img {
+  width: 8vw;
+  height: 5vw;
+  margin-right: 3vw;
+}
+
+.worldCup .predict .ticketModule .ticketBox .ticket.claimed::before {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  top: 0;
+  left: -1vw;
+  background: #afafaf;
+  border-bottom-right-radius: 10px;
+  width: 14vw;
+  height: 5vw;
+  padding: 1vw 2vw;
+  font-weight: bold;
+  font-size: 3vw;
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+  -webkit-transform: rotate(-20deg) skewX(-20deg);
+          transform: rotate(-20deg) skewX(-20deg);
+  z-index: 1;
+  content: "CLAIMED";
+  background: #aeb2bc;
+  color: black;
+}
+
+.worldCup .predict .ticketModule .ticketBox .ticket.new::before {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  top: 0;
+  left: -1vw;
+  background: #afafaf;
+  border-bottom-right-radius: 10px;
+  width: 14vw;
+  height: 5vw;
+  padding: 1vw 2vw;
+  font-weight: bold;
+  font-size: 3vw;
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+  -webkit-transform: rotate(-20deg) skewX(-20deg);
+          transform: rotate(-20deg) skewX(-20deg);
+  z-index: 1;
+  content: "NEW";
+  background: #f52805;
+  color: #fff;
+}
+
+.worldCup .predict .ticketModule .ticketBox .ticket .btnGroup {
+  margin: 1rem 0;
+}
+
+.worldCup .predict .ticketModule .ticketBox .ticket .btnGroup button {
+  width: calc(100% / 2 - .6vw);
+  font-size: 3.5vw;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2vw;
+}
+
+.worldCup .predict .ticketModule .ticketBox .ticket .btnGroup button.red {
+  background: #D80241;
+}
+
+.worldCup .predict .ticketModule .ticketBox .ticket .btnGroup button:hover {
+  -webkit-backdrop-filter: brightness(120%);
+          backdrop-filter: brightness(120%);
+}
+
+.worldCup .predict .ticketModule .ticketBox .ticket .btnGroup button:hover.red {
+  -webkit-filter: brightness(120%);
+          filter: brightness(120%);
+}
+
+.worldCup .predict .ticketModule .ticketBox .notActivated {
+  -webkit-filter: grayscale(90%);
+          filter: grayscale(90%);
+  font-size: 4vw;
+}
+
+.worldCup .predict .ticketModule .ticketBox .notActivated::before {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 40vw;
+  height: 8vw;
+  background: rgba(255, 255, 255, 0.7);
+  content: "Not Activated!";
+  color: #000;
+  position: absolute;
+  top: 11vw;
+  left: 21vw;
+}
+
+@-webkit-keyframes bg {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05);
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes bg {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05);
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.worldCup .infoTxt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10vw 0;
+  text-align: center;
+  position: relative;
+}
+
+.worldCup .infoTxt > div {
+  z-index: 3;
+  margin-bottom: 2vw;
+}
+
+.worldCup .infoTxt > div span {
+  font-weight: bold;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.worldCup .infoTxt::before {
+  content: "";
+  width: 39vw;
+  height: 61vw;
+  background: url(https://banner.bw88.io/img/worldcup/mp1.png) no-repeat;
+  position: absolute;
+  left: -10vw;
+  top: 30vw;
+  z-index: 1;
+}
+
+.worldCup .infoTxt button {
+  width: 25vw;
+  font-size: 3.5vw;
+  line-height: 6vw;
+  font-weight: bold;
+  padding: 1vw;
+  color: #00081f;
+  background: #00CFB7;
+  margin: 5vw 0;
+  border-radius: 3px;
+}
+
+.worldCup .infoTxt button:hover {
+  -webkit-filter: brightness(60%);
+          filter: brightness(60%);
+}
+
 #popup.luckyboxPop.active {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9952,8 +10819,13 @@ span.important {
   color: #71d3fb;
 }
 
-.refShare .refBox > div a {
+.refShare .refBox > div button {
+  width: 100%;
+}
+
+.refShare .refBox > div a, .refShare .refBox > div button {
   color: #71d3fb;
+  margin: 2vw 0 0;
 }
 
 .refLink .title {
@@ -10263,6 +11135,27 @@ span.important {
   vertical-align: middle;
 }
 
+.depositModule_mobile .selectModule > div .bankName.pending,
+.depositModule_online .selectModule > div .bankName.pending,
+.depositModule_local .selectModule > div .bankName.pending,
+.depositModule_topupmobile .selectModule > div .bankName.pending,
+.depositModule_crptopay .selectModule > div .bankName.pending {
+  position: relative;
+}
+
+.depositModule_mobile .selectModule > div .bankName.pending .mask,
+.depositModule_online .selectModule > div .bankName.pending .mask,
+.depositModule_local .selectModule > div .bankName.pending .mask,
+.depositModule_topupmobile .selectModule > div .bankName.pending .mask,
+.depositModule_crptopay .selectModule > div .bankName.pending .mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
 .depositModule_mobile .selectModule > div .bank,
 .depositModule_online .selectModule > div .bank,
 .depositModule_local .selectModule > div .bank,
@@ -10408,6 +11301,21 @@ span.important {
 .depositModule_crptopay .btn-group a:first-child,
 .depositModule_crptopay .btn-group button:first-child {
   margin-right: 0.5vw;
+}
+
+.depositModule_mobile .btn-group a.org,
+.depositModule_mobile .btn-group button.org,
+.depositModule_online .btn-group a.org,
+.depositModule_online .btn-group button.org,
+.depositModule_local .btn-group a.org,
+.depositModule_local .btn-group button.org,
+.depositModule_topupmobile .btn-group a.org,
+.depositModule_topupmobile .btn-group button.org,
+.depositModule_crptopay .btn-group a.org,
+.depositModule_crptopay .btn-group button.org {
+  background: -webkit-gradient(linear, left bottom, left top, from(#f20c05), to(#f85f05));
+  background: linear-gradient(to top, #f20c05, #f85f05);
+  color: white;
 }
 
 .depositModule_mobile + .btn-group,
@@ -10621,6 +11529,7 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: 2vw 0 0;
 }
 
 .input-Area {
