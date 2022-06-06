@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import PropTypes from "prop-types";
 import RemainTime from "../common/remainTime";
 import { number_format } from "../common/common";
 import { defRuleCols, defPromotionType } from "../common/def";
@@ -9,6 +10,7 @@ const visitorCurrency = {
 	th: 4,
 	id: 15,
 	cs: 2,
+	my: 2,
 	hi: 61,
 	hi_en: 61,
 	id_en: 15,
@@ -41,6 +43,20 @@ const MinAmount = ({
 	);
 };
 
+MinAmount.defaultProps = {
+	requiredAmount: null,
+	displayText: null,
+	formatSetting: null,
+	showIcon: null
+};
+
+MinAmount.propTypes = {
+	requiredAmount: PropTypes.number,
+	displayText: PropTypes.string,
+	formatSetting: PropTypes.objectOf(PropTypes.any),
+	showIcon: PropTypes.bool
+};
+
 const RemainingTime = ({ promotionInfo, i18n = {}, isLogin, showIcon }) => (
 	<div>
 		<div className={showIcon ? "icon icon-icon32px_time" : ""}>
@@ -56,12 +72,40 @@ const RemainingTime = ({ promotionInfo, i18n = {}, isLogin, showIcon }) => (
 	</div>
 );
 
+RemainingTime.defaultProps = {
+	isLogin: null,
+	i18n: null,
+	promotionInfo: null,
+	showIcon: null
+};
+
+RemainingTime.propTypes = {
+	isLogin: PropTypes.bool,
+	i18n: PropTypes.objectOf(PropTypes.string),
+	promotionInfo: PropTypes.objectOf(PropTypes.any),
+	showIcon: PropTypes.bool
+};
+
 const KeyValue = ({ value, displayText, icon, showIcon }) => (
 	<div>
 		<div className={showIcon ? icon : ""}>{displayText?.toUpperCase()}</div>
 		<div>{value}</div>
 	</div>
 );
+
+KeyValue.defaultProps = {
+	value: null,
+	displayText: null,
+	icon: null,
+	showIcon: null
+};
+
+KeyValue.propTypes = {
+	value: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+	displayText: PropTypes.string,
+	icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+	showIcon: PropTypes.bool
+};
 
 const Bonus = ({ value, displayText, bonusType, icon, showIcon }) => {
 	const { userInfo, i18n } = useContext(configContext);
@@ -82,6 +126,22 @@ const Bonus = ({ value, displayText, bonusType, icon, showIcon }) => {
 	);
 };
 
+Bonus.defaultProps = {
+	value: null,
+	displayText: null,
+	icon: null,
+	showIcon: null,
+	bonusType: null
+};
+
+Bonus.propTypes = {
+	value: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+	displayText: PropTypes.string,
+	icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+	showIcon: PropTypes.bool,
+	bonusType: PropTypes.number
+};
+
 const MaxBonus = ({ value, displayText, bonusType, icon, showIcon }) => {
 	const { userInfo, i18n } = useContext(configContext);
 	const _currencyId = userInfo.isLogin
@@ -96,6 +156,22 @@ const MaxBonus = ({ value, displayText, bonusType, icon, showIcon }) => {
 			<div>{`${i18n[`Currency_${_currencyId}`]} ${value}`}</div>
 		</div>
 	);
+};
+
+MaxBonus.defaultProps = {
+	value: null,
+	displayText: null,
+	icon: null,
+	showIcon: null,
+	bonusType: null
+};
+
+MaxBonus.propTypes = {
+	value: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+	displayText: PropTypes.string,
+	icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+	showIcon: PropTypes.bool,
+	bonusType: PropTypes.number
 };
 
 const defElems = ({
@@ -169,7 +245,7 @@ const defElems = ({
 	};
 };
 
-export default ({
+const PromoRule = ({
 	ruleCols,
 	promotionInfo,
 	className = "rolloverList",
@@ -191,3 +267,19 @@ export default ({
 	const rows = ruleCols?.map(col => allElems[col]);
 	return <div className={className}>{rows}</div>;
 };
+
+PromoRule.defaultProps = {
+	ruleCols: null,
+	promotionInfo: null,
+	className: null,
+	showIcon: null
+};
+
+PromoRule.propTypes = {
+	ruleCols: PropTypes.string,
+	promotionInfo: PropTypes.objectOf(PropTypes.any),
+	className: PropTypes.string,
+	showIcon: PropTypes.bool
+};
+
+export default PromoRule;

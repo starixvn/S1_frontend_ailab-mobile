@@ -28,9 +28,9 @@ const swipperParams = {
 };
 
 const Banners = ({ langId }) => {
-	const rows = defBannersUrl({ langId }).map((b, bIdx) => (
+	const rows = defBannersUrl({ langId }).map(b => (
 		<img
-			key={`VIPBanner-${bIdx}`}
+			key={`VIPBanner-${b}`}
 			src={b}
 			className="banner"
 			alt="vip banner"

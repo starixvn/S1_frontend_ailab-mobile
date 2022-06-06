@@ -11,6 +11,7 @@ const ImportantNote = ({ langId, i18n }) => {
 	)
 		content = <EN />;
 	if (langId === "cs") content = <CS />;
+	if (langId === "my") content = <MY />;
 	if (langId === "th") content = <TH />;
 	if (langId === "id") content = <ID />;
 	if (langId === "hi") content = <HI />;
@@ -96,6 +97,47 @@ const CS = () => (
 				24/7在線客服
 			</a>{" "}
 			联系。谢谢。
+		</li>
+	</ul>
+);
+
+const MY = () => (
+	<ul>
+		<li>
+			Sila semak dengan{" "}
+			<a
+				rel="noreferrer"
+				target="_blank"
+				href="https://direct.lc.chat/11638088/">
+				LIVE CHAT 24/7
+			</a>{" "}
+			kami jika transaksi anda belum diproses lebih daripada 10 minit.
+		</li>
+		<li>
+			Nama akaun bank pengeluaran mesti padan dengan nama penuh yang
+			didaftarkan, ahli tidak dibenar buat pengeluaran ke akaun bank pihak
+			ketiga.
+		</li>
+		<li>
+			Sesetengah pembekal permainan memerlukan 15 hingga 30 minit masa
+			untuk masa penyegerakan laporan, sila bersabar semasa proses
+			penyegerakan
+		</li>
+		<li>
+			Sila pastikan anda sudah mencapai turnover yang diperlukan, dan
+			hantar transaksi pengeluaran selepas 30 minit untuk elak ditolak
+			oleh sistem secara automatik.
+		</li>
+		<li>
+			Jika ada sebarang percanggahan atau mempunyai sebarang pertanyaan
+			pengeluaran yang lanjut, sila hubungi{" "}
+			<a
+				rel="noreferrer"
+				target="_blank"
+				href="https://direct.lc.chat/11638088/">
+				LIVECHAT 24/7
+			</a>{" "}
+			kami. Terima kasih.
 		</li>
 	</ul>
 );

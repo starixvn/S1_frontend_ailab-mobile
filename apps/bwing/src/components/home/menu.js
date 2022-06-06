@@ -236,10 +236,14 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 	);
 };
 
+Menu.defaultProps = {
+	setPopBox: () => null
+};
+
 Menu.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
-	setPopBox: PropTypes.func.isRequired
+	setPopBox: PropTypes.func
 };
 
 const SubGame = ({
@@ -349,13 +353,19 @@ const ProductItem = ({
 
 ProductItem.defaultProps = {
 	subIcon: [],
-	eventIcon: []
+	eventIcon: [],
+	icon_img: null,
+	_click: () => null,
+	selected: null
 };
 
 ProductItem.propTypes = {
 	spanText: PropTypes.string.isRequired,
 	subIcon: PropTypes.arrayOf(PropTypes.object),
-	eventIcon: PropTypes.arrayOf(PropTypes.object)
+	eventIcon: PropTypes.arrayOf(PropTypes.object),
+	icon_img: PropTypes.string,
+	_click: PropTypes.func,
+	selected: PropTypes.bool
 };
 
 const ProductLinkItem = ({
@@ -406,7 +416,10 @@ ProductLinkItem.defaultProps = {
 	productPath: "",
 	href: "",
 	subIcon: [],
-	eventIcon: []
+	eventIcon: [],
+	icon_img: null,
+	_click: () => null,
+	selected: null
 };
 
 ProductLinkItem.propTypes = {
@@ -414,7 +427,10 @@ ProductLinkItem.propTypes = {
 	productPath: PropTypes.string,
 	href: PropTypes.string,
 	subIcon: PropTypes.arrayOf(PropTypes.object),
-	eventIcon: PropTypes.arrayOf(PropTypes.object)
+	eventIcon: PropTypes.arrayOf(PropTypes.object),
+	icon_img: PropTypes.string,
+	_click: PropTypes.func,
+	selected: PropTypes.bool
 };
 
 const getEventIcon = ({ subIcon, eventIcon }) => {

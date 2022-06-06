@@ -6,6 +6,9 @@ export const Info = ({ langId }) => {
 		case "cs":
 			_info = <CSInfo />;
 			break;
+		case "my":
+			_info = <MYInfo />;
+			break;
 		case "th":
 			_info = <THInfo />;
 			break;
@@ -30,7 +33,7 @@ const ENInfo = () => {
 			Nova88 has launched its VIP rewards program so that members could
 			indulge in good services, more rewards, and a better experience.
 			Discover greater perks and entitlements when your tier upgraded.
-			We're waiting for you!
+			We&apos;re waiting for you!
 			<div className="vipTitle">Overview</div>
 			We have classified the membership tiers to Vintage Club, Silver
 			Club, Gold Club, Titanium Club, Diamond Club and Nova Club. Enjoy
@@ -52,6 +55,27 @@ const CSInfo = () => {
 			<div className="vipTitle">概观</div>
 			贵族等级分为古铜俱乐部，白银俱乐部，黄金俱乐部，钛金俱乐部，钻石俱乐部和欧亚俱乐部。解锁贵族等级以享有更多尊贵福利与独享服务。
 			<div className="vipTitle">不同等级享有各种豪爽福利</div>
+		</div>
+	);
+};
+
+const MYInfo = () => {
+	return (
+		<div className="vipInfo">
+			<div className="vipTitle">Program VIP</div>
+			Nova88 telah melancarkan program ganjaran VIP supaya ahli boleh
+			menikmati perkhidmatan yang lebih baik, dapat lebih banyak ganjaran
+			dan pengalaman yang lagi unggul. Nikmati faedah dan layanan yang
+			lebih hebat apabila anda naik taraf. Kami tunggu ketibaan anda!
+			<div className="vipTitle">Rumusan</div>
+			Kami telah mengklasifikasikan peringkat keahlian kepada Kelab
+			Vintage, Kelab Perak, Kelab Emas, Kelab Titanium, Kelab Berlian dan
+			Kelab Nova. Nikmati semua produk dan perkhidmatan keistimewaan kami
+			apabila anda mencapai taraf yang lebih tinggi.
+			<div className="vipTitle">
+				Nikmati kebaikan dan keistimewaan dengan taraf keahlian yang
+				berbeza
+			</div>
 		</div>
 	);
 };

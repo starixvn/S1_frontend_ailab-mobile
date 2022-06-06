@@ -175,6 +175,7 @@ export const defCurrenyId = {
 export const langToCurrency = {
 	en: defCurrenyId.MYR,
 	cs: defCurrenyId.MYR,
+	my: defCurrenyId.MYR,
 	th: defCurrenyId.THB,
 	th_en: defCurrenyId.THB,
 	id: defCurrenyId.IDR,
@@ -187,6 +188,7 @@ export const GetCurrencyName = ({ langId, currencyId, i18n }) => {
 	const langMappingCurr = {
 		en: "MYR",
 		cs: "MYR",
+		my: "MYR",
 		id: "IDR",
 		id_en: "IDR",
 		th: "THB",
@@ -206,6 +208,7 @@ export const validImgLang = langId => {
 	if (
 		langId !== "en" &&
 		langId !== "cs" &&
+		langId !== "my" &&
 		langId !== "th" &&
 		langId !== "id"
 	) {
@@ -215,7 +218,7 @@ export const validImgLang = langId => {
 };
 
 export const stringLinkify = text => {
-	const pattern = /(\b(https?):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
+	const pattern = /(\b(https?):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/gim;
 	return text
 		.replace(pattern, '<a href="$1" target="_blank">$1</a>')
 		.replaceAll("\n", "<br />");

@@ -44,9 +44,7 @@ const Jackpot = ({ i18n, userInfo }) => {
 
 				ticker.attachToTextBox("tick");
 				ticker.tick();
-			} catch (error) {
-				console.log(error);
-			}
+			} catch (error) {}
 		}
 	}, [_currency, supportAnimation]);
 
@@ -114,6 +112,7 @@ const ShowingNum = ({ value, currency, supportAnimation }) => {
 				<div className="numberRow" key={key}>
 					<div className="active">
 						{valArr.map((n, i) => (
+							// eslint-disable-next-line react/no-array-index-key
 							<div key={`jackpot-num-${i}`}>{n}</div>
 						))}
 					</div>

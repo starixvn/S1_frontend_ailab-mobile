@@ -848,7 +848,7 @@ const Panel = () => {
 	});
 	if (banks?.length < 3) {
 		banks?.push(
-			<div className="account" onClick={addCryptoWallet}>
+			<div key="add bank" className="account" onClick={addCryptoWallet}>
 				<div className="icon icon-plus text-org" />
 			</div>
 		);
