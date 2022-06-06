@@ -270,31 +270,31 @@ export const defPrize = () => ({
 					prizes: ["300,000", "30,000", "10,000"]
 				},
 				{
-					rank: "1st Runner Up",
+					rank: "2nd Runner Up",
 					prizes: ["250,000", "25,000", "8,000"]
 				},
 				{
-					rank: "2nd Runner Up",
+					rank: "3rd Runner Up",
 					prizes: ["180,000", "18,000", "6,000"]
 				},
 				{
-					rank: "3rd Runner Up",
+					rank: "4th Runner Up",
 					prizes: ["150,000", "15,000", "5,000"]
 				},
 				{
-					rank: "4th Runner Up",
+					rank: "5th Runner Up",
 					prizes: ["120,000", "12,000", "4,000"]
 				},
 				{
-					rank: "5th Runner Up",
+					rank: "6th Runner Up",
 					prizes: ["100,000", "10,000", "3,000"]
 				},
 				{
-					rank: "6th Runner Up",
+					rank: "7th Runner Up",
 					prizes: ["90,000", "9,000", "2,000"]
 				},
 				{
-					rank: "7th Runner Up",
+					rank: "8th Runner Up",
 					prizes: ["80,000", "8,000", "1,000"]
 				},
 				{
@@ -324,31 +324,31 @@ export const defPrize = () => ({
 					prizes: ["300,000", "30,000", "10,000"]
 				},
 				{
-					rank: "รองชนะเลิศอันดับ 1",
+					rank: "รองชนะเลิศอันดับ 2",
 					prizes: ["250,000", "25,000", "8,000"]
 				},
 				{
-					rank: "รองชนะเลิศอันดับ 2",
+					rank: "รองชนะเลิศอันดับ 3",
 					prizes: ["180,000", "18,000", "6,000"]
 				},
 				{
-					rank: "รองชนะเลิศอันดับ 3",
+					rank: "รองชนะเลิศอันดับ 4",
 					prizes: ["150,000", "15,000", "5,000"]
 				},
 				{
-					rank: "รองชนะเลิศอันดับ 4",
+					rank: "รองชนะเลิศอันดับ 5",
 					prizes: ["120,000", "12,000", "4,000"]
 				},
 				{
-					rank: "รองชนะเลิศอันดับ 5",
+					rank: "รองชนะเลิศอันดับ 6",
 					prizes: ["100,000", "10,000", "3,000"]
 				},
 				{
-					rank: "รองชนะเลิศอันดับ 6",
+					rank: "รองชนะเลิศอันดับ 7",
 					prizes: ["90,000", "9,000", "2,000"]
 				},
 				{
-					rank: "รองชนะเลิศอันดับ 7",
+					rank: "รองชนะเลิศอันดับ 8",
 					prizes: ["80,000", "8,000", "1,000"]
 				},
 				{
@@ -378,31 +378,31 @@ export const defPrize = () => ({
 					prizes: ["300,000", "30,000", "10,000"]
 				},
 				{
-					rank: "1st Runner Up",
+					rank: "2nd Runner Up",
 					prizes: ["250,000", "25,000", "8,000"]
 				},
 				{
-					rank: "2nd Runner Up",
+					rank: "3rd Runner Up",
 					prizes: ["180,000", "18,000", "6,000"]
 				},
 				{
-					rank: "3rd Runner Up",
+					rank: "4th Runner Up",
 					prizes: ["150,000", "15,000", "5,000"]
 				},
 				{
-					rank: "4th Runner Up",
+					rank: "5th Runner Up",
 					prizes: ["120,000", "12,000", "4,000"]
 				},
 				{
-					rank: "5th Runner Up",
+					rank: "6th Runner Up",
 					prizes: ["100,000", "10,000", "3,000"]
 				},
 				{
-					rank: "6th Runner Up",
+					rank: "7th Runner Up",
 					prizes: ["90,000", "9,000", "2,000"]
 				},
 				{
-					rank: "7th Runner Up",
+					rank: "8th Runner Up",
 					prizes: ["80,000", "8,000", "1,000"]
 				},
 				{
@@ -432,31 +432,31 @@ export const defPrize = () => ({
 					prizes: ["300,000", "30,000", "10,000"]
 				},
 				{
-					rank: "1st Runner Up",
+					rank: "2nd Runner Up",
 					prizes: ["250,000", "25,000", "8,000"]
 				},
 				{
-					rank: "2nd Runner Up",
+					rank: "3rd Runner Up",
 					prizes: ["180,000", "18,000", "6,000"]
 				},
 				{
-					rank: "3rd Runner Up",
+					rank: "4th Runner Up",
 					prizes: ["150,000", "15,000", "5,000"]
 				},
 				{
-					rank: "4th Runner Up",
+					rank: "5th Runner Up",
 					prizes: ["120,000", "12,000", "4,000"]
 				},
 				{
-					rank: "5th Runner Up",
+					rank: "6th Runner Up",
 					prizes: ["100,000", "10,000", "3,000"]
 				},
 				{
-					rank: "6th Runner Up",
+					rank: "7th Runner Up",
 					prizes: ["90,000", "9,000", "2,000"]
 				},
 				{
-					rank: "7th Runner Up",
+					rank: "8th Runner Up",
 					prizes: ["80,000", "8,000", "1,000"]
 				},
 				{
@@ -486,31 +486,31 @@ export const defPrize = () => ({
 					prizes: ["300,000", "30,000", "10,000"]
 				},
 				{
-					rank: "1st Runner Up",
+					rank: "2nd Runner Up",
 					prizes: ["250,000", "25,000", "8,000"]
 				},
 				{
-					rank: "2nd Runner Up",
+					rank: "3rd Runner Up",
 					prizes: ["180,000", "18,000", "6,000"]
 				},
 				{
-					rank: "3rd Runner Up",
+					rank: "4th Runner Up",
 					prizes: ["150,000", "15,000", "5,000"]
 				},
 				{
-					rank: "4th Runner Up",
+					rank: "5th Runner Up",
 					prizes: ["120,000", "12,000", "4,000"]
 				},
 				{
-					rank: "5th Runner Up",
+					rank: "6th Runner Up",
 					prizes: ["100,000", "10,000", "3,000"]
 				},
 				{
-					rank: "6th Runner Up",
+					rank: "7th Runner Up",
 					prizes: ["90,000", "9,000", "2,000"]
 				},
 				{
-					rank: "7th Runner Up",
+					rank: "8th Runner Up",
 					prizes: ["80,000", "8,000", "1,000"]
 				},
 				{
@@ -540,31 +540,31 @@ export const defPrize = () => ({
 					prizes: ["300,000", "30,000", "10,000"]
 				},
 				{
-					rank: "1st Runner Up",
+					rank: "2nd Runner Up",
 					prizes: ["250,000", "25,000", "8,000"]
 				},
 				{
-					rank: "2nd Runner Up",
+					rank: "3rd Runner Up",
 					prizes: ["180,000", "18,000", "6,000"]
 				},
 				{
-					rank: "3rd Runner Up",
+					rank: "4th Runner Up",
 					prizes: ["150,000", "15,000", "5,000"]
 				},
 				{
-					rank: "4th Runner Up",
+					rank: "5th Runner Up",
 					prizes: ["120,000", "12,000", "4,000"]
 				},
 				{
-					rank: "5th Runner Up",
+					rank: "6th Runner Up",
 					prizes: ["100,000", "10,000", "3,000"]
 				},
 				{
-					rank: "6th Runner Up",
+					rank: "7th Runner Up",
 					prizes: ["90,000", "9,000", "2,000"]
 				},
 				{
-					rank: "7th Runner Up",
+					rank: "8th Runner Up",
 					prizes: ["80,000", "8,000", "1,000"]
 				},
 				{
@@ -583,6 +583,60 @@ export const defPrize = () => ({
 				},
 				{
 					rank: "LIVE CASINO",
+					prizes: ["1000", "1"]
+				}
+			]
+		},
+		my: {
+			prizeList: [
+				{
+					rank: "JOHAN",
+					prizes: ["300,000", "30,000", "10,000"]
+				},
+				{
+					rank: "Naib Johan Ke-2",
+					prizes: ["250,000", "25,000", "8,000"]
+				},
+				{
+					rank: "Naib Johan Ke-3",
+					prizes: ["180,000", "18,000", "6,000"]
+				},
+				{
+					rank: "Naib Johan Ke-4",
+					prizes: ["150,000", "15,000", "5,000"]
+				},
+				{
+					rank: "Naib Johan Ke-5",
+					prizes: ["120,000", "12,000", "4,000"]
+				},
+				{
+					rank: "Naib Johan Ke-6",
+					prizes: ["100,000", "10,000", "3,000"]
+				},
+				{
+					rank: "Naib Johan Ke-7",
+					prizes: ["90,000", "9,000", "2,000"]
+				},
+				{
+					rank: "Naib Johan Ke-8",
+					prizes: ["80,000", "8,000", "1,000"]
+				},
+				{
+					rank: "Naib Johan Ke-9~30",
+					prizes: ["50,000", "5,000", "500"]
+				}
+			],
+			pointCalculation: [
+				{
+					rank: "SUKAN",
+					prizes: ["100", "1"]
+				},
+				{
+					rank: "SLOT",
+					prizes: ["500", "1"]
+				},
+				{
+					rank: "KASINO LIVE",
 					prizes: ["1000", "1"]
 				}
 			]
@@ -639,6 +693,60 @@ export const defPrize = () => ({
 				},
 				{
 					rank: "真人娱乐",
+					prizes: ["2,500,000", "1"]
+				}
+			]
+		},
+		my: {
+			prizeList: [
+				{
+					rank: "JOHAN",
+					prizes: ["400,000,000", "13,500", "15,000,000"]
+				},
+				{
+					rank: "Naib Johan Ke-2",
+					prizes: ["300,000,000", "10,000", "12,000,000"]
+				},
+				{
+					rank: "Naib Johan Ke-3",
+					prizes: ["220,000,000", "7,300", "8,500,000"]
+				},
+				{
+					rank: "Naib Johan Ke-4",
+					prizes: ["180,000,000", "6,000", "6,500,000"]
+				},
+				{
+					rank: "Naib Johan Ke-5",
+					prizes: ["150,000,000", "5,000", "5,000,000"]
+				},
+				{
+					rank: "Naib Johan Ke-6",
+					prizes: ["130,000,000", "4,300", "3,500,000"]
+				},
+				{
+					rank: "Naib Johan Ke-7",
+					prizes: ["100,000,000", "3,300", "2,000,000"]
+				},
+				{
+					rank: "Naib Johan Ke-8",
+					prizes: ["65,000,000", "2,000", "1,000,000"]
+				},
+				{
+					rank: "Naib Johan Ke-9~30",
+					prizes: ["35,000,000", "1,200", "500,000"]
+				}
+			],
+			pointCalculation: [
+				{
+					rank: "SUKAN",
+					prizes: ["300,000", "1"]
+				},
+				{
+					rank: "SLOT",
+					prizes: ["1,000,000", "1"]
+				},
+				{
+					rank: "KASINO LIVE",
 					prizes: ["2,500,000", "1"]
 				}
 			]
@@ -704,31 +812,31 @@ export const defPrize = () => ({
 					prizes: ["400,000,000", "13,500", "15,000,000"]
 				},
 				{
-					rank: "1st Runner Up",
+					rank: "2nd Runner Up",
 					prizes: ["300,000,000", "10,000", "12,000,000"]
 				},
 				{
-					rank: "2nd Runner Up",
+					rank: "3rd Runner Up",
 					prizes: ["220,000,000", "7,300", "8,500,000"]
 				},
 				{
-					rank: "3rd Runner Up",
+					rank: "4th Runner Up",
 					prizes: ["180,000,000", "6,000", "6,500,000"]
 				},
 				{
-					rank: "4th Runner Up",
+					rank: "5th Runner Up",
 					prizes: ["150,000,000", "5,000", "5,000,000"]
 				},
 				{
-					rank: "5th Runner Up",
+					rank: "6th Runner Up",
 					prizes: ["130,000,000", "4,300", "3,500,000"]
 				},
 				{
-					rank: "6th Runner Up",
+					rank: "7th Runner Up",
 					prizes: ["100,000,000", "3,300", "2,000,000"]
 				},
 				{
-					rank: "7th Runner Up",
+					rank: "8th Runner Up",
 					prizes: ["65,000,000", "2,000", "1,000,000"]
 				},
 				{
@@ -758,31 +866,31 @@ export const defPrize = () => ({
 					prizes: ["400,000,000", "13,500", "15,000,000"]
 				},
 				{
-					rank: "รองชนะเลิศอันดับ 1",
+					rank: "รองชนะเลิศอันดับ 2",
 					prizes: ["300,000,000", "10,000", "12,000,000"]
 				},
 				{
-					rank: "รองชนะเลิศอันดับ 2",
+					rank: "รองชนะเลิศอันดับ 3",
 					prizes: ["220,000,000", "7,300", "8,500,000"]
 				},
 				{
-					rank: "รองชนะเลิศอันดับ 3",
+					rank: "รองชนะเลิศอันดับ 4",
 					prizes: ["180,000,000", "6,000", "6,500,000"]
 				},
 				{
-					rank: "รองชนะเลิศอันดับ 4",
+					rank: "รองชนะเลิศอันดับ 5",
 					prizes: ["150,000,000", "5,000", "5,000,000"]
 				},
 				{
-					rank: "รองชนะเลิศอันดับ 5",
+					rank: "รองชนะเลิศอันดับ 6",
 					prizes: ["130,000,000", "4,300", "3,500,000"]
 				},
 				{
-					rank: "รองชนะเลิศอันดับ 6",
+					rank: "รองชนะเลิศอันดับ 7",
 					prizes: ["100,000,000", "3,300", "2,000,000"]
 				},
 				{
-					rank: "รองชนะเลิศอันดับ 7",
+					rank: "รองชนะเลิศอันดับ 8",
 					prizes: ["65,000,000", "2,000", "1,000,000"]
 				},
 				{
@@ -812,31 +920,31 @@ export const defPrize = () => ({
 					prizes: ["400,000,000", "13,500", "15,000,000"]
 				},
 				{
-					rank: "1st Runner Up",
+					rank: "2nd Runner Up",
 					prizes: ["300,000,000", "10,000", "12,000,000"]
 				},
 				{
-					rank: "2nd Runner Up",
+					rank: "3rd Runner Up",
 					prizes: ["220,000,000", "7,300", "8,500,000"]
 				},
 				{
-					rank: "3rd Runner Up",
+					rank: "4th Runner Up",
 					prizes: ["180,000,000", "6,000", "6,500,000"]
 				},
 				{
-					rank: "4th Runner Up",
+					rank: "5th Runner Up",
 					prizes: ["150,000,000", "5,000", "5,000,000"]
 				},
 				{
-					rank: "5th Runner Up",
+					rank: "6th Runner Up",
 					prizes: ["130,000,000", "4,300", "3,500,000"]
 				},
 				{
-					rank: "6th Runner Up",
+					rank: "7th Runner Up",
 					prizes: ["100,000,000", "3,300", "2,000,000"]
 				},
 				{
-					rank: "7th Runner Up",
+					rank: "8th Runner Up",
 					prizes: ["65,000,000", "2,000", "1,000,000"]
 				},
 				{
@@ -866,31 +974,31 @@ export const defPrize = () => ({
 					prizes: ["400,000,000", "13,500", "15,000,000"]
 				},
 				{
-					rank: "1st Runner Up",
+					rank: "2nd Runner Up",
 					prizes: ["300,000,000", "10,000", "12,000,000"]
 				},
 				{
-					rank: "2nd Runner Up",
+					rank: "3rd Runner Up",
 					prizes: ["220,000,000", "7,300", "8,500,000"]
 				},
 				{
-					rank: "3rd Runner Up",
+					rank: "4th Runner Up",
 					prizes: ["180,000,000", "6,000", "6,500,000"]
 				},
 				{
-					rank: "4th Runner Up",
+					rank: "5th Runner Up",
 					prizes: ["150,000,000", "5,000", "5,000,000"]
 				},
 				{
-					rank: "5th Runner Up",
+					rank: "6th Runner Up",
 					prizes: ["130,000,000", "4,300", "3,500,000"]
 				},
 				{
-					rank: "6th Runner Up",
+					rank: "7th Runner Up",
 					prizes: ["100,000,000", "3,300", "2,000,000"]
 				},
 				{
-					rank: "7th Runner Up",
+					rank: "8th Runner Up",
 					prizes: ["65,000,000", "2,000", "1,000,000"]
 				},
 				{
@@ -920,31 +1028,31 @@ export const defPrize = () => ({
 					prizes: ["400,000,000", "13,500", "15,000,000"]
 				},
 				{
-					rank: "1st Runner Up",
+					rank: "2nd Runner Up",
 					prizes: ["300,000,000", "10,000", "12,000,000"]
 				},
 				{
-					rank: "2nd Runner Up",
+					rank: "3rd Runner Up",
 					prizes: ["220,000,000", "7,300", "8,500,000"]
 				},
 				{
-					rank: "3rd Runner Up",
+					rank: "4th Runner Up",
 					prizes: ["180,000,000", "6,000", "6,500,000"]
 				},
 				{
-					rank: "4th Runner Up",
+					rank: "5th Runner Up",
 					prizes: ["150,000,000", "5,000", "5,000,000"]
 				},
 				{
-					rank: "5th Runner Up",
+					rank: "6th Runner Up",
 					prizes: ["130,000,000", "4,300", "3,500,000"]
 				},
 				{
-					rank: "6th Runner Up",
+					rank: "7th Runner Up",
 					prizes: ["100,000,000", "3,300", "2,000,000"]
 				},
 				{
-					rank: "7th Runner Up",
+					rank: "8th Runner Up",
 					prizes: ["65,000,000", "2,000", "1,000,000"]
 				},
 				{
@@ -1020,6 +1128,60 @@ export const defPrize = () => ({
 				}
 			]
 		},
+		my: {
+			prizeList: [
+				{
+					rank: "JOHAN",
+					prizes: ["1,200,000", "24,000", "50,000"]
+				},
+				{
+					rank: "Naib Johan Ke-2",
+					prizes: ["1,100,000", "22,000", "40,000"]
+				},
+				{
+					rank: "Naib Johan Ke-3",
+					prizes: ["950,000", "19,000", "35,000"]
+				},
+				{
+					rank: "Naib Johan Ke-4",
+					prizes: ["800,000", "16,000", "25,000"]
+				},
+				{
+					rank: "Naib Johan Ke-5",
+					prizes: ["700,000", "14,000", "20,000"]
+				},
+				{
+					rank: "Naib Johan Ke-6",
+					prizes: ["600,000", "12,000", "15,000"]
+				},
+				{
+					rank: "Naib Johan Ke-7",
+					prizes: ["500,000", "10,000", "10,000"]
+				},
+				{
+					rank: "Naib Johan Ke-8",
+					prizes: ["400,000", "8,000", "5,000"]
+				},
+				{
+					rank: "Naib Johan Ke-9~30",
+					prizes: ["300,000", "6,000", "3,000"]
+				}
+			],
+			pointCalculation: [
+				{
+					rank: "SUKAN",
+					prizes: ["500", "1"]
+				},
+				{
+					rank: "SLOT",
+					prizes: ["3000", "1"]
+				},
+				{
+					rank: "KASINO LIVE",
+					prizes: ["6000", "1"]
+				}
+			]
+		},
 		id: {
 			prizeList: [
 				{
@@ -1081,31 +1243,31 @@ export const defPrize = () => ({
 					prizes: ["1,200,000", "24,000", "50,000"]
 				},
 				{
-					rank: "1st Runner Up",
+					rank: "2nd Runner Up",
 					prizes: ["1,100,000", "22,000", "40,000"]
 				},
 				{
-					rank: "2nd Runner Up",
+					rank: "3rd Runner Up",
 					prizes: ["950,000", "19,000", "35,000"]
 				},
 				{
-					rank: "3rd Runner Up",
+					rank: "4th Runner Up",
 					prizes: ["800,000", "16,000", "25,000"]
 				},
 				{
-					rank: "4th Runner Up",
+					rank: "5th Runner Up",
 					prizes: ["700,000", "14,000", "20,000"]
 				},
 				{
-					rank: "5th Runner Up",
+					rank: "6th Runner Up",
 					prizes: ["600,000", "12,000", "15,000"]
 				},
 				{
-					rank: "6th Runner Up",
+					rank: "7th Runner Up",
 					prizes: ["500,000", "10,000", "10,000"]
 				},
 				{
-					rank: "7th Runner Up",
+					rank: "8th Runner Up",
 					prizes: ["400,000", "8,000", "5,000"]
 				},
 				{
@@ -1135,31 +1297,31 @@ export const defPrize = () => ({
 					prizes: ["1,200,000", "24,000", "50,000"]
 				},
 				{
-					rank: "รองชนะเลิศอันดับ 1",
+					rank: "รองชนะเลิศอันดับ 2",
 					prizes: ["1,100,000", "22,000", "40,000"]
 				},
 				{
-					rank: "รองชนะเลิศอันดับ 2",
+					rank: "รองชนะเลิศอันดับ 3",
 					prizes: ["950,000", "19,000", "35,000"]
 				},
 				{
-					rank: "รองชนะเลิศอันดับ 3",
+					rank: "รองชนะเลิศอันดับ 4",
 					prizes: ["800,000", "16,000", "25,000"]
 				},
 				{
-					rank: "รองชนะเลิศอันดับ 4",
+					rank: "รองชนะเลิศอันดับ 5",
 					prizes: ["700,000", "14,000", "20,000"]
 				},
 				{
-					rank: "รองชนะเลิศอันดับ 5",
+					rank: "รองชนะเลิศอันดับ 6",
 					prizes: ["600,000", "12,000", "15,000"]
 				},
 				{
-					rank: "รองชนะเลิศอันดับ 6",
+					rank: "รองชนะเลิศอันดับ 7",
 					prizes: ["500,000", "10,000", "10,000"]
 				},
 				{
-					rank: "รองชนะเลิศอันดับ 7",
+					rank: "รองชนะเลิศอันดับ 8",
 					prizes: ["400,000", "8,000", "5,000"]
 				},
 				{
@@ -1189,31 +1351,31 @@ export const defPrize = () => ({
 					prizes: ["1,200,000", "24,000", "50,000"]
 				},
 				{
-					rank: "1st Runner Up",
+					rank: "2nd Runner Up",
 					prizes: ["1,100,000", "22,000", "40,000"]
 				},
 				{
-					rank: "2nd Runner Up",
+					rank: "3rd Runner Up",
 					prizes: ["950,000", "19,000", "35,000"]
 				},
 				{
-					rank: "3rd Runner Up",
+					rank: "4th Runner Up",
 					prizes: ["800,000", "16,000", "25,000"]
 				},
 				{
-					rank: "4th Runner Up",
+					rank: "5th Runner Up",
 					prizes: ["700,000", "14,000", "20,000"]
 				},
 				{
-					rank: "5th Runner Up",
+					rank: "6th Runner Up",
 					prizes: ["600,000", "12,000", "15,000"]
 				},
 				{
-					rank: "6th Runner Up",
+					rank: "7th Runner Up",
 					prizes: ["500,000", "10,000", "10,000"]
 				},
 				{
-					rank: "7th Runner Up",
+					rank: "8th Runner Up",
 					prizes: ["400,000", "8,000", "5,000"]
 				},
 				{
@@ -1243,31 +1405,31 @@ export const defPrize = () => ({
 					prizes: ["1,200,000", "24,000", "50,000"]
 				},
 				{
-					rank: "1st Runner Up",
+					rank: "2nd Runner Up",
 					prizes: ["1,100,000", "22,000", "40,000"]
 				},
 				{
-					rank: "2nd Runner Up",
+					rank: "3rd Runner Up",
 					prizes: ["950,000", "19,000", "35,000"]
 				},
 				{
-					rank: "3rd Runner Up",
+					rank: "4th Runner Up",
 					prizes: ["800,000", "16,000", "25,000"]
 				},
 				{
-					rank: "4th Runner Up",
+					rank: "5th Runner Up",
 					prizes: ["700,000", "14,000", "20,000"]
 				},
 				{
-					rank: "5th Runner Up",
+					rank: "6th Runner Up",
 					prizes: ["600,000", "12,000", "15,000"]
 				},
 				{
-					rank: "6th Runner Up",
+					rank: "7th Runner Up",
 					prizes: ["500,000", "10,000", "10,000"]
 				},
 				{
-					rank: "7th Runner Up",
+					rank: "8th Runner Up",
 					prizes: ["400,000", "8,000", "5,000"]
 				},
 				{
@@ -1297,31 +1459,31 @@ export const defPrize = () => ({
 					prizes: ["1,200,000", "24,000", "50,000"]
 				},
 				{
-					rank: "1st Runner Up",
+					rank: "2nd Runner Up",
 					prizes: ["1,100,000", "22,000", "40,000"]
 				},
 				{
-					rank: "2nd Runner Up",
+					rank: "3rd Runner Up",
 					prizes: ["950,000", "19,000", "35,000"]
 				},
 				{
-					rank: "3rd Runner Up",
+					rank: "4th Runner Up",
 					prizes: ["800,000", "16,000", "25,000"]
 				},
 				{
-					rank: "4th Runner Up",
+					rank: "5th Runner Up",
 					prizes: ["700,000", "14,000", "20,000"]
 				},
 				{
-					rank: "5th Runner Up",
+					rank: "6th Runner Up",
 					prizes: ["600,000", "12,000", "15,000"]
 				},
 				{
-					rank: "6th Runner Up",
+					rank: "7th Runner Up",
 					prizes: ["500,000", "10,000", "10,000"]
 				},
 				{
-					rank: "7th Runner Up",
+					rank: "8th Runner Up",
 					prizes: ["400,000", "8,000", "5,000"]
 				},
 				{

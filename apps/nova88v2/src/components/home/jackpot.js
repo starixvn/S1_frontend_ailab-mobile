@@ -44,9 +44,7 @@ const Jackpot = ({ i18n, userInfo }) => {
 
 				ticker.attachToTextBox("tick");
 				ticker.tick();
-			} catch (error) {
-				console.log(error);
-			}
+			} catch (error) {}
 		}
 	}, [_currency, supportAnimation]);
 
@@ -113,8 +111,8 @@ const ShowingNum = ({ value, currency, supportAnimation }) => {
 			return (
 				<div className="numberRow" key={key}>
 					<div className="active">
-						{valArr.map((n, i) => (
-							<div key={`jackpot-num-${i}`}>{n}</div>
+						{valArr.map(n => (
+							<div key={`jackpot-num-${n}`}>{n}</div>
 						))}
 					</div>
 				</div>

@@ -9,6 +9,7 @@ const visitorCurrency = {
 	th: 4,
 	id: 15,
 	cs: 2,
+	my: 2,
 	hi: 61,
 	hi_en: 61,
 	id_en: 15,

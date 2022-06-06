@@ -1,9 +1,14 @@
 import React, { useContext, useState } from "react";
+import PropTypes from "prop-types";
 import { userInfoContext } from "../common/context";
 import { number_format, isConvert } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
 
-export default ({ i18n, availableBalance, GetWithdrawalAvailableBalance }) => {
+const WalletPanel = ({
+	i18n,
+	availableBalance,
+	GetWithdrawalAvailableBalance
+}) => {
 	const { userInfo } = useContext(userInfoContext);
 	const [realNameTip, setRealNameTip] = useState("");
 	const _isConvert = isConvert(userInfo.currencyId);
@@ -45,3 +50,17 @@ export default ({ i18n, availableBalance, GetWithdrawalAvailableBalance }) => {
 		</div>
 	);
 };
+
+WalletPanel.defaultProps = {
+	i18n: null,
+	availableBalance: null,
+	GetWithdrawalAvailableBalance: () => null
+};
+
+WalletPanel.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string),
+	availableBalance: PropTypes.number,
+	GetWithdrawalAvailableBalance: PropTypes.func
+};
+
+export default WalletPanel;

@@ -34,7 +34,7 @@ export const useHandleAmount = ({ currencyId, minAmount, maxAmount, i18n }) => {
 				.replace(".", "$#$")
 				.replace(/\./g, "")
 				.replace("$#$", ".");
-			_amount = _amount.replace(/^(\-)*(\d+)\.(\d\d\d).*$/, "$1$2.$3");
+			_amount = _amount.replace(/^(-)*(\d+)\.(\d\d\d).*$/, "$1$2.$3");
 		}
 
 		VaildAmount({ _amount, digits: 3 });

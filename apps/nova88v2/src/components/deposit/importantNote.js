@@ -11,6 +11,7 @@ const ImportantNote = ({ langId, i18n }) => {
 	)
 		content = <EN />;
 	if (langId === "cs") content = <CS />;
+	if (langId === "my") content = <MY />;
 	if (langId === "th") content = <TH />;
 	if (langId === "id") content = <ID />;
 	if (langId === "hi") content = <HI />;
@@ -95,6 +96,45 @@ const CS = () => (
 				24/7在線客服
 			</a>{" "}
 			以寻求帮助。
+		</li>
+	</ul>
+);
+
+const MY = () => (
+	<ul>
+		<li>
+			Sila semak butiran akaun bank deposit aktif yang terkini sebelum
+			buat deposit.
+		</li>
+		<li>
+			Untuk guna kaedah deposit <span>&quot;Pemindahan Bank&quot;</span> ,
+			sila buat pemindahan dan serahkan rekod transaksi untuk mengelakkan
+			kelewatan pada deposit.
+		</li>
+		<li>
+			<span>NAMA AKAUN</span> pendeposit mesti padan dengan nama penuh
+			anda yang didaftarkan. Kami tidak menggalakkan transaksi yang dibuat
+			menggunakan akaun pihak ke-3/syarikat.
+		</li>
+		<li>
+			<span>JANGAN</span> isi <span>&quot;NOVA88&quot;</span> atau
+			sebarang perkataan sensitif yang berkaitan dengan perjudian sebagai
+			rujukan/nota dalam transaksi dalam talian anda.
+		</li>
+		<li>
+			Sila ambil perhatian bahawa 1x rollover diperlukan untuk semua
+			deposit yang dibuat sebelum sebarang pengeluaran boleh diproses.
+		</li>
+		<li>
+			Sila hubungi{" "}
+			<a
+				rel="noreferrer"
+				target="_blank"
+				href="https://direct.lc.chat/11638088/">
+				LIVECHAT 24/7
+			</a>{" "}
+			kami jika transaksi anda masih belum diproses lebih daripada 5
+			minit.
 		</li>
 	</ul>
 );

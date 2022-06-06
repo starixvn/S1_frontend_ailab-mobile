@@ -102,11 +102,11 @@ const EventListIDR = ({ i18n }) => {
 					<td colSpan="7">{i18n.lbl_WithdrawalLimitation}</td>
 				</tr>
 				<tr>
-					<td>80.000 ('000)</td>
-					<td>100.000 ('000)</td>
-					<td>150.000 ('000)</td>
-					<td>200.000 ('000)</td>
-					<td>500.000 ('000)</td>
+					<td>80.000 (&apos;000)</td>
+					<td>100.000 (&apos;000)</td>
+					<td>150.000 (&apos;000)</td>
+					<td>200.000 (&apos;000)</td>
+					<td>500.000 (&apos;000)</td>
 					<td>{i18n.lbl_VIP_unlimited}</td>
 				</tr>
 				{/* <tr>
@@ -144,10 +144,10 @@ const EventListIDR = ({ i18n }) => {
 				</tr>
 				<tr>
 					<td />
-					<td>100('000)</td>
-					<td>300('000)</td>
-					<td>900('000)</td>
-					<td>3,300('000)</td>
+					<td>100(&apos;000)</td>
+					<td>300(&apos;000)</td>
+					<td>900(&apos;000)</td>
+					<td>3,300(&apos;000)</td>
 					<td>{i18n.lbl_Vip_ByInvitation}</td>
 				</tr>
 				<tr className="title">
@@ -238,10 +238,10 @@ const EventListIDR = ({ i18n }) => {
 				</tr>
 				<tr>
 					<td />
-					<td>30,000('000)</td>
-					<td>100,000('000)</td>
-					<td>250,000('000)</td>
-					<td>500,000('000)</td>
+					<td>30,000(&apos;000)</td>
+					<td>100,000(&apos;000)</td>
+					<td>250,000(&apos;000)</td>
+					<td>500,000(&apos;000)</td>
 					<td>{i18n.lbl_Vip_ByInvitation}</td>
 				</tr>
 				<tr className="title">
@@ -258,9 +258,9 @@ const EventListIDR = ({ i18n }) => {
 				<tr>
 					<td />
 					<td />
-					<td>100,000('000)</td>
-					<td>300,000('000)</td>
-					<td>600,000('000)</td>
+					<td>100,000(&apos;000)</td>
+					<td>300,000(&apos;000)</td>
+					<td>600,000(&apos;000)</td>
 					<td>{i18n.lbl_Vip_ByInvitation}</td>
 				</tr>
 				<tr>
@@ -271,9 +271,9 @@ const EventListIDR = ({ i18n }) => {
 				<tr>
 					<td />
 					<td />
-					<td>1,000,000('000)</td>
-					<td>3,000,000('000)</td>
-					<td>6,000,000('000)</td>
+					<td>1,000,000(&apos;000)</td>
+					<td>3,000,000(&apos;000)</td>
+					<td>6,000,000(&apos;000)</td>
 					<td>{i18n.lbl_Vip_ByInvitation}</td>
 				</tr>
 				<tr>

@@ -22,9 +22,9 @@ export const vipAllowCurrencies = [
 const Banners = ({ langId }) => {
 	const rows = defBannersUrl({
 		langId: langId.includes("_en") ? "en" : langId
-	}).map((b, bIdx) => (
+	}).map(b => (
 		<img
-			key={`VIPBanner-${bIdx}`}
+			key={`VIPBanner-${b}`}
 			src={b}
 			className="banner"
 			alt="vip banner"
