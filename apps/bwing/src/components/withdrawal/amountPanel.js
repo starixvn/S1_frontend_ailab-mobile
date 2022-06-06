@@ -117,7 +117,8 @@ AmountPanel.defaultProps = {
 	inputStatus: {},
 	VaildAmount: () => null,
 	withdrawalLimitHint: "",
-	currencyId: ""
+	currencyId: null,
+	withdrawalLimit: null
 };
 
 AmountPanel.propTypes = {
@@ -132,7 +133,8 @@ AmountPanel.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string),
 	VaildAmount: PropTypes.func,
 	withdrawalLimitHint: PropTypes.string,
-	currencyId: PropTypes.string
+	currencyId: PropTypes.number,
+	withdrawalLimit: PropTypes.objectOf(PropTypes.any)
 };
 
 export default AmountPanel;

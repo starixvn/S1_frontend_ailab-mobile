@@ -160,7 +160,9 @@ DropdownBox.defaultProps = {
 	birthDayIcon: false,
 	showDot: false,
 	className: "",
-	inputBoxClassName: ""
+	inputBoxClassName: "",
+	rightBtn: null,
+	flag: null
 };
 
 DropdownBox.propTypes = {
@@ -184,7 +186,9 @@ DropdownBox.propTypes = {
 	birthDayIcon: PropTypes.bool,
 	showDot: PropTypes.bool,
 	className: PropTypes.string,
-	inputBoxClassName: PropTypes.string
+	inputBoxClassName: PropTypes.string,
+	rightBtn: PropTypes.node,
+	flag: PropTypes.bool
 };
 
 const Item = props => {
@@ -204,12 +208,16 @@ const Item = props => {
 };
 
 Item.defaultProps = {
-	displayText: ""
+	displayText: "",
+	flag: null,
+	currencyId: null
 };
 
 Item.propTypes = {
 	onClick: PropTypes.func.isRequired,
-	displayText: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+	displayText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	flag: PropTypes.bool,
+	currencyId: PropTypes.number
 };
 
 export default DropdownBox;

@@ -26,7 +26,17 @@ export const siteInfo = langId => {
 		siteId: 1,
 		affiliateLink: getAffiliate(langId),
 		siteDefaultLang: "en",
-		siteLangList: ["en", "cs", "th_en", "th", "id_en", "id", "hi_en", "hi"],
+		siteLangList: [
+			"en",
+			"cs",
+			"my",
+			"th_en",
+			"th",
+			"id_en",
+			"id",
+			"hi_en",
+			"hi"
+		],
 		logo: "https://image.0814media.net/SiteSkin/img/logo_en_w.png",
 		description:
 			"Nova88 is the world leading sportsbook offering one of the kind gambling experience in live betting covering all sports, casino, slots, keno, esports, rng casino, fantasy sports, virtual sports, lottery, live casino, live dealer, bingo, and racing.",

@@ -259,6 +259,14 @@ const BankInfo = ({ prevPage }) => {
 	);
 };
 
+BankInfo.defaultProps = {
+	prevPage: null
+};
+
+BankInfo.propTypes = {
+	prevPage: PropTypes.string
+};
+
 const BankAccountItem = props => {
 	return (
 		<div className="account">

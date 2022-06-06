@@ -54,12 +54,9 @@ export const useHandleAmount = ({
 				.replace("$#$", ".");
 
 			if (currencyId === defCurrenyId.IDR) {
-				_amount = _amount.replace(
-					/^(\-)*(\d+)\.(\d\d\d).*$/,
-					"$1$2.$3"
-				);
+				_amount = _amount.replace(/^(-)*(\d+)\.(\d\d\d).*$/, "$1$2.$3");
 			} else {
-				_amount = _amount.replace(/^(\-)*(\d+)\.(\d\d).*$/, "$1$2.$3");
+				_amount = _amount.replace(/^(-)*(\d+)\.(\d\d).*$/, "$1$2.$3");
 			}
 		}
 

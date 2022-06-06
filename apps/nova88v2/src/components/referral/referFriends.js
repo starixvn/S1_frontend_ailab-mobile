@@ -17,6 +17,9 @@ export default () => {
 		case "cs":
 			_stepImg = `${cloudBannerImgURL}/h5/img/refbanner-cs.png`;
 			break;
+		case "my":
+			_stepImg = `${cloudBannerImgURL}/h5/img/refbanner-my.png`;
+			break;
 		case "th":
 			_stepImg = `${cloudBannerImgURL}/h5/img/refbanner-th.png`;
 			break;

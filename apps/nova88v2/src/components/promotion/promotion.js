@@ -245,3 +245,13 @@ const PromotionContent = ({ staticList, filterType }) => {
 		</>
 	);
 };
+
+PromotionContent.defaultProps = {
+	staticList: null,
+	filterType: null
+};
+
+PromotionContent.propTypes = {
+	staticList: PropTypes.arrayOf(PropTypes.any),
+	filterType: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+};

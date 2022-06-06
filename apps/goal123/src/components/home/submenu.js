@@ -192,7 +192,7 @@ const defSubMenus = [
 	// }
 ];
 
-export default ({ handleSideMenuPanel, isOpenSideMenu }) => {
+const SubMenu = ({ handleSideMenuPanel, isOpenSideMenu }) => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
@@ -245,6 +245,16 @@ export default ({ handleSideMenuPanel, isOpenSideMenu }) => {
 			/>
 		</div>
 	);
+};
+
+SubMenu.defaultProps = {
+	handleSideMenuPanel: () => null,
+	isOpenSideMenu: null
+};
+
+SubMenu.propTypes = {
+	handleSideMenuPanel: PropTypes.func,
+	isOpenSideMenu: PropTypes.bool
 };
 
 const SubMenuList = ({
@@ -567,3 +577,5 @@ LangSwitch.propTypes = {
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
 	setUserInfo: PropTypes.func.isRequired
 };
+
+export default SubMenu;

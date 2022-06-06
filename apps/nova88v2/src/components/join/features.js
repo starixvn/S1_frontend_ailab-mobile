@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 const FeaturePanel = ({ langId }) => {
 	if (langId === "cs") return <CS />;
+	if (langId === "my") return <MY />;
 	if (langId === "th") return <TH />;
 	if (langId === "th_en") return <TH_EN />;
 	if (langId === "id") return <ID />;
@@ -96,6 +97,37 @@ const CS = () => {
 			<ul>
 				<li>多样化产品平台配上超划赔率以及完整游戏体验。</li>
 				<li>多项支付方式且火速存/提款交易。</li>
+			</ul>
+		</div>
+	);
+};
+
+const MY = () => {
+	return (
+		<div className="features">
+			<div className="title">
+				<span className="icon icon-star-full" />
+				CIRI-CIRI
+			</div>
+			<div className="title">KELEBIHAN MENJADI AHLI</div>
+			<ul>
+				<li>PEK PERMULAAN NOVA88</li>
+				<li>BONUS KASINO LIVE</li>
+				<li>SLOT BONUS SELAMAT DATANG</li>
+				<li>BONUS DEPOSIT SEMULA HARIAN MENCECAH 2.1%</li>
+			</ul>
+			<div className="title">
+				NIKMATI BONUS & REBAT EKSKLUSIF AHLI VIP NOVA88
+			</div>
+			<ul>
+				<li>
+					Produk platform yang berbilang dengan peluang kemenangan
+					yang lebih baik dan pengalaman permainan menyeluruh.
+				</li>
+				<li>
+					Proses deposit dan pengeluaran yang pantas dengan pelbagai
+					pilihan deposit.
+				</li>
 			</ul>
 		</div>
 	);

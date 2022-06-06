@@ -7,7 +7,8 @@ export default {
 		img: `${cloudBannerImgURL}/h5/img/ch.jpg`,
 		lang: [
 			{ value: "en", displayText: "English" },
-			{ value: "cs", displayText: "简体中文" }
+			{ value: "cs", displayText: "简体中文" },
+			{ value: "my", displayText: "Malay" }
 		],
 		countryName: "Malaysia",
 		currencyId: defCurrenyId.MYR

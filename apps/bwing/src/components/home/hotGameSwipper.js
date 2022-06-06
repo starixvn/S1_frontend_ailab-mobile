@@ -42,7 +42,7 @@ const HotGameSwipper = ({ i18n, userInfo }) => {
 					});
 				}
 			})
-			.catch(err => console.error(err));
+			.catch();
 	}, []);
 
 	const clickGame = ({ tpId, gameId, tpCategory, tpGameType }) => {
@@ -96,7 +96,7 @@ const HotGameSwipper = ({ i18n, userInfo }) => {
 		return (
 			<a
 				className="hotGamModule"
-				key={`hotgamelist-${g.tpId}-${g.gameId}-${g.tpCategory}`}
+				key={`hotgamelist-${g.tpId}-${g.gameId}-${g.gameName}`}
 				onClick={clickGame.bind(this, {
 					tpId: g?.tpId,
 					gameId: g?.gameId,
