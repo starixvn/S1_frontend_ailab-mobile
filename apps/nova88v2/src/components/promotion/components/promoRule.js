@@ -248,7 +248,7 @@ const defElems = ({
 const PromoRule = ({
 	ruleCols,
 	promotionInfo,
-	className = "rolloverList",
+	className,
 	showIcon = false
 }) => {
 	const {
@@ -271,7 +271,7 @@ const PromoRule = ({
 PromoRule.defaultProps = {
 	ruleCols: null,
 	promotionInfo: null,
-	className: null,
+	className: "rolloverList",
 	showIcon: null
 };
 
