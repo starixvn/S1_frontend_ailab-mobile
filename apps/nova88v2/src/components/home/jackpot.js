@@ -111,8 +111,9 @@ const ShowingNum = ({ value, currency, supportAnimation }) => {
 			return (
 				<div className="numberRow" key={key}>
 					<div className="active">
-						{valArr.map(n => (
-							<div key={`jackpot-num-${n}`}>{n}</div>
+						{valArr.map((n, i) => (
+							// eslint-disable-next-line react/no-array-index-key
+							<div key={`jackpot-num-${i}`}>{n}</div>
 						))}
 					</div>
 				</div>
