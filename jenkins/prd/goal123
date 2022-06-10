@@ -7,6 +7,7 @@ pipeline {
         site = 'goal123'
         project_name = 'goal123'
         env = 'prd'
+        ansible_path = '/home/jenkins/ansible/frontend/prd/'
     }
     stages {
         stage('Install dependencies') {
@@ -43,7 +44,7 @@ pipeline {
                 expression { auto_deploy == 'true' }
             }
             steps {
-                sh 'ansible-playbook -i host.yml deploy.yml --extra-vars "commitId=${commitHash} site=${site} platform=mobile host=mobile-${site} env=${env}"'
+                sh 'ansible-playbook -i ${ansible_path}host.yml ${ansible_path}deploy.yml --extra-vars "commitId=${commitHash} site=${site} platform=mobile host=mobile-${site} env=${env}"'
             }
         }
     }
