@@ -157,13 +157,12 @@ const Panel = () => {
 		let checked = true;
 		let msg = "";
 
-		if (userInfo.birth_d && userInfo.birth_m && userInfo.birth_y) {
-			return { checked, msg };
-		}
-
 		if (val === "" || val === null || val === undefined) {
 			checked = false;
 			msg = i18n.msg_SelectBirthDay;
+		} else if (moment(val).isAfter(legalDate)) {
+			checked = false;
+			msg = i18n.lbl_BirthdayWarn;
 		}
 
 		return { checked, msg };
