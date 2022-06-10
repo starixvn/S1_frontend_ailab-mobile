@@ -294,6 +294,7 @@
 	"msg_PasswordVaildate": "* Mật khẩu phải có từ 6-15 ký tự, bao gồm cả chữ, số và ký tự đặc biệt (!@#$%^&*).",
 	"msg_ReferenceNumber": "Số tham chiếu",
 	"msg_SelectBirthDay": "Vui lòng chọn ngày sinh của bạn.",
+	"lbl_BirthdayWarn": "Năm sinh bạn chọn không đủ tuổi pháp lý (18 tuổi)",
 	"msg_SelectFile": "Chọn tập tin",
 	"msg_SubmitDepositTime": "Vui lòng gửi giờ nạp tiền của bạn.",
 	"msg_Updatesuccessful": "Cập nhật thành công",
