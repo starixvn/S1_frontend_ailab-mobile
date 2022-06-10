@@ -294,6 +294,7 @@
 	"msg_PasswordVaildate": "* Password must be 6-15 characters, contain both alphanumeric and a special characters (!@#$%^&*).",
 	"msg_ReferenceNumber": "Reference number",
 	"msg_SelectBirthDay": "Please select your birthday.",
+	"lbl_BirthdayWarn": "Your selected birth year is under legal age (18 years old).",
 	"msg_SelectFile": "Select File",
 	"msg_SubmitDepositTime": "Please submit your deposit time.",
 	"msg_Updatesuccessful": "Update Successfully",
