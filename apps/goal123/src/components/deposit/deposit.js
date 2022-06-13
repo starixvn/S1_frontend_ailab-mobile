@@ -1,12 +1,13 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { useNavigate } from "@reach/router";
+import PropTypes from "prop-types";
 import moment from "moment";
 import {
-  i18nContext,
-  userInfoContext,
-  loadingContext,
-  bankSlipPopBoxContext,
-  popBoxContext
+	i18nContext,
+	userInfoContext,
+	loadingContext,
+	bankSlipPopBoxContext,
+	popBoxContext
 } from "../common/context";
 import PageVerify from "./deposit.pageVerify";
 import MobilePay from "./deposit.mobilePay";
@@ -16,15 +17,15 @@ import LoadCardPay from "./deposit.loadCardPay";
 import CryptoPay from "./deposit.cryptoPay";
 import QRPay from "./deposit.qrPay";
 import {
-  api_GetDepositInfoRecent,
-  api_GetMobilePayGroupList,
-  api_GetBankInfoOffList,
-  api_GetAutoChannelBankGroupList,
-  api_SetDepositCancel,
-  api_payment_GetLoadCardPayGroupList,
-  api_payment_CheckDepositSpecialCode,
-  api_GetCryptoPayInfoList,
-  api_GetQRPayGroupList
+	api_GetDepositInfoRecent,
+	api_GetMobilePayGroupList,
+	api_GetBankInfoOffList,
+	api_GetAutoChannelBankGroupList,
+	api_SetDepositCancel,
+	api_payment_GetLoadCardPayGroupList,
+	api_payment_CheckDepositSpecialCode,
+	api_GetCryptoPayInfoList,
+	api_GetQRPayGroupList
 } from "../../service/api/payment";
 import RecentDatas from "./deposit.recentDatas";
 import { number_format } from "../common/common";
@@ -33,510 +34,504 @@ import { useGetDomainList } from "../hook/useGetDomainList";
 import { useGetDepositPromotionList } from "./promoList";
 
 const defPayType = {
-  onlineBank: "onlineBank",
-  localBank: "localBank",
-  mobilePay: "mobilePay",
-  loadCardPay: "loadCardPay",
-  cryptoPay: "cryptoPay",
-  qrPay: "qrPay"
+	onlineBank: "onlineBank",
+	localBank: "localBank",
+	mobilePay: "mobilePay",
+	loadCardPay: "loadCardPay",
+	cryptoPay: "cryptoPay",
+	qrPay: "qrPay"
 };
 
 const defPayment = {
-  [defPayType.localBank]: {
-    displayKey: "lbl_WireTransfers",
-    creditTimeKey: "lbl_5mins"
-  },
-  [defPayType.mobilePay]: {
-    displayKey: "lbl_MobileDeposit",
-    creditTimeKey: "lbl_Instant"
-  },
-  [defPayType.onlineBank]: {
-    displayKey: "lbl_OnlineBanking",
-    creditTimeKey: "lbl_Instant"
-  },
-  [defPayType.loadCardPay]: {
-    displayKey: "lbl_TopUpCard",
-    creditTimeKey: "lbl_Instant"
-  },
-  [defPayType.cryptoPay]: {
-    displayKey: "lbl_CryptoPay",
-    creditTimeKey: "lbl_Instant"
-  },
-  [defPayType.qrPay]: {
-    displayKey: "lbl_QRPay",
-    creditTimeKey: "lbl_Instant"
-  }
+	[defPayType.localBank]: {
+		displayKey: "lbl_WireTransfers",
+		creditTimeKey: "lbl_5mins"
+	},
+	[defPayType.mobilePay]: {
+		displayKey: "lbl_MobileDeposit",
+		creditTimeKey: "lbl_Instant"
+	},
+	[defPayType.onlineBank]: {
+		displayKey: "lbl_OnlineBanking",
+		creditTimeKey: "lbl_Instant"
+	},
+	[defPayType.loadCardPay]: {
+		displayKey: "lbl_TopUpCard",
+		creditTimeKey: "lbl_Instant"
+	},
+	[defPayType.cryptoPay]: {
+		displayKey: "lbl_CryptoPay",
+		creditTimeKey: "lbl_Instant"
+	},
+	[defPayType.qrPay]: {
+		displayKey: "lbl_QRPay",
+		creditTimeKey: "lbl_Instant"
+	}
 };
 
 const useHandleSelect = defaultSelect => {
-  const [selected, setSelected] = useState(defaultSelect ?? "");
+	const [selected, setSelected] = useState(defaultSelect ?? "");
 
-  const HandleSelect = value => {
-    setSelected(value);
-  };
+	const HandleSelect = value => {
+		setSelected(value);
+	};
 
-  return { selected, HandleSelect };
+	return { selected, HandleSelect };
 };
 
 const Tab = ({ i18n, selected, HandleSelect, paymentList }) => {
-  const rows = Object.keys(defPayment)
-    .filter(key => paymentList[key]?.length > 0)
-    .map(key => {
-      const pay = defPayment[key];
-      return (
-        <div
-          key={`deposit-full-${pay.displayKey}`}
-          className={selected === key ? "open" : ""}
-          onClick={HandleSelect.bind(this, key)}>
-          {i18n[pay.displayKey]}
-        </div>
-      );
-    });
+	const rows = Object.keys(defPayment)
+		.filter(key => paymentList[key]?.length > 0)
+		.map(key => {
+			const pay = defPayment[key];
+			return (
+				<div
+					key={`deposit-full-${pay.displayKey}`}
+					className={selected === key ? "open" : ""}
+					onClick={HandleSelect.bind(this, key)}>
+					{i18n[pay.displayKey]}
+				</div>
+			);
+		});
 
-  return <div className="switchTag">{rows}</div>;
+	return <div className="switchTag">{rows}</div>;
+};
+
+Tab.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	selected: PropTypes.string.isRequired,
+	HandleSelect: PropTypes.func.isRequired,
+	paymentList: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
 const Panel = () => {
-  const navigate = useNavigate();
-  const { selected, HandleSelect } = useHandleSelect();
-  const { i18n } = useContext(i18nContext);
-  const { setLoading } = useContext(loadingContext);
-  const { userInfo } = useContext(userInfoContext);
-  const { setbankSlipPopBox } = useContext(bankSlipPopBoxContext);
-  const { setPopBox } = useContext(popBoxContext);
+	const navigate = useNavigate();
+	const { selected, HandleSelect } = useHandleSelect();
+	const { i18n } = useContext(i18nContext);
+	const { setLoading } = useContext(loadingContext);
+	const { userInfo } = useContext(userInfoContext);
+	const { setbankSlipPopBox } = useContext(bankSlipPopBoxContext);
+	const { setPopBox } = useContext(popBoxContext);
 
-  const [paymentList, setPaymentList] = useState({});
-  const [recentDatas, setRecentDatas] = useState([]);
+	const [paymentList, setPaymentList] = useState({});
+	const [recentDatas, setRecentDatas] = useState([]);
 
-  const [pageVerify, setPageVerify] = useState(true);
-  const { promoList } = useGetDepositPromotionList({
-    langId: userInfo.langId,
-    i18n,
-    setPopBox
-  });
+	const [pageVerify, setPageVerify] = useState(true);
+	const { promoList } = useGetDepositPromotionList({
+		langId: userInfo.langId,
+		i18n,
+		setPopBox
+	});
 
-  useGetDomainList({
-    setPopBox,
-    userInfo,
-    i18n
-  });
+	useGetDomainList({
+		setPopBox,
+		userInfo,
+		i18n
+	});
 
-  PageVerify(userInfo, i18n, setPopBox, navigate, setPageVerify, false);
+	PageVerify(userInfo, i18n, setPopBox, navigate, setPageVerify, false);
 
-  const isMountedRef = useRef(null);
-  useEffect(() => {
-    isMountedRef.current = true;
-    return () => {
-      isMountedRef.current = false;
-      setLoading(false);
-    };
-  });
+	const isMountedRef = useRef(null);
+	useEffect(() => {
+		isMountedRef.current = true;
+		return () => {
+			isMountedRef.current = false;
+			setLoading(false);
+		};
+	});
 
-  const checkDepositSpecialCode = async specialCode =>
-    api_payment_CheckDepositSpecialCode(specialCode).then(
-      res => {
-        if (!isMountedRef.current) return;
+	const checkDepositSpecialCode = async specialCode =>
+		api_payment_CheckDepositSpecialCode(specialCode).then(
+			res => {
+				if (!isMountedRef.current) return;
 
-        const { message, errorCode, data } = res.data;
+				const { message, errorCode, data } = res.data;
 
-        // eslint-disable-next-line consistent-return
-        if (errorCode === 0) return data.bonusCode;
+				// eslint-disable-next-line consistent-return
+				if (errorCode === 0) return data.bonusCode;
 
-        setPopBox({
-          isOpen: true,
-          title: i18n.lbl_ImportantNote,
-          content: `[${errorCode}]${message}`
-        });
-      },
-      () => {
-        if (!isMountedRef.current) return;
+				setPopBox({
+					isOpen: true,
+					title: i18n.lbl_ImportantNote,
+					content: `[${errorCode}]${message}`
+				});
+			},
+			() => {
+				if (!isMountedRef.current) return;
 
-        setPopBox({
-          isOpen: true,
-          title: i18n.lbl_ImportantNote,
-          content: i18n.msg_ApiServerError
-        });
-      }
-    );
+				setPopBox({
+					isOpen: true,
+					title: i18n.lbl_ImportantNote,
+					content: i18n.msg_ApiServerError
+				});
+			}
+		);
 
-  let content = (
-    <MobilePay
-      payType={defPayType.mobilePay}
-      creditTimeKey={defPayment[defPayType.mobilePay].creditTimeKey}
-      paymentList={paymentList[defPayType.mobilePay] ?? []}
-      promoList={promoList}
-      checkDepositSpecialCode={checkDepositSpecialCode}
-    />
-  );
+	let content = (
+		<MobilePay
+			payType={defPayType.mobilePay}
+			creditTimeKey={defPayment[defPayType.mobilePay].creditTimeKey}
+			paymentList={paymentList[defPayType.mobilePay] ?? []}
+			promoList={promoList}
+			checkDepositSpecialCode={checkDepositSpecialCode}
+		/>
+	);
 
-  if (selected === defPayType.localBank) {
-    content = (
-      <LocalBank
-        payType={selected}
-        creditTimeKey={defPayment[defPayType.localBank].creditTimeKey}
-        paymentList={paymentList[defPayType.localBank] ?? []}
-        promoList={promoList}
-        checkDepositSpecialCode={checkDepositSpecialCode}
-      />
-    );
-  } else if (selected === defPayType.onlineBank) {
-    content = (
-      <OnlineBanking
-        payType={selected}
-        creditTimeKey={defPayment[defPayType.onlineBank].creditTimeKey}
-        paymentList={paymentList[defPayType.onlineBank] ?? []}
-        promoList={promoList}
-        checkDepositSpecialCode={checkDepositSpecialCode}
-      />
-    );
-  } else if (selected === defPayType.loadCardPay) {
-    content = (
-      <LoadCardPay
-        payType={selected}
-        creditTimeKey={defPayment[defPayType.loadCardPay].creditTimeKey}
-        paymentList={paymentList[defPayType.loadCardPay] ?? []}
-        promoList={promoList}
-        checkDepositSpecialCode={checkDepositSpecialCode}
-      />
-    );
-  } else if (selected === defPayType.cryptoPay) {
-    content = (
-      <CryptoPay
-        payType={selected}
-        creditTimeKey={defPayment[defPayType.cryptoPay].creditTimeKey}
-        paymentList={paymentList[defPayType.cryptoPay] ?? []}
-        promoList={promoList}
-        checkDepositSpecialCode={checkDepositSpecialCode}
-      />
-    );
-  } else if (selected === defPayType.qrPay) {
-    content = (
-      <QRPay
-        creditTimeKey={defPayment[defPayType.qrPay].creditTimeKey}
-        paymentList={paymentList[defPayType.qrPay] ?? []}
-        promoList={promoList}
-        checkDepositSpecialCode={checkDepositSpecialCode}
-      />
-    );
-  }
-  const [isCancelSubmit, setIsCancelSubmit] = useState(false)
-  useEffect(() => {
-    if (userInfo.isLogin) {
-      const GetAllPayment = async () => {
-        setLoading(true);
-        let defaultSelect = "";
+	if (selected === defPayType.localBank) {
+		content = (
+			<LocalBank
+				payType={selected}
+				creditTimeKey={defPayment[defPayType.localBank].creditTimeKey}
+				paymentList={paymentList[defPayType.localBank] ?? []}
+				promoList={promoList}
+				checkDepositSpecialCode={checkDepositSpecialCode}
+			/>
+		);
+	} else if (selected === defPayType.onlineBank) {
+		content = (
+			<OnlineBanking
+				payType={selected}
+				creditTimeKey={defPayment[defPayType.onlineBank].creditTimeKey}
+				paymentList={paymentList[defPayType.onlineBank] ?? []}
+				promoList={promoList}
+				checkDepositSpecialCode={checkDepositSpecialCode}
+			/>
+		);
+	} else if (selected === defPayType.loadCardPay) {
+		content = (
+			<LoadCardPay
+				payType={selected}
+				creditTimeKey={defPayment[defPayType.loadCardPay].creditTimeKey}
+				paymentList={paymentList[defPayType.loadCardPay] ?? []}
+				promoList={promoList}
+				checkDepositSpecialCode={checkDepositSpecialCode}
+			/>
+		);
+	} else if (selected === defPayType.cryptoPay) {
+		content = (
+			<CryptoPay
+				payType={selected}
+				creditTimeKey={defPayment[defPayType.cryptoPay].creditTimeKey}
+				paymentList={paymentList[defPayType.cryptoPay] ?? []}
+				promoList={promoList}
+				checkDepositSpecialCode={checkDepositSpecialCode}
+			/>
+		);
+	} else if (selected === defPayType.qrPay) {
+		content = (
+			<QRPay
+				creditTimeKey={defPayment[defPayType.qrPay].creditTimeKey}
+				paymentList={paymentList[defPayType.qrPay] ?? []}
+				promoList={promoList}
+				checkDepositSpecialCode={checkDepositSpecialCode}
+			/>
+		);
+	}
+	const [isCancelSubmit, setIsCancelSubmit] = useState(false);
+	useEffect(() => {
+		if (userInfo.isLogin) {
+			const GetAllPayment = async () => {
+				setLoading(true);
+				let defaultSelect = "";
 
-        const payments = {
-          [defPayType.mobilePay]: [],
-          [defPayType.onlineBank]: [],
-          [defPayType.localBank]: [],
-          [defPayType.cryptoPay]: [],
-          [defPayType.loadCardPay]: [],
-          [defPayType.qrPay]: []
-        };
+				const payments = {
+					[defPayType.mobilePay]: [],
+					[defPayType.onlineBank]: [],
+					[defPayType.localBank]: [],
+					[defPayType.cryptoPay]: [],
+					[defPayType.loadCardPay]: [],
+					[defPayType.qrPay]: []
+				};
 
-        const setDefaultSelect = (currentValue, payType, dataList) =>
-          currentValue === "" && dataList.length > 0
-            ? payType
-            : currentValue;
+				const setDefaultSelect = (currentValue, payType, dataList) =>
+					currentValue === "" && dataList.length > 0
+						? payType
+						: currentValue;
 
-        const getDataListResult = res =>
-          res.data.errorCode === 0 && res.data.data?.length > 0
-            ? res.data.data
-            : [];
+				const getDataListResult = res =>
+					res.data.errorCode === 0 && res.data.data?.length > 0
+						? res.data.data
+						: [];
 
-        try {
-          const res = await api_GetBankInfoOffList();
-          payments[defPayType.localBank] = getDataListResult(res);
+				try {
+					const res = await api_GetBankInfoOffList();
+					payments[defPayType.localBank] = getDataListResult(res);
 
-          defaultSelect = setDefaultSelect(
-            defaultSelect,
-            defPayType.localBank,
-            payments[defPayType.localBank]
-          );
-          if (res.data.errorCode !== 0) {
-            setPopBox({
-              isOpen: true,
-              content: `[${res.data.errorCode}] ${res.data.message}`
-            });
-          }
-        } catch (error) {
-          console.error(error);
-        }
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defPayType.localBank,
+						payments[defPayType.localBank]
+					);
+					if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				} catch (error) {}
 
-        try {
-          const res = await api_GetMobilePayGroupList();
-          payments[defPayType.mobilePay] = getDataListResult(res);
+				try {
+					const res = await api_GetMobilePayGroupList();
+					payments[defPayType.mobilePay] = getDataListResult(res);
 
-          defaultSelect = setDefaultSelect(
-            defaultSelect,
-            defPayType.mobilePay,
-            payments[defPayType.mobilePay]
-          );
-          if (res.data.errorCode !== 0) {
-            setPopBox({
-              isOpen: true,
-              content: `[${res.data.errorCode}] ${res.data.message}`
-            });
-          }
-        } catch (error) {
-          console.error(error);
-        }
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defPayType.mobilePay,
+						payments[defPayType.mobilePay]
+					);
+					if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				} catch (error) {}
 
-        try {
-          const res = await api_GetAutoChannelBankGroupList();
-          payments[defPayType.onlineBank] = getDataListResult(res);
+				try {
+					const res = await api_GetAutoChannelBankGroupList();
+					payments[defPayType.onlineBank] = getDataListResult(res);
 
-          defaultSelect = setDefaultSelect(
-            defaultSelect,
-            defPayType.onlineBank,
-            payments[defPayType.onlineBank]
-          );
-          if (res.data.errorCode !== 0) {
-            setPopBox({
-              isOpen: true,
-              content: `[${res.data.errorCode}] ${res.data.message}`
-            });
-          }
-        } catch (error) {
-          console.error(error);
-        }
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defPayType.onlineBank,
+						payments[defPayType.onlineBank]
+					);
+					if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				} catch (error) {}
 
-        try {
-          const res = await api_payment_GetLoadCardPayGroupList();
-          payments[defPayType.loadCardPay] = getDataListResult(res);
+				try {
+					const res = await api_payment_GetLoadCardPayGroupList();
+					payments[defPayType.loadCardPay] = getDataListResult(res);
 
-          defaultSelect = setDefaultSelect(
-            defaultSelect,
-            defPayType.loadCardPay,
-            payments[defPayType.loadCardPay]
-          );
-          if (res.data.errorCode !== 0) {
-            setPopBox({
-              isOpen: true,
-              content: `[${res.data.errorCode}] ${res.data.message}`
-            });
-          }
-        } catch (error) {
-          console.error(error);
-        }
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defPayType.loadCardPay,
+						payments[defPayType.loadCardPay]
+					);
+					if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				} catch (error) {}
 
-        try {
-          const res = await api_GetCryptoPayInfoList();
-          payments[defPayType.cryptoPay] = getDataListResult(res);
+				try {
+					const res = await api_GetCryptoPayInfoList();
+					payments[defPayType.cryptoPay] = getDataListResult(res);
 
-          defaultSelect = setDefaultSelect(
-            defaultSelect,
-            defPayType.cryptoPay,
-            payments[defPayType.cryptoPay]
-          );
-          if (res.data.errorCode !== 0) {
-            setPopBox({
-              isOpen: true,
-              content: `[${res.data.errorCode}] ${res.data.message}`
-            });
-          }
-        } catch (error) {
-          console.error(error);
-        }
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defPayType.cryptoPay,
+						payments[defPayType.cryptoPay]
+					);
+					if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				} catch (error) {}
 
-        try {
-          const res = await api_GetQRPayGroupList();
-          payments[defPayType.qrPay] = getDataListResult(res);
+				try {
+					const res = await api_GetQRPayGroupList();
+					payments[defPayType.qrPay] = getDataListResult(res);
 
-          defaultSelect = setDefaultSelect(
-            defaultSelect,
-            defPayType.qrPay,
-            payments[defPayType.qrPay]
-          );
-          if (res.data.errorCode !== 0) {
-            setPopBox({
-              isOpen: true,
-              content: `[${res.data.errorCode}] ${res.data.message}`
-            });
-          }
-        } catch (error) {
-          console.error(error);
-        }
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defPayType.qrPay,
+						payments[defPayType.qrPay]
+					);
+					if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				} catch (error) {}
 
-        if (isMountedRef.current) {
-          setLoading(false);
-          setPaymentList(payments);
-          HandleSelect(defaultSelect);
-        }
-      };
+				if (isMountedRef.current) {
+					setLoading(false);
+					setPaymentList(payments);
+					HandleSelect(defaultSelect);
+				}
+			};
 
-      GetAllPayment();
+			GetAllPayment();
 
-      api_GetDepositInfoRecent().then(
-        res => {
-          if (res.data.errorCode === 0 && isMountedRef.current) {
-            setRecentDatas(res.data.data);
-          } else if (res.data.errorCode !== 0) {
-            setPopBox({
-              isOpen: true,
-              content: `[${res.data.errorCode}] ${res.data.message}`
-            });
-          }
-        },
-        () => {
-          setPopBox({
-            isOpen: true,
-            content: i18n.msg_ApiServerError
-          });
-        }
-      );
-    }
-    setIsCancelSubmit(false)
-  }, [userInfo.isLogin, isCancelSubmit]);
+			api_GetDepositInfoRecent().then(
+				res => {
+					if (res.data.errorCode === 0 && isMountedRef.current) {
+						setRecentDatas(res.data.data);
+					} else if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
+				}
+			);
+		}
+		setIsCancelSubmit(false);
+	}, [userInfo.isLogin, isCancelSubmit]);
 
-  const SubmitProof = (
-    bankInfo,
-    depositRep,
-    amount,
-    transId,
-    picFileName,
-    refId
-  ) => {
-    // if (pageVerify) {
-    const { currencyId, ...restBankInfo } = bankInfo;
-    const { accountName, accountNo } = depositRep;
-    setbankSlipPopBox(() => ({
-      depositTime: `${moment().format("yyyy-MM-DDT")}${moment().format(
-        "HH:mm"
-      )}`,
-      ...restBankInfo,
-      transId,
-      accountNo,
-      accountName,
-      isOpen: true,
-      amount: number_format(amount, false, 0),
-      picFileName,
-      refId,
-      disableSubmit: false
-    }));
-    // }
-  };
+	const SubmitProof = (
+		bankInfo,
+		depositRep,
+		amount,
+		transId,
+		picFileName,
+		refId
+	) => {
+		// if (pageVerify) {
+		const { currencyId, ...restBankInfo } = bankInfo;
+		const { accountName, accountNo } = depositRep;
+		setbankSlipPopBox(() => ({
+			depositTime: `${moment().format("yyyy-MM-DDT")}${moment().format(
+				"HH:mm"
+			)}`,
+			...restBankInfo,
+			transId,
+			accountNo,
+			accountName,
+			isOpen: true,
+			amount: number_format(amount, false, 0),
+			picFileName,
+			refId,
+			disableSubmit: false
+		}));
+		// }
+	};
 
-  const ClickCancel = transId => {
-    if (pageVerify) {
-      const ClickSubmit = () => {
-        setPopBox({ isOpen: false });
-        api_SetDepositCancel(transId).then(
-          res => {
-            if (isMountedRef.current) {
-              if (res.data.errorCode === 0) {
-                api_GetDepositInfoRecent().then(
-                  resRecent => {
-                    if (resRecent.data.errorCode === 0) {
-                      setRecentDatas(resRecent.data.data);
-                    } else {
-                      setPopBox({
-                        isOpen: true,
-                        content: `[${resRecent.data.errorCode}] ${resRecent.data.message}`
-                      });
-                    }
-                  },
-                  () => {
-                    setPopBox({
-                      isOpen: true,
-                      content: i18n.msg_ApiServerError
-                    });
-                  }
-                );
-              } else {
-                setPopBox({
-                  isOpen: true,
-                  content: `[${res.data.errorCode}] ${res.data.message}`
-                });
-              }
-            }
-          },
-          () => {
-            if (isMountedRef.current) {
-              setPopBox({
-                isOpen: true,
-                content: i18n.msg_ApiServerError
-              });
-            }
-          }
-        );
-      };
+	const ClickCancel = transId => {
+		if (pageVerify) {
+			const ClickSubmit = () => {
+				setPopBox({ isOpen: false });
+				api_SetDepositCancel(transId).then(
+					res => {
+						if (isMountedRef.current) {
+							if (res.data.errorCode === 0) {
+								api_GetDepositInfoRecent().then(
+									resRecent => {
+										if (resRecent.data.errorCode === 0) {
+											setRecentDatas(resRecent.data.data);
+										} else {
+											setPopBox({
+												isOpen: true,
+												content: `[${resRecent.data.errorCode}] ${resRecent.data.message}`
+											});
+										}
+									},
+									() => {
+										setPopBox({
+											isOpen: true,
+											content: i18n.msg_ApiServerError
+										});
+									}
+								);
+							} else {
+								setPopBox({
+									isOpen: true,
+									content: `[${res.data.errorCode}] ${res.data.message}`
+								});
+							}
+						}
+					},
+					() => {
+						if (isMountedRef.current) {
+							setPopBox({
+								isOpen: true,
+								content: i18n.msg_ApiServerError
+							});
+						}
+					}
+				);
+			};
 
-      const ClickPopBoxCancel = () => {
-        setPopBox({ isOpen: false });
-      };
+			const ClickPopBoxCancel = () => {
+				setPopBox({ isOpen: false });
+			};
 
-      setPopBox({
-        isOpen: true,
-        title: i18n.lbl_ImportantNote,
-        content: i18n.lbl_CancelConfirm,
-        hasBtn: true,
-        btnBar: (
-          <div className="btn-group">
-            <button
-              className="darkGray"
-              onClick={ClickPopBoxCancel}>
-              {i18n.lbl_Cancel}
-            </button>
-            <button
-              className="lightBlue"
-              onClick={async () => {
-                await ClickSubmit()
-                setIsCancelSubmit(true)
-              }}
-            >
-              {i18n.lbl_Submit}
-            </button>
-          </div>
-        )
-      });
-    }
-  };
+			setPopBox({
+				isOpen: true,
+				title: i18n.lbl_ImportantNote,
+				content: i18n.lbl_CancelConfirm,
+				hasBtn: true,
+				btnBar: (
+					<div className="btn-group">
+						<button
+							className="darkGray"
+							onClick={ClickPopBoxCancel}>
+							{i18n.lbl_Cancel}
+						</button>
+						<button
+							className="lightBlue"
+							onClick={async () => {
+								await ClickSubmit();
+								setIsCancelSubmit(true);
+							}}>
+							{i18n.lbl_Submit}
+						</button>
+					</div>
+				)
+			});
+		}
+	};
 
-  const GetDepositInfoRecent = () => {
-    api_GetDepositInfoRecent().then(
-      res => {
-        if (isMountedRef.current) {
-          if (res.data.errorCode === 0) {
-            setRecentDatas(res.data.data);
-          } else {
-            setPopBox({
-              isOpen: true,
-              content: `[${res.data.errorCode}] ${res.data.message}`
-            });
-          }
-        }
-      },
-      () => {
-        if (isMountedRef.current) {
-          setPopBox({
-            isOpen: true,
-            content: i18n.msg_ApiServerError
-          });
-        }
-      }
-    );
-  };
+	const GetDepositInfoRecent = () => {
+		api_GetDepositInfoRecent().then(
+			res => {
+				if (isMountedRef.current) {
+					if (res.data.errorCode === 0) {
+						setRecentDatas(res.data.data);
+					} else {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				}
+			},
+			() => {
+				if (isMountedRef.current) {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
+				}
+			}
+		);
+	};
 
-  return (
-    <>
-      <Tab
-        i18n={i18n}
-        selected={selected}
-        HandleSelect={HandleSelect}
-        paymentList={paymentList}
-      />
-      {content}
-      <RecentDatas
-        Datas={recentDatas}
-        SubmitProof={SubmitProof}
-        ClickCancel={ClickCancel}
-        GetDepositInfoRecent={GetDepositInfoRecent}
-      />
-      <ImportantNote i18n={i18n} langId={userInfo.langId} />
-    </>
-  );
+	return (
+		<>
+			<Tab
+				i18n={i18n}
+				selected={selected}
+				HandleSelect={HandleSelect}
+				paymentList={paymentList}
+			/>
+			{content}
+			<RecentDatas
+				Datas={recentDatas}
+				SubmitProof={SubmitProof}
+				ClickCancel={ClickCancel}
+				GetDepositInfoRecent={GetDepositInfoRecent}
+			/>
+			<ImportantNote i18n={i18n} langId={userInfo.langId} />
+		</>
+	);
 };
 
 export default Panel;
