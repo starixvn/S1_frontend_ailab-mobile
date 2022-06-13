@@ -210,7 +210,7 @@
 	"Currency_61": "INR",
 	"Currency_96": "USDT",
 	"Currency_74": "BDT",
-	
+
 	"-==================-==================Home-==================-=====================": "",
 	"lbl_VirtualGames":"เกมเสมือนจริง",
 	"lbl_VirtualSports": "กีฬาเสมือนจริง",
@@ -262,7 +262,6 @@
 	"lbl_welcome_to": "ยินดีต้อนรับเข้าสู่",
 	"lbl_world_class": "โลกแห่งคาสิโนออนไลน์",
 	"lbl_casino_world": "ระดับเวิลด์คลาส",
-
 	"lbl_tpCategory_1": "กีฬา",
 	"lbl_tpCategory_2": "สล็อต",
 	"lbl_tpCategory_3": "คาสิโนสด",
@@ -271,7 +270,8 @@
 	"lbl_tpCategory_6": "ลอตเตอรี่",
 	"lbl_tpCategory_7": "กีฬาจำลอง",
 	"lbl_tpCategory_8": "โป๊กเกอร์",
-
+	"lbl_Kog": "เคโอจี(KOG)",
+	
 	"-==================-==========================Casino-===================================": "",
 	"lbl_AllProvider": "แพลตฟอร์มทั้งหมด",
 	"lbl_AllGameType": "ทุกหมวดหมู่",
@@ -323,7 +323,7 @@
 	"lbl_BePartsOfUs": "ร่วมเป็นส่วนหนึ่งกับเรา!",
 	"lbl_Product": "ผลิตภัณฑ์",
 	"lbl_Result": "ผลลัพธ์",
-	"lbl_Calculation": "Calculation",
+	"lbl_Calculation": "การคำนวณ",
 	"lbl_GamesPoint": "เกมพอยท์",
 	"lbl_RankPrefix": "รองชนะเลิศอันดับ",
 	"lbl_RankPostfix": "",
@@ -449,7 +449,7 @@
 	"lbl_Fail": "ล้มเหลว",
 	"lbl_Manual": "แมนนวล",
 	"lbl_Caution": "คำเตือน!",
-	"lbl_AutoTransferHint": "การโอนอัตโนมัติจะโอนเงินทั้งหมดของคุณไปที่เกม หากมีโปรโมชั่นใดที่อยู่ระหว่างดำเนินการ ยอดเงินจะถูกล็อคในกระเป๋าเงินที่กำหนดด้วยเช่นกัน", 
+	"lbl_AutoTransferHint": "การโอนอัตโนมัติจะโอนเงินทั้งหมดของคุณไปที่เกม หากมีโปรโมชั่นใดที่อยู่ระหว่างดำเนินการ ยอดเงินจะถูกล็อคในกระเป๋าเงินที่กำหนดด้วยเช่นกัน",
 
 	"-==========================Statement===================================": "",
 	"lbl_TypeName": "ประเภท",
@@ -753,7 +753,7 @@
 
 	"==============HotGames==============": "",
 	"lbl_HotGames_Nova88_Olympus": "Nova88 Olympus",
-	
+
 	"==============Mega888==============": "",
 	"lbl_app_for_android": "APP for Android",
 	"lbl_app_for_ios": "APP for IOS",

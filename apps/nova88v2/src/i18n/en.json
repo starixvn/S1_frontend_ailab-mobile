@@ -264,7 +264,6 @@
 	"lbl_welcome_to": "WELCOME TO",
 	"lbl_world_class": "WORLD CLASS",
 	"lbl_casino_world": "LIVE CASINO",
-
 	"lbl_tpCategory_1": "Sports",
 	"lbl_tpCategory_2": "Slots",
 	"lbl_tpCategory_3": "Casino",
@@ -273,6 +272,7 @@
 	"lbl_tpCategory_6": "Lottery",
 	"lbl_tpCategory_7": "Virtual Sports",
 	"lbl_tpCategory_8": "Poker",
+  	"lbl_Kog": "KOG",
 
 	"==============================================Casino====================================": "",
 
@@ -461,7 +461,7 @@
 	"lbl_Fail": "Failed",
 	"lbl_Manual": "Manual",
 	"lbl_Caution": "CAUTION!",
-	"lbl_AutoTransferHint": "Auto Transfer will transfer all your fund to the game. If any running bonus within, your fund will be locked in the designated wallet that entered.", 
+	"lbl_AutoTransferHint": "Auto Transfer will transfer all your fund to the game. If any running bonus within, your fund will be locked in the designated wallet that entered.",
 
 	"==============================================Statement====================================": "",
 

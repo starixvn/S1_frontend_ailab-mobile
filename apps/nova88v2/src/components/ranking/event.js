@@ -54,8 +54,8 @@ const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
 			</div>
 			<div className="rankList">
 				<div className="title">
-					{i18n.lbl_Points.toUpperCase()}{" "}
 					{i18n.lbl_Calculation.toUpperCase()}
+					{i18n.lbl_Points.toUpperCase()}{" "}
 				</div>
 				<ul>
 					<li>
