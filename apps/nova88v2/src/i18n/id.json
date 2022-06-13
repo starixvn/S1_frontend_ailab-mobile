@@ -212,7 +212,7 @@
 	"Currency_74": "BDT",
 
 	"-==================-==================Home-==================-=====================": "",
-	
+
 	"lbl_VirtualGames":"Permainan Virtual",
 	"lbl_VirtualSports": "Olahraga Virtual",
 	"lbl_UpcomingMatches": "Pertandingan Mendatang",
@@ -263,7 +263,6 @@
 	"lbl_welcome_to": "SELAMAT DATANG",
 	"lbl_world_class": "DI CASINO",
 	"lbl_casino_world": "KELAS DUNIA",
-
 	"lbl_tpCategory_1": "Sports",
 	"lbl_tpCategory_2": "Slots",
 	"lbl_tpCategory_3": "Kasino",
@@ -272,7 +271,8 @@
 	"lbl_tpCategory_6": "Lotere",
 	"lbl_tpCategory_7": "Olahraga maya",
 	"lbl_tpCategory_8": "Poker",
-
+	"lbl_Kog": "KOG",
+	
 	"-==================-==================Casino-==================-=====================": "",
 	"lbl_AllProvider": "Semua Platform",
 	"lbl_AllGameType": "Semua Kategori",
@@ -451,7 +451,7 @@
 	"lbl_Fail": "Gagal",
 	"lbl_Manual": "Manual",
 	"lbl_Caution": "PERINGATAN!",
-	"lbl_AutoTransferHint": "Auto Transfer akan mentransfer semua dana Anda ke permainan. Jika ada bonus berjalan di dalam, dana Anda akan dikunci di dompet yang ditunjuk.", 
+	"lbl_AutoTransferHint": "Auto Transfer akan mentransfer semua dana Anda ke permainan. Jika ada bonus berjalan di dalam, dana Anda akan dikunci di dompet yang ditunjuk.",
 
 	"-==================-==========================Statement-===================================": "",
 
