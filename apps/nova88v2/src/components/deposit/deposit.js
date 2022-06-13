@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
 import moment from "moment";
 import {
@@ -87,6 +88,13 @@ const Tab = ({ i18n, selected, HandleSelect, paymentList }) => {
 		});
 
 	return <div className="switchTag">{rows}</div>;
+};
+
+Tab.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	selected: PropTypes.string.isRequired,
+	HandleSelect: PropTypes.func.isRequired,
+	paymentList: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
 const Panel = () => {
@@ -287,6 +295,7 @@ const Panel = () => {
 		);
 	}
 
+	const [isCancelSubmit, setIsCancelSubmit] = useState(false);
 	useEffect(() => {
 		if (userInfo.isLogin) {
 			let defaultSelect = userPaymentData?.payType ?? "";
@@ -328,9 +337,7 @@ const Panel = () => {
 							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
-				} catch (error) {
-					console.error(error);
-				}
+				} catch (error) {}
 
 				try {
 					const res = await api.payment.GetBankInfoOffListStatus();
@@ -347,9 +354,7 @@ const Panel = () => {
 							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
-				} catch (error) {
-					console.error(error);
-				}
+				} catch (error) {}
 
 				try {
 					const res = await api.payment.GetOnlinePaymentList();
@@ -366,9 +371,7 @@ const Panel = () => {
 							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
-				} catch (error) {
-					console.error(error);
-				}
+				} catch (error) {}
 
 				try {
 					const res = await api.payment.GetMobilePayGroupList();
@@ -385,9 +388,7 @@ const Panel = () => {
 							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
-				} catch (error) {
-					console.error(error);
-				}
+				} catch (error) {}
 
 				try {
 					const res = await api.payment.GetCryptoPayInfoList();
@@ -403,9 +404,7 @@ const Panel = () => {
 							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
-				} catch (error) {
-					console.error(error);
-				}
+				} catch (error) {}
 
 				try {
 					if (userInfo.currencyId === defCurrenyId.THB) {
@@ -422,13 +421,8 @@ const Panel = () => {
 							defPayType.linePay,
 							payments[defPayType.linePay]
 						);
-						if (res.data.errorCode !== 0) {
-							console.error(res.data);
-						}
 					}
-				} catch (error) {
-					console.error(error);
-				}
+				} catch (error) {}
 
 				if (isMountedRef.current) {
 					setLoading(false);
@@ -439,23 +433,24 @@ const Panel = () => {
 
 			GetAllPayment();
 
-			api.payment.GetDepositInfoRecent().then(
-				res => {
-					if (res.data.errorCode === 0 && isMountedRef.current) {
-						setRecentDatas(res.data.data);
-					} else if (res.data.errorCode !== 0) {
-						setPopBox({
-							isOpen: true,
-							content: `[${res.data.errorCode}] ${res.data.message}`
-						});
-					}
-				},
-				error => {
-					console.error(error);
+			api.payment.GetDepositInfoRecent().then(res => {
+				if (res.data.errorCode === 0 && isMountedRef.current) {
+					setRecentDatas(res.data.data);
+				} else if (res.data.errorCode !== 0) {
+					setPopBox({
+						isOpen: true,
+						content: `[${res.data.errorCode}] ${res.data.message}`
+					});
 				}
-			);
+			});
 		}
-	}, [userInfo.isLogin, userPaymentData.payType, userInfo.currencyId]);
+		setIsCancelSubmit(false);
+	}, [
+		userInfo.isLogin,
+		userPaymentData.payType,
+		userInfo.currencyId,
+		isCancelSubmit
+	]);
 
 	const _isConvert = isConvert(userInfo.currencyId);
 	const SubmitProof = (
@@ -540,7 +535,12 @@ const Panel = () => {
 				hasBtn: true,
 				btnBar: (
 					<div className="btn-group">
-						<button className="white" onClick={ClickSubmit}>
+						<button
+							className="white"
+							onClick={async () => {
+								await ClickSubmit();
+								setIsCancelSubmit(true);
+							}}>
 							{i18n.lbl_Yes}
 						</button>
 						<button className="orange" onClick={ClickPopBoxCancel}>

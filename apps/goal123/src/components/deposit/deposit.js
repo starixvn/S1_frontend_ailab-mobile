@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { useNavigate } from "@reach/router";
+import PropTypes from "prop-types";
 import moment from "moment";
 import {
 	i18nContext,
@@ -94,6 +95,13 @@ const Tab = ({ i18n, selected, HandleSelect, paymentList }) => {
 		});
 
 	return <div className="switchTag">{rows}</div>;
+};
+
+Tab.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	selected: PropTypes.string.isRequired,
+	HandleSelect: PropTypes.func.isRequired,
+	paymentList: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
 const Panel = () => {
@@ -219,7 +227,7 @@ const Panel = () => {
 			/>
 		);
 	}
-
+	const [isCancelSubmit, setIsCancelSubmit] = useState(false);
 	useEffect(() => {
 		if (userInfo.isLogin) {
 			const GetAllPayment = async () => {
@@ -260,9 +268,7 @@ const Panel = () => {
 							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
-				} catch (error) {
-					console.error(error);
-				}
+				} catch (error) {}
 
 				try {
 					const res = await api_GetMobilePayGroupList();
@@ -279,9 +285,7 @@ const Panel = () => {
 							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
-				} catch (error) {
-					console.error(error);
-				}
+				} catch (error) {}
 
 				try {
 					const res = await api_GetAutoChannelBankGroupList();
@@ -298,9 +302,7 @@ const Panel = () => {
 							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
-				} catch (error) {
-					console.error(error);
-				}
+				} catch (error) {}
 
 				try {
 					const res = await api_payment_GetLoadCardPayGroupList();
@@ -317,9 +319,7 @@ const Panel = () => {
 							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
-				} catch (error) {
-					console.error(error);
-				}
+				} catch (error) {}
 
 				try {
 					const res = await api_GetCryptoPayInfoList();
@@ -336,9 +336,7 @@ const Panel = () => {
 							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
-				} catch (error) {
-					console.error(error);
-				}
+				} catch (error) {}
 
 				try {
 					const res = await api_GetQRPayGroupList();
@@ -355,9 +353,7 @@ const Panel = () => {
 							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
-				} catch (error) {
-					console.error(error);
-				}
+				} catch (error) {}
 
 				if (isMountedRef.current) {
 					setLoading(false);
@@ -387,7 +383,8 @@ const Panel = () => {
 				}
 			);
 		}
-	}, [userInfo.isLogin]);
+		setIsCancelSubmit(false);
+	}, [userInfo.isLogin, isCancelSubmit]);
 
 	const SubmitProof = (
 		bankInfo,
@@ -478,7 +475,12 @@ const Panel = () => {
 							onClick={ClickPopBoxCancel}>
 							{i18n.lbl_Cancel}
 						</button>
-						<button className="lightBlue" onClick={ClickSubmit}>
+						<button
+							className="lightBlue"
+							onClick={async () => {
+								await ClickSubmit();
+								setIsCancelSubmit(true);
+							}}>
 							{i18n.lbl_Submit}
 						</button>
 					</div>

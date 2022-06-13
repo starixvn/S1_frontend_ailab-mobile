@@ -121,7 +121,6 @@ const Payment = props => {
 			}
 		);
 	};
-
 	const SubmitProof = (bankInfo, accInfo) => {
 		const { currencyId, ...restBankInfo } = bankInfo;
 		const { accountName, accountNo } = accInfo;
@@ -448,6 +447,23 @@ const Payment = props => {
 		VaildAmount({ _amount: amount, displayWarning: false }) &&
 		(!!userInfo.accountName || !!realName);
 
+	const judgeBtnStatus = () => {
+		if (selBank.canSubmit && canSubmit) {
+			ClickSubmit();
+		}
+	};
+	const isShowSubmit = paymentList.filter(
+		item => item.sysId === selBank.sysId
+	)[0]?.canSubmit;
+	const classStyle = () => {
+		let result = "";
+		if (isShowSubmit && canSubmit) {
+			result = "blue";
+		} else {
+			result = isShowSubmit ? "darkGray" : "org";
+		}
+		return result;
+	};
 	return (
 		<div className="depositModule_mobile open">
 			<div className="title text-org">{`${i18n.lbl_CreditTime}: ${i18n[creditTimeKey]}`}</div>
@@ -510,10 +526,8 @@ const Payment = props => {
 					onClick={SubmitProof.bind(this, selBank, accountInfo)}>
 					{i18n.lbl_UploadReceipt}
 				</button>
-				<button
-					className={canSubmit ? "blue" : "darkGray"}
-					onClick={ClickSubmit}>
-					{i18n.lbl_Submit}
+				<button className={classStyle()} onClick={judgeBtnStatus}>
+					{isShowSubmit ? i18n.lbl_Submit : i18n.lbl_DepositStatus1}
 				</button>
 			</div>
 		</div>
@@ -572,6 +586,7 @@ const GroupList = ({
 				maxAmount={maxAmount}
 				_isConvert={_isConvert}
 				i18n={i18n}
+				canSubmit={data.canSubmit}
 			/>
 		);
 		return isSelect ? (
@@ -594,6 +609,7 @@ const GroupList = ({
 								bindFullObj ? data : data[idKey]
 							)}
 							isSelect={isSelect}
+							canSubmit={data.canSubmit}
 						/>
 						{/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
 						<a

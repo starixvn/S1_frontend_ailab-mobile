@@ -459,6 +459,25 @@ const Payment = props => {
 		VaildAmount({ amount, displayWarning: false }) &&
 		reciptIsRequired;
 
+	const judgeBtnStatus = () => {
+		if (selBank.canSubmit && canSubmit) {
+			ClickSubmit();
+		}
+	};
+
+	const isShowSubmit = paymentList.filter(
+		item => item.sysId === selBank.sysId
+	)[0]?.canSubmit;
+	const classStyle = () => {
+		let result = "";
+		if (isShowSubmit && canSubmit) {
+			result = "blue";
+		} else {
+			result = isShowSubmit ? "gray" : "orange";
+		}
+		return result;
+	};
+
 	return (
 		<div className="depositModule active">
 			<div className="title text-org icon icon-credit-card">
@@ -524,11 +543,8 @@ const Payment = props => {
 			/>
 
 			<div className="btn-group">
-				<button
-					className={canSubmit ? "orange" : "gray"}
-					disabled={!canSubmit}
-					onClick={ClickSubmit}>
-					{i18n.lbl_Submit}
+				<button className={classStyle()} onClick={judgeBtnStatus}>
+					{isShowSubmit ? i18n.lbl_Submit : i18n.lbl_DepositStatus1}
 				</button>
 				<button onClick={SubmitProof.bind(this, selBank, accountInfo)}>
 					{i18n.lbl_UploadReceipt}
@@ -573,11 +589,15 @@ const GroupList = ({
 	const rows = dataList?.map(data => {
 		const _mainKey = `${mainKey}-${data[idKey]}`;
 		const isSelect = selected === data[idKey];
+		const { canSubmit } = data;
 		return isSelect ? (
 			<div className="info infoAccount" key={_mainKey}>
 				<ul>
 					<li>
-						<div className="bankName active">
+						<div
+							className={`bankName active ${
+								canSubmit ? "" : "pending"
+							}`}>
 							<img
 								className="bankimg"
 								key={`${_mainKey}-img`}
@@ -588,6 +608,7 @@ const GroupList = ({
 								}`}
 								alt={data[imgKey] ?? ""}
 							/>
+							{canSubmit ? "" : <div className="mask" />}
 							<i className="icon icon-icon32px_check" />
 						</div>
 						<a
@@ -604,7 +625,7 @@ const GroupList = ({
 		) : (
 			<div
 				key={_mainKey}
-				className="bankName"
+				className={`bankName ${canSubmit ? "" : "pending"}`}
 				onClick={SelectPayment.bind(
 					this,
 					bindFullObj ? data : data[idKey]
@@ -618,6 +639,7 @@ const GroupList = ({
 					}`}
 					alt={data[imgKey] ?? ""}
 				/>
+				{canSubmit ? "" : <div className="mask" />}
 				<i className="icon icon-icon32px_check" />
 				<div className="bank">
 					<div>{data[displayKey]}</div>

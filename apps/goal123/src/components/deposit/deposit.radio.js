@@ -15,7 +15,8 @@ const Radio = ({
 	maxAmount,
 	i18n,
 	_isConvert,
-	bankClassName
+	bankClassName,
+	canSubmit
 }) => {
 	return (
 		<div className={isSelect ? className : ""}>
@@ -30,8 +31,9 @@ const Radio = ({
 			<label htmlFor={id}>
 				<div />
 			</label>
-			<div className="bankName">
+			<div className={`bankName ${canSubmit ? "" : "pending"}`}>
 				<img src={imgUrl} alt={imgAlt} />
+				{canSubmit ? "" : <div className="mask" />}
 			</div>
 			<BankInfo
 				displayName={displayName}
@@ -52,7 +54,8 @@ Radio.defaultProps = {
 	maxAmount: null,
 	displayName: "",
 	_isConvert: false,
-	bankClassName: ""
+	bankClassName: "",
+	canSubmit: true
 };
 
 Radio.propTypes = {
@@ -68,7 +71,8 @@ Radio.propTypes = {
 	maxAmount: PropTypes.number,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	_isConvert: PropTypes.bool,
-	bankClassName: PropTypes.string
+	bankClassName: PropTypes.string,
+	canSubmit: PropTypes.bool
 };
 
 const BankInfo = ({
