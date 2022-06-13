@@ -1,17 +1,14 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { userInfoContext, i18nContext, navContext, defNavPanel } from "Context";
-import {
-	useMatch,
-	useNavigate,
-	globalHistory,
-	useLocation
-} from "@reach/router";
+import { useMatch, useNavigate } from "@reach/router";
 import { Link } from "@Router";
 import useTip from "../hook/useTip";
 import Inputbox from "../common/inputbox.hint";
 import InputboxPWD from "../common/inputbox.password";
 import { LOGIN } from "../../service/auth";
 import path from "../../path";
+import { getUrlParameter, defCurrenyId } from "../common/common";
+import useHandleLineLogin, { defType } from "../hook/useHandleLineLogin";
 
 const initState = {
 	UserName: "",
@@ -31,7 +28,6 @@ const initWarningState = {
 
 const LoginPage = () => {
 	const navigate = useNavigate();
-	const { state } = useLocation();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { nav, setNav } = useContext(navContext);
@@ -40,6 +36,8 @@ const LoginPage = () => {
 	const [warningState, setWarningState] = useState(initWarningState);
 	const isMountedRef = useRef(null);
 	const { showTips, showTipHandler } = useTip();
+	const { lineLogin } = useHandleLineLogin();
+	const lineUserId = getUrlParameter("line");
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -193,8 +191,30 @@ const LoginPage = () => {
 		}));
 	};
 
+	const handleLineLogin = e => {
+		e.preventDefault();
+		lineLogin({ type: defType.login });
+	};
+
 	return (
 		<div className="Login active">
+			{(userInfo.langId === "th" ||
+				userInfo.langId === "th_en" ||
+				userInfo.currencyId === defCurrenyId.THB) &&
+				!lineUserId && (
+					<div className="register-line">
+						<div className="btn-group">
+							<button
+								className="btn-line"
+								onClick={e => {
+									handleLineLogin(e);
+								}}>
+								<i className="icon icon-line-bold" />
+								{i18n.lbl_Login}
+							</button>
+						</div>
+					</div>
+				)}
 			<Inputbox
 				icon="icon-member"
 				inputType="text"

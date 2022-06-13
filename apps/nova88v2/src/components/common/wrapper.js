@@ -9,7 +9,8 @@ import useInterval from "../hook/useInterval";
 import { getUrlParameter, setCookie, deleteCookie } from "./common";
 import i18nConfig from "../../i18n/config";
 import api from "../../service/api";
-import { defSpecialPath } from "../../path";
+import path, { defSpecialPath } from "../../path";
+import { defType } from "../hook/useHandleLineLogin";
 
 const isSpecialPath = () => {
 	return (
@@ -24,6 +25,7 @@ export const Wrapper = ({ children }) => {
 	const [loading, setLoading] = useState(false);
 	const [root, setRoot] = useState(false);
 	const match = useMatch("/:langId/*");
+
 	const urlLangId = isVaildLang(match?.langId) ? match.langId : null;
 	const [userInfo, setUserInfo] = useState({
 		isLogin: null,
@@ -59,6 +61,73 @@ export const Wrapper = ({ children }) => {
 			isMountedRef.current = false;
 		};
 	});
+
+	useEffect(() => {
+		const code = getUrlParameter("code");
+		const state = getUrlParameter("state");
+		const error = getUrlParameter("error");
+		const description = getUrlParameter("description");
+		const errormessage = getUrlParameter("errormessage");
+
+		let url;
+		let platform;
+		let userAgent;
+		let screen;
+		let di = "";
+		if (typeof window !== "undefined") {
+			url = window.location.origin;
+			platform = navigator.platform;
+			userAgent = navigator.userAgent;
+			screen = `${window.screen.width}:${window.screen.height}:${window.screen.colorDepth}`;
+			di = document.getElementById("__di")?.value;
+		}
+
+		if (code || state || error) {
+			api.lineLogin
+				.LineCallback({
+					langId: userInfo.langId,
+					lineLoginResponse: {
+						code,
+						state,
+						error,
+						description,
+						errormessage
+					},
+					loginData: {
+						isPersistent: true,
+						url,
+						platform,
+						userAgent,
+						screen,
+						di
+					}
+				})
+				.then(res => {
+					const { errorCode, message, data } = res.data;
+
+					if (errorCode === 0) {
+						window.location.reload();
+						const _langId = userInfo.langId === "th" ? "th" : "en";
+						if (data.type === defType.register) {
+							localStorage.setItem(
+								"lineUser",
+								JSON.stringify(data.userId)
+							);
+							window.location.href = `/${_langId}/${path.join.root}`;
+						} else if (data.type === defType.login) {
+							window.location.href = `/${_langId}/${path.deposit.root}`;
+						} else if (data.type === defType.binding) {
+							window.location.href = `/${_langId}/${path.profile.root}`;
+						}
+					} else {
+						setPopBox({
+							isOpen: true,
+							content: `[${errorCode}] ${message}`
+						});
+					}
+				});
+		}
+	}, []);
 
 	useEffect(() => {
 		const AffId = getUrlParameter("AffId");

@@ -24,9 +24,9 @@ import JoinLoginBar from "../components/home/joinLoginBar";
 import Jackpot from "../components/home/jackpot";
 import AddToHomePop from "../components/home/addToHomePop";
 import PromotionWrapper from "../components/promotion/common/wrapper";
-import NewYear, {
-	defEventPeriod as NewYearEventPeriod
-} from "../components/common/popbox.newYear";
+// import NewYear, {
+// 	defEventPeriod as NewYearEventPeriod
+// } from "../components/common/popbox.newYear";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -42,26 +42,26 @@ const IndexPage = () => {
 		};
 	}, [setRoot]);
 
-	useEffect(() => {
-		if (isEventPeriod(NewYearEventPeriod))
-			if (SEODatas) {
-				const langId = SEODatas.defaultLang ?? userInfo.langId;
+	// useEffect(() => {
+	// 	if (isEventPeriod(NewYearEventPeriod))
+	// 		if (SEODatas) {
+	// 			const langId = SEODatas.defaultLang ?? userInfo.langId;
 
-				if (
-					!langId.includes("hi") &&
-					!readCookie(`NewYear-${window.location.hostname}`)
-				) {
-					setPopBox({
-						isOpen: true,
-						fullPage: true,
-						className: "angpaopop",
-						content: (
-							<NewYear langId={langId} setPopBox={setPopBox} />
-						)
-					});
-				}
-			}
-	}, [SEODatas, userInfo.langId]);
+	// 			if (
+	// 				!langId.includes("hi") &&
+	// 				!readCookie(`NewYear-${window.location.hostname}`)
+	// 			) {
+	// 				setPopBox({
+	// 					isOpen: true,
+	// 					fullPage: true,
+	// 					className: "angpaopop",
+	// 					content: (
+	// 						<NewYear langId={langId} setPopBox={setPopBox} />
+	// 					)
+	// 				});
+	// 			}
+	// 		}
+	// }, [SEODatas, userInfo.langId]);
 
 	// useEffect(() => {
 	// 	if (userInfo.isJoin) {
