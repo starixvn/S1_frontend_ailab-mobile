@@ -44,7 +44,7 @@ export const defSlotTpGameType = {
 	Habanero: { tpId: 40, tpGameType: 68 }
 };
 
-const gameList = ({ langId, currencyName }) => {
+const GameList = ({ langId, currencyName }) => {
 	let list = [];
 	switch (currencyName) {
 		case "IDR":
@@ -128,7 +128,7 @@ const gameList = ({ langId, currencyName }) => {
 						},
 						{
 							...defGameInfo.ESportKOG,
-							spanText: "KOG",
+							spanTextKey: "lbl_Kog",
 							img: `${cloudBannerImgURL}/h5/img/esportKOG.png`
 						}
 					]
@@ -733,7 +733,7 @@ const gameList = ({ langId, currencyName }) => {
 						},
 						{
 							...defGameInfo.ESportKOG,
-							spanText: "KOG",
+							spanTextKey: "lbl_Kog",
 							img: `${cloudBannerImgURL}/h5/img/esportKOG.png`
 						}
 					]
@@ -1338,7 +1338,7 @@ const gameList = ({ langId, currencyName }) => {
 						},
 						{
 							...defGameInfo.ESportKOG,
-							spanText: "KOG",
+							spanTextKey: "lbl_Kog",
 							img: `${cloudBannerImgURL}/h5/img/esportKOG.png`
 						}
 					]
@@ -1974,7 +1974,7 @@ const gameList = ({ langId, currencyName }) => {
 
 						{
 							...defGameInfo.ESportKOG,
-							spanText: "KOG",
+							spanTextKey: "lbl_Kog",
 							img: `${cloudBannerImgURL}/h5/img/esportKOG.png`
 						}
 					]
@@ -2540,7 +2540,7 @@ const gameList = ({ langId, currencyName }) => {
 						},
 						{
 							...defGameInfo.ESportKOG,
-							spanText: "KOG",
+							spanTextKey: "lbl_Kog",
 							img: `${cloudBannerImgURL}/h5/img/esportKOG.png`
 						},
 						{
@@ -2998,7 +2998,7 @@ const gameList = ({ langId, currencyName }) => {
 	return list;
 };
 
-export default gameList;
+export default GameList;
 
 export const defGameInfo = {
 	Soccer: { tpId: 1, gameId: 1, tpGameType: 1 },
