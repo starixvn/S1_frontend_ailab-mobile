@@ -5,19 +5,18 @@ import {
 	popBoxContext,
 	rootContext
 } from "Context";
-import { SEO, useGetSEODatas } from "../components/seo/seo";
+import { SEO } from "../components/seo/seo";
 import Layout from "../components/common/layout";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
 import Menu from "../components/home/menu";
-import LiveCasino from "../components/home/liveCasino";
 import Promos from "../components/home/promos";
 import HotGame from "../components/home/hotGame";
 import Referral from "../components/home/referral";
 import EventSwipper from "../components/home/eventSwipper";
 import HeaderShortcut from "../components/home/headerShortcut";
 import Bottom from "../components/home/bottom";
-import { isEventPeriod, readCookie } from "../components/common/common";
+// import { isEventPeriod, readCookie } from "../components/common/common";
 import path from "../path";
 import Header from "../components/header/header";
 import JoinLoginBar from "../components/home/joinLoginBar";
@@ -33,7 +32,7 @@ const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
-	const { SEODatas } = useGetSEODatas({ getFromAPI: true });
+	// const { SEODatas } = useGetSEODatas({ getFromAPI: true });
 
 	useEffect(() => {
 		setRoot(true);
