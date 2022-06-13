@@ -74,5 +74,10 @@ export default class BaseAPI {
 			withCredentials: true,
 			baseURL: `${apiUrl}/api/Player`
 		});
+
+		this.lineLoginRequest = axios.create({
+			withCredentials: true,
+			baseURL: `${apiUrl}/api/LineLogin`
+		});
 	}
 }

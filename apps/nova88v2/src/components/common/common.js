@@ -223,3 +223,9 @@ export const stringLinkify = text => {
 		.replace(pattern, '<a href="$1" target="_blank">$1</a>')
 		.replaceAll("\n", "<br />");
 };
+
+export const getLocalStorage = key => {
+	const json = localStorage.getItem(key);
+
+	return json ? JSON.parse(json) : undefined;
+};

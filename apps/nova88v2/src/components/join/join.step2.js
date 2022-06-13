@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import areaCode from "../../datas/areaCode";
 import { popBoxContext } from "../common/context";
-import { getUrlParameter, getCookie } from "../common/common";
+import { getUrlParameter, getCookie, defCurrenyId } from "../common/common";
 import { Link } from "../../route/link";
 import Inputbox from "../common/inputbox.hint";
 import Dropdown from "../common/dropdown";
@@ -26,7 +26,8 @@ const JoinStep2 = ({
 	EditField,
 	userInfo,
 	setUserValue,
-	setUserInfo
+	setUserInfo,
+	lineUserId
 }) => {
 	const { setPopBox } = useContext(popBoxContext);
 	const [siteCurrency, setSiteCurrencyState] = useState([]);
@@ -77,7 +78,9 @@ const JoinStep2 = ({
 
 	const AffId = getUrlParameter("AffId") || getCookie("AffId");
 	useEffect(() => {
-		if (AffId) {
+		if (!lineUserId && !AffId) {
+			GetSiteCurrencyList();
+		} else if (AffId) {
 			api.site.GetAffiliateAgent({ AffId }).then(
 				res => {
 					if (isMountedRef.current) {
@@ -107,8 +110,13 @@ const JoinStep2 = ({
 					}
 				}
 			);
-		} else {
-			GetSiteCurrencyList();
+		} else if (lineUserId) {
+			setSiteCurrencyState([
+				{
+					id: defCurrenyId.THB,
+					displayKey: `Currency_${defCurrenyId.THB}`
+				}
+			]);
 		}
 	}, []);
 
@@ -356,6 +364,8 @@ const JoinStep2 = ({
 				getCookie("AffCode") ||
 				userValue.AffiliateId;
 			regData.blackbox = await Iov_GetBlackBox();
+			regData.LineUserId = lineUserId;
+
 			api.site.Signup(regData, defaultLangId).then(
 				response => {
 					if (isMountedRef.current) {
@@ -384,6 +394,7 @@ const JoinStep2 = ({
 											});
 										}
 										setUserInfo(_user);
+										localStorage.removeItem("lineUser");
 									}
 								},
 								() => {
@@ -541,6 +552,10 @@ const JoinStep2 = ({
 	);
 };
 
+JoinStep2.defaultProps = {
+	lineUserId: null
+};
+
 JoinStep2.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	userValue: PropTypes.objectOf(PropTypes.any).isRequired,
@@ -549,7 +564,8 @@ JoinStep2.propTypes = {
 	EditField: PropTypes.func.isRequired,
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
 	setUserValue: PropTypes.func.isRequired,
-	setUserInfo: PropTypes.func.isRequired
+	setUserInfo: PropTypes.func.isRequired,
+	lineUserId: PropTypes.string
 };
 
 export default JoinStep2;
