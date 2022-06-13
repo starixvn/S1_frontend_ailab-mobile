@@ -1273,17 +1273,17 @@ div[tabindex="-1"] {
   height: 16px;
 }
 
-.Join .inputBox i.icon.icon-minus, .Join .inputBox i.icon.icon-plus {
+.Join .inputBox i.icon.icon-minus, .Join .worldcupEvent .event .event-content .inputBox-event i.icon.icon-minus, .worldcupEvent .event .event-content .Join .inputBox-event i.icon.icon-minus, .Join .inputBox i.icon.icon-plus, .Join .worldcupEvent .event .event-content .inputBox-event i.icon.icon-plus, .worldcupEvent .event .event-content .Join .inputBox-event i.icon.icon-plus {
   display: none;
 }
 
-.Join .inputBox i.icon.icon-key + input + div > .icon-minus {
+.Join .inputBox i.icon.icon-key + input + div > .icon-minus, .Join .worldcupEvent .event .event-content .inputBox-event i.icon.icon-key + input + div > .icon-minus, .worldcupEvent .event .event-content .Join .inputBox-event i.icon.icon-key + input + div > .icon-minus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.Join .inputBox i.icon.icon-key + input + div > .icon-plus {
+.Join .inputBox i.icon.icon-key + input + div > .icon-plus, .Join .worldcupEvent .event .event-content .inputBox-event i.icon.icon-key + input + div > .icon-plus, .worldcupEvent .event .event-content .Join .inputBox-event i.icon.icon-key + input + div > .icon-plus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1318,7 +1318,7 @@ header {
       -ms-flex-align: center;
           align-items: center;
   padding: 0;
-  z-index: 2;
+  z-index: 3;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -1536,6 +1536,11 @@ main .sideBar {
           box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
 }
 
+main .sideBar img {
+  width: 13vw;
+  margin-bottom: 1vw;
+}
+
 main .sideBar button, main .sideBar a {
   text-align: center;
   -webkit-transition: 0.7s;
@@ -1593,6 +1598,14 @@ main .sideBar button.active i, main .sideBar a.active i {
 
 main .sideBar button.active i:not(.icon-new):not(.icon-live) + div, main .sideBar a.active i:not(.icon-new):not(.icon-live) + div {
   color: white;
+}
+
+main .sideBar button.event, main .sideBar a.event {
+  padding: 1vw;
+}
+
+main .sideBar button.event.active, main .sideBar a.event.active {
+  padding: 1.5vw;
 }
 
 main .gameList {
@@ -3132,6 +3145,10 @@ footer > a.active .circleAnimation + span {
   height: 22vw;
 }
 
+.main.deposit {
+  padding: 14vw 4vw;
+}
+
 .Wallet {
   padding: 30vw 4vw 25vw;
 }
@@ -3733,41 +3750,45 @@ footer > a.active .circleAnimation + span {
   width: 100%;
 }
 
-.infoModule.parts .phone .inputBox input {
+.infoModule.parts .phone .inputBox input, .infoModule.parts .phone .worldcupEvent .event .event-content .inputBox-event input, .worldcupEvent .event .event-content .infoModule.parts .phone .inputBox-event input {
   width: 100%;
 }
 
-.infoModule.parts .phone .inputBox .dropdown {
+.infoModule.parts .phone .inputBox .dropdown, .infoModule.parts .phone .worldcupEvent .event .event-content .inputBox-event .dropdown, .worldcupEvent .event .event-content .infoModule.parts .phone .inputBox-event .dropdown {
   width: 130px;
 }
 
-.infoModule.parts .phone .inputBox .dropdown .icon {
-  margin-left: -2rem;
-  background: #ecf3fd;
+.infoModule.parts .phone .inputBox .dropdown .icon, .infoModule.parts .phone .worldcupEvent .event .event-content .inputBox-event .dropdown .icon, .worldcupEvent .event .event-content .infoModule.parts .phone .inputBox-event .dropdown .icon {
+  position: absolute;
+  right: 0;
 }
 
 .infoModule.parts .phone .dropdown-container {
-  width: 91.5vw;
+  width: 83.5vw;
 }
 
-.infoModule.parts .phone .dropdown-container .inputBox {
+.infoModule.parts .phone .dropdown-container .inputBox, .infoModule.parts .phone .dropdown-container .worldcupEvent .event .event-content .inputBox-event, .worldcupEvent .event .event-content .infoModule.parts .phone .dropdown-container .inputBox-event {
   border-radius: 0;
   background: rgba(255, 255, 255, 0.6);
+  margin-top: 0;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 
-.infoModule.parts .phone .dropdown-container .inputBox input::-webkit-input-placeholder {
+.infoModule.parts .phone .dropdown-container .inputBox input::-webkit-input-placeholder, .infoModule.parts .phone .dropdown-container .worldcupEvent .event .event-content .inputBox-event input::-webkit-input-placeholder, .worldcupEvent .event .event-content .infoModule.parts .phone .dropdown-container .inputBox-event input::-webkit-input-placeholder {
   color: #6b6b6b;
 }
 
-.infoModule.parts .phone .dropdown-container .inputBox input:-ms-input-placeholder {
+.infoModule.parts .phone .dropdown-container .inputBox input:-ms-input-placeholder, .infoModule.parts .phone .dropdown-container .worldcupEvent .event .event-content .inputBox-event input:-ms-input-placeholder, .worldcupEvent .event .event-content .infoModule.parts .phone .dropdown-container .inputBox-event input:-ms-input-placeholder {
   color: #6b6b6b;
 }
 
-.infoModule.parts .phone .dropdown-container .inputBox input::-ms-input-placeholder {
+.infoModule.parts .phone .dropdown-container .inputBox input::-ms-input-placeholder, .infoModule.parts .phone .dropdown-container .worldcupEvent .event .event-content .inputBox-event input::-ms-input-placeholder, .worldcupEvent .event .event-content .infoModule.parts .phone .dropdown-container .inputBox-event input::-ms-input-placeholder {
   color: #6b6b6b;
 }
 
-.infoModule.parts .phone .dropdown-container .inputBox input::placeholder {
+.infoModule.parts .phone .dropdown-container .inputBox input::placeholder, .infoModule.parts .phone .dropdown-container .worldcupEvent .event .event-content .inputBox-event input::placeholder, .worldcupEvent .event .event-content .infoModule.parts .phone .dropdown-container .inputBox-event input::placeholder {
   color: #6b6b6b;
 }
 
@@ -3778,7 +3799,11 @@ footer > a.active .circleAnimation + span {
   overflow: hidden;
 }
 
-.infoModule.parts .inputBox {
+.infoModule.parts .phone .inputInfo + .inputBox .icon-phone + input, .infoModule.parts .phone .worldcupEvent .event .event-content .inputInfo + .inputBox-event .icon-phone + input, .worldcupEvent .event .event-content .infoModule.parts .phone .inputInfo + .inputBox-event .icon-phone + input, .infoModule.parts .phone .worldcupEvent .event .event-content .ticket-item.finished .inputInfo + .inputBox-event .icon-phone + input {
+  width: 100%;
+}
+
+.infoModule.parts .inputBox, .infoModule.parts .worldcupEvent .event .event-content .inputBox-event, .worldcupEvent .event .event-content .infoModule.parts .inputBox-event {
   -webkit-box-flex: 1;
       -ms-flex: auto;
           flex: auto;
@@ -3786,18 +3811,18 @@ footer > a.active .circleAnimation + span {
       flex-flow: nowrap;
 }
 
-.infoModule.parts .inputBox:nth-child(n+2) {
+.infoModule.parts .inputBox:nth-child(n+2), .infoModule.parts .worldcupEvent .event .event-content .inputBox-event:nth-child(n+2), .worldcupEvent .event .event-content .infoModule.parts .inputBox-event:nth-child(n+2) {
   margin: 1vw 0 1vw 1vw;
 }
 
-.infoModule.parts label.inputBox {
+.infoModule.parts label.inputBox, .infoModule.parts .worldcupEvent .event .event-content label.inputBox-event, .worldcupEvent .event .event-content .infoModule.parts label.inputBox-event {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
   color: #5574A7;
 }
 
-.infoModule.parts label.inputBox .icon-folder-upload {
+.infoModule.parts label.inputBox .icon-folder-upload, .infoModule.parts .worldcupEvent .event .event-content label.inputBox-event .icon-folder-upload, .worldcupEvent .event .event-content .infoModule.parts label.inputBox-event .icon-folder-upload {
   margin: 0 1vw 0 0;
 }
 
@@ -3819,26 +3844,26 @@ footer > a.active .circleAnimation + span {
           order: -1;
 }
 
-.infoModule.parts .inputInfo + .inputBox {
+.infoModule.parts .inputInfo + .inputBox, .infoModule.parts .worldcupEvent .event .event-content .inputInfo + .inputBox-event, .worldcupEvent .event .event-content .infoModule.parts .inputInfo + .inputBox-event, .infoModule.parts .worldcupEvent .event .event-content .ticket-item.finished .inputInfo + .inputBox-event {
   width: 23vw;
 }
 
-.infoModule.parts .inputInfo + .inputBox .icon-phone + input {
+.infoModule.parts .inputInfo + .inputBox .icon-phone + input, .infoModule.parts .worldcupEvent .event .event-content .inputInfo + .inputBox-event .icon-phone + input, .worldcupEvent .event .event-content .infoModule.parts .inputInfo + .inputBox-event .icon-phone + input, .infoModule.parts .worldcupEvent .event .event-content .ticket-item.finished .inputInfo + .inputBox-event .icon-phone + input {
   width: 23vw;
 }
 
-.infoModule.parts-xs .inputBox {
+.infoModule.parts-xs .inputBox, .infoModule.parts-xs .worldcupEvent .event .event-content .inputBox-event, .worldcupEvent .event .event-content .infoModule.parts-xs .inputBox-event {
   -ms-flex-flow: nowrap;
       flex-flow: nowrap;
 }
 
-.infoModule.parts-xs .inputBox:nth-child(1) {
+.infoModule.parts-xs .inputBox:nth-child(1), .infoModule.parts-xs .worldcupEvent .event .event-content .inputBox-event:nth-child(1), .worldcupEvent .event .event-content .infoModule.parts-xs .inputBox-event:nth-child(1) {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 23vw;
           flex: 0 0 23vw;
 }
 
-.infoModule.parts-xs .inputBox:nth-child(n+2) {
+.infoModule.parts-xs .inputBox:nth-child(n+2), .infoModule.parts-xs .worldcupEvent .event .event-content .inputBox-event:nth-child(n+2), .worldcupEvent .event .event-content .infoModule.parts-xs .inputBox-event:nth-child(n+2) {
   margin: 1vw 0 1vw 1vw;
 }
 
@@ -3847,7 +3872,7 @@ footer > a.active .circleAnimation + span {
   margin-right: 2vw;
 }
 
-.inputBox {
+.inputBox, .worldcupEvent .event .event-content .inputBox-event, .worldcupEvent .event .event-content .ticket-item.finished .inputBox-event {
   position: relative;
   margin: 1vw 0;
   padding: 0 2vw;
@@ -3866,19 +3891,19 @@ footer > a.active .circleAnimation + span {
   border-radius: 3px;
 }
 
-.inputBox.active {
+.inputBox.active, .worldcupEvent .event .event-content .active.inputBox-event, .worldcupEvent .event .event-content .ticket-item.finished .active.inputBox-event {
   -webkit-filter: grayscale(1);
           filter: grayscale(1);
   z-index: 1;
 }
 
-.inputBox.readonly {
+.inputBox.readonly, .worldcupEvent .event .event-content .readonly.inputBox-event, .worldcupEvent .event .event-content .ticket-item.finished .readonly.inputBox-event {
   -webkit-filter: grayscale(1);
           filter: grayscale(1);
   z-index: 0;
 }
 
-.inputBox .bankLogo {
+.inputBox .bankLogo, .worldcupEvent .event .event-content .inputBox-event .bankLogo, .worldcupEvent .event .event-content .ticket-item.finished .inputBox-event .bankLogo {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -3890,11 +3915,11 @@ footer > a.active .circleAnimation + span {
           align-items: center;
 }
 
-.inputBox .bankLogo img {
+.inputBox .bankLogo img, .worldcupEvent .event .event-content .inputBox-event .bankLogo img, .worldcupEvent .event .event-content .ticket-item.finished .inputBox-event .bankLogo img {
   border-radius: 5px;
 }
 
-.inputBox .bankLogo + span {
+.inputBox .bankLogo + span, .worldcupEvent .event .event-content .inputBox-event .bankLogo + span, .worldcupEvent .event .event-content .ticket-item.finished .inputBox-event .bankLogo + span {
   -webkit-box-flex: 4;
       -ms-flex: 4;
           flex: 4;
@@ -3902,35 +3927,35 @@ footer > a.active .circleAnimation + span {
   margin: 0 0 0 2vw;
 }
 
-.inputBox.error {
+.inputBox.error, .worldcupEvent .event .event-content .error.inputBox-event, .worldcupEvent .event .event-content .ticket-item.finished .error.inputBox-event {
   border-color: #e92529;
 }
 
-.inputBox.error i.icon {
+.inputBox.error i.icon, .worldcupEvent .event .event-content .error.inputBox-event i.icon {
   color: #e92529;
 }
 
-.inputBox.error ~ .tip {
+.inputBox.error ~ .tip, .worldcupEvent .event .event-content .error.inputBox-event ~ .tip, .worldcupEvent .event .event-content .ticket-item.finished .error.inputBox-event ~ .tip {
   display: block;
 }
 
-.inputBox.error input::-webkit-input-placeholder {
+.inputBox.error input::-webkit-input-placeholder, .worldcupEvent .event .event-content .error.inputBox-event input::-webkit-input-placeholder, .worldcupEvent .event .event-content .ticket-item.finished .error.inputBox-event input::-webkit-input-placeholder {
   color: #e92529;
 }
 
-.inputBox.error input:-ms-input-placeholder {
+.inputBox.error input:-ms-input-placeholder, .worldcupEvent .event .event-content .error.inputBox-event input:-ms-input-placeholder, .worldcupEvent .event .event-content .ticket-item.finished .error.inputBox-event input:-ms-input-placeholder {
   color: #e92529;
 }
 
-.inputBox.error input::-ms-input-placeholder {
+.inputBox.error input::-ms-input-placeholder, .worldcupEvent .event .event-content .error.inputBox-event input::-ms-input-placeholder, .worldcupEvent .event .event-content .ticket-item.finished .error.inputBox-event input::-ms-input-placeholder {
   color: #e92529;
 }
 
-.inputBox.error input::placeholder {
+.inputBox.error input::placeholder, .worldcupEvent .event .event-content .error.inputBox-event input::placeholder, .worldcupEvent .event .event-content .ticket-item.finished .error.inputBox-event input::placeholder {
   color: #e92529;
 }
 
-.inputBox i.icon {
+.inputBox i.icon, .worldcupEvent .event .event-content .inputBox-event i.icon, .worldcupEvent .event .event-content .ticket-item.finished .inputBox-event i.icon {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3944,21 +3969,21 @@ footer > a.active .circleAnimation + span {
   font-weight: normal;
 }
 
-.inputBox > .icon-module {
+.inputBox > .icon-module, .worldcupEvent .event .event-content .inputBox-event > .icon-module, .worldcupEvent .event .event-content .ticket-item.finished .inputBox-event > .icon-module {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.inputBox > .icon-module i.icon {
+.inputBox > .icon-module i.icon, .worldcupEvent .event .event-content .inputBox-event > .icon-module i.icon, .worldcupEvent .event .event-content .ticket-item.finished .inputBox-event > .icon-module i.icon {
   margin: 0 0 0 1vw;
 }
 
-.inputBox > .icon-module .icon-checkmark {
+.inputBox > .icon-module .icon-checkmark, .worldcupEvent .event .event-content .inputBox-event > .icon-module .icon-checkmark, .worldcupEvent .event .event-content .ticket-item.finished .inputBox-event > .icon-module .icon-checkmark {
   color: #007224;
 }
 
-.inputBox .icon-keyboard_arrow_down {
+.inputBox .icon-keyboard_arrow_down, .worldcupEvent .event .event-content .inputBox-event .icon-keyboard_arrow_down, .worldcupEvent .event .event-content .ticket-item.finished .inputBox-event .icon-keyboard_arrow_down {
   color: #F77A00;
   max-height: 16px;
 }
@@ -3988,7 +4013,7 @@ footer > a.active .circleAnimation + span {
       flex-flow: nowrap;
 }
 
-.quickSelect + .functionList .infoModule.parts .inputBox {
+.quickSelect + .functionList .infoModule.parts .inputBox, .quickSelect + .functionList .infoModule.parts .worldcupEvent .event .event-content .inputBox-event, .worldcupEvent .event .event-content .quickSelect + .functionList .infoModule.parts .inputBox-event, .worldcupEvent .event .event-content .ticket-item.finished .quickSelect + .functionList .infoModule.parts .inputBox-event {
   max-width: 28vw;
 }
 
@@ -5020,7 +5045,7 @@ button.clickBtn:before {
   z-index: 1;
   font-weight: bold;
   color: #F77A00;
-  text-shadow: 1px 0px 0px white, -1px 0px 0px white, 0px 1px 0px white, 0px -1px 0px white, 1px -1px 0px white, 1px 1px 0px white, -1px 1px 0px white, -1px -1px 0px white;
+  text-shadow: 1px 0px 0px white, -1px 0px 0px white, 0px 1px 0px white, 0px -1px 0px white, 1px -1px 0px white, 1px 1px 0px white, -1px 1px 0px white, -1px -1px 0px white;
 }
 
 .casino .slotList .info span.icon {
@@ -5866,7 +5891,7 @@ span.important {
           filter: grayscale(1);
 }
 
-.promotions .promodule .inputBox, .promotions .proInfomodule .inputBox {
+.promotions .promodule .inputBox, .promotions .promodule .worldcupEvent .event .event-content .inputBox-event, .worldcupEvent .event .event-content .promotions .promodule .inputBox-event, .promotions .proInfomodule .inputBox, .promotions .proInfomodule .worldcupEvent .event .event-content .inputBox-event, .worldcupEvent .event .event-content .promotions .proInfomodule .inputBox-event {
   margin: 0;
 }
 
@@ -6444,7 +6469,7 @@ span.important {
   margin: 2vw 0 0;
 }
 
-.installGuide section .copyinfo .inputBox {
+.installGuide section .copyinfo .inputBox, .installGuide section .copyinfo .worldcupEvent .event .event-content .inputBox-event, .worldcupEvent .event .event-content .installGuide section .copyinfo .inputBox-event {
   background: white;
   border: 1px solid #c211a1;
   margin: 0;
@@ -6604,7 +6629,7 @@ span.important {
   background: url(https://banner.0814media.net/h5/img/megabg.jpg) no-repeat center top/cover;
 }
 
-.installGuide.mega section .copyinfo .inputBox {
+.installGuide.mega section .copyinfo .inputBox, .installGuide.mega section .copyinfo .worldcupEvent .event .event-content .inputBox-event, .worldcupEvent .event .event-content .installGuide.mega section .copyinfo .inputBox-event {
   border: 1px solid #0ad9f5;
 }
 
@@ -6918,7 +6943,7 @@ span.important {
   color: #5574A7;
 }
 
-.refShare .refBox > div a {
+.refShare .refBox > div a, .refShare .refBox > div button {
   color: #5574A7;
   text-decoration: underline;
   font-size: 12px;
@@ -7630,22 +7655,145 @@ span.important {
   color: #5574A7;
 }
 
-.depositModule .selectModule .parts .inputBox {
+.depositModule .selectModule.selectNew {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+.depositModule .selectModule.selectNew .infoAccount {
+  width: 100%;
+  margin: 2vw 2vw -.5vw;
+  padding-top: 2vw;
+  border-top: 1px solid #bfcce2;
+}
+
+.depositModule .selectModule.selectNew .infoAccount li {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.depositModule .selectModule.selectNew .infoAccount li:first-child {
+  padding-top: 0;
+}
+
+.depositModule .selectModule.selectNew .infoAccount li:last-child {
+  padding-bottom: 0;
+}
+
+.depositModule .selectModule.selectNew .infoAccount li > img {
+  margin-right: 1vw;
+}
+
+.depositModule .selectModule.selectNew .infoAccount li span {
+  width: 69vw;
+  color: #fff;
+  background: #5574A7;
+  border-radius: 3px;
+  padding: 1vw 0 1vw 1.5vw;
+}
+
+.depositModule .selectModule.selectNew .infoAccount li button {
+  margin: 0 0 0 1.5vw;
+}
+
+.depositModule .selectModule.selectNew .bankName {
+  width: 24vw;
+  margin-bottom: 1vw;
+}
+
+.depositModule .selectModule.selectNew .bankName + div {
+  text-align: center;
+}
+
+.depositModule .selectModule.selectNew .bankName.active .icon-icon32px_check {
+  bottom: 0;
+}
+
+.depositModule .selectModule.selectNew .infoModule, .depositModule .selectModule.selectNew .buttonBox {
+  margin: 0 1.5vw;
+}
+
+.depositModule .selectModule.selectNew .infoModule .btn-group {
   margin: 0;
 }
 
-.depositModule .selectModule .parts .inputBox .dropdown {
+.depositModule .selectModule.selectNew .infoModule .btn-group button {
+  font-size: 3vw;
+}
+
+.depositModule .selectModule.selectNew .buttonBox {
+  width: 100%;
+}
+
+.depositModule .selectModule.selectNew .buttonBox button {
+  margin: 1.5vw 1.5vw 1.5vw 0;
+}
+
+.depositModule .selectModule.selectNew .buttonBox button:last-child {
+  margin-right: 0;
+}
+
+.depositModule .selectModule.selectNew .title {
+  margin-top: 2vw;
+  margin-left: 1.5vw;
+  padding-top: 1.5vw;
+  width: 100%;
+  text-align: left;
+  border-top: 1px solid #bfcce2;
+  font-size: 3.2vw;
+}
+
+.depositModule .selectModule.selectNew .title span {
+  color: #e92529;
+  margin-right: 0.5vw;
+}
+
+.depositModule .selectModule.selectNew .inputBox, .depositModule .selectModule.selectNew .worldcupEvent .event .event-content .inputBox-event, .worldcupEvent .event .event-content .depositModule .selectModule.selectNew .inputBox-event {
+  margin: 1.5vw 0;
+  padding: 0 1.2vw;
+}
+
+.depositModule .selectModule.selectNew .inputBox input, .depositModule .selectModule.selectNew .worldcupEvent .event .event-content .inputBox-event input, .worldcupEvent .event .event-content .depositModule .selectModule.selectNew .inputBox-event input {
+  padding: 1.5vw;
+}
+
+.depositModule .selectModule.selectNew .inputBox button, .depositModule .selectModule.selectNew .worldcupEvent .event .event-content .inputBox-event button, .worldcupEvent .event .event-content .depositModule .selectModule.selectNew .inputBox-event button {
+  padding: 1.5vw;
+  min-height: 7.75vw;
+}
+
+.depositModule .selectModule.inner {
+  width: 100%;
+  padding: 0 2vw;
+}
+
+.depositModule .selectModule.inner .infoModule {
+  margin: 1vw 0 0;
+}
+
+.depositModule .selectModule.inner .infoModule .inputBox, .depositModule .selectModule.inner .infoModule .worldcupEvent .event .event-content .inputBox-event, .worldcupEvent .event .event-content .depositModule .selectModule.inner .infoModule .inputBox-event {
+  margin-right: 1vw;
+}
+
+.depositModule .selectModule .parts .inputBox, .depositModule .selectModule .parts .worldcupEvent .event .event-content .inputBox-event, .worldcupEvent .event .event-content .depositModule .selectModule .parts .inputBox-event {
+  margin: 0;
+}
+
+.depositModule .selectModule .parts .inputBox .dropdown, .depositModule .selectModule .parts .worldcupEvent .event .event-content .inputBox-event .dropdown, .worldcupEvent .event .event-content .depositModule .selectModule .parts .inputBox-event .dropdown {
   width: 50vw;
   text-align: left;
   padding-right: 5vw;
 }
 
-.depositModule .selectModule .parts .inputBox .dropdown i {
+.depositModule .selectModule .parts .inputBox .dropdown i, .depositModule .selectModule .parts .worldcupEvent .event .event-content .inputBox-event .dropdown i, .worldcupEvent .event .event-content .depositModule .selectModule .parts .inputBox-event .dropdown i {
   position: absolute;
   right: 0;
 }
 
-.depositModule .selectModule .parts .inputBox .dropdown-container {
+.depositModule .selectModule .parts .inputBox .dropdown-container, .depositModule .selectModule .parts .worldcupEvent .event .event-content .inputBox-event .dropdown-container, .worldcupEvent .event .event-content .depositModule .selectModule .parts .inputBox-event .dropdown-container {
   top: 11vw;
   max-height: 50vw;
   min-height: 11vw;
@@ -8781,7 +8929,7 @@ span.important {
   font-weight: bold;
 }
 
-.important li a {
+.important li a, .important li button {
   color: #5574A7;
 }
 
@@ -10150,7 +10298,7 @@ span.important {
   margin: 0 0 1vw;
 }
 
-.addAddresspop .infoModule.parts .inputBox {
+.addAddresspop .infoModule.parts .inputBox, .addAddresspop .infoModule.parts .worldcupEvent .event .event-content .inputBox-event, .worldcupEvent .event .event-content .addAddresspop .infoModule.parts .inputBox-event {
   margin: 0;
 }
 
@@ -11235,5 +11383,649 @@ span.important {
 
 .addressModule .addressContent > div {
   margin: 2vw auto;
+}
+
+.worldcupEvent {
+  width: 100%;
+  padding: 12vw 0;
+}
+
+.worldcupEvent .eventPage {
+  padding-top: 5vw;
+}
+
+.worldcupEvent .eventPage.top {
+  position: relative;
+  height: 200vw;
+  background: url(https://banner.0814media.net/h5/img/event/worldcup/bg.jpg) no-repeat center/cover;
+}
+
+.worldcupEvent .eventPage.middle {
+  position: relative;
+  background: url(https://banner.0814media.net/h5/img/event/worldcup/bg2.jpg) no-repeat center/cover;
+  text-align: center;
+  padding: 10vw 0;
+}
+
+.worldcupEvent .eventPage.bottom {
+  padding: 10vw 0;
+  text-align: center;
+  background: -webkit-gradient(linear, left top, left bottom, from(#300113), to(#810736));
+  background: linear-gradient(#300113, #810736);
+}
+
+.worldcupEvent .awards {
+  text-align: center;
+  margin: 5vw auto 0;
+}
+
+.worldcupEvent .awards div {
+  color: #fff;
+  margin-bottom: 2vw;
+  font-size: 6vw;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.worldcupEvent .awards img {
+  width: 85vw;
+}
+
+.worldcupEvent .visual .a-left {
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - 45vw);
+  width: 90vw;
+  height: auto;
+  -webkit-animation: a-left 1.25s ease-in-out;
+          animation: a-left 1.25s ease-in-out;
+}
+
+.worldcupEvent .visual .logo {
+  position: absolute;
+  top: 60vw;
+  left: calc(50% - 38vw);
+  width: 75vw;
+  -webkit-animation: floating 2s ease-in-out infinite alternate;
+          animation: floating 2s ease-in-out infinite alternate;
+}
+
+.worldcupEvent .deco-line {
+  width: 100%;
+  position: absolute;
+  bottom: -3vw;
+  left: 0;
+  z-index: 1;
+}
+
+.worldcupEvent .item-wrapper {
+  padding: 5vw 6vw;
+}
+
+.worldcupEvent .item-row {
+  margin-bottom: 10vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+.worldcupEvent .item-row::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-width: 2vw 2vw 0 2vw;
+  border-style: solid dashed dashed;
+  border-color: #02D2B8 transparent transparent;
+  left: calc(50% - 2vw);
+  bottom: -6.5vw;
+}
+
+.worldcupEvent .item-row:nth-last-child(1) {
+  margin-bottom: 0;
+}
+
+.worldcupEvent .item-row:nth-last-child(1):before {
+  display: none;
+}
+
+.worldcupEvent .item {
+  width: 42vw;
+  height: 43vw;
+  background: rgba(45, 0, 11, 0.7);
+  outline: .75px solid #02D2B8;
+  position: relative;
+  margin: 1vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.worldcupEvent .item img {
+  width: 100%;
+  height: 100%;
+}
+
+.worldcupEvent .item .info {
+  position: absolute;
+  width: 40vw;
+  top: 0;
+  left: calc(50% - 20vw);
+  background: transparent;
+  font-size: 2vw;
+  color: #fff;
+  text-align: center;
+  border: 0;
+  margin: 0;
+  padding: .5vw 0;
+  z-index: 1;
+}
+
+.worldcupEvent .item .info span {
+  display: block;
+  color: #02D2B8;
+}
+
+.worldcupEvent .btn-event {
+  padding: 1.5vw 2vw;
+  color: #fff;
+  font-size: 3vw;
+  background: #02D2B8;
+  border: 2px solid #fff;
+  border-radius: 1vw;
+  margin: 3vw auto;
+  width: 80vw;
+  -webkit-filter: drop-shadow(0 5px 5px #272727);
+          filter: drop-shadow(0 5px 5px #272727);
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.worldcupEvent .btn-event:hover {
+  background: #1EAA99;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.worldcupEvent .title {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 4.5vw;
+  font-weight: bold;
+  position: relative;
+  margin: 5vw auto 3vw;
+  padding-left: 6vw;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.worldcupEvent .title:before {
+  content: "";
+  display: block;
+  width: 4vw;
+  height: 4vw;
+  background: url(https://banner.0814media.net/h5/img/event/worldcup/icon-fifa.svg) no-repeat center/cover;
+  position: absolute;
+  left: -0.5vw;
+  top: 1.05vw;
+}
+
+.worldcupEvent .fixture {
+  position: relative;
+}
+
+.worldcupEvent .fixture .icon-search {
+  position: absolute;
+  left: 1vw;
+  top: 1vw;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1.2vw;
+  border-radius: 3px;
+}
+
+.worldcupEvent .fixture img {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.worldcupEvent .event {
+  margin: 3vw auto 5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.worldcupEvent .event .event-content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+  margin: 0 6vw;
+}
+
+.worldcupEvent .event .event-content .event-info, .worldcupEvent .event .event-content .ticket-item {
+  padding: 5vw;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  background: rgba(65, 10, 27, 0.4);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.worldcupEvent .event .event-content .event-info .userInfo {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 2vw;
+  border-bottom: 1px solid #fff;
+  font-size: 3.5vw;
+}
+
+.worldcupEvent .event .event-content .event-info .userInfo img {
+  width: 4.5vw;
+  margin-right: 1vw;
+}
+
+.worldcupEvent .event .event-content .ticket-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.worldcupEvent .event .event-content .inputBox-event {
+  border: 1px solid #FF004E;
+  background: white;
+  color: #FF004E;
+}
+
+.worldcupEvent .event .event-content .inputBox-event .dropdown {
+  color: #FF004E;
+  z-index: 2;
+}
+
+.worldcupEvent .event .event-content .inputBox-event .dropdown ~ .dropdown-container {
+  z-index: 3;
+  background: #fff;
+}
+
+.worldcupEvent .event .event-content .inputBox-event .dropdown ~ .dropdown-container .dropdown-item {
+  color: #FF004E;
+}
+
+.worldcupEvent .event .event-content .inputBox-event .dropdown ~ .dropdown-container .dropdown-item:hover {
+  background: #272727;
+  color: #fff;
+}
+
+.worldcupEvent .event .event-content .inputBox-event .icon:before {
+  color: #FF004E;
+}
+
+.worldcupEvent .event .event-content .ticket-item {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+  margin-bottom: 5vw;
+}
+
+.worldcupEvent .event .event-content .ticket-item .ticket-title {
+  font-size: 5vw;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 3vw;
+  border-bottom: 1px solid #02D2B8;
+  margin-bottom: 3vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.worldcupEvent .event .event-content .ticket-item .ticket-title img {
+  height: 4.5vw;
+  width: 10.5vw;
+  margin-right: 2vw;
+}
+
+.worldcupEvent .event .event-content .ticket-item.disabled {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+}
+
+.worldcupEvent .event .event-content .ticket-item.disabled .dropdown-container {
+  display: none;
+}
+
+.worldcupEvent .event .event-content .ticket-item.finished .inputBox-event {
+  border: 1px solid transparent;
+  background: #272727;
+  color: #02D2B8;
+}
+
+.worldcupEvent .event .event-content .ticket-item.finished .inputBox-event .dropdown {
+  color: #02D2B8;
+}
+
+.worldcupEvent .event .event-content .ticket-item.finished .inputBox-event .icon:before {
+  color: #02D2B8;
+}
+
+.worldcupEvent .event .event-content .ticket-item.finished .dropdown-container {
+  display: none;
+}
+
+.worldcupEvent .event .event-content .ticket-item .message {
+  margin: 3vw auto;
+  font-size: 3vw;
+  text-align: center;
+  color: #f1f1f1;
+}
+
+.worldcupEvent .event .event-content .ticket-item .message .icon {
+  font-size: 4.5vw;
+  display: block;
+  margin: 0 auto 2vw;
+}
+
+.worldcupEvent .event .event-content .ticket-item .message .icon.icon-error {
+  color: #7e7e7e;
+}
+
+.worldcupEvent .event .event-content .ticket-item .message .icon.icon-icon32px_check {
+  color: #02D2B8;
+  font-size: 2.75vw;
+}
+
+.worldcupEvent .progressBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10vw auto;
+  border-radius: 1.25vw;
+  position: relative;
+}
+
+.worldcupEvent .progressBar .progressItem {
+  width: 30.8%;
+  height: 2.5vw;
+  border-radius: 1.25vw;
+  position: relative;
+  background: #e1e1e1;
+}
+
+.worldcupEvent .progressBar .progressItem:before {
+  content: "";
+  display: block;
+  width: 2.5vw;
+  height: 2.5vw;
+  border-radius: .9vw;
+  position: absolute;
+  background: #fff;
+  right: -1.25vw;
+  z-index: 2;
+}
+
+.worldcupEvent .progressBar .progressItem .value {
+  position: absolute;
+  color: #fff;
+  font-size: 1.75vw;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  width: 50px;
+  right: -25px;
+  bottom: -20px;
+  text-align: center;
+}
+
+.worldcupEvent .progressBar .progressItem .value:before {
+  content: "";
+  position: absolute;
+  top: -9.75vw;
+  left: 0;
+  width: 10vw;
+  height: 4.75vw;
+  background: url(https://banner.0814media.net/img/worldcup/ticket.png) no-repeat center/cover;
+}
+
+.worldcupEvent .progressBar .progressItem.active .value {
+  color: #02D2B8;
+}
+
+.worldcupEvent .progressBar .progressValue {
+  position: absolute;
+  background: #02D2B8;
+  height: 2.5vw;
+  border-radius: 1.25vw;
+  left: 0;
+  z-index: 1;
+}
+
+.worldcupEvent .status {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.worldcupEvent .status > div {
+  background: #76002E;
+  border: 1px solid #FF004E;
+  width: 100%;
+  margin-bottom: 3vw;
+  border-radius: 1vw;
+  font-size: 3.5vw;
+}
+
+.worldcupEvent .status > div > div {
+  padding: 1.5vw 0;
+  text-align: center;
+}
+
+.worldcupEvent .status > div > div + div {
+  color: #fff;
+  border-top: 1px solid #FF004E;
+}
+
+.worldcupEvent .status > div > div + div span {
+  color: #02D2B8;
+  font-weight: bold;
+  position: relative;
+}
+
+.worldcupEvent .btn-group {
+  margin: 4vw auto 0;
+}
+
+.worldcupEvent .btn-group > button {
+  padding: 1vw 2vw;
+  margin: auto 1vw;
+  border-radius: 3px;
+}
+
+.worldcupEvent .btn-group .btn-gray {
+  background: #B7B7B7;
+  color: #fff;
+  margin-left: 0;
+}
+
+.worldcupEvent .btn-group .btn-gray:hover {
+  background: #858383;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.worldcupEvent .btn-group .btn-green {
+  background: #02D2B8;
+  color: #fff;
+  margin-right: 0;
+}
+
+.worldcupEvent .btn-group .btn-green:hover {
+  background: #1EAA99;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.worldcupEvent .info {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 4vw 6vw;
+  padding: 5vw;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  background: rgba(65, 10, 27, 0.4);
+  text-align: center;
+}
+
+.worldcupEvent .info .subtitle {
+  position: relative;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 4vw;
+  margin: 0 auto;
+}
+
+.worldcupEvent .info .subtitle:before, .worldcupEvent .info .subtitle:after {
+  content: "";
+  position: absolute;
+  top: 2vw;
+  width: 13vw;
+  height: 2vw;
+  background: url(https://banner.0814media.net/h5/img/event/worldcup/5deco.svg) no-repeat center/cover;
+}
+
+.worldcupEvent .info .subtitle:before {
+  left: -15vw;
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+}
+
+.worldcupEvent .info .subtitle:after {
+  right: -15vw;
+}
+
+.worldcupEvent .info .content {
+  margin: 3vw auto;
+  width: 100%;
+}
+
+.worldcupEvent .info .content span {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: 600;
+  color: #c6d4f1;
+  display: contents;
+}
+
+.worldcupEvent .info .content ol {
+  text-align: left;
+  margin: 0 auto;
+  padding-left: 5vw;
+}
+
+.worldcupEvent .info .content ol li {
+  margin: 3vw auto;
+  list-style: decimal;
+}
+
+.worldcupEvent .info .btn-event {
+  border: 0;
+  -webkit-filter: drop-shadow(0 0 0 transparent);
+          filter: drop-shadow(0 0 0 transparent);
+  border-radius: 3px;
+  margin-bottom: 5vw;
+  padding: 1vw 3vw;
+}
+
+@-webkit-keyframes a-left {
+  from {
+    left: 0;
+    opacity: 0;
+  }
+  to {
+    left: calc(50% - 45vw);
+    opacity: 1;
+  }
+}
+
+@keyframes a-left {
+  from {
+    left: 0;
+    opacity: 0;
+  }
+  to {
+    left: calc(50% - 45vw);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes floating {
+  0% {
+    -webkit-transform: translate(0%, 5%);
+            transform: translate(0%, 5%);
+  }
+  100% {
+    -webkit-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
+  }
+}
+
+@keyframes floating {
+  0% {
+    -webkit-transform: translate(0%, 5%);
+            transform: translate(0%, 5%);
+  }
+  100% {
+    -webkit-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
+  }
+}
+
+.mainWallet {
+  color: #284985;
+  margin: 2vw 0;
+  font-size: 3.5vw;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: bold;
+}
+
+.mainWallet .account {
+  padding: 2.5vw 3vw;
+}
+
+.mainWallet .account .icon:before {
+  font-size: 3vw;
 }
 /*# sourceMappingURL=style.css.map */

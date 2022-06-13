@@ -620,11 +620,13 @@ main .sideBarNew div {
           box-sizing: border-box;
   position: relative;
   white-space: nowrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 main .sideBarNew div > button {
   border-radius: 5px;
-  width: 60px;
   height: 60px;
   margin: 0 2px;
   display: inline-block;
@@ -636,9 +638,9 @@ main .sideBarNew div > button {
   background: linear-gradient(to bottom, #334d80 0%, #4263a6 100%);
   -webkit-box-shadow: 0 1px 2px #1a2843 inset;
           box-shadow: 0 1px 2px #1a2843 inset;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 60px;
+          flex: 0 0 60px;
 }
 
 main .sideBarNew div > button.active {
@@ -685,6 +687,23 @@ main .sideBarNew div > button img {
   main .sideBarNew div > button img {
     width: 50px;
   }
+}
+
+main .sideBarNew div > button.event {
+  padding: 0;
+}
+
+main .sideBarNew div > button.event > div {
+  position: absolute;
+  top: 1.75vw;
+  left: calc(50% - 6vw);
+  width: 12vw;
+  height: 13vw;
+  background: url(https://banner.goal123.org/h5/img/event/worldcup/xs-logo-w.png) no-repeat center/cover;
+}
+
+main .sideBarNew div > button.event.active > div {
+  background: url(https://banner.goal123.org/h5/img/event/worldcup/xs-logo-r.png) no-repeat center/cover;
 }
 
 @-webkit-keyframes newicon {
@@ -1414,28 +1433,28 @@ main .sideBarNew div > button img {
   margin: 2vw 0;
 }
 
-#popup.cryptoAddpop .popTxt .infoModule .inputBox {
+#popup.cryptoAddpop .popTxt .infoModule .inputBox, #popup.cryptoAddpop .popTxt .infoModule .worldcupEvent .ticket__container .inputBox-event, .worldcupEvent .ticket__container #popup.cryptoAddpop .popTxt .infoModule .inputBox-event {
   margin: 0;
   width: 100%;
 }
 
-#popup.cryptoAddpop .popTxt .infoModule .inputBox input {
+#popup.cryptoAddpop .popTxt .infoModule .inputBox input, #popup.cryptoAddpop .popTxt .infoModule .worldcupEvent .ticket__container .inputBox-event input, .worldcupEvent .ticket__container #popup.cryptoAddpop .popTxt .infoModule .inputBox-event input {
   font-size: 3.5vw;
 }
 
-#popup.cryptoAddpop .popTxt .infoModule .inputBox input + .txt-red {
+#popup.cryptoAddpop .popTxt .infoModule .inputBox input + .txt-red, #popup.cryptoAddpop .popTxt .infoModule .worldcupEvent .ticket__container .inputBox-event input + .txt-red, .worldcupEvent .ticket__container #popup.cryptoAddpop .popTxt .infoModule .inputBox-event input + .txt-red {
   position: absolute;
   top: 1vw;
   left: 2vw;
   font-size: 3vw;
 }
 
-#popup.cryptoAddpop .popTxt .infoModule .inputBox .icon {
+#popup.cryptoAddpop .popTxt .infoModule .inputBox .icon, #popup.cryptoAddpop .popTxt .infoModule .worldcupEvent .ticket__container .inputBox-event .icon, .worldcupEvent .ticket__container #popup.cryptoAddpop .popTxt .infoModule .inputBox-event .icon {
   -webkit-transform: translateY(14%);
           transform: translateY(14%);
 }
 
-#popup.cryptoAddpop .popTxt .infoModule .inputBox .icon::before {
+#popup.cryptoAddpop .popTxt .infoModule .inputBox .icon::before, #popup.cryptoAddpop .popTxt .infoModule .worldcupEvent .ticket__container .inputBox-event .icon::before, .worldcupEvent .ticket__container #popup.cryptoAddpop .popTxt .infoModule .inputBox-event .icon::before {
   font-size: 4vw;
 }
 
@@ -1449,7 +1468,7 @@ main .sideBarNew div > button img {
           flex-flow: row wrap;
 }
 
-#popup.cryptoAddpop .popTxt .infoModule.parts .inputBox {
+#popup.cryptoAddpop .popTxt .infoModule.parts .inputBox, #popup.cryptoAddpop .popTxt .infoModule.parts .worldcupEvent .ticket__container .inputBox-event, .worldcupEvent .ticket__container #popup.cryptoAddpop .popTxt .infoModule.parts .inputBox-event {
   width: 50vw;
 }
 
@@ -2621,7 +2640,7 @@ main .sideBarNew div > button img {
   color: #1f3258 !important;
 }
 
-.inputBox {
+.inputBox, .worldcupEvent .ticket__container .inputBox-event {
   position: relative;
   color: #052561;
   margin: 2vw 0;
@@ -2629,24 +2648,24 @@ main .sideBarNew div > button img {
       flex-wrap: wrap;
 }
 
-.inputBox.parts {
+.inputBox.parts, .worldcupEvent .ticket__container .parts.inputBox-event {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.inputBox.parts .dropdown {
+.inputBox.parts .dropdown, .worldcupEvent .ticket__container .parts.inputBox-event .dropdown {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   margin-left: 1vw;
 }
 
-.inputBox.parts .dropdown:first-child {
+.inputBox.parts .dropdown:first-child, .worldcupEvent .ticket__container .parts.inputBox-event .dropdown:first-child {
   margin-left: 0vw;
 }
 
-.inputBox.parts .inputBox {
+.inputBox.parts .inputBox, .worldcupEvent .ticket__container .parts.inputBox-event .inputBox, .inputBox.parts .worldcupEvent .ticket__container .inputBox-event, .worldcupEvent .ticket__container .inputBox.parts .inputBox-event, .worldcupEvent .ticket__container .parts.inputBox-event .inputBox-event {
   width: 100%;
   margin: 0;
   -webkit-box-flex: 2.5;
@@ -2654,29 +2673,29 @@ main .sideBarNew div > button img {
           flex: 2.5;
 }
 
-.inputBox.disable {
+.inputBox.disable, .worldcupEvent .ticket__container .disable.inputBox-event {
   -webkit-filter: grayscale(1);
           filter: grayscale(1);
   z-index: 1;
 }
 
-.inputBox.disable .dropdown {
+.inputBox.disable .dropdown, .worldcupEvent .ticket__container .disable.inputBox-event .dropdown {
   color: #696969;
 }
 
-.inputBox.readonly {
+.inputBox.readonly, .worldcupEvent .ticket__container .readonly.inputBox-event {
   -webkit-filter: grayscale(1);
           filter: grayscale(1);
   z-index: 0;
 }
 
-.inputBox .dropdown i.icon {
+.inputBox .dropdown i.icon, .worldcupEvent .ticket__container .inputBox-event .dropdown i.icon {
   position: initial;
   -webkit-transform: translateY(0);
           transform: translateY(0);
 }
 
-.inputBox i.icon {
+.inputBox i.icon, .worldcupEvent .ticket__container .inputBox-event i.icon {
   position: absolute;
   -webkit-transform: translateY(60%);
           transform: translateY(60%);
@@ -2685,52 +2704,52 @@ main .sideBarNew div > button img {
   color: #64789b;
 }
 
-.inputBox i.icon.icon-cake {
+.inputBox i.icon.icon-cake, .worldcupEvent .ticket__container .inputBox-event i.icon.icon-cake {
   -webkit-transform: translateY(0%);
           transform: translateY(0%);
   margin-right: 1vw;
 }
 
-.inputBox i.icon.icon-warning, .inputBox i.icon.icon-eye, .inputBox i.icon.icon-eye-blocked, .inputBox i.icon.icon-cross, .inputBox i.icon.icon-checkmark, .inputBox i.icon.icon-information-solid {
+.inputBox i.icon.icon-warning, .worldcupEvent .ticket__container .inputBox-event i.icon.icon-warning, .inputBox i.icon.icon-eye, .worldcupEvent .ticket__container .inputBox-event i.icon.icon-eye, .inputBox i.icon.icon-eye-blocked, .worldcupEvent .ticket__container .inputBox-event i.icon.icon-eye-blocked, .inputBox i.icon.icon-cross, .worldcupEvent .ticket__container .inputBox-event i.icon.icon-cross, .inputBox i.icon.icon-checkmark, .worldcupEvent .ticket__container .inputBox-event i.icon.icon-checkmark, .inputBox i.icon.icon-information-solid, .worldcupEvent .ticket__container .inputBox-event i.icon.icon-information-solid {
   position: initial;
   margin-right: 2vw;
   margin-left: 1.5vw;
   display: inline-block;
 }
 
-.inputBox i.icon.icon-cross::before {
+.inputBox i.icon.icon-cross::before, .worldcupEvent .ticket__container .inputBox-event i.icon.icon-cross::before {
   color: #d83b35;
 }
 
-.inputBox i.icon.icon-checkmark::before {
+.inputBox i.icon.icon-checkmark::before, .worldcupEvent .ticket__container .inputBox-event i.icon.icon-checkmark::before {
   color: #259076;
 }
 
-.inputBox > .icon-module {
+.inputBox > .icon-module, .worldcupEvent .ticket__container .inputBox-event > .icon-module {
   position: absolute;
   right: 0;
   top: 2vw;
   color: #6f7a8e;
 }
 
-.inputBox > .icon-module > i.icon {
+.inputBox > .icon-module > i.icon, .worldcupEvent .ticket__container .inputBox-event > .icon-module > i.icon {
   -webkit-transform: translateY(15%);
           transform: translateY(15%);
 }
 
-.inputBox + .open {
+.inputBox + .open, .worldcupEvent .ticket__container .inputBox-event + .open {
   width: 100%;
 }
 
-.inputBox.error input {
+.inputBox.error input, .worldcupEvent .ticket__container .error.inputBox-event input {
   border: 1px solid #d83b35;
 }
 
-.inputBox.error .tip.error {
+.inputBox.error .tip.error, .worldcupEvent .ticket__container .error.inputBox-event .tip.error {
   color: red;
 }
 
-.inputBox .iconModule {
+.inputBox .iconModule, .worldcupEvent .ticket__container .inputBox-event .iconModule {
   position: absolute;
   -webkit-transform: translateY(60%);
           transform: translateY(60%);
@@ -2739,7 +2758,7 @@ main .sideBarNew div > button img {
   color: #6f7a8e;
 }
 
-.inputBox .iconModule .icon {
+.inputBox .iconModule .icon, .worldcupEvent .ticket__container .inputBox-event .iconModule .icon {
   position: initial;
   display: inline-block;
   -webkit-transform: translateY(15%);
@@ -2747,11 +2766,11 @@ main .sideBarNew div > button img {
   margin-right: 0;
 }
 
-.inputBox .icon-member::before {
+.inputBox .icon-member::before, .worldcupEvent .ticket__container .inputBox-event .icon-member::before {
   font-size: 5vw !important;
 }
 
-.inputBox + .tip .times {
+.inputBox + .tip .times, .worldcupEvent .ticket__container .inputBox-event + .tip .times {
   color: red;
   margin-right: 1vw;
   display: block;
@@ -3967,11 +3986,11 @@ button.clickBtn:before {
   height: 0;
 }
 
-.filterSelect .inputBox {
+.filterSelect .inputBox, .filterSelect .worldcupEvent .ticket__container .inputBox-event, .worldcupEvent .ticket__container .filterSelect .inputBox-event {
   margin: 0 0 2vw;
 }
 
-.filterSelect .inputBox .dropdown-container {
+.filterSelect .inputBox .dropdown-container, .filterSelect .worldcupEvent .ticket__container .inputBox-event .dropdown-container, .worldcupEvent .ticket__container .filterSelect .inputBox-event .dropdown-container {
   z-index: 2;
 }
 
@@ -4987,6 +5006,14 @@ span.important {
   display: block;
   color: #f72626;
   font-size: 16px;
+}
+
+.submenuNew .side-nav a img,
+.submenuNew .side-nav button img,
+.submenuNew .side-nav div img {
+  width: 10vw;
+  height: 11vw;
+  margin: 1vw 0 1vw -1vw;
 }
 
 .submenuNew .thBar {
@@ -6317,32 +6344,32 @@ span.important {
   color: #052561;
 }
 
-.Join .inputBox {
+.Join .inputBox, .Join .worldcupEvent .ticket__container .inputBox-event, .worldcupEvent .ticket__container .Join .inputBox-event {
   position: relative;
   margin: 1vw 0;
 }
 
-.Join .inputBox > input {
+.Join .inputBox > input, .Join .worldcupEvent .ticket__container .inputBox-event > input, .worldcupEvent .ticket__container .Join .inputBox-event > input {
   margin: 1vw 0;
 }
 
-.Join .inputBox > input::-webkit-input-placeholder {
+.Join .inputBox > input::-webkit-input-placeholder, .Join .worldcupEvent .ticket__container .inputBox-event > input::-webkit-input-placeholder, .worldcupEvent .ticket__container .Join .inputBox-event > input::-webkit-input-placeholder {
   color: #6f7a8e;
 }
 
-.Join .inputBox > input:-ms-input-placeholder {
+.Join .inputBox > input:-ms-input-placeholder, .Join .worldcupEvent .ticket__container .inputBox-event > input:-ms-input-placeholder, .worldcupEvent .ticket__container .Join .inputBox-event > input:-ms-input-placeholder {
   color: #6f7a8e;
 }
 
-.Join .inputBox > input::-ms-input-placeholder {
+.Join .inputBox > input::-ms-input-placeholder, .Join .worldcupEvent .ticket__container .inputBox-event > input::-ms-input-placeholder, .worldcupEvent .ticket__container .Join .inputBox-event > input::-ms-input-placeholder {
   color: #6f7a8e;
 }
 
-.Join .inputBox > input::placeholder {
+.Join .inputBox > input::placeholder, .Join .worldcupEvent .ticket__container .inputBox-event > input::placeholder, .worldcupEvent .ticket__container .Join .inputBox-event > input::placeholder {
   color: #6f7a8e;
 }
 
-.Join .inputBox .JoinRule {
+.Join .inputBox .JoinRule, .Join .worldcupEvent .ticket__container .inputBox-event .JoinRule, .worldcupEvent .ticket__container .Join .inputBox-event .JoinRule {
   height: 0;
   visibility: hidden;
   opacity: 0;
@@ -6350,7 +6377,7 @@ span.important {
   color: #052561;
 }
 
-.Join .inputBox .JoinRule.open {
+.Join .inputBox .JoinRule.open, .Join .worldcupEvent .ticket__container .inputBox-event .JoinRule.open, .worldcupEvent .ticket__container .Join .inputBox-event .JoinRule.open {
   height: auto;
   visibility: visible;
   -webkit-transition: 0.7s;
@@ -6359,28 +6386,28 @@ span.important {
   color: #052561;
 }
 
-.Join .inputBox > .icon-module {
+.Join .inputBox > .icon-module, .Join .worldcupEvent .ticket__container .inputBox-event > .icon-module, .worldcupEvent .ticket__container .Join .inputBox-event > .icon-module {
   position: absolute;
   right: 0;
   top: 0;
 }
 
-.Join .inputBox > .icon-module > i.icon {
+.Join .inputBox > .icon-module > i.icon, .Join .worldcupEvent .ticket__container .inputBox-event > .icon-module > i.icon, .worldcupEvent .ticket__container .Join .inputBox-event > .icon-module > i.icon {
   -webkit-transform: translateY(60%);
           transform: translateY(60%);
 }
 
-.Join .inputBox i.icon.icon-eye, .Join .inputBox i.icon.icon-eye-blocked {
+.Join .inputBox i.icon.icon-eye, .Join .worldcupEvent .ticket__container .inputBox-event i.icon.icon-eye, .worldcupEvent .ticket__container .Join .inputBox-event i.icon.icon-eye, .Join .inputBox i.icon.icon-eye-blocked, .Join .worldcupEvent .ticket__container .inputBox-event i.icon.icon-eye-blocked, .worldcupEvent .ticket__container .Join .inputBox-event i.icon.icon-eye-blocked {
   display: none;
 }
 
-.Join .inputBox i.icon.icon-key + input + div > .icon-eye {
+.Join .inputBox i.icon.icon-key + input + div > .icon-eye, .Join .worldcupEvent .ticket__container .inputBox-event i.icon.icon-key + input + div > .icon-eye, .worldcupEvent .ticket__container .Join .inputBox-event i.icon.icon-key + input + div > .icon-eye {
   display: inline-block;
   position: initial;
   margin-right: 2vw;
 }
 
-.Join .inputBox i.icon.icon-key + input + div > .icon-eye-blocked {
+.Join .inputBox i.icon.icon-key + input + div > .icon-eye-blocked, .Join .worldcupEvent .ticket__container .inputBox-event i.icon.icon-key + input + div > .icon-eye-blocked, .worldcupEvent .ticket__container .Join .inputBox-event i.icon.icon-key + input + div > .icon-eye-blocked {
   display: inline-block;
   position: initial;
   margin-right: 2vw;
@@ -6501,13 +6528,17 @@ span.important {
   color: #fab617;
 }
 
-.refShare .refBox > div a {
+.refShare .refBox > div button {
+  width: 100%;
+}
+
+.refShare .refBox > div a, .refShare .refBox > div button {
   color: #fab617;
   text-decoration: underline;
   font-size: 12px;
 }
 
-.refShare .refBox > div a.more {
+.refShare .refBox > div a.more, .refShare .refBox > div button.more {
   font-size: 16px;
   display: block;
   margin: 0 auto;
@@ -6520,7 +6551,7 @@ span.important {
   text-decoration: none;
 }
 
-.refShare .refBox > div a.more:hover {
+.refShare .refBox > div a.more:hover, .refShare .refBox > div button.more:hover {
   background: #fab617;
   color: #ffffff;
   -webkit-transition: 0.2s;
@@ -6842,6 +6873,7 @@ span.important {
   background: white;
   border-radius: 5px;
   margin: 0 2vw;
+  position: relative;
 }
 
 .depositModule_mobile .selectModule > div .bankName img,
@@ -6851,6 +6883,19 @@ span.important {
 .depositModule_Crpyto .selectModule > div .bankName img {
   width: 100%;
   vertical-align: middle;
+}
+
+.depositModule_mobile .selectModule > div .bankName .mask,
+.depositModule_online .selectModule > div .bankName .mask,
+.depositModule_local .selectModule > div .bankName .mask,
+.depositModule_topupMobile .selectModule > div .bankName .mask,
+.depositModule_Crpyto .selectModule > div .bankName .mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
 }
 
 .depositModule_mobile .input-group,
@@ -6867,11 +6912,19 @@ span.important {
           flex-flow: row;
 }
 
-.depositModule_mobile .input-group .inputBox,
+.depositModule_mobile .input-group .inputBox, .depositModule_mobile .input-group .worldcupEvent .ticket__container .inputBox-event, .worldcupEvent .ticket__container .depositModule_mobile .input-group .inputBox-event,
 .depositModule_online .input-group .inputBox,
+.depositModule_online .input-group .worldcupEvent .ticket__container .inputBox-event,
+.worldcupEvent .ticket__container .depositModule_online .input-group .inputBox-event,
 .depositModule_local .input-group .inputBox,
+.depositModule_local .input-group .worldcupEvent .ticket__container .inputBox-event,
+.worldcupEvent .ticket__container .depositModule_local .input-group .inputBox-event,
 .depositModule_topupMobile .input-group .inputBox,
-.depositModule_Crpyto .input-group .inputBox {
+.depositModule_topupMobile .input-group .worldcupEvent .ticket__container .inputBox-event,
+.worldcupEvent .ticket__container .depositModule_topupMobile .input-group .inputBox-event,
+.depositModule_Crpyto .input-group .inputBox,
+.depositModule_Crpyto .input-group .worldcupEvent .ticket__container .inputBox-event,
+.worldcupEvent .ticket__container .depositModule_Crpyto .input-group .inputBox-event {
   width: 100%;
 }
 
@@ -6888,21 +6941,37 @@ span.important {
   margin: 2px 0 0 2px;
 }
 
-.depositModule_mobile .inputBox,
+.depositModule_mobile .inputBox, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event,
 .depositModule_online .inputBox,
+.depositModule_online .worldcupEvent .ticket__container .inputBox-event,
+.worldcupEvent .ticket__container .depositModule_online .inputBox-event,
 .depositModule_local .inputBox,
+.depositModule_local .worldcupEvent .ticket__container .inputBox-event,
+.worldcupEvent .ticket__container .depositModule_local .inputBox-event,
 .depositModule_topupMobile .inputBox,
-.depositModule_Crpyto .inputBox {
+.depositModule_topupMobile .worldcupEvent .ticket__container .inputBox-event,
+.worldcupEvent .ticket__container .depositModule_topupMobile .inputBox-event,
+.depositModule_Crpyto .inputBox,
+.depositModule_Crpyto .worldcupEvent .ticket__container .inputBox-event,
+.worldcupEvent .ticket__container .depositModule_Crpyto .inputBox-event {
   position: relative;
   margin: 2px 0 2vw;
   color: white;
 }
 
-.depositModule_mobile .inputBox .iconModule,
+.depositModule_mobile .inputBox .iconModule, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event .iconModule, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event .iconModule,
 .depositModule_online .inputBox .iconModule,
+.depositModule_online .worldcupEvent .ticket__container .inputBox-event .iconModule,
+.worldcupEvent .ticket__container .depositModule_online .inputBox-event .iconModule,
 .depositModule_local .inputBox .iconModule,
+.depositModule_local .worldcupEvent .ticket__container .inputBox-event .iconModule,
+.worldcupEvent .ticket__container .depositModule_local .inputBox-event .iconModule,
 .depositModule_topupMobile .inputBox .iconModule,
-.depositModule_Crpyto .inputBox .iconModule {
+.depositModule_topupMobile .worldcupEvent .ticket__container .inputBox-event .iconModule,
+.worldcupEvent .ticket__container .depositModule_topupMobile .inputBox-event .iconModule,
+.depositModule_Crpyto .inputBox .iconModule,
+.depositModule_Crpyto .worldcupEvent .ticket__container .inputBox-event .iconModule,
+.worldcupEvent .ticket__container .depositModule_Crpyto .inputBox-event .iconModule {
   position: absolute;
   -webkit-transform: translateY(60%);
           transform: translateY(60%);
@@ -6911,11 +6980,19 @@ span.important {
   color: #6f7a8e;
 }
 
-.depositModule_mobile .inputBox .iconModule .icon,
+.depositModule_mobile .inputBox .iconModule .icon, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event .iconModule .icon, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event .iconModule .icon,
 .depositModule_online .inputBox .iconModule .icon,
+.depositModule_online .worldcupEvent .ticket__container .inputBox-event .iconModule .icon,
+.worldcupEvent .ticket__container .depositModule_online .inputBox-event .iconModule .icon,
 .depositModule_local .inputBox .iconModule .icon,
+.depositModule_local .worldcupEvent .ticket__container .inputBox-event .iconModule .icon,
+.worldcupEvent .ticket__container .depositModule_local .inputBox-event .iconModule .icon,
 .depositModule_topupMobile .inputBox .iconModule .icon,
-.depositModule_Crpyto .inputBox .iconModule .icon {
+.depositModule_topupMobile .worldcupEvent .ticket__container .inputBox-event .iconModule .icon,
+.worldcupEvent .ticket__container .depositModule_topupMobile .inputBox-event .iconModule .icon,
+.depositModule_Crpyto .inputBox .iconModule .icon,
+.depositModule_Crpyto .worldcupEvent .ticket__container .inputBox-event .iconModule .icon,
+.worldcupEvent .ticket__container .depositModule_Crpyto .inputBox-event .iconModule .icon {
   position: initial;
   display: inline-block;
   -webkit-transform: translateY(15%);
@@ -6923,19 +7000,35 @@ span.important {
   margin-right: 0;
 }
 
-.depositModule_mobile .inputBox .icon-module,
+.depositModule_mobile .inputBox .icon-module, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event .icon-module, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event .icon-module,
 .depositModule_online .inputBox .icon-module,
+.depositModule_online .worldcupEvent .ticket__container .inputBox-event .icon-module,
+.worldcupEvent .ticket__container .depositModule_online .inputBox-event .icon-module,
 .depositModule_local .inputBox .icon-module,
+.depositModule_local .worldcupEvent .ticket__container .inputBox-event .icon-module,
+.worldcupEvent .ticket__container .depositModule_local .inputBox-event .icon-module,
 .depositModule_topupMobile .inputBox .icon-module,
-.depositModule_Crpyto .inputBox .icon-module {
+.depositModule_topupMobile .worldcupEvent .ticket__container .inputBox-event .icon-module,
+.worldcupEvent .ticket__container .depositModule_topupMobile .inputBox-event .icon-module,
+.depositModule_Crpyto .inputBox .icon-module,
+.depositModule_Crpyto .worldcupEvent .ticket__container .inputBox-event .icon-module,
+.worldcupEvent .ticket__container .depositModule_Crpyto .inputBox-event .icon-module {
   top: 1.5vw;
 }
 
-.depositModule_mobile .inputBox input,
+.depositModule_mobile .inputBox input, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event input, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event input,
 .depositModule_online .inputBox input,
+.depositModule_online .worldcupEvent .ticket__container .inputBox-event input,
+.worldcupEvent .ticket__container .depositModule_online .inputBox-event input,
 .depositModule_local .inputBox input,
+.depositModule_local .worldcupEvent .ticket__container .inputBox-event input,
+.worldcupEvent .ticket__container .depositModule_local .inputBox-event input,
 .depositModule_topupMobile .inputBox input,
-.depositModule_Crpyto .inputBox input {
+.depositModule_topupMobile .worldcupEvent .ticket__container .inputBox-event input,
+.worldcupEvent .ticket__container .depositModule_topupMobile .inputBox-event input,
+.depositModule_Crpyto .inputBox input,
+.depositModule_Crpyto .worldcupEvent .ticket__container .inputBox-event input,
+.worldcupEvent .ticket__container .depositModule_Crpyto .inputBox-event input {
   padding: 2vw;
   border-radius: 0;
   text-align: left;
@@ -6944,64 +7037,120 @@ span.important {
   color: #052561;
 }
 
-.depositModule_mobile .inputBox input::-webkit-input-placeholder,
+.depositModule_mobile .inputBox input::-webkit-input-placeholder, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event input::-webkit-input-placeholder, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event input::-webkit-input-placeholder,
 .depositModule_online .inputBox input::-webkit-input-placeholder,
+.depositModule_online .worldcupEvent .ticket__container .inputBox-event input::-webkit-input-placeholder,
+.worldcupEvent .ticket__container .depositModule_online .inputBox-event input::-webkit-input-placeholder,
 .depositModule_local .inputBox input::-webkit-input-placeholder,
+.depositModule_local .worldcupEvent .ticket__container .inputBox-event input::-webkit-input-placeholder,
+.worldcupEvent .ticket__container .depositModule_local .inputBox-event input::-webkit-input-placeholder,
 .depositModule_topupMobile .inputBox input::-webkit-input-placeholder,
-.depositModule_Crpyto .inputBox input::-webkit-input-placeholder {
+.depositModule_topupMobile .worldcupEvent .ticket__container .inputBox-event input::-webkit-input-placeholder,
+.worldcupEvent .ticket__container .depositModule_topupMobile .inputBox-event input::-webkit-input-placeholder,
+.depositModule_Crpyto .inputBox input::-webkit-input-placeholder,
+.depositModule_Crpyto .worldcupEvent .ticket__container .inputBox-event input::-webkit-input-placeholder,
+.worldcupEvent .ticket__container .depositModule_Crpyto .inputBox-event input::-webkit-input-placeholder {
   color: #6f7a8e;
   font-size: 3vw;
 }
 
-.depositModule_mobile .inputBox input:-ms-input-placeholder,
+.depositModule_mobile .inputBox input:-ms-input-placeholder, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event input:-ms-input-placeholder, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event input:-ms-input-placeholder,
 .depositModule_online .inputBox input:-ms-input-placeholder,
+.depositModule_online .worldcupEvent .ticket__container .inputBox-event input:-ms-input-placeholder,
+.worldcupEvent .ticket__container .depositModule_online .inputBox-event input:-ms-input-placeholder,
 .depositModule_local .inputBox input:-ms-input-placeholder,
+.depositModule_local .worldcupEvent .ticket__container .inputBox-event input:-ms-input-placeholder,
+.worldcupEvent .ticket__container .depositModule_local .inputBox-event input:-ms-input-placeholder,
 .depositModule_topupMobile .inputBox input:-ms-input-placeholder,
-.depositModule_Crpyto .inputBox input:-ms-input-placeholder {
+.depositModule_topupMobile .worldcupEvent .ticket__container .inputBox-event input:-ms-input-placeholder,
+.worldcupEvent .ticket__container .depositModule_topupMobile .inputBox-event input:-ms-input-placeholder,
+.depositModule_Crpyto .inputBox input:-ms-input-placeholder,
+.depositModule_Crpyto .worldcupEvent .ticket__container .inputBox-event input:-ms-input-placeholder,
+.worldcupEvent .ticket__container .depositModule_Crpyto .inputBox-event input:-ms-input-placeholder {
   color: #6f7a8e;
   font-size: 3vw;
 }
 
-.depositModule_mobile .inputBox input::-ms-input-placeholder,
+.depositModule_mobile .inputBox input::-ms-input-placeholder, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event input::-ms-input-placeholder, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event input::-ms-input-placeholder,
 .depositModule_online .inputBox input::-ms-input-placeholder,
+.depositModule_online .worldcupEvent .ticket__container .inputBox-event input::-ms-input-placeholder,
+.worldcupEvent .ticket__container .depositModule_online .inputBox-event input::-ms-input-placeholder,
 .depositModule_local .inputBox input::-ms-input-placeholder,
+.depositModule_local .worldcupEvent .ticket__container .inputBox-event input::-ms-input-placeholder,
+.worldcupEvent .ticket__container .depositModule_local .inputBox-event input::-ms-input-placeholder,
 .depositModule_topupMobile .inputBox input::-ms-input-placeholder,
-.depositModule_Crpyto .inputBox input::-ms-input-placeholder {
+.depositModule_topupMobile .worldcupEvent .ticket__container .inputBox-event input::-ms-input-placeholder,
+.worldcupEvent .ticket__container .depositModule_topupMobile .inputBox-event input::-ms-input-placeholder,
+.depositModule_Crpyto .inputBox input::-ms-input-placeholder,
+.depositModule_Crpyto .worldcupEvent .ticket__container .inputBox-event input::-ms-input-placeholder,
+.worldcupEvent .ticket__container .depositModule_Crpyto .inputBox-event input::-ms-input-placeholder {
   color: #6f7a8e;
   font-size: 3vw;
 }
 
-.depositModule_mobile .inputBox input::placeholder,
+.depositModule_mobile .inputBox input::placeholder, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event input::placeholder, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event input::placeholder,
 .depositModule_online .inputBox input::placeholder,
+.depositModule_online .worldcupEvent .ticket__container .inputBox-event input::placeholder,
+.worldcupEvent .ticket__container .depositModule_online .inputBox-event input::placeholder,
 .depositModule_local .inputBox input::placeholder,
+.depositModule_local .worldcupEvent .ticket__container .inputBox-event input::placeholder,
+.worldcupEvent .ticket__container .depositModule_local .inputBox-event input::placeholder,
 .depositModule_topupMobile .inputBox input::placeholder,
-.depositModule_Crpyto .inputBox input::placeholder {
+.depositModule_topupMobile .worldcupEvent .ticket__container .inputBox-event input::placeholder,
+.worldcupEvent .ticket__container .depositModule_topupMobile .inputBox-event input::placeholder,
+.depositModule_Crpyto .inputBox input::placeholder,
+.depositModule_Crpyto .worldcupEvent .ticket__container .inputBox-event input::placeholder,
+.worldcupEvent .ticket__container .depositModule_Crpyto .inputBox-event input::placeholder {
   color: #6f7a8e;
   font-size: 3vw;
 }
 
-.depositModule_mobile .inputBox .tip,
+.depositModule_mobile .inputBox .tip, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event .tip, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event .tip,
 .depositModule_online .inputBox .tip,
+.depositModule_online .worldcupEvent .ticket__container .inputBox-event .tip,
+.worldcupEvent .ticket__container .depositModule_online .inputBox-event .tip,
 .depositModule_local .inputBox .tip,
+.depositModule_local .worldcupEvent .ticket__container .inputBox-event .tip,
+.worldcupEvent .ticket__container .depositModule_local .inputBox-event .tip,
 .depositModule_topupMobile .inputBox .tip,
-.depositModule_Crpyto .inputBox .tip {
+.depositModule_topupMobile .worldcupEvent .ticket__container .inputBox-event .tip,
+.worldcupEvent .ticket__container .depositModule_topupMobile .inputBox-event .tip,
+.depositModule_Crpyto .inputBox .tip,
+.depositModule_Crpyto .worldcupEvent .ticket__container .inputBox-event .tip,
+.worldcupEvent .ticket__container .depositModule_Crpyto .inputBox-event .tip {
   margin-left: 2.5vw;
 }
 
-.depositModule_mobile .inputBox .tip img,
+.depositModule_mobile .inputBox .tip img, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event .tip img, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event .tip img,
 .depositModule_online .inputBox .tip img,
+.depositModule_online .worldcupEvent .ticket__container .inputBox-event .tip img,
+.worldcupEvent .ticket__container .depositModule_online .inputBox-event .tip img,
 .depositModule_local .inputBox .tip img,
+.depositModule_local .worldcupEvent .ticket__container .inputBox-event .tip img,
+.worldcupEvent .ticket__container .depositModule_local .inputBox-event .tip img,
 .depositModule_topupMobile .inputBox .tip img,
-.depositModule_Crpyto .inputBox .tip img {
+.depositModule_topupMobile .worldcupEvent .ticket__container .inputBox-event .tip img,
+.worldcupEvent .ticket__container .depositModule_topupMobile .inputBox-event .tip img,
+.depositModule_Crpyto .inputBox .tip img,
+.depositModule_Crpyto .worldcupEvent .ticket__container .inputBox-event .tip img,
+.worldcupEvent .ticket__container .depositModule_Crpyto .inputBox-event .tip img {
   width: 102%;
   margin-left: -2.5vw;
 }
 
-.depositModule_mobile .inputBox .dropdown > .dropdown-container,
+.depositModule_mobile .inputBox .dropdown > .dropdown-container, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event .dropdown > .dropdown-container, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event .dropdown > .dropdown-container,
 .depositModule_online .inputBox .dropdown > .dropdown-container,
+.depositModule_online .worldcupEvent .ticket__container .inputBox-event .dropdown > .dropdown-container,
+.worldcupEvent .ticket__container .depositModule_online .inputBox-event .dropdown > .dropdown-container,
 .depositModule_local .inputBox .dropdown > .dropdown-container,
+.depositModule_local .worldcupEvent .ticket__container .inputBox-event .dropdown > .dropdown-container,
+.worldcupEvent .ticket__container .depositModule_local .inputBox-event .dropdown > .dropdown-container,
 .depositModule_topupMobile .inputBox .dropdown > .dropdown-container,
-.depositModule_Crpyto .inputBox .dropdown > .dropdown-container {
+.depositModule_topupMobile .worldcupEvent .ticket__container .inputBox-event .dropdown > .dropdown-container,
+.worldcupEvent .ticket__container .depositModule_topupMobile .inputBox-event .dropdown > .dropdown-container,
+.depositModule_Crpyto .inputBox .dropdown > .dropdown-container,
+.depositModule_Crpyto .worldcupEvent .ticket__container .inputBox-event .dropdown > .dropdown-container,
+.worldcupEvent .ticket__container .depositModule_Crpyto .inputBox-event .dropdown > .dropdown-container {
   background: #bfc9da;
 }
 
@@ -8888,5 +9037,638 @@ span.important {
       -ms-flex-pack: center;
           justify-content: center;
   color: #fff;
+}
+
+.worldcupEvent {
+  overflow: hidden;
+}
+
+.worldcupEvent .eventPage__top {
+  position: relative;
+  padding-top: 5vw;
+  position: relative;
+  height: 190vw;
+  background: url(https://banner.goal123.org/h5/img/event/worldcup/bg.jpg) no-repeat center/cover;
+}
+
+.worldcupEvent .eventPage__middle {
+  position: relative;
+  padding: 20vw 5vw 0;
+  height: 201vw;
+  background: url(https://banner.goal123.org/h5/img/event/worldcup/bg2.jpg) no-repeat center/cover;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.worldcupEvent .eventPage__bottom {
+  padding: 12vw 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(#6d0d33), to(#300113));
+  background: linear-gradient(#6d0d33, #300113);
+}
+
+.worldcupEvent .awards {
+  text-align: center;
+  margin: 10vw auto 0;
+}
+
+.worldcupEvent .awards div {
+  color: #fff;
+  margin-top: 0;
+  font-size: 5vw;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.worldcupEvent .visual .a-bottom {
+  position: absolute;
+  bottom: 0;
+  right: calc(50% - 27.5vw);
+  width: 55vw;
+  height: auto;
+  -webkit-animation: a-right 1.25s ease-in-out;
+          animation: a-right 1.25s ease-in-out;
+}
+
+.worldcupEvent .visual .logo {
+  position: absolute;
+  top: 40vw;
+  left: calc(50% - 35vw);
+  width: 70vw;
+  -webkit-animation: floating 2s ease-in-out infinite alternate;
+          animation: floating 2s ease-in-out infinite alternate;
+}
+
+.worldcupEvent .intro-visual__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.worldcupEvent .intro-visual__body img {
+  max-width: 100%;
+  margin: 20vw auto 10vw;
+}
+
+.worldcupEvent .btn-event {
+  padding: 3vw 5vw;
+  color: #8B1539;
+  font-size: 4vw;
+  background: #FFBF00;
+  border-radius: 5px;
+  margin: 0 auto;
+  width: 65vw;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.worldcupEvent .title {
+  width: 75vw;
+  height: 8vw;
+  font-size: 4.5vw;
+  font-weight: bold;
+  position: relative;
+  margin: 0 auto 5vw;
+  text-align: center;
+  line-height: 1.8;
+  color: #fff;
+  background: url(https://banner.goal123.org/img/worldcup/titlebg.svg) no-repeat center/contain;
+  text-transform: capitalize;
+}
+
+.worldcupEvent .title + img {
+  max-width: 100%;
+  margin: 0 auto 10vw;
+}
+
+.worldcupEvent .ticket__body {
+  margin: 0 5vw 10vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: #fff;
+}
+
+.worldcupEvent .ticket__container {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+}
+
+.worldcupEvent .ticket__container:nth-child(1) {
+  margin-bottom: 10vw;
+}
+
+.worldcupEvent .ticket__container .inputBox-event {
+  background: white;
+  color: #FF004E !important;
+}
+
+.worldcupEvent .ticket__container .inputBox-event .dropdown {
+  background: #fff;
+  border: 1px solid #FF004E;
+  padding: .5vw 2vw;
+}
+
+.worldcupEvent .ticket__container .inputBox-event .dropdown:before {
+  border-color: #FF004E transparent transparent transparent !important;
+}
+
+.worldcupEvent .ticket__container .inputBox-event .dropdown > .btn {
+  color: #FF004E !important;
+  z-index: 2;
+}
+
+.worldcupEvent .ticket__container .inputBox-event .dropdown .dropdown-container {
+  background: white;
+}
+
+.worldcupEvent .ticket__container .inputBox-event .dropdown .dropdown-container .dropdown-item {
+  color: #FF004E;
+}
+
+.worldcupEvent .ticket__container .inputBox-event .icon:before {
+  color: #FF004E;
+}
+
+.worldcupEvent .ticket__info {
+  padding: 5vw;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  background: #76002E;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.worldcupEvent .ticket__user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 3.5vw;
+  border-bottom: 1px solid #fff;
+}
+
+.worldcupEvent .ticket__user img {
+  width: 5vw;
+  margin-right: 2.5vw;
+}
+
+.worldcupEvent .ticket__tab {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #fff;
+  margin-bottom: 10px;
+}
+
+.worldcupEvent .ticket__tab-item, .worldcupEvent .ticket__tab-item--active, .worldcupEvent .ticket__tab-item:hover, .worldcupEvent .ticket__tab-item--finished, .worldcupEvent .ticket__tab-item--disabled {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #8A0000;
+  outline: 1px solid #FF4700;
+  border-radius: 3px;
+  margin-right: 15px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.worldcupEvent .ticket__tab-item:last-child, .worldcupEvent .ticket__tab-item--active:last-child, .worldcupEvent .ticket__tab-item--finished:last-child, .worldcupEvent .ticket__tab-item--disabled:last-child {
+  margin-right: 0;
+}
+
+.worldcupEvent .ticket__tab-item img, .worldcupEvent .ticket__tab-item--active img, .worldcupEvent .ticket__tab-item:hover img, .worldcupEvent .ticket__tab-item--finished img, .worldcupEvent .ticket__tab-item--disabled img {
+  width: 35px;
+  margin-right: 10px;
+}
+
+.worldcupEvent .ticket__tab-item--active, .worldcupEvent .ticket__tab-item--active:hover, .worldcupEvent .ticket__tab-item:hover, .worldcupEvent .ticket__tab-item--finished:hover, .worldcupEvent .ticket__tab-item--disabled:hover {
+  outline: 2px solid #fff;
+}
+
+.worldcupEvent .ticket__tab-item--finished {
+  position: relative;
+  outline: 0;
+  background: #b50101;
+}
+
+.worldcupEvent .ticket__tab-item--finished::before {
+  content: "\ea10";
+  font-family: 'icomoon';
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 50%;
+  background: #00CFB7;
+}
+
+.worldcupEvent .ticket__tab-item--disabled {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+}
+
+.worldcupEvent .ticket__tab-item--disabled:hover {
+  outline: 1px solid #FF4700;
+}
+
+.worldcupEvent .ticket__selection, .worldcupEvent .ticket__selection--finished, .worldcupEvent .ticket__selection--disabled {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.worldcupEvent .ticket__selection .btnGroup, .worldcupEvent .ticket__selection--finished .btnGroup, .worldcupEvent .ticket__selection--disabled .btnGroup {
+  margin: 10px 0 0;
+}
+
+.worldcupEvent .ticket__selection--left {
+  width: 100%;
+}
+
+.worldcupEvent .ticket__selection--right {
+  width: 100%;
+}
+
+.worldcupEvent .ticket__selection--right .btnGroup {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.worldcupEvent .ticket__selection--right .btnGroup .btn-team {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  background: #FF004E;
+  border-radius: 3px;
+  padding: 2vw;
+  color: #fff;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  margin-bottom: 3vw;
+  cursor: pointer;
+  font-size: 3vw;
+}
+
+.worldcupEvent .ticket__selection--right .btnGroup .btn-team img {
+  width: 5vw;
+  margin: 0 2vw 0 0;
+  border: 1px solid #fff;
+}
+
+.worldcupEvent .ticket__selection--bottom {
+  width: 100%;
+  border-top: 1px solid #fff;
+  padding-top: 1vw;
+  margin: 1vw auto .5vw;
+  text-align: center;
+}
+
+.worldcupEvent .ticket__selection--bottom .btnGroup {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.worldcupEvent .ticket__selection--bottom .btnGroup button {
+  padding: 2vw 3vw;
+  width: calc(50% - 1vw);
+}
+
+.worldcupEvent .ticket__selection--bottom .msg {
+  margin-top: 1vw;
+}
+
+.worldcupEvent .ticket__selection--finished .inputBox-event .dropdown {
+  background: #0D0C0C;
+  border: 0;
+}
+
+.worldcupEvent .ticket__selection--finished .btnGroup .btn-team {
+  background: #b50101;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+}
+
+.worldcupEvent .ticket__selection--disabled {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+}
+
+.worldcupEvent .ticket__selection--disabled .btnGroup .btn-team {
+  cursor: default;
+}
+
+.worldcupEvent .progress-bar {
+  margin: 12vw auto;
+  padding-right: 6vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.worldcupEvent .progress-bar__item {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: #e1e1e1;
+  position: relative;
+}
+
+.worldcupEvent .progress-bar__item:before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 3px;
+  background: #fff;
+  position: absolute;
+  right: -4px;
+  z-index: 2;
+}
+
+.worldcupEvent .progress-bar__item.active .value {
+  color: #02D2B8;
+}
+
+.worldcupEvent .progress-bar__number {
+  position: absolute;
+  color: #fff;
+  font-size: 12px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  width: 50px;
+  right: -20px;
+  bottom: -20px;
+  text-align: center;
+}
+
+.worldcupEvent .progress-bar__number:before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: 10px;
+  width: 40px;
+  height: 19px;
+  background: url(https://banner.goal123.org/img/worldcup/ticket.png) no-repeat center/cover;
+}
+
+.worldcupEvent .progress-bar__value {
+  position: absolute;
+  background: #02D2B8;
+  height: 8px;
+  border-radius: 4px;
+  left: 0;
+  z-index: 1;
+}
+
+.worldcupEvent .status {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.worldcupEvent .status > div {
+  background: #650043;
+  border: 1px solid #FF4700;
+  width: 100%;
+  margin-bottom: 2.5vw;
+  border-radius: 5px;
+}
+
+.worldcupEvent .status > div:nth-last-child(1) {
+  margin-bottom: 0;
+}
+
+.worldcupEvent .status > div > div {
+  padding: 2vw 0;
+  text-align: center;
+}
+
+.worldcupEvent .status > div > div + div {
+  color: #fff;
+  border-top: 1px solid #FF004E;
+}
+
+.worldcupEvent .status > div > div + div span {
+  color: #FFBF00;
+  font-weight: bold;
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: bold;
+}
+
+.worldcupEvent .btnGroup {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 15px auto 0;
+}
+
+.worldcupEvent .btnGroup > button {
+  padding: 5px 10px;
+  margin: auto 0;
+  border-radius: 3px;
+}
+
+.worldcupEvent .btnGroup .btn-gray {
+  background: #B7B7B7;
+  color: #fff;
+  cursor: pointer;
+}
+
+.worldcupEvent .btnGroup .btn-gray:hover {
+  background: #858383;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.worldcupEvent .btnGroup .btn-green {
+  background: #FFBF00;
+  color: #8B1539;
+  cursor: pointer;
+}
+
+.worldcupEvent .btnGroup .btn-green:hover {
+  background: #e4a00b;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.worldcupEvent .rules {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0 5vw 10vw;
+  padding: 6vw 4vw;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  background: rgba(65, 10, 27, 0.4);
+  text-align: center;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.worldcupEvent .rules__title {
+  position: relative;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 4vw;
+  margin: 0 auto;
+}
+
+.worldcupEvent .rules__title:before, .worldcupEvent .rules__title:after {
+  content: "";
+  position: absolute;
+  top: 2.2vw;
+  width: 12vw;
+  height: 2vw;
+  background: url(https://banner.goal123.org/h5/img/event/worldcup/5deco.svg) no-repeat center/cover;
+}
+
+.worldcupEvent .rules__title:before {
+  left: -14vw;
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+}
+
+.worldcupEvent .rules__title:after {
+  right: -14vw;
+}
+
+.worldcupEvent .rules__content {
+  margin: 4vw auto 8vw;
+  font-size: 3.5vw;
+  width: 82vw;
+}
+
+.worldcupEvent .rules__content span {
+  font-weight: bold;
+}
+
+.worldcupEvent .rules__content ol {
+  text-align: left;
+  margin-left: 3vw;
+}
+
+.worldcupEvent .rules__content ol li {
+  margin: 2vw auto;
+  list-style: decimal;
+}
+
+.worldcupEvent .rules .btn-event {
+  border: 0;
+  -webkit-filter: drop-shadow(0 0 0 transparent);
+          filter: drop-shadow(0 0 0 transparent);
+  border-radius: 3px;
+  font-size: 3.5vw;
+  padding: 1.5vw 5vw;
+}
+
+@-webkit-keyframes a-right {
+  from {
+    right: 10vw;
+    opacity: 0;
+  }
+  to {
+    right: calc(50% - 30vw);
+    opacity: 1;
+  }
+}
+
+@keyframes a-right {
+  from {
+    right: 10vw;
+    opacity: 0;
+  }
+  to {
+    right: calc(50% - 30vw);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes floating {
+  0% {
+    -webkit-transform: translate(0%, 5%);
+            transform: translate(0%, 5%);
+  }
+  100% {
+    -webkit-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
+  }
+}
+
+@keyframes floating {
+  0% {
+    -webkit-transform: translate(0%, 5%);
+            transform: translate(0%, 5%);
+  }
+  100% {
+    -webkit-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
+  }
 }
 /*# sourceMappingURL=style.css.map */
