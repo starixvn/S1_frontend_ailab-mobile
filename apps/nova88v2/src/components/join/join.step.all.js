@@ -6,6 +6,8 @@ import JoinStep1 from "./join.step1";
 import JoinStep2 from "./join.step2";
 import { initValue, initStatus } from "./join.def";
 import path from "../../path";
+import { defCurrenyId, getLocalStorage } from "../common/common";
+import useHandleLineLogin, { defType } from "../hook/useHandleLineLogin";
 
 const JoinStepAll = () => {
 	const navigate = useNavigate();
@@ -14,6 +16,8 @@ const JoinStepAll = () => {
 	const [step, setStep] = useState(1);
 	const [userValue, setUserValue] = useState(initValue);
 	const [hintStatus, setHintStatus] = useState(initStatus);
+	const { lineLogin } = useHandleLineLogin();
+	const lineUserId = getLocalStorage("lineUser");
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
@@ -29,8 +33,31 @@ const JoinStepAll = () => {
 		}));
 	};
 
+	const handleLineRegister = e => {
+		e.preventDefault();
+		lineLogin({ type: defType.register });
+	};
+
 	return (
 		<>
+			{(userInfo.langId === "th" ||
+				userInfo.langId === "th_en" ||
+				userInfo.currencyId === defCurrenyId.THB) &&
+				!lineUserId && (
+					<div className="register-line">
+						{i18n.lbl_RegisterWithLine} ID
+						<div className="btn-group">
+							<button
+								className="btn-line"
+								onClick={e => {
+									handleLineRegister(e);
+								}}>
+								<i className="icon icon-line-bold" />
+								{i18n.lbl_RegisterWithLine}
+							</button>
+						</div>
+					</div>
+				)}
 			<div className="step">
 				<div className="stepLine">
 					<div />
@@ -61,6 +88,7 @@ const JoinStepAll = () => {
 					userInfo={userInfo}
 					setUserValue={setUserValue}
 					setUserInfo={setUserInfo}
+					lineUserId={lineUserId}
 				/>
 			) : (
 				<JoinStep1

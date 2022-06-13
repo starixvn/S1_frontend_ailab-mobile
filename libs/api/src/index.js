@@ -9,3 +9,4 @@ export * from "./lib/event";
 export * from "./lib/video";
 export * from "./lib/cashier";
 export * from "./lib/player";
+export * from "./lib/lineLogin";

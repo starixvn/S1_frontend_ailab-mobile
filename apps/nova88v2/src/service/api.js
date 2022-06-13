@@ -9,7 +9,8 @@ import {
 	VideoAPI,
 	PromotionAPI,
 	CashierAPI,
-	PlayerAPI
+	PlayerAPI,
+	LineLoginAPI
 } from "@ailab-mobile/api";
 
 import config from "../config";
@@ -25,5 +26,6 @@ export default {
 	video: new VideoAPI(config),
 	promotion: new PromotionAPI(config),
 	cashier: new CashierAPI(config),
-	player: new PlayerAPI(config)
+	player: new PlayerAPI(config),
+	lineLogin: new LineLoginAPI(config)
 };
