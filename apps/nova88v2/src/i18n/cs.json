@@ -113,7 +113,7 @@
 	"msg_EnterRealName": "请输入您的真实姓名",
 	"lbl_RealName": "真实姓名",
 	"msg_MailWrongFormat": "电子邮箱格式错误",
-	"msg_PasswordVaildate": "* 密码长度必须 6至15个字符，包含字母数字混合特别字元符号 (!@#$%^&*)。",
+	"msg_PasswordVaildate": "密码长度必须 6 至 15 个字符，包含字母数字。",
 	"lbl_Phone": "手机号码",
 	"lbl_Submit": "提交",
 	"lbl_Profile": "个人资料",
@@ -279,7 +279,7 @@
 	"lbl_tpCategory_7": "虚拟运动",
 	"lbl_tpCategory_8": "扑克",
 	"lbl_Kog": "王者荣耀",
-	
+
 	"-==================--=========================Casino--==================================": "",
 	"lbl_AllProvider": "所有平台",
 	"lbl_AllGameType": "所有类型",
@@ -718,7 +718,7 @@
 	"lbl_DownloadAppStep3": "您将跳转到 App商城里的 '迷你 Puzzle 游戏' 而非 'Nova88' app",
 	"lbl_DownloadAppStep3-1": "点击 'Get' 以下载 '迷你 Puzzle 游戏' app",
 	"lbl_DownloadAppStep4": "打开 '迷你 Puzzle 游戏' 以打开 'Nova88' app",
-	
+
 	"============IFSC Code===============": "",
 	"lbl_IFSCCode": "IFSC代码",
 	"msg_NeedIFSCCode": "请输入 IFSC 代码",
