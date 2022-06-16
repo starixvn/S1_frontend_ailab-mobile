@@ -107,7 +107,7 @@
 	"msg_EnterRealName": "Please enter your real name.",
 	"lbl_RealName": "Real Name",
 	"msg_MailWrongFormat": "Mail Format is wrong.",
-	"msg_PasswordVaildate": "* Password must be 6-15 characters, contain both alphanumeric and a special characters (!@#$%^&*).",
+	"msg_PasswordVaildate": "Password must be 6-15 characters, contain alphanumeric.",
 	"lbl_Phone": "Phone Number",
 	"lbl_Submit": "Submit",
 	"lbl_Profile": "Profile",
@@ -272,7 +272,7 @@
 	"lbl_tpCategory_7" : "Virtual Sports",
 	"lbl_tpCategory_8" : "Poker",
 	"lbl_Kog": "KOG",
-	
+
 	"==============================================Casino====================================": "",
 	"lbl_AllProvider": "All Platform",
 	"lbl_AllGameType": "All Categories",

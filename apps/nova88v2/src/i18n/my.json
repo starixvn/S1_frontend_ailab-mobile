@@ -107,7 +107,7 @@
 	"msg_EnterRealName": "Sila masukkan nama benar anda.",
 	"lbl_RealName": "Nama benar",
 	"msg_MailWrongFormat": "Format Mel adalah salah.",
-	"msg_PasswordVaildate": "* Kata laluan mesti terdiri dari 6-15 aksara, mengandungi kedua-dua aksara alfaangka dan aksara unik (!@#$%^&amp;*).",
+	"msg_PasswordVaildate": "Kata laluan mestilah 6-15 aksara yang mengandungi alfanumerik.",
 	"lbl_Phone": "Nombor telefon",
 	"lbl_Submit": "Hantar",
 	"lbl_Profile": "Profil",
@@ -457,7 +457,7 @@
 	"lbl_Fail": "Gagal",
 	"lbl_Manual": "Manual",
 	"lbl_Caution": "AWAS!",
-	"lbl_AutoTransferHint": "Pindahan Auto akan memindahkan semua dana anda ke permainan. Jika ada bonus berjalan langsung, dana anda yang dimasukkan akan dikunci dalam dompet yang ditetapkan.", 
+	"lbl_AutoTransferHint": "Pindahan Auto akan memindahkan semua dana anda ke permainan. Jika ada bonus berjalan langsung, dana anda yang dimasukkan akan dikunci dalam dompet yang ditetapkan.",
 
 	"==============================================Statement====================================": "",
 
@@ -735,7 +735,7 @@
 	"lbl_DownloadAppStep3": "Anda akan dialihkan ke 'Mini Puzzle Game' di AppStore dan bukannya aplikasi 'Nova88'",
 	"lbl_DownloadAppStep3-1": "Klik 'Get' untuk memasang aplikasi 'Mini Puzzle Game'",
 	"lbl_DownloadAppStep4": "Buka 'Mini Puzzle Game' untuk melancarkan aplikasi 'Nova88'",
-	
+
 	"=============Check Speed===============": "",
 	"lbl_CurrentIp": "Lokasi IP semasa anda",
 	"lbl_SetHomePage": "Tetapkan sebagai Halaman Utama",

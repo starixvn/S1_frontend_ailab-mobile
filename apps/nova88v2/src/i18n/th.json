@@ -107,7 +107,7 @@
 	"msg_EnterRealName": "โปรดใส่ชื่อจริง",
 	"lbl_RealName": "ชื่อ-นามสกุลจริง",
 	"msg_MailWrongFormat": "รูปแบบอีเมล์ไม่ถูกต้อง",
-	"msg_PasswordVaildate": "* รหัสผ่านต้องมีความยาว 6-15 ตัว ประกอบด้วยตัวอักษรและตัวเลขและอักขระพิเศษ (!@#$%^&*).",
+	"msg_PasswordVaildate": "รหัสผ่านต้องมีความยาว 6-15 ตัว ประกอบด้วยตัวอักษรและตัวเลข",
 	"lbl_Phone": "หมายเลขโทรศัพท์",
 	"lbl_Submit": "ตกลง",
 	"lbl_Profile": "ข้อมูลส่วนตัว",
@@ -271,7 +271,7 @@
 	"lbl_tpCategory_7": "กีฬาจำลอง",
 	"lbl_tpCategory_8": "โป๊กเกอร์",
 	"lbl_Kog": "เคโอจี(KOG)",
-	
+
 	"-==================-==========================Casino-===================================": "",
 	"lbl_AllProvider": "แพลตฟอร์มทั้งหมด",
 	"lbl_AllGameType": "ทุกหมวดหมู่",
@@ -715,7 +715,7 @@
 	"lbl_DownloadAppStep3": "คุณจะเปลี่ยนเส้นทางไปที่ 'Mini Puzzle Game' บน AppStore แทนแอป 'Nova88'",
 	"lbl_DownloadAppStep3-1": "คลิก 'Get' เพื่อติดตั้งแอป 'Mini Puzzle Game'",
 	"lbl_DownloadAppStep4": "เปิด 'Mini Puzzle Game' เพื่อเปิดแอป 'Nova88'",
-	
+
 	"=============Check Speed===============": "",
 	"lbl_CurrentIp": "ตำแหน่ง IP ปัจจุบันของคุณ",
 	"lbl_SetHomePage": "ตั้งเป็นโฮมเพจ",
