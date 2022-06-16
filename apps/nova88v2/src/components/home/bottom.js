@@ -6,8 +6,53 @@ import path from "../../path";
 import { defCurrenyId, langToCurrency } from "../common/common";
 import { useGetSEODatas } from "../seo/seo";
 
+const defSocialMedia = currencyId => {
+	switch (currencyId) {
+		case defCurrenyId.MYR:
+			return {
+				fb: "https://www.facebook.com/nova88my/ ",
+				twitter: "https://twitter.com/nova88_malaysia",
+				ig: "https://www.instagram.com/nova88my/ ",
+				yt: "https://www.youtube.com/channel/UCoUtgrQN2E10oke1Hmj0ATw",
+				telegram: "https://t.me/nova88my"
+			};
+		case defCurrenyId.INR:
+			return {
+				fb: "https://www.facebook.com/nova88india",
+				ig: "https://www.instagram.com/nova88indiaofficial/",
+				telegram: "https://t.me/nova88india"
+			};
+		case defCurrenyId.THB:
+			return {
+				fb: "https://www.facebook.com/nova88thailandofficial/",
+				ig: "https://www.instagram.com/nova88thai/",
+				twitter: "https://twitter.com/nova88thai",
+				telegram: "https://t.me/nova88thai",
+				yt: "https://www.youtube.com/channel/UCw-GpZw8YG_VEPjJKZvbXqw"
+			};
+		case defCurrenyId.IDR:
+			return {
+				fb: "https://www.facebook.com/nova88indo",
+				ig: "https://www.instagram.com/nova88indo/",
+				twitter: "https://twitter.com/Nova88Indo",
+				telegram: "https://t.me/nova88indo",
+				yt: "https://www.youtube.com/channel/UCvX-E6TqyR3Ett7XMkTM1Bw",
+				pinterest: "https://id.pinterest.com/Nova88Indonesia2"
+			};
+		default:
+			return {
+				fb: "https://www.facebook.com/nova88official/ ",
+				twitter: "https://twitter.com/Nova88official/",
+				ig:
+					"https://www.instagram.com/accounts/login/?next=/nova88_official/ ",
+				telegram: "https://t.me/Nova88Support1"
+			};
+	}
+};
+
 const Bottom = ({ i18n, langId, currencyId }) => {
 	const _currencyId = currencyId ?? langToCurrency[langId];
+	const socialMedia = defSocialMedia(_currencyId);
 
 	return (
 		<>
@@ -35,44 +80,59 @@ const Bottom = ({ i18n, langId, currencyId }) => {
 			</div>
 			<div className="social">
 				<License i18n={i18n} />
-				{/* <a
-					className="icon icon-facebook"
-					href="https://www.facebook.com/nova88official/"
-					target="_blank"
-					rel="noreferrer noopener"
-				/>
-				<a
-					className="icon icon-instagram"
-					href="https://www.instagram.com/nova88_official/"
-					target="_blank"
-					rel="noreferrer noopener"
-				/>
-				<a
-					className="icon icon-twitter"
-					href="https://twitter.com/nova88official"
-					target="_blank"
-					rel="noreferrer noopener"
-				/>
-				<a
-					className="icon icon-youtube"
-					href="https://www.youtube.com/channel/UCoUtgrQN2E10oke1Hmj0ATw"
-					target="_blank"
-					rel="noreferrer noopener"
-				/>
-				<a
-					className="icon icon-envelope"
-					href="mailto:support@nova88.com"
-					target="_blank"
-					rel="noreferrer noopener"
-				/> */}
+				{socialMedia?.fb && (
+					<a
+						className="icon icon-facebook"
+						href={socialMedia?.fb}
+						target="_blank"
+						rel="noreferrer noopener"
+					/>
+				)}
+				{socialMedia?.ig && (
+					<a
+						className="icon icon-instagram"
+						href={socialMedia?.ig}
+						target="_blank"
+						rel="noreferrer noopener"
+					/>
+				)}
+				{socialMedia?.twitter && (
+					<a
+						className="icon icon-twitter"
+						href={socialMedia?.twitter}
+						target="_blank"
+						rel="noreferrer noopener"
+					/>
+				)}
+				{socialMedia?.yt && (
+					<a
+						className="icon icon-youtube"
+						href={socialMedia?.yt}
+						target="_blank"
+						rel="noreferrer noopener"
+					/>
+				)}
+				{socialMedia?.telegram && (
+					<a
+						className="icon icon-telegram"
+						href={socialMedia?.telegram}
+						target="_blank"
+						rel="noreferrer noopener"
+					/>
+				)}
 			</div>
 		</>
 	);
 };
 
+Bottom.defaultProps = {
+	currencyId: null
+};
+
 Bottom.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	langId: PropTypes.string.isRequired
+	langId: PropTypes.string.isRequired,
+	currencyId: PropTypes.number
 };
 
 const License = ({ i18n }) => {
@@ -85,9 +145,7 @@ const License = ({ i18n }) => {
 				apg_a7019fa5_9f9a_468b_92da_4890f6a6e4a7.init();
 				xcm_226e4de2_30aa_4077_951b_d440012994f3.init();
 			}
-		} catch (error) {
-			console.log(error);
-		}
+		} catch (error) {}
 	}, [showLicenseLogo]);
 
 	return (
@@ -119,6 +177,10 @@ const License = ({ i18n }) => {
 			)}
 		</div>
 	);
+};
+
+License.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
 export default Bottom;
