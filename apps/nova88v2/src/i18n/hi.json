@@ -107,7 +107,7 @@
 	"msg_EnterRealName": "कृपया अपना वास्तविक नाम दर्ज करें।",
 	"lbl_RealName": "वास्तविक नाम",
 	"msg_MailWrongFormat": "मेल फॉर्मेट गलत है।",
-	"msg_PasswordVaildate": "* पासवर्ड 6-15 वर्णों का होना चाहिए, जिसमें अल्फ़ान्यूमेरिक और विशेष वर्ण दोनों हों (!@#$%^&amp,*).",
+	"msg_PasswordVaildate": "पासवर्ड 6-15 वर्णों का होना चाहिए, जिसमें अल्फ़ान्यूमेरिक होना चाहिए।",
 	"lbl_Phone": "फ़ोन नंबर",
 	"lbl_Submit": "प्रस्तुत",
 	"lbl_Profile": "व्यक्तिगत प्रोफाइल",
@@ -272,7 +272,7 @@
 	"lbl_tpCategory_7": "काल्पनिक खेल",
 	"lbl_tpCategory_8": "पोकर",
 	"lbl_Kog": "KOG",
-	
+
 	"==============================================Casino====================================": "",
 	"lbl_AllProvider": "सभी मंच",
 	"lbl_AllGameType": "सब वर्ग",
@@ -739,7 +739,7 @@
 	"lbl_DownloadAppStep3": "आप 'Nova88' ऐप के बजाय ऐपस्टोर पर 'Mini Puzzle Game' पर रीडायरेक्ट करेंगे",
 	"lbl_DownloadAppStep3-1": "'Mini Puzzle Game' ऐप इंस्टॉल करने के लिए 'Ge' पर क्लिक करें",
 	"lbl_DownloadAppStep4": "'Nova88' ऐप लॉन्च करने के लिए 'Mini Puzzle Game",
-	
+
 	"=============Check Speed===============": "",
 	"lbl_CurrentIp": "आपका वर्तमान आईपी स्थान",
 	"lbl_SetHomePage": "मुखपृष्ठ के रूप में स्थित करे",

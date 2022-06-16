@@ -107,7 +107,7 @@
 	"msg_EnterRealName": "Silakan masukkan nama asli anda",
 	"lbl_RealName": "Nama asli",
 	"msg_MailWrongFormat": "Format Email salah",
-	"msg_PasswordVaildate": "* Kata sandi harus terdiri 6-15 karakter, kombinasi huruf dan angka dengan karakter khusus (!@#$%^&*).",
+	"msg_PasswordVaildate": "Kata sandi harus 6-15 karakter, mengandung alfanumerik.",
 	"lbl_Phone": "No HP",
 	"lbl_Submit": "Ajukan",
 	"lbl_Profile": "Profil",
@@ -272,7 +272,7 @@
 	"lbl_tpCategory_7": "Olahraga maya",
 	"lbl_tpCategory_8": "Poker",
 	"lbl_Kog": "KOG",
-	
+
 	"-==================-==================Casino-==================-=====================": "",
 	"lbl_AllProvider": "Semua Platform",
 	"lbl_AllGameType": "Semua Kategori",
