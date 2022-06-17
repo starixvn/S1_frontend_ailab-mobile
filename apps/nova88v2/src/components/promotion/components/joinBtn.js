@@ -34,6 +34,8 @@ export default ({
 	const { handlePopBox, clickClose } = useHandlePopBox();
 	const isMountedRef = useRef(null);
 	const [redirectPath, setRedirectPath] = useState(null);
+	const [processing, setProcessing] = useState(false);
+
 	const { handleLogin } = useHandleLogin();
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -43,87 +45,95 @@ export default ({
 	});
 
 	const SetClaimPromotion = ({ bonusCode, LockedAmount = 0 }) => {
-		api.promotion
-			.SetClaimPromotion({
-				langId: userInfo.langId,
-				BonusCode: bonusCode,
-				LockedAmount:
-					LockedAmount && !isNaN(LockedAmount)
-						? Number(LockedAmount)
-						: 0
-			})
-			.then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							if (func_GetPromotionDetail) {
-								func_GetPromotionDetail(
-									userInfo.langId,
-									bonusCode
-								);
-							} else if (func_CallBack) {
-								func_CallBack();
+		if (!processing) {
+			setProcessing(true);
+			api.promotion
+				.SetClaimPromotion({
+					langId: userInfo.langId,
+					BonusCode: bonusCode,
+					LockedAmount:
+						LockedAmount && !isNaN(LockedAmount)
+							? Number(LockedAmount)
+							: 0
+				})
+				.then(
+					res => {
+						if (isMountedRef.current) {
+							if (res.data.errorCode === 0) {
+								if (func_GetPromotionDetail) {
+									func_GetPromotionDetail(
+										userInfo.langId,
+										bonusCode
+									);
+								} else if (func_CallBack) {
+									func_CallBack();
+								}
+								handlePopBox({
+									content: <p>{i18n?.lbl_ClaimSucceed}</p>,
+									btnBar: (
+										<div className="btn-group">
+											<button
+												onClick={clickClose}
+												className={
+													uiSetting.popBox
+														?.submitBtn ??
+													"btn-check"
+												}>
+												OK
+											</button>
+										</div>
+									)
+								});
+							} else if (res.data.errorCode === -5) {
+								const RedirectToProfile = () => {
+									setRedirectPath(
+										`/${userInfo.langId}/${path.profile.root}?prevPage=${path.promotionInfo.root}&BonusCode=${bonusCode}`
+									);
+									clickClose();
+								};
+								handlePopBox({
+									content: <p>{i18n?.msg_OTPHint}</p>,
+									btnBar: (
+										<div className="btn-group">
+											<button
+												className={
+													uiSetting.popBox
+														?.cancelBtn ?? "blue"
+												}
+												onClick={clickClose}>
+												{i18n?.lbl_Later}
+											</button>
+											<button
+												onClick={RedirectToProfile}
+												className={
+													uiSetting.popBox
+														?.submitBtn ??
+													"btn-check"
+												}>
+												{i18n?.lbl_GoNow}
+											</button>
+										</div>
+									)
+								});
+							} else {
+								setPopBox({
+									isOpen: true,
+									content: `[${res.data.errorCode}] ${res.data.message}`
+								});
 							}
-							handlePopBox({
-								content: <p>{i18n?.lbl_ClaimSucceed}</p>,
-								btnBar: (
-									<div className="btn-group">
-										<button
-											onClick={clickClose}
-											className={
-												uiSetting.popBox?.submitBtn ??
-												"btn-check"
-											}>
-											OK
-										</button>
-									</div>
-								)
-							});
-						} else if (res.data.errorCode === -5) {
-							const RedirectToProfile = () => {
-								setRedirectPath(
-									`/${userInfo.langId}/${path.profile.root}?prevPage=${path.promotionInfo.root}&BonusCode=${bonusCode}`
-								);
-								clickClose();
-							};
-							handlePopBox({
-								content: <p>{i18n?.msg_OTPHint}</p>,
-								btnBar: (
-									<div className="btn-group">
-										<button
-											className={
-												uiSetting.popBox?.cancelBtn ??
-												"blue"
-											}
-											onClick={clickClose}>
-											{i18n?.lbl_Later}
-										</button>
-										<button
-											onClick={RedirectToProfile}
-											className={
-												uiSetting.popBox?.submitBtn ??
-												"btn-check"
-											}>
-											{i18n?.lbl_GoNow}
-										</button>
-									</div>
-								)
-							});
-						} else {
-							setPopBox({
-								isOpen: true,
-								content: `[${res.data.errorCode}] ${res.data.message}`
-							});
 						}
+						setProcessing(false);
+					},
+					() => {
+						setProcessing(false);
+
+						setPopBox({
+							isOpen: true,
+							content: i18n.msg_ApiServerError
+						});
 					}
-				},
-				() => {
-					setPopBox({
-						isOpen: true,
-						content: i18n.msg_ApiServerError
-					});
-				}
-			);
+				);
+		}
 	};
 
 	const _canJoin = !(
@@ -197,7 +207,7 @@ export default ({
 				userInfo.isLogin &&
 				_promo.canJoin &&
 				(_promo.promotionType === defPromotionType.reDeposit ||
-					(filterType == defFilterType.specialBonus &&
+					(filterType === defFilterType.specialBonus &&
 						_promo.promotionType === defPromotionType.firstDeposit))
 			) {
 				if (_promo.bonusType === defBonusType.Percentage) {

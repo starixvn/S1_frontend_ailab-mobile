@@ -31,6 +31,7 @@ export default ({
 	);
 	const isMountedRef = useRef(null);
 	const [redirectPath, setRedirectPath] = useState(null);
+	const [processing, setProcessing] = useState(false);
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -40,77 +41,81 @@ export default ({
 	});
 
 	const SetClaimPromotion = ({ bonusCode, LockedAmount = 0 }) => {
-		api.promotion
-			.SetClaimPromotion({
-				langId: userInfo.langId,
-				BonusCode: bonusCode,
-				LockedAmount:
-					LockedAmount && !isNaN(LockedAmount)
-						? Number(LockedAmount)
-						: 0
-			})
-			.then(res => {
-				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
-						if (func_GetPromotionDetail) {
-							func_GetPromotionDetail(
-								userInfo.langId,
-								bonusCode,
-								filterType
-							);
-						} else if (func_CallBack) {
-							func_CallBack();
+		if (!processing) {
+			setProcessing(true);
+			api.promotion
+				.SetClaimPromotion({
+					langId: userInfo.langId,
+					BonusCode: bonusCode,
+					LockedAmount:
+						LockedAmount && !isNaN(LockedAmount)
+							? Number(LockedAmount)
+							: 0
+				})
+				.then(res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							if (func_GetPromotionDetail) {
+								func_GetPromotionDetail(
+									userInfo.langId,
+									bonusCode,
+									filterType
+								);
+							} else if (func_CallBack) {
+								func_CallBack();
+							}
+							handlePopBox({
+								content: <p>{i18n?.lbl_ClaimSucceed}</p>,
+								btnBar: (
+									<div className="btn-group">
+										<button
+											onClick={clickClose}
+											className={
+												uiSetting.popBox?.submitBtn ??
+												"btn-check"
+											}>
+											OK
+										</button>
+									</div>
+								)
+							});
+						} else if (res.data.errorCode === -5) {
+							const RedirectToProfile = () => {
+								setRedirectPath(
+									`/${path.member.root}?prevPage=${path.promotionInfo.root}&BonusCode=${bonusCode}`
+								);
+								clickClose();
+							};
+							handlePopBox({
+								content: <p>{i18n?.msg_OTPHint}</p>,
+								btnBar: (
+									<div className="btn-group">
+										<button
+											className={
+												uiSetting.popBox?.cancelBtn ??
+												"blue"
+											}
+											onClick={clickClose}>
+											{i18n?.lbl_Later}
+										</button>
+										<button
+											onClick={RedirectToProfile}
+											className={
+												uiSetting.popBox?.submitBtn ??
+												"btn-check"
+											}>
+											{i18n?.lbl_GoNow}
+										</button>
+									</div>
+								)
+							});
+						} else {
+							handleErrorPopBox({ ...res.data, uiSetting });
 						}
-						handlePopBox({
-							content: <p>{i18n?.lbl_ClaimSucceed}</p>,
-							btnBar: (
-								<div className="btn-group">
-									<button
-										onClick={clickClose}
-										className={
-											uiSetting.popBox?.submitBtn ??
-											"btn-check"
-										}>
-										OK
-									</button>
-								</div>
-							)
-						});
-					} else if (res.data.errorCode === -5) {
-						const RedirectToProfile = () => {
-							setRedirectPath(
-								`/${path.member.root}?prevPage=${path.promotionInfo.root}&BonusCode=${bonusCode}`
-							);
-							clickClose();
-						};
-						handlePopBox({
-							content: <p>{i18n?.msg_OTPHint}</p>,
-							btnBar: (
-								<div className="btn-group">
-									<button
-										className={
-											uiSetting.popBox?.cancelBtn ??
-											"blue"
-										}
-										onClick={clickClose}>
-										{i18n?.lbl_Later}
-									</button>
-									<button
-										onClick={RedirectToProfile}
-										className={
-											uiSetting.popBox?.submitBtn ??
-											"btn-check"
-										}>
-										{i18n?.lbl_GoNow}
-									</button>
-								</div>
-							)
-						});
-					} else {
-						handleErrorPopBox({ ...res.data, uiSetting });
+						setProcessing(false);
 					}
-				}
-			});
+				});
+		}
 	};
 
 	const onJoinPromotion = _promo => {
