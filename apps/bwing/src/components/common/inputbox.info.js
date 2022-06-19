@@ -23,9 +23,17 @@ const Inputbox = ({
 	testAttr,
 	_class,
 	hideInfoBtn,
-	inputBoxNewClass
+	inputBoxNewClass,
+	isShowPaste,
+	EditFieldPaste,
+	pasteCol
 }) => {
 	let Title = null;
+	const handlePaste = () => {
+		navigator.clipboard
+			.readText()
+			.then(result => EditFieldPaste({ value: result, col: pasteCol }));
+	};
 	if (title) {
 		if (isRequired) {
 			Title = (
@@ -61,10 +69,17 @@ const Inputbox = ({
 						clickInfo={clickInfo}
 					/>
 				</div>
+				{isShowPaste && (
+					<button
+						onClick={handlePaste}
+						className="icon icon-files-empty copyBtn"
+					/>
+				)}
 				{submitBtn ? (
 					<SubmitBtn i18n={i18n} clickSubmit={clickSubmit} />
 				) : null}
 			</div>
+
 			{tip ? (
 				<div className="tip open" data-testid={`${testAttr}_msg`}>
 					{tip}
@@ -93,7 +108,11 @@ Inputbox.defaultProps = {
 	isRequired: false,
 	testAttr: "",
 	_class: "input-Area",
-	inputBoxNewClass: ""
+	inputBoxNewClass: "",
+	isShowPaste: false,
+	EditFieldPaste: null,
+	pasteCol: null,
+	hideInfoBtn: false
 };
 
 Inputbox.propTypes = {
@@ -117,7 +136,11 @@ Inputbox.propTypes = {
 	clickSubmit: PropTypes.func,
 	isRequired: PropTypes.bool,
 	testAttr: PropTypes.string,
-	inputBoxNewClass: PropTypes.string
+	inputBoxNewClass: PropTypes.string,
+	isShowPaste: PropTypes.bool,
+	EditFieldPaste: PropTypes.func,
+	pasteCol: null,
+	hideInfoBtn: PropTypes.bool
 };
 
 export const IptStatus = ({ btnStatus, clickInfo, hideInfoBtn }) => {
