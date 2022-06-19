@@ -232,9 +232,7 @@ const Payment = props => {
 		}
 
 		if (result && !processing) {
-			const resultAmount = _isConvert
-				? Math.floor(amount * 1000)
-				: Number(amount);
+			const resultAmount = _isConvert ? amount * 1000 : Number(amount);
 
 			if (
 				userInfo.phoneVerified &&
@@ -405,7 +403,7 @@ const Payment = props => {
 			};
 
 			const real_amount = _isConvert
-				? Number(amount) * 1000
+				? Math.floor(Number(amount) * 1000)
 				: Number(amount);
 			setPopBox({
 				isOpen: true,
