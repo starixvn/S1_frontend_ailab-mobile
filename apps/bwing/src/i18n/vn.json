@@ -605,7 +605,7 @@
 	"lbl_Main_Wallet_Auto_Transfer": "Chuyển tự động Ví chính",
 	"lbl_BankAccountHint": "Họ tên đầy đủ phải khớp với tài khoản ngân hàng",
 	"lbl_Caution": "CHÚ Ý!",
-	"lbl_AutoTransferHint": "Chuyển quỹ tự động sẽ chuyển toàn bộ số dư vào trong trò chơi. Nếu có bất kỳ khuyến mãi nào đang vận hành, số dư của quý khách sẽ khóa cùng với ví Khuyến mãi được chỉ định.", 
+	"lbl_AutoTransferHint": "Chuyển quỹ tự động sẽ chuyển toàn bộ số dư vào trong trò chơi. Nếu có bất kỳ khuyến mãi nào đang vận hành, số dư của quý khách sẽ khóa cùng với ví Khuyến mãi được chỉ định.",
 
 	"==============Important Notice==============": "",
 	"lbl_ImportantNotice": "THÔNG BÁO QUAN TRỌNG",
@@ -613,6 +613,7 @@
 	"==============DomainList==============": "",
 	"lbl_Backup_website": "Vui lòng lưu tên miền Bwing mới nhất cho mục đích dự phòng của bạn:",
 	"lbl_Copy": "Sao chép",
+  "lbl_Paste": "dán",
 	"lbl_Dont_show_me_again": "Đừng cho tôi xem lại",
 	"lbl_Stay_accessible": "CÓ THỂ TRUY CẬP",
 	"lbl_Anytime_anywhere": "Bất cứ lúc nào, bất cứ nơi đâu",
@@ -693,7 +694,7 @@
 	"lbl_Promotion_Casino": "SÒNG BÀI",
 	"lbl_Promotion_All": "HIỂN THỊ TẤT CẢ",
 	"lbl_Promotion_Slot": "QUAY HŨ",
-	
+
 	"==============Crypto Wallet==============": "",
 	"lbl_CryptoPay": "Tiền ảo",
 	"lbl_CryptoWallet": "Ví tiền ảo",
@@ -742,7 +743,7 @@
 	"lbl_MyLuckyWheelRewards":"PHẦN THƯỞNG CỦA TÔI",
 	"lbl_MysteryBox_MemberEligibility": "Nạp tiền hôm nay, trúng lớn ngày mai",
 	"lbl_LuckyWheel_MinDeposit":"Nạp tối thiểu {{amount}} VND",
-	
+
 	"==============New Profile==============": "",
 	"lbl_EmailVerification": "Xác thực email",
 	"lbl_ProfileVerification": "Xác thực hồ sơ",
