@@ -118,8 +118,8 @@ const Payment = props => {
 		}
 	};
 
-	const EditField = ({ col }, e) => {
-		const val = e.target.value;
+	const EditField = ({ col, value }, e) => {
+		const val = value ?? e.target.value;
 		setCardData(prev => ({
 			...prev,
 			[col]: val
@@ -339,6 +339,10 @@ const Payment = props => {
 				btnStatus={cardDataStatus.cardCode.checked}
 				tip={cardDataStatus.cardCode.msg}
 				clickInfo={clickInfo.bind(this, { col: "cardCode" })}
+				i18n={i18n}
+				isShowPaste={true}
+				EditFieldPaste={EditField}
+				pasteCol="cardCode"
 			/>
 			<Inputbox
 				title={i18n.lbl_CardSerial}
@@ -353,6 +357,10 @@ const Payment = props => {
 				btnStatus={cardDataStatus.cardSerial.checked}
 				tip={cardDataStatus.cardSerial.msg}
 				clickInfo={clickInfo.bind(this, { col: "cardSerial" })}
+				i18n={i18n}
+				isShowPaste={true}
+				EditFieldPaste={EditField}
+				pasteCol="cardSerial"
 			/>
 			<AmountInput
 				title={i18n.lbl_CardValue}
@@ -401,10 +409,15 @@ Payment.propTypes = {
 };
 
 const Note = ({ langId }) => {
+	const { i18n } = useContext(i18nContext);
 	if (langId === "en") {
 		return (
 			<div className="note">
 				<ol>
+					<p>
+						<span className="icon icon-warning" />
+						{i18n.lbl_ImportantNotes}
+					</p>
 					<li>
 						Please ensure you choose the correct telcom provider and
 						card value. Otherwise, Bwing will not bear any
@@ -421,6 +434,10 @@ const Note = ({ langId }) => {
 	return (
 		<div className="note">
 			<ol>
+				<p>
+					<span className="icon icon-warning" />
+					{i18n.lbl_ImportantNotes}
+				</p>
 				<li>
 					Vui lòng chọn đúng mệnh giá và nhà mạng, nếu quý khách nhập
 					sai, Bwing không chịu trách nhiệm.

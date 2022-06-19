@@ -17,40 +17,55 @@ const Inputbox = ({
 	clickInfo,
 	testAttr,
 	important,
-	hideInfoBtn
+	hideInfoBtn,
+	isShowPaste,
+	EditFieldPaste,
+	pasteCol
 }) => {
+	const handlePaste = () => {
+		navigator.clipboard
+			.readText()
+			.then(result => EditFieldPaste({ value: result, col: pasteCol }));
+	};
+
 	return (
-		<div
-			className={`inputBox ${btnStatus === false ? "error" : ""}`}
-			data-testid={`${testAttr}_inputBox`}>
-			{icon ? <i className={icon} /> : null}
-			<input
-				data-testid={`${testAttr}_ipt`}
-				type={inputType ?? "text"}
-				placeholder={placeholder}
-				onBlur={onBlur}
-				onChange={onChange}
-				value={value}
-				max={max}
-				disabled={disabled}
-				maxLength={maxLength}
-			/>
-			{important && <span className="txt-red">*</span>}
-			<div className="icon-module">
-				{numberConvert ? "('000)" : null}
-				<IptStatus
-					btnStatus={btnStatus}
-					clickInfo={clickInfo}
-					hideInfoBtn={hideInfoBtn}
+		<div className="input-group">
+			<div
+				className={`inputBox ${btnStatus === false ? "error" : ""}`}
+				data-testid={`${testAttr}_inputBox`}>
+				{icon ? <i className={icon} /> : null}
+				<input
+					data-testid={`${testAttr}_ipt`}
+					type={inputType ?? "text"}
+					placeholder={placeholder}
+					onBlur={onBlur}
+					onChange={onChange}
+					value={value}
+					max={max}
+					disabled={disabled}
+					maxLength={maxLength}
 				/>
-			</div>
-			{tip ? (
-				<div
-					className={`tip ${btnStatus === false ? "error" : ""}`}
-					data-testid={`${testAttr}_msg`}>
-					{tip}
+				{important && <span className="txt-red">*</span>}
+				<div className="icon-module">
+					{numberConvert ? "('000)" : null}
+					<IptStatus
+						btnStatus={btnStatus}
+						clickInfo={clickInfo}
+						hideInfoBtn={hideInfoBtn}
+					/>
 				</div>
-			) : null}
+				{tip ? (
+					<div className="tip open" data-testid={`${testAttr}_msg`}>
+						{tip}
+					</div>
+				) : null}
+			</div>
+			{isShowPaste && (
+				<button
+					onClick={handlePaste}
+					className="icon icon-files-empty copyBtn"
+				/>
+			)}
 		</div>
 	);
 };
@@ -69,7 +84,10 @@ Inputbox.defaultProps = {
 	clickInfo: () => null,
 	testAttr: null,
 	important: false,
-	hideInfoBtn: false
+	hideInfoBtn: false,
+	isShowPaste: false,
+	EditFieldPaste: null,
+	pasteCol: null
 };
 
 Inputbox.propTypes = {
@@ -88,7 +106,10 @@ Inputbox.propTypes = {
 	clickInfo: PropTypes.func,
 	testAttr: PropTypes.string,
 	important: PropTypes.bool,
-	hideInfoBtn: PropTypes.bool
+	hideInfoBtn: PropTypes.bool,
+	isShowPaste: PropTypes.bool,
+	EditFieldPaste: PropTypes.func,
+	pasteCol: PropTypes.string
 };
 
 export const IptStatus = ({ btnStatus, clickInfo, hideInfoBtn }) => {

@@ -543,6 +543,7 @@
 	"==============DomainList==============": "",
 	"lbl_Backup_website": "Vui lòng lưu tên miền GOAL123 mới nhất cho mục đích dự phòng của bạn:",
 	"lbl_Copy": "Sao chép",
+  "lbl_Paste": "dán",
 	"lbl_Dont_show_me_again": "Đừng cho tôi xem lại",
 	"lbl_Stay_accessible": "CÓ THỂ TRUY CẬP",
 	"lbl_Anytime_anywhere": "Bất cứ lúc nào, bất cứ nơi đâu",
@@ -554,7 +555,7 @@
 	"lbl_Main_Wallet_Auto_Transfer": "Chuyển tự động Ví chính",
 	"lbl_BankAccountHint": "Họ tên đầy đủ phải khớp với tài khoản ngân hàng",
 	"lbl_Caution": "CHÚ Ý!",
-	"lbl_AutoTransferHint": "Chuyển quỹ tự động sẽ chuyển toàn bộ số dư vào trong trò chơi. Nếu có bất kỳ khuyến mãi nào đang vận hành, số dư của quý khách sẽ khóa cùng với ví Khuyến mãi được chỉ định.", 
+	"lbl_AutoTransferHint": "Chuyển quỹ tự động sẽ chuyển toàn bộ số dư vào trong trò chơi. Nếu có bất kỳ khuyến mãi nào đang vận hành, số dư của quý khách sẽ khóa cùng với ví Khuyến mãi được chỉ định.",
 
 	"==============Add To Home Screen==============": "",
 	"lbl_AddToHome_Hint": "Cách thêm ứng dụng vào màn hình chính",
