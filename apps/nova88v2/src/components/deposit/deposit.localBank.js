@@ -403,7 +403,7 @@ const Payment = props => {
 			};
 
 			const real_amount = _isConvert
-				? Number(amount) * 1000
+				? Math.floor(Number(amount) * 1000)
 				: Number(amount);
 			setPopBox({
 				isOpen: true,
