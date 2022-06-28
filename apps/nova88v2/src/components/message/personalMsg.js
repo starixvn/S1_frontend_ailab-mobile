@@ -107,7 +107,8 @@ const Panel = () => {
 										) {
 											openContent(
 												location.state.id,
-												msg.flag
+												msg.flag,
+												msg.isBatch
 											);
 										}
 
@@ -150,14 +151,14 @@ const Panel = () => {
 		}
 	};
 
-	const openContent = (id, flag) => {
+	const openContent = (id, flag, isBatch) => {
 		if (!processing) {
 			setProcessing(true);
 			if (openContentState === id) {
 				setOpenContentState(null);
 				setProcessing(false);
 			} else {
-				api.account.GetMsgContent(id).then(
+				api.account.GetMsgContent(id, isBatch ? 1 : 0).then(
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 0) {
@@ -344,7 +345,12 @@ const Panel = () => {
 				key={`msgList-${item.id}`}
 				showDate={item.createTime}
 				title={item.title}
-				onClick={openContent.bind(null, item.id, item.flag)}
+				onClick={openContent.bind(
+					null,
+					item.id,
+					item.flag,
+					item.isBatch
+				)}
 				content={msgContent.content}
 				isOpen={_open}
 				isRead={item.flag}

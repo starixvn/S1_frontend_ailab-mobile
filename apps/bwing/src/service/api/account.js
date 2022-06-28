@@ -18,9 +18,10 @@ export const api_GetCustBankInfo = () =>
 export const api_GetMsgList = ({ PageNumber, PageSize }) =>
 	accountRequest.post("/GetMsgList", { PageNumber, PageSize });
 
-export const api_GetMsgContent = MsgId =>
+export const api_GetMsgContent = (MsgId, IsBatch) =>
 	accountRequest.post("/GetMsgContent", {
-		MsgId
+		MsgId,
+		IsBatch
 	});
 
 export const api_DelMsg = MsgIds => accountRequest.post("/DelMsg", { MsgIds });
