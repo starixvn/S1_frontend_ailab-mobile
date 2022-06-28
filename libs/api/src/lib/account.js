@@ -17,9 +17,10 @@ export class AccountAPI extends BaseAPI {
 	GetMsgList = ({ PageNumber, PageSize }) =>
 		this.accountRequest.post("/GetMsgList", { PageNumber, PageSize });
 
-	GetMsgContent = MsgId =>
+	GetMsgContent = (MsgId, IsBatch) =>
 		this.accountRequest.post("/GetMsgContent", {
-			MsgId
+			MsgId,
+			IsBatch
 		});
 
 	DelMsg = MsgIds => this.accountRequest.post("/DelMsg", { MsgIds });

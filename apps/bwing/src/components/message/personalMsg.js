@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import moment from "moment";
-import PropTypes, { any } from "prop-types";
+import PropTypes from "prop-types";
 import { useLocation, useNavigate } from "@reach/router";
 import {
 	i18nContext,
@@ -103,7 +103,8 @@ const Panel = () => {
 									) {
 										openContent(
 											location.state.id,
-											msg.flag
+											msg.flag,
+											msg.isBatch
 										);
 									}
 
@@ -144,7 +145,7 @@ const Panel = () => {
 		}
 	};
 
-	const openContent = (id, flag) => {
+	const openContent = (id, flag, isBatch) => {
 		if (!processing) {
 			setProcessing(true);
 
@@ -152,7 +153,7 @@ const Panel = () => {
 				setOpenContentState(null);
 				setProcessing(false);
 			} else {
-				api_GetMsgContent(id).then(
+				api_GetMsgContent(id, isBatch ? 1 : 0).then(
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 0) {
@@ -307,7 +308,12 @@ const Panel = () => {
 				key={`msgList-${item.id}`}
 				showDate={item.createTime}
 				title={item.title}
-				onClick={openContent.bind(null, item.id, item.flag)}
+				onClick={openContent.bind(
+					null,
+					item.id,
+					item.flag,
+					item.isBatch
+				)}
 				content={getMsgContent.content}
 				isOpen={_open}
 				isRead={item.flag}
@@ -346,7 +352,7 @@ const Panel = () => {
 				</div>
 			</div>
 			{getMsgList.length > 0 ? (
-				<>{arr}</>
+				arr
 			) : (
 				<div className="not-found">
 					<i className="icon icon-warning" />
@@ -393,6 +399,7 @@ const Item = props => (
 		<div
 			data-testid="msgCard"
 			className={`content backstage${props.isOpen ? " open" : ""}`}
+			// eslint-disable-next-line
 			dangerouslySetInnerHTML={{ __html: props.content }}
 		/>
 	</div>
@@ -402,7 +409,8 @@ Item.defaultProps = {
 	isRead: null,
 	isChecked: null,
 	isOpen: null,
-	showMessageRef: null
+	showMessageRef: null,
+	content: ""
 };
 
 Item.propTypes = {
@@ -413,7 +421,8 @@ Item.propTypes = {
 	showDate: PropTypes.string.isRequired,
 	isOpen: PropTypes.bool,
 	onClick: PropTypes.func.isRequired,
-	showMessageRef: PropTypes.objectOf(PropTypes.any)
+	showMessageRef: PropTypes.objectOf(PropTypes.any),
+	content: PropTypes.string
 };
 
 export default Panel;
