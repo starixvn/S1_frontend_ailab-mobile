@@ -352,7 +352,7 @@ const Panel = () => {
 				</div>
 			</div>
 			{getMsgList.length > 0 ? (
-				{ arr }
+				arr
 			) : (
 				<div className="not-found">
 					<i className="icon icon-warning" />
