@@ -22,6 +22,23 @@ export class AccountStrictAPI extends BaseAPI {
 			PhoneNo
 		});
 
+	SetProfileAddress = ({
+		AddressCountry,
+		AddressState,
+		AddressPostCode,
+		AddressCity,
+		AddressLineFirst,
+		AddressLineSecond
+	}) =>
+		this.accountStrictRequest.post("/SetProfileAddress", {
+			AddressCountry,
+			AddressState,
+			AddressPostCode,
+			AddressCity,
+			AddressLineFirst,
+			AddressLineSecond
+		});
+
 	SetCustBankInfo = ({ AccountName, AccountNo, SysId, IFSCCode }) =>
 		this.accountStrictRequest.post("/SetCustBankInfo", {
 			AccountName,

@@ -32,10 +32,6 @@ const Panel = () => {
 
 	const { showTips, showTipHandler } = useTip();
 
-	const country =
-		userInfo.country && userInfo.country !== "null"
-			? userInfo.country
-			: userInfo.perCountry;
 	const isMountedRef = useRef(null);
 
 	const _areaCode = Object.entries(areaCode).find(
@@ -66,8 +62,7 @@ const Panel = () => {
 		};
 	}, []);
 
-	const _infoList = infoList({ i18n, userInfo });
-
+	const _infoList = infoList({ i18n, userInfo }).filter(obj => !obj.type);
 	const yearOptions = [];
 	const dateOptions = [];
 
@@ -269,8 +264,9 @@ const Panel = () => {
 					Birth_y:
 						userInfo.birth_y ??
 						`${yearOptions[yearSelectedIdx]?.value}`,
-					CountryCode: country ?? "",
-					AreaCode: _AreaCode,
+					// CountryCode: country,
+					CountryCode: "",
+					AreaCode: _AreaCode ?? "",
 					PhoneNo: userInfo.phoneNo ?? userValue.phoneNo
 				};
 
@@ -529,7 +525,7 @@ const Panel = () => {
 					<button onClick={clickSubmit}>{i18n.lbl_Submit}</button>
 				</div>
 			) : null}
-			<div className="profile">{arr}</div>
+			<div className="profile">{arr}</div>)
 		</>
 	);
 };
