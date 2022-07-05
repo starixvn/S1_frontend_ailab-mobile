@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import { Link } from "@Router";
+import ProfileAddr from "./profile.addr";
 import ProfileDetail from "./profile.detail";
 import path from "../../path";
 import VIPLevel from "../common/vipLevel";
@@ -26,6 +27,12 @@ const Panel = () => {
 			lineLogin({ type: defType.binding });
 		}
 	};
+	const isNotFilledAddrField =
+		!userInfo?.addressLineFirst ||
+		!userInfo?.addressCity ||
+		!userInfo?.addressPostCode ||
+		!userInfo?.addressState ||
+		!userInfo?.addressCountry;
 
 	return (
 		tokenPassed && (
@@ -40,7 +47,32 @@ const Panel = () => {
 					phoneReward={userInfo.phoneReward}
 					emailReward={userInfo.emailReward}
 				/>
+				{isNotFilledAddrField && <ProfileAddr />}
+
 				<ProfileDetail />
+				{!isNotFilledAddrField ? (
+					<div className="addressModule">
+						<div className="title">
+							{i18n.lbl_Shipping_Address}:（{i18n.lbl_Option2}）
+							<span>{i18n.lbl_Shipping_Hint}</span>
+						</div>
+						<div className="subtitle">{i18n.lbl_Address}</div>
+						<div className="addressContent">
+							<div>{userInfo.addressLineFirst}</div>
+							{userInfo.addressLineSecond !== "" && (
+								<div>{userInfo.addressLineSecond}</div>
+							)}
+							<div>
+								{userInfo.addressCity},{" "}
+								{userInfo.addressPostCode}
+							</div>
+							<div>
+								{userInfo.addressState},{" "}
+								{userInfo.addressCountry}
+							</div>
+						</div>
+					</div>
+				) : null}
 				<div className="btn-group">
 					<Link to={`${path.changePassword.root}`}>
 						{i18n.lbl_ChangePassword}

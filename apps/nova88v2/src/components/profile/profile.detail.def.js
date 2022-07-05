@@ -17,7 +17,13 @@ export const monthOptions = [
 
 export const initValue = {
 	accountName: "",
-	phoneNo: ""
+	phoneNo: "",
+	addressLineFirst: "",
+	addressLineSecond: "",
+	addressCity: "",
+	addressPostCode: "",
+	addressState: "",
+	addressCountry: ""
 };
 
 export const initWarning = {
@@ -32,6 +38,36 @@ export const initWarning = {
 	phoneNo: {
 		checked: null,
 		msg: ""
+	},
+	addressLineFirst: {
+		checked: null,
+		msg: "",
+		type: "addr"
+	},
+	addressLineSecond: {
+		checked: null,
+		msg: "",
+		type: "addr"
+	},
+	addressCity: {
+		checked: null,
+		msg: "",
+		type: "addr"
+	},
+	addressPostCode: {
+		checked: null,
+		msg: "",
+		type: "addr"
+	},
+	addressState: {
+		checked: null,
+		msg: "",
+		type: "addr"
+	},
+	addressCountry: {
+		checked: null,
+		msg: "",
+		type: "addr"
 	}
 };
 
@@ -80,7 +116,7 @@ export const infoList = ({ i18n = {}, userInfo = {} }) => {
 			content:
 				userInfo.country && userInfo.country !== "null"
 					? i18n[`lbl_Country${userInfo.country}`]
-					: i18n[`lbl_Country${userInfo.perCountry}`]
+					: userInfo.perCountry
 		},
 		{
 			infoTitle: "regTime",
@@ -91,6 +127,48 @@ export const infoList = ({ i18n = {}, userInfo = {} }) => {
 			infoTitle: "lastLogin",
 			colTitle: i18n.lbl_LastLogin,
 			content: date_format(userInfo.lastLogin)
+		},
+		{
+			infoTitle: "addressLineFirst",
+			colTitle: i18n.lbl_Line_1,
+			content: userInfo?.addressLineFirst,
+			infoHint: i18n.msg_EnterAddress,
+			type: "addr"
+		},
+		{
+			infoTitle: "addressLineSecond",
+			colTitle: i18n.lbl_Line_2,
+			content: userInfo?.addressLineSecond,
+			infoHint: i18n.msg_EnterAddress,
+			type: "addr"
+		},
+		{
+			infoTitle: "addressCity",
+			colTitle: i18n.lbl_City,
+			content: userInfo?.addressCity,
+			infoHint: i18n.msg_EnterCity,
+			type: "addr"
+		},
+		{
+			infoTitle: "addressPostCode",
+			colTitle: i18n.lbl_PostCode,
+			content: userInfo?.addressPostCode,
+			infoHint: i18n.msg_EnterPostCode,
+			type: "addr"
+		},
+		{
+			infoTitle: "addressState",
+			colTitle: i18n.lbl_State,
+			content: userInfo?.addressState,
+			infoHint: i18n.msg_EnterState,
+			type: "addr"
+		},
+		{
+			infoTitle: "addressCountry",
+			colTitle: i18n.lbl_Country,
+			content: userInfo?.addressCountry,
+			infoHint: i18n.msg_EnterCountry,
+			type: "addr"
 		}
 	];
 };

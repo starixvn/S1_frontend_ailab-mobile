@@ -21,8 +21,15 @@ const Inputbox = ({
 	maxLength,
 	children,
 	_class,
-	showDot
+	showDot,
+	subtitle
 }) => {
+	const isShowAreaCode = () => {
+		if (areaCode) {
+			return <i className={`icon ${icon}`}>{areaCode}</i>;
+		}
+		return icon ? <i className={`icon ${icon}`} /> : null;
+	};
 	return (
 		<div className={`infoModule ${_class}`}>
 			<div
@@ -30,14 +37,10 @@ const Inputbox = ({
 				data-testid="inputInfo">
 				{infoText}
 			</div>
-
+			{!!subtitle && <div className="subtitle">{subtitle}</div>}
 			<div className={`inputBox ${btnStatus === false ? "error" : ""}`}>
 				{showDot && <span className="text-red">*</span>}
-				{areaCode ? (
-					<i className={`icon ${icon}`}>{areaCode}</i>
-				) : icon ? (
-					<i className={`icon ${icon}`} />
-				) : null}
+				{isShowAreaCode()}
 				<input
 					data-testid={`${testAttr}_ipt`}
 					disabled={disabled}
@@ -47,7 +50,6 @@ const Inputbox = ({
 					className="textRight"
 					value={value}
 					onChange={onChange}
-					data-testid={`${testAttr}_ipt`}
 					maxLength={maxLength}
 				/>
 				<div className="icon-module">
@@ -89,7 +91,8 @@ Inputbox.defaultProps = {
 	maxLength: null,
 	children: null,
 	_class: "",
-	showDot: false
+	showDot: false,
+	subtitle: ""
 };
 
 Inputbox.propTypes = {
@@ -111,7 +114,8 @@ Inputbox.propTypes = {
 	maxLength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	children: PropTypes.node,
 	_class: PropTypes.string,
-	showDot: PropTypes.bool
+	showDot: PropTypes.bool,
+	subtitle: PropTypes.string
 };
 
 export default Inputbox;
