@@ -188,6 +188,7 @@ const BankInfo = () => {
 					setBankSelectedIdx={setBankSelectedIdx}
 					GetCustBankInfo={GetCustBankInfo}
 					GetBankInfoSysList={GetBankInfoSysList}
+					custBankList={custBankInfo}
 				/>
 			) : null}
 

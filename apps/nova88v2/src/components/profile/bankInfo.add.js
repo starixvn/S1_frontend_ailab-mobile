@@ -30,7 +30,8 @@ const AddBankPanel = ({
 	setPopBox,
 	GetCustBankInfo,
 	setLoading,
-	currencyId
+	currencyId,
+	custBankInfo
 }) => {
 	const [siteBankInfoState, setSiteBankInfoState] = useState([]);
 	const [bankSelectedIdx, setBankSelectedIdx] = useState(0);
@@ -95,6 +96,13 @@ const AddBankPanel = ({
 		let checked = true;
 		let message = "";
 
+		const isDuplicateBank = custBankInfo?.find(
+			_selectBank =>
+				_selectBank.SysId ===
+					siteBankInfoState[bankSelectedIdx].sysId &&
+				_selectBank.accountNo === val
+		);
+
 		if (!val) {
 			checked = false;
 			if (col === "RealName") {
@@ -107,8 +115,10 @@ const AddBankPanel = ({
 		} else if (col === "IFSCCode" && val.length !== 11) {
 			checked = false;
 			message = i18n.msg_IFSCCodeLength;
+		} else if (col === "BankAccount" && isDuplicateBank) {
+			checked = false;
+			message = i18n.lbl_Prohibited_Duplicate_Bank_Account;
 		}
-
 		setWarning(prev => ({
 			...prev,
 			[col]: {
@@ -344,7 +354,8 @@ AddBankPanel.propTypes = {
 	setPopBox: PropTypes.func.isRequired,
 	GetCustBankInfo: PropTypes.func.isRequired,
 	setLoading: PropTypes.func.isRequired,
-	currencyId: PropTypes.number.isRequired
+	currencyId: PropTypes.number.isRequired,
+	custBankInfo: PropTypes.arrayOf(PropTypes.any).isRequired
 };
 
 export default AddBankPanel;

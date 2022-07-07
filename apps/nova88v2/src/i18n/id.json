@@ -726,6 +726,7 @@
 	"lbl_Rate": "Kurs",
 	"lbl_USDT_Amount": "Jumlah USDT",
 	"lbl_Crypto_OTP": "Verifikasi nomor telepon (OTP) diperlukan sebelum menggunakan layanan Crypto.",
+  "lbl_Prohibited_Duplicate_Bank_Account": "Duplikat Nomor Rekening Bank tidak diperbolehkan. Silakan coba Nomor Rekening lain.",
 	"lbl_CashbackAmount": "Jumlah Cashback",
 	"lbl_ReceivedAmount": "Jumlah yang diterima",
 

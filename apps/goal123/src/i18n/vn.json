@@ -623,6 +623,7 @@
 	"lbl_Rate": "Tỷ giá",
 	"lbl_USDT_Amount": "Số tiền bằng USDT",
 	"lbl_Crypto_OTP": "Vui lòng hoàn tất xác thực bằng số điện thoại (OTP) trước khi sử dụng dịch vụ tiền ảo.",
+  "lbl_Prohibited_Duplicate_Bank_Account":"Tài khoản ngân hàng này đã tồn tại",
 	"lbl_CashbackAmount": "Số tiền hoàn",
 	"lbl_ReceivedAmount": "Số tiền nhận được",
 	"lbl_CryptoWithdrawal": "Rút bằng tiền ảo",
