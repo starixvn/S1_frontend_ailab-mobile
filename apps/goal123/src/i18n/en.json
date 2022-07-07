@@ -577,7 +577,7 @@
 	"lbl_Main_Wallet_Auto_Transfer": "Main Wallet Auto Transfer",
 	"lbl_BankAccountHint": "Account Name must match with Bank Account Holder",
 	"lbl_Caution": "CAUTION!",
-	"lbl_AutoTransferHint": "Auto Transfer will transfer all your fund to the game. If any running bonus within, your fund will be locked in the designated wallet that entered.", 
+	"lbl_AutoTransferHint": "Auto Transfer will transfer all your fund to the game. If any running bonus within, your fund will be locked in the designated wallet that entered.",
 
 	"■■■■■■■■■■■■■■■■■■■■ app download ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_Installation_tutorial": "Installation tutorial",
@@ -621,6 +621,7 @@
 	"lbl_Rate": "Rate",
 	"lbl_USDT_Amount": "USDT Amount",
 	"lbl_Crypto_OTP": "Phone number (OTP) verification are required before using Crypto service.",
+  "lbl_Prohibited_Duplicate_Bank_Account":"Duplicate Bank Account No. is not allowed. Please try another Account No.",
 	"lbl_CashbackAmount": "Cashback Amount",
 	"lbl_ReceivedAmount": "Received Amount",
 	"lbl_CryptoWithdrawal": "Crypto Withdrawal",

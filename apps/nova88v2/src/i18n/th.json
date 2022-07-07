@@ -710,6 +710,7 @@
 	"lbl_Rate": "อัตราแลกเปลี่ยน",
 	"lbl_USDT_Amount": "จำนวนสกุลเงิน USDT",
 	"lbl_Crypto_OTP": "กรุณายืนยันหมายเลขโทรศัพท์ (OTP) ก่อนใช้บริการ Crypto",
+  "lbl_Prohibited_Duplicate_Bank_Account":"ไม่อนุญาตให้ใช้หมายเลขบัญชีธนาคารซ้ำ โปรดลองหมายเลขบัญชีอื่น",
 	"lbl_CashbackAmount": "จำนวนเงินคืน",
 	"lbl_ReceivedAmount": "จำนวนเงินที่ได้รับ",
 

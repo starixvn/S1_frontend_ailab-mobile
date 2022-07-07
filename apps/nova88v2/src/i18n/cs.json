@@ -714,6 +714,7 @@
 	"lbl_Rate": "汇率",
 	"lbl_USDT_Amount": "泰达币金额",
 	"lbl_Crypto_OTP": "使用虚拟货币服务前，请先完成手机 OTP 验证。",
+  "lbl_Prohibited_Duplicate_Bank_Account":"不允许重复银行，请尝试另一个户口。",
 	"lbl_CashbackAmount": "返现金额",
 	"lbl_ReceivedAmount": "到账金额",
 

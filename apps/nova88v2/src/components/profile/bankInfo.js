@@ -243,6 +243,7 @@ const BankInfo = ({ prevPage }) => {
 					GetCustBankInfo={GetCustBankInfo}
 					setLoading={setLoading}
 					currencyId={userInfo.currencyId}
+					custBankInfo={custBankInfo}
 				/>
 			)}
 			{currentPanel === "showBankPanel" && custBankInfo?.length > 0 ? (
