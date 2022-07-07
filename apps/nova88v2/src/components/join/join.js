@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
+import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
 import {
 	userInfoContext,
@@ -19,7 +20,7 @@ import useTip from "../hook/useTip";
 import TandC from "../../service/t_and_c";
 import path from "../../path";
 import PromoPopup from "./join.promotion";
-import { initValue, initStatus, currencyToAreacode } from "./join.def";
+import { initValue, initStatus } from "./join.def";
 import areaCode from "../../datas/areaCode";
 import { Iov_GetBlackBox } from "../common/iovation";
 import api from "../../service/api";
@@ -183,15 +184,6 @@ const Join = ({ initSiteCurrency = [] }) => {
 	};
 
 	const _currencyId = siteCurrency[userValue.Currency]?.id;
-
-	const currencyToCountryCode = _currencyId
-		? currencyToAreacode[_currencyId]
-		: null;
-
-	const _areaCode =
-		currencyToCountryCode !== null
-			? areaCode[currencyToCountryCode]?.AreaCode
-			: null;
 
 	const showPswHandler = () => {
 		setPswState(!pswState);
@@ -738,6 +730,14 @@ const Join = ({ initSiteCurrency = [] }) => {
 			/>
 		</>
 	);
+};
+
+Join.defaultProps = {
+	initSiteCurrency: null
+};
+
+Join.propTypes = {
+	initSiteCurrency: PropTypes.arrayOf(PropTypes.number)
 };
 
 export default Join;

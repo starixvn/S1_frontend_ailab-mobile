@@ -10,7 +10,7 @@ import {
 } from "../common/context";
 import LangPanel from "./setting.langPanel";
 import { LOGOUT } from "../../service/auth";
-import ThemeMode from "./setting.themeMode";
+// import ThemeMode from "./setting.themeMode";
 import path from "../../path";
 import { siteInfo } from "../../config";
 import TandC from "../../service/t_and_c";
@@ -52,13 +52,15 @@ const BtnBar = ({ isLogin, i18n, msgCount, langId }) => {
 
 BtnBar.defaultProps = {
 	isLogin: false,
-	msgCount: 0
+	msgCount: 0,
+	langId: null
 };
 
 BtnBar.propTypes = {
 	isLogin: PropTypes.bool,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	msgCount: PropTypes.number
+	msgCount: PropTypes.number,
+	langId: PropTypes.string
 };
 
 const Card = ({ children, btnTitle, btnClass, defaultOpen }) => {
@@ -79,6 +81,20 @@ const Card = ({ children, btnTitle, btnClass, defaultOpen }) => {
 			{children}
 		</div>
 	);
+};
+
+Card.defaultProps = {
+	children: null,
+	btnTitle: null,
+	btnClass: null,
+	defaultOpen: null
+};
+
+Card.propTypes = {
+	children: PropTypes.node,
+	btnTitle: PropTypes.string,
+	btnClass: PropTypes.string,
+	defaultOpen: PropTypes.bool
 };
 
 export default () => {

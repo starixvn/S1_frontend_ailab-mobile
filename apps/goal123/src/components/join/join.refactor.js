@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
-import PropTypes from "prop-types";
 import { useMatch, Redirect, useNavigate } from "@reach/router";
 import Inputbox from "../common/inputbox.info";
 import InputboxPWD from "../common/inputbox.password.info";

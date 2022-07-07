@@ -617,16 +617,33 @@ class Panel extends React.Component {
 	}
 }
 
-// Panel.defaultProps = {
-// 	tpId: null
-// };
+Panel.defaultProps = {
+	selNavIdx: null,
+	tpId: null,
+	selNav: null,
+	setPopBox: () => null,
+	i18n: null,
+	userInfo: null,
+	throttle: () => null,
+	handleGoToGame: () => null,
+	setNav: () => null,
+	handleLogin: () => null,
+	fromModal: null
+};
 
-// Panel.propTypes = {
-// 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
-// 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-// 	setNav: PropTypes.func.isRequired,
-// 	tpId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-// };
+Panel.propTypes = {
+	selNavIdx: PropTypes.number,
+	tpId: PropTypes.number,
+	selNav: PropTypes.objectOf(PropTypes.any),
+	setPopBox: PropTypes.func,
+	i18n: PropTypes.objectOf(PropTypes.string),
+	userInfo: PropTypes.objectOf(PropTypes.any),
+	throttle: PropTypes.func,
+	handleGoToGame: PropTypes.func,
+	setNav: PropTypes.func,
+	handleLogin: PropTypes.func,
+	fromModal: PropTypes.bool
+};
 
 const IndexPage = props => {
 	const { throttle } = useSetTimeout();

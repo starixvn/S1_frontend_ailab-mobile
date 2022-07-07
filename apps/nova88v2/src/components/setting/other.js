@@ -7,22 +7,22 @@ import Platform from "./other.platform";
 export default () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
-	const _siteInfo = siteInfo();
+	// const _siteInfo = siteInfo();
 
-	const socialMedia =
-		_siteInfo.socialMedia &&
-		Object.values(_siteInfo.socialMedia).map(v => {
-			return (
-				<a
-					key={`other-socialMedia-${v.displayKey}`}
-					href={v.link}
-					rel="noopener noreferrer"
-					target="_blank"
-					className={`icon icon-${v.icon}`}>
-					{i18n[v.displayKey]}
-				</a>
-			);
-		});
+	// const socialMedia =
+	// 	_siteInfo.socialMedia &&
+	// 	Object.values(_siteInfo.socialMedia).map(v => {
+	// 		return (
+	// 			<a
+	// 				key={`other-socialMedia-${v.displayKey}`}
+	// 				href={v.link}
+	// 				rel="noopener noreferrer"
+	// 				target="_blank"
+	// 				className={`icon icon-${v.icon}`}>
+	// 				{i18n[v.displayKey]}
+	// 			</a>
+	// 		);
+	// 	});
 
 	return (
 		<>

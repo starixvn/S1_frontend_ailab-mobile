@@ -366,6 +366,18 @@ export const productList = langId => {
 					useGotoGame: true
 				},
 				{
+					displayKey: "Microgaming",
+					icon: "icon icon-mg",
+					img: `${bannerImgUrl}/h5/img/liveGameNew/live-mg.png`,
+					...defGameInfo.LIVEcasinoMG,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.liveCasino_mg)
+						}
+					]
+				},
+				{
 					displayText: "n2-LIVE",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-n2live.png`,
 					...defGameInfo.LIVEcasinoN2
@@ -619,6 +631,10 @@ export const defSubMenus = () => [
 			{
 				...defGameInfo.LIVEcasinoPT,
 				displayText: "Playtech"
+			},
+			{
+				...defGameInfo.LIVEcasinoMG,
+				displayKey: "Microgaming"
 			},
 			{
 				...defGameInfo.LIVEcasinoN2,
