@@ -36,6 +36,10 @@ const defSubMenus = [
 				...defGameInfo.Sports
 			},
 			{
+				displayText: "SBOBET",
+				...defGameInfo.SBOSport
+			},
+			{
 				displayKey: "lbl_BTISport",
 				...defGameInfo.BTISport
 			}
@@ -294,7 +298,7 @@ const SubMenuList = ({
 				!isUnderMaintain({ tpId: s.tpId, tpGameType: s.tpGameType })
 		)
 		.map(s => {
-			const key = `submenu-${s.displayKey}`;
+			const key = `submenu-${s.displayKey || s.displayText}`;
 			let hasSubItem = false;
 			let _subItems = null;
 			if (s.subItems) {
@@ -309,11 +313,11 @@ const SubMenuList = ({
 					.map(c => {
 						return (
 							<li
-								key={`${key}-${c.displayKey}`}
+								key={`${key}-${c.displayKey || c.displayText}`}
 								onClick={clickGame.bind(this, c)}>
 								<button>
 									{i18n[c.displayKey]?.toUpperCase() ??
-										c.displayKey}
+										c.displayText}
 									{_subItems}
 								</button>
 							</li>
@@ -322,7 +326,9 @@ const SubMenuList = ({
 
 				hasSubItem = subItemContent.length > 0;
 				if (hasSubItem) {
-					const isOpen = isOpenSubMenu.includes(s.displayKey);
+					const isOpen = isOpenSubMenu.includes(
+						s.displayKey || s.displayText
+					);
 					_subItems = (
 						<>
 							<i
@@ -345,7 +351,7 @@ const SubMenuList = ({
 						onClick={closeNavPanel}
 						key={key}
 						className={s.icon}>
-						{i18n[s.displayKey]?.toUpperCase() ?? s.displayKey}
+						{i18n[s.displayKey]?.toUpperCase() ?? s.displayText}
 						{_subItems}
 					</Link>
 				);
@@ -358,7 +364,7 @@ const SubMenuList = ({
 						href={s.href}
 						target="_blank"
 						rel="noreferrer">
-						{i18n[s.displayKey]?.toUpperCase() ?? s.displayKey}
+						{i18n[s.displayKey]?.toUpperCase() ?? s.displayText}
 					</a>
 				);
 			}
@@ -366,9 +372,12 @@ const SubMenuList = ({
 			return hasSubItem ? (
 				<div
 					key={key}
-					onClick={handleSubMenu.bind(this, s.displayKey)}
+					onClick={handleSubMenu.bind(
+						this,
+						s.displayKey || s.displayText
+					)}
 					className={s.icon}>
-					{i18n[s.displayKey]?.toUpperCase() ?? s.displayKey}
+					{i18n[s.displayKey]?.toUpperCase() ?? s.displayText}
 					{_subItems}
 				</div>
 			) : (
@@ -376,7 +385,7 @@ const SubMenuList = ({
 					key={key}
 					onClick={clickGame.bind(this, s)}
 					className={s.icon}>
-					{i18n[s.displayKey]?.toUpperCase() ?? s.displayKey}
+					{i18n[s.displayKey]?.toUpperCase() ?? s.displayText}
 				</button>
 			);
 		});

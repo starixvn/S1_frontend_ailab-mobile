@@ -205,7 +205,9 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 
 				return (
 					<SubGame
-						key={`subMenu-${subItem.displayKey}`}
+						key={`subMenu-${
+							subItem.displayKey ?? subItem.displayText
+						}`}
 						game={subItem}
 						i18n={i18n}
 						userInfo={userInfo}
@@ -266,7 +268,7 @@ const SubGame = ({
 				rel="noreferrer"
 				style={isMaintain ? { pointerEvents: "none" } : null}>
 				<img src={game.img} alt={i18n[game.spanTextKey]} />
-				<div>{i18n[game.displayKey] || game.displayKey}</div>
+				<div>{i18n[game.displayKey] ?? game.displayText}</div>
 				{isMaintain ? (
 					<div className="under">{i18n.lbl_underMaintenance}</div>
 				) : (
@@ -285,8 +287,11 @@ const SubGame = ({
 			}
 			state={game.parameter}
 			style={isMaintain ? { pointerEvents: "none" } : null}>
-			<img src={game.img} alt={i18n[game.displayKey]} />
-			<div>{i18n[game.displayKey] || game.displayKey}</div>
+			<img
+				src={game.img}
+				alt={i18n[game.displayKey] ?? game.displayText}
+			/>
+			<div>{i18n[game.displayKey] ?? game.displayText}</div>
 			{isMaintain ? (
 				<div className="under">{i18n.lbl_underMaintenance}</div>
 			) : (
@@ -294,7 +299,7 @@ const SubGame = ({
 			)}
 		</Link>
 	) : (
-		<a
+		<button
 			className={`${showingEventIcon} ${isMaintain ? "active" : ""}`}
 			disabled={isMaintain}
 			onClick={clickGame.bind(this, {
@@ -307,14 +312,15 @@ const SubGame = ({
 				handleGoToGame,
 				handleLogin
 			})}>
-			<img src={game.img} alt={i18n[game.displayKey]} />
-			<div>{i18n[game.displayKey] || game.displayKey}</div>
-			{isMaintain ? (
+			<img
+				src={game.img}
+				alt={i18n[game.displayKey] ?? game.displayText}
+			/>
+			<div>{i18n[game.displayKey] ?? game.displayText}</div>
+			{isMaintain && (
 				<div className="under">{i18n.lbl_underMaintenance}</div>
-			) : (
-				""
 			)}
-		</a>
+		</button>
 	);
 };
 

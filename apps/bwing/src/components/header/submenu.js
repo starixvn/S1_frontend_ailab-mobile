@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import PropTypes from "prop-types";
 import { Link } from "@reach/router";
 import Logo from "../img/logo";
 import {
@@ -20,7 +21,7 @@ import LangDropdown from "../common/dropdown.language";
 import { api_SetLanguage } from "../../service/api/account";
 import { useGetBalance } from "./hook";
 
-export default ({ handleSideMenuPanel, isOpenSideMenu }) => {
+const Content = ({ handleSideMenuPanel, isOpenSideMenu }) => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
@@ -51,9 +52,7 @@ export default ({ handleSideMenuPanel, isOpenSideMenu }) => {
 			if (userInfo.isLogin) {
 				try {
 					await api_SetLanguage(langId);
-				} catch (error) {
-					console.error(error);
-				}
+				} catch (error) {}
 			}
 
 			setUserInfo(prev => ({ ...prev, langId }));
@@ -110,6 +109,13 @@ export default ({ handleSideMenuPanel, isOpenSideMenu }) => {
 	);
 };
 
+Content.propTypes = {
+	handleSideMenuPanel: PropTypes.func.isRequired,
+	isOpenSideMenu: PropTypes.bool.isRequired
+};
+
+export default Content;
+
 const SubMenuList = ({
 	i18n,
 	userInfo,
@@ -165,7 +171,7 @@ const SubMenuList = ({
 					.map(c => {
 						return (
 							<li
-								key={`${key}-${c.displayKey}`}
+								key={`${key}-${c.displayKey ?? c.displayText}`}
 								onClick={() =>
 									clickGame({
 										tpId: c.tpId,
@@ -174,7 +180,7 @@ const SubMenuList = ({
 										tpGameType: c.tpGameType
 									})
 								}>
-								{i18n[c.displayKey] ?? c.displayKey}
+								{i18n[c.displayKey] ?? c.displayText}
 								{_subItems}
 							</li>
 						);
@@ -182,7 +188,9 @@ const SubMenuList = ({
 
 				hasSubItem = subItemContent.length > 0;
 				if (hasSubItem) {
-					const isOpen = isOpenSubMenu.includes(s.displayKey);
+					const isOpen = isOpenSubMenu.includes(
+						s.displayKey || s.displayText
+					);
 					_subItems = (
 						<>
 							<div
@@ -190,7 +198,7 @@ const SubMenuList = ({
 									isOpen ? " open" : ""
 								}`}>
 								{i18n[s.displayKey].toUpperCase() ??
-									s.displayKey.toUpperCase()}
+									s.displayText.toUpperCase()}
 								<i
 									onClick={handleSubMenu.bind(
 										this,
@@ -216,7 +224,7 @@ const SubMenuList = ({
 						key={key}
 						className="menuNavTitle">
 						{i18n[s.displayKey]?.toUpperCase() ??
-							s.displayKey?.toUpperCase()}
+							s.displayText?.toUpperCase()}
 						{_subItems}
 					</Link>
 				);
@@ -229,7 +237,7 @@ const SubMenuList = ({
 						onClick={openLink.bind(this, s.href)}>
 						<div className="menuNavText">
 							{i18n[s.displayKey]?.toUpperCase() ??
-								s.displayKey?.toUpperCase()}
+								s.displayText?.toUpperCase()}
 						</div>
 					</div>
 				);
@@ -244,10 +252,28 @@ const SubMenuList = ({
 					onClick={clickGame.bind(this, s)}
 					className="menuNavTitle">
 					{i18n[s.displayKey]?.toUpperCase() ??
-						s.displayKey?.toUpperCase()}
+						s.displayText?.toUpperCase()}
 				</button>
 			);
 		});
 
 	return <div className="menuNav">{rows}</div>;
+};
+
+SubMenuList.defaultProps = {
+	maintainList: null
+};
+
+SubMenuList.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	userInfo: PropTypes.shape({
+		isLogin: PropTypes.bool,
+		currencyId: PropTypes.number,
+		langId: PropTypes.string
+	}).isRequired,
+	setNav: PropTypes.func.isRequired,
+	closeNavPanel: PropTypes.func.isRequired,
+	handleSubMenu: PropTypes.func.isRequired,
+	isOpenSubMenu: PropTypes.arrayOf(PropTypes.string).isRequired,
+	maintainList: PropTypes.arrayOf(PropTypes.object)
 };

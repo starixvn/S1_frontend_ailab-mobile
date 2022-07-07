@@ -43,6 +43,17 @@ export const productList = langId => {
 					...defGameInfo.Sports
 				},
 				{
+					displayText: "SBOBET",
+					img: `${bannerImgUrl}/h5/img/sport/sbobet.png`,
+					...defGameInfo.sportSbo,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.sportSbo)
+						}
+					]
+				},
+				{
 					displayKey: "lbl_BTISport",
 					img: `${bannerImgUrl}/h5/img/sport/btisport.png`,
 					...defGameInfo.BTISport,
@@ -164,7 +175,7 @@ export const productList = langId => {
 					...defGameInfo.Casino_AdvantPlay,
 					parameter: defGameInfo.Casino_AdvantPlay,
 					path: path.casino.root,
-					displayKey: "AdvantPlay",
+					displayText: "AdvantPlay",
 					img: `${bannerImgUrl}/h5/img/slot/ap.png`,
 					eventIcon: [
 						{
@@ -178,14 +189,14 @@ export const productList = langId => {
 					parameter: defGameInfo.Casino_PP,
 					path: path.casino.root,
 					icon: "icon icon-PP",
-					displayKey: "Pragmatic Play",
+					displayText: "Pragmatic Play",
 					img: `${bannerImgUrl}/h5/img/slot/pp.png`
 				},
 				{
 					...defGameInfo.Casino_Habanero,
 					parameter: defGameInfo.Casino_Habanero,
 					path: path.casino.root,
-					displayKey: "Habanero",
+					displayText: "Habanero",
 					img: `${bannerImgUrl}/h5/img/slot/ho.png`,
 					eventIcon: [
 						{
@@ -198,7 +209,7 @@ export const productList = langId => {
 					...defGameInfo.Casino_NetEnt,
 					parameter: defGameInfo.Casino_NetEnt,
 					path: path.casino.root,
-					displayKey: "NetEnt",
+					displayText: "NetEnt",
 					img: `${bannerImgUrl}/h5/img/slot/ne.png`,
 					eventIcon: [
 						{
@@ -213,7 +224,7 @@ export const productList = langId => {
 					path: path.casino.root,
 					img: `${bannerImgUrl}/h5/img/slot/mg.png`,
 					icon: "icon icon-mg",
-					displayKey: "Microgaming"
+					displayText: "Microgaming"
 				},
 				{
 					...defGameInfo.Casino_Jili,
@@ -221,7 +232,7 @@ export const productList = langId => {
 					path: path.casino.root,
 					img: `${bannerImgUrl}/h5/img/slot/jili.png`,
 					icon: "icon icon-jili",
-					displayKey: "JILI"
+					displayText: "JILI"
 				},
 				{
 					...defGameInfo.Casino_PT,
@@ -229,7 +240,7 @@ export const productList = langId => {
 					path: path.casino.root,
 					img: `${bannerImgUrl}/h5/img/slot/pt.png`,
 					icon: "icon icon-pt",
-					displayKey: "PlayTech"
+					displayText: "PlayTech"
 				},
 				{
 					...defGameInfo.casino_ICG,
@@ -237,7 +248,7 @@ export const productList = langId => {
 					path: path.casino.root,
 					img: `${bannerImgUrl}/h5/img/slot/icg.png`,
 					icon: "icon icon-ICG",
-					displayKey: "Astro Tech"
+					displayText: "Astro Tech"
 				},
 				{
 					...defGameInfo.Casino_CQ9,
@@ -245,7 +256,7 @@ export const productList = langId => {
 					path: path.casino.root,
 					img: `${bannerImgUrl}/h5/img/slot/cq9.png`,
 					icon: "icon icon-cq9",
-					displayKey: "CQ9"
+					displayText: "CQ9"
 				},
 				{
 					...defGameInfo.Casino_GPI,
@@ -253,7 +264,7 @@ export const productList = langId => {
 					path: path.casino.root,
 					img: `${bannerImgUrl}/h5/img/slot/gpi.png`,
 					icon: "icon icon-GPI",
-					displayKey: "Game Play"
+					displayText: "Game Play"
 				},
 				{
 					...defGameInfo.Casino_YGG,
@@ -261,7 +272,7 @@ export const productList = langId => {
 					path: path.casino.root,
 					img: `${bannerImgUrl}/h5/img/slot/ygg.png`,
 					icon: "icon icon-YGG",
-					displayKey: "YGGDrassil"
+					displayText: "YGGDrassil"
 				},
 				{
 					...defGameInfo.Casino_SG,
@@ -269,13 +280,13 @@ export const productList = langId => {
 					path: path.casino.root,
 					img: `${bannerImgUrl}/h5/img/slot/sg.png`,
 					icon: "icon icon-SG",
-					displayKey: "Spadegaming"
+					displayText: "Spadegaming"
 				},
 				{
 					...defGameInfo.Casino_RedTiger,
 					parameter: defGameInfo.Casino_RedTiger,
 					path: path.casino.root,
-					displayKey: "Red Tiger",
+					displayText: "Red Tiger",
 					img: `${bannerImgUrl}/h5/img/slot/red.png`,
 					eventIcon: [
 						{
@@ -290,14 +301,14 @@ export const productList = langId => {
 					img: `${bannerImgUrl}/h5/img/slot/pg.png`,
 					path: path.casino.root,
 					icon: "icon icon-PG",
-					displayKey: "PG Soft"
+					displayText: "PG Soft"
 				},
 				{
 					...defGameInfo.Casino_ow,
 					parameter: defGameInfo.Casino_ow,
 					img: `${bannerImgUrl}/h5/img/slot/ow.png`,
 					icon: "icon icon-OW",
-					displayKey: "Saba Casino"
+					displayText: "Saba Casino"
 				}
 			]
 		},
@@ -307,7 +318,7 @@ export const productList = langId => {
 			icon_img: `${bannerImgUrl}/h5/img/gameicon/live.png`,
 			items: [
 				// {
-				// 	displayKey: "Microgaming",
+				// 	displayText: "Microgaming",
 				// 	icon: "icon icon-mg",
 				// 	img: liveCasino_MGP,
 				// 	...defGameInfo.LIVEcasinoMGP,
@@ -319,7 +330,7 @@ export const productList = langId => {
 				// 	]
 				// },
 				{
-					displayKey: "Pragmatic Play",
+					displayText: "Pragmatic Play",
 					icon: "icon icon-PP",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-pp.png`,
 					eventIcon: [
@@ -331,7 +342,7 @@ export const productList = langId => {
 					...defGameInfo.LIVEcasinoPP
 				},
 				{
-					displayKey: "Evolution Gaming",
+					displayText: "Evolution Gaming",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-evo.png`,
 					...defGameInfo.LIVEcasinoEVO,
 					eventIcon: [
@@ -342,7 +353,7 @@ export const productList = langId => {
 					]
 				},
 				{
-					displayKey: "Playtech",
+					displayText: "Playtech",
 					icon: "icon icon-pt",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-pt.png`,
 					...defGameInfo.LIVEcasinoPT,
@@ -355,7 +366,7 @@ export const productList = langId => {
 					useGotoGame: true
 				},
 				{
-					displayKey: "n2-LIVE",
+					displayText: "n2-LIVE",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-n2live.png`,
 					...defGameInfo.LIVEcasinoN2
 				},
@@ -365,38 +376,38 @@ export const productList = langId => {
 					...defGameInfo.LIVEcasinoOne789
 				},
 				{
-					displayKey: "WM Casino",
+					displayText: "WM Casino",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-wm.png`,
 					...defGameInfo.LIVEcasinoWM
 				},
 				{
-					displayKey: "Asia Gaming",
+					displayText: "Asia Gaming",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-ag.png`,
 					...defGameInfo.LIVEcasinoAG
 				},
 				{
-					displayKey: "AE Sexy",
+					displayText: "AE Sexy",
 					icon: "icon icon-AE",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-ae.png`,
 					...defGameInfo.LIVEcasinoAE
 				},
 				{
-					displayKey: "Dream Gaming",
+					displayText: "Dream Gaming",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-dg.png`,
 					...defGameInfo.LIVEcasinoDG
 				},
 				{
-					displayKey: "Allbet",
+					displayText: "Allbet",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-ab.png`,
 					...defGameInfo.LIVEcasinoAB
 				},
 				{
-					displayKey: "eBET",
+					displayText: "eBET",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-ebet.png`,
 					...defGameInfo.LIVEcasinoEB
 				},
 				{
-					displayKey: "SA Gaming",
+					displayText: "SA Gaming",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-sa.png`,
 					...defGameInfo.LIVEcasinoSA
 				}
@@ -496,6 +507,10 @@ export const defSubMenus = () => [
 			{
 				displayKey: "lbl_SabaSport",
 				...defGameInfo.Sports
+			},
+			{
+				displayText: "SBOBET",
+				...defGameInfo.sportSbo
 			},
 			{
 				displayKey: "lbl_BTISport",
@@ -599,15 +614,15 @@ export const defSubMenus = () => [
 		subItems: [
 			{
 				...defGameInfo.LIVEcasinoPP,
-				displayKey: "Pragmatic Play"
+				displayText: "Pragmatic Play"
 			},
 			{
-				...defGameInfo.LIVEcasino_PT,
-				displayKey: "Playtech"
+				...defGameInfo.LIVEcasinoPT,
+				displayText: "Playtech"
 			},
 			{
 				...defGameInfo.LIVEcasinoN2,
-				displayKey: "n2-LIVE"
+				displayText: "n2-LIVE"
 			},
 			{
 				displayKey: "lbl_liveCasino_789SeDie",
@@ -615,35 +630,35 @@ export const defSubMenus = () => [
 			},
 			{
 				...defGameInfo.LIVEcasinoWM,
-				displayKey: "WM Casino"
+				displayText: "WM Casino"
 			},
 			{
 				...defGameInfo.LIVEcasinoDG,
-				displayKey: "Dream Gaming"
+				displayText: "Dream Gaming"
 			},
 			{
 				...defGameInfo.LIVEcasinoAE,
-				displayKey: "AE Sexy"
+				displayText: "AE Sexy"
 			},
 			{
 				...defGameInfo.LIVEcasinoAG,
-				displayKey: "Asia Gaming"
+				displayText: "Asia Gaming"
 			},
 			{
 				...defGameInfo.LIVEcasinoAB,
-				displayKey: "Allbet"
+				displayText: "Allbet"
 			},
 			{
 				...defGameInfo.LIVEcasinoSA,
-				displayKey: "SA Gaming"
+				displayText: "SA Gaming"
 			},
 			{
 				...defGameInfo.LIVEcasinoEB,
-				displayKey: "eBET"
+				displayText: "eBET"
 			}
 			// {
 			// 	...defGameInfo.LIVEcasinoEVO,
-			// 	displayKey: "Evolution Gaming"
+			// 	displayText: "Evolution Gaming"
 			// }
 		]
 	},

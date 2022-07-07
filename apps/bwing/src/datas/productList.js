@@ -62,7 +62,8 @@ export const defGameInfo = {
 	Casino_Jili: { tpId: 32, tpGameType: 53 },
 	tcg: { tpId: 33, tpGameType: 55 },
 	VirtualGame: { tpId: 1, gameId: 245, tpGameType: 22 }, // 單一錢包 (目前不支援)
-	VirtualSports: { tpId: 1, gameId: 192, tpGameType: 24 } // 單一錢包 {tpId:41, tpGameType:72, gameId:192}
+	VirtualSports: { tpId: 1, gameId: 192, tpGameType: 24 }, // 單一錢包 {tpId:41, tpGameType:72, gameId:192}
+	sportSbo: { tpId: 42, tpGameType: 77 }
 };
 
 export const slotPlatform = [
@@ -169,6 +170,11 @@ export const sportStreamDef = {
 		gameId: 171,
 		name: "sabaClub",
 		tpGameType: 59
+	},
+	sportSbo: {
+		tpId: 42,
+		name: "sportSbo",
+		tpGameType: 77
 	},
 	sportBti: {
 		tpId: 29,
