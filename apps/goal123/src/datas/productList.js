@@ -5,6 +5,7 @@ import { bannerImgUrl } from "../config";
 
 export const defGameInfo = {
 	Sports: { tpId: 1, gameId: 1, tpGameType: 1 },
+	SBOSport: { tpId: 42, tpGameType: 77 },
 	BTISport: { tpId: 29, tpGameType: 49 },
 	SabaSoccer: { tpId: 1, gameId: 997, tpGameType: 1 },
 	eSports: { tpId: 1, gameId: 43, tpGameType: 1 },
@@ -163,6 +164,17 @@ const gameList = [
 				...defGameInfo.Sports,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/soccer.png`,
 				spanTextKey: "lbl_Soccer"
+			},
+			{
+				...defGameInfo.SBOSport,
+				img: `${bannerImgUrl}/h5/img/hotgame/sports/sbo.png`,
+				spanText: "SBOBET",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.sportSbo)
+					}
+				]
 			},
 			{
 				...defGameInfo.BTISport,
