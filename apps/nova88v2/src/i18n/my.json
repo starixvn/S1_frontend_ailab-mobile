@@ -731,6 +731,7 @@
 	"lbl_Rate": "Kadar",
 	"lbl_USDT_Amount": "Amaun USDT",
 	"lbl_Crypto_OTP": "Pengesahan nombor telefon (OTP) diperlukan sebelum menggunakan perkhidmatan Kripto.",
+  "lbl_Prohibited_Duplicate_Bank_Account":"No. Akaun Bank pendua tidak dibenarkan. Sila cuba No. Akaun yang lain.",
 	"lbl_CashbackAmount": "Jumlah Pulangan Tunai",
 	"lbl_ReceivedAmount": "Amaun Yang Sudah Diterima",
 

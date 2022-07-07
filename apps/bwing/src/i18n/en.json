@@ -716,6 +716,7 @@
 	"lbl_Rate": "Rate",
 	"lbl_USDT_Amount": "USDT Amount",
 	"lbl_Crypto_OTP": "Phone number (OTP) verification are required before using Crypto service.",
+  "lbl_Prohibited_Duplicate_Bank_Account":"Duplicate Bank Account No. is not allowed. Please try another Account No.",
 	"lbl_CashbackAmount": "Cashback Amount",
 	"lbl_ReceivedAmount": "Received Amount",
 	"lbl_CryptoWithdrawal": "Crypto Withdrawal",

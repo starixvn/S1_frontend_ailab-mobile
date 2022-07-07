@@ -25,7 +25,8 @@ export default ({
 	bankSelectedIdx,
 	setBankSelectedIdx,
 	GetCustBankInfo,
-	GetBankInfoSysList
+	GetBankInfoSysList,
+	custBankList
 }) => {
 	const { setPopBox } = useContext(popBoxContext);
 	const [userValue, setUserValue] = useState({});
@@ -75,18 +76,30 @@ export default ({
 
 	const checkInput = ({ val, col }) => {
 		let _msg = "";
+		let checked;
+		const isDuplicateBank = custBankList?.find(
+			_selectBank =>
+				_selectBank.SysId === siteBankList[bankSelectedIdx].sysId &&
+				_selectBank.accountNo === val
+		);
 		if (!val) {
+			checked = false;
 			_msg =
 				col === "accountName"
 					? i18n.msg_EnterRealName
 					: i18n.msg_NeedAccountNo;
+		} else if (col === "accountNo" && isDuplicateBank) {
+			checked = false;
+			_msg = i18n.lbl_Prohibited_Duplicate_Bank_Account;
+		} else {
+			checked = true;
 		}
+
 		setInputStatus(prev => ({
 			...prev,
-			[col]: { checked: Boolean(val), msg: _msg }
+			[col]: { checked, msg: _msg }
 		}));
 	};
-
 	const clickInfo = ({ col }) => {
 		let _msg = "";
 		if (inputStatus[col].msg === "") {
@@ -104,7 +117,9 @@ export default ({
 
 	const clickSubmit = () => {
 		const checked =
-			(accountName || userValue.accountName) && userValue.accountNo;
+			(accountName || userValue.accountName) &&
+			userValue.accountNo &&
+			inputStatus.accountNo.checked;
 
 		if (checked) {
 			const bankInfoData = {

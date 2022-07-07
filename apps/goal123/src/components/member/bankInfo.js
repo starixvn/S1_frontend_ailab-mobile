@@ -251,9 +251,18 @@ const BankInfo = () => {
 	const bankAccountCheck = ({ val }) => {
 		let checked = true;
 		let msg = "";
+
+		const isDuplicateBank = custBankInfo?.find(
+			_selectBank =>
+				_selectBank.SysId === siteBankList[bankSelectedIdx].sysId &&
+				_selectBank.accountNo === val
+		);
 		if (!val) {
 			checked = false;
 			msg = i18n.msg_NeedAccountNo;
+		} else if (isDuplicateBank) {
+			checked = false;
+			msg = i18n.lbl_Prohibited_Duplicate_Bank_Account;
 		}
 		return { checked, msg };
 	};

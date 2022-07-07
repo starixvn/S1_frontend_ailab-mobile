@@ -735,6 +735,7 @@
 	"lbl_Rate": "Rate",
 	"lbl_USDT_Amount": "USDT Amount",
 	"lbl_Crypto_OTP": "क्रिप्टो सेवा का उपयोग करने से पहले फोन नंबर (ओटीपी) सत्यापन आवश्यक है।",
+  "lbl_Prohibited_Duplicate_Bank_Account":"डुप्लीकेट बैंक खाता संख्या की अनुमति नहीं है। कृपया कोई अन्य खाता संख्या आज़माएं।",
 	"lbl_CashbackAmount": "कैशबैक राशि",
 	"lbl_ReceivedAmount": "प्राप्त राशि",
 
