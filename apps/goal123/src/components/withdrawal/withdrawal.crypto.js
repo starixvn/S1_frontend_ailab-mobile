@@ -574,7 +574,6 @@ const Panel = () => {
 	};
 
 	const SelectBank = b => {
-		console.log(b, selBank);
 		if (
 			b.usdtAddress === selBank?.usdtAddress &&
 			b.currencyId === selBank?.currencyId

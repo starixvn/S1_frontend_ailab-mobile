@@ -276,7 +276,7 @@ PromoRule.defaultProps = {
 };
 
 PromoRule.propTypes = {
-	ruleCols: PropTypes.string,
+	ruleCols: PropTypes.arrayOf(PropTypes.any),
 	promotionInfo: PropTypes.objectOf(PropTypes.any),
 	className: PropTypes.string,
 	showIcon: PropTypes.bool

@@ -17,6 +17,11 @@ export const defGameInfo = {
 	LIVEcasinoMGP: { tpId: 34, tpGameType: 58 },
 	LIVEcasinoPT: { tpId: 27, gameId: "0", tpGameType: 48 },
 	LIVEcasinoEVO: { tpId: 36, gameId: 0, tpGameType: 63 },
+	LIVEcasinoMG: {
+		tpId: 34,
+		gameId: "0",
+		tpGameType: 58
+	},
 	One789_lottery: { tpId: 23, gameId: 0, tpGameType: 35 },
 	One789_lottery_789: { tpId: 23, gameId: 1, tpGameType: 36 },
 	Casino_ow: { gameId: 208, tpId: 1, tpGameType: 4 },
@@ -62,7 +67,8 @@ export const defGameInfo = {
 	Casino_Jili: { tpId: 32, tpGameType: 53 },
 	tcg: { tpId: 33, tpGameType: 55 },
 	VirtualGame: { tpId: 1, gameId: 245, tpGameType: 22 }, // 單一錢包 (目前不支援)
-	VirtualSports: { tpId: 1, gameId: 192, tpGameType: 24 } // 單一錢包 {tpId:41, tpGameType:72, gameId:192}
+	VirtualSports: { tpId: 1, gameId: 192, tpGameType: 24 }, // 單一錢包 {tpId:41, tpGameType:72, gameId:192}
+	sportSbo: { tpId: 42, tpGameType: 77 }
 };
 
 export const slotPlatform = [
@@ -169,6 +175,11 @@ export const sportStreamDef = {
 		gameId: 171,
 		name: "sabaClub",
 		tpGameType: 59
+	},
+	sportSbo: {
+		tpId: 42,
+		name: "sportSbo",
+		tpGameType: 77
 	},
 	sportBti: {
 		tpId: 29,

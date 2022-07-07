@@ -226,6 +226,7 @@ export const BannerWithStaticImages = ({
 						langId === "th" ? "th" : "en"
 					}.png`}
 					className="item"
+					alt="static banner"
 				/>
 			</a>
 		);
@@ -238,6 +239,18 @@ export const BannerWithStaticImages = ({
 			</div>
 		</div>
 	);
+};
+
+BannerWithStaticImages.defaultProps = {
+	length: null,
+	langId: null,
+	redirectLink: null
+};
+
+BannerWithStaticImages.propTypes = {
+	length: PropTypes.number,
+	langId: PropTypes.string,
+	redirectLink: PropTypes.string
 };
 
 export const Autoplay = props => {

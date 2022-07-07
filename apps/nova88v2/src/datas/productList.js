@@ -184,6 +184,19 @@ const GameList = ({ langId, currencyName }) => {
 							useGotoGame: true
 						},
 						{
+							...defGameInfo.LIVEcasinoMG,
+							spanText: "Microgaming",
+							img: `${cloudBannerImgURL}/h5/img/mgp.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_mg
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.LIVEcasinoDG,
 							spanText: "Dream Gaming",
 							img: `${cloudBannerImgURL}/h5/img/dg.png`
@@ -789,6 +802,19 @@ const GameList = ({ langId, currencyName }) => {
 							useGotoGame: true
 						},
 						{
+							...defGameInfo.LIVEcasinoMG,
+							spanText: "Microgaming",
+							img: `${cloudBannerImgURL}/h5/img/mgp.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_mg
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.LIVEcasinoDG,
 							spanText: "Dream Gaming",
 							img: `${cloudBannerImgURL}/h5/img/dg.png`
@@ -1392,6 +1418,19 @@ const GameList = ({ langId, currencyName }) => {
 							spanText: "Playtech",
 							img: `${cloudBannerImgURL}/h5/img/ptc.png`,
 							useGotoGame: true
+						},
+						{
+							...defGameInfo.LIVEcasinoMG,
+							spanText: "Microgaming",
+							img: `${cloudBannerImgURL}/h5/img/mgp.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_mg
+									)
+								}
+							]
 						},
 						{
 							...defGameInfo.LIVEcasinoDG,
@@ -2030,6 +2069,19 @@ const GameList = ({ langId, currencyName }) => {
 							useGotoGame: true
 						},
 						{
+							...defGameInfo.LIVEcasinoMG,
+							spanText: "Microgaming",
+							img: `${cloudBannerImgURL}/h5/img/mgp.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_mg
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.LIVEcasinoDG,
 							spanText: "Dream Gaming",
 							img: `${cloudBannerImgURL}/h5/img/dg.png`
@@ -2601,6 +2653,19 @@ const GameList = ({ langId, currencyName }) => {
 							useGotoGame: true
 						},
 						{
+							...defGameInfo.LIVEcasinoMG,
+							spanText: "Microgaming",
+							img: `${cloudBannerImgURL}/h5/img/mgp.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_mg
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.LIVEcasinoN2Live,
 							spanText: "n2-LIVE",
 							img: `${cloudBannerImgURL}/h5/img/n2.png`
@@ -3025,6 +3090,11 @@ export const defGameInfo = {
 	LIVEcasinoMGP: { tpId: 34, tpGameType: 58 },
 	LIVEcasino_PT: { tpId: 27, gameId: "0", tpGameType: 48 },
 	LIVEcasinoEVO: { tpId: 36, gameId: 0, tpGameType: 63 },
+	LIVEcasinoMG: {
+		tpId: 34,
+		gameId: "0",
+		tpGameType: 58
+	},
 	Casino_All: { tpId: 0 },
 	Casino_MGP: { tpId: 34, tpGameType: 57 },
 	Casino_PP: { tpId: 5, tpGameType: 7 },

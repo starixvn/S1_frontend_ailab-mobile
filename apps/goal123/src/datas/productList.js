@@ -5,6 +5,7 @@ import { bannerImgUrl } from "../config";
 
 export const defGameInfo = {
 	Sports: { tpId: 1, gameId: 1, tpGameType: 1 },
+	SBOSport: { tpId: 42, tpGameType: 77 },
 	BTISport: { tpId: 29, tpGameType: 49 },
 	SabaSoccer: { tpId: 1, gameId: 997, tpGameType: 1 },
 	eSports: { tpId: 1, gameId: 43, tpGameType: 1 },
@@ -61,6 +62,11 @@ export const defGameInfo = {
 	LIVEcasinoEVO: { gameId: 0, tpId: 36, tpGameType: 63 },
 	LIVEcasinoPT: { tpId: 27, gameId: "0", tpGameType: 48 },
 	LIVEcasinoMGP: { tpId: 34, tpGameType: 58 },
+	LIVEcasinoMG: {
+		tpId: 34,
+		gameId: "0",
+		tpGameType: 58
+	},
 	Indo4d: { gameId: 223, tpId: 1, tpGameType: 20 },
 	NumberGame: { gameId: 161, tpId: 1, tpGameType: 2 },
 	kingMaker: { tpId: 11, tpGameType: 52 },
@@ -163,6 +169,17 @@ const gameList = [
 				...defGameInfo.Sports,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/soccer.png`,
 				spanTextKey: "lbl_Soccer"
+			},
+			{
+				...defGameInfo.SBOSport,
+				img: `${bannerImgUrl}/h5/img/hotgame/sports/sbo.png`,
+				spanText: "SBOBET",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.sportSbo)
+					}
+				]
 			},
 			{
 				...defGameInfo.BTISport,
@@ -545,6 +562,17 @@ const gameList = [
 					}
 				],
 				useGotoGame: true
+			},
+			{
+				...defGameInfo.LIVEcasinoMG,
+				spanText: "Microgaming",
+				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-mg.png`,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.liveCasino_mg)
+					}
+				]
 			},
 			// {
 			// 	...defGameInfo.LIVEcasinoMGP,

@@ -139,7 +139,7 @@ Inputbox.propTypes = {
 	inputBoxNewClass: PropTypes.string,
 	isShowPaste: PropTypes.bool,
 	EditFieldPaste: PropTypes.func,
-	pasteCol: null,
+	pasteCol: PropTypes.string,
 	hideInfoBtn: PropTypes.bool
 };
 

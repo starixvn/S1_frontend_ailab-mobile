@@ -516,7 +516,6 @@ const Panel = () => {
 							}
 						}
 					} catch (error) {
-						console.error(error);
 						setPopBox({
 							isOpen: true,
 							content: i18n.msg_ApiServerError

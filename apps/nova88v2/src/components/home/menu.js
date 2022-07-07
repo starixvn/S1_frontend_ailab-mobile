@@ -350,9 +350,7 @@ const SubGame = ({
 		<Link
 			className={isMaintain ? "active" : ""}
 			to={
-				game.path
-					? game.path
-					: category === "slot"
+				category === "slot"
 					? `${path.casino.root}/${game.tpId}`
 					: game.path
 			}

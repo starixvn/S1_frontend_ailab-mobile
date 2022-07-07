@@ -29,5 +29,7 @@ export const eventTime = {
 	casino_Habanero: { endDate: "2022/04/15 11:00:00" },
 	tableGame: { endDate: "2022/03/24 11:00:00" },
 	game_virtualGame: { endDate: "2022/04/24 11:00:00" },
-	sports_virtualSports: { endDate: "2022/04/24 11:00:00" }
+	sports_virtualSports: { endDate: "2022/04/24 11:00:00" },
+	liveCasino_mg: { endDate: "2022/08/08 11:00:00" },
+	sportSbo: { endDate: "2022/08/08 11:00:00" }
 };

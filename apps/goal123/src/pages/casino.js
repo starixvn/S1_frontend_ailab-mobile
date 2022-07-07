@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import PropTypes from "prop-types";
 import Slider from "../components/casino/slider";
 import defNav from "../components/casino/defNav";
 import Nav from "../components/casino/nav";
@@ -20,7 +21,7 @@ import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
 import { useGotoGame, defSpecialSetting } from "../components/hook/useGotoGame";
 import useSetTimeout from "../components/hook/useSetTimeout";
 import GameProviders from "../components/casino/gameProviders";
-import gameList, { defGameInfo, defSlotTpGameType } from "../datas/productList";
+import gameList, { defSlotTpGameType } from "../datas/productList";
 import Layout from "../components/common/layout";
 
 const eachPageItem = 20;
@@ -508,6 +509,30 @@ class Panel extends React.Component {
 	}
 }
 
+Panel.defaultProps = {
+	selNavIdx: null,
+	tpId: null,
+	selNav: null,
+	setPopBox: () => null,
+	i18n: null,
+	userInfo: null,
+	throttle: () => null,
+	handleGoToGame: () => null,
+	setNav: () => null
+};
+
+Panel.propTypes = {
+	selNavIdx: PropTypes.number,
+	tpId: PropTypes.number,
+	selNav: PropTypes.objectOf(PropTypes.any),
+	setPopBox: PropTypes.func,
+	i18n: PropTypes.objectOf(PropTypes.string),
+	userInfo: PropTypes.objectOf(PropTypes.any),
+	throttle: PropTypes.func,
+	handleGoToGame: PropTypes.func,
+	setNav: PropTypes.func
+};
+
 const IndexPage = props => {
 	const { throttle } = useSetTimeout();
 	const { i18n } = useContext(i18nContext);
@@ -535,6 +560,16 @@ const IndexPage = props => {
 			/>
 		</Layout>
 	);
+};
+
+IndexPage.defaultProps = {
+	location: null,
+	tpId: null
+};
+
+IndexPage.propTypes = {
+	location: PropTypes.objectOf(PropTypes.any),
+	tpId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 export default IndexPage;
