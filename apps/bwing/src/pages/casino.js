@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import PropTypes from "prop-types";
 import Slider from "../components/casino/slider";
 import defNav from "../components/casino/defNav";
 import Nav from "../components/casino/nav";
@@ -43,7 +44,7 @@ class Panel extends React.Component {
 			favorite: [],
 			selNav: Object.keys(defNav)?.[this.props.selNavIdx ?? 0],
 			imgUrl: "",
-			selProvider: this.props.tpId ?? {},
+			selProvider: this.props.tpId,
 			sorted: []
 		};
 	}
@@ -514,6 +515,30 @@ class Panel extends React.Component {
 	}
 }
 
+Panel.defaultProps = {
+	selNavIdx: null,
+	tpId: null,
+	selNav: null,
+	setPopBox: () => null,
+	i18n: null,
+	userInfo: null,
+	throttle: () => null,
+	handleGoToGame: () => null,
+	setNav: () => null
+};
+
+Panel.propTypes = {
+	selNavIdx: PropTypes.number,
+	tpId: PropTypes.number,
+	selNav: PropTypes.objectOf(PropTypes.any),
+	setPopBox: PropTypes.func,
+	i18n: PropTypes.objectOf(PropTypes.string),
+	userInfo: PropTypes.objectOf(PropTypes.any),
+	throttle: PropTypes.func,
+	handleGoToGame: PropTypes.func,
+	setNav: PropTypes.func
+};
+
 const IndexPage = props => {
 	const { throttle } = useSetTimeout();
 	const { i18n } = useContext(i18nContext);
@@ -539,6 +564,16 @@ const IndexPage = props => {
 			setPopBox={setPopBox}
 		/>
 	);
+};
+
+IndexPage.defaultProps = {
+	location: null,
+	tpId: null
+};
+
+IndexPage.propTypes = {
+	location: PropTypes.objectOf(PropTypes.any),
+	tpId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 export default IndexPage;

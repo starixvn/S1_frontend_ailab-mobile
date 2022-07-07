@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import PropTypes from "prop-types";
 import { Link } from "@reach/router";
 import {
 	userInfoContext,
@@ -17,7 +18,7 @@ import Filter from "./filter";
 import { bannerImgUrl } from "../../config";
 import MsgPopup from "./msgPopup";
 
-export default ({ hideLogo, title, selCategory, handleSelectCategory }) => {
+const Header = ({ hideLogo, title, selCategory, handleSelectCategory }) => {
 	const [isOpenSideMenu, setIsOpenSideMenu] = useState(false);
 	const { i18n } = useContext(i18nContext);
 	const { root } = useContext(rootContext);
@@ -82,7 +83,7 @@ export default ({ hideLogo, title, selCategory, handleSelectCategory }) => {
 			{handleSelectCategory && (
 				<Filter
 					handleSelect={handleSelectCategory}
-					selected={selCategory.type}
+					selected={selCategory?.type}
 				/>
 			)}
 			<SubMenu
@@ -91,6 +92,20 @@ export default ({ hideLogo, title, selCategory, handleSelectCategory }) => {
 			/>
 		</header>
 	);
+};
+
+Header.defaultProps = {
+	hideLogo: null,
+	title: null,
+	selCategory: null,
+	handleSelectCategory: () => null
+};
+
+Header.propTypes = {
+	hideLogo: PropTypes.bool,
+	title: PropTypes.string,
+	selCategory: PropTypes.objectOf(PropTypes),
+	handleSelectCategory: PropTypes.func
 };
 
 const BeforeLogin = ({ onClickSubMenu, isShow, title, hideLogo }) => {
@@ -112,6 +127,20 @@ const BeforeLogin = ({ onClickSubMenu, isShow, title, hideLogo }) => {
 			)}
 		</div>
 	) : null;
+};
+
+BeforeLogin.defaultProps = {
+	hideLogo: null,
+	title: null,
+	isShow: null,
+	onClickSubMenu: () => null
+};
+
+BeforeLogin.propTypes = {
+	hideLogo: PropTypes.bool,
+	title: PropTypes.string,
+	isShow: PropTypes.bool,
+	onClickSubMenu: PropTypes.func
 };
 
 const AfterLogin = ({
@@ -181,3 +210,35 @@ const AfterLogin = ({
 		)
 	);
 };
+
+AfterLogin.defaultProps = {
+	hideLogo: null,
+	title: null,
+	isShow: null,
+	onClickSubMenu: () => null,
+	i18n: null,
+	currencyId: null,
+	userName: null,
+	userLevel: null,
+	allBalance: null,
+	handleLogout: () => null,
+	vipImg: null,
+	userInfo: null
+};
+
+AfterLogin.propTypes = {
+	hideLogo: PropTypes.bool,
+	title: PropTypes.string,
+	isShow: PropTypes.bool,
+	onClickSubMenu: PropTypes.func,
+	i18n: PropTypes.objectOf(PropTypes.string),
+	currencyId: PropTypes.number,
+	userName: PropTypes.string,
+	userLevel: PropTypes.number,
+	allBalance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	handleLogout: PropTypes.func,
+	vipImg: PropTypes.arrayOf(PropTypes.string),
+	userInfo: PropTypes.objectOf(PropTypes.any)
+};
+
+export default Header;

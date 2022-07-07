@@ -35,7 +35,7 @@ const initWarning = {
 const Panel = () => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
-	const { setUserInfo, userInfo } = useContext(userInfoContext);
+	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setLoading } = useContext(loadingContext);
 	const [balanceInfo, setBalanceInfo] = useState(null);
