@@ -14,7 +14,7 @@ import { LOGOUT } from "../../service/auth";
 import Logo from "../img/logo";
 import { useGetBalance } from "./hook";
 import AppDownloadHint from "./appDownloadHint";
-import Filter from "./filter";
+// import Filter from "./filter";
 import { bannerImgUrl } from "../../config";
 import MsgPopup from "./msgPopup";
 
@@ -80,12 +80,12 @@ const Header = ({ hideLogo, title, selCategory, handleSelectCategory }) => {
 					userInfo={userInfo}
 				/>
 			</div>
-			{handleSelectCategory && (
+			{/* {handleSelectCategory && (
 				<Filter
 					handleSelect={handleSelectCategory}
 					selected={selCategory?.type}
 				/>
-			)}
+			)} */}
 			<SubMenu
 				handleSideMenuPanel={handleSideMenuPanel}
 				isOpenSideMenu={isOpenSideMenu}
