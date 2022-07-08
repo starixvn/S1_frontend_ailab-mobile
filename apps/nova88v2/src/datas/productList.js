@@ -138,19 +138,6 @@ const GameList = ({ langId, currencyName }) => {
 					categoryIcon: "livecasino",
 					translateKey: "lbl_LiveCasino",
 					items: [
-						// {
-						// 	...defGameInfo.LIVEcasinoMGP,
-						// 	spanText: "Microgaming",
-						// 	img: `${cloudBannerImgURL}/h5/img/mgp.png`,
-						// 	eventIcon: [
-						// 		{
-						// 			icon: defIconType.new,
-						// 			inPeriod: isEventPeriod(
-						// 				eventTime.casino_MGP
-						// 			)
-						// 		}
-						// 	],
-						// },
 						{
 							...defGameInfo.LIVEcasinoPP,
 							spanText: "Pragmatic Play",
@@ -160,6 +147,19 @@ const GameList = ({ langId, currencyName }) => {
 									icon: defIconType.new,
 									inPeriod: isEventPeriod(
 										eventTime.liveCasino_pp
+									)
+								}
+							]
+						},
+						{
+							...defGameInfo.LIVEcasinoMG,
+							spanText: "Microgaming",
+							img: `${cloudBannerImgURL}/h5/img/mgp.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_mg
 									)
 								}
 							]
@@ -182,19 +182,6 @@ const GameList = ({ langId, currencyName }) => {
 							spanText: "Playtech",
 							img: `${cloudBannerImgURL}/h5/img/ptc.png`,
 							useGotoGame: true
-						},
-						{
-							...defGameInfo.LIVEcasinoMG,
-							spanText: "Microgaming",
-							img: `${cloudBannerImgURL}/h5/img/mgp.png`,
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(
-										eventTime.liveCasino_mg
-									)
-								}
-							]
 						},
 						{
 							...defGameInfo.LIVEcasinoDG,
@@ -756,19 +743,6 @@ const GameList = ({ langId, currencyName }) => {
 					categoryIcon: "livecasino",
 					translateKey: "lbl_LiveCasino",
 					items: [
-						// {
-						// 	...defGameInfo.LIVEcasinoMGP,
-						// 	spanText: "Microgaming",
-						// 	img: `${cloudBannerImgURL}/h5/img/mgp.png`,
-						// 	eventIcon: [
-						// 		{
-						// 			icon: defIconType.new,
-						// 			inPeriod: isEventPeriod(
-						// 				eventTime.casino_MGP
-						// 			)
-						// 		}
-						// 	]
-						// },
 						{
 							...defGameInfo.LIVEcasinoPP,
 							spanText: "Pragmatic Play",
@@ -778,6 +752,19 @@ const GameList = ({ langId, currencyName }) => {
 									icon: defIconType.new,
 									inPeriod: isEventPeriod(
 										eventTime.liveCasino_pp
+									)
+								}
+							]
+						},
+						{
+							...defGameInfo.LIVEcasinoMG,
+							spanText: "Microgaming",
+							img: `${cloudBannerImgURL}/h5/img/mgp.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_mg
 									)
 								}
 							]
@@ -800,19 +787,6 @@ const GameList = ({ langId, currencyName }) => {
 							spanText: "Playtech",
 							img: `${cloudBannerImgURL}/h5/img/ptc.png`,
 							useGotoGame: true
-						},
-						{
-							...defGameInfo.LIVEcasinoMG,
-							spanText: "Microgaming",
-							img: `${cloudBannerImgURL}/h5/img/mgp.png`,
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(
-										eventTime.liveCasino_mg
-									)
-								}
-							]
 						},
 						{
 							...defGameInfo.LIVEcasinoDG,
@@ -1374,19 +1348,6 @@ const GameList = ({ langId, currencyName }) => {
 					categoryIcon: "livecasino",
 					translateKey: "lbl_LiveCasino",
 					items: [
-						// {
-						// 	...defGameInfo.LIVEcasinoMGP,
-						// 	spanText: "Microgaming",
-						// 	img: `${cloudBannerImgURL}/h5/img/mgp.png`,
-						// 	eventIcon: [
-						// 		{
-						// 			icon: defIconType.new,
-						// 			inPeriod: isEventPeriod(
-						// 				eventTime.casino_MGP
-						// 			)
-						// 		}
-						// 	]
-						// },
 						{
 							...defGameInfo.LIVEcasinoPP,
 							spanText: "Pragmatic Play",
@@ -1396,6 +1357,19 @@ const GameList = ({ langId, currencyName }) => {
 									icon: defIconType.new,
 									inPeriod: isEventPeriod(
 										eventTime.liveCasino_pp
+									)
+								}
+							]
+						},
+						{
+							...defGameInfo.LIVEcasinoMG,
+							spanText: "Microgaming",
+							img: `${cloudBannerImgURL}/h5/img/mgp.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_mg
 									)
 								}
 							]
@@ -1418,19 +1392,6 @@ const GameList = ({ langId, currencyName }) => {
 							spanText: "Playtech",
 							img: `${cloudBannerImgURL}/h5/img/ptc.png`,
 							useGotoGame: true
-						},
-						{
-							...defGameInfo.LIVEcasinoMG,
-							spanText: "Microgaming",
-							img: `${cloudBannerImgURL}/h5/img/mgp.png`,
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(
-										eventTime.liveCasino_mg
-									)
-								}
-							]
 						},
 						{
 							...defGameInfo.LIVEcasinoDG,
@@ -2023,19 +1984,6 @@ const GameList = ({ langId, currencyName }) => {
 					categoryIcon: "livecasino",
 					translateKey: "lbl_LiveCasino",
 					items: [
-						// {
-						// 	...defGameInfo.LIVEcasinoMGP,
-						// 	spanText: "Microgaming",
-						// 								img: `${cloudBannerImgURL}/h5/img/mgp.png`,
-						// 	eventIcon: [
-						// 		{
-						// 			icon: defIconType.new,
-						// 			inPeriod: isEventPeriod(
-						// 				eventTime.casino_MGP
-						// 			)
-						// 		}
-						// 	],
-						// },
 						{
 							...defGameInfo.LIVEcasinoPP,
 							spanText: "Pragmatic Play",
@@ -2045,6 +1993,19 @@ const GameList = ({ langId, currencyName }) => {
 									icon: defIconType.new,
 									inPeriod: isEventPeriod(
 										eventTime.liveCasino_pp
+									)
+								}
+							]
+						},
+						{
+							...defGameInfo.LIVEcasinoMG,
+							spanText: "Microgaming",
+							img: `${cloudBannerImgURL}/h5/img/mgp.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_mg
 									)
 								}
 							]
@@ -2067,19 +2028,6 @@ const GameList = ({ langId, currencyName }) => {
 							spanText: "Playtech",
 							img: `${cloudBannerImgURL}/h5/img/ptc.png`,
 							useGotoGame: true
-						},
-						{
-							...defGameInfo.LIVEcasinoMG,
-							spanText: "Microgaming",
-							img: `${cloudBannerImgURL}/h5/img/mgp.png`,
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(
-										eventTime.liveCasino_mg
-									)
-								}
-							]
 						},
 						{
 							...defGameInfo.LIVEcasinoDG,
@@ -2607,19 +2555,6 @@ const GameList = ({ langId, currencyName }) => {
 					categoryIcon: "livecasino",
 					translateKey: "lbl_LiveCasino",
 					items: [
-						// {
-						// 	...defGameInfo.LIVEcasinoMGP,
-						// 	spanText: "Microgaming",
-						// 	img: `${cloudBannerImgURL}/h5/img/mgp.png`,
-						// 	eventIcon: [
-						// 		{
-						// 			icon: defIconType.new,
-						// 			inPeriod: isEventPeriod(
-						// 				eventTime.casino_MGP
-						// 			)
-						// 		}
-						// 	]
-						// },
 						{
 							...defGameInfo.LIVEcasinoPP,
 							spanText: "Pragmatic Play",
@@ -2629,6 +2564,19 @@ const GameList = ({ langId, currencyName }) => {
 									icon: defIconType.new,
 									inPeriod: isEventPeriod(
 										eventTime.liveCasino_pp
+									)
+								}
+							]
+						},
+						{
+							...defGameInfo.LIVEcasinoMG,
+							spanText: "Microgaming",
+							img: `${cloudBannerImgURL}/h5/img/mgp.png`,
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.liveCasino_mg
 									)
 								}
 							]
@@ -2651,19 +2599,6 @@ const GameList = ({ langId, currencyName }) => {
 							spanText: "Playtech",
 							img: `${cloudBannerImgURL}/h5/img/ptc.png`,
 							useGotoGame: true
-						},
-						{
-							...defGameInfo.LIVEcasinoMG,
-							spanText: "Microgaming",
-							img: `${cloudBannerImgURL}/h5/img/mgp.png`,
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(
-										eventTime.liveCasino_mg
-									)
-								}
-							]
 						},
 						{
 							...defGameInfo.LIVEcasinoN2Live,

@@ -540,6 +540,17 @@ const gameList = [
 				]
 			},
 			{
+				...defGameInfo.LIVEcasinoMG,
+				spanText: "Microgaming",
+				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-mg.png`,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.liveCasino_mg)
+					}
+				]
+			},
+			{
 				...defGameInfo.LIVEcasinoEVO,
 				spanText: "Evolution Gaming",
 				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-evolution.png`,
@@ -563,28 +574,6 @@ const gameList = [
 				],
 				useGotoGame: true
 			},
-			{
-				...defGameInfo.LIVEcasinoMG,
-				spanText: "Microgaming",
-				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-mg.png`,
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.liveCasino_mg)
-					}
-				]
-			},
-			// {
-			// 	...defGameInfo.LIVEcasinoMGP,
-			// 	spanText: "Microgaming",
-			//  img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-mg.png`,
-			// 	eventIcon: [
-			// 		{
-			// 			icon: defIconType.new,
-			// 			inPeriod: isEventPeriod(eventTime.liveCasino_MGP)
-			// 		}
-			// 	]
-			// },
 			{
 				...defGameInfo.LIVEcasinoN2,
 				spanText: "n2-LIVE",

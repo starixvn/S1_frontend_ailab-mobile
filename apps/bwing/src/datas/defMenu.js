@@ -330,6 +330,18 @@ export const productList = langId => {
 					...defGameInfo.LIVEcasinoPP
 				},
 				{
+					displayText: "Microgaming",
+					icon: "icon icon-mg",
+					img: `${bannerImgUrl}/h5/img/liveGameNew/live-mg.png`,
+					...defGameInfo.LIVEcasinoMG,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.liveCasino_mg)
+						}
+					]
+				},
+				{
 					displayText: "Evolution Gaming",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-evo.png`,
 					...defGameInfo.LIVEcasinoEVO,
@@ -352,18 +364,6 @@ export const productList = langId => {
 						}
 					],
 					useGotoGame: true
-				},
-				{
-					displayText: "Microgaming",
-					icon: "icon icon-mg",
-					img: `${bannerImgUrl}/h5/img/liveGameNew/live-mg.png`,
-					...defGameInfo.LIVEcasinoMG,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.liveCasino_mg)
-						}
-					]
 				},
 				{
 					displayText: "n2-LIVE",
