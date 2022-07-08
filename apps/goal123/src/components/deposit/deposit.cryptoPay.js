@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useRef, useMemo } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
 import {
@@ -285,12 +285,12 @@ const Main = props => {
 			const curItem = map[pay.groupId];
 
 			if (pay.minAmount) {
-				if (!curItem.groupMin) curItem.groupMin = pay.minAmount;
-				curItem.groupMin = Math.min(curItem.groupMin, pay.minAmount);
+				if (!curItem.minAmount) curItem.minAmount = pay.minAmount;
+				curItem.minAmount = Math.min(curItem.minAmount, pay.minAmount);
 			}
 			if (pay.maxAmount) {
-				if (!curItem.groupMax) curItem.groupMax = pay.maxAmount;
-				curItem.groupMax = Math.max(curItem.groupMax, pay.maxAmount);
+				if (!curItem.maxAmount) curItem.maxAmount = pay.maxAmount;
+				curItem.maxAmount = Math.max(curItem.maxAmount, pay.maxAmount);
 			}
 		}
 		// eslint-disable-next-line guard-for-in
@@ -437,7 +437,8 @@ Main.propTypes = {
 	userPaymentData: PropTypes.objectOf(PropTypes.any),
 	handleUserPaymentData: PropTypes.func,
 	promoList: PropTypes.arrayOf(PropTypes.objectOf),
-	checkDepositSpecialCode: PropTypes.func.isRequired
+	checkDepositSpecialCode: PropTypes.func.isRequired,
+	creditTimeKey: PropTypes.string.isRequired
 };
 
 export default Main;
