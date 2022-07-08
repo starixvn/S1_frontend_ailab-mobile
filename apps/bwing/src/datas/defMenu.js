@@ -330,7 +330,7 @@ export const productList = langId => {
 					...defGameInfo.LIVEcasinoPP
 				},
 				{
-					displayKey: "Microgaming",
+					displayText: "Microgaming",
 					icon: "icon icon-mg",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-mg.png`,
 					...defGameInfo.LIVEcasinoMG,
