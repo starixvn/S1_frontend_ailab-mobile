@@ -165,17 +165,33 @@ const ProfileAddr = () => {
 			const setProfile = () => {
 				const profileData = {
 					AddressCountry:
-						userInfo.addressCountry ?? userValue.addressCountry,
+						userInfo.addressCountry &&
+						userInfo.addressCountry !== ""
+							? userInfo.addressCountry
+							: userValue.addressCountry,
 					AddressState:
-						userInfo.addressState ?? userValue.addressState,
+						userInfo.addressState && userInfo.addressState !== ""
+							? userInfo.addressState
+							: userValue.addressState,
 					AddressPostCode:
-						userInfo.addressPostCode ?? userValue.addressPostCode,
-					AddressCity: userInfo.addressCity ?? userValue.addressCity,
+						userInfo.addressPostCode &&
+						userInfo.addressPostCode !== ""
+							? userInfo.addressPostCode
+							: userValue.addressPostCode,
+					AddressCity:
+						userInfo.addressCity && userInfo.addressCity !== ""
+							? userInfo.addressCity
+							: userValue.addressCity,
 					AddressLineFirst:
-						userInfo.addressLineFirst ?? userValue.addressLineFirst,
+						userInfo.addressLineFirst &&
+						userInfo.addressLineFirst !== ""
+							? userInfo.addressLineFirst
+							: userValue.addressLineFirst,
 					AddressLineSecond:
-						userInfo.addressLineSecond ??
-						userValue.addressLineSecond
+						userInfo.addressLineSecond &&
+						userInfo.addressLineSecond !== ""
+							? userInfo.addressLineSecond
+							: userValue.addressLineSecond
 				};
 
 				api.accountStrict.SetProfileAddress(profileData).then(
