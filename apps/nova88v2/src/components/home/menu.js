@@ -346,14 +346,15 @@ const SubGame = ({
 		);
 	}
 
+	let _path = game.path;
+	if (category === "slot" && game.spanText !== "Mega888") {
+		_path = `${path.casino.root}/${game.tpId}`;
+	}
+
 	return game?.path ? (
 		<Link
 			className={isMaintain ? "active" : ""}
-			to={
-				category === "slot"
-					? `${path.casino.root}/${game.tpId}`
-					: game.path
-			}
+			to={_path}
 			state={game.parameter}
 			style={isMaintain ? { pointerEvents: "none" } : null}>
 			{content}
