@@ -694,20 +694,21 @@ const Panel = () => {
 					onBlur={VaildAmount.bind(this, amount)}
 				/>
 
-				<div className="tip">
-					{withdrawalLimit && (
-						<span className="times">
-							{`${i18n.lbl_Times}: ${
-								withdrawalLimit.withdrawalTimes
-							} / ${
-								withdrawalLimit.maxTimes
-									? withdrawalLimit.maxTimes
-									: i18n.lbl_Unlimited
-							}`}
-						</span>
-					)}
-					{withdrawalLimitHint}
-				</div>
+				{/* <div className="tip"> */}
+				{withdrawalLimit && (
+					<span className="times">
+						{`${i18n.lbl_Times}: ${
+							withdrawalLimit.withdrawalTimes
+						} / ${
+							withdrawalLimit.maxTimes
+								? withdrawalLimit.maxTimes
+								: i18n.lbl_Unlimited
+						}`}
+					</span>
+				)}
+				<br />
+				<span>{withdrawalLimitHint}</span>
+				{/* </div> */}
 
 				<div className="inputBox">
 					<div className="selectBank">
