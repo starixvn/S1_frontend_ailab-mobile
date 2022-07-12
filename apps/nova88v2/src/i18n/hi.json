@@ -378,6 +378,7 @@
 	"lbl_EmailVerificationHint1": "उच्च सुरक्षा स्तर के लिए अपना 'ईमेल पता' सत्यापित करें ",
 	"lbl_EmailVerificationHint2": "और {currency} {amount} का पुरस्कार अर्जित करें।",
 	"lbl_PhoneVerification": "फोन नंबर सत्यापन",
+  "lbl_Complete_PhoneVerification": "कृपया अपना मोबाइल फ़ोन (OTP) सत्यापन पूरा करें।",
 	"lbl_PhoneVerificationHint1": "Vउच्च सुरक्षा स्तर के लिए अपना 'फ़ोन नंबर' सत्यापित करें ",
 	"lbl_PhoneVerificationHint2": "और {currency} {amount} का पुरस्कार अर्जित करें।",
 	"lbl_EmailOTPHint": "ईमेल सत्यापन कोड आपके पंजीकृत मेल बॉक्स पर भेज दिया गया है।",

@@ -378,6 +378,7 @@
 	"lbl_EmailVerificationHint1": "Verify your 'Email Address' for higher security level",
 	"lbl_EmailVerificationHint2": "and earn reward of {currency} {amount}",
 	"lbl_PhoneVerification": "Phone Number Verification",
+  "lbl_Complete_PhoneVerification": "Please complete your Mobile Phone (OTP) verification.",
 	"lbl_PhoneVerificationHint1": "Verify your 'Phone Number' for higher security level",
 	"lbl_PhoneVerificationHint2": "and earn reward of {currency} {amount}",
 	"lbl_EmailOTPHint": "Email Verification Code has been sent to your registered mail box.",

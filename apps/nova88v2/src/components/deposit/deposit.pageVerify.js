@@ -24,21 +24,24 @@ export default (
 						setPopBox({ isOpen: false });
 						navigate(`/${userInfo.langId}/${path.profile.root}`);
 					};
-
-					setPopBox({
-						isOpen: true,
-						title: i18n.lbl_ImportantNote,
-						content: i18n.lbl_UpdatePersonalInfo,
-						hasBtn: true,
-						hideCloseBtn: true,
-						btnBar: (
-							<div className="btn-group">
-								<button className="blue" onClick={ClosePopBox}>
-									{i18n.lbl_UpdatePersonalDetail}
-								</button>
-							</div>
-						)
-					});
+					if (userInfo.regTime) {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_ImportantNote,
+							content: i18n.lbl_UpdatePersonalInfo,
+							hasBtn: true,
+							hideCloseBtn: true,
+							btnBar: (
+								<div className="btn-group">
+									<button
+										className="blue"
+										onClick={ClosePopBox}>
+										{i18n.lbl_UpdatePersonalDetail}
+									</button>
+								</div>
+							)
+						});
+					}
 					if (mounted) {
 						setPageVerify(false);
 					}
