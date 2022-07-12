@@ -372,6 +372,7 @@
 	"lbl_EmailVerificationHint1": "Mengesahkan 'Alamat E-mel' anda untuk dapatkan tahap",
 	"lbl_EmailVerificationHint2": "keselamatan yang lebih kuat dan dapatkan ganjaran sebanyak {currency} {amount}",
 	"lbl_PhoneVerification": "Pengesahan Nombor Telefon",
+  "lbl_Complete_PhoneVerification": "Sila lengkapkan pengesahan Telefon Mudah Alih (OTP) anda.",
 	"lbl_PhoneVerificationHint1": "Mengesahkan 'Nombor Telefon' anda untuk dapatkan tahap keselamatan yang",
 	"lbl_PhoneVerificationHint2": "lebih tinggi dan dapatkan ganjaran sebanyak {currency} {amount}",
 	"lbl_EmailOTPHint": "Kod Pengesahan E-mel telah dihantar ke peti mel berdaftar anda.",
