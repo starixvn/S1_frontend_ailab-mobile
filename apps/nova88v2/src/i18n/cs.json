@@ -380,6 +380,7 @@
 	"lbl_EmailVerificationHint1": "验证您的 “电邮地址” 以得更高等级安全保障及",
 	"lbl_EmailVerificationHint2": "赚取奖金 {currency} {amount}。",
 	"lbl_PhoneVerification": "手机号码验证",
+  "lbl_Complete_PhoneVerification": "请完成您的手机 (OTP) 验证。",
 	"lbl_PhoneVerificationHint1": "验证您的 “手机号码” 以得更高等级安全保障",
 	"lbl_PhoneVerificationHint2": "及赚取奖金 {currency} {amount}。",
 	"lbl_EmailOTPHint": "电邮验证码已发到您的电邮收件箱",

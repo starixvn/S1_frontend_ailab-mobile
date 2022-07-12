@@ -373,6 +373,7 @@
 	"lbl_EmailVerificationHint1": "ยืนยัน 'ที่อยู่อีเมล' ของคุณสำหรับความปลอดภัยที่สูงขึ้นและรับรางวัลเป็นจำนวน",
 	"lbl_EmailVerificationHint2": " {currency} {amount}",
 	"lbl_PhoneVerification": "การยืนยันหมายเลขโทรศัพท์",
+  "lbl_Complete_PhoneVerification": "โปรดดำเนินการยืนยันโทรศัพท์มือถือ (OTP) ของคุณให้เสร็จสิ้น",
 	"lbl_PhoneVerificationHint1": "ยืนยัน 'หมายเลขโทรศัพท์' ของคุณสำหรับความปลอดภัยที่สูงขึ้นและรับรางวัลเป็นจำนวน",
 	"lbl_PhoneVerificationHint2": " {currency} {amount}",
 	"lbl_EmailOTPHint": "รหัสยืนยันอีเมลถูกส่งไปยังกล่องจดหมายที่คุณลงทะเบียนแล้ว",

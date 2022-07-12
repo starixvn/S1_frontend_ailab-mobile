@@ -54,7 +54,6 @@ const Panel = () => {
 	const { showTips, showTipHandler } = useTip();
 	const [recentDatas, setRecentDatas] = useState([]);
 	const [pageVerify, setPageVerify] = useState(true);
-
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -67,6 +66,40 @@ const Panel = () => {
 			GetDailyWithdrawalLimit();
 		}
 	}, [userInfo.isLogin]);
+
+	useEffect(() => {
+		if (
+			userInfo.isLogin &&
+			userInfo.currencyId === defCurrenyId.INR &&
+			!userInfo.phoneVerified
+		) {
+			setPopBox({
+				isOpen: true,
+				title: i18n.lbl_Withdrawal,
+				content: i18n.lbl_Complete_PhoneVerification,
+				hasBtn: true,
+				btnBar: (
+					<div className="btn-group">
+						<button
+							className="gray"
+							onClick={() => setPopBox({ isOpen: false })}>
+							{i18n.lbl_Later}
+						</button>
+						<button
+							className="blue"
+							onClick={() => {
+								navigate(
+									`/${userInfo.langId}/${path.profile.root}`
+								);
+								setPopBox({ isOpen: false });
+							}}>
+							{i18n.lbl_VerifyNow}
+						</button>
+					</div>
+				)
+			});
+		}
+	}, [userInfo.currencyId]);
 
 	const GetDailyWithdrawalLimit = () => {
 		api.payment.GetWithdrawalLimit().then(
@@ -130,7 +163,6 @@ const Panel = () => {
 								res.data.data?.bankInfoDetail &&
 								res.data.data?.bankInfoDetail.length > 0
 							) {
-								setPopBox({ isOpen: false });
 								if (isMountedRef.current) {
 									setbankInfo(() => ({
 										accountName: res.data.data.accountName,
@@ -248,7 +280,6 @@ const Panel = () => {
 		navigate,
 		setLoading
 	]);
-
 	const KycCheck = async UpdatePageVerify => {
 		const executeKycProcess = await api.payment.KycCheck().then(res => {
 			if (isMountedRef.current) {
@@ -421,7 +452,6 @@ const Panel = () => {
 											});
 									}
 								});
-
 								setPopBox({ isOpen: false });
 							} else {
 								let content = res.data.message;
@@ -728,14 +758,20 @@ const Panel = () => {
 							withdrawalLimit.maxTimes > 0 &&
 							withdrawalLimit.withdrawalTimes >=
 								withdrawalLimit.maxTimes
+						) &&
+						!(
+							!userInfo.phoneVerified &&
+							userInfo.currencyId === defCurrenyId.INR
 						)
 							? ""
 							: "gray"
 					}
 					disabled={
-						withdrawalLimit.maxTimes > 0 &&
-						withdrawalLimit.withdrawalTimes >=
-							withdrawalLimit.maxTimes
+						(withdrawalLimit.maxTimes > 0 &&
+							withdrawalLimit.withdrawalTimes >=
+								withdrawalLimit.maxTimes) ||
+						(!userInfo.phoneVerified &&
+							userInfo.currencyId === defCurrenyId.INR)
 					}
 					data-testid="submit_withdrawal"
 					onClick={checkAccount}>
