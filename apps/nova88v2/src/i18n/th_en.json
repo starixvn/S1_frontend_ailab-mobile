@@ -655,7 +655,7 @@
 	"lbl_ExchangeRate": "Exchange rate",
 	"lbl_ExchangeRateReferenceOnly": "This rate is only for refence",
 	"lbl_ExchangeAmount": "Exchange Amount",
-	"lbl_PaymentModes": "PAYMENT METHODS",
+	"lbl_PaymentModes": "Payment Modes",
 	"lbl_SelectChannel": "Select Channel",
 	"lbl_MinMaxAmount": "Min/Max Limit",
 	"lbl_SelectBank": "Select Bank",

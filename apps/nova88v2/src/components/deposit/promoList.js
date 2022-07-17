@@ -107,12 +107,12 @@ const PromoList = ({
 					/>
 
 					<div className={inputClassName}>
-						<i className="icon icon-pencil" />
 						<input
 							value={input}
 							placeholder={i18n.lbl_PromoCode}
 							onChange={onChangeInput}
 						/>
+						<i className="icon icon-pencil" />
 					</div>
 
 					<DepositPromoTip

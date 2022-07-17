@@ -23,6 +23,7 @@ import ImportantNote from "./importantNote";
 import UserPaymentSwitch, { useGetUserPaymentData } from "./userPaymentData";
 import { useGetDomainList } from "../hook/useGetDomainList";
 import { useGetDepositPromotionList } from "./promoList";
+import Balance from "./deposit.balance";
 
 const defPayType = {
 	autoDeposit: "autoDeposit",
@@ -553,6 +554,7 @@ const Panel = () => {
 	};
 	return (
 		<>
+			<Balance />
 			<UserPaymentSwitch
 				i18n={i18n}
 				userPaymentSwitch={userPaymentSwitch}

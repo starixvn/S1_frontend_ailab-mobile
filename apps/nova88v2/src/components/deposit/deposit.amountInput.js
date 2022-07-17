@@ -21,7 +21,8 @@ const AmountInput = ({
 	EditAmount,
 	msg,
 	status,
-	currencyId
+	currencyId,
+	noInfoModule
 }) => {
 	const { showTips, showTipHandler } = useTip();
 	const { amountRule, amountList, minAmount, maxAmount } = channel;
@@ -40,7 +41,9 @@ const AmountInput = ({
 				</button>
 			);
 		});
-		content = (
+		content = noInfoModule ? (
+			<div className="buttonBox">{rows}</div>
+		) : (
 			<div className="selectModule">
 				<div className="buttonBox">{rows}</div>
 			</div>
@@ -58,7 +61,50 @@ const AmountInput = ({
 				</button>
 			);
 		});
-		content = (
+		content = noInfoModule ? (
+			<>
+				<div className="infoModule">
+					<div
+						className={`inputInfo${
+							showTips.includes("amountInput") ? " active" : ""
+						}`}>
+						{tip}
+					</div>
+					<div
+						className={`inputBox${
+							status && status !== 0 ? " error" : ""
+						}`}>
+						<input
+							type="tel"
+							inputMode={payType === "localBank" ? "decimal" : ""}
+							onChange={EditAmount}
+							placeholder={
+								minAmount && maxAmount
+									? `${
+											i18n.lbl_MinMaxAmount
+									  }: ${number_format(
+											minAmount,
+											_isConvert,
+											0
+									  )} / ${number_format(
+											maxAmount,
+											_isConvert,
+											0
+									  )}`
+									: ""
+							}
+							value={amount}
+						/>
+
+						<div className="icon-module">
+							<i className="icon icon-pencil" />
+						</div>
+					</div>
+					{status ? <div className="tip">{msg}</div> : null}
+				</div>
+				<div className="buttonBox">{rows}</div>
+			</>
+		) : (
 			<div className="selectModule">
 				<div className="infoModule">
 					<div
@@ -128,7 +174,8 @@ AmountInput.defaultProps = {
 	tip: "",
 	msg: "",
 	status: null,
-	currencyId: null
+	currencyId: null,
+	noInfoModule: false
 };
 
 AmountInput.propTypes = {
@@ -143,8 +190,9 @@ AmountInput.propTypes = {
 	EditAmount: PropTypes.func.isRequired,
 	payType: PropTypes.string.isRequired,
 	msg: PropTypes.string,
-	status: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
-	currencyId: PropTypes.number
+	status: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	currencyId: PropTypes.number,
+	noInfoModule: PropTypes.bool
 };
 
 export default AmountInput;

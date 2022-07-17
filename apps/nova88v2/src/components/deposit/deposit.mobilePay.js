@@ -13,8 +13,8 @@ import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
 import { useHandleAmount } from "../hook/useHandleAmount";
 import { defPopBoxType } from "../common/popbox";
-import PromoList from "./promoList";
 import useTip from "../hook/useTip";
+import PromoList from "./promoList";
 
 const defInputCol = {
 	payAccount: "payAccount"

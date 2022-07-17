@@ -9,7 +9,7 @@
   "ignorePatterns": ["**/*", "config-overrides.js"],
   "plugins": ["import","@typescript-eslint", "@nrwl/nx"],
   "extends": [
-    "airbnb", 
+    "airbnb",
     "airbnb/hooks",
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",

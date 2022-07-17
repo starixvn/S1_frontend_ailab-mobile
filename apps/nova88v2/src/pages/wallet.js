@@ -73,7 +73,6 @@ const Wallet = () => {
 		return accumulator + currentValue.balance;
 	}, 0);
 	total += mainWalletInfo.balance;
-
 	Object.values(bonusWallets).forEach(w => {
 		total += w.bonus;
 	});
@@ -88,7 +87,6 @@ const Wallet = () => {
 			/>
 		);
 	});
-
 	return (
 		<>
 			<div className="walletTotal">
@@ -236,5 +234,11 @@ const IndexPage = props => {
 		</Layout>
 	);
 };
+IndexPage.defaultProps = {
+	location: null
+};
 
+IndexPage.propTypes = {
+	location: PropTypes.objectOf(PropTypes.any)
+};
 export default IndexPage;

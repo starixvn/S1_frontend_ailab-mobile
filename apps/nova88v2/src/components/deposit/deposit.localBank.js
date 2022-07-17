@@ -195,7 +195,7 @@ const Payment = props => {
 	};
 
 	const SubmitProof = (bankInfo, accInfo) => {
-		const { currencyId, ...restBankInfo } = bankInfo;
+		const { ...restBankInfo } = bankInfo;
 		const { accountName, accountNo } = accInfo;
 		setbankSlipPopBox(prev => ({
 			...prev,
@@ -403,7 +403,7 @@ const Payment = props => {
 			};
 
 			const real_amount = _isConvert
-				? Math.floor(Number(amount) * 1000)
+				? Number(amount) * 1000
 				: Number(amount);
 			setPopBox({
 				isOpen: true,
@@ -458,26 +458,6 @@ const Payment = props => {
 		amount !== "" &&
 		VaildAmount({ amount, displayWarning: false }) &&
 		reciptIsRequired;
-
-	const judgeBtnStatus = () => {
-		if (selBank.canSubmit && canSubmit) {
-			ClickSubmit();
-		}
-	};
-
-	const isShowSubmit = paymentList.filter(
-		item => item.sysId === selBank.sysId
-	)[0]?.canSubmit;
-	const classStyle = () => {
-		let result = "";
-		if (isShowSubmit && canSubmit) {
-			result = "blue";
-		} else {
-			result = isShowSubmit ? "gray" : "orange";
-		}
-		return result;
-	};
-
 	return (
 		<div className="depositModule active">
 			<div className="title text-org icon icon-credit-card">
@@ -497,28 +477,7 @@ const Payment = props => {
 				accountInfo={accountInfo}
 				displayKey="bankName"
 				_isConvert={_isConvert}
-			/>
-			<AmountInput
-				title={i18n.lbl_DepositAmount}
-				channel={selBank}
-				i18n={i18n}
-				_isConvert={_isConvert}
-				amount={amount}
-				SelectAmount={SelectAmount}
-				EditAmount={EditLocalBankAmount}
-				payType={payType}
-				tip={i18n.lbl_AmountTooltip?.replace(
-					"{{0}}",
-					selBank?.minAmount
-						? number_format(selBank?.minAmount, _isConvert, 0)
-						: 1
-				)}
-				msg={warning.msg}
-				status={warning.status}
-				currencyId={userInfo.currencyId}
-			/>
-			<DepositChannel
-				i18n={i18n}
+				// deposit channel
 				DepositChannelProps={{
 					HandleDepositChannel,
 					selDepositChannel,
@@ -531,6 +490,20 @@ const Payment = props => {
 					bankAccountlWarning
 				}}
 				userPaymentData={userPaymentData?.localBankChannel}
+				// deposit amount
+				amount={amount}
+				SelectAmount={SelectAmount}
+				EditAmount={EditLocalBankAmount}
+				tip={i18n.lbl_AmountTooltip?.replace(
+					"{{0}}",
+					selBank?.minAmount
+						? number_format(selBank?.minAmount, _isConvert, 0)
+						: 1
+				)}
+				msg={warning.msg}
+				status={warning.status}
+				currencyId={userInfo.currencyId}
+				SubmitProof={SubmitProof}
 			/>
 
 			<PromoList
@@ -543,11 +516,11 @@ const Payment = props => {
 			/>
 
 			<div className="btn-group">
-				<button className={classStyle()} onClick={judgeBtnStatus}>
-					{isShowSubmit ? i18n.lbl_Submit : i18n.lbl_DepositStatus1}
-				</button>
-				<button onClick={SubmitProof.bind(this, selBank, accountInfo)}>
-					{i18n.lbl_UploadReceipt}
+				<button
+					className={canSubmit ? "orange" : "gray"}
+					disabled={!canSubmit}
+					onClick={ClickSubmit}>
+					{i18n.lbl_Submit}
 				</button>
 			</div>
 		</div>
@@ -583,96 +556,121 @@ const GroupList = ({
 	imgKeyWithExtension,
 	accountInfo,
 	displayKey,
-	_isConvert
+	_isConvert,
+	DepositChannelProps,
+	BankAccountProps,
+	userPaymentData,
+	amount,
+	SelectAmount,
+	EditAmount,
+	tip,
+	msg,
+	status,
+	currencyId,
+	SubmitProof
 }) => {
 	const { i18n } = useContext(i18nContext);
+	const [selectedBank, setSelectedBank] = useState(dataList[0]);
 	const rows = dataList?.map(data => {
 		const _mainKey = `${mainKey}-${data[idKey]}`;
-		const isSelect = selected === data[idKey];
-		const { canSubmit } = data;
-		return isSelect ? (
-			<div className="info infoAccount" key={_mainKey}>
-				<ul>
-					<li>
-						<div
-							className={`bankName active ${
-								canSubmit ? "" : "pending"
-							}`}>
-							<img
-								className="bankimg"
-								key={`${_mainKey}-img`}
-								src={`${prefixImgUrl}${
-									imgKeyWithExtension
-										? data[imgKey]?.toLowerCase()
-										: `${data[imgKey]?.toLowerCase()}.png`
-								}`}
-								alt={data[imgKey] ?? ""}
-							/>
-							{canSubmit ? "" : <div className="mask" />}
-							<i className="icon icon-icon32px_check" />
-						</div>
-						<a
-							href={accountInfo.bankSite}
-							target="_blank"
-							rel="noreferrer">
-							<button className="icon icon-new-tab clickBtn" />
-						</a>
-					</li>
-					<CopyBtn value={accountInfo.accountName} />
-					<CopyBtn value={accountInfo.accountNo} />
-				</ul>
-			</div>
-		) : (
-			<div
-				key={_mainKey}
-				className={`bankName ${canSubmit ? "" : "pending"}`}
-				onClick={SelectPayment.bind(
-					this,
-					bindFullObj ? data : data[idKey]
-				)}>
-				<img
-					key={`${_mainKey}-img`}
-					src={`${prefixImgUrl}${
-						imgKeyWithExtension
-							? data[imgKey]?.toLowerCase()
-							: `${data[imgKey]?.toLowerCase()}.png`
-					}`}
-					alt={data[imgKey] ?? ""}
-				/>
-				{canSubmit ? "" : <div className="mask" />}
-				<i className="icon icon-icon32px_check" />
-				<div className="bank">
-					<div>{data[displayKey]}</div>
-
-					{data?.minAmount && data?.maxAmount ? (
-						<div>
-							<div>
-								{`${i18n.lbl_Min}: ${number_format(
-									data.minAmount,
-									_isConvert,
-									0
-								)} `}
-							</div>
-							<div>
-								{`${i18n.lbl_Max}: ${number_format(
-									data.maxAmount,
-									_isConvert,
-									0
-								)}`}
-							</div>
-						</div>
-					) : null}
+		return (
+			<div>
+				<div
+					className={`bankName ${
+						data.bankCode === selectedBank.bankCode ? "active" : ""
+					} ${data.canSubmit ? "" : "pending"}`}
+					key={_mainKey}
+					onClick={() => {
+						setSelectedBank(data);
+						SelectPayment(data);
+					}}>
+					<img
+						key={`${_mainKey}-img`}
+						src={`${prefixImgUrl}${
+							imgKeyWithExtension
+								? data[imgKey]?.toLowerCase()
+								: `${data[imgKey]?.toLowerCase()}.png`
+						}`}
+						alt={data[imgKey] ?? ""}
+					/>
+					<i className="icon icon-icon32px_check" />
+					{data.canSubmit === false && <div className="mask" />}
 				</div>
+				<div>{data.bankCode}</div>
 			</div>
 		);
 	});
+	const additionalRows = () => {
+		return (
+			<>
+				<div className="info infoAccount">
+					<ul>
+						<li>
+							<img
+								src={`${prefixImgUrl}${
+									imgKeyWithExtension
+										? selectedBank.bankLogo?.toLowerCase()
+										: `${selectedBank.bankLogo?.toLowerCase()}.png`
+								}`}
+								alt={selectedBank.bankLogo ?? ""}
+							/>
+							<div>{selectedBank.bankCode}</div>
+						</li>
+						<CopyBtn value={accountInfo.accountName} />
+						<CopyBtn value={accountInfo.accountNo} />
+					</ul>
+				</div>
+				<DepositChannel
+					i18n={i18n}
+					DepositChannelProps={DepositChannelProps}
+					BankAccountProps={BankAccountProps}
+					userPaymentData={userPaymentData}
+				/>
+				<div className="btn-group">
+					<button
+						onClick={SubmitProof.bind(
+							this,
+							selectedBank,
+							accountInfo
+						)}>
+						{i18n.lbl_UploadReceipt}
+					</button>
+				</div>
+				<AmountInput
+					title={i18n.lbl_DepositAmount}
+					channel={selectedBank}
+					i18n={i18n}
+					_isConvert={_isConvert}
+					amount={amount}
+					SelectAmount={SelectAmount}
+					EditAmount={EditAmount}
+					payType={payType}
+					tip={tip}
+					msg={msg}
+					status={status}
+					currencyId={currencyId}
+					noInfoModule={true}
+				/>
+			</>
+		);
+	};
+
+	const renderPage = () => {
+		return (
+			<>
+				{rows}
+				{additionalRows()}
+			</>
+		);
+	};
+
 	return (
 		<>
 			<div className="title">
 				<span className="text-org">*</span>
 				{title}
 			</div>
-			<div className="selectModule">{rows}</div>
+			<div className="selectModule selectNew">{renderPage()}</div>
 		</>
 	);
 };
@@ -682,7 +680,18 @@ GroupList.defaultProps = {
 	selected: null,
 	bindFullObj: false,
 	imgKeyWithExtension: false,
-	accountInfo: {}
+	accountInfo: {},
+	DepositChannelProps: {},
+	BankAccountProps: {},
+	userPaymentData: {},
+	amount: "",
+	SelectAmount: () => null,
+	EditAmount: () => null,
+	tip: "",
+	msg: "",
+	status: "",
+	currencyId: null,
+	SubmitProof: () => null
 };
 
 GroupList.propTypes = {
@@ -702,7 +711,18 @@ GroupList.propTypes = {
 	imgKeyWithExtension: PropTypes.bool,
 	accountInfo: PropTypes.objectOf(PropTypes.any),
 	displayKey: PropTypes.string.isRequired,
-	_isConvert: PropTypes.bool.isRequired
+	_isConvert: PropTypes.bool.isRequired,
+	DepositChannelProps: PropTypes.objectOf(PropTypes.any),
+	BankAccountProps: PropTypes.objectOf(PropTypes.any),
+	userPaymentData: PropTypes.objectOf(PropTypes.any),
+	amount: PropTypes.string,
+	SelectAmount: PropTypes.func,
+	EditAmount: PropTypes.func,
+	tip: PropTypes.string,
+	msg: PropTypes.string,
+	status: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	currencyId: PropTypes.number,
+	SubmitProof: PropTypes.func
 };
 
 class CopyBtn extends Component {

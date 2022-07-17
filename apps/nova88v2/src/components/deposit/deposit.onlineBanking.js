@@ -345,7 +345,6 @@ const Payment = props => {
 	};
 
 	const _isConvert = isConvert(userInfo.currencyId);
-
 	return (
 		<div className="depositModule active">
 			<div className="title text-org icon icon-connection">
