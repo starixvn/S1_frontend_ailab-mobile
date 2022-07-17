@@ -5045,7 +5045,7 @@ button.clickBtn:before {
   z-index: 1;
   font-weight: bold;
   color: #F77A00;
-  text-shadow: 1px 0px 0px white, -1px 0px 0px white, 0px 1px 0px white, 0px -1px 0px white, 1px -1px 0px white, 1px 1px 0px white, -1px 1px 0px white, -1px -1px 0px white;
+  text-shadow: 1px 0px 0px white, -1px 0px 0px white, 0px 1px 0px white, 0px -1px 0px white, 1px -1px 0px white, 1px 1px 0px white, -1px 1px 0px white, -1px -1px 0px white;
 }
 
 .casino .slotList .info span.icon {
@@ -11408,7 +11408,7 @@ span.important {
 }
 
 .worldcupEvent .eventPage.bottom {
-  padding: 10vw 0;
+  padding: 0 0 10vw 0;
   text-align: center;
   background: -webkit-gradient(linear, left top, left bottom, from(#300113), to(#810736));
   background: linear-gradient(#300113, #810736);
@@ -11573,20 +11573,327 @@ span.important {
 
 .worldcupEvent .fixture {
   position: relative;
+  padding: 5vw 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  background: url(https://banner.0814media.net/h5/img/event/worldcup/fixturebg.jpg) no-repeat top center/contain, -webkit-gradient(linear, left top, left bottom, color-stop(50%, #300113), to(#4a031e));
+  background: url(https://banner.0814media.net/h5/img/event/worldcup/fixturebg.jpg) no-repeat top center/contain, linear-gradient(180deg, #300113 50%, #4a031e 100%);
 }
 
-.worldcupEvent .fixture .icon-search {
-  position: absolute;
-  left: 1vw;
-  top: 1vw;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 1.2vw;
-  border-radius: 3px;
+.worldcupEvent .fixture .title {
+  margin: 3vw auto 18vw;
 }
 
-.worldcupEvent .fixture img {
-  max-width: 100%;
-  margin: 0 auto;
+.worldcupEvent .fixture button {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.worldcupEvent .fixture .group-prize {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.worldcupEvent .fixture .group-prize .prize {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 2vw 5vw;
+}
+
+.worldcupEvent .fixture .group-prize .prize > div {
+  color: #fff;
+  font-size: 3vw;
+  margin-bottom: 1.25vw;
+}
+
+.worldcupEvent .fixture .group-prize .prize > div:nth-child(2) {
+  background: -webkit-gradient(linear, left top, left bottom, from(#CB9942), color-stop(15.1%, #F6EF6B), color-stop(34.38%, #FFFDF0), color-stop(51.56%, #DB9130), color-stop(72.4%, #744C10), color-stop(91.15%, #CA8422));
+  background: linear-gradient(180deg, #CB9942 0%, #F6EF6B 15.1%, #FFFDF0 34.38%, #DB9130 51.56%, #744C10 72.4%, #CA8422 91.15%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-filter: drop-shadow(0px 3px 1px #922707);
+          filter: drop-shadow(0px 3px 1px #922707);
+  letter-spacing: 1px;
+  white-space: nowrap;
+  font-size: 5.5vw;
+  font-weight: 600;
+}
+
+.worldcupEvent .fixture .group-tab {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0 18vw;
+  margin-bottom: 5vw;
+}
+
+.worldcupEvent .fixture .group-tab button {
+  padding: 2vw;
+  font-size: 4vw;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  color: #bcbcbc;
+}
+
+.worldcupEvent .fixture .group-tab button.active {
+  color: #fff;
+  border-bottom: 1vw solid #FF5E00;
+  font-weight: 600;
+}
+
+.worldcupEvent .fixture .tab-group {
+  display: none;
+  opacity: 0;
+}
+
+.worldcupEvent .fixture .tab-group.open {
+  display: block;
+  opacity: 1;
+}
+
+.worldcupEvent .fixture .tab-group + .subtitle {
+  font-size: 4.25vw;
+  display: block;
+  text-align: left;
+  margin: 5vw auto 3vw 6vw;
+}
+
+.worldcupEvent .fixture .group-tab-date {
+  width: 100%;
+  overflow-y: scroll;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.worldcupEvent .fixture .group-tab-date button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 3vw 4vw;
+  margin-right: 1vw;
+  background: #76002E;
+}
+
+.worldcupEvent .fixture .group-tab-date button > div {
+  color: #fff;
+}
+
+.worldcupEvent .fixture .group-tab-date button > div:first-child {
+  font-size: 3.5vw;
+  text-transform: capitalize;
+}
+
+.worldcupEvent .fixture .group-tab-date button > div:nth-child(2) {
+  font-size: 5vw;
+  font-weight: 600;
+}
+
+.worldcupEvent .fixture .group-tab-date button > div:last-child {
+  font-size: 3vw;
+  text-transform: uppercase;
+  color: #4FCDC0;
+}
+
+.worldcupEvent .fixture .group-tab-date button.active {
+  background: #FF004E;
+}
+
+.worldcupEvent .fixture .group-tab-sort {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.worldcupEvent .fixture .group-tab-sort button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 6vw 4vw;
+  margin-right: 1vw;
+  background: #76002E;
+}
+
+.worldcupEvent .fixture .group-tab-sort button:last-child {
+  margin-right: 0;
+}
+
+.worldcupEvent .fixture .group-tab-sort button:last-child > div {
+  text-transform: uppercase;
+}
+
+.worldcupEvent .fixture .group-tab-sort button > div {
+  color: #fff;
+  font-size: 3.5vw;
+  text-transform: capitalize;
+}
+
+.worldcupEvent .fixture .group-tab-sort button.active {
+  background: #FF004E;
+}
+
+.worldcupEvent .fixture .group-match {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.worldcupEvent .fixture .group-match .match {
+  font-size: 3.5vw;
+  padding: 3vw 6vw;
+  border-top: 1px solid #bcbcbc;
+  border-bottom: 1px solid #bcbcbc;
+  color: #fff;
+}
+
+.worldcupEvent .fixture .group-match .match:first-child {
+  border-top: 0;
+}
+
+.worldcupEvent .fixture .group-match .match img {
+  width: 8vw;
+  border: 1px solid #fff;
+}
+
+.worldcupEvent .fixture .group-match .match .order {
+  width: 100%;
+  margin: 2vw auto 3vw;
+  display: block;
+  text-transform: capitalize;
+}
+
+.worldcupEvent .fixture .group-match .match > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.worldcupEvent .fixture .group-match .match .team {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1.5;
+      -ms-flex: 1.5 0;
+          flex: 1.5 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-transform: capitalize;
+}
+
+.worldcupEvent .fixture .group-match .match .team.right {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.worldcupEvent .fixture .group-match .match .time {
+  margin: 1vw 2.5vw;
+  font-size: 3vw;
+  text-transform: uppercase;
+}
+
+.worldcupEvent .fixture .group-match .match .time span {
+  font-weight: 600;
+  display: block;
+  font-size: 4.75vw;
+}
+
+.worldcupEvent .fixture .group-list {
+  width: 100%;
+  overflow-y: scroll;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 6vw;
+}
+
+.worldcupEvent .fixture .group-list .group-item {
+  background: #76002E;
+  border-radius: 1vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 3vw 5vw;
+  margin-right: 3vw;
+  min-width: 50vw;
+}
+
+.worldcupEvent .fixture .group-list .group-item .group-title {
+  font-size: 3.75vw;
+  font-weight: 600;
+  text-align: left;
+  margin-bottom: 3vw;
+}
+
+.worldcupEvent .fixture .group-list .group-item .team {
+  padding-bottom: 2vw;
+  margin-bottom: 2vw;
+  border-bottom: 1px solid #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 3vw;
+}
+
+.worldcupEvent .fixture .group-list .group-item .team:last-child {
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 1vw;
+}
+
+.worldcupEvent .fixture .group-list .group-item .team img {
+  width: 6vw;
+  border: 1px solid #fff;
+  margin-right: 2vw;
 }
 
 .worldcupEvent .event {
@@ -11872,6 +12179,7 @@ span.important {
   padding: 1vw 2vw;
   margin: auto 1vw;
   border-radius: 3px;
+  font-size: 3vw;
 }
 
 .worldcupEvent .btn-group .btn-gray {
@@ -11940,10 +12248,11 @@ span.important {
 .worldcupEvent .info .content {
   margin: 3vw auto;
   width: 100%;
+  font-size: 3vw;
 }
 
 .worldcupEvent .info .content span {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 600;
   color: #c6d4f1;
   display: contents;
@@ -12017,7 +12326,7 @@ span.important {
   color: #284985;
   margin: 2vw 0;
   font-size: 3.5vw;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: bold;
 }
 
@@ -12027,5 +12336,6 @@ span.important {
 
 .mainWallet .account .icon:before {
   font-size: 3vw;
+  margin-right: 1vw;
 }
 /*# sourceMappingURL=style.css.map */

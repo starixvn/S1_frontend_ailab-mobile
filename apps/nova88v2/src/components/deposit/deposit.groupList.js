@@ -1,7 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import { i18nContext } from "../common/context";
-import { number_format } from "../common/common";
 
 const GroupList = ({
 	mainKey,
@@ -18,57 +16,51 @@ const GroupList = ({
 	displayKey,
 	_isConvert,
 	isCrypto,
-	titleClassName
+	titleClassName,
+	i18n
 }) => {
-	const { i18n } = useContext(i18nContext);
 	const rows = dataList?.map(data => {
 		const _mainKey = `${mainKey}-${data[idKey]}`;
 		const isSelect = selected === data[idKey];
+		const itemLabel = () => {
+			let result;
+			if (isCrypto && title === i18n.lbl_PaymentModes) {
+				result = data.groupName;
+			} else if (isCrypto && title === i18n.lbl_SelectChannel) {
+				result = data.channelName;
+			} else {
+				result = data.bankCode ?? data.payName ?? data.groupName;
+			}
+			return result;
+		};
+
 		return (
-			<div
-				className={`bankName${isSelect ? " active" : ""}`}
-				key={_mainKey}
-				onClick={() => {
-					SelectPayment({
-						groupInfo:
-							idKey === "payId" || idKey === "groupId" || isCrypto
-								? data
-								: bindingItem,
-						bankInfo: bindFullObj ? data : data[idKey]
-					});
-				}}>
-				<img
-					src={`${prefixImgUrl}${
-						imgKeyWithExtension
-							? data[imgKey]?.toLowerCase()
-							: `${data[imgKey]?.toLowerCase()}.png`
-					}`}
-					alt={data[imgKey] ?? ""}
-				/>
-				<i className="icon icon-icon32px_check" />
-				<div className="bank">
-					<div>{data[displayKey]}</div>
-					<div>
-						{data?.minAmount > 0 && (
-							<div>
-								{`${i18n.lbl_Min}: ${number_format(
-									data.groupMin || data.minAmount,
-									_isConvert,
-									0
-								)}`}
-							</div>
-						)}
-						{data?.maxAmount > 0 && (
-							<div>
-								{`${i18n.lbl_Max}:  ${number_format(
-									data.groupMax || data.maxAmount,
-									_isConvert,
-									0
-								)}`}
-							</div>
-						)}
-					</div>
+			<div>
+				<div
+					className={`bankName${isSelect ? " active" : ""}`}
+					key={_mainKey}
+					onClick={() => {
+						SelectPayment({
+							groupInfo:
+								idKey === "payId" ||
+								idKey === "groupId" ||
+								isCrypto
+									? data
+									: bindingItem,
+							bankInfo: bindFullObj ? data : data[idKey]
+						});
+					}}>
+					<img
+						src={`${prefixImgUrl}${
+							imgKeyWithExtension
+								? data[imgKey]?.toLowerCase()
+								: `${data[imgKey]?.toLowerCase()}.png`
+						}`}
+						alt={data[imgKey] ?? ""}
+					/>
+					<i className="icon icon-icon32px_check" />
 				</div>
+				<div>{itemLabel()}</div>
 			</div>
 		);
 	});
@@ -83,7 +75,7 @@ const GroupList = ({
 					<span className="text-org">*</span>
 					{title}
 				</div>
-				<div className="selectModule">{rows}</div>
+				<div className="selectModule selectNew">{rows}</div>
 			</>
 		)
 	);
@@ -97,7 +89,8 @@ GroupList.defaultProps = {
 	bindingItem: null,
 	displayKey: "",
 	isCrypto: false,
-	titleClassName: ""
+	titleClassName: "",
+	i18n: {}
 };
 
 GroupList.propTypes = {
@@ -119,7 +112,8 @@ GroupList.propTypes = {
 	displayKey: PropTypes.string,
 	_isConvert: PropTypes.bool.isRequired,
 	isCrypto: PropTypes.bool,
-	titleClassName: PropTypes.string
+	titleClassName: PropTypes.string,
+	i18n: PropTypes.objectOf(PropTypes.string)
 };
 
 export default GroupList;

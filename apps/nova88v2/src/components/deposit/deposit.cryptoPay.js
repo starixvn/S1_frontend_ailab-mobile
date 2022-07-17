@@ -370,6 +370,7 @@ const Main = props => {
 				displayKey="payName"
 				_isConvert={_isConvert}
 				isCrypto={true}
+				i18n={i18n}
 			/>
 
 			<GroupList
@@ -386,6 +387,7 @@ const Main = props => {
 				prefixImgUrl={`${cloudImgURL}/SiteSkin/img/CryptoPay/`}
 				displayKey="channelName"
 				_isConvert={_isConvert}
+				i18n={i18n}
 			/>
 
 			<AmountInput

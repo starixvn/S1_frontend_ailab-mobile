@@ -107,7 +107,7 @@
 	"msg_EnterRealName": "Please enter your real name.",
 	"lbl_RealName": "Real Name",
 	"msg_MailWrongFormat": "Mail Format is wrong.",
-	"msg_PasswordVaildate": "Password must be 6-15 characters, contain alphanumeric.",
+	"msg_PasswordVaildate": "* Password must be 6-15 characters, contain both alphanumeric and a special characters (!@#$%^&*).",
 	"lbl_Phone": "Phone Number",
 	"lbl_Submit": "Submit",
 	"lbl_Profile": "Profile",
@@ -274,6 +274,7 @@
 	"lbl_Kog": "KOG",
 
 	"==============================================Casino====================================": "",
+
 	"lbl_AllProvider": "All Platform",
 	"lbl_AllGameType": "All Categories",
 	"lbl_SearchGames": "Search Games",
@@ -654,7 +655,7 @@
 	"lbl_ExchangeRate": "Exchange rate",
 	"lbl_ExchangeRateReferenceOnly": "This rate is only for refence",
 	"lbl_ExchangeAmount": "Exchange Amount",
-	"lbl_PaymentModes": "PAYMENT METHODS",
+	"lbl_PaymentModes": "Payment Modes",
 	"lbl_SelectChannel": "Select Channel",
 	"lbl_MinMaxAmount": "Min/Max Limit",
 	"lbl_SelectBank": "Select Bank",
