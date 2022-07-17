@@ -9248,6 +9248,62 @@ span.important {
   position: absolute;
   top: 60vw;
   z-index: 2;
+  -webkit-animation: flash 1s ease alternate infinite;
+          animation: flash 1s ease alternate infinite;
+}
+
+@-webkit-keyframes flash {
+  0% {
+    -webkit-transform: translate(0%, 1%);
+            transform: translate(0%, 1%);
+    -webkit-filter: brightness(80%);
+            filter: brightness(80%);
+  }
+  3% {
+    opacity: 0.1;
+  }
+  5% {
+    opacity: 0.8;
+  }
+  7% {
+    opacity: 0.2;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1.1) translate(0%, 0%);
+            transform: scale(1.1) translate(0%, 0%);
+    -webkit-filter: brightness(150%);
+            filter: brightness(150%);
+  }
+}
+
+@keyframes flash {
+  0% {
+    -webkit-transform: translate(0%, 1%);
+            transform: translate(0%, 1%);
+    -webkit-filter: brightness(80%);
+            filter: brightness(80%);
+  }
+  3% {
+    opacity: 0.1;
+  }
+  5% {
+    opacity: 0.8;
+  }
+  7% {
+    opacity: 0.2;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1.1) translate(0%, 0%);
+            transform: scale(1.1) translate(0%, 0%);
+    -webkit-filter: brightness(150%);
+            filter: brightness(150%);
+  }
 }
 
 .worldCup .txtBox .info {
@@ -9282,8 +9338,8 @@ span.important {
   -webkit-filter: brightness(120%);
           filter: brightness(120%);
   position: absolute;
-  bottom: -.5vw;
-  left: -8vw;
+  bottom: -1.5vw;
+  left: -5vw;
 }
 
 @media screen and (min-width: 768px) {
@@ -9512,9 +9568,361 @@ span.important {
   width: 10vw;
 }
 
-.worldCup .playoff {
-  width: 110%;
-  margin: 2rem 0;
+.worldCup .fixturebg {
+  z-index: 0;
+}
+
+.worldCup .fixture {
+  width: 100%;
+  position: relative;
+}
+
+.worldCup .fixture > .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 2vw;
+}
+
+.worldCup .fixture > .title > span {
+  position: relative;
+}
+
+.worldCup .fixture > .title::before {
+  width: 120%;
+  height: 60vw;
+  position: absolute;
+  content: "";
+  background: url(https://banner.bw88.io/img/worldcup/h5fixturebg.png) no-repeat top center;
+  background-size: cover;
+  z-index: 0;
+  top: -.5vw;
+}
+
+.worldCup .fixture > .title > img {
+  width: 60vw;
+  z-index: 1;
+}
+
+.worldCup .fixture .btn-group {
+  margin: 20vw 0 1vw 0;
+  position: relative;
+}
+
+.worldCup .fixture .btn-group::before {
+  content: "";
+  background: url(https://banner.bw88.io/img/worldcup/h5soccer.png) no-repeat;
+  background-size: 100%;
+  width: 90vw;
+  height: 90vw;
+  position: absolute;
+  z-index: 0;
+  top: -9vw;
+  -webkit-animation: shake 1.5s ease-in-out infinite;
+          animation: shake 1.5s ease-in-out infinite;
+}
+
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+  }
+  50% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+  }
+}
+
+@keyframes shake {
+  0% {
+    -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+  }
+  50% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+  }
+}
+
+.worldCup .fixture .btn-group button {
+  color: #CFCFCF;
+  background: #810235;
+  font-size: 3.5vw;
+  padding: 2vw;
+  border-radius: 0;
+  margin: 0;
+  z-index: 1;
+}
+
+.worldCup .fixture .btn-group button.active {
+  color: #FFF;
+  background: #FD004C;
+}
+
+.worldCup .fixture .contest {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.worldCup .fixture .contest .bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: scroll;
+}
+
+.worldCup .fixture .contest .bar > button {
+  min-width: 20vw;
+  height: 20vw;
+  padding: 2vw;
+  margin: 0 2px;
+  display: inline-block;
+  position: relative;
+  color: #CFCFCF;
+  font-size: 3.5vw;
+  background: #810235;
+}
+
+.worldCup .fixture .contest .bar > button h1 {
+  font-size: 5vw;
+  font-weight: bold;
+}
+
+.worldCup .fixture .contest .bar > button span {
+  color: #00CFB7;
+}
+
+.worldCup .fixture .contest .bar > button.active {
+  color: #fff;
+  background: #FD004C;
+}
+
+.worldCup .fixture .contest .prizeModule {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  pointer-events: none;
+}
+
+.worldCup .fixture .contest .prizeModule > div {
+  color: #fff;
+  font-size: 4vw;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: -85vw;
+  z-index: 2;
+}
+
+.worldCup .fixture .contest .prizeModule > div .prize {
+  font-size: 5vw;
+  font-weight: bolder;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #efe698), color-stop(35%, #fefebe), color-stop(50%, #f8d65a), color-stop(60%, #c79522), color-stop(65%, #e0b31b), to(#fed86b));
+  background: linear-gradient(to bottom, #efe698 20%, #fefebe 35%, #f8d65a 50%, #c79522 60%, #e0b31b 65%, #fed86b 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 0.5px #faa719;
+}
+
+.worldCup .fixture .contest .prizeModule > div .prize span {
+  font-size: 3vw;
+  margin-left: 1vw;
+}
+
+.worldCup .fixture .contest .prizeModule > div.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.worldCup .fixture .contest .prizeModule > div:nth-child(n+4) {
+  left: calc(50% - 22vw);
+}
+
+.worldCup .fixture .contest .matchGroup {
+  width: 100%;
+}
+
+.worldCup .fixture .contest .matchGroup > div {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  margin-top: 2vw;
+}
+
+.worldCup .fixture .contest .matchGroup > div.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.worldCup .fixture .contest .matchGroup > div .match {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #D80241;
+  font-size: 3.5vw;
+  text-align: center;
+  margin: 2vw 0;
+  border-bottom: 1px solid #810235;
+}
+
+.worldCup .fixture .contest .matchGroup > div .match .team {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.worldCup .fixture .contest .matchGroup > div .match .team > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.worldCup .fixture .contest .matchGroup > div .match .team .name {
+  width: 36vw;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: auto;
+  font-weight: normal;
+  font-size: 4vw;
+}
+
+.worldCup .fixture .contest .matchGroup > div .match .team img {
+  width: 9vw;
+  height: 6vw;
+  border: 1px solid #00CFB7;
+}
+
+.worldCup .fixture .contest .matchGroup > div .match .team .time {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  color: #fff;
+  font-size: 5vw;
+  width: 15vw;
+  margin: 2vw;
+}
+
+.worldCup .fixture .contest .matchGroup > div .match .team .time > i {
+  font-size: 3vw;
+}
+
+.worldCup .fixture .contest.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.worldCup .fixture .groups {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  margin-bottom: 5vw;
+}
+
+.worldCup .fixture .groups > span {
+  font-size: 4vw;
+  color: #fff;
+}
+
+.worldCup .fixture .groups > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2vw;
+  overflow: scroll;
+}
+
+.worldCup .fixture .groups > div .team {
+  min-width: 45vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  background: #810235;
+  padding: 2vw;
+  margin-right: 5px;
+}
+
+.worldCup .fixture .groups > div .team .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  margin: 0;
+  font-size: 4vw;
+}
+
+.worldCup .fixture .groups > div .team .name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: normal;
+  padding: 2vw 0;
+  border-bottom: 1px solid #FD004C;
+  margin-bottom: 1vw;
+  font-size: 4vw;
+}
+
+.worldCup .fixture .groups > div .team img {
+  width: 7vw;
+  height: 5vw;
+  margin: 1vw 2vw 0 0;
+  border: 1px solid #00CFB7;
 }
 
 .worldCup .predict {

@@ -75,24 +75,22 @@ const Channel = ({ i18n, DepositChannelProps, userPaymentData }) => {
 	return (
 		<>
 			<div className="title">
-				<span className="text-org">*</span>
+				<span>*</span>
 				{i18n.lbl_DepositChannel}
 			</div>
-			<div className="selectModule">
-				<Dropdown
-					mainKey="localbank-depositChannel"
-					colName="Channel"
-					selectedIdx={selDepositChannel}
-					options={defDepositChannel}
-					onSelectItem={HandleDepositChannel}
-					infoText={i18n.lbl_LocalBankDepositChannelTip}
-					hideInfo={true}
-					checked={depositChannelWarning.status !== 1 ?? null}
-					warningMsg={depositChannelWarning.msg}
-					i18n={i18n}
-					onBlur={() => HandleDepositChannel(null)}
-				/>
-			</div>
+			<Dropdown
+				mainKey="localbank-depositChannel"
+				colName="Channel"
+				selectedIdx={selDepositChannel}
+				options={defDepositChannel}
+				onSelectItem={HandleDepositChannel}
+				infoText={i18n.lbl_LocalBankDepositChannelTip}
+				hideInfo={true}
+				checked={depositChannelWarning.status !== 1 ?? null}
+				warningMsg={depositChannelWarning.msg}
+				i18n={i18n}
+				onBlur={() => HandleDepositChannel(null)}
+			/>
 		</>
 	);
 };
@@ -135,7 +133,7 @@ const BankAccount = ({ i18n, BankAccountProps, userPaymentData }) => {
 				<span className="text-org">*</span>
 				{i18n.lbl_BankDetails}
 			</div>
-			<div className="selectModule">
+			<div className="selectModule inner">
 				<Dropdown
 					defaultOption={
 						selBankAccount === null

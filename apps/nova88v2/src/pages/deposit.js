@@ -18,7 +18,10 @@ const IndexPage = props => {
 			value={{ bankSlipPopBox, setbankSlipPopBox }}>
 			<Layout
 				header={header}
-				mainClass={getMainClass({ defTabs, location: props })}>
+				mainClass={`${getMainClass({
+					defTabs,
+					location: props
+				})} deposit`}>
 				<Content />
 			</Layout>
 			<BankSlip />
