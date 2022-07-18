@@ -65,7 +65,7 @@ const IndexPage = () => {
 			<Info langId={userInfo.langId} />
 			<div className="vipPage">
 				<div className="text">
-					{i18n.lbl_Vip_Last_Updated}: 04/29/2022
+					{i18n.lbl_Vip_Last_Updated}: 07/19/2022
 				</div>
 				<EventList langId={userInfo.langId} />
 				<FooterBanner
