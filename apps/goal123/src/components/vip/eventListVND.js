@@ -158,45 +158,45 @@ const EventListVND = ({ i18n }) => (
 				<td colSpan="7">{i18n.lbl_Vip_Sport_Rebate}</td>
 			</tr>
 			<tr>
-				<td>0.4%</td>
-				<td>0.45%</td>
-				<td>0.55%</td>
-				<td>0.65%</td>
-				<td>0.75%</td>
-				<td>1%</td>
+				<td>0.60%</td>
+				<td>0.70%</td>
+				<td>0.80%</td>
+				<td>0.90%</td>
+				<td>1.00%</td>
+				<td>1.10%</td>
 			</tr>
 			<tr>
 				<td colSpan="7">{i18n.lbl_Vip_LiveCasino_Rebate}</td>
 			</tr>
 			<tr>
-				<td>0.4%</td>
-				<td>0.5%</td>
-				<td>0.6%</td>
-				<td>0.65%</td>
-				<td>0.7%</td>
-				<td>0.8%</td>
+				<td>0.25%</td>
+				<td>0.30%</td>
+				<td>0.35%</td>
+				<td>0.40%</td>
+				<td>0.45%</td>
+				<td>0.50%</td>
 			</tr>
 			<tr>
 				<td colSpan="7">{i18n.lbl_Vip_SlotFishing_Rebate}</td>
 			</tr>
 			<tr>
-				<td>0.6%</td>
-				<td>0.7%</td>
-				<td>0.8%</td>
-				<td>0.9%</td>
-				<td>1%</td>
-				<td>1.2%</td>
+				<td>0.20%</td>
+				<td>0.25%</td>
+				<td>0.30%</td>
+				<td>0.35%</td>
+				<td>0.40%</td>
+				<td>0.45%</td>
 			</tr>
 			<tr>
 				<td colSpan="7">{i18n.lbl_Vip_VirtualSport_Rebate}</td>
 			</tr>
 			<tr>
-				<td>0.7%</td>
-				<td>0.8%</td>
-				<td>0.9%</td>
-				<td>1%</td>
-				<td>1.1%</td>
-				<td>1.2%</td>
+				<td>0.70%</td>
+				<td>0.80%</td>
+				<td>0.90%</td>
+				<td>1.10%</td>
+				<td>1.20%</td>
+				<td>1.50%</td>
 			</tr>
 			<tr className="title">
 				<td colSpan="7" className="icon icon-nova88">
