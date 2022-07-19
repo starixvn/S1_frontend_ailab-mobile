@@ -31,7 +31,7 @@ const EN = () => {
 				<li>SPORTSBOOK WELCOME BONUS</li>
 				<li>LIVE CASINO WELCOME BONUS</li>
 				<li>SLOT GAME WELCOME BONUS</li>
-				<li>DAILY CASH REBATE UP TO 2.1%</li>
+				<li>DAILY CASH REBATE UP TO 1.5%</li>
 			</ul>
 			<div className="title">
 				ENJOY NOVA88 VIP EXCLUSIVE BONUS & REBATES
@@ -61,7 +61,7 @@ const TH_EN = () => {
 				<li>SPORTSBOOK WELCOME BONUS</li>
 				<li>LIVE CASINO WELCOME BONUS</li>
 				<li>SLOT GAME WELCOME BONUS</li>
-				<li>DAILY CASH REBATE UP TO 2.1%</li>
+				<li>DAILY CASH REBATE UP TO 1.5%</li>
 			</ul>
 			<div className="title">
 				ENJOY NOVA88 VIP EXCLUSIVE BONUS & REBATES
@@ -91,7 +91,7 @@ const CS = () => {
 				<li>体育博彩迎新首存红利</li>
 				<li>真人娱乐迎新首存红利</li>
 				<li>老虎机迎新首存红利</li>
-				<li>每日现金返水 高达 2.1%</li>
+				<li>每日现金返水 高达 1.5%</li>
 			</ul>
 			<div className="title">豪享NOVA88尊贵优惠红利与返水</div>
 			<ul>
@@ -114,7 +114,7 @@ const MY = () => {
 				<li>PEK PERMULAAN NOVA88</li>
 				<li>BONUS KASINO LIVE</li>
 				<li>SLOT BONUS SELAMAT DATANG</li>
-				<li>BONUS DEPOSIT SEMULA HARIAN MENCECAH 2.1%</li>
+				<li>BONUS DEPOSIT SEMULA HARIAN MENCECAH 1.5%</li>
 			</ul>
 			<div className="title">
 				NIKMATI BONUS & REBAT EKSKLUSIF AHLI VIP NOVA88
@@ -145,7 +145,7 @@ const TH = () => {
 				<li>โบนัสต้อนรับสมาชิกใหม่ สปอร์ตบุ๊ค</li>
 				<li>โบนัสต้อนรับสมาชิกใหม่ คาสิโนสด</li>
 				<li>โบนัสต้อนรับสมาชิกใหม่ เกมสล็อต</li>
-				<li>เงินคืนยอดเล่นรายวัน สูงสุด 2.1%</li>
+				<li>เงินคืนยอดเล่นรายวัน สูงสุด 1.5%</li>
 			</ul>
 			<div className="title">
 				เพลิดเพลินไปกับ NOVA88 โบนัสและเงินคืนพิเศษ
@@ -172,7 +172,7 @@ const ID_EN = () => {
 				<li>SPORTSBOOK WELCOME BONUS</li>
 				<li>LIVE CASINO WELCOME BONUS</li>
 				<li>SLOT GAME WELCOME BONUS</li>
-				<li>DAILY CASH REBATE UP TO 2.1%</li>
+				<li>DAILY CASH REBATE UP TO 1.5%</li>
 			</ul>
 			<div className="title">
 				ENJOY NOVA88 VIP EXCLUSIVE BONUS & REBATES
@@ -202,7 +202,7 @@ const ID = () => {
 				<li>BONUS SPORTSBOOK</li>
 				<li>BONUS LIVE CASINO</li>
 				<li>BONUS SLOT MESIN</li>
-				<li>REBATE HARIAN HINGGA 2.1%</li>
+				<li>REBATE HARIAN HINGGA 1.5%</li>
 			</ul>
 			<div className="title">
 				NIKMATI BONUS & REBATE EKSKLUSIF NOVA88 VIP
@@ -230,7 +230,7 @@ const HI_EN = () => {
 				<li>SPORTSBOOK WELCOME BONUS</li>
 				<li>LIVE CASINO WELCOME BONUS</li>
 				<li>SLOT GAME WELCOME BONUS</li>
-				<li>DAILY CASH REBATE UP TO 2.1%</li>
+				<li>DAILY CASH REBATE UP TO 1.5%</li>
 			</ul>
 			<div className="title">
 				ENJOY NOVA88 VIP EXCLUSIVE BONUS & REBATES
@@ -260,7 +260,7 @@ const HI = () => {
 				<li>स्पोर्ट्सबुक वेलकम बोनस</li>
 				<li>लाइव कैसीनो वेलकम बोनस</li>
 				<li>स्लॉट्स गेम वेलकम बोनस</li>
-				<li>2.1% तक की दैनिक नकद छूट</li>
+				<li>1.5% तक की दैनिक नकद छूट</li>
 			</ul>
 			<div className="title">
 				NOVA88 वीआईपी विशेष बोनस और छूट का आनंद लें
