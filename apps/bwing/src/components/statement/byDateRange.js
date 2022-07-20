@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import moment from "moment";
 import { useNavigate } from "@reach/router";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
@@ -11,7 +12,7 @@ import path from "../../path";
 import { useHandlePage } from "./hook";
 import Loading from "../common/loading";
 
-export default props => {
+const ByDateRange = props => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -109,39 +110,52 @@ export default props => {
 		);
 	});
 
-	return loading ? (
-		<Loading />
-	) : datas !== null ? (
-		<>
-			<Breadcrumbs
-				locationInfo={props}
-				root={path.statement.root}
-				i18n={i18n}
-				customDisplayKey={{
-					[path.statement.root]: "lbl_QuickPick",
-					timePeriod: dateRange
-				}}
-			/>
-			{datas?.length !== 0 ? (
-				<>
-					<div className="inputBox page">
-						<Dropdown
-							options={pageOptions}
-							mainKey="betList-Date-Range"
-							onSelectItem={onSelectPage}
-							selectedIdx={selectedPage}
-						/>
-					</div>
+	let content = null;
+	if (loading) {
+		content = <Loading />;
+	} else if (datas !== null) {
+		content = (
+			<>
+				<Breadcrumbs
+					locationInfo={props}
+					root={path.statement.root}
+					i18n={i18n}
+					customDisplayKey={{
+						[path.statement.root]: "lbl_QuickPick",
+						timePeriod: dateRange
+					}}
+				/>
+				{datas?.length !== 0 ? (
+					<>
+						<div className="inputBox page">
+							<Dropdown
+								options={pageOptions}
+								mainKey="betList-Date-Range"
+								onSelectItem={onSelectPage}
+								selectedIdx={selectedPage}
+							/>
+						</div>
 
-					<div className="recent open">{detailArr}</div>
-				</>
-			) : (
-				<div className="nodata icon icon-nodata">
-					<div className="txt-white">{i18n.msg_NoData}</div>
-				</div>
-			)}
-		</>
-	) : null;
+						<div className="recent open">{detailArr}</div>
+					</>
+				) : (
+					<div className="nodata icon icon-nodata">
+						<div className="txt-white">{i18n.msg_NoData}</div>
+					</div>
+				)}
+			</>
+		);
+	}
+
+	return content;
+};
+
+ByDateRange.defaultProps = {
+	timePeriod: ""
+};
+
+ByDateRange.propTypes = {
+	timePeriod: PropTypes.string
 };
 
 const Detail = ({
@@ -157,8 +171,14 @@ const Detail = ({
 		<div className="info infoBlack">
 			<ul>
 				<li>
-					<span className="title">{i18n.lbl_SettledDate}</span>
-					<span>{moment(settledDate).format("YYYY/MM/DD")}</span>
+					<span className="title">
+						{i18n.lbl_SettledDate} (+07:00)
+					</span>
+					<span>
+						{moment(settledDate, "YYYY-MM-DDThh:mm:ssZ")
+							.zone("+07:00")
+							.format("YYYY/MM/DD")}
+					</span>
 				</li>
 				<li>
 					<span className="title">{i18n.lbl_Turnover}</span>
@@ -185,3 +205,20 @@ const Detail = ({
 		</div>
 	);
 };
+
+Detail.defaultProps = {
+	toByDayPage: () => null,
+	_isConvert: null
+};
+
+Detail.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	settledDate: PropTypes.string.isRequired,
+	turnOver: PropTypes.number.isRequired,
+	validBet: PropTypes.number.isRequired,
+	winlostAmount: PropTypes.number.isRequired,
+	toByDayPage: PropTypes.func,
+	_isConvert: PropTypes.bool
+};
+
+export default ByDateRange;

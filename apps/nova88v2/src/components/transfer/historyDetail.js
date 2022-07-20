@@ -1,7 +1,7 @@
 import React from "react";
 import moment from "moment";
 import PropTypes from "prop-types";
-import { number_format } from "../common/common";
+import { number_format, currencyIdToTimeZone } from "../common/common";
 
 const Detail = ({
 	i18n,
@@ -12,19 +12,34 @@ const Detail = ({
 	createTime,
 	amount,
 	_isConvert,
-	status
+	status,
+	currencyId
 }) => {
 	const _status = status === 0 ? i18n.lbl_Success : i18n.lbl_Fail;
+	const timeZone = currencyIdToTimeZone[currencyId];
+
 	return (
 		<div className="info transfer">
 			<ul>
 				<li>
-					<span className="title">{i18n.lbl_Date}</span>
-					<span>{moment(createTime).format("MM/DD/YYYY(Z)")}</span>
+					<span className="title">
+						{i18n.lbl_Date} ({timeZone})
+					</span>
+					<span>
+						{moment(createTime, "YYYY-MM-DDThh:mm:ssZ")
+							.zone(timeZone)
+							.format("MM/DD/YYYY")}
+					</span>
 				</li>
 				<li>
-					<span className="title">{i18n.lbl_Time}</span>
-					<span>{moment(createTime).format("hh:mm:ss A")}</span>
+					<span className="title">
+						{i18n.lbl_Time} ({timeZone})
+					</span>
+					<span>
+						{moment(createTime, "YYYY-MM-DDThh:mm:ssZ")
+							.zone(timeZone)
+							.format("hh:mm:ss A")}
+					</span>
 				</li>
 				<li>
 					<span className="title">{i18n.lbl_ID}</span>
@@ -62,7 +77,8 @@ Detail.defaultProps = {
 	startWallet: "",
 	endWallet: "",
 	memo: "",
-	status: null
+	status: null,
+	currencyId: null
 };
 
 Detail.propTypes = {
@@ -76,7 +92,8 @@ Detail.propTypes = {
 	amount: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 		.isRequired,
 	_isConvert: PropTypes.bool,
-	status: PropTypes.number
+	status: PropTypes.number,
+	currencyId: PropTypes.number
 };
 
 export default Detail;

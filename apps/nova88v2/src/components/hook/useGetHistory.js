@@ -1,9 +1,16 @@
 import { useEffect, useContext, useRef, useState } from "react";
 import moment from "moment";
-import { loadingContext, popBoxContext, i18nContext } from "../common/context";
+import {
+	loadingContext,
+	popBoxContext,
+	i18nContext,
+	userInfoContext
+} from "../common/context";
+import { currencyIdToTimeZone } from "../common/common";
 
 export default ({ api }) => {
 	const { i18n } = useContext(i18nContext);
+	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setLoading } = useContext(loadingContext);
 	const [filterData, setFilterData] = useState(null);
@@ -11,6 +18,8 @@ export default ({ api }) => {
 	const [history, setHistory] = useState(null);
 	const [pageInfo, setPageInfo] = useState({ pageNumber: 0, totalPages: 0 });
 	const isMountedRef = useRef(null);
+
+	const timeZone = currencyIdToTimeZone[userInfo.currencyId];
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -24,11 +33,23 @@ export default ({ api }) => {
 		let transactionData = filterData;
 		if (!isUnix) {
 			transactionData = {
-				StartDate: moment(startDay).unix(),
-				EndDate: moment(endDay).endOf("day").unix()
+				StartDate: moment(startDay, "YYYY-MM-DD").zone(timeZone).unix(),
+				EndDate: moment(endDay, "YYYY-MM-DD")
+					.endOf("day")
+					.zone(timeZone)
+					.unix()
+			};
+			setFilterData(transactionData);
+		} else {
+			transactionData = {
+				StartDate: moment(startDay, "YYYY-MM-DD").zone(timeZone),
+				EndDate: moment(endDay, "YYYY-MM-DD")
+					.endOf("day")
+					.zone(timeZone)
 			};
 			setFilterData(transactionData);
 		}
+
 		setClickSubmit(true);
 		api({
 			...transactionData,

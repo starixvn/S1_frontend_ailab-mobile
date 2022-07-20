@@ -1,7 +1,7 @@
-import React, { createRef } from "react";
+import React from "react";
 import moment from "moment";
 import PropTypes from "prop-types";
-import { number_format } from "../common/common";
+import { number_format, currencyIdToTimeZone } from "../common/common";
 
 const defIconStatus = {
 	0: "pending",
@@ -25,7 +25,8 @@ const Detail = ({
 	depositType,
 	SubmitProof,
 	i18n,
-	thirdId
+	thirdId,
+	currencyId
 }) => {
 	let btnGroup = null;
 	if (depositType === 3 && (status === 1 || status === 7)) {
@@ -45,17 +46,30 @@ const Detail = ({
 	// 	ipt.current.select();
 	// 	navigator.clipboard.writeText(ipt.current.value);
 	// };
+	const timeZone = currencyIdToTimeZone?.[currencyId];
 
 	return (
 		<div className="info">
 			<ul>
 				<li>
-					<span className="title">{i18n.lbl_Date}</span>
-					<span>{moment(createTime).format("MM/DD/YYYY(Z)")}</span>
+					<span className="title">
+						{i18n.lbl_Date} ({timeZone})
+					</span>
+					<span>
+						{moment(createTime, "YYYY-MM-DDThh:mm:ssZ")
+							?.zone(timeZone)
+							.format("MM/DD/YYYY")}
+					</span>
 				</li>
 				<li>
-					<span className="title">{i18n.lbl_Time}</span>
-					<span>{moment(createTime).format("hh:mm:ss A")}</span>
+					<span className="title">
+						{i18n.lbl_Time} ({timeZone})
+					</span>
+					<span>
+						{moment(createTime, "YYYY-MM-DDThh:mm:ssZ")
+							.zone(timeZone)
+							.format("hh:mm:ss A")}
+					</span>
 				</li>
 				<li>
 					<span className="title">{i18n.lbl_ID}</span>
@@ -101,7 +115,9 @@ const Detail = ({
 };
 
 Detail.defaultProps = {
-	_isConvert: false
+	_isConvert: false,
+	thirdId: null,
+	currencyId: null
 };
 
 Detail.propTypes = {
@@ -116,7 +132,9 @@ Detail.propTypes = {
 	_isConvert: PropTypes.bool,
 	depositType: PropTypes.number.isRequired,
 	SubmitProof: PropTypes.func.isRequired,
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	thirdId: PropTypes.string,
+	currencyId: PropTypes.number
 };
 
 export default Detail;

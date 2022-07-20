@@ -12,18 +12,31 @@ const Detail = ({
 	beforeAmount,
 	afterAmount,
 	_isConvert,
-	refTransId
+	refTransId,
+	timeZone
 }) => {
 	return (
 		<div className="info">
 			<ul>
 				<li>
-					<span className="title">{i18n.lbl_Date}</span>
-					<span>{moment(createTime).format("MM/DD/YYYY(Z)")}</span>
+					<span className="title">
+						{i18n.lbl_Date} ({timeZone})
+					</span>
+					<span>
+						{moment(createTime, "YYYY-MM-DDThh:mm:ssZ")
+							.zone(timeZone)
+							.format("MM/DD/YYYY")}
+					</span>
 				</li>
 				<li>
-					<span className="title">{i18n.lbl_Time}</span>
-					<span>{moment(createTime).format("hh:mm:ss A")}</span>
+					<span className="title">
+						{i18n.lbl_Time} ({timeZone})
+					</span>
+					<span>
+						{moment(createTime, "YYYY-MM-DDThh:mm:ssZ")
+							.zone(timeZone)
+							.format("hh:mm:ss A")}
+					</span>
 				</li>
 				<li>
 					<span className="title">{i18n.lbl_TypeName}</span>
@@ -55,7 +68,8 @@ const Detail = ({
 };
 
 Detail.defaultProps = {
-	_isConvert: false
+	_isConvert: false,
+	timeZone: null
 };
 
 Detail.propTypes = {
@@ -75,7 +89,8 @@ Detail.propTypes = {
 		.isRequired,
 	_isConvert: PropTypes.bool,
 	refTransId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-		.isRequired
+		.isRequired,
+	timeZone: PropTypes.string
 };
 
 export default Detail;

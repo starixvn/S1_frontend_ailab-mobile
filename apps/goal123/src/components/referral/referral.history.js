@@ -49,7 +49,14 @@ const Panel = () => {
 					EndDate: moment(endDay).endOf("day").unix()
 				};
 				setFilterData(transactionData);
+			} else {
+				transactionData = {
+					StartDate: moment(startDay).zone("+07:00").unix(),
+					EndDate: moment(endDay).endOf("day").zone("+07:00").unix()
+				};
+				setFilterData(transactionData);
 			}
+
 			setClickSubmit(true);
 			api_account_GetRefFriendList({
 				...transactionData,

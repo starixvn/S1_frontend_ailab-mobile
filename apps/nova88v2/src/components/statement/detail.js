@@ -8,7 +8,11 @@ import {
 import moment from "moment";
 import PropTypes from "prop-types";
 import Dropdown from "../common/dropdown";
-import { number_format, isConvert } from "../common/common";
+import {
+	number_format,
+	isConvert,
+	currencyIdToTimeZone
+} from "../common/common";
 import Layout from "../common/layout";
 import TabPage from "../common/tabPage";
 import { statement_financialLog as statementTabs } from "../../datas/defTabs";
@@ -126,6 +130,7 @@ const Index = props => {
 		/>
 	);
 
+	const timeZone = currencyIdToTimeZone[userInfo.currencyId];
 	const detailArr = datas?.map(data => {
 		return (
 			<Detail
@@ -140,6 +145,7 @@ const Index = props => {
 				bonusCode={data.bonusCode}
 				settledTime={data.settledTime}
 				bonusId={data.bonusId}
+				timeZone={timeZone}
 			/>
 		);
 	});
@@ -200,15 +206,20 @@ const Detail = ({
 	_isConvert,
 	bonusCode,
 	settledTime,
-	bonusId
+	bonusId,
+	timeZone
 }) => {
 	return (
 		<div className="info">
 			<ul>
 				<li>
-					<span className="title">{i18n.lbl_SettledTime}</span>
+					<span className="title">
+						{i18n.lbl_SettledTime} ({timeZone})
+					</span>
 					<span>
-						{moment(settledTime).format("YYYY/MM/DD HH:mm:ss")}
+						{moment(settledTime, "YYYY-MM-DDThh:mm:ssZ")
+							.zone(timeZone)
+							.format("YYYY/MM/DD HH:mm:ss")}
 					</span>
 				</li>
 				<li>
@@ -242,7 +253,8 @@ const Detail = ({
 
 Detail.defaultProps = {
 	_isConvert: false,
-	bonusCode: null
+	bonusCode: null,
+	timeZone: null
 };
 
 Detail.propTypes = {
@@ -262,7 +274,8 @@ Detail.propTypes = {
 	settledTime: PropTypes.oneOfType([
 		PropTypes.instanceOf(Date),
 		PropTypes.string
-	]).isRequired
+	]).isRequired,
+	timeZone: PropTypes.string
 };
 
 export default Index;

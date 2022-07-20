@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import { i18nContext, popBoxContext } from "Context";
 import moment from "moment";
 import Dropdown from "../common/dropdown";
@@ -10,7 +11,7 @@ import { api_GetCustTpBetRecordDetailListbyGameType } from "../../service/api/pa
 import { useHandlePage } from "./hook";
 import Loading from "../common/loading";
 
-export default props => {
+const Content = props => {
 	const isMountedRef = useRef(null);
 	const { timePeriod, date: _selDate, game: _gameId } = props;
 	const { i18n } = useContext(i18nContext);
@@ -154,9 +155,20 @@ export default props => {
 	) : null;
 };
 
+Content.defaultProps = {
+	timePeriod: null,
+	game: null,
+	date: null
+};
+
+Content.propTypes = {
+	timePeriod: PropTypes.string,
+	game: PropTypes.string,
+	date: PropTypes.string
+};
+
 const Detail = ({
 	i18n,
-	transTime,
 	transId,
 	turnOver,
 	validBet,
@@ -169,9 +181,13 @@ const Detail = ({
 		<div className="info">
 			<ul>
 				<li>
-					<span className="title">{i18n.lbl_SettledTime}</span>
+					<span className="title">
+						{i18n.lbl_SettledTime} (+07:00)
+					</span>
 					<span>
-						{moment(settledTime).format("YYYY/MM/DD HH:mm:ss")}
+						{moment(settledTime, "YYYY-MM-DDThh:mm:ssZ")
+							.zone("+07:00")
+							.format("YYYY/MM/DD HH:mm:ss")}
 					</span>
 				</li>
 				<li>
@@ -202,3 +218,27 @@ const Detail = ({
 		</div>
 	);
 };
+
+Detail.defaultProps = {
+	i18n: null,
+	transId: null,
+	winlostAmount: null,
+	bonusCode: null,
+	turnOver: null,
+	validBet: null,
+	settledTime: null,
+	bonusId: null
+};
+
+Detail.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string),
+	transId: PropTypes.string,
+	winlostAmount: PropTypes.number,
+	bonusCode: PropTypes.string,
+	turnOver: PropTypes.number,
+	validBet: PropTypes.number,
+	settledTime: PropTypes.string,
+	bonusId: PropTypes.string
+};
+
+export default Content;

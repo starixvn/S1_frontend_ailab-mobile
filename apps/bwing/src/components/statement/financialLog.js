@@ -1,4 +1,5 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 import moment from "moment";
 import { Redirect } from "@reach/router";
 import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
@@ -65,6 +66,12 @@ const IndexPage = () => {
 					EndDate: moment(endDay).endOf("day").unix()
 				};
 				setFilterData(transactionData);
+			} else {
+				transactionData = {
+					StartDate: moment(startDay).zone("+07:00").unix(),
+					EndDate: moment(endDay).endOf("day").zone("+07:00").unix()
+				};
+				setFilterData(transactionData);
 			}
 
 			setClickSubmit(true);
@@ -129,42 +136,40 @@ const IndexPage = () => {
 		);
 	});
 
+	const history = getHistoryState ? (
+		<>
+			<div className="textArea" style={{ padding: "2vw 0 4vw 2vw" }}>
+				{i18n.msg_AmountFormatTip}
+			</div>
+			<div className="recent open">
+				<div className="recentTransactions">
+					<ReloadSpin
+						func={submitHandler.bind(
+							this,
+							filterData?.StartDate,
+							filterData?.EndDate,
+							true
+						)}
+					/>
+				</div>
+				{getHistoryState.length > 0 ? (
+					<div className="infoList">{arr}</div>
+				) : (
+					<div className="not-found">
+						<i className="icon icon-warning" />
+						<p>{i18n.msg_NoData}</p>
+					</div>
+				)}
+			</div>
+		</>
+	) : null;
+
 	return redirectPath !== null ? (
 		<Redirect to="/" noThrow />
 	) : (
 		<div className="depositBox">
 			<HistoryFilter submitHandler={submitHandler} statement={true} />
-			{loading ? (
-				<Loading />
-			) : getHistoryState ? (
-				<>
-					<div
-						className="textArea"
-						style={{ padding: "2vw 0 4vw 2vw" }}>
-						{i18n.msg_AmountFormatTip}
-					</div>
-					<div className="recent open">
-						<div className="recentTransactions">
-							<ReloadSpin
-								func={submitHandler.bind(
-									this,
-									filterData?.StartDate,
-									filterData?.EndDate,
-									true
-								)}
-							/>
-						</div>
-						{getHistoryState.length > 0 ? (
-							<div className="infoList">{arr}</div>
-						) : (
-							<div className="not-found">
-								<i className="icon icon-warning" />
-								<p>{i18n.msg_NoData}</p>
-							</div>
-						)}
-					</div>
-				</>
-			) : null}
+			{loading ? <Loading /> : history}
 		</div>
 	);
 };
@@ -174,14 +179,24 @@ const TransactionHistory = props => {
 		<div className={props.className}>
 			<ul>
 				<li>
-					<span className="title">{props.i18n.lbl_Date}</span>
+					<span className="title">
+						{props.i18n.lbl_Date} (+07:00)
+					</span>
 					<span>
-						{moment(props.createTime).format("MM/DD/YYYY(Z)")}
+						{moment(props.createTime, "YYYY-MM-DDThh:mm:ssZ")
+							.zone("+07:00")
+							.format("MM/DD/YYYY")}
 					</span>
 				</li>
 				<li>
-					<span className="title">{props.i18n.lbl_Time}</span>
-					<span>{moment(props.createTime).format("hh:mm:ss A")}</span>
+					<span className="title">
+						{props.i18n.lbl_Time} (+07:00)
+					</span>
+					<span>
+						{moment(props.createTime, "YYYY-MM-DDThh:mm:ssZ")
+							.zone("+07:00")
+							.format("hh:mm:ss A")}
+					</span>
 				</li>
 				<li>
 					<span className="title">{props.i18n.lbl_TypeName}</span>
@@ -210,6 +225,30 @@ const TransactionHistory = props => {
 			<div className="btn-group" />
 		</div>
 	);
+};
+
+TransactionHistory.defaultProps = {
+	i18n: null,
+	className: null,
+	createTime: null,
+	typeName: null,
+	beforeAmount: null,
+	afterAmount: null,
+	changeAmount: null,
+	refTransId: null,
+	direction: null
+};
+
+TransactionHistory.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string),
+	className: PropTypes.string,
+	createTime: PropTypes.string,
+	typeName: PropTypes.string,
+	beforeAmount: PropTypes.number,
+	afterAmount: PropTypes.number,
+	changeAmount: PropTypes.number,
+	refTransId: PropTypes.string,
+	direction: PropTypes.string
 };
 
 export default IndexPage;

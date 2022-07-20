@@ -1,7 +1,7 @@
 import React from "react";
 import moment from "moment";
 import PropTypes from "prop-types";
-import { number_format } from "../common/common";
+import { number_format, currencyIdToTimeZone } from "../common/common";
 
 const defIconStatus = {
 	1: "pending",
@@ -21,9 +21,12 @@ const Detail = ({
 	createTime,
 	amount,
 	_isConvert,
-	i18n
+	i18n,
+	currencyId
 }) => {
+	const timeZone = currencyIdToTimeZone[currencyId];
 	let btnGroup = null;
+
 	if (status === 1) {
 		const handleCancel = () => ClickCancel(transId);
 		btnGroup = (
@@ -37,16 +40,29 @@ const Detail = ({
 			</div>
 		);
 	}
+
 	return (
 		<div className="info">
 			<ul>
 				<li>
-					<span className="title">{i18n.lbl_Date}</span>
-					<span>{moment(createTime).format("MM/DD/YYYY(Z)")}</span>
+					<span className="title">
+						{i18n.lbl_Date} ({timeZone})
+					</span>
+					<span>
+						{moment(createTime, "YYYY-MM-DDThh:mm:ssZ")
+							.zone(timeZone)
+							.format("MM/DD/YYYY")}
+					</span>
 				</li>
 				<li>
-					<span className="title">{i18n.lbl_Time}</span>
-					<span>{moment(createTime).format("hh:mm:ss A")}</span>
+					<span className="title">
+						{i18n.lbl_Time} ({timeZone})
+					</span>
+					<span>
+						{moment(createTime, "YYYY-MM-DDThh:mm:ssZ")
+							.zone(timeZone)
+							.format("hh:mm:ss A")}
+					</span>
 				</li>
 				<li>
 					<span className="title">{i18n.lbl_ID}</span>
@@ -71,7 +87,8 @@ const Detail = ({
 };
 
 Detail.defaultProps = {
-	_isConvert: false
+	_isConvert: false,
+	currencyId: null
 };
 
 Detail.propTypes = {
@@ -84,7 +101,8 @@ Detail.propTypes = {
 	amount: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 		.isRequired,
 	_isConvert: PropTypes.bool,
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	currencyId: PropTypes.number
 };
 
 export default Detail;
