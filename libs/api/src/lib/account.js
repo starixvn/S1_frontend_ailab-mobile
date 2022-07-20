@@ -92,4 +92,7 @@ export class AccountAPI extends BaseAPI {
 	GetPopupMsg = () => this.accountRequest.post("/GetPopupMsg");
 
 	SetPopupMsgRead = () => this.accountRequest.post("/SetPopupMsgRead");
+
+	GetReferralSettingDetail = () =>
+		this.accountRequest.post("/GetReferralSettingDetail");
 }

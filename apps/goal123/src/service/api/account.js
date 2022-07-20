@@ -98,3 +98,6 @@ export const api_account_GetPopupMsg = () =>
 
 export const api_account_SetPopupMsgRead = () =>
 	accountRequest.post("/SetPopupMsgRead");
+
+export const api_account_GetReferralSettingDetail = () =>
+	accountRequest.post("/GetReferralSettingDetail");

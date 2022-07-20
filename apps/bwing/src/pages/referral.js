@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import TabPage from "../components/common/tabPage";
 import path from "../path";
+import ReferralWrapper from "../components/referral/referral.wrapper";
 
 const defTabs = {
 	default: {
@@ -16,7 +17,11 @@ const defTabs = {
 };
 
 const IndexPage = props => {
-	return <TabPage defTabs={defTabs}>{props.children}</TabPage>;
+	return (
+		<ReferralWrapper>
+			<TabPage defTabs={defTabs}>{props.children}</TabPage>
+		</ReferralWrapper>
+	);
 };
 
 IndexPage.propTypes = {

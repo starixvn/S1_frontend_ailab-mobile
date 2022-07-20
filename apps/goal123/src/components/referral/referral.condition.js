@@ -1,11 +1,16 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import PropTypes from "prop-types";
-import { api_account_GetReferralSetting } from "../../service/api/account";
+import {
+	api_account_GetReferralSetting,
+	api_account_GetReferralSettingDetail
+} from "../../service/api/account";
+import { referralPopBox } from "../common/context";
 import { number_format } from "../common/common";
-import TandC from "../../service/t_and_c";
+import { ReferralPopBox } from "./referral.popbox";
 
 const Conditios = ({ userInfo, i18n, setPopBox }) => {
 	const isMountedRef = useRef(null);
+	const { setReferralBox } = useContext(referralPopBox);
 	const [referralData, setReferralData] = useState({
 		bonusAmount: 0,
 		vaildBet: 0,
@@ -46,7 +51,24 @@ const Conditios = ({ userInfo, i18n, setPopBox }) => {
 		}
 	}, [userInfo.isLogin, i18n, setPopBox]);
 
-	return (
+	const getReferralDetail = async () => {
+		const res = await api_account_GetReferralSettingDetail();
+		const { errorCode, data, message } = res.data;
+
+		if (errorCode === 0) {
+			setReferralBox({
+				isOpen: true,
+				content: <ReferralPopBox data={data} i18n={i18n} />
+			});
+		} else {
+			setPopBox({
+				isOpen: true,
+				content: `[${errorCode}] ${message}`
+			});
+		}
+	};
+
+	return referralData?.status ? (
 		<div className="refShare">
 			<div className="title">{i18n.lbl_Share_with_friend}</div>
 			<div className="refBox">
@@ -79,17 +101,13 @@ const Conditios = ({ userInfo, i18n, setPopBox }) => {
 							} ${number_format(referralData.deposit, true)}`}
 						</span>
 					</div>
-					<a
-						className="more"
-						href={TandC(userInfo.langId).Referral}
-						target="_blank"
-						rel="noreferrer">
+					<button onClick={getReferralDetail}>
 						{i18n.lbl_MoreDetails}
-					</a>
+					</button>
 				</div>
 			</div>
 		</div>
-	);
+	) : null;
 };
 
 Conditios.propTypes = {
