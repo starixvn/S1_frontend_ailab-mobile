@@ -172,6 +172,15 @@ export const defCurrenyId = {
 	INR: 61
 };
 
+export const currencyIdToTimeZone = {
+	2: "+08:00",
+	4: "+07:00",
+	15: "+07:00",
+	74: "+06:00",
+	61: "+05:30",
+	3: "+00:00"
+};
+
 export const langToCurrency = {
 	en: defCurrenyId.MYR,
 	cs: defCurrenyId.MYR,

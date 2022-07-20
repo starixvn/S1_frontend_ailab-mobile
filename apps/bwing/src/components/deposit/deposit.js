@@ -488,7 +488,7 @@ const Panel = () => {
 				Datas={recentDatas}
 				SubmitProof={SubmitProof}
 				ClickCancel={ClickCancel}
-				ReloadFunc={GetDepositInfoRecent}
+				GetDepositInfoRecent={GetDepositInfoRecent}
 			/>
 			<ImportantNote langId={userInfo.langId} i18n={i18n} />
 		</>

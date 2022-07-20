@@ -1,4 +1,5 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
 import moment from "moment";
 import { Redirect } from "@reach/router";
@@ -63,6 +64,12 @@ const IndexPage = () => {
 				transactionData = {
 					StartDate: moment(startDay).unix(),
 					EndDate: moment(endDay).endOf("day").unix()
+				};
+				setFilterData(transactionData);
+			} else {
+				transactionData = {
+					StartDate: moment(startDay).zone("+07:00").unix(),
+					EndDate: moment(endDay).endOf("day").zone("+07:00").unix()
 				};
 				setFilterData(transactionData);
 			}
@@ -174,14 +181,24 @@ const TransactionHistory = props => {
 		<div className="info">
 			<ul>
 				<li>
-					<span className="title">{props.i18n.lbl_Date}</span>
+					<span className="title">
+						{props.i18n.lbl_Date} (+07:00)
+					</span>
 					<span>
-						{moment(props.createTime).format("MM/DD/YYYY(Z)")}
+						{moment(props.createTime, "YYYY-MM-DDThh:mm:ssZ")
+							.zone("+07:00")
+							.format("MM/DD/YYYY")}
 					</span>
 				</li>
 				<li>
-					<span className="title">{props.i18n.lbl_Time}</span>
-					<span>{moment(props.createTime).format("hh:mm:ss A")}</span>
+					<span className="title">
+						{props.i18n.lbl_Time} (+07:00)
+					</span>
+					<span>
+						{moment(props.createTime, "YYYY-MM-DDThh:mm:ssZ")
+							.zone("+07:00")
+							.format("hh:mm:ss A")}
+					</span>
 				</li>
 				<li>
 					<span className="title">{props.i18n.lbl_TypeName}</span>
@@ -210,6 +227,28 @@ const TransactionHistory = props => {
 			<div className="btn-group" />
 		</div>
 	);
+};
+
+TransactionHistory.defaultProps = {
+	i18n: null,
+	createTime: null,
+	typeName: null,
+	beforeAmount: null,
+	afterAmount: null,
+	changeAmount: null,
+	refTransId: null,
+	direction: null
+};
+
+TransactionHistory.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string),
+	createTime: PropTypes.string,
+	typeName: PropTypes.string,
+	beforeAmount: PropTypes.number,
+	afterAmount: PropTypes.number,
+	changeAmount: PropTypes.number,
+	refTransId: PropTypes.string,
+	direction: PropTypes.string
 };
 
 export default IndexPage;

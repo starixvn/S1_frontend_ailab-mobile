@@ -23,8 +23,14 @@ export const Detail = ({
 					<span>{userName}</span>
 				</li>
 				<li>
-					<span className="title">{i18n.lbl_RegisterDate}</span>
-					<span>{moment(registerDate).format("MM/DD/YYYY (Z)")}</span>
+					<span className="title">
+						{i18n.lbl_RegisterDate} (+07:00)
+					</span>
+					<span>
+						{moment(registerDate, "YYYY-MM-DDThh:mm:ssZ")
+							.zone("+07:00")
+							.format("MM/DD/YYYY")}
+					</span>
 				</li>
 				<li>
 					<span className="title">{i18n.lbl_Currency}</span>

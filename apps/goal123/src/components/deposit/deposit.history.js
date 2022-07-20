@@ -86,6 +86,12 @@ const Panel = () => {
 					EndDate: moment(endDay).endOf("day").unix()
 				};
 				setFilterData(transactionData);
+			} else {
+				transactionData = {
+					StartDate: moment(startDay).zone("+07:00").unix(),
+					EndDate: moment(endDay).endOf("day").zone("+07:00").unix()
+				};
+				setFilterData(transactionData);
 			}
 
 			setFilterData(transactionData);
@@ -298,14 +304,20 @@ export const TransactionHistory = props => {
 		<div className={props.className}>
 			<ul>
 				<li>
-					<span className="title">{i18n.lbl_Date}</span>
+					<span className="title">{i18n.lbl_Date} (+07:00)</span>
 					<span>
-						{moment(props.createTime).format("MM/DD/YYYY(Z)")}
+						{moment(props.createTime, "YYYY-MM-DDThh:mm:ssZ")
+							.zone("+07: 00")
+							.format("MM/DD/YYYY")}
 					</span>
 				</li>
 				<li>
-					<span className="title">{i18n.lbl_Time}</span>
-					<span>{moment(props.createTime).format("hh:mm:ss A")}</span>
+					<span className="title">{i18n.lbl_Time} (+07:00)</span>
+					<span>
+						{moment(props.createTime, "YYYY-MM-DDThh:mm:ssZ")
+							.zone("+07: 00")
+							.format("hh:mm:ss A")}
+					</span>
 				</li>
 				<li>
 					<span className="title">{i18n.lbl_ID}</span>
@@ -336,7 +348,8 @@ export const TransactionHistory = props => {
 };
 
 TransactionHistory.defaultProps = {
-	className: ""
+	className: "",
+	thirdId: null
 };
 
 TransactionHistory.propTypes = {
@@ -347,7 +360,8 @@ TransactionHistory.propTypes = {
 	className: PropTypes.string,
 	createTime: PropTypes.string.isRequired,
 	transId: PropTypes.string.isRequired,
-	amount: PropTypes.number.isRequired
+	amount: PropTypes.number.isRequired,
+	thirdId: PropTypes.string
 };
 
 export default Panel;

@@ -9,7 +9,11 @@ import moment from "moment";
 import { useNavigate } from "@reach/router";
 import PropTypes from "prop-types";
 import Dropdown from "../common/dropdown";
-import { number_format, isConvert } from "../common/common";
+import {
+	number_format,
+	isConvert,
+	currencyIdToTimeZone
+} from "../common/common";
 import Layout from "../common/layout";
 import TabPage from "../common/tabPage";
 import { statement_financialLog as statementTabs } from "../../datas/defTabs";
@@ -38,6 +42,7 @@ const ByCategory = props => {
 	const _endDay = timePeriod.split("to").pop();
 	const dateRange = getDateRange({ startDate: _startDay, endDate: _endDay });
 	const skipLink = getSkipLink({ dateRange });
+	const timeZone = currencyIdToTimeZone[userInfo.currencyId];
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -136,6 +141,7 @@ const ByCategory = props => {
 				toDetailPage={toDetailPage}
 				gameTypeName={data.gameTypeName}
 				gameTypeID={data.gameTypeID}
+				timeZone={timeZone}
 			/>
 		);
 	});
@@ -187,14 +193,21 @@ const Detail = ({
 	_isConvert,
 	toDetailPage,
 	gameTypeName,
-	gameTypeID
+	gameTypeID,
+	timeZone
 }) => {
 	return (
 		<div className="info">
 			<ul>
 				<li>
-					<span className="title">{i18n.lbl_SettledDate}</span>
-					<span>{moment(settledDate).format("YYYY/MM/DD")}</span>
+					<span className="title">
+						{i18n.lbl_SettledDate} ({timeZone})
+					</span>
+					<span>
+						{moment(settledDate, "YYYY-MM-DDThh:mm:ssZ")
+							.zone(timeZone)
+							.format("YYYY/MM/DD")}
+					</span>
 				</li>
 				<li>
 					<span className="title">{i18n.lbl_GameTypeName}</span>
@@ -230,7 +243,8 @@ const Detail = ({
 };
 
 Detail.defaultProps = {
-	_isConvert: false
+	_isConvert: false,
+	timeZone: null
 };
 
 Detail.propTypes = {
@@ -250,7 +264,8 @@ Detail.propTypes = {
 	gameTypeName: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 		.isRequired,
 	gameTypeID: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-		.isRequired
+		.isRequired,
+	timeZone: PropTypes.string
 };
 
 export default ByCategory;

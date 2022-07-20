@@ -1,4 +1,5 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 import moment from "moment";
 import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
 import { api_GetTransferHistory } from "../../service/api/tp";
@@ -68,7 +69,14 @@ const Panel = () => {
 					EndDate: moment(endDay).endOf("day").unix()
 				};
 				setFilterData(transactionData);
+			} else {
+				transactionData = {
+					StartDate: moment(startDay).zone("+07:00").unix(),
+					EndDate: moment(endDay).endOf("day").zone("+07:00").unix()
+				};
+				setFilterData(transactionData);
 			}
+
 			setClickSubmit(true);
 			api_GetTransferHistory({
 				...transactionData,
@@ -180,14 +188,24 @@ export const TransactionHistory = props => {
 		<div className={props.className}>
 			<ul>
 				<li>
-					<span className="title">{props.i18n.lbl_Date}</span>
+					<span className="title">
+						{props.i18n.lbl_Date} (+07:00)
+					</span>
 					<span>
-						{moment(props.createTime).format("MM/DD/YYYY(Z)")}
+						{moment(props.createTime, "YYYY-MM-DDThh:mm:ssZ")
+							.zone("+07:00")
+							.format("MM/DD/YYYY")}
 					</span>
 				</li>
 				<li>
-					<span className="title">{props.i18n.lbl_Time}</span>
-					<span>{moment(props.createTime).format("hh:mm:ss A")}</span>
+					<span className="title">
+						{props.i18n.lbl_Time} (+07:00)
+					</span>
+					<span>
+						{moment(props.createTime, "YYYY-MM-DDThh:mm:ssZ")
+							.zone("+07:00")
+							.format("hh:mm:ss A")}
+					</span>
 				</li>
 				<li>
 					<span className="title">{props.i18n.lbl_ID}</span>
@@ -219,6 +237,30 @@ export const TransactionHistory = props => {
 			<div className="btn-group" />
 		</div>
 	);
+};
+
+TransactionHistory.defaultProps = {
+	i18n: null,
+	className: null,
+	createTime: null,
+	status: null,
+	transId: null,
+	amount: null,
+	startWallet: null,
+	endWallet: null,
+	memo: null
+};
+
+TransactionHistory.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string),
+	className: PropTypes.string,
+	createTime: PropTypes.string,
+	status: PropTypes.number,
+	transId: PropTypes.string,
+	amount: PropTypes.string,
+	startWallet: PropTypes.string,
+	endWallet: PropTypes.string,
+	memo: PropTypes.string
 };
 
 export default Panel;

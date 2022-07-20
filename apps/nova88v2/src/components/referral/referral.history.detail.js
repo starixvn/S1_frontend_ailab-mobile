@@ -20,7 +20,8 @@ export const Detail = ({
 	totalBet,
 	vaildBetC,
 	bonusAmount,
-	status
+	status,
+	timeZone
 }) => {
 	return (
 		<div className="info infoBlack">
@@ -30,8 +31,10 @@ export const Detail = ({
 					<span>{userName}</span>
 				</li>
 				<li>
-					<span className="title">{i18n.lbl_RegisterDate}</span>
-					<span>{moment(registerDate).format("MM/DD/YYYY (Z)")}</span>
+					<span className="title">
+						{i18n.lbl_RegisterDate} ({timeZone})
+					</span>
+					<span>{moment(registerDate).format("MM/DD/YYYY")}</span>
 				</li>
 				<li>
 					<span className="title">{i18n.lbl_Currency}</span>
@@ -77,7 +80,9 @@ Detail.propTypes = {
 	totalBet: PropTypes.number.isRequired,
 	vaildBetC: PropTypes.number.isRequired,
 	bonusAmount: PropTypes.number.isRequired,
-	status: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
+	status: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+		.isRequired,
+	timeZone: PropTypes.string.isRequired
 };
 
 export default Detail;

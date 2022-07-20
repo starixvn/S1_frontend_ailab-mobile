@@ -145,6 +145,7 @@ const Panel = ({
 				ClickCancel={ClickCancel.bind(this, item.transId)}
 				SubmitProof={SubmitProof.bind(this, { ...item })}
 				i18n={i18n}
+				currencyId={userInfo.currencyId}
 			/>
 		);
 	});
