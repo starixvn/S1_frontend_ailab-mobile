@@ -425,6 +425,13 @@
 	"lbl_ValidPeriod": "有效期限",
 	"lbl_Referral_link": "推荐链接",
 	"lbl_Copy_to_clipboard": "复制到剪贴板",
+	"lbl_ReferralReward": "推荐奖励",
+	"lbl_FriendsInvitationLimit": "邀请好友限制",
+	"lbl_DepositRequirement": "存款需求",
+	"lbl_ValidBetRequirement": "有效投注需求",
+	"lbl_ReferredFreeCredit": "被推荐好友免费彩金",
+	"lbl_TermPeriodWithin": "期限内在",
+
 	"-=========================Withdrawal==================================": "",
 	"lbl_WithdrawalTo": "提现至",
 	"lbl_DepositOver": "您的提现申请超过您的馀额",

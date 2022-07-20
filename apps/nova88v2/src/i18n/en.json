@@ -428,10 +428,15 @@
 	"lbl_ValidPeriod": "Valid Period",
 	"lbl_Referral_link": "Referral Link",
 	"lbl_Copy_to_clipboard": "Copy to Clipboard",
-	"lbl_WithdrawalTo": "Withdrawal To",
+	"lbl_ReferralReward": "Referral Reward",
+	"lbl_FriendsInvitationLimit": "Friends Invitation Limit",
+	"lbl_DepositRequirement": "Deposit Requirement",
+	"lbl_ValidBetRequirement": "Valid Bet Requirement",
+	"lbl_ReferredFreeCredit": "Referred Free Credit",
+	"lbl_TermPeriodWithin": "Term Period Within",
 
 	"==============================================Withdrawal====================================": "",
-
+	"lbl_WithdrawalTo": "Withdrawal To",
 	"lbl_DepositOver": "Your required withdrawal amount had exceeded your current available balance.",
 	"lbl_WithdrawalOver": "Your required withdrawal amount had exceeded your elegible withdrawal amount.",
 	"lbl_Fishing": "Fishing",
@@ -485,7 +490,7 @@
 
 	"lbl_TypeName": "Type Name",
 	"lbl_BonusId": "Bonus Id",
-	"lbl_RefTransId": "lbl_RefTransId",
+	"lbl_RefTransId": "Ref TransId",
 	"lbl_Category": "By Category",
 	"lbl_ByDay": "By Day",
 	"lbl_GameTypeName": "Game Type Name",

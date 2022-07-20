@@ -761,5 +761,13 @@
 
 	"===============QR Pay===================": "",
 	"lbl_QRPay": "QR Pay",
-	"lbl_DepositType6": "QR Pay"
+	"lbl_DepositType6": "QR Pay",
+
+	"===============Referral===================":"",
+	"lbl_ReferralReward": "Referral Reward",
+	"lbl_FriendsInvitationLimit": "Friends Invitation Limit",
+	"lbl_DepositRequirement": "Deposit Requirement",
+	"lbl_ValidBetRequirement": "Valid Bet Requirement",
+	"lbl_ReferredFreeCredit": "Referred Free Credit",
+	"lbl_TermPeriodWithin": "Term Period Within"
 }

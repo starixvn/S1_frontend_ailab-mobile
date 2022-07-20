@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
-import { popBoxContext } from "Context";
+import { popBoxContext } from "../common/context";
 import Dropdown from "../common/dropdown";
 import api from "../../service/api";
 import path from "../../path";
@@ -220,7 +220,7 @@ export const setCustPromo = ({
 	}
 };
 
-export const useGetDepositPromotionList = ({ langId, i18n }) => {
+export const useGetDepositPromotionList = ({ langId, i18n, setPopBox }) => {
 	const [promoList, setPromoList] = useState([]);
 	const isMountedRef = useRef(null);
 

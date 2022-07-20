@@ -41,6 +41,7 @@ const RecentDatas = ({ Datas, SubmitProof, ClickCancel }) => {
 					)}
 					ClickCancel={ClickCancel.bind(this, d.transId)}
 					i18n={i18n}
+					currencyId={userInfo.currencyId}
 				/>
 			);
 		});

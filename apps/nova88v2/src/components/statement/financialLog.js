@@ -1,7 +1,7 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import { useNavigate } from "@reach/router";
 import { i18nContext, popBoxContext, userInfoContext } from "Context";
-import { isConvert } from "../common/common";
+import { isConvert, currencyIdToTimeZone } from "../common/common";
 import GoTopBtn from "../common/goTopBtn";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import api from "../../service/api";
@@ -48,6 +48,7 @@ const IndexPage = ({
 		clickSubmit
 	);
 
+	const timeZone = currencyIdToTimeZone[userInfo.currencyId];
 	const arr = history?.map(item => {
 		return (
 			<Detail
@@ -61,6 +62,7 @@ const IndexPage = ({
 				direction={item.direction === 1 ? "+" : "-"}
 				refTransId={item.refTransId}
 				i18n={i18n}
+				timeZone={timeZone}
 			/>
 		);
 	});

@@ -39,6 +39,7 @@
     "react/jsx-indent-props":"off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/jsx-closing-bracket-location": "off",
+    "react/no-danger": "off",
     "react/button-has-type": "off",
     "jsx-a11y/control-has-associated-label":"off",
     "no-underscore-dangle":"off",

@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import moment from "moment";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import Dropdown from "../common/dropdown";
@@ -10,7 +11,7 @@ import { api_GetCustTpBetRecordDetailListbyGameType } from "../../service/api/pa
 import { useHandlePage } from "./hook";
 import Loading from "../common/loading";
 
-export default props => {
+const Content = props => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -108,59 +109,76 @@ export default props => {
 		);
 	});
 
-	return loading ? (
-		<Loading />
-	) : datas !== null ? (
-		<>
-			<Breadcrumbs
-				locationInfo={props}
-				root={path.statement.root}
-				i18n={i18n}
-				customDisplayKey={{
-					[path.statement.root]: "lbl_QuickPick",
-					timePeriod: dateRange,
-					date: "lbl_ByDay",
-					category: "lbl_Category",
-					game: "lbl_Detail"
-				}}
-				skipLink={skipLink}
-			/>
-			{datas?.length !== 0 ? (
-				<>
-					<div className="inputBox page">
-						<Dropdown
-							options={pageOptions}
-							mainKey="betList-By-GameType"
-							onSelectItem={onSelectPage}
-							selectedIdx={selectedPage}
-						/>
-					</div>
+	let content = null;
 
-					<div className="recent open">
-						{detailArr}
+	if (loading) {
+		content = <Loading />;
+	} else if (datas !== null) {
+		content = (
+			<>
+				<Breadcrumbs
+					locationInfo={props}
+					root={path.statement.root}
+					i18n={i18n}
+					customDisplayKey={{
+						[path.statement.root]: "lbl_QuickPick",
+						timePeriod: dateRange,
+						date: "lbl_ByDay",
+						category: "lbl_Category",
+						game: "lbl_Detail"
+					}}
+					skipLink={skipLink}
+				/>
+				{datas?.length !== 0 ? (
+					<>
+						<div className="inputBox page">
+							<Dropdown
+								options={pageOptions}
+								mainKey="betList-By-GameType"
+								onSelectItem={onSelectPage}
+								selectedIdx={selectedPage}
+							/>
+						</div>
 
-						<div className="total">
-							{i18n.lbl_TurnoverTotal}：
-							{number_format(totalTurnover, _isConvert)}
+						<div className="recent open">
+							{detailArr}
+
+							<div className="total">
+								{i18n.lbl_TurnoverTotal}：
+								{number_format(totalTurnover, _isConvert)}
+							</div>
+							<div className="total">
+								{i18n.lbl_WinlostAmountTotal}：
+								{number_format(totalWinLoss, _isConvert)}
+							</div>
 						</div>
-						<div className="total">
-							{i18n.lbl_WinlostAmountTotal}：
-							{number_format(totalWinLoss, _isConvert)}
-						</div>
+					</>
+				) : (
+					<div className="nodata icon icon-nodata">
+						<div className="txt-white">{i18n.msg_NoData}</div>
 					</div>
-				</>
-			) : (
-				<div className="nodata icon icon-nodata">
-					<div className="txt-white">{i18n.msg_NoData}</div>
-				</div>
-			)}
-		</>
-	) : null;
+				)}
+			</>
+		);
+	}
+
+	return content;
+};
+
+Content.defaultProps = {
+	timePeriod: null,
+	game: null,
+	date: null
+};
+
+Content.propTypes = {
+	timePeriod: PropTypes.string,
+	game: PropTypes.string,
+	date: PropTypes.string
 };
 
 const Detail = ({
 	i18n,
-	transTime,
 	transId,
 	turnOver,
 	validBet,
@@ -198,12 +216,42 @@ const Detail = ({
 					<span>{bonusId}</span>
 				</li>
 				<li>
-					<span className="title">{i18n.lbl_SettledTime}</span>
+					<span className="title">
+						{i18n.lbl_SettledTime} (+07:00)
+					</span>
 					<span>
-						{moment(settledTime).format("YYYY/MM/DD HH:mm:ss")}
+						{moment(settledTime, "YYYY-MM-DDThh:mm:ssZ")
+							.zone("+07:00")
+							.format("YYYY/MM/DD HH:mm:ss")}
 					</span>
 				</li>
 			</ul>
 		</div>
 	);
 };
+
+Detail.defaultProps = {
+	i18n: null,
+	transId: null,
+	winlostAmount: null,
+	bonusCode: null,
+	turnOver: null,
+	validBet: null,
+	settledTime: null,
+	bonusId: null,
+	_isConvert: null
+};
+
+Detail.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string),
+	transId: PropTypes.string,
+	winlostAmount: PropTypes.number,
+	bonusCode: PropTypes.string,
+	turnOver: PropTypes.number,
+	validBet: PropTypes.number,
+	settledTime: PropTypes.string,
+	bonusId: PropTypes.string,
+	_isConvert: PropTypes.bool
+};
+
+export default Content;

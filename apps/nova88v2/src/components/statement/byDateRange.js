@@ -8,7 +8,11 @@ import {
 import moment from "moment";
 import { useNavigate } from "@reach/router";
 import PropTypes from "prop-types";
-import { number_format, isConvert } from "../common/common";
+import {
+	number_format,
+	isConvert,
+	currencyIdToTimeZone
+} from "../common/common";
 import Dropdown from "../common/dropdown";
 import api from "../../service/api";
 import Layout from "../common/layout";
@@ -37,6 +41,7 @@ const ByDateRange = props => {
 	const _startDay = timePeriod.substr(0, timePeriod.indexOf("to"));
 	const _endDay = timePeriod.split("to").pop();
 	const dateRange = getDateRange({ startDate: _startDay, endDate: _endDay });
+	const timeZone = currencyIdToTimeZone[userInfo.currencyId];
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -138,6 +143,7 @@ const ByDateRange = props => {
 				winlostAmount={data.winlostAmount}
 				_isConvert={_isConvert}
 				toByDayPage={toByDayPage}
+				timeZone={timeZone}
 			/>
 		);
 	});
@@ -183,14 +189,21 @@ const Detail = ({
 	validBet,
 	winlostAmount,
 	_isConvert,
-	toByDayPage
+	toByDayPage,
+	timeZone
 }) => {
 	return (
 		<div className="info">
 			<ul>
 				<li>
-					<span className="title">{i18n.lbl_SettledDate}</span>
-					<span>{moment(settledDate).format("YYYY/MM/DD")}</span>
+					<span className="title">
+						{i18n.lbl_SettledDate} ({timeZone})
+					</span>
+					<span>
+						{moment(settledDate, "YYYY-MM-DDThh:mm:ssZ")
+							.zone(timeZone)
+							.format("YYYY/MM/DD")}
+					</span>
 				</li>
 				<li>
 					<span className="title">{i18n.lbl_Turnover}</span>
@@ -224,7 +237,8 @@ const Detail = ({
 };
 
 Detail.defaultProps = {
-	_isConvert: false
+	_isConvert: false,
+	timeZone: null
 };
 
 Detail.propTypes = {
@@ -240,7 +254,8 @@ Detail.propTypes = {
 	winlostAmount: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 		.isRequired,
 	_isConvert: PropTypes.bool,
-	toByDayPage: PropTypes.func.isRequired
+	toByDayPage: PropTypes.func.isRequired,
+	timeZone: PropTypes.string
 };
 
 export default ByDateRange;

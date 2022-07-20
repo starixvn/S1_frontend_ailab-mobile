@@ -124,7 +124,8 @@ const Panel = () => {
 	});
 	const { promoList } = useGetDepositPromotionList({
 		langId: userInfo.langId,
-		i18n
+		i18n,
+		setPopBox
 	});
 
 	const depositPromoMsg = userInfo?.phoneVerified

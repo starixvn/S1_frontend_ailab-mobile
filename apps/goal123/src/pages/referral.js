@@ -4,6 +4,7 @@ import TabPage from "../components/common/tabPage";
 import path from "../path";
 import Layout from "../components/common/layout";
 import { i18nContext } from "../components/common/context";
+import ReferralWrapper from "../components/referral/referral.wrapper";
 
 const defTabs = {
 	default: {
@@ -21,9 +22,11 @@ const IndexPage = props => {
 	const { i18n } = useContext(i18nContext);
 
 	return (
-		<Layout title={i18n.lbl_friendReferral}>
-			<TabPage defTabs={defTabs}>{props.children}</TabPage>
-		</Layout>
+		<ReferralWrapper>
+			<Layout title={i18n.lbl_friendReferral}>
+				<TabPage defTabs={defTabs}>{props.children}</TabPage>
+			</Layout>
+		</ReferralWrapper>
 	);
 };
 

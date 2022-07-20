@@ -1,7 +1,7 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
-import { isConvert } from "../common/common";
+import { isConvert, currencyIdToTimeZone } from "../common/common";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import api from "../../service/api";
 import { Detail } from "./referral.history.detail";
@@ -41,6 +41,7 @@ const Panel = ({
 		clickSubmit
 	);
 
+	const timeZone = currencyIdToTimeZone[userInfo.currencyId];
 	const arr = history?.map(data => {
 		return (
 			<Detail
@@ -56,6 +57,7 @@ const Panel = ({
 				vaildBetC={data.vaildBetC}
 				bonusAmount={data.bonusAmount}
 				status={data.status}
+				timeZone={timeZone}
 			/>
 		);
 	});

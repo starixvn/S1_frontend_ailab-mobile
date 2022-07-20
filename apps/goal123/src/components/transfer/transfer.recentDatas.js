@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import PropTypes from "prop-types";
 import { Link } from "@reach/router";
 import { i18nContext } from "../common/context";
 import { TransactionHistory } from "./transfer.history";
@@ -56,6 +57,42 @@ const ReacentDatas = props => {
 			);
 		});
 
+	let content = null;
+
+	if (hasData) {
+		content = (
+			<>
+				<div className={`recent${isOpen ? " open" : ""}`}>
+					<div className="recentTransactions">
+						<div className="smallTitle">
+							<i className="icon icon-history">
+								{i18n.lbl_RecentTransactions}
+							</i>
+						</div>
+						<ReloadSpin func={props.GetRecentDatas} />
+					</div>
+					<div className="txt-blue2">{i18n.msg_AmountFormatTip}</div>
+					<div className="infoList">{arr}</div>
+				</div>
+				{isOpen ? (
+					<div className="btn-group">
+						<Link
+							to={path.transfer.sub.history.root}
+							className="orange recentBtn">
+							{i18n.lbl_AllTranscations}
+						</Link>
+					</div>
+				) : null}
+			</>
+		);
+	} else if (isOpen) {
+		content = (
+			<div className="nodata icon icon-nodata">
+				<div className="txt-white">{i18n.msg_NoData}</div>
+			</div>
+		);
+	}
+
 	return (
 		<>
 			<div className="btn-group">
@@ -69,39 +106,19 @@ const ReacentDatas = props => {
 				</button>
 			</div>
 
-			{hasData ? (
-				<>
-					<div className={`recent${isOpen ? " open" : ""}`}>
-						<div className="recentTransactions">
-							<div className="smallTitle">
-								<i className="icon icon-history">
-									{i18n.lbl_RecentTransactions}
-								</i>
-							</div>
-							<ReloadSpin func={props.GetRecentDatas} />
-						</div>
-						<div className="txt-blue2">
-							{i18n.msg_AmountFormatTip}
-						</div>
-						<div className="infoList">{arr}</div>
-					</div>
-					{isOpen ? (
-						<div className="btn-group">
-							<Link
-								to={path.transfer.sub.history.root}
-								className="orange recentBtn">
-								{i18n.lbl_AllTranscations}
-							</Link>
-						</div>
-					) : null}
-				</>
-			) : isOpen ? (
-				<div className="nodata icon icon-nodata">
-					<div className="txt-white">{i18n.msg_NoData}</div>
-				</div>
-			) : null}
+			{content}
 		</>
 	);
+};
+
+ReacentDatas.defaultProps = {
+	datas: null,
+	GetRecentDatas: () => null
+};
+
+ReacentDatas.propTypes = {
+	datas: PropTypes.arrayOf(PropTypes.object),
+	GetRecentDatas: PropTypes.func
 };
 
 export default ReacentDatas;

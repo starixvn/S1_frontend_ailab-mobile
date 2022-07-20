@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import { i18nContext, popBoxContext } from "Context";
 import moment from "moment";
 import { Link } from "@reach/router";
@@ -11,7 +12,7 @@ import path from "../../path";
 import { useHandlePage } from "./hook";
 import Loading from "../common/loading";
 
-export default props => {
+const Content = props => {
 	const isMountedRef = useRef(null);
 	const { timePeriod, date: _selDate } = props;
 	const { i18n } = useContext(i18nContext);
@@ -135,6 +136,16 @@ export default props => {
 	) : null;
 };
 
+Content.defaultProps = {
+	timePeriod: null,
+	date: null
+};
+
+Content.propTypes = {
+	timePeriod: PropTypes.string,
+	date: PropTypes.string
+};
+
 const Detail = ({
 	i18n,
 	settledDate,
@@ -149,8 +160,14 @@ const Detail = ({
 		<div className="info">
 			<ul>
 				<li>
-					<span className="title">{i18n.lbl_SettledDate}</span>
-					<span>{moment(settledDate).format("YYYY/MM/DD")}</span>
+					<span className="title">
+						{i18n.lbl_SettledDate} (+07:00)
+					</span>
+					<span>
+						{moment(settledDate, "YYYY-MM-DDThh:mm:ssZ")
+							.zone("+07:00")
+							.format("YYYY/MM/DD")}
+					</span>
 				</li>
 				<li>
 					<span className="title">{i18n.lbl_TypeName}</span>
@@ -177,3 +194,27 @@ const Detail = ({
 		</div>
 	);
 };
+
+Detail.defaultProps = {
+	i18n: null,
+	settledDate: null,
+	winlostAmount: null,
+	categoryName: null,
+	turnOver: null,
+	validBet: null,
+	_path: null,
+	categoryId: null
+};
+
+Detail.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string),
+	settledDate: PropTypes.string,
+	winlostAmount: PropTypes.number,
+	categoryName: PropTypes.string,
+	turnOver: PropTypes.number,
+	validBet: PropTypes.number,
+	_path: PropTypes.string,
+	categoryId: PropTypes.string
+};
+
+export default Content;

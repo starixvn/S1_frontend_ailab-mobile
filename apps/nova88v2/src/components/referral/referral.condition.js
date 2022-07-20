@@ -1,11 +1,13 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import PropTypes from "prop-types";
+import { referralPopBox } from "../common/context";
 import api from "../../service/api";
 import { number_format } from "../common/common";
-import TandC from "../../service/t_and_c";
+import { ReferralPopBox } from "./referral.popbox";
 
 const ConditionPanel = ({ userInfo, i18n, _isConvert, setPopBox }) => {
 	const isMountedRef = useRef(null);
+	const { setReferralBox } = useContext(referralPopBox);
 	const [referralData, setReferralData] = useState({
 		bonusAmount: 0,
 		vaildBet: 0,
@@ -46,7 +48,24 @@ const ConditionPanel = ({ userInfo, i18n, _isConvert, setPopBox }) => {
 		}
 	}, [userInfo.isLogin, i18n, setPopBox]);
 
-	return (
+	const getReferralDetail = async () => {
+		const res = await api.account.GetReferralSettingDetail();
+		const { errorCode, data, message } = res.data;
+
+		if (errorCode === 0) {
+			setReferralBox({
+				isOpen: true,
+				content: <ReferralPopBox data={data} i18n={i18n} />
+			});
+		} else {
+			setPopBox({
+				isOpen: true,
+				content: `[${errorCode}] ${message}`
+			});
+		}
+	};
+
+	return referralData?.status ? (
 		<div className="refShare">
 			<div className="title">{i18n.lbl_Share_with_friend}</div>
 			<div className="refBox">
@@ -88,16 +107,13 @@ const ConditionPanel = ({ userInfo, i18n, _isConvert, setPopBox }) => {
 						{i18n.lbl_ValidPeriod}
 						<span>{` ${referralData.periodDays} ${i18n.lbl_Days}`}</span>
 					</div>
-					<a
-						href={TandC(userInfo.langId).Referral}
-						target="_blank"
-						rel="noreferrer">
-						{i18n.lbl_Details}
-					</a>
+					<button onClick={getReferralDetail}>
+						{i18n.lbl_MoreDetails}
+					</button>
 				</div>
 			</div>
 		</div>
-	);
+	) : null;
 };
 
 ConditionPanel.defaultProps = {

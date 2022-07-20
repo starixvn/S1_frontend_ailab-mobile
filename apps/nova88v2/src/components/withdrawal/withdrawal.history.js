@@ -107,6 +107,7 @@ const Panel = ({
 				_isConvert={_isConvert}
 				ClickCancel={ClickCancel}
 				i18n={i18n}
+				currencyId={userInfo.currencyId}
 			/>
 		);
 	});

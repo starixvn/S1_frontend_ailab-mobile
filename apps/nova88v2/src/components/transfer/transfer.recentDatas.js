@@ -47,6 +47,7 @@ const RecentDatas = ({ datas }) => {
 					i18n={i18n}
 					memo={item.memo}
 					status={item.status}
+					currencyId={userInfo.currencyId}
 				/>
 			);
 		});
