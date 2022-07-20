@@ -425,10 +425,15 @@
 	"lbl_ValidPeriod": "वैध समय",
 	"lbl_Referral_link": "रेफरल लिकं",
 	"lbl_Copy_to_clipboard": "क्लिपबोर्ड पर कॉपी करें",
-	"lbl_WithdrawalTo": "वापस लेना",
+	"lbl_ReferralReward": "रेफरल इनाम",
+	"lbl_FriendsInvitationLimit": "मित्र आमंत्रण सीमा",
+	"lbl_DepositRequirement": "जमा की आवश्यकता",
+	"lbl_ValidBetRequirement": "वैध शर्त आवश्यकता",
+	"lbl_ReferredFreeCredit": "संदर्भित मुफ्त क्रेडिट",
+	"lbl_TermPeriodWithin": "अवधि अवधि",
 
 	"==============================================Withdrawal====================================": "",
-
+	"lbl_WithdrawalTo": "वापस लेना",
 	"lbl_DepositOver": "आपकी आवश्यक निकासी राशि आपके वर्तमान उपलब्ध शेष राशि से अधिक हो गई है।",
 	"lbl_WithdrawalOver": "आपकी आवश्यक निकासी राशि आपकी सुगम निकासी राशि से अधिक हो गई है।",
 	"lbl_Fishing": "मछली पकड़ना",
