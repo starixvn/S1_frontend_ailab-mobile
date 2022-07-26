@@ -1,0 +1,142 @@
+body {
+  display: flex;
+  align-items: center;
+  background: url(../img/BwBg.jpg) no-repeat center;
+  width: 100%;
+  height: 100vh;
+  min-width: 1400px;
+  background-color: #2b4579;
+  color: #fff;
+  font-family: 'Arial',sans-serif !important;
+}
+
+.logo {
+  width: 10%;
+  position: absolute;
+  top: 10vw;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.img1 {
+  background: url(../img/girl.png) no-repeat center;
+  background-size: 95%;
+  width: 450px;
+  height: 670px;
+  margin-left: 3vw;
+}
+
+.img2 {
+  background: url(../img/casino.png) no-repeat right;
+  background-size: 100%;
+  width: 450px;
+  height: 670px;
+  margin-right: 3vw;
+}
+
+.content {
+  width: 600px;
+  min-width: 600px;
+  margin: 0 auto;
+}
+.content .pageTitle {
+  margin: 0 auto;
+  width: 80%;
+}
+.content .textArea .textBox {
+  border-bottom: 1px solid rgba(79, 203, 255, 0.15);
+  padding: 2vw 0;
+  text-align: center;
+}
+.content .textArea .textBox:nth-child(2) .textTitle .country {
+  background-image: url(../img/Language2.png);
+}
+.content .textArea .textBox:nth-last-child(1) {
+  border: 0;
+}
+.content .textArea .textBox:nth-last-child(1) .textTitle .country {
+  background-image: url(../img/Language2.png);
+}
+.content .textArea .textBox .textTitle {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #6acdff;
+}
+.content .textArea .textBox .textTitle .country {
+  width: 30px;
+  height: 30px;
+  background-image: url(../img/Language5.png);
+  background-size: contain;
+  margin-right: 10px;
+}
+.content .textArea .textBox p {
+  font-size: 14px;
+  text-align: left;
+  line-height: 30px;
+}
+.content .textArea .textBox a {
+  /* background: url(../img/livaBtn.png) no-repeat center; */
+  /* background-size: 100%; */
+  width: 160px;
+  padding: 17px 0;
+  display: block;
+  color: #50e2ff;
+  margin-top: 10px;
+  transition: 0.5s;
+  border: 1px solid #50e2ff;
+  font-size: 18px;
+}
+.content .textArea .textBox a:hover {
+  box-shadow: 0 0 5px rgba(79, 222, 250, 0.5);
+  background:  rgba(79, 222, 250, 0.5);
+}
+
+@media screen and (max-width: 1000px) {
+  body {
+    background: url(../img/BwBg.jpg) no-repeat center top;
+    background-color: #2b4579;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    padding: 2vw;
+    box-sizing: border-box;
+    min-width: auto;
+    height: auto;
+  }
+
+  .logo {
+    width: 50vw;
+  }
+
+  .img1 {
+    background-size: contain;
+    width: 80%;
+    height: 70vh;
+    margin-left: 0vw;
+  }
+
+  .img2 {
+    display: none;
+  }
+
+  .content {
+    width: 600px;
+    min-width: auto;
+    margin: auto;    
+    margin-top: 25vw;
+  }
+}
+@media screen and (max-width: 1000px) and (max-width: 600px) {
+  .content {
+    width: 100%;
+    padding: 4vw;
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .content .textArea .textBox {
+    padding: 4vw 0;
+  }
+}
