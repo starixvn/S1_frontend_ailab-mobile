@@ -1,0 +1,117 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  font-size: 12px;
+  font-family: sans-serif;
+  display: flex;
+}
+
+body {
+  background: url(../img/bg.jpg) no-repeat top center/cover;
+}
+
+.tt {
+  display: none;
+}
+
+.bg {
+  width: 100%;
+  height: 100%;
+  background: url(../img/joe_03.png) no-repeat top right/cover;
+  position: absolute;
+  max-width: 600px;
+  left: 13%;
+  animation: joe 8s ease-in-out infinite;
+}
+
+@keyframes joe {
+  0% {
+    transform: scale(0.96, 0.96);
+  }
+  50% {
+    transform: scale(1, 1);
+  }
+  100% {
+    transform: scale(0.96, 0.96);
+  }
+}
+
+.wallpaper {
+  width: 50%;
+  position: absolute;
+  right: 5%;
+  top: 10%;
+  text-align: center;
+}
+
+.wallpaper img {
+  width: 100%;
+  max-width: 700px;
+}
+
+.wallpaper .title {
+  color: #4672b2;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.wallpaper .txt {
+  color: #000000;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.wallpaper a {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  margin-top: 5%;
+  width: 120px;
+  font-weight: bold;
+  color: white;
+  padding: 10px 0px;
+  font-size: 14px;
+  border-radius: 5px;
+  background: transparent linear-gradient(180deg, #6480AF 0%, #5574A7 100%) 0% 0% no-repeat padding-box;
+}
+
+@media screen and (max-width: 768px) and (orientation: portrait) {
+  body {
+    background: url(../img/bgm.jpg) no-repeat top center/100% auto;
+  }
+  .bg {
+    background: url(../img/joem_03.png) no-repeat top center/100% auto;
+    margin: 5% auto 0;
+    position: unset;
+  }
+  .wallpaper {
+    width: 90%;
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    padding-bottom: 30px;
+  }
+  .wallpaper > div img {
+    display: none;
+  }
+  .wallpaper > div.title {
+    font-size: 14px;
+  }
+  .wallpaper > div.txt {
+    font-size: 12px;
+  }
+  .wallpaper > div.tt {
+    display: block;
+    font-size: 30px;
+    font-weight: bold;
+    color: #0f2f60;
+  }
+  .wallpaper > div.tl {
+    width: 100%;
+    margin-top: 10px;
+    border-bottom: 2px solid #bfcce2;
+  }
+}
