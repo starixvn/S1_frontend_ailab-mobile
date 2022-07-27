@@ -13,6 +13,7 @@ import ThemeMode from "../member/profile.themeMode";
 import path from "../../path";
 import { siteInfo } from "../../config";
 import DefLangs from "../../datas/defLangs";
+import useShieldCheck from "../hook/useShieldCheck";
 
 const languageList = () => {
 	const _siteInfo = siteInfo();
@@ -27,6 +28,7 @@ export default () => {
 	const [userLanguage, setUserLanguage] = useState("en");
 	const [redirectPath, setRedirectPath] = useState(null);
 	const isMountedRef = useRef(null);
+	const { deleteShieldData } = useShieldCheck();
 
 	const _languageList = languageList();
 	useEffect(() => {
@@ -101,6 +103,7 @@ export default () => {
 			}));
 			setNav(() => null);
 			setRedirectPath("/");
+			deleteShieldData();
 		});
 	};
 

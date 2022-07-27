@@ -6,9 +6,11 @@ import {
 import { LOGOUT } from "../../../service/auth";
 import { getUrlParameter } from "../../common/common";
 import path from "../../../path";
+import useShieldCheck from "../../hook/useShieldCheck";
 
 const useVerifyEmail = ({ langId, i18n, setPopBox, setUserInfo }) => {
 	const [tokenPassed, setTokenPassed] = useState(false);
+	const { deleteShieldData } = useShieldCheck();
 
 	useEffect(() => {
 		const key = getUrlParameter("key");
@@ -20,6 +22,7 @@ const useVerifyEmail = ({ langId, i18n, setPopBox, setUserInfo }) => {
 					isLogin: false,
 					langId: prevState.langId
 				}));
+				deleteShieldData();
 
 				const closePopBox = () => {
 					window.location.replace(`${window.location.origin}`);

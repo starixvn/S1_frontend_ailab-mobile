@@ -28,6 +28,7 @@ import config from "../../config";
 import PromoPopup from "./join.promotion";
 import Logo from "../common/logo";
 import { initValue, initStatus } from "./join.def";
+import useShieldCheck from "../hook/useShieldCheck";
 
 const defaultLangId = GET_LANG_ID();
 
@@ -44,6 +45,7 @@ const Join = () => {
 	const [banner, setBanner] = useState([]);
 	const [affiliateidExist, setAffiliateidExist] = useState(null);
 	const [promoPopup, setPromoPopup] = useState(false);
+	const { getShieldData, saveShieldData } = useShieldCheck();
 
 	const isMountedRef = useRef(null);
 	useEffect(() => {
@@ -57,28 +59,31 @@ const Join = () => {
 		const refId = getCookie("RefId");
 		const showBylink = window.location.pathname === `/${path.join.root}`;
 		const openPanel = showBylink || nav === defNavPanel.join;
-		if (refId && openPanel) {
-			api_GetBanner("Promotion", refId, userInfo.langId).then(
-				res => {
-					if (res.data.errorCode === 0 && isMountedRef.current) {
-						if (res.data.data.length > 0) {
-							setBanner(res.data.data);
-							setPromoPopup(true);
+		if (openPanel) {
+			if (refId) {
+				api_GetBanner("Promotion", refId, userInfo.langId).then(
+					res => {
+						if (res.data.errorCode === 0 && isMountedRef.current) {
+							if (res.data.data.length > 0) {
+								setBanner(res.data.data);
+								setPromoPopup(true);
+							}
+						} else if (res.data.errorCode !== 0) {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
 						}
-					} else if (res.data.errorCode !== 0) {
+					},
+					() => {
 						setPopBox({
 							isOpen: true,
-							content: `[${res.data.errorCode}] ${res.data.message}`
+							content: i18n.msg_ApiServerError
 						});
 					}
-				},
-				() => {
-					setPopBox({
-						isOpen: true,
-						content: i18n.msg_ApiServerError
-					});
-				}
-			);
+				);
+			}
+			getShieldData();
 		}
 	}, [nav, userInfo.langId]);
 
@@ -295,6 +300,7 @@ const Join = () => {
 										}
 										setUserInfo(_user);
 										setNav(null);
+										saveShieldData();
 										navigate(`/${path.deposit.root}`);
 									}
 								},
