@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { useMatch, Link, useNavigate } from "@reach/router";
-import PropTypes from "prop-types";
 import Inputbox from "../common/inputbox.info";
 import InputboxPWD from "../common/inputbox.password.info";
 import { LOGIN } from "../../service/auth";
@@ -12,6 +11,7 @@ import {
 } from "../common/context";
 import path from "../../path";
 import Logo from "../common/logo";
+import useShieldCheck from "../hook/useShieldCheck";
 
 const initValue = { UserName: "", Password: "" };
 const initStatus = {
@@ -27,6 +27,7 @@ const LoginPage = () => {
 	const [userValue, setUserValue] = useState(initValue);
 	const [inputStatus, setInputStatus] = useState(initStatus);
 	const isMountedRef = useRef(null);
+	const { getShieldData, saveShieldData } = useShieldCheck();
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -34,6 +35,15 @@ const LoginPage = () => {
 			isMountedRef.current = false;
 		};
 	});
+
+	useEffect(() => {
+		const showBylink = window.location.pathname === `/${path.login.root}`;
+		const openPanel = showBylink || nav === defNavPanel.login;
+
+		if (openPanel) {
+			getShieldData();
+		}
+	}, [nav]);
 
 	const checkValue = ({ col }, e) => {
 		const val = e.target.value;
@@ -71,6 +81,7 @@ const LoginPage = () => {
 							isLogin
 						}));
 						setNav(null);
+						saveShieldData();
 						navigate(`/${path.deposit.root}`);
 					} else if (
 						errorCode === 1101 ||
