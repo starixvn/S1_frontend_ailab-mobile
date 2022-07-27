@@ -625,7 +625,7 @@ main .sideBarNew div {
   display: flex;
 }
 
-main .sideBarNew div > button {
+main .sideBarNew div > button, main .sideBarNew div a {
   border-radius: 5px;
   height: 60px;
   margin: 0 2px;
@@ -643,7 +643,7 @@ main .sideBarNew div > button {
           flex: 0 0 60px;
 }
 
-main .sideBarNew div > button.active {
+main .sideBarNew div > button.active, main .sideBarNew div a.active {
   background: -webkit-gradient(linear, left top, left bottom, from(#ffd34f), to(#ffc34d));
   background: linear-gradient(to bottom, #ffd34f 0%, #ffc34d 100%);
   color: #1f2e4d;
@@ -651,7 +651,7 @@ main .sideBarNew div > button.active {
           box-shadow: 0 -2px 1px #b88c36 inset;
 }
 
-main .sideBarNew div > button.newicon::before, main .sideBarNew div > button.liveicon::before, main .sideBarNew div > button.hoticon::before {
+main .sideBarNew div > button.newicon::before, main .sideBarNew div > button.liveicon::before, main .sideBarNew div > button.hoticon::before, main .sideBarNew div a.newicon::before, main .sideBarNew div a.liveicon::before, main .sideBarNew div a.hoticon::before {
   content: "";
   position: absolute;
   top: -11px;
@@ -663,37 +663,37 @@ main .sideBarNew div > button.newicon::before, main .sideBarNew div > button.liv
           animation: flash3 linear infinite alternate .3s;
 }
 
-main .sideBarNew div > button.newicon::before {
+main .sideBarNew div > button.newicon::before, main .sideBarNew div a.newicon::before {
   background: url(https://banner.goal123.org/h5/img/hotgame/new.svg) no-repeat center/contain;
 }
 
-main .sideBarNew div > button.liveicon::before {
+main .sideBarNew div > button.liveicon::before, main .sideBarNew div a.liveicon::before {
   background: url(https://banner.goal123.org/h5/img/hotgame/live.svg) no-repeat center/contain;
 }
 
-main .sideBarNew div > button.hoticon::before {
+main .sideBarNew div > button.hoticon::before, main .sideBarNew div a.hoticon::before {
   background: url(https://banner.goal123.org/h5/img/hotgame/hot.svg) no-repeat center/contain;
 }
 
-main .sideBarNew div > button img {
+main .sideBarNew div > button img, main .sideBarNew div a img {
   width: 35px;
 }
 
 @media screen and (min-width: 550px) and (max-width: 1024px) {
-  main .sideBarNew div > button {
+  main .sideBarNew div > button, main .sideBarNew div a {
     width: 20%;
     height: 100px;
   }
-  main .sideBarNew div > button img {
+  main .sideBarNew div > button img, main .sideBarNew div a img {
     width: 50px;
   }
 }
 
-main .sideBarNew div > button.event {
+main .sideBarNew div > button.event, main .sideBarNew div a.event {
   padding: 0;
 }
 
-main .sideBarNew div > button.event > div {
+main .sideBarNew div > button.event > div, main .sideBarNew div a.event > div {
   position: absolute;
   top: 1.75vw;
   left: calc(50% - 6vw);
@@ -702,7 +702,7 @@ main .sideBarNew div > button.event > div {
   background: url(https://banner.goal123.org/h5/img/event/worldcup/xs-logo-w.png) no-repeat center/cover;
 }
 
-main .sideBarNew div > button.event.active > div {
+main .sideBarNew div > button.event.active > div, main .sideBarNew div a.event.active > div {
   background: url(https://banner.goal123.org/h5/img/event/worldcup/xs-logo-r.png) no-repeat center/cover;
 }
 
@@ -1369,6 +1369,67 @@ main .sideBarNew div > button.event.active > div {
   margin-top: 5vw;
 }
 
+#popup.resetPassword .popTit {
+  font-size: 14px;
+  padding-right: 10vw;
+}
+
+#popup.resetPassword .popTxt {
+  width: 84vw;
+  padding: 4vw;
+}
+
+#popup.resetPassword .btn-group {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 3vw 0 0;
+}
+
+#popup.resetPassword .btn-group button {
+  padding: 2vw;
+  max-width: 30vw;
+}
+
+#popup.resetPassword .icon {
+  font-size: 3vw;
+}
+
+#popup.resetPassword .tip {
+  margin-top: 0.5vw;
+}
+
+#popup.resetPassword .inputBox, #popup.resetPassword .worldcupEvent .ticket__container .inputBox-event, .worldcupEvent .ticket__container #popup.resetPassword .inputBox-event {
+  width: 100%;
+  margin: 1.5vw auto 0;
+}
+
+#popup.resetPassword .inputBox i.icon, #popup.resetPassword .worldcupEvent .ticket__container .inputBox-event i.icon, .worldcupEvent .ticket__container #popup.resetPassword .inputBox-event i.icon {
+  top: -2vw;
+}
+
+#popup.resetPassword .inputBox input, #popup.resetPassword .worldcupEvent .ticket__container .inputBox-event input, .worldcupEvent .ticket__container #popup.resetPassword .inputBox-event input {
+  padding: 2.5vw 9vw;
+}
+
+#popup.resetPassword .inputBox .icon-module, #popup.resetPassword .worldcupEvent .ticket__container .inputBox-event .icon-module, .worldcupEvent .ticket__container #popup.resetPassword .inputBox-event .icon-module {
+  top: 1vw;
+}
+
+#popup.resetPassword .inputBox .icon-module .icon, #popup.resetPassword .worldcupEvent .ticket__container .inputBox-event .icon-module .icon, .worldcupEvent .ticket__container #popup.resetPassword .inputBox-event .icon-module .icon {
+  margin-left: 0;
+}
+
+#popup.resetSuccess .info {
+  font-size: 3.5vw;
+  margin-bottom: 3vw;
+}
+
+#popup.resetSuccess .info span {
+  display: block;
+  font-size: 3.95vw;
+}
+
 #popup.promospop {
   width: 100%;
   background: #1f3258;
@@ -1379,6 +1440,10 @@ main .sideBarNew div > button.event.active > div {
   -webkit-box-pack: revert;
       -ms-flex-pack: revert;
           justify-content: revert;
+}
+
+#popup.promospop .pop {
+  padding: 0 !important;
 }
 
 #popup.promospop.active {
@@ -5605,6 +5670,22 @@ span.important {
   text-decoration: underline;
 }
 
+.promotions div.promodule .text ul {
+  padding: 0 0 0 5vw;
+}
+
+.promotions div.promodule .text ul li {
+  list-style: initial;
+}
+
+.promotions div.promodule .text ul li a {
+  text-decoration: underline;
+}
+
+.promotions div.promodule .text ul li ul li {
+  list-style: circle;
+}
+
 .promotions div.promodule .info {
   margin: 1vw 0 1vw 0;
   color: #fff;
@@ -5718,6 +5799,10 @@ span.important {
   .promotions div.promodule .protitle, .promotions div.promodule .text {
     margin-bottom: 10px;
   }
+}
+
+.promotions div.promodule strong {
+  font-weight: bold !important;
 }
 
 .promotions .depositSlip {
@@ -9074,7 +9159,7 @@ span.important {
 }
 
 .worldcupEvent .eventPage__bottom {
-  padding: 0;
+  padding: 0 0 15vw 0;
   background: -webkit-gradient(linear, left top, left bottom, from(#6d0d33), to(#300113));
   background: linear-gradient(#6d0d33, #300113);
 }
@@ -9083,9 +9168,9 @@ span.important {
   position: relative;
   padding: 5vw 0;
   margin-bottom: 5vw;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  background: url(https://banner.goal123.org/h5/img/event/worldcup/fixturebg.jpg) no-repeat top center/contain, -webkit-gradient(linear, left top, left bottom, color-stop(50%, #5e142d), to(#580928));
-  background: url(https://banner.goal123.org/h5/img/event/worldcup/fixturebg.jpg) no-repeat top center/contain, linear-gradient(180deg, #5e142d 50%, #580928 100%);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  background: url(https://banner.goal123.org/h5/img/event/worldcup/fixturebg.jpg) no-repeat top center/contain, -webkit-gradient(linear, left top, left bottom, color-stop(50%, #741533), to(#711432));
+  background: url(https://banner.goal123.org/h5/img/event/worldcup/fixturebg.jpg) no-repeat top center/contain, linear-gradient(180deg, #741533 50%, #711432 100%);
 }
 
 .worldcupEvent .fixture .title {
@@ -9093,7 +9178,7 @@ span.important {
 }
 
 .worldcupEvent .fixture button {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 .worldcupEvent .fixture .group-prize {
@@ -9149,7 +9234,7 @@ span.important {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 0 18vw;
+  padding: 0 16vw;
   margin-bottom: 5vw;
 }
 
@@ -9258,6 +9343,9 @@ span.important {
   padding: 6vw 4vw;
   margin-right: 1vw;
   background: #76002E;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .worldcupEvent .fixture .group-tab-sort button:last-child {
@@ -9290,8 +9378,7 @@ span.important {
 
 .worldcupEvent .fixture .group-match .match {
   font-size: 3.5vw;
-  padding: 3vw 6vw;
-  border-top: 1px solid #bcbcbc;
+  padding: 4vw 6vw;
   border-bottom: 1px solid #bcbcbc;
   color: #fff;
 }
@@ -9365,7 +9452,7 @@ span.important {
 }
 
 .worldcupEvent .fixture .group-list .group-item {
-  background: #76002E;
+  background: #8b0137;
   border-radius: 1vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9410,7 +9497,7 @@ span.important {
 
 .worldcupEvent .awards {
   text-align: center;
-  margin: 10vw auto 0;
+  margin: 6vw auto 0;
 }
 
 .worldcupEvent .awards div {
@@ -9464,8 +9551,8 @@ span.important {
 }
 
 .worldcupEvent .title {
-  width: 75vw;
-  height: 8vw;
+  width: 100%;
+  height: 8.75vw;
   font-size: 4.5vw;
   font-weight: bold;
   position: relative;
@@ -9570,7 +9657,7 @@ span.important {
   margin-bottom: 10px;
 }
 
-.worldcupEvent .ticket__tab-item, .worldcupEvent .ticket__tab-item--active, .worldcupEvent .ticket__tab-item:hover, .worldcupEvent .ticket__tab-item--finished, .worldcupEvent .ticket__tab-item--disabled {
+.worldcupEvent .ticket__tab-item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9591,26 +9678,26 @@ span.important {
   cursor: pointer;
 }
 
-.worldcupEvent .ticket__tab-item:last-child, .worldcupEvent .ticket__tab-item--active:last-child, .worldcupEvent .ticket__tab-item--finished:last-child, .worldcupEvent .ticket__tab-item--disabled:last-child {
+.worldcupEvent .ticket__tab-item:last-child {
   margin-right: 0;
 }
 
-.worldcupEvent .ticket__tab-item img, .worldcupEvent .ticket__tab-item--active img, .worldcupEvent .ticket__tab-item:hover img, .worldcupEvent .ticket__tab-item--finished img, .worldcupEvent .ticket__tab-item--disabled img {
+.worldcupEvent .ticket__tab-item img {
   width: 35px;
   margin-right: 10px;
 }
 
-.worldcupEvent .ticket__tab-item--active, .worldcupEvent .ticket__tab-item--active:hover, .worldcupEvent .ticket__tab-item:hover, .worldcupEvent .ticket__tab-item--finished:hover, .worldcupEvent .ticket__tab-item--disabled:hover {
+.worldcupEvent .ticket__tab-item.active {
   outline: 2px solid #fff;
 }
 
-.worldcupEvent .ticket__tab-item--finished {
+.worldcupEvent .ticket__tab-item.finished {
   position: relative;
   outline: 0;
   background: #b50101;
 }
 
-.worldcupEvent .ticket__tab-item--finished::before {
+.worldcupEvent .ticket__tab-item.finished::before {
   content: "\ea10";
   font-family: 'icomoon';
   position: absolute;
@@ -9632,13 +9719,17 @@ span.important {
   background: #00CFB7;
 }
 
-.worldcupEvent .ticket__tab-item--disabled {
+.worldcupEvent .ticket__tab-item.finished.active {
+  outline: 2px solid #fff;
+}
+
+.worldcupEvent .ticket__tab-item.disabled {
   -webkit-filter: grayscale(1);
           filter: grayscale(1);
 }
 
-.worldcupEvent .ticket__tab-item--disabled:hover {
-  outline: 1px solid #FF4700;
+.worldcupEvent .ticket__tab-item.disabled.active {
+  outline: 2px solid #fff;
 }
 
 .worldcupEvent .ticket__selection, .worldcupEvent .ticket__selection--finished, .worldcupEvent .ticket__selection--disabled {
@@ -9697,6 +9788,13 @@ span.important {
   border: 1px solid #fff;
 }
 
+.worldcupEvent .ticket__selection--right .btnGroup .btn-team.active {
+  background: #a00a37;
+  border: 1px solid #f7c7d5;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
 .worldcupEvent .ticket__selection--bottom {
   width: 100%;
   border-top: 1px solid #fff;
@@ -9744,7 +9842,7 @@ span.important {
 
 .worldcupEvent .progress-bar {
   margin: 12vw auto;
-  padding-right: 6vw;
+  margin-right: 6vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9758,7 +9856,7 @@ span.important {
 }
 
 .worldcupEvent .progress-bar__item {
-  width: 100%;
+  width: 33.333%;
   height: 8px;
   border-radius: 4px;
   background: #e1e1e1;
@@ -9785,23 +9883,33 @@ span.important {
   position: absolute;
   color: #fff;
   font-size: 12px;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
   width: 50px;
-  right: -20px;
+  right: -8px;
   bottom: -20px;
   text-align: center;
+  white-space: nowrap;
 }
 
 .worldcupEvent .progress-bar__number:before {
   content: "";
   position: absolute;
   top: -40px;
-  left: 10px;
+  left: 22px;
   width: 40px;
   height: 19px;
   background: url(https://banner.goal123.org/img/worldcup/ticket.png) no-repeat center/cover;
+}
+
+@media (max-width: 335px) {
+  .worldcupEvent .progress-bar__number {
+    white-space: normal;
+    bottom: -32px;
+    right: -20px;
+  }
+  .worldcupEvent .progress-bar__number:before {
+    top: -32px;
+    left: 8px;
+  }
 }
 
 .worldcupEvent .progress-bar__value {
@@ -9849,7 +9957,7 @@ span.important {
   color: #FFBF00;
   font-weight: bold;
   position: relative;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: bold;
 }
 
@@ -9902,7 +10010,7 @@ span.important {
   background: rgba(65, 10, 27, 0.4);
   text-align: center;
   color: #fff;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 .worldcupEvent .rules__title {
@@ -10004,5 +10112,15 @@ span.important {
     -webkit-transform: translate(0%, 0%);
             transform: translate(0%, 0%);
   }
+}
+
+.g-recaptcha {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 5vw;
 }
 /*# sourceMappingURL=style.css.map */

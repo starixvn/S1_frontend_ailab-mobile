@@ -22,3 +22,6 @@ export const promoPopBox = createContext({});
 
 // referral
 export const referralPopBox = createContext({});
+
+// worldCup
+export const worldCupPopBox = createContext({});

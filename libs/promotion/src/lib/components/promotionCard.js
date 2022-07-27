@@ -1,12 +1,13 @@
 import React from "react";
-import JoinBtn from "./joinBtn";
+import PropTypes from "prop-types";
+import { JoinBtn } from "./joinBtn";
 import DetailBtn from "./detailBtn";
 // import PromoRule from "./promoRule";
 import { Stamp } from "./stamp";
 import { CanJoin } from "../common/common";
 import ProcessBar from "./processBar";
 
-export default ({
+const PromotionCard = ({
 	p,
 	_isClaimed,
 	_isNew,
@@ -88,6 +89,36 @@ export default ({
 	);
 };
 
+PromotionCard.defaultProps = {
+	p: {},
+	_isClaimed: false,
+	_isNew: false,
+	imgSRC: "",
+	func_CallBack: () => null,
+	i18n: {},
+	uiSetting: {},
+	userInfo: {},
+	filterType: null,
+	clickMoreInfo: () => null,
+	RefreshProcessBar: () => null,
+	config: null
+};
+
+PromotionCard.propTypes = {
+	p: PropTypes.objectOf(PropTypes.any),
+	_isClaimed: PropTypes.bool,
+	_isNew: PropTypes.bool,
+	imgSRC: PropTypes.string,
+	func_CallBack: PropTypes.func,
+	i18n: PropTypes.objectOf(PropTypes.any),
+	uiSetting: PropTypes.objectOf(PropTypes.any),
+	filterType: PropTypes.string,
+	clickMoreInfo: PropTypes.func,
+	userInfo: PropTypes.objectOf(PropTypes.any),
+	RefreshProcessBar: PropTypes.func,
+	config: PropTypes.objectOf(PropTypes.any)
+};
+
 export const CardForStatic = ({
 	userInfo: { langId },
 	p,
@@ -111,3 +142,19 @@ export const CardForStatic = ({
 		</div>
 	</div>
 );
+
+CardForStatic.defaultProps = {
+	p: {},
+	i18n: {},
+	uiSetting: {},
+	userInfo: {}
+};
+
+CardForStatic.propTypes = {
+	p: PropTypes.objectOf(PropTypes.any),
+	i18n: PropTypes.objectOf(PropTypes.any),
+	uiSetting: PropTypes.objectOf(PropTypes.any),
+	userInfo: PropTypes.objectOf(PropTypes.any)
+};
+
+export default PromotionCard;

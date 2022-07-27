@@ -9,7 +9,7 @@ import {
 import ClaimWithLockedAmount from "./joinBtn.claimWithLockedAmount";
 import { useHandlePopBox } from "../hook/useHandlePopBox";
 
-export default ({
+export const JoinBtn = ({
 	uiSetting = {},
 	promotionInfo,
 	func_GetPromotionDetail,
@@ -17,15 +17,6 @@ export default ({
 	filterType,
 	config
 }) => {
-	const { path, userInfo, i18n, api, formatSetting, handleLogin } = config;
-
-	if (
-		!promotionInfo ||
-		defHideJoinBtnTypes.includes(promotionInfo.promotionType)
-	) {
-		return null;
-	}
-
 	const { handlePopBox, handleErrorPopBox, clickClose } = useHandlePopBox(
 		config
 	);
@@ -39,6 +30,15 @@ export default ({
 			isMountedRef.current = false;
 		};
 	});
+
+	const { path, userInfo, i18n, api, formatSetting, handleLogin } = config;
+
+	if (
+		!promotionInfo ||
+		defHideJoinBtnTypes.includes(promotionInfo.promotionType)
+	) {
+		return null;
+	}
 
 	const SetClaimPromotion = ({ bonusCode, LockedAmount = 0 }) => {
 		if (!processing) {

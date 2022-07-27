@@ -72,6 +72,7 @@ import AppEntPage from "./pages/appEntPage";
 import Streaming from "./pages/streaming";
 import LuckyWheel from "./pages/luckyWheel";
 import UMPage from "./pages/um";
+import WorldCup from "./pages/worldCup";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -160,6 +161,7 @@ const Index = () => {
 						<AppEntPage path={`/${defSpecialPath.appentpage}`} />
 						<Streaming path={path.streaming.root} />
 						<UMPage path={path.um.root} />
+						<WorldCup path={path.worldCup.root} />
 					</Router>
 				</Layout>
 			</LocationProvider>

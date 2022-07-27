@@ -104,10 +104,24 @@ const Menu = ({ i18n, userInfo }) => {
 					  showingTpIds.includes(subItem.tpId)
 					: true)
 		);
+
 		const showingEventIcon = getEventIcon({
 			subIcon: _subIcon,
 			eventIcon: item?.eventIcon
 		});
+
+		if (item?.event) {
+			return (
+				<Link
+					className={`event${
+						showingEventIcon !== "" ? ` ${showingEventIcon}` : ""
+					}`}
+					to={`/${item.path}`}
+					key={`category-${item.category}`}>
+					<div />
+				</Link>
+			);
+		}
 
 		return (
 			<button
@@ -125,6 +139,7 @@ const Menu = ({ i18n, userInfo }) => {
 	});
 
 	const subGameArr = gameList
+		.filter(el => !el.event)
 		.find(item => {
 			return item.category === selectedCol;
 		})

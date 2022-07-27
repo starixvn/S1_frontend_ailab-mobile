@@ -176,6 +176,9 @@ export default {
 	},
 	um: {
 		root: "um"
+	},
+	worldCup: {
+		root: "worldCup"
 	}
 };
 

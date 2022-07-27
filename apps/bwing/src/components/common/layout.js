@@ -204,6 +204,11 @@ export const defPageInfo = {
 	},
 	um: {
 		onlyContent: true
+	},
+	worldCup: {
+		titleKey: "lbl_FIFAWorldCup",
+		className: "",
+		hideLogo: true
 	}
 };
 
@@ -333,6 +338,10 @@ class RotationHint extends Component {
 		);
 	}
 }
+
+RotationHint.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired
+};
 
 const AngPow = ({ i18n, langId }) => {
 	const { root, setRoot } = useContext(rootContext);

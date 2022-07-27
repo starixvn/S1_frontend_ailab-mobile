@@ -167,6 +167,9 @@ export default {
 	},
 	mega888: {
 		root: "mega888"
+	},
+	worldCup: {
+		root: "worldCup"
 	}
 };
 

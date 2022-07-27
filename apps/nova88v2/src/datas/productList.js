@@ -50,10 +50,21 @@ const GameList = ({ langId, currencyName }) => {
 		case "IDR":
 			list = [
 				{
+					category: "worldCup",
+					event: true,
+					path: path.worldCup.root,
+					imgUrl: `${cloudBannerImgURL}/h5/img/event/worldcup/xs-logo-r.png`
+				},
+				{
 					category: "sports",
 					categoryIcon: "soccer",
 					translateKey: "lbl_Sports",
 					items: [
+						{
+							...defGameInfo.WorldCup,
+							img: `${cloudBannerImgURL}/h5/img/worldcup.png`,
+							spanTextKey: "lbl_FIFAWorldCup"
+						},
 						{
 							...defGameInfo.Soccer,
 							img: `${cloudBannerImgURL}/h5/img/soccer.png`,
@@ -662,10 +673,21 @@ const GameList = ({ langId, currencyName }) => {
 		case "MYR":
 			list = [
 				{
+					category: "worldCup",
+					event: true,
+					path: path.worldCup.root,
+					imgUrl: `${cloudBannerImgURL}/h5/img/event/worldcup/xs-logo-r.png`
+				},
+				{
 					category: "sports",
 					categoryIcon: "soccer",
 					translateKey: "lbl_Sports",
 					items: [
+						{
+							...defGameInfo.WorldCup,
+							img: `${cloudBannerImgURL}/h5/img/worldcup.png`,
+							spanTextKey: "lbl_FIFAWorldCup"
+						},
 						{
 							...defGameInfo.Soccer,
 							img: `${cloudBannerImgURL}/h5/img/soccer.png`,
@@ -1267,10 +1289,21 @@ const GameList = ({ langId, currencyName }) => {
 		case "THB":
 			list = [
 				{
+					category: "worldCup",
+					event: true,
+					path: path.worldCup.root,
+					imgUrl: `${cloudBannerImgURL}/h5/img/event/worldcup/xs-logo-r.png`
+				},
+				{
 					category: "sports",
 					categoryIcon: "soccer",
 					translateKey: "lbl_Sports",
 					items: [
+						{
+							...defGameInfo.WorldCup,
+							img: `${cloudBannerImgURL}/h5/img/worldcup.png`,
+							spanTextKey: "lbl_FIFAWorldCup"
+						},
 						{
 							...defGameInfo.Soccer,
 							img: `${cloudBannerImgURL}/h5/img/soccer.png`,
@@ -1888,10 +1921,21 @@ const GameList = ({ langId, currencyName }) => {
 		case "INR":
 			list = [
 				{
+					category: "worldCup",
+					event: true,
+					path: path.worldCup.root,
+					imgUrl: `${cloudBannerImgURL}/h5/img/event/worldcup/xs-logo-r.png`
+				},
+				{
 					category: "sports",
 					categoryIcon: "soccer",
 					translateKey: "lbl_Sports",
 					items: [
+						{
+							...defGameInfo.WorldCup,
+							img: `${cloudBannerImgURL}/h5/img/worldcup.png`,
+							spanTextKey: "lbl_FIFAWorldCup"
+						},
 						{
 							...defGameInfo.Cricket,
 							img: `${cloudBannerImgURL}/h5/img/cricket.png`,
@@ -2474,10 +2518,21 @@ const GameList = ({ langId, currencyName }) => {
 		default:
 			list = [
 				{
+					category: "worldCup",
+					event: true,
+					path: path.worldCup.root,
+					imgUrl: `${cloudBannerImgURL}/h5/img/event/worldcup/xs-logo-r.png`
+				},
+				{
 					category: "sports",
 					categoryIcon: "soccer",
 					translateKey: "lbl_Sports",
 					items: [
+						{
+							...defGameInfo.WorldCup,
+							img: `${cloudBannerImgURL}/h5/img/worldcup.png`,
+							spanTextKey: "lbl_FIFAWorldCup"
+						},
 						{
 							...defGameInfo.Soccer,
 							img: `${cloudBannerImgURL}/h5/img/soccer.png`,
@@ -3083,7 +3138,8 @@ export const defGameInfo = {
 	MPoker: { tpId: 35, tpGameType: 60 },
 	Mega888: { tpId: 22, tpGameType: 34 },
 	VirtualGame: { tpId: 1, gameId: 245, tpGameType: 22 }, // 單一錢包 (目前不支援)
-	VirtualSports: { tpId: 1, gameId: 192, tpGameType: 24 } // 單一錢包 {tpId:41, tpGameType:72, gameId:192}
+	VirtualSports: { tpId: 1, gameId: 192, tpGameType: 24 }, // 單一錢包 {tpId:41, tpGameType:72, gameId:192}
+	WorldCup: { tpId: 1, gameId: 2002, tpGameType: 1 }
 };
 
 export const defCol = {

@@ -77,12 +77,26 @@ const PromoContent = ({
 );
 
 PromoContent.defaultProps = {
-	currencyId: null
+	currencyId: null,
+	promotionInfo: null,
+	ruleCols: null,
+	refreshProcessBar: () => null,
+	langId: null,
+	showAllPromosBtn: null,
+	filterType: null,
+	processBarInfo: null
 };
 
 PromoContent.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	currencyId: PropTypes.number
+	currencyId: PropTypes.number,
+	promotionInfo: PropTypes.objectOf(PropTypes.any),
+	ruleCols: PropTypes.arrayOf(PropTypes.any),
+	refreshProcessBar: PropTypes.func,
+	langId: PropTypes.string,
+	showAllPromosBtn: PropTypes.bool,
+	filterType: PropTypes.string,
+	processBarInfo: PropTypes.objectOf(PropTypes.any)
 };
 
 export default PromoContent;
