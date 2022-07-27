@@ -174,7 +174,7 @@ MaxBonus.propTypes = {
 	bonusType: PropTypes.number
 };
 
-const defElems = ({
+export const defElems = ({
 	promotionInfo,
 	i18n = {},
 	isLogin,

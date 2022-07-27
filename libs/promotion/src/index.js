@@ -1,3 +1,5 @@
 export * from "./lib/promotion";
 export * from "./lib/promotionInfo";
-export { defRuleCols, defNav } from "./lib/common/def";
+export * from "./lib/components/promoRule";
+export { JoinBtn } from "./lib/components/joinBtn";
+export { defRuleCols, defNav, defPromotionType } from "./lib/common/def";

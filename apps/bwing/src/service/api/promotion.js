@@ -12,10 +12,10 @@ export const api_SetDepositPromotionQueue = ({ langId, TransId, BonusCode }) =>
 		DeviceType: defDeviceType.Mobile
 	});
 
-// export const api_promotion_GetPromotionDetail = ({ langId, BonusCode }) =>
-// 	promotionRequest.post(`/GetPromotionDetail/${langId}`, {
-// 		BonusCode
-// 	});
+export const api_promotion_GetPromotionDetail = ({ langId, BonusCode }) =>
+	promotionRequest.post(`/GetPromotionDetail/${langId}`, {
+		BonusCode
+	});
 
 // export const api_promotion_SetClaimPromotion = ({
 // 	langId,

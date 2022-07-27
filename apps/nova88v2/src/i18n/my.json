@@ -213,7 +213,7 @@
 
 	"======================================Home=========================================": "",
 
-	"lbl_VirtualGames":"Permainan Maya",
+	"lbl_VirtualGames": "Permainan Maya",
 	"lbl_VirtualSports": "Sukan Maya",
 	"lbl_UpcomingMatches": "Pertandingan Yang Akan Datang",
 	"lbl_AffiliateProgram": "Program Affliate",
@@ -677,7 +677,7 @@
 	"lbl_Deposit_DragonPayPop_AccountName": "Nama akaun",
 	"lbl_Deposit_DragonPayPop_AccountNumber": "Nombor akaun",
 	"lbl_AutoDeposit": "Deposit Secara Automatik",
-	"lbl_Line":"LINE",
+	"lbl_Line": "LINE",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "Butiran pembayaran",
@@ -795,5 +795,33 @@
 	"==============Mega888==============": "",
 	"lbl_app_for_android": "Aplikasi untuk Android",
 	"lbl_app_for_ios": "Aplikasi untuk IOS",
-	"lbl_mega888_download_app": "Muat Turun APP Mega888"
+	"lbl_mega888_download_app": "Muat Turun APP Mega888",
+
+	"==============World Cup==============": "",
+	"lbl_info": "Info",
+	"lbl_ticketsAvailable": "Tiket Tersedia",
+	"lbl_ticketsUsed": "Tiket Terguna",
+	"lbl_yourPredictions": "Ramalan Anda",
+	"lbl_group": "Kumpulan",
+	"lbl_ticket": "Ticket",
+	"msg_ticketBeenUsed": "Tiket telah digunakan.",
+	"msg_ticketNotBeenActivated": "Tiket belum diaktifkan.",
+	"lbl_FIFAWorldCup": "PIALA DUNIA FIFA Qatar 2022",
+	"msg_WorldCupStartsFrom": "Kempen Ramalan Bermula dari",
+	"msg_WorldCupStartsTime": "1 Ogos",
+	"msg_WorldCupTo": "hingga",
+	"msg_WorldCupEndTime": "31 Oktober 2022",
+	"lbl_significantConditions": "Syarat Penting",
+	"lbl_USD": "USD",
+	"lbl_fixture": "Perlawanan",
+	"lbl_3rdPlace": "Tempat ke-3",
+	"lbl_final": "Final",
+	"lbl_groupStage1st": "Peringkat Pertama Kumpulan",
+	"lbl_groupStage2nd": "Peringkat Kumpulan ke-2",
+	"lbl_roundOf16": "Pusingan 16",
+	"lbl_quarterFinals": "Suku akhir",
+	"lbl_semiFinals": "Separuh Akhir",
+	"lbl_getStarted": "Mulakan",
+	"lbl_totalPrizePool": "JUMLAH HADIAH POOL",
+	"lbl_knockouts": "Knockouts"
 }

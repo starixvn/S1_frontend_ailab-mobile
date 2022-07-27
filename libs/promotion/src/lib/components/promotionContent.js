@@ -1,12 +1,13 @@
 import React from "react";
-import JoinBtn from "./joinBtn";
+import PropTypes from "prop-types";
+import { JoinBtn } from "./joinBtn";
 import DepositRecord from "./depositRecord";
 import ProcessBar from "./processBar";
 import PromoRule from "./promoRule";
 import { defPromotionType } from "../common/def";
 import CashBackInfo from "./cashBackInfo";
 
-export default ({
+const PromoContent = ({
 	promotionInfo,
 	GetPromotionDetail,
 	RefreshProcessBar,
@@ -74,3 +75,23 @@ export default ({
 		/>
 	</div>
 );
+
+PromoContent.defaultProps = {
+	promotionInfo: null,
+	GetPromotionDetail: () => null,
+	RefreshProcessBar: () => null,
+	config: null,
+	filterType: null,
+	processBarInfo: null
+};
+
+PromoContent.propTypes = {
+	promotionInfo: PropTypes.objectOf(PropTypes.any),
+	GetPromotionDetail: PropTypes.func,
+	RefreshProcessBar: PropTypes.func,
+	config: PropTypes.objectOf(PropTypes.any),
+	filterType: PropTypes.string,
+	processBarInfo: PropTypes.objectOf(PropTypes.any)
+};
+
+export default PromoContent;
