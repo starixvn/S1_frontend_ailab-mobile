@@ -1095,7 +1095,7 @@ a {
 body, html {
   background: #ecf3fd;
   height: 100%;
-  font-size: 12px;
+  font-size: 3vw;
   font-family: 'Microsoft YaHei',sans-serif;
   color: white;
 }
@@ -1159,6 +1159,7 @@ div[tabindex="-1"] {
   position: relative;
   height: 10vw;
   margin: 3vw 0;
+  font-size: 3vw;
 }
 
 .switch a {
@@ -1194,6 +1195,10 @@ div[tabindex="-1"] {
   left: 50%;
   -webkit-transition: 0.7s;
   transition: 0.7s;
+}
+
+.switch > div.switchJoin {
+  color: #fff;
 }
 
 .divider {
@@ -1257,6 +1262,15 @@ div[tabindex="-1"] {
   text-align: center;
 }
 
+.Join > .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .Join .dropdown.btn > div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1302,6 +1316,84 @@ div[tabindex="-1"] {
 .Join .Terms a {
   color: #1E85EC;
   text-decoration: underline;
+}
+
+.Join .congrats {
+  text-align: center;
+  color: #F77A00;
+  font-size: 4vw;
+  margin: 10vw 0;
+  position: relative;
+}
+
+.Join .congrats::before {
+  content: "\e996";
+  font-family: 'icomoon';
+  font-size: 20vw;
+  color: #5574A7;
+  margin: 5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.Join .congrats > p {
+  font-size: 5vw;
+  color: #5574A7;
+  font-weight: bold;
+  margin: 2vw;
+}
+
+.Join .congrats::after {
+  position: absolute;
+  width: 50vw;
+  height: 48vw;
+  content: "";
+  background: url(https://banner.0814media.net/h5/img/spread.png) no-repeat;
+  background-size: 100%;
+  top: -5vw;
+  left: 20vw;
+  -webkit-animation: fire1 2.8s 3s infinite;
+          animation: fire1 2.8s 3s infinite;
+}
+
+@-webkit-keyframes fire1 {
+  0% {
+    -webkit-transform: scale(0) translateY(-10%);
+            transform: scale(0) translateY(-10%);
+    opacity: 0;
+  }
+  50% {
+    -webkit-transform: scale(1) translateY(-5%);
+            transform: scale(1) translateY(-5%);
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: scale(1) translateY(0%);
+            transform: scale(1) translateY(0%);
+    opacity: 0;
+  }
+}
+
+@keyframes fire1 {
+  0% {
+    -webkit-transform: scale(0) translateY(-10%);
+            transform: scale(0) translateY(-10%);
+    opacity: 0;
+  }
+  50% {
+    -webkit-transform: scale(1) translateY(-5%);
+            transform: scale(1) translateY(-5%);
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: scale(1) translateY(0%);
+            transform: scale(1) translateY(0%);
+    opacity: 0;
+  }
 }
 
 header {
@@ -2455,6 +2547,36 @@ footer > a.active .circleAnimation + span {
   background: #F77A00;
 }
 
+#popup.resetPassword .popTit {
+  font-size: 4vw;
+  width: calc(100% - 8vw);
+  padding: 3vw 5vw 3vw 3vw;
+  background: #233d67;
+  color: white;
+  max-height: 11vw;
+}
+
+#popup.resetPassword .btn-group {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 3vw 0;
+}
+
+#popup.resetPassword .btn-group button {
+  padding: 2vw;
+  max-width: 30vw;
+}
+
+#popup.resetSuccess .info {
+  margin-bottom: 3vw;
+}
+
+#popup.resetSuccess .info span {
+  display: block;
+  font-size: 3.75vw;
+}
+
 #popup.angpaopop {
   padding: 0;
   width: 100%;
@@ -2767,24 +2889,6 @@ footer > a.active .circleAnimation + span {
   width: 20vw;
   top: 60vw;
   right: 0;
-}
-
-@-webkit-keyframes fire1 {
-  0% {
-    -webkit-transform: scale(0) translateY(-10%);
-            transform: scale(0) translateY(-10%);
-    opacity: 0;
-  }
-  50% {
-    -webkit-transform: scale(1) translateY(-5%);
-            transform: scale(1) translateY(-5%);
-    opacity: 0.6;
-  }
-  100% {
-    -webkit-transform: scale(1) translateY(0%);
-            transform: scale(1) translateY(0%);
-    opacity: 0;
-  }
 }
 
 @keyframes fire1 {
@@ -4146,6 +4250,7 @@ footer > a.active .circleAnimation + span {
       -ms-flex: 1;
           flex: 1;
   position: relative;
+  font-size: 3vw;
 }
 
 .btn-group button i, .btn-group a i, .btn-group .submit i {
@@ -5988,6 +6093,22 @@ span.important {
   text-decoration: underline;
 }
 
+.promotions .promodule .text ul, .promotions .proInfomodule .text ul {
+  padding: 0 0 0 5vw;
+}
+
+.promotions .promodule .text ul li, .promotions .proInfomodule .text ul li {
+  list-style: initial;
+}
+
+.promotions .promodule .text ul li a, .promotions .proInfomodule .text ul li a {
+  text-decoration: underline;
+}
+
+.promotions .promodule .text ul li ul li, .promotions .proInfomodule .text ul li ul li {
+  list-style: circle;
+}
+
 .promotions .promodule .account, .promotions .proInfomodule .account {
   line-height: initial;
   padding: 2vw;
@@ -6005,6 +6126,10 @@ span.important {
 .promotions .promodule .account .info span:first-child, .promotions .proInfomodule .account .info span:first-child {
   font-weight: bold;
   color: #b2b2b2;
+}
+
+.promotions .promodule strong, .promotions .proInfomodule strong {
+  font-weight: bold !important;
 }
 
 .promotions .proInfomodule {
@@ -7102,6 +7227,17 @@ span.important {
 
 .accordion > div .title.icon-cog.active + div {
   display: block;
+}
+
+.accordion > div .title.icon-star-full {
+  padding: 2vw 4vw;
+}
+
+.accordion > div .title.icon-star-full img {
+  width: 7.07vw;
+  margin-left: 1vw;
+  -webkit-filter: drop-shadow(1px 1px 0 #3a3a3a);
+          filter: drop-shadow(1px 1px 0 #3a3a3a);
 }
 
 .accordion > div > div {
@@ -11574,7 +11710,10 @@ span.important {
 .worldcupEvent .fixture {
   position: relative;
   padding: 5vw 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont,
+ "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+ "Fira Sans", "Droid Sans", "Helvetica Neue",
+ sans-serif;
   background: url(https://banner.0814media.net/h5/img/event/worldcup/fixturebg.jpg) no-repeat top center/contain, -webkit-gradient(linear, left top, left bottom, color-stop(50%, #300113), to(#4a031e));
   background: url(https://banner.0814media.net/h5/img/event/worldcup/fixturebg.jpg) no-repeat top center/contain, linear-gradient(180deg, #300113 50%, #4a031e 100%);
 }
@@ -11584,7 +11723,10 @@ span.important {
 }
 
 .worldcupEvent .fixture button {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont,
+ "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+ "Fira Sans", "Droid Sans", "Helvetica Neue",
+ sans-serif;
 }
 
 .worldcupEvent .fixture .group-prize {
@@ -11679,6 +11821,7 @@ span.important {
 .worldcupEvent .fixture .group-tab-date {
   width: 100%;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -11748,6 +11891,9 @@ span.important {
   padding: 6vw 4vw;
   margin-right: 1vw;
   background: #76002E;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .worldcupEvent .fixture .group-tab-sort button:last-child {
@@ -11780,8 +11926,7 @@ span.important {
 
 .worldcupEvent .fixture .group-match .match {
   font-size: 3.5vw;
-  padding: 3vw 6vw;
-  border-top: 1px solid #bcbcbc;
+  padding: 4vw 6vw;
   border-bottom: 1px solid #bcbcbc;
   color: #fff;
 }
@@ -11850,6 +11995,7 @@ span.important {
   display: -ms-flexbox;
   display: flex;
   padding: 0 6vw;
+  -webkit-overflow-scrolling: touch;
 }
 
 .worldcupEvent .fixture .group-list .group-item {
@@ -12078,14 +12224,20 @@ span.important {
   margin: 10vw auto;
   border-radius: 1.25vw;
   position: relative;
+  background: #e1e1e1;
+  margin-right: 4.5vw;
 }
 
 .worldcupEvent .progressBar .progressItem {
-  width: 30.8%;
+  width: 35%;
   height: 2.5vw;
   border-radius: 1.25vw;
   position: relative;
   background: #e1e1e1;
+}
+
+.worldcupEvent .progressBar .progressItem:last-child {
+  width: 30%;
 }
 
 .worldcupEvent .progressBar .progressItem:before {
@@ -12103,7 +12255,7 @@ span.important {
 .worldcupEvent .progressBar .progressItem .value {
   position: absolute;
   color: #fff;
-  font-size: 1.75vw;
+  font-size: 3vw;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
@@ -12179,7 +12331,7 @@ span.important {
   padding: 1vw 2vw;
   margin: auto 1vw;
   border-radius: 3px;
-  font-size: 3vw;
+  font-size: 3.5vw;
 }
 
 .worldcupEvent .btn-group .btn-gray {
@@ -12337,5 +12489,15 @@ span.important {
 .mainWallet .account .icon:before {
   font-size: 3vw;
   margin-right: 1vw;
+}
+
+.g-recaptcha {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 5vw 0;
 }
 /*# sourceMappingURL=style.css.map */

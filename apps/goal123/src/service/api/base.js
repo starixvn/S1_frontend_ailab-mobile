@@ -68,6 +68,11 @@ export const playerRequest = axios.create({
 	baseURL: `${rootURL}/api/Player`
 });
 
+export const worldCupPredictionRequest = axios.create({
+	withCredentials: true,
+	baseURL: `${rootURL}/api/WorldCupPrediction`
+});
+
 export const shieldRequest = axios.create({
 	withCredentials: true,
 	baseURL: `${rootURL}/api/Shield`

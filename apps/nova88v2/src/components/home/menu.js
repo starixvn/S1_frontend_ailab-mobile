@@ -134,6 +134,13 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 				eventIcon: item?.eventIcon
 			});
 
+			if (item.event) {
+				return (
+					<Link key={`menu-${item.category}`} to={item.path}>
+						<img src={item.imgUrl} alt={item.category} />
+					</Link>
+				);
+			}
 			if (item.href) {
 				return (
 					<a

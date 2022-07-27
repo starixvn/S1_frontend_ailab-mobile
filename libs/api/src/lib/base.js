@@ -79,5 +79,10 @@ export default class BaseAPI {
 			withCredentials: true,
 			baseURL: `${apiUrl}/api/LineLogin`
 		});
+
+		this.worldCupPredictionRequest = axios.create({
+			withCredentials: true,
+			baseURL: `${apiUrl}/api/WorldCupPrediction`
+		});
 	}
 }

@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import PropTypes from "prop-types";
 import RemainTime from "../common/remainTime";
 import { number_format } from "../common/common";
 import { defRuleCols, defPromotionType } from "../common/def";
@@ -66,6 +67,20 @@ const RemainingTime = ({ promotionInfo, i18n = {}, isLogin, isList }) =>
 		</li>
 	);
 
+RemainingTime.defaultProps = {
+	isLogin: null,
+	i18n: null,
+	promotionInfo: null,
+	isList: null
+};
+
+RemainingTime.propTypes = {
+	isLogin: PropTypes.bool,
+	i18n: PropTypes.objectOf(PropTypes.string),
+	promotionInfo: PropTypes.objectOf(PropTypes.any),
+	isList: PropTypes.bool
+};
+
 const KeyValue = ({ value, displayText, icon, isList }) =>
 	isList ? (
 		<>
@@ -78,6 +93,20 @@ const KeyValue = ({ value, displayText, icon, isList }) =>
 			<span>{value}</span>
 		</li>
 	);
+
+KeyValue.defaultProps = {
+	value: null,
+	displayText: null,
+	icon: null,
+	isList: null
+};
+
+KeyValue.propTypes = {
+	value: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+	displayText: PropTypes.string,
+	icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+	isList: PropTypes.bool
+};
 
 const Bonus = ({ value, displayText, bonusType, icon, isList, config }) => {
 	const { userInfo, i18n, visitorCurrency } = config;
@@ -105,6 +134,24 @@ const Bonus = ({ value, displayText, bonusType, icon, isList, config }) => {
 	);
 };
 
+Bonus.defaultProps = {
+	value: null,
+	displayText: null,
+	icon: null,
+	isList: null,
+	bonusType: null,
+	config: null
+};
+
+Bonus.propTypes = {
+	value: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+	displayText: PropTypes.string,
+	icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+	isList: PropTypes.bool,
+	bonusType: PropTypes.number,
+	config: PropTypes.objectOf(PropTypes.any)
+};
+
 const MaxBonus = ({ value, displayText, bonusType, icon, isList, config }) => {
 	const { userInfo, i18n, visitorCurrency } = config;
 	const _currencyId = userInfo.isLogin
@@ -124,7 +171,25 @@ const MaxBonus = ({ value, displayText, bonusType, icon, isList, config }) => {
 	);
 };
 
-const defElems = ({
+MaxBonus.defaultProps = {
+	value: null,
+	displayText: null,
+	icon: null,
+	isList: null,
+	bonusType: null,
+	config: null
+};
+
+MaxBonus.propTypes = {
+	value: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+	displayText: PropTypes.string,
+	icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+	isList: PropTypes.bool,
+	bonusType: PropTypes.number,
+	config: PropTypes.objectOf(PropTypes.any)
+};
+
+export const defElems = ({
 	promotionInfo,
 	i18n = {},
 	isLogin,
@@ -193,7 +258,7 @@ const defElems = ({
 	};
 };
 
-export default ({ ruleCols, promotionInfo, isList = true, config = {} }) => {
+const PromoRule = ({ ruleCols, promotionInfo, isList = true, config = {} }) => {
 	const {
 		formatSetting,
 		userInfo: { isLogin },
@@ -220,3 +285,19 @@ export default ({ ruleCols, promotionInfo, isList = true, config = {} }) => {
 		</div>
 	);
 };
+
+PromoRule.defaultProps = {
+	ruleCols: null,
+	promotionInfo: null,
+	isList: null,
+	config: null
+};
+
+PromoRule.propTypes = {
+	ruleCols: PropTypes.arrayOf(PropTypes.any),
+	promotionInfo: PropTypes.objectOf(PropTypes.any),
+	isList: PropTypes.bool,
+	config: PropTypes.objectOf(PropTypes.any)
+};
+
+export default PromoRule;

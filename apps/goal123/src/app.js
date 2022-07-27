@@ -62,6 +62,7 @@ import AppDownload from "./pages/appDownload";
 import Login from "./components/login/login";
 import Join from "./components/join/join.refactor";
 import UMPage from "./pages/um";
+import WorldCup from "./pages/worldCup";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -133,6 +134,7 @@ const Index = () => {
 					<AppDownload path={path.appDownload.root} />
 					<AppEntPage path={`/${defSpecialPath.appentpage}`} />
 					<UMPage path={path.um.root} />
+					<WorldCup path={path.worldCup.root} />
 				</Router>
 				<Join />
 				<Login />

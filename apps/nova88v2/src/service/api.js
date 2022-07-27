@@ -10,7 +10,8 @@ import {
 	PromotionAPI,
 	CashierAPI,
 	PlayerAPI,
-	LineLoginAPI
+	LineLoginAPI,
+	WorldCupPredictionAPI
 } from "@ailab-mobile/api";
 
 import config from "../config";
@@ -27,5 +28,6 @@ export default {
 	promotion: new PromotionAPI(config),
 	cashier: new CashierAPI(config),
 	player: new PlayerAPI(config),
-	lineLogin: new LineLoginAPI(config)
+	lineLogin: new LineLoginAPI(config),
+	worldCupPrediction: new WorldCupPredictionAPI(config)
 };

@@ -11,6 +11,7 @@ import {
 import { api_GetTpIds } from "../../service/api/site";
 import { useGotoGame } from "../hook/useGotoGame";
 import path from "../../path";
+import { bannerImgUrl } from "../../config";
 
 const Menu = ({ i18n, userInfo, setPopBox }) => {
 	const [selectedCol, setSelectedCol] = useState("");
@@ -100,6 +101,26 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 	};
 
 	const gameArr = Object.values(productList(userInfo.langId)).map(product => {
+		if (product.category === "worldCup") {
+			const showingEventIcon = getEventIcon({
+				eventIcon: product?.eventIcon
+			});
+
+			return (
+				<div key={`category-${product.category}`}>
+					<Link
+						className={`nav event${showingEventIcon}`}
+						to={`/${product.path}`}
+						key={`category-${product.category}`}>
+						<img
+							src={`${bannerImgUrl}/img/worldcup/xs-logo-w.png`}
+							alt=""
+						/>
+					</Link>
+				</div>
+			);
+		}
+
 		if (
 			product.category === productList(userInfo.langId).eSports.category
 		) {

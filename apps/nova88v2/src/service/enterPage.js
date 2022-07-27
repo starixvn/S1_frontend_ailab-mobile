@@ -78,7 +78,8 @@ export const GET_ENTER_PAGE = ({
 			_gameId === 997 ||
 			_gameId === 161 ||
 			_gameId === 180 ||
-			_gameId === 192
+			_gameId === 192 ||
+			_gameId === 2002
 		) {
 			result = setResult(
 				"",

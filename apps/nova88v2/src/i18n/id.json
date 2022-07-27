@@ -213,7 +213,7 @@
 
 	"-==================-==================Home-==================-=====================": "",
 
-	"lbl_VirtualGames":"Permainan Virtual",
+	"lbl_VirtualGames": "Permainan Virtual",
 	"lbl_VirtualSports": "Olahraga Virtual",
 	"lbl_UpcomingMatches": "Pertandingan Mendatang",
 	"lbl_AffiliateProgram": "Program Afiliasi",
@@ -257,9 +257,9 @@
 	"lbl_Fishing_Haiba": "Fish Haiba",
 	"lbl_Fishing_Hunting_Happy_Fish_5": "Happy Fish 5",
 	"lbl_Fishing_Hunting_Monster_Awaken": "Monster Awaken",
-	"lbl_LiveCasinoInfo1":"Nikmati Kemewahan Live Kasino",
-	"lbl_LiveCasinoInfo2":"Permainan Casino yang inovatif dengan",
-	"lbl_LiveCasinoInfo3":"LIVE Dealer Asia & Eropa!",
+	"lbl_LiveCasinoInfo1": "Nikmati Kemewahan Live Kasino",
+	"lbl_LiveCasinoInfo2": "Permainan Casino yang inovatif dengan",
+	"lbl_LiveCasinoInfo3": "LIVE Dealer Asia & Eropa!",
 	"lbl_welcome_to": "SELAMAT DATANG",
 	"lbl_world_class": "DI CASINO",
 	"lbl_casino_world": "KELAS DUNIA",
@@ -460,7 +460,7 @@
 	"lbl_Insufficientbalance": "Saldo tidak mencukupi",
 	"lbl_CryptoWithdrawal": "Penarikan Kripto",
 	"lbl_ReceiveUSDT": "Terima jumlah USDT",
-	"lbl_Times":"Kali",
+	"lbl_Times": "Kali",
 	"lbl_WithdrawalCryptoNote": "Nilai konversi berfungsi sebagai tujuan referensi saja, jumlah yang tepat akan mengacu pada nilai terbaru.",
 
 	"-==================-==========================Transfer-===================================": "",
@@ -534,7 +534,6 @@
 	"lbl_WithdrawalLimitation": "LIMIT PENARIKAN HARIAN",
 	"lbl_VIP_unlimited": "Tidak terbatas",
 	"lbl_DAILY_TRANSACTIONS_COUNT": "JUMLAH TRANSAKSI HARIAN",
-
 
 	"-============================================MysteryBox===================================": "",
 
@@ -796,6 +795,33 @@
 	"==============Mega888==============": "",
 	"lbl_app_for_android": "Aplikasi untuk Android",
 	"lbl_app_for_ios": "Aplikasi untuk IOS",
-	"lbl_mega888_download_app": "Unduh Aplikasi Mega888"
+	"lbl_mega888_download_app": "Unduh Aplikasi Mega888",
 
+	"==============World Cup==============": "",
+	"lbl_info": "Informasi",
+	"lbl_ticketsAvailable": "Tiket Tersedia",
+	"lbl_ticketsUsed": "Tiket terpakai",
+	"lbl_yourPredictions": "Prediksi Anda",
+	"lbl_group": "Grup",
+	"lbl_ticket": "Tiket",
+	"msg_ticketBeenUsed": "Tiket yang telah digunakan",
+	"msg_ticketNotBeenActivated": "Tiket yang belum aktif",
+	"lbl_FIFAWorldCup": "Piala Dunia FIFA Qatar 2022",
+	"msg_WorldCupStartsFrom": "Prediksi Dimulai dari",
+	"msg_WorldCupStartsTime": "1 Agustus",
+	"msg_WorldCupTo": "hingga",
+	"msg_WorldCupEndTime": "31 Oktober 2022",
+	"lbl_significantConditions": "Ketentuan Bonus",
+	"lbl_USD": "USD",
+	"lbl_fixture": "Klasemen",
+	"lbl_3rdPlace": "Juara 3",
+	"lbl_final": "Final",
+	"lbl_groupStage1st": "Babak Grup 1",
+	"lbl_groupStage2nd": "Babak Grup 2",
+	"lbl_roundOf16": "Babak 16 Besar",
+	"lbl_quarterFinals": "Perempat Final",
+	"lbl_semiFinals": "Semi Final",
+	"lbl_getStarted": "Memulai",
+	"lbl_totalPrizePool": "TOTAL HADIAH BERSAMA",
+	"lbl_knockouts": "Knockouts"
 }
