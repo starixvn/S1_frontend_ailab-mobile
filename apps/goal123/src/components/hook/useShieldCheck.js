@@ -22,7 +22,7 @@ const useShieldCheck = () => {
 				setCookie("shield_id", shield_id);
 				setCookie("device_score", device_score);
 				setCookie("is_bot", is_bot);
-				setCookie("platform", platform);
+				setCookie("platform", platform.toUpperCase());
 				setCookie("session_id", session_id);
 				setShieldData(res.result);
 			},
