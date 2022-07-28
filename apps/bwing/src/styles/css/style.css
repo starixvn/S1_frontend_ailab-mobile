@@ -9666,10 +9666,7 @@ span.important {
   width: calc(100% - 6vw);
   position: relative;
   padding: 5vw 0;
-  font-family: -apple-system, BlinkMacSystemFont,
- "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
- "Fira Sans", "Droid Sans", "Helvetica Neue",
- sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   background: url(https://banner.bw88.io/img/worldcup/h5fixturebg.png) no-repeat top center/contain;
 }
 
@@ -9708,10 +9705,7 @@ span.important {
 }
 
 .worldCup .fixture button {
-  font-family: -apple-system, BlinkMacSystemFont,
- "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
- "Fira Sans", "Droid Sans", "Helvetica Neue",
- sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 .worldCup .fixture .group-prize {
@@ -9745,6 +9739,7 @@ span.important {
   color: #fff;
   font-size: 4vw;
   margin-bottom: 1.25vw;
+  white-space: nowrap;
 }
 
 .worldCup .fixture .group-prize .prize > div:nth-child(2) {
@@ -9893,108 +9888,6 @@ span.important {
 
 .worldCup .fixture .group-tab-sort {
   width: 100%;
-  margin: 2vw auto;
-  display: block;
-  text-transform: capitalize;
-  color: #D80241;
-}
-
-.worldCup .fixture .group-match .match > div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.worldCup .fixture .group-match .match .team {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 1.5;
-      -ms-flex: 1.5 0;
-          flex: 1.5 0;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  text-transform: capitalize;
-  font-size: 4vw;
-}
-
-.worldCup .fixture .group-match .match .team.right {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
-}
-
-.worldCup .fixture .group-match .match .time {
-  margin: 1vw 2.5vw;
-  font-size: 3vw;
-  text-transform: uppercase;
-}
-
-.worldCup .fixture .group-match .match .time span {
-  font-weight: 600;
-  display: block;
-  font-size: 4.75vw;
-}
-
-.worldCup .fixture .group-list {
-  width: 100%;
-  overflow-y: scroll;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.worldCup .fixture .group-list .group-item {
-  background: #810235;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding: 3vw;
-  margin-right: 5px;
-  min-width: 50vw;
-}
-
-.worldCup .fixture .group-list .group-item .group-title {
-  font-size: 4vw;
-  color: #00CFB7;
-  font-weight: 600;
-  text-align: left;
-  margin-bottom: 3vw;
-}
-
-.worldCup .fixture .group-list .group-item .team {
-  padding-bottom: 2vw;
-  margin-bottom: 2vw;
-  border-bottom: 1px solid #FD004C;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 3.5vw;
-}
-
-.worldCup .fixture .group-list .group-item .team:last-child {
-  border-bottom: 0;
-  margin-bottom: 0;
-  padding-bottom: 1vw;
-}
-
-.worldCup .fixture .group-list .group-item .team img {
-  width: 6vw;
-  border: 1px solid #00CFB7;
-  margin-right: 2vw;
-}
-
-.worldCup .predict {
-  width: calc(100% - 6vw);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
