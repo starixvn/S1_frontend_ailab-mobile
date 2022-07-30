@@ -482,7 +482,7 @@ const ContactUs = ({ i18n }) => {
 				<img src={`${bannerImgUrl}/h5/img/te_1.png`} alt="telegram" />
 			</a>
 			<a
-				href="https://zalo.me/Goal123csd"
+				href="https://zalo.me/goal_csd"
 				target="_blank"
 				rel="noreferrer noopener">
 				<img src={`${bannerImgUrl}/h5/img/zalo_1.png`} alt="zalo" />
