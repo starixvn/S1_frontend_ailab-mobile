@@ -50,17 +50,10 @@ const RankItem = ({
 	);
 };
 
-RankItem.propTypes = {
-	isCurrentUser: PropTypes.bool.isRequired,
-	userName: PropTypes.string.isRequired,
-	wTurnover: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-		.isRequired,
-	Ranking: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-		.isRequired
-};
-
 RankItem.defaultProps = {
-	userRank: 999
+	userRank: 999,
+	status: null,
+	i18n: null
 };
 
 RankItem.propTypes = {
@@ -70,7 +63,9 @@ RankItem.propTypes = {
 	wTurnover: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 		.isRequired,
 	Ranking: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-		.isRequired
+		.isRequired,
+	status: PropTypes.number,
+	i18n: PropTypes.objectOf(PropTypes.string)
 };
 
 const RankItems = ({ datas, i18n }) => {
@@ -100,6 +95,9 @@ const RankList = ({
 	defPrize
 }) => {
 	const { userInfo } = useContext(userInfoContext);
+	const monthlyEndDate = moment()
+		.endOf("month")
+		.format("YYYY/MM/DD HH:mm:ss");
 
 	return (
 		<>
@@ -134,7 +132,10 @@ const RankList = ({
 						)}
 					</div>
 					<div className="text" style={{ fontWeight: 600 }}>
-						{i18n.lbl_Ranking_EndDate}
+						{i18n.lbl_Ranking_EndDate?.replace(
+							"{{time}}",
+							`${monthlyEndDate} GMT+8`
+						)}
 					</div>
 				</>
 			)}

@@ -23,7 +23,7 @@ const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
 		setURL(
 			`${cloudImgURL}/NovaPromotion/ranking_new_tnc/${
 				gotoDefaultUrl.includes(userInfo.langId)
-					? "cs_en"
+					? "en"
 					: userInfo.langId
 			}.html`
 		);

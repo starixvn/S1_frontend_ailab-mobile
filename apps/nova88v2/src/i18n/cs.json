@@ -325,7 +325,7 @@
 	"lbl_Tournament": "竞赛",
 	"lbl_Stage": "阶段",
 	"lbl_LastUpdTime": "最后更新于 {{time}} (每隔 30分钟更新)",
-	"lbl_Ranking_EndDate": "活动结束：2021年12月31日 23:59:59 GMT+8",
+	"lbl_Ranking_EndDate": "活动结束：{{time}}",
 	"lbl_Points": "分数",
 	"lbl_Casino": "老虎机",
 	"lbl_BePartsOfUs": "身历其竞！",

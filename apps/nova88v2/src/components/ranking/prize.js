@@ -23,6 +23,8 @@ const PrizeList = ({ userInfo, i18n }) => {
 
 	const rows = getPrize.map((item, index) => {
 		const { rank, prizes } = item;
+		prizes.splice(0, 1);
+
 		let trophy = "";
 		if (index > 2) {
 			trophy = `${cloudImgURL}/SiteSkin/img/gold.png`;
@@ -47,7 +49,7 @@ const PrizeList = ({ userInfo, i18n }) => {
 		<ul>
 			<li>
 				<div>{i18n.lbl_Ranking.toUpperCase()}</div>
-				<div>{i18n.lbl_MinAmount.toUpperCase()}</div>
+				{/* <div>{i18n.lbl_MinAmount.toUpperCase()}</div> */}
 				<div>
 					{i18n.lbl_Min.toUpperCase()}
 					{i18n.lbl_Points.toUpperCase()}

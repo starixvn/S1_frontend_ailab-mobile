@@ -1,26 +1,19 @@
 import { useEffect, useState, useContext } from "react";
+import moment from "moment";
 import api from "../../service/api";
 import { defDayBtns, defBtnsOfCategory } from "./def";
 import { popBoxContext, i18nContext } from "../common/context";
-import { isEventPeriod } from "../common/common";
 
 const SetUpdTime = () => {
-	const endDate = "2021/12/31 23:59:59";
+	const now = moment();
+	const startOfHour = moment().startOf("hour");
 
-	if (isEventPeriod({ endDate })) {
-		const now = new Date();
-		const minutes = now.getMinutes() > 30 ? 30 : 0;
-		return new Date(
-			now.getFullYear(),
-			now.getMonth(),
-			now.getDate(),
-			now.getHours(),
-			minutes,
-			0
-		);
+	let _displaytime = startOfHour;
+	if (now.subtract(30, "minute") > startOfHour) {
+		_displaytime = startOfHour.add(30, "minute");
 	}
 
-	return new Date(endDate);
+	return _displaytime;
 };
 
 const handleEventCode = ({ isMonth = false }) => {
@@ -165,70 +158,70 @@ export const useGetMonthRank = ({
 	const [lastUpdTime, setLastUpdTime] = useState(SetUpdTime());
 
 	useEffect(() => {
-		// if (isOpen && isLogin) {
-		// 	const EventCode = handleEventCode({ isMonth });
-		// 	const GetRankingDatas = async () => {
-		// 		setLoading(true);
-		// 		try {
-		// 			const TopNum = customTopNum;
-		// 			const res = await api.events.GetLeaderboardListMonth({
-		// 				lBCategoryId: 0,
-		// 				TopNum,
-		// 				SelectDays,
-		// 				EventCode
-		// 			});
-		// 			if (res.data.errorCode === 0) {
-		// 				const rankDatas = res.data.data;
-		// 				if (rankDatas?.length > 0) {
-		// 					const custRankRes = await api.events.GetCustRankMonth(
-		// 						{
-		// 							LBCategoryId: 0,
-		// 							SelectDays,
-		// 							EventCode
-		// 						}
-		// 					);
-		// 					if (custRankRes.data.errorCode === 0) {
-		// 						const {
-		// 							custRank,
-		// 							point
-		// 						} = custRankRes.data.data;
-		// 						setDatas(() => {
-		// 							const rank =
-		// 								custRank > 999 || custRank === 0
-		// 									? "999+"
-		// 									: custRank;
-		// 							let result = [];
-		// 							if (custRank <= TopNum && custRank !== 0) {
-		// 								rankDatas[custRank - 1] = {
-		// 									...rankDatas[custRank - 1],
-		// 									rank
-		// 								};
-		// 								result = rankDatas;
-		// 							} else {
-		// 								result = [
-		// 									...rankDatas,
-		// 									{
-		// 										userName,
-		// 										wTurnover: point,
-		// 										rank
-		// 									}
-		// 								];
-		// 							}
-		// 							return result;
-		// 						});
-		// 					}
-		// 				} else {
-		// 					setDatas([]);
-		// 				}
-		// 			}
-		// 			setLoading(false);
-		// 			setLastUpdTime(SetUpdTime());
-		// 		} catch (error) {
-		// 			setLoading(false);
-		// 		}
-		// 	};
-		// 	GetRankingDatas();
-		// }
+		if (isOpen && isLogin) {
+			const EventCode = handleEventCode({ isMonth });
+			const GetRankingDatas = async () => {
+				setLoading(true);
+				try {
+					const TopNum = customTopNum;
+					const res = await api.events.GetLeaderboardListMonth({
+						lBCategoryId: 0,
+						TopNum,
+						SelectDays,
+						EventCode
+					});
+					if (res.data.errorCode === 0) {
+						const rankDatas = res.data.data;
+						if (rankDatas?.length > 0) {
+							const custRankRes = await api.events.GetCustRankMonth(
+								{
+									LBCategoryId: 0,
+									SelectDays,
+									EventCode
+								}
+							);
+							if (custRankRes.data.errorCode === 0) {
+								const {
+									custRank,
+									point
+								} = custRankRes.data.data;
+								setDatas(() => {
+									const rank =
+										custRank > 999 || custRank === 0
+											? "999+"
+											: custRank;
+									let result = [];
+									if (custRank <= TopNum && custRank !== 0) {
+										rankDatas[custRank - 1] = {
+											...rankDatas[custRank - 1],
+											rank
+										};
+										result = rankDatas;
+									} else {
+										result = [
+											...rankDatas,
+											{
+												userName,
+												wTurnover: point,
+												rank
+											}
+										];
+									}
+									return result;
+								});
+							}
+						} else {
+							setDatas([]);
+						}
+					}
+					setLoading(false);
+					setLastUpdTime(SetUpdTime());
+				} catch (error) {
+					setLoading(false);
+				}
+			};
+			GetRankingDatas();
+		}
 	}, [
 		SelectDays,
 		isOpen,
