@@ -317,7 +317,7 @@
 	"lbl_Tournament": "การแข่งขัน",
 	"lbl_Stage": "เวที",
 	"lbl_LastUpdTime": "อัปเดตล่าสุดเมื่อ {{time}} (อัปเดตทุก 30 นาที)",
-	"lbl_Ranking_EndDate": "สิ้นสุดกิจกรรม: 31/12/2021 23:59:59 GMT+8",
+	"lbl_Ranking_EndDate": "สิ้นสุดกิจกรรม: {{time}}",
 	"lbl_Points": "คะแนน",
 	"lbl_Casino": "สล็อต",
 	"lbl_BePartsOfUs": "ร่วมเป็นส่วนหนึ่งกับเรา!",
