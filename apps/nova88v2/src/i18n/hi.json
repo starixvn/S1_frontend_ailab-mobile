@@ -322,7 +322,7 @@
 	"lbl_Tournament": "टूर्नामेंट",
 	"lbl_Stage": "मंच",
 	"lbl_LastUpdTime": "{{time}} पर अंतिम अपडेट (हर 30 मिनट में अपडेट करें)",
-	"lbl_Ranking_EndDate": "EVENT ENDED: 31/12/2021 23:59:59 GMT+8",
+	"lbl_Ranking_EndDate": "EVENT ENDED: {{time}}",
 	"lbl_Points": "अंक",
 	"lbl_Casino": "स्लॉट खेल",
 	"lbl_BePartsOfUs": "BE PARTS OF US!",
