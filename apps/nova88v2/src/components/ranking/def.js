@@ -361,15 +361,15 @@ export const defPrize = () => ({
 			pointCalculation: [
 				{
 					rank: "SPORTS",
-					prizes: ["300,000", "1"]
+					prizes: ["336,000", "1"]
 				},
 				{
 					rank: "SLOTS",
-					prizes: ["1,000,000", "1"]
+					prizes: ["1,680,000", "1"]
 				},
 				{
 					rank: "LIVE CASINO",
-					prizes: ["2,500,000", "1"]
+					prizes: ["3,368,000", "1"]
 				}
 			]
 		},
@@ -415,15 +415,15 @@ export const defPrize = () => ({
 			pointCalculation: [
 				{
 					rank: "SPORTS",
-					prizes: ["300,000", "1"]
+					prizes: ["336,000", "1"]
 				},
 				{
 					rank: "SLOTS",
-					prizes: ["1,000,000", "1"]
+					prizes: ["1,680,000", "1"]
 				},
 				{
 					rank: "LIVE CASINO",
-					prizes: ["2,500,000", "1"]
+					prizes: ["3,368,000", "1"]
 				}
 			]
 		}
@@ -471,15 +471,15 @@ export const defPrize = () => ({
 			pointCalculation: [
 				{
 					rank: "กีฬา",
-					prizes: ["500", "1"]
+					prizes: ["800", "1"]
 				},
 				{
 					rank: "สล็อต",
-					prizes: ["3000", "1"]
+					prizes: ["4,000", "1"]
 				},
 				{
 					rank: "คาสิโนสด",
-					prizes: ["6000", "1"]
+					prizes: ["8,000", "1"]
 				}
 			]
 		},
@@ -525,15 +525,15 @@ export const defPrize = () => ({
 			pointCalculation: [
 				{
 					rank: "SPORTS",
-					prizes: ["500", "1"]
+					prizes: ["800", "1"]
 				},
 				{
 					rank: "SLOTS",
-					prizes: ["3000", "1"]
+					prizes: ["4,000", "1"]
 				},
 				{
 					rank: "LIVE CASINO",
-					prizes: ["6000", "1"]
+					prizes: ["8,000", "1"]
 				}
 			]
 		}
