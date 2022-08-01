@@ -19,6 +19,7 @@ const RecentDatas = ({ Datas, SubmitProof, ClickCancel }) => {
 	const hasData = Datas && Datas.length > 0;
 	const rows =
 		hasData &&
+		userInfo.currencyId &&
 		Datas.map(d => {
 			return (
 				<Detail

@@ -212,9 +212,36 @@ const Payment = props => {
 		}));
 	};
 
+	const reciptIsRequired =
+		userInfo.currencyId === 4 ? bankSlipPopBox.receipt ?? false : true;
+
+	const canSubmit =
+		selBank.sysId &&
+		amount !== "" &&
+		VaildAmount({ amount, displayWarning: false }) &&
+		reciptIsRequired;
+
+	const isShowSubmit = paymentList.filter(
+		item => item.sysId === selBank.sysId
+	)[0]?.canSubmit;
+
+	const classStyle = () => {
+		let result = "";
+		if (isShowSubmit && canSubmit) {
+			result = "blue";
+		} else {
+			result = isShowSubmit ? "gray" : "orange";
+		}
+		return result;
+	};
+
 	const ClickSubmit = async () => {
 		let result =
-			selBank.sysId && amount !== "" && VaildAmount({ _amount: amount });
+			selBank.sysId &&
+			amount !== "" &&
+			VaildAmount({ _amount: amount }) &&
+			selBank.canSubmit &&
+			canSubmit;
 
 		if (selDepositChannel === null) {
 			depositChannelSetWarning(i18n.lbl_LocalBankDepositChannelTip);
@@ -451,13 +478,7 @@ const Payment = props => {
 	};
 
 	const _isConvert = isConvert(userInfo.currencyId);
-	const reciptIsRequired =
-		userInfo.currencyId === 4 ? bankSlipPopBox.receipt ?? false : true;
-	const canSubmit =
-		selBank.sysId &&
-		amount !== "" &&
-		VaildAmount({ amount, displayWarning: false }) &&
-		reciptIsRequired;
+
 	return (
 		<div className="depositModule active">
 			<div className="title text-org icon icon-credit-card">
@@ -517,10 +538,10 @@ const Payment = props => {
 
 			<div className="btn-group">
 				<button
-					className={canSubmit ? "orange" : "gray"}
+					className={classStyle()}
 					disabled={!canSubmit}
 					onClick={ClickSubmit}>
-					{i18n.lbl_Submit}
+					{isShowSubmit ? i18n.lbl_Submit : i18n.lbl_DepositStatus1}
 				</button>
 			</div>
 		</div>
