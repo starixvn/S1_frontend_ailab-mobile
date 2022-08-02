@@ -77,6 +77,9 @@ body {
   body {
     background-size: auto;
   }
+  html {
+    overflow: scroll;
+  }
   .bg {
     background: url(../img/joem_03.png) no-repeat top left;
     left: -5vw;
