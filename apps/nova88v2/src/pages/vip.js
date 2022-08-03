@@ -21,7 +21,7 @@ export const vipAllowCurrencies = [
 
 const Banners = ({ langId }) => {
 	const rows = defBannersUrl({
-		langId: langId.includes("_en") ? "en" : langId
+		langId
 	}).map(b => (
 		<img
 			key={`VIPBanner-${b}`}
