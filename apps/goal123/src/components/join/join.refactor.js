@@ -45,7 +45,7 @@ const Join = () => {
 	const [banner, setBanner] = useState([]);
 	const [affiliateidExist, setAffiliateidExist] = useState(null);
 	const [promoPopup, setPromoPopup] = useState(false);
-	const { getShieldData, saveShieldData } = useShieldCheck();
+	const { getShieldData, saveShieldData, isShieldLoaded } = useShieldCheck();
 
 	const isMountedRef = useRef(null);
 	useEffect(() => {
@@ -83,7 +83,9 @@ const Join = () => {
 					}
 				);
 			}
-			getShieldData();
+			if (isShieldLoaded) {
+				getShieldData();
+			}
 		}
 	}, [nav, userInfo.langId]);
 

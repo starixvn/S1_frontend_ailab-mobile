@@ -27,7 +27,7 @@ const LoginPage = () => {
 	const [userValue, setUserValue] = useState(initValue);
 	const [inputStatus, setInputStatus] = useState(initStatus);
 	const isMountedRef = useRef(null);
-	const { getShieldData, saveShieldData } = useShieldCheck();
+	const { getShieldData, saveShieldData, isShieldLoaded } = useShieldCheck();
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -40,7 +40,7 @@ const LoginPage = () => {
 		const showBylink = window.location.pathname === `/${path.login.root}`;
 		const openPanel = showBylink || nav === defNavPanel.login;
 
-		if (openPanel) {
+		if (openPanel && isShieldLoaded) {
 			getShieldData();
 		}
 	}, [nav]);
