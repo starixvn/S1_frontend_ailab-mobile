@@ -4,56 +4,31 @@ import PropTypes from "prop-types";
 import { siteInfo, cloudBannerImgURL } from "../../config";
 import { Link } from "../../route/link";
 import path from "../../path";
-import { defCurrenyId, langToCurrency } from "../common/common";
+import { langToCurrency } from "../common/common";
 import { useGetSEODatas } from "../seo/seo";
-
-const defSocialMedia = currencyId => {
-	switch (currencyId) {
-		case defCurrenyId.MYR:
-			return {
-				fb: "https://www.facebook.com/nova88my/ ",
-				twitter: "https://twitter.com/nova88_malaysia",
-				ig: "https://www.instagram.com/nova88my/ ",
-				yt: "https://www.youtube.com/channel/UCoUtgrQN2E10oke1Hmj0ATw",
-				telegram: "https://t.me/nova88my"
-			};
-		case defCurrenyId.INR:
-			return {
-				fb: "https://www.facebook.com/nova88india",
-				ig: "https://www.instagram.com/nova88indiaofficial/",
-				telegram: "https://t.me/nova88india"
-			};
-		case defCurrenyId.THB:
-			return {
-				fb: "https://www.facebook.com/nova88thailandofficial/",
-				ig: "https://www.instagram.com/nova88thai/",
-				twitter: "https://twitter.com/nova88thai",
-				telegram: "https://t.me/nova88thai",
-				yt: "https://www.youtube.com/channel/UCw-GpZw8YG_VEPjJKZvbXqw"
-			};
-		case defCurrenyId.IDR:
-			return {
-				fb: "https://www.facebook.com/nova88indo",
-				ig: "https://www.instagram.com/nova88indo/",
-				twitter: "https://twitter.com/Nova88Indo",
-				telegram: "https://t.me/nova88indo",
-				yt: "https://www.youtube.com/channel/UCvX-E6TqyR3Ett7XMkTM1Bw",
-				pinterest: "https://id.pinterest.com/Nova88Indonesia2"
-			};
-		default:
-			return {
-				fb: "https://www.facebook.com/nova88official/ ",
-				twitter: "https://twitter.com/Nova88official/",
-				ig:
-					"https://www.instagram.com/accounts/login/?next=/nova88_official/ ",
-				telegram: "https://t.me/Nova88Support1"
-			};
-	}
-};
+import useGetSocialChannel, {
+	defDisplayPage,
+	channelIcon
+} from "../hook/useGetSocialChannel";
 
 const Bottom = ({ i18n, langId, currencyId }) => {
 	const _currencyId = currencyId ?? langToCurrency[langId];
-	const socialMedia = defSocialMedia(_currencyId);
+
+	const { socialChannel } = useGetSocialChannel({
+		langId,
+		currencyId: _currencyId,
+		displayPage: defDisplayPage.Footer
+	});
+
+	const snsArr = socialChannel.map(el => (
+		<a
+			key={`channel-${el.channelName}`}
+			className={channelIcon[el.channelName]}
+			href={el.link}
+			target="_blank"
+			rel="noreferrer noopener"
+		/>
+	));
 
 	return (
 		<>
@@ -81,46 +56,7 @@ const Bottom = ({ i18n, langId, currencyId }) => {
 			</div>
 			<div className="social">
 				<License i18n={i18n} />
-				{socialMedia?.fb && (
-					<a
-						className="icon icon-facebook"
-						href={socialMedia?.fb}
-						target="_blank"
-						rel="noreferrer noopener"
-					/>
-				)}
-				{socialMedia?.ig && (
-					<a
-						className="icon icon-instagram"
-						href={socialMedia?.ig}
-						target="_blank"
-						rel="noreferrer noopener"
-					/>
-				)}
-				{socialMedia?.twitter && (
-					<a
-						className="icon icon-twitter"
-						href={socialMedia?.twitter}
-						target="_blank"
-						rel="noreferrer noopener"
-					/>
-				)}
-				{socialMedia?.yt && (
-					<a
-						className="icon icon-youtube"
-						href={socialMedia?.yt}
-						target="_blank"
-						rel="noreferrer noopener"
-					/>
-				)}
-				{socialMedia?.telegram && (
-					<a
-						className="icon icon-telegram"
-						href={socialMedia?.telegram}
-						target="_blank"
-						rel="noreferrer noopener"
-					/>
-				)}
+				{socialChannel.length > 0 && <div>{snsArr}</div>}
 			</div>
 		</>
 	);

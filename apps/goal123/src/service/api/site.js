@@ -72,3 +72,10 @@ export const GetSupportDomainList = () =>
 
 export const api_site_GetTpMaintainList = () =>
 	siteRequest.post(`/GetTpMaintainList`);
+
+export const api_site_GetSocialChannel = ({ langId, displayPage }) =>
+	siteRequest.post("GetSocialChannel", {
+		CurrencyId: 51,
+		LangId: langId,
+		DisplayPage: displayPage
+	});
