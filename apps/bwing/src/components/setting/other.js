@@ -2,26 +2,30 @@ import React, { useContext } from "react";
 import { userInfoContext, i18nContext } from "../common/context";
 import TandC from "../../service/t_and_c";
 import { siteInfo } from "../../config";
+import useGetSocialChannel, {
+	defDisplayPage,
+	channelIcon
+} from "../hook/useGetSocialChannel";
 
 export default () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
-	const _siteInfo = siteInfo();
 
-	const socialMedia =
-		_siteInfo.socialMedia &&
-		Object.values(_siteInfo.socialMedia).map(v => {
-			return (
-				<a
-					key={`other-socialMedia-${v.displayKey}`}
-					href={v.link}
-					rel="noopener noreferrer"
-					target="_blank"
-					className={`icon icon-${v.icon}`}>
-					{i18n[v.displayKey]}
-				</a>
-			);
-		});
+	const { socialChannel } = useGetSocialChannel({
+		langId: userInfo.langId,
+		displayPage: defDisplayPage.Footer
+	});
+
+	const snsArr = socialChannel.map(el => (
+		<a
+			key={`channel-${el.channelName}`}
+			className={channelIcon[el.channelName]}
+			href={el.link}
+			target="_blank"
+			rel="noreferrer">
+			{el.channelName}
+		</a>
+	));
 
 	return (
 		<div className="webmap">
@@ -101,33 +105,19 @@ export default () => {
 					{i18n.lbl_ContactUs}
 				</a>
 			</div>
-			<div>
-				<span>{i18n.lbl_SocialMedia}</span>
-				<a
-					className="icon icon-facebook"
-					href="https://www.facebook.com/Bwingtttt"
-					target="_blank">
-					{i18n.lbl_Facebook}
-				</a>
-				<a
-					className="icon icon-youtube"
-					href="https://www.youtube.com/channel/UCDvFS9eTrOEYuVjb3BNQ3bg/featured"
-					target="_blank">
-					Youtube
-				</a>
-				<a
-					className="icon icon-twitter"
-					href="https://twitter.com/bwingofficial"
-					target="_blank">
-					{i18n.lbl_Twitter}
-				</a>
-				<a
-					className="icon icon-tiktok"
-					href="https://www.tiktok.com/@bwingpro"
-					target="_blank">
-					Tiktok
-				</a>
-			</div>
+			{socialChannel.length > 0 && (
+				<div>
+					<span>{i18n.lbl_SocialMedia}</span>
+					{snsArr}
+					{/* <a
+						className="icon icon-tiktok"
+						href="https://www.tiktok.com/@bwingpro"
+						target="_blank"
+						rel="noreferrer">
+						Tiktok
+					</a> */}
+				</div>
+			)}
 		</div>
 	);
 };
