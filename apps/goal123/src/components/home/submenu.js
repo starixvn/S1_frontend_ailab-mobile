@@ -25,6 +25,10 @@ import {
 	useGetTpMaintainList,
 	defTpGameType
 } from "../hook/useGetTpMaintainList";
+import useGetSocialChannel, {
+	defDisplayPage,
+	channelIconName
+} from "../hook/useGetSocialChannel";
 
 const defSubMenus = [
 	{
@@ -241,7 +245,7 @@ const SubMenu = ({ handleSideMenuPanel, isOpenSideMenu }) => {
 				handleSubMenu={handleSubMenu}
 				isOpenSubMenu={isOpenSubMenu}
 			/>
-			<ContactUs i18n={i18n} />
+			<ContactUs i18n={i18n} langId={userInfo.langId} />
 			<LangSwitch
 				setPopBox={setPopBox}
 				userInfo={userInfo}
@@ -465,34 +469,36 @@ WalletInfo.propTypes = {
 	}).isRequired
 };
 
-const ContactUs = ({ i18n }) => {
+const ContactUs = ({ i18n, langId }) => {
+	const { socialChannel } = useGetSocialChannel({
+		langId,
+		displayPage: defDisplayPage.Footer
+	});
+
+	const snsList = socialChannel?.map(el => (
+		<a href={el.link} target="_blank" rel="noreferrer noopener">
+			<img
+				src={`${bannerImgUrl}/h5/img/${
+					channelIconName[el.channelName]
+				}`}
+				alt={el.channelName}
+			/>
+		</a>
+	));
+
 	return (
-		<div className="contact">
-			<div>{i18n.lbl_ContactUs.toUpperCase()}</div>
-			<a
-				href="skype:live:.cid.d357533c71e50fb5?chat"
-				target="_blank"
-				rel="noreferrer noopener">
-				<img src={`${bannerImgUrl}/h5/img/sk_1.png`} alt="skype" />
-			</a>
-			<a
-				href="https://t.me/Goal123csd"
-				target="_blank"
-				rel="noreferrer noopener">
-				<img src={`${bannerImgUrl}/h5/img/te_1.png`} alt="telegram" />
-			</a>
-			<a
-				href="https://zalo.me/goal_csd"
-				target="_blank"
-				rel="noreferrer noopener">
-				<img src={`${bannerImgUrl}/h5/img/zalo_1.png`} alt="zalo" />
-			</a>
-		</div>
+		socialChannel.length > 0 && (
+			<div className="contact">
+				<div>{i18n.lbl_ContactUs.toUpperCase()}</div>
+				<div>{snsList}</div>
+			</div>
+		)
 	);
 };
 
 ContactUs.propTypes = {
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	langId: PropTypes.string.isRequired
 };
 
 const languageList = () => {

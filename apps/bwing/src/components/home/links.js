@@ -1,12 +1,17 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link, useNavigate } from "@reach/router";
 import config, { siteInfo, bannerImgUrl } from "../../config";
 import TandC from "../../service/t_and_c";
 import path from "../../path";
 import { defPlatform } from "./defPlatform";
 import { useAppDownLoad } from "../appDownload/useAppDownLoad";
+import useGetSocialChannel, {
+	defDisplayPage,
+	channelIcon
+} from "../hook/useGetSocialChannel";
 
-export default ({ i18n, langId }) => {
+const Panel = ({ i18n, langId }) => {
 	return (
 		<>
 			<AppDownload i18n={i18n} langId={langId} />
@@ -16,6 +21,11 @@ export default ({ i18n, langId }) => {
 			<Platforms i18n={i18n} />
 		</>
 	);
+};
+
+Panel.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	langId: PropTypes.string.isRequired
 };
 
 const Affiliates = ({ i18n, langId }) => {
@@ -33,6 +43,11 @@ const Affiliates = ({ i18n, langId }) => {
 			</a>
 		</div>
 	);
+};
+
+Affiliates.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	langId: PropTypes.string.isRequired
 };
 
 const UserGuide = ({ i18n, langId }) => {
@@ -75,58 +90,50 @@ const UserGuide = ({ i18n, langId }) => {
 	);
 };
 
+UserGuide.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	langId: PropTypes.string.isRequired
+};
+
 const ContactUs = ({ i18n, langId }) => {
+	const { socialChannel } = useGetSocialChannel({
+		langId,
+		displayPage: defDisplayPage.Footer
+	});
+
+	const snsArr = socialChannel.map(el => (
+		<a
+			key={`channel-${el.channelName}`}
+			className={channelIcon[el.channelName]}
+			href={el.link}
+			target="_blank"
+			rel="noreferrer noopener"
+		/>
+	));
+
 	return (
-		<div className="contact">
-			<p className="contact__title lightBTitle">
-				{i18n.lbl_ContactUs?.toUpperCase()}
-			</p>
-			<div className="contact-box">
-				<a
-					href={siteInfo(langId).skypeId}
-					target="_blank"
-					className="icon icon-contactUS6"
-					rel="noreferrer"
-				/>
-				<a
-					href={siteInfo(langId).telegramId}
-					target="_blank"
-					className="icon icon-Telegram"
-					rel="noreferrer"
-				/>
-				<a
-					href={siteInfo(langId).zaloId}
-					target="_blank"
-					className="icon icon-zalo"
-					rel="noreferrer"
-				/>
-				<a
-					href={siteInfo(langId).facebookId}
-					target="_blank"
-					className="icon icon-contactUS1"
-					rel="noreferrer"
-				/>
-				<a
-					href={siteInfo(langId).twitterId}
-					target="_blank"
-					className="icon icon-contactUS2"
-					rel="noreferrer"
-				/>
-				<a
-					href={siteInfo(langId).youtubeId}
-					target="_blank"
-					className="icon icon-youtube"
-					rel="noreferrer"
-				/>
-				<a
-					href={siteInfo(langId).tiktokId}
-					target="_blank"
-					className="icon icon-tiktok"
-					rel="noreferrer"
-				/>
+		socialChannel.length > 0 && (
+			<div className="contact">
+				<p className="contact__title lightBTitle">
+					{i18n.lbl_ContactUs?.toUpperCase()}
+				</p>
+				<div className="contact-box">
+					{snsArr}
+					{/* <a
+						href={siteInfo(langId).tiktokId}
+						target="_blank"
+						className="icon icon-tiktok"
+						rel="noreferrer"
+					/> */}
+				</div>
 			</div>
-		</div>
+		)
 	);
+};
+
+ContactUs.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	langId: PropTypes.string.isRequired
 };
 
 const Platforms = ({ i18n }) => {
@@ -148,6 +155,10 @@ const Platforms = ({ i18n }) => {
 			</div>
 		</>
 	);
+};
+
+Platforms.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
 const AppDownload = () => {
@@ -191,3 +202,5 @@ const AppDownload = () => {
 		</div>
 	);
 };
+
+export default Panel;

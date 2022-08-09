@@ -4,18 +4,26 @@ import api from "../../service/api";
 
 export const defDisplayPage = {
 	Home: 1,
-	ContactUs: 2
+	ContactUs: 2,
+	App: 3,
+	Footer: 4
 };
 
-export const defChannelName = {
-	LivaChat: "LivaChat",
-	WhatsApp: "WhatsApp",
-	Telegram: "Telegram",
-	Email: "E-mail",
-	Facebook: "Facebook",
-	Twitter: "Twitter",
-	Instagram: "Instagram",
-	LINE: "LINE"
+export const defLinkType = {
+	url: 1,
+	qrCode: 2
+};
+
+export const channelIcon = {
+	Youtube: "icon icon-youtube",
+	Telegram: "icon icon-telegram",
+	Facebook: "icon icon-facebook",
+	Twitter: "icon icon-twitter",
+	Instagram: "icon icon-instagram",
+	LINE: "icon icon-line",
+	Livechat: "icon icon-chat",
+	WhatsApp: "icon icon-whatsapp",
+	"E-mail": "icon icon-envelope"
 };
 
 const useGetSocialChannel = ({ langId, currencyId, displayPage }) => {
