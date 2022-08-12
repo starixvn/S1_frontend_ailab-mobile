@@ -456,6 +456,7 @@
 	"lbl_Deduction": "Offset rollover difference amount",
 	"lbl_WithdrawalAmount": "Withdrawal Amount",
 	"lbl_Wallet_Saba": "Sportsbook Wallet",
+  "lbl_Adjustment": "Adjustment",
 	"lbl_WithdrawalStatus1": "Processing",
 	"lbl_WithdrawalStatus2": "Processing",
 	"lbl_WithdrawalStatus3": "Processing",

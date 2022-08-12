@@ -447,6 +447,7 @@
 	"lbl_Deduction": "Ofset jumlah perbezaan rollover",
 	"lbl_WithdrawalAmount": "Jumlah Pengeluaran",
 	"lbl_Wallet_Saba": "Dompet Sportsbook",
+  "lbl_Adjustment": "Baki pelarasan",
 	"lbl_WithdrawalStatus1": "Sedang Diproses",
 	"lbl_WithdrawalStatus2": "Sedang Diproses",
 	"lbl_WithdrawalStatus3": "Sedang Diproses",
