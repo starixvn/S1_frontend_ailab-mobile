@@ -15,18 +15,27 @@ const ReacentDatas = props => {
 	};
 
 	const transferDirection = (
-		_direction,
+		direction,
 		displayMainWallet,
-		displaySabaWallet
+		displayAdjustment,
+		isAdjustment,
+		tpName
 	) => {
 		let startWallet = "";
 		let endWallet = "";
-
-		if (_direction === 1) {
-			startWallet = displayMainWallet;
-			endWallet = displaySabaWallet;
+		if (direction === 1) {
+			if (isAdjustment) {
+				startWallet = tpName;
+				endWallet = displayAdjustment;
+			} else {
+				startWallet = displayMainWallet;
+				endWallet = tpName;
+			}
+		} else if (isAdjustment) {
+			startWallet = tpName;
+			endWallet = displayAdjustment;
 		} else {
-			startWallet = displaySabaWallet;
+			startWallet = tpName;
 			endWallet = displayMainWallet;
 		}
 		return { startWallet, endWallet };
@@ -39,7 +48,9 @@ const ReacentDatas = props => {
 			const _transferDirection = transferDirection(
 				item.direction,
 				i18n.lbl_MainWallet,
-				i18n.lbl_Wallet_Saba
+				i18n.lbl_Adjustment,
+				item.isAdjustment,
+				item.tpName
 			);
 			return (
 				<TransactionHistory

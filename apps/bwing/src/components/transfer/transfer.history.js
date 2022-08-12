@@ -9,15 +9,28 @@ import HistoryFilter from "../common/historyFilter";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import Loading from "../common/loading";
 
-const transferDirection = (direction, displayMainWallet, displaySabaWallet) => {
+const transferDirection = (
+	direction,
+	displayMainWallet,
+	displayAdjustment,
+	isAdjustment,
+	tpName
+) => {
 	let startWallet = "";
 	let endWallet = "";
-
 	if (direction === 1) {
-		startWallet = displayMainWallet;
-		endWallet = displaySabaWallet;
+		if (isAdjustment) {
+			startWallet = tpName;
+			endWallet = displayAdjustment;
+		} else {
+			startWallet = displayMainWallet;
+			endWallet = tpName;
+		}
+	} else if (isAdjustment) {
+		startWallet = tpName;
+		endWallet = displayAdjustment;
 	} else {
-		startWallet = displaySabaWallet;
+		startWallet = tpName;
 		endWallet = displayMainWallet;
 	}
 	return { startWallet, endWallet };
@@ -121,7 +134,9 @@ const Panel = () => {
 		const _transferDirection = transferDirection(
 			item.direction,
 			i18n.lbl_MainWallet,
-			i18n.lbl_Wallet_Saba
+			i18n.lbl_Adjustment,
+			item.isAdjustment,
+			item.tpName
 		);
 		return (
 			<TransactionHistory
@@ -218,7 +233,12 @@ export const TransactionHistory = props => {
 				<li>
 					<span className="title">{props.i18n.lbl_Direction}</span>
 					<span>
-						<span>{`${props.startWallet}  >`}</span>
+						<span>{props.startWallet}</span>
+						{props.endWallet === props.i18n.lbl_Adjustment ? (
+							<i>&nbsp;&nbsp;</i>
+						) : (
+							`>`
+						)}
 						<span>{props.endWallet}</span>
 					</span>
 				</li>

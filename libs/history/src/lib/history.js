@@ -217,7 +217,9 @@ export const History = ({ transactionType, GetHistory, SetCancel }) => {
 		const _transferDirection = transferDirection(
 			item.direction,
 			i18n.lbl_MainWallet,
-			i18n.lbl_Wallet_Saba
+			i18n.lbl_Adjustment,
+			item.isAdjustment,
+			item.tpName
 		);
 		return transactionType !== defTransactionType.statement ? (
 			<Detail

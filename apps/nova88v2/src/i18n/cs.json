@@ -470,6 +470,7 @@
 
 	"-==================--=========================Transfer--==================================": "",
 	"lbl_Wallet_Saba": "体育钱包",
+  "lbl_Adjustment": "調帳",
 	"lbl_MaxAmount": "总金额",
 	"lbl_please_select_to_wallet": "请选择转入钱包",
 	"lbl_please_select_from_wallet": "请选择转出钱包",
