@@ -19,56 +19,62 @@ const Detail = ({
 	const timeZone = currencyIdToTimeZone[currencyId];
 
 	return (
-		<div className="info transfer">
-			<ul>
-				<li>
-					<span className="title">
-						{i18n.lbl_Date} ({timeZone})
-					</span>
-					<span>
-						{moment(createTime, "YYYY-MM-DDThh:mm:ssZ")
-							.zone(timeZone)
-							.format("MM/DD/YYYY")}
-					</span>
-				</li>
-				<li>
-					<span className="title">
-						{i18n.lbl_Time} ({timeZone})
-					</span>
-					<span>
-						{moment(createTime, "YYYY-MM-DDThh:mm:ssZ")
-							.zone(timeZone)
-							.format("hh:mm:ss A")}
-					</span>
-				</li>
-				<li>
-					<span className="title">{i18n.lbl_ID}</span>
-					<span>{transId}</span>
-				</li>
-				<li>
-					<span className="title">{i18n.lbl_Status}</span>
-					<span>{_status}</span>
-				</li>
-				<li>
-					<span className="title">{i18n.lbl_Amount}</span>
-					<span>{number_format(amount, _isConvert)}</span>
-				</li>
-				<li>
-					<span className="title">{i18n.lbl_Direction}</span>
-					<span>
-						<span>{startWallet}</span>
-						<i className="icon icon-keyboard_arrow_right1" />
-						<span>{endWallet}</span>
-					</span>
-				</li>
-				<li>
-					<span className="title">{i18n.lbl_Memo}</span>
-					<span>
-						<span>{memo}</span>
-					</span>
-				</li>
-			</ul>
-		</div>
+		currencyId && (
+			<div className="info transfer">
+				<ul>
+					<li>
+						<span className="title">
+							{i18n.lbl_Date} ({timeZone})
+						</span>
+						<span>
+							{moment(createTime, "YYYY-MM-DDThh:mm:ssZ")
+								.zone(timeZone)
+								.format("MM/DD/YYYY")}
+						</span>
+					</li>
+					<li>
+						<span className="title">
+							{i18n.lbl_Time} ({timeZone})
+						</span>
+						<span>
+							{moment(createTime, "YYYY-MM-DDThh:mm:ssZ")
+								.zone(timeZone)
+								.format("hh:mm:ss A")}
+						</span>
+					</li>
+					<li>
+						<span className="title">{i18n.lbl_ID}</span>
+						<span>{transId}</span>
+					</li>
+					<li>
+						<span className="title">{i18n.lbl_Status}</span>
+						<span>{_status}</span>
+					</li>
+					<li>
+						<span className="title">{i18n.lbl_Amount}</span>
+						<span>{number_format(amount, _isConvert)}</span>
+					</li>
+					<li>
+						<span className="title">{i18n.lbl_Direction}</span>
+						<span>
+							<span>{startWallet}</span>
+							{endWallet === i18n.lbl_Adjustment ? (
+								<i>&nbsp;&nbsp;</i>
+							) : (
+								<i className="icon icon-keyboard_arrow_right1" />
+							)}
+							<span>{endWallet}</span>
+						</span>
+					</li>
+					<li>
+						<span className="title">{i18n.lbl_Memo}</span>
+						<span>
+							<span>{memo}</span>
+						</span>
+					</li>
+				</ul>
+			</div>
+		)
 	);
 };
 

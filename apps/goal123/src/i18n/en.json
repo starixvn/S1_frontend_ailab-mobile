@@ -248,6 +248,7 @@
 	"lbl_WaitKYC": "Verification is in progress",
 	"lbl_WaitKYCHint": "Thank you for submitting the required document, kindly bear with us for a moment while the verification is in progress.",
 	"lbl_Wallet_Saba": "Saba Wallet",
+  "lbl_Adjustment": "Adjustment",
 	"lbl_Welcome": "Welcome",
 	"lbl_WireTransfers": "Bank Transfer",
 	"lbl_Withdrawal": "Withdrawal",
@@ -720,7 +721,7 @@
 	"lbl_knockouts": "Knockouts",
 	"lbl_TermsAndConditions": "Terms & Conditions",
 	"lbl_worldCupDate": "Date",
-	
+
 	"===============Referral===================":"",
 	"lbl_ReferralReward": "Referral Reward",
 	"lbl_FriendsInvitationLimit": "Friends Invitation Limit",

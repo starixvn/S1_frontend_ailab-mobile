@@ -248,6 +248,7 @@
 	"lbl_WaitKYC": "Đang tiến hành xác minh",
 	"lbl_WaitKYCHint": "Cảm ơn bạn đã gửi chứng từ, vui lòng chờ chúng tôi xác mình thông tin",
 	"lbl_Wallet_Saba": "Ví Saba",
+  "lbl_Adjustment": "Số dư điều chỉnh",
 	"lbl_Welcome": "Chào mừng",
 	"lbl_WireTransfers": "Chuyển khoản",
 	"lbl_Withdrawal": "Rút tiền",
@@ -721,7 +722,7 @@
 	"lbl_knockouts": "LOẠI TRỰC TIẾP",
 	"lbl_TermsAndConditions": "Điều Khoản & Điều Kiện",
 	"lbl_worldCupDate": "Thời gian",
-	
+
 	"===============Referral===================":"",
 	"lbl_ReferralReward": "Thưởng Giới Thiệu Bạn",
 	"lbl_FriendsInvitationLimit": "Lời mời tối đa",

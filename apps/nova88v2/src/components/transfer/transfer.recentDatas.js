@@ -16,13 +16,29 @@ const RecentDatas = ({ datas }) => {
 		setOpen(prevState => !prevState);
 	};
 
-	const transferDirection = (_direction, tpName) => {
-		let startWallet = i18n.lbl_MainWallet;
-		let endWallet = tpName;
-
-		if (_direction !== 1) {
+	const transferDirection = (
+		direction,
+		displayMainWallet,
+		displayAdjustment,
+		isAdjustment,
+		tpName
+	) => {
+		let startWallet = "";
+		let endWallet = "";
+		if (direction === 1) {
+			if (isAdjustment) {
+				startWallet = tpName;
+				endWallet = displayAdjustment;
+			} else {
+				startWallet = displayMainWallet;
+				endWallet = tpName;
+			}
+		} else if (isAdjustment) {
 			startWallet = tpName;
-			endWallet = i18n.lbl_MainWallet;
+			endWallet = displayAdjustment;
+		} else {
+			startWallet = tpName;
+			endWallet = displayMainWallet;
 		}
 		return { startWallet, endWallet };
 	};
@@ -33,6 +49,9 @@ const RecentDatas = ({ datas }) => {
 		datas?.map(item => {
 			const _transferDirection = transferDirection(
 				item.direction,
+				i18n.lbl_MainWallet,
+				i18n.lbl_Adjustment,
+				item.isAdjustment,
 				item.tpName
 			);
 
