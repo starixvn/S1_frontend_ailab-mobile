@@ -1,7 +1,11 @@
 import React from "react";
 import moment from "moment";
 import PropTypes from "prop-types";
-import { number_format, currencyIdToTimeZone } from "../common/common";
+import {
+	number_format,
+	currencyIdToTimeZone,
+	defCurrenyId
+} from "../common/common";
 
 const defIconStatus = {
 	1: "pending",
@@ -14,6 +18,17 @@ const defIconStatus = {
 	8: "pending"
 };
 
+const withdrawalStatus = {
+	pending: 1,
+	onHold: 2,
+	verify: 3,
+	process: 4,
+	cancelled: 5,
+	approved: 6,
+	rejected: 7,
+	toKyc: 8
+};
+
 const Detail = ({
 	status,
 	ClickCancel,
@@ -22,12 +37,17 @@ const Detail = ({
 	amount,
 	_isConvert,
 	i18n,
-	currencyId
+	currencyId,
+	canCancel
 }) => {
-	const timeZone = currencyIdToTimeZone[currencyId];
+	const timeZone = currencyIdToTimeZone[currencyId ?? defCurrenyId.MYR];
 	let btnGroup = null;
 
-	if (status === 1) {
+	if (
+		canCancel !== false &&
+		(status === withdrawalStatus.pending ||
+			status === withdrawalStatus.toKyc)
+	) {
 		const handleCancel = () => ClickCancel(transId);
 		btnGroup = (
 			<div className="btn-group">
@@ -88,7 +108,8 @@ const Detail = ({
 
 Detail.defaultProps = {
 	_isConvert: false,
-	currencyId: null
+	currencyId: null,
+	canCancel: null
 };
 
 Detail.propTypes = {
@@ -102,7 +123,8 @@ Detail.propTypes = {
 		.isRequired,
 	_isConvert: PropTypes.bool,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	currencyId: PropTypes.number
+	currencyId: PropTypes.number,
+	canCancel: PropTypes.bool
 };
 
 export default Detail;
