@@ -12,6 +12,17 @@ import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import ReloadSpin from "../common/reloadSpin";
 import Loading from "../common/loading";
 
+const withdrawalStatus = {
+	pending: 1,
+	onHold: 2,
+	verify: 3,
+	process: 4,
+	cancelled: 5,
+	approved: 6,
+	rejected: 7,
+	toKyc: 8
+};
+
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -172,6 +183,7 @@ const Panel = () => {
 				amount={item.amount}
 				status={item.status}
 				ClickCancel={ClickCancel.bind(this, item.transId)}
+				canCancel={item.canCancel}
 			/>
 		);
 	});
@@ -218,7 +230,11 @@ export const TransactionHistory = props => {
 	const { i18n } = useContext(i18nContext);
 
 	let btnGroup = null;
-	if (props.status === 1) {
+	if (
+		props.canCancel !== false &&
+		(props.status === withdrawalStatus.pending ||
+			props.status === withdrawalStatus.toKyc)
+	) {
 		btnGroup = (
 			<div className="btn-group">
 				<button className="darkGray" onClick={props.ClickCancel}>
@@ -269,7 +285,8 @@ TransactionHistory.defaultProps = {
 	transId: null,
 	amount: null,
 	status: null,
-	ClickCancel: () => null
+	ClickCancel: () => null,
+	canCancel: null
 };
 
 TransactionHistory.propTypes = {
@@ -277,7 +294,8 @@ TransactionHistory.propTypes = {
 	transId: PropTypes.string,
 	amount: PropTypes.number,
 	status: PropTypes.number,
-	ClickCancel: PropTypes.func
+	ClickCancel: PropTypes.func,
+	canCancel: PropTypes.bool
 };
 
 export default Panel;

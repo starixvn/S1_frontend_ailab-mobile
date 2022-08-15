@@ -108,6 +108,7 @@ const Panel = ({
 				ClickCancel={ClickCancel}
 				i18n={i18n}
 				currencyId={userInfo.currencyId}
+				canCancel={item.canCancel}
 			/>
 		);
 	});

@@ -32,6 +32,7 @@ const RecentDatas = ({ Datas, ClickCancel }) => {
 					ClickCancel={ClickCancel}
 					i18n={i18n}
 					currencyId={userInfo.currencyId}
+					canCancel={d.canCancel}
 				/>
 			);
 		});
