@@ -94,6 +94,7 @@
 	"lbl_Deposit": "ฝากเงิน",
 	"lbl_Transfer": "โอน",
 	"lbl_Withdrawal": "ถอนเงิน",
+  "lbl_EWalletWithdrawal": "การถอน E-Wallet",
 	"lbl_Email": "อีเมล์",
 	"msg_UsernameReq": "ต้องใส่ชื่อบัญชีผู้ใช้",
 	"msg_PasswordReq": "ต้องใส่รหัสผ่าน",
@@ -697,6 +698,9 @@
 	"lbl_AddToHome_Tutorial": "บทแนะนำ",
 	"lbl_Skip": "ข้าม",
 
+  "==============E-Wallet==============": "",
+  "lbl_EWallet": "กระเป๋าสตางค์อิเล็กทรอนิกส์",
+  "lbl_AddEWallet": "เพิ่ม E-Wallet",
 	"==============Crypto Wallet==============": "",
 	"lbl_CryptoPay": "ชำระเงินแบบ Crypto",
 	"lbl_CryptoWallet": "กระเป๋าเงิน คริปโต",

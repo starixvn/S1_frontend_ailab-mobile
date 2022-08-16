@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { useMatch, useLocation } from "@reach/router";
 import { Link } from "@Router";
-import { i18nContext, userInfoContext } from "Context";
+import { eWalletContext, i18nContext, userInfoContext } from "Context";
 import useBeforeLoginCheck from "../hook/useBeforeLoginCheck";
 
 const isMatch = ({ location, tabInfo, langId }) => {
@@ -40,24 +40,36 @@ export const getMainClass = ({ defTabs, location }) => {
 const IndexPage = ({ defTabs, beforeLogin, filter, breadCrumb, tabHint }) => {
 	const location = useLocation();
 	const { userInfo } = useContext(userInfoContext);
+	const { isShowEWallet } = useContext(eWalletContext);
 	const { i18n } = useContext(i18nContext);
+	const eWalletPathList = [
+		"/en/eWalletWithdrawal",
+		"/en_id/eWalletWithdrawal",
+		"/id/eWalletWithdrawal",
+		"/en/eWallet",
+		"/en_id/eWallet",
+		"/id/eWallet"
+	];
 	useBeforeLoginCheck({
 		isLogin: userInfo.isLogin,
 		beforeLogin,
 		langId: userInfo.langId
 	});
-
+	const toggleTabList = ["eWalletWithdrawal", "eWallet"];
 	if (userInfo.isLogin === null) return null;
 
 	let currentTab = null;
 	const mainTab = [];
 	let subItems = [];
-	Object.keys(defTabs).forEach(key => {
+	Object.keys(defTabs).forEach((key, index) => {
 		const tabInfo = defTabs[key];
 		let isMatchSub = false;
 		if (tabInfo.subTabs) {
 			subItems = Object.keys(tabInfo.subTabs).map(subKey => {
 				const subTabInfo = tabInfo.subTabs[subKey];
+				if (!isShowEWallet && toggleTabList.includes(subTabInfo.to))
+					return null;
+
 				isMatchSub = isMatch({
 					location,
 					tabInfo: subTabInfo,
@@ -72,7 +84,6 @@ const IndexPage = ({ defTabs, beforeLogin, filter, breadCrumb, tabHint }) => {
 				);
 			});
 		}
-
 		if (isMatch({ location, tabInfo, langId: userInfo.langId })) {
 			currentTab = tabInfo;
 		}
@@ -81,7 +92,12 @@ const IndexPage = ({ defTabs, beforeLogin, filter, breadCrumb, tabHint }) => {
 				key={`tab-btn-${key}`}
 				i18n={i18n}
 				tabItem={tabInfo}
-				match={isMatchSub}
+				match={
+					eWalletPathList.includes(location.pathname) &&
+					(key === "withdrawal" || key === "bankInfo")
+						? true
+						: isMatchSub
+				}
 				tabHint={tabHint}
 			/>
 		);
@@ -120,7 +136,6 @@ const TabItem = ({ i18n = {}, tabItem = {}, match = false, tabHint = "" }) => {
 	const matchExclude = useMatch(`/:langId/${tabItem.excludeMath}/*`) !== null;
 	const _isMatch =
 		match || (matchTo && (!tabItem.excludeMath || !matchExclude));
-
 	return (
 		<Link to={tabItem.to} className={_isMatch ? "active" : ""}>
 			{i18n[tabItem.displayKey]}
@@ -130,5 +145,14 @@ const TabItem = ({ i18n = {}, tabItem = {}, match = false, tabHint = "" }) => {
 		</Link>
 	);
 };
-
+TabItem.defaultProps = {
+	match: false,
+	tabHint: ""
+};
+TabItem.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	tabItem: PropTypes.objectOf(PropTypes.string).isRequired,
+	match: PropTypes.bool,
+	tabHint: PropTypes.string
+};
 export default IndexPage;

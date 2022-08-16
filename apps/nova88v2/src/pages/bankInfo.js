@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import PropTypes from "prop-types";
 import BankInfo from "../components/profile/bankInfo";
 import Layout from "../components/common/layout";
-import { myWallet as bankInfoTabs } from "../datas/defTabs";
+import { myWallet, myWalletPart } from "../datas/defTabs";
 import TabPage, { getMainClass } from "../components/common/tabPage";
+import { userInfoContext } from "../components/common/context";
+import { defCurrenyId } from "../components/common/common";
 
 const IndexPage = props => {
-	const defTabs = bankInfoTabs;
+	const { userInfo } = useContext(userInfoContext);
+	const defTabs =
+		userInfo.currencyId === defCurrenyId.IDR ? myWallet : myWalletPart;
 	const header = <TabPage defTabs={defTabs} />;
 	const { prevPage } = props?.location?.state;
 
@@ -17,5 +22,11 @@ const IndexPage = props => {
 		</Layout>
 	);
 };
+IndexPage.defaultProps = {
+	location: {}
+};
 
+IndexPage.propTypes = {
+	location: PropTypes.object
+};
 export default IndexPage;
