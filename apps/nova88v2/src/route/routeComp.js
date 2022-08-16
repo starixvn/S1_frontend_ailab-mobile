@@ -1,6 +1,5 @@
 import React from "react";
 import { Router } from "@reach/router";
-
 import MyWallet from "../pages/wallet";
 import Promotion from "../pages/promotion";
 import Casino from "../pages/casino";
@@ -29,6 +28,7 @@ import Deposit from "../pages/deposit";
 import DepositHistory from "../pages/depositHistory";
 
 import Withdrawal from "../pages/withdrawal";
+import EWallet from "../pages/eWallet";
 import WithdrawalHistory from "../pages/withdrawalHistory";
 
 import Transfer from "../pages/transfer";
@@ -93,6 +93,7 @@ const RouteComponents = () => {
 			<Profile path={`/:langId/${path.profile.root}`} />
 			<BankInfo path={`/:langId/${path.bankInfo.root}`} />
 			<MyWallet path={`/:langId/${path.wallet.root}`} />
+			<EWallet path={`/:langId/${path.eWallet.root}`} />
 			<CryptoWallet path={`/:langId/${path.cryptoWallet.root}`} />
 			<Message path={`/:langId/${path.message.root}`} />
 			<Announcement path={`/:langId/${path.announcement.root}`} />
@@ -104,6 +105,10 @@ const RouteComponents = () => {
 			<DepositHistory path={`/:langId/${path.depositHistory.root}`} />
 
 			<Withdrawal path={`/:langId/${path.withdrawal.root}`} />
+			<Withdrawal
+				path={`/:langId/${path.eWalletWithdrawal.root}`}
+				isEWallet={true}
+			/>
 			<Withdrawal
 				path={`/:langId/${path.cryptoWithdrawal.root}`}
 				isCrypto={true}

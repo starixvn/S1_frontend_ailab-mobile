@@ -3,6 +3,9 @@ import BaseAPI, { defDeviceType } from "./base";
 export class PaymentAPI extends BaseAPI {
 	GetBankInfoSysList = () => this.paymentRequest.post("/GetBankInfoSysList");
 
+	GetEWalletInfoSysList = () =>
+		this.paymentRequest.post("/GetEWalletInfoSysList");
+
 	GetDepositInfoHistory = ({ StartDate, EndDate, PageNumber }) =>
 		this.paymentRequest.post("/GetDepositInfoHistory", {
 			StartDate,
@@ -88,6 +91,14 @@ export class PaymentAPI extends BaseAPI {
 			sysId,
 			blackbox,
 			IFSCCode
+		});
+
+	WithdrawalEWalletReq = (AccountNo, amount, sysId, memo) =>
+		this.paymentRequest.post("/WithdrawalEWalletReq", {
+			AccountNo,
+			amount,
+			sysId,
+			memo
 		});
 
 	WithdrawalUSDTReq = (AccountNo, amount, blackbox) =>

@@ -248,7 +248,7 @@
 	"lbl_WaitKYC": "Verification is in progress",
 	"lbl_WaitKYCHint": "Thank you for submitting the required document, kindly bear with us for a moment while the verification is in progress.",
 	"lbl_Wallet_Saba": "Saba Wallet",
-  "lbl_Adjustment": "Adjustment",
+	"lbl_Adjustment": "Adjustment",
 	"lbl_Welcome": "Welcome",
 	"lbl_WireTransfers": "Bank Transfer",
 	"lbl_Withdrawal": "Withdrawal",
@@ -694,7 +694,7 @@
 
 	"==============World Cup==============": "",
 	"lbl_info": "Info",
-	"lbl_ticketsAvailable": "Ticket(s) Avaliable",
+	"lbl_ticketsAvailable": "Ticket(s) Available",
 	"lbl_ticketsUsed": "Ticket(s) Used",
 	"lbl_yourPredictions": "Your Predictions",
 	"lbl_group": "Group",
@@ -722,7 +722,7 @@
 	"lbl_TermsAndConditions": "Terms & Conditions",
 	"lbl_worldCupDate": "Date",
 
-	"===============Referral===================":"",
+	"===============Referral===================": "",
 	"lbl_ReferralReward": "Referral Reward",
 	"lbl_FriendsInvitationLimit": "Friends Invitation Limit",
 	"lbl_DepositRequirement": "Deposit Requirement",

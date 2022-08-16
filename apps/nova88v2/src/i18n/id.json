@@ -94,6 +94,7 @@
 	"lbl_Deposit": "Setoran",
 	"lbl_Transfer": "Transfer",
 	"lbl_Withdrawal": "Penarikan",
+  "lbl_EWalletWithdrawal": "Penarikan E-Wallet",
 	"lbl_Email": "Email",
 	"msg_UsernameReq": "Nama pengguna Wajib diisi.",
 	"msg_PasswordReq": "Kata Sanda wajib diisi",
@@ -712,6 +713,10 @@
 	"lbl_AddToHome_Tutorial": "Tutorial",
 	"lbl_Skip": "Lewatkan",
 
+  "==============E-Wallet==============": "",
+  "lbl_EWallet": "Dompet Elektronik",
+  "lbl_AddEWallet": "Tambahkan E-Wallet",
+  "lbl_EWallet_Hint": "Perhatian: Akun E-Wallet harus diverifikasi.",
 	"==============Crypto Wallet==============": "",
 	"lbl_CryptoPay": "Crypto",
 	"lbl_CryptoWallet": "Dompet Crypto",

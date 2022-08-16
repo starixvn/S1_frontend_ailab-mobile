@@ -92,6 +92,7 @@
 	"lbl_Deposit": "Deposit",
 	"lbl_Transfer": "Pemindahan",
 	"lbl_Withdrawal": "Pengeluaran",
+  "lbl_EWalletWithdrawal": "Pengeluaran E-Dompet",
 	"lbl_AllGames": "Semua permainan",
 	"lbl_Req": "Pohonan.",
 	"lbl_Email": "E-mel",
@@ -712,6 +713,9 @@
 	"lbl_AddToHome_Tutorial": "Tutorial",
 	"lbl_Skip": "Skip",
 
+  "==============E-Wallet==============": "",
+  "lbl_EWallet": "E-Dompet",
+  "lbl_AddEWallet": "Tambah E-Dompet",
 	"==============Crypto Wallet==============": "",
 	"lbl_CryptoPay": "Kripto",
 	"lbl_CryptoWallet": "Dompet Kripto",

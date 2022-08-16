@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import Layout from "../components/common/layout";
 import CryptoWallet from "../components/cryptoWallet/cryptoWallet";
 import TabPage, { getMainClass } from "../components/common/tabPage";
-import { myWallet as defCryptoWalletTabs } from "../datas/defTabs";
+import { myWallet, myWalletPart } from "../datas/defTabs";
+import { userInfoContext } from "../components/common/context";
+import { defCurrenyId } from "../components/common/common";
 
 const IndexPage = props => {
-	const defTabs = defCryptoWalletTabs;
+	const { userInfo } = useContext(userInfoContext);
+	const defTabs =
+		userInfo.currencyId === defCurrenyId.IDR ? myWallet : myWalletPart;
 	const header = <TabPage defTabs={defTabs} />;
 
 	return (

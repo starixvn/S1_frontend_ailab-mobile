@@ -3192,6 +3192,7 @@ footer > a.active .circleAnimation + span {
   border-bottom: 3px solid transparent;
   color: #a5bbe0;
   font-size: 4vw;
+  text-align: center;
 }
 
 .tag a.active, .tag button.active {
