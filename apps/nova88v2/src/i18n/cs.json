@@ -470,7 +470,6 @@
 
 	"-==================--=========================Transfer--==================================": "",
 	"lbl_Wallet_Saba": "体育钱包",
-  "lbl_Adjustment": "調帳",
 	"lbl_MaxAmount": "总金额",
 	"lbl_please_select_to_wallet": "请选择转入钱包",
 	"lbl_please_select_from_wallet": "请选择转出钱包",
@@ -701,7 +700,9 @@
 	"lbl_AddToHome_Hint": "如何添加到主屏？",
 	"lbl_AddToHome_Tutorial": "观看教學",
 	"lbl_Skip": "跳过",
-
+  "==============E-Wallet==============": "",
+  "lbl_EWallet": "电子钱包",
+  "lbl_AddEWallet": "添加电子钱包",
 	"==============Crypto Wallet==============": "",
 	"lbl_CryptoPay": "加密货币",
 	"lbl_CryptoWallet": "加密钱包",

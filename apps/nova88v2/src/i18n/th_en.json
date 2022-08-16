@@ -92,6 +92,7 @@
 	"lbl_Deposit": "Deposit",
 	"lbl_Transfer": "Transfer",
 	"lbl_Withdrawal": "Withdrawal",
+  "lbl_EWalletWithdrawal": "E-Wallet Withdrawal",
 	"lbl_AllGames": "All Games",
 	"lbl_Req": "Req.",
 	"lbl_Email": "Email",
@@ -719,6 +720,9 @@
 	"lbl_AddToHome_Tutorial": "Tutorial",
 	"lbl_Skip": "Skip",
 
+  "==============E-Wallet==============": "",
+  "lbl_EWallet": "E-Wallet",
+  "lbl_AddEWallet": "Add E-Wallet",
 	"==============Crypto Wallet==============": "",
 	"lbl_CryptoPay": "Crypto",
 	"lbl_CryptoWallet": "Crypto Wallet",

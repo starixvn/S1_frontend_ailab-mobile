@@ -45,6 +45,8 @@ export const Wrapper = ({ children }) => {
 		main: null
 	});
 
+	const [isShowEWallet, setIsShowEWallet] = useState(false);
+
 	const [popUp, setPopUp] = useState({
 		popupMessage: "",
 		id: "",
@@ -286,6 +288,27 @@ export const Wrapper = ({ children }) => {
 				);
 			}
 
+			api.payment.GetWithdrawalLimit().then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							setIsShowEWallet(res.data.data.eWalletStatus);
+						} else {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
+						}
+					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
+				}
+			);
+
 			// if (match?.["*"]) {
 			// 	navigate(`/${userInfo.langId}/${match["*"]}`);
 			// } else {
@@ -312,23 +335,28 @@ export const Wrapper = ({ children }) => {
 				<ct.i18nContext.Provider value={{ i18n, seti18n }}>
 					<ct.walletInfoContext.Provider
 						value={{ walletInfo, setWalletInfo }}>
-						<ct.themeContext.Provider value={{ theme, setTheme }}>
-							<ct.popBoxContext.Provider
-								value={{ popBox, setPopBox }}>
-								<ct.navContext.Provider value={{ nav, setNav }}>
-									<ct.msgCountContext.Provider
-										value={{ msgCount, setMsgCount }}>
-										<ct.loadingContext.Provider
-											value={{ loading, setLoading }}>
-											<ct.rootContext.Provider
-												value={{ root, setRoot }}>
-												{children}
-											</ct.rootContext.Provider>
-										</ct.loadingContext.Provider>
-									</ct.msgCountContext.Provider>
-								</ct.navContext.Provider>
-							</ct.popBoxContext.Provider>
-						</ct.themeContext.Provider>
+						<ct.eWalletContext.Provider
+							value={{ isShowEWallet, setIsShowEWallet }}>
+							<ct.themeContext.Provider
+								value={{ theme, setTheme }}>
+								<ct.popBoxContext.Provider
+									value={{ popBox, setPopBox }}>
+									<ct.navContext.Provider
+										value={{ nav, setNav }}>
+										<ct.msgCountContext.Provider
+											value={{ msgCount, setMsgCount }}>
+											<ct.loadingContext.Provider
+												value={{ loading, setLoading }}>
+												<ct.rootContext.Provider
+													value={{ root, setRoot }}>
+													{children}
+												</ct.rootContext.Provider>
+											</ct.loadingContext.Provider>
+										</ct.msgCountContext.Provider>
+									</ct.navContext.Provider>
+								</ct.popBoxContext.Provider>
+							</ct.themeContext.Provider>
+						</ct.eWalletContext.Provider>
 					</ct.walletInfoContext.Provider>
 				</ct.i18nContext.Provider>
 			</ct.userInfoContext.Provider>

@@ -39,6 +39,12 @@ export class AccountStrictAPI extends BaseAPI {
 			AddressLineSecond
 		});
 
+	SetCustEWalletInfo = ({ AccountNo, SysId }) =>
+		this.accountStrictRequest.post("/SetCustEWalletInfo", {
+			AccountNo,
+			SysId
+		});
+
 	SetCustBankInfo = ({ AccountName, AccountNo, SysId, IFSCCode }) =>
 		this.accountStrictRequest.post("/SetCustBankInfo", {
 			AccountName,
@@ -50,6 +56,12 @@ export class AccountStrictAPI extends BaseAPI {
 	DelCustBankInfo = ({ AccountName, AccountNo, SysId }) =>
 		this.accountStrictRequest.post("/DelCustBankInfo", {
 			AccountName,
+			AccountNo,
+			SysId
+		});
+
+	DelCustEWalletInfo = ({ AccountNo, SysId }) =>
+		this.accountStrictRequest.post("/DelCustEWalletInfo", {
 			AccountNo,
 			SysId
 		});
