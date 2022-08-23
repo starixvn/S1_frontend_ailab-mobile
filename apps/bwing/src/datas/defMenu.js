@@ -39,7 +39,11 @@ export const productList = langId => {
 			eventIcon: [
 				{
 					icon: defIconType.new,
-					inPeriod: isEventPeriod(eventTime.worldCup)
+					inPeriod: isEventPeriod(eventTime.worldCup_new)
+				},
+				{
+					icon: defIconType.hot,
+					inPeriod: isEventPeriod(eventTime.worldCup_hot)
 				}
 			]
 		},
@@ -55,7 +59,11 @@ export const productList = langId => {
 					eventIcon: [
 						{
 							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.worldCup)
+							inPeriod: isEventPeriod(eventTime.worldCup_new)
+						},
+						{
+							icon: defIconType.hot,
+							inPeriod: isEventPeriod(eventTime.worldCup_hot)
 						}
 					]
 				},
