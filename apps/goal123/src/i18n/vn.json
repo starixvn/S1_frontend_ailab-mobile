@@ -70,6 +70,7 @@
 	"lbl_Date": "Ngày",
 	"lbl_Deposit": "Nạp tiền",
 	"lbl_DepositAmount": "Tiền gửi",
+  "lbl_DepositAmountNote": "（Đơn vị là 50 = 50.000 VNĐ）",
 	"lbl_DepositHistory": "Lịch sử nạp tiền",
 	"lbl_DepositNow": "Gửi tiền ngay",
 	"lbl_DepositOver": "Số tiền rút của bạn đã vượt quá số dư hiện tại",
