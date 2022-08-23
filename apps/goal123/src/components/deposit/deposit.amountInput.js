@@ -38,7 +38,6 @@ const AmountInput = ({
 			<div className="inputBox">
 				<input
 					type="tel"
-					inputMode={payType === "localBank" ? "decimal" : ""}
 					onChange={EditAmount}
 					placeholder={
 						minAmount && maxAmount

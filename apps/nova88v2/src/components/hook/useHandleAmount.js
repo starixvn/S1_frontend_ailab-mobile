@@ -42,28 +42,6 @@ export const useHandleAmount = ({
 		setAmount(_amount);
 	};
 
-	const EditLocalBankAmount = e => {
-		const { value } = e.target;
-		let _amount = String(value).replace(/^(0+)|[^\d.]+/g, "");
-
-		if (_amount.includes(".")) {
-			_amount = _amount.replace(/\.{2,}/g, ".");
-			_amount = _amount
-				.replace(".", "$#$")
-				.replace(/\./g, "")
-				.replace("$#$", ".");
-
-			if (currencyId === defCurrenyId.IDR) {
-				_amount = _amount.replace(/^(-)*(\d+)\.(\d\d\d).*$/, "$1$2.$3");
-			} else {
-				_amount = _amount.replace(/^(-)*(\d+)\.(\d\d).*$/, "$1$2.$3");
-			}
-		}
-
-		VaildAmount({ _amount });
-		setAmount(_amount);
-	};
-
 	const VaildAmount = ({ _amount, displayWarning = true }) => {
 		const result = checkAmount({
 			amount: _amount,
@@ -92,7 +70,6 @@ export const useHandleAmount = ({
 		warning,
 		SelectAmount,
 		EditAmount,
-		VaildAmount,
-		EditLocalBankAmount
+		VaildAmount
 	};
 };
