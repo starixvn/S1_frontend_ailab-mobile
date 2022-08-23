@@ -66,6 +66,7 @@ const AmountInput = ({
 			<div className="title">
 				<span className="text-org">*</span>
 				{title}
+				{i18n.lbl_DepositAmountNote}
 			</div>
 			{content}
 		</>
