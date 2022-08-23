@@ -26,18 +26,8 @@ export const useHandleAmount = ({ currencyId, minAmount, maxAmount, i18n }) => {
 
 	const EditLocalBankAmount = e => {
 		const { value } = e.target;
-		let _amount = String(value).replace(/^(0+)|[^\d.]+/g, "");
+		const _amount = String(value).replace(/^(0+)|[^\d]+/g, "");
 
-		if (_amount.includes(".")) {
-			_amount = _amount.replace(/\.{2,}/g, ".");
-			_amount = _amount
-				.replace(".", "$#$")
-				.replace(/\./g, "")
-				.replace("$#$", ".");
-			_amount = _amount.replace(/^(-)*(\d+)\.(\d\d\d).*$/, "$1$2.$3");
-		}
-
-		VaildAmount({ _amount, digits: 3 });
 		setAmount(_amount);
 	};
 
