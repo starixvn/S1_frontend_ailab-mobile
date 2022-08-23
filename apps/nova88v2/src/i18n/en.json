@@ -139,6 +139,7 @@
 	"lbl_From": "From",
 	"lbl_Statement": "Statement",
 	"lbl_DepositAmount": "Deposit Amount",
+  "lbl_DepositAmountNote": "（Unit is IDR 50 = IDR 50.000）",
 	"lbl_Back": "Back",
 	"lbl_Announcement": "Announcement",
 	"lbl_PersonalMsg": "Personal Message",

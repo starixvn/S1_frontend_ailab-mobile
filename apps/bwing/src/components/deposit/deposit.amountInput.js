@@ -40,7 +40,6 @@ const AmountInput = ({
 					<div className="inputBoxNew">
 						<input
 							type="tel"
-							inputMode={payType === "localBank" ? "decimal" : ""}
 							placeholder={
 								minAmount && maxAmount
 									? `${
@@ -75,6 +74,7 @@ const AmountInput = ({
 		<div className="input-Area">
 			<div className="input-title frame">
 				<span className="text-org">*</span> {title}
+				{i18n.lbl_DepositAmountNote}
 			</div>
 			{content}
 		</div>

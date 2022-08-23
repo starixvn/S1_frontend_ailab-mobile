@@ -70,6 +70,7 @@
 	"lbl_Date": "Date",
 	"lbl_Deposit": "Deposit",
 	"lbl_DepositAmount": "Deposit Amount",
+	"lbl_DepositAmountNote": "（Unit is VND 50 = VND 50.000）",
 	"lbl_DepositHistory": "Deposit History",
 	"lbl_DepositNow": "Deposit Now",
 	"lbl_DepositOver": "Your required withdrawal amount had exceeded your current available balance.",

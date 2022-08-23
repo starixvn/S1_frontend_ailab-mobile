@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { number_format } from "../common/common";
+import { defCurrenyId, number_format } from "../common/common";
 import useTip from "../hook/useTip";
 
 const defAmountQuickPick = {
@@ -26,7 +26,20 @@ const AmountInput = ({
 }) => {
 	const { showTips, showTipHandler } = useTip();
 	const { amountRule, amountList, minAmount, maxAmount } = channel;
-
+	const placeHolderJudge = () => {
+		let text = "";
+		if (minAmount && maxAmount) {
+			if (currencyId === defCurrenyId.IDR) {
+				text = `${i18n.lbl_MinMaxAmount}: ${minAmount / 1000} / ${
+					maxAmount / 1000
+				}`;
+			} else {
+				text = `${i18n.lbl_MinMaxAmount}: ${minAmount} / ${maxAmount}`;
+			}
+		}
+		return text;
+	};
+	const placeHolderText = placeHolderJudge();
 	let content = null;
 	if (amountRule === 3 && amountList?.length > 0) {
 		const rows = amountList.map(a => {
@@ -76,26 +89,13 @@ const AmountInput = ({
 						}`}>
 						<input
 							type="tel"
-							inputMode={payType === "localBank" ? "decimal" : ""}
 							onChange={EditAmount}
-							placeholder={
-								minAmount && maxAmount
-									? `${
-											i18n.lbl_MinMaxAmount
-									  }: ${number_format(
-											minAmount,
-											_isConvert,
-											0
-									  )} / ${number_format(
-											maxAmount,
-											_isConvert,
-											0
-									  )}`
-									: ""
-							}
+							placeholder={placeHolderText}
 							value={amount}
 						/>
-
+						{currencyId === defCurrenyId.IDR && (
+							<div>(&apos;000)</div>
+						)}
 						<div className="icon-module">
 							<i className="icon icon-pencil" />
 						</div>
@@ -120,25 +120,13 @@ const AmountInput = ({
 						<i className="icon icon-pencil" />
 						<input
 							type="tel"
-							inputMode={payType === "localBank" ? "decimal" : ""}
 							onChange={EditAmount}
-							placeholder={
-								minAmount && maxAmount
-									? `${
-											i18n.lbl_MinMaxAmount
-									  }: ${number_format(
-											minAmount,
-											_isConvert,
-											0
-									  )} / ${number_format(
-											maxAmount,
-											_isConvert,
-											0
-									  )}`
-									: ""
-							}
+							placeholder={placeHolderText}
 							value={amount}
 						/>
+						{currencyId === defCurrenyId.IDR && (
+							<div>(&apos;000)</div>
+						)}
 						<div className="icon-module">
 							{status ? (
 								<i className="icon icon-errormark" />
@@ -164,6 +152,7 @@ const AmountInput = ({
 			<div className="title">
 				<span className="text-org">*</span>
 				{title}
+				{currencyId === defCurrenyId.IDR && i18n.lbl_DepositAmountNote}
 			</div>
 			{content}
 		</>

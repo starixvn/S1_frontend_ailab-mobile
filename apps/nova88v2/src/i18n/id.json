@@ -139,6 +139,7 @@
 	"lbl_From": "dari",
 	"lbl_Statement": "Pernyataan",
 	"lbl_DepositAmount": "Jumlah Yang Disetor",
+  "lbl_DepositAmountNote": "（Satuan 50 = IDR 50.000）",
 	"lbl_Back": "Kembali",
 	"lbl_Announcement": "Pengumuman",
 	"lbl_PersonalMsg": "Pesan pribadi",

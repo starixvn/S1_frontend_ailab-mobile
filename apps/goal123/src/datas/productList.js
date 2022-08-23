@@ -78,7 +78,8 @@ export const defGameInfo = {
 
 const defIconType = {
 	live: " liveicon",
-	new: " newicon"
+	new: " newicon",
+	hot: " hoticon"
 };
 
 export const defCol = {
@@ -168,7 +169,11 @@ const gameList = [
 		eventIcon: [
 			{
 				icon: defIconType.new,
-				inPeriod: isEventPeriod(eventTime.worldCup)
+				inPeriod: isEventPeriod(eventTime.worldCup_new)
+			},
+			{
+				icon: defIconType.hot,
+				inPeriod: isEventPeriod(eventTime.worldCup_hot)
 			}
 		]
 	},
@@ -184,7 +189,11 @@ const gameList = [
 				eventIcon: [
 					{
 						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.worldCup)
+						inPeriod: isEventPeriod(eventTime.worldCup_new)
+					},
+					{
+						icon: defIconType.hot,
+						inPeriod: isEventPeriod(eventTime.worldCup_hot)
 					}
 				]
 			},

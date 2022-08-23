@@ -82,7 +82,7 @@ const Payment = props => {
 		amount,
 		warning,
 		SelectAmount,
-		EditLocalBankAmount,
+		EditAmount,
 		VaildAmount
 	} = useHandleAmount({
 		currencyId: userInfo.currencyId,
@@ -514,7 +514,7 @@ const Payment = props => {
 				// deposit amount
 				amount={amount}
 				SelectAmount={SelectAmount}
-				EditAmount={EditLocalBankAmount}
+				EditAmount={EditAmount}
 				tip={i18n.lbl_AmountTooltip?.replace(
 					"{{0}}",
 					selBank?.minAmount
