@@ -178,7 +178,10 @@ const ProfileAddr = () => {
 						userInfo.addressPostCode !== ""
 							? userInfo.addressPostCode
 							: userValue.addressPostCode,
-					AddressCity: userInfo.addressCity ?? userValue.addressCity,
+					AddressCity:
+						userInfo.addressCity && userInfo.addressCity !== ""
+							? userInfo.addressCity
+							: userValue.addressCity,
 					AddressLineFirst:
 						userInfo.addressLineFirst &&
 						userInfo.addressLineFirst !== ""
