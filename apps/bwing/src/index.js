@@ -48,7 +48,7 @@ const GTM = () => {
 const Content = () => {
 	return (
 		<React.StrictMode>
-			<GTM />
+			{/* <GTM /> */}
 			<App />
 		</React.StrictMode>
 	);
