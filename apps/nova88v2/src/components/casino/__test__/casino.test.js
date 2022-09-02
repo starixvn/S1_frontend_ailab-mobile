@@ -84,7 +84,7 @@ const preset = () => {
 		Promise.resolve({
 			data: {
 				data: {
-					imgUrl: "https://img.n88media.com",
+					imgUrl: "https://img.0814media.net",
 					providerList: [
 						{
 							value: 5,
@@ -6717,9 +6717,9 @@ const preset = () => {
 						bannerLink:
 							"https://pp88.asia/daily-wins-euro-cup-edition/",
 						bannerPCUrl:
-							"https://image.n88media.com/Promotion/en/nova88_MYR.jpg",
+							"https://image.0814media.net/Promotion/en/nova88_MYR.jpg",
 						bannerMobileUrl:
-							"https://image.n88media.com/Promotion/en/nova88_MYR.jpg",
+							"https://image.0814media.net/Promotion/en/nova88_MYR.jpg",
 						homeOdds: null,
 						awayOdds: null,
 						handicap: null,
@@ -6745,9 +6745,9 @@ const preset = () => {
 						details: null,
 						bannerLink: "",
 						bannerPCUrl:
-							"https://image.n88media.com/SiteSkin/img/banner-joker.jpg",
+							"https://image.0814media.net/SiteSkin/img/banner-joker.jpg",
 						bannerMobileUrl:
-							"https://image.n88media.com/SiteSkin/img/banner-joker.jpg",
+							"https://image.0814media.net/SiteSkin/img/banner-joker.jpg",
 						homeOdds: null,
 						awayOdds: null,
 						handicap: null,
