@@ -39,7 +39,7 @@ Object {
               <img
                 alt="PP"
                 class="banner"
-                src="https://image.n88media.com/Promotion/en/nova88_MYR.jpg"
+                src="https://image.0814media.net/Promotion/en/nova88_MYR.jpg"
               />
             </button>
             <a
@@ -49,7 +49,7 @@ Object {
               <img
                 alt="Joker"
                 class="banner"
-                src="https://image.n88media.com/SiteSkin/img/banner-joker.jpg"
+                src="https://image.0814media.net/SiteSkin/img/banner-joker.jpg"
               />
             </a>
             <button
@@ -211,7 +211,7 @@ Object {
             <img
               alt="Baseball"
               data-testid="gameImg"
-              src="https://img.n88media.com/GPI/baseball-en.jpg"
+              src="https://img.0814media.net/GPI/baseball-en.jpg"
             />
             <span
               data-testid="providerName"
@@ -385,7 +385,7 @@ Object {
             <img
               alt="PP"
               class="banner"
-              src="https://image.n88media.com/Promotion/en/nova88_MYR.jpg"
+              src="https://image.0814media.net/Promotion/en/nova88_MYR.jpg"
             />
           </button>
           <a
@@ -395,7 +395,7 @@ Object {
             <img
               alt="Joker"
               class="banner"
-              src="https://image.n88media.com/SiteSkin/img/banner-joker.jpg"
+              src="https://image.0814media.net/SiteSkin/img/banner-joker.jpg"
             />
           </a>
           <button
@@ -557,7 +557,7 @@ Object {
           <img
             alt="Baseball"
             data-testid="gameImg"
-            src="https://img.n88media.com/GPI/baseball-en.jpg"
+            src="https://img.0814media.net/GPI/baseball-en.jpg"
           />
           <span
             data-testid="providerName"
@@ -788,7 +788,7 @@ Object {
               <img
                 alt="PP"
                 class="banner"
-                src="https://image.n88media.com/Promotion/en/nova88_MYR.jpg"
+                src="https://image.0814media.net/Promotion/en/nova88_MYR.jpg"
               />
             </button>
             <a
@@ -798,7 +798,7 @@ Object {
               <img
                 alt="Joker"
                 class="banner"
-                src="https://image.n88media.com/SiteSkin/img/banner-joker.jpg"
+                src="https://image.0814media.net/SiteSkin/img/banner-joker.jpg"
               />
             </a>
             <button
@@ -960,7 +960,7 @@ Object {
             <img
               alt="Baseball"
               data-testid="gameImg"
-              src="https://img.n88media.com/GPI/baseball-en.jpg"
+              src="https://img.0814media.net/GPI/baseball-en.jpg"
             />
             <span
               data-testid="providerName"
@@ -978,7 +978,7 @@ Object {
             <img
               alt="Release the Kraken"
               data-testid="gameImg"
-              src="https://img.n88media.com/PP/release-the-kraken-en.jpg"
+              src="https://img.0814media.net/PP/release-the-kraken-en.jpg"
             />
             <span
               data-testid="providerName"
@@ -1152,7 +1152,7 @@ Object {
             <img
               alt="PP"
               class="banner"
-              src="https://image.n88media.com/Promotion/en/nova88_MYR.jpg"
+              src="https://image.0814media.net/Promotion/en/nova88_MYR.jpg"
             />
           </button>
           <a
@@ -1162,7 +1162,7 @@ Object {
             <img
               alt="Joker"
               class="banner"
-              src="https://image.n88media.com/SiteSkin/img/banner-joker.jpg"
+              src="https://image.0814media.net/SiteSkin/img/banner-joker.jpg"
             />
           </a>
           <button
@@ -1324,7 +1324,7 @@ Object {
           <img
             alt="Baseball"
             data-testid="gameImg"
-            src="https://img.n88media.com/GPI/baseball-en.jpg"
+            src="https://img.0814media.net/GPI/baseball-en.jpg"
           />
           <span
             data-testid="providerName"
@@ -1342,7 +1342,7 @@ Object {
           <img
             alt="Release the Kraken"
             data-testid="gameImg"
-            src="https://img.n88media.com/PP/release-the-kraken-en.jpg"
+            src="https://img.0814media.net/PP/release-the-kraken-en.jpg"
           />
           <span
             data-testid="providerName"
