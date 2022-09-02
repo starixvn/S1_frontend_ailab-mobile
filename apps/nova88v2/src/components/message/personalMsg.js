@@ -227,36 +227,38 @@ const Panel = () => {
 	};
 
 	const checkboxHandler = item => {
-		const currIds = checkboxList.includes(item.id)
-			? checkboxList.filter(_item => _item !== item.id)
-			: [...checkboxList, item.id];
+		const currIds = checkboxList.find(el => el.id === item.id)
+			? checkboxList.filter(_item => _item.id !== item.id)
+			: [...checkboxList, item];
 		setCheckboxList(currIds);
 		setIsSelectedAll(currIds.length === msgList.length);
 	};
 
 	const selectAll = () => {
-		const allId = msgList.map(item => {
-			return item.id;
-		});
-
 		if (checkboxList.length === msgList.length) {
 			setCheckboxList([]);
 			setIsSelectedAll(false);
 		} else {
-			setCheckboxList(allId);
+			setCheckboxList(msgList);
 			setIsSelectedAll(true);
 		}
 	};
 
 	const delMsg = () => {
 		const DelMsg = () => {
-			api.account.DelMsg(checkboxList).then(
+			const delList = checkboxList.map(el => ({
+				msgId: el.id,
+				isBatch: el.isBatch
+			}));
+			api.account.DelMsg(delList).then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
 							setMsgList(prevState =>
 								prevState.filter(m => {
-									return !checkboxList.includes(m.id);
+									return !checkboxList.find(
+										el => el.id === m.id
+									);
 								})
 							);
 							setCheckboxList([]);
@@ -338,7 +340,7 @@ const Panel = () => {
 
 	const arr = msgList?.map(item => {
 		const _open = openContentState === item.id;
-		const _checked = checkboxList.includes(item.id);
+		const _checked = checkboxList.some(el => el.id === item.id);
 
 		return (
 			<Detail
