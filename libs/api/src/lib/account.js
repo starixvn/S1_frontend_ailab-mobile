@@ -25,7 +25,8 @@ export class AccountAPI extends BaseAPI {
 			IsBatch
 		});
 
-	DelMsg = MsgIds => this.accountRequest.post("/DelMsg", { MsgIds });
+	DelMsg = MsgIds =>
+		this.accountRequest.post("/DelMsg", { DeleteList: MsgIds });
 
 	GetWalletInfo = () => this.accountRequest.post("/GetWalletInfo");
 
