@@ -40,10 +40,10 @@ const Panel = () => {
 	const location = useLocation();
 	const showMessageRef = useRef(null);
 	const navigate = useNavigate();
-	const [getMsgList, setGetMsgList] = useState([]);
+	const [msgList, setMsgList] = useState([]);
 	const [getMsgContent, setGetMsgContent] = useState([]);
 	const [openContentState, setOpenContentState] = useState(null);
-	const [checkboxListState, setcheckboxListState] = useState([]);
+	const [checkboxList, setcheckboxList] = useState([]);
 	const [isSelectedAll, setIsSelectedAll] = useState(false);
 	const [processing, setProcessing] = useState(false);
 	const [loading, setLoading] = useState(false);
@@ -54,7 +54,7 @@ const Panel = () => {
 		api_GetMsgList,
 		{},
 		pageInfo,
-		setGetMsgList,
+		setMsgList,
 		setPageInfo,
 		setPopBox,
 		processing,
@@ -107,7 +107,7 @@ const Panel = () => {
 						if (res.data.errorCode === 0) {
 							const { data } = res.data;
 							if (data !== null) {
-								setGetMsgList(data);
+								setMsgList(data);
 								const msg = data.find(
 									el => el.id === location.state.id
 								);
@@ -175,7 +175,7 @@ const Panel = () => {
 								setGetMsgContent(data);
 
 								if (!flag) {
-									setGetMsgList(prevState => {
+									setMsgList(prevState => {
 										return prevState.map(x => {
 											if (x.id === id) {
 												x.flag = true;
@@ -238,38 +238,41 @@ const Panel = () => {
 	};
 
 	const checkboxHandler = item => {
-		const currIds = checkboxListState.includes(item.id)
-			? checkboxListState.filter(_item => _item !== item.id)
-			: [...checkboxListState, item.id];
-		setcheckboxListState(currIds);
-		setIsSelectedAll(currIds.length === getMsgList.length);
+		const currIds = checkboxList.find(el => el.id === item.id)
+			? checkboxList.filter(_item => _item.id !== item.id)
+			: [...checkboxList, item];
+		setcheckboxList(currIds);
+		setIsSelectedAll(currIds.length === msgList.length);
 	};
 
 	const selectAll = () => {
-		const allId = getMsgList.map(item => {
-			return item.id;
-		});
-		if (checkboxListState.length === getMsgList.length) {
-			setcheckboxListState([]);
+		if (checkboxList.length === msgList.length) {
+			setcheckboxList([]);
 			setIsSelectedAll(false);
 		} else {
-			setcheckboxListState(allId);
+			setcheckboxList(msgList);
 			setIsSelectedAll(true);
 		}
 	};
 
 	const delMsg = () => {
 		const DelMsg = () => {
-			api_DelMsg(checkboxListState).then(
+			const delList = checkboxList.map(el => ({
+				msgId: el.id,
+				isBatch: el.isBatch
+			}));
+			api_DelMsg(delList).then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
-							setGetMsgList(prevState =>
+							setMsgList(prevState =>
 								prevState.filter(m => {
-									return !checkboxListState.includes(m.id);
+									return !checkboxList.find(
+										el => el.id === m.id
+									);
 								})
 							);
-							setcheckboxListState([]);
+							setcheckboxList([]);
 						} else {
 							setPopBox({
 								isOpen: true,
@@ -294,7 +297,7 @@ const Panel = () => {
 			setPopBox({ isOpen: false });
 		};
 
-		if (checkboxListState.length !== 0) {
+		if (checkboxList.length !== 0) {
 			setPopBox({
 				isOpen: true,
 				title: "",
@@ -314,9 +317,9 @@ const Panel = () => {
 		}
 	};
 
-	const arr = getMsgList?.map(item => {
+	const arr = msgList?.map(item => {
 		const _open = openContentState === item.id;
-		const _checked = checkboxListState.includes(item.id);
+		const _checked = checkboxList.some(el => el.id === item.id);
 
 		return (
 			<Item
@@ -367,7 +370,7 @@ const Panel = () => {
 						<ReloadSpin func={GetMsgList} />
 					</div>
 				</div>
-				{getMsgList.length > 0 ? (
+				{msgList.length > 0 ? (
 					arr
 				) : (
 					<div className="not-found">{i18n.msg_NoData}</div>
