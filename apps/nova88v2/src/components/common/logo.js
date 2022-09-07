@@ -2,21 +2,21 @@ import React from "react";
 import PropTypes from "prop-types";
 import { cloudImgURL } from "../../config";
 
-const getLogo = ({ langId, isWhite }) =>
-	`${cloudImgURL}/SiteSkin/img/logo_en${isWhite ? "" : "_w"}.png`;
+const getLogo = ({ langId }) =>
+	`${cloudImgURL}/SiteSkin/img/${
+		langId === "cs" ? "logo_cs" : "logo_en"
+	}.png`;
 
-const Logo = ({ langId, isWhite }) => {
-	return <img src={getLogo({ langId, isWhite })} alt="logo" />;
+const Logo = ({ langId }) => {
+	return <img src={getLogo({ langId })} alt="logo" />;
 };
 
 Logo.defaultProps = {
-	langId: null,
-	isWhite: true
+	langId: null
 };
 
 Logo.propTypes = {
-	langId: PropTypes.string,
-	isWhite: PropTypes.bool
+	langId: PropTypes.string
 };
 
 export default Logo;
