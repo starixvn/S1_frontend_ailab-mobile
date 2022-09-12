@@ -87,7 +87,7 @@ const SiteURL =
 				apiURL: "",
 				imgUrl: "https://www.n88dev.com",
 				t_and_cURL: "https://image.0814media.net",
-				openURL: "",
+				openURL: "https://www.n88dev.com",
 				cloudImgURL
 		  };
 
