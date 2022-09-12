@@ -12,10 +12,16 @@ import LangPanel from "./setting.langPanel";
 import { LOGOUT } from "../../service/auth";
 // import ThemeMode from "./setting.themeMode";
 import path from "../../path";
-import { siteInfo } from "../../config";
+import SiteURL, { siteInfo, cloudBannerImgURL } from "../../config";
 import TandC from "../../service/t_and_c";
 import { defCurrenyId, langToCurrency } from "../common/common";
 import { getLeaderBoardSupportCurrencyId } from "../ranking/def";
+
+const reward88AllowsCurrencies = [
+	defCurrenyId.MYR,
+	defCurrenyId.THB,
+	defCurrenyId.IDR
+];
 
 const BtnBar = ({ isLogin, i18n, msgCount, langId }) => {
 	return isLogin ? (
@@ -141,6 +147,21 @@ export default () => {
 							to={path.vip.root}>
 							{i18n.lbl_VIP}
 						</Link>
+					</div>
+				)}
+				{reward88AllowsCurrencies.includes(_currencyId) && (
+					<div>
+						<a
+							className="title icon icon-star-full"
+							href={`${SiteURL.openURL}/rewards/`}
+							target="_blank"
+							rel="noreferrer">
+							{i18n.lbl_Rewards}
+							<img
+								src={`${cloudBannerImgURL}/img/88rewards.png`}
+								alt="Rewards"
+							/>
+						</a>
 					</div>
 				)}
 				{/* <div>
