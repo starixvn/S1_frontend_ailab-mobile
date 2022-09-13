@@ -1700,6 +1700,10 @@ main .sideBar button.event.active, main .sideBar a.event.active {
   padding: 1.5vw;
 }
 
+main .sideBar button.crypto, main .sideBar a.crypto {
+  padding: 5.2vw 1.15vw;
+}
+
 main .gameList {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3975,6 +3979,11 @@ footer > a.active .circleAnimation + span {
 .infoModule + .text-org span {
   color: #e92529;
   margin-right: 2vw;
+}
+
+.infoModule .qrCode {
+  margin: 2vw auto;
+  width: 35vw;
 }
 
 .inputBox, .worldcupEvent .event .event-content .inputBox-event, .worldcupEvent .event .event-content .ticket-item.finished .inputBox-event {
@@ -7503,9 +7512,6 @@ span.important {
   display: flex;
   -ms-flex-flow: wrap;
       flex-flow: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   background: #5574A7;
 }
 
@@ -7514,7 +7520,7 @@ span.important {
       -ms-flex: 0 0 31%;
           flex: 0 0 31%;
   border-radius: 5px;
-  margin: 0 0 3vw;
+  margin: 0 3vw 3vw 0;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -7524,6 +7530,10 @@ span.important {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.provider button:nth-child(3n), .provider a:nth-child(3n) {
+  margin-right: 0;
 }
 
 .provider button img, .provider a img {
@@ -8313,6 +8323,28 @@ span.important {
   text-align: center;
 }
 
+.upcomingmatches .swiper-slide .teamNew .gamename {
+  display: block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 60vw;
+  height: 7.5vw;
+  text-align: center;
+  line-height: 2.5;
+  padding: 0 3.5vw;
+  margin: 0 auto 8vw !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: url(https://banner.0814media.net/h5/img/gamenamebg.png) no-repeat center top/cover;
+}
+
+@media (max-width: 325px) {
+  .upcomingmatches .swiper-slide .teamNew .gamename {
+    line-height: 2;
+  }
+}
+
 .upcomingmatches .swiper-slide .teamNew > img {
   width: 32vw;
 }
@@ -8323,10 +8355,6 @@ span.important {
   height: 100%;
   left: 0;
   z-index: -1;
-}
-
-.upcomingmatches .swiper-slide .teamNew > img + img[src="https://img.0814media.net/Sports/Olympics Tokyo/olympic_logo.png"] + div > div.teamL > div:nth-child(1):before, .upcomingmatches .swiper-slide .teamNew > img + img[src="https://img.0814media.net/Sports/Olympics Tokyo/olympic_logo.png"] + div > div.teamL > div:nth-child(1):after, .upcomingmatches .swiper-slide .teamNew > img + img[src="https://img.0814media.net/Sports/Olympics Tokyo/olympic_logo.png"] + div > div.teamR > div:nth-child(1):before, .upcomingmatches .swiper-slide .teamNew > img + img[src="https://img.0814media.net/Sports/Olympics Tokyo/olympic_logo.png"] + div > div.teamR > div:nth-child(1):after {
-  background: rgba(255, 0, 0, 0.3);
 }
 
 .upcomingmatches .swiper-slide .teamNew > div {
