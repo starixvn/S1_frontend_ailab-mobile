@@ -71,6 +71,7 @@ export const defGameInfo = {
 	NumberGame: { gameId: 161, tpId: 1, tpGameType: 2 },
 	kingMaker: { tpId: 11, tpGameType: 52 },
 	tcg: { tpId: 33, tpGameType: 55 },
+	MaxGame: { tpId: 1, gameId: 237, tpGameType: 83 },
 	VirtualGame: { tpId: 1, gameId: 245, tpGameType: 22 }, // 單一錢包 (目前不支援)
 	VirtualSports: { tpId: 1, gameId: 192, tpGameType: 24 }, // 單一錢包 {tpId:41, tpGameType:72, gameId:192}
 	WorldCup: { tpId: 1, gameId: 2002, tpGameType: 1 }
@@ -287,18 +288,23 @@ const gameList = [
 				]
 			},
 			{
+				...defGameInfo.kingMaker,
+				img: `${bannerImgUrl}/h5/img/hotgame/games/kingmaker.png`,
+				spanTextKey: "lbl_KingMaker"
+			},
+			{
 				...defGameInfo.sabaClub,
 				img: `${bannerImgUrl}/h5/img/hotgame/games/vg.png`,
 				spanTextKey: "lbl_Vgaming"
 			},
 			{
-				...defGameInfo.kingMaker,
-				img: `${bannerImgUrl}/h5/img/hotgame/games/kingmaker.png`,
-				spanTextKey: "lbl_KingMaker",
+				...defGameInfo.MaxGame,
+				img: `${bannerImgUrl}/h5/img/hotgame/games/max.png`,
+				spanText: "Max Game",
 				eventIcon: [
 					{
 						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.new_Km)
+						inPeriod: isEventPeriod(eventTime.game_MaxGame)
 					}
 				]
 			},
@@ -320,24 +326,12 @@ const gameList = [
 			{
 				...defGameInfo.tableGame,
 				img: `${bannerImgUrl}/h5/img/hotgame/games/tablegame.png`,
-				spanTextKey: "lbl_tableGame",
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.tableGame)
-					}
-				]
+				spanTextKey: "lbl_tableGame"
 			},
 			{
 				...defGameInfo.VirtualGame,
 				img: `${bannerImgUrl}/h5/img/hotgame/games/virtualgames.png`,
-				spanTextKey: "lbl_VirtualGames",
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.game_virtualGame)
-					}
-				]
+				spanTextKey: "lbl_VirtualGames"
 			}
 		]
 	},

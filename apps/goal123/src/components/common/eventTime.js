@@ -36,5 +36,6 @@ export const eventTime = {
 	worldCup_hot: {
 		startDate: "2022/08/29 00:00:00",
 		endDate: "2022/12/18 23:59:59"
-	}
+	},
+	game_MaxGame: { endDate: "2022/10/13 11:00:00" }
 };

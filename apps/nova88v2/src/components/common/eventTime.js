@@ -29,5 +29,6 @@ export const eventTime = {
 	game_Vgaming: { endDate: "2022/03/24 11:00:00" },
 	game_virtualGame: { endDate: "2022/04/24 11:00:00" },
 	sports_virtualSports: { endDate: "2022/04/24 11:00:00" },
-	liveCasino_mg: { endDate: "2022/08/08 11:00:00" }
+	liveCasino_mg: { endDate: "2022/08/08 11:00:00" },
+	game_MaxGame: { endDate: "2022/10/13 11:00:00" }
 };

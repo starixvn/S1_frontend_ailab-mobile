@@ -58,12 +58,16 @@ const defSubMenus = [
 				displayKey: "lbl_tcg"
 			},
 			{
+				...defGameInfo.kingMaker,
+				displayKey: "lbl_KingMaker"
+			},
+			{
 				...defGameInfo.sabaClub,
 				displayKey: "lbl_Vgaming"
 			},
 			{
-				...defGameInfo.kingMaker,
-				displayKey: "lbl_KingMaker"
+				...defGameInfo.MaxGame,
+				displayText: "Max Game"
 			},
 			{
 				...defGameInfo.V8Poker,
@@ -321,7 +325,7 @@ const SubMenuList = ({
 								onClick={clickGame.bind(this, c)}>
 								<button>
 									{i18n[c.displayKey]?.toUpperCase() ??
-										c.displayText}
+										c.displayText?.toUpperCase()}
 									{_subItems}
 								</button>
 							</li>

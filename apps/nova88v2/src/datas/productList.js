@@ -481,35 +481,32 @@ const GameList = ({ langId, currencyName }) => {
 							allowCurrency: [defCurrenyId.THB]
 						},
 						{
+							...defGameInfo.sabaClub,
+							img: `${cloudBannerImgURL}/h5/img/vg.png`,
+							spanTextKey: "lbl_Vgaming"
+						},
+						{
+							...defGameInfo.MaxGame,
+							img: `${cloudBannerImgURL}/h5/img/max.png`,
+							spanText: "Max Game",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.game_MaxGame
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.kingMaker,
 							img: `${cloudBannerImgURL}/h5/img/km.png`,
 							spanTextKey: "lbl_KingMaker"
 						},
 						{
-							...defGameInfo.sabaClub,
-							img: `${cloudBannerImgURL}/h5/img/vg.png`,
-							spanTextKey: "lbl_Vgaming",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(
-										eventTime.game_Vgaming
-									)
-								}
-							]
-						},
-						{
 							...defGameInfo.VirtualGame,
 							img: `${cloudBannerImgURL}/h5/img/virtualgames.png`,
-							spanTextKey: "lbl_VirtualGames",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(
-										eventTime.game_virtualGame
-									)
-								}
-							]
+							spanTextKey: "lbl_VirtualGames"
 						}
 					]
 				},
@@ -1097,35 +1094,32 @@ const GameList = ({ langId, currencyName }) => {
 							allowCurrency: [defCurrenyId.THB]
 						},
 						{
+							...defGameInfo.sabaClub,
+							img: `${cloudBannerImgURL}/h5/img/vg.png`,
+							spanTextKey: "lbl_Vgaming"
+						},
+						{
+							...defGameInfo.MaxGame,
+							img: `${cloudBannerImgURL}/h5/img/max.png`,
+							spanText: "Max Game",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.game_MaxGame
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.kingMaker,
 							img: `${cloudBannerImgURL}/h5/img/km.png`,
 							spanTextKey: "lbl_KingMaker"
 						},
 						{
-							...defGameInfo.sabaClub,
-							img: `${cloudBannerImgURL}/h5/img/vg.png`,
-							spanTextKey: "lbl_Vgaming",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(
-										eventTime.game_Vgaming
-									)
-								}
-							]
-						},
-						{
 							...defGameInfo.VirtualGame,
 							img: `${cloudBannerImgURL}/h5/img/virtualgames.png`,
-							spanTextKey: "lbl_VirtualGames",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(
-										eventTime.game_virtualGame
-									)
-								}
-							]
+							spanTextKey: "lbl_VirtualGames"
 						}
 					]
 				},
@@ -1729,35 +1723,33 @@ const GameList = ({ langId, currencyName }) => {
 							allowCurrency: [defCurrenyId.THB]
 						},
 						{
+							...defGameInfo.sabaClub,
+							img: `${cloudBannerImgURL}/h5/img/vg.png`,
+							spanTextKey: "lbl_Vgaming"
+						},
+						{
+							...defGameInfo.MaxGame,
+							img: `${cloudBannerImgURL}/h5/img/max.png`,
+							spanText: "Max Game",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.game_MaxGame
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.kingMaker,
 							img: `${cloudBannerImgURL}/h5/img/km.png`,
 							spanTextKey: "lbl_KingMaker"
 						},
-						{
-							...defGameInfo.sabaClub,
-							img: `${cloudBannerImgURL}/h5/img/vg.png`,
-							spanTextKey: "lbl_Vgaming",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(
-										eventTime.game_Vgaming
-									)
-								}
-							]
-						},
+
 						{
 							...defGameInfo.VirtualGame,
 							img: `${cloudBannerImgURL}/h5/img/virtualgames.png`,
-							spanTextKey: "lbl_VirtualGames",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(
-										eventTime.game_virtualGame
-									)
-								}
-							]
+							spanTextKey: "lbl_VirtualGames"
 						}
 					]
 				},
@@ -2345,35 +2337,33 @@ const GameList = ({ langId, currencyName }) => {
 							allowCurrency: [defCurrenyId.THB]
 						},
 						{
+							...defGameInfo.sabaClub,
+							img: `${cloudBannerImgURL}/h5/img/vg.png`,
+							spanTextKey: "lbl_Vgaming"
+						},
+						{
+							...defGameInfo.MaxGame,
+							img: `${cloudBannerImgURL}/h5/img/max.png`,
+							spanText: "Max Game",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.game_MaxGame
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.kingMaker,
 							img: `${cloudBannerImgURL}/h5/img/km.png`,
 							spanTextKey: "lbl_KingMaker"
 						},
-						{
-							...defGameInfo.sabaClub,
-							img: `${cloudBannerImgURL}/h5/img/vg.png`,
-							spanTextKey: "lbl_Vgaming",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(
-										eventTime.game_Vgaming
-									)
-								}
-							]
-						},
+
 						{
 							...defGameInfo.VirtualGame,
 							img: `${cloudBannerImgURL}/h5/img/virtualgames.png`,
-							spanTextKey: "lbl_VirtualGames",
-							eventIcon: [
-								{
-									icon: defIconType.new,
-									inPeriod: isEventPeriod(
-										eventTime.game_virtualGame
-									)
-								}
-							]
+							spanTextKey: "lbl_VirtualGames"
 						}
 					]
 				},
@@ -2888,6 +2878,19 @@ const GameList = ({ langId, currencyName }) => {
 					translateKey: "lbl_Games",
 					items: [
 						{
+							...defGameInfo.MaxGame,
+							img: `${cloudBannerImgURL}/h5/img/max.png`,
+							spanText: "Max Game",
+							eventIcon: [
+								{
+									icon: defIconType.new,
+									inPeriod: isEventPeriod(
+										eventTime.game_MaxGame
+									)
+								}
+							]
+						},
+						{
 							...defGameInfo.kingMaker,
 							img: `${cloudBannerImgURL}/h5/img/km.png`,
 							spanTextKey: "lbl_KingMaker"
@@ -3136,6 +3139,7 @@ export const defGameInfo = {
 	TCG: { tpId: 33, tpGameType: 54 },
 	tableGame: { tpId: 1, gameId: 222, tpGameType: 23 },
 	MPoker: { tpId: 35, tpGameType: 60 },
+	MaxGame: { tpId: 1, gameId: 237, tpGameType: 83 },
 	Mega888: { tpId: 22, tpGameType: 34 },
 	VirtualGame: { tpId: 1, gameId: 245, tpGameType: 22 }, // 單一錢包 (目前不支援)
 	VirtualSports: { tpId: 1, gameId: 192, tpGameType: 24 }, // 單一錢包 {tpId:41, tpGameType:72, gameId:192}
