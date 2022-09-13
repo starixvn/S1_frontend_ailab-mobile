@@ -126,20 +126,9 @@ export const productList = langId => {
 					]
 				},
 				{
-					displayKey: "lbl_V8Poker",
-					img: `${bannerImgUrl}/h5/img/lottery/lottery-v8poker.png`,
-					...defGameInfo.V8Poker
-				},
-				{
 					...defGameInfo.kingMaker,
 					img: `${bannerImgUrl}/h5/img/lottery/lottery-kingmaker.png`,
-					displayKey: "lbl_KingMaker",
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.new_Km)
-						}
-					]
+					displayKey: "lbl_KingMaker"
 				},
 				{
 					displayKey: "lbl_TraditionalLottery",
@@ -157,6 +146,22 @@ export const productList = langId => {
 					...defGameInfo.sabaClub
 				},
 				{
+					displayText: "Max Game",
+					img: `${bannerImgUrl}/h5/img/lottery/lottery-max.png`,
+					...defGameInfo.MaxGame,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.game_MaxGame)
+						}
+					]
+				},
+				{
+					displayKey: "lbl_V8Poker",
+					img: `${bannerImgUrl}/h5/img/lottery/lottery-v8poker.png`,
+					...defGameInfo.V8Poker
+				},
+				{
 					displayKey: "lbl_Keno",
 					img: `${bannerImgUrl}/h5/img/lottery/lottery-keno.png`,
 					...defGameInfo.Keno
@@ -169,24 +174,12 @@ export const productList = langId => {
 				{
 					displayKey: "lbl_tableGame",
 					img: `${bannerImgUrl}/h5/img/lottery/lottery-table.png`,
-					...defGameInfo.tableGame,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.tableGame)
-						}
-					]
+					...defGameInfo.tableGame
 				},
 				{
 					displayKey: "lbl_VirtualGames",
 					img: `${bannerImgUrl}/h5/img/lottery/virtual.png`,
-					...defGameInfo.VirtualGame,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.game_virtualGame)
-						}
-					]
+					...defGameInfo.VirtualGame
 				}
 			]
 		},
@@ -557,8 +550,8 @@ export const defSubMenus = () => [
 				displayKey: "lbl_tcg"
 			},
 			{
-				...defGameInfo.sabaClub,
-				displayKey: "lbl_Vgaming"
+				...defGameInfo.kingMaker,
+				displayKey: "lbl_KingMaker"
 			},
 			{
 				displayKey: "lbl_TraditionalLottery",
@@ -569,8 +562,12 @@ export const defSubMenus = () => [
 				...defGameInfo.One789_lottery_789
 			},
 			{
-				...defGameInfo.kingMaker,
-				displayKey: "lbl_KingMaker"
+				...defGameInfo.sabaClub,
+				displayKey: "lbl_Vgaming"
+			},
+			{
+				...defGameInfo.MaxGame,
+				displayText: "Max Game"
 			},
 			{
 				...defGameInfo.V8Poker,
