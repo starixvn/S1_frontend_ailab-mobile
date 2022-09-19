@@ -1704,6 +1704,56 @@ main .sideBar button.crypto, main .sideBar a.crypto {
   padding: 5.2vw 1.15vw;
 }
 
+main .sideBar button .icon-mediafire, main .sideBar a .icon-mediafire {
+  position: absolute;
+  bottom: -3px;
+  background: #e92529;
+  border-radius: 3px;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 1vw 0 0;
+  font-size: 2vw;
+}
+
+main .sideBar button .icon-mediafire:before, main .sideBar a .icon-mediafire:before {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  margin-top: -2vw;
+  -webkit-animation: fire 1s 1s infinite linear;
+          animation: fire 1s 1s infinite linear;
+}
+
+@-webkit-keyframes fire {
+  0% {
+    color: white;
+  }
+  50% {
+    color: #F77A00;
+  }
+  100% {
+    color: white;
+  }
+}
+
+@keyframes fire {
+  0% {
+    color: white;
+  }
+  50% {
+    color: #F77A00;
+  }
+  100% {
+    color: white;
+  }
+}
+
 main .gameList {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1931,18 +1981,6 @@ footer > a .icon-mediafire:before {
   margin-top: -2vw;
   -webkit-animation: fire 1s 1s infinite linear;
           animation: fire 1s 1s infinite linear;
-}
-
-@-webkit-keyframes fire {
-  0% {
-    color: white;
-  }
-  50% {
-    color: #F77A00;
-  }
-  100% {
-    color: white;
-  }
 }
 
 @keyframes fire {
@@ -3983,7 +4021,14 @@ footer > a.active .circleAnimation + span {
 
 .infoModule .qrCode {
   margin: 2vw auto;
+  padding: 5px;
+  background: rgba(198, 212, 241, 0.8);
+}
+
+.infoModule .qrCode svg {
   width: 35vw;
+  height: 35vw;
+  display: block;
 }
 
 .inputBox, .worldcupEvent .event .event-content .inputBox-event, .worldcupEvent .event .event-content .ticket-item.finished .inputBox-event {
@@ -12531,5 +12576,147 @@ span.important {
       -ms-flex-pack: center;
           justify-content: center;
   margin: 5vw 0;
+}
+
+.duitnowPayPop ul {
+  color: #5574A7;
+}
+
+.duitnowPayPop ul li {
+  margin-left: 4vw;
+  list-style: decimal;
+}
+
+.duitnowPayPop .pop {
+  border-radius: 3px;
+}
+
+.duitnowPayPop .pop > div {
+  width: 100%;
+}
+
+.duitnowPayPop .pop > div span {
+  color: #1E85EC;
+}
+
+.duitnowPayPop .pop > div.popTit {
+  background: #233d67;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: white !important;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  padding: 1vw 2vw !important;
+  width: calc(100% - 4vw) !important;
+}
+
+.duitnowPayPop .pop > div.popTit img {
+  width: 20vw;
+  position: absolute;
+  left: 1vw;
+}
+
+.duitnowPayPop .pop > div.popTit .icon-close {
+  right: 1vw;
+  top: auto;
+  position: absolute;
+}
+
+.duitnowPayPop .pop > div.popTxt .title {
+  font-size: 4vw;
+  text-align: center;
+  margin-bottom: 2vw !important;
+}
+
+.duitnowPayPop .pop > div.popTxt .sisa {
+  text-align: center;
+  margin: 2vw 0 0;
+}
+
+.duitnowPayPop .pop > div.popTxt .sisa div {
+  color: #5574A7;
+}
+
+.duitnowPayPop .pop > div.popTxt .sisa div:last-child {
+  font-weight: bold;
+  margin: 2vw 1vw;
+}
+
+.duitnowPayPop .pop > div.popTxt .sisa span {
+  font-size: 14px;
+  color: #233d67;
+  font-weight: normal;
+  padding: 1vw 2vw;
+  margin: 2vw 1vw;
+  background: #f2f2f2;
+  border: 0;
+  border-radius: 4px;
+}
+
+.duitnowPayPop .pop > div.popTxt .amount {
+  display: block;
+  text-align: center;
+}
+
+.duitnowPayPop .pop > div.popTxt .amount span {
+  color: #5574A7;
+  font-weight: bold;
+  font-size: 4vw;
+  display: block;
+  padding: 1vw;
+  background: #f2f2f2;
+  border: 0;
+  border-radius: 3px;
+  width: 41vw;
+  margin: 1vw auto 2vw;
+}
+
+.duitnowPayPop .pop > div.popTxt .guide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-top: 1px dotted #1E85EC;
+  border-bottom: 1px dotted #1E85EC;
+  padding: 2vw 0;
+  margin: 2vw 0 0;
+}
+
+.duitnowPayPop .pop > div.popTxt .guide > button {
+  padding: 0.5vw 2vw;
+  background: #5574A7;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1vw auto;
+  border-radius: 3px;
+}
+
+.duitnowPayPop .pop > div.popTxt .guide .qrCode {
+  margin: 1vw 0;
+}
+
+.duitnowPayPop .pop > div.popTxt .guide .qrCode svg {
+  width: 53vw;
+  height: 53vw;
+}
+
+.duitnowPayPop .pop > div.popTxt .guide .qrCode path:nth-child(2) {
+  fill: #EE2968;
 }
 /*# sourceMappingURL=style.css.map */
