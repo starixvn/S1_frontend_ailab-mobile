@@ -1654,11 +1654,11 @@ main .sideBar button, main .sideBar a {
   margin: auto 0.5vw auto 0;
 }
 
-main .sideBar button i:not(.icon-new):not(.icon-live):before, main .sideBar a i:not(.icon-new):not(.icon-live):before {
+main .sideBar button i:not(.icon-new):not(.icon-live):not(.icon-mediafire):before, main .sideBar a i:not(.icon-new):not(.icon-live):not(.icon-mediafire):before {
   font-size: 8vw;
 }
 
-main .sideBar button i:not(.icon-new):not(.icon-live) + div, main .sideBar a i:not(.icon-new):not(.icon-live) + div {
+main .sideBar button i:not(.icon-new):not(.icon-live):not(.icon-mediafire) + div, main .sideBar a i:not(.icon-new):not(.icon-live):not(.icon-mediafire) + div {
   color: #5574A7;
   font-size: 3vw;
 }
@@ -1706,7 +1706,7 @@ main .sideBar button.crypto, main .sideBar a.crypto {
 
 main .sideBar button .icon-mediafire, main .sideBar a .icon-mediafire {
   position: absolute;
-  bottom: -3px;
+  bottom: 0;
   background: #e92529;
   border-radius: 3px;
   -webkit-transform: scale(0.8);
