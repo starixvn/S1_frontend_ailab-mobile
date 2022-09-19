@@ -19,8 +19,9 @@ export const productList = {
 	}
 };
 
-const defIconType = {
-	new: " icon-new"
+export const defIconType = {
+	new: " icon-new",
+	hot: " icon-mediafire"
 };
 
 export const defSlotTpGameType = {
@@ -53,7 +54,13 @@ const GameList = ({ langId, currencyName }) => {
 					category: "worldCup",
 					event: true,
 					path: path.worldCup.root,
-					imgUrl: `${cloudBannerImgURL}/h5/img/event/worldcup/xs-logo-r.png`
+					imgUrl: `${cloudBannerImgURL}/h5/img/event/worldcup/xs-logo-r.png`,
+					eventIcon: [
+						{
+							icon: defIconType.hot,
+							inPeriod: isEventPeriod(eventTime.worldCup_hot)
+						}
+					]
 				},
 				{
 					category: "sports",
@@ -673,7 +680,13 @@ const GameList = ({ langId, currencyName }) => {
 					category: "worldCup",
 					event: true,
 					path: path.worldCup.root,
-					imgUrl: `${cloudBannerImgURL}/h5/img/event/worldcup/xs-logo-r.png`
+					imgUrl: `${cloudBannerImgURL}/h5/img/event/worldcup/xs-logo-r.png`,
+					eventIcon: [
+						{
+							icon: defIconType.hot,
+							inPeriod: isEventPeriod(eventTime.worldCup_hot)
+						}
+					]
 				},
 				{
 					category: "sports",
@@ -1286,7 +1299,13 @@ const GameList = ({ langId, currencyName }) => {
 					category: "worldCup",
 					event: true,
 					path: path.worldCup.root,
-					imgUrl: `${cloudBannerImgURL}/h5/img/event/worldcup/xs-logo-r.png`
+					imgUrl: `${cloudBannerImgURL}/h5/img/event/worldcup/xs-logo-r.png`,
+					eventIcon: [
+						{
+							icon: defIconType.hot,
+							inPeriod: isEventPeriod(eventTime.worldCup_hot)
+						}
+					]
 				},
 				{
 					category: "sports",
@@ -1916,7 +1935,13 @@ const GameList = ({ langId, currencyName }) => {
 					category: "worldCup",
 					event: true,
 					path: path.worldCup.root,
-					imgUrl: `${cloudBannerImgURL}/h5/img/event/worldcup/xs-logo-r.png`
+					imgUrl: `${cloudBannerImgURL}/h5/img/event/worldcup/xs-logo-r.png`,
+					eventIcon: [
+						{
+							icon: defIconType.hot,
+							inPeriod: isEventPeriod(eventTime.worldCup_hot)
+						}
+					]
 				},
 				{
 					category: "sports",
@@ -2511,7 +2536,13 @@ const GameList = ({ langId, currencyName }) => {
 					category: "worldCup",
 					event: true,
 					path: path.worldCup.root,
-					imgUrl: `${cloudBannerImgURL}/h5/img/event/worldcup/xs-logo-r.png`
+					imgUrl: `${cloudBannerImgURL}/h5/img/event/worldcup/xs-logo-r.png`,
+					eventIcon: [
+						{
+							icon: defIconType.hot,
+							inPeriod: isEventPeriod(eventTime.worldCup_hot)
+						}
+					]
 				},
 				{
 					category: "sports",

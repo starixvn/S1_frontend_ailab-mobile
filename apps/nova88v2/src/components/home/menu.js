@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
 import { Link } from "../../route/link";
-import gameList, { defCol } from "../../datas/productList";
+import gameList, { defCol, defIconType } from "../../datas/productList";
 import { getEventIcon } from "./category";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import useHandleLogin from "../hook/useHandleLogin";
@@ -138,6 +138,10 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 				return (
 					<Link key={`menu-${item.category}`} to={item.path}>
 						<img src={item.imgUrl} alt={item.category} />
+						{showingEventIcon !== "" &&
+						showingEventIcon === defIconType.hot ? (
+							<i className={`icon${showingEventIcon}`}>HOT</i>
+						) : null}
 					</Link>
 				);
 			}
