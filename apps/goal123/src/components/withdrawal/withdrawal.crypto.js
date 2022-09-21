@@ -56,7 +56,7 @@ const Panel = () => {
 		uSDTDetail: []
 	});
 	const [recentDatas, setRecentDatas] = useState([]);
-	const [allWithdrawalLimit, setWithdrawalLimit] = useState([]);
+	const [allWithdrawalLimit, setWithdrawalLimit] = useState({});
 	const [limitInfo, setLimitInfo] = useState({
 		limit: {},
 		withdrawalLimitHint: ""
@@ -83,11 +83,19 @@ const Panel = () => {
 			return;
 		}
 		const curNetwork = selBank?.network;
-		const limit = allWithdrawalLimit.find(
+		const cryptoLimit = allWithdrawalLimit?.usdtList.find(
 			el =>
 				el.network === curNetwork &&
 				el.currencyId === selBank?.currencyId
 		);
+		const limit = {
+			...cryptoLimit,
+			withdrawalAvailableAmount:
+				allWithdrawalLimit.withdrawalAvailableAmount,
+			unlimited: allWithdrawalLimit.unlimited,
+			maxTimes: allWithdrawalLimit.maxTimes
+		};
+
 		setInputStatus(initStatus);
 		setLimitInfo({ withdrawalLimitHint: limitHint(limit), limit });
 	}, [selBank, i18n, allWithdrawalLimit]);
@@ -137,7 +145,7 @@ const Panel = () => {
 				res => {
 					if (res.data.errorCode === 0 && isMountedRef.current) {
 						const limit = {
-							unlimited: false,
+							unlimited: res.data.data?.unlimited,
 							withdrawalAvailableAmount:
 								res.data.data?.withdrawalAvailableAmount,
 							withdrawalMin: res.data.data?.withdrawalMin,
@@ -148,7 +156,7 @@ const Panel = () => {
 							limit,
 							withdrawalLimitHint: limitHint(limit)
 						});
-						setWithdrawalLimit(res.data.data.usdtList);
+						setWithdrawalLimit(res.data.data);
 					} else if (res.data.errorCode !== 0) {
 						setPopBox({
 							isOpen: true,
