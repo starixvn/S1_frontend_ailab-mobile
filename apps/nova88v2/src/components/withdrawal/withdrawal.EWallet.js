@@ -335,8 +335,8 @@ const Panel = () => {
 			};
 		} else if (
 			real_amount < withdrawalLimit.eWalletWithdrawalMin ||
-			(!withdrawalLimit.eWalletUnlimited &&
-				real_amount > withdrawalLimit.eWalletWithdrawalAvailableAmount)
+			(!withdrawalLimit.unlimited &&
+				real_amount > withdrawalLimit.withdrawalAvailableAmount)
 		) {
 			const _msg = i18n.lbl_AmountTooltip.replace(
 				"{{0}}",
@@ -704,10 +704,10 @@ const Panel = () => {
 			_isConvert,
 			0
 		)}/${
-			withdrawalLimit.eWalletUnlimited
+			withdrawalLimit.unlimited
 				? i18n.lbl_Unlimited
 				: number_format(
-						withdrawalLimit.eWalletWithdrawalAvailableAmount,
+						withdrawalLimit.withdrawalAvailableAmount,
 						_isConvert,
 						0
 				  )
