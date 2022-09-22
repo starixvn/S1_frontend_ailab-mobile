@@ -32,6 +32,7 @@ const Payment = props => {
 		asyncPromotionConfirmPopBox,
 		checkDepositSpecialCode
 	} = props;
+
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
