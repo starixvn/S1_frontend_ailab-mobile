@@ -686,6 +686,12 @@
 	"lbl_Deposit_DragonPayPop_AccountNumber": "Nombor akaun",
 	"lbl_AutoDeposit": "Deposit Secara Automatik",
 	"lbl_Line": "LINE",
+  "lbl_ScanQR": "Imbas QR",
+  "lbl_DuitNowQR": "DuitNow QR",
+  "lbl_ScanAndPay": "Imbas dan Bayar",
+  "lbl_QRCode": "Kod QR",
+  "lbl_DuitNowQRNote1": "Sila hubungi CSD jika pembayaran tidak ditunjukkan dalam dompet anda selepas pemindahan.",
+  "lbl_DuitNowQRNote2": "Tutup tab selepas pemindahan.",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "Butiran pembayaran",

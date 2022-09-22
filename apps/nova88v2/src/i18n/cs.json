@@ -676,6 +676,12 @@
 	"lbl_Deposit_DragonPayPop_AccountNumber": "户口号码",
 	"lbl_Deposit_DragonPayPop_OrderNumber": "订单编号",
 	"lbl_AutoDeposit": "Auto Deposit",
+  "lbl_ScanQR": "掃描二維碼",
+  "lbl_DuitNowQR": "DuitNow QR",
+  "lbl_ScanAndPay": "扫码付款",
+  "lbl_QRCode": "二维码",
+  "lbl_DuitNowQRNote1": "如果转账后付款未反映在您的钱包中，请联系 CSD。",
+  "lbl_DuitNowQRNote2": "传输后关闭选项卡。",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "付款资讯",

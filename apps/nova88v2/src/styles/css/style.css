@@ -1774,6 +1774,56 @@ main .sideBar button .icon-mediafire:before, main .sideBar a .icon-mediafire:bef
   }
 }
 
+main .sideBar button .icon-mediafire, main .sideBar a .icon-mediafire {
+  position: absolute;
+  bottom: 0;
+  background: #e92529;
+  border-radius: 3px;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 1vw 0 0;
+  font-size: 2vw;
+}
+
+main .sideBar button .icon-mediafire:before, main .sideBar a .icon-mediafire:before {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  margin-top: -2vw;
+  -webkit-animation: fire 1s 1s infinite linear;
+          animation: fire 1s 1s infinite linear;
+}
+
+@-webkit-keyframes fire {
+  0% {
+    color: white;
+  }
+  50% {
+    color: #F77A00;
+  }
+  100% {
+    color: white;
+  }
+}
+
+@keyframes fire {
+  0% {
+    color: white;
+  }
+  50% {
+    color: #F77A00;
+  }
+  100% {
+    color: white;
+  }
+}
+
 main .gameList {
   display: -webkit-box;
   display: -ms-flexbox;
