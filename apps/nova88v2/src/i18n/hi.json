@@ -687,6 +687,7 @@
 	"lbl_EnterYourUPIHint1": "अपना भरें UPI",
 	"lbl_EnterYourUPIHint2": "(पेटीएम/फोनपे/गूगलपे...आदि)",
 	"lbl_PleaseEnterUPI": "कृपया UPI दर्ज करें।",
+  "lbl_ScanQR": "क्यूआर स्कैन करें",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "भुगतान विवरण",

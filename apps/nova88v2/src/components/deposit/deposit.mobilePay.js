@@ -32,7 +32,6 @@ const Payment = props => {
 		asyncPromotionConfirmPopBox,
 		checkDepositSpecialCode
 	} = props;
-
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -256,6 +255,39 @@ const Payment = props => {
 
 			const real_amount = _isConvert ? amount * 1000 : amount;
 
+			const handleDuitNowQR = async () => {
+				try {
+					const res = await api.payment.DepositReqFakeMobilePay({
+						groupId: selChannel.groupId,
+						amount,
+						bonusCode: depositPromo.bonusCode
+					});
+					const { data, errorCode } = res.data;
+					if (errorCode === 0) {
+						setPopBox({
+							isOpen: true,
+							popBoxType: defPopBoxType.DuitNowQR,
+							onClose: () => setPopBox({ isOpen: false }),
+							className: "duitnowPayPop",
+							title: i18n.lbl_DuitNowQR,
+							qrUrl: data.returnUrl,
+							amount: data.amount,
+							transId: data.transId
+						});
+					} else {
+						setPopBox({
+							isOpen: true,
+							content: `[${errorCode}] ${data.message}`
+						});
+					}
+				} catch (err) {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
+				}
+			};
+
 			setPopBox({
 				isOpen: true,
 				title: i18n.lbl_ImportantNote,
@@ -288,7 +320,12 @@ const Payment = props => {
 						</button>
 						<button
 							className="orange"
-							onClick={RedirectToNext.bind(this, real_amount)}>
+							onClick={
+								// 目前只有MYR DuitNow(GroupId=53)使用
+								selChannel.groupId === 53
+									? () => handleDuitNowQR()
+									: RedirectToNext.bind(this, real_amount)
+							}>
 							{i18n.lbl_Submit}
 						</button>
 					</div>

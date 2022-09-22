@@ -663,6 +663,7 @@
 	"lbl_Deposit_DragonPayPop_OrderNumber": "เลขที่ใบสั่งซื้อ",
 	"lbl_AutoDeposit": "Auto Deposit",
 	"lbl_Line": "LINE",
+  "lbl_ScanQR": "สแกน QR",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "รายละเอียดการฝากเงิน",

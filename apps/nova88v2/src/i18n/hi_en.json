@@ -689,6 +689,7 @@
 	"lbl_EnterYourUPIHint1": "ENTER YOUR UPI",
 	"lbl_EnterYourUPIHint2": "(Paytm/Phope/Googlepay... etc)",
 	"lbl_PleaseEnterUPI": "Please enter UPI",
+  "lbl_ScanQR": "Scan QR",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "Payment Details",

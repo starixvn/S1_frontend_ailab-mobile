@@ -679,6 +679,7 @@
 	"lbl_Deposit_DragonPayPop_AccountNumber": "Nomor akun",
 	"lbl_Deposit_DragonPayPop_OrderNumber": "Nomor pesanan",
 	"lbl_AutoDeposit": "Deposit Otomatis",
+  "lbl_ScanQR": "Pindai QR",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "Rincian Pembayaran",

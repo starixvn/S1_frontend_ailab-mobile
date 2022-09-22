@@ -688,6 +688,7 @@
 	"lbl_Deposit_DragonPayPop_AccountName": "Account Name",
 	"lbl_Deposit_DragonPayPop_AccountNumber": "Account Number",
 	"lbl_AutoDeposit": "Auto Deposit",
+  "lbl_ScanQR": "Scan QR",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "Payment Details",

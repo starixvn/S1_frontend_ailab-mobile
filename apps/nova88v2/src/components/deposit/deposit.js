@@ -127,7 +127,6 @@ const Panel = () => {
 		i18n,
 		setPopBox
 	});
-
 	const depositPromoMsg = userInfo?.phoneVerified
 		? ""
 		: i18n.lbl_Nova_DepositPromoMsg1;
