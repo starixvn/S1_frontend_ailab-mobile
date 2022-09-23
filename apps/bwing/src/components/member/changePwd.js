@@ -25,7 +25,7 @@ const initStatus = {
 export default () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
-	const { userInfo } = useContext(userInfoContext);
+	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const [userValue, setUserValue] = useState(initValue);
 	const [inputStatus, setInputStatus] = useState(initStatus);
 	const [redirectPath, setRedirectPath] = useState(null);
@@ -96,6 +96,10 @@ export default () => {
 		if (oldPswCheck.checked && newPswCheck.checked) {
 			const closePopbox = status => {
 				setPopBox({ isOpen: false });
+				setUserInfo(prev => ({
+					...prev,
+					isResetPwd: false
+				}));
 				if (status === "success") {
 					setRedirectPath(`/${path.member.root}`);
 				}
