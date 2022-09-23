@@ -1,12 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { defCurrenyId, number_format } from "../common/common";
+import { number_format, defCurrenyId } from "../common/common";
 import useTip from "../hook/useTip";
 
 const defAmountQuickPick = {
-	2: [100, 300, 500, 1000, 2000],
-	4: [500, 1000, 3000, 5000, 10000],
-	15: [300000, 500000, 1000000, 3000000, 5000000]
+	[defCurrenyId.MYR]: [100, 300, 500, 1000, 2000],
+	[defCurrenyId.THB]: [500, 1000, 3000, 5000, 10000],
+	[defCurrenyId.IDR]: [300000, 500000, 1000000, 3000000, 5000000],
+	[defCurrenyId.BDT]: [100, 300, 500, 1000, 2000],
+	[defCurrenyId.CNY]: [100, 300, 500, 1000, 2000],
+	[defCurrenyId.USD]: [100, 300, 500, 1000, 2000]
 };
 
 const AmountInput = ({

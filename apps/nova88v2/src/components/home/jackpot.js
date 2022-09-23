@@ -4,7 +4,6 @@ import useInterval from "../hook/useInterval";
 import { Link } from "../../route/link";
 import path from "../../path";
 import defNav from "../casino/defNav";
-import { langToCurrency } from "../common/common";
 
 const defaultElementHeight = 17;
 const numberArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -15,13 +14,7 @@ const Jackpot = ({ i18n, userInfo }) => {
 	const jackpotRef = useRef();
 	const intervalTimer = useRef();
 
-	let _currencyId = null;
-
-	if (userInfo.isLogin) {
-		_currencyId = userInfo.currencyId;
-	} else if (userInfo.isLogin === false) {
-		_currencyId = langToCurrency[userInfo.langId];
-	}
+	const _currencyId = userInfo?.currencyId;
 
 	const _currency = _currencyId ? i18n[`Currency_${_currencyId}`] : "";
 	const [value, setValue] = useState({ curr: "", prev: "" });

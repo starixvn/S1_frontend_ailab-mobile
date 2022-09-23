@@ -9,6 +9,7 @@ import useInterval from "../hook/useInterval";
 import { getUrlParameter, setCookie, deleteCookie } from "./common";
 import i18nConfig from "../../i18n/config";
 import api from "../../service/api";
+import { siteInfo } from "../../config";
 import path, { defSpecialPath } from "../../path";
 import { defType } from "../hook/useHandleLineLogin";
 
@@ -30,6 +31,7 @@ export const Wrapper = ({ children }) => {
 	const [userInfo, setUserInfo] = useState({
 		isLogin: null,
 		langId: urlLangId ?? GET_LANG_ID(),
+		currencyId: siteInfo()?.siteDefaultCurrencyId,
 		userName: i18n.lbl_Guest
 	});
 	const [popBox, setPopBox] = useState({

@@ -73,7 +73,7 @@ const Event = () => {
 					/>
 				</div>
 			)}
-			<Terms langId={userInfo.langId} />
+			<Terms langId={userInfo.langId} currencyId={userInfo.currencyId} />
 		</>
 	);
 };

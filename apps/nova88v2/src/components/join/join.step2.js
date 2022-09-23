@@ -9,7 +9,6 @@ import Dropdown from "../common/dropdown";
 import Birthday from "./join.birth";
 import useTip from "../hook/useTip";
 import TandC from "../../service/t_and_c";
-import AreaCodeDropdown from "../common/dropdown.profile";
 import InputboxPart from "../common/inputbox.profile";
 import { GetYear, GetDayOfMonth } from "../profile/profile.detail";
 import { monthOptions } from "../profile/profile.detail.def";
@@ -17,6 +16,14 @@ import api from "../../service/api";
 import { GET_LANG_ID } from "../../service/language";
 import { initStatus, currencyToAreacode } from "./join.def";
 import { Iov_GetBlackBox } from "../common/iovation";
+
+const areaCodeList = Object.values(areaCode).map(el => ({
+	value: el.AreaCode,
+	id: `${el.AreaCode} ${el.Name}`,
+	displayText: `${el.AreaCode} ${el.Name}`,
+	displaySelected: el.AreaCode,
+	abbr: el.Abbr
+}));
 
 const JoinStep2 = ({
 	i18n,
@@ -37,22 +44,6 @@ const JoinStep2 = ({
 	const { showTips, showTipHandler } = useTip([]);
 	const isMountedRef = useRef(null);
 	const defaultLangId = userInfo.langId ?? GET_LANG_ID();
-	const _currencyId = siteCurrency[userValue.Currency]?.id;
-	const [_areaCode, setAreaCode] = useState(null);
-
-	const [AreaCodeIdx, setAreaCodeIdx] = useState(0);
-
-	const areaCodeOptions = Object.values(areaCode)
-		.filter(
-			(el, idx, self) =>
-				idx === self.findIndex(t => el.AreaCode === t.AreaCode)
-		)
-		.map(el => ({
-			value: el.AreaCode,
-			id: el.AreaCode,
-			displayText: el.AreaCode
-		}))
-		.sort((a, b) => (a.id > b.id ? 1 : -1));
 
 	const yearOptions = [];
 	const startYear = GetYear();
@@ -68,6 +59,7 @@ const JoinStep2 = ({
 	for (let i = 1; i <= days; i++) {
 		dateOptions.push({ value: i, id: i, displayText: i });
 	}
+	const _areaCode = areaCodeList[userValue?.AreaCodeIdx]?.value;
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -129,6 +121,7 @@ const JoinStep2 = ({
 						const currencyArr = currencyNum.map(id => {
 							return { id, displayKey: `Currency_${id}` };
 						});
+
 						setSiteCurrencyState(() => currencyArr);
 					} else {
 						setPopBox({
@@ -156,21 +149,30 @@ const JoinStep2 = ({
 		}));
 	};
 
-	const onSelectItem = i => {
+	const onSelectItem = ({ idx, col, item }) => {
 		setDefaultOption(null);
-		setUserValue(prev => ({ ...prev, Currency: i }));
-		setHintStatus(prev => ({
-			...prev,
-			Currency: { checked: true, msg: "" }
-		}));
 
-		const selCurrencyId = siteCurrency[i]?.id;
-		const currencyToCountryCode = selCurrencyId
-			? areaCode[currencyToAreacode[selCurrencyId]]?.AreaCode
-			: null;
-		if (selCurrencyId !== 96) {
-			setAreaCode(currencyToCountryCode);
+		const param = {};
+
+		if (col === "CurrencyIdx") {
+			const selCurrecnyName = currencyToAreacode[siteCurrency[idx].id];
+			const areaCodeIdx = areaCodeList.findIndex(
+				obj => obj.abbr === selCurrecnyName
+			);
+			param.CurrencyIdx = idx;
+			param.AreaCodeIdx = areaCodeIdx;
+
+			setHintStatus(prev => ({
+				...prev,
+				Currency: { checked: true, msg: "" }
+			}));
+		} else if (col === "AreaCodeIdx") {
+			const areaCodeIdx = areaCodeList.findIndex(
+				obj => obj.abbr === item.abbr
+			);
+			param.AreaCodeIdx = areaCodeIdx;
 		}
+		setUserValue(prev => ({ ...prev, ...param }));
 	};
 
 	const checkValue = async (col, e) => {
@@ -231,7 +233,8 @@ const JoinStep2 = ({
 		let checked = true;
 		let msg = "";
 		const regx = /^[0-9\s]*$/;
-		if (!val) {
+
+		if (!val || !_areaCode) {
 			checked = false;
 			msg = "lbl_PhoneRequired";
 		} else if (!regx.test(val)) {
@@ -239,10 +242,7 @@ const JoinStep2 = ({
 			msg = "lbl_PhoneTooltip";
 		} else {
 			const res = await api.site.ExistsPhoneNo({
-				AreaCode:
-					_currencyId === 96
-						? areaCodeOptions[AreaCodeIdx].value
-						: _areaCode,
+				AreaCode: _areaCode,
 				Phone: val
 			});
 
@@ -327,12 +327,9 @@ const JoinStep2 = ({
 				Userpwd: userValue.Password,
 				Email: userValue.Email,
 				PhoneNo: userValue.Phone,
-				CurrencyId: _currencyId,
+				CurrencyId: siteCurrency[userValue.CurrencyIdx]?.id,
 				UserLang: defaultLangId,
-				AreaCode:
-					_currencyId === 96
-						? areaCodeOptions[AreaCodeIdx].value
-						: _areaCode,
+				AreaCode: areaCodeList[userValue?.AreaCodeIdx]?.value,
 				PromoCode: userValue.SpecialBonusCode,
 				Birth_d: userValue.Birth_d + 1,
 				Birth_m: monthOptions[userValue.Birth_m]?.value,
@@ -369,8 +366,7 @@ const JoinStep2 = ({
 			api.site.Signup(regData, defaultLangId).then(
 				response => {
 					if (isMountedRef.current) {
-						const { errorCode } = response.data;
-						const { message } = response.data;
+						const { errorCode, message } = response.data;
 						setHintStatus(initStatus);
 						if (errorCode === 0) {
 							api.accountStrict.GetCustProfile().then(
@@ -445,9 +441,9 @@ const JoinStep2 = ({
 				mainKey="join-curr"
 				colName="Currency"
 				defaultOption={defaultOption}
-				selectedIdx={userValue.Currency}
+				selectedIdx={userValue.CurrencyIdx}
 				options={siteCurrency}
-				onSelectItem={onSelectItem}
+				onSelectItem={i => onSelectItem({ idx: i, col: "CurrencyIdx" })}
 				infoText={i18n.lbl_PreferredCurrencyToolTip}
 				clickInfo={() => showTipHandler("Currency")}
 				showTips={showTips.includes("Currency")}
@@ -458,7 +454,8 @@ const JoinStep2 = ({
 				onBlur={checkValue.bind(null, "Currency")}
 				flag={true}
 			/>
-			{siteCurrency?.[userValue.Currency]?.id !== 96 ? (
+			{/* {siteCurrency?.[userValue.Currency]?.id !== defCurrenyId.USD &&
+			siteCurrency?.[userValue.Currency]?.id !== defCurrenyId.USDT ? (
 				<Inputbox
 					icon="icon-phone"
 					placeholder={i18n.lbl_Phone}
@@ -473,18 +470,30 @@ const JoinStep2 = ({
 					onBlur={checkValue.bind(null, "Phone")}
 					testAttr="Phone"
 				/>
-			) : (
-				<div className="infoModule parts">
-					<AreaCodeDropdown
-						i18n={i18n}
-						mainKey="profile-areaCode"
-						options={areaCodeOptions}
-						colName="areaCode"
-						onSelectItem={i => setAreaCodeIdx(i)}
-						selectedIdx={AreaCodeIdx}
-						icon="icon icon-phone"
-						hideInfo={true}
-					/>
+			) : ( */}
+			<div className="infoModule parts parts-xs">
+				<div
+					className={`inputInfo ${
+						showTips.includes("Phone") ? " active" : ""
+					}`}>
+					{i18n.lbl_PhoneTooltip}
+				</div>
+				<div className="phone">
+					{siteCurrency?.[userValue.CurrencyIdx]?.id && (
+						<AreaCodeDropdown
+							i18n={i18n}
+							options={areaCodeList}
+							onSelectItem={(i, item) =>
+								onSelectItem({
+									idx: i,
+									col: "AreaCodeIdx",
+									item
+								})
+							}
+							selectedIdx={userValue.AreaCodeIdx}
+							defaultOption={_areaCode}
+						/>
+					)}
 					<InputboxPart
 						icon="icon-phone"
 						inputType="tel"
@@ -492,14 +501,17 @@ const JoinStep2 = ({
 						onBlur={checkValue.bind(this, "Phone")}
 						onChange={EditField.bind(null, "Phone")}
 						value={userValue.Phone}
-						btnStatus={hintStatus.Phone.checked}
-						warningMsg={hintStatus.Phone.msg}
-						infoText={i18n.lbl_PhoneTooltip}
 						clickInfo={() => showTipHandler("Phone")}
-						showTips={showTips.includes("Phone")}
 					/>
 				</div>
-			)}
+				<div
+					className={`tip${
+						hintStatus.Phone.checked === false ? " active" : ""
+					}`}>
+					{hintStatus.Phone.msg}
+				</div>
+			</div>
+			{/* )} */}
 
 			<Inputbox
 				icon="icon-member"
@@ -566,6 +578,113 @@ JoinStep2.propTypes = {
 	setUserValue: PropTypes.func.isRequired,
 	setUserInfo: PropTypes.func.isRequired,
 	lineUserId: PropTypes.string
+};
+
+const AreaCodeDropdown = ({
+	defaultOption,
+	options,
+	selectedIdx,
+	onSelectItem,
+	disabled
+}) => {
+	const [isOpen, setOpen] = useState(false);
+	const [filterData, setFilterData] = useState({ input: "" });
+	const wrapper = useRef(null);
+
+	const useClickOutside = ref => {
+		useEffect(() => {
+			const handleClickOutside = e => {
+				if (
+					ref.current &&
+					!ref.current.contains(e.target) &&
+					e.target.className !== "search"
+				) {
+					setOpen(false);
+				}
+			};
+			document.addEventListener("mousedown", handleClickOutside);
+
+			return () => {
+				document.removeEventListener("mousedown", handleClickOutside);
+			};
+		}, [ref]);
+	};
+
+	const clickDropdown = e => {
+		e.preventDefault();
+
+		if (disabled) return;
+
+		if (e.target.className !== "search") {
+			setOpen(prev => !prev);
+			setFilterData({ input: "" });
+		}
+	};
+	useClickOutside(wrapper);
+
+	const selectItem = (e, { idx, item }) => {
+		e.stopPropagation();
+		setOpen(false);
+		onSelectItem(idx, item);
+	};
+
+	const search = e => {
+		const val = e.target.value;
+		const filteredOptions = options.filter(el =>
+			el.displayText.toLowerCase().includes(val.toLowerCase())
+		);
+		setFilterData(prev => ({ ...prev, input: val, filteredOptions }));
+	};
+	const _options = filterData?.filteredOptions ?? options;
+
+	const arr = _options.map((item, i) => (
+		<div
+			key={`item-${item.displayText}`}
+			className="dropdown-item"
+			onClick={e => selectItem(e, { idx: i, item })}>
+			{item.displayText}
+		</div>
+	));
+
+	const selected = _options[selectedIdx]?.displayText;
+
+	return (
+		<div className="inputBox" ref={wrapper} onClick={clickDropdown}>
+			<i className="icon icon-phone" />
+			<button className="dropdown">
+				{defaultOption ?? selected}
+				<i className="icon icon-keyboard_arrow_down" />
+			</button>
+			<div className={`dropdown-container${isOpen ? " active" : ""}`}>
+				<div className="inputBox">
+					<input
+						type="text"
+						className="search"
+						placeholder="Search"
+						onChange={search}
+						value={filterData?.input}
+					/>
+				</div>
+				{arr}
+			</div>
+		</div>
+	);
+};
+
+AreaCodeDropdown.defaultProps = {
+	defaultOption: null,
+	options: null,
+	selectedIdx: null,
+	onSelectItem: () => null,
+	disabled: null
+};
+
+AreaCodeDropdown.propTypes = {
+	defaultOption: PropTypes.string,
+	options: PropTypes.arrayOf(PropTypes.object),
+	selectedIdx: PropTypes.number,
+	onSelectItem: PropTypes.func,
+	disabled: PropTypes.bool
 };
 
 export default JoinStep2;

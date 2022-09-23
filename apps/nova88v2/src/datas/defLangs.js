@@ -17,7 +17,7 @@ export default {
 		country: "TH",
 		img: `${cloudBannerImgURL}/h5/img/th.jpg`,
 		lang: [
-			{ value: "th_en", displayText: "English" },
+			{ value: "en", displayText: "English" },
 			{ value: "th", displayText: "ภาษาไทย" }
 		],
 		countryName: "Thailand",
@@ -27,7 +27,7 @@ export default {
 		country: "ID",
 		img: `${cloudBannerImgURL}/h5/img/id.jpg`,
 		lang: [
-			{ value: "id_en", displayText: "English" },
+			{ value: "en", displayText: "English" },
 			{ value: "id", displayText: "Indonesian" }
 		],
 		countryName: "Indonesia",
@@ -37,10 +37,40 @@ export default {
 		country: "HI",
 		img: `${cloudBannerImgURL}/h5/img/in.jpg`,
 		lang: [
-			{ value: "hi_en", displayText: "English" },
+			{ value: "en", displayText: "English" },
 			{ value: "hi", displayText: "Hindi" }
 		],
 		countryName: "India",
 		currencyId: defCurrenyId.INR
+	},
+	BD: {
+		country: "BD",
+		img: `${cloudBannerImgURL}/h5/img/bd.jpg`,
+		lang: [
+			{ value: "en", displayText: "English" },
+			{ value: "bd", displayText: "Bangla" }
+		],
+		countryName: "Bangladesh",
+		currencyId: defCurrenyId.BDT
+	},
+	CS: {
+		country: "CS",
+		img: `${cloudBannerImgURL}/h5/img/cs.jpg`,
+		lang: [
+			{ value: "en", displayText: "English" },
+			{ value: "cs", displayText: "简体中文" }
+		],
+		countryName: "China",
+		currencyId: defCurrenyId.CNY
+	},
+	GB: {
+		country: "GB",
+		img: `${cloudBannerImgURL}/h5/img/gb.jpg`,
+		lang: [
+			{ value: "en", displayText: "English" },
+			{ value: "cs", displayText: "简体中文" }
+		],
+		countryName: "Global",
+		currencyId: defCurrenyId.USD
 	}
 };

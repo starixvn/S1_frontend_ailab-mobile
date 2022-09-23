@@ -1,5 +1,5 @@
 import axios from "axios";
-import { validImgLang } from "./components/common/common";
+import { validImgLang, defCurrenyId } from "./components/common/common";
 
 const siteName = "Nova88";
 export const siteId = 1;
@@ -25,18 +25,11 @@ export const siteInfo = langId => {
 		siteName,
 		siteId: 1,
 		affiliateLink: getAffiliate(langId),
+		langCookie: "nova88LangId",
+		currencyCookie: "nova88CurrencyId",
 		siteDefaultLang: "en",
-		siteLangList: [
-			"en",
-			"cs",
-			"my",
-			"th_en",
-			"th",
-			"id_en",
-			"id",
-			"hi_en",
-			"hi"
-		],
+		siteDefaultCurrencyId: defCurrenyId.MYR,
+		siteLangList: ["en", "cs", "th", "id", "hi", "bd"],
 		logo: "https://image.0814media.net/SiteSkin/img/logo_en_w.png",
 		description:
 			"Nova88 is the world leading sportsbook offering one of the kind gambling experience in live betting covering all sports, casino, slots, keno, esports, rng casino, fantasy sports, virtual sports, lottery, live casino, live dealer, bingo, and racing.",

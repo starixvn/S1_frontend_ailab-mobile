@@ -3,6 +3,8 @@ import { popBoxContext } from "Context";
 import PropTypes from "prop-types";
 import DefLangs from "../../datas/defLangs";
 import api from "../../service/api";
+import { siteInfo } from "../../config";
+import { setCookie } from "../common/common";
 
 const LanguageList = ({ userInfo, setUserInfo, i18n }) => {
 	const { setPopBox } = useContext(popBoxContext);
@@ -15,8 +17,11 @@ const LanguageList = ({ userInfo, setUserInfo, i18n }) => {
 		};
 	});
 
-	const selectLanguage = language => {
-		if (userInfo.langId !== language) {
+	const selectLanguage = (language, currencyId) => {
+		if (
+			userInfo.langId !== language ||
+			userInfo.currencyId !== currencyId
+		) {
 			const langId = language;
 
 			if (userInfo.isLogin) {
@@ -48,9 +53,12 @@ const LanguageList = ({ userInfo, setUserInfo, i18n }) => {
 			} else {
 				setUserInfo(prevState => ({
 					...prevState,
-					langId
+					langId,
+					currencyId
 				}));
 			}
+			setCookie(siteInfo(language).langCookie, language);
+			setCookie(siteInfo(language).currencyCookie, currencyId);
 		}
 	};
 
@@ -69,7 +77,9 @@ const LanguageList = ({ userInfo, setUserInfo, i18n }) => {
 				: true
 		)
 		.map(item => {
-			const isSelected = item.lang.some(l => l.value === userInfo.langId);
+			const isSelected =
+				item.lang.some(l => l.value === userInfo.langId) &&
+				item.currencyId === userInfo.currencyId;
 			return (
 				<Item
 					key={`lang-${item.country}`}
@@ -80,6 +90,8 @@ const LanguageList = ({ userInfo, setUserInfo, i18n }) => {
 					selectLanguage={selectLanguage}
 					isSelected={isSelected}
 					countryName={item.countryName}
+					currencyId={item.currencyId}
+					userCurrencyId={userInfo.currencyId}
 				/>
 			);
 		});
@@ -99,13 +111,19 @@ const Item = ({
 	userLanguage,
 	selectLanguage,
 	isSelected,
-	countryName
+	countryName,
+	currencyId,
+	userCurrencyId
 }) => {
 	const langArr = lang.map(l => (
 		<button
-			key={`lang-${l.value}`}
-			className={userLanguage === l.value ? "active" : ""}
-			onClick={selectLanguage.bind(this, l.value)}>
+			key={`lang-${currencyId}-${l.value}`}
+			className={
+				userLanguage === l.value && userCurrencyId === currencyId
+					? "active"
+					: ""
+			}
+			onClick={selectLanguage.bind(this, l.value, currencyId)}>
 			{l.displayText}
 		</button>
 	));
@@ -123,7 +141,8 @@ const Item = ({
 
 Item.defaultProps = {
 	userLanguage: null,
-	isSelected: false
+	isSelected: false,
+	userCurrencyId: null
 };
 
 Item.propTypes = {
@@ -133,7 +152,9 @@ Item.propTypes = {
 	img: PropTypes.string.isRequired,
 	country: PropTypes.string.isRequired,
 	isSelected: PropTypes.bool,
-	countryName: PropTypes.string.isRequired
+	countryName: PropTypes.string.isRequired,
+	currencyId: PropTypes.number.isRequired,
+	userCurrencyId: PropTypes.number
 };
 
 export default LanguageList;

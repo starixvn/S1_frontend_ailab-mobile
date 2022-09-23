@@ -10,6 +10,7 @@ import useGetSocialChannel, {
 	defDisplayPage,
 	channelIcon
 } from "../hook/useGetSocialChannel";
+import allowedCurrencyList from "../../datas/allowedCurrencyList";
 
 const Bottom = ({ i18n, langId, currencyId }) => {
 	const _currencyId = currencyId ?? langToCurrency[langId];
@@ -47,6 +48,11 @@ const Bottom = ({ i18n, langId, currencyId }) => {
 			<div className="aff">
 				<a
 					className="title"
+					style={
+						allowedCurrencyList.affiliate.includes(currencyId)
+							? {}
+							: { pointerEvents: "none" }
+					}
 					href={`${siteInfo(langId).affiliateLink}`}
 					target="_blank"
 					rel="noreferrer noopener">
