@@ -22,20 +22,27 @@ const HotGame = ({ i18n, userInfo }) => {
 
 	useEffect(() => {
 		api.site
-			.GetHotGames({ langId: userInfo.langId })
+			.GetHotGames({
+				langId: userInfo.langId,
+				currencyId: userInfo.currencyId
+			})
 			.then(res => {
 				if (res.data.errorCode === 0) {
 					setGameList(res.data.data);
 				} else {
 					setPopBox({
 						isOpen: true,
-						title: i18n.lbl_ImportantNote,
 						content: `[${res.data.errorCode}] ${res.data.message}`
 					});
 				}
 			})
-			.catch(err => console.error(err));
-	}, []);
+			.catch(err => {
+				setPopBox({
+					isOpen: true,
+					content: { err }
+				});
+			});
+	}, [userInfo.currencyId]);
 
 	const clickGame = ({
 		tpId,

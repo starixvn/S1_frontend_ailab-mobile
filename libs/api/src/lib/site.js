@@ -70,9 +70,10 @@ export class SiteAPI extends BaseAPI {
 
 	Seo = () => this.siteRequest.post(`/seo`);
 
-	GetHotGames = ({ langId }) =>
+	GetHotGames = ({ langId, currencyId }) =>
 		this.siteRequest.post(`/GetHotGames/${langId}`, {
-			DeviceType: defDeviceType.Mobile
+			DeviceType: defDeviceType.Mobile,
+			CurrencyId: currencyId
 		});
 
 	GetMenuOfGames = () => this.siteRequest.post(`/GetMenuOfGames`);

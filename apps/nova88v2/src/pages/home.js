@@ -16,7 +16,7 @@ import Referral from "../components/home/referral";
 import EventSwipper from "../components/home/eventSwipper";
 import HeaderShortcut from "../components/home/headerShortcut";
 import Bottom from "../components/home/bottom";
-// import { isEventPeriod, readCookie } from "../components/common/common";
+import { defCurrenyId } from "../components/common/common";
 import path from "../path";
 import Header from "../components/header/header";
 import JoinLoginBar from "../components/home/joinLoginBar";
@@ -150,7 +150,9 @@ const IndexPage = () => {
 							setPopBox={setPopBox}
 						/>
 					) : null}
-					<Jackpot i18n={i18n} userInfo={userInfo} />
+					{userInfo.currencyId !== defCurrenyId.BDT && (
+						<Jackpot i18n={i18n} userInfo={userInfo} />
+					)}
 					{/* <Streaming /> */}
 					{/* <LiveCasino /> */}
 					<Bottom

@@ -17,7 +17,8 @@ const JoinStep1 = ({
 	setHintStatus,
 	EditField,
 	langId,
-	setStep
+	setStep,
+	currencyId
 }) => {
 	const [showingPsw, setShowingPsw] = useState({
 		Password: false
@@ -215,9 +216,13 @@ const JoinStep1 = ({
 					</div>
 				</Link>
 			</div>
-			<FeaturePanel langId={langId} />
+			<FeaturePanel langId={langId} currencyId={currencyId} />
 		</>
 	);
+};
+
+JoinStep1.defaultProps = {
+	currencyId: null
 };
 
 JoinStep1.propTypes = {
@@ -227,7 +232,8 @@ JoinStep1.propTypes = {
 	setHintStatus: PropTypes.func.isRequired,
 	EditField: PropTypes.func.isRequired,
 	langId: PropTypes.string.isRequired,
-	setStep: PropTypes.func.isRequired
+	setStep: PropTypes.func.isRequired,
+	currencyId: PropTypes.number
 };
 
 export default JoinStep1;

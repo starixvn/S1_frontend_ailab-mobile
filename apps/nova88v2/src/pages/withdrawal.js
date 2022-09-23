@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import { userInfoContext, eWalletContext } from "../components/common/context";
 import Layout from "../components/common/layout";
 import TabPage, { getMainClass } from "../components/common/tabPage";
 import WithdrawalEWallet from "../components/withdrawal/withdrawal.EWallet";
 import CryptoWithdrawal from "../components/withdrawal/withdrawal.crypto";
 import Withdrawal from "../components/withdrawal/withdrawal";
 import { withdrawal, withdrawalPart } from "../datas/defTabs";
-import { eWalletContext, userInfoContext } from "../components/common/context";
+
 import { defCurrenyId } from "../components/common/common";
 
 const IndexPage = props => {

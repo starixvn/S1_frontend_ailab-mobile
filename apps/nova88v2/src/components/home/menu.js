@@ -11,7 +11,6 @@ import {
 	defTpGameType
 } from "../hook/useGetTpMaintainList";
 import api from "../../service/api";
-import { GetCurrencyName, langToCurrency } from "../common/common";
 import {
 	useGotoGame,
 	defSpecialSetting,
@@ -27,12 +26,6 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 	const navigate = useNavigate();
 	const isMountedRef = useRef(null);
-
-	const currencyName = GetCurrencyName({
-		langId: userInfo.langId,
-		currencyId: userInfo.currencyId,
-		i18n
-	});
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -108,15 +101,11 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 		}
 	};
 
-	const gameArr = gameList({ langId: userInfo?.langId, currencyName })
+	const gameArr = gameList({ langId: userInfo?.langId })
 		?.filter(item => {
 			if (item?.allowCurrency) {
-				const currencyId = userInfo.lastLogin
-					? userInfo?.currencyId
-					: langToCurrency[userInfo?.langId];
-				return item?.allowCurrency.includes(currencyId);
+				return item?.allowCurrency.includes(userInfo.currencyId);
 			}
-
 			return true;
 		})
 		.map(item => {
@@ -193,17 +182,22 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 		});
 
 	const subGameArr = gameList({
-		langId: userInfo?.langId,
-		currencyName
+		langId: userInfo?.langId
 	})?.map(item => {
-		const subGame = item.items
+		let _subGame = item.items;
+		if (Array.isArray(item?.customSort?.[userInfo.currencyId])) {
+			const temp = [];
+			item.customSort[userInfo.currencyId].forEach(gameName => {
+				const game = item.items.find(el => el.sortKey === gameName);
+				if (game) temp.push(game);
+			});
+			_subGame = temp;
+		}
+
+		const subGame = _subGame
 			?.filter(subItem => {
 				let showItem = true;
-				if (
-					subItem?.allowCurrency &&
-					userInfo?.currencyId &&
-					userInfo.isLogin
-				) {
+				if (subItem?.allowCurrency && userInfo?.currencyId) {
 					showItem = subItem?.allowCurrency.includes(
 						userInfo.currencyId
 					);
@@ -240,7 +234,6 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 					/>
 				);
 			});
-
 		return (
 			<div
 				key={`subPanel-${item.category}`}

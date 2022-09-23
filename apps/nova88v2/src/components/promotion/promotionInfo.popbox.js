@@ -29,7 +29,8 @@ export const useHandlePromotionInfo = ({
 		api.promotion
 			.GetPromotionDetail({
 				langId,
-				BonusCode: bonusCode
+				bonusCode,
+				currencyId: userInfo.currencyId
 			})
 			.then(
 				res => {

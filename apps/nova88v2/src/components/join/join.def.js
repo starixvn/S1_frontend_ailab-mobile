@@ -2,7 +2,7 @@ export const initValue = {
 	UserName: "",
 	Password: "",
 	Email: "",
-	Currency: null,
+	CurrencyIdx: null,
 	AffiliateId: "",
 	Checkbox: true,
 	SpecialBonusCode: "",
@@ -62,5 +62,6 @@ export const currencyToAreacode = {
 	13: "CS",
 	15: "ID",
 	51: "VN",
-	61: "IN"
+	61: "IN",
+	74: "BD"
 };

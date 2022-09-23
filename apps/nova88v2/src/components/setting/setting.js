@@ -14,14 +14,9 @@ import { LOGOUT } from "../../service/auth";
 import path from "../../path";
 import SiteURL, { siteInfo, cloudBannerImgURL } from "../../config";
 import TandC from "../../service/t_and_c";
-import { defCurrenyId, langToCurrency } from "../common/common";
+import { langToCurrency } from "../common/common";
 import { getLeaderBoardSupportCurrencyId } from "../ranking/def";
-
-const reward88AllowsCurrencies = [
-	defCurrenyId.MYR,
-	defCurrenyId.THB,
-	defCurrenyId.IDR
-];
+import allowedCurrencyList from "../../datas/allowedCurrencyList";
 
 const BtnBar = ({ isLogin, i18n, msgCount, langId }) => {
 	return isLogin ? (
@@ -98,7 +93,7 @@ Card.defaultProps = {
 
 Card.propTypes = {
 	children: PropTypes.node,
-	btnTitle: PropTypes.string,
+	btnTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 	btnClass: PropTypes.string,
 	defaultOpen: PropTypes.bool
 };
@@ -140,7 +135,7 @@ export default () => {
 						</Link>
 					</div>
 				) : null}
-				{_currencyId === defCurrenyId.INR ? null : (
+				{allowedCurrencyList.VIP.includes(_currencyId) && (
 					<div>
 						<Link
 							className="title icon icon-medal"
@@ -149,7 +144,7 @@ export default () => {
 						</Link>
 					</div>
 				)}
-				{reward88AllowsCurrencies.includes(_currencyId) && (
+				{allowedCurrencyList.rewards.includes(_currencyId) && (
 					<div>
 						<a
 							className="title icon icon-star-full"
@@ -180,13 +175,15 @@ export default () => {
 						</Link>
 					</div>
 				)}
-				<div>
-					<a
-						className="title icon icon-affiliate"
-						href={siteInfo(userInfo.langId).affiliateLink}>
-						{i18n.lbl_Affiliate}
-					</a>
-				</div>
+				{allowedCurrencyList.affiliate.includes(_currencyId) && (
+					<div>
+						<a
+							className="title icon icon-affiliate"
+							href={siteInfo(userInfo.langId).affiliateLink}>
+							{i18n.lbl_Affiliate}
+						</a>
+					</div>
+				)}
 				<Card
 					btnTitle={i18n.lbl_Languages}
 					btnClass="icon-sphere"

@@ -46,8 +46,8 @@ export class DropdownBox extends Component {
 		if (this.props.options[this.props.selectedIdx]) {
 			const _s = this.props.options[this.props.selectedIdx];
 
-			if (_s.displayText) {
-				selected = _s.displayText;
+			if (_s?.displaySelected || _s.displayText) {
+				selected = _s?.displaySelected ?? _s.displayText;
 			} else {
 				selected = this.props.i18n[_s.displayKey];
 			}
@@ -58,8 +58,8 @@ export class DropdownBox extends Component {
 			<>
 				<div
 					ref={this.wrapper}
-					className={`inputBox ${
-						this.props.checked === false ? "error" : ""
+					className={`inputBox${
+						this.props.checked === false ? " error" : ""
 					}`}
 					data-testid={this.props.testAttr}>
 					{this.props.colName === "Currency" && (

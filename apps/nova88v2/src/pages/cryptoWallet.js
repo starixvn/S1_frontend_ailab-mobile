@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
+import { userInfoContext } from "../components/common/context";
 import Layout from "../components/common/layout";
 import CryptoWallet from "../components/cryptoWallet/cryptoWallet";
 import TabPage, { getMainClass } from "../components/common/tabPage";
 import { myWallet, myWalletPart } from "../datas/defTabs";
-import { userInfoContext } from "../components/common/context";
+
 import { defCurrenyId } from "../components/common/common";
 
 const IndexPage = props => {

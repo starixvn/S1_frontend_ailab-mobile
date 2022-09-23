@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback, useRef, useContext } from "react";
 import api from "../../../service/api";
 import { popBoxContext, i18nContext } from "../../common/context";
 
-export const useGetPromotions = ({ userInfo: { langId } }) => {
+export const useGetPromotions = ({ userInfo: { langId, currencyId } }) => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { i18n } = useContext(i18nContext);
 	const [promotion, setPromotion] = useState([]);
@@ -16,7 +16,7 @@ export const useGetPromotions = ({ userInfo: { langId } }) => {
 	});
 
 	const getPromotionList = useCallback(() => {
-		api.promotion.GetPromotionList({ langId }).then(
+		api.promotion.GetPromotionList({ langId, currencyId }).then(
 			res => {
 				if (res.data.errorCode === 0 && isMountedRef.current) {
 					setPromotion(res.data.data);

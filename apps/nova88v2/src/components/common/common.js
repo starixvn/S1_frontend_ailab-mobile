@@ -161,15 +161,19 @@ export const currCustomMapping = {
 	4: "THB",
 	13: "MYR",
 	15: "IDR",
-	61: "INR"
+	61: "INR",
+	74: "BDT"
 };
 
 export const defCurrenyId = {
 	MYR: 2,
+	USD: 3,
 	THB: 4,
 	CNY: 13,
 	IDR: 15,
-	INR: 61
+	INR: 61,
+	BDT: 74,
+	USDT: 96
 };
 
 export const currencyIdToTimeZone = {
@@ -186,11 +190,13 @@ export const langToCurrency = {
 	cs: defCurrenyId.MYR,
 	my: defCurrenyId.MYR,
 	th: defCurrenyId.THB,
-	th_en: defCurrenyId.THB,
+	// th_en: defCurrenyId.THB,
 	id: defCurrenyId.IDR,
-	id_en: defCurrenyId.IDR,
+	// id_en: defCurrenyId.IDR,
 	hi: defCurrenyId.INR,
-	hi_en: defCurrenyId.INR
+	// hi_en: defCurrenyId.INR,
+	bd: defCurrenyId.BDT
+	// bd_en: defCurrenyId.BDT
 };
 
 export const GetCurrencyName = ({ langId, currencyId, i18n }) => {
@@ -199,11 +205,13 @@ export const GetCurrencyName = ({ langId, currencyId, i18n }) => {
 		cs: "MYR",
 		my: "MYR",
 		id: "IDR",
-		id_en: "IDR",
+		// id_en: "IDR",
 		th: "THB",
-		th_en: "THB",
+		// th_en: "THB",
 		hi: "INR",
-		hi_en: "INR"
+		// hi_en: "INR",
+		bd: "BDT"
+		// bd_en: "BDT"
 	};
 	const currency = currencyId
 		? currCustomMapping[currencyId] ?? i18n[`Currency_${currencyId}`]
@@ -219,7 +227,8 @@ export const validImgLang = langId => {
 		langId !== "cs" &&
 		langId !== "my" &&
 		langId !== "th" &&
-		langId !== "id"
+		langId !== "id" &&
+		langId !== "bd"
 	) {
 		return "en";
 	}
