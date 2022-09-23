@@ -34,7 +34,7 @@ const ChangePwd = () => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
-	const { userInfo } = useContext(userInfoContext);
+	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const [userValueState, setUserValueState] = useState(initState);
 	const { showTips, showTipHandler } = useTip();
 	const [warningState, setWarningState] = useState(initWarningState);
@@ -106,6 +106,10 @@ const ChangePwd = () => {
 		if (oldPsw.checked && newPsw.checked) {
 			const closePopbox = isSuccess => {
 				setPopBox({ isOpen: false });
+				setUserInfo(prev => ({
+					...prev,
+					isResetPwd: false
+				}));
 				if (isSuccess === true) {
 					navigate(`/${userInfo.langId}/${path.profile.root}`);
 				}

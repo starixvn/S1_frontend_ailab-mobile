@@ -1,4 +1,4 @@
-import React, { useContext, Component } from "react";
+import React, { useContext, Component, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useMatch, useNavigate } from "@reach/router";
 import Footer from "./footer";
@@ -44,6 +44,13 @@ const Layout = ({ children, header, mainClass, goTopBtn, SEOPath }) => {
 			: {};
 
 	const _mainClass = mainClass ?? "";
+
+	useEffect(() => {
+		if (userInfo.isLogin && userInfo.isResetPwd) {
+			navigate(`/${userInfo.langId}/${path.changePassword.root}`);
+		}
+	}, [window.location.pathname, userInfo.isResetPwd]);
+
 	return (
 		<>
 			<RotationHint i18n={i18n} />

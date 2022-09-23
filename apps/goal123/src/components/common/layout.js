@@ -1,6 +1,6 @@
 import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { useMatch, Link } from "@reach/router";
+import { useMatch, useNavigate } from "@reach/router";
 import Footer from "./footer";
 import Header from "./header";
 import {
@@ -27,20 +27,13 @@ import GoTopBtn from "./goTopBtn";
 // 	},
 // };
 
-const Layout = ({
-	children,
-	header,
-	mainClass = "main",
-	title,
-	appHint,
-	goTopBtn
-}) => {
+const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 	const { i18n } = useContext(i18nContext);
 	const { nav } = useContext(navContext);
 	const { loading } = useContext(loadingContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { root } = useContext(rootContext);
-
+	const navigate = useNavigate();
 	const [luckyWheel, setLuckyWheel] = useState(false);
 
 	const _matchLogin = useMatch(`/${path.login.root}`) !== null;
@@ -54,6 +47,12 @@ const Layout = ({
 			setLuckyWheel(true);
 		}
 	}, [root]);
+
+	useEffect(() => {
+		if (userInfo.isLogin && userInfo.isResetPwd) {
+			navigate(`${path.changePassword.root}`);
+		}
+	}, [window.location.pathname, userInfo.isResetPwd]);
 
 	return (
 		<>
@@ -80,12 +79,20 @@ const Layout = ({
 };
 
 Layout.defaultProps = {
-	goTopBtn: true
+	goTopBtn: true,
+	mainClass: "main",
+	title: "",
+	appHint: false,
+	header: null
 };
 
 Layout.propTypes = {
 	children: PropTypes.node.isRequired,
-	goTopBtn: PropTypes.bool
+	goTopBtn: PropTypes.bool,
+	mainClass: PropTypes.string,
+	title: PropTypes.string,
+	appHint: PropTypes.bool,
+	header: PropTypes.node
 };
 
 class RotationHint extends Component {
