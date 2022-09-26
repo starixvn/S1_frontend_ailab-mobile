@@ -3,18 +3,28 @@ import { userInfoContext } from "../components/common/context";
 import Layout from "../components/common/layout";
 import CryptoWallet from "../components/cryptoWallet/cryptoWallet";
 import TabPage, { getMainClass } from "../components/common/tabPage";
-import { myWallet, myWalletIDR, myWalletUSD } from "../datas/defTabs";
-
+import {
+	myWallet,
+	myWalletWithEWallet,
+	myWalletWithoutBankInfo
+} from "../datas/defTabs";
 import { defCurrenyId } from "../components/common/common";
+
+const allowBankInfoCurrency = [
+	defCurrenyId.MYR,
+	defCurrenyId.THB,
+	defCurrenyId.IDR,
+	defCurrenyId.INR
+];
 
 const IndexPage = props => {
 	const { userInfo } = useContext(userInfoContext);
 
 	let defTabs = myWallet;
 	if (userInfo.currencyId === defCurrenyId.IDR) {
-		defTabs = myWalletIDR;
-	} else if (userInfo.currencyId === defCurrenyId.USD) {
-		defTabs = myWalletUSD;
+		defTabs = myWalletWithEWallet;
+	} else if (!allowBankInfoCurrency.includes(userInfo.currencyId)) {
+		defTabs = myWalletWithoutBankInfo;
 	}
 	const header = <TabPage defTabs={defTabs} />;
 
