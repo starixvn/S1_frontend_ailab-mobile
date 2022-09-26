@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Layout from "../components/common/layout";
 import TabPage, { getMainClass } from "../components/common/tabPage";
-import { myWallet, myWalletIDR } from "../datas/defTabs";
+import { myWallet, myWalletWithEWallet } from "../datas/defTabs";
 import EWallet from "../components/eWallet/eWallet";
 import { userInfoContext } from "../components/common/context";
 import { defCurrenyId } from "../components/common/common";
@@ -11,7 +11,7 @@ const IndexPage = props => {
 
 	let defTabs = myWallet;
 	if (userInfo.currencyId === defCurrenyId.IDR) {
-		defTabs = myWalletIDR;
+		defTabs = myWalletWithEWallet;
 	}
 
 	const header = <TabPage defTabs={defTabs} />;

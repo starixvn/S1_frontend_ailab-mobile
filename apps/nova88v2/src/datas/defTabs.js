@@ -50,7 +50,7 @@ export const withdrawal = {
 	}
 };
 
-export const withdrawalIDR = {
+export const withdrawalWithEWallet = {
 	withdrawal: {
 		to: `${path.withdrawal.root}`,
 		displayKey: "lbl_Withdrawal",
@@ -80,7 +80,7 @@ export const withdrawalIDR = {
 	}
 };
 
-export const withdrawalUSD = {
+export const withdrawalWithoutBankInfo = {
 	withdrawal: {
 		to: `${path.withdrawal.root}`,
 		displayKey: "lbl_Withdrawal",
@@ -163,7 +163,7 @@ export const myWallet = {
 	}
 };
 
-export const myWalletIDR = {
+export const myWalletWithEWallet = {
 	myWallet: {
 		to: `${path.wallet.root}`,
 		displayKey: "lbl_MyWallet",
@@ -192,7 +192,7 @@ export const myWalletIDR = {
 	}
 };
 
-export const myWalletUSD = {
+export const myWalletWithoutBankInfo = {
 	myWallet: {
 		to: `${path.wallet.root}`,
 		displayKey: "lbl_MyWallet",
