@@ -22,7 +22,8 @@ const EventSwipper = ({ userInfo, i18n }) => {
 	const { handleLogin } = useHandleLogin();
 	const { banner } = useGetBanner({
 		langId: userInfo.langId,
-		ImgFolder: [api.site.defBannerType.HotEvent]
+		ImgFolder: [api.site.defBannerType.HotEvent],
+		currencyId: userInfo.currencyId
 	});
 
 	const goToBet = ({ tpId, gameId, matchId }) => {

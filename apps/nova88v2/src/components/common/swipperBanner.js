@@ -46,7 +46,7 @@ export const ClickLink = ({
 
 const NeedLoginRoute = [path.kiss918.root, path.referral.root];
 
-export const useGetBanner = ({ langId, ImgFolder }) => {
+export const useGetBanner = ({ langId, ImgFolder, currencyId }) => {
 	const { setPopBox } = useContext(popBoxContext);
 	const [banner, setBanner] = useState([]);
 
@@ -59,7 +59,8 @@ export const useGetBanner = ({ langId, ImgFolder }) => {
 				ImgFolder.forEach(async BannerType => {
 					const res = await api.site.GetBannerV3({
 						lang: langId,
-						BannerType
+						BannerType,
+						currencyId
 					});
 
 					if (res.data.errorCode === 0 && mounted) {
@@ -95,7 +96,11 @@ export const useGetBanner = ({ langId, ImgFolder }) => {
 
 const Panel = ({ ImgFolder = [], params }) => {
 	const { userInfo } = useContext(userInfoContext);
-	const { banner } = useGetBanner({ langId: userInfo.langId, ImgFolder });
+	const { banner } = useGetBanner({
+		langId: userInfo.langId,
+		ImgFolder,
+		currencyId: userInfo.currencyId
+	});
 	const { handleLogin } = useHandleLogin();
 
 	const { handleGoToGame } = useGotoGame({
