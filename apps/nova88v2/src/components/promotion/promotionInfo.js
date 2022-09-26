@@ -46,7 +46,8 @@ const PromotionInfoContent = () => {
 			api.promotion
 				.GetPromotionDetail({
 					langId: userInfo.langId,
-					BonusCode: _bonusCode
+					bonusCode: _bonusCode,
+					currencyId: userInfo.currencyId
 				})
 				.then(
 					res => {
@@ -77,7 +78,8 @@ const PromotionInfoContent = () => {
 		api.promotion
 			.GetPromotionDetail({
 				langId,
-				BonusCode: _bonusCode
+				bonusCode: _bonusCode,
+				currencyId: userInfo.currencyId
 			})
 			.then(
 				res => {

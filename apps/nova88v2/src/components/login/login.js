@@ -7,7 +7,8 @@ import Inputbox from "../common/inputbox.hint";
 import InputboxPWD from "../common/inputbox.password";
 import { LOGIN } from "../../service/auth";
 import path from "../../path";
-import { getUrlParameter, defCurrenyId } from "../common/common";
+import { siteInfo } from "../../config";
+import { getUrlParameter, defCurrenyId, setCookie } from "../common/common";
 import useHandleLineLogin, { defType } from "../hook/useHandleLineLogin";
 
 const initState = {
@@ -128,6 +129,10 @@ const LoginPage = () => {
 			const CallBackLogin = (errorCode, message, isLogin, userData) => {
 				if (errorCode === 0) {
 					if (isMountedRef.current) {
+						setCookie(
+							siteInfo(userData.langId).langCookie,
+							userData.langId
+						);
 						setUserInfo(() => ({
 							...userData,
 							isLogin

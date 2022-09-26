@@ -6,7 +6,7 @@ import api from "../../service/api";
 
 const BonusCode = "N88FIFAWC2022";
 
-const Terms = ({ langId }) => {
+const Terms = ({ langId, currencyId }) => {
 	const { i18n } = useContext(i18nContext);
 	const { setWorldCupBox } = useContext(worldCupPopBox);
 
@@ -19,14 +19,14 @@ const Terms = ({ langId }) => {
 		id: <TermsID />,
 		id_en: <TermsEN />,
 		hi: <TermsHI />,
-		hi_en: <TermsEN />,
-		bd: <TermsEN />
+		hi_en: <TermsEN />
 	}[langId];
 
 	const getPromoDetail = async () => {
 		const res = await api.promotion.GetPromotionDetail({
 			langId,
-			BonusCode
+			bonusCode: BonusCode,
+			currencyId
 		});
 		const { errorCode, data, message } = res.data;
 
@@ -66,11 +66,13 @@ const Terms = ({ langId }) => {
 };
 
 Terms.defaultProps = {
-	langId: null
+	langId: null,
+	currencyId: null
 };
 
 Terms.propTypes = {
-	langId: PropTypes.string
+	langId: PropTypes.string,
+	currencyId: PropTypes.number
 };
 
 export default Terms;

@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { Link, Redirect } from "@reach/router";
-import { i18nContext, popBoxContext } from "../common/context";
+import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
 import { api_ChangePassword } from "../../service/api/account";
 import path from "../../path";
 import Inputbox from "../common/inputbox.password.info";
@@ -16,6 +16,7 @@ const initStatus = {
 export default () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const { setUserInfo } = useContext(userInfoContext);
 	const [userValue, setUserValue] = useState(initValue);
 	const [inputStatus, setInputStatus] = useState(initStatus);
 	const [redirectPath, setRedirectPath] = useState(null);
@@ -80,6 +81,10 @@ export default () => {
 		if (oldPwdCheck.checked && newPwdCheck.checked) {
 			const closePopbox = status => {
 				setPopBox({ isOpen: false });
+				setUserInfo(prev => ({
+					...prev,
+					isResetPwd: false
+				}));
 				if (status === "success") {
 					setRedirectPath(`/${path.member.root}`);
 				}

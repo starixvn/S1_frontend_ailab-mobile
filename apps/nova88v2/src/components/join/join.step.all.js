@@ -99,6 +99,7 @@ const JoinStepAll = () => {
 					EditField={EditField}
 					langId={userInfo.langId}
 					setStep={setStep}
+					currencyId={userInfo.currencyId}
 				/>
 			)}
 			<SEO

@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import { userInfoContext } from "../components/common/context";
 import BankInfo from "../components/profile/bankInfo";
 import Layout from "../components/common/layout";
 import { myWallet, myWalletPart } from "../datas/defTabs";
 import TabPage, { getMainClass } from "../components/common/tabPage";
-import { userInfoContext } from "../components/common/context";
+import CryptoWallet from "../components/cryptoWallet/cryptoWallet";
+
 import { defCurrenyId } from "../components/common/common";
 
 const IndexPage = props => {
@@ -17,8 +19,15 @@ const IndexPage = props => {
 	return (
 		<Layout
 			header={header}
-			mainClass={getMainClass({ defTabs, location: props })}>
-			<BankInfo prevPage={prevPage} />
+			mainClass={getMainClass({
+				defTabs,
+				location: props
+			})}>
+			{userInfo.currencyId === defCurrenyId.USD ? (
+				<CryptoWallet />
+			) : (
+				<BankInfo prevPage={prevPage} />
+			)}
 		</Layout>
 	);
 };
@@ -27,6 +36,7 @@ IndexPage.defaultProps = {
 };
 
 IndexPage.propTypes = {
-	location: PropTypes.object
+	location: PropTypes.objectOf(PropTypes.any)
 };
+
 export default IndexPage;

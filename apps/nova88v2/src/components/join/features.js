@@ -1,20 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { defCurrenyId } from "../common/common";
 
-const FeaturePanel = ({ langId }) => {
+const FeaturePanel = ({ langId, currencyId }) => {
 	if (langId === "cs") return <CS />;
 	if (langId === "my") return <MY />;
 	if (langId === "th") return <TH />;
-	if (langId === "th_en") return <TH_EN />;
+	if (langId === "en" && currencyId === defCurrenyId.THB) return <TH_EN />;
 	if (langId === "id") return <ID />;
-	if (langId === "id_en") return <ID_EN />;
+	if (langId === "en" && currencyId === defCurrenyId.IDR) return <ID_EN />;
 	if (langId === "hi") return <HI />;
-	if (langId === "hi_en") return <HI_EN />;
+	if (langId === "en" && currencyId === defCurrenyId.INR) return <HI_EN />;
+	if (langId === "bd") return <BD />;
+	if (langId === "en" && currencyId === defCurrenyId.BDT) return <BD_EN />;
 	return <EN />;
 };
 
+FeaturePanel.defaultProps = {
+	currencyId: null
+};
+
 FeaturePanel.propTypes = {
-	langId: PropTypes.string.isRequired
+	langId: PropTypes.string.isRequired,
+	currencyId: PropTypes.number
 };
 
 export default FeaturePanel;
@@ -275,3 +283,50 @@ const HI = () => {
 		</div>
 	);
 };
+
+const BD = () => (
+	<div className="features">
+		<div className="title">
+			<span className="icon icon-star-full" />
+			विशेषताएं
+		</div>
+		<div className="title">सदस्यों के लाभ</div>
+		<ul>
+			<li>৫৫% Nova88 স্টার্টার প্যাক</li>
+			<li>৬৮% সরাসরিক্যাসিনো স্বাগতম বোনাস</li>
+			<li>১০০% স্লট স্বাগতম বোনাস</li>
+			<li>দৈনিক পুনঃআমানত বোনাস ২০% পর্যন্ত</li>
+		</ul>
+		<div className="title">NOVA88 वीआईपी विशेष बोनस और छूट का आनंद लें</div>
+		<ul>
+			<li>
+				बेहतर ऑड्स और पूर्ण गेमप्ले अनुभव के साथ कई उत्पाद प्लेटफॉर्म।
+			</li>
+			<li>कई जमा विकल्पों के साथ शीघ्र जमा और निकासी।</li>
+		</ul>
+	</div>
+);
+
+const BD_EN = () => (
+	<div className="features">
+		<div className="title">
+			<span className="icon icon-star-full" />
+			FEATURES
+		</div>
+		<div className="title">MEMBER BENEFITS</div>
+		<ul>
+			<li>SPORTSBOOK WELCOME BONUS</li>
+			<li>LIVE CASINO WELCOME BONUS</li>
+			<li>SLOT GAME WELCOME BONUS</li>
+			<li>DAILY CASH REBATE UP TO 1.5%</li>
+		</ul>
+		<div className="title">ENJOY NOVA88 VIP EXCLUSIVE BONUS & REBATES</div>
+		<ul>
+			<li>
+				Multiple product platforms with better odds and full gameplay
+				experience.
+			</li>
+			<li>Speedy deposit and withdrawal with multiple deposit option.</li>
+		</ul>
+	</div>
+);

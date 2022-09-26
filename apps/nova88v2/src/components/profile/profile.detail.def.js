@@ -115,7 +115,7 @@ export const infoList = ({ i18n = {}, userInfo = {} }) => {
 			colTitle: i18n.lbl_Country,
 			content:
 				userInfo.country && userInfo.country !== "null"
-					? i18n[`lbl_Country${userInfo.country}`]
+					? userInfo.country
 					: userInfo.perCountry
 		},
 		{

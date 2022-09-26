@@ -7,7 +7,8 @@ const ImportantNote = ({ langId, i18n }) => {
 		langId === "en" ||
 		langId === "th_en" ||
 		langId === "id_en" ||
-		langId === "hi_en"
+		langId === "hi_en" ||
+		langId === "bd_en"
 	)
 		content = <EN />;
 	if (langId === "cs") content = <CS />;
@@ -15,6 +16,7 @@ const ImportantNote = ({ langId, i18n }) => {
 	if (langId === "th") content = <TH />;
 	if (langId === "id") content = <ID />;
 	if (langId === "hi") content = <HI />;
+	if (langId === "bd") content = <BD />;
 
 	if (langId) {
 		return (
@@ -77,7 +79,7 @@ const CS = () => (
 				rel="noreferrer"
 				target="_blank"
 				href="https://direct.lc.chat/11638088/">
-				24/7在線客服
+				24/7在线客服
 			</a>{" "}
 			联系。
 		</li>
@@ -94,7 +96,7 @@ const CS = () => (
 				rel="noreferrer"
 				target="_blank"
 				href="https://direct.lc.chat/11638088/">
-				24/7在線客服
+				24/7在线客服
 			</a>{" "}
 			联系。谢谢。
 		</li>
@@ -256,6 +258,47 @@ const HI = () => (
 				24/7 लाइवचैट
 			</a>
 			से संपर्क करें। धन्यवाद।
+		</li>
+	</ul>
+);
+
+const BD = () => (
+	<ul>
+		<li>
+			দয়া করে আমাদের{" "}
+			<a
+				rel="noreferrer"
+				target="_blank"
+				href="https://direct.lc.chat/11638088/">
+				24/7 লাইভ চ্যাটের
+			</a>{" "}
+			সাথে চেক করুন যদি আপনার লেনদেন 10 মিনিটের বেশি সময় ধরে মুলতুবি
+			থাকে।
+		</li>
+		<li>
+			প্রত্যাহার করা ব্যাঙ্ক অ্যাকাউন্টের নাম অবশ্যই নিবন্ধিত পুরো নামের
+			সাথে মিলতে হবে, সদস্যকে তৃতীয় পক্ষের ব্যাঙ্ক অ্যাকাউন্টে তোলার
+			অনুমতি দেওয়া হয় না।
+		</li>
+		<li>
+			কিছু গেম প্রদানকারীর রিপোর্ট সিঙ্ক সময় 15 থেকে 30 মিনিটের প্রয়োজন,
+			অনুগ্রহ করে প্রয়োজনীয় সিঙ্ক সময় আমাদের সাথে সহ্য করুন।
+		</li>
+		<li>
+			অনুগ্রহ করে নিশ্চিত করুন যে আপনার প্রয়োজনীয় টার্নওভার অর্জন করা
+			হয়েছে, এবং সিস্টেম অটো রিজেক্ট এড়াতে 30 মিনিটের পরে প্রত্যাহার
+			লেনদেন জমা দিন।
+		</li>
+		<li>
+			যদি কোন অসঙ্গতি থাকে বা আপনার অন্য কোন প্রত্যাহারের অনুসন্ধান থাকতে
+			পারে, অনুগ্রহ করে আমাদের{" "}
+			<a
+				rel="noreferrer"
+				target="_blank"
+				href="https://direct.lc.chat/11638088/">
+				24/7 লাইভচ্যাটে
+			</a>
+			. যোগাযোগ করুন। ধন্যবাদ.
 		</li>
 	</ul>
 );

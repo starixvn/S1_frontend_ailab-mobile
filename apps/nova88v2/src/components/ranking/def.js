@@ -373,7 +373,7 @@ export const defPrize = () => ({
 				}
 			]
 		},
-		id_en: {
+		en: {
 			prizeList: [
 				{
 					rank: "CHAMPION",
@@ -483,7 +483,7 @@ export const defPrize = () => ({
 				}
 			]
 		},
-		th_en: {
+		en: {
 			prizeList: [
 				{
 					rank: "CHAMPION",

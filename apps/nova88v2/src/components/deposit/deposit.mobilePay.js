@@ -305,18 +305,20 @@ const Payment = props => {
 				{`${i18n.lbl_CreditTime}: ${i18n[creditTimeKey]}`}
 			</div>
 
-			<GroupList
-				title={i18n.lbl_PaymentModes}
-				dataList={paymentList}
-				SelectPayment={SelectPayment}
-				selected={selGroup?.groupId}
-				mainKey={`deposit-full-${payType}-groupList`}
-				imgKey="groupName"
-				idKey="groupId"
-				prefixImgUrl={`${cloudImgURL}/SiteSkin/img/MobilePay/`}
-				displayKey="groupName"
-				_isConvert={_isConvert}
-			/>
+			{paymentList.length > 1 && (
+				<GroupList
+					title={i18n.lbl_PaymentModes}
+					dataList={paymentList}
+					SelectPayment={SelectPayment}
+					selected={selGroup?.groupId}
+					mainKey={`deposit-full-${payType}-groupList`}
+					imgKey="groupName"
+					idKey="groupId"
+					prefixImgUrl={`${cloudImgURL}/SiteSkin/img/MobilePay/`}
+					displayKey="groupName"
+					_isConvert={_isConvert}
+				/>
+			)}
 			{channelList?.length > 1 && (
 				<GroupList
 					title={i18n.lbl_SelectChannel}
@@ -325,7 +327,7 @@ const Payment = props => {
 					SelectPayment={SelectChannel}
 					selected={selChannel?.channelId}
 					mainKey={`deposit-full-${payType}-channelList`}
-					imgKey="payName"
+					imgKey={defCurrenyId.BDT ? "channelName" : "payName"}
 					idKey="channelId"
 					bindFullObj={true}
 					prefixImgUrl={`${cloudImgURL}/SiteSkin/img/MobilePay/`}

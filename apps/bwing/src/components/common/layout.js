@@ -1,6 +1,6 @@
 import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { useLocation, Link } from "@reach/router";
+import { useLocation, Link, useNavigate } from "@reach/router";
 import Footer from "./footer";
 import Header from "../header/header";
 import {
@@ -235,10 +235,11 @@ export const GetPageInfo = locationPath => {
 
 const Layout = ({ children }) => {
 	const { i18n } = useContext(i18nContext);
-	const { loading } = useContext(loadingContext);
+	const { loading, setLoading } = useContext(loadingContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { root } = useContext(rootContext);
 	const location = useLocation();
+	const navigate = useNavigate();
 	const pageInfo = GetPageInfo(location.pathname);
 	const [luckyWheel, setLuckyWheel] = useState(false);
 
@@ -249,6 +250,13 @@ const Layout = ({ children }) => {
 	useEffect(() => {
 		if (root) setLuckyWheel(true);
 	}, [root]);
+
+	useEffect(() => {
+		if (userInfo.isLogin && userInfo.isResetPwd) {
+			navigate(`${path.changePassword.root}`);
+			setLoading(false);
+		}
+	}, [window.location.pathname, userInfo.isResetPwd]);
 
 	return pageInfo.onlyContent ? (
 		children

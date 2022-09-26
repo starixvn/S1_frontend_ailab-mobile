@@ -47,6 +47,7 @@ export default [
 	"Currency_51",
 	"Currency_6",
 	"Currency_9",
+	"Currency_74",
 	"msg_EnterRealName",
 	"msg_EnterPhoneNumber",
 	"lbl_Month1",

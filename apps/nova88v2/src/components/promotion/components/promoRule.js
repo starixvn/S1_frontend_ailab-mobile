@@ -14,7 +14,9 @@ const visitorCurrency = {
 	hi: 61,
 	hi_en: 61,
 	id_en: 15,
-	th_en: 4
+	th_en: 4,
+	bd_en: 74,
+	bd: 74
 };
 
 const MinAmount = ({

@@ -145,14 +145,17 @@ const TabItem = ({ i18n = {}, tabItem = {}, match = false, tabHint = "" }) => {
 		</Link>
 	);
 };
+
 TabItem.defaultProps = {
 	match: false,
 	tabHint: ""
 };
+
 TabItem.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	tabItem: PropTypes.objectOf(PropTypes.string).isRequired,
 	match: PropTypes.bool,
 	tabHint: PropTypes.string
 };
+
 export default IndexPage;
