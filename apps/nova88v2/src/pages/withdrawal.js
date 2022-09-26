@@ -1,21 +1,36 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import PropTypes from "prop-types";
+import { useNavigate } from "@reach/router";
 import { userInfoContext, eWalletContext } from "../components/common/context";
 import Layout from "../components/common/layout";
 import TabPage, { getMainClass } from "../components/common/tabPage";
 import WithdrawalEWallet from "../components/withdrawal/withdrawal.EWallet";
 import CryptoWithdrawal from "../components/withdrawal/withdrawal.crypto";
 import Withdrawal from "../components/withdrawal/withdrawal";
-import { withdrawal, withdrawalPart } from "../datas/defTabs";
+import { withdrawal, withdrawalIDR, withdrawalUSD } from "../datas/defTabs";
+import path from "../path";
 
 import { defCurrenyId } from "../components/common/common";
 
 const IndexPage = props => {
+	const navigate = useNavigate();
 	const { userInfo } = useContext(userInfoContext);
 	const { isShowEWallet } = useContext(eWalletContext);
-	const defTabs =
-		userInfo.currencyId === defCurrenyId.IDR ? withdrawal : withdrawalPart;
+
+	let defTabs = withdrawal;
+	if (userInfo.currencyId === defCurrenyId.IDR) {
+		defTabs = withdrawalIDR;
+	} else if (userInfo.currencyId === defCurrenyId.USD) {
+		defTabs = withdrawalUSD;
+	}
 	const header = <TabPage defTabs={defTabs} />;
+
+	useEffect(() => {
+		if (userInfo.currencyId === defCurrenyId.USD) {
+			navigate(`/${userInfo.langId}/${path.cryptoWithdrawal.root}`);
+		}
+	}, []);
+
 	const judgeShowPage = () => {
 		if (props.isCrypto) {
 			return <CryptoWithdrawal />;
@@ -26,6 +41,7 @@ const IndexPage = props => {
 			<Withdrawal />
 		);
 	};
+
 	return (
 		<Layout
 			header={header}
