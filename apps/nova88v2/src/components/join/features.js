@@ -315,10 +315,10 @@ const BD_EN = () => (
 		</div>
 		<div className="title">MEMBER BENEFITS</div>
 		<ul>
-			<li>{t("lbl_MemberBenefits_1")}</li>
-			<li>{t("lbl_MemberBenefits_2")}</li>
-			<li>{t("lbl_MemberBenefits_3")}</li>
-			<li>{t("lbl_MemberBenefits_4")}</li>
+			<li>SPORTSBOOK WELCOME BONUS</li>
+			<li>LIVE CASINO WELCOME BONUS</li>
+			<li>SLOT GAME WELCOME BONUS</li>
+			<li>DAILY CASH REBATE UP TO 1.5%</li>
 		</ul>
 		<div className="title">ENJOY NOVA88 VIP EXCLUSIVE BONUS & REBATES</div>
 		<ul>
