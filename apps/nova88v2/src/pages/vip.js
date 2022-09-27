@@ -23,12 +23,14 @@ const Banners = ({ langId }) => {
 	const rows = defBannersUrl({
 		langId
 	}).map(b => (
-		<img
-			key={`VIPBanner-${b}`}
-			src={b}
-			className="banner"
-			alt="vip banner"
-		/>
+		<div>
+			<img
+				key={`VIPBanner-${b}`}
+				src={b}
+				className="banner"
+				alt="vip banner"
+			/>
+		</div>
 	));
 	return <Autoplay Rows={rows} />;
 };
