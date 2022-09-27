@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link, useNavigate } from "@reach/router";
-import config, { siteInfo, bannerImgUrl } from "../../config";
+import { siteInfo, bannerImgUrl } from "../../config";
 import TandC from "../../service/t_and_c";
 import path from "../../path";
 import { defPlatform } from "./defPlatform";
@@ -60,7 +60,7 @@ const UserGuide = ({ i18n, langId }) => {
 				<div className="userGuide-box__top">
 					<a
 						className="icon icon-GUIDE1"
-						href={`${config.t_and_cURL}/SiteSkin/Bwing/Static/images/How_To_Deposit.mp4`}
+						href={`${bannerImgUrl}/Static/images/How_To_Deposit.mp4`}
 						target="_blank"
 						rel="noreferrer">
 						<span>{i18n.lbl_HowToDepoist}</span>
