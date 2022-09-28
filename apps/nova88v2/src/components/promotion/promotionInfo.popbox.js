@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import PropTypes from "prop-types";
 import { navigate } from "@reach/router";
 import { getUrlParameter } from "@ailab-mobile/common";
 import PromotionContent from "./components/promotionContent";
@@ -97,4 +98,18 @@ const PromotionInfoContent = ({
 			/>
 		</div>
 	);
+};
+
+PromotionInfoContent.defaultProps = {
+	promotionInfo: null,
+	getPromotionDetail: () => null,
+	showAllPromosBtn: null,
+	filterType: null
+};
+
+PromotionInfoContent.propTypes = {
+	promotionInfo: PropTypes.objectOf(PropTypes.any),
+	getPromotionDetail: PropTypes.func,
+	showAllPromosBtn: PropTypes.bool,
+	filterType: PropTypes.string
 };

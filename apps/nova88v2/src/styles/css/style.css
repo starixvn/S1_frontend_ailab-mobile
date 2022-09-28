@@ -1648,7 +1648,7 @@ main .sideBar button, main .sideBar a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 3vw;
+  padding: 3.4vw;
   position: relative;
   white-space: nowrap;
   margin: auto 0.5vw auto 0;
@@ -1693,20 +1693,39 @@ main .sideBar button.active i:not(.icon-new):not(.icon-live) + div, main .sideBa
 }
 
 main .sideBar button.event, main .sideBar a.event {
-  padding: 1vw;
+  padding: 1vw 1vw 2vw 1vw;
+  margin-left: 1vw;
 }
 
-main .sideBar button.event.active, main .sideBar a.event.active {
-  padding: 1.5vw;
+@media (max-width: 320px) {
+  main .sideBar button.event, main .sideBar a.event {
+    padding-bottom: 2.6vw;
+  }
 }
 
 main .sideBar button.crypto, main .sideBar a.crypto {
-  padding: 5.2vw 1.15vw;
+  padding: 6vw 2vw;
+  margin: auto 1vw;
+}
+
+main .sideBar button.crypto img, main .sideBar a.crypto img {
+  width: 11vw;
+}
+
+main .sideBar button.reward, main .sideBar a.reward {
+  padding: 3.5vw 2vw;
+  margin: auto 1vw;
+}
+
+main .sideBar button.reward img, main .sideBar a.reward img {
+  width: 11vw;
+  -webkit-filter: drop-shadow(1px 1px 0 #8a8a8ae7);
+          filter: drop-shadow(1px 1px 0 #8a8a8ae7);
 }
 
 main .sideBar button .icon-mediafire, main .sideBar a .icon-mediafire {
   position: absolute;
-  bottom: 0;
+  bottom: -2px;
   background: #e92529;
   border-radius: 3px;
   -webkit-transform: scale(0.8);
@@ -1719,7 +1738,7 @@ main .sideBar button .icon-mediafire, main .sideBar a .icon-mediafire {
       -ms-flex-align: center;
           align-items: center;
   padding: 0 1vw 0 0;
-  font-size: 2vw;
+  font-size: 2.5vw;
 }
 
 main .sideBar button .icon-mediafire:before, main .sideBar a .icon-mediafire:before {
@@ -1728,6 +1747,7 @@ main .sideBar button .icon-mediafire:before, main .sideBar a .icon-mediafire:bef
   margin-top: -2vw;
   -webkit-animation: fire 1s 1s infinite linear;
           animation: fire 1s 1s infinite linear;
+  font-size: 4.5vw;
 }
 
 @-webkit-keyframes fire {
@@ -10159,17 +10179,17 @@ span.important {
   margin: 2vw 0;
 }
 
-.rolloverList, .minAmount {
+.rolloverList, .minAmount, .remainingTime {
   margin-bottom: 10px;
 }
 
-.rolloverList > div, .minAmount > div {
+.rolloverList > div, .minAmount > div, .remainingTime > div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.rolloverList > div > div, .minAmount > div > div {
+.rolloverList > div > div, .minAmount > div > div, .remainingTime > div > div {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -10178,7 +10198,7 @@ span.important {
   padding: 0 0 0 1vw;
 }
 
-.rolloverList > div > div:nth-child(1), .minAmount > div > div:nth-child(1) {
+.rolloverList > div > div:nth-child(1), .minAmount > div > div:nth-child(1), .remainingTime > div > div:nth-child(1) {
   background: #5E7FB5;
   color: white;
 }
