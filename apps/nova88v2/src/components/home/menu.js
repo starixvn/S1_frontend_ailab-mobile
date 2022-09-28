@@ -125,7 +125,10 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 
 			if (item.event) {
 				return (
-					<Link key={`menu-${item.category}`} to={item.path}>
+					<Link
+						key={`menu-${item.category}`}
+						className={item.className ?? ""}
+						to={item.path}>
 						<img src={item.imgUrl} alt={item.category} />
 						{showingEventIcon !== "" &&
 						showingEventIcon === defIconType.hot ? (
@@ -138,10 +141,16 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 				return (
 					<a
 						key={`menu-${item.category}`}
+						className={item.className ?? ""}
 						href={item.href}
 						target="_blank"
 						rel="noreferrer">
-						<i className={`icon icon-${item.categoryIcon}`} />
+						{item.categoryIcon && (
+							<i className={`icon icon-${item.categoryIcon}`} />
+						)}
+						{item.imgUrl && (
+							<img src={item.imgUrl} alt={item.category} />
+						)}
 						<div>{i18n[item.translateKey]}</div>
 						{showingEventIcon !== "" ? (
 							<i className={`icon${showingEventIcon}`} />
