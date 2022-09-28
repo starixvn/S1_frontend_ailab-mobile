@@ -1,5 +1,5 @@
 import path from "../path";
-import { siteInfo, cloudBannerImgURL } from "../config";
+import SiteURL, { siteInfo, cloudBannerImgURL } from "../config";
 import { defPopBoxType } from "../components/common/popbox";
 import { isEventPeriod, defCurrenyId } from "../components/common/common";
 import { eventTime } from "../components/common/eventTime";
@@ -264,7 +264,15 @@ const gameList = ({ langId }) => {
 					inPeriod: isEventPeriod(eventTime.worldCup_hot)
 				}
 			],
-			allowCurrency: allowedCurrencyList.worldCup
+			allowCurrency: allowedCurrencyList.worldCup,
+			className: "event"
+		},
+		{
+			category: "reward",
+			imgUrl: `${cloudBannerImgURL}/h5/img/88rewards.png`,
+			allowCurrency: allowedCurrencyList.rewards,
+			className: "reward",
+			href: `${SiteURL.openURL}/rewards/`
 		},
 		{
 			category: "sports",
