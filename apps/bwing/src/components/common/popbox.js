@@ -84,9 +84,7 @@ const PopUp = () => {
 								<span />
 							</div>
 						)}
-						<h1 className="text-org">
-							{popBox.title ?? i18n.lbl_ImportantNote}
-						</h1>
+						<h1>{popBox.title ?? i18n.lbl_ImportantNote}</h1>
 					</div>
 					{content}
 				</div>
