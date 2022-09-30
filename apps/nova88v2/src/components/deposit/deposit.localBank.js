@@ -643,8 +643,7 @@ const GroupList = ({
 						<CopyBtn value={accountInfo.accountNo} />
 					</ul>
 				</div>
-				{/* MYR幣別才需show QR */}
-				{userInfo.currencyId === 2 && (
+				{userInfo.currencyId === defCurrenyId.MYR && (
 					<>
 						<div className="title">
 							<span>*</span>

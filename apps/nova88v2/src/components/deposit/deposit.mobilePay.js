@@ -266,7 +266,7 @@ const Payment = props => {
 					if (errorCode === 0) {
 						setPopBox({
 							isOpen: true,
-							popBoxType: defPopBoxType.DuitNowQR,
+							popBoxType: defPopBoxType.BankQR,
 							onClose: () => setPopBox({ isOpen: false }),
 							className: "duitnowPayPop",
 							title: i18n.lbl_DuitNowQR,

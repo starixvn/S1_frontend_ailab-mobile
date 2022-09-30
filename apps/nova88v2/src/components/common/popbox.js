@@ -7,7 +7,7 @@ import ReferralPopBox from "./popbox.referral";
 import DomainListPop from "./popbox.domainList";
 import PaymentQR from "./popbox.paymentQR";
 import AddCryptoWallet from "./popbox.addCrypto";
-import DuitNowQR from "./popbox.duitNowQR";
+import BankQR from "./popbox.bankQR";
 
 export const defPopBoxType = {
 	default: "default",
@@ -18,7 +18,7 @@ export const defPopBoxType = {
 	DomainList: "DomainList",
 	PaymentQR: "PaymentQR",
 	AddCryptoWallet: "AddCryptoWallet",
-	DuitNowQR: "DuitNowQR"
+	BankQR: "BankQR"
 };
 
 const PopUp = () => {
@@ -64,8 +64,8 @@ const PopUp = () => {
 			content = <AddCryptoWallet {...popBox} />;
 			break;
 
-		case defPopBoxType.DuitNowQR:
-			content = <DuitNowQR {...popBox} />;
+		case defPopBoxType.BankQR:
+			content = <BankQR {...popBox} />;
 			break;
 
 		default:
