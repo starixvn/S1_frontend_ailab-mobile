@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import QRCode from "qrcode.react";
 import { i18nContext, userInfoContext } from "./context";
 
-const DuitNowQR = ({ onClose, qrUrl, amount, transId }) => {
+const BankQR = ({ onClose, qrUrl, amount, transId }) => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const [minutes, setMinutes] = useState(5);
@@ -59,13 +59,13 @@ const DuitNowQR = ({ onClose, qrUrl, amount, transId }) => {
 	);
 };
 
-export default DuitNowQR;
+export default BankQR;
 
-DuitNowQR.defaultProps = {
+BankQR.defaultProps = {
 	onClose: () => null
 };
 
-DuitNowQR.propTypes = {
+BankQR.propTypes = {
 	onClose: PropTypes.func,
 	qrUrl: PropTypes.string.isRequired,
 	amount: PropTypes.number.isRequired,
