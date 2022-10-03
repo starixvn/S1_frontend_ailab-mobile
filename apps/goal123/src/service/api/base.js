@@ -77,3 +77,8 @@ export const shieldRequest = axios.create({
 	withCredentials: true,
 	baseURL: `${rootURL}/api/Shield`
 });
+
+export const hotEventRequest = axios.create({
+	withCredentials: true,
+	baseURL: `${rootURL}/api/HotEvent`
+});

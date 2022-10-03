@@ -11,3 +11,4 @@ export * from "./lib/cashier";
 export * from "./lib/player";
 export * from "./lib/lineLogin";
 export * from "./lib/worldCupPrediction";
+export * from "./lib/hotEvent";

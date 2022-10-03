@@ -84,5 +84,10 @@ export default class BaseAPI {
 			withCredentials: true,
 			baseURL: `${apiUrl}/api/WorldCupPrediction`
 		});
+
+		this.hotEventRequest = axios.create({
+			withCredentials: true,
+			baseURL: `${apiUrl}/api/HotEvent`
+		});
 	}
 }
