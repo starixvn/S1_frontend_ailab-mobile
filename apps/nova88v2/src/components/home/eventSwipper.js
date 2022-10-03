@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
-import { Autoplay, useGetBanner } from "../common/swipperBanner";
+import { Autoplay } from "../common/swipperBanner";
 import api from "../../service/api";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import useHandleLogin from "../hook/useHandleLogin";
@@ -19,12 +19,30 @@ const swipperParam = {
 };
 
 const EventSwipper = ({ userInfo, i18n }) => {
+	const [banner, setBanner] = useState([]);
 	const { handleLogin } = useHandleLogin();
-	const { banner } = useGetBanner({
-		langId: userInfo.langId,
-		ImgFolder: [api.site.defBannerType.HotEvent],
-		currencyId: userInfo.currencyId
-	});
+
+	useEffect(() => {
+		api.hotEvent.GetDataList({ langId: userInfo.langId }).then(
+			res => {
+				const { errorCode, data, message } = res.data;
+				if (errorCode === 0) {
+					setBanner(data);
+				} else {
+					setPopBox({
+						isOpen: true,
+						content: `[${errorCode}] ${message}`
+					});
+				}
+			},
+			() => {
+				setPopBox({
+					isOpen: true,
+					content: i18n.msg_ApiServerError
+				});
+			}
+		);
+	}, []);
 
 	const goToBet = ({ tpId, gameId, matchId }) => {
 		GET_ENTER_PAGE({
@@ -38,48 +56,25 @@ const EventSwipper = ({ userInfo, i18n }) => {
 		});
 	};
 
-	const isEuroEvent = ({ sportLeaguesId }) => {
-		let isEuro = false;
-		switch (userInfo.langId) {
-			case "cs":
-				isEuro = sportLeaguesId === "欧冠2020";
-				break;
-			case "th":
-				isEuro = sportLeaguesId === "ยูโร 2020";
-				break;
-			case "id":
-				isEuro = sportLeaguesId === "EURO2020";
-				break;
-			default:
-				isEuro = sportLeaguesId === "EURO2020";
-				break;
-		}
-		return isEuro;
-	};
-
 	const arr = banner?.map(event => {
 		const {
-			sportBattleDateTime,
-			sportTeamsHomePic,
-			sportTeamsAwayPic,
-			sportLeaguesId,
-			sportTeamsHome,
-			sportTeamsAway,
+			battleTime,
+			homeTeamPic,
+			awayTeamPic,
+			homeTeamName,
+			awayTeamName,
 			tpId,
 			gameId,
 			matchId,
-			bannerName,
+			sportLeaguesTitle,
 			homeOdds,
 			awayOdds,
 			handicap,
-			leaguesId,
-			logo,
 			backgroundPic
 		} = event;
 
-		const euroEvent = isEuroEvent({ sportLeaguesId });
-		const eventDate = moment(sportBattleDateTime).format("DD/MM/YYYY");
-		const eventTime = moment(sportBattleDateTime).format("HH:mm");
+		const eventDate = moment(battleTime).format("DD/MM/YYYY");
+		const eventTime = moment(battleTime).format("HH:mm");
 
 		const hdpSymbol = hdp => {
 			if (hdp === 0) return hdp;
@@ -88,20 +83,17 @@ const EventSwipper = ({ userInfo, i18n }) => {
 
 		return (
 			<div
-				key={`hotEvent-${bannerName}`}
+				key={`hotEvent-${sportLeaguesTitle}-${matchId}`}
 				onClick={goToBet.bind(this, { tpId, gameId, matchId })}>
-				<div className={`${euroEvent ? "team euro" : "teamNew"}`}>
+				<div className="teamNew">
 					<img src={backgroundPic} alt="bg_pic" />
-					<img src={logo} alt={`${leaguesId}_pic`} />
+					<div className="gamename">{sportLeaguesTitle}</div>
 					<div>
 						<div className="teamL">
 							<div>
-								<img
-									src={sportTeamsHomePic}
-									alt={sportTeamsHome}
-								/>
+								<img src={homeTeamPic} alt={homeTeamName} />
 							</div>
-							<div>{sportTeamsHome}</div>
+							<div>{homeTeamName}</div>
 							<div>{hdpSymbol(handicap)}</div>
 						</div>
 						<div
@@ -117,12 +109,9 @@ const EventSwipper = ({ userInfo, i18n }) => {
 						</div>
 						<div className="teamR">
 							<div>
-								<img
-									src={sportTeamsAwayPic}
-									alt={sportTeamsAway}
-								/>
+								<img src={awayTeamPic} alt={awayTeamName} />
 							</div>
-							<div>{sportTeamsAway}</div>
+							<div>{awayTeamName}</div>
 							<div>{hdpSymbol(-handicap)}</div>
 						</div>
 					</div>
@@ -146,24 +135,16 @@ const EventSwipper = ({ userInfo, i18n }) => {
 	});
 
 	return (
-		<>
-			<div className="moduleTitle icon icon-upcomingmatches">
-				{i18n.lbl_UpcomingMatches}
-			</div>
-			<Autoplay Rows={arr} params={swipperParam} />
-		</>
+		banner.length > 0 && (
+			<>
+				<div className="moduleTitle icon icon-upcomingmatches">
+					{i18n.lbl_UpcomingMatches}
+				</div>
+				<Autoplay Rows={arr} params={swipperParam} />
+			</>
+		)
 	);
 };
-
-// const OddsAndHandicap = ({ homeOdds, awayOdds, hdp }) => {
-// 	return homeOdds && awayOdds ? (
-// 		<div className="odds">
-// 			<div id="homeodds">{homeOdds}</div>
-// 			<div>{Math.abs(hdp)}</div>
-// 			<div>{awayOdds}</div>
-// 		</div>
-// 	) : null;
-// };
 
 EventSwipper.propTypes = {
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
