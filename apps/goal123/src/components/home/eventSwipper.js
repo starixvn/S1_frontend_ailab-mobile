@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import {
@@ -7,9 +7,9 @@ import {
 	i18nContext,
 	popBoxContext
 } from "../common/context";
-import { Autoplay, useGetBanner } from "../common/swipperBanner";
+import { Autoplay } from "../common/swipperBanner";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
-import { defBannerType } from "../../service/api/site";
+import { api_hotEvent_GetDataList } from "../../service/api/hotEvent";
 
 const swipperParam = {
 	centeredSlides: true,
@@ -26,13 +26,29 @@ const EventSwipper = ({ userInfo }) => {
 	const { i18n } = useContext(i18nContext);
 	const { setNav } = useContext(navContext);
 	const { setPopBox } = useContext(popBoxContext);
-	const { banner } = useGetBanner({
-		langId: userInfo.langId,
-		ImgFolder: [defBannerType.HotEvent],
-		params: { swipperParam },
-		setPopBox,
-		i18n
-	});
+	const [banner, setBanner] = useState([]);
+
+	useEffect(() => {
+		api_hotEvent_GetDataList({ langId: userInfo.langId }).then(
+			res => {
+				const { errorCode, data, message } = res.data;
+				if (errorCode === 0) {
+					setBanner(data);
+				} else {
+					setPopBox({
+						isOpen: true,
+						content: `[${errorCode}] ${message}`
+					});
+				}
+			},
+			() => {
+				setPopBox({
+					isOpen: true,
+					content: i18n.msg_ApiServerError
+				});
+			}
+		);
+	}, []);
 
 	const goToBet = ({ tpId, gameId, matchId }) => {
 		GET_ENTER_PAGE({
@@ -50,24 +66,22 @@ const EventSwipper = ({ userInfo }) => {
 
 	const arr = banner?.map(event => {
 		const {
-			sportBattleDateTime,
-			sportTeamsHomePic,
-			sportTeamsAwayPic,
-			sportLeaguesId,
-			sportTeamsHome,
-			sportTeamsAway,
+			battleTime,
+			homeTeamPic,
+			awayTeamPic,
+			homeTeamName,
+			awayTeamName,
 			tpId,
 			gameId,
 			matchId,
-			bannerName,
-			handicap,
+			sportLeaguesTitle,
 			homeOdds,
-			awayOdds
-			// leaguesId
+			awayOdds,
+			handicap
 		} = event;
 
-		const eventDate = moment(sportBattleDateTime).format("DD/MM");
-		const eventTime = moment(sportBattleDateTime).format("HH:mm");
+		const eventDate = moment(battleTime).format("DD/MM");
+		const eventTime = moment(battleTime).format("HH:mm");
 
 		const hdpSymbol = hdp => {
 			if (hdp === 0) return hdp;
@@ -77,12 +91,12 @@ const EventSwipper = ({ userInfo }) => {
 		return (
 			<div
 				className="hotDiv"
-				key={`hotEvent-${bannerName}`}
+				key={`hotEvent-${sportLeaguesTitle}`}
 				onClick={goToBet.bind(this, { tpId, gameId, matchId })}>
-				<h1>{sportLeaguesId}</h1>
+				<h1>{sportLeaguesTitle}</h1>
 				<div className="teamL">
-					<p>{sportTeamsHome}</p>
-					<img src={sportTeamsHomePic} alt={sportTeamsHome} />
+					<p>{homeTeamName}</p>
+					<img src={homeTeamPic} alt={homeTeamName} />
 				</div>
 				<div className="odds">
 					<div className="oddL">
@@ -100,15 +114,12 @@ const EventSwipper = ({ userInfo }) => {
 						<span>{eventTime}</span>
 					</div>
 				</div>
-				{/* {leaguesId === 8 && (
-					<img className="olympic" src={olympic} alt="olympic" />
-				)} */}
 				<div className="btn">
 					<button>{i18n.lbl_BetNow}</button>
 				</div>
 				<div className="teamR">
-					<img src={sportTeamsAwayPic} alt={sportTeamsAway} />
-					<p>{sportTeamsAway}</p>
+					<img src={awayTeamPic} alt={awayTeamName} />
+					<p>{awayTeamName}</p>
 				</div>
 			</div>
 		);

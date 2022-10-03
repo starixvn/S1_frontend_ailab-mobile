@@ -1,41 +1,56 @@
-import React, { memo, useContext } from "react";
+import React, { memo, useContext, useEffect, useState } from "react";
 import moment from "moment";
-import { AutoPlay, ClickLink, useGetBanner } from "../common/swipperBanner";
-import { defBannerType } from "../../service/api/site";
+import { AutoPlay, ClickLink } from "../common/swipperBanner";
 import {
 	userInfoContext,
 	navContext,
 	popBoxContext,
 	i18nContext
 } from "../common/context";
-import tokyo from "../../styles/img/olympics/logo2.png";
+import { api_hotEvent_GetDataList } from "../../service/api/hotEvent";
 
 const EventSwipper = memo(() => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { i18n } = useContext(i18nContext);
-	const { banner } = useGetBanner({
-		langId: userInfo.langId,
-		ImgFolder: [defBannerType.HotEvent],
-		setPopBox,
-		i18n
-	});
+	const [banner, setBanner] = useState([]);
 
-	const rows = banner?.map((b, bIdx) => {
+	useEffect(() => {
+		api_hotEvent_GetDataList({ langId: userInfo.langId }).then(
+			res => {
+				const { errorCode, data, message } = res.data;
+				if (errorCode === 0) {
+					setBanner(data);
+				} else {
+					setPopBox({
+						isOpen: true,
+						content: `[${errorCode}] ${message}`
+					});
+				}
+			},
+			() => {
+				setPopBox({
+					isOpen: true,
+					content: i18n.msg_ApiServerError
+				});
+			}
+		);
+	}, []);
+
+	const rows = banner?.map(b => {
 		const {
-			sportBattleDateTime,
-			sportTeamsHomePic,
-			sportTeamsAwayPic,
-			sportLeaguesId,
-			sportTeamsHome,
-			sportTeamsAway,
+			battleTime,
+			homeTeamPic,
+			awayTeamPic,
+			sportLeaguesTitle,
+			homeTeamName,
+			awayTeamName,
 			homeOdds,
 			awayOdds,
-			handicap,
-			leaguesId
+			handicap
 		} = b;
-		const datetime = moment(sportBattleDateTime).format("DD/MM HH:mm:ss");
+		const datetime = moment(battleTime).format("DD/MM HH:mm:ss");
 
 		const hdpSymbol = hdp => {
 			if (hdp === 0) return hdp;
@@ -44,42 +59,31 @@ const EventSwipper = memo(() => {
 
 		return (
 			<div
-				key={`HotEvent-${bIdx}`}
+				key={`HotEvent-${sportLeaguesTitle}`}
 				onClick={ClickLink.bind(this, {
 					...b,
 					isLogin: userInfo.isLogin,
 					lang: userInfo.langId,
 					setNav
 				})}>
-				<div
-					// eslint-disable-next-line react/no-array-index-key
-					className="eventImg">
+				<div className="eventImg">
 					<div className="team">
 						<img
 							className="teamL"
-							src={sportTeamsHomePic}
-							alt={sportTeamsHome}
+							src={homeTeamPic}
+							alt={homeTeamName}
 						/>
 						<div className="time">{datetime}</div>
-						<p className="gameName">
-							{leaguesId === 8 && (
-								<img
-									className="olympicsLogo"
-									src={tokyo}
-									alt="tokyo_olympics_logo"
-								/>
-							)}
-							{sportLeaguesId}
-						</p>
+						<p className="gameName">{sportLeaguesTitle}</p>
 						<img
 							className="teamL teamR"
-							src={sportTeamsAwayPic}
-							alt={sportTeamsAway}
+							src={awayTeamPic}
+							alt={awayTeamName}
 						/>
 					</div>
 					<div className="homeaway">
-						<p>{sportTeamsHome}</p>
-						<p>{sportTeamsAway}</p>
+						<p>{homeTeamName}</p>
+						<p>{awayTeamName}</p>
 					</div>
 					<div className="odds">
 						<div>
