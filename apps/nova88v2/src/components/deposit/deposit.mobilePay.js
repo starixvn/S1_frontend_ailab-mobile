@@ -296,7 +296,9 @@ const Payment = props => {
 						<p>{i18n.lbl_ConfirmDeposit}</p>
 						<img
 							className="bankimg"
-							src={`${cloudImgURL}/SiteSkin/img/MobilePay/${selChannel.groupName?.toLowerCase()}.png`}
+							src={`${cloudImgURL}/SiteSkin/img/MobilePay/${(
+								selChannel.groupName ?? selChannel.channelName
+							).toLowerCase()}.png`}
 							alt={selChannel.groupName}
 						/>
 						<div>
@@ -323,7 +325,7 @@ const Payment = props => {
 							onClick={
 								// 目前只有MYR DuitNow(GroupId=53)使用
 								selChannel.groupId === 53
-									? () => handleDuitNowQR()
+									? handleDuitNowQR
 									: RedirectToNext.bind(this, real_amount)
 							}>
 							{i18n.lbl_Submit}
