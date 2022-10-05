@@ -1,30 +1,31 @@
 import React, { useContext } from "react";
 import { i18nContext } from "Context";
 import PropTypes from "prop-types";
-import defNav from "./defNav";
 
 const Nav = props => {
-	const { selNav, SelectNav } = props;
+	const { categoryList, selNav, onChange } = props;
 	const { i18n } = useContext(i18nContext);
-	const rows = Object.keys(defNav).map(k => {
-		const _nav = defNav[k];
+	return categoryList.map(value => {
 		return (
 			<button
-				data-testid={`nav_${i18n[_nav.displayKey]}`}
-				key={`casino-nav-${k}`}
-				className={selNav === k ? "active" : ""}
-				onClick={SelectNav.bind(this, k)}>
-				{i18n[_nav.displayKey]}
+				data-testid={`nav_${value}`}
+				key={`casino-nav-${value}`}
+				className={selNav === value ? "active" : ""}
+				onClick={() => onChange(value)}>
+				{i18n[`lbl_${value.charAt(0).toUpperCase() + value.slice(1)}`]}
 			</button>
 		);
 	});
+};
 
-	return <div className="inputBox filterBtn">{rows}</div>;
+Nav.defaultProps = {
+	categoryList: []
 };
 
 Nav.propTypes = {
+	categoryList: PropTypes.arrayOf(PropTypes.any),
 	selNav: PropTypes.string.isRequired,
-	SelectNav: PropTypes.func.isRequired
+	onChange: PropTypes.func.isRequired
 };
 
 export default Nav;

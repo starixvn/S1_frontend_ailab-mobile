@@ -243,6 +243,7 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 					/>
 				);
 			});
+
 		return (
 			<div
 				key={`subPanel-${item.category}`}
@@ -360,11 +361,11 @@ const SubGame = ({
 	}
 
 	let _path = game.path;
-	if (category === "slot" && game.spanText !== "Mega888") {
+	if (category === "slot" && game.displayText !== "Mega888") {
 		_path = `${path.casino.root}/${game.tpId}`;
 	}
 
-	return game?.path ? (
+	return game?.path || category === "slot" ? (
 		<Link
 			className={isMaintain ? "active" : ""}
 			to={_path}

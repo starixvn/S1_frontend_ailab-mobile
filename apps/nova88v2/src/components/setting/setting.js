@@ -114,6 +114,7 @@ export default () => {
 			}));
 			setNav(() => null);
 			navigate(`/${userInfo.langId}`);
+			localStorage.removeItem("favorite");
 		});
 	};
 

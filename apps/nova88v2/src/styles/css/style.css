@@ -3172,6 +3172,7 @@ footer > a.active .circleAnimation + span {
   font-size: 3vw;
   font-size: 3vw;
   font-weight: bold;
+  z-index: 1;
 }
 
 .header .title a i {
@@ -3180,6 +3181,46 @@ footer > a.active .circleAnimation + span {
 
 .header .title a i.icon-keyboard_arrow_left:after {
   content: "\e95d";
+}
+
+.header .title.searchBar {
+  position: relative;
+}
+
+.header .title.searchBar .icon-search {
+  position: absolute;
+  right: 2vw;
+  top: 3.5vw;
+}
+
+.header .title.searchBar .infoModule {
+  position: absolute;
+  right: 2vw;
+  top: 0;
+  width: 0;
+  opacity: 0;
+}
+
+.header .title.searchBar .infoModule .inputBox, .header .title.searchBar .infoModule .worldcupEvent .event .event-content .inputBox-event, .worldcupEvent .event .event-content .header .title.searchBar .infoModule .inputBox-event {
+  background: #c6d4f1;
+  margin-left: 15vw;
+  height: 8vw;
+}
+
+.header .title.searchBar .infoModule .inputBox input, .header .title.searchBar .infoModule .worldcupEvent .event .event-content .inputBox-event input, .worldcupEvent .event .event-content .header .title.searchBar .infoModule .inputBox-event input {
+  padding: 0;
+  height: 8vw;
+}
+
+.header .title.searchBar .infoModule .icon-close {
+  position: revert;
+}
+
+.header .title.searchBar .infoModule.active {
+  -webkit-transition: .3s;
+  transition: .3s;
+  width: 100%;
+  opacity: 1;
 }
 
 .quantity {
@@ -5127,7 +5168,7 @@ button.clickBtn:before {
 
 .casino {
   width: calc(100% - 8vw);
-  padding: 103vw 4vw 24vw;
+  padding: 80vw 4vw 24vw;
   position: relative;
 }
 
@@ -10116,10 +10157,9 @@ span.important {
   border-radius: 3px;
 }
 
-.partnerSelect {
+.partnerSelect, .filterSelect {
   overflow: scroll;
   width: 100%;
-  background: #D2E2F9;
   border-radius: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10128,7 +10168,7 @@ span.important {
   margin: 0 0 1vw;
 }
 
-.partnerSelect button, .partnerSelect a {
+.partnerSelect button, .partnerSelect a, .filterSelect button, .filterSelect a {
   min-width: 30.5vw;
   padding: 0 1vw;
   display: -webkit-box;
@@ -10136,34 +10176,62 @@ span.important {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
+      -ms-flex-flow: center;
+          flex-flow: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-size: 3vw;
   border-radius: 3px;
-  -webkit-filter: brightness(70%) contrast(50%) sepia(1) hue-rotate(170deg);
-          filter: brightness(70%) contrast(50%) sepia(1) hue-rotate(170deg);
 }
 
-.partnerSelect button div, .partnerSelect a div {
+.partnerSelect button div, .partnerSelect a div, .filterSelect button div, .filterSelect a div {
   margin-top: -1vw;
 }
 
-.partnerSelect button img, .partnerSelect a img {
+.partnerSelect button img, .partnerSelect a img, .filterSelect button img, .filterSelect a img {
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
   -webkit-transition: 0.7s;
   transition: 0.7s;
   height: 12vw;
+  -webkit-filter: brightness(70%) contrast(50%) sepia(1) hue-rotate(170deg);
+          filter: brightness(70%) contrast(50%) sepia(1) hue-rotate(170deg);
+}
+
+.filterSelect {
+  height: 10vw;
+  background: #e2e4e7;
+  margin-bottom: 0;
+}
+
+.filterSelect button, .filterSelect a {
+  color: #a1a1a1;
+  width: auto;
+  min-width: auto;
+  margin: 0 2vw;
+  padding: 0 2vw;
+  white-space: nowrap;
+  border-radius: 0;
+}
+
+.filterSelect button.active, .filterSelect a.active {
+  margin-top: 1vw;
+  color: #6c88b5;
+  border-bottom: 1vw #6c88b5 solid;
+}
+
+.partnerSelect button, .partnerSelect a {
+  background: #D2E2F9;
+  margin-right: 1vw;
 }
 
 .partnerSelect button.active, .partnerSelect a.active {
   background: #284985;
   color: white;
-  -webkit-filter: none;
-          filter: none;
 }
 
 .partnerSelect button.active img, .partnerSelect a.active img {
@@ -10171,6 +10239,8 @@ span.important {
           transform: scale(0.9);
   -webkit-transition: 0.7s;
   transition: 0.7s;
+  -webkit-filter: none;
+          filter: none;
 }
 
 .rolloverTitle {
