@@ -37,7 +37,6 @@ const Panel = ({ searchInput }) => {
 	const gameListRef = useRef(null);
 	const splitList = window.location.href.split("/");
 	const pathTpId = splitList[splitList.length - 1];
-
 	const getSlotGameData = async () => {
 		try {
 			const res = await api.game.GetSlotGamePage({ deviceType: 2 });
@@ -45,12 +44,16 @@ const Panel = ({ searchInput }) => {
 			const targetProvider = pList.find(
 				obj => obj.tpId === Number(pathTpId)
 			);
-			const pFilterList = pList.filter(
-				item => item.tpId !== targetProvider.tpId
-			);
-			pFilterList.unshift(targetProvider);
-			setProviderList(pFilterList);
-			setActiveProvider(targetProvider);
+			if (targetProvider) {
+				const pFilterList = pList.filter(
+					item => item.tpId !== targetProvider.tpId
+				);
+				pFilterList.unshift(targetProvider);
+				setProviderList(pFilterList);
+				setActiveProvider(targetProvider);
+			} else {
+				setProviderList(pList);
+			}
 			const skipList = ["imgUrl", "providerList"];
 			let tempList = [];
 			setSlotDataList(Object.entries(res.data.data));
@@ -107,7 +110,6 @@ const Panel = ({ searchInput }) => {
 			tempList.forEach(item => _list.push(item[0]));
 			setCategoryList(_list);
 			setActiveCategory(_list[1]);
-
 			const targetList = Object.entries(res.data.data)?.find(
 				item => item[0] === _list[1]
 			)[1];
@@ -148,7 +150,7 @@ const Panel = ({ searchInput }) => {
 			item => item[0] === activeCategory
 		);
 		const filterHandle = item => {
-			if (activeProvider) {
+			if (Object.keys(activeProvider).length > 0) {
 				return (
 					item.tpId === activeProvider?.tpId &&
 					item.gameName?.[
