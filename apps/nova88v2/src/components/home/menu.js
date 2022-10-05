@@ -361,7 +361,7 @@ const SubGame = ({
 	}
 
 	let _path = game.path;
-	if (category === "slot" && game.displayText !== "Mega888") {
+	if (category === "slot" && game.spanText !== "Mega888") {
 		_path = `${path.casino.root}/${game.tpId}`;
 	}
 
