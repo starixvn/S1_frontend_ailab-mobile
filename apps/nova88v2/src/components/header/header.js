@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import PropTypes from "prop-types";
+import React, { useContext, useState } from "react";
+import PropTypes, { string } from "prop-types";
 import { userInfoContext, i18nContext, rootContext } from "Context";
-import { Link } from "@Router";
+import { Link } from "@reach/router";
 import Logo from "../common/logo";
 import path from "../../path";
 import Balance from "./balance";
@@ -26,13 +26,66 @@ const Header = ({
 	titleClass = "title",
 	navBar,
 	id,
-	hideId
+	hideId,
+	isShowInput,
+	searchInput,
+	setSearchInput
 }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { root } = useContext(rootContext);
-
 	const headerClassName = !title ? "" : "header";
+	const [isShowSearchInput, setIsShowSearchInput] = useState(false);
+	const handleInputClose = () => {
+		if (searchInput !== "") {
+			setSearchInput("");
+		} else {
+			setIsShowSearchInput(false);
+		}
+	};
+	const handleInputChange = e => {
+		setSearchInput(e.target.value);
+	};
+	const titleJudge = () => {
+		if (title) {
+			return isShowInput ? (
+				<div className="title searchBar">
+					<Link to={path.home.root}>
+						<i className="icon icon-keyboard_arrow_left" />
+					</Link>
+					{title}
+					<i
+						className="icon icon-search"
+						onClick={() => setIsShowSearchInput(true)}
+					/>
+					<div
+						className={`infoModule ${
+							isShowSearchInput && "active"
+						}`}>
+						<div className="inputBox">
+							<input
+								value={searchInput}
+								onChange={e => handleInputChange(e)}
+								placeholder="Search"
+							/>
+							<i
+								className="icon icon-close"
+								onClick={handleInputClose}
+							/>
+						</div>
+					</div>
+				</div>
+			) : (
+				<HeaderTitle
+					title={title}
+					link={link}
+					titleClass={titleClass}
+					navBar={navBar}
+				/>
+			);
+		}
+		return <HeaderInfo userInfo={userInfo} i18n={i18n} />;
+	};
 
 	return (
 		<header className={headerClassName} id={hideId ? "" : id}>
@@ -47,16 +100,7 @@ const Header = ({
 					</a>
 				</>
 			)}
-			{title ? (
-				<HeaderTitle
-					title={title}
-					link={link}
-					titleClass={titleClass}
-					navBar={navBar}
-				/>
-			) : (
-				<HeaderInfo userInfo={userInfo} i18n={i18n} />
-			)}
+			{titleJudge()}
 			{filter || null}
 			{children}
 		</header>
@@ -92,7 +136,10 @@ Header.defaultProps = {
 	titleClass: undefined,
 	navBar: null,
 	id: "header",
-	hideId: false
+	hideId: false,
+	isShowInput: false,
+	searchInput: string,
+	setSearchInput: null
 };
 
 Header.propTypes = {
@@ -104,7 +151,10 @@ Header.propTypes = {
 	titleClass: PropTypes.string,
 	navBar: PropTypes.node,
 	id: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-	hideId: PropTypes.bool
+	hideId: PropTypes.bool,
+	isShowInput: PropTypes.bool,
+	searchInput: PropTypes.string,
+	setSearchInput: PropTypes.func
 };
 
 HeaderTitle.defaultProps = {

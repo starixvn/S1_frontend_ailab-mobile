@@ -11,7 +11,7 @@
  */
 .swiper-container {
   margin: 0 auto;
-  position: relative;
+  position: fixed;
   overflow: hidden;
   list-style: none;
   padding: 0;

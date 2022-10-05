@@ -33,7 +33,7 @@ export class AccountAPI extends BaseAPI {
 	GetWithdrawalAvailableBalance = () =>
 		this.accountRequest.post("/GetWithdrawalAvailableBalance");
 
-	SetFavoriteGame = (ProviderId, GameId, IsRemove) =>
+	SetFavoriteGame = ({ ProviderId, GameId, IsRemove }) =>
 		this.accountRequest.post(`/SetFavoriteGame`, {
 			ProviderId,
 			GameId,

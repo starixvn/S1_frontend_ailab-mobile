@@ -280,7 +280,13 @@
 	"lbl_AllGameType": "All Categories",
 	"lbl_SearchGames": "Search Games",
 	"lbl_SpecialBonus": "Special Bonus",
-
+  "lbl_Random": "Random",
+  "lbl_RecentlyPlayed": "Recently Played",
+  "lbl_Featured": "Featured",
+  "lbl_TableAndCards": "Table & Cards",
+  "lbl_BuyFeaturesGames": "Buy Features Games",
+  "lbl_Megaways": "Megaways",
+  "lbl_MyFavorite": "My Favorite",
 	"==============================================Setting====================================": "",
 
 	"lbl_Logout": "Logout",

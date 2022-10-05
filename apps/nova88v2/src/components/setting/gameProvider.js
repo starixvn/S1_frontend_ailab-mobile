@@ -35,12 +35,12 @@ const defPlatfrom = [
 	{
 		...defGameInfo.Casino_JOKER,
 		path: path.casino.root,
-		imgName: "jk"
+		imgName: "casino_joker"
 	},
 	{
 		...defGameInfo.Casino_GPI,
 		path: path.casino.root,
-		imgName: "gp"
+		imgName: "casino_gpi"
 	},
 	{
 		...defGameInfo.LIVEcasinoDG,
@@ -53,28 +53,28 @@ const defPlatfrom = [
 	{
 		...defGameInfo.Casino_YGG,
 		path: path.casino.root,
-		imgName: "yg"
+		imgName: "casino_ygg"
 	},
 	{
 		...defGameInfo.Casino_AMB,
 		path: path.casino.root,
-		imgName: "am",
+		imgName: "casino_amb",
 		allowCurrencies: new Set([defCurrenyId.THB])
 	},
 	{
 		...defGameInfo.Casino_PP,
 		path: path.casino.root,
-		imgName: "pp"
+		imgName: "casino_pp"
 	},
 	{
 		...defGameInfo.Casino_SG,
 		path: path.casino.root,
-		imgName: "sg"
+		imgName: "casino_sg"
 	},
 	{
 		...defGameInfo.Casino_PG,
 		path: path.casino.root,
-		imgName: "pg"
+		imgName: "casino_pg"
 	},
 	{
 		...defGameInfo.LIVEcasinoAE,
@@ -95,12 +95,12 @@ const defPlatfrom = [
 	{
 		...defGameInfo.Casino_CQ9,
 		path: path.casino.root,
-		imgName: "cq9"
+		imgName: "casino_cq9"
 	},
 	{
 		...defGameInfo.casino_ICG,
 		path: path.casino.root,
-		imgName: "icg"
+		imgName: "casino_icg"
 	},
 	// {
 	// 	...defGameInfo.Casino_918Kiss,
@@ -119,7 +119,7 @@ const defPlatfrom = [
 	{
 		...defGameInfo.Casino_PT,
 		path: path.casino.root,
-		imgName: "pt"
+		imgName: "casino_pt"
 	},
 	{
 		...defGameInfo.kingMaker,
@@ -131,17 +131,17 @@ const defPlatfrom = [
 	},
 	{
 		...defGameInfo.Casino_MGP,
-		imgName: "mg",
+		imgName: "casino_mg",
 		path: path.casino.root
 	},
 	{
 		...defGameInfo.Casino_Jili,
-		imgName: "ji",
+		imgName: "casino_jili",
 		path: path.casino.root
 	},
 	{
 		...defGameInfo.Casino_NetEnt,
-		imgName: "nt",
+		imgName: "casino_netent",
 		path: path.casino.root
 	},
 	{
@@ -150,17 +150,17 @@ const defPlatfrom = [
 	},
 	{
 		...defGameInfo.Casino_RedTiger,
-		imgName: "rt",
+		imgName: "casino_redtiger",
 		path: path.casino.root
 	},
 	{
 		...defGameInfo.Casino_AdvantPlay,
-		imgName: "ap",
+		imgName: "casino_ap",
 		path: path.casino.root
 	},
 	{
 		...defGameInfo.Casino_Habanero,
-		imgName: "ho",
+		imgName: "casino_hb",
 		path: path.casino.root
 	}
 ];
@@ -252,7 +252,7 @@ const GameProvider = ({ userInfo, i18n }) => {
 			return p.path && !underMaintain ? (
 				<Link
 					key={`gameProvider-${p.tpId}-${p.gameId}-${p.tpGameType}`}
-					to={p.path}
+					to={`${p.path}/${p.tpId}`}
 					state={{ tpId: p.tpId, gameId: p.gameId }}>
 					<img
 						src={`${cloudImgURL}/SiteSkin/img/logo/${p.imgName}.png`}
