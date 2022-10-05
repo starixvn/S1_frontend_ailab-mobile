@@ -24,11 +24,11 @@ const GamePanel = React.forwardRef((props, ref) => {
 	const { maintainList } = useGetTpMaintainList();
 	if (gameList === null) return <Loading />;
 	const games = [];
-	let storageStr = localStorage.getItem("favorite");
+	let storageStr = localStorage.getItem("favorite") ?? "";
 	if (storageStr && storageStr.charAt(0) === "&") {
 		storageStr = storageStr.substring(1, storageStr.length);
 	}
-	const storageList = storageStr?.split("&");
+	const storageList = storageStr?.split("&") ?? [];
 	gameList?.forEach(g => {
 		const handleIsFavorite = () => {
 			return storageList?.includes(`${g.tpId}_${g.gameId}`);
