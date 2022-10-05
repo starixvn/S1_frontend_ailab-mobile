@@ -38,7 +38,7 @@ const GamePanel = React.forwardRef((props, ref) => {
 			m =>
 				m.tpId === g.tpId &&
 				(m.tpGameType ===
-					defSlotTpGameType[activeProvider.tpName].tpGameType ||
+					defSlotTpGameType[activeProvider.tpName]?.tpGameType ||
 					m.tpGameType === defTpGameType.All)
 		);
 		const onToggleFavorite = () => {
