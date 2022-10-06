@@ -270,9 +270,10 @@ const Panel = ({ searchInput }) => {
 	const handleCategoryActive = category => {
 		if (category === "random") {
 			const allList = slotDataList.find(item => item[0] === "all")[1];
-			const filterList = activeProvider
-				? allList.filter(obj => obj.tpId === activeProvider.tpId)
-				: allList;
+			const filterList =
+				Object.keys(activeProvider).length > 0
+					? allList.filter(obj => obj.tpId === activeProvider.tpId)
+					: allList;
 			const index = Math.floor(Math.random() * filterList.length);
 			clickPlay(false, filterList[index]);
 		} else {
