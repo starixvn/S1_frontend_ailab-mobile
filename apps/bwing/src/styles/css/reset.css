@@ -44,8 +44,6 @@ button {
   border: none;
   padding: 0;
   outline: none;
-  font-family: 'Microsoft YaHei',sans-serif;
-  color: white;
 }
 
 pre {
@@ -54,6 +52,6 @@ pre {
 
 a {
   text-decoration: none;
-  color: white;
+  color: #fff;
 }
 /*# sourceMappingURL=reset.css.map */
