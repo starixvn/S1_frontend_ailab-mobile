@@ -30,7 +30,8 @@ export const useHandlePromotionInfo = ({
 		api.promotion
 			.GetPromotionDetail({
 				langId,
-				BonusCode: bonusCode
+				bonusCode,
+				currencyId: 51
 			})
 			.then(
 				res => {
@@ -108,4 +109,18 @@ const PromotionInfoContent = ({
 			filterType={filterType}
 		/>
 	);
+};
+
+PromotionInfoContent.defaultProps = {
+	promotionInfo: null,
+	getPromotionDetail: null,
+	config: null,
+	filterType: null
+};
+
+PromotionInfoContent.propTypes = {
+	promotionInfo: PropTypes.objectOf(PropTypes.any),
+	getPromotionDetail: PropTypes.func,
+	config: PropTypes.objectOf(PropTypes.any),
+	filterType: PropTypes.string
 };
