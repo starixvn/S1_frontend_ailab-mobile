@@ -153,14 +153,14 @@ const Panel = ({ searchInput }) => {
 			if (Object.keys(activeProvider).length > 0) {
 				return (
 					item.tpId === activeProvider?.tpId &&
-					item.gameName?.[
-						item.gameName[userInfo.langId] ? userInfo.langId : "en"
-					]?.includes(searchInput)
+					Object.values(item.gameName).find(obj =>
+						obj.includes(searchInput)
+					)
 				);
 			}
-			return item.gameName?.[
-				item.gameName[userInfo.langId] ? userInfo.langId : "en"
-			]?.includes(searchInput);
+			return Object.values(item.gameName).find(obj =>
+				obj.includes(searchInput)
+			);
 		};
 		if (targetList) {
 			if (targetList[0] === "myFavorite") {
