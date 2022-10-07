@@ -28,18 +28,18 @@ const Records = ({
 		i18n
 	});
 
-	const generateItem = () => {
-		const testToday = moment().format("YYYY-MM");
-		const testDateStart = moment("2021-08");
-		const testDateEnd = moment(testToday);
-		const testMonths = [];
+	const generateMonthItems = () => {
+		const today = moment().format("YYYY-MM");
+		const dataStart = moment("2021-08");
+		const dataEnd = moment(today);
+		const monthsList = [];
 
-		while (testDateEnd >= testDateStart) {
-			testMonths.push(testDateStart.clone());
-			testDateStart.add(1, "month");
+		while (dataEnd >= dataStart) {
+			monthsList.push(dataStart.clone());
+			dataStart.add(1, "month");
 		}
 
-		return testMonths.map((item, idx) => {
+		return monthsList.map((item, idx) => {
 			const year = item.format("YYYY");
 			const i18nMonth = item.format("M");
 			const valueMonth = item.format("MM");
@@ -52,7 +52,7 @@ const Records = ({
 		});
 	};
 
-	const monthItems = generateItem();
+	const monthItems = generateMonthItems();
 	const defaultVal =
 		title === defBtns.GamesPoint.displayKey
 			? defBtnsOfCategory.Sports.value
