@@ -635,6 +635,7 @@
 	"lbl_DepositChannel_2": "Mesin Setor Tunai",
 	"lbl_DepositChannel_3": "ATM",
 	"lbl_DepositChannel_4": "Setor Melalui Teller Bank",
+  "lbl_DepositChannel_5": "QR Bank",
 	"lbl_DepositChannel": "Saluran Deposit",
 	"lbl_LocalBankDepositChannelTip": "Silahkan Pilih Saluran Bank Anda melakukan Setoran Bank Lokal",
 	"lbl_LocalBankBankAccountTip": "Pilih rekening bank yang digunakan untuk setoran.",

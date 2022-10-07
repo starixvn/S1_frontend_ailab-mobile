@@ -599,6 +599,7 @@
 	"lbl_DepositChannel_2": "নগদ জমা মেশিন",
 	"lbl_DepositChannel_3": "এটিএম",
 	"lbl_DepositChannel_4": "ওভার দ্য কাউন্টার (OTC)",
+  "lbl_DepositChannel_5": "ব্যাঙ্ক QR",
 	"lbl_DepositChannel": "আমানতের চ্যানেল",
 	"lbl_LocalBankDepositChannelTip": "স্থানীয় ব্যাংক থেকে আপনি কোন ব্যাংক চ্যানেলে জমা করবেন তা অনুগ্রহ করে নির্বাচন করুন।",
 	"lbl_LocalBankBankAccountTip": "স্থানীয় ব্যাংক থেকে আপনি কোন ব্যাংক অ্যাকাউন্টে জমা করবেন তা অনুগ্রহ করে নির্বাচন করুন৷",

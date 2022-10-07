@@ -618,6 +618,7 @@
 	"lbl_DepositChannel_2": "เครื่องฝากเงินสด",
 	"lbl_DepositChannel_3": "เอทีเอ็ม",
 	"lbl_DepositChannel_4": "ผ่านเคาน์เตอร์ (OTC)",
+  "lbl_DepositChannel_5": "ธนาคาร QR",
 	"lbl_DepositChannel": "ช่องทางการฝาก",
 	"lbl_LocalBankDepositChannelTip": "กรุณาเลือกช่องทางธนาคารที่คุณฝากจากธนาคารในประเทศ",
 	"lbl_LocalBankBankAccountTip": "Please select which bank account you deposited from the local bank.",

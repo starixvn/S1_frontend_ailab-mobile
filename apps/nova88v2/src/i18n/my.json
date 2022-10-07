@@ -633,6 +633,7 @@
 	"lbl_DepositChannel_2": "Mesin Deposit Tunai",
 	"lbl_DepositChannel_3": "ATM",
 	"lbl_DepositChannel_4": "Melalui Kaunter (OTC)",
+  "lbl_DepositChannel_5": "QR bank",
 	"lbl_DepositChannel": "Saluran Deposit",
 	"lbl_LocalBankDepositChannelTip": "Sila pilih saluran bank yang anda guna untuk buat deposit guna pindahan bank.",
 	"lbl_LocalBankBankAccountTip": "Sila pilih akaun bank yang anda guna untuk buat deposit guna pindahan bank.",

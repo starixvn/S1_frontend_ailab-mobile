@@ -625,6 +625,7 @@
 	"lbl_DepositChannel_2": "现金存款机",
 	"lbl_DepositChannel_3": "自动取款机",
 	"lbl_DepositChannel_4": "柜台办理（OTC）",
+  "lbl_DepositChannel_5": "银行二维码",
 	"lbl_DepositChannel": "存款渠道",
 	"lbl_LocalBankDepositChannelTip": "请选择您使用银行转账的银行",
 	"lbl_LocalBankBankAccountTip": "Please select which bank account you deposited from the local bank.",
