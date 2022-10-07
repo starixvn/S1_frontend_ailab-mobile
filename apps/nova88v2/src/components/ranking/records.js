@@ -27,29 +27,32 @@ const Records = ({
 		langId,
 		i18n
 	});
-	const today = moment().format("YYYY-MM");
-	const dateStart = moment("2021-8-1");
-	const dateEnd = moment(today);
-	const months = [];
 
-	while (
-		dateEnd > dateStart ||
-		dateStart.format("M") === dateEnd.format("M")
-	) {
-		months.push(dateStart.format("M"));
-		dateStart.add(1, "month");
-	}
+	const generateItem = () => {
+		const testToday = moment().format("YYYY-MM");
+		const testDateStart = moment("2021-08");
+		const testDateEnd = moment(testToday);
+		const testMonths = [];
 
-	const monthItems = months.map((el, idx) => {
-		const year = idx > 3 ? 2022 : 2021;
-		const twoDigits = el.length < 2 ? `0${el}` : el;
-		const str = `${year}-${twoDigits}-01`;
-		return {
-			value: str,
-			id: idx,
-			displayText: `${i18n[`lbl_Month${el}`]} ${year}`
-		};
-	});
+		while (testDateEnd >= testDateStart) {
+			testMonths.push(testDateStart.clone());
+			testDateStart.add(1, "month");
+		}
+
+		return testMonths.map((item, idx) => {
+			const year = item.format("YYYY");
+			const i18nMonth = item.format("M");
+			const valueMonth = item.format("MM");
+			const str = `${year}-${valueMonth}-01`;
+			return {
+				value: str,
+				id: idx,
+				displayText: `${i18n[`lbl_Month${i18nMonth}`]} ${year}`
+			};
+		});
+	};
+
+	const monthItems = generateItem();
 	const defaultVal =
 		title === defBtns.GamesPoint.displayKey
 			? defBtnsOfCategory.Sports.value
