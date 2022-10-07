@@ -623,6 +623,7 @@ const GroupList = ({
 			</div>
 		);
 	});
+
 	const additionalRows = () => {
 		return (
 			<>
@@ -643,24 +644,25 @@ const GroupList = ({
 						<CopyBtn value={accountInfo.accountNo} />
 					</ul>
 				</div>
-				{userInfo.currencyId === defCurrenyId.MYR && (
-					<>
-						<div className="title">
-							<span>*</span>
-							{i18n.lbl_ScanQR}
-						</div>
-						<div className="infoModule">
-							<div className="qrCode">
-								<QRCode
-									value={selectedBank.qrCodeUrl}
-									renderAs="svg"
-									size={125}
-									includeMargin={true}
-								/>
+				{userInfo.currencyId === defCurrenyId.MYR &&
+					selectedBank.supportQR && (
+						<>
+							<div className="title">
+								<span>*</span>
+								{i18n.lbl_ScanQR}
 							</div>
-						</div>
-					</>
-				)}
+							<div className="infoModule">
+								<div className="qrCode">
+									<QRCode
+										value={selectedBank.qrCodeUrl}
+										renderAs="svg"
+										size={125}
+										includeMargin={true}
+									/>
+								</div>
+							</div>
+						</>
+					)}
 				<DepositChannel
 					i18n={i18n}
 					DepositChannelProps={DepositChannelProps}
