@@ -178,6 +178,7 @@ export const defCurrenyId = {
 
 export const currencyIdToTimeZone = {
 	2: "+08:00",
+	13: "+08:00",
 	4: "+07:00",
 	15: "+07:00",
 	74: "+06:00",
