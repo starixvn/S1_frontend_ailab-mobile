@@ -56,9 +56,10 @@ const Detail = ({
 						{i18n.lbl_Date} ({timeZone})
 					</span>
 					<span>
-						{moment(createTime, "YYYY-MM-DDThh:mm:ssZ")
-							?.zone(timeZone)
-							.format("MM/DD/YYYY")}
+						{timeZone &&
+							moment(createTime, "YYYY-MM-DDThh:mm:ssZ")
+								?.zone(timeZone)
+								.format("MM/DD/YYYY")}
 					</span>
 				</li>
 				<li>
@@ -66,9 +67,10 @@ const Detail = ({
 						{i18n.lbl_Time} ({timeZone})
 					</span>
 					<span>
-						{moment(createTime, "YYYY-MM-DDThh:mm:ssZ")
-							.zone(timeZone)
-							.format("hh:mm:ss A")}
+						{timeZone &&
+							moment(createTime, "YYYY-MM-DDThh:mm:ssZ")
+								.zone(timeZone)
+								.format("hh:mm:ss A")}
 					</span>
 				</li>
 				<li>
