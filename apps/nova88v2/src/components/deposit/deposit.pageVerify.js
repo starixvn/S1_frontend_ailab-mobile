@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import path from "../../path";
-import { defCurrenyId } from "../common/common";
 
 export default (
 	userInfo,
@@ -14,19 +13,12 @@ export default (
 	useEffect(() => {
 		let mounted = true;
 		if (mounted) {
-			const { USD, CNY, BDT, INR } = defCurrenyId;
-			// * 新幣別不需填寫個人資訊即可送出 Deposit 表單
-			const isNeedFillPersonalInfo = ![USD, CNY, BDT, INR].some(
-				currencyId => currencyId === userInfo.currencyId
-			);
-
 			if (!propsFromParent) {
 				if (
 					userInfo.isLogin &&
 					userInfo.currencyId &&
-					// (!userInfo.accountName || !userInfo.phoneNo) &&
-					isDomainPopOpen === false &&
-					isNeedFillPersonalInfo
+					(!userInfo.accountName || !userInfo.phoneNo) &&
+					isDomainPopOpen === false
 				) {
 					const ClosePopBox = () => {
 						setPopBox({ isOpen: false });
