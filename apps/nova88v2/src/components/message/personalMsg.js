@@ -309,7 +309,11 @@ const Panel = () => {
 	const readSelectedMsg = () => {
 		if (checkboxList.length > 0) {
 			setLoading(true);
-			api.account.SetMsgRead({ MsgIds: checkboxList }).then(
+			const SetList = checkboxList.map(el => ({
+				msgId: el.id,
+				isBatch: el.isBatch
+			}));
+			api.account.SetMsgReadV2({ SetList }).then(
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
