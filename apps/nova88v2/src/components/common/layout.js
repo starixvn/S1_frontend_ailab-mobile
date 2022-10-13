@@ -8,11 +8,12 @@ import {
 	i18nContext,
 	defNavPanel,
 	loadingContext,
-	userInfoContext
+	userInfoContext,
+	rootContext
 } from "./context";
 import path from "../../path";
 import Loading from "./loading";
-import { isEventPeriod } from "./common";
+import { isEventPeriod, readCookie } from "./common";
 import { LuckyWheelPop } from "../../pages/luckyWheel";
 import { MysteryBoxPop } from "../../pages/mysteryBox";
 import Modal from "../join/modal";
@@ -24,6 +25,7 @@ const Layout = ({ children, header, mainClass, goTopBtn, SEOPath }) => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { nav } = useContext(navContext);
+	const { root } = useContext(rootContext);
 	const { loading } = useContext(loadingContext);
 	const { userInfo } = useContext(userInfoContext);
 
@@ -55,7 +57,13 @@ const Layout = ({ children, header, mainClass, goTopBtn, SEOPath }) => {
 		<>
 			<RotationHint i18n={i18n} />
 			{header ?? <Header title="" hideLogo={true} />}
-			<main style={position} className={_mainClass}>
+			<main
+				style={position}
+				className={`${_mainClass} ${
+					readCookie("AppDownloadHint") !== "1" && root
+						? "active"
+						: ""
+				}`}>
 				{children}
 				{loading ? <Loading /> : null}
 			</main>

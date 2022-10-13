@@ -18,7 +18,14 @@ import AppDownloadHint from "./appDownloadHint";
 import { bannerImgUrl } from "../../config";
 import MsgPopup from "./msgPopup";
 
-const Header = ({ hideLogo, title, selCategory, handleSelectCategory }) => {
+const Header = ({
+	hideLogo,
+	title,
+	selCategory,
+	handleSelectCategory,
+	appHint,
+	setAppHint
+}) => {
 	const [isOpenSideMenu, setIsOpenSideMenu] = useState(false);
 	const { i18n } = useContext(i18nContext);
 	const { root } = useContext(rootContext);
@@ -57,7 +64,12 @@ const Header = ({ hideLogo, title, selCategory, handleSelectCategory }) => {
 
 	return (
 		<header id="header">
-			<AppDownloadHint i18n={i18n} root={root} />
+			<AppDownloadHint
+				i18n={i18n}
+				root={root}
+				appHint={appHint}
+				setAppHint={setAppHint}
+			/>
 			<div className="headerT">
 				<BeforeLogin
 					onClickSubMenu={() => handleSideMenuPanel(true)}
@@ -98,14 +110,18 @@ Header.defaultProps = {
 	hideLogo: null,
 	title: null,
 	selCategory: null,
-	handleSelectCategory: () => null
+	handleSelectCategory: () => null,
+	appHint: false,
+	setAppHint: () => null
 };
 
 Header.propTypes = {
 	hideLogo: PropTypes.bool,
 	title: PropTypes.string,
 	selCategory: PropTypes.objectOf(PropTypes),
-	handleSelectCategory: PropTypes.func
+	handleSelectCategory: PropTypes.func,
+	appHint: PropTypes.bool,
+	setAppHint: PropTypes.func
 };
 
 const BeforeLogin = ({ onClickSubMenu, isShow, title, hideLogo }) => {
