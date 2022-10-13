@@ -18,13 +18,14 @@ const GamePanel = React.forwardRef((props, ref) => {
 		i18n,
 		imgUrl,
 		handleSetFavorite,
-		renderSlot
+		favoriteStr,
+		setFavoriteStr
 	} = props;
 	const { userInfo } = useContext(userInfoContext);
 	const { maintainList } = useGetTpMaintainList();
 	if (gameList === null) return <Loading />;
 	const games = [];
-	let storageStr = localStorage.getItem("favorite") ?? "";
+	let storageStr = favoriteStr ?? "";
 	if (storageStr && storageStr.charAt(0) === "&") {
 		storageStr = storageStr.substring(1, storageStr.length);
 	}
@@ -41,21 +42,24 @@ const GamePanel = React.forwardRef((props, ref) => {
 					defSlotTpGameType[activeProvider.tpName]?.tpGameType ||
 					m.tpGameType === defTpGameType.All)
 		);
+
 		const onToggleFavorite = () => {
-			renderSlot();
 			handleSetFavorite(g.gameId, _isFavorite, g.tpId);
-			const storageFavList = storageStr
-				.split("&")
-				.filter(str => !(str === ""));
 			let filterList;
 			if (_isFavorite) {
-				filterList = storageFavList.filter(
+				filterList = storageList.filter(
 					item => item !== `${g.tpId}_${g.gameId}`
 				);
 				localStorage.setItem("favorite", filterList.join("&"));
+				setFavoriteStr(filterList.join("&"));
 			} else {
 				localStorage.setItem(
 					"favorite",
+					`${storageStr ?? ""}${storageStr === false ? "" : "&"}${
+						g.tpId
+					}_${g.gameId}`
+				);
+				setFavoriteStr(
 					`${storageStr ?? ""}${storageStr === false ? "" : "&"}${
 						g.tpId
 					}_${g.gameId}`
@@ -110,7 +114,6 @@ GamePanel.defaultProps = {
 	gameList: [],
 	providerList: null,
 	handleSetFavorite: null,
-	renderSlot: null,
 	activeCategory: null
 };
 
@@ -123,7 +126,8 @@ GamePanel.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	imgUrl: PropTypes.string.isRequired,
 	handleSetFavorite: PropTypes.func,
-	renderSlot: PropTypes.func
+	favoriteStr: PropTypes.string.isRequired,
+	setFavoriteStr: PropTypes.func.isRequired
 };
 
 export default GamePanel;
