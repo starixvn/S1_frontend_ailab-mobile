@@ -37,6 +37,9 @@ const Panel = ({ searchInput }) => {
 	const [activeCategory, setActiveCategory] = useState("");
 	const [gameList, setGameList] = useState([]);
 	const [favoriteList, setFavoriteList] = useState([]);
+	const [favoriteStr, setFavoriteStr] = useState(
+		localStorage.getItem("favorite")
+	);
 	const [imageUrl, setImageUrl] = useState("");
 	const [slotDataList, setSlotDataList] = useState([]);
 	const [selGameInfo, setSelGameInfo] = useState(null);
@@ -69,8 +72,8 @@ const Panel = ({ searchInput }) => {
 					tempList.push(item);
 					if (item[0] === "myFavorite") {
 						if (userInfo.isLogin) {
-							const storageStr = localStorage.getItem("favorite");
-							const storageList = storageStr.split("&");
+							const storageStr = favoriteStr ?? "";
+							const storageList = storageStr.split("&") ?? [];
 
 							const addList = [];
 							item[1].forEach(obj => {
@@ -87,6 +90,7 @@ const Panel = ({ searchInput }) => {
 								"favorite",
 								mergeList.join("&")
 							);
+							setFavoriteStr(mergeList.join("&"));
 						}
 					}
 				} else if (item[0] === "imgUrl") {
@@ -152,7 +156,7 @@ const Panel = ({ searchInput }) => {
 		setActiveProvider(provider);
 	};
 
-	const fList = localStorage.getItem("favorite");
+	const randomArray = array => array.sort(() => Math.random() - 0.5);
 
 	const renderSlot = () => {
 		const targetList = slotDataList.find(
@@ -163,50 +167,61 @@ const Panel = ({ searchInput }) => {
 				return (
 					item.tpId === activeProvider?.tpId &&
 					Object.values(item.gameName).find(obj =>
-						obj.includes(searchInput)
+						obj.toLowerCase().includes(searchInput.toLowerCase())
 					)
 				);
 			}
 			return Object.values(item.gameName).find(obj =>
-				obj.includes(searchInput)
+				obj.toLowerCase().includes(searchInput.toLowerCase())
 			);
 		};
 		if (targetList) {
 			if (targetList[0] === "myFavorite") {
 				const tempList = [];
 				const resultList = [];
-				const tempFavoriteStr = localStorage.getItem("favorite");
-				const tempFavoriteList = tempFavoriteStr.split("&");
-				tempFavoriteList.forEach(str => {
+				let storageStr = favoriteStr ?? "";
+				if (storageStr && storageStr.charAt(0) === "&") {
+					storageStr = storageStr.substring(1, storageStr.length);
+				}
+				const storageList = storageStr?.split("&") ?? [];
+				storageList.forEach(str => {
 					const chars = str.split("_");
-					tempList.push({ tpId: chars[0], gameId: chars[1] });
-				});
-				const allList = slotDataList.find(item => item[0] === "all")[1];
-				allList.forEach(allObj => {
-					tempList.forEach(favObj => {
-						if (
-							allObj.tpId === Number(favObj.tpId) &&
-							allObj.gameId === favObj.gameId
-						) {
-							resultList.push(allObj);
-						}
+					tempList.push({
+						tpId: chars[0],
+						gameId: str.replace(`${chars[0]}_`, "")
 					});
 				});
-
+				const allList = slotDataList.find(item => item[0] === "all")[1];
+				tempList.forEach(favObj => {
+					const result = allList.find(
+						allObj =>
+							Number(allObj.tpId) === Number(favObj.tpId) &&
+							allObj.gameId === favObj.gameId
+					);
+					if (result) {
+						resultList.push(result);
+					}
+				});
 				const filterList = resultList.filter(item =>
 					filterHandle(item)
 				);
 				setGameList(filterList);
 			} else {
-				const filterList = targetList[1]?.filter(item =>
-					filterHandle(item)
-				);
+				const filterList =
+					targetList[0] === "all" &&
+					Object.keys(activeProvider).length === 0
+						? randomArray(
+								targetList[1]?.filter(item =>
+									filterHandle(item)
+								)
+						  )
+						: targetList[1]?.filter(item => filterHandle(item));
 				setGameList(filterList);
 			}
 		}
 	};
 
-	let storageStr = localStorage.getItem("favorite");
+	let storageStr = favoriteStr;
 	if (storageStr && storageStr.charAt(0) === "&") {
 		storageStr = storageStr.substring(1, storageStr.length);
 	}
@@ -218,7 +233,6 @@ const Panel = ({ searchInput }) => {
 	};
 	const _isFavorite = handleIsFavorite();
 	const onToggleFavorite = () => {
-		renderSlot();
 		handleSetFavorite(selGameInfo?.gameId, _isFavorite, selGameInfo?.tpId);
 		const storageFavList = storageStr
 			.split("&")
@@ -229,9 +243,15 @@ const Panel = ({ searchInput }) => {
 				item => item !== `${selGameInfo.tpId}_${selGameInfo.gameId}`
 			);
 			localStorage.setItem("favorite", filterList.join("&"));
+			setFavoriteStr(filterList.join("&"));
 		} else {
 			localStorage.setItem(
 				"favorite",
+				`${storageStr ?? ""}${storageStr === false ? "" : "&"}${
+					selGameInfo.tpId
+				}_${selGameInfo.gameId}`
+			);
+			setFavoriteStr(
 				`${storageStr ?? ""}${storageStr === false ? "" : "&"}${
 					selGameInfo.tpId
 				}_${selGameInfo.gameId}`
@@ -294,29 +314,38 @@ const Panel = ({ searchInput }) => {
 		if (activeCategory === "myFavorite") {
 			const tempList = [];
 			const resultList = [];
-			const tempFavoriteList = fList.split("&");
+			const tempFavoriteList = favoriteStr.split("&") ?? [];
 			tempFavoriteList.forEach(str => {
 				const chars = str.split("_");
-				tempList.push({ tpId: chars[0], gameId: chars[1] });
-			});
-			gameList.forEach(item => {
-				tempList.forEach(obj => {
-					if (
-						item.tpId === Number(obj.tpId) &&
-						item.gameId === obj.gameId
-					) {
-						resultList.push(item);
-					}
+				tempList.push({
+					tpId: chars[0],
+					gameId: str.replace(`${chars[0]}_`, "")
 				});
+			});
+
+			const allList = allCategoryList.find(item => item[0] === "all")[1];
+			const filterList = allList.filter(
+				allItem => activeProvider.tpId === allItem.tpId
+			);
+			const judgeList =
+				Object.keys(activeProvider).length > 0 ? filterList : allList;
+			judgeList.forEach(judgeItem => {
+				const result = tempList.find(
+					tempItem =>
+						judgeItem.tpId === Number(tempItem.tpId) &&
+						judgeItem.gameId === tempItem.gameId
+				);
+				if (result) {
+					resultList.push(judgeItem);
+				}
 			});
 			setGameList(resultList);
 		}
-	}, [fList]);
+	}, [favoriteStr]);
 
 	useEffect(() => {
 		getSlotGameData();
-		const tempFavorite = localStorage.getItem("favorite");
-		if (!tempFavorite) {
+		if (!favoriteStr) {
 			localStorage.setItem("favorite", "");
 		}
 	}, []);
@@ -393,10 +422,11 @@ const Panel = ({ searchInput }) => {
 				activeProvider={activeProvider}
 				activeCategory={activeCategory}
 				handleSetFavorite={handleSetFavorite}
-				renderSlot={renderSlot}
 				i18n={i18n}
 				imgUrl={imageUrl}
 				ref={gameListRef}
+				favoriteStr={favoriteStr}
+				setFavoriteStr={setFavoriteStr}
 			/>
 
 			{selGameInfo === null ? null : (
