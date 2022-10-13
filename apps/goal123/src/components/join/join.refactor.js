@@ -2,9 +2,7 @@ import React, { useEffect, useState, useContext, useRef } from "react";
 import { useMatch, Redirect, useNavigate } from "@reach/router";
 import Inputbox from "../common/inputbox.info";
 import InputboxPWD from "../common/inputbox.password.info";
-import Dropdown from "../common/dropdown";
 import Checkbox from "../common/checkbox";
-import Tips from "./tips";
 import {
 	api_ExistsUserName,
 	api_GetSiteCurrencyList,
@@ -199,20 +197,6 @@ const Join = () => {
 		}
 
 		return { checked, msg };
-	};
-
-	const selectCurrency = i => {
-		setInputStatus(prev => ({
-			...prev,
-			Currency: {
-				checked: true,
-				msg: i18n.lbl_PreferredCurrencyToolTip
-			}
-		}));
-		setUserValue(prev => ({
-			...prev,
-			Currency: i
-		}));
 	};
 
 	const EditField = ({ col }, e) => {
@@ -425,29 +409,6 @@ const Join = () => {
 						})}
 						testAttr="Password"
 					/>
-					<div className="inputBox">
-						<Dropdown
-							colName="Currency"
-							mainKey="join-curr"
-							selectedIdx={userValue.Currency}
-							options={siteCurrencyList}
-							onSelectItem={selectCurrency}
-							i18n={i18n}
-						/>
-						<Tips
-							Icon="icon-coin-dollar"
-							ClassName="JoinRule"
-							IsOpen={Boolean(inputStatus.Currency.msg)}>
-							{inputStatus.Currency.msg}
-						</Tips>
-					</div>
-					{/* <Inputbox
-					icon="icon icon-promotion"
-					placeholder={i18n.lbl_PromoCode}
-					value={userValue.SpecialBonusCode}
-					onChange={EditField.bind(this, { col: "SpecialBonusCode" })}
-					onBlur={checkValue.bind(this, { col: "SpecialBonusCode" })}
-				/> */}
 					<Inputbox
 						icon="icon icon-affiliate"
 						placeholder={i18n.lbl_Affiliate_ID}

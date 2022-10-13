@@ -255,7 +255,7 @@ const IndexPage = () => {
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
 	) : (
-		<Layout header={header} mainClass="mainNew">
+		<Layout header={header} mainClass="mainNew" appHint={appHint}>
 			{userInfo.isLogin ? (
 				<HeaderShortcut userInfo={userInfo} i18n={i18n} />
 			) : null}

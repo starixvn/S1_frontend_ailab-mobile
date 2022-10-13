@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import PropTypes, { string } from "prop-types";
+import PropTypes from "prop-types";
 import { userInfoContext, i18nContext, rootContext } from "Context";
 import { Link } from "@reach/router";
 import Logo from "../common/logo";
@@ -29,7 +29,9 @@ const Header = ({
 	hideId,
 	isShowInput,
 	searchInput,
-	setSearchInput
+	setSearchInput,
+	appHint,
+	setAppHint
 }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
@@ -91,7 +93,12 @@ const Header = ({
 		<header className={headerClassName} id={hideId ? "" : id}>
 			{hideLogo ? null : (
 				<>
-					<AppDownloadHint i18n={i18n} root={root} />
+					<AppDownloadHint
+						i18n={i18n}
+						root={root}
+						appHint={appHint}
+						setAppHint={setAppHint}
+					/>
 					{userInfo.isLogin ? (
 						<Balance i18n={i18n} userInfo={userInfo} />
 					) : null}
@@ -138,8 +145,10 @@ Header.defaultProps = {
 	id: "header",
 	hideId: false,
 	isShowInput: false,
-	searchInput: string,
-	setSearchInput: null
+	searchInput: "",
+	setSearchInput: null,
+	appHint: false,
+	setAppHint: null
 };
 
 Header.propTypes = {
@@ -154,7 +163,9 @@ Header.propTypes = {
 	hideId: PropTypes.bool,
 	isShowInput: PropTypes.bool,
 	searchInput: PropTypes.string,
-	setSearchInput: PropTypes.func
+	setSearchInput: PropTypes.func,
+	appHint: PropTypes.bool,
+	setAppHint: PropTypes.func
 };
 
 HeaderTitle.defaultProps = {

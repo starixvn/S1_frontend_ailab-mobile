@@ -103,13 +103,13 @@ const PromotionInfoContent = ({
 PromotionInfoContent.defaultProps = {
 	promotionInfo: null,
 	getPromotionDetail: () => null,
-	showAllPromosBtn: null,
+	showAllPromosBtn: () => null,
 	filterType: null
 };
 
 PromotionInfoContent.propTypes = {
 	promotionInfo: PropTypes.objectOf(PropTypes.any),
 	getPromotionDetail: PropTypes.func,
-	showAllPromosBtn: PropTypes.bool,
+	showAllPromosBtn: PropTypes.func,
 	filterType: PropTypes.string
 };

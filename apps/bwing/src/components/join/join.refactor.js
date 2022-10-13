@@ -2,9 +2,7 @@ import React, { useEffect, useState, useContext, useRef } from "react";
 import { useMatch, useNavigate } from "@reach/router";
 import Inputbox from "../common/inputbox.info";
 import InputboxPWD from "../common/inputbox.password.info";
-import Dropdown from "../common/dropdown";
 import Checkbox from "../common/checkbox";
-import Tips from "./tips";
 import {
 	api_ExistsUserName,
 	api_GetSiteCurrencyList,
@@ -238,20 +236,6 @@ const Join = () => {
 		return { checked, msg };
 	};
 
-	const selectCurrency = i => {
-		setInputStatus(prev => ({
-			...prev,
-			Currency: {
-				checked: true,
-				msg: i18n.lbl_PreferredCurrencyToolTip
-			}
-		}));
-		setUserValue(prev => ({
-			...prev,
-			Currency: i
-		}));
-	};
-
 	const EditField = ({ col }, e) => {
 		const val = col.includes("Check") ? !userValue[col] : e.target.value;
 		setUserValue(prev => ({
@@ -276,7 +260,7 @@ const Join = () => {
 		const UserNameCheck = await userNameCheck({ val: userValue.UserName });
 		const PasswordCheck = passwordCheck({ val: userValue.Password, i18n });
 		const PhoneCheck = await phoneCheck({ val: userValue.Phone });
-		const CheckboxCheck = userValue.termsCheck && userValue.ageCheck;
+		const CheckboxCheck = userValue.agreeCheck;
 
 		checked =
 			UserNameCheck.checked &&
@@ -387,7 +371,7 @@ const Join = () => {
 					msg: PhoneCheck.msg
 				},
 				Checkbox: {
-					checked: userValue.termsCheck && userValue.ageCheck,
+					checked: userValue.agreeCheck,
 					msg: i18n.lbl_Check18TCTooltip
 				}
 			}));
@@ -466,22 +450,6 @@ const Join = () => {
 					})}
 					testAttr="Password"
 				/>
-				<div className="inputBox">
-					<Dropdown
-						mainKey="join-curr"
-						colName="Currency"
-						selectedIdx={userValue.Currency}
-						options={siteCurrencyList}
-						onSelectItem={selectCurrency}
-						i18n={i18n}
-					/>
-					<Tips
-						Icon="icon-coin-dollar"
-						IsOpen={inputStatus.Currency.checked}
-						ClassName="JoinRule">
-						{inputStatus.Currency.msg}
-					</Tips>
-				</div>
 				<div className="inputPhone parts">
 					<span className="countryCode">{_areaCode}</span>
 					<Inputbox
@@ -518,10 +486,10 @@ const Join = () => {
 				/>
 				<div className="Terms">
 					<Checkbox
-						testAttr="iAgree1"
-						checked={userValue.termsCheck}
-						onChange={EditField.bind(this, { col: "termsCheck" })}
-						id="joinTermsCheck">
+						testAttr="agreeCheck"
+						checked={userValue.agreeCheck}
+						onChange={EditField.bind(this, { col: "agreeCheck" })}
+						id="joinAgreeCheck">
 						{i18n.lbl_Check18TC1} &nbsp;
 						<a
 							target="_blank"
@@ -537,12 +505,7 @@ const Join = () => {
 							{i18n.lbl_RuleRegulations}
 						</a>
 						&nbsp; {i18n.lbl_Check18TC3}&nbsp;{config.siteName}
-					</Checkbox>
-					<Checkbox
-						testAttr="iAgree2"
-						id="joinAgeCheck"
-						checked={userValue.ageCheck}
-						onChange={EditField.bind(this, { col: "ageCheck" })}>
+						.&nbsp;
 						{i18n.lbl_Check18TC4}
 					</Checkbox>
 					{inputStatus.Checkbox.msg ? (

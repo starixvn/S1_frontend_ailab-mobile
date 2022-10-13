@@ -38,7 +38,7 @@ const Panel = () => {
 	const _initUserValue = initUserValue(userInfo);
 	const [userValue, setuserValue] = useState(_initUserValue);
 	const country = userInfo.country ?? userInfo.perCountry;
-	const _areaCode = country ? areaCode[country].AreaCode : "";
+	const _areaCode = country ? areaCode[country]?.AreaCode : "Vietnam";
 	const _infoList = infoList({ i18n, userInfo, _areaCode });
 	const isMountedRef = useRef(null);
 

@@ -90,9 +90,9 @@ export default class BaseAPI {
 			baseURL: `${apiUrl}/api/HotEvent`
 		});
 
-    this.gameRequest = axios.create({
-      withCredentials: true,
-      baseURL: `${apiUrl}/api/Game`
-    });
+		this.gameRequest = axios.create({
+			withCredentials: true,
+			baseURL: `${apiUrl}/api/Game`
+		});
 	}
 }
