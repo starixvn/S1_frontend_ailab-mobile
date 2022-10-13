@@ -14,7 +14,9 @@ import path from "../../path";
 import { bannerImgUrl } from "../../config";
 
 const Menu = ({ i18n, userInfo, setPopBox }) => {
-	const [selectedCol, setSelectedCol] = useState("");
+	const [selectedCol, setSelectedCol] = useState(
+		Object.keys(productList(userInfo.langId))[1]
+	);
 	const { setNav } = useContext(navContext);
 	const [showingTpIds, setShowningTpIds] = useState(null);
 	const { maintainList } = useGetTpMaintainList();
