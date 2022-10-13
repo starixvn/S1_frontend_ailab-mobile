@@ -43,7 +43,8 @@ export const defSlotTpGameType = {
 	RedTiger: { tpId: 38, tpGameType: 65 },
 	AdvantPlay: { tpId: 39, tpGameType: 67 },
 	Mega888: { tpId: 22, tpGameType: 34 },
-	Habanero: { tpId: 40, tpGameType: 68 }
+	Habanero: { tpId: 40, tpGameType: 68 },
+	SimplePlay: { tpId: 44, tpGameType: 86 }
 };
 
 const defSortSports = {
@@ -122,6 +123,7 @@ const defSortSlot = {
 		"slot_AdvantPlay",
 		"slot_PP",
 		"slot_Mega888",
+		"slot_SimplePlay",
 		"slot_Habanero",
 		"slot_NetEnt",
 		"slot_MGPSW",
@@ -142,6 +144,7 @@ const defSortSlot = {
 		"slot_AdvantPlay",
 		"slot_PP",
 		"slot_Mega888",
+		"slot_SimplePlay",
 		"slot_Habanero",
 		"slot_NetEnt",
 		"slot_MGPSW",
@@ -161,6 +164,7 @@ const defSortSlot = {
 		"slot_AdvantPlay",
 		"slot_PP",
 		"slot_Mega888",
+		"slot_SimplePlay",
 		"slot_Habanero",
 		"slot_NetEnt",
 		"slot_MGPSW",
@@ -181,6 +185,7 @@ const defSortSlot = {
 		"slot_RedTiger",
 		"slot_AdvantPlay",
 		"slot_PP",
+		"slot_SimplePlay",
 		"slot_Habanero",
 		"slot_MGPSW",
 		"slot_JI",
@@ -502,6 +507,21 @@ const gameList = ({ langId }) => {
 					path: path.mega888.root,
 					alwaysShowOnSlotLobby: true,
 					sortKey: "slot_Mega888"
+				},
+				{
+					...defGameInfo.Casino_SimplePlay,
+					parameter: defGameInfo.Casino_SimplePlay,
+					spanText: "SimplePlay",
+					providerImgName: "casino_simpleplay",
+					img: `${cloudBannerImgURL}/h5/img/simpleplay.png`,
+					path: path.casino.root,
+					sortKey: "slot_SimplePlay",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.casino_SimplePlay)
+						}
+					]
 				},
 				{
 					...defGameInfo.Casino_Habanero,
@@ -907,6 +927,7 @@ export const defGameInfo = {
 	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
 	Casino_Habanero: { tpId: 40, tpGameType: 68 },
 	Casino_AMB: { tpId: 30, tpGameType: 76 },
+	Casino_SimplePlay: { tpId: 44, tpGameType: 86 },
 	Fishing_AB3: { tpId: 16, gameId: "AB3", tpGameType: 44 },
 	Fishing_AT05: { tpId: 16, gameId: "AT05", tpGameType: 44 },
 	Fishing_AT01: { tpId: 16, gameId: "AT01", tpGameType: 44 },

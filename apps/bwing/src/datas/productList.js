@@ -39,6 +39,7 @@ export const defGameInfo = {
 	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
 	Casino_AdvantPlay: { tpId: 39, tpGameType: 67 },
 	Casino_Habanero: { tpId: 40, tpGameType: 68 },
+	Casino_SimplePlay: { tpId: 44, tpGameType: 86 },
 	Fishing: { gameId: 10, tpId: 7, tpGameType: 12 },
 	Fishing_SG: { gameId: "F-SF01", tpId: 10, tpGameType: 31 },
 	Fishing_SGW: { gameId: "F-SF02", tpId: 10, tpGameType: 31 },
@@ -93,6 +94,11 @@ export const slotPlatform = [
 		...defGameInfo.Casino_NetEnt,
 		path: path.casino.root,
 		imgName: "ne"
+	},
+	{
+		...defGameInfo.Casino_SimplePlay,
+		path: path.casino.root,
+		imgName: "simpleplay"
 	},
 	{
 		...defGameInfo.Casino_RedTiger,
@@ -162,7 +168,8 @@ export const defSlotTpGameType = {
 	NetEnt: { tpId: 37, tpGameType: 64 },
 	RedTiger: { tpId: 38, tpGameType: 65 },
 	AdvantPlay: { tpId: 39, tpGameType: 67 },
-	Habanero: { tpId: 40, tpGameType: 68 }
+	Habanero: { tpId: 40, tpGameType: 68 },
+	SimplePlay: { tpId: 44, tpGameType: 86 }
 };
 
 export const sportStreamDef = {

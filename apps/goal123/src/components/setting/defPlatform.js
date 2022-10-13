@@ -94,7 +94,7 @@ const defPlatfrom = [
 		...defGameInfo.Casino_NetEnt,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_NetEnt },
-		imgName: "ne"
+		imgName: "nea"
 	},
 	{
 		...defGameInfo.LIVEcasinoEVO,
@@ -110,13 +110,19 @@ const defPlatfrom = [
 		...defGameInfo.Casino_AdvantPlay,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_AdvantPlay },
-		imgName: "ap"
+		imgName: "apa"
 	},
 	{
 		...defGameInfo.Casino_Habanero,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_Habanero },
 		imgName: "habaneroa"
+	},
+	{
+		...defGameInfo.Casino_SimplePlay,
+		path: path.casino.root,
+		parameter: { ...defGameInfo.Casino_SimplePlay },
+		imgName: "simpleplaya"
 	}
 ];
 
