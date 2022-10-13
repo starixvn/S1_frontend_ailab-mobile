@@ -6263,6 +6263,11 @@ span.important {
   z-index: 1;
 }
 
+.headerB .nav.active.hoticon::before {
+  top: 0;
+  z-index: 1;
+}
+
 .headerB .nav.newicon::before {
   content: "NEW";
   position: absolute;
