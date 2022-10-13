@@ -27,7 +27,8 @@ export const defSlotTpGameType = {
 	MG: { tpId: 34, tpGameType: 57 },
 	NetEnt: { tpId: 37, tpGameType: 64 },
 	RedTiger: { tpId: 38, tpGameType: 65 },
-	AdvantPlay: { tpId: 39, tpGameType: 67 }
+	AdvantPlay: { tpId: 39, tpGameType: 67 },
+	SimplePlay: { tpId: 44, tpGameType: 86 }
 };
 
 export const productList = langId => {
@@ -233,11 +234,18 @@ export const productList = langId => {
 					parameter: defGameInfo.Casino_NetEnt,
 					path: path.casino.root,
 					displayText: "NetEnt",
-					img: `${bannerImgUrl}/h5/img/slot/ne.png`,
+					img: `${bannerImgUrl}/h5/img/slot/ne.png`
+				},
+				{
+					...defGameInfo.Casino_SimplePlay,
+					parameter: defGameInfo.Casino_SimplePlay,
+					path: path.casino.root,
+					displayText: "SimplePlay",
+					img: `${bannerImgUrl}/h5/img/slot/simpleplay.png`,
 					eventIcon: [
 						{
 							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.casino_NetEnt)
+							inPeriod: isEventPeriod(eventTime.casino_SimplePlay)
 						}
 					]
 				},

@@ -49,6 +49,7 @@ export const defGameInfo = {
 	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
 	Casino_AdvantPlay: { tpId: 39, tpGameType: 67 },
 	Casino_Habanero: { tpId: 40, tpGameType: 68 },
+	Casino_SimplePlay: { tpId: 44, tpGameType: 86 },
 	LIVEcasinoN2: { tpId: 28, tpGameType: 45 },
 	LIVEcasinoWM: { gameId: 20, tpId: 20, tpGameType: 32 },
 	LIVEcasinoDG: { tpId: 4, gameId: 4, tpGameType: 10 },
@@ -107,7 +108,8 @@ export const defSlotTpGameType = {
 	NetEnt: { tpId: 37, tpGameType: 64 },
 	RedTiger: { tpId: 38, tpGameType: 65 },
 	AdvantPlay: { tpId: 39, tpGameType: 67 },
-	Habanero: { tpId: 40, tpGameType: 68 }
+	Habanero: { tpId: 40, tpGameType: 68 },
+	SimplePlay: { tpId: 44, tpGameType: 86 }
 };
 
 const gameList = [
@@ -429,11 +431,19 @@ const gameList = [
 				spanText: "NetEnt",
 				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-ne.png`,
 				path: path.casino.root,
-				providerImgName: "ne",
+				providerImgName: "ne"
+			},
+			{
+				...defGameInfo.Casino_SimplePlay,
+				parameter: defGameInfo.Casino_SimplePlay,
+				spanText: "SimplePlay",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-simpleplay.png`,
+				path: path.casino.root,
+				providerImgName: "simpleplay",
 				eventIcon: [
 					{
 						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.casino_NetEnt)
+						inPeriod: isEventPeriod(eventTime.casino_SimplePlay)
 					}
 				]
 			},
