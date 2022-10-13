@@ -62,7 +62,7 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 				style={position}
 				className={`${mainClass ?? ""}${
 					appHint ? " openAppDownload" : ""
-				}`}>
+				} ${appHint && root ? "active" : ""}`}>
 				{children}
 				{loading ? <Loading /> : null}
 			</main>

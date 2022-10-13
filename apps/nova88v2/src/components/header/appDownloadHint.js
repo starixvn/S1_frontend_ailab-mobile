@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { setCookie, readCookie } from "../common/common";
 import { Link } from "../../route/link";
 import path from "../../path";
 import { cloudBannerImgURL } from "../../config";
 
-const AppDownloadHint = ({ i18n, root }) => {
-	const [appHint, setAppHint] = useState(false);
-
+const AppDownloadHint = ({ i18n, root, appHint, setAppHint }) => {
 	useEffect(() => {
 		if (readCookie("AppDownloadHint") !== "1") {
 			setAppHint(true);
@@ -39,7 +37,9 @@ const AppDownloadHint = ({ i18n, root }) => {
 
 AppDownloadHint.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	root: PropTypes.bool.isRequired
+	root: PropTypes.bool.isRequired,
+	appHint: PropTypes.bool.isRequired,
+	setAppHint: PropTypes.func.isRequired
 };
 
 export default AppDownloadHint;

@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import {
 	i18nContext,
 	userInfoContext,
@@ -32,6 +32,7 @@ const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
+	const [appHint, setAppHint] = useState(false);
 	// const { SEODatas } = useGetSEODatas({ getFromAPI: true });
 
 	useEffect(() => {
@@ -127,7 +128,8 @@ const IndexPage = () => {
 
 	return (
 		<PromotionWrapper>
-			<Layout header={<Header />}>
+			<Layout
+				header={<Header appHint={appHint} setAppHint={setAppHint} />}>
 				{userInfo.isLogin ? <HeaderShortcut i18n={i18n} /> : null}
 				<Slider />
 				<Marquee />

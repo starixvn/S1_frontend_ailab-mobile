@@ -242,7 +242,7 @@ const Layout = ({ children }) => {
 	const navigate = useNavigate();
 	const pageInfo = GetPageInfo(location.pathname);
 	const [luckyWheel, setLuckyWheel] = useState(false);
-
+	const [appHint, setAppHint] = useState(false);
 	if (root) {
 		pageInfo.className = userInfo.isLogin ? "mainLogin" : "mainLogout";
 	}
@@ -273,10 +273,17 @@ const Layout = ({ children }) => {
 						title={i18n[pageInfo.titleKey] ?? pageInfo.titleKey}
 						hideLogo={pageInfo.hideLogo}
 						showMenuBar={pageInfo.showMenuBar === true}
+						appHint={appHint}
+						setAppHint={setAppHint}
 					/>
 					<Join />
 					<Login />
-					<main className={pageInfo.className ?? ""}>{children}</main>
+					<main
+						className={`${pageInfo.className ?? ""} ${
+							appHint && root ? "active" : ""
+						}`}>
+						{children}
+					</main>
 				</>
 			)}
 			{loading ? <Loading /> : null}
