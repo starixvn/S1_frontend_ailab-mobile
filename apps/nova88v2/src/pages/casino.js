@@ -1,6 +1,11 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import { i18nContext, userInfoContext, popBoxContext } from "Context";
+import {
+	i18nContext,
+	userInfoContext,
+	popBoxContext,
+	loadingContext
+} from "Context";
 import { Link } from "../route/link";
 import Layout from "../components/common/layout";
 import Header from "../components/header/header";
@@ -23,6 +28,7 @@ const Panel = ({ searchInput }) => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
+	const { setLoading } = useContext(loadingContext);
 	const [listFixed, setListFixed] = useState(false);
 	const [providerList, setProviderList] = useState([]);
 	const [activeProvider, setActiveProvider] = useState({});
@@ -38,6 +44,7 @@ const Panel = ({ searchInput }) => {
 	const splitList = window.location.href.split("/");
 	const pathTpId = splitList[splitList.length - 1];
 	const getSlotGameData = async () => {
+		setLoading(true);
 		try {
 			const res = await api.game.GetSlotGamePage({ deviceType: 2 });
 			const { providerList: pList } = res.data.data;
@@ -114,11 +121,13 @@ const Panel = ({ searchInput }) => {
 				item => item[0] === _list[1]
 			)[1];
 			setGameList(targetList);
+			setLoading(false);
 		} catch (error) {
 			setPopBox({
 				isOpen: true,
 				content: error
 			});
+			setLoading(false);
 		}
 	};
 
