@@ -49,7 +49,9 @@ const Panel = ({ searchInput }) => {
 	const getSlotGameData = async () => {
 		setLoading(true);
 		try {
-			const res = await api.game.GetSlotGamePage({ deviceType: 2 });
+			const res = await api.game.GetSlotGamePage({
+				currencyId: userInfo.currencyId
+			});
 			const { providerList: pList } = res.data.data;
 			const targetProvider = pList.find(
 				obj => obj.tpId === Number(pathTpId)
