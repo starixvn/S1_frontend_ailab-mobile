@@ -69,7 +69,7 @@ const Panel = () => {
 	useEffect(() => {
 		if (
 			userInfo.isLogin &&
-			userInfo.currencyId === defCurrenyId.INR &&
+			userInfo.currencyId === defCurrenyId.IDR &&
 			!userInfo.phoneVerified
 		) {
 			setPopBox({
@@ -98,7 +98,7 @@ const Panel = () => {
 				)
 			});
 		}
-	}, [userInfo.currencyId]);
+	}, [userInfo.phoneVerified]);
 
 	const GetDailyWithdrawalLimit = () => {
 		api.payment.GetWithdrawalLimit().then(
@@ -325,7 +325,16 @@ const Panel = () => {
 		const real_amount = _isConvert
 			? Number(_amount) * 1000
 			: Number(_amount);
+
 		if (
+			!withdrawalLimit.unlimited &&
+			real_amount > withdrawalLimit.eWalletWithdrawalAvailableAmount
+		) {
+			result = {
+				status: defIptStatus.warning,
+				msg: i18n.lbl_NotinLimit
+			};
+		} else if (
 			!withdrawalLimit.unlimited &&
 			real_amount > withdrawalLimit.withdrawalAvailableAmount
 		) {
@@ -533,14 +542,6 @@ const Panel = () => {
 								<li>
 									{number_format(real_amount, _isConvert)}
 								</li>
-								{userInfo.currencyId === defCurrenyId.INR ? (
-									<>
-										<li className="text-org">
-											{i18n.lbl_IFSCCode} :
-										</li>
-										<li>{selBank.ifscCode}</li>
-									</>
-								) : null}
 							</ul>
 						</div>
 					),
@@ -707,12 +708,13 @@ const Panel = () => {
 			withdrawalLimit.unlimited
 				? i18n.lbl_Unlimited
 				: number_format(
-						withdrawalLimit.withdrawalAvailableAmount,
+						withdrawalLimit.eWalletWithdrawalAvailableAmount,
 						_isConvert,
 						0
 				  )
 		}`;
 	};
+
 	const placeHolder = placeHolderHandle();
 	return pageVerify ? (
 		<>
@@ -730,19 +732,12 @@ const Panel = () => {
 				/>
 			</div>
 
-			<>
-				<div className="selectBank">
-					{banks}
-					{bankInfo?.bankList?.length < 3 ? (
-						<Link to={path.eWallet.root} />
-					) : null}
-				</div>
-				{userInfo.currencyId === defCurrenyId.INR ? (
-					<div className="ifsc">
-						{i18n.lbl_IFSCCode}:<span>{selBank?.ifscCode}</span>
-					</div>
+			<div className="selectBank">
+				{banks}
+				{bankInfo?.bankList?.length < 3 ? (
+					<Link to={path.eWallet.root} />
 				) : null}
-			</>
+			</div>
 			<div className="text">{i18n.lbl_EWallet_Hint}</div>
 			<BalancePanel
 				currencyId={userInfo.currencyId}
@@ -765,7 +760,9 @@ const Panel = () => {
 			/>
 			<div className="text-org">
 				<span>
-					{`${i18n.lbl_Times}: ${withdrawalLimit.withdrawalTimes} / ${
+					{`${i18n.lbl_Times}: ${
+						withdrawalLimit?.withdrawalTimes
+					} / ${
 						withdrawalLimit.maxTimes
 							? withdrawalLimit?.maxTimes
 							: i18n.lbl_Unlimited

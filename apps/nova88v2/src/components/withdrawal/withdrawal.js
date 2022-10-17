@@ -125,7 +125,7 @@ const Panel = () => {
 	useEffect(() => {
 		if (
 			userInfo.isLogin &&
-			userInfo.currencyId &&
+			userInfo.regTime &&
 			(!userInfo.accountName || !userInfo.phoneNo)
 		) {
 			const ClosePopBox = () => {

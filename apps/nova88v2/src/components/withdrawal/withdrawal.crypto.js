@@ -169,7 +169,7 @@ const Panel = () => {
 			return;
 		}
 		const curNetwork = selBank?.network;
-		const cryptoLimit = allWithdrawalLimit?.usdtList.find(
+		const cryptoLimit = allWithdrawalLimit?.usdtList?.find(
 			el =>
 				el.network === curNetwork &&
 				el.currencyId === selBank?.currencyId
@@ -196,7 +196,7 @@ const Panel = () => {
 	useEffect(() => {
 		if (
 			userInfo.isLogin &&
-			userInfo.currencyId &&
+			userInfo.regTime &&
 			(!userInfo.accountName || !userInfo.phoneNo)
 		) {
 			const ClosePopBox = () => {
