@@ -1,6 +1,9 @@
-import BaseAPI from "./base";
+import BaseAPI, { defDeviceType } from "./base";
 
 export class GameAPI extends BaseAPI {
-	GetSlotGamePage = ({ deviceType }) =>
-		this.gameRequest.post(`/GetSlotGamePage`, { deviceType });
+	GetSlotGamePage = ({ currencyId }) =>
+		this.gameRequest.post(`/GetSlotGamePage`, {
+			DeviceType: defDeviceType.Mobile,
+			currencyId
+		});
 }
