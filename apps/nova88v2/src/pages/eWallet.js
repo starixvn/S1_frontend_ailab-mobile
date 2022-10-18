@@ -10,7 +10,10 @@ const IndexPage = props => {
 	const { userInfo } = useContext(userInfoContext);
 
 	let defTabs = myWallet;
-	if (userInfo.currencyId === defCurrenyId.IDR) {
+	if (
+		userInfo.currencyId === defCurrenyId.IDR ||
+		userInfo.currencyId === defCurrenyId.MYR
+	) {
 		defTabs = myWalletWithEWallet;
 	}
 

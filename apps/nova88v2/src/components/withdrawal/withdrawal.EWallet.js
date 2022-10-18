@@ -69,7 +69,8 @@ const Panel = () => {
 	useEffect(() => {
 		if (
 			userInfo.isLogin &&
-			userInfo.currencyId === defCurrenyId.IDR &&
+			(userInfo.currencyId === defCurrenyId.IDR ||
+				userInfo.currencyId === defCurrenyId.MYR) &&
 			!userInfo.phoneVerified
 		) {
 			setPopBox({

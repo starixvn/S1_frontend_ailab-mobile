@@ -28,7 +28,10 @@ const IndexPage = props => {
 	const { isShowEWallet } = useContext(eWalletContext);
 
 	let defTabs = withdrawal;
-	if (userInfo.currencyId === defCurrenyId.IDR) {
+	if (
+		userInfo.currencyId === defCurrenyId.IDR ||
+		userInfo.currencyId === defCurrenyId.MYR
+	) {
 		defTabs = withdrawalWithEWallet;
 	} else if (!allowBankInfoCurrency.includes(userInfo.currencyId)) {
 		defTabs = withdrawalWithoutBankInfo;
@@ -40,7 +43,6 @@ const IndexPage = props => {
 			navigate(`/${userInfo.langId}/${path.cryptoWithdrawal.root}`);
 		}
 	}, []);
-
 	const judgeShowPage = () => {
 		if (props.isCrypto) {
 			return <CryptoWithdrawal />;
