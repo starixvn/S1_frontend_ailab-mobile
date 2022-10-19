@@ -81,13 +81,13 @@ export const reCaptchaEnum = {
 };
 
 export const reCaptchaDomainExtraList = [
-	"nova88101.net",
-	"nova88102.net",
-	"nova88103.net",
-	"nova88105.net",
-	"nova88106.net",
-	"nova88801.net",
-	"nova88mas801.com",
-	"nova88bkk801.com",
-	"nova88india801.com"
+	"www.nova88101.net",
+	"www.nova88102.net",
+	"www.nova88103.net",
+	"www.nova88105.net",
+	"www.nova88106.net",
+	"www.nova88801.net",
+	"www.nova88mas801.com",
+	"www.nova88bkk801.com",
+	"www.nova88india801.com"
 ];
