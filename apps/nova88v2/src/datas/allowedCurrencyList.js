@@ -25,7 +25,7 @@ const allowedCurrencyList = {
 	liveCasinoWM: [defCurrenyId.MYR, defCurrenyId.THB, defCurrenyId.IDR],
 
 	// slot
-	slotAMB: [defCurrenyId.THB, defCurrenyId.USD],
+	slotAMB: [defCurrenyId.THB, defCurrenyId.USD, defCurrenyId.CNY],
 	slotSaba: [
 		defCurrenyId.IDR,
 		defCurrenyId.MYR,
