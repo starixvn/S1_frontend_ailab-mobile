@@ -5,20 +5,6 @@ import { number_format } from "../common/common";
 import { defRuleCols, defPromotionType } from "../common/def";
 import { configContext } from "../common/context";
 
-const visitorCurrency = {
-	en: 2,
-	th: 4,
-	id: 15,
-	cs: 2,
-	my: 2,
-	hi: 61,
-	hi_en: 61,
-	id_en: 15,
-	th_en: 4,
-	bd_en: 74,
-	bd: 74
-};
-
 const MinAmount = ({
 	requiredAmount,
 	displayText,
@@ -26,10 +12,7 @@ const MinAmount = ({
 	showIcon
 }) => {
 	const { userInfo, i18n } = useContext(configContext);
-	const _currencyId = userInfo.isLogin
-		? userInfo.currencyId
-		: visitorCurrency[userInfo.langId];
-	const value = `${i18n[`Currency_${_currencyId}`]} ${number_format(
+	const value = `${i18n[`Currency_${userInfo.currencyId}`]} ${number_format(
 		requiredAmount,
 		formatSetting
 	)}`;
@@ -111,9 +94,6 @@ KeyValue.propTypes = {
 
 const Bonus = ({ value, displayText, bonusType, icon, showIcon }) => {
 	const { userInfo, i18n } = useContext(configContext);
-	const _currencyId = userInfo.isLogin
-		? userInfo.currencyId
-		: visitorCurrency[userInfo.langId];
 	return (
 		<div>
 			<div className={showIcon ? icon : ""}>
@@ -122,7 +102,9 @@ const Bonus = ({ value, displayText, bonusType, icon, showIcon }) => {
 			{bonusType === 1 ? (
 				<div>{`${value}%`}</div>
 			) : (
-				<div>{`${i18n[`Currency_${_currencyId}`]} ${value}`}</div>
+				<div>
+					{`${i18n[`Currency_${userInfo.currencyId}`]} ${value}`}
+				</div>
 			)}
 		</div>
 	);
@@ -146,16 +128,13 @@ Bonus.propTypes = {
 
 const MaxBonus = ({ value, displayText, bonusType, icon, showIcon }) => {
 	const { userInfo, i18n } = useContext(configContext);
-	const _currencyId = userInfo.isLogin
-		? userInfo.currencyId
-		: visitorCurrency[userInfo.langId];
 	if (bonusType === 2) return null;
 	return (
 		<div>
 			<div className={showIcon ? icon : ""}>
 				{displayText?.toUpperCase()}
 			</div>
-			<div>{`${i18n[`Currency_${_currencyId}`]} ${value}`}</div>
+			<div>{`${i18n[`Currency_${userInfo.currencyId}`]} ${value}`}</div>
 		</div>
 	);
 };
