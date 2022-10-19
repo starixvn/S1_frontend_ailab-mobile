@@ -65,3 +65,29 @@ export const currencyToAreacode = {
 	61: "IN",
 	74: "BD"
 };
+
+export const reCaptchaEnum = {
+	en: "en",
+	cs: "zh-CN",
+	hi: "hi",
+	hi_en: "en",
+	id: "id",
+	id_en: "en",
+	my: "ms",
+	th: "th",
+	th_en: "en",
+	bd: "bn",
+	bd_en: "en"
+};
+
+export const reCaptchaDomainExtraList = [
+	"nova88101.net",
+	"nova88102.net",
+	"nova88103.net",
+	"nova88105.net",
+	"nova88106.net",
+	"nova88801.net",
+	"nova88mas801.com",
+	"nova88bkk801.com",
+	"nova88india801.com"
+];

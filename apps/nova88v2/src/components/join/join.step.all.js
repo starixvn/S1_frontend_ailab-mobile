@@ -4,6 +4,7 @@ import { i18nContext, userInfoContext } from "../common/context";
 import { SEO } from "../seo/seo";
 import JoinStep1 from "./join.step1";
 import JoinStep2 from "./join.step2";
+import JoinStep3 from "./join.step3";
 import { initValue, initStatus } from "./join.def";
 import path from "../../path";
 import { defCurrenyId, getLocalStorage } from "../common/common";
@@ -38,6 +39,47 @@ const JoinStepAll = () => {
 		lineLogin({ type: defType.register });
 	};
 
+	const judgeStepHandle = () => {
+		let content;
+		switch (step) {
+			case 1:
+				content = (
+					<JoinStep1
+						i18n={i18n}
+						userValue={userValue}
+						hintStatus={hintStatus}
+						setHintStatus={setHintStatus}
+						EditField={EditField}
+						langId={userInfo.langId}
+						setStep={setStep}
+					/>
+				);
+				break;
+			case 2:
+				content = (
+					<JoinStep2
+						i18n={i18n}
+						userValue={userValue}
+						hintStatus={hintStatus}
+						setHintStatus={setHintStatus}
+						EditField={EditField}
+						userInfo={userInfo}
+						setUserValue={setUserValue}
+						setUserInfo={setUserInfo}
+						lineUserId={lineUserId}
+						setStep={setStep}
+					/>
+				);
+				break;
+			case 3:
+				content = <JoinStep3 />;
+				break;
+			default:
+				break;
+		}
+		return content;
+	};
+
 	return (
 		<>
 			{(userInfo.langId === "th" ||
@@ -64,44 +106,33 @@ const JoinStepAll = () => {
 				</div>
 				<div className={`circle${step === 1 ? " active" : ""}`}>
 					<div>
-						<div className="icon icon-checkmark" />
+						{step > 1 ? (
+							<div className="icon icon-checkmark" />
+						) : (
+							<div>1</div>
+						)}
 					</div>
 				</div>
 				<div className={`circle${step === 2 ? " active" : ""}`}>
 					<div>
-						<div>2</div>
+						{step > 2 ? (
+							<div className="icon icon-checkmark" />
+						) : (
+							<div>2</div>
+						)}
 					</div>
 				</div>
-				<div className="circle">
+				<div className={`circle${step === 3 ? " active" : ""}`}>
 					<div>
-						<div>3</div>
+						{step > 2 ? (
+							<div className="icon icon-checkmark" />
+						) : (
+							<div>3</div>
+						)}
 					</div>
 				</div>
 			</div>
-			{step === 2 ? (
-				<JoinStep2
-					i18n={i18n}
-					userValue={userValue}
-					hintStatus={hintStatus}
-					setHintStatus={setHintStatus}
-					EditField={EditField}
-					userInfo={userInfo}
-					setUserValue={setUserValue}
-					setUserInfo={setUserInfo}
-					lineUserId={lineUserId}
-				/>
-			) : (
-				<JoinStep1
-					i18n={i18n}
-					userValue={userValue}
-					hintStatus={hintStatus}
-					setHintStatus={setHintStatus}
-					EditField={EditField}
-					langId={userInfo.langId}
-					setStep={setStep}
-					currencyId={userInfo.currencyId}
-				/>
-			)}
+			{judgeStepHandle()}
 			<SEO
 				path={path.join.root}
 				langId={userInfo.langId}
