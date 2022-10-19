@@ -33,3 +33,8 @@ export const initStatus = {
 	// 	msg: ""
 	// }
 };
+
+export const reCaptchaEnum = {
+	en: "en",
+	vn: "vi"
+};

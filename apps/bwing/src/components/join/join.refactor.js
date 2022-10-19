@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import { useMatch, useNavigate } from "@reach/router";
+import ReCAPTCHA from "react-google-recaptcha";
 import Inputbox from "../common/inputbox.info";
 import InputboxPWD from "../common/inputbox.password.info";
 import Checkbox from "../common/checkbox";
@@ -26,7 +27,12 @@ import config from "../../config";
 import PromoPopup from "./join.promotion";
 import Logo from "../img/logo";
 import areaCode from "../../datas/areaCode";
-import { initValue, initStatus, currencyToAreacode } from "./join.def";
+import {
+	initValue,
+	initStatus,
+	currencyToAreacode,
+	reCaptchaEnum
+} from "./join.def";
 
 const Join = () => {
 	const navigate = useNavigate();
@@ -40,8 +46,9 @@ const Join = () => {
 	const [affiliateidExist, setAffiliateidExist] = useState(null);
 	const [inputStatus, setInputStatus] = useState(initStatus);
 	const [promoPopup, setPromoPopup] = useState(false);
+	const [reCaptchaToken, setReCaptchaToken] = useState("");
 	const isMountedRef = useRef(null);
-
+	const [reCaptchaKey, setReCaptchaKey] = useState(0);
 	const currencyToCountryCode = currencyToAreacode[51];
 	const _areaCode = areaCode[currencyToCountryCode]?.AreaCode;
 
@@ -51,6 +58,10 @@ const Join = () => {
 			isMountedRef.current = false;
 		};
 	});
+
+	useEffect(() => {
+		setReCaptchaKey(reCaptchaKey + 1);
+	}, [userInfo.langId]);
 
 	useEffect(() => {
 		const refId = readCookie("RefId");
@@ -261,12 +272,14 @@ const Join = () => {
 		const PasswordCheck = passwordCheck({ val: userValue.Password, i18n });
 		const PhoneCheck = await phoneCheck({ val: userValue.Phone });
 		const CheckboxCheck = userValue.agreeCheck;
+    const reCaptchaCheck = reCaptchaToken !== "";
 
 		checked =
 			UserNameCheck.checked &&
 			PasswordCheck.checked &&
 			PhoneCheck.checked &&
-			CheckboxCheck;
+			CheckboxCheck &&
+			reCaptchaCheck;
 
 		if (checked) {
 			const regData = {
@@ -277,7 +290,8 @@ const Join = () => {
 				PhoneNo: userValue.Phone,
 				AreaCode: _areaCode,
 				PromoCode: userValue.SpecialBonusCode,
-				ReferralUrl: document.referrer
+				ReferralUrl: document.referrer,
+				ReCaptchaToken: reCaptchaToken
 			};
 
 			if (AffId) {
@@ -403,6 +417,10 @@ const Join = () => {
 		setPromoPopup(false);
 	};
 
+	const handleReCaptchaChange = token => {
+		setReCaptchaToken(token);
+	};
+
 	return (
 		<>
 			<div className={`Join${openPanel ? " open" : ""}`}>
@@ -483,6 +501,13 @@ const Join = () => {
 						info: "lbl_Please_enter_Affiliate_ID"
 					})}
 					disabled={affiliateidExist}
+				/>
+				<ReCAPTCHA
+					key={reCaptchaKey}
+					class="g-recaptcha"
+					sitekey="6LdzkRciAAAAAMuli_1oYaulJv-LHcT0wNZtaK69"
+					onChange={handleReCaptchaChange}
+					hl={reCaptchaEnum[userInfo.langId]}
 				/>
 				<div className="Terms">
 					<Checkbox
