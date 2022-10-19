@@ -36,7 +36,7 @@ const Layout = ({ children, header, mainClass, goTopBtn, SEOPath }) => {
 	const isLoginPage =
 		useMatch(`/${userInfo.langId}/${path.login.root}`) !== null;
 
-	if ((isJoinPage || isLoginPage) && userInfo.isLogin) {
+	if (isLoginPage && userInfo.isLogin) {
 		navigate(`/${userInfo.langId}`);
 	}
 
@@ -70,7 +70,7 @@ const Layout = ({ children, header, mainClass, goTopBtn, SEOPath }) => {
 			{isEventPeriod(eventTime.luckyWheel) ? <LuckyWheelPop /> : null}
 			{isEventPeriod(eventTime.mysteryBox) ? <MysteryBoxPop /> : null}
 			<Footer />
-			{userInfo.isLogin === false && (isJoinPage || isLoginPage) && (
+			{(isJoinPage || isLoginPage) && (
 				<Modal isJoin={isJoinPage} isLogin={isLoginPage} />
 			)}
 			{SEOPath && (

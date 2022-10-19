@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import { useMatch, Redirect, useNavigate } from "@reach/router";
+import ReCAPTCHA from "react-google-recaptcha";
 import Inputbox from "../common/inputbox.info";
 import InputboxPWD from "../common/inputbox.password.info";
 import Checkbox from "../common/checkbox";
@@ -25,7 +26,7 @@ import path from "../../path";
 import config from "../../config";
 import PromoPopup from "./join.promotion";
 import Logo from "../common/logo";
-import { initValue, initStatus } from "./join.def";
+import { initValue, initStatus, reCaptchaEnum } from "./join.def";
 import useShieldCheck from "../hook/useShieldCheck";
 
 const defaultLangId = GET_LANG_ID();
@@ -43,7 +44,9 @@ const Join = () => {
 	const [banner, setBanner] = useState([]);
 	const [affiliateidExist, setAffiliateidExist] = useState(null);
 	const [promoPopup, setPromoPopup] = useState(false);
+	const [reCaptchaToken, setReCaptchaToken] = useState("");
 	const { getShieldData, saveShieldData, isShieldLoaded } = useShieldCheck();
+	const [reCaptchaKey, setReCaptchaKey] = useState(0);
 
 	const isMountedRef = useRef(null);
 	useEffect(() => {
@@ -52,6 +55,10 @@ const Join = () => {
 			isMountedRef.current = false;
 		};
 	});
+
+	useEffect(() => {
+		setReCaptchaKey(reCaptchaKey + 1);
+	}, [userInfo.langId]);
 
 	useEffect(() => {
 		const refId = getCookie("RefId");
@@ -229,11 +236,13 @@ const Join = () => {
 		let checked = null;
 		const UserNameCheck = await userNameCheck({ val: userValue.UserName });
 		const PasswordCheck = passwordCheck({ val: userValue.Password, i18n });
+		const reCaptchaCheck = reCaptchaToken !== "";
 
 		checked =
 			UserNameCheck.checked &&
 			PasswordCheck.checked &&
-			userValue.Checkbox;
+			userValue.Checkbox &&
+			reCaptchaCheck;
 
 		if (checked) {
 			const regData = {
@@ -242,7 +251,8 @@ const Join = () => {
 				CurrencyId: siteCurrencyList[userValue.Currency]?.id,
 				UserLang: defaultLangId,
 				PromoCode: userValue.SpecialBonusCode,
-				ReferralUrl: document.referrer
+				ReferralUrl: document.referrer,
+				ReCaptchaToken: reCaptchaToken
 			};
 
 			if (AffId) {
@@ -357,6 +367,10 @@ const Join = () => {
 		setPromoPopup(false);
 	};
 
+	const handleReCaptchaChange = token => {
+		setReCaptchaToken(token);
+	};
+
 	if (redirectPath) {
 		return <Redirect to="/" noThrow={true} />;
 	}
@@ -421,6 +435,13 @@ const Join = () => {
 							col: "AffiliateId",
 							info: "lbl_Please_enter_Affiliate_ID"
 						})}
+					/>
+					<ReCAPTCHA
+						key={reCaptchaKey}
+						class="g-recaptcha"
+						sitekey="6LfhmRciAAAAAFSX-wXBxMISia2lpS5_SQ7aa7-E"
+						onChange={handleReCaptchaChange}
+						hl={reCaptchaEnum[userInfo.langId]}
 					/>
 					<Checkbox
 						Checked={userValue.Checkbox}

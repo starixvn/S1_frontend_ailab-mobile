@@ -614,6 +614,7 @@
 	"lbl_Please_enter_Affiliate_ID": "请填入代理商 ID（可不填）, 填入后无法更换！",
 	"lbl_Affiliate_ID": "代理商 ID/参照号",
 	"lbl_AfterJoinHint": "恭喜！您已成功注册为会员。",
+  "lbl_BecomingDistinguishedPlayer": "成为杰出玩家",
 	"-==================--=========================Login--==================================": "",
 	"lbl_ForgetPassword": "忘记您的密码",
 	"lbl_ResetPassword": "重设密码",

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
+import ReCAPTCHA from "react-google-recaptcha";
 import areaCode from "../../datas/areaCode";
 import { popBoxContext } from "../common/context";
 import { getUrlParameter, getCookie, defCurrenyId } from "../common/common";
@@ -14,7 +15,12 @@ import { GetYear, GetDayOfMonth } from "../profile/profile.detail";
 import { monthOptions } from "../profile/profile.detail.def";
 import api from "../../service/api";
 import { GET_LANG_ID } from "../../service/language";
-import { initStatus, currencyToAreacode } from "./join.def";
+import {
+	initStatus,
+	currencyToAreacode,
+	reCaptchaEnum,
+	reCaptchaDomainExtraList
+} from "./join.def";
 import { Iov_GetBlackBox } from "../common/iovation";
 
 const areaCodeList = Object.values(areaCode).map(el => ({
@@ -34,7 +40,8 @@ const JoinStep2 = ({
 	userInfo,
 	setUserValue,
 	setUserInfo,
-	lineUserId
+	lineUserId,
+	setStep
 }) => {
 	const { setPopBox } = useContext(popBoxContext);
 	const [siteCurrency, setSiteCurrencyState] = useState([]);
@@ -44,7 +51,7 @@ const JoinStep2 = ({
 	const { showTips, showTipHandler } = useTip([]);
 	const isMountedRef = useRef(null);
 	const defaultLangId = userInfo.langId ?? GET_LANG_ID();
-
+	const [reCaptchaToken, setReCaptchaToken] = useState("");
 	const yearOptions = [];
 	const startYear = GetYear();
 	for (let i = startYear; i >= startYear - 59; i--) {
@@ -121,7 +128,6 @@ const JoinStep2 = ({
 						const currencyArr = currencyNum.map(id => {
 							return { id, displayKey: `Currency_${id}` };
 						});
-
 						setSiteCurrencyState(() => currencyArr);
 					} else {
 						setPopBox({
@@ -285,12 +291,16 @@ const JoinStep2 = ({
 			const _emailCheck = res[1];
 			const _currencyCheck = currencyCheck();
 			const _realNameCheck = checkRealName({ val: userValue.RealName });
+			const _reCaptchaCheck =
+				reCaptchaToken !== "" ||
+				userInfo.currencyId === defCurrenyId.CNY;
 
 			const checked =
 				_phoneCheck.checked &&
 				_emailCheck.checked &&
 				_currencyCheck.checked &&
-				_realNameCheck.checked;
+				_realNameCheck.checked &&
+				_reCaptchaCheck;
 			if (!checked) {
 				setHintStatus(prev => ({
 					...prev,
@@ -335,7 +345,8 @@ const JoinStep2 = ({
 				Birth_m: monthOptions[userValue.Birth_m]?.value,
 				Birth_y: yearOptions[userValue.Birth_y]?.value,
 				RealName: userValue.RealName,
-				ReferralUrl: document.referrer
+				ReferralUrl: document.referrer,
+				ReCaptchaToken: reCaptchaToken
 			};
 
 			if (AffId) {
@@ -391,6 +402,7 @@ const JoinStep2 = ({
 										}
 										setUserInfo(_user);
 										localStorage.removeItem("lineUser");
+										setStep(3);
 									}
 								},
 								() => {
@@ -422,6 +434,9 @@ const JoinStep2 = ({
 		}
 	};
 
+	const handleReCaptchaChange = token => {
+		setReCaptchaToken(token);
+	};
 	return (
 		<div className="Join">
 			<Inputbox
@@ -539,6 +554,20 @@ const JoinStep2 = ({
 				tip={hintStatus.Birth.msg}
 				testAttr="BirthDay"
 			/>
+			{userInfo.currencyId !== defCurrenyId.CNY && (
+				<ReCAPTCHA
+					class="g-recaptcha"
+					sitekey={
+						reCaptchaDomainExtraList.includes(
+							window.location.hostname
+						)
+							? "6LcEuIgiAAAAADa7zajxtsWTsc5F6J54KMPKIgH3"
+							: "6LfAe2IhAAAAAF4Hrt_WLm7cu_484dw7oYhZoBE5"
+					}
+					onChange={handleReCaptchaChange}
+					hl={reCaptchaEnum[userInfo.langId]}
+				/>
+			)}
 			<div className="Terms">
 				{i18n.lbl_Check18TC1}
 				<a
@@ -577,7 +606,8 @@ JoinStep2.propTypes = {
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
 	setUserValue: PropTypes.func.isRequired,
 	setUserInfo: PropTypes.func.isRequired,
-	lineUserId: PropTypes.string
+	lineUserId: PropTypes.string,
+	setStep: PropTypes.func.isRequired
 };
 
 const AreaCodeDropdown = ({
