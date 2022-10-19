@@ -19,7 +19,12 @@ const isExpiry = ({
 		: moment(moment.unix(periodTo)).isBefore(new moment());
 };
 
-export const useGetPromotions = ({ langId, isLogin, filterExpiry = true }) => {
+export const useGetPromotions = ({
+	langId,
+	isLogin,
+	filterExpiry = true,
+	currencyId
+}) => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const [promotion, setPromotion] = useState([]);
@@ -33,7 +38,7 @@ export const useGetPromotions = ({ langId, isLogin, filterExpiry = true }) => {
 	});
 
 	const getPromotionList = useCallback(() => {
-		api.promotion.GetPromotionList({ langId }).then(
+		api.promotion.GetPromotionList({ langId, currencyId }).then(
 			res => {
 				if (res.data.errorCode === 0 && isMountedRef.current) {
 					const result = res.data.data.sort((a, b) =>

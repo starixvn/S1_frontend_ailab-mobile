@@ -5,8 +5,8 @@ import { useGetPromotions } from "../hook/useGetPromotions";
 import { useHandlePromotionInfo } from "../promotion/promotionInfo.popbox";
 
 const Promos = ({ i18n, userInfo }) => {
-	const { langId, isLogin } = userInfo;
-	const { promotionList } = useGetPromotions({ langId, isLogin });
+	const { langId, isLogin, currencyId } = userInfo;
+	const { promotionList } = useGetPromotions({ langId, isLogin, currencyId });
 	const { getPromotionDetail } = useHandlePromotionInfo({
 		showAllPromosBtn: true
 	});
