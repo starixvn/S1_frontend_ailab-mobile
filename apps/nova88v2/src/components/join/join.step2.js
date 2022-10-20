@@ -15,12 +15,7 @@ import { GetYear, GetDayOfMonth } from "../profile/profile.detail";
 import { monthOptions } from "../profile/profile.detail.def";
 import api from "../../service/api";
 import { GET_LANG_ID } from "../../service/language";
-import {
-	initStatus,
-	currencyToAreacode,
-	reCaptchaEnum,
-	reCaptchaDomainExtraList
-} from "./join.def";
+import { initStatus, currencyToAreacode, reCaptchaEnum } from "./join.def";
 import { Iov_GetBlackBox } from "../common/iovation";
 
 const areaCodeList = Object.values(areaCode).map(el => ({
@@ -48,6 +43,7 @@ const JoinStep2 = ({
 	const [defaultOption, setDefaultOption] = useState(
 		i18n.lbl_PrefferedCurrency
 	);
+	const [recaptchaInfo, setRecaptchaInfo] = useState({});
 	const { showTips, showTipHandler } = useTip([]);
 	const isMountedRef = useRef(null);
 	const defaultLangId = userInfo.langId ?? GET_LANG_ID();
@@ -76,6 +72,18 @@ const JoinStep2 = ({
 	});
 
 	const AffId = getUrlParameter("AffId") || getCookie("AffId");
+
+	const getRecaptchaSiteKey = async () => {
+		try {
+			const res = await api.site.GetRecaptchaInfo();
+			const { country, siteKey } = res.data.data;
+			setRecaptchaInfo({
+				country,
+				siteKey
+			});
+		} catch (error) {}
+	};
+
 	useEffect(() => {
 		if (!lineUserId && !AffId) {
 			GetSiteCurrencyList();
@@ -117,6 +125,7 @@ const JoinStep2 = ({
 				}
 			]);
 		}
+		getRecaptchaSiteKey();
 	}, []);
 
 	const GetSiteCurrencyList = () => {
@@ -292,8 +301,7 @@ const JoinStep2 = ({
 			const _currencyCheck = currencyCheck();
 			const _realNameCheck = checkRealName({ val: userValue.RealName });
 			const _reCaptchaCheck =
-				reCaptchaToken !== "" ||
-				userInfo.currencyId === defCurrenyId.CNY;
+				reCaptchaToken !== "" || recaptchaInfo.country === "CN";
 
 			const checked =
 				_phoneCheck.checked &&
@@ -554,20 +562,15 @@ const JoinStep2 = ({
 				tip={hintStatus.Birth.msg}
 				testAttr="BirthDay"
 			/>
-			{userInfo.currencyId !== defCurrenyId.CNY && (
-				<ReCAPTCHA
-					class="g-recaptcha"
-					sitekey={
-						reCaptchaDomainExtraList.includes(
-							window.location.hostname
-						)
-							? "6LcEuIgiAAAAADa7zajxtsWTsc5F6J54KMPKIgH3"
-							: "6LfAe2IhAAAAAF4Hrt_WLm7cu_484dw7oYhZoBE5"
-					}
-					onChange={handleReCaptchaChange}
-					hl={reCaptchaEnum[userInfo.langId]}
-				/>
-			)}
+			{Object.keys(recaptchaInfo).length > 0 &&
+				recaptchaInfo.country !== "CN" && (
+					<ReCAPTCHA
+						class="g-recaptcha"
+						sitekey={recaptchaInfo.siteKey}
+						onChange={handleReCaptchaChange}
+						hl={reCaptchaEnum[userInfo.langId]}
+					/>
+				)}
 			<div className="Terms">
 				{i18n.lbl_Check18TC1}
 				<a
