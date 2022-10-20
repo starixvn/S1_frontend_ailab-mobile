@@ -66,41 +66,6 @@ const Panel = () => {
 		}
 	}, [userInfo.isLogin]);
 
-	useEffect(() => {
-		if (
-			userInfo.isLogin &&
-			(userInfo.currencyId === defCurrenyId.IDR ||
-				userInfo.currencyId === defCurrenyId.MYR) &&
-			!userInfo.phoneVerified
-		) {
-			setPopBox({
-				isOpen: true,
-				title: i18n.lbl_Withdrawal,
-				content: i18n.lbl_Complete_PhoneVerification,
-				hasBtn: true,
-				btnBar: (
-					<div className="btn-group">
-						<button
-							className="gray"
-							onClick={() => setPopBox({ isOpen: false })}>
-							{i18n.lbl_Later}
-						</button>
-						<button
-							className="blue"
-							onClick={() => {
-								navigate(
-									`/${userInfo.langId}/${path.profile.root}`
-								);
-								setPopBox({ isOpen: false });
-							}}>
-							{i18n.lbl_VerifyNow}
-						</button>
-					</div>
-				)
-			});
-		}
-	}, [userInfo.phoneVerified]);
-
 	const GetDailyWithdrawalLimit = () => {
 		api.payment.GetWithdrawalLimit().then(
 			res => {
