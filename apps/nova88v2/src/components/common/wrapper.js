@@ -12,6 +12,7 @@ import api from "../../service/api";
 import { siteInfo } from "../../config";
 import path, { defSpecialPath } from "../../path";
 import { defType } from "../hook/useHandleLineLogin";
+import SEO from "../seo/seo";
 
 const isSpecialPath = () => {
 	return (
@@ -351,6 +352,8 @@ export const Wrapper = ({ children }) => {
 												value={{ loading, setLoading }}>
 												<ct.rootContext.Provider
 													value={{ root, setRoot }}>
+													<SEO />
+
 													{children}
 												</ct.rootContext.Provider>
 											</ct.loadingContext.Provider>

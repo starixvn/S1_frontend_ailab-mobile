@@ -1,0 +1,3 @@
+User-Agent: *
+
+Sitemap: https://www.nova88gol.com/sitemapcs.xml

@@ -1,12 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "@reach/router";
 import { i18nContext, userInfoContext } from "../common/context";
-import { SEO } from "../seo/seo";
 import JoinStep1 from "./join.step1";
 import JoinStep2 from "./join.step2";
 import JoinStep3 from "./join.step3";
 import { initValue, initStatus } from "./join.def";
-import path from "../../path";
 import { defCurrenyId, getLocalStorage } from "../common/common";
 import useHandleLineLogin, { defType } from "../hook/useHandleLineLogin";
 
@@ -133,11 +131,6 @@ const JoinStepAll = () => {
 				</div>
 			</div>
 			{judgeStepHandle()}
-			<SEO
-				path={path.join.root}
-				langId={userInfo.langId}
-				isLogin={userInfo.isLogin}
-			/>
 		</>
 	);
 };
