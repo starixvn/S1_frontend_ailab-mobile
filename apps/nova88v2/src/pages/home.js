@@ -5,7 +5,6 @@ import {
 	popBoxContext,
 	rootContext
 } from "Context";
-import { SEO } from "../components/seo/seo";
 import Layout from "../components/common/layout";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
@@ -17,15 +16,11 @@ import EventSwipper from "../components/home/eventSwipper";
 import HeaderShortcut from "../components/home/headerShortcut";
 import Bottom from "../components/home/bottom";
 import { defCurrenyId } from "../components/common/common";
-import path from "../path";
 import Header from "../components/header/header";
 import JoinLoginBar from "../components/home/joinLoginBar";
 import Jackpot from "../components/home/jackpot";
 import AddToHomePop from "../components/home/addToHomePop";
 import PromotionWrapper from "../components/promotion/common/wrapper";
-// import NewYear, {
-// 	defEventPeriod as NewYearEventPeriod
-// } from "../components/common/popbox.newYear";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -33,7 +28,6 @@ const IndexPage = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
 	const [appHint, setAppHint] = useState(false);
-	// const { SEODatas } = useGetSEODatas({ getFromAPI: true });
 
 	useEffect(() => {
 		setRoot(true);
@@ -41,90 +35,6 @@ const IndexPage = () => {
 			setRoot(false);
 		};
 	}, [setRoot]);
-
-	// useEffect(() => {
-	// 	if (isEventPeriod(NewYearEventPeriod))
-	// 		if (SEODatas) {
-	// 			const langId = SEODatas.defaultLang ?? userInfo.langId;
-
-	// 			if (
-	// 				!langId.includes("hi") &&
-	// 				!readCookie(`NewYear-${window.location.hostname}`)
-	// 			) {
-	// 				setPopBox({
-	// 					isOpen: true,
-	// 					fullPage: true,
-	// 					className: "angpaopop",
-	// 					content: (
-	// 						<NewYear langId={langId} setPopBox={setPopBox} />
-	// 					)
-	// 				});
-	// 			}
-	// 		}
-	// }, [SEODatas, userInfo.langId]);
-
-	// useEffect(() => {
-	// 	if (userInfo.isJoin) {
-	// 		setPopBox({
-	// 			isOpen: true,
-	// 			title: i18n.lbl_Notice,
-	// 			fullPage: true,
-	// 			content: (
-	// 				<div className="joinSuccess">
-	// 					<Logo langId={userInfo.langId} />
-	// 					<div className="step">
-	// 						<div className="stepLine">
-	// 							<div className="stepBar100" />
-	// 						</div>
-	// 						<div className="circle active">
-	// 							<div>
-	// 								<div className="icon icon-checkmark" />
-	// 							</div>
-	// 						</div>
-	// 						<div className="circle active">
-	// 							<div>
-	// 								<div className="icon icon-checkmark" />
-	// 							</div>
-	// 						</div>
-	// 						<div className="circle active">
-	// 							<div>
-	// 								<div className="icon icon-checkmark" />
-	// 							</div>
-	// 						</div>
-	// 					</div>
-	// 					<div className="Join">
-	// 						<div className="Terms">
-	// 							{i18n.lbl_AfterJoinHint}
-	// 						</div>
-	// 						<Link
-	// 							onClick={() => {
-	// 								setPopBox({
-	// 									isOpen: false
-	// 								});
-	// 								setUserInfo(prev => ({
-	// 									...prev,
-	// 									isJoin: false
-	// 								}));
-	// 							}}
-	// 							className="btn-group"
-	// 							to={`/${userInfo.langId}/${path.deposit.root}`}>
-	// 							<button>{i18n.lbl_DepositNow}</button>
-	// 						</Link>
-	// 					</div>
-	// 				</div>
-	// 			)
-	// 		});
-	// 	}
-	// }, [
-	// 	i18n,
-	// 	setPopBox,
-	// 	userInfo.currencyId,
-	// 	userInfo.userName,
-	// 	navigate,
-	// 	userInfo.langId,
-	// 	userInfo.isJoin,
-	// 	userInfo.isLogin
-	// ]);
 
 	return (
 		<PromotionWrapper>
@@ -165,12 +75,6 @@ const IndexPage = () => {
 					<AddToHomePop i18n={i18n} userInfo={userInfo} />
 				</div>
 			</Layout>
-			<SEO
-				path={path.home.root}
-				langId={userInfo.langId}
-				isLogin={userInfo.isLogin}
-				getFromAPI={userInfo.isLogin === false}
-			/>
 		</PromotionWrapper>
 	);
 };

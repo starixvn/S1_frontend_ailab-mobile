@@ -82,7 +82,7 @@ const defaultScript = "a7019fa5-9f9a-468b-92da-4890f6a6e4a7";
 const defaultXCMScript = "226e4de2-30aa-4077-951b-d440012994f3";
 
 const License = ({ i18n }) => {
-	const { SEODatas } = useGetSEODatas({ getFromAPI: true });
+	const { SEODatas } = useGetSEODatas();
 	const showLicenseLogo = SEODatas?.activeDomain ?? false;
 
 	const CuracaoScript = SEODatas?.script ?? defaultScript;

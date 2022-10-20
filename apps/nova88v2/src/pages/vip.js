@@ -61,7 +61,7 @@ const IndexPage = () => {
 	};
 
 	return (
-		<Layout header={header} mainClass="main vip" SEOPath={path.vip.root}>
+		<Layout header={header} mainClass="main vip">
 			<Banners langId={userInfo.langId} />
 			<LevelList i18n={i18n} langId={userInfo.langId} />
 			<Info langId={userInfo.langId} />
