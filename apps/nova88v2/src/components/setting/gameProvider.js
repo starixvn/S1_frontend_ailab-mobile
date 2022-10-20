@@ -3,7 +3,6 @@ import path from "../../path";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import { defGameInfo } from "../../datas/productList";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
-import { defCurrenyId, langToCurrency } from "../common/common";
 import { cloudImgURL } from "../../config";
 import Header from "../header/header";
 import { Link } from "../../route/link";
@@ -14,6 +13,7 @@ import {
 	useGetTpMaintainList,
 	defTpGameType
 } from "../hook/useGetTpMaintainList";
+import allowedCurrencyList from "../../datas/allowedCurrencyList";
 
 const defPlatfrom = [
 	{
@@ -59,7 +59,7 @@ const defPlatfrom = [
 		...defGameInfo.Casino_AMB,
 		path: path.casino.root,
 		imgName: "casino_amb",
-		allowCurrencies: new Set([defCurrenyId.THB])
+		allowCurrencies: allowedCurrencyList.slotAMB
 	},
 	{
 		...defGameInfo.Casino_PP,
@@ -110,11 +110,7 @@ const defPlatfrom = [
 	{
 		...defGameInfo.oneGame,
 		imgName: "1g",
-		allowCurrencies: new Set([
-			defCurrenyId.MYR,
-			defCurrenyId.THB,
-			defCurrenyId.IDR
-		])
+		allowCurrencies: allowedCurrencyList.oneGame
 	},
 	{
 		...defGameInfo.Casino_PT,
@@ -236,9 +232,7 @@ const GameProvider = ({ userInfo, i18n }) => {
 			flag = showingTpIds.includes(el.tpId) && flag;
 		}
 		if (el.allowCurrencies) {
-			flag =
-				el.allowCurrencies.has(currencyId ?? langToCurrency[langId]) &&
-				flag;
+			flag = el.allowCurrencies.includes(currencyId) && flag;
 		}
 
 		return flag;
