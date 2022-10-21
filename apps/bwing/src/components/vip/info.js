@@ -15,7 +15,7 @@ const ENInfo = () => {
 			Come join us now at BWING.
 			<div className="vipTitle">Overview</div>
 			We have classified the membership tiers to BRONZE, SILVER, GOLD,
-			TITANIUM, DIAMOND and BWING VVVIP. Enjoy all our privillege products
+			TITANIUM, DIAMOND and BWING VVVIP. Enjoy all our privilege products
 			and services when you achieve higher tier.
 			<div className="vipTitle">
 				Enjoy the benefits and privileges with difference membership

@@ -40,7 +40,7 @@ const ENInfo = () => {
 			<div className="vipTitle">Overview</div>
 			We have classified the membership tiers to Vintage Club, Silver
 			Club, Gold Club, Titanium Club, Diamond Club and Nova Club. Enjoy
-			all our privillege products and services when you achieve higher
+			all our privilege products and services when you achieve higher
 			tier.
 			<div className="vipTitle">
 				Enjoy the benefits and privileges with difference membership
