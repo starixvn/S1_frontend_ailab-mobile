@@ -26,14 +26,14 @@ const allowedCurrencyList = {
 
 	// slot
 	slotAMB: [defCurrenyId.THB, defCurrenyId.USD, defCurrenyId.CNY],
-	slotSaba: [
-		defCurrenyId.IDR,
-		defCurrenyId.MYR,
-		defCurrenyId.THB,
-		defCurrenyId.BDT,
-		defCurrenyId.CNY,
-		defCurrenyId.USD
-	],
+	// slotSaba: [
+	// 	defCurrenyId.IDR,
+	// 	defCurrenyId.MYR,
+	// 	defCurrenyId.THB,
+	// 	defCurrenyId.BDT,
+	// 	defCurrenyId.CNY,
+	// 	defCurrenyId.USD
+	// ],
 
 	// poker
 	oneGame: [

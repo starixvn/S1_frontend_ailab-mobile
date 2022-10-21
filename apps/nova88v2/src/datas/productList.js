@@ -661,7 +661,6 @@ const gameList = ({ langId }) => {
 					parameter: defGameInfo.Casino_OW,
 					spanText: "Saba Casino",
 					img: `${cloudBannerImgURL}/h5/img/ow.png`,
-					allowCurrency: allowedCurrencyList.slotSaba,
 					sortKey: "slot_OW"
 				}
 			]
