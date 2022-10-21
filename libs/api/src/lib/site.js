@@ -87,4 +87,6 @@ export class SiteAPI extends BaseAPI {
 			LangId: langId,
 			DisplayPage: displayPage
 		});
+
+	GetRecaptchaInfo = () => this.siteRequest.post("/GetRecaptchaInfo");
 }
