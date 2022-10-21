@@ -136,11 +136,11 @@ export const productList = langId => {
 					img: `${bannerImgUrl}/h5/img/lottery/lottery-tl.png`,
 					...defGameInfo.One789_lottery
 				},
-				{
-					displayKey: "lbl_789Lottery",
-					img: `${bannerImgUrl}/h5/img/lottery/lottery-789.png`,
-					...defGameInfo.One789_lottery_789
-				},
+				// {
+				// 	displayKey: "lbl_789Lottery",
+				// 	img: `${bannerImgUrl}/h5/img/lottery/lottery-789.png`,
+				// 	...defGameInfo.One789_lottery_789
+				// },
 				{
 					displayKey: "lbl_Vgaming",
 					img: `${bannerImgUrl}/h5/img/lottery/lottery-saba.png`,
@@ -565,10 +565,10 @@ export const defSubMenus = () => [
 				displayKey: "lbl_TraditionalLottery",
 				...defGameInfo.One789_lottery
 			},
-			{
-				displayKey: "lbl_789Lottery",
-				...defGameInfo.One789_lottery_789
-			},
+			// {
+			// 	displayKey: "lbl_789Lottery",
+			// 	...defGameInfo.One789_lottery_789
+			// },
 			{
 				...defGameInfo.sabaClub,
 				displayKey: "lbl_Vgaming"
