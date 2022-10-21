@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import path from "Path";
+import PropTypes from "prop-types";
 import { userInfoContext, i18nContext } from "Context";
 import { Promotion } from "../components/promotion/promotion";
 import {
@@ -8,13 +8,12 @@ import {
 } from "../components/promotion/common/def";
 import Tab, { useHandleTab } from "../components/promotion/components/tab";
 import Nav, { useHandleNav } from "../components/promotion/components/nav";
-import { SEO } from "../components/seo/seo";
 import staticList from "../datas/promotionList";
 import Layout from "../components/common/layout";
 import Header from "../components/header/header";
 import Wrapper from "../components/promotion/common/wrapper";
 
-export default ({ location = {} }) => {
+const PromotionPage = ({ location = {} }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { tab, onClickTab } = useHandleTab({
@@ -60,13 +59,12 @@ export default ({ location = {} }) => {
 				}`}>
 				<Promotion staticList={staticList} filterType={filterType} />
 			</Layout>
-			<SEO
-				path={path.promotion.root}
-				langId={userInfo.langId}
-				isLogin={userInfo.isLogin}
-			/>
 		</Wrapper>
 	);
+};
+
+PromotionPage.propTypes = {
+	location: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
 const getFilterType = ({ location, column }) => {
@@ -81,3 +79,5 @@ const getFilterType = ({ location, column }) => {
 	// eslint-disable-next-line consistent-return
 	return undefined;
 };
+
+export default PromotionPage;

@@ -509,10 +509,7 @@ const IndexPage = () => {
 	);
 
 	return (
-		<Layout
-			header={header}
-			mainClass="main casino"
-			SEOPath={path.casino.root}>
+		<Layout header={header} mainClass="main casino">
 			<Panel searchInput={searchInput} />
 		</Layout>
 	);

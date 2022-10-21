@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Redirect } from "@reach/router";
 import { i18nContext, userInfoContext } from "../components/common/context";
-import { SEO } from "../components/seo/seo";
+// import { SEO } from "../components/seo/seo";
 import Event from "../components/ranking/event";
 import Record from "../components/ranking/records";
 import {
@@ -91,11 +91,11 @@ export default () => {
 					customTopNum={30}
 				/>
 			</Layout>
-			<SEO
+			{/* <SEO
 				path={path.ranking.root}
 				langId={userInfo.langId}
 				isLogin={userInfo.isLogin}
-			/>
+			/> */}
 		</>
 	);
 };
