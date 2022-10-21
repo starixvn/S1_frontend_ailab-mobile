@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { i18nContext } from "../common/context";
+import React from "react";
 
 export const Info = ({ langId }) => {
 	const _info = langId === "en" ? <ENInfo /> : <VNInfo />;
@@ -7,18 +6,17 @@ export const Info = ({ langId }) => {
 };
 
 const ENInfo = () => {
-	const { i18n } = useContext(i18nContext);
 	return (
 		<div className="vipInfo">
 			<div className="vipTitle">VIP Program</div>
 			GOAL123 has launched the VIP rewards program so that members could
 			indulge in good services, more rewards, and a better experience.
 			Discover greater perks and entitlements when your tier upgraded.
-			We're waiting for you!
+			We&apos;re waiting for you!
 			<div className="vipTitle">Overview</div>
 			We have classified the membership tiers to BRONZE, SILVER, GOLD,
-			TITANIUM, DIAMOND and GOAL123 CLUB. Enjoy all our privillege
-			products and services when you achieve higher tier.
+			TITANIUM, DIAMOND and GOAL123 CLUB. Enjoy all our privilege products
+			and services when you achieve higher tier.
 			<div className="vipTitle">
 				Enjoy the benefits and privileges with difference membership
 				tier
@@ -28,7 +26,6 @@ const ENInfo = () => {
 };
 
 const VNInfo = () => {
-	const { i18n } = useContext(i18nContext);
 	return (
 		<div className="vipInfo">
 			<div className="vipTitle">Đặc quyền VIP</div>

@@ -661,8 +661,8 @@ export const defMetaData = {
 	[path.vip.root]: {
 		en: {
 			title: `Nova88 VIP Program | VIP Member | Exclusive Rewards`,
-			description: `Become Nova88 Exclusive VIP Today To Enjoy The Benefits And Privileges With Difference Membership Tier. Play More, Rewards More. Hurry, We Are Waiting For You!`,
-			keyword: `Nova88, Casino VIP Program, VIP Privileges, VIP Exclusive Reward, Nova Club, Nova VIP Exclusive, Tier Upgrade Bonus, VIP Special Rebate, VIP Bonus, VIP Member Benefits`,
+			description: `Become Nova88 Exclusive VIP Today To Enjoy The Benefits And privileges With Difference Membership Tier. Play More, Rewards More. Hurry, We Are Waiting For You!`,
+			keyword: `Nova88, Casino VIP Program, VIP privileges, VIP Exclusive Reward, Nova Club, Nova VIP Exclusive, Tier Upgrade Bonus, VIP Special Rebate, VIP Bonus, VIP Member Benefits`,
 			links: [
 				{ rel: "canonical", href: `https://m.nova88.net/en/vip` },
 				{
