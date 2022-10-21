@@ -79,15 +79,3 @@ export const reCaptchaEnum = {
 	bd: "bn",
 	bd_en: "en"
 };
-
-export const reCaptchaDomainExtraList = [
-	"m.nova88101.net",
-	"m.nova88102.net",
-	"m.nova88103.net",
-	"m.nova88105.net",
-	"m.nova88106.net",
-	"m.nova88801.net",
-	"m.nova88mas801.com",
-	"m.nova88bkk801.com",
-	"m.nova88india801.com"
-];
