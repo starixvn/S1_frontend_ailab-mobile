@@ -1,3 +1,3 @@
 User-Agent: *
 
-Sitemap: https://www.nova88106.net/sitemapbd.xml
+Sitemap: https://m.nova88106.net/sitemapbd.xml
