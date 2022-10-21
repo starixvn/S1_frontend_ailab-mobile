@@ -19,12 +19,12 @@ const defGameType = {
 };
 
 const defGameList = [
-	{
-		...defGameInfo.One789_lottery_789,
-		displayKey: "lbl_789Lottery",
-		img: `${bannerImgUrl}/h5/img/maingame/789lottery.png`,
-		gameType: defGameType.default
-	},
+	// {
+	// 	...defGameInfo.One789_lottery_789,
+	// 	displayKey: "lbl_789Lottery",
+	// 	img: `${bannerImgUrl}/h5/img/maingame/789lottery.png`,
+	// 	gameType: defGameType.default
+	// },
 	{
 		...defGameInfo.LIVEcasinoOne789,
 		displayKey: "lbl_liveCasino_789SeDie",
