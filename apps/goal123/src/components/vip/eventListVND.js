@@ -158,12 +158,12 @@ const EventListVND = ({ i18n }) => (
 				<td colSpan="7">{i18n.lbl_Vip_Sport_Rebate}</td>
 			</tr>
 			<tr>
-				<td>0.60%</td>
 				<td>0.70%</td>
 				<td>0.80%</td>
 				<td>0.90%</td>
 				<td>1.00%</td>
 				<td>1.10%</td>
+				<td>1.20%</td>
 			</tr>
 			<tr>
 				<td colSpan="7">{i18n.lbl_Vip_LiveCasino_Rebate}</td>

@@ -159,33 +159,33 @@ const EventListIDR = ({ i18n }) => {
 					<td colSpan="7">{i18n.lbl_Vip_Sport_Rebate}</td>
 				</tr>
 				<tr>
-					<td>0.20%</td>
 					<td>0.50%</td>
-					<td>0.60%</td>
+					<td>0.70%</td>
 					<td>0.80%</td>
 					<td>0.90%</td>
+					<td>1.00%</td>
 					<td>1.10%</td>
 				</tr>
 				<tr>
 					<td colSpan="7">{i18n.lbl_Vip_LiveCasino_Rebate}</td>
 				</tr>
 				<tr>
-					<td>0.20%</td>
-					<td>0.40%</td>
+					<td>0.30%</td>
 					<td>0.50%</td>
 					<td>0.60%</td>
 					<td>0.70%</td>
-					<td>0.90%</td>
+					<td>0.80%</td>
+					<td>1.00%</td>
 				</tr>
 				<tr>
 					<td colSpan="7">{i18n.lbl_Vip_SlotFishing_Rebate}</td>
 				</tr>
 				<tr>
-					<td>0.40%</td>
 					<td>0.50%</td>
-					<td>0.60%</td>
+					<td>0.70%</td>
 					<td>0.80%</td>
 					<td>0.90%</td>
+					<td>1.00%</td>
 					<td>1.10%</td>
 				</tr>
 				<tr>
