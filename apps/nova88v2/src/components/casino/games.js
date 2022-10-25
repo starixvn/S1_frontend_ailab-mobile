@@ -68,6 +68,9 @@ const GamePanel = React.forwardRef((props, ref) => {
 		};
 
 		const brandName = providerList.find(obj => obj.tpId === g.tpId)?.tpName;
+		const gameProviderName = providerList.find(obj => obj.tpId === g.tpId)
+			?.gameImgDisplayText;
+
 		games.push(
 			<div
 				className={`info${isMaintain ? " star active" : ""}`}
@@ -85,7 +88,7 @@ const GamePanel = React.forwardRef((props, ref) => {
 						alt={g.gameName[userInfo.langId] ?? g.gameName.en}
 					/>
 				</button>
-				<span data-testid="providerName">{brandName}</span>
+				<span data-testid="providerName">{gameProviderName}</span>
 				{isMaintain && (
 					<div className="under">{i18n.lbl_underMaintenance}</div>
 				)}
