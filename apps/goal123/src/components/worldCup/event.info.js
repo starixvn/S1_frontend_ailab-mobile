@@ -31,7 +31,10 @@ const Info = ({
 			<div className="title">Info</div>
 			<div className="ticket__info">
 				<div className="ticket__user">
-					<img src={`${bannerImgUrl}/img/worldcup/user.svg`} alt="" />
+					<img
+						src={`${bannerImgUrl}/h5/img/event/worldcup/user.svg`}
+						alt=""
+					/>
 					{userName}
 				</div>
 				<div className="progress-bar">

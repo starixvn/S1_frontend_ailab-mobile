@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import { bannerImgUrl } from "../../config";
+import { sportsImgUrl } from "../../config";
 import { api_worldCupPrediction_UserPollTickets } from "../../service/api/worldCupPrediction";
 
 const ticketStatus = {
@@ -123,7 +123,10 @@ const Ticket = ({
 			<button
 				key={`finished-team-${el?.countryId}-${el?.countryName}`}
 				className="btn-team">
-				<img src={`${bannerImgUrl}/img/flag/${el?.imageName}`} alt="" />
+				<img
+					src={`${sportsImgUrl}/Country Flag/${el?.imageName}`}
+					alt=""
+				/>
 				{el?.countryName}
 			</button>
 		));
@@ -137,7 +140,10 @@ const Ticket = ({
 						: ""
 				}`}
 				onClick={() => onSelectItem({ idx: i, col: "teamIdx" })}>
-				<img src={`${bannerImgUrl}/img/flag/${el.imageName}`} alt="" />
+				<img
+					src={`${sportsImgUrl}/Country Flag/${el.imageName}`}
+					alt=""
+				/>
 				{el.countryName}
 			</button>
 		));

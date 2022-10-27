@@ -1,18 +1,18 @@
-import config from "../config";
+import config, { bannerImgUrl } from "../config";
 
 export default langId => {
 	return {
-		terms: `${config.t_and_cURL}/Static/${config.siteName}/Static/${langId}/TermsConditions.html`,
-		rule: `${config.t_and_cURL}/Static/${config.siteName}/Static/${langId}/RulesandRegulations.html`,
-		OurPolicies: `${config.t_and_cURL}/Static/${config.siteName}/Static/${langId}/ResposibleGaming.html`,
-		PrivacyPolicy: `${config.t_and_cURL}/Static/${config.siteName}/Static/${langId}/PrivacyPolicy.html`,
-		CookiePolicy: `${config.t_and_cURL}/Static/${config.siteName}/Static/${langId}/CookiePolicy.html`,
-		RuleRegulations: `${config.t_and_cURL}/Static/${config.siteName}/Static/${langId}/RulesandRegulations.html`,
-		AccountTerms: `${config.t_and_cURL}/Static/${config.siteName}/Static/${langId}/AccountTerms.html`,
-		FAQ: `${config.t_and_cURL}/Static/${config.siteName}/Static/${langId}/FAQ.html`,
-		AboutUs: `${config.t_and_cURL}/Static/${config.siteName}/Static/${langId}/AboutUs.html`,
-		Terms: `${config.t_and_cURL}/Static/${config.siteName}/Static/${langId}/Terms.html`,
-		ContactUs: `${config.t_and_cURL}/Static/${config.siteName}/Static/${langId}/ContactUs.html`,
+		terms: `${bannerImgUrl}/Static/${langId}/TermsConditions.html`,
+		rule: `${bannerImgUrl}/Static/${langId}/RulesandRegulations.html`,
+		OurPolicies: `${bannerImgUrl}/Static/${langId}/ResposibleGaming.html`,
+		PrivacyPolicy: `${bannerImgUrl}/Static/${langId}/PrivacyPolicy.html`,
+		CookiePolicy: `${bannerImgUrl}/Static/${langId}/CookiePolicy.html`,
+		RuleRegulations: `${bannerImgUrl}/Static/${langId}/RulesandRegulations.html`,
+		AccountTerms: `${bannerImgUrl}/Static/${langId}/AccountTerms.html`,
+		FAQ: `${bannerImgUrl}/Static/${langId}/FAQ.html`,
+		AboutUs: `${config.t_and_cURL}/Static/${langId}/AboutUs.html`,
+		Terms: `${config.t_and_cURL}/Static/${langId}/Terms.html`,
+		ContactUs: `${config.t_and_cURL}/Static/${langId}/ContactUs.html`,
 		HowToDeposit: `${config.t_and_cURL}/Static/${config.siteName}/Static/${langId}/HowToDeposit.html`,
 		HowToBet: `${config.t_and_cURL}/Static/${config.siteName}/Static/${langId}/HowToBet.html`,
 		HowToWithdraw: `${config.t_and_cURL}/Static/${config.siteName}/Static/${langId}/HowToWithdraw.html`,

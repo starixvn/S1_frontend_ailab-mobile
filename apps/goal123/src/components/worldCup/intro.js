@@ -20,7 +20,7 @@ const Intro = ({ scrollToEvent }) => {
 					/>
 					<img
 						className="logo"
-						src={`${bannerImgUrl}/img/worldcup/logo.png`}
+						src={`${bannerImgUrl}/h5/img/event/worldcup/logo.png`}
 						alt=""
 					/>
 				</div>
