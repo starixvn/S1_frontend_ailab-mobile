@@ -100,6 +100,7 @@
 	"lbl_Deposit": "充值",
 	"lbl_Transfer": "转帐",
 	"lbl_Withdrawal": "提现",
+  "lbl_EWalletWithdrawal": "电子钱包提现",
 	"lbl_Email": "邮箱地址",
 	"msg_UsernameReq": "请输入用户名。",
 	"msg_PasswordReq": "请输入密码。",
