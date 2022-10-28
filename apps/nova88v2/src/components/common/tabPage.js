@@ -43,12 +43,8 @@ const IndexPage = ({ defTabs, beforeLogin, filter, breadCrumb, tabHint }) => {
 	const { isShowEWallet } = useContext(eWalletContext);
 	const { i18n } = useContext(i18nContext);
 	const eWalletPathList = [
-		"/en/eWalletWithdrawal",
-		"/en_id/eWalletWithdrawal",
-		"/id/eWalletWithdrawal",
-		"/en/eWallet",
-		"/en_id/eWallet",
-		"/id/eWallet"
+		`/${userInfo.langId}/eWalletWithdrawal`,
+		`/${userInfo.langId}/eWallet`
 	];
 	useBeforeLoginCheck({
 		isLogin: userInfo.isLogin,
@@ -69,7 +65,6 @@ const IndexPage = ({ defTabs, beforeLogin, filter, breadCrumb, tabHint }) => {
 				const subTabInfo = tabInfo.subTabs[subKey];
 				if (!isShowEWallet && toggleTabList.includes(subTabInfo.to))
 					return null;
-
 				isMatchSub = isMatch({
 					location,
 					tabInfo: subTabInfo,
