@@ -640,6 +640,7 @@
 	"lbl_DepositChannel_2": "नकद जमा मशीन",
 	"lbl_DepositChannel_3": "एटीएम",
 	"lbl_DepositChannel_4": "काउंटर पर (ओटीसी)",
+  "lbl_DepositChannel_5": "बैंक क्यूआर",
 	"lbl_DepositChannel": "जमा चैनल",
 	"lbl_LocalBankDepositChannelTip": "कृपया चुनें कि आपने स्थानीय बैंक से कौन सा बैंक चैनल जमा किया है",
 	"lbl_LocalBankBankAccountTip": "कृपया चुनें कि आपने स्थानीय बैंक से कौन सा बैंक खाता जमा किया है।",
@@ -694,6 +695,7 @@
 	"lbl_EnterYourUPIHint1": "अपना भरें UPI",
 	"lbl_EnterYourUPIHint2": "(पेटीएम/फोनपे/गूगलपे...आदि)",
 	"lbl_PleaseEnterUPI": "कृपया UPI दर्ज करें।",
+  "lbl_ScanQR": "क्यूआर स्कैन करें",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "भुगतान विवरण",
