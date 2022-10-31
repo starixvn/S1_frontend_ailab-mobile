@@ -1,14 +1,17 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "../../route/link";
 import Dropdown from "../common/dropdown";
+import { userInfoContext } from "../common/context";
 import path from "../../path";
+import { defCurrenyId } from "../common/common";
 
 export const defDepChannelValue = {
 	OnlineBanking: 1,
 	CashDepositMachine: 2,
 	ATM: 3,
-	OverTheCounter: 4
+	OverTheCounter: 4,
+	BankQR: 5
 };
 
 export const defDepositChannel = [
@@ -24,6 +27,10 @@ export const defDepositChannel = [
 	{
 		displayKey: "lbl_DepositChannel_4",
 		value: defDepChannelValue.OverTheCounter
+	},
+	{
+		displayKey: "lbl_DepositChannel_5",
+		value: defDepChannelValue.BankQR
 	}
 ];
 
@@ -61,6 +68,7 @@ const Channel = ({ i18n, DepositChannelProps, userPaymentData }) => {
 		HandleDepositChannel,
 		depositChannelWarning
 	} = DepositChannelProps;
+	const { userInfo } = useContext(userInfoContext);
 
 	useEffect(() => {
 		if (userPaymentData) {
@@ -82,7 +90,13 @@ const Channel = ({ i18n, DepositChannelProps, userPaymentData }) => {
 				mainKey="localbank-depositChannel"
 				colName="Channel"
 				selectedIdx={selDepositChannel}
-				options={defDepositChannel}
+				options={
+					userInfo.currencyId === defCurrenyId.MYR
+						? defDepositChannel
+						: defDepositChannel.filter(
+								obj => obj.value !== defDepChannelValue.BankQR
+						  )
+				}
 				onSelectItem={HandleDepositChannel}
 				infoText={i18n.lbl_LocalBankDepositChannelTip}
 				hideInfo={true}
