@@ -643,6 +643,7 @@
 	"lbl_DepositChannel_2": "Cash Deposit Machine",
 	"lbl_DepositChannel_3": "ATM",
 	"lbl_DepositChannel_4": "Over The Counter (OTC)",
+  "lbl_DepositChannel_5": "Bank QR",
 	"lbl_DepositChannel": "Deposit Channel",
 	"lbl_LocalBankDepositChannelTip": "Please select which bank channel you deposited from the bank transfer.",
 	"lbl_LocalBankBankAccountTip": "Please select which bank account you deposited from the bank transfer.",
@@ -695,6 +696,7 @@
 	"lbl_Deposit_DragonPayPop_AccountName": "Account Name",
 	"lbl_Deposit_DragonPayPop_AccountNumber": "Account Number",
 	"lbl_AutoDeposit": "Auto Deposit",
+  "lbl_ScanQR": "Scan QR",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "Payment Details",
