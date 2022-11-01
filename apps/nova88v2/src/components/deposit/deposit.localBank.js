@@ -645,7 +645,7 @@ const GroupList = ({
 					</ul>
 				</div>
 				{userInfo.currencyId === defCurrenyId.MYR &&
-					selectedBank.supportQR && (
+					selectedBank.qrCodeUrl && (
 						<>
 							<div className="title">
 								<span>*</span>
