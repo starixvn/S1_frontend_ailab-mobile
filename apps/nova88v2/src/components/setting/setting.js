@@ -14,7 +14,6 @@ import { LOGOUT } from "../../service/auth";
 import path from "../../path";
 import SiteURL, { siteInfo, cloudBannerImgURL } from "../../config";
 import TandC from "../../service/t_and_c";
-import { langToCurrency } from "../common/common";
 import { getLeaderBoardSupportCurrencyId } from "../ranking/def";
 import allowedCurrencyList from "../../datas/allowedCurrencyList";
 
@@ -104,7 +103,7 @@ export default () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
-	const _currencyId = userInfo.currencyId ?? langToCurrency[userInfo.langId];
+	const _currencyId = userInfo.currencyId;
 
 	const handleLogout = () => {
 		LOGOUT(() => {

@@ -186,33 +186,15 @@ export const currencyIdToTimeZone = {
 	3: "+00:00"
 };
 
-export const langToCurrency = {
-	en: defCurrenyId.MYR,
-	cs: defCurrenyId.MYR,
-	my: defCurrenyId.MYR,
-	th: defCurrenyId.THB,
-	// th_en: defCurrenyId.THB,
-	id: defCurrenyId.IDR,
-	// id_en: defCurrenyId.IDR,
-	hi: defCurrenyId.INR,
-	// hi_en: defCurrenyId.INR,
-	bd: defCurrenyId.BDT
-	// bd_en: defCurrenyId.BDT
-};
-
 export const GetCurrencyName = ({ langId, currencyId, i18n }) => {
 	const langMappingCurr = {
 		en: "MYR",
 		cs: "MYR",
 		my: "MYR",
 		id: "IDR",
-		// id_en: "IDR",
 		th: "THB",
-		// th_en: "THB",
 		hi: "INR",
-		// hi_en: "INR",
 		bd: "BDT"
-		// bd_en: "BDT"
 	};
 	const currency = currencyId
 		? currCustomMapping[currencyId] ?? i18n[`Currency_${currencyId}`]

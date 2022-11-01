@@ -9,7 +9,6 @@ import LuckyWheel from "../components/luckyWheel/luckyWheel";
 import {
 	isEventPeriod,
 	GetCurrencyName,
-	langToCurrency,
 	defCurrenyId
 } from "../components/common/common";
 import Header from "../components/header/header";
@@ -39,10 +38,10 @@ export const LuckyWheelPop = () => {
 		i18n
 	});
 
-	const currencyId = useMemo(
-		() => userInfo?.currencyId ?? langToCurrency[userInfo.langId],
-		[userInfo.currencyId, userInfo.langId]
-	);
+	const currencyId = useMemo(() => userInfo?.currencyId, [
+		userInfo.currencyId,
+		userInfo.langId
+	]);
 
 	const isPassCurrencyIdPermission = CURRENCY_PERMISSION.includes(currencyId);
 
@@ -93,10 +92,10 @@ const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 
-	const currencyId = useMemo(
-		() => userInfo?.currencyId ?? langToCurrency[userInfo.langId],
-		[userInfo.currencyId, userInfo.langId]
-	);
+	const currencyId = useMemo(() => userInfo?.currencyId, [
+		userInfo.currencyId,
+		userInfo.langId
+	]);
 
 	const isPassCurrencyIdPermission = CURRENCY_PERMISSION.includes(currencyId);
 

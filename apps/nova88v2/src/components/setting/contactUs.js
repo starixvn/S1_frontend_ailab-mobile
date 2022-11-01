@@ -11,12 +11,11 @@ import useGetSocialChannel, {
 	channelIcon,
 	defLinkType
 } from "../hook/useGetSocialChannel";
-import { langToCurrency } from "../common/common";
 
 const ContactUs = ({ langId, currencyId }) => {
 	const { socialChannel } = useGetSocialChannel({
 		langId,
-		currencyId: currencyId ?? langToCurrency[langId],
+		currencyId,
 		displayPage: defDisplayPage.ContactUs
 	});
 

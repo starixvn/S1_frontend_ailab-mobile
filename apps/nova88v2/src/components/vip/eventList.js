@@ -3,15 +3,13 @@ import { i18nContext, userInfoContext } from "../common/context";
 import THBList from "./eventListTHB";
 import IDRList from "./eventListIDR";
 import MYRList from "./eventListMYR";
-import { defCurrenyId, langToCurrency } from "../common/common";
+import { defCurrenyId } from "../common/common";
 
 export const EventList = ({ langId }) => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 
-	const currency = userInfo.isLogin
-		? userInfo.currencyId
-		: langToCurrency[langId];
+	const currency = userInfo.currencyId;
 
 	let content = null;
 	if (currency === defCurrenyId.THB) {
