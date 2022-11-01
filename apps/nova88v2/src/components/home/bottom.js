@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { siteInfo, cloudBannerImgURL } from "../../config";
 import { Link } from "../../route/link";
 import path from "../../path";
-import { langToCurrency } from "../common/common";
 import { useGetSEODatas } from "../seo/seo";
 import useGetSocialChannel, {
 	defDisplayPage,
@@ -13,7 +12,7 @@ import useGetSocialChannel, {
 import allowedCurrencyList from "../../datas/allowedCurrencyList";
 
 const Bottom = ({ i18n, langId, currencyId }) => {
-	const _currencyId = currencyId ?? langToCurrency[langId];
+	const _currencyId = currencyId;
 
 	const { socialChannel } = useGetSocialChannel({
 		langId,

@@ -16,7 +16,6 @@ import Layout from "../components/common/layout";
 import Header from "../components/header/header";
 import { Link } from "../route/link";
 import path from "../path";
-import { langToCurrency } from "../components/common/common";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);
@@ -38,7 +37,7 @@ export default () => {
 	if (userInfo.isLogin !== false && !userInfo.lastLogin) return null;
 
 	const allowCurrencies = getLeaderBoardSupportCurrencyId();
-	const currencyId = userInfo?.currencyId ?? langToCurrency[userInfo?.langId];
+	const currencyId = userInfo?.currencyId;
 
 	if (!allowCurrencies.includes(currencyId)) {
 		return <Redirect to={`/${userInfo.langId}`} noThrow />;

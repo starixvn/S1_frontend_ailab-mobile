@@ -204,7 +204,6 @@ const LoginPage = () => {
 	return (
 		<div className="Login active">
 			{(userInfo.langId === "th" ||
-				userInfo.langId === "th_en" ||
 				userInfo.currencyId === defCurrenyId.THB) &&
 				!lineUserId && (
 					<div className="register-line">

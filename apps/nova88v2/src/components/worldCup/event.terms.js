@@ -15,11 +15,8 @@ const Terms = ({ langId, currencyId }) => {
 		cs: <TermsCS />,
 		my: <TermsMY />,
 		th: <TermsTH />,
-		th_en: <TermsEN />,
 		id: <TermsID />,
-		id_en: <TermsEN />,
-		hi: <TermsHI />,
-		hi_en: <TermsEN />
+		hi: <TermsHI />
 	}[langId];
 
 	const getPromoDetail = async () => {
