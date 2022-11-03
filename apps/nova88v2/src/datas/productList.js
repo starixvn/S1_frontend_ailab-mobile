@@ -936,7 +936,6 @@ export const defGameInfo = {
 	Casino_SG: { tpId: 10, tpGameType: 15 },
 	Casino_PG: { tpId: 14, tpGameType: 17 },
 	Casino_PT: { tpId: 27, gameId: "0", tpGameType: 46 },
-	// Casino_918Kiss: { tpId: 21, needLogin: true , tpGameType: 33 },
 	Casino_OW: { tpId: 1, gameId: 208, tpGameType: 4 },
 	Casino_NetEnt: { tpId: 37, tpGameType: 64 },
 	Casino_AdvantPlay: { tpId: 39, tpGameType: 67 },
