@@ -44,7 +44,8 @@ export const defSlotTpGameType = {
 	AdvantPlay: { tpId: 39, tpGameType: 67 },
 	Mega888: { tpId: 22, tpGameType: 34 },
 	Habanero: { tpId: 40, tpGameType: 68 },
-	SimplePlay: { tpId: 44, tpGameType: 86 }
+	SimplePlay: { tpId: 44, tpGameType: 86 },
+	Kiss918: { tpId: 21, tpGameType: 33 }
 };
 
 const defSortSports = {
@@ -143,6 +144,7 @@ const defSortSlot = {
 	[defCurrenyId.MYR]: [
 		"slot_AdvantPlay",
 		"slot_PP",
+		"slot_kiss918",
 		"slot_Mega888",
 		"slot_SimplePlay",
 		"slot_Habanero",
@@ -497,6 +499,21 @@ const gameList = ({ langId }) => {
 					img: `${cloudBannerImgURL}/h5/img/spp.png`,
 					path: path.casino.root,
 					sortKey: "slot_PP"
+				},
+				{
+					...defGameInfo.Casino_918Kiss,
+					parameter: defGameInfo.Casino_918Kiss,
+					spanText: "918Kiss",
+					img: `${cloudBannerImgURL}/h5/img/918kiss.png`,
+					path: path.casino.root,
+					providerImgName: "casino_kiss918",
+					sortKey: "slot_kiss918",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.slot_918Kiss)
+						}
+					]
 				},
 				{
 					...productList.mega888,
@@ -927,6 +944,7 @@ export const defGameInfo = {
 	Casino_Habanero: { tpId: 40, tpGameType: 68 },
 	Casino_AMB: { tpId: 30, tpGameType: 76 },
 	Casino_SimplePlay: { tpId: 44, tpGameType: 86 },
+	Casino_918Kiss: { tpId: 21, tpGameType: 33 },
 	Fishing_AB3: { tpId: 16, gameId: "AB3", tpGameType: 44 },
 	Fishing_AT05: { tpId: 16, gameId: "AT05", tpGameType: 44 },
 	Fishing_AT01: { tpId: 16, gameId: "AT01", tpGameType: 44 },
