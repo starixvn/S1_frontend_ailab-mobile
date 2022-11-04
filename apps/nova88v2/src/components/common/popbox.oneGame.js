@@ -5,7 +5,7 @@ import { Link } from "../../route/link";
 import { cloudBannerImgURL } from "../../config";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 
-const PopBoxOneGame = ({ tpId = 13 }) => {
+const PopBoxOneGame = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -15,7 +15,7 @@ const PopBoxOneGame = ({ tpId = 13 }) => {
 		GET_ENTER_PAGE({
 			isLogin: userInfo.isLogin,
 			langId: userInfo.langId,
-			tpId,
+			tpId: 13,
 			tpGameType: 41
 		});
 	};
@@ -31,7 +31,12 @@ const PopBoxOneGame = ({ tpId = 13 }) => {
 				<button className="orange" onClick={goToGame}>
 					{i18n.lbl_GoToGame.toUpperCase()}
 				</button>
-				<Link className="white" to={path.oneGame.root}>
+				<Link
+					className="white"
+					to={path.oneGame.root}
+					onClick={() => {
+						setPopBox({ isOpen: false });
+					}}>
 					{i18n.lbl_GoToDownloadApp.toUpperCase()}
 				</Link>
 			</div>

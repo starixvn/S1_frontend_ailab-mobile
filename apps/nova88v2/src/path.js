@@ -18,7 +18,7 @@ export default {
 		root: "profile"
 	},
 	bankInfo: {
-		root: "bankInfo"
+		root: "bank-info"
 	},
 	login: {
 		root: "login"
@@ -63,31 +63,31 @@ export default {
 		}
 	},
 	depositHistory: {
-		root: "depositHistory"
+		root: "deposit-history"
 	},
 	withdrawal: {
 		root: "withdrawal"
 	},
 	eWalletWithdrawal: {
-		root: "eWalletWithdrawal"
+		root: "eWallet-withdrawal"
 	},
 	cryptoWithdrawal: {
-		root: "cryptoWithdrawal"
+		root: "crypto-withdrawal"
 	},
 	withdrawalHistory: {
-		root: "withdrawalHistory"
+		root: "withdrawal-history"
 	},
 	transfer: {
 		root: "transfer"
 	},
 	transferHistory: {
-		root: "transferHistory"
+		root: "transfer-history"
 	},
 	statement: {
 		root: "statement"
 	},
 	financialLog: {
-		root: "financialLog"
+		root: "financial-log"
 	},
 	message: {
 		root: "message"
@@ -99,12 +99,14 @@ export default {
 		root: "casino"
 	},
 	forgetPassword: {
-		root: "forgetPassword"
+		root: "forget-password"
 	},
 	resetPassword: {
-		root: "resetPassword"
+		root: "reset-password"
 	},
-	changePassword: { root: "changePassword" },
+	changePassword: {
+		root: "change-password"
+	},
 	setting: {
 		root: "setting"
 	},
@@ -112,13 +114,13 @@ export default {
 		root: "kyc"
 	},
 	kycWaiting: {
-		root: "kycWaiting"
+		root: "kyc-waiting"
 	},
 	whoami: {
 		root: "whoami"
 	},
 	ranking: {
-		root: "leaderBoard"
+		root: "leaderboard"
 	},
 	kiss918: {
 		root: "918kiss"
@@ -127,13 +129,13 @@ export default {
 		root: "referral"
 	},
 	referralHistory: {
-		root: "referralHistory"
+		root: "referral-history"
 	},
 	angPow: {
 		root: "angPow"
 	},
 	oneGame: {
-		root: "oneGame"
+		root: "poker"
 	},
 	vip: {
 		root: "vip"
@@ -142,13 +144,13 @@ export default {
 		root: "contactUs"
 	},
 	gameProvider: {
-		root: "gameProvider"
+		root: "game-provider"
 	},
 	mysteryBox: {
 		root: "mysteryBox"
 	},
 	luckyWheel: {
-		root: "luckyWheel"
+		root: "lucky-wheel"
 	},
 	streaming: {
 		root: "streaming"
@@ -157,13 +159,13 @@ export default {
 		root: "eWallet"
 	},
 	cryptoWallet: {
-		root: "cryptoWallet"
+		root: "crypto-wallet"
 	},
 	myAccount: {
-		root: "myAccount"
+		root: "my-account"
 	},
 	appDownload: {
-		root: "appDownload"
+		root: "app-download"
 	},
 	checkSpeed: {
 		root: "speed"
@@ -175,7 +177,7 @@ export default {
 		root: "mega888"
 	},
 	worldCup: {
-		root: "worldCup"
+		root: "world-cup"
 	}
 };
 
