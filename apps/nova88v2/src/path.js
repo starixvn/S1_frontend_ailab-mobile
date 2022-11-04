@@ -96,7 +96,7 @@ export default {
 		root: "announcement"
 	},
 	casino: {
-		root: "casino"
+		root: "slots"
 	},
 	forgetPassword: {
 		root: "forget-password"
