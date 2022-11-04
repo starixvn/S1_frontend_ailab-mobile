@@ -595,7 +595,7 @@ const GroupList = ({
 	const rows = dataList?.map(data => {
 		const _mainKey = `${mainKey}-${data[idKey]}`;
 		return (
-			<div>
+			<div key={_mainKey}>
 				<div
 					className={`bankName ${
 						data.bankCode === selectedBank.bankCode ? "active" : ""
@@ -775,8 +775,12 @@ class CopyBtn extends Component {
 	}
 }
 
+CopyBtn.defaultProps = {
+	value: null
+};
+
 CopyBtn.propTypes = {
-	value: PropTypes.string.isRequired
+	value: PropTypes.string
 };
 
 export default Payment;
