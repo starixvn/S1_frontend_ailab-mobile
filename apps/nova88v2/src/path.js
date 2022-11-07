@@ -102,7 +102,7 @@ export default {
 		root: "forget-password"
 	},
 	resetPassword: {
-		root: "reset-password"
+		root: "resetPassword"
 	},
 	changePassword: {
 		root: "change-password"
