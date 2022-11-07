@@ -52,7 +52,7 @@
 	"lbl_ViewAll": "Lihat semua",
 	"lbl_Total": "Jumlah total",
 	"lbl_ClaimAmountRange": "Jarak Jumlah Klaim",
-	"lbl_PleaseEnterClaimAmount": "Harap masukkan jumlah yang Anda inginkan untuk mengklaim promosi",
+	"lbl_PleaseEnterClaimAmount": "Silakan pilih jumlah untuk mengklaim promosi",
 	"lbl_Hours": "Jam",
 	"lbl_RemainingTime": "SISA WAKTU",
 	"lbl_RollOver": "Rollover",
@@ -586,6 +586,14 @@
 	"lbl_promo_all_promos": "SEMUA PROMO",
 	"lbl_WinOver": "WINOVER",
 	"lbl_WinOverAccumulated": "WINOVER",
+	"lbl_LossWithBonus": "Kekalahan dengan Bonus",
+	"lbl_NetLoss": "Kekalahan Bersih",
+	"lbl_MinNetLossRequired": "Min Kekalahan Bersih Diperlukan",
+	"lbl_TotalNetLoss": "Jumlah Kekalahan Bersih",
+	"lbl_TotalBonus": "Total Bonus",
+	"lbl_MaxBonus": "Bonus Maksimum",
+	"lbl_TotalBonusClaimable": "Total Bonus Dapat Diklaim",
+
 	"-============================================Streaming===================================": "",
 
 	"lbl_LiveStreaming": "Siaran Langsung",

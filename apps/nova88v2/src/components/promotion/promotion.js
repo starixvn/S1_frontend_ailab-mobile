@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import moment from "moment";
 import { NoData } from "@ailab-mobile/common";
 import PropTypes from "prop-types";
 import {
@@ -49,23 +50,29 @@ const setPromotionCards = ({
 		const imgSRC = p.banner;
 		const _isClaimed = isClaimed(p);
 		const _isNew = _isClaimed ? false : isNew(p);
+		const isDisplay =
+			moment.unix(p.displayFrom).diff(Date.now()) <= 0 &&
+			moment.unix(p.displayTo).diff(Date.now()) >= 0;
+
 		return (
-			<Card
-				key={`promotion-${userInfo.langId}-${p.bonusCode}`}
-				_isClaimed={_isClaimed}
-				_isNew={_isNew}
-				imgSRC={imgSRC}
-				func_CallBack={func_CallBack}
-				i18n={i18n}
-				uiSetting={uiSetting}
-				userInfo={userInfo}
-				p={p}
-				ruleCols={ruleCols}
-				filterType={filterType}
-				promotionInfo={p}
-				RefreshProcessBar={RefreshProcessBar}
-				clickMoreInfo={clickMoreInfo}
-			/>
+			isDisplay && (
+				<Card
+					key={`promotion-${userInfo.langId}-${p.bonusCode}`}
+					_isClaimed={_isClaimed}
+					_isNew={_isNew}
+					imgSRC={imgSRC}
+					func_CallBack={func_CallBack}
+					i18n={i18n}
+					uiSetting={uiSetting}
+					userInfo={userInfo}
+					p={p}
+					ruleCols={ruleCols}
+					filterType={filterType}
+					promotionInfo={p}
+					RefreshProcessBar={RefreshProcessBar}
+					clickMoreInfo={clickMoreInfo}
+				/>
+			)
 		);
 	});
 };

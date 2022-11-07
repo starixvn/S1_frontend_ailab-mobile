@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import RemainTime from "../common/remainTime";
 import { number_format } from "../common/common";
-import { defRuleCols, defPromotionType } from "../common/def";
+import { defRuleCols, defPromotionType, defBonusType } from "../common/def";
 import { configContext } from "../common/context";
 
 const MinAmount = ({
@@ -258,6 +258,82 @@ export const defElems = ({
 	};
 };
 
+const reDepositElems = ({
+	promotionInfo,
+	i18n,
+	isLogin,
+	formatSetting,
+	isList,
+	config
+}) => {
+	const { tierAmountList, bonusType } = promotionInfo;
+	const isPercentage = bonusType === defBonusType.Percentage;
+
+	const info = tierAmountList.map(el => (
+		<div className="info promotionInfo" key={el.requiredAmount}>
+			<ul>
+				<MinAmount
+					key={`promo-rule-${defRuleCols.minAmount}`}
+					requiredAmount={el.requiredAmount}
+					displayText={i18n?.lbl_Vip_Minimum_Deposit_Count}
+					formatSetting={formatSetting}
+					isList={isList}
+					config={config}
+				/>
+				<Bonus
+					key={`promo-rule-${defRuleCols.bonus}`}
+					displayText={i18n?.lbl_Bonus}
+					value={number_format(el.bonus, formatSetting)}
+					icon="icon icon-promotion"
+					bonusType={promotionInfo.bonusType}
+					isList={isList}
+					config={config}
+				/>
+				{isPercentage && (
+					<MaxBonus
+						key={`promo-rule-${defRuleCols.maxBonus}`}
+						displayText={i18n?.lbl_MaxBonusAmount}
+						value={number_format(el.maxBonus, formatSetting)}
+						icon="icon icon-icon32px_money"
+						bonusType={promotionInfo.bonusType}
+						isList={isList}
+						config={config}
+					/>
+				)}
+
+				<KeyValue
+					key={`promo-rule-${defRuleCols.rollOver}`}
+					i18n={i18n}
+					displayText={i18n?.lbl_RollOver}
+					isList={isList}
+					icon="icon icon-icon32px_"
+					value={`${el.rollOver}x`}
+					config={config}
+				/>
+			</ul>
+		</div>
+	));
+
+	return (
+		<>
+			<div className="info promotionInfo">
+				<ul>
+					<RemainingTime
+						key={`promo-rule-${defRuleCols.remainingTime}`}
+						promotionInfo={promotionInfo}
+						i18n={i18n}
+						isLogin={isLogin}
+						isList={isList}
+						config={config}
+					/>
+				</ul>
+			</div>
+
+			{info}
+		</>
+	);
+};
+
 const PromoRule = ({ ruleCols, promotionInfo, isList = true, config = {} }) => {
 	const {
 		formatSetting,
@@ -265,25 +341,39 @@ const PromoRule = ({ ruleCols, promotionInfo, isList = true, config = {} }) => {
 		i18n
 	} = useContext(configContext) ?? config;
 
-	const allElems = defElems({
-		promotionInfo,
-		i18n,
-		isLogin,
-		formatSetting,
-		isList,
-		config
-	});
+	const { tierAmountList } = promotionInfo;
 
-	const rows = ruleCols.map(col => allElems[col]);
-	return isList ? (
-		<div className="rollover">
-			<div>{rows}</div>
-		</div>
-	) : (
-		<div className="info promotionInfo">
-			<ul>{rows}</ul>
-		</div>
-	);
+	let rows = [];
+	if (tierAmountList?.length > 0) {
+		rows = reDepositElems({
+			promotionInfo,
+			i18n,
+			isLogin,
+			formatSetting,
+			isList,
+			config
+		});
+	} else {
+		const allElems = defElems({
+			promotionInfo,
+			i18n,
+			isLogin,
+			formatSetting,
+			isList,
+			config
+		});
+		rows = isList ? (
+			<div className="rollover">
+				<div>{ruleCols.map(col => allElems[col])}</div>
+			</div>
+		) : (
+			<div className="info promotionInfo">
+				<ul>{ruleCols.map(col => allElems[col])}</ul>
+			</div>
+		);
+	}
+
+	return rows;
 };
 
 PromoRule.defaultProps = {

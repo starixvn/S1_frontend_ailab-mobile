@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
+import moment from "moment";
 import { Link, Redirect } from "@reach/router";
 import {
-	defBonusType,
 	defPromotionType,
 	defFilterType,
 	defHideJoinBtnTypes
@@ -201,25 +201,18 @@ export const JoinBtn = ({
 						_promo.filterType === defFilterType.specialBonus) &&
 						_promo.promotionType === defPromotionType.firstDeposit))
 			) {
-				if (_promo.bonusType === defBonusType.Percentage) {
-					handlePopBox({
-						content: (
-							<ClaimWithLockedAmount
-								uiSetting={uiSetting}
-								promotionInfo={promotionInfo}
-								ClosePopBox={clickClose}
-								SetClaimPromotion={SetClaimPromotion}
-								i18n={i18n}
-								formatSetting={formatSetting}
-							/>
-						)
-					});
-				} else {
-					SetClaimPromotion({
-						bonusCode: _promo.bonusCode,
-						LockedAmount: promotionInfo.maxAmount
-					});
-				}
+				handlePopBox({
+					content: (
+						<ClaimWithLockedAmount
+							uiSetting={uiSetting}
+							promotionInfo={promotionInfo}
+							ClosePopBox={clickClose}
+							SetClaimPromotion={SetClaimPromotion}
+							i18n={i18n}
+							formatSetting={formatSetting}
+						/>
+					)
+				});
 			} else {
 				SetClaimPromotion({ bonusCode: _promo.bonusCode });
 			}
@@ -236,6 +229,16 @@ export const JoinBtn = ({
 
 	if (redirectPath !== null) {
 		btnResult = <Redirect to={redirectPath} noThrow />;
+	} else if (
+		(promotionInfo.isJoin && userInfo.isLogin) ||
+		promotionInfo.promotionType === defPromotionType.rebate ||
+		promotionInfo.promotionType === defPromotionType.other ||
+		(filterType === defFilterType.specialBonus && !promotionInfo.canJoin) ||
+		promotionInfo.beenUsed ||
+		moment.unix(promotionInfo.periodFrom).diff(Date.now()) > 0 ||
+		moment.unix(promotionInfo.periodTo).diff(Date.now()) < 0
+	) {
+		btnResult = null;
 	} else if (
 		promotionInfo &&
 		!promotionInfo.beenUsed &&

@@ -51,7 +51,7 @@
 	"lbl_ViewAll": "View All",
 	"lbl_Total": "Total",
 	"lbl_ClaimAmountRange": "Claim Amount Range",
-	"lbl_PleaseEnterClaimAmount": "Please enter your prefer amount to claim promotion",
+	"lbl_PleaseEnterClaimAmount": "Please select the amount to claim the promotion",
 	"lbl_Hours": "Hours",
 	"lbl_RemainingTime": "REMAINING TIME",
 	"lbl_RollOver": "RollOver",
@@ -596,6 +596,14 @@
 	"lbl_promo_all_promos": "ALL PROMOS",
 	"lbl_WinOver": "WINOVER",
 	"lbl_WinOverAccumulated": "WINOVER",
+	"lbl_LossWithBonus": "Loss With Bonus",
+	"lbl_NetLoss": "Net Loss",
+	"lbl_MinNetLossRequired": "Min Net Loss Required",
+	"lbl_TotalNetLoss": "Total Net Loss",
+	"lbl_TotalBonus": "Total Bonus",
+	"lbl_MaxBonus": "Max Bonus",
+	"lbl_TotalBonusClaimable": "Total Bonus Claimable",
+
 	"==============================================Streaming====================================": "",
 
 	"lbl_LiveStreaming": "Live Sports",
@@ -630,7 +638,7 @@
 	"lbl_Please_enter_Affiliate_ID": "Please enter Affiliate ID (Optional), it can not change once enter!",
 	"lbl_Affiliate_ID": "Affiliate ID/Referral",
 	"lbl_AfterJoinHint": "Congratulation! You have successfully register as a member.",
-  "lbl_BecomingDistinguishedPlayer": "Becoming A Distinguished Player",
+	"lbl_BecomingDistinguishedPlayer": "Becoming A Distinguished Player",
 
 	"==============================================Login====================================": "",
 
