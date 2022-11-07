@@ -78,30 +78,35 @@ const PopUp = () => {
 			break;
 	}
 
+	let displayContent = null;
+	if (popBox.fullPage) {
+		displayContent = popBox.content;
+	} else if (popBox.title || content) {
+		displayContent = (
+			<div className="pop">
+				<div className="popTit">
+					{popBox.hideCloseBtn === true ? null : (
+						<div
+							className="icon icon-close"
+							onClick={popBox.handlePopBox ?? handlePopBox}
+						/>
+					)}
+					{popBox.title ?? i18n.lbl_ImportantNote}
+				</div>
+				{content}
+			</div>
+		);
+	} else {
+		displayContent = content;
+	}
+
 	return (
 		<div
 			id="popup"
 			className={`${popBox.className ?? ""}${
 				popBox.isOpen ? " active" : ""
 			}`}>
-			{popBox.fullPage ? (
-				popBox.content
-			) : popBox.title || content ? (
-				<div className="pop">
-					<div className="popTit">
-						{popBox.hideCloseBtn === true ? null : (
-							<div
-								className="icon icon-close"
-								onClick={popBox.handlePopBox ?? handlePopBox}
-							/>
-						)}
-						{popBox.title ?? i18n.lbl_ImportantNote}
-					</div>
-					{content}
-				</div>
-			) : (
-				content
-			)}
+			{displayContent}
 		</div>
 	);
 };

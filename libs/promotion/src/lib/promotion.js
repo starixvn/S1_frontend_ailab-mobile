@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
-import { NoData } from "@ailab-mobile/common";
 import PropTypes from "prop-types";
+import moment from "moment";
+import { NoData } from "@ailab-mobile/common";
 import {
 	defFilterType,
 	defPromotionType,
@@ -31,14 +32,15 @@ export const Promotion = ({ staticList, location, navBar, ...rest }) => {
 };
 
 Promotion.defaultProps = {
-	formatSetting: {}
+	staticList: null,
+	location: null,
+	navBar: null
 };
 
 Promotion.propTypes = {
-	formatSetting: PropTypes.shape({
-		isConvertRequired: PropTypes.bool,
-		digits: PropTypes.number
-	})
+	staticList: PropTypes.arrayOf(PropTypes.any),
+	location: PropTypes.objectOf(PropTypes.any),
+	navBar: PropTypes.arrayOf(PropTypes.any)
 };
 
 const setPromotionCards = ({
@@ -57,34 +59,44 @@ const setPromotionCards = ({
 		const imgSRC = p.banner;
 		const _isClaimed = isClaimed(p);
 		const _isNew = _isClaimed ? false : isNew(p);
+		const isDisplay =
+			moment.unix(p.displayFrom).diff(Date.now()) <= 0 &&
+			moment.unix(p.displayTo).diff(Date.now()) >= 0;
+
 		return (
-			<Card
-				key={`promotion-${userInfo.langId}-${p.bonusCode}`}
-				p={p}
-				_isClaimed={_isClaimed}
-				_isNew={_isNew}
-				imgSRC={imgSRC}
-				func_CallBack={func_CallBack}
-				i18n={i18n}
-				uiSetting={uiSetting}
-				ruleCols={ruleCols}
-				filterType={filterType}
-				RefreshProcessBar={RefreshProcessBar}
-				clickMoreInfo={clickMoreInfo}
-				userInfo={userInfo}
-				config={config}
-			/>
+			isDisplay && (
+				<Card
+					key={`promotion-${userInfo.langId}-${p.bonusCode}`}
+					p={p}
+					_isClaimed={_isClaimed}
+					_isNew={_isNew}
+					imgSRC={imgSRC}
+					func_CallBack={func_CallBack}
+					i18n={i18n}
+					uiSetting={uiSetting}
+					ruleCols={ruleCols}
+					filterType={filterType}
+					RefreshProcessBar={RefreshProcessBar}
+					clickMoreInfo={clickMoreInfo}
+					userInfo={userInfo}
+					config={config}
+				/>
+			)
 		);
 	});
 };
 
 const getFilterType = ({ location, column }) => {
 	const state = location?.state;
-	return state?.[column]
-		? isNaN(state?.[column])
+
+	let filterType = null;
+	if (state?.[column]) {
+		filterType = isNumber(state?.[column])
 			? state?.[column]
-			: Number(state?.[column])
-		: undefined;
+			: Number(state?.[column]);
+	}
+
+	return filterType;
 };
 
 const PromotionContent = ({ staticList, location, navBar }) => {
@@ -104,12 +116,11 @@ const PromotionContent = ({ staticList, location, navBar }) => {
 		}),
 		isLogin: userInfo.isLogin
 	});
-	const { promotion, getPromotionList, refreshProcessBar } = useGetPromotions(
-		{
-			api,
-			userInfo
-		}
-	);
+	const {
+		promotion,
+		getPromotionList,
+		refreshProcessBar
+	} = useGetPromotions({ api, userInfo });
 
 	const {
 		onChangeSpecialCode,
@@ -261,4 +272,16 @@ const PromotionContent = ({ staticList, location, navBar }) => {
 			{noData}
 		</>
 	);
+};
+
+PromotionContent.defaultProps = {
+	staticList: null,
+	location: null,
+	navBar: null
+};
+
+PromotionContent.propTypes = {
+	staticList: PropTypes.arrayOf(PropTypes.any),
+	location: PropTypes.objectOf(PropTypes.any),
+	navBar: PropTypes.arrayOf(PropTypes.any)
 };

@@ -5,37 +5,43 @@ import { number_format, isConvert } from "../../common/common";
 const CashbackInfo = ({ bonusCode, cashBackDetails, i18n, currencyId }) => {
 	if (!cashBackDetails) return null;
 
-	const { totalBonus, maxBonus, cashBackDetail } = cashBackDetails;
+	const {
+		totalBonus,
+		maxBonus,
+		cashBackDetail,
+		totalLossAmount,
+		minLossAmount,
+		percentage,
+		originalTotalBonus
+	} = cashBackDetails;
 
 	const rows = cashBackDetail?.map(c => (
 		<tr key={`CashbackInfo-${bonusCode}-${c.tpName}`}>
 			<td>{c.tpName}</td>
 			<td>
-				{number_format(Math.abs(c.lossAmount), isConvert(currencyId))}
+				{number_format(c.lossAmountWithBonus, isConvert(currencyId))}
 			</td>
-			<td>{c.percentageName}</td>
-			<td>{number_format(c.bonusAmount, isConvert(currencyId))}</td>
+			<td>{number_format(c.lossAmount, isConvert(currencyId))}</td>
 		</tr>
 	));
 
 	return (
-		<div className="cashBack">
+		<div className="cashBack newStyle">
 			<div className="title">{i18n.lbl_CashBack}</div>
 			<table>
 				<tbody>
 					<tr>
 						<td />
-						<td>{i18n.lbl_LossAmount}</td>
-						<td>{i18n.lbl_Percentage}</td>
-						<td>{i18n.lbl_BonusAmount}</td>
+						<td>{i18n.lbl_LossWithBonus}</td>
+						<td>{i18n.lbl_NetLoss}</td>
 					</tr>
 					{rows}
 					<tr>
 						<td colSpan="4">
-							<span>{i18n.lbl_TotalAmount}：</span>
+							<span>{i18n.lbl_TotalNetLoss}：</span>
 							<span>
 								{number_format(
-									totalBonus,
+									totalLossAmount,
 									isConvert(currencyId)
 								)}
 							</span>
@@ -43,7 +49,35 @@ const CashbackInfo = ({ bonusCode, cashBackDetails, i18n, currencyId }) => {
 					</tr>
 					<tr>
 						<td colSpan="4">
-							<span>{i18n.lbl_MaxBonusAmount}：</span>
+							<span>{i18n.lbl_MinNetLossRequired}：</span>
+							<span>
+								{number_format(
+									minLossAmount,
+									isConvert(currencyId)
+								)}
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td colSpan="4">
+							<span>{i18n.lbl_Percentage}：</span>
+							<span>{percentage}</span>
+						</td>
+					</tr>
+					<tr>
+						<td colSpan="4">
+							<span>{i18n.lbl_TotalBonus}：</span>
+							<span>
+								{number_format(
+									originalTotalBonus,
+									isConvert(currencyId)
+								)}
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td colSpan="4">
+							<span>{i18n.lbl_MaxBonus}：</span>
 							<span>
 								{number_format(maxBonus, isConvert(currencyId))}
 							</span>
@@ -51,17 +85,12 @@ const CashbackInfo = ({ bonusCode, cashBackDetails, i18n, currencyId }) => {
 					</tr>
 					<tr>
 						<td colSpan="4">
-							<span>{i18n.lbl_ClaimAmount}：</span>
+							<span>{i18n.lbl_TotalBonusClaimable}：</span>
 							<span>
-								{totalBonus > maxBonus
-									? number_format(
-											maxBonus,
-											isConvert(currencyId)
-									  )
-									: number_format(
-											totalBonus,
-											isConvert(currencyId)
-									  )}
+								{number_format(
+									totalBonus,
+									isConvert(currencyId)
+								)}
 							</span>
 						</td>
 					</tr>
