@@ -9506,6 +9506,32 @@ span.important {
   border: 0;
 }
 
+.cashBack.newStyle table tr:nth-last-child(3) {
+  border-top: none;
+}
+
+.cashBack.newStyle table tr:nth-last-child(6) {
+  border-top: 1px solid #D2E2F9;
+}
+
+.cashBack.newStyle table tr:nth-last-child(-n+6) {
+  font-weight: bold;
+  width: 100%;
+  background: transparent;
+}
+
+.cashBack.newStyle table tr:nth-last-child(-n+6) td {
+  border-right: 0;
+}
+
+.cashBack.newStyle table tr:nth-last-child(-n+6) td span {
+  white-space: nowrap;
+}
+
+.cashBack.newStyle table tr:nth-last-child(-n+6) td span:nth-child(1) {
+  min-width: 25vw;
+}
+
 .features {
   background: #e2e2e2;
   color: #838383;

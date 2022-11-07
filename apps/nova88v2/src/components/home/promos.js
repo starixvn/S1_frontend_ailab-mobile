@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import Marquee from "react-fast-marquee";
 import PropTypes from "prop-types";
 import { useGetPromotions } from "../hook/useGetPromotions";
@@ -16,22 +17,36 @@ const Promos = ({ i18n, userInfo }) => {
 	};
 
 	const promoArr = promotionList.map(promo => {
-		const { banner, title, description, bonusCode } = promo;
+		const {
+			banner,
+			title,
+			description,
+			bonusCode,
+			displayFrom,
+			displayTo
+		} = promo;
+
+		const isDisplay =
+			moment.unix(displayFrom).diff(Date.now()) <= 0 &&
+			moment.unix(displayTo).diff(Date.now()) >= 0;
+
 		return (
-			<div className="promosModule" key={`promos-${bonusCode}`}>
-				<div>
-					<img src={banner} alt={title} />
+			isDisplay && (
+				<div className="promosModule" key={`promos-${bonusCode}`}>
+					<div>
+						<img src={banner} alt={title} />
+					</div>
+					<div>{title}</div>
+					<div>{description}</div>
+					<div className="btn-group">
+						<button
+							className="blue"
+							onClick={clickPromotion.bind(this, bonusCode)}>
+							{i18n.lbl_More_Info}
+						</button>
+					</div>
 				</div>
-				<div>{title}</div>
-				<div>{description}</div>
-				<div className="btn-group">
-					<button
-						className="blue"
-						onClick={clickPromotion.bind(this, bonusCode)}>
-						{i18n.lbl_More_Info}
-					</button>
-				</div>
-			</div>
+			)
 		);
 	});
 

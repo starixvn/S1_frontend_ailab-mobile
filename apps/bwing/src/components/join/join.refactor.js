@@ -272,7 +272,7 @@ const Join = () => {
 		const PasswordCheck = passwordCheck({ val: userValue.Password, i18n });
 		const PhoneCheck = await phoneCheck({ val: userValue.Phone });
 		const CheckboxCheck = userValue.agreeCheck;
-    const reCaptchaCheck = reCaptchaToken !== "";
+		const reCaptchaCheck = reCaptchaToken !== "";
 
 		checked =
 			UserNameCheck.checked &&

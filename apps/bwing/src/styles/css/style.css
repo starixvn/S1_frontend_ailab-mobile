@@ -1695,6 +1695,61 @@ footer > a.open {
   border: 2px solid white;
 }
 
+#popup .popTit {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  background: #7789bd;
+  padding: 10px;
+}
+
+#popup .popTit .icon-close {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  top: 0;
+  left: 76vw;
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#popup .popTxt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  background: #070e22;
+  padding: 2vw;
+  width: calc(100% - 4vw);
+}
+
+#popup .popTxt .txt-lightgray {
+  margin: 4vw 0 2vw;
+  font-size: 3.4vw;
+}
+
+#popup .popTxt .dropdown .dropdown-container {
+  top: 6.6vw;
+}
+
+#popup .popTxt .dropdown .dropdown-container .dropdown-item {
+  text-align: left;
+  padding: 2vw 2vw 0;
+}
+
+#popup .popTxt .dropdown .btn span {
+  color: white;
+}
+
 .header {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -9518,7 +9573,7 @@ span.important {
   content: "";
   width: 94vw;
   height: 16vw;
-  background: url(https://banner.bw88.io/img/worldcup/light.png) no-repeat;
+  background: url(https://banner.bw88.io/h5/img/worldcup/light.png) no-repeat;
   opacity: .9;
   -webkit-filter: brightness(120%);
           filter: brightness(120%);
@@ -9595,7 +9650,7 @@ span.important {
   content: "";
   width: 17vw;
   height: 24vw;
-  background: url(https://banner.bw88.io/img/worldcup/h5mo.png) no-repeat, 50%;
+  background: url(https://banner.bw88.io/h5/img/worldcup/h5mo.png) no-repeat, 50%;
   position: absolute;
   top: -17vw;
   left: -6vw;
@@ -9674,7 +9729,7 @@ span.important {
 .worldCup .discover .item .hoverBox > div .img, .worldCup .discover1 .item .hoverBox > div .img {
   width: 28vw;
   height: 4.5vw;
-  background: url(https://banner.bw88.io/img/worldcup/my.png) no-repeat center;
+  background: url(https://banner.bw88.io/h5/img/worldcup/my.png) no-repeat center;
   margin: 6vw auto;
 }
 
@@ -9702,7 +9757,7 @@ span.important {
   content: "";
   width: 25vw;
   height: 30vw;
-  background: url(https://banner.bw88.io/img/worldcup/h5mp.png) no-repeat;
+  background: url(https://banner.bw88.io/h5/img/worldcup/h5mp.png) no-repeat;
   left: 74vw;
   -webkit-animation: bg 5s ease-in-out infinite;
           animation: bg 5s ease-in-out infinite;
@@ -9765,7 +9820,7 @@ span.important {
   position: relative;
   padding: 5vw 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  background: url(https://banner.bw88.io/img/worldcup/h5fixturebg.png) no-repeat top center/contain;
+  background: url(https://banner.bw88.io/h5/img/worldcup/h5fixturebg.png) no-repeat top center/contain;
 }
 
 .worldCup .fixture .title {
@@ -9791,7 +9846,7 @@ span.important {
   height: 60vw;
   position: absolute;
   content: "";
-  background: url(https://banner.bw88.io/img/worldcup/h5fixturebg.png) no-repeat top center/contain;
+  background: url(https://banner.bw88.io/h5/img/worldcup/h5fixturebg.png) no-repeat top center/contain;
   background-size: cover;
   z-index: 0;
   top: -0.5vw;
@@ -10174,7 +10229,7 @@ span.important {
   content: "";
   width: 64px;
   height: 125px;
-  background: url(https://banner.bw88.io/img/worldcup/h5mo1.png);
+  background: url(https://banner.bw88.io/h5/img/worldcup/h5mo1.png);
   position: absolute;
   top: -3.5rem;
   -webkit-animation: bg 5s ease-in-out infinite;
@@ -10407,7 +10462,7 @@ span.important {
   height: 18vw;
   border-radius: 3px;
   border: 1px solid #D80241;
-  background: #00081f url(https://banner.bw88.io/img/worldcup/tkt.png) no-repeat center bottom/45%;
+  background: #00081f url(https://banner.bw88.io/h5/img/worldcup/tkt.png) no-repeat center bottom/45%;
   padding-top: 3vw;
 }
 
@@ -10697,7 +10752,7 @@ span.important {
   content: "";
   width: 39vw;
   height: 61vw;
-  background: url(https://banner.bw88.io/img/worldcup/mp1.png) no-repeat;
+  background: url(https://banner.bw88.io/h5/img/worldcup/mp1.png) no-repeat;
   position: absolute;
   left: -10vw;
   top: 30vw;

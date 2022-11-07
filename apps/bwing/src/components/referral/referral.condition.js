@@ -78,7 +78,7 @@ const Conditios = ({ userInfo, i18n, setPopBox }) => {
 						<span>{` ${referralData.periodDays} ${i18n.lbl_Days}`}</span>
 					</div>
 					<div>
-						{i18n.lbl_Bonus}
+						{i18n.lbl_Bonus.toUpperCase()}
 						<span>
 							{` ${
 								i18n[`Currency_${userInfo.currencyId}`]

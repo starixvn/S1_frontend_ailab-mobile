@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import RemainTime from "../common/remainTime";
 import { number_format } from "../common/common";
-import { defRuleCols, defPromotionType } from "../common/def";
+import { defRuleCols, defPromotionType, defBonusType } from "../common/def";
 import { configContext } from "../common/context";
 
 const MinAmount = ({
@@ -226,6 +226,77 @@ export const defElems = ({
 	};
 };
 
+const reDepositElems = ({
+	promotionInfo,
+	i18n,
+	isLogin,
+	formatSetting,
+	showIcon
+}) => {
+	const { tierAmountList, bonusType } = promotionInfo;
+	const isPercentage = bonusType === defBonusType.Percentage;
+
+	const info = tierAmountList.map(el => (
+		<div className="rolloverList">
+			<MinAmount
+				key={`promo-rule-${defRuleCols.minAmount}`}
+				requiredAmount={el.requiredAmount}
+				displayText={i18n?.lbl_Vip_Minimum_Deposit_Count}
+				formatSetting={formatSetting}
+				showIcon={showIcon}
+			/>
+			<Bonus
+				key={`promo-rule-${defRuleCols.bonus}`}
+				displayText={i18n?.lbl_Bonus}
+				value={number_format(el.bonus, formatSetting)}
+				icon="icon icon-promotion"
+				bonusType={promotionInfo.bonusType}
+				showIcon={showIcon}
+			/>
+			{isPercentage && (
+				<MaxBonus
+					key={`promo-rule-${defRuleCols.maxBonus}`}
+					displayText={i18n?.lbl_MaxBonusAmount}
+					value={number_format(el.maxBonus, formatSetting)}
+					icon="icon icon-icon32px_money"
+					bonusType={el.bonusType}
+					showIcon={showIcon}
+				/>
+			)}
+			<KeyValue
+				key={`promo-rule-${defRuleCols.rollOver}`}
+				i18n={i18n}
+				displayText={
+					promotionInfo.fullFillType === 2
+						? i18n?.lbl_WinOver
+						: i18n?.lbl_RollOver
+				}
+				icon="icon icon-icon32px_"
+				value={`${
+					promotionInfo.fullFillType === 2 ? el.winOver : el.rollOver
+				}x`}
+				showIcon={showIcon}
+			/>
+		</div>
+	));
+
+	return (
+		<>
+			<div className="rolloverList">
+				<RemainingTime
+					key={`promo-rule-${defRuleCols.remainingTime}`}
+					promotionInfo={promotionInfo}
+					i18n={i18n}
+					isLogin={isLogin}
+					showIcon={showIcon}
+				/>
+			</div>
+
+			{info}
+		</>
+	);
+};
+
 const PromoRule = ({
 	ruleCols,
 	promotionInfo,
@@ -237,16 +308,34 @@ const PromoRule = ({
 		userInfo: { isLogin },
 		i18n
 	} = useContext(configContext);
-	const allElems = defElems({
-		promotionInfo,
-		i18n,
-		isLogin,
-		formatSetting,
-		showIcon
-	});
 
-	const rows = ruleCols?.map(col => allElems[col]);
-	return <div className={className}>{rows}</div>;
+	const { tierAmountList } = promotionInfo;
+
+	let rows = [];
+	if (tierAmountList?.length > 0) {
+		rows = reDepositElems({
+			promotionInfo,
+			i18n,
+			isLogin,
+			formatSetting,
+			showIcon
+		});
+	} else {
+		const allElems = defElems({
+			promotionInfo,
+			i18n,
+			isLogin,
+			formatSetting,
+			showIcon
+		});
+		rows = (
+			<div className={className}>
+				{ruleCols?.map(col => allElems[col])}
+			</div>
+		);
+	}
+
+	return rows;
 };
 
 PromoRule.defaultProps = {

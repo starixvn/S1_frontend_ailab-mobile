@@ -1,9 +1,9 @@
 import React, { useContext, useRef, useEffect, useState } from "react";
+import moment from "moment";
 import { userInfoContext, i18nContext, popBoxContext } from "Context";
 import { Redirect } from "@reach/router";
 import path from "../../../path";
 import {
-	defBonusType,
 	defPromotionType,
 	defFilterType,
 	defWrapperCol,
@@ -74,11 +74,7 @@ export default ({
 										<div className="btn-group">
 											<button
 												onClick={clickClose}
-												className={
-													uiSetting.popBox
-														?.submitBtn ??
-													"btn-check"
-												}>
+												className="btn-check">
 												OK
 											</button>
 										</div>
@@ -96,20 +92,13 @@ export default ({
 									btnBar: (
 										<div className="btn-group">
 											<button
-												className={
-													uiSetting.popBox
-														?.cancelBtn ?? "blue"
-												}
+												className="blue"
 												onClick={clickClose}>
 												{i18n?.lbl_Later}
 											</button>
 											<button
 												onClick={RedirectToProfile}
-												className={
-													uiSetting.popBox
-														?.submitBtn ??
-													"btn-check"
-												}>
+												className="btn-check">
 												{i18n?.lbl_GoNow}
 											</button>
 										</div>
@@ -135,10 +124,6 @@ export default ({
 				);
 		}
 	};
-
-	const _canJoin = !(
-		filterType === defFilterType.specialBonus && !promotionInfo?.canJoin
-	);
 
 	const onJoinPromotion = (_promo = {}) => {
 		if (userInfo.isLogin !== false) {
@@ -210,24 +195,17 @@ export default ({
 					(filterType === defFilterType.specialBonus &&
 						_promo.promotionType === defPromotionType.firstDeposit))
 			) {
-				if (_promo.bonusType === defBonusType.Percentage) {
-					handlePopBox({
-						content: (
-							<ClaimWithLockedAmount
-								promotionInfo={promotionInfo}
-								ClosePopBox={clickClose}
-								SetClaimPromotion={SetClaimPromotion}
-								i18n={i18n}
-								formatSetting={formatSetting}
-							/>
-						)
-					});
-				} else {
-					SetClaimPromotion({
-						bonusCode: _promo.bonusCode,
-						LockedAmount: promotionInfo.maxAmount
-					});
-				}
+				handlePopBox({
+					content: (
+						<ClaimWithLockedAmount
+							promotionInfo={promotionInfo}
+							ClosePopBox={clickClose}
+							SetClaimPromotion={SetClaimPromotion}
+							i18n={i18n}
+							formatSetting={formatSetting}
+						/>
+					)
+				});
 			} else {
 				SetClaimPromotion({ bonusCode: _promo.bonusCode });
 			}
@@ -245,11 +223,16 @@ export default ({
 	if (redirectPath !== null) {
 		btnResult = <Redirect to={redirectPath} noThrow />;
 	} else if (
-		promotionInfo &&
-		!promotionInfo.beenUsed &&
-		(userInfo.isLogin === false ||
-			(_canJoin && userInfo.isLogin && !promotionInfo.isJoin))
+		(promotionInfo.isJoin && userInfo.isLogin) ||
+		promotionInfo.promotionType === defPromotionType.rebate ||
+		promotionInfo.promotionType === defPromotionType.other ||
+		(filterType === defFilterType.specialBonus && !promotionInfo.canJoin) ||
+		promotionInfo.beenUsed ||
+		moment.unix(promotionInfo.periodFrom).diff(Date.now()) > 0 ||
+		moment.unix(promotionInfo.periodTo).diff(Date.now()) < 0
 	) {
+		btnResult = null;
+	} else {
 		btnResult = (
 			<button
 				className="orange"

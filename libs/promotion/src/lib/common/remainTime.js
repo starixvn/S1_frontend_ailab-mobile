@@ -17,12 +17,27 @@ export default ({ promotionInfo, i18n, isLogin }) => {
 
 	const expiryTime = moment.duration(_expiryTime.diff(new Date()));
 
-	return isExpiry({
+	let isActive = false;
+	const periodFromTime = moment.unix(promotionInfo.periodFrom);
+	if (periodFromTime.diff(Date.now()) <= 0) {
+		isActive = true;
+	}
+
+	const isExpiryDate = isExpiry({
 		...promotionInfo,
 		isLogin
-	})
-		? "-"
-		: `${diffDays} ${i18n.lbl_Days} ${expiryTime.hours()} ${
-				i18n.lbl_Hours
-		  }`;
+	});
+
+	let displayText = "";
+	if (!isActive) {
+		displayText = `0 ${i18n.lbl_Days} 0 ${i18n.lbl_Hours}`;
+	} else if (isExpiryDate) {
+		displayText = "-";
+	} else {
+		displayText = `${diffDays} ${i18n.lbl_Days} ${expiryTime.hours()} ${
+			i18n.lbl_Hours
+		}`;
+	}
+
+	return displayText;
 };
