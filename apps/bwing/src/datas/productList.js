@@ -17,11 +17,8 @@ export const defGameInfo = {
 	LIVEcasinoMGP: { tpId: 34, tpGameType: 58 },
 	LIVEcasinoPT: { tpId: 27, gameId: "0", tpGameType: 48 },
 	LIVEcasinoEVO: { tpId: 36, gameId: 0, tpGameType: 63 },
-	LIVEcasinoMG: {
-		tpId: 34,
-		gameId: "0",
-		tpGameType: 58
-	},
+	LIVEcasinoMG: { tpId: 34, gameId: "0", tpGameType: 58 },
+	LIVEcasinoSkywind: { tpId: 43, gameId: "0", tpGameType: 84 },
 	One789_lottery: { tpId: 23, gameId: 0, tpGameType: 35 },
 	One789_lottery_789: { tpId: 23, gameId: 1, tpGameType: 36 },
 	Casino_ow: { gameId: 208, tpId: 1, tpGameType: 4 },
@@ -39,10 +36,17 @@ export const defGameInfo = {
 	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
 	Casino_AdvantPlay: { tpId: 39, tpGameType: 67 },
 	Casino_Habanero: { tpId: 40, tpGameType: 68 },
+	Casino_Skywind: { tpId: 43, tpGameType: 82 },
 	Casino_SimplePlay: { tpId: 44, tpGameType: 86 },
 	Fishing: { gameId: 10, tpId: 7, tpGameType: 12 },
 	Fishing_SG: { gameId: "F-SF01", tpId: 10, tpGameType: 31 },
 	Fishing_SGW: { gameId: "F-SF02", tpId: 10, tpGameType: 31 },
+	Skywind_Ocean_Ruler: { gameId: "sw_or", tpId: 43, tpGameType: 85 },
+	Skywind_Cai_Shen_Da_Hai: {
+		gameId: "sw_cashdaha",
+		tpId: 43,
+		tpGameType: 85
+	},
 	Indo4d: { gameId: 223, tpId: 1, tpGameType: 20 },
 	Keno: { gameId: 202, tpId: 1, tpGameType: 5 },
 	lottery: { gameId: 220, tpId: 1, tpGameType: 19 },
@@ -84,6 +88,11 @@ export const slotPlatform = [
 		...defGameInfo.Casino_PP,
 		path: path.casino.root,
 		imgName: "pp"
+	},
+	{
+		...defGameInfo.Casino_Skywind,
+		path: path.casino.root,
+		imgName: "sk"
 	},
 	{
 		...defGameInfo.Casino_Habanero,
@@ -169,6 +178,7 @@ export const defSlotTpGameType = {
 	RedTiger: { tpId: 38, tpGameType: 65 },
 	AdvantPlay: { tpId: 39, tpGameType: 67 },
 	Habanero: { tpId: 40, tpGameType: 68 },
+	Skywind: { tpId: 43, tpGameType: 82 },
 	SimplePlay: { tpId: 44, tpGameType: 86 }
 };
 
