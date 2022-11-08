@@ -37,6 +37,7 @@ export const eventTime = {
 		startDate: "2022/08/29 00:00:00",
 		endDate: "2022/12/18 23:59:59"
 	},
+	skywind: { endDate: "2022/12/08 11:00:00" },
 	game_MaxGame: { endDate: "2022/10/13 11:00:00" },
 	casino_SimplePlay: { endDate: "2022/11/13 11:00:00" }
 };

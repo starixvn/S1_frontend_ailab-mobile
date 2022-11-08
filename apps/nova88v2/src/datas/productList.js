@@ -44,6 +44,7 @@ export const defSlotTpGameType = {
 	AdvantPlay: { tpId: 39, tpGameType: 67 },
 	Mega888: { tpId: 22, tpGameType: 34 },
 	Habanero: { tpId: 40, tpGameType: 68 },
+	Skywind: { tpId: 43, tpGameType: 82 },
 	SimplePlay: { tpId: 44, tpGameType: 86 },
 	Kiss918: { tpId: 21, tpGameType: 33 }
 };
@@ -63,6 +64,7 @@ const defSortSports = {
 const defSortCasino = {
 	[defCurrenyId.THB]: [
 		"casino_PP",
+		"casino_Skywind",
 		"casino_MG",
 		"casino_EVO",
 		"casino_PT",
@@ -77,6 +79,7 @@ const defSortCasino = {
 	],
 	[defCurrenyId.MYR]: [
 		"casino_PP",
+		"casino_Skywind",
 		"casino_MG",
 		"casino_EVO",
 		"casino_PT",
@@ -91,6 +94,7 @@ const defSortCasino = {
 	],
 	[defCurrenyId.IDR]: [
 		"casino_PP",
+		"casino_Skywind",
 		"casino_MG",
 		"casino_EVO",
 		"casino_PT",
@@ -105,6 +109,7 @@ const defSortCasino = {
 	],
 	[defCurrenyId.INR]: [
 		"casino_PP",
+		"casino_Skywind",
 		"casino_MG",
 		"casino_EVO",
 		"casino_PT",
@@ -123,6 +128,7 @@ const defSortSlot = {
 	[defCurrenyId.THB]: [
 		"slot_AdvantPlay",
 		"slot_PP",
+		"slot_Skywind",
 		"slot_Mega888",
 		"slot_SimplePlay",
 		"slot_Habanero",
@@ -144,6 +150,7 @@ const defSortSlot = {
 	[defCurrenyId.MYR]: [
 		"slot_AdvantPlay",
 		"slot_PP",
+		"slot_Skywind",
 		"slot_kiss918",
 		"slot_Mega888",
 		"slot_SimplePlay",
@@ -165,6 +172,7 @@ const defSortSlot = {
 	[defCurrenyId.IDR]: [
 		"slot_AdvantPlay",
 		"slot_PP",
+		"slot_Skywind",
 		"slot_Mega888",
 		"slot_SimplePlay",
 		"slot_Habanero",
@@ -187,6 +195,7 @@ const defSortSlot = {
 		"slot_RedTiger",
 		"slot_AdvantPlay",
 		"slot_PP",
+		"slot_Skywind",
 		"slot_SimplePlay",
 		"slot_Habanero",
 		"slot_MGPSW",
@@ -208,6 +217,8 @@ const defSortFishing = {
 		"fishing_SGW_WAR",
 		"fishing_CQ9_PARADISE",
 		"fishing_GGYL_WORLD",
+		"fishing_Skywind_Ocean_Ruler",
+		"fishing_Skywind_Cai_Shen_Da_Hai",
 		"fishing_ICG_DRAGONBALL",
 		"fishing_Haiba",
 		"fishing_Hunting_Happy_Fish_5",
@@ -221,6 +232,8 @@ const defSortFishing = {
 		"fishing_SGW_WAR",
 		"fishing_CQ9_PARADISE",
 		"fishing_GGYL_WORLD",
+		"fishing_Skywind_Ocean_Ruler",
+		"fishing_Skywind_Cai_Shen_Da_Hai",
 		"fishing_ICG_DRAGONBALL",
 		"fishing_Haiba",
 		"fishing_Hunting_Happy_Fish_5",
@@ -234,6 +247,8 @@ const defSortFishing = {
 		"fishing_SGW_WAR",
 		"fishing_CQ9_PARADISE",
 		"fishing_GGYL_WORLD",
+		"fishing_Skywind_Ocean_Ruler",
+		"fishing_Skywind_Cai_Shen_Da_Hai",
 		"fishing_ICG_DRAGONBALL",
 		"fishing_Haiba",
 		"fishing_Hunting_Happy_Fish_5",
@@ -247,6 +262,8 @@ const defSortFishing = {
 		"fishing_SGW_WAR",
 		"fishing_CQ9_PARADISE",
 		"fishing_GGYL_WORLD",
+		"fishing_Skywind_Ocean_Ruler",
+		"fishing_Skywind_Cai_Shen_Da_Hai",
 		"fishing_ICG_DRAGONBALL",
 		"fishing_Haiba",
 		"fishing_Hunting_Happy_Fish_5",
@@ -401,6 +418,18 @@ const gameList = ({ langId }) => {
 					sortKey: "casino_PP"
 				},
 				{
+					...defGameInfo.LIVEcasinoSkywind,
+					spanText: "Skywind",
+					img: `${cloudBannerImgURL}/h5/img/sk.png`,
+					sortKey: "casino_Skywind",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.skywind)
+						}
+					]
+				},
+				{
 					...defGameInfo.LIVEcasinoMG,
 					spanText: "Microgaming",
 					img: `${cloudBannerImgURL}/h5/img/mgp.png`,
@@ -499,6 +528,21 @@ const gameList = ({ langId }) => {
 					img: `${cloudBannerImgURL}/h5/img/spp.png`,
 					path: path.casino.root,
 					sortKey: "slot_PP"
+				},
+				{
+					...defGameInfo.Casino_Skywind,
+					parameter: defGameInfo.Casino_Skywind,
+					spanText: "Skywind",
+					providerImgName: "sk",
+					img: `${cloudBannerImgURL}/h5/img/slotsk.png`,
+					path: path.casino.root,
+					sortKey: "slot_Skywind",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.skywind)
+						}
+					]
 				},
 				{
 					...defGameInfo.Casino_918Kiss,
@@ -793,6 +837,30 @@ const gameList = ({ langId }) => {
 					img: `${cloudBannerImgURL}/h5/img/ffw.png`,
 					sortKey: "fishing_GGYL_WORLD"
 				},
+				// {
+				// 	...defGameInfo.Skywind_Ocean_Ruler,
+				// 	spanTextKey: "Skywind_Ocean_Ruler",
+				// 	img: `${cloudBannerImgURL}/h5/img/or.png`,
+				// 	sortKey: "fishing_Skywind_Ocean_Ruler",
+				// 	eventIcon: [
+				// 		{
+				// 			icon: defIconType.new,
+				// 			inPeriod: isEventPeriod(eventTime.skywind)
+				// 		}
+				// 	]
+				// },
+				// {
+				// 	...defGameInfo.Skywind_Cai_Shen_Da_Hai,
+				// 	spanTextKey: "Skywind_Cai_Shen_Da_Hai",
+				// 	img: `${cloudBannerImgURL}/h5/img/casdaha.png`,
+				// 	sortKey: "fishing_Skywind_Cai_Shen_Da_Hai",
+				// 	eventIcon: [
+				// 		{
+				// 			icon: defIconType.new,
+				// 			inPeriod: isEventPeriod(eventTime.skywind)
+				// 		}
+				// 	]
+				// },
 				{
 					...defGameInfo.FishingSGW,
 					spanTextKey: "lbl_FishingSG2",
@@ -925,6 +993,7 @@ export const defGameInfo = {
 	LIVEcasino_PT: { tpId: 27, gameId: "0", tpGameType: 48 },
 	LIVEcasinoEVO: { tpId: 36, gameId: 0, tpGameType: 63 },
 	LIVEcasinoMG: { tpId: 34, gameId: "0", tpGameType: 58 },
+	LIVEcasinoSkywind: { gameId: "0", tpId: 43, tpGameType: 84 },
 	Casino_All: { tpId: 0 },
 	Casino_MGP: { tpId: 34, tpGameType: 57 },
 	Casino_PP: { tpId: 5, tpGameType: 7 },
@@ -942,6 +1011,7 @@ export const defGameInfo = {
 	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
 	Casino_Habanero: { tpId: 40, tpGameType: 68 },
 	Casino_AMB: { tpId: 30, tpGameType: 76 },
+	Casino_Skywind: { tpId: 43, tpGameType: 82 },
 	Casino_SimplePlay: { tpId: 44, tpGameType: 86 },
 	Casino_918Kiss: { tpId: 21, tpGameType: 33 },
 	Fishing_AB3: { tpId: 16, gameId: "AB3", tpGameType: 44 },
@@ -962,6 +1032,18 @@ export const defGameInfo = {
 	FishingGG: { tpId: 7, gameId: 10, tpGameType: 12 },
 	FishingSG: { tpId: 10, gameId: "F-SF01", tpGameType: 31 },
 	FishingSGW: { tpId: 10, gameId: "F-SF02", tpGameType: 31 },
+	Skywind_Ocean_Ruler: {
+		gameId: "sw_or",
+		tpId: 43,
+		name: "Skywind_Ocean_Ruler",
+		tpGameType: 85
+	},
+	Skywind_Cai_Shen_Da_Hai: {
+		gameId: "sw_cashdaha",
+		tpId: 43,
+		name: "Skywind_Cai_Shen_Da_Hai",
+		tpGameType: 85
+	},
 	CockFighting: { tpId: 17, tpGameType: 27 },
 	// VirtualSports: { tpId: 1, gameId: 180, tpGameType: 3 },
 	Indo4d: { tpId: 1, gameId: 223, tpGameType: 20 },
