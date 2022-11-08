@@ -192,8 +192,7 @@ export default ({
 				userInfo.isLogin &&
 				_promo.canJoin &&
 				(_promo.promotionType === defPromotionType.reDeposit ||
-					(filterType === defFilterType.specialBonus &&
-						_promo.promotionType === defPromotionType.firstDeposit))
+					_promo.promotionType === defPromotionType.firstDeposit)
 			) {
 				handlePopBox({
 					content: (
