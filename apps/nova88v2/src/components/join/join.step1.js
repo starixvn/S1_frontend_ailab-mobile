@@ -17,13 +17,13 @@ const JoinStep1 = ({
 	setHintStatus,
 	EditField,
 	langId,
-	setStep,
-	currencyId
+	setStep
 }) => {
 	const [showingPsw, setShowingPsw] = useState({
 		Password: false
 	});
 	const [affiliateidExist, setAffiliateidExist] = useState("");
+
 	const { showTips, showTipHandler } = useTip([]);
 	const { userInfo } = useContext(userInfoContext);
 	const AffId = getUrlParameter("AffId") || getCookie("AffId");
@@ -216,13 +216,9 @@ const JoinStep1 = ({
 					</div>
 				</Link>
 			</div>
-			<FeaturePanel langId={langId} currencyId={currencyId} />
+			<FeaturePanel i18n={i18n} currencyId={userInfo.currencyId} />
 		</>
 	);
-};
-
-JoinStep1.defaultProps = {
-	currencyId: null
 };
 
 JoinStep1.propTypes = {
@@ -232,8 +228,7 @@ JoinStep1.propTypes = {
 	setHintStatus: PropTypes.func.isRequired,
 	EditField: PropTypes.func.isRequired,
 	langId: PropTypes.string.isRequired,
-	setStep: PropTypes.func.isRequired,
-	currencyId: PropTypes.number
+	setStep: PropTypes.func.isRequired
 };
 
 export default JoinStep1;

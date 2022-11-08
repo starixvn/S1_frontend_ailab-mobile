@@ -2,8 +2,10 @@ import React from "react";
 import moment from "moment";
 import Marquee from "react-fast-marquee";
 import PropTypes from "prop-types";
+import { Link } from "@reach/router";
 import { useGetPromotions } from "../hook/useGetPromotions";
 import { useHandlePromotionInfo } from "../promotion/promotionInfo.popbox";
+import path from "../../path";
 
 const Promos = ({ i18n, userInfo }) => {
 	const { langId, isLogin, currencyId } = userInfo;
@@ -52,8 +54,9 @@ const Promos = ({ i18n, userInfo }) => {
 
 	return promoArr?.length <= 0 ? null : (
 		<>
-			<div className="moduleTitle icon icon-gift">
+			<div className="moduleTitle">
 				{i18n.lbl_Promotion}
+				<Link to={`${path.promotion.root}`}>{i18n.lbl_SeeMore}</Link>
 			</div>
 			<Marquee speed={60} className="promos" gradient={false}>
 				{promoArr}

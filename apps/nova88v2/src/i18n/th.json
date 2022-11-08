@@ -69,6 +69,15 @@
 	"msg_CreditSignUpHint_2": "ยินดีต้อนรับสู่ {0},  หลังจากทะเบียนแล้วคุณสามารถเข้าสู่เว็บไซต์เราเพื่อเพลิดเพลินและสนุกสนานกับทั้งหมดของเรา",
 	"lbl_PhoneRequired": "โปรดใส่หมายเลขโทรศัพท์",
 	"msg_API_SendOTPSMS_5002": "Entered the wrong phone number.",
+  "lbl_FEATURES": "คุณสมบัติ",
+  "lbl_MEMBERS_BENEFITS": "สิทธิประโยชน์ของสมาชิก",
+  "lbl_MemberBenefits_1": "โบนัสต้อนรับสมาชิกใหม่ สปอร์ตบุ๊ค",
+  "lbl_MemberBenefits_2": "โบนัสต้อนรับสมาชิกใหม่ คาสิโนสด",
+  "lbl_MemberBenefits_3": "โบนัสต้อนรับสมาชิกใหม่ เกมสล็อต",
+  "lbl_MemberBenefits_4": "เงินคืนยอดเล่นรายวัน สูงสุด {{rebate}}%",
+  "lbl_ENJOY_NOVA88_VIP_EXCLUSIVE_BONUS_REBATES": "เพลิดเพลินไปกับ NOVA88 โบนัสและเงินคืนพิเศษ",
+  "lbl_Multiple_product_platforms_with_better_odds": "แพลตฟอร์มเกมที่หลากหลายพร้อมโอกาสที่ดีกว่าและประสบการณ์การเล่นเกมเต็มรูปแบบ",
+  "lbl_Speedy_deposit_and_withdrawal": "ฝากและถอนอย่างรวดเร็วด้วยตัวเลือกการฝากที่หลากหลาย",
 	"lbl_Retransmit": "ส่งใหม่อีกครั้ง",
 	"msg_OTPSendCode": "เราได้ทำการส่งหมายเลขยืนยันตัวตนไปที่เบอร์มือถือที่สมาชิกได้ทำการลงทะเบียนเรียบร้อยแล้ว กรุณาตรวจสอบและใส่รหัสยืนยันด้านล่าง",
 	"lbl_UpdatePersonalInfoPromotion": "Please update your personal information before join promotion.",
@@ -234,8 +243,9 @@
 	"lbl_Paradise": "แดนสวรรค์",
 	"lbl_Cricket": "คริกเก็ต",
 	"lbl_SabaSoccer": "ฟุตบอล Saba",
-	"lbl_PlayNow": "เล่น",
+	"lbl_Play": "เล่น",
 	"lbl_FreePlay": "ตัวอย่าง",
+	"lbl_PlayNow": "เล่นเดี๋ยวนี้",
 	"lbl_Lottery": "ลอตเตอรี่",
 	"lbl_Tennis": "เทนนิส",
 	"lbl_Keno": "คีโน",
@@ -837,5 +847,8 @@
 	"lbl_semiFinals": "รอบรองชนะเลิศ",
 	"lbl_getStarted": "เริ่ม",
 	"lbl_totalPrizePool": "เงินรางวัลรวม",
-	"lbl_knockouts": "น็อคเอาท์"
+	"lbl_knockouts": "น็อคเอาท์",
+
+	"==============v3.0==============": "",
+	"lbl_SeeMore": "See More"
 }

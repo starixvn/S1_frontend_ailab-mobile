@@ -27,7 +27,7 @@ const Content = () => {
 					<div className="info">{i18n.lbl_LiveCasinoInfo3}</div>
 					<Link to={path.casino.root}>
 						<button className="icon icon-casino">
-							{i18n.lbl_PlayNow}
+							{i18n.lbl_Play}
 						</button>
 					</Link>
 				</div>

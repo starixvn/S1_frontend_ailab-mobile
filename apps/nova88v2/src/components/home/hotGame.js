@@ -118,11 +118,16 @@ const HotGame = ({ i18n, userInfo }) => {
 		return (
 			<div key={`hotGame-${game.gameName}`} className="hotGamModule">
 				<img src={game.gameLogo} alt={game.gameName} />
-				<div>{game.gameName}</div>
-				<div>
-					{`${i18n[`lbl_tpCategory_${game.tpCategory}`]} ${
-						game.tpName
-					}`}
+				<div className="hotgametitle">
+					<img alt={game.tpName} src={game.tpLogo} />
+					<div>
+						<div className="hotgame-name">{game.gameName}</div>
+						<div>
+							{`${i18n[`lbl_tpCategory_${game.tpCategory}`]} ${
+								game.tpName
+							}`}
+						</div>
+					</div>
 				</div>
 				<div className="btn-group">
 					<button
@@ -133,7 +138,7 @@ const HotGame = ({ i18n, userInfo }) => {
 							tpGameType: game.tpGameType,
 							specialUrl: game?.specialUrl ?? ""
 						})}>
-						{i18n.lbl_PlayNow.toUpperCase()}
+						{i18n.lbl_PlayNow}
 					</button>
 				</div>
 			</div>
@@ -143,9 +148,7 @@ const HotGame = ({ i18n, userInfo }) => {
 	return (
 		gameArr && (
 			<>
-				<div className="moduleTitle icon icon-mediafire">
-					{i18n.lbl_HotGame}
-				</div>
+				<div className="moduleTitle">{i18n.lbl_HotGame}</div>
 				<Marquee speed={60} className="hotGame" gradient={false}>
 					{gameArr}
 				</Marquee>

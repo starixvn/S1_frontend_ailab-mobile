@@ -35,33 +35,38 @@ const Bottom = ({ i18n, langId, currencyId }) => {
 			<Link to={path.appDownload.root}>
 				<img
 					className="spokesperson"
-					src={`${cloudBannerImgURL}/h5/img/app/appmodule.jpg`}
+					src={`${cloudBannerImgURL}/h5/img/app/appdownload-${langId}.jpg`}
 					alt="Go To Download App"
 				/>
 			</Link>
-			<img
-				className="spokesperson"
-				src={`${cloudBannerImgURL}/h5/img/spokesperson.jpg`}
-				alt="Endorser"
-			/>
-			<div className="aff">
-				<a
-					className="title"
-					style={
-						allowedCurrencyList.affiliate.includes(currencyId)
-							? {}
-							: { pointerEvents: "none" }
-					}
-					href={`${siteInfo(langId).affiliateLink}`}
-					target="_blank"
-					rel="noreferrer noopener">
-					{i18n.lbl_AffiliateProgram}
-				</a>
-				<p>{i18n.lbl_Cookie_Reminder}</p>
-			</div>
-			<div className="social">
-				<License i18n={i18n} />
-				{socialChannel.length > 0 && <div>{snsArr}</div>}
+			<div className="footerModule">
+				<img
+					className="spokesperson"
+					src={`${cloudBannerImgURL}/h5/img/homepage/spokesperson.png`}
+					alt="Endorser"
+				/>
+				<div className="middle">
+					<div className="social">
+						{socialChannel.length > 0 && snsArr}
+					</div>
+					<div className="border" />
+					<License i18n={i18n} />
+				</div>
+				<div className="aff">
+					<a
+						className="title"
+						style={
+							allowedCurrencyList.affiliate.includes(currencyId)
+								? {}
+								: { pointerEvents: "none" }
+						}
+						href={`${siteInfo(langId).affiliateLink}`}
+						target="_blank"
+						rel="noreferrer noopener">
+						{i18n.lbl_AffiliateProgram}
+					</a>
+					<p>{i18n.lbl_Cookie_Reminder}</p>
+				</div>
 			</div>
 		</>
 	);
@@ -103,13 +108,13 @@ const License = ({ i18n }) => {
 
 	return (
 		<>
-			<div>
+			<div className="license">
 				{showLicenseLogo && (
 					<>
 						<div>
 							{i18n.lbl_Gaming_License}
 							<img
-								src={`${cloudBannerImgURL}/img/license_tick.png`}
+								src={`${cloudBannerImgURL}/h5/img/homepage/license_tick.png`}
 								alt="vaild gaming license"
 							/>
 						</div>

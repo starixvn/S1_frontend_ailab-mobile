@@ -79,7 +79,7 @@ const ReferralPanel = ({ i18n, userInfo, setPopBox }) => {
 	return (
 		<>
 			<div className="moduleTitle icon icon-friend">
-				{i18n.lbl_friendReferral}
+				{i18n.lbl_friendReferral.toUpperCase()}
 			</div>
 			<div className="friendReferral">
 				<div>

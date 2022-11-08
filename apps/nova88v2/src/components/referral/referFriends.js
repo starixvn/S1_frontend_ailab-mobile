@@ -15,22 +15,22 @@ export default () => {
 	let _stepImg;
 	switch (userInfo.langId) {
 		case "cs":
-			_stepImg = `${cloudBannerImgURL}/h5/img/refbanner-cs.png`;
+			_stepImg = `${cloudBannerImgURL}/h5/img/refbanner-new-cs.png`;
 			break;
 		case "my":
-			_stepImg = `${cloudBannerImgURL}/h5/img/refbanner-my.png`;
+			_stepImg = `${cloudBannerImgURL}/h5/img/refbanner-new-my.png`;
 			break;
 		case "th":
-			_stepImg = `${cloudBannerImgURL}/h5/img/refbanner-th.png`;
+			_stepImg = `${cloudBannerImgURL}/h5/img/refbanner-new-th.png`;
 			break;
 		case "id":
-			_stepImg = `${cloudBannerImgURL}/h5/img/refbanner-id.png`;
+			_stepImg = `${cloudBannerImgURL}/h5/img/refbanner-new-id.png`;
 			break;
 		case "hi":
-			_stepImg = `${cloudBannerImgURL}/h5/img/refbanner-hi.png`;
+			_stepImg = `${cloudBannerImgURL}/h5/img/refbanner-new-hi.png`;
 			break;
 		default:
-			_stepImg = `${cloudBannerImgURL}/h5/img/refbanner-en.png`;
+			_stepImg = `${cloudBannerImgURL}/h5/img/refbanner-new-en.png`;
 			break;
 	}
 

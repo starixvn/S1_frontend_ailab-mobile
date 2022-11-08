@@ -68,6 +68,15 @@
 	"msg_CreditSignUpHint_2": "Selamat datang di {0}, setelah pendaftaran silakan kunjungi link yang kami berikan dan selamat menikmati permainan kami.",
 	"lbl_PhoneRequired": "Harap isi kolom ponsel",
 	"msg_API_SendOTPSMS_5002": "Entered the wrong phone number.",
+  "lbl_FEATURES": "FITUR",
+  "lbl_MEMBERS_BENEFITS": "MANFAAT MEMBER",
+  "lbl_MemberBenefits_1": "BONUS SPORTSBOOK",
+  "lbl_MemberBenefits_2": "BONUS LIVE CASINO",
+  "lbl_MemberBenefits_3": "BONUS SLOT MESIN",
+  "lbl_MemberBenefits_4": "REBATE HARIAN HINGGA {{rebate}}%",
+  "lbl_ENJOY_NOVA88_VIP_EXCLUSIVE_BONUS_REBATES": "NIKMATI BONUS & REBATE EKSKLUSIF NOVA88 VIP",
+  "lbl_Multiple_product_platforms_with_better_odds": "Berbagai produk dengan odds terbaik dan sensasi permainan yang lengkap.",
+  "lbl_Speedy_deposit_and_withdrawal": "Deposit dan penarikan cepat dengan berbagai pilihan.",
 	"lbl_Retransmit": "Kirim ulang",
 	"lbl_AllGames": "Semua Permainan",
 	"msg_OTPSendCode": "Kami telah mengirimkan kode verifikasi ke nomor ponsel Anda yang terdaftar. Silakan periksa dan masukkan kode verifikasi di bawah ini.",
@@ -236,8 +245,9 @@
 	"lbl_Paradise": "Paradise",
 	"lbl_Cricket": "Kriket",
 	"lbl_SabaSoccer": "Sepak Bola Saba",
-	"lbl_PlayNow": "MAIN",
+	"lbl_Play": "MAIN",
 	"lbl_FreePlay": "DEMO",
+	"lbl_PlayNow": "Main Sekarang",
 	"lbl_Lottery": "Lotere",
 	"lbl_Tennis": "Tennis",
 	"lbl_Keno": "Keno",
@@ -848,5 +858,8 @@
 	"lbl_semiFinals": "Semi Final",
 	"lbl_getStarted": "Memulai",
 	"lbl_totalPrizePool": "TOTAL HADIAH BERSAMA",
-	"lbl_knockouts": "Knockouts"
+	"lbl_knockouts": "Knockouts",
+
+	"==============v3.0==============": "",
+	"lbl_SeeMore": "See More"
 }
