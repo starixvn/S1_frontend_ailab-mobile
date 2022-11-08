@@ -58,12 +58,14 @@ export const initStatus = {
 
 export const currencyToAreacode = {
 	2: "MY",
+	3: "GB",
 	4: "TH",
 	13: "CS",
 	15: "ID",
 	51: "VN",
 	61: "IN",
-	74: "BD"
+	74: "BD",
+	96: "MY"
 };
 
 export const reCaptchaEnum = {
@@ -74,4 +76,14 @@ export const reCaptchaEnum = {
 	my: "ms",
 	th: "th",
 	bd: "bn"
+};
+
+export const countryEnum = {
+	MY: "2.0",
+	TH: "2.0",
+	ID: "2.0",
+	IN: "1.8",
+	BD: "1.8",
+	CS: "1.8",
+	GB: "1.8"
 };

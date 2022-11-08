@@ -4,7 +4,7 @@ import { cloudImgURL } from "../../config";
 
 const getLogo = ({ langId }) =>
 	`${cloudImgURL}/SiteSkin/img/${
-		langId === "cs" ? "logo_cs" : "logo_en"
+		langId === "cs" ? "logo_cs_w" : "logo_en_w"
 	}.png`;
 
 const Logo = ({ langId }) => {

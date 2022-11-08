@@ -183,7 +183,7 @@ export default [
 	"lbl_All",
 	"lbl_GPI",
 	"lbl_Free",
-	"lbl_PlayNow",
+	"lbl_Play",
 	"lbl_Memo",
 	"lbl_Soccer",
 	"lbl_Baseball",

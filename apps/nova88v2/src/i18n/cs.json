@@ -75,6 +75,15 @@
 	"msg_CreditSignUpHint_2": "欢迎来到{0}, 完成注册后请游览此链接并享受我司的游戏盘口。",
 	"lbl_PhoneRequired": "请填写电话栏位",
 	"msg_API_SendOTPSMS_5002": "电话号码输入错误。",
+  "lbl_FEATURES": "特征",
+  "lbl_MEMBERS_BENEFITS": "会员福利",
+  "lbl_MemberBenefits_1": "体育博彩迎新首存红利",
+  "lbl_MemberBenefits_2": "真人娱乐迎新首存红利",
+  "lbl_MemberBenefits_3": "老虎机迎新首存红利",
+  "lbl_MemberBenefits_4": "每日现金返水高达 {{rebate}}%",
+  "lbl_ENJOY_NOVA88_VIP_EXCLUSIVE_BONUS_REBATES": "豪享NOVA88尊贵优惠红利与返水",
+  "lbl_Multiple_product_platforms_with_better_odds": "多样化产品平台配上超划赔率以及完整游戏体验。",
+  "lbl_Speedy_deposit_and_withdrawal": "多项支付方式且火速存/提款交易。",
 	"lbl_Retransmit": "重新发送",
 	"msg_OTPSendCode": "验证码已发到您注册的手机号，请查看手机并在以下输入验证码",
 	"lbl_UpdatePersonalInfoPromotion": "参与优惠前，请更新您的个人信息",
@@ -241,8 +250,9 @@
 	"lbl_Paradise": "皇金渔场",
 	"lbl_Cricket": "板球",
 	"lbl_SabaSoccer": "沙巴足球",
-	"lbl_PlayNow": "游戏",
+	"lbl_Play": "游戏",
 	"lbl_FreePlay": "演示",
+	"lbl_PlayNow": "立即游戏",
 	"lbl_Lottery": "彩票",
 	"lbl_Tennis": "网球",
 	"lbl_Keno": "快乐彩",
@@ -838,5 +848,8 @@
 	"lbl_semiFinals": "半决赛",
 	"lbl_getStarted": "入门指南",
 	"lbl_totalPrizePool": "总彩池",
-	"lbl_knockouts": "淘汰赛"
+	"lbl_knockouts": "淘汰赛",
+
+	"==============v3.0==============": "",
+	"lbl_SeeMore": "See More"
 }

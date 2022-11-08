@@ -80,32 +80,34 @@ const LinkPanel = ({ userInfo, i18n, setPopBox }) => {
 
 	return (
 		<div className="refLink">
-			<div className="title">{i18n.lbl_Your_link_invite}</div>
 			<div className="refBox">
-				<div>{i18n.lbl_Referral_link}:</div>
-				<div className="text-org" id="referralLink">
-					{refLink}
-					<button
-						className="icon icon-files-empty"
-						onClick={copyText.bind(this, "referralLink")}
+				<div>
+					<div className="title">{i18n.lbl_Your_link_invite}</div>
+					<div>{i18n.lbl_Referral_link}:</div>
+					<div className="text-org" id="referralLink">
+						{refLink}
+						<button
+							className="icon icon-files-empty"
+							onClick={copyText.bind(this, "referralLink")}
+						/>
+					</div>
+					<div className="refMedia">
+						<a
+							className="icon icon-files-empty"
+							onClick={copyText.bind(this, "copyToClipboard")}>
+							{i18n.lbl_Copy_to_clipboard}
+						</a>
+						<a className="icon icon-qrcode" onClick={clickDownload}>
+							QR Code
+						</a>
+						<MediaLinks refLink={refLink} i18n={i18n} />
+					</div>
+					<QRCode
+						id="refQRcode"
+						value={refLink}
+						style={{ display: "none" }}
 					/>
 				</div>
-				<div className="refMedia">
-					<a
-						className="icon icon-files-empty"
-						onClick={copyText.bind(this, "copyToClipboard")}>
-						{i18n.lbl_Copy_to_clipboard}
-					</a>
-					<a className="icon icon-qrcode" onClick={clickDownload}>
-						QR Code
-					</a>
-					<MediaLinks refLink={refLink} i18n={i18n} />
-				</div>
-				<QRCode
-					id="refQRcode"
-					value={refLink}
-					style={{ display: "none" }}
-				/>
 			</div>
 		</div>
 	);

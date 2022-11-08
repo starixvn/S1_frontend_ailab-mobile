@@ -7,6 +7,7 @@ import JoinStep3 from "./join.step3";
 import { initValue, initStatus } from "./join.def";
 import { defCurrenyId, getLocalStorage } from "../common/common";
 import useHandleLineLogin, { defType } from "../hook/useHandleLineLogin";
+import api from "../../service/api";
 
 const JoinStepAll = () => {
 	const navigate = useNavigate();
@@ -15,6 +16,7 @@ const JoinStepAll = () => {
 	const [step, setStep] = useState(1);
 	const [userValue, setUserValue] = useState(initValue);
 	const [hintStatus, setHintStatus] = useState(initStatus);
+	const [recaptchaInfo, setRecaptchaInfo] = useState({});
 	const { lineLogin } = useHandleLineLogin();
 	const lineUserId = getLocalStorage("lineUser");
 
@@ -22,6 +24,17 @@ const JoinStepAll = () => {
 		if (userInfo.isLogin) {
 			navigate(`/${userInfo.langId}`);
 		}
+		const getRecaptchaSiteKey = async () => {
+			try {
+				const res = await api.site.GetRecaptchaInfo();
+				const { country, siteKey } = res.data.data;
+				setRecaptchaInfo({
+					country,
+					siteKey
+				});
+			} catch (error) {}
+		};
+		getRecaptchaSiteKey();
 	}, []);
 
 	const EditField = (col, e) => {
@@ -66,6 +79,7 @@ const JoinStepAll = () => {
 						setUserInfo={setUserInfo}
 						lineUserId={lineUserId}
 						setStep={setStep}
+						recaptchaInfo={recaptchaInfo}
 					/>
 				);
 				break;

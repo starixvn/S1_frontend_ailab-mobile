@@ -4,6 +4,7 @@ import useInterval from "../hook/useInterval";
 import { Link } from "../../route/link";
 import path from "../../path";
 import defNav from "../casino/defNav";
+import { cloudBannerImgURL } from "../../config";
 
 const defaultElementHeight = 17;
 const numberArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -53,13 +54,24 @@ const Jackpot = ({ i18n, userInfo }) => {
 			<span id="tick" ref={jackpotRef} style={{ display: "none" }} />
 			{value.curr ? (
 				<div className="jpot">
+					<div className="jpot-btn">
+						<button>{i18n.lbl_PlayNow}</button>
+					</div>
+					<div className="jpot-item">
+						<img
+							src={`${cloudBannerImgURL}/h5/img/homepage/jpot-item.png`}
+							alt="jpot-item"
+						/>
+					</div>
 					<div className="number">
 						<div>{_currency}</div>
-						<ShowingNum
-							value={value}
-							currency={_currency}
-							supportAnimation={supportAnimation}
-						/>
+						<div className="numberRow-module">
+							<ShowingNum
+								value={value}
+								currency={_currency}
+								supportAnimation={supportAnimation}
+							/>
+						</div>
 					</div>
 				</div>
 			) : null}
