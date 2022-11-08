@@ -67,6 +67,15 @@
 	"msg_CreditSignUpHint_2": "{0} में आपका स्वागत है, पंजीकरण के बाद कृपया उक्त लिंक पर जाएं और हमारे खेलों का आनंद लें।",
 	"lbl_PhoneRequired": "कृपया फ़ोन फ़ील्ड में भरें",
 	"msg_API_SendOTPSMS_5002": "गलत फोन नंबर दर्ज किया गया है।",
+  "lbl_FEATURES": "विशेषताएं",
+  "lbl_MEMBERS_BENEFITS": "सदस्यों के लाभ",
+  "lbl_MemberBenefits_1": "स्पोर्ट्सबुक वेलकम बोनस",
+  "lbl_MemberBenefits_2": "लाइव कैसीनो वेलकम बोनस",
+  "lbl_MemberBenefits_3": "स्लॉट्स गेम वेलकम बोनस",
+  "lbl_MemberBenefits_4": "{{rebate}}% तक की दैनिक नकद छूट",
+  "lbl_ENJOY_NOVA88_VIP_EXCLUSIVE_BONUS_REBATES": "Nova88 वीआईपी विशेष बोनस और छूट का आनंद लें",
+  "lbl_Multiple_product_platforms_with_better_odds": "बेहतर ऑड्स और पूर्ण गेमप्ले अनुभव के साथ कई उत्पाद प्लेटफॉर्म।",
+  "lbl_Speedy_deposit_and_withdrawal": "कई जमा विकल्पों के साथ शीघ्र जमा और निकासी।",
 	"lbl_Retransmit": "पुनर्संचरित",
 	"msg_OTPSendCode": "हमने आपके पंजीकृत मोबाइल नंबर पर सत्यापन कोड भेज दिया था। कृपया नीचे सत्यापन कोड दर्ज करें।",
 	"lbl_UpdatePersonalInfoPromotion": "प्रचार में शामिल होने से पहले कृपया अपनी व्यक्तिगत जानकारी अपडेट करें।",
@@ -235,8 +244,9 @@
 	"lbl_Paradise": "स्वर्ग",
 	"lbl_Cricket": "क्रिकेट",
 	"lbl_SabaSoccer": "Saba फुटबॉल",
-	"lbl_PlayNow": "प्ले",
+	"lbl_Play": "प्ले",
 	"lbl_FreePlay": "डेमो",
+	"lbl_PlayNow": "अब खेलते हैं",
 	"lbl_Lottery": "लॉटरी",
 	"lbl_Tennis": "टेनिस",
 	"lbl_Keno": "केनो",
@@ -854,5 +864,8 @@
 	"lbl_semiFinals": "सेमीफाइनल",
 	"lbl_getStarted": "शुरू हो जाओ",
 	"lbl_totalPrizePool": "कुल इनाम पूल",
-	"lbl_knockouts": "नॉकआउट"
+	"lbl_knockouts": "नॉकआउट",
+
+	"==============v3.0==============": "",
+	"lbl_SeeMore": "See More"
 }

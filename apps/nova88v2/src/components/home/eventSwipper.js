@@ -103,9 +103,7 @@ const EventSwipper = ({ userInfo, i18n }) => {
 								gameId,
 								matchId
 							})}>
-							<button className="title">
-								{i18n.lbl_BetNow.toUpperCase()}
-							</button>
+							<button className="title">{i18n.lbl_BetNow}</button>
 						</div>
 						<div className="teamR">
 							<div>
@@ -137,9 +135,7 @@ const EventSwipper = ({ userInfo, i18n }) => {
 	return (
 		banner.length > 0 && (
 			<>
-				<div className="moduleTitle icon icon-upcomingmatches">
-					{i18n.lbl_UpcomingMatches}
-				</div>
+				<div className="moduleTitle">{i18n.lbl_UpcomingMatches}</div>
 				<Autoplay Rows={arr} params={swipperParam} />
 			</>
 		)

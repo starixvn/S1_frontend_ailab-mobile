@@ -36,14 +36,14 @@ const JoinStep2 = ({
 	setUserValue,
 	setUserInfo,
 	lineUserId,
-	setStep
+	setStep,
+	recaptchaInfo
 }) => {
 	const { setPopBox } = useContext(popBoxContext);
 	const [siteCurrency, setSiteCurrencyState] = useState([]);
 	const [defaultOption, setDefaultOption] = useState(
 		i18n.lbl_PrefferedCurrency
 	);
-	const [recaptchaInfo, setRecaptchaInfo] = useState({});
 	const { showTips, showTipHandler } = useTip([]);
 	const isMountedRef = useRef(null);
 	const defaultLangId = userInfo.langId ?? GET_LANG_ID();
@@ -72,17 +72,6 @@ const JoinStep2 = ({
 	});
 
 	const AffId = getUrlParameter("AffId") || getCookie("AffId");
-
-	const getRecaptchaSiteKey = async () => {
-		try {
-			const res = await api.site.GetRecaptchaInfo();
-			const { country, siteKey } = res.data.data;
-			setRecaptchaInfo({
-				country,
-				siteKey
-			});
-		} catch (error) {}
-	};
 
 	useEffect(() => {
 		if (!lineUserId && !AffId) {
@@ -125,7 +114,6 @@ const JoinStep2 = ({
 				}
 			]);
 		}
-		getRecaptchaSiteKey();
 	}, []);
 
 	const GetSiteCurrencyList = () => {
@@ -610,7 +598,8 @@ JoinStep2.propTypes = {
 	setUserValue: PropTypes.func.isRequired,
 	setUserInfo: PropTypes.func.isRequired,
 	lineUserId: PropTypes.string,
-	setStep: PropTypes.func.isRequired
+	setStep: PropTypes.func.isRequired,
+	recaptchaInfo: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
 const AreaCodeDropdown = ({

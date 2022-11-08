@@ -87,7 +87,7 @@ const Panel = () => {
 			api.account
 				.GetMsgList({
 					PageNumber: 1,
-					PageSize: pageNumber ? pageNumber * 5 : 5
+					PageSize: pageNumber ? pageNumber * 10 : 10
 				})
 				.then(
 					res => {

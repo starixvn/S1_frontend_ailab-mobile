@@ -38,6 +38,7 @@ const Header = ({
 	const { root } = useContext(rootContext);
 	const headerClassName = !title ? "" : "header";
 	const [isShowSearchInput, setIsShowSearchInput] = useState(false);
+
 	const handleInputClose = () => {
 		if (searchInput !== "") {
 			setSearchInput("");
@@ -45,9 +46,11 @@ const Header = ({
 			setIsShowSearchInput(false);
 		}
 	};
+
 	const handleInputChange = e => {
 		setSearchInput(e.target.value);
 	};
+
 	const titleJudge = () => {
 		if (title) {
 			return isShowInput ? (
@@ -86,26 +89,19 @@ const Header = ({
 				/>
 			);
 		}
+
 		return <HeaderInfo userInfo={userInfo} i18n={i18n} />;
 	};
 
 	return (
 		<header className={headerClassName} id={hideId ? "" : id}>
 			{hideLogo ? null : (
-				<>
-					<AppDownloadHint
-						i18n={i18n}
-						root={root}
-						appHint={appHint}
-						setAppHint={setAppHint}
-					/>
-					{userInfo.isLogin ? (
-						<Balance i18n={i18n} userInfo={userInfo} />
-					) : null}
-					<a href={`/${userInfo.langId}`}>
-						<Logo langId={userInfo.langId} />
-					</a>
-				</>
+				<AppDownloadHint
+					i18n={i18n}
+					root={root}
+					appHint={appHint}
+					setAppHint={setAppHint}
+				/>
 			)}
 			{titleJudge()}
 			{filter || null}
@@ -116,14 +112,20 @@ const Header = ({
 
 const HeaderInfo = ({ userInfo, i18n }) => {
 	return (
-		<div className="headerInfo">
+		<div className="headerModule">
+			<a href={`/${userInfo.langId}`}>
+				<Logo langId={userInfo.langId} />
+			</a>
 			{userInfo.isLogin ? (
-				<>
-					{i18n.lbl_Welcome}
-					<Link className="MemberID" to={path.profile.root}>
-						{userInfo.userName}
-					</Link>
-				</>
+				<div>
+					<div className="headerInfo">
+						{i18n.lbl_Welcome}
+						<Link className="MemberID" to={path.profile.root}>
+							{userInfo.userName}
+						</Link>
+					</div>
+					<Balance i18n={i18n} userInfo={userInfo} />
+				</div>
 			) : null}
 		</div>
 	);

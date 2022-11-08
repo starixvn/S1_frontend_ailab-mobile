@@ -465,7 +465,7 @@ const Panel = ({ searchInput }) => {
 								className="blue"
 								data-testid="clickPlay"
 								onClick={() => clickPlay(false)}>
-								{i18n.lbl_PlayNow}
+								{i18n.lbl_Play}
 							</button>
 							{selGameInfo.playFree ? (
 								<button

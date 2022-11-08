@@ -67,6 +67,15 @@
 	"msg_CreditSignUpHint_2": "Selamat datang ke {0}, selepas proses pendaftaran sila melawat pautan tersebut dan mula nikmati permainan kami.",
 	"lbl_PhoneRequired": "Sila isi ruangan telefon",
 	"msg_API_SendOTPSMS_5002": "Nombor telefon yang salah telah dimasukkan.",
+  "lbl_FEATURES": "CIRI-CIRI",
+  "lbl_MEMBERS_BENEFITS": "KELEBIHAN MENJADI AHLI",
+  "lbl_MemberBenefits_1": "PEK PERMULAAN NOVA88",
+  "lbl_MemberBenefits_2": "BONUS KASINO LIVE",
+  "lbl_MemberBenefits_3": "SLOT BONUS SELAMAT DATANG",
+  "lbl_MemberBenefits_4": "REBATE HARIAN HINGGA {{rebate}}%",
+  "lbl_ENJOY_NOVA88_VIP_EXCLUSIVE_BONUS_REBATES": "NIKMATI BONUS & REBAT EKSKLUSIF AHLI VIP NOVA88",
+  "lbl_Multiple_product_platforms_with_better_odds": "Produk platform yang berbilang dengan peluang kemenangan yang lebih baik dan pengalaman permainan menyeluruh.",
+  "lbl_Speedy_deposit_and_withdrawal": "- Proses deposit dan pengeluaran yang pantas dengan pelbagai pilihan deposit.",
 	"lbl_Retransmit": "Hantar semula",
 	"msg_OTPSendCode": "Kami telah menghantar kod pengesahan ke no telefon bimbit berdaftar anda. Sila semak dan masukkan kod pengesahan di bawah.",
 	"lbl_UpdatePersonalInfoPromotion": "Sila kemas kini maklumat peribadi anda sebelum sertai promosi.",
@@ -216,7 +225,7 @@
 
 	"lbl_VirtualGames": "Permainan Maya",
 	"lbl_VirtualSports": "Sukan Maya",
-	"lbl_UpcomingMatches": "Pertandingan Yang Akan Datang",
+	"lbl_UpcomingMatches": "Perlawanan Akan Datang",
 	"lbl_AffiliateProgram": "Program Affliate",
 	"lbl_Cookie_Reminder": "Nova88 mengguna kuki untuk meningkatkan pengalaman laman web anda. Dengan berada di laman web, anda bersetuju untuk penggunaan kuki ini.",
 	"lbl_LIVE_SPORT": "SUKAN LIVE",
@@ -235,8 +244,9 @@
 	"lbl_Paradise": "Paradise",
 	"lbl_Cricket": "Kriket",
 	"lbl_SabaSoccer": "Saba Soccer",
-	"lbl_PlayNow": "BERMAIN",
+	"lbl_Play": "BERMAIN",
 	"lbl_FreePlay": "DEMO",
+	"lbl_PlayNow": "Main Sekarang",
 	"lbl_Lottery": "Loteri",
 	"lbl_Tennis": "Tenis",
 	"lbl_Keno": "Keno",
@@ -850,5 +860,8 @@
 	"lbl_semiFinals": "Separuh Akhir",
 	"lbl_getStarted": "Mulakan",
 	"lbl_totalPrizePool": "JUMLAH HADIAH POOL",
-	"lbl_knockouts": "Knockouts"
+	"lbl_knockouts": "Knockouts",
+
+	"==============v3.0==============": "",
+	"lbl_SeeMore": "See More"
 }
