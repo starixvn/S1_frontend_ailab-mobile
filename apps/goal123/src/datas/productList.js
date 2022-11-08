@@ -32,6 +32,12 @@ export const defGameInfo = {
 	Fishing: { gameId: 10, tpId: 7, tpGameType: 12 },
 	FishingSG: { gameId: "F-SF01", tpId: 10, tpGameType: 31 },
 	FishingSGW: { gameId: "F-SF02", tpId: 10, tpGameType: 31 },
+	Skywind_Ocean_Ruler: { gameId: "sw_or", tpId: 43, tpGameType: 85 },
+	Skywind_Cai_Shen_Da_Hai: {
+		gameId: "sw_cashdaha",
+		tpId: 43,
+		tpGameType: 85
+	},
 	Casino_All: { tpId: 0 },
 	casino_ICG: { tpId: 24, tpGameType: 39 },
 	Casino_CQ9: { tpId: 16, tpGameType: 29 },
@@ -49,6 +55,7 @@ export const defGameInfo = {
 	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
 	Casino_AdvantPlay: { tpId: 39, tpGameType: 67 },
 	Casino_Habanero: { tpId: 40, tpGameType: 68 },
+	Casino_Skywind: { tpId: 43, tpGameType: 82 },
 	Casino_SimplePlay: { tpId: 44, tpGameType: 86 },
 	LIVEcasinoN2: { tpId: 28, tpGameType: 45 },
 	LIVEcasinoWM: { gameId: 20, tpId: 20, tpGameType: 32 },
@@ -63,11 +70,8 @@ export const defGameInfo = {
 	LIVEcasinoEVO: { gameId: 0, tpId: 36, tpGameType: 63 },
 	LIVEcasinoPT: { tpId: 27, gameId: "0", tpGameType: 48 },
 	LIVEcasinoMGP: { tpId: 34, tpGameType: 58 },
-	LIVEcasinoMG: {
-		tpId: 34,
-		gameId: "0",
-		tpGameType: 58
-	},
+	LIVEcasinoMG: { tpId: 34, gameId: "0", tpGameType: 58 },
+	LIVEcasinoSkywind: { tpId: 43, gameId: "0", tpGameType: 84 },
 	Indo4d: { gameId: 223, tpId: 1, tpGameType: 20 },
 	NumberGame: { gameId: 161, tpId: 1, tpGameType: 2 },
 	kingMaker: { tpId: 11, tpGameType: 52 },
@@ -109,6 +113,7 @@ export const defSlotTpGameType = {
 	RedTiger: { tpId: 38, tpGameType: 65 },
 	AdvantPlay: { tpId: 39, tpGameType: 67 },
 	Habanero: { tpId: 40, tpGameType: 68 },
+	Skywind: { tpId: 43, tpGameType: 82 },
 	SimplePlay: { tpId: 44, tpGameType: 86 }
 };
 
@@ -352,6 +357,28 @@ const gameList = [
 				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-oneshot.png`,
 				spanTextKey: "lbl_Oneshot_Fishing"
 			},
+			// {
+			// 	...defGameInfo.Skywind_Ocean_Ruler,
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-or.png`,
+			// 	spanTextKey: "Skywind_Ocean_Ruler",
+			// 	eventIcon: [
+			// 		{
+			// 			icon: defIconType.new,
+			// 			inPeriod: isEventPeriod(eventTime.skywind)
+			// 		}
+			// 	]
+			// },
+			// {
+			// 	...defGameInfo.Skywind_Cai_Shen_Da_Hai,
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-cai.png`,
+			// 	spanTextKey: "Skywind_Cai_Shen_Da_Hai",
+			// 	eventIcon: [
+			// 		{
+			// 			icon: defIconType.new,
+			// 			inPeriod: isEventPeriod(eventTime.skywind)
+			// 		}
+			// 	]
+			// },
 			{
 				...defGameInfo.ICG_DRAGONBALL_FISHING,
 				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-dragonball.png`,
@@ -395,13 +422,7 @@ const gameList = [
 				spanText: "AdvantPlay",
 				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-ap.png`,
 				path: path.casino.root,
-				providerImgName: "ap",
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.casino_AdvantPlay)
-					}
-				]
+				providerImgName: "ap"
 			},
 			{
 				...defGameInfo.Casino_PP,
@@ -412,18 +433,26 @@ const gameList = [
 				providerImgName: "pp"
 			},
 			{
+				...defGameInfo.Casino_Skywind,
+				parameter: defGameInfo.Casino_Skywind,
+				spanText: "Skywind",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-sk.png`,
+				path: path.casino.root,
+				providerImgName: "sk",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.skywind)
+					}
+				]
+			},
+			{
 				...defGameInfo.Casino_Habanero,
 				parameter: defGameInfo.Casino_Habanero,
 				spanText: "Habanero",
 				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-habanero.png`,
 				path: path.casino.root,
-				providerImgName: "habanero",
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.casino_Habanero)
-					}
-				]
+				providerImgName: "habanero"
 			},
 			{
 				...defGameInfo.Casino_NetEnt,
@@ -453,13 +482,7 @@ const gameList = [
 				spanText: "Playtech",
 				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-pt.png`,
 				path: path.casino.root,
-				providerImgName: "pt",
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.casino_pt)
-					}
-				]
+				providerImgName: "pt"
 			},
 			{
 				...defGameInfo.Casino_Jili,
@@ -467,13 +490,7 @@ const gameList = [
 				spanText: "Jili",
 				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-jili.png`,
 				path: path.casino.root,
-				providerImgName: "jili",
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.jili)
-					}
-				]
+				providerImgName: "jili"
 			},
 			{
 				...defGameInfo.Casino_MGP,
@@ -481,13 +498,7 @@ const gameList = [
 				spanText: "Microgaming",
 				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-mg.png`,
 				path: path.casino.root,
-				providerImgName: "mg",
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.casino_MGP)
-					}
-				]
+				providerImgName: "mg"
 			},
 			{
 				...defGameInfo.casino_ICG,
@@ -567,47 +578,34 @@ const gameList = [
 			{
 				...defGameInfo.LIVEcasinoPP,
 				spanText: "Pragmatic Play",
-				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-pp.png`,
+				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-pp.png`
+			},
+			{
+				...defGameInfo.LIVEcasinoSkywind,
+				spanText: "Skywind",
+				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-sk.png`,
 				eventIcon: [
 					{
 						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.liveCasino_pp)
+						inPeriod: isEventPeriod(eventTime.skywind)
 					}
 				]
 			},
 			{
 				...defGameInfo.LIVEcasinoMG,
 				spanText: "Microgaming",
-				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-mg.png`,
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.liveCasino_mg)
-					}
-				]
+				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-mg.png`
 			},
 			{
 				...defGameInfo.LIVEcasinoEVO,
 				spanText: "Evolution Gaming",
 				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-evolution.png`,
-				tpGameType: 63,
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.liveCasino_evo)
-					}
-				]
+				tpGameType: 63
 			},
 			{
 				...defGameInfo.LIVEcasinoPT,
 				spanText: "Playtech",
 				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-playtech.png`,
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.liveCasino_pt)
-					}
-				],
 				useGotoGame: true
 			},
 			{

@@ -200,13 +200,7 @@ export const productList = langId => {
 					parameter: defGameInfo.Casino_AdvantPlay,
 					path: path.casino.root,
 					displayText: "AdvantPlay",
-					img: `${bannerImgUrl}/h5/img/slot/ap.png`,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.casino_AdvantPlay)
-						}
-					]
+					img: `${bannerImgUrl}/h5/img/slot/ap.png`
 				},
 				{
 					...defGameInfo.Casino_PP,
@@ -217,17 +211,24 @@ export const productList = langId => {
 					img: `${bannerImgUrl}/h5/img/slot/pp.png`
 				},
 				{
+					...defGameInfo.Casino_Skywind,
+					parameter: defGameInfo.Casino_Skywind,
+					path: path.casino.root,
+					displayText: "Skywind",
+					img: `${bannerImgUrl}/h5/img/slot/sk.png`,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.skywind)
+						}
+					]
+				},
+				{
 					...defGameInfo.Casino_Habanero,
 					parameter: defGameInfo.Casino_Habanero,
 					path: path.casino.root,
 					displayText: "Habanero",
-					img: `${bannerImgUrl}/h5/img/slot/ho.png`,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.casino_Habanero)
-						}
-					]
+					img: `${bannerImgUrl}/h5/img/slot/ho.png`
 				},
 				{
 					...defGameInfo.Casino_NetEnt,
@@ -352,48 +353,36 @@ export const productList = langId => {
 					displayText: "Pragmatic Play",
 					icon: "icon icon-PP",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-pp.png`,
+					...defGameInfo.LIVEcasinoPP
+				},
+				{
+					displayText: "Skywind",
+					icon: "icon icon-sk",
+					img: `${bannerImgUrl}/h5/img/liveGameNew/live-sk.png`,
+					...defGameInfo.LIVEcasinoSkywind,
 					eventIcon: [
 						{
 							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.liveCasino_pp)
+							inPeriod: isEventPeriod(eventTime.skywind)
 						}
-					],
-					...defGameInfo.LIVEcasinoPP
+					]
 				},
 				{
 					displayText: "Microgaming",
 					icon: "icon icon-mg",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-mg.png`,
-					...defGameInfo.LIVEcasinoMG,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.liveCasino_mg)
-						}
-					]
+					...defGameInfo.LIVEcasinoMG
 				},
 				{
 					displayText: "Evolution Gaming",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-evo.png`,
-					...defGameInfo.LIVEcasinoEVO,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.liveCasino_evo)
-						}
-					]
+					...defGameInfo.LIVEcasinoEVO
 				},
 				{
 					displayText: "Playtech",
 					icon: "icon icon-pt",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-pt.png`,
 					...defGameInfo.LIVEcasinoPT,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.liveCasino_pt)
-						}
-					],
 					useGotoGame: true
 				},
 				{
@@ -461,6 +450,30 @@ export const productList = langId => {
 					icon: "icon icon-cq9",
 					...defGameInfo.Fishing_AT01
 				},
+				// {
+				// 	displayKey: "Skywind_Ocean_Ruler",
+				// 	img: `${bannerImgUrl}/h5/img/fish/fish-or.png`,
+				// 	icon: "icon icon-sk",
+				// 	...defGameInfo.Skywind_Ocean_Ruler,
+				// 	eventIcon: [
+				// 		{
+				// 			icon: defIconType.new,
+				// 			inPeriod: isEventPeriod(eventTime.skywind)
+				// 		}
+				// 	]
+				// },
+				// {
+				// 	displayKey: "Skywind_Cai_Shen_Da_Hai",
+				// 	img: `${bannerImgUrl}/h5/img/fish/fish-cai.png`,
+				// 	icon: "icon icon-sk",
+				// 	...defGameInfo.Skywind_Cai_Shen_Da_Hai,
+				// 	eventIcon: [
+				// 		{
+				// 			icon: defIconType.new,
+				// 			inPeriod: isEventPeriod(eventTime.skywind)
+				// 		}
+				// 	]
+				// },
 				{
 					displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
 					img: `${bannerImgUrl}/h5/img/fish/fish-db.png`,
