@@ -76,7 +76,7 @@ export const useGetSEODatas = () => {
 function SEO() {
 	const { SEODatas } = useGetSEODatas();
 	const { userInfo } = useContext(userInfoContext);
-	const lang = userInfo?.langId;
+	const lang = userInfo?.langId === "my" ? "en" : userInfo?.langId;
 
 	return (
 		<Helmet
