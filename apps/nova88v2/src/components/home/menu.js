@@ -124,17 +124,39 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 			});
 
 			if (item.event) {
+				const clickEvent = ({ param }) => {
+					const { tpId, gameId, tpGameType } = param;
+					GET_ENTER_PAGE({
+						langId: userInfo.langId,
+						tpId,
+						gameId,
+						tpGameType,
+						loginCallback: handleLogin
+					});
+				};
+
+				if (item.path) {
+					return (
+						<Link key={`menu-${item.category}`} to={item.path}>
+							<img src={item.imgUrl} alt={item.category} />
+							{showingEventIcon !== "" &&
+							showingEventIcon === defIconType.hot ? (
+								<i className={`icon${showingEventIcon}`}>HOT</i>
+							) : null}
+						</Link>
+					);
+				}
 				return (
-					<Link
-						key={`menu-${item.category}`}
-						className={item.className ?? ""}
-						to={item.path}>
+					<button
+						className={item.className}
+						onClick={() => {
+							clickEvent({ param: item });
+						}}>
 						<img src={item.imgUrl} alt={item.category} />
-						{showingEventIcon !== "" &&
-						showingEventIcon === defIconType.hot ? (
-							<i className={`icon${showingEventIcon}`}>HOT</i>
+						{showingEventIcon !== "" ? (
+							<i className={`icon${showingEventIcon}`} />
 						) : null}
-					</Link>
+					</button>
 				);
 			}
 			if (item.href) {
