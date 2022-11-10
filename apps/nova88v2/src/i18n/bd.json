@@ -273,6 +273,9 @@
 	"lbl_tpCategory_6": "লটারি",
 	"lbl_tpCategory_7": "Virtual Sports",
 	"lbl_tpCategory_8": "পোকার",
+	"lbl_Kog": "KOG",
+	"lbl_cryptoSports": "ক্রিপ্টো স্পোর্টস",
+
 	"==============================================Casino====================================": "",
 	"lbl_AllProvider": "সমস্ত প্ল্যাটফর্ম",
 	"lbl_AllGameType": "সব ধরনের",
@@ -285,6 +288,7 @@
 	"lbl_BuyFeaturesGames": "বৈশিষ্ট্যসমূহ গেম কিনুন",
 	"lbl_Megaways": "মেগাওয়ে",
 	"lbl_MyFavorite": "আমার পছন্দ",
+
 	"==============================================Setting====================================": "",
 	"lbl_Logout": "প্রস্থান",
 	"lbl_MyAccount": "আমার অ্যাকাউন্ট",
