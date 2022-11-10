@@ -54,6 +54,7 @@ const defSortSports = {
 		"worldCup",
 		"cricket",
 		"soccer",
+		"cryptoSports",
 		"sabaSoccer",
 		"basketball",
 		"tennis",
@@ -299,6 +300,19 @@ const gameList = ({ langId }) => {
 			href: `${SiteURL.openURL}/rewards/`
 		},
 		{
+			category: "cryptoSports",
+			event: true,
+			imgUrl: `${cloudBannerImgURL}/h5/img/cryptosports.png`,
+			className: "crypto",
+			...defGameInfo.CryptoSports,
+			eventIcon: [
+				{
+					icon: defIconType.new,
+					inPeriod: isEventPeriod(eventTime.sports_cryptoSports)
+				}
+			]
+		},
+		{
 			category: "sports",
 			categoryIcon: "soccer",
 			translateKey: "lbl_Sports",
@@ -316,6 +330,20 @@ const gameList = ({ langId }) => {
 					img: `${cloudBannerImgURL}/h5/img/soccer.png`,
 					spanTextKey: "lbl_Soccer",
 					sortKey: "soccer"
+				},
+				{
+					...defGameInfo.CryptoSports,
+					img: `${cloudBannerImgURL}/h5/img/cryptosportsNPC.png`,
+					spanTextKey: "lbl_cryptoSports",
+					sortKey: "cryptoSports",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(
+								eventTime.sports_cryptoSports
+							)
+						}
+					]
 				},
 				{
 					...defGameInfo.SabaSoccer,
@@ -1062,7 +1090,9 @@ export const defGameInfo = {
 	MaxGame: { tpId: 1, gameId: 237, tpGameType: 83 },
 	Mega888: { tpId: 22, tpGameType: 34 },
 	VirtualGame: { tpId: 1, gameId: 245, tpGameType: 22 }, // 單一錢包 (目前不支援)
-	VirtualSports: { tpId: 1, gameId: 192, tpGameType: 24 } // 單一錢包 {tpId:41, tpGameType:72, gameId:192}
+	VirtualSports: { tpId: 1, gameId: 192, tpGameType: 24 }, // 單一錢包 {tpId:41, tpGameType:72, gameId:192}
+	WorldCup: { tpId: 1, gameId: 2002, tpGameType: 1 },
+	CryptoSports: { tpId: 45, tpGameType: 87 }
 };
 
 export const defCol = {
