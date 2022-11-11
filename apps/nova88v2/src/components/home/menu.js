@@ -109,6 +109,24 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 			return true;
 		})
 		.map(item => {
+			let isInMaintain = false;
+			if (item?.tpGameType) {
+				isInMaintain = maintainList?.some(
+					mt =>
+						mt.tpId === item.tpId &&
+						(mt.tpGameType === item.tpGameType ||
+							mt.tpGameType === defTpGameType.All)
+				);
+			}
+
+			let className = item.className || "";
+			let style = {};
+
+			if (isInMaintain) {
+				className += ` maintenance`;
+				style = { pointerEvents: "none" };
+			}
+
 			const _subIcon = item?.items?.filter(
 				subItem =>
 					subItem.eventIcon &&
@@ -118,6 +136,7 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 						: true) &&
 					(subItem.hideBeforeLogin ? userInfo.isLogin === true : true)
 			);
+
 			const showingEventIcon = getEventIcon({
 				subIcon: _subIcon,
 				eventIcon: item?.eventIcon
@@ -137,7 +156,11 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 
 				if (item.path) {
 					return (
-						<Link key={`menu-${item.category}`} to={item.path}>
+						<Link
+							key={`menu-${item.category}`}
+							to={item.path}
+							className={className}
+							style={style}>
 							<img src={item.imgUrl} alt={item.category} />
 							{showingEventIcon !== "" &&
 							showingEventIcon === defIconType.hot ? (
@@ -148,7 +171,8 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 				}
 				return (
 					<button
-						className={item.className}
+						className={className}
+						style={style}
 						onClick={() => {
 							clickEvent({ param: item });
 						}}>
@@ -163,10 +187,11 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 				return (
 					<a
 						key={`menu-${item.category}`}
-						className={item.className ?? ""}
+						className={className}
 						href={item.href}
 						target="_blank"
-						rel="noreferrer">
+						rel="noreferrer"
+						style={style}>
 						{item.categoryIcon && (
 							<i className={`icon icon-${item.categoryIcon}`} />
 						)}
@@ -182,7 +207,11 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 			}
 			if (item.path) {
 				return (
-					<Link key={`menu-${item.category}`} to={item.path}>
+					<Link
+						key={`menu-${item.category}`}
+						to={item.path}
+						style={style}
+						className={className}>
 						<i className={`icon icon-${item.categoryIcon}`} />
 						<div>{i18n[item.translateKey]}</div>
 						{item.category === "ranking" ? (
@@ -197,12 +226,15 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 			return (
 				<button
 					key={`menu-${item.category}`}
-					className={selectedCol === item.category ? "active" : ""}
+					className={`${
+						selectedCol === item.category ? "active" : ""
+					} ${className}`}
 					onClick={showSubPanel.bind(this, {
 						panel: item.category,
 						popBox: item?.popBox,
 						tpGameType: item?.tpGameType
-					})}>
+					})}
+					style={style}>
 					<i className={`icon icon-${item.categoryIcon}`} />
 					<div>{i18n[item.translateKey]}</div>
 					{showingEventIcon !== "" ? (

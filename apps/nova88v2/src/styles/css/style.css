@@ -1720,6 +1720,11 @@ main .sideBar button.icon:before, main .sideBar a.icon:before {
   font-size: 6vw;
 }
 
+main .sideBar button.maintenance, main .sideBar a.maintenance {
+  -webkit-filter: grayscale(1) brightness(0.85);
+          filter: grayscale(1) brightness(0.85);
+}
+
 main .sideBar button.active, main .sideBar a.active {
   background: #CDAE8E;
 }
