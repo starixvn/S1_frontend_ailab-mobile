@@ -68,14 +68,14 @@ export const defGroupsData = {
 		{
 			time: "2022/11/21 10:00 +0000",
 			teamA: {
-				name: "Senegal",
-				nameVN: "Senegal",
-				imgName: "senegal.jpg"
+				name: "Qatar",
+				nameVN: "Qatar",
+				imgName: "qatar.jpg"
 			},
 			teamB: {
-				name: "Netherlands",
-				nameVN: "Hà Lan",
-				imgName: "netherlands.jpg"
+				name: "Ecuador",
+				nameVN: "Ecuador",
+				imgName: "ecuador.jpg"
 			}
 		},
 		{
@@ -94,14 +94,14 @@ export const defGroupsData = {
 		{
 			time: "2022/11/21 16:00 +0000",
 			teamA: {
-				name: "Qatar",
-				nameVN: "Qatar",
-				imgName: "qatar.jpg"
+				name: "Senegal",
+				nameVN: "Senegal",
+				imgName: "senegal.jpg"
 			},
 			teamB: {
-				name: "Ecuador",
-				nameVN: "Ecuador",
-				imgName: "ecuador.jpg"
+				name: "Netherlands",
+				nameVN: "Hà Lan",
+				imgName: "netherlands.jpg"
 			}
 		}
 	],
