@@ -66,7 +66,7 @@ export const defKnockoutsEvent = [];
 export const defGroupsData = {
 	1121: [
 		{
-			time: "2022/11/21 10:00 +0000",
+			time: "2022/11/21 16:00 +0000",
 			teamA: {
 				name: "Qatar",
 				nameTH: "กาตาร์",
