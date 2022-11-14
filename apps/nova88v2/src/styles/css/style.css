@@ -1451,8 +1451,8 @@ header .headerModule > a {
 }
 
 header .headerModule > a img {
-  width: 60%;
-  margin-left: 4vw;
+  width: 24vw;
+  margin-left: 2vw;
 }
 
 header .headerModule > div {
