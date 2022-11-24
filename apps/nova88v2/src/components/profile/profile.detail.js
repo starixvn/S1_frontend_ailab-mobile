@@ -34,9 +34,10 @@ const Panel = () => {
 
 	const isMountedRef = useRef(null);
 
-	const _areaCode = Object.entries(areaCode).find(
-		el => el[0] === userInfo?.perCountry
-	)?.[1]?.AreaCode;
+	const _areaCode =
+		userInfo?.areaCode ??
+		Object.entries(areaCode).find(el => el[0] === userInfo?.perCountry)?.[1]
+			?.AreaCode;
 
 	const areaCodeOptions = Object.values(areaCode)
 		.filter(
@@ -53,10 +54,10 @@ const Panel = () => {
 	useEffect(() => {
 		isMountedRef.current = true;
 
-		setYearSelectedIdx(1);
-		setMonthSelectedIdx(1);
-		setDaySelectedIdx(1);
-		setAreaCodeIdx(1);
+		setYearSelectedIdx(0);
+		setMonthSelectedIdx(0);
+		setDaySelectedIdx(0);
+		setAreaCodeIdx(0);
 		return () => {
 			isMountedRef.current = false;
 		};
@@ -249,12 +250,6 @@ const Panel = () => {
 			};
 
 			const setProfile = () => {
-				let _AreaCode = userInfo.areaCode;
-				if (!userInfo.areaCode && userInfo.currencyId === 96) {
-					_AreaCode = areaCodeOptions[AreaCodeIdx]?.value;
-				} else if (!userInfo.areaCode && userInfo.currencyId !== 96) {
-					_AreaCode = _areaCode;
-				}
 				const profileData = {
 					AccountName: userInfo.accountName ?? userValue.accountName,
 					Birth_d: userInfo.birth_d ?? `${daySelectedIdx + 1}`,
@@ -264,9 +259,7 @@ const Panel = () => {
 					Birth_y:
 						userInfo.birth_y ??
 						`${yearOptions[yearSelectedIdx]?.value}`,
-					// CountryCode: country,
-					CountryCode: "",
-					AreaCode: _AreaCode ?? "",
+					AreaCode: _areaCode ?? areaCodeOptions[AreaCodeIdx]?.value,
 					PhoneNo: userInfo.phoneNo ?? userValue.phoneNo
 				};
 
@@ -411,7 +404,6 @@ const Panel = () => {
 
 			if (
 				result &&
-				userInfo.currencyId === 96 &&
 				(item.infoTitle === "country" ||
 					item.infoTitle === "perCountry")
 			) {
@@ -467,8 +459,8 @@ const Panel = () => {
 					testAttr="birthday"
 				/>
 			) : null}
-			{!userInfo?.phoneNo && userInfo?.currencyId === 96 ? (
-				<div className="infoModule parts">
+			{!userInfo?.phoneNo ? (
+				<div className="infoModule parts parts-xs">
 					<Dropdown
 						i18n={i18n}
 						mainKey="profile-areaCode"
@@ -495,25 +487,6 @@ const Panel = () => {
 						infoText={i18n.lbl_PhoneTooltip}
 						clickInfo={() => showTipHandler("phoneNo")}
 						showTips={showTips.includes("phoneNo")}
-						testAttr="phoneInput"
-					/>
-				</div>
-			) : null}
-			{!userInfo?.phoneNo && userInfo?.currencyId !== 96 ? (
-				<div className="infoModule">
-					<PhoneInputbox
-						icon="icon-phone"
-						inputType="tel"
-						placeholder={i18n.lbl_Phone}
-						onBlur={e => checkPhone(e.target.value)}
-						onChange={EditField.bind(null, "phoneNo")}
-						value={userValue.phoneNo}
-						btnStatus={warning.phoneNo.checked}
-						warningMsg={warning.phoneNo.msg}
-						infoText={i18n.lbl_PhoneTooltip}
-						clickInfo={() => showTipHandler("phoneNo")}
-						showTips={showTips.includes("phoneNo")}
-						areaCode={_areaCode}
 						testAttr="phoneInput"
 					/>
 				</div>
