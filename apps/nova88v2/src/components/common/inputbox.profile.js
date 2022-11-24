@@ -22,19 +22,14 @@ const Inputbox = ({
 	return (
 		<>
 			<div
-				className={`inputInfo ${showTips ? " active" : ""}`}
+				className={`inputInfo${showTips ? " active" : ""}`}
 				data-testid="inputInfo">
 				{infoText}
 			</div>
-
 			<div
 				className={`inputBox ${btnStatus === false ? "error" : ""}`}
 				data-testid={testAttr}>
-				{areaCode ? (
-					<i className={`icon ${icon}`}>{areaCode}</i>
-				) : icon ? (
-					<i className={`icon ${icon}`} />
-				) : null}
+				<i className={`icon ${icon}`}>{areaCode}</i>
 				<input
 					disabled={disabled}
 					onBlur={onBlur}
