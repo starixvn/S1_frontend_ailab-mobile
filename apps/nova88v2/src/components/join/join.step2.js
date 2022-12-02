@@ -280,6 +280,12 @@ const JoinStep2 = ({
 
 	const checkAll = async () => {
 		try {
+			const _reCaptchaCheck =
+				reCaptchaToken !== "" || recaptchaInfo.country === "CN";
+
+			// * 機器人驗證沒過直接 return 出去
+			if (!_reCaptchaCheck) return false;
+
 			const res = await Promise.all([
 				phoneCheck(userValue.Phone),
 				emailCheck(userValue.Email)
@@ -287,16 +293,16 @@ const JoinStep2 = ({
 			const _phoneCheck = res[0];
 			const _emailCheck = res[1];
 			const _currencyCheck = currencyCheck();
-			const _realNameCheck = checkRealName({ val: userValue.RealName });
-			const _reCaptchaCheck =
-				reCaptchaToken !== "" || recaptchaInfo.country === "CN";
+			const _realNameCheck = checkRealName({
+				val: userValue.RealName
+			});
 
 			const checked =
 				_phoneCheck.checked &&
 				_emailCheck.checked &&
 				_currencyCheck.checked &&
-				_realNameCheck.checked &&
-				_reCaptchaCheck;
+				_realNameCheck.checked;
+
 			if (!checked) {
 				setHintStatus(prev => ({
 					...prev,
@@ -509,7 +515,13 @@ const JoinStep2 = ({
 						icon="icon-phone"
 						inputType="tel"
 						placeholder={i18n.lbl_Phone}
-						onBlur={checkValue.bind(this, "Phone")}
+						// * 清空錯誤訊息， phone 改為按下 submit 之後才打 api 驗證
+						onBlur={() =>
+							setHintStatus(prev => ({
+								...prev,
+								Phone: { checked: null, msg: "" }
+							}))
+						}
 						onChange={EditField.bind(null, "Phone")}
 						value={userValue.Phone}
 						clickInfo={() => showTipHandler("Phone")}
