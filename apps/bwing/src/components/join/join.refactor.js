@@ -267,12 +267,15 @@ const Join = () => {
 	};
 
 	const clickSubmit = async () => {
+		const _reCaptchaCheck = reCaptchaToken !== "";
+		// * 機器人驗證沒過直接 return 出去
+		if (!_reCaptchaCheck) return;
+
 		let checked = null;
 		const UserNameCheck = await userNameCheck({ val: userValue.UserName });
 		const PasswordCheck = passwordCheck({ val: userValue.Password, i18n });
 		const PhoneCheck = await phoneCheck({ val: userValue.Phone });
 		const CheckboxCheck = userValue.agreeCheck;
-		const reCaptchaCheck = reCaptchaToken !== "";
 
 		checked =
 			UserNameCheck.checked &&
@@ -476,7 +479,14 @@ const Join = () => {
 						inputType="tel"
 						placeholder={i18n.lbl_Phone}
 						value={userValue.Phone}
-						onBlur={checkValue.bind(this, { col: "Phone" })}
+						// onBlur={checkValue.bind(this, { col: "Phone" })}
+						// * 清空錯誤訊息， phone 改為按下 submit 之後才打 api 驗證
+						onBlur={() =>
+							setInputStatus(prev => ({
+								...prev,
+								Phone: { checked: null, msg: "" }
+							}))
+						}
 						onChange={EditField.bind(this, { col: "Phone" })}
 						btnStatus={inputStatus.Phone.checked}
 						clickInfo={clickInfo.bind(this, {
