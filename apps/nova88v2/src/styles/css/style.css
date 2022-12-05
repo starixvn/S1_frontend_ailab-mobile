@@ -2392,7 +2392,7 @@ footer > a.active .circleAnimation::after {
   width: calc(100% - 16vw);
   height: calc(100% - 16vw);
   position: fixed;
-  z-index: 9;
+  z-index: 10;
   top: 0;
   left: 0;
   -webkit-box-align: center;

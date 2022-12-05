@@ -288,7 +288,7 @@ const JoinStep2 = ({
 
 			const res = await Promise.all([
 				null,
-				// * 世界杯期間不驗證手機
+				// * 世界杯期間不驗證手機，驗證會在 SignUp Api 驗證
 				// phoneCheck(userValue.Phone),
 				emailCheck(userValue.Email)
 			]);
