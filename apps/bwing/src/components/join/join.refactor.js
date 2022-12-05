@@ -168,9 +168,11 @@ const Join = () => {
 			result = await userNameCheck({ val });
 		} else if (col === "Password") {
 			result = passwordCheck({ val, i18n });
-		} else if (col === "Phone") {
-			result = await phoneCheck({ val });
 		}
+		// * 世界杯期間暫時不驗證手機;
+		// else if (col === "Phone") {
+		// 	result = await phoneCheck({ val });
+		// }
 
 		setInputStatus(prev => ({
 			...prev,
@@ -216,6 +218,7 @@ const Join = () => {
 		return { checked, msg };
 	};
 
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const phoneCheck = async ({ val }) => {
 		let checked = true;
 		let msg = "";
@@ -274,15 +277,14 @@ const Join = () => {
 		let checked = null;
 		const UserNameCheck = await userNameCheck({ val: userValue.UserName });
 		const PasswordCheck = passwordCheck({ val: userValue.Password, i18n });
-		const PhoneCheck = await phoneCheck({ val: userValue.Phone });
+		// const PhoneCheck = await phoneCheck({ val: userValue.Phone });
 		const CheckboxCheck = userValue.agreeCheck;
 
 		checked =
 			UserNameCheck.checked &&
 			PasswordCheck.checked &&
-			PhoneCheck.checked &&
-			CheckboxCheck &&
-			reCaptchaCheck;
+			// PhoneCheck.checked &&
+			CheckboxCheck;
 
 		if (checked) {
 			const regData = {
@@ -479,7 +481,6 @@ const Join = () => {
 						inputType="tel"
 						placeholder={i18n.lbl_Phone}
 						value={userValue.Phone}
-						// onBlur={checkValue.bind(this, { col: "Phone" })}
 						// * 清空錯誤訊息， phone 改為按下 submit 之後才打 api 驗證
 						onBlur={() =>
 							setInputStatus(prev => ({

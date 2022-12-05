@@ -287,18 +287,22 @@ const JoinStep2 = ({
 			if (!_reCaptchaCheck) return false;
 
 			const res = await Promise.all([
-				phoneCheck(userValue.Phone),
+				null,
+				// * 世界杯期間不驗證手機
+				// phoneCheck(userValue.Phone),
 				emailCheck(userValue.Email)
 			]);
-			const _phoneCheck = res[0];
+
+			// const _phoneCheck = res[0];
 			const _emailCheck = res[1];
+
 			const _currencyCheck = currencyCheck();
 			const _realNameCheck = checkRealName({
 				val: userValue.RealName
 			});
 
 			const checked =
-				_phoneCheck.checked &&
+				// _phoneCheck.checked &&
 				_emailCheck.checked &&
 				_currencyCheck.checked &&
 				_realNameCheck.checked;
@@ -306,10 +310,10 @@ const JoinStep2 = ({
 			if (!checked) {
 				setHintStatus(prev => ({
 					...prev,
-					Phone: {
-						checked: _phoneCheck.checked,
-						msg: i18n[_phoneCheck.msg]
-					},
+					// Phone: {
+					// 	checked: _phoneCheck.checked,
+					// 	msg: i18n[_phoneCheck.msg]
+					// },
 					Email: {
 						checked: _emailCheck.checked,
 						msg: i18n[_emailCheck.msg]
@@ -333,6 +337,7 @@ const JoinStep2 = ({
 
 	const clickSubmit = async () => {
 		const checked = await checkAll();
+
 		if (checked) {
 			const regData = {
 				UserName: userValue.UserName,
