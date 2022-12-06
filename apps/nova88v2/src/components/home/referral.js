@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import TandC from "../../service/t_and_c";
 import api from "../../service/api";
 import { Link } from "../../route/link";
 import path from "../../path";
@@ -90,12 +89,12 @@ const ReferralPanel = ({ i18n, userInfo, setPopBox }) => {
 						{referralBonus}
 					</div>
 					<div>{i18n.lbl_Referral_intro}</div>
-					<a
+					{/* <a
 						href={TandC(userInfo.langId).Referral}
 						target="_blank"
 						rel="noreferrer">
 						{i18n.lbl_TermsConditions}
-					</a>
+					</a> */}
 					<br />
 					<Link to={path.referral.root}>{i18n.lbl_To_Referral}</Link>
 				</div>
