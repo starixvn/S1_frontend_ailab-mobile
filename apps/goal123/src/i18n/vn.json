@@ -740,5 +740,16 @@
 	"lbl_DepositRequirement": "Tổng tiền cần nạp",
 	"lbl_ValidBetRequirement": "Yêu cầu doanh thu cược hợp lệ ",
 	"lbl_ReferredFreeCredit": "Cược free cho người được giới thiệu ",
-	"lbl_TermPeriodWithin": "Thời hạn Trong vòng"
+	"lbl_TermPeriodWithin": "Thời hạn Trong vòng",
+
+  "===============Casino===================": "",
+  "lbl_Random": "Ngẫu nhiên",
+  "lbl_RecentlyPlayed": "Chơi gần đây",
+  "lbl_Featured": "Đặc sắc",
+  "lbl_TableAndCards": "Bàn & Thẻ",
+  "lbl_BuyFeaturesGames": "Mua Tính năng Trò chơi",
+  "lbl_Megaways": "đường lớn",
+  "lbl_MyFavorite": "yêu thích của tôi",
+  "lbl_Play": "PLAY",
+  "lbl_FreePlay": "DEMO"
 }

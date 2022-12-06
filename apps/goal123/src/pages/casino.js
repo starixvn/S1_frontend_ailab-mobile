@@ -1,575 +1,446 @@
-import React, { useContext } from "react";
-import PropTypes from "prop-types";
-import Slider from "../components/casino/slider";
-import defNav from "../components/casino/defNav";
-import Nav from "../components/casino/nav";
-import SearchBox from "../components/casino/searchBox";
-import { api_Site_GetGameListByDevice } from "../service/api/site";
-import Games from "../components/casino/games";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import {
 	i18nContext,
 	userInfoContext,
+	popBoxContext,
+	loadingContext,
 	navContext,
-	defNavPanel,
-	popBoxContext
+	defNavPanel
 } from "../components/common/context";
-import {
-	api_SetFavoriteGame,
-	api_GetFavoriteGame
-} from "../service/api/account";
-import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
+import Layout from "../components/common/layout";
+import Slider from "../components/casino/slider";
+import Nav from "../components/casino/nav";
+import GameProviders from "../components/casino/gameProviders";
 import { useGotoGame, defSpecialSetting } from "../components/hook/useGotoGame";
 import useSetTimeout from "../components/hook/useSetTimeout";
-import GameProviders from "../components/casino/gameProviders";
-import gameList, { defSlotTpGameType } from "../datas/productList";
-import Layout from "../components/common/layout";
+import Games from "../components/casino/games";
+import { api_SetFavoriteGame } from "../service/api/account";
+import { api_GetSlotGamePage } from "../service/api/game";
+import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
+import { defSlotTpGameType } from "../datas/productList";
+import SearchBox from "../components/casino/searchBox";
 
-const eachPageItem = 20;
+const Panel = () => {
+	const { throttle } = useSetTimeout();
+	const { handleGoToGame } = useGotoGame({ autoGetData: false });
+	const { i18n } = useContext(i18nContext);
+	const { setPopBox } = useContext(popBoxContext);
+	const { userInfo } = useContext(userInfoContext);
+	const { setLoading } = useContext(loadingContext);
+	const { setNav } = useContext(navContext);
+	const [searchInput, setSearchInput] = useState("");
+	const [providerList, setProviderList] = useState([]);
+	const [activeProvider, setActiveProvider] = useState({});
+	const [allCategoryList, setAllCategoryList] = useState([]);
+	const [categoryList, setCategoryList] = useState([]);
+	const [activeCategory, setActiveCategory] = useState("");
+	const [gameList, setGameList] = useState([]);
+	const [favoriteList, setFavoriteList] = useState([]);
+	const [favoriteStr, setFavoriteStr] = useState(
+		localStorage.getItem("favorite")
+	);
+	const [imageUrl, setImageUrl] = useState("");
+	const [slotDataList, setSlotDataList] = useState([]);
+	const [selGameInfo, setSelGameInfo] = useState(null);
+	const gameListRef = useRef(null);
+	const splitList = window.location.href.split("/");
 
-class Panel extends React.Component {
-	constructor(props) {
-		super(props);
-		this.trigger = false;
-		this.state = {
-			tpList: {},
-			hasMore: true,
-			displayedCount: 0,
-			displayGames: null,
-			selGameInfo: null,
-			gameDatas: null,
-			searchInfo: {
-				searchText: "",
-				provider: { idx: 0, value: null, init: false },
-				gameType: { idx: 0, value: null }
-			},
-			favorite: [],
-			selNav: Object.keys(defNav)?.[this.props.selNavIdx ?? 0],
-			imgUrl: "",
-			selProvider: props.tpId,
-			sorted: []
-		};
-	}
+	const pathTpId = splitList[splitList.length - 1];
+	const getSlotGameData = async () => {
+		setLoading(true);
+		try {
+			const res = await api_GetSlotGamePage({
+				currencyId: userInfo.currencyId
+			});
+			const { providerList: pList } = res.data.data;
+			const targetProvider =
+				pList.find(obj => obj.tpId === Number(pathTpId)) ?? {};
+			if (Object.keys(targetProvider).length > 0) {
+				const pFilterList = pList.filter(
+					item => item.tpId !== targetProvider.tpId
+				);
+				pFilterList.unshift(targetProvider);
+				setProviderList(pFilterList);
+				setActiveProvider(targetProvider);
+			} else {
+				setProviderList(pList);
+			}
+			const skipList = ["imgUrl", "providerList"];
+			let tempList = [];
+			setSlotDataList(Object.entries(res.data.data));
+			Object.entries(res.data.data).forEach(item => {
+				if (!skipList.includes(item[0])) {
+					tempList.push(item);
+					if (item[0] === "myFavorite") {
+						if (userInfo.isLogin) {
+							const storageStr = favoriteStr ?? "";
+							const storageList = storageStr.split("&") ?? [];
 
-	componentDidMount() {
-		this.mounted = true;
-
-		window.addEventListener("mousewheel", this.ScrollBarListener, false);
-		window.addEventListener("touchmove", this.ScrollBarListener, {
-			passive: false
-		});
-
-		const sort = [];
-
-		api_Site_GetGameListByDevice().then(
-			res => {
-				if (res.data.errorCode === 0) {
-					const _tpList = {};
-					const games = [];
-
-					const { imgUrl, providerList } = res.data.data;
-					providerList?.forEach(t => {
-						_tpList[t.value] = { ...t };
-						if (t.gameList?.data) {
-							t.gameList.data.forEach(g => {
-								games.push({
-									tpId: t.value,
-									...g
-								});
+							const addList = [];
+							item[1].forEach(obj => {
+								setFavoriteList(prev => [
+									...prev,
+									`${obj.tpId}_${obj.gameId}`
+								]);
+								!storageList.includes(
+									`${obj.tpId}_${obj.gameId}`
+								) && addList.push(`${obj.tpId}_${obj.gameId}`);
 							});
-						}
-					});
-
-					if (games.length) {
-						for (let i = 0; i < games.length; i++) {
-							const idx = Math.floor(
-								Math.random() * games.length
+							const mergeList = [...storageList, ...addList];
+							localStorage.setItem(
+								"favorite",
+								mergeList.join("&")
 							);
-							const tempEle1 = games[i];
-							const tempEle2 = games[idx];
-
-							games[i] = tempEle2;
-							games[idx] = tempEle1;
+							setFavoriteStr(mergeList.join("&"));
 						}
 					}
-					if (this.mounted) {
-						const nav = defNav.ALLGAMES.key;
-						const _tplistArr = Object.keys(_tpList);
-						gameList.forEach(el => {
-							if (el.category === "slots") {
-								el.items.forEach(game => {
-									if (
-										_tplistArr.indexOf(
-											game.tpId.toString()
-										) > -1
-									) {
-										if (game.tpId === this.props.tpId) {
-											sort.unshift(game);
-										} else if (game.providerImgName) {
-											sort.push(game);
-										}
-									}
-								});
-							}
-						});
-
-						this.setState(
-							{
-								sorted: sort,
-								tpList: _tpList,
-								selProvider: this.props.tpId,
-								gameDatas: games,
-								selNav: this.props.selNav ?? nav,
-								imgUrl
-							},
-							() => this.SetMoreItems()
-						);
-					}
-				} else {
-					this.props.setPopBox({
-						isOpen: true,
-						content: `[${res.data.errorCode}] ${res.data.message}`
-					});
+				} else if (item[0] === "imgUrl") {
+					setImageUrl(item[1]);
 				}
-			},
-			() => {
-				this.props.setPopBox({
+			});
+			const randomItem = tempList.filter(item => item[0] === "random")[0];
+			const tempItemList = tempList.filter(item => item[0] !== "random");
+			tempItemList.unshift(randomItem);
+			setAllCategoryList(tempItemList);
+			const random = tempList.filter(
+				item => item[1].length > 0 && item[0] === "random"
+			)[0];
+
+			tempList = tempList.filter(item => {
+				if (Object.keys(targetProvider).length > 0) {
+					return (
+						item[0] !== "random" &&
+						(item[1].find(i => i.tpId === targetProvider?.tpId) ||
+							item[0] === "myFavorite")
+					);
+				}
+				return (
+					item[0] !== "random" &&
+					(item[1].length > 0 || item[0] === "myFavorite")
+				);
+			});
+			tempList.unshift(random);
+			const _list = [];
+			tempList.forEach(item => _list.push(item[0]));
+			setCategoryList(_list);
+			setActiveCategory(_list[1]);
+			const targetList = Object.entries(res.data.data)?.find(
+				item => item[0] === _list[1]
+			)[1];
+			setGameList(targetList);
+			setLoading(false);
+		} catch (error) {
+			setPopBox({
+				isOpen: true,
+				content: error
+			});
+			setLoading(false);
+		}
+	};
+
+	const handleSetFavorite = async (GameId, IsRemove, ProviderId) => {
+		if (userInfo.isLogin) {
+			try {
+				await api_SetFavoriteGame(ProviderId, GameId, IsRemove);
+			} catch (error) {
+				setPopBox({
 					isOpen: true,
-					content: this.props.i18n.msg_ApiServerError
+					content: error
 				});
 			}
+		}
+	};
+
+	const changeActiveProvider = provider => {
+		setActiveProvider(provider);
+	};
+
+	const randomArray = array => array.sort(() => Math.random() - 0.5);
+
+	const renderSlot = () => {
+		const targetList = slotDataList.find(
+			item => item[0] === activeCategory
 		);
-
-		if (this.props.userInfo.isLogin) {
-			api_GetFavoriteGame().then(
-				res => {
-					if (res.data.errorCode === 0 && res.data.data) {
-						const fav = res.data.data.map(f => {
-							return `${f.providerId}_${f.gameId}`;
-						});
-						if (this.mounted) {
-							this.setState({ favorite: fav });
-						}
-					} else if (res.data.errorCode !== 0) {
-						this.props.setPopBox({
-							isOpen: true,
-							content: `[${res.data.errorCode}] ${res.data.message}`
-						});
-					}
-				},
-				() => {
-					this.props.setPopBox({
-						isOpen: true,
-						content: this.props.i18n.msg_ApiServerError
-					});
-				}
-			);
-		}
-	}
-
-	componentWillUnmount = () => {
-		this.mounted = false;
-		window.removeEventListener("mousewheel", this.ScrollBarListener);
-		window.removeEventListener("touchmove", this.ScrollBarListener, {
-			passive: false
-		});
-	};
-
-	SelectProvider = key => {
-		this.setState(
-			prevState => ({
-				selProvider: prevState.selProvider !== key ? key : null,
-				displayGames: null,
-				hasMore: true,
-				displayedCount: 0
-			}),
-			() => {
-				this.SetMoreItems();
-			}
-		);
-	};
-
-	ScrollBarListener = () => {
-		const window_height =
-			window.innerHeight ||
-			document.documentElement.clientHeight ||
-			document.body.clientHeight;
-
-		const window_scrollTop =
-			document.body.scrollTop ||
-			window.pageYOffset ||
-			document.documentElement.scrollTop;
-
-		const { body } = document;
-		const html = document.documentElement;
-
-		const document_height =
-			Math.max(
-				body.scrollHeight,
-				body.offsetHeight,
-				html.clientHeight,
-				html.scrollHeight,
-				html.offsetHeight
-			) * 0.8;
-
-		if (
-			!this.trigger &&
-			window_height + window_scrollTop >= document_height
-		) {
-			this.trigger = true;
-			this.SetMoreItems();
-		}
-	};
-
-	SetFavorite = (tpId, gameId) => {
-		const key = `${tpId}_${gameId}`;
-		const isRemove = this.state.favorite?.includes(key);
-		const newFav = isRemove
-			? this.state.favorite?.filter(f => f !== key)
-			: [...this.state.favorite, key];
-		const displayGames =
-			isRemove && this.state.selNav === defNav.FAVOURITE.key
-				? this.state.displayGames.filter(
-						g => !(g.tpId === tpId && g.gameId === gameId)
-				  )
-				: this.state.displayGames;
-		if (this.mounted) {
-			this.setState({ favorite: newFav, displayGames });
-		}
-		if (this.props.userInfo.isLogin) {
-			api_SetFavoriteGame(tpId, gameId, isRemove);
-		}
-	};
-
-	SelectNav = navKey => {
-		if (this.state.selNav !== navKey) {
-			this.setState(
-				{
-					selNav: navKey,
-					displayGames: null,
-					hasMore: true,
-					displayedCount: 0
-				},
-				() => {
-					this.SetMoreItems();
-				}
-			);
-		}
-	};
-
-	CloseSelGame = () => {
-		if (this.mounted) {
-			this.setState({ selGameInfo: null });
-		}
-	};
-
-	SelectGame = (tpId, gameInfo) => {
-		if (this.state.selGameInfo === null && this.mounted) {
-			this.setState({
-				selGameInfo: { tpId, ...gameInfo }
-			});
-		}
-	};
-
-	EditSearchField = (colName, v) => {
-		if (
-			JSON.stringify(this.state.searchInfo[colName]) !== JSON.stringify(v)
-		) {
-			const newData = {
-				...this.state.searchInfo,
-				[colName]: v
-			};
-
-			if (this.mounted) {
-				this.setState(
-					{
-						searchInfo: newData,
-						displayGames: [],
-						hasMore: true,
-						displayedCount: 0
-					},
-					() => {
-						this.SetMoreItems();
-					}
+		const filterHandle = item => {
+			if (Object.keys(activeProvider).length > 0) {
+				return (
+					item.tpId === activeProvider?.tpId &&
+					Object.values(item.gameName).find(obj =>
+						obj.toLowerCase().includes(searchInput.toLowerCase())
+					)
 				);
 			}
+			return Object.values(item.gameName).find(obj =>
+				obj.toLowerCase().includes(searchInput.toLowerCase())
+			);
+		};
+		if (targetList) {
+			if (targetList[0] === "myFavorite") {
+				const tempList = [];
+				const resultList = [];
+				let storageStr = favoriteStr ?? "";
+				if (storageStr && storageStr.charAt(0) === "&") {
+					storageStr = storageStr.substring(1, storageStr.length);
+				}
+				const storageList = storageStr?.split("&") ?? [];
+				storageList.forEach(str => {
+					const chars = str.split("_");
+					tempList.push({
+						tpId: chars[0],
+						gameId: str.replace(`${chars[0]}_`, "")
+					});
+				});
+				const allList = slotDataList.find(item => item[0] === "all")[1];
+				tempList.forEach(favObj => {
+					const result = allList.find(
+						allObj =>
+							Number(allObj.tpId) === Number(favObj.tpId) &&
+							allObj.gameId === favObj.gameId
+					);
+					if (result) {
+						resultList.push(result);
+					}
+				});
+				const filterList = resultList.filter(item =>
+					filterHandle(item)
+				);
+				setGameList(filterList);
+			} else {
+				const filterList =
+					targetList[0] === "all" &&
+					Object.keys(activeProvider).length === 0
+						? randomArray(
+								targetList[1]?.filter(item =>
+									filterHandle(item)
+								)
+						  )
+						: targetList[1]?.filter(item => filterHandle(item));
+				setGameList(filterList);
+			}
 		}
 	};
 
-	matchKeyword = (name, _keyword) => {
-		const keyword = _keyword.toLowerCase();
-		return (
-			Object.keys(name)?.filter(key => {
-				return name[key].toLowerCase().indexOf(keyword) !== -1;
-			}).length > 0
-		);
-	};
-
-	FilterGames = (
-		_searchInfo,
-		_nav,
-		initGameDatas,
-		initTpList,
-		_selProvider
-	) => {
-		const _gameDatas = initGameDatas ?? this.state.gameDatas;
-		const _tpList = initTpList ?? this.state.tpList;
-		const gameCategory = _searchInfo.gameType?.value;
-		const { searchText } = _searchInfo;
-
-		const matchFilter = (_tpId, g) => {
-			const matchNav =
-				(_nav === defNav.NEW.key && g.new === true) ||
-				(_nav === defNav.PROMO.key && g.promotion === 1) ||
-				(_nav === defNav.FEATURED.key && g.featured === true) ||
-				(_nav === defNav.FAVOURITE.key &&
-					this.state.favorite.includes(`${_tpId}_${g.gameId}`)) ||
-				_nav === defNav.ALLGAMES.key;
-			return (
-				matchNav &&
-				(gameCategory === null || g.category1 === gameCategory) &&
-				(searchText === "" || this.matchKeyword(g.name, searchText)) &&
-				(_selProvider ? g.tpId === _selProvider : true)
-			);
-		};
-
-		return _gameDatas?.filter(g => {
-			const tp = _tpList[g.tpId];
-			return matchFilter(tp.value, g);
-		});
-	};
-
-	ClickPlay = freePlay => {
-		if (freePlay || this.props.userInfo.isLogin) {
-			this.props.throttle(
+	const clickPlay = (freePlay, randomGame = null) => {
+		const targetObj = !randomGame ? selGameInfo : randomGame;
+		if (freePlay || userInfo.isLogin) {
+			throttle(
 				() =>
 					GET_CASINO_ENTER_PAGE({
-						tpId: this.state.selGameInfo.tpId,
-						gameId: this.state.selGameInfo.gameId,
+						tpId: targetObj.tpId,
+						gameId: targetObj.gameId,
 						isFree: freePlay,
-						langId: this.props.userInfo.langId,
+						langId: userInfo.langId,
 						execFunction:
-							this.state.selGameInfo.tpId ===
-							defSpecialSetting.playTech
-								? this.props.handleGoToGame.bind(this, {
-										langId: this.props.userInfo.langId,
-										tpId: this.state.selGameInfo.tpId,
-										gameId: this.state.selGameInfo.gameId,
+							targetObj.tpId === defSpecialSetting.playTech
+								? handleGoToGame.bind(this, {
+										langId: userInfo.langId,
+										tpId: targetObj.tpId,
+										gameId: targetObj.gameId,
 										isFun: freePlay,
 										tpGameType:
 											defSlotTpGameType.PT.tpGameType
 								  })
 								: null,
 						tpGameType: Object.values(defSlotTpGameType).find(
-							obj => this.state.selGameInfo.tpId === obj.tpId
+							obj => targetObj.tpId === obj.tpId
 						).tpGameType
 					}),
 				freePlay ? 0 : 5000
 			);
 		} else {
-			this.props.setNav(defNavPanel.login);
+			setNav(defNavPanel.login);
 		}
 	};
 
-	SetMoreItems = () => {
-		const _searchInfo = this.state.searchInfo;
-		const _selNav = this.state.selNav;
-		const initGameDatas = this.state.gameDatas;
-		const _selProvider = this.state.selProvider;
-		const initTpList = this.state.tpList;
-		const s = this.state;
-		if (s.hasMore && initGameDatas) {
-			const _gameDatas = this.FilterGames(
-				_searchInfo,
-				_selNav,
-				initGameDatas,
-				initTpList,
-				_selProvider
+	const handleCategoryActive = category => {
+		if (category === "random") {
+			if (userInfo.isLogin) {
+				const allList = slotDataList.find(item => item[0] === "all")[1];
+				const filterList =
+					Object.keys(activeProvider).length > 0
+						? allList.filter(
+								obj => obj.tpId === activeProvider.tpId
+						  )
+						: allList;
+				const index = Math.floor(Math.random() * filterList.length);
+				clickPlay(false, filterList[index]);
+			} else {
+				setNav(defNavPanel.login);
+			}
+		} else {
+			setActiveCategory(category);
+		}
+	};
+
+	useEffect(() => {
+		getSlotGameData();
+		if (!favoriteStr) {
+			localStorage.setItem("favorite", "");
+		}
+	}, []);
+
+	useEffect(() => {
+		if (activeCategory === "myFavorite") {
+			const tempList = [];
+			const resultList = [];
+			const tempFavoriteList = favoriteStr.split("&") ?? [];
+			tempFavoriteList.forEach(str => {
+				const chars = str.split("_");
+				tempList.push({
+					tpId: chars[0],
+					gameId: str.replace(`${chars[0]}_`, "")
+				});
+			});
+
+			const allList = allCategoryList.find(item => item[0] === "all")[1];
+			const filterList = allList.filter(
+				allItem => activeProvider.tpId === allItem.tpId
 			);
-			const restCount = _gameDatas?.length - s.displayedCount;
-			const loadCount =
-				restCount >= eachPageItem ? eachPageItem : restCount;
-			const startIdx = s.displayedCount;
-			const endIdx = startIdx + loadCount;
-
-			const newItem = [];
-			for (let i = startIdx; i < endIdx; i++) {
-				newItem.push(_gameDatas[i]);
-			}
-
-			if (newItem.length !== 0 && this.mounted) {
-				const new_count = s.displayedCount + newItem.length;
-				if (this.mounted) {
-					const displayGames = s.displayGames ?? [];
-					this.setState({
-						displayGames: [...displayGames, ...newItem],
-						hasMore: new_count < _gameDatas?.length,
-						displayedCount: new_count
-					});
+			const judgeList =
+				Object.keys(activeProvider).length > 0 ? filterList : allList;
+			judgeList.forEach(judgeItem => {
+				const result = tempList.find(
+					tempItem =>
+						judgeItem.tpId === Number(tempItem.tpId) &&
+						judgeItem.gameId === tempItem.gameId
+				);
+				if (result) {
+					resultList.push(judgeItem);
 				}
-			} else if (this.mounted) {
-				if (s.displayGames === null) {
-					this.setState({
-						hasMore: false,
-						displayGames: []
-					});
-				} else {
-					this.setState({
-						hasMore: false
-					});
-				}
-			}
+			});
+			setGameList(resultList);
 		}
+	}, [favoriteStr]);
 
-		this.trigger = false;
-	};
+	useEffect(() => {
+		renderSlot();
+	}, [activeCategory, activeProvider, searchInput]);
 
-	render() {
-		return (
-			<>
-				<Slider />
-				<div className="partnerSelect">
-					<GameProviders
-						selNav={this.state.selProvider}
-						SelectNav={this.SelectProvider}
-						sorted={this.state.sorted}
-					/>
-				</div>
-				<Nav selNav={this.state.selNav} SelectNav={this.SelectNav} />
-				<SearchBox
-					{...this.state.searchInfo}
-					EditSearchField={this.EditSearchField}
+	useEffect(() => {
+		if (allCategoryList.length && activeProvider?.tpId) {
+			const filterList = allCategoryList.filter(
+				item =>
+					item[0] === "myFavorite" ||
+					item[1].filter(i => i.tpId === activeProvider.tpId).length >
+						0
+			);
+			const totalData = filterList.find(item => item[0] === "all")[1];
+			if (totalData.length > 0) {
+				const tempList = [];
+				filterList.forEach(item => tempList.push(item[0]));
+				setCategoryList(tempList);
+				setActiveCategory(tempList[1]);
+			} else {
+				setCategoryList([]);
+				setActiveCategory(null);
+			}
+		} else {
+			const tempList = [];
+			allCategoryList.forEach(categoryItem => {
+				if (
+					categoryItem[1].length > 0 ||
+					categoryItem[0] === "myFavorite"
+				) {
+					tempList.push(categoryItem[0]);
+				}
+			});
+			setCategoryList(tempList);
+		}
+	}, [activeProvider]);
+
+	return (
+		<>
+			<Slider />
+			<div className="partnerSelect modifier">
+				<GameProviders
+					selNav={activeProvider?.tpId}
+					onChange={changeActiveProvider}
+					sorted={providerList}
 				/>
-
-				<Games
-					SelectGame={this.SelectGame}
-					Games={this.state.displayGames}
-					Favorite={this.state.favorite}
-					SetFavorite={this.SetFavorite}
-					TpList={this.state.tpList}
-					i18n={this.props.i18n}
-					imgUrl={this.state.imgUrl}
+			</div>
+			<div className="casinoSelect">
+				<Nav
+					categoryList={categoryList}
+					selNav={activeCategory}
+					onChange={handleCategoryActive}
 				/>
+			</div>
 
-				{this.state.selGameInfo === null ? null : (
-					<div className="slotFunctionNew open">
-						<div>
-							<button
-								className="icon icon-cancel-circle"
-								onClick={this.CloseSelGame}
+			<SearchBox
+				searchInput={searchInput}
+				setSearchInput={setSearchInput}
+			/>
+
+			<Games
+				selectGame={setSelGameInfo}
+				gameList={gameList}
+				favorite={favoriteList}
+				setFavorite={setFavoriteList}
+				providerList={providerList}
+				activeProvider={activeProvider}
+				activeCategory={activeCategory}
+				handleSetFavorite={handleSetFavorite}
+				i18n={i18n}
+				imgUrl={imageUrl}
+				ref={gameListRef}
+				favoriteStr={favoriteStr}
+				setFavoriteStr={setFavoriteStr}
+			/>
+			{selGameInfo === null ? null : (
+				<div className="slotFunctionNew open">
+					<div>
+						<button
+							className="icon icon-cancel-circle"
+							onClick={() => setSelGameInfo(null)}
+						/>
+						<div className="content">
+							<img
+								src={`${imageUrl}/${selGameInfo.providerName}/${
+									selGameInfo.imgName[userInfo.langId] ??
+									selGameInfo.imgName.en
+								}`}
+								alt={
+									selGameInfo.gameName[userInfo.langId] ??
+									selGameInfo.gameName.en
+								}
 							/>
-							<div className="content">
-								<img
-									src={`${this.state.imgUrl}/${
-										this.state.tpList[
-											this.state.selGameInfo.tpId
-										]?.name
-									}/${
-										this.state.selGameInfo.imgName[
-											this.props.userInfo.langId
-										] ?? this.state.selGameInfo.imgName.en
-									}`}
-									alt={
-										this.state.selGameInfo.name[
-											this.props.userInfo.langId
-										] ?? this.state.selGameInfo.name.en
-									}
-								/>
-								<div className="mask" />
-							</div>
-							<div className="title text-blue">
-								{this.state.selGameInfo.name[
-									this.props.userInfo.langId
-								] ?? this.state.selGameInfo.name.en}
-							</div>
-
-							<div className="btn-group">
-								{this.state.selGameInfo.playFree ? (
-									<button
-										data-testid="clickFreePlay"
-										className="white"
-										onClick={this.ClickPlay.bind(
-											this,
-											true
-										)}>
-										{this.props.i18n.lbl_Free}
-									</button>
-								) : null}
+							<div className="mask" />
+						</div>
+						<div className="title text-blue">
+							{selGameInfo.gameName[userInfo.langId] ??
+								selGameInfo.gameName.en}
+						</div>
+						<div className="btn-group">
+							{selGameInfo.playFree ? (
 								<button
-									className="orange"
-									data-testid="clickPlay"
-									onClick={this.ClickPlay.bind(this, false)}>
-									{this.props.i18n.lbl_PlayNow}
+									data-testid="clickFreePlay"
+									className="white"
+									onClick={() => clickPlay(true)}>
+									{i18n.lbl_FreePlay}
 								</button>
-							</div>
+							) : null}
+							<button
+								className="orange"
+								data-testid="clickPlay"
+								onClick={() => clickPlay(false)}>
+								{i18n.lbl_Play}
+							</button>
 						</div>
 					</div>
-				)}
-			</>
-		);
-	}
-}
-
-Panel.defaultProps = {
-	selNavIdx: null,
-	tpId: null,
-	selNav: null,
-	setPopBox: () => null,
-	i18n: null,
-	userInfo: null,
-	throttle: () => null,
-	handleGoToGame: () => null,
-	setNav: () => null
-};
-
-Panel.propTypes = {
-	selNavIdx: PropTypes.number,
-	tpId: PropTypes.number,
-	selNav: PropTypes.objectOf(PropTypes.any),
-	setPopBox: PropTypes.func,
-	i18n: PropTypes.objectOf(PropTypes.string),
-	userInfo: PropTypes.objectOf(PropTypes.any),
-	throttle: PropTypes.func,
-	handleGoToGame: PropTypes.func,
-	setNav: PropTypes.func
-};
-
-const IndexPage = props => {
-	const { throttle } = useSetTimeout();
-	const { i18n } = useContext(i18nContext);
-	const { setNav } = useContext(navContext);
-	const { userInfo } = useContext(userInfoContext);
-	const { setPopBox } = useContext(popBoxContext);
-	const { handleGoToGame } = useGotoGame({ autoGetData: false });
-
-	const selNav = props.location?.state?.nav;
-	const selNavIdx = Object.keys(defNav).findIndex(key => key === selNav);
-	let tpId = props.tpId ?? props.location.state?.tpId;
-	tpId = typeof tpId === "string" && !isNaN(tpId) ? Number(tpId) : tpId;
-	return (
-		<Layout title={`${i18n.lbl_Slots}`} mainClass="main casino">
-			<Panel
-				i18n={i18n}
-				userInfo={userInfo}
-				setNav={setNav}
-				tpId={tpId}
-				handleGoToGame={handleGoToGame}
-				throttle={throttle}
-				selNav={selNav}
-				selNavIdx={selNavIdx === -1 ? 0 : selNavIdx}
-				setPopBox={setPopBox}
-			/>
-		</Layout>
+				</div>
+			)}
+		</>
 	);
 };
 
-IndexPage.defaultProps = {
-	location: null,
-	tpId: null
-};
+const IndexPage = () => {
+	const { i18n } = useContext(i18nContext);
 
-IndexPage.propTypes = {
-	location: PropTypes.objectOf(PropTypes.any),
-	tpId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+	return (
+		<Layout title={i18n.lbl_Slots} mainClass="main casino">
+			<Panel />
+		</Layout>
+	);
 };
 
 export default IndexPage;

@@ -200,7 +200,7 @@ const SubGame = ({ game, clickGame, i18n, underMaintain }) => {
 			<Link
 				className={`game${underMaintain ? " active" : ""}`}
 				key={game.spanText || game.spanTextKey}
-				to={`/${game.path}`}
+				to={`/${game.path}${game.tpId ? `/${game.tpId}` : ""}`}
 				style={underMaintain ? { pointerEvents: "none" } : null}
 				state={game.parameter}>
 				{showingEventIcon !== "" ? (
