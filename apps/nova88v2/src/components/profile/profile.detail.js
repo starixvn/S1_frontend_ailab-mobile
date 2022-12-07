@@ -121,7 +121,7 @@ const Panel = () => {
 			tip = i18n.lbl_PhoneRequired;
 		} else {
 			try {
-				const res = await api.site.ExistsPhoneNo({
+				const res = await api.account.ExistsPhoneNo({
 					AreaCode: _areaCode ?? areaCodeOptions[AreaCodeIdx]?.value,
 					Phone: val
 				});

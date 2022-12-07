@@ -192,7 +192,7 @@ const JoinStep2 = ({
 			checked = result.checked;
 			msg = result.msg;
 		} else if (col === "Phone") {
-			const result = await phoneCheck(val);
+			const result = phoneCheck(val);
 			checked = result.checked;
 			msg = result.msg;
 		} else if (col === "RealName") {
@@ -232,7 +232,7 @@ const JoinStep2 = ({
 		return { checked, msg };
 	};
 
-	const phoneCheck = async val => {
+	const phoneCheck = val => {
 		let checked = true;
 		let msg = "";
 		const regx = /^[0-9\s]*$/;
@@ -243,22 +243,23 @@ const JoinStep2 = ({
 		} else if (!regx.test(val)) {
 			checked = false;
 			msg = "lbl_PhoneTooltip";
-		} else {
-			const res = await api.site.ExistsPhoneNo({
-				AreaCode: _areaCode,
-				Phone: val
-			});
-
-			if (res.data?.errorCode === 0 && res.data?.data === true) {
-				checked = false;
-				msg = "msg_PhoneExisted";
-			} else if (res.data.errorCode !== 0) {
-				setPopBox({
-					isOpen: true,
-					content: `[${res.data.errorCode}] ${res.data.message}`
-				});
-			}
 		}
+		// else {
+		// 	const res = await api.site.ExistsPhoneNo({
+		// 		AreaCode: _areaCode,
+		// 		Phone: val
+		// 	});
+
+		// 	if (res.data?.errorCode === 0 && res.data?.data === true) {
+		// 		checked = false;
+		// 		msg = "msg_PhoneExisted";
+		// 	} else if (res.data.errorCode !== 0) {
+		// 		setPopBox({
+		// 			isOpen: true,
+		// 			content: `[${res.data.errorCode}] ${res.data.message}`
+		// 		});
+		// 	}
+		// }
 		return { checked, msg };
 	};
 
@@ -293,7 +294,7 @@ const JoinStep2 = ({
 				emailCheck(userValue.Email)
 			]);
 
-			// const _phoneCheck = res[0];
+			const _phoneCheck = phoneCheck(userValue.Phone);
 			const _emailCheck = res[1];
 
 			const _currencyCheck = currencyCheck();
@@ -302,7 +303,7 @@ const JoinStep2 = ({
 			});
 
 			const checked =
-				// _phoneCheck.checked &&
+				_phoneCheck.checked &&
 				_emailCheck.checked &&
 				_currencyCheck.checked &&
 				_realNameCheck.checked;
@@ -310,10 +311,10 @@ const JoinStep2 = ({
 			if (!checked) {
 				setHintStatus(prev => ({
 					...prev,
-					// Phone: {
-					// 	checked: _phoneCheck.checked,
-					// 	msg: i18n[_phoneCheck.msg]
-					// },
+					Phone: {
+						checked: _phoneCheck.checked,
+						msg: i18n[_phoneCheck.msg]
+					},
 					Email: {
 						checked: _emailCheck.checked,
 						msg: i18n[_emailCheck.msg]
@@ -520,16 +521,11 @@ const JoinStep2 = ({
 						icon="icon-phone"
 						inputType="tel"
 						placeholder={i18n.lbl_Phone}
-						// * 清空錯誤訊息， phone 改為按下 submit 之後才打 api 驗證
-						onBlur={() =>
-							setHintStatus(prev => ({
-								...prev,
-								Phone: { checked: null, msg: "" }
-							}))
-						}
+						onBlur={checkValue.bind(this, "Phone")}
 						onChange={EditField.bind(null, "Phone")}
 						value={userValue.Phone}
 						clickInfo={() => showTipHandler("Phone")}
+						btnStatus={hintStatus.Phone.checked}
 					/>
 				</div>
 				<div
