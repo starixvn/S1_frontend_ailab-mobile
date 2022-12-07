@@ -98,4 +98,10 @@ export class AccountAPI extends BaseAPI {
 
 	GetReferralSettingDetail = () =>
 		this.accountRequest.post("/GetReferralSettingDetail");
+
+	ExistsPhoneNo = ({ AreaCode, Phone }) =>
+		this.accountRequest.post(`/ExistsPhoneNo`, {
+			AreaCode,
+			PhoneNo: Phone
+		});
 }

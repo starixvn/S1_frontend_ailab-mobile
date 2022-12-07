@@ -9,7 +9,7 @@ import {
 	api_GetSiteCurrencyList,
 	api_GetBanner,
 	api_site_Signup,
-	api_site_ExistsPhoneNo,
+	// api_site_ExistsPhoneNo,
 	api_site_GetAffiliateAgent
 } from "../../service/api/site";
 import { api_GetCustProfile } from "../../service/api/accountStrict";
@@ -168,11 +168,9 @@ const Join = () => {
 			result = await userNameCheck({ val });
 		} else if (col === "Password") {
 			result = passwordCheck({ val, i18n });
+		} else if (col === "Phone") {
+			result = await phoneCheck({ val });
 		}
-		// * 世界杯期間暫時不驗證手機;
-		// else if (col === "Phone") {
-		// 	result = await phoneCheck({ val });
-		// }
 
 		setInputStatus(prev => ({
 			...prev,
@@ -219,7 +217,7 @@ const Join = () => {
 	};
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const phoneCheck = async ({ val }) => {
+	const phoneCheck = ({ val }) => {
 		let checked = true;
 		let msg = "";
 		const regx = /^[0-9\s]*$/;
@@ -230,23 +228,24 @@ const Join = () => {
 		} else if (val.length < 9 || !regx.test(val)) {
 			checked = false;
 			msg = i18n.lbl_PhoneTooltip;
-		} else {
-			const res = await api_site_ExistsPhoneNo({
-				AreaCode: _areaCode,
-				Phone: val
-			});
-			if (res.data.errorCode === 0) {
-				if (res.data.data === true) {
-					checked = false;
-					msg = i18n.msg_PhoneExisted;
-				}
-			} else {
-				setPopBox({
-					isOpen: true,
-					content: `[${res.data.errorCode}] ${res.data.message}`
-				});
-			}
 		}
+		// else {
+		// 	const res = await api_site_ExistsPhoneNo({
+		// 		AreaCode: _areaCode,
+		// 		Phone: val
+		// 	});
+		// 	if (res.data.errorCode === 0) {
+		// 		if (res.data.data === true) {
+		// 			checked = false;
+		// 			msg = i18n.msg_PhoneExisted;
+		// 		}
+		// 	} else {
+		// 		setPopBox({
+		// 			isOpen: true,
+		// 			content: `[${res.data.errorCode}] ${res.data.message}`
+		// 		});
+		// 	}
+		// }
 		return { checked, msg };
 	};
 
@@ -278,12 +277,13 @@ const Join = () => {
 		const UserNameCheck = await userNameCheck({ val: userValue.UserName });
 		const PasswordCheck = passwordCheck({ val: userValue.Password, i18n });
 		// const PhoneCheck = await phoneCheck({ val: userValue.Phone });
+		const PhoneCheck = phoneCheck({ val: userValue.Phone });
 		const CheckboxCheck = userValue.agreeCheck;
 
 		checked =
 			UserNameCheck.checked &&
 			PasswordCheck.checked &&
-			// PhoneCheck.checked &&
+			PhoneCheck.checked &&
 			CheckboxCheck;
 
 		if (checked) {
@@ -481,13 +481,14 @@ const Join = () => {
 						inputType="tel"
 						placeholder={i18n.lbl_Phone}
 						value={userValue.Phone}
+						onBlur={checkValue.bind(this, { col: "Phone" })}
 						// * 清空錯誤訊息， phone 改為按下 submit 之後才打 api 驗證
-						onBlur={() =>
-							setInputStatus(prev => ({
-								...prev,
-								Phone: { checked: null, msg: "" }
-							}))
-						}
+						// onBlur={() =>
+						// 	setInputStatus(prev => ({
+						// 		...prev,
+						// 		Phone: { checked: null, msg: "" }
+						// 	}))
+						// }
 						onChange={EditField.bind(this, { col: "Phone" })}
 						btnStatus={inputStatus.Phone.checked}
 						clickInfo={clickInfo.bind(this, {
