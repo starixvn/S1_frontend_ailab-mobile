@@ -7,7 +7,6 @@ import {
 	navContext,
 	defNavPanel
 } from "../components/common/context";
-import Layout from "../components/common/layout";
 import Slider from "../components/casino/slider";
 import Nav from "../components/casino/nav";
 import GameProviders from "../components/casino/gameProviders";
@@ -431,15 +430,4 @@ const Panel = () => {
 		</>
 	);
 };
-
-const IndexPage = () => {
-	const { i18n } = useContext(i18nContext);
-
-	return (
-		<Layout title={i18n.lbl_Slots} mainClass="main casino">
-			<Panel />
-		</Layout>
-	);
-};
-
-export default IndexPage;
+export default Panel;
