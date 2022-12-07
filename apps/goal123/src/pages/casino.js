@@ -416,7 +416,7 @@ const Panel = () => {
 									data-testid="clickFreePlay"
 									className="white"
 									onClick={() => clickPlay(true)}>
-									{i18n.lbl_FreePlay}
+									{i18n.lbl_Demo}
 								</button>
 							) : null}
 							<button
