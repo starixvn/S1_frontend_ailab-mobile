@@ -219,6 +219,7 @@ export const setCustPromo = ({
 };
 
 export const useGetDepositPromotionList = ({ langId, i18n }) => {
+	const { setPopBox } = useContext(popBoxContext);
 	const [promoList, setPromoList] = useState([]);
 	const isMountedRef = useRef(null);
 
