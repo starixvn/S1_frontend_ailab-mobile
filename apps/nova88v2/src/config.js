@@ -30,7 +30,7 @@ export const siteInfo = langId => {
 		siteDefaultLang: "en",
 		siteDefaultCurrencyId: defCurrenyId.MYR,
 		siteLangList: ["en", "cs", "th", "id", "hi", "bd", "my"],
-		logo: "https://image.0814media.net/SiteSkin/img/logo_en_w.png",
+		logo: "https://banner.0814media.net/h5/img/logo_en_w.png",
 		description:
 			"Nova88 is the world leading sportsbook offering one of the kind gambling experience in live betting covering all sports, casino, slots, keno, esports, rng casino, fantasy sports, virtual sports, lottery, live casino, live dealer, bingo, and racing.",
 		iosIcon: "Nova88_256_2.png",
@@ -58,6 +58,8 @@ export const siteInfo = langId => {
 
 export const cloudImgURL = "https://image.0814media.net";
 export const cloudBannerImgURL = "https://banner.0814media.net";
+export const paymentImgURL = "http://payment.0814media.net";
+export const sportImgURL = "https://sportsimgs.0814media.net";
 
 const SiteURL =
 	process.env.NODE_ENV === "production"
@@ -66,7 +68,7 @@ const SiteURL =
 				apiURL: "",
 				openURL: "",
 				imgUrl: "",
-				t_and_cURL: "https://image.0814media.net",
+				t_and_cURL: "https://banner.0814media.net",
 				cloudImgURL
 		  }
 		: {
@@ -79,7 +81,7 @@ const SiteURL =
 
 				apiURL: "",
 				imgUrl: "https://www.n88dev.com",
-				t_and_cURL: "https://image.0814media.net",
+				t_and_cURL: "https://banner.0814media.net",
 				openURL: "https://www.n88dev.com",
 				cloudImgURL
 		  };
