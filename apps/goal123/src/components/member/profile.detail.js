@@ -24,6 +24,10 @@ import {
 } from "./profile.def";
 import verifiedIcon from "../../styles/img/protection.png";
 
+const countryCode = {
+	51: "VN"
+};
+
 const Panel = () => {
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
@@ -37,7 +41,7 @@ const Panel = () => {
 	const [redirectPath, setRedirectPath] = useState(null);
 	const _initUserValue = initUserValue(userInfo);
 	const [userValue, setuserValue] = useState(_initUserValue);
-	const country = userInfo.country ?? userInfo.perCountry;
+	const country = countryCode[userInfo.currencyId];
 	const _areaCode = country ? areaCode[country]?.AreaCode : "Vietnam";
 	const _infoList = infoList({ i18n, userInfo, _areaCode });
 	const isMountedRef = useRef(null);
