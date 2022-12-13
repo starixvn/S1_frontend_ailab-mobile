@@ -3968,7 +3968,8 @@ button.clickBtn:before {
 .casino .slotList .info.active .maintenance {
   position: absolute;
   display: block;
-  bottom: 30%;
+  bottom: calc(50% - 5vw);
+  left: calc(50% - 14.5vw);
   text-align: center;
   line-height: 1.2;
   border-radius: 3px;
@@ -3977,6 +3978,7 @@ button.clickBtn:before {
   font-size: 10px;
   background-color: #272727;
   color: #fff;
+  width: 25vw;
 }
 
 .casino .slotList .info .maintenance {

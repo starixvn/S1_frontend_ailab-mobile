@@ -19,10 +19,12 @@ import { api_GetSlotGamePage } from "../service/api/game";
 import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
 import { defSlotTpGameType } from "../datas/productList";
 import SearchBox from "../components/casino/searchBox";
+import { useGetTpMaintainList } from "../components/hook/useGetTpMaintainList";
 
 const Panel = () => {
 	const { throttle } = useSetTimeout();
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
+	const { maintainList } = useGetTpMaintainList();
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -254,18 +256,25 @@ const Panel = () => {
 
 	const handleCategoryActive = category => {
 		if (category === "random") {
-			if (userInfo.isLogin) {
-				const allList = slotDataList.find(item => item[0] === "all")[1];
-				const filterList =
-					Object.keys(activeProvider).length > 0
-						? allList.filter(
-								obj => obj.tpId === activeProvider.tpId
-						  )
-						: allList;
-				const index = Math.floor(Math.random() * filterList.length);
-				clickPlay(false, filterList[index]);
-			} else {
-				setNav(defNavPanel.login);
+			const isMaintain = maintainList.some(
+				({ tpId }) => Number(pathTpId) === tpId
+			);
+			if (!isMaintain) {
+				if (userInfo.isLogin) {
+					const allList = slotDataList.find(
+						item => item[0] === "all"
+					)[1];
+					const filterList =
+						Object.keys(activeProvider).length > 0
+							? allList.filter(
+									obj => obj.tpId === activeProvider.tpId
+							  )
+							: allList;
+					const index = Math.floor(Math.random() * filterList.length);
+					clickPlay(false, filterList[index]);
+				} else {
+					setNav(defNavPanel.login);
+				}
 			}
 		} else {
 			setActiveCategory(category);
