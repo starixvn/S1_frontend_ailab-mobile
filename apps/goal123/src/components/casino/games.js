@@ -73,7 +73,7 @@ const GamePanel = React.forwardRef((props, ref) => {
 
 		games.push(
 			<div
-				className={`info${isMaintain ? " star active" : ""}`}
+				className={`info${isMaintain ? " active" : ""}`}
 				key={`casino-game-${brandName}-${g.gameId}`}>
 				{activeCategory === "new" ? (
 					<i className="icon icon-new" />
@@ -97,9 +97,11 @@ const GamePanel = React.forwardRef((props, ref) => {
 					/>
 				</button>
 				<span data-testid="providerName">{gameProviderName}</span>
-				{isMaintain && (
-					<div className="under">{i18n.lbl_underMaintenance}</div>
-				)}
+				{isMaintain ? (
+					<div className="maintenance">
+						{i18n.lbl_underMaintenance}
+					</div>
+				) : null}
 				<span
 					onClick={onToggleFavorite}
 					data-testid="favBtn"
