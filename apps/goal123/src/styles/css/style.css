@@ -2252,7 +2252,8 @@ main .sideBarNew div > button.event.active > div, main .sideBarNew div a.event.a
 .mainNew .gameBox > div .gamelistNew .game.active .maintenance {
   position: absolute;
   display: block;
-  bottom: 40%;
+  bottom: calc(50% - 4vw);
+  left: calc(50% - 13.75vw);
   text-align: center;
   line-height: 1.2;
   border-radius: 3px;
@@ -2261,12 +2262,7 @@ main .sideBarNew div > button.event.active > div, main .sideBarNew div a.event.a
   font-size: 10px;
   background-color: #272727;
   color: #fff;
-}
-
-@media screen and (min-width: 550px) and (max-width: 1024px) {
-  .mainNew .gameBox > div .gamelistNew .game.active .maintenance {
-    left: 4vw;
-  }
+  width: 25vw;
 }
 
 .mainNew .gameBox > div .gamelistNew .game .maintenance {
