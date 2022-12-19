@@ -5,7 +5,7 @@ import { bannerImgUrl } from "../../config";
 
 const getLogo = () =>
 	isEventPeriod(eventTime.logoEvent)
-		? `${bannerImgUrl}/h5/img/logo-new.png`
+		? `${bannerImgUrl}/h5/img/logo_event.png`
 		: `${bannerImgUrl}/h5/img/logo.png`;
 
 export default () => {
