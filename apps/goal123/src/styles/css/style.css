@@ -215,7 +215,7 @@ header > div {
 }
 
 header > div > a > img {
-  width: 35vw;
+  width: 37vw;
   vertical-align: middle;
 }
 
@@ -9568,7 +9568,7 @@ span.important {
   text-align: center;
   line-height: 1.8;
   color: #fff;
-  background: url(https://banner.goal123.org/img/worldcup/titlebg.svg) no-repeat center/contain;
+  background: url(https://banner.goal123.org/h5/img/event/worldcup/titlebg.svg) no-repeat center/contain;
   text-transform: capitalize;
 }
 
@@ -9905,7 +9905,7 @@ span.important {
   left: 22px;
   width: 40px;
   height: 19px;
-  background: url(https://banner.goal123.org/img/worldcup/ticket.png) no-repeat center/cover;
+  background: url(https://banner.goal123.org/h5/img/event/worldcup/ticket.png) no-repeat center/cover;
 }
 
 @media (max-width: 335px) {

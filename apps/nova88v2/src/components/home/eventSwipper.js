@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
+import { popBoxContext } from "../common/context";
 import { Autoplay } from "../common/swipperBanner";
 import api from "../../service/api";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
@@ -21,6 +22,7 @@ const swipperParam = {
 const EventSwipper = ({ userInfo, i18n }) => {
 	const [banner, setBanner] = useState([]);
 	const { handleLogin } = useHandleLogin();
+	const { setPopBox } = useContext(popBoxContext);
 
 	useEffect(() => {
 		api.hotEvent.GetDataList({ langId: userInfo.langId }).then(
