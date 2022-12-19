@@ -1,12 +1,13 @@
 import { useEffect, useState, useContext } from "react";
 import api from "../../service/api";
-import { popBoxContext } from "../common/context";
+import { i18nContext, popBoxContext } from "../common/context";
 
 export const defTpGameType = {
 	All: 0
 };
 
 export const useGetTpMaintainList = () => {
+	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const [maintainList, setMaintainList] = useState(null);
 	useEffect(() => {

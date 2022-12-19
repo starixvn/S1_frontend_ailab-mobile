@@ -35,12 +35,6 @@ const HotGame = ({ i18n, userInfo }) => {
 						content: `[${res.data.errorCode}] ${res.data.message}`
 					});
 				}
-			})
-			.catch(err => {
-				setPopBox({
-					isOpen: true,
-					content: { err }
-				});
 			});
 	}, [userInfo.currencyId]);
 

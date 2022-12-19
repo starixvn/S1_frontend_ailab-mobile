@@ -1,7 +1,8 @@
 import React, { Component, useContext, createRef } from "react";
-import PropTypes from "prop-types";
-import { popBoxContext, userInfoContext, i18nContext } from "Context";
 import { useNavigate } from "@reach/router";
+import PropTypes from "prop-types";
+import { popBoxContext, userInfoContext, i18nContext } from "../common/context";
+
 import { GET_LANG_ID } from "../../service/language";
 import path from "../../path";
 import api from "../../service/api";
@@ -145,9 +146,9 @@ class Marquee extends Component {
 				}
 			},
 			() => {
-				setPopBox({
+				this.props.setPopBox({
 					isOpen: true,
-					content: i18n.msg_ApiServerError
+					content: this.props.i18n.msg_ApiServerError
 				});
 			}
 		);
