@@ -419,7 +419,7 @@ const SubGame = ({
 		_path = `${path.casino.root}/${game.tpId}`;
 	}
 
-	return game?.path || category === "slot" ? (
+	return game?.path ? (
 		<Link
 			className={isMaintain ? "active" : ""}
 			to={_path}
