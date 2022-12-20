@@ -279,20 +279,6 @@ const defSortFishing = {
 const gameList = ({ langId }) => {
 	return [
 		{
-			category: "worldCup",
-			event: true,
-			path: path.worldCup.root,
-			imgUrl: `${cloudBannerImgURL}/h5/img/event/worldcup/xs-logo-r.png`,
-			eventIcon: [
-				{
-					icon: defIconType.hot,
-					inPeriod: isEventPeriod(eventTime.worldCup_hot)
-				}
-			],
-			allowCurrency: allowedCurrencyList.worldCup,
-			className: "event"
-		},
-		{
 			category: "reward",
 			imgUrl: `${cloudBannerImgURL}/h5/img/88rewards.png`,
 			allowCurrency: allowedCurrencyList.rewards,
@@ -318,13 +304,6 @@ const gameList = ({ langId }) => {
 			translateKey: "lbl_Sports",
 			customSort: defSortSports,
 			items: [
-				{
-					...defGameInfo.WorldCup,
-					img: `${cloudBannerImgURL}/h5/img/worldcup.png`,
-					spanTextKey: "lbl_FIFAWorldCup",
-					allowCurrency: allowedCurrencyList.worldCup,
-					sortKey: "worldCup"
-				},
 				{
 					...defGameInfo.Soccer,
 					img: `${cloudBannerImgURL}/h5/img/soccer.png`,

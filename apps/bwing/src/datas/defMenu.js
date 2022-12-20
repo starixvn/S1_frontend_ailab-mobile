@@ -33,41 +33,11 @@ export const defSlotTpGameType = {
 
 export const productList = langId => {
 	return {
-		worldCup: {
-			category: "worldCup",
-			event: true,
-			path: path.worldCup.root,
-			eventIcon: [
-				{
-					icon: defIconType.new,
-					inPeriod: isEventPeriod(eventTime.worldCup_new)
-				},
-				{
-					icon: defIconType.hot,
-					inPeriod: isEventPeriod(eventTime.worldCup_hot)
-				}
-			]
-		},
 		sports: {
 			category: "sports",
 			displayKey: "lbl_Sports",
 			icon_img: `${bannerImgUrl}/h5/img/gameicon/sport.png`,
 			items: [
-				{
-					displayKey: "lbl_FIFAWorldCup",
-					img: `${bannerImgUrl}/h5/img/sport/fifa.png`,
-					...defGameInfo.WorldCup,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.worldCup_new)
-						},
-						{
-							icon: defIconType.hot,
-							inPeriod: isEventPeriod(eventTime.worldCup_hot)
-						}
-					]
-				},
 				{
 					displayKey: "lbl_SabaSport",
 					img: `${bannerImgUrl}/h5/img/sport/sabasport.png`,
