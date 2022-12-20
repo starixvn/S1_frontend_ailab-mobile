@@ -19,9 +19,18 @@ export const vipAllowCurrencies = [
 	defCurrenyId.IDR
 ];
 
-const Banners = ({ langId }) => {
+const Banners = ({ langId, currencyId }) => {
+	let bannerLangId = langId;
+	if (langId === "en") {
+		if (currencyId === defCurrenyId.THB) {
+			bannerLangId = "th_en";
+		} else if (currencyId === defCurrenyId.IDR) {
+			bannerLangId = "id_en";
+		}
+	}
+
 	const rows = defBannersUrl({
-		langId
+		langId: bannerLangId
 	}).map(b => (
 		<div>
 			<img
@@ -36,7 +45,8 @@ const Banners = ({ langId }) => {
 };
 
 Banners.propTypes = {
-	langId: PropTypes.string.isRequired
+	langId: PropTypes.string.isRequired,
+	currencyId: PropTypes.number.isRequired
 };
 
 const IndexPage = () => {
@@ -62,7 +72,10 @@ const IndexPage = () => {
 
 	return (
 		<Layout header={header} mainClass="main vip">
-			<Banners langId={userInfo.langId} />
+			<Banners
+				langId={userInfo.langId}
+				currencyId={userInfo.currencyId}
+			/>
 			<LevelList i18n={i18n} langId={userInfo.langId} />
 			<Info langId={userInfo.langId} />
 			<div className="vipPage">
