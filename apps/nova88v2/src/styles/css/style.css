@@ -1424,18 +1424,6 @@ header .headerModule {
   position: relative;
 }
 
-header .headerModule::after {
-  content: "";
-  display: block;
-  width: 17vw;
-  height: 17vw;
-  background: url(https://banner.0814media.net/desktop/img/wclogo.gif) center/cover;
-  position: absolute;
-  top: -2vw;
-  left: 24vw;
-  z-index: 1;
-}
-
 header .headerModule > a {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2392,7 +2380,7 @@ footer > a.active .circleAnimation::after {
   width: calc(100% - 16vw);
   height: calc(100% - 16vw);
   position: fixed;
-  z-index: 9;
+  z-index: 10;
   top: 0;
   left: 0;
   -webkit-box-align: center;
