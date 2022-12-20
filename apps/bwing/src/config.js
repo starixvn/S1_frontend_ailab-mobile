@@ -36,7 +36,7 @@ export const siteInfo = langId => {
 };
 
 export const bannerImgUrl = "https://banner.bw88.io";
-
+export const cloudImgURL = "https://image.0814media.net";
 export const usdtImgUrl = "https://payment.bw88.io";
 
 export default process.env.NODE_ENV === "production"

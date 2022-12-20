@@ -1,80 +1,144 @@
 import React, { useContext } from "react";
-import { userInfoContext } from "../common/context";
+import PropTypes from "prop-types";
+import { userInfoContext } from "Context";
 import Loading from "../common/loading";
 import {
 	useGetTpMaintainList,
 	defTpGameType
 } from "../hook/useGetTpMaintainList";
-import { defSlotTpGameType } from "../../datas/defMenu";
+import { defSlotTpGameType } from "../../datas/productList";
 
-const Games = props => {
+const GamePanel = React.forwardRef((props, ref) => {
+	const {
+		selectGame,
+		gameList,
+		providerList,
+		activeProvider,
+		activeCategory,
+		i18n,
+		imgUrl,
+		handleSetFavorite,
+		favoriteStr,
+		setFavoriteStr
+	} = props;
 	const { userInfo } = useContext(userInfoContext);
 	const { maintainList } = useGetTpMaintainList();
-	const {
-		SelectGame,
-		Games: _Games,
-		Favorite,
-		SetFavorite,
-		TpList,
-		i18n,
-		imgUrl
-	} = props;
-
-	if (_Games === null) {
-		return <Loading />;
-	}
+	if (gameList === null) return <Loading />;
 	const games = [];
-	_Games.forEach(g => {
-		const t = TpList[g.tpId];
-		const _isFavorite = Favorite.includes(`${t.value}_${g.gameId}`);
-		const underMaintain = maintainList?.some(
+	let storageStr = favoriteStr ?? "";
+	if (storageStr && storageStr.charAt(0) === "&") {
+		storageStr = storageStr.substring(1, storageStr.length);
+	}
+	const storageList = storageStr?.split("&") ?? [];
+	gameList?.forEach(g => {
+		const handleIsFavorite = () => {
+			return storageList?.includes(`${g.tpId}_${g.gameId}`);
+		};
+		const _isFavorite = handleIsFavorite();
+		const isMaintain = maintainList?.some(
 			m =>
 				m.tpId === g.tpId &&
-				(m.tpGameType === defSlotTpGameType[t.name].tpGameType ||
+				(m.tpGameType ===
+					defSlotTpGameType[activeProvider.tpName]?.tpGameType ||
 					m.tpGameType === defTpGameType.All)
 		);
+
+		const onToggleFavorite = () => {
+			handleSetFavorite(g.gameId, _isFavorite, g.tpId);
+			let filterList;
+			if (_isFavorite) {
+				filterList = storageList.filter(
+					item => item !== `${g.tpId}_${g.gameId}`
+				);
+				localStorage.setItem("favorite", filterList.join("&"));
+				setFavoriteStr(filterList.join("&"));
+			} else {
+				localStorage.setItem(
+					"favorite",
+					`${storageStr ?? ""}${storageStr === false ? "" : "&"}${
+						g.tpId
+					}_${g.gameId}`
+				);
+				setFavoriteStr(
+					`${storageStr ?? ""}${storageStr === false ? "" : "&"}${
+						g.tpId
+					}_${g.gameId}`
+				);
+			}
+		};
+
+		const brandName = providerList.find(obj => obj.tpId === g.tpId)?.tpName;
+		const gameProviderName = providerList.find(obj => obj.tpId === g.tpId)
+			?.gameImgDisplayText;
+
 		games.push(
 			<div
-				className={`info${underMaintain ? " under" : ""}`}
-				key={`casino-game-${t.value}-${g.gameId}`}>
-				<img
-					data-testid="gameImg"
-					onClick={
-						underMaintain
-							? () => null
-							: SelectGame.bind(this, t.value, g)
-					}
-					src={`${imgUrl}/${TpList[g.tpId]?.name}/${
-						g.imgName[userInfo.langId] ?? g.imgName.en
-					}`}
-					alt={g.name[userInfo.langId] ?? g.name.en}
-				/>
-				<span data-testid="providerName">{t.name}</span>
+				className={`info${isMaintain ? " under" : ""}`}
+				key={`casino-game-${brandName}-${g.gameId}`}>
+				{activeCategory === "new" ? (
+					<i className="icon icon-new" />
+				) : null}
+				<button>
+					<img
+						data-testid="gameImg"
+						onClick={
+							isMaintain
+								? () => null
+								: () =>
+										selectGame({
+											...g,
+											providerName: gameProviderName
+										})
+						}
+						src={`${imgUrl}/${brandName}/${
+							g.imgName[userInfo.langId] ?? g.imgName.en
+						}`}
+						alt={g.gameName[userInfo.langId] ?? g.gameName.en}
+					/>
+				</button>
+				<span data-testid="providerName">{gameProviderName}</span>
+				{isMaintain ? (
+					<div className="underBtn">{i18n.lbl_underMaintenance}</div>
+				) : null}
 				<span
+					onClick={onToggleFavorite}
 					data-testid="favBtn"
-					onClick={SetFavorite.bind(this, t.value, g.gameId)}
 					className={`icon icon-star-${
 						_isFavorite ? "full" : "empty"
 					}`}
 				/>
-				{underMaintain ? (
-					<div className="underBtn">{i18n.lbl_underMaintenance}</div>
-				) : null}
-				{g.new ? <div className="newTag">NEW</div> : null}
 			</div>
 		);
 	});
-
 	return games.length === 0 ? (
-		<div className="not-found" data-testid="not-found">
-			<i className="icon icon-warning" />
-			<p>{i18n.msg_NoData}</p>
+		<div data-testid="noData" className="nodata icon icon-nodata" ref={ref}>
+			<div className="txt-white">{i18n.msg_NoData}</div>
 		</div>
 	) : (
-		<div className="slotList" id="scrollId">
+		<div className="slotList" id="scrollId" ref={ref}>
 			{games}
 		</div>
 	);
+});
+
+GamePanel.defaultProps = {
+	gameList: [],
+	providerList: null,
+	handleSetFavorite: null,
+	activeCategory: null
 };
 
-export default Games;
+GamePanel.propTypes = {
+	selectGame: PropTypes.func.isRequired,
+	gameList: PropTypes.arrayOf(PropTypes.object),
+	providerList: PropTypes.arrayOf(PropTypes.any),
+	activeProvider: PropTypes.objectOf(PropTypes.any).isRequired,
+	activeCategory: PropTypes.string,
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	imgUrl: PropTypes.string.isRequired,
+	handleSetFavorite: PropTypes.func,
+	favoriteStr: PropTypes.string.isRequired,
+	setFavoriteStr: PropTypes.func.isRequired
+};
+
+export default GamePanel;

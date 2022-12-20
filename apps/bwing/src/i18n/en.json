@@ -816,5 +816,16 @@
 	"lbl_DepositRequirement": "Deposit Requirement",
 	"lbl_ValidBetRequirement": "Valid Bet Requirement",
 	"lbl_ReferredFreeCredit": "Referred Free Credit",
-	"lbl_TermPeriodWithin": "Term Period Within"
+	"lbl_TermPeriodWithin": "Term Period Within",
+
+  "===============Casino===================": "",
+  "lbl_Random": "Random",
+  "lbl_RecentlyPlayed": "Recently Played",
+  "lbl_Featured": "Featured",
+  "lbl_TableAndCards": "Table & Cards",
+  "lbl_BuyFeaturesGames": "Buy Features Games",
+  "lbl_Megaways": "Megaways",
+  "lbl_MyFavorite": "My Favorite",
+  "lbl_Play": "PLAY",
+  "lbl_Demo": "DEMO"
 }

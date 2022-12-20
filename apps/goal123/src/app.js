@@ -123,7 +123,7 @@ const Index = () => {
 					<PersonalMsg path={path.message.root} />
 					<Announcement path={path.announcement.root} />
 					<Casino path={`${path.casino.root}`} />
-					{/* <Casino path={`${path.casino.root}/:tpId`} /> */}
+					<Casino path={`${path.casino.root}/:tpId`} />
 					<Other path={path.other.root} />
 					<Whoami path={path.whoami.root} />
 					{/* <Ranking path={path.leaderBoard.root} /> */}
