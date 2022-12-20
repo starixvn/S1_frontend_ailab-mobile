@@ -171,40 +171,10 @@ const gameList = [
 		]
 	},
 	{
-		category: "worldCup",
-		event: true,
-		path: path.worldCup.root,
-		eventIcon: [
-			{
-				icon: defIconType.new,
-				inPeriod: isEventPeriod(eventTime.worldCup_new)
-			},
-			{
-				icon: defIconType.hot,
-				inPeriod: isEventPeriod(eventTime.worldCup_hot)
-			}
-		]
-	},
-	{
 		category: "sports",
 		translateKey: "lbl_Sports",
 		img: `${bannerImgUrl}/h5/img/hotgameicon/sport.png`,
 		items: [
-			{
-				...defGameInfo.WorldCup,
-				img: `${bannerImgUrl}/h5/img/hotgame/sports/worldcup.png`,
-				spanTextKey: "lbl_FIFAWorldCup",
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.worldCup_new)
-					},
-					{
-						icon: defIconType.hot,
-						inPeriod: isEventPeriod(eventTime.worldCup_hot)
-					}
-				]
-			},
 			{
 				...defGameInfo.Sports,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/soccer.png`,
