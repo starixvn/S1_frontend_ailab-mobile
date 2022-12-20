@@ -81,7 +81,15 @@ const GamePanel = React.forwardRef((props, ref) => {
 				<button>
 					<img
 						data-testid="gameImg"
-						onClick={isMaintain ? () => null : () => selectGame(g)}
+						onClick={
+							isMaintain
+								? () => null
+								: () =>
+										selectGame({
+											...g,
+											providerName: gameProviderName
+										})
+						}
 						src={`${imgUrl}/${brandName}/${
 							g.imgName[userInfo.langId] ?? g.imgName.en
 						}`}
