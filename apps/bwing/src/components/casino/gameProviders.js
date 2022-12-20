@@ -1,23 +1,51 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { bannerImgUrl } from "../../config";
+import { Link } from "../../route/link";
+import { userInfoContext } from "../common/context";
+import { cloudImgURL } from "../../config";
+import path from "../../path";
 
 const GameProviders = props => {
-	const { selNav, SelectNav, sorted } = props;
+	const { selNav, onChange, sorted } = props;
+	const { userInfo } = useContext(userInfoContext);
 	const rows = sorted.map(k => {
-		return (
-			<button
+		const content = (
+			<img
 				key={`casino-nav-${k.tpId}`}
+				src={`${cloudImgURL}/SiteSkin/img/logo/${k.imgName}${
+					selNav === k.tpId ? "a" : ""
+				}.png`}
+				alt={k.providerImgName ?? k.tpName}
+			/>
+		);
+
+		if (k.openPath) {
+			return (
+				<Link
+					to={k.openPath}
+					key={`casino-nav-${k.tpId}`}
+					className={selNav === k.tpId ? "active" : ""}>
+					{content}
+				</Link>
+			);
+		}
+
+		return (
+			<Link
+				to={
+					window.location.pathname ===
+					`/${userInfo.langId}/${path.casino.root}/${k.tpId}`
+						? `${path.casino.root}`
+						: `${path.casino.root}/${k.tpId}`
+				}
 				data-testid={`gameProvider_${k.tpId}`}
+				key={`casino-nav-${k.tpId}`}
 				className={selNav === k.tpId ? "active" : ""}
-				onClick={SelectNav.bind(this, k.tpId)}>
-				<img
-					src={`${bannerImgUrl}/h5/img/partnerlogo/${k.imgName}${
-						selNav === k.tpId ? "a" : ""
-					}.png`}
-					alt={k.imgName}
-				/>
-			</button>
+				onClick={() => {
+					onChange(selNav === k.tpId ? {} : k);
+				}}>
+				{content}
+			</Link>
 		);
 	});
 
@@ -30,7 +58,7 @@ GameProviders.defaultProps = {
 
 GameProviders.propTypes = {
 	selNav: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-	SelectNav: PropTypes.func.isRequired
+	onChange: PropTypes.func.isRequired
 };
 
 export default GameProviders;
