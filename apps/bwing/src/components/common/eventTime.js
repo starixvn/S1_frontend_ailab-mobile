@@ -22,9 +22,7 @@ export const eventTime = {
 		endDate: "2021/12/31 22:59:59"
 	},
 	promo: { startDate: "2021/11/11 11:00:00" },
-	logoEvent: {
-		startDate: "2022/12/19 10:00:00"
-	},
+	logoEvent: {},
 	casino_Habanero: { endDate: "2022/04/15 11:00:00" },
 	tableGame: { endDate: "2022/03/24 11:00:00" },
 	game_virtualGame: { endDate: "2022/04/24 11:00:00" },
