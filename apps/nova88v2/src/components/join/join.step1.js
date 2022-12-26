@@ -196,12 +196,14 @@ const JoinStep1 = ({
 				/>
 				<div className="Terms">
 					{i18n.lbl_Check18TC1}
+					{` `}
 					<a
 						rel="noreferrer"
 						target="_blank"
 						href={TandC(langId).terms}>
 						{i18n.lbl_TermsConditions}
 					</a>
+					{` `}
 					{i18n.lbl_Check18TC2}
 				</div>
 				<div className="btn-group">
