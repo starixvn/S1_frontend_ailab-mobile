@@ -3,11 +3,10 @@ pipeline {
     tools {nodejs "nodejs"}
     environment{
         node_modules_exists = fileExists 'node_modules'
-        auto_deploy = fileExists 'deploy.yml'
         site = 'bwing'
         project_name = 'bwing'
         env = 'prd'
-        ansible_path = '/home/jenkins/ansible/frontend/prd/'
+        ansible_path = '/var/jenkins_home/ansible/frontend/prd/'
     }
     stages {
         stage('Install dependencies') {
@@ -18,7 +17,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'npm install'
+                sh 'npm i --force'
             }
         }
         stage('Build') {
@@ -40,9 +39,6 @@ pipeline {
             }
         }
         stage('Deploy') {
-            when {
-                expression { auto_deploy == 'true' }
-            }
             steps {
                 sh 'ansible-playbook -i ${ansible_path}host.yml ${ansible_path}deploy.yml --extra-vars "commitId=${commitHash} site=${site} platform=mobile host=mobile-${site} env=${env}"'
             }
