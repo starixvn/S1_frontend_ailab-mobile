@@ -196,7 +196,7 @@ header > div {
   white-space: nowrap;
 }
 header > div > a > img {
-  width: 35vw;
+  width: 37vw;
   vertical-align: middle;
 }
 @media screen and (min-width: 550px) and (max-width: 1024px) {
@@ -1982,7 +1982,8 @@ main .sideBarNew div > button.event.active > div, main .sideBarNew div a.event.a
 .mainNew .gameBox > div .gamelistNew .game.active .maintenance {
   position: absolute;
   display: block;
-  bottom: 40%;
+  bottom: calc(50% - 4vw);
+  left: calc(50% - 13.75vw);
   text-align: center;
   line-height: 1.2;
   border-radius: 3px;
@@ -1991,11 +1992,7 @@ main .sideBarNew div > button.event.active > div, main .sideBarNew div a.event.a
   font-size: 10px;
   background-color: #272727;
   color: #fff;
-}
-@media screen and (min-width: 550px) and (max-width: 1024px) {
-  .mainNew .gameBox > div .gamelistNew .game.active .maintenance {
-    left: 4vw;
-  }
+  width: 25vw;
 }
 .mainNew .gameBox > div .gamelistNew .game .maintenance {
   display: none;
@@ -3516,7 +3513,8 @@ button.clickBtn:before {
 .casino .slotList .info.active .maintenance {
   position: absolute;
   display: block;
-  bottom: 30%;
+  bottom: calc(50% - 5vw);
+  left: calc(50% - 14.5vw);
   text-align: center;
   line-height: 1.2;
   border-radius: 3px;
@@ -3525,6 +3523,7 @@ button.clickBtn:before {
   font-size: 10px;
   background-color: #272727;
   color: #fff;
+  width: 25vw;
 }
 .casino .slotList .info .maintenance {
   display: none;
@@ -7094,7 +7093,7 @@ span.important {
   border-radius: 0;
   margin: 6vw 0 -3vw;
 }
-.partnerSelect button {
+.partnerSelect button, .partnerSelect a {
   min-width: 30.5vw;
   padding: 0 1vw;
   display: -webkit-box;
@@ -7112,27 +7111,62 @@ span.important {
   -webkit-filter: brightness(0.5);
           filter: brightness(0.5);
 }
-.partnerSelect button div {
+.partnerSelect button div, .partnerSelect a div {
   margin-top: -1vw;
 }
-.partnerSelect button img {
+.partnerSelect button img, .partnerSelect a img {
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
   -webkit-transition: 0.7s;
   transition: 0.7s;
   height: 12vw;
 }
-.partnerSelect button.active {
+.partnerSelect button.active, .partnerSelect a.active {
   background: #1e85ec;
   color: white;
   -webkit-filter: none;
           filter: none;
 }
-.partnerSelect button.active img {
+.partnerSelect button.active img, .partnerSelect a.active img {
   -webkit-transform: scale(0.9);
           transform: scale(0.9);
   -webkit-transition: 0.7s;
   transition: 0.7s;
+}
+.partnerSelect.modifier {
+  background: transparent;
+}
+.partnerSelect.modifier button, .partnerSelect.modifier a {
+  background: #5084e4;
+  margin-right: 1vw;
+  padding: 0.8vw 1.2vw;
+}
+.partnerSelect + .casinoSelect {
+  height: 12vw;
+  background: #e2e4e7;
+  overflow: scroll;
+  width: 100%;
+  background: rgba(178, 178, 178, 0.5);
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 0;
+  margin-top: 4vw;
+}
+.partnerSelect + .casinoSelect button, .partnerSelect + .casinoSelect a {
+  color: #a1a1a1;
+  width: auto;
+  min-width: auto;
+  margin: 0 2vw;
+  padding: 0 2vw;
+  white-space: nowrap;
+  border-radius: 0;
+}
+.partnerSelect + .casinoSelect button.active, .partnerSelect + .casinoSelect a.active {
+  margin-top: 1vw;
+  color: #5084e4;
+  border-bottom: 1vw #5084e4 solid;
 }
 
 .app_page {

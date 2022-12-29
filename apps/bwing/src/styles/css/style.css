@@ -1622,7 +1622,6 @@ footer > a.open {
 }
 
 #popup.cryptoNote .pop .popTxt {
-  padding: 3vw 0;
   text-align: left;
 }
 
@@ -2152,6 +2151,22 @@ footer > a.open {
 
 .info.infoAccount li .title {
   font-weight: bold;
+}
+
+.info .textYellow, .info .textRed, .info .textGreen, .info .textGray {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.info .textYellow .infobtn, .info .textRed .infobtn, .info .textGreen .infobtn, .info .textGray .infobtn {
+  background: url(https://banner.bw88.io/h5/img/notice.png) no-repeat center/cover;
+  width: 4vw;
+  height: 4vw;
+  margin: 0 0 0 1vw;
 }
 
 .cashBack {
@@ -13884,7 +13899,7 @@ span.important {
   margin: 4vw 0 0;
 }
 
-.partnerSelect button {
+.partnerSelect button, .partnerSelect a {
   min-width: 30.5vw;
   padding: 0 1vw;
   display: -webkit-box;
@@ -13903,11 +13918,11 @@ span.important {
           filter: brightness(0.5);
 }
 
-.partnerSelect button div {
+.partnerSelect button div, .partnerSelect a div {
   margin-top: -1vw;
 }
 
-.partnerSelect button img {
+.partnerSelect button img, .partnerSelect a img {
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
   -webkit-transition: 0.7s;
@@ -13915,18 +13930,61 @@ span.important {
   height: 12vw;
 }
 
-.partnerSelect button.active {
+.partnerSelect button.active, .partnerSelect a.active {
   background: #58cdff;
   color: white;
   -webkit-filter: none;
           filter: none;
 }
 
-.partnerSelect button.active img {
+.partnerSelect button.active img, .partnerSelect a.active img {
   -webkit-transform: scale(0.9);
           transform: scale(0.9);
   -webkit-transition: 0.7s;
   transition: 0.7s;
+}
+
+.partnerSelect.modifier {
+  background: transparent;
+}
+
+.partnerSelect.modifier button, .partnerSelect.modifier a {
+  background: #58cdff;
+  margin-right: 1vw;
+  padding: .8vw 1.2vw;
+}
+
+.partnerSelect + .casinoSelect {
+  height: 12vw;
+  background: #e2e4e7;
+  margin-bottom: 0;
+  visibility: visible;
+  opacity: 1;
+  overflow: scroll;
+  width: 100%;
+  background: rgba(226, 228, 231, 0.3);
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 0;
+  margin-top: 1vw;
+}
+
+.partnerSelect + .casinoSelect button, .partnerSelect + .casinoSelect a {
+  color: #a1a1a1;
+  width: auto;
+  min-width: auto;
+  margin: 0 2vw;
+  padding: 0 2vw;
+  white-space: nowrap;
+  border-radius: 0;
+}
+
+.partnerSelect + .casinoSelect button.active, .partnerSelect + .casinoSelect a.active {
+  margin-top: 1vw;
+  color: #58cdff;
+  border-bottom: 1vw #58cdff solid;
 }
 
 .slotFunctionNew {
@@ -14294,7 +14352,7 @@ span.important {
 }
 
 .profileGrade .grade .user .hint {
-  width: calc(100%-5vw);
+  width: calc(100% - 5vw);
   font-size: 3vw;
   color: #afafaf;
   background: rgba(12, 26, 63, 0.9);
@@ -14486,7 +14544,7 @@ span.important {
 }
 
 .info .hint {
-  width: calc(100%-5vw);
+  width: calc(100% - 5vw);
   font-size: 3vw;
   color: #afafaf;
   background: rgba(12, 26, 63, 0.9);
