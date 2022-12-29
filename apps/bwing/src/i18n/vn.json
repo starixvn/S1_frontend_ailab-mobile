@@ -206,6 +206,7 @@
 	"lbl_SocialMedia": "Mạng xã hội",
 	"lbl_Sports": "Thể Thao",
 	"lbl_SportsBetting": "Cá cược Thể Thao",
+	"lbl_CryptoSports": "Thể thao crypto",
 	"lbl_Stake": "Tiền vốn",
 	"lbl_Statement": "SAO KÊ",
 	"lbl_Status": "Trạng thái",
@@ -818,14 +819,14 @@
 	"lbl_ReferredFreeCredit": "Cược free cho người được giới thiệu ",
 	"lbl_TermPeriodWithin": "Thời hạn Trong vòng",
 
-  "===============Casino===================": "",
-  "lbl_Random": "TỰ NHIÊN",
-  "lbl_RecentlyPlayed": "Chơi gần đây",
-  "lbl_Featured": "NỔI BẬT",
-  "lbl_TableAndCards": "BÀN & THẺ",
-  "lbl_BuyFeaturesGames": "MUA TÍNH NĂNG",
-  "lbl_Megaways": "Megaways",
-  "lbl_MyFavorite": "YÊU THÍCH",
-  "lbl_Play": "THAM GIA",
-  "lbl_Demo": "CHƠI THỬ"
+	"===============Casino===================": "",
+	"lbl_Random": "TỰ NHIÊN",
+	"lbl_RecentlyPlayed": "Chơi gần đây",
+	"lbl_Featured": "NỔI BẬT",
+	"lbl_TableAndCards": "BÀN & THẺ",
+	"lbl_BuyFeaturesGames": "MUA TÍNH NĂNG",
+	"lbl_Megaways": "Megaways",
+	"lbl_MyFavorite": "YÊU THÍCH",
+	"lbl_Play": "THAM GIA",
+	"lbl_Demo": "CHƠI THỬ"
 }

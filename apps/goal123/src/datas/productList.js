@@ -5,6 +5,7 @@ import { bannerImgUrl } from "../config";
 
 export const defGameInfo = {
 	Sports: { tpId: 1, gameId: 1, tpGameType: 1 },
+	CryptoSports: { tpId: 45, tpGameType: 87 },
 	SBOSport: { tpId: 42, tpGameType: 77 },
 	BTISport: { tpId: 29, tpGameType: 49 },
 	SabaSoccer: { tpId: 1, gameId: 997, tpGameType: 1 },
@@ -97,6 +98,13 @@ export const defCol = {
 	livecasino: "livecasino"
 };
 
+export const openGameType = {
+	entPage: "entPage",
+	Link: "Link",
+	LinkOrBtn: "LinkOrBtn",
+	useGoToGame: "useGoToGame"
+};
+
 export const defSlotTpGameType = {
 	Saba: { tpId: 1, tpGameType: 4 },
 	PP: { tpId: 5, tpGameType: 7 },
@@ -171,10 +179,34 @@ const gameList = [
 		]
 	},
 	{
+		category: "cryptoSports",
+		img: `${bannerImgUrl}/h5/img/hotgameicon/cryptosports.png`,
+		link: true,
+		type: openGameType.entPage,
+		...defGameInfo.CryptoSports,
+		eventIcon: [
+			{
+				icon: defIconType.new,
+				inPeriod: isEventPeriod(eventTime.sports_cryptoSports)
+			}
+		]
+	},
+	{
 		category: "sports",
 		translateKey: "lbl_Sports",
 		img: `${bannerImgUrl}/h5/img/hotgameicon/sport.png`,
 		items: [
+			{
+				...defGameInfo.CryptoSports,
+				img: `${bannerImgUrl}/h5/img/hotgame/sports/cryptosports.png`,
+				spanTextKey: "lbl_CryptoSports",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.sports_cryptoSports)
+					}
+				]
+			},
 			{
 				...defGameInfo.Sports,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/soccer.png`,
@@ -183,24 +215,12 @@ const gameList = [
 			{
 				...defGameInfo.SBOSport,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/sbo.png`,
-				spanText: "SBOBET",
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.sportSbo)
-					}
-				]
+				spanText: "SBOBET"
 			},
 			{
 				...defGameInfo.BTISport,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/bti.png`,
-				spanTextKey: "lbl_BTISport",
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.new_BTI)
-					}
-				]
+				spanTextKey: "lbl_BTISport"
 			},
 			{
 				...defGameInfo.SabaSoccer,
