@@ -94,7 +94,7 @@ export const CardForStatic = ({
 }) => {
 	return (
 		<div className="promodule">
-			<img src={p.imgUrl?.[langId]} alt={p.bonusCode ?? ""} />
+			<img src={p.imgUrl?.[langId]} alt={p.description ?? ""} />
 			<div className="protitle">{p.title?.[langId]}</div>
 			<div className="text">{p.description?.[langId]}</div>
 			<div className="btn-group">
