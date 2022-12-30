@@ -36,12 +36,12 @@ const defSubMenus = [
 		icon: "icon icon-sports",
 		subItems: [
 			{
-				displayKey: "lbl_CryptoSports",
-				...defGameInfo.CryptoSports
-			},
-			{
 				displayKey: "lbl_SabaSport",
 				...defGameInfo.Sports
+			},
+			{
+				displayKey: "lbl_CryptoSports",
+				...defGameInfo.CryptoSports
 			},
 			{
 				displayText: "SBOBET",

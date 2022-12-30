@@ -59,6 +59,11 @@ export const productList = langId => {
 			icon_img: `${bannerImgUrl}/h5/img/gameicon/sport.png`,
 			items: [
 				{
+					displayKey: "lbl_SabaSport",
+					img: `${bannerImgUrl}/h5/img/sport/sabasport.png`,
+					...defGameInfo.Sports
+				},
+				{
 					displayKey: "lbl_CryptoSports",
 					img: `${bannerImgUrl}/h5/img/sport/cryptosports.png`,
 					...defGameInfo.CryptoSports,
@@ -70,11 +75,6 @@ export const productList = langId => {
 							)
 						}
 					]
-				},
-				{
-					displayKey: "lbl_SabaSport",
-					img: `${bannerImgUrl}/h5/img/sport/sabasport.png`,
-					...defGameInfo.Sports
 				},
 				{
 					displayText: "SBOBET",
@@ -552,12 +552,12 @@ export const defSubMenus = () => [
 		icon: "icon icon-sports",
 		subItems: [
 			{
-				displayKey: "lbl_CryptoSports",
-				...defGameInfo.CryptoSports
-			},
-			{
 				displayKey: "lbl_SabaSport",
 				...defGameInfo.Sports
+			},
+			{
+				displayKey: "lbl_CryptoSports",
+				...defGameInfo.CryptoSports
 			},
 			{
 				displayText: "SBOBET",

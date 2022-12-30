@@ -197,6 +197,11 @@ const gameList = [
 		img: `${bannerImgUrl}/h5/img/hotgameicon/sport.png`,
 		items: [
 			{
+				...defGameInfo.Sports,
+				img: `${bannerImgUrl}/h5/img/hotgame/sports/soccer.png`,
+				spanTextKey: "lbl_Soccer"
+			},
+			{
 				...defGameInfo.CryptoSports,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/cryptosports.png`,
 				spanTextKey: "lbl_CryptoSports",
@@ -206,11 +211,6 @@ const gameList = [
 						inPeriod: isEventPeriod(eventTime.sports_cryptoSports)
 					}
 				]
-			},
-			{
-				...defGameInfo.Sports,
-				img: `${bannerImgUrl}/h5/img/hotgame/sports/soccer.png`,
-				spanTextKey: "lbl_Soccer"
 			},
 			{
 				...defGameInfo.SBOSport,
