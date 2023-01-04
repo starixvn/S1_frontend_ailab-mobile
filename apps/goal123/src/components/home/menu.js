@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { Link } from "@reach/router";
 import { defNavPanel, navContext } from "../common/context";
-import gameList, { defCol } from "../../datas/productList";
+import gameList, { defCol, openGameType } from "../../datas/productList";
 import { getEventIcon } from "./category";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { Autoplay } from "../common/swipperBanner";
@@ -95,6 +95,13 @@ const Menu = ({ i18n, userInfo }) => {
 		});
 	};
 
+	const clickLink = ({ type, item }) => {
+		if (type === openGameType.entPage) {
+			const { tpId, gameId, tpGameType } = item;
+			clickGame({ tpId, gameId, tpGameType });
+		}
+	};
+
 	const gameArr = gameList.map(item => {
 		const _subIcon = item?.items?.filter(
 			subItem =>
@@ -110,28 +117,17 @@ const Menu = ({ i18n, userInfo }) => {
 			eventIcon: item?.eventIcon
 		});
 
-		if (item?.event) {
-			return (
-				<Link
-					className={`event${
-						showingEventIcon !== "" ? ` ${showingEventIcon}` : ""
-					}`}
-					to={`/${item.path}`}
-					key={`category-${item.category}`}>
-					<div />
-				</Link>
-			);
-		}
-
 		return (
 			<button
 				key={`menu-${item.category}`}
 				className={`${selectedCol === item.category ? "active" : ""}${
 					showingEventIcon !== "" ? ` ${showingEventIcon}` : ""
 				}`}
-				onClick={showSubPanel.bind(this, {
-					panel: item.category
-				})}>
+				onClick={
+					item.link
+						? clickLink.bind(this, { type: item?.type, item })
+						: showSubPanel.bind(this, { panel: item.category })
+				}>
 				<img src={item.img} alt={item.category} />
 				<p>{i18n[item.translateKey]}</p>
 			</button>
@@ -168,7 +164,7 @@ const Menu = ({ i18n, userInfo }) => {
 		});
 
 	const subPanelArr = [];
-	for (let i = 0; i < subGameArr.length; i += 9) {
+	for (let i = 0; i < subGameArr?.length; i += 9) {
 		const subPanel = subGameArr.slice(i, i + 9);
 		subPanelArr.push(
 			<div className="gamelistNew" key={`panel-${i}`}>

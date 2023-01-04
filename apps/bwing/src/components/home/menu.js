@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import PropTypes from "prop-types";
 import { useNavigate, Link } from "@reach/router";
 import { navContext, defNavPanel } from "../common/context";
-import { productList, defIconType } from "../../datas/defMenu";
+import { productList, defIconType, openGameType } from "../../datas/defMenu";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import {
 	useGetTpMaintainList,
@@ -11,7 +11,6 @@ import {
 import { api_GetTpIds } from "../../service/api/site";
 import { useGotoGame } from "../hook/useGotoGame";
 import path from "../../path";
-import { bannerImgUrl } from "../../config";
 
 const Menu = ({ i18n, userInfo, setPopBox }) => {
 	const [selectedCol, setSelectedCol] = useState(
@@ -103,26 +102,6 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 	};
 
 	const gameArr = Object.values(productList(userInfo.langId)).map(product => {
-		if (product.category === "worldCup") {
-			const showingEventIcon = getEventIcon({
-				eventIcon: product?.eventIcon
-			});
-
-			return (
-				<div key={`category-${product.category}`}>
-					<Link
-						className={`nav event${showingEventIcon}`}
-						to={`/${product.path}`}
-						key={`category-${product.category}`}>
-						<img
-							src={`${bannerImgUrl}/img/worldcup/xs-logo-w.png`}
-							alt=""
-						/>
-					</Link>
-				</div>
-			);
-		}
-
 		if (
 			product.category === productList(userInfo.langId).eSports.category
 		) {
@@ -149,17 +128,34 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 			);
 		}
 		if (!product.path && !product.href) {
+			const clickLink = ({ type }) => {
+				if (type === openGameType.entPage) {
+					const { tpId, gameId, tpGameType } = product;
+					clickGame({
+						userInfo,
+						tpId,
+						gameId,
+						tpGameType,
+						handleLogin: () => setNav(defNavPanel.login)
+					});
+				}
+			};
+
 			return (
 				<ProductItem
 					key={`header-menu-${product.displayKey}`}
 					spanText={i18n[product.displayKey]}
 					icon_img={product.icon_img}
 					selected={selectedCol === product.category}
-					_click={showSubPanel.bind(this, {
-						panel: product.category,
-						popBox: product?.popBox,
-						tpGameType: product?.tpGameType
-					})}
+					_click={
+						product.link
+							? clickLink.bind(this, { type: product?.type })
+							: showSubPanel.bind(this, {
+									panel: product.category,
+									popBox: product?.popBox,
+									tpGameType: product?.tpGameType
+							  })
+					}
 					subIcon={product.items?.filter(
 						subItem =>
 							subItem.eventIcon &&
@@ -375,7 +371,7 @@ const ProductItem = ({
 			className={`nav${showingEventIcon} ${selected ? "active" : ""}`}
 			onClick={_click}>
 			<img src={icon_img} alt={spanText} />
-			{spanText.toUpperCase()}
+			{spanText?.toUpperCase()}
 		</div>
 	);
 };

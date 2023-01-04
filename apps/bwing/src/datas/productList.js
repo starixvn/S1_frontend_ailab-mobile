@@ -2,6 +2,7 @@ import path from "../path";
 
 export const defGameInfo = {
 	Sports: { tpId: 1, gameId: 1, tpGameType: 1 },
+	CryptoSports: { tpId: 45, tpGameType: 87 },
 	CockFighting: { tpId: 17, tpGameType: 27 },
 	eSports: { tpId: 1, gameId: 43, tpGameType: 1 },
 	LIVEcasinoWM: { tpId: 20, gameId: 20, tpGameType: 32 },

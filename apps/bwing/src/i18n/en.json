@@ -206,6 +206,7 @@
 	"lbl_SocialMedia": "Social Media",
 	"lbl_Sports": "Sports",
 	"lbl_SportsBetting": "Sports Betting",
+	"lbl_CryptoSports": "Crypto Sports",
 	"lbl_Stake": "Stake",
 	"lbl_Statement": "Statement",
 	"lbl_Status": "Status",
@@ -818,14 +819,14 @@
 	"lbl_ReferredFreeCredit": "Referred Free Credit",
 	"lbl_TermPeriodWithin": "Term Period Within",
 
-  "===============Casino===================": "",
-  "lbl_Random": "Random",
-  "lbl_RecentlyPlayed": "Recently Played",
-  "lbl_Featured": "Featured",
-  "lbl_TableAndCards": "Table & Cards",
-  "lbl_BuyFeaturesGames": "Buy Features Games",
-  "lbl_Megaways": "Megaways",
-  "lbl_MyFavorite": "My Favorite",
-  "lbl_Play": "PLAY",
-  "lbl_Demo": "DEMO"
+	"===============Casino===================": "",
+	"lbl_Random": "Random",
+	"lbl_RecentlyPlayed": "Recently Played",
+	"lbl_Featured": "Featured",
+	"lbl_TableAndCards": "Table & Cards",
+	"lbl_BuyFeaturesGames": "Buy Features Games",
+	"lbl_Megaways": "Megaways",
+	"lbl_MyFavorite": "My Favorite",
+	"lbl_Play": "PLAY",
+	"lbl_Demo": "DEMO"
 }
