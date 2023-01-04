@@ -2153,22 +2153,6 @@ footer > a.open {
   font-weight: bold;
 }
 
-.info .textYellow, .info .textRed, .info .textGreen, .info .textGray {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.info .textYellow .infobtn, .info .textRed .infobtn, .info .textGreen .infobtn, .info .textGray .infobtn {
-  background: url(https://banner.bw88.io/h5/img/notice.png) no-repeat center/cover;
-  width: 4vw;
-  height: 4vw;
-  margin: 0 0 0 1vw;
-}
-
 .cashBack {
   background: #1d2f62;
   padding: 2vw;
