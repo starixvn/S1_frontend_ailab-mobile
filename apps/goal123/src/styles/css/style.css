@@ -679,6 +679,11 @@ main .sideBarNew div > button img, main .sideBarNew div a img {
   width: 35px;
 }
 
+main .sideBarNew div > button img.cryptobtn, main .sideBarNew div a img.cryptobtn {
+  width: 45px;
+  padding-left: 1px;
+}
+
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   main .sideBarNew div > button, main .sideBarNew div a {
     width: 20%;

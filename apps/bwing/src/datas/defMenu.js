@@ -12,6 +12,13 @@ export const defIconType = {
 	hot: " hoticon"
 };
 
+export const openGameType = {
+	entPage: "entPage",
+	Link: "Link",
+	LinkOrBtn: "LinkOrBtn",
+	useGoToGame: "useGoToGame"
+};
+
 export const defSlotTpGameType = {
 	Saba: { tpId: 1, tpGameType: 4 },
 	PP: { tpId: 5, tpGameType: 7 },
@@ -33,6 +40,19 @@ export const defSlotTpGameType = {
 
 export const productList = langId => {
 	return {
+		cryptoSports: {
+			category: "cryptoSports",
+			link: true,
+			type: openGameType.entPage,
+			...defGameInfo.CryptoSports,
+			icon_img: `${bannerImgUrl}/h5/img/gameicon/cryptosports.png`,
+			eventIcon: [
+				{
+					icon: defIconType.new,
+					inPeriod: isEventPeriod(eventTime.sports_cryptoSports)
+				}
+			]
+		},
 		sports: {
 			category: "sports",
 			displayKey: "lbl_Sports",
@@ -42,6 +62,19 @@ export const productList = langId => {
 					displayKey: "lbl_SabaSport",
 					img: `${bannerImgUrl}/h5/img/sport/sabasport.png`,
 					...defGameInfo.Sports
+				},
+				{
+					displayKey: "lbl_CryptoSports",
+					img: `${bannerImgUrl}/h5/img/sport/cryptosports.png`,
+					...defGameInfo.CryptoSports,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(
+								eventTime.sports_cryptoSports
+							)
+						}
+					]
 				},
 				{
 					displayText: "SBOBET",
@@ -521,6 +554,10 @@ export const defSubMenus = () => [
 			{
 				displayKey: "lbl_SabaSport",
 				...defGameInfo.Sports
+			},
+			{
+				displayKey: "lbl_CryptoSports",
+				...defGameInfo.CryptoSports
 			},
 			{
 				displayText: "SBOBET",

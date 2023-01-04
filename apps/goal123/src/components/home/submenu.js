@@ -40,6 +40,10 @@ const defSubMenus = [
 				...defGameInfo.Sports
 			},
 			{
+				displayKey: "lbl_CryptoSports",
+				...defGameInfo.CryptoSports
+			},
+			{
 				displayText: "SBOBET",
 				...defGameInfo.SBOSport
 			},

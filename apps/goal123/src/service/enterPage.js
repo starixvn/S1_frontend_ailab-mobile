@@ -1,5 +1,6 @@
 import config, { errorPageUrl } from "../config";
 import path from "../path";
+import { defGameInfo } from "../datas/productList";
 
 export const _ACTION_TYPE = {
 	blank: 1,
@@ -86,6 +87,8 @@ export const GET_ENTER_PAGE = ({
 		urlSpecialPattern = `&gameType=sports${
 			isLogin === false ? "&fun=1" : ""
 		}`;
+	} else if (_tpId === defGameInfo.CryptoSports.tpId) {
+		result = setResult("", false, _ACTION_TYPE.blank, _tpId, _gameId);
 	} else {
 		result = setResult("", true, _ACTION_TYPE.blank, _tpId, _gameId);
 	}
