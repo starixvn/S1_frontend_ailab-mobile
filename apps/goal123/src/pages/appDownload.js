@@ -3,7 +3,6 @@ import { useNavigate } from "@reach/router";
 import { i18nContext } from "../components/common/context";
 import { useAppDownLoad } from "../components/appDownload/useAppDownLoad";
 import path from "../path";
-import Footer from "../components/common/footer";
 import Layout from "../components/common/layout";
 import { bannerImgUrl } from "../config";
 
@@ -70,14 +69,7 @@ const IndexPage = () => {
 					</div>
 				</div>
 				<div className="title">{i18n.lbl_Installation_tutorial}</div>
-				<div className="subtitle">
-					<div>{i18n.lbl_iOS_App_Trust_Authentication}</div>
 
-					{String(i18n.lbl_Appdownload_Subtitle).replace(
-						"{{site}}",
-						"Goal123"
-					)}
-				</div>
 				<div className="tutorial">
 					<div className="item">
 						<img
