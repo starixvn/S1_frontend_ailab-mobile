@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext } from "react";
 import PropTypes from "prop-types";
 import Swiper from "react-id-swiper";
 import { Link } from "../../route/link";
-import { cloudBannerImgURL } from "../../config";
+import config, { cloudBannerImgURL } from "../../config";
 import useHandleLogin from "../hook/useHandleLogin";
 import { userInfoContext, popBoxContext } from "./context";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
@@ -141,7 +141,6 @@ const Panel = ({ ImgFolder = [], params }) => {
 
 	const rows = banner?.map((b, bIdx) => {
 		let redirectLink = null;
-
 		if (b.actionMode === api.site.defBannerActionMode.GoToBonus) {
 			redirectLink = `${path.promotionInfo.root}?BonusCode=${b.bonusCode}`;
 		} else if (
@@ -149,6 +148,9 @@ const Panel = ({ ImgFolder = [], params }) => {
 		) {
 			if (b.urlRouter === "sports") {
 				b.actionMode = api.site.defBannerActionMode.GoToGame;
+			}
+			if (b.urlRouter === "casino") {
+				redirectLink = `slots/${b.tpId}`;
 			} else {
 				redirectLink =
 					!userInfo.isLogin && NeedLoginRoute.includes(b.urlRouter)
@@ -162,6 +164,24 @@ const Panel = ({ ImgFolder = [], params }) => {
 				b.urlRouter === path.casino.root
 					? { tpId: Number(b.tpId) }
 					: null;
+
+			if (redirectLink === "rewards") {
+				return (
+					<div
+						onClick={() => {
+							window.location.replace(
+								`${config.openURL}/${redirectLink}`
+							);
+						}}>
+						<img
+							src={b.bannerMobileUrl}
+							className="banner"
+							alt={b.bannerName ?? ""}
+						/>
+					</div>
+				);
+			}
+
 			return (
 				<Link
 					state={parameter}

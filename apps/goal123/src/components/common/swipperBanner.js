@@ -151,7 +151,6 @@ const Panel = ({ ImgFolder = [], params }) => {
 
 	const rows = banner?.map((b, bIdx) => {
 		let redirectLink = null;
-
 		if (b.actionMode === defBannerActionMode.GoToBonus) {
 			redirectLink = `/${path.promotionInfo.root}?BonusCode=${b.bonusCode}`;
 		} else if (
@@ -159,6 +158,9 @@ const Panel = ({ ImgFolder = [], params }) => {
 		) {
 			if (b.urlRouter === "sports") {
 				b.actionMode = defBannerActionMode.GoToGame;
+			}
+			if (b.urlRouter === "casino") {
+				redirectLink = `/${b.urlRouter}/${b.tpId}`;
 			} else {
 				redirectLink =
 					!userInfo.isLogin && NeedLoginRoute.includes(b.urlRouter)
