@@ -170,7 +170,11 @@ const Panel = ({ ImgFolder = [], params }) => {
 					<div
 						onClick={() => {
 							window.location.replace(
-								`${config.openURL}/${redirectLink}`
+								`${
+									process.env.NODE_ENV === "production"
+										? window.location.origin
+										: config.openURL
+								}/${redirectLink}`
 							);
 						}}>
 						<img
