@@ -44,7 +44,8 @@ const IndexPage = ({ defTabs, beforeLogin, filter, breadCrumb, tabHint }) => {
 	const { i18n } = useContext(i18nContext);
 	const eWalletPathList = [
 		`/${userInfo.langId}/eWalletWithdrawal`,
-		`/${userInfo.langId}/eWallet`
+		`/${userInfo.langId}/eWallet`,
+		`/${userInfo.langId}/eWallet-withdrawal`
 	];
 	useBeforeLoginCheck({
 		isLogin: userInfo.isLogin,
@@ -131,6 +132,7 @@ const TabItem = ({ i18n = {}, tabItem = {}, match = false, tabHint = "" }) => {
 	const matchExclude = useMatch(`/:langId/${tabItem.excludeMath}/*`) !== null;
 	const _isMatch =
 		match || (matchTo && (!tabItem.excludeMath || !matchExclude));
+
 	return (
 		<Link to={tabItem.to} className={_isMatch ? "active" : ""}>
 			{i18n[tabItem.displayKey]}
