@@ -12,31 +12,21 @@ import {
 import TabPage, { getMainClass } from "../components/common/tabPage";
 import CryptoWallet from "../components/cryptoWallet/cryptoWallet";
 import path from "../path";
-import { defCurrenyId } from "../components/common/common";
-
-const allowBankInfoCurrency = [
-	defCurrenyId.MYR,
-	defCurrenyId.THB,
-	defCurrenyId.IDR,
-	defCurrenyId.INR
-];
+import allowedCurrencyList from "../datas/allowedCurrencyList";
 
 const IndexPage = props => {
 	const navigate = useNavigate();
 	const { userInfo } = useContext(userInfoContext);
 
 	let defTabs = myWallet;
-	if (
-		userInfo.currencyId === defCurrenyId.IDR ||
-		userInfo.currencyId === defCurrenyId.MYR
-	) {
+	if (allowedCurrencyList.eWallet.includes(userInfo.currencyId)) {
 		defTabs = myWalletWithEWallet;
-	} else if (!allowBankInfoCurrency.includes(userInfo.currencyId)) {
+	} else if (!allowedCurrencyList.bankCard.includes(userInfo.currencyId)) {
 		defTabs = myWalletWithoutBankInfo;
 	}
 
 	useEffect(() => {
-		if (!allowBankInfoCurrency.includes(userInfo.currencyId)) {
+		if (!allowedCurrencyList.bankCard.includes(userInfo.currencyId)) {
 			navigate(`/${userInfo.langId}/${path.cryptoWallet.root}`);
 		}
 	}, []);
@@ -51,7 +41,7 @@ const IndexPage = props => {
 				defTabs,
 				location: props
 			})}>
-			{!allowBankInfoCurrency.includes(userInfo.currencyId) ? (
+			{!allowedCurrencyList.bankCard.includes(userInfo.currencyId) ? (
 				<CryptoWallet />
 			) : (
 				<BankInfo prevPage={prevPage} />

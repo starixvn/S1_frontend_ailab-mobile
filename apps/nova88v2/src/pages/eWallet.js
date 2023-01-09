@@ -4,16 +4,13 @@ import TabPage, { getMainClass } from "../components/common/tabPage";
 import { myWallet, myWalletWithEWallet } from "../datas/defTabs";
 import EWallet from "../components/eWallet/eWallet";
 import { userInfoContext } from "../components/common/context";
-import { defCurrenyId } from "../components/common/common";
+import allowedCurrencyList from "../datas/allowedCurrencyList";
 
 const IndexPage = props => {
 	const { userInfo } = useContext(userInfoContext);
 
 	let defTabs = myWallet;
-	if (
-		userInfo.currencyId === defCurrenyId.IDR ||
-		userInfo.currencyId === defCurrenyId.MYR
-	) {
+	if (allowedCurrencyList.eWallet.includes(userInfo.currencyId)) {
 		defTabs = myWalletWithEWallet;
 	}
 

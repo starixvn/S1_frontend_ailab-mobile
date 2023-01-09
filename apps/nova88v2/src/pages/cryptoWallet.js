@@ -8,25 +8,15 @@ import {
 	myWalletWithEWallet,
 	myWalletWithoutBankInfo
 } from "../datas/defTabs";
-import { defCurrenyId } from "../components/common/common";
-
-const allowBankInfoCurrency = [
-	defCurrenyId.MYR,
-	defCurrenyId.THB,
-	defCurrenyId.IDR,
-	defCurrenyId.INR
-];
+import allowedCurrencyList from "../datas/allowedCurrencyList";
 
 const IndexPage = props => {
 	const { userInfo } = useContext(userInfoContext);
 
 	let defTabs = myWallet;
-	if (
-		userInfo.currencyId === defCurrenyId.IDR ||
-		userInfo.currencyId === defCurrenyId.MYR
-	) {
+	if (allowedCurrencyList.eWallet.includes(userInfo.currencyId)) {
 		defTabs = myWalletWithEWallet;
-	} else if (!allowBankInfoCurrency.includes(userInfo.currencyId)) {
+	} else if (!allowedCurrencyList.bankCard.includes(userInfo.currencyId)) {
 		defTabs = myWalletWithoutBankInfo;
 	}
 	const header = <TabPage defTabs={defTabs} />;

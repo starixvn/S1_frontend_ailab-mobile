@@ -17,6 +17,20 @@ const allowedCurrencyList = {
 		defCurrenyId.INR
 	],
 
+	// ==== withdrawal ====
+	bankCard: [
+		defCurrenyId.MYR,
+		defCurrenyId.THB,
+		defCurrenyId.IDR,
+		defCurrenyId.INR
+	],
+	eWallet: [
+		defCurrenyId.IDR,
+		defCurrenyId.BDT,
+		defCurrenyId.MYR,
+		defCurrenyId.THB
+	],
+
 	// ====products====
 	// sports
 	wap: [defCurrenyId.IDR],
