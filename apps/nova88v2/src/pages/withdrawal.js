@@ -13,14 +13,7 @@ import {
 	withdrawalWithoutBankInfo
 } from "../datas/defTabs";
 import path from "../path";
-import { defCurrenyId } from "../components/common/common";
-
-const allowBankInfoCurrency = [
-	defCurrenyId.MYR,
-	defCurrenyId.THB,
-	defCurrenyId.IDR,
-	defCurrenyId.INR
-];
+import allowedCurrencyList from "../datas/allowedCurrencyList";
 
 const IndexPage = props => {
 	const navigate = useNavigate();
@@ -29,20 +22,22 @@ const IndexPage = props => {
 
 	let defTabs = withdrawal;
 	if (
-		userInfo.currencyId === defCurrenyId.IDR ||
-		userInfo.currencyId === defCurrenyId.MYR
+		allowedCurrencyList.eWallet.includes(userInfo.currencyId) &&
+		allowedCurrencyList.bankCard.includes(userInfo.currencyId)
 	) {
 		defTabs = withdrawalWithEWallet;
-	} else if (!allowBankInfoCurrency.includes(userInfo.currencyId)) {
+	} else if (!allowedCurrencyList.bankCard.includes(userInfo.currencyId)) {
 		defTabs = withdrawalWithoutBankInfo;
 	}
+
 	const header = <TabPage defTabs={defTabs} />;
 
 	useEffect(() => {
-		if (!allowBankInfoCurrency.includes(userInfo.currencyId)) {
+		if (!allowedCurrencyList.bankCard.includes(userInfo.currencyId)) {
 			navigate(`/${userInfo.langId}/${path.cryptoWithdrawal.root}`);
 		}
 	}, []);
+
 	const judgeShowPage = () => {
 		if (props.isCrypto) {
 			return <CryptoWithdrawal />;
