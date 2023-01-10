@@ -355,7 +355,7 @@ const Main = props => {
 
 	return (
 		<div className="depositModule active">
-			<div className="title text-org icon icon-BTC">
+			<div className="title text-org icon icon-USDT">
 				{`${i18n.lbl_CreditTime}: ${i18n[props.creditTimeKey]}`}
 			</div>
 			<GroupList
