@@ -1,5 +1,6 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import { Redirect } from "@reach/router";
+import { INPUT_PATTERN } from "@ailab-mobile/format-pattern";
 import PropTypes from "prop-types";
 import Inputbox from "../common/inputbox.info";
 import Dropdown from "../common/dropdown.icon";
@@ -127,6 +128,12 @@ const Panel = () => {
 		if (val === "" || val === null || val === undefined) {
 			checked = false;
 			msg = i18n.msg_EnterRealName;
+		} else if (
+			// * 如果使用者有填入特殊字元則顯示錯誤訊息
+			String(val).match(INPUT_PATTERN.userNameSpecialCharactersPattern)
+		) {
+			msg = i18n.lbl_EnterRealName;
+			checked = false;
 		}
 
 		return { checked, msg };
@@ -216,7 +223,12 @@ const Panel = () => {
 	const EditField = (col, e) => {
 		let val = e.target.value;
 
-		if (col === "PhoneNo") {
+		if (col === "AccountName") {
+			val = String(val).replace(
+				INPUT_PATTERN.userNameSpecialCharactersPattern,
+				""
+			);
+		} else if (col === "PhoneNo") {
 			val = val.replace(/^(0+)|[^\d]+/g, "");
 		}
 

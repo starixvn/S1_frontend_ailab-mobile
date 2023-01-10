@@ -21,7 +21,8 @@
 			"@ailab-mobile/common": ["libs/common/src/index.js"],
 			"@ailab-mobile/service": ["libs/service/src/index.js"],
 			"@ailab-mobile/casino": ["libs/casino/src/index.js"],
-			"@ailab-mobile/history": ["libs/history/src/index.js"]
+			"@ailab-mobile/history": ["libs/history/src/index.js"],
+			"@ailab-mobile/format-pattern": ["libs/format-pattern/src/index.ts"]
 		}
 	},
 	"exclude": ["node_modules", "tmp"]

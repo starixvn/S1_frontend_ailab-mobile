@@ -1,6 +1,7 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import { useNavigate } from "@reach/router";
 import { i18nContext, userInfoContext, popBoxContext } from "Context";
+import { INPUT_PATTERN } from "@ailab-mobile/format-pattern";
 import PropTypes from "prop-types";
 import Inputbox from "../common/inputbox.hint";
 import Dropdown from "../common/dropdown.profile";
@@ -98,14 +99,25 @@ const Panel = () => {
 	};
 
 	const checkAccountName = val => {
-		const checked = !!val;
-		const message = !val ? i18n.msg_EnterRealName : "";
+		let checked = true;
+		let msg = "";
+
+		if (!val) {
+			msg = i18n.msg_EnterRealName;
+			checked = !!val;
+		} else if (
+			// * 如果使用者有填入特殊字元則顯示錯誤訊息
+			String(val).match(INPUT_PATTERN.userNameSpecialCharactersPattern)
+		) {
+			msg = i18n.lbl_EnterRealName;
+			checked = false;
+		}
 
 		setWarning(prevState => ({
 			...prevState,
 			accountName: {
 				checked,
-				msg: message
+				msg
 			}
 		}));
 
@@ -177,7 +189,12 @@ const Panel = () => {
 	const EditField = (col, e) => {
 		let val = e.target.value;
 
-		if (col === "phoneNo") {
+		if (col === "accountName") {
+			val = String(val).replace(
+				INPUT_PATTERN.userNameSpecialCharactersPattern,
+				""
+			);
+		} else if (col === "phoneNo") {
 			val = val.replace(/\D/g, "");
 		}
 

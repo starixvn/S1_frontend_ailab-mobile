@@ -10,6 +10,7 @@ module.exports = {
 		"<rootDir>/libs/service",
 		"<rootDir>/libs/casino",
 		"<rootDir>/libs/history",
-		"<rootDir>/apps/nova88v2"
+		"<rootDir>/apps/nova88v2",
+		"<rootDir>/libs/format-pattern"
 	]
 };
