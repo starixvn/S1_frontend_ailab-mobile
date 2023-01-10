@@ -838,7 +838,7 @@ const Panel = () => {
 						? b.currencyName
 						: `${b.currencyName}-${b.network}`}
 				</div>
-				<div className="icon icon-BTC">{b.usdtAddress}</div>
+				<div className="icon icon-USDT">{b.usdtAddress}</div>
 				<button
 					onClick={() =>
 						delUSDTwallet({
