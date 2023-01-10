@@ -199,7 +199,7 @@
 					"builder": "@nrwl/workspace:run-commands",
 					"outputs": ["dist/apps/goal123"],
 					"options": {
-						"command":"node ../../node_modules/react-app-rewired/bin/index.js build",
+						"command": "node ../../node_modules/react-app-rewired/bin/index.js build",
 						"cwd": "apps/goal123"
 					}
 				},
@@ -207,7 +207,7 @@
 					"builder": "@nrwl/workspace:run-commands",
 					"outputs": ["dist/apps/goal123"],
 					"options": {
-						"commands":[
+						"commands": [
 							"(git rev-parse HEAD & git rev-parse --abbrev-ref HEAD & git config user.name) > public/rnt.txt",
 							"node ../../node_modules/react-app-rewired/bin/index.js build"
 						],
@@ -462,7 +462,7 @@
 					"builder": "@nrwl/workspace:run-commands",
 					"outputs": ["dist/apps/nova88v2"],
 					"options": {
-						"command":"node ../../node_modules/react-app-rewired/bin/index.js build",
+						"command": "node ../../node_modules/react-app-rewired/bin/index.js build",
 						"cwd": "apps/nova88v2"
 					}
 				},
@@ -470,7 +470,7 @@
 					"builder": "@nrwl/workspace:run-commands",
 					"outputs": ["dist/apps/nova88v2"],
 					"options": {
-						"commands":[
+						"commands": [
 							"(git rev-parse HEAD & git rev-parse --abbrev-ref HEAD & git config user.name) > public/rnt.txt",
 							"node ../../node_modules/react-app-rewired/bin/index.js build"
 						],
@@ -525,6 +525,29 @@
 					"builder": "@nrwl/linter:eslint",
 					"options": {
 						"lintFilePatterns": ["apps/nova88v2-e2e/**/*.js"]
+					}
+				}
+			}
+		},
+		"format-pattern": {
+			"root": "libs/format-pattern",
+			"sourceRoot": "libs/format-pattern/src",
+			"projectType": "library",
+			"schematics": {},
+			"architect": {
+				"lint": {
+					"builder": "@nrwl/linter:eslint",
+					"options": {
+						"lintFilePatterns": [
+							"libs/format-pattern/**/*.{ts,tsx,js,jsx}"
+						]
+					}
+				},
+				"test": {
+					"builder": "@nrwl/jest:jest",
+					"options": {
+						"jestConfig": "libs/format-pattern/jest.config.js",
+						"passWithNoTests": true
 					}
 				}
 			}
