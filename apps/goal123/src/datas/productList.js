@@ -80,7 +80,8 @@ export const defGameInfo = {
 	MaxGame: { tpId: 1, gameId: 237, tpGameType: 83 },
 	VirtualGame: { tpId: 1, gameId: 245, tpGameType: 22 }, // 單一錢包 (目前不支援)
 	VirtualSports: { tpId: 1, gameId: 192, tpGameType: 24 }, // 單一錢包 {tpId:41, tpGameType:72, gameId:192}
-	WorldCup: { tpId: 1, gameId: 2002, tpGameType: 1 }
+	WorldCup: { tpId: 1, gameId: 2002, tpGameType: 1 },
+	GPI_VNLottery: { tpId: 6, gameId: "sode", tpGameType: 89 }
 };
 
 const defIconType = {
@@ -274,29 +275,18 @@ const gameList = [
 		img: `${bannerImgUrl}/h5/img/hotgameicon/games.png`,
 		items: [
 			{
-				...defGameInfo.tcg,
-				img: `${bannerImgUrl}/h5/img/hotgame/games/tcg.png`,
-				spanTextKey: "lbl_tcg",
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.tcg)
-					}
-				]
-			},
-			{
 				...defGameInfo.kingMaker,
-				img: `${bannerImgUrl}/h5/img/hotgame/games/kingmaker.png`,
+				img: `${bannerImgUrl}/h5/img/hotgame/new-games/king.png`,
 				spanTextKey: "lbl_KingMaker"
 			},
 			{
 				...defGameInfo.sabaClub,
-				img: `${bannerImgUrl}/h5/img/hotgame/games/vg.png`,
+				img: `${bannerImgUrl}/h5/img/hotgame/new-games/vga.png`,
 				spanTextKey: "lbl_Vgaming"
 			},
 			{
 				...defGameInfo.MaxGame,
-				img: `${bannerImgUrl}/h5/img/hotgame/games/max.png`,
+				img: `${bannerImgUrl}/h5/img/hotgame/new-games/maxgame.png`,
 				spanText: "Max Game",
 				eventIcon: [
 					{
@@ -307,27 +297,17 @@ const gameList = [
 			},
 			{
 				...defGameInfo.V8Poker,
-				img: `${bannerImgUrl}/h5/img/hotgame/games/v8poker.png`,
+				img: `${bannerImgUrl}/h5/img/hotgame/new-games/v8.png`,
 				spanTextKey: "lbl_V8Poker"
 			},
 			{
-				...defGameInfo.Keno,
-				img: `${bannerImgUrl}/h5/img/hotgame/games/keno.png`,
-				spanTextKey: "lbl_Keno"
-			},
-			{
-				...defGameInfo.lottery,
-				img: `${bannerImgUrl}/h5/img/hotgame/games/lottery.png`,
-				spanTextKey: "lbl_Lottery"
-			},
-			{
 				...defGameInfo.tableGame,
-				img: `${bannerImgUrl}/h5/img/hotgame/games/tablegame.png`,
+				img: `${bannerImgUrl}/h5/img/hotgame/new-games/table.png`,
 				spanTextKey: "lbl_tableGame"
 			},
 			{
 				...defGameInfo.VirtualGame,
-				img: `${bannerImgUrl}/h5/img/hotgame/games/virtualgames.png`,
+				img: `${bannerImgUrl}/h5/img/hotgame/new-games/vir.png`,
 				spanTextKey: "lbl_VirtualGames"
 			}
 		]
@@ -398,6 +378,39 @@ const gameList = [
 				...defGameInfo.FishingSGW,
 				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-war.png`,
 				spanTextKey: "lbl_FishingSG2"
+			}
+		]
+	},
+	{
+		category: "lottery",
+		translateKey: "lbl_Lottery",
+		img: `${bannerImgUrl}/h5/img/hotgameicon/lottery.png`,
+		items: [
+			{
+				...defGameInfo.GPI_VNLottery,
+				img: `${bannerImgUrl}/h5/img/hotgame/lottery/vn.png`,
+				spanTextKey: "GPI_VNLottery",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.GPI_Lottery)
+					}
+				]
+			},
+			{
+				...defGameInfo.tcg,
+				img: `${bannerImgUrl}/h5/img/hotgame/games/tcg.png`,
+				spanTextKey: "lbl_tcg"
+			},
+			{
+				...defGameInfo.Keno,
+				img: `${bannerImgUrl}/h5/img/hotgame/games/keno.png`,
+				spanTextKey: "lbl_Keno"
+			},
+			{
+				...defGameInfo.lottery,
+				img: `${bannerImgUrl}/h5/img/hotgame/games/lottery.png`,
+				spanTextKey: "lbl_Lottery"
 			}
 		]
 	},

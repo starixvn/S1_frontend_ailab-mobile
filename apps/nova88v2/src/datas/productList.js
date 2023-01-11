@@ -910,15 +910,43 @@ const gameList = ({ langId }) => {
 			translateKey: "lbl_Lottery",
 			items: [
 				{
-					...defGameInfo.TCG,
-					img: `${cloudBannerImgURL}/h5/img/tcg.png`,
-					spanTextKey: "lbl_TCG",
+					...defGameInfo.GPI_Keno,
+					img: `${cloudBannerImgURL}/h5/img/gpikeno.png`,
+					spanTextKey: "GPI_Keno",
 					eventIcon: [
 						{
 							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.tcg)
+							inPeriod: isEventPeriod(eventTime.GPI_Lottery)
 						}
 					]
+				},
+				{
+					...defGameInfo.GPI_ThaiLottery,
+					img: `${cloudBannerImgURL}/h5/img/gpithai.png`,
+					spanTextKey: "GPI_ThaiLottery",
+					allowCurrency: allowedCurrencyList.thaiLottery,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.GPI_Lottery)
+						}
+					]
+				},
+				{
+					...defGameInfo.GPI_Fast3,
+					img: `${cloudBannerImgURL}/h5/img/gpifast3.png`,
+					spanTextKey: "GPI_Fast3",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.GPI_Lottery)
+						}
+					]
+				},
+				{
+					...defGameInfo.TCG,
+					img: `${cloudBannerImgURL}/h5/img/tcg.png`,
+					spanTextKey: "lbl_TCG"
 				},
 				{
 					...defGameInfo.Keno,
@@ -1071,7 +1099,10 @@ export const defGameInfo = {
 	VirtualGame: { tpId: 1, gameId: 245, tpGameType: 22 }, // 單一錢包 (目前不支援)
 	VirtualSports: { tpId: 1, gameId: 192, tpGameType: 24 }, // 單一錢包 {tpId:41, tpGameType:72, gameId:192}
 	WorldCup: { tpId: 1, gameId: 2002, tpGameType: 1 },
-	CryptoSports: { tpId: 45, tpGameType: 87 }
+	CryptoSports: { tpId: 45, tpGameType: 87 },
+	GPI_Keno: { tpId: 6, gameId: "keno", tpGameType: 88 },
+	GPI_ThaiLottery: { tpId: 6, gameId: "thailottery", tpGameType: 90 },
+	GPI_Fast3: { tpId: 6, gameId: "fast3", tpGameType: 91 }
 };
 
 export const defCol = {
