@@ -61,8 +61,9 @@ const allowedCurrencyList = {
 	tyrantAndProncess: [defCurrenyId.INR],
 	fishingOfSaviors: [defCurrenyId.INR],
 
-	// kelo
-	indo4d: [defCurrenyId.IDR]
+	// lottery
+	indo4d: [defCurrenyId.IDR],
+	thaiLottery: [defCurrenyId.THB]
 };
 
 export default allowedCurrencyList;

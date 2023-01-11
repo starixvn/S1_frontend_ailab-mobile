@@ -76,7 +76,8 @@ export const defGameInfo = {
 	VirtualGame: { tpId: 1, gameId: 245, tpGameType: 22 }, // 單一錢包 (目前不支援)
 	VirtualSports: { tpId: 1, gameId: 192, tpGameType: 24 }, // 單一錢包 {tpId:41, tpGameType:72, gameId:192}
 	sportSbo: { tpId: 42, tpGameType: 77 },
-	WorldCup: { tpId: 1, gameId: 2002, tpGameType: 1 }
+	WorldCup: { tpId: 1, gameId: 2002, tpGameType: 1 },
+	GPI_VNLottery: { tpId: 6, gameId: "sode", tpGameType: 89 }
 };
 
 export const slotPlatform = [
