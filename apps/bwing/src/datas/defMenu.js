@@ -114,44 +114,23 @@ export const productList = langId => {
 			]
 		},
 		game: {
-			category: "play",
+			category: "game",
 			displayKey: "lbl_Games",
 			icon_img: `${bannerImgUrl}/h5/img/gameicon/games.png`,
 			items: [
 				{
-					displayKey: "lbl_tcg",
-					img: `${bannerImgUrl}/h5/img/lottery/lottery-tcg.png`,
-					...defGameInfo.tcg,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.tcg)
-						}
-					]
-				},
-				{
 					...defGameInfo.kingMaker,
-					img: `${bannerImgUrl}/h5/img/lottery/lottery-kingmaker.png`,
+					img: `${bannerImgUrl}/h5/img/new-game/king.png`,
 					displayKey: "lbl_KingMaker"
 				},
 				{
-					displayKey: "lbl_TraditionalLottery",
-					img: `${bannerImgUrl}/h5/img/lottery/lottery-tl.png`,
-					...defGameInfo.One789_lottery
-				},
-				// {
-				// 	displayKey: "lbl_789Lottery",
-				// 	img: `${bannerImgUrl}/h5/img/lottery/lottery-789.png`,
-				// 	...defGameInfo.One789_lottery_789
-				// },
-				{
 					displayKey: "lbl_Vgaming",
-					img: `${bannerImgUrl}/h5/img/lottery/lottery-saba.png`,
+					img: `${bannerImgUrl}/h5/img/new-game/vgamimg.png`,
 					...defGameInfo.sabaClub
 				},
 				{
 					displayText: "Max Game",
-					img: `${bannerImgUrl}/h5/img/lottery/lottery-max.png`,
+					img: `${bannerImgUrl}/h5/img/new-game/max.png`,
 					...defGameInfo.MaxGame,
 					eventIcon: [
 						{
@@ -162,27 +141,17 @@ export const productList = langId => {
 				},
 				{
 					displayKey: "lbl_V8Poker",
-					img: `${bannerImgUrl}/h5/img/lottery/lottery-v8poker.png`,
+					img: `${bannerImgUrl}/h5/img/new-game/v8.png`,
 					...defGameInfo.V8Poker
 				},
 				{
-					displayKey: "lbl_Keno",
-					img: `${bannerImgUrl}/h5/img/lottery/lottery-keno.png`,
-					...defGameInfo.Keno
-				},
-				{
-					displayKey: "lbl_Lottery",
-					img: `${bannerImgUrl}/h5/img/lottery/lottery-lottery.png`,
-					...defGameInfo.lottery
-				},
-				{
 					displayKey: "lbl_tableGame",
-					img: `${bannerImgUrl}/h5/img/lottery/lottery-table.png`,
+					img: `${bannerImgUrl}/h5/img/new-game/table.png`,
 					...defGameInfo.tableGame
 				},
 				{
 					displayKey: "lbl_VirtualGames",
-					img: `${bannerImgUrl}/h5/img/lottery/virtual.png`,
+					img: `${bannerImgUrl}/h5/img/new-game/virtual.png`,
 					...defGameInfo.VirtualGame
 				}
 			]
@@ -437,7 +406,7 @@ export const productList = langId => {
 			]
 		},
 		fishing: {
-			category: "game",
+			category: "fishing",
 			displayKey: "lbl_Fishing",
 			icon_img: `${bannerImgUrl}/h5/img/gameicon/fish.png`,
 			items: [
@@ -515,6 +484,49 @@ export const productList = langId => {
 				}
 			]
 		},
+		lottery: {
+			category: "lottery",
+			displayKey: "lbl_Lottery",
+			icon_img: `${bannerImgUrl}/h5/img/gameicon/lottery.png`,
+			items: [
+				{
+					displayKey: "GPI_VNLottery",
+					img: `${bannerImgUrl}/h5/img/new-lottery/lottery-vn.png`,
+					...defGameInfo.GPI_VNLottery,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.GPI_Lottery)
+						}
+					]
+				},
+				{
+					displayKey: "lbl_tcg",
+					img: `${bannerImgUrl}/h5/img/new-lottery/lottery-tcg.png`,
+					...defGameInfo.tcg
+				},
+				{
+					displayKey: "lbl_TraditionalLottery",
+					img: `${bannerImgUrl}/h5/img/new-lottery/lottery-tl.png`,
+					...defGameInfo.One789_lottery
+				},
+				// {
+				// 	displayKey: "lbl_789Lottery",
+				// 	img: `${bannerImgUrl}/h5/img/lottery/lottery-789.png`,
+				// 	...defGameInfo.One789_lottery_789
+				// },
+				{
+					displayKey: "lbl_Keno",
+					img: `${bannerImgUrl}/h5/img/new-lottery/lottery-keno.png`,
+					...defGameInfo.Keno
+				},
+				{
+					displayKey: "lbl_Lottery",
+					img: `${bannerImgUrl}/h5/img/new-lottery/lottery-lottery.png`,
+					...defGameInfo.lottery
+				}
+			]
+		},
 		promotion: {
 			category: "promotion",
 			displayKey: "lbl_Promotions",
@@ -574,21 +586,9 @@ export const defSubMenus = () => [
 		icon: "icon icon-kelo",
 		subItems: [
 			{
-				...defGameInfo.tcg,
-				displayKey: "lbl_tcg"
-			},
-			{
 				...defGameInfo.kingMaker,
 				displayKey: "lbl_KingMaker"
 			},
-			{
-				displayKey: "lbl_TraditionalLottery",
-				...defGameInfo.One789_lottery
-			},
-			// {
-			// 	displayKey: "lbl_789Lottery",
-			// 	...defGameInfo.One789_lottery_789
-			// },
 			{
 				...defGameInfo.sabaClub,
 				displayKey: "lbl_Vgaming"
@@ -602,16 +602,12 @@ export const defSubMenus = () => [
 				displayKey: "lbl_V8Poker"
 			},
 			{
-				...defGameInfo.Keno,
-				displayKey: "lbl_Keno"
-			},
-			{
-				...defGameInfo.lottery,
-				displayKey: "lbl_Lottery"
-			},
-			{
 				...defGameInfo.tableGame,
 				displayKey: "lbl_tableGame"
+			},
+			{
+				...defGameInfo.VirtualGame,
+				displayKey: "lbl_VirtualGames"
 			}
 		]
 	},
@@ -650,6 +646,36 @@ export const defSubMenus = () => [
 			{
 				...defGameInfo.Fishing_SGW,
 				displayKey: "lbl_FishingSG2"
+			}
+		]
+	},
+	{
+		displayKey: "lbl_Lottery",
+		// icon: "icon icon-kelo",
+		subItems: [
+			{
+				...defGameInfo.GPI_VNLottery,
+				displayKey: "GPI_VNLottery"
+			},
+			{
+				...defGameInfo.tcg,
+				displayKey: "lbl_tcg"
+			},
+			{
+				displayKey: "lbl_TraditionalLottery",
+				...defGameInfo.One789_lottery
+			},
+			// {
+			// 	displayKey: "lbl_789Lottery",
+			// 	...defGameInfo.One789_lottery_789
+			// },
+			{
+				...defGameInfo.Keno,
+				displayKey: "lbl_Keno"
+			},
+			{
+				...defGameInfo.lottery,
+				displayKey: "lbl_Lottery"
 			}
 		]
 	},

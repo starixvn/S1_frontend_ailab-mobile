@@ -58,10 +58,6 @@ const defSubMenus = [
 		icon: "icon icon-kelo",
 		subItems: [
 			{
-				...defGameInfo.tcg,
-				displayKey: "lbl_tcg"
-			},
-			{
 				...defGameInfo.kingMaker,
 				displayKey: "lbl_KingMaker"
 			},
@@ -78,16 +74,12 @@ const defSubMenus = [
 				displayKey: "lbl_V8Poker"
 			},
 			{
-				...defGameInfo.Keno,
-				displayKey: "lbl_Keno"
-			},
-			{
-				...defGameInfo.lottery,
-				displayKey: "lbl_Lottery"
-			},
-			{
 				...defGameInfo.tableGame,
 				displayKey: "lbl_tableGame"
+			},
+			{
+				...defGameInfo.VirtualGame,
+				displayKey: "lbl_VirtualGames"
 			}
 		]
 	},
@@ -126,6 +118,28 @@ const defSubMenus = [
 			{
 				...defGameInfo.FishingSGW,
 				displayKey: "lbl_FishingSG2"
+			}
+		]
+	},
+	{
+		displayKey: "lbl_Lottery",
+		icon: "icon icon-lottery",
+		subItems: [
+			{
+				...defGameInfo.GPI_VNLottery,
+				displayKey: "GPI_VNLottery"
+			},
+			{
+				...defGameInfo.tcg,
+				displayKey: "lbl_tcg"
+			},
+			{
+				...defGameInfo.Keno,
+				displayKey: "lbl_Keno"
+			},
+			{
+				...defGameInfo.lottery,
+				displayKey: "lbl_Lottery"
 			}
 		]
 	},
