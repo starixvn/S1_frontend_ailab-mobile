@@ -14,7 +14,6 @@ import Whoami from "../pages/whoami";
 import PromotionInfo from "../pages/promotionInfo";
 
 import Ranking from "../pages/ranking";
-import AngPow from "../pages/angPow";
 
 const BeforeLoginRouter = () => (
 	<Router>
@@ -28,7 +27,6 @@ const BeforeLoginRouter = () => (
 		<Setting path={`/:langId/${path.setting.root}`} />
 		<Whoami path={path.whoami.root} />
 		<Ranking path={`/:langId/${path.ranking.root}`} />
-		<AngPow path={`/:langId/${path.angPow.root}`} />
 	</Router>
 );
 

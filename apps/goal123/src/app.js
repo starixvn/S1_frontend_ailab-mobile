@@ -1,4 +1,6 @@
 import React from "react";
+import { Provider } from "react-redux";
+import { store } from "@ailab-mobile/store";
 import { Router, createHistory, LocationProvider } from "@reach/router";
 import path, { defSpecialPath } from "./path";
 import { Wrapper } from "./components/common/wrapper";
@@ -48,8 +50,8 @@ import Whoami from "./pages/whoami";
 import PromotionInfo from "./pages/promotionInfo";
 
 // import Ranking from "./pages/ranking";
-// import AngPow from "./pages/angPow";
-import MysteryBox from "./pages/mysteryBox";
+import Angpao from "./pages/angpao";
+
 import LuckyWheel from "./pages/luckyWheel";
 
 import FriendReferral from "./pages/referral";
@@ -67,80 +69,82 @@ import WorldCup from "./pages/worldCup";
 const Index = () => {
 	const history = createHistory(window);
 	return (
-		<Wrapper>
-			<LocationProvider history={history}>
-				<Router primary={false}>
-					<Home path={path.home.root} default={true} />
-					<ForgetPwd path={path.forgetPassword.root} />
-					<ResetPwd path={path.resetPassword.root} />
-					<ChangePwd path={path.changePassword.root} />
-					<Promotion path={path.promotion.root} />
-					<PromotionInfo path={path.promotionInfo.root} />
-					<Member path={path.member.root}>
-						<Profile path={path.member.sub.root} />
-						<BankInfo path={path.member.sub.bankInfo.root} />
-					</Member>
+		<Provider store={store}>
+			<Wrapper>
+				<LocationProvider history={history}>
+					<Router primary={false}>
+						<Home path={path.home.root} default={true} />
+						<ForgetPwd path={path.forgetPassword.root} />
+						<ResetPwd path={path.resetPassword.root} />
+						<ChangePwd path={path.changePassword.root} />
+						<Promotion path={path.promotion.root} />
+						<PromotionInfo path={path.promotionInfo.root} />
+						<Member path={path.member.root}>
+							<Profile path={path.member.sub.root} />
+							<BankInfo path={path.member.sub.bankInfo.root} />
+						</Member>
 
-					<CryptoWallet path={path.cryptoWallet.root} />
+						<CryptoWallet path={path.cryptoWallet.root} />
 
-					<FriendReferral path={path.referral.root}>
-						<ReferFriends path={path.referral.sub.root} />
-						<ReferralHistory
-							path={path.referral.sub.history.root}
-						/>
-					</FriendReferral>
+						<FriendReferral path={path.referral.root}>
+							<ReferFriends path={path.referral.sub.root} />
+							<ReferralHistory
+								path={path.referral.sub.history.root}
+							/>
+						</FriendReferral>
 
-					<Deposit path={path.deposit.root} />
-					<DepositHistory path={path.depositHistory.root} />
+						<Deposit path={path.deposit.root} />
+						<DepositHistory path={path.depositHistory.root} />
 
-					<Withdrawal path={path.withdrawal.root}>
-						<WithdrawalHome path={path.withdrawal.sub.root} />
-						<WithdrawalHistory
-							path={path.withdrawal.sub.history.root}
-						/>
-					</Withdrawal>
+						<Withdrawal path={path.withdrawal.root}>
+							<WithdrawalHome path={path.withdrawal.sub.root} />
+							<WithdrawalHistory
+								path={path.withdrawal.sub.history.root}
+							/>
+						</Withdrawal>
 
-					<WithdrawalCrypto path={path.cryptoWithdrawal.root} />
+						<WithdrawalCrypto path={path.cryptoWithdrawal.root} />
 
-					<Kyc path={path.kyc.root} />
-					<KycWaiting path={path.kycWaiting.root} />
-					<Transfer path={path.transfer.root}>
-						<TransferHome path={path.transfer.sub.root} />
-						<TransferHistory
-							path={path.transfer.sub.history.root}
-						/>
-					</Transfer>
-					<Statement path={path.statement.root}>
-						<StatementList path="/" />
-						<BetDateRange path="/:timePeriod" />
-						<BetOneDay path="/:timePeriod/:date" />
-						<BetByCategory path="/:timePeriod/:date/:category" />
-						<BetDetail path="/:timePeriod/:date/:category/:game" />
-					</Statement>
-					<FinancialLog path={path.financialLog.root}>
-						<FinancialLogHome path="/" />
-					</FinancialLog>
-					<PersonalMsg path={path.message.root} />
-					<Announcement path={path.announcement.root} />
-					<Casino path={`${path.casino.root}`} />
-					<Casino path={`${path.casino.root}/:tpId`} />
-					<Other path={path.other.root} />
-					<Whoami path={path.whoami.root} />
-					{/* <Ranking path={path.leaderBoard.root} /> */}
-					{/* <AngPow path={path.angPow.root} /> */}
-					<MysteryBox path={path.mysteryBox.root} />
-					<LuckyWheel path={path.luckyWheel.root} />
-					<VIP path={path.vip.root} />
-					<AppDownload path={path.appDownload.root} />
-					<AppEntPage path={`/${defSpecialPath.appentpage}`} />
-					<UMPage path={path.um.root} />
-					<WorldCup path={path.worldCup.root} />
-				</Router>
-				<Join />
-				<Login />
-			</LocationProvider>
-			<PopBox />
-		</Wrapper>
+						<Kyc path={path.kyc.root} />
+						<KycWaiting path={path.kycWaiting.root} />
+						<Transfer path={path.transfer.root}>
+							<TransferHome path={path.transfer.sub.root} />
+							<TransferHistory
+								path={path.transfer.sub.history.root}
+							/>
+						</Transfer>
+						<Statement path={path.statement.root}>
+							<StatementList path="/" />
+							<BetDateRange path="/:timePeriod" />
+							<BetOneDay path="/:timePeriod/:date" />
+							<BetByCategory path="/:timePeriod/:date/:category" />
+							<BetDetail path="/:timePeriod/:date/:category/:game" />
+						</Statement>
+						<FinancialLog path={path.financialLog.root}>
+							<FinancialLogHome path="/" />
+						</FinancialLog>
+						<PersonalMsg path={path.message.root} />
+						<Announcement path={path.announcement.root} />
+						<Casino path={`${path.casino.root}`} />
+						<Casino path={`${path.casino.root}/:tpId`} />
+						<Other path={path.other.root} />
+						<Whoami path={path.whoami.root} />
+						{/* <Ranking path={path.leaderBoard.root} /> */}
+						<Angpao path={path.angpao.root} />
+
+						<LuckyWheel path={path.luckyWheel.root} />
+						<VIP path={path.vip.root} />
+						<AppDownload path={path.appDownload.root} />
+						<AppEntPage path={`/${defSpecialPath.appentpage}`} />
+						<UMPage path={path.um.root} />
+						<WorldCup path={path.worldCup.root} />
+					</Router>
+					<Join />
+					<Login />
+				</LocationProvider>
+				<PopBox />
+			</Wrapper>
+		</Provider>
 	);
 };
 

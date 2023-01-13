@@ -2,7 +2,9 @@ import React from "react";
 import { render } from "react-snapshot";
 import { Helmet } from "react-helmet";
 import config from "./config";
+import "./i18n/i18n";
 import App from "./app";
+
 import "./styles/css/style-dark.css";
 import "./styles/css/style.css";
 import "./styles/css/font.css";

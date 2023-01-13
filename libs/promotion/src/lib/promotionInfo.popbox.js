@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { navigate } from "@reach/router";
-import { getUrlParameter } from "@ailab-mobile/common";
+import { getUrlParameter } from "./common/common";
 import PromotionContent from "./components/promotionContent";
 import Wrapper from "./common/wrapper";
 import { useHandlePopBox } from "./hook/useHandlePopBox";

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { navigate } from "@reach/router";
-import { getUrlParameter } from "@ailab-mobile/common";
 import PromotionContent from "./components/promotionContent";
 import { userInfoContext, promoPopBox } from "../common/context";
 import { configContext } from "./common/context";
@@ -9,6 +8,7 @@ import { useHandlePopBox } from "./hook/useHandlePopBox";
 import api from "../../service/api";
 import path from "../../path";
 import { useRefreshProcessBar } from "./hook/useRefreshProcessBar";
+import { getUrlParameter } from "../common/common";
 
 export const useHandlePromotionInfo = ({
 	showAllPromosBtn = false,

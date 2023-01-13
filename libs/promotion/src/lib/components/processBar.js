@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ReloadSpin } from "@ailab-mobile/common";
+import { ReloadSpin } from "../common/reloadSpin";
 import { defPromotionType, defPromoStatus } from "../common/def";
 import { number_format } from "../common/common";
 import { configContext } from "../common/context";

@@ -201,6 +201,7 @@
 	"lbl_Free": "Free",
 	"lbl_Jackpot": "Jackpot",
 	"lbl_Gaming_License": "Gaming License",
+	"lbl_OK": "OK",
 
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Odds",
@@ -894,5 +895,7 @@
 	"lbl_knockouts": "Knockouts",
 
 	"==============v3.0==============": "",
-	"lbl_SeeMore": "See More"
+	"lbl_SeeMore": "See More",
+
+	"Label_AngpaoNewYearTitle": "Lucky Rabbit Happy New Year"
 }

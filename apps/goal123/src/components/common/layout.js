@@ -1,5 +1,7 @@
 import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { isDateRange } from "@ailab-mobile/common";
+import { AngpaoFloatLink } from "@ailab-mobile/components";
 import { useMatch, useNavigate } from "@reach/router";
 import Footer from "./footer";
 import Header from "./header";
@@ -14,10 +16,10 @@ import {
 import path from "../../path";
 import Loading from "./loading";
 import { isEventPeriod } from "./common";
-import MysteryBox from "../mysteryBox/homePopBox";
 import { eventTime } from "./eventTime";
 import LuckyWheel from "../luckyWheel/homePopBox";
 import GoTopBtn from "./goTopBtn";
+import { angPaoEventPeriod } from "../../pages/angpao";
 
 // const defPageInfo = {
 // 	leaderBoard: {
@@ -66,12 +68,18 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 				{children}
 				{loading ? <Loading /> : null}
 			</main>
-			{isEventPeriod(eventTime.mysteryBox) && root && (
-				<MysteryBox userInfo={userInfo} />
-			)}
-			{isEventPeriod(eventTime.luckyWheel) && root && luckyWheel ? (
+
+			{/* 僅限過年期間不顯示 */}
+			{isEventPeriod(eventTime.luckyWheel) &&
+			!isDateRange(angPaoEventPeriod) &&
+			root &&
+			luckyWheel ? (
 				<LuckyWheel userInfo={userInfo} setLuckyWheel={setLuckyWheel} />
 			) : null}
+
+			{/* 僅限過年期間顯示 */}
+			{isDateRange(angPaoEventPeriod) && root && <AngpaoFloatLink />}
+
 			<Footer />
 			{goTopBtn && <GoTopBtn />}
 		</>

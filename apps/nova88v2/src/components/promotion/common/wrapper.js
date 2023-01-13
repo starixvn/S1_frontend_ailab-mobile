@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { PromotionAPI } from "@ailab-mobile/api";
-import { isConvert } from "@ailab-mobile/common";
 import { navigate } from "@reach/router";
 import { userInfoContext, i18nContext, popBoxContext } from "Context";
 import { Promotion as uiSetting } from "UISetting";
@@ -9,6 +8,7 @@ import { defWrapperCol, defRuleCols } from "./def";
 import { promoPopBox } from "../../common/context";
 import path from "../../../path";
 import config from "../../../config";
+import { isConvert } from "../../common/common";
 
 export default ({
 	children,

@@ -17,7 +17,7 @@ import Whoami from "../pages/whoami";
 import PromotionInfo from "../pages/promotionInfo";
 
 import Ranking from "../pages/ranking";
-import AngPow from "../pages/angPow";
+import Angpao from "../pages/angpao";
 
 import BankInfo from "../pages/bankInfo";
 import Profile from "../pages/profile";
@@ -87,7 +87,7 @@ const RouteComponents = () => {
 
 			<Whoami path={path.whoami.root} />
 			<Ranking path={`/:langId/${path.ranking.root}`} />
-			<AngPow path={`/:langId/${path.angPow.root}`} />
+			<Angpao path={`/:langId/${path.angpao.root}`} />
 
 			<ChangePwd path={`/:langId/${path.changePassword.root}`} />
 			<Profile path={`/:langId/${path.profile.root}`} />
