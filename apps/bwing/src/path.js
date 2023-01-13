@@ -144,8 +144,8 @@ export default {
 	// leaderBoard: {
 	// 	root: "leaderBoard"
 	// },
-	angPow: {
-		root: "angPow"
+	angpao: {
+		root: "angpao"
 	},
 	referral: {
 		root: "referral",

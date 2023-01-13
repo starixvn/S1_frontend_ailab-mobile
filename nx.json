@@ -57,18 +57,6 @@
 		"api": {
 			"tags": []
 		},
-		"common": {
-			"tags": []
-		},
-		"service": {
-			"tags": []
-		},
-		"casino": {
-			"tags": []
-		},
-		"history": {
-			"tags": []
-		},
 		"nova88v2": {
 			"tags": []
 		},
@@ -77,6 +65,15 @@
 			"implicitDependencies": ["nova88v2"]
 		},
 		"format-pattern": {
+			"tags": []
+		},
+		"wrapper": {
+			"tags": []
+		},
+		"common": {
+			"tags": []
+		},
+		"components": {
 			"tags": []
 		}
 	}

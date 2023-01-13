@@ -10,6 +10,7 @@ const allowedCurrencyList = {
 	],
 	exchange: [defCurrenyId.INR, defCurrenyId.BDT],
 	rewards: [defCurrenyId.MYR, defCurrenyId.THB, defCurrenyId.IDR],
+	wheel: [defCurrenyId.MYR, defCurrenyId.THB, defCurrenyId.IDR],
 	worldCup: [
 		defCurrenyId.MYR,
 		defCurrenyId.THB,

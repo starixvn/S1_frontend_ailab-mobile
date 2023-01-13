@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import { render } from "react-snapshot";
 import { Helmet } from "react-helmet";
 import App from "./app";
+import "./i18n/i18n";
 // import * as serviceWorker from "./serviceWorker";
 import "./styles/css/style-dark.css";
 import "./styles/css/style.css";

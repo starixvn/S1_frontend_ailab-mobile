@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { render } from "react-snapshot";
 import { Helmet } from "react-helmet";
 import App from "./app";
+import "./i18n/i18n";
 // import * as serviceWorker from "./serviceWorker";
 import "./styles/css/style-dark.css";
 import "./styles/css/style.css";

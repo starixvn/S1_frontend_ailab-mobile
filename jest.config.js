@@ -6,11 +6,10 @@ module.exports = {
 		"<rootDir>/apps/goal123",
 		"<rootDir>/apps/bwing",
 		"<rootDir>/libs/api",
-		"<rootDir>/libs/common",
-		"<rootDir>/libs/service",
-		"<rootDir>/libs/casino",
-		"<rootDir>/libs/history",
 		"<rootDir>/apps/nova88v2",
+		"<rootDir>/libs/wrapper",
+		"<rootDir>/libs/common",
+		"<rootDir>/libs/components",
 		"<rootDir>/libs/format-pattern"
 	]
 };

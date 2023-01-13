@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Inputbox } from "@ailab-mobile/common";
+import { InputBox } from "../common/inputbox";
 import Dropdown from "./dropdown";
 import { number_format } from "../common/common";
 import { defWrapperCol, defPromotionType } from "../common/def";
@@ -133,7 +133,7 @@ const LockedAmountPopBox = ({
 	if (isFirstDeposit) {
 		input = (
 			<>
-				<Inputbox
+				<InputBox
 					data-testid="amount"
 					value={claimAmount}
 					onChange={OnChangeClaimAmount}

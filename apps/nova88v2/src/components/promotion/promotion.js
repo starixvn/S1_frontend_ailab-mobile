@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import moment from "moment";
-import { NoData } from "@ailab-mobile/common";
 import PropTypes from "prop-types";
 import {
 	defFilterType,
@@ -233,7 +232,9 @@ const PromotionContent = ({ staticList, filterType }) => {
 
 	const noData =
 		!rows?.length && !staticRows?.length ? (
-			<NoData displayText={i18n.msg_NoData} />
+			<div className="nodata icon icon-nodata">
+				<div className="txt-white">{i18n.msg_NoData}</div>
+			</div>
 		) : null;
 
 	return (

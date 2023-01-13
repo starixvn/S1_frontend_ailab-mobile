@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
-import { getUrlParameter } from "@ailab-mobile/common";
 import { isClaimed, isNew } from "./common/common";
 import PromotionContent from "./components/promotionContent";
 import Wrapper from "./common/wrapper";
 import { configContext } from "./common/context";
 import { popBoxContext } from "../common/context";
+import { getUrlParameter } from "../common/common";
 
 export const PromotionInfo = props => (
 	<Wrapper {...props}>

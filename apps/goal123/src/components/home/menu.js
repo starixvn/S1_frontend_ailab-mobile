@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import { Link } from "@reach/router";
+import { Link, useNavigate } from "@reach/router";
 import { defNavPanel, navContext } from "../common/context";
 import gameList, { defCol, openGameType } from "../../datas/productList";
 import { getEventIcon } from "./category";
@@ -25,6 +25,7 @@ const swipperParam = {
 };
 
 const Menu = ({ i18n, userInfo }) => {
+	const navigate = useNavigate();
 	const { setNav } = useContext(navContext);
 	const [showingTpIds, setShowningTpIds] = useState(null);
 	const [selectedCol, setSelectedCol] = useState(defCol.hotGame);
@@ -96,6 +97,9 @@ const Menu = ({ i18n, userInfo }) => {
 	};
 
 	const clickLink = ({ type, item }) => {
+		if (type === openGameType.Link) {
+			navigate(`/${item?.path}`);
+		}
 		if (type === openGameType.entPage) {
 			const { tpId, gameId, tpGameType } = item;
 			clickGame({ tpId, gameId, tpGameType });
@@ -117,12 +121,17 @@ const Menu = ({ i18n, userInfo }) => {
 			eventIcon: item?.eventIcon
 		});
 
+		// * 如果時間不在範圍內不渲染元件
+		if (item?.isEventPeriod) {
+			return null;
+		}
+
 		return (
 			<button
 				key={`menu-${item.category}`}
-				className={`${selectedCol === item.category ? "active" : ""}${
-					showingEventIcon !== "" ? ` ${showingEventIcon}` : ""
-				}`}
+				className={`${item?.className ?? ""} ${
+					selectedCol === item.category ? "active" : ""
+				}${showingEventIcon !== "" ? ` ${showingEventIcon}` : ""}`}
 				onClick={
 					item.link
 						? clickLink.bind(this, { type: item?.type, item })

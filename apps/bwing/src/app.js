@@ -1,4 +1,6 @@
 import React from "react";
+import { Provider } from "react-redux";
+import { store } from "@ailab-mobile/store";
 import { Router, createHistory, LocationProvider } from "@reach/router";
 import path, { defSpecialPath } from "./path";
 import { Wrapper } from "./components/common/wrapper";
@@ -59,7 +61,7 @@ import HowToWithdraw from "./pages/howToWithdraw";
 import HowToPlay from "./pages/howToPlay";
 
 // import Ranking from "./pages/ranking";
-import AngPow from "./pages/angPow";
+import Angpao from "./pages/angpao";
 import MysteryBox from "./pages/mysteryBox";
 import VIP from "./pages/vip";
 
@@ -78,95 +80,108 @@ const Index = () => {
 	const history = createHistory(window);
 
 	return (
-		<Wrapper>
-			<LocationProvider history={history}>
-				<Layout>
-					<Router>
-						<Home path={path.home.root} default />
-						<ForgetPwd path={path.forgetPassword.root} />
-						<ResetPwd path={path.resetPassword.root} />
-						<ChangePwd path={path.changePassword.root} />
-						<Promotion path={path.promotion.root} />
+		<Provider store={store}>
+			<Wrapper>
+				<LocationProvider history={history}>
+					<Layout>
+						<Router>
+							<Home path={path.home.root} default />
+							<ForgetPwd path={path.forgetPassword.root} />
+							<ResetPwd path={path.resetPassword.root} />
+							<ChangePwd path={path.changePassword.root} />
+							<Promotion path={path.promotion.root} />
 
-						<PromotionInfo path={path.promotionInfo.root} />
-						<Wallet path={path.wallet.root} />
-						<Member path={path.member.root}>
-							<Profile path={path.member.sub.root} />
-							<BankInfo path={path.member.sub.bankInfo.root} />
-							<CryptoWallet
-								path={path.member.sub.cryptoWallet.root}
-							/>
-						</Member>
-						<FriendReferral path={path.referral.root}>
-							<ReferFriends path={path.referral.sub.root} />
-							<ReferralHistory
-								path={path.referral.sub.history.root}
-							/>
-						</FriendReferral>
+							<PromotionInfo path={path.promotionInfo.root} />
+							<Wallet path={path.wallet.root} />
+							<Member path={path.member.root}>
+								<Profile path={path.member.sub.root} />
+								<BankInfo
+									path={path.member.sub.bankInfo.root}
+								/>
+								<CryptoWallet
+									path={path.member.sub.cryptoWallet.root}
+								/>
+							</Member>
+							<FriendReferral path={path.referral.root}>
+								<ReferFriends path={path.referral.sub.root} />
+								<ReferralHistory
+									path={path.referral.sub.history.root}
+								/>
+							</FriendReferral>
 
-						<Deposit path={path.deposit.root}>
-							<Deposit path="/" />
-							<DepositHistory path={path.depositHistory.root} />
-						</Deposit>
-						<Withdrawal path={path.withdrawal.root}>
-							<WithdrawalHome path={path.withdrawal.sub.root} />
-							<WithdrawalHistory
-								path={path.withdrawal.sub.history.root}
+							<Deposit path={path.deposit.root}>
+								<Deposit path="/" />
+								<DepositHistory
+									path={path.depositHistory.root}
+								/>
+							</Deposit>
+							<Withdrawal path={path.withdrawal.root}>
+								<WithdrawalHome
+									path={path.withdrawal.sub.root}
+								/>
+								<WithdrawalHistory
+									path={path.withdrawal.sub.history.root}
+								/>
+								<WithdrawalCrypto
+									path={
+										path.withdrawal.sub.cryptoWithdrawal
+											.root
+									}
+								/>
+							</Withdrawal>
+							<Kyc path={path.kyc.root} />
+							<KycWaiting path={path.kycWaiting.root} />
+							<Transfer path={path.transfer.root}>
+								<TransferHome path={path.transfer.sub.root} />
+								<TransferHistory
+									path={path.transfer.sub.history.root}
+								/>
+							</Transfer>
+							<Statement path={path.statement.root}>
+								<StatementList path="/" />
+								<BetDateRange path="/:timePeriod" />
+								<BetOneDay path="/:timePeriod/:date" />
+								<BetByCategory path="/:timePeriod/:date/:category" />
+								<BetDetail path="/:timePeriod/:date/:category/:game" />
+							</Statement>
+							<FinancialLog path={path.financialLog.root}>
+								<FinancialLogHome path="/" />
+							</FinancialLog>
+							<Message path={path.message.root}>
+								<PersonalMsg path={path.message.sub.root} />
+								<Announcement
+									path={path.message.sub.announcement.root}
+								/>
+							</Message>
+							<Other path={`${path.other.root}`} />
+							<Casino path={`${path.casino.root}`} />
+							<Casino path={`${path.casino.root}/:tpId`} />
+							<Whoami path={path.whoami.root} />
+							<Games path={path.games.root} />
+							<Fishing path={path.fishing.root} />
+							<Sports path={path.sports.root} />
+							<LiveCasino path={path.liveCasino.root} />
+							<HowToDeposit path={path.howToDeposit.root} />
+							<HowToWithdraw path={path.howToWithdraw.root} />
+							<HowToPlay path={path.howToPlay.root} />
+							{/* <Ranking path={path.leaderBoard.root} /> */}
+							<Angpao path={path.angpao.root} />
+							<MysteryBox path={path.mysteryBox.root} />
+							<LuckyWheel path={path.luckyWheel.root} />
+							<VIP path={path.vip.root} />
+							<AppDownload path={path.appDownload.root} />
+							<AppEntPage
+								path={`/${defSpecialPath.appentpage}`}
 							/>
-							<WithdrawalCrypto
-								path={path.withdrawal.sub.cryptoWithdrawal.root}
-							/>
-						</Withdrawal>
-						<Kyc path={path.kyc.root} />
-						<KycWaiting path={path.kycWaiting.root} />
-						<Transfer path={path.transfer.root}>
-							<TransferHome path={path.transfer.sub.root} />
-							<TransferHistory
-								path={path.transfer.sub.history.root}
-							/>
-						</Transfer>
-						<Statement path={path.statement.root}>
-							<StatementList path="/" />
-							<BetDateRange path="/:timePeriod" />
-							<BetOneDay path="/:timePeriod/:date" />
-							<BetByCategory path="/:timePeriod/:date/:category" />
-							<BetDetail path="/:timePeriod/:date/:category/:game" />
-						</Statement>
-						<FinancialLog path={path.financialLog.root}>
-							<FinancialLogHome path="/" />
-						</FinancialLog>
-						<Message path={path.message.root}>
-							<PersonalMsg path={path.message.sub.root} />
-							<Announcement
-								path={path.message.sub.announcement.root}
-							/>
-						</Message>
-						<Other path={`${path.other.root}`} />
-						<Casino path={`${path.casino.root}`} />
-						<Casino path={`${path.casino.root}/:tpId`} />
-						<Whoami path={path.whoami.root} />
-						<Games path={path.games.root} />
-						<Fishing path={path.fishing.root} />
-						<Sports path={path.sports.root} />
-						<LiveCasino path={path.liveCasino.root} />
-						<HowToDeposit path={path.howToDeposit.root} />
-						<HowToWithdraw path={path.howToWithdraw.root} />
-						<HowToPlay path={path.howToPlay.root} />
-						{/* <Ranking path={path.leaderBoard.root} /> */}
-						<AngPow path={path.angPow.root} />
-						<MysteryBox path={path.mysteryBox.root} />
-						<LuckyWheel path={path.luckyWheel.root} />
-						<VIP path={path.vip.root} />
-						<AppDownload path={path.appDownload.root} />
-						<AppEntPage path={`/${defSpecialPath.appentpage}`} />
-						<Streaming path={path.streaming.root} />
-						<UMPage path={path.um.root} />
-						<WorldCup path={path.worldCup.root} />
-					</Router>
-				</Layout>
-			</LocationProvider>
-			<PopBox />
-		</Wrapper>
+							<Streaming path={path.streaming.root} />
+							<UMPage path={path.um.root} />
+							<WorldCup path={path.worldCup.root} />
+						</Router>
+					</Layout>
+				</LocationProvider>
+				<PopBox />
+			</Wrapper>
+		</Provider>
 	);
 };
 

@@ -101,8 +101,8 @@ export default {
 	// leaderBoard: {
 	// 	root: "leaderBoard"
 	// },
-	angPow: {
-		root: "angPow"
+	angpao: {
+		root: "angpao"
 	},
 	referral: {
 		root: "referral",
@@ -112,9 +112,6 @@ export default {
 				root: "history"
 			}
 		}
-	},
-	mysteryBox: {
-		root: "mysteryBox"
 	},
 	luckyWheel: {
 		root: "luckyWheel"

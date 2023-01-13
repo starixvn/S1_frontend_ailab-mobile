@@ -18,11 +18,14 @@
 		"paths": {
 			"@ailab-mobile/promotion": ["libs/promotion/src/index.js"],
 			"@ailab-mobile/api": ["libs/api/src/index.js"],
-			"@ailab-mobile/common": ["libs/common/src/index.js"],
-			"@ailab-mobile/service": ["libs/service/src/index.js"],
-			"@ailab-mobile/casino": ["libs/casino/src/index.js"],
-			"@ailab-mobile/history": ["libs/history/src/index.js"],
-			"@ailab-mobile/format-pattern": ["libs/format-pattern/src/index.ts"]
+			"@ailab-mobile/format-pattern": [
+				"libs/format-pattern/src/index.ts"
+			],
+			"@ailab-mobile/common": ["libs/common/src/index.ts"],
+			"@ailab-mobile/components": ["libs/components/src/index.ts"],
+			"@ailab-mobile/service": ["libs/common/src/lib/service/index.ts"],
+			"@ailab-mobile/store": ["libs/common/src/lib/store/index.ts"],
+			"@ailab-mobile/wrapper": ["libs/wrapper/src/index.ts"]
 		}
 	},
 	"exclude": ["node_modules", "tmp"]

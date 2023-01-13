@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
-import PropTypes from "prop-types";
+import PropTypes, { string } from "prop-types";
 import { useNavigate, Link } from "@reach/router";
 import { navContext, defNavPanel } from "../common/context";
 import { productList, defIconType, openGameType } from "../../datas/defMenu";
@@ -102,6 +102,11 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 	};
 
 	const gameArr = Object.values(productList(userInfo.langId)).map(product => {
+		// * 如果時間不在範圍內不渲染元件
+		if (product?.isEventPeriod) {
+			return null;
+		}
+
 		if (
 			product.category === productList(userInfo.langId).eSports.category
 		) {
@@ -172,8 +177,8 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 		return (
 			<ProductLinkItem
 				selected={selectedCol === product.category}
-				key={`header-menu-${product.displayKey}`}
-				spanText={i18n[product.displayKey]}
+				key={`header-menu-${product?.category}`}
+				spanText={i18n[product?.displayKey]}
 				icon_img={product.icon_img}
 				productPath={product.path}
 				href={product.href}
@@ -191,6 +196,7 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 							: true)
 				)}
 				eventIcon={product?.eventIcon}
+				className={product?.className ?? ""}
 			/>
 		);
 	});
@@ -401,16 +407,17 @@ const ProductLinkItem = ({
 	eventIcon,
 	icon_img,
 	_click,
-	selected
+	selected,
+	className
 }) => {
 	const showingEventIcon = getEventIcon({ subIcon, eventIcon });
 
 	if (productPath) {
 		return (
 			<Link to={`/${productPath}`}>
-				<div className={`nav${showingEventIcon}`}>
+				<div className={`nav${showingEventIcon} ${className} `}>
 					<img src={icon_img} alt={spanText} />
-					{spanText.toUpperCase()}
+					{String(spanText ?? "").toUpperCase()}
 				</div>
 			</Link>
 		);
@@ -444,7 +451,8 @@ ProductLinkItem.defaultProps = {
 	eventIcon: [],
 	icon_img: null,
 	_click: () => null,
-	selected: null
+	selected: null,
+	className: ""
 };
 
 ProductLinkItem.propTypes = {
@@ -455,7 +463,8 @@ ProductLinkItem.propTypes = {
 	eventIcon: PropTypes.arrayOf(PropTypes.object),
 	icon_img: PropTypes.string,
 	_click: PropTypes.func,
-	selected: PropTypes.bool
+	selected: PropTypes.bool,
+	className: string
 };
 
 const getEventIcon = ({ subIcon, eventIcon }) => {

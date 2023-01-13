@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import { useMatch } from "@reach/router";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
+import { useMatch, useLocation, useNavigate } from "@reach/router";
 import * as ct from "./context";
 import { IS_LOGGED_IN } from "../../service/auth";
 import { GET_LANG_ID, isVaildLang } from "../../service/language";
@@ -23,7 +25,10 @@ const isSpecialPath = () => {
 };
 
 export const Wrapper = ({ children }) => {
+	const { pathname } = useLocation();
+	const navigate = useNavigate();
 	const [i18n, seti18n] = useState(i18nConfig());
+	const { i18n: translationI18n } = useTranslation();
 	const [loading, setLoading] = useState(false);
 	const [root, setRoot] = useState(false);
 	const match = useMatch("/:langId/*");
@@ -329,8 +334,25 @@ export const Wrapper = ({ children }) => {
 	]);
 
 	useEffect(() => {
-		seti18n(i18nConfig(userInfo.langId));
+		const { siteLangList } = siteInfo();
+		let lang = GET_LANG_ID(userInfo?.langId);
+		if (!siteLangList.includes(lang)) {
+			lang = defaultLang;
+		}
+
+		seti18n(i18nConfig(lang));
+		translationI18n.changeLanguage(lang);
+		i18next.changeLanguage(lang);
 	}, [userInfo.langId]);
+
+	// * 設定路徑中的語系
+	useEffect(() => {
+		const { siteLangList } = siteInfo();
+		const langFromUrl = pathname?.split("/")[1];
+		if (!siteLangList.includes(langFromUrl)) {
+			navigate(`/${i18next.language}${pathname}`);
+		}
+	}, [pathname]);
 
 	return (
 		<ct.popUpMsgContext.Provider value={{ setPopUp, popUp }}>
