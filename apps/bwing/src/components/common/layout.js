@@ -1,6 +1,8 @@
 import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { useLocation, Link, useNavigate } from "@reach/router";
+import { isDateRange } from "@ailab-mobile/common";
+import { AngpaoFloatLink } from "@ailab-mobile/components";
+import { useLocation, useNavigate } from "@reach/router";
 import Footer from "./footer";
 import Header from "../header/header";
 import {
@@ -12,14 +14,13 @@ import {
 import path from "../../path";
 import Loading from "./loading";
 import { isEventPeriod } from "./common";
-import eventImg from "../../styles/img/event/angPao_en.png";
-import eventVNImg from "../../styles/img/event/angPao_vn.png";
 import LuckyWheel from "../luckyWheel/homePopBox";
 import MysteryBox from "../mysteryBox/homePopBox";
 import { eventTime } from "./eventTime";
 import Login from "../login/login";
 import Join from "../join/join.refactor";
 import GoTopBtn from "./goTopBtn";
+import { angPaoEventPeriod } from "../../pages/angpao";
 
 export const defPageInfo = {
 	default: {
@@ -139,11 +140,6 @@ export const defPageInfo = {
 		className: "main rankingNew",
 		hideLogo: true
 	},
-	angPow: {
-		titleKey: "lbl_NewYearAngPow",
-		className: "main event",
-		hideLogo: true
-	},
 	referral: {
 		titleKey: "lbl_friendReferral",
 		className: "main",
@@ -200,6 +196,11 @@ export const defPageInfo = {
 	luckyWheel: {
 		titleKey: "lbl_LuckyWheel",
 		className: "main luckyboxEvent",
+		hideLogo: true
+	},
+	angpao: {
+		titleKey: "Label_AngpaoNewYearTitle",
+		className: "angpaoEvent",
 		hideLogo: true
 	},
 	um: {
@@ -288,9 +289,13 @@ const Layout = ({ children }) => {
 			)}
 			{loading ? <Loading /> : null}
 			<Footer />
-			{isEventPeriod(eventTime.luckyWheel) && luckyWheel && root && (
-				<LuckyWheel setLuckyWheel={setLuckyWheel} />
-			)}
+			{isEventPeriod(eventTime.luckyWheel) &&
+				!isDateRange(angPaoEventPeriod) &&
+				luckyWheel &&
+				root && <LuckyWheel setLuckyWheel={setLuckyWheel} />}
+
+			{/* 僅限過年期間顯示 */}
+			{isDateRange(angPaoEventPeriod) && root && <AngpaoFloatLink />}
 
 			{isEventPeriod(eventTime.mysteryBox) && root && <MysteryBox />}
 			{pageInfo.goTopBtn === false ? null : <GoTopBtn />}
@@ -358,36 +363,8 @@ RotationHint.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
-const AngPow = ({ i18n, langId }) => {
-	const { root, setRoot } = useContext(rootContext);
-
-	const closePop = () => {
-		setRoot(false);
-	};
-
-	return root ? (
-		<div className="angPao_module">
-			<div className="angPao_close" onClick={closePop}>
-				X
-			</div>
-			<Link to={path.angPow.root}>
-				<img
-					className="angPao"
-					src={langId === "vn" ? eventVNImg : eventImg}
-					alt={i18n.lbl_FreeAngPow}
-				/>
-			</Link>
-		</div>
-	) : null;
-};
-
 Layout.propTypes = {
 	children: PropTypes.node.isRequired
-};
-
-AngPow.propTypes = {
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	langId: PropTypes.string.isRequired
 };
 
 export default Layout;

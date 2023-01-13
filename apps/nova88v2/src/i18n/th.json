@@ -199,6 +199,7 @@
 	"lbl_Free": "ฟรี",
 	"lbl_Jackpot": "แจ็คพอต",
 	"lbl_Gaming_License": "ใบอนุญาตเกม",
+	"lbl_OK": "OK",
 
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Odds",
@@ -858,5 +859,7 @@
 	"lbl_knockouts": "น็อคเอาท์",
 
 	"==============v3.0==============": "",
-	"lbl_SeeMore": "See More"
+	"lbl_SeeMore": "See More",
+
+	"Label_AngpaoNewYearTitle": "ต้อนรับอนาคตที่สดใสในปีกระต่าย"
 }

@@ -103,9 +103,15 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 
 	const gameArr = gameList({ langId: userInfo?.langId })
 		?.filter(item => {
+			// * 如果時間不在範圍內不渲染元件
+			if (item?.isEventPeriod) {
+				return false;
+			}
+
 			if (item?.allowCurrency) {
 				return item?.allowCurrency.includes(userInfo.currencyId);
 			}
+
 			return true;
 		})
 		.map(item => {

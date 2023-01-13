@@ -1,5 +1,5 @@
 import moment from "moment";
-import { number_format as lib_number_foramt } from "@ailab-mobile/common";
+import { number_format as lib_number_foramt } from "../../common/common";
 import {
 	defPromotionType,
 	defPromoStatus,

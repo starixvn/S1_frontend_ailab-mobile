@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 import * as ct from "./context";
 import { api_GetCustProfile } from "../../service/api/accountStrict";
 import {
@@ -13,6 +15,8 @@ import useInterval from "../hook/useInterval";
 import { getUrlParameter, setCookie, deleteCookie } from "./common";
 import i18nConfig from "../../i18n/config";
 import { defSpecialPath } from "../../path";
+import { GET_LANG_ID } from "../../service/language";
+import { siteInfo } from "../../config";
 
 const isSpecialPath = () => {
 	return (
@@ -24,6 +28,8 @@ const isSpecialPath = () => {
 
 export const Wrapper = ({ children }) => {
 	const [i18n, seti18n] = useState(i18nConfig());
+	const { i18n: translationI18n } = useTranslation();
+
 	const [loading, setLoading] = useState(false);
 	const [root, setRoot] = useState(false);
 
@@ -226,7 +232,15 @@ export const Wrapper = ({ children }) => {
 	}, [userInfo.isLogin, userInfo.regTime, userInfo.userName, i18n]);
 
 	useEffect(() => {
-		seti18n(i18nConfig(userInfo.langId));
+		const { siteLangList } = siteInfo();
+		let lang = GET_LANG_ID(userInfo?.langId);
+		if (!siteLangList.includes(lang)) {
+			lang = defaultLang;
+		}
+
+		seti18n(i18nConfig(lang));
+		translationI18n.changeLanguage(lang);
+		i18next.changeLanguage(lang);
 	}, [userInfo.langId]);
 
 	return (

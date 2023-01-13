@@ -205,6 +205,7 @@
 	"lbl_Free": "免费",
 	"lbl_Jackpot": "积宝奖金",
 	"lbl_Gaming_License": "游戏许可证",
+	"lbl_OK": "OK",
 
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Odds",
@@ -857,5 +858,7 @@
 	"lbl_knockouts": "淘汰赛",
 
 	"==============v3.0==============": "",
-	"lbl_SeeMore": "See More"
+	"lbl_SeeMore": "See More",
+
+	"Label_AngpaoNewYearTitle": "钱兔似锦"
 }

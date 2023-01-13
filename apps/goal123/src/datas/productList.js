@@ -1,3 +1,5 @@
+import { isDateRange } from "@ailab-mobile/common";
+import { angPaoEventPeriod } from "../pages/angpao";
 import { isEventPeriod } from "../components/common/common";
 import path from "../path";
 import { eventTime } from "../components/common/eventTime";
@@ -178,6 +180,15 @@ const gameList = [
 				spanTextKey: "lbl_eSports"
 			}
 		]
+	},
+	{
+		category: "event",
+		img: `${bannerImgUrl}/h5/img/event/wheel/eventlink-top.png`,
+		className: "event",
+		path: `luckyWheel`,
+		link: true,
+		type: openGameType.Link,
+		isEventPeriod: !isDateRange(angPaoEventPeriod)
 	},
 	{
 		category: "cryptoSports",

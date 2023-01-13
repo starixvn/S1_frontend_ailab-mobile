@@ -1,9 +1,11 @@
 /* eslint-disable camelcase */
+import { isDateRange } from "@ailab-mobile/common";
 import { siteInfo, bannerImgUrl } from "../config";
 import path from "../path";
 import { defGameInfo } from "./productList";
 import { isEventPeriod } from "../components/common/common";
 import { eventTime } from "../components/common/eventTime";
+import { angPaoEventPeriod } from "../pages/angpao";
 
 export const defIconType = {
 	live: " liveicon",
@@ -52,6 +54,15 @@ export const productList = langId => {
 					inPeriod: isEventPeriod(eventTime.sports_cryptoSports)
 				}
 			]
+		},
+		wheel: {
+			category: "wheel",
+			icon_img: `${bannerImgUrl}/h5/img/event/wheel/eventlink-top.png`,
+			className: "event",
+			path: `luckyWheel`,
+			link: true,
+			type: openGameType.Link,
+			isEventPeriod: !isDateRange(angPaoEventPeriod)
 		},
 		sports: {
 			category: "sports",

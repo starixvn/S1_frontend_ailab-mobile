@@ -1,8 +1,8 @@
 import React from "react";
 import { PromotionAPI, AccountAPI } from "@ailab-mobile/api";
-import { isConvert } from "@ailab-mobile/common";
 import { configContext } from "./context";
 import { defWrapperCol, defRuleCols } from "./def";
+import { isConvert } from "./common";
 
 export default ({
 	config,
