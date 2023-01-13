@@ -737,7 +737,8 @@
 
 	"==============E-Wallet==============": "",
 	"lbl_EWallet": "กระเป๋าสตางค์อิเล็กทรอนิกส์",
-	"lbl_AddEWallet": "เพิ่ม E-Wallet",
+	"lbl_AddEWallet": "เพิ่มกระเป๋า E-Wallet",
+  "lbl_EWallet_Hint": "หมายเหตุ: บัญชี E-Wallet จำเป็นต้องยืนยันตัวตนก่อนใช้งาน",
 	"==============Crypto Wallet==============": "",
 	"lbl_CryptoPay": "ชำระเงินแบบ Crypto",
 	"lbl_CryptoWallet": "กระเป๋าเงิน คริปโต",

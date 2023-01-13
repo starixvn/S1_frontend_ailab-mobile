@@ -1,12 +1,11 @@
 import { isDateRange } from "@ailab-mobile/common";
 import path from "../path";
-import SiteURL, { siteInfo, cloudBannerImgURL } from "../config";
+import SiteURL, { cloudBannerImgURL } from "../config";
 import { defPopBoxType } from "../components/common/popbox";
 import { isEventPeriod, defCurrenyId } from "../components/common/common";
 import { eventTime } from "../components/common/eventTime";
 import { getLeaderBoardSupportCurrencyId } from "../components/ranking/def";
 import allowedCurrencyList from "./allowedCurrencyList";
-
 import { angPaoEventPeriod } from "../pages/angpao";
 
 export const productList = {
@@ -279,7 +278,7 @@ const defSortFishing = {
 	]
 };
 
-const gameList = ({ langId }) => {
+const gameList = ({ langId, currencyId }) => {
 	return [
 		{
 			category: "reward",
@@ -992,7 +991,10 @@ const gameList = ({ langId }) => {
 			category: "affiliate",
 			categoryIcon: "affiliate",
 			translateKey: "lbl_Affiliate",
-			href: `${siteInfo(langId).affiliateLink}`,
+			href:
+				currencyId === defCurrenyId.MYR
+					? ` https://aff.nova88mas102.com/?lang=${langId}`
+					: `https://aff.nova88bkk.com/?lang=${langId}`,
 			allowCurrency: allowedCurrencyList.affiliate
 		},
 		{
