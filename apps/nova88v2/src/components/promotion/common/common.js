@@ -1,11 +1,39 @@
+/* eslint-disable no-param-reassign */
 import moment from "moment";
-import { number_format as lib_number_foramt } from "../../common/common";
+
 import {
 	defPromotionType,
 	defPromoStatus,
 	defWrapperCol,
 	defFilterType
 } from "./def";
+
+export const lib_number_foramt = ({
+	number,
+	formatRequired = false,
+	isConvertRequired = false,
+	digits = 2
+}) => {
+	if (!isNaN(number)) {
+		if (isConvertRequired || formatRequired) {
+			number /= 1000;
+		}
+
+		if (digits > 0) {
+			number = Number(number).toFixed(digits);
+		}
+	}
+
+	number += "";
+	// eslint-disable-next-line prefer-const
+	let arr = number.split(".");
+	const re = /(\d{1,3})(?=(\d{3})+$)/g;
+
+	return `${arr[0].replace(re, "$1,")}${
+		// eslint-disable-next-line prefer-template
+		digits > 0 && arr.length === 2 ? "." + arr[1] : ""
+	}${formatRequired ? " ('000)" : ""}`;
+};
 
 export const isArrayNotEmpty = arr => {
 	return Array.isArray(arr) && arr.length !== 0;
