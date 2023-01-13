@@ -6,7 +6,9 @@ const allowedCurrencyList = {
 		defCurrenyId.MYR,
 		defCurrenyId.THB,
 		defCurrenyId.IDR,
-		defCurrenyId.CNY
+		defCurrenyId.CNY,
+		defCurrenyId.BDT,
+		defCurrenyId.USD
 	],
 	exchange: [defCurrenyId.INR, defCurrenyId.BDT],
 	rewards: [defCurrenyId.MYR, defCurrenyId.THB, defCurrenyId.IDR],
