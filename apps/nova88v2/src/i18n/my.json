@@ -757,6 +757,7 @@
 	"==============E-Wallet==============": "",
 	"lbl_EWallet": "E-Dompet",
 	"lbl_AddEWallet": "Tambah E-Dompet",
+  "lbl_EWallet_Hint": "Sila ambil perhatian: Akaun E-Wallet mesti disahkan.",
 	"==============Crypto Wallet==============": "",
 	"lbl_CryptoPay": "Kripto",
 	"lbl_CryptoWallet": "Dompet Kripto",

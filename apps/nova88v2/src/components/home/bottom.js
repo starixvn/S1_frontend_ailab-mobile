@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import PropTypes from "prop-types";
-import { siteInfo, cloudBannerImgURL } from "../../config";
+import { defCurrenyId } from "apps/nova88v2/src/components/common/common";
+import { cloudBannerImgURL } from "../../config";
 import { Link } from "../../route/link";
 import path from "../../path";
 import { useGetSEODatas } from "../seo/seo";
@@ -60,7 +61,11 @@ const Bottom = ({ i18n, langId, currencyId }) => {
 								? {}
 								: { pointerEvents: "none" }
 						}
-						href={`${siteInfo(langId).affiliateLink}`}
+						href={
+							currencyId === defCurrenyId.MYR
+								? ` https://aff.nova88mas102.com/?lang=${langId}`
+								: `https://aff.nova88bkk.com/?lang=${langId}`
+						}
 						target="_blank"
 						rel="noreferrer noopener">
 						{i18n.lbl_AffiliateProgram}

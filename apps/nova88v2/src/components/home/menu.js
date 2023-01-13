@@ -101,7 +101,10 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 		}
 	};
 
-	const gameArr = gameList({ langId: userInfo?.langId })
+	const gameArr = gameList({
+		langId: userInfo?.langId,
+		currencyId: userInfo?.currencyId
+	})
 		?.filter(item => {
 			// * 如果時間不在範圍內不渲染元件
 			if (item?.isEventPeriod) {
@@ -251,7 +254,8 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 		});
 
 	const subGameArr = gameList({
-		langId: userInfo?.langId
+		langId: userInfo?.langId,
+		currencyId: userInfo?.currencyId
 	})?.map(item => {
 		let _subGame = item.items;
 		if (Array.isArray(item?.customSort?.[userInfo.currencyId])) {
