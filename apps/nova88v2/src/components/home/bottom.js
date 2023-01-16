@@ -21,6 +21,16 @@ const Bottom = ({ i18n, langId, currencyId }) => {
 		displayPage: defDisplayPage.Footer
 	});
 
+	const getCurrencyLink = (targetCurrencyId, targetLangId) => {
+		if (targetCurrencyId === defCurrenyId.MYR) {
+			return ` https://aff.nova88mas102.com/?lang=${targetLangId}`;
+		}
+		if (targetCurrencyId === defCurrenyId.INR) {
+			return `https://aff.nova88india.com/?lang=${targetLangId}`;
+		}
+		return `https://aff.nova88bkk.com/?lang=${targetLangId}`;
+	};
+
 	const snsArr = socialChannel.map(el => (
 		<a
 			key={`channel-${el.channelName}`}
@@ -61,11 +71,7 @@ const Bottom = ({ i18n, langId, currencyId }) => {
 								? {}
 								: { pointerEvents: "none" }
 						}
-						href={
-							currencyId === defCurrenyId.MYR
-								? ` https://aff.nova88mas102.com/?lang=${langId}`
-								: `https://aff.nova88bkk.com/?lang=${langId}`
-						}
+						href={getCurrencyLink(currencyId, langId)}
 						target="_blank"
 						rel="noreferrer noopener">
 						{i18n.lbl_AffiliateProgram}

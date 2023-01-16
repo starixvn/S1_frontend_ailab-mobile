@@ -22,6 +22,16 @@ export const productList = {
 	}
 };
 
+export const getCurrencyLink = (targetCurrencyId, langId) => {
+	if (targetCurrencyId === defCurrenyId.MYR) {
+		return ` https://aff.nova88mas102.com/?lang=${langId}`;
+	}
+	if (targetCurrencyId === defCurrenyId.INR) {
+		return `https://aff.nova88india.com/?lang=${langId}`;
+	}
+	return `https://aff.nova88bkk.com/?lang=${langId}`;
+};
+
 export const defIconType = {
 	new: " icon-new",
 	hot: " icon-mediafire"
@@ -991,10 +1001,7 @@ const gameList = ({ langId, currencyId }) => {
 			category: "affiliate",
 			categoryIcon: "affiliate",
 			translateKey: "lbl_Affiliate",
-			href:
-				currencyId === defCurrenyId.MYR
-					? ` https://aff.nova88mas102.com/?lang=${langId}`
-					: `https://aff.nova88bkk.com/?lang=${langId}`,
+			href: getCurrencyLink(currencyId, langId),
 			allowCurrency: allowedCurrencyList.affiliate
 		},
 		{
