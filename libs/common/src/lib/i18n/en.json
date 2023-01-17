@@ -17,7 +17,7 @@
 	"Label_RemainTimes": "Still remain {{count}} times chance.",
 	"Label_AngpaoInfoA": "a. Event date: 21st January 2023 until 5th February 2023",
 	"Label_AngpaoInfoB": "b. Members need to complete the accumulated designated effective betting amount every day before they can participate in the Angpao shaking activity at 1AM (local time) on the next day.",
-	"Label_AngpaoInfoC": "c. To participate, a member has to make a deposit within 24 hours with amount minimum of MYR {{amount}} for one ticket (1).",
+	"Label_AngpaoInfoC": "c. To participate, a member has to make a deposit within 24 hours with amount minimum of {{currency}} {{amount}} for one ticket (1).",
 	"Label_AngpaoInfoD": "d. This event is not shared with any promotions of {{siteName}}. Any instant cashing out, bet cancellation, re-settlement or principal refund will not be included in the calculation of this activity.",
 	"Label_AngpaoInfoE": "e. Members can only get 1 time of shaking Angpao if they successfully accumulate {{amount}} valid bets, and they can get up to 3 times of shaking Angpao per day.",
 	"Label_AngpaoInfoF": "f. Member required to complete 1X TO of the rewards before withdrawal.",
