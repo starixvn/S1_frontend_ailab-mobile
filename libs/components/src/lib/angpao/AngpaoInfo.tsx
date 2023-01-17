@@ -17,6 +17,7 @@ const AngpaoInfo = ({ currencyId }: IAngpaoInfoProps) => {
 				<li>{t("Label_AngpaoInfoB")}</li>
 				<li>
 					{t("Label_AngpaoInfoC", {
+						currency: t(`Label_Currency_${currencyId}`),
 						amount: {
 							[CurrenciesEnum.MY]: "200",
 							[CurrenciesEnum.TH]: "1,800",
