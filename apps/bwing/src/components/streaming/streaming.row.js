@@ -3,7 +3,6 @@ import moment from "moment";
 import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
 import { navContext, defNavPanel, popBoxContext } from "../common/context";
-import { sportStreamDef } from "../../datas/productList";
 import config, { bannerImgUrl } from "../../config";
 import path from "../../path";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
@@ -70,24 +69,14 @@ export const StreamingModule = ({
 		if (!isLogin) {
 			handleLogin();
 		} else {
-			const gameName = Object.values(sportStreamDef).find(item => {
-				return item.tpId === tpId && item.gameId === gameId;
-			}).name;
-
 			GET_ENTER_PAGE({
 				langId,
 				tpId,
 				gameId,
 				matchid: matchID,
 				isLogin,
-				loginCallback: handleLogin()
+				loginCallback: handleLogin
 			});
-
-			// navigate(
-			// 	`/${path.sports.root}?game=${
-			// 		gameName || "soccer"
-			// 	}&matchId=${matchID}`
-			// );
 		}
 	};
 
@@ -96,7 +85,14 @@ export const StreamingModule = ({
 			if (nowPlaying) {
 				return (
 					<>
-						<span className="started">{i18n.lbl_Started}</span>
+						<span
+							className="started"
+							onClick={e => {
+								e.stopPropagation();
+								ClickLiveTv();
+							}}>
+							{i18n.lbl_Started}
+						</span>
 						<button
 							onClick={e => {
 								e.stopPropagation();
@@ -122,7 +118,7 @@ export const StreamingModule = ({
 	};
 
 	return (
-		<div className="liveBox" onClick={ClickLiveTv}>
+		<div className="liveBox">
 			<div>
 				<div className="gametitle">{league}</div>
 				<button className={`youtube${nowPlaying ? "" : " close"}`} />
@@ -159,7 +155,9 @@ StreamingModule.defaultProps = {
 	homeScore: null,
 	awayScore: null,
 	isLogin: null,
-	actStatus: 1
+	actStatus: 1,
+	tpId: null,
+	gameId: null
 };
 
 StreamingModule.propTypes = {
@@ -177,5 +175,7 @@ StreamingModule.propTypes = {
 	matchID: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 		.isRequired,
 	channel: PropTypes.number.isRequired,
+	tpId: PropTypes.number,
+	gameId: PropTypes.number,
 	actStatus: PropTypes.number
 };

@@ -14,18 +14,10 @@ import { LOGOUT } from "../../service/auth";
 import Logo from "../img/logo";
 import { useGetBalance } from "./hook";
 import AppDownloadHint from "./appDownloadHint";
-// import Filter from "./filter";
 import { bannerImgUrl } from "../../config";
 import MsgPopup from "./msgPopup";
 
-const Header = ({
-	hideLogo,
-	title,
-	selCategory,
-	handleSelectCategory,
-	appHint,
-	setAppHint
-}) => {
+const Header = ({ hideLogo, title, appHint, setAppHint }) => {
 	const [isOpenSideMenu, setIsOpenSideMenu] = useState(false);
 	const { i18n } = useContext(i18nContext);
 	const { root } = useContext(rootContext);
@@ -92,12 +84,6 @@ const Header = ({
 					userInfo={userInfo}
 				/>
 			</div>
-			{/* {handleSelectCategory && (
-				<Filter
-					handleSelect={handleSelectCategory}
-					selected={selCategory?.type}
-				/>
-			)} */}
 			<SubMenu
 				handleSideMenuPanel={handleSideMenuPanel}
 				isOpenSideMenu={isOpenSideMenu}
@@ -109,8 +95,6 @@ const Header = ({
 Header.defaultProps = {
 	hideLogo: null,
 	title: null,
-	selCategory: null,
-	handleSelectCategory: () => null,
 	appHint: false,
 	setAppHint: () => null
 };
@@ -118,8 +102,6 @@ Header.defaultProps = {
 Header.propTypes = {
 	hideLogo: PropTypes.bool,
 	title: PropTypes.string,
-	selCategory: PropTypes.objectOf(PropTypes),
-	handleSelectCategory: PropTypes.func,
 	appHint: PropTypes.bool,
 	setAppHint: PropTypes.func
 };

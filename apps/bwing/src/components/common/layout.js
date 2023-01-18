@@ -181,9 +181,7 @@ export const defPageInfo = {
 	streaming: {
 		titleKey: "lbl_LiveStreaming",
 		className: "main",
-		hideLogo: true,
-		showMenuBar: true,
-		customHeader: true
+		hideLogo: true
 	},
 	home: {
 		titleKey: "",
