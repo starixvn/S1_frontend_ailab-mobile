@@ -6,7 +6,7 @@ import {
 	useHandleStreamList,
 	useSelCategory
 } from "../components/streaming/hook";
-import Header from "../components/header/header";
+import Filter from "../components/header/filter";
 
 const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
@@ -24,9 +24,9 @@ const IndexPage = () => {
 		selCategory
 	});
 
-	const arr = videoList?.map((v, vidx) => (
+	const arr = videoList?.map(v => (
 		<StreamingModule
-			key={`home-streaming-selCategory-${v.type}-${vidx}`}
+			key={`home-streaming-${v.type}-${v.channel}-${v.timeStart}`}
 			i18n={i18n}
 			langId={userInfo.langId}
 			isLogin={userInfo.isLogin}
@@ -40,25 +40,19 @@ const IndexPage = () => {
 
 	return (
 		<>
-			<Header
-				hideBtn={true}
-				title={i18n.lbl_LiveStreaming}
-				hideLogo={true}
-				showMenuBar={true}
-				handleSelectCategory={handleSelectCategory}
-				selCategory={selCategory}
+			<Filter
+				handleSelect={handleSelectCategory}
+				selected={selCategory?.type}
 			/>
-			<main className="main">
-				<div className="liverightModule">
-					<div className="livelist">
-						{arr.length <= 0 ? (
-							<StreamingNoData i18n={i18n} />
-						) : (
-							<div className="opentv active">{arr}</div>
-						)}
-					</div>
+			<div className="liverightModule">
+				<div className="livelist">
+					{arr.length <= 0 ? (
+						<StreamingNoData i18n={i18n} />
+					) : (
+						<div className="opentv active">{arr}</div>
+					)}
 				</div>
-			</main>
+			</div>
 		</>
 	);
 };
