@@ -28,7 +28,7 @@ const HotGame = ({ i18n, userInfo }) => {
 			})
 			.then(res => {
 				if (res.data.errorCode === 0) {
-					setGameList(res.data.data);
+					setGameList(res?.data?.data || []);
 				} else {
 					setPopBox({
 						isOpen: true,
