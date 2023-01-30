@@ -501,6 +501,7 @@
 	"lbl_Times": "Times",
 	"lbl_WithdrawalCryptoNote": "Conversion rate serves as reference purposes only, exact amount shall refer the latest rate.",
 
+
 	"==============================================Transfer====================================": "",
 
 	"lbl_MaxAmount": "Max Amount",
@@ -774,6 +775,7 @@
 	"lbl_EWallet": "E-Wallet",
 	"lbl_AddEWallet": "Add E-Wallet",
 	"lbl_EWallet_Hint": "Please note: E-Wallet Account must be verified.",
+  "lbl_EWalletAccountNumber": "E-wallet Account Number",
 	"==============Crypto Wallet==============": "",
 	"lbl_CryptoPay": "Crypto",
 	"lbl_CryptoWallet": "Crypto Wallet",
