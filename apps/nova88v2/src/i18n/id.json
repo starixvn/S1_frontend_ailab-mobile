@@ -753,6 +753,7 @@
 	"lbl_EWallet": "Dompet Elektronik",
 	"lbl_AddEWallet": "Tambahkan E-Wallet",
 	"lbl_EWallet_Hint": "Perhatian: Akun E-Wallet harus diverifikasi.",
+  "lbl_EWalletAccountNumber": "Nomer Akun E-wallet",
 	"==============Crypto Wallet==============": "",
 	"lbl_CryptoPay": "Crypto",
 	"lbl_CryptoWallet": "Dompet Crypto",

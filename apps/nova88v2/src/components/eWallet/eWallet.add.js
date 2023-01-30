@@ -296,7 +296,7 @@ const AddBankPanel = ({
 				icon="icon-newspaper"
 				inputType="tel"
 				value={userValue?.BankAccount}
-				placeholder={i18n.lbl_BankNumber}
+				placeholder={i18n.lbl_EWalletAccountNumber}
 				onBlur={checkInputbox.bind(this, {
 					col: "BankAccount",
 					val: userValue.BankAccount
