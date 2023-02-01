@@ -93,12 +93,13 @@ export class PaymentAPI extends BaseAPI {
 			IFSCCode
 		});
 
-	WithdrawalEWalletReq = (AccountNo, amount, sysId, memo) =>
+	WithdrawalEWalletReq = (AccountNo, amount, sysId, memo, blackbox) =>
 		this.paymentRequest.post("/WithdrawalEWalletReq", {
 			AccountNo,
 			amount,
 			sysId,
-			memo
+			memo,
+			blackbox
 		});
 
 	WithdrawalUSDTReq = (AccountNo, amount, blackbox) =>
