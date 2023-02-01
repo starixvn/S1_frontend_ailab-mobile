@@ -25,6 +25,7 @@ import VIPLevel from "../common/vipLevel";
 import BalancePanel from "./balancePanel";
 import ImportantNote from "./importantNote";
 import RestoreAll from "./restoreAll";
+import { Iov_GetBlackBox } from "../common/iovation";
 
 const initWarning = {
 	status: defIptStatus.default,
@@ -395,12 +396,14 @@ const Panel = () => {
 					_real_amount,
 					sysId
 				) => {
+					const blackbox = await Iov_GetBlackBox();
 					try {
 						const res = await api.payment.WithdrawalEWalletReq(
 							accountNo,
 							_real_amount,
 							sysId,
-							""
+							"",
+							blackbox
 						);
 
 						if (isMountedRef.current) {
