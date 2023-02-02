@@ -15,7 +15,7 @@ import VIPLevel from "../common/vipLevel";
 import { defCurrenyId } from "../common/common";
 
 const EWallet = () => {
-	const { userInfo, setUserInfo } = useContext(userInfoContext);
+	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
@@ -96,10 +96,6 @@ const EWallet = () => {
 								};
 							});
 							setCustBankInfo(getBankInfoArr);
-							setUserInfo(prevState => ({
-								...prevState,
-								accountName: data.accountName
-							}));
 						}
 					} else {
 						setPopBox({
