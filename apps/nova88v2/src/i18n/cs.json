@@ -744,7 +744,7 @@
 	"lbl_EWallet": "电子钱包",
 	"lbl_AddEWallet": "添加电子钱包",
 	"lbl_EWallet_Hint": "注意：電子錢包帳戶必須經過驗證。",
-	"lbl_EWalletAccountNumber": "หมายเลขบัญชี E-Wallet",
+	"lbl_EWalletAccountNumber": "电子钱包账户号码",
 	"==============Crypto Wallet==============": "",
 	"lbl_CryptoPay": "加密货币",
 	"lbl_CryptoWallet": "加密钱包",
