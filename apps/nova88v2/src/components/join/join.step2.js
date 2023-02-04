@@ -242,25 +242,18 @@ const JoinStep2 = ({
 	const phoneCheck = val => {
 		let checked = true;
 		let msg = "";
-		const regx = /^[0-9\s]*$/;
+		const phoneTypeRegx = /^[0-9\s]*$/;
+		const phoneLengthRegx = /^\+60[0-9]{9,10}$|\+62[0-9]{10,13}$|\+86[0-9]{10,11}$|\+91[0-9]{10}$|\+66[0-9]{9}$|\+880[0-9]{9}$/;
 
 		if (!val || !_areaCode) {
 			checked = false;
 			msg = t("lbl_PhoneRequired");
-		} else if (!regx.test(val)) {
+		} else if (!phoneTypeRegx.test(val)) {
 			checked = false;
 			msg = t("lbl_PhoneTooltip");
 		} else if (Object.keys(limitCountryNum).includes(_areaCode)) {
-			const limitRange =
-				limitCountryNum[areaCodeList[userValue?.AreaCodeIdx]?.value];
-			const limitNumList = limitRange.split("-");
-			if (
-				(limitNumList.length > 1 &&
-					(Number(limitNumList[0]) > val.length ||
-						val.length > Number(limitNumList[1]))) ||
-				(limitNumList.length === 1 &&
-					Number(limitNumList[0]) !== val.length)
-			) {
+			const limitRange = limitCountryNum[_areaCode];
+			if (!phoneLengthRegx.test(_areaCode + val)) {
 				checked = false;
 				msg = t("lbl_PhoneNumberErrorTip", {
 					digitalArea: limitRange
