@@ -21,14 +21,13 @@ const HotGame = ({ i18n, userInfo }) => {
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 
 	useEffect(() => {
-		api.site
-			.GetHotGames({
-				langId: userInfo.langId,
+		api.hotGame
+			.GetDataList({
 				currencyId: userInfo.currencyId
 			})
 			.then(res => {
 				if (res.data.errorCode === 0) {
-					setGameList(res?.data?.data || []);
+					setGameList(res.data.data?.HotGame);
 				} else {
 					setPopBox({
 						isOpen: true,

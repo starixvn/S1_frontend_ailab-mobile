@@ -75,11 +75,12 @@ export const GetSupportDomainList = () =>
 export const api_site_GetTpMaintainList = () =>
 	siteRequest.post(`/GetTpMaintainList`);
 
-export const api_site_GetHotGames = ({ langId }) =>
-	siteRequest.post(`/GetHotGames/${langId}`, {
-		DeviceType: defDeviceType.Mobile,
-		CurrencyId: 51
-	});
+// using new api - api/HotGame/GetDataList
+// export const api_site_GetHotGames = ({ langId }) =>
+// 	siteRequest.post(`/GetHotGames/${langId}`, {
+// 		DeviceType: defDeviceType.Mobile,
+// 		CurrencyId: 51
+// 	});
 
 export const api_site_GetSocialChannel = ({ langId, displayPage }) =>
 	siteRequest.post("GetSocialChannel", {
