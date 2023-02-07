@@ -3,7 +3,6 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&family=Poppins:wght@200;300;400;500;600;800&family=Pridi:wght@300;500&display=swap");
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -27,12 +26,12 @@ blockquote, q {
 }
 
 blockquote:before, blockquote:after {
-  content: '';
+  content: "";
   content: none;
 }
 
 q:before, q:after {
-  content: '';
+  content: "";
   content: none;
 }
 
@@ -69,7 +68,6 @@ html {
 #root {
   height: 100%;
 }
-
 #root > div {
   height: 100%;
 }
@@ -83,7 +81,6 @@ html {
   right: 4vw;
   z-index: 1;
 }
-
 .close span {
   position: absolute;
   height: 2px;
@@ -93,65 +90,51 @@ html {
   -webkit-transition: 0.25s ease-in-out;
   transition: 0.25s ease-in-out;
 }
-
 .close span:nth-child(even) {
   left: 50%;
 }
-
 .close span:nth-child(odd) {
   left: 0px;
 }
-
 .close span:nth-child(1), .close span:nth-child(2) {
   top: 0px;
 }
-
 .close span:nth-child(3), .close span:nth-child(4) {
   top: 8px;
 }
-
 .close span:nth-child(5), .close span:nth-child(6) {
   top: 16px;
 }
-
 .close.open span:nth-child(1), .close.open span:nth-child(6) {
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
 }
-
 .close.open span:nth-child(2), .close.open span:nth-child(5) {
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
-
 .close.open span:nth-child(1) {
   top: 2px;
 }
-
 .close.open span:nth-child(2) {
   top: 2px;
   left: calc(50% - 3px);
 }
-
 .close.open span:nth-child(3) {
   left: -50%;
   opacity: 0;
 }
-
 .close.open span:nth-child(4) {
   left: 100%;
   opacity: 0;
 }
-
 .close.open span:nth-child(5) {
   top: 9px;
 }
-
 .close.open span:nth-child(6) {
   top: 9px;
   left: calc(50% - 3px);
 }
-
 @media screen and (min-width: 690px) and (max-width: 1024px) {
   .close.open span:nth-child(1) {
     top: -6px;
@@ -165,7 +148,6 @@ html {
     left: calc(50% - 7px);
   }
 }
-
 @media screen and (min-width: 550px) and (max-width: 691px) {
   .close.open span:nth-child(1) {
     top: -5px;
@@ -197,7 +179,6 @@ header {
       -ms-flex-direction: column;
           flex-direction: column;
 }
-
 header > div {
   width: calc(100% - 4vw);
   background: #0e0d2f;
@@ -214,24 +195,20 @@ header > div {
           justify-content: space-between;
   white-space: nowrap;
 }
-
 header > div > a > img {
   width: 37vw;
   vertical-align: middle;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   header > div .logo img {
     width: 70%;
   }
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   header > div .logo {
     padding: 0 5vw 0 0;
   }
 }
-
 header > div .headerInfo {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -248,14 +225,12 @@ header > div .headerInfo {
       -ms-flex-align: end;
           align-items: flex-end;
 }
-
 header > div .headerInfo .MemberID {
   color: #fab617;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 header > div .headerInfo .Balance {
   color: white;
   display: -webkit-box;
@@ -265,7 +240,6 @@ header > div .headerInfo .Balance {
       -ms-flex-align: center;
           align-items: center;
 }
-
 header > div button.clickBtn {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -275,42 +249,34 @@ header > div button.clickBtn {
   padding: 0;
   margin-left: 2.5vw;
 }
-
 header > div button.clickBtn::before {
   -webkit-transform: scale(0.75);
           transform: scale(0.75);
 }
-
 header > div .headerBtnOut {
   display: none;
   margin-left: 2vw;
 }
-
 header > div .headerBtnOut.open {
   display: block;
 }
-
 header > div .headerBtnOut > button {
   border-radius: 3px;
   color: white;
   padding: 1vw 1vw;
   margin-left: 5px;
 }
-
 header > div .headerBtnOut > button.registerBtn {
   background: #d83b35;
 }
-
 header > div .headerBtnOut > button.loginBtn {
   background: #fab617;
 }
-
 header > div .headerBtnOut .icon-chat {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 header > div .headerBtnOut .icon-chat .amount {
   width: 6vw;
   height: 6vw;
@@ -333,13 +299,11 @@ header > div .headerBtnOut .icon-chat .amount {
           transform: scale(0.7);
   padding: 0.5vw;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   header > div .headerBtnOut button {
     font-size: 16px;
   }
 }
-
 header > div .headerBtnIn {
   color: #eaa378;
   -webkit-box-align: center;
@@ -348,29 +312,23 @@ header > div .headerBtnIn {
   font-size: 12px;
   display: none;
 }
-
 header > div .headerBtnIn.open {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 header > div .headerBtnIn p {
   margin: 0 5px;
 }
-
 header > div .headerBtnIn img {
   width: 30px;
 }
-
 header > div .headerBtnIn .icon {
   position: relative;
 }
-
 header > div .headerBtnIn .icon::before {
   font-size: 30px;
 }
-
 header > div .headerBtnIn .icon .amount {
   width: 6vw;
   height: 6vw;
@@ -393,7 +351,6 @@ header > div .headerBtnIn .icon .amount {
           transform: scale(0.7);
   padding: 0.5vw;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   header > div .headerBtnIn .icon .amount {
     width: 4vw;
@@ -403,7 +360,6 @@ header > div .headerBtnIn .icon .amount {
     font-size: 2vw;
   }
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   header > div .headerBtnIn {
     font-size: 16px;
@@ -412,7 +368,6 @@ header > div .headerBtnIn .icon .amount {
     width: 45px;
   }
 }
-
 header > div .headerBtnIn .itemInfo {
   background: rgba(250, 182, 23, 0.95);
   -webkit-box-shadow: rgba(250, 182, 23, 0.6) 0.75vw 0.75vw;
@@ -429,13 +384,11 @@ header > div .headerBtnIn .itemInfo {
   width: 45vw;
   height: auto;
 }
-
 header > div .headerBtnIn .itemInfo > div {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 header > div .headerBtnIn .itemInfo::before {
   content: "";
   position: absolute;
@@ -445,7 +398,6 @@ header > div .headerBtnIn .itemInfo::before {
   border-right: 3vw solid transparent;
   border-bottom: 3vw solid rgba(250, 182, 23, 0.95);
 }
-
 header > div .headerBtnIn .itemInfo::after {
   content: "";
   position: absolute;
@@ -457,7 +409,6 @@ header > div .headerBtnIn .itemInfo::after {
   -webkit-animation: routate2 linear infinite alternate 0.8s;
           animation: routate2 linear infinite alternate 0.8s;
 }
-
 header > div .headerBtnIn .itemInfo .icon-close {
   position: absolute;
   top: 3vw;
@@ -477,7 +428,6 @@ header > div .headerBtnIn .itemInfo .icon-close {
           justify-content: center;
   color: #fab617;
 }
-
 header > div .headerBtnIn .itemInfo .icon-close::before {
   font-size: 2.5vw;
 }
@@ -487,38 +437,31 @@ main {
   background: #f3f3f3;
   position: relative;
 }
-
 main.active {
   padding-top: 24vw;
 }
-
 main.stopScroll {
   position: fixed;
 }
-
 main .swiper-container {
   z-index: 4;
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
   overflow: hidden;
 }
-
 main .swiper-container-horizontal > .swiper-pagination-bullets {
   bottom: auto;
   margin-top: -5vw;
 }
-
 main .swiper-pagination {
   z-index: 2;
 }
-
 main .banner {
   width: 100%;
   height: auto;
   display: block;
   z-index: 3;
 }
-
 main #Marquee {
   height: 7vw;
   display: -webkit-box;
@@ -539,7 +482,6 @@ main #Marquee {
   border: 1px solid #4264a6;
   overflow: hidden;
 }
-
 main #Marquee .icon {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -547,7 +489,6 @@ main #Marquee .icon {
   width: 5vw;
   background: #152849;
 }
-
 main #Marquee .marquee-box {
   white-space: nowrap;
   -webkit-box-align: center;
@@ -561,18 +502,15 @@ main #Marquee .marquee-box {
   display: -ms-flexbox;
   display: flex;
 }
-
 main #Marquee .marquee-box .img {
   position: absolute;
   top: -9px;
   left: 0;
   z-index: 1;
 }
-
 main #Marquee .marquee-box .text {
   position: absolute;
 }
-
 main #Marquee > div.open {
   width: calc(100% - 5vw);
   -webkit-animation-name: marquee;
@@ -582,38 +520,33 @@ main #Marquee > div.open {
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   main #Marquee {
     border-radius: 30px;
     font-size: 16px;
   }
 }
-
 main .sideBarNew {
   width: 100%;
   position: relative;
 }
-
 main .sideBarNew::before {
   content: "";
   width: 30px;
   height: 60px;
-  background: -webkit-gradient(linear, right top, left top, from(#f2f4f7), to(rgba(255, 255, 255, 0)));
-  background: linear-gradient(to left, #f2f4f7 0%, rgba(255, 255, 255, 0) 100%);
+  background: -webkit-gradient(linear, right top, left top, from(rgb(242, 244, 247)), to(rgba(255, 255, 255, 0)));
+  background: linear-gradient(to left, rgb(242, 244, 247) 0%, rgba(255, 255, 255, 0) 100%);
   position: absolute;
   top: 0;
   right: 0%;
   z-index: 2;
   pointer-events: none;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   main .sideBarNew::before {
     height: 100px;
   }
 }
-
 main .sideBarNew div {
   overflow-x: auto;
   padding: 0 10px;
@@ -625,7 +558,6 @@ main .sideBarNew div {
   display: -ms-flexbox;
   display: flex;
 }
-
 main .sideBarNew div > button, main .sideBarNew div a {
   border-radius: 5px;
   height: 60px;
@@ -635,23 +567,21 @@ main .sideBarNew div > button, main .sideBarNew div a {
   color: #fff;
   text-transform: uppercase;
   font-size: 2.6vw;
-  background: -webkit-gradient(linear, left top, left bottom, from(#334d80), to(#4263a6));
-  background: linear-gradient(to bottom, #334d80 0%, #4263a6 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgb(51, 77, 128)), to(rgb(66, 99, 166)));
+  background: linear-gradient(to bottom, rgb(51, 77, 128) 0%, rgb(66, 99, 166) 100%);
   -webkit-box-shadow: 0 1px 2px #1a2843 inset;
           box-shadow: 0 1px 2px #1a2843 inset;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 60px;
           flex: 0 0 60px;
 }
-
 main .sideBarNew div > button.active, main .sideBarNew div a.active {
-  background: -webkit-gradient(linear, left top, left bottom, from(#ffd34f), to(#ffc34d));
-  background: linear-gradient(to bottom, #ffd34f 0%, #ffc34d 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgb(255, 211, 79)), to(rgb(255, 195, 77)));
+  background: linear-gradient(to bottom, rgb(255, 211, 79) 0%, rgb(255, 195, 77) 100%);
   color: #1f2e4d;
   -webkit-box-shadow: 0 -2px 1px #b88c36 inset;
           box-shadow: 0 -2px 1px #b88c36 inset;
 }
-
 main .sideBarNew div > button.newicon::before, main .sideBarNew div > button.liveicon::before, main .sideBarNew div > button.hoticon::before, main .sideBarNew div a.newicon::before, main .sideBarNew div a.liveicon::before, main .sideBarNew div a.hoticon::before {
   content: "";
   position: absolute;
@@ -660,31 +590,25 @@ main .sideBarNew div > button.newicon::before, main .sideBarNew div > button.liv
   display: block;
   width: 38px;
   height: 35px;
-  -webkit-animation: flash3 linear infinite alternate .3s;
-          animation: flash3 linear infinite alternate .3s;
+  -webkit-animation: flash3 linear infinite alternate 0.3s;
+          animation: flash3 linear infinite alternate 0.3s;
 }
-
 main .sideBarNew div > button.newicon::before, main .sideBarNew div a.newicon::before {
   background: url(https://banner.goal123.org/h5/img/hotgame/new.svg) no-repeat center/contain;
 }
-
 main .sideBarNew div > button.liveicon::before, main .sideBarNew div a.liveicon::before {
   background: url(https://banner.goal123.org/h5/img/hotgame/live.svg) no-repeat center/contain;
 }
-
 main .sideBarNew div > button.hoticon::before, main .sideBarNew div a.hoticon::before {
   background: url(https://banner.goal123.org/h5/img/hotgame/hot.svg) no-repeat center/contain;
 }
-
 main .sideBarNew div > button img, main .sideBarNew div a img {
   width: 35px;
 }
-
 main .sideBarNew div > button img.cryptobtn, main .sideBarNew div a img.cryptobtn {
   width: 45px;
   padding-left: 1px;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   main .sideBarNew div > button, main .sideBarNew div a {
     width: 20%;
@@ -694,7 +618,6 @@ main .sideBarNew div > button img.cryptobtn, main .sideBarNew div a img.cryptobt
     width: 50px;
   }
 }
-
 main .sideBarNew div > button.event, main .sideBarNew div a.event {
   padding: 0;
   display: -webkit-box;
@@ -707,11 +630,9 @@ main .sideBarNew div > button.event, main .sideBarNew div a.event {
       -ms-flex-pack: center;
           justify-content: center;
 }
-
 main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   width: 10.5vw;
 }
-
 @-webkit-keyframes newicon {
   0% {
     opacity: 1;
@@ -720,7 +641,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
     opacity: 0.3;
   }
 }
-
 @keyframes newicon {
   0% {
     opacity: 1;
@@ -744,14 +664,12 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex-direction: column;
           flex-direction: column;
 }
-
 .main.ranking {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
   background: url(https://banner.goal123.org/h5/img/ranking/bg-m.jpg) no-repeat top center/auto 100%;
 }
-
 .main.depositmain {
   width: calc(100% - 8vw);
   height: auto;
@@ -765,7 +683,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   -webkit-box-sizing: revert;
           box-sizing: revert;
 }
-
 .main.casino {
   width: calc(100% - 8vw);
   height: auto;
@@ -797,7 +714,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
     opacity: 1;
   }
 }
-
 .thBar {
   position: fixed;
   bottom: 15vw;
@@ -811,7 +727,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   width: 100%;
   padding: 3vw 0;
 }
-
 .thBar a {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -828,11 +743,9 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex-pack: center;
           justify-content: center;
 }
-
 .thBar a:last-child {
   border-right: 0;
 }
-
 .thBar a.icon:before {
   font-size: 8vw;
   text-align: center;
@@ -841,7 +754,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   display: -ms-flexbox;
   display: flex;
 }
-
 .thBar a span {
   font-size: 3.5vw;
   white-space: nowrap;
@@ -858,14 +770,13 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   bottom: 0;
   z-index: 4;
   background: #141f33;
-  border-top: 1px solid #ffffff2b;
+  border-top: 1px solid rgba(255, 255, 255, 0.168627451);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   height: 13vw;
   padding-top: 2vw;
 }
-
 .footerNew > a {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 0px;
@@ -886,7 +797,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   transition: 0.7s;
   position: relative;
 }
-
 .footerNew > a .circleAnimation {
   position: absolute;
   width: calc(20vw - 1px);
@@ -898,35 +808,28 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           align-items: center;
   color: #64789b;
 }
-
 .footerNew > a .circleAnimation > div {
   position: relative;
   bottom: 6vw;
 }
-
 .footerNew > a .circleAnimation > div:before {
   font-size: 7vw;
 }
-
 .footerNew > a:last-child {
   border-right: 0;
 }
-
 .footerNew > a span {
   color: #64789b;
   white-space: nowrap;
   margin-bottom: 1vw;
   font-size: 3.2vw;
 }
-
 .footerNew > a.open .circleAnimation .icon {
   color: #fbb514;
 }
-
 .footerNew > a.open span {
   color: #fbb514;
 }
-
 .footerNew > a .newicon, .footerNew > a .hoticon {
   position: absolute;
   top: -25px;
@@ -934,14 +837,12 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   display: block;
   width: 38px;
   height: 35px;
-  -webkit-animation: flash3 linear infinite alternate .3s;
-          animation: flash3 linear infinite alternate .3s;
+  -webkit-animation: flash3 linear infinite alternate 0.3s;
+          animation: flash3 linear infinite alternate 0.3s;
 }
-
 .footerNew > a .newicon {
   background: url(https://banner.goal123.org/h5/img/hotgame/new.svg) no-repeat center/contain;
 }
-
 .footerNew > a .hoticon {
   background: url(https://banner.goal123.org/h5/img/hotgame/hot.svg) no-repeat center/contain;
 }
@@ -981,7 +882,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
             transform: translateY(0px);
   }
 }
-
 .dropdown {
   background: #bfc9da;
   border: 1px solid #284985;
@@ -999,7 +899,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           box-sizing: border-box;
   padding: 2vw;
 }
-
 .dropdown:before {
   content: "";
   width: 0;
@@ -1010,15 +909,12 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   position: absolute;
   right: 3vw;
 }
-
 .dropdown i {
   margin-right: 1vw;
 }
-
 .dropdown.open .dropdown-container {
   display: block;
 }
-
 .dropdown > .dropdown-container {
   display: none;
   position: absolute;
@@ -1033,14 +929,12 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   max-height: 45vw;
   overflow-y: scroll;
 }
-
 .dropdown > .dropdown-container .dropdown-item {
   padding: 2vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 .dropdown > .dropdown-container .dropdown-item .bankLogo {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -1049,12 +943,10 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   border-radius: 5px;
   max-height: 9vw;
 }
-
 .dropdown > .dropdown-container .dropdown-item .bankLogo img {
   width: 100%;
   border-radius: 5px;
 }
-
 .dropdown > .dropdown-container .dropdown-item .bankLogo + .text {
   -webkit-box-flex: 4;
       -ms-flex: 4;
@@ -1062,11 +954,9 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   text-align: left;
   margin-left: 2vw;
 }
-
 .dropdown > .dropdown-container .dropdown-item.selected {
   background: #1e85ec;
 }
-
 .dropdown > .btn {
   width: 100%;
   -webkit-box-align: center;
@@ -1079,7 +969,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   min-height: 7vw;
   font-size: 4vw;
 }
-
 .dropdown > .btn .bankLogo {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -1091,12 +980,10 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex-align: center;
           align-items: center;
 }
-
 .dropdown > .btn .bankLogo img {
   width: 100%;
   border-radius: 5px;
 }
-
 .dropdown > .btn .bankLogo + .text {
   -webkit-box-flex: 4;
       -ms-flex: 4;
@@ -1104,7 +991,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   text-align: left;
   margin-left: 2vw;
 }
-
 .dropdown.countryCode {
   padding: 0 2vw;
 }
@@ -1132,30 +1018,25 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   overflow: auto;
   display: none;
 }
-
 #popup.active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 #popup.show {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 #popup > div {
   border: 0;
   padding: 2vw 0;
 }
-
 #popup .close {
   -webkit-transform: translateY(30%);
           transform: translateY(30%);
   right: 2vw;
 }
-
 #popup .popTit {
   background: #284985;
   border-top-left-radius: 5px;
@@ -1169,7 +1050,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           box-sizing: border-box;
   padding: 2vw 9vw 2vw 4vw;
 }
-
 #popup .popTxt {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -1196,32 +1076,26 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   font-size: 3.5vw;
   color: #052561;
 }
-
 #popup .popTxt .title {
   color: #052561;
 }
-
 #popup .popTxt img {
   width: 100%;
   border-radius: 5px;
   margin-top: 3vw;
   margin-bottom: 3vw;
 }
-
 #popup .popTxt .text-org {
   font-weight: bold;
 }
-
 #popup .popTxt .text-org + span {
   font-size: 5vw;
   font-weight: bold;
 }
-
 #popup .popTxt > div {
   margin: 2vw 0 4vw;
   color: #052561;
 }
-
 #popup .popTxt > div li {
   padding: 1vw 2vw;
   display: -webkit-box;
@@ -1231,23 +1105,18 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-
 #popup .popTxt > div li:nth-child(odd) {
   background: rgba(0, 0, 0, 0.3);
 }
-
 #popup .popTxt > div li:nth-child(even) {
   background: rgba(29, 54, 98, 0.1);
 }
-
 #popup .popTxt .btn-group {
   margin-top: 1vw;
 }
-
 #popup.errorPage {
   background: url(https://banner.goal123.org/h5/img/error_mo_bg.jpg) no-repeat center/cover;
 }
-
 #popup .icon-close {
   color: #fff;
   position: absolute;
@@ -1255,58 +1124,47 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   right: 10px;
   font-size: 16px;
 }
-
 #popup .errorInfo {
   margin-top: 80px;
   border: none;
   text-align: center;
 }
-
 #popup .errorInfo .title {
   font-size: 36px;
 }
-
 #popup .errorInfo .subTitle {
   font-size: 24px;
   margin-bottom: 25px;
 }
-
 #popup .errorInfo img {
   max-width: 120px;
 }
-
 #popup.backupDomain .pop {
   border-radius: 5px;
   overflow: hidden;
 }
-
 #popup.backupDomain .pop .icon-close {
   color: white;
 }
-
 #popup.backupDomain .pop .popTit {
   font-size: 14px;
   padding-right: 10vw;
 }
-
 #popup.backupDomain .pop .popTxt {
   font-size: 12px;
 }
-
 #popup.backupDomain .pop .popTxt > div {
   width: calc(100% - 8vw);
   padding: 1vw 2vw;
 }
-
 #popup.backupDomain .pop .popTxt > .txt {
   padding: 0;
   margin: 0 auto;
   text-align: center;
 }
-
 #popup.backupDomain .pop .popTxt .url {
   width: calc(100% - 8vw);
-  padding: .5vw 2vw;
+  padding: 0.5vw 2vw;
   border-radius: 30px;
   border: 1px solid #4e6ca8;
   margin: 3vw 2vw 1vw;
@@ -1318,7 +1176,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           align-items: center;
   position: relative;
 }
-
 #popup.backupDomain .pop .popTxt .url .copyurl {
   position: absolute;
   border-radius: 30px;
@@ -1328,7 +1185,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   right: 0.8vw;
   background: #5084e4;
 }
-
 #popup.backupDomain .pop .popTxt .text-center {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1339,13 +1195,11 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   margin: 3vw 0;
   font-size: 13px;
 }
-
-#popup.backupDomain .pop .popTxt .text-center input[type="checkbox"] {
+#popup.backupDomain .pop .popTxt .text-center input[type=checkbox] {
   display: none;
 }
-
-#popup.backupDomain .pop .popTxt .text-center input[type="checkbox"] + label {
-  margin: .5vw 1vw 0 0;
+#popup.backupDomain .pop .popTxt .text-center input[type=checkbox] + label {
+  margin: 0.5vw 1vw 0 0;
   border: 1px solid #f77900;
   border-radius: 100%;
   width: 4vw;
@@ -1358,84 +1212,67 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex-align: center;
           align-items: center;
 }
-
-#popup.backupDomain .pop .popTxt .text-center input[type="checkbox"] + label > div {
+#popup.backupDomain .pop .popTxt .text-center input[type=checkbox] + label > div {
   width: 3vw;
   height: 3vw;
   background: transparent;
   margin: auto;
   border-radius: 100%;
 }
-
-#popup.backupDomain .pop .popTxt .text-center input[type="checkbox"]:checked + label > div {
+#popup.backupDomain .pop .popTxt .text-center input[type=checkbox]:checked + label > div {
   background: #f77900;
 }
-
 #popup.backupDomain .pop img {
   margin-top: 5vw;
 }
-
 #popup.resetPassword .popTit {
   font-size: 14px;
   padding-right: 10vw;
 }
-
 #popup.resetPassword .popTxt {
   width: 84vw;
   padding: 4vw;
 }
-
 #popup.resetPassword .btn-group {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   margin: 3vw 0 0;
 }
-
 #popup.resetPassword .btn-group button {
   padding: 2vw;
   max-width: 30vw;
 }
-
 #popup.resetPassword .icon {
   font-size: 3vw;
 }
-
 #popup.resetPassword .tip {
   margin-top: 0.5vw;
 }
-
 #popup.resetPassword .inputBox, #popup.resetPassword .worldcupEvent .ticket__container .inputBox-event, .worldcupEvent .ticket__container #popup.resetPassword .inputBox-event {
   width: 100%;
   margin: 1.5vw auto 0;
 }
-
 #popup.resetPassword .inputBox i.icon, #popup.resetPassword .worldcupEvent .ticket__container .inputBox-event i.icon, .worldcupEvent .ticket__container #popup.resetPassword .inputBox-event i.icon {
   top: -2vw;
 }
-
 #popup.resetPassword .inputBox input, #popup.resetPassword .worldcupEvent .ticket__container .inputBox-event input, .worldcupEvent .ticket__container #popup.resetPassword .inputBox-event input {
   padding: 2.5vw 9vw;
 }
-
 #popup.resetPassword .inputBox .icon-module, #popup.resetPassword .worldcupEvent .ticket__container .inputBox-event .icon-module, .worldcupEvent .ticket__container #popup.resetPassword .inputBox-event .icon-module {
   top: 1vw;
 }
-
 #popup.resetPassword .inputBox .icon-module .icon, #popup.resetPassword .worldcupEvent .ticket__container .inputBox-event .icon-module .icon, .worldcupEvent .ticket__container #popup.resetPassword .inputBox-event .icon-module .icon {
   margin-left: 0;
 }
-
 #popup.resetSuccess .info {
   font-size: 3.5vw;
   margin-bottom: 3vw;
 }
-
 #popup.resetSuccess .info span {
   display: block;
   font-size: 3.95vw;
 }
-
 #popup.promospop {
   width: 100%;
   background: #1f3258;
@@ -1447,17 +1284,14 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex-pack: revert;
           justify-content: revert;
 }
-
 #popup.promospop .pop {
   padding: 0 !important;
 }
-
 #popup.promospop.active {
   top: 0;
   -webkit-transition: 1s;
   transition: 1s;
 }
-
 #popup.promospop .popTit {
   border-radius: 0;
   position: fixed;
@@ -1467,35 +1301,28 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           box-shadow: rgba(0, 0, 0, 0.7) 0 0 4px 0;
   border: 0;
 }
-
 #popup.promospop .icon-close {
   z-index: 2;
   position: absolute;
   top: 2vw;
   right: 2vw;
 }
-
 #popup.promospop .promotions {
   padding: 11vw 4vw 4vw;
   width: calc(100% - 8vw) !important;
 }
-
 #popup.cryptoAddpop .popTxt .dropdown .btn {
   font-size: 3.5vw;
 }
-
 #popup.cryptoAddpop .popTxt .dropdown .dropdown-container {
   top: 8vw;
 }
-
 #popup.cryptoAddpop .popTxt .txt-red {
   margin-right: 1vw;
 }
-
 #popup.cryptoAddpop .popTxt input {
   padding: 2vw 2vw 2vw 4vw;
 }
-
 #popup.cryptoAddpop .popTxt .infoModule {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1503,32 +1330,26 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   width: 100%;
   margin: 2vw 0;
 }
-
 #popup.cryptoAddpop .popTxt .infoModule .inputBox, #popup.cryptoAddpop .popTxt .infoModule .worldcupEvent .ticket__container .inputBox-event, .worldcupEvent .ticket__container #popup.cryptoAddpop .popTxt .infoModule .inputBox-event {
   margin: 0;
   width: 100%;
 }
-
 #popup.cryptoAddpop .popTxt .infoModule .inputBox input, #popup.cryptoAddpop .popTxt .infoModule .worldcupEvent .ticket__container .inputBox-event input, .worldcupEvent .ticket__container #popup.cryptoAddpop .popTxt .infoModule .inputBox-event input {
   font-size: 3.5vw;
 }
-
 #popup.cryptoAddpop .popTxt .infoModule .inputBox input + .txt-red, #popup.cryptoAddpop .popTxt .infoModule .worldcupEvent .ticket__container .inputBox-event input + .txt-red, .worldcupEvent .ticket__container #popup.cryptoAddpop .popTxt .infoModule .inputBox-event input + .txt-red {
   position: absolute;
   top: 1vw;
   left: 2vw;
   font-size: 3vw;
 }
-
 #popup.cryptoAddpop .popTxt .infoModule .inputBox .icon, #popup.cryptoAddpop .popTxt .infoModule .worldcupEvent .ticket__container .inputBox-event .icon, .worldcupEvent .ticket__container #popup.cryptoAddpop .popTxt .infoModule .inputBox-event .icon {
   -webkit-transform: translateY(14%);
           transform: translateY(14%);
 }
-
 #popup.cryptoAddpop .popTxt .infoModule .inputBox .icon::before, #popup.cryptoAddpop .popTxt .infoModule .worldcupEvent .ticket__container .inputBox-event .icon::before, .worldcupEvent .ticket__container #popup.cryptoAddpop .popTxt .infoModule .inputBox-event .icon::before {
   font-size: 4vw;
 }
-
 #popup.cryptoAddpop .popTxt .infoModule.parts {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1538,68 +1359,55 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
 }
-
 #popup.cryptoAddpop .popTxt .infoModule.parts .inputBox, #popup.cryptoAddpop .popTxt .infoModule.parts .worldcupEvent .ticket__container .inputBox-event, .worldcupEvent .ticket__container #popup.cryptoAddpop .popTxt .infoModule.parts .inputBox-event {
   width: 50vw;
 }
-
 #popup.cryptoAddpop .popTxt .infoModule.parts .btn-group {
   margin: 0;
   -webkit-box-flex: 1;
       -ms-flex: 1 1;
           flex: 1 1;
 }
-
 #popup.cryptoAddpop .popTxt .infoModule.parts .btn-group button, #popup.cryptoAddpop .popTxt .infoModule.parts .btn-group a {
   font-size: 3.5vw;
 }
-
 #popup.cryptoAddpop .popTxt .infoModule .icon-module {
-  top: .6vw;
+  top: 0.6vw;
 }
-
 #popup.cryptopop .popTxt {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
 }
-
 #popup.cryptopop .popTxt > div {
   margin: 0 0 1vw 0;
   word-break: break-all;
 }
-
 #popup.cryptoPaypop .popTxt {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
 }
-
 #popup.cryptoPaypop .popTxt > div {
   margin: 0;
 }
-
 #popup.cryptoPaypop .popTxt > div span {
   color: #5084e4;
 }
-
 #popup.cryptoPaypop .popTxt > div.sisa {
   color: #d83b35;
   text-align: center;
   margin: 2vw auto;
 }
-
 #popup.cryptoPaypop .popTxt > div.sisa > div:nth-child(2) {
   font-weight: bold;
 }
-
 #popup.cryptoPaypop .popTxt > div li {
   background: none;
   margin: 0 0 0 4vw;
   padding: 0;
   display: revert;
 }
-
 #popup.cryptoPaypop .guide {
   border-top: 1px dotted #b2b2b2;
   border-bottom: 1px dotted #b2b2b2;
@@ -1619,11 +1427,9 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex-flow: column;
           flex-flow: column;
 }
-
 #popup.cryptoPaypop .guide .accountInfo {
   margin: 2.5vw 0 0;
 }
-
 #popup.cryptoPaypop .guide .accountInfo > div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1636,7 +1442,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex-pack: center;
           justify-content: center;
 }
-
 #popup.cryptoPaypop .guide .copyBtn {
   background: #4e6ca8;
   padding: 1vw;
@@ -1644,36 +1449,30 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   border-radius: 2px;
   color: #ffffff;
 }
-
 #popup.cryptoPaypop .guide img {
   width: 40vw;
   margin: 0;
 }
-
 #popup.cryptoPaypop ul li {
   margin-left: 4vw;
   list-style: decimal;
 }
-
 #popup.angpao_pop {
   background: rgba(31, 50, 88, 0.85);
 }
-
 #popup.angpao_pop .popTxt {
   background: transparent;
   border: 0;
   position: relative;
 }
-
 #popup.angpao_pop .popTxt img {
   max-width: 365px;
 }
-
 #popup.angpao_pop .popTxt .icon-close {
   position: absolute;
   top: 0;
   right: 0;
-  background: #c53131;
+  background: rgb(197, 49, 49);
   color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1684,14 +1483,67 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: .5vw;
+  padding: 0.5vw;
   border-radius: 50%;
   width: 6vw;
   height: 6vw;
 }
-
 #popup.angpao_pop .popTxt .icon-close::before {
   font-size: 4vw;
+}
+#popup.statuspop {
+  color: #5574a7;
+}
+#popup.statuspop .pop {
+  background: #eaf1ff;
+  border: 1px solid #284985;
+  padding: 0;
+  border-radius: 1vw;
+}
+#popup.statuspop .pop .statustitle {
+  font-size: 4.5vw;
+  padding: 2vw 9vw 2vw 4vw;
+  border-bottom: 1px solid #5574a7;
+  background: #284985;
+  color: white;
+  position: relative;
+}
+#popup.statuspop .pop .statustitle .close {
+  right: 2vw;
+  top: 2vw;
+}
+#popup.statuspop .pop .statuscontent {
+  padding: 0 3.5vw;
+  border-top: 0;
+}
+#popup.statuspop .pop .statuscontent > div {
+  border-bottom: 1px solid #c1cceb;
+}
+#popup.statuspop .pop .statuscontent > div .subtitle {
+  font-size: 4vw;
+}
+#popup.statuspop .pop .statuscontent > div > div {
+  font-size: 3.5vw;
+  margin-top: 3vw;
+  color: #052561;
+}
+#popup.statuspop .pop .statuscontent > div > div:last-child {
+  margin: 1vw 0 3vw;
+}
+#popup.statuspop .pop .statuscontent > div:last-child {
+  border-bottom: 0;
+}
+#popup.statuspop .pop .success {
+  background: #1e85ec;
+  padding: 2vw 10vw;
+  border-radius: 1vw;
+  margin: auto auto 5vw;
+  color: white;
+  display: block;
+}
+#popup.statuspop .pop .success::before {
+  content: "";
+  display: block;
 }
 
 .txt-red {
@@ -1701,7 +1553,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 .header {
   border-bottom: 0;
 }
-
 .header .title {
   font-size: 5vw;
   margin: 0 auto;
@@ -1733,7 +1584,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   left: 0;
   z-index: 2;
 }
-
 .tag a {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -1751,20 +1601,17 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   text-align: center;
   white-space: nowrap;
 }
-
 .tag a.open {
   color: #1e85ec;
   border-color: #1e85ec;
   font-weight: bold;
 }
-
 .tag.scrollBar {
   overflow: scroll;
   -webkit-box-pack: unset;
       -ms-flex-pack: unset;
           justify-content: unset;
 }
-
 .tag.scrollBar a {
   margin: 0 3.5vw;
 }
@@ -1776,22 +1623,18 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   height: auto;
   min-height: 100%;
 }
-
 .mainNew .bannerNew {
   position: relative;
   font-size: 0;
   overflow: hidden;
 }
-
 .mainNew .bannerNew .swiper-container {
   position: relative;
 }
-
 .mainNew .bannerNew > img {
   width: 100%;
   height: 110px;
 }
-
 .mainNew .walletBox {
   display: none;
   padding: 2vw;
@@ -1800,23 +1643,19 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           justify-content: space-between;
   background-color: #fff;
 }
-
 .mainNew .walletBox.open {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 .mainNew .walletBox > div.side-info {
   width: 35%;
   font-size: 12px;
   color: #052561;
 }
-
 .mainNew .walletBox > div.side-info p {
   color: #1e85ec;
 }
-
 .mainNew .walletBox > div.side-info > div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1825,28 +1664,23 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex-align: center;
           align-items: center;
 }
-
 .mainNew .walletBox > div.side-info > div button.clickBtn {
   padding: 0;
   width: 0;
   height: 0;
 }
-
 .mainNew .walletBox > div.side-info > div button::before {
   font-size: 3vw;
   margin-left: 5px;
 }
-
 .mainNew .walletBox > div.side-info > div .money {
   word-break: break-all;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   .mainNew .walletBox > div.side-info {
     font-size: 16px;
   }
 }
-
 .mainNew .walletBox > div.content {
   width: 55%;
   display: -webkit-box;
@@ -1856,7 +1690,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-
 .mainNew .walletBox > div > a {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1876,21 +1709,17 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   width: 33.3%;
   text-align: center;
 }
-
 .mainNew .walletBox > div > a:nth-last-child(1) {
   width: 50%;
 }
-
 .mainNew .walletBox > div > a span {
   line-height: 13px;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   .mainNew .walletBox > div > a {
     font-size: 14px;
   }
 }
-
 .mainNew .hotevent {
   width: 100%;
   height: 23vw;
@@ -1904,12 +1733,10 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   position: relative;
   overflow: hidden;
 }
-
 .mainNew .hotevent .hotDiv {
   background: url(https://banner.goal123.org/h5/img/hotevent_odds.png) no-repeat top/contain;
   width: 100%;
 }
-
 .mainNew .hotevent .hotDiv h1 {
   position: absolute;
   left: 50%;
@@ -1919,14 +1746,12 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   color: #fff;
   top: 3%;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   .mainNew .hotevent .hotDiv h1 {
     font-size: 16px;
     top: 5.5%;
   }
 }
-
 .mainNew .hotevent .hotDiv > div {
   position: relative;
   width: 40%;
@@ -1942,13 +1767,11 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   color: #fff;
   font-size: 2.4vw;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   .mainNew .hotevent .hotDiv > div {
     width: 39%;
   }
 }
-
 .mainNew .hotevent .hotDiv > div.time {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -1961,17 +1784,14 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
 }
-
 .mainNew .hotevent .hotDiv > div.time p {
   white-space: nowrap;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   .mainNew .hotevent .hotDiv > div.time {
     top: 56%;
   }
 }
-
 .mainNew .hotevent .hotDiv > div.odds {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1980,13 +1800,11 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   position: absolute;
   bottom: 1%;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   .mainNew .hotevent .hotDiv > div.odds {
     bottom: 4%;
   }
 }
-
 .mainNew .hotevent .hotDiv > div.odds > div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1994,38 +1812,31 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   position: absolute;
   bottom: 55%;
 }
-
 .mainNew .hotevent .hotDiv > div.odds > div.oddL {
   left: 15%;
 }
-
 @media screen and (max-width: 325px) {
   .mainNew .hotevent .hotDiv > div.odds > div.oddL {
     left: 14%;
   }
 }
-
 .mainNew .hotevent .hotDiv > div.odds > div.oddR {
   right: 15%;
 }
-
 @media screen and (max-width: 325px) {
   .mainNew .hotevent .hotDiv > div.odds > div.oddR {
     right: 14%;
   }
 }
-
 .mainNew .hotevent .hotDiv > div.odds span {
   display: block;
   font-weight: bold;
   color: #f77900;
   margin: 0 5px;
 }
-
 .mainNew .hotevent .hotDiv > div.odds span:first-child {
   color: #1f3258;
 }
-
 .mainNew .hotevent .hotDiv > div.btn {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -2038,29 +1849,24 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
 }
-
 .mainNew .hotevent .hotDiv > div.btn a, .mainNew .hotevent .hotDiv > div.btn button {
   font-size: 2.6vw;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   .mainNew .hotevent .hotDiv > div.btn a, .mainNew .hotevent .hotDiv > div.btn button {
     font-size: 2.4vw;
   }
 }
-
 .mainNew .hotevent .hotDiv .teamL {
   position: absolute;
   top: 45%;
 }
-
 .mainNew .hotevent .hotDiv .teamL img {
   position: absolute;
-  top: -.5vw;
+  top: -0.5vw;
   width: 5vw;
   left: 34%;
 }
-
 .mainNew .hotevent .hotDiv .teamL p {
   position: absolute;
   top: 0px;
@@ -2071,7 +1877,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   overflow: hidden;
   text-align: center;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   .mainNew .hotevent .hotDiv .teamL p {
     top: 2%;
@@ -2079,44 +1884,37 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
     width: 100px;
   }
 }
-
 @media screen and (max-width: 600px) {
   .mainNew .hotevent .hotDiv .teamL p {
     width: 57px;
   }
 }
-
 @media screen and (max-width: 325px) {
   .mainNew .hotevent .hotDiv .teamL p {
     width: 42px;
   }
 }
-
 .mainNew .hotevent .hotDiv .time {
   position: absolute;
   line-height: 25px;
   top: 57%;
   color: #1f2e4d;
 }
-
 .mainNew .hotevent .hotDiv .time p {
   position: absolute;
   top: 8vw;
 }
-
 .mainNew .hotevent .hotDiv .teamR {
   position: absolute;
   right: 0;
   top: 45%;
 }
-
 .mainNew .hotevent .hotDiv .teamR img {
   position: absolute;
-  top: -.5vw;
+  top: -0.5vw;
   width: 5vw;
   right: 34%;
 }
-
 .mainNew .hotevent .hotDiv .teamR p {
   position: absolute;
   top: 0;
@@ -2127,7 +1925,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   overflow: hidden;
   text-align: center;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   .mainNew .hotevent .hotDiv .teamR p {
     top: 2%;
@@ -2135,28 +1932,23 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
     width: 100px;
   }
 }
-
 @media screen and (max-width: 600px) {
   .mainNew .hotevent .hotDiv .teamR p {
     width: 57px;
   }
 }
-
 @media screen and (max-width: 325px) {
   .mainNew .hotevent .hotDiv .teamR p {
     width: 42px;
   }
 }
-
 .mainNew .MarqueeNew {
   font-size: 12px;
   position: relative;
 }
-
 .mainNew .MarqueeNew div {
   padding: 0 5px;
 }
-
 .mainNew .MarqueeNew div img {
   position: absolute;
   left: 0;
@@ -2165,16 +1957,13 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   background: -webkit-gradient(linear, left top, left bottom, from(white), to(#e6eaf2));
   background: linear-gradient(to bottom, white 0%, #e6eaf2 100%);
 }
-
 .mainNew .MarqueeNew .marquee-box {
   color: #052561;
 }
-
 .mainNew .gameBox {
   position: relative;
   overflow: hidden;
 }
-
 .mainNew .gameBox > div .gamelistNew {
   position: relative;
   padding: 3vw 2vw;
@@ -2182,7 +1971,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           box-sizing: border-box;
   font-size: 0;
 }
-
 .mainNew .gameBox > div .gamelistNew .game {
   display: inline-block;
   width: 30%;
@@ -2190,7 +1978,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   line-height: 0;
   position: relative;
 }
-
 .mainNew .gameBox > div .gamelistNew .game > i {
   position: absolute;
   right: 0;
@@ -2203,7 +1990,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   -webkit-animation: newicon 1s linear infinite alternate;
           animation: newicon 1s linear infinite alternate;
 }
-
 .mainNew .gameBox > div .gamelistNew .game .newicon, .mainNew .gameBox > div .gamelistNew .game .hoticon {
   position: absolute;
   bottom: 20px;
@@ -2211,23 +1997,19 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   display: block;
   width: 38px;
   height: 35px;
-  -webkit-animation: flash3 linear infinite alternate .3s;
-          animation: flash3 linear infinite alternate .3s;
+  -webkit-animation: flash3 linear infinite alternate 0.3s;
+          animation: flash3 linear infinite alternate 0.3s;
 }
-
 .mainNew .gameBox > div .gamelistNew .game .newicon {
   background: url(https://banner.goal123.org/h5/img/hotgame/new.svg) no-repeat center/contain;
 }
-
 .mainNew .gameBox > div .gamelistNew .game .hoticon {
   background: url(https://banner.goal123.org/h5/img/hotgame/hot.svg) no-repeat center/contain;
 }
-
 .mainNew .gameBox > div .gamelistNew .game > img {
   width: 100%;
   border-radius: 5px 5px 0 0;
 }
-
 .mainNew .gameBox > div .gamelistNew .game .title {
   padding: 14px 10px;
   -webkit-box-sizing: border-box;
@@ -2243,18 +2025,15 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   color: #fff;
   border-radius: 0 0 5px 5px;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   .mainNew .gameBox > div .gamelistNew .game .title {
     font-size: 16px;
   }
 }
-
 .mainNew .gameBox > div .gamelistNew .game.active {
   -webkit-filter: grayscale(1);
           filter: grayscale(1);
 }
-
 .mainNew .gameBox > div .gamelistNew .game.active .maintenance {
   position: absolute;
   display: block;
@@ -2270,11 +2049,9 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   color: #fff;
   width: 25vw;
 }
-
 .mainNew .gameBox > div .gamelistNew .game .maintenance {
   display: none;
 }
-
 @-webkit-keyframes flash3 {
   0% {
     -webkit-filter: brightness(0.9);
@@ -2285,7 +2062,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
             filter: brightness(1.2);
   }
 }
-
 @keyframes flash3 {
   0% {
     -webkit-filter: brightness(0.9);
@@ -2296,7 +2072,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
             filter: brightness(1.2);
   }
 }
-
 .mainNew .vipRanking {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2308,19 +2083,16 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   width: 95%;
   margin: 0 auto;
 }
-
 .mainNew .vipRanking > a {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   margin: 0 5px;
 }
-
 .mainNew .vipRanking > a img {
   width: 100%;
   border-radius: 5px;
 }
-
 .mainNew .vipRanking > a > div {
   width: 100%;
   position: absolute;
@@ -2334,21 +2106,18 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   font-size: 14px;
   color: #052561;
 }
-
 .mainNew .infoCenter {
   padding: 0 3vw;
   text-align: center;
   background-color: #141f33;
   padding-bottom: 20px;
-  border-bottom: 1px solid #ffffff2b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.168627451);
 }
-
 .mainNew .infoCenter .title {
   background-size: 100%;
   width: 30%;
   padding: 10px 0;
 }
-
 .mainNew .infoCenter > div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2358,7 +2127,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           justify-content: space-between;
   margin-bottom: 10px;
 }
-
 .mainNew .infoCenter > div > a {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2372,15 +2140,12 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   font-size: 12px;
   color: rgba(255, 255, 255, 0.7);
 }
-
 .mainNew .infoCenter > div > a img {
   margin-right: 5px;
 }
-
 .mainNew .infoCenter > div > a p {
   font-size: 3.2vw;
 }
-
 .mainNew .infoCenter .AFFILIATEBtn {
   width: 100%;
   background: -webkit-gradient(linear, left top, left bottom, from(#ffd34f), to(#ffc34d));
@@ -2393,13 +2158,11 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           box-sizing: border-box;
   margin-top: 30px;
 }
-
 .mainNew .partner {
   background: #141f33;
   background-size: cover;
   padding: 10px 0 20px 0;
 }
-
 .mainNew .partner > div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2407,7 +2170,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   width: 100%;
   overflow-x: auto;
 }
-
 .mainNew .partner .bong88 {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -2419,7 +2181,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   font-size: 3.2vw;
   color: #fff;
 }
-
 @media screen and (min-width: 600px) and (max-width: 1024px) {
   .mainNew .partner {
     height: 24vh;
@@ -2436,7 +2197,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   color: white;
   position: relative;
 }
-
 .avatar button {
   width: 7vw;
   height: 7vw;
@@ -2457,25 +2217,21 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   right: 0;
   color: white;
 }
-
 .avatar button:before {
   font-size: 4vw;
 }
-
 .avatar img {
   width: 26vw;
   padding: 5vw;
   position: relative;
   z-index: 1;
 }
-
 .avatar div {
   background: #1e85ec;
   padding: 1vw;
   border-radius: 5px;
   text-align: center;
 }
-
 .avatar .circle {
   position: absolute;
   width: 30vw;
@@ -2510,7 +2266,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
             transform: scale(1);
   }
 }
-
 .viplv {
   color: #052561;
   display: -webkit-box;
@@ -2523,7 +2278,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex-pack: center;
           justify-content: center;
 }
-
 .viplv i {
   margin-right: 1vw;
 }
@@ -2535,7 +2289,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   text-align: center;
   margin-bottom: 1vw;
 }
-
 .balance button.clickBtn {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -2545,7 +2298,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   padding: 0;
   margin-left: 2.5vw;
 }
-
 .balance button.clickBtn::before {
   -webkit-transform: scale(0.75);
           transform: scale(0.75);
@@ -2563,11 +2315,9 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   border-radius: 5px;
   padding: 4vw;
 }
-
 .infoList > .info:nth-child(odd) {
   background: rgba(181, 189, 208, 0.3);
 }
-
 .infoList > .info:nth-child(even) {
   background: rgba(29, 54, 98, 0.3);
 }
@@ -2576,27 +2326,22 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   color: #64789b;
   margin: 2vw 0;
 }
-
 .info ul {
   display: inline-block;
 }
-
 .info ul li {
   float: left;
   width: 50%;
   line-height: 6vw;
 }
-
 .info ul li span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 .info ul li span.title {
   color: #052561;
 }
-
 .info ul li span.title button.icon,
 .info ul li span.title i.icon {
   border-radius: 100%;
@@ -2615,26 +2360,21 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           justify-content: center;
   margin: auto auto auto 2vw;
 }
-
 .info ul li span.title button.icon:before,
 .info ul li span.title i.icon:before {
   font-size: 12px;
 }
-
 .info ul li.total span {
   color: #f77900;
 }
-
 .info ul li.total span:nth-child(2) {
   font-weight: bold;
 }
-
 .info.infoBlack {
   background: #d1d6e0;
   border-radius: 5px;
   padding: 4vw;
 }
-
 .info.infoAccount li {
   width: 100%;
   display: -webkit-box;
@@ -2648,35 +2388,28 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           align-items: center;
   padding: 1vw 0;
 }
-
 .info.infoAccount li:first-child {
   margin-bottom: 2vw;
 }
-
 .info.infoAccount li:first-child .bankLogo {
   margin-bottom: 2vw;
 }
-
 .info.infoAccount li:first-child .bankLogo + span {
   font-weight: bold;
 }
-
 .info.infoAccount li .title {
   font-weight: bold;
 }
-
 .info.promotionInfo ul {
   width: 100%;
   font-size: 12px;
 }
-
 .info.promotionInfo ul li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   width: 100%;
 }
-
 .info.promotionInfo ul li > span {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -2684,14 +2417,12 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   padding: 5px;
   margin-bottom: 2px;
 }
-
 .info.promotionInfo ul li > span:nth-child(1) {
   background-color: #F5AC23;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   color: #fff;
 }
-
 .info.promotionInfo ul li > span:nth-child(2) {
   background-color: #fff;
   display: -webkit-box;
@@ -2707,6 +2438,21 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   color: #1f3258 !important;
 }
 
+.pending, .reject, .cancelled, .approved {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.pending .infobtn, .reject .infobtn, .cancelled .infobtn, .approved .infobtn {
+  background: url(https://banner.goal123.org/h5/img/notice.png) no-repeat center/cover;
+  width: 4vw;
+  height: 4vw;
+  margin-left: 1vw;
+}
+
 .inputBox, .worldcupEvent .ticket__container .inputBox-event {
   position: relative;
   color: #052561;
@@ -2714,24 +2460,20 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
-
 .inputBox.parts, .worldcupEvent .ticket__container .parts.inputBox-event {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 .inputBox.parts .dropdown, .worldcupEvent .ticket__container .parts.inputBox-event .dropdown {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   margin-left: 1vw;
 }
-
 .inputBox.parts .dropdown:first-child, .worldcupEvent .ticket__container .parts.inputBox-event .dropdown:first-child {
   margin-left: 0vw;
 }
-
 .inputBox.parts .inputBox, .worldcupEvent .ticket__container .parts.inputBox-event .inputBox, .inputBox.parts .worldcupEvent .ticket__container .inputBox-event, .worldcupEvent .ticket__container .inputBox.parts .inputBox-event, .worldcupEvent .ticket__container .parts.inputBox-event .inputBox-event {
   width: 100%;
   margin: 0;
@@ -2739,29 +2481,24 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex: 2.5;
           flex: 2.5;
 }
-
 .inputBox.disable, .worldcupEvent .ticket__container .disable.inputBox-event {
   -webkit-filter: grayscale(1);
           filter: grayscale(1);
   z-index: 1;
 }
-
 .inputBox.disable .dropdown, .worldcupEvent .ticket__container .disable.inputBox-event .dropdown {
   color: #696969;
 }
-
 .inputBox.readonly, .worldcupEvent .ticket__container .readonly.inputBox-event {
   -webkit-filter: grayscale(1);
           filter: grayscale(1);
   z-index: 0;
 }
-
 .inputBox .dropdown i.icon, .worldcupEvent .ticket__container .inputBox-event .dropdown i.icon {
   position: initial;
   -webkit-transform: translateY(0);
           transform: translateY(0);
 }
-
 .inputBox i.icon, .worldcupEvent .ticket__container .inputBox-event i.icon {
   position: absolute;
   -webkit-transform: translateY(60%);
@@ -2770,52 +2507,42 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   top: -0.5vw;
   color: #64789b;
 }
-
 .inputBox i.icon.icon-cake, .worldcupEvent .ticket__container .inputBox-event i.icon.icon-cake {
   -webkit-transform: translateY(0%);
           transform: translateY(0%);
   margin-right: 1vw;
 }
-
 .inputBox i.icon.icon-warning, .worldcupEvent .ticket__container .inputBox-event i.icon.icon-warning, .inputBox i.icon.icon-eye, .worldcupEvent .ticket__container .inputBox-event i.icon.icon-eye, .inputBox i.icon.icon-eye-blocked, .worldcupEvent .ticket__container .inputBox-event i.icon.icon-eye-blocked, .inputBox i.icon.icon-cross, .worldcupEvent .ticket__container .inputBox-event i.icon.icon-cross, .inputBox i.icon.icon-checkmark, .worldcupEvent .ticket__container .inputBox-event i.icon.icon-checkmark, .inputBox i.icon.icon-information-solid, .worldcupEvent .ticket__container .inputBox-event i.icon.icon-information-solid {
   position: initial;
   margin-right: 2vw;
   margin-left: 1.5vw;
   display: inline-block;
 }
-
 .inputBox i.icon.icon-cross::before, .worldcupEvent .ticket__container .inputBox-event i.icon.icon-cross::before {
   color: #d83b35;
 }
-
 .inputBox i.icon.icon-checkmark::before, .worldcupEvent .ticket__container .inputBox-event i.icon.icon-checkmark::before {
   color: #259076;
 }
-
 .inputBox > .icon-module, .worldcupEvent .ticket__container .inputBox-event > .icon-module {
   position: absolute;
   right: 0;
   top: 2vw;
   color: #6f7a8e;
 }
-
 .inputBox > .icon-module > i.icon, .worldcupEvent .ticket__container .inputBox-event > .icon-module > i.icon {
   -webkit-transform: translateY(15%);
           transform: translateY(15%);
 }
-
 .inputBox + .open, .worldcupEvent .ticket__container .inputBox-event + .open {
   width: 100%;
 }
-
 .inputBox.error input, .worldcupEvent .ticket__container .error.inputBox-event input {
   border: 1px solid #d83b35;
 }
-
 .inputBox.error .tip.error, .worldcupEvent .ticket__container .error.inputBox-event .tip.error {
   color: red;
 }
-
 .inputBox .iconModule, .worldcupEvent .ticket__container .inputBox-event .iconModule {
   position: absolute;
   -webkit-transform: translateY(60%);
@@ -2824,7 +2551,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   top: -2.5vw;
   color: #6f7a8e;
 }
-
 .inputBox .iconModule .icon, .worldcupEvent .ticket__container .inputBox-event .iconModule .icon {
   position: initial;
   display: inline-block;
@@ -2832,11 +2558,9 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           transform: translateY(15%);
   margin-right: 0;
 }
-
 .inputBox .icon-member::before, .worldcupEvent .ticket__container .inputBox-event .icon-member::before {
   font-size: 5vw !important;
 }
-
 .inputBox + .tip .times, .worldcupEvent .ticket__container .inputBox-event + .tip .times {
   color: red;
   margin-right: 1vw;
@@ -2849,7 +2573,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   opacity: 0;
   color: #052561;
 }
-
 .LoginRule.open {
   height: auto;
   visibility: visible;
@@ -2870,7 +2593,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   display: flex;
   width: 100%;
 }
-
 .btn-group button,
 .btn-group a {
   width: 100%;
@@ -2891,12 +2613,10 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           align-items: center;
   font-size: 3.5vw;
 }
-
 .btn-group button i,
 .btn-group a i {
   margin: 0 2vw;
 }
-
 .btn-group button i.icon-circle-right.open,
 .btn-group a i.icon-circle-right.open {
   -webkit-transform: rotate(90deg);
@@ -2904,7 +2624,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   -webkit-transition: 0.7s;
   transition: 0.7s;
 }
-
 .btn-group button i.icon-circle-right,
 .btn-group a i.icon-circle-right {
   pointer-events: none;
@@ -2913,56 +2632,46 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   -webkit-transition: 0.7s;
   transition: 0.7s;
 }
-
 .btn-group button:first-child,
 .btn-group a:first-child {
   margin-right: 0.5vw;
 }
-
 .btn-group button:last-child,
 .btn-group a:last-child {
   margin-left: 0.5vw;
 }
-
 .btn-group button.orange,
 .btn-group a.orange {
   background: #5084e4;
 }
-
 .btn-group button.blue,
 .btn-group a.blue {
   background: #1a3055;
 }
-
 .btn-group button.lightBlue,
 .btn-group a.lightBlue {
   background-color: #1e85ec;
   color: #fff;
 }
-
 .btn-group button.white,
 .btn-group a.white {
   background: white;
   color: #1d3662;
 }
-
 .btn-group button.yellow,
 .btn-group a.yellow {
   background: #fab617;
   color: white;
 }
-
 .btn-group button.darkGray,
 .btn-group a.darkGray {
   background: #666;
 }
-
 .btn-group button.addAccount,
 .btn-group a.addAccount {
   height: 15vw;
   position: relative;
 }
-
 .btn-group button.addAccount .icon-plus1,
 .btn-group a.addAccount .icon-plus1 {
   margin: auto;
@@ -2975,7 +2684,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 .statementPage a.blue {
   background-color: #1e85ec;
 }
-
 .statementPage .total {
   display: block;
   color: #f77900;
@@ -2984,7 +2692,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   text-align: center;
   margin-top: 20px;
 }
-
 .statementPage .total .title {
   color: #f77900;
 }
@@ -3000,11 +2707,10 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
-
 .selectBank button, .selectBank a {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 calc(100% / 3 - 1vw);
-          flex: 0 0 calc(100% / 3 - 1vw);
+      -ms-flex: 0 0 calc(33.3333333333% - 1vw);
+          flex: 0 0 calc(33.3333333333% - 1vw);
   border-radius: 3px;
   color: #fff;
   margin: 0.5vw;
@@ -3018,15 +2724,13 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   position: relative;
   min-height: 16.5vw;
 }
-
 .selectBank button.open, .selectBank a.open {
   border: 2px solid #1e85ec;
 }
-
 .selectBank > img {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 calc(100% / 3 - 1vw);
-          flex: 0 0 calc(100% / 3 - 1vw);
+      -ms-flex: 0 0 calc(33.3333333333% - 1vw);
+          flex: 0 0 calc(33.3333333333% - 1vw);
   border-radius: 3px;
   color: #fff;
   margin: 0.5vw;
@@ -3037,11 +2741,9 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   overflow: hidden;
   line-height: 0;
 }
-
 .selectBank img {
   width: 100%;
 }
-
 .selectBank i.icon-plus1 {
   top: 50%;
   left: calc(50% - 2.5vw);
@@ -3061,7 +2763,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           align-items: center;
   position: relative;
 }
-
 .step .stepLine {
   background: rgba(0, 0, 0, 0.6);
   position: absolute;
@@ -3075,19 +2776,16 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex-align: center;
           align-items: center;
 }
-
 .step .stepLine .stepBar50 {
   background: #1e85ec;
   width: 50%;
   height: 1vw;
 }
-
 .step .stepLine .stepBar100 {
   background: #1e85ec;
   width: 100%;
   height: 1vw;
 }
-
 .step .stepLine ~ div {
   border-radius: 100%;
   display: -webkit-box;
@@ -3100,14 +2798,12 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex-pack: center;
           justify-content: center;
 }
-
 .step .circle {
   background: rgba(31, 50, 88, 0.33);
   width: 12vw;
   height: 12vw;
   z-index: 1;
 }
-
 .step .circle div {
   border-radius: 100%;
   display: -webkit-box;
@@ -3120,13 +2816,11 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex-pack: center;
           justify-content: center;
 }
-
 .step .circle > div {
   background: rgba(31, 50, 88, 0.33);
   width: 10vw;
   height: 10vw;
 }
-
 .step .circle > div > div {
   width: 8vw;
   height: 8vw;
@@ -3134,7 +2828,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   font-weight: bold;
   color: #919191;
 }
-
 .step .circle.active > div > div {
   color: white;
 }
@@ -3146,17 +2839,14 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
-
 .depositType .icon:before {
   font-size: 10vw;
   color: #1e85ec;
 }
-
 .depositType .localBank {
   width: 100%;
   margin: auto;
 }
-
 .depositType div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3176,7 +2866,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-
 .depositType div a,
 .depositType div button {
   border-radius: 100%;
@@ -3195,26 +2884,21 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   background: white;
   overflow: hidden;
 }
-
 .depositType div a img,
 .depositType div button img {
   width: 100%;
 }
-
 .depositType div a.open,
 .depositType div button.open {
   background: #fab617;
 }
-
 .depositType div span {
   margin-top: 1vw;
   text-align: center;
 }
-
 .depositType div .title {
   color: #1e85ec;
 }
-
 .depositType div .creditTime {
   background: rgba(0, 0, 0, 0.5);
   border-radius: 5px;
@@ -3228,7 +2912,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   opacity: 0;
   height: 0;
 }
-
 .recent .recentTransactions {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3240,7 +2923,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-
 .recent.open {
   visibility: visible;
   -webkit-transition: 0.7s;
@@ -3248,13 +2930,11 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   opacity: 1;
   height: auto;
 }
-
 .recent.open .info {
   display: block;
   padding: 4vw;
   margin: 2vw 0;
 }
-
 .recent .info {
   display: none;
 }
@@ -3278,22 +2958,18 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   font-size: 3.5vw;
   color: #052561;
 }
-
 .account .bankLogo {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
-
 .account .bankLogo img {
   width: 100%;
   border-radius: 5px;
 }
-
 .account .bankLogo + .text {
   text-align: left;
 }
-
 .account .info {
   margin: 0;
   -webkit-box-flex: 4;
@@ -3301,28 +2977,22 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           flex: 4;
   margin-left: 2vw;
 }
-
 .account .info span {
   color: rgba(255, 255, 255, 0.7);
 }
-
 .account .info .title {
   color: #fff;
 }
-
 .account .info div {
   color: #61b0ff;
 }
-
 .account .info ul li {
   width: 100%;
   line-height: 16px;
 }
-
 .account .tip span {
   display: initial;
 }
-
 .account .icon-crypto {
   color: #b2b2b2;
   word-break: break-all;
@@ -3339,28 +3009,23 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex: 1;
           flex: 1;
 }
-
 .account .icon-crypto::before {
   color: #5084e4;
   margin-right: 1vw;
 }
-
 .account .nickname {
   color: #ffffff;
   font-weight: bold;
   bottom: 2vw;
   width: 100%;
 }
-
 .account.open {
   background: #fff;
   border: 1px solid #5084e4;
 }
-
 .account.open .nickname {
   color: #1f3258;
 }
-
 .account.open .icon-crypto {
   color: #4e6ca8;
 }
@@ -3373,7 +3038,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   display: -ms-flexbox;
   display: flex;
 }
-
 .smallTitle i.icon:before {
   margin-right: 1vw;
 }
@@ -3420,7 +3084,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   background: rgba(30, 133, 236, 0.2);
   width: calc(100% - 2vw - 2px);
 }
-
 .text-white-border-org span {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
@@ -3455,28 +3118,28 @@ input {
           box-sizing: border-box;
   font-size: 4vw;
 }
-
 input::-webkit-input-placeholder {
   color: #6f7a8e;
   text-align: left;
 }
-
+input::-moz-placeholder {
+  color: #6f7a8e;
+  text-align: left;
+}
 input:-ms-input-placeholder {
   color: #6f7a8e;
   text-align: left;
 }
-
 input::-ms-input-placeholder {
   color: #6f7a8e;
   text-align: left;
 }
-
 input::placeholder {
   color: #6f7a8e;
   text-align: left;
 }
 
-input[type="file"] {
+input[type=file] {
   display: none;
 }
 
@@ -3495,7 +3158,6 @@ input[type="file"] {
   white-space: nowrap;
   background: #bfc9da;
 }
-
 .fileUpload + button {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -3520,7 +3182,6 @@ button.clickBtn {
   width: 7vw;
   height: 7vw;
 }
-
 button.clickBtn:before {
   font-size: 4vw;
 }
@@ -3541,7 +3202,6 @@ button.clickBtn:before {
       flex-wrap: wrap;
   margin: 3vw 0;
 }
-
 .buttonBox button {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 calc(100% / 3 - 2vw);
@@ -3556,7 +3216,6 @@ button.clickBtn:before {
   position: relative;
   background: none;
 }
-
 .buttonBox button .icon {
   display: none;
   position: absolute;
@@ -3574,14 +3233,12 @@ button.clickBtn:before {
   -webkit-transform: translateY(40%);
           transform: translateY(40%);
 }
-
 .buttonBox button.open {
   background: #052561;
   border: 0;
   color: white;
   top: 1px;
 }
-
 .buttonBox button.open .icon {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3593,15 +3250,12 @@ button.clickBtn:before {
   color: #052561;
   display: none;
 }
-
 .tip > img {
   width: 100%;
 }
-
 .tip.open {
   display: block;
 }
-
 .tip a {
   color: #1e85ec;
   text-decoration: underline;
@@ -3616,7 +3270,6 @@ button.clickBtn:before {
   width: 100%;
   color: #d83b35;
 }
-
 .errortip.open {
   display: block;
 }
@@ -3627,7 +3280,6 @@ button.clickBtn:before {
   transition: 0.7s;
   opacity: 0;
 }
-
 .popUp.open {
   visibility: visible;
   -webkit-transition: 0.7s;
@@ -3642,11 +3294,9 @@ button.clickBtn:before {
   opacity: 0;
   height: 0;
 }
-
 .channel > a {
   height: 0;
 }
-
 .channel.open {
   visibility: visible;
   -webkit-transition: 0.7s;
@@ -3654,7 +3304,6 @@ button.clickBtn:before {
   opacity: 1;
   height: auto;
 }
-
 .channel.open > a {
   height: auto;
 }
@@ -3662,7 +3311,6 @@ button.clickBtn:before {
 .transfer ul li:nth-last-child(2) {
   width: 100%;
 }
-
 .transfer ul li:nth-last-child(2) span {
   margin-top: 1vw;
   display: -webkit-box;
@@ -3672,7 +3320,6 @@ button.clickBtn:before {
       -ms-flex-align: center;
           align-items: center;
 }
-
 .transfer ul li:nth-last-child(2) span span {
   border-radius: 3px;
   padding: 1vw;
@@ -3680,7 +3327,6 @@ button.clickBtn:before {
   background: rgba(1, 119, 146, 0.7);
   color: white;
 }
-
 .transfer ul li:last-child {
   width: 100%;
 }
@@ -3691,7 +3337,6 @@ button.clickBtn:before {
       -ms-flex-pack: start;
           justify-content: flex-start;
 }
-
 .Message .functionList ~ .account:before {
   color: #d83b35;
   content: "●";
@@ -3705,7 +3350,6 @@ button.clickBtn:before {
       -ms-flex-pack: start;
           justify-content: flex-start;
 }
-
 .Announcement .functionList {
   padding: 0;
   border: 0;
@@ -3732,28 +3376,22 @@ button.clickBtn:before {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
-
 .functionList.ann {
   border: 0;
   padding: 0;
 }
-
 .functionList .smallBtn-group {
   float: right;
 }
-
 .functionList .smallBtn-group button {
   float: left;
 }
-
 .functionList ~ .account:nth-child(even) {
   background: #526487;
 }
-
 .functionList ~ .account:nth-child(even) .content {
   color: #fff;
 }
-
 .functionList ~ .account {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
@@ -3761,7 +3399,6 @@ button.clickBtn:before {
   padding: 2vw 4vw;
   position: relative;
 }
-
 .functionList ~ .account .info {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3774,15 +3411,12 @@ button.clickBtn:before {
           align-items: center;
   margin: 2vw 0;
 }
-
 .functionList ~ .account.read:before {
   content: "";
 }
-
 .functionList ~ .account.read .title {
   font-weight: normal;
 }
-
 .functionList ~ .account .icon-circle-right {
   color: rgba(255, 255, 255, 0.3);
   -webkit-transform: rotate(-90deg);
@@ -3791,7 +3425,6 @@ button.clickBtn:before {
   transition: 0.7s;
   float: right;
 }
-
 .functionList ~ .account .icon-circle-right.open {
   color: white;
   -webkit-transform: rotate(90deg);
@@ -3799,7 +3432,6 @@ button.clickBtn:before {
   -webkit-transition: 0.7s;
   transition: 0.7s;
 }
-
 .functionList ~ .account .content {
   width: 100%;
   color: white;
@@ -3810,7 +3442,6 @@ button.clickBtn:before {
   height: 0;
   line-height: 0;
 }
-
 .functionList ~ .account .content.open {
   visibility: visible;
   -webkit-transition: 0.7s;
@@ -3839,20 +3470,16 @@ button.clickBtn:before {
       -ms-flex-align: center;
           align-items: center;
 }
-
 .checkbox input {
   display: none;
 }
-
 .checkbox .icon {
   color: #134dae;
   margin-right: 2vw;
 }
-
 .checkbox .icon.icon-checkbox:before {
   content: "\ea53";
 }
-
 .checkbox .icon.open.icon-checkbox:before {
   content: "\ea52";
 }
@@ -3865,13 +3492,11 @@ button.clickBtn:before {
       flex-wrap: wrap;
   width: 100%;
 }
-
 .introduction span {
   width: 100%;
   margin: 2px 0;
   word-break: break-word;
 }
-
 .introduction span:nth-last-child(1) {
   font-size: 3vw;
 }
@@ -3879,7 +3504,6 @@ button.clickBtn:before {
 .switch {
   position: relative;
 }
-
 .switch i.icon {
   position: absolute;
   right: 2vw;
@@ -3894,7 +3518,6 @@ button.clickBtn:before {
   width: 100%;
   overflow: hidden;
 }
-
 .casino .slotList {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3902,7 +3525,6 @@ button.clickBtn:before {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
-
 .casino .slotList .info {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 calc(33.333% - 1vw);
@@ -3912,15 +3534,12 @@ button.clickBtn:before {
   position: relative;
   line-height: 0;
 }
-
 .casino .slotList .info:nth-child(3n) {
   margin-left: 1vw;
 }
-
-.casino .slotList .info:nth-child(3n + 1) {
+.casino .slotList .info:nth-child(3n+1) {
   margin-right: 1vw;
 }
-
 .casino .slotList .info span {
   position: absolute;
   left: 1.5vw;
@@ -3930,17 +3549,14 @@ button.clickBtn:before {
   font-weight: bold;
   color: #e92429;
 }
-
 .casino .slotList .info span.icon {
   right: 1vw;
   left: initial;
   color: white;
 }
-
 .casino .slotList .info span:nth-child(2) {
   text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px -1px 0 #fff, 1px 1px 0 #fff, -1px 1px 0 #fff, -1px -1px 0 #fff;
 }
-
 .casino .slotList .info span.new-icon::before {
   content: "NEW";
   display: block;
@@ -3954,19 +3570,16 @@ button.clickBtn:before {
   -webkit-animation: flash linear infinite alternate 1s;
           animation: flash linear infinite alternate 1s;
 }
-
 .casino .slotList .info img {
   width: 100%;
   border-radius: 5px;
   -webkit-box-shadow: 2px 2px 5px -2px rgba(0, 0, 0, 0.9);
           box-shadow: 2px 2px 5px -2px rgba(0, 0, 0, 0.9);
 }
-
 .casino .slotList .info.active {
   -webkit-filter: grayscale(1);
           filter: grayscale(1);
 }
-
 .casino .slotList .info.active .maintenance {
   position: absolute;
   display: block;
@@ -3982,7 +3595,6 @@ button.clickBtn:before {
   color: #fff;
   width: 25vw;
 }
-
 .casino .slotList .info .maintenance {
   display: none;
 }
@@ -4002,23 +3614,19 @@ button.clickBtn:before {
           align-items: center;
   background: #bfc9da;
 }
-
 .inputdate:first-child {
   margin-right: 2px;
 }
-
 .inputdate:last-child {
   margin-left: 2px;
 }
-
 .inputdate i.icon {
   position: static;
   -webkit-transform: none;
           transform: none;
   margin-right: 1vw;
 }
-
-.inputdate input[type="date"] {
+.inputdate input[type=date] {
   outline: none;
   resize: none;
   border: 0;
@@ -4028,16 +3636,13 @@ button.clickBtn:before {
   background: transparent;
   white-space: nowrap;
 }
-
 .inputdate .text {
   margin-right: 1vw;
   font-size: 3vw;
 }
-
 .inputdate ::-webkit-datetime-edit {
   overflow: visible;
 }
-
 .inputdate ::-webkit-calendar-picker-indicator {
   background-image: -webkit-linear-gradient(top, transparent, transparent);
 }
@@ -4058,15 +3663,12 @@ button.clickBtn:before {
   opacity: 0;
   height: 0;
 }
-
 .filterSelect .inputBox, .filterSelect .worldcupEvent .ticket__container .inputBox-event, .worldcupEvent .ticket__container .filterSelect .inputBox-event {
   margin: 0 0 2vw;
 }
-
 .filterSelect .inputBox .dropdown-container, .filterSelect .worldcupEvent .ticket__container .inputBox-event .dropdown-container, .worldcupEvent .ticket__container .filterSelect .inputBox-event .dropdown-container {
   z-index: 2;
 }
-
 .filterSelect.open {
   visibility: visible;
   -webkit-transition: 0.7s;
@@ -4081,7 +3683,6 @@ button.clickBtn:before {
   display: flex;
   margin: 6vw 0 1vw;
 }
-
 .filterBtn button {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -4092,16 +3693,13 @@ button.clickBtn:before {
   padding: 1vw 0;
   margin-right: 2vw;
 }
-
 .filterBtn button:last-child {
   margin-right: 0;
 }
-
 .filterBtn button.open {
   color: white;
   background: #1e85ec;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   .filterBtn button {
     font-size: 16px;
@@ -4124,12 +3722,10 @@ button.clickBtn:before {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-
 .specialBonus input {
   width: calc(100% - 21vw + 1px);
   padding: 2vw;
 }
-
 .specialBonus input + .btn-group {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -4152,28 +3748,24 @@ button.clickBtn:before {
   opacity: 0;
   z-index: 5;
 }
-
 .slotFunctionNew .icon-cancel-circle {
   position: absolute;
   right: 1vw;
   top: 1vw;
   color: #333;
 }
-
 .slotFunctionNew.open {
   visibility: visible;
   -webkit-transition: 0.7s;
   transition: 0.7s;
   opacity: 1;
 }
-
 .slotFunctionNew .title {
   font-size: 4vw;
   margin: 0 0 0 5vw;
   padding-bottom: 2vw;
   color: #1f3258;
 }
-
 .slotFunctionNew > div {
   background: #fff;
   position: relative;
@@ -4181,12 +3773,10 @@ button.clickBtn:before {
   margin: 50vw auto 0;
   border-radius: 5px;
 }
-
 .slotFunctionNew > div .content {
   text-align: center;
   padding: 5vw 5vw 0;
 }
-
 .slotFunctionNew > div .content img {
   width: 100%;
   max-width: 425px;
@@ -4194,13 +3784,11 @@ button.clickBtn:before {
           filter: brightness(0.5);
   border-radius: 5px;
 }
-
 .slotFunctionNew > div span.icon {
   position: absolute;
   right: 5vw;
   bottom: 2vw;
 }
-
 .slotFunctionNew .btn-group {
   position: absolute;
   top: 33%;
@@ -4210,22 +3798,18 @@ button.clickBtn:before {
       -ms-flex-direction: column-reverse;
           flex-direction: column-reverse;
 }
-
 .slotFunctionNew .btn-group a, .slotFunctionNew .btn-group button {
   width: 70%;
   margin-bottom: 5vw;
   border: 1px solid #fff;
 }
-
 .slotFunctionNew .btn-group .orange {
   background: #fab617;
 }
-
 .slotFunctionNew .btn-group .white {
   background: #1f3258;
   color: #fff;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   .slotFunctionNew > div {
     margin: 20vw auto 0;
@@ -4273,7 +3857,6 @@ button.clickBtn:before {
             transform: rotate(720deg);
   }
 }
-
 #Loading {
   width: calc(100% - 16vw);
   height: calc(100% - 16vw);
@@ -4286,13 +3869,11 @@ button.clickBtn:before {
   z-index: 4;
   background: rgba(191, 201, 218, 0.8);
 }
-
 #Loading.open {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 #Loading .container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4310,16 +3891,13 @@ button.clickBtn:before {
   margin: 0 auto;
   width: 50%;
 }
-
 #Loading .container > div > div {
   float: left;
 }
-
 #Loading .container > div > div:nth-child(1) {
   width: 23.4vw;
   overflow: hidden;
 }
-
 #Loading .container > div > div:nth-child(2) {
   width: 4vw;
   overflow: hidden;
@@ -4333,11 +3911,9 @@ button.clickBtn:before {
   -webkit-animation-delay: 0.5s;
           animation-delay: 0.5s;
 }
-
 #Loading .container > div > div:nth-child(2) img {
   margin-left: -24vw;
 }
-
 #Loading .container > div > div:nth-child(3) {
   width: 6vw;
   overflow: hidden;
@@ -4351,11 +3927,9 @@ button.clickBtn:before {
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 }
-
 #Loading .container > div > div:nth-child(3) img {
   margin-left: -28vw;
 }
-
 #Loading .container > div > div:nth-child(4) {
   width: 6vw;
   overflow: hidden;
@@ -4369,15 +3943,12 @@ button.clickBtn:before {
   -webkit-animation-delay: 1.5s;
           animation-delay: 1.5s;
 }
-
 #Loading .container > div > div:nth-child(4) img {
   margin-left: -34.6vw;
 }
-
 #Loading .container > div > div img {
   max-width: 130px;
 }
-
 #Loading .text {
   width: 100%;
   position: absolute;
@@ -4416,7 +3987,6 @@ button.clickBtn:before {
     opacity: 0;
   }
 }
-
 .amount {
   display: none;
 }
@@ -4438,24 +4008,20 @@ input.error {
   padding: 6vw 4vw 0;
   background: rgba(29, 54, 98, 0.1);
 }
-
 .webmap div {
   width: 100%;
   margin-bottom: 5vw;
 }
-
 .webmap div span {
   font-weight: bold;
   color: #1e85ec;
 }
-
 .webmap div a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   color: #052561;
 }
-
 .webmap div a.icon:before {
   margin-right: 2vw;
 }
@@ -4480,12 +4046,10 @@ span.important {
   margin-bottom: 5vw;
   font-weight: bold;
 }
-
 .mode i:before {
   margin-right: 2vw;
   font-weight: normal;
 }
-
 .mode > div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4497,7 +4061,6 @@ span.important {
       -ms-flex-pack: center;
           justify-content: center;
 }
-
 .mode > div > button {
   width: 19vw;
   height: 19vw;
@@ -4506,7 +4069,6 @@ span.important {
   background: white;
   color: #fab617;
 }
-
 .mode > div > button.icon-moon {
   background: rgba(0, 0, 0, 0.3);
   color: white;
@@ -4515,12 +4077,10 @@ span.important {
 .Country {
   margin: 10vw 0;
 }
-
 .Country + .btn-group {
   width: 70%;
   margin: 0 auto;
 }
-
 .Country i {
   color: white;
   display: -webkit-box;
@@ -4535,12 +4095,10 @@ span.important {
   margin-bottom: 5vw;
   font-weight: bold;
 }
-
 .Country i:before {
   margin-right: 2vw;
   font-weight: normal;
 }
-
 .Country > div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4551,7 +4109,6 @@ span.important {
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
 }
-
 .Country > div div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4568,13 +4125,11 @@ span.important {
   border-radius: 100%;
   margin-bottom: 2vw;
 }
-
 .Country > div div.open {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background: rgba(0, 0, 0, 0.3);
 }
-
 .Country > div div img {
   width: 10vw;
   height: 10vw;
@@ -4585,36 +4140,29 @@ span.important {
 .kyc {
   line-height: 20px;
 }
-
 .kyc .step {
   width: 50%;
   margin: 5vw auto;
 }
-
 .kyc .text-org {
   text-align: left;
 }
-
 .kyc .btn-group {
   margin: 3vw 0;
 }
-
 .kyc .btn-group .fileUpload {
   padding: 1.5vw 2vw;
   color: rgba(31, 50, 88, 0.6);
 }
-
 .kyc ul li {
   list-style: decimal;
   margin-left: 4vw;
 }
-
 .kyc .icon-like {
   color: #052561;
   margin: 2vw auto;
   text-align: center;
 }
-
 .kyc .icon-like:before {
   font-size: 13vw;
 }
@@ -4637,11 +4185,9 @@ span.important {
   left: 0;
   top: 0;
 }
-
 #welcome > div {
   border: 1px solid #284985;
 }
-
 #welcome .wecTit {
   background: #284985;
   border-top-left-radius: 5px;
@@ -4657,15 +4203,12 @@ span.important {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-
 #welcome .wecTit:before {
   display: none;
 }
-
 #welcome .wecTit:after {
   content: "\ea0d";
 }
-
 #welcome .wecBanner {
   width: 100%;
   border-top: 0;
@@ -4675,16 +4218,13 @@ span.important {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
-
 #welcome .wecBanner img {
   width: 100%;
 }
-
 #welcome .wecBanner .swiper-container,
 #welcome .wecBanner .swiper-pagination {
   position: static;
 }
-
 #welcome .wecTxt {
   padding: 2vw;
   border-top: 0;
@@ -4716,32 +4256,26 @@ span.important {
       -ms-flex-direction: column;
           flex-direction: column;
 }
-
 .Straight-lock.in {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 .Straight-lock.right .img-rotate {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
   -webkit-filter: FlipH;
   filter: FlipH;
 }
-
 .Straight-lock .icon {
   color: white;
 }
-
 .Straight-lock .icon-mobile {
   position: relative;
 }
-
 .Straight-lock .icon-mobile:before {
   font-size: 10vw;
 }
-
 .Straight-lock i.icon-spinner11 {
   position: absolute;
   display: -webkit-box;
@@ -4758,7 +4292,6 @@ span.important {
   -webkit-transform: translateX(-50%) translateY(-50%);
           transform: translateX(-50%) translateY(-50%);
 }
-
 .Straight-lock i.icon-spinner11:before {
   font-size: 2vw;
   color: #fab617;
@@ -4771,7 +4304,6 @@ span.important {
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
 }
-
 .Straight-lock .text {
   margin-top: 2vw;
   text-align: center;
@@ -4800,7 +4332,6 @@ span.important {
             transform: rotate(359deg);
   }
 }
-
 .progressBarModule {
   width: calc(100% - 4vw);
   margin-top: 2vw;
@@ -4811,12 +4342,10 @@ span.important {
   clear: both;
   font-size: 3.5vw;
 }
-
 .progressBarModule .bounsName {
   margin-bottom: 1vw;
   font-weight: bold;
 }
-
 .progressBarModule .progressBar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4825,7 +4354,6 @@ span.important {
       -ms-flex-pack: center;
           justify-content: center;
 }
-
 .progressBarModule .progressBar .bar {
   height: 1vw;
   border: 1px solid #1e85ec;
@@ -4836,12 +4364,10 @@ span.important {
       -ms-flex: auto;
           flex: auto;
 }
-
 .progressBarModule .progressBar .bar .progress {
   background: #1e85ec;
   height: 100%;
 }
-
 .progressBarModule .progressBar .percentage {
   text-align: right;
   color: #1e85ec;
@@ -4851,14 +4377,12 @@ span.important {
   min-width: 11vw;
   font-size: 2.5vw;
 }
-
 .progressBarModule .turnover {
   color: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 .progressBarModule .turnover span {
   color: #1e85ec;
 }
@@ -4866,7 +4390,6 @@ span.important {
 .otp {
   margin: 0;
 }
-
 .otp input {
   -webkit-box-flex: 2;
       -ms-flex: 2;
@@ -4887,7 +4410,6 @@ span.important {
   padding: 1vw;
   font-size: 2vw;
 }
-
 .otpBtn span {
   color: white;
 }
@@ -4908,7 +4430,6 @@ span.important {
   height: 100%;
   overflow: scroll;
 }
-
 .submenuNew.open {
   visibility: visible;
   -webkit-transition: 0.7s;
@@ -4917,39 +4438,31 @@ span.important {
   -webkit-animation: submenu 0.5s forwards;
           animation: submenu 0.5s forwards;
 }
-
 .submenuNew .close span {
   background-color: #052561;
 }
-
 .submenuNew .thBar {
   position: absolute;
   background-color: #e3e7ee;
   -webkit-box-shadow: 0 0 0;
           box-shadow: 0 0 0;
 }
-
 .submenuNew .thBar .icon {
   color: #1f2e4d;
 }
-
 .submenuNew img {
   width: 40vw;
 }
-
 .submenuNew .side-info {
   margin-top: 5vw;
 }
-
 .submenuNew .side-info span {
   margin-right: 2vw;
   color: #1e85ec;
 }
-
 .submenuNew .side-info button {
   margin: 0 5px;
 }
-
 .submenuNew .side-info > div:nth-child(2) {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4959,7 +4472,6 @@ span.important {
           align-items: center;
   margin-top: 2vw;
 }
-
 .submenuNew .side-info button.icon-spinner11 {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4981,11 +4493,9 @@ span.important {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
-
 .submenuNew .side-info button.icon-spinner11:before {
   font-size: 3vw;
 }
-
 .submenuNew .side-nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5001,7 +4511,6 @@ span.important {
   padding-bottom: 3vw;
   overflow: scroll;
 }
-
 .submenuNew .side-nav a,
 .submenuNew .side-nav button,
 .submenuNew .side-nav div {
@@ -5018,20 +4527,17 @@ span.important {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
-
 .submenuNew .side-nav a > ul,
 .submenuNew .side-nav button > ul,
 .submenuNew .side-nav div > ul {
   display: none;
   width: 100%;
 }
-
 .submenuNew .side-nav a > ul li,
 .submenuNew .side-nav button > ul li,
 .submenuNew .side-nav div > ul li {
   padding-left: 9vw;
 }
-
 .submenuNew .side-nav a > ul li a,
 .submenuNew .side-nav a > ul li button,
 .submenuNew .side-nav button > ul li a,
@@ -5042,34 +4548,29 @@ span.important {
   line-height: 12vw;
   border: 0;
 }
-
 .submenuNew .side-nav a > ul.open,
 .submenuNew .side-nav button > ul.open,
 .submenuNew .side-nav div > ul.open {
   display: block;
 }
-
 .submenuNew .side-nav a:before,
 .submenuNew .side-nav button:before,
 .submenuNew .side-nav div:before {
   font-size: 7vw;
   margin-right: 2vw;
 }
-
 .submenuNew .side-nav a i,
 .submenuNew .side-nav button i,
 .submenuNew .side-nav div i {
   position: absolute;
   right: 1vw;
 }
-
 .submenuNew .side-nav a i.open,
 .submenuNew .side-nav button i.open,
 .submenuNew .side-nav div i.open {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
 }
-
 .submenuNew .side-nav a.icon-new:before,
 .submenuNew .side-nav button.icon-new:before,
 .submenuNew .side-nav div.icon-new:before {
@@ -5080,7 +4581,6 @@ span.important {
   color: #f72626;
   font-size: 16px;
 }
-
 .submenuNew .side-nav a img,
 .submenuNew .side-nav button img,
 .submenuNew .side-nav div img {
@@ -5088,17 +4588,14 @@ span.important {
   height: 11vw;
   margin: 1vw 0 1vw -1vw;
 }
-
 .submenuNew .thBar {
   left: 0;
   top: 37vw;
   bottom: auto;
 }
-
 .submenuNew .contact > div {
   color: #052561;
 }
-
 .submenuNew .contact > div:nth-child(2) {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5106,11 +4603,9 @@ span.important {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
-
 .submenuNew .contact img {
   width: 17.55vw;
 }
-
 .submenuNew .language {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5124,7 +4619,6 @@ span.important {
   margin-top: 10px;
   margin-bottom: 50px;
 }
-
 .submenuNew .language > div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5136,13 +4630,11 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
 }
-
 .submenuNew .language > div.open {
   background-color: #fbb514;
   padding: 10px;
   border-radius: 50px;
 }
-
 .submenuNew .language > div img {
   width: 20%;
   border-radius: 50%;
@@ -5157,7 +4649,7 @@ span.important {
   left: 0;
   color: white;
   z-index: 5;
-  background: #001942;
+  background: rgb(0, 25, 66);
   visibility: hidden;
   -webkit-transition: 0.7s;
   transition: 0.7s;
@@ -5165,7 +4657,6 @@ span.important {
   height: 100%;
   overflow: scroll;
 }
-
 .submenu.open {
   visibility: visible;
   -webkit-transition: 0.7s;
@@ -5174,24 +4665,19 @@ span.important {
   -webkit-animation: submenu 0.5s forwards;
           animation: submenu 0.5s forwards;
 }
-
 .submenu .thBar {
   position: absolute;
 }
-
 .submenu img {
   width: 40vw;
 }
-
 .submenu .side-info {
   margin-top: 5vw;
 }
-
 .submenu .side-info span {
   margin-right: 2vw;
   color: #1e85ec;
 }
-
 .submenu .side-info > div:nth-child(2) {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5201,7 +4687,6 @@ span.important {
           align-items: center;
   margin-top: 2vw;
 }
-
 .submenu .side-info button.icon-spinner11 {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5220,11 +4705,9 @@ span.important {
   padding: 1vw;
   color: white;
 }
-
 .submenu .side-info button.icon-spinner11:before {
   font-size: 3vw;
 }
-
 .submenu .side-nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5240,7 +4723,6 @@ span.important {
   padding-bottom: 3vw;
   overflow: scroll;
 }
-
 .submenu .side-nav a,
 .submenu .side-nav button,
 .submenu .side-nav div {
@@ -5257,21 +4739,18 @@ span.important {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
-
 .submenu .side-nav a > ul,
 .submenu .side-nav button > ul,
 .submenu .side-nav div > ul {
   display: none;
   width: 100%;
 }
-
 .submenu .side-nav a > ul li,
 .submenu .side-nav button > ul li,
 .submenu .side-nav div > ul li {
   border-top: 1px solid #1d3662;
   padding-left: 9vw;
 }
-
 .submenu .side-nav a > ul li a,
 .submenu .side-nav a > ul li button,
 .submenu .side-nav button > ul li a,
@@ -5282,34 +4761,29 @@ span.important {
   line-height: 10vw;
   border: 0;
 }
-
 .submenu .side-nav a > ul.open,
 .submenu .side-nav button > ul.open,
 .submenu .side-nav div > ul.open {
   display: block;
 }
-
 .submenu .side-nav a:before,
 .submenu .side-nav button:before,
 .submenu .side-nav div:before {
   font-size: 7vw;
   margin-right: 2vw;
 }
-
 .submenu .side-nav a i,
 .submenu .side-nav button i,
 .submenu .side-nav div i {
   position: absolute;
   right: 1vw;
 }
-
 .submenu .side-nav a i.open,
 .submenu .side-nav button i.open,
 .submenu .side-nav div i.open {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
 }
-
 .submenu .side-nav a.icon-new:before,
 .submenu .side-nav button.icon-new:before,
 .submenu .side-nav div.icon-new:before {
@@ -5320,7 +4794,6 @@ span.important {
   color: #f72626;
   font-size: 16px;
 }
-
 .submenu .thBar {
   left: 0;
   top: 37vw;
@@ -5344,7 +4817,6 @@ span.important {
     margin-left: 0%;
   }
 }
-
 .otpLoading {
   -webkit-animation: reload 1.5s linear infinite;
           animation: reload 1.5s linear infinite;
@@ -5367,13 +4839,11 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
 }
-
 .menuBtnNew button {
   border-radius: 5px;
   text-align: center;
   color: white;
 }
-
 .menuBtnNew span {
   font-size: 10vw;
 }
@@ -5393,7 +4863,6 @@ span.important {
   z-index: 4;
   top: 43vw;
 }
-
 .menuBtn button {
   background: #1e85ec;
   width: 10vw;
@@ -5402,7 +4871,6 @@ span.important {
   text-align: center;
   color: white;
 }
-
 .menuBtn span {
   font-size: 6vw;
 }
@@ -5463,33 +4931,27 @@ span.important {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
-
 .minAmount > div {
   display: none;
   width: 100%;
   font-weight: bold;
 }
-
-.minAmount > div:nth-child(n + 3), .minAmount > div:nth-child(1) {
+.minAmount > div:nth-child(n+3), .minAmount > div:nth-child(1) {
   display: none;
 }
-
-.minAmount > div:nth-child(n + 3).open, .minAmount > div:nth-child(1).open {
+.minAmount > div:nth-child(n+3).open, .minAmount > div:nth-child(1).open {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 .minAmount > div:first-child > div {
   color: #1e85ec;
 }
-
 .minAmount > div:last-child {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 .minAmount > div > div {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -5498,7 +4960,6 @@ span.important {
   padding: 5px 10px;
   color: #052561;
 }
-
 .minAmount > div > div:last-child {
   text-align: right;
 }
@@ -5511,14 +4972,12 @@ span.important {
   min-height: calc(100% - 39vw);
   padding: 15vw 4vw 24vw;
 }
-
 .promotions img {
   width: 100%;
   margin-top: 1vw;
   margin-bottom: 1vw;
   border-radius: 5px;
 }
-
 .promotions .filterBtn {
   width: 100%;
   overflow-x: auto;
@@ -5530,7 +4989,6 @@ span.important {
   -ms-flex-wrap: unset;
       flex-wrap: unset;
 }
-
 .promotions .filterBtn button {
   white-space: nowrap;
   -webkit-box-flex: 0;
@@ -5538,14 +4996,12 @@ span.important {
           flex: none;
   padding: 2vw 5vw;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   .promotions .filterBtn button {
     width: 25%;
     font-size: 16px;
   }
 }
-
 .promotions .filterBtn ~ div.promodule {
   padding: 3vw;
   margin-bottom: 3vw;
@@ -5559,15 +5015,12 @@ span.important {
           flex-direction: column;
   position: relative;
 }
-
 .promotions .filterBtn ~ div.promodule.open {
   width: calc(100% - 6vw);
 }
-
 .promotions .filterBtn ~ div.promodule.open .btn-group button:nth-child(2) {
   display: none;
 }
-
 .promotions .filterBtn ~ div.promodule .protitle {
   margin-top: 1vw;
   color: #1e85ec;
@@ -5577,7 +5030,6 @@ span.important {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
 .promotions .filterBtn ~ div.promodule .text {
   max-width: calc(100% - 1vw);
   padding-left: 1vw;
@@ -5585,7 +5037,6 @@ span.important {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
 .promotions div.promodule {
   border: 0;
   background: transparent;
@@ -5594,22 +5045,18 @@ span.important {
   background-color: #1f3258;
   padding: 2vw;
 }
-
 .promotions div.promodule.open {
-  opacity: .7;
+  opacity: 0.7;
 }
-
 .promotions div.promodule.open img {
   -webkit-filter: grayscale(0.5);
           filter: grayscale(0.5);
 }
-
 .promotions div.promodule.open .claimed {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 .promotions div.promodule > button.ViewAllAmount {
   padding: 5px 10px;
   background: #4e6ca8;
@@ -5629,7 +5076,6 @@ span.important {
           align-items: center;
   color: white;
 }
-
 .promotions div.promodule > button.ViewAllAmount span {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5638,12 +5084,10 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
 }
-
 .promotions div.promodule > button.ViewAllAmount span.open {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
 }
-
 .promotions div.promodule .protitle {
   margin-top: 4vw;
   line-height: 1.2;
@@ -5652,75 +5096,59 @@ span.important {
   padding-left: 1vw;
   clear: both;
 }
-
 .promotions div.promodule .protitle + .text {
   color: #fff;
 }
-
 .promotions div.promodule .protitle + .text.dark {
   color: #1f3258;
 }
-
 .promotions div.promodule .text {
   max-width: calc(100% - 1vw);
   padding-left: 1vw;
   word-wrap: break-word;
 }
-
 .promotions div.promodule .text ol {
   padding-left: 5vw;
 }
-
 .promotions div.promodule .text ol li {
   list-style: decimal;
   line-height: 1.2;
   margin-bottom: 2vw;
 }
-
 .promotions div.promodule .text ol li a {
   color: #fab617;
   text-decoration: underline;
 }
-
 .promotions div.promodule .text ul {
   padding: 0 0 0 5vw;
 }
-
 .promotions div.promodule .text ul li {
   list-style: initial;
 }
-
 .promotions div.promodule .text ul li a {
   text-decoration: underline;
 }
-
 .promotions div.promodule .text ul li ul li {
   list-style: circle;
 }
-
 .promotions div.promodule .info {
   margin: 1vw 0 1vw 0;
   color: #fff;
 }
-
 .promotions div.promodule .info ul {
   font-size: 2.5vw;
 }
-
 .promotions div.promodule .info ul li {
   float: none;
   width: calc(100% - 2vw);
   padding: 0 1vw;
 }
-
 .promotions div.promodule .info ul li span {
   color: #fff;
 }
-
 .promotions div.promodule .info .title {
   font-weight: normal;
 }
-
 .promotions div.promodule.Expired .expiredIcon {
   position: absolute;
   top: 50%;
@@ -5736,7 +5164,6 @@ span.important {
   font-style: italic;
   z-index: 2;
 }
-
 .promotions div.promodule.Expired::after {
   position: absolute;
   top: 0;
@@ -5749,12 +5176,10 @@ span.important {
   border-radius: 10px;
   pointer-events: none;
 }
-
 .promotions div.promodule.expiredModule {
   -webkit-filter: grayscale(1);
           filter: grayscale(1);
 }
-
 .promotions div.promodule .claimed, .promotions div.promodule .new {
   position: absolute;
   display: none;
@@ -5782,7 +5207,6 @@ span.important {
           transform: rotate(0);
   font-style: initial;
 }
-
 .promotions div.promodule .claimed:before, .promotions div.promodule .new:before {
   content: "CLAIMED";
   top: -14vw;
@@ -5791,32 +5215,26 @@ span.important {
   -webkit-transform: rotate(-38deg);
           transform: rotate(-38deg);
 }
-
 .promotions div.promodule .new {
   border-color: #fab617 transparent transparent transparent;
 }
-
 .promotions div.promodule .new:before {
   content: "NEW";
   left: 3vw;
 }
-
 .promotions div.promodule .new.active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   .promotions div.promodule .protitle, .promotions div.promodule .text {
     margin-bottom: 10px;
   }
 }
-
 .promotions div.promodule strong {
   font-weight: bold !important;
 }
-
 .promotions .depositSlip {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5828,33 +5246,27 @@ span.important {
   margin: 2vw auto 0;
   width: calc(100% - 2vw);
 }
-
 .promotions .depositSlip > div {
   display: none;
   width: 100%;
   font-weight: bold;
 }
-
 .promotions .depositSlip > div:nth-child(n+3), .promotions .depositSlip > div:nth-child(1) {
   display: none;
 }
-
 .promotions .depositSlip > div:nth-child(n+3).active, .promotions .depositSlip > div:nth-child(1).active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 .promotions .depositSlip > div:first-child > div {
   color: #f77900;
 }
-
 .promotions .depositSlip > div:last-child {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 .promotions .depositSlip > div > div {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -5864,15 +5276,12 @@ span.important {
   padding: 5px 10px;
   color: #1249A5;
 }
-
 .promotions .depositSlip > div > div:last-child {
   text-align: right;
 }
-
 .promotions .btn-group a {
   padding: 1.75vw 3vw;
 }
-
 .promotions .btn-group button {
   font-family: inherit;
 }
@@ -5880,7 +5289,6 @@ span.important {
 .rollover {
   margin: 1vw 0;
 }
-
 .rollover div {
   color: #052561;
   font-size: 12px;
@@ -5894,15 +5302,12 @@ span.important {
       flex-wrap: wrap;
   line-height: 24px;
 }
-
 .rollover > div:not(.account) > div:before {
   margin: 0 1.5vw 0 0;
 }
-
 .rollover .icon {
   color: #1e85ec;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   .rollover div {
     font-size: 16px;
@@ -5912,11 +5317,9 @@ span.important {
     padding-right: 10px;
   }
 }
-
 .rollover + .progressBarModule {
   background: rgba(40, 73, 133, 0.9);
 }
-
 .rollover + .progressBarModule .info {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5925,25 +5328,20 @@ span.important {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-
 .rollover + .progressBarModule button.clickBtn {
   height: 6vw;
   width: 6vw;
 }
-
 .rollover + .progressBarModule button.clickBtn:before {
   font-size: 2.5vw;
 }
-
 .rollover + .progressBarModule .bar {
   border: 1px solid #e8e8e8;
   margin-top: 2vw;
 }
-
 .rollover + .progressBarModule .bar .progress {
   background: #e8e8e8;
 }
-
 .rollover + .progressBarModule .percentage {
   color: #e8e8e8;
 }
@@ -5953,11 +5351,9 @@ span.important {
   padding: 10vw 0;
   color: #1e85ec;
 }
-
 .nodata.icon:before {
   font-size: 15vw;
 }
-
 .nodata div {
   background: rgba(0, 0, 0, 0.2);
   padding: 3vw;
@@ -5973,7 +5369,6 @@ span.important {
 .partner div a {
   display: inline-block;
 }
-
 .partner img {
   margin: 2vw 1vw;
   vertical-align: middle;
@@ -5993,19 +5388,16 @@ span.important {
   border-radius: 20px;
   font-size: 14px;
 }
-
 .breadcrumb ul .breadcrumb-item a {
   color: #1e85ec;
   text-transform: capitalize;
 }
-
 .breadcrumb ul .breadcrumb-item + .breadcrumb-item::before {
   content: "\e95c";
   color: white;
   margin: 0 5px;
   font-size: 13px;
 }
-
 .breadcrumb ul .breadcrumb-item.active a {
   color: white;
 }
@@ -6014,15 +5406,12 @@ span.important {
   position: relative;
   font-size: 0;
 }
-
 .downloadNew > a img {
   width: 100%;
 }
-
 .downloadNew > a:nth-last-child(1) button {
   top: 65%;
 }
-
 .downloadNew > a button {
   position: absolute;
   width: 140px;
@@ -6044,12 +5433,10 @@ span.important {
           justify-content: center;
   color: #fff;
 }
-
 .downloadNew > a button img {
   width: 15px;
   margin-right: 5px;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   .downloadNew > a button {
     width: 240px;
@@ -6059,7 +5446,7 @@ span.important {
 }
 
 .appDownload {
-  background: #f5ac23;
+  background: rgb(245, 172, 35);
   width: 100%;
   padding: 5px 10px;
   color: #fff;
@@ -6074,24 +5461,20 @@ span.important {
           justify-content: space-between;
   display: none;
 }
-
 .appDownload.open {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 .appDownload span {
   font-weight: bold;
   display: block;
 }
-
 .appDownload img {
   max-width: 40px;
   display: block;
   margin: 0 5px 0 20px;
 }
-
 .appDownload .download-btn {
   border: 1px solid #fff;
   display: block;
@@ -6099,7 +5482,6 @@ span.important {
   color: #fff;
   font-size: 13px;
 }
-
 .appDownload .left {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6108,12 +5490,10 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
 }
-
 .appDownload .left button,
 .appDownload .left a {
   color: #000;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   .appDownload {
     font-size: 16px;
@@ -6135,11 +5515,9 @@ span.important {
   display: -ms-flexbox;
   display: flex;
 }
-
 .eventLink.afterlogin {
   bottom: 15vw;
 }
-
 .eventLink .icon-close {
   width: 6vw;
   height: 6vw;
@@ -6151,13 +5529,11 @@ span.important {
   background: #e3ce9b;
   border-radius: 100%;
 }
-
 .eventLink .icon-close:before {
   font-size: 100%;
   font-weight: bold;
   vertical-align: middle;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   .eventLink .icon-close {
     right: -1vw;
@@ -6166,38 +5542,31 @@ span.important {
     height: 4vw;
   }
 }
-
 .eventLink img {
   -webkit-animation: routate linear infinite alternate 0.8s;
           animation: routate linear infinite alternate 0.8s;
   width: 28vw;
 }
-
 .eventLink.active {
   display: none;
 }
-
 .eventLink.wheel {
   bottom: 65vw;
 }
-
 .eventLink.wheel img {
   position: absolute;
   top: 0;
   right: 0;
 }
-
 .eventLink.wheel img.spin {
   z-index: 2;
 }
-
 .eventLink.wheel img.inner {
   margin-top: 0.25vw;
   -webkit-animation: wheel 1.5s infinite;
           animation: wheel 1.5s infinite;
   z-index: 1;
 }
-
 .eventLink.angpaoLink {
   width: 120px;
   height: 120px;
@@ -6210,12 +5579,10 @@ span.important {
           justify-content: center;
   cursor: pointer;
 }
-
 .eventLink.angpaoLink img {
   position: absolute;
   z-index: 1;
 }
-
 .eventLink.angpaoLink img.eventlinkimg {
   z-index: 0;
   margin: 0;
@@ -6223,7 +5590,6 @@ span.important {
   -webkit-animation: angpao-shake 1.5s ease infinite alternate;
           animation: angpao-shake 1.5s ease infinite alternate;
 }
-
 @-webkit-keyframes angpao-shake {
   0% {
     -webkit-transform: rotateZ(15deg);
@@ -6274,7 +5640,6 @@ span.important {
             transform-origin: 50% 70%;
   }
 }
-
 @keyframes angpao-shake {
   0% {
     -webkit-transform: rotateZ(15deg);
@@ -6330,21 +5695,17 @@ span.important {
   height: auto;
   padding: 0 4vw 24vw;
 }
-
 .event > div[tabindex="-1"] {
   width: 100%;
 }
-
 .event .animation {
   margin: 5vw auto;
 }
-
 .event .filterBtn {
   margin: 2vw 0 5vw;
   text-align: center;
   display: block;
 }
-
 .event .filterBtn button {
   padding: 3vw;
   font-size: 3vw;
@@ -6379,7 +5740,6 @@ span.important {
     transform: rotate(2deg);
   }
 }
-
 @-webkit-keyframes routate2 {
   0% {
     -webkit-transform: rotate(10deg);
@@ -6394,7 +5754,6 @@ span.important {
     transform: rotate(10deg);
   }
 }
-
 @keyframes routate2 {
   0% {
     -webkit-transform: rotate(10deg);
@@ -6409,55 +5768,42 @@ span.important {
     transform: rotate(10deg);
   }
 }
-
 @-webkit-keyframes shakebox {
-  10%,
-  90% {
+  10%, 90% {
     -webkit-transform: translate3d(-1px, 2px, 2px);
             transform: translate3d(-1px, 2px, 2px);
   }
-  20%,
-  80% {
+  20%, 80% {
     -webkit-transform: translate3d(2px, 2px, 3px);
             transform: translate3d(2px, 2px, 3px);
   }
-  30%,
-  50%,
-  70% {
+  30%, 50%, 70% {
     -webkit-transform: translate3d(-2px, 0, 0);
             transform: translate3d(-2px, 0, 0);
   }
-  40%,
-  60% {
+  40%, 60% {
     -webkit-transform: translate3d(4px, 0, 0);
             transform: translate3d(4px, 0, 0);
   }
 }
-
 @keyframes shakebox {
-  10%,
-  90% {
+  10%, 90% {
     -webkit-transform: translate3d(-1px, 2px, 2px);
             transform: translate3d(-1px, 2px, 2px);
   }
-  20%,
-  80% {
+  20%, 80% {
     -webkit-transform: translate3d(2px, 2px, 3px);
             transform: translate3d(2px, 2px, 3px);
   }
-  30%,
-  50%,
-  70% {
+  30%, 50%, 70% {
     -webkit-transform: translate3d(-2px, 0, 0);
             transform: translate3d(-2px, 0, 0);
   }
-  40%,
-  60% {
+  40%, 60% {
     -webkit-transform: translate3d(4px, 0, 0);
             transform: translate3d(4px, 0, 0);
   }
 }
-
 @-webkit-keyframes bounce3 {
   0% {
     -webkit-transform: translateY(0%);
@@ -6488,7 +5834,6 @@ span.important {
             transform: translateY(0);
   }
 }
-
 @keyframes bounce3 {
   0% {
     -webkit-transform: translateY(0%);
@@ -6519,7 +5864,6 @@ span.important {
             transform: translateY(0);
   }
 }
-
 .Join {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -6541,30 +5885,24 @@ span.important {
   pointer-events: none;
   background-color: #fff;
 }
-
 .Join .dropdown {
   padding: 2vw 0 2vw 5vw;
   margin-left: 0;
 }
-
 .Join .dropdown .btn {
   padding: 0 3vw;
   background: transparent;
 }
-
 .Join .dropdown .dropdown-item {
   padding: 3vw;
 }
-
 .Join > .close {
   top: 4vw;
 }
-
 .Join > img {
   width: 40vw;
   margin: 0 auto 2vw;
 }
-
 .Join .title {
   text-align: center;
   font-size: 6vw;
@@ -6572,32 +5910,28 @@ span.important {
   font-weight: bold;
   color: #052561;
 }
-
 .Join .inputBox, .Join .worldcupEvent .ticket__container .inputBox-event, .worldcupEvent .ticket__container .Join .inputBox-event {
   position: relative;
   margin: 1vw 0;
 }
-
 .Join .inputBox > input, .Join .worldcupEvent .ticket__container .inputBox-event > input, .worldcupEvent .ticket__container .Join .inputBox-event > input {
   margin: 1vw 0;
 }
-
 .Join .inputBox > input::-webkit-input-placeholder, .Join .worldcupEvent .ticket__container .inputBox-event > input::-webkit-input-placeholder, .worldcupEvent .ticket__container .Join .inputBox-event > input::-webkit-input-placeholder {
   color: #6f7a8e;
 }
-
+.Join .inputBox > input::-moz-placeholder, .Join .worldcupEvent .ticket__container .inputBox-event > input::-moz-placeholder, .worldcupEvent .ticket__container .Join .inputBox-event > input::-moz-placeholder {
+  color: #6f7a8e;
+}
 .Join .inputBox > input:-ms-input-placeholder, .Join .worldcupEvent .ticket__container .inputBox-event > input:-ms-input-placeholder, .worldcupEvent .ticket__container .Join .inputBox-event > input:-ms-input-placeholder {
   color: #6f7a8e;
 }
-
 .Join .inputBox > input::-ms-input-placeholder, .Join .worldcupEvent .ticket__container .inputBox-event > input::-ms-input-placeholder, .worldcupEvent .ticket__container .Join .inputBox-event > input::-ms-input-placeholder {
   color: #6f7a8e;
 }
-
 .Join .inputBox > input::placeholder, .Join .worldcupEvent .ticket__container .inputBox-event > input::placeholder, .worldcupEvent .ticket__container .Join .inputBox-event > input::placeholder {
   color: #6f7a8e;
 }
-
 .Join .inputBox .JoinRule, .Join .worldcupEvent .ticket__container .inputBox-event .JoinRule, .worldcupEvent .ticket__container .Join .inputBox-event .JoinRule {
   height: 0;
   visibility: hidden;
@@ -6605,7 +5939,6 @@ span.important {
   font-size: 12px;
   color: #052561;
 }
-
 .Join .inputBox .JoinRule.open, .Join .worldcupEvent .ticket__container .inputBox-event .JoinRule.open, .worldcupEvent .ticket__container .Join .inputBox-event .JoinRule.open {
   height: auto;
   visibility: visible;
@@ -6614,47 +5947,39 @@ span.important {
   opacity: 1;
   color: #052561;
 }
-
 .Join .inputBox > .icon-module, .Join .worldcupEvent .ticket__container .inputBox-event > .icon-module, .worldcupEvent .ticket__container .Join .inputBox-event > .icon-module {
   position: absolute;
   right: 0;
   top: 0;
 }
-
 .Join .inputBox > .icon-module > i.icon, .Join .worldcupEvent .ticket__container .inputBox-event > .icon-module > i.icon, .worldcupEvent .ticket__container .Join .inputBox-event > .icon-module > i.icon {
   -webkit-transform: translateY(60%);
           transform: translateY(60%);
 }
-
 .Join .inputBox i.icon.icon-eye, .Join .worldcupEvent .ticket__container .inputBox-event i.icon.icon-eye, .worldcupEvent .ticket__container .Join .inputBox-event i.icon.icon-eye, .Join .inputBox i.icon.icon-eye-blocked, .Join .worldcupEvent .ticket__container .inputBox-event i.icon.icon-eye-blocked, .worldcupEvent .ticket__container .Join .inputBox-event i.icon.icon-eye-blocked {
   display: none;
 }
-
 .Join .inputBox i.icon.icon-key + input + div > .icon-eye, .Join .worldcupEvent .ticket__container .inputBox-event i.icon.icon-key + input + div > .icon-eye, .worldcupEvent .ticket__container .Join .inputBox-event i.icon.icon-key + input + div > .icon-eye {
   display: inline-block;
   position: initial;
   margin-right: 2vw;
 }
-
 .Join .inputBox i.icon.icon-key + input + div > .icon-eye-blocked, .Join .worldcupEvent .ticket__container .inputBox-event i.icon.icon-key + input + div > .icon-eye-blocked, .worldcupEvent .ticket__container .Join .inputBox-event i.icon.icon-key + input + div > .icon-eye-blocked {
   display: inline-block;
   position: initial;
   margin-right: 2vw;
 }
-
 .Join button {
   background: #1e85ec;
   border-radius: 3px;
   color: white;
   padding: 3vw;
 }
-
 .Join .Terms {
   margin: 2vw auto 3vw;
   line-height: 22px;
   font-size: 3vw;
 }
-
 .Join .Terms.error {
   border: 1px solid #fab617;
   -webkit-box-shadow: 0 0 0 1px white;
@@ -6662,17 +5987,14 @@ span.important {
   border-radius: 0;
   padding: 0 2vw;
 }
-
 .Join .Terms a {
   color: #1e85ec;
   text-decoration: underline;
 }
-
-.Join .Terms input[type="checkbox"] {
+.Join .Terms input[type=checkbox] {
   display: none;
 }
-
-.Join .Terms input[type="checkbox"] + label {
+.Join .Terms input[type=checkbox] + label {
   margin: 0vw 1vw 0 0;
   border: 1px solid #1e85ec;
   border-radius: 100%;
@@ -6686,16 +6008,14 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
 }
-
-.Join .Terms input[type="checkbox"] + label > div {
+.Join .Terms input[type=checkbox] + label > div {
   width: 3vw;
   height: 3vw;
   background: transparent;
   margin: auto;
   border-radius: 100%;
 }
-
-.Join .Terms input[type="checkbox"]:checked + label > div {
+.Join .Terms input[type=checkbox]:checked + label > div {
   background: #fab617;
 }
 
@@ -6714,7 +6034,6 @@ span.important {
   margin-bottom: 2vw;
   color: #052561;
 }
-
 .refShare .refBox {
   color: white;
   display: -webkit-box;
@@ -6726,7 +6045,6 @@ span.important {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-
 .refShare .refBox > div {
   width: 100%;
   margin: 2vw 0;
@@ -6735,7 +6053,6 @@ span.important {
   padding: 3vw;
   background: #455c83;
 }
-
 .refShare .refBox > div > div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6747,26 +6064,21 @@ span.important {
   padding-bottom: 3px;
   margin-bottom: 10px;
 }
-
 .refShare .refBox > div.open {
   background: rgba(30, 133, 236, 0.5);
   border-color: #1e85ec;
 }
-
 .refShare .refBox > div span {
   color: #fab617;
 }
-
 .refShare .refBox > div button {
   width: 100%;
 }
-
 .refShare .refBox > div a, .refShare .refBox > div button {
   color: #fab617;
   text-decoration: underline;
   font-size: 12px;
 }
-
 .refShare .refBox > div a.more, .refShare .refBox > div button.more {
   font-size: 16px;
   display: block;
@@ -6779,7 +6091,6 @@ span.important {
   text-transform: uppercase;
   text-decoration: none;
 }
-
 .refShare .refBox > div a.more:hover, .refShare .refBox > div button.more:hover {
   background: #fab617;
   color: #ffffff;
@@ -6791,15 +6102,12 @@ span.important {
   color: #052561;
   margin-top: 3vw;
 }
-
 .refLink .refBox {
   margin-top: 3vw;
 }
-
 .refLink .refBox .icon:before {
   margin-left: 2vw;
 }
-
 .refLink .refBox .refMedia {
   margin-top: 5vw;
   display: -webkit-box;
@@ -6811,27 +6119,22 @@ span.important {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
-
 .refLink .refBox .refMedia a {
   font-size: 10px;
   width: calc(50% - 2vw);
   margin-bottom: 3vw;
   margin-right: 2vw;
 }
-
 .refLink .refBox .refMedia a:nth-child(even) {
   margin-right: 0;
 }
-
 .refLink .refBox .refMedia a.icon:before {
   margin-right: 2vw;
   margin-left: 0;
 }
-
 .refLink .text-org {
   text-align: left;
 }
-
 .refLink .icon {
   color: #052561;
 }
@@ -6840,7 +6143,6 @@ span.important {
   color: white;
   margin: 2vw 0;
 }
-
 .achievement_item {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6858,11 +6160,9 @@ span.important {
   background: #455c83;
   margin-bottom: 10px;
 }
-
 .achievement_item:nth-child(1) {
   margin-right: 15px;
 }
-
 .achievement_item span {
   font-weight: bold;
   margin-top: 10px;
@@ -6882,7 +6182,6 @@ span.important {
   border-radius: 0 0 5px 5px;
   display: none;
 }
-
 .depositModule_mobile.open,
 .depositModule_online.open,
 .depositModule_local.open,
@@ -6890,7 +6189,6 @@ span.important {
 .depositModule_Crpyto.open {
   display: block;
 }
-
 .depositModule_mobile > .title,
 .depositModule_online > .title,
 .depositModule_local > .title,
@@ -6904,7 +6202,6 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
 }
-
 .depositModule_mobile > .title:not(.text-org),
 .depositModule_online > .title:not(.text-org),
 .depositModule_local > .title:not(.text-org),
@@ -6916,7 +6213,6 @@ span.important {
   border-radius: 5px 5px 0 0;
   margin-bottom: 1px;
 }
-
 .depositModule_mobile > .title:before,
 .depositModule_mobile > .title span,
 .depositModule_online > .title:before,
@@ -6929,7 +6225,6 @@ span.important {
 .depositModule_Crpyto > .title span {
   margin-right: 1vw;
 }
-
 .depositModule_mobile > .title.important,
 .depositModule_online > .title.important,
 .depositModule_local > .title.important,
@@ -6938,7 +6233,6 @@ span.important {
   font-weight: bold;
   color: white;
 }
-
 .depositModule_mobile .selectModule,
 .depositModule_online .selectModule,
 .depositModule_local .selectModule,
@@ -6957,20 +6251,18 @@ span.important {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
-
-.depositModule_mobile .selectModule input[type="radio"],
-.depositModule_online .selectModule input[type="radio"],
-.depositModule_local .selectModule input[type="radio"],
-.depositModule_topupMobile .selectModule input[type="radio"],
-.depositModule_Crpyto .selectModule input[type="radio"] {
+.depositModule_mobile .selectModule input[type=radio],
+.depositModule_online .selectModule input[type=radio],
+.depositModule_local .selectModule input[type=radio],
+.depositModule_topupMobile .selectModule input[type=radio],
+.depositModule_Crpyto .selectModule input[type=radio] {
   display: none;
 }
-
-.depositModule_mobile .selectModule input[type="radio"] + label,
-.depositModule_online .selectModule input[type="radio"] + label,
-.depositModule_local .selectModule input[type="radio"] + label,
-.depositModule_topupMobile .selectModule input[type="radio"] + label,
-.depositModule_Crpyto .selectModule input[type="radio"] + label {
+.depositModule_mobile .selectModule input[type=radio] + label,
+.depositModule_online .selectModule input[type=radio] + label,
+.depositModule_local .selectModule input[type=radio] + label,
+.depositModule_topupMobile .selectModule input[type=radio] + label,
+.depositModule_Crpyto .selectModule input[type=radio] + label {
   border: 1px solid white;
   width: 4vw;
   height: 4vw;
@@ -6985,17 +6277,15 @@ span.important {
       -ms-flex-pack: center;
           justify-content: center;
 }
-
-.depositModule_mobile .selectModule input[type="radio"]:checked + label div,
-.depositModule_online .selectModule input[type="radio"]:checked + label div,
-.depositModule_local .selectModule input[type="radio"]:checked + label div,
-.depositModule_topupMobile .selectModule input[type="radio"]:checked + label div,
-.depositModule_Crpyto .selectModule input[type="radio"]:checked + label div {
+.depositModule_mobile .selectModule input[type=radio]:checked + label div,
+.depositModule_online .selectModule input[type=radio]:checked + label div,
+.depositModule_local .selectModule input[type=radio]:checked + label div,
+.depositModule_topupMobile .selectModule input[type=radio]:checked + label div,
+.depositModule_Crpyto .selectModule input[type=radio]:checked + label div {
   width: 3vw;
   height: 3vw;
   background: white;
 }
-
 .depositModule_mobile .selectModule > div,
 .depositModule_online .selectModule > div,
 .depositModule_local .selectModule > div,
@@ -7014,7 +6304,6 @@ span.important {
   margin: 2vw 0;
   font-size: 3vw;
 }
-
 .depositModule_mobile .selectModule > div .bank,
 .depositModule_online .selectModule > div .bank,
 .depositModule_local .selectModule > div .bank,
@@ -7023,7 +6312,6 @@ span.important {
   color: white;
   margin: 0 1vw 0;
 }
-
 .depositModule_mobile .selectModule > div .bank > div,
 .depositModule_online .selectModule > div .bank > div,
 .depositModule_local .selectModule > div .bank > div,
@@ -7034,7 +6322,6 @@ span.important {
   white-space: nowrap;
   width: 50vw;
 }
-
 .depositModule_mobile .selectModule > div .bank > div:last-child,
 .depositModule_online .selectModule > div .bank > div:last-child,
 .depositModule_local .selectModule > div .bank > div:last-child,
@@ -7042,7 +6329,6 @@ span.important {
 .depositModule_Crpyto .selectModule > div .bank > div:last-child {
   color: white;
 }
-
 .depositModule_mobile .selectModule > div.info,
 .depositModule_online .selectModule > div.info,
 .depositModule_local .selectModule > div.info,
@@ -7054,7 +6340,6 @@ span.important {
   margin: auto;
   border-radius: 5px;
 }
-
 .depositModule_mobile .selectModule > div.info .checkBank,
 .depositModule_online .selectModule > div.info .checkBank,
 .depositModule_local .selectModule > div.info .checkBank,
@@ -7067,7 +6352,6 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
 }
-
 .depositModule_mobile .selectModule > div .checkCrypto,
 .depositModule_online .selectModule > div .checkCrypto,
 .depositModule_local .selectModule > div .checkCrypto,
@@ -7081,7 +6365,6 @@ span.important {
       -ms-flex-direction: column;
           flex-direction: column;
 }
-
 .depositModule_mobile .selectModule > div .checkCrypto > div,
 .depositModule_online .selectModule > div .checkCrypto > div,
 .depositModule_local .selectModule > div .checkCrypto > div,
@@ -7092,7 +6375,6 @@ span.important {
   white-space: nowrap;
   width: 50vw;
 }
-
 .depositModule_mobile .selectModule > div .bankName,
 .depositModule_online .selectModule > div .bankName,
 .depositModule_local .selectModule > div .bankName,
@@ -7104,7 +6386,6 @@ span.important {
   margin: 0 2vw;
   position: relative;
 }
-
 .depositModule_mobile .selectModule > div .bankName img,
 .depositModule_online .selectModule > div .bankName img,
 .depositModule_local .selectModule > div .bankName img,
@@ -7113,7 +6394,6 @@ span.important {
   width: 100%;
   vertical-align: middle;
 }
-
 .depositModule_mobile .selectModule > div .bankName .mask,
 .depositModule_online .selectModule > div .bankName .mask,
 .depositModule_local .selectModule > div .bankName .mask,
@@ -7126,7 +6406,6 @@ span.important {
   width: 100%;
   height: 100%;
 }
-
 .depositModule_mobile .input-group,
 .depositModule_online .input-group,
 .depositModule_local .input-group,
@@ -7140,7 +6419,6 @@ span.important {
       -ms-flex-flow: row;
           flex-flow: row;
 }
-
 .depositModule_mobile .input-group .inputBox, .depositModule_mobile .input-group .worldcupEvent .ticket__container .inputBox-event, .worldcupEvent .ticket__container .depositModule_mobile .input-group .inputBox-event,
 .depositModule_online .input-group .inputBox,
 .depositModule_online .input-group .worldcupEvent .ticket__container .inputBox-event,
@@ -7156,7 +6434,6 @@ span.important {
 .worldcupEvent .ticket__container .depositModule_Crpyto .input-group .inputBox-event {
   width: 100%;
 }
-
 .depositModule_mobile .input-group button,
 .depositModule_online .input-group button,
 .depositModule_local .input-group button,
@@ -7169,7 +6446,6 @@ span.important {
   border-radius: 3px;
   margin: 2px 0 0 2px;
 }
-
 .depositModule_mobile .inputBox, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event,
 .depositModule_online .inputBox,
 .depositModule_online .worldcupEvent .ticket__container .inputBox-event,
@@ -7187,7 +6463,6 @@ span.important {
   margin: 2px 0 2vw;
   color: white;
 }
-
 .depositModule_mobile .inputBox .iconModule, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event .iconModule, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event .iconModule,
 .depositModule_online .inputBox .iconModule,
 .depositModule_online .worldcupEvent .ticket__container .inputBox-event .iconModule,
@@ -7208,7 +6483,6 @@ span.important {
   top: -2.5vw;
   color: #6f7a8e;
 }
-
 .depositModule_mobile .inputBox .iconModule .icon, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event .iconModule .icon, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event .iconModule .icon,
 .depositModule_online .inputBox .iconModule .icon,
 .depositModule_online .worldcupEvent .ticket__container .inputBox-event .iconModule .icon,
@@ -7228,7 +6502,6 @@ span.important {
           transform: translateY(15%);
   margin-right: 0;
 }
-
 .depositModule_mobile .inputBox .icon-module, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event .icon-module, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event .icon-module,
 .depositModule_online .inputBox .icon-module,
 .depositModule_online .worldcupEvent .ticket__container .inputBox-event .icon-module,
@@ -7244,7 +6517,6 @@ span.important {
 .worldcupEvent .ticket__container .depositModule_Crpyto .inputBox-event .icon-module {
   top: 1.5vw;
 }
-
 .depositModule_mobile .inputBox input, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event input, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event input,
 .depositModule_online .inputBox input,
 .depositModule_online .worldcupEvent .ticket__container .inputBox-event input,
@@ -7265,58 +6537,22 @@ span.important {
   border-radius: 3px;
   color: #052561;
 }
-
-.depositModule_mobile .inputBox input::-webkit-input-placeholder, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event input::-webkit-input-placeholder, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event input::-webkit-input-placeholder,
-.depositModule_online .inputBox input::-webkit-input-placeholder,
-.depositModule_online .worldcupEvent .ticket__container .inputBox-event input::-webkit-input-placeholder,
-.worldcupEvent .ticket__container .depositModule_online .inputBox-event input::-webkit-input-placeholder,
-.depositModule_local .inputBox input::-webkit-input-placeholder,
-.depositModule_local .worldcupEvent .ticket__container .inputBox-event input::-webkit-input-placeholder,
-.worldcupEvent .ticket__container .depositModule_local .inputBox-event input::-webkit-input-placeholder,
-.depositModule_topupMobile .inputBox input::-webkit-input-placeholder,
-.depositModule_topupMobile .worldcupEvent .ticket__container .inputBox-event input::-webkit-input-placeholder,
-.worldcupEvent .ticket__container .depositModule_topupMobile .inputBox-event input::-webkit-input-placeholder,
-.depositModule_Crpyto .inputBox input::-webkit-input-placeholder,
-.depositModule_Crpyto .worldcupEvent .ticket__container .inputBox-event input::-webkit-input-placeholder,
-.worldcupEvent .ticket__container .depositModule_Crpyto .inputBox-event input::-webkit-input-placeholder {
+.depositModule_mobile .inputBox input::-webkit-input-placeholder, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event input::-webkit-input-placeholder, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event input::-webkit-input-placeholder, .depositModule_online .inputBox input::-webkit-input-placeholder, .depositModule_online .worldcupEvent .ticket__container .inputBox-event input::-webkit-input-placeholder, .worldcupEvent .ticket__container .depositModule_online .inputBox-event input::-webkit-input-placeholder, .depositModule_local .inputBox input::-webkit-input-placeholder, .depositModule_local .worldcupEvent .ticket__container .inputBox-event input::-webkit-input-placeholder, .worldcupEvent .ticket__container .depositModule_local .inputBox-event input::-webkit-input-placeholder, .depositModule_topupMobile .inputBox input::-webkit-input-placeholder, .depositModule_topupMobile .worldcupEvent .ticket__container .inputBox-event input::-webkit-input-placeholder, .worldcupEvent .ticket__container .depositModule_topupMobile .inputBox-event input::-webkit-input-placeholder, .depositModule_Crpyto .inputBox input::-webkit-input-placeholder, .depositModule_Crpyto .worldcupEvent .ticket__container .inputBox-event input::-webkit-input-placeholder, .worldcupEvent .ticket__container .depositModule_Crpyto .inputBox-event input::-webkit-input-placeholder {
   color: #6f7a8e;
   font-size: 3vw;
 }
-
-.depositModule_mobile .inputBox input:-ms-input-placeholder, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event input:-ms-input-placeholder, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event input:-ms-input-placeholder,
-.depositModule_online .inputBox input:-ms-input-placeholder,
-.depositModule_online .worldcupEvent .ticket__container .inputBox-event input:-ms-input-placeholder,
-.worldcupEvent .ticket__container .depositModule_online .inputBox-event input:-ms-input-placeholder,
-.depositModule_local .inputBox input:-ms-input-placeholder,
-.depositModule_local .worldcupEvent .ticket__container .inputBox-event input:-ms-input-placeholder,
-.worldcupEvent .ticket__container .depositModule_local .inputBox-event input:-ms-input-placeholder,
-.depositModule_topupMobile .inputBox input:-ms-input-placeholder,
-.depositModule_topupMobile .worldcupEvent .ticket__container .inputBox-event input:-ms-input-placeholder,
-.worldcupEvent .ticket__container .depositModule_topupMobile .inputBox-event input:-ms-input-placeholder,
-.depositModule_Crpyto .inputBox input:-ms-input-placeholder,
-.depositModule_Crpyto .worldcupEvent .ticket__container .inputBox-event input:-ms-input-placeholder,
-.worldcupEvent .ticket__container .depositModule_Crpyto .inputBox-event input:-ms-input-placeholder {
+.depositModule_mobile .inputBox input::-moz-placeholder, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event input::-moz-placeholder, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event input::-moz-placeholder, .depositModule_online .inputBox input::-moz-placeholder, .depositModule_online .worldcupEvent .ticket__container .inputBox-event input::-moz-placeholder, .worldcupEvent .ticket__container .depositModule_online .inputBox-event input::-moz-placeholder, .depositModule_local .inputBox input::-moz-placeholder, .depositModule_local .worldcupEvent .ticket__container .inputBox-event input::-moz-placeholder, .worldcupEvent .ticket__container .depositModule_local .inputBox-event input::-moz-placeholder, .depositModule_topupMobile .inputBox input::-moz-placeholder, .depositModule_topupMobile .worldcupEvent .ticket__container .inputBox-event input::-moz-placeholder, .worldcupEvent .ticket__container .depositModule_topupMobile .inputBox-event input::-moz-placeholder, .depositModule_Crpyto .inputBox input::-moz-placeholder, .depositModule_Crpyto .worldcupEvent .ticket__container .inputBox-event input::-moz-placeholder, .worldcupEvent .ticket__container .depositModule_Crpyto .inputBox-event input::-moz-placeholder {
   color: #6f7a8e;
   font-size: 3vw;
 }
-
-.depositModule_mobile .inputBox input::-ms-input-placeholder, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event input::-ms-input-placeholder, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event input::-ms-input-placeholder,
-.depositModule_online .inputBox input::-ms-input-placeholder,
-.depositModule_online .worldcupEvent .ticket__container .inputBox-event input::-ms-input-placeholder,
-.worldcupEvent .ticket__container .depositModule_online .inputBox-event input::-ms-input-placeholder,
-.depositModule_local .inputBox input::-ms-input-placeholder,
-.depositModule_local .worldcupEvent .ticket__container .inputBox-event input::-ms-input-placeholder,
-.worldcupEvent .ticket__container .depositModule_local .inputBox-event input::-ms-input-placeholder,
-.depositModule_topupMobile .inputBox input::-ms-input-placeholder,
-.depositModule_topupMobile .worldcupEvent .ticket__container .inputBox-event input::-ms-input-placeholder,
-.worldcupEvent .ticket__container .depositModule_topupMobile .inputBox-event input::-ms-input-placeholder,
-.depositModule_Crpyto .inputBox input::-ms-input-placeholder,
-.depositModule_Crpyto .worldcupEvent .ticket__container .inputBox-event input::-ms-input-placeholder,
-.worldcupEvent .ticket__container .depositModule_Crpyto .inputBox-event input::-ms-input-placeholder {
+.depositModule_mobile .inputBox input:-ms-input-placeholder, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event input:-ms-input-placeholder, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event input:-ms-input-placeholder, .depositModule_online .inputBox input:-ms-input-placeholder, .depositModule_online .worldcupEvent .ticket__container .inputBox-event input:-ms-input-placeholder, .worldcupEvent .ticket__container .depositModule_online .inputBox-event input:-ms-input-placeholder, .depositModule_local .inputBox input:-ms-input-placeholder, .depositModule_local .worldcupEvent .ticket__container .inputBox-event input:-ms-input-placeholder, .worldcupEvent .ticket__container .depositModule_local .inputBox-event input:-ms-input-placeholder, .depositModule_topupMobile .inputBox input:-ms-input-placeholder, .depositModule_topupMobile .worldcupEvent .ticket__container .inputBox-event input:-ms-input-placeholder, .worldcupEvent .ticket__container .depositModule_topupMobile .inputBox-event input:-ms-input-placeholder, .depositModule_Crpyto .inputBox input:-ms-input-placeholder, .depositModule_Crpyto .worldcupEvent .ticket__container .inputBox-event input:-ms-input-placeholder, .worldcupEvent .ticket__container .depositModule_Crpyto .inputBox-event input:-ms-input-placeholder {
   color: #6f7a8e;
   font-size: 3vw;
 }
-
+.depositModule_mobile .inputBox input::-ms-input-placeholder, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event input::-ms-input-placeholder, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event input::-ms-input-placeholder, .depositModule_online .inputBox input::-ms-input-placeholder, .depositModule_online .worldcupEvent .ticket__container .inputBox-event input::-ms-input-placeholder, .worldcupEvent .ticket__container .depositModule_online .inputBox-event input::-ms-input-placeholder, .depositModule_local .inputBox input::-ms-input-placeholder, .depositModule_local .worldcupEvent .ticket__container .inputBox-event input::-ms-input-placeholder, .worldcupEvent .ticket__container .depositModule_local .inputBox-event input::-ms-input-placeholder, .depositModule_topupMobile .inputBox input::-ms-input-placeholder, .depositModule_topupMobile .worldcupEvent .ticket__container .inputBox-event input::-ms-input-placeholder, .worldcupEvent .ticket__container .depositModule_topupMobile .inputBox-event input::-ms-input-placeholder, .depositModule_Crpyto .inputBox input::-ms-input-placeholder, .depositModule_Crpyto .worldcupEvent .ticket__container .inputBox-event input::-ms-input-placeholder, .worldcupEvent .ticket__container .depositModule_Crpyto .inputBox-event input::-ms-input-placeholder {
+  color: #6f7a8e;
+  font-size: 3vw;
+}
 .depositModule_mobile .inputBox input::placeholder, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event input::placeholder, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event input::placeholder,
 .depositModule_online .inputBox input::placeholder,
 .depositModule_online .worldcupEvent .ticket__container .inputBox-event input::placeholder,
@@ -7333,7 +6569,6 @@ span.important {
   color: #6f7a8e;
   font-size: 3vw;
 }
-
 .depositModule_mobile .inputBox .tip, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event .tip, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event .tip,
 .depositModule_online .inputBox .tip,
 .depositModule_online .worldcupEvent .ticket__container .inputBox-event .tip,
@@ -7349,7 +6584,6 @@ span.important {
 .worldcupEvent .ticket__container .depositModule_Crpyto .inputBox-event .tip {
   margin-left: 2.5vw;
 }
-
 .depositModule_mobile .inputBox .tip img, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event .tip img, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event .tip img,
 .depositModule_online .inputBox .tip img,
 .depositModule_online .worldcupEvent .ticket__container .inputBox-event .tip img,
@@ -7366,7 +6600,6 @@ span.important {
   width: 102%;
   margin-left: -2.5vw;
 }
-
 .depositModule_mobile .inputBox .dropdown > .dropdown-container, .depositModule_mobile .worldcupEvent .ticket__container .inputBox-event .dropdown > .dropdown-container, .worldcupEvent .ticket__container .depositModule_mobile .inputBox-event .dropdown > .dropdown-container,
 .depositModule_online .inputBox .dropdown > .dropdown-container,
 .depositModule_online .worldcupEvent .ticket__container .inputBox-event .dropdown > .dropdown-container,
@@ -7382,7 +6615,6 @@ span.important {
 .worldcupEvent .ticket__container .depositModule_Crpyto .inputBox-event .dropdown > .dropdown-container {
   background: #bfc9da;
 }
-
 .depositModule_mobile .note,
 .depositModule_online .note,
 .depositModule_local .note,
@@ -7394,7 +6626,6 @@ span.important {
   border-radius: 5px;
   font-size: 3.2vw;
 }
-
 .depositModule_mobile .note ol,
 .depositModule_online .note ol,
 .depositModule_local .note ol,
@@ -7403,7 +6634,6 @@ span.important {
   list-style-type: "* " !important;
   padding-left: 4vw;
 }
-
 .depositModule_mobile .note ol li,
 .depositModule_online .note ol li,
 .depositModule_local .note ol li,
@@ -7411,7 +6641,6 @@ span.important {
 .depositModule_Crpyto .note ol li {
   margin: 1vw;
 }
-
 .depositModule_mobile .note p,
 .depositModule_online .note p,
 .depositModule_local .note p,
@@ -7420,15 +6649,13 @@ span.important {
   font-weight: bold;
   color: #cf0404;
 }
-
 .depositModule_mobile .note p span,
 .depositModule_online .note p span,
 .depositModule_local .note p span,
 .depositModule_topupMobile .note p span,
 .depositModule_Crpyto .note p span {
-  margin-right: .5rem;
+  margin-right: 0.5rem;
 }
-
 .depositModule_mobile a.clickBtn,
 .depositModule_online a.clickBtn,
 .depositModule_local a.clickBtn,
@@ -7451,7 +6678,6 @@ span.important {
   width: 7vw;
   height: 7vw;
 }
-
 .depositModule_mobile a.clickBtn:before,
 .depositModule_online a.clickBtn:before,
 .depositModule_local a.clickBtn:before,
@@ -7459,7 +6685,6 @@ span.important {
 .depositModule_Crpyto a.clickBtn:before {
   font-size: 4vw;
 }
-
 .depositModule_mobile .title .text-org,
 .depositModule_online .title .text-org,
 .depositModule_local .title .text-org,
@@ -7477,7 +6702,6 @@ span.important {
   margin-top: 3vw;
   font-size: 3.5vw;
 }
-
 .switchTag div {
   -webkit-box-flex: 1;
       -ms-flex: auto;
@@ -7487,14 +6711,12 @@ span.important {
   padding: 2vw;
   border-radius: 3px 3px 0 0;
   text-align: center;
-  margin-right: .5vw;
+  margin-right: 0.5vw;
   background: rgba(0, 0, 0, 0.3);
 }
-
 .switchTag div.open {
   background: #1e85ec;
 }
-
 .switchTag div:last-child {
   margin-right: 0;
 }
@@ -7506,33 +6728,27 @@ span.important {
   border-radius: 5px;
   font-size: 3.2vw;
 }
-
 .importantNote .title {
   color: #666;
   text-align: center;
   font-size: 3.5vw;
 }
-
 .importantNote .title i {
   color: #134dae;
   font-weight: normal;
 }
-
 .importantNote .title i::before {
   font-size: 10px;
 }
-
 .importantNote ul {
   list-style: decimal;
   margin-left: 4vw;
   line-height: 6vw;
 }
-
 .importantNote a {
   font-weight: bold;
   color: #134dae;
 }
-
 .importantNote span {
   font-weight: bold;
 }
@@ -7544,16 +6760,13 @@ span.important {
       -ms-flex-pack: start;
           justify-content: flex-start;
 }
-
 .vip .swiper-container {
   overflow: hidden;
 }
-
 .vip .swiper-container .banner {
   top: auto;
   height: 37.5vw;
 }
-
 .vip .swiper-container .swiper-slide.swiper-slide-active {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7575,7 +6788,6 @@ span.important {
   font-size: 10px;
   word-break: break-word;
 }
-
 .medal div {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -7595,15 +6807,12 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
 }
-
 .medal div:first-child {
   border-left: 0;
 }
-
 .medal div:last-child {
   border-right: 0;
 }
-
 .medal div img {
   width: 10vw;
 }
@@ -7613,7 +6822,6 @@ span.important {
   padding: 2vw;
   margin: 60vw auto 0;
 }
-
 .vipInfo .vipTitle {
   font-weight: bold;
   color: #fab617;
@@ -7626,44 +6834,35 @@ span.important {
   display: flex;
   border-collapse: collapse;
 }
-
 .vipPage .eventList tbody {
   width: 100%;
 }
-
 .vipPage .eventList tr {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   background: #212121;
 }
-
 .vipPage .eventList tr:first-child td {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
 }
-
 .vipPage .eventList tr:nth-child(odd):not(:nth-child(1)) {
   background: rgba(5, 5, 5, 0.5);
 }
-
 .vipPage .eventList tr.title {
   background: #1e85ec;
 }
-
 .vipPage .eventList tr.title .text-org {
   color: #fab617;
 }
-
 .vipPage .eventList tr:not(.title) td[colspan="7"] {
   background: black;
 }
-
 .vipPage .eventList tr.lastTd td {
   border-bottom: 1px solid #f0eff5;
 }
-
 .vipPage .eventList tr td {
   padding: 1vw 0;
   font-weight: normal;
@@ -7693,15 +6892,12 @@ span.important {
   color: #fff;
   text-align: center;
 }
-
 .vipPage .eventList tr td:first-child {
   border-left: 1px solid #f0eff5;
 }
-
 .vipPage .eventList tr td img {
   width: 10vw;
 }
-
 .vipPage .text {
   margin: 1vw 2vw;
 }
@@ -7711,7 +6907,6 @@ span.important {
   top: 12vw;
   height: 37.5vw;
 }
-
 .vipBannerTop > div img {
   width: 100%;
 }
@@ -7728,7 +6923,6 @@ span.important {
           justify-content: center;
   margin-top: 3vw;
 }
-
 .vipBanner img {
   max-width: 100%;
 }
@@ -7737,18 +6931,15 @@ span.important {
   position: relative;
   color: #fff;
 }
-
 .jackpot img {
   width: 100%;
 }
-
 .jackpot p {
   position: absolute;
   top: 66%;
   left: 12%;
   font-size: 5vw;
 }
-
 .jackpot p:nth-last-child(1) {
   left: 30%;
   letter-spacing: 2px;
@@ -7759,7 +6950,6 @@ span.important {
   margin: 2vw auto 5vw auto;
   padding: 3vw 4vw;
 }
-
 .topWinner .title {
   background: -webkit-gradient(linear, left top, left bottom, from(#ffd34f), to(#ffc34d));
   background: linear-gradient(to bottom, #ffd34f 0%, #ffc34d 100%);
@@ -7773,23 +6963,19 @@ span.important {
   color: #1f3258;
   border-radius: 5px 5px 0 0;
 }
-
 .topWinner .title img {
   margin-right: 10px;
 }
-
 .topWinner img {
   width: 30px;
   margin: 0 5px;
 }
-
 .topWinner ul {
   height: 180px;
   overflow-y: scroll;
   border-radius: 0 0 5px 5px;
   font-size: 12px;
 }
-
 .topWinner ul li {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7799,15 +6985,12 @@ span.important {
           align-items: center;
   width: 100%;
 }
-
 .topWinner ul li:nth-child(even) {
   background: #284985;
 }
-
 .topWinner ul li:nth-child(odd) {
   background: #4e6ca8;
 }
-
 .topWinner ul li > div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7820,18 +7003,15 @@ span.important {
       -ms-flex: 1;
           flex: 1;
 }
-
 .topWinner ul li .rankOrder {
   color: white;
   margin-right: 5px;
 }
-
 .topWinner ul li .rankOrder img {
   margin-right: 5px;
   width: auto;
   height: 40px;
 }
-
 .topWinner ul li .rankMoney {
   color: #fab617;
   font-weight: bold;
@@ -7839,12 +7019,10 @@ span.important {
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
-
 .topWinner ul li .rankMoney img {
   margin-right: 5px;
   width: 15px;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   .topWinner ul {
     height: 220px;
@@ -7860,7 +7038,6 @@ span.important {
   top: 0;
   z-index: 9999;
 }
-
 .favouriteModule .favourite {
   position: fixed;
   width: calc(100% - 12vw);
@@ -7879,7 +7056,6 @@ span.important {
   -webkit-animation: favourite 1.5s linear;
           animation: favourite 1.5s linear;
 }
-
 .favouriteModule .favourite > div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7897,7 +7073,6 @@ span.important {
   font-size: 4vw;
   margin: 0 1vw;
 }
-
 .favouriteModule .favourite > div div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7906,7 +7081,6 @@ span.important {
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
-
 .favouriteModule .favourite > div div a, .favouriteModule .favourite > div div button {
   color: white;
   margin-left: 2vw;
@@ -7923,7 +7097,6 @@ span.important {
           align-items: center;
   text-transform: uppercase;
 }
-
 .favouriteModule .favourite img {
   width: 20vw;
   height: 20vw;
@@ -7949,7 +7122,6 @@ span.important {
     bottom: 2vw;
   }
 }
-
 .inputInfo {
   text-align: left;
   display: none;
@@ -7960,9 +7132,8 @@ span.important {
   word-break: break-word;
   color: white;
 }
-
 .inputInfo:before {
-  content: '';
+  content: "";
   width: 0;
   height: 0;
   border-width: 2vw 2vw 0 2vw;
@@ -7973,7 +7144,6 @@ span.important {
   right: 3vw;
   z-index: 1;
 }
-
 .inputInfo.active {
   display: block;
 }
@@ -7986,36 +7156,31 @@ span.important {
       flex-flow: wrap;
   position: relative;
 }
-
 .rememberMode > .icon {
   color: #5084e4;
   position: absolute;
   right: 0;
   top: 5vw;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   .rememberMode > .icon {
     top: 1.75vw;
   }
 }
-
 .rememberMode .inputInfo {
   margin: 0 0 2vw;
   word-break: break-word;
   width: 100%;
   font-size: 3vw;
 }
-
 .rememberMode .inputInfo:before {
-  content: '';
+  content: "";
   border-width: 0 2vw 2vw 2vw;
   border-style: solid dashed dashed;
   border-color: transparent transparent #284985 transparent;
   right: 0.7vw;
   top: -2vw;
 }
-
 .rememberMode .inputInfo span {
   display: block;
   color: #fab617;
@@ -8036,7 +7201,6 @@ span.important {
           align-items: center;
   margin-top: 10px;
 }
-
 .swithModule .switchBtn {
   width: 60px;
   height: 28px;
@@ -8056,25 +7220,21 @@ span.important {
   padding: 5px;
   margin: 5px;
 }
-
 .swithModule .switchBtn.active {
   background: #259076;
   border-color: #259076;
 }
-
 .swithModule .switchBtn.active > span:nth-child(2) {
   opacity: 0;
   -webkit-transition: 0.7s;
   transition: 0.7s;
 }
-
 .swithModule .switchBtn > span {
   color: white;
   font-size: 12px;
   font-weight: normal;
   margin: 0;
 }
-
 .swithModule .switchBtn > div {
   position: absolute;
   background: white;
@@ -8085,17 +7245,14 @@ span.important {
   -webkit-transition: 0.7s;
   transition: 0.7s;
 }
-
 .swithModule .switchBtn > div.active {
   -webkit-transition: 0.7s;
   transition: 0.7s;
   left: calc(100% - 26px);
 }
-
 .swithModule + .icon-question {
   margin-top: 10px;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   .swithModule {
     font-size: 3.5vw;
@@ -8129,7 +7286,6 @@ span.important {
   border-radius: 0;
   margin: 6vw 0 -3vw;
 }
-
 .partnerSelect button, .partnerSelect a {
   min-width: 30.5vw;
   padding: 0 1vw;
@@ -8148,11 +7304,9 @@ span.important {
   -webkit-filter: brightness(0.5);
           filter: brightness(0.5);
 }
-
 .partnerSelect button div, .partnerSelect a div {
   margin-top: -1vw;
 }
-
 .partnerSelect button img, .partnerSelect a img {
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
@@ -8160,31 +7314,26 @@ span.important {
   transition: 0.7s;
   height: 12vw;
 }
-
 .partnerSelect button.active, .partnerSelect a.active {
   background: #1e85ec;
   color: white;
   -webkit-filter: none;
           filter: none;
 }
-
 .partnerSelect button.active img, .partnerSelect a.active img {
   -webkit-transform: scale(0.9);
           transform: scale(0.9);
   -webkit-transition: 0.7s;
   transition: 0.7s;
 }
-
 .partnerSelect.modifier {
   background: transparent;
 }
-
 .partnerSelect.modifier button, .partnerSelect.modifier a {
   background: #5084e4;
   margin-right: 1vw;
-  padding: .8vw 1.2vw;
+  padding: 0.8vw 1.2vw;
 }
-
 .partnerSelect + .casinoSelect {
   height: 12vw;
   background: #e2e4e7;
@@ -8198,7 +7347,6 @@ span.important {
   border-radius: 0;
   margin-top: 4vw;
 }
-
 .partnerSelect + .casinoSelect button, .partnerSelect + .casinoSelect a {
   color: #a1a1a1;
   width: auto;
@@ -8208,7 +7356,6 @@ span.important {
   white-space: nowrap;
   border-radius: 0;
 }
-
 .partnerSelect + .casinoSelect button.active, .partnerSelect + .casinoSelect a.active {
   margin-top: 1vw;
   color: #5084e4;
@@ -8223,22 +7370,18 @@ span.important {
       -ms-flex-pack: start;
           justify-content: flex-start;
 }
-
 .app_page > div {
   padding-top: 55px;
 }
-
 .app_page > div .logo img {
   width: 135px;
   margin: 20px auto 10px;
 }
-
 .app_page > div .visual {
   display: block;
   width: 250px;
   margin: auto auto 50px;
 }
-
 .app_page > div .title {
   text-align: center;
   font-size: 2rem;
@@ -8248,19 +7391,16 @@ span.important {
   -webkit-animation: shine 1s forwards;
           animation: shine 1s forwards;
 }
-
 .app_page > div .subtitle {
   color: #fff;
   line-height: 1.5;
   text-align: center;
   margin-bottom: 20px;
 }
-
 .app_page > div .subtitle > div {
   display: block;
   font-size: 1.5rem;
 }
-
 .app_page > div .qrcode .qrcode-item {
   margin: 0 0 50px;
   color: #fff;
@@ -8272,18 +7412,16 @@ span.important {
       -ms-flex-direction: column;
           flex-direction: column;
 }
-
 .app_page > div .qrcode .qrcode-item img {
   width: 65px;
   display: block;
   margin: 10px auto;
 }
-
 .app_page > div a, .app_page > div button {
   padding: 8px 15px;
-  background: linear-gradient(130deg, #3f5efb 0%, #fc466b 100%);
-  -webkit-box-shadow: 1px 2px 5px #7db8f0be;
-          box-shadow: 1px 2px 5px #7db8f0be;
+  background: linear-gradient(130deg, rgb(63, 94, 251) 0%, rgb(252, 70, 107) 100%);
+  -webkit-box-shadow: 1px 2px 5px rgba(125, 184, 240, 0.7450980392);
+          box-shadow: 1px 2px 5px rgba(125, 184, 240, 0.7450980392);
   color: #fff;
   margin: 10px auto 20px auto;
   border: 1px solid #fff;
@@ -8292,12 +7430,10 @@ span.important {
   font-size: 16px;
   font-weight: bold;
 }
-
 .app_page > div .tutorial img {
   width: 80%;
   max-width: 450px;
 }
-
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   .app_page > div {
     padding-top: 100px;
@@ -8309,7 +7445,7 @@ span.important {
     font-size: 1rem;
   }
   .app_page > div .subtitle {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
   .app_page > div .subtitle > div {
     font-size: 1rem;
@@ -8332,7 +7468,6 @@ span.important {
   font: revert;
   vertical-align: revert;
 }
-
 .backstage h1, .backstage h2, .backstage h3, .backstage h4, .backstage h5, .backstage h6, .backstage strong {
   font-size: revert;
   margin: revert;
@@ -8342,7 +7477,6 @@ span.important {
   font: revert;
   vertical-align: revert;
 }
-
 .backstage img {
   width: 100% !important;
 }
@@ -8352,12 +7486,10 @@ span.important {
   border-radius: 5px;
   margin: 0 0 3vw;
 }
-
 .cashBack .title {
   color: #fab617;
   margin: 0 0 2vw;
 }
-
 .cashBack table {
   color: #284985;
   font-size: 3vw;
@@ -8366,46 +7498,37 @@ span.important {
   overflow: hidden;
   background: white;
 }
-
 .cashBack table tr:nth-child(1) {
   background: #4e6ca8;
   color: white;
   font-weight: bold;
 }
-
 .cashBack table tr:nth-child(even) {
   background: rgba(78, 108, 168, 0.3);
 }
-
 .cashBack table tr:nth-last-child(3) {
   border-top: 1px solid #4e6ca8;
 }
-
 .cashBack table tr:nth-last-child(-n+3) {
   font-weight: bold;
   width: 100%;
   background: transparent;
 }
-
 .cashBack table tr:nth-last-child(-n+3) td {
   border-right: 0;
 }
-
 .cashBack table tr:nth-last-child(-n+3) td span {
   white-space: nowrap;
 }
-
 .cashBack table tr:nth-last-child(-n+3) td span:nth-child(1) {
   min-width: 25vw;
 }
-
 .cashBack table tr td {
   border-right: 1px solid #4e6ca8;
   padding: 1vw;
   line-height: 18px;
   white-space: nowrap;
 }
-
 .cashBack table tr td:last-child {
   border: 0;
 }
@@ -8423,7 +7546,6 @@ span.important {
   margin: 12vw 0 0;
   overflow: hidden;
 }
-
 .wheelEvent .eventPage {
   min-width: 100%;
   margin: 0 auto;
@@ -8441,7 +7563,6 @@ span.important {
   background: url(https://banner.goal123.org/h5/img/event/wheel/bg.jpg) no-repeat top center/212vw, linear-gradient(to right, #301c3f, #361e42);
   padding: 0 0 24vw;
 }
-
 .wheelEvent .eventTitleBg {
   width: 39vw;
   height: 9vw;
@@ -8458,7 +7579,6 @@ span.important {
           align-items: center;
   margin-bottom: 6vw;
 }
-
 .wheelEvent .eventTitleBg .eventTitle {
   margin-top: -2.5vw;
   background: -webkit-linear-gradient(top, #ffffff 30%, #e9f0ff 40%, #ffffff 65%, #f0f8ff 100%);
@@ -8466,20 +7586,17 @@ span.important {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 0.5px #c7e4ff;
-  -webkit-filter: drop-shadow(0px 2px 2px #86b5f3);
-          filter: drop-shadow(0px 2px 2px #86b5f3);
+  -webkit-filter: drop-shadow(0px 2px 2px rgb(134, 181, 243));
+          filter: drop-shadow(0px 2px 2px rgb(134, 181, 243));
   text-align: center;
 }
-
 .wheelEvent .eventTitleBg.vietnam {
   width: 50vw;
   height: 10vw;
 }
-
 .wheelEvent .eventTitleBg.vietnam .eventTitle {
   margin-top: -3.5vw;
 }
-
 .wheelEvent > div[tabindex="-1"] {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -8492,7 +7609,6 @@ span.important {
       -ms-flex-flow: column;
           flex-flow: column;
 }
-
 .wheelEvent .wheelModule {
   position: relative;
   margin: 0 auto;
@@ -8506,12 +7622,10 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
 }
-
 .wheelEvent .wheelModule > img {
   width: 60vw;
   z-index: 1;
 }
-
 .wheelEvent .wheelModule button {
   position: absolute;
   left: 50%;
@@ -8522,20 +7636,17 @@ span.important {
   width: 25vw;
   height: 12.5vw;
 }
-
 .wheelEvent .wheelModule button img {
   width: 100%;
 }
-
 .wheelEvent .wheelModule .wheel {
   width: 55vw;
   height: 55vw;
   position: absolute;
   background: url(https://banner.goal123.org/h5/img/event/wheel/wheel_inner.png) no-repeat center/cover;
   border-radius: 100%;
-  margin-top: .85vw;
+  margin-top: 0.85vw;
 }
-
 .wheelEvent .wheelModule .wheel ul li {
   list-style: none;
   position: absolute;
@@ -8548,11 +7659,9 @@ span.important {
   margin-top: -55vw;
   color: #ffffff;
 }
-
 .wheelEvent .wheelModule .wheel ul li:nth-child(even) {
-  color: #ac0d0d;
+  color: rgb(172, 13, 13);
 }
-
 .wheelEvent .wheelModule .wheel ul li p {
   position: absolute;
   font-size: 3vw;
@@ -8566,92 +7675,74 @@ span.important {
   height: 26vw;
   text-align: right;
 }
-
 .wheelEvent .wheelModule .wheel ul li:nth-child(1) {
   -webkit-transform: rotate(0deg) skew(67.5deg);
           transform: rotate(0deg) skew(67.5deg);
 }
-
 .wheelEvent .wheelModule .wheel ul li:nth-child(2) {
   -webkit-transform: rotate(22.5deg) skew(67.5deg);
           transform: rotate(22.5deg) skew(67.5deg);
 }
-
 .wheelEvent .wheelModule .wheel ul li:nth-child(3) {
   -webkit-transform: rotate(45deg) skew(67.5deg);
           transform: rotate(45deg) skew(67.5deg);
 }
-
 .wheelEvent .wheelModule .wheel ul li:nth-child(4) {
   -webkit-transform: rotate(67.5deg) skew(67.5deg);
           transform: rotate(67.5deg) skew(67.5deg);
 }
-
 .wheelEvent .wheelModule .wheel ul li:nth-child(5) {
   -webkit-transform: rotate(90deg) skew(67.5deg);
           transform: rotate(90deg) skew(67.5deg);
 }
-
 .wheelEvent .wheelModule .wheel ul li:nth-child(6) {
   -webkit-transform: rotate(112.5deg) skew(67.5deg);
           transform: rotate(112.5deg) skew(67.5deg);
 }
-
 .wheelEvent .wheelModule .wheel ul li:nth-child(7) {
   -webkit-transform: rotate(135deg) skew(67.5deg);
           transform: rotate(135deg) skew(67.5deg);
 }
-
 .wheelEvent .wheelModule .wheel ul li:nth-child(8) {
   -webkit-transform: rotate(157.5deg) skew(67.5deg);
           transform: rotate(157.5deg) skew(67.5deg);
 }
-
 .wheelEvent .wheelModule .wheel ul li:nth-child(9) {
   -webkit-transform: rotate(180deg) skew(67.5deg);
           transform: rotate(180deg) skew(67.5deg);
 }
-
 .wheelEvent .wheelModule .wheel ul li:nth-child(10) {
   -webkit-transform: rotate(202.5deg) skew(67.5deg);
           transform: rotate(202.5deg) skew(67.5deg);
 }
-
 .wheelEvent .wheelModule .wheel ul li:nth-child(11) {
   -webkit-transform: rotate(225deg) skew(67.5deg);
           transform: rotate(225deg) skew(67.5deg);
 }
-
 .wheelEvent .wheelModule .wheel ul li:nth-child(12) {
   -webkit-transform: rotate(247.5deg) skew(67.5deg);
           transform: rotate(247.5deg) skew(67.5deg);
 }
-
 .wheelEvent .wheelModule .wheel ul li:nth-child(13) {
   -webkit-transform: rotate(270deg) skew(67.5deg);
           transform: rotate(270deg) skew(67.5deg);
 }
-
 .wheelEvent .wheelModule .wheel ul li:nth-child(14) {
   -webkit-transform: rotate(292.5deg) skew(67.5deg);
           transform: rotate(292.5deg) skew(67.5deg);
 }
-
 .wheelEvent .wheelModule .wheel ul li:nth-child(15) {
   -webkit-transform: rotate(315deg) skew(67.5deg);
           transform: rotate(315deg) skew(67.5deg);
 }
-
 .wheelEvent .wheelModule .wheel ul li:nth-child(16) {
   -webkit-transform: rotate(337.5deg) skew(67.5deg);
           transform: rotate(337.5deg) skew(67.5deg);
 }
-
 .wheelEvent .wheelModule .wheel.active {
   -webkit-animation: wheel 1s 3 linear;
           animation: wheel 1s 3 linear;
 }
-
 @-webkit-keyframes wheel {
   0% {
     -webkit-transform: rotate(0deg);
@@ -8664,7 +7755,6 @@ span.important {
             filter: brightness(1.1);
   }
 }
-
 @keyframes wheel {
   0% {
     -webkit-transform: rotate(0deg);
@@ -8677,16 +7767,13 @@ span.important {
             filter: brightness(1.1);
   }
 }
-
 .wheelEvent .info {
   margin: 30vw 0 0;
 }
-
 .wheelEvent .info .btnGroup {
   display: block;
   text-align: center;
 }
-
 .wheelEvent .info .btnGroup a {
   color: white;
   width: -webkit-min-content;
@@ -8701,7 +7788,6 @@ span.important {
   padding: 2vw 6vw;
   min-width: auto;
 }
-
 .wheelEvent .info .btnGroup a span {
   background: -webkit-gradient(linear, left top, left bottom, from(white), color-stop(60%, white), color-stop(70%, #90efff), to(#90efff));
   background: linear-gradient(to bottom, white 0%, white 60%, #90efff 70%, #90efff 100%);
@@ -8715,7 +7801,6 @@ span.important {
   -webkit-transform: scaleY(0.9);
           transform: scaleY(0.9);
 }
-
 .wheelEvent .info .title {
   width: 100%;
   font-size: 5.5vw;
@@ -8726,32 +7811,26 @@ span.important {
   margin: 0 0 2vw;
   line-height: 1.5;
 }
-
 .wheelEvent .info .title.rewards, .wheelEvent .info .title.other {
   color: #fab617;
   margin-bottom: 5vw;
 }
-
 .wheelEvent .info .title.rewards > .title, .wheelEvent .info .title.other > .title {
   margin: 1vw auto;
 }
-
 .wheelEvent .info .title div {
   font-size: 5vw;
   margin-bottom: 2vw;
 }
-
 .wheelEvent .info .title div:not(.title) {
   font-weight: normal;
   font-size: 3vw;
   margin-bottom: 0;
   color: white;
 }
-
 .wheelEvent .info > div {
   margin: 10vw auto;
 }
-
 .wheelEvent .info > div li {
   font-weight: normal;
   font-size: 3vw;
@@ -8762,7 +7841,6 @@ span.important {
   list-style: decimal;
   line-height: 6vw;
 }
-
 .wheelEvent .info > div.other ul {
   margin: 1vw 0 3vw;
   display: -webkit-box;
@@ -8776,36 +7854,29 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
 }
-
 .wheelEvent .info .eventList {
   width: calc(100% - 12vw);
   margin: auto;
   font-size: 3vw;
 }
-
 .wheelEvent .info .eventList .listBoxShadow {
   padding: 2vw;
 }
-
 .wheelEvent .info .eventList .listBoxShadow > div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   border: 1px solid transparent;
 }
-
 .wheelEvent .info .eventList .listBoxShadow > div:first-child {
   background: rgba(243, 100, 243, 0.8) !important;
 }
-
 .wheelEvent .info .eventList .listBoxShadow > div:nth-child(2n) {
   background: rgba(0, 0, 0, 0.7);
 }
-
 .wheelEvent .info .eventList .listBoxShadow > div:nth-child(2n+1) {
   background: rgba(57, 57, 57, 0.7);
 }
-
 .wheelEvent .info .eventList .listBoxShadow > div > div {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -8834,7 +7905,6 @@ span.important {
       -ms-flex-pack: center;
           justify-content: center;
 }
-
 .wheelPopModule .wheelPop {
   border-radius: 5px;
   border: 1px solid #F364F3 !important;
@@ -8844,7 +7914,6 @@ span.important {
   text-align: center;
   position: relative;
 }
-
 .wheelPopModule .wheelPop .icon-close {
   position: absolute;
   top: 1vw;
@@ -8863,16 +7932,13 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
 }
-
 .wheelPopModule .wheelPop .icon-close:before {
   margin: 0 0 0 1px;
 }
-
 .wheelPopModule .wheelPop > div {
   padding: 2vw 5vw;
   font-size: 2.5vw;
 }
-
 .wheelPopModule .wheelPop > div.title {
   color: white;
   font-size: 6vw;
@@ -8891,7 +7957,6 @@ span.important {
   margin-bottom: 2vw;
   pointer-events: none;
 }
-
 .wheelPopModule .wheelPop > div.am {
   font-weight: bold;
   color: #ffffff;
@@ -8928,7 +7993,6 @@ span.important {
   white-space: initial;
   z-index: 10;
 }
-
 .Join.open,
 .Login.open {
   visibility: visible;
@@ -8937,40 +8001,33 @@ span.important {
   opacity: 1;
   pointer-events: auto;
 }
-
 .Join .dropdown,
 .Login .dropdown {
   padding: 2vw 0 2vw 5vw;
   margin-left: 0;
 }
-
 .Join .dropdown .btn,
 .Login .dropdown .btn {
   padding: 0 3vw;
   background: transparent;
 }
-
 .Join .dropdown .dropdown-item,
 .Login .dropdown .dropdown-item {
   padding: 3vw;
 }
-
 .Join > .close,
 .Login > .close {
   top: 4vw;
 }
-
 .Join > .close span,
 .Login > .close span {
   background-color: #052561;
 }
-
 .Join > img,
 .Login > img {
   width: 40vw;
   margin: 0 calc(50% - 20vw) 2vw;
 }
-
 .Join .title,
 .Login .title {
   text-align: center;
@@ -8978,7 +8035,6 @@ span.important {
   margin: 1vw auto;
   font-weight: bold;
 }
-
 .Join button,
 .Login button {
   background: #1f3258;
@@ -8987,14 +8043,12 @@ span.important {
   padding: 3vw;
   width: 100%;
 }
-
 .Join .Terms,
 .Login .Terms {
   margin: 1vw auto 2vw;
   line-height: 22px;
   color: #052561;
 }
-
 .Join .Terms.error,
 .Login .Terms.error {
   border: 1px solid #fab617;
@@ -9004,20 +8058,17 @@ span.important {
   padding: 0 2vw;
   color: #052561;
 }
-
 .Join .Terms a,
 .Login .Terms a {
   color: #1e85ec;
   text-decoration: underline;
 }
-
-.Join .Terms input[type="checkbox"],
-.Login .Terms input[type="checkbox"] {
+.Join .Terms input[type=checkbox],
+.Login .Terms input[type=checkbox] {
   display: none;
 }
-
-.Join .Terms input[type="checkbox"] + label,
-.Login .Terms input[type="checkbox"] + label {
+.Join .Terms input[type=checkbox] + label,
+.Login .Terms input[type=checkbox] + label {
   margin: 0vw 1vw 0 0;
   border: 1px solid #1e85ec;
   border-radius: 100%;
@@ -9031,18 +8082,16 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
 }
-
-.Join .Terms input[type="checkbox"] + label > div,
-.Login .Terms input[type="checkbox"] + label > div {
+.Join .Terms input[type=checkbox] + label > div,
+.Login .Terms input[type=checkbox] + label > div {
   width: 3vw;
   height: 3vw;
   background: transparent;
   margin: auto;
   border-radius: 100%;
 }
-
-.Join .Terms input[type="checkbox"]:checked + label > div,
-.Login .Terms input[type="checkbox"]:checked + label > div {
+.Join .Terms input[type=checkbox]:checked + label > div,
+.Login .Terms input[type=checkbox]:checked + label > div {
   background: #1e85ec;
 }
 
@@ -9055,64 +8104,50 @@ span.important {
       -ms-flex-flow: column;
           flex-flow: column;
 }
-
 .profileInfo > div {
   background: #e2e2e2;
   border-radius: 5px;
   padding: 5vw;
 }
-
 .profileInfo > div .title {
   color: #1f3258;
   margin: 0 0 2vw 0;
 }
-
 .profileInfo .securityRate {
   margin: 0 0 2vw;
 }
-
 .profileInfo .securityRate .title.weak span {
   color: #d83b35;
 }
-
 .profileInfo .securityRate .title.weak ~ .rateBar > div:nth-child(1)::before {
   background: #d83b35;
 }
-
 .profileInfo .securityRate .title.normal span {
   color: #fab617;
 }
-
 .profileInfo .securityRate .title.normal ~ .rateBar > div:nth-child(1)::before {
   background: #fab617;
 }
-
 .profileInfo .securityRate .title.normal ~ .rateBar > div:nth-child(2)::before {
   background: #fab617;
 }
-
 .profileInfo .securityRate .title.strong span {
   color: #259076;
 }
-
 .profileInfo .securityRate .title.strong ~ .rateBar > div::before {
   background: #259076;
 }
-
 .profileInfo .securityRate .title span {
   margin-left: 2vw;
 }
-
 .profileInfo .securityRate .rateBar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 .profileInfo .securityRate .rateBar > div {
   margin: 2vw 2vw 0 0;
 }
-
 .profileInfo .securityRate .rateBar > div::before {
   content: "";
   display: block;
@@ -9121,17 +8156,14 @@ span.important {
   background: #b2b2b2;
   border-radius: 5px;
 }
-
 .profileInfo .securityRate .rateBar > div:nth-child(3) {
   margin-right: 0;
 }
-
 .profileInfo .verification .items {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 .profileInfo .verification .items > div {
   background: #f3f3f3;
   width: 14vw;
@@ -9150,11 +8182,9 @@ span.important {
   margin-right: 2vw;
   cursor: pointer;
 }
-
 .profileInfo .verification .items > div img {
   width: 8vw;
 }
-
 .profileInfo .verification .items > div .icon {
   position: absolute;
   bottom: -1vw;
@@ -9173,42 +8203,34 @@ span.important {
   border-radius: 3vw;
   color: #fff;
 }
-
 .profileInfo .verification .items > div .icon::before {
   font-size: 3vw;
 }
-
 .profileInfo .verification .items > div .icon-checkmark {
   background: #259076;
   padding: 1px;
   display: none;
 }
-
 .profileInfo .verification .items > div .icon-money {
   background: #fab617;
   padding: 1px;
 }
-
 .profileInfo .verification .items > div.active {
   background: #b2b2b2;
   cursor: unset;
 }
-
 .profileInfo .verification .items > div.active .icon-checkmark {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 .profileInfo .verification .items > div.active .icon-money {
   display: none;
 }
-
 .profileInfo .verification .items > div.open .itemInfo {
   display: block;
   opacity: 1;
 }
-
 .profileInfo .verification .items > div .itemInfo {
   background: rgba(78, 108, 168, 0.95);
   color: #e8e8e8;
@@ -9223,7 +8245,6 @@ span.important {
   display: none;
   opacity: 0;
 }
-
 .profileInfo .verification .items > div .itemInfo::before {
   content: "";
   position: absolute;
@@ -9233,37 +8254,30 @@ span.important {
   border-right: 3.5vw solid transparent;
   border-bottom: 3.5vw solid rgba(78, 108, 168, 0.9);
 }
-
 .profileInfo .verification .items > div .itemInfo .title {
   display: block;
   font-weight: bold;
   color: #fff;
 }
-
 .profileInfo .verification .items > div.email .itemInfo {
   -webkit-transform: translateX(-16vw);
           transform: translateX(-16vw);
 }
-
 .profileInfo .verification .items > div.email .itemInfo::before {
   left: 21.5vw;
 }
-
 .profileInfo .verification .items > div.phone .itemInfo {
   -webkit-transform: translateX(-32vw);
           transform: translateX(-32vw);
 }
-
 .profileInfo .verification .items > div.phone .itemInfo::before {
   left: 37.5vw;
 }
-
 .profileInfo ~ .info ul li {
   float: unset;
   width: 100%;
   margin: 0 0 2vw 0;
 }
-
 .profileInfo ~ .info ul li .otpBtn {
   background: #fab617;
   border-radius: 3px;
@@ -9279,7 +8293,6 @@ span.important {
           justify-content: center;
   margin-top: 1vw;
 }
-
 .profileInfo ~ .info ul li span img {
   margin-left: 1vw;
 }
@@ -9294,7 +8307,6 @@ span.important {
   border-radius: 100%;
   z-index: 1;
 }
-
 #goTop i {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9311,7 +8323,6 @@ span.important {
 .worldcupEvent {
   overflow: hidden;
 }
-
 .worldcupEvent .eventPage__top {
   position: relative;
   padding-top: 5vw;
@@ -9319,7 +8330,6 @@ span.important {
   height: 190vw;
   background: url(https://banner.goal123.org/h5/img/event/worldcup/bg.jpg) no-repeat center/cover;
 }
-
 .worldcupEvent .eventPage__middle {
   position: relative;
   padding: 20vw 5vw 0;
@@ -9337,30 +8347,25 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
 }
-
 .worldcupEvent .eventPage__bottom {
   padding: 0 0 15vw 0;
   background: -webkit-gradient(linear, left top, left bottom, from(#6d0d33), to(#300113));
   background: linear-gradient(#6d0d33, #300113);
 }
-
 .worldcupEvent .fixture {
   position: relative;
   padding: 5vw 0;
   margin-bottom: 5vw;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   background: url(https://banner.goal123.org/h5/img/event/worldcup/fixturebg.jpg) no-repeat top center/contain, -webkit-gradient(linear, left top, left bottom, color-stop(50%, #741533), to(#711432));
   background: url(https://banner.goal123.org/h5/img/event/worldcup/fixturebg.jpg) no-repeat top center/contain, linear-gradient(180deg, #741533 50%, #711432 100%);
 }
-
 .worldcupEvent .fixture .title {
   margin: 3vw auto 30vw;
 }
-
 .worldcupEvent .fixture button {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
-
 .worldcupEvent .fixture .group-prize {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9369,7 +8374,6 @@ span.important {
       -ms-flex-pack: center;
           justify-content: center;
 }
-
 .worldcupEvent .fixture .group-prize .prize {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9386,27 +8390,24 @@ span.important {
           justify-content: center;
   margin: 2vw 5vw;
 }
-
 .worldcupEvent .fixture .group-prize .prize > div {
   color: #fff;
   font-size: 3vw;
   margin-bottom: 1.25vw;
 }
-
 .worldcupEvent .fixture .group-prize .prize > div:nth-child(2) {
   background: -webkit-gradient(linear, left top, left bottom, from(#CB9942), color-stop(15.1%, #F6EF6B), color-stop(34.38%, #FFFDF0), color-stop(51.56%, #DB9130), color-stop(72.4%, #744C10), color-stop(91.15%, #CA8422));
   background: linear-gradient(180deg, #CB9942 0%, #F6EF6B 15.1%, #FFFDF0 34.38%, #DB9130 51.56%, #744C10 72.4%, #CA8422 91.15%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  -webkit-filter: drop-shadow(0px 3px 1px #922707);
-          filter: drop-shadow(0px 3px 1px #922707);
+  -webkit-filter: drop-shadow(0px 3px 1px rgb(146, 39, 7));
+          filter: drop-shadow(0px 3px 1px rgb(146, 39, 7));
   letter-spacing: 1px;
   white-space: nowrap;
   font-size: 4.5vw;
   font-weight: 600;
 }
-
 .worldcupEvent .fixture .group-tab {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9417,7 +8418,6 @@ span.important {
   padding: 0 16vw;
   margin-bottom: 5vw;
 }
-
 .worldcupEvent .fixture .group-tab button {
   padding: 2vw;
   font-size: 4vw;
@@ -9426,23 +8426,19 @@ span.important {
           flex: 1;
   color: #bcbcbc;
 }
-
 .worldcupEvent .fixture .group-tab button.active {
   color: #fff;
   border-bottom: 1vw solid #FFC654;
   font-weight: 600;
 }
-
 .worldcupEvent .fixture .tab-group {
   display: none;
   opacity: 0;
 }
-
 .worldcupEvent .fixture .tab-group.open {
   display: block;
   opacity: 1;
 }
-
 .worldcupEvent .fixture .tab-group + .subtitle {
   font-size: 4.25vw;
   display: block;
@@ -9450,7 +8446,6 @@ span.important {
   margin: 5vw auto 3vw 6vw;
   color: #fff;
 }
-
 .worldcupEvent .fixture .group-tab-date {
   width: 100%;
   overflow-y: scroll;
@@ -9458,7 +8453,6 @@ span.important {
   display: -ms-flexbox;
   display: flex;
 }
-
 .worldcupEvent .fixture .group-tab-date button {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9474,38 +8468,31 @@ span.important {
   margin-right: 1vw;
   background: #76002E;
 }
-
 .worldcupEvent .fixture .group-tab-date button > div {
   color: #fff;
 }
-
 .worldcupEvent .fixture .group-tab-date button > div:first-child {
   font-size: 3.5vw;
   text-transform: capitalize;
 }
-
 .worldcupEvent .fixture .group-tab-date button > div:nth-child(2) {
   font-size: 5vw;
   font-weight: 600;
 }
-
 .worldcupEvent .fixture .group-tab-date button > div:last-child {
   font-size: 3vw;
   text-transform: uppercase;
   color: #FFC654;
 }
-
 .worldcupEvent .fixture .group-tab-date button.active {
   background: #FF004E;
 }
-
 .worldcupEvent .fixture .group-tab-sort {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 .worldcupEvent .fixture .group-tab-sort button {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9527,25 +8514,20 @@ span.important {
       -ms-flex: 1;
           flex: 1;
 }
-
 .worldcupEvent .fixture .group-tab-sort button:last-child {
   margin-right: 0;
 }
-
 .worldcupEvent .fixture .group-tab-sort button:last-child > div {
   text-transform: uppercase;
 }
-
 .worldcupEvent .fixture .group-tab-sort button > div {
   color: #fff;
   font-size: 3.5vw;
   text-transform: capitalize;
 }
-
 .worldcupEvent .fixture .group-tab-sort button.active {
   background: #FF004E;
 }
-
 .worldcupEvent .fixture .group-match {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9555,23 +8537,19 @@ span.important {
       -ms-flex-direction: column;
           flex-direction: column;
 }
-
 .worldcupEvent .fixture .group-match .match {
   font-size: 3.5vw;
   padding: 4vw 6vw;
   border-bottom: 1px solid #bcbcbc;
   color: #fff;
 }
-
 .worldcupEvent .fixture .group-match .match:first-child {
   border-top: 0;
 }
-
 .worldcupEvent .fixture .group-match .match img {
   width: 8vw;
   border: 1px solid #fff;
 }
-
 .worldcupEvent .fixture .group-match .match .order {
   width: 100%;
   margin: 2vw auto 3vw;
@@ -9579,13 +8557,11 @@ span.important {
   text-align: center;
   text-transform: capitalize;
 }
-
 .worldcupEvent .fixture .group-match .match > div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 .worldcupEvent .fixture .group-match .match .team {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9601,26 +8577,22 @@ span.important {
           justify-content: space-between;
   text-transform: capitalize;
 }
-
 .worldcupEvent .fixture .group-match .match .team.right {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse;
 }
-
 .worldcupEvent .fixture .group-match .match .time {
   margin: 1vw 2.5vw;
   font-size: 3vw;
   text-transform: uppercase;
 }
-
 .worldcupEvent .fixture .group-match .match .time span {
   font-weight: 600;
   display: block;
   font-size: 4.75vw;
 }
-
 .worldcupEvent .fixture .group-list {
   width: 100%;
   overflow-y: scroll;
@@ -9630,7 +8602,6 @@ span.important {
   padding: 0 6vw;
   color: #fff;
 }
-
 .worldcupEvent .fixture .group-list .group-item {
   background: #8b0137;
   border-radius: 1vw;
@@ -9645,14 +8616,12 @@ span.important {
   margin-right: 3vw;
   min-width: 50vw;
 }
-
 .worldcupEvent .fixture .group-list .group-item .group-title {
   font-size: 3.75vw;
   font-weight: 600;
   text-align: left;
   margin-bottom: 3vw;
 }
-
 .worldcupEvent .fixture .group-list .group-item .team {
   padding-bottom: 2vw;
   margin-bottom: 2vw;
@@ -9662,24 +8631,20 @@ span.important {
   display: flex;
   font-size: 3vw;
 }
-
 .worldcupEvent .fixture .group-list .group-item .team:last-child {
   border-bottom: 0;
   margin-bottom: 0;
   padding-bottom: 1vw;
 }
-
 .worldcupEvent .fixture .group-list .group-item .team img {
   width: 6vw;
   border: 1px solid #fff;
   margin-right: 2vw;
 }
-
 .worldcupEvent .awards {
   text-align: center;
   margin: 6vw auto 0;
 }
-
 .worldcupEvent .awards div {
   color: #fff;
   margin-top: 0;
@@ -9687,7 +8652,6 @@ span.important {
   font-weight: bold;
   text-transform: uppercase;
 }
-
 .worldcupEvent .visual .a-bottom {
   position: absolute;
   bottom: 0;
@@ -9697,7 +8661,6 @@ span.important {
   -webkit-animation: a-right 1.25s ease-in-out;
           animation: a-right 1.25s ease-in-out;
 }
-
 .worldcupEvent .visual .logo {
   position: absolute;
   top: 40vw;
@@ -9706,18 +8669,15 @@ span.important {
   -webkit-animation: floating 2s ease-in-out infinite alternate;
           animation: floating 2s ease-in-out infinite alternate;
 }
-
 .worldcupEvent .intro-visual__body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 .worldcupEvent .intro-visual__body img {
   max-width: 100%;
   margin: 20vw auto 10vw;
 }
-
 .worldcupEvent .btn-event {
   padding: 3vw 5vw;
   color: #8B1539;
@@ -9729,7 +8689,6 @@ span.important {
   text-align: center;
   text-transform: capitalize;
 }
-
 .worldcupEvent .title {
   width: 100%;
   height: 8.75vw;
@@ -9743,12 +8702,10 @@ span.important {
   background: url(https://banner.goal123.org/h5/img/event/worldcup/titlebg.svg) no-repeat center/contain;
   text-transform: capitalize;
 }
-
 .worldcupEvent .title + img {
   max-width: 100%;
   margin: 0 auto 10vw;
 }
-
 .worldcupEvent .ticket__body {
   margin: 0 5vw 10vw;
   display: -webkit-box;
@@ -9760,49 +8717,39 @@ span.important {
           flex-direction: column;
   color: #fff;
 }
-
 .worldcupEvent .ticket__container {
   -webkit-box-flex: 1;
       -ms-flex: 1 1;
           flex: 1 1;
 }
-
 .worldcupEvent .ticket__container:nth-child(1) {
   margin-bottom: 10vw;
 }
-
 .worldcupEvent .ticket__container .inputBox-event {
   background: white;
   color: #FF004E !important;
 }
-
 .worldcupEvent .ticket__container .inputBox-event .dropdown {
   background: #fff;
   border: 1px solid #FF004E;
-  padding: .5vw 2vw;
+  padding: 0.5vw 2vw;
 }
-
 .worldcupEvent .ticket__container .inputBox-event .dropdown:before {
   border-color: #FF004E transparent transparent transparent !important;
 }
-
 .worldcupEvent .ticket__container .inputBox-event .dropdown > .btn {
   color: #FF004E !important;
   z-index: 2;
 }
-
 .worldcupEvent .ticket__container .inputBox-event .dropdown .dropdown-container {
   background: white;
 }
-
 .worldcupEvent .ticket__container .inputBox-event .dropdown .dropdown-container .dropdown-item {
   color: #FF004E;
 }
-
 .worldcupEvent .ticket__container .inputBox-event .icon:before {
   color: #FF004E;
 }
-
 .worldcupEvent .ticket__info {
   padding: 5vw;
   border: 1px solid #fff;
@@ -9811,7 +8758,6 @@ span.important {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
-
 .worldcupEvent .ticket__user {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9822,12 +8768,10 @@ span.important {
   padding-bottom: 3.5vw;
   border-bottom: 1px solid #fff;
 }
-
 .worldcupEvent .ticket__user img {
   width: 5vw;
   margin-right: 2.5vw;
 }
-
 .worldcupEvent .ticket__tab {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9836,7 +8780,6 @@ span.important {
   border-bottom: 1px solid #fff;
   margin-bottom: 10px;
 }
-
 .worldcupEvent .ticket__tab-item {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9857,29 +8800,24 @@ span.important {
   padding: 5px;
   cursor: pointer;
 }
-
 .worldcupEvent .ticket__tab-item:last-child {
   margin-right: 0;
 }
-
 .worldcupEvent .ticket__tab-item img {
   width: 35px;
   margin-right: 10px;
 }
-
 .worldcupEvent .ticket__tab-item.active {
   outline: 2px solid #fff;
 }
-
 .worldcupEvent .ticket__tab-item.finished {
   position: relative;
   outline: 0;
   background: #b50101;
 }
-
 .worldcupEvent .ticket__tab-item.finished::before {
   content: "\ea10";
-  font-family: 'icomoon';
+  font-family: "icomoon";
   position: absolute;
   right: -5px;
   top: -5px;
@@ -9898,21 +8836,17 @@ span.important {
   border-radius: 50%;
   background: #00CFB7;
 }
-
 .worldcupEvent .ticket__tab-item.finished.active {
   outline: 2px solid #fff;
 }
-
 .worldcupEvent .ticket__tab-item.disabled {
   -webkit-filter: grayscale(1);
           filter: grayscale(1);
 }
-
 .worldcupEvent .ticket__tab-item.disabled.active {
   outline: 2px solid #fff;
 }
-
-.worldcupEvent .ticket__selection, .worldcupEvent .ticket__selection--finished, .worldcupEvent .ticket__selection--disabled {
+.worldcupEvent .ticket__selection, .worldcupEvent .ticket__selection--disabled, .worldcupEvent .ticket__selection--finished {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9923,19 +8857,15 @@ span.important {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
-
-.worldcupEvent .ticket__selection .btnGroup, .worldcupEvent .ticket__selection--finished .btnGroup, .worldcupEvent .ticket__selection--disabled .btnGroup {
+.worldcupEvent .ticket__selection .btnGroup, .worldcupEvent .ticket__selection--disabled .btnGroup, .worldcupEvent .ticket__selection--finished .btnGroup {
   margin: 10px 0 0;
 }
-
 .worldcupEvent .ticket__selection--left {
   width: 100%;
 }
-
 .worldcupEvent .ticket__selection--right {
   width: 100%;
 }
-
 .worldcupEvent .ticket__selection--right .btnGroup {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -9944,7 +8874,6 @@ span.important {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
-
 .worldcupEvent .ticket__selection--right .btnGroup .btn-team {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9961,65 +8890,54 @@ span.important {
   cursor: pointer;
   font-size: 3vw;
 }
-
 .worldcupEvent .ticket__selection--right .btnGroup .btn-team img {
   width: 5vw;
   margin: 0 2vw 0 0;
   border: 1px solid #fff;
 }
-
 .worldcupEvent .ticket__selection--right .btnGroup .btn-team.active {
   background: #a00a37;
   border: 1px solid #f7c7d5;
-  -webkit-transition: .2s;
-  transition: .2s;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
-
 .worldcupEvent .ticket__selection--bottom {
   width: 100%;
   border-top: 1px solid #fff;
   padding-top: 1vw;
-  margin: 1vw auto .5vw;
+  margin: 1vw auto 0.5vw;
   text-align: center;
 }
-
 .worldcupEvent .ticket__selection--bottom .btnGroup {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
 }
-
 .worldcupEvent .ticket__selection--bottom .btnGroup button {
   padding: 2vw 3vw;
   width: calc(50% - 1vw);
 }
-
 .worldcupEvent .ticket__selection--bottom .msg {
   margin-top: 1vw;
 }
-
 .worldcupEvent .ticket__selection--finished .inputBox-event .dropdown {
   background: #0D0C0C;
   border: 0;
 }
-
 .worldcupEvent .ticket__selection--finished .btnGroup .btn-team {
   background: #b50101;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 50%;
           flex: 0 0 50%;
 }
-
 .worldcupEvent .ticket__selection--disabled {
   -webkit-filter: grayscale(1);
           filter: grayscale(1);
 }
-
 .worldcupEvent .ticket__selection--disabled .btnGroup .btn-team {
   cursor: default;
 }
-
 .worldcupEvent .progress-bar {
   margin: 12vw auto;
   margin-right: 6vw;
@@ -10034,7 +8952,6 @@ span.important {
           align-items: center;
   position: relative;
 }
-
 .worldcupEvent .progress-bar__item {
   width: 33.333%;
   height: 8px;
@@ -10042,7 +8959,6 @@ span.important {
   background: #e1e1e1;
   position: relative;
 }
-
 .worldcupEvent .progress-bar__item:before {
   content: "";
   display: block;
@@ -10054,11 +8970,9 @@ span.important {
   right: -4px;
   z-index: 2;
 }
-
 .worldcupEvent .progress-bar__item.active .value {
   color: #02D2B8;
 }
-
 .worldcupEvent .progress-bar__number {
   position: absolute;
   color: #fff;
@@ -10069,7 +8983,6 @@ span.important {
   text-align: center;
   white-space: nowrap;
 }
-
 .worldcupEvent .progress-bar__number:before {
   content: "";
   position: absolute;
@@ -10079,7 +8992,6 @@ span.important {
   height: 19px;
   background: url(https://banner.goal123.org/h5/img/event/worldcup/ticket.png) no-repeat center/cover;
 }
-
 @media (max-width: 335px) {
   .worldcupEvent .progress-bar__number {
     white-space: normal;
@@ -10091,7 +9003,6 @@ span.important {
     left: 8px;
   }
 }
-
 .worldcupEvent .progress-bar__value {
   position: absolute;
   background: #02D2B8;
@@ -10100,7 +9011,6 @@ span.important {
   left: 0;
   z-index: 1;
 }
-
 .worldcupEvent .status {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10110,7 +9020,6 @@ span.important {
       -ms-flex-direction: column;
           flex-direction: column;
 }
-
 .worldcupEvent .status > div {
   background: #650043;
   border: 1px solid #FF4700;
@@ -10118,29 +9027,24 @@ span.important {
   margin-bottom: 2.5vw;
   border-radius: 5px;
 }
-
 .worldcupEvent .status > div:nth-last-child(1) {
   margin-bottom: 0;
 }
-
 .worldcupEvent .status > div > div {
   padding: 2vw 0;
   text-align: center;
 }
-
 .worldcupEvent .status > div > div + div {
   color: #fff;
   border-top: 1px solid #FF004E;
 }
-
 .worldcupEvent .status > div > div + div span {
   color: #FFBF00;
   font-weight: bold;
   position: relative;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: bold;
 }
-
 .worldcupEvent .btnGroup {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -10148,38 +9052,32 @@ span.important {
           flex-direction: column;
   margin: 15px auto 0;
 }
-
 .worldcupEvent .btnGroup > button {
   padding: 5px 10px;
   margin: auto 0;
   border-radius: 3px;
   font-size: 3vw;
 }
-
 .worldcupEvent .btnGroup .btn-gray {
   background: #B7B7B7;
   color: #fff;
   cursor: pointer;
 }
-
 .worldcupEvent .btnGroup .btn-gray:hover {
   background: #858383;
-  -webkit-transition: .2s;
-  transition: .2s;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
-
 .worldcupEvent .btnGroup .btn-green {
   background: #FFBF00;
   color: #8B1539;
   cursor: pointer;
 }
-
 .worldcupEvent .btnGroup .btn-green:hover {
   background: #e4a00b;
-  -webkit-transition: .2s;
-  transition: .2s;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
-
 .worldcupEvent .rules {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -10190,9 +9088,8 @@ span.important {
   background: rgba(65, 10, 27, 0.4);
   text-align: center;
   color: #fff;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
-
 .worldcupEvent .rules__title {
   position: relative;
   width: -webkit-max-content;
@@ -10201,7 +9098,6 @@ span.important {
   font-size: 4vw;
   margin: 0 auto;
 }
-
 .worldcupEvent .rules__title:before, .worldcupEvent .rules__title:after {
   content: "";
   position: absolute;
@@ -10210,37 +9106,30 @@ span.important {
   height: 2vw;
   background: url(https://banner.goal123.org/h5/img/event/worldcup/5deco.svg) no-repeat center/cover;
 }
-
 .worldcupEvent .rules__title:before {
   left: -14vw;
   -webkit-transform: rotate(-180deg);
           transform: rotate(-180deg);
 }
-
 .worldcupEvent .rules__title:after {
   right: -14vw;
 }
-
 .worldcupEvent .rules__content {
   margin: 4vw auto 8vw;
   font-size: 3.5vw;
   width: 82vw;
 }
-
 .worldcupEvent .rules__content span {
   font-weight: bold;
 }
-
 .worldcupEvent .rules__content ol {
   text-align: left;
   margin-left: 3vw;
 }
-
 .worldcupEvent .rules__content ol li {
   margin: 2vw auto;
   list-style: decimal;
 }
-
 .worldcupEvent .rules .btn-event {
   border: 0;
   -webkit-filter: drop-shadow(0 0 0 transparent);
@@ -10249,7 +9138,6 @@ span.important {
   font-size: 3.5vw;
   padding: 1.5vw 5vw;
 }
-
 @-webkit-keyframes a-right {
   from {
     right: 10vw;
@@ -10260,7 +9148,6 @@ span.important {
     opacity: 1;
   }
 }
-
 @keyframes a-right {
   from {
     right: 10vw;
@@ -10271,7 +9158,6 @@ span.important {
     opacity: 1;
   }
 }
-
 @-webkit-keyframes floating {
   0% {
     -webkit-transform: translate(0%, 5%);
@@ -10282,7 +9168,6 @@ span.important {
             transform: translate(0%, 0%);
   }
 }
-
 @keyframes floating {
   0% {
     -webkit-transform: translate(0%, 5%);
@@ -10306,8 +9191,8 @@ span.important {
 
 .angpaoEvent {
   min-width: auto;
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&family=Poppins:wght@200;300;400;500;600;800&family=Pridi:wght@300;500&display=swap");
 }
-
 .angpaoEvent .eventPage--top {
   min-width: 100%;
   margin: auto;
@@ -10324,22 +9209,18 @@ span.important {
   background: url(https://banner.goal123.org/h5/img/event/angpao/bg-top.jpg) no-repeat top center/cover, #990100;
   min-height: 92vw;
 }
-
 .angpaoEvent .eventPage--bottom {
   min-width: 100%;
   background: url(https://banner.goal123.org/h5/img/event/angpao/bg-bottom.jpg) no-repeat top center, #990100;
   padding-top: 5vw;
   padding-bottom: 15vw;
 }
-
 .angpaoEvent .eventPage .eventTitle {
   margin: 6vw auto 0;
 }
-
 .angpaoEvent .eventPage .eventTitle img {
   width: 88vw;
 }
-
 .angpaoEvent .eventPage .angpaoModule {
   position: relative;
   margin: 14vw auto 0vw;
@@ -10352,42 +9233,36 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-family: 'Poppins','Noto Sans SC', 'Pridi', sans-serif;
+  font-family: "Poppins", "Noto Sans SC", "Pridi", sans-serif;
 }
-
 .angpaoEvent .eventPage .angpaoModule .angpao {
   width: 55vw;
   height: 55vw;
   position: relative;
   text-align: center;
-  -webkit-animation: bounce2 1.5s .9s ease-in-out infinite;
-          animation: bounce2 1.5s .9s ease-in-out infinite;
+  -webkit-animation: bounce2 1.5s 0.9s ease-in-out infinite;
+          animation: bounce2 1.5s 0.9s ease-in-out infinite;
   cursor: pointer;
 }
-
 @media (max-width: 320px) {
   .angpaoEvent .eventPage .angpaoModule .angpao {
     margin-bottom: 8vw;
   }
 }
-
 .angpaoEvent .eventPage .angpaoModule .angpao.active {
   -webkit-animation: hithere 1s ease 3;
           animation: hithere 1s ease 3;
 }
-
 .angpaoEvent .eventPage .angpaoModule .angpao.active .coin--right {
   top: 10vw;
   -webkit-animation: none;
           animation: none;
 }
-
 .angpaoEvent .eventPage .angpaoModule .angpao.active .coin--left {
   top: 5vw;
   -webkit-animation: none;
           animation: none;
 }
-
 .angpaoEvent .eventPage .angpaoModule .angpao--front {
   position: absolute;
   bottom: 0;
@@ -10397,7 +9272,6 @@ span.important {
   -webkit-transform: translateZ(100px);
           transform: translateZ(100px);
 }
-
 .angpaoEvent .eventPage .angpaoModule .angpao--back {
   position: absolute;
   top: -10vw;
@@ -10405,7 +9279,6 @@ span.important {
   z-index: 0;
   width: 55vw;
 }
-
 .angpaoEvent .eventPage .angpaoModule .angpao .coin--right {
   position: absolute;
   top: -20vw;
@@ -10415,10 +9288,9 @@ span.important {
   z-index: 0;
   -webkit-transform: translateZ(0px);
           transform: translateZ(0px);
-  -webkit-animation: flip 1.5s .2s ease infinite;
-          animation: flip 1.5s .2s ease infinite;
+  -webkit-animation: flip 1.5s 0.2s ease infinite;
+          animation: flip 1.5s 0.2s ease infinite;
 }
-
 .angpaoEvent .eventPage .angpaoModule .angpao .coin--left {
   position: absolute;
   top: -30vw;
@@ -10428,12 +9300,11 @@ span.important {
   z-index: 0;
   -webkit-transform: translateZ(0px);
           transform: translateZ(0px);
-  -webkit-animation: flip 1.5s .5s ease infinite;
-          animation: flip 1.5s .5s ease infinite;
+  -webkit-animation: flip 1.5s 0.5s ease infinite;
+          animation: flip 1.5s 0.5s ease infinite;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
 }
-
 .angpaoEvent .eventPage .angpaoModule .angpao .btn {
   font-weight: 600;
   font-size: 3vw;
@@ -10460,7 +9331,6 @@ span.important {
       -ms-flex-pack: center;
           justify-content: center;
 }
-
 .angpaoEvent .eventPage .angpaoModule .angpao .message {
   position: absolute;
   z-index: 3;
@@ -10476,17 +9346,15 @@ span.important {
           transform: translateZ(100px);
   color: #fff;
 }
-
 .angpaoEvent .eventPage .info .title {
   font-size: 5vw;
   text-align: center;
-  font-family: 'Poppins','Noto Sans SC', 'Pridi', sans-serif;
+  font-family: "Poppins", "Noto Sans SC", "Pridi", sans-serif;
   font-weight: 680;
   line-height: 1.3;
   text-transform: uppercase;
   width: 100%;
 }
-
 .angpaoEvent .eventPage .info ul {
   margin: 5vw auto 5vw;
   text-align: center;
@@ -10502,9 +9370,8 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
 }
-
 .angpaoEvent .eventPage .info li {
-  font-family: 'Poppins','Noto Sans SC', 'Pridi', sans-serif;
+  font-family: "Poppins", "Noto Sans SC", "Pridi", sans-serif;
   font-weight: normal;
   font-size: 3.5vw;
   margin-bottom: 3.5vw;
@@ -10512,56 +9379,46 @@ span.important {
   width: 88%;
   color: #fff;
 }
-
 .angpaoEvent .eventPage .info li a {
   color: #ffce6e;
 }
-
 .angpaoEvent .eventPage .info li a:hover {
   color: #492a0c;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
-
 .angpaoEvent .eventPage .info .eventList {
   margin: 5vw auto;
   padding: 0 5vw 20vw;
   font-size: 3.5vw;
 }
-
 .angpaoEvent .eventPage .info .eventList > div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-
 .angpaoEvent .eventPage .info .eventList > div > div {
-  margin: .25vw;
-  padding: 2vw .5vw;
+  margin: 0.25vw;
+  padding: 2vw 0.5vw;
   color: #1e1e1e;
   font-weight: bold;
   text-align: center;
 }
-
 .angpaoEvent .eventPage .info .eventList > div > div {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
-
 .angpaoEvent .eventPage .info .eventList > div:nth-child(even) > div {
   background: #ff9e95;
 }
-
 .angpaoEvent .eventPage .info .eventList > div:nth-child(odd) > div {
   background: #ff5f4f;
 }
-
 .angpaoEvent .eventPage .info .eventList > div:first-child > div {
   background: #f83637;
   color: #fff;
 }
-
 .angpaoEvent .eventPage .nodata {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -10577,7 +9434,6 @@ span.important {
   color: #fff;
   padding-bottom: 20vw;
 }
-
 .angpaoEvent .eventPage .nodata > div {
   color: #fff;
   background: transparent;
@@ -10591,12 +9447,11 @@ span.important {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  font-family: 'Poppins','Noto Sans SC', 'Pridi', sans-serif;
+  font-family: "Poppins", "Noto Sans SC", "Pridi", sans-serif;
   z-index: 5;
   -webkit-transform: translateZ(200px);
           transform: translateZ(200px);
 }
-
 .angpaoPop .pop {
   border-radius: 15px;
   border: 3px solid #ffbe40 !important;
@@ -10607,7 +9462,6 @@ span.important {
   background: #b51227 !important;
   width: 100%;
 }
-
 .angpaoPop .pop .title {
   font-size: 6vw;
   text-transform: uppercase;
@@ -10615,7 +9469,6 @@ span.important {
   color: #fff;
   margin: 2vw auto;
 }
-
 .angpaoPop .pop .content {
   background: #ffbe40;
   color: #b51227;
@@ -10625,13 +9478,11 @@ span.important {
   border-radius: 10px;
   margin-bottom: 10px;
 }
-
 .angpaoPop .pop .info {
   font-size: 3.5vw;
   font-weight: 200;
   color: #fff;
 }
-
 .angpaoPop .pop .icon-close {
   color: #fff;
   background: rgba(0, 0, 0, 0.5);
@@ -10644,7 +9495,6 @@ span.important {
   line-height: 1.25;
   text-align: center;
 }
-
 .angpaoPop .pop .icon-close::before {
   font-size: 3.5vw;
 }
@@ -10678,7 +9528,6 @@ span.important {
             transform: translateY(-15px);
   }
 }
-
 @-webkit-keyframes flip {
   0% {
     -webkit-transform: rotateY(0);
@@ -10709,7 +9558,6 @@ span.important {
             animation-timing-function: ease-in;
   }
 }
-
 @keyframes flip {
   0% {
     -webkit-transform: rotateY(0);
@@ -10740,7 +9588,6 @@ span.important {
             animation-timing-function: ease-in;
   }
 }
-
 @-webkit-keyframes hithere {
   30% {
     -webkit-transform: scale(1.05);
@@ -10763,7 +9610,6 @@ span.important {
             transform: rotate(0deg) scale(1);
   }
 }
-
 @keyframes hithere {
   30% {
     -webkit-transform: scale(1.05);
@@ -10785,5 +9631,4 @@ span.important {
     -webkit-transform: rotate(0deg) scale(1);
             transform: rotate(0deg) scale(1);
   }
-}
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

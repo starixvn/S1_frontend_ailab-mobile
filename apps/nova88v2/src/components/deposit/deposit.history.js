@@ -146,6 +146,7 @@ const Panel = ({
 				SubmitProof={SubmitProof.bind(this, { ...item })}
 				i18n={i18n}
 				currencyId={userInfo.currencyId}
+				depositMessageDetail={item.depositMessageDetail}
 			/>
 		);
 	});
