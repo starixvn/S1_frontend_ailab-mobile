@@ -37,6 +37,7 @@ const RecentDatas = props => {
 						d.refId
 					)}
 					ClickCancel={props.ClickCancel.bind(this, d.transId)}
+					depositMessageDetail={d.depositMessageDetail}
 				/>
 			);
 		});

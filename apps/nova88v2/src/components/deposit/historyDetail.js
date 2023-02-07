@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import moment from "moment";
 import PropTypes from "prop-types";
 import { number_format, currencyIdToTimeZone } from "../common/common";
+import { popBoxContext } from "../common/context";
+import DepositMsg from "../common/popBox.DepositMsg";
 
 const defIconStatus = {
 	0: "pending",
@@ -26,7 +28,8 @@ const Detail = ({
 	SubmitProof,
 	i18n,
 	thirdId,
-	currencyId
+	currencyId,
+	depositMessageDetail
 }) => {
 	let btnGroup = null;
 	if (depositType === 3 && (status === 1 || status === 7)) {
@@ -47,6 +50,20 @@ const Detail = ({
 	// 	navigator.clipboard.writeText(ipt.current.value);
 	// };
 	const timeZone = currencyIdToTimeZone?.[currencyId];
+	const { setPopBox } = useContext(popBoxContext);
+
+	const handleClickInfoBtn = () => {
+		setPopBox({
+			isOpen: true,
+			custContent: (
+				<DepositMsg
+					transId={transId}
+					depositMessageDetail={depositMessageDetail}
+				/>
+			),
+			className: "statuspop active"
+		});
+	};
 
 	return (
 		<div className="info">
@@ -89,6 +106,13 @@ const Detail = ({
 					<span className="title">{i18n.lbl_Status}</span>
 					<span className={defIconStatus[status]}>
 						{i18n[`lbl_DepositStatus${status}`]}
+						{depositMessageDetail &&
+							depositMessageDetail.length > 0 && (
+								<button
+									className="infobtn"
+									onClick={handleClickInfoBtn}
+								/>
+							)}
 					</span>
 				</li>
 			</ul>
@@ -119,7 +143,8 @@ const Detail = ({
 Detail.defaultProps = {
 	_isConvert: false,
 	thirdId: null,
-	currencyId: null
+	currencyId: null,
+	depositMessageDetail: []
 };
 
 Detail.propTypes = {
@@ -136,7 +161,8 @@ Detail.propTypes = {
 	SubmitProof: PropTypes.func.isRequired,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	thirdId: PropTypes.string,
-	currencyId: PropTypes.number
+	currencyId: PropTypes.number,
+	depositMessageDetail: PropTypes.arrayOf(PropTypes.any)
 };
 
 export default Detail;

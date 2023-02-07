@@ -81,6 +81,8 @@ const PopUp = () => {
 	let displayContent = null;
 	if (popBox.fullPage) {
 		displayContent = popBox.content;
+	} else if (popBox.custContent) {
+		displayContent = popBox.custContent;
 	} else if (popBox.title || content) {
 		displayContent = (
 			<div className="pop">

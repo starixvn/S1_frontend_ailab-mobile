@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import PropTypes from "prop-types";
 import { Link } from "@reach/router";
 import { isConvert } from "../common/common";
 import { i18nContext, userInfoContext } from "../common/context";
@@ -36,6 +37,7 @@ const RecentDatas = props => {
 						d.refId
 					)}
 					ClickCancel={props.ClickCancel.bind(this, d.transId)}
+					depositMessageDetail={d.depositMessageDetail}
 				/>
 			);
 		});
@@ -81,6 +83,17 @@ const RecentDatas = props => {
 			) : null}
 		</>
 	);
+};
+
+RecentDatas.defaultProps = {
+	Datas: []
+};
+
+RecentDatas.propTypes = {
+	Datas: PropTypes.arrayOf(PropTypes.object),
+	SubmitProof: PropTypes.func.isRequired,
+	ClickCancel: PropTypes.func.isRequired,
+	GetDepositInfoRecent: PropTypes.func.isRequired
 };
 
 export default RecentDatas;

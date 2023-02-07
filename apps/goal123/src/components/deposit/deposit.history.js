@@ -20,6 +20,7 @@ import BankSlip from "./bankSlip";
 import Layout from "../common/layout";
 import TabPage from "../common/tabPage";
 import path from "../../path";
+import DepositMsg from "../common/popBox.DepositMsg";
 
 const defTabs = {
 	default: {
@@ -281,7 +282,21 @@ const Panel = () => {
 	);
 };
 
+const defIconStatus = {
+	0: "pending",
+	1: "pending",
+	2: "pending",
+	3: "approved",
+	4: "reject",
+	5: "cancelled",
+	6: "cancelled",
+	7: "pending",
+	8: "pending",
+	99: "reject"
+};
+
 export const TransactionHistory = props => {
+	const { setPopBox } = useContext(popBoxContext);
 	const { i18n } = useContext(i18nContext);
 
 	let btnGroup = null;
@@ -299,6 +314,19 @@ export const TransactionHistory = props => {
 			</div>
 		);
 	}
+
+	const handleClickInfoBtn = () => {
+		setPopBox({
+			isOpen: true,
+			custContent: (
+				<DepositMsg
+					transId={props.transId}
+					depositMessageDetail={props.depositMessageDetail}
+				/>
+			),
+			className: "statuspop active"
+		});
+	};
 
 	return (
 		<div className={props.className}>
@@ -333,7 +361,16 @@ export const TransactionHistory = props => {
 				</li>
 				<li>
 					<span className="title">{i18n.lbl_Status}</span>
-					<span>{i18n[`lbl_DepositStatus${props.status}`]}</span>
+					<span className={defIconStatus[props.status]}>
+						{i18n[`lbl_DepositStatus${props.status}`]}
+						{props.depositMessageDetail &&
+							props.depositMessageDetail.length > 0 && (
+								<button
+									className="infobtn"
+									onClick={handleClickInfoBtn}
+								/>
+							)}
+					</span>
 				</li>
 			</ul>
 			{props.thirdId && (
@@ -349,7 +386,8 @@ export const TransactionHistory = props => {
 
 TransactionHistory.defaultProps = {
 	className: "",
-	thirdId: null
+	thirdId: null,
+	depositMessageDetail: []
 };
 
 TransactionHistory.propTypes = {
@@ -361,7 +399,8 @@ TransactionHistory.propTypes = {
 	createTime: PropTypes.string.isRequired,
 	transId: PropTypes.string.isRequired,
 	amount: PropTypes.number.isRequired,
-	thirdId: PropTypes.string
+	thirdId: PropTypes.string,
+	depositMessageDetail: PropTypes.arrayOf(PropTypes.any)
 };
 
 export default Panel;
