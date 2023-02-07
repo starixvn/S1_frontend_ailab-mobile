@@ -163,13 +163,17 @@ export const api_WithdrawalCryptoReq = ({
 	AccountNo,
 	amount,
 	blackbox,
-	CurrencyId
+	CurrencyId,
+	ExchangeRate,
+	ExchangeAmount
 }) =>
 	paymentRequest.post("/WithdrawalCryptoReq", {
 		AccountNo,
 		amount,
 		blackbox,
-		CurrencyId
+		CurrencyId,
+		ExchangeRate,
+		ExchangeAmount
 	});
 
 export const api_GetQRPayGroupList = () =>
@@ -178,4 +182,15 @@ export const api_GetQRPayGroupList = () =>
 export const api_GetQRPayInfoList = GroupId =>
 	paymentRequest.post("/GetQRPayInfoList", {
 		GroupId
+	});
+
+export const api_payment_GetExchangeInfo = ({
+	Amount,
+	CurrencyName,
+	Network
+}) =>
+	paymentRequest.post("/GetExchangeInfo", {
+		Amount,
+		CurrencyName,
+		Network
 	});
