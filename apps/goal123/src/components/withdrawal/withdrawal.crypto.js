@@ -16,7 +16,8 @@ import {
 	api_SetWithdrawalCancel,
 	api_KycCheck,
 	api_payment_GetWithdrawalLimit,
-	api_WithdrawalCryptoReq
+	api_WithdrawalCryptoReq,
+	api_payment_GetExchangeInfo
 } from "../../service/api/payment";
 import { api_DelCustUSDTInfo } from "../../service/api/accountStrict";
 import InputBox from "../common/inputbox.info";
@@ -83,7 +84,7 @@ const Panel = () => {
 			return;
 		}
 		const curNetwork = selBank?.network;
-		const cryptoLimit = allWithdrawalLimit?.usdtList.find(
+		const cryptoLimit = allWithdrawalLimit?.usdtList?.find(
 			el =>
 				el.network === curNetwork &&
 				el.currencyId === selBank?.currencyId
@@ -417,7 +418,7 @@ const Panel = () => {
 		}
 	};
 
-	const ClickSubmit = () => {
+	const ClickSubmit = async () => {
 		if (
 			limitInfo.limit.maxTimes > 0 &&
 			limitInfo.limit.withdrawalTimes >= limitInfo.limit.maxTimes
@@ -434,12 +435,19 @@ const Panel = () => {
 				return;
 			}
 			if (result) {
-				const RedirectToNext = async (accountNo, _realAmount) => {
+				const RedirectToNext = async ({
+					accountNo,
+					real_amount,
+					to_Amount,
+					rate
+				}) => {
 					try {
 						const res = await api_WithdrawalCryptoReq({
 							AccountNo: accountNo,
-							amount: _realAmount,
-							CurrencyId: selBank.currencyId
+							amount: real_amount,
+							CurrencyId: selBank.currencyId,
+							ExchangeRate: rate,
+							ExchangeAmount: to_Amount
 						});
 						if (isMountedRef.current) {
 							if (
@@ -530,53 +538,76 @@ const Panel = () => {
 				const real_amount = _isConvert
 					? Number(amount) * 1000
 					: Number(amount);
-				setPopBox({
-					isOpen: true,
-					className: "cryptopop active",
-					title: i18n.lbl_ImportantNote,
-					content: (
-						<>
-							<div className="title">
-								{i18n.lbl_WithdrawalTo} :
+
+				try {
+					const response = await api_payment_GetExchangeInfo({
+						Amount: real_amount,
+						CurrencyName: selBank.currencyName,
+						Network: selBank.network
+					});
+
+					const { to_Amount, rate } = response.data.data;
+
+					setPopBox({
+						isOpen: true,
+						className: "cryptopop active",
+						title: i18n.lbl_ImportantNote,
+						content: (
+							<>
+								<div className="title">
+									{i18n.lbl_WithdrawalTo} :
+								</div>
+								<div>{selBank?.nickName}</div>
+								<div className="title">
+									{i18n.lbl_CryptoWalletAddress} :
+								</div>
+								<div>{selBank?.usdtAddress}</div>
+								<div className="title">
+									{i18n.lbl_WithdrawalAmount} :
+								</div>
+								<div>
+									{number_format(real_amount, _isConvert, 0)}
+								</div>
+								<div className="text-org">
+									{`${i18n.lbl_ReceiveUSDT} :`}
+								</div>
+								<div>{Number(to_Amount).toString()}</div>
+							</>
+						),
+						hasBtn: true,
+						btnBar: (
+							<div className="btn-group">
+								<button
+									className="darkGray"
+									onClick={() =>
+										setPopBox(prevState => ({
+											...prevState,
+											isOpen: false
+										}))
+									}>
+									{i18n.lbl_Cancel}
+								</button>
+								<button
+									className="lightBlue"
+									onClick={() => {
+										RedirectToNext({
+											accountNo: selBank.usdtAddress,
+											real_amount,
+											to_Amount,
+											rate
+										});
+									}}>
+									{i18n.lbl_Submit}
+								</button>
 							</div>
-							<div>{selBank?.nickName}</div>
-							<div className="title">
-								{i18n.lbl_CryptoWalletAddress} :
-							</div>
-							<div>{selBank?.usdtAddress}</div>
-							<div className="title">
-								{i18n.lbl_WithdrawalAmount} :
-							</div>
-							<div>
-								{number_format(real_amount, _isConvert, 0)}
-							</div>
-						</>
-					),
-					hasBtn: true,
-					btnBar: (
-						<div className="btn-group">
-							<button
-								className="darkGray"
-								onClick={() =>
-									setPopBox(prevState => ({
-										...prevState,
-										isOpen: false
-									}))
-								}>
-								{i18n.lbl_Cancel}
-							</button>
-							<button
-								className="lightBlue"
-								onClick={RedirectToNext.bind(
-									this,
-									selBank.usdtAddress,
-									real_amount
-								)}>
-								{i18n.lbl_Submit}
-							</button>
-						</div>
-					)
-				});
+						)
+					});
+				} catch (error) {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
+				}
 			}
 		}
 	};
