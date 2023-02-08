@@ -11,6 +11,7 @@ import HistoryFilter from "../common/historyFilter";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import ReloadSpin from "../common/reloadSpin";
 import Loading from "../common/loading";
+import WithdrawalMsg from "../common/popBox.WithdrawalMsg";
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
@@ -172,6 +173,7 @@ const Panel = () => {
 				ClickCancel={ClickCancel.bind(this, item.transId)}
 				className="info infoBlack"
 				canCancel={item.canCancel}
+				withdrawalMessageDetail={item.withdrawalMessageDetail}
 			/>
 		);
 	});
@@ -235,6 +237,7 @@ const withdrawalStatus = {
 };
 
 export const TransactionHistory = props => {
+	const { setPopBox } = useContext(popBoxContext);
 	const { i18n } = useContext(i18nContext);
 
 	let btnGroup = null;
@@ -251,6 +254,20 @@ export const TransactionHistory = props => {
 			</div>
 		);
 	}
+
+	const handleClickInfoBtn = () => {
+		setPopBox({
+			isOpen: true,
+			custContent: (
+				<WithdrawalMsg
+					transId={props.transId}
+					withdrawalMessageDetail={props.withdrawalMessageDetail}
+				/>
+			),
+			className: "statuspop active"
+		});
+	};
+
 	return (
 		<div className={props.className}>
 			<ul>
@@ -282,6 +299,13 @@ export const TransactionHistory = props => {
 					<span className="title">{i18n.lbl_Status}</span>
 					<span className={statusClassName[props.status]}>
 						{i18n[`lbl_WithdrawalStatus${props.status}`]}
+						{props.withdrawalMessageDetail &&
+							props.withdrawalMessageDetail.length > 0 && (
+								<button
+									className="infobtn"
+									onClick={handleClickInfoBtn}
+								/>
+							)}
 					</span>
 				</li>
 			</ul>
@@ -297,7 +321,8 @@ TransactionHistory.defaultProps = {
 	amount: null,
 	status: null,
 	ClickCancel: () => null,
-	canCancel: null
+	canCancel: null,
+	withdrawalMessageDetail: []
 };
 
 TransactionHistory.propTypes = {
@@ -307,7 +332,8 @@ TransactionHistory.propTypes = {
 	amount: PropTypes.number,
 	status: PropTypes.number,
 	ClickCancel: PropTypes.func,
-	canCancel: PropTypes.bool
+	canCancel: PropTypes.bool,
+	withdrawalMessageDetail: PropTypes.arrayOf(PropTypes.any)
 };
 
 export default Panel;
