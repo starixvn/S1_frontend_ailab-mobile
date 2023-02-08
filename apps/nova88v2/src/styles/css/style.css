@@ -4227,7 +4227,7 @@ footer > a.active .circleAnimation::after {
 .bankAccount .icon-plus {
   margin: auto;
 }
-.bankAccount .icon-BTC {
+.bankAccount .nickName + .icon {
   word-break: break-all;
   margin: 0;
   display: -webkit-box;
@@ -4242,8 +4242,9 @@ footer > a.active .circleAnimation::after {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  color: #5574A7;
 }
-.bankAccount .icon-BTC:before {
+.bankAccount .nickName + .icon:before {
   color: #5574A7;
   margin: 0 2vw 0 0;
   font-size: 6vw;
