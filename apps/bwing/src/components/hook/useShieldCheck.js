@@ -2,8 +2,9 @@ import { useState } from "react";
 import { setCookie, deleteCookie } from "../common/common";
 import { api_shield_ShieldRiskCheck } from "../../service/api/shield";
 
-const shieldScript =
-	"https://d1cr9zxt7u0sgu.cloudfront.net/shdfp.js?SITE_ID=1bb2dfee53937052b49ec5a57cd755319675209b&TYPE=JS&DE=1&AUTO=0";
+export const SHIELD_SITE_ID = "b5626627447a18bbf8cab1510a2c59cda2442fa2";
+
+const shieldScript = `https://d1cr9zxt7u0sgu.cloudfront.net/shdfp.js?SITE_ID=${SHIELD_SITE_ID}&TYPE=JS&DE=1&AUTO=0`;
 
 const is_firefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
 const is_android = navigator.userAgent.toLowerCase().indexOf("android") > -1;

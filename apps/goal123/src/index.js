@@ -8,7 +8,9 @@ import "./styles/css/style-dark.css";
 import "./styles/css/style.css";
 import "./styles/css/font.css";
 import "./styles/css/swiper.css";
-import useShieldCheck from "./components/hook/useShieldCheck";
+import useShieldCheck, {
+	SHIELD_SITE_ID
+} from "./components/hook/useShieldCheck";
 import { api_shield_GetEndpoint } from "./service/api/shield";
 import { siteId } from "./config";
 
@@ -30,7 +32,7 @@ const Shield = () => {
 		<Helmet>
 			<script
 				language="javascript"
-				src="https://d1cr9zxt7u0sgu.cloudfront.net/shdfp.js?SITE_ID=1bb2dfee53937052b49ec5a57cd755319675209b&TYPE=JS&DE=1&AUTO=0"
+				src={`https://d1cr9zxt7u0sgu.cloudfront.net/shdfp.js?SITE_ID=${SHIELD_SITE_ID}&TYPE=JS&DE=1&AUTO=0`}
 				type="text/javascript"
 				async
 				charSet="UTF-8"
@@ -39,7 +41,7 @@ const Shield = () => {
 			(
 			<noscript>
 				{`<iframe
-					src="${endpoint}/shield-fp/v1/api/web/noscript?site_id=1bb2dfee53937052b49ec5a57cd755319675209b"
+					src="${endpoint}/shield-fp/v1/api/web/noscript?site_id=${SHIELD_SITE_ID}"
 					width="0"
 					height="0"
 					style="display:none"
