@@ -39,7 +39,7 @@ const Shield = () => {
 			(
 			<noscript>
 				{`<iframe
-					src="${endpoint}/shield-fp /v1/api/web/noscript?site_id=1bb2dfee53937052b49ec5a57cd755319675209b"
+					src="${endpoint}/shield-fp/v1/api/web/noscript?site_id=1bb2dfee53937052b49ec5a57cd755319675209b"
 					width="0"
 					height="0"
 					style="display:none"
