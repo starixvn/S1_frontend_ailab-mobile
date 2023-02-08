@@ -10,6 +10,7 @@ import "./styles/css/style.css";
 import "./styles/css/font.css";
 import "./styles/css/swiper.css";
 import useShieldCheck, {
+	SHIELD_SITE_ID_SCRIPT,
 	SHIELD_SITE_ID
 } from "./components/hook/useShieldCheck";
 import { api_shield_GetEndpoint } from "./service/api/shield";
@@ -70,7 +71,7 @@ const Shield = () => {
 		<Helmet>
 			<script
 				language="javascript"
-				src={`https://d1cr9zxt7u0sgu.cloudfront.net/shdfp.js?SITE_ID=${SHIELD_SITE_ID}&TYPE=JS&DE=1&AUTO=0`}
+				src={SHIELD_SITE_ID_SCRIPT}
 				type="text/javascript"
 				async
 				charSet="UTF-8"
