@@ -10,13 +10,14 @@ import "./styles/css/font.css";
 import "./styles/css/swiper.css";
 import useShieldCheck from "./components/hook/useShieldCheck";
 import { api_shield_GetEndpoint } from "./service/api/shield";
+import { siteId } from "./config";
 
 const Shield = () => {
 	const { getShieldData } = useShieldCheck();
 	const [endpoint, setEndpoint] = useState("");
 
 	useEffect(() => {
-		api_shield_GetEndpoint().then(res => {
+		api_shield_GetEndpoint({ siteId }).then(res => {
 			const { errorCode, data } = res.data;
 			if (errorCode === 0) {
 				const _endpoint = data?.endpoint;
@@ -38,7 +39,7 @@ const Shield = () => {
 			(
 			<noscript>
 				{`<iframe
-					src="${endpoint}/shield-fp /v1/api/web/noscript?site_id=1bb2dfee53937052b49ec5a57cd755319675209b"
+					src="${endpoint}/shield-fp/v1/api/web/noscript?site_id=1bb2dfee53937052b49ec5a57cd755319675209b"
 					width="0"
 					height="0"
 					style="display:none"
