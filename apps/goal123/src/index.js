@@ -10,13 +10,14 @@ import "./styles/css/font.css";
 import "./styles/css/swiper.css";
 import useShieldCheck from "./components/hook/useShieldCheck";
 import { api_shield_GetEndpoint } from "./service/api/shield";
+import { siteId } from "./config";
 
 const Shield = () => {
 	const { getShieldData } = useShieldCheck();
 	const [endpoint, setEndpoint] = useState("");
 
 	useEffect(() => {
-		api_shield_GetEndpoint().then(res => {
+		api_shield_GetEndpoint({ siteId }).then(res => {
 			const { errorCode, data } = res.data;
 			if (errorCode === 0) {
 				const _endpoint = data?.endpoint;
