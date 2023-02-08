@@ -841,7 +841,9 @@ const Panel = () => {
 						: `${b.currencyName}-${b.network}`}
 				</div>
 				<div className="icon icon-crypto">{b?.usdtAddress}</div>
-				<button
+
+				{/* * 暫時隱藏 delete crypto wallet 按鈕，以防止有用戶重複新增刪除帳號來套利，當 risk 評估覺得可以的話有機會再打開 */}
+				{/* <button
 					onClick={() =>
 						delUSDTwallet({
 							USDTAddress: b.usdtAddress,
@@ -851,7 +853,7 @@ const Panel = () => {
 						})
 					}
 					className="icon icon-bin clickBtn"
-				/>
+				/> */}
 			</div>
 		);
 	});

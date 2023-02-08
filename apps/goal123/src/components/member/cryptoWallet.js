@@ -167,7 +167,9 @@ const CryptoWallet = () => {
 					: `${item.currencyName}-${item.network}`}
 			</div>
 			<div className="icon icon-crypto">{item.usdtAddress}</div>
-			<button
+
+			{/* * 暫時隱藏 delete crypto wallet 按鈕，以防止有用戶重複新增刪除帳號來套利，當 risk 評估覺得可以的話有機會再打開 */}
+			{/* <button
 				onClick={() =>
 					delUSDTwallet({
 						USDTAddress: item.usdtAddress,
@@ -177,7 +179,7 @@ const CryptoWallet = () => {
 					})
 				}
 				className="icon icon-bin clickBtn"
-			/>
+			/> */}
 		</div>
 	));
 	return (
@@ -186,7 +188,7 @@ const CryptoWallet = () => {
 			<div className="name">{userInfo.accountName}</div>
 			{userInfo.accountName ? (
 				<div className="text-org" data-testid="accountNameTip">
-					{i18n.lbl_BankAccountHint}
+					{i18n.lbl_Crypto_Wallet_Submit_Note}
 				</div>
 			) : null}
 			{/* <div className="text-center text-gray">
