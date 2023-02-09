@@ -303,7 +303,7 @@ export const TransactionHistory = props => {
 				<li>
 					<span className="title">{i18n.lbl_Status}</span>
 					<span className={defIconStatus[props.status]}>
-						{i18n[`lbl_DepositStatus${props.status}`]}
+						{i18n[`lbl_WithdrawalStatus${props.status}`]}
 						{props.withdrawalMessageDetail &&
 							props.withdrawalMessageDetail.length > 0 && (
 								<button
