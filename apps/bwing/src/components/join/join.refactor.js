@@ -49,8 +49,8 @@ const Join = () => {
 	const [promoPopup, setPromoPopup] = useState(false);
 	const [reCaptchaToken, setReCaptchaToken] = useState("");
 	const isMountedRef = useRef(null);
-	const [reCaptchaKey, setReCaptchaKey] = useState(0);
 	const { getShieldData, saveShieldData, isShieldLoaded } = useShieldCheck();
+	const [reCaptchaKey, setReCaptchaKey] = useState(0);
 	const currencyToCountryCode = currencyToAreacode[51];
 	const _areaCode = areaCode[currencyToCountryCode]?.AreaCode;
 
