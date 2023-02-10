@@ -92,7 +92,7 @@ const HotGameSwipper = ({ i18n, userInfo }) => {
 		}
 	};
 
-	const rows = gameList.map(g => {
+	const rows = gameList?.map(g => {
 		return (
 			<a
 				className="hotGamModule"
@@ -111,7 +111,6 @@ const HotGameSwipper = ({ i18n, userInfo }) => {
 			</a>
 		);
 	});
-
 	return (
 		<div className="hotgame">
 			<div className="titleBox">
