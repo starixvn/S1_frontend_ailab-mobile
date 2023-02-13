@@ -135,25 +135,23 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 				className += ` maintenance`;
 				style = { pointerEvents: "none" };
 			}
-			const _subIcon = item?.items
-				?.filter(sub => {
-					// filterCurrency
-					if (sub?.allowCurrency) {
-						return sub?.allowCurrency.includes(userInfo.currencyId);
-					}
-					return true;
-				})
-				.filter(
-					subItem =>
-						subItem.eventIcon &&
-						(subItem.tpId
-							? showingTpIds === null ||
-							  showingTpIds.includes(subItem.tpId)
-							: true) &&
-						(subItem.hideBeforeLogin
-							? userInfo.isLogin === true
-							: true)
+			const _subIcon = item?.items?.filter(subItem => {
+				// filterCurrency
+				if (
+					subItem?.allowCurrency &&
+					!subItem?.allowCurrency.includes(userInfo.currencyId)
+				) {
+					return false;
+				}
+				return (
+					subItem.eventIcon &&
+					(subItem.tpId
+						? showingTpIds === null ||
+						  showingTpIds.includes(subItem.tpId)
+						: true) &&
+					(subItem.hideBeforeLogin ? userInfo.isLogin === true : true)
 				);
+			});
 
 			const showingEventIcon = getEventIcon({
 				subIcon: _subIcon,
