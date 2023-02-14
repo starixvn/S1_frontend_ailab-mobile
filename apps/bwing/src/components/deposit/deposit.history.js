@@ -17,6 +17,7 @@ import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import ReloadSpin from "../common/reloadSpin";
 import Loading from "../common/loading";
 import BankSlip from "./bankSlip";
+import DepositMsg from "../common/popBox.DepositMsg";
 
 const Panel = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -259,6 +260,7 @@ const statusClassName = {
 };
 
 export const TransactionHistory = props => {
+	const { setPopBox } = useContext(popBoxContext);
 	const { i18n } = useContext(i18nContext);
 
 	let btnGroup = null;
@@ -274,6 +276,19 @@ export const TransactionHistory = props => {
 			</div>
 		);
 	}
+
+	const handleClickInfoBtn = () => {
+		setPopBox({
+			isOpen: true,
+			custContent: (
+				<DepositMsg
+					transId={props.transId}
+					depositMessageDetail={props.depositMessageDetail}
+				/>
+			),
+			className: "statuspop active"
+		});
+	};
 
 	return (
 		<div className={props.className}>
@@ -310,6 +325,13 @@ export const TransactionHistory = props => {
 					<span className="title">{i18n.lbl_Status}</span>
 					<span className={statusClassName[props.status]}>
 						{i18n[`lbl_DepositStatus${props.status}`]}
+						{props.depositMessageDetail &&
+							props.depositMessageDetail.length > 0 && (
+								<button
+									className="infobtn"
+									onClick={handleClickInfoBtn}
+								/>
+							)}
 					</span>
 				</li>
 			</ul>
@@ -333,7 +355,8 @@ TransactionHistory.defaultProps = {
 	status: null,
 	SubmitProof: () => null,
 	ClickCancel: () => null,
-	thirdId: null
+	thirdId: null,
+	depositMessageDetail: []
 };
 
 TransactionHistory.propTypes = {
@@ -345,7 +368,8 @@ TransactionHistory.propTypes = {
 	status: PropTypes.number,
 	SubmitProof: PropTypes.func,
 	ClickCancel: PropTypes.func,
-	thirdId: PropTypes.string
+	thirdId: PropTypes.string,
+	depositMessageDetail: PropTypes.arrayOf(PropTypes.any)
 };
 
 export default Panel;

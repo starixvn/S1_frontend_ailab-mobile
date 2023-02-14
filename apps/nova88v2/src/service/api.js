@@ -13,7 +13,8 @@ import {
 	LineLoginAPI,
 	WorldCupPredictionAPI,
 	HotEventAPI,
-	GameAPI
+	GameAPI,
+	HotGameAPI
 } from "@ailab-mobile/api";
 
 import config from "../config";
@@ -33,5 +34,6 @@ export default {
 	lineLogin: new LineLoginAPI(config),
 	worldCupPrediction: new WorldCupPredictionAPI(config),
 	hotEvent: new HotEventAPI(config),
-	game: new GameAPI(config)
+	game: new GameAPI(config),
+	hotGame: new HotGameAPI(config)
 };

@@ -7,7 +7,7 @@ import {
 	useGetTpMaintainList,
 	defTpGameType
 } from "../hook/useGetTpMaintainList";
-import { api_site_GetHotGames } from "../../service/api/site";
+import { api_HotGame_GetDataList } from "../../service/api/hotGame";
 
 export const defProductType = {
 	Sports: 1,
@@ -31,10 +31,10 @@ const HotGameSwipper = ({ i18n, userInfo }) => {
 	const [gameList, setGameList] = useState([]);
 
 	useEffect(() => {
-		api_site_GetHotGames({ langId: userInfo.langId })
+		api_HotGame_GetDataList()
 			.then(res => {
 				if (res.data.errorCode === 0) {
-					setGameList(res.data.data);
+					setGameList(res.data.data?.HotGame);
 				} else {
 					setPopBox({
 						isOpen: true,
@@ -92,7 +92,7 @@ const HotGameSwipper = ({ i18n, userInfo }) => {
 		}
 	};
 
-	const rows = gameList.map(g => {
+	const rows = gameList?.map(g => {
 		return (
 			<a
 				className="hotGamModule"
@@ -111,7 +111,6 @@ const HotGameSwipper = ({ i18n, userInfo }) => {
 			</a>
 		);
 	});
-
 	return (
 		<div className="hotgame">
 			<div className="titleBox">

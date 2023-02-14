@@ -16,7 +16,8 @@ import {
 	api_SetWithdrawalCancel,
 	api_KycCheck,
 	api_payment_GetWithdrawalLimit,
-	api_WithdrawalCryptoReq
+	api_WithdrawalCryptoReq,
+	api_payment_GetExchangeInfo
 } from "../../service/api/payment";
 import { api_DelCustUSDTInfo } from "../../service/api/accountStrict";
 import { defIptStatus } from "../common/inputbox.hint";
@@ -87,7 +88,7 @@ const Panel = () => {
 			withdrawalAvailableAmount:
 				allWithdrawalLimit.withdrawalAvailableAmount,
 			unlimited: allWithdrawalLimit.unlimited,
-			maxTimes: allWithdrawalLimit
+			maxTimes: allWithdrawalLimit.maxTimes
 		};
 
 		setInputStatus(initStatus);
@@ -423,7 +424,7 @@ const Panel = () => {
 		}
 	};
 
-	const ClickSubmit = () => {
+	const ClickSubmit = async () => {
 		if (
 			limitInfo.limit.maxTimes > 0 &&
 			limitInfo.limit.withdrawalTimes >= limitInfo.limit.maxTimes
@@ -440,12 +441,19 @@ const Panel = () => {
 				return;
 			}
 			if (result) {
-				const RedirectToNext = async (accountNo, _realAmount) => {
+				const RedirectToNext = async ({
+					accountNo,
+					real_amount,
+					to_Amount,
+					rate
+				}) => {
 					try {
 						const res = await api_WithdrawalCryptoReq({
 							AccountNo: accountNo,
-							amount: _realAmount,
-							CurrencyId: selBank.currencyId
+							amount: real_amount,
+							CurrencyId: selBank.currencyId,
+							ExchangeRate: rate,
+							ExchangeAmount: to_Amount
 						});
 						if (isMountedRef.current) {
 							if (
@@ -535,56 +543,84 @@ const Panel = () => {
 				const real_amount = _isConvert
 					? Number(amount) * 1000
 					: Number(amount);
-				setPopBox({
-					isOpen: true,
-					className: "cryptoNote active",
-					title: i18n.lbl_ImportantNote,
-					hasBtn: true,
-					content: (
-						<>
-							<ul>
-								<li>{i18n.lbl_WithdrawalTo}</li>
-								<li>{selBank?.nickName}</li>
-							</ul>
-							<ul>
-								<li>{i18n.lbl_CryptoWalletAddress}</li>
-								<li>{selBank?.usdtAddress}</li>
-							</ul>
-							<ul>
-								<li>{i18n.lbl_WithdrawalAmount}</li>
-								<li>
-									{number_format(real_amount, _isConvert, 0)}
-								</li>
-							</ul>
-							<div className="txt-cryptoNote">
-								{i18n.lbl_WithdrawalCryptoNote}
+
+				try {
+					const response = await api_payment_GetExchangeInfo({
+						Amount: real_amount,
+						CurrencyName: selBank.currencyName,
+						Network: selBank.network
+					});
+
+					const { to_Amount, rate } = response.data.data;
+
+					setPopBox({
+						isOpen: true,
+						className: "cryptoNote active",
+						title: i18n.lbl_ImportantNote,
+						hasBtn: true,
+						content: (
+							<>
+								<ul>
+									<li>{i18n.lbl_WithdrawalTo}</li>
+									<li>{selBank?.nickName}</li>
+								</ul>
+								<ul>
+									<li>{i18n.lbl_CryptoWalletAddress}</li>
+									<li>{selBank?.usdtAddress}</li>
+								</ul>
+								<ul>
+									<li>{i18n.lbl_WithdrawalAmount}</li>
+									<li>
+										{number_format(
+											real_amount,
+											_isConvert,
+											0
+										)}
+									</li>
+								</ul>
+								<ul>
+									<li>{`${i18n.lbl_ReceiveUSDT} :`}</li>
+									<li>{Number(to_Amount).toString()}</li>
+								</ul>
+
+								<div className="txt-cryptoNote">
+									{i18n.lbl_WithdrawalCryptoNote}
+								</div>
+							</>
+						),
+						btnBar: (
+							<div className="btn-group">
+								<button
+									className="btn-cancel"
+									onClick={() =>
+										setPopBox(prevState => ({
+											...prevState,
+											isOpen: false
+										}))
+									}>
+									{i18n.lbl_Cancel}
+								</button>
+								<button
+									className="btn-check"
+									onClick={() => {
+										RedirectToNext({
+											accountNo: selBank.usdtAddress,
+											real_amount,
+											to_Amount,
+											rate
+										});
+									}}>
+									{i18n.lbl_Submit}
+								</button>
 							</div>
-						</>
-					),
-					btnBar: (
-						<div className="btn-group">
-							<button
-								className="btn-cancel"
-								onClick={() =>
-									setPopBox(prevState => ({
-										...prevState,
-										isOpen: false
-									}))
-								}>
-								{i18n.lbl_Cancel}
-							</button>
-							<button
-								className="btn-check"
-								onClick={RedirectToNext.bind(
-									this,
-									selBank.usdtAddress,
-									real_amount
-								)}>
-								{i18n.lbl_Submit}
-							</button>
-						</div>
-					)
-				});
+						)
+					});
+				} catch (error) {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
+				}
 			}
 		}
 	};
@@ -826,7 +862,8 @@ const Panel = () => {
 						</div>
 					</div>
 					<div>
-						<button
+						{/* * 暫時隱藏 delete crypto wallet 按鈕，以防止有用戶重複新增刪除帳號來套利，當 risk 評估覺得可以的話有機會再打開 */}
+						{/* <button
 							onClick={() =>
 								delUSDTwallet({
 									USDTAddress: b.usdtAddress,
@@ -836,7 +873,7 @@ const Panel = () => {
 								})
 							}
 							className="icon icon-bin"
-						/>
+						/> */}
 						<div className="checkbox">
 							<input
 								type="checkbox"

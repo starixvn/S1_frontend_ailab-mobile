@@ -6,12 +6,7 @@ import {
 	popBoxContext,
 	loadingContext
 } from "../common/context";
-import {
-	number_format,
-	isConvert,
-	checkAmount,
-	defCurrenyId
-} from "../common/common";
+import { number_format, isConvert, checkAmount } from "../common/common";
 import { defPopBoxType } from "../common/popbox";
 import InputBox from "../common/inputbox.hint";
 import { defIptStatus } from "../common/inputStatus";
@@ -402,14 +397,22 @@ const Panel = () => {
 		if (pageVerify) {
 			const result = VaildAmount(amount);
 			if (result) {
-				const RedirectToNext = async (accountNo, _real_amount) => {
+				const RedirectToNext = async ({
+					accountNo,
+					real_amount,
+					exchangeInfo
+				}) => {
 					const blackbox = await Iov_GetBlackBox();
+					const { rate, to_Amount } = exchangeInfo;
+
 					try {
 						const res = await api.payment.WithdrawalCryptoReq({
 							AccountNo: accountNo,
-							amount: _real_amount,
+							amount: real_amount,
 							blackbox,
-							CurrencyId: selBank.currencyId
+							CurrencyId: selBank.currencyId,
+							ExchangeRate: rate,
+							ExchangeAmount: to_Amount
 						});
 
 						if (isMountedRef.current) {
@@ -563,16 +566,15 @@ const Panel = () => {
 											<button
 												data-testid="RedirectToNext"
 												className="orange"
-												onClick={RedirectToNext.bind(
-													this,
-													selBank.usdtAddress,
-													real_amount,
-													0,
-													userInfo.currencyId ===
-														defCurrenyId.INR
-														? selBank.ifscCode
-														: null
-												)}>
+												onClick={() => {
+													RedirectToNext({
+														accountNo:
+															selBank.usdtAddress,
+														real_amount,
+														exchangeInfo:
+															res.data.data
+													});
+												}}>
 												{i18n.lbl_Submit}
 											</button>
 										</div>
@@ -839,7 +841,9 @@ const Panel = () => {
 						: `${b.currencyName}-${b.network}`}
 				</div>
 				<div className="icon icon-USDT">{b.usdtAddress}</div>
-				<button
+
+				{/* * 暫時隱藏 delete crypto wallet 按鈕，以防止有用戶重複新增刪除帳號來套利，當 risk 評估覺得可以的話有機會再打開 */}
+				{/* <button
 					onClick={() =>
 						delUSDTwallet({
 							USDTAddress: b.usdtAddress,
@@ -849,7 +853,7 @@ const Panel = () => {
 						})
 					}
 					className="icon icon-bin clickBtn"
-				/>
+				/> */}
 			</div>
 		);
 	});
