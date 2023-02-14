@@ -339,6 +339,18 @@ export const productList = langId => {
 					...defGameInfo.LIVEcasinoPP
 				},
 				{
+					displayText: "YEEBET",
+					icon: "icon icon-sk",
+					img: `${bannerImgUrl}/h5/img/liveGameNew/live-yb.png`,
+					...defGameInfo.LIVEcasinoYEEBET,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.yee_bet)
+						}
+					]
+				},
+				{
 					displayText: "Skywind",
 					icon: "icon icon-sk",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-sk.png`,

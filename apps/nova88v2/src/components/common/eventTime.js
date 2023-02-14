@@ -36,5 +36,6 @@ export const eventTime = {
 	worldCup_hot: { endDate: "2022/12/18 23:59:59" },
 	slot_918Kiss: { endDate: "2022/12/03 23:59:59" },
 	casino_SimplePlay: { endDate: "2022/11/13 11:00:00" },
-	GPI_Lottery: { endDate: "2023/11/13 11:00:00" }
+	GPI_Lottery: { endDate: "2023/11/13 11:00:00" },
+	yee_bet: { start: "2023/02/10 12:00:00" }
 };
