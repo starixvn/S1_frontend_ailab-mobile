@@ -87,6 +87,7 @@ const GamePanel = React.forwardRef((props, ref) => {
 								: () =>
 										selectGame({
 											...g,
+											brandName,
 											providerName: gameProviderName
 										})
 						}
