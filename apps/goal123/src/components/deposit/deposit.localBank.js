@@ -33,12 +33,7 @@ import ImportantNotes from "./importantNote";
 const payType = "localBank";
 
 const Payment = props => {
-	const {
-		paymentList,
-		creditTimeKey,
-		promoList,
-		checkDepositSpecialCode
-	} = props;
+	const { paymentList, promoList, checkDepositSpecialCode } = props;
 
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -464,10 +459,7 @@ const Payment = props => {
 	};
 
 	return (
-		<div className="depositModule_mobile open">
-			<div className="title text-org">
-				{`${i18n.lbl_CreditTime}: ${i18n[creditTimeKey]}`}
-			</div>
+		<>
 			<GroupList
 				title={i18n.lbl_SelectBank}
 				dataList={paymentList}
@@ -536,7 +528,7 @@ const Payment = props => {
 					{isShowSubmit ? i18n.lbl_Submit : i18n.lbl_DepositStatus1}
 				</button>
 			</div>
-		</div>
+		</>
 	);
 };
 
@@ -546,7 +538,6 @@ Payment.defaultProps = {
 
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
-	creditTimeKey: PropTypes.string.isRequired,
 	promoList: PropTypes.arrayOf(PropTypes.object),
 	checkDepositSpecialCode: PropTypes.func.isRequired
 };

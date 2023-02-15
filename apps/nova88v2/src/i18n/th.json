@@ -701,6 +701,7 @@
 	"lbl_AutoDeposit": "Auto Deposit",
 	"lbl_Line": "LINE",
 	"lbl_ScanQR": "สแกน QR",
+	"lbl_DepositOptions": "ตัวเลือกการฝาก",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "รายละเอียดการฝากเงิน",

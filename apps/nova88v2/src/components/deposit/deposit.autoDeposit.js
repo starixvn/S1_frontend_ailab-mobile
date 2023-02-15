@@ -18,7 +18,6 @@ const payType = "autoDeposit";
 const Payment = props => {
 	const {
 		bankList,
-		creditTimeKey,
 		userPaymentData,
 		handleUserPaymentData,
 		promoList,
@@ -183,10 +182,7 @@ const Payment = props => {
 	const _isConvert = isConvert(userInfo.currencyId);
 
 	return (
-		<div className="depositModule active">
-			<div className="title text-org icon icon-connection">
-				{`${i18n.lbl_CreditTime}: ${i18n[creditTimeKey]}`}
-			</div>
+		<>
 			<GroupList
 				title={i18n.lbl_SelectBank}
 				titleClassName="fast"
@@ -235,7 +231,7 @@ const Payment = props => {
 					{i18n.lbl_Submit}
 				</button>
 			</div>
-		</div>
+		</>
 	);
 };
 
@@ -247,7 +243,6 @@ Payment.defaultProps = {
 
 Payment.propTypes = {
 	bankList: PropTypes.arrayOf(PropTypes.object).isRequired,
-	creditTimeKey: PropTypes.string.isRequired,
 	userPaymentData: PropTypes.objectOf(PropTypes.any),
 	handleUserPaymentData: PropTypes.func,
 	promoList: PropTypes.arrayOf(PropTypes.objectOf),

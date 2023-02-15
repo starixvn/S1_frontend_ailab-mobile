@@ -354,10 +354,7 @@ const Main = props => {
 	);
 
 	return (
-		<div className="depositModule active">
-			<div className="title text-org icon icon-USDT">
-				{`${i18n.lbl_CreditTime}: ${i18n[props.creditTimeKey]}`}
-			</div>
+		<>
 			<GroupList
 				title={i18n.lbl_PaymentModes}
 				dataList={groupList}
@@ -424,7 +421,7 @@ const Main = props => {
 					{i18n.lbl_Submit}
 				</button>
 			</div>
-		</div>
+		</>
 	);
 };
 
@@ -432,8 +429,7 @@ Main.defaultProps = {
 	location: {},
 	userPaymentData: {},
 	handleUserPaymentData: () => null,
-	promoList: [],
-	creditTimeKey: null
+	promoList: []
 };
 
 Main.propTypes = {
@@ -443,8 +439,7 @@ Main.propTypes = {
 	handleUserPaymentData: PropTypes.func,
 	promoList: PropTypes.arrayOf(PropTypes.objectOf),
 	asyncPromotionConfirmPopBox: PropTypes.func.isRequired,
-	checkDepositSpecialCode: PropTypes.func.isRequired,
-	creditTimeKey: PropTypes.string
+	checkDepositSpecialCode: PropTypes.func.isRequired
 };
 
 export default Main;
