@@ -351,6 +351,7 @@ const Payment = props => {
 				prefixImgUrl={`${cloudImgURL}/SiteSkin/img/MobilePay/`}
 				displayKey="groupName"
 				_isConvert={_isConvert}
+				i18n={i18n}
 			/>
 			<GroupList
 				title={i18n.lbl_SelectChannel}
@@ -365,6 +366,7 @@ const Payment = props => {
 				prefixImgUrl={`${cloudImgURL}/SiteSkin/img/MobilePay/`}
 				displayKey="channelName"
 				_isConvert={_isConvert}
+				i18n={i18n}
 			/>
 			{userInfo.currencyId === defCurrenyId.INR &&
 				selChannel?.payName === "TenPay" && (
