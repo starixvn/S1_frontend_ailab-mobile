@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link } from "@reach/router";
+import PropTypes from "prop-types";
 import { i18nContext, userInfoContext } from "../common/context";
 import { isConvert } from "../common/common";
 import path from "../../path";
@@ -27,6 +28,7 @@ const RecentDatas = props => {
 					className="info infoBlack"
 					_isConvert={_isConvert}
 					ClickCancel={props.ClickCancel.bind(this, d.transId)}
+					withdrawalMessageDetail={d.withdrawalMessageDetail}
 				/>
 			);
 		});
@@ -76,6 +78,16 @@ const RecentDatas = props => {
 			) : null}
 		</>
 	);
+};
+RecentDatas.defaultProps = {
+	Datas: [],
+	GetRecentDatas: () => null
+};
+
+RecentDatas.propTypes = {
+	Datas: PropTypes.arrayOf(PropTypes.object),
+	ClickCancel: PropTypes.func.isRequired,
+	GetRecentDatas: PropTypes.func
 };
 
 export default RecentDatas;
