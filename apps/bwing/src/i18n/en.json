@@ -602,8 +602,7 @@
 	"lbl_DepositPromoMsg1": "Please proceed to verify your account to entitle available promotions.",
 	"lbl_DepositPromoMsg2": "* Min. deposit amount required is",
 	"GPI_VNLottery": "VN Lottery",
-  "lbl_OK": "OK",
-
+	"lbl_OK": "OK",
 	"==============General==============": "",
 	"lbl_Jackpot": "Jackpot",
 	"lbl_Top10winners": "Top 10 Winners",

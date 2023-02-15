@@ -109,6 +109,7 @@ const Panel = ({
 				i18n={i18n}
 				currencyId={userInfo.currencyId}
 				canCancel={item.canCancel}
+				withdrawalMessageDetail={item.withdrawalMessageDetail}
 			/>
 		);
 	});

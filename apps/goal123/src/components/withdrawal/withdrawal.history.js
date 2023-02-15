@@ -11,6 +11,7 @@ import HistoryFilter from "../common/historyFilter";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import ReloadSpin from "../common/reloadSpin";
 import Loading from "../common/loading";
+import WithdrawalMsg from "../common/popBox.WithdrawalMsg";
 
 const withdrawalStatus = {
 	pending: 1,
@@ -184,6 +185,7 @@ const Panel = () => {
 				status={item.status}
 				ClickCancel={ClickCancel.bind(this, item.transId)}
 				canCancel={item.canCancel}
+				withdrawalMessageDetail={item.withdrawalMessageDetail}
 			/>
 		);
 	});
@@ -226,7 +228,21 @@ const Panel = () => {
 	);
 };
 
+const defIconStatus = {
+	0: "pending",
+	1: "pending",
+	2: "pending",
+	3: "approved",
+	4: "reject",
+	5: "cancelled",
+	6: "cancelled",
+	7: "pending",
+	8: "pending",
+	99: "reject"
+};
+
 export const TransactionHistory = props => {
+	const { setPopBox } = useContext(popBoxContext);
 	const { i18n } = useContext(i18nContext);
 
 	let btnGroup = null;
@@ -243,6 +259,20 @@ export const TransactionHistory = props => {
 			</div>
 		);
 	}
+
+	const handleClickInfoBtn = () => {
+		setPopBox({
+			isOpen: true,
+			custContent: (
+				<WithdrawalMsg
+					transId={props.transId}
+					withdrawalMessageDetail={props.withdrawalMessageDetail}
+				/>
+			),
+			className: "statuspop active"
+		});
+	};
+
 	return (
 		<div className="info infoBlack">
 			<ul>
@@ -272,7 +302,16 @@ export const TransactionHistory = props => {
 				</li>
 				<li>
 					<span className="title">{i18n.lbl_Status}</span>
-					<span>{i18n[`lbl_WithdrawalStatus${props.status}`]}</span>
+					<span className={defIconStatus[props.status]}>
+						{i18n[`lbl_WithdrawalStatus${props.status}`]}
+						{props.withdrawalMessageDetail &&
+							props.withdrawalMessageDetail.length > 0 && (
+								<button
+									className="infobtn"
+									onClick={handleClickInfoBtn}
+								/>
+							)}
+					</span>
 				</li>
 			</ul>
 			{btnGroup}
@@ -286,7 +325,8 @@ TransactionHistory.defaultProps = {
 	amount: null,
 	status: null,
 	ClickCancel: () => null,
-	canCancel: null
+	canCancel: null,
+	withdrawalMessageDetail: []
 };
 
 TransactionHistory.propTypes = {
@@ -295,7 +335,8 @@ TransactionHistory.propTypes = {
 	amount: PropTypes.number,
 	status: PropTypes.number,
 	ClickCancel: PropTypes.func,
-	canCancel: PropTypes.bool
+	canCancel: PropTypes.bool,
+	withdrawalMessageDetail: PropTypes.arrayOf(PropTypes.any)
 };
 
 export default Panel;

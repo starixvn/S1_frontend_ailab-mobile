@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import moment from "moment";
 import PropTypes from "prop-types";
 import {
@@ -6,6 +6,8 @@ import {
 	currencyIdToTimeZone,
 	defCurrenyId
 } from "../common/common";
+import { popBoxContext } from "../common/context";
+import WithdrawalMsg from "../common/popBox.WithdrawalMsg";
 
 const defIconStatus = {
 	1: "pending",
@@ -38,8 +40,10 @@ const Detail = ({
 	_isConvert,
 	i18n,
 	currencyId,
-	canCancel
+	canCancel,
+	withdrawalMessageDetail
 }) => {
+	const { setPopBox } = useContext(popBoxContext);
 	const timeZone = currencyIdToTimeZone[currencyId ?? defCurrenyId.MYR];
 	let btnGroup = null;
 
@@ -60,6 +64,19 @@ const Detail = ({
 			</div>
 		);
 	}
+
+	const handleClickInfoBtn = () => {
+		setPopBox({
+			isOpen: true,
+			custContent: (
+				<WithdrawalMsg
+					transId={transId}
+					withdrawalMessageDetail={withdrawalMessageDetail}
+				/>
+			),
+			className: "statuspop active"
+		});
+	};
 
 	return (
 		<div className="info">
@@ -98,6 +115,13 @@ const Detail = ({
 						className={defIconStatus[status]}
 						data-testid="historyStatus">
 						{i18n[`lbl_WithdrawalStatus${status}`]}
+						{withdrawalMessageDetail &&
+							withdrawalMessageDetail.length > 0 && (
+								<button
+									className="infobtn"
+									onClick={handleClickInfoBtn}
+								/>
+							)}
 					</span>
 				</li>
 			</ul>
@@ -109,7 +133,8 @@ const Detail = ({
 Detail.defaultProps = {
 	_isConvert: false,
 	currencyId: null,
-	canCancel: null
+	canCancel: null,
+	withdrawalMessageDetail: []
 };
 
 Detail.propTypes = {
@@ -124,7 +149,8 @@ Detail.propTypes = {
 	_isConvert: PropTypes.bool,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	currencyId: PropTypes.number,
-	canCancel: PropTypes.bool
+	canCancel: PropTypes.bool,
+	withdrawalMessageDetail: PropTypes.arrayOf(PropTypes.any)
 };
 
 export default Detail;

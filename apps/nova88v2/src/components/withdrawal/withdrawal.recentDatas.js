@@ -33,6 +33,7 @@ const RecentDatas = ({ Datas, ClickCancel }) => {
 					i18n={i18n}
 					currencyId={userInfo.currencyId}
 					canCancel={d.canCancel}
+					withdrawalMessageDetail={d.withdrawalMessageDetail}
 				/>
 			);
 		});
