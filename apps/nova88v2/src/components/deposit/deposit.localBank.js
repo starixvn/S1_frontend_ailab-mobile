@@ -54,7 +54,6 @@ const useHandleSelect = () => {
 const Payment = props => {
 	const {
 		paymentList,
-		creditTimeKey,
 		userPaymentData,
 		handleUserPaymentData,
 		promoList,
@@ -481,10 +480,7 @@ const Payment = props => {
 	const _isConvert = isConvert(userInfo.currencyId);
 
 	return (
-		<div className="depositModule active">
-			<div className="title text-org icon icon-credit-card">
-				{`${i18n.lbl_CreditTime}: ${i18n[creditTimeKey]}`}
-			</div>
+		<>
 			<GroupList
 				title={i18n.lbl_SelectBank}
 				dataList={paymentList}
@@ -545,7 +541,7 @@ const Payment = props => {
 					{isShowSubmit ? i18n.lbl_Submit : i18n.lbl_DepositStatus1}
 				</button>
 			</div>
-		</div>
+		</>
 	);
 };
 
@@ -557,7 +553,6 @@ Payment.defaultProps = {
 
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
-	creditTimeKey: PropTypes.string.isRequired,
 	userPaymentData: PropTypes.objectOf(PropTypes.any),
 	handleUserPaymentData: PropTypes.func,
 	promoList: PropTypes.arrayOf(PropTypes.objectOf),
@@ -569,15 +564,12 @@ const GroupList = ({
 	mainKey,
 	dataList,
 	SelectPayment,
-	selected,
 	title,
 	imgKey,
 	idKey,
-	bindFullObj,
 	prefixImgUrl,
 	imgKeyWithExtension,
 	accountInfo,
-	displayKey,
 	_isConvert,
 	DepositChannelProps,
 	BankAccountProps,
@@ -596,12 +588,14 @@ const GroupList = ({
 	const [selectedBank, setSelectedBank] = useState(dataList[0]);
 	const rows = dataList?.map(data => {
 		const _mainKey = `${mainKey}-${data[idKey]}`;
+		const { bankCode, canSubmit, maxAmount, minAmount } = data;
+
 		return (
 			<div key={_mainKey}>
 				<div
-					className={`bankName ${
-						data.bankCode === selectedBank.bankCode ? "active" : ""
-					} ${data.canSubmit ? "" : "pending"}`}
+					className={`bankName${
+						bankCode === selectedBank.bankCode ? " active" : ""
+					} ${canSubmit ? "" : " pending"}`}
 					key={_mainKey}
 					onClick={() => {
 						setSelectedBank(data);
@@ -619,7 +613,25 @@ const GroupList = ({
 					<i className="icon icon-icon32px_check" />
 					{data.canSubmit === false && <div className="mask" />}
 				</div>
-				<div>{data.bankCode}</div>
+				<div className="subtitle">{bankCode}</div>
+				{minAmount === null || maxAmount === null ? null : (
+					<div className="subinfo">
+						<span>
+							{`${i18n?.lbl_Min}: ${
+								minAmount === 0
+									? i18n.lbl_Unlimited
+									: number_format(minAmount, _isConvert, 0)
+							}`}
+						</span>
+						<span>
+							{`${i18n?.lbl_Max}: ${
+								maxAmount === 0
+									? i18n.lbl_Unlimited
+									: number_format(maxAmount, _isConvert, 0)
+							}`}
+						</span>
+					</div>
+				)}
 			</div>
 		);
 	});
@@ -720,8 +732,6 @@ const GroupList = ({
 
 GroupList.defaultProps = {
 	dataList: null,
-	selected: null,
-	bindFullObj: false,
 	imgKeyWithExtension: false,
 	accountInfo: {},
 	DepositChannelProps: {},
@@ -740,20 +750,13 @@ GroupList.defaultProps = {
 GroupList.propTypes = {
 	dataList: PropTypes.arrayOf(PropTypes.object),
 	SelectPayment: PropTypes.func.isRequired,
-	selected: PropTypes.oneOfType([
-		PropTypes.number,
-		PropTypes.string,
-		PropTypes.object
-	]),
 	title: PropTypes.string.isRequired,
 	mainKey: PropTypes.string.isRequired,
 	imgKey: PropTypes.string.isRequired,
 	idKey: PropTypes.string.isRequired,
-	bindFullObj: PropTypes.bool,
 	prefixImgUrl: PropTypes.string.isRequired,
 	imgKeyWithExtension: PropTypes.bool,
 	accountInfo: PropTypes.objectOf(PropTypes.any),
-	displayKey: PropTypes.string.isRequired,
 	_isConvert: PropTypes.bool.isRequired,
 	DepositChannelProps: PropTypes.objectOf(PropTypes.any),
 	BankAccountProps: PropTypes.objectOf(PropTypes.any),

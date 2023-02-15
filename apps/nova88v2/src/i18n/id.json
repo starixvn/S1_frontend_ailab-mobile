@@ -200,7 +200,7 @@
 	"lbl_Free": "Gratis",
 	"lbl_Jackpot": "Jackpot",
 	"lbl_Gaming_License": "Lisensi Resmi",
-  "lbl_OK": "OK",
+	"lbl_OK": "OK",
 
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Odds",
@@ -715,6 +715,7 @@
 	"lbl_Deposit_DragonPayPop_OrderNumber": "Nomor pesanan",
 	"lbl_AutoDeposit": "Deposit Otomatis",
 	"lbl_ScanQR": "Pindai QR",
+	"lbl_DepositOptions": "Pilihan Deposit",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "Rincian Pembayaran",
@@ -754,7 +755,7 @@
 	"lbl_EWallet": "Dompet Elektronik",
 	"lbl_AddEWallet": "Tambahkan E-Wallet",
 	"lbl_EWallet_Hint": "Perhatian: Akun E-Wallet harus diverifikasi.",
-  "lbl_EWalletAccountNumber": "Nomer Akun E-wallet",
+	"lbl_EWalletAccountNumber": "Nomer Akun E-wallet",
 	"==============Crypto Wallet==============": "",
 	"lbl_CryptoPay": "Crypto",
 	"lbl_CryptoWallet": "Dompet Crypto",

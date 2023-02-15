@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { useNavigate } from "@reach/router";
-import PropTypes from "prop-types";
 import moment from "moment";
 import {
 	i18nContext,
@@ -32,81 +31,13 @@ import { number_format, isConvert } from "../common/common";
 import ImportantNote from "./importantNote";
 import { useGetDomainList } from "../hook/useGetDomainList";
 import { useGetDepositPromotionList } from "./promoList";
-
-const defPayType = {
-	onlineBank: "onlineBank",
-	localBank: "localBank",
-	mobilePay: "mobilePay",
-	loadCardPay: "loadCardPay",
-	cryptoPay: "cryptoPay",
-	qrPay: "qrPay"
-};
-
-const defPayment = {
-	[defPayType.localBank]: {
-		displayKey: "lbl_WireTransfers",
-		creditTimeKey: "lbl_5mins"
-	},
-	[defPayType.mobilePay]: {
-		displayKey: "lbl_MobileDeposit",
-		creditTimeKey: "lbl_Instant"
-	},
-	[defPayType.onlineBank]: {
-		displayKey: "lbl_OnlineBanking",
-		creditTimeKey: "lbl_Instant"
-	},
-	[defPayType.loadCardPay]: {
-		displayKey: "lbl_TopUpCard",
-		creditTimeKey: "lbl_Instant"
-	},
-	[defPayType.cryptoPay]: {
-		displayKey: "lbl_CryptoPay",
-		creditTimeKey: "lbl_Instant"
-	},
-	[defPayType.qrPay]: {
-		displayKey: "lbl_QRPay",
-		creditTimeKey: "lbl_Instant"
-	}
-};
-
-const useHandleSelect = defaultSelect => {
-	const [selected, setSelected] = useState(defaultSelect ?? "");
-
-	const HandleSelect = value => {
-		setSelected(value);
-	};
-
-	return { selected, HandleSelect };
-};
-
-const Tab = ({ i18n, selected, HandleSelect, paymentList }) => {
-	const rows = Object.keys(defPayment)
-		.filter(key => paymentList[key]?.length > 0)
-		.map(key => {
-			const pay = defPayment[key];
-			return (
-				<div
-					key={`deposit-full-${pay.displayKey}`}
-					className={selected === key ? "open" : ""}
-					onClick={HandleSelect.bind(this, key)}>
-					{i18n[pay.displayKey]}
-				</div>
-			);
-		});
-
-	return <div className="switchTag">{rows}</div>;
-};
-
-Tab.propTypes = {
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	selected: PropTypes.string.isRequired,
-	HandleSelect: PropTypes.func.isRequired,
-	paymentList: PropTypes.objectOf(PropTypes.any).isRequired
-};
+import { defPayType } from "./deposit.def";
+import Options from "./deposit.options";
+import { useHandleSelect } from "./hook/useHandleSelect";
 
 const Panel = () => {
 	const navigate = useNavigate();
-	const { selected, HandleSelect } = useHandleSelect();
+	const { selectedOption, handleSelect } = useHandleSelect();
 	const { i18n } = useContext(i18nContext);
 	const { setLoading } = useContext(loadingContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -168,57 +99,51 @@ const Panel = () => {
 	let content = (
 		<MobilePay
 			payType={defPayType.mobilePay}
-			creditTimeKey={defPayment[defPayType.mobilePay].creditTimeKey}
 			paymentList={paymentList[defPayType.mobilePay] ?? []}
 			promoList={promoList}
 			checkDepositSpecialCode={checkDepositSpecialCode}
 		/>
 	);
 
-	if (selected === defPayType.localBank) {
+	if (selectedOption === defPayType.localBank) {
 		content = (
 			<LocalBank
-				payType={selected}
-				creditTimeKey={defPayment[defPayType.localBank].creditTimeKey}
+				payType={selectedOption}
 				paymentList={paymentList[defPayType.localBank] ?? []}
 				promoList={promoList}
 				checkDepositSpecialCode={checkDepositSpecialCode}
 			/>
 		);
-	} else if (selected === defPayType.onlineBank) {
+	} else if (selectedOption === defPayType.onlineBank) {
 		content = (
 			<OnlineBanking
-				payType={selected}
-				creditTimeKey={defPayment[defPayType.onlineBank].creditTimeKey}
+				payType={selectedOption}
 				paymentList={paymentList[defPayType.onlineBank] ?? []}
 				promoList={promoList}
 				checkDepositSpecialCode={checkDepositSpecialCode}
 			/>
 		);
-	} else if (selected === defPayType.loadCardPay) {
+	} else if (selectedOption === defPayType.loadCardPay) {
 		content = (
 			<LoadCardPay
-				payType={selected}
-				creditTimeKey={defPayment[defPayType.loadCardPay].creditTimeKey}
+				payType={selectedOption}
 				paymentList={paymentList[defPayType.loadCardPay] ?? []}
 				promoList={promoList}
 				checkDepositSpecialCode={checkDepositSpecialCode}
 			/>
 		);
-	} else if (selected === defPayType.cryptoPay) {
+	} else if (selectedOption === defPayType.cryptoPay) {
 		content = (
 			<CryptoPay
-				payType={selected}
-				creditTimeKey={defPayment[defPayType.cryptoPay].creditTimeKey}
+				payType={selectedOption}
 				paymentList={paymentList[defPayType.cryptoPay] ?? []}
 				promoList={promoList}
 				checkDepositSpecialCode={checkDepositSpecialCode}
 			/>
 		);
-	} else if (selected === defPayType.qrPay) {
+	} else if (selectedOption === defPayType.qrPay) {
 		content = (
 			<QRPay
-				creditTimeKey={defPayment[defPayType.qrPay].creditTimeKey}
 				paymentList={paymentList[defPayType.qrPay] ?? []}
 				promoList={promoList}
 				checkDepositSpecialCode={checkDepositSpecialCode}
@@ -320,7 +245,7 @@ const Panel = () => {
 				if (isMountedRef.current) {
 					setLoading(false);
 					setPaymentList(payments);
-					HandleSelect(defaultSelect);
+					handleSelect(defaultSelect);
 				}
 			};
 
@@ -477,13 +402,15 @@ const Panel = () => {
 	};
 	return (
 		<>
-			<Tab
-				i18n={i18n}
-				selected={selected}
-				HandleSelect={HandleSelect}
-				paymentList={paymentList}
-			/>
-			{content}
+			<div className="depositModule_mobile open">
+				<Options
+					i18n={i18n}
+					selectedOption={selectedOption}
+					handleSelect={handleSelect}
+					paymentList={paymentList}
+				/>
+				{content}
+			</div>
 			<RecentDatas
 				Datas={recentDatas}
 				SubmitProof={SubmitProof}

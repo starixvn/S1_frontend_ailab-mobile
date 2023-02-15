@@ -721,6 +721,7 @@
 	"lbl_QRCode": "Kod QR",
 	"lbl_DuitNowQRNote1": "Sila hubungi CSD jika pembayaran tidak ditunjukkan dalam dompet anda selepas pemindahan.",
 	"lbl_DuitNowQRNote2": "Tutup tab selepas pemindahan.",
+	"lbl_DepositOptions": "Pilihan Deposit",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "Butiran pembayaran",

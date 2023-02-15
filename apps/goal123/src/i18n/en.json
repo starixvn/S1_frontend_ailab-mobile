@@ -542,7 +542,8 @@
 	"Skywind_Ocean_Ruler": "Ocean Ruler",
 	"Skywind_Cai_Shen_Da_Hai": "Cai Shen Da Hai",
 	"GPI_VNLottery": "VN Lottery",
-  "lbl_OK": "OK",
+	"lbl_OK": "OK",
+	"lbl_DepositOptions": "Deposit Options",
 
 	"==============General==============": "",
 	"lbl_Jackpot": "Jackpot",

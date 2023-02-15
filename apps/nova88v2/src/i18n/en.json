@@ -737,6 +737,7 @@
 	"lbl_QRCode": "QRCode",
 	"lbl_DuitNowQRNote1": "Please contact CSD if payment did not reflect in your wallet after the transfer.",
 	"lbl_DuitNowQRNote2": "Close the tab after the transfer.",
+	"lbl_DepositOptions": "Deposit Options",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "Payment Details",
@@ -774,7 +775,7 @@
 	"lbl_EWallet": "E-Wallet",
 	"lbl_AddEWallet": "Add E-Wallet",
 	"lbl_EWallet_Hint": "Please note: E-Wallet Account must be verified.",
-  "lbl_EWalletAccountNumber": "E-wallet Account Number",
+	"lbl_EWalletAccountNumber": "E-wallet Account Number",
 	"==============Crypto Wallet==============": "",
 	"lbl_CryptoPay": "Crypto",
 	"lbl_CryptoWallet": "Crypto Wallet",
