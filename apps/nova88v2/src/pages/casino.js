@@ -435,7 +435,7 @@ const Panel = ({ searchInput }) => {
 				<div className="slotpopup active">
 					<div className="slotFunction">
 						<img
-							src={`${imageUrl}/${selGameInfo.providerName}/${
+							src={`${imageUrl}/${selGameInfo.brandName}/${
 								selGameInfo.imgName[userInfo.langId] ??
 								selGameInfo.imgName.en
 							}`}
