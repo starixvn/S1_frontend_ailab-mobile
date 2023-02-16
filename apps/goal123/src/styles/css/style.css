@@ -1492,72 +1492,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   font-size: 4vw;
 }
 
-#popup.statuspop {
-  color: #5574a7;
-}
-
-#popup.statuspop .pop {
-  background: #eaf1ff;
-  border: 1px solid #284985;
-  padding: 0;
-  border-radius: 1vw;
-}
-
-#popup.statuspop .pop .statustitle {
-  font-size: 4.5vw;
-  padding: 2vw 9vw 2vw 4vw;
-  border-bottom: 1px solid #5574a7;
-  background: #284985;
-  color: white;
-  position: relative;
-}
-
-#popup.statuspop .pop .statustitle .close {
-  right: 2vw;
-  top: 2vw;
-}
-
-#popup.statuspop .pop .statuscontent {
-  padding: 0 3.5vw;
-  border-top: 0;
-}
-
-#popup.statuspop .pop .statuscontent > div {
-  border-bottom: 1px solid #c1cceb;
-}
-
-#popup.statuspop .pop .statuscontent > div .subtitle {
-  font-size: 4vw;
-}
-
-#popup.statuspop .pop .statuscontent > div > div {
-  font-size: 3.5vw;
-  margin-top: 3vw;
-  color: #052561;
-}
-
-#popup.statuspop .pop .statuscontent > div > div:last-child {
-  margin: 1vw 0 3vw;
-}
-
-#popup.statuspop .pop .statuscontent > div:last-child {
-  border-bottom: 0;
-}
-
-#popup.statuspop .pop .success {
-  background: #1e85ec;
-  padding: 2vw 10vw;
-  border-radius: 1vw;
-  margin: auto auto 5vw;
-  color: white;
-  display: block;
-}
-
-#popup.statuspop .pop .success::before {
-  content: "";
-  display: block;
-}
-
 .txt-red {
   color: #d83b35;
 }
@@ -6421,10 +6355,10 @@ span.important {
 }
 @media (max-width: 320px) {
   .depositModule_mobile .selectModule > div .bankName,
-.depositModule_online .selectModule > div .bankName,
-.depositModule_local .selectModule > div .bankName,
-.depositModule_topupMobile .selectModule > div .bankName,
-.depositModule_Crpyto .selectModule > div .bankName {
+  .depositModule_online .selectModule > div .bankName,
+  .depositModule_local .selectModule > div .bankName,
+  .depositModule_topupMobile .selectModule > div .bankName,
+  .depositModule_Crpyto .selectModule > div .bankName {
     height: 15vw;
   }
 }
@@ -6808,6 +6742,32 @@ span.important {
 .depositModule_topupMobile .title .text-org,
 .depositModule_Crpyto .title .text-org {
   color: #fab617;
+}
+.depositModule_mobile .dropdown,
+.depositModule_online .dropdown,
+.depositModule_local .dropdown,
+.depositModule_topupMobile .dropdown,
+.depositModule_Crpyto .dropdown {
+  padding: 1vw 2vw;
+}
+.depositModule_mobile input::-webkit-input-placeholder, .depositModule_online input::-webkit-input-placeholder, .depositModule_local input::-webkit-input-placeholder, .depositModule_topupMobile input::-webkit-input-placeholder, .depositModule_Crpyto input::-webkit-input-placeholder {
+  font-size: 4vw !important;
+}
+.depositModule_mobile input::-moz-placeholder, .depositModule_online input::-moz-placeholder, .depositModule_local input::-moz-placeholder, .depositModule_topupMobile input::-moz-placeholder, .depositModule_Crpyto input::-moz-placeholder {
+  font-size: 4vw !important;
+}
+.depositModule_mobile input:-ms-input-placeholder, .depositModule_online input:-ms-input-placeholder, .depositModule_local input:-ms-input-placeholder, .depositModule_topupMobile input:-ms-input-placeholder, .depositModule_Crpyto input:-ms-input-placeholder {
+  font-size: 4vw !important;
+}
+.depositModule_mobile input::-ms-input-placeholder, .depositModule_online input::-ms-input-placeholder, .depositModule_local input::-ms-input-placeholder, .depositModule_topupMobile input::-ms-input-placeholder, .depositModule_Crpyto input::-ms-input-placeholder {
+  font-size: 4vw !important;
+}
+.depositModule_mobile input::placeholder,
+.depositModule_online input::placeholder,
+.depositModule_local input::placeholder,
+.depositModule_topupMobile input::placeholder,
+.depositModule_Crpyto input::placeholder {
+  font-size: 4vw !important;
 }
 
 .switchTag {
