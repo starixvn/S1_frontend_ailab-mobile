@@ -1,12 +1,7 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import {
-	i18nContext,
-	userInfoContext,
-	popBoxContext,
-	loadingContext
-} from "../common/context";
-import config, { bannerImgUrl, paymentImgUrl } from "../../config";
+import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
+import config, { bannerImgUrl } from "../../config";
 import { isConvert, number_format, getWindowOpenUrl } from "../common/common";
 import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
@@ -27,7 +22,6 @@ const Payment = props => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
-	const { setLoading } = useContext(loadingContext);
 	const [selChannel, setSelChannel] = useState({});
 	const [cardData, setCardData] = useState({ cardCode: "", cardSerial: "" });
 	const [cardDataStatus, setCardDataStatus] = useState(initCardDataStatus);
@@ -64,7 +58,6 @@ const Payment = props => {
 	}, [paymentList.length]);
 
 	const SelectGroup = groupId => {
-		setLoading(true);
 		api_payment_GetLoadCardPayInfoList({ groupId }).then(
 			res => {
 				if (isMountedRef.current) {
@@ -76,7 +69,6 @@ const Payment = props => {
 							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
-					setLoading(false);
 				}
 			},
 			() => {
@@ -85,7 +77,6 @@ const Payment = props => {
 						isOpen: true,
 						content: i18n.msg_ApiServerError
 					});
-					setLoading(false);
 				}
 			}
 		);
