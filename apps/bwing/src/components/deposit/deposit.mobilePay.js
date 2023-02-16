@@ -1,11 +1,6 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import {
-	i18nContext,
-	userInfoContext,
-	popBoxContext,
-	loadingContext
-} from "../common/context";
+import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import config from "../../config";
 import { isConvert, number_format, getWindowOpenUrl } from "../common/common";
 import GroupList from "./deposit.groupList";
@@ -22,7 +17,6 @@ const Payment = props => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
-	const { setLoading } = useContext(loadingContext);
 
 	const [selGroupId, setSelGroupId] = useState(null);
 	const [selChannel, setChannel] = useState({});
@@ -73,7 +67,6 @@ const Payment = props => {
 	const SelectPayment = groupId => {
 		if (selGroupId !== groupId) {
 			setSelGroupId(() => groupId);
-			setLoading(true);
 			api_GetMobilePayInfoList(groupId).then(
 				res => {
 					if (isMountedRef.current) {
@@ -86,7 +79,6 @@ const Payment = props => {
 								content: `[${res.data.errorCode}] ${res.data.message}`
 							});
 						}
-						setLoading(false);
 					}
 				},
 				() => {
@@ -95,7 +87,6 @@ const Payment = props => {
 							isOpen: true,
 							content: i18n.msg_ApiServerError
 						});
-						setLoading(false);
 					}
 				}
 			);
