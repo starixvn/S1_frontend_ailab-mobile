@@ -89,7 +89,6 @@ const Payment = props => {
 	}, [paymentList.length]);
 
 	const SelectBank = bankInfo => {
-		setLoading(true);
 		api_payment_GetLocalBankInfo({ sysId: bankInfo.sysId }).then(
 			res => {
 				if (isMountedRef.current) {
@@ -102,7 +101,6 @@ const Payment = props => {
 							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
-					setLoading(false);
 				}
 			},
 			() => {
@@ -111,7 +109,6 @@ const Payment = props => {
 						isOpen: true,
 						content: i18n.msg_ApiServerError
 					});
-					setLoading(false);
 				}
 			}
 		);
