@@ -36,5 +36,5 @@ export const eventTime = {
 	casino_SimplePlay: { endDate: "2022/11/13 11:00:00" },
 	GPI_Lottery: { endDate: "2023/02/11 11:00:00" },
 	sports_cryptoSports: { endDate: "2023/02/04 11:00:00" },
-	yee_bet: { start: "2023/02/10 12:00:00" }
+	yee_bet: { startDate: "2023/02/10 12:00:00" }
 };
