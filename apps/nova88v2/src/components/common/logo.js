@@ -4,7 +4,7 @@ import { cloudBannerImgURL } from "../../config";
 
 const getLogo = ({ langId }) =>
 	`${cloudBannerImgURL}/h5/img/${
-		langId === "cs" ? "logo_cs_w" : "logo_en_w"
+		langId === "cs" ? "logo_cs" : "logo_en"
 	}.png`;
 
 const Logo = ({ langId }) => {
