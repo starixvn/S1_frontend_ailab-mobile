@@ -118,7 +118,7 @@
 	"lbl_TermsAndConditions": "syarat & ketentuan",
 	"msg_EnterRealName": "Silakan masukkan nama asli anda",
 	"lbl_RealName": "Nama asli",
-	"msg_MailWrongFormat": "Format Email salah",
+	"msg_MailWrongFormat": "Format alamat email salah",
 	"msg_PasswordVaildate": "Kata sandi harus 6-15 karakter, mengandung alfanumerik.",
 	"lbl_Phone": "No HP",
 	"lbl_Submit": "Ajukan",

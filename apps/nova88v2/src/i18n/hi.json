@@ -118,7 +118,7 @@
 	"lbl_TermsAndConditions": "नियम और शर्तें",
 	"msg_EnterRealName": "कृपया अपना वास्तविक नाम दर्ज करें।",
 	"lbl_RealName": "वास्तविक नाम",
-	"msg_MailWrongFormat": "मेल फॉर्मेट गलत है।",
+	"msg_MailWrongFormat": "ईमेल पता प्रारूप गलत है",
 	"msg_PasswordVaildate": "पासवर्ड 6-15 वर्णों का होना चाहिए, जिसमें अल्फ़ान्यूमेरिक होना चाहिए।",
 	"lbl_Phone": "फ़ोन नंबर",
 	"lbl_Submit": "प्रस्तुत",
