@@ -2,16 +2,16 @@
 # 從 UI設計同仁的 Design Project 更新 css 至指定品牌的專案
 
 # 配置到當前路徑，組員在這邊需更改為自己專案的路徑
-DESIGN_PROJECT=/Users/lukelin/Project/Design
-PROJECT=/Users/lukelin/Project/ailab-mobile
+DESIGN_PROJECT=/Users/yufu/Design
+PROJECT=/Users/yufu/ailab-mobile/
 
 # 目前既有品牌
 SITE_LIST=(NOVA88 GOAL123 BWING)
- 
+
 
 # READ
 echo "選擇品牌"
-for i in ${SITE_LIST[@]} 
+for i in ${SITE_LIST[@]}
 do
   echo "$i \c"
 done
@@ -29,10 +29,10 @@ if [ $site = "NOVA88" ] || [ $site = "nova88" ]
 then
     projectPath="${PROJECT}/apps/nova88v2/src/styles/css"
 fi
-    cp -R ${designPath} ${projectPath}        
+    cp -R ${designPath} ${projectPath}
 done
 
-# -- 
+# --
 
 
 
