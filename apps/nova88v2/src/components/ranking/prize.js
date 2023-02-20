@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { defPrize } from "./def";
 import { GET_LANG_ID } from "../../service/language";
 import { GetCurrencyName } from "../common/common";
-import { cloudImgURL, siteInfo } from "../../config";
+import { cloudBannerImgURL, siteInfo } from "../../config";
 
 export const Prize = ({ currencyId, langId, i18n }) => {
 	const currency = GetCurrencyName({ langId, currencyId, i18n });
@@ -27,9 +27,9 @@ const PrizeList = ({ userInfo, i18n }) => {
 
 		let trophy = "";
 		if (index > 2) {
-			trophy = `${cloudImgURL}/SiteSkin/img/gold.png`;
+			trophy = `${cloudBannerImgURL}/h5/img/ranking/gold.png`;
 		} else {
-			trophy = `${cloudImgURL}/SiteSkin/img/no${index + 1}.png`;
+			trophy = `${cloudBannerImgURL}/h5/img/ranking/no${index + 1}.png`;
 		}
 
 		return (

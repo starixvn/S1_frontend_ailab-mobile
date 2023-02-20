@@ -122,6 +122,7 @@ const HotGame = ({ i18n, userInfo }) => {
 						</div>
 					</div>
 				</div>
+				g
 				<div className="btn-group">
 					<button
 						onClick={clickGame.bind(this, {

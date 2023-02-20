@@ -15,7 +15,7 @@ import {
 	bankSlipPopBoxContext,
 	loadingContext
 } from "../common/context";
-import config from "../../config";
+import { paymentImgUrl } from "../../config";
 import { isConvert, number_format } from "../common/common";
 import AmountInput from "./deposit.amountInput";
 import { useHandleAmount } from "./hook/useHandleAmount";
@@ -306,9 +306,7 @@ const Payment = props => {
 						<>
 							<p>{i18n.lbl_ConfirmDeposit}</p>
 							<img
-								src={`${
-									config.imgUrl
-								}/common/images/BankLogo/${selBank.bankLogo?.toLowerCase()}`}
+								src={`${paymentImgUrl}/${selBank.bankLogo?.toLowerCase()}`}
 								alt={selBank.bankName}
 							/>
 							<div className="tip">
@@ -469,7 +467,7 @@ const Payment = props => {
 				imgKey="bankLogo"
 				idKey="sysId"
 				bindFullObj={true}
-				prefixImgUrl={`${config.imgUrl}/common/images/BankLogo/`}
+				prefixImgUrl={`${paymentImgUrl}/`}
 				imgKeyWithExtension={true}
 				accountInfo={accountInfo}
 				i18n={i18n}

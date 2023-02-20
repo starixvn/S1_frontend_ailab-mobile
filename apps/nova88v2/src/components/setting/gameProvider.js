@@ -3,7 +3,7 @@ import path from "../../path";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import { defGameInfo } from "../../datas/productList";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
-import { cloudImgURL } from "../../config";
+import { cloudBannerImgURL } from "../../config";
 import Header from "../header/header";
 import { Link } from "../../route/link";
 import api from "../../service/api";
@@ -264,7 +264,7 @@ const GameProvider = ({ userInfo, i18n }) => {
 					to={`${p.path}/${p.tpId}`}
 					state={{ tpId: p.tpId, gameId: p.gameId }}>
 					<img
-						src={`${cloudImgURL}/SiteSkin/img/logo/${p.imgName}.png`}
+						src={`${cloudBannerImgURL}/h5/img/venderlogo/${p.imgName}.png`}
 						alt={p.imgName}
 					/>
 				</Link>
@@ -278,7 +278,7 @@ const GameProvider = ({ userInfo, i18n }) => {
 						tpGameType: p.tpGameType
 					})}>
 					<img
-						src={`${cloudImgURL}/SiteSkin/img/logo/${p.imgName}.png`}
+						src={`${cloudBannerImgURL}/h5/img/venderlogo/${p.imgName}.png`}
 						alt={p.imgName}
 					/>
 				</button>

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, useContext } from "react";
 import { api_SetCustBankInfo } from "../../service/api/accountStrict";
 import { popBoxContext } from "../common/context";
-import config from "../../config";
+import { paymentImgUrl } from "../../config";
 import { defStep } from "./bankInfo.step";
 import Inputbox from "../common/inputbox.info";
 
@@ -165,9 +165,7 @@ export default ({
 			<div className="img3Box" key={`addBankAccount-${item.sysId}`}>
 				<img
 					onClick={selectBank.bind(this, i)}
-					src={`${
-						config.imgUrl
-					}/common/images/BankLogo/${item.bankLogo?.toLowerCase()}`}
+					src={`${paymentImgUrl}/${item.bankLogo?.toLowerCase()}`}
 					alt={item.bankName}
 				/>
 			</div>
@@ -211,9 +209,7 @@ export default ({
 						<div className="img3Box">
 							<img
 								alt="BankLogo"
-								src={`${
-									config.imgUrl
-								}/common/images/BankLogo/${siteBankList[
+								src={`${paymentImgUrl}/${siteBankList[
 									bankSelectedIdx
 								]?.bankLogo?.toLowerCase()}`}
 							/>

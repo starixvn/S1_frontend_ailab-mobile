@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import moment from "moment";
 import { userInfoContext } from "../common/context";
 import { number_format } from "../common/common";
-import { cloudImgURL } from "../../config";
+import { cloudBannerImgURL } from "../../config";
 
 const RankItem = ({
 	Ranking,
@@ -30,9 +30,9 @@ const RankItem = ({
 		if (Ranking === 3) rankString = i18n.lbl_4th;
 	}
 	if (Ranking > 2) {
-		trophy = `${cloudImgURL}/SiteSkin/img/gold.png`;
+		trophy = `${cloudBannerImgURL}/h5/img/ranking/gold.png`;
 	} else {
-		trophy = `${cloudImgURL}/SiteSkin/img/no${Ranking + 1}.png`;
+		trophy = `${cloudBannerImgURL}/h5/img/ranking/no${Ranking + 1}.png`;
 	}
 	let _status = "icon icon-minus";
 	if (status === -1) _status = "icon icon-arrow_drop_down";

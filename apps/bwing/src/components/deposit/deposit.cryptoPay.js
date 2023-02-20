@@ -10,7 +10,7 @@ import {
 import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
 import PageVerify from "./deposit.pageVerify";
-import config, { usdtImgUrl } from "../../config";
+import config, { paymentImgUrl } from "../../config";
 import { isConvert, number_format } from "../common/common";
 import { useHandleAmount } from "./hook/useHandleAmount";
 import { api_depositReqCryptoPay } from "../../service/api/cashier";
@@ -232,7 +232,7 @@ const Main = props => {
 
 							<img
 								className="bankimg"
-								src={`${usdtImgUrl}/${selChannel.channelName?.toLowerCase()}.png`}
+								src={`${paymentImgUrl}/${selChannel.channelName?.toLowerCase()}.png`}
 								alt={selChannel.channelName}
 							/>
 							<div>
@@ -356,7 +356,7 @@ const Main = props => {
 				mainKey="deposit-full-cryptoPay-groupList"
 				imgKey="payName"
 				idKey="groupId"
-				prefixImgUrl={`${usdtImgUrl}/`}
+				prefixImgUrl={`${paymentImgUrl}/`}
 				i18n={i18n}
 				displayKey="payName"
 				_isConvert={_isConvert}
@@ -375,7 +375,7 @@ const Main = props => {
 				imgKey="channelName"
 				idKey="channelId"
 				i18n={i18n}
-				prefixImgUrl={`${usdtImgUrl}/`}
+				prefixImgUrl={`${paymentImgUrl}/`}
 				displayKey="channelName"
 				_isConvert={_isConvert}
 				showMinMaxHint={true}

@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { cloudImgURL } from "../../config";
+import { cloudBannerImgURL } from "../../config";
 
 const getLogo = ({ langId }) =>
-	`${cloudImgURL}/SiteSkin/img/${
-		langId === "cs" ? "logo_cs_w" : "logo_en_w"
+	`${cloudBannerImgURL}/h5/img/${
+		langId === "cs" ? "logo_cs" : "logo_en"
 	}.png`;
 
 const Logo = ({ langId }) => {

@@ -36,7 +36,10 @@ const Prize = ({ matches, event, clickMatchType, i18n }) => {
 				)}
 			</div>
 			<div className="group-tab">
-				<img src={`${bannerImgUrl}/img/worldcup/h5soccer.png`} alt="" />
+				<img
+					src={`${bannerImgUrl}/h5/img/worldcup/h5soccer.png`}
+					alt=""
+				/>
 				<button
 					className={matches === matchType.groups ? "active" : ""}
 					onClick={clickMatchType.bind(this, matchType.groups)}>

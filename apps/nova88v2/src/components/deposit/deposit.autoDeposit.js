@@ -6,7 +6,7 @@ import {
 	popBoxContext,
 	loadingContext
 } from "../common/context";
-import config, { cloudImgURL } from "../../config";
+import config, { paymentImgURL } from "../../config";
 import { isConvert, number_format } from "../common/common";
 import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
@@ -146,7 +146,7 @@ const Payment = props => {
 						<p>{i18n.lbl_ConfirmDeposit}</p>
 						<img
 							className="bankimg"
-							src={`${cloudImgURL}/SiteSkin/img/BankLogo/${bankLogo?.toLowerCase()}`}
+							src={`${paymentImgURL}/square/${bankLogo?.toLowerCase()}`}
 							alt={bankName}
 						/>
 						<div>
@@ -194,7 +194,7 @@ const Payment = props => {
 				imgKey="bankLogo"
 				idKey="sysId"
 				bindFullObj={true}
-				prefixImgUrl={`${cloudImgURL}/SiteSkin/img/BankLogo/`}
+				prefixImgUrl={`${paymentImgURL}/square/`}
 				imgKeyWithExtension={true}
 				displayKey="bankName"
 				_isConvert={_isConvert}

@@ -125,7 +125,7 @@ const License = ({ i18n }) => {
 						<div>
 							{i18n.lbl_Gaming_License}
 							<img
-								src={`${cloudBannerImgURL}/h5/img/homepage/license_tick.png`}
+								src={`${cloudBannerImgURL}/h5/img/license_tick.png`}
 								alt="vaild gaming license"
 							/>
 						</div>

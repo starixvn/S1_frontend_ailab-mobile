@@ -8,7 +8,7 @@ import {
 	defGroupsData,
 	defMatchTime
 } from "./fixture.matches.def";
-import { bannerImgUrl } from "../../config";
+import { sportsImgUrl } from "../../config";
 
 const Matches = ({ matches, prediction, event, selectEvent, i18n, langId }) => {
 	const knockoutsTab = Object.values(knockoutsEvent).map(el => (
@@ -123,7 +123,7 @@ const Matches = ({ matches, prediction, event, selectEvent, i18n, langId }) => {
 								<div className="team left">
 									{targetMatch?.[0]?.countryName}
 									<img
-										src={`${bannerImgUrl}/img/flag/${
+										src={`${sportsImgUrl}/Country Flag/${
 											targetMatch?.[0].imageName ??
 											"na.jpg"
 										}`}
@@ -137,7 +137,7 @@ const Matches = ({ matches, prediction, event, selectEvent, i18n, langId }) => {
 								<div className="team right">
 									{targetMatch?.[1]?.countryName}
 									<img
-										src={`${bannerImgUrl}/img/flag/${
+										src={`${sportsImgUrl}/Country Flag/${
 											targetMatch?.[1]?.imageName ??
 											"na.jpg"
 										}`}
@@ -167,7 +167,7 @@ const Matches = ({ matches, prediction, event, selectEvent, i18n, langId }) => {
 								<div className="team left">
 									{el.teamA[_name]}
 									<img
-										src={`${bannerImgUrl}/img/flag/${el.teamA.imgName}`}
+										src={`${sportsImgUrl}/Country Flag/${el.teamA.imgName}`}
 										alt={el.teamA.imgName}
 									/>
 								</div>
@@ -177,7 +177,7 @@ const Matches = ({ matches, prediction, event, selectEvent, i18n, langId }) => {
 								<div className="team right">
 									{el.teamB[_name]}
 									<img
-										src={`${bannerImgUrl}/img/flag/${el.teamB.imgName}`}
+										src={`${sportsImgUrl}/Country Flag/${el.teamB.imgName}`}
 										alt={el.teamB.imgName}
 									/>
 								</div>

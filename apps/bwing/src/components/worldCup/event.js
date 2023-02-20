@@ -56,7 +56,7 @@ const Event = () => {
 		<>
 			<img
 				className="topwire"
-				src={`${bannerImgUrl}/img/worldcup/topwire.png`}
+				src={`${bannerImgUrl}/h5/img/worldcup/topwire.png`}
 				alt=""
 			/>
 			{userInfo.isLogin && (
