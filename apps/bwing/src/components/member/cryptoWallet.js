@@ -3,7 +3,7 @@ import { useNavigate } from "@reach/router";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import { defPopBoxType } from "../common/popbox";
 import path from "../../path";
-import { api_DelCustUSDTInfo } from "../../service/api/accountStrict";
+import { api_DelCustCryptoWallet } from "../../service/api/accountStrict";
 import { api_GetCustBankInfo } from "../../service/api/account";
 import { defLevelList } from "../vip/def";
 
@@ -59,12 +59,7 @@ const CryptoWallet = () => {
 		);
 	};
 
-	const delUSDTwallet = ({
-		USDTAddress,
-		NickName,
-		AccountName,
-		CurrencyId
-	}) => {
+	const delUSDTwallet = ({ currencyId, network, address, nickName }) => {
 		setPopBox({
 			isOpen: true,
 			title: i18n.lbl_ImportantNote,
@@ -76,10 +71,10 @@ const CryptoWallet = () => {
 						className="Cancel"
 						onClick={() =>
 							removeAccount({
-								USDTAddress,
-								NickName,
-								AccountName,
-								CurrencyId
+								currencyId,
+								network,
+								address,
+								nickName
 							})
 						}>
 						{i18n.lbl_Yes}
@@ -94,13 +89,8 @@ const CryptoWallet = () => {
 		});
 	};
 
-	const removeAccount = ({
-		USDTAddress,
-		NickName,
-		AccountName,
-		CurrencyId
-	}) => {
-		api_DelCustUSDTInfo({ USDTAddress, NickName, AccountName, CurrencyId })
+	const removeAccount = ({ currencyId, network, address, nickName }) => {
+		api_DelCustCryptoWallet({ currencyId, network, address, nickName })
 			.then(res => {
 				if (res.data.errorCode === 0) {
 					GetCustBankInfo();
@@ -172,10 +162,10 @@ const CryptoWallet = () => {
 				{/* <button
 					onClick={() =>
 						delUSDTwallet({
-							USDTAddress: item.usdtAddress,
-							NickName: item.nickName,
-							AccountName: userInfo.accountName,
-							CurrencyId: item.currencyId
+							address: item.usdtAddress,
+							nickName: item.nickName,
+							currencyId: item.currencyId,
+							network: item.network
 						})
 					}
 					className="icon icon-bin clickBtn"
