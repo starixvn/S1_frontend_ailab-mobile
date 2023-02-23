@@ -34,6 +34,7 @@ const RecentDatas = props => {
 						d.amount,
 						d.transId,
 						d.picFileName,
+						d.depositReceipt,
 						d.refId
 					)}
 					ClickCancel={props.ClickCancel.bind(this, d.transId)}

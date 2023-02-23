@@ -1,4 +1,10 @@
-import React, { useContext, Component, useEffect, useRef } from "react";
+import React, {
+	useContext,
+	Component,
+	useEffect,
+	useRef,
+	useState
+} from "react";
 import PropTypes from "prop-types";
 import {
 	bankSlipPopBoxContext,
@@ -6,29 +12,12 @@ import {
 	popBoxContext,
 	userInfoContext
 } from "Context";
-import moment from "moment";
 import ClipboardJS from "../../lib/clipboard.min";
 import api from "../../service/api";
-
-const GetUploadFileName = files => {
-	const fullPath = files[0].name;
-	const startIndex =
-		fullPath.indexOf("\\") >= 0
-			? fullPath.lastIndexOf("\\")
-			: fullPath.lastIndexOf("/");
-	let filename = fullPath.substring(startIndex);
-	if (filename.indexOf("\\") === 0 || filename.indexOf("/") === 0) {
-		filename = filename.substring(1);
-	}
-	return filename;
-};
 
 class Modal extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			processing: false
-		};
 		this.isMountedRef = false;
 		this.filebox = React.createRef();
 	}
@@ -47,13 +36,28 @@ class Modal extends Component {
 		this._clipboard.destroy();
 	}
 
-	onCheckUpload = () => {
-		const { files } = this.filebox.current;
-		if (files[0]) {
-			const picFileName = GetUploadFileName(files);
-			this.props.EditField("picFileName", GetUploadFileName(files));
-			if (this.props.bankSlipPopBox.hideSubmit)
-				this.props.SetImg(picFileName, files[0]);
+	onImgFileReaderHandlar = imgFile => {
+		const imgReader = new FileReader();
+		imgReader.readAsDataURL(imgFile);
+		imgReader.onload = () => {
+			this.props.SetImg(imgFile.name, imgReader.result);
+		};
+	};
+
+	onCheckUpload = e => {
+		e.preventDefault();
+
+		const file =
+			e.dataTransfer?.files.length > 0
+				? e.dataTransfer?.files[0]
+				: e.target.files[0];
+
+		const isValid = file?.type.includes("image");
+
+		if (!isValid) {
+			this.props.SetImg("", null);
+		} else {
+			this.onImgFileReaderHandlar(file);
 		}
 	};
 
@@ -102,43 +106,12 @@ class Modal extends Component {
 
 	SeReceipt = () => {
 		if (this.props.bankSlipPopBox.hideSubmit) {
+			const { files } = this.filebox.current;
 			this.props.closePopBoxAndKeepData();
-		} else if (!this.state.processing) {
-			this.setState({ processing: true });
-			const { bankSlipPopBox } = this.props;
-			api.payment
-				.SetDepositReceipt(
-					bankSlipPopBox.transId,
-					moment(bankSlipPopBox.depositTime).unix(),
-					bankSlipPopBox.refId
-				)
-				.then(
-					res => {
-						if (this.isMountedRef) {
-							if (res.data.errorCode === 0) {
-								this.props.handlePopBox();
-								window.location.reload();
-							} else {
-								this.props.setPopBox({
-									isOpen: true,
-									content: `[${res.data.errorCode}] ${res.data.message}`
-								});
-							}
-
-							this.setState({ processing: false });
-						}
-					},
-					() => {
-						if (this.isMountedRef) {
-							this.props.setPopBox({
-								isOpen: true,
-								content: this.props.i18n.msg_ApiServerError
-							});
-
-							this.setState({ processing: false });
-						}
-					}
-				);
+			this.props.setbankSlipPopBox(prevState => ({
+				...prevState,
+				receipt: files[0]
+			}));
 		}
 	};
 
@@ -210,53 +183,77 @@ class Modal extends Component {
 						</ul>
 					</div>
 					<span className="text">{i18n.lbl_AttachFile}</span>
-					<div className="btn-group">
-						<label className="fileUpload">
+					{this.props.receiptInfoList?.length > 0 ? (
+						<div className="uploadModule">
+							{this.props.receiptInfoList.length < 6 && (
+								<label
+									className="upload_img"
+									onDragOver={e => e.preventDefault()}
+									onDrop={this.onCheckUpload}>
+									<input
+										type="file"
+										ref={this.filebox}
+										accept="image/*"
+										onChange={this.onCheckUpload}
+									/>
+									{this.props.bankSlipPopBox.picFileName ? (
+										<img
+											alt={
+												this.props.bankSlipPopBox
+													.picFileName
+											}
+											src={
+												this.props.bankSlipPopBox
+													.receipt
+											}
+										/>
+									) : (
+										<i className="icon icon-plus" />
+									)}
+								</label>
+							)}
+							{this.props.receiptInfoList.map(
+								({ receiptNo, depositPic }) => (
+									<label
+										key={receiptNo}
+										className="upload_img">
+										<input type="file" />
+										<img
+											src={`data:image/jpeg;base64,${depositPic}`}
+											alt=""
+										/>
+									</label>
+								)
+							)}
+						</div>
+					) : (
+						<label
+							className="upload_img"
+							onDragOver={e => e.preventDefault()}
+							onDrop={this.onCheckUpload}>
 							<input
 								type="file"
 								ref={this.filebox}
 								accept="image/*"
 								onChange={this.onCheckUpload}
 							/>
-							<i className="icon icon-folder-upload" />
-							{` ${
-								this.props.bankSlipPopBox.picFileName ??
-								i18n.msg_SelectFile
-							} `}
+							{this.props.bankSlipPopBox.picFileName ? (
+								<img
+									alt={this.props.bankSlipPopBox.picFileName}
+									src={this.props.bankSlipPopBox.receipt}
+								/>
+							) : (
+								<i className="icon icon-plus" />
+							)}
 						</label>
-						{/* {!bankSlipPopBox.hideSubmit && (
-							<button
-								className="orange"
-								onClick={this.onUploadFile}>
-								{i18n.lbl_UploadFile}
-							</button>
-						)} */}
+					)}
+					<div className="rule">
+						<ul>
+							<li>{i18n.lbl_MaximumFileSizeEach}</li>
+							<li>{i18n.lbl_MaximumNumberOfFiles}</li>
+							<li>{i18n.lbl_AcceptedFileType}</li>
+						</ul>
 					</div>
-					{/* <span className="text">
-						{i18n.lbl_DepositTime}{" "}
-						<span className="text-org">
-							({moment().format("Z")})
-						</span>
-					</span>
-					<div className="inputBox">
-						<i className="icon icon-calendar" />
-						<input
-							placeholder={i18n.msg_SubmitDepositTime}
-							type="datetime-local"
-							value={this.props.bankSlipPopBox.depositTime ?? ""}
-							onChange={this.EditField.bind(this, "depositTime")}
-						/>
-					</div> */}
-					{/* {this.props.currencyId === 4 ? null : (
-						<div className="inputBox">
-							<i className="icon icon-pencil" />
-							<input
-								placeholder={i18n.msg_ReferenceNumber}
-								value={this.props.bankSlipPopBox.refId ?? ""}
-								onChange={this.EditField.bind(this, "refId")}
-							/>
-						</div>
-					)} */}
 					<div className="btn-group">
 						<button
 							className="white closePopup"
@@ -306,7 +303,24 @@ const Panel = () => {
 	const { bankSlipPopBox, setbankSlipPopBox } = useContext(
 		bankSlipPopBoxContext
 	);
+	const [receiptInfoList, setReceiptInfoList] = useState([]);
 	const isMountedRef = useRef(null);
+	useEffect(() => {
+		if (bankSlipPopBox.isOpen) {
+			api.payment.GetDepositInfoRecent().then(res => {
+				const recentDataList = res.data.data;
+				const target = recentDataList.find(
+					({ transId }) => transId === bankSlipPopBox.transId
+				);
+				setbankSlipPopBox(prev => ({
+					...prev,
+					receiptInfo: target?.depositReceipt
+				}));
+				setReceiptInfoList(target?.depositReceipt);
+			});
+		}
+	}, [bankSlipPopBox.isOpen]);
+
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => {
@@ -340,12 +354,13 @@ const Panel = () => {
 			receipt
 		}));
 	};
-
 	return (
 		<Modal
 			currencyId={userInfo.currencyId}
 			i18n={i18n}
 			bankSlipPopBox={bankSlipPopBox}
+			setbankSlipPopBox={setbankSlipPopBox}
+			receiptInfoList={receiptInfoList}
 			handlePopBox={handlePopBox}
 			EditField={EditField}
 			setPopBox={setPopBox}
