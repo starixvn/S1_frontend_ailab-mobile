@@ -375,6 +375,7 @@ const Payment = props => {
 				bindingItem={selGroup}
 				displayKey="bankName"
 				_isConvert={_isConvert}
+				i18n={i18n}
 			/>
 			<AmountInput
 				title={i18n.lbl_DepositAmount}
