@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 import ReCAPTCHA from "react-google-recaptcha";
 import areaCode from "../../datas/areaCode";
 import { popBoxContext } from "../common/context";
@@ -15,7 +16,12 @@ import { GetYear, GetDayOfMonth } from "../profile/profile.detail";
 import { monthOptions } from "../profile/profile.detail.def";
 import api from "../../service/api";
 import { GET_LANG_ID } from "../../service/language";
-import { initStatus, currencyToAreacode, reCaptchaEnum } from "./join.def";
+import {
+	initStatus,
+	currencyToAreacode,
+	reCaptchaEnum,
+	limitCountryNum
+} from "./join.def";
 import { Iov_GetBlackBox } from "../common/iovation";
 
 const areaCodeList = Object.values(areaCode).map(el => ({
@@ -40,6 +46,7 @@ const JoinStep2 = ({
 	recaptchaInfo
 }) => {
 	const { setPopBox } = useContext(popBoxContext);
+	const { t } = useTranslation();
 	const [siteCurrency, setSiteCurrencyState] = useState([]);
 	const [defaultOption, setDefaultOption] = useState(
 		i18n.lbl_PrefferedCurrency
@@ -205,7 +212,7 @@ const JoinStep2 = ({
 			...prev,
 			[col]: {
 				checked,
-				msg: msg ? i18n[msg] : ""
+				msg: msg.length > 0 ? msg : ""
 			}
 		}));
 	};
@@ -216,12 +223,12 @@ const JoinStep2 = ({
 		const regx = /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
 		if (!val || !regx.test(val)) {
 			checked = false;
-			msg = "msg_MailWrongFormat";
+			msg = t("msg_MailWrongFormat");
 		} else {
 			const res = await api.site.ExistsEmail({ Email: val });
 			if (res.data?.errorCode === 0 && res.data?.data === true) {
 				checked = false;
-				msg = "msg_MailExisted";
+				msg = t("msg_MailExisted");
 			} else if (res.data.errorCode !== 0) {
 				setPopBox({
 					isOpen: true,
@@ -235,15 +242,25 @@ const JoinStep2 = ({
 	const phoneCheck = val => {
 		let checked = true;
 		let msg = "";
-		const regx = /^[0-9\s]*$/;
+		const phoneTypeRegx = /^[0-9\s]*$/;
+		const phoneLengthRegx = /^\+60[0-9]{9,10}$|\+62[0-9]{10,13}$|\+86[0-9]{10,11}$|\+91[0-9]{10}$|\+66[0-9]{9}$|\+880[0-9]{9}$/;
 
 		if (!val || !_areaCode) {
 			checked = false;
-			msg = "lbl_PhoneRequired";
-		} else if (!regx.test(val)) {
+			msg = t("lbl_PhoneRequired");
+		} else if (!phoneTypeRegx.test(val)) {
 			checked = false;
-			msg = "lbl_PhoneTooltip";
+			msg = t("lbl_PhoneTooltip");
+		} else if (Object.keys(limitCountryNum).includes(_areaCode)) {
+			const limitRange = limitCountryNum[_areaCode];
+			if (!phoneLengthRegx.test(_areaCode + val)) {
+				checked = false;
+				msg = t("lbl_PhoneNumberErrorTip", {
+					digitalArea: limitRange
+				});
+			}
 		}
+
 		// else {
 		// 	const res = await api.site.ExistsPhoneNo({
 		// 		AreaCode: _areaCode,
@@ -268,14 +285,14 @@ const JoinStep2 = ({
 		let msg = "";
 		if (defaultOption !== null) {
 			checked = false;
-			msg = "lbl_RemindPrefferedCurrency";
+			msg = t("lbl_RemindPrefferedCurrency");
 		}
 		return { checked, msg };
 	};
 
 	const checkRealName = ({ val }) => {
 		const checked = val !== "";
-		const msg = val === "" ? "msg_EnterRealName" : "";
+		const msg = val === "" ? t("msg_EnterRealName") : "";
 		return { checked, msg };
 	};
 
@@ -313,20 +330,20 @@ const JoinStep2 = ({
 					...prev,
 					Phone: {
 						checked: _phoneCheck.checked,
-						msg: i18n[_phoneCheck.msg]
+						msg: _phoneCheck.msg
 					},
 					Email: {
 						checked: _emailCheck.checked,
-						msg: i18n[_emailCheck.msg]
+						msg: _emailCheck.msg
 					},
 					Currency: {
 						checked: _currencyCheck.checked,
-						msg: i18n[_currencyCheck.msg]
+						msg: _currencyCheck.msg
 					},
 
 					RealName: {
 						checked: _realNameCheck.checked,
-						msg: i18n[_realNameCheck.msg]
+						msg: _realNameCheck.msg
 					}
 				}));
 			}
