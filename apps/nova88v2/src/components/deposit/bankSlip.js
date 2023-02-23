@@ -77,45 +77,30 @@ class Modal extends Component {
 			const formData = new FormData();
 			formData.append("TransId", this.props.bankSlipPopBox.transId);
 			formData.append("Receipt", files[0]);
-			api.payment
-				.UploadReceipt(formData)
-				.then(
-					response => {
-						if (this.isMountedRef) {
-							const result = response.data;
-							if (result.errorCode === 0) {
-								alert(this.props.i18n.lbl_UploadSuccess);
-								this.props.handlePopBox();
-							} else {
-								this.props.setPopBox({
-									isOpen: true,
-									content: `[${result.errorCode}] ${result.message}`
-								});
-							}
-						}
-					},
-					() => {
-						if (this.isMountedRef) {
+			api.payment.UploadReceipt(formData).then(
+				response => {
+					if (this.isMountedRef) {
+						const result = response.data;
+						if (result.errorCode === 0) {
+							alert(this.props.i18n.lbl_UploadSuccess);
+							this.props.handlePopBox();
+						} else {
 							this.props.setPopBox({
 								isOpen: true,
-								content: this.props.i18n.msg_ApiServerError
+								content: `[${result.errorCode}] ${result.message}`
 							});
 						}
 					}
-				)
-				.then(() => {
-					api.payment.GetDepositInfoRecent().then(res => {
-						const recentDataList = res.data.data;
-						const target = recentDataList.find(
-							({ transId }) => transId === this.props.transId
-						);
-						this.props.setbankSlipPopBox(prev => ({
-							...prev,
-							receiptInfo: target.depositReceipt
-						}));
-						this.props.setReceiptInfoList(target.depositReceipt);
-					});
-				});
+				},
+				() => {
+					if (this.isMountedRef) {
+						this.props.setPopBox({
+							isOpen: true,
+							content: this.props.i18n.msg_ApiServerError
+						});
+					}
+				}
+			);
 		}
 	};
 
@@ -329,12 +314,9 @@ Modal.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	handlePopBox: PropTypes.func.isRequired,
 	bankSlipPopBox: PropTypes.objectOf(PropTypes.any),
-	setbankSlipPopBox: PropTypes.func.isRequired,
 	setPopBox: PropTypes.func.isRequired,
 	EditField: PropTypes.func.isRequired,
-	SetImg: PropTypes.func.isRequired,
-	transId: PropTypes.string.isRequired,
-	setReceiptInfoList: PropTypes.func.isRequired
+	SetImg: PropTypes.func.isRequired
 };
 
 const Panel = () => {
@@ -344,17 +326,21 @@ const Panel = () => {
 	const { bankSlipPopBox, setbankSlipPopBox } = useContext(
 		bankSlipPopBoxContext
 	);
-	const [transId, setTransId] = useState("");
 	const [receiptInfoList, setReceiptInfoList] = useState([]);
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		if (bankSlipPopBox.isOpen) {
-			setTransId(bankSlipPopBox.transId);
-			if (receiptInfoList.length === 0) {
-				setReceiptInfoList(bankSlipPopBox.receiptInfo);
-			}
-		} else {
-			setReceiptInfoList([]);
+			api.payment.GetDepositInfoRecent().then(res => {
+				const recentDataList = res.data.data;
+				const target = recentDataList.find(
+					({ transId }) => transId === bankSlipPopBox.transId
+				);
+				setbankSlipPopBox(prev => ({
+					...prev,
+					receiptInfo: target.depositReceipt
+				}));
+				setReceiptInfoList(target.depositReceipt);
+			});
 		}
 	}, [bankSlipPopBox.isOpen]);
 
@@ -397,9 +383,6 @@ const Panel = () => {
 			i18n={i18n}
 			bankSlipPopBox={bankSlipPopBox}
 			receiptInfoList={receiptInfoList}
-			setbankSlipPopBox={setbankSlipPopBox}
-			setReceiptInfoList={setReceiptInfoList}
-			transId={transId}
 			handlePopBox={handlePopBox}
 			EditField={EditField}
 			setPopBox={setPopBox}
