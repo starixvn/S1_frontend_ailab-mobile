@@ -23,11 +23,11 @@ siteList=($(echo "$site" | tr ' ' '\n'))
 # Update
 for site in ${siteList[@]}
 do
-designPath="${DESIGN_PROJECT}/$site/Desktop/public/css"
-projectPath="${PROJECT}/apps/$site/src/styles/css"
+designPath="${DESIGN_PROJECT}/$site/H5/public/css"
+projectPath="${PROJECT}/apps/$site/src/styles"
 if [ $site = "NOVA88" ] || [ $site = "nova88" ]
 then
-    projectPath="${PROJECT}/apps/nova88v2/src/styles/css"
+    projectPath="${PROJECT}/apps/nova88v2/src/styles"
 fi
     cp -R ${designPath} ${projectPath}
 done
