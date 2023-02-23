@@ -220,28 +220,33 @@ class Modal extends Component {
 					<span className="text">{i18n.lbl_AttachFile}</span>
 					{this.props.receiptInfoList?.length > 0 ? (
 						<div className="uploadModule">
-							<label
-								className="upload_img"
-								onDragOver={e => e.preventDefault()}
-								onDrop={this.onCheckUpload}>
-								<input
-									type="file"
-									ref={this.filebox}
-									accept="image/*"
-									onChange={this.onCheckUpload}
-								/>
-								{this.props.bankSlipPopBox.picFileName ? (
-									<img
-										alt={
-											this.props.bankSlipPopBox
-												.picFileName
-										}
-										src={this.props.bankSlipPopBox.receipt}
+							{this.props.receiptInfoList.length < 6 && (
+								<label
+									className="upload_img"
+									onDragOver={e => e.preventDefault()}
+									onDrop={this.onCheckUpload}>
+									<input
+										type="file"
+										ref={this.filebox}
+										accept="image/*"
+										onChange={this.onCheckUpload}
 									/>
-								) : (
-									<i className="icon icon-plus" />
-								)}
-							</label>
+									{this.props.bankSlipPopBox.picFileName ? (
+										<img
+											alt={
+												this.props.bankSlipPopBox
+													.picFileName
+											}
+											src={
+												this.props.bankSlipPopBox
+													.receipt
+											}
+										/>
+									) : (
+										<i className="icon icon-plus" />
+									)}
+								</label>
+							)}
 							{this.props.receiptInfoList.map(
 								({ receiptNo, depositPic }) => (
 									<label
