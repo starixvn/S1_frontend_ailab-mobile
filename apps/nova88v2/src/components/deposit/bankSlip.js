@@ -282,6 +282,13 @@ class Modal extends Component {
 							)}
 						</label>
 					)}
+					<div className="rule">
+						<ul>
+							<li>{i18n.lbl_MaximumFileSizeEach}</li>
+							<li>{i18n.lbl_MaximumNumberOfFiles}</li>
+							<li>{i18n.lbl_AcceptedFileType}</li>
+						</ul>
+					</div>
 					<div className="btn-group">
 						<button
 							className="white closePopup"

@@ -324,9 +324,9 @@ class Content extends Component {
 						)}
 						<div className="textArea borderBottom">
 							<ul>
-								<li>{i18n.lbl_BankSlipRequirement1}</li>
-								<li>{i18n.lbl_BankSlipRequirement2}</li>
-								<li>{i18n.lbl_BankSlipRequirement3}</li>
+								<li>{i18n.lbl_MaximumFileSizeEach}</li>
+								<li>{i18n.lbl_MaximumNumberOfFiles}</li>
+								<li>{i18n.lbl_AcceptedFileType}</li>
 							</ul>
 						</div>
 					</div>

@@ -202,7 +202,9 @@
 	"lbl_Jackpot": "Jackpot",
 	"lbl_Gaming_License": "Gaming License",
 	"lbl_OK": "OK",
-
+  "lbl_MaximumFileSizeEach": "Maximum file size 4 MB each.",
+  "lbl_MaximumNumberOfFiles": "Maximum number of files: 6",
+  "lbl_AcceptedFileType": "Accepted file types: JPG, JPEG, PNG,GIF",
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Odds",
 	"lbl_Handicap": "Hdp",
