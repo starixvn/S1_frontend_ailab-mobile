@@ -160,6 +160,7 @@ const Payment = props => {
 				displayKey="bankName"
 				i18n={i18n}
 				_isConvert={_isConvert}
+				showMinMaxHint={true}
 			/>
 
 			<AmountInput
