@@ -358,6 +358,7 @@ const Payment = props => {
 				bindFullObj={true}
 				displayKey="payName"
 				_isConvert={_isConvert}
+				i18n={i18n}
 			/>
 			<GroupList
 				title={i18n.lbl_SelectBank}
