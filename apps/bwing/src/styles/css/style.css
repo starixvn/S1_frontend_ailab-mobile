@@ -1601,72 +1601,6 @@ footer > a.open {
   display: block;
 }
 
-#popup.statuspop {
-  color: white;
-}
-
-#popup.statuspop .pop {
-  background: #070e22;
-  padding: 0;
-  border-radius: 1vw;
-}
-
-#popup.statuspop .pop .statustitle {
-  font-size: 4vw;
-  padding: 2vw 9vw 2vw 4vw;
-  border-bottom: 1px solid #5574a7;
-  background: #7789bd;
-  color: white;
-  position: relative;
-  border-radius: 1vw 1vw 0 0;
-}
-
-#popup.statuspop .pop .statustitle .close {
-  top: 2.5vw;
-}
-
-#popup.statuspop .pop .statuscontent {
-  padding: 0 3.5vw;
-  border-top: 0;
-}
-
-#popup.statuspop .pop .statuscontent > div {
-  border-bottom: 1px solid #c1cceb;
-}
-
-#popup.statuspop .pop .statuscontent > div .subtitle {
-  font-size: 4vw;
-}
-
-#popup.statuspop .pop .statuscontent > div > div {
-  font-size: 3.5vw;
-  margin-top: 3vw;
-  color: white;
-}
-
-#popup.statuspop .pop .statuscontent > div > div:last-child {
-  margin: 1vw 0 3vw;
-}
-
-#popup.statuspop .pop .statuscontent > div:last-child {
-  border-bottom: 0;
-}
-
-#popup.statuspop .pop .success {
-  background: #58cdff;
-  padding: 2vw 10vw;
-  border-radius: 1vw;
-  margin: auto auto 5vw;
-  color: #070e22;
-  display: block;
-  font-weight: bold;
-}
-
-#popup.statuspop .pop .success::before {
-  content: "";
-  display: block;
-}
-
 .header {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -1762,17 +1696,21 @@ footer > a.open {
 .sporttv > .tag {
   width: 100%;
   position: fixed;
+  left: 0;
+  top: 13vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   border-bottom: 1px solid #1d2f62;
   overflow-x: scroll;
   overflow-y: hidden;
   background: #070e22;
-  left: 0;
   z-index: 2;
   text-transform: uppercase;
 }
@@ -2039,22 +1977,6 @@ footer > a.open {
       -ms-flex-align: center;
           align-items: center;
 }
-.info .textYellow .infobtn, .info .textRed .infobtn, .info .textGreen .infobtn, .info .textGray .infobtn {
-  background: url(https://banner.bw88.io/h5/img/notice.png) no-repeat center/cover;
-  width: 4vw;
-  height: 4vw;
-  margin: 0 0 0 1vw;
-}
-
-.info .textYellow, .info .textRed, .info .textGreen, .info .textGray {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
 .info .textYellow .infobtn, .info .textRed .infobtn, .info .textGreen .infobtn, .info .textGray .infobtn {
   background: url(https://banner.bw88.io/h5/img/notice.png) no-repeat center/cover;
   width: 4vw;
@@ -3201,6 +3123,80 @@ p.txt-blue12 {
   min-height: calc(100% - 35vw);
 }
 
+.uploadModule {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  margin: 2vw auto;
+}
+
+.upload_img {
+  width: 23.5vw;
+  height: 18vw;
+  border-radius: 10px;
+  border: 1px solid #58cdff;
+  margin: 0 1vw 1vw 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+@media (max-width: 320px) {
+  .upload_img {
+    width: 23vw;
+  }
+}
+.upload_img:nth-child(3n) {
+  margin-right: 0;
+}
+.upload_img .icon-folder-upload {
+  display: none;
+}
+.upload_img .icon-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  left: unset;
+  font-size: 8px !important;
+  background: #868686;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  padding: 2px;
+  z-index: 3;
+}
+.upload_img .icon-close::before {
+  font-size: 8px;
+  margin: 0 2px;
+  color: #fff;
+}
+.upload_img.error {
+  border-color: #e92529;
+}
+.upload_img.error .icon {
+  color: #e92529;
+}
+.upload_img .icon {
+  font-size: 5vw;
+  color: #58cdff;
+}
+.upload_img img {
+  height: 100%;
+}
+
 .icon-pencil + input {
   text-align: right;
   padding-right: 2vw;
@@ -3701,6 +3697,7 @@ a.clickBtn:before {
   width: 60%;
   text-align: center;
   line-height: 3vw;
+  font-size: 3vw;
 }
 .casino .slotList .info.under {
   -webkit-filter: grayscale(1);
@@ -3761,6 +3758,32 @@ a.clickBtn:before {
   100% {
     background-color: rgba(244, 43, 7, 0.6);
   }
+}
+@keyframes newTag {
+  0% {
+    background-color: rgba(244, 43, 7, 0.2);
+  }
+  100% {
+    background-color: rgba(244, 43, 7, 0.6);
+  }
+}
+
+.icon-new {
+  position: absolute;
+  right: 1vw;
+  bottom: 1.5vw;
+  padding: 10px 10px;
+  background-color: rgba(244, 43, 7, 0.3);
+  border: 1px solid #f42b07;
+  color: #ffffff;
+  border-radius: 15px;
+  font-weight: bold;
+  -webkit-animation: newTag 1s linear infinite alternate;
+          animation: newTag 1s linear infinite alternate;
+}
+.icon-new::before {
+  content: "NEW" !important;
+  font-family: inherit !important;
 }
 @keyframes newTag {
   0% {
@@ -11708,11 +11731,12 @@ span.important {
   border-radius: 5px 5px 0 0;
   padding: 8px 0;
   text-align: center;
+  position: relative;
 }
 .top10Aear .title a {
   position: absolute;
   right: 10px;
-  top: 2.5vw;
+  top: 6px;
   font-weight: lighter;
 }
 .top10Aear .top10Box {
@@ -12042,6 +12066,7 @@ span.important {
   line-height: 25px;
   background: #2d77c8;
   margin-top: 2vw;
+  color: #000;
 }
 
 .favouriteModule {

@@ -38,6 +38,7 @@ const RecentDatas = ({ Datas, SubmitProof, ClickCancel }) => {
 						d.amount,
 						d.transId,
 						d.picFileName,
+						d.depositReceipt,
 						d.refId
 					)}
 					ClickCancel={ClickCancel.bind(this, d.transId)}

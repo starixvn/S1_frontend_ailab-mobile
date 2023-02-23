@@ -460,6 +460,7 @@ const Panel = () => {
 		amount,
 		transId,
 		picFileName,
+		receiptInfo,
 		refId
 	) => {
 		const { currencyId, ...restBankInfo } = bankInfo;
@@ -476,6 +477,7 @@ const Panel = () => {
 			amount: number_format(amount, _isConvert),
 			real_amount: amount,
 			picFileName,
+			receiptInfo,
 			refId
 		}));
 	};
