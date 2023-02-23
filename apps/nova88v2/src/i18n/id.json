@@ -405,6 +405,7 @@
 	"lbl_PhoneVerificationHint2": "baik dan dapatkan hadiah {currency} {amount}.",
 	"lbl_EmailOTPHint": "Kode Verifikasi Email telah dikirim ke kotak surat terdaftar Anda.",
 	"lbl_EmailVerifiedMsg": "Luar biasa! Email Anda telah diverifikasi!",
+  "lbl_PhoneNumberErrorTip": "Nomor telepon yang Anda masukkan salah, antara {{digitalArea}} digit",
 
 	"==============================================Shipping====================================": "",
 	"lbl_Shipping_Address": "Alamat Pengiriman",

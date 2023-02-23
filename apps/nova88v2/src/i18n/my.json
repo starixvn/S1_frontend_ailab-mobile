@@ -403,6 +403,7 @@
 	"lbl_PhoneVerificationHint2": "lebih tinggi dan dapatkan ganjaran sebanyak {currency} {amount}",
 	"lbl_EmailOTPHint": "Kod Pengesahan E-mel telah dihantar ke peti mel berdaftar anda.",
 	"lbl_EmailVerifiedMsg": "Bagus! E-mel anda telah disahkan!",
+  "lbl_PhoneNumberErrorTip": "Nombor telefon yang anda masukkan tidak betul, antara {{digitalArea}} digit",
 
 	"==============================================Shipping====================================": "",
 	"lbl_Shipping_Address": "Alamat Penghantaran",
