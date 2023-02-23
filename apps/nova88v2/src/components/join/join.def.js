@@ -87,3 +87,12 @@ export const countryEnum = {
 	CS: "1.8",
 	GB: "1.8"
 };
+
+export const limitCountryNum = {
+	"+60": "9-10",
+	"+66": "9",
+	"+62": "10-13",
+	"+91": "10",
+	"+86": "10-11",
+	"+880": "9"
+};

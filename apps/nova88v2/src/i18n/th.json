@@ -405,6 +405,7 @@
 	"lbl_PhoneVerificationHint2": " {currency} {amount}",
 	"lbl_EmailOTPHint": "รหัสยืนยันอีเมลถูกส่งไปยังกล่องจดหมายที่คุณลงทะเบียนแล้ว",
 	"lbl_EmailVerifiedMsg": "สุดยอด! อีเมลของคุณได้รับการยืนยันแล้ว!",
+  "lbl_PhoneNumberErrorTip": "หมายเลขโทรศัพท์ที่คุณกรอกไม่ถูกต้อง ระหว่าง {{digitalArea}} หลัก",
 	"==============================================Shipping====================================": "",
 	"lbl_Shipping_Address": "ที่อยู่จัดส่ง",
 	"lbl_Option2": "ไม่บังคับ",
