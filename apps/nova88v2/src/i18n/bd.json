@@ -117,7 +117,7 @@
 	"lbl_TermsAndConditions": "শর্তাবলী",
 	"msg_EnterRealName": "আপনার আসল নাম লিখুন.",
 	"lbl_RealName": "আসল নাম",
-	"msg_MailWrongFormat": "মেল বিন্যাস ভুল.",
+	"msg_MailWrongFormat": "ইমেল ঠিকানা বিন্যাস ভুল",
 	"msg_PasswordVaildate": "এই পাসওয়ার্ডটি অবশ্যই ৬-১৫ অক্ষরের হতে হবে, এতে বর্ণসংখ্যা",
 	"lbl_Phone": "ফোন নম্বর",
 	"lbl_Submit": "জমা দিন",
