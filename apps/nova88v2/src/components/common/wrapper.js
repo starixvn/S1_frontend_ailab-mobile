@@ -8,7 +8,13 @@ import { IS_LOGGED_IN } from "../../service/auth";
 import { GET_LANG_ID, isVaildLang } from "../../service/language";
 import themeList from "../../datas/theme";
 import useInterval from "../hook/useInterval";
-import { getUrlParameter, setCookie, deleteCookie } from "./common";
+import {
+	getUrlParameter,
+	setCookie,
+	deleteCookie,
+	readCookie,
+	langMappingCurr
+} from "./common";
 import i18nConfig from "../../i18n/config";
 import api from "../../service/api";
 import { siteInfo } from "../../config";
@@ -24,6 +30,38 @@ const isSpecialPath = () => {
 	);
 };
 
+export const getDefaultCurrencyId = () => {
+	const defaultPathLang = () => {
+		const urlLang =
+			typeof document === `undefined`
+				? ""
+				: window.location.pathname.split("/")?.[1];
+		const cookieLang = readCookie(siteInfo()?.langCookie);
+		const _defaultLang = GET_LANG_ID();
+
+		let result = _defaultLang;
+		if (isVaildLang(urlLang)) {
+			result = urlLang;
+		} else if (isVaildLang(cookieLang)) {
+			result = cookieLang;
+		}
+		return result;
+	};
+
+	let result = siteInfo()?.siteDefaultCurrencyId;
+
+	const langId = defaultPathLang();
+	if (langId !== "en" && langId !== "cs") {
+		result = langMappingCurr[langId];
+	}
+
+	const cookieCurrencyId = readCookie(siteInfo()?.currencyCookie);
+	if (cookieCurrencyId) {
+		result = Number(cookieCurrencyId);
+	}
+	return result;
+};
+
 export const Wrapper = ({ children }) => {
 	const { pathname } = useLocation();
 	const navigate = useNavigate();
@@ -37,9 +75,10 @@ export const Wrapper = ({ children }) => {
 	const [userInfo, setUserInfo] = useState({
 		isLogin: null,
 		langId: urlLangId ?? GET_LANG_ID(),
-		currencyId: siteInfo()?.siteDefaultCurrencyId,
+		currencyId: getDefaultCurrencyId(),
 		userName: i18n.lbl_Guest
 	});
+
 	const [popBox, setPopBox] = useState({
 		isOpen: false,
 		title: "",
