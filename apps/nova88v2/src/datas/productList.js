@@ -22,6 +22,17 @@ export const productList = {
 	}
 };
 
+// PP 移除時間
+const ppDestroyDate = "2023-02-28 23:00:00";
+
+export const getPPAllowCurrencies = () => {
+	return isDateRange({ endDate: ppDestroyDate })
+		? Object.values(defCurrenyId).filter(
+				currency => currency !== defCurrenyId.INR
+		  )
+		: Object.values(defCurrenyId);
+};
+
 export const getCurrencyLink = (targetCurrencyId, langId) => {
 	if (targetCurrencyId === defCurrenyId.MYR) {
 		return ` https://aff.nova88mas102.com/?lang=${langId}`;
@@ -443,7 +454,8 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.LIVEcasinoPP,
 					spanText: "Pragmatic Play",
 					img: `${cloudBannerImgURL}/h5/img/pp.png`,
-					sortKey: "casino_PP"
+					sortKey: "casino_PP",
+					allowCurrency: getPPAllowCurrencies()
 				},
 				{
 					...defGameInfo.LIVEcasinoSkywind,
@@ -555,7 +567,8 @@ const gameList = ({ langId, currencyId }) => {
 					providerImgName: "pp",
 					img: `${cloudBannerImgURL}/h5/img/spp.png`,
 					path: path.casino.root,
-					sortKey: "slot_PP"
+					sortKey: "slot_PP",
+					allowCurrency: getPPAllowCurrencies()
 				},
 				{
 					...defGameInfo.Casino_Skywind,
