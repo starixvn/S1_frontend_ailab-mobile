@@ -2894,6 +2894,60 @@ footer > a.active .circleAnimation::after {
   line-height: 24px;
   padding: 0;
 }
+#popup.statuspop {
+  color: #5574a7;
+}
+#popup.statuspop .pop {
+  background: #eaf1ff;
+  border: 1px solid #284985;
+  padding: 0;
+  border-radius: 1vw;
+}
+#popup.statuspop .pop .statustitle {
+  font-size: 4.5vw;
+  padding: 2vw 9vw 2vw 4vw;
+  border-bottom: 1px solid #5574a7;
+  background: #284985;
+  color: white;
+  position: relative;
+}
+#popup.statuspop .pop .statustitle .close {
+  right: 2vw;
+  top: 2vw;
+}
+#popup.statuspop .pop .statuscontent {
+  padding: 0 3.5vw;
+  border-top: 0;
+}
+#popup.statuspop .pop .statuscontent > div {
+  border-bottom: 1px solid #c1cceb;
+}
+#popup.statuspop .pop .statuscontent > div .subtitle {
+  font-size: 4vw;
+}
+#popup.statuspop .pop .statuscontent > div > div {
+  font-size: 3.5vw;
+  margin-top: 3vw;
+  color: #052561;
+}
+#popup.statuspop .pop .statuscontent > div > div:last-child {
+  margin: 1vw 0 3vw;
+}
+#popup.statuspop .pop .statuscontent > div:last-child {
+  border-bottom: 0;
+}
+#popup.statuspop .pop .success {
+  background: #5574a7;
+  padding: 2vw 10vw;
+  border-radius: 5vw;
+  margin: auto auto 5vw;
+  color: white;
+  display: block;
+}
+#popup.statuspop .pop .success::before {
+  content: "";
+  display: block;
+}
 
 .blackInfo {
   background: #212121;
@@ -3537,7 +3591,7 @@ footer > a.active .circleAnimation::after {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  padding: 0 3vw;
+  padding: 0 3.2vw;
   border-radius: 3px;
   font-weight: bold;
   min-width: 15vw;
@@ -3560,6 +3614,24 @@ footer > a.active .circleAnimation::after {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.pending, .reject, .cancelled, .approved {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+.pending .infobtn, .reject .infobtn, .cancelled .infobtn, .approved .infobtn {
+  background: url(https://banner.0814media.net/h5/img/notice.png) no-repeat center/cover;
+  width: 4vw;
+  height: 4vw;
+  margin-left: 1vw;
+  position: absolute;
+  right: -6vw;
 }
 
 .info ul {
@@ -4155,7 +4227,7 @@ footer > a.active .circleAnimation::after {
 .bankAccount .icon-plus {
   margin: auto;
 }
-.bankAccount .icon-BTC {
+.bankAccount .nickName + .icon {
   word-break: break-all;
   margin: 0;
   display: -webkit-box;
@@ -4170,8 +4242,9 @@ footer > a.active .circleAnimation::after {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  color: #5574A7;
 }
-.bankAccount .icon-BTC:before {
+.bankAccount .nickName + .icon:before {
   color: #5574A7;
   margin: 0 2vw 0 0;
   font-size: 6vw;
@@ -4420,7 +4493,7 @@ footer > a.active .circleAnimation::after {
 }
 
 .bankSlip {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   top: 0;
   left: 0;
   z-index: 4;
@@ -4450,6 +4523,70 @@ footer > a.active .circleAnimation::after {
 .bankSlip .text-gray.title {
   margin: 3vw 0 0;
 }
+.bankSlip .uploadModule {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  margin: 2vw auto;
+}
+.bankSlip .upload_img {
+  width: 25.3vw;
+  height: 18vw;
+  border-radius: 10px;
+  border: 1px solid #1e85ec;
+  background: rgba(117, 145, 193, 0.5);
+  margin: 0 1vw 1vw 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+.bankSlip .upload_img:nth-child(3n) {
+  margin-right: 0;
+}
+.bankSlip .upload_img .icon-folder-upload {
+  display: none;
+}
+.bankSlip .upload_img .icon-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 8px !important;
+  background: #868686;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  padding: 2px;
+  z-index: 3;
+}
+.bankSlip .upload_img .icon-close::before {
+  font-size: 8px;
+  margin: 0 2px;
+  color: #fff;
+}
+.bankSlip .upload_img.error {
+  border-color: #e92529;
+}
+.bankSlip .upload_img .icon {
+  font-size: 5vw;
+  color: #1e85ec;
+}
+.bankSlip .upload_img img {
+  height: 100%;
+}
 
 .rule {
   color: #b2b2b2;
@@ -4460,6 +4597,10 @@ footer > a.active .circleAnimation::after {
 }
 .rule ul li {
   list-style: disc;
+}
+
+.txt-red {
+  color: #e92529;
 }
 
 input {
