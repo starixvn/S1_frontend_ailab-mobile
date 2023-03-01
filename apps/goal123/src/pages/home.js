@@ -169,7 +169,7 @@ const IndexPage = () => {
 					isOpen: true,
 					content: (
 						<img
-							src={`${bannerImgUrl}/img/nonlogin/300x300_goal_${userInfo.langId}.jpg`}
+							src={`${bannerImgUrl}/h5/img/nonlogin/300x300_goal_${userInfo.langId}.jpg`}
 							alt="OfficialAnnounce"
 							onClick={toDownloadPage}
 						/>

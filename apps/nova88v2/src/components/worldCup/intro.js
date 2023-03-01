@@ -15,7 +15,7 @@ const Intro = ({ scrollToEvent }) => {
 				<div className="visual">
 					<img
 						className="logo"
-						src={`${cloudBannerImgURL}/img/worldcup/logo.png`}
+						src={`${cloudBannerImgURL}/h5/img/event/worldcup/logo.png`}
 						alt="logo"
 					/>
 					<img

@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
-import config from "../../config";
+import config, { paymentImgUrl } from "../../config";
 import { isConvert, number_format, getWindowOpenUrl } from "../common/common";
 import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
@@ -114,9 +114,7 @@ const Payment = props => {
 					<>
 						<p>{i18n.lbl_ConfirmDeposit}</p>
 						<img
-							src={`${
-								config.imgUrl
-							}/common/images/BankLogo/${bankLogo?.toLowerCase()}`}
+							src={`${paymentImgUrl}/${bankLogo?.toLowerCase()}`}
 							alt={bankName}
 						/>
 						<div className="tip">
@@ -166,7 +164,7 @@ const Payment = props => {
 				imgKey="bankLogo"
 				idKey="sysId"
 				bindFullObj={true}
-				prefixImgUrl={`${config.imgUrl}/common/images/BankLogo/`}
+				prefixImgUrl={`${paymentImgUrl}/`}
 				imgKeyWithExtension={true}
 				displayKey="bankName"
 				i18n={i18n}

@@ -6,7 +6,7 @@ import {
 	popBoxContext,
 	loadingContext
 } from "../common/context";
-import config, { bannerImgUrl } from "../../config";
+import config, { bannerImgUrl, paymentImgUrl } from "../../config";
 import { isConvert, number_format, getWindowOpenUrl } from "../common/common";
 import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
@@ -253,9 +253,7 @@ const Payment = props => {
 					<>
 						<p>{i18n.lbl_ConfirmDeposit}</p>
 						<img
-							src={`${
-								config.imgUrl
-							}/common/images/LoadCardPay/${selChannel.groupName?.toLowerCase()}.png`}
+							src={`${paymentImgUrl}/${selChannel.groupName?.toLowerCase()}.png`}
 							alt={selChannel.channelName}
 						/>
 						<div>
@@ -320,7 +318,7 @@ const Payment = props => {
 				mainKey={`deposit-full-${payType}-groupList`}
 				imgKey="groupName"
 				idKey="groupId"
-				prefixImgUrl={`${config.imgUrl}/common/images/LoadCardPay/`}
+				prefixImgUrl={`${paymentImgUrl}/`}
 				i18n={i18n}
 				displayKey="groupName"
 				_isConvert={_isConvert}

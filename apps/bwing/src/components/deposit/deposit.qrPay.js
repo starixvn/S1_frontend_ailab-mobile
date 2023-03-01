@@ -6,7 +6,7 @@ import {
 	popBoxContext,
 	loadingContext
 } from "../common/context";
-import config from "../../config";
+import config, { paymentImgUrl } from "../../config";
 import { isConvert, number_format, getWindowOpenUrl } from "../common/common";
 import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
@@ -150,9 +150,7 @@ const Payment = props => {
 					<>
 						<p>{i18n.lbl_ConfirmDeposit}</p>
 						<img
-							src={`${
-								config.imgUrl
-							}/common/images/MobilePay/${selChannel.groupName?.toLowerCase()}.png`}
+							src={`${paymentImgUrl}/${selChannel.groupName?.toLowerCase()}.png`}
 							alt={selChannel.groupName}
 						/>
 						<div>
@@ -205,7 +203,7 @@ const Payment = props => {
 				mainKey={`deposit-full-${payType}-groupList`}
 				imgKey="groupName"
 				idKey="groupId"
-				prefixImgUrl={`${config.imgUrl}/common/images/MobilePay/`}
+				prefixImgUrl={`${paymentImgUrl}/`}
 				i18n={i18n}
 				displayKey="channelName"
 				showMinMaxHint={true}
@@ -221,7 +219,7 @@ const Payment = props => {
 					imgKey="groupName"
 					idKey="channelId"
 					bindFullObj={true}
-					prefixImgUrl={`${config.imgUrl}/common/images/MobilePay/`}
+					prefixImgUrl={`${paymentImgUrl}/`}
 					i18n={i18n}
 					displayKey="channelName"
 					showMinMaxHint={true}

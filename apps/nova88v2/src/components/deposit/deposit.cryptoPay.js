@@ -10,7 +10,7 @@ import {
 import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
 import PageVerify from "./deposit.pageVerify";
-import config, { cloudImgURL } from "../../config";
+import config, { paymentImgURL } from "../../config";
 import { isConvert, number_format } from "../common/common";
 import { useHandleAmount } from "../hook/useHandleAmount";
 import api from "../../service/api";
@@ -235,7 +235,7 @@ const Main = props => {
 
 							<img
 								className="bankimg"
-								src={`${cloudImgURL}/SiteSkin/img/CryptoPay/${selChannel.channelName?.toLowerCase()}.png`}
+								src={`${paymentImgURL}/${selChannel.channelName?.toLowerCase()}.png`}
 								alt={selChannel.channelName}
 							/>
 							<div>
@@ -366,7 +366,7 @@ const Main = props => {
 				mainKey="deposit-full-cryptoPay-groupList"
 				imgKey="payName"
 				idKey="groupId"
-				prefixImgUrl={`${cloudImgURL}/SiteSkin/img/Payment/`}
+				prefixImgUrl={`${paymentImgURL}/`}
 				displayKey="payName"
 				_isConvert={_isConvert}
 				isCrypto={true}
@@ -384,7 +384,7 @@ const Main = props => {
 				imgKey="channelName"
 				idKey="channelId"
 				isCrypto={true}
-				prefixImgUrl={`${cloudImgURL}/SiteSkin/img/CryptoPay/`}
+				prefixImgUrl={`${paymentImgURL}/`}
 				displayKey="channelName"
 				_isConvert={_isConvert}
 				i18n={i18n}

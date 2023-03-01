@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useContext, useState } from "react";
-import config from "../../config";
+import { paymentImgUrl } from "../../config";
 import { api_DelCustBankInfo } from "../../service/api/accountStrict";
 import { popBoxContext } from "../common/context";
 import path from "../../path";
@@ -130,9 +130,7 @@ const BankCard = props => {
 			<div className="addBankInfo">
 				<div className="bankName">
 					<img
-						src={`${
-							config.imgUrl
-						}/common/images/BankLogo/${props.bankLogo?.toLowerCase()}`}
+						src={`${paymentImgUrl}/${props.bankLogo?.toLowerCase()}`}
 						alt={props.bankName}
 					/>
 				</div>

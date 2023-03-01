@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import { bannerImgUrl } from "../../config";
+import { sportsImgUrl } from "../../config";
 import { api_worldCupPrediction_UserPollTickets } from "../../service/api/worldCupPrediction";
 
 const ticketStatus = {
@@ -187,7 +187,7 @@ const Ticket = ({
 					</div>
 					<div className="grop">
 						<img
-							src={`${bannerImgUrl}/img/flag/${
+							src={`${sportsImgUrl}/Country Flag/${
 								teamOptions[selectedIdx.teamIdx]?.imageName
 							}`}
 							alt=""

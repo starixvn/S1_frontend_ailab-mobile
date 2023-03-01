@@ -14,7 +14,7 @@ import {
 import { api_GetCustBankInfo } from "../../service/api/account";
 import Inputbox from "../common/inputbox.info";
 import Dropdown from "../common/dropdown.image";
-import config from "../../config";
+import { paymentImgUrl } from "../../config";
 
 const panel = { bankList: "bankList", addBank: "addBank" };
 const initStatus = {
@@ -372,9 +372,7 @@ const BankInfo = () => {
 				removeAccountHandler={removeAccountHandler.bind(null, {
 					account: item
 				})}
-				image={`${
-					config.imgUrl
-				}/common/images/BankLogo/${item.image?.toLowerCase()}`}
+				image={`${paymentImgUrl}/${item.image?.toLowerCase()}`}
 				className="bankLogo"
 			/>
 		);
@@ -423,7 +421,7 @@ const BankInfo = () => {
 							options={siteBankList}
 							colName="custBankInfo"
 							className="bankLogo"
-							ImgURL={`${config.imgUrl}/common/images/BankLogo/`}
+							ImgURL={`${paymentImgUrl}/`}
 							selectedIdx={bankSelectedIdx}
 							onSelectItem={dropdownStateHandler}
 							testAttr="bankList"

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { userInfoContext } from "../common/context";
-import { cloudImgURL } from "../../config";
+import { cloudBannerImgURL } from "../../config";
 import { Link } from "../../route/link";
 import path from "../../path";
 
@@ -12,7 +12,7 @@ const GameProviders = props => {
 		const content = (
 			<img
 				key={`casino-nav-${k.tpId}`}
-				src={`${cloudImgURL}/SiteSkin/img/logo/${k.imgName}${
+				src={`${cloudBannerImgURL}/h5/img/venderlogo/${k.imgName}${
 					selNav === k.tpId ? "a" : ""
 				}.png`}
 				alt={k.providerImgName ?? k.tpName}
