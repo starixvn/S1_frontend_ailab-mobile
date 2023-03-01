@@ -138,7 +138,7 @@ const Ticket = ({
 			<div className="ticket-title">
 				{i18n.lbl_ticket} {serial}
 				<img
-					src={`${cloudBannerImgURL}/img/worldcup/ticket.png`}
+					src={`${cloudBannerImgURL}/h5/img/event/worldcup/ticket.png`}
 					alt=""
 				/>
 			</div>

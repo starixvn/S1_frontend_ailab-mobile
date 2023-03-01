@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { bannerImgUrl } from "../../config";
+import { sportsImgUrl } from "../../config";
 
 const Groups = ({ options, i18n }) => {
 	let list = [];
@@ -10,7 +10,7 @@ const Groups = ({ options, i18n }) => {
 			const subList = options[el].map(sub => (
 				<div className="team" key={`group-${sub.countryName}`}>
 					<img
-						src={`${bannerImgUrl}/img/flag/${sub.imageName}`}
+						src={`${sportsImgUrl}/Country Flag/${sub.imageName}`}
 						alt={sub.imageName}
 					/>
 					<div>{sub.countryName}</div>

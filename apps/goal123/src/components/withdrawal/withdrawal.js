@@ -20,7 +20,7 @@ import {
 } from "../../service/api/payment";
 import InputBox from "../common/inputbox.info";
 import { defIptStatus } from "../common/inputStatus";
-import config from "../../config";
+import { paymentImgUrl } from "../../config";
 import RecentDatas from "./withdrawal.recentDatas";
 import ReloadSpin from "../common/reloadSpin";
 import path from "../../path";
@@ -636,9 +636,7 @@ const Panel = () => {
 				key={`withdrawal-bank-${b.sysId}-${b.accountNo}`}
 				onClick={SelectBank.bind(this, b)}>
 				<img
-					src={`${
-						config.imgUrl
-					}/common/images/BankLogo/${b.bankLogo?.toLowerCase()}`}
+					src={`${paymentImgUrl}/${b.bankLogo?.toLowerCase()}`}
 					alt={b.bankName}
 				/>
 			</button>

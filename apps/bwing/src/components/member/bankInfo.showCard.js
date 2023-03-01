@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useContext, useState } from "react";
-import config from "../../config";
+import { paymentImgUrl } from "../../config";
 import { popBoxContext } from "../common/context";
 import { api_DelCustBankInfo } from "../../service/api/accountStrict";
 import Loading from "../common/loading";
@@ -90,9 +90,7 @@ export default ({ i18n, accountName, custBankList, reload }) => {
 				data-testid="account">
 				<img
 					alt="BankLogo"
-					src={`${
-						config.imgUrl
-					}/common/images/BankLogo/${item.image?.toLowerCase()}`}
+					src={`${paymentImgUrl}/${item.image?.toLowerCase()}`}
 				/>
 				<p>{item.accountNo}</p>
 				<button

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import api from "../../service/api";
-import { cloudImgURL } from "../../config";
+import { paymentImgURL } from "../../config";
 import Inputbox from "../common/inputbox.hint";
 import Dropdown from "../common/dropdown.image";
 import { defIptStatus } from "../common/inputStatus";
@@ -267,7 +267,7 @@ const AddBankPanel = ({
 					options={siteBankInfoState}
 					colName="getBankInfo"
 					className="bankLogo"
-					ImgURL={`${cloudImgURL}/SiteSkin/img/BankLogo/`}
+					ImgURL={`${paymentImgURL}/square/`}
 					selectedIdx={bankSelectedIdx}
 					onSelectItem={dropdownStateHandler}
 					testAttr="bankList"

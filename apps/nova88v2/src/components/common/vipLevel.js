@@ -37,7 +37,7 @@ const VIPLevel = ({ userInfo, i18n }) => {
 		<div className="vip_mark">
 			<div className="circleAnimation" />
 			<img
-				src={`https://image.0814media.net/VIP/img/vip0${
+				src={`https://banner.0814media.net/h5/img/vip/vip${
 					userInfo?.userLevel ?? 1
 				}.png`}
 				alt="vip"

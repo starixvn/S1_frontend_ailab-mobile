@@ -153,7 +153,7 @@ export default () => {
 							rel="noreferrer">
 							{i18n.lbl_Rewards}
 							<img
-								src={`${cloudBannerImgURL}/img/88rewards.png`}
+								src={`${cloudBannerImgURL}/h5/img/88rewards.png`}
 								alt="Rewards"
 							/>
 						</a>
