@@ -3115,6 +3115,72 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   width: calc(100% - 16vw);
   min-height: calc(100% - 35vw);
 }
+.bankSlip .rule {
+  margin: 2vw 0;
+}
+
+.uploadModule {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  margin: 2vw auto;
+}
+
+.upload_img {
+  width: 26.5vw;
+  height: 18vw;
+  border-radius: 10px;
+  border: 1px solid #1e85ec;
+  margin: 0 1vw 1.5vw 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+.upload_img.error {
+  border-color: #e91010;
+}
+.upload_img.error i {
+  color: #e91010;
+}
+.upload_img:nth-child(3n) {
+  margin-right: 0;
+}
+.upload_img .icon {
+  font-size: 5vw;
+  color: #1e85ec;
+}
+.upload_img img {
+  height: 100%;
+  width: auto;
+}
+.upload_img .icon-close {
+  position: absolute;
+  top: 5px !important;
+  right: 5px !important;
+  font-size: 8px !important;
+  background: #868686;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  padding: 2px;
+  z-index: 3;
+}
+.upload_img .icon-close::before {
+  font-size: 8px;
+  margin: 0 2px;
+  color: #fff;
+}
 
 input {
   background: #bfc9da;

@@ -200,6 +200,9 @@
 	"lbl_Jackpot": "जैकपोट",
 	"lbl_Gaming_License": "गेमिंग लाइसेंस",
 	"lbl_OK": "OK",
+	"lbl_MaximumFileSizeEach": "अधिकतम फ़ाइल का आकार 4 MB",
+	"lbl_MaximumNumberOfFiles": "फ़ाइल की अधिकतम संख्या: 6",
+	"lbl_AcceptedFileType": "स्वीकृत फ़ाइल प्रकार: JPG, JPEG, PNG, GIF",
 
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "अंतर",

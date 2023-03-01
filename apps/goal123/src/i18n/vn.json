@@ -543,6 +543,9 @@
 	"GPI_VNLottery": "Số Đề",
 	"lbl_OK": "OK",
 	"lbl_DepositOptions": "Phương thức nạp tiền",
+	"lbl_MaximumFileSizeEach": "Kích thước tập tin tối đa 4MB cho mỗi tập tin",
+	"lbl_MaximumNumberOfFiles": "Số tập tin đối đa:6",
+	"lbl_AcceptedFileType": "Các kiểu được hỗ trợ: JPG, JPEG, PNG, GIF",
 
 	"==============General==============": "",
 	"lbl_Jackpot": "NỔ HŨ",

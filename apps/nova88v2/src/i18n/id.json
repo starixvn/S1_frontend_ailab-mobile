@@ -201,6 +201,9 @@
 	"lbl_Jackpot": "Jackpot",
 	"lbl_Gaming_License": "Lisensi Resmi",
 	"lbl_OK": "OK",
+	"lbl_MaximumFileSizeEach": "Ukuran maksimal setiap file adalah 4 MB",
+	"lbl_MaximumNumberOfFiles": "Jumlah file maksimal : 6",
+	"lbl_AcceptedFileType": "Jenis file yang dapat diterima: JPG, JPEG, PNG, GIF",
 
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Odds",
@@ -305,6 +308,7 @@
 	"lbl_BuyFeaturesGames": "Beli Fitur Game",
 	"lbl_Megaways": "Megaways",
 	"lbl_MyFavorite": "Favorit",
+
 	"-==================-==========================Setting-===================================": "",
 	"lbl_Logout": "Logout",
 	"lbl_MyAccount": "Akun Saya",
