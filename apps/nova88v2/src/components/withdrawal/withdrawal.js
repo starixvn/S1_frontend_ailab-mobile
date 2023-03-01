@@ -15,7 +15,7 @@ import {
 } from "../common/common";
 import InputBox from "../common/inputbox.hint";
 import { defIptStatus } from "../common/inputStatus";
-import { cloudImgURL } from "../../config";
+import { paymentImgURL } from "../../config";
 import RecentDatas from "./withdrawal.recentDatas";
 import ReloadSpin from "../common/reloadSpin";
 import path from "../../path";
@@ -667,7 +667,7 @@ const Panel = () => {
 				data-testid="bank-icon"
 				onClick={SelectBank.bind(this, b)}>
 				<img
-					src={`${cloudImgURL}/SiteSkin/img/BankLogo/${b.bankLogo?.toLowerCase()}`}
+					src={`${paymentImgURL}/square/${b.bankLogo?.toLowerCase()}`}
 					alt={b.bankName}
 				/>
 			</button>

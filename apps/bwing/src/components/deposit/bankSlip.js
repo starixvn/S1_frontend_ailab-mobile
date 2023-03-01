@@ -11,7 +11,7 @@ import {
 	api_UploadReceipt
 	// api_SetDepositReceipt
 } from "../../service/api/payment";
-import config from "../../config";
+import { paymentImgUrl } from "../../config";
 import { number_format } from "../common/common";
 
 const GetUploadFileName = files => {
@@ -247,9 +247,7 @@ class Content extends Component {
 									)
 								}>
 								<img
-									src={`${
-										config.imgUrl
-									}/common/images/BankLogo/${bankSlipPopBox.bankLogo?.toLowerCase()}`}
+									src={`${paymentImgUrl}/${bankSlipPopBox.bankLogo?.toLowerCase()}`}
 									alt={bankSlipPopBox.bankName}
 								/>
 								<span>{bankSlipPopBox.bankName}</span>

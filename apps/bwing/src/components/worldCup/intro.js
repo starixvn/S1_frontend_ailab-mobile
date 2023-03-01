@@ -9,12 +9,12 @@ const Intro = () => {
 		<>
 			<img
 				className="banner"
-				src={`${bannerImgUrl}/img/worldcup/h5bg.png`}
+				src={`${bannerImgUrl}/h5/img/worldcup/h5bg.png`}
 				alt=""
 			/>
 			<img
 				className="logo"
-				src={`${bannerImgUrl}/img/worldcup/logo.png`}
+				src={`${bannerImgUrl}/h5/img/event/worldcup/logo.png`}
 				alt=""
 			/>
 			<div className="txtBox">
@@ -29,7 +29,7 @@ const Intro = () => {
 			</div>
 			<img
 				className="topwire"
-				src={`${bannerImgUrl}/img/worldcup/topwire.png`}
+				src={`${bannerImgUrl}/h5/img/worldcup/topwire.png`}
 				alt=""
 			/>
 			<div className="title">Discover Qatar Stadiums</div>
@@ -37,7 +37,7 @@ const Intro = () => {
 				<div className="list">
 					<div className="item">
 						<img
-							src={`${bannerImgUrl}/img/worldcup/stadium1.jpg`}
+							src={`${bannerImgUrl}/h5/img/worldcup/stadium1.jpg`}
 							alt=""
 						/>
 						<div className="hoverBox">
@@ -53,7 +53,7 @@ const Intro = () => {
 					</div>
 					<div className="item">
 						<img
-							src={`${bannerImgUrl}/img/worldcup/stadium2.jpg`}
+							src={`${bannerImgUrl}/h5/img/worldcup/stadium2.jpg`}
 							alt=""
 						/>
 						<div className="hoverBox">
@@ -69,7 +69,7 @@ const Intro = () => {
 					</div>
 					<div className="item">
 						<img
-							src={`${bannerImgUrl}/img/worldcup/stadium3.jpg`}
+							src={`${bannerImgUrl}/h5/img/worldcup/stadium3.jpg`}
 							alt=""
 						/>
 						<div className="hoverBox">
@@ -82,7 +82,7 @@ const Intro = () => {
 					</div>
 					<div className="item">
 						<img
-							src={`${bannerImgUrl}/img/worldcup/stadium4.jpg`}
+							src={`${bannerImgUrl}/h5/img/worldcup/stadium4.jpg`}
 							alt=""
 						/>
 						<div className="hoverBox">
@@ -97,7 +97,7 @@ const Intro = () => {
 			</div>
 			<img
 				className="topwire"
-				src={`${bannerImgUrl}/img/worldcup/topwire.png`}
+				src={`${bannerImgUrl}/h5/img/worldcup/topwire.png`}
 				alt=""
 			/>
 			<div className="title">Discover Qatar Player</div>
@@ -105,7 +105,7 @@ const Intro = () => {
 				<div className="list">
 					<div className="item">
 						<img
-							src={`${bannerImgUrl}/img/worldcup/player1.png`}
+							src={`${bannerImgUrl}/h5/img/worldcup/player1.png`}
 							alt=""
 						/>
 						<div className="hoverBox">
@@ -115,7 +115,7 @@ const Intro = () => {
 								<span>Age: 24</span>
 								<span>Score: 26 Goals</span>
 								<img
-									src={`${bannerImgUrl}/img/worldcup/team1.png`}
+									src={`${bannerImgUrl}/h5/img/worldcup/team1.png`}
 									alt=""
 								/>
 							</div>
@@ -123,7 +123,7 @@ const Intro = () => {
 					</div>
 					<div className="item">
 						<img
-							src={`${bannerImgUrl}/img/worldcup/player2.png`}
+							src={`${bannerImgUrl}/h5/img/worldcup/player2.png`}
 							alt=""
 						/>
 						<div className="hoverBox">
@@ -133,7 +133,7 @@ const Intro = () => {
 								<span>Age: 35</span>
 								<span>Score: 81 Goals</span>
 								<img
-									src={`${bannerImgUrl}/img/worldcup/team2.png`}
+									src={`${bannerImgUrl}/h5/img/worldcup/team2.png`}
 									alt=""
 								/>
 							</div>
@@ -141,7 +141,7 @@ const Intro = () => {
 					</div>
 					<div className="item">
 						<img
-							src={`${bannerImgUrl}/img/worldcup/player3.png`}
+							src={`${bannerImgUrl}/h5/img/worldcup/player3.png`}
 							alt=""
 						/>
 						<div className="hoverBox active">
@@ -151,7 +151,7 @@ const Intro = () => {
 								<span>Age: 37</span>
 								<span>Score: 115 Goals</span>
 								<img
-									src={`${bannerImgUrl}/img/worldcup/team3.png`}
+									src={`${bannerImgUrl}/h5/img/worldcup/team3.png`}
 									alt=""
 								/>
 							</div>
@@ -159,7 +159,7 @@ const Intro = () => {
 					</div>
 					<div className="item">
 						<img
-							src={`${bannerImgUrl}/img/worldcup/player4.png`}
+							src={`${bannerImgUrl}/h5/img/worldcup/player4.png`}
 							alt=""
 						/>
 						<div className="hoverBox">
@@ -169,7 +169,7 @@ const Intro = () => {
 								<span>Age: 30</span>
 								<span>Score: 71 Goals</span>
 								<img
-									src={`${bannerImgUrl}/img/worldcup/team4.png`}
+									src={`${bannerImgUrl}/h5/img/worldcup/team4.png`}
 									alt=""
 								/>
 							</div>
@@ -179,7 +179,7 @@ const Intro = () => {
 			</div>
 			<img
 				className="topwire"
-				src={`${bannerImgUrl}/img/worldcup/topwire.png`}
+				src={`${bannerImgUrl}/h5/img/worldcup/topwire.png`}
 				alt=""
 			/>
 		</>

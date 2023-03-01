@@ -28,6 +28,8 @@ export const siteInfo = langId => {
 };
 
 export const bannerImgUrl = "https://banner.goal123.org";
+export const sportsImgUrl = "http://sportsimgs.goal123.org";
+export const paymentImgUrl = "https://payment.goal123.org";
 export const cloudImgURL = "https://image.0814media.net";
 export const usdtImgUrl = "https://payment.goal123.org";
 
@@ -37,8 +39,9 @@ export default process.env.NODE_ENV === "production"
 			apiURL: "",
 			openURL: "",
 			imgUrl: "",
-			t_and_cURL: "https://image.0814media.net",
-			bannerImgUrl
+			t_and_cURL: "https://banner.goal123.org",
+			bannerImgUrl,
+			paymentImgUrl
 	  }
 	: {
 			siteName,
@@ -50,7 +53,8 @@ export default process.env.NODE_ENV === "production"
 
 			apiURL: "",
 			imgUrl: "https://stag.goal123.com",
-			t_and_cURL: "https://image.0814media.net",
+			t_and_cURL: "https://banner.goal123.org",
 			openURL: "",
-			bannerImgUrl
+			bannerImgUrl,
+			paymentImgUrl
 	  };

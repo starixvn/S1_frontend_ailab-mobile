@@ -9,7 +9,7 @@ import {
 	popBoxContext,
 	loadingContext
 } from "../common/context";
-import { cloudImgURL } from "../../config";
+import { paymentImgURL } from "../../config";
 import api from "../../service/api";
 import AddBankPanel from "./bankInfo.add";
 import VIPLevel from "../common/vipLevel";
@@ -195,7 +195,7 @@ const BankInfo = ({ prevPage }) => {
 				title={item.bankName}
 				accountNo={item.accountNo}
 				removeAccountHandler={removeAccountHandler.bind(null, item)}
-				image={`${cloudImgURL}/SiteSkin/img/BankLogo/${item.image?.toLowerCase()}`}
+				image={`${paymentImgURL}/square/${item.image?.toLowerCase()}`}
 				i18n={i18n}
 				ifscCode={item?.ifscCode}
 				currencyId={userInfo.currencyId}

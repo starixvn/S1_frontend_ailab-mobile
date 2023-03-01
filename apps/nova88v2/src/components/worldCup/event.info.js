@@ -32,7 +32,7 @@ const Info = ({
 			<div className="event-info">
 				<div className="userInfo">
 					<img
-						src={`${cloudBannerImgURL}/img/worldcup/user.svg`}
+						src={`${cloudBannerImgURL}/h5/img/event/worldcup/user.svg`}
 						alt=""
 					/>
 					{userName}
