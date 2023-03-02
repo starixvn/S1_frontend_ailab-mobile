@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import profileIcon from "../../styles/img/profile.svg";
-import emailIcon from "../../styles/img/email.svg";
-import phoneIcon from "../../styles/img/phone.svg";
 import { number_format, isConvert } from "../common/common";
+import { bannerImgUrl } from "../../config";
 
 const safety = {
 	displayKey: "",
@@ -82,7 +80,10 @@ const VerificationPanel = ({
                             ${accountName ? " active" : ""}
                             ${infoOpenCol === infoCol.profile ? " open" : ""}`}
 						onClick={clickInfo.bind(this, infoCol.profile)}>
-						<img src={profileIcon} alt="Profile Verification" />
+						<img
+							src={`${bannerImgUrl}/h5/img/profile.svg`}
+							alt="Profile Verification"
+						/>
 						{accountName ? (
 							<i className="icon icon-checkmark" />
 						) : null}
@@ -98,7 +99,10 @@ const VerificationPanel = ({
                             ${emailVerified ? " active" : ""}
                             ${infoOpenCol === infoCol.email ? " open" : ""}`}
 						onClick={clickInfo.bind(this, infoCol.email)}>
-						<img src={emailIcon} alt="Email Verification" />
+						<img
+							src={`${bannerImgUrl}/h5/img/email.svg`}
+							alt="Email Verification"
+						/>
 						{emailVerified ? (
 							<i className="icon icon-checkmark" />
 						) : (
@@ -120,7 +124,10 @@ const VerificationPanel = ({
                             ${phoneVerified ? " active" : ""}
                             ${infoOpenCol === infoCol.phone ? " open" : ""}`}
 						onClick={clickInfo.bind(this, infoCol.phone)}>
-						<img src={phoneIcon} alt="Phone Number Verfication" />
+						<img
+							src={`${bannerImgUrl}/h5/img/phone.svg`}
+							alt="Phone Number Verfication"
+						/>
 						{phoneVerified ? (
 							<i className="icon icon-checkmark" />
 						) : (

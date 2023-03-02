@@ -23,7 +23,7 @@ import {
 	infoList,
 	otpCol
 } from "./profile.def";
-import verifiedIcon from "../../styles/img/protection.png";
+import { bannerImgUrl } from "../../config";
 
 const countryCode = {
 	51: "VN"
@@ -678,7 +678,12 @@ const ColumnItem = ({
 			<span className="title">{title}</span>
 			<span>
 				{content}
-				{isVerified && <img src={verifiedIcon} alt="Verified" />}
+				{isVerified && (
+					<img
+						src={`${bannerImgUrl}/h5/img/protection.png`}
+						alt="Verified"
+					/>
+				)}
 			</span>
 			{!isVerified && Object.values(otpCol).includes(infoTitle) && (
 				<button

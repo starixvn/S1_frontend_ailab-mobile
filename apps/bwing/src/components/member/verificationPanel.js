@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import coinIcon from "../../styles/img/coinimg.png";
 import { number_format, isConvert } from "../common/common";
+import { bannerImgUrl } from "../../config";
 
 const infoCol = {
 	profile: "accountName",
@@ -100,21 +100,30 @@ const VerificationPanel = ({
 								accountName ? " active" : ""
 							}`}
 							onClick={clickInfo.bind(this, infoCol.profile)}>
-							<img src={coinIcon} alt="coin" />
+							<img
+								src={`${bannerImgUrl}/mobile/img/coinimg.png`}
+								alt="coin"
+							/>
 						</button>
 						<button
 							className={`icon icon-email${
 								emailVerified ? " active" : ""
 							}`}
 							onClick={clickInfo.bind(this, infoCol.email)}>
-							<img src={coinIcon} alt="coin" />
+							<img
+								src={`${bannerImgUrl}/mobile/img/coinimg.png`}
+								alt="coin"
+							/>
 						</button>
 						<button
 							className={`icon icon-mobile${
 								phoneVerified ? " active" : ""
 							}`}
 							onClick={clickInfo.bind(this, infoCol.phone)}>
-							<img src={coinIcon} alt="coin" />
+							<img
+								src={`${bannerImgUrl}/mobile/img/coinimg.png`}
+								alt="coin"
+							/>
 						</button>
 					</div>
 					<div className={`hint${infoOpenCol ? " active" : ""}`}>
