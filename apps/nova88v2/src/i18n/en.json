@@ -308,6 +308,7 @@
 	"lbl_BuyFeaturesGames": "Buy Features Games",
 	"lbl_Megaways": "Megaways",
 	"lbl_MyFavorite": "My Favorite",
+	"lbl_Mini": "Mini",
 
 	"==============================================Setting====================================": "",
 
@@ -413,7 +414,7 @@
 	"lbl_PhoneVerificationHint2": "and earn reward of {currency} {amount}",
 	"lbl_EmailOTPHint": "Email Verification Code has been sent to your registered mail box.",
 	"lbl_EmailVerifiedMsg": "Awesome! Your Email has been verified!",
-  "lbl_PhoneNumberErrorTip": "Phone number you entered is incorrect, should be between {{digitalArea}} digits",
+	"lbl_PhoneNumberErrorTip": "Phone number you entered is incorrect, should be between {{digitalArea}} digits",
 
 	"==============================================Shipping====================================": "",
 	"lbl_Shipping_Address": "Shipping Address",
@@ -775,7 +776,7 @@
 	"lbl_EWallet": "E-Wallet",
 	"lbl_AddEWallet": "Add E-Wallet",
 	"lbl_EWallet_Hint": "Please note: E-Wallet Account must be verified.",
-  "lbl_EWalletAccountNumber": "E-wallet Account Number",
+	"lbl_EWalletAccountNumber": "E-wallet Account Number",
 	"==============Crypto Wallet==============": "",
 	"lbl_CryptoPay": "Crypto",
 	"lbl_CryptoWallet": "Crypto Wallet",

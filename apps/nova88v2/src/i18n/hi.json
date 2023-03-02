@@ -200,7 +200,7 @@
 	"lbl_Jackpot": "जैकपोट",
 	"lbl_Gaming_License": "गेमिंग लाइसेंस",
 	"lbl_OK": "OK",
-	
+
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "अंतर",
 	"lbl_Handicap": "एचडीपी",
@@ -304,6 +304,8 @@
 	"lbl_BuyFeaturesGames": "फीचर गेम खरीदें",
 	"lbl_Megaways": "मेगावे",
 	"lbl_MyFavorite": "मेरे पसंदीदा",
+	"lbl_Mini": "Mini",
+
 	"==============================================Setting====================================": "",
 
 	"lbl_Logout": "लॉग आउट",
@@ -408,7 +410,7 @@
 	"lbl_PhoneVerificationHint2": "और {currency} {amount} का पुरस्कार अर्जित करें।",
 	"lbl_EmailOTPHint": "ईमेल सत्यापन कोड आपके पंजीकृत मेल बॉक्स पर भेज दिया गया है।",
 	"lbl_EmailVerifiedMsg": "बहुत बढ़िया! आपका ईमेल सत्यापित हो गया है!",
-  "lbl_PhoneNumberErrorTip": "दर्ज किया गया फ़ोन नंबर {{digitalArea}} अंकों का होना चाहिए",
+	"lbl_PhoneNumberErrorTip": "दर्ज किया गया फ़ोन नंबर {{digitalArea}} अंकों का होना चाहिए",
 
 	"==============================================Shipping====================================": "",
 	"lbl_Shipping_Address": "शिपिंग पता",
