@@ -33,6 +33,7 @@ import {
 	currencyToAreacode,
 	reCaptchaEnum
 } from "./join.def";
+import useShieldCheck from "../hook/useShieldCheck";
 
 const Join = () => {
 	const navigate = useNavigate();
@@ -48,6 +49,7 @@ const Join = () => {
 	const [promoPopup, setPromoPopup] = useState(false);
 	const [reCaptchaToken, setReCaptchaToken] = useState("");
 	const isMountedRef = useRef(null);
+	const { getShieldData, saveShieldData, isShieldLoaded } = useShieldCheck();
 	const [reCaptchaKey, setReCaptchaKey] = useState(0);
 	const currencyToCountryCode = currencyToAreacode[51];
 	const _areaCode = areaCode[currencyToCountryCode]?.AreaCode;
@@ -91,6 +93,9 @@ const Join = () => {
 					});
 				}
 			);
+			if (isShieldLoaded) {
+				getShieldData();
+			}
 		}
 	}, [nav, userInfo.langId]);
 
@@ -344,6 +349,7 @@ const Join = () => {
 											});
 										}
 										setUserInfo(_user);
+										saveShieldData();
 										navigate(`/${path.deposit.root}`);
 									}
 								},
