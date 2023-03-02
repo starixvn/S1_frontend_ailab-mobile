@@ -58,7 +58,7 @@ pipeline {
                                 env.version = sh (script: 'git rev-parse --short=7 HEAD', returnStdout: true).trim()
                             }
                             sh 'sudo docker build --build-arg project_name=${project_name} -t ${harbor_registry}:${version} . '
-                            sh 'sudo docker login 13.213.82.69 -u admin -p 1ye7Bu46'
+                            sh 'sudo docker login 13.213.82.69 -u jenkins -p 06ftJ0Ds'
                             sh 'sudo docker push ${harbor_registry}:${version}'
                             sh 'sudo docker rmi ${harbor_registry}:${version}'
                         }
@@ -67,4 +67,4 @@ pipeline {
             }
         }
     }
-}       
+}
