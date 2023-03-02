@@ -30,7 +30,7 @@ const Records = ({
 
 	const generateMonthItems = () => {
 		const today = moment().format("YYYY-MM");
-		const dataStart = moment("2021-08");
+		const dataStart = moment("2023-01");
 		const dataEnd = moment(today);
 		const monthsList = [];
 
