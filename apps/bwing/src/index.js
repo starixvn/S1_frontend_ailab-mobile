@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { render } from "react-snapshot";
 import { Helmet } from "react-helmet";
 import App from "./app";
@@ -9,6 +9,11 @@ import "./styles/css/style-dark.css";
 import "./styles/css/style.css";
 import "./styles/css/font.css";
 import "./styles/css/swiper.css";
+import { siteId } from "./config";
+import { api_shield_GetEndpoint } from "./service/api/shield";
+import useShieldCheck, {
+	SHIELD_SITE_ID
+} from "./components/hook/useShieldCheck";
 
 const GTM = () => {
 	return (
@@ -47,10 +52,49 @@ const GTM = () => {
 	);
 };
 
+const Shield = () => {
+	const { getShieldData } = useShieldCheck();
+	const [endpoint, setEndpoint] = useState("");
+
+	useEffect(() => {
+		api_shield_GetEndpoint({ siteId }).then(res => {
+			const { errorCode, data } = res.data;
+			if (errorCode === 0) {
+				const _endpoint = data?.endpoint;
+				setEndpoint(_endpoint);
+			}
+		});
+	}, []);
+
+	return (
+		<Helmet>
+			<script
+				language="javascript"
+				src={`https://d1cr9zxt7u0sgu.cloudfront.net/shdfp.js?SITE_ID=${SHIELD_SITE_ID}&TYPE=JS&DE=1&AUTO=0`}
+				type="text/javascript"
+				async
+				charSet="UTF-8"
+				onLoad={getShieldData}
+			/>
+			(
+			<noscript>
+				{`<iframe
+					src="${endpoint}/shield-fp /v1/api/web/noscript?site_id=${SHIELD_SITE_ID}"
+					width="0"
+					height="0"
+					style="display:none"
+				/>`}
+			</noscript>
+			)
+		</Helmet>
+	);
+};
+
 const Content = () => {
 	return (
 		<React.StrictMode>
 			{/* <GTM /> */}
+			<Shield />
 			<App />
 		</React.StrictMode>
 	);
