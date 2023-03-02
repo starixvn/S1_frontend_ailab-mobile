@@ -348,7 +348,7 @@ const Payment = props => {
 				mainKey={`deposit-full-${payType}-groupList`}
 				imgKey="groupName"
 				idKey="groupId"
-        prefixImgUrl={`${paymentImgURL}/`}
+				prefixImgUrl={`${paymentImgURL}/`}
 				displayKey="groupName"
 				_isConvert={_isConvert}
 				i18n={i18n}
@@ -363,7 +363,7 @@ const Payment = props => {
 				imgKey={defCurrenyId.BDT ? "channelName" : "payName"}
 				idKey="channelId"
 				bindFullObj={true}
-        prefixImgUrl={`${paymentImgURL}/`}
+				prefixImgUrl={`${paymentImgURL}/`}
 				displayKey="channelName"
 				_isConvert={_isConvert}
 				i18n={i18n}

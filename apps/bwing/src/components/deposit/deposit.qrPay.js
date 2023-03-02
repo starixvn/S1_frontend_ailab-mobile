@@ -202,7 +202,7 @@ const Payment = props => {
 				imgKey="groupName"
 				idKey="channelId"
 				bindFullObj={true}
-        prefixImgUrl={`${paymentImgUrl}/`}
+				prefixImgUrl={`${paymentImgUrl}/`}
 				i18n={i18n}
 				displayKey="channelName"
 				showMinMaxHint={true}

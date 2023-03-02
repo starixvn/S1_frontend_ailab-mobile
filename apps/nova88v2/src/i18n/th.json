@@ -306,6 +306,8 @@
 	"lbl_BuyFeaturesGames": "ซื้อฟีเจอร์เกมส์",
 	"lbl_Megaways": "Megaways",
 	"lbl_MyFavorite": "รายการโปรดของฉัน",
+	"lbl_Mini": "Mini",
+
 	"-==================-==========================Setting-===================================": "",
 	"lbl_Logout": "ออกจากระบบ",
 	"lbl_MyAccount": "บัญชีของฉัน",
@@ -407,7 +409,7 @@
 	"lbl_PhoneVerificationHint2": " {currency} {amount}",
 	"lbl_EmailOTPHint": "รหัสยืนยันอีเมลถูกส่งไปยังกล่องจดหมายที่คุณลงทะเบียนแล้ว",
 	"lbl_EmailVerifiedMsg": "สุดยอด! อีเมลของคุณได้รับการยืนยันแล้ว!",
-  "lbl_PhoneNumberErrorTip": "หมายเลขโทรศัพท์ที่คุณกรอกไม่ถูกต้อง ระหว่าง {{digitalArea}} หลัก",
+	"lbl_PhoneNumberErrorTip": "หมายเลขโทรศัพท์ที่คุณกรอกไม่ถูกต้อง ระหว่าง {{digitalArea}} หลัก",
 	"==============================================Shipping====================================": "",
 	"lbl_Shipping_Address": "ที่อยู่จัดส่ง",
 	"lbl_Option2": "ไม่บังคับ",
