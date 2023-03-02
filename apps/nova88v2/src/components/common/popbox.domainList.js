@@ -37,7 +37,7 @@ const DomainListPop = ({ domainList }) => {
 	return (
 		<div className="popTxt">
 			<img
-				src={`${cloudBannerImgURL}/img/backupDomain/backupDomain_${validImgLang(
+				src={`${cloudBannerImgURL}/h5/img/backupDomain/backupDomain_${validImgLang(
 					userInfo.langId
 				)}.jpg`}
 				alt="STAY ACCESSIBLE Anytime, Anywhere"
