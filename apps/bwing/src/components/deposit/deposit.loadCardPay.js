@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
-import config, { bannerImgUrl } from "../../config";
+import config, { bannerImgUrl, paymentImgUrl } from "../../config";
 import { isConvert, number_format, getWindowOpenUrl } from "../common/common";
 import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";

@@ -6,7 +6,7 @@ import {
 	popBoxContext,
 	loadingContext
 } from "../common/context";
-import config, { paymentImgURL } from "../../config";
+import config, { cloudImgURL, paymentImgURL } from "../../config";
 import { isConvert, number_format, defCurrenyId } from "../common/common";
 import api from "../../service/api";
 import GroupList from "./deposit.groupList";
