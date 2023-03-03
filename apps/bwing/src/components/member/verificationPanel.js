@@ -101,7 +101,7 @@ const VerificationPanel = ({
 							}`}
 							onClick={clickInfo.bind(this, infoCol.profile)}>
 							<img
-								src={`${bannerImgUrl}/mobile/img/coinimg.png`}
+								src={`${bannerImgUrl}/h5/img/coinimg.png`}
 								alt="coin"
 							/>
 						</button>
@@ -111,7 +111,7 @@ const VerificationPanel = ({
 							}`}
 							onClick={clickInfo.bind(this, infoCol.email)}>
 							<img
-								src={`${bannerImgUrl}/mobile/img/coinimg.png`}
+								src={`${bannerImgUrl}/h5/img/coinimg.png`}
 								alt="coin"
 							/>
 						</button>
@@ -121,7 +121,7 @@ const VerificationPanel = ({
 							}`}
 							onClick={clickInfo.bind(this, infoCol.phone)}>
 							<img
-								src={`${bannerImgUrl}/mobile/img/coinimg.png`}
+								src={`${bannerImgUrl}/h5/img/coinimg.png`}
 								alt="coin"
 							/>
 						</button>
