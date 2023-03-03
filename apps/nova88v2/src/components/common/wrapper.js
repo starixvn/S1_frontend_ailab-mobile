@@ -13,7 +13,8 @@ import {
 	setCookie,
 	deleteCookie,
 	readCookie,
-	langMappingCurr
+	langMappingCurr,
+	defCurrenyId
 } from "./common";
 import i18nConfig from "../../i18n/config";
 import api from "../../service/api";
@@ -52,7 +53,7 @@ export const getDefaultCurrencyId = () => {
 
 	const langId = defaultPathLang();
 	if (langId !== "en" && langId !== "cs") {
-		result = langMappingCurr[langId];
+		result = defCurrenyId[langMappingCurr[langId]];
 	}
 
 	const cookieCurrencyId = readCookie(siteInfo()?.currencyCookie);
