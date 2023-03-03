@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useContext } from "react";
 import { popBoxContext, i18nContext } from "Context";
 import api from "../../service/api";
+import { defCurrenyId } from "../common/common";
 
 export const defDisplayPage = {
 	Home: 1,
@@ -32,6 +33,9 @@ const useGetSocialChannel = ({ langId, currencyId, displayPage }) => {
 	const [socialChannel, setSocialChannel] = useState([]);
 	const isMountedRef = useRef(null);
 
+	// 避免送 null
+	const defaultLang = langId ?? "en";
+	const defaultCurrencyId = currencyId ?? defCurrenyId.MYR;
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => {
@@ -42,8 +46,8 @@ const useGetSocialChannel = ({ langId, currencyId, displayPage }) => {
 	const getChannel = async () => {
 		await api.site
 			.GetSocialChannel({
-				langId,
-				currencyId,
+				langId: defaultLang,
+				currencyId: defaultCurrencyId,
 				displayPage
 			})
 			.then(
