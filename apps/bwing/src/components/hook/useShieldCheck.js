@@ -4,7 +4,7 @@ import { api_shield_ShieldRiskCheck } from "../../service/api/shield";
 
 export const SHIELD_SITE_ID = "b5626627447a18bbf8cab1510a2c59cda2442fa2";
 
-export const SHIELD_SITE_ID_SCRIPT = `https://d1cr9zxt7u0sgu.cloudfront.net/shdfp.js?SITE_ID=${SHIELD_SITE_ID}&TYPE=JS&DE=1&AUTO=0`;
+const shieldScript = `https://d1cr9zxt7u0sgu.cloudfront.net/shdfp.js?SITE_ID=${SHIELD_SITE_ID}&TYPE=JS&DE=1&AUTO=0`;
 
 const is_firefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
 const is_android = navigator.userAgent.toLowerCase().indexOf("android") > -1;
@@ -15,9 +15,7 @@ const useShieldCheck = () => {
 	const scriptNodeList = document.querySelectorAll("script");
 	const scriptArr = Array.from(scriptNodeList);
 
-	const isShieldLoaded = scriptArr.find(
-		el => el.src === SHIELD_SITE_ID_SCRIPT
-	);
+	const isShieldLoaded = scriptArr.find(el => el.src === shieldScript);
 
 	const android_firefox = is_firefox && is_android;
 
