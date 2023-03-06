@@ -50,8 +50,8 @@ const setPromotionCards = ({
 		const _isClaimed = isClaimed(p);
 		const _isNew = _isClaimed ? false : isNew(p);
 		const isDisplay =
-			moment.unix(p.displayFrom).utc().diff(moment().utc()) <= 0 &&
-			moment.unix(p.displayTo).utc().diff(moment().utc()) >= 0;
+			moment.unix(p.displayFrom).utc().diff(moment()) <= 0 &&
+			moment.unix(p.displayTo).utc().diff(moment()) >= 0;
 
 		return (
 			isDisplay && (
