@@ -27,10 +27,10 @@ const Promos = ({ i18n, userInfo }) => {
 			displayFrom,
 			displayTo
 		} = promo;
-		// * 後端給的 timestamp 格式為 +0, 因此前端的比較時間皆轉成 utc 做判斷
+		const timezone = moment().format("Z");
 		const isDisplay =
-			moment.unix(displayFrom).utc().diff(moment()) <= 0 &&
-			moment.unix(displayTo).utc().diff(moment()) >= 0;
+			moment.unix(displayFrom).subtract(timezone).diff(moment()) <= 0 &&
+			moment.unix(displayTo).subtract(timezone).diff(moment()) >= 0;
 
 		return (
 			isDisplay && (
