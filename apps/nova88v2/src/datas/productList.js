@@ -757,14 +757,14 @@ const gameList = ({ langId, currencyId }) => {
 					path: path.casino.root,
 					providerImgName: "pg",
 					sortKey: "slot_PG"
-				},
-				{
-					...defGameInfo.Casino_OW,
-					parameter: defGameInfo.Casino_OW,
-					spanText: "Saba Casino",
-					img: `${cloudBannerImgURL}/h5/img/ow.png`,
-					sortKey: "slot_OW"
 				}
+				// {
+				// 	...defGameInfo.Casino_OW,
+				// 	parameter: defGameInfo.Casino_OW,
+				// 	spanText: "Saba Casino",
+				// 	img: `${cloudBannerImgURL}/h5/img/ow.png`,
+				// 	sortKey: "slot_OW"
+				// }
 			]
 		},
 		{
