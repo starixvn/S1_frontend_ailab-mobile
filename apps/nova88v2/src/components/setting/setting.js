@@ -13,9 +13,9 @@ import { LOGOUT } from "../../service/auth";
 // import ThemeMode from "./setting.themeMode";
 import path from "../../path";
 import SiteURL, { siteInfo, cloudBannerImgURL } from "../../config";
-import TandC from "../../service/t_and_c";
 import { getLeaderBoardSupportCurrencyId } from "../ranking/def";
 import allowedCurrencyList from "../../datas/allowedCurrencyList";
+import { getCombineLangId } from "../common/common";
 
 const BtnBar = ({ isLogin, i18n, msgCount, langId }) => {
 	return isLogin ? (
@@ -197,25 +197,37 @@ export default () => {
 				</Card>
 				<Card btnTitle={i18n.lbl_OurPolicies} btnClass="icon-policies">
 					<a
-						href={TandC(userInfo.langId).OurPolicies}
+						href={`${cloudBannerImgURL}/Static/${getCombineLangId(
+							userInfo.langId,
+							_currencyId
+						)}/ResposibleGaming.html`}
 						target="_blank"
 						rel="noreferrer noopener">
 						{i18n.lbl_ResposibleGaming}
 					</a>
 					<a
-						href={TandC(userInfo.langId).terms}
+						href={`${cloudBannerImgURL}/Static/${getCombineLangId(
+							userInfo.langId,
+							_currencyId
+						)}/TermsConditions.html`}
 						target="_blank"
 						rel="noreferrer noopener">
 						{i18n.lbl_TermsConditions}
 					</a>
 					<a
-						href={TandC(userInfo.langId).PrivacyPolicy}
+						href={`${cloudBannerImgURL}/Static/${getCombineLangId(
+							userInfo.langId,
+							_currencyId
+						)}/PrivacyPolicy.html`}
 						target="_blank"
 						rel="noreferrer noopener">
 						{i18n.lbl_PrivacyPolicy}
 					</a>
 					<a
-						href={TandC(userInfo.langId).CookiePolicy}
+						href={`${cloudBannerImgURL}/Static/${getCombineLangId(
+							userInfo.langId,
+							_currencyId
+						)}/CookiePolicy.html`}
 						target="_blank"
 						rel="noreferrer noopener">
 						{i18n.lbl_CookiePolicy}
@@ -223,19 +235,28 @@ export default () => {
 				</Card>
 				<Card btnTitle={i18n.lbl_HelpSupport} btnClass="icon-question">
 					<a
-						href={TandC(userInfo.langId).RuleRegulations}
+						href={`${cloudBannerImgURL}/Static/${getCombineLangId(
+							userInfo.langId,
+							_currencyId
+						)}/RulesandRegulations.html`}
 						target="_blank"
 						rel="noreferrer noopener">
 						{i18n.lbl_RuleRegulations}
 					</a>
 					<a
-						href={TandC(userInfo.langId).AccountTerms}
+						href={`${cloudBannerImgURL}/Static/${getCombineLangId(
+							userInfo.langId,
+							_currencyId
+						)}/AccountTerms.html`}
 						target="_blank"
 						rel="noreferrer noopener">
 						{i18n.lbl_AccountTerms}
 					</a>
 					<a
-						href={TandC(userInfo.langId).FAQ}
+						href={`${cloudBannerImgURL}/Static/${getCombineLangId(
+							userInfo.langId,
+							_currencyId
+						)}/FAQ.html`}
 						target="_blank"
 						rel="noreferrer noopener">
 						{i18n.lbl_FAQ}
@@ -245,7 +266,10 @@ export default () => {
 					btnTitle={siteInfo(userInfo.langId).siteName}
 					btnClass="icon-nova88">
 					<a
-						href={TandC(userInfo.langId).AboutUs}
+						href={`${cloudBannerImgURL}/Static/${getCombineLangId(
+							userInfo.langId,
+							_currencyId
+						)}/AboutUs.html`}
 						target="_blank"
 						rel="noreferrer noopener">
 						{i18n.lbl_AboutUs}
@@ -258,7 +282,10 @@ export default () => {
 					</a>
 					<Link to={path.contactUs.root}>{i18n.lbl_ContactUs}</Link>
 					<a
-						href={TandC(userInfo.langId).Terms}
+						href={`${cloudBannerImgURL}/Static/${getCombineLangId(
+							userInfo.langId,
+							_currencyId
+						)}/Terms.html`}
 						target="_blank"
 						rel="noreferrer noopener">
 						{i18n.lbl_Terms}
