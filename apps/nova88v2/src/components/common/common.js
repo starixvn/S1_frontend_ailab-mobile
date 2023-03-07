@@ -196,6 +196,16 @@ export const langMappingCurr = {
 	bd: "BDT"
 };
 
+export const defCurrencyToLangId = {
+	2: "my",
+	3: "global",
+	4: "th",
+	13: "cs",
+	15: "id",
+	61: "hi",
+	74: "bd"
+};
+
 export const GetCurrencyName = ({ langId, currencyId, i18n }) => {
 	const currency = currencyId
 		? currCustomMapping[currencyId] ?? i18n[`Currency_${currencyId}`]
@@ -230,4 +240,23 @@ export const getLocalStorage = key => {
 	const json = localStorage.getItem(key);
 
 	return json ? JSON.parse(json) : undefined;
+};
+
+export const getCombineLangId = (langId, currencyId) => {
+	let combineLangId = "";
+	switch (langId) {
+		case "en":
+			combineLangId = `${defCurrencyToLangId[Number(currencyId)]}_en`;
+			break;
+		case "cs":
+			combineLangId =
+				currencyId === defCurrenyId.CNY
+					? "cs"
+					: `${defCurrencyToLangId[Number(currencyId)]}_cs`;
+			break;
+		default:
+			combineLangId = langId;
+			break;
+	}
+	return combineLangId;
 };

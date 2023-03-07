@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { userInfoContext, i18nContext } from "Context";
-import TandC from "../../service/t_and_c";
-import { siteInfo } from "../../config";
+import { cloudBannerImgURL, siteInfo } from "../../config";
 import Platform from "./other.platform";
+import { getCombineLangId } from "../common/common";
 
 export default () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -30,25 +30,37 @@ export default () => {
 				<div>
 					<span>{i18n.lbl_OurPolicies}</span>
 					<a
-						href={TandC(userInfo.langId).OurPolicies}
+						href={`${cloudBannerImgURL}/Static/${getCombineLangId(
+							userInfo.langId,
+							userInfo.currencyId
+						)}/ResposibleGaming.html`}
 						rel="noopener noreferrer"
 						target="_blank">
 						{i18n.lbl_ResposibleGaming}
 					</a>
 					<a
-						href={TandC(userInfo.langId).terms}
+						href={`${cloudBannerImgURL}/Static/${getCombineLangId(
+							userInfo.langId,
+							userInfo.currencyId
+						)}/TermsConditions.html`}
 						rel="noopener noreferrer"
 						target="_blank">
 						{i18n.lbl_TermsConditions}
 					</a>
 					<a
-						href={TandC(userInfo.langId).PrivacyPolicy}
+						href={`${cloudBannerImgURL}/Static/${getCombineLangId(
+							userInfo.langId,
+							userInfo.currencyId
+						)}/PrivacyPolicy.html`}
 						rel="noopener noreferrer"
 						target="_blank">
 						{i18n.lbl_PrivacyPolicy}
 					</a>
 					<a
-						href={TandC(userInfo.langId).CookiePolicy}
+						href={`${cloudBannerImgURL}/Static/${getCombineLangId(
+							userInfo.langId,
+							userInfo.currencyId
+						)}/CookiePolicy.html`}
 						rel="noopener noreferrer"
 						target="_blank">
 						{i18n.lbl_CookiePolicy}
@@ -57,19 +69,28 @@ export default () => {
 				<div>
 					<span>{i18n.lbl_HelpSupport}</span>
 					<a
-						href={TandC(userInfo.langId).RuleRegulations}
+						href={`${cloudBannerImgURL}/Static/${getCombineLangId(
+							userInfo.langId,
+							userInfo.currencyId
+						)}/RulesandRegulations.html`}
 						rel="noopener noreferrer"
 						target="_blank">
 						{i18n.lbl_RuleRegulations}
 					</a>
 					<a
-						href={TandC(userInfo.langId).AccountTerms}
+						href={`${cloudBannerImgURL}/Static/${getCombineLangId(
+							userInfo.langId,
+							userInfo.currencyId
+						)}/AccountTerms.html`}
 						rel="noopener noreferrer"
 						target="_blank">
 						{i18n.lbl_AccountTerms}
 					</a>
 					<a
-						href={TandC(userInfo.langId).FAQ}
+						href={`${cloudBannerImgURL}/Static/${getCombineLangId(
+							userInfo.langId,
+							userInfo.currencyId
+						)}/FAQ.html`}
 						rel="noopener noreferrer"
 						target="_blank">
 						{i18n.lbl_FAQ}
@@ -85,19 +106,28 @@ export default () => {
 						{i18n.lbl_Affiliate?.toUpperCase()}
 					</a>
 					<a
-						href={TandC(userInfo.langId).AboutUs}
+						href={`${cloudBannerImgURL}/Static/${getCombineLangId(
+							userInfo.langId,
+							userInfo.currencyId
+						)}/AboutUs.html`}
 						rel="noopener noreferrer"
 						target="_blank">
 						{i18n.lbl_AboutUs}
 					</a>
 					<a
-						href={TandC(userInfo.langId).Terms}
+						href={`${cloudBannerImgURL}/Static/${getCombineLangId(
+							userInfo.langId,
+							userInfo.currencyId
+						)}/Terms.html`}
 						rel="noopener noreferrer"
 						target="_blank">
 						{i18n.lbl_Terms}
 					</a>
 					<a
-						href={TandC(userInfo.langId).ContactUs}
+						href={`${cloudBannerImgURL}/Static/${getCombineLangId(
+							userInfo.langId,
+							userInfo.currencyId
+						)}/ContactUs.html`}
 						rel="noopener noreferrer"
 						target="_blank">
 						{i18n.lbl_ContactUs}
