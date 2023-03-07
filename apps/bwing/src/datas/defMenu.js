@@ -317,14 +317,14 @@ export const productList = langId => {
 					path: path.casino.root,
 					icon: "icon icon-PG",
 					displayText: "PG Soft"
-				},
-				{
-					...defGameInfo.Casino_ow,
-					parameter: defGameInfo.Casino_ow,
-					img: `${bannerImgUrl}/h5/img/slot/ow.png`,
-					icon: "icon icon-OW",
-					displayText: "Saba Casino"
 				}
+				// {
+				// 	...defGameInfo.Casino_ow,
+				// 	parameter: defGameInfo.Casino_ow,
+				// 	img: `${bannerImgUrl}/h5/img/slot/ow.png`,
+				// 	icon: "icon icon-OW",
+				// 	displayText: "Saba Casino"
+				// }
 			]
 		},
 		liveCasino: {

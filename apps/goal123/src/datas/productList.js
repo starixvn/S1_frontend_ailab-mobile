@@ -576,13 +576,13 @@ const gameList = [
 				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-pg.png`,
 				path: path.casino.root,
 				providerImgName: "pg"
-			},
-			{
-				...defGameInfo.Casino_ow,
-				parameter: defGameInfo.Casino_ow,
-				spanText: "Saba Casino",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-sc.png`
 			}
+			// {
+			// 	...defGameInfo.Casino_ow,
+			// 	parameter: defGameInfo.Casino_ow,
+			// 	spanText: "Saba Casino",
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-sc.png`
+			// }
 		]
 	},
 	{
