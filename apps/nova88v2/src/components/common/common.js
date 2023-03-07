@@ -156,6 +156,16 @@ export const defCurrencyToClass = {
 	74: "bd"
 };
 
+export const defCurrencyToLang = {
+	2: "my",
+	3: "gb",
+	4: "th",
+	13: "cs",
+	15: "id",
+	61: "hi",
+	74: "bd"
+};
+
 export const currCustomMapping = {
 	2: "MYR",
 	4: "THB",
