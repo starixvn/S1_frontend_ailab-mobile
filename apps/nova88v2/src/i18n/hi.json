@@ -200,7 +200,7 @@
 	"lbl_Jackpot": "जैकपोट",
 	"lbl_Gaming_License": "गेमिंग लाइसेंस",
 	"lbl_OK": "OK",
-	
+
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "अंतर",
 	"lbl_Handicap": "एचडीपी",
@@ -408,7 +408,7 @@
 	"lbl_PhoneVerificationHint2": "और {currency} {amount} का पुरस्कार अर्जित करें।",
 	"lbl_EmailOTPHint": "ईमेल सत्यापन कोड आपके पंजीकृत मेल बॉक्स पर भेज दिया गया है।",
 	"lbl_EmailVerifiedMsg": "बहुत बढ़िया! आपका ईमेल सत्यापित हो गया है!",
-  "lbl_PhoneNumberErrorTip": "दर्ज किया गया फ़ोन नंबर {{digitalArea}} अंकों का होना चाहिए",
+	"lbl_PhoneNumberErrorTip": "दर्ज किया गया फ़ोन नंबर {{digitalArea}} अंकों का होना चाहिए",
 
 	"==============================================Shipping====================================": "",
 	"lbl_Shipping_Address": "शिपिंग पता",
@@ -723,6 +723,7 @@
 	"lbl_EnterYourUPIHint2": "(पेटीएम/फोनपे/गूगलपे...आदि)",
 	"lbl_PleaseEnterUPI": "कृपया UPI दर्ज करें।",
 	"lbl_ScanQR": "क्यूआर स्कैन करें",
+	"lbl_DepositOptions": "जमा करने के विकल्प",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "भुगतान विवरण",

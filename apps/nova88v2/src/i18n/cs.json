@@ -710,6 +710,7 @@
 	"lbl_QRCode": "二维码",
 	"lbl_DuitNowQRNote1": "如果转账后付款未反映在您的钱包中，请联系 CSD。",
 	"lbl_DuitNowQRNote2": "传输后关闭选项卡。",
+	"lbl_DepositOptions": "存款选项",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "付款资讯",
