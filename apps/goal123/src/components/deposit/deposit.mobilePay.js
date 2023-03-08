@@ -17,12 +17,7 @@ import PromoList from "./promoList";
 const payType = "MobilePay";
 
 const Payment = props => {
-	const {
-		paymentList,
-		creditTimeKey,
-		promoList,
-		checkDepositSpecialCode
-	} = props;
+	const { paymentList, promoList, checkDepositSpecialCode } = props;
 
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -188,11 +183,7 @@ const Payment = props => {
 	const _isConvert = isConvert(userInfo.currencyId);
 
 	return (
-		<div className="depositModule_mobile open">
-			<div className="title text-org">
-				{`${i18n.lbl_CreditTime}: ${i18n[creditTimeKey]}`}
-			</div>
-
+		<>
 			<GroupList
 				title={i18n.lbl_PaymentModes}
 				dataList={paymentList}
@@ -207,23 +198,21 @@ const Payment = props => {
 				showMinMaxHint={true}
 				_isConvert={_isConvert}
 			/>
-			{channelList?.length > 1 && (
-				<GroupList
-					title={i18n.lbl_SelectChannel}
-					dataList={channelList}
-					SelectPayment={SelectChannel}
-					selected={selChannel?.channelId}
-					mainKey={`deposit-full-${payType}-channelList`}
-					imgKey="groupName"
-					idKey="channelId"
-					bindFullObj={true}
-					prefixImgUrl={`${paymentImgUrl}/`}
-					i18n={i18n}
-					displayKey="channelName"
-					showMinMaxHint={true}
-					_isConvert={_isConvert}
-				/>
-			)}
+			<GroupList
+				title={i18n.lbl_SelectChannel}
+				dataList={channelList}
+				SelectPayment={SelectChannel}
+				selected={selChannel?.channelId}
+				mainKey={`deposit-full-${payType}-channelList`}
+				imgKey="groupName"
+				idKey="channelId"
+				bindFullObj={true}
+				prefixImgUrl={`${config.imgUrl}/common/images/MobilePay/`}
+				i18n={i18n}
+				displayKey="channelName"
+				showMinMaxHint={true}
+				_isConvert={_isConvert}
+			/>
 			<AmountInput
 				title={i18n.lbl_DepositAmount}
 				channel={selChannel}
@@ -253,7 +242,7 @@ const Payment = props => {
 					{i18n.lbl_Submit}
 				</button>
 			</div>
-		</div>
+		</>
 	);
 };
 
@@ -263,7 +252,6 @@ Payment.defaultProps = {
 
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
-	creditTimeKey: PropTypes.string.isRequired,
 	promoList: PropTypes.arrayOf(PropTypes.object),
 	checkDepositSpecialCode: PropTypes.func.isRequired
 };

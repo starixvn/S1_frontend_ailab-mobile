@@ -1,11 +1,6 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import {
-	i18nContext,
-	userInfoContext,
-	popBoxContext,
-	loadingContext
-} from "../common/context";
+import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import config, { bannerImgUrl, paymentImgUrl } from "../../config";
 import { isConvert, number_format, getWindowOpenUrl } from "../common/common";
 import GroupList from "./deposit.groupList";
@@ -23,16 +18,10 @@ const initCardDataStatus = {
 };
 
 const Payment = props => {
-	const {
-		paymentList,
-		creditTimeKey,
-		promoList,
-		checkDepositSpecialCode
-	} = props;
+	const { paymentList, promoList, checkDepositSpecialCode } = props;
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
-	const { setLoading } = useContext(loadingContext);
 	const [selChannel, setSelChannel] = useState({});
 	const [cardData, setCardData] = useState({ cardCode: "", cardSerial: "" });
 	const [cardDataStatus, setCardDataStatus] = useState(initCardDataStatus);
@@ -69,7 +58,6 @@ const Payment = props => {
 	}, [paymentList.length]);
 
 	const SelectGroup = groupId => {
-		setLoading(true);
 		api_payment_GetLoadCardPayInfoList({ groupId }).then(
 			res => {
 				if (isMountedRef.current) {
@@ -81,7 +69,6 @@ const Payment = props => {
 							content: `[${res.data.errorCode}] ${res.data.message}`
 						});
 					}
-					setLoading(false);
 				}
 			},
 			() => {
@@ -90,7 +77,6 @@ const Payment = props => {
 						isOpen: true,
 						content: i18n.msg_ApiServerError
 					});
-					setLoading(false);
 				}
 			}
 		);
@@ -306,10 +292,9 @@ const Payment = props => {
 		cardData.cardSerial &&
 		amount !== "" &&
 		VaildAmount({ _amount: amount, displayWarning: false });
-	return (
-		<div className="depositModule_mobile open">
-			<div className="title text-org">{`${i18n.lbl_CreditTime}: ${i18n[creditTimeKey]}`}</div>
 
+	return (
+		<>
 			<GroupList
 				title={i18n.lbl_PaymentModes}
 				dataList={paymentList}
@@ -391,7 +376,7 @@ const Payment = props => {
 					{i18n.lbl_Submit}
 				</button>
 			</div>
-		</div>
+		</>
 	);
 };
 
@@ -401,7 +386,6 @@ Payment.defaultProps = {
 
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
-	creditTimeKey: PropTypes.string.isRequired,
 	promoList: PropTypes.arrayOf(PropTypes.object),
 	checkDepositSpecialCode: PropTypes.func.isRequired
 };

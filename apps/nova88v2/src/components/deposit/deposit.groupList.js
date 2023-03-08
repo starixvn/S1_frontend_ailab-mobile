@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { number_format } from "../common/common";
 
 const GroupList = ({
 	mainKey,
@@ -13,15 +14,17 @@ const GroupList = ({
 	bindingItem,
 	prefixImgUrl,
 	imgKeyWithExtension,
-	displayKey,
-	_isConvert,
 	isCrypto,
 	titleClassName,
-	i18n
+	i18n,
+	_isConvert
 }) => {
 	const rows = dataList?.map(data => {
 		const _mainKey = `${mainKey}-${data[idKey]}`;
 		const isSelect = selected === data[idKey];
+
+		const { maxAmount, minAmount } = data;
+
 		const itemLabel = () => {
 			let result;
 			if (isCrypto && title === i18n.lbl_PaymentModes) {
@@ -60,7 +63,25 @@ const GroupList = ({
 					/>
 					<i className="icon icon-icon32px_check" />
 				</div>
-				<div>{itemLabel()}</div>
+				<div className="subtitle">{itemLabel()}</div>
+				{minAmount === null || maxAmount === null ? null : (
+					<div className="subinfo">
+						<span>
+							{`${i18n?.lbl_Min}: ${
+								minAmount === 0
+									? i18n.lbl_Unlimited
+									: number_format(minAmount, _isConvert, 0)
+							}`}
+						</span>
+						<span>
+							{`${i18n?.lbl_Max}: ${
+								maxAmount === 0
+									? i18n.lbl_Unlimited
+									: number_format(maxAmount, _isConvert, 0)
+							}`}
+						</span>
+					</div>
+				)}
 			</div>
 		);
 	});
@@ -87,10 +108,10 @@ GroupList.defaultProps = {
 	bindFullObj: false,
 	imgKeyWithExtension: false,
 	bindingItem: null,
-	displayKey: "",
 	isCrypto: false,
 	titleClassName: "",
-	i18n: {}
+	i18n: {},
+	_isConvert: null
 };
 
 GroupList.propTypes = {
@@ -109,11 +130,10 @@ GroupList.propTypes = {
 	prefixImgUrl: PropTypes.string.isRequired,
 	imgKeyWithExtension: PropTypes.bool,
 	bindingItem: PropTypes.objectOf(PropTypes.any),
-	displayKey: PropTypes.string,
-	_isConvert: PropTypes.bool.isRequired,
 	isCrypto: PropTypes.bool,
 	titleClassName: PropTypes.string,
-	i18n: PropTypes.objectOf(PropTypes.string)
+	i18n: PropTypes.objectOf(PropTypes.string),
+	_isConvert: PropTypes.bool
 };
 
 export default GroupList;
