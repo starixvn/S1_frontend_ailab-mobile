@@ -347,10 +347,7 @@ const Main = props => {
 		props.location.state?.paymentList?.length >= 0
 	);
 	return (
-		<div className="depositModule_Crpyto open">
-			<div className="title text-org icon icon-BTC">
-				{`${i18n.lbl_CreditTime}: ${i18n[props.creditTimeKey]}`}
-			</div>
+		<>
 			<GroupList
 				title={i18n.lbl_PaymentModes}
 				dataList={groupList}
@@ -364,8 +361,6 @@ const Main = props => {
 				displayKey="payName"
 				_isConvert={_isConvert}
 				showMinMaxHint={true}
-				className="info"
-				bankClassName="checkCrypto"
 			/>
 
 			<GroupList
@@ -384,8 +379,6 @@ const Main = props => {
 				_isConvert={_isConvert}
 				showMinMaxHint={true}
 				bindFullObj={true}
-				className="info"
-				bankClassName="checkCrypto"
 			/>
 
 			<AmountInput
@@ -420,7 +413,7 @@ const Main = props => {
 					{i18n.lbl_Submit}
 				</button>
 			</div>
-		</div>
+		</>
 	);
 };
 
@@ -437,8 +430,7 @@ Main.propTypes = {
 	userPaymentData: PropTypes.objectOf(PropTypes.any),
 	handleUserPaymentData: PropTypes.func,
 	promoList: PropTypes.arrayOf(PropTypes.objectOf),
-	checkDepositSpecialCode: PropTypes.func.isRequired,
-	creditTimeKey: PropTypes.string.isRequired
+	checkDepositSpecialCode: PropTypes.func.isRequired
 };
 
 export default Main;

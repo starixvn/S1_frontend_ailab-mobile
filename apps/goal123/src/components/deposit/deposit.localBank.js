@@ -33,12 +33,7 @@ import ImportantNotes from "./importantNote";
 const payType = "localBank";
 
 const Payment = props => {
-	const {
-		paymentList,
-		creditTimeKey,
-		promoList,
-		checkDepositSpecialCode
-	} = props;
+	const { paymentList, promoList, checkDepositSpecialCode } = props;
 
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -462,10 +457,7 @@ const Payment = props => {
 	};
 
 	return (
-		<div className="depositModule_mobile open">
-			<div className="title text-org">
-				{`${i18n.lbl_CreditTime}: ${i18n[creditTimeKey]}`}
-			</div>
+		<>
 			<GroupList
 				title={i18n.lbl_SelectBank}
 				dataList={paymentList}
@@ -534,7 +526,7 @@ const Payment = props => {
 					{isShowSubmit ? i18n.lbl_Submit : i18n.lbl_DepositStatus1}
 				</button>
 			</div>
-		</div>
+		</>
 	);
 };
 
@@ -544,7 +536,6 @@ Payment.defaultProps = {
 
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
-	creditTimeKey: PropTypes.string.isRequired,
 	promoList: PropTypes.arrayOf(PropTypes.object),
 	checkDepositSpecialCode: PropTypes.func.isRequired
 };
@@ -565,6 +556,8 @@ const GroupList = ({
 	_isConvert,
 	i18n
 }) => {
+	const selectedBank = dataList.find(({ sysId }) => sysId === selected);
+
 	const rows = dataList?.map(data => {
 		const _mainKey = `${mainKey}-${data[idKey]}`;
 		const isSelect = selected === data[idKey];
@@ -593,52 +586,50 @@ const GroupList = ({
 				canSubmit={data.canSubmit}
 			/>
 		);
-		return isSelect ? (
-			<div className="info infoAccount" key={_mainKey}>
-				<ul>
-					<li>
-						<Radio
-							key={`${_mainKey}-outerRadio`}
-							className="checkBank"
-							id={`${_mainKey}-radio`}
-							radioGroup={mainKey}
-							imgUrl={`${prefixImgUrl}${
-								imgKeyWithExtension
-									? data[imgKey]?.toLowerCase()
-									: `${data[imgKey]?.toLowerCase()}.png`
-							}`}
-							imgAlt={data[imgKey] ?? ""}
-							onChange={SelectPayment.bind(
-								this,
-								bindFullObj ? data : data[idKey]
-							)}
-							isSelect={isSelect}
-							i18n={i18n}
-							canSubmit={data.canSubmit}
-						/>
-						{/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-						<a
-							href={accountInfo.bankSite}
-							target="_blank"
-							rel="noreferrer"
-							className="icon icon-new-tab clickBtn"
-						/>
-					</li>
-					<CopyBtn value={accountInfo.accountName} />
-					<CopyBtn value={accountInfo.accountNo} />
-				</ul>
-			</div>
-		) : (
-			RadioBtn
-		);
+		return RadioBtn;
 	});
+
 	return (
 		<>
 			<div className="title">
 				<span className="text-org">*</span>
 				{title}
 			</div>
-			<div className="selectModule">{rows}</div>
+			<div className="selectModule">
+				{rows}
+
+				{selected && (
+					<div className="info infoAccount">
+						<ul>
+							<li>
+								<img
+									src={`${prefixImgUrl}${
+										imgKeyWithExtension
+											? selectedBank[
+													imgKey
+											  ]?.toLowerCase()
+											: `${selectedBank?.[
+													imgKey
+											  ]?.toLowerCase()}.png`
+									}`}
+									alt={selectedBank[imgKey]}
+								/>
+								<div>{selectedBank[displayKey]}</div>
+
+								{/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
+								<a
+									href={accountInfo.bankSite}
+									target="_blank"
+									rel="noreferrer"
+									className="icon icon-new-tab clickBtn"
+								/>
+							</li>
+							<CopyBtn value={accountInfo.accountName} />
+							<CopyBtn value={accountInfo.accountNo} />
+						</ul>
+					</div>
+				)}
+			</div>
 		</>
 	);
 };
