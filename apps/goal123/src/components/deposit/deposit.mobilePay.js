@@ -198,6 +198,7 @@ const Payment = props => {
 				showMinMaxHint={true}
 				_isConvert={_isConvert}
 			/>
+
 			<GroupList
 				title={i18n.lbl_SelectChannel}
 				dataList={channelList}
@@ -207,12 +208,13 @@ const Payment = props => {
 				imgKey="groupName"
 				idKey="channelId"
 				bindFullObj={true}
-				prefixImgUrl={`${config.imgUrl}/common/images/MobilePay/`}
+				prefixImgUrl={`${paymentImgUrl}/`}
 				i18n={i18n}
 				displayKey="channelName"
 				showMinMaxHint={true}
 				_isConvert={_isConvert}
 			/>
+
 			<AmountInput
 				title={i18n.lbl_DepositAmount}
 				channel={selChannel}
