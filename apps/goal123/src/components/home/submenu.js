@@ -159,44 +159,44 @@ const defSubMenus = [
 		subItems: [
 			{
 				...defGameInfo.LIVEcasinoPP,
-				displayKey: "Pragmatic Play"
+				displayText: "Pragmatic Play"
 			},
 			{
 				...defGameInfo.LIVEcasinoN2,
-				displayKey: "n2-LIVE"
+				displayText: "n2-LIVE"
 			},
 			{
 				...defGameInfo.LIVEcasinoWM,
-				displayKey: "WM Casino"
+				displayText: "WM Casino"
 			},
 			{
 				...defGameInfo.LIVEcasinoDG,
-				displayKey: "Dream Gaming"
+				displayText: "Dream Gaming"
 			},
 			{
 				...defGameInfo.LIVEcasinoAE,
-				displayKey: "AE Sexy"
+				displayText: "AE Sexy"
 			},
 			{
 				...defGameInfo.LIVEcasinoAG,
-				displayKey: "Asia Gaming"
+				displayText: "Asia Gaming"
 			},
 			{
 				...defGameInfo.LIVEcasinoAB,
-				displayKey: "Allbet"
+				displayText: "Allbet"
 			},
 			{
 				...defGameInfo.LIVEcasinoSA,
-				displayKey: "SA Gaming"
+				displayText: "SA Gaming"
 			},
 			{
 				...defGameInfo.LIVEcasinoEB,
-				displayKey: "eBET",
+				displayText: "eBET",
 				tpGameType: 28
 			},
 			{
 				...defGameInfo.LIVEcasinoEVO,
-				displayKey: "Evolution Gaming"
+				displayText: "Evolution Gaming"
 			}
 		]
 	},
@@ -411,7 +411,7 @@ const SubMenuList = ({
 					key={key}
 					onClick={clickGame.bind(this, s)}
 					className={s.icon}>
-					{i18n[s.displayKey]?.toUpperCase() ?? s.displayText}
+					{s.displayText ?? i18n[s.displayKey]?.toUpperCase()}
 				</button>
 			);
 		});

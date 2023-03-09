@@ -721,12 +721,24 @@ export const defSubMenus = () => [
 				displayText: "Pragmatic Play"
 			},
 			{
-				...defGameInfo.LIVEcasinoPT,
-				displayText: "Playtech"
+				...defGameInfo.LIVEcasinoYEEBET,
+				displayText: "YEEBET"
+			},
+			{
+				...defGameInfo.LIVEcasinoSkywind,
+				displayText: "Skywind"
 			},
 			{
 				...defGameInfo.LIVEcasinoMG,
-				displayKey: "Microgaming"
+				displayText: "Microgaming"
+			},
+			{
+				...defGameInfo.LIVEcasinoEVO,
+				displayText: "Evolution Gaming"
+			},
+			{
+				...defGameInfo.LIVEcasinoPT,
+				displayText: "Playtech"
 			},
 			{
 				...defGameInfo.LIVEcasinoN2,
@@ -741,33 +753,29 @@ export const defSubMenus = () => [
 				displayText: "WM Casino"
 			},
 			{
-				...defGameInfo.LIVEcasinoDG,
-				displayText: "Dream Gaming"
+				...defGameInfo.LIVEcasinoAG,
+				displayText: "Asia Gaming"
 			},
 			{
 				...defGameInfo.LIVEcasinoAE,
 				displayText: "AE Sexy"
 			},
 			{
-				...defGameInfo.LIVEcasinoAG,
-				displayText: "Asia Gaming"
+				...defGameInfo.LIVEcasinoDG,
+				displayText: "Dream Gaming"
 			},
 			{
 				...defGameInfo.LIVEcasinoAB,
 				displayText: "Allbet"
 			},
 			{
-				...defGameInfo.LIVEcasinoSA,
-				displayText: "SA Gaming"
-			},
-			{
 				...defGameInfo.LIVEcasinoEB,
 				displayText: "eBET"
+			},
+			{
+				...defGameInfo.LIVEcasinoSA,
+				displayText: "SA Gaming"
 			}
-			// {
-			// 	...defGameInfo.LIVEcasinoEVO,
-			// 	displayText: "Evolution Gaming"
-			// }
 		]
 	},
 	{
