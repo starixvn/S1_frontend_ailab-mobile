@@ -27,10 +27,10 @@ const Promos = ({ i18n, userInfo }) => {
 			displayFrom,
 			displayTo
 		} = promo;
-
+		const timezone = moment().format("Z");
 		const isDisplay =
-			moment.unix(displayFrom).diff(Date.now()) <= 0 &&
-			moment.unix(displayTo).diff(Date.now()) >= 0;
+			moment.unix(displayFrom).subtract(timezone).diff(moment()) <= 0 &&
+			moment.unix(displayTo).subtract(timezone).diff(moment()) >= 0;
 
 		return (
 			isDisplay && (

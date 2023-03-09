@@ -1,14 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link } from "../../route/link";
-import TandC from "../../service/t_and_c";
 import useTip from "../hook/useTip";
 import api from "../../service/api";
 import Inputbox from "../common/inputbox.hint";
 import InputboxPWD from "../common/inputbox.password";
-import { getUrlParameter, passwordCheck, getCookie } from "../common/common";
+import {
+	getUrlParameter,
+	passwordCheck,
+	getCookie,
+	getCombineLangId
+} from "../common/common";
 import FeaturePanel from "./features";
 import { userInfoContext } from "../common/context";
+import { cloudBannerImgURL } from "../../config";
 
 const JoinStep1 = ({
 	i18n,
@@ -199,7 +204,10 @@ const JoinStep1 = ({
 					<a
 						rel="noreferrer"
 						target="_blank"
-						href={TandC(langId).terms}>
+						href={`${cloudBannerImgURL}/Static/${getCombineLangId(
+							langId,
+							userInfo.currencyId
+						)}/TermsConditions.html`}>
 						{i18n.lbl_TermsConditions}
 					</a>
 					{i18n.lbl_Check18TC2}
