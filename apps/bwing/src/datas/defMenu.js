@@ -601,6 +601,10 @@ export const defSubMenus = () => [
 			{
 				displayKey: "lbl_BTISport",
 				...defGameInfo.BTISport
+			},
+			{
+				displayKey: "lbl_VirtualSports",
+				...defGameInfo.VirtualSports
 			}
 		]
 	},
