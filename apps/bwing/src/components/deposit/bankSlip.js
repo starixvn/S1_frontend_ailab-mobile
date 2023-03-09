@@ -363,9 +363,9 @@ export default () => {
 				);
 				setbankSlipPopBox(prev => ({
 					...prev,
-					receiptInfo: target.depositReceipt
+					receiptInfo: target?.depositReceipt
 				}));
-				setReceiptInfoList(target.depositReceipt);
+				setReceiptInfoList(target?.depositReceipt);
 			});
 		}
 	}, [bankSlipPopBox.isOpen]);
