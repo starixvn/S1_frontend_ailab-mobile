@@ -8,14 +8,14 @@ import {
 	getUrlParameter,
 	getCookie,
 	defCurrenyId,
-	defCurrencyToLang
+	getCombineLangId,
+  defCurrencyToLang
 } from "../common/common";
 import { Link } from "../../route/link";
 import Inputbox from "../common/inputbox.hint";
 import Dropdown from "../common/dropdown";
 import Birthday from "./join.birth";
 import useTip from "../hook/useTip";
-import TandC from "../../service/t_and_c";
 import InputboxPart from "../common/inputbox.profile";
 import { GetYear, GetDayOfMonth } from "../profile/profile.detail";
 import { monthOptions } from "../profile/profile.detail.def";
@@ -29,6 +29,7 @@ import {
 } from "./join.def";
 import defLang from "../../datas/defLangs";
 import { Iov_GetBlackBox } from "../common/iovation";
+import { cloudBannerImgURL } from "../../config";
 
 const areaCodeList = Object.values(areaCode).map(el => ({
 	value: el.AreaCode,
@@ -612,7 +613,10 @@ const JoinStep2 = ({
 				<a
 					rel="noreferrer"
 					target="_blank"
-					href={TandC(userInfo.langId).terms}>
+					href={`${cloudBannerImgURL}/Static/${getCombineLangId(
+						langId,
+						userInfo.currencyId
+					)}/TermsConditions.html`}>
 					{i18n.lbl_TermsConditions}
 				</a>
 				{i18n.lbl_Check18TC2}
