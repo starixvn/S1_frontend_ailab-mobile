@@ -50,6 +50,26 @@ const defSubMenus = [
 			{
 				displayKey: "lbl_BTISport",
 				...defGameInfo.BTISport
+			},
+			{
+				displayKey: "lbl_SabaSoccer",
+				...defGameInfo.SabaSoccer
+			},
+			{
+				displayKey: "lbl_eSports",
+				...defGameInfo.eSports
+			},
+			{
+				displayKey: "lbl_Basketball",
+				...defGameInfo.Basketball
+			},
+			{
+				displayKey: "lbl_Volleyball",
+				...defGameInfo.Volleyball
+			},
+			{
+				displayKey: "lbl_VirtualSports",
+				...defGameInfo.VirtualSports
 			}
 		]
 	},
@@ -159,7 +179,7 @@ const defSubMenus = [
 		subItems: [
 			{
 				...defGameInfo.LIVEcasinoPP,
-				displayKey: "Pragmatic Play"
+				displayText: "Pragmatic Play"
 			},
 			{
 				...defGameInfo.LIVEcasinoYEEBET,
@@ -170,37 +190,54 @@ const defSubMenus = [
 				displayKey: "n2-LIVE"
 			},
 			{
-				...defGameInfo.LIVEcasinoWM,
-				displayKey: "WM Casino"
+				...defGameInfo.LIVEcasinoSkywind,
+				displayText: "Skywind"
 			},
 			{
-				...defGameInfo.LIVEcasinoDG,
-				displayKey: "Dream Gaming"
-			},
-			{
-				...defGameInfo.LIVEcasinoAE,
-				displayKey: "AE Sexy"
-			},
-			{
-				...defGameInfo.LIVEcasinoAG,
-				displayKey: "Asia Gaming"
-			},
-			{
-				...defGameInfo.LIVEcasinoAB,
-				displayKey: "Allbet"
-			},
-			{
-				...defGameInfo.LIVEcasinoSA,
-				displayKey: "SA Gaming"
-			},
-			{
-				...defGameInfo.LIVEcasinoEB,
-				displayKey: "eBET",
-				tpGameType: 28
+				...defGameInfo.LIVEcasinoMG,
+				displayText: "Microgaming"
 			},
 			{
 				...defGameInfo.LIVEcasinoEVO,
-				displayKey: "Evolution Gaming"
+				displayText: "Evolution Gaming"
+			},
+			{
+				...defGameInfo.LIVEcasinoPT,
+				displayText: "Playtech"
+			},
+			{
+				...defGameInfo.LIVEcasinoN2,
+				displayText: "n2-LIVE"
+			},
+			{
+				...defGameInfo.LIVEcasinoWM,
+				displayText: "WM Casino"
+			},
+			{
+				...defGameInfo.LIVEcasinoDG,
+				displayText: "Dream Gaming"
+			},
+			{
+				...defGameInfo.LIVEcasinoAE,
+				displayText: "AE Sexy"
+			},
+			{
+				...defGameInfo.LIVEcasinoAG,
+				displayText: "Asia Gaming"
+			},
+
+			{
+				...defGameInfo.LIVEcasinoAB,
+				displayText: "Allbet"
+			},
+			{
+				...defGameInfo.LIVEcasinoSA,
+				displayText: "SA Gaming"
+			},
+			{
+				...defGameInfo.LIVEcasinoEB,
+				displayText: "eBET",
+				tpGameType: 28
 			}
 		]
 	},
@@ -415,7 +452,7 @@ const SubMenuList = ({
 					key={key}
 					onClick={clickGame.bind(this, s)}
 					className={s.icon}>
-					{i18n[s.displayKey]?.toUpperCase() ?? s.displayText}
+					{s.displayText ?? i18n[s.displayKey]?.toUpperCase()}
 				</button>
 			);
 		});

@@ -339,6 +339,18 @@ export const productList = langId => {
 					...defGameInfo.LIVEcasinoPP
 				},
 				{
+					displayText: "YEEBET",
+					icon: "icon icon-sk",
+					img: `${bannerImgUrl}/h5/img/liveGameNew/live-yb.png`,
+					...defGameInfo.LIVEcasinoYEEBET,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.yee_bet)
+						}
+					]
+				},
+				{
 					displayText: "Skywind",
 					icon: "icon icon-sk",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-sk.png`,
@@ -589,6 +601,10 @@ export const defSubMenus = () => [
 			{
 				displayKey: "lbl_BTISport",
 				...defGameInfo.BTISport
+			},
+			{
+				displayKey: "lbl_VirtualSports",
+				...defGameInfo.VirtualSports
 			}
 		]
 	},
@@ -709,12 +725,24 @@ export const defSubMenus = () => [
 				displayText: "Pragmatic Play"
 			},
 			{
-				...defGameInfo.LIVEcasinoPT,
-				displayText: "Playtech"
+				...defGameInfo.LIVEcasinoYEEBET,
+				displayText: "YEEBET"
+			},
+			{
+				...defGameInfo.LIVEcasinoSkywind,
+				displayText: "Skywind"
 			},
 			{
 				...defGameInfo.LIVEcasinoMG,
-				displayKey: "Microgaming"
+				displayText: "Microgaming"
+			},
+			{
+				...defGameInfo.LIVEcasinoEVO,
+				displayText: "Evolution Gaming"
+			},
+			{
+				...defGameInfo.LIVEcasinoPT,
+				displayText: "Playtech"
 			},
 			{
 				...defGameInfo.LIVEcasinoN2,
@@ -729,33 +757,29 @@ export const defSubMenus = () => [
 				displayText: "WM Casino"
 			},
 			{
-				...defGameInfo.LIVEcasinoDG,
-				displayText: "Dream Gaming"
+				...defGameInfo.LIVEcasinoAG,
+				displayText: "Asia Gaming"
 			},
 			{
 				...defGameInfo.LIVEcasinoAE,
 				displayText: "AE Sexy"
 			},
 			{
-				...defGameInfo.LIVEcasinoAG,
-				displayText: "Asia Gaming"
+				...defGameInfo.LIVEcasinoDG,
+				displayText: "Dream Gaming"
 			},
 			{
 				...defGameInfo.LIVEcasinoAB,
 				displayText: "Allbet"
 			},
 			{
-				...defGameInfo.LIVEcasinoSA,
-				displayText: "SA Gaming"
-			},
-			{
 				...defGameInfo.LIVEcasinoEB,
 				displayText: "eBET"
+			},
+			{
+				...defGameInfo.LIVEcasinoSA,
+				displayText: "SA Gaming"
 			}
-			// {
-			// 	...defGameInfo.LIVEcasinoEVO,
-			// 	displayText: "Evolution Gaming"
-			// }
 		]
 	},
 	{

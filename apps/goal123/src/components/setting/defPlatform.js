@@ -36,6 +36,10 @@ const defPlatfrom = [
 		otherPlatformImg: "ppb"
 	},
 	{
+		...defGameInfo.LIVEcasinoYEEBET,
+		imgName: "yba"
+	},
+	{
 		...defGameInfo.Casino_MGP,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_MGP },

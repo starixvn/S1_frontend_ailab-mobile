@@ -17,7 +17,7 @@
 	"Label_RemainTimes": "Still remain {{count}} times chance.",
 	"Label_AngpaoInfoA": "a. Ngày diễn ra sự kiện: ngày 21 tháng 1 năm 2023 đến ngày 5 tháng 2 năm 2023",
 	"Label_AngpaoInfoB": "b. Thành viên cần phải hoàn thành số tiền cược  được chỉ định tích lũy mỗi ngày trước khi có thể tham gia hoạt động lắc bao lì xì vào lúc 1 giờ sáng (giờ địa phương) vào ngày hôm sau.",
-	"Label_AngpaoInfoC": "c. Để được tham gia, thành viên phải nạp tiền trong vòng 24 giờ với số tiền tối thiểu là {{currency}} {{amount}} cho một vé cược.",
+	"Label_AngpaoInfoC": "c. Số tiền cược hợp lệ được tính bởi tất cả các sảnh trò chơi có thể được sử dụng cho doanh thu tích lũy này. ",
 	"Label_AngpaoInfoD": "d. Sự kiện này không được chia sẻ với bất kỳ chương trình khuyến mãi nào có trên trang web. Mọi hoạt động đổi tiền mặt ngay lập tức, hủy đặt cược, thanh toán lại hoặc hoàn trả tiền gốc sẽ không được tính vào hoạt động này.",
 	"Label_AngpaoInfoE": "e. Thành viên chỉ nhận được 1 lần lắc bao lì xì nếu tích lũy thành công {{amount}} VND cược hợp lệ và có thể nhận tối đa 3 lần lắc bao lì xì/ngày.",
 	"Label_AngpaoInfoF": "f. Thành viên được yêu cầu hoàn thành 1X doanh thu cược của phần thưởng trước khi rút tiền.",
