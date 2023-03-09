@@ -50,6 +50,26 @@ const defSubMenus = [
 			{
 				displayKey: "lbl_BTISport",
 				...defGameInfo.BTISport
+			},
+			{
+				displayKey: "lbl_SabaSoccer",
+				...defGameInfo.SabaSoccer
+			},
+			{
+				displayKey: "lbl_eSports",
+				...defGameInfo.eSports
+			},
+			{
+				displayKey: "lbl_Basketball",
+				...defGameInfo.Basketball
+			},
+			{
+				displayKey: "lbl_Volleyball",
+				...defGameInfo.Volleyball
+			},
+			{
+				displayKey: "lbl_VirtualSports",
+				...defGameInfo.VirtualSports
 			}
 		]
 	},
@@ -166,6 +186,22 @@ const defSubMenus = [
 				displayText: "YEEBET"
 			},
 			{
+				...defGameInfo.LIVEcasinoSkywind,
+				displayText: "Skywind"
+			},
+			{
+				...defGameInfo.LIVEcasinoMG,
+				displayText: "Microgaming"
+			},
+			{
+				...defGameInfo.LIVEcasinoEVO,
+				displayText: "Evolution Gaming"
+			},
+			{
+				...defGameInfo.LIVEcasinoPT,
+				displayText: "Playtech"
+			},
+			{
 				...defGameInfo.LIVEcasinoN2,
 				displayText: "n2-LIVE"
 			},
@@ -185,6 +221,7 @@ const defSubMenus = [
 				...defGameInfo.LIVEcasinoAG,
 				displayText: "Asia Gaming"
 			},
+
 			{
 				...defGameInfo.LIVEcasinoAB,
 				displayText: "Allbet"
@@ -197,10 +234,6 @@ const defSubMenus = [
 				...defGameInfo.LIVEcasinoEB,
 				displayText: "eBET",
 				tpGameType: 28
-			},
-			{
-				...defGameInfo.LIVEcasinoEVO,
-				displayText: "Evolution Gaming"
 			}
 		]
 	},
