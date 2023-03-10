@@ -5790,6 +5790,17 @@ span.important {
             transform-origin: 50% 70%;
   }
 }
+.eventLink.vgaming {
+  bottom: 70vw;
+}
+.eventLink.vgaming .vgimg {
+  width: 34vw;
+}
+.eventLink.vgaming .icon-close {
+  top: 0;
+  background: #cecece;
+  color: rgb(92, 92, 92);
+}
 
 .event {
   height: auto;
