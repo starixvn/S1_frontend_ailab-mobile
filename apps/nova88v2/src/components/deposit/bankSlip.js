@@ -12,16 +12,12 @@ import {
 	popBoxContext,
 	userInfoContext
 } from "Context";
-import moment from "moment";
 import ClipboardJS from "../../lib/clipboard.min";
 import api from "../../service/api";
 
 class Modal extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			processing: false
-		};
 		this.isMountedRef = false;
 		this.filebox = React.createRef();
 	}
@@ -110,43 +106,12 @@ class Modal extends Component {
 
 	SeReceipt = () => {
 		if (this.props.bankSlipPopBox.hideSubmit) {
+			const { files } = this.filebox.current;
 			this.props.closePopBoxAndKeepData();
-		} else if (!this.state.processing) {
-			this.setState({ processing: true });
-			const { bankSlipPopBox } = this.props;
-			api.payment
-				.SetDepositReceipt(
-					bankSlipPopBox.transId,
-					moment(bankSlipPopBox.depositTime).unix(),
-					bankSlipPopBox.refId
-				)
-				.then(
-					res => {
-						if (this.isMountedRef) {
-							if (res.data.errorCode === 0) {
-								this.props.handlePopBox();
-								window.location.reload();
-							} else {
-								this.props.setPopBox({
-									isOpen: true,
-									content: `[${res.data.errorCode}] ${res.data.message}`
-								});
-							}
-
-							this.setState({ processing: false });
-						}
-					},
-					() => {
-						if (this.isMountedRef) {
-							this.props.setPopBox({
-								isOpen: true,
-								content: this.props.i18n.msg_ApiServerError
-							});
-
-							this.setState({ processing: false });
-						}
-					}
-				);
+			this.props.setbankSlipPopBox(prevState => ({
+				...prevState,
+				receipt: files[0]
+			}));
 		}
 	};
 
@@ -394,6 +359,7 @@ const Panel = () => {
 			currencyId={userInfo.currencyId}
 			i18n={i18n}
 			bankSlipPopBox={bankSlipPopBox}
+			setbankSlipPopBox={setbankSlipPopBox}
 			receiptInfoList={receiptInfoList}
 			handlePopBox={handlePopBox}
 			EditField={EditField}
