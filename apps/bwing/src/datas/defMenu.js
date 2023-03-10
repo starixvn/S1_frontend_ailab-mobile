@@ -183,7 +183,7 @@ export const productList = langId => {
 					parameter: defGameInfo.Casino_AdvantPlay,
 					path: path.casino.root,
 					displayText: "AdvantPlay",
-					img: `${bannerImgUrl}/h5/img/slot/ap.png`
+					img: `${bannerImgUrl}/h5/img/slot/apnew.png`
 				},
 				{
 					...defGameInfo.Casino_PP,

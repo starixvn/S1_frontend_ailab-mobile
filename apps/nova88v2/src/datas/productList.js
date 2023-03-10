@@ -566,7 +566,7 @@ const gameList = ({ langId, currencyId }) => {
 					parameter: defGameInfo.Casino_AdvantPlay,
 					spanText: "AdvantPlay",
 					providerImgName: "ap",
-					img: `${cloudBannerImgURL}/h5/img/ap.png`,
+					img: `${cloudBannerImgURL}/h5/img/apnew.png`,
 					path: path.casino.root,
 					eventIcon: [
 						{

@@ -17,7 +17,7 @@
 	"Label_RemainTimes": "你還有 {{count}} 次抽獎機會",
 	"Label_AngpaoInfoA": "a. 活动日期： 2023年1月21日 至 2023年2月5日",
 	"Label_AngpaoInfoB": "b. 会员每日需完成累计指定有效投注额方可于次日1AM（本地时间）参与摇红包活动。",
-	"Label_AngpaoInfoC": "c. 欲参与此活动，每在 24 小时内单笔 {{currency}}{{amount}} 成功存款将可兑换 一(1) 张抽奖卷。",
+	"Label_AngpaoInfoC": "c. 所有游戏馆场所产生的有效投注额都可用于本次累计流水中。",
 	"Label_AngpaoInfoD": "d. 此活动不与 {{siteName}} 任何优惠同时共享，任何即时兑现或重新/延迟结算等注单流水将不纳入本活动流水计算中。",
 	"Label_AngpaoInfoE": "e. 会员成功累计{{amount}}有效投注方可获得1次摇红包次数，每日最多可获得3次摇红包活动。",
 	"Label_AngpaoInfoF": "f. 此活动获得的红包奖励需完成一倍流水方可进行提款。",

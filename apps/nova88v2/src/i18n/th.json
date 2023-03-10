@@ -742,7 +742,7 @@
 	"lbl_Skip": "ข้าม",
 
 	"==============E-Wallet==============": "",
-	"lbl_EWallet": "กระเป๋าสตางค์อิเล็กทรอนิกส์",
+	"lbl_EWallet": "กระเป๋า E-Wallet",
 	"lbl_AddEWallet": "เพิ่มกระเป๋า E-Wallet",
 	"lbl_EWallet_Hint": "หมายเหตุ: บัญชี E-Wallet จำเป็นต้องยืนยันตัวตนก่อนใช้งาน",
 	"lbl_EWalletAccountNumber": "หมายเลขบัญชี E-Wallet",

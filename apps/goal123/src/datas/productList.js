@@ -435,7 +435,7 @@ const gameList = [
 				...defGameInfo.Casino_AdvantPlay,
 				parameter: defGameInfo.Casino_AdvantPlay,
 				spanText: "AdvantPlay",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-ap.png`,
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-apnew.png`,
 				path: path.casino.root,
 				providerImgName: "ap"
 			},
