@@ -6,7 +6,6 @@ import React, {
 	useRef,
 	useState
 } from "react";
-import moment from "moment";
 import {
 	bankSlipPopBoxContext,
 	i18nContext,
@@ -15,8 +14,7 @@ import {
 import ClipboardJS from "../../lib/clipboard.min";
 import {
 	api_UploadReceipt,
-	api_GetDepositInfoRecent,
-	api_SetDepositReceipt
+	api_GetDepositInfoRecent
 } from "../../service/api/payment";
 import { paymentImgUrl } from "../../config";
 import { number_format } from "../common/common";
@@ -24,10 +22,6 @@ import { number_format } from "../common/common";
 class Content extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			processing: false
-			// refIdTip: ""
-		};
 		this.isMountedRef = false;
 		this.filebox = React.createRef();
 	}
@@ -72,7 +66,7 @@ class Content extends Component {
 	};
 
 	onHandlePopBox = () => {
-		this.props.bankSlipPopBox.hideSubmit
+		this.props.bankSlipPopBox.disableSubmit
 			? this.props.closePopBoxAndKeepData()
 			: this.props.handlePopBox();
 	};
@@ -115,42 +109,13 @@ class Content extends Component {
 	};
 
 	SeReceipt = () => {
-		if (this.props.bankSlipPopBox.hideSubmit) {
+		if (this.props.bankSlipPopBox.disableSubmit) {
+			const { files } = this.filebox.current;
 			this.props.closePopBoxAndKeepData();
-		} else if (!this.state.processing) {
-			this.setState({ processing: true });
-			const { bankSlipPopBox } = this.props;
-			api_SetDepositReceipt(
-				bankSlipPopBox.transId,
-				moment(bankSlipPopBox.depositTime).unix(),
-				bankSlipPopBox.refId
-			).then(
-				res => {
-					if (this.isMountedRef) {
-						if (res.data.errorCode === 0) {
-							this.props.handlePopBox();
-							window.location.reload();
-						} else {
-							this.props.setPopBox({
-								isOpen: true,
-								content: `[${res.data.errorCode}] ${res.data.message}`
-							});
-						}
-
-						this.setState({ processing: false });
-					}
-				},
-				() => {
-					if (this.isMountedRef) {
-						this.props.setPopBox({
-							isOpen: true,
-							content: this.props.i18n.msg_ApiServerError
-						});
-
-						this.setState({ processing: false });
-					}
-				}
-			);
+			this.props.setbankSlipPopBox(prevState => ({
+				...prevState,
+				receipt: files[0]
+			}));
 		}
 	};
 
@@ -332,7 +297,7 @@ class Content extends Component {
 						<button
 							className="blue"
 							onClick={
-								!bankSlipPopBox.hideSubmit
+								!bankSlipPopBox.disableSubmit
 									? this.onUploadFile
 									: this.SeReceipt
 							}>
@@ -408,6 +373,7 @@ export default () => {
 		<Content
 			i18n={i18n}
 			bankSlipPopBox={bankSlipPopBox}
+			setbankSlipPopBox={setbankSlipPopBox}
 			receiptInfoList={receiptInfoList}
 			handlePopBox={handlePopBox}
 			EditField={EditField}
