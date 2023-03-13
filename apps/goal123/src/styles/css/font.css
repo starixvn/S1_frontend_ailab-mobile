@@ -2,6 +2,7 @@
   font-family: "icomoon";
   src: url("../fonts/icomoon.woff?v=202003") format("woff");
 }
+
 .icon:before,
 .icon:after {
   font-family: "icomoon";
@@ -56,14 +57,6 @@
 
 .icon-JDpay:before {
   font-size: 4vw !important;
-}
-
-.icon-topup:before {
-  content: "\e9c5";
-}
-
-.icon-qrcode-scan:before {
-  content: "\e9d8";
 }
 
 .icon-money:before {
@@ -977,4 +970,5 @@
 
 .icon-more:before {
   content: "\e9d2";
-}/*# sourceMappingURL=font.css.map */
+}
+/*# sourceMappingURL=font.css.map */

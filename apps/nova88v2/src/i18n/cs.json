@@ -410,7 +410,7 @@
 	"lbl_PhoneVerificationHint2": "及赚取奖金 {currency} {amount}。",
 	"lbl_EmailOTPHint": "电邮验证码已发到您的电邮收件箱",
 	"lbl_EmailVerifiedMsg": "太棒了！您的电邮已成功验证！",
-  "lbl_PhoneNumberErrorTip": "您输入的手机号格式有误，介于{{digitalArea}}位数字",
+	"lbl_PhoneNumberErrorTip": "您输入的手机号格式有误，介于{{digitalArea}}位数字",
 
 	"-==================--=========================Shipping--==================================": "",
 	"lbl_Shipping_Address": "邮寄地址",
@@ -863,6 +863,9 @@
 
 	"==============v3.0==============": "",
 	"lbl_SeeMore": "See More",
+	"Label_AngpaoNewYearTitle": "钱兔似锦",
 
-	"Label_AngpaoNewYearTitle": "钱兔似锦"
+	"==============H5 Sportsbook for Desktop Entrance==============": "",
+	"lbl_Sportsbook_PlayNow": "立即游戏",
+	"lbl_Sportsbook_Desktop": "座机版"
 }

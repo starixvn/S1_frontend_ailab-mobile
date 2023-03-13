@@ -405,7 +405,7 @@
 	"lbl_PhoneVerificationHint2": " {currency} {amount}",
 	"lbl_EmailOTPHint": "รหัสยืนยันอีเมลถูกส่งไปยังกล่องจดหมายที่คุณลงทะเบียนแล้ว",
 	"lbl_EmailVerifiedMsg": "สุดยอด! อีเมลของคุณได้รับการยืนยันแล้ว!",
-  "lbl_PhoneNumberErrorTip": "หมายเลขโทรศัพท์ที่คุณกรอกไม่ถูกต้อง ระหว่าง {{digitalArea}} หลัก",
+	"lbl_PhoneNumberErrorTip": "หมายเลขโทรศัพท์ที่คุณกรอกไม่ถูกต้อง ระหว่าง {{digitalArea}} หลัก",
 	"==============================================Shipping====================================": "",
 	"lbl_Shipping_Address": "ที่อยู่จัดส่ง",
 	"lbl_Option2": "ไม่บังคับ",
@@ -864,6 +864,9 @@
 
 	"==============v3.0==============": "",
 	"lbl_SeeMore": "See More",
+	"Label_AngpaoNewYearTitle": "ต้อนรับอนาคตที่สดใสในปีกระต่าย",
 
-	"Label_AngpaoNewYearTitle": "ต้อนรับอนาคตที่สดใสในปีกระต่าย"
+	"==============H5 Sportsbook for Desktop Entrance==============": "",
+	"lbl_Sportsbook_PlayNow": "เล่นเลย",
+	"lbl_Sportsbook_Desktop": "เดสก์ทอป"
 }

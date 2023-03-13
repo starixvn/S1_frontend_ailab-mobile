@@ -413,7 +413,7 @@
 	"lbl_PhoneVerificationHint2": "and earn reward of {currency} {amount}",
 	"lbl_EmailOTPHint": "Email Verification Code has been sent to your registered mail box.",
 	"lbl_EmailVerifiedMsg": "Awesome! Your Email has been verified!",
-  "lbl_PhoneNumberErrorTip": "Phone number you entered is incorrect, should be between {{digitalArea}} digits",
+	"lbl_PhoneNumberErrorTip": "Phone number you entered is incorrect, should be between {{digitalArea}} digits",
 
 	"==============================================Shipping====================================": "",
 	"lbl_Shipping_Address": "Shipping Address",
@@ -899,6 +899,9 @@
 
 	"==============v3.0==============": "",
 	"lbl_SeeMore": "See More",
+	"Label_AngpaoNewYearTitle": "Lucky Rabbit Happy New Year",
 
-	"Label_AngpaoNewYearTitle": "Lucky Rabbit Happy New Year"
+	"==============H5 Sportsbook for Desktop Entrance==============": "",
+	"lbl_Sportsbook_PlayNow": "Play Now",
+	"lbl_Sportsbook_Desktop": "Desktop"
 }

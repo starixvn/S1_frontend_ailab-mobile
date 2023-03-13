@@ -3,7 +3,7 @@ import PropTypes, { string } from "prop-types";
 import { useNavigate, Link } from "@reach/router";
 import { navContext, defNavPanel } from "../common/context";
 import { productList, defIconType, openGameType } from "../../datas/defMenu";
-import { GET_ENTER_PAGE } from "../../service/enterPage";
+import { GET_ENTER_PAGE, defAppType } from "../../service/enterPage";
 import {
 	useGetTpMaintainList,
 	defTpGameType
@@ -342,6 +342,32 @@ const SubGame = ({
 				alt={i18n[game.displayKey] ?? game.displayText}
 			/>
 			<div>{i18n[game.displayKey] ?? game.displayText}</div>
+			{game?.hasDesktopLink && (
+				<div className="switchbtn">
+					<button
+						onClick={
+							isMaintain
+								? () => null
+								: e => {
+										e.stopPropagation();
+										clickGame({
+											tpId: game.tpId,
+											gameId: game.gameId,
+											useGotoGame: game.useGotoGame,
+											specialUrl: game?.specialUrl ?? "",
+											tpGameType: game.tpGameType,
+											userInfo,
+											handleGoToGame,
+											handleLogin,
+											appType: defAppType.desktop
+										});
+								  }
+						}>
+						{i18n.lbl_Sportsbook_Desktop}
+					</button>
+					<button>{i18n.lbl_Sportsbook_PlayNow}</button>
+				</div>
+			)}
 			{isMaintain && (
 				<div className="under">{i18n.lbl_underMaintenance}</div>
 			)}
@@ -499,7 +525,8 @@ const clickGame = async ({
 	specialUrl,
 	tpGameType,
 	handleLogin,
-	handleGoToGame
+	handleGoToGame,
+	appType
 }) => {
 	GET_ENTER_PAGE({
 		langId: userInfo.langId,
@@ -517,7 +544,8 @@ const clickGame = async ({
 			  })
 			: null,
 		specialUrl,
-		tpGameType
+		tpGameType,
+		appType
 	});
 };
 
