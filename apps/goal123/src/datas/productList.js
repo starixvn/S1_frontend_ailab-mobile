@@ -437,7 +437,13 @@ const gameList = [
 				spanText: "AdvantPlay",
 				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-apnew.png`,
 				path: path.casino.root,
-				providerImgName: "ap"
+				providerImgName: "ap",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.ap_mini_game)
+					}
+				]
 			},
 			{
 				...defGameInfo.Casino_PP,

@@ -571,7 +571,7 @@ const gameList = ({ langId, currencyId }) => {
 					eventIcon: [
 						{
 							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.casino_AdvantPlay)
+							inPeriod: isEventPeriod(eventTime.ap_mini_game)
 						}
 					],
 					sortKey: "slot_AdvantPlay"
