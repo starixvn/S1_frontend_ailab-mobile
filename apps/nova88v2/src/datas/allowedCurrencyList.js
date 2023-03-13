@@ -48,7 +48,6 @@ const allowedCurrencyList = {
 	// poker
 	oneGame: [
 		defCurrenyId.MYR,
-		defCurrenyId.IDR,
 		defCurrenyId.THB,
 		defCurrenyId.BDT,
 		defCurrenyId.CNY,
