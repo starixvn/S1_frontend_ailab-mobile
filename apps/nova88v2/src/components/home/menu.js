@@ -4,7 +4,7 @@ import { useNavigate } from "@reach/router";
 import { Link } from "../../route/link";
 import gameList, { defCol, defIconType } from "../../datas/productList";
 import { getEventIcon } from "./category";
-import { GET_ENTER_PAGE } from "../../service/enterPage";
+import { GET_ENTER_PAGE, defAppType } from "../../service/enterPage";
 import useHandleLogin from "../hook/useHandleLogin";
 import {
 	useGetTpMaintainList,
@@ -357,7 +357,8 @@ const SubGame = ({
 		useGotoGame: _useGotoGame,
 		specialUrl,
 		tpGameType,
-		bettype
+		bettype,
+		appType
 	}) => {
 		if (tpId === defSpecialSetting.sports_9w && userInfo.isLogin) {
 			const result = await handleGoToGame({
@@ -387,7 +388,8 @@ const SubGame = ({
 					: null,
 				specialUrl,
 				tpGameType,
-				bettype
+				bettype,
+				appType
 			});
 		}
 	};
@@ -428,6 +430,44 @@ const SubGame = ({
 				style={isMaintain ? { pointerEvents: "none" } : null}>
 				{content}
 			</a>
+		);
+	}
+
+	if (game?.hasDesktopLink) {
+		return (
+			<button
+				className={isMaintain ? "active" : ""}
+				disabled={isMaintain}>
+				<div>{content}</div>
+				<div className="switchbtn">
+					<button
+						disabled={isMaintain}
+						onClick={clickGame.bind(this, {
+							tpId: game.tpId,
+							gameId: game.gameId,
+							useGotoGame: game.useGotoGame,
+							specialUrl: game?.specialUrl ?? "",
+							tpGameType: game.tpGameType,
+							bettype: game?.bettype,
+							appType: defAppType.desktop
+						})}>
+						Desktop
+					</button>
+					<button
+						disabled={isMaintain}
+						onClick={clickGame.bind(this, {
+							tpId: game.tpId,
+							gameId: game.gameId,
+							useGotoGame: game.useGotoGame,
+							specialUrl: game?.specialUrl ?? "",
+							tpGameType: game.tpGameType,
+							bettype: game?.bettype,
+							appType: defAppType.mobile
+						})}>
+						Play Now
+					</button>
+				</div>
+			</button>
 		);
 	}
 
