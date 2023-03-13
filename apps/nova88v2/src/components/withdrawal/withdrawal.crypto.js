@@ -41,19 +41,17 @@ const Panel = () => {
 		accountName: "",
 		uSDTDetail: []
 	});
-
 	const [allWithdrawalLimit, setWithdrawalLimit] = useState({});
-
 	const [limitInfo, setLimitInfo] = useState({
 		limit: {},
 		withdrawalLimitHint: ""
 	});
-
 	const { showTips, showTipHandler } = useTip();
 	const [recentDatas, setRecentDatas] = useState([]);
 	const [pageVerify, setPageVerify] = useState(true);
 
 	const isMountedRef = useRef(null);
+	const isClickedRef = useRef(false);
 
 	const GetDailyWithdrawalLimit = () => {
 		api.payment.GetWithdrawalLimit().then(
@@ -497,6 +495,20 @@ const Panel = () => {
 					? Number(amount) * 1000
 					: Number(amount);
 
+				const handleClickSubmit = () => {
+					if (!isClickedRef.current) {
+						isClickedRef.current = true;
+						RedirectToNext({
+							accountNo: selBank.usdtAddress,
+							real_amount,
+							exchangeInfo: res.data.data
+						});
+					}
+					setTimeout(() => {
+						isClickedRef.current = false;
+					}, 1000);
+				};
+
 				api.payment
 					.GetExchangeInfo({
 						Amount: real_amount,
@@ -566,15 +578,7 @@ const Panel = () => {
 											<button
 												data-testid="RedirectToNext"
 												className="orange"
-												onClick={() => {
-													RedirectToNext({
-														accountNo:
-															selBank.usdtAddress,
-														real_amount,
-														exchangeInfo:
-															res.data.data
-													});
-												}}>
+												onClick={handleClickSubmit}>
 												{i18n.lbl_Submit}
 											</button>
 										</div>

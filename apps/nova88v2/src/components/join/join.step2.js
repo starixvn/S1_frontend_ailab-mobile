@@ -614,7 +614,7 @@ const JoinStep2 = ({
 					rel="noreferrer"
 					target="_blank"
 					href={`${cloudBannerImgURL}/Static/${getCombineLangId(
-						langId,
+						userInfo.langId,
 						userInfo.currencyId
 					)}/TermsConditions.html`}>
 					{i18n.lbl_TermsConditions}
