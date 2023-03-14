@@ -201,6 +201,7 @@
 	"lbl_Jackpot": "Jackpot",
 	"lbl_Gaming_License": "Lisensi Resmi",
 	"lbl_OK": "OK",
+
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Odds",
 	"lbl_Handicap": "Hdp",
@@ -304,6 +305,8 @@
 	"lbl_BuyFeaturesGames": "Beli Fitur Game",
 	"lbl_Megaways": "Megaways",
 	"lbl_MyFavorite": "Favorit",
+	"lbl_Mini": "Mini",
+
 	"-==================-==========================Setting-===================================": "",
 	"lbl_Logout": "Logout",
 	"lbl_MyAccount": "Akun Saya",
