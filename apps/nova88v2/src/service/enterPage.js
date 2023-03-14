@@ -63,7 +63,7 @@ export const GET_ENTER_PAGE = ({
 	const _matchid = isNaN(matchid) ? matchid : Number(matchid);
 	const _tpGameType = tpGameType ? `&tpGameType=${tpGameType}` : "";
 	const _betType = bettype ? `&bettype=${bettype}` : "";
-	const _appType = appType ? `&Apptype=${appType}` : "&Apptype=2";
+	const _appType = appType ? `&AppType=${appType}` : "&AppType=2";
 
 	const entPageUrl = `${
 		config.openURL
