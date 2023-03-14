@@ -796,14 +796,14 @@ const gameList = ({ langId, currencyId }) => {
 					path: path.casino.root,
 					providerImgName: "pg",
 					sortKey: "slot_PG"
-				},
-				{
-					...defGameInfo.Casino_OW,
-					parameter: defGameInfo.Casino_OW,
-					spanText: "Saba Casino",
-					img: `${cloudBannerImgURL}/h5/img/ow.png`,
-					sortKey: "slot_OW"
 				}
+				// {
+				// 	...defGameInfo.Casino_OW,
+				// 	parameter: defGameInfo.Casino_OW,
+				// 	spanText: "Saba Casino",
+				// 	img: `${cloudBannerImgURL}/h5/img/ow.png`,
+				// 	sortKey: "slot_OW"
+				// }
 			]
 		},
 		// {
@@ -848,12 +848,14 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.sabaClub,
 					img: `${cloudBannerImgURL}/h5/img/vg.png`,
 					spanTextKey: "lbl_Vgaming",
+					allowCurrency: allowedCurrencyList.vGaming,
 					sortKey: "games_VGaming"
 				},
 				{
 					...defGameInfo.MaxGame,
 					img: `${cloudBannerImgURL}/h5/img/max.png`,
 					spanText: "Max Game",
+					allowCurrency: allowedCurrencyList.maxGame,
 					eventIcon: [
 						{
 							icon: defIconType.new,
@@ -871,6 +873,7 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.VirtualGame,
 					img: `${cloudBannerImgURL}/h5/img/virtualgames.png`,
 					spanTextKey: "lbl_VirtualGames",
+					allowCurrency: allowedCurrencyList.virtualGame,
 					sortKey: "games_VirtualGame"
 				}
 			]

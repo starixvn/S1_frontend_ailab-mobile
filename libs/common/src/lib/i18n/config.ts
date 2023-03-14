@@ -9,7 +9,8 @@ const resources = {
 	id: require("./id.json"),
 	my: require("./my.json"),
 	th: require("./th.json"),
-	vn: require("./vn.json")
+	vn: require("./vn.json"),
+	kh: require("./kh.json")
 };
 
 const fallbackNS = [ns.commonTranslations];

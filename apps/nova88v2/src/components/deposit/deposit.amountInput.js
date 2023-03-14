@@ -9,6 +9,7 @@ const defAmountQuickPick = {
 	[defCurrenyId.IDR]: [300000, 500000, 1000000, 3000000, 5000000],
 	[defCurrenyId.BDT]: [100, 300, 500, 1000, 2000],
 	[defCurrenyId.CNY]: [100, 300, 500, 1000, 2000],
+	[defCurrenyId.KHM]: [100, 300, 500, 1000, 2000],
 	[defCurrenyId.USD]: [100, 300, 500, 1000, 2000]
 };
 
