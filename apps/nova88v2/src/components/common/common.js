@@ -172,7 +172,8 @@ export const currCustomMapping = {
 	13: "MYR",
 	15: "IDR",
 	61: "INR",
-	74: "BDT"
+	74: "BDT",
+	100: "KHM"
 };
 
 export const defCurrenyId = {
@@ -183,7 +184,8 @@ export const defCurrenyId = {
 	IDR: 15,
 	INR: 61,
 	BDT: 74,
-	USDT: 96
+	USDT: 96,
+	KHM: 100
 };
 
 export const currencyIdToTimeZone = {
@@ -203,7 +205,8 @@ export const langMappingCurr = {
 	id: "IDR",
 	th: "THB",
 	hi: "INR",
-	bd: "BDT"
+	bd: "BDT",
+	kh: "KHM"
 };
 
 export const defCurrencyToLangId = {
