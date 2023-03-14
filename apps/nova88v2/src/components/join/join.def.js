@@ -64,6 +64,7 @@ export const currencyToAreacode = {
 	15: "ID",
 	51: "VN",
 	61: "IN",
+	72: "KH",
 	74: "BD",
 	96: "MY"
 };
@@ -75,7 +76,8 @@ export const reCaptchaEnum = {
 	id: "id",
 	my: "ms",
 	th: "th",
-	bd: "bn"
+	bd: "bn",
+	kh: "en"
 };
 
 export const countryEnum = {
@@ -85,7 +87,8 @@ export const countryEnum = {
 	IN: "1.8",
 	BD: "1.8",
 	CS: "1.8",
-	GB: "1.8"
+	GB: "1.8",
+	KH: "1.8"
 };
 
 export const limitCountryNum = {
@@ -94,5 +97,6 @@ export const limitCountryNum = {
 	"+62": "10-13",
 	"+91": "10",
 	"+86": "10-11",
-	"+880": "10"
+	"+880": "10",
+	"+855": "8-9"
 };
