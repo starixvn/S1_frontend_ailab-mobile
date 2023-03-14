@@ -203,6 +203,7 @@
 	"lbl_MaximumFileSizeEach": "সর্বোচ্চ ফাইলের আকার প্রতিটি 4 এমবি",
 	"lbl_MaximumNumberOfFiles": "ফাইলের সর্বোচ্চ সংখ্যা: 6",
 	"lbl_AcceptedFileType": "স্বীকৃত ফাইল প্রকার: JPG, JPEG, PNG, GIF",
+
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "মতভেদ",
 	"lbl_Handicap": "এইচডিপি",
@@ -803,5 +804,9 @@
 	"==============Mega888==============": "",
 	"lbl_app_for_android": "APP for Android",
 	"lbl_app_for_ios": "APP for IOS",
-	"lbl_mega888_download_app": "Mega888 Download APP"
+	"lbl_mega888_download_app": "Mega888 Download APP",
+
+	"==============H5 Sportsbook for Desktop Entrance==============": "",
+	"lbl_Sportsbook_PlayNow": "এখন খেলা",
+	"lbl_Sportsbook_Desktop": "ল্যান্ডলাইন"
 }

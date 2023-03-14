@@ -138,12 +138,14 @@ const gameList = [
 			{
 				...defGameInfo.Sports,
 				img: `${bannerImgUrl}/h5/img/hotgame/sport.jpg`,
-				spanTextKey: "lbl_Sports"
+				spanTextKey: "lbl_Sports",
+				hasDesktopLink: true
 			},
 			{
 				...defGameInfo.SabaSoccer,
 				img: `${bannerImgUrl}/h5/img/hotgame/sabasoccer.jpg`,
-				spanTextKey: "lbl_SabaSoccer"
+				spanTextKey: "lbl_SabaSoccer",
+				hasDesktopLink: true
 			},
 			{
 				img: `${bannerImgUrl}/h5/img/hotgame/slots.jpg`,
@@ -178,7 +180,8 @@ const gameList = [
 			{
 				...defGameInfo.eSports,
 				img: `${bannerImgUrl}/h5/img/hotgame/esport.jpg`,
-				spanTextKey: "lbl_eSports"
+				spanTextKey: "lbl_eSports",
+				hasDesktopLink: true
 			}
 		]
 	},
@@ -212,7 +215,8 @@ const gameList = [
 			{
 				...defGameInfo.Sports,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/soccer.png`,
-				spanTextKey: "lbl_Soccer"
+				spanTextKey: "lbl_Soccer",
+				hasDesktopLink: true
 			},
 			{
 				...defGameInfo.CryptoSports,
@@ -228,32 +232,38 @@ const gameList = [
 			{
 				...defGameInfo.SBOSport,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/sbo.png`,
-				spanText: "SBOBET"
+				spanText: "SBOBET",
+				hasDesktopLink: true
 			},
 			{
 				...defGameInfo.BTISport,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/bti.png`,
-				spanTextKey: "lbl_BTISport"
+				spanTextKey: "lbl_BTISport",
+				hasDesktopLink: true
 			},
 			{
 				...defGameInfo.SabaSoccer,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/sabasoccer.png`,
-				spanTextKey: "lbl_SabaSoccer"
+				spanTextKey: "lbl_SabaSoccer",
+				hasDesktopLink: true
 			},
 			{
 				...defGameInfo.eSports,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/e-sports.png`,
-				spanTextKey: "lbl_eSports"
+				spanTextKey: "lbl_eSports",
+				hasDesktopLink: true
 			},
 			{
 				...defGameInfo.Basketball,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/baseketball.png`,
-				spanTextKey: "lbl_Basketball"
+				spanTextKey: "lbl_Basketball",
+				hasDesktopLink: true
 			},
 			{
 				...defGameInfo.Volleyball,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/volleyball.png`,
-				spanTextKey: "lbl_Volleyball"
+				spanTextKey: "lbl_Volleyball",
+				hasDesktopLink: true
 			},
 			{
 				...defGameInfo.VirtualSports,

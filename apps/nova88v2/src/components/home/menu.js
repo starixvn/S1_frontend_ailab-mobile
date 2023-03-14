@@ -433,44 +433,6 @@ const SubGame = ({
 		);
 	}
 
-	if (game?.hasDesktopLink) {
-		return (
-			<button
-				className={isMaintain ? "active" : ""}
-				disabled={isMaintain}>
-				<div>{content}</div>
-				<div className="switchbtn">
-					<button
-						disabled={isMaintain}
-						onClick={clickGame.bind(this, {
-							tpId: game.tpId,
-							gameId: game.gameId,
-							useGotoGame: game.useGotoGame,
-							specialUrl: game?.specialUrl ?? "",
-							tpGameType: game.tpGameType,
-							bettype: game?.bettype,
-							appType: defAppType.desktop
-						})}>
-						Desktop
-					</button>
-					<button
-						disabled={isMaintain}
-						onClick={clickGame.bind(this, {
-							tpId: game.tpId,
-							gameId: game.gameId,
-							useGotoGame: game.useGotoGame,
-							specialUrl: game?.specialUrl ?? "",
-							tpGameType: game.tpGameType,
-							bettype: game?.bettype,
-							appType: defAppType.mobile
-						})}>
-						Play Now
-					</button>
-				</div>
-			</button>
-		);
-	}
-
 	let _path = game.path;
 	if (category === "slot" && game.spanText !== "Mega888") {
 		_path = `${path.casino.root}/${game.tpId}`;
@@ -497,6 +459,27 @@ const SubGame = ({
 				bettype: game?.bettype
 			})}>
 			{content}
+			{game?.hasDesktopLink && (
+				<div className="switchbtn">
+					<button
+						disabled={isMaintain}
+						onClick={e => {
+							e.stopPropagation();
+							clickGame({
+								tpId: game.tpId,
+								gameId: game.gameId,
+								useGotoGame: game.useGotoGame,
+								specialUrl: game?.specialUrl ?? "",
+								tpGameType: game.tpGameType,
+								bettype: game?.bettype,
+								appType: defAppType.desktop
+							});
+						}}>
+						{i18n.lbl_Sportsbook_Desktop}
+					</button>
+					<button>{i18n.lbl_Sportsbook_PlayNow}</button>
+				</div>
+			)}
 		</button>
 	);
 };
