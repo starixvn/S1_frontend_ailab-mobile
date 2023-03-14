@@ -403,7 +403,7 @@
 	"lbl_PhoneVerificationHint2": "lebih tinggi dan dapatkan ganjaran sebanyak {currency} {amount}",
 	"lbl_EmailOTPHint": "Kod Pengesahan E-mel telah dihantar ke peti mel berdaftar anda.",
 	"lbl_EmailVerifiedMsg": "Bagus! E-mel anda telah disahkan!",
-  "lbl_PhoneNumberErrorTip": "Nombor telefon yang anda masukkan tidak betul, antara {{digitalArea}} digit",
+	"lbl_PhoneNumberErrorTip": "Nombor telefon yang anda masukkan tidak betul, antara {{digitalArea}} digit",
 
 	"==============================================Shipping====================================": "",
 	"lbl_Shipping_Address": "Alamat Penghantaran",
@@ -877,6 +877,9 @@
 
 	"==============v3.0==============": "",
 	"lbl_SeeMore": "See More",
+	"Label_AngpaoNewYearTitle": "Lucky Rabbit Happy New Year",
 
-	"Label_AngpaoNewYearTitle": "Lucky Rabbit Happy New Year"
+	"==============H5 Sportsbook for Desktop Entrance==============": "",
+	"lbl_Sportsbook_PlayNow": "Main",
+	"lbl_Sportsbook_Desktop": "Desktop"
 }
