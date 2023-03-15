@@ -18,7 +18,10 @@ const Panel = () => {
 			setLoading(true);
 		}
 
-		api_GetAnnouncement(userInfo.langId).then(
+		api_GetAnnouncement({
+			langId: userInfo.langId,
+			currencyId: userInfo.currencyId
+		}).then(
 			res => {
 				if (res.data.errorCode === 0) {
 					const { data } = res.data;
