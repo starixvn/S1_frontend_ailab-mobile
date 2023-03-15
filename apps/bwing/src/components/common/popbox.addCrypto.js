@@ -8,7 +8,7 @@ import {
 	api_SendOTPSMS,
 	api_VerifyOTP,
 	api_GetOTPVerifyInfo,
-	api_SetCustUSDTInfoBatch
+	api_SetCustCryptoWallet
 } from "../../service/api/accountStrict";
 import { Counter } from "./popbox.otp";
 
@@ -234,17 +234,27 @@ const AddCryptoWallet = ({ GetCustBankInfo }) => {
 	const clickSubmit = e => {
 		e.preventDefault();
 
+		const {
+			currencyId,
+			network,
+			nickName,
+			usdtAddress: address
+		} = walletDatas;
+
 		const payload = {
-			AccountName: userInfo.accountName,
-			USDTInfo: [walletDatas]
+			currencyId,
+			network,
+			nickName,
+			address
 		};
+
 		if (status.usdtAddress.checked) {
 			api_VerifyOTP({
 				inputOTPcode: walletDatas.OTP
 			})
 				.then(otp_res => {
 					if (otp_res.data.errorCode === 0 && isMountedRef.current) {
-						api_SetCustUSDTInfoBatch(payload).then(
+						api_SetCustCryptoWallet(payload).then(
 							res => {
 								if (isMountedRef.current) {
 									if (res.data.errorCode === 0) {
