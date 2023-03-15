@@ -19,7 +19,7 @@ import {
 	api_WithdrawalCryptoReq,
 	api_payment_GetExchangeInfo
 } from "../../service/api/payment";
-import { api_DelCustUSDTInfo } from "../../service/api/accountStrict";
+import { api_DelCustCryptoWallet } from "../../service/api/accountStrict";
 import { defIptStatus } from "../common/inputbox.hint";
 import RecentDatas from "./withdrawal.recentDatas";
 import WalletPanel from "./walletPanel";
@@ -715,12 +715,7 @@ const Panel = () => {
 		}
 	};
 
-	const delUSDTwallet = ({
-		USDTAddress,
-		NickName,
-		AccountName,
-		CurrencyId
-	}) => {
+	const delUSDTwallet = ({ currencyId, network, address, nickName }) => {
 		setPopBox({
 			isOpen: true,
 			title: i18n.lbl_ImportantNote,
@@ -732,10 +727,10 @@ const Panel = () => {
 						className="Cancel"
 						onClick={() =>
 							removeAccount({
-								USDTAddress,
-								NickName,
-								AccountName,
-								CurrencyId
+								currencyId,
+								network,
+								address,
+								nickName
 							})
 						}>
 						{i18n.lbl_Yes}
@@ -750,13 +745,8 @@ const Panel = () => {
 		});
 	};
 
-	const removeAccount = ({
-		USDTAddress,
-		NickName,
-		AccountName,
-		CurrencyId
-	}) => {
-		api_DelCustUSDTInfo({ USDTAddress, NickName, AccountName, CurrencyId })
+	const removeAccount = ({ currencyId, network, address, nickName }) => {
+		api_DelCustCryptoWallet({ currencyId, network, address, nickName })
 			.then(res => {
 				if (res.data.errorCode === 0) {
 					GetCustBankInfo();
@@ -877,10 +867,10 @@ const Panel = () => {
 						{/* <button
 							onClick={() =>
 								delUSDTwallet({
-									USDTAddress: b.usdtAddress,
-									NickName: b.nickName,
-									AccountName: userInfo.accountName,
-									CurrencyId: b.currencyId
+									address: b.usdtAddress,
+									nickName: b.nickName,
+									currencyId: b.currencyId,
+									network: b.network
 								})
 							}
 							className="icon icon-bin"

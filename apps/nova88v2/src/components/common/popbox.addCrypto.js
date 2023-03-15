@@ -228,10 +228,20 @@ const AddCryptoWallet = ({ GetCustBankInfo }) => {
 	const clickSubmit = e => {
 		e.preventDefault();
 
+		const {
+			currencyId,
+			network,
+			nickName,
+			usdtAddress: address
+		} = walletDatas;
+
 		const payload = {
-			AccountName: userInfo.accountName,
-			USDTInfo: [walletDatas]
+			currencyId,
+			network,
+			nickName,
+			address
 		};
+
 		if (status.usdtAddress.checked) {
 			api.accountStrict
 				.VerifyOTP({
@@ -239,7 +249,7 @@ const AddCryptoWallet = ({ GetCustBankInfo }) => {
 				})
 				.then(otp_res => {
 					if (otp_res.data.errorCode === 0 && isMountedRef.current) {
-						api.accountStrict.SetCustUSDTInfoBatch(payload).then(
+						api.accountStrict.SetCustCryptoWallet(payload).then(
 							res => {
 								if (isMountedRef.current) {
 									if (res.data.errorCode === 0) {

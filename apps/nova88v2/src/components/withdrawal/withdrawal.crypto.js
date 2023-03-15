@@ -112,7 +112,7 @@ const Panel = () => {
 		api.account.GetCustBankInfo().then(
 			res => {
 				if (res.data.errorCode === 0) {
-					if (res.data.data?.uSDTDetail.length) {
+					if (res.data.data?.uSDTDetail?.length) {
 						setPopBox({ isOpen: false });
 						if (isMountedRef.current) {
 							setUserInfo(prev => ({
