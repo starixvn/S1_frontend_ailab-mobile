@@ -2939,6 +2939,10 @@ footer > a.active .circleAnimation::after {
   line-height: 24px;
   padding: 0;
 }
+#popup.promospop .pop .promotions .text .table-wrapper {
+  width: 100%;
+  overflow: scroll;
+}
 #popup.statuspop {
   color: #5574a7;
 }
