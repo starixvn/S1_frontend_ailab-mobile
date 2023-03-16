@@ -2,6 +2,7 @@
   font-family: "icomoon";
   src: url("../fonts/icomoon.woff?v=202003") format("woff");
 }
+
 .icon:before {
   font-family: "icomoon";
 }
@@ -9,20 +10,25 @@
 .casinoList .icon-GPI::before {
   font-size: 20px !important;
 }
+
 .casinoList .icon-YGG::before {
   font-size: 18px !important;
 }
+
 .casinoList .icon-JOKER::before {
   font-size: 12px !important;
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
 }
+
 .casinoList .icon-SG::before {
   font-size: 18px !important;
 }
+
 .casinoList .icon-PG::before {
   font-size: 12px !important;
 }
+
 .casinoList .icon-OW::before {
   font-size: 18px !important;
 }
@@ -30,15 +36,19 @@
 .livecasinoList .icon-DG:before {
   font-size: 22px !important;
 }
+
 .livecasinoList .icon-AB:before {
   font-size: 38px !important;
 }
+
 .livecasinoList .icon-AG:before {
   font-size: 24px !important;
 }
+
 .livecasinoList .icon-PP:before {
   font-size: 42px !important;
 }
+
 .livecasinoList .icon-SA:before {
   font-size: 36px !important;
 }
@@ -575,108 +585,108 @@
 
 .icon-united-kingdom .path1:before {
   content: "\e923";
-  color: rgb(240, 240, 240);
+  color: #f0f0f0;
 }
 
 .icon-united-kingdom .path2:before {
   content: "\e9c8";
   margin-left: -1em;
-  color: rgb(0, 82, 180);
+  color: #0052b4;
 }
 
 .icon-united-kingdom .path3:before {
   content: "\e9ca";
   margin-left: -1em;
-  color: rgb(0, 82, 180);
+  color: #0052b4;
 }
 
 .icon-united-kingdom .path4:before {
   content: "\e9cb";
   margin-left: -1em;
-  color: rgb(0, 82, 180);
+  color: #0052b4;
 }
 
 .icon-united-kingdom .path5:before {
   content: "\e9cc";
   margin-left: -1em;
-  color: rgb(0, 82, 180);
+  color: #0052b4;
 }
 
 .icon-united-kingdom .path6:before {
   content: "\e9cd";
   margin-left: -1em;
-  color: rgb(0, 82, 180);
+  color: #0052b4;
 }
 
 .icon-united-kingdom .path7:before {
   content: "\e9cf";
   margin-left: -1em;
-  color: rgb(0, 82, 180);
+  color: #0052b4;
 }
 
 .icon-united-kingdom .path8:before {
   content: "\e9d0";
   margin-left: -1em;
-  color: rgb(0, 82, 180);
+  color: #0052b4;
 }
 
 .icon-united-kingdom .path9:before {
   content: "\e9d2";
   margin-left: -1em;
-  color: rgb(0, 82, 180);
+  color: #0052b4;
 }
 
 .icon-united-kingdom .path10:before {
   content: "\e9d3";
   margin-left: -1em;
-  color: rgb(216, 0, 39);
+  color: #d80027;
 }
 
 .icon-united-kingdom .path11:before {
   content: "\e9d6";
   margin-left: -1em;
-  color: rgb(216, 0, 39);
+  color: #d80027;
 }
 
 .icon-united-kingdom .path12:before {
   content: "\e9d8";
   margin-left: -1em;
-  color: rgb(216, 0, 39);
+  color: #d80027;
 }
 
 .icon-united-kingdom .path13:before {
   content: "\e9da";
   margin-left: -1em;
-  color: rgb(216, 0, 39);
+  color: #d80027;
 }
 
 .icon-united-kingdom .path14:before {
   content: "\e9db";
   margin-left: -1em;
-  color: rgb(216, 0, 39);
+  color: #d80027;
 }
 
 .icon-vietnam .path1:before {
   content: "\e922";
-  color: rgb(255, 255, 255);
+  color: white;
 }
 
 .icon-vietnam .path2:before {
   content: "\e9dc";
   margin-left: -1em;
-  color: rgb(225, 42, 40);
+  color: #e12a28;
 }
 
 .icon-vietnam .path3:before {
   content: "\e9dd";
   margin-left: -1em;
-  color: rgb(237, 52, 50);
+  color: #ed3432;
 }
 
 .icon-vietnam .path4:before {
   content: "\e9de";
   margin-left: -1em;
-  color: rgb(253, 206, 12);
+  color: #fdce0c;
 }
 
 .icon-userIcon2:before {
@@ -1219,4 +1229,5 @@
 
 .icon-kingmaker:before {
   content: "\e9f2";
-}/*# sourceMappingURL=font.css.map */
+}
+/*# sourceMappingURL=font.css.map */
