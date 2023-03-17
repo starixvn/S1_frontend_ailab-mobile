@@ -149,7 +149,7 @@ const InstallGuide = ({ i18n }) => {
 			<Swiper {...params}>
 				<div className="swiper-slide">
 					<img
-						src={`${cloudBannerImgURL}/h5/img/app/Step1.png`}
+						src={`${cloudBannerImgURL}/h5/img/app/new-step1.png`}
 						alt="step1"
 					/>
 					<div>
@@ -187,7 +187,7 @@ const InstallGuide = ({ i18n }) => {
 				</div>
 				<div className="swiper-slide">
 					<img
-						src={`${cloudBannerImgURL}/h5/img/app/Step4.png`}
+						src={`${cloudBannerImgURL}/h5/img/app/new-step4.png`}
 						alt="step4"
 					/>
 					<div>
