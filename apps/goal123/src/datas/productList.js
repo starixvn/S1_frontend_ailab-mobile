@@ -180,8 +180,7 @@ const gameList = [
 			{
 				...defGameInfo.eSports,
 				img: `${bannerImgUrl}/h5/img/hotgame/esport.jpg`,
-				spanTextKey: "lbl_eSports",
-				hasDesktopLink: true
+				spanTextKey: "lbl_eSports"
 			}
 		]
 	},
