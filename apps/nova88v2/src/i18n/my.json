@@ -299,6 +299,8 @@
 	"lbl_BuyFeaturesGames": "Beli Permainan Ciri",
 	"lbl_Megaways": "Megaways",
 	"lbl_MyFavorite": "Kegemaran saya",
+	"lbl_Mini": "Mini",
+
 	"==============================================Setting====================================": "",
 
 	"lbl_Logout": "Log keluar",
@@ -403,7 +405,7 @@
 	"lbl_PhoneVerificationHint2": "lebih tinggi dan dapatkan ganjaran sebanyak {currency} {amount}",
 	"lbl_EmailOTPHint": "Kod Pengesahan E-mel telah dihantar ke peti mel berdaftar anda.",
 	"lbl_EmailVerifiedMsg": "Bagus! E-mel anda telah disahkan!",
-  "lbl_PhoneNumberErrorTip": "Nombor telefon yang anda masukkan tidak betul, antara {{digitalArea}} digit",
+	"lbl_PhoneNumberErrorTip": "Nombor telefon yang anda masukkan tidak betul, antara {{digitalArea}} digit",
 
 	"==============================================Shipping====================================": "",
 	"lbl_Shipping_Address": "Alamat Penghantaran",
