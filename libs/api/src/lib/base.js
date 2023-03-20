@@ -99,5 +99,11 @@ export default class BaseAPI {
 			withCredentials: true,
 			baseURL: `${apiUrl}/api/HotGame`
 		});
+
+		// * 紀錄log
+		this.frontEndLogRequest = axios.create({
+			withCredentials: true,
+			baseURL: `${apiUrl}/api/FrontEndLog`
+		});
 	}
 }
