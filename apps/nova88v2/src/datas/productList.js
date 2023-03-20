@@ -49,7 +49,11 @@ export const defIconType = {
 };
 
 export const defSlotTpGameType = {
-	Saba: { tpId: 1, tpGameType: 4 },
+	Saba: {
+		// tpId: 1,
+		tpId: 41, // seamless wallet
+		tpGameType: 4
+	},
 	PP: { tpId: 5, tpGameType: 7 },
 	NetEnt: { tpId: 37, tpGameType: 64 },
 	GPI: { tpId: 6, tpGameType: 11 },
@@ -1059,70 +1063,81 @@ export default gameList;
 
 export const defGameInfo = {
 	Soccer: {
-		tpId: 1,
+		// tpId: 1,
+		tpId: 41, // seamless wallet
 		gameId: 1,
 		// tpGameType: 1
 		tpGameType: 69 // seamless wallet
 	},
 	SabaSoccer: {
-		tpId: 1,
+		// tpId: 1,
+		tpId: 41, // seamless wallet
 		gameId: 997,
 		// tpGameType: 1,
 		tpGameType: 69 // seamless wallet
 	},
 	Basketball: {
-		tpId: 1,
+		// tpId: 1,
+		tpId: 41, // seamless wallet
 		gameId: 2,
 		// tpGameType: 1,
 		tpGameType: 69 // seamless wallet
 	},
 	Tennis: {
-		tpId: 1,
+		// tpId: 1,
+		tpId: 41, // seamless wallet
 		gameId: 5,
 		// tpGameType: 1,
 		tpGameType: 69 // seamless wallet
 	},
 	Cricket: {
-		tpId: 1,
+		// tpId: 1,
+		tpId: 41, // seamless wallet
 		gameId: 50,
 		// tpGameType: 1,
 		tpGameType: 69 // seamless wallet
 	},
 	Wap: {
-		tpId: 1,
+		// tpId: 1,
+		tpId: 41, // seamless wallet
 		gameId: 1,
 		// tpGameType: 1,
 		tpGameType: 69 // seamless wallet
 	},
 	ESportAll: {
-		tpId: 1,
+		// tpId: 1,
+		tpId: 41, // seamless wallet
 		gameId: 43,
 		// tpGameType: 1,
 		tpGameType: 69 // seamless wallet
 	},
 	ESportCS: {
-		tpId: 1,
+		// tpId: 1,
+		tpId: 41, // seamless wallet
 		gameId: 43,
 		bettype: 3,
 		// tpGameType: 1,
 		tpGameType: 69 // seamless wallet
 	},
 	ESportDota: {
-		tpId: 1,
+		// tpId: 1,
+		tpId: 41, // seamless wallet
 		gameId: 43,
 		bettype: 1,
 		// tpGameType: 1,
 		tpGameType: 69 // seamless wallet
 	},
 	ESportKOG: {
-		tpId: 1,
+		// tpId: 1,
+		tpId: 41, // seamless wallet
 		gameId: 43,
 		bettype: 4,
 		// tpGameType: 1,
 		tpGameType: 69 // seamless wallet
 	},
 	ESportLOL: {
-		tpId: 1,
+		// tpId: 1,
+		tpId: 41, // seamless wallet
 		gameId: 43,
 		bettype: 2,
 		// tpGameType: 1,
@@ -1155,7 +1170,12 @@ export const defGameInfo = {
 	Casino_SG: { tpId: 10, tpGameType: 15 },
 	Casino_PG: { tpId: 14, tpGameType: 17 },
 	Casino_PT: { tpId: 27, gameId: "0", tpGameType: 46 },
-	Casino_OW: { tpId: 1, gameId: 208, tpGameType: 4 },
+	Casino_OW: {
+		// tpId: 1,
+		tpId: 41, // seamless wallet
+		gameId: 208,
+		tpGameType: 4
+	},
 	Casino_NetEnt: { tpId: 37, tpGameType: 64 },
 	Casino_AdvantPlay: { tpId: 39, tpGameType: 67 },
 	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
@@ -1196,33 +1216,43 @@ export const defGameInfo = {
 	},
 	CockFighting: { tpId: 17, tpGameType: 27 },
 	// VirtualSports: {
-	// 	tpId: 1,
+	// 	// tpId: 1,
+	// tpId: 41, // seamless wallet
 	// 	gameId: 180,
 	// 	tpGameType: 3,
 	// 	tpGameType: 71 // seamless wallet
 	// },
-	Indo4d: { tpId: 1, gameId: 223, tpGameType: 20 },
+	Indo4d: {
+		// tpId: 1,
+		tpId: 41, // seamless wallet
+		gameId: 223,
+		tpGameType: 20
+	},
 	Keno: {
-		tpId: 1,
+		// tpId: 1,
+		tpId: 41, // seamless wallet
 		gameId: 202,
 		// tpGameType: 5,
 		tpGameType: 73 // seamless wallet
 	},
 	lottery: {
-		tpId: 1,
+		// tpId: 1,
+		tpId: 41, // seamless wallet
 		gameId: 220,
 		// tpGameType: 19,
 		tpGameType: 74 // seamless wallet
 	},
 	NumberGame: {
-		tpId: 1,
+		// tpId: 1,
+		tpId: 41, // seamless wallet
 		gameId: 161,
 		// tpGameType: 2,
 		tpGameType: 70 // seamless wallet
 	},
 	oneGame: { tpId: 13, tpGameType: 41 },
 	sabaClub: {
-		tpId: 1,
+		// tpId: 1,
+		tpId: 41, // seamless wallet
 		gameId: 171,
 		// tpGameType: 59,
 		tpGameType: 95 // seamless wallet
@@ -1233,22 +1263,39 @@ export const defGameInfo = {
 	Casino_Jili: { tpId: 32, tpGameType: 53 },
 	TCG: { tpId: 33, tpGameType: 54 },
 	tableGame: {
-		tpId: 1,
+		// tpId: 1,
+		tpId: 41, // seamless wallet
 		gameId: 222,
 		// tpGameType: 23,
 		tpGameType: 75 // seamless wallet
 	},
 	MPoker: { tpId: 35, tpGameType: 60 },
-	MaxGame: { tpId: 1, gameId: 237, tpGameType: 83 },
+	MaxGame: {
+		// tpId: 1,
+		tpId: 41, // seamless wallet
+		gameId: 237,
+		tpGameType: 83
+	},
 	Mega888: { tpId: 22, tpGameType: 34 },
-	VirtualGame: { tpId: 1, gameId: 245, tpGameType: 22 }, // 單一錢包 (目前不支援)
+	VirtualGame: {
+		// tpId: 1,
+		tpId: 41, // seamless wallet
+		gameId: 245,
+		tpGameType: 22
+	},
 	VirtualSports: {
-		tpId: 1,
+		// tpId: 1,
+		tpId: 41, // seamless wallet
 		gameId: 192,
 		// tpGameType: 24,
 		tpGameType: 72 // seamless wallet
 	},
-	WorldCup: { tpId: 1, gameId: 2002, tpGameType: 1 },
+	WorldCup: {
+		// tpId: 1,
+		tpId: 41, // seamless wallet
+		gameId: 2002,
+		tpGameType: 1
+	},
 	CryptoSports: { tpId: 45, tpGameType: 87 },
 	GPI_Keno: { tpId: 6, gameId: "keno", tpGameType: 88 },
 	GPI_ThaiLottery: { tpId: 6, gameId: "thailottery", tpGameType: 90 },
