@@ -1790,6 +1790,51 @@ main .gameList > div > div.active, main .gameList > div > a.active, main .gameLi
 main .gameList > div > div.active .under, main .gameList > div > a.active .under, main .gameList > div > button.active .under, main .gameList > a > div.active .under, main .gameList > a > a.active .under, main .gameList > a > button.active .under, main .gameList > button > div.active .under, main .gameList > button > a.active .under, main .gameList > button > button.active .under {
   display: block;
 }
+main .gameList > div > div .switchbtn, main .gameList > div > a .switchbtn, main .gameList > div > button .switchbtn, main .gameList > a > div .switchbtn, main .gameList > a > a .switchbtn, main .gameList > a > button .switchbtn, main .gameList > button > div .switchbtn, main .gameList > button > a .switchbtn, main .gameList > button > button .switchbtn {
+  position: absolute;
+  bottom: 5vw;
+  right: 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  width: 100%;
+}
+main .gameList > div > div .switchbtn a, main .gameList > div > div .switchbtn button, main .gameList > div > a .switchbtn a, main .gameList > div > a .switchbtn button, main .gameList > div > button .switchbtn a, main .gameList > div > button .switchbtn button, main .gameList > a > div .switchbtn a, main .gameList > a > div .switchbtn button, main .gameList > a > a .switchbtn a, main .gameList > a > a .switchbtn button, main .gameList > a > button .switchbtn a, main .gameList > a > button .switchbtn button, main .gameList > button > div .switchbtn a, main .gameList > button > div .switchbtn button, main .gameList > button > a .switchbtn a, main .gameList > button > a .switchbtn button, main .gameList > button > button .switchbtn a, main .gameList > button > button .switchbtn button {
+  font-size: 3vw;
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  width: 20vw;
+  margin: -2vw 0 0 0;
+  border-radius: 5px;
+  min-height: 6vw;
+  background: #FF5E00;
+}
+main .gameList > div > div .switchbtn a:first-child, main .gameList > div > div .switchbtn button:first-child, main .gameList > div > a .switchbtn a:first-child, main .gameList > div > a .switchbtn button:first-child, main .gameList > div > button .switchbtn a:first-child, main .gameList > div > button .switchbtn button:first-child, main .gameList > a > div .switchbtn a:first-child, main .gameList > a > div .switchbtn button:first-child, main .gameList > a > a .switchbtn a:first-child, main .gameList > a > a .switchbtn button:first-child, main .gameList > a > button .switchbtn a:first-child, main .gameList > a > button .switchbtn button:first-child, main .gameList > button > div .switchbtn a:first-child, main .gameList > button > div .switchbtn button:first-child, main .gameList > button > a .switchbtn a:first-child, main .gameList > button > a .switchbtn button:first-child, main .gameList > button > button .switchbtn a:first-child, main .gameList > button > button .switchbtn button:first-child {
+  background: #5574A7;
+  margin-bottom: 0;
+}
+main .gameList > div > div .switchbtn a:hover, main .gameList > div > div .switchbtn button:hover, main .gameList > div > a .switchbtn a:hover, main .gameList > div > a .switchbtn button:hover, main .gameList > div > button .switchbtn a:hover, main .gameList > div > button .switchbtn button:hover, main .gameList > a > div .switchbtn a:hover, main .gameList > a > div .switchbtn button:hover, main .gameList > a > a .switchbtn a:hover, main .gameList > a > a .switchbtn button:hover, main .gameList > a > button .switchbtn a:hover, main .gameList > a > button .switchbtn button:hover, main .gameList > button > div .switchbtn a:hover, main .gameList > button > div .switchbtn button:hover, main .gameList > button > a .switchbtn a:hover, main .gameList > button > a .switchbtn button:hover, main .gameList > button > button .switchbtn a:hover, main .gameList > button > button .switchbtn button:hover {
+  background: #e92529;
+  opacity: 0.8;
+}
+main .gameList > div > div .switchbtn a:hover:first-child, main .gameList > div > div .switchbtn button:hover:first-child, main .gameList > div > a .switchbtn a:hover:first-child, main .gameList > div > a .switchbtn button:hover:first-child, main .gameList > div > button .switchbtn a:hover:first-child, main .gameList > div > button .switchbtn button:hover:first-child, main .gameList > a > div .switchbtn a:hover:first-child, main .gameList > a > div .switchbtn button:hover:first-child, main .gameList > a > a .switchbtn a:hover:first-child, main .gameList > a > a .switchbtn button:hover:first-child, main .gameList > a > button .switchbtn a:hover:first-child, main .gameList > a > button .switchbtn button:hover:first-child, main .gameList > button > div .switchbtn a:hover:first-child, main .gameList > button > div .switchbtn button:hover:first-child, main .gameList > button > a .switchbtn a:hover:first-child, main .gameList > button > a .switchbtn button:hover:first-child, main .gameList > button > button .switchbtn a:hover:first-child, main .gameList > button > button .switchbtn button:hover:first-child {
+  background: #001942;
+  opacity: 0.8;
+}
+@media (max-width: 280px) {
+  main .gameList > div > div .switchbtn a, main .gameList > div > div .switchbtn button, main .gameList > div > a .switchbtn a, main .gameList > div > a .switchbtn button, main .gameList > div > button .switchbtn a, main .gameList > div > button .switchbtn button, main .gameList > a > div .switchbtn a, main .gameList > a > div .switchbtn button, main .gameList > a > a .switchbtn a, main .gameList > a > a .switchbtn button, main .gameList > a > button .switchbtn a, main .gameList > a > button .switchbtn button, main .gameList > button > div .switchbtn a, main .gameList > button > div .switchbtn button, main .gameList > button > a .switchbtn a, main .gameList > button > a .switchbtn button, main .gameList > button > button .switchbtn a, main .gameList > button > button .switchbtn button {
+    width: 25vw;
+  }
+}
 main .gameList > div > div img, main .gameList > div > a img, main .gameList > div > button img, main .gameList > a > div img, main .gameList > a > a img, main .gameList > a > button img, main .gameList > button > div img, main .gameList > button > a img, main .gameList > button > button img {
   width: 100%;
 }
@@ -2893,6 +2938,10 @@ footer > a.active .circleAnimation::after {
 #popup.promospop .pop .promotions .text {
   line-height: 24px;
   padding: 0;
+}
+#popup.promospop .pop .promotions .text .table-wrapper {
+  width: 100%;
+  overflow: scroll;
 }
 #popup.statuspop {
   color: #5574a7;
@@ -4493,7 +4542,7 @@ footer > a.active .circleAnimation::after {
 }
 
 .bankSlip {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   top: 0;
   left: 0;
   z-index: 4;
@@ -4523,6 +4572,70 @@ footer > a.active .circleAnimation::after {
 .bankSlip .text-gray.title {
   margin: 3vw 0 0;
 }
+.bankSlip .uploadModule {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  margin: 2vw auto;
+}
+.bankSlip .upload_img {
+  width: 25.3vw;
+  height: 18vw;
+  border-radius: 10px;
+  border: 1px solid #1e85ec;
+  background: rgba(117, 145, 193, 0.5);
+  margin: 0 1vw 1vw 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+.bankSlip .upload_img:nth-child(3n) {
+  margin-right: 0;
+}
+.bankSlip .upload_img .icon-folder-upload {
+  display: none;
+}
+.bankSlip .upload_img .icon-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 8px !important;
+  background: #868686;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  padding: 2px;
+  z-index: 3;
+}
+.bankSlip .upload_img .icon-close::before {
+  font-size: 8px;
+  margin: 0 2px;
+  color: #fff;
+}
+.bankSlip .upload_img.error {
+  border-color: #e92529;
+}
+.bankSlip .upload_img .icon {
+  font-size: 5vw;
+  color: #1e85ec;
+}
+.bankSlip .upload_img img {
+  height: 100%;
+}
 
 .rule {
   color: #b2b2b2;
@@ -4533,6 +4646,10 @@ footer > a.active .circleAnimation::after {
 }
 .rule ul li {
   list-style: disc;
+}
+
+.txt-red {
+  color: #e92529;
 }
 
 input {
