@@ -119,6 +119,15 @@ const Panel = ({ searchInput }) => {
 			);
 			tempList.unshift(random);
 
+			const miniItem = tempList.find(el => el[0] === "mini");
+			if (
+				miniItem &&
+				miniItem[1].some(({ tpId }) => tpId === targetProvider?.tpId)
+			) {
+				tempList.splice(2, 0, miniItem);
+				tempList.pop();
+			}
+
 			const _list = [];
 			tempList.forEach(item => _list.push(item[0]));
 			setCategoryList(_list);
@@ -381,8 +390,18 @@ const Panel = ({ searchInput }) => {
 			);
 			const totalData = filterList.find(item => item[0] === "all")[1];
 			if (totalData.length > 0) {
+				const miniItem = filterList.find(el => el[0] === "mini");
+				if (
+					miniItem &&
+					miniItem[1].some(({ tpId }) => tpId === activeProvider.tpId)
+				) {
+					filterList.splice(2, 0, miniItem);
+					filterList.pop();
+				}
+
 				const tempList = [];
 				filterList.forEach(item => tempList.push(item[0]));
+
 				setCategoryList(tempList);
 				setActiveCategory(tempList[1]);
 			} else {
