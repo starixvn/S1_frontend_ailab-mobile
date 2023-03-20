@@ -495,13 +495,13 @@ const Panel = () => {
 					? Number(amount) * 1000
 					: Number(amount);
 
-				const handleClickSubmit = () => {
+				const handleClickSubmit = ({ exchangeInfo }) => {
 					if (!isClickedRef.current) {
 						isClickedRef.current = true;
 						RedirectToNext({
 							accountNo: selBank.usdtAddress,
 							real_amount,
-							exchangeInfo: res.data.data
+							exchangeInfo
 						});
 					}
 					setTimeout(() => {
@@ -578,7 +578,12 @@ const Panel = () => {
 											<button
 												data-testid="RedirectToNext"
 												className="orange"
-												onClick={handleClickSubmit}>
+												onClick={() => {
+													handleClickSubmit({
+														exchangeInfo:
+															res.data.data
+													});
+												}}>
 												{i18n.lbl_Submit}
 											</button>
 										</div>
