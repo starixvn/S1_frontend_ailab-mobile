@@ -6,7 +6,7 @@ import React, {
 	useRef
 } from "react";
 import { defGameInfo } from "../../datas/productList";
-import { popBoxContext, i18nContext } from "../common/context";
+import { popBoxContext, i18nContext, userInfoContext } from "../common/context";
 import api from "../../service/api";
 
 export const defOpenType = {
@@ -117,6 +117,7 @@ export const useGotoGame = ({
 	allowBeforeLogin = false
 }) => {
 	const { setPopBox } = useContext(popBoxContext);
+	const { userInfo: { userName } = {} } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const [data, setData] = useState({ account: "", password: "" });
 
@@ -179,7 +180,13 @@ export const useGotoGame = ({
 						token: token ?? "",
 						tpGameType: String(tpGameType)
 					});
-
+					await api.frontEndLog.LogMessage({
+						userName,
+						apiPath: "api/FrontEndLog/LogMessage",
+						logBody: "",
+						logLevel: "info",
+						step: "await api GotoGame"
+					});
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0 && res.data.message) {
 							const result = JSON.parse(res.data.message);
@@ -250,6 +257,14 @@ export const useGotoGame = ({
 							} else if (_tpId === defSpecialSetting.sports_9w) {
 								returnData = result;
 							}
+							await api.frontEndLog.LogMessage({
+								userName,
+								apiPath: "api/FrontEndLog/LogMessage",
+								logBody: "",
+								logLevel: "info",
+								step:
+									"res.data.errorCode === 0 && res.data.message"
+							});
 						} else if (
 							res.data.errorCode === 3000 &&
 							res.data.message
@@ -259,14 +274,36 @@ export const useGotoGame = ({
 								"Under Maintenance",
 								"toolbar=no, menubar=no,scrollbars=no,resizable=no,location=no,directories=no,status=no, top=0, left=0"
 							);
+							await api.frontEndLog.LogMessage({
+								userName,
+								apiPath: "api/FrontEndLog/LogMessage",
+								logBody: "",
+								logLevel: "info",
+								step:
+									"res.data.errorCode === 3000 && res.data.message"
+							});
 						} else {
 							setPopBox({
 								isOpen: true,
 								content: `[${res.data.errorCode}] ${res.data.message}`
 							});
+							await api.frontEndLog.LogMessage({
+								userName,
+								apiPath: "api/FrontEndLog/LogMessage",
+								logBody: "",
+								logLevel: "info",
+								step: "done"
+							});
 						}
 					}
 				} catch (error) {
+					api.frontEndLog.LogMessage({
+						userName,
+						apiPath: "api/FrontEndLog/LogMessage",
+						logBody: error.message,
+						logLevel: "error",
+						step: ""
+					});
 					setPopBox({
 						isOpen: true,
 						content: i18n.msg_ApiServerError
