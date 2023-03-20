@@ -9417,7 +9417,7 @@ span.important {
   width: 100%;
 }
 .apppage .app {
-  background: url(https://banner.0814media.net/h5/img/app/appbg.jpg) no-repeat top center/cover;
+  background: url(https://banner.0814media.net/h5/img/app/new-appbg.png) no-repeat top center/cover;
 }
 .apppage .appHeader {
   height: 8vw;
@@ -9455,7 +9455,7 @@ span.important {
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  padding-top: 12vw;
+  padding-top: 11vw;
   position: relative;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -9470,7 +9470,7 @@ span.important {
       -ms-flex-flow: column;
           flex-flow: column;
   width: 100%;
-  margin-top: 90vw;
+  margin-top: 70vw;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -9507,9 +9507,20 @@ span.important {
           justify-content: center;
   border-radius: 3px;
 }
+@media (max-width: 320px) {
+  .apppage .appPage .scan > div > div {
+    padding: 2vw;
+  }
+}
 .apppage .appPage .scan > div > div > img {
   width: 17vw;
   height: 17vw;
+}
+@media (max-width: 320px) {
+  .apppage .appPage .scan > div > div > img {
+    width: 15vw;
+    height: 15vw;
+  }
 }
 .apppage .appPage .scan > div > div > div {
   margin-left: 1vw;
@@ -9547,6 +9558,11 @@ span.important {
   font-size: 3vw;
   font-weight: bold;
   padding: 1.5vw 2vw;
+}
+@media (max-width: 320px) {
+  .apppage .appPage .scan > div > div > div button {
+    padding: 1vw;
+  }
 }
 .apppage .appPage .install {
   color: #112240;
