@@ -249,8 +249,7 @@ const gameList = [
 			{
 				...defGameInfo.eSports,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/e-sports.png`,
-				spanTextKey: "lbl_eSports",
-				hasDesktopLink: true
+				spanTextKey: "lbl_eSports"
 			},
 			{
 				...defGameInfo.Basketball,
