@@ -48,13 +48,13 @@ export const open9wSports = ({ url, key, userId }) => {
 const playTechLaunchGame = (client, game, mode, openType) => {
 	try {
 		iapiConf.clientUrl_ngm_desktop =
-			"https://cachedownload-am.cat87666.com/ngmdesktop/casinoclient.html";
+			"https://cachedownload-am.htsp123.com/ngmdesktop/casinoclient.html";
 		iapiConf.clientUrl_ngm_mobile =
-			"https://games-am.cat87666.com/casinomobile/casinoclient.html";
+			"https://games-am.htsp123.com/casinomobile/casinoclient.html";
 		iapiConf.clientUrl_live_desk =
-			"https://cachedownload-am.cat87666.com/live/html5/desktop/";
+			"https://cachedownload-am.htsp123.com/live/html5/desktop/";
 		iapiConf.clientUrl_live_mob =
-			"https://cachedownload-am.cat87666.com/live/html5/mobile/";
+			"https://cachedownload-am.htsp123.com/live/html5/mobile/";
 	} catch (error) {}
 
 	iapiLaunchClient(client, game, mode, openType);
