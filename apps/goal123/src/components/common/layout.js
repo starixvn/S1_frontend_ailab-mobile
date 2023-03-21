@@ -20,6 +20,9 @@ import { eventTime } from "./eventTime";
 import LuckyWheel from "../luckyWheel/homePopBox";
 import GoTopBtn from "./goTopBtn";
 import { angPaoEventPeriod } from "../../pages/angpao";
+import { GET_ENTER_PAGE } from "../../service/enterPage";
+import { bannerImgUrl } from "../../config";
+import { defGameInfo } from "../../datas/productList";
 
 // const defPageInfo = {
 // 	leaderBoard: {
@@ -32,17 +35,32 @@ import { angPaoEventPeriod } from "../../pages/angpao";
 const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 	const { i18n } = useContext(i18nContext);
 	const { nav } = useContext(navContext);
+	const { setNav } = useContext(navContext);
 	const { loading } = useContext(loadingContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { root } = useContext(rootContext);
 	const navigate = useNavigate();
 	const [luckyWheel, setLuckyWheel] = useState(false);
+	const [displayVgaming, setDisplayVgaming] = useState(true);
 
 	const _matchLogin = useMatch(`/${path.login.root}`) !== null;
 	const position =
 		nav === defNavPanel.login || _matchLogin || nav === defNavPanel.join
 			? { position: "fixed" }
 			: {};
+
+	const clickGame = ({ tpId, gameId, tpGameType }) => {
+		GET_ENTER_PAGE({
+			langId: userInfo.langId,
+			tpId,
+			gameId,
+			isLogin: userInfo.isLogin === true,
+			loginCallback: () => {
+				setNav(defNavPanel.login);
+			},
+			tpGameType
+		});
+	};
 
 	useEffect(() => {
 		if (root) {
@@ -69,6 +87,22 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 				{loading ? <Loading /> : null}
 			</main>
 
+			{/* 右下角 Vgaming 進入點 */}
+			{displayVgaming && root && (
+				<div className="eventLink vgaming">
+					<button
+						className="icon icon-close"
+						onClick={() => setDisplayVgaming(false)}
+					/>
+					<img
+						className="vgimg"
+						src={`${bannerImgUrl}/h5/img/vgaming.gif`}
+						alt="vgaming-link"
+						onClick={() => clickGame(defGameInfo.sabaClub)}
+					/>
+				</div>
+			)}
+
 			{/* 僅限過年期間不顯示 */}
 			{isEventPeriod(eventTime.luckyWheel) &&
 			!isDateRange(angPaoEventPeriod) &&
@@ -76,10 +110,8 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 			luckyWheel ? (
 				<LuckyWheel userInfo={userInfo} setLuckyWheel={setLuckyWheel} />
 			) : null}
-
 			{/* 僅限過年期間顯示 */}
 			{isDateRange(angPaoEventPeriod) && root && <AngpaoFloatLink />}
-
 			<Footer />
 			{goTopBtn && <GoTopBtn />}
 		</>
