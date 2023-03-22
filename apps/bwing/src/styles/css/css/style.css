@@ -4610,10 +4610,25 @@ main > .swiper-container .swiper-slide {
   max-height: calc(100% - 160px);
 }
 
+.uploadModule {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 75%;
+  margin: 20px 0;
+}
+
 .upload_img {
+  width: calc(33.3333% - 7px);
+  height: 80px;
+  margin: 0 5px 10px 0;
   border-radius: 5px;
   border: 1px solid #1e85ec;
-  height: 200px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4625,10 +4640,33 @@ main > .swiper-container .swiper-slide {
           align-items: center;
   overflow: hidden;
   cursor: pointer;
+  position: relative;
+}
+.upload_img.error {
+  border-color: #f52805;
+}
+.upload_img.error .icon {
+  color: #f52805;
 }
 .upload_img .icon {
-  font-size: 48px;
+  font-size: 36px;
   color: #1e85ec;
+}
+.upload_img .icon-close {
+  position: absolute;
+  top: 5px !important;
+  right: 5px !important;
+  font-size: 8px !important;
+  background: #868686;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  padding: 2px;
+  z-index: 3;
+}
+.upload_img .icon-close::before {
+  font-size: 8px;
+  margin: 0 2px;
+  color: #fff;
 }
 .upload_img img {
   height: 100%;
@@ -4691,7 +4729,7 @@ main > .swiper-container .swiper-slide {
 .directions {
   border-bottom: 1px solid #666;
   color: #aeb2bc;
-  margin: 20px 0 20px 20px;
+  margin: 5px 0 20px 20px;
   padding-bottom: 20px;
   text-align: left;
 }
@@ -12122,12 +12160,6 @@ input + .iconModule i.icon.icon-checkmark:before {
 .upload_new .checkBankSlip ul {
   width: 100%;
 }
-.upload_new .upload_img {
-  margin: 5px 0 0;
-}
-.upload_new .upload_img.error {
-  border-color: #f52805;
-}
 
 .inputBox-white {
   width: calc(100% - 100px);
@@ -12168,70 +12200,6 @@ input + .iconModule i.icon.icon-checkmark:before {
 }
 .directions + form .tip {
   margin-left: 75px;
-}
-
-.upload_img {
-  max-width: 80%;
-  min-width: 75%;
-  border-radius: 5px;
-  border: 1px solid #1fbdfd;
-  height: 250px;
-  margin: 40px 0 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  overflow: hidden;
-  cursor: pointer;
-}
-.upload_img .icon-folder-upload {
-  display: none;
-}
-.upload_img.error {
-  border-color: #f52805;
-}
-.upload_img .icon {
-  font-size: 48px;
-  color: #1fbdfd;
-}
-.upload_img .icon.icon-broken_image:before {
-  font-size: 48px;
-  color: #666;
-}
-.upload_img img {
-  height: 100%;
-}
-.upload_img + .smallList {
-  max-width: 80%;
-  min-width: 75%;
-  border-bottom: 1px solid #666;
-  padding-bottom: 20px;
-}
-.upload_img + .smallList ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-.upload_img + .smallList ul li {
-  margin-left: 10px;
-  width: auto;
-}
-.upload_img + .smallList ul li .icon {
-  color: #1e85ec;
-}
-.upload_img + .smallList ul li:nth-child(1) {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  margin-left: 0;
 }
 
 .vip {
@@ -15220,4 +15188,16 @@ input + .iconModule i.icon.icon-checkmark:before {
     -webkit-transform-origin: 50% 70%;
             transform-origin: 50% 70%;
   }
+}
+.eventLink.vgaming {
+  bottom: 220px;
+  left: 30px;
+}
+.eventLink.vgaming .icon-close {
+  width: 30px;
+  height: 30px;
+  top: -10px;
+}
+.eventLink.vgaming .icon-close::before {
+  font-size: 5px;
 }/*# sourceMappingURL=style.css.map */
