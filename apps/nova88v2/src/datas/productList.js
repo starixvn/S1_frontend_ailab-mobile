@@ -160,8 +160,8 @@ const defSortCasino = {
 
 const defSortSlot = {
 	[defCurrenyId.THB]: [
-		"slot_AdvantPlay",
 		"slot_PP",
+		"slot_AdvantPlay",
 		"slot_Skywind",
 		"slot_Mega888",
 		"slot_SimplePlay",
@@ -182,8 +182,8 @@ const defSortSlot = {
 		"slot_OW"
 	],
 	[defCurrenyId.MYR]: [
-		"slot_AdvantPlay",
 		"slot_PP",
+		"slot_AdvantPlay",
 		"slot_Skywind",
 		"slot_kiss918",
 		"slot_Mega888",
@@ -204,8 +204,8 @@ const defSortSlot = {
 		"slot_OW"
 	],
 	[defCurrenyId.IDR]: [
-		"slot_AdvantPlay",
 		"slot_PP",
+		"slot_AdvantPlay",
 		"slot_Skywind",
 		"slot_Mega888",
 		"slot_SimplePlay",
@@ -573,6 +573,16 @@ const gameList = ({ langId, currencyId }) => {
 			customSort: defSortSlot,
 			items: [
 				{
+					...defGameInfo.Casino_PP,
+					parameter: defGameInfo.Casino_PP,
+					spanText: "Pragmatic Play",
+					providerImgName: "pp",
+					img: `${cloudBannerImgURL}/h5/img/spp.png`,
+					path: path.casino.root,
+					sortKey: "slot_PP",
+					allowCurrency: getPPAllowCurrencies()
+				},
+				{
 					...defGameInfo.Casino_AdvantPlay,
 					parameter: defGameInfo.Casino_AdvantPlay,
 					spanText: "AdvantPlay",
@@ -586,16 +596,6 @@ const gameList = ({ langId, currencyId }) => {
 						}
 					],
 					sortKey: "slot_AdvantPlay"
-				},
-				{
-					...defGameInfo.Casino_PP,
-					parameter: defGameInfo.Casino_PP,
-					spanText: "Pragmatic Play",
-					providerImgName: "pp",
-					img: `${cloudBannerImgURL}/h5/img/spp.png`,
-					path: path.casino.root,
-					sortKey: "slot_PP",
-					allowCurrency: getPPAllowCurrencies()
 				},
 				{
 					...defGameInfo.Casino_Skywind,

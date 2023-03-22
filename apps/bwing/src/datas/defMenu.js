@@ -182,25 +182,19 @@ export const productList = langId => {
 			icon_img: `${bannerImgUrl}/h5/img/gameicon/slot.png`,
 			items: [
 				{
-					...defGameInfo.Casino_AdvantPlay,
-					parameter: defGameInfo.Casino_AdvantPlay,
-					path: path.casino.root,
-					displayText: "AdvantPlay",
-					img: `${bannerImgUrl}/h5/img/slot/apnew.png`,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.ap_mini_game)
-						}
-					]
-				},
-				{
 					...defGameInfo.Casino_PP,
 					parameter: defGameInfo.Casino_PP,
 					path: path.casino.root,
 					icon: "icon icon-PP",
 					displayText: "Pragmatic Play",
 					img: `${bannerImgUrl}/h5/img/slot/pp.png`
+				},
+				{
+					...defGameInfo.Casino_AdvantPlay,
+					parameter: defGameInfo.Casino_AdvantPlay,
+					path: path.casino.root,
+					displayText: "AdvantPlay",
+					img: `${bannerImgUrl}/h5/img/slot/ap.png`
 				},
 				{
 					...defGameInfo.Casino_Skywind,
