@@ -199,7 +199,11 @@
 	"lbl_Free": "বিনামূল্যে",
 	"lbl_Jackpot": "জ্যাকপট",
 	"lbl_Gaming_License": "খেলাধুলার অনুমতি পত্র",
-	"lbl_OK": "OK",
+  "lbl_OK": "OK",
+  "lbl_MaximumFileSizeEach": "সর্বোচ্চ ফাইলের আকার প্রতিটি 4 এমবি",
+  "lbl_MaximumNumberOfFiles": "ফাইলের সর্বোচ্চ সংখ্যা: 6",
+  "lbl_AcceptedFileType": "স্বীকৃত ফাইল প্রকার: JPG, JPEG, PNG, GIF",
+
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "মতভেদ",
 	"lbl_Handicap": "এইচডিপি",
