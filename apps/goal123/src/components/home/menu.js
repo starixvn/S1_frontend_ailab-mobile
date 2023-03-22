@@ -4,7 +4,7 @@ import { Link, useNavigate } from "@reach/router";
 import { defNavPanel, navContext } from "../common/context";
 import gameList, { defCol, openGameType } from "../../datas/productList";
 import { getEventIcon } from "./category";
-import { GET_ENTER_PAGE } from "../../service/enterPage";
+import { GET_ENTER_PAGE, defAppType } from "../../service/enterPage";
 import { Autoplay } from "../common/swipperBanner";
 import { api_GetTpIds } from "../../service/api/site";
 import { useGotoGame } from "../hook/useGotoGame";
@@ -73,7 +73,8 @@ const Menu = ({ i18n, userInfo }) => {
 		tpId,
 		gameId,
 		useGotoGame: _useGotoGame,
-		tpGameType
+		tpGameType,
+		appType
 	}) => {
 		GET_ENTER_PAGE({
 			langId: userInfo.langId,
@@ -92,7 +93,8 @@ const Menu = ({ i18n, userInfo }) => {
 						tpGameType
 				  })
 				: null,
-			tpGameType
+			tpGameType,
+			appType
 		});
 	};
 
@@ -244,6 +246,28 @@ const SubGame = ({ game, clickGame, i18n, underMaintain }) => {
 			<div className="title">
 				{game.spanText || i18n[game.spanTextKey]}
 			</div>
+			{game?.hasDesktopLink && (
+				<div className="switchbtn">
+					<button
+						onClick={
+							underMaintain
+								? () => null
+								: e => {
+										e.stopPropagation();
+										clickGame({
+											tpId: game.tpId,
+											gameId: game.gameId,
+											useGotoGame: game.useGotoGame,
+											tpGameType: game.tpGameType,
+											appType: defAppType.desktop
+										});
+								  }
+						}>
+						{i18n.lbl_Sportsbook_Desktop}
+					</button>
+					<button>{i18n.lbl_Sportsbook_PlayNow}</button>
+				</div>
+			)}
 			{underMaintain ? (
 				<div className="maintenance">{i18n.lbl_underMaintenance}</div>
 			) : null}

@@ -72,7 +72,8 @@ export const productList = langId => {
 				{
 					displayKey: "lbl_SabaSport",
 					img: `${bannerImgUrl}/h5/img/sport/sabasport.png`,
-					...defGameInfo.Sports
+					...defGameInfo.Sports,
+					hasDesktopLink: true
 				},
 				{
 					displayKey: "lbl_CryptoSports",
@@ -96,7 +97,8 @@ export const productList = langId => {
 							icon: defIconType.new,
 							inPeriod: isEventPeriod(eventTime.sportSbo)
 						}
-					]
+					],
+					hasDesktopLink: true
 				},
 				{
 					displayKey: "lbl_BTISport",
@@ -107,7 +109,8 @@ export const productList = langId => {
 							icon: defIconType.new,
 							inPeriod: isEventPeriod(eventTime.new_BTI)
 						}
-					]
+					],
+					hasDesktopLink: true
 				},
 				{
 					displayKey: "lbl_VirtualSports",

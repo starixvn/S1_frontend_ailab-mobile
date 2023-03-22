@@ -6,6 +6,11 @@ export const _ACTION_TYPE = {
 	redirect: 2
 };
 
+export const defAppType = {
+	desktop: 1,
+	mobile: 2
+};
+
 export const GET_CASINO_ENTER_PAGE = ({
 	tpId,
 	gameId,
@@ -45,7 +50,8 @@ export const GET_ENTER_PAGE = ({
 	execFunction,
 	specialUrl,
 	tpGameType,
-	bettype
+	bettype,
+	appType
 }) => {
 	const appUrl = window.location.origin;
 	const homeUrl = `${appUrl}`;
@@ -57,12 +63,13 @@ export const GET_ENTER_PAGE = ({
 	const _matchid = isNaN(matchid) ? matchid : Number(matchid);
 	const _tpGameType = tpGameType ? `&tpGameType=${tpGameType}` : "";
 	const _betType = bettype ? `&bettype=${bettype}` : "";
+	const _appType = appType ? `&AppType=${appType}` : "&AppType=2";
 
 	const entPageUrl = `${
 		config.openURL
 	}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&CashierUrl=${cashierUrl}&&LobbyUrl=${lobbyUrl}&matchid=${
 		_matchid || ""
-	}&errorUrl=${_errorPageUrl}&AppType=2${
+	}&errorUrl=${_errorPageUrl}${_appType}${
 		specialUrl ?? ""
 	}${_tpGameType}${_betType}`;
 
