@@ -344,7 +344,8 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.Soccer,
 					img: `${cloudBannerImgURL}/h5/img/soccer.png`,
 					spanTextKey: "lbl_Soccer",
-					sortKey: "soccer"
+					sortKey: "soccer",
+					hasDesktopLink: true
 				},
 				{
 					...defGameInfo.CryptoSports,
@@ -364,25 +365,29 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.SabaSoccer,
 					img: `${cloudBannerImgURL}/h5/img/saba_soccer.png`,
 					spanTextKey: "lbl_SabaSoccer",
-					sortKey: "sabaSoccer"
+					sortKey: "sabaSoccer",
+					hasDesktopLink: true
 				},
 				{
 					...defGameInfo.Basketball,
 					img: `${cloudBannerImgURL}/h5/img/basketball.png`,
 					spanTextKey: "lbl_Basketball",
-					sortKey: "basketball"
+					sortKey: "basketball",
+					hasDesktopLink: true
 				},
 				{
 					...defGameInfo.Tennis,
 					img: `${cloudBannerImgURL}/h5/img/tennis.png`,
 					spanTextKey: "lbl_Tennis",
-					sortKey: "tennis"
+					sortKey: "tennis",
+					hasDesktopLink: true
 				},
 				{
 					...defGameInfo.Cricket,
 					img: `${cloudBannerImgURL}/h5/img/cricket.png`,
 					spanTextKey: "lbl_Cricket",
-					sortKey: "cricket"
+					sortKey: "cricket",
+					hasDesktopLink: true
 				},
 				{
 					...defGameInfo.VirtualSports,
