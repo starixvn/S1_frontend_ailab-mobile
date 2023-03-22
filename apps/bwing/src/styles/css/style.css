@@ -10546,6 +10546,7 @@ span.important {
   width: calc(100% - 6vw - 2px);
   border-radius: 0 0 5px 5px;
   display: none;
+  margin-top: 4vw;
 }
 .depositModule_mobile.open,
 .depositModule_online.open,
@@ -10600,13 +10601,18 @@ span.important {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   border-radius: 0 0 5px 5px;
   padding: 2vw;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
 }
 .depositModule_mobile .selectModule input[type=radio],
 .depositModule_online .selectModule input[type=radio],
@@ -10649,17 +10655,9 @@ span.important {
 .depositModule_local .selectModule > div,
 .depositModule_topupmobile .selectModule > div,
 .depositModule_crptopay .selectModule > div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 100%;
-  margin: 2vw 0;
+  width: 26.5vw;
+  margin: 1vw 0;
+  font-size: 3vw;
 }
 .depositModule_mobile .selectModule > div.info,
 .depositModule_online .selectModule > div.info,
@@ -10696,26 +10694,54 @@ span.important {
 .depositModule_local .selectModule > div .bankName,
 .depositModule_topupmobile .selectModule > div .bankName,
 .depositModule_crptopay .selectModule > div .bankName {
-  width: 20vw;
+  height: 14.5vw;
   background: white;
   border-radius: 5px;
-  padding: 0.5vw 1vw;
-  margin: 0 2vw;
+  padding: 0 0 0;
+  margin: 1.5vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
 }
-.depositModule_mobile .selectModule > div .bankName img,
-.depositModule_online .selectModule > div .bankName img,
-.depositModule_local .selectModule > div .bankName img,
-.depositModule_topupmobile .selectModule > div .bankName img,
-.depositModule_crptopay .selectModule > div .bankName img {
-  width: 100%;
-  vertical-align: middle;
+@media (max-width: 320px) {
+  .depositModule_mobile .selectModule > div .bankName,
+  .depositModule_online .selectModule > div .bankName,
+  .depositModule_local .selectModule > div .bankName,
+  .depositModule_topupmobile .selectModule > div .bankName,
+  .depositModule_crptopay .selectModule > div .bankName {
+    height: 15vw;
+  }
+}
+.depositModule_mobile .selectModule > div .bankName div,
+.depositModule_online .selectModule > div .bankName div,
+.depositModule_local .selectModule > div .bankName div,
+.depositModule_topupmobile .selectModule > div .bankName div,
+.depositModule_crptopay .selectModule > div .bankName div {
+  text-align: center;
+}
+.depositModule_mobile .selectModule > div .bankName div.icon::before,
+.depositModule_online .selectModule > div .bankName div.icon::before,
+.depositModule_local .selectModule > div .bankName div.icon::before,
+.depositModule_topupmobile .selectModule > div .bankName div.icon::before,
+.depositModule_crptopay .selectModule > div .bankName div.icon::before {
+  font-size: 8vw;
+  color: #58cdff;
 }
 .depositModule_mobile .selectModule > div .bankName.pending,
 .depositModule_online .selectModule > div .bankName.pending,
 .depositModule_local .selectModule > div .bankName.pending,
 .depositModule_topupmobile .selectModule > div .bankName.pending,
 .depositModule_crptopay .selectModule > div .bankName.pending {
-  position: relative;
+  width: auto;
 }
 .depositModule_mobile .selectModule > div .bankName.pending .mask,
 .depositModule_online .selectModule > div .bankName.pending .mask,
@@ -10727,7 +10753,55 @@ span.important {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  z-index: 1;
+}
+.depositModule_mobile .selectModule > div .bankName img,
+.depositModule_online .selectModule > div .bankName img,
+.depositModule_local .selectModule > div .bankName img,
+.depositModule_topupmobile .selectModule > div .bankName img,
+.depositModule_crptopay .selectModule > div .bankName img {
+  width: auto;
+  max-width: 20vw;
+  margin: 0 auto;
+}
+.depositModule_mobile .selectModule > div .bankName .icon-icon32px_check,
+.depositModule_online .selectModule > div .bankName .icon-icon32px_check,
+.depositModule_local .selectModule > div .bankName .icon-icon32px_check,
+.depositModule_topupmobile .selectModule > div .bankName .icon-icon32px_check,
+.depositModule_crptopay .selectModule > div .bankName .icon-icon32px_check {
+  position: absolute;
+  right: 0.5vw;
+  bottom: -1vw;
+  color: rgba(245, 40, 5, 0.8509803922);
+  z-index: 1;
+  display: none;
+}
+.depositModule_mobile .selectModule > div .bankName .icon-icon32px_check::before,
+.depositModule_online .selectModule > div .bankName .icon-icon32px_check::before,
+.depositModule_local .selectModule > div .bankName .icon-icon32px_check::before,
+.depositModule_topupmobile .selectModule > div .bankName .icon-icon32px_check::before,
+.depositModule_crptopay .selectModule > div .bankName .icon-icon32px_check::before {
+  background: #fff;
+  border-radius: 10vw;
+  font-size: 5vw;
+}
+.depositModule_mobile .selectModule > div .bankName.active,
+.depositModule_online .selectModule > div .bankName.active,
+.depositModule_local .selectModule > div .bankName.active,
+.depositModule_topupmobile .selectModule > div .bankName.active,
+.depositModule_crptopay .selectModule > div .bankName.active {
+  -webkit-box-shadow: 0 0 0 3px #58cdff;
+          box-shadow: 0 0 0 3px #58cdff;
+}
+.depositModule_mobile .selectModule > div .bankName.active .icon-icon32px_check,
+.depositModule_online .selectModule > div .bankName.active .icon-icon32px_check,
+.depositModule_local .selectModule > div .bankName.active .icon-icon32px_check,
+.depositModule_topupmobile .selectModule > div .bankName.active .icon-icon32px_check,
+.depositModule_crptopay .selectModule > div .bankName.active .icon-icon32px_check {
+  display: block;
+  bottom: 0;
 }
 .depositModule_mobile .selectModule > div .bank,
 .depositModule_online .selectModule > div .bank,
@@ -10744,6 +10818,35 @@ span.important {
 .depositModule_crptopay .selectModule > div .bank > div > div {
   color: #71d3fb;
 }
+.depositModule_mobile .selectModule > div .subtitle,
+.depositModule_online .selectModule > div .subtitle,
+.depositModule_local .selectModule > div .subtitle,
+.depositModule_topupmobile .selectModule > div .subtitle,
+.depositModule_crptopay .selectModule > div .subtitle {
+  font-weight: bold;
+  white-space: nowrap;
+  font-size: 2.5vw;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.depositModule_mobile .selectModule > div .subinfo,
+.depositModule_online .selectModule > div .subinfo,
+.depositModule_local .selectModule > div .subinfo,
+.depositModule_topupmobile .selectModule > div .subinfo,
+.depositModule_crptopay .selectModule > div .subinfo {
+  font-size: 2.5vw;
+  color: #71d3fb;
+  margin-bottom: 1vw;
+  text-align: center;
+}
+.depositModule_mobile .selectModule > div .subinfo span,
+.depositModule_online .selectModule > div .subinfo span,
+.depositModule_local .selectModule > div .subinfo span,
+.depositModule_topupmobile .selectModule > div .subinfo span,
+.depositModule_crptopay .selectModule > div .subinfo span {
+  display: block;
+}
 .depositModule_mobile .selectModule h1,
 .depositModule_online .selectModule h1,
 .depositModule_local .selectModule h1,
@@ -10759,6 +10862,13 @@ span.important {
 .depositModule_topupmobile .selectModule h1.icon::before,
 .depositModule_crptopay .selectModule h1.icon::before {
   margin-right: 5px;
+}
+.depositModule_mobile .selectModule .infoAccount ul li img,
+.depositModule_online .selectModule .infoAccount ul li img,
+.depositModule_local .selectModule .infoAccount ul li img,
+.depositModule_topupmobile .selectModule .infoAccount ul li img,
+.depositModule_crptopay .selectModule .infoAccount ul li img {
+  width: 15vw;
 }
 .depositModule_mobile .inputBox,
 .depositModule_online .inputBox,
@@ -10874,6 +10984,20 @@ span.important {
 .depositModule_crptopay + .btn-group {
   width: 100%;
   margin: 3vw 0;
+}
+.depositModule_mobile .dropdown,
+.depositModule_online .dropdown,
+.depositModule_local .dropdown,
+.depositModule_topupmobile .dropdown,
+.depositModule_crptopay .dropdown {
+  padding: 2.5vw 2vw;
+}
+.depositModule_mobile .inputBoxNew i,
+.depositModule_online .inputBoxNew i,
+.depositModule_local .inputBoxNew i,
+.depositModule_topupmobile .inputBoxNew i,
+.depositModule_crptopay .inputBoxNew i {
+  margin: 1vw 0 0 0.5vw !important;
 }
 
 .vip {
