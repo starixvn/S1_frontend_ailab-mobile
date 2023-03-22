@@ -182,6 +182,7 @@ const Panel = () => {
 		amount,
 		transId,
 		picFileName,
+		receiptInfo,
 		refId
 	}) => {
 		const { currencyId, ...restBankInfo } = bankInfo;
@@ -197,6 +198,7 @@ const Panel = () => {
 			isOpen: true,
 			amount: number_format(amount, _isConvert),
 			picFileName,
+			receiptInfo,
 			refId
 		}));
 	};
