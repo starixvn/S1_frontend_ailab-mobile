@@ -4538,7 +4538,7 @@ footer > a.active .circleAnimation::after {
 }
 
 .bankSlip {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   top: 0;
   left: 0;
   z-index: 4;
@@ -4568,6 +4568,70 @@ footer > a.active .circleAnimation::after {
 .bankSlip .text-gray.title {
   margin: 3vw 0 0;
 }
+.bankSlip .uploadModule {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  margin: 2vw auto;
+}
+.bankSlip .upload_img {
+  width: 25.3vw;
+  height: 18vw;
+  border-radius: 10px;
+  border: 1px solid #1e85ec;
+  background: rgba(117, 145, 193, 0.5);
+  margin: 0 1vw 1vw 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+.bankSlip .upload_img:nth-child(3n) {
+  margin-right: 0;
+}
+.bankSlip .upload_img .icon-folder-upload {
+  display: none;
+}
+.bankSlip .upload_img .icon-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 8px !important;
+  background: #868686;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  padding: 2px;
+  z-index: 3;
+}
+.bankSlip .upload_img .icon-close::before {
+  font-size: 8px;
+  margin: 0 2px;
+  color: #fff;
+}
+.bankSlip .upload_img.error {
+  border-color: #e92529;
+}
+.bankSlip .upload_img .icon {
+  font-size: 5vw;
+  color: #1e85ec;
+}
+.bankSlip .upload_img img {
+  height: 100%;
+}
 
 .rule {
   color: #b2b2b2;
@@ -4578,6 +4642,10 @@ footer > a.active .circleAnimation::after {
 }
 .rule ul li {
   list-style: disc;
+}
+
+.txt-red {
+  color: #e92529;
 }
 
 input {

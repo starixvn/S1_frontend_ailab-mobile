@@ -282,6 +282,7 @@ const Panel = () => {
 		amount,
 		transId,
 		picFileName,
+		receiptInfo,
 		refId
 	) => {
 		// if (pageVerify) {
@@ -298,6 +299,7 @@ const Panel = () => {
 			isOpen: true,
 			amount: number_format(amount, _isConvert, 0),
 			picFileName,
+			receiptInfo,
 			refId
 		}));
 		// }
