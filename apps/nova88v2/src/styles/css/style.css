@@ -1790,6 +1790,51 @@ main .gameList > div > div.active, main .gameList > div > a.active, main .gameLi
 main .gameList > div > div.active .under, main .gameList > div > a.active .under, main .gameList > div > button.active .under, main .gameList > a > div.active .under, main .gameList > a > a.active .under, main .gameList > a > button.active .under, main .gameList > button > div.active .under, main .gameList > button > a.active .under, main .gameList > button > button.active .under {
   display: block;
 }
+main .gameList > div > div .switchbtn, main .gameList > div > a .switchbtn, main .gameList > div > button .switchbtn, main .gameList > a > div .switchbtn, main .gameList > a > a .switchbtn, main .gameList > a > button .switchbtn, main .gameList > button > div .switchbtn, main .gameList > button > a .switchbtn, main .gameList > button > button .switchbtn {
+  position: absolute;
+  bottom: 5vw;
+  right: 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  width: 100%;
+}
+main .gameList > div > div .switchbtn a, main .gameList > div > div .switchbtn button, main .gameList > div > a .switchbtn a, main .gameList > div > a .switchbtn button, main .gameList > div > button .switchbtn a, main .gameList > div > button .switchbtn button, main .gameList > a > div .switchbtn a, main .gameList > a > div .switchbtn button, main .gameList > a > a .switchbtn a, main .gameList > a > a .switchbtn button, main .gameList > a > button .switchbtn a, main .gameList > a > button .switchbtn button, main .gameList > button > div .switchbtn a, main .gameList > button > div .switchbtn button, main .gameList > button > a .switchbtn a, main .gameList > button > a .switchbtn button, main .gameList > button > button .switchbtn a, main .gameList > button > button .switchbtn button {
+  font-size: 3vw;
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  width: 20vw;
+  margin: -2vw 0 0 0;
+  border-radius: 5px;
+  min-height: 6vw;
+  background: #FF5E00;
+}
+main .gameList > div > div .switchbtn a:first-child, main .gameList > div > div .switchbtn button:first-child, main .gameList > div > a .switchbtn a:first-child, main .gameList > div > a .switchbtn button:first-child, main .gameList > div > button .switchbtn a:first-child, main .gameList > div > button .switchbtn button:first-child, main .gameList > a > div .switchbtn a:first-child, main .gameList > a > div .switchbtn button:first-child, main .gameList > a > a .switchbtn a:first-child, main .gameList > a > a .switchbtn button:first-child, main .gameList > a > button .switchbtn a:first-child, main .gameList > a > button .switchbtn button:first-child, main .gameList > button > div .switchbtn a:first-child, main .gameList > button > div .switchbtn button:first-child, main .gameList > button > a .switchbtn a:first-child, main .gameList > button > a .switchbtn button:first-child, main .gameList > button > button .switchbtn a:first-child, main .gameList > button > button .switchbtn button:first-child {
+  background: #5574A7;
+  margin-bottom: 0;
+}
+main .gameList > div > div .switchbtn a:hover, main .gameList > div > div .switchbtn button:hover, main .gameList > div > a .switchbtn a:hover, main .gameList > div > a .switchbtn button:hover, main .gameList > div > button .switchbtn a:hover, main .gameList > div > button .switchbtn button:hover, main .gameList > a > div .switchbtn a:hover, main .gameList > a > div .switchbtn button:hover, main .gameList > a > a .switchbtn a:hover, main .gameList > a > a .switchbtn button:hover, main .gameList > a > button .switchbtn a:hover, main .gameList > a > button .switchbtn button:hover, main .gameList > button > div .switchbtn a:hover, main .gameList > button > div .switchbtn button:hover, main .gameList > button > a .switchbtn a:hover, main .gameList > button > a .switchbtn button:hover, main .gameList > button > button .switchbtn a:hover, main .gameList > button > button .switchbtn button:hover {
+  background: #e92529;
+  opacity: 0.8;
+}
+main .gameList > div > div .switchbtn a:hover:first-child, main .gameList > div > div .switchbtn button:hover:first-child, main .gameList > div > a .switchbtn a:hover:first-child, main .gameList > div > a .switchbtn button:hover:first-child, main .gameList > div > button .switchbtn a:hover:first-child, main .gameList > div > button .switchbtn button:hover:first-child, main .gameList > a > div .switchbtn a:hover:first-child, main .gameList > a > div .switchbtn button:hover:first-child, main .gameList > a > a .switchbtn a:hover:first-child, main .gameList > a > a .switchbtn button:hover:first-child, main .gameList > a > button .switchbtn a:hover:first-child, main .gameList > a > button .switchbtn button:hover:first-child, main .gameList > button > div .switchbtn a:hover:first-child, main .gameList > button > div .switchbtn button:hover:first-child, main .gameList > button > a .switchbtn a:hover:first-child, main .gameList > button > a .switchbtn button:hover:first-child, main .gameList > button > button .switchbtn a:hover:first-child, main .gameList > button > button .switchbtn button:hover:first-child {
+  background: #001942;
+  opacity: 0.8;
+}
+@media (max-width: 280px) {
+  main .gameList > div > div .switchbtn a, main .gameList > div > div .switchbtn button, main .gameList > div > a .switchbtn a, main .gameList > div > a .switchbtn button, main .gameList > div > button .switchbtn a, main .gameList > div > button .switchbtn button, main .gameList > a > div .switchbtn a, main .gameList > a > div .switchbtn button, main .gameList > a > a .switchbtn a, main .gameList > a > a .switchbtn button, main .gameList > a > button .switchbtn a, main .gameList > a > button .switchbtn button, main .gameList > button > div .switchbtn a, main .gameList > button > div .switchbtn button, main .gameList > button > a .switchbtn a, main .gameList > button > a .switchbtn button, main .gameList > button > button .switchbtn a, main .gameList > button > button .switchbtn button {
+    width: 25vw;
+  }
+}
 main .gameList > div > div img, main .gameList > div > a img, main .gameList > div > button img, main .gameList > a > div img, main .gameList > a > a img, main .gameList > a > button img, main .gameList > button > div img, main .gameList > button > a img, main .gameList > button > button img {
   width: 100%;
 }
@@ -7396,71 +7441,100 @@ span.important {
   display: flex;
   border-radius: 0 0 5px 5px;
   padding: 2vw;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
   color: #5574A7;
+}
+.depositModule .selectModule.selectNew {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1;
-          flex: 1 1;
-  text-align: center;
 }
-.depositModule .selectModule > div {
-  width: 27vw;
-}
-.depositModule .selectModule > div .subtitle {
-  font-weight: bold;
-  white-space: nowrap;
-  font-size: 2.5vw;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-.depositModule .selectModule > div .subinfo {
-  font-size: 2.5vw;
-  color: #505050;
-  margin-bottom: 1vw;
-}
-.depositModule .selectModule > div .subinfo span {
-  display: block;
-}
-.depositModule .selectModule > div.btn-group {
-  width: 100%;
-  margin: 0 auto;
-}
-.depositModule .selectModule > div.btn-group button {
-  font-size: 3vw;
-  background: #112240;
-}
-.depositModule .selectModule .infoAccount {
+.depositModule .selectModule.selectNew .infoAccount {
   width: 100%;
   margin: 2vw 2vw -0.5vw;
   padding-top: 2vw;
   border-top: 1px solid #bfcce2;
 }
-.depositModule .selectModule .infoAccount li {
+.depositModule .selectModule.selectNew .infoAccount li {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
 }
-.depositModule .selectModule .infoAccount li:first-child {
+.depositModule .selectModule.selectNew .infoAccount li:first-child {
   padding-top: 0;
 }
-.depositModule .selectModule .infoAccount li:last-child {
+.depositModule .selectModule.selectNew .infoAccount li:last-child {
   padding-bottom: 0;
 }
-.depositModule .selectModule .infoAccount li > img {
+.depositModule .selectModule.selectNew .infoAccount li > img {
   margin-right: 1vw;
 }
-.depositModule .selectModule .infoAccount li span {
+.depositModule .selectModule.selectNew .infoAccount li span {
   width: 69vw;
   color: #fff;
   background: #5574A7;
   border-radius: 3px;
   padding: 1vw 0 1vw 1.5vw;
 }
-.depositModule .selectModule .infoAccount li button {
+.depositModule .selectModule.selectNew .infoAccount li button {
   margin: 0 0 0 1.5vw;
+}
+.depositModule .selectModule.selectNew .bankName {
+  width: 24vw;
+  margin-bottom: 1vw;
+}
+.depositModule .selectModule.selectNew .bankName + div {
+  text-align: center;
+}
+.depositModule .selectModule.selectNew .bankName.active .icon-icon32px_check {
+  bottom: 0;
+}
+.depositModule .selectModule.selectNew .infoModule, .depositModule .selectModule.selectNew .buttonBox {
+  margin: 0 1.5vw;
+}
+.depositModule .selectModule.selectNew .infoModule .btn-group {
+  margin: 0;
+}
+.depositModule .selectModule.selectNew .infoModule .btn-group button {
+  font-size: 3vw;
+  background: #112240;
+}
+.depositModule .selectModule.selectNew .buttonBox {
+  width: 100%;
+}
+.depositModule .selectModule.selectNew .buttonBox button {
+  margin: 1.5vw 1.5vw 1.5vw 0;
+}
+.depositModule .selectModule.selectNew .buttonBox button:last-child {
+  margin-right: 0;
+}
+.depositModule .selectModule.selectNew .title {
+  margin-top: 2vw;
+  margin-left: 1.5vw;
+  padding-top: 1.5vw;
+  width: 100%;
+  text-align: left;
+  border-top: 1px solid #bfcce2;
+  font-size: 3.2vw;
+}
+.depositModule .selectModule.selectNew .title span {
+  color: #e92529;
+  margin-right: 0.5vw;
+}
+.depositModule .selectModule.selectNew .inputBox, .depositModule .selectModule.selectNew .worldcupEvent .event .event-content .inputBox-event, .worldcupEvent .event .event-content .depositModule .selectModule.selectNew .inputBox-event {
+  margin: 1.5vw 0;
+  padding: 0 1.2vw;
+}
+.depositModule .selectModule.selectNew .inputBox input, .depositModule .selectModule.selectNew .worldcupEvent .event .event-content .inputBox-event input, .worldcupEvent .event .event-content .depositModule .selectModule.selectNew .inputBox-event input {
+  padding: 1.5vw;
+}
+.depositModule .selectModule.selectNew .inputBox button, .depositModule .selectModule.selectNew .worldcupEvent .event .event-content .inputBox-event button, .worldcupEvent .event .event-content .depositModule .selectModule.selectNew .inputBox-event button {
+  padding: 1.5vw;
+  min-height: 7.75vw;
 }
 .depositModule .selectModule.inner {
   width: 100%;
@@ -7499,10 +7573,11 @@ span.important {
   margin: 0 1.5vw 0;
 }
 .depositModule .selectModule .bankName {
-  height: 13vw;
+  width: 22vw;
+  height: 12vw;
   background: white;
   border-radius: 5px;
-  padding: 0 0 0;
+  padding: 0.5vw;
   margin: 1.5vw;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -7512,32 +7587,7 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   position: relative;
-}
-@media (max-width: 320px) {
-  .depositModule .selectModule .bankName {
-    height: 15vw;
-  }
-}
-.depositModule .selectModule .bankName.fast::after {
-  content: "";
-  background: url(https://banner.0814media.net/desktop/img/fast-icon.png) no-repeat center/cover;
-  display: block;
-  width: 13vw;
-  height: 4vw;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.depositModule .selectModule .bankName div.icon::before {
-  font-size: 7vw;
-  color: #112240;
-}
-.depositModule .selectModule .bankName div.icon-line:before {
-  color: #07b802;
 }
 .depositModule .selectModule .bankName.open:before {
   content: "●";
@@ -7556,9 +7606,6 @@ span.important {
   top: -2vw;
   right: 0;
   font-size: 5vw;
-}
-.depositModule .selectModule .bankName.pending {
-  width: auto;
 }
 .depositModule .selectModule .bankName.pending .mask {
   position: absolute;
@@ -7610,45 +7657,6 @@ span.important {
 }
 .depositModule .selectModule .bankName.active .icon-icon32px_check {
   display: block;
-  bottom: 0;
-}
-.depositModule .selectModule .inputBox, .depositModule .selectModule .worldcupEvent .event .event-content .inputBox-event, .worldcupEvent .event .event-content .depositModule .selectModule .inputBox-event {
-  margin: 1.5vw 0;
-  padding: 0 1.2vw;
-}
-.depositModule .selectModule .inputBox input, .depositModule .selectModule .worldcupEvent .event .event-content .inputBox-event input, .worldcupEvent .event .event-content .depositModule .selectModule .inputBox-event input {
-  padding: 1.5vw;
-}
-.depositModule .selectModule .inputBox button, .depositModule .selectModule .worldcupEvent .event .event-content .inputBox-event button, .worldcupEvent .event .event-content .depositModule .selectModule .inputBox-event button {
-  padding: 1.5vw;
-  min-height: 7.75vw;
-}
-.depositModule .selectModule .title {
-  margin-top: 2vw;
-  padding-top: 1.5vw;
-  width: 100%;
-  text-align: left;
-  border-top: 1px solid #bfcce2;
-  font-size: 3.2vw;
-}
-.depositModule .selectModule .title span {
-  color: #e92529;
-  margin-right: 0.5vw;
-}
-.depositModule .selectModule .buttonBox {
-  margin: 0 1.5vw;
-}
-.depositModule .selectModule .infoModule {
-  width: 100%;
-}
-.depositModule .selectModule .buttonBox {
-  width: 100%;
-}
-.depositModule .selectModule .buttonBox button {
-  margin: 1.5vw 1.5vw 1.5vw 0;
-}
-.depositModule .selectModule .buttonBox button:last-child {
-  margin-right: 0;
 }
 .depositModule .downloadModule {
   margin: 2vw 0;
@@ -9224,7 +9232,6 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-bottom: 2vw;
 }
 .swithModule .switchBtn {
   width: 60px;
@@ -9372,7 +9379,7 @@ span.important {
   width: 100%;
 }
 .apppage .app {
-  background: url(https://banner.0814media.net/h5/img/app/appbg.jpg) no-repeat top center/cover;
+  background: url(https://banner.0814media.net/h5/img/app/new-appbg.png) no-repeat top center/cover;
 }
 .apppage .appHeader {
   height: 8vw;
@@ -9410,7 +9417,7 @@ span.important {
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  padding-top: 12vw;
+  padding-top: 11vw;
   position: relative;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -9425,7 +9432,7 @@ span.important {
       -ms-flex-flow: column;
           flex-flow: column;
   width: 100%;
-  margin-top: 90vw;
+  margin-top: 70vw;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -9462,9 +9469,20 @@ span.important {
           justify-content: center;
   border-radius: 3px;
 }
+@media (max-width: 320px) {
+  .apppage .appPage .scan > div > div {
+    padding: 2vw;
+  }
+}
 .apppage .appPage .scan > div > div > img {
   width: 17vw;
   height: 17vw;
+}
+@media (max-width: 320px) {
+  .apppage .appPage .scan > div > div > img {
+    width: 15vw;
+    height: 15vw;
+  }
 }
 .apppage .appPage .scan > div > div > div {
   margin-left: 1vw;
@@ -9502,6 +9520,11 @@ span.important {
   font-size: 3vw;
   font-weight: bold;
   padding: 1.5vw 2vw;
+}
+@media (max-width: 320px) {
+  .apppage .appPage .scan > div > div > div button {
+    padding: 1vw;
+  }
 }
 .apppage .appPage .install {
   color: #112240;
