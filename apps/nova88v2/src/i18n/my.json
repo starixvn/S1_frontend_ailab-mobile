@@ -752,9 +752,9 @@
 	"lbl_ImportantNotice": "NOTIS PENTING",
 
 	"==============Add To Home Screen==============": "",
-	"lbl_AddToHome_Hint": "Kaedah untuk tambah laman utama?",
+	"lbl_AddToHome_Hint": "Kaedah tambah halaman utama?",
 	"lbl_AddToHome_Tutorial": "Tutorial",
-	"lbl_Skip": "Skip",
+	"lbl_Skip": "Langkau",
 
 	"==============E-Wallet==============": "",
 	"lbl_EWallet": "E-Dompet",
