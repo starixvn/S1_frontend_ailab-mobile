@@ -94,6 +94,7 @@ const defSortSports = {
 const defSortCasino = {
 	[defCurrenyId.THB]: [
 		"casino_PP",
+		"casino_BG",
 		"casino_YEEBET",
 		"casino_Skywind",
 		"casino_MG",
@@ -110,6 +111,7 @@ const defSortCasino = {
 	],
 	[defCurrenyId.MYR]: [
 		"casino_PP",
+		"casino_BG",
 		"casino_YEEBET",
 		"casino_Skywind",
 		"casino_MG",
@@ -126,6 +128,7 @@ const defSortCasino = {
 	],
 	[defCurrenyId.IDR]: [
 		"casino_PP",
+		"casino_BG",
 		"casino_YEEBET",
 		"casino_Skywind",
 		"casino_MG",
@@ -142,6 +145,7 @@ const defSortCasino = {
 	],
 	[defCurrenyId.INR]: [
 		"casino_PP",
+		"casino_BG",
 		"casino_YEEBET",
 		"casino_Skywind",
 		"casino_MG",
@@ -471,6 +475,18 @@ const gameList = ({ langId, currencyId }) => {
 					img: `${cloudBannerImgURL}/h5/img/pp.png`,
 					sortKey: "casino_PP",
 					allowCurrency: getPPAllowCurrencies()
+				},
+				{
+					...defGameInfo.LIVEcasinoBG,
+					spanText: "Big Gaming",
+					img: `${cloudBannerImgURL}/h5/img/bg.png`,
+					sortKey: "casino_BG",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.liveCasino_BG)
+						}
+					]
 				},
 				{
 					...defGameInfo.LIVEcasinoYEEBET,
@@ -1156,6 +1172,7 @@ export const defGameInfo = {
 	LIVEcasinoSA: { tpId: 2, gameId: 2, tpGameType: 9 },
 	LIVEcasinoAE: { tpId: 15, gameId: 15, tpGameType: 18 },
 	LIVEcasinoPP: { tpId: 5, gameId: 101, tpGameType: 16 },
+	LIVEcasinoBG: { tpId: 47, gameId: 0, tpGameType: 94 },
 	LIVEcasinoYEEBET: { tpId: 46, gameId: 0, tpGameType: 93 },
 	LIVEcasinoDG: { tpId: 4, gameId: 4, tpGameType: 10 },
 	LIVEcasinoAG: { tpId: 3, gameId: 3, tpGameType: 8 },

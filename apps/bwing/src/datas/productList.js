@@ -20,6 +20,7 @@ export const defGameInfo = {
 	LIVEcasinoWM: { tpId: 20, gameId: 20, tpGameType: 32 },
 	LIVEcasinoDG: { tpId: 4, gameId: 4, tpGameType: 10 },
 	LIVEcasinoPP: { gameId: 101, tpId: 5, tpGameType: 16 },
+	LIVEcasinoBG: { tpId: 47, gameId: 0, tpGameType: 94 },
 	LIVEcasinoYEEBET: { tpId: 46, gameId: 0, tpGameType: 93 },
 	LIVEcasinoAE: { gameId: 15, tpId: 15, tpGameType: 18 },
 	LIVEcasinoAG: { gameId: 3, tpId: 3, tpGameType: 8 },

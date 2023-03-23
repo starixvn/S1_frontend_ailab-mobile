@@ -122,6 +122,7 @@ export const defGameInfo = {
 	LIVEcasinoWM: { gameId: 20, tpId: 20, tpGameType: 32 },
 	LIVEcasinoDG: { tpId: 4, gameId: 4, tpGameType: 10 },
 	LIVEcasinoPP: { gameId: 101, tpId: 5, tpGameType: 16 },
+	LIVEcasinoBG: { tpId: 47, gameId: 0, tpGameType: 94 },
 	LIVEcasinoYEEBET: { tpId: 46, gameId: 0, tpGameType: 93 },
 	LIVEcasinoAE: { gameId: 15, tpId: 15, tpGameType: 18 },
 	LIVEcasinoAG: { gameId: 3, tpId: 3, tpGameType: 8 },
@@ -544,9 +545,15 @@ const gameList = [
 				...defGameInfo.Casino_AdvantPlay,
 				parameter: defGameInfo.Casino_AdvantPlay,
 				spanText: "AdvantPlay",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-ap.png`,
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-apnew.png`,
 				path: path.casino.root,
-				providerImgName: "ap"
+				providerImgName: "ap",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.ap_mini_game)
+					}
+				]
 			},
 			{
 				...defGameInfo.Casino_Skywind,
@@ -695,6 +702,17 @@ const gameList = [
 				...defGameInfo.LIVEcasinoPP,
 				spanText: "Pragmatic Play",
 				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-pp.png`
+			},
+			{
+				...defGameInfo.LIVEcasinoBG,
+				spanText: "Big Gaming",
+				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-bg.png`,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.liveCasino_bg)
+					}
+				]
 			},
 			{
 				...defGameInfo.LIVEcasinoYEEBET,

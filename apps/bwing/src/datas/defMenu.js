@@ -194,7 +194,13 @@ export const productList = langId => {
 					parameter: defGameInfo.Casino_AdvantPlay,
 					path: path.casino.root,
 					displayText: "AdvantPlay",
-					img: `${bannerImgUrl}/h5/img/slot/ap.png`
+					img: `${bannerImgUrl}/h5/img/slot/apnew.png`,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.ap_mini_game)
+						}
+					]
 				},
 				{
 					...defGameInfo.Casino_Skywind,
@@ -340,6 +346,18 @@ export const productList = langId => {
 					icon: "icon icon-PP",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-pp.png`,
 					...defGameInfo.LIVEcasinoPP
+				},
+				{
+					displayText: "Big Gaming",
+					icon: "icon icon-bg",
+					img: `${bannerImgUrl}/h5/img/liveGameNew/live-bg.png`,
+					...defGameInfo.LIVEcasinoBG,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.liveCasino_bg)
+						}
+					]
 				},
 				{
 					displayText: "YEEBET",
@@ -726,6 +744,10 @@ export const defSubMenus = () => [
 			{
 				...defGameInfo.LIVEcasinoPP,
 				displayText: "Pragmatic Play"
+			},
+			{
+				...defGameInfo.LIVEcasinoBG,
+				displayText: "Big Gaming"
 			},
 			{
 				...defGameInfo.LIVEcasinoYEEBET,
