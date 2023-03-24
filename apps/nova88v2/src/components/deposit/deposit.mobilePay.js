@@ -257,7 +257,7 @@ const Payment = props => {
 
 			const handleDuitNowQR = async () => {
 				try {
-					const res = await api.payment.DepositReqFakeMobilePay({
+					const res = await api.payment.DepositReqLocalPay({
 						groupId: selChannel.groupId,
 						amount,
 						bonusCode: depositPromo.bonusCode
@@ -272,7 +272,7 @@ const Payment = props => {
 							title: i18n.lbl_DuitNowQR,
 							qrUrl: data.returnUrl,
 							amount: data.amount,
-							transId: data.transId
+							bankName: data.bankName
 						});
 					} else {
 						setPopBox({
@@ -323,8 +323,8 @@ const Payment = props => {
 						<button
 							className="orange"
 							onClick={
-								// 目前只有MYR DuitNow(GroupId=53)使用
-								selChannel.groupId === 53
+								// channelId === -1 時表示為後端建的假渠道，直接顯示彈窗
+								selChannel.channelId === -1
 									? handleDuitNowQR
 									: RedirectToNext.bind(this, real_amount)
 							}>

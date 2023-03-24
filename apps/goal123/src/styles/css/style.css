@@ -1554,6 +1554,178 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   content: "";
   display: block;
 }
+#popup.qrpayPop {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+#popup.qrpayPop .pop {
+  border-radius: 3px;
+}
+#popup.qrpayPop .pop > div {
+  width: 100%;
+}
+#popup.qrpayPop .pop > div span {
+  color: #1E85EC;
+}
+#popup.qrpayPop .pop > div.popTit {
+  background: #284985;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1vw 2vw;
+}
+#popup.qrpayPop .pop > div.popTit img {
+  width: 20vw;
+  position: absolute;
+  left: 1vw;
+}
+#popup.qrpayPop .pop > div.popTit .icon-close {
+  right: 1vw;
+  top: auto;
+  position: absolute;
+}
+#popup.qrpayPop .pop > div.popTxt .title {
+  font-size: 4vw;
+  text-align: center;
+  margin-bottom: 2vw !important;
+}
+#popup.qrpayPop .pop > div.popTxt .logo {
+  width: 35vw;
+  border-radius: 3px;
+  background: #fff;
+}
+#popup.qrpayPop .pop > div.popTxt .logo img {
+  margin: 0;
+}
+#popup.qrpayPop .pop > div.popTxt .info {
+  text-align: center;
+  margin: 1vw;
+  color: #1f3258;
+}
+#popup.qrpayPop .pop > div.popTxt .info span {
+  display: block;
+  color: #1f3258;
+  font-weight: bold;
+}
+#popup.qrpayPop .pop > div.popTxt .amount {
+  display: block;
+  margin: 1vw;
+  text-align: center;
+}
+#popup.qrpayPop .pop > div.popTxt .amount span {
+  color: #1f3258;
+  font-weight: bold;
+  font-size: 4vw;
+  display: block;
+  padding: 1vw;
+  border: 0;
+  border-radius: 3px;
+}
+#popup.qrpayPop .pop > div.popTxt .guide {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-top: 1px dotted #1E85EC;
+  border-bottom: 1px dotted #1E85EC;
+  padding: 2vw 0;
+  margin: 2vw 0 0;
+}
+#popup.qrpayPop .pop > div.popTxt .guide > button {
+  padding: 0.5vw 2vw;
+  background: #5574A7;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1vw auto;
+  border-radius: 3px;
+}
+#popup.qrpayPop .pop > div.popTxt .guide .qrCode {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 53vw;
+  height: 53vw;
+  background: rgba(78, 108, 168, 0.5);
+  overflow: hidden;
+  margin: 1vw 0 2vw;
+}
+#popup.qrpayPop .pop > div.popTxt .guide .qrCode svg, #popup.qrpayPop .pop > div.popTxt .guide .qrCode img {
+  width: auto;
+  height: 90%;
+  margin: 0;
+  border-radius: 0;
+}
+#popup.qrpayPop .pop > div.popTxt .guide .code {
+  color: #d83b35;
+  font-size: 6vw;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#popup.qrpayPop .pop > div.popTxt .guide .code a, #popup.qrpayPop .pop > div.popTxt .guide .code button {
+  color: #fff;
+  padding: 1vw;
+  margin-left: 1vw;
+  background: #4e6ca8;
+  border-radius: 3px;
+  font-size: 2vw;
+  font-weight: normal;
+}
+#popup.qrpayPop .pop > div.popTxt .guide .code a {
+  padding: 0.25vw 1vw;
+}
+#popup.qrpayPop .pop > div.popTxt ul {
+  padding-left: 6vw;
+  list-style: decimal;
+}
+#popup.qrpayPop .pop > div.popTxt .sisa {
+  text-align: center;
+  margin: 2vw 0 0;
+}
+#popup.qrpayPop .pop > div.popTxt .sisa div:last-child {
+  font-weight: bold;
+  margin: 2vw 1vw;
+}
+#popup.qrpayPop .pop > div.popTxt .sisa span {
+  font-size: 3.5vw;
+  color: #1f3258;
+  font-weight: normal;
+  padding: 1vw 2vw;
+  margin: 2vw 1vw;
+  background: #fff;
+  border: 0;
+  border-radius: 2px;
+}
 
 .txt-red {
   color: #d83b35;
@@ -2060,53 +2232,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 }
 .mainNew .gameBox > div .gamelistNew .game .maintenance {
   display: none;
-}
-.mainNew .gameBox > div .gamelistNew .game .switchbtn {
-  position: absolute;
-  bottom: calc(50% - 9vw);
-  right: 2vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  width: 100%;
-}
-.mainNew .gameBox > div .gamelistNew .game .switchbtn a, .mainNew .gameBox > div .gamelistNew .game .switchbtn button {
-  font-size: 3vw;
-  -webkit-transform: scale(0.55);
-          transform: scale(0.55);
-  -webkit-transform-origin: right;
-          transform-origin: right;
-  width: 20vw;
-  margin: -2vw 0 0 0;
-  border-radius: 5px;
-  min-height: 6vw;
-  -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.5));
-          filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.5));
-  background: #fab617;
-  color: #1f3258;
-}
-.mainNew .gameBox > div .gamelistNew .game .switchbtn a:first-child, .mainNew .gameBox > div .gamelistNew .game .switchbtn button:first-child {
-  background: #d83b35;
-  margin-bottom: 0;
-  color: #fff;
-}
-.mainNew .gameBox > div .gamelistNew .game .switchbtn a:hover, .mainNew .gameBox > div .gamelistNew .game .switchbtn button:hover {
-  background: rgba(247, 121, 0, 0.8);
-}
-.mainNew .gameBox > div .gamelistNew .game .switchbtn a:hover:first-child, .mainNew .gameBox > div .gamelistNew .game .switchbtn button:hover:first-child {
-  background: rgba(170, 40, 7, 0.8);
-}
-@media (max-width: 280px) {
-  .mainNew .gameBox > div .gamelistNew .game .switchbtn a, .mainNew .gameBox > div .gamelistNew .game .switchbtn button {
-    width: 25vw;
-  }
 }
 @-webkit-keyframes flash3 {
   0% {
@@ -3161,72 +3286,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           flex-direction: column;
   width: calc(100% - 16vw);
   min-height: calc(100% - 35vw);
-}
-.bankSlip .rule {
-  margin: 2vw 0;
-}
-
-.uploadModule {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  width: 100%;
-  margin: 2vw auto;
-}
-
-.upload_img {
-  width: 26.5vw;
-  height: 18vw;
-  border-radius: 10px;
-  border: 1px solid #1e85ec;
-  margin: 0 1vw 1.5vw 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  overflow: hidden;
-  cursor: pointer;
-  position: relative;
-}
-.upload_img.error {
-  border-color: #e91010;
-}
-.upload_img.error i {
-  color: #e91010;
-}
-.upload_img:nth-child(3n) {
-  margin-right: 0;
-}
-.upload_img .icon {
-  font-size: 5vw;
-  color: #1e85ec;
-}
-.upload_img img {
-  height: 100%;
-  width: auto;
-}
-.upload_img .icon-close {
-  position: absolute;
-  top: 5px !important;
-  right: 5px !important;
-  font-size: 8px !important;
-  background: #868686;
-  border: 1px solid #fff;
-  border-radius: 50%;
-  padding: 2px;
-  z-index: 3;
-}
-.upload_img .icon-close::before {
-  font-size: 8px;
-  margin: 0 2px;
-  color: #fff;
 }
 
 input {
@@ -5837,17 +5896,6 @@ span.important {
             transform-origin: 50% 70%;
   }
 }
-.eventLink.vgaming {
-  bottom: 70vw;
-}
-.eventLink.vgaming .vgimg {
-  width: 34vw;
-}
-.eventLink.vgaming .icon-close {
-  top: 0;
-  background: #cecece;
-  color: rgb(92, 92, 92);
-}
 
 .event {
   height: auto;
@@ -6333,10 +6381,10 @@ span.important {
 .depositModule_topupMobile,
 .depositModule_Crpyto {
   background: rgba(213, 228, 255, 0.4);
-  border: 1px solid #1e85ec;
-  padding: 3vw;
+  padding: 0 3vw 3vw 3vw;
   width: calc(110% - 6vw - 2px);
   margin-left: -5%;
+  margin-top: -3vw;
   border-radius: 0 0 5px 5px;
   display: none;
 }
@@ -6400,14 +6448,20 @@ span.important {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   margin-top: 1px;
   border-radius: 0 0 5px 5px;
   padding: 2vw;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+  text-align: center;
 }
 .depositModule_mobile .selectModule input[type=radio],
 .depositModule_online .selectModule input[type=radio],
@@ -6449,17 +6503,8 @@ span.important {
 .depositModule_local .selectModule > div,
 .depositModule_topupMobile .selectModule > div,
 .depositModule_Crpyto .selectModule > div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 100%;
-  margin: 2vw 0;
+  width: 30vw;
+  margin: 1vw 0;
   font-size: 3vw;
 }
 .depositModule_mobile .selectModule > div .bank,
@@ -6486,6 +6531,33 @@ span.important {
 .depositModule_topupMobile .selectModule > div .bank > div:last-child,
 .depositModule_Crpyto .selectModule > div .bank > div:last-child {
   color: white;
+}
+.depositModule_mobile .selectModule > div .subtitle,
+.depositModule_online .selectModule > div .subtitle,
+.depositModule_local .selectModule > div .subtitle,
+.depositModule_topupMobile .selectModule > div .subtitle,
+.depositModule_Crpyto .selectModule > div .subtitle {
+  font-weight: bold;
+  white-space: nowrap;
+  font-size: 2.5vw;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.depositModule_mobile .selectModule > div .subinfo,
+.depositModule_online .selectModule > div .subinfo,
+.depositModule_local .selectModule > div .subinfo,
+.depositModule_topupMobile .selectModule > div .subinfo,
+.depositModule_Crpyto .selectModule > div .subinfo {
+  font-size: 2.5vw;
+  color: #fff;
+  margin-bottom: 1vw;
+}
+.depositModule_mobile .selectModule > div .subinfo span,
+.depositModule_online .selectModule > div .subinfo span,
+.depositModule_local .selectModule > div .subinfo span,
+.depositModule_topupMobile .selectModule > div .subinfo span,
+.depositModule_Crpyto .selectModule > div .subinfo span {
+  display: block;
 }
 .depositModule_mobile .selectModule > div.info,
 .depositModule_online .selectModule > div.info,
@@ -6538,30 +6610,172 @@ span.important {
 .depositModule_local .selectModule > div .bankName,
 .depositModule_topupMobile .selectModule > div .bankName,
 .depositModule_Crpyto .selectModule > div .bankName {
-  width: 20vw;
+  height: 14.5vw;
   background: white;
   border-radius: 5px;
-  margin: 0 2vw;
+  padding: 0 0 0;
+  margin: 1.5vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   position: relative;
+}
+@media (max-width: 320px) {
+  .depositModule_mobile .selectModule > div .bankName,
+  .depositModule_online .selectModule > div .bankName,
+  .depositModule_local .selectModule > div .bankName,
+  .depositModule_topupMobile .selectModule > div .bankName,
+  .depositModule_Crpyto .selectModule > div .bankName {
+    height: 15vw;
+  }
+}
+.depositModule_mobile .selectModule > div .bankName div.icon::before,
+.depositModule_online .selectModule > div .bankName div.icon::before,
+.depositModule_local .selectModule > div .bankName div.icon::before,
+.depositModule_topupMobile .selectModule > div .bankName div.icon::before,
+.depositModule_Crpyto .selectModule > div .bankName div.icon::before {
+  font-size: 8vw;
+  color: #1e85ec;
+}
+.depositModule_mobile .selectModule > div .bankName.pending,
+.depositModule_online .selectModule > div .bankName.pending,
+.depositModule_local .selectModule > div .bankName.pending,
+.depositModule_topupMobile .selectModule > div .bankName.pending,
+.depositModule_Crpyto .selectModule > div .bankName.pending {
+  width: auto;
+}
+.depositModule_mobile .selectModule > div .bankName.pending .mask,
+.depositModule_online .selectModule > div .bankName.pending .mask,
+.depositModule_local .selectModule > div .bankName.pending .mask,
+.depositModule_topupMobile .selectModule > div .bankName.pending .mask,
+.depositModule_Crpyto .selectModule > div .bankName.pending .mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(31, 50, 88, 0.8);
+  border-radius: 5px;
+  z-index: 1;
 }
 .depositModule_mobile .selectModule > div .bankName img,
 .depositModule_online .selectModule > div .bankName img,
 .depositModule_local .selectModule > div .bankName img,
 .depositModule_topupMobile .selectModule > div .bankName img,
 .depositModule_Crpyto .selectModule > div .bankName img {
-  width: 100%;
-  vertical-align: middle;
+  width: auto;
+  max-width: 20vw;
+  margin: 0 auto;
 }
-.depositModule_mobile .selectModule > div .bankName .mask,
-.depositModule_online .selectModule > div .bankName .mask,
-.depositModule_local .selectModule > div .bankName .mask,
-.depositModule_topupMobile .selectModule > div .bankName .mask,
-.depositModule_Crpyto .selectModule > div .bankName .mask {
+.depositModule_mobile .selectModule > div .bankName .icon-icon32px_check,
+.depositModule_online .selectModule > div .bankName .icon-icon32px_check,
+.depositModule_local .selectModule > div .bankName .icon-icon32px_check,
+.depositModule_topupMobile .selectModule > div .bankName .icon-icon32px_check,
+.depositModule_Crpyto .selectModule > div .bankName .icon-icon32px_check {
   position: absolute;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.5);
+  right: 0.5vw;
+  bottom: -1vw;
+  color: #1e85ec;
+  z-index: 1;
+  display: none;
+}
+.depositModule_mobile .selectModule > div .bankName .icon-icon32px_check::before,
+.depositModule_online .selectModule > div .bankName .icon-icon32px_check::before,
+.depositModule_local .selectModule > div .bankName .icon-icon32px_check::before,
+.depositModule_topupMobile .selectModule > div .bankName .icon-icon32px_check::before,
+.depositModule_Crpyto .selectModule > div .bankName .icon-icon32px_check::before {
+  background: #fff;
+  border-radius: 10vw;
+}
+.depositModule_mobile .selectModule > div .bankName.active,
+.depositModule_online .selectModule > div .bankName.active,
+.depositModule_local .selectModule > div .bankName.active,
+.depositModule_topupMobile .selectModule > div .bankName.active,
+.depositModule_Crpyto .selectModule > div .bankName.active {
+  -webkit-box-shadow: 0 0 0 3px #1e85ec;
+          box-shadow: 0 0 0 3px #1e85ec;
+}
+.depositModule_mobile .selectModule > div .bankName.active .icon-icon32px_check,
+.depositModule_online .selectModule > div .bankName.active .icon-icon32px_check,
+.depositModule_local .selectModule > div .bankName.active .icon-icon32px_check,
+.depositModule_topupMobile .selectModule > div .bankName.active .icon-icon32px_check,
+.depositModule_Crpyto .selectModule > div .bankName.active .icon-icon32px_check {
+  display: block;
+  bottom: 0;
+}
+.depositModule_mobile .selectModule .infoAccount,
+.depositModule_online .selectModule .infoAccount,
+.depositModule_local .selectModule .infoAccount,
+.depositModule_topupMobile .selectModule .infoAccount,
+.depositModule_Crpyto .selectModule .infoAccount {
+  color: #1f3258;
+}
+.depositModule_mobile .selectModule .infoAccount ul li img,
+.depositModule_online .selectModule .infoAccount ul li img,
+.depositModule_local .selectModule .infoAccount ul li img,
+.depositModule_topupMobile .selectModule .infoAccount ul li img,
+.depositModule_Crpyto .selectModule .infoAccount ul li img {
+  width: 15vw;
+}
+.depositModule_mobile .selectModule .dropdown,
+.depositModule_online .selectModule .dropdown,
+.depositModule_local .selectModule .dropdown,
+.depositModule_topupMobile .selectModule .dropdown,
+.depositModule_Crpyto .selectModule .dropdown {
+  padding: 1vw 1vw 1vw 2vw;
+}
+.depositModule_mobile .selectModule .infoAccount + .subtitle,
+.depositModule_online .selectModule .infoAccount + .subtitle,
+.depositModule_local .selectModule .infoAccount + .subtitle,
+.depositModule_topupMobile .selectModule .infoAccount + .subtitle,
+.depositModule_Crpyto .selectModule .infoAccount + .subtitle {
   width: 100%;
+  font-weight: bold;
+  margin-top: 4vw;
+  margin-left: 3vw;
+  text-align: left;
+}
+.depositModule_mobile .selectModule .infoAccount + .subtitle .text-org,
+.depositModule_online .selectModule .infoAccount + .subtitle .text-org,
+.depositModule_local .selectModule .infoAccount + .subtitle .text-org,
+.depositModule_topupMobile .selectModule .infoAccount + .subtitle .text-org,
+.depositModule_Crpyto .selectModule .infoAccount + .subtitle .text-org {
+  color: #fab617;
+  margin-right: 0.5vw;
+}
+.depositModule_mobile .selectModule .qrCode,
+.depositModule_online .selectModule .qrCode,
+.depositModule_local .selectModule .qrCode,
+.depositModule_topupMobile .selectModule .qrCode,
+.depositModule_Crpyto .selectModule .qrCode {
+  width: 36vw;
+  height: 36vw;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #adccff;
+  border-radius: 5px;
+  margin: 1vw auto;
+  padding: 3vw;
+  overflow: hidden;
+}
+.depositModule_mobile .selectModule .qrCode img,
+.depositModule_online .selectModule .qrCode img,
+.depositModule_local .selectModule .qrCode img,
+.depositModule_topupMobile .selectModule .qrCode img,
+.depositModule_Crpyto .selectModule .qrCode img {
+  width: auto;
   height: 100%;
 }
 .depositModule_mobile .input-group,
@@ -6849,6 +7063,32 @@ span.important {
 .depositModule_topupMobile .title .text-org,
 .depositModule_Crpyto .title .text-org {
   color: #fab617;
+}
+.depositModule_mobile .dropdown,
+.depositModule_online .dropdown,
+.depositModule_local .dropdown,
+.depositModule_topupMobile .dropdown,
+.depositModule_Crpyto .dropdown {
+  padding: 1vw 2vw;
+}
+.depositModule_mobile input::-webkit-input-placeholder, .depositModule_online input::-webkit-input-placeholder, .depositModule_local input::-webkit-input-placeholder, .depositModule_topupMobile input::-webkit-input-placeholder, .depositModule_Crpyto input::-webkit-input-placeholder {
+  font-size: 4vw !important;
+}
+.depositModule_mobile input::-moz-placeholder, .depositModule_online input::-moz-placeholder, .depositModule_local input::-moz-placeholder, .depositModule_topupMobile input::-moz-placeholder, .depositModule_Crpyto input::-moz-placeholder {
+  font-size: 4vw !important;
+}
+.depositModule_mobile input:-ms-input-placeholder, .depositModule_online input:-ms-input-placeholder, .depositModule_local input:-ms-input-placeholder, .depositModule_topupMobile input:-ms-input-placeholder, .depositModule_Crpyto input:-ms-input-placeholder {
+  font-size: 4vw !important;
+}
+.depositModule_mobile input::-ms-input-placeholder, .depositModule_online input::-ms-input-placeholder, .depositModule_local input::-ms-input-placeholder, .depositModule_topupMobile input::-ms-input-placeholder, .depositModule_Crpyto input::-ms-input-placeholder {
+  font-size: 4vw !important;
+}
+.depositModule_mobile input::placeholder,
+.depositModule_online input::placeholder,
+.depositModule_local input::placeholder,
+.depositModule_topupMobile input::placeholder,
+.depositModule_Crpyto input::placeholder {
+  font-size: 4vw !important;
 }
 
 .switchTag {

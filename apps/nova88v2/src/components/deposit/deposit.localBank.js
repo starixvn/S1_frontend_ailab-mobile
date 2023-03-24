@@ -6,7 +6,6 @@ import React, {
 	Component
 } from "react";
 import PropTypes from "prop-types";
-import QRCode from "qrcode.react";
 import moment from "moment";
 import ClipboardJS from "../../lib/clipboard.min";
 import {
@@ -665,11 +664,9 @@ const GroupList = ({
 							</div>
 							<div className="infoModule">
 								<div className="qrCode">
-									<QRCode
-										value={selectedBank.qrCodeUrl}
-										renderAs="svg"
-										size={125}
-										includeMargin={true}
+									<img
+										src={`${paymentImgURL}${selectedBank.qrCodeUrl}`}
+										alt={selectedBank.bankName}
 									/>
 								</div>
 							</div>
