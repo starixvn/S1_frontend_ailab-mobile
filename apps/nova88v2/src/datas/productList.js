@@ -1,7 +1,7 @@
 import { isDateRange } from "@ailab-mobile/common";
 import path from "../path";
 import SiteURL, { cloudBannerImgURL } from "../config";
-import { defPopBoxType } from "../components/common/popbox";
+// import { defPopBoxType } from "../components/common/popbox";
 import { isEventPeriod, defCurrenyId } from "../components/common/common";
 import { eventTime } from "../components/common/eventTime";
 import { getLeaderBoardSupportCurrencyId } from "../components/ranking/def";
@@ -643,16 +643,16 @@ const gameList = ({ langId, currencyId }) => {
 						}
 					]
 				},
-				{
-					...productList.mega888,
-					parameter: productList.mega888,
-					spanText: "Mega888",
-					providerImgName: "mega",
-					img: `${cloudBannerImgURL}/h5/img/mega888.png`,
-					path: path.mega888.root,
-					alwaysShowOnSlotLobby: true,
-					sortKey: "slot_Mega888"
-				},
+				// {
+				// 	...productList.mega888,
+				// 	parameter: productList.mega888,
+				// 	spanText: "Mega888",
+				// 	providerImgName: "mega",
+				// 	img: `${cloudBannerImgURL}/h5/img/mega888.png`,
+				// 	path: path.mega888.root,
+				// 	alwaysShowOnSlotLobby: true,
+				// 	sortKey: "slot_Mega888"
+				// },
 				{
 					...defGameInfo.Casino_SimplePlay,
 					parameter: defGameInfo.Casino_SimplePlay,
@@ -810,19 +810,19 @@ const gameList = ({ langId, currencyId }) => {
 				// }
 			]
 		},
-		{
-			category: "poker",
-			categoryIcon: "casino",
-			translateKey: "lbl_Poker",
-			tpGameType: defGameInfo.oneGame.tpGameType,
-			popBox: {
-				needLogin: true,
-				title: "lbl_Poker",
-				type: defPopBoxType.OneGame,
-				...defGameInfo.oneGame
-			},
-			allowCurrency: allowedCurrencyList.oneGame
-		},
+		// {
+		// 	category: "poker",
+		// 	categoryIcon: "casino",
+		// 	translateKey: "lbl_Poker",
+		// 	tpGameType: defGameInfo.oneGame.tpGameType,
+		// 	popBox: {
+		// 		needLogin: true,
+		// 		title: "lbl_Poker",
+		// 		type: defPopBoxType.OneGame,
+		// 		...defGameInfo.oneGame
+		// 	},
+		// 	allowCurrency: allowedCurrencyList.oneGame
+		// },
 		{
 			category: "play",
 			categoryIcon: "play",

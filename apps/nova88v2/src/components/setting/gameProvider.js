@@ -107,11 +107,11 @@ const defPlatfrom = [
 	// 	imgName: "kiss",
 	// 	path: path.kiss918.root,
 	// },
-	{
-		...defGameInfo.oneGame,
-		imgName: "1g",
-		allowCurrencies: allowedCurrencyList.oneGame
-	},
+	// {
+	// 	...defGameInfo.oneGame,
+	// 	imgName: "1g",
+	// 	allowCurrencies: allowedCurrencyList.oneGame
+	// },
 	{
 		...defGameInfo.Casino_PT,
 		path: path.casino.root,
