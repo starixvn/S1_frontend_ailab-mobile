@@ -663,7 +663,6 @@
 	"lbl_PaymentQRNote1": "Vui lòng không làm mới trình duyệt.",
 	"lbl_PaymentQRNote2": "Giữ lại số tham chiếu khi cần liên hệ với bộ phận Chăm sóc Khách hàng để được hỗ trợ.",
 	"lbl_PaymentTimeLeft": "THỜI GIAN THANH TOÁN CÒN LẠI",
-  "lbl_ScanQR": "Quét QR",
 
 	"==============Lucky wheel=====================": "",
 	"lbl_My": "Phần",
@@ -713,6 +712,7 @@
 	"===============QR Pay===================": "",
 	"lbl_QRPay": "QR Pay",
 	"lbl_DepositType6": "QR Pay",
+  "lbl_ScanQR": "Quét QR",
   "lbl_TransactionID" : "Mã giao dịch",
   "lbl_Content": "Nội dung",
   "lbl_BankQrInfo" : "Hãy chắc chắn rằng mã giao dịch là chính xác .",

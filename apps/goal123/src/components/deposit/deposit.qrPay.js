@@ -124,7 +124,7 @@ const Payment = props => {
 				}
 			}
 
-			// 另開新分頁
+			// 導至外部
 			const RedirectToNext = () => {
 				const mainUrl = `${config.openURL}/${userInfo.langId}/Cashier/DepositReqQRPay`;
 				const param = {
@@ -165,15 +165,16 @@ const Payment = props => {
 					if (errorCode === 0) {
 						setPopBox({
 							isOpen: true,
-							popBoxType: defPopBoxType.BankQR,
-							onClose: () => setPopBox({ isOpen: false }),
+							code,
+							transId,
+							bankLogo,
 							qrCodeUrl: returnUrl,
 							amount: popBoxAmount,
-							bankLogo,
-							code,
-							transId
+							popBoxType: defPopBoxType.BankQR,
+							onClose: () => setPopBox({ isOpen: false })
 						});
 					} else {
+						// error
 						setPopBox({
 							isOpen: true,
 							content: `[${errorCode}] ${message}`
@@ -219,6 +220,7 @@ const Payment = props => {
 						<button
 							className="lightBlue"
 							onClick={
+								// channelId === -1 代表是後端建的假渠道，在原畫面 show QRCode
 								selChannel.channelId === -1
 									? handlePopBankQR
 									: RedirectToNext

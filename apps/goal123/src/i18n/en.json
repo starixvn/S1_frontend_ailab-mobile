@@ -661,7 +661,6 @@
 	"lbl_PaymentQRNote1": "Please do not refresh your browser.",
 	"lbl_PaymentQRNote2": "Please take note of the reference number if any event you need to contact our Customer Serivce for further action.",
 	"lbl_PaymentTimeLeft": "PAYMENT TIME LEFT",
-  "lbl_ScanQR": "Scan QR",
 
 	"==============Mystery Box=====================": "",
 	"lbl_My": "My",
@@ -711,6 +710,7 @@
 	"===============QR Pay===================": "",
 	"lbl_QRPay": "QR Pay",
 	"lbl_DepositType6": "QR Pay",
+  "lbl_ScanQR": "Scan QR",
   "lbl_TransactionID": "Transaction ID",
   "lbl_Content": "Content",
   "lbl_BankQrInfo" : "Please make sure the transaction code is correct.",
