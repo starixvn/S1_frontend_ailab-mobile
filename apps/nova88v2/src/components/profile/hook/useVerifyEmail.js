@@ -9,7 +9,7 @@ const useVerifyEmail = ({ langId, i18n, setPopBox, setUserInfo }) => {
 
 	useEffect(() => {
 		const key = getUrlParameter("key");
-		const code = getUrlParameter("code");
+		const code = getUrlParameter("emailcode");
 
 		const RedirectToHome = popBoxMsg => {
 			LOGOUT(() => {
