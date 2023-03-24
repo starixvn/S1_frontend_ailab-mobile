@@ -663,6 +663,7 @@
 	"lbl_PaymentQRNote1": "Vui lòng không làm mới trình duyệt.",
 	"lbl_PaymentQRNote2": "Giữ lại số tham chiếu khi cần liên hệ với bộ phận Chăm sóc Khách hàng để được hỗ trợ.",
 	"lbl_PaymentTimeLeft": "THỜI GIAN THANH TOÁN CÒN LẠI",
+  "lbl_ScanQR": "Quét QR",
 
 	"==============Lucky wheel=====================": "",
 	"lbl_My": "Phần",
@@ -712,6 +713,13 @@
 	"===============QR Pay===================": "",
 	"lbl_QRPay": "QR Pay",
 	"lbl_DepositType6": "QR Pay",
+  "lbl_TransactionID" : "Mã giao dịch",
+  "lbl_Content": "Nội dung",
+  "lbl_BankQrInfo" : "Hãy chắc chắn rằng mã giao dịch là chính xác .",
+  "lbl_BankQrContent1": "Quét mã QR bằng ứng dụng ngân hàng của bạn.",
+  "lbl_BankQrContent2": "Xác nhận lại đúng số tiền và nội dung chuyển trước khi thực hiện giao dịch.",
+  "lbl_BankQrContent3": "Đóng tab sau khi chuyển.",
+  "lbl_BankQrContent4": "Vui lòng liên hệ với bộ phận Hỗ trợ khách hàng nếu khoản thanh toán không xuất hiện trong ví của bạn sau khi chuyển khoản.",
 
 	"==============World Cup==============": "",
 	"lbl_info": "Thông Tin",

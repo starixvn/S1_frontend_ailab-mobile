@@ -6,6 +6,7 @@ import Loading from "./popbox.loading";
 import DomainListPop from "./popbox.domainList";
 import AddCryptoWallet from "./popbox.addCrypto";
 import PaymentQR from "./popbox.paymentQR";
+import BankQR from "./popbox.bankQR";
 
 export const defPopBoxType = {
 	default: "default",
@@ -14,7 +15,8 @@ export const defPopBoxType = {
 	Loading: "Loading",
 	DomainList: "DomainList",
 	AddCryptoWallet: "AddCryptoWallet",
-	paymentQR: "paymentQR"
+	paymentQR: "paymentQR",
+	BankQR: "BankQR"
 };
 
 const PopUp = () => {
@@ -55,6 +57,10 @@ const PopUp = () => {
 
 		case defPopBoxType.paymentQR:
 			content = <PaymentQR {...popBox} />;
+			break;
+
+		case defPopBoxType.BankQR:
+			content = <BankQR {...popBox} />;
 			break;
 
 		default:

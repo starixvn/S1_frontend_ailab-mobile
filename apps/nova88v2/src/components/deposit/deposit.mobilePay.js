@@ -150,6 +150,7 @@ const Payment = props => {
 		const result = checkPayAccount() && VaildAmount({ _amount: amount });
 		if (result) {
 			const resultAmount = _isConvert ? amount * 1000 : Number(amount);
+			const real_amount = _isConvert ? amount * 1000 : amount;
 
 			if (
 				userInfo.phoneVerified &&
@@ -173,7 +174,7 @@ const Payment = props => {
 				}
 			}
 
-			const RedirectToNext = real_amount => {
+			const RedirectToNext = () => {
 				const userData = {
 					payType: "mobilePay",
 					amount: real_amount,
@@ -253,8 +254,7 @@ const Payment = props => {
 				}
 			};
 
-			const real_amount = _isConvert ? amount * 1000 : amount;
-
+			// DuitNow 彈窗
 			const handleDuitNowQR = async () => {
 				try {
 					const res = await api.payment.DepositReqLocalPay({
@@ -326,7 +326,7 @@ const Payment = props => {
 								// channelId === -1 時表示為後端建的假渠道，直接顯示彈窗
 								selChannel.channelId === -1
 									? handleDuitNowQR
-									: RedirectToNext.bind(this, real_amount)
+									: RedirectToNext
 							}>
 							{i18n.lbl_Submit}
 						</button>
