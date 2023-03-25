@@ -742,6 +742,7 @@
 	"lbl_DuitNowQRNote1": "Please contact CSD if payment did not reflect in your wallet after the transfer.",
 	"lbl_DuitNowQRNote2": "Close the tab after the transfer.",
 	"lbl_DepositOptions": "Deposit Options",
+  "lbl_PopBox_PromptDeposit": "Please be informed differ bank will perform it own maintenance schedule at different time (between 00:00 ~ 02:00, GMT +7) which may leads to transaction processing time delay. Rest assure, we will process the transaction as soon as maintenance is complete. Thank you for your utmost understanding.",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "Payment Details",
