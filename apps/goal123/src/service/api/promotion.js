@@ -18,6 +18,14 @@ export const api_promotion_GetPromotionDetail = ({ langId, BonusCode }) =>
 		DeviceType: defDeviceType.Mobile
 	});
 
+export const api_promotion_GetRebateExcludeGameList = ({
+	langId,
+	currencyId
+}) =>
+	promotionRequest.post(`/GetRebateExcludeGameList/${langId}`, {
+		CurrencyId: currencyId
+	});
+
 // export const api_promotion_SetClaimPromotion = ({
 // 	langId,
 // 	BonusCode,
