@@ -886,5 +886,9 @@
 
 	"==============H5 Sportsbook for Desktop Entrance==============": "",
 	"lbl_Sportsbook_PlayNow": "अभी खेले",
-	"lbl_Sportsbook_Desktop": "कंप्यूटर स्क्रीन"
+	"lbl_Sportsbook_Desktop": "कंप्यूटर स्क्रीन",
+
+  "==============RebateExclude==============": "",
+  "lbl_RebateExclude_title": "दैनिक छूट पुरस्कारों का आनंद लेने के लिए इस सूची के खेलों को बाहर रखा जाएगा",
+  "lbl_GameName": "गेम का नाम"
 }

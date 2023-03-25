@@ -6333,10 +6333,10 @@ span.important {
 .depositModule_topupMobile,
 .depositModule_Crpyto {
   background: rgba(213, 228, 255, 0.4);
-  border: 1px solid #1e85ec;
-  padding: 3vw;
+  padding: 0 3vw 3vw 3vw;
   width: calc(110% - 6vw - 2px);
   margin-left: -5%;
+  margin-top: -3vw;
   border-radius: 0 0 5px 5px;
   display: none;
 }
@@ -6400,14 +6400,20 @@ span.important {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   margin-top: 1px;
   border-radius: 0 0 5px 5px;
   padding: 2vw;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+  text-align: center;
 }
 .depositModule_mobile .selectModule input[type=radio],
 .depositModule_online .selectModule input[type=radio],
@@ -6449,17 +6455,8 @@ span.important {
 .depositModule_local .selectModule > div,
 .depositModule_topupMobile .selectModule > div,
 .depositModule_Crpyto .selectModule > div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 100%;
-  margin: 2vw 0;
+  width: 30vw;
+  margin: 1vw 0;
   font-size: 3vw;
 }
 .depositModule_mobile .selectModule > div .bank,
@@ -6486,6 +6483,33 @@ span.important {
 .depositModule_topupMobile .selectModule > div .bank > div:last-child,
 .depositModule_Crpyto .selectModule > div .bank > div:last-child {
   color: white;
+}
+.depositModule_mobile .selectModule > div .subtitle,
+.depositModule_online .selectModule > div .subtitle,
+.depositModule_local .selectModule > div .subtitle,
+.depositModule_topupMobile .selectModule > div .subtitle,
+.depositModule_Crpyto .selectModule > div .subtitle {
+  font-weight: bold;
+  white-space: nowrap;
+  font-size: 2.5vw;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.depositModule_mobile .selectModule > div .subinfo,
+.depositModule_online .selectModule > div .subinfo,
+.depositModule_local .selectModule > div .subinfo,
+.depositModule_topupMobile .selectModule > div .subinfo,
+.depositModule_Crpyto .selectModule > div .subinfo {
+  font-size: 2.5vw;
+  color: #fff;
+  margin-bottom: 1vw;
+}
+.depositModule_mobile .selectModule > div .subinfo span,
+.depositModule_online .selectModule > div .subinfo span,
+.depositModule_local .selectModule > div .subinfo span,
+.depositModule_topupMobile .selectModule > div .subinfo span,
+.depositModule_Crpyto .selectModule > div .subinfo span {
+  display: block;
 }
 .depositModule_mobile .selectModule > div.info,
 .depositModule_online .selectModule > div.info,
@@ -6538,31 +6562,127 @@ span.important {
 .depositModule_local .selectModule > div .bankName,
 .depositModule_topupMobile .selectModule > div .bankName,
 .depositModule_Crpyto .selectModule > div .bankName {
-  width: 20vw;
+  height: 14.5vw;
   background: white;
   border-radius: 5px;
-  margin: 0 2vw;
+  padding: 0 0 0;
+  margin: 1.5vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   position: relative;
+}
+@media (max-width: 320px) {
+  .depositModule_mobile .selectModule > div .bankName,
+  .depositModule_online .selectModule > div .bankName,
+  .depositModule_local .selectModule > div .bankName,
+  .depositModule_topupMobile .selectModule > div .bankName,
+  .depositModule_Crpyto .selectModule > div .bankName {
+    height: 15vw;
+  }
+}
+.depositModule_mobile .selectModule > div .bankName div.icon::before,
+.depositModule_online .selectModule > div .bankName div.icon::before,
+.depositModule_local .selectModule > div .bankName div.icon::before,
+.depositModule_topupMobile .selectModule > div .bankName div.icon::before,
+.depositModule_Crpyto .selectModule > div .bankName div.icon::before {
+  font-size: 8vw;
+  color: #1e85ec;
+}
+.depositModule_mobile .selectModule > div .bankName.pending,
+.depositModule_online .selectModule > div .bankName.pending,
+.depositModule_local .selectModule > div .bankName.pending,
+.depositModule_topupMobile .selectModule > div .bankName.pending,
+.depositModule_Crpyto .selectModule > div .bankName.pending {
+  width: auto;
+}
+.depositModule_mobile .selectModule > div .bankName.pending .mask,
+.depositModule_online .selectModule > div .bankName.pending .mask,
+.depositModule_local .selectModule > div .bankName.pending .mask,
+.depositModule_topupMobile .selectModule > div .bankName.pending .mask,
+.depositModule_Crpyto .selectModule > div .bankName.pending .mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(31, 50, 88, 0.8);
+  border-radius: 5px;
+  z-index: 1;
 }
 .depositModule_mobile .selectModule > div .bankName img,
 .depositModule_online .selectModule > div .bankName img,
 .depositModule_local .selectModule > div .bankName img,
 .depositModule_topupMobile .selectModule > div .bankName img,
 .depositModule_Crpyto .selectModule > div .bankName img {
-  width: 100%;
-  vertical-align: middle;
+  width: auto;
+  max-width: 20vw;
+  margin: 0 auto;
 }
-.depositModule_mobile .selectModule > div .bankName .mask,
-.depositModule_online .selectModule > div .bankName .mask,
-.depositModule_local .selectModule > div .bankName .mask,
-.depositModule_topupMobile .selectModule > div .bankName .mask,
-.depositModule_Crpyto .selectModule > div .bankName .mask {
+.depositModule_mobile .selectModule > div .bankName .icon-icon32px_check,
+.depositModule_online .selectModule > div .bankName .icon-icon32px_check,
+.depositModule_local .selectModule > div .bankName .icon-icon32px_check,
+.depositModule_topupMobile .selectModule > div .bankName .icon-icon32px_check,
+.depositModule_Crpyto .selectModule > div .bankName .icon-icon32px_check {
   position: absolute;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100%;
+  right: 0.5vw;
+  bottom: -1vw;
+  color: #1e85ec;
+  z-index: 1;
+  display: none;
+}
+.depositModule_mobile .selectModule > div .bankName .icon-icon32px_check::before,
+.depositModule_online .selectModule > div .bankName .icon-icon32px_check::before,
+.depositModule_local .selectModule > div .bankName .icon-icon32px_check::before,
+.depositModule_topupMobile .selectModule > div .bankName .icon-icon32px_check::before,
+.depositModule_Crpyto .selectModule > div .bankName .icon-icon32px_check::before {
+  background: #fff;
+  border-radius: 10vw;
+}
+.depositModule_mobile .selectModule > div .bankName.active,
+.depositModule_online .selectModule > div .bankName.active,
+.depositModule_local .selectModule > div .bankName.active,
+.depositModule_topupMobile .selectModule > div .bankName.active,
+.depositModule_Crpyto .selectModule > div .bankName.active {
+  -webkit-box-shadow: 0 0 0 3px #1e85ec;
+          box-shadow: 0 0 0 3px #1e85ec;
+}
+.depositModule_mobile .selectModule > div .bankName.active .icon-icon32px_check,
+.depositModule_online .selectModule > div .bankName.active .icon-icon32px_check,
+.depositModule_local .selectModule > div .bankName.active .icon-icon32px_check,
+.depositModule_topupMobile .selectModule > div .bankName.active .icon-icon32px_check,
+.depositModule_Crpyto .selectModule > div .bankName.active .icon-icon32px_check {
+  display: block;
+  bottom: 0;
+}
+.depositModule_mobile .selectModule .infoAccount,
+.depositModule_online .selectModule .infoAccount,
+.depositModule_local .selectModule .infoAccount,
+.depositModule_topupMobile .selectModule .infoAccount,
+.depositModule_Crpyto .selectModule .infoAccount {
+  color: #1f3258;
+}
+.depositModule_mobile .selectModule .infoAccount ul li img,
+.depositModule_online .selectModule .infoAccount ul li img,
+.depositModule_local .selectModule .infoAccount ul li img,
+.depositModule_topupMobile .selectModule .infoAccount ul li img,
+.depositModule_Crpyto .selectModule .infoAccount ul li img {
+  width: 15vw;
+}
+.depositModule_mobile .selectModule .dropdown,
+.depositModule_online .selectModule .dropdown,
+.depositModule_local .selectModule .dropdown,
+.depositModule_topupMobile .selectModule .dropdown,
+.depositModule_Crpyto .selectModule .dropdown {
+  padding: 1vw 1vw 1vw 2vw;
 }
 .depositModule_mobile .input-group,
 .depositModule_online .input-group,
@@ -6849,6 +6969,32 @@ span.important {
 .depositModule_topupMobile .title .text-org,
 .depositModule_Crpyto .title .text-org {
   color: #fab617;
+}
+.depositModule_mobile .dropdown,
+.depositModule_online .dropdown,
+.depositModule_local .dropdown,
+.depositModule_topupMobile .dropdown,
+.depositModule_Crpyto .dropdown {
+  padding: 1vw 2vw;
+}
+.depositModule_mobile input::-webkit-input-placeholder, .depositModule_online input::-webkit-input-placeholder, .depositModule_local input::-webkit-input-placeholder, .depositModule_topupMobile input::-webkit-input-placeholder, .depositModule_Crpyto input::-webkit-input-placeholder {
+  font-size: 4vw !important;
+}
+.depositModule_mobile input::-moz-placeholder, .depositModule_online input::-moz-placeholder, .depositModule_local input::-moz-placeholder, .depositModule_topupMobile input::-moz-placeholder, .depositModule_Crpyto input::-moz-placeholder {
+  font-size: 4vw !important;
+}
+.depositModule_mobile input:-ms-input-placeholder, .depositModule_online input:-ms-input-placeholder, .depositModule_local input:-ms-input-placeholder, .depositModule_topupMobile input:-ms-input-placeholder, .depositModule_Crpyto input:-ms-input-placeholder {
+  font-size: 4vw !important;
+}
+.depositModule_mobile input::-ms-input-placeholder, .depositModule_online input::-ms-input-placeholder, .depositModule_local input::-ms-input-placeholder, .depositModule_topupMobile input::-ms-input-placeholder, .depositModule_Crpyto input::-ms-input-placeholder {
+  font-size: 4vw !important;
+}
+.depositModule_mobile input::placeholder,
+.depositModule_online input::placeholder,
+.depositModule_local input::placeholder,
+.depositModule_topupMobile input::placeholder,
+.depositModule_Crpyto input::placeholder {
+  font-size: 4vw !important;
 }
 
 .switchTag {
@@ -9789,4 +9935,136 @@ span.important {
     -webkit-transform: rotate(0deg) scale(1);
             transform: rotate(0deg) scale(1);
   }
+}
+.subheader {
+  background: #030c1b;
+  padding: 2vw 1vw;
+}
+.subheader__container {
+  width: calc(100% - 3vw);
+  margin: 0 auto;
+}
+.subheader a::before {
+  content: "";
+  display: block;
+  width: 190px;
+  height: 35px;
+  background-image: url("https://banner.goal123.org/h5/img/logo.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  -webkit-transition: ease 0.15s;
+  transition: ease 0.15s;
+}
+
+.subcopyright {
+  width: calc(100% - 4vw);
+  margin: 0 auto;
+  background: #0e0c2e;
+  padding: 2vw;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 3vw;
+}
+.subcopyright .text {
+  color: #c6c6c6;
+}
+
+.exclude {
+  padding: 5vw 2vw;
+  background: #152849;
+  color: #152849;
+  font-size: 3vw;
+  width: calc(100% - 4vw);
+}
+.exclude__container {
+  width: 100%;
+  margin: 0 auto;
+}
+.exclude__title {
+  font-weight: bold;
+  font-size: 4.25vw;
+  color: #4b95df;
+  position: relative;
+  margin-bottom: 25px;
+}
+.exclude__title::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  width: 100%;
+  background-image: -webkit-gradient(linear, left top, right top, from(#4b95df), to(rgba(247, 122, 0, 0)));
+  background-image: linear-gradient(to right, #4b95df, rgba(247, 122, 0, 0));
+}
+.exclude__table {
+  width: 100%;
+  border-left: 1px solid #284985;
+  border-right: 1px solid #284985;
+  border-radius: 3px;
+}
+.exclude__table__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.exclude__table__item:first-child div {
+  background: #284985;
+  color: #fff;
+  font-weight: bold;
+}
+.exclude__table__item div {
+  background: #fcfcfc;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 30vw;
+          flex: 1 1 30vw;
+  padding: 0.5vw 0;
+  border-bottom: 1px solid #284985;
+}
+.exclude__table__item div:first-child {
+  border-right: 1px solid #284985;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 5vw;
+          flex: 1 1 5vw;
+}
+.exclude__table__item div span {
+  display: block;
+  width: 100%;
+  text-align: center;
+  line-height: 1.75;
+  position: relative;
+}
+.exclude__table__item div span::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -0.2vw;
+  height: 1px;
+  width: 100%;
+  background: #284985;
+}
+.exclude__table__item div span:last-child::after {
+  height: 0;
+  display: none;
 }/*# sourceMappingURL=style.css.map */

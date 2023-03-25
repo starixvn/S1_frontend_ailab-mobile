@@ -840,5 +840,10 @@
 
 	"==============H5 Sportsbook for Desktop Entrance==============": "",
 	"lbl_Sportsbook_PlayNow": "Chơi Ngay",
-	"lbl_Sportsbook_Desktop": "Máy tính"
+	"lbl_Sportsbook_Desktop": "Máy tính",
+
+  "==============RebateExclude==============": "",
+  "lbl_RebateExclude_title": "Những trò chơi trong danh sách này sẽ bị loại trừ để hưởng phần thưởng hoàn trả hàng ngày",
+  "lbl_Product": "Sản phẩm",
+  "lbl_GameName": "Tên trò chơi"
 }
