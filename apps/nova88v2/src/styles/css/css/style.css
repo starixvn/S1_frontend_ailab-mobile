@@ -5997,10 +5997,10 @@ input[type=file] {
 }
 
 .smallList {
-  margin-top: 30px;
+  margin: 40px auto auto;
 }
 .smallList > ul li {
-  color: #b2b2b2;
+  color: #868686;
   width: 100%;
   line-height: 30px;
   letter-spacing: 1px;
@@ -6018,8 +6018,8 @@ input[type=file] {
 
 .directions {
   border-bottom: 1px solid #666;
-  color: #b2b2b2;
-  margin: 20px 0;
+  color: #868686;
+  margin: 10px 0 20px;
   padding-bottom: 20px;
   max-width: 80%;
   min-width: 75%;
@@ -6057,13 +6057,24 @@ input[type=file] {
   list-style: disc;
 }
 
+.uploadModule {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 80%;
+}
+
 .upload_img {
-  max-width: 80%;
-  min-width: 75%;
+  width: calc(33.3333% - 6px);
+  height: 80px;
   border-radius: 15px;
   border: 1px solid #5574A7;
-  height: 250px;
-  margin: 40px 0 10px;
+  margin: 0 5px 10px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -6075,15 +6086,38 @@ input[type=file] {
           align-items: center;
   overflow: hidden;
   cursor: pointer;
+  position: relative;
+}
+.upload_img:nth-child(3n) {
+  margin-right: 0;
 }
 .upload_img .icon-folder-upload {
   display: none;
 }
+.upload_img .icon-close {
+  position: absolute;
+  top: 5px !important;
+  right: 5px !important;
+  font-size: 8px !important;
+  background: #868686;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  padding: 2px;
+  z-index: 3;
+}
+.upload_img .icon-close::before {
+  font-size: 8px;
+  margin: 0 2px;
+  color: #fff;
+}
 .upload_img.error {
   border-color: #cf0404;
 }
+.upload_img.error .icon-plus::before {
+  color: #cf0404;
+}
 .upload_img .icon {
-  font-size: 48px;
+  font-size: 36px;
   color: #5574A7;
 }
 .upload_img .icon.icon-broken_image:before {
@@ -6124,7 +6158,6 @@ input[type=file] {
   background: #5574A7;
 }
 .upload_img:hover .icon-plus {
-  display: none;
   color: white;
 }
 .upload_img:hover .icon-folder-upload {
@@ -6142,8 +6175,11 @@ input[type=file] {
           align-items: center;
 }
 .upload_img:hover .icon-folder-upload:before {
-  font-size: 48px;
-  margin-bottom: 20px;
+  font-size: 36px;
+  margin-bottom: 5px;
+}
+.upload_img:hover.error .icon-plus::before {
+  color: #fff;
 }
 
 .slipInfo {
@@ -6883,7 +6919,7 @@ input[type=file] {
 }
 
 .history {
-  width: calc(100% - 70px);
+  width: calc(100% - 50px);
   margin: 10px auto;
 }
 .history .listHeader div:nth-child(3),
@@ -10946,6 +10982,9 @@ nav.breadcrumb ul .breadcrumb-item.active a {
   text-align: center;
 }
 
+.upload_new {
+  padding: 0 !important;
+}
 @media (max-width: 800px) {
   .upload_new {
     -webkit-box-orient: vertical !important;
@@ -10971,10 +11010,10 @@ nav.breadcrumb ul .breadcrumb-item.active a {
   -webkit-box-flex: 2;
       -ms-flex: 2;
           flex: 2;
+  padding: 30px 20px;
 }
 .upload_new .checkBankSlip:nth-child(2) {
   border-right: 1px dotted #1E85EC;
-  padding: 20px;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
@@ -10995,9 +11034,6 @@ nav.breadcrumb ul .breadcrumb-item.active a {
 }
 .upload_new .checkBankSlip ul {
   width: 100%;
-}
-.upload_new .checkBankSlip .upload_img {
-  margin: 0;
 }
 
 .moduleTitle {
@@ -14048,7 +14084,7 @@ nav.breadcrumb ul .breadcrumb-item.active a {
   color: #112240;
   font-weight: bold;
   position: absolute;
-  margin-top: 3.5vw;
+  margin-top: -1.5vw;
 }
 .appPage {
   max-width: 1400px;
@@ -14060,7 +14096,7 @@ nav.breadcrumb ul .breadcrumb-item.active a {
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  padding-top: 5.7vw;
+  padding-top: 9.7vw;
   position: relative;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -14075,7 +14111,7 @@ nav.breadcrumb ul .breadcrumb-item.active a {
       -ms-flex-flow: column;
           flex-flow: column;
   width: 100%;
-  margin-top: -253px;
+  margin-top: -120px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -14104,6 +14140,12 @@ nav.breadcrumb ul .breadcrumb-item.active a {
 }
 .appPage .scan > div:nth-child(1) div {
   margin: 0.3vw 0;
+  font-size: 20px;
+}
+@media (min-width: 2200px) {
+  .appPage .scan > div:nth-child(1) div {
+    font-size: 30px;
+  }
 }
 .appPage .scan > div:nth-child(1) div:nth-child(2) {
   font-weight: bold;
@@ -14254,11 +14296,6 @@ nav.breadcrumb ul .breadcrumb-item.active a {
 .appPage .install > div.installWrapper {
   width: 1200px;
   margin: 20px auto;
-}
-.app + footer {
-  width: 100%;
-  min-width: auto;
-  font-size: xx-small;
 }
 
 .dragonPayPop {

@@ -4027,7 +4027,7 @@ html.Newtheme .smallList ul li:first-child {
 html.Newtheme .directions {
   border-bottom: 1px solid #666;
   color: #c6c6c6;
-  margin: 20px 0;
+  margin: 5px 0 20px;
   padding-bottom: 20px;
   max-width: 80%;
   min-width: 75%;
@@ -4068,13 +4068,23 @@ html.Newtheme .directions ul {
 html.Newtheme .directions ul li {
   list-style: disc;
 }
+html.Newtheme .uploadModule {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 77%;
+}
 html.Newtheme .upload_img {
-  max-width: 80%;
-  min-width: 75%;
+  width: calc(33.333% - 6px);
+  height: 90px;
   border-radius: 15px;
   border: 1px solid #1e85ec;
-  height: 250px;
-  margin: 40px 0 10px;
+  margin: 0 5px 10px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4086,14 +4096,43 @@ html.Newtheme .upload_img {
           align-items: center;
   overflow: hidden;
   cursor: pointer;
+  position: relative;
+}
+html.Newtheme .upload_img:hover {
+  background: #1e85ec;
+}
+html.Newtheme .upload_img:hover .icon {
+  color: #fff;
+}
+html.Newtheme .upload_img:hover.error .icon-plus::before {
+  color: #fff;
+}
+html.Newtheme .upload_img:nth-child(3n) {
+  margin-right: 0;
 }
 html.Newtheme .upload_img .icon {
-  font-size: 48px;
+  font-size: 36px;
   color: #1e85ec;
 }
 html.Newtheme .upload_img img {
   height: 100%;
   width: auto;
+}
+html.Newtheme .upload_img .icon-close {
+  position: absolute;
+  top: 5px !important;
+  right: 5px !important;
+  font-size: 8px !important;
+  background: #868686;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  padding: 2px;
+  z-index: 3;
+}
+html.Newtheme .upload_img .icon-close::before {
+  font-size: 8px;
+  margin: 0 2px;
+  color: #fff;
 }
 html.Newtheme .upload_img + .smallList {
   max-width: 80%;
@@ -7516,6 +7555,18 @@ html.Newtheme .eventLink .angpaoLink img.eventlinkimg {
             transform-origin: 50% 70%;
   }
 }
+html.Newtheme .eventLink.vgaming {
+  bottom: 200px;
+}
+html.Newtheme .eventLink.vgaming .icon-close {
+  top: 10px;
+  background: #cecece;
+  color: rgb(92, 92, 92);
+}
+html.Newtheme .eventLink.vgaming .vgimg {
+  width: 185px;
+  height: 185px;
+}
 html.Newtheme .time {
   position: absolute;
   top: calc(50% + 240px);
@@ -8480,7 +8531,6 @@ html.Newtheme .upload_new .checkBankSlip {
           flex: 2;
 }
 html.Newtheme .upload_new .checkBankSlip:nth-child(2) {
-  padding-right: 20px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -8491,14 +8541,11 @@ html.Newtheme .upload_new .checkBankSlip:nth-child(2) {
 html.Newtheme .upload_new .checkBankSlip ul {
   width: 100%;
 }
-html.Newtheme .upload_new .checkBankSlip .upload_img {
-  margin: 0;
-}
 html.Newtheme .upload_new .checkBankSlip .upload_img.error {
   border-color: #e91010;
 }
 html.Newtheme .upload_new .checkBankSlip .upload_img.error i {
-  color: #c6c6c6;
+  color: #e91010;
 }
 html.Newtheme .upload_new .txt-blue {
   color: #1e85ec;
