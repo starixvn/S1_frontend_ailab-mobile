@@ -52,7 +52,7 @@ export const useGetRankWithStatus = ({
 
 				try {
 					const TopNum = customTopNum;
-					const res = await api.events.GetLeaderboardListV3({
+					const res = await api.events.GetLeaderboardList({
 						lBCategoryId,
 						TopNum,
 						BeforeDays: beforeDays,
@@ -62,7 +62,7 @@ export const useGetRankWithStatus = ({
 					if (res.data.errorCode === 0) {
 						const rankDatas = res.data.data;
 						if (rankDatas?.length > 0) {
-							const custRankRes = await api.events.GetCustRankV2({
+							const custRankRes = await api.events.GetCustRank({
 								LBCategoryId: lBCategoryId,
 								BeforeDays: beforeDays,
 								EventCode
