@@ -808,5 +808,9 @@
 
 	"==============H5 Sportsbook for Desktop Entrance==============": "",
 	"lbl_Sportsbook_PlayNow": "এখন খেলা",
-	"lbl_Sportsbook_Desktop": "ল্যান্ডলাইন"
+	"lbl_Sportsbook_Desktop": "ল্যান্ডলাইন",
+
+  "==============RebateExclude==============": "",
+  "lbl_RebateExclude_title": "এই তালিকার গেমগুলি দৈনিক রিবেট পুরষ্কার বাদ দেওয়া হবে",
+  "lbl_GameName": "খেলার নাম"
 }

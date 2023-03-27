@@ -277,6 +277,14 @@ const Layout = ({ children }) => {
 		}
 	}, [window.location.pathname, userInfo.isResetPwd]);
 
+	if (
+		location.pathname.split("/")[
+			location.pathname.split("/").length - 1
+		] === "rebateExclude"
+	) {
+		return children;
+	}
+
 	return pageInfo.onlyContent ? (
 		children
 	) : (

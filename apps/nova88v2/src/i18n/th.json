@@ -872,5 +872,9 @@
 
 	"==============H5 Sportsbook for Desktop Entrance==============": "",
 	"lbl_Sportsbook_PlayNow": "เล่นเลย",
-	"lbl_Sportsbook_Desktop": "เดสก์ทอป"
+	"lbl_Sportsbook_Desktop": "เดสก์ทอป",
+
+  "==============RebateExclude==============": "",
+  "lbl_RebateExclude_title": "เกมในรายการนี้จะไม่รวมรางวัลเงินคืนรายวัน",
+  "lbl_GameName": "ชื่อเกมส์"
 }
