@@ -55,6 +55,8 @@ const Panel = () => {
 	const [recentDatas, setRecentDatas] = useState([]);
 	const [pageVerify, setPageVerify] = useState(true);
 	const isMountedRef = useRef(null);
+	const isClickedRef = useRef(false);
+
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => {
@@ -499,6 +501,23 @@ const Panel = () => {
 					? Number(amount) * 1000
 					: Number(amount);
 
+				const handleClickSubmit = () => {
+					if (!isClickedRef.current) {
+						isClickedRef.current = true;
+						RedirectToNext(
+							selBank.accountNo,
+							real_amount,
+							selBank.sysId,
+							userInfo.currencyId === defCurrenyId.INR
+								? selBank.ifscCode
+								: null
+						);
+					}
+					setTimeout(() => {
+						isClickedRef.current = false;
+					}, 1000);
+				};
+
 				setPopBox({
 					isOpen: true,
 					title: i18n.lbl_ImportantNote,
@@ -550,15 +569,7 @@ const Panel = () => {
 							<button
 								data-testid="RedirectToNext"
 								className="orange"
-								onClick={RedirectToNext.bind(
-									this,
-									selBank.accountNo,
-									real_amount,
-									selBank.sysId,
-									userInfo.currencyId === defCurrenyId.INR
-										? selBank.ifscCode
-										: null
-								)}>
+								onClick={handleClickSubmit}>
 								{i18n.lbl_Submit}
 							</button>
 						</div>

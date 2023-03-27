@@ -65,6 +65,7 @@ const Panel = () => {
 	const [redirectPath, setRedirectPath] = useState(null);
 	const [pageVerify, setPageVerify] = useState(true);
 	const isMountedRef = useRef(null);
+	const isClickedRef = useRef(false);
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -539,6 +540,21 @@ const Panel = () => {
 					? Number(amount) * 1000
 					: Number(amount);
 
+				const handleClickSubmit = ({ to_Amount, rate }) => {
+					if (!isClickedRef.current) {
+						isClickedRef.current = true;
+						RedirectToNext({
+							accountNo: selBank.usdtAddress,
+							real_amount,
+							to_Amount,
+							rate
+						});
+					}
+					setTimeout(() => {
+						isClickedRef.current = false;
+					}, 1000);
+				};
+
 				try {
 					const response = await api_payment_GetExchangeInfo({
 						Amount: real_amount,
@@ -589,14 +605,9 @@ const Panel = () => {
 								</button>
 								<button
 									className="lightBlue"
-									onClick={() => {
-										RedirectToNext({
-											accountNo: selBank.usdtAddress,
-											real_amount,
-											to_Amount,
-											rate
-										});
-									}}>
+									onClick={() =>
+										handleClickSubmit(to_Amount, rate)
+									}>
 									{i18n.lbl_Submit}
 								</button>
 							</div>
