@@ -5,7 +5,9 @@ import SiteURL, { cloudBannerImgURL } from "../config";
 import { isEventPeriod, defCurrenyId } from "../components/common/common";
 import { eventTime } from "../components/common/eventTime";
 import { getLeaderBoardSupportCurrencyId } from "../components/ranking/def";
-import allowedCurrencyList from "./allowedCurrencyList";
+import allowedCurrencyList, {
+	changeAllowCurrenciesByTime
+} from "./allowedCurrencyList";
 import { angPaoEventPeriod } from "../pages/angpao";
 
 export const productList = {
@@ -1027,7 +1029,11 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.Indo4d,
 					img: `${cloudBannerImgURL}/h5/img/indo4d.png`,
 					spanTextKey: "lbl_Indo4d",
-					allowCurrency: allowedCurrencyList.indo4d
+					allowCurrency: changeAllowCurrenciesByTime({
+						allowCurriesList: allowedCurrencyList.indo4d,
+						currencies: [defCurrenyId.IDR],
+						endTime: "2023-03-29 19:00:00"
+					})
 				}
 			]
 		},
