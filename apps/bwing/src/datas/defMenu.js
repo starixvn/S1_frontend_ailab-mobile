@@ -348,6 +348,18 @@ export const productList = langId => {
 					...defGameInfo.LIVEcasinoPP
 				},
 				{
+					displayText: "Big Gaming",
+					icon: "icon icon-bg",
+					img: `${bannerImgUrl}/h5/img/liveGameNew/live-bg.png`,
+					...defGameInfo.LIVEcasinoBG,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.liveCasino_bg)
+						}
+					]
+				},
+				{
 					displayText: "YEEBET",
 					icon: "icon icon-sk",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-yb.png`,
@@ -732,6 +744,10 @@ export const defSubMenus = () => [
 			{
 				...defGameInfo.LIVEcasinoPP,
 				displayText: "Pragmatic Play"
+			},
+			{
+				...defGameInfo.LIVEcasinoBG,
+				displayText: "Big Gaming"
 			},
 			{
 				...defGameInfo.LIVEcasinoYEEBET,
