@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { i18nContext, userInfoContext } from "./context";
 import { paymentImgUrl } from "../../config";
+import { isConvert, number_format } from "./common";
 
 const BankQR = ({ onClose, qrCodeUrl, amount, transId, code, bankLogo }) => {
 	const { i18n } = useContext(i18nContext);
@@ -53,7 +54,12 @@ const BankQR = ({ onClose, qrCodeUrl, amount, transId, code, bankLogo }) => {
 					<div className="amount">
 						{i18n.lbl_Amount}
 						<span>
-							{i18n[`Currency_${userInfo.currencyId}`]} {amount}
+							{i18n[`Currency_${userInfo.currencyId}`]}{" "}
+							{number_format(
+								amount,
+								isConvert(userInfo.currencyId),
+								0
+							)}
 						</span>
 					</div>
 					<div className="guide">
