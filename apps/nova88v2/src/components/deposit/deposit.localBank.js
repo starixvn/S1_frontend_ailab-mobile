@@ -6,7 +6,6 @@ import React, {
 	Component
 } from "react";
 import PropTypes from "prop-types";
-import QRCode from "qrcode.react";
 import moment from "moment";
 import ClipboardJS from "../../lib/clipboard.min";
 import {
@@ -584,7 +583,6 @@ const GroupList = ({
 	SubmitProof
 }) => {
 	const { i18n } = useContext(i18nContext);
-	const { userInfo } = useContext(userInfoContext);
 	const [selectedBank, setSelectedBank] = useState(dataList[0]);
 	const rows = dataList?.map(data => {
 		const _mainKey = `${mainKey}-${data[idKey]}`;
@@ -656,25 +654,22 @@ const GroupList = ({
 						<CopyBtn value={accountInfo.accountNo} />
 					</ul>
 				</div>
-				{userInfo.currencyId === defCurrenyId.MYR &&
-					selectedBank.qrCodeUrl && (
-						<>
-							<div className="title">
-								<span>*</span>
-								{i18n.lbl_ScanQR}
+				{selectedBank.qrCodeUrl && (
+					<>
+						<div className="title">
+							<span>*</span>
+							{i18n.lbl_ScanQR}
+						</div>
+						<div className="infoModule">
+							<div className="qrCode">
+								<img
+									src={`${paymentImgURL}${selectedBank.qrCodeUrl}`}
+									alt={selectedBank.bankName}
+								/>
 							</div>
-							<div className="infoModule">
-								<div className="qrCode">
-									<QRCode
-										value={selectedBank.qrCodeUrl}
-										renderAs="svg"
-										size={125}
-										includeMargin={true}
-									/>
-								</div>
-							</div>
-						</>
-					)}
+						</div>
+					</>
+				)}
 				<DepositChannel
 					i18n={i18n}
 					DepositChannelProps={DepositChannelProps}

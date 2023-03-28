@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import QRCode from "qrcode.react";
 import { i18nContext, userInfoContext } from "./context";
+import { paymentImgURL } from "../../config";
 
-const BankQR = ({ onClose, qrUrl, amount, transId }) => {
+const BankQR = ({ onClose, qrUrl, amount, bankName }) => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const [minutes, setMinutes] = useState(5);
@@ -35,12 +35,7 @@ const BankQR = ({ onClose, qrUrl, amount, transId }) => {
 			</div>
 			<div className="guide">
 				<div className="qrCode">
-					<QRCode
-						value={qrUrl}
-						renderAs="svg"
-						size={120}
-						includeMargin={true}
-					/>
+					<img src={`${paymentImgURL}${qrUrl}`} alt={bankName} />
 				</div>
 				<div className="sisa">
 					<div>{i18n.lbl_PaymentTimeLeft}</div>
@@ -69,5 +64,5 @@ BankQR.propTypes = {
 	onClose: PropTypes.func,
 	qrUrl: PropTypes.string.isRequired,
 	amount: PropTypes.number.isRequired,
-	transId: PropTypes.string.isRequired
+	bankName: PropTypes.string.isRequired
 };

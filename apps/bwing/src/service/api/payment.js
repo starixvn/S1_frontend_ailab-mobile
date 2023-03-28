@@ -198,3 +198,14 @@ export const api_payment_GetExchangeInfo = ({
 		CurrencyName,
 		Network
 	});
+
+export const api_payment_DepositReqLocalPay = ({
+	groupId,
+	amount,
+	bonusCode
+}) =>
+	paymentRequest.post("/DepositReqLocalPay", {
+		groupId,
+		amount,
+		bonusCode
+	});

@@ -213,8 +213,8 @@ export class PaymentAPI extends BaseAPI {
 	GetLineChannelForDpeosit = () =>
 		this.paymentRequest.post("/GetLineChannelForDpeosit");
 
-	DepositReqFakeMobilePay = ({ groupId, amount, bonusCode }) =>
-		this.paymentRequest.post("/DepositReqFakeMobilePay", {
+	DepositReqLocalPay = ({ groupId, amount, bonusCode }) =>
+		this.paymentRequest.post("/DepositReqLocalPay", {
 			groupId,
 			amount,
 			bonusCode
