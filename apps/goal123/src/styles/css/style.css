@@ -1554,6 +1554,178 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   content: "";
   display: block;
 }
+#popup.qrpayPop {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+#popup.qrpayPop .pop {
+  border-radius: 3px;
+}
+#popup.qrpayPop .pop > div {
+  width: 100%;
+}
+#popup.qrpayPop .pop > div span {
+  color: #1E85EC;
+}
+#popup.qrpayPop .pop > div.popTit {
+  background: #284985;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1vw 2vw;
+}
+#popup.qrpayPop .pop > div.popTit img {
+  width: 20vw;
+  position: absolute;
+  left: 1vw;
+}
+#popup.qrpayPop .pop > div.popTit .icon-close {
+  right: 1vw;
+  top: auto;
+  position: absolute;
+}
+#popup.qrpayPop .pop > div.popTxt .title {
+  font-size: 4vw;
+  text-align: center;
+  margin-bottom: 2vw !important;
+}
+#popup.qrpayPop .pop > div.popTxt .logo {
+  width: 35vw;
+  border-radius: 3px;
+  background: #fff;
+}
+#popup.qrpayPop .pop > div.popTxt .logo img {
+  margin: 0;
+}
+#popup.qrpayPop .pop > div.popTxt .info {
+  text-align: center;
+  margin: 1vw;
+  color: #1f3258;
+}
+#popup.qrpayPop .pop > div.popTxt .info span {
+  display: block;
+  color: #1f3258;
+  font-weight: bold;
+}
+#popup.qrpayPop .pop > div.popTxt .amount {
+  display: block;
+  margin: 1vw;
+  text-align: center;
+}
+#popup.qrpayPop .pop > div.popTxt .amount span {
+  color: #1f3258;
+  font-weight: bold;
+  font-size: 4vw;
+  display: block;
+  padding: 1vw;
+  border: 0;
+  border-radius: 3px;
+}
+#popup.qrpayPop .pop > div.popTxt .guide {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-top: 1px dotted #1E85EC;
+  border-bottom: 1px dotted #1E85EC;
+  padding: 2vw 0;
+  margin: 2vw 0 0;
+}
+#popup.qrpayPop .pop > div.popTxt .guide > button {
+  padding: 0.5vw 2vw;
+  background: #5574A7;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1vw auto;
+  border-radius: 3px;
+}
+#popup.qrpayPop .pop > div.popTxt .guide .qrCode {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 53vw;
+  height: 53vw;
+  background: rgba(78, 108, 168, 0.5);
+  overflow: hidden;
+  margin: 1vw 0 2vw;
+}
+#popup.qrpayPop .pop > div.popTxt .guide .qrCode svg, #popup.qrpayPop .pop > div.popTxt .guide .qrCode img {
+  width: auto;
+  height: 90%;
+  margin: 0;
+  border-radius: 0;
+}
+#popup.qrpayPop .pop > div.popTxt .guide .code {
+  color: #d83b35;
+  font-size: 6vw;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#popup.qrpayPop .pop > div.popTxt .guide .code a, #popup.qrpayPop .pop > div.popTxt .guide .code button {
+  color: #fff;
+  padding: 1vw;
+  margin-left: 1vw;
+  background: #4e6ca8;
+  border-radius: 3px;
+  font-size: 2vw;
+  font-weight: normal;
+}
+#popup.qrpayPop .pop > div.popTxt .guide .code a {
+  padding: 0.25vw 1vw;
+}
+#popup.qrpayPop .pop > div.popTxt ul {
+  padding-left: 6vw;
+  list-style: decimal;
+}
+#popup.qrpayPop .pop > div.popTxt .sisa {
+  text-align: center;
+  margin: 2vw 0 0;
+}
+#popup.qrpayPop .pop > div.popTxt .sisa div:last-child {
+  font-weight: bold;
+  margin: 2vw 1vw;
+}
+#popup.qrpayPop .pop > div.popTxt .sisa span {
+  font-size: 3.5vw;
+  color: #1f3258;
+  font-weight: normal;
+  padding: 1vw 2vw;
+  margin: 2vw 1vw;
+  background: #fff;
+  border: 0;
+  border-radius: 2px;
+}
 
 .txt-red {
   color: #d83b35;
@@ -6683,6 +6855,52 @@ span.important {
 .depositModule_topupMobile .selectModule .dropdown,
 .depositModule_Crpyto .selectModule .dropdown {
   padding: 1vw 1vw 1vw 2vw;
+}
+.depositModule_mobile .selectModule .infoAccount + .subtitle,
+.depositModule_online .selectModule .infoAccount + .subtitle,
+.depositModule_local .selectModule .infoAccount + .subtitle,
+.depositModule_topupMobile .selectModule .infoAccount + .subtitle,
+.depositModule_Crpyto .selectModule .infoAccount + .subtitle {
+  width: 100%;
+  font-weight: bold;
+  margin-top: 4vw;
+  margin-left: 3vw;
+  text-align: left;
+}
+.depositModule_mobile .selectModule .infoAccount + .subtitle .text-org,
+.depositModule_online .selectModule .infoAccount + .subtitle .text-org,
+.depositModule_local .selectModule .infoAccount + .subtitle .text-org,
+.depositModule_topupMobile .selectModule .infoAccount + .subtitle .text-org,
+.depositModule_Crpyto .selectModule .infoAccount + .subtitle .text-org {
+  color: #fab617;
+  margin-right: 0.5vw;
+}
+.depositModule_mobile .selectModule .qrCode,
+.depositModule_online .selectModule .qrCode,
+.depositModule_local .selectModule .qrCode,
+.depositModule_topupMobile .selectModule .qrCode,
+.depositModule_Crpyto .selectModule .qrCode {
+  width: 36vw;
+  height: 36vw;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #adccff;
+  border-radius: 5px;
+  margin: 1vw auto;
+  padding: 3vw;
+  overflow: hidden;
+}
+.depositModule_mobile .selectModule .qrCode img,
+.depositModule_online .selectModule .qrCode img,
+.depositModule_local .selectModule .qrCode img,
+.depositModule_topupMobile .selectModule .qrCode img,
+.depositModule_Crpyto .selectModule .qrCode img {
+  width: auto;
+  height: 100%;
 }
 .depositModule_mobile .input-group,
 .depositModule_online .input-group,
