@@ -27,48 +27,22 @@ export class EventsAPI extends BaseAPI {
 			EventCode
 		});
 
-	GetLeaderboardList = ({ lBCategoryId, TopNum = 10, BeforeDays = 0 }) =>
+	GetLeaderboardList = ({
+		lBCategoryId,
+		TopNum = 10,
+		BeforeDays = 0,
+		EventCode
+	}) =>
 		this.evnetsRequest.post(`/GetLeaderboardList/`, {
 			lBCategoryId,
 			TopNum,
-			BeforeDays
+			BeforeDays,
+			EventCode
 		});
 
-	GetCustRank = ({ LBCategoryId, BeforeDays = 0 }) =>
+	GetCustRank = ({ LBCategoryId, BeforeDays = 0, EventCode }) =>
 		this.evnetsRequest.post(`/GetCustRank/`, {
 			LBCategoryId,
-			BeforeDays
-		});
-
-	GetLeaderboardListV2 = ({
-		lBCategoryId,
-		TopNum = 10,
-		BeforeDays = 0,
-		EventCode
-	}) =>
-		this.evnetsRequest.post(`/GetLeaderboardListV2/`, {
-			lBCategoryId,
-			TopNum,
-			BeforeDays,
-			EventCode
-		});
-
-	GetCustRankV2 = ({ LBCategoryId, BeforeDays = 0, EventCode }) =>
-		this.evnetsRequest.post(`/GetCustRankV2/`, {
-			LBCategoryId,
-			BeforeDays,
-			EventCode
-		});
-
-	GetLeaderboardListV3 = ({
-		lBCategoryId,
-		TopNum = 10,
-		BeforeDays = 0,
-		EventCode
-	}) =>
-		this.evnetsRequest.post(`/GetLeaderboardListV3/`, {
-			lBCategoryId,
-			TopNum,
 			BeforeDays,
 			EventCode
 		});
