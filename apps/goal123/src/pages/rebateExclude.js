@@ -3,6 +3,302 @@ import { useTranslation } from "react-i18next";
 
 const RebateExclude = () => {
 	const { t } = useTranslation();
+	const excludeList = [
+		{ product: "Crypto Sports", gameName: ["All Game"] },
+		{
+			product: "V8 Poker",
+			gameName: ["All Game"]
+		},
+		{
+			product: "Asia Gaming Live Casino",
+			gameName: ["All Blackjack game"]
+		},
+		{
+			product: "Ebet Live Casino",
+			gameName: ["All Blackjack game"]
+		},
+		{
+			product: "Evolution Gaming Live Casino",
+			gameName: ["All Blackjack game"]
+		},
+		{
+			product: "N2Live Live Casino",
+			gameName: ["All Blackjack game"]
+		},
+		{
+			product: "Playtech Live Casino",
+			gameName: ["All Blackjack game"]
+		},
+		{
+			product: "Pragmatic Play Live Casino",
+			gameName: ["All Blackjack game"]
+		},
+		{
+			product: "Astro Tech",
+			gameName: ["Fishing"]
+		},
+		{
+			product: "CQ9",
+			gameName: ["Fishing"]
+		},
+		{
+			product: "Spade Gaming",
+			gameName: ["Fishing"]
+		},
+		{
+			product: "YL",
+			gameName: ["Fishing"]
+		},
+		{
+			product: "Advant Play Mini",
+			gameName: ["Crash", "Card Racing"]
+		},
+		{
+			product: "CQ9",
+			gameName: [
+				"Alice Run",
+				"Alice Run JP",
+				"Jungle Party",
+				"Mahjong Fruit",
+				"Mini Roulette",
+				"Mr.Bean",
+				"Tenfold Eggs",
+				"Thai HILO",
+				"Xoc Dia"
+			]
+		},
+		{
+			product: "Game Play",
+			gameName: ["VN Lottery"]
+		},
+		{
+			product: "HB (HABANERO)",
+			gameName: [
+				"Aces and Eights 1 Hand",
+				"Aces and Eights 10 Hand",
+				"Aces and Eights 100 Hand",
+				"Aces and Eights 5 Hand",
+				"Aces and Eights 50 Hand",
+				"All American Poker 1 Hand",
+				"All American Poker 10 Hand",
+				"All American Poker 100 Hand",
+				"All American Poker 5 Hand",
+				"All American Poker 50 Hand",
+				"American Blackjack",
+				"Baccarat",
+				"Baccarat Zero Commission",
+				"Blackjack 3 Hand",
+				"Bonus Deuces Wild 1 Hand",
+				"Bonus Deuces Wild 10 Hand",
+				"Bonus Deuces Wild 100 Hand",
+				"Bonus Deuces Wild 5 Hand",
+				"Bonus Deuces Wild 50 Hand",
+				"Bonus Poker 1 Hand",
+				"Bonus Poker 10 Hand",
+				"Bonus Poker 100 Hand",
+				"Bonus Poker 5 Hand",
+				"Bonus Poker 50 Hand",
+				"Caribbean Hold'em",
+				"Caribbean Stud",
+				"Deuces Wild 1 Hand",
+				"Deuces Wild 10 Hand",
+				"Deuces Wild 100 Hand",
+				"Deuces Wild 5 Hand",
+				"Deuces Wild 50 Hand",
+				"Double Bonus Poker 1 Hand",
+				"Double Bonus Poker 10 Hand",
+				"Double Bonus Poker 100 Hand",
+				"Double Bonus Poker 5 Hand",
+				"Double Bonus Poker 50 Hand",
+				"Double Double Bonus Poker 1 Hand",
+				"Double Double Bonus Poker 10 Hand",
+				"Double Double Bonus Poker 100 Hand",
+				"Double Double Bonus Poker 5 Hand",
+				"Double Double Bonus Poker 50 Hand",
+				"Double Exposure 3 Hand",
+				"Dragon Tiger",
+				"Jacks or Better 1 Hand",
+				"Jacks or Better 10 Hand",
+				"Jacks or Better 100 Hand",
+				"Jacks or Better 5 Hand",
+				"Jacks or Better 50 Hand",
+				"Joker Poker 1 Hand",
+				"Joker Poker 10 Hand",
+				"Joker Poker 100 Hand",
+				"Joker Poker 5 Hand",
+				"Joker Poker 50 Hand",
+				"Roulette",
+				"Sic Bo",
+				"Tens or Better 1 Hand",
+				"Tens or Better 10 Hand",
+				"Tens or Better 100 Hand",
+				"Tens or Better 5 Hand",
+				"Tens or Better 50 Hand",
+				"Three Card Poker",
+				"Three Card Poker Deluxe",
+				"War"
+			]
+		},
+		{
+			product: "JILI",
+			gameName: [
+				"7 UP-DOWN",
+				"7up7down",
+				"Baccarat",
+				"Big Small",
+				"Bingo Carnaval",
+				"Calaca Bingo",
+				"Colour Game",
+				"Crazy Pusher",
+				"Dice",
+				"Dragon & Tiger",
+				"Dragon and Tiger",
+				"Fairness Games",
+				"Fortune Bingo",
+				"Go Goal Bingo",
+				"iRich Bingo",
+				"Jackpot Bingo",
+				"Lucky Bingo",
+				"Lucky Number",
+				"Number King",
+				"Poker King",
+				"Sic Bo",
+				"Super Bingo",
+				"Win Drop"
+			]
+		},
+		{
+			product: "MG (MICRO GAMING)",
+			gameName: [
+				"American Roulette",
+				"American Roulette Jade",
+				"Andar Bahar Royale",
+				"Auto Roulette",
+				"Baccarat Jade",
+				"Break Away Shootout",
+				"Cricket Star Scratch",
+				"European Roulette",
+				"European Roulette Jade",
+				"Happy Monster Claw",
+				"Immortal Romance Video Bingo",
+				"Incan Adventure",
+				"Incredible Balloon Machine",
+				"Lightning Fortunes",
+				"Lucky Twins Catcher",
+				"Match Day",
+				"Max Damage and the Alien Attack",
+				"Mega Money Rush",
+				"Mega Money Wheel",
+				"Poke The Guy",
+				"Soccer Striker",
+				"Treasure Dash",
+				"Wheel of Winners"
+			]
+		},
+		{
+			product: "NETENT",
+			gameName: [
+				"American Roulette",
+				"Baccarat",
+				"Blackjack",
+				"Blackjack Classic",
+				"Casino Hold'em",
+				"European Roulette",
+				"French Roulette",
+				"Jacks or Better Double Up",
+				"Roulette Advanced"
+			]
+		},
+		{
+			productc: "One789",
+			gameName: ["Traditional Lottery"]
+		},
+		{
+			product: "PP (Pragmatic Play)",
+			gameName: [
+				"7 Piggies 25,000",
+				"American Blackjack",
+				"Baccarat",
+				"Dragon Bonus Baccarat",
+				"Dragon Tiger",
+				"Hot Safari 75,000",
+				"Multihand Blackjack",
+				"Panda Gold 50,000",
+				"Queen of Gold 100,000",
+				"Roulette",
+				"Spaceman"
+			]
+		},
+		{
+			product: "PT (PLAYTECH)",
+			gameName: [
+				"1000 Diamond Bet Roulette",
+				"101 Roulette",
+				"3 Card Brag",
+				"7 e mezzo",
+				"Aces and Faces Multi-Hand",
+				"Age of the Gods Roulette",
+				"Age of the Gods Spin A Win",
+				"All Bets Blackjack",
+				"Baccarat",
+				"Blackjack Surrender",
+				"Buster Blackjack",
+				"Caribbean Stud Poker",
+				"Cashback Blackjack",
+				"Casino Hold'Em",
+				"Classic Roulette",
+				"Deuces Wild Multi-Hand",
+				"Diamond Bet Roulette",
+				"Dragon Jackpot Roulette",
+				"Free Chip Blackjack",
+				"Heads Up Hold'em",
+				"Hi-Lo Premium",
+				"Hit me Baccarat",
+				"Lucky Lucky Blackjack",
+				"Mega Fire Blaze: Roulette",
+				"Mini Roulette",
+				"Perfect Blackjack Multihand 5",
+				"Premium American Roulette",
+				"Premium Blackjack",
+				"Premium Blackjack Single Hand",
+				"Premium European Roulette",
+				"Quantum Roulette Instant Play",
+				"Roulette Deluxe",
+				"Spread Bet Roulette",
+				"Super Roulette",
+				"Vegas Blackjack"
+			]
+		},
+		{
+			product: "RED TIGER",
+			gameName: ["Classic Blackjack", "European Roulette", "Punto Banco"]
+		},
+		{
+			product: "Saba",
+			gameName: [
+				"OW Bitcoin",
+				"OW China Lottery",
+				"OW Keno",
+				"OW Lottery",
+				"OW Number Game",
+				"OW Table Game"
+			]
+		},
+		{
+			product: "Skywind",
+			gameName: [
+				"3 Card Brag",
+				"Baccarat",
+				"Blackjack",
+				"European Roulette",
+				"Red Black Poker"
+			]
+		},
+		{
+			product: "TGC",
+			gameName: ["TCG VN Lottery"]
+		}
+	];
 	return (
 		<>
 			<div className="subheader">
@@ -22,329 +318,16 @@ const RebateExclude = () => {
 								<span>{t("lbl_GameName")}</span>
 							</div>
 						</div>
-						<div className="exclude__table__item">
-							<div>Crypto Sports</div>
-							<div>
-								<span>All Game</span>
+						{excludeList.map(({ product, gameName }) => (
+							<div className="exclude__table__item">
+								<div>{product}</div>
+								<div>
+									{gameName.map(value => (
+										<span>{value}</span>
+									))}
+								</div>
 							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>KM Poker</div>
-							<div>
-								<span>All Game</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>MP Poker</div>
-							<div>
-								<span>All Game</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>V8 Poker</div>
-							<div>
-								<span>All Game</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>918 RNG</div>
-							<div>
-								<span>All Game</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>Pragmatic Play</div>
-							<div>
-								<span>All Blackjack game</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>Evolution Gaming</div>
-							<div>
-								<span>All Blackjack game</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>N2Live</div>
-							<div>
-								<span>All Blackjack game</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>Playtech</div>
-							<div>
-								<span>All Blackjack game</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>Ebet</div>
-							<div>
-								<span>All Blackjack game</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>Asia Gaming</div>
-							<div>
-								<span>All Blackjack game</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>Spade Gaming</div>
-							<div>
-								<span>Fishing</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>AstroTech</div>
-							<div>
-								<span>Fishing</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>YL</div>
-							<div>
-								<span>Fishing</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>CQ9</div>
-							<div>
-								<span>Mini Roulette</span>
-								<span>Thai HILO</span>
-								<span>Xoc Dia</span>
-								<span>Fishing</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>Saba</div>
-							<div>
-								<span>OW Bitcoin</span>
-								<span>OW Card Club</span>
-								<span>OW Virtual Games</span>
-								<span>OW Table Game</span>
-								<span>OW China Lottery</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>HB (HABANERO)</div>
-							<div>
-								<span>American Blackjack</span>
-								<span>Dragon Tiger</span>
-								<span>Double Exposure 3 Hand</span>
-								<span>Baccarat Zero Commission</span>
-								<span>Blackjack 3 Hand</span>
-								<span>Sic Bo</span>
-								<span>Three Card Poker Deluxe</span>
-								<span>War</span>
-								<span>Three Card Poker</span>
-								<span>Caribbean Stud</span>
-								<span>Caribbean Hold'em</span>
-								<span>Baccarat</span>
-								<span>Roulette</span>
-								<span>Tens or Better 100 Hand</span>
-								<span>Tens or Better 50 Hand</span>
-								<span>Tens or Better 10 Hand</span>
-								<span>Tens or Better 5 Hand</span>
-								<span>Tens or Better 1 Hand</span>
-								<span>Joker Poker 100 Hand</span>
-								<span>Joker Poker 50 Hand</span>
-								<span>Joker Poker 10 Hand</span>
-								<span>Joker Poker 5 Hand</span>
-								<span>Joker Poker 1 Hand</span>
-								<span>Double Double Bonus Poker 100 Hand</span>
-								<span>Double Double Bonus Poker 50 Hand</span>
-								<span>Double Double Bonus Poker 10 Hand</span>
-								<span>Double Double Bonus Poker 5 Hand</span>
-								<span>Double Double Bonus Poker 1 Hand</span>
-								<span>Double Bonus Poker 100 Hand</span>
-								<span>Double Bonus Poker 50 Hand</span>
-								<span>Double Bonus Poker 10 Hand</span>
-								<span>Double Bonus Poker 5 Hand</span>
-								<span>Double Bonus Poker 1 Hand</span>
-								<span>Bonus Poker 100 Hand</span>
-								<span>Bonus Poker 50 Hand</span>
-								<span>Bonus Poker 10 Hand</span>
-								<span>Bonus Poker 5 Hand</span>
-								<span>Bonus Poker 1 Hand</span>
-								<span>Bonus Deuces Wild 100 Hand</span>
-								<span>Bonus Deuces Wild 50 Hand</span>
-								<span>Bonus Deuces Wild 10 Hand</span>
-								<span>Bonus Deuces Wild 5 Hand</span>
-								<span>Bonus Deuces Wild 1 Hand</span>
-								<span>All American Poker 100 Hand</span>
-								<span>All American Poker 50 Hand</span>
-								<span>All American Poker 10 Hand</span>
-								<span>All American Poker 5 Hand</span>
-								<span>All American Poker 1 Hand</span>
-								<span>Aces and Eights 100 Hand</span>
-								<span>Aces and Eights 50 Hand</span>
-								<span>Aces and Eights 10 Hand</span>
-								<span>Aces and Eights 5 Hand</span>
-								<span>Aces and Eights 1 Hand</span>
-								<span>Deuces Wild 100 Hand</span>
-								<span>Deuces Wild 50 Hand</span>
-								<span>Deuces Wild 10 Hand</span>
-								<span>Deuces Wild 5 Hand</span>
-								<span>Deuces Wild 1 Hand</span>
-								<span>Jacks or Better 100 Hand</span>
-								<span>Jacks or Better 50 Hand</span>
-								<span>Jacks or Better 10 Hand</span>
-								<span>Jacks or Better 5 Hand</span>
-								<span>Jacks or Better 1 Hand</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>JILI</div>
-							<div>
-								<span>Fishing</span>
-								<span>Fairness Games</span>
-								<span>Dragon &amp; Tiger</span>
-								<span>Dice</span>
-								<span>7 UP-DOWN</span>
-								<span>Lucky Number</span>
-								<span>Big Small</span>
-								<span>Number King</span>
-								<span>Poker King</span>
-								<span>Dragon and Tiger</span>
-								<span>iRich Bingo</span>
-								<span>7up7down</span>
-								<span>Baccarat</span>
-								<span>Fortune Bingo</span>
-								<span>Sic Bo</span>
-								<span>Super Bingo</span>
-								<span>Bingo Carnaval</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>MG (MICRO GAMING)</div>
-							<div>
-								<span>Aces and Eights</span>
-								<span>Aces and Faces Poker</span>
-								<span>All Aces</span>
-								<span>American Roulette</span>
-								<span>American Roulette Jade</span>
-								<span>Andar Bahar Royale</span>
-								<span>Baccarat Jade</span>
-								<span>Bonus Deuces Wild</span>
-								<span>Deuces Wild</span>
-								<span>Double Double Bonus Poker</span>
-								<span>European Roulette</span>
-								<span>European Roulette Jade</span>
-								<span>Jacks or Better</span>
-								<span>Joker Poker</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>NETENT</div>
-							<div>
-								<span>American Roulette</span>
-								<span>Baccarat</span>
-								<span>Blackjack</span>
-								<span>European Roulette</span>
-								<span>French Roulette</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>PG (PG SOFT)</div>
-							<div>
-								<span>European Blackjack</span>
-								<span>American Blackjack</span>
-								<span>Baccarat Deluxe</span>
-								<span>Cards Hi Lo</span>
-								<span>Dice Hi Lo</span>
-								<span>Five Numbers Hi Lo</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>PP (Pragmatic Play)</div>
-							<div>
-								<span>Dragon Tiger</span>
-								<span>Dragon Bonus Baccarat</span>
-								<span>Baccarat</span>
-								<span>American Blackjack</span>
-								<span>Multihand Blackjack</span>
-								<span>Roulette</span>
-								<span>Hot Safari 75,000</span>
-								<span>Queen of Gold 100,000</span>
-								<span>Panda Gold 50,000</span>
-								<span>7 Piggies 25,000</span>
-								<span>Spaceman</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>PT (PLAYTECH)</div>
-							<div>
-								<span>3 Card Brag</span>
-								<span>All Bets Blackjack</span>
-								<span>Aces and Faces Multi-Hand</span>
-								<span>Age of the Gods Roulette</span>
-								<span>Baccarat</span>
-								<span>Vegas Blackjack</span>
-								<span>Buster Blackjack</span>
-								<span>Cashback Blackjack</span>
-								<span>Lucky Lucky Blackjack</span>
-								<span>Blackjack Surrender</span>
-								<span>Premium Blackjack</span>
-								<span>Premium Blackjack Single Hand</span>
-								<span>Caribbean Stud Poker</span>
-								<span>Casino Hold'Em</span>
-								<span>1000 Diamond Bet Roulette</span>
-								<span>Diamond Bet Roulette</span>
-								<span>Dragon Jackpot Roulette</span>
-								<span>Deuces Wild Multi-Hand</span>
-								<span>Free Chip Blackjack</span>
-								<span>Hi-Lo Premium</span>
-								<span>Heads Up Hold'em</span>
-								<span>Spin a Win</span>
-								<span>Mega Fire Blaze: Roulette</span>
-								<span>Mini Roulette</span>
-								<span>Perfect Blackjack Multihand 5</span>
-								<span>Roulette Deluxe</span>
-								<span>Quantum Roulette Instant Play</span>
-								<span>Classic Roulette</span>
-								<span>101 Roulette</span>
-								<span>Premium American Roulette</span>
-								<span>Premium European Roulette</span>
-								<span>Spread Bet Roulette</span>
-								<span>7 e mezzo</span>
-								<span>Super Roulette</span>
-								<span>Hit me Baccarat</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>RED TIGER</div>
-							<div>
-								<span>Classic Blackjack</span>
-								<span>European Roulette</span>
-								<span>Punto Banco</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>SKYWIND</div>
-							<div>
-								<span>Fishing</span>
-								<span>3 Card Brag</span>
-								<span>Blackjack</span>
-								<span>European Roulette</span>
-								<span>Baccarat</span>
-								<span>Red Black Poker</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>Game Play</div>
-							<div>
-								<span>GPI Keno</span>
-								<span>GPI Fast3</span>
-								<span>GPI So De</span>
-							</div>
-						</div>
-						<div className="exclude__table__item">
-							<div>TCG</div>
-							<div>
-								<span>TCG VN Lottery</span>
-								<span>TCG SEA Lottery</span>
-							</div>
-						</div>
+						))}
 					</div>
 				</div>
 			</main>
