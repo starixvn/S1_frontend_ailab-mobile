@@ -13944,4 +13944,137 @@ span.important {
 .eventLink.vgaming .vgimg {
   width: 35vw;
   height: 35vw;
+}
+
+.subheader {
+  background: #030c1b;
+  padding: 2vw 1vw;
+}
+.subheader__container {
+  width: calc(100% - 3vw);
+  margin: 0 auto;
+}
+.subheader a::before {
+  content: "";
+  display: block;
+  width: 134px;
+  height: 46px;
+  background-image: url("https://banner.bw88.io/h5/img/logo.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  -webkit-transition: ease 0.15s;
+  transition: ease 0.15s;
+}
+
+.subcopyright {
+  width: calc(100% - 4vw);
+  margin: 0 auto;
+  background: #121c30;
+  padding: 2vw;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 3vw;
+}
+.subcopyright .text {
+  color: #afafaf;
+}
+
+.exclude {
+  padding: 5vw 2vw;
+  background: #0A1533;
+  color: #3e3e3e;
+  font-size: 3vw;
+  width: calc(100% - 4vw);
+}
+.exclude__container {
+  width: 100%;
+  margin: 0 auto;
+}
+.exclude__title {
+  font-weight: bold;
+  font-size: 4.25vw;
+  color: #529de9;
+  position: relative;
+  margin-bottom: 25px;
+}
+.exclude__title::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  width: 100%;
+  background-image: -webkit-gradient(linear, left top, right top, from(#529de9), to(rgba(247, 122, 0, 0)));
+  background-image: linear-gradient(to right, #529de9, rgba(247, 122, 0, 0));
+}
+.exclude__table {
+  width: 100%;
+  border-left: 1px solid #56ceff;
+  border-right: 1px solid #56ceff;
+  border-radius: 3px;
+}
+.exclude__table__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.exclude__table__item:first-child div {
+  background: #56ceff;
+  color: #3e3e3e;
+  font-weight: bold;
+}
+.exclude__table__item div {
+  background: #fafafa;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 30vw;
+          flex: 1 1 30vw;
+  padding: 0.5vw 0;
+  border-bottom: 1px solid #56ceff;
+}
+.exclude__table__item div:first-child {
+  border-right: 1px solid #56ceff;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 5vw;
+          flex: 1 1 5vw;
+}
+.exclude__table__item div span {
+  display: block;
+  width: 100%;
+  text-align: center;
+  line-height: 1.75;
+  position: relative;
+}
+.exclude__table__item div span::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -0.2vw;
+  height: 1px;
+  width: 100%;
+  background: #56ceff;
+}
+.exclude__table__item div span:last-child::after {
+  height: 0;
+  display: none;
 }/*# sourceMappingURL=style.css.map */
