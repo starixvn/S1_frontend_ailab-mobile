@@ -871,5 +871,9 @@
 
 	"==============H5 Sportsbook for Desktop Entrance==============": "",
 	"lbl_Sportsbook_PlayNow": "立即游戏",
-	"lbl_Sportsbook_Desktop": "座机版"
+	"lbl_Sportsbook_Desktop": "座机版",
+
+  "==============RebateExclude==============": "",
+  "lbl_RebateExclude_title": "游戏在此列表将排除与享有每日返水奖励",
+  "lbl_GameName": "游戏名称"
 }
