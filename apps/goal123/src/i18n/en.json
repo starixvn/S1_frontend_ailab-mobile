@@ -763,5 +763,10 @@
 
 	"==============H5 Sportsbook for Desktop Entrance==============": "",
 	"lbl_Sportsbook_PlayNow": "Play Now",
-	"lbl_Sportsbook_Desktop": "Desktop"
+	"lbl_Sportsbook_Desktop": "Desktop",
+
+  "==============RebateExclude==============": "",
+  "lbl_RebateExclude_title": "Games in this list will be excluded daily rebate rewards",
+  "lbl_Product": "Product",
+  "lbl_GameName": "Game Name"
 }

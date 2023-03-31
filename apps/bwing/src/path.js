@@ -179,6 +179,9 @@ export default {
 	},
 	worldCup: {
 		root: "worldCup"
+	},
+	rebateExclude: {
+		root: "rebateExclude"
 	}
 };
 
