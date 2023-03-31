@@ -186,6 +186,16 @@ export const defCurrenyId = {
 	USDT: 96
 };
 
+export const currencyIdToCurrency = {
+	2: "MYR",
+	3: "USD",
+	4: "THB",
+	13: "CNY",
+	15: "IDR",
+	61: "INR",
+	74: "BDT"
+};
+
 export const currencyIdToTimeZone = {
 	2: "+08:00",
 	13: "+08:00",
