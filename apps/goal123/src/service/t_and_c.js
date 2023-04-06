@@ -15,7 +15,7 @@ export default langId => {
 		ContactUs: `${config.t_and_cURL}/Static/${langId}/ContactUs.html`,
 		AngPow: `${config.t_and_cURL}/Static/${config.siteName}/ranking/${langId}3.html`,
 		Referral: `${config.t_and_cURL}/Static/${config.siteName}/Static/${langId}/ReferralConditions.html`,
-		HowToDeposit: `${config.t_and_cURL}/Static/${config.siteName}/Static/${langId}/HowToDeposit.html`,
-		HowToWithdraw: `${config.t_and_cURL}/Static/${config.siteName}/Static/${langId}/HowToWithdrawal.html`
+		HowToDeposit: `${config.t_and_cURL}/Static/${langId}/HowToDeposit.html`,
+		HowToWithdraw: `${config.t_and_cURL}/Static/${langId}/HowToWithdrawal.html`
 	};
 };
