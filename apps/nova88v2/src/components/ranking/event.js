@@ -4,7 +4,7 @@ import PrizeList from "./prize";
 import { defPrize } from "./def";
 import { GET_LANG_ID } from "../../service/language";
 import { GetCurrencyName, defCurrenyId } from "../common/common";
-import { cloudImgURL, siteInfo, cloudBannerImgURL } from "../../config";
+import { siteInfo, cloudBannerImgURL } from "../../config";
 
 const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
 	const [URL, setURL] = useState("");
@@ -28,7 +28,9 @@ const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
 			}
 		}
 
-		setURL(`${cloudImgURL}/NovaPromotion/ranking_new_tnc/${_langId}.html`);
+		setURL(
+			`${cloudBannerImgURL}/NovaPromotion/ranking_new_tnc/${_langId}.html`
+		);
 	};
 	const rows = getPrize?.map((item, index) => {
 		const { rank, prizes } = item;
