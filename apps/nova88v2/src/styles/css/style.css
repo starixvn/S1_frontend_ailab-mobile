@@ -12774,6 +12774,7 @@ input:-webkit-autofill:active {
   border-left: 1px solid #7591c1;
   border-right: 1px solid #7591c1;
   border-radius: 3px;
+  text-align: center;
 }
 .exclude__table__item {
   display: -webkit-box;

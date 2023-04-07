@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* http://meyerweb.com/eric/tools/css/reset/
+/* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -14168,7 +14168,7 @@ span.important {
 }
 
 .subheader {
-  background: #030c1b;
+  background: #000;
   padding: 2vw 1vw;
 }
 .subheader__container {
@@ -14190,7 +14190,7 @@ span.important {
 .subcopyright {
   width: calc(100% - 4vw);
   margin: 0 auto;
-  background: #121c30;
+  background: #000;
   padding: 2vw;
   text-align: center;
   font-family: Arial, sans-serif;
@@ -14202,7 +14202,7 @@ span.important {
 
 .exclude {
   padding: 5vw 2vw;
-  background: #f1f1f1;
+  background: #0A1533;
   color: #3e3e3e;
   font-size: 3vw;
   width: calc(100% - 4vw);
@@ -14232,9 +14232,10 @@ span.important {
 }
 .exclude__table {
   width: 100%;
-  border-left: 1px solid #56ceff;
-  border-right: 1px solid #56ceff;
+  border-left: 1px solid #557987;
+  border-right: 1px solid #557987;
   border-radius: 3px;
+  text-align: center;
 }
 .exclude__table__item {
   display: -webkit-box;
@@ -14246,6 +14247,7 @@ span.important {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  color: #c9c9c9;
 }
 .exclude__table__item:first-child div {
   background: #56ceff;
@@ -14253,7 +14255,7 @@ span.important {
   font-weight: bold;
 }
 .exclude__table__item div {
-  background: #fafafa;
+  background: #202739;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -14271,10 +14273,10 @@ span.important {
       -ms-flex: 1 1 30vw;
           flex: 1 1 30vw;
   padding: 0.5vw 0;
-  border-bottom: 1px solid #56ceff;
+  border-bottom: 1px solid #557987;
 }
 .exclude__table__item div:first-child {
-  border-right: 1px solid #56ceff;
+  border-right: 1px solid #557987;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 5vw;
           flex: 1 1 5vw;
@@ -14293,7 +14295,7 @@ span.important {
   bottom: -0.2vw;
   height: 1px;
   width: 100%;
-  background: #56ceff;
+  background: #557987;
 }
 .exclude__table__item div span:last-child::after {
   height: 0;

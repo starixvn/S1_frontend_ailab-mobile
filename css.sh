@@ -2,8 +2,8 @@
 # 從 UI設計同仁的 Design Project 更新 css 至指定品牌的專案
 
 # 配置到當前路徑，組員在這邊需更改為自己專案的路徑
-DESIGN_PROJECT=/Users/lukelin/Project/Design
-PROJECT=/Users/lukelin/Project/ailab-mobile
+DESIGN_PROJECT=/Users/chenxuwen/Desktop/ailab/Design
+PROJECT=/Users/chenxuwen/Desktop/ailab/ailab-mobile
 
 # 目前既有品牌
 SITE_LIST=(NOVA88 GOAL123 BWING)
