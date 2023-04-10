@@ -2997,6 +2997,38 @@ footer > a.active .circleAnimation::after {
   content: "";
   display: block;
 }
+#popup.noticepop .checkbox {
+  width: 100%;
+  margin: 2vw auto;
+  text-align: center;
+  color: #233d67;
+  font-weight: normal;
+}
+#popup.noticepop .checkbox label {
+  margin: 0 1vw 0 0;
+  border: 1px solid #f77a00;
+  border-radius: 100%;
+  width: 3vw;
+  height: 3vw;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  vertical-align: middle;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#popup.noticepop .btn-group {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 0;
+}
+#popup.noticepop .btn-group button {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 60%;
+          flex: 0 0 60%;
+}
 
 .blackInfo {
   background: #212121;
