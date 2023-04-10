@@ -263,16 +263,20 @@ export const getLocalStorage = key => {
 };
 
 export const getCombineLangId = (langId, currencyId) => {
+	const checkedCurrencyId = currencyId ?? defCurrenyId.MYR;
+
 	let combineLangId = "";
 	switch (langId) {
 		case "en":
-			combineLangId = `${defCurrencyToLangId[Number(currencyId)]}_en`;
+			combineLangId = `${
+				defCurrencyToLangId[Number(checkedCurrencyId)]
+			}_en`;
 			break;
 		case "cs":
 			combineLangId =
 				currencyId === defCurrenyId.CNY
 					? "cs"
-					: `${defCurrencyToLangId[Number(currencyId)]}_cs`;
+					: `${defCurrencyToLangId[Number(checkedCurrencyId)]}_cs`;
 			break;
 		default:
 			combineLangId = langId;
