@@ -1,4 +1,4 @@
-import React, { memo, useContext, useEffect, useState } from "react";
+import React, { memo, useContext, useEffect, useRef, useState } from "react";
 import moment from "moment";
 import { AutoPlay, ClickLink } from "../common/swipperBanner";
 import {
@@ -15,8 +15,8 @@ const EventSwipper = memo(() => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { i18n } = useContext(i18nContext);
 	const [banner, setBanner] = useState([]);
-
-	useEffect(() => {
+	const timeRef = useRef(null);
+	const getHotEventDataList = () => {
 		api_hotEvent_GetDataList({ langId: userInfo.langId }).then(
 			res => {
 				const { errorCode, data, message } = res.data;
@@ -36,6 +36,18 @@ const EventSwipper = memo(() => {
 				});
 			}
 		);
+	};
+
+	useEffect(() => {
+		getHotEventDataList();
+		const interval = setInterval(() => {
+			getHotEventDataList();
+		}, 60000);
+		timeRef.current = interval;
+
+		return () => {
+			clearInterval(timeRef.current);
+		};
 	}, []);
 
 	const rows = banner?.map(b => {
