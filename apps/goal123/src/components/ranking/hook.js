@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {
-	api_events_GetLeaderboardListV2,
-	api_events_GetCustRankV2
+	api_events_GetLeaderboardList,
+	api_events_GetCustRank
 } from "../../service/api/events";
 import { defBtns, defDayBtns } from "./def";
 
@@ -58,7 +58,7 @@ export const useGetRanking = ({
 
 				try {
 					const TopNum = getTopNum(isLastEvent);
-					const res = await api_events_GetLeaderboardListV2({
+					const res = await api_events_GetLeaderboardList({
 						lBCategoryId,
 						TopNum,
 						BeforeDays: beforeDays,
@@ -68,7 +68,7 @@ export const useGetRanking = ({
 					if (res.data.errorCode === 0) {
 						const rankDatas = res.data.data;
 						if (rankDatas?.length > 0) {
-							const custRankRes = await api_events_GetCustRankV2({
+							const custRankRes = await api_events_GetCustRank({
 								LBCategoryId: lBCategoryId,
 								BeforeDays: beforeDays,
 								EventCode

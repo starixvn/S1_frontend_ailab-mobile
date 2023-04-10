@@ -14014,6 +14014,7 @@ span.important {
   border-left: 1px solid #557987;
   border-right: 1px solid #557987;
   border-radius: 3px;
+  text-align: center;
 }
 .exclude__table__item {
   display: -webkit-box;
