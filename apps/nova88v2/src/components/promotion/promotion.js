@@ -144,7 +144,8 @@ const PromotionContent = ({ staticList, filterType }) => {
 
 			if (filterType === defFilterType.sportsbook) {
 				return (
-					p.categoryId === defCategoryId.SabaSports &&
+					(p.categoryId === defCategoryId.SabaSports ||
+						p.categoryId === defCategoryId.SBSW) &&
 					!isExpiry({
 						...p,
 						isLogin: userInfo.isLogin
