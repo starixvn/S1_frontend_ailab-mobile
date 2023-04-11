@@ -33,10 +33,10 @@ const RebateExclude = () => {
 			product: "Pragmatic Play Live Casino",
 			gameName: ["All Blackjack game"]
 		},
-		{
-			product: "Astro Tech",
-			gameName: ["Fishing"]
-		},
+		// {
+		// 	product: "Astro Tech",
+		// 	gameName: ["Fishing"]
+		// },
 		{
 			product: "CQ9",
 			gameName: ["Fishing"]
