@@ -2997,6 +2997,38 @@ footer > a.active .circleAnimation::after {
   content: "";
   display: block;
 }
+#popup.noticepop .checkbox {
+  width: 100%;
+  margin: 2vw auto;
+  text-align: center;
+  color: #233d67;
+  font-weight: normal;
+}
+#popup.noticepop .checkbox label {
+  margin: 0 1vw 0 0;
+  border: 1px solid #f77a00;
+  border-radius: 100%;
+  width: 3vw;
+  height: 3vw;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  vertical-align: middle;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#popup.noticepop .btn-group {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 0;
+}
+#popup.noticepop .btn-group button {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 60%;
+          flex: 0 0 60%;
+}
 
 .blackInfo {
   background: #212121;
@@ -3954,22 +3986,13 @@ footer > a.active .circleAnimation::after {
   margin-right: 2vw;
 }
 .infoModule .qrCode {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 35vw;
-  height: 35vw;
-  overflow: hidden;
   margin: 2vw auto;
   padding: 5px;
   background: rgba(198, 212, 241, 0.8);
 }
 .infoModule .qrCode svg {
-  width: auto;
-  height: 100%;
+  width: 35vw;
+  height: 35vw;
   display: block;
 }
 
@@ -12197,7 +12220,7 @@ span.important {
   margin: 2vw 1vw;
 }
 .duitnowPayPop .pop > div.popTxt .sisa span {
-  font-size: 3.5vw;
+  font-size: 14px;
   color: #233d67;
   font-weight: normal;
   padding: 1vw 2vw;
@@ -12252,24 +12275,11 @@ span.important {
   border-radius: 3px;
 }
 .duitnowPayPop .pop > div.popTxt .guide .qrCode {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 53vw;
-  height: 53vw;
-  background: rgba(198, 212, 241, 0.8);
-  overflow: hidden;
   margin: 1vw 0;
 }
-.duitnowPayPop .pop > div.popTxt .guide .qrCode img, .duitnowPayPop .pop > div.popTxt .guide .qrCode svg {
-  width: auto !important;
-  height: 90% !important;
+.duitnowPayPop .pop > div.popTxt .guide .qrCode svg {
+  width: 53vw;
+  height: 53vw;
 }
 .duitnowPayPop .pop > div.popTxt .guide .qrCode path:nth-child(2) {
   fill: #EE2968;
