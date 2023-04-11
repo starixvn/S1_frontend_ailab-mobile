@@ -115,18 +115,18 @@ const defSubMenus = [
 				...defGameInfo.fish_AT01,
 				displayKey: "lbl_Oneshot_Fishing"
 			},
-			{
-				...defGameInfo.ICG_DRAGONBALL_FISHING,
-				displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING"
-			},
-			{
-				...defGameInfo.ICG_FISHING_OF_SAVIORS,
-				displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS"
-			},
-			{
-				...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
-				displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS"
-			},
+			// {
+			// 	...defGameInfo.ICG_DRAGONBALL_FISHING,
+			// 	displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING"
+			// },
+			// {
+			// 	...defGameInfo.ICG_FISHING_OF_SAVIORS,
+			// 	displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS"
+			// },
+			// {
+			// 	...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
+			// 	displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS"
+			// },
 			{
 				...defGameInfo.Fishing,
 				displayKey: "lbl_FishingGG"

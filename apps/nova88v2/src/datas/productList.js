@@ -713,15 +713,15 @@ const gameList = ({ langId, currencyId }) => {
 					providerImgName: "ji",
 					sortKey: "slot_JI"
 				},
-				{
-					...defGameInfo.casino_ICG,
-					parameter: defGameInfo.casino_ICG,
-					spanText: "Astro Tech",
-					img: `${cloudBannerImgURL}/h5/img/icg.png`,
-					path: path.casino.root,
-					providerImgName: "icg",
-					sortKey: "slot_ICG"
-				},
+				// {
+				// 	...defGameInfo.casino_ICG,
+				// 	parameter: defGameInfo.casino_ICG,
+				// 	spanText: "Astro Tech",
+				// 	img: `${cloudBannerImgURL}/h5/img/icg.png`,
+				// 	path: path.casino.root,
+				// 	providerImgName: "icg",
+				// 	sortKey: "slot_ICG"
+				// },
 				{
 					...defGameInfo.Casino_JOKER,
 					parameter: defGameInfo.Casino_JOKER,
@@ -909,12 +909,12 @@ const gameList = ({ langId, currencyId }) => {
 					img: `${cloudBannerImgURL}/h5/img/pd.png`,
 					sortKey: "fishing_CQ9_PARADISE"
 				},
-				{
-					...defGameInfo.ICG_DRAGONBALL_FISHING,
-					spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
-					img: `${cloudBannerImgURL}/h5/img/df.png`,
-					sortKey: "fishing_ICG_DRAGONBALL"
-				},
+				// {
+				// 	...defGameInfo.ICG_DRAGONBALL_FISHING,
+				// 	spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
+				// 	img: `${cloudBannerImgURL}/h5/img/df.png`,
+				// 	sortKey: "fishing_ICG_DRAGONBALL"
+				// },
 				{
 					...defGameInfo.FishingGG,
 					spanTextKey: "lbl_FishingGG",

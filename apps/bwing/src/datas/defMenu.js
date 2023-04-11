@@ -266,14 +266,14 @@ export const productList = langId => {
 					icon: "icon icon-pt",
 					displayText: "PlayTech"
 				},
-				{
-					...defGameInfo.casino_ICG,
-					parameter: defGameInfo.casino_ICG,
-					path: path.casino.root,
-					img: `${bannerImgUrl}/h5/img/slot/icg.png`,
-					icon: "icon icon-ICG",
-					displayText: "Astro Tech"
-				},
+				// {
+				// 	...defGameInfo.casino_ICG,
+				// 	parameter: defGameInfo.casino_ICG,
+				// 	path: path.casino.root,
+				// 	img: `${bannerImgUrl}/h5/img/slot/icg.png`,
+				// 	icon: "icon icon-ICG",
+				// 	displayText: "Astro Tech"
+				// },
 				{
 					...defGameInfo.Casino_CQ9,
 					parameter: defGameInfo.Casino_CQ9,
@@ -490,24 +490,24 @@ export const productList = langId => {
 				// 		}
 				// 	]
 				// },
-				{
-					displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
-					img: `${bannerImgUrl}/h5/img/fish/fish-db.png`,
-					icon: "icon icon-ICG",
-					...defGameInfo.ICG_DRAGONBALL_FISHING
-				},
-				{
-					displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS",
-					img: `${bannerImgUrl}/h5/img/fish/fish-fos.png`,
-					icon: "icon icon-ICG",
-					...defGameInfo.ICG_FISHING_OF_SAVIORS
-				},
-				{
-					displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS",
-					img: `${bannerImgUrl}/h5/img/fish/fish-ttatp.png`,
-					icon: "icon icon-ICG",
-					...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS
-				},
+				// {
+				// 	displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
+				// 	img: `${bannerImgUrl}/h5/img/fish/fish-db.png`,
+				// 	icon: "icon icon-ICG",
+				// 	...defGameInfo.ICG_DRAGONBALL_FISHING
+				// },
+				// {
+				// 	displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS",
+				// 	img: `${bannerImgUrl}/h5/img/fish/fish-fos.png`,
+				// 	icon: "icon icon-ICG",
+				// 	...defGameInfo.ICG_FISHING_OF_SAVIORS
+				// },
+				// {
+				// 	displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS",
+				// 	img: `${bannerImgUrl}/h5/img/fish/fish-ttatp.png`,
+				// 	icon: "icon icon-ICG",
+				// 	...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS
+				// },
 				{
 					displayKey: "lbl_FishingGG",
 					icon: "icon icon-gg",
