@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { popBoxContext } from "../common/context";
@@ -23,8 +23,8 @@ const EventSwipper = ({ userInfo, i18n }) => {
 	const [banner, setBanner] = useState([]);
 	const { handleLogin } = useHandleLogin();
 	const { setPopBox } = useContext(popBoxContext);
-
-	useEffect(() => {
+	const timeRef = useRef(null);
+	const getHotEventDataList = () => {
 		api.hotEvent.GetDataList({ langId: userInfo.langId }).then(
 			res => {
 				const { errorCode, data, message } = res.data;
@@ -44,6 +44,18 @@ const EventSwipper = ({ userInfo, i18n }) => {
 				});
 			}
 		);
+	};
+
+	useEffect(() => {
+		getHotEventDataList();
+		const interval = setInterval(() => {
+			getHotEventDataList();
+		}, 60000);
+		timeRef.current = interval;
+
+		return () => {
+			clearInterval(timeRef.current);
+		};
 	}, []);
 
 	const goToBet = ({ tpId, gameId, matchId }) => {
