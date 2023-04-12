@@ -1,13 +1,23 @@
 import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
-import { i18nContext } from "./context";
+import { i18nContext, userInfoContext } from "./context";
+import { setCookie, deleteCookie } from "./common";
 
 const PromptDeposit = ({ handlePopBox }) => {
 	const { i18n } = useContext(i18nContext);
+	const { userInfo } = useContext(userInfoContext);
 	const [notShowingBtn, setNotShowingBtn] = useState(false);
 
 	const clickNotShowing = () => {
-		setNotShowingBtn(prev => !prev);
+		setNotShowingBtn(prev => {
+			const check = !prev;
+			if (check) {
+				setCookie(`${userInfo.userName}-PromptDeposit`, "1", 7);
+			} else {
+				deleteCookie(`${userInfo.userName}-PromptDeposit`);
+			}
+			return check;
+		});
 	};
 
 	return (
@@ -31,7 +41,9 @@ const PromptDeposit = ({ handlePopBox }) => {
 					checked={notShowingBtn}
 					onChange={clickNotShowing}
 				/>
-				<label htmlFor="notShowingBtn" />
+				<label htmlFor="notShowingBtn">
+					<div />
+				</label>
 				{i18n.lbl_Dont_show_me_again}
 			</div>
 		</>
