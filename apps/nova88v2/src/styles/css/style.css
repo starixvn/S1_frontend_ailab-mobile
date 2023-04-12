@@ -2998,18 +2998,37 @@ footer > a.active .circleAnimation::after {
   display: block;
 }
 #popup.noticepop .checkbox {
-  width: 100%;
-  margin: 2vw auto;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  margin: 2vw auto 3vw;
   text-align: center;
   color: #233d67;
   font-weight: normal;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
 }
-#popup.noticepop .checkbox label {
-  margin: 0 1vw 0 0;
-  border: 1px solid #f77a00;
+#popup.noticepop .checkbox input[type=checkbox] {
+  opacity: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+}
+#popup.noticepop .checkbox input[type=checkbox] + label {
+  margin: 0vw 1vw 0 0;
+  border: 1px solid #F77A00;
   border-radius: 100%;
-  width: 3vw;
-  height: 3vw;
+  width: 3.5vw;
+  height: 3.5vw;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -3017,6 +3036,16 @@ footer > a.active .circleAnimation::after {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+#popup.noticepop .checkbox input[type=checkbox] + label > div {
+  width: 3vw;
+  height: 3vw;
+  background: transparent;
+  margin: auto;
+  border-radius: 100%;
+}
+#popup.noticepop .checkbox input[type=checkbox]:checked + label > div {
+  background: #F77A00;
 }
 #popup.noticepop .btn-group {
   -webkit-box-pack: center;
