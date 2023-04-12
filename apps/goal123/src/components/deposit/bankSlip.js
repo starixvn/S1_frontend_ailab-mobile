@@ -16,6 +16,7 @@ import {
 	api_UploadReceipt,
 	api_GetDepositInfoRecent
 } from "../../service/api/payment";
+import { getBase64 } from "../common/common";
 
 class Modal extends Component {
 	filebox = React.createRef();
@@ -61,13 +62,11 @@ class Modal extends Component {
 		}
 	};
 
-	onUploadFile = () => {
+	onUploadFile = async () => {
 		const { files } = this.filebox.current;
 		if (files.length > 0) {
-			const formData = new FormData();
-			formData.append("TransId", this.props.bankSlipPopBox.transId);
-			formData.append("Receipt", files[0]);
-			api_UploadReceipt(formData).then(
+			const image = await getBase64(files[0]);
+			api_UploadReceipt(this.props.bankSlipPopBox.transId, image).then(
 				response => {
 					if (this.isMountedRef) {
 						const result = response.data;
@@ -208,10 +207,7 @@ class Modal extends Component {
 							({ receiptNo, depositPic }) => (
 								<label key={receiptNo} className="upload_img">
 									<input type="file" />
-									<img
-										src={`data:image/jpeg;base64,${depositPic}`}
-										alt=""
-									/>
+									<img src={depositPic} alt="" />
 								</label>
 							)
 						)}
