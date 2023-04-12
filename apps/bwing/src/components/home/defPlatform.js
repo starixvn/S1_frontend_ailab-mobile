@@ -19,7 +19,7 @@ export const defPlatform = [
 	{ name: "wm", img: `${bannerImgUrl}/h5/img/partner/wm.png` },
 	{ name: "cq9", img: `${bannerImgUrl}/h5/img/partner/cq9.png` },
 	{ name: "one789", img: `${bannerImgUrl}/h5/img/partner/one789.png` },
-	{ name: "icg", img: `${bannerImgUrl}/h5/img/partner/icg.png` },
+	// { name: "icg", img: `${bannerImgUrl}/h5/img/partner/icg.png` },
 	{ name: "v8", img: `${bannerImgUrl}/h5/img/partner/v8.png` },
 	{ name: "n2live", img: `${bannerImgUrl}/h5/img/partner/n2live.png` },
 	{ name: "playtech", img: `${bannerImgUrl}/h5/img/partner/pt.png` },

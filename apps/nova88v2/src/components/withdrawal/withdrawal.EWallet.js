@@ -493,7 +493,6 @@ const Panel = () => {
 					if (!isClickedRef.current) {
 						isClickedRef.current = true;
 						RedirectToNext(
-							this,
 							selBank.accountNo,
 							real_amount,
 							selBank.sysId

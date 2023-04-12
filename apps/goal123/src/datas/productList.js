@@ -370,21 +370,21 @@ const gameList = [
 			// 		}
 			// 	]
 			// },
-			{
-				...defGameInfo.ICG_DRAGONBALL_FISHING,
-				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-dragonball.png`,
-				spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING"
-			},
-			{
-				...defGameInfo.ICG_FISHING_OF_SAVIORS,
-				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-saviors.png`,
-				spanTextKey: "lbl_Game_ICG_FISHING_OF_SAVIORS"
-			},
-			{
-				...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
-				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-thetyrant.png`,
-				spanTextKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS"
-			},
+			// {
+			// 	...defGameInfo.ICG_DRAGONBALL_FISHING,
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-dragonball.png`,
+			// 	spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING"
+			// },
+			// {
+			// 	...defGameInfo.ICG_FISHING_OF_SAVIORS,
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-saviors.png`,
+			// 	spanTextKey: "lbl_Game_ICG_FISHING_OF_SAVIORS"
+			// },
+			// {
+			// 	...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-thetyrant.png`,
+			// 	spanTextKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS"
+			// },
 			{
 				...defGameInfo.Fishing,
 				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-world.png`,
@@ -530,14 +530,14 @@ const gameList = [
 				path: path.casino.root,
 				providerImgName: "mg"
 			},
-			{
-				...defGameInfo.casino_ICG,
-				parameter: defGameInfo.casino_ICG,
-				spanText: "Astro Tech",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-icg.png`,
-				path: path.casino.root,
-				providerImgName: "icg"
-			},
+			// {
+			// 	...defGameInfo.casino_ICG,
+			// 	parameter: defGameInfo.casino_ICG,
+			// 	spanText: "Astro Tech",
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-icg.png`,
+			// 	path: path.casino.root,
+			// 	providerImgName: "icg"
+			// },
 			{
 				...defGameInfo.Casino_CQ9,
 				parameter: defGameInfo.Casino_CQ9,
