@@ -8,11 +8,17 @@ export const useGetDomainList = ({ userInfo, setPopBox, i18n }) => {
 	const [isDomainPopOpen, setIsDomainPopOpen] = useState(true);
 	useEffect(() => {
 		const cookieName = `${userInfo.userName}-DomainListHint`;
+		const promptDepositCookie = `${userInfo.userName}-PromptDeposit`;
 
 		const now = moment();
 		const nowInGMT8 = now.utcOffset(480);
 		const hour = nowInGMT8.hour();
-		if (userInfo.currencyId === defCurrenyId.THB && hour >= 0 && hour < 3) {
+		if (
+			userInfo.currencyId === defCurrenyId.THB &&
+			hour >= 0 &&
+			hour < 3 &&
+			readCookie(promptDepositCookie) !== "1"
+		) {
 			setPopBox({
 				isOpen: true,
 				title: i18n.lbl_ImportantNote,
