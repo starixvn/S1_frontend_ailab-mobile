@@ -204,6 +204,7 @@
 	"lbl_MaximumNumberOfFiles": "फ़ाइल की अधिकतम संख्या: 6",
 	"lbl_AcceptedFileType": "स्वीकृत फ़ाइल प्रकार: JPG, JPEG, PNG, GIF",
 
+
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "अंतर",
 	"lbl_Handicap": "एचडीपी",
@@ -753,8 +754,12 @@
 	"lbl_TpWallet_1": "स्पोर्ट्सबुक वॉलेट",
 	"lbl_TpWallet_27": "PT बटुआ",
 	"lbl_TpWallet_31": "9W बटुआ",
+  "lbl_BonusWallet_0": "Bonus Wallet",
 	"lbl_BonusWallet_1": "कैसीनो बोनस पर्स",
 	"lbl_BonusWallet_2": "लाइव कैसीनो बोनस पर्स",
+  "lbl_BonusWallet_3": "मछली का वॉलेट",
+  "lbl_BonusWallet_9": "SBSW Wallet",
+  "lbl_BonusWallet_11": "E-Sports Wallet",
 
 	"==============Important Notice==============": "",
 	"lbl_ImportantNotice": "महत्वपूर्ण सूचना",

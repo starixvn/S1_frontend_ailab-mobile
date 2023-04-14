@@ -112,6 +112,7 @@ export const defWalletType = {
 };
 
 export const defCategoryId = {
+	BonusWallet: 0,
 	Slots: 1,
 	LiveCasino: 2,
 	Fish: 3,
@@ -119,5 +120,8 @@ export const defCategoryId = {
 	Lottery: 5,
 	Sports: 6,
 	PtSlots: 7,
-	PtLiveCasino: 8
+	PtLiveCasino: 8,
+	SBSW: 9,
+	// 沒有 Mega888SlotRNGFishing
+	ESports: 11
 };

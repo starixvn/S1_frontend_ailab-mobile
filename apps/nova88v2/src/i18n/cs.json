@@ -738,8 +738,12 @@
 	"lbl_TpWallet_1": "体育钱包",
 	"lbl_TpWallet_27": "PT钱包",
 	"lbl_TpWallet_31": "9W Wallet",
+  "lbl_BonusWallet_0": "Bonus Wallet",
 	"lbl_BonusWallet_1": "电子游戏红利钱包",
 	"lbl_BonusWallet_2": "真人娱乐红利钱包",
+  "lbl_BonusWallet_3": "Fishing Wallet",
+  "lbl_BonusWallet_9": "SBSW Wallet",
+  "lbl_BonusWallet_11": "E-Sports Wallet",
 
 	"==============Important Notice==============": "",
 	"lbl_ImportantNotice": "重要通知",
