@@ -12,41 +12,92 @@
   font-size: 14vw;
 }
 
-.icon-CirclePay:before {
-  font-size: 12vw !important;
-}
-
-.icon-Eeziepay:before {
-  font-size: 7vw !important;
-}
-
-.icon-OneClickPay:before {
-  font-size: 14vw !important;
-}
-
-.icon-VNPay:before {
-  font-size: 3vw !important;
-}
-
 .icon-equalizer:before {
   font-size: 6vw;
 }
 
-.icon-hockey:before {
+.icon-icon32px_wallet:before {
+  font-size: 4vw;
+}
+
+.icon-menu:before {
+  font-size: 4vw;
+}
+
+.icon-information:before {
+  color: #5574A7;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+.icon-checkmark:before {
+  font-size: 4.5vw;
+}
+
+.icon-errormark:before {
+  content: "\e98a";
+  color: #e92529;
+  font-weight: bold;
+  font-size: 4vw;
+}
+
+.icon-new:before {
   font-size: 3vw;
-  margin-bottom: 1vw;
+  content: "New" !important;
+  font-family: 'Microsoft YaHei',sans-serif;
 }
 
-.icon-cog:before {
-  font-size: 6.3vw !important;
+.icon-envelope:before {
+  font-size: 3vw;
 }
 
-.icon-paytrust88:before {
-  font-size: 5vw !important;
+.icon-close:before {
+  font-size: 4vw;
 }
 
-.icon-JDpay:before {
-  font-size: 4vw !important;
+.icon-email:before {
+  font-size: 6vw;
+  margin-left: -1vw;
+}
+
+.icon-pencil:before {
+  font-size: 4vw;
+}
+
+.icon-library:before {
+  font-size: 4.5vw;
+}
+
+.icon-live {
+  background: #F77A00;
+  padding: 0 1vw;
+  border-radius: 3px;
+  font-size: 3vw;
+}
+
+.icon-live:before {
+  content: "Live";
+  font-family: 'Microsoft YaHei',sans-serif;
+}
+
+.icon-line-bold:before {
+  content: "\e91f";
+}
+
+.icon-windows:before {
+  content: "\eac2";
+}
+
+.icon-Shield:before {
+  content: "\e920";
+}
+
+.icon-medal:before {
+  content: "\e9dd";
+}
+
+.icon-nolive:before {
+  content: "\e9d6";
 }
 
 .icon-nova88:before {
@@ -57,12 +108,8 @@
   content: "\e9c7";
 }
 
-.icon-mega:before {
-  content: "\e9c3";
-}
-
-.icon-ICG:before {
-  content: "\e9c4";
+.icon-livechat1:before {
+  content: "\e9db";
 }
 
 .icon-cock:before {
@@ -89,16 +136,12 @@
   content: "\e9c1";
 }
 
+.icon-friendreferral:before {
+  content: "\e9da";
+}
+
 .icon-friend:before {
   content: "\e9ba";
-}
-
-.icon-cq9:before {
-  content: "\e9b9";
-}
-
-.icon-kiss:before {
-  content: "\e9b8";
 }
 
 .icon-nodata:before {
@@ -107,14 +150,6 @@
 
 .icon-new:before {
   content: "\e9b2";
-}
-
-.icon-WM:before {
-  content: "\e9b1";
-}
-
-.icon-MW:before {
-  content: "\e9b0";
 }
 
 .icon-USDC:before {
@@ -193,14 +228,6 @@
   content: "\e993";
 }
 
-.icon-EB:before {
-  content: "\e990";
-}
-
-.icon-VNPay:before {
-  content: "\e991";
-}
-
 .icon-saba:before {
   content: "\e98c";
 }
@@ -219,10 +246,6 @@
 
 .icon-icon_service:before {
   content: "\e987";
-}
-
-.icon-AE:before {
-  content: "\e983";
 }
 
 .icon-icon32px_:before {
@@ -333,7 +356,7 @@
   content: "\e97a";
 }
 
-.icon-icon32px_spin:before {
+.icon-spinner11:before {
   content: "\e97b";
 }
 
@@ -369,56 +392,12 @@
   content: "\e91e";
 }
 
-.icon-Unionpay:before {
-  content: "\e93d";
-}
-
-.icon-Alipay:before {
-  content: "\e93e";
-}
-
-.icon-JDpay:before {
-  content: "\e940";
-}
-
-.icon-ThaiQR:before {
-  content: "\e941";
-}
-
-.icon-WeChatPay:before {
-  content: "\e943";
-}
-
 .icon-virtual-sports:before {
   content: "\e93a";
 }
 
 .icon-statement1:before {
   content: "\e938";
-}
-
-.icon-GPI:before {
-  content: "\e945";
-}
-
-.icon-JOKER:before {
-  content: "\e946";
-}
-
-.icon-OW:before {
-  content: "\e947";
-}
-
-.icon-PG:before {
-  content: "\e948";
-}
-
-.icon-SG:before {
-  content: "\e949";
-}
-
-.icon-YGG:before {
-  content: "\e94a";
 }
 
 .icon-statement:before {
@@ -433,26 +412,6 @@
   content: "\e932";
 }
 
-.icon-AB:before {
-  content: "\e92b";
-}
-
-.icon-AG:before {
-  content: "\e92c";
-}
-
-.icon-DG:before {
-  content: "\e92d";
-}
-
-.icon-PP:before {
-  content: "\e92e";
-}
-
-.icon-SA:before {
-  content: "\e92f";
-}
-
 .icon-hockey:before {
   content: "\e930";
 }
@@ -463,42 +422,6 @@
 
 .icon-ow-casino:before {
   content: "\e92a";
-}
-
-.icon-CirclePay:before {
-  content: "\e91f";
-}
-
-.icon-Eeziepay:before {
-  content: "\e920";
-}
-
-.icon-Help2Pay:before {
-  content: "\e922";
-}
-
-.icon-OneClickPay:before {
-  content: "\e923";
-}
-
-.icon-VN:before {
-  content: "\e924";
-}
-
-.icon-paytrust88:before {
-  content: "\e93c";
-}
-
-.icon-MOMO:before {
-  content: "\e926";
-}
-
-.icon-VIETTELPAY:before {
-  content: "\e927";
-}
-
-.icon-ZALO:before {
-  content: "\e928";
 }
 
 .icon-member:before {
@@ -529,7 +452,7 @@
   content: "\e916";
 }
 
-.icon-soccer:before {
+.icon-soccer2:before {
   content: "\e917";
 }
 
@@ -569,10 +492,6 @@
   content: "\e908";
 }
 
-.icon-marquee:before {
-  content: "\e9b7";
-}
-
 .icon-gift:before {
   content: "\e90b";
 }
@@ -595,6 +514,26 @@
 
 .icon-withdrawal:before {
   content: "\e910";
+}
+
+.icon-plus-square:before {
+  content: "\e9e0";
+}
+
+.icon-book-open:before {
+  content: "\e9e1";
+}
+
+.icon-person:before {
+  content: "\e9dc";
+}
+
+.icon-live_tv:before {
+  content: "\e9d8";
+}
+
+.icon-cricket:before {
+  content: "\e9d0";
 }
 
 .icon-cloud_upload:before {
@@ -757,6 +696,10 @@
   content: "\e925";
 }
 
+.icon-download:before {
+  content: "\e9de";
+}
+
 .icon-folder-upload:before {
   content: "\e934";
 }
@@ -801,7 +744,7 @@
   content: "\e973";
 }
 
-.icon-spinner11:before {
+.icon-spinner12:before {
   content: "\e984";
 }
 
@@ -1059,6 +1002,18 @@
 
 .icon-conversation:before {
   content: "\e935";
+}
+
+.icon-soccer:before {
+  content: "\e9df";
+}
+
+.icon-volleyball:before {
+  content: "\e9d2";
+}
+
+.icon-boxing:before {
+  content: "\e9d3";
 }
 
 .icon-box-bookmark:before {
