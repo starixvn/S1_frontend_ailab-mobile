@@ -201,7 +201,7 @@
 	"lbl_Jackpot": "Jackpot",
 	"lbl_Gaming_License": "Lisensi Resmi",
 	"lbl_OK": "OK",
-	
+
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Odds",
 	"lbl_Handicap": "Hdp",
@@ -740,8 +740,12 @@
 	"lbl_TpWallet_1": "Dompet Olahraga",
 	"lbl_TpWallet_27": "Dompet PT",
 	"lbl_TpWallet_31": "9W Wallet",
+  "lbl_BonusWallet_0": "Bonus Wallet",
 	"lbl_BonusWallet_1": "Dompet Bonus Kasino",
 	"lbl_BonusWallet_2": "Dompet Bonus Live Kasino",
+  "lbl_BonusWallet_3": "Fishing Wallet",
+  "lbl_BonusWallet_9": "SBSW Wallet",
+  "lbl_BonusWallet_11": "E-Sports Wallet",
 
 	"==============Important Notice==============": "",
 	"lbl_ImportantNotice": "PEMBERITAHUAN PENTING",
