@@ -149,8 +149,10 @@ const Panel = ({ ImgFolder = [], params }) => {
 			if (b.urlRouter === "sports") {
 				b.actionMode = api.site.defBannerActionMode.GoToGame;
 			}
-			if (b.urlRouter === "casino") {
-				redirectLink = `slots/${b.tpId}`;
+
+			if (b.urlRouter === "slots") {
+				// 路徑字首不補'/', 原因是nova88會自己補語系 => ex:/cs/slots/39
+				redirectLink = `${b.urlRouter}/${b.tpId}`;
 			} else {
 				redirectLink =
 					!userInfo.isLogin && NeedLoginRoute.includes(b.urlRouter)
