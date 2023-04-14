@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import {
@@ -27,8 +27,8 @@ const EventSwipper = ({ userInfo }) => {
 	const { setNav } = useContext(navContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const [banner, setBanner] = useState([]);
-
-	useEffect(() => {
+	const timeRef = useRef(null);
+	const getHotEventDataList = () => {
 		api_hotEvent_GetDataList({ langId: userInfo.langId }).then(
 			res => {
 				const { errorCode, data, message } = res.data;
@@ -48,6 +48,18 @@ const EventSwipper = ({ userInfo }) => {
 				});
 			}
 		);
+	};
+
+	useEffect(() => {
+		getHotEventDataList();
+		const interval = setInterval(() => {
+			getHotEventDataList();
+		}, 60000);
+		timeRef.current = interval;
+
+		return () => {
+			clearInterval(timeRef.current);
+		};
 	}, []);
 
 	const goToBet = ({ tpId, gameId, matchId }) => {
