@@ -960,21 +960,21 @@ const gameList = ({ langId, currencyId }) => {
 					img: `${cloudBannerImgURL}/h5/img/of.png`,
 					allowCurrency: allowedCurrencyList.oneShot,
 					sortKey: "fishing_CQ9_ONESHOT"
-				},
-				{
-					...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
-					spanTextKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS",
-					img: `${cloudBannerImgURL}/h5/img/tap.png`,
-					allowCurrency: allowedCurrencyList.tyrantAndProncess,
-					sortKey: "fishing_ICG_THE_TYRANT_AND_THE_PRINCESS"
-				},
-				{
-					...defGameInfo.ICG_FISHING_OF_SAVIORS,
-					spanTextKey: "lbl_Game_ICG_FISHING_OF_SAVIORS",
-					img: `${cloudBannerImgURL}/h5/img/fos.png`,
-					allowCurrency: allowedCurrencyList.fishingOfSaviors,
-					sortKey: "ICG_FISHING_OF_SAVIORS"
 				}
+				// {
+				// 	...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
+				// 	spanTextKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS",
+				// 	img: `${cloudBannerImgURL}/h5/img/tap.png`,
+				// 	allowCurrency: allowedCurrencyList.tyrantAndProncess,
+				// 	sortKey: "fishing_ICG_THE_TYRANT_AND_THE_PRINCESS"
+				// },
+				// {
+				// 	...defGameInfo.ICG_FISHING_OF_SAVIORS,
+				// 	spanTextKey: "lbl_Game_ICG_FISHING_OF_SAVIORS",
+				// 	img: `${cloudBannerImgURL}/h5/img/fos.png`,
+				// 	allowCurrency: allowedCurrencyList.fishingOfSaviors,
+				// 	sortKey: "ICG_FISHING_OF_SAVIORS"
+				// }
 			]
 		},
 		{
