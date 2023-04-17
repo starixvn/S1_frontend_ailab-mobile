@@ -53,6 +53,16 @@ export default {
 		countryName: "Bangladesh",
 		currencyId: defCurrenyId.BDT
 	},
+	KH: {
+		country: "KH",
+		img: `${cloudBannerImgURL}/h5/img/kh.jpg`,
+		lang: [
+			{ value: "en", displayText: "English" },
+			{ value: "kh", displayText: "ខ្មែរ" }
+		],
+		countryName: "Cambodia",
+		currencyId: defCurrenyId.KHM
+	},
 	CS: {
 		country: "CS",
 		img: `${cloudBannerImgURL}/h5/img/cs.jpg`,

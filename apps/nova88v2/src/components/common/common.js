@@ -153,6 +153,7 @@ export const defCurrencyToClass = {
 	13: "cs",
 	15: "id",
 	61: "in",
+	72: "kh",
 	74: "bd"
 };
 
@@ -163,6 +164,7 @@ export const defCurrencyToLang = {
 	13: "cs",
 	15: "id",
 	61: "hi",
+	72: "kh",
 	74: "bd"
 };
 
@@ -172,6 +174,7 @@ export const currCustomMapping = {
 	13: "MYR",
 	15: "IDR",
 	61: "INR",
+	72: "KHM",
 	74: "BDT"
 };
 
@@ -182,6 +185,7 @@ export const defCurrenyId = {
 	CNY: 13,
 	IDR: 15,
 	INR: 61,
+	KHM: 72,
 	BDT: 74,
 	USDT: 96
 };
@@ -213,7 +217,8 @@ export const langMappingCurr = {
 	id: "IDR",
 	th: "THB",
 	hi: "INR",
-	bd: "BDT"
+	bd: "BDT",
+	kh: "KHM"
 };
 
 export const defCurrencyToLangId = {
@@ -223,6 +228,7 @@ export const defCurrencyToLangId = {
 	13: "cs",
 	15: "id",
 	61: "hi",
+	72: "kh",
 	74: "bd"
 };
 

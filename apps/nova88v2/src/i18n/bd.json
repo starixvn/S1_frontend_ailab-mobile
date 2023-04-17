@@ -225,6 +225,7 @@
 	"Currency_61": "INR",
 	"Currency_96": "USDT",
 	"Currency_74": "BDT",
+  "Currency_72": "KHUSD",
 	"======================================Home=========================================": "",
 	"lbl_VirtualGames": "Virtual Games",
 	"lbl_VirtualSports": "ভার্চুয়াল খেলাধুলা",
@@ -722,8 +723,8 @@
 	"==============Important Notice==============": "",
 	"lbl_ImportantNotice": "গুরুত্বপূর্ণ বিজ্ঞপ্তি",
 	"==============Add To Home Screen==============": "",
-	"lbl_AddToHome_Hint": "কিভাবে হোম স্ক্রীন যোগ করতে?",
-	"lbl_AddToHome_Tutorial": "টিউটোরিয়াল",
+	"lbl_AddToHome_Hint": "কিভাবে হোম স্ক্রীন যোগ করতে হয়?",
+	"lbl_AddToHome_Tutorial": "টিউটোরিয়াল",
 	"lbl_Skip": "এড়িয়ে যান",
 
 	"==============E-Wallet==============": "",

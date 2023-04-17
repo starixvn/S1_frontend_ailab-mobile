@@ -225,7 +225,8 @@
 	"Currency_9": "AUD",
 	"Currency_61": "INR",
 	"Currency_96": "USDT",
-
+  "Currency_74": "BDT",
+  "Currency_72": "KHUSD",
 	"======================================Home=========================================": "",
 
 	"lbl_VirtualGames": "Permainan Maya",
@@ -760,9 +761,9 @@
 	"lbl_ImportantNotice": "NOTIS PENTING",
 
 	"==============Add To Home Screen==============": "",
-	"lbl_AddToHome_Hint": "Kaedah untuk tambah laman utama?",
+	"lbl_AddToHome_Hint": "Kaedah tambah halaman utama?",
 	"lbl_AddToHome_Tutorial": "Tutorial",
-	"lbl_Skip": "Skip",
+	"lbl_Skip": "Langkau",
 
 	"==============E-Wallet==============": "",
 	"lbl_EWallet": "E-Dompet",
