@@ -104,7 +104,13 @@ const Panel = ({
 							id="refQRcode"
 							value={QRcodeURL}
 						/>
-						<div>{QRcodeURL}</div>
+						<div
+							style={{
+								wordBreak: "break-all",
+								textAlign: "center"
+							}}>
+							{QRcodeURL}
+						</div>
 						<button onClick={() => onCopy({ val: QRcodeURL })}>
 							{i18n.lbl_Copy}
 						</button>
