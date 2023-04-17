@@ -258,7 +258,7 @@ const gameList = [
 			},
 			{
 				...defGameInfo.VirtualSports,
-				img: `${bannerImgUrl}/h5/img/hotgame/sports/betradar.png`,
+				img: `${bannerImgUrl}/h5/img/hotgame/virtual.jpg`,
 				spanTextKey: "lbl_VirtualSports"
 			},
 			{
