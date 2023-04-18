@@ -14,6 +14,7 @@ import {
 } from "Context";
 import ClipboardJS from "../../lib/clipboard.min";
 import api from "../../service/api";
+import { getBase64 } from "../common/common";
 
 class Modal extends Component {
 	constructor(props) {
@@ -67,36 +68,36 @@ class Modal extends Component {
 			: this.props.handlePopBox();
 	};
 
-	onUploadFile = () => {
+	onUploadFile = async () => {
 		const { files } = this.filebox.current;
 		if (files.length > 0) {
-			const formData = new FormData();
-			formData.append("TransId", this.props.bankSlipPopBox.transId);
-			formData.append("Receipt", files[0]);
-			api.payment.UploadReceipt(formData).then(
-				response => {
-					if (this.isMountedRef) {
-						const result = response.data;
-						if (result.errorCode === 0) {
-							alert(this.props.i18n.lbl_UploadSuccess);
-							this.props.handlePopBox();
-						} else {
+			const image = await getBase64(files[0]);
+			api.payment
+				.UploadReceipt(this.props.bankSlipPopBox.transId, image)
+				.then(
+					response => {
+						if (this.isMountedRef) {
+							const result = response.data;
+							if (result.errorCode === 0) {
+								alert(this.props.i18n.lbl_UploadSuccess);
+								this.props.handlePopBox();
+							} else {
+								this.props.setPopBox({
+									isOpen: true,
+									content: `[${result.errorCode}] ${result.message}`
+								});
+							}
+						}
+					},
+					() => {
+						if (this.isMountedRef) {
 							this.props.setPopBox({
 								isOpen: true,
-								content: `[${result.errorCode}] ${result.message}`
+								content: this.props.i18n.msg_ApiServerError
 							});
 						}
 					}
-				},
-				() => {
-					if (this.isMountedRef) {
-						this.props.setPopBox({
-							isOpen: true,
-							content: this.props.i18n.msg_ApiServerError
-						});
-					}
-				}
-			);
+				);
 		}
 	};
 
@@ -218,10 +219,7 @@ class Modal extends Component {
 										key={receiptNo}
 										className="upload_img">
 										<input type="file" />
-										<img
-											src={`data:image/jpeg;base64,${depositPic}`}
-											alt=""
-										/>
+										<img src={depositPic} alt="" />
 									</label>
 								)
 							)}

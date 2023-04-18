@@ -65,11 +65,10 @@ export class PaymentAPI extends BaseAPI {
 	SetDepositCancel = TransId =>
 		this.paymentRequest.post("/SetDepositCancel", { TransId });
 
-	UploadReceipt = formData =>
-		this.paymentRequest.post("/UploadReceipt", formData, {
-			headers: {
-				"Content-Type": "multipart/form-data"
-			}
+	UploadReceipt = (TransId, Receipt) =>
+		this.paymentRequest.post("/UploadReceipt", {
+			TransId,
+			Receipt
 		});
 
 	SetDepositReceipt = (TransId, DepositTime, RefNo) =>

@@ -16,7 +16,12 @@ import {
 	loadingContext
 } from "../common/context";
 import { paymentImgURL } from "../../config";
-import { isConvert, number_format, defCurrenyId } from "../common/common";
+import {
+	isConvert,
+	number_format,
+	defCurrenyId,
+	getBase64
+} from "../common/common";
 import AmountInput from "./deposit.amountInput";
 import { useHandleAmount } from "../hook/useHandleAmount";
 import api from "../../service/api";
@@ -343,18 +348,12 @@ const Payment = props => {
 
 									const UploadReceipt = async () => {
 										try {
-											const formData = new FormData();
-											formData.append(
-												"TransId",
-												res.data.data.transId
-											);
-											formData.append(
-												"Receipt",
+											const image = await getBase64(
 												bankSlipPopBox.receipt
 											);
-
 											const resUploadReceipt = await api.payment.UploadReceipt(
-												formData
+												res.data.data.transId,
+												image
 											);
 
 											if (
