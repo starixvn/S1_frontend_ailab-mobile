@@ -225,7 +225,7 @@
 	"Currency_61": "INR",
 	"Currency_96": "USDT",
 	"Currency_74": "BDT",
-  "Currency_72": "KHUSD",
+	"Currency_72": "KHUSD",
 	"======================================Home=========================================": "",
 
 	"lbl_VirtualGames": "Virtual Games",
@@ -413,7 +413,7 @@
 	"lbl_PhoneVerificationHint2": "and earn reward of {currency} {amount}",
 	"lbl_EmailOTPHint": "Email Verification Code has been sent to your registered mail box.",
 	"lbl_EmailVerifiedMsg": "Awesome! Your Email has been verified!",
-  "lbl_PhoneNumberErrorTip": "Phone number you entered is incorrect, should be between {{digitalArea}} digits",
+	"lbl_PhoneNumberErrorTip": "Phone number you entered is incorrect, should be between {{digitalArea}} digits",
 
 	"==============================================Shipping====================================": "",
 	"lbl_Shipping_Address": "Shipping Address",
