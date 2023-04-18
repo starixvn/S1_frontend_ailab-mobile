@@ -57,7 +57,12 @@ const allowedCurrencyList = {
 	liveCasinoWM: [defCurrenyId.MYR, defCurrenyId.THB, defCurrenyId.IDR],
 
 	// slot
-	slotAMB: [defCurrenyId.THB, defCurrenyId.USD, defCurrenyId.CNY],
+	slotAMB: [
+		defCurrenyId.THB,
+		defCurrenyId.USD,
+		defCurrenyId.CNY,
+		defCurrenyId.KHM
+	],
 
 	// poker
 	oneGame: [
@@ -72,9 +77,36 @@ const allowedCurrencyList = {
 	// game
 	mPoker: [defCurrenyId.THB],
 	amb: [defCurrenyId.THB],
+	vGaming: [
+		defCurrenyId.MYR,
+		defCurrenyId.IDR,
+		defCurrenyId.THB,
+		defCurrenyId.BDT,
+		defCurrenyId.CNY,
+		defCurrenyId.USD,
+		defCurrenyId.INR
+	],
+	maxGame: [
+		defCurrenyId.MYR,
+		defCurrenyId.IDR,
+		defCurrenyId.THB,
+		defCurrenyId.BDT,
+		defCurrenyId.CNY,
+		defCurrenyId.USD,
+		defCurrenyId.INR
+	],
+	virtualGame: [
+		defCurrenyId.MYR,
+		defCurrenyId.IDR,
+		defCurrenyId.THB,
+		defCurrenyId.BDT,
+		defCurrenyId.CNY,
+		defCurrenyId.USD,
+		defCurrenyId.INR
+	],
 
 	// fishing
-	fishingGod: [defCurrenyId.INR],
+	fishingGod: [defCurrenyId.INR, defCurrenyId.KHM],
 	oneShot: [defCurrenyId.INR],
 	tyrantAndProncess: [defCurrenyId.INR],
 	fishingOfSaviors: [defCurrenyId.INR],

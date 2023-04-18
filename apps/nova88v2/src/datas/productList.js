@@ -159,6 +159,22 @@ const defSortCasino = {
 		"casino_WM",
 		"casino_EBET",
 		"casino_N2LIVE"
+	],
+	[defCurrenyId.KHM]: [
+		"casino_PP",
+		"casino_YEEBET",
+		"casino_Skywind",
+		"casino_MG",
+		"casino_EVO",
+		"casino_PT",
+		"casino_DG",
+		"casino_AE",
+		"casino_SA",
+		"casino_ALBET",
+		"casino_AG",
+		"casino_WM",
+		"casino_EBET",
+		"casino_N2LIVE"
 	]
 };
 
@@ -247,6 +263,28 @@ const defSortSlot = {
 		"slot_GPI",
 		"slot_ICG",
 		"slot_OW"
+	],
+	[defCurrenyId.KHM]: [
+		"slot_AdvantPlay",
+		"slot_PP",
+		"slot_Skywind",
+		"slot_Mega888",
+		"slot_SimplePlay",
+		"slot_Habanero",
+		"slot_NetEnt",
+		"slot_MGPSW",
+		"slot_JI",
+		"slot_PG",
+		"slot_JOKER",
+		"slot_SG",
+		"slot_RedTiger",
+		"slot_PT",
+		"slot_YGG",
+		"slot_AMB",
+		"slot_CQ9",
+		"slot_GPI",
+		"slot_ICG",
+		"slot_OW"
 	]
 };
 
@@ -302,6 +340,19 @@ const defSortFishing = {
 		"fishing_GGYL_WORLD",
 		"fishing_Skywind_Ocean_Ruler",
 		"fishing_Skywind_Cai_Shen_Da_Hai",
+		"fishing_ICG_DRAGONBALL",
+		"fishing_Haiba",
+		"fishing_Hunting_Happy_Fish_5",
+		"fishing_Hunting_Monster_Awaken",
+		"fishing_SG",
+		"fishing_CQ9_ONESHOT",
+		"fishing_ICG_THE_TYRANT_AND_THE_PRINCESS",
+		"ICG_FISHING_OF_SAVIORS"
+	],
+	[defCurrenyId.KHM]: [
+		"fishing_SGW_WAR",
+		"fishing_CQ9_PARADISE",
+		"fishing_GGYL_WORLD",
 		"fishing_ICG_DRAGONBALL",
 		"fishing_Haiba",
 		"fishing_Hunting_Happy_Fish_5",
@@ -852,12 +903,14 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.sabaClub,
 					img: `${cloudBannerImgURL}/h5/img/vg.png`,
 					spanTextKey: "lbl_Vgaming",
+					allowCurrency: allowedCurrencyList.vGaming,
 					sortKey: "games_VGaming"
 				},
 				{
 					...defGameInfo.MaxGame,
 					img: `${cloudBannerImgURL}/h5/img/max.png`,
 					spanText: "Max Game",
+					allowCurrency: allowedCurrencyList.maxGame,
 					eventIcon: [
 						{
 							icon: defIconType.new,
@@ -875,6 +928,7 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.VirtualGame,
 					img: `${cloudBannerImgURL}/h5/img/virtualgames.png`,
 					spanTextKey: "lbl_VirtualGames",
+					allowCurrency: allowedCurrencyList.virtualGame,
 					sortKey: "games_VirtualGame"
 				}
 			]
