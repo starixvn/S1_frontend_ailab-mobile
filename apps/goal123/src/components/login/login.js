@@ -82,7 +82,7 @@ const LoginPage = () => {
 						}));
 						setNav(null);
 						saveShieldData();
-						navigate(`/${path.deposit.root}`);
+						navigate(`/`);
 					} else if (
 						errorCode === 1101 ||
 						errorCode === 1102 ||
