@@ -106,32 +106,32 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 		if (product?.isEventPeriod) {
 			return null;
 		}
-
-		if (
-			product.category === productList(userInfo.langId).eSports.category
-		) {
-			const { tpId, gameId, tpGameType } = productList(
-				userInfo.langId
-			).eSports;
-			return (
-				<ProductItem
-					key={`header-menu-${product.displayKey}`}
-					spanText={i18n[product.displayKey]}
-					icon_img={product.icon_img}
-					_click={() =>
-						clickGame({
-							tpId,
-							gameId,
-							userInfo,
-							tpGameType,
-							handleLogin: () => setNav(defNavPanel.login),
-							handleGoToGame
-						})
-					}
-					eventIcon={product?.eventIcon}
-				/>
-			);
-		}
+		// 因 E-sport 目前有遊戲 故先讓 header menu 的點擊失效並移到 submenu
+		// if (
+		// 	product.category === productList(userInfo.langId).eSports.category
+		// ) {
+		// 	const { tpId, gameId, tpGameType } = productList(
+		// 		userInfo.langId
+		// 	).eSports;
+		// 	return (
+		// 		<ProductItem
+		// 			key={`header-menu-${product.displayKey}`}
+		// 			spanText={i18n[product.displayKey]}
+		// 			icon_img={product.icon_img}
+		// 			_click={() =>
+		// 				clickGame({
+		// 					tpId,
+		// 					gameId,
+		// 					userInfo,
+		// 					tpGameType,
+		// 					handleLogin: () => setNav(defNavPanel.login),
+		// 					handleGoToGame
+		// 				})
+		// 			}
+		// 			eventIcon={product?.eventIcon}
+		// 		/>
+		// 	);
+		// }
 		if (!product.path && !product.href) {
 			const clickLink = ({ type }) => {
 				if (type === openGameType.entPage) {
