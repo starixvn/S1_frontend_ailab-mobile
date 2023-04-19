@@ -4,7 +4,8 @@ export const defGameInfo = {
 	Sports: { tpId: 1, gameId: 1, tpGameType: 1 },
 	CryptoSports: { tpId: 45, tpGameType: 87 },
 	CockFighting: { tpId: 17, tpGameType: 27 },
-	eSports: { tpId: 1, gameId: 43, tpGameType: 1 },
+	eSports: { tpId: 41, gameId: 43, tpGameType: 69 },
+	eSports_TFGaming: { tpId: 48, gameId: 0, tpGameType: 97 },
 	LIVEcasinoWM: { tpId: 20, gameId: 20, tpGameType: 32 },
 	LIVEcasinoDG: { tpId: 4, gameId: 4, tpGameType: 10 },
 	LIVEcasinoPP: { gameId: 101, tpId: 5, tpGameType: 16 },
@@ -209,10 +210,10 @@ export const sportStreamDef = {
 		tpGameType: 49
 	},
 	eSport: {
-		tpId: 1,
+		tpId: 41,
 		gameId: 43,
 		name: "eSport",
-		tpGameType: 1
+		tpGameType: 69
 	},
 	soccer: {
 		tpId: 1,

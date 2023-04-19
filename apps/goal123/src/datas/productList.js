@@ -11,7 +11,8 @@ export const defGameInfo = {
 	SBOSport: { tpId: 42, tpGameType: 77 },
 	BTISport: { tpId: 29, tpGameType: 49 },
 	SabaSoccer: { tpId: 1, gameId: 997, tpGameType: 1 },
-	eSports: { tpId: 1, gameId: 43, tpGameType: 1 },
+	eSports: { tpId: 41, gameId: 43, tpGameType: 69 },
+	eSports_TFGaming: { tpId: 48, gameId: 0, tpGameType: 97 },
 	Basketball: { tpId: 1, gameId: 2, tpGameType: 1 },
 	Volleyball: { tpId: 1, gameId: 6, tpGameType: 1 },
 	// CockFighting: { tpId: 17, tpGameType: 27 },
@@ -289,6 +290,23 @@ const gameList = [
 	// 		}
 	// 	]
 	// },
+	{
+		category: "e-sport",
+		translateKey: "lbl_eSports",
+		img: `${bannerImgUrl}/h5/img/hotgameicon/esport.png`,
+		items: [
+			{
+				...defGameInfo.eSports,
+				img: `${bannerImgUrl}/h5/img/hotgame/esport/esport-saba.png`,
+				spanTextKey: "lbl_Saba"
+			},
+			{
+				...defGameInfo.eSports_TFGaming,
+				img: `${bannerImgUrl}/h5/img/hotgame/esport/esport-tfg.png`,
+				spanTextKey: "lbl_TFGaming"
+			}
+		]
+	},
 	{
 		category: "games",
 		translateKey: "lbl_Games",

@@ -547,6 +547,8 @@
   "lbl_MaximumNumberOfFiles": "Maximum number of files: 6",
   "lbl_AcceptedFileType": "Accepted file types: JPG, JPEG, PNG,GIF",
 	"lbl_DepositOptions": "Deposit Options",
+  "lbl_Saba": "Saba",
+  "lbl_TFGaming": "TFGaming",
 
 	"==============General==============": "",
 	"lbl_Jackpot": "Jackpot",

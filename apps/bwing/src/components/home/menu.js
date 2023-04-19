@@ -107,31 +107,31 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 			return null;
 		}
 
-		if (
-			product.category === productList(userInfo.langId).eSports.category
-		) {
-			const { tpId, gameId, tpGameType } = productList(
-				userInfo.langId
-			).eSports;
-			return (
-				<ProductItem
-					key={`header-menu-${product.displayKey}`}
-					spanText={i18n[product.displayKey]}
-					icon_img={product.icon_img}
-					_click={() =>
-						clickGame({
-							tpId,
-							gameId,
-							userInfo,
-							tpGameType,
-							handleLogin: () => setNav(defNavPanel.login),
-							handleGoToGame
-						})
-					}
-					eventIcon={product?.eventIcon}
-				/>
-			);
-		}
+		// if (
+		// 	product.category === productList(userInfo.langId).eSports.category
+		// ) {
+		// 	const { tpId, gameId, tpGameType } = productList(
+		// 		userInfo.langId
+		// 	).eSports;
+		// 	return (
+		// 		<ProductItem
+		// 			key={`header-menu-${product.displayKey}`}
+		// 			spanText={i18n[product.displayKey]}
+		// 			icon_img={product.icon_img}
+		// 			_click={() =>
+		// 				clickGame({
+		// 					tpId,
+		// 					gameId,
+		// 					userInfo,
+		// 					tpGameType,
+		// 					handleLogin: () => setNav(defNavPanel.login),
+		// 					handleGoToGame
+		// 				})
+		// 			}
+		// 			eventIcon={product?.eventIcon}
+		// 		/>
+		// 	);
+		// }
 		if (!product.path && !product.href) {
 			const clickLink = ({ type }) => {
 				if (type === openGameType.entPage) {

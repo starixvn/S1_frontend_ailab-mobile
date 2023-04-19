@@ -166,7 +166,17 @@ const defSubMenus = [
 	{
 		...defGameInfo.eSports,
 		displayKey: "lbl_eSports",
-		icon: "icon icon-e-sports"
+		icon: "icon icon-e-sports",
+		subItems: [
+			{
+				...defGameInfo.eSports,
+				displayKey: "lbl_Saba"
+			},
+			{
+				...defGameInfo.eSports_TFGaming,
+				displayKey: "lbl_TFGaming"
+			}
+		]
 	},
 	{
 		displayKey: "lbl_Slots",
