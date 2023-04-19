@@ -4,7 +4,15 @@ import { i18nContext, userInfoContext } from "./context";
 import { paymentImgUrl } from "../../config";
 import { isConvert, number_format } from "./common";
 
-const BankQR = ({ onClose, qrCodeUrl, amount, transId, code, bankLogo }) => {
+const BankQR = ({
+	onClose,
+	qrCodeUrl,
+	amount,
+	transId,
+	code,
+	bankLogo,
+	title
+}) => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 
@@ -30,7 +38,7 @@ const BankQR = ({ onClose, qrCodeUrl, amount, transId, code, bankLogo }) => {
 		<div id="popup" className="qrpayPop active">
 			<div className="pop">
 				<div className="popTit">
-					{i18n.lbl_DepositType6}
+					{title}
 					<div className="icon icon-close" onClick={onClose} />
 				</div>
 				<div className="popTxt">
@@ -97,5 +105,6 @@ BankQR.propTypes = {
 	amount: PropTypes.number.isRequired,
 	transId: PropTypes.string.isRequired,
 	code: PropTypes.string.isRequired,
-	bankLogo: PropTypes.string.isRequired
+	bankLogo: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired
 };

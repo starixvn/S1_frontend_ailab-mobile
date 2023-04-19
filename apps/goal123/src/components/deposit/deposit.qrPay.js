@@ -164,6 +164,7 @@ const Payment = props => {
 
 					if (errorCode === 0) {
 						setPopBox({
+							title: i18n.lbl_DepositType6,
 							isOpen: true,
 							code,
 							transId,

@@ -6,8 +6,12 @@ import { isConvert, number_format, getWindowOpenUrl } from "../common/common";
 import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
 import { useHandleAmount } from "./hook/useHandleAmount";
-import { api_GetMobilePayInfoList } from "../../service/api/payment";
+import {
+	api_GetMobilePayInfoList,
+	api_payment_DepositReqLocalPay
+} from "../../service/api/payment";
 import PromoList from "./promoList";
+import { defPopBoxType } from "../common/popbox";
 
 const payType = "MobilePay";
 
@@ -99,6 +103,7 @@ const Payment = props => {
 
 	const ClickSubmit = async () => {
 		const result = VaildAmount({ _amount: amount });
+		const real_amount = _isConvert ? amount * 1000 : amount;
 
 		if (result) {
 			let { bonusCode } = depositPromo;
@@ -113,7 +118,8 @@ const Payment = props => {
 				}
 			}
 
-			const RedirectToNext = real_amount => {
+			// 導至外部
+			const RedirectToNext = () => {
 				const mainUrl = `${config.openURL}/${userInfo.langId}/Cashier/DepositReqMobilePay`;
 				const param = {
 					ChannelId: selChannel.channelId,
@@ -130,7 +136,51 @@ const Payment = props => {
 				window.location.reload();
 			};
 
-			const real_amount = _isConvert ? amount * 1000 : amount;
+			// 彈窗控制
+			const handlePopBankQR = async () => {
+				try {
+					const res = await api_payment_DepositReqLocalPay({
+						groupId: selChannel.groupId,
+						amount: real_amount,
+						bonusCode: bonusCode ?? ""
+					});
+					const { data, errorCode } = res.data;
+
+					const {
+						amount: popBoxAmount,
+						code,
+						returnUrl,
+						transId,
+						message
+					} = data;
+
+					if (errorCode === 0) {
+						setPopBox({
+							title: i18n.lbl_MobileDeposit,
+							isOpen: true,
+							code,
+							transId,
+							bankLogo: `${selChannel.groupName?.toLowerCase()}.png`,
+							qrCodeUrl: returnUrl,
+							amount: popBoxAmount,
+							popBoxType: defPopBoxType.BankQR,
+							onClose: () => setPopBox({ isOpen: false })
+						});
+					} else {
+						// error
+						setPopBox({
+							isOpen: true,
+							content: `[${errorCode}] ${message}`
+						});
+					}
+				} catch (e) {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
+				}
+			};
+
 			setPopBox({
 				isOpen: true,
 				title: i18n.lbl_ImportantNote,
@@ -168,7 +218,12 @@ const Payment = props => {
 						</button>
 						<button
 							className="blue"
-							onClick={RedirectToNext.bind(this, real_amount)}>
+							onClick={
+								// channelId === -1 代表是後端建的假渠道，在原畫面 show QRCode
+								selChannel.channelId === -1
+									? handlePopBankQR
+									: RedirectToNext
+							}>
 							{i18n.lbl_Submit}
 						</button>
 					</div>
