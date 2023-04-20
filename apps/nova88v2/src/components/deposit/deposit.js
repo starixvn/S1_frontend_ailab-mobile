@@ -17,14 +17,19 @@ import AutoDeposit from "./deposit.autoDeposit";
 import LinePay from "./deposit.linePay";
 import api from "../../service/api";
 import RecentDatas from "./deposit.recentDatas";
-import { number_format, isConvert, defCurrenyId } from "../common/common";
+import {
+	number_format,
+	isConvert,
+	defCurrenyId,
+	readCookie
+} from "../common/common";
 import ImportantNote from "./importantNote";
 import UserPaymentSwitch, { useGetUserPaymentData } from "./userPaymentData";
-import { useGetDomainList } from "../hook/useGetDomainList";
 import { useGetDepositPromotionList } from "./promoList";
 import Balance from "./deposit.balance";
 import { defPayType } from "./deposit.def";
 import Options from "./deposit.options";
+import { defPopBoxType } from "../common/popbox";
 
 const useHandleSelect = defaultSelect => {
 	const [selected, setSelected] = useState(defaultSelect ?? "");
@@ -55,11 +60,7 @@ const Panel = () => {
 	const [paymentList, setPaymentList] = useState({});
 	const [recentDatas, setRecentDatas] = useState([]);
 	const [pageVerify, setPageVerify] = useState(true);
-	const { isDomainPopOpen } = useGetDomainList({
-		setPopBox,
-		userInfo,
-		i18n
-	});
+
 	const { promoList } = useGetDepositPromotionList({
 		langId: userInfo.langId,
 		i18n,
@@ -78,15 +79,30 @@ const Panel = () => {
 		};
 	});
 
-	PageVerify(
-		userInfo,
-		i18n,
-		setPopBox,
-		navigate,
-		setPageVerify,
-		false,
-		isDomainPopOpen
-	);
+	useEffect(() => {
+		const promptDepositCookie = `${userInfo.userName}-PromptDeposit`;
+		const now = moment();
+		const nowInGMT8 = now.utcOffset(480);
+		const hour = nowInGMT8.hour();
+		if (
+			userInfo.currencyId === defCurrenyId.THB &&
+			hour >= 0 &&
+			hour < 3 &&
+			readCookie(promptDepositCookie) !== "1"
+		) {
+			setPopBox({
+				isOpen: true,
+				title: i18n.lbl_ImportantNote,
+				popBoxType: defPopBoxType.PromptDeposit,
+				className: "noticepop",
+				handlePopBox: () => {
+					setPopBox({ isOpen: false });
+				}
+			});
+		}
+	}, [userInfo.isLogin, userInfo.currencyId, userInfo.userName]);
+
+	PageVerify(userInfo, i18n, setPopBox, navigate, setPageVerify, false);
 
 	const asyncPromotionConfirmPopBox = () =>
 		new Promise(resolve =>

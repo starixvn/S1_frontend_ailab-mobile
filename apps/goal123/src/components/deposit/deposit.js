@@ -29,7 +29,6 @@ import {
 import RecentDatas from "./deposit.recentDatas";
 import { number_format } from "../common/common";
 import ImportantNote from "./importantNote";
-import { useGetDomainList } from "../hook/useGetDomainList";
 import { useGetDepositPromotionList } from "./promoList";
 import { defPayType } from "./deposit.def";
 import Options from "./deposit.options";
@@ -52,12 +51,6 @@ const Panel = () => {
 		langId: userInfo.langId,
 		i18n,
 		setPopBox
-	});
-
-	useGetDomainList({
-		setPopBox,
-		userInfo,
-		i18n
 	});
 
 	PageVerify(userInfo, i18n, setPopBox, navigate, setPageVerify, false);
