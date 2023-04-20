@@ -165,7 +165,7 @@ export const Wrapper = ({ children }) => {
 							);
 							window.location.href = `/${_langId}/${path.join.root}`;
 						} else if (data.type === defType.login) {
-							window.location.href = `/${_langId}/${path.deposit.root}`;
+							window.location.href = `/${_langId}`;
 						} else if (data.type === defType.binding) {
 							window.location.href = `/${_langId}/${path.profile.root}`;
 						}

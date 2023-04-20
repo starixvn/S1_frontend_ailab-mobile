@@ -350,7 +350,7 @@ const Join = () => {
 										}
 										setUserInfo(_user);
 										saveShieldData();
-										navigate(`/${path.deposit.root}`);
+										navigate(`/`);
 									}
 								},
 								() => {
