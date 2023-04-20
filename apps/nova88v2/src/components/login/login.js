@@ -137,7 +137,7 @@ const LoginPage = () => {
 							...userData,
 							isLogin
 						}));
-						navigate(`/${userInfo.langId}/${path.deposit.root}`);
+						navigate(`/${userInfo.langId}`);
 					}
 				} else if (
 					errorCode === 1101 ||
