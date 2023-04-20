@@ -24,7 +24,6 @@ import defNav from "../components/casino/defNav";
 import AddToHomePop from "../components/home/addToHomePop";
 import Top10Winner from "../components/home/top10winner";
 import { bannerImgUrl } from "../config";
-import { useGetDomainList } from "../components/hook/useGetDomainList";
 import Layout from "../components/common/layout";
 import Header from "../components/common/header";
 import NewYear, {
@@ -39,12 +38,6 @@ const IndexPage = () => {
 	const [redirectPath, setRedirectPath] = useState(null);
 	const [appHint, setAppHint] = useState(false);
 	const navigate = useNavigate();
-
-	useGetDomainList({
-		setPopBox,
-		userInfo,
-		i18n
-	});
 
 	useEffect(() => {
 		if (redirectPath !== null) {
