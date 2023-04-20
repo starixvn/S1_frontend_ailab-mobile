@@ -11,6 +11,7 @@ import {
 } from "./context";
 import path from "../../path";
 import MsgPopup from "./msgPopup";
+import { defCurrenyId } from "./common";
 
 const Footer = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -175,6 +176,7 @@ const Footer = () => {
 			{footer}
 			{userInfo.isLogin ? (
 				<FooterWalletMenu
+					userInfo={userInfo}
 					isOpen={openWalletMenu}
 					handleWalletMenu={handleWalletMenu}
 					i18n={i18n}
@@ -184,7 +186,12 @@ const Footer = () => {
 	);
 };
 
-const FooterWalletMenu = ({ isOpen, handleWalletMenu, i18n = {} }) => (
+const FooterWalletMenu = ({
+	userInfo,
+	isOpen,
+	handleWalletMenu,
+	i18n = {}
+}) => (
 	<div className={`walletMenu${isOpen ? " active" : ""}`}>
 		<div className="walletModule">
 			<Link
@@ -194,9 +201,14 @@ const FooterWalletMenu = ({ isOpen, handleWalletMenu, i18n = {} }) => (
 				<div className="circleAnimation" />
 				<span>{i18n.lbl_MyWallet}</span>
 			</Link>
+			{/* 因目前BDT幣別不支援localBank,故先隱藏 */}
 			<Link
 				className="icon icon-icon32px_Withdraw"
-				to={path.withdrawal.root}
+				to={
+					userInfo.currencyId === defCurrenyId.BDT
+						? path.eWalletWithdrawal.root
+						: path.withdrawal.root
+				}
 				onClick={handleWalletMenu}>
 				<div className="circleAnimation" />
 				<span>{i18n.lbl_Withdrawal}</span>
@@ -231,6 +243,7 @@ FooterWalletMenu.defaultProps = {
 };
 
 FooterWalletMenu.propTypes = {
+	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	isOpen: PropTypes.bool,
 	handleWalletMenu: PropTypes.func.isRequired
