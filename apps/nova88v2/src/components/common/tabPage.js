@@ -139,6 +139,7 @@ IndexPage.propTypes = {
 
 const TabItem = ({ i18n = {}, tabItem = {}, match = false, tabHint = "" }) => {
 	const { userInfo } = useContext(userInfoContext);
+	const { isShowEWallet } = useContext(eWalletContext);
 	const matchTo = useMatch(`/:langId/${tabItem.to}/*`) !== null;
 	const matchExclude = useMatch(`/:langId/${tabItem.excludeMath}/*`) !== null;
 	const _isMatch =
@@ -148,15 +149,31 @@ const TabItem = ({ i18n = {}, tabItem = {}, match = false, tabHint = "" }) => {
 	const tabLink = () => {
 		if (
 			userInfo.currencyId === defCurrenyId.BDT &&
-			tabItem.to === path.bankInfo.root
+			tabItem.to === path.bankInfo.root &&
+			isShowEWallet
 		) {
 			return path.eWallet.root;
 		}
 		if (
 			userInfo.currencyId === defCurrenyId.BDT &&
-			tabItem.to === path.withdrawal.root
+			tabItem.to === path.bankInfo.root &&
+			!isShowEWallet
+		) {
+			return path.cryptoWallet.root;
+		}
+		if (
+			userInfo.currencyId === defCurrenyId.BDT &&
+			tabItem.to === path.withdrawal.root &&
+			isShowEWallet
 		) {
 			return path.eWalletWithdrawal.root;
+		}
+		if (
+			userInfo.currencyId === defCurrenyId.BDT &&
+			tabItem.to === path.withdrawal.root &&
+			!isShowEWallet
+		) {
+			return path.cryptoWithdrawal.root;
 		}
 
 		return tabItem.to;
