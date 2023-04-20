@@ -200,7 +200,7 @@ const FooterWalletMenu = ({
 			return path.eWalletWithdrawal.root;
 		}
 		if (userInfo.currencyId === defCurrenyId.BDT && !isShowEWallet) {
-			return path.cryptoWallet.root;
+			return path.cryptoWithdrawal.root;
 		}
 		return path.withdrawal.root;
 	};
