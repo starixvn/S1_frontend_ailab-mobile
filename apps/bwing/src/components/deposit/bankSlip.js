@@ -17,7 +17,7 @@ import {
 	api_GetDepositInfoRecent
 } from "../../service/api/payment";
 import { paymentImgUrl } from "../../config";
-import { number_format } from "../common/common";
+import { number_format, getBase64 } from "../common/common";
 
 class Content extends Component {
 	constructor(props) {
@@ -71,13 +71,11 @@ class Content extends Component {
 			: this.props.handlePopBox();
 	};
 
-	onUploadFile = () => {
+	onUploadFile = async () => {
 		const { files } = this.filebox.current;
 		if (files.length > 0) {
-			const formData = new FormData();
-			formData.append("TransId", this.props.bankSlipPopBox.transId);
-			formData.append("Receipt", files[0]);
-			api_UploadReceipt(formData).then(
+			const image = await getBase64(files[0]);
+			api_UploadReceipt(this.props.bankSlipPopBox.transId, image).then(
 				response => {
 					if (this.isMountedRef) {
 						const result = response.data;
@@ -253,10 +251,7 @@ class Content extends Component {
 											key={receiptNo}
 											className="upload_img">
 											<input type="file" />
-											<img
-												src={`data:image/jpeg;base64,${depositPic}`}
-												alt=""
-											/>
+											<img src={depositPic} alt="" />
 										</label>
 									)
 								)}

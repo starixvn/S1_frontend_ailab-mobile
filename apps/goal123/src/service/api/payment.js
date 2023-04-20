@@ -49,11 +49,10 @@ export const api_GetDepositInfoRecent = () =>
 export const api_SetDepositCancel = TransId =>
 	paymentRequest.post("/SetDepositCancel", { TransId });
 
-export const api_UploadReceipt = formData =>
-	paymentRequest.post("/UploadReceipt", formData, {
-		headers: {
-			"Content-Type": "multipart/form-data"
-		}
+export const api_UploadReceipt = (TransId, Receipt) =>
+	paymentRequest.post("/UploadReceipt", {
+		TransId,
+		Receipt
 	});
 
 export const api_SetDepositReceipt = (TransId, DepositTime, RefNo) =>
