@@ -543,9 +543,9 @@
 	"Skywind_Cai_Shen_Da_Hai": "Cai Shen Da Hai",
 	"GPI_VNLottery": "VN Lottery",
 	"lbl_OK": "OK",
-  "lbl_MaximumFileSizeEach": "Maximum file size 4 MB each",
-  "lbl_MaximumNumberOfFiles": "Maximum number of files: 6",
-  "lbl_AcceptedFileType": "Accepted file types: JPG, JPEG, PNG,GIF",
+	"lbl_MaximumFileSizeEach": "Maximum file size 4 MB each",
+	"lbl_MaximumNumberOfFiles": "Maximum number of files: 6",
+	"lbl_AcceptedFileType": "Accepted file types: JPG, JPEG, PNG",
 	"lbl_DepositOptions": "Deposit Options",
 
 	"==============General==============": "",
@@ -766,8 +766,8 @@
 	"lbl_Sportsbook_PlayNow": "Play Now",
 	"lbl_Sportsbook_Desktop": "Desktop",
 
-  "==============RebateExclude==============": "",
-  "lbl_RebateExclude_title": "Games in this list will be excluded daily rebate rewards",
-  "lbl_Product": "Product",
-  "lbl_GameName": "Game Name"
+	"==============RebateExclude==============": "",
+	"lbl_RebateExclude_title": "Games in this list will be excluded daily rebate rewards",
+	"lbl_Product": "Product",
+	"lbl_GameName": "Game Name"
 }

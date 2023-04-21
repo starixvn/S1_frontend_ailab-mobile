@@ -542,9 +542,9 @@
 	"Skywind_Cai_Shen_Da_Hai": "Cai Shen Da Hai",
 	"GPI_VNLottery": "Số Đề",
 	"lbl_OK": "OK",
-  "lbl_MaximumFileSizeEach": "Kích thước tập tin tối đa 4MB cho mỗi tập tin",
-  "lbl_MaximumNumberOfFiles": "Số tập tin đối đa:6",
-  "lbl_AcceptedFileType": "Các kiểu được hỗ trợ: JPG, JPEG, PNG, GIF",
+	"lbl_MaximumFileSizeEach": "Kích thước tập tin tối đa 4MB cho mỗi tập tin",
+	"lbl_MaximumNumberOfFiles": "Số tập tin đối đa:6",
+	"lbl_AcceptedFileType": "Các kiểu được hỗ trợ: JPG, JPEG, PNG",
 	"lbl_DepositOptions": "Phương thức nạp tiền",
 
 	"==============General==============": "",
@@ -767,8 +767,8 @@
 	"lbl_Sportsbook_PlayNow": "Chơi Ngay",
 	"lbl_Sportsbook_Desktop": "Máy tính",
 
-  "==============RebateExclude==============": "",
-  "lbl_RebateExclude_title": "Những trò chơi trong danh sách này sẽ bị loại trừ để hưởng phần thưởng hoàn trả hàng ngày",
-  "lbl_Product": "Sản phẩm",
-  "lbl_GameName": "Tên trò chơi"
+	"==============RebateExclude==============": "",
+	"lbl_RebateExclude_title": "Những trò chơi trong danh sách này sẽ bị loại trừ để hưởng phần thưởng hoàn trả hàng ngày",
+	"lbl_Product": "Sản phẩm",
+	"lbl_GameName": "Tên trò chơi"
 }
