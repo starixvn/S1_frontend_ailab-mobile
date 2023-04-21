@@ -393,7 +393,7 @@
 	"lbl_Total": "Tổng Cộng",
 	"lbl_BankSlipRequirement1": "Kích thước tối đa mỗi tập tin: 4MB.",
 	"lbl_BankSlipRequirement2": "Số lượng tối đa: 1",
-	"lbl_BankSlipRequirement3": "Định dạng hợp lệ: JPG, JPEG, PNG, GIF",
+	"lbl_BankSlipRequirement3": "Định dạng hợp lệ: JPG, JPEG, PNG",
 	"lbl_RemindForName": "HỌ TÊN cần trùng khớp với họ tên trên Căn cước công dân, việc điền các ký hiệu đặc biệt là không hợp lệ",
 	"lbl_EnterRealName": "Vui lòng điền họ tên thật của bạn, các ký tự đặc biệt không được phép",
 	"lbl_PhoneTooltip": "Vui lòng điền số điện thoại đúng. Bạn không thể sửa sau khi lưu.",
@@ -603,9 +603,9 @@
 	"lbl_DepositPromoMsg2": "Yêu cầu nạp tiền tối thiểu",
 	"GPI_VNLottery": "Số Đề",
 	"lbl_OK": "OK",
-  "lbl_MaximumFileSizeEach": "Kích thước tập tin tối đa 4MB cho mỗi tập tin",
-  "lbl_MaximumNumberOfFiles": "Số tập tin đối đa:6",
-  "lbl_AcceptedFileType": "Các kiểu được hỗ trợ: JPG, JPEG, PNG, GIF",
+	"lbl_MaximumFileSizeEach": "Kích thước tập tin tối đa 4MB cho mỗi tập tin",
+	"lbl_MaximumNumberOfFiles": "Số tập tin đối đa:6",
+	"lbl_AcceptedFileType": "Các kiểu được hỗ trợ: JPG, JPEG, PNG",
 	"lbl_DepositOptions": "Phương thức nạp tiền",
 
 	"==============General==============": "",
@@ -842,8 +842,8 @@
 	"lbl_Sportsbook_PlayNow": "Chơi Ngay",
 	"lbl_Sportsbook_Desktop": "Máy tính",
 
-  "==============RebateExclude==============": "",
-  "lbl_RebateExclude_title": "Những trò chơi trong danh sách này sẽ bị loại trừ để hưởng phần thưởng hoàn trả hàng ngày",
-  "lbl_Product": "Sản phẩm",
-  "lbl_GameName": "Tên trò chơi"
+	"==============RebateExclude==============": "",
+	"lbl_RebateExclude_title": "Những trò chơi trong danh sách này sẽ bị loại trừ để hưởng phần thưởng hoàn trả hàng ngày",
+	"lbl_Product": "Sản phẩm",
+	"lbl_GameName": "Tên trò chơi"
 }

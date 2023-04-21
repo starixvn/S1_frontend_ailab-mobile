@@ -206,9 +206,9 @@
 	"lbl_Jackpot": "积宝奖金",
 	"lbl_Gaming_License": "游戏许可证",
 	"lbl_OK": "OK",
-  "lbl_MaximumFileSizeEach": "每个档案的最大档案大小为4 MB",
-  "lbl_MaximumNumberOfFiles": "最多档案数量：6",
-  "lbl_AcceptedFileType": "可接受的档案类型：JPG，JPEG，PNG，GIF",
+	"lbl_MaximumFileSizeEach": "每个档案的最大档案大小为4 MB",
+	"lbl_MaximumNumberOfFiles": "最多档案数量：6",
+	"lbl_AcceptedFileType": "可接受的档案类型：JPG，JPEG，PNG",
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Odds",
 	"lbl_Handicap": "Hdp",
@@ -873,7 +873,7 @@
 	"lbl_Sportsbook_PlayNow": "立即游戏",
 	"lbl_Sportsbook_Desktop": "座机版",
 
-  "==============RebateExclude==============": "",
-  "lbl_RebateExclude_title": "游戏在此列表将排除与享有每日返水奖励",
-  "lbl_GameName": "游戏名称"
+	"==============RebateExclude==============": "",
+	"lbl_RebateExclude_title": "游戏在此列表将排除与享有每日返水奖励",
+	"lbl_GameName": "游戏名称"
 }
