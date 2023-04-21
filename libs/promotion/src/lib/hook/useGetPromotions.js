@@ -14,7 +14,7 @@ export const useGetPromotions = ({ api, userInfo: { langId } }) => {
 	const getPromotionList = useCallback(() => {
 		api.promotion.GetPromotionList({ langId }).then(res => {
 			if (res.data.errorCode === 0 && isMountedRef.current) {
-				setPromotion(res.data.data);
+				setPromotion(res.data.data || []);
 			}
 		});
 	}, [langId]);
