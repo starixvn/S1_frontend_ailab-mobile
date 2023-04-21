@@ -41,11 +41,13 @@ export const useGetPromotions = ({
 		api.promotion.GetPromotionList({ langId, currencyId }).then(
 			res => {
 				if (res.data.errorCode === 0 && isMountedRef.current) {
-					const result = res.data.data.sort((a, b) =>
-						a.periodFrom > b.periodFrom ? -1 : 1
-					);
+					if (res.data.data !== null) {
+						const result = res.data.data.sort((a, b) =>
+							a.periodFrom > b.periodFrom ? -1 : 1
+						);
 
-					setPromotion(result);
+						setPromotion(result);
+					}
 				} else if (res.data.errorCode !== 0) {
 					setPopBox({
 						isOpen: true,
