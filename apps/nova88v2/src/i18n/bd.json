@@ -202,7 +202,7 @@
 	"lbl_OK": "OK",
 	"lbl_MaximumFileSizeEach": "সর্বোচ্চ ফাইলের আকার প্রতিটি 4 এমবি",
 	"lbl_MaximumNumberOfFiles": "ফাইলের সর্বোচ্চ সংখ্যা: 6",
-	"lbl_AcceptedFileType": "স্বীকৃত ফাইল প্রকার: JPG, JPEG, PNG, GIF",
+	"lbl_AcceptedFileType": "স্বীকৃত ফাইল প্রকার: JPG, JPEG, PNG",
 
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "মতভেদ",
@@ -225,7 +225,7 @@
 	"Currency_61": "INR",
 	"Currency_96": "USDT",
 	"Currency_74": "BDT",
-  "Currency_72": "KHUSD",
+	"Currency_72": "KHUSD",
 	"======================================Home=========================================": "",
 	"lbl_VirtualGames": "Virtual Games",
 	"lbl_VirtualSports": "ভার্চুয়াল খেলাধুলা",
@@ -714,12 +714,12 @@
 	"lbl_TpWallet_1": "খেলাধুলা বইয়ের ওয়ালেট",
 	"lbl_TpWallet_27": "পিটি ওয়ালেট",
 	"lbl_TpWallet_31": "9W Wallet",
-  "lbl_BonusWallet_0": "বোনাস ওয়ালেট",
+	"lbl_BonusWallet_0": "বোনাস ওয়ালেট",
 	"lbl_BonusWallet_1": "ক্যাসিনো বোনাস ওয়ালেট",
 	"lbl_BonusWallet_2": "সরাসরিক্যাসিনো বোনাস ওয়ালেট",
-  "lbl_BonusWallet_3": "ফিশিং থলি",
-  "lbl_BonusWallet_9": "SBSW ওয়ালেট",
-  "lbl_BonusWallet_11": "ই-স্পোর্টস ওয়ালেট",
+	"lbl_BonusWallet_3": "ফিশিং থলি",
+	"lbl_BonusWallet_9": "SBSW ওয়ালেট",
+	"lbl_BonusWallet_11": "ই-স্পোর্টস ওয়ালেট",
 	"==============Important Notice==============": "",
 	"lbl_ImportantNotice": "গুরুত্বপূর্ণ বিজ্ঞপ্তি",
 	"==============Add To Home Screen==============": "",
@@ -815,7 +815,7 @@
 	"lbl_Sportsbook_PlayNow": "এখন খেলা",
 	"lbl_Sportsbook_Desktop": "ল্যান্ডলাইন",
 
-  "==============RebateExclude==============": "",
-  "lbl_RebateExclude_title": "এই তালিকার গেমগুলি দৈনিক রিবেট পুরষ্কার বাদ দেওয়া হবে",
-  "lbl_GameName": "খেলার নাম"
+	"==============RebateExclude==============": "",
+	"lbl_RebateExclude_title": "এই তালিকার গেমগুলি দৈনিক রিবেট পুরষ্কার বাদ দেওয়া হবে",
+	"lbl_GameName": "খেলার নাম"
 }

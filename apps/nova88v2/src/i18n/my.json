@@ -201,9 +201,9 @@
 	"lbl_Jackpot": "Jackpot",
 	"lbl_Gaming_License": "Lesen Permainan",
 	"lbl_OK": "OK",
-  "lbl_MaximumFileSizeEach": "Saiz maksimum 4 MB untuk setiap fail",
-  "lbl_MaximumNumberOfFiles": "Bilangan fail maksimum:6",
-  "lbl_AcceptedFileType": "Jenis fail yang boleh diterima: JPG, JPEG, PNG, GIF",
+	"lbl_MaximumFileSizeEach": "Saiz maksimum 4 MB untuk setiap fail",
+	"lbl_MaximumNumberOfFiles": "Bilangan fail maksimum:6",
+	"lbl_AcceptedFileType": "Jenis fail yang boleh diterima: JPG, JPEG, PNG",
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Kadar Kemenangan",
 	"lbl_Handicap": "Hdp",
@@ -892,7 +892,7 @@
 	"lbl_Sportsbook_PlayNow": "Main",
 	"lbl_Sportsbook_Desktop": "Desktop",
 
-  "==============RebateExclude==============": "",
-  "lbl_RebateExclude_title": "Permainan dalam senarai ini akan dikecualikan menikmati ganjaran rebat harian",
-  "lbl_GameName": "Nama Permainan"
+	"==============RebateExclude==============": "",
+	"lbl_RebateExclude_title": "Permainan dalam senarai ini akan dikecualikan menikmati ganjaran rebat harian",
+	"lbl_GameName": "Nama Permainan"
 }

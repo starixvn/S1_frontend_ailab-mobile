@@ -203,8 +203,7 @@
 	"lbl_OK": "OK",
 	"lbl_MaximumFileSizeEach": "Ukuran maksimal setiap file adalah 4 MB",
 	"lbl_MaximumNumberOfFiles": "Jumlah file maksimal : 6",
-	"lbl_AcceptedFileType": "Jenis file yang dapat diterima: JPG, JPEG, PNG, GIF",
-
+	"lbl_AcceptedFileType": "Jenis file yang dapat diterima: JPG, JPEG, PNG",
 
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Odds",
@@ -228,7 +227,7 @@
 	"Currency_61": "INR",
 	"Currency_96": "USDT",
 	"Currency_74": "BDT",
-  "Currency_72": "KHUSD",
+	"Currency_72": "KHUSD",
 	"-==================-==================Home-==================-=====================": "",
 
 	"lbl_VirtualGames": "Permainan Virtual",
@@ -747,12 +746,12 @@
 	"lbl_TpWallet_1": "Dompet Olahraga",
 	"lbl_TpWallet_27": "Dompet PT",
 	"lbl_TpWallet_31": "9W Wallet",
-  "lbl_BonusWallet_0": "Dompet Bonus",
+	"lbl_BonusWallet_0": "Dompet Bonus",
 	"lbl_BonusWallet_1": "Dompet Bonus Kasino",
 	"lbl_BonusWallet_2": "Dompet Bonus Live Kasino",
-  "lbl_BonusWallet_3": "Fishing Wallet",
-  "lbl_BonusWallet_9": "Dompet SBSW",
-  "lbl_BonusWallet_11": "Dompet E-Sports",
+	"lbl_BonusWallet_3": "Fishing Wallet",
+	"lbl_BonusWallet_9": "Dompet SBSW",
+	"lbl_BonusWallet_11": "Dompet E-Sports",
 
 	"==============Important Notice==============": "",
 	"lbl_ImportantNotice": "PEMBERITAHUAN PENTING",
@@ -888,7 +887,7 @@
 	"lbl_Sportsbook_PlayNow": "Main",
 	"lbl_Sportsbook_Desktop": "Desktop",
 
-  "==============RebateExclude==============": "",
-  "lbl_RebateExclude_title": "Permainan dalam daftar ini akan dikecualikan menikmati hadiah rebate harian",
-  "lbl_GameName": "Nama Permainan"
+	"==============RebateExclude==============": "",
+	"lbl_RebateExclude_title": "Permainan dalam daftar ini akan dikecualikan menikmati hadiah rebate harian",
+	"lbl_GameName": "Nama Permainan"
 }
