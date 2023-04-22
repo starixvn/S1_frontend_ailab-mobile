@@ -11,7 +11,7 @@ import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
 import PageVerify from "./deposit.pageVerify";
 import config, { paymentImgUrl } from "../../config";
-import { isConvert, number_format } from "../common/common";
+import { debounce, isConvert, number_format } from "../common/common";
 import { useHandleAmount } from "./hook/useHandleAmount";
 import { api_depositReqCryptoPay } from "../../service/api/cashier";
 import { defPopBoxType } from "../common/popbox";
@@ -112,7 +112,7 @@ const Main = props => {
 					}
 				}
 
-				const RedirectToNext = real_amount => {
+				const RedirectToNext = debounce(real_amount => {
 					const userData = {
 						payType: "cryptoPay",
 						amount: real_amount,
@@ -218,7 +218,7 @@ const Main = props => {
 						window.open(`${baseUrl}?${paramsUrl}`);
 						window.location.reload();
 					}
-				};
+				}, 1000);
 
 				const real_amount = _isConvert
 					? confirmAmount * 1000

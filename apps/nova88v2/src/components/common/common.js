@@ -293,3 +293,14 @@ export const getBase64 = file =>
 		reader.onload = () => resolve(reader.result);
 		reader.onerror = error => reject(error);
 	});
+
+// 防抖(避免函式多次觸發)
+export const debounce = (fn, delay) => {
+	let timerId;
+	return (...args) => {
+		clearTimeout(timerId);
+		timerId = setTimeout(() => {
+			fn(...args);
+		}, delay);
+	};
+};
