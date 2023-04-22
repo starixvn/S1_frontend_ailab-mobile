@@ -2,7 +2,12 @@ import React, { useContext, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import config, { bannerImgUrl, paymentImgUrl } from "../../config";
-import { isConvert, number_format, getWindowOpenUrl } from "../common/common";
+import {
+	isConvert,
+	number_format,
+	getWindowOpenUrl,
+	debounce
+} from "../common/common";
 import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
 import { useHandleAmount } from "./hook/useHandleAmount";
@@ -151,7 +156,7 @@ const Payment = props => {
 				}
 			}
 
-			const RedirectToNext = real_amount => {
+			const RedirectToNext = debounce(real_amount => {
 				const { mode, channelId } = selChannel;
 				const param = {
 					ChannelId: channelId,
@@ -227,7 +232,7 @@ const Payment = props => {
 					}));
 					refreshPage();
 				}
-			};
+			}, 1000);
 
 			const real_amount = _isConvert
 				? Number(amount) * 1000
