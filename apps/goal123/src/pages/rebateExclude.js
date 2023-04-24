@@ -277,11 +277,9 @@ const RebateExclude = () => {
 			product: "Saba",
 			gameName: [
 				"OW Bitcoin",
-				"OW China Lottery",
-				"OW Keno",
-				"OW Lottery",
-				"OW Number Game",
-				"OW Table Game"
+				"OW Card Club",
+				"OW Virtual Games",
+				"OW China Lottery"
 			]
 		},
 		{
