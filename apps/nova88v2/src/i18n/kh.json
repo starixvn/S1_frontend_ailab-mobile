@@ -415,7 +415,7 @@
 	"lbl_PhoneVerificationHint2": "និងទទួលបានរង្វាន់ជា {currency} {amount} ។",
 	"lbl_EmailOTPHint": "លេខកូដផ្ទៀងផ្ទាត់អ៊ីម៉ែលត្រូវបានផ្ញើទៅកាន់ប្រអប់សំបុត្រដែលបានចុះឈ្មោះរបស់អ្នក។",
 	"lbl_EmailVerifiedMsg": "អស្ចារ្យមែន! អ៊ីម៉ែលរបស់អ្នកត្រូវបានផ្ទៀងផ្ទាត់!",
-	"lbl_PhoneNumberErrorTip": "Phone number you entered is incorrect, should be between {{digitalArea}} digits",
+	"lbl_PhoneNumberErrorTip": "លេខទូរស័ព្ទដែលអ្នកបានបញ្ចូលមិនត្រឹមត្រូវ គួរតែស្ថិតនៅចន្លោះ {{digitalArea}} ខ្ទង់",
 
 	"==============================================Shipping====================================": "",
 	"lbl_Shipping_Address": "Shipping Address",
