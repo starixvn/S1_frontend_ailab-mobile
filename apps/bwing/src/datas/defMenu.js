@@ -184,7 +184,13 @@ export const productList = langId => {
 				{
 					displayKey: "lbl_TFGaming",
 					img: `${bannerImgUrl}/h5/img/esport/tfg.png`,
-					...defGameInfo.eSports_TFGaming
+					...defGameInfo.eSports_TFGaming,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.TFGaming)
+						}
+					]
 				}
 			]
 		},

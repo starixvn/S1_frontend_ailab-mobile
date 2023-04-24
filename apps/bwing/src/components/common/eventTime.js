@@ -40,5 +40,6 @@ export const eventTime = {
 	GPI_Lottery: { endDate: "2023/02/11 11:00:00" },
 	sports_cryptoSports: { endDate: "2023/02/04 11:00:00" },
 	yee_bet: { startDate: "2023/02/10 12:00:00" },
-	ap_mini_game: { endDate: "2024/03/10 12:00:00" }
+	ap_mini_game: { endDate: "2024/03/10 12:00:00" },
+	TFGaming: { endDate: "2023/05/20 12:00:00" }
 };
