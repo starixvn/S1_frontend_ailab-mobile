@@ -373,7 +373,13 @@ const gameList = [
 			{
 				...defGameInfo.eSports_TFGaming,
 				img: `${bannerImgUrl}/h5/img/hotgame/esport/esport-tfg.png`,
-				spanTextKey: "lbl_TFGaming"
+				spanTextKey: "lbl_TFGaming",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.TFGaming)
+					}
+				]
 			}
 		]
 	},
