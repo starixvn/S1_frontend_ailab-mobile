@@ -7,7 +7,7 @@ import {
 	loadingContext
 } from "../common/context";
 import config, { paymentImgURL } from "../../config";
-import { isConvert, number_format } from "../common/common";
+import { debounce, isConvert, number_format } from "../common/common";
 import api from "../../service/api";
 import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
@@ -198,7 +198,7 @@ const Payment = props => {
 			let { sysId } = selbank;
 			let bankLogo = null;
 			let bankName = null;
-			const RedirectToNext = real_amount => {
+			const RedirectToNext = debounce(real_amount => {
 				const userData = {
 					payType: "onlineBank",
 					amount: real_amount,
@@ -288,7 +288,7 @@ const Payment = props => {
 
 					RefreshPage();
 				}
-			};
+			}, 1000);
 
 			const real_amount = _isConvert ? amount * 1000 : amount;
 			if (selGroup.selBank) {

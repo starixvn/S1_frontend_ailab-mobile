@@ -16,7 +16,12 @@ import {
 	loadingContext
 } from "../common/context";
 import { paymentImgUrl } from "../../config";
-import { isConvert, number_format, getBase64 } from "../common/common";
+import {
+	isConvert,
+	number_format,
+	getBase64,
+	debounce
+} from "../common/common";
 import AmountInput from "./deposit.amountInput";
 import { useHandleAmount } from "./hook/useHandleAmount";
 import Radio from "./deposit.radio";
@@ -189,7 +194,7 @@ const Payment = props => {
 				}
 			}
 
-			const RedirectToNext = (real_amount, sysId) => {
+			const RedirectToNext = debounce((real_amount, sysId) => {
 				setLoading(true);
 				setPopBox(prevState => ({
 					...prevState,
@@ -287,7 +292,7 @@ const Payment = props => {
 						}
 					}
 				);
-			};
+			}, 1000);
 
 			const openConfirmPopBox = () => {
 				const real_amount = _isConvert

@@ -7,7 +7,12 @@ import {
 	loadingContext
 } from "../common/context";
 import config, { paymentImgURL } from "../../config";
-import { isConvert, number_format, defCurrenyId } from "../common/common";
+import {
+	isConvert,
+	number_format,
+	defCurrenyId,
+	debounce
+} from "../common/common";
 import api from "../../service/api";
 import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
@@ -174,7 +179,7 @@ const Payment = props => {
 				}
 			}
 
-			const RedirectToNext = () => {
+			const RedirectToNext = debounce(() => {
 				const userData = {
 					payType: "mobilePay",
 					amount: real_amount,
@@ -252,7 +257,7 @@ const Payment = props => {
 					window.open(`${baseUrl}?${paramsUrl}`);
 					RefreshPage();
 				}
-			};
+			}, 1000);
 
 			// DuitNow 彈窗
 			const handleDuitNowQR = async () => {

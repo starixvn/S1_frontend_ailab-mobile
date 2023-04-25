@@ -904,18 +904,17 @@ const gameList = ({ langId, currencyId }) => {
 					allowCurrency: allowedCurrencyList.vGaming,
 					sortKey: "games_VGaming"
 				},
-				{
-					...defGameInfo.MaxGame,
-					img: `${cloudBannerImgURL}/h5/img/max.png`,
-					spanText: "Max Game",
-					allowCurrency: allowedCurrencyList.maxGame,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.game_MaxGame)
-						}
-					]
-				},
+				// {
+				// 	...defGameInfo.MaxGame,
+				// 	img: `${cloudBannerImgURL}/h5/img/max.png`,
+				// 	spanText: "Max Game",
+				// 	eventIcon: [
+				// 		{
+				// 			icon: defIconType.new,
+				// 			inPeriod: isEventPeriod(eventTime.game_MaxGame)
+				// 		}
+				// 	]
+				// },
 				{
 					...defGameInfo.kingMaker,
 					img: `${cloudBannerImgURL}/h5/img/km.png`,
@@ -1340,12 +1339,12 @@ export const defGameInfo = {
 		tpGameType: 75 // seamless wallet
 	},
 	MPoker: { tpId: 35, tpGameType: 60 },
-	// MaxGame: {
-	// 	// tpId: 1,
-	// 	tpId: 41, // seamless wallet
-	// 	gameId: 237,
-	// 	tpGameType: 83
-	// },
+	MaxGame: {
+		// tpId: 1,
+		tpId: 41, // seamless wallet
+		gameId: 237,
+		tpGameType: 83
+	},
 	Mega888: { tpId: 22, tpGameType: 34 },
 	VirtualGame: {
 		// tpId: 1,
