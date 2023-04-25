@@ -132,7 +132,7 @@ const Main = props => {
 						if (selChannel.groupId === -1) {
 							api_depositReqCryptoLocalPay({
 								langId: userInfo.langId,
-								channelName: selChannel.channelName,
+								channelId: selChannel.channelId,
 								real_amount,
 								bonusCode
 							}).then(

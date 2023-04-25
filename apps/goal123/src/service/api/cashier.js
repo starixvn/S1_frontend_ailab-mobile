@@ -35,12 +35,12 @@ export const api_depositReqCryptoPay = ({
 
 export const api_depositReqCryptoLocalPay = ({
 	langId,
-	channelName,
+	channelId,
 	real_amount,
 	bonusCode
 }) => {
 	const paramsUrl = [
-		`ChannelName=${channelName}`,
+		`ChannelId=${channelId}`,
 		`Amount=${real_amount}`,
 		bonusCode && `BonusCode=${bonusCode}`
 	]

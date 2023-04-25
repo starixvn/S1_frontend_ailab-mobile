@@ -125,7 +125,7 @@ const Main = props => {
 							api.cashier
 								.DepositReqCryptoLocalPay({
 									langId: userInfo.langId,
-									channelName: selChannel.channelName,
+									channelId: selChannel.channelId,
 									real_amount,
 									bonusCode
 								})

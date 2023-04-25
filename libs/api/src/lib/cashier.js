@@ -54,12 +54,12 @@ export class CashierAPI extends BaseAPI {
 
 	DepositReqCryptoLocalPay = ({
 		langId,
-		channelName,
+		channelId,
 		real_amount,
 		bonusCode
 	}) => {
 		const paramsUrl = [
-			`ChannelName=${channelName}`,
+			`ChannelId=${channelId}`,
 			`Amount=${real_amount}`,
 			bonusCode && `BonusCode=${bonusCode}`
 		]
