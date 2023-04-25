@@ -831,13 +831,13 @@ const gameList = ({ langId, currencyId }) => {
 					img: `${cloudBannerImgURL}/h5/img/km.png`,
 					spanTextKey: "lbl_KingMaker",
 					sortKey: "games_kingMaker"
-				},
-				{
-					...defGameInfo.VirtualGame,
-					img: `${cloudBannerImgURL}/h5/img/virtualgames.png`,
-					spanTextKey: "lbl_VirtualGames",
-					sortKey: "games_VirtualGame"
 				}
+				// {
+				// 	...defGameInfo.VirtualGame,
+				// 	img: `${cloudBannerImgURL}/h5/img/virtualgames.png`,
+				// 	spanTextKey: "lbl_VirtualGames",
+				// 	sortKey: "games_VirtualGame"
+				// }
 			]
 		},
 		{
@@ -1005,13 +1005,13 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.tableGame,
 					img: `${cloudBannerImgURL}/h5/img/tablegame.png`,
 					spanTextKey: "lbl_TableGame"
-				},
-				{
-					...defGameInfo.Indo4d,
-					img: `${cloudBannerImgURL}/h5/img/indo4d.png`,
-					spanTextKey: "lbl_Indo4d",
-					allowCurrency: allowedCurrencyList.indo4d
 				}
+				// {
+				// 	...defGameInfo.Indo4d,
+				// 	img: `${cloudBannerImgURL}/h5/img/indo4d.png`,
+				// 	spanTextKey: "lbl_Indo4d",
+				// 	allowCurrency: allowedCurrencyList.indo4d
+				// }
 			]
 		},
 		{
@@ -1248,12 +1248,12 @@ export const defGameInfo = {
 		tpGameType: 75 // seamless wallet
 	},
 	MPoker: { tpId: 35, tpGameType: 60 },
-	MaxGame: {
-		// tpId: 1,
-		tpId: 41, // seamless wallet
-		gameId: 237,
-		tpGameType: 83
-	},
+	// MaxGame: {
+	// 	// tpId: 1,
+	// 	tpId: 41, // seamless wallet
+	// 	gameId: 237,
+	// 	tpGameType: 83
+	// },
 	Mega888: { tpId: 22, tpGameType: 34 },
 	VirtualGame: {
 		// tpId: 1,
