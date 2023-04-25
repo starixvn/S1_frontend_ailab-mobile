@@ -714,6 +714,7 @@
 	"lbl_DepositType3": "Pindahan Bank",
 	"lbl_DepositType4": "Kripto",
 	"lbl_DepositType7": "Deposit Secara Automatik",
+  "lbl_DepositType8": "Crypto Wallet",
 	"lbl_Deposit_DragonPayPop_BankName": "Nama bank",
 	"lbl_Deposit_DragonPayPop_OrderNumber": "Nombor pesanan",
 	"lbl_Deposit_DragonPayPop_AccountName": "Nama akaun",
