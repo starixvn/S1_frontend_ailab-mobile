@@ -109,7 +109,7 @@
 	"msg_UsernameReq": "Nama pengguna diperlukan.",
 	"msg_PasswordReq": "Kata Laluan diperlukan.",
 	"lbl_Username": "Nama Pengguna",
-	"lbl_UsernameTooltip": "Sila masukkan nama yang sama dengan kad pengenalan anda, simbol khas dilarang",
+	"lbl_UsernameTooltip": "Untuk tujuan keselamatan, kami cadangkan nama pengguna anda tidak mengguna nama benar anda.",
 	"lbl_EnterRealName": "Sila masukkan nama benar anda, simbol khas dilarang",
 	"lbl_UsernameInvalid": "6-18 aksara alfaangka (A-Z, a-z, 0-9) sahaja.",
 	"lbl_PasswordTooltip": "6-15 aksara alfaangka (A-Z, a-z, 0-9) atau aksara unik @$*!%#?&amp;",
@@ -201,7 +201,9 @@
 	"lbl_Jackpot": "Jackpot",
 	"lbl_Gaming_License": "Lesen Permainan",
 	"lbl_OK": "OK",
-
+	"lbl_MaximumFileSizeEach": "Saiz maksimum 4 MB untuk setiap fail",
+	"lbl_MaximumNumberOfFiles": "Bilangan fail maksimum:6",
+	"lbl_AcceptedFileType": "Jenis fail yang boleh diterima: JPG, JPEG, PNG",
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Kadar Kemenangan",
 	"lbl_Handicap": "Hdp",
@@ -299,6 +301,8 @@
 	"lbl_BuyFeaturesGames": "Beli Permainan Ciri",
 	"lbl_Megaways": "Megaways",
 	"lbl_MyFavorite": "Kegemaran saya",
+	"lbl_Mini": "Mini",
+
 	"==============================================Setting====================================": "",
 
 	"lbl_Logout": "Log keluar",
@@ -403,7 +407,7 @@
 	"lbl_PhoneVerificationHint2": "lebih tinggi dan dapatkan ganjaran sebanyak {currency} {amount}",
 	"lbl_EmailOTPHint": "Kod Pengesahan E-mel telah dihantar ke peti mel berdaftar anda.",
 	"lbl_EmailVerifiedMsg": "Bagus! E-mel anda telah disahkan!",
-  "lbl_PhoneNumberErrorTip": "Nombor telefon yang anda masukkan tidak betul, antara {{digitalArea}} digit",
+	"lbl_PhoneNumberErrorTip": "Nombor telefon yang anda masukkan tidak betul, antara {{digitalArea}} digit",
 
 	"==============================================Shipping====================================": "",
 	"lbl_Shipping_Address": "Alamat Penghantaran",
@@ -722,6 +726,7 @@
 	"lbl_QRCode": "Kod QR",
 	"lbl_DuitNowQRNote1": "Sila hubungi CSD jika pembayaran tidak ditunjukkan dalam dompet anda selepas pemindahan.",
 	"lbl_DuitNowQRNote2": "Tutup tab selepas pemindahan.",
+	"lbl_DepositOptions": "Pilihan Deposit",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "Butiran pembayaran",
@@ -880,6 +885,13 @@
 
 	"==============v3.0==============": "",
 	"lbl_SeeMore": "See More",
+	"Label_AngpaoNewYearTitle": "Lucky Rabbit Happy New Year",
 
-	"Label_AngpaoNewYearTitle": "Lucky Rabbit Happy New Year"
+	"==============H5 Sportsbook for Desktop Entrance==============": "",
+	"lbl_Sportsbook_PlayNow": "Main",
+	"lbl_Sportsbook_Desktop": "Desktop",
+
+	"==============RebateExclude==============": "",
+	"lbl_RebateExclude_title": "Permainan dalam senarai ini akan dikecualikan menikmati ganjaran rebat harian",
+	"lbl_GameName": "Nama Permainan"
 }

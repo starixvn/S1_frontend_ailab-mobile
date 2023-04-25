@@ -11,12 +11,7 @@ import PromoList from "./promoList";
 const payType = "onlineBanking";
 
 const Payment = props => {
-	const {
-		paymentList,
-		creditTimeKey,
-		promoList,
-		checkDepositSpecialCode
-	} = props;
+	const { paymentList, promoList, checkDepositSpecialCode } = props;
 
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -156,9 +151,7 @@ const Payment = props => {
 	const _isConvert = isConvert(userInfo.currencyId);
 
 	return (
-		<div className="depositModule_mobile open">
-			<div className="title text-org">{`${i18n.lbl_CreditTime}: ${i18n[creditTimeKey]}`}</div>
-
+		<>
 			<GroupList
 				title={i18n.lbl_SelectBank}
 				dataList={paymentList}
@@ -173,6 +166,7 @@ const Payment = props => {
 				displayKey="bankName"
 				i18n={i18n}
 				_isConvert={_isConvert}
+				showMinMaxHint={true}
 			/>
 
 			<AmountInput
@@ -204,7 +198,7 @@ const Payment = props => {
 					{i18n.lbl_Submit}
 				</button>
 			</div>
-		</div>
+		</>
 	);
 };
 
@@ -214,7 +208,6 @@ Payment.defaultProps = {
 
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
-	creditTimeKey: PropTypes.string.isRequired,
 	promoList: PropTypes.arrayOf(PropTypes.objectOf),
 	checkDepositSpecialCode: PropTypes.func.isRequired
 };

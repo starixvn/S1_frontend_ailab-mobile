@@ -23,7 +23,7 @@ const IndexPage = props => {
 	let defTabs = withdrawal;
 	if (
 		allowedCurrencyList.eWallet.includes(userInfo.currencyId) &&
-		allowedCurrencyList.bankCard.includes(userInfo.currencyId)
+		isShowEWallet
 	) {
 		defTabs = withdrawalWithEWallet;
 	} else if (!allowedCurrencyList.bankCard.includes(userInfo.currencyId)) {

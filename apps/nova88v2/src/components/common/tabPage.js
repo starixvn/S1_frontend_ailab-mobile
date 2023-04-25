@@ -4,6 +4,8 @@ import { useMatch, useLocation } from "@reach/router";
 import { Link } from "@Router";
 import { eWalletContext, i18nContext, userInfoContext } from "Context";
 import useBeforeLoginCheck from "../hook/useBeforeLoginCheck";
+import { defCurrenyId } from "./common";
+import path from "../../path";
 
 const isMatch = ({ location, tabInfo, langId }) => {
 	return location.path
@@ -66,6 +68,14 @@ const IndexPage = ({ defTabs, beforeLogin, filter, breadCrumb, tabHint }) => {
 				const subTabInfo = tabInfo.subTabs[subKey];
 				if (!isShowEWallet && toggleTabList.includes(subTabInfo.to))
 					return null;
+				// 因目前BDT幣別不支援localBank,故先隱藏
+				if (
+					userInfo.currencyId === defCurrenyId.BDT &&
+					(subTabInfo.to === "withdrawal" ||
+						subTabInfo.to === "bank-info")
+				) {
+					return null;
+				}
 				isMatchSub = isMatch({
 					location,
 					tabInfo: subTabInfo,
@@ -128,13 +138,49 @@ IndexPage.propTypes = {
 };
 
 const TabItem = ({ i18n = {}, tabItem = {}, match = false, tabHint = "" }) => {
+	const { userInfo } = useContext(userInfoContext);
+	const { isShowEWallet } = useContext(eWalletContext);
 	const matchTo = useMatch(`/:langId/${tabItem.to}/*`) !== null;
 	const matchExclude = useMatch(`/:langId/${tabItem.excludeMath}/*`) !== null;
 	const _isMatch =
 		match || (matchTo && (!tabItem.excludeMath || !matchExclude));
 
+	// 因目前BDT幣別不支援localBank,故先隱藏
+	const tabLink = () => {
+		if (
+			userInfo.currencyId === defCurrenyId.BDT &&
+			tabItem.to === path.bankInfo.root &&
+			isShowEWallet
+		) {
+			return path.eWallet.root;
+		}
+		if (
+			userInfo.currencyId === defCurrenyId.BDT &&
+			tabItem.to === path.bankInfo.root &&
+			!isShowEWallet
+		) {
+			return path.cryptoWallet.root;
+		}
+		if (
+			userInfo.currencyId === defCurrenyId.BDT &&
+			tabItem.to === path.withdrawal.root &&
+			isShowEWallet
+		) {
+			return path.eWalletWithdrawal.root;
+		}
+		if (
+			userInfo.currencyId === defCurrenyId.BDT &&
+			tabItem.to === path.withdrawal.root &&
+			!isShowEWallet
+		) {
+			return path.cryptoWithdrawal.root;
+		}
+
+		return tabItem.to;
+	};
+
 	return (
-		<Link to={tabItem.to} className={_isMatch ? "active" : ""}>
+		<Link to={tabLink()} className={_isMatch ? "active" : ""}>
 			{i18n[tabItem.displayKey]}
 			{tabHint && tabItem.tabHint ? (
 				<i className="quantity">{tabHint}</i>

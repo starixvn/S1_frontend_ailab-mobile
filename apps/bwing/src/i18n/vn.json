@@ -393,7 +393,7 @@
 	"lbl_Total": "Tổng Cộng",
 	"lbl_BankSlipRequirement1": "Kích thước tối đa mỗi tập tin: 4MB.",
 	"lbl_BankSlipRequirement2": "Số lượng tối đa: 1",
-	"lbl_BankSlipRequirement3": "Định dạng hợp lệ: JPG, JPEG, PNG, GIF",
+	"lbl_BankSlipRequirement3": "Định dạng hợp lệ: JPG, JPEG, PNG",
 	"lbl_RemindForName": "HỌ TÊN cần trùng khớp với họ tên trên Căn cước công dân, việc điền các ký hiệu đặc biệt là không hợp lệ",
 	"lbl_EnterRealName": "Vui lòng điền họ tên thật của bạn, các ký tự đặc biệt không được phép",
 	"lbl_PhoneTooltip": "Vui lòng điền số điện thoại đúng. Bạn không thể sửa sau khi lưu.",
@@ -522,7 +522,7 @@
 	"lbl_RegisterDate": "Ngày đăng ký",
 	"lbl_Currency": "Tiền tệ",
 	"lbl_MysteryBox_EventTitle": "Chiếc Hộp Thần Kỳ",
-	"lbl_MysteryBox_AlreadyDrawn": "Bạn đã nhận lì xì cho ngày hôm nay, vui lòng thử lại vào ngày mai!",
+	"lbl_MysteryBox_AlreadyDrawn": "Bạn đã nhận Vòng Quay May Mắn cho ngày hôm nay. vui lòng thử lại vào ngày mai!",
 	"lbl_MysteryBox_OtherConditions1": "Mỗi thành viên chỉ được tham gia chơi một lần trong ngày.",
 	"lbl_MysteryBox_OtherConditions2": "Thành viên được tham gia mỗi ngày cho đến khi chương trình kết thúc.",
 	"lbl_MysteryBox_OtherConditions3": "Bwing có toàn quyền sửa đổi hoặc huỷ bỏ khuyến mãi bất kỳ lúc nào.",
@@ -607,6 +607,11 @@
 	"lbl_DepositPromoMsg2": "Yêu cầu nạp tiền tối thiểu",
 	"GPI_VNLottery": "Số Đề",
 	"lbl_OK": "OK",
+	"lbl_MaximumFileSizeEach": "Kích thước tập tin tối đa 4MB cho mỗi tập tin",
+	"lbl_MaximumNumberOfFiles": "Số tập tin đối đa:6",
+	"lbl_AcceptedFileType": "Các kiểu được hỗ trợ: JPG, JPEG, PNG",
+	"lbl_DepositOptions": "Phương thức nạp tiền",
+
 	"==============General==============": "",
 	"lbl_Jackpot": "NỔ HŨ",
 	"lbl_Top10winners": "TOP 10 NGƯỜI THẮNG",
@@ -835,6 +840,14 @@
 	"lbl_MyFavorite": "YÊU THÍCH",
 	"lbl_Play": "THAM GIA",
 	"lbl_Demo": "CHƠI THỬ",
+	"lbl_Mini": "Mini",
 
-	"Label_AngpaoNewYearTitle": "LẮC XÌ MỪNG XUÂN QUÝ MÃO"
+	"==============H5 Sportsbook for Desktop Entrance==============": "",
+	"lbl_Sportsbook_PlayNow": "Chơi Ngay",
+	"lbl_Sportsbook_Desktop": "Máy tính",
+
+	"==============RebateExclude==============": "",
+	"lbl_RebateExclude_title": "Những trò chơi trong danh sách này sẽ bị loại trừ để hưởng phần thưởng hoàn trả hàng ngày",
+	"lbl_Product": "Sản phẩm",
+	"lbl_GameName": "Tên trò chơi"
 }

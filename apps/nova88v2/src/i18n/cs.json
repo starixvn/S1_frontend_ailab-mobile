@@ -115,7 +115,7 @@
 	"msg_UsernameReq": "请输入用户名。",
 	"msg_PasswordReq": "请输入密码。",
 	"lbl_Username": "用戶名",
-	"lbl_UsernameTooltip": "请输入与您个人身份证一致的姓名，禁用填写特殊符号",
+	"lbl_UsernameTooltip": "基于安全考量，我们建议用户名不要使用或包含您的真实姓名",
 	"lbl_EnterRealName": "请输入真实姓名，禁止输入特殊符号",
 	"lbl_UsernameInvalid": "仅限6到18个数字、英文字母大小写",
 	"lbl_PasswordTooltip": "6到15个数字、英文字母大写、英文字母小写或特殊字符(@$*!%#?&)",
@@ -186,7 +186,7 @@
 	"lbl_Promo": "优惠",
 	"lbl_Me": "我",
 	"msg_ApiServerError": "糟糕！出现错误，请再尝试。",
-	"lbl_FAQ": "常见疑问",
+	"lbl_FAQ": "常见问题",
 	"lbl_Instagram": "IG",
 	"lbl_AccountTerms": "账户条款",
 	"lbl_Twitter": "推特",
@@ -206,7 +206,9 @@
 	"lbl_Jackpot": "积宝奖金",
 	"lbl_Gaming_License": "游戏许可证",
 	"lbl_OK": "OK",
-
+	"lbl_MaximumFileSizeEach": "每个档案的最大档案大小为4 MB",
+	"lbl_MaximumNumberOfFiles": "最多档案数量：6",
+	"lbl_AcceptedFileType": "可接受的档案类型：JPG，JPEG，PNG",
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Odds",
 	"lbl_Handicap": "Hdp",
@@ -310,6 +312,8 @@
 	"lbl_BuyFeaturesGames": "购买奖金",
 	"lbl_Megaways": "Megaways",
 	"lbl_MyFavorite": "我的最爱",
+	"lbl_Mini": "Mini",
+
 	"-==================--=========================Setting--==================================": "",
 	"lbl_Logout": "登出",
 	"lbl_MyAccount": "我的账户",
@@ -410,7 +414,7 @@
 	"lbl_PhoneVerificationHint2": "及赚取奖金 {currency} {amount}。",
 	"lbl_EmailOTPHint": "电邮验证码已发到您的电邮收件箱",
 	"lbl_EmailVerifiedMsg": "太棒了！您的电邮已成功验证！",
-  "lbl_PhoneNumberErrorTip": "您输入的手机号格式有误，介于{{digitalArea}}位数字",
+	"lbl_PhoneNumberErrorTip": "您输入的手机号格式有误，介于{{digitalArea}}位数字",
 
 	"-==================--=========================Shipping--==================================": "",
 	"lbl_Shipping_Address": "邮寄地址",
@@ -710,6 +714,7 @@
 	"lbl_QRCode": "二维码",
 	"lbl_DuitNowQRNote1": "如果转账后付款未反映在您的钱包中，请联系 CSD。",
 	"lbl_DuitNowQRNote2": "传输后关闭选项卡。",
+	"lbl_DepositOptions": "存款选项",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "付款资讯",
@@ -866,6 +871,13 @@
 
 	"==============v3.0==============": "",
 	"lbl_SeeMore": "See More",
+	"Label_AngpaoNewYearTitle": "钱兔似锦",
 
-	"Label_AngpaoNewYearTitle": "钱兔似锦"
+	"==============H5 Sportsbook for Desktop Entrance==============": "",
+	"lbl_Sportsbook_PlayNow": "立即游戏",
+	"lbl_Sportsbook_Desktop": "座机版",
+
+	"==============RebateExclude==============": "",
+	"lbl_RebateExclude_title": "游戏在此列表将排除与享有每日返水奖励",
+	"lbl_GameName": "游戏名称"
 }

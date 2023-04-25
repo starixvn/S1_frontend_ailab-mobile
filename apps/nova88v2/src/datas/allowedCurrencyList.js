@@ -1,4 +1,18 @@
+import { isDateRange } from "@ailab-mobile/common";
 import { defCurrenyId } from "../components/common/common";
+
+export const changeAllowCurrenciesByTime = ({
+	allowCurriesList,
+	currencies,
+	endTime
+}) => {
+	const oldCurrencyList = allowCurriesList ?? Object.values(defCurrenyId);
+	const allowCurrencies = isDateRange({ endDate: endTime })
+		? oldCurrencyList.filter(currency => !currencies.includes(currency))
+		: oldCurrencyList;
+
+	return allowCurrencies;
+};
 
 const allowedCurrencyList = {
 	VIP: [defCurrenyId.MYR, defCurrenyId.THB, defCurrenyId.IDR],
@@ -26,7 +40,8 @@ const allowedCurrencyList = {
 		defCurrenyId.MYR,
 		defCurrenyId.THB,
 		defCurrenyId.IDR,
-		defCurrenyId.INR
+		defCurrenyId.INR,
+		defCurrenyId.BDT
 	],
 	eWallet: [
 		defCurrenyId.IDR,
@@ -47,8 +62,8 @@ const allowedCurrencyList = {
 
 	// poker
 	oneGame: [
-		defCurrenyId.IDR,
 		defCurrenyId.MYR,
+		defCurrenyId.IDR,
 		defCurrenyId.THB,
 		defCurrenyId.BDT,
 		defCurrenyId.CNY,

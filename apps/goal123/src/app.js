@@ -65,6 +65,7 @@ import Login from "./components/login/login";
 import Join from "./components/join/join.refactor";
 import UMPage from "./pages/um";
 import WorldCup from "./pages/worldCup";
+import RebateExclude from "./pages/rebateExclude";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -138,6 +139,7 @@ const Index = () => {
 						<AppEntPage path={`/${defSpecialPath.appentpage}`} />
 						<UMPage path={path.um.root} />
 						<WorldCup path={path.worldCup.root} />
+						<RebateExclude path={path.rebateExclude.root} />
 					</Router>
 					<Join />
 					<Login />

@@ -15,16 +15,7 @@ const AngpaoInfo = ({ currencyId }: IAngpaoInfoProps) => {
 			<ul>
 				<li>{t("Label_AngpaoInfoA")}</li>
 				<li>{t("Label_AngpaoInfoB")}</li>
-				<li>
-					{t("Label_AngpaoInfoC", {
-						currency: t(`Label_Currency_${currencyId}`),
-						amount: {
-							[CurrenciesEnum.MY]: "200",
-							[CurrenciesEnum.TH]: "1,800",
-							[CurrenciesEnum.VN]: "1,000,000"
-						}[currencyId]
-					})}
-				</li>
+				<li>{t("Label_AngpaoInfoC")}</li>
 				<li>
 					{t("Label_AngpaoInfoD", {
 						siteName: process.env.REACT_APP_SITE_NAME

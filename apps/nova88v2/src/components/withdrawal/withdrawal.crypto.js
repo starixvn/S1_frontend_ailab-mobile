@@ -41,19 +41,17 @@ const Panel = () => {
 		accountName: "",
 		uSDTDetail: []
 	});
-
 	const [allWithdrawalLimit, setWithdrawalLimit] = useState({});
-
 	const [limitInfo, setLimitInfo] = useState({
 		limit: {},
 		withdrawalLimitHint: ""
 	});
-
 	const { showTips, showTipHandler } = useTip();
 	const [recentDatas, setRecentDatas] = useState([]);
 	const [pageVerify, setPageVerify] = useState(true);
 
 	const isMountedRef = useRef(null);
+	const isClickedRef = useRef(false);
 
 	const GetDailyWithdrawalLimit = () => {
 		api.payment.GetWithdrawalLimit().then(
@@ -114,7 +112,7 @@ const Panel = () => {
 		api.account.GetCustBankInfo().then(
 			res => {
 				if (res.data.errorCode === 0) {
-					if (res.data.data?.uSDTDetail.length) {
+					if (res.data.data?.uSDTDetail?.length) {
 						setPopBox({ isOpen: false });
 						if (isMountedRef.current) {
 							setUserInfo(prev => ({
@@ -497,6 +495,20 @@ const Panel = () => {
 					? Number(amount) * 1000
 					: Number(amount);
 
+				const handleClickSubmit = ({ exchangeInfo }) => {
+					if (!isClickedRef.current) {
+						isClickedRef.current = true;
+						RedirectToNext({
+							accountNo: selBank.usdtAddress,
+							real_amount,
+							exchangeInfo
+						});
+					}
+					setTimeout(() => {
+						isClickedRef.current = false;
+					}, 1000);
+				};
+
 				api.payment
 					.GetExchangeInfo({
 						Amount: real_amount,
@@ -567,10 +579,7 @@ const Panel = () => {
 												data-testid="RedirectToNext"
 												className="orange"
 												onClick={() => {
-													RedirectToNext({
-														accountNo:
-															selBank.usdtAddress,
-														real_amount,
+													handleClickSubmit({
 														exchangeInfo:
 															res.data.data
 													});

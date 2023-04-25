@@ -1,3 +1,4 @@
+// * 結束時間抓上線時間的一個月
 export const eventTime = {
 	mysteryBox: {
 		startDate: "2021/02/27 00:00:00",
@@ -36,5 +37,7 @@ export const eventTime = {
 	worldCup_hot: { endDate: "2022/12/18 23:59:59" },
 	slot_918Kiss: { endDate: "2022/12/03 23:59:59" },
 	casino_SimplePlay: { endDate: "2022/11/13 11:00:00" },
-	GPI_Lottery: { endDate: "2023/11/13 11:00:00" }
+	GPI_Lottery: { endDate: "2023/11/13 11:00:00" },
+	yee_bet: { endDate: "2023/03/10 12:00:00" },
+	ap_mini_game: { endDate: "2023/04/20 12:00:00" }
 };

@@ -108,7 +108,7 @@
 	"msg_UsernameReq": "ব্যবহারকারীর নাম দরকার.",
 	"msg_PasswordReq": "পাসওয়ার্ড প্রয়োজন.",
 	"lbl_Username": "ব্যবহারকারীর নাম",
-	"lbl_UsernameTooltip": "আপনার বৈধ আইডি নামের সাথে সম্পূর্ণ নাম অবশ্যই মিলবে, বিশেষ চিহ্নগুলি পূরণ করা নিষিদ্ধ",
+	"lbl_UsernameTooltip": "নিরাপত্তার জন্য, আমরা পরামর্শ দিই যে আপনার ব্যবহারকারীর নাম আপনার আসল নাম ব্যবহার করবেন না।.",
 	"lbl_EnterRealName": "আপনার আসল নাম লিখুন, বিশেষ চিহ্ন অনুমোদিত নয়",
 	"lbl_UsernameInvalid": "৬-১৮ আলফানিউমেরিক (এ-জেড, এ-জেড, ০-৯) অক্ষর।",
 	"lbl_PasswordTooltip": "৬-১৮ আলফানিউমেরিক (এ-জে, এ-জেড), ০-৯) অক্ষর বা বিশেষ অক্ষর @$*!%#?&amp;",
@@ -180,7 +180,7 @@
 	"lbl_Promo": "প্রচার",
 	"lbl_Me": "আমাকে",
 	"msg_ApiServerError": "উফ! কিছু ভুল হয়েছে, আবার চেষ্টা করুন.",
-	"lbl_FAQ": "প্রশ্ন",
+	"lbl_FAQ": "সচরাচর জিজ্ঞাস্য প্রশ্ন",
 	"lbl_Instagram": "ইনস্টাগ্রাম",
 	"lbl_AccountTerms": "হিসাবের শর্তাবলী",
 	"lbl_Twitter": "টুইটার",
@@ -199,7 +199,11 @@
 	"lbl_Free": "বিনামূল্যে",
 	"lbl_Jackpot": "জ্যাকপট",
 	"lbl_Gaming_License": "খেলাধুলার অনুমতি পত্র",
-  "lbl_OK": "OK",
+	"lbl_OK": "OK",
+	"lbl_MaximumFileSizeEach": "সর্বোচ্চ ফাইলের আকার প্রতিটি 4 এমবি",
+	"lbl_MaximumNumberOfFiles": "ফাইলের সর্বোচ্চ সংখ্যা: 6",
+	"lbl_AcceptedFileType": "স্বীকৃত ফাইল প্রকার: JPG, JPEG, PNG",
+
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "মতভেদ",
 	"lbl_Handicap": "এইচডিপি",
@@ -292,6 +296,7 @@
 	"lbl_BuyFeaturesGames": "বৈশিষ্ট্যসমূহ গেম কিনুন",
 	"lbl_Megaways": "মেগাওয়ে",
 	"lbl_MyFavorite": "আমার পছন্দ",
+	"lbl_Mini": "Mini",
 
 	"==============================================Setting====================================": "",
 	"lbl_Logout": "প্রস্থান",
@@ -392,7 +397,7 @@
 	"lbl_PhoneVerificationHint2": "এবং {currency} {amount} পুরস্কার জিতে নিন।",
 	"lbl_EmailOTPHint": "ইমেল যাচাইকরণ কোড আপনার নিবন্ধিত মেইল বক্সে পাঠানো হয়েছে।",
 	"lbl_EmailVerifiedMsg": "অসাধারণ! আপনার ইমেল যাচাই করা হয়েছে!",
-  "lbl_PhoneNumberErrorTip": "আপনার দেওয়া ফোন নম্বরটি ভুল, {{digitalArea}} সংখ্যার মধ্যে হওয়া উচিত৷",
+	"lbl_PhoneNumberErrorTip": "আপনার দেওয়া ফোন নম্বরটি ভুল, {{digitalArea}} সংখ্যার মধ্যে হওয়া উচিত৷",
 
 	"==============================================Shipping====================================": "",
 	"lbl_Shipping_Address": "শিপিং ঠিকানা",
@@ -474,7 +479,7 @@
 	"lbl_CryptoWithdrawal": "Crypto Withdrawal",
 	"lbl_ReceiveUSDT": "ইউএসডিটি {{currencyName}} পান",
 	"lbl_WithdrawalCryptoNote": "রূপান্তর হার শুধুমাত্র রেফারেন্সের উদ্দেশ্যে কাজ করে, সঠিক পরিমাণ সর্বশেষ হার উল্লেখ করবে।",
-  "lbl_EWalletAccountNumber": "E-wallet Account Number",
+	"lbl_EWalletAccountNumber": "E-wallet Account Number",
 	"==============================================Transfer====================================": "",
 	"lbl_MaxAmount": "সর্বোচ্চ পরিমাণ",
 	"lbl_please_select_to_wallet": "অনুগ্রহ করে ওয়ালেটে পছন্দের তহবিল নির্বাচন করুন",
@@ -686,6 +691,8 @@
 	"lbl_EnterYourUPIHint1": "ENTER YOUR UPI",
 	"lbl_EnterYourUPIHint2": "(Paytm/Phope/Googlepay... etc)",
 	"lbl_PleaseEnterUPI": "Please enter UPI",
+	"lbl_DepositOptions": "আমানত বিকল্প",
+
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "পারিশ্রমিক বিবরণ",
 	"lbl_OrderAmount": "আদেশের পরিমাণ",
@@ -719,10 +726,10 @@
 	"lbl_AddToHome_Tutorial": "টিউটোরিয়াল",
 	"lbl_Skip": "এড়িয়ে যান",
 
-  "==============E-Wallet==============": "",
-  "lbl_EWallet": "ই-ওয়ালেট",
-  "lbl_AddEWallet": "ই-ওয়ালেট যোগ করুন",
-  "lbl_EWallet_Hint":"অনুগ্রহ করে মনে রাখবেন: ই-ওয়ালেট অ্যাকাউন্ট অবশ্যই যাচাই করা উচিত।",
+	"==============E-Wallet==============": "",
+	"lbl_EWallet": "ই-ওয়ালেট",
+	"lbl_AddEWallet": "ই-ওয়ালেট যোগ করুন",
+	"lbl_EWallet_Hint": "অনুগ্রহ করে মনে রাখবেন: ই-ওয়ালেট অ্যাকাউন্ট অবশ্যই যাচাই করা উচিত।",
 	"==============Crypto Wallet==============": "",
 	"lbl_CryptoPay": "ক্রিপ্টো পে",
 	"lbl_CryptoWallet": "ক্রিপ্টো ওয়ালেট",
@@ -801,5 +808,13 @@
 	"==============Mega888==============": "",
 	"lbl_app_for_android": "APP for Android",
 	"lbl_app_for_ios": "APP for IOS",
-	"lbl_mega888_download_app": "Mega888 Download APP"
+	"lbl_mega888_download_app": "Mega888 Download APP",
+
+	"==============H5 Sportsbook for Desktop Entrance==============": "",
+	"lbl_Sportsbook_PlayNow": "এখন খেলা",
+	"lbl_Sportsbook_Desktop": "ল্যান্ডলাইন",
+
+	"==============RebateExclude==============": "",
+	"lbl_RebateExclude_title": "এই তালিকার গেমগুলি দৈনিক রিবেট পুরষ্কার বাদ দেওয়া হবে",
+	"lbl_GameName": "খেলার নাম"
 }

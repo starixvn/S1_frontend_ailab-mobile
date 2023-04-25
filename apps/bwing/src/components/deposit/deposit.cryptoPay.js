@@ -11,7 +11,7 @@ import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
 import PageVerify from "./deposit.pageVerify";
 import config, { paymentImgUrl } from "../../config";
-import { isConvert, number_format } from "../common/common";
+import { debounce, isConvert, number_format } from "../common/common";
 import { useHandleAmount } from "./hook/useHandleAmount";
 import { api_depositReqCryptoPay } from "../../service/api/cashier";
 import { defPopBoxType } from "../common/popbox";
@@ -112,7 +112,7 @@ const Main = props => {
 					}
 				}
 
-				const RedirectToNext = real_amount => {
+				const RedirectToNext = debounce(real_amount => {
 					const userData = {
 						payType: "cryptoPay",
 						amount: real_amount,
@@ -218,7 +218,7 @@ const Main = props => {
 						window.open(`${baseUrl}?${paramsUrl}`);
 						window.location.reload();
 					}
-				};
+				}, 1000);
 
 				const real_amount = _isConvert
 					? confirmAmount * 1000
@@ -347,10 +347,7 @@ const Main = props => {
 		props.location.state?.paymentList?.length >= 0
 	);
 	return (
-		<div className="depositModule_crptopay open">
-			<div className="title text-org icon icon-USDT">
-				{`${i18n.lbl_CreditTime}: ${i18n[props.creditTimeKey]}`}
-			</div>
+		<>
 			<GroupList
 				title={i18n.lbl_PaymentModes}
 				dataList={groupList}
@@ -364,7 +361,6 @@ const Main = props => {
 				displayKey="payName"
 				_isConvert={_isConvert}
 				showMinMaxHint={true}
-				className="info"
 				bankClassName="checkCrypto"
 			/>
 
@@ -384,7 +380,6 @@ const Main = props => {
 				_isConvert={_isConvert}
 				showMinMaxHint={true}
 				bindFullObj={true}
-				className="info"
 				bankClassName="checkCrypto"
 			/>
 
@@ -420,7 +415,7 @@ const Main = props => {
 					{i18n.lbl_Submit}
 				</button>
 			</div>
-		</div>
+		</>
 	);
 };
 
@@ -437,8 +432,7 @@ Main.propTypes = {
 	userPaymentData: PropTypes.objectOf(PropTypes.any),
 	handleUserPaymentData: PropTypes.func,
 	promoList: PropTypes.arrayOf(PropTypes.objectOf),
-	checkDepositSpecialCode: PropTypes.func.isRequired,
-	creditTimeKey: PropTypes.string.isRequired
+	checkDepositSpecialCode: PropTypes.func.isRequired
 };
 
 export default Main;

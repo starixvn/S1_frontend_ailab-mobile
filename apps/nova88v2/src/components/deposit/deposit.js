@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
 import moment from "moment";
 import {
@@ -18,48 +17,19 @@ import AutoDeposit from "./deposit.autoDeposit";
 import LinePay from "./deposit.linePay";
 import api from "../../service/api";
 import RecentDatas from "./deposit.recentDatas";
-import { number_format, isConvert, defCurrenyId } from "../common/common";
+import {
+	number_format,
+	isConvert,
+	defCurrenyId,
+	readCookie
+} from "../common/common";
 import ImportantNote from "./importantNote";
 import UserPaymentSwitch, { useGetUserPaymentData } from "./userPaymentData";
-import { useGetDomainList } from "../hook/useGetDomainList";
 import { useGetDepositPromotionList } from "./promoList";
 import Balance from "./deposit.balance";
-
-const defPayType = {
-	autoDeposit: "autoDeposit",
-	localBank: "localBank",
-	onlineBank: "onlineBank",
-	mobilePay: "mobilePay",
-	cryptoPay: "cryptoPay",
-	linePay: "linePay"
-};
-
-const defPayment = {
-	[defPayType.autoDeposit]: {
-		displayKey: "lbl_AutoDeposit",
-		creditTimeKey: "lbl_Instant"
-	},
-	[defPayType.localBank]: {
-		displayKey: "lbl_WireTransfers",
-		creditTimeKey: "lbl_5mins"
-	},
-	[defPayType.linePay]: {
-		displayKey: "lbl_Line",
-		creditTimeKey: "lbl_Instant"
-	},
-	[defPayType.onlineBank]: {
-		displayKey: "lbl_OnlineBanking",
-		creditTimeKey: "lbl_Instant"
-	},
-	[defPayType.mobilePay]: {
-		displayKey: "lbl_MobileDeposit",
-		creditTimeKey: "lbl_Instant"
-	},
-	[defPayType.cryptoPay]: {
-		displayKey: "lbl_CryptoPay",
-		creditTimeKey: "lbl_Instant"
-	}
-};
+import { defPayType } from "./deposit.def";
+import Options from "./deposit.options";
+import { defPopBoxType } from "../common/popbox";
 
 const useHandleSelect = defaultSelect => {
 	const [selected, setSelected] = useState(defaultSelect ?? "");
@@ -69,33 +39,6 @@ const useHandleSelect = defaultSelect => {
 	};
 
 	return { selected, HandleSelect };
-};
-
-const Tab = ({ i18n, selected, HandleSelect, paymentList }) => {
-	const rows = Object.keys(defPayment)
-		.filter(
-			key => paymentList[key]?.length > 0 || paymentList[key]?.openLink
-		)
-		.map(key => {
-			const pay = defPayment[key];
-			return (
-				<div
-					key={`deposit-full-${pay.displayKey}`}
-					className={selected === key ? "active" : ""}
-					onClick={HandleSelect.bind(this, key)}>
-					{i18n[pay.displayKey]}
-				</div>
-			);
-		});
-
-	return <div className="switchTag">{rows}</div>;
-};
-
-Tab.propTypes = {
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	selected: PropTypes.string.isRequired,
-	HandleSelect: PropTypes.func.isRequired,
-	paymentList: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
 const Panel = () => {
@@ -117,11 +60,7 @@ const Panel = () => {
 	const [paymentList, setPaymentList] = useState({});
 	const [recentDatas, setRecentDatas] = useState([]);
 	const [pageVerify, setPageVerify] = useState(true);
-	const { isDomainPopOpen } = useGetDomainList({
-		setPopBox,
-		userInfo,
-		i18n
-	});
+
 	const { promoList } = useGetDepositPromotionList({
 		langId: userInfo.langId,
 		i18n,
@@ -140,15 +79,30 @@ const Panel = () => {
 		};
 	});
 
-	PageVerify(
-		userInfo,
-		i18n,
-		setPopBox,
-		navigate,
-		setPageVerify,
-		false,
-		isDomainPopOpen
-	);
+	useEffect(() => {
+		const promptDepositCookie = `${userInfo.userName}-PromptDeposit`;
+		const now = moment();
+		const nowInGMT8 = now.utcOffset(480);
+		const hour = nowInGMT8.hour();
+		if (
+			userInfo.currencyId === defCurrenyId.THB &&
+			hour >= 0 &&
+			hour < 3 &&
+			readCookie(promptDepositCookie) !== "1"
+		) {
+			setPopBox({
+				isOpen: true,
+				title: i18n.lbl_ImportantNote,
+				popBoxType: defPopBoxType.PromptDeposit,
+				className: "noticepop",
+				handlePopBox: () => {
+					setPopBox({ isOpen: false });
+				}
+			});
+		}
+	}, [userInfo.isLogin, userInfo.currencyId, userInfo.userName]);
+
+	PageVerify(userInfo, i18n, setPopBox, navigate, setPageVerify, false);
 
 	const asyncPromotionConfirmPopBox = () =>
 		new Promise(resolve =>
@@ -215,7 +169,6 @@ const Panel = () => {
 	let content = (
 		<AutoDeposit
 			payType={selected}
-			creditTimeKey={defPayment[defPayType.autoDeposit].creditTimeKey}
 			bankList={paymentList[defPayType.autoDeposit] ?? []}
 			userPaymentData={_userPaymentData}
 			handleUserPaymentData={handleUserPaymentData}
@@ -231,7 +184,6 @@ const Panel = () => {
 		content = (
 			<LocalBank
 				payType={selected}
-				creditTimeKey={defPayment[defPayType.localBank].creditTimeKey}
 				paymentList={paymentList[defPayType.localBank] ?? []}
 				userPaymentData={_userPaymentData}
 				handleUserPaymentData={handleUserPaymentData}
@@ -246,7 +198,6 @@ const Panel = () => {
 		content = (
 			<OnlineBanking
 				payType={selected}
-				creditTimeKey={defPayment[defPayType.onlineBank].creditTimeKey}
 				paymentList={paymentList[defPayType.onlineBank] ?? []}
 				userPaymentData={_userPaymentData}
 				handleUserPaymentData={handleUserPaymentData}
@@ -261,7 +212,6 @@ const Panel = () => {
 		content = (
 			<MobilePay
 				payType={defPayType.mobilePay}
-				creditTimeKey={defPayment[defPayType.mobilePay].creditTimeKey}
 				paymentList={paymentList[defPayType.mobilePay] ?? []}
 				userPaymentData={_userPaymentData}
 				handleUserPaymentData={handleUserPaymentData}
@@ -277,7 +227,6 @@ const Panel = () => {
 				userPaymentData={_userPaymentData}
 				handleUserPaymentData={handleUserPaymentData}
 				payType={defPayType.cryptoPay}
-				creditTimeKey={defPayment[defPayType.cryptoPay].creditTimeKey}
 				paymentList={paymentList[defPayType.cryptoPay] ?? []}
 				promoList={promoList}
 				asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
@@ -460,6 +409,7 @@ const Panel = () => {
 		amount,
 		transId,
 		picFileName,
+		receiptInfo,
 		refId
 	) => {
 		const { currencyId, ...restBankInfo } = bankInfo;
@@ -476,6 +426,7 @@ const Panel = () => {
 			amount: number_format(amount, _isConvert),
 			real_amount: amount,
 			picFileName,
+			receiptInfo,
 			refId
 		}));
 	};
@@ -560,13 +511,15 @@ const Panel = () => {
 				userPaymentSwitch={userPaymentSwitch}
 				handleUserPaymentSwitch={handleUserPaymentSwitch}
 			/>
-			<Tab
-				i18n={i18n}
-				selected={selected}
-				HandleSelect={HandleSelect}
-				paymentList={paymentList}
-			/>
-			{content}
+			<div className="depositModule active">
+				<Options
+					i18n={i18n}
+					selected={selected}
+					paymentList={paymentList}
+					handleSelect={HandleSelect}
+				/>
+				{content}
+			</div>
 			<RecentDatas
 				Datas={recentDatas}
 				SubmitProof={SubmitProof}

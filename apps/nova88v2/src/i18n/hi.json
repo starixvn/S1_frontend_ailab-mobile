@@ -109,7 +109,7 @@
 	"msg_UsernameReq": "उपयोगकर्ता का नाम आवश्यक है।",
 	"msg_PasswordReq": "पासवर्ड की आवश्यकता है।",
 	"lbl_Username": "उपयोगकर्ता नाम/ यूज़र नाम",
-	"lbl_UsernameTooltip": "पूरा नाम आपके मान्य आईडी नाम से मेल खाना चाहिए, विशेष चिन्हों को भरना मना है",
+	"lbl_UsernameTooltip": "सुरक्षा के लिए, हम अनुशंसा करते हैं कि आपके उपयोगकर्ता नाम में आपका वास्तविक नाम शामिल न हो.",
 	"lbl_EnterRealName": "कृपया अपना असली नाम दर्ज करें, विशेष प्रतीकों की अनुमति नहीं है",
 	"lbl_UsernameInvalid": "6-18 अल्फ़ान्यूमेरिक (A-Z, a-z, 0-9) ",
 	"lbl_PasswordTooltip": "पासवर्ड 6-15 वर्णों का होना चाहिए, जिसमें अल्फ़ान्यूमेरिक और विशेष वर्ण दोनों हों (!@#$%^&*).",
@@ -180,7 +180,7 @@
 	"lbl_Promo": "प्रोमो",
 	"lbl_Me": "मुझे",
 	"msg_ApiServerError": "उफ़! कुछ गड़बड़ है, कृपया पुनः प्रयास करें।",
-	"lbl_FAQ": "सामान्य प्रश्न/ अक्सर पूछे जाने वाले सवाल",
+	"lbl_FAQ": "अक्सर पूछे जाने वाले सवाल",
 	"lbl_Instagram": "Instagram",
 	"lbl_AccountTerms": "खाता शर्तें",
 	"lbl_Twitter": "Twitter",
@@ -200,6 +200,9 @@
 	"lbl_Jackpot": "जैकपोट",
 	"lbl_Gaming_License": "गेमिंग लाइसेंस",
 	"lbl_OK": "OK",
+	"lbl_MaximumFileSizeEach": "अधिकतम फ़ाइल का आकार 4 MB",
+	"lbl_MaximumNumberOfFiles": "फ़ाइल की अधिकतम संख्या: 6",
+	"lbl_AcceptedFileType": "स्वीकृत फ़ाइल प्रकार: JPG, JPEG, PNG",
 
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "अंतर",
@@ -304,6 +307,8 @@
 	"lbl_BuyFeaturesGames": "फीचर गेम खरीदें",
 	"lbl_Megaways": "मेगावे",
 	"lbl_MyFavorite": "मेरे पसंदीदा",
+	"lbl_Mini": "Mini",
+
 	"==============================================Setting====================================": "",
 
 	"lbl_Logout": "लॉग आउट",
@@ -408,7 +413,7 @@
 	"lbl_PhoneVerificationHint2": "और {currency} {amount} का पुरस्कार अर्जित करें।",
 	"lbl_EmailOTPHint": "ईमेल सत्यापन कोड आपके पंजीकृत मेल बॉक्स पर भेज दिया गया है।",
 	"lbl_EmailVerifiedMsg": "बहुत बढ़िया! आपका ईमेल सत्यापित हो गया है!",
-  "lbl_PhoneNumberErrorTip": "दर्ज किया गया फ़ोन नंबर {{digitalArea}} अंकों का होना चाहिए",
+	"lbl_PhoneNumberErrorTip": "दर्ज किया गया फ़ोन नंबर {{digitalArea}} अंकों का होना चाहिए",
 
 	"==============================================Shipping====================================": "",
 	"lbl_Shipping_Address": "शिपिंग पता",
@@ -723,6 +728,7 @@
 	"lbl_EnterYourUPIHint2": "(पेटीएम/फोनपे/गूगलपे...आदि)",
 	"lbl_PleaseEnterUPI": "कृपया UPI दर्ज करें।",
 	"lbl_ScanQR": "क्यूआर स्कैन करें",
+	"lbl_DepositOptions": "जमा करने के विकल्प",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "भुगतान विवरण",
@@ -747,12 +753,12 @@
 	"lbl_TpWallet_1": "स्पोर्ट्सबुक वॉलेट",
 	"lbl_TpWallet_27": "PT बटुआ",
 	"lbl_TpWallet_31": "9W बटुआ",
-  "lbl_BonusWallet_0": "बोनस वॉलेट",
+	"lbl_BonusWallet_0": "बोनस वॉलेट",
 	"lbl_BonusWallet_1": "कैसीनो वॉलेट",
 	"lbl_BonusWallet_2": "लाइव कैसीनो वॉलेट",
-  "lbl_BonusWallet_3": "मछली का वॉलेट",
-  "lbl_BonusWallet_9": "SBSW वॉलेट",
-  "lbl_BonusWallet_11": "ई-स्पोर्ट्स वॉलेट",
+	"lbl_BonusWallet_3": "मछली का वॉलेट",
+	"lbl_BonusWallet_9": "SBSW वॉलेट",
+	"lbl_BonusWallet_11": "ई-स्पोर्ट्स वॉलेट",
 
 	"==============Important Notice==============": "",
 	"lbl_ImportantNotice": "महत्वपूर्ण सूचना",
@@ -880,5 +886,13 @@
 	"lbl_knockouts": "नॉकआउट",
 
 	"==============v3.0==============": "",
-	"lbl_SeeMore": "See More"
+	"lbl_SeeMore": "See More",
+
+	"==============H5 Sportsbook for Desktop Entrance==============": "",
+	"lbl_Sportsbook_PlayNow": "अभी खेले",
+	"lbl_Sportsbook_Desktop": "कंप्यूटर स्क्रीन",
+
+	"==============RebateExclude==============": "",
+	"lbl_RebateExclude_title": "दैनिक छूट पुरस्कारों का आनंद लेने के लिए इस सूची के खेलों को बाहर रखा जाएगा",
+	"lbl_GameName": "गेम का नाम"
 }

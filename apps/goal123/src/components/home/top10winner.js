@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { api_events_GetLeaderboardListV2 } from "../../service/api/events";
+import { api_events_GetLeaderboardList } from "../../service/api/events";
 import { bannerImgUrl } from "../../config";
 import { number_format } from "../common/common";
 
@@ -20,7 +20,7 @@ const Top10winner = ({ i18n, setPopBox }) => {
 	useEffect(() => {
 		const getRank = async () => {
 			try {
-				const res = await api_events_GetLeaderboardListV2({
+				const res = await api_events_GetLeaderboardList({
 					lBCategoryId: 0,
 					TopNum: 10,
 					BeforeDays: 0,

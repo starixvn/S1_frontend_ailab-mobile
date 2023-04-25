@@ -57,12 +57,7 @@ const CryptoWallet = () => {
 		setPopBox({ isOpen: false });
 	};
 
-	const delUSDTwallet = ({
-		USDTAddress,
-		NickName,
-		AccountName,
-		CurrencyId
-	}) => {
+	const delUSDTwallet = ({ address, nickName, currencyId, network }) => {
 		setPopBox({
 			isOpen: true,
 			title: i18n.lbl_ImportantNote,
@@ -74,10 +69,10 @@ const CryptoWallet = () => {
 						className="white"
 						onClick={() =>
 							removeAccount({
-								USDTAddress,
-								NickName,
-								AccountName,
-								CurrencyId
+								address,
+								nickName,
+								currencyId,
+								network
 							})
 						}>
 						{i18n.lbl_Yes}
@@ -90,14 +85,14 @@ const CryptoWallet = () => {
 		});
 	};
 
-	const removeAccount = ({
-		USDTAddress,
-		NickName,
-		AccountName,
-		CurrencyId
-	}) => {
+	const removeAccount = ({ address, nickName, currencyId, network }) => {
 		api.accountStrict
-			.DelCustUSDTInfo({ USDTAddress, NickName, AccountName, CurrencyId })
+			.DelCustCryptoWallet({
+				address,
+				nickName,
+				currencyId,
+				network
+			})
 			.then(res => {
 				if (res.data.errorCode === 0) {
 					GetCustBankInfo();
@@ -218,10 +213,10 @@ const CryptoWallet = () => {
 			{/* <button
 				onClick={() =>
 					delUSDTwallet({
-						USDTAddress: item.usdtAddress,
-						NickName: item.nickName,
-						AccountName: userInfo.accountName,
-						CurrencyId: item.currencyId
+						address: item.usdtAddress,
+						nickName: item.nickName,
+						currencyId: item.currencyId,
+						network: item.network
 					})
 				}
 				className="icon icon-bin clickBtn"

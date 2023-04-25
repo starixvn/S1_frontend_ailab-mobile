@@ -6,7 +6,7 @@ import React, {
 	useRef
 } from "react";
 import { defGameInfo } from "../../datas/productList";
-import { popBoxContext, i18nContext } from "../common/context";
+import { popBoxContext, i18nContext, userInfoContext } from "../common/context";
 import api from "../../service/api";
 
 export const defOpenType = {
@@ -48,13 +48,13 @@ export const open9wSports = ({ url, key, userId }) => {
 const playTechLaunchGame = (client, game, mode, openType) => {
 	try {
 		iapiConf.clientUrl_ngm_desktop =
-			"https://cachedownload-am.cat87666.com/ngmdesktop/casinoclient.html";
+			"https://cachedownload-am.htsp123.com/ngmdesktop/casinoclient.html";
 		iapiConf.clientUrl_ngm_mobile =
-			"https://games-am.cat87666.com/casinomobile/casinoclient.html";
+			"https://games-am.htsp123.com/casinomobile/casinoclient.html";
 		iapiConf.clientUrl_live_desk =
-			"https://cachedownload-am.cat87666.com/live/html5/desktop/";
+			"https://cachedownload-am.htsp123.com/live/html5/desktop/";
 		iapiConf.clientUrl_live_mob =
-			"https://cachedownload-am.cat87666.com/live/html5/mobile/";
+			"https://cachedownload-am.htsp123.com/live/html5/mobile/";
 	} catch (error) {}
 
 	iapiLaunchClient(client, game, mode, openType);
@@ -117,6 +117,7 @@ export const useGotoGame = ({
 	allowBeforeLogin = false
 }) => {
 	const { setPopBox } = useContext(popBoxContext);
+	const { userInfo: { userName } = {} } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const [data, setData] = useState({ account: "", password: "" });
 
@@ -179,7 +180,13 @@ export const useGotoGame = ({
 						token: token ?? "",
 						tpGameType: String(tpGameType)
 					});
-
+					await api.frontEndLog.LogMessage({
+						userName,
+						apiPath: "api/FrontEndLog/LogMessage",
+						logBody: "",
+						logLevel: "info",
+						step: "await api GotoGame"
+					});
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0 && res.data.message) {
 							const result = JSON.parse(res.data.message);
@@ -250,6 +257,14 @@ export const useGotoGame = ({
 							} else if (_tpId === defSpecialSetting.sports_9w) {
 								returnData = result;
 							}
+							await api.frontEndLog.LogMessage({
+								userName,
+								apiPath: "api/FrontEndLog/LogMessage",
+								logBody: "",
+								logLevel: "info",
+								step:
+									"res.data.errorCode === 0 && res.data.message"
+							});
 						} else if (
 							res.data.errorCode === 3000 &&
 							res.data.message
@@ -259,14 +274,36 @@ export const useGotoGame = ({
 								"Under Maintenance",
 								"toolbar=no, menubar=no,scrollbars=no,resizable=no,location=no,directories=no,status=no, top=0, left=0"
 							);
+							await api.frontEndLog.LogMessage({
+								userName,
+								apiPath: "api/FrontEndLog/LogMessage",
+								logBody: "",
+								logLevel: "info",
+								step:
+									"res.data.errorCode === 3000 && res.data.message"
+							});
 						} else {
 							setPopBox({
 								isOpen: true,
 								content: `[${res.data.errorCode}] ${res.data.message}`
 							});
+							await api.frontEndLog.LogMessage({
+								userName,
+								apiPath: "api/FrontEndLog/LogMessage",
+								logBody: "",
+								logLevel: "info",
+								step: "done"
+							});
 						}
 					}
 				} catch (error) {
+					api.frontEndLog.LogMessage({
+						userName,
+						apiPath: "api/FrontEndLog/LogMessage",
+						logBody: error.message,
+						logLevel: "error",
+						step: ""
+					});
 					setPopBox({
 						isOpen: true,
 						content: i18n.msg_ApiServerError

@@ -7,10 +7,12 @@ import {
 	userInfoContext,
 	i18nContext,
 	msgCountContext,
-	rootContext
+	rootContext,
+	eWalletContext
 } from "./context";
 import path from "../../path";
 import MsgPopup from "./msgPopup";
+import { defCurrenyId } from "./common";
 
 const Footer = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -175,6 +177,7 @@ const Footer = () => {
 			{footer}
 			{userInfo.isLogin ? (
 				<FooterWalletMenu
+					userInfo={userInfo}
 					isOpen={openWalletMenu}
 					handleWalletMenu={handleWalletMenu}
 					i18n={i18n}
@@ -184,53 +187,72 @@ const Footer = () => {
 	);
 };
 
-const FooterWalletMenu = ({ isOpen, handleWalletMenu, i18n = {} }) => (
-	<div className={`walletMenu${isOpen ? " active" : ""}`}>
-		<div className="walletModule">
-			<Link
-				className="icon icon-icon32px_wallet"
-				to={path.wallet.root}
-				onClick={handleWalletMenu}>
-				<div className="circleAnimation" />
-				<span>{i18n.lbl_MyWallet}</span>
-			</Link>
-			<Link
-				className="icon icon-icon32px_Withdraw"
-				to={path.withdrawal.root}
-				onClick={handleWalletMenu}>
-				<div className="circleAnimation" />
-				<span>{i18n.lbl_Withdrawal}</span>
-			</Link>
-			<Link
-				className="icon icon-icon32px_deposit"
-				to={path.deposit.root}
-				onClick={handleWalletMenu}>
-				<div className="circleAnimation" />
-				<span>{i18n.lbl_Deposit}</span>
-			</Link>
-			<Link
-				className="icon icon-icon32px_Funds-transfer"
-				to={path.transfer.root}
-				onClick={handleWalletMenu}>
-				<div className="circleAnimation" />
-				<span>{i18n.lbl_Transfer}</span>
-			</Link>
-			<Link
-				className="icon icon-icon32px_History"
-				to={path.statement.root}
-				onClick={handleWalletMenu}>
-				<div className="circleAnimation" />
-				<span>{i18n.lbl_Statement}</span>
-			</Link>
+const FooterWalletMenu = ({
+	userInfo,
+	isOpen,
+	handleWalletMenu,
+	i18n = {}
+}) => {
+	const { isShowEWallet } = useContext(eWalletContext);
+	// 因目前BDT幣別不支援localBank,故先隱藏
+	const withdrawalLink = () => {
+		if (userInfo.currencyId === defCurrenyId.BDT && isShowEWallet) {
+			return path.eWalletWithdrawal.root;
+		}
+		if (userInfo.currencyId === defCurrenyId.BDT && !isShowEWallet) {
+			return path.cryptoWithdrawal.root;
+		}
+		return path.withdrawal.root;
+	};
+	return (
+		<div className={`walletMenu${isOpen ? " active" : ""}`}>
+			<div className="walletModule">
+				<Link
+					className="icon icon-icon32px_wallet"
+					to={path.wallet.root}
+					onClick={handleWalletMenu}>
+					<div className="circleAnimation" />
+					<span>{i18n.lbl_MyWallet}</span>
+				</Link>
+				<Link
+					className="icon icon-icon32px_Withdraw"
+					to={withdrawalLink()}
+					onClick={handleWalletMenu}>
+					<div className="circleAnimation" />
+					<span>{i18n.lbl_Withdrawal}</span>
+				</Link>
+				<Link
+					className="icon icon-icon32px_deposit"
+					to={path.deposit.root}
+					onClick={handleWalletMenu}>
+					<div className="circleAnimation" />
+					<span>{i18n.lbl_Deposit}</span>
+				</Link>
+				<Link
+					className="icon icon-icon32px_Funds-transfer"
+					to={path.transfer.root}
+					onClick={handleWalletMenu}>
+					<div className="circleAnimation" />
+					<span>{i18n.lbl_Transfer}</span>
+				</Link>
+				<Link
+					className="icon icon-icon32px_History"
+					to={path.statement.root}
+					onClick={handleWalletMenu}>
+					<div className="circleAnimation" />
+					<span>{i18n.lbl_Statement}</span>
+				</Link>
+			</div>
 		</div>
-	</div>
-);
+	);
+};
 
 FooterWalletMenu.defaultProps = {
 	isOpen: false
 };
 
 FooterWalletMenu.propTypes = {
+	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	isOpen: PropTypes.bool,
 	handleWalletMenu: PropTypes.func.isRequired

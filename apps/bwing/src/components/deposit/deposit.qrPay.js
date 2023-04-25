@@ -1,11 +1,6 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import {
-	i18nContext,
-	userInfoContext,
-	popBoxContext,
-	loadingContext
-} from "../common/context";
+import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import config, { paymentImgUrl } from "../../config";
 import { isConvert, number_format, getWindowOpenUrl } from "../common/common";
 import GroupList from "./deposit.groupList";
@@ -17,17 +12,11 @@ import PromoList from "./promoList";
 const payType = "QRPay";
 
 const Payment = props => {
-	const {
-		paymentList,
-		creditTimeKey,
-		promoList,
-		checkDepositSpecialCode
-	} = props;
+	const { paymentList, promoList, checkDepositSpecialCode } = props;
 
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
-	const { setLoading } = useContext(loadingContext);
 	const [selGroupId, setSelGroupId] = useState(null);
 	const [selChannel, setChannel] = useState({});
 	const [channelList, setChannelList] = useState([]);
@@ -76,7 +65,6 @@ const Payment = props => {
 	const SelectPayment = groupId => {
 		if (selGroupId !== groupId) {
 			setSelGroupId(() => groupId);
-			setLoading(true);
 			api_GetQRPayInfoList(groupId).then(
 				res => {
 					if (isMountedRef.current) {
@@ -89,7 +77,6 @@ const Payment = props => {
 								content: `[${res.data.errorCode}] ${res.data.message}`
 							});
 						}
-						setLoading(false);
 					}
 				},
 				() => {
@@ -98,7 +85,6 @@ const Payment = props => {
 							isOpen: true,
 							content: i18n.msg_ApiServerError
 						});
-						setLoading(false);
 					}
 				}
 			);
@@ -192,9 +178,7 @@ const Payment = props => {
 	const _isConvert = isConvert(userInfo.currencyId);
 
 	return (
-		<div className="depositModule_mobile open">
-			<div className="title text-org">{`${i18n.lbl_CreditTime}: ${i18n[creditTimeKey]}`}</div>
-
+		<>
 			<GroupList
 				title={i18n.lbl_PaymentModes}
 				dataList={paymentList}
@@ -209,23 +193,23 @@ const Payment = props => {
 				showMinMaxHint={true}
 				_isConvert={_isConvert}
 			/>
-			{channelList?.length > 1 && (
-				<GroupList
-					title={i18n.lbl_SelectChannel}
-					dataList={channelList}
-					SelectPayment={SelectChannel}
-					selected={selChannel?.channelId}
-					mainKey={`deposit-full-${payType}-channelList`}
-					imgKey="groupName"
-					idKey="channelId"
-					bindFullObj={true}
-					prefixImgUrl={`${paymentImgUrl}/`}
-					i18n={i18n}
-					displayKey="channelName"
-					showMinMaxHint={true}
-					_isConvert={_isConvert}
-				/>
-			)}
+
+			<GroupList
+				title={i18n.lbl_SelectChannel}
+				dataList={channelList}
+				SelectPayment={SelectChannel}
+				selected={selChannel?.channelId}
+				mainKey={`deposit-full-${payType}-channelList`}
+				imgKey="groupName"
+				idKey="channelId"
+				bindFullObj={true}
+				prefixImgUrl={`${paymentImgUrl}/`}
+				i18n={i18n}
+				displayKey="channelName"
+				showMinMaxHint={true}
+				_isConvert={_isConvert}
+			/>
+
 			<AmountInput
 				title={i18n.lbl_DepositAmount}
 				channel={selChannel}
@@ -255,7 +239,7 @@ const Payment = props => {
 					{i18n.lbl_Submit}
 				</button>
 			</div>
-		</div>
+		</>
 	);
 };
 
@@ -265,7 +249,6 @@ Payment.defaultProps = {
 
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
-	creditTimeKey: PropTypes.string.isRequired,
 	promoList: PropTypes.arrayOf(PropTypes.objectOf),
 	checkDepositSpecialCode: PropTypes.func.isRequired
 };

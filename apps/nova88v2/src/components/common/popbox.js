@@ -5,6 +5,7 @@ import Otp from "./popbox.otp";
 import OneGamePopBox from "./popbox.oneGame";
 import ReferralPopBox from "./popbox.referral";
 import DomainListPop from "./popbox.domainList";
+import PromptDeposit from "./popbox.promptDeposit";
 import PaymentQR from "./popbox.paymentQR";
 import AddCryptoWallet from "./popbox.addCrypto";
 import BankQR from "./popbox.bankQR";
@@ -16,6 +17,7 @@ export const defPopBoxType = {
 	OneGame: "OneGame",
 	Referral: "Referral",
 	DomainList: "DomainList",
+	PromptDeposit: "PromptDeposit",
 	PaymentQR: "PaymentQR",
 	AddCryptoWallet: "AddCryptoWallet",
 	BankQR: "BankQR"
@@ -54,6 +56,10 @@ const PopUp = () => {
 
 		case defPopBoxType.DomainList:
 			content = <DomainListPop domainList={popBox.domainList} />;
+			break;
+
+		case defPopBoxType.PromptDeposit:
+			content = <PromptDeposit {...popBox} />;
 			break;
 
 		case defPopBoxType.PaymentQR:

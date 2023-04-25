@@ -122,6 +122,7 @@ export const defGameInfo = {
 	LIVEcasinoWM: { gameId: 20, tpId: 20, tpGameType: 32 },
 	LIVEcasinoDG: { tpId: 4, gameId: 4, tpGameType: 10 },
 	LIVEcasinoPP: { gameId: 101, tpId: 5, tpGameType: 16 },
+	LIVEcasinoYEEBET: { tpId: 46, gameId: 0, tpGameType: 93 },
 	LIVEcasinoAE: { gameId: 15, tpId: 15, tpGameType: 18 },
 	LIVEcasinoAG: { gameId: 3, tpId: 3, tpGameType: 8 },
 	LIVEcasinoAB: { gameId: 12, tpId: 12, tpGameType: 6 },
@@ -230,12 +231,14 @@ const gameList = [
 			{
 				...defGameInfo.Sports,
 				img: `${bannerImgUrl}/h5/img/hotgame/sport.jpg`,
-				spanTextKey: "lbl_Sports"
+				spanTextKey: "lbl_Sports",
+				hasDesktopLink: true
 			},
 			{
 				...defGameInfo.SabaSoccer,
 				img: `${bannerImgUrl}/h5/img/hotgame/sabasoccer.jpg`,
-				spanTextKey: "lbl_SabaSoccer"
+				spanTextKey: "lbl_SabaSoccer",
+				hasDesktopLink: true
 			},
 			{
 				img: `${bannerImgUrl}/h5/img/hotgame/slots.jpg`,
@@ -254,7 +257,7 @@ const gameList = [
 			},
 			{
 				...defGameInfo.VirtualSports,
-				img: `${bannerImgUrl}/h5/img/hotgame/sports/betradar.png`,
+				img: `${bannerImgUrl}/h5/img/hotgame/virtual.jpg`,
 				spanTextKey: "lbl_VirtualSports"
 			},
 			{
@@ -304,7 +307,8 @@ const gameList = [
 			{
 				...defGameInfo.Sports,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/soccer.png`,
-				spanTextKey: "lbl_Soccer"
+				spanTextKey: "lbl_Soccer",
+				hasDesktopLink: true
 			},
 			{
 				...defGameInfo.CryptoSports,
@@ -320,17 +324,20 @@ const gameList = [
 			{
 				...defGameInfo.SBOSport,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/sbo.png`,
-				spanText: "SBOBET"
+				spanText: "SBOBET",
+				hasDesktopLink: true
 			},
 			{
 				...defGameInfo.BTISport,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/bti.png`,
-				spanTextKey: "lbl_BTISport"
+				spanTextKey: "lbl_BTISport",
+				hasDesktopLink: true
 			},
 			{
 				...defGameInfo.SabaSoccer,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/sabasoccer.png`,
-				spanTextKey: "lbl_SabaSoccer"
+				spanTextKey: "lbl_SabaSoccer",
+				hasDesktopLink: true
 			},
 			{
 				...defGameInfo.eSports,
@@ -340,12 +347,14 @@ const gameList = [
 			{
 				...defGameInfo.Basketball,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/baseketball.png`,
-				spanTextKey: "lbl_Basketball"
+				spanTextKey: "lbl_Basketball",
+				hasDesktopLink: true
 			},
 			{
 				...defGameInfo.Volleyball,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/volleyball.png`,
-				spanTextKey: "lbl_Volleyball"
+				spanTextKey: "lbl_Volleyball",
+				hasDesktopLink: true
 			},
 			{
 				...defGameInfo.VirtualSports,
@@ -453,21 +462,21 @@ const gameList = [
 			// 		}
 			// 	]
 			// },
-			{
-				...defGameInfo.ICG_DRAGONBALL_FISHING,
-				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-dragonball.png`,
-				spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING"
-			},
-			{
-				...defGameInfo.ICG_FISHING_OF_SAVIORS,
-				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-saviors.png`,
-				spanTextKey: "lbl_Game_ICG_FISHING_OF_SAVIORS"
-			},
-			{
-				...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
-				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-thetyrant.png`,
-				spanTextKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS"
-			},
+			// {
+			// 	...defGameInfo.ICG_DRAGONBALL_FISHING,
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-dragonball.png`,
+			// 	spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING"
+			// },
+			// {
+			// 	...defGameInfo.ICG_FISHING_OF_SAVIORS,
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-saviors.png`,
+			// 	spanTextKey: "lbl_Game_ICG_FISHING_OF_SAVIORS"
+			// },
+			// {
+			// 	...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-thetyrant.png`,
+			// 	spanTextKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS"
+			// },
 			{
 				...defGameInfo.Fishing,
 				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-world.png`,
@@ -524,20 +533,26 @@ const gameList = [
 		img: `${bannerImgUrl}/h5/img/hotgameicon/slots.png`,
 		items: [
 			{
-				...defGameInfo.Casino_AdvantPlay,
-				parameter: defGameInfo.Casino_AdvantPlay,
-				spanText: "AdvantPlay",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-ap.png`,
-				path: path.casino.root,
-				providerImgName: "ap"
-			},
-			{
 				...defGameInfo.Casino_PP,
 				parameter: defGameInfo.Casino_PP,
 				spanText: "Pragmatic Play",
 				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-pp.png`,
 				path: path.casino.root,
 				providerImgName: "pp"
+			},
+			{
+				...defGameInfo.Casino_AdvantPlay,
+				parameter: defGameInfo.Casino_AdvantPlay,
+				spanText: "AdvantPlay",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-apnew.png`,
+				path: path.casino.root,
+				providerImgName: "ap",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.ap_mini_game)
+					}
+				]
 			},
 			{
 				...defGameInfo.Casino_Skywind,
@@ -607,14 +622,14 @@ const gameList = [
 				path: path.casino.root,
 				providerImgName: "mg"
 			},
-			{
-				...defGameInfo.casino_ICG,
-				parameter: defGameInfo.casino_ICG,
-				spanText: "Astro Tech",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-icg.png`,
-				path: path.casino.root,
-				providerImgName: "icg"
-			},
+			// {
+			// 	...defGameInfo.casino_ICG,
+			// 	parameter: defGameInfo.casino_ICG,
+			// 	spanText: "Astro Tech",
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-icg.png`,
+			// 	path: path.casino.root,
+			// 	providerImgName: "icg"
+			// },
 			{
 				...defGameInfo.Casino_CQ9,
 				parameter: defGameInfo.Casino_CQ9,
@@ -686,6 +701,17 @@ const gameList = [
 				...defGameInfo.LIVEcasinoPP,
 				spanText: "Pragmatic Play",
 				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-pp.png`
+			},
+			{
+				...defGameInfo.LIVEcasinoYEEBET,
+				spanText: "YEEBET",
+				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-yb.png`,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.yee_bet)
+					}
+				]
 			},
 			{
 				...defGameInfo.LIVEcasinoSkywind,

@@ -104,12 +104,12 @@
 	"lbl_Deposit": "ฝากเงิน",
 	"lbl_Transfer": "โอน",
 	"lbl_Withdrawal": "ถอนเงิน",
-	"lbl_EWalletWithdrawal": "การถอน E-Wallet",
+	"lbl_EWalletWithdrawal": "ถอนเงิน E-Wallet",
 	"lbl_Email": "อีเมล์",
 	"msg_UsernameReq": "ต้องใส่ชื่อบัญชีผู้ใช้",
 	"msg_PasswordReq": "ต้องใส่รหัสผ่าน",
 	"lbl_Username": "ชื่อผู้ใช้",
-	"lbl_UsernameTooltip": "ชื่อ-นามสกุล ต้องตรงกับชื่อในบัตรประจำตัวประชาชน ไม่อนุญาตให้กรอกสัญลักษณ์พิเศษ",
+	"lbl_UsernameTooltip": "เพื่อความปลอดภัยเราแนะนำให้คุณใช้ชื่อผู้ใช้ที่ไม่มีชื่อจริงของคุณ",
 	"lbl_EnterRealName": "กรุณาใส่ชื่อจริงของคุณ ไม่อนุญาตให้ใช้สัญลักษณ์พิเศษ",
 	"lbl_UsernameInvalid": "ตัวอักษรและตัวเลข 6-18 ตัว (A-Z, a-z, 0-9) เท่านั้น",
 	"lbl_PasswordTooltip": "6-15 ตัวอักษรและตัวเลข(A-Z, a-z, 0-9) หรือตัวอักษรพิเศษ @$*!%#?&",
@@ -200,7 +200,9 @@
 	"lbl_Jackpot": "แจ็คพอต",
 	"lbl_Gaming_License": "ใบอนุญาตเกม",
 	"lbl_OK": "OK",
-
+	"lbl_MaximumFileSizeEach": "ขนาดไฟล์ไม่เกิน 4MB",
+	"lbl_MaximumNumberOfFiles": "ขนาดไฟล์ไม่เกิน : 6",
+	"lbl_AcceptedFileType": "ประเภทไฟล์ที่ยอมรับ: JPG, JPEG, PNG",
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Odds",
 	"lbl_Handicap": "Hdp",
@@ -304,6 +306,8 @@
 	"lbl_BuyFeaturesGames": "ซื้อฟีเจอร์เกมส์",
 	"lbl_Megaways": "Megaways",
 	"lbl_MyFavorite": "รายการโปรดของฉัน",
+	"lbl_Mini": "Mini",
+
 	"-==================-==========================Setting-===================================": "",
 	"lbl_Logout": "ออกจากระบบ",
 	"lbl_MyAccount": "บัญชีของฉัน",
@@ -405,7 +409,7 @@
 	"lbl_PhoneVerificationHint2": " {currency} {amount}",
 	"lbl_EmailOTPHint": "รหัสยืนยันอีเมลถูกส่งไปยังกล่องจดหมายที่คุณลงทะเบียนแล้ว",
 	"lbl_EmailVerifiedMsg": "สุดยอด! อีเมลของคุณได้รับการยืนยันแล้ว!",
-  "lbl_PhoneNumberErrorTip": "หมายเลขโทรศัพท์ที่คุณกรอกไม่ถูกต้อง ระหว่าง {{digitalArea}} หลัก",
+	"lbl_PhoneNumberErrorTip": "หมายเลขโทรศัพท์ที่คุณกรอกไม่ถูกต้อง ระหว่าง {{digitalArea}} หลัก",
 	"==============================================Shipping====================================": "",
 	"lbl_Shipping_Address": "ที่อยู่จัดส่ง",
 	"lbl_Option2": "ไม่บังคับ",
@@ -701,6 +705,8 @@
 	"lbl_AutoDeposit": "Auto Deposit",
 	"lbl_Line": "LINE",
 	"lbl_ScanQR": "สแกน QR",
+	"lbl_DepositOptions": "ตัวเลือกการฝาก",
+	"lbl_PopBox_PromptDeposit": "เรียนสมาชิกทุกท่าน โปรดทราบระบบธนาคารมีการอัปเดตในช่วงเวลา 00.00-02.00 (GMT+7) ระบบการเงินจะล่าช้ากว่าปกติในช่วงเวลาดังกล่าว โปรดไว้วางใจในการทำธุรกรรม ระบบจะทำการดำเนินธุรกรรมทันทีหลังการอัปเดตเสร็จสิ้น ขอขอบคุณสำหรับความร่วมมือค่ะ",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "รายละเอียดการฝากเงิน",
@@ -741,7 +747,7 @@
 	"lbl_Skip": "ข้าม",
 
 	"==============E-Wallet==============": "",
-	"lbl_EWallet": "กระเป๋าสตางค์อิเล็กทรอนิกส์",
+	"lbl_EWallet": "กระเป๋า E-Wallet",
 	"lbl_AddEWallet": "เพิ่มกระเป๋า E-Wallet",
 	"lbl_EWallet_Hint": "หมายเหตุ: บัญชี E-Wallet จำเป็นต้องยืนยันตัวตนก่อนใช้งาน",
 	"lbl_EWalletAccountNumber": "หมายเลขบัญชี E-Wallet",
@@ -867,6 +873,13 @@
 
 	"==============v3.0==============": "",
 	"lbl_SeeMore": "See More",
+	"Label_AngpaoNewYearTitle": "ต้อนรับอนาคตที่สดใสในปีกระต่าย",
 
-	"Label_AngpaoNewYearTitle": "ต้อนรับอนาคตที่สดใสในปีกระต่าย"
+	"==============H5 Sportsbook for Desktop Entrance==============": "",
+	"lbl_Sportsbook_PlayNow": "เล่นเลย",
+	"lbl_Sportsbook_Desktop": "เดสก์ทอป",
+
+	"==============RebateExclude==============": "",
+	"lbl_RebateExclude_title": "เกมในรายการนี้จะไม่รวมรางวัลเงินคืนรายวัน",
+	"lbl_GameName": "ชื่อเกมส์"
 }

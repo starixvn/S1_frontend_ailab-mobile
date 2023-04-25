@@ -7,6 +7,11 @@ export const _ACTION_TYPE = {
 	redirect: 2
 };
 
+export const defAppType = {
+	desktop: 1,
+	mobile: 2
+};
+
 export const GET_CASINO_ENTER_PAGE = ({
 	tpId,
 	gameId,
@@ -44,7 +49,8 @@ export const GET_ENTER_PAGE = ({
 	isLogin,
 	loginCallback,
 	execFunction,
-	tpGameType
+	tpGameType,
+	appType
 }) => {
 	const appUrl = window.location.origin;
 	const homeUrl = `${appUrl}`;
@@ -60,6 +66,7 @@ export const GET_ENTER_PAGE = ({
 	const _gameId = isNaN(gameId) ? gameId : Number(gameId);
 	const _matchid = isNaN(matchid) ? matchid : Number(matchid);
 	const _tpGameType = tpGameType ? `&tpGameType=${tpGameType}` : "";
+	const _appType = appType ? `&AppType=${appType}` : `&AppType=2`;
 
 	if (_tpId === 1) {
 		if (_gameId === 43 || _gameId === 220 || _gameId === 202) {
@@ -98,7 +105,7 @@ export const GET_ENTER_PAGE = ({
 	}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}
 	&tpId=${tpId}&gameId=${gameId}&CashierUrl=${cashierUrl}&LobbyUrl=${lobbyUrl}&matchid=${
 		_matchid || ""
-	}&errorUrl=${_errorPageUrl}&AppType=2${urlSpecialPattern}${_tpGameType}`;
+	}&errorUrl=${_errorPageUrl}${_appType}${urlSpecialPattern}${_tpGameType}`;
 	if (!isLogin && result.needLogin) {
 		loginCallback();
 	} else if (execFunction) {

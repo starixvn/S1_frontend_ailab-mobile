@@ -7,7 +7,12 @@ import {
 	loadingContext
 } from "../common/context";
 import config, { paymentImgURL } from "../../config";
-import { isConvert, number_format, defCurrenyId } from "../common/common";
+import {
+	isConvert,
+	number_format,
+	defCurrenyId,
+	debounce
+} from "../common/common";
 import api from "../../service/api";
 import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
@@ -25,7 +30,6 @@ const payType = "MobilePay";
 const Payment = props => {
 	const {
 		paymentList,
-		creditTimeKey,
 		userPaymentData,
 		handleUserPaymentData,
 		promoList,
@@ -174,7 +178,7 @@ const Payment = props => {
 				}
 			}
 
-			const RedirectToNext = real_amount => {
+			const RedirectToNext = debounce(real_amount => {
 				const userData = {
 					payType: "mobilePay",
 					amount: real_amount,
@@ -252,7 +256,7 @@ const Payment = props => {
 					window.open(`${baseUrl}?${paramsUrl}`);
 					RefreshPage();
 				}
-			};
+			}, 1000);
 
 			const real_amount = _isConvert ? amount * 1000 : amount;
 
@@ -340,41 +344,35 @@ const Payment = props => {
 	const _isConvert = isConvert(userInfo.currencyId);
 
 	return (
-		<div className="depositModule active">
-			<div className="title text-org icon icon-mobile">
-				{`${i18n.lbl_CreditTime}: ${i18n[creditTimeKey]}`}
-			</div>
-
-			{paymentList.length > 1 && (
-				<GroupList
-					title={i18n.lbl_PaymentModes}
-					dataList={paymentList}
-					SelectPayment={SelectPayment}
-					selected={selGroup?.groupId}
-					mainKey={`deposit-full-${payType}-groupList`}
-					imgKey="groupName"
-					idKey="groupId"
-					prefixImgUrl={`${paymentImgURL}/`}
-					displayKey="groupName"
-					_isConvert={_isConvert}
-				/>
-			)}
-			{channelList?.length > 1 && (
-				<GroupList
-					title={i18n.lbl_SelectChannel}
-					dataList={channelList}
-					channel={selChannel}
-					SelectPayment={SelectChannel}
-					selected={selChannel?.channelId}
-					mainKey={`deposit-full-${payType}-channelList`}
-					imgKey={defCurrenyId.BDT ? "channelName" : "payName"}
-					idKey="channelId"
-					bindFullObj={true}
-					prefixImgUrl={`${paymentImgURL}/`}
-					displayKey="channelName"
-					_isConvert={_isConvert}
-				/>
-			)}
+		<>
+			<GroupList
+				title={i18n.lbl_PaymentModes}
+				dataList={paymentList}
+				SelectPayment={SelectPayment}
+				selected={selGroup?.groupId}
+				mainKey={`deposit-full-${payType}-groupList`}
+				imgKey="groupName"
+				idKey="groupId"
+				prefixImgUrl={`${paymentImgURL}/`}
+				displayKey="groupName"
+				_isConvert={_isConvert}
+				i18n={i18n}
+			/>
+			<GroupList
+				title={i18n.lbl_SelectChannel}
+				dataList={channelList}
+				channel={selChannel}
+				SelectPayment={SelectChannel}
+				selected={selChannel?.channelId}
+				mainKey={`deposit-full-${payType}-channelList`}
+				imgKey={defCurrenyId.BDT ? "channelName" : "payName"}
+				idKey="channelId"
+				bindFullObj={true}
+				prefixImgUrl={`${paymentImgURL}/`}
+				displayKey="channelName"
+				_isConvert={_isConvert}
+				i18n={i18n}
+			/>
 			{userInfo.currencyId === defCurrenyId.INR &&
 				selChannel?.payName === "TenPay" && (
 					<>
@@ -455,7 +453,7 @@ const Payment = props => {
 					{i18n.lbl_Submit}
 				</button>
 			</div>
-		</div>
+		</>
 	);
 };
 
@@ -467,7 +465,6 @@ Payment.defaultProps = {
 
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
-	creditTimeKey: PropTypes.string.isRequired,
 	userPaymentData: PropTypes.objectOf(PropTypes.any),
 	handleUserPaymentData: PropTypes.func,
 	promoList: PropTypes.arrayOf(PropTypes.objectOf),

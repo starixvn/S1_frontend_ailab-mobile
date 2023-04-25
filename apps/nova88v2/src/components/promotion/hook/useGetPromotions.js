@@ -19,7 +19,7 @@ export const useGetPromotions = ({ userInfo: { langId, currencyId } }) => {
 		api.promotion.GetPromotionList({ langId, currencyId }).then(
 			res => {
 				if (res.data.errorCode === 0 && isMountedRef.current) {
-					setPromotion(res.data.data);
+					setPromotion(res.data.data || []);
 				} else if (res.data.errorCode !== 0) {
 					setPopBox({
 						isOpen: true,

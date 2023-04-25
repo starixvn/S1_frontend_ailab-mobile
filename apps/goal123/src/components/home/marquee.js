@@ -36,6 +36,7 @@ const Panel = () => {
 			langId={langId}
 			popBoxIsOpen={popBox.isOpen}
 			i18n={i18n}
+			currencyId={userInfo.currencyId}
 		/>
 	);
 };
@@ -55,14 +56,14 @@ class Marquee extends Component {
 
 	shouldComponentUpdate = (nextProps, nextState) => {
 		if (this.props.langId !== nextProps.langId) {
-			this.GetAnnouncement(nextProps.langId);
+			this.GetAnnouncement(nextProps.langId, nextProps.currencyId);
 		}
 		return true;
 	};
 
 	componentDidMount = () => {
 		this.isMountedRef = true;
-		this.GetAnnouncement(this.props.langId);
+		this.GetAnnouncement(this.props.langId, this.props.currencyId);
 		this.intervalId = setInterval(
 			this.GetAnnouncement.bind(this, this.props.langId),
 			60000
@@ -107,8 +108,8 @@ class Marquee extends Component {
 		}
 	};
 
-	GetAnnouncement = langId => {
-		api_GetAnnouncement(langId).then(
+	GetAnnouncement = (langId, currencyId) => {
+		api_GetAnnouncement({ langId, currencyId }).then(
 			res => {
 				if (res.data.errorCode === 0) {
 					const resData = res.data.data;
@@ -231,7 +232,8 @@ class Marquee extends Component {
 
 Marquee.defaultProps = {
 	langId: `en`,
-	userIsLogin: true
+	userIsLogin: true,
+	currencyId: null
 };
 
 Marquee.propTypes = {
@@ -240,7 +242,8 @@ Marquee.propTypes = {
 	setPopBox: PropTypes.func.isRequired,
 	popBoxIsOpen: PropTypes.bool.isRequired,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	OpenLoginPanel: PropTypes.func.isRequired
+	OpenLoginPanel: PropTypes.func.isRequired,
+	currencyId: PropTypes.number
 };
 
 export default Panel;

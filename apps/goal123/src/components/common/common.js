@@ -172,3 +172,23 @@ export const getWindowOpenUrl = ({ mainUrl, param }) => {
 
 	return `${mainUrl}?${paramString}`;
 };
+
+// 用於上傳圖片轉 AWS Url
+export const getBase64 = file =>
+	new Promise((resolve, reject) => {
+		const reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onload = () => resolve(reader.result);
+		reader.onerror = error => reject(error);
+	});
+
+// 防抖(避免函式多次觸發)
+export const debounce = (fn, delay) => {
+	let timerId;
+	return (...args) => {
+		clearTimeout(timerId);
+		timerId = setTimeout(() => {
+			fn(...args);
+		}, delay);
+	};
+};

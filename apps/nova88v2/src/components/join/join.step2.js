@@ -4,13 +4,18 @@ import { useTranslation } from "react-i18next";
 import ReCAPTCHA from "react-google-recaptcha";
 import areaCode from "../../datas/areaCode";
 import { popBoxContext } from "../common/context";
-import { getUrlParameter, getCookie, defCurrenyId } from "../common/common";
+import {
+	getUrlParameter,
+	getCookie,
+	defCurrenyId,
+	getCombineLangId,
+	defCurrencyToLang
+} from "../common/common";
 import { Link } from "../../route/link";
 import Inputbox from "../common/inputbox.hint";
 import Dropdown from "../common/dropdown";
 import Birthday from "./join.birth";
 import useTip from "../hook/useTip";
-import TandC from "../../service/t_and_c";
 import InputboxPart from "../common/inputbox.profile";
 import { GetYear, GetDayOfMonth } from "../profile/profile.detail";
 import { monthOptions } from "../profile/profile.detail.def";
@@ -22,7 +27,9 @@ import {
 	reCaptchaEnum,
 	limitCountryNum
 } from "./join.def";
+import defLang from "../../datas/defLangs";
 import { Iov_GetBlackBox } from "../common/iovation";
+import { cloudBannerImgURL } from "../../config";
 
 const areaCodeList = Object.values(areaCode).map(el => ({
 	value: el.AreaCode,
@@ -355,15 +362,27 @@ const JoinStep2 = ({
 
 	const clickSubmit = async () => {
 		const checked = await checkAll();
-
 		if (checked) {
+			const getSignupLangId = () => {
+				const langList = [];
+				defLang[
+					defCurrencyToLang[
+						siteCurrency[userValue.CurrencyIdx]?.id
+					]?.toUpperCase()
+				].lang.forEach(({ value }) => {
+					langList.push(value);
+				});
+				return langList.includes(defaultLangId) ? defaultLangId : "en";
+			};
+			const signupLangId = getSignupLangId();
+
 			const regData = {
 				UserName: userValue.UserName,
 				Userpwd: userValue.Password,
 				Email: userValue.Email,
 				PhoneNo: userValue.Phone,
 				CurrencyId: siteCurrency[userValue.CurrencyIdx]?.id,
-				UserLang: defaultLangId,
+				UserLang: signupLangId,
 				AreaCode: areaCodeList[userValue?.AreaCodeIdx]?.value,
 				PromoCode: userValue.SpecialBonusCode,
 				Birth_d: userValue.Birth_d + 1,
@@ -399,7 +418,7 @@ const JoinStep2 = ({
 			regData.blackbox = await Iov_GetBlackBox();
 			regData.LineUserId = lineUserId;
 
-			api.site.Signup(regData, defaultLangId).then(
+			api.site.Signup(regData, signupLangId).then(
 				response => {
 					if (isMountedRef.current) {
 						const { errorCode, message } = response.data;
@@ -411,7 +430,7 @@ const JoinStep2 = ({
 										let _user = {
 											isJoin: true,
 											isLogin: true,
-											langId: defaultLangId,
+											langId: signupLangId,
 											userName: userValue.UserName
 										};
 										if (res_custInfo.data.errorCode === 0) {
@@ -594,7 +613,10 @@ const JoinStep2 = ({
 				<a
 					rel="noreferrer"
 					target="_blank"
-					href={TandC(userInfo.langId).terms}>
+					href={`${cloudBannerImgURL}/Static/${getCombineLangId(
+						userInfo.langId,
+						userInfo.currencyId
+					)}/TermsConditions.html`}>
 					{i18n.lbl_TermsConditions}
 				</a>
 				{i18n.lbl_Check18TC2}

@@ -109,7 +109,7 @@
 	"msg_UsernameReq": "Username is required.",
 	"msg_PasswordReq": "Password is required.",
 	"lbl_Username": "Username",
-	"lbl_UsernameTooltip": "FULL NAME must match with your valid ID name, it is forbidden to fill in special symbols.",
+	"lbl_UsernameTooltip": "For security, we suggest that your username does not contain your real name.",
 	"lbl_EnterRealName": "Please enter your real name, special symbols are not allowed",
 	"lbl_UsernameInvalid": "6-18 alphanumeric (A-Z, a-z, 0-9) characters only.",
 	"lbl_PasswordTooltip": "6-15 alphanumeric (A-Z, a-z, 0-9) characters or special characters @$*!%#?&",
@@ -202,7 +202,9 @@
 	"lbl_Jackpot": "Jackpot",
 	"lbl_Gaming_License": "Gaming License",
 	"lbl_OK": "OK",
-
+	"lbl_MaximumFileSizeEach": "Maximum file size 4 MB each",
+	"lbl_MaximumNumberOfFiles": "Maximum number of files: 6",
+	"lbl_AcceptedFileType": "Accepted file types: JPG, JPEG, PNG",
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Odds",
 	"lbl_Handicap": "Hdp",
@@ -308,6 +310,7 @@
 	"lbl_BuyFeaturesGames": "Buy Features Games",
 	"lbl_Megaways": "Megaways",
 	"lbl_MyFavorite": "My Favorite",
+	"lbl_Mini": "Mini",
 
 	"==============================================Setting====================================": "",
 
@@ -413,7 +416,7 @@
 	"lbl_PhoneVerificationHint2": "and earn reward of {currency} {amount}",
 	"lbl_EmailOTPHint": "Email Verification Code has been sent to your registered mail box.",
 	"lbl_EmailVerifiedMsg": "Awesome! Your Email has been verified!",
-  "lbl_PhoneNumberErrorTip": "Phone number you entered is incorrect, should be between {{digitalArea}} digits",
+	"lbl_PhoneNumberErrorTip": "Phone number you entered is incorrect, should be between {{digitalArea}} digits",
 
 	"==============================================Shipping====================================": "",
 	"lbl_Shipping_Address": "Shipping Address",
@@ -738,6 +741,8 @@
 	"lbl_QRCode": "QRCode",
 	"lbl_DuitNowQRNote1": "Please contact CSD if payment did not reflect in your wallet after the transfer.",
 	"lbl_DuitNowQRNote2": "Close the tab after the transfer.",
+	"lbl_DepositOptions": "Deposit Options",
+	"lbl_PopBox_PromptDeposit": "Please be informed differ bank will perform it own maintenance schedule at different time (between 00:00 ~ 02:00, GMT +7) which may leads to transaction processing time delay. Rest assure, we will process the transaction as soon as maintenance is complete. Thank you for your utmost understanding.",
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "Payment Details",
@@ -779,7 +784,7 @@
 	"lbl_EWallet": "E-Wallet",
 	"lbl_AddEWallet": "Add E-Wallet",
 	"lbl_EWallet_Hint": "Please note: E-Wallet Account must be verified.",
-  "lbl_EWalletAccountNumber": "E-wallet Account Number",
+	"lbl_EWalletAccountNumber": "E-wallet Account Number",
 	"==============Crypto Wallet==============": "",
 	"lbl_CryptoPay": "Crypto",
 	"lbl_CryptoWallet": "Crypto Wallet",
@@ -902,6 +907,13 @@
 
 	"==============v3.0==============": "",
 	"lbl_SeeMore": "See More",
+	"Label_AngpaoNewYearTitle": "Lucky Rabbit Happy New Year",
 
-	"Label_AngpaoNewYearTitle": "Lucky Rabbit Happy New Year"
+	"==============H5 Sportsbook for Desktop Entrance==============": "",
+	"lbl_Sportsbook_PlayNow": "Play Now",
+	"lbl_Sportsbook_Desktop": "Desktop",
+
+	"==============RebateExclude==============": "",
+	"lbl_RebateExclude_title": "Games in this list will be excluded daily rebate rewards",
+	"lbl_GameName": "Game Name"
 }

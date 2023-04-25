@@ -156,6 +156,16 @@ export const defCurrencyToClass = {
 	74: "bd"
 };
 
+export const defCurrencyToLang = {
+	2: "my",
+	3: "gb",
+	4: "th",
+	13: "cs",
+	15: "id",
+	61: "hi",
+	74: "bd"
+};
+
 export const currCustomMapping = {
 	2: "MYR",
 	4: "THB",
@@ -176,6 +186,16 @@ export const defCurrenyId = {
 	USDT: 96
 };
 
+export const currencyIdToCurrency = {
+	2: "MYR",
+	3: "USD",
+	4: "THB",
+	13: "CNY",
+	15: "IDR",
+	61: "INR",
+	74: "BDT"
+};
+
 export const currencyIdToTimeZone = {
 	2: "+08:00",
 	13: "+08:00",
@@ -194,6 +214,16 @@ export const langMappingCurr = {
 	th: "THB",
 	hi: "INR",
 	bd: "BDT"
+};
+
+export const defCurrencyToLangId = {
+	2: "my",
+	3: "global",
+	4: "th",
+	13: "cs",
+	15: "id",
+	61: "hi",
+	74: "bd"
 };
 
 export const GetCurrencyName = ({ langId, currencyId, i18n }) => {
@@ -230,4 +260,47 @@ export const getLocalStorage = key => {
 	const json = localStorage.getItem(key);
 
 	return json ? JSON.parse(json) : undefined;
+};
+
+export const getCombineLangId = (langId, currencyId) => {
+	const checkedCurrencyId = currencyId ?? defCurrenyId.MYR;
+
+	let combineLangId = "";
+	switch (langId) {
+		case "en":
+			combineLangId = `${
+				defCurrencyToLangId[Number(checkedCurrencyId)]
+			}_en`;
+			break;
+		case "cs":
+			combineLangId =
+				currencyId === defCurrenyId.CNY
+					? "cs"
+					: `${defCurrencyToLangId[Number(checkedCurrencyId)]}_cs`;
+			break;
+		default:
+			combineLangId = langId;
+			break;
+	}
+	return combineLangId;
+};
+
+// 用於上傳圖片轉 AWS Url
+export const getBase64 = file =>
+	new Promise((resolve, reject) => {
+		const reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onload = () => resolve(reader.result);
+		reader.onerror = error => reject(error);
+	});
+
+// 防抖(避免函式多次觸發)
+export const debounce = (fn, delay) => {
+	let timerId;
+	return (...args) => {
+		clearTimeout(timerId);
+		timerId = setTimeout(() => {
+			fn(...args);
+		}, delay);
+	};
 };

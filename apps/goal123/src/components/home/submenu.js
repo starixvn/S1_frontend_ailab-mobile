@@ -50,6 +50,26 @@ const defSubMenus = [
 			{
 				displayKey: "lbl_BTISport",
 				...defGameInfo.BTISport
+			},
+			{
+				displayKey: "lbl_SabaSoccer",
+				...defGameInfo.SabaSoccer
+			},
+			{
+				displayKey: "lbl_eSports",
+				...defGameInfo.eSports
+			},
+			{
+				displayKey: "lbl_Basketball",
+				...defGameInfo.Basketball
+			},
+			{
+				displayKey: "lbl_Volleyball",
+				...defGameInfo.Volleyball
+			},
+			{
+				displayKey: "lbl_VirtualSports",
+				...defGameInfo.VirtualSports
 			}
 		]
 	},
@@ -95,18 +115,18 @@ const defSubMenus = [
 				...defGameInfo.fish_AT01,
 				displayKey: "lbl_Oneshot_Fishing"
 			},
-			{
-				...defGameInfo.ICG_DRAGONBALL_FISHING,
-				displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING"
-			},
-			{
-				...defGameInfo.ICG_FISHING_OF_SAVIORS,
-				displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS"
-			},
-			{
-				...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
-				displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS"
-			},
+			// {
+			// 	...defGameInfo.ICG_DRAGONBALL_FISHING,
+			// 	displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING"
+			// },
+			// {
+			// 	...defGameInfo.ICG_FISHING_OF_SAVIORS,
+			// 	displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS"
+			// },
+			// {
+			// 	...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
+			// 	displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS"
+			// },
 			{
 				...defGameInfo.Fishing,
 				displayKey: "lbl_FishingGG"
@@ -159,44 +179,61 @@ const defSubMenus = [
 		subItems: [
 			{
 				...defGameInfo.LIVEcasinoPP,
-				displayKey: "Pragmatic Play"
+				displayText: "Pragmatic Play"
 			},
 			{
-				...defGameInfo.LIVEcasinoN2,
-				displayKey: "n2-LIVE"
+				...defGameInfo.LIVEcasinoYEEBET,
+				displayText: "YEEBET"
 			},
 			{
-				...defGameInfo.LIVEcasinoWM,
-				displayKey: "WM Casino"
+				...defGameInfo.LIVEcasinoSkywind,
+				displayText: "Skywind"
 			},
 			{
-				...defGameInfo.LIVEcasinoDG,
-				displayKey: "Dream Gaming"
-			},
-			{
-				...defGameInfo.LIVEcasinoAE,
-				displayKey: "AE Sexy"
-			},
-			{
-				...defGameInfo.LIVEcasinoAG,
-				displayKey: "Asia Gaming"
-			},
-			{
-				...defGameInfo.LIVEcasinoAB,
-				displayKey: "Allbet"
-			},
-			{
-				...defGameInfo.LIVEcasinoSA,
-				displayKey: "SA Gaming"
-			},
-			{
-				...defGameInfo.LIVEcasinoEB,
-				displayKey: "eBET",
-				tpGameType: 28
+				...defGameInfo.LIVEcasinoMG,
+				displayText: "Microgaming"
 			},
 			{
 				...defGameInfo.LIVEcasinoEVO,
-				displayKey: "Evolution Gaming"
+				displayText: "Evolution Gaming"
+			},
+			{
+				...defGameInfo.LIVEcasinoPT,
+				displayText: "Playtech"
+			},
+			{
+				...defGameInfo.LIVEcasinoN2,
+				displayText: "n2-LIVE"
+			},
+			{
+				...defGameInfo.LIVEcasinoWM,
+				displayText: "WM Casino"
+			},
+			{
+				...defGameInfo.LIVEcasinoDG,
+				displayText: "Dream Gaming"
+			},
+			{
+				...defGameInfo.LIVEcasinoAE,
+				displayText: "AE Sexy"
+			},
+			{
+				...defGameInfo.LIVEcasinoAG,
+				displayText: "Asia Gaming"
+			},
+
+			{
+				...defGameInfo.LIVEcasinoAB,
+				displayText: "Allbet"
+			},
+			{
+				...defGameInfo.LIVEcasinoSA,
+				displayText: "SA Gaming"
+			},
+			{
+				...defGameInfo.LIVEcasinoEB,
+				displayText: "eBET",
+				tpGameType: 28
 			}
 		]
 	},
@@ -411,7 +448,7 @@ const SubMenuList = ({
 					key={key}
 					onClick={clickGame.bind(this, s)}
 					className={s.icon}>
-					{i18n[s.displayKey]?.toUpperCase() ?? s.displayText}
+					{s.displayText ?? i18n[s.displayKey]?.toUpperCase()}
 				</button>
 			);
 		});

@@ -75,6 +75,7 @@ import Streaming from "./pages/streaming";
 import LuckyWheel from "./pages/luckyWheel";
 import UMPage from "./pages/um";
 import WorldCup from "./pages/worldCup";
+import RebateExclude from "./pages/rebateExclude";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -176,6 +177,7 @@ const Index = () => {
 							<Streaming path={path.streaming.root} />
 							<UMPage path={path.um.root} />
 							<WorldCup path={path.worldCup.root} />
+							<RebateExclude path={path.rebateExclude.root} />
 						</Router>
 					</Layout>
 				</LocationProvider>

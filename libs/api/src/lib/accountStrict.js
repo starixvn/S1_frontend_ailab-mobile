@@ -88,18 +88,23 @@ export class AccountStrictAPI extends BaseAPI {
 	SetCustUSDTInfo = form =>
 		this.accountStrictRequest.post("/SetCustUSDTInfo", form);
 
-	SetCustUSDTInfoBatch = form =>
-		this.accountStrictRequest.post("/SetCustUSDTInfoBatch", form);
+	SetCustCryptoWallet = ({ currencyId, network, nickName, address }) =>
+		this.accountStrictRequest.post("/SetCustCryptoWallet", {
+			currencyId,
+			network,
+			nickName,
+			address
+		});
 
 	GetOTPVerifyInfo = () =>
 		this.accountStrictRequest.post("/GetOTPVerifyInfo");
 
-	DelCustUSDTInfo = ({ USDTAddress, NickName, AccountName, CurrencyId }) =>
-		this.accountStrictRequest.post("/DelCustUSDTInfo", {
-			USDTAddress,
-			NickName,
-			AccountName,
-			CurrencyId
+	DelCustCryptoWallet = ({ currencyId, network, address, nickName }) =>
+		this.accountStrictRequest.post("/DelCustCryptoWallet", {
+			currencyId,
+			network,
+			address,
+			nickName
 		});
 
 	SendOTPEmail = () =>

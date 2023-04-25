@@ -72,7 +72,8 @@ export const productList = langId => {
 				{
 					displayKey: "lbl_SabaSport",
 					img: `${bannerImgUrl}/h5/img/sport/sabasport.png`,
-					...defGameInfo.Sports
+					...defGameInfo.Sports,
+					hasDesktopLink: true
 				},
 				{
 					displayKey: "lbl_CryptoSports",
@@ -96,7 +97,8 @@ export const productList = langId => {
 							icon: defIconType.new,
 							inPeriod: isEventPeriod(eventTime.sportSbo)
 						}
-					]
+					],
+					hasDesktopLink: true
 				},
 				{
 					displayKey: "lbl_BTISport",
@@ -107,7 +109,8 @@ export const productList = langId => {
 							icon: defIconType.new,
 							inPeriod: isEventPeriod(eventTime.new_BTI)
 						}
-					]
+					],
+					hasDesktopLink: true
 				},
 				{
 					displayKey: "lbl_VirtualSports",
@@ -179,19 +182,25 @@ export const productList = langId => {
 			icon_img: `${bannerImgUrl}/h5/img/gameicon/slot.png`,
 			items: [
 				{
-					...defGameInfo.Casino_AdvantPlay,
-					parameter: defGameInfo.Casino_AdvantPlay,
-					path: path.casino.root,
-					displayText: "AdvantPlay",
-					img: `${bannerImgUrl}/h5/img/slot/ap.png`
-				},
-				{
 					...defGameInfo.Casino_PP,
 					parameter: defGameInfo.Casino_PP,
 					path: path.casino.root,
 					icon: "icon icon-PP",
 					displayText: "Pragmatic Play",
 					img: `${bannerImgUrl}/h5/img/slot/pp.png`
+				},
+				{
+					...defGameInfo.Casino_AdvantPlay,
+					parameter: defGameInfo.Casino_AdvantPlay,
+					path: path.casino.root,
+					displayText: "AdvantPlay",
+					img: `${bannerImgUrl}/h5/img/slot/apnew.png`,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.ap_mini_game)
+						}
+					]
 				},
 				{
 					...defGameInfo.Casino_Skywind,
@@ -257,14 +266,14 @@ export const productList = langId => {
 					icon: "icon icon-pt",
 					displayText: "PlayTech"
 				},
-				{
-					...defGameInfo.casino_ICG,
-					parameter: defGameInfo.casino_ICG,
-					path: path.casino.root,
-					img: `${bannerImgUrl}/h5/img/slot/icg.png`,
-					icon: "icon icon-ICG",
-					displayText: "Astro Tech"
-				},
+				// {
+				// 	...defGameInfo.casino_ICG,
+				// 	parameter: defGameInfo.casino_ICG,
+				// 	path: path.casino.root,
+				// 	img: `${bannerImgUrl}/h5/img/slot/icg.png`,
+				// 	icon: "icon icon-ICG",
+				// 	displayText: "Astro Tech"
+				// },
 				{
 					...defGameInfo.Casino_CQ9,
 					parameter: defGameInfo.Casino_CQ9,
@@ -337,6 +346,18 @@ export const productList = langId => {
 					icon: "icon icon-PP",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-pp.png`,
 					...defGameInfo.LIVEcasinoPP
+				},
+				{
+					displayText: "YEEBET",
+					icon: "icon icon-sk",
+					img: `${bannerImgUrl}/h5/img/liveGameNew/live-yb.png`,
+					...defGameInfo.LIVEcasinoYEEBET,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.yee_bet)
+						}
+					]
 				},
 				{
 					displayText: "Skywind",
@@ -457,24 +478,24 @@ export const productList = langId => {
 				// 		}
 				// 	]
 				// },
-				{
-					displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
-					img: `${bannerImgUrl}/h5/img/fish/fish-db.png`,
-					icon: "icon icon-ICG",
-					...defGameInfo.ICG_DRAGONBALL_FISHING
-				},
-				{
-					displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS",
-					img: `${bannerImgUrl}/h5/img/fish/fish-fos.png`,
-					icon: "icon icon-ICG",
-					...defGameInfo.ICG_FISHING_OF_SAVIORS
-				},
-				{
-					displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS",
-					img: `${bannerImgUrl}/h5/img/fish/fish-ttatp.png`,
-					icon: "icon icon-ICG",
-					...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS
-				},
+				// {
+				// 	displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
+				// 	img: `${bannerImgUrl}/h5/img/fish/fish-db.png`,
+				// 	icon: "icon icon-ICG",
+				// 	...defGameInfo.ICG_DRAGONBALL_FISHING
+				// },
+				// {
+				// 	displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS",
+				// 	img: `${bannerImgUrl}/h5/img/fish/fish-fos.png`,
+				// 	icon: "icon icon-ICG",
+				// 	...defGameInfo.ICG_FISHING_OF_SAVIORS
+				// },
+				// {
+				// 	displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS",
+				// 	img: `${bannerImgUrl}/h5/img/fish/fish-ttatp.png`,
+				// 	icon: "icon icon-ICG",
+				// 	...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS
+				// },
 				{
 					displayKey: "lbl_FishingGG",
 					icon: "icon icon-gg",
@@ -589,6 +610,10 @@ export const defSubMenus = () => [
 			{
 				displayKey: "lbl_BTISport",
 				...defGameInfo.BTISport
+			},
+			{
+				displayKey: "lbl_VirtualSports",
+				...defGameInfo.VirtualSports
 			}
 		]
 	},
@@ -634,18 +659,18 @@ export const defSubMenus = () => [
 				...defGameInfo.Fishing_AT01,
 				displayKey: "lbl_Oneshot_Fishing"
 			},
-			{
-				...defGameInfo.ICG_DRAGONBALL_FISHING,
-				displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING"
-			},
-			{
-				...defGameInfo.ICG_FISHING_OF_SAVIORS,
-				displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS"
-			},
-			{
-				...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
-				displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS"
-			},
+			// {
+			// 	...defGameInfo.ICG_DRAGONBALL_FISHING,
+			// 	displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING"
+			// },
+			// {
+			// 	...defGameInfo.ICG_FISHING_OF_SAVIORS,
+			// 	displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS"
+			// },
+			// {
+			// 	...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
+			// 	displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS"
+			// },
 			{
 				...defGameInfo.Fishing,
 				displayKey: "lbl_FishingGG"
@@ -709,12 +734,24 @@ export const defSubMenus = () => [
 				displayText: "Pragmatic Play"
 			},
 			{
-				...defGameInfo.LIVEcasinoPT,
-				displayText: "Playtech"
+				...defGameInfo.LIVEcasinoYEEBET,
+				displayText: "YEEBET"
+			},
+			{
+				...defGameInfo.LIVEcasinoSkywind,
+				displayText: "Skywind"
 			},
 			{
 				...defGameInfo.LIVEcasinoMG,
-				displayKey: "Microgaming"
+				displayText: "Microgaming"
+			},
+			{
+				...defGameInfo.LIVEcasinoEVO,
+				displayText: "Evolution Gaming"
+			},
+			{
+				...defGameInfo.LIVEcasinoPT,
+				displayText: "Playtech"
 			},
 			{
 				...defGameInfo.LIVEcasinoN2,
@@ -729,33 +766,29 @@ export const defSubMenus = () => [
 				displayText: "WM Casino"
 			},
 			{
-				...defGameInfo.LIVEcasinoDG,
-				displayText: "Dream Gaming"
+				...defGameInfo.LIVEcasinoAG,
+				displayText: "Asia Gaming"
 			},
 			{
 				...defGameInfo.LIVEcasinoAE,
 				displayText: "AE Sexy"
 			},
 			{
-				...defGameInfo.LIVEcasinoAG,
-				displayText: "Asia Gaming"
+				...defGameInfo.LIVEcasinoDG,
+				displayText: "Dream Gaming"
 			},
 			{
 				...defGameInfo.LIVEcasinoAB,
 				displayText: "Allbet"
 			},
 			{
-				...defGameInfo.LIVEcasinoSA,
-				displayText: "SA Gaming"
-			},
-			{
 				...defGameInfo.LIVEcasinoEB,
 				displayText: "eBET"
+			},
+			{
+				...defGameInfo.LIVEcasinoSA,
+				displayText: "SA Gaming"
 			}
-			// {
-			// 	...defGameInfo.LIVEcasinoEVO,
-			// 	displayText: "Evolution Gaming"
-			// }
 		]
 	},
 	{

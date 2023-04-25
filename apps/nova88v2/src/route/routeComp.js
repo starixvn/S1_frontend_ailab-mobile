@@ -66,6 +66,7 @@ import AppEntPage from "../pages/appEntPage";
 import UMPage from "../pages/um";
 import Mega888 from "../pages/mega888";
 import WorldCup from "../pages/worldCup";
+import RebateExclude from "../pages/rebateExclude";
 
 const RouteComponents = () => {
 	return (
@@ -155,6 +156,7 @@ const RouteComponents = () => {
 			<UMPage path={`/${path.um.root}`} />
 			<Mega888 path={`/:langId/${path.mega888.root}`} />
 			<WorldCup path={`/:langId/${path.worldCup.root}`} />
+			<RebateExclude path={`/:langId/${path.rebateExclude.root}`} />
 		</Router>
 	);
 };
