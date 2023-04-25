@@ -3,6 +3,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@300;400;600&display=swap");
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -45,7 +46,7 @@ button {
   border: none;
   padding: 0;
   outline: none;
-  font-family: "Microsoft YaHei", sans-serif;
+  font-family: "Microsoft YaHei", "Noto Sans Khmer", sans-serif;
   color: white;
 }
 
@@ -1090,7 +1091,7 @@ body, html {
   background: white;
   height: 100%;
   font-size: 3vw;
-  font-family: "Microsoft YaHei", sans-serif;
+  font-family: "Microsoft YaHei", "Noto Sans Khmer", sans-serif;
   color: white;
 }
 
@@ -1840,7 +1841,6 @@ main .gameList > div > div img, main .gameList > div > a img, main .gameList > d
 }
 main .gameList > div > div img + div, main .gameList > div > a img + div, main .gameList > div > button img + div, main .gameList > a > div img + div, main .gameList > a > a img + div, main .gameList > a > button img + div, main .gameList > button > div img + div, main .gameList > button > a img + div, main .gameList > button > button img + div {
   position: absolute;
-  bottom: 1vw;
   margin: auto;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1848,6 +1848,8 @@ main .gameList > div > div img + div, main .gameList > div > a img + div, main .
   width: 76%;
   color: #5574A7;
   padding: 0 12%;
+  bottom: 1vw;
+  max-height: 5vw;
 }
 main .gameList .icon-new {
   position: absolute;
@@ -2060,7 +2062,7 @@ footer > a .icon-envelope {
 footer > a span {
   white-space: nowrap;
   position: absolute;
-  bottom: 1vw;
+  bottom: 0.5vw;
 }
 footer > a.active {
   border-bottom: 2px solid #FF5E00;
@@ -8579,6 +8581,7 @@ span.important {
 }
 .license div img {
   margin-left: 1vw;
+  max-width: 24vw;
 }
 .license div:nth-child(2) {
   display: -webkit-box;
@@ -9370,7 +9373,8 @@ span.important {
   font-weight: bold;
   background: -webkit-gradient(linear, left top, right top, color-stop(30%, #ff5e00), to(#f39519));
   background: linear-gradient(90deg, #ff5e00 30%, #f39519 100%);
-  padding: 1vw 3vw 1.5vw;
+  padding: 0 3vw;
+  height: 6vw;
   border-radius: 5vw;
 }
 
@@ -10255,7 +10259,7 @@ span.important {
   border-radius: 5px;
   padding: 1vw;
   color: white;
-  font-family: "Microsoft YaHei", sans-serif;
+  font-family: "Microsoft YaHei", "Noto Sans Khmer", sans-serif;
   font-size: xx-small;
   text-align: center;
 }
@@ -10692,7 +10696,7 @@ span.important {
   margin-bottom: 2vw;
 }
 .wheelEvent .info .title div:not(.title) {
-  font-family: "Microsoft YaHei", sans-serif;
+  font-family: "Microsoft YaHei", "Noto Sans Khmer", sans-serif;
   font-weight: normal;
   font-size: 3vw;
   margin-bottom: 0;
@@ -10702,7 +10706,7 @@ span.important {
   margin: 10vw auto;
 }
 .wheelEvent .info > div li {
-  font-family: "Microsoft YaHei", sans-serif;
+  font-family: "Microsoft YaHei", "Noto Sans Khmer", sans-serif;
   font-weight: normal;
   font-size: 3vw;
   margin: 0 auto 0;
