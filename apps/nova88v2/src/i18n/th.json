@@ -104,7 +104,7 @@
 	"lbl_Deposit": "ฝากเงิน",
 	"lbl_Transfer": "โอน",
 	"lbl_Withdrawal": "ถอนเงิน",
-	"lbl_EWalletWithdrawal": "การถอน E-Wallet",
+	"lbl_EWalletWithdrawal": "ถอนเงิน E-Wallet",
 	"lbl_Email": "อีเมล์",
 	"msg_UsernameReq": "ต้องใส่ชื่อบัญชีผู้ใช้",
 	"msg_PasswordReq": "ต้องใส่รหัสผ่าน",
