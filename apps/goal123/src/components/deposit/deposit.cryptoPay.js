@@ -128,8 +128,8 @@ const Main = props => {
 					if (selChannel?.mode === 3) {
 						setLoading(true);
 
-						// channelId===-1表示是自營的crypto wallet
-						if (selChannel.channelId === -1) {
+						// groupId===-1表示是自營的crypto wallet
+						if (selChannel.groupId === -1) {
 							api_depositReqCryptoLocalPay({
 								langId: userInfo.langId,
 								channelName: selChannel.channelName,
