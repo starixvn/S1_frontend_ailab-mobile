@@ -242,6 +242,7 @@ const Panel = () => {
 				paymentList={paymentList[defPayType.qrPay] ?? []}
 				promoList={promoList}
 				checkDepositSpecialCode={checkDepositSpecialCode}
+				GetAllPayment={GetAllPayment}
 			/>
 		);
 	}

@@ -21,7 +21,12 @@ import { defPopBoxType } from "../common/popbox";
 const payType = "QRPay";
 
 const Payment = props => {
-	const { paymentList, promoList, checkDepositSpecialCode } = props;
+	const {
+		paymentList,
+		promoList,
+		checkDepositSpecialCode,
+		GetAllPayment
+	} = props;
 
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -172,7 +177,10 @@ const Payment = props => {
 							qrCodeUrl: returnUrl,
 							amount: popBoxAmount,
 							popBoxType: defPopBoxType.BankQR,
-							onClose: () => setPopBox({ isOpen: false })
+							onClose: () => {
+								setPopBox({ isOpen: false });
+								GetAllPayment();
+							}
 						});
 					} else {
 						// error
@@ -309,7 +317,8 @@ Payment.defaultProps = {
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
 	promoList: PropTypes.arrayOf(PropTypes.object),
-	checkDepositSpecialCode: PropTypes.func.isRequired
+	checkDepositSpecialCode: PropTypes.func.isRequired,
+	GetAllPayment: PropTypes.func.isRequired
 };
 
 export default Payment;

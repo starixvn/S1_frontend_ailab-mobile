@@ -4,7 +4,7 @@ import { i18nContext, userInfoContext } from "./context";
 import { paymentImgURL } from "../../config";
 import { isConvert, number_format } from "./common";
 
-const BankQR = ({ onClose, qrUrl, amount, bankName }) => {
+const BankQR = ({ qrUrl, amount, bankName, handlePopBox }) => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const [minutes, setMinutes] = useState(5);
@@ -18,7 +18,7 @@ const BankQR = ({ onClose, qrUrl, amount, bankName }) => {
 				setMinutes(minutes - 1);
 				setSeconds(59);
 			} else {
-				onClose();
+				handlePopBox();
 			}
 		}, 1000);
 		return () => clearTimeout(timer);
@@ -59,12 +59,12 @@ const BankQR = ({ onClose, qrUrl, amount, bankName }) => {
 export default BankQR;
 
 BankQR.defaultProps = {
-	onClose: () => null
+	handlePopBox: () => null
 };
 
 BankQR.propTypes = {
-	onClose: PropTypes.func,
 	qrUrl: PropTypes.string.isRequired,
 	amount: PropTypes.number.isRequired,
-	bankName: PropTypes.string.isRequired
+	bankName: PropTypes.string.isRequired,
+	handlePopBox: PropTypes.func
 };

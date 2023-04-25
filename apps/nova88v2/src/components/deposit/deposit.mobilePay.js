@@ -267,7 +267,13 @@ const Payment = props => {
 						setPopBox({
 							isOpen: true,
 							popBoxType: defPopBoxType.BankQR,
-							onClose: () => setPopBox({ isOpen: false }),
+							handlePopBox: () => {
+								setPopBox(prevState => ({
+									...prevState,
+									isOpen: false
+								}));
+								window.location.reload();
+							},
 							className: "duitnowPayPop",
 							title: i18n.lbl_DuitNowQR,
 							qrUrl: data.returnUrl,
