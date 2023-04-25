@@ -275,7 +275,7 @@ const Payment = props => {
 								window.location.reload();
 							},
 							className: "duitnowPayPop",
-							title: i18n.lbl_DuitNowQR,
+							title: selChannel.channelName,
 							qrUrl: data.returnUrl,
 							amount: data.amount,
 							bankName: data.bankName
