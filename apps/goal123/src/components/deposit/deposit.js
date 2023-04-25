@@ -64,6 +64,136 @@ const Panel = () => {
 		};
 	});
 
+	const GetAllPayment = async () => {
+		setLoading(true);
+		let defaultSelect = "";
+
+		const payments = {
+			[defPayType.mobilePay]: [],
+			[defPayType.onlineBank]: [],
+			[defPayType.localBank]: [],
+			[defPayType.cryptoPay]: [],
+			[defPayType.loadCardPay]: [],
+			[defPayType.qrPay]: []
+		};
+
+		const setDefaultSelect = (currentValue, payType, dataList) =>
+			currentValue === "" && dataList.length > 0 ? payType : currentValue;
+
+		const getDataListResult = res =>
+			res.data.errorCode === 0 && res.data.data?.length > 0
+				? res.data.data
+				: [];
+
+		try {
+			const res = await api_GetBankInfoOffList();
+			payments[defPayType.localBank] = getDataListResult(res);
+
+			defaultSelect = setDefaultSelect(
+				defaultSelect,
+				defPayType.localBank,
+				payments[defPayType.localBank]
+			);
+			if (res.data.errorCode !== 0) {
+				setPopBox({
+					isOpen: true,
+					content: `[${res.data.errorCode}] ${res.data.message}`
+				});
+			}
+		} catch (error) {}
+
+		try {
+			const res = await api_GetMobilePayGroupList();
+			payments[defPayType.mobilePay] = getDataListResult(res);
+
+			defaultSelect = setDefaultSelect(
+				defaultSelect,
+				defPayType.mobilePay,
+				payments[defPayType.mobilePay]
+			);
+			if (res.data.errorCode !== 0) {
+				setPopBox({
+					isOpen: true,
+					content: `[${res.data.errorCode}] ${res.data.message}`
+				});
+			}
+		} catch (error) {}
+
+		try {
+			const res = await api_GetAutoChannelBankGroupList();
+			payments[defPayType.onlineBank] = getDataListResult(res);
+
+			defaultSelect = setDefaultSelect(
+				defaultSelect,
+				defPayType.onlineBank,
+				payments[defPayType.onlineBank]
+			);
+			if (res.data.errorCode !== 0) {
+				setPopBox({
+					isOpen: true,
+					content: `[${res.data.errorCode}] ${res.data.message}`
+				});
+			}
+		} catch (error) {}
+
+		try {
+			const res = await api_payment_GetLoadCardPayGroupList();
+			payments[defPayType.loadCardPay] = getDataListResult(res);
+
+			defaultSelect = setDefaultSelect(
+				defaultSelect,
+				defPayType.loadCardPay,
+				payments[defPayType.loadCardPay]
+			);
+			if (res.data.errorCode !== 0) {
+				setPopBox({
+					isOpen: true,
+					content: `[${res.data.errorCode}] ${res.data.message}`
+				});
+			}
+		} catch (error) {}
+
+		try {
+			const res = await api_GetCryptoPayInfoList();
+			payments[defPayType.cryptoPay] = getDataListResult(res);
+
+			defaultSelect = setDefaultSelect(
+				defaultSelect,
+				defPayType.cryptoPay,
+				payments[defPayType.cryptoPay]
+			);
+			if (res.data.errorCode !== 0) {
+				setPopBox({
+					isOpen: true,
+					content: `[${res.data.errorCode}] ${res.data.message}`
+				});
+			}
+		} catch (error) {}
+
+		try {
+			const res = await api_GetQRPayGroupList();
+			payments[defPayType.qrPay] = getDataListResult(res);
+
+			defaultSelect = setDefaultSelect(
+				defaultSelect,
+				defPayType.qrPay,
+				payments[defPayType.qrPay]
+			);
+			if (res.data.errorCode !== 0) {
+				setPopBox({
+					isOpen: true,
+					content: `[${res.data.errorCode}] ${res.data.message}`
+				});
+			}
+		} catch (error) {}
+
+		if (isMountedRef.current) {
+			setLoading(false);
+			setPaymentList(payments);
+			handleSelect(defaultSelect);
+		}
+	};
+
 	const checkDepositSpecialCode = async specialCode =>
 		api_payment_CheckDepositSpecialCode(specialCode).then(
 			res => {
@@ -97,6 +227,7 @@ const Panel = () => {
 			paymentList={paymentList[defPayType.mobilePay] ?? []}
 			promoList={promoList}
 			checkDepositSpecialCode={checkDepositSpecialCode}
+			GetAllPayment={GetAllPayment}
 		/>
 	);
 
@@ -148,138 +279,6 @@ const Panel = () => {
 	const [isCancelSubmit, setIsCancelSubmit] = useState(false);
 	useEffect(() => {
 		if (userInfo.isLogin) {
-			const GetAllPayment = async () => {
-				setLoading(true);
-				let defaultSelect = "";
-
-				const payments = {
-					[defPayType.mobilePay]: [],
-					[defPayType.onlineBank]: [],
-					[defPayType.localBank]: [],
-					[defPayType.cryptoPay]: [],
-					[defPayType.loadCardPay]: [],
-					[defPayType.qrPay]: []
-				};
-
-				const setDefaultSelect = (currentValue, payType, dataList) =>
-					currentValue === "" && dataList.length > 0
-						? payType
-						: currentValue;
-
-				const getDataListResult = res =>
-					res.data.errorCode === 0 && res.data.data?.length > 0
-						? res.data.data
-						: [];
-
-				try {
-					const res = await api_GetBankInfoOffList();
-					payments[defPayType.localBank] = getDataListResult(res);
-
-					defaultSelect = setDefaultSelect(
-						defaultSelect,
-						defPayType.localBank,
-						payments[defPayType.localBank]
-					);
-					if (res.data.errorCode !== 0) {
-						setPopBox({
-							isOpen: true,
-							content: `[${res.data.errorCode}] ${res.data.message}`
-						});
-					}
-				} catch (error) {}
-
-				try {
-					const res = await api_GetMobilePayGroupList();
-					payments[defPayType.mobilePay] = getDataListResult(res);
-
-					defaultSelect = setDefaultSelect(
-						defaultSelect,
-						defPayType.mobilePay,
-						payments[defPayType.mobilePay]
-					);
-					if (res.data.errorCode !== 0) {
-						setPopBox({
-							isOpen: true,
-							content: `[${res.data.errorCode}] ${res.data.message}`
-						});
-					}
-				} catch (error) {}
-
-				try {
-					const res = await api_GetAutoChannelBankGroupList();
-					payments[defPayType.onlineBank] = getDataListResult(res);
-
-					defaultSelect = setDefaultSelect(
-						defaultSelect,
-						defPayType.onlineBank,
-						payments[defPayType.onlineBank]
-					);
-					if (res.data.errorCode !== 0) {
-						setPopBox({
-							isOpen: true,
-							content: `[${res.data.errorCode}] ${res.data.message}`
-						});
-					}
-				} catch (error) {}
-
-				try {
-					const res = await api_payment_GetLoadCardPayGroupList();
-					payments[defPayType.loadCardPay] = getDataListResult(res);
-
-					defaultSelect = setDefaultSelect(
-						defaultSelect,
-						defPayType.loadCardPay,
-						payments[defPayType.loadCardPay]
-					);
-					if (res.data.errorCode !== 0) {
-						setPopBox({
-							isOpen: true,
-							content: `[${res.data.errorCode}] ${res.data.message}`
-						});
-					}
-				} catch (error) {}
-
-				try {
-					const res = await api_GetCryptoPayInfoList();
-					payments[defPayType.cryptoPay] = getDataListResult(res);
-
-					defaultSelect = setDefaultSelect(
-						defaultSelect,
-						defPayType.cryptoPay,
-						payments[defPayType.cryptoPay]
-					);
-					if (res.data.errorCode !== 0) {
-						setPopBox({
-							isOpen: true,
-							content: `[${res.data.errorCode}] ${res.data.message}`
-						});
-					}
-				} catch (error) {}
-
-				try {
-					const res = await api_GetQRPayGroupList();
-					payments[defPayType.qrPay] = getDataListResult(res);
-
-					defaultSelect = setDefaultSelect(
-						defaultSelect,
-						defPayType.qrPay,
-						payments[defPayType.qrPay]
-					);
-					if (res.data.errorCode !== 0) {
-						setPopBox({
-							isOpen: true,
-							content: `[${res.data.errorCode}] ${res.data.message}`
-						});
-					}
-				} catch (error) {}
-
-				if (isMountedRef.current) {
-					setLoading(false);
-					setPaymentList(payments);
-					handleSelect(defaultSelect);
-				}
-			};
-
 			GetAllPayment();
 
 			api_GetDepositInfoRecent().then(
