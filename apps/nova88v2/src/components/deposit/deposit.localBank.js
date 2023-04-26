@@ -21,7 +21,8 @@ import {
 	isConvert,
 	number_format,
 	defCurrenyId,
-	getBase64
+	getBase64,
+	debounce
 } from "../common/common";
 import AmountInput from "./deposit.amountInput";
 import { useHandleAmount } from "../hook/useHandleAmount";
@@ -288,7 +289,7 @@ const Payment = props => {
 				}
 			}
 
-			const RedirectToNext = (real_amount, sysId) => {
+			const RedirectToNext = debounce((real_amount, sysId) => {
 				setLoading(true);
 				setPopBox(prevState => ({
 					...prevState,
@@ -426,7 +427,7 @@ const Payment = props => {
 							}
 						}
 					);
-			};
+			}, 1000);
 
 			const real_amount = _isConvert
 				? Number(amount) * 1000

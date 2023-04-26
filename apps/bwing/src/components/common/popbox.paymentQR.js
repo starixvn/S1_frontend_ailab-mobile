@@ -103,7 +103,12 @@ const Panel = ({
 							id="refQRcode"
 							value={QRcodeURL}
 						/>
-						<span className="txt-lightgray">
+						<span
+							className="txt-lightgray"
+							style={{
+								wordBreak: "break-all",
+								textAlign: "center"
+							}}>
 							{QRcodeURL}
 							<button
 								className="icon icon-files-empty"
