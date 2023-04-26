@@ -298,6 +298,9 @@ const Main = props => {
 		}
 		// eslint-disable-next-line guard-for-in
 		for (const key in map) {
+			map[key].minAmount = map[key].groupMin;
+			map[key].maxAmount = map[key].groupMax;
+
 			arr.push(map[key]);
 		}
 		return arr;
