@@ -1,6 +1,8 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { Redirect, Link } from "@reach/router";
+import classNames from "classnames";
+import { cambodiaSeaGameEventPeriod, isDateRange } from "@ailab-mobile/common";
 import {
 	userInfoContext,
 	i18nContext,
@@ -48,7 +50,13 @@ const Header = ({
 								<span>≡</span>
 							</button>
 						</div>
-						<a href="/" className="logo">
+						<a
+							href="/"
+							className={classNames("logo", {
+								cambodia: isDateRange(
+									cambodiaSeaGameEventPeriod
+								)
+							})}>
 							<Logo />
 						</a>
 					</>

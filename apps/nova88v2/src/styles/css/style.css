@@ -2998,18 +2998,37 @@ footer > a.active .circleAnimation::after {
   display: block;
 }
 #popup.noticepop .checkbox {
-  width: 100%;
-  margin: 2vw auto;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  margin: 2vw auto 3vw;
   text-align: center;
   color: #233d67;
   font-weight: normal;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
 }
-#popup.noticepop .checkbox label {
-  margin: 0 1vw 0 0;
-  border: 1px solid #f77a00;
+#popup.noticepop .checkbox input[type=checkbox] {
+  opacity: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+}
+#popup.noticepop .checkbox input[type=checkbox] + label {
+  margin: 0vw 1vw 0 0;
+  border: 1px solid #F77A00;
   border-radius: 100%;
-  width: 3vw;
-  height: 3vw;
+  width: 3.5vw;
+  height: 3.5vw;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -3017,6 +3036,16 @@ footer > a.active .circleAnimation::after {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+#popup.noticepop .checkbox input[type=checkbox] + label > div {
+  width: 3vw;
+  height: 3vw;
+  background: transparent;
+  margin: auto;
+  border-radius: 100%;
+}
+#popup.noticepop .checkbox input[type=checkbox]:checked + label > div {
+  background: #F77A00;
 }
 #popup.noticepop .btn-group {
   -webkit-box-pack: center;
@@ -12717,5 +12746,172 @@ input:-webkit-autofill:active {
   70% {
     -webkit-transform: rotate(0deg) scale(1);
             transform: rotate(0deg) scale(1);
+  }
+}
+.subheader {
+  background: #fff;
+  padding: 1.5vw;
+}
+.subheader__container {
+  width: calc(100% - 3vw);
+  margin: 0 auto;
+}
+.subheader a::before {
+  content: "";
+  display: block;
+  width: 130px;
+  height: 58px;
+  background-image: url("https://banner.0814media.net/h5/img/logo_en_w.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  -webkit-transition: ease 0.15s;
+  transition: ease 0.15s;
+}
+
+.subcopyright {
+  width: calc(100% - 4vw);
+  margin: 0 auto;
+  background: #D2E2F9;
+  padding: 2vw;
+  text-align: center;
+  color: #5574A7;
+  font-size: 3vw;
+}
+
+.exclude {
+  padding: 5vw 2vw;
+  background: #F0F7FF;
+  color: #7591C1;
+  font-size: 3vw;
+  width: calc(100% - 4vw);
+}
+.exclude__container {
+  width: 100%;
+  margin: 0 auto;
+}
+.exclude__title {
+  font-weight: bold;
+  font-size: 4.25vw;
+  color: #5574A7;
+  position: relative;
+  margin-bottom: 25px;
+}
+.exclude__title::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  width: 100%;
+  background-image: -webkit-gradient(linear, left top, right top, from(#5574A7), to(rgba(247, 122, 0, 0)));
+  background-image: linear-gradient(to right, #5574A7, rgba(247, 122, 0, 0));
+}
+.exclude__table {
+  width: 100%;
+  border-left: 1px solid #7591c1;
+  border-right: 1px solid #7591c1;
+  border-radius: 3px;
+  text-align: center;
+}
+.exclude__table__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.exclude__table__item:first-child div {
+  background: #7591c1;
+  color: #fff;
+  font-weight: bold;
+}
+.exclude__table__item div {
+  background: #fcfcfc;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 30vw;
+          flex: 1 1 30vw;
+  padding: 0.5vw 0;
+  border-bottom: 1px solid #7591c1;
+}
+.exclude__table__item div:first-child {
+  border-right: 1px solid #7591c1;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 5vw;
+          flex: 1 1 5vw;
+}
+.exclude__table__item div span {
+  display: block;
+  width: 100%;
+  text-align: center;
+  line-height: 1.75;
+  position: relative;
+}
+.exclude__table__item div span::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -0.2vw;
+  height: 1px;
+  width: 100%;
+  background: #7591c1;
+}
+.exclude__table__item div span:last-child::after {
+  height: 0;
+  display: none;
+}
+
+.cambodia::before {
+  content: "";
+  display: block;
+  width: 15vw;
+  height: 16vw;
+  -webkit-animation: rabbitboy 1s infinite;
+          animation: rabbitboy 1s infinite;
+  position: absolute;
+  bottom: -1.1vw;
+  left: 25vw;
+  z-index: 9;
+}
+
+@-webkit-keyframes rabbitboy {
+  0% {
+    background: url(https://banner.0814media.net/h5/img/rabbitboy-a.png) no-repeat center/cover;
+  }
+  50% {
+    background: url(https://banner.0814media.net/h5/img/rabbitboy-b.png) no-repeat center/cover;
+  }
+  100% {
+    background: url(https://banner.0814media.net/h5/img/rabbitboy-a.png) no-repeat center/cover;
+  }
+}
+
+@keyframes rabbitboy {
+  0% {
+    background: url(https://banner.0814media.net/h5/img/rabbitboy-a.png) no-repeat center/cover;
+  }
+  50% {
+    background: url(https://banner.0814media.net/h5/img/rabbitboy-b.png) no-repeat center/cover;
+  }
+  100% {
+    background: url(https://banner.0814media.net/h5/img/rabbitboy-a.png) no-repeat center/cover;
   }
 }/*# sourceMappingURL=style.css.map */
