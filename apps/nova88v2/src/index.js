@@ -1,7 +1,6 @@
 import React from "react";
 import { render } from "react-snapshot";
 import { Helmet } from "react-helmet";
-import config from "./config";
 import "./i18n/i18n";
 import App from "./app";
 
@@ -25,10 +24,6 @@ const Iovation = () => {
 				  };
 				`}
 			</script>
-			<script
-				src={`${config.openURL}/common/js/loader_only.js?v=201027`}
-				type="text/javascript"
-			/>
 		</Helmet>
 	);
 };
