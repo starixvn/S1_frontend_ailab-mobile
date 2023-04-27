@@ -14300,4 +14300,77 @@ span.important {
 .exclude__table__item div span:last-child::after {
   height: 0;
   display: none;
+}
+
+.headerTLogout {
+  position: relative;
+}
+
+.cambodia::before {
+  content: "";
+  display: block;
+  width: 14vw;
+  height: 14vw;
+  -webkit-animation: rabbitboy 1s infinite;
+          animation: rabbitboy 1s infinite;
+  position: absolute;
+  left: 64vw;
+  bottom: -1vw;
+}
+.cambodia:after {
+  content: "";
+  display: block;
+  width: 15vw;
+  height: 15vw;
+  -webkit-animation: rabbitgirl 1s infinite;
+          animation: rabbitgirl 1s infinite;
+  position: absolute;
+  left: 67vw;
+  bottom: -1vw;
+}
+
+@-webkit-keyframes rabbitgirl {
+  0% {
+    background: url(https://banner.bw88.io/h5/img/rabbitgirl-a.png) no-repeat center/cover;
+  }
+  50% {
+    background: url(https://banner.bw88.io/h5/img/rabbitgirl-b.png) no-repeat center/cover;
+  }
+  100% {
+    background: url(https://banner.bw88.io/h5/img/rabbitgirl-a.png) no-repeat center/cover;
+  }
+}
+
+@keyframes rabbitgirl {
+  0% {
+    background: url(https://banner.bw88.io/h5/img/rabbitgirl-a.png) no-repeat center/cover;
+  }
+  50% {
+    background: url(https://banner.bw88.io/h5/img/rabbitgirl-b.png) no-repeat center/cover;
+  }
+  100% {
+    background: url(https://banner.bw88.io/h5/img/rabbitgirl-a.png) no-repeat center/cover;
+  }
+}
+@-webkit-keyframes rabbitboy {
+  0% {
+    background: url(https://banner.bw88.io/h5/img/rabbitboy-a.png) no-repeat center/cover;
+  }
+  50% {
+    background: url(https://banner.bw88.io/h5/img/rabbitboy-b.png) no-repeat center/cover;
+  }
+  100% {
+    background: url(https://banner.bw88.io/h5/img/rabbitboy-a.png) no-repeat center/cover;
+  }
+}
+@keyframes rabbitboy {
+  0% {
+    background: url(https://banner.bw88.io/h5/img/rabbitboy-a.png) no-repeat center/cover;
+  }
+  50% {
+    background: url(https://banner.bw88.io/h5/img/rabbitboy-b.png) no-repeat center/cover;
+  }
+  100% {
+    background: url(https://banner.bw88.io/h5/img/rabbitboy-a.png) no-repeat center/cover;
+  }
 }/*# sourceMappingURL=style.css.map */
