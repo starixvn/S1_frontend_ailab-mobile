@@ -1554,7 +1554,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   content: "";
   display: block;
 }
-<<<<<<< .merge_file_a11632
 #popup.qrpayPop {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
@@ -1727,8 +1726,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   border: 0;
   border-radius: 2px;
 }
-=======
->>>>>>> .merge_file_a28340
 
 .txt-red {
   color: #d83b35;
@@ -6859,7 +6856,6 @@ span.important {
 .depositModule_Crpyto .selectModule .dropdown {
   padding: 1vw 1vw 1vw 2vw;
 }
-<<<<<<< .merge_file_a11632
 .depositModule_mobile .selectModule .infoAccount + .subtitle,
 .depositModule_online .selectModule .infoAccount + .subtitle,
 .depositModule_local .selectModule .infoAccount + .subtitle,
@@ -6906,8 +6902,6 @@ span.important {
   width: auto;
   height: 100%;
 }
-=======
->>>>>>> .merge_file_a28340
 .depositModule_mobile .input-group,
 .depositModule_online .input-group,
 .depositModule_local .input-group,
@@ -10296,30 +10290,18 @@ span.important {
 
 .cambodia {
   position: relative;
-<<<<<<< .merge_file_a11632
-=======
   margin-left: 5vw;
 }
 @media (min-width: 768px) {
   .cambodia {
     margin-left: 10vw;
   }
->>>>>>> .merge_file_a28340
 }
 .cambodia::before {
   content: "";
   display: block;
   background: url(https://banner.goal123.org/h5/img/rabbitboy.png) no-repeat center/cover;
   position: absolute;
-<<<<<<< .merge_file_a11632
-  width: 14vw;
-  height: 14vw;
-  top: -4.5vw;
-  left: -12.1vw;
-  -webkit-animation: slide-in-blurred-right 2s cubic-bezier(0.23, 1, 0.32, 1) both;
-          animation: slide-in-blurred-right 2s cubic-bezier(0.23, 1, 0.32, 1) both;
-}
-=======
   width: 12vw;
   height: 12vw;
   top: -3.5vw;
@@ -10332,7 +10314,6 @@ span.important {
     background: none;
   }
 }
->>>>>>> .merge_file_a28340
 
 @-webkit-keyframes slide-in-blurred-right {
   0% {
