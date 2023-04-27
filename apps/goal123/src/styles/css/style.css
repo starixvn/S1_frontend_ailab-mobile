@@ -10072,18 +10072,29 @@ span.important {
 
 .cambodia {
   position: relative;
+  margin-left: 5vw;
+}
+@media (min-width: 768px) {
+  .cambodia {
+    margin-left: 10vw;
+  }
 }
 .cambodia::before {
   content: "";
   display: block;
   background: url(https://banner.goal123.org/h5/img/rabbitboy.png) no-repeat center/cover;
   position: absolute;
-  width: 14vw;
-  height: 14vw;
-  top: -4.5vw;
-  left: -12.1vw;
+  width: 12vw;
+  height: 12vw;
+  top: -3.5vw;
+  left: -10vw;
   -webkit-animation: slide-in-blurred-right 2s cubic-bezier(0.23, 1, 0.32, 1) both;
           animation: slide-in-blurred-right 2s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+@media (max-width: 320px) {
+  .cambodia::before {
+    background: none;
+  }
 }
 
 @-webkit-keyframes slide-in-blurred-right {
