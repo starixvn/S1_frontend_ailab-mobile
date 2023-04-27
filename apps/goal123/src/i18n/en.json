@@ -89,6 +89,7 @@
 	"lbl_DepositType2": "Mobile Payment",
 	"lbl_DepositType3": "Bank Transfer",
 	"lbl_DepositType4": "Crypto Pay",
+  "lbl_DepositType8": "Crypto Wallet",
 	"lbl_Details": "Details",
 	"lbl_Direction": "Direction",
 	"lbl_DrivingLicense": "Driving License",

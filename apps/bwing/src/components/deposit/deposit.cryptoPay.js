@@ -13,7 +13,10 @@ import PageVerify from "./deposit.pageVerify";
 import config, { paymentImgUrl } from "../../config";
 import { debounce, isConvert, number_format } from "../common/common";
 import { useHandleAmount } from "./hook/useHandleAmount";
-import { api_depositReqCryptoPay } from "../../service/api/cashier";
+import {
+	api_depositReqCryptoPay,
+	api_depositReqCryptoLocalPay
+} from "../../service/api/cashier";
 import { defPopBoxType } from "../common/popbox";
 import PromoList from "./promoList";
 
@@ -124,80 +127,143 @@ const Main = props => {
 
 					if (selChannel?.mode === 3) {
 						setLoading(true);
-						api_depositReqCryptoPay({
-							langId: userInfo.langId,
-							channelId: selChannel.channelId,
-							real_amount,
-							bonusCode: depositPromo.bonusCode
-						}).then(
-							res => {
-								if (res.data.errorCode === 0) {
-									setLoading(false);
-									const { formData } = res.data.data;
-									const promoContent = {
-										cashbackAmount: null,
-										receivedAmount: null,
-										PromotionRate: null,
-										Promotion: null
-									};
-									if (formData?.Promotion === "1") {
-										promoContent.cashbackAmount =
-											formData?.PromotionAmount;
-										promoContent.receivedAmount =
-											Number(formData?.PromotionAmount) +
-											Number(formData?.DepositAmount);
-										promoContent.PromotionRate = `${Number(
-											res.data.data.formData
-												?.PromotionRate
-										).toFixed(2)}%`;
 
-										promoContent.Promotion =
-											formData?.Promotion;
+						// groupId===-1表示是自營的crypto wallet
+						if (selChannel.groupId === -1) {
+							api_depositReqCryptoLocalPay({
+								langId: userInfo.langId,
+								channelId: selChannel.channelId,
+								real_amount,
+								bonusCode: depositPromo.bonusCode
+							}).then(
+								res => {
+									if (res.data.errorCode === 0) {
+										setLoading(false);
+										const { formData } = res.data.data;
+										setPopBox({
+											isOpen: true,
+											title: i18n.lbl_DepositType8,
+											className: "cryptoPay active",
+											popBoxType: defPopBoxType.paymentQR,
+											amount: real_amount,
+											depositAmount:
+												formData?.DepositAmount,
+											currencyId: userInfo.currencyId,
+											QRcodeURL: res.data.data.url,
+											currencyName:
+												selChannel?.currencyName,
+											RequestAmount: Number(
+												formData?.RequestAmount
+											).toString(),
+											Rate: Number(
+												formData?.Rate
+											).toString(),
+											Token: formData?.Token,
+											handlePopBox: () => {
+												setPopBox(prevState => ({
+													...prevState,
+													isOpen: false
+												}));
+												window.location.reload();
+											}
+										});
+									} else {
+										setPopBox({
+											isOpen: true,
+											content: `[${res.data.errorCode}] ${res.data.message}`
+										});
 									}
+								},
+								() => {
 									setPopBox({
 										isOpen: true,
-										title: i18n.lbl_DepositType4,
-										className: "cryptoPay active",
-										popBoxType: defPopBoxType.paymentQR,
-										amount: real_amount,
-										depositAmount: formData?.DepositAmount,
-										currencyId: userInfo.currencyId,
-										cashbackAmount:
-											promoContent.cashbackAmount,
-										currencyName: selChannel?.currencyName,
-										receivedAmount:
-											promoContent.receivedAmount,
-										PromotionRate:
-											promoContent.PromotionRate,
-										promoContent: promoContent.Promotion,
-										QRcodeURL: res.data.data.url,
-										RequestAmount: Number(
-											formData?.RequestAmount
-										).toString(),
-										Rate: Number(formData?.Rate).toString(),
-										Token: formData?.Token,
-										handlePopBox: () => {
-											setPopBox(prevState => ({
-												...prevState,
-												isOpen: false
-											}));
-											window.location.reload();
-										}
-									});
-								} else {
-									setPopBox({
-										isOpen: true,
-										content: `[${res.data.errorCode}] ${res.data.message}`
+										content: i18n.msg_ApiServerError
 									});
 								}
-							},
-							() => {
-								setPopBox({
-									isOpen: true,
-									content: i18n.msg_ApiServerError
-								});
-							}
-						);
+							);
+						} else {
+							api_depositReqCryptoPay({
+								langId: userInfo.langId,
+								channelId: selChannel.channelId,
+								real_amount,
+								bonusCode: depositPromo.bonusCode
+							}).then(
+								res => {
+									if (res.data.errorCode === 0) {
+										setLoading(false);
+										const { formData } = res.data.data;
+										const promoContent = {
+											cashbackAmount: null,
+											receivedAmount: null,
+											PromotionRate: null,
+											Promotion: null
+										};
+										if (formData?.Promotion === "1") {
+											promoContent.cashbackAmount =
+												formData?.PromotionAmount;
+											promoContent.receivedAmount =
+												Number(
+													formData?.PromotionAmount
+												) +
+												Number(formData?.DepositAmount);
+											promoContent.PromotionRate = `${Number(
+												res.data.data.formData
+													?.PromotionRate
+											).toFixed(2)}%`;
+
+											promoContent.Promotion =
+												formData?.Promotion;
+										}
+										setPopBox({
+											isOpen: true,
+											title: i18n.lbl_DepositType4,
+											className: "cryptoPay active",
+											popBoxType: defPopBoxType.paymentQR,
+											amount: real_amount,
+											depositAmount:
+												formData?.DepositAmount,
+											currencyId: userInfo.currencyId,
+											cashbackAmount:
+												promoContent.cashbackAmount,
+											currencyName:
+												selChannel?.currencyName,
+											receivedAmount:
+												promoContent.receivedAmount,
+											PromotionRate:
+												promoContent.PromotionRate,
+											promoContent:
+												promoContent.Promotion,
+											QRcodeURL: res.data.data.url,
+											RequestAmount: Number(
+												formData?.RequestAmount
+											).toString(),
+											Rate: Number(
+												formData?.Rate
+											).toString(),
+											Token: formData?.Token,
+											handlePopBox: () => {
+												setPopBox(prevState => ({
+													...prevState,
+													isOpen: false
+												}));
+												window.location.reload();
+											}
+										});
+									} else {
+										setPopBox({
+											isOpen: true,
+											content: `[${res.data.errorCode}] ${res.data.message}`
+										});
+									}
+								},
+								() => {
+									setPopBox({
+										isOpen: true,
+										content: i18n.msg_ApiServerError
+									});
+								}
+							);
+						}
 					} else {
 						setPopBox(prevState => ({
 							...prevState,

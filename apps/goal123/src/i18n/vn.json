@@ -89,6 +89,7 @@
 	"lbl_DepositType2": "Thanh toán qua  ĐT",
 	"lbl_DepositType3": "Chuyển khoản",
 	"lbl_DepositType4": "Thanh toán bằng tiền ảo",
+  "lbl_DepositType8": "Crypto Wallet",
 	"lbl_Details": "Chi tiết",
 	"lbl_Direction": "phương hướng",
 	"lbl_DrivingLicense": "Bằng lái xe",

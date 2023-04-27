@@ -719,6 +719,7 @@
 	"lbl_DepositType2": "मोबाइल भुगतान",
 	"lbl_DepositType3": "स्थानीय बैंक",
 	"lbl_DepositType4": "क्रिप्टो भुगतान",
+  "lbl_DepositType8": "Crypto Wallet",
 	"lbl_Deposit_DragonPayPop_BankName": "बैंक का नाम",
 	"lbl_Deposit_DragonPayPop_OrderNumber": "क्रम संख्या",
 	"lbl_Deposit_DragonPayPop_AccountName": "खाते का नाम",
