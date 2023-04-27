@@ -154,6 +154,17 @@ const License = ({ i18n }) => {
 								data-xcm-image-size="36"
 								data-xcm-image-type="basic-small"
 							/>
+							<div>
+								<a
+									href="https://www.begambleaware.org/"
+									target="_blank"
+									rel="noreferrer">
+									<img
+										src="https://banner.0814media.net/h5/img/aware.png"
+										alt=""
+									/>
+								</a>
+							</div>
 						</div>
 					</>
 				)}
