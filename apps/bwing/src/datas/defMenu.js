@@ -142,17 +142,17 @@ export const productList = langId => {
 					img: `${bannerImgUrl}/h5/img/new-game/vgamimg.png`,
 					...defGameInfo.sabaClub
 				},
-				{
-					displayText: "Max Game",
-					img: `${bannerImgUrl}/h5/img/new-game/max.png`,
-					...defGameInfo.MaxGame,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.game_MaxGame)
-						}
-					]
-				},
+				// {
+				// 	displayText: "Max Game",
+				// 	img: `${bannerImgUrl}/h5/img/new-game/max.png`,
+				// 	...defGameInfo.MaxGame,
+				// 	eventIcon: [
+				// 		{
+				// 			icon: defIconType.new,
+				// 			inPeriod: isEventPeriod(eventTime.game_MaxGame)
+				// 		}
+				// 	]
+				// },
 				{
 					displayKey: "lbl_V8Poker",
 					img: `${bannerImgUrl}/h5/img/new-game/v8.png`,
@@ -162,12 +162,12 @@ export const productList = langId => {
 					displayKey: "lbl_tableGame",
 					img: `${bannerImgUrl}/h5/img/new-game/table.png`,
 					...defGameInfo.tableGame
-				},
-				{
-					displayKey: "lbl_VirtualGames",
-					img: `${bannerImgUrl}/h5/img/new-game/virtual.png`,
-					...defGameInfo.VirtualGame
 				}
+				// {
+				// 	displayKey: "lbl_VirtualGames",
+				// 	img: `${bannerImgUrl}/h5/img/new-game/virtual.png`,
+				// 	...defGameInfo.VirtualGame
+				// }
 			]
 		},
 		eSports: {
@@ -629,10 +629,10 @@ export const defSubMenus = () => [
 				...defGameInfo.sabaClub,
 				displayKey: "lbl_Vgaming"
 			},
-			{
-				...defGameInfo.MaxGame,
-				displayText: "Max Game"
-			},
+			// {
+			// 	...defGameInfo.MaxGame,
+			// 	displayText: "Max Game"
+			// },
 			{
 				...defGameInfo.V8Poker,
 				displayKey: "lbl_V8Poker"
@@ -640,11 +640,11 @@ export const defSubMenus = () => [
 			{
 				...defGameInfo.tableGame,
 				displayKey: "lbl_tableGame"
-			},
-			{
-				...defGameInfo.VirtualGame,
-				displayKey: "lbl_VirtualGames"
 			}
+			// {
+			// 	...defGameInfo.VirtualGame,
+			// 	displayKey: "lbl_VirtualGames"
+			// }
 		]
 	},
 	{
