@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "@reach/router";
+import classNames from "classnames";
+import { cambodiaSeaGameEventPeriod, isDateRange } from "@ailab-mobile/common";
 import {
 	userInfoContext,
 	i18nContext,
@@ -108,7 +110,10 @@ Header.propTypes = {
 
 const BeforeLogin = ({ onClickSubMenu, isShow, title, hideLogo }) => {
 	return isShow ? (
-		<div className="headerTLogout">
+		<div
+			className={classNames("headerTLogout", {
+				cambodia: isDateRange(cambodiaSeaGameEventPeriod)
+			})}>
 			<div className="close noPos" onClick={onClickSubMenu}>
 				<span />
 				<span />
@@ -158,7 +163,10 @@ const AfterLogin = ({
 	return (
 		isShow && (
 			<>
-				<div className="headerTLogout">
+				<div
+					className={classNames("headerTLogout", {
+						cambodia: isDateRange(cambodiaSeaGameEventPeriod)
+					})}>
 					<div className="close noPos" onClick={onClickSubMenu}>
 						<span />
 						<span />
