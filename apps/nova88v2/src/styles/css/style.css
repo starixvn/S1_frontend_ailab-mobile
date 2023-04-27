@@ -12878,4 +12878,41 @@ input:-webkit-autofill:active {
 .exclude__table__item div span:last-child::after {
   height: 0;
   display: none;
+}
+
+.cambodia::before {
+  content: "";
+  display: block;
+  width: 15vw;
+  height: 16vw;
+  -webkit-animation: rabbitboy 1s infinite;
+          animation: rabbitboy 1s infinite;
+  position: absolute;
+  bottom: -1.1vw;
+  left: 25vw;
+  z-index: 9;
+}
+
+@-webkit-keyframes rabbitboy {
+  0% {
+    background: url(https://banner.0814media.net/h5/img/rabbitboy-a.png) no-repeat center/cover;
+  }
+  50% {
+    background: url(https://banner.0814media.net/h5/img/rabbitboy-b.png) no-repeat center/cover;
+  }
+  100% {
+    background: url(https://banner.0814media.net/h5/img/rabbitboy-a.png) no-repeat center/cover;
+  }
+}
+
+@keyframes rabbitboy {
+  0% {
+    background: url(https://banner.0814media.net/h5/img/rabbitboy-a.png) no-repeat center/cover;
+  }
+  50% {
+    background: url(https://banner.0814media.net/h5/img/rabbitboy-b.png) no-repeat center/cover;
+  }
+  100% {
+    background: url(https://banner.0814media.net/h5/img/rabbitboy-a.png) no-repeat center/cover;
+  }
 }/*# sourceMappingURL=style.css.map */
