@@ -132,12 +132,12 @@ export const defGameInfo = {
 		gameId: 237,
 		tpGameType: 83
 	},
-	VirtualGame: {
-		// tpId: 1,
-		tpId: 41, // seamless wallet
-		gameId: 245,
-		tpGameType: 22
-	},
+	// VirtualGame: {
+	// 	// tpId: 1,
+	// 	tpId: 41, // seamless wallet
+	// 	gameId: 245,
+	// 	tpGameType: 22
+	// },
 	VirtualSports: {
 		// tpId: 1,
 		tpId: 41, // seamless wallet
@@ -398,17 +398,17 @@ const gameList = [
 				img: `${bannerImgUrl}/h5/img/hotgame/new-games/vga.png`,
 				spanTextKey: "lbl_Vgaming"
 			},
-			{
-				...defGameInfo.MaxGame,
-				img: `${bannerImgUrl}/h5/img/hotgame/new-games/maxgame.png`,
-				spanText: "Max Game",
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.game_MaxGame)
-					}
-				]
-			},
+			// {
+			// 	...defGameInfo.MaxGame,
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/new-games/maxgame.png`,
+			// 	spanText: "Max Game",
+			// 	eventIcon: [
+			// 		{
+			// 			icon: defIconType.new,
+			// 			inPeriod: isEventPeriod(eventTime.game_MaxGame)
+			// 		}
+			// 	]
+			// },
 			{
 				...defGameInfo.V8Poker,
 				img: `${bannerImgUrl}/h5/img/hotgame/new-games/v8.png`,
