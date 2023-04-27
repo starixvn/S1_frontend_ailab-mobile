@@ -36,6 +36,10 @@ const defPlatfrom = [
 		otherPlatformImg: "ppb"
 	},
 	{
+		...defGameInfo.LIVEcasinoBG,
+		imgName: "bga"
+	},
+	{
 		...defGameInfo.LIVEcasinoYEEBET,
 		imgName: "yba"
 	},

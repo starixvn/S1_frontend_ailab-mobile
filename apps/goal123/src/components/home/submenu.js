@@ -182,6 +182,10 @@ const defSubMenus = [
 				displayText: "Pragmatic Play"
 			},
 			{
+				...defGameInfo.LIVEcasinoBG,
+				displayText: "Big Gaming"
+			},
+			{
 				...defGameInfo.LIVEcasinoYEEBET,
 				displayText: "YEEBET"
 			},
