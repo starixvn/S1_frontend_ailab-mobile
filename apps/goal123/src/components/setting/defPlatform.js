@@ -8,6 +8,10 @@ const defPlatfrom = [
 		otherPlatformImg: "sabab"
 	},
 	{
+		...defGameInfo.eSports_TFGaming,
+		imgName: "tfga"
+	},
+	{
 		...defGameInfo.SBOSport,
 		imgName: "sboa"
 	},

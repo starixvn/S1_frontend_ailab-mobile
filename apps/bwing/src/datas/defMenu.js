@@ -174,7 +174,25 @@ export const productList = langId => {
 			category: "virtualsports",
 			displayKey: "lbl_eSports",
 			...defGameInfo.eSports,
-			icon_img: `${bannerImgUrl}/h5/img/gameicon/esport.png`
+			icon_img: `${bannerImgUrl}/h5/img/gameicon/esport.png`,
+			items: [
+				{
+					displayKey: "lbl_Saba",
+					img: `${bannerImgUrl}/h5/img/esport/saba.png`,
+					...defGameInfo.eSports
+				},
+				{
+					displayKey: "lbl_TFGaming",
+					img: `${bannerImgUrl}/h5/img/esport/tfg.png`,
+					...defGameInfo.eSports_TFGaming,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.TFGaming)
+						}
+					]
+				}
+			]
 		},
 		casino: {
 			category: "slot",
@@ -730,7 +748,17 @@ export const defSubMenus = () => [
 	{
 		...defGameInfo.eSports,
 		displayKey: "lbl_eSports",
-		icon: "icon icon-e-sports"
+		icon: "icon icon-e-sports",
+		subItems: [
+			{
+				...defGameInfo.eSports,
+				displayKey: "lbl_Saba"
+			},
+			{
+				...defGameInfo.eSports_TFGaming,
+				displayKey: "lbl_TFGaming"
+			}
+		]
 	},
 	{
 		displayKey: "lbl_Slots",

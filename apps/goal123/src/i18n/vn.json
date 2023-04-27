@@ -546,6 +546,8 @@
 	"lbl_MaximumNumberOfFiles": "Số tập tin đối đa:6",
 	"lbl_AcceptedFileType": "Các kiểu được hỗ trợ: JPG, JPEG, PNG",
 	"lbl_DepositOptions": "Phương thức nạp tiền",
+  "lbl_Saba": "Saba",
+  "lbl_TFGaming": "TFGaming",
 
 	"==============General==============": "",
 	"lbl_Jackpot": "NỔ HŨ",
