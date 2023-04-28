@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { userInfoContext, i18nContext } from "Context";
 import { cloudBannerImgURL, siteInfo } from "../../config";
 import Platform from "./other.platform";
-import { getCombineLangId } from "../common/common";
+import { defCurrenyId, getCombineLangId } from "../common/common";
 
 export default () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -86,15 +86,19 @@ export default () => {
 						target="_blank">
 						{i18n.lbl_AccountTerms}
 					</a>
-					<a
-						href={`${cloudBannerImgURL}/Static/${getCombineLangId(
-							userInfo.langId,
-							userInfo.currencyId
-						)}/FAQ.html`}
-						rel="noopener noreferrer"
-						target="_blank">
-						{i18n.lbl_FAQ}
-					</a>
+
+					{/* // * FAQ 還沒有 KHM 的文案，所以不給使用者連結 */}
+					{userInfo.currencyId !== defCurrenyId.KHM && (
+						<a
+							href={`${cloudBannerImgURL}/Static/${getCombineLangId(
+								userInfo.langId,
+								userInfo.currencyId
+							)}/FAQ.html`}
+							rel="noopener noreferrer"
+							target="_blank">
+							{i18n.lbl_FAQ}
+						</a>
+					)}
 				</div>
 				<div>
 					<span>{i18n.lbl_Title}</span>

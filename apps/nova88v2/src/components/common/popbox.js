@@ -9,6 +9,7 @@ import PromptDeposit from "./popbox.promptDeposit";
 import PaymentQR from "./popbox.paymentQR";
 import AddCryptoWallet from "./popbox.addCrypto";
 import BankQR from "./popbox.bankQR";
+import UpdateProfile from "./popbox.updateProfile";
 
 export const defPopBoxType = {
 	default: "default",
@@ -20,7 +21,8 @@ export const defPopBoxType = {
 	PromptDeposit: "PromptDeposit",
 	PaymentQR: "PaymentQR",
 	AddCryptoWallet: "AddCryptoWallet",
-	BankQR: "BankQR"
+	BankQR: "BankQR",
+	UpdateProfile: "UpdateProfile"
 };
 
 const PopUp = () => {
@@ -72,6 +74,10 @@ const PopUp = () => {
 
 		case defPopBoxType.BankQR:
 			content = <BankQR {...popBox} />;
+			break;
+
+		case defPopBoxType.UpdateProfile:
+			content = <UpdateProfile {...popBox} />;
 			break;
 
 		default:

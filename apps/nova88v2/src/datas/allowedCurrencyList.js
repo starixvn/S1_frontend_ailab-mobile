@@ -23,6 +23,7 @@ const allowedCurrencyList = {
 		defCurrenyId.CNY,
 		defCurrenyId.BDT,
 		defCurrenyId.USD,
+		defCurrenyId.KHM,
 		defCurrenyId.INR
 	],
 	exchange: [defCurrenyId.INR, defCurrenyId.BDT],
@@ -61,8 +62,8 @@ const allowedCurrencyList = {
 	slotAMB: [
 		defCurrenyId.THB,
 		defCurrenyId.USD,
-		defCurrenyId.CNY,
-		defCurrenyId.KHM
+		defCurrenyId.KHM,
+		defCurrenyId.CNY
 	],
 
 	// poker
@@ -72,7 +73,8 @@ const allowedCurrencyList = {
 		defCurrenyId.THB,
 		defCurrenyId.BDT,
 		defCurrenyId.CNY,
-		defCurrenyId.USD
+		defCurrenyId.USD,
+		defCurrenyId.KHM
 	],
 
 	// game
@@ -85,6 +87,7 @@ const allowedCurrencyList = {
 		defCurrenyId.BDT,
 		defCurrenyId.CNY,
 		defCurrenyId.USD,
+		defCurrenyId.KHM,
 		defCurrenyId.INR
 	],
 	maxGame: [
@@ -94,6 +97,7 @@ const allowedCurrencyList = {
 		defCurrenyId.BDT,
 		defCurrenyId.CNY,
 		defCurrenyId.USD,
+		defCurrenyId.KHM,
 		defCurrenyId.INR
 	],
 	virtualGame: [
@@ -103,6 +107,7 @@ const allowedCurrencyList = {
 		defCurrenyId.BDT,
 		defCurrenyId.CNY,
 		defCurrenyId.USD,
+		defCurrenyId.KHM,
 		defCurrenyId.INR
 	],
 

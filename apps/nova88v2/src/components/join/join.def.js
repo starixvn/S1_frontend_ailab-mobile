@@ -76,7 +76,8 @@ export const reCaptchaEnum = {
 	id: "id",
 	my: "ms",
 	th: "th",
-	bd: "bn"
+	bd: "bn",
+	kh: "en"
 };
 
 export const countryEnum = {

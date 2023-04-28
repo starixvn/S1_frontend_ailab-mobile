@@ -157,22 +157,6 @@ const defSortCasino = {
 		"casino_WM",
 		"casino_EBET",
 		"casino_N2LIVE"
-	],
-	[defCurrenyId.KHM]: [
-		"casino_PP",
-		"casino_YEEBET",
-		"casino_Skywind",
-		"casino_MG",
-		"casino_EVO",
-		"casino_PT",
-		"casino_DG",
-		"casino_AE",
-		"casino_SA",
-		"casino_ALBET",
-		"casino_AG",
-		"casino_WM",
-		"casino_EBET",
-		"casino_N2LIVE"
 	]
 };
 

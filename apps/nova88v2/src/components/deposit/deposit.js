@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import { useNavigate } from "@reach/router";
+import { useNavigate, Link } from "@reach/router";
 import moment from "moment";
 import {
 	i18nContext,
@@ -30,6 +30,7 @@ import Balance from "./deposit.balance";
 import { defPayType } from "./deposit.def";
 import Options from "./deposit.options";
 import { defPopBoxType } from "../common/popbox";
+import path from "../../path";
 
 const useHandleSelect = defaultSelect => {
 	const [selected, setSelected] = useState(defaultSelect ?? "");
@@ -401,6 +402,37 @@ const Panel = () => {
 		userInfo.currencyId,
 		isCancelSubmit
 	]);
+
+	useEffect(() => {
+		const checkUserInfo = () => {
+			const { isLogin, accountName, phoneNo, email } = userInfo;
+
+			if (
+				isLogin &&
+				isMountedRef.current &&
+				((!accountName && accountName !== undefined) ||
+					(!phoneNo && phoneNo !== undefined) ||
+					(!email && email !== undefined))
+			) {
+				setPopBox({
+					isOpen: true,
+					popBoxType: defPopBoxType.UpdateProfile,
+					title: i18n.lbl_ImportantNote,
+					content: i18n.lbl_UpdatePersonalInfo,
+					btnBar: (
+						<div className="btnGroup">
+							<Link
+								className="btn-check"
+								to={`/${userInfo.langId}/${path.profile.root}`}>
+								{i18n.lbl_UpdatePersonalDetail}
+							</Link>
+						</div>
+					)
+				});
+			}
+		};
+		checkUserInfo();
+	}, [userInfo.isLogin, userInfo.userName, userInfo.accountName]);
 
 	const _isConvert = isConvert(userInfo.currencyId);
 	const SubmitProof = (
