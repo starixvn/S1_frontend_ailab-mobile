@@ -16,6 +16,7 @@ import SiteURL, { siteInfo, cloudBannerImgURL } from "../../config";
 import { getLeaderBoardSupportCurrencyId } from "../ranking/def";
 import allowedCurrencyList from "../../datas/allowedCurrencyList";
 import { getCombineLangId, defCurrenyId } from "../common/common";
+import { getCurrencyLink } from "../../datas/productList";
 
 const BtnBar = ({ isLogin, i18n, msgCount, langId }) => {
 	return isLogin ? (
@@ -179,7 +180,10 @@ export default () => {
 					<div>
 						<a
 							className="title icon icon-affiliate"
-							href={siteInfo(userInfo.langId).affiliateLink}>
+							href={getCurrencyLink(
+								userInfo.currencyId,
+								userInfo.langId
+							)}>
 							{i18n.lbl_Affiliate}
 						</a>
 					</div>
@@ -279,7 +283,10 @@ export default () => {
 						{i18n.lbl_AboutUs}
 					</a>
 					<a
-						href={`${siteInfo(userInfo.langId).affiliateLink}`}
+						href={getCurrencyLink(
+							userInfo.currencyId,
+							userInfo.langId
+						)}
 						target="_blank"
 						rel="noreferrer noopener">
 						{i18n.lbl_Affiliate}

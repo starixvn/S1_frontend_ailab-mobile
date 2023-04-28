@@ -382,6 +382,14 @@ const JoinStep2 = ({
 				].lang.forEach(({ value }) => {
 					langList.push(value);
 				});
+				if (
+					userValue.CurrencyIdx === 1 &&
+					areaCodeList[userValue?.AreaCodeIdx]?.value === "+855"
+				) {
+					return ["en", "kh"].includes(defaultLangId)
+						? defaultLangId
+						: "en";
+				}
 				return langList.includes(defaultLangId) ? defaultLangId : "en";
 			};
 			const signupLangId = getSignupLangId();

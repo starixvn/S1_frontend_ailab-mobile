@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import { userInfoContext, i18nContext } from "Context";
-import { cloudBannerImgURL, siteInfo } from "../../config";
+import { cloudBannerImgURL } from "../../config";
 import Platform from "./other.platform";
 import { defCurrenyId, getCombineLangId } from "../common/common";
+import { getCurrencyLink } from "../../datas/productList";
 
 export default () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -104,7 +105,10 @@ export default () => {
 					<span>{i18n.lbl_Title}</span>
 					<a
 						style={{ fontWeight: "bold" }}
-						href={siteInfo(userInfo.langId).affiliateLink}
+						href={getCurrencyLink(
+							userInfo.currencyId,
+							userInfo.langId
+						)}
 						rel="noopener noreferrer"
 						target="_blank">
 						{i18n.lbl_Affiliate?.toUpperCase()}
