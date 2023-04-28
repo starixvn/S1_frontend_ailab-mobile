@@ -15,7 +15,7 @@ import path from "../../path";
 import SiteURL, { siteInfo, cloudBannerImgURL } from "../../config";
 import { getLeaderBoardSupportCurrencyId } from "../ranking/def";
 import allowedCurrencyList from "../../datas/allowedCurrencyList";
-import { getCombineLangId } from "../common/common";
+import { getCombineLangId, defCurrenyId } from "../common/common";
 
 const BtnBar = ({ isLogin, i18n, msgCount, langId }) => {
 	return isLogin ? (
@@ -252,15 +252,19 @@ export default () => {
 						rel="noreferrer noopener">
 						{i18n.lbl_AccountTerms}
 					</a>
-					<a
-						href={`${cloudBannerImgURL}/Static/${getCombineLangId(
-							userInfo.langId,
-							_currencyId
-						)}/FAQ.html`}
-						target="_blank"
-						rel="noreferrer noopener">
-						{i18n.lbl_FAQ}
-					</a>
+
+					{/* // * FAQ 還沒有 KHM 的文案，所以不給使用者連結 */}
+					{_currencyId !== defCurrenyId.KHM && (
+						<a
+							href={`${cloudBannerImgURL}/Static/${getCombineLangId(
+								userInfo.langId,
+								_currencyId
+							)}/FAQ.html`}
+							target="_blank"
+							rel="noreferrer noopener">
+							{i18n.lbl_FAQ}
+						</a>
+					)}
 				</Card>
 				<Card
 					btnTitle={siteInfo(userInfo.langId).siteName}
