@@ -142,13 +142,9 @@ const JoinStep2 = ({
 				if (isMountedRef.current) {
 					if (res.data?.errorCode === 0) {
 						const currencyNum = res.data.data;
-						const currencyArr = currencyNum
-							.filter(
-								currencyId => currencyId !== defCurrenyId.KHM
-							)
-							.map(id => {
-								return { id, displayKey: `Currency_${id}` };
-							});
+						const currencyArr = currencyNum.map(id => {
+							return { id, displayKey: `Currency_${id}` };
+						});
 						setSiteCurrencyState(() => currencyArr);
 					} else {
 						setPopBox({
@@ -396,7 +392,11 @@ const JoinStep2 = ({
 					areaCodeList[userValue?.AreaCodeIdx]?.value === "+855"
 						? defCurrenyId.KHM
 						: siteCurrency[userValue.CurrencyIdx]?.id,
-				UserLang: signupLangId,
+				UserLang:
+					userValue.CurrencyIdx === 1 &&
+					areaCodeList[userValue?.AreaCodeIdx]?.value === "+855"
+						? defaultLangId
+						: signupLangId,
 				AreaCode: areaCodeList[userValue?.AreaCodeIdx]?.value,
 				PromoCode: userValue.SpecialBonusCode,
 				Birth_d: userValue.Birth_d + 1,
