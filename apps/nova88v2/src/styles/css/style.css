@@ -8570,7 +8570,6 @@ span.important {
 }
 .license div img {
   margin-left: 1vw;
-  max-width: 24vw;
 }
 .license div:nth-child(2) {
   display: -webkit-box;
