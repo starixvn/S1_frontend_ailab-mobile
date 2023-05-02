@@ -723,7 +723,7 @@
 	"lbl_DepositType1": "ធនាគារអនឡាញ",
 	"lbl_DepositType2": "ការទូទាត់តាមទូរសព្ទចល័ត",
 	"lbl_DepositType3": "ការផ្ទេរតាមធនាគារក្នុងស្រុក",
-	"lbl_DepositType4": "គ្រីបតូផេ",
+	"lbl_DepositType4": "ប្រាក់គ្រីបតូេ",
 	"lbl_DepositType7": "ការដាក់ប្រាក់ដោយស្វ័យប្រវត្តិ",
 	"lbl_Deposit_DragonPayPop_BankName": "ឈ្មោះ​របស់​ធនាគារ",
 	"lbl_Deposit_DragonPayPop_OrderNumber": "លេខ​លំដាប់",
@@ -744,7 +744,7 @@
 
 	"==============================================Payment QR====================================": "",
 	"lbl_PaymentDetails": "ព័ត៌មានលម្អិតអំពីការទូទាត់",
-	"lbl_OrderAmount": "ចំនួនទឹកប្រាក់បញ្ជាទិញ",
+	"lbl_OrderAmount": "ទឹកប្រាក់បញ្ជាទិញ",
 	"lbl_Pay": "ទូទាត់",
 	"lbl_PaymentQRDesc1": "សូមផ្ទេរប្រាក់។",
 	"lbl_PaymentQRDesc2": "ផ្តល់ជូនសម្រាប់បទពិសោធន៍កាន់តែប្រសើរ។",
@@ -757,7 +757,7 @@
 
 	"lbl_nova88_backup_website": "សូមរក្សាទុកដែន NOVA88 ចុងក្រោយបំផុតសម្រាប់គោលបំណងបម្រុងទុក។",
 	"lbl_kindly_visit_alternate_link_for_better_performance": "ប្រសិនបើអ្នកមានអារម្មណ៍ថាមានភាពយឺតយ៉ាវ សូមចូលទៅកាន់តំណភ្ជាប់ផ្សេងដើម្បីដំណើរការកាន់តែប្រសើរ។",
-	"lbl_Copy": "ចម្លងទុក",
+	"lbl_Copy": "ចម្លង",
 	"lbl_Dont_show_me_again": "កុំបង្ហាញខ្ញុំម្តងទៀត",
 	"lbl_DearValuedCustomers": "សួស្តីអតិថិជន Nova88 ជាទីគោរពរាប់អាន",
 	"==============================================Wallet====================================": "",
@@ -902,5 +902,9 @@
 	"==============v3.0==============": "",
 	"lbl_SeeMore": "See More",
 
-	"Label_AngpaoNewYearTitle": "Lucky Rabbit Happy New Year"
+	"Label_AngpaoNewYearTitle": "Lucky Rabbit Happy New Year",
+
+	"==============H5 Sportsbook for Desktop Entrance==============": "",
+	"lbl_Sportsbook_PlayNow": "លេង​ឥឡូវ",
+	"lbl_Sportsbook_Desktop": "ទូរស័ព្ទលើតុ"
 }
