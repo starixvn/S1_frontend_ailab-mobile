@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import { useNavigate, Link } from "@reach/router";
+import { useNavigate } from "@reach/router";
 import moment from "moment";
 import {
 	i18nContext,
@@ -30,7 +30,6 @@ import Balance from "./deposit.balance";
 import { defPayType } from "./deposit.def";
 import Options from "./deposit.options";
 import { defPopBoxType } from "../common/popbox";
-import path from "../../path";
 
 const useHandleSelect = defaultSelect => {
 	const [selected, setSelected] = useState(defaultSelect ?? "");
@@ -417,15 +416,12 @@ const Panel = () => {
 				setPopBox({
 					isOpen: true,
 					popBoxType: defPopBoxType.UpdateProfile,
-					title: i18n.lbl_ImportantNote,
-					content: i18n.lbl_UpdatePersonalInfo,
-					btnBar: (
-						<div className="btnGroup">
-							<Link
-								className="btn-check"
-								to={`/${userInfo.langId}/${path.profile.root}`}>
-								{i18n.lbl_UpdatePersonalDetail}
-							</Link>
+					title: (
+						<div style={{ display: "flex" }}>
+							<div className="icon icon-icon32px_Profile" />
+							<div style={{ marginLeft: "10px" }}>
+								{i18n.lbl_ImportantNote}
+							</div>
 						</div>
 					)
 				});
