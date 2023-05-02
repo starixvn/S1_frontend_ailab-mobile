@@ -437,16 +437,16 @@ const gameList = ({ langId, currencyId }) => {
 					img: `${cloudBannerImgURL}/h5/img/betradarsoccer.png`,
 					spanTextKey: "lbl_VirtualSports",
 					sortKey: "virtualSports"
-				},
-				{
-					...defGameInfo.Wap,
-					img: `${cloudBannerImgURL}/h5/img/wap.png`,
-					spanText: "WAP",
-					specialUrl: "&device=wap",
-					hideBeforeLogin: true,
-					allowCurrency: allowedCurrencyList.wap,
-					sortKey: "wap"
 				}
+				// {
+				// 	...defGameInfo.Wap,
+				// 	img: `${cloudBannerImgURL}/h5/img/wap.png`,
+				// 	spanText: "WAP",
+				// 	specialUrl: "&device=wap",
+				// 	hideBeforeLogin: true,
+				// 	allowCurrency: allowedCurrencyList.wap,
+				// 	sortKey: "wap"
+				// }
 			]
 		},
 		{

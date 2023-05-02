@@ -16,11 +16,35 @@ export const defGameInfo = {
 	CryptoSports: { tpId: 45, tpGameType: 87 },
 	SBOSport: { tpId: 42, tpGameType: 77 },
 	BTISport: { tpId: 29, tpGameType: 49 },
-	SabaSoccer: { tpId: 1, gameId: 997, tpGameType: 1 },
-	eSports: { tpId: 41, gameId: 43, tpGameType: 69 },
+	SabaSoccer: {
+		// tpId: 1,
+		tpId: 41, // seamless wallet
+		gameId: 997,
+		// tpGameType: 1,
+		tpGameType: 69 // seamless wallet
+	},
+	eSports: {
+		// tpId: 1,
+		tpId: 41, // seamless wallet
+		gameId: 43,
+		// tpGameType: 1,
+		tpGameType: 69 // seamless wallet
+	},
 	eSports_TFGaming: { tpId: 48, gameId: 0, tpGameType: 97 },
-	Basketball: { tpId: 1, gameId: 2, tpGameType: 1 },
-	Volleyball: { tpId: 1, gameId: 6, tpGameType: 1 },
+	Basketball: {
+		// tpId: 1,
+		tpId: 41, // seamless wallet
+		gameId: 2,
+		// tpGameType: 1,
+		tpGameType: 69 // seamless wallet
+	},
+	Volleyball: {
+		// tpId: 1,
+		tpId: 41, // seamless wallet
+		gameId: 6,
+		// tpGameType: 1,
+		tpGameType: 69 // seamless wallet
+	},
 	// CockFighting: { tpId: 17, tpGameType: 27 },
 	sabaClub: {
 		// tpId: 1,

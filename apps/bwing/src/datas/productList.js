@@ -10,7 +10,13 @@ export const defGameInfo = {
 	},
 	CryptoSports: { tpId: 45, tpGameType: 87 },
 	CockFighting: { tpId: 17, tpGameType: 27 },
-	eSports: { tpId: 41, gameId: 43, tpGameType: 69 },
+	eSports: {
+		// tpId: 1,
+		tpId: 41, // seamless wallet
+		gameId: 43,
+		// tpGameType: 1,
+		tpGameType: 69 // seamless wallet
+	},
 	eSports_TFGaming: { tpId: 48, gameId: 0, tpGameType: 97 },
 	LIVEcasinoWM: { tpId: 20, gameId: 20, tpGameType: 32 },
 	LIVEcasinoDG: { tpId: 4, gameId: 4, tpGameType: 10 },
@@ -283,10 +289,12 @@ export const sportStreamDef = {
 		tpGameType: 49
 	},
 	eSport: {
-		tpId: 41,
+		// tpId: 1,
+		tpId: 41, // seamless wallet
 		gameId: 43,
 		name: "eSport",
-		tpGameType: 69
+		// tpGameType: 1
+		tpGameType: 69 // seamless wallet
 	},
 	soccer: {
 		// tpId: 1,
