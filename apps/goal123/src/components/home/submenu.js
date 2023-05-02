@@ -85,10 +85,10 @@ const defSubMenus = [
 				...defGameInfo.sabaClub,
 				displayKey: "lbl_Vgaming"
 			},
-			{
-				...defGameInfo.MaxGame,
-				displayText: "Max Game"
-			},
+			// {
+			// 	...defGameInfo.MaxGame,
+			// 	displayText: "Max Game"
+			// },
 			{
 				...defGameInfo.V8Poker,
 				displayKey: "lbl_V8Poker"
@@ -96,11 +96,11 @@ const defSubMenus = [
 			{
 				...defGameInfo.tableGame,
 				displayKey: "lbl_tableGame"
-			},
-			{
-				...defGameInfo.VirtualGame,
-				displayKey: "lbl_VirtualGames"
 			}
+			// {
+			// 	...defGameInfo.VirtualGame,
+			// 	displayKey: "lbl_VirtualGames"
+			// }
 		]
 	},
 	{

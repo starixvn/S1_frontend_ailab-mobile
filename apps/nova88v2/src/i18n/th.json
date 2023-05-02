@@ -731,8 +731,13 @@
 	"lbl_TpWallet_1": "กระเป๋าเงินกีฬา",
 	"lbl_TpWallet_27": "กระเป๋าเงิน PT",
 	"lbl_TpWallet_31": "9W Wallet",
+  "lbl_BonusWallet_0": "กระเป๋าโบนัส",
 	"lbl_BonusWallet_1": "กระเป๋าเงินโบนัสคาสิโน",
 	"lbl_BonusWallet_2": "กระเป๋าเงินโบนัสคาสิโนสด",
+  "lbl_BonusWallet_3": "Fishing Wallet",
+  "lbl_BonusWallet_6": "กระเป๋ากีฬา",
+  "lbl_BonusWallet_9": "กระเป๋า SBSW",
+  "lbl_BonusWallet_11": "กระเป๋าอีสปอร์ต",
 
 	"==============Important Notice==============": "",
 	"lbl_ImportantNotice": "ข้อมูลสำคัญ",
