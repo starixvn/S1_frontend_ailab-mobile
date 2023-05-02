@@ -1,20 +1,27 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useContext } from "react";
+import { Link } from "@reach/router";
+import path from "../../path";
+import { i18nContext, userInfoContext } from "./context";
 
-const PopBoxUpdateProfile = ({ title, content, btnBar }) => {
+const PopBoxUpdateProfile = () => {
+	const { i18n } = useContext(i18nContext);
+	const { userInfo } = useContext(userInfoContext);
+
 	return (
-		<div className="Cancel active">
-			<div className="icon icon-icon32px_Profile" />
-			<div className="title">{title}</div>
-			<div>{content}</div>
-			{btnBar}
+		<div className="popTxt">
+			<div>{i18n.lbl_UpdatePersonalInfo}</div>
+			<div className="btn-group">
+				<Link
+					className="btn-check"
+					to={`/${userInfo.langId}/${path.profile.root}`}
+					onClick={() => {
+						setPopBox({ isOpen: false });
+					}}>
+					{i18n.lbl_UpdatePersonalDetail}
+				</Link>
+			</div>
 		</div>
 	);
 };
 
-PopBoxUpdateProfile.propTypes = {
-	title: PropTypes.string.isRequired,
-	content: PropTypes.string.isRequired,
-	btnBar: PropTypes.string.isRequired
-};
 export default PopBoxUpdateProfile;
