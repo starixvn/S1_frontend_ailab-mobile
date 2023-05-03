@@ -319,7 +319,8 @@ const JoinStep2 = ({
 				reCaptchaToken !== "" || recaptchaInfo.country === "CN";
 
 			// * 機器人驗證沒過直接 return 出去
-			if (!_reCaptchaCheck) return false;
+			// TODO:渲染不出畫面，暫時拿到，上班日修復
+			// if (!_reCaptchaCheck) return false;
 
 			const res = await Promise.all([
 				null,
@@ -372,6 +373,7 @@ const JoinStep2 = ({
 
 	const clickSubmit = async () => {
 		const checked = await checkAll();
+
 		if (checked) {
 			const getSignupLangId = () => {
 				const langList = [];
@@ -503,6 +505,7 @@ const JoinStep2 = ({
 	const handleReCaptchaChange = token => {
 		setReCaptchaToken(token);
 	};
+
 	return (
 		<div className="Join">
 			<Inputbox
@@ -621,7 +624,9 @@ const JoinStep2 = ({
 				tip={hintStatus.Birth.msg}
 				testAttr="BirthDay"
 			/>
-			{Object.keys(recaptchaInfo).length > 0 &&
+
+			{/* TODO:渲染不出畫面，暫時拿到，上班日修復 */}
+			{/* {Object.keys(recaptchaInfo).length > 0 &&
 				recaptchaInfo.country !== "CN" && (
 					<ReCAPTCHA
 						class="g-recaptcha"
@@ -629,7 +634,8 @@ const JoinStep2 = ({
 						onChange={handleReCaptchaChange}
 						hl={reCaptchaEnum[userInfo.langId]}
 					/>
-				)}
+				)} */}
+
 			<div className="Terms">
 				{i18n.lbl_Check18TC1}
 				<a
