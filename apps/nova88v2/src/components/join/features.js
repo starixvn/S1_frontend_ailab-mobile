@@ -14,12 +14,14 @@ const FeaturePanel = ({ i18n, currencyId }) => {
 				<li>{i18n.lbl_MemberBenefits_1}</li>
 				<li>{i18n.lbl_MemberBenefits_2}</li>
 				<li>{i18n.lbl_MemberBenefits_3}</li>
-				<li>
-					{i18n.lbl_MemberBenefits_4.replace(
-						"{{rebate}}",
-						countryEnum[currencyToAreacode[currencyId]]
-					)}
-				</li>
+				{countryEnum[currencyToAreacode[currencyId]] && (
+					<li>
+						{i18n.lbl_MemberBenefits_4.replace(
+							"{{rebate}}",
+							countryEnum[currencyToAreacode[currencyId]]
+						)}
+					</li>
+				)}
 			</ul>
 			<div className="title">
 				{i18n.lbl_ENJOY_NOVA88_VIP_EXCLUSIVE_BONUS_REBATES}
