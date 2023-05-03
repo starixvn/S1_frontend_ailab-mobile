@@ -66,41 +66,10 @@ const allowedCurrencyList = {
 		defCurrenyId.CNY
 	],
 
-	// poker
-	oneGame: [
-		defCurrenyId.MYR,
-		defCurrenyId.IDR,
-		defCurrenyId.THB,
-		defCurrenyId.BDT,
-		defCurrenyId.CNY,
-		defCurrenyId.USD,
-		defCurrenyId.KHM
-	],
-
 	// game
 	mPoker: [defCurrenyId.THB],
 	amb: [defCurrenyId.THB],
 	vGaming: [
-		defCurrenyId.MYR,
-		defCurrenyId.IDR,
-		defCurrenyId.THB,
-		defCurrenyId.BDT,
-		defCurrenyId.CNY,
-		defCurrenyId.USD,
-		defCurrenyId.KHM,
-		defCurrenyId.INR
-	],
-	maxGame: [
-		defCurrenyId.MYR,
-		defCurrenyId.IDR,
-		defCurrenyId.THB,
-		defCurrenyId.BDT,
-		defCurrenyId.CNY,
-		defCurrenyId.USD,
-		defCurrenyId.KHM,
-		defCurrenyId.INR
-	],
-	virtualGame: [
 		defCurrenyId.MYR,
 		defCurrenyId.IDR,
 		defCurrenyId.THB,
