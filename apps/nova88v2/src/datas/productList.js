@@ -888,29 +888,12 @@ const gameList = ({ langId, currencyId }) => {
 					allowCurrency: allowedCurrencyList.vGaming,
 					sortKey: "games_VGaming"
 				},
-				// {
-				// 	...defGameInfo.MaxGame,
-				// 	img: `${cloudBannerImgURL}/h5/img/max.png`,
-				// 	spanText: "Max Game",
-				// 	eventIcon: [
-				// 		{
-				// 			icon: defIconType.new,
-				// 			inPeriod: isEventPeriod(eventTime.game_MaxGame)
-				// 		}
-				// 	]
-				// },
 				{
 					...defGameInfo.kingMaker,
 					img: `${cloudBannerImgURL}/h5/img/km.png`,
 					spanTextKey: "lbl_KingMaker",
 					sortKey: "games_kingMaker"
 				}
-				// {
-				// 	...defGameInfo.VirtualGame,
-				// 	img: `${cloudBannerImgURL}/h5/img/virtualgames.png`,
-				// 	spanTextKey: "lbl_VirtualGames",
-				// 	sortKey: "games_VirtualGame"
-				// }
 			]
 		},
 		{
