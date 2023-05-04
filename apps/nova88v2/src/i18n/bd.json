@@ -203,7 +203,7 @@
 	"lbl_MaximumFileSizeEach": "সর্বোচ্চ ফাইলের আকার প্রতিটি 4 এমবি",
 	"lbl_MaximumNumberOfFiles": "ফাইলের সর্বোচ্চ সংখ্যা: 6",
 	"lbl_AcceptedFileType": "স্বীকৃত ফাইল প্রকার: JPG, JPEG, PNG",
-
+  "lbl_InaccessibleWithoutPermission": "inaccessible without permission",
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "মতভেদ",
 	"lbl_Handicap": "এইচডিপি",

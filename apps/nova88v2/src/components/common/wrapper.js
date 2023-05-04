@@ -14,8 +14,10 @@ import {
 	deleteCookie,
 	readCookie,
 	langMappingCurr,
-	defCurrenyId
+	defCurrenyId,
+	memberType
 } from "./common";
+
 import i18nConfig from "../../i18n/config";
 import api from "../../service/api";
 import { siteInfo } from "../../config";
@@ -70,6 +72,7 @@ export const Wrapper = ({ children }) => {
 	const { i18n: translationI18n } = useTranslation();
 	const [loading, setLoading] = useState(false);
 	const [root, setRoot] = useState(false);
+	const [tpGameTypeSettingList, setTpGameTypeSettingList] = useState(null);
 	const match = useMatch("/:langId/*");
 
 	const urlLangId = isVaildLang(match?.langId) ? match.langId : null;
@@ -275,6 +278,21 @@ export const Wrapper = ({ children }) => {
 								...prevState,
 								...data
 							}));
+
+							if (data.memberType === memberType.liveHost)
+								api.account.GetCustTpGameTypeSetting().then(
+									res => {
+										setTpGameTypeSettingList(res.data.data);
+									},
+									() => {
+										if (isMountedRef.current) {
+											setPopBox({
+												isOpen: true,
+												content: i18n.msg_ApiServerError
+											});
+										}
+									}
+								);
 						} else if (res_custInfo.data.errorCode !== 0) {
 							setPopBox({
 								isOpen: true,
@@ -287,6 +305,25 @@ export const Wrapper = ({ children }) => {
 							isOpen: true,
 							content: i18n.msg_ApiServerError
 						});
+					}
+				);
+			}
+
+			if (
+				userInfo.memberType &&
+				userInfo.memberType === memberType.liveHost
+			) {
+				api.account.GetCustTpGameTypeSetting().then(
+					res => {
+						setTpGameTypeSettingList(res.data.data);
+					},
+					() => {
+						if (isMountedRef.current) {
+							setPopBox({
+								isOpen: true,
+								content: i18n.msg_ApiServerError
+							});
+						}
 					}
 				);
 			}
@@ -398,33 +435,45 @@ export const Wrapper = ({ children }) => {
 		<ct.popUpMsgContext.Provider value={{ setPopUp, popUp }}>
 			<ct.userInfoContext.Provider value={{ userInfo, setUserInfo }}>
 				<ct.i18nContext.Provider value={{ i18n, seti18n }}>
-					<ct.walletInfoContext.Provider
-						value={{ walletInfo, setWalletInfo }}>
-						<ct.eWalletContext.Provider
-							value={{ isShowEWallet, setIsShowEWallet }}>
-							<ct.themeContext.Provider
-								value={{ theme, setTheme }}>
-								<ct.popBoxContext.Provider
-									value={{ popBox, setPopBox }}>
-									<ct.navContext.Provider
-										value={{ nav, setNav }}>
-										<ct.msgCountContext.Provider
-											value={{ msgCount, setMsgCount }}>
-											<ct.loadingContext.Provider
-												value={{ loading, setLoading }}>
-												<ct.rootContext.Provider
-													value={{ root, setRoot }}>
-													<SEO />
+					<ct.productTpGameTypeSettingListContext.Provider
+						value={{ tpGameTypeSettingList }}>
+						<ct.walletInfoContext.Provider
+							value={{ walletInfo, setWalletInfo }}>
+							<ct.eWalletContext.Provider
+								value={{ isShowEWallet, setIsShowEWallet }}>
+								<ct.themeContext.Provider
+									value={{ theme, setTheme }}>
+									<ct.popBoxContext.Provider
+										value={{ popBox, setPopBox }}>
+										<ct.navContext.Provider
+											value={{ nav, setNav }}>
+											<ct.msgCountContext.Provider
+												value={{
+													msgCount,
+													setMsgCount
+												}}>
+												<ct.loadingContext.Provider
+													value={{
+														loading,
+														setLoading
+													}}>
+													<ct.rootContext.Provider
+														value={{
+															root,
+															setRoot
+														}}>
+														<SEO />
 
-													{children}
-												</ct.rootContext.Provider>
-											</ct.loadingContext.Provider>
-										</ct.msgCountContext.Provider>
-									</ct.navContext.Provider>
-								</ct.popBoxContext.Provider>
-							</ct.themeContext.Provider>
-						</ct.eWalletContext.Provider>
-					</ct.walletInfoContext.Provider>
+														{children}
+													</ct.rootContext.Provider>
+												</ct.loadingContext.Provider>
+											</ct.msgCountContext.Provider>
+										</ct.navContext.Provider>
+									</ct.popBoxContext.Provider>
+								</ct.themeContext.Provider>
+							</ct.eWalletContext.Provider>
+						</ct.walletInfoContext.Provider>
+					</ct.productTpGameTypeSettingListContext.Provider>
 				</ct.i18nContext.Provider>
 			</ct.userInfoContext.Provider>
 		</ct.popUpMsgContext.Provider>

@@ -203,6 +203,7 @@
 	"lbl_MaximumFileSizeEach": "ขนาดไฟล์ไม่เกิน 4MB",
 	"lbl_MaximumNumberOfFiles": "ขนาดไฟล์ไม่เกิน : 6",
 	"lbl_AcceptedFileType": "ประเภทไฟล์ที่ยอมรับ: JPG, JPEG, PNG",
+  "lbl_InaccessibleWithoutPermission": "ไม่สามารถเข้าถึงได้โดยไม่ได้รับอนุญาต",
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Odds",
 	"lbl_Handicap": "Hdp",
