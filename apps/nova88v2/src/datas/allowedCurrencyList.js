@@ -42,8 +42,9 @@ const allowedCurrencyList = {
 		defCurrenyId.THB,
 		defCurrenyId.IDR,
 		defCurrenyId.INR,
-		defCurrenyId.BDT,
-		defCurrenyId.KHM
+		defCurrenyId.BDT
+		// * 等待財務部門開放 khm 的 bank info 功能
+		// defCurrenyId.KHM
 	],
 	eWallet: [
 		defCurrenyId.IDR,
