@@ -25,12 +25,12 @@ blockquote, q {
 }
 
 blockquote:before, blockquote:after {
-  content: '';
+  content: "";
   content: none;
 }
 
 q:before, q:after {
-  content: '';
+  content: "";
   content: none;
 }
 
@@ -44,7 +44,7 @@ button {
   border: none;
   padding: 0;
   outline: none;
-  font-family: 'Microsoft YaHei',sans-serif;
+  font-family: "Microsoft YaHei", "Noto Sans Khmer", sans-serif;
   color: white;
 }
 
@@ -55,5 +55,4 @@ pre {
 a {
   text-decoration: none;
   color: white;
-}
-/*# sourceMappingURL=reset.css.map */
+}/*# sourceMappingURL=reset.css.map */
