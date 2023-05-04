@@ -7,29 +7,16 @@ export const siteId = 1;
 export const errorPageUrl = langId =>
 	`https://error.0814media.net/404/index_${validImgLang(langId)}.html`;
 
-const getAffiliate = langId => {
-	if (typeof window === `undefined`) return "";
-
-	const fullPath = window.location.hostname;
-	const arr = fullPath.split(".");
-
-	return arr.length === 3
-		? `https://aff.${arr
-				.filter((p, idx) => idx !== 0)
-				.join(".")}/?lang=${langId}`
-		: `https://aff.${arr.join(".")}/?lang=${langId}`;
-};
-
 export const siteInfo = langId => {
 	return {
 		siteName,
 		siteId: 1,
-		affiliateLink: getAffiliate(langId),
+
 		langCookie: "nova88LangId",
 		currencyCookie: "nova88CurrencyId",
 		siteDefaultLang: "en",
 		siteDefaultCurrencyId: defCurrenyId.MYR,
-		siteLangList: ["en", "cs", "th", "id", "hi", "bd", "my"],
+		siteLangList: ["en", "cs", "th", "id", "hi", "bd", "my", "kh"],
 		logo: "https://banner.0814media.net/h5/img/logo_en_w.png",
 		description:
 			"Nova88 is the world leading sportsbook offering one of the kind gambling experience in live betting covering all sports, casino, slots, keno, esports, rng casino, fantasy sports, virtual sports, lottery, live casino, live dealer, bingo, and racing.",
