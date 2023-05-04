@@ -45,6 +45,8 @@ export const GET_LANG_ID = userLangId => {
 			langId = "hi";
 		} else if (browserDefLang.startsWith("en")) {
 			langId = "en";
+		} else if (browserDefLang.startsWith("kh")) {
+			langId = "kh";
 		} else {
 			langId = siteDefLangId;
 		}
