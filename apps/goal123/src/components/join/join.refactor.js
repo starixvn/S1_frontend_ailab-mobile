@@ -241,10 +241,8 @@ const Join = () => {
 		checked =
 			UserNameCheck.checked &&
 			PasswordCheck.checked &&
-			userValue.Checkbox;
-
-		// TODO:渲染不出畫面，暫時拿到，上班日修復
-		//  && reCaptchaCheck;
+			userValue.Checkbox &&
+			reCaptchaCheck;
 
 		if (checked) {
 			const regData = {
@@ -438,14 +436,14 @@ const Join = () => {
 							info: "lbl_Please_enter_Affiliate_ID"
 						})}
 					/>
-					{/* // TODO:渲染不出畫面，暫時拿到，上班日修復 */}
-					{/* <ReCAPTCHA
+
+					<ReCAPTCHA
 						key={reCaptchaKey}
 						class="g-recaptcha"
 						sitekey="6LfhmRciAAAAAFSX-wXBxMISia2lpS5_SQ7aa7-E"
 						onChange={handleReCaptchaChange}
 						hl={reCaptchaEnum[userInfo.langId]}
-					/> */}
+					/>
 					<Checkbox
 						Checked={userValue.Checkbox}
 						className={`Terms${
