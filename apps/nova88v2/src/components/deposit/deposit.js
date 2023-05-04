@@ -402,6 +402,34 @@ const Panel = () => {
 		isCancelSubmit
 	]);
 
+	useEffect(() => {
+		const checkUserInfo = () => {
+			const { isLogin, accountName, phoneNo, email } = userInfo;
+
+			if (
+				isLogin &&
+				isMountedRef.current &&
+				((!accountName && accountName !== undefined) ||
+					(!phoneNo && phoneNo !== undefined) ||
+					(!email && email !== undefined))
+			) {
+				setPopBox({
+					isOpen: true,
+					popBoxType: defPopBoxType.UpdateProfile,
+					title: (
+						<div style={{ display: "flex" }}>
+							<div className="icon icon-icon32px_Profile" />
+							<div style={{ marginLeft: "10px" }}>
+								{i18n.lbl_ImportantNote}
+							</div>
+						</div>
+					)
+				});
+			}
+		};
+		checkUserInfo();
+	}, [userInfo.isLogin, userInfo.userName, userInfo.accountName]);
+
 	const _isConvert = isConvert(userInfo.currencyId);
 	const SubmitProof = (
 		bankInfo,
