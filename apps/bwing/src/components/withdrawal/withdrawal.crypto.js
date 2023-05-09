@@ -844,7 +844,9 @@ const Panel = () => {
 			selBank?.currencyName === b.currencyName;
 		return (
 			<div
-				className={_checked ? "addCryptoName active" : "addCryptoName"}
+				className={`${
+					_checked ? "addCryptoName active" : "addCryptoName"
+				} ${b.disabled ? "pending" : ""}`}
 				key={`withdrawal-bank-${b.usdtAddress}-${b.currencyId}`}
 				onClick={e => {
 					e.stopPropagation();
@@ -893,6 +895,7 @@ const Panel = () => {
 						<span>{b?.usdtAddress}</span>
 					</div>
 				</div>
+				{b.disabled ? <div className="mask" /> : null}
 			</div>
 		);
 	});
