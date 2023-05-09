@@ -319,8 +319,7 @@ const JoinStep2 = ({
 				reCaptchaToken !== "" || recaptchaInfo.country === "CN";
 
 			// * 機器人驗證沒過直接 return 出去
-			// TODO:渲染不出畫面，暫時拿到，上班日修復
-			// if (!_reCaptchaCheck) return false;
+			if (!_reCaptchaCheck) return false;
 
 			const res = await Promise.all([
 				null,
@@ -384,14 +383,6 @@ const JoinStep2 = ({
 				].lang.forEach(({ value }) => {
 					langList.push(value);
 				});
-				if (
-					userValue.CurrencyIdx === 1 &&
-					areaCodeList[userValue?.AreaCodeIdx]?.value === "+855"
-				) {
-					return ["en", "kh"].includes(defaultLangId)
-						? defaultLangId
-						: "en";
-				}
 				return langList.includes(defaultLangId) ? defaultLangId : "en";
 			};
 			const signupLangId = getSignupLangId();
@@ -625,8 +616,7 @@ const JoinStep2 = ({
 				testAttr="BirthDay"
 			/>
 
-			{/* TODO:渲染不出畫面，暫時拿到，上班日修復 */}
-			{/* {Object.keys(recaptchaInfo).length > 0 &&
+			{Object.keys(recaptchaInfo).length > 0 &&
 				recaptchaInfo.country !== "CN" && (
 					<ReCAPTCHA
 						class="g-recaptcha"
@@ -634,7 +624,7 @@ const JoinStep2 = ({
 						onChange={handleReCaptchaChange}
 						hl={reCaptchaEnum[userInfo.langId]}
 					/>
-				)} */}
+				)}
 
 			<div className="Terms">
 				{i18n.lbl_Check18TC1}
