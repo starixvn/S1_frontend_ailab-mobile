@@ -58,7 +58,15 @@ const allowedCurrencyList = {
 	wap: [defCurrenyId.IDR],
 
 	// live casino
-	liveCasinoWM: [defCurrenyId.MYR, defCurrenyId.THB, defCurrenyId.IDR],
+	liveCasinoWM: [
+		defCurrenyId.MYR,
+		defCurrenyId.USD,
+		defCurrenyId.THB,
+		defCurrenyId.CNY,
+		defCurrenyId.IDR,
+		defCurrenyId.INR,
+		defCurrenyId.KHM
+	],
 
 	// slot
 	slotAMB: [
