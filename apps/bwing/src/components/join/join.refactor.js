@@ -276,8 +276,7 @@ const Join = () => {
 	const clickSubmit = async () => {
 		const _reCaptchaCheck = reCaptchaToken !== "";
 		// * 機器人驗證沒過直接 return 出去
-		// TODO:渲染不出畫面，暫時拿到，上班日修復
-		// if (!_reCaptchaCheck) return;
+		if (!_reCaptchaCheck) return;
 
 		let checked = null;
 		const UserNameCheck = await userNameCheck({ val: userValue.UserName });
@@ -521,13 +520,13 @@ const Join = () => {
 					})}
 					disabled={affiliateidExist}
 				/>
-				{/* <ReCAPTCHA
+				<ReCAPTCHA
 					key={reCaptchaKey}
 					class="g-recaptcha"
 					sitekey="6LdzkRciAAAAAMuli_1oYaulJv-LHcT0wNZtaK69"
 					onChange={handleReCaptchaChange}
 					hl={reCaptchaEnum[userInfo.langId]}
-				/> */}
+				/>
 				<div className="Terms">
 					<Checkbox
 						testAttr="agreeCheck"
