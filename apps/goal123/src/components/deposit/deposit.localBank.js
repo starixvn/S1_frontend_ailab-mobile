@@ -556,7 +556,6 @@ const GroupList = ({
 	i18n
 }) => {
 	const selectedBank = dataList.find(({ sysId }) => sysId === selected);
-
 	const rows = dataList?.map(data => {
 		const _mainKey = `${mainKey}-${data[idKey]}`;
 		const isSelect = selected === data[idKey];
@@ -598,35 +597,51 @@ const GroupList = ({
 				{rows}
 
 				{selected && (
-					<div className="info infoAccount">
-						<ul>
-							<li>
-								<img
-									src={`${prefixImgUrl}${
-										imgKeyWithExtension
-											? selectedBank[
-													imgKey
-											  ]?.toLowerCase()
-											: `${selectedBank?.[
-													imgKey
-											  ]?.toLowerCase()}.png`
-									}`}
-									alt={selectedBank[imgKey]}
-								/>
-								<div>{selectedBank[displayKey]}</div>
+					<>
+						<div className="info infoAccount">
+							<ul>
+								<li>
+									<img
+										src={`${prefixImgUrl}${
+											imgKeyWithExtension
+												? selectedBank[
+														imgKey
+												  ]?.toLowerCase()
+												: `${selectedBank?.[
+														imgKey
+												  ]?.toLowerCase()}.png`
+										}`}
+										alt={selectedBank[imgKey]}
+									/>
+									<div>{selectedBank[displayKey]}</div>
 
-								{/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-								<a
-									href={accountInfo.bankSite}
-									target="_blank"
-									rel="noreferrer"
-									className="icon icon-new-tab clickBtn"
-								/>
-							</li>
-							<CopyBtn value={accountInfo.accountName} />
-							<CopyBtn value={accountInfo.accountNo} />
-						</ul>
-					</div>
+									{/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
+									<a
+										href={accountInfo.bankSite}
+										target="_blank"
+										rel="noreferrer"
+										className="icon icon-new-tab clickBtn"
+									/>
+								</li>
+								<CopyBtn value={accountInfo.accountName} />
+								<CopyBtn value={accountInfo.accountNo} />
+							</ul>
+						</div>
+						{selectedBank.qrCodeUrl && (
+							<>
+								<div className="subtitle">
+									<span>*</span>
+									{i18n.lbl_ScanQR}
+								</div>
+								<div className="qrCode">
+									<img
+										src={`${paymentImgUrl}${selectedBank.qrCodeUrl}`}
+										alt={selectedBank.bankName}
+									/>
+								</div>
+							</>
+						)}
+					</>
 				)}
 			</div>
 		</>
