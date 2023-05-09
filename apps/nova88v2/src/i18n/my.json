@@ -204,6 +204,7 @@
 	"lbl_MaximumFileSizeEach": "Saiz maksimum 4 MB untuk setiap fail",
 	"lbl_MaximumNumberOfFiles": "Bilangan fail maksimum:6",
 	"lbl_AcceptedFileType": "Jenis fail yang boleh diterima: JPG, JPEG, PNG",
+  "lbl_InaccessibleWithoutPermission": "dilarang masuk tanpa kebenaran",
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Kadar Kemenangan",
 	"lbl_Handicap": "Hdp",
