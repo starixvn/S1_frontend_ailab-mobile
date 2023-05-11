@@ -203,7 +203,8 @@ const Payment = props => {
 
 				api_DepositReqWireTransfer({
 					amount: real_amount,
-					sysId
+					sysId,
+					bankId: selBank.bankId
 				}).then(
 					res => {
 						if (isMountedRef.current) {

@@ -49,14 +49,16 @@ export class PaymentAPI extends BaseAPI {
 		sysId,
 		fromChannel,
 		fromSysId,
-		fromAccountNum
+		fromAccountNum,
+		bankId
 	}) =>
 		this.paymentRequest.post("/DepositReqWireTransfer", {
 			amount,
 			sysId,
 			fromChannel,
 			fromSysId,
-			fromAccountNum
+			fromAccountNum,
+			bankId
 		});
 
 	GetDepositInfoRecent = () =>

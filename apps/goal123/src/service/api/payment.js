@@ -40,8 +40,8 @@ export const api_GetBankInfoOffList = () =>
 export const api_GetMobilePayGroupList = () =>
 	paymentRequest.post("/GetMobilePayGroupList");
 
-export const api_DepositReqWireTransfer = ({ amount, sysId }) =>
-	paymentRequest.post("/DepositReqWireTransfer", { amount, sysId });
+export const api_DepositReqWireTransfer = ({ amount, sysId, bankId }) =>
+	paymentRequest.post("/DepositReqWireTransfer", { amount, sysId, bankId });
 
 export const api_GetDepositInfoRecent = () =>
 	paymentRequest.post("/GetDepositInfoRecent");
