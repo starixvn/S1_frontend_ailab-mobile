@@ -180,6 +180,11 @@ const Payment = props => {
 			}
 
 			const RedirectToNext = debounce(() => {
+				setPopBox(prevState => ({
+					...prevState,
+					isOpen: false
+				}));
+
 				const userData = {
 					payType: "mobilePay",
 					amount: real_amount,
@@ -238,11 +243,6 @@ const Payment = props => {
 							}
 						);
 				} else {
-					setPopBox(prevState => ({
-						...prevState,
-						isOpen: false
-					}));
-
 					const baseUrl = `${config.openURL}/${userInfo.langId}/Cashier/DepositReqMobilePay`;
 
 					const paramsUrl = [

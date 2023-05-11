@@ -168,6 +168,10 @@ const Payment = props => {
 			}
 
 			const RedirectToNext = debounce(real_amount => {
+				setPopBox(prevState => ({
+					...prevState,
+					isOpen: false
+				}));
 				const { mode, channelId } = selChannel;
 				const param = {
 					ChannelId: channelId,
