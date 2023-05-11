@@ -108,6 +108,11 @@ const Main = props => {
 				}
 
 				const RedirectToNext = debounce(real_amount => {
+					setPopBox(prevState => ({
+						...prevState,
+						isOpen: false
+					}));
+
 					const userData = {
 						payType: "cryptoPay",
 						amount: real_amount,
@@ -203,11 +208,6 @@ const Main = props => {
 								}
 							);
 					} else {
-						setPopBox(prevState => ({
-							...prevState,
-							isOpen: false
-						}));
-
 						const baseUrl = `${config.openURL}/${userInfo.langId}/Cashier/DepositReqCryptoPay`;
 
 						const paramsUrl = [
