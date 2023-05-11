@@ -314,6 +314,7 @@ const Payment = props => {
 					.DepositReqWireTransfer({
 						amount: real_amount,
 						sysId,
+						bankId: selBank.bankId,
 						...channelData
 					})
 					.then(
