@@ -17,7 +17,7 @@ const Condition = ({ i18n }) => {
 
 			<div className="other title">
 				<span>
-					{i18n.lbl_Other?.toUpperCase()}{" "}
+					{i18n.lbl_Other?.toUpperCase()}
 					{i18n.lbl_Conditions?.toUpperCase()}
 				</span>
 				<ul>
