@@ -48,7 +48,7 @@ export default {
 		img: `${cloudBannerImgURL}/h5/img/bd.jpg`,
 		lang: [
 			{ value: "en", displayText: "English" },
-			{ value: "bd", displayText: "Bangla" }
+			{ value: "bd", displayText: "বাংলা" }
 		],
 		countryName: "Bangladesh",
 		currencyId: defCurrenyId.BDT
