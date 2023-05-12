@@ -199,6 +199,11 @@ const Payment = props => {
 			let bankLogo = null;
 			let bankName = null;
 			const RedirectToNext = debounce(real_amount => {
+				setPopBox(prevState => ({
+					...prevState,
+					isOpen: false
+				}));
+
 				const userData = {
 					payType: "onlineBank",
 					amount: real_amount,
@@ -245,10 +250,6 @@ const Payment = props => {
 											res.data.data.formData
 												.AccountNumber,
 										handlePopBox: () => {
-											setPopBox(prevState => ({
-												...prevState,
-												isOpen: false
-											}));
 											RefreshPage();
 										}
 									});

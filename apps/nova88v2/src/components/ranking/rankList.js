@@ -44,7 +44,9 @@ const RankItem = ({
 				{rankString}
 			</div>
 			<div>{userName}</div>
-			<div className={_status} />
+			{/* 日排名隱藏status欄位，等ＰＭ通知再修正回顯示 */}
+			<div>{` `}</div>
+			{/* <div className={_status} /> */}
 			<div>{number_format(wTurnover)}</div>
 		</li>
 	);
@@ -111,7 +113,9 @@ const RankList = ({
 						<li>
 							<div>{i18n.lbl_Ranking}</div>
 							<div>{i18n.lbl_Username}</div>
-							<div>{i18n.lbl_Status}</div>
+							{/* // 日排名隱藏status欄位，等ＰＭ通知再修正回顯示 */}
+							<div>{` `}</div>
+							{/* <div>{i18n.lbl_Status}</div> */}
 							<div>{i18n.lbl_Points}</div>
 						</li>
 						<RankItems
