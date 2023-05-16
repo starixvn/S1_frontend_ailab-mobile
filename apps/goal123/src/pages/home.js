@@ -266,6 +266,9 @@ const IndexPage = () => {
 };
 
 const PlaytechJactpot = () => {
+	const { i18n } = useContext(i18nContext);
+	const [jPotSuccess, setJPotSuccess] = useState(false);
+
 	useEffect(() => {
 		const ticker2 =
 			typeof Ticker === "undefined"
@@ -275,6 +278,11 @@ const PlaytechJactpot = () => {
 						casino: "hotspin88am",
 						currency: "vnd"
 				  });
+
+		if (ticker2) {
+			setJPotSuccess(true);
+		}
+
 		ticker2?.attachToTextBox("tick");
 		ticker2?.SetCurrencySign("");
 		ticker2?.tick();
@@ -282,10 +290,13 @@ const PlaytechJactpot = () => {
 
 	return (
 		<Link to={`/${path.casino.root}`} state={{ nav: defNav.PROMO.key }}>
-			<div className="jackpot">
+			<div className={`jackpot${jPotSuccess ? "" : " active"}`}>
 				<img src={`${bannerImgUrl}/h5/img/jackpot.png`} alt="" />
 				<p>VND</p>
 				<p id="tick" />
+				{!jPotSuccess && (
+					<div className="under">{i18n.lbl_underMaintenance}</div>
+				)}
 			</div>
 		</Link>
 	);
