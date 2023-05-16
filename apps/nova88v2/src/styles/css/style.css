@@ -4017,13 +4017,22 @@ footer > a.active .circleAnimation::after {
   margin-right: 2vw;
 }
 .infoModule .qrCode {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 35vw;
+  height: 35vw;
+  overflow: hidden;
   margin: 2vw auto;
   padding: 5px;
   background: rgba(198, 212, 241, 0.8);
 }
 .infoModule .qrCode svg {
-  width: 35vw;
-  height: 35vw;
+  width: auto;
+  height: 100%;
   display: block;
 }
 
@@ -9290,6 +9299,28 @@ span.important {
   height: 37vw;
   background: url(https://banner.0814media.net/h5/img/homepage/jpotbg-a.png) no-repeat 100%/cover;
 }
+.jpot.active {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+  pointer-events: none;
+}
+.jpot.active .jpot-btn, .jpot.active .number {
+  -webkit-filter: brightness(0.7);
+          filter: brightness(0.7);
+}
+.jpot.active .under {
+  display: block;
+}
+.jpot .under {
+  display: none;
+  position: absolute;
+  right: 2vw;
+  bottom: 3vw;
+  font-size: 3vw;
+  color: #fff;
+  -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.9));
+          filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.9));
+}
 .jpot img {
   width: 100%;
 }
@@ -11320,8 +11351,14 @@ span.important {
 .flag.bd:before {
   background: url(https://banner.0814media.net/desktop/img/flag/bd.jpg) no-repeat top left/cover;
 }
+.flag.kh:before {
+  background: url(https://banner.0814media.net/desktop/img/flag/kh.jpg) no-repeat top left/cover;
+}
 .flag.gb:before {
   background: url(https://banner.0814media.net/desktop/img/flag/gb.jpg) no-repeat top left/cover;
+}
+.flag.kh:before {
+  background: url(https://banner.0814media.net/desktop/img/flag/kh.jpg) no-repeat top left/cover;
 }
 
 .addressModule {
@@ -12271,7 +12308,7 @@ span.important {
   margin: 2vw 1vw;
 }
 .duitnowPayPop .pop > div.popTxt .sisa span {
-  font-size: 14px;
+  font-size: 3.5vw;
   color: #233d67;
   font-weight: normal;
   padding: 1vw 2vw;
@@ -12326,11 +12363,24 @@ span.important {
   border-radius: 3px;
 }
 .duitnowPayPop .pop > div.popTxt .guide .qrCode {
-  margin: 1vw 0;
-}
-.duitnowPayPop .pop > div.popTxt .guide .qrCode svg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 53vw;
   height: 53vw;
+  background: rgba(198, 212, 241, 0.8);
+  overflow: hidden;
+  margin: 1vw 0;
+}
+.duitnowPayPop .pop > div.popTxt .guide .qrCode img, .duitnowPayPop .pop > div.popTxt .guide .qrCode svg {
+  width: auto !important;
+  height: 90% !important;
 }
 .duitnowPayPop .pop > div.popTxt .guide .qrCode path:nth-child(2) {
   fill: #EE2968;
