@@ -2233,6 +2233,53 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 .mainNew .gameBox > div .gamelistNew .game .maintenance {
   display: none;
 }
+.mainNew .gameBox > div .gamelistNew .game .switchbtn {
+  position: absolute;
+  bottom: calc(50% - 9vw);
+  right: 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  width: 100%;
+}
+.mainNew .gameBox > div .gamelistNew .game .switchbtn a, .mainNew .gameBox > div .gamelistNew .game .switchbtn button {
+  font-size: 3vw;
+  -webkit-transform: scale(0.55);
+          transform: scale(0.55);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  width: 20vw;
+  margin: -2vw 0 0 0;
+  border-radius: 5px;
+  min-height: 6vw;
+  -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.5));
+          filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.5));
+  background: #fab617;
+  color: #1f3258;
+}
+.mainNew .gameBox > div .gamelistNew .game .switchbtn a:first-child, .mainNew .gameBox > div .gamelistNew .game .switchbtn button:first-child {
+  background: #d83b35;
+  margin-bottom: 0;
+  color: #fff;
+}
+.mainNew .gameBox > div .gamelistNew .game .switchbtn a:hover, .mainNew .gameBox > div .gamelistNew .game .switchbtn button:hover {
+  background: rgba(247, 121, 0, 0.8);
+}
+.mainNew .gameBox > div .gamelistNew .game .switchbtn a:hover:first-child, .mainNew .gameBox > div .gamelistNew .game .switchbtn button:hover:first-child {
+  background: rgba(170, 40, 7, 0.8);
+}
+@media (max-width: 280px) {
+  .mainNew .gameBox > div .gamelistNew .game .switchbtn a, .mainNew .gameBox > div .gamelistNew .game .switchbtn button {
+    width: 25vw;
+  }
+}
 @-webkit-keyframes flash3 {
   0% {
     -webkit-filter: brightness(0.9);
@@ -3286,6 +3333,72 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           flex-direction: column;
   width: calc(100% - 16vw);
   min-height: calc(100% - 35vw);
+}
+.bankSlip .rule {
+  margin: 2vw 0;
+}
+
+.uploadModule {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  margin: 2vw auto;
+}
+
+.upload_img {
+  width: 26.5vw;
+  height: 18vw;
+  border-radius: 10px;
+  border: 1px solid #1e85ec;
+  margin: 0 1vw 1.5vw 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+.upload_img.error {
+  border-color: #e91010;
+}
+.upload_img.error i {
+  color: #e91010;
+}
+.upload_img:nth-child(3n) {
+  margin-right: 0;
+}
+.upload_img .icon {
+  font-size: 5vw;
+  color: #1e85ec;
+}
+.upload_img img {
+  height: 100%;
+  width: auto;
+}
+.upload_img .icon-close {
+  position: absolute;
+  top: 5px !important;
+  right: 5px !important;
+  font-size: 8px !important;
+  background: #868686;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  padding: 2px;
+  z-index: 3;
+}
+.upload_img .icon-close::before {
+  font-size: 8px;
+  margin: 0 2px;
+  color: #fff;
 }
 
 input {
@@ -5896,6 +6009,17 @@ span.important {
             transform-origin: 50% 70%;
   }
 }
+.eventLink.vgaming {
+  bottom: 70vw;
+}
+.eventLink.vgaming .vgimg {
+  width: 34vw;
+}
+.eventLink.vgaming .icon-close {
+  top: 0;
+  background: #cecece;
+  color: rgb(92, 92, 92);
+}
 
 .event {
   height: auto;
@@ -7342,6 +7466,28 @@ span.important {
   left: 30%;
   letter-spacing: 2px;
   font-size: 5vw;
+}
+.jackpot.active {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+  pointer-events: none;
+}
+.jackpot.active img {
+  -webkit-filter: brightness(0.7);
+          filter: brightness(0.7);
+}
+.jackpot.active .under {
+  display: block;
+}
+.jackpot .under {
+  display: none;
+  position: absolute;
+  right: 20vw;
+  bottom: 12vw;
+  font-size: 4vw;
+  color: #fff;
+  -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.9));
+          filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.9));
 }
 
 .topWinner {
@@ -10028,5 +10174,247 @@ span.important {
   70% {
     -webkit-transform: rotate(0deg) scale(1);
             transform: rotate(0deg) scale(1);
+  }
+}
+.subheader {
+  background: #030c1b;
+  padding: 2vw 1vw;
+}
+.subheader__container {
+  width: calc(100% - 3vw);
+  margin: 0 auto;
+}
+.subheader a::before {
+  content: "";
+  display: block;
+  width: 190px;
+  height: 35px;
+  background-image: url("https://banner.goal123.org/h5/img/logo.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  -webkit-transition: ease 0.15s;
+  transition: ease 0.15s;
+}
+
+.subcopyright {
+  width: calc(100% - 4vw);
+  margin: 0 auto;
+  background: #0e0c2e;
+  padding: 2vw;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 3vw;
+}
+.subcopyright .text {
+  color: #c6c6c6;
+}
+
+.exclude {
+  padding: 5vw 2vw;
+  background: #152849;
+  color: #152849;
+  font-size: 3vw;
+  width: calc(100% - 4vw);
+}
+.exclude__container {
+  width: 100%;
+  margin: 0 auto;
+}
+.exclude__title {
+  font-weight: bold;
+  font-size: 4.25vw;
+  color: #4b95df;
+  position: relative;
+  margin-bottom: 25px;
+}
+.exclude__title::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  width: 100%;
+  background-image: -webkit-gradient(linear, left top, right top, from(#4b95df), to(rgba(247, 122, 0, 0)));
+  background-image: linear-gradient(to right, #4b95df, rgba(247, 122, 0, 0));
+}
+.exclude__table {
+  width: 100%;
+  border-left: 1px solid #284985;
+  border-right: 1px solid #284985;
+  border-radius: 3px;
+  text-align: center;
+}
+.exclude__table__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.exclude__table__item:first-child div {
+  background: #284985;
+  color: #fff;
+  font-weight: bold;
+}
+.exclude__table__item div {
+  background: #fcfcfc;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 30vw;
+          flex: 1 1 30vw;
+  padding: 0.5vw 0;
+  border-bottom: 1px solid #284985;
+}
+.exclude__table__item div:first-child {
+  border-right: 1px solid #284985;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 5vw;
+          flex: 1 1 5vw;
+}
+.exclude__table__item div span {
+  display: block;
+  width: 100%;
+  text-align: center;
+  line-height: 1.75;
+  position: relative;
+}
+.exclude__table__item div span::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -0.2vw;
+  height: 1px;
+  width: 100%;
+  background: #284985;
+}
+.exclude__table__item div span:last-child::after {
+  height: 0;
+  display: none;
+}
+
+.cambodia {
+  position: relative;
+  margin-left: 5vw;
+}
+@media (min-width: 768px) {
+  .cambodia {
+    margin-left: 10vw;
+  }
+}
+.cambodia::before {
+  content: "";
+  display: block;
+  background: url(https://banner.goal123.org/h5/img/rabbitboy.png) no-repeat center/cover;
+  position: absolute;
+  width: 12vw;
+  height: 12vw;
+  top: -3.5vw;
+  left: -10vw;
+  -webkit-animation: slide-in-blurred-right 2s cubic-bezier(0.23, 1, 0.32, 1) both;
+          animation: slide-in-blurred-right 2s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+@media (max-width: 320px) {
+  .cambodia::before {
+    background: none;
+  }
+}
+
+@-webkit-keyframes slide-in-blurred-right {
+  0% {
+    -webkit-transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+    transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+    -webkit-transform-origin: 0% 50%;
+    transform-origin: 0% 50%;
+    -webkit-filter: blur(40px);
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0) scaleY(1) scaleX(1);
+    transform: translateX(0) scaleY(1) scaleX(1);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-blurred-right {
+  0% {
+    -webkit-transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+    transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+    -webkit-transform-origin: 0% 50%;
+    transform-origin: 0% 50%;
+    -webkit-filter: blur(40px);
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0) scaleY(1) scaleX(1);
+    transform: translateX(0) scaleY(1) scaleX(1);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes slide-in-blurred-left {
+  0% {
+    -webkit-transform: translateX(-1000px) scaleX(2.5) scaleY(0.2);
+    transform: translateX(-1000px) scaleX(2.5) scaleY(0.2);
+    -webkit-transform-origin: 100% 50%;
+    transform-origin: 100% 50%;
+    -webkit-filter: blur(40px);
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0) scaleY(1) scaleX(1);
+    transform: translateX(0) scaleY(1) scaleX(1);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-blurred-left {
+  0% {
+    -webkit-transform: translateX(-1000px) scaleX(2.5) scaleY(0.2);
+    transform: translateX(-1000px) scaleX(2.5) scaleY(0.2);
+    -webkit-transform-origin: 100% 50%;
+    transform-origin: 100% 50%;
+    -webkit-filter: blur(40px);
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0) scaleY(1) scaleX(1);
+    transform: translateX(0) scaleY(1) scaleX(1);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
   }
 }/*# sourceMappingURL=style.css.map */
