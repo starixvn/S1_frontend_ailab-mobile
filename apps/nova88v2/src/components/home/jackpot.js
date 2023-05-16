@@ -19,6 +19,7 @@ const Jackpot = ({ i18n, userInfo }) => {
 
 	const _currency = _currencyId ? i18n[`Currency_${_currencyId}`] : "";
 	const [value, setValue] = useState({ curr: "", prev: "" });
+	const [jPotSuccess, setJPotSuccess] = useState(false);
 
 	const supportAnimation = typeof document.getAnimations === "function";
 
@@ -36,6 +37,10 @@ const Jackpot = ({ i18n, userInfo }) => {
 						_currency === "CNY" ? "cny" : _currency?.toLowerCase()
 				});
 
+				if (ticker) {
+					setJPotSuccess(true);
+				}
+
 				ticker.attachToTextBox("tick");
 				ticker.tick();
 			} catch (error) {}
@@ -52,29 +57,30 @@ const Jackpot = ({ i18n, userInfo }) => {
 	return (
 		<Link to={path.casino.root} state={{ nav: defNav.PROMO.key }}>
 			<span id="tick" ref={jackpotRef} style={{ display: "none" }} />
-			{value.curr ? (
-				<div className="jpot">
-					<div className="jpot-btn">
-						<button>{i18n.lbl_PlayNow}</button>
-					</div>
-					<div className="jpot-item">
-						<img
-							src={`${cloudBannerImgURL}/h5/img/homepage/jpot-item.png`}
-							alt="jpot-item"
+			<div className={`jpot${jPotSuccess ? "" : " active"}`}>
+				<div className="jpot-btn">
+					<button>{i18n.lbl_PlayNow}</button>
+				</div>
+				<div className="jpot-item">
+					<img
+						src={`${cloudBannerImgURL}/h5/img/homepage/jpot-item.png`}
+						alt="jpot-item"
+					/>
+				</div>
+				<div className="number">
+					<div>{_currency}</div>
+					<div className="numberRow-module">
+						<ShowingNum
+							value={value}
+							currency={_currency}
+							supportAnimation={supportAnimation}
 						/>
 					</div>
-					<div className="number">
-						<div>{_currency}</div>
-						<div className="numberRow-module">
-							<ShowingNum
-								value={value}
-								currency={_currency}
-								supportAnimation={supportAnimation}
-							/>
-						</div>
-					</div>
 				</div>
-			) : null}
+				{!jPotSuccess && (
+					<div className="under">{i18n.lbl_underMaintenance}</div>
+				)}
+			</div>
 		</Link>
 	);
 };
