@@ -7467,6 +7467,28 @@ span.important {
   letter-spacing: 2px;
   font-size: 5vw;
 }
+.jackpot.active {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+  pointer-events: none;
+}
+.jackpot.active img {
+  -webkit-filter: brightness(0.7);
+          filter: brightness(0.7);
+}
+.jackpot.active .under {
+  display: block;
+}
+.jackpot .under {
+  display: none;
+  position: absolute;
+  right: 20vw;
+  bottom: 12vw;
+  font-size: 4vw;
+  color: #fff;
+  -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.9));
+          filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.9));
+}
 
 .topWinner {
   margin: 2vw auto 5vw auto;

@@ -5208,6 +5208,28 @@ span.important {
   letter-spacing: 2px;
   bottom: 14%;
 }
+.bannerS.active {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+  pointer-events: none;
+}
+.bannerS.active img {
+  -webkit-filter: brightness(0.7);
+          filter: brightness(0.7);
+}
+.bannerS.active .under {
+  display: block;
+}
+.bannerS .under {
+  display: none;
+  position: absolute;
+  right: 10vw;
+  bottom: 10vw;
+  font-size: 4vw;
+  color: #fff;
+  -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.9));
+          filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.9));
+}
 .bannerS .jpot {
   width: 95%;
   height: 50vw;
