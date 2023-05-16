@@ -5235,28 +5235,6 @@ span.important {
   background: url(https://banner.bw88.io/h5/img/jackpot.png) no-repeat center;
   background-size: 100%;
 }
-.bannerS .jpot.active {
-  -webkit-filter: grayscale(1);
-          filter: grayscale(1);
-  pointer-events: none;
-}
-.bannerS .jpot.active img {
-  -webkit-filter: brightness(0.7);
-          filter: brightness(0.7);
-}
-.bannerS .jpot.active .under {
-  display: block;
-}
-.bannerS .jpot .under {
-  display: none;
-  position: absolute;
-  right: 10vw;
-  bottom: 12vw;
-  font-size: 4vw;
-  color: #fff;
-  -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.9));
-          filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.9));
-}
 .bannerS .jpot > div {
   position: absolute;
   top: 70%;
