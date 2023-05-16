@@ -832,12 +832,12 @@ const Panel = () => {
 	const banks = bankInfo?.uSDTDetail?.map(b => {
 		return (
 			<div
-				className={
+				className={`${
 					selBank?.usdtAddress === b.usdtAddress &&
 					selBank?.currencyName === b.currencyName
 						? "account open"
 						: "account"
-				}
+				} ${b.disabled ? "pending" : ""}`}
 				key={`withdrawal-bank-${b.usdtAddress}-${b.currencyId}`}
 				onClick={SelectBank.bind(this, b)}>
 				<div className="nickname">{b?.nickName}</div>
@@ -847,7 +847,7 @@ const Panel = () => {
 						: `${b.currencyName}-${b.network}`}
 				</div>
 				<div className="icon icon-crypto">{b?.usdtAddress}</div>
-
+				{b.disabled ? <div className="mask" /> : null}
 				{/* * 暫時隱藏 delete crypto wallet 按鈕，以防止有用戶重複新增刪除帳號來套利，當 risk 評估覺得可以的話有機會再打開 */}
 				{/* <button
 					onClick={() =>
