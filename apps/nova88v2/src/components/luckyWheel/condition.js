@@ -6,10 +6,7 @@ const Condition = ({ i18n }) => {
 	return (
 		<>
 			<div className="rewards title">
-				<span>
-					{i18n.lbl_Rewards?.toUpperCase()}{" "}
-					{i18n.lbl_Conditions?.toUpperCase()}
-				</span>
+				<span>{i18n.lbl_MysteryBox_Conditions?.toUpperCase()}</span>
 				<div className="title">NOVA88 {i18n.lbl_LuckyBox}</div>
 				<div>{`${i18n.lbl_Start}： ${eventTime.luckyWheel.startDate} GMT+08:00`}</div>
 				<div>{i18n.lbl_MysteryBox_MemberEligibility}</div>
