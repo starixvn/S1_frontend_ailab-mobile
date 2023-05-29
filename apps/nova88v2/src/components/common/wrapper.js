@@ -115,6 +115,23 @@ export const Wrapper = ({ children }) => {
 		};
 	});
 
+	// * 如果帳號是直播主，只允許進入 首頁 及 slots 頁面
+	useEffect(() => {
+		if (userInfo.memberType) {
+			const LiveStreamingMemberType = 3;
+			const isHome =
+				pathname === `/${userInfo.langId}` || pathname === "/";
+
+			if (
+				userInfo.memberType === LiveStreamingMemberType &&
+				!isHome &&
+				!pathname.includes(path.casino.root)
+			) {
+				navigate(`/${userInfo.langId}`);
+			}
+		}
+	}, [pathname, userInfo.memberType]);
+
 	useEffect(() => {
 		const code = getUrlParameter("code");
 		const state = getUrlParameter("state");

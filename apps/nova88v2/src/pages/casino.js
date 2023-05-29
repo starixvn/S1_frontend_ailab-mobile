@@ -431,6 +431,7 @@ const Panel = ({ searchInput }) => {
 						categoryList={categoryList}
 						selNav={activeCategory}
 						onChange={handleCategoryActive}
+						memberType={userInfo.memberType}
 					/>
 				</div>
 			</div>
