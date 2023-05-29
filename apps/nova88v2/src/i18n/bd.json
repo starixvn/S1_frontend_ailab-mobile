@@ -474,7 +474,7 @@
 	"lbl_WithdrawalStatus6": "অনুমোদিত",
 	"lbl_WithdrawalStatus7": "প্রত্যাখ্যাত",
 	"lbl_WithdrawalStatus8": "বিচারাধীন",
-	"lbl_WithdrawalDailyMinMax": "দৈনিক সর্বনিম্ন/সর্বোচ্চ সীমা",
+	"lbl_WithdrawalDailyMinMax": "দৈনিক সর্বনিম্ন/সর্বোচ্চ সীমা:  {{0}}/{{1}}",
 	"lbl_WithdrawalDailyReached": "আপনার দৈনিক সীমা পৌঁছেছে.",
 	"lbl_Insufficientbalance": "অপর্যাপ্ত টাকা",
 	"lbl_CryptoWithdrawal": "Crypto Withdrawal",
