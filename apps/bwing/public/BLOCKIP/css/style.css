@@ -127,7 +127,17 @@ body {
             align-items: flex-start;
     background-size: contain;
     background-position: center bottom;
+    padding-bottom: 50vw;
+  }
+}
+@media screen and (min-width: 538px) and (max-width: 545px) {
+  body {
     padding-bottom: 95vw;
+  }
+}
+@media (max-width: 378px) {
+  body {
+    padding-bottom: 92vw;
   }
 }
 @media (max-width: 280px) {
