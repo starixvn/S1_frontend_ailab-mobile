@@ -529,7 +529,7 @@ const SubGame = ({
 	};
 
 	return game?.path ? (
-		pathGameHandler
+		pathGameHandler()
 	) : (
 		<button
 			className={isMaintain ? "active" : ""}
