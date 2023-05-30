@@ -125,7 +125,8 @@ export const Wrapper = ({ children }) => {
 			if (
 				userInfo.memberType === LiveStreamingMemberType &&
 				!isHome &&
-				!pathname.includes(path.casino.root)
+				!pathname.includes(path.casino.root) &&
+				!pathname.includes(path.setting.root)
 			) {
 				navigate(`/${userInfo.langId}`);
 			}
