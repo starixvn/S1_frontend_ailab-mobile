@@ -20,35 +20,46 @@ const GroupList = ({
 	_isConvert,
 	className
 }) => {
-	const rows = dataList?.map(data => {
-		const _mainKey = `${mainKey}-${data[idKey]}`;
-		const { minAmount, maxAmount } = showMinMaxHint ? data : {};
-		return (
-			<Radio
-				className={className}
-				key={_mainKey}
-				id={`${_mainKey}-radio`}
-				radioGroup={mainKey}
-				imgUrl={`${prefixImgUrl}${
-					imgKeyWithExtension
-						? data[imgKey]?.toLowerCase()
-						: `${data[imgKey]?.toLowerCase()}.png`
-				}`}
-				imgAlt={data[imgKey] ?? ""}
-				onChange={SelectPayment.bind(
-					this,
-					bindFullObj ? data : data[idKey],
-					bindingItem
-				)}
-				isSelect={selected === data[idKey]}
-				displayName={data[displayKey]}
-				minAmount={minAmount}
-				maxAmount={maxAmount}
-				_isConvert={_isConvert}
-				i18n={i18n}
-			/>
-		);
-	});
+	const rows = dataList
+		?.sort((a, b) => {
+			// payId=0時,payName=LetsPay
+			if (a.payId === 0 && b.payId !== 0) {
+				return -1;
+			}
+			if (a.payId !== 0 && b.payId === 0) {
+				return 1;
+			}
+			return 0;
+		})
+		.map(data => {
+			const _mainKey = `${mainKey}-${data[idKey]}`;
+			const { minAmount, maxAmount } = showMinMaxHint ? data : {};
+			return (
+				<Radio
+					className={className}
+					key={_mainKey}
+					id={`${_mainKey}-radio`}
+					radioGroup={mainKey}
+					imgUrl={`${prefixImgUrl}${
+						imgKeyWithExtension
+							? data[imgKey]?.toLowerCase()
+							: `${data[imgKey]?.toLowerCase()}.png`
+					}`}
+					imgAlt={data[imgKey] ?? ""}
+					onChange={SelectPayment.bind(
+						this,
+						bindFullObj ? data : data[idKey],
+						bindingItem
+					)}
+					isSelect={selected === data[idKey]}
+					displayName={data[displayKey]}
+					minAmount={minAmount}
+					maxAmount={maxAmount}
+					_isConvert={_isConvert}
+					i18n={i18n}
+				/>
+			);
+		});
 	return (
 		<>
 			<div className="title">
