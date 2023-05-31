@@ -1392,11 +1392,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   margin: 0 0 1vw 0;
   word-break: break-all;
 }
-#popup.cryptoPaypop .popTxt {
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-}
 #popup.cryptoPaypop .popTxt > div {
   margin: 0;
 }
