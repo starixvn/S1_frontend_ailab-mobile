@@ -435,7 +435,7 @@ const Panel = () => {
 				});
 				return;
 			}
-			if (result) {
+			if (result && !selBank.disabled) {
 				const RedirectToNext = async ({
 					accountNo,
 					real_amount,

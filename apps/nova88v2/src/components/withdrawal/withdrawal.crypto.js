@@ -394,7 +394,7 @@ const Panel = () => {
 	const ClickSubmit = () => {
 		if (pageVerify) {
 			const result = VaildAmount(amount);
-			if (result) {
+			if (result && !selBank.disabled) {
 				const RedirectToNext = async ({
 					accountNo,
 					real_amount,
