@@ -2,6 +2,7 @@ import { bannerImgUrl } from "../../config";
 
 export const defPlatform = [
 	{ name: "saba", img: `${bannerImgUrl}/h5/img/partner/saba.png` },
+	{ name: "tfg", img: `${bannerImgUrl}/h5/img/partner/tfg.png` },
 	{ name: "sbo", img: `${bannerImgUrl}/h5/img/partner/sbobet.png` },
 	{ name: "ab", img: `${bannerImgUrl}/h5/img/partner/ab.png` },
 	{ name: "yl", img: `${bannerImgUrl}/h5/img/partner/yl.png` },

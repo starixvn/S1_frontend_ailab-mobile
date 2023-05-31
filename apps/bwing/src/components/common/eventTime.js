@@ -41,5 +41,6 @@ export const eventTime = {
 	sports_cryptoSports: { endDate: "2023/02/04 11:00:00" },
 	yee_bet: { endDate: "2023/03/10 12:00:00" },
 	ap_mini_game: { endDate: "2024/03/10 12:00:00" },
-	liveCasino_bg: { endDate: "2023/12/31 23:59:59" }
+	liveCasino_bg: { endDate: "2023/12/31 23:59:59" },
+	TFGaming: { endDate: "2023/06/30 12:00:00" }
 };
