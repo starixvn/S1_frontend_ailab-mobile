@@ -61,7 +61,7 @@ const Panel = ({ searchInput }) => {
 				obj => obj.tpId === Number(pathTpId)
 			);
 			if (targetProvider) {
-				let pFilterList = pList.filter(
+				const pFilterList = pList.filter(
 					item => item.tpId !== targetProvider.tpId
 				);
 				pFilterList.unshift(targetProvider);
@@ -69,24 +69,29 @@ const Panel = ({ searchInput }) => {
 					const uniqueTpIds = Array.from(
 						new Set(tpGameTypeSettingList.map(item => item.tpId))
 					);
-					pFilterList = pFilterList.filter(
+					const limitProviderList = pFilterList.filter(
 						({ tpId }) => !uniqueTpIds.includes(tpId)
 					);
+					setProviderList(limitProviderList ?? []);
+				} else {
+					setProviderList(pFilterList ?? []);
 				}
-				setProviderList(pFilterList);
 				setActiveProvider(targetProvider);
+			} else if (
+				tpGameTypeSettingList &&
+				tpGameTypeSettingList.length > 0
+			) {
+				const uniqueTpIds = Array.from(
+					new Set(tpGameTypeSettingList.map(item => item.tpId))
+				);
+				const limitProviderList = pList.filter(
+					({ tpId }) => !uniqueTpIds.includes(tpId)
+				);
+				setProviderList(limitProviderList ?? []);
 			} else {
-				let newList;
-				if (tpGameTypeSettingList && tpGameTypeSettingList.length > 0) {
-					const uniqueTpIds = Array.from(
-						new Set(tpGameTypeSettingList.map(item => item.tpId))
-					);
-					newList = pList.filter(
-						({ tpId }) => !uniqueTpIds.includes(tpId)
-					);
-				}
-				setProviderList(newList);
+				setProviderList(pList ?? []);
 			}
+
 			const skipList = ["imgUrl", "providerList"];
 			let tempList = [];
 			setSlotDataList(Object.entries(res.data.data));
