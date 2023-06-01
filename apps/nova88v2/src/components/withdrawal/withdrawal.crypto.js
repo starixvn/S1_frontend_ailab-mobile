@@ -496,6 +496,31 @@ const Panel = () => {
 					: Number(amount);
 
 				const handleClickSubmit = ({ exchangeInfo }) => {
+					let target;
+					if (selBank.usdtAddress) {
+						api.account.GetCustBankInfo().then(
+							res => {
+								if (isMountedRef.current) {
+									const { uSDTDetail } = res.data.data;
+									if (uSDTDetail && uSDTDetail.length > 0) {
+										target = uSDTDetail.find(
+											({ usdtAddress }) =>
+												usdtAddress ===
+												selBank.usdtAddress
+										);
+									}
+								}
+							},
+							() => {
+								setPopBox({
+									isOpen: true,
+									content: i18n.msg_ApiServerError
+								});
+							}
+						);
+					}
+					if (target !== undefined && target.disabled) return;
+
 					if (!isClickedRef.current) {
 						isClickedRef.current = true;
 						RedirectToNext({
