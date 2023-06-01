@@ -7084,6 +7084,7 @@ span.important {
 }
 .addCrypto .addCryptoName .addCryptoInfo span {
   margin-right: 2vw;
+  word-break: break-all;
 }
 .addCrypto .addCryptoName .addCryptoInfo .cryptoName span {
   color: #070e22;
