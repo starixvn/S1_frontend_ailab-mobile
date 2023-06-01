@@ -4,7 +4,8 @@ import {
 	i18nContext,
 	userInfoContext,
 	popBoxContext,
-	loadingContext
+	loadingContext,
+	productTpGameTypeSettingListContext
 } from "Context";
 import { Link } from "../route/link";
 import Layout from "../components/common/layout";
@@ -20,7 +21,6 @@ import api from "../service/api";
 import path from "../path";
 import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
 import { defSlotTpGameType } from "../datas/productList";
-import { productTpGameTypeSettingListContext } from "../components/common/context";
 
 const Panel = ({ searchInput }) => {
 	const { throttle } = useSetTimeout();
@@ -65,33 +65,11 @@ const Panel = ({ searchInput }) => {
 					item => item.tpId !== targetProvider.tpId
 				);
 				pFilterList.unshift(targetProvider);
-				if (tpGameTypeSettingList && tpGameTypeSettingList.length > 0) {
-					const uniqueTpIds = Array.from(
-						new Set(tpGameTypeSettingList.map(item => item.tpId))
-					);
-					const limitProviderList = pFilterList.filter(
-						({ tpId }) => !uniqueTpIds.includes(tpId)
-					);
-					setProviderList(limitProviderList ?? []);
-				} else {
-					setProviderList(pFilterList ?? []);
-				}
+				setProviderList(pFilterList);
 				setActiveProvider(targetProvider);
-			} else if (
-				tpGameTypeSettingList &&
-				tpGameTypeSettingList.length > 0
-			) {
-				const uniqueTpIds = Array.from(
-					new Set(tpGameTypeSettingList.map(item => item.tpId))
-				);
-				const limitProviderList = pList.filter(
-					({ tpId }) => !uniqueTpIds.includes(tpId)
-				);
-				setProviderList(limitProviderList ?? []);
 			} else {
-				setProviderList(pList ?? []);
+				setProviderList(pList);
 			}
-
 			const skipList = ["imgUrl", "providerList"];
 			let tempList = [];
 			setSlotDataList(Object.entries(res.data.data));
@@ -158,18 +136,11 @@ const Panel = ({ searchInput }) => {
 			tempList.forEach(item => _list.push(item[0]));
 			setCategoryList(_list);
 			setActiveCategory(_list[1]);
-			let targetList = Object.entries(res.data.data)?.find(
+			const targetList = Object.entries(res.data.data)?.find(
 				item => item[0] === _list[1]
 			)[1];
-			if (tpGameTypeSettingList && tpGameTypeSettingList.length > 0) {
-				const uniqueTpIds = Array.from(
-					new Set(tpGameTypeSettingList.map(item => item.tpId))
-				);
-				targetList = targetList.filter(
-					({ tpId }) => !uniqueTpIds.includes(tpId)
-				);
-			}
-			setGameList(targetList);
+			const unLimitTpGameTypeList = getUnLimitTpGameTypeList(targetList);
+			setGameList(unLimitTpGameTypeList);
 			setLoading(false);
 		} catch (error) {
 			setPopBox({
@@ -178,6 +149,16 @@ const Panel = ({ searchInput }) => {
 			});
 			setLoading(false);
 		}
+	};
+
+	const getUnLimitTpGameTypeList = list => {
+		if (tpGameTypeSettingList && tpGameTypeSettingList.length > 0) {
+			const uniqueTpIds = Array.from(
+				new Set(tpGameTypeSettingList.map(item => item.tpId))
+			);
+			return list.filter(({ tpId }) => !uniqueTpIds.includes(tpId));
+		}
+		return list;
 	};
 
 	const handleSetFavorite = async (GameId, IsRemove, ProviderId) => {
@@ -198,7 +179,26 @@ const Panel = ({ searchInput }) => {
 	};
 
 	const changeActiveProvider = provider => {
-		setActiveProvider(provider);
+		if (tpGameTypeSettingList && tpGameTypeSettingList.length > 0) {
+			const uniqueTpIds = Array.from(
+				new Set(tpGameTypeSettingList.map(item => item.tpId))
+			);
+			if (uniqueTpIds.includes(provider.tpId)) {
+				setPopBox({
+					isOpen: true,
+					title: i18n.lbl_Information,
+					content: (
+						<div style={{ color: "red" }}>
+							{i18n.lbl_InaccessibleWithoutPermission}
+						</div>
+					)
+				});
+			} else {
+				setActiveProvider(provider);
+			}
+		} else {
+			setActiveProvider(provider);
+		}
 	};
 
 	const randomArray = array => array.sort(() => Math.random() - 0.5);
@@ -247,20 +247,15 @@ const Panel = ({ searchInput }) => {
 						resultList.push(result);
 					}
 				});
-				let filterList = resultList.filter(item => filterHandle(item));
-
-				if (tpGameTypeSettingList && tpGameTypeSettingList.length > 0) {
-					const uniqueTpIds = Array.from(
-						new Set(tpGameTypeSettingList.map(item => item.tpId))
-					);
-					filterList = filterList.filter(
-						({ tpId }) => !uniqueTpIds.includes(tpId)
-					);
-				}
-
-				setGameList(filterList);
+				const filterList = resultList.filter(item =>
+					filterHandle(item)
+				);
+				const unLimitTpGameTypeList = getUnLimitTpGameTypeList(
+					filterList
+				);
+				setGameList(unLimitTpGameTypeList);
 			} else {
-				let filterList =
+				const filterList =
 					targetList[0] === "all" &&
 					Object.keys(activeProvider).length === 0
 						? randomArray(
@@ -269,17 +264,10 @@ const Panel = ({ searchInput }) => {
 								)
 						  )
 						: targetList[1]?.filter(item => filterHandle(item));
-
-				if (tpGameTypeSettingList && tpGameTypeSettingList.length > 0) {
-					const uniqueTpIds = Array.from(
-						new Set(tpGameTypeSettingList.map(item => item.tpId))
-					);
-					filterList = filterList.filter(
-						({ tpId }) => !uniqueTpIds.includes(tpId)
-					);
-				}
-
-				setGameList(filterList);
+				const unLimitTpGameTypeList = getUnLimitTpGameTypeList(
+					filterList
+				);
+				setGameList(unLimitTpGameTypeList);
 			}
 		}
 	};
@@ -376,7 +364,7 @@ const Panel = ({ searchInput }) => {
 	useEffect(() => {
 		if (activeCategory === "myFavorite") {
 			const tempList = [];
-			let resultList = [];
+			const resultList = [];
 			const tempFavoriteList = favoriteStr.split("&") ?? [];
 			tempFavoriteList.forEach(str => {
 				const chars = str.split("_");
@@ -402,17 +390,8 @@ const Panel = ({ searchInput }) => {
 					resultList.push(judgeItem);
 				}
 			});
-
-			if (tpGameTypeSettingList && tpGameTypeSettingList.length > 0) {
-				const uniqueTpIds = Array.from(
-					new Set(tpGameTypeSettingList.map(item => item.tpId))
-				);
-				resultList = resultList.filter(
-					({ tpId }) => !uniqueTpIds.includes(tpId)
-				);
-			}
-
-			setGameList(resultList);
+			const unLimitTpGameTypeList = getUnLimitTpGameTypeList(resultList);
+			setGameList(unLimitTpGameTypeList);
 		}
 	}, [favoriteStr]);
 
@@ -463,7 +442,6 @@ const Panel = ({ searchInput }) => {
 
 				const tempList = [];
 				filterList.forEach(item => tempList.push(item[0]));
-
 				setCategoryList(tempList);
 				setActiveCategory(tempList[1]);
 			} else {
@@ -472,7 +450,23 @@ const Panel = ({ searchInput }) => {
 			}
 		} else {
 			const tempList = [];
-			allCategoryList.forEach(obj => tempList.push(Object.keys(obj)[0]));
+
+			allCategoryList.forEach(array => {
+				if (tpGameTypeSettingList && tpGameTypeSettingList.length > 0) {
+					const uniqueTpIds = Array.from(
+						new Set(tpGameTypeSettingList.map(item => item.tpId))
+					);
+					const unLimitTpGameTypeList = array[1].filter(
+						({ tpId }) => !uniqueTpIds.includes(tpId)
+					);
+					if (unLimitTpGameTypeList.length > 0) {
+						tempList.push(array[0]);
+					}
+				} else {
+					tempList.push(array[0]);
+				}
+			});
+
 			setCategoryList(tempList);
 		}
 	}, [activeProvider]);
@@ -486,6 +480,9 @@ const Panel = ({ searchInput }) => {
 						selNav={activeProvider?.tpId}
 						onChange={changeActiveProvider}
 						sorted={providerList}
+						activeProvider={activeProvider}
+						tpGameTypeSettingList={tpGameTypeSettingList}
+						pathTpId={pathTpId}
 					/>
 				</div>
 				<div className="filterSelect">
