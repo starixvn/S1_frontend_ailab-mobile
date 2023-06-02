@@ -1311,6 +1311,10 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   padding: 11vw 4vw 4vw;
   width: calc(100% - 8vw) !important;
 }
+#popup.promospop .table-wrapper {
+  width: 100%;
+  overflow: scroll;
+}
 #popup.cryptoAddpop .popTxt .dropdown .btn {
   font-size: 3.5vw;
 }

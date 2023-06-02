@@ -1227,6 +1227,10 @@ footer > a.open {
   border-radius: 0;
   overflow: hidden;
 }
+#popup.promoinfo .table-wrapper {
+  width: 100%;
+  overflow: scroll;
+}
 #popup.addCryptoPop .pop {
   border-radius: 5px;
   overflow: hidden;
