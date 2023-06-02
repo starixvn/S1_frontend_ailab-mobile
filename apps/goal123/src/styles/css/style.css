@@ -1311,6 +1311,10 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   padding: 11vw 4vw 4vw;
   width: calc(100% - 8vw) !important;
 }
+#popup.promospop .table-wrapper {
+  width: 100%;
+  overflow: scroll;
+}
 #popup.cryptoAddpop .popTxt .dropdown .btn {
   font-size: 3.5vw;
 }
@@ -1391,11 +1395,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 #popup.cryptopop .popTxt > div {
   margin: 0 0 1vw 0;
   word-break: break-all;
-}
-#popup.cryptoPaypop .popTxt {
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
 }
 #popup.cryptoPaypop .popTxt > div {
   margin: 0;
