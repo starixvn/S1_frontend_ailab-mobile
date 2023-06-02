@@ -62,7 +62,7 @@ export const ReferralPopBox = ({ data, i18n }) => (
 						<span>{data.deposit}</span>
 					</li>
 					<li>
-						<span>{i18n.lbl_ValidBetRequirement}t</span>
+						<span>{i18n.lbl_ValidBetRequirement}</span>
 						<span>{data.vaildBet}</span>
 					</li>
 					<li>
