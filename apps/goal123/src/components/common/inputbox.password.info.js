@@ -34,16 +34,15 @@ const Inputbox = ({
 					}`}
 					data-testid="showPsw"
 					onClick={showPswHandler}
-					data-testid={`${testAttr}_show`}
 				/>
-				<IptStatus btnStatus={btnStatus} clickInfo={clickInfo} />
+				<IptStatus
+					hideInfoBtn
+					btnStatus={btnStatus}
+					clickInfo={clickInfo}
+				/>
 			</div>
 			{tip ? (
-				<div
-					className={`tip active${
-						btnStatus === false ? " error" : ""
-					}`}
-					data-testid={`${testAttr}_msg`}>
+				<div className="tip open" data-testid={`${testAttr}_msg`}>
 					{tip}
 				</div>
 			) : null}
@@ -71,13 +70,15 @@ Inputbox.propTypes = {
 	testAttr: PropTypes.string
 };
 
-export const IptStatus = ({ btnStatus, clickInfo }) => {
+export const IptStatus = ({ btnStatus, clickInfo, hideInfoBtn }) => {
 	switch (btnStatus) {
 		case false:
 			return <i className="icon icon-cross" />;
 		case true:
 			return <i className="icon icon-checkmark" />;
 		default:
+			if (hideInfoBtn) return null;
+
 			return (
 				<i
 					className="icon icon-information-solid"
@@ -90,12 +91,14 @@ export const IptStatus = ({ btnStatus, clickInfo }) => {
 
 IptStatus.defaultProps = {
 	btnStatus: null,
-	clickInfo: () => null
+	clickInfo: () => null,
+	hideInfoBtn: false
 };
 
 IptStatus.propTypes = {
 	btnStatus: PropTypes.bool,
-	clickInfo: PropTypes.func
+	clickInfo: PropTypes.func,
+	hideInfoBtn: PropTypes.bool
 };
 
 export default Inputbox;

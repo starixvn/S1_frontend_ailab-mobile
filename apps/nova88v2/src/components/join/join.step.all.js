@@ -40,7 +40,7 @@ const JoinStepAll = () => {
 	const EditField = (col, e) => {
 		let val = e.target.value;
 
-		if (col === "UserName") {
+		if (col === "UserName" || col === "RealName") {
 			val = val.replace(/[\W_]/g, "");
 		}
 
