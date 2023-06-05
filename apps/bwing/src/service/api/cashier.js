@@ -32,3 +32,22 @@ export const api_depositReqCryptoPay = ({
 		`/${langId}/Cashier/DepositReqCryptoPay?${paramsUrl}`
 	);
 };
+
+export const api_depositReqCryptoLocalPay = ({
+	langId,
+	channelId,
+	real_amount,
+	bonusCode
+}) => {
+	const paramsUrl = [
+		`ChannelId=${channelId}`,
+		`Amount=${real_amount}`,
+		bonusCode && `BonusCode=${bonusCode}`
+	]
+		.filter(Boolean)
+		.join("&");
+
+	return cashierRequest.get(
+		`/${langId}/Cashier/DepositReqCryptoLocalPay?${paramsUrl}`
+	);
+};
