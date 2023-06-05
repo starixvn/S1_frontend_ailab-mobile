@@ -14,7 +14,7 @@ import {
 import { Link } from "../../route/link";
 import Inputbox from "../common/inputbox.hint";
 import Dropdown from "../common/dropdown";
-import Birthday from "./join.birth";
+// import Birthday from "./join.birth";
 import useTip from "../hook/useTip";
 import InputboxPart from "../common/inputbox.profile";
 import { GetYear, GetDayOfMonth } from "../profile/profile.detail";
@@ -165,12 +165,12 @@ const JoinStep2 = ({
 		);
 	};
 
-	const birthSelect = (col, i) => {
-		setUserValue(prev => ({
-			...prev,
-			[col]: i
-		}));
-	};
+	// const birthSelect = (col, i) => {
+	// 	setUserValue(prev => ({
+	// 		...prev,
+	// 		[col]: i
+	// 	}));
+	// };
 
 	const onSelectItem = ({ idx, col, item }) => {
 		setDefaultOption(null);
@@ -215,10 +215,6 @@ const JoinStep2 = ({
 			const result = phoneCheck(val);
 			checked = result.checked;
 			msg = result.msg;
-		} else if (col === "RealName") {
-			const result = checkRealName({ val });
-			checked = result.checked;
-			msg = result.msg;
 		}
 
 		setHintStatus(prev => ({
@@ -234,7 +230,11 @@ const JoinStep2 = ({
 		let checked = true;
 		let msg = "";
 		const regx = /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
-		if (!val || !regx.test(val)) {
+
+		if (!val) {
+			checked = false;
+			msg = t("msg_EmailReq");
+		} else if (!regx.test(val)) {
 			checked = false;
 			msg = t("msg_MailWrongFormat");
 		} else {
@@ -303,12 +303,6 @@ const JoinStep2 = ({
 		return { checked, msg };
 	};
 
-	const checkRealName = ({ val }) => {
-		const checked = val !== "";
-		const msg = val === "" ? t("msg_EnterRealName") : "";
-		return { checked, msg };
-	};
-
 	const checkAll = async () => {
 		try {
 			const _reCaptchaCheck =
@@ -326,17 +320,12 @@ const JoinStep2 = ({
 
 			const _phoneCheck = phoneCheck(userValue.Phone);
 			const _emailCheck = res[1];
-
 			const _currencyCheck = currencyCheck();
-			const _realNameCheck = checkRealName({
-				val: userValue.RealName
-			});
 
 			const checked =
 				_phoneCheck.checked &&
 				_emailCheck.checked &&
-				_currencyCheck.checked &&
-				_realNameCheck.checked;
+				_currencyCheck.checked;
 
 			if (!checked) {
 				setHintStatus(prev => ({
@@ -352,11 +341,6 @@ const JoinStep2 = ({
 					Currency: {
 						checked: _currencyCheck.checked,
 						msg: _currencyCheck.msg
-					},
-
-					RealName: {
-						checked: _realNameCheck.checked,
-						msg: _realNameCheck.msg
 					}
 				}));
 			}
@@ -385,17 +369,16 @@ const JoinStep2 = ({
 			const signupLangId = getSignupLangId();
 			const regData = {
 				UserName: userValue.UserName,
+				RealName: userValue.RealName,
 				Userpwd: userValue.Password,
 				Email: userValue.Email,
 				PhoneNo: userValue.Phone,
 				CurrencyId: siteCurrency[userValue.CurrencyIdx]?.id,
 				UserLang: signupLangId,
 				AreaCode: areaCodeList[userValue?.AreaCodeIdx]?.value,
-				PromoCode: userValue.SpecialBonusCode,
-				Birth_d: userValue.Birth_d + 1,
-				Birth_m: monthOptions[userValue.Birth_m]?.value,
-				Birth_y: yearOptions[userValue.Birth_y]?.value,
-				RealName: userValue.RealName,
+				// Birth_d: userValue.Birth_d + 1,
+				// Birth_m: monthOptions[userValue.Birth_m]?.value,
+				// Birth_y: yearOptions[userValue.Birth_y]?.value,
 				ReferralUrl: document.referrer,
 				ReCaptchaToken: reCaptchaToken
 			};
@@ -521,23 +504,7 @@ const JoinStep2 = ({
 				onBlur={checkValue.bind(null, "Currency")}
 				flag={true}
 			/>
-			{/* {siteCurrency?.[userValue.Currency]?.id !== defCurrenyId.USD &&
-			siteCurrency?.[userValue.Currency]?.id !== defCurrenyId.USDT ? (
-				<Inputbox
-					icon="icon-phone"
-					placeholder={i18n.lbl_Phone}
-					value={userValue.Phone}
-					areaCode={_areaCode}
-					onChange={EditField.bind(null, "Phone")}
-					btnStatus={hintStatus.Phone.checked}
-					warningMsg={hintStatus.Phone.msg}
-					infoText={i18n.lbl_PhoneTooltip}
-					clickInfo={() => showTipHandler("Phone")}
-					showTips={showTips.includes("Phone")}
-					onBlur={checkValue.bind(null, "Phone")}
-					testAttr="Phone"
-				/>
-			) : ( */}
+
 			<div className="infoModule parts parts-xs">
 				<div
 					className={`inputInfo ${
@@ -579,22 +546,8 @@ const JoinStep2 = ({
 					{hintStatus.Phone.msg}
 				</div>
 			</div>
-			{/* )} */}
 
-			<Inputbox
-				icon="icon-member"
-				placeholder={i18n.lbl_RealName}
-				value={userValue.RealName}
-				onChange={EditField.bind(null, "RealName")}
-				onBlur={checkValue.bind(null, "RealName")}
-				btnStatus={hintStatus.RealName.checked}
-				warningMsg={hintStatus.RealName.msg}
-				infoText={i18n.msg_ConfirmRealNameAlert}
-				clickInfo={() => showTipHandler("RealName")}
-				showTips={showTips.includes("RealName")}
-				testAttr="RealName"
-			/>
-			<Birthday
+			{/* <Birthday
 				i18n={i18n}
 				monthOptions={monthOptions}
 				dateOptions={dateOptions}
@@ -606,7 +559,7 @@ const JoinStep2 = ({
 				checked={hintStatus.Birth.checked}
 				tip={hintStatus.Birth.msg}
 				testAttr="BirthDay"
-			/>
+			/> */}
 
 			{Object.keys(recaptchaInfo).length > 0 &&
 				recaptchaInfo.country !== "CN" && (
