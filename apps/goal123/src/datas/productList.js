@@ -16,7 +16,7 @@ export const defGameInfo = {
 	CryptoSports: { tpId: 45, tpGameType: 87 },
 	SBOSport: { tpId: 42, tpGameType: 77 },
 	BTISport: { tpId: 29, tpGameType: 49 },
-	SabaSoccer: { tpId: 1, gameId: 997, tpGameType: 1 },
+	SabaSoccer: { tpId: 41, gameId: 997, tpGameType: 69 },
 	eSports: { tpId: 41, gameId: 43, tpGameType: 69 },
 	eSports_TFGaming: { tpId: 48, gameId: 0, tpGameType: 97 },
 	Basketball: { tpId: 1, gameId: 2, tpGameType: 1 },
