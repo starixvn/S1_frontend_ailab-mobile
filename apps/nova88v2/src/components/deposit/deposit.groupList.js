@@ -19,73 +19,91 @@ const GroupList = ({
 	i18n,
 	_isConvert
 }) => {
-	const rows = dataList?.map(data => {
-		const _mainKey = `${mainKey}-${data[idKey]}`;
-		const isSelect = selected === data[idKey];
-
-		const { maxAmount, minAmount } = data;
-
-		const itemLabel = () => {
-			let result;
-			if (isCrypto && title === i18n.lbl_PaymentModes) {
-				result = data.groupName;
-			} else if (isCrypto && title === i18n.lbl_SelectChannel) {
-				result = data.channelName;
-			} else {
-				result = data.bankCode ?? data.payName ?? data.groupName;
+	const rows = dataList
+		?.sort((a, b) => {
+			// payId=0時,payName=LetsPay
+			if (a.payId === 0 && b.payId !== 0) {
+				return -1;
 			}
-			return result;
-		};
+			if (a.payId !== 0 && b.payId === 0) {
+				return 1;
+			}
+			return 0;
+		})
+		.map(data => {
+			const _mainKey = `${mainKey}-${data[idKey]}`;
+			const isSelect = selected === data[idKey];
 
-		return (
-			<div>
-				<div
-					className={`bankName${isSelect ? " active" : ""}`}
-					key={_mainKey}
-					onClick={() => {
-						SelectPayment({
-							groupInfo:
-								idKey === "payId" ||
-								idKey === "groupId" ||
-								isCrypto
-									? data
-									: bindingItem,
-							bankInfo: bindFullObj ? data : data[idKey]
-						});
-					}}>
-					<img
-						src={`${prefixImgUrl}${
-							imgKeyWithExtension
-								? data[imgKey]?.toLowerCase()
-								: `${data[imgKey]?.toLowerCase()}.png`
-						}`}
-						alt={data[imgKey] ?? ""}
-					/>
-					<i className="icon icon-icon32px_check" />
-				</div>
-				<div className="subtitle">{itemLabel()}</div>
-				{minAmount === null || maxAmount === null ? null : (
-					<div className="subinfo">
-						<span>
-							{`${i18n?.lbl_Min}: ${
-								minAmount === 0
-									? i18n.lbl_Unlimited
-									: number_format(minAmount, _isConvert, 0)
+			const { maxAmount, minAmount } = data;
+
+			const itemLabel = () => {
+				let result;
+				if (isCrypto && title === i18n.lbl_PaymentModes) {
+					result = data.groupName;
+				} else if (isCrypto && title === i18n.lbl_SelectChannel) {
+					result = data.channelName;
+				} else {
+					result = data.bankCode ?? data.payName ?? data.groupName;
+				}
+				return result;
+			};
+
+			return (
+				<div>
+					<div
+						className={`bankName${isSelect ? " active" : ""}`}
+						key={_mainKey}
+						onClick={() => {
+							SelectPayment({
+								groupInfo:
+									idKey === "payId" ||
+									idKey === "groupId" ||
+									isCrypto
+										? data
+										: bindingItem,
+								bankInfo: bindFullObj ? data : data[idKey]
+							});
+						}}>
+						<img
+							src={`${prefixImgUrl}${
+								imgKeyWithExtension
+									? data[imgKey]?.toLowerCase()
+									: `${data[imgKey]?.toLowerCase()}.png`
 							}`}
-						</span>
-						<span>
-							{`${i18n?.lbl_Max}: ${
-								maxAmount === 0
-									? i18n.lbl_Unlimited
-									: number_format(maxAmount, _isConvert, 0)
-							}`}
-						</span>
+							alt={data[imgKey] ?? ""}
+						/>
+						<i className="icon icon-icon32px_check" />
 					</div>
-				)}
-			</div>
-		);
-	});
-
+					<div className="subtitle">{itemLabel()}</div>
+					{minAmount === null || maxAmount === null ? null : (
+						<div className="subinfo">
+							<span>
+								{`${i18n?.lbl_Min}: ${
+									minAmount === 0
+										? i18n.lbl_Unlimited
+										: number_format(
+												minAmount,
+												_isConvert,
+												0
+										  )
+								}`}
+							</span>
+							<span>
+								{`${i18n?.lbl_Max}: ${
+									maxAmount === 0
+										? i18n.lbl_Unlimited
+										: number_format(
+												maxAmount,
+												_isConvert,
+												0
+										  )
+								}`}
+							</span>
+						</div>
+					)}
+				</div>
+			);
+		});
 	return (
 		dataList?.length > 0 && (
 			<>
