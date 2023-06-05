@@ -1227,6 +1227,10 @@ footer > a.open {
   border-radius: 0;
   overflow: hidden;
 }
+#popup.promoinfo .table-wrapper {
+  width: 100%;
+  overflow: scroll;
+}
 #popup.addCryptoPop .pop {
   border-radius: 5px;
   overflow: hidden;
@@ -11598,6 +11602,12 @@ span.important {
   .input-Area .input-group .inputBoxNew i {
     height: 5.5vw;
   }
+}
+.input-Area .input-group .inputBoxNew .icon-phone + .countryCode {
+  background: transparent;
+  border: 0;
+  margin-bottom: 0.25vw;
+  font-size: 3.5vw;
 }
 .input-Area .input-group .btn-group {
   width: 70%;
