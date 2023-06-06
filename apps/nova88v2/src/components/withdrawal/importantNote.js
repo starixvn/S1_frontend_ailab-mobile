@@ -336,7 +336,7 @@ const KH = () => (
 				rel="noreferrer"
 				target="_blank"
 				href="https://direct.lc.chat/11638088/">
-				កជជែកបន្តផ្ទាល់របស់យើង ២៤ ម៉/៧ ថ្ងៃ
+				ជជែកបន្តផ្ទាល់ ២៤ ម៉/៧ ថ្ងៃ
 			</a>
 			ងៃ ។ សូមអរគុណ។
 		</li>
