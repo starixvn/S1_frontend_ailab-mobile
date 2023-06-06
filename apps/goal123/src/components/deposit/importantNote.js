@@ -33,9 +33,8 @@ const EN = () => (
 			the transaction delay.
 		</li>
 		<li>
-			Depositor&apos;s <span>ACCOUNT NAME</span> must match with your
-			registered full name. We do not encourage transaction made using 3rd
-			party/company account.
+			Depositor&apos;s name must meet the verification criteria, including
+			register name or reference number in slip.
 		</li>
 		<li>
 			Please <span>DO NOT</span> fill in <span>&quot;GOAL123&quot;</span>{" "}
@@ -71,9 +70,8 @@ const VN = () => (
 			chậm.
 		</li>
 		<li>
-			<span>TÊN TÀI KHOẢN</span> người gửi phải trùng với họ tên đăng ký.
-			Chúng tôi không khuyến khích thực hiện giao dịch bằng bên/công ty
-			thứ ba.
+			Để xác thực, vui lòng gửi kèm biên lai nạp tiền có số tham chiếu.
+			Lưu ý tên người nạp tiền nên trùng với tên người đăng ký
 		</li>
 		<li>
 			Vui lòng <span>KHÔNG</span> điền <span>&quot;GOAL123&quot;</span>{" "}
