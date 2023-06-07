@@ -46,9 +46,8 @@ const EN = () => (
 			the transaction delay.
 		</li>
 		<li>
-			Depositor&apos;s <span>ACCOUNT NAME</span> must match with your
-			registered full name. We do not encourage transaction made using 3rd
-			party/company account.
+			Depositor&apos;s name must meet the verification criteria, including
+			register name or reference number in slip.
 		</li>
 		<li>
 			Please <span>DO NOT</span> fill in <span>&quot;NOVA88&quot;</span>{" "}
@@ -79,10 +78,7 @@ const CS = () => (
 			使用 <span>&quot;银行转账&quot;</span>{" "}
 			选项的用户，请先完成转帐充值再提交存款申请，以避免存款延迟。
 		</li>
-		<li>
-			存款<span>帐户全名</span>
-			必须与注册名字匹配，本司不接受第三方/公司账号存款。
-		</li>
+		<li>存款人姓名需符合核实标准，包括注册姓名，存款凭据序号等信息</li>
 		<li>
 			转账时<span>请勿</span>填写 <span>&quot;NOVA88&quot;</span>{" "}
 			或任何与博彩有关联的敏感信息。
@@ -115,9 +111,8 @@ const MY = () => (
 			kelewatan pada deposit.
 		</li>
 		<li>
-			<span>NAMA AKAUN</span> pendeposit mesti padan dengan nama penuh
-			anda yang didaftarkan. Kami tidak menggalakkan transaksi yang dibuat
-			menggunakan akaun pihak ke-3/syarikat.
+			Nama pendeposit mesti memenuhi kriteria pengesahan, termasuk nama
+			daftar atau nombor rujukan dalam slip.
 		</li>
 		<li>
 			<span>JANGAN</span> isi <span>&quot;NOVA88&quot;</span> atau
@@ -150,11 +145,7 @@ const TH = () => (
 			<span>&quot;โอนผ่านแอปธนาคาร&quot;</span>{" "}
 			โปรดทำการโอนเงินก่อนส่งธุรกรรมเพื่อหลีกเลี่ยงความล่าช้าในการทำธุรกรรม
 		</li>
-		<li>
-			ชื่อบัญชีของผู้ฝากต้องตรงกับ <span>ชื่อ นามสกุล</span>{" "}
-			ที่คุณลงทะเบียนไว้
-			เราไม่สนับสนุนให้ทำธุรกรรมโดยใช้บัญชีบุคคลที่สาม/บริษัท
-		</li>
+		<li>ชื่อผู้ฝากต้องตรงกับที่ลงทะเบียนหรือหมายเลขธุรกรรมในสลิปโอนเงิน</li>
 		<li>
 			โปรดอย่ากรอก <span>&quot;NOVA88&quot;</span> หรือคำที่ละเอียดอ่อนใดๆ
 			ที่เกี่ยวข้องกับการพนันเพื่อเป็นข้อมูลอ้างอิง/อ้างถึงในการทำธุรกรรมออนไลน์ของคุณ
@@ -188,9 +179,8 @@ const ID = () => (
 			sebelum mengajukan transaksi untuk menghindari penundaan transaksi.
 		</li>
 		<li>
-			<span>NAMA REKENING</span> penyetor harus sama dengan nama lengkap
-			Anda yang terdaftar. Kami tidak rekomen transaksi yang dilakukan
-			menggunakan akun pihak ke-3 / perusahaan.
+			Nama penyetor harus memenuhi kriteria verifikasi, termasuk nama
+			terdaftar atau nomor referensi dalam slip.
 		</li>
 		<li>
 			Mohon <span>TIDAK</span> mengisi <span>&quot;NOVA88&quot;</span>{" "}
@@ -225,9 +215,8 @@ const HI = () => (
 			पहले हस्तांतरण करें।
 		</li>
 		<li>
-			जमाकर्ता का खाता नाम आपके पंजीकृत पूरे नाम से मेल खाना चाहिए। हम
-			तृतीय पक्ष/कंपनी खाते का उपयोग करके किए गए लेनदेन को प्रोत्साहित
-			नहीं करते हैं।
+			जमाकर्ता का नाम पंजीकरण नाम या पर्ची में संदर्भ संख्या सहित सत्यापन
+			मानदंडों को पूरा करना चाहिए।
 		</li>
 		<li>
 			कृपया अपने ऑनलाइन लेनदेन में संदर्भ/टिप्पणी के रूप में
@@ -263,9 +252,8 @@ const BD = () => (
 			স্থানান্তরটি সম্পন্ন করুন৷
 		</li>
 		<li>
-			আমানতকারীর অ্যাকাউন্টের <span>নাম</span> অবশ্যই আপনার নিবন্ধিত পুরো
-			নামের সাথে মিলতে হবে। আমরা ৩য় পক্ষ/কোম্পানীর অ্যাকাউন্ট ব্যবহার করে
-			করা লেনদেনকে উৎসাহিত করি না।
+			আমানতকারীর নাম অবশ্যই যাচাইয়ের মানদণ্ড পূরণ করতে হবে, যার মধ্যে
+			রেজিস্টার নাম বা স্লিপে রেফারেন্স নম্বর রয়েছে।
 		</li>
 		<li>
 			অনুগ্রহ করে আপনার অনলাইন লেনদেনে রেফারেন্স/মন্তব্য হিসাবে
@@ -302,9 +290,8 @@ const KH = () => (
 			ដើម្បីជៀសវាងការពន្យារពេលប្រតិបត្តិការ។.
 		</li>
 		<li>
-			ឈ្មោះគណនីរបស់អ្នកដាក់ប្រាក់
-			ត្រូវតែដូចគ្នាជាមួយនឹងឈ្មោះពេញរបស់អ្នកដែលបានចុះឈ្មោះ។
-			យើងមិនលើកទឹកចិត្តឱ្យធ្វើប្រតិបត្តិការដោយប្រើគណនីភាគីទីបី/ក្រុមហ៊ុនទេ។.
+			ឈឈ្មោះអ្នកដាក់ប្រាក់ត្រូវតែបំពេញតាមលក្ខណៈវិនិច្ឆ័យនៃការផ្ទៀងផ្ទាត់
+			រួមទាំងឈ្មោះចុះឈ្មោះ ឬលេខយោងនៅក្នុងប័ណ្ណ។
 		</li>
 		<li>
 			<span>សូមកុំបំពេញពាក្យ</span> <span>&quot;NOVA88&quot;</span> e
