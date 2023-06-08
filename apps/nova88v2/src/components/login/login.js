@@ -189,7 +189,12 @@ const LoginPage = () => {
 	const showBylink = useMatch(path.login.root) || nav === defNavPanel.login;
 
 	const EditField = (colName, e) => {
-		const { value } = e.target;
+		let { value } = e.target;
+
+		if (colName === "UserName") {
+			value = value.replace(/[\W_]/g, "");
+		}
+
 		setUserValueState(prevState => ({
 			...prevState,
 			[colName]: value
