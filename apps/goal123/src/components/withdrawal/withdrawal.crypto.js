@@ -435,7 +435,7 @@ const Panel = () => {
 				});
 				return;
 			}
-			if (result) {
+			if (result && !selBank.disabled) {
 				const RedirectToNext = async ({
 					accountNo,
 					real_amount,
@@ -541,6 +541,31 @@ const Panel = () => {
 					: Number(amount);
 
 				const handleClickSubmit = ({ to_Amount, rate }) => {
+					let target;
+					if (selBank.usdtAddress) {
+						api_GetCustBankInfo().then(
+							res => {
+								if (isMountedRef.current) {
+									const { uSDTDetail } = res.data.data;
+									if (uSDTDetail && uSDTDetail.length > 0) {
+										target = uSDTDetail.find(
+											({ usdtAddress }) =>
+												usdtAddress ===
+												selBank.usdtAddress
+										);
+									}
+								}
+							},
+							() => {
+								setPopBox({
+									isOpen: true,
+									content: i18n.msg_ApiServerError
+								});
+							}
+						);
+					}
+					if (target !== undefined && target.disabled) return;
+
 					if (!isClickedRef.current) {
 						isClickedRef.current = true;
 						RedirectToNext({
@@ -832,12 +857,12 @@ const Panel = () => {
 	const banks = bankInfo?.uSDTDetail?.map(b => {
 		return (
 			<div
-				className={
+				className={`${
 					selBank?.usdtAddress === b.usdtAddress &&
 					selBank?.currencyName === b.currencyName
 						? "account open"
 						: "account"
-				}
+				} ${b.disabled ? "pending" : ""}`}
 				key={`withdrawal-bank-${b.usdtAddress}-${b.currencyId}`}
 				onClick={SelectBank.bind(this, b)}>
 				<div className="nickname">{b?.nickName}</div>
@@ -847,7 +872,7 @@ const Panel = () => {
 						: `${b.currencyName}-${b.network}`}
 				</div>
 				<div className="icon icon-crypto">{b?.usdtAddress}</div>
-
+				{b.disabled ? <div className="mask" /> : null}
 				{/* * 暫時隱藏 delete crypto wallet 按鈕，以防止有用戶重複新增刪除帳號來套利，當 risk 評估覺得可以的話有機會再打開 */}
 				{/* <button
 					onClick={() =>

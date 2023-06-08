@@ -441,7 +441,7 @@ const Panel = () => {
 				});
 				return;
 			}
-			if (result) {
+			if (result && !selBank.disabled) {
 				const RedirectToNext = async ({
 					accountNo,
 					real_amount,
@@ -546,6 +546,31 @@ const Panel = () => {
 					: Number(amount);
 
 				const handleClickSubmit = (to_Amount, rate) => {
+					let target;
+					if (selBank.usdtAddress) {
+						api_GetCustBankInfo().then(
+							res => {
+								if (isMountedRef.current) {
+									const { uSDTDetail } = res.data.data;
+									if (uSDTDetail && uSDTDetail.length > 0) {
+										target = uSDTDetail.find(
+											({ usdtAddress }) =>
+												usdtAddress ===
+												selBank.usdtAddress
+										);
+									}
+								}
+							},
+							() => {
+								setPopBox({
+									isOpen: true,
+									content: i18n.msg_ApiServerError
+								});
+							}
+						);
+					}
+					if (target !== undefined && target.disabled) return;
+
 					if (!isClickedRef.current) {
 						isClickedRef.current = true;
 						RedirectToNext({
@@ -844,7 +869,9 @@ const Panel = () => {
 			selBank?.currencyName === b.currencyName;
 		return (
 			<div
-				className={_checked ? "addCryptoName active" : "addCryptoName"}
+				className={`${
+					_checked ? "addCryptoName active" : "addCryptoName"
+				} ${b.disabled ? "pending" : ""}`}
 				key={`withdrawal-bank-${b.usdtAddress}-${b.currencyId}`}
 				onClick={e => {
 					e.stopPropagation();
@@ -893,6 +920,7 @@ const Panel = () => {
 						<span>{b?.usdtAddress}</span>
 					</div>
 				</div>
+				{b.disabled ? <div className="mask" /> : null}
 			</div>
 		);
 	});
