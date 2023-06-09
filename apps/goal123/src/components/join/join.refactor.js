@@ -207,7 +207,12 @@ const Join = () => {
 	};
 
 	const EditField = ({ col }, e) => {
-		const val = col === "Checkbox" ? !userValue.Checkbox : e.target.value;
+		let val = col === "Checkbox" ? !userValue.Checkbox : e.target.value;
+
+		if (col === "UserName") {
+			val = val.replace(/[\W_]/g, "");
+		}
+
 		setUserValue(prev => ({
 			...prev,
 			[col]: val
