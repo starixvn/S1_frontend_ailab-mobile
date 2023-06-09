@@ -255,7 +255,12 @@ const Join = () => {
 	};
 
 	const EditField = ({ col }, e) => {
-		const val = col.includes("Check") ? !userValue[col] : e.target.value;
+		let val = col.includes("Check") ? !userValue[col] : e.target.value;
+
+		if (col === "UserName") {
+			val = val.replace(/[\W_]/g, "");
+		}
+
 		setUserValue(prev => ({
 			...prev,
 			[col]: val
