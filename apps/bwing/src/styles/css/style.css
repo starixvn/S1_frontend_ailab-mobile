@@ -11600,6 +11600,12 @@ span.important {
     height: 5.5vw;
   }
 }
+.input-Area .input-group .inputBoxNew .icon-phone + .countryCode {
+  background: transparent;
+  border: 0;
+  margin-bottom: 0.25vw;
+  font-size: 3.5vw;
+}
 .input-Area .input-group .btn-group {
   width: 70%;
   margin: 0;
