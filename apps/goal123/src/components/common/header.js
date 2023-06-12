@@ -2,7 +2,10 @@ import React, { useContext, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { Redirect, Link } from "@reach/router";
 import classNames from "classnames";
-import { cambodiaSeaGameEventPeriod, isDateRange } from "@ailab-mobile/common";
+import {
+	dragonBoatFestivalEventPeriod,
+	isDateRange
+} from "@ailab-mobile/common";
 import {
 	userInfoContext,
 	i18nContext,
@@ -53,11 +56,18 @@ const Header = ({
 						<a
 							href="/"
 							className={classNames("logo", {
-								cambodia: isDateRange(
-									cambodiaSeaGameEventPeriod
+								dragon: isDateRange(
+									dragonBoatFestivalEventPeriod
 								)
 							})}>
 							<Logo />
+							{isDateRange(dragonBoatFestivalEventPeriod) && (
+								<img
+									className="zongzi"
+									src={`${bannerImgUrl}/h5/img/zongzi.png`}
+									alt="logo"
+								/>
+							)}
 						</a>
 					</>
 				)}
