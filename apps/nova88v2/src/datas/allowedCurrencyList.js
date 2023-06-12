@@ -26,7 +26,7 @@ const allowedCurrencyList = {
 		defCurrenyId.KHM,
 		defCurrenyId.INR
 	],
-	exchange: [defCurrenyId.INR, defCurrenyId.BDT],
+	exchange: [defCurrenyId.INR, defCurrenyId.BDT, defCurrenyId.USD],
 	rewards: [defCurrenyId.MYR, defCurrenyId.THB, defCurrenyId.IDR],
 	wheel: [defCurrenyId.MYR, defCurrenyId.THB, defCurrenyId.IDR],
 	worldCup: [
