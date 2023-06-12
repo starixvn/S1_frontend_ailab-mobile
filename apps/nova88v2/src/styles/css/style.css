@@ -3848,7 +3848,7 @@ footer > a.active .circleAnimation::after {
   border-style: solid dashed dashed;
   border-color: #a5bbe0 transparent transparent;
   position: absolute;
-  bottom: -2vw;
+  bottom: -1.5vw;
   right: 3vw;
   z-index: 1;
 }
@@ -13001,22 +13001,29 @@ input:-webkit-autofill:active {
 .dragon::before {
   content: "";
   display: block;
-  background: url(https://banner.0814media.net/h5/img/dragon.png) no-repeat center/100%;
-  width: 20vw;
-  height: 10vw;
+  background: url(../img/dragon.png) no-repeat center/100%;
+  width: 100px;
+  height: 50px;
   position: absolute;
   z-index: 1;
   bottom: 0;
-  left: 13vw;
+  left: 47px;
 }
 .dragon .dragonlogo {
   padding: 0;
-  width: 28.5vw;
-  margin: 0 0 1vw;
+  width: 120px;
+  margin: 0 0 5px;
+}
+.dragon .dragonitem {
+  width: 95px;
+  position: absolute;
+  bottom: 20px;
+  left: -15px;
+  z-index: 1;
 }
 .dragon .dragon-light {
-  width: 7vw;
+  width: 28px;
   position: absolute;
   top: 0;
-  left: -4.5vw;
+  left: -18px;
 }/*# sourceMappingURL=style.css.map */
