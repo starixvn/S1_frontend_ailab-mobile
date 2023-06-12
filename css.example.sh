@@ -24,12 +24,14 @@ siteList=($(echo "$site" | tr ' ' '\n'))
 for site in ${siteList[@]}
 do
 designPath="${DESIGN_PROJECT}/$site/H5/public/css"
+designImgPath="${DESIGN_PROJECT}/$site/H5/public/img"
 projectPath="${PROJECT}/apps/$site/src/styles"
 if [ $site = "NOVA88" ] || [ $site = "nova88" ]
 then
     projectPath="${PROJECT}/apps/nova88v2/src/styles"
 fi
     cp -R ${designPath} ${projectPath}
+    cp -R ${designImgPath} ${projectPath}
 done
 
 # --
