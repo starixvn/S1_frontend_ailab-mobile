@@ -275,7 +275,7 @@ const IndexPage = () => {
 
 const PlaytechJactpot = () => {
 	const { i18n } = useContext(i18nContext);
-	const [jPotSuccess, setJPotSuccess] = useState(false);
+	const [jPotSuccess, setJPotSuccess] = useState(true);
 
 	useEffect(() => {
 		const ticker2 =
