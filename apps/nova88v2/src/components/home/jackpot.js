@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import PropTypes from "prop-types";
 import useInterval from "../hook/useInterval";
 import { Link } from "../../route/link";
@@ -19,12 +19,12 @@ const Jackpot = ({ i18n, userInfo }) => {
 
 	const _currency = _currencyId ? i18n[`Currency_${_currencyId}`] : "";
 	const [value, setValue] = useState({ curr: "", prev: "" });
-	const [jPotSuccess, setJPotSuccess] = useState(true);
+	const [jPotSuccess, setJPotSuccess] = useState(false);
 
 	const supportAnimation = typeof document.getAnimations === "function";
 
-	useEffect(() => {
-		if (_currency) {
+	useInterval(() => {
+		if (_currency && !jPotSuccess) {
 			try {
 				intervalTimer.current = supportAnimation
 					? 2000 + animateDelaySec
@@ -45,7 +45,7 @@ const Jackpot = ({ i18n, userInfo }) => {
 				ticker.tick();
 			} catch (error) {}
 		}
-	}, [_currency, supportAnimation]);
+	}, 1000);
 
 	useInterval(() => {
 		setValue(prev => ({
