@@ -19,7 +19,7 @@ const Jackpot = ({ i18n, userInfo }) => {
 
 	const _currency = _currencyId ? i18n[`Currency_${_currencyId}`] : "";
 	const [value, setValue] = useState({ curr: "", prev: "" });
-	const [jPotSuccess, setJPotSuccess] = useState(false);
+	const [jPotSuccess, setJPotSuccess] = useState(true);
 
 	const supportAnimation = typeof document.getAnimations === "function";
 
