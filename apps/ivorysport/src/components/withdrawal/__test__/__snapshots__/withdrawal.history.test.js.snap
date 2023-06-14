@@ -1,0 +1,586 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Withdrawal history tests Renders withdrawal history correctly 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="Straight-lock"
+      >
+        <div
+          class="icon icon-mobile img-rotate"
+        >
+          <i
+            class="icon icon-spinner11"
+          />
+        </div>
+        <div
+          class="text"
+        >
+          Dear Valued Customer
+          <br />
+          In order to present the better experience and products
+          <br />
+          <span
+            class="text-org"
+          >
+            Kindly rotate your phone in portrait for better game experience
+          </span>
+          <br />
+          We apologize for the inconvenience caused, and hoping your utmost understanding. Thank you!
+        </div>
+      </div>
+      <header
+        class="header"
+      >
+        <div
+          class="headerTag"
+        >
+          <a
+            class=""
+            href="/en/withdrawal"
+          >
+            Withdrawal
+          </a>
+          <a
+            class=""
+            href="/en/withdrawalHistory"
+          >
+            Withdrawal History
+          </a>
+        </div>
+        <div
+          class="quickSelect"
+        >
+          <button
+            class="active"
+            data-testid="quick_btn_lbl_Today"
+          >
+            Today
+          </button>
+          <button
+            class=""
+            data-testid="quick_btn_lbl_YesterDay"
+          >
+            YesterDay
+          </button>
+          <button
+            class=""
+            data-testid="quick_btn_lbl_ThisWeek"
+          >
+            This Week
+          </button>
+          <button
+            class=""
+            data-testid="quick_btn_lbl_LastWeek"
+          >
+            Last Week
+          </button>
+          <button
+            class=""
+            data-testid="quick_btn_lbl_ThisMonth"
+          >
+            This Month
+          </button>
+          <button
+            class=""
+            data-testid="quick_btn_lbl_LastMonth"
+          >
+            Last Month
+          </button>
+          <i
+            class="icon icon-keyboard_arrow_right"
+          />
+        </div>
+        <div
+          class="functionList"
+        >
+          <div
+            class="infoModule parts"
+          >
+            <div
+              class="inputBox"
+            >
+              <i
+                class="icon icon-calendar"
+              />
+              <input
+                data-testid="dateIpt"
+                max="2021-07-02"
+                type="date"
+                value="2021-07-02"
+              />
+            </div>
+            <i
+              class="icon icon-icon32px_1"
+            />
+            <div
+              class="inputBox"
+            >
+              <i
+                class="icon icon-calendar"
+              />
+              <input
+                data-testid="dateIpt"
+                max="2021-07-02"
+                type="date"
+                value="2021-07-02"
+              />
+            </div>
+            <div
+              class="btn-group"
+            >
+              <button
+                data-testid="submit-history-filter"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main
+        class=""
+      />
+      <footer
+        id="footer"
+      >
+        <a
+          class="icon icon-home"
+          href="/en/"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            Home
+          </span>
+        </a>
+        <a
+          class="icon icon-gift"
+          href="/en/promotion"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            Promotion
+          </span>
+        </a>
+        <a
+          class="icon icon-icon32px_wallet"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            Wallet
+          </span>
+        </a>
+        <a
+          class="icon icon-contact"
+          href="https://direct.lc.chat/11638088/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            Live Chat
+          </span>
+        </a>
+        <a
+          class="icon icon-menu"
+          href="/en/setting"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            More
+          </span>
+        </a>
+      </footer>
+      <div
+        class="walletMenu"
+      >
+        <div
+          class="walletModule"
+        >
+          <a
+            class="icon icon-icon32px_wallet"
+            href="/en/wallet"
+          >
+            <div
+              class="circleAnimation"
+            />
+            <span>
+              My Wallet
+            </span>
+          </a>
+          <a
+            class="icon icon-icon32px_Withdraw"
+            href="/en/withdrawal"
+          >
+            <div
+              class="circleAnimation"
+            />
+            <span>
+              Withdrawal
+            </span>
+          </a>
+          <a
+            class="icon icon-icon32px_deposit"
+            href="/en/deposit"
+          >
+            <div
+              class="circleAnimation"
+            />
+            <span>
+              Deposit
+            </span>
+          </a>
+          <a
+            class="icon icon-icon32px_Funds-transfer"
+            href="/en/transfer"
+          >
+            <div
+              class="circleAnimation"
+            />
+            <span>
+              Transfer
+            </span>
+          </a>
+          <a
+            class="icon icon-icon32px_History"
+            href="/en/statement"
+          >
+            <div
+              class="circleAnimation"
+            />
+            <span>
+              Statement
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="Straight-lock"
+    >
+      <div
+        class="icon icon-mobile img-rotate"
+      >
+        <i
+          class="icon icon-spinner11"
+        />
+      </div>
+      <div
+        class="text"
+      >
+        Dear Valued Customer
+        <br />
+        In order to present the better experience and products
+        <br />
+        <span
+          class="text-org"
+        >
+          Kindly rotate your phone in portrait for better game experience
+        </span>
+        <br />
+        We apologize for the inconvenience caused, and hoping your utmost understanding. Thank you!
+      </div>
+    </div>
+    <header
+      class="header"
+    >
+      <div
+        class="headerTag"
+      >
+        <a
+          class=""
+          href="/en/withdrawal"
+        >
+          Withdrawal
+        </a>
+        <a
+          class=""
+          href="/en/withdrawalHistory"
+        >
+          Withdrawal History
+        </a>
+      </div>
+      <div
+        class="quickSelect"
+      >
+        <button
+          class="active"
+          data-testid="quick_btn_lbl_Today"
+        >
+          Today
+        </button>
+        <button
+          class=""
+          data-testid="quick_btn_lbl_YesterDay"
+        >
+          YesterDay
+        </button>
+        <button
+          class=""
+          data-testid="quick_btn_lbl_ThisWeek"
+        >
+          This Week
+        </button>
+        <button
+          class=""
+          data-testid="quick_btn_lbl_LastWeek"
+        >
+          Last Week
+        </button>
+        <button
+          class=""
+          data-testid="quick_btn_lbl_ThisMonth"
+        >
+          This Month
+        </button>
+        <button
+          class=""
+          data-testid="quick_btn_lbl_LastMonth"
+        >
+          Last Month
+        </button>
+        <i
+          class="icon icon-keyboard_arrow_right"
+        />
+      </div>
+      <div
+        class="functionList"
+      >
+        <div
+          class="infoModule parts"
+        >
+          <div
+            class="inputBox"
+          >
+            <i
+              class="icon icon-calendar"
+            />
+            <input
+              data-testid="dateIpt"
+              max="2021-07-02"
+              type="date"
+              value="2021-07-02"
+            />
+          </div>
+          <i
+            class="icon icon-icon32px_1"
+          />
+          <div
+            class="inputBox"
+          >
+            <i
+              class="icon icon-calendar"
+            />
+            <input
+              data-testid="dateIpt"
+              max="2021-07-02"
+              type="date"
+              value="2021-07-02"
+            />
+          </div>
+          <div
+            class="btn-group"
+          >
+            <button
+              data-testid="submit-history-filter"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main
+      class=""
+    />
+    <footer
+      id="footer"
+    >
+      <a
+        class="icon icon-home"
+        href="/en/"
+      >
+        <div
+          class="circleAnimation"
+        />
+        <span>
+          Home
+        </span>
+      </a>
+      <a
+        class="icon icon-gift"
+        href="/en/promotion"
+      >
+        <div
+          class="circleAnimation"
+        />
+        <span>
+          Promotion
+        </span>
+      </a>
+      <a
+        class="icon icon-icon32px_wallet"
+      >
+        <div
+          class="circleAnimation"
+        />
+        <span>
+          Wallet
+        </span>
+      </a>
+      <a
+        class="icon icon-contact"
+        href="https://direct.lc.chat/11638088/"
+        rel="noreferrer"
+        target="_blank"
+      >
+        <div
+          class="circleAnimation"
+        />
+        <span>
+          Live Chat
+        </span>
+      </a>
+      <a
+        class="icon icon-menu"
+        href="/en/setting"
+      >
+        <div
+          class="circleAnimation"
+        />
+        <span>
+          More
+        </span>
+      </a>
+    </footer>
+    <div
+      class="walletMenu"
+    >
+      <div
+        class="walletModule"
+      >
+        <a
+          class="icon icon-icon32px_wallet"
+          href="/en/wallet"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            My Wallet
+          </span>
+        </a>
+        <a
+          class="icon icon-icon32px_Withdraw"
+          href="/en/withdrawal"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            Withdrawal
+          </span>
+        </a>
+        <a
+          class="icon icon-icon32px_deposit"
+          href="/en/deposit"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            Deposit
+          </span>
+        </a>
+        <a
+          class="icon icon-icon32px_Funds-transfer"
+          href="/en/transfer"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            Transfer
+          </span>
+        </a>
+        <a
+          class="icon icon-icon32px_History"
+          href="/en/statement"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            Statement
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

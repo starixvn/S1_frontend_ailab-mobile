@@ -1,0 +1,104 @@
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import { Link } from "@Router";
+
+const useHandleBreadcrumb = ({
+	locationInfo = {},
+	skipLink = [],
+	root,
+	customDisplayKey = {}
+}) => {
+	const [linkList, setLinkList] = useState([]);
+
+	useEffect(() => {
+		const { path } = locationInfo;
+		const beforeRoot = path?.split(root);
+		let urlParams =
+			beforeRoot?.length > 1
+				? beforeRoot[1].split("/:")
+				: path?.split("/:");
+		urlParams = urlParams ? [root, ...urlParams] : [root];
+
+		const specialLink = {};
+		if (skipLink.length > 0) {
+			skipLink.forEach(skip => {
+				const specialIdx = urlParams?.findIndex(u => u === skip);
+				if (specialIdx > 0) {
+					const specialItem = urlParams[specialIdx - 1];
+					specialLink[
+						specialItem
+					] = `${locationInfo[specialItem]}/${locationInfo[skip]}`;
+				}
+			});
+		}
+
+		if (urlParams.length > 0) {
+			let prevPath = "";
+			const result = urlParams
+				.filter(u => u && u !== "/" && !skipLink.includes(u))
+				.map(u => {
+					const currentPath = specialLink[u]
+						? specialLink[u]
+						: locationInfo[u] ?? u;
+					prevPath += `/${currentPath}`;
+					const link = {
+						urlParam: u,
+						path: prevPath.substring(1),
+						displayKey: customDisplayKey[u] ?? `lbl_${u}`
+					};
+					return link;
+				});
+
+			setLinkList(result);
+		}
+	}, [locationInfo, skipLink, root, customDisplayKey]);
+
+	return { linkList };
+};
+
+const Breadcrumbs = ({
+	root,
+	mainKey,
+	locationInfo,
+	skipLink,
+	i18n,
+	customDisplayKey
+}) => {
+	const { linkList } = useHandleBreadcrumb({
+		locationInfo,
+		skipLink,
+		root,
+		customDisplayKey
+	});
+
+	const rows = linkList.map((l, lidx) => {
+		return (
+			<Link
+				key={`${mainKey}-breadcrumb-${l.displayKey}`}
+				className={lidx === linkList.length - 1 ? "acive" : ""}
+				to={l.path}>
+				{i18n[l.displayKey] ?? l.displayKey}
+			</Link>
+		);
+	});
+	return <nav className="breadcrumb">{rows}</nav>;
+};
+
+Breadcrumbs.defaultProps = {
+	skipLink: [],
+	locationInfo: {},
+	i18n: {},
+	customDisplayKey: "",
+	mainKey: ""
+};
+
+Breadcrumbs.propTypes = {
+	root: PropTypes.string.isRequired,
+	mainKey: PropTypes.string,
+	locationInfo: PropTypes.objectOf(PropTypes.any),
+	skipLink: PropTypes.arrayOf(PropTypes.string),
+	i18n: PropTypes.objectOf(PropTypes.any),
+	customDisplayKey: PropTypes.objectOf(PropTypes.any)
+};
+
+export default Breadcrumbs;

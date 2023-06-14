@@ -1,0 +1,299 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add Bank Panel With RealName Input renders correctly 1`] = `
+Array [
+  <div
+    className="infoModule"
+  >
+    <div
+      className="inputBox"
+      data-testid="bankList"
+    >
+      <button
+        className="dropdown"
+        onClick={[Function]}
+      >
+        <div
+          className="bankLogo"
+        >
+          <img
+            alt=""
+            src="https://image.0814media.net/SiteSkin/img/BankLogo/hlb.png"
+          />
+        </div>
+        <span>
+          Hong Leong Bank Berhad
+        </span>
+        <i
+          className="icon icon-keyboard_arrow_down"
+        />
+      </button>
+      <div
+        className="dropdown-container"
+      >
+        <div
+          className="dropdown-item"
+          onClick={[Function]}
+        >
+          <div
+            className="bankLogo"
+          >
+            <img
+              alt=""
+              src="https://image.0814media.net/SiteSkin/img/BankLogo/hlb.png"
+            />
+          </div>
+          <span
+            className="text"
+          >
+            Hong Leong Bank Berhad
+          </span>
+        </div>
+        <div
+          className="dropdown-item"
+          onClick={[Function]}
+        >
+          <div
+            className="bankLogo"
+          >
+            <img
+              alt=""
+              src="https://image.0814media.net/SiteSkin/img/BankLogo/rhb.png"
+            />
+          </div>
+          <span
+            className="text"
+          >
+            RHB Banking Group
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="infoModule"
+  >
+    <div
+      className="inputInfo "
+      data-testid="inputInfo"
+    >
+      To ensure all transations correct, please make sure your real name is same with your bank account name
+    </div>
+    <div
+      className="inputBox "
+    >
+      <i
+        className="icon icon-member"
+      />
+      <input
+        className="textRight"
+        data-testid="RealName_ipt"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder=""
+        type="text"
+        value=""
+      />
+      <div
+        className="icon-module"
+      >
+        <i
+          className="icon icon-information"
+          data-testid="showTipBtn"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+    <div
+      className="tip"
+      data-testid="RealName_msg"
+    >
+      
+    </div>
+  </div>,
+  <div
+    className="infoModule"
+  >
+    <div
+      className="inputInfo "
+      data-testid="inputInfo"
+    >
+      Need Account Number
+    </div>
+    <div
+      className="inputBox "
+    >
+      <i
+        className="icon icon-newspaper"
+      />
+      <input
+        className="textRight"
+        data-testid="BankAccount_ipt"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder=""
+        type="tel"
+        value=""
+      />
+      <div
+        className="icon-module"
+      >
+        <i
+          className="icon icon-information"
+          data-testid="showTipBtn"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+    <div
+      className="tip"
+      data-testid="BankAccount_msg"
+    >
+      
+    </div>
+  </div>,
+  <div
+    className="btn-group"
+    data-testid="btnGroup"
+  >
+    <button
+      className="white"
+      onClick={[Function]}
+    />
+    <button
+      className="orange"
+      onClick={[Function]}
+    />
+  </div>,
+]
+`;
+
+exports[`Add Bank Panel With RealName Input renders correctly 2`] = `
+Array [
+  <div
+    className="infoModule"
+  >
+    <div
+      className="inputBox"
+      data-testid="bankList"
+    >
+      <button
+        className="dropdown"
+        onClick={[Function]}
+      >
+        <div
+          className="bankLogo"
+        >
+          <img
+            alt=""
+            src="https://image.0814media.net/SiteSkin/img/BankLogo/hlb.png"
+          />
+        </div>
+        <span>
+          Hong Leong Bank Berhad
+        </span>
+        <i
+          className="icon icon-keyboard_arrow_down"
+        />
+      </button>
+      <div
+        className="dropdown-container"
+      >
+        <div
+          className="dropdown-item"
+          onClick={[Function]}
+        >
+          <div
+            className="bankLogo"
+          >
+            <img
+              alt=""
+              src="https://image.0814media.net/SiteSkin/img/BankLogo/hlb.png"
+            />
+          </div>
+          <span
+            className="text"
+          >
+            Hong Leong Bank Berhad
+          </span>
+        </div>
+        <div
+          className="dropdown-item"
+          onClick={[Function]}
+        >
+          <div
+            className="bankLogo"
+          >
+            <img
+              alt=""
+              src="https://image.0814media.net/SiteSkin/img/BankLogo/rhb.png"
+            />
+          </div>
+          <span
+            className="text"
+          >
+            RHB Banking Group
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="infoModule"
+  >
+    <div
+      className="inputInfo "
+      data-testid="inputInfo"
+    >
+      Need Account Number
+    </div>
+    <div
+      className="inputBox "
+    >
+      <i
+        className="icon icon-newspaper"
+      />
+      <input
+        className="textRight"
+        data-testid="BankAccount_ipt"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder=""
+        type="tel"
+        value=""
+      />
+      <div
+        className="icon-module"
+      >
+        <i
+          className="icon icon-information"
+          data-testid="showTipBtn"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+    <div
+      className="tip"
+      data-testid="BankAccount_msg"
+    >
+      
+    </div>
+  </div>,
+  <div
+    className="btn-group"
+    data-testid="btnGroup"
+  >
+    <button
+      className="white"
+      onClick={[Function]}
+    />
+    <button
+      className="orange"
+      onClick={[Function]}
+    />
+  </div>,
+]
+`;
