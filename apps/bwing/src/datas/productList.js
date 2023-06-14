@@ -52,6 +52,7 @@ export const defGameInfo = {
 	Casino_Habanero: { tpId: 40, tpGameType: 68 },
 	Casino_Skywind: { tpId: 43, tpGameType: 82 },
 	Casino_SimplePlay: { tpId: 44, tpGameType: 86 },
+	Casino_Nextspin: { tpId: 50, tpGameType: 99 },
 	Fishing: { gameId: 10, tpId: 7, tpGameType: 12 },
 	Fishing_SG: { gameId: "F-SF01", tpId: 10, tpGameType: 31 },
 	Fishing_SGW: { gameId: "F-SF02", tpId: 10, tpGameType: 31 },

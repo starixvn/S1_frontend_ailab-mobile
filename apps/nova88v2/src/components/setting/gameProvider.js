@@ -173,6 +173,11 @@ const defPlatfrom = [
 		...defGameInfo.Casino_Skywind,
 		imgName: "sk",
 		path: path.casino.root
+	},
+	{
+		...defGameInfo.Casino_Nextspin,
+		imgName: "casino_nextspin",
+		path: path.casino.root
 	}
 ];
 
