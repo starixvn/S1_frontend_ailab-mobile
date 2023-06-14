@@ -124,16 +124,25 @@ const HeaderInfo = ({ userInfo, i18n }) => {
 			})}>
 			<a href={`/${userInfo.langId}`}>
 				{isDateRange(dragonBoatFestivalEventPeriod) ? (
-					// 端午節活動 logo 跟網站其他 logo 用的顏色不一樣
-					<img
-						src={`${cloudBannerImgURL}/h5/img/${
-							userInfo.langId === "cs"
-								? "dragon-logo_cs"
-								: "dragon-logo"
-						}.png`}
-						alt="logo"
-					/>
+					<>
+						<img
+							src={`${cloudBannerImgURL}/h5/img/${
+								userInfo.langId === "cs"
+									? "dragon-logo_cs"
+									: "dragon-logo"
+							}.png`}
+							alt="logo"
+							className="dragonlogo"
+						/>
+						<img
+							className="dragon-light"
+							src={`${cloudBannerImgURL}/h5/img/dragon-light.png`}
+							alt="logo"
+						/>
+					</>
 				) : (
+					// 端午節活動 logo 跟網站其他 logo 用的顏色不一樣
+
 					<Logo langId={userInfo.langId} />
 				)}
 			</a>
