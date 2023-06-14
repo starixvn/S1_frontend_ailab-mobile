@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bank info has account name renders component has account name 1`] = `
+Array [
+  <div
+    className="vip_mark"
+  >
+    <img
+      alt="vip"
+      src="https://image.0814media.net/VIP/img/vip01.png"
+    />
+    <div />
+  </div>,
+  <div
+    className="name"
+    data-testid="accountName"
+  >
+    qaq
+  </div>,
+  <div
+    className="text-center text-gray"
+  >
+    For any request of modification, please contact CSD.
+  </div>,
+  <div
+    className="btn-group"
+  >
+    <button
+      className="icon icon-plus"
+      data-testid="addAccountBtn"
+      onClick={[Function]}
+    >
+      Add New Account
+    </button>
+  </div>,
+]
+`;
+
+exports[`Bank info init status renders correctly 1`] = `
+<div
+  className="btn-group"
+>
+  <button
+    className="icon icon-plus"
+    data-testid="addAccountBtn"
+    onClick={[Function]}
+  >
+    Add New Account
+  </button>
+</div>
+`;
