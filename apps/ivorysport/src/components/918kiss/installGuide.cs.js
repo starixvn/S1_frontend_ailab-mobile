@@ -1,0 +1,79 @@
+import React from "react";
+import Swiper from "react-id-swiper";
+import { cloudBannerImgURL } from "../../config";
+
+export default () => {
+	return (
+		<div className="downloadModule">
+			<div className="guideMark" />
+			<Swiper spaceBetween={30}>
+				<div>
+					<img
+						src={`${cloudBannerImgURL}/h5/img/918/cs/Help_01.png`}
+						alt="step1"
+					/>
+				</div>
+				<div>
+					<img
+						src={`${cloudBannerImgURL}/h5/img/918/cs/Help_02.png`}
+						alt="step2"
+					/>
+				</div>
+				<div>
+					<img
+						src={`${cloudBannerImgURL}/h5/img/918/cs/Help_03.png`}
+						alt="step3"
+					/>
+				</div>
+				<div>
+					<img
+						src={`${cloudBannerImgURL}/h5/img/918/cs/Help_04.png`}
+						alt="step5"
+					/>
+				</div>
+				<div>
+					<img
+						src={`${cloudBannerImgURL}/h5/img/918/cs/Help_05.png`}
+						alt="step6"
+					/>
+				</div>
+				<div>
+					<img
+						src={`${cloudBannerImgURL}/h5/img/918/cs/Help_06.png`}
+						alt="step7"
+					/>
+				</div>
+				<div>
+					<img
+						src={`${cloudBannerImgURL}/h5/img/918/cs/Help_07.png`}
+						alt="step8"
+					/>
+				</div>
+				<div>
+					<img
+						src={`${cloudBannerImgURL}/h5/img/918/cs/Help_08.png`}
+						alt="step9"
+					/>
+				</div>
+				<div>
+					<img
+						src={`${cloudBannerImgURL}/h5/img/918/cs/Help_09.png`}
+						alt="step10"
+					/>
+				</div>
+				<div>
+					<img
+						src={`${cloudBannerImgURL}/h5/img/918/cs/Help_10.png`}
+						alt="step11"
+					/>
+				</div>
+				<div>
+					<img
+						src={`${cloudBannerImgURL}/h5/img/918/cs/Help_11.png`}
+						alt="step11"
+					/>
+				</div>
+			</Swiper>
+		</div>
+	);
+};

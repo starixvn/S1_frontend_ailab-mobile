@@ -6,7 +6,7 @@ DESIGN_PROJECT=/Users/lukelin/Project/Design
 PROJECT=/Users/lukelin/Project/ailab-mobile
 
 # 目前既有品牌
-SITE_LIST=(NOVA88 GOAL123 BWING)
+SITE_LIST=(NOVA88 GOAL123 BWING IVORYSPORT)
 
 
 # READ

@@ -1,0 +1,204 @@
+import React, { useContext } from "react";
+import PropTypes from "prop-types";
+import { useMatch, useLocation } from "@reach/router";
+import { Link } from "@Router";
+import { eWalletContext, i18nContext, userInfoContext } from "Context";
+import useBeforeLoginCheck from "../hook/useBeforeLoginCheck";
+import { defCurrenyId } from "./common";
+import path from "../../path";
+
+const isMatch = ({ location, tabInfo, langId }) => {
+	return location.path
+		? location.path === `/:langId/${tabInfo.to}` ||
+				location.path === tabInfo.to
+		: location.pathname === `/${langId}/${tabInfo.to}` ||
+				location.pathname === tabInfo.to;
+};
+
+export const getMainClass = ({ defTabs, location }) => {
+	let mainClass = "";
+	Object.keys(defTabs).some(key => {
+		const tabInfo = defTabs[key];
+		let result = false;
+		if (tabInfo.subTabs) {
+			result = Object.keys(tabInfo.subTabs).some(subKey => {
+				const subTabInfo = tabInfo.subTabs[subKey];
+				if (isMatch({ location, tabInfo: subTabInfo })) {
+					mainClass = subTabInfo.mainClass;
+					return true;
+				}
+				return false;
+			});
+		} else if (isMatch({ location, tabInfo })) {
+			mainClass = tabInfo.mainClass;
+			result = true;
+		}
+		return result;
+	});
+
+	return mainClass;
+};
+
+const IndexPage = ({ defTabs, beforeLogin, filter, breadCrumb, tabHint }) => {
+	const location = useLocation();
+	const { userInfo } = useContext(userInfoContext);
+	const { isShowEWallet } = useContext(eWalletContext);
+	const { i18n } = useContext(i18nContext);
+	const eWalletPathList = [
+		`/${userInfo.langId}/eWalletWithdrawal`,
+		`/${userInfo.langId}/eWallet`,
+		`/${userInfo.langId}/eWallet-withdrawal`
+	];
+	useBeforeLoginCheck({
+		isLogin: userInfo.isLogin,
+		beforeLogin,
+		langId: userInfo.langId
+	});
+	const toggleTabList = ["eWalletWithdrawal", "eWallet"];
+	if (userInfo.isLogin === null) return null;
+
+	let currentTab = null;
+	const mainTab = [];
+	let subItems = [];
+	Object.keys(defTabs).forEach((key, index) => {
+		const tabInfo = defTabs[key];
+		let isMatchSub = false;
+		if (tabInfo.subTabs) {
+			subItems = Object.keys(tabInfo.subTabs).map(subKey => {
+				const subTabInfo = tabInfo.subTabs[subKey];
+				if (!isShowEWallet && toggleTabList.includes(subTabInfo.to))
+					return null;
+				// 因目前BDT幣別不支援localBank,故先隱藏
+				if (
+					userInfo.currencyId === defCurrenyId.BDT &&
+					(subTabInfo.to === "withdrawal" ||
+						subTabInfo.to === "bank-info")
+				) {
+					return null;
+				}
+				isMatchSub = isMatch({
+					location,
+					tabInfo: subTabInfo,
+					langId: userInfo.langId
+				});
+				return (
+					<TabItem
+						key={`subtab-btn-${subKey}`}
+						i18n={i18n}
+						tabItem={subTabInfo}
+					/>
+				);
+			});
+		}
+		if (isMatch({ location, tabInfo, langId: userInfo.langId })) {
+			currentTab = tabInfo;
+		}
+		mainTab.push(
+			<TabItem
+				key={`tab-btn-${key}`}
+				i18n={i18n}
+				tabItem={tabInfo}
+				match={
+					eWalletPathList.includes(location.pathname) &&
+					(key === "withdrawal" || key === "bankInfo")
+						? true
+						: isMatchSub
+				}
+				tabHint={tabHint}
+			/>
+		);
+	});
+	return (
+		<header className="header">
+			<div className="headerTag">{mainTab}</div>
+			{subItems?.length > 0 &&
+			(currentTab === null || currentTab?.subTabs) ? (
+				<div className="tag">{subItems}</div>
+			) : null}
+			{filter || null}
+			{breadCrumb || null}
+		</header>
+	);
+};
+
+IndexPage.defaultProps = {
+	defTabs: {},
+	beforeLogin: false,
+	filter: null,
+	tabHint: "",
+	breadCrumb: null
+};
+
+IndexPage.propTypes = {
+	defTabs: PropTypes.objectOf(PropTypes.object),
+	beforeLogin: PropTypes.bool,
+	filter: PropTypes.node,
+	tabHint: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+	breadCrumb: PropTypes.node
+};
+
+const TabItem = ({ i18n = {}, tabItem = {}, match = false, tabHint = "" }) => {
+	const { userInfo } = useContext(userInfoContext);
+	const { isShowEWallet } = useContext(eWalletContext);
+	const matchTo = useMatch(`/:langId/${tabItem.to}/*`) !== null;
+	const matchExclude = useMatch(`/:langId/${tabItem.excludeMath}/*`) !== null;
+	const _isMatch =
+		match || (matchTo && (!tabItem.excludeMath || !matchExclude));
+
+	// 因目前BDT幣別不支援localBank,故先隱藏
+	const tabLink = () => {
+		if (
+			userInfo.currencyId === defCurrenyId.BDT &&
+			tabItem.to === path.bankInfo.root &&
+			isShowEWallet
+		) {
+			return path.eWallet.root;
+		}
+		if (
+			userInfo.currencyId === defCurrenyId.BDT &&
+			tabItem.to === path.bankInfo.root &&
+			!isShowEWallet
+		) {
+			return path.cryptoWallet.root;
+		}
+		if (
+			userInfo.currencyId === defCurrenyId.BDT &&
+			tabItem.to === path.withdrawal.root &&
+			isShowEWallet
+		) {
+			return path.eWalletWithdrawal.root;
+		}
+		if (
+			userInfo.currencyId === defCurrenyId.BDT &&
+			tabItem.to === path.withdrawal.root &&
+			!isShowEWallet
+		) {
+			return path.cryptoWithdrawal.root;
+		}
+
+		return tabItem.to;
+	};
+
+	return (
+		<Link to={tabLink()} className={_isMatch ? "active" : ""}>
+			{i18n[tabItem.displayKey]}
+			{tabHint && tabItem.tabHint ? (
+				<i className="quantity">{tabHint}</i>
+			) : null}
+		</Link>
+	);
+};
+
+TabItem.defaultProps = {
+	match: false,
+	tabHint: ""
+};
+
+TabItem.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	tabItem: PropTypes.objectOf(PropTypes.string).isRequired,
+	match: PropTypes.bool,
+	tabHint: PropTypes.string
+};
+
+export default IndexPage;
