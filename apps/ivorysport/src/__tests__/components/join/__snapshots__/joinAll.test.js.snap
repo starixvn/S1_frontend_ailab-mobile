@@ -1,0 +1,5240 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Join step1 JoinAll renders correctly 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="step"
+      >
+        <div
+          class="stepLine"
+        >
+          <div />
+        </div>
+        <div
+          class="circle active"
+        >
+          <div>
+            <div
+              class="icon icon-checkmark"
+            />
+          </div>
+        </div>
+        <div
+          class="circle"
+        >
+          <div>
+            <div>
+              2
+            </div>
+          </div>
+        </div>
+        <div
+          class="circle"
+        >
+          <div>
+            <div>
+              3
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="Join"
+      >
+        <div
+          class="infoModule"
+          data-testid="UserName"
+        >
+          <div
+            class="inputInfo "
+            data-testid="inputInfo"
+          >
+            For security, we suggest that your username does not contain your real name.
+          </div>
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-member"
+            />
+            <input
+              class="textRight"
+              placeholder="Username"
+              type="text"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+          <div
+            class="tip"
+            data-testid="UserName"
+          />
+        </div>
+        <div
+          class="infoModule"
+          data-testid="Password"
+        >
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-key"
+            />
+            <input
+              placeholder="Password"
+              type="password"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-eye-blocked"
+                data-testid="showPsw"
+              />
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="infoModule"
+          data-testid="AffiliateId"
+        >
+          <div
+            class="inputInfo "
+            data-testid="inputInfo"
+          >
+            Please enter Affiliate ID (Optional), it can not change once enter!
+          </div>
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-affiliate"
+            />
+            <input
+              class="textRight"
+              placeholder="Affiliate ID/Referral"
+              type="text"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+          <div
+            class="tip"
+            data-testid="AffiliateId"
+          />
+        </div>
+        <div
+          class="infoModule"
+          data-testid="SpecialBonusCode"
+        >
+          <div
+            class="inputInfo "
+            data-testid="inputInfo"
+          >
+            Promo Code
+          </div>
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-promotion"
+            />
+            <input
+              class="textRight"
+              placeholder="Promo Code"
+              type="text"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+          <div
+            class="tip"
+            data-testid="SpecialBonusCode"
+          />
+        </div>
+        <div
+          class="Terms"
+        >
+          By clicking the JOIN NOW button, I hereby acknowledge that I am above 21 years old and have read and accepted your 
+          <a
+            href="http://www.n88dev.com/SiteSkin/Nova88/Static/en/TermsConditions.html"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Terms and Conditions
+          </a>
+          .
+        </div>
+        <div
+          class="btn-group"
+        >
+          <button
+            data-testid="next"
+          >
+            Join Now
+          </button>
+        </div>
+        <a
+          href="/en/"
+        >
+          <div
+            class="visit"
+          >
+            I would like to visit !
+            <i
+              class="icon icon-visit"
+            />
+          </div>
+        </a>
+      </div>
+      <div
+        class="features"
+      >
+        <div
+          class="title"
+        >
+          <span
+            class="icon icon-star-full"
+          />
+          FEATURES
+        </div>
+        <div
+          class="title"
+        >
+          MEMBER BENEFITS
+        </div>
+        <ul>
+          <li>
+            <span>
+              55%
+            </span>
+             NOVA88 STARTER PACK
+          </li>
+          <li>
+            <span>
+              68%
+            </span>
+             LIVE CASINO WELCOME BONUS
+          </li>
+          <li>
+            <span>
+              100%
+            </span>
+             SLOTS WELCOME BONUS
+          </li>
+          <li>
+            DAILY REDEPOSIT BONUS UP TO 
+            <span>
+              20%
+            </span>
+          </li>
+        </ul>
+        <div
+          class="title"
+        >
+          ENJOY NOVA88 VIP EXCLUSIVE BONUS & REBATES
+        </div>
+        <ul>
+          <li>
+            Multiple product platforms with better odds and full gameplay experience.
+          </li>
+          <li>
+            Speedy deposit and withdrawal with multiple deposit option.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="step"
+    >
+      <div
+        class="stepLine"
+      >
+        <div />
+      </div>
+      <div
+        class="circle active"
+      >
+        <div>
+          <div
+            class="icon icon-checkmark"
+          />
+        </div>
+      </div>
+      <div
+        class="circle"
+      >
+        <div>
+          <div>
+            2
+          </div>
+        </div>
+      </div>
+      <div
+        class="circle"
+      >
+        <div>
+          <div>
+            3
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="Join"
+    >
+      <div
+        class="infoModule"
+        data-testid="UserName"
+      >
+        <div
+          class="inputInfo "
+          data-testid="inputInfo"
+        >
+          For security, we suggest that your username does not contain your real name.
+        </div>
+        <div
+          class="inputBox "
+        >
+          <i
+            class="icon icon-member"
+          />
+          <input
+            class="textRight"
+            placeholder="Username"
+            type="text"
+            value=""
+          />
+          <div
+            class="icon-module"
+          >
+            <i
+              class="icon icon-information"
+            />
+          </div>
+        </div>
+        <div
+          class="tip"
+          data-testid="UserName"
+        />
+      </div>
+      <div
+        class="infoModule"
+        data-testid="Password"
+      >
+        <div
+          class="inputBox "
+        >
+          <i
+            class="icon icon-key"
+          />
+          <input
+            placeholder="Password"
+            type="password"
+            value=""
+          />
+          <div
+            class="icon-module"
+          >
+            <i
+              class="icon icon-eye-blocked"
+              data-testid="showPsw"
+            />
+            <i
+              class="icon icon-information"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="infoModule"
+        data-testid="AffiliateId"
+      >
+        <div
+          class="inputInfo "
+          data-testid="inputInfo"
+        >
+          Please enter Affiliate ID (Optional), it can not change once enter!
+        </div>
+        <div
+          class="inputBox "
+        >
+          <i
+            class="icon icon-affiliate"
+          />
+          <input
+            class="textRight"
+            placeholder="Affiliate ID/Referral"
+            type="text"
+            value=""
+          />
+          <div
+            class="icon-module"
+          >
+            <i
+              class="icon icon-information"
+            />
+          </div>
+        </div>
+        <div
+          class="tip"
+          data-testid="AffiliateId"
+        />
+      </div>
+      <div
+        class="infoModule"
+        data-testid="SpecialBonusCode"
+      >
+        <div
+          class="inputInfo "
+          data-testid="inputInfo"
+        >
+          Promo Code
+        </div>
+        <div
+          class="inputBox "
+        >
+          <i
+            class="icon icon-promotion"
+          />
+          <input
+            class="textRight"
+            placeholder="Promo Code"
+            type="text"
+            value=""
+          />
+          <div
+            class="icon-module"
+          >
+            <i
+              class="icon icon-information"
+            />
+          </div>
+        </div>
+        <div
+          class="tip"
+          data-testid="SpecialBonusCode"
+        />
+      </div>
+      <div
+        class="Terms"
+      >
+        By clicking the JOIN NOW button, I hereby acknowledge that I am above 21 years old and have read and accepted your 
+        <a
+          href="http://www.n88dev.com/SiteSkin/Nova88/Static/en/TermsConditions.html"
+          rel="noreferrer"
+          target="_blank"
+        >
+          Terms and Conditions
+        </a>
+        .
+      </div>
+      <div
+        class="btn-group"
+      >
+        <button
+          data-testid="next"
+        >
+          Join Now
+        </button>
+      </div>
+      <a
+        href="/en/"
+      >
+        <div
+          class="visit"
+        >
+          I would like to visit !
+          <i
+            class="icon icon-visit"
+          />
+        </div>
+      </a>
+    </div>
+    <div
+      class="features"
+    >
+      <div
+        class="title"
+      >
+        <span
+          class="icon icon-star-full"
+        />
+        FEATURES
+      </div>
+      <div
+        class="title"
+      >
+        MEMBER BENEFITS
+      </div>
+      <ul>
+        <li>
+          <span>
+            55%
+          </span>
+           NOVA88 STARTER PACK
+        </li>
+        <li>
+          <span>
+            68%
+          </span>
+           LIVE CASINO WELCOME BONUS
+        </li>
+        <li>
+          <span>
+            100%
+          </span>
+           SLOTS WELCOME BONUS
+        </li>
+        <li>
+          DAILY REDEPOSIT BONUS UP TO 
+          <span>
+            20%
+          </span>
+        </li>
+      </ul>
+      <div
+        class="title"
+      >
+        ENJOY NOVA88 VIP EXCLUSIVE BONUS & REBATES
+      </div>
+      <ul>
+        <li>
+          Multiple product platforms with better odds and full gameplay experience.
+        </li>
+        <li>
+          Speedy deposit and withdrawal with multiple deposit option.
+        </li>
+      </ul>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Join step2 Display step2 & Currency dropdown works fine 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="step"
+      >
+        <div
+          class="stepLine"
+        >
+          <div />
+        </div>
+        <div
+          class="circle"
+        >
+          <div>
+            <div
+              class="icon icon-checkmark"
+            />
+          </div>
+        </div>
+        <div
+          class="circle active"
+        >
+          <div>
+            <div>
+              2
+            </div>
+          </div>
+        </div>
+        <div
+          class="circle"
+        >
+          <div>
+            <div>
+              3
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="Join"
+      >
+        <div
+          class="infoModule"
+          data-testid="Email"
+        >
+          <div
+            class="inputInfo "
+            data-testid="inputInfo"
+          >
+            Email cannot be changed after submission.
+          </div>
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-email"
+            />
+            <input
+              class="textRight"
+              placeholder="Email"
+              type="text"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+          <div
+            class="tip"
+            data-testid="Email"
+          />
+        </div>
+        <div
+          class="infoModule"
+          data-testid="Currency"
+        >
+          <div
+            class="inputInfo "
+          >
+            Preferred currency can not be changed after registration.
+          </div>
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-coin-dollar"
+            />
+            <button
+              class="dropdown btn"
+            >
+              <span
+                class="text"
+                data-testid="Currency_dropdown-text"
+              >
+                THB
+              </span>
+              <i
+                class="icon icon-keyboard_arrow_down"
+              />
+            </button>
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-information"
+              />
+            </div>
+            <div
+              class="dropdown-container"
+            >
+              <div
+                class="dropdown-item"
+                data-testid="dropdown-item"
+              >
+                <span
+                  class="text"
+                >
+                  MYR
+                </span>
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="dropdown-item"
+              >
+                <span
+                  class="text"
+                >
+                  THB
+                </span>
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="dropdown-item"
+              >
+                <span
+                  class="text"
+                >
+                  RMB
+                </span>
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="dropdown-item"
+              >
+                <span
+                  class="text"
+                >
+                  IDR
+                </span>
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="dropdown-item"
+              >
+                <span
+                  class="text"
+                >
+                  USDT
+                </span>
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="dropdown-item"
+              >
+                <span
+                  class="text"
+                >
+                  INR
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="tip"
+        />
+        <div
+          class="infoModule"
+          data-testid="Phone"
+        >
+          <div
+            class="inputInfo "
+            data-testid="inputInfo"
+          >
+            Please enter your valid phone number, it can not be changed once saved!
+          </div>
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-phone"
+            >
+              +66
+            </i>
+            <input
+              class="textRight"
+              placeholder="Phone Number"
+              type="text"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+          <div
+            class="tip"
+            data-testid="Phone"
+          />
+        </div>
+        <div
+          class="infoModule"
+          data-testid="RealName"
+        >
+          <div
+            class="inputInfo "
+            data-testid="inputInfo"
+          >
+            To ensure all transations correct, please make sure your real name is same with your bank account name
+          </div>
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-member"
+            />
+            <input
+              class="textRight"
+              placeholder="Real Name"
+              type="text"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+          <div
+            class="tip"
+            data-testid="RealName"
+          />
+        </div>
+        <div
+          class="infoModule parts"
+        >
+          <div
+            class="inputBox"
+          >
+            <i
+              class="icon icon-cake"
+            />
+            <button
+              class="dropdown"
+              data-testid="BirthDay_m_displayText"
+            >
+              JAN
+              <i
+                class="icon icon-keyboard_arrow_down"
+              />
+            </button>
+            <div
+              class="dropdown-container"
+            >
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                JAN
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                FEB
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                MAR
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                APR
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                MAY
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                JUN
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                JUL
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                AUG
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                SEP
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                OCT
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                NOV
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                DEC
+              </div>
+            </div>
+          </div>
+          <div
+            class="inputBox"
+          >
+            <button
+              class="dropdown"
+              data-testid="BirthDay_d_displayText"
+            >
+              1
+              <i
+                class="icon icon-keyboard_arrow_down"
+              />
+            </button>
+            <div
+              class="dropdown-container"
+            >
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                1
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                2
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                3
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                4
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                5
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                6
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                7
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                8
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                9
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                10
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                11
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                12
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                13
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                14
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                15
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                16
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                17
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                18
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                19
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                20
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                21
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                22
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                23
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                24
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                25
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                26
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                27
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                28
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                29
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                30
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                31
+              </div>
+            </div>
+          </div>
+          <div
+            class="inputBox"
+          >
+            <button
+              class="dropdown"
+              data-testid="BirthDay_y_displayText"
+            >
+              2000
+              <i
+                class="icon icon-keyboard_arrow_down"
+              />
+            </button>
+            <div
+              class="dropdown-container"
+            >
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                2000
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1999
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1998
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1997
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1996
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1995
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1994
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1993
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1992
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1991
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1990
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1989
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1988
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1987
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1986
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1985
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1984
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1983
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1982
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1981
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1980
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1979
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1978
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1977
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1976
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1975
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1974
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1973
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1972
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1971
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1970
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1969
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1968
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1967
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1966
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1965
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1964
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1963
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1962
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1961
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1960
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1959
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1958
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1957
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1956
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1955
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1954
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1953
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1952
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1951
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1950
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1949
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1948
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1947
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1946
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1945
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1944
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1943
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1942
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1941
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="Terms"
+        >
+          By clicking the JOIN NOW button, I hereby acknowledge that I am above 21 years old and have read and accepted your 
+          <a
+            href="http://www.n88dev.com/SiteSkin/Nova88/Static/en/TermsConditions.html"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Terms and Conditions
+          </a>
+          .
+        </div>
+        <div
+          class="btn-group"
+        >
+          <button>
+            Register
+          </button>
+        </div>
+        <a
+          href="/en/"
+        >
+          <div
+            class="visit"
+          >
+            I would like to visit !
+            <i
+              class="icon icon-visit"
+            />
+          </div>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div
+        class="step"
+      >
+        <div
+          class="stepLine"
+        >
+          <div />
+        </div>
+        <div
+          class="circle active"
+        >
+          <div>
+            <div
+              class="icon icon-checkmark"
+            />
+          </div>
+        </div>
+        <div
+          class="circle"
+        >
+          <div>
+            <div>
+              2
+            </div>
+          </div>
+        </div>
+        <div
+          class="circle"
+        >
+          <div>
+            <div>
+              3
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="Join"
+      >
+        <div
+          class="infoModule"
+          data-testid="UserName"
+        >
+          <div
+            class="inputInfo "
+            data-testid="inputInfo"
+          >
+            For security, we suggest that your username does not contain your real name.
+          </div>
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-member"
+            />
+            <input
+              class="textRight"
+              placeholder="Username"
+              type="text"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+          <div
+            class="tip"
+            data-testid="UserName"
+          />
+        </div>
+        <div
+          class="infoModule"
+          data-testid="Password"
+        >
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-key"
+            />
+            <input
+              placeholder="Password"
+              type="password"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-eye-blocked"
+                data-testid="showPsw"
+              />
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="infoModule"
+          data-testid="AffiliateId"
+        >
+          <div
+            class="inputInfo "
+            data-testid="inputInfo"
+          >
+            Please enter Affiliate ID (Optional), it can not change once enter!
+          </div>
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-affiliate"
+            />
+            <input
+              class="textRight"
+              placeholder="Affiliate ID/Referral"
+              type="text"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+          <div
+            class="tip"
+            data-testid="AffiliateId"
+          />
+        </div>
+        <div
+          class="infoModule"
+          data-testid="SpecialBonusCode"
+        >
+          <div
+            class="inputInfo "
+            data-testid="inputInfo"
+          >
+            Promo Code
+          </div>
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-promotion"
+            />
+            <input
+              class="textRight"
+              placeholder="Promo Code"
+              type="text"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+          <div
+            class="tip"
+            data-testid="SpecialBonusCode"
+          />
+        </div>
+        <div
+          class="Terms"
+        >
+          By clicking the JOIN NOW button, I hereby acknowledge that I am above 21 years old and have read and accepted your 
+          <a
+            href="http://www.n88dev.com/SiteSkin/Nova88/Static/en/TermsConditions.html"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Terms and Conditions
+          </a>
+          .
+        </div>
+        <div
+          class="btn-group"
+        >
+          <button
+            data-testid="next"
+          >
+            Join Now
+          </button>
+        </div>
+        <a
+          href="/en/"
+        >
+          <div
+            class="visit"
+          >
+            I would like to visit !
+            <i
+              class="icon icon-visit"
+            />
+          </div>
+        </a>
+      </div>
+      <div
+        class="features"
+      >
+        <div
+          class="title"
+        >
+          <span
+            class="icon icon-star-full"
+          />
+          FEATURES
+        </div>
+        <div
+          class="title"
+        >
+          MEMBER BENEFITS
+        </div>
+        <ul>
+          <li>
+            <span>
+              55%
+            </span>
+             NOVA88 STARTER PACK
+          </li>
+          <li>
+            <span>
+              68%
+            </span>
+             LIVE CASINO WELCOME BONUS
+          </li>
+          <li>
+            <span>
+              100%
+            </span>
+             SLOTS WELCOME BONUS
+          </li>
+          <li>
+            DAILY REDEPOSIT BONUS UP TO 
+            <span>
+              20%
+            </span>
+          </li>
+        </ul>
+        <div
+          class="title"
+        >
+          ENJOY NOVA88 VIP EXCLUSIVE BONUS & REBATES
+        </div>
+        <ul>
+          <li>
+            Multiple product platforms with better odds and full gameplay experience.
+          </li>
+          <li>
+            Speedy deposit and withdrawal with multiple deposit option.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="step"
+    >
+      <div
+        class="stepLine"
+      >
+        <div />
+      </div>
+      <div
+        class="circle active"
+      >
+        <div>
+          <div
+            class="icon icon-checkmark"
+          />
+        </div>
+      </div>
+      <div
+        class="circle"
+      >
+        <div>
+          <div>
+            2
+          </div>
+        </div>
+      </div>
+      <div
+        class="circle"
+      >
+        <div>
+          <div>
+            3
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="Join"
+    >
+      <div
+        class="infoModule"
+        data-testid="UserName"
+      >
+        <div
+          class="inputInfo "
+          data-testid="inputInfo"
+        >
+          For security, we suggest that your username does not contain your real name.
+        </div>
+        <div
+          class="inputBox "
+        >
+          <i
+            class="icon icon-member"
+          />
+          <input
+            class="textRight"
+            placeholder="Username"
+            type="text"
+            value=""
+          />
+          <div
+            class="icon-module"
+          >
+            <i
+              class="icon icon-information"
+            />
+          </div>
+        </div>
+        <div
+          class="tip"
+          data-testid="UserName"
+        />
+      </div>
+      <div
+        class="infoModule"
+        data-testid="Password"
+      >
+        <div
+          class="inputBox "
+        >
+          <i
+            class="icon icon-key"
+          />
+          <input
+            placeholder="Password"
+            type="password"
+            value=""
+          />
+          <div
+            class="icon-module"
+          >
+            <i
+              class="icon icon-eye-blocked"
+              data-testid="showPsw"
+            />
+            <i
+              class="icon icon-information"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="infoModule"
+        data-testid="AffiliateId"
+      >
+        <div
+          class="inputInfo "
+          data-testid="inputInfo"
+        >
+          Please enter Affiliate ID (Optional), it can not change once enter!
+        </div>
+        <div
+          class="inputBox "
+        >
+          <i
+            class="icon icon-affiliate"
+          />
+          <input
+            class="textRight"
+            placeholder="Affiliate ID/Referral"
+            type="text"
+            value=""
+          />
+          <div
+            class="icon-module"
+          >
+            <i
+              class="icon icon-information"
+            />
+          </div>
+        </div>
+        <div
+          class="tip"
+          data-testid="AffiliateId"
+        />
+      </div>
+      <div
+        class="infoModule"
+        data-testid="SpecialBonusCode"
+      >
+        <div
+          class="inputInfo "
+          data-testid="inputInfo"
+        >
+          Promo Code
+        </div>
+        <div
+          class="inputBox "
+        >
+          <i
+            class="icon icon-promotion"
+          />
+          <input
+            class="textRight"
+            placeholder="Promo Code"
+            type="text"
+            value=""
+          />
+          <div
+            class="icon-module"
+          >
+            <i
+              class="icon icon-information"
+            />
+          </div>
+        </div>
+        <div
+          class="tip"
+          data-testid="SpecialBonusCode"
+        />
+      </div>
+      <div
+        class="Terms"
+      >
+        By clicking the JOIN NOW button, I hereby acknowledge that I am above 21 years old and have read and accepted your 
+        <a
+          href="http://www.n88dev.com/SiteSkin/Nova88/Static/en/TermsConditions.html"
+          rel="noreferrer"
+          target="_blank"
+        >
+          Terms and Conditions
+        </a>
+        .
+      </div>
+      <div
+        class="btn-group"
+      >
+        <button
+          data-testid="next"
+        >
+          Join Now
+        </button>
+      </div>
+      <a
+        href="/en/"
+      >
+        <div
+          class="visit"
+        >
+          I would like to visit !
+          <i
+            class="icon icon-visit"
+          />
+        </div>
+      </a>
+    </div>
+    <div
+      class="features"
+    >
+      <div
+        class="title"
+      >
+        <span
+          class="icon icon-star-full"
+        />
+        FEATURES
+      </div>
+      <div
+        class="title"
+      >
+        MEMBER BENEFITS
+      </div>
+      <ul>
+        <li>
+          <span>
+            55%
+          </span>
+           NOVA88 STARTER PACK
+        </li>
+        <li>
+          <span>
+            68%
+          </span>
+           LIVE CASINO WELCOME BONUS
+        </li>
+        <li>
+          <span>
+            100%
+          </span>
+           SLOTS WELCOME BONUS
+        </li>
+        <li>
+          DAILY REDEPOSIT BONUS UP TO 
+          <span>
+            20%
+          </span>
+        </li>
+      </ul>
+      <div
+        class="title"
+      >
+        ENJOY NOVA88 VIP EXCLUSIVE BONUS & REBATES
+      </div>
+      <ul>
+        <li>
+          Multiple product platforms with better odds and full gameplay experience.
+        </li>
+        <li>
+          Speedy deposit and withdrawal with multiple deposit option.
+        </li>
+      </ul>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Join step2 Display step2 & Currency dropdown works fine 2`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="step"
+      >
+        <div
+          class="stepLine"
+        >
+          <div />
+        </div>
+        <div
+          class="circle"
+        >
+          <div>
+            <div
+              class="icon icon-checkmark"
+            />
+          </div>
+        </div>
+        <div
+          class="circle active"
+        >
+          <div>
+            <div>
+              2
+            </div>
+          </div>
+        </div>
+        <div
+          class="circle"
+        >
+          <div>
+            <div>
+              3
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="Join"
+      >
+        <div
+          class="infoModule"
+          data-testid="Email"
+        >
+          <div
+            class="inputInfo "
+            data-testid="inputInfo"
+          >
+            Email cannot be changed after submission.
+          </div>
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-email"
+            />
+            <input
+              class="textRight"
+              placeholder="Email"
+              type="text"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+          <div
+            class="tip"
+            data-testid="Email"
+          />
+        </div>
+        <div
+          class="infoModule"
+          data-testid="Currency"
+        >
+          <div
+            class="inputInfo "
+          >
+            Preferred currency can not be changed after registration.
+          </div>
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-coin-dollar"
+            />
+            <button
+              class="dropdown btn"
+            >
+              <span
+                class="text"
+                data-testid="Currency_dropdown-text"
+              >
+                THB
+              </span>
+              <i
+                class="icon icon-keyboard_arrow_down"
+              />
+            </button>
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-information"
+              />
+            </div>
+            <div
+              class="dropdown-container"
+            >
+              <div
+                class="dropdown-item"
+                data-testid="dropdown-item"
+              >
+                <span
+                  class="text"
+                >
+                  MYR
+                </span>
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="dropdown-item"
+              >
+                <span
+                  class="text"
+                >
+                  THB
+                </span>
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="dropdown-item"
+              >
+                <span
+                  class="text"
+                >
+                  RMB
+                </span>
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="dropdown-item"
+              >
+                <span
+                  class="text"
+                >
+                  IDR
+                </span>
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="dropdown-item"
+              >
+                <span
+                  class="text"
+                >
+                  USDT
+                </span>
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="dropdown-item"
+              >
+                <span
+                  class="text"
+                >
+                  INR
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="tip"
+        />
+        <div
+          class="infoModule"
+          data-testid="Phone"
+        >
+          <div
+            class="inputInfo "
+            data-testid="inputInfo"
+          >
+            Please enter your valid phone number, it can not be changed once saved!
+          </div>
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-phone"
+            >
+              +66
+            </i>
+            <input
+              class="textRight"
+              placeholder="Phone Number"
+              type="text"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+          <div
+            class="tip"
+            data-testid="Phone"
+          />
+        </div>
+        <div
+          class="infoModule"
+          data-testid="RealName"
+        >
+          <div
+            class="inputInfo "
+            data-testid="inputInfo"
+          >
+            To ensure all transations correct, please make sure your real name is same with your bank account name
+          </div>
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-member"
+            />
+            <input
+              class="textRight"
+              placeholder="Real Name"
+              type="text"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+          <div
+            class="tip"
+            data-testid="RealName"
+          />
+        </div>
+        <div
+          class="infoModule parts"
+        >
+          <div
+            class="inputBox"
+          >
+            <i
+              class="icon icon-cake"
+            />
+            <button
+              class="dropdown"
+              data-testid="BirthDay_m_displayText"
+            >
+              JAN
+              <i
+                class="icon icon-keyboard_arrow_down"
+              />
+            </button>
+            <div
+              class="dropdown-container"
+            >
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                JAN
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                FEB
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                MAR
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                APR
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                MAY
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                JUN
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                JUL
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                AUG
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                SEP
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                OCT
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                NOV
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                DEC
+              </div>
+            </div>
+          </div>
+          <div
+            class="inputBox"
+          >
+            <button
+              class="dropdown"
+              data-testid="BirthDay_d_displayText"
+            >
+              1
+              <i
+                class="icon icon-keyboard_arrow_down"
+              />
+            </button>
+            <div
+              class="dropdown-container"
+            >
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                1
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                2
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                3
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                4
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                5
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                6
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                7
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                8
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                9
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                10
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                11
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                12
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                13
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                14
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                15
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                16
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                17
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                18
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                19
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                20
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                21
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                22
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                23
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                24
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                25
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                26
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                27
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                28
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                29
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                30
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                31
+              </div>
+            </div>
+          </div>
+          <div
+            class="inputBox"
+          >
+            <button
+              class="dropdown"
+              data-testid="BirthDay_y_displayText"
+            >
+              2000
+              <i
+                class="icon icon-keyboard_arrow_down"
+              />
+            </button>
+            <div
+              class="dropdown-container"
+            >
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                2000
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1999
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1998
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1997
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1996
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1995
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1994
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1993
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1992
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1991
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1990
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1989
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1988
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1987
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1986
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1985
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1984
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1983
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1982
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1981
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1980
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1979
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1978
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1977
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1976
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1975
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1974
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1973
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1972
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1971
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1970
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1969
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1968
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1967
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1966
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1965
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1964
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1963
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1962
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1961
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1960
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1959
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1958
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1957
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1956
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1955
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1954
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1953
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1952
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1951
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1950
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1949
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1948
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1947
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1946
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1945
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1944
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1943
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1942
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1941
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="Terms"
+        >
+          By clicking the JOIN NOW button, I hereby acknowledge that I am above 21 years old and have read and accepted your 
+          <a
+            href="http://www.n88dev.com/SiteSkin/Nova88/Static/en/TermsConditions.html"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Terms and Conditions
+          </a>
+          .
+        </div>
+        <div
+          class="btn-group"
+        >
+          <button>
+            Register
+          </button>
+        </div>
+        <a
+          href="/en/"
+        >
+          <div
+            class="visit"
+          >
+            I would like to visit !
+            <i
+              class="icon icon-visit"
+            />
+          </div>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div
+        class="step"
+      >
+        <div
+          class="stepLine"
+        >
+          <div />
+        </div>
+        <div
+          class="circle active"
+        >
+          <div>
+            <div
+              class="icon icon-checkmark"
+            />
+          </div>
+        </div>
+        <div
+          class="circle"
+        >
+          <div>
+            <div>
+              2
+            </div>
+          </div>
+        </div>
+        <div
+          class="circle"
+        >
+          <div>
+            <div>
+              3
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="Join"
+      >
+        <div
+          class="infoModule"
+          data-testid="UserName"
+        >
+          <div
+            class="inputInfo "
+            data-testid="inputInfo"
+          >
+            For security, we suggest that your username does not contain your real name.
+          </div>
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-member"
+            />
+            <input
+              class="textRight"
+              placeholder="Username"
+              type="text"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+          <div
+            class="tip"
+            data-testid="UserName"
+          />
+        </div>
+        <div
+          class="infoModule"
+          data-testid="Password"
+        >
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-key"
+            />
+            <input
+              placeholder="Password"
+              type="password"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-eye-blocked"
+                data-testid="showPsw"
+              />
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="infoModule"
+          data-testid="AffiliateId"
+        >
+          <div
+            class="inputInfo "
+            data-testid="inputInfo"
+          >
+            Please enter Affiliate ID (Optional), it can not change once enter!
+          </div>
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-affiliate"
+            />
+            <input
+              class="textRight"
+              placeholder="Affiliate ID/Referral"
+              type="text"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+          <div
+            class="tip"
+            data-testid="AffiliateId"
+          />
+        </div>
+        <div
+          class="infoModule"
+          data-testid="SpecialBonusCode"
+        >
+          <div
+            class="inputInfo "
+            data-testid="inputInfo"
+          >
+            Promo Code
+          </div>
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-promotion"
+            />
+            <input
+              class="textRight"
+              placeholder="Promo Code"
+              type="text"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+          <div
+            class="tip"
+            data-testid="SpecialBonusCode"
+          />
+        </div>
+        <div
+          class="Terms"
+        >
+          By clicking the JOIN NOW button, I hereby acknowledge that I am above 21 years old and have read and accepted your 
+          <a
+            href="http://www.n88dev.com/SiteSkin/Nova88/Static/en/TermsConditions.html"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Terms and Conditions
+          </a>
+          .
+        </div>
+        <div
+          class="btn-group"
+        >
+          <button
+            data-testid="next"
+          >
+            Join Now
+          </button>
+        </div>
+        <a
+          href="/en/"
+        >
+          <div
+            class="visit"
+          >
+            I would like to visit !
+            <i
+              class="icon icon-visit"
+            />
+          </div>
+        </a>
+      </div>
+      <div
+        class="features"
+      >
+        <div
+          class="title"
+        >
+          <span
+            class="icon icon-star-full"
+          />
+          FEATURES
+        </div>
+        <div
+          class="title"
+        >
+          MEMBER BENEFITS
+        </div>
+        <ul>
+          <li>
+            <span>
+              55%
+            </span>
+             NOVA88 STARTER PACK
+          </li>
+          <li>
+            <span>
+              68%
+            </span>
+             LIVE CASINO WELCOME BONUS
+          </li>
+          <li>
+            <span>
+              100%
+            </span>
+             SLOTS WELCOME BONUS
+          </li>
+          <li>
+            DAILY REDEPOSIT BONUS UP TO 
+            <span>
+              20%
+            </span>
+          </li>
+        </ul>
+        <div
+          class="title"
+        >
+          ENJOY NOVA88 VIP EXCLUSIVE BONUS & REBATES
+        </div>
+        <ul>
+          <li>
+            Multiple product platforms with better odds and full gameplay experience.
+          </li>
+          <li>
+            Speedy deposit and withdrawal with multiple deposit option.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="step"
+    >
+      <div
+        class="stepLine"
+      >
+        <div />
+      </div>
+      <div
+        class="circle active"
+      >
+        <div>
+          <div
+            class="icon icon-checkmark"
+          />
+        </div>
+      </div>
+      <div
+        class="circle"
+      >
+        <div>
+          <div>
+            2
+          </div>
+        </div>
+      </div>
+      <div
+        class="circle"
+      >
+        <div>
+          <div>
+            3
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="Join"
+    >
+      <div
+        class="infoModule"
+        data-testid="UserName"
+      >
+        <div
+          class="inputInfo "
+          data-testid="inputInfo"
+        >
+          For security, we suggest that your username does not contain your real name.
+        </div>
+        <div
+          class="inputBox "
+        >
+          <i
+            class="icon icon-member"
+          />
+          <input
+            class="textRight"
+            placeholder="Username"
+            type="text"
+            value=""
+          />
+          <div
+            class="icon-module"
+          >
+            <i
+              class="icon icon-information"
+            />
+          </div>
+        </div>
+        <div
+          class="tip"
+          data-testid="UserName"
+        />
+      </div>
+      <div
+        class="infoModule"
+        data-testid="Password"
+      >
+        <div
+          class="inputBox "
+        >
+          <i
+            class="icon icon-key"
+          />
+          <input
+            placeholder="Password"
+            type="password"
+            value=""
+          />
+          <div
+            class="icon-module"
+          >
+            <i
+              class="icon icon-eye-blocked"
+              data-testid="showPsw"
+            />
+            <i
+              class="icon icon-information"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="infoModule"
+        data-testid="AffiliateId"
+      >
+        <div
+          class="inputInfo "
+          data-testid="inputInfo"
+        >
+          Please enter Affiliate ID (Optional), it can not change once enter!
+        </div>
+        <div
+          class="inputBox "
+        >
+          <i
+            class="icon icon-affiliate"
+          />
+          <input
+            class="textRight"
+            placeholder="Affiliate ID/Referral"
+            type="text"
+            value=""
+          />
+          <div
+            class="icon-module"
+          >
+            <i
+              class="icon icon-information"
+            />
+          </div>
+        </div>
+        <div
+          class="tip"
+          data-testid="AffiliateId"
+        />
+      </div>
+      <div
+        class="infoModule"
+        data-testid="SpecialBonusCode"
+      >
+        <div
+          class="inputInfo "
+          data-testid="inputInfo"
+        >
+          Promo Code
+        </div>
+        <div
+          class="inputBox "
+        >
+          <i
+            class="icon icon-promotion"
+          />
+          <input
+            class="textRight"
+            placeholder="Promo Code"
+            type="text"
+            value=""
+          />
+          <div
+            class="icon-module"
+          >
+            <i
+              class="icon icon-information"
+            />
+          </div>
+        </div>
+        <div
+          class="tip"
+          data-testid="SpecialBonusCode"
+        />
+      </div>
+      <div
+        class="Terms"
+      >
+        By clicking the JOIN NOW button, I hereby acknowledge that I am above 21 years old and have read and accepted your 
+        <a
+          href="http://www.n88dev.com/SiteSkin/Nova88/Static/en/TermsConditions.html"
+          rel="noreferrer"
+          target="_blank"
+        >
+          Terms and Conditions
+        </a>
+        .
+      </div>
+      <div
+        class="btn-group"
+      >
+        <button
+          data-testid="next"
+        >
+          Join Now
+        </button>
+      </div>
+      <a
+        href="/en/"
+      >
+        <div
+          class="visit"
+        >
+          I would like to visit !
+          <i
+            class="icon icon-visit"
+          />
+        </div>
+      </a>
+    </div>
+    <div
+      class="features"
+    >
+      <div
+        class="title"
+      >
+        <span
+          class="icon icon-star-full"
+        />
+        FEATURES
+      </div>
+      <div
+        class="title"
+      >
+        MEMBER BENEFITS
+      </div>
+      <ul>
+        <li>
+          <span>
+            55%
+          </span>
+           NOVA88 STARTER PACK
+        </li>
+        <li>
+          <span>
+            68%
+          </span>
+           LIVE CASINO WELCOME BONUS
+        </li>
+        <li>
+          <span>
+            100%
+          </span>
+           SLOTS WELCOME BONUS
+        </li>
+        <li>
+          DAILY REDEPOSIT BONUS UP TO 
+          <span>
+            20%
+          </span>
+        </li>
+      </ul>
+      <div
+        class="title"
+      >
+        ENJOY NOVA88 VIP EXCLUSIVE BONUS & REBATES
+      </div>
+      <ul>
+        <li>
+          Multiple product platforms with better odds and full gameplay experience.
+        </li>
+        <li>
+          Speedy deposit and withdrawal with multiple deposit option.
+        </li>
+      </ul>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Join step2 Display step2 & Currency dropdown works fine 3`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="step"
+      >
+        <div
+          class="stepLine"
+        >
+          <div />
+        </div>
+        <div
+          class="circle"
+        >
+          <div>
+            <div
+              class="icon icon-checkmark"
+            />
+          </div>
+        </div>
+        <div
+          class="circle active"
+        >
+          <div>
+            <div>
+              2
+            </div>
+          </div>
+        </div>
+        <div
+          class="circle"
+        >
+          <div>
+            <div>
+              3
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="Join"
+      >
+        <div
+          class="infoModule"
+          data-testid="Email"
+        >
+          <div
+            class="inputInfo "
+            data-testid="inputInfo"
+          >
+            Email cannot be changed after submission.
+          </div>
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-email"
+            />
+            <input
+              class="textRight"
+              placeholder="Email"
+              type="text"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+          <div
+            class="tip"
+            data-testid="Email"
+          />
+        </div>
+        <div
+          class="infoModule"
+          data-testid="Currency"
+        >
+          <div
+            class="inputInfo "
+          >
+            Preferred currency can not be changed after registration.
+          </div>
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-coin-dollar"
+            />
+            <button
+              class="dropdown btn"
+            >
+              <span
+                class="text"
+                data-testid="Currency_dropdown-text"
+              >
+                THB
+              </span>
+              <i
+                class="icon icon-keyboard_arrow_down"
+              />
+            </button>
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-information"
+              />
+            </div>
+            <div
+              class="dropdown-container"
+            >
+              <div
+                class="dropdown-item"
+                data-testid="dropdown-item"
+              >
+                <span
+                  class="text"
+                >
+                  MYR
+                </span>
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="dropdown-item"
+              >
+                <span
+                  class="text"
+                >
+                  THB
+                </span>
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="dropdown-item"
+              >
+                <span
+                  class="text"
+                >
+                  RMB
+                </span>
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="dropdown-item"
+              >
+                <span
+                  class="text"
+                >
+                  IDR
+                </span>
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="dropdown-item"
+              >
+                <span
+                  class="text"
+                >
+                  USDT
+                </span>
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="dropdown-item"
+              >
+                <span
+                  class="text"
+                >
+                  INR
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="tip"
+        />
+        <div
+          class="infoModule"
+          data-testid="Phone"
+        >
+          <div
+            class="inputInfo "
+            data-testid="inputInfo"
+          >
+            Please enter your valid phone number, it can not be changed once saved!
+          </div>
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-phone"
+            >
+              +66
+            </i>
+            <input
+              class="textRight"
+              placeholder="Phone Number"
+              type="text"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+          <div
+            class="tip"
+            data-testid="Phone"
+          />
+        </div>
+        <div
+          class="infoModule"
+          data-testid="RealName"
+        >
+          <div
+            class="inputInfo "
+            data-testid="inputInfo"
+          >
+            To ensure all transations correct, please make sure your real name is same with your bank account name
+          </div>
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-member"
+            />
+            <input
+              class="textRight"
+              placeholder="Real Name"
+              type="text"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+          <div
+            class="tip"
+            data-testid="RealName"
+          />
+        </div>
+        <div
+          class="infoModule parts"
+        >
+          <div
+            class="inputBox"
+          >
+            <i
+              class="icon icon-cake"
+            />
+            <button
+              class="dropdown"
+              data-testid="BirthDay_m_displayText"
+            >
+              JAN
+              <i
+                class="icon icon-keyboard_arrow_down"
+              />
+            </button>
+            <div
+              class="dropdown-container"
+            >
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                JAN
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                FEB
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                MAR
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                APR
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                MAY
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                JUN
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                JUL
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                AUG
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                SEP
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                OCT
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                NOV
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_m_item"
+              >
+                DEC
+              </div>
+            </div>
+          </div>
+          <div
+            class="inputBox"
+          >
+            <button
+              class="dropdown"
+              data-testid="BirthDay_d_displayText"
+            >
+              1
+              <i
+                class="icon icon-keyboard_arrow_down"
+              />
+            </button>
+            <div
+              class="dropdown-container"
+            >
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                1
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                2
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                3
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                4
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                5
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                6
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                7
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                8
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                9
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                10
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                11
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                12
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                13
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                14
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                15
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                16
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                17
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                18
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                19
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                20
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                21
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                22
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                23
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                24
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                25
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                26
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                27
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                28
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                29
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                30
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_d_item"
+              >
+                31
+              </div>
+            </div>
+          </div>
+          <div
+            class="inputBox"
+          >
+            <button
+              class="dropdown"
+              data-testid="BirthDay_y_displayText"
+            >
+              2000
+              <i
+                class="icon icon-keyboard_arrow_down"
+              />
+            </button>
+            <div
+              class="dropdown-container"
+            >
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                2000
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1999
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1998
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1997
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1996
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1995
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1994
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1993
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1992
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1991
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1990
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1989
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1988
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1987
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1986
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1985
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1984
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1983
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1982
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1981
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1980
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1979
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1978
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1977
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1976
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1975
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1974
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1973
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1972
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1971
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1970
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1969
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1968
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1967
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1966
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1965
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1964
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1963
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1962
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1961
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1960
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1959
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1958
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1957
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1956
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1955
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1954
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1953
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1952
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1951
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1950
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1949
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1948
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1947
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1946
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1945
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1944
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1943
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1942
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="BirthDay_y_item"
+              >
+                1941
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="Terms"
+        >
+          By clicking the JOIN NOW button, I hereby acknowledge that I am above 21 years old and have read and accepted your 
+          <a
+            href="http://www.n88dev.com/SiteSkin/Nova88/Static/en/TermsConditions.html"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Terms and Conditions
+          </a>
+          .
+        </div>
+        <div
+          class="btn-group"
+        >
+          <button>
+            Register
+          </button>
+        </div>
+        <a
+          href="/en/"
+        >
+          <div
+            class="visit"
+          >
+            I would like to visit !
+            <i
+              class="icon icon-visit"
+            />
+          </div>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div
+        class="step"
+      >
+        <div
+          class="stepLine"
+        >
+          <div />
+        </div>
+        <div
+          class="circle active"
+        >
+          <div>
+            <div
+              class="icon icon-checkmark"
+            />
+          </div>
+        </div>
+        <div
+          class="circle"
+        >
+          <div>
+            <div>
+              2
+            </div>
+          </div>
+        </div>
+        <div
+          class="circle"
+        >
+          <div>
+            <div>
+              3
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="Join"
+      >
+        <div
+          class="infoModule"
+          data-testid="UserName"
+        >
+          <div
+            class="inputInfo "
+            data-testid="inputInfo"
+          >
+            For security, we suggest that your username does not contain your real name.
+          </div>
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-member"
+            />
+            <input
+              class="textRight"
+              placeholder="Username"
+              type="text"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+          <div
+            class="tip"
+            data-testid="UserName"
+          />
+        </div>
+        <div
+          class="infoModule"
+          data-testid="Password"
+        >
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-key"
+            />
+            <input
+              placeholder="Password"
+              type="password"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-eye-blocked"
+                data-testid="showPsw"
+              />
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="infoModule"
+          data-testid="AffiliateId"
+        >
+          <div
+            class="inputInfo "
+            data-testid="inputInfo"
+          >
+            Please enter Affiliate ID (Optional), it can not change once enter!
+          </div>
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-affiliate"
+            />
+            <input
+              class="textRight"
+              placeholder="Affiliate ID/Referral"
+              type="text"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+          <div
+            class="tip"
+            data-testid="AffiliateId"
+          />
+        </div>
+        <div
+          class="infoModule"
+          data-testid="SpecialBonusCode"
+        >
+          <div
+            class="inputInfo "
+            data-testid="inputInfo"
+          >
+            Promo Code
+          </div>
+          <div
+            class="inputBox "
+          >
+            <i
+              class="icon icon-promotion"
+            />
+            <input
+              class="textRight"
+              placeholder="Promo Code"
+              type="text"
+              value=""
+            />
+            <div
+              class="icon-module"
+            >
+              <i
+                class="icon icon-information"
+              />
+            </div>
+          </div>
+          <div
+            class="tip"
+            data-testid="SpecialBonusCode"
+          />
+        </div>
+        <div
+          class="Terms"
+        >
+          By clicking the JOIN NOW button, I hereby acknowledge that I am above 21 years old and have read and accepted your 
+          <a
+            href="http://www.n88dev.com/SiteSkin/Nova88/Static/en/TermsConditions.html"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Terms and Conditions
+          </a>
+          .
+        </div>
+        <div
+          class="btn-group"
+        >
+          <button
+            data-testid="next"
+          >
+            Join Now
+          </button>
+        </div>
+        <a
+          href="/en/"
+        >
+          <div
+            class="visit"
+          >
+            I would like to visit !
+            <i
+              class="icon icon-visit"
+            />
+          </div>
+        </a>
+      </div>
+      <div
+        class="features"
+      >
+        <div
+          class="title"
+        >
+          <span
+            class="icon icon-star-full"
+          />
+          FEATURES
+        </div>
+        <div
+          class="title"
+        >
+          MEMBER BENEFITS
+        </div>
+        <ul>
+          <li>
+            <span>
+              55%
+            </span>
+             NOVA88 STARTER PACK
+          </li>
+          <li>
+            <span>
+              68%
+            </span>
+             LIVE CASINO WELCOME BONUS
+          </li>
+          <li>
+            <span>
+              100%
+            </span>
+             SLOTS WELCOME BONUS
+          </li>
+          <li>
+            DAILY REDEPOSIT BONUS UP TO 
+            <span>
+              20%
+            </span>
+          </li>
+        </ul>
+        <div
+          class="title"
+        >
+          ENJOY NOVA88 VIP EXCLUSIVE BONUS & REBATES
+        </div>
+        <ul>
+          <li>
+            Multiple product platforms with better odds and full gameplay experience.
+          </li>
+          <li>
+            Speedy deposit and withdrawal with multiple deposit option.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="step"
+    >
+      <div
+        class="stepLine"
+      >
+        <div />
+      </div>
+      <div
+        class="circle active"
+      >
+        <div>
+          <div
+            class="icon icon-checkmark"
+          />
+        </div>
+      </div>
+      <div
+        class="circle"
+      >
+        <div>
+          <div>
+            2
+          </div>
+        </div>
+      </div>
+      <div
+        class="circle"
+      >
+        <div>
+          <div>
+            3
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="Join"
+    >
+      <div
+        class="infoModule"
+        data-testid="UserName"
+      >
+        <div
+          class="inputInfo "
+          data-testid="inputInfo"
+        >
+          For security, we suggest that your username does not contain your real name.
+        </div>
+        <div
+          class="inputBox "
+        >
+          <i
+            class="icon icon-member"
+          />
+          <input
+            class="textRight"
+            placeholder="Username"
+            type="text"
+            value=""
+          />
+          <div
+            class="icon-module"
+          >
+            <i
+              class="icon icon-information"
+            />
+          </div>
+        </div>
+        <div
+          class="tip"
+          data-testid="UserName"
+        />
+      </div>
+      <div
+        class="infoModule"
+        data-testid="Password"
+      >
+        <div
+          class="inputBox "
+        >
+          <i
+            class="icon icon-key"
+          />
+          <input
+            placeholder="Password"
+            type="password"
+            value=""
+          />
+          <div
+            class="icon-module"
+          >
+            <i
+              class="icon icon-eye-blocked"
+              data-testid="showPsw"
+            />
+            <i
+              class="icon icon-information"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="infoModule"
+        data-testid="AffiliateId"
+      >
+        <div
+          class="inputInfo "
+          data-testid="inputInfo"
+        >
+          Please enter Affiliate ID (Optional), it can not change once enter!
+        </div>
+        <div
+          class="inputBox "
+        >
+          <i
+            class="icon icon-affiliate"
+          />
+          <input
+            class="textRight"
+            placeholder="Affiliate ID/Referral"
+            type="text"
+            value=""
+          />
+          <div
+            class="icon-module"
+          >
+            <i
+              class="icon icon-information"
+            />
+          </div>
+        </div>
+        <div
+          class="tip"
+          data-testid="AffiliateId"
+        />
+      </div>
+      <div
+        class="infoModule"
+        data-testid="SpecialBonusCode"
+      >
+        <div
+          class="inputInfo "
+          data-testid="inputInfo"
+        >
+          Promo Code
+        </div>
+        <div
+          class="inputBox "
+        >
+          <i
+            class="icon icon-promotion"
+          />
+          <input
+            class="textRight"
+            placeholder="Promo Code"
+            type="text"
+            value=""
+          />
+          <div
+            class="icon-module"
+          >
+            <i
+              class="icon icon-information"
+            />
+          </div>
+        </div>
+        <div
+          class="tip"
+          data-testid="SpecialBonusCode"
+        />
+      </div>
+      <div
+        class="Terms"
+      >
+        By clicking the JOIN NOW button, I hereby acknowledge that I am above 21 years old and have read and accepted your 
+        <a
+          href="http://www.n88dev.com/SiteSkin/Nova88/Static/en/TermsConditions.html"
+          rel="noreferrer"
+          target="_blank"
+        >
+          Terms and Conditions
+        </a>
+        .
+      </div>
+      <div
+        class="btn-group"
+      >
+        <button
+          data-testid="next"
+        >
+          Join Now
+        </button>
+      </div>
+      <a
+        href="/en/"
+      >
+        <div
+          class="visit"
+        >
+          I would like to visit !
+          <i
+            class="icon icon-visit"
+          />
+        </div>
+      </a>
+    </div>
+    <div
+      class="features"
+    >
+      <div
+        class="title"
+      >
+        <span
+          class="icon icon-star-full"
+        />
+        FEATURES
+      </div>
+      <div
+        class="title"
+      >
+        MEMBER BENEFITS
+      </div>
+      <ul>
+        <li>
+          <span>
+            55%
+          </span>
+           NOVA88 STARTER PACK
+        </li>
+        <li>
+          <span>
+            68%
+          </span>
+           LIVE CASINO WELCOME BONUS
+        </li>
+        <li>
+          <span>
+            100%
+          </span>
+           SLOTS WELCOME BONUS
+        </li>
+        <li>
+          DAILY REDEPOSIT BONUS UP TO 
+          <span>
+            20%
+          </span>
+        </li>
+      </ul>
+      <div
+        class="title"
+      >
+        ENJOY NOVA88 VIP EXCLUSIVE BONUS & REBATES
+      </div>
+      <ul>
+        <li>
+          Multiple product platforms with better odds and full gameplay experience.
+        </li>
+        <li>
+          Speedy deposit and withdrawal with multiple deposit option.
+        </li>
+      </ul>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
