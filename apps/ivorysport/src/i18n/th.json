@@ -1,7 +1,5 @@
 {
 	"-==================-==================General-==================-=====================": "",
-	"lbl_TCG": "TC Gaming",
-	"lbl_PromotionRebateAndCashback": "คืนยอดเทิร์น / คืนยอดเสีย",
 	"lbl_Max": "สูงสุด",
 	"lbl_Min": "ขั้นต่ำ",
 	"lbl_AboutUs": "เกี่ยวกับเรา",
@@ -76,7 +74,7 @@
 	"lbl_MemberBenefits_2": "โบนัสต้อนรับสมาชิกใหม่ คาสิโนสด",
 	"lbl_MemberBenefits_3": "โบนัสต้อนรับสมาชิกใหม่ เกมสล็อต",
 	"lbl_MemberBenefits_4": "เงินคืนยอดเล่นรายวัน สูงสุด {{rebate}}%",
-	"lbl_ENJOY_NOVA88_VIP_EXCLUSIVE_BONUS_REBATES": "เพลิดเพลินไปกับ NOVA88 โบนัสและเงินคืนพิเศษ",
+	"lbl_ENJOY_IvorySport_VIP_EXCLUSIVE_BONUS_REBATES": "เพลิดเพลินไปกับ IvorySport โบนัสและเงินคืนพิเศษ",
 	"lbl_Multiple_product_platforms_with_better_odds": "แพลตฟอร์มเกมที่หลากหลายพร้อมโอกาสที่ดีกว่าและประสบการณ์การเล่นเกมเต็มรูปแบบ",
 	"lbl_Speedy_deposit_and_withdrawal": "ฝากและถอนอย่างรวดเร็วด้วยตัวเลือกการฝากที่หลากหลาย",
 	"lbl_Retransmit": "ส่งใหม่อีกครั้ง",
@@ -529,7 +527,7 @@
 	"lbl_Vip_Deposit_Priority": "การฝากเงิน",
 	"lbl_Vip_WithDrawal_Priority": "การถอนเงิน",
 	"lbl_Vip_High": "สูง",
-	"lbl_Vip_Service_Support_At_Date": "24/7 ฝ่ายลูกค้าสัมพันธ์",
+	"lbl_Vip_Service_Support_At_Date": "support247@ivorysport.com",
 	"lbl_Vip_Designated_Account_Manager": "ผู้จัดการฝ่ายบัญชี",
 	"lbl_Vip_Unlimited_Withdrawal_amount": "ถอนเงินไม่จำกัดจำนวน",
 	"lbl_Vip_Status1": "รอดำเนินการ",
@@ -722,7 +720,7 @@
 
 	"==============================================Backup Domain====================================": "",
 
-	"lbl_nova88_backup_website": "กรุณาบันทึก Ivorysport  ไว้ที่หน้าหลักเพื่อเก็บข้อมูลสำรอง",
+	"lbl_IvorySport_backup_website": "กรุณาบันทึก Ivorysport  ไว้ที่หน้าหลักเพื่อเก็บข้อมูลสำรอง",
 	"lbl_kindly_visit_alternate_link_for_better_performance": "หากคุณประสบปัญหาการโหลดช้า โปรดลองใช้ลิงก์สำรองเพื่อเพื่อประสิทธิภาพที่ดีขึ้น",
 	"lbl_Copy": "สำเนา",
 	"lbl_Dont_show_me_again": "ไม่ต้องแสดงอีก",
@@ -832,7 +830,7 @@
 	"lbl_Deposit_Promotion_Button_Back": "ย้อนกลับ",
 
 	"==============HotGames==============": "",
-	"lbl_HotGames_Nova88_Olympus": "Ivorysport Olympus",
+	"lbl_HotGames_IvorySport_Olympus": "Ivorysport Olympus",
 
 	"==============Mega888==============": "",
 	"lbl_app_for_android": "APP for Android",
@@ -840,7 +838,6 @@
 	"lbl_mega888_download_app": "Mega888 Download APP",
 
 	"==============Line Register==============": "",
-	"lbl_RegisterWithLine": "ลงทะเบียนด้วย LINE",
 	"lbl_Connect": "เชื่อมต่อ",
 	"lbl_Connected": "เชื่อมต่อแล้ว",
 	"lbl_LinkLineAccount": "ลิงก์บัญชี LINE",
@@ -883,5 +880,8 @@
 
 	"==============RebateExclude==============": "",
 	"lbl_RebateExclude_title": "เกมในรายการนี้จะไม่รวมรางวัลเงินคืนรายวัน",
-	"lbl_GameName": "ชื่อเกมส์"
+	"lbl_GameName": "ชื่อเกมส์",
+
+	"lbl_IceHockey": "ฮ๊อกกี้น้ำแข็ง",
+	"lbl_Baseball": "เบสบอล"
 }

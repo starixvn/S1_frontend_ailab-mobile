@@ -81,7 +81,7 @@ export const PromoPopBox = ({ data }) => {
 							className="red"
 							rel="noreferrer"
 							target="_blank"
-							href="https://direct.lc.chat/11638088/">
+							href="https://direct.lc.chat/">
 							{i18n.lbl_Apply_Now}
 						</a>
 					) : (

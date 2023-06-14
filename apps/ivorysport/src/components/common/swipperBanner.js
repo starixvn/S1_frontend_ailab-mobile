@@ -151,7 +151,7 @@ const Panel = ({ ImgFolder = [], params }) => {
 			}
 
 			if (b.urlRouter === "slots") {
-				// 路徑字首不補'/', 原因是nova88會自己補語系 => ex:/cs/slots/39
+				// 路徑字首不補'/', 原因是IvorySport會自己補語系 => ex:/cs/slots/39
 				redirectLink = `${b.urlRouter}/${b.tpId}`;
 			} else {
 				redirectLink =

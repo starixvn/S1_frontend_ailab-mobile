@@ -275,11 +275,6 @@ const ProfileAddr = () => {
 
 	return (
 		<div className="addressModule">
-			<div className="title">
-				{i18n.lbl_Shipping_Address}({i18n.lbl_Option2})
-				<span>{i18n.lbl_Shipping_Hint}</span>
-			</div>
-			<div className="subtitle">{i18n.lbl_Address}</div>
 			{addrList.map(obj => {
 				return (
 					<Inputbox

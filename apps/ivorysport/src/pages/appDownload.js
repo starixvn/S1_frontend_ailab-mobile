@@ -25,7 +25,7 @@ const IndexPage = () => {
 						<Link to={path.home.root}>
 							<img
 								src={`${cloudBannerImgURL}/h5/img/app/applogo.png`}
-								alt="Back To Nova88"
+								alt="Back To IvorySport"
 							/>
 						</Link>
 					</div>

@@ -15,7 +15,6 @@ import { debounce, isConvert, number_format } from "../common/common";
 import { useHandleAmount } from "../hook/useHandleAmount";
 import api from "../../service/api";
 import { defPopBoxType } from "../common/popbox";
-import PromoList from "./promoList";
 
 export const Panel = props => props.children;
 
@@ -24,25 +23,13 @@ const Main = props => {
 	const { setLoading } = useContext(loadingContext);
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
-	const {
-		paymentList,
-		userPaymentData,
-		handleUserPaymentData,
-		promoList,
-		asyncPromotionConfirmPopBox,
-		checkDepositSpecialCode
-	} = props;
+	const { paymentList, userPaymentData, handleUserPaymentData } = props;
 	const { setPopBox } = useContext(popBoxContext);
 	const _isConvert = isConvert(userInfo.currencyId);
 	const [selGroup, setSelGroup] = useState({});
 	const [selChannel, setSelChannel] = useState({});
 	const [pageVerify, setPageVerify] = useState(true);
 	const [groupList, setGroupList] = useState([]);
-	const [depositPromo, setDepositPromo] = useState({
-		bonusCode: null,
-		requiredAmount: null,
-		specialCode: ""
-	});
 	const isMountedRef = useRef(null);
 	const {
 		amount,
@@ -81,32 +68,6 @@ const Main = props => {
 			const result = VaildAmount({ _amount: confirmAmount });
 
 			if (result) {
-				const resultAmount = _isConvert
-					? amount * 1000
-					: Number(amount);
-
-				if (
-					userInfo.phoneVerified &&
-					depositPromo.requiredAmount &&
-					resultAmount < depositPromo.requiredAmount
-				) {
-					const success = await asyncPromotionConfirmPopBox();
-
-					if (!success) return;
-				}
-
-				let { bonusCode } = depositPromo;
-
-				if (depositPromo.specialCode) {
-					bonusCode = await checkDepositSpecialCode(
-						depositPromo.specialCode
-					);
-
-					if (!bonusCode) {
-						return;
-					}
-				}
-
 				const RedirectToNext = debounce(real_amount => {
 					setPopBox(prevState => ({
 						...prevState,
@@ -472,15 +433,6 @@ const Main = props => {
 				currencyId={userInfo.currencyId}
 			/>
 
-			<PromoList
-				i18n={i18n}
-				amount={Number(amount)}
-				userInfo={userInfo}
-				promoList={promoList}
-				depositPromo={depositPromo}
-				setDepositPromo={setDepositPromo}
-			/>
-
 			<div className="btn-group">
 				<button className="orange" onClick={ClickSubmit}>
 					{i18n.lbl_Submit}
@@ -493,18 +445,14 @@ const Main = props => {
 Main.defaultProps = {
 	location: {},
 	userPaymentData: {},
-	handleUserPaymentData: () => null,
-	promoList: []
+	handleUserPaymentData: () => null
 };
 
 Main.propTypes = {
 	location: PropTypes.objectOf(PropTypes.any),
 	paymentList: PropTypes.arrayOf(PropTypes.any).isRequired,
 	userPaymentData: PropTypes.objectOf(PropTypes.any),
-	handleUserPaymentData: PropTypes.func,
-	promoList: PropTypes.arrayOf(PropTypes.objectOf),
-	asyncPromotionConfirmPopBox: PropTypes.func.isRequired,
-	checkDepositSpecialCode: PropTypes.func.isRequired
+	handleUserPaymentData: PropTypes.func
 };
 
 export default Main;
