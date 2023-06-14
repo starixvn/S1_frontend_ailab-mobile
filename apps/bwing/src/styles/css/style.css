@@ -1227,6 +1227,10 @@ footer > a.open {
   border-radius: 0;
   overflow: hidden;
 }
+#popup.promoinfo .table-wrapper {
+  width: 100%;
+  overflow: scroll;
+}
 #popup.addCryptoPop .pop {
   border-radius: 5px;
   overflow: hidden;
@@ -7078,15 +7082,17 @@ span.important {
       -ms-flex-pack: justify;
           justify-content: space-between;
   min-width: 100%;
+}
+.addCrypto .addCryptoName .addCryptoInfo > div {
+  margin-top: 3vw;
+}
+.addCrypto .addCryptoName .addCryptoInfo:last-child {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
   color: black;
 }
-.addCrypto .addCryptoName .addCryptoInfo > div {
-  margin-top: 3vw;
-}
-.addCrypto .addCryptoName .addCryptoInfo span {
+.addCrypto .addCryptoName .addCryptoInfo:last-child span {
   margin-right: 2vw;
 }
 .addCrypto .addCryptoName .addCryptoInfo .cryptoName span {
@@ -7125,20 +7131,6 @@ span.important {
 }
 .addCrypto .addCryptoName .icon-plus {
   font-size: 4vw;
-}
-.addCrypto .addCryptoName.pending {
-  position: relative;
-}
-.addCrypto .addCryptoName.pending .mask {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  background: rgba(2, 2, 2, 0.6);
-  width: 100%;
-  height: 100%;
-  border-radius: 5px;
-  z-index: 1;
 }
 .addCrypto + div.subModuleList {
   margin: 2vw 0;
