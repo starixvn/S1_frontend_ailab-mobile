@@ -209,6 +209,7 @@
 	"lbl_MaximumFileSizeEach": "每个档案的最大档案大小为4 MB",
 	"lbl_MaximumNumberOfFiles": "最多档案数量：6",
 	"lbl_AcceptedFileType": "可接受的档案类型：JPG，JPEG，PNG",
+  "lbl_InaccessibleWithoutPermission": "未经允许不得进入",
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Odds",
 	"lbl_Handicap": "Hdp",

@@ -4,7 +4,8 @@ import {
 	i18nContext,
 	userInfoContext,
 	popBoxContext,
-	loadingContext
+	loadingContext,
+	productTpGameTypeSettingListContext
 } from "Context";
 import { Link } from "../route/link";
 import Layout from "../components/common/layout";
@@ -29,6 +30,9 @@ const Panel = ({ searchInput }) => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setLoading } = useContext(loadingContext);
+	const { tpGameTypeSettingList } = useContext(
+		productTpGameTypeSettingListContext
+	);
 	const [listFixed, setListFixed] = useState(false);
 	const [providerList, setProviderList] = useState([]);
 	const [activeProvider, setActiveProvider] = useState({});
@@ -135,7 +139,8 @@ const Panel = ({ searchInput }) => {
 			const targetList = Object.entries(res.data.data)?.find(
 				item => item[0] === _list[1]
 			)[1];
-			setGameList(targetList);
+			const unLimitTpGameTypeList = getUnLimitTpGameTypeList(targetList);
+			setGameList(unLimitTpGameTypeList);
 			setLoading(false);
 		} catch (error) {
 			setPopBox({
@@ -144,6 +149,16 @@ const Panel = ({ searchInput }) => {
 			});
 			setLoading(false);
 		}
+	};
+
+	const getUnLimitTpGameTypeList = list => {
+		if (tpGameTypeSettingList && tpGameTypeSettingList.length > 0) {
+			const uniqueTpIds = Array.from(
+				new Set(tpGameTypeSettingList.map(item => item.tpId))
+			);
+			return list.filter(({ tpId }) => !uniqueTpIds.includes(tpId));
+		}
+		return list;
 	};
 
 	const handleSetFavorite = async (GameId, IsRemove, ProviderId) => {
@@ -164,7 +179,26 @@ const Panel = ({ searchInput }) => {
 	};
 
 	const changeActiveProvider = provider => {
-		setActiveProvider(provider);
+		if (tpGameTypeSettingList && tpGameTypeSettingList.length > 0) {
+			const uniqueTpIds = Array.from(
+				new Set(tpGameTypeSettingList.map(item => item.tpId))
+			);
+			if (uniqueTpIds.includes(provider.tpId)) {
+				setPopBox({
+					isOpen: true,
+					title: i18n.lbl_Information,
+					content: (
+						<div style={{ color: "red" }}>
+							{i18n.lbl_InaccessibleWithoutPermission}
+						</div>
+					)
+				});
+			} else {
+				setActiveProvider(provider);
+			}
+		} else {
+			setActiveProvider(provider);
+		}
 	};
 
 	const randomArray = array => array.sort(() => Math.random() - 0.5);
@@ -216,7 +250,10 @@ const Panel = ({ searchInput }) => {
 				const filterList = resultList.filter(item =>
 					filterHandle(item)
 				);
-				setGameList(filterList);
+				const unLimitTpGameTypeList = getUnLimitTpGameTypeList(
+					filterList
+				);
+				setGameList(unLimitTpGameTypeList);
 			} else {
 				const filterList =
 					targetList[0] === "all" &&
@@ -227,7 +264,10 @@ const Panel = ({ searchInput }) => {
 								)
 						  )
 						: targetList[1]?.filter(item => filterHandle(item));
-				setGameList(filterList);
+				const unLimitTpGameTypeList = getUnLimitTpGameTypeList(
+					filterList
+				);
+				setGameList(unLimitTpGameTypeList);
 			}
 		}
 	};
@@ -350,7 +390,8 @@ const Panel = ({ searchInput }) => {
 					resultList.push(judgeItem);
 				}
 			});
-			setGameList(resultList);
+			const unLimitTpGameTypeList = getUnLimitTpGameTypeList(resultList);
+			setGameList(unLimitTpGameTypeList);
 		}
 	}, [favoriteStr]);
 
@@ -401,7 +442,6 @@ const Panel = ({ searchInput }) => {
 
 				const tempList = [];
 				filterList.forEach(item => tempList.push(item[0]));
-
 				setCategoryList(tempList);
 				setActiveCategory(tempList[1]);
 			} else {
@@ -410,7 +450,23 @@ const Panel = ({ searchInput }) => {
 			}
 		} else {
 			const tempList = [];
-			allCategoryList.forEach(obj => tempList.push(Object.keys(obj)[0]));
+
+			allCategoryList.forEach(array => {
+				if (tpGameTypeSettingList && tpGameTypeSettingList.length > 0) {
+					const uniqueTpIds = Array.from(
+						new Set(tpGameTypeSettingList.map(item => item.tpId))
+					);
+					const unLimitTpGameTypeList = array[1].filter(
+						({ tpId }) => !uniqueTpIds.includes(tpId)
+					);
+					if (unLimitTpGameTypeList.length > 0) {
+						tempList.push(array[0]);
+					}
+				} else {
+					tempList.push(array[0]);
+				}
+			});
+
 			setCategoryList(tempList);
 		}
 	}, [activeProvider]);
@@ -424,6 +480,9 @@ const Panel = ({ searchInput }) => {
 						selNav={activeProvider?.tpId}
 						onChange={changeActiveProvider}
 						sorted={providerList}
+						activeProvider={activeProvider}
+						tpGameTypeSettingList={tpGameTypeSettingList}
+						pathTpId={pathTpId}
 					/>
 				</div>
 				<div className="filterSelect">
@@ -431,6 +490,7 @@ const Panel = ({ searchInput }) => {
 						categoryList={categoryList}
 						selNav={activeCategory}
 						onChange={handleCategoryActive}
+						memberType={userInfo.memberType}
 					/>
 				</div>
 			</div>

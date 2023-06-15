@@ -3,9 +3,15 @@ import { i18nContext } from "Context";
 import PropTypes from "prop-types";
 
 const Nav = props => {
-	const { categoryList, selNav, onChange } = props;
+	const { memberType, categoryList, selNav, onChange } = props;
 	const { i18n } = useContext(i18nContext);
+
 	return categoryList.map(value => {
+		const LiveStreamingMemberType = 3;
+		if (memberType === LiveStreamingMemberType && value === "random") {
+			return null;
+		}
+
 		return (
 			<button
 				data-testid={`nav_${value}`}

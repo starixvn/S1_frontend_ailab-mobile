@@ -19,6 +19,31 @@ const GameProviders = props => {
 			/>
 		);
 
+		const isGoToPath = () => {
+			const uniqueTpIds = Array.from(
+				new Set(props.tpGameTypeSettingList?.map(item => item.tpId))
+			);
+			if (
+				props.tpGameTypeSettingList &&
+				props.tpGameTypeSettingList.length > 0
+			) {
+				if (!uniqueTpIds.includes(props.pathTpId)) {
+					return `${path.casino.root}/${k.tpId}`;
+				}
+				if (props.pathTpId === props.activeProvider.tpId) {
+					return `${path.casino.root}`;
+				}
+				return `${path.casino.root}/${props.pathTpId}`;
+			}
+			if (
+				window.location.pathname ===
+				`/${userInfo.langId}/${path.casino.root}/${k.tpId}`
+			) {
+				return `${path.casino.root}`;
+			}
+			return `${path.casino.root}/${k.tpId}`;
+		};
+
 		if (k.openPath) {
 			return (
 				<Link
@@ -32,12 +57,7 @@ const GameProviders = props => {
 
 		return (
 			<Link
-				to={
-					window.location.pathname ===
-					`/${userInfo.langId}/${path.casino.root}/${k.tpId}`
-						? `${path.casino.root}`
-						: `${path.casino.root}/${k.tpId}`
-				}
+				to={isGoToPath()}
 				data-testid={`gameProvider_${k.tpId}`}
 				key={`casino-nav-${k.tpId}`}
 				className={selNav === k.tpId ? "active" : ""}

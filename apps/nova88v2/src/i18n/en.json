@@ -205,6 +205,7 @@
 	"lbl_MaximumFileSizeEach": "Maximum file size 4 MB each",
 	"lbl_MaximumNumberOfFiles": "Maximum number of files: 6",
 	"lbl_AcceptedFileType": "Accepted file types: JPG, JPEG, PNG",
+  "lbl_InaccessibleWithoutPermission": "inaccessible without permission",
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Odds",
 	"lbl_Handicap": "Hdp",

@@ -204,7 +204,7 @@
 	"lbl_MaximumFileSizeEach": "Ukuran maksimal setiap file adalah 4 MB",
 	"lbl_MaximumNumberOfFiles": "Jumlah file maksimal : 6",
 	"lbl_AcceptedFileType": "Jenis file yang dapat diterima: JPG, JPEG, PNG",
-
+  "lbl_InaccessibleWithoutPermission": "Tidak dapat diakses tanpa izin",
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Odds",
 	"lbl_Handicap": "Hdp",
