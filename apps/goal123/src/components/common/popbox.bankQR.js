@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import QRCode from "qrcode.react";
 import PropTypes from "prop-types";
 import { i18nContext, userInfoContext } from "./context";
 import { paymentImgUrl } from "../../config";
@@ -11,7 +12,8 @@ const BankQR = ({
 	transId,
 	code,
 	bankLogo,
-	title
+	title,
+	generateQr
 }) => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -72,7 +74,18 @@ const BankQR = ({
 					</div>
 					<div className="guide">
 						<div className="qrCode">
-							<img src={`${paymentImgUrl}${qrCodeUrl}`} alt="" />
+							{generateQr ? (
+								<QRCode
+									renderAs="svg"
+									id="QRcode"
+									value={`${paymentImgUrl}${qrCodeUrl}`}
+								/>
+							) : (
+								<img
+									src={`${paymentImgUrl}${qrCodeUrl}`}
+									alt=""
+								/>
+							)}
 						</div>
 						<div className="code">
 							{code}
@@ -96,7 +109,8 @@ const BankQR = ({
 export default BankQR;
 
 BankQR.defaultProps = {
-	onClose: () => null
+	onClose: () => null,
+	generateQr: null
 };
 
 BankQR.propTypes = {
@@ -106,5 +120,6 @@ BankQR.propTypes = {
 	transId: PropTypes.string.isRequired,
 	code: PropTypes.string.isRequired,
 	bankLogo: PropTypes.string.isRequired,
-	title: PropTypes.string.isRequired
+	title: PropTypes.string.isRequired,
+	generateQr: PropTypes.bool
 };
