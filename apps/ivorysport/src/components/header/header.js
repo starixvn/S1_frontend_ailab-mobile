@@ -1,9 +1,7 @@
 import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
-import { userInfoContext, i18nContext, rootContext } from "Context";
+import { userInfoContext, i18nContext } from "Context";
 import { Link } from "@reach/router";
-import classNames from "classnames";
-import { cambodiaSeaGameEventPeriod, isDateRange } from "@ailab-mobile/common";
 import Logo from "../common/logo";
 import path from "../../path";
 import Balance from "./balance";
@@ -104,10 +102,7 @@ const Header = ({
 
 const HeaderInfo = ({ userInfo, i18n }) => {
 	return (
-		<div
-			className={classNames("headerModule", {
-				cambodia: isDateRange(cambodiaSeaGameEventPeriod)
-			})}>
+		<div className="headerModule">
 			<a href={`/${userInfo.langId}`}>
 				<Logo />
 			</a>
