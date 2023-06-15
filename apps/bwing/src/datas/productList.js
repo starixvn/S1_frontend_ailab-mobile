@@ -259,7 +259,8 @@ export const defSlotTpGameType = {
 	AdvantPlay: { tpId: 39, tpGameType: 67 },
 	Habanero: { tpId: 40, tpGameType: 68 },
 	Skywind: { tpId: 43, tpGameType: 82 },
-	SimplePlay: { tpId: 44, tpGameType: 86 }
+	SimplePlay: { tpId: 44, tpGameType: 86 },
+	Nextspin: { tpId: 50, tpGameType: 99 }
 };
 
 export const sportStreamDef = {
