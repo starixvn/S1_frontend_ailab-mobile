@@ -78,13 +78,21 @@ export const defSlotTpGameType = {
 
 const defSortSports = {
 	[defCurrenyId.INR]: [
-		"worldCup",
+		"cryptoSports",
 		"cricket",
 		"soccer",
-		"cryptoSports",
 		"sabaSoccer",
 		"basketball",
-		"tennis",
+		"badminton",
+		"virtualSports"
+	],
+	[defCurrenyId.BDT]: [
+		"cryptoSports",
+		"cricket",
+		"soccer",
+		"sabaSoccer",
+		"basketball",
+		"badminton",
 		"virtualSports"
 	]
 };
@@ -349,13 +357,6 @@ const gameList = ({ langId, currencyId }) => {
 			customSort: defSortSports,
 			items: [
 				{
-					...defGameInfo.Soccer,
-					img: `${cloudBannerImgURL}/h5/img/soccer.png`,
-					spanTextKey: "lbl_Soccer",
-					sortKey: "soccer",
-					hasDesktopLink: true
-				},
-				{
 					...defGameInfo.CryptoSports,
 					img: `${cloudBannerImgURL}/h5/img/cryptosportsNPC.png`,
 					spanTextKey: "lbl_cryptoSports",
@@ -369,6 +370,14 @@ const gameList = ({ langId, currencyId }) => {
 						}
 					]
 				},
+				{
+					...defGameInfo.Soccer,
+					img: `${cloudBannerImgURL}/h5/img/soccer.png`,
+					spanTextKey: "lbl_Soccer",
+					sortKey: "soccer",
+					hasDesktopLink: true
+				},
+
 				{
 					...defGameInfo.SabaSoccer,
 					img: `${cloudBannerImgURL}/h5/img/saba_soccer.png`,
@@ -384,24 +393,33 @@ const gameList = ({ langId, currencyId }) => {
 					hasDesktopLink: true
 				},
 				{
-					...defGameInfo.Tennis,
-					img: `${cloudBannerImgURL}/h5/img/tennis.png`,
-					spanTextKey: "lbl_Tennis",
-					sortKey: "tennis",
+					...defGameInfo.Badminton,
+					img: `${cloudBannerImgURL}/h5/img/badminton.png`,
+					spanTextKey: "lbl_Badminton",
+					sortKey: "badminton",
 					hasDesktopLink: true
 				},
 				{
-					...defGameInfo.Cricket,
-					img: `${cloudBannerImgURL}/h5/img/cricket.png`,
-					spanTextKey: "lbl_Cricket",
-					sortKey: "cricket",
-					hasDesktopLink: true
+					...defGameInfo.Volleyball,
+					img: `${cloudBannerImgURL}/h5/img/volleyball.png`,
+					spanTextKey: "lbl_Volleyball",
+					sortKey: "volleyball",
+					hasDesktopLink: true,
+					allowCurrency: allowedCurrencyList.sportsVolleyball
 				},
 				{
 					...defGameInfo.VirtualSports,
 					img: `${cloudBannerImgURL}/h5/img/betradarsoccer.png`,
 					spanTextKey: "lbl_VirtualSports",
 					sortKey: "virtualSports"
+				},
+				{
+					...defGameInfo.Cricket,
+					img: `${cloudBannerImgURL}/h5/img/cricket.png`,
+					spanTextKey: "lbl_Cricket",
+					sortKey: "cricket",
+					hasDesktopLink: true,
+					allowCurrency: allowedCurrencyList.sportsCricket
 				}
 				// {
 				// 	...defGameInfo.Wap,
@@ -1075,6 +1093,16 @@ export const defGameInfo = {
 		gameId: 997,
 		// tpGameType: 1,
 		tpGameType: 69 // seamless wallet
+	},
+	Volleyball: {
+		gameId: 6,
+		tpId: 41,
+		tpGameType: 69
+	},
+	Badminton: {
+		gameId: 9,
+		tpId: 41,
+		tpGameType: 69
 	},
 	Basketball: {
 		// tpId: 1,
