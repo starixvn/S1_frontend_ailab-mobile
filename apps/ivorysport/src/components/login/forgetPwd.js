@@ -128,7 +128,7 @@ const ForgetPwd = () => {
 
 const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
-	const header = <Header title={i18n.lbl_ForgetPassword} hideLogo={true} />;
+	const header = <Header title={i18n.lbl_ForgetPassword} />;
 	return (
 		<Layout mainClass="main" header={header}>
 			<ForgetPwd />
