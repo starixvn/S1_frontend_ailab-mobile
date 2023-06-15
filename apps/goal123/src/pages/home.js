@@ -29,6 +29,7 @@ import Header from "../components/common/header";
 import NewYear, {
 	defEventPeriod as NewYearEventPeriod
 } from "../components/common/popbox.newYear";
+import useInterval from "../components/hook/useInterval";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -269,24 +270,26 @@ const PlaytechJactpot = () => {
 	const { i18n } = useContext(i18nContext);
 	const [jPotSuccess, setJPotSuccess] = useState(true);
 
-	useEffect(() => {
-		const ticker2 =
-			typeof Ticker === "undefined"
-				? null
-				: new Ticker({
-						info: 2,
-						casino: "hotspin88am",
-						currency: "vnd"
-				  });
+	useInterval(() => {
+		if (!jPotSuccess) {
+			const ticker2 =
+				typeof Ticker === "undefined"
+					? null
+					: new Ticker({
+							info: 2,
+							casino: "hotspin88am",
+							currency: "vnd"
+					  });
 
-		if (ticker2) {
-			setJPotSuccess(true);
+			if (ticker2) {
+				setJPotSuccess(true);
+			}
+
+			ticker2?.attachToTextBox("tick");
+			ticker2?.SetCurrencySign("");
+			ticker2?.tick();
 		}
-
-		ticker2?.attachToTextBox("tick");
-		ticker2?.SetCurrencySign("");
-		ticker2?.tick();
-	}, []);
+	}, 1000);
 
 	return (
 		<Link to={`/${path.casino.root}`} state={{ nav: defNav.PROMO.key }}>

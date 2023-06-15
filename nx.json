@@ -64,6 +64,13 @@
 			"tags": [],
 			"implicitDependencies": ["nova88v2"]
 		},
+		"ivorysport": {
+			"tags": []
+		},
+		"ivorysport-e2e": {
+			"tags": [],
+			"implicitDependencies": ["ivorysport"]
+		},
 		"format-pattern": {
 			"tags": []
 		},

@@ -1,0 +1,1535 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logged in Casino tests Casino renders correctly 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <header
+        class="header"
+        id="header"
+      >
+        <div
+          class="title"
+        >
+          <a
+            href="/en/"
+          >
+            <i
+              class="icon icon-keyboard_arrow_left"
+            />
+          </a>
+           
+          Slots
+        </div>
+      </header>
+      <main
+        class="main casino"
+      >
+        <div
+          class="swiper-container swiper-container-initialized swiper-container-horizontal"
+        >
+          <div
+            class="swiper-wrapper"
+            style="webkit-transition-duration: 300ms; transition-duration: 300ms; webkit-transform: translate3d(NaNpx, 0px, 0px); transform: translate3d(NaNpx, 0px, 0px);"
+          >
+            <button
+              class="swiper-slide"
+            >
+              <img
+                alt="PP"
+                class="banner"
+                src="https://image.0814media.net/Promotion/en/nova88_MYR.jpg"
+              />
+            </button>
+            <a
+              class="swiper-slide"
+              href="/en/casino"
+            >
+              <img
+                alt="Joker"
+                class="banner"
+                src="https://image.0814media.net/SiteSkin/img/banner-joker.jpg"
+              />
+            </a>
+            <button
+              class="swiper-slide"
+            >
+              <img
+                alt="Casino"
+                class="banner"
+                src="https://m.nova88.net/CMS/Nova88/Casino/en/Casino.jpg"
+              />
+            </button>
+          </div>
+          <div
+            class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"
+          />
+          <span
+            aria-atomic="true"
+            aria-live="assertive"
+            class="swiper-notification"
+          />
+        </div>
+        <div
+          class="functionList"
+        >
+          <div
+            class="partnerSelect"
+          >
+            <button
+              class="active"
+              data-testid="gameProvider_6"
+            >
+              <img
+                alt="gp"
+                src="https://image.0814media.net/SiteSkin/img/logo/gpa.png"
+              />
+            </button>
+            <button
+              class=""
+              data-testid="gameProvider_5"
+            >
+              <img
+                alt="pp"
+                src="https://image.0814media.net/SiteSkin/img/logo/pp.png"
+              />
+            </button>
+          </div>
+          <div
+            class="inputBox filterBtn"
+          >
+            <button
+              class="active"
+              data-testid="nav_All"
+            >
+              All
+            </button>
+            <button
+              class=""
+              data-testid="nav_Jackpot"
+            >
+              Jackpot
+            </button>
+            <button
+              class=""
+              data-testid="nav_New"
+            >
+              New
+            </button>
+            <button
+              class=""
+              data-testid="nav_Feature"
+            >
+              Feature
+            </button>
+            <button
+              class=""
+              data-testid="nav_Favourite"
+            >
+              Favourite
+            </button>
+          </div>
+          <div
+            class="infoModule parts"
+          >
+            <div
+              class="inputBox"
+            >
+              <i
+                class="icon icon-search"
+              />
+              <input
+                data-testid="searchBox"
+                placeholder="Search Games"
+                value="bas"
+              />
+            </div>
+          </div>
+          <div
+            class="infoModule parts"
+          >
+            <div
+              class="inputBox "
+            >
+              <button
+                class="dropdown btn"
+              >
+                <span
+                  class="text"
+                >
+                  All Categories
+                </span>
+                <i
+                  class="icon icon-keyboard_arrow_down"
+                />
+              </button>
+              <div
+                class="dropdown-container"
+              >
+                <div
+                  class="dropdown-item"
+                  data-testid="dp-item-All Categories"
+                >
+                  <span
+                    class="text"
+                  >
+                    All Categories
+                  </span>
+                </div>
+                <div
+                  class="dropdown-item"
+                  data-testid="dp-item-Table"
+                >
+                  <span
+                    class="text"
+                  >
+                    Table
+                  </span>
+                </div>
+                <div
+                  class="dropdown-item"
+                  data-testid="dp-item-Slots"
+                >
+                  <span
+                    class="text"
+                  >
+                    Slots
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="slotList"
+          id="scrollId"
+        >
+          <div
+            class="info"
+          >
+            <img
+              alt="Baseball"
+              data-testid="gameImg"
+              src="https://img.0814media.net/GPI/baseball-en.jpg"
+            />
+            <span
+              data-testid="providerName"
+            >
+              GPI
+            </span>
+            <span
+              class="icon icon-star-empty"
+              data-testid="favBtn"
+            />
+          </div>
+        </div>
+      </main>
+      <footer
+        id="footer"
+      >
+        <a
+          class="icon icon-home"
+          href="/en/"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            Home
+          </span>
+        </a>
+        <a
+          class="icon icon-gift"
+          href="/en/promotion"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            Promotion
+          </span>
+        </a>
+        <a
+          class="icon icon-icon32px_wallet"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            Wallet
+          </span>
+        </a>
+        <a
+          class="icon icon-contact"
+          href="https://direct.lc.chat/11638088/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            Live Chat
+          </span>
+        </a>
+        <a
+          class="icon icon-menu"
+          href="/en/setting"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            More
+          </span>
+        </a>
+      </footer>
+      <div
+        class="walletMenu"
+      >
+        <div
+          class="walletModule"
+        >
+          <a
+            class="icon icon-icon32px_wallet"
+            href="/en/wallet"
+          >
+            <div
+              class="circleAnimation"
+            />
+            <span>
+              My Wallet
+            </span>
+          </a>
+          <a
+            class="icon icon-icon32px_Withdraw"
+            href="/en/withdrawal"
+          >
+            <div
+              class="circleAnimation"
+            />
+            <span>
+              Withdrawal
+            </span>
+          </a>
+          <a
+            class="icon icon-icon32px_deposit"
+            href="/en/deposit"
+          >
+            <div
+              class="circleAnimation"
+            />
+            <span>
+              Deposit
+            </span>
+          </a>
+          <a
+            class="icon icon-icon32px_Funds-transfer"
+            href="/en/transfer"
+          >
+            <div
+              class="circleAnimation"
+            />
+            <span>
+              Transfer
+            </span>
+          </a>
+          <a
+            class="icon icon-icon32px_History"
+            href="/en/statement"
+          >
+            <div
+              class="circleAnimation"
+            />
+            <span>
+              Statement
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <header
+      class="header"
+      id="header"
+    >
+      <div
+        class="title"
+      >
+        <a
+          href="/en/"
+        >
+          <i
+            class="icon icon-keyboard_arrow_left"
+          />
+        </a>
+         
+        Slots
+      </div>
+    </header>
+    <main
+      class="main casino"
+    >
+      <div
+        class="swiper-container swiper-container-initialized swiper-container-horizontal"
+      >
+        <div
+          class="swiper-wrapper"
+          style="webkit-transition-duration: 300ms; transition-duration: 300ms; webkit-transform: translate3d(NaNpx, 0px, 0px); transform: translate3d(NaNpx, 0px, 0px);"
+        >
+          <button
+            class="swiper-slide"
+          >
+            <img
+              alt="PP"
+              class="banner"
+              src="https://image.0814media.net/Promotion/en/nova88_MYR.jpg"
+            />
+          </button>
+          <a
+            class="swiper-slide"
+            href="/en/casino"
+          >
+            <img
+              alt="Joker"
+              class="banner"
+              src="https://image.0814media.net/SiteSkin/img/banner-joker.jpg"
+            />
+          </a>
+          <button
+            class="swiper-slide"
+          >
+            <img
+              alt="Casino"
+              class="banner"
+              src="https://m.nova88.net/CMS/Nova88/Casino/en/Casino.jpg"
+            />
+          </button>
+        </div>
+        <div
+          class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"
+        />
+        <span
+          aria-atomic="true"
+          aria-live="assertive"
+          class="swiper-notification"
+        />
+      </div>
+      <div
+        class="functionList"
+      >
+        <div
+          class="partnerSelect"
+        >
+          <button
+            class="active"
+            data-testid="gameProvider_6"
+          >
+            <img
+              alt="gp"
+              src="https://image.0814media.net/SiteSkin/img/logo/gpa.png"
+            />
+          </button>
+          <button
+            class=""
+            data-testid="gameProvider_5"
+          >
+            <img
+              alt="pp"
+              src="https://image.0814media.net/SiteSkin/img/logo/pp.png"
+            />
+          </button>
+        </div>
+        <div
+          class="inputBox filterBtn"
+        >
+          <button
+            class="active"
+            data-testid="nav_All"
+          >
+            All
+          </button>
+          <button
+            class=""
+            data-testid="nav_Jackpot"
+          >
+            Jackpot
+          </button>
+          <button
+            class=""
+            data-testid="nav_New"
+          >
+            New
+          </button>
+          <button
+            class=""
+            data-testid="nav_Feature"
+          >
+            Feature
+          </button>
+          <button
+            class=""
+            data-testid="nav_Favourite"
+          >
+            Favourite
+          </button>
+        </div>
+        <div
+          class="infoModule parts"
+        >
+          <div
+            class="inputBox"
+          >
+            <i
+              class="icon icon-search"
+            />
+            <input
+              data-testid="searchBox"
+              placeholder="Search Games"
+              value="bas"
+            />
+          </div>
+        </div>
+        <div
+          class="infoModule parts"
+        >
+          <div
+            class="inputBox "
+          >
+            <button
+              class="dropdown btn"
+            >
+              <span
+                class="text"
+              >
+                All Categories
+              </span>
+              <i
+                class="icon icon-keyboard_arrow_down"
+              />
+            </button>
+            <div
+              class="dropdown-container"
+            >
+              <div
+                class="dropdown-item"
+                data-testid="dp-item-All Categories"
+              >
+                <span
+                  class="text"
+                >
+                  All Categories
+                </span>
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="dp-item-Table"
+              >
+                <span
+                  class="text"
+                >
+                  Table
+                </span>
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="dp-item-Slots"
+              >
+                <span
+                  class="text"
+                >
+                  Slots
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="slotList"
+        id="scrollId"
+      >
+        <div
+          class="info"
+        >
+          <img
+            alt="Baseball"
+            data-testid="gameImg"
+            src="https://img.0814media.net/GPI/baseball-en.jpg"
+          />
+          <span
+            data-testid="providerName"
+          >
+            GPI
+          </span>
+          <span
+            class="icon icon-star-empty"
+            data-testid="favBtn"
+          />
+        </div>
+      </div>
+    </main>
+    <footer
+      id="footer"
+    >
+      <a
+        class="icon icon-home"
+        href="/en/"
+      >
+        <div
+          class="circleAnimation"
+        />
+        <span>
+          Home
+        </span>
+      </a>
+      <a
+        class="icon icon-gift"
+        href="/en/promotion"
+      >
+        <div
+          class="circleAnimation"
+        />
+        <span>
+          Promotion
+        </span>
+      </a>
+      <a
+        class="icon icon-icon32px_wallet"
+      >
+        <div
+          class="circleAnimation"
+        />
+        <span>
+          Wallet
+        </span>
+      </a>
+      <a
+        class="icon icon-contact"
+        href="https://direct.lc.chat/11638088/"
+        rel="noreferrer"
+        target="_blank"
+      >
+        <div
+          class="circleAnimation"
+        />
+        <span>
+          Live Chat
+        </span>
+      </a>
+      <a
+        class="icon icon-menu"
+        href="/en/setting"
+      >
+        <div
+          class="circleAnimation"
+        />
+        <span>
+          More
+        </span>
+      </a>
+    </footer>
+    <div
+      class="walletMenu"
+    >
+      <div
+        class="walletModule"
+      >
+        <a
+          class="icon icon-icon32px_wallet"
+          href="/en/wallet"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            My Wallet
+          </span>
+        </a>
+        <a
+          class="icon icon-icon32px_Withdraw"
+          href="/en/withdrawal"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            Withdrawal
+          </span>
+        </a>
+        <a
+          class="icon icon-icon32px_deposit"
+          href="/en/deposit"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            Deposit
+          </span>
+        </a>
+        <a
+          class="icon icon-icon32px_Funds-transfer"
+          href="/en/transfer"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            Transfer
+          </span>
+        </a>
+        <a
+          class="icon icon-icon32px_History"
+          href="/en/statement"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            Statement
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`No tpId in url test ( logged in ) No tpId in url 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <header
+        class="header"
+        id="header"
+      >
+        <div
+          class="title"
+        >
+          <a
+            href="/en/"
+          >
+            <i
+              class="icon icon-keyboard_arrow_left"
+            />
+          </a>
+           
+          Slots
+        </div>
+      </header>
+      <main
+        class="main casino"
+      >
+        <div
+          class="swiper-container swiper-container-initialized swiper-container-horizontal"
+        >
+          <div
+            class="swiper-wrapper"
+            style="webkit-transition-duration: 300ms; transition-duration: 300ms; webkit-transform: translate3d(NaNpx, 0px, 0px); transform: translate3d(NaNpx, 0px, 0px);"
+          >
+            <button
+              class="swiper-slide"
+            >
+              <img
+                alt="PP"
+                class="banner"
+                src="https://image.0814media.net/Promotion/en/nova88_MYR.jpg"
+              />
+            </button>
+            <a
+              class="swiper-slide"
+              href="/en/casino"
+            >
+              <img
+                alt="Joker"
+                class="banner"
+                src="https://image.0814media.net/SiteSkin/img/banner-joker.jpg"
+              />
+            </a>
+            <button
+              class="swiper-slide"
+            >
+              <img
+                alt="Casino"
+                class="banner"
+                src="https://m.nova88.net/CMS/Nova88/Casino/en/Casino.jpg"
+              />
+            </button>
+          </div>
+          <div
+            class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"
+          />
+          <span
+            aria-atomic="true"
+            aria-live="assertive"
+            class="swiper-notification"
+          />
+        </div>
+        <div
+          class="functionList"
+        >
+          <div
+            class="partnerSelect"
+          >
+            <button
+              class=""
+              data-testid="gameProvider_5"
+            >
+              <img
+                alt="pp"
+                src="https://image.0814media.net/SiteSkin/img/logo/pp.png"
+              />
+            </button>
+            <button
+              class=""
+              data-testid="gameProvider_6"
+            >
+              <img
+                alt="gp"
+                src="https://image.0814media.net/SiteSkin/img/logo/gp.png"
+              />
+            </button>
+          </div>
+          <div
+            class="inputBox filterBtn"
+          >
+            <button
+              class="active"
+              data-testid="nav_All"
+            >
+              All
+            </button>
+            <button
+              class=""
+              data-testid="nav_Jackpot"
+            >
+              Jackpot
+            </button>
+            <button
+              class=""
+              data-testid="nav_New"
+            >
+              New
+            </button>
+            <button
+              class=""
+              data-testid="nav_Feature"
+            >
+              Feature
+            </button>
+            <button
+              class=""
+              data-testid="nav_Favourite"
+            >
+              Favourite
+            </button>
+          </div>
+          <div
+            class="infoModule parts"
+          >
+            <div
+              class="inputBox"
+            >
+              <i
+                class="icon icon-search"
+              />
+              <input
+                data-testid="searchBox"
+                placeholder="Search Games"
+                value="bas"
+              />
+            </div>
+          </div>
+          <div
+            class="infoModule parts"
+          >
+            <div
+              class="inputBox "
+            >
+              <button
+                class="dropdown btn"
+              >
+                <span
+                  class="text"
+                >
+                  All Categories
+                </span>
+                <i
+                  class="icon icon-keyboard_arrow_down"
+                />
+              </button>
+              <div
+                class="dropdown-container"
+              >
+                <div
+                  class="dropdown-item"
+                  data-testid="dp-item-All Categories"
+                >
+                  <span
+                    class="text"
+                  >
+                    All Categories
+                  </span>
+                </div>
+                <div
+                  class="dropdown-item"
+                  data-testid="dp-item-Table"
+                >
+                  <span
+                    class="text"
+                  >
+                    Table
+                  </span>
+                </div>
+                <div
+                  class="dropdown-item"
+                  data-testid="dp-item-Slots"
+                >
+                  <span
+                    class="text"
+                  >
+                    Slots
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="slotList"
+          id="scrollId"
+        >
+          <div
+            class="info"
+          >
+            <img
+              alt="Baseball"
+              data-testid="gameImg"
+              src="https://img.0814media.net/GPI/baseball-en.jpg"
+            />
+            <span
+              data-testid="providerName"
+            >
+              GPI
+            </span>
+            <span
+              class="icon icon-star-empty"
+              data-testid="favBtn"
+            />
+          </div>
+          <div
+            class="info"
+          >
+            <img
+              alt="Release the Kraken"
+              data-testid="gameImg"
+              src="https://img.0814media.net/PP/release-the-kraken-en.jpg"
+            />
+            <span
+              data-testid="providerName"
+            >
+              PP
+            </span>
+            <span
+              class="icon icon-star-empty"
+              data-testid="favBtn"
+            />
+          </div>
+        </div>
+      </main>
+      <footer
+        id="footer"
+      >
+        <a
+          class="icon icon-home"
+          href="/en/"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            Home
+          </span>
+        </a>
+        <a
+          class="icon icon-gift"
+          href="/en/promotion"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            Promotion
+          </span>
+        </a>
+        <a
+          class="icon icon-icon32px_wallet"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            Wallet
+          </span>
+        </a>
+        <a
+          class="icon icon-contact"
+          href="https://direct.lc.chat/11638088/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            Live Chat
+          </span>
+        </a>
+        <a
+          class="icon icon-menu"
+          href="/en/setting"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            More
+          </span>
+        </a>
+      </footer>
+      <div
+        class="walletMenu"
+      >
+        <div
+          class="walletModule"
+        >
+          <a
+            class="icon icon-icon32px_wallet"
+            href="/en/wallet"
+          >
+            <div
+              class="circleAnimation"
+            />
+            <span>
+              My Wallet
+            </span>
+          </a>
+          <a
+            class="icon icon-icon32px_Withdraw"
+            href="/en/withdrawal"
+          >
+            <div
+              class="circleAnimation"
+            />
+            <span>
+              Withdrawal
+            </span>
+          </a>
+          <a
+            class="icon icon-icon32px_deposit"
+            href="/en/deposit"
+          >
+            <div
+              class="circleAnimation"
+            />
+            <span>
+              Deposit
+            </span>
+          </a>
+          <a
+            class="icon icon-icon32px_Funds-transfer"
+            href="/en/transfer"
+          >
+            <div
+              class="circleAnimation"
+            />
+            <span>
+              Transfer
+            </span>
+          </a>
+          <a
+            class="icon icon-icon32px_History"
+            href="/en/statement"
+          >
+            <div
+              class="circleAnimation"
+            />
+            <span>
+              Statement
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <header
+      class="header"
+      id="header"
+    >
+      <div
+        class="title"
+      >
+        <a
+          href="/en/"
+        >
+          <i
+            class="icon icon-keyboard_arrow_left"
+          />
+        </a>
+         
+        Slots
+      </div>
+    </header>
+    <main
+      class="main casino"
+    >
+      <div
+        class="swiper-container swiper-container-initialized swiper-container-horizontal"
+      >
+        <div
+          class="swiper-wrapper"
+          style="webkit-transition-duration: 300ms; transition-duration: 300ms; webkit-transform: translate3d(NaNpx, 0px, 0px); transform: translate3d(NaNpx, 0px, 0px);"
+        >
+          <button
+            class="swiper-slide"
+          >
+            <img
+              alt="PP"
+              class="banner"
+              src="https://image.0814media.net/Promotion/en/nova88_MYR.jpg"
+            />
+          </button>
+          <a
+            class="swiper-slide"
+            href="/en/casino"
+          >
+            <img
+              alt="Joker"
+              class="banner"
+              src="https://image.0814media.net/SiteSkin/img/banner-joker.jpg"
+            />
+          </a>
+          <button
+            class="swiper-slide"
+          >
+            <img
+              alt="Casino"
+              class="banner"
+              src="https://m.nova88.net/CMS/Nova88/Casino/en/Casino.jpg"
+            />
+          </button>
+        </div>
+        <div
+          class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"
+        />
+        <span
+          aria-atomic="true"
+          aria-live="assertive"
+          class="swiper-notification"
+        />
+      </div>
+      <div
+        class="functionList"
+      >
+        <div
+          class="partnerSelect"
+        >
+          <button
+            class=""
+            data-testid="gameProvider_5"
+          >
+            <img
+              alt="pp"
+              src="https://image.0814media.net/SiteSkin/img/logo/pp.png"
+            />
+          </button>
+          <button
+            class=""
+            data-testid="gameProvider_6"
+          >
+            <img
+              alt="gp"
+              src="https://image.0814media.net/SiteSkin/img/logo/gp.png"
+            />
+          </button>
+        </div>
+        <div
+          class="inputBox filterBtn"
+        >
+          <button
+            class="active"
+            data-testid="nav_All"
+          >
+            All
+          </button>
+          <button
+            class=""
+            data-testid="nav_Jackpot"
+          >
+            Jackpot
+          </button>
+          <button
+            class=""
+            data-testid="nav_New"
+          >
+            New
+          </button>
+          <button
+            class=""
+            data-testid="nav_Feature"
+          >
+            Feature
+          </button>
+          <button
+            class=""
+            data-testid="nav_Favourite"
+          >
+            Favourite
+          </button>
+        </div>
+        <div
+          class="infoModule parts"
+        >
+          <div
+            class="inputBox"
+          >
+            <i
+              class="icon icon-search"
+            />
+            <input
+              data-testid="searchBox"
+              placeholder="Search Games"
+              value="bas"
+            />
+          </div>
+        </div>
+        <div
+          class="infoModule parts"
+        >
+          <div
+            class="inputBox "
+          >
+            <button
+              class="dropdown btn"
+            >
+              <span
+                class="text"
+              >
+                All Categories
+              </span>
+              <i
+                class="icon icon-keyboard_arrow_down"
+              />
+            </button>
+            <div
+              class="dropdown-container"
+            >
+              <div
+                class="dropdown-item"
+                data-testid="dp-item-All Categories"
+              >
+                <span
+                  class="text"
+                >
+                  All Categories
+                </span>
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="dp-item-Table"
+              >
+                <span
+                  class="text"
+                >
+                  Table
+                </span>
+              </div>
+              <div
+                class="dropdown-item"
+                data-testid="dp-item-Slots"
+              >
+                <span
+                  class="text"
+                >
+                  Slots
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="slotList"
+        id="scrollId"
+      >
+        <div
+          class="info"
+        >
+          <img
+            alt="Baseball"
+            data-testid="gameImg"
+            src="https://img.0814media.net/GPI/baseball-en.jpg"
+          />
+          <span
+            data-testid="providerName"
+          >
+            GPI
+          </span>
+          <span
+            class="icon icon-star-empty"
+            data-testid="favBtn"
+          />
+        </div>
+        <div
+          class="info"
+        >
+          <img
+            alt="Release the Kraken"
+            data-testid="gameImg"
+            src="https://img.0814media.net/PP/release-the-kraken-en.jpg"
+          />
+          <span
+            data-testid="providerName"
+          >
+            PP
+          </span>
+          <span
+            class="icon icon-star-empty"
+            data-testid="favBtn"
+          />
+        </div>
+      </div>
+    </main>
+    <footer
+      id="footer"
+    >
+      <a
+        class="icon icon-home"
+        href="/en/"
+      >
+        <div
+          class="circleAnimation"
+        />
+        <span>
+          Home
+        </span>
+      </a>
+      <a
+        class="icon icon-gift"
+        href="/en/promotion"
+      >
+        <div
+          class="circleAnimation"
+        />
+        <span>
+          Promotion
+        </span>
+      </a>
+      <a
+        class="icon icon-icon32px_wallet"
+      >
+        <div
+          class="circleAnimation"
+        />
+        <span>
+          Wallet
+        </span>
+      </a>
+      <a
+        class="icon icon-contact"
+        href="https://direct.lc.chat/11638088/"
+        rel="noreferrer"
+        target="_blank"
+      >
+        <div
+          class="circleAnimation"
+        />
+        <span>
+          Live Chat
+        </span>
+      </a>
+      <a
+        class="icon icon-menu"
+        href="/en/setting"
+      >
+        <div
+          class="circleAnimation"
+        />
+        <span>
+          More
+        </span>
+      </a>
+    </footer>
+    <div
+      class="walletMenu"
+    >
+      <div
+        class="walletModule"
+      >
+        <a
+          class="icon icon-icon32px_wallet"
+          href="/en/wallet"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            My Wallet
+          </span>
+        </a>
+        <a
+          class="icon icon-icon32px_Withdraw"
+          href="/en/withdrawal"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            Withdrawal
+          </span>
+        </a>
+        <a
+          class="icon icon-icon32px_deposit"
+          href="/en/deposit"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            Deposit
+          </span>
+        </a>
+        <a
+          class="icon icon-icon32px_Funds-transfer"
+          href="/en/transfer"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            Transfer
+          </span>
+        </a>
+        <a
+          class="icon icon-icon32px_History"
+          href="/en/statement"
+        >
+          <div
+            class="circleAnimation"
+          />
+          <span>
+            Statement
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
