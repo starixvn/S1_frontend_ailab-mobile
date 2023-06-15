@@ -2,7 +2,7 @@ import axios from "axios";
 import { validImgLang, defCurrenyId } from "./components/common/common";
 
 const siteName = "Ivorysport";
-export const siteId = 1;
+export const siteId = 5;
 
 export const errorPageUrl = langId =>
 	`https://error.0814media.net/404/index_${validImgLang(langId)}.html`;
@@ -10,7 +10,7 @@ export const errorPageUrl = langId =>
 export const siteInfo = () => {
 	return {
 		siteName,
-		siteId: 1,
+		siteId: 5,
 		langCookie: "IvorysportLangId",
 		currencyCookie: "ivorysportCurrencyId",
 		siteDefaultLang: "en",
@@ -40,9 +40,9 @@ const SiteURL =
 				siteName,
 				appURL: "http://localhost:3000",
 				apiURL: "",
-				imgUrl: "https://www.n88dev.com",
+				imgUrl: "http://stag.ivorysport.com",
 				t_and_cURL: "https://banner.ivorysport.com",
-				openURL: "https://www.n88dev.com",
+				openURL: "http://stag.ivorysport.com",
 				cloudImgURL
 		  };
 

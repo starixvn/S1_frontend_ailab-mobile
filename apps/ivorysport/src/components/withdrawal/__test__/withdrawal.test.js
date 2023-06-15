@@ -47,7 +47,7 @@ describe("Withdrawal tests", () => {
 		},
 		i18n: {},
 		config: {
-			apiURL: "http://www.n88dev.com"
+			apiURL: "http://stag.ivorysport.com"
 		}
 	};
 	const defaultRender = async ({ currencyId }) => {
