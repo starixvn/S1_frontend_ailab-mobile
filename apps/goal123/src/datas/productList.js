@@ -119,6 +119,7 @@ export const defGameInfo = {
 	Casino_Habanero: { tpId: 40, tpGameType: 68 },
 	Casino_Skywind: { tpId: 43, tpGameType: 82 },
 	Casino_SimplePlay: { tpId: 44, tpGameType: 86 },
+	Casino_Nextspin: { tpId: 50, tpGameType: 99 },
 	LIVEcasinoN2: { tpId: 28, tpGameType: 45 },
 	LIVEcasinoWM: { gameId: 20, tpId: 20, tpGameType: 32 },
 	LIVEcasinoDG: { tpId: 4, gameId: 4, tpGameType: 10 },
@@ -221,7 +222,8 @@ export const defSlotTpGameType = {
 	AdvantPlay: { tpId: 39, tpGameType: 67 },
 	Habanero: { tpId: 40, tpGameType: 68 },
 	Skywind: { tpId: 43, tpGameType: 82 },
-	SimplePlay: { tpId: 44, tpGameType: 86 }
+	SimplePlay: { tpId: 44, tpGameType: 86 },
+	Nextspin: { tpId: 50, tpGameType: 99 }
 };
 
 const gameList = [
@@ -576,6 +578,20 @@ const gameList = [
 					{
 						icon: defIconType.new,
 						inPeriod: isEventPeriod(eventTime.ap_mini_game)
+					}
+				]
+			},
+			{
+				...defGameInfo.Casino_Nextspin,
+				parameter: defGameInfo.Casino_Nextspin,
+				spanText: "Nextspin",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-nextspin.png`,
+				path: path.casino.root,
+				providerImgName: "nextspin",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.casino_Nextspin)
 					}
 				]
 			},

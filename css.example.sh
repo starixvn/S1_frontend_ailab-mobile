@@ -6,7 +6,7 @@ DESIGN_PROJECT=/Users/lukelin/Project/Design
 PROJECT=/Users/lukelin/Project/ailab-mobile
 
 # 目前既有品牌
-SITE_LIST=(NOVA88 GOAL123 BWING)
+SITE_LIST=(NOVA88 GOAL123 BWING IVORYSPORT)
 
 
 # READ
@@ -24,12 +24,14 @@ siteList=($(echo "$site" | tr ' ' '\n'))
 for site in ${siteList[@]}
 do
 designPath="${DESIGN_PROJECT}/$site/H5/public/css"
+designImgPath="${DESIGN_PROJECT}/$site/H5/public/img"
 projectPath="${PROJECT}/apps/$site/src/styles"
 if [ $site = "NOVA88" ] || [ $site = "nova88" ]
 then
     projectPath="${PROJECT}/apps/nova88v2/src/styles"
 fi
     cp -R ${designPath} ${projectPath}
+    cp -R ${designImgPath} ${projectPath}
 done
 
 # --

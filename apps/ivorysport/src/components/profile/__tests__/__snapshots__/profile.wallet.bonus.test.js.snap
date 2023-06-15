@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bonus Wallet sholld show 100% progress bar when turnover > rollover 1`] = `
+<div>
+  <div
+    class="progressBarModule"
+  >
+    <div
+      class="bounsName"
+    >
+      Casino Bonus Wallet
+    </div>
+    <div>
+      <span
+        class="text-org"
+      >
+        MYR
+         
+      </span>
+       
+      300.00
+    </div>
+    <div
+      class="progressBar"
+    >
+      <div
+        class="bar"
+      >
+        <div
+          class="progress"
+          style="width: 100%;"
+        />
+      </div>
+      <div
+        class="percentage"
+      >
+        100
+        %
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Bonus Wallet should show correct percentage when turnover < rollover 1`] = `
+<div>
+  <div
+    class="progressBarModule"
+  >
+    <div
+      class="bounsName"
+    >
+      Casino Bonus Wallet
+    </div>
+    <div>
+      <span
+        class="text-org"
+      >
+        MYR
+         
+      </span>
+       
+      300.00
+    </div>
+    <div
+      class="progressBar"
+    >
+      <div
+        class="bar"
+      >
+        <div
+          class="progress"
+          style="width: 1.00%;"
+        />
+      </div>
+      <div
+        class="percentage"
+      >
+        1.00
+        %
+      </div>
+    </div>
+  </div>
+</div>
+`;
