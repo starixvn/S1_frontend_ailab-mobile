@@ -7,7 +7,7 @@ const defAmountQuickPick = {
 	[defCurrenyId.MYR]: [100, 300, 500, 1000, 2000],
 	[defCurrenyId.THB]: [500, 1000, 3000, 5000, 10000],
 	[defCurrenyId.IDR]: [300000, 500000, 1000000, 3000000, 5000000],
-	[defCurrenyId.VND]: [100, 200, 1000, 3000, 5000]
+	[defCurrenyId.VND]: [100000, 200000, 1000000, 3000000, 5000000]
 };
 
 const AmountInput = ({
@@ -94,9 +94,10 @@ const AmountInput = ({
 							placeholder={placeHolderText}
 							value={amount}
 						/>
-						{currencyId === defCurrenyId.IDR && (
-							<div>(&apos;000)</div>
-						)}
+						{currencyId === defCurrenyId.IDR ||
+							(currencyId === defCurrenyId.VND && (
+								<div>(&apos;000)</div>
+							))}
 						<div className="icon-module">
 							<i className="icon icon-pencil" />
 						</div>
