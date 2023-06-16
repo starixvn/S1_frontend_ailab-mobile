@@ -13,6 +13,7 @@ import HeaderShortcut from "../components/home/headerShortcut";
 import Header from "../components/header/header";
 import JoinLoginBar from "../components/home/joinLoginBar";
 import PromotionWrapper from "../components/promotion/common/wrapper";
+import HomeEntry from "../components/home/homeEntry";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -44,6 +45,8 @@ const IndexPage = () => {
 						userInfo={userInfo}
 						setPopBox={setPopBox}
 					/>
+
+					<HomeEntry />
 				</div>
 			</Layout>
 		</PromotionWrapper>
