@@ -291,7 +291,7 @@
 	"msg_ForceLogedoutHint": "This ID has already logged in from another browser window or device. You will be forced to logout from this session.",
 	"msg_GoToDepositPage": "Vào trang nạp tiền?",
 	"msg_MailExisted": "Địa chỉ Email này đã được sử dụng.",
-	"msg_MailWrongFormat": "Định dạng Email không đúng",
+	"msg_MailWrongFormat": "Định dạng email không hợp lệ",
 	"msg_EmailReq": "Vui lòng nhập địa chỉ email",
 	"msg_NeedAccountName": "Cần nhập tên tài khoản",
 	"msg_NeedAccountNo": "Cần nhập số tài khoản",

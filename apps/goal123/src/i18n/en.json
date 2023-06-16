@@ -291,7 +291,7 @@
 	"msg_ForceLogedoutHint": "This ID has already logged in from another browser window or device. You will be forced to logout from this session.",
 	"msg_GoToDepositPage": "Go to deposit page?",
 	"msg_MailExisted": "Mail already exists.",
-	"msg_MailWrongFormat": "Mail Format is wrong.",
+	"msg_MailWrongFormat": "Email format is incorrect",
 	"msg_EmailReq": "Email address is required.",
 	"msg_NeedAccountName": "Need Account Name",
 	"msg_NeedAccountNo": "Need Account Number",

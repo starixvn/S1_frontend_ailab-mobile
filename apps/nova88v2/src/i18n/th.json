@@ -122,7 +122,7 @@
 	"lbl_TermsAndConditions": "บข้อกำหนดและเงื่อนไข",
 	"msg_EnterRealName": "โปรดใส่ชื่อจริง",
 	"lbl_RealName": "ชื่อจริง",
-	"msg_MailWrongFormat": "รูปแบบที่อยู่อีเมลไม่ถูกต้อง",
+	"msg_MailWrongFormat": "รูปแบบอีเมลไม่ถูกต้อง",
 	"msg_EmailReq": "ต้องระบุอีเมล",
 	"msg_PasswordVaildate": "รหัสผ่านต้องมีความยาว 6-15 ตัว ประกอบด้วยตัวอักษรและตัวเลข",
 	"lbl_Phone": "หมายเลขโทรศัพท์",

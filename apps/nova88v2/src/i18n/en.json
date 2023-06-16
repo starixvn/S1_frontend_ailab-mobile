@@ -122,7 +122,7 @@
 	"lbl_TermsAndConditions": "Terms & Conditions",
 	"msg_EnterRealName": "Please enter your real name.",
 	"lbl_RealName": "Real Name",
-	"msg_MailWrongFormat": "Email address format incorrect",
+	"msg_MailWrongFormat": "Email format is incorrect",
 	"msg_EmailReq": "Email address is required.",
 	"msg_PasswordVaildate": "Password must be 6-15 characters, contain alphanumeric.",
 	"lbl_Phone": "Phone Number",
