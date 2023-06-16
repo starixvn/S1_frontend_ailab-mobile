@@ -93,7 +93,7 @@
 	"lbl_NumberGame": "Permainan Nombor",
 	"lbl_BonusAmount": "Jumlah Bonus",
 	"lbl_RotationHint_1": "Kepada pelanggan yang dihargai",
-	"lbl_Home": "Halaman Utama",
+	"lbl_Home": "Laman Utama",
 	"lbl_MainWallet": "Dompet Utama",
 	"lbl_ID": "ID",
 	"lbl_Login": "Log masuk",
@@ -493,7 +493,7 @@
 	"lbl_WithdrawalDailyMinMax": "Had Min/Maks Harian:  {{0}}/{{1}}",
 	"lbl_WithdrawalDailyReached": "Sudah Cecah Had Harian Anda.",
 	"lbl_Insufficientbalance": "Baki tidak mencukupi",
-	"lbl_CryptoWithdrawal": "Pengeluaran Mata Wang Kripto",
+	"lbl_CryptoWithdrawal": "Pengeluaran kripto",
 	"lbl_ReceiveUSDT": "Terima Amaun USDT",
 	"lbl_WithdrawalCryptoNote": "Kadar penukaran untuk tujuan rujukan sahaja, amaun yang tepat perlu merujuk kadar terkini.",
 
