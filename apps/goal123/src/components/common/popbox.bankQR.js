@@ -78,10 +78,13 @@ const BankQR = ({
 								<QRCode
 									renderAs="svg"
 									id="QRcode"
-									value={`${paymentImgUrl}${qrCodeUrl}`}
+									value={qrCodeUrl}
 								/>
 							) : (
-								<img src={qrCodeUrl} alt="" />
+								<img
+									src={`${paymentImgUrl}${qrCodeUrl}`}
+									alt=""
+								/>
 							)}
 						</div>
 						<div className="code">
