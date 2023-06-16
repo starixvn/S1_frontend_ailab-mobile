@@ -81,10 +81,7 @@ const BankQR = ({
 									value={`${paymentImgUrl}${qrCodeUrl}`}
 								/>
 							) : (
-								<img
-									src={`${paymentImgUrl}${qrCodeUrl}`}
-									alt=""
-								/>
+								<img src={qrCodeUrl} alt="" />
 							)}
 						</div>
 						<div className="code">
