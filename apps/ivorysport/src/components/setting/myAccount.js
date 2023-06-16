@@ -34,10 +34,6 @@ const MyAccount = () => {
 						<div className="icon icon-member" />
 						<div>{i18n.lbl_Profile}</div>
 					</Link>
-					<Link to={path.referral.root}>
-						<div className="icon icon-friendreferral" />
-						<div>{i18n.lbl_ReferFriends}</div>
-					</Link>
 					<Link to={path.changePassword.root}>
 						<div className="icon icon-icon32px_password" />
 						<div>{i18n.lbl_ChangePassword}</div>

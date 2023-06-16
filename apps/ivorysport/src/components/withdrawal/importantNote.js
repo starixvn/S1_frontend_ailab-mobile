@@ -38,10 +38,7 @@ const EN = () => (
 	<ul>
 		<li>
 			Kindly check with our{" "}
-			<a
-				rel="noreferrer"
-				target="_blank"
-				href="https://direct.lc.chat/11638088/">
+			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
 				24/7 LIVE CHAT
 			</a>{" "}
 			if your transaction is pending for more than 10 minutes.
@@ -61,10 +58,7 @@ const EN = () => (
 		<li>
 			If there is any discrepancy or you may have any other further
 			withdrawal inquiries, kindly contact our{" "}
-			<a
-				rel="noreferrer"
-				target="_blank"
-				href="https://direct.lc.chat/11638088/">
+			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
 				24/7 LIVE CHAT
 			</a>
 			. Thank you.
@@ -76,10 +70,7 @@ const CS = () => (
 	<ul>
 		<li>
 			如果您的交易超过10分钟还未完成, 请与我们的{" "}
-			<a
-				rel="noreferrer"
-				target="_blank"
-				href="https://direct.lc.chat/11638088/">
+			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
 				24/7在线客服
 			</a>{" "}
 			联系。
@@ -93,10 +84,7 @@ const CS = () => (
 		</li>
 		<li>
 			如果您有任何提款疑问或查询, 请与我们的{" "}
-			<a
-				rel="noreferrer"
-				target="_blank"
-				href="https://direct.lc.chat/11638088/">
+			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
 				24/7在线客服
 			</a>{" "}
 			联系。谢谢。
@@ -108,10 +96,7 @@ const MY = () => (
 	<ul>
 		<li>
 			Sila semak dengan{" "}
-			<a
-				rel="noreferrer"
-				target="_blank"
-				href="https://direct.lc.chat/11638088/">
+			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
 				LIVE CHAT 24/7
 			</a>{" "}
 			kami jika transaksi anda belum diproses lebih daripada 10 minit.
@@ -134,10 +119,7 @@ const MY = () => (
 		<li>
 			Jika ada sebarang percanggahan atau mempunyai sebarang pertanyaan
 			pengeluaran yang lanjut, sila hubungi{" "}
-			<a
-				rel="noreferrer"
-				target="_blank"
-				href="https://direct.lc.chat/11638088/">
+			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
 				LIVECHAT 24/7
 			</a>{" "}
 			kami. Terima kasih.
@@ -149,10 +131,7 @@ const TH = () => (
 	<ul>
 		<li>
 			กรุณาติดต่อทาง{" "}
-			<a
-				rel="noreferrer"
-				target="_blank"
-				href="https://direct.lc.chat/11638088/">
+			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
 				แชทสดตลอด 24/7
 			</a>{" "}
 			ชั่วโมง หากธุรกรรมของท่านได้รับการดำเนินการมากกว่า 10 นาที
@@ -172,10 +151,7 @@ const TH = () => (
 		<li>
 			หากมีข้อสงสัยหรือข้อมูลสอบถามเพิ่มเติมเกี่ยวกับธุรกรรมการถอน
 			โปรดติดต่อ{" "}
-			<a
-				rel="noreferrer"
-				target="_blank"
-				href="https://direct.lc.chat/11638088/">
+			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
 				แชทสดตลอด 24/7
 			</a>{" "}
 			ชั่วโมง ขอบคุณค่ะ
@@ -187,10 +163,7 @@ const ID = () => (
 	<ul>
 		<li>
 			Silakan hubungi{" "}
-			<a
-				rel="noreferrer"
-				target="_blank"
-				href="https://direct.lc.chat/11638088/">
+			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
 				LIVE CHAT 24/7
 			</a>{" "}
 			kami jika transaksi Anda belum selesai lebih dari 10 menit.
@@ -213,10 +186,7 @@ const ID = () => (
 		<li>
 			Jika ada perbedaan atau Anda mungkin memiliki pertanyaan penarikan
 			lebih lanjut, silakan hubungi{" "}
-			<a
-				rel="noreferrer"
-				target="_blank"
-				href="https://direct.lc.chat/11638088/">
+			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
 				LIVE CHAT 24/7
 			</a>{" "}
 			kami. Terima kasih.
@@ -228,10 +198,7 @@ const HI = () => (
 	<ul>
 		<li>
 			यदि आपका लेन-देन 10 मिनट से अधिक समय से लंबित है, तो कृपया हमारी{" "}
-			<a
-				rel="noreferrer"
-				target="_blank"
-				href="https://direct.lc.chat/11638088/">
+			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
 				24/7 लाइवचैट
 			</a>{" "}
 			चैट से जांच करें।
@@ -252,10 +219,7 @@ const HI = () => (
 		<li>
 			यदि कोई विसंगति है या आपके पास कोई अन्य निकासी पूछताछ हो सकती है, तो
 			कृपया हमारे{" "}
-			<a
-				rel="noreferrer"
-				target="_blank"
-				href="https://direct.lc.chat/11638088/">
+			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
 				24/7 लाइवचैट
 			</a>
 			से संपर्क करें। धन्यवाद।
@@ -267,10 +231,7 @@ const BD = () => (
 	<ul>
 		<li>
 			দয়া করে আমাদের{" "}
-			<a
-				rel="noreferrer"
-				target="_blank"
-				href="https://direct.lc.chat/11638088/">
+			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
 				24/7 লাইভ চ্যাটের
 			</a>{" "}
 			সাথে চেক করুন যদি আপনার লেনদেন 10 মিনিটের বেশি সময় ধরে মুলতুবি
@@ -293,10 +254,7 @@ const BD = () => (
 		<li>
 			যদি কোন অসঙ্গতি থাকে বা আপনার অন্য কোন প্রত্যাহারের অনুসন্ধান থাকতে
 			পারে, অনুগ্রহ করে আমাদের{" "}
-			<a
-				rel="noreferrer"
-				target="_blank"
-				href="https://direct.lc.chat/11638088/">
+			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
 				24/7 লাইভচ্যাটে
 			</a>
 			. যোগাযোগ করুন। ধন্যবাদ.
@@ -308,10 +266,7 @@ const KH = () => (
 	<ul>
 		<li>
 			សូមផ្ទៀងផ្ទាត់ជាមួយផ្នែក{" "}
-			<a
-				rel="noreferrer"
-				target="_blank"
-				href="https://direct.lc.chat/11638088/">
+			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
 				ជជែកបន្តផ្ទាល់ របស់យើង ២៤ ម៉/៧ ថ្ងៃ
 			</a>{" "}
 			ប្រសិនបើប្រតិបត្តិការរបស់អ្នកនៅតែរង់ចាំលើសពី ១០ នាទី។.
@@ -332,10 +287,7 @@ const KH = () => (
 		</li>
 		<li>
 			ឬបើសិនអ្នកធ្វើការសាកសួរអំពីការដកប្រាក់ផ្សេងទៀត សូមទាក់ទងផ្នែ{" "}
-			<a
-				rel="noreferrer"
-				target="_blank"
-				href="https://direct.lc.chat/11638088/">
+			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
 				ជជែកបន្តផ្ទាល់ ២៤ ម៉/៧ ថ្ងៃ
 			</a>
 			ងៃ ។ សូមអរគុណ។
