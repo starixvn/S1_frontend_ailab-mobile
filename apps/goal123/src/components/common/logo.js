@@ -1,10 +1,13 @@
 import React from "react";
-import { cambodiaSeaGameEventPeriod, isDateRange } from "@ailab-mobile/common";
+import {
+	dragonBoatFestivalEventPeriod,
+	isDateRange
+} from "@ailab-mobile/common";
 import { bannerImgUrl } from "../../config";
 
 const getLogo = () => {
-	return isDateRange(cambodiaSeaGameEventPeriod)
-		? `${bannerImgUrl}/h5/img/logo-cambodia2023.png`
+	return isDateRange(dragonBoatFestivalEventPeriod)
+		? `${bannerImgUrl}/h5/img/dragon-logo.png`
 		: `${bannerImgUrl}/h5/img/logo.png`;
 };
 

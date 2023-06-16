@@ -3,11 +3,15 @@ import PropTypes from "prop-types";
 import { userInfoContext, i18nContext, rootContext } from "Context";
 import { Link } from "@reach/router";
 import classNames from "classnames";
-import { cambodiaSeaGameEventPeriod, isDateRange } from "@ailab-mobile/common";
+import {
+	dragonBoatFestivalEventPeriod,
+	isDateRange
+} from "@ailab-mobile/common";
 import Logo from "../common/logo";
 import path from "../../path";
 import Balance from "./balance";
 import AppDownloadHint from "./appDownloadHint";
+import { cloudBannerImgURL } from "../../config";
 
 const HeaderTitle = ({ title = "", link = "", titleClass = "title", navBar }) =>
 	title ? (
@@ -116,10 +120,31 @@ const HeaderInfo = ({ userInfo, i18n }) => {
 	return (
 		<div
 			className={classNames("headerModule", {
-				cambodia: isDateRange(cambodiaSeaGameEventPeriod)
+				dragon: isDateRange(dragonBoatFestivalEventPeriod)
 			})}>
 			<a href={`/${userInfo.langId}`}>
-				<Logo langId={userInfo.langId} />
+				{isDateRange(dragonBoatFestivalEventPeriod) ? (
+					<>
+						<img
+							src={`${cloudBannerImgURL}/h5/img/${
+								userInfo.langId === "cs"
+									? "dragon-logo_cs"
+									: "dragon-logo"
+							}.png`}
+							alt="logo"
+							className="dragonlogo"
+						/>
+						<img
+							className="dragon-light"
+							src={`${cloudBannerImgURL}/h5/img/dragon-light.png`}
+							alt="logo"
+						/>
+					</>
+				) : (
+					// 端午節活動 logo 跟網站其他 logo 用的顏色不一樣
+
+					<Logo langId={userInfo.langId} />
+				)}
 			</a>
 			{userInfo.isLogin ? (
 				<div>

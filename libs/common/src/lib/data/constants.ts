@@ -1,4 +1,4 @@
-export const cambodiaSeaGameEventPeriod = {
-	startDate: "2023-05-01 00:00:00",
-	endDate: "2023-05-17 23:59:59"
+export const dragonBoatFestivalEventPeriod = {
+	startDate: "2023-06-17 00:00:00",
+	endDate: "2023-06-26 23:59:59"
 };
