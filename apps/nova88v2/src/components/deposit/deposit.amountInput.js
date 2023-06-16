@@ -67,11 +67,34 @@ const AmountInput = ({
 			</div>
 		);
 	} else {
-		const rows = defAmountQuickPick[currencyId]?.map(a => {
+		const getAmountList = () => {
+			const shortcutAmountList = [];
+			for (let i = 0; i < 5; i++) {
+				const currentAmount = minAmount * Math.pow(5, i);
+				const maxDigit = Math.pow(
+					10,
+					Math.floor(Math.log10(currentAmount))
+				);
+				const roundedAmount =
+					Math.floor(currentAmount / maxDigit) * maxDigit;
+
+				shortcutAmountList.push(roundedAmount);
+			}
+
+			return shortcutAmountList;
+		};
+
+		const shortcutAmountList = minAmount
+			? getAmountList()
+			: defAmountQuickPick[currencyId];
+
+		const rows = shortcutAmountList?.map(a => {
 			const realAmount = _isConvert ? amount * 1000 : amount;
 			return (
 				<button
-					disabled={a < minAmount || a > maxAmount}
+					disabled={
+						maxAmount ? a < minAmount || a > maxAmount : false
+					}
 					onClick={SelectAmount.bind(this, _isConvert ? a / 1000 : a)}
 					className={a === realAmount ? "active" : ""}
 					key={`${channel.sysId}-${channel.payId}-${channel.groupId}-${payType}-fixedamount-${a}`}>
