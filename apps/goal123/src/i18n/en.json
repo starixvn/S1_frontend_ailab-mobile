@@ -292,6 +292,7 @@
 	"msg_GoToDepositPage": "Go to deposit page?",
 	"msg_MailExisted": "Mail already exists.",
 	"msg_MailWrongFormat": "Mail Format is wrong.",
+	"msg_EmailReq": "Email address is required.",
 	"msg_NeedAccountName": "Need Account Name",
 	"msg_NeedAccountNo": "Need Account Number",
 	"msg_NoData": "No information is available now.",

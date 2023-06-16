@@ -230,7 +230,11 @@ const JoinStep2 = ({
 		let checked = true;
 		let msg = "";
 		const regx = /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
-		if (!val || !regx.test(val)) {
+
+		if (!val) {
+			checked = false;
+			msg = t("msg_EmailReq");
+		} else if (!regx.test(val)) {
 			checked = false;
 			msg = t("msg_MailWrongFormat");
 		} else {

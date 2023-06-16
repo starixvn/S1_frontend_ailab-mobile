@@ -290,6 +290,7 @@
 	"msg_GoToDepositPage": "Vào trang nạp tiền?",
 	"msg_MailExisted": "Địa chỉ email này đã được sử dụng.",
 	"msg_MailWrongFormat": "Định dạng email không đúng",
+	"msg_EmailReq": "Vui lòng nhập địa chỉ email",
 	"msg_NeedAccountName": "Cần nhập tên tài khoản",
 	"msg_NeedAccountNo": "Cần nhập số tài khoản",
 	"msg_NoData": "Không có dữ liệu",

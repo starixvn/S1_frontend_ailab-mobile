@@ -258,7 +258,11 @@ const Join = () => {
 		let checked = true;
 		let msg = "";
 		const regx = /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
-		if (!val || !regx.test(val)) {
+
+		if (!val) {
+			checked = false;
+			msg = i18n.msg_EmailReq;
+		} else if (!regx.test(val)) {
 			checked = false;
 			msg = i18n.msg_MailWrongFormat;
 		} else {
@@ -280,7 +284,7 @@ const Join = () => {
 	const EditField = ({ col }, e) => {
 		let val = col === "Checkbox" ? !userValue.Checkbox : e.target.value;
 
-		if (col === "UserName") {
+		if (col === "UserName" || col === "RealName") {
 			val = val.replace(/[\W_]/g, "");
 		}
 

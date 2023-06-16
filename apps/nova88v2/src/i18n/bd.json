@@ -122,6 +122,7 @@
 	"msg_EnterRealName": "আপনার আসল নাম লিখুন.",
 	"lbl_RealName": "প্রকৃত নাম",
 	"msg_MailWrongFormat": "ইমেল ঠিকানা বিন্যাস ভুল",
+	"msg_EmailReq": "ইমেল ঠিকানা প্রয়োজন",
 	"msg_PasswordVaildate": "এই পাসওয়ার্ডটি অবশ্যই ৬-১৫ অক্ষরের হতে হবে, এতে বর্ণসংখ্যা",
 	"lbl_Phone": "ফোন নম্বর",
 	"lbl_Submit": "জমা দিন",
