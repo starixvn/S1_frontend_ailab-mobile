@@ -1,6 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { cambodiaSeaGameEventPeriod, isDateRange } from "@ailab-mobile/common";
+import {
+	dragonBoatFestivalEventPeriod,
+	isDateRange
+} from "@ailab-mobile/common";
 import { cloudBannerImgURL } from "../../config";
 
 const getLogo = ({ langId }) =>
@@ -8,17 +11,17 @@ const getLogo = ({ langId }) =>
 		langId === "cs" ? "logo_cs_w" : "logo_en_w"
 	}.png`;
 
-const getCambodiaLogo = ({ langId }) =>
+const getDragonBoatLogo = ({ langId }) =>
 	`${cloudBannerImgURL}/h5/img/${
-		langId === "cs" ? "logo-cambodia2023_cs_w" : "logo-cambodia2023_en_w"
+		langId === "cs" ? "dragon-logo_cs_w" : "dragon-logo_w"
 	}.png`;
 
 const Logo = ({ langId }) => {
 	return (
 		<img
 			src={
-				isDateRange(cambodiaSeaGameEventPeriod)
-					? getCambodiaLogo({ langId })
+				isDateRange(dragonBoatFestivalEventPeriod)
+					? getDragonBoatLogo({ langId })
 					: getLogo({ langId })
 			}
 			alt="logo"
