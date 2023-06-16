@@ -12983,4 +12983,38 @@ input:-webkit-autofill:active {
   100% {
     background: url(https://banner.0814media.net/h5/img/rabbitboy-a.png) no-repeat center/cover;
   }
+}
+.dragon {
+  position: relative;
+}
+.dragon > a {
+  height: 100% !important;
+}
+.dragon > a:first-child {
+  background: -webkit-gradient(linear, left bottom, left top, from(#0E4956), to(#3899A2));
+  background: linear-gradient(to top, #0E4956, #3899A2);
+}
+.dragon > a img {
+  margin: -1vw 0 0 !important;
+}
+.dragon::before {
+  content: "";
+  display: block;
+  background: url(https://banner.0814media.net/h5/img/dragon.png) no-repeat center/100%;
+  width: 20vw;
+  height: 10vw;
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 13vw;
+}
+.dragon .dragonlogo {
+  padding: 0;
+  width: 28.5vw;
+}
+.dragon .dragon-light {
+  width: 7vw;
+  position: absolute;
+  top: 1vw;
+  left: -2.2vw;
 }/*# sourceMappingURL=style.css.map */
