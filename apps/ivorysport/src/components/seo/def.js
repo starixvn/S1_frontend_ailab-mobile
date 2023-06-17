@@ -10,7 +10,7 @@ export const defMetaData = {
 		cs: {
 			title: `Ivorysport 欧亚体育 - 亚洲最佳体育博彩，真人娱乐与在线博彩。`,
 			description: `Ivorysport 欧亚体育 -亚洲知名品牌与最受信任的在线博彩网站。立即注册并享受顶尖的体育博彩，真人娱乐，电子游戏老虎机，彩票，快乐彩，和捕鱼游戏。`,
-			keyword: `Ivorysport 欧亚体育，Nova88 欧亚体育链接，在线博彩，在线赌博，马来西亚在线博彩，体育博彩，彩票，马来西亚真人娱乐场`
+			keyword: `Ivorysport 欧亚体育，IvorySport 欧亚体育链接，在线博彩，在线赌博，马来西亚在线博彩，体育博彩，彩票，马来西亚真人娱乐场`
 		},
 		id: {
 			title: `Ivorysport - Situs Judi Online - Bandar Taruhan Bola Terpercaya`,
@@ -51,9 +51,9 @@ export const defMetaData = {
 			keyword: `Online Casino Promotion, Welcome Bonus, Reload Bonus, Cash Rebate, Weekly Cashback, Withdrawal Bonus, Referral Rewards, Birthday Reward, New Member Promotion, Sportsbook Promotion, Casino Promotion, Slot Promotion`
 		},
 		cs: {
-			title: `Nova88欧亚体育 - 在线博彩优惠活动`,
-			description: `Nova88欧亚体育 - 优惠活动提高您获胜的机率。从首存红利，现金返水，再存红利与各种为您量身定制的优惠促销，马上领取！`,
-			keyword: `Nova88欧亚体育，Nova88欧亚体育优惠活动，首存红利，存款优惠，在线博彩优惠，再存红利，现金反水，电子游戏老虎机优惠，免费金额`
+			title: `IvorySport欧亚体育 - 在线博彩优惠活动`,
+			description: `IvorySport欧亚体育 - 优惠活动提高您获胜的机率。从首存红利，现金返水，再存红利与各种为您量身定制的优惠促销，马上领取！`,
+			keyword: `IvorySport欧亚体育，IvorySport欧亚体育优惠活动，首存红利，存款优惠，在线博彩优惠，再存红利，现金反水，电子游戏老虎机优惠，免费金额`
 		},
 		th: {
 			title: `Ivorysport - โปรโมชั่นคาสิโนออนไลน์`,
@@ -82,7 +82,7 @@ export const defMetaData = {
 		cs: {
 			title: `Ivorysport 欧亚体育 - 马来西亚在线电子老虎机`,
 			description: `Ivorysport 欧亚体育马来西亚最热门和最新的在线赌场老虎机游戏。 旋转并赢得奖金，积宝大奖老虎机，918kiss，mega888，Pragmatic Play。`,
-			keyword: `Ivorysport 欧亚体育，Nova88 欧亚体育老虎机 , 918kiss, mega88, Pragmatic Play, 线上老虎机, 在线老虎机, 在线电子游戏, 积宝奖金老虎机, 现金老虎机`
+			keyword: `Ivorysport 欧亚体育，IvorySport 欧亚体育老虎机 , 918kiss, mega88, Pragmatic Play, 线上老虎机, 在线老虎机, 在线电子游戏, 积宝奖金老虎机, 现金老虎机`
 		},
 		th: {
 			title: `Ivorysport - การเดิมพันเกมส์สล็อตออนไลน์ในไทย`,

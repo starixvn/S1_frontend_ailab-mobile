@@ -24,7 +24,7 @@ const FeaturePanel = ({ i18n, currencyId }) => {
 				)}
 			</ul>
 			<div className="title">
-				{i18n.lbl_ENJOY_NOVA88_VIP_EXCLUSIVE_BONUS_REBATES}
+				{i18n.lbl_ENJOY_IvorySport_VIP_EXCLUSIVE_BONUS_REBATES}
 			</div>
 			<ul>
 				<li>{i18n.lbl_Multiple_product_platforms_with_better_odds}</li>

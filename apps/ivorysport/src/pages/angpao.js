@@ -44,7 +44,7 @@ export default () => {
 	return (
 		<AngpaoWrapper
 			isLogin={userInfo?.isLogin}
-			eventId={DrawPrizeEventIdEnum.AngpaoNova88}
+			eventId={DrawPrizeEventIdEnum.AngpaoIvorySport}
 			eventPeriod={angPaoEventPeriod}>
 			{({
 				angpaoModal,
