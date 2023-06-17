@@ -10,42 +10,42 @@ export const defEventPeriod = {
 const defContent = {
 	en: [
 		"Gong Xi Fa Cai!",
-		"Nova88 Wish You A Happy New Year!",
+		"IvorySport Wish You A Happy New Year!",
 		"MYR 188,888.88",
 		"Ang Pao Giving Away",
 		"Be Calm & Keep Eye On Your Message Inbox!"
 	],
 	cs: [
 		"恭喜发财！",
-		"Nova88 恭祝您新年快乐！",
+		"IvorySport 恭祝您新年快乐！",
 		"马币 188,888.88",
 		"红包随机派送",
 		"淡定且随时检查您的个人收件箱！"
 	],
 	id_en: [
 		"Gong Xi Fa Cai!",
-		"Nova88 Wish You A Happy New Year!",
+		"IvorySport Wish You A Happy New Year!",
 		"IDR 388,888,888",
 		"Ang Pao Giving Away",
 		"Be Calm & Keep Eye On Your Message Inbox!"
 	],
 	id: [
 		"Gong Xi Fa Cai!",
-		"Nova88 Selamat Tahun Baru Imlek!",
+		"IvorySport Selamat Tahun Baru Imlek!",
 		"IDR 388,888,888",
 		"Bagi-bagi Angpao",
 		"Tunggu & Cek Kotak Pesan Anda!"
 	],
 	th_en: [
 		"Gong Xi Fa Cai!",
-		"Nova88 Wish You A Happy New Year!",
+		"IvorySport Wish You A Happy New Year!",
 		"THB 888,888",
 		"Ang Pao Giving Away",
 		"Be Calm & Keep Eye On Your Message Inbox!"
 	],
 	th: [
 		"กงสีฟาไฉ!",
-		"Nova88 ขออวยพรให้สมาชิกทุกท่านมีความสุขในช่วงตรุษจีน!",
+		"IvorySport ขออวยพรให้สมาชิกทุกท่านมีความสุขในช่วงตรุษจีน!",
 		"THB 888,888",
 		"แจกอั่งเปา",
 		"ใจเย็นๆและคอยเช็คกล่องข้อความ!"
