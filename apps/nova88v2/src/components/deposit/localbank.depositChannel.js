@@ -124,7 +124,8 @@ const BankAccount = ({ i18n, BankAccountProps, userPaymentData }) => {
 					obj.SysId === userPaymentData?.fromSysId &&
 					obj.accountNo === userPaymentData?.fromAccountNum
 			);
-			HandleBankAccount(idx);
+			// 會記錄到 -1 , 導致可 submit
+			HandleBankAccount(idx === -1 ? null : idx);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [custBankInfo]);
