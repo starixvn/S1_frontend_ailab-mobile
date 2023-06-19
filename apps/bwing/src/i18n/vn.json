@@ -618,9 +618,10 @@
 	"lbl_DepositOptions": "Phương thức nạp tiền",
 	"lbl_MaximumFileSizeEach": "Kích thước tập tin tối đa 4MB cho mỗi tập tin",
 	"lbl_MaximumNumberOfFiles": "Số tập tin đối đa:6",
+	"lbl_CantChangeEmail": "Email sẽ không thể thay đổi sau khi đăng ký",
 	"lbl_Saba": "Saba",
 	"lbl_TFGaming": "TFGaming",
-	"lbl_CantChangeEmail": "Email sẽ không thể thay đổi sau khi đăng ký",
+	"lbl_Recently_Viewed": "RECENTLY VIEWED",
 
 	"==============General==============": "",
 	"lbl_Jackpot": "NỔ HŨ",

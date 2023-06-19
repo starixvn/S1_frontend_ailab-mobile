@@ -21,6 +21,7 @@ import JoinLoginBar from "../components/home/joinLoginBar";
 import Jackpot from "../components/home/jackpot";
 import AddToHomePop from "../components/home/addToHomePop";
 import PromotionWrapper from "../components/promotion/common/wrapper";
+import RecentlyViewedGameList from "../components/home/recentlyViewedGameList";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -55,6 +56,7 @@ const IndexPage = () => {
 					<Promos i18n={i18n} userInfo={userInfo} />
 					<EventSwipper i18n={i18n} userInfo={userInfo} />
 					<HotGame i18n={i18n} userInfo={userInfo} />
+					{userInfo.isLogin && <RecentlyViewedGameList />}
 					{userInfo.isLogin ? (
 						<Referral
 							i18n={i18n}

@@ -618,9 +618,10 @@
 	"lbl_DepositOptions": "Deposit Options",
 	"lbl_MaximumFileSizeEach": "Maximum file size 4 MB each",
 	"lbl_MaximumNumberOfFiles": "Maximum number of files: 6",
+	"lbl_CantChangeEmail": "Email can't be changed after registration.",
 	"lbl_Saba": "Saba",
 	"lbl_TFGaming": "TFGaming",
-	"lbl_CantChangeEmail": "Email can't be changed after registration.",
+	"lbl_Recently_Viewed": "RECENTLY VIEWED",
 
 	"==============General==============": "",
 	"lbl_Jackpot": "Jackpot",
