@@ -59,8 +59,11 @@ const EN = () => (
 			made before any withdrawal can be processed.
 		</li>
 		<li>
-			Kindly please contact our <span>support247@ivorysport.com</span> if
-			your transaction is still pending for more than 5 minutes.
+			Kindly please contact our{" "}
+			<a href="mailto: support247@ivorysport.com">
+				support247@ivorysport.com
+			</a>
+			if your transaction is still pending for more than 5 minutes.
 		</li>
 	</ul>
 );
@@ -82,7 +85,10 @@ const CS = () => (
 		</li>
 		<li>
 			如您的存款申请时长超过5分钟或以上，请联系
-			<span>support247@ivorysport.com</span> 以寻求帮助。
+			<a href="mailto: support247@ivorysport.com">
+				support247@ivorysport.com
+			</a>{" "}
+			以寻求帮助。
 		</li>
 	</ul>
 );
@@ -112,8 +118,12 @@ const MY = () => (
 			deposit yang dibuat sebelum sebarang pengeluaran boleh diproses.
 		</li>
 		<li>
-			Sila hubungi <span>support247@ivorysport.com</span> kami jika
-			transaksi anda masih belum diproses lebih daripada 5 minit.
+			Sila hubungi{" "}
+			<a href="mailto: support247@ivorysport.com">
+				support247@ivorysport.com
+			</a>{" "}
+			kami jika transaksi anda masih belum diproses lebih daripada 5
+			minit.
 		</li>
 	</ul>
 );
@@ -137,7 +147,10 @@ const TH = () => (
 			ก่อนที่จะสามารถดำเนินการถอนได้
 		</li>
 		<li>
-			กรุณาติดต่อเราที่ <span>support247@ivorysport.com</span>{" "}
+			กรุณาติดต่อเราที่{" "}
+			<a href="mailto: support247@ivorysport.com">
+				support247@ivorysport.com
+			</a>{" "}
 			หากธุรกรรมของคุณยังคงรอดำเนินการนานกว่า 5 นาที
 		</li>
 	</ul>
@@ -168,8 +181,11 @@ const ID = () => (
 			deposit yang dilakukan sebelum penarikan dapat diproses.
 		</li>
 		<li>
-			Silakan hubungi <span>support247@ivorysport.com</span> kami jika
-			transaksi Anda masih tertunda selama lebih dari 5 menit.
+			Silakan hubungi{" "}
+			<a href="mailto: support247@ivorysport.com">
+				support247@ivorysport.com
+			</a>{" "}
+			kami jika transaksi Anda masih tertunda selama lebih dari 5 menit.
 		</li>
 	</ul>
 );
@@ -199,7 +215,10 @@ const HI = () => (
 		</li>
 		<li>
 			यदि आपका लेनदेन अभी भी 5 मिनट से अधिक समय से लंबित है तो कृपया हमारे{" "}
-			<span>support247@ivorysport.com</span> से संपर्क करें।
+			<a href="mailto: support247@ivorysport.com">
+				support247@ivorysport.com
+			</a>{" "}
+			से संपर्क करें।
 		</li>
 	</ul>
 );

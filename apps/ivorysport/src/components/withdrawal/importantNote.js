@@ -37,8 +37,11 @@ const ImportantNote = ({ langId, i18n }) => {
 const EN = () => (
 	<ul>
 		<li>
-			Kindly check with our <span>support247@ivorysport.com</span> if your
-			transaction is pending for more than 10 minutes.
+			Kindly check with our{" "}
+			<a href="mailto: support247@ivorysport.com">
+				support247@ivorysport.com
+			</a>{" "}
+			if your transaction is pending for more than 10 minutes.
 		</li>
 		<li>
 			Withdrawal bank account name must match with registered full name,
@@ -55,7 +58,10 @@ const EN = () => (
 		<li>
 			If there is any discrepancy or you may have any other further
 			withdrawal inquiries, kindly contact our{" "}
-			<span>support247@ivorysport.com</span>. Thank you.
+			<a href="mailto: support247@ivorysport.com">
+				support247@ivorysport.com
+			</a>
+			. Thank you.
 		</li>
 	</ul>
 );
@@ -64,7 +70,10 @@ const CS = () => (
 	<ul>
 		<li>
 			如果您的交易超过10分钟还未完成, 请与我们的{" "}
-			<span>support247@ivorysport.com</span> 联系。
+			<a href="mailto: support247@ivorysport.com">
+				support247@ivorysport.com
+			</a>{" "}
+			联系。
 		</li>
 		<li>
 			提款银行户口名称必须与注册的全名匹配，会员不允许提款到第三方的银行帐户。
@@ -75,7 +84,10 @@ const CS = () => (
 		</li>
 		<li>
 			如果您有任何提款疑问或查询, 请与我们的{" "}
-			<span>support247@ivorysport.com</span> 联系。谢谢。
+			<a href="mailto: support247@ivorysport.com">
+				support247@ivorysport.com
+			</a>{" "}
+			联系。谢谢。
 		</li>
 	</ul>
 );
@@ -83,8 +95,11 @@ const CS = () => (
 const MY = () => (
 	<ul>
 		<li>
-			Sila semak dengan <span>support247@ivorysport.com</span> kami jika
-			transaksi anda belum diproses lebih daripada 10 minit.
+			Sila semak dengan{" "}
+			<a href="mailto: support247@ivorysport.com">
+				support247@ivorysport.com
+			</a>{" "}
+			kami jika transaksi anda belum diproses lebih daripada 10 minit.
 		</li>
 		<li>
 			Nama akaun bank pengeluaran mesti padan dengan nama penuh yang
@@ -104,7 +119,10 @@ const MY = () => (
 		<li>
 			Jika ada sebarang percanggahan atau mempunyai sebarang pertanyaan
 			pengeluaran yang lanjut, sila hubungi{" "}
-			<span>support247@ivorysport.com</span> kami. Terima kasih.
+			<a href="mailto: support247@ivorysport.com">
+				support247@ivorysport.com
+			</a>{" "}
+			kami. Terima kasih.
 		</li>
 	</ul>
 );
@@ -112,8 +130,11 @@ const MY = () => (
 const TH = () => (
 	<ul>
 		<li>
-			กรุณาติดต่อทาง <span>support247@ivorysport.com</span> ชั่วโมง
-			หากธุรกรรมของท่านได้รับการดำเนินการมากกว่า 10 นาที
+			กรุณาติดต่อทาง{" "}
+			<a href="mailto: support247@ivorysport.com">
+				support247@ivorysport.com
+			</a>{" "}
+			ชั่วโมง หากธุรกรรมของท่านได้รับการดำเนินการมากกว่า 10 นาที
 		</li>
 		<li>
 			ชื่อบัญชีธนาคารที่ถอนจะต้องตรงกับชื่อนามสกุลที่ลงทะเบียนสมาชิกไม่อนุญาตให้ถอนไปยังบัญชีธนาคารของบุคคลที่สาม
@@ -129,7 +150,11 @@ const TH = () => (
 		</li>
 		<li>
 			หากมีข้อสงสัยหรือข้อมูลสอบถามเพิ่มเติมเกี่ยวกับธุรกรรมการถอน
-			โปรดติดต่อ <span>support247@ivorysport.com</span> ชั่วโมง ขอบคุณค่ะ
+			โปรดติดต่อ{" "}
+			<a href="mailto: support247@ivorysport.com">
+				support247@ivorysport.com
+			</a>{" "}
+			ชั่วโมง ขอบคุณค่ะ
 		</li>
 	</ul>
 );
@@ -137,8 +162,11 @@ const TH = () => (
 const ID = () => (
 	<ul>
 		<li>
-			Silakan hubungi <span>support247@ivorysport.com</span> kami jika
-			transaksi Anda belum selesai lebih dari 10 menit.
+			Silakan hubungi{" "}
+			<a href="mailto: support247@ivorysport.com">
+				support247@ivorysport.com
+			</a>{" "}
+			kami jika transaksi Anda belum selesai lebih dari 10 menit.
 		</li>
 		<li>
 			Nama rekening bank penarikan harus sesuai dengan nama lengkap
@@ -157,7 +185,10 @@ const ID = () => (
 		</li>
 		<li>
 			Jika ada perbedaan atau Anda mungkin memiliki pertanyaan penarikan
-			lebih lanjut, silakan hubungi <span>support247@ivorysport.com</span>{" "}
+			lebih lanjut, silakan hubungi{" "}
+			<a href="mailto: support247@ivorysport.com">
+				support247@ivorysport.com
+			</a>{" "}
 			kami. Terima kasih.
 		</li>
 	</ul>
@@ -167,7 +198,10 @@ const HI = () => (
 	<ul>
 		<li>
 			यदि आपका लेन-देन 10 मिनट से अधिक समय से लंबित है, तो कृपया हमारी{" "}
-			<span>support247@ivorysport.com</span> चैट से जांच करें।
+			<a href="mailto: support247@ivorysport.com">
+				support247@ivorysport.com
+			</a>{" "}
+			चैट से जांच करें।
 		</li>
 		<li>
 			निकासी बैंक खाते का नाम पंजीकृत पूरे नाम से मेल खाना चाहिए, सदस्य को
@@ -184,7 +218,10 @@ const HI = () => (
 		</li>
 		<li>
 			यदि कोई विसंगति है या आपके पास कोई अन्य निकासी पूछताछ हो सकती है, तो
-			कृपया हमारे <span>support247@ivorysport.com</span>
+			कृपया हमारे{" "}
+			<a href="mailto: support247@ivorysport.com">
+				support247@ivorysport.com
+			</a>
 			से संपर्क करें। धन्यवाद।
 		</li>
 	</ul>
@@ -193,8 +230,12 @@ const HI = () => (
 const BD = () => (
 	<ul>
 		<li>
-			দয়া করে আমাদের <span>support247@ivorysport.com</span> সাথে চেক করুন
-			যদি আপনার লেনদেন 10 মিনিটের বেশি সময় ধরে মুলতুবি থাকে।
+			দয়া করে আমাদের{" "}
+			<a href="mailto: support247@ivorysport.com">
+				support247@ivorysport.com
+			</a>{" "}
+			সাথে চেক করুন যদি আপনার লেনদেন 10 মিনিটের বেশি সময় ধরে মুলতুবি
+			থাকে।
 		</li>
 		<li>
 			প্রত্যাহার করা ব্যাঙ্ক অ্যাকাউন্টের নাম অবশ্যই নিবন্ধিত পুরো নামের
@@ -212,8 +253,11 @@ const BD = () => (
 		</li>
 		<li>
 			যদি কোন অসঙ্গতি থাকে বা আপনার অন্য কোন প্রত্যাহারের অনুসন্ধান থাকতে
-			পারে, অনুগ্রহ করে আমাদের <span>support247@ivorysport.com</span>.
-			যোগাযোগ করুন। ধন্যবাদ.
+			পারে, অনুগ্রহ করে আমাদের{" "}
+			<a href="mailto: support247@ivorysport.com">
+				support247@ivorysport.com
+			</a>
+			. যোগাযোগ করুন। ধন্যবাদ.
 		</li>
 	</ul>
 );
@@ -221,7 +265,10 @@ const BD = () => (
 const KH = () => (
 	<ul>
 		<li>
-			សូមផ្ទៀងផ្ទាត់ជាមួយផ្នែក <span>support247@ivorysport.com</span>{" "}
+			សូមផ្ទៀងផ្ទាត់ជាមួយផ្នែក{" "}
+			<a href="mailto: support247@ivorysport.com">
+				support247@ivorysport.com
+			</a>{" "}
 			ប្រសិនបើប្រតិបត្តិការរបស់អ្នកនៅតែរង់ចាំលើសពី ១០ នាទី។.
 		</li>
 		<li>
@@ -240,7 +287,9 @@ const KH = () => (
 		</li>
 		<li>
 			ឬបើសិនអ្នកធ្វើការសាកសួរអំពីការដកប្រាក់ផ្សេងទៀត សូមទាក់ទងផ្នែ{" "}
-			<span>support247@ivorysport.com</span>
+			<a href="mailto: support247@ivorysport.com">
+				support247@ivorysport.com
+			</a>
 			ងៃ ។ សូមអរគុណ។
 		</li>
 	</ul>
