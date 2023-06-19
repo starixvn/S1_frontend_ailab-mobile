@@ -10439,4 +10439,17 @@ span.important {
   position: absolute;
   bottom: -6.5vw;
   left: -10.2vw;
+  pointer-events: none;
+}
+@media (max-width: 320px) {
+  .dragon .zongzi {
+    opacity: 0;
+    display: none;
+  }
+}
+@media (min-width: 550px) {
+  .dragon .zongzi {
+    opacity: 0;
+    display: none;
+  }
 }/*# sourceMappingURL=style.css.map */
