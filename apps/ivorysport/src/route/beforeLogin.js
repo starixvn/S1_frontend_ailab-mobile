@@ -1,7 +1,6 @@
 import React from "react";
 import { Router } from "@reach/router";
 import path from "../path";
-import Home from "../pages/home";
 
 import Casino from "../pages/casino";
 import ForgetPwd from "../components/login/forgetPwd";
@@ -15,7 +14,6 @@ import Ranking from "../pages/ranking";
 
 const BeforeLoginRouter = () => (
 	<Router>
-		<Home path={`/:langId/${path.home.root}`} />
 		<ForgetPwd path={`/:langId/${path.forgetPassword.root}`} />
 		<ResetPwd path={`/:langId/${path.resetPassword.root}`} />
 

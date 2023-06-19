@@ -35,11 +35,6 @@ export const withdrawal = {
 				to: path.withdrawal.root,
 				displayKey: "lbl_Withdrawal",
 				mainClass: "main withdrawal"
-			},
-			cryptoWithdrawal: {
-				to: path.cryptoWithdrawal.root,
-				displayKey: "lbl_CryptoWithdrawal",
-				mainClass: "main crypto"
 			}
 		}
 	},
@@ -65,11 +60,6 @@ export const withdrawalWithEWallet = {
 				to: path.eWalletWithdrawal.root,
 				displayKey: "lbl_EWalletWithdrawal",
 				mainClass: "main eWallet"
-			},
-			cryptoWithdrawal: {
-				to: path.cryptoWithdrawal.root,
-				displayKey: "lbl_CryptoWithdrawal",
-				mainClass: "main crypto"
 			}
 		}
 	},
@@ -85,13 +75,7 @@ export const withdrawalWithoutBankInfo = {
 		to: `${path.withdrawal.root}`,
 		displayKey: "lbl_Withdrawal",
 		mainClass: "main",
-		subTabs: {
-			cryptoWithdrawal: {
-				to: path.cryptoWithdrawal.root,
-				displayKey: "lbl_CryptoWithdrawal",
-				mainClass: "main crypto"
-			}
-		}
+		subTabs: {}
 	},
 	withdrawalHistory: {
 		to: `${path.withdrawalHistory.root}`,
