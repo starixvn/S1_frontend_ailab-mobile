@@ -597,21 +597,6 @@ const ColumnItem = ({
 			<div>
 				{content}&nbsp;
 				{isVerified && <span className="icon icon-Shield" />}
-				{!isVerified && Object.values(otpCol).includes(infoTitle) && (
-					<button
-						className={`icon btn-org ${
-							infoTitle === otpCol.phone
-								? "icon-mobile"
-								: "icon-envelope"
-						}`}
-						onClick={clickOtp.bind(this, infoTitle)}>
-						<span>
-							{infoTitle === otpCol.phone
-								? i18n.lbl_MobileVerify
-								: i18n.lbl_EmailVerification}
-						</span>
-					</button>
-				)}
 			</div>
 		</div>
 	);

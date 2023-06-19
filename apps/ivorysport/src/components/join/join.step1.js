@@ -1,16 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link } from "../../route/link";
 import useTip from "../hook/useTip";
 import api from "../../service/api";
 import Inputbox from "../common/inputbox.hint";
 import InputboxPWD from "../common/inputbox.password";
-import {
-	getUrlParameter,
-	passwordCheck,
-	getCookie,
-	getCombineLangId
-} from "../common/common";
+import { passwordCheck } from "../common/common";
 import FeaturePanel from "./features";
 import { userInfoContext } from "../common/context";
 import { cloudBannerImgURL } from "../../config";
@@ -27,20 +22,9 @@ const JoinStep1 = ({
 	const [showingPsw, setShowingPsw] = useState({
 		Password: false
 	});
-	const [affiliateidExist, setAffiliateidExist] = useState("");
 
 	const { showTips, showTipHandler } = useTip([]);
 	const { userInfo } = useContext(userInfoContext);
-	const AffId = getUrlParameter("AffId") || getCookie("AffId");
-	useEffect(() => {
-		const AffCode = getUrlParameter("AffCode") || getCookie("AffCode");
-
-		if (AffId) {
-			setAffiliateidExist(AffId);
-		} else if (AffCode) {
-			setAffiliateidExist(AffCode);
-		}
-	}, []);
 
 	const showPswHandler = ({ col }) => {
 		const pswStatus = !showingPsw[col];
@@ -170,35 +154,7 @@ const JoinStep1 = ({
 					showTips={showTips.includes("Password")}
 					testAttr="Password"
 				/>
-				<Inputbox
-					icon="icon-affiliate"
-					placeholder={i18n.lbl_Affiliate_ID}
-					value={
-						affiliateidExist !== ""
-							? affiliateidExist
-							: userValue.AffiliateId
-					}
-					onChange={EditField.bind(null, "AffiliateId")}
-					disabled={Boolean(affiliateidExist)}
-					btnStatus={hintStatus.AffiliateId.checked}
-					warningMsg={hintStatus.AffiliateId.msg}
-					infoText={i18n.lbl_Please_enter_Affiliate_ID}
-					clickInfo={() => showTipHandler("AffiliateId")}
-					showTips={showTips.includes("AffiliateId")}
-					testAttr="AffiliateId"
-				/>
-				<Inputbox
-					icon="icon-promotion"
-					placeholder={i18n.lbl_PromoCode}
-					value={userValue.SpecialBonusCode}
-					onChange={EditField.bind(null, "SpecialBonusCode")}
-					warningMsg={hintStatus.SpecialBonusCode.msg}
-					btnStatus={hintStatus.SpecialBonusCode.checked}
-					infoText={i18n.lbl_PromoCode}
-					clickInfo={() => showTipHandler("SpecialBonusCode")}
-					showTips={showTips.includes("SpecialBonusCode")}
-					testAttr="SpecialBonusCode"
-				/>
+
 				<div className="Terms">
 					{i18n.lbl_Check18TC1}
 					<a
