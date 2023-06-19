@@ -155,6 +155,7 @@ const Payment = props => {
 						code,
 						returnUrl,
 						transId,
+						generateQr,
 						message
 					} = data;
 
@@ -167,6 +168,7 @@ const Payment = props => {
 							bankLogo,
 							qrCodeUrl: returnUrl,
 							amount: popBoxAmount,
+							generateQr,
 							popBoxType: defPopBoxType.BankQR,
 							onClose: () => {
 								setPopBox({ isOpen: false });
