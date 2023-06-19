@@ -21,6 +21,7 @@ import api from "../service/api";
 import path from "../path";
 import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
 import { defSlotTpGameType } from "../datas/productList";
+import { defProductType } from "../datas/hotGameList";
 
 const Panel = ({ searchInput }) => {
 	const { throttle } = useSetTimeout();
@@ -154,7 +155,14 @@ const Panel = ({ searchInput }) => {
 	const getUnLimitTpGameTypeList = list => {
 		if (tpGameTypeSettingList && tpGameTypeSettingList.length > 0) {
 			const uniqueTpIds = Array.from(
-				new Set(tpGameTypeSettingList.map(item => item.tpId))
+				new Set(
+					tpGameTypeSettingList.map(item => {
+						if (item.categoryId === defProductType.Slots) {
+							return item.tpId;
+						}
+						return null;
+					})
+				)
 			);
 			return list.filter(({ tpId }) => !uniqueTpIds.includes(tpId));
 		}
@@ -181,7 +189,14 @@ const Panel = ({ searchInput }) => {
 	const changeActiveProvider = provider => {
 		if (tpGameTypeSettingList && tpGameTypeSettingList.length > 0) {
 			const uniqueTpIds = Array.from(
-				new Set(tpGameTypeSettingList.map(item => item.tpId))
+				new Set(
+					tpGameTypeSettingList.map(item => {
+						if (item.categoryId === defProductType.Slots) {
+							return item.tpId;
+						}
+						return null;
+					})
+				)
 			);
 			if (uniqueTpIds.includes(provider.tpId)) {
 				setPopBox({
@@ -454,7 +469,14 @@ const Panel = ({ searchInput }) => {
 			allCategoryList.forEach(array => {
 				if (tpGameTypeSettingList && tpGameTypeSettingList.length > 0) {
 					const uniqueTpIds = Array.from(
-						new Set(tpGameTypeSettingList.map(item => item.tpId))
+						new Set(
+							tpGameTypeSettingList.map(item => {
+								if (item.categoryId === defProductType.Slots) {
+									return item.tpId;
+								}
+								return null;
+							})
+						)
 					);
 					const unLimitTpGameTypeList = array[1].filter(
 						({ tpId }) => !uniqueTpIds.includes(tpId)
