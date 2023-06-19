@@ -895,5 +895,8 @@
 
 	"==============RebateExclude==============": "",
 	"lbl_RebateExclude_title": "Permainan dalam senarai ini akan dikecualikan menikmati ganjaran rebat harian",
-	"lbl_GameName": "Nama Permainan"
+	"lbl_GameName": "Nama Permainan",
+
+	"lbl_IceHockey": "Hoki ais",
+	"lbl_Baseball": "besbol"
 }

@@ -915,5 +915,9 @@
 
 	"==============RebateExclude==============": "",
 	"lbl_RebateExclude_title": "Games in this list will be excluded daily rebate rewards",
-	"lbl_GameName": "Game Name"
+	"lbl_GameName": "Game Name",
+
+	"lbl_Streaming_SPORTSBOOK": "SPORTSBOOK",
+	"lbl_IceHockey": "Ice Hockey",
+	"lbl_Baseball": "Baseball"
 }
