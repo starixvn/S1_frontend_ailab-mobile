@@ -6,7 +6,7 @@ import api from "../../service/api";
 import Inputbox from "../common/inputbox.hint";
 import InputboxPWD from "../common/inputbox.password";
 import { passwordCheck } from "../common/common";
-import FeaturePanel from "./features";
+
 import { userInfoContext } from "../common/context";
 import { cloudBannerImgURL } from "../../config";
 
@@ -120,65 +120,62 @@ const JoinStep1 = ({
 		}
 	};
 	return (
-		<>
-			<div className="Join">
-				<Inputbox
-					icon="icon-member"
-					placeholder={i18n.lbl_Username}
-					value={userValue.UserName}
-					onChange={EditField.bind(null, "UserName")}
-					onBlur={checkValue.bind(null, "UserName")}
-					btnStatus={hintStatus.UserName.checked}
-					warningMsg={hintStatus.UserName.msg}
-					infoText={i18n.lbl_UsernameTooltip}
-					clickInfo={() => showTipHandler("UserName")}
-					showTips={showTips.includes("UserName")}
-					testAttr="UserName"
-				/>
-				<InputboxPWD
-					infoModule="infoModule"
-					icon="icon-key"
-					inputType={showingPsw.Password ? "text" : "password"}
-					showPsw={showingPsw.Password}
-					placeholder={i18n.lbl_Password}
-					value={userValue.Password}
-					onChange={EditField.bind(null, "Password")}
-					onBlur={checkValue.bind(null, "Password")}
-					showPswHandler={showPswHandler.bind(this, {
-						col: "Password"
-					})}
-					checked={hintStatus.Password.checked}
-					tips={i18n.msg_PasswordVaildate}
-					warningMsg={hintStatus.Password.msg}
-					clickInfo={() => showTipHandler("Password")}
-					showTips={showTips.includes("Password")}
-					testAttr="Password"
-				/>
+		<div className="Join">
+			<Inputbox
+				icon="icon-member"
+				placeholder={i18n.lbl_Username}
+				value={userValue.UserName}
+				onChange={EditField.bind(null, "UserName")}
+				onBlur={checkValue.bind(null, "UserName")}
+				btnStatus={hintStatus.UserName.checked}
+				warningMsg={hintStatus.UserName.msg}
+				infoText={i18n.lbl_UsernameTooltip}
+				clickInfo={() => showTipHandler("UserName")}
+				showTips={showTips.includes("UserName")}
+				testAttr="UserName"
+			/>
+			<InputboxPWD
+				infoModule="infoModule"
+				icon="icon-key"
+				inputType={showingPsw.Password ? "text" : "password"}
+				showPsw={showingPsw.Password}
+				placeholder={i18n.lbl_Password}
+				value={userValue.Password}
+				onChange={EditField.bind(null, "Password")}
+				onBlur={checkValue.bind(null, "Password")}
+				showPswHandler={showPswHandler.bind(this, {
+					col: "Password"
+				})}
+				checked={hintStatus.Password.checked}
+				tips={i18n.msg_PasswordVaildate}
+				warningMsg={hintStatus.Password.msg}
+				clickInfo={() => showTipHandler("Password")}
+				showTips={showTips.includes("Password")}
+				testAttr="Password"
+			/>
 
-				<div className="Terms">
-					{i18n.lbl_Check18TC1}
-					<a
-						rel="noreferrer"
-						target="_blank"
-						href={`${cloudBannerImgURL}/Static/en/TermsConditions.html`}>
-						{i18n.lbl_TermsConditions}
-					</a>
-					{i18n.lbl_Check18TC2}
-				</div>
-				<div className="btn-group">
-					<button data-testid="next" onClick={clickSubmit}>
-						{i18n.lbl_JoinNow}
-					</button>
-				</div>
-				<Link to="/">
-					<div className="visit">
-						{i18n.lbl_IWouldLikeToVisit}
-						<i className="icon icon-visit" />
-					</div>
-				</Link>
+			<div className="Terms">
+				{i18n.lbl_Check18TC1}
+				<a
+					rel="noreferrer"
+					target="_blank"
+					href={`${cloudBannerImgURL}/Static/en/TermsConditions.html`}>
+					{i18n.lbl_TermsConditions}
+				</a>
+				{i18n.lbl_Check18TC2}
 			</div>
-			<FeaturePanel i18n={i18n} currencyId={userInfo.currencyId} />
-		</>
+			<div className="btn-group">
+				<button data-testid="next" onClick={clickSubmit}>
+					{i18n.lbl_JoinNow}
+				</button>
+			</div>
+			<Link to="/">
+				<div className="visit">
+					{i18n.lbl_IWouldLikeToVisit}
+					<i className="icon icon-visit" />
+				</div>
+			</Link>
+		</div>
 	);
 };
 

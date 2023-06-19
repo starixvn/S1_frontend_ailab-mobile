@@ -37,11 +37,8 @@ const ImportantNote = ({ langId, i18n }) => {
 const EN = () => (
 	<ul>
 		<li>
-			Kindly check with our{" "}
-			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
-				24/7 LIVE CHAT
-			</a>{" "}
-			if your transaction is pending for more than 10 minutes.
+			Kindly check with our <span>support247@ivorysport.com</span> if your
+			transaction is pending for more than 10 minutes.
 		</li>
 		<li>
 			Withdrawal bank account name must match with registered full name,
@@ -58,10 +55,7 @@ const EN = () => (
 		<li>
 			If there is any discrepancy or you may have any other further
 			withdrawal inquiries, kindly contact our{" "}
-			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
-				24/7 LIVE CHAT
-			</a>
-			. Thank you.
+			<span>support247@ivorysport.com</span>. Thank you.
 		</li>
 	</ul>
 );
@@ -70,10 +64,7 @@ const CS = () => (
 	<ul>
 		<li>
 			如果您的交易超过10分钟还未完成, 请与我们的{" "}
-			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
-				24/7在线客服
-			</a>{" "}
-			联系。
+			<span>support247@ivorysport.com</span> 联系。
 		</li>
 		<li>
 			提款银行户口名称必须与注册的全名匹配，会员不允许提款到第三方的银行帐户。
@@ -84,10 +75,7 @@ const CS = () => (
 		</li>
 		<li>
 			如果您有任何提款疑问或查询, 请与我们的{" "}
-			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
-				24/7在线客服
-			</a>{" "}
-			联系。谢谢。
+			<span>support247@ivorysport.com</span> 联系。谢谢。
 		</li>
 	</ul>
 );
@@ -95,11 +83,8 @@ const CS = () => (
 const MY = () => (
 	<ul>
 		<li>
-			Sila semak dengan{" "}
-			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
-				LIVE CHAT 24/7
-			</a>{" "}
-			kami jika transaksi anda belum diproses lebih daripada 10 minit.
+			Sila semak dengan <span>support247@ivorysport.com</span> kami jika
+			transaksi anda belum diproses lebih daripada 10 minit.
 		</li>
 		<li>
 			Nama akaun bank pengeluaran mesti padan dengan nama penuh yang
@@ -119,10 +104,7 @@ const MY = () => (
 		<li>
 			Jika ada sebarang percanggahan atau mempunyai sebarang pertanyaan
 			pengeluaran yang lanjut, sila hubungi{" "}
-			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
-				LIVECHAT 24/7
-			</a>{" "}
-			kami. Terima kasih.
+			<span>support247@ivorysport.com</span> kami. Terima kasih.
 		</li>
 	</ul>
 );
@@ -130,11 +112,8 @@ const MY = () => (
 const TH = () => (
 	<ul>
 		<li>
-			กรุณาติดต่อทาง{" "}
-			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
-				แชทสดตลอด 24/7
-			</a>{" "}
-			ชั่วโมง หากธุรกรรมของท่านได้รับการดำเนินการมากกว่า 10 นาที
+			กรุณาติดต่อทาง <span>support247@ivorysport.com</span> ชั่วโมง
+			หากธุรกรรมของท่านได้รับการดำเนินการมากกว่า 10 นาที
 		</li>
 		<li>
 			ชื่อบัญชีธนาคารที่ถอนจะต้องตรงกับชื่อนามสกุลที่ลงทะเบียนสมาชิกไม่อนุญาตให้ถอนไปยังบัญชีธนาคารของบุคคลที่สาม
@@ -150,11 +129,7 @@ const TH = () => (
 		</li>
 		<li>
 			หากมีข้อสงสัยหรือข้อมูลสอบถามเพิ่มเติมเกี่ยวกับธุรกรรมการถอน
-			โปรดติดต่อ{" "}
-			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
-				แชทสดตลอด 24/7
-			</a>{" "}
-			ชั่วโมง ขอบคุณค่ะ
+			โปรดติดต่อ <span>support247@ivorysport.com</span> ชั่วโมง ขอบคุณค่ะ
 		</li>
 	</ul>
 );
@@ -162,11 +137,8 @@ const TH = () => (
 const ID = () => (
 	<ul>
 		<li>
-			Silakan hubungi{" "}
-			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
-				LIVE CHAT 24/7
-			</a>{" "}
-			kami jika transaksi Anda belum selesai lebih dari 10 menit.
+			Silakan hubungi <span>support247@ivorysport.com</span> kami jika
+			transaksi Anda belum selesai lebih dari 10 menit.
 		</li>
 		<li>
 			Nama rekening bank penarikan harus sesuai dengan nama lengkap
@@ -185,10 +157,7 @@ const ID = () => (
 		</li>
 		<li>
 			Jika ada perbedaan atau Anda mungkin memiliki pertanyaan penarikan
-			lebih lanjut, silakan hubungi{" "}
-			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
-				LIVE CHAT 24/7
-			</a>{" "}
+			lebih lanjut, silakan hubungi <span>support247@ivorysport.com</span>{" "}
 			kami. Terima kasih.
 		</li>
 	</ul>
@@ -198,10 +167,7 @@ const HI = () => (
 	<ul>
 		<li>
 			यदि आपका लेन-देन 10 मिनट से अधिक समय से लंबित है, तो कृपया हमारी{" "}
-			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
-				24/7 लाइवचैट
-			</a>{" "}
-			चैट से जांच करें।
+			<span>support247@ivorysport.com</span> चैट से जांच करें।
 		</li>
 		<li>
 			निकासी बैंक खाते का नाम पंजीकृत पूरे नाम से मेल खाना चाहिए, सदस्य को
@@ -218,10 +184,7 @@ const HI = () => (
 		</li>
 		<li>
 			यदि कोई विसंगति है या आपके पास कोई अन्य निकासी पूछताछ हो सकती है, तो
-			कृपया हमारे{" "}
-			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
-				24/7 लाइवचैट
-			</a>
+			कृपया हमारे <span>support247@ivorysport.com</span>
 			से संपर्क करें। धन्यवाद।
 		</li>
 	</ul>
@@ -230,12 +193,8 @@ const HI = () => (
 const BD = () => (
 	<ul>
 		<li>
-			দয়া করে আমাদের{" "}
-			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
-				24/7 লাইভ চ্যাটের
-			</a>{" "}
-			সাথে চেক করুন যদি আপনার লেনদেন 10 মিনিটের বেশি সময় ধরে মুলতুবি
-			থাকে।
+			দয়া করে আমাদের <span>support247@ivorysport.com</span> সাথে চেক করুন
+			যদি আপনার লেনদেন 10 মিনিটের বেশি সময় ধরে মুলতুবি থাকে।
 		</li>
 		<li>
 			প্রত্যাহার করা ব্যাঙ্ক অ্যাকাউন্টের নাম অবশ্যই নিবন্ধিত পুরো নামের
@@ -253,11 +212,8 @@ const BD = () => (
 		</li>
 		<li>
 			যদি কোন অসঙ্গতি থাকে বা আপনার অন্য কোন প্রত্যাহারের অনুসন্ধান থাকতে
-			পারে, অনুগ্রহ করে আমাদের{" "}
-			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
-				24/7 লাইভচ্যাটে
-			</a>
-			. যোগাযোগ করুন। ধন্যবাদ.
+			পারে, অনুগ্রহ করে আমাদের <span>support247@ivorysport.com</span>.
+			যোগাযোগ করুন। ধন্যবাদ.
 		</li>
 	</ul>
 );
@@ -265,10 +221,7 @@ const BD = () => (
 const KH = () => (
 	<ul>
 		<li>
-			សូមផ្ទៀងផ្ទាត់ជាមួយផ្នែក{" "}
-			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
-				ជជែកបន្តផ្ទាល់ របស់យើង ២៤ ម៉/៧ ថ្ងៃ
-			</a>{" "}
+			សូមផ្ទៀងផ្ទាត់ជាមួយផ្នែក <span>support247@ivorysport.com</span>{" "}
 			ប្រសិនបើប្រតិបត្តិការរបស់អ្នកនៅតែរង់ចាំលើសពី ១០ នាទី។.
 		</li>
 		<li>
@@ -287,9 +240,7 @@ const KH = () => (
 		</li>
 		<li>
 			ឬបើសិនអ្នកធ្វើការសាកសួរអំពីការដកប្រាក់ផ្សេងទៀត សូមទាក់ទងផ្នែ{" "}
-			<a rel="noreferrer" target="_blank" href="https://direct.lc.chat/">
-				ជជែកបន្តផ្ទាល់ ២៤ ម៉/៧ ថ្ងៃ
-			</a>
+			<span>support247@ivorysport.com</span>
 			ងៃ ។ សូមអរគុណ។
 		</li>
 	</ul>
