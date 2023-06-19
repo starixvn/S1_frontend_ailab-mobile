@@ -9,37 +9,37 @@ import { cloudBannerImgURL } from "../../config";
 // 閹割版暫時使用
 const homeEntryList = [
 	{
-		displayText: "SPORTS BOOK",
+		displayKey: "lbl_Sports",
 		imgUrl: "home_Sportsbook.jpg",
 		description: "28.000 di pasar bermain per bulan",
 		...defGameInfo.Soccer
 	},
 	{
-		displayText: "Ice Hockey",
+		displayKey: "lbl_IceHockey",
 		imgUrl: "home_Icehockey.jpg",
 		description: "Practice winning every day!",
 		...defGameInfo.hockey
 	},
 	{
-		displayText: "E-Sports",
+		displayKey: "lbl_eSports",
 		imgUrl: "home_ESports.jpg",
 		description: "Teamwork makes the dream work",
 		...defGameInfo.ESportAll
 	},
 	{
-		displayText: "Tennis",
+		displayKey: "lbl_Tennis",
 		imgUrl: "home_Tennis.jpg",
 		description: "28,000 in play markets per month",
 		...defGameInfo.Tennis
 	},
 	{
-		displayText: "Basketball",
+		displayKey: "lbl_Basketball",
 		imgUrl: "home_Basketball.jpg",
 		description: "28,000 in play markets per month",
 		...defGameInfo.basketball
 	},
 	{
-		displayText: "Baseball",
+		displayKey: "lbl_Baseball",
 		imgUrl: "home_Baseball.jpg",
 		description: "28,000 in play markets per month",
 		...defGameInfo.baseball
@@ -58,7 +58,7 @@ const HomeEntry = () => {
 					tpId,
 					gameId,
 					tpGameType,
-					displayText,
+					displayKey,
 					description,
 					imgUrl
 				}) => (
@@ -83,7 +83,7 @@ const HomeEntry = () => {
 							/>
 
 							<div className="home-entry-info">
-								{t(displayText)}
+								{t(displayKey)}
 								<span>{description}</span>
 							</div>
 						</div>

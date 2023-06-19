@@ -890,5 +890,8 @@
 
 	"==============RebateExclude==============": "",
 	"lbl_RebateExclude_title": "Permainan dalam daftar ini akan dikecualikan menikmati hadiah rebate harian",
-	"lbl_GameName": "Nama Permainan"
+	"lbl_GameName": "Nama Permainan",
+
+	"lbl_IceHockey": "Hoki Es",
+	"lbl_Baseball": "Bola Kasti"
 }

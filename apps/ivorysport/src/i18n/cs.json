@@ -880,5 +880,8 @@
 
 	"==============RebateExclude==============": "",
 	"lbl_RebateExclude_title": "游戏在此列表将排除与享有每日返水奖励",
-	"lbl_GameName": "游戏名称"
+	"lbl_GameName": "游戏名称",
+
+	"lbl_IceHockey": "冰上曲棍球",
+	"lbl_Baseball": "棒球"
 }
