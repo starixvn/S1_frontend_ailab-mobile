@@ -5,8 +5,7 @@ import JoinStep1 from "./join.step1";
 import JoinStep2 from "./join.step2";
 import JoinStep3 from "./join.step3";
 import { initValue, initStatus } from "./join.def";
-import { defCurrenyId, getLocalStorage } from "../common/common";
-import useHandleLineLogin, { defType } from "../hook/useHandleLineLogin";
+import { getLocalStorage } from "../common/common";
 import api from "../../service/api";
 
 const JoinStepAll = () => {
@@ -17,7 +16,7 @@ const JoinStepAll = () => {
 	const [userValue, setUserValue] = useState(initValue);
 	const [hintStatus, setHintStatus] = useState(initStatus);
 	const [recaptchaInfo, setRecaptchaInfo] = useState({});
-	const { lineLogin } = useHandleLineLogin();
+
 	const lineUserId = getLocalStorage("lineUser");
 
 	useEffect(() => {
@@ -48,11 +47,6 @@ const JoinStepAll = () => {
 			...prev,
 			[col]: val
 		}));
-	};
-
-	const handleLineRegister = e => {
-		e.preventDefault();
-		lineLogin({ type: defType.register });
 	};
 
 	const judgeStepHandle = () => {
@@ -99,23 +93,6 @@ const JoinStepAll = () => {
 
 	return (
 		<>
-			{(userInfo.langId === "th" ||
-				userInfo.currencyId === defCurrenyId.THB) &&
-				!lineUserId && (
-					<div className="register-line">
-						{i18n.lbl_RegisterWithLine} ID
-						<div className="btn-group">
-							<button
-								className="btn-line"
-								onClick={e => {
-									handleLineRegister(e);
-								}}>
-								<i className="icon icon-line-bold" />
-								{i18n.lbl_RegisterWithLine}
-							</button>
-						</div>
-					</div>
-				)}
 			<div className="step">
 				<div className="stepLine">
 					<div />
