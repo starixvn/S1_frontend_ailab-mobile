@@ -31,7 +31,7 @@ export const Info = ({ langId }) => {
 
 const ENInfo = () => {
 	return (
-		<div className="vipInfo">
+		<>
 			<div className="vipTitle">VIP Programme</div>
 			Nova88 has launched its VIP rewards program so that members could
 			indulge in good services, more rewards, and a better experience.
@@ -46,25 +46,25 @@ const ENInfo = () => {
 				Enjoy the benefits and privileges with difference membership
 				tier.
 			</div>
-		</div>
+		</>
 	);
 };
 
 const CSInfo = () => {
 	return (
-		<div className="vipInfo">
+		<>
 			<div className="vipTitle">VIP计划</div>
 			欧亚体育贵族体系已正式推出！会员现可尊享更优质服务，更多福利回馈及更完善游戏体验。解锁贵族等级一探更多福利等您领取
 			<div className="vipTitle">概观</div>
 			贵族等级分为古铜俱乐部，白银俱乐部，黄金俱乐部，钛金俱乐部，钻石俱乐部和欧亚俱乐部。解锁贵族等级以享有更多尊贵福利与独享服务。
 			<div className="vipTitle">不同等级享有各种豪爽福利</div>
-		</div>
+		</>
 	);
 };
 
 const MYInfo = () => {
 	return (
-		<div className="vipInfo">
+		<>
 			<div className="vipTitle">Program VIP</div>
 			Nova88 telah melancarkan program ganjaran VIP supaya ahli boleh
 			menikmati perkhidmatan yang lebih baik, dapat lebih banyak ganjaran
@@ -79,13 +79,13 @@ const MYInfo = () => {
 				Nikmati kebaikan dan keistimewaan dengan taraf keahlian yang
 				berbeza
 			</div>
-		</div>
+		</>
 	);
 };
 
 const THInfo = () => {
 	return (
-		<div className="vipInfo">
+		<>
 			<div className="vipTitle">โปรแกรมวีไอพี</div>
 			Nova88 ได้เปิดตัวโปรแกรม VIP Rewards
 			เพื่อให้สมาชิกสามารถเพลิดเพลินกับบริการที่ดีกว่าเดิมทั้งรางวัลที่มากยิ่งขี้นและประสบการณ์ที่ดียิ่งกว่า
@@ -98,13 +98,13 @@ const THInfo = () => {
 			<div className="vipTitle">
 				เพลิดเพลินไปกับสิทธิประโยชน์และสิทธิพิเศษในระดับสมาชิกที่แตกต่างกัน
 			</div>
-		</div>
+		</>
 	);
 };
 
 const IDInfo = () => {
 	return (
-		<div className="vipInfo">
+		<>
 			<div className="vipTitle">Program VIP</div>
 			Nova88 telah meluncurkan program hadiah VIP sehingga member dapat
 			menikmati layanan dan pengalaman yang lebih baik dan lebih banyak
@@ -118,13 +118,13 @@ const IDInfo = () => {
 			<div className="vipTitle">
 				Nikmati keuntungan dan keistimewaan dalam tingkatan member
 			</div>
-		</div>
+		</>
 	);
 };
 
 const HIInfo = () => {
 	return (
-		<div className="vipInfo">
+		<>
 			<div className="vipTitle">वीआईपी कार्यक्रम</div>
 			Nova88 ने अपना वीआईपी पुरस्कार कार्यक्रम शुरू किया है ताकि सदस्य
 			अच्छी सेवाओं, अधिक पुरस्कारों और बेहतर अनुभव प्राप्त कर सकें। जब
@@ -138,13 +138,13 @@ const HIInfo = () => {
 			<div className="vipTitle">
 				भिन्न सदस्यता स्तर के साथ लाभों और विशेषाधिकारों का आनंद लें
 			</div>
-		</div>
+		</>
 	);
 };
 
 const BDInfo = () => {
 	return (
-		<div className="vipInfo">
+		<>
 			<div className="vipTitle">ভিআইপি কার্যক্রম</div>
 			Nova88 ভিআইপি পুরষ্কার কার্যক্রম চালু করেছে যেন সদস্যরা ভালো
 			পরিষেবা, বেশি পুরষ্কার এবং আরও ভালো অভিজ্ঞতা লাভ করতে পারেন। আপনার
@@ -158,6 +158,6 @@ const BDInfo = () => {
 			<div className="vipTitle">
 				ভিন্ন ভিন্ন সদস্যপদের জন্য ভিন্ন ভিন্ন সুযোগ সুবিধা উপভোগ করুন।
 			</div>
-		</div>
+		</>
 	);
 };
