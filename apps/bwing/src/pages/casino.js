@@ -56,11 +56,14 @@ const Panel = () => {
 			const targetProvider =
 				pList.find(obj => obj.tpId === Number(pathTpId)) ?? {};
 			if (Object.keys(targetProvider).length > 0) {
-				const pFilterList = pList.filter(
-					item => item.tpId !== targetProvider.tpId
+				const targetIndex = pList.findIndex(
+					providerObj => providerObj.tpId === targetProvider.tpId
 				);
-				pFilterList.unshift(targetProvider);
-				setProviderList(pFilterList);
+				const sliceProviderList = [
+					...pList.slice(targetIndex),
+					...pList.slice(0, targetIndex)
+				];
+				setProviderList(sliceProviderList);
 				setActiveProvider(targetProvider);
 			} else {
 				setProviderList(pList);

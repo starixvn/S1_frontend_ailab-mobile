@@ -171,88 +171,95 @@ const defSortCasino = {
 const defSortSlot = {
 	[defCurrenyId.THB]: [
 		"slot_PP",
+		"slot_SG",
 		"slot_AdvantPlay",
-		"slot_Skywind",
-		"slot_Mega888",
-		"slot_SimplePlay",
-		"slot_Habanero",
-		"slot_NetEnt",
+		"slot_PG",
 		"slot_MGPSW",
 		"slot_JI",
-		"slot_PG",
 		"slot_JOKER",
-		"slot_SG",
 		"slot_RedTiger",
-		"slot_PT",
-		"slot_YGG",
-		"slot_AMB",
+		"slot_NetEnt",
 		"slot_CQ9",
 		"slot_GPI",
-		"slot_ICG",
-		"slot_OW"
+		"slot_YGG",
+		"slot_AMB",
+		"slot_Habanero",
+		"slot_SimplePlay",
+		"slot_Skywind",
+		"slot_PT",
+		"slot_kiss918"
+		// "slot_Mega888",
+		// "slot_ICG",
+		// "slot_OW"
 	],
 	[defCurrenyId.MYR]: [
 		"slot_PP",
+		"slot_SG",
 		"slot_AdvantPlay",
-		"slot_Skywind",
-		"slot_kiss918",
-		"slot_Mega888",
-		"slot_SimplePlay",
-		"slot_Habanero",
-		"slot_NetEnt",
+		"slot_PG",
 		"slot_MGPSW",
 		"slot_JI",
-		"slot_PG",
 		"slot_JOKER",
-		"slot_SG",
 		"slot_RedTiger",
-		"slot_PT",
-		"slot_YGG",
+		"slot_NetEnt",
 		"slot_CQ9",
 		"slot_GPI",
-		"slot_ICG",
-		"slot_OW"
+		"slot_YGG",
+		"slot_AMB",
+		"slot_Habanero",
+		"slot_SimplePlay",
+		"slot_Skywind",
+		"slot_PT",
+		"slot_kiss918"
+		// "slot_Mega888",
+		// "slot_ICG",
+		// "slot_OW"
 	],
 	[defCurrenyId.IDR]: [
 		"slot_PP",
+		"slot_SG",
 		"slot_AdvantPlay",
-		"slot_Skywind",
-		"slot_Mega888",
-		"slot_SimplePlay",
-		"slot_Habanero",
-		"slot_NetEnt",
+		"slot_PG",
 		"slot_MGPSW",
 		"slot_JI",
-		"slot_PG",
 		"slot_JOKER",
-		"slot_SG",
 		"slot_RedTiger",
-		"slot_PT",
-		"slot_YGG",
+		"slot_NetEnt",
 		"slot_CQ9",
 		"slot_GPI",
-		"slot_ICG",
-		"slot_OW"
+		"slot_YGG",
+		"slot_AMB",
+		"slot_Habanero",
+		"slot_SimplePlay",
+		"slot_Skywind",
+		"slot_PT",
+		"slot_kiss918"
+		// "slot_Mega888",
+		// "slot_ICG",
+		// "slot_OW"
 	],
 	[defCurrenyId.INR]: [
-		"slot_NetEnt",
-		"slot_RedTiger",
-		"slot_AdvantPlay",
 		"slot_PP",
-		"slot_Skywind",
-		"slot_SimplePlay",
-		"slot_Habanero",
+		"slot_SG",
+		"slot_AdvantPlay",
+		"slot_PG",
 		"slot_MGPSW",
 		"slot_JI",
-		"slot_PG",
 		"slot_JOKER",
-		"slot_SG",
-		"slot_PT",
-		"slot_YGG",
+		"slot_RedTiger",
+		"slot_NetEnt",
 		"slot_CQ9",
 		"slot_GPI",
-		"slot_ICG",
-		"slot_OW"
+		"slot_YGG",
+		"slot_AMB",
+		"slot_Habanero",
+		"slot_SimplePlay",
+		"slot_Skywind",
+		"slot_PT",
+		"slot_kiss918"
+		// "slot_Mega888",
+		// "slot_ICG",
+		// "slot_OW"
 	]
 };
 
@@ -615,6 +622,15 @@ const gameList = ({ langId, currencyId }) => {
 					allowCurrency: getPPAllowCurrencies()
 				},
 				{
+					...defGameInfo.Casino_SG,
+					parameter: defGameInfo.Casino_SG,
+					spanText: "Spadegaming",
+					img: `${cloudBannerImgURL}/h5/img/sg.png`,
+					path: path.casino.root,
+					providerImgName: "sg",
+					sortKey: "slot_SG"
+				},
+				{
 					...defGameInfo.Casino_AdvantPlay,
 					parameter: defGameInfo.Casino_AdvantPlay,
 					spanText: "AdvantPlay",
@@ -630,77 +646,13 @@ const gameList = ({ langId, currencyId }) => {
 					sortKey: "slot_AdvantPlay"
 				},
 				{
-					...defGameInfo.Casino_Skywind,
-					parameter: defGameInfo.Casino_Skywind,
-					spanText: "Skywind",
-					providerImgName: "sk",
-					img: `${cloudBannerImgURL}/h5/img/slotsk.png`,
+					...defGameInfo.Casino_PG,
+					parameter: defGameInfo.Casino_PG,
+					spanText: "PG Soft",
+					img: `${cloudBannerImgURL}/h5/img/pg.png`,
 					path: path.casino.root,
-					sortKey: "slot_Skywind",
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.skywind)
-						}
-					]
-				},
-				{
-					...defGameInfo.Casino_918Kiss,
-					parameter: defGameInfo.Casino_918Kiss,
-					spanText: "918Kiss",
-					img: `${cloudBannerImgURL}/h5/img/918kiss.png`,
-					path: path.casino.root,
-					providerImgName: "casino_kiss918",
-					sortKey: "slot_kiss918",
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.slot_918Kiss)
-						}
-					]
-				},
-				// {
-				// 	...productList.mega888,
-				// 	parameter: productList.mega888,
-				// 	spanText: "Mega888",
-				// 	providerImgName: "mega",
-				// 	img: `${cloudBannerImgURL}/h5/img/mega888.png`,
-				// 	path: path.mega888.root,
-				// 	alwaysShowOnSlotLobby: true,
-				// 	sortKey: "slot_Mega888"
-				// },
-				{
-					...defGameInfo.Casino_SimplePlay,
-					parameter: defGameInfo.Casino_SimplePlay,
-					spanText: "SimplePlay",
-					providerImgName: "casino_simpleplay",
-					img: `${cloudBannerImgURL}/h5/img/simpleplay.png`,
-					path: path.casino.root,
-					sortKey: "slot_SimplePlay",
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.casino_SimplePlay)
-						}
-					]
-				},
-				{
-					...defGameInfo.Casino_Habanero,
-					parameter: defGameInfo.Casino_Habanero,
-					spanText: "Habanero",
-					providerImgName: "ho",
-					img: `${cloudBannerImgURL}/h5/img/ho.png`,
-					path: path.casino.root,
-					sortKey: "slot_Habanero"
-				},
-				{
-					...defGameInfo.Casino_NetEnt,
-					parameter: defGameInfo.Casino_NetEnt,
-					spanText: "NetEnt",
-					providerImgName: "nt",
-					img: `${cloudBannerImgURL}/h5/img/nt.png`,
-					path: path.casino.root,
-					sortKey: "slot_NetEnt"
+					providerImgName: "pg",
+					sortKey: "slot_PG"
 				},
 				{
 					...defGameInfo.Casino_MGP,
@@ -712,15 +664,6 @@ const gameList = ({ langId, currencyId }) => {
 					sortKey: "slot_MGPSW"
 				},
 				{
-					...defGameInfo.Casino_PT,
-					parameter: defGameInfo.Casino_PT,
-					spanText: "Playtech",
-					img: `${cloudBannerImgURL}/h5/img/pt.png`,
-					path: path.casino.root,
-					providerImgName: "pt",
-					sortKey: "slot_PT"
-				},
-				{
 					...defGameInfo.Casino_Jili,
 					parameter: defGameInfo.Casino_Jili,
 					spanText: "Jili",
@@ -729,15 +672,6 @@ const gameList = ({ langId, currencyId }) => {
 					providerImgName: "ji",
 					sortKey: "slot_JI"
 				},
-				// {
-				// 	...defGameInfo.casino_ICG,
-				// 	parameter: defGameInfo.casino_ICG,
-				// 	spanText: "Astro Tech",
-				// 	img: `${cloudBannerImgURL}/h5/img/icg.png`,
-				// 	path: path.casino.root,
-				// 	providerImgName: "icg",
-				// 	sortKey: "slot_ICG"
-				// },
 				{
 					...defGameInfo.Casino_JOKER,
 					parameter: defGameInfo.Casino_JOKER,
@@ -746,6 +680,24 @@ const gameList = ({ langId, currencyId }) => {
 					path: path.casino.root,
 					providerImgName: "jk",
 					sortKey: "slot_JOKER"
+				},
+				{
+					...defGameInfo.Casino_RedTiger,
+					parameter: defGameInfo.Casino_RedTiger,
+					spanText: "Red Tiger",
+					providerImgName: "rt",
+					img: `${cloudBannerImgURL}/h5/img/rt.png`,
+					path: path.casino.root,
+					sortKey: "slot_RedTiger"
+				},
+				{
+					...defGameInfo.Casino_NetEnt,
+					parameter: defGameInfo.Casino_NetEnt,
+					spanText: "NetEnt",
+					providerImgName: "nt",
+					img: `${cloudBannerImgURL}/h5/img/nt.png`,
+					path: path.casino.root,
+					sortKey: "slot_NetEnt"
 				},
 				{
 					...defGameInfo.Casino_CQ9,
@@ -791,32 +743,87 @@ const gameList = ({ langId, currencyId }) => {
 					sortKey: "slot_AMB"
 				},
 				{
-					...defGameInfo.Casino_SG,
-					parameter: defGameInfo.Casino_SG,
-					spanText: "Spadegaming",
-					img: `${cloudBannerImgURL}/h5/img/sg.png`,
+					...defGameInfo.Casino_Habanero,
+					parameter: defGameInfo.Casino_Habanero,
+					spanText: "Habanero",
+					providerImgName: "ho",
+					img: `${cloudBannerImgURL}/h5/img/ho.png`,
 					path: path.casino.root,
-					providerImgName: "sg",
-					sortKey: "slot_SG"
+					sortKey: "slot_Habanero"
 				},
 				{
-					...defGameInfo.Casino_RedTiger,
-					parameter: defGameInfo.Casino_RedTiger,
-					spanText: "Red Tiger",
-					providerImgName: "rt",
-					img: `${cloudBannerImgURL}/h5/img/rt.png`,
+					...defGameInfo.Casino_SimplePlay,
+					parameter: defGameInfo.Casino_SimplePlay,
+					spanText: "SimplePlay",
+					providerImgName: "casino_simpleplay",
+					img: `${cloudBannerImgURL}/h5/img/simpleplay.png`,
 					path: path.casino.root,
-					sortKey: "slot_RedTiger"
+					sortKey: "slot_SimplePlay",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.casino_SimplePlay)
+						}
+					]
 				},
 				{
-					...defGameInfo.Casino_PG,
-					parameter: defGameInfo.Casino_PG,
-					spanText: "PG Soft",
-					img: `${cloudBannerImgURL}/h5/img/pg.png`,
+					...defGameInfo.Casino_Skywind,
+					parameter: defGameInfo.Casino_Skywind,
+					spanText: "Skywind",
+					providerImgName: "sk",
+					img: `${cloudBannerImgURL}/h5/img/slotsk.png`,
 					path: path.casino.root,
-					providerImgName: "pg",
-					sortKey: "slot_PG"
+					sortKey: "slot_Skywind",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.skywind)
+						}
+					]
+				},
+				{
+					...defGameInfo.Casino_PT,
+					parameter: defGameInfo.Casino_PT,
+					spanText: "Playtech",
+					img: `${cloudBannerImgURL}/h5/img/pt.png`,
+					path: path.casino.root,
+					providerImgName: "pt",
+					sortKey: "slot_PT"
+				},
+				{
+					...defGameInfo.Casino_918Kiss,
+					parameter: defGameInfo.Casino_918Kiss,
+					spanText: "918Kiss",
+					img: `${cloudBannerImgURL}/h5/img/918kiss.png`,
+					path: path.casino.root,
+					providerImgName: "casino_kiss918",
+					sortKey: "slot_kiss918",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.slot_918Kiss)
+						}
+					]
 				}
+				// {
+				// 	...productList.mega888,
+				// 	parameter: productList.mega888,
+				// 	spanText: "Mega888",
+				// 	providerImgName: "mega",
+				// 	img: `${cloudBannerImgURL}/h5/img/mega888.png`,
+				// 	path: path.mega888.root,
+				// 	alwaysShowOnSlotLobby: true,
+				// 	sortKey: "slot_Mega888"
+				// },
+				// {
+				// 	...defGameInfo.casino_ICG,
+				// 	parameter: defGameInfo.casino_ICG,
+				// 	spanText: "Astro Tech",
+				// 	img: `${cloudBannerImgURL}/h5/img/icg.png`,
+				// 	path: path.casino.root,
+				// 	providerImgName: "icg",
+				// 	sortKey: "slot_ICG"
+				// },
 				// {
 				// 	...defGameInfo.Casino_OW,
 				// 	parameter: defGameInfo.Casino_OW,
