@@ -670,7 +670,7 @@
 	"lbl_DepositChannel_5": "银行二维码",
 	"lbl_DepositChannel": "存款渠道",
 	"lbl_LocalBankDepositChannelTip": "请选择您使用银行转账的银行",
-	"lbl_LocalBankBankAccountTip": "Please select which bank account you deposited from the local bank.",
+	"lbl_LocalBankBankAccountTip": "请选择您在银行转账时使用的银行户口",
 	"lbl_BankDetails": "银行资讯",
 	"lbl_DepositLocalbankButton": "储存我最后一次交易模式",
 	"lbl_DepositLocalbankButtonInfo": "储存最后一笔存款交易银行。若您选择的银行已结业，请再重新选择。",
