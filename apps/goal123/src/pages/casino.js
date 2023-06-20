@@ -245,17 +245,17 @@ const Panel = () => {
 						gameId: targetObj.gameId,
 						isFree: freePlay,
 						langId: userInfo.langId,
-						execFunction:
-							targetObj.tpId === defSpecialSetting.playTech
-								? handleGoToGame.bind(this, {
-										langId: userInfo.langId,
-										tpId: targetObj.tpId,
-										gameId: targetObj.gameId,
-										isFun: freePlay,
-										tpGameType:
-											defSlotTpGameType.PT.tpGameType
-								  })
-								: null,
+						// execFunction:
+						// 	targetObj.tpId === defSpecialSetting.playTech
+						// 		? handleGoToGame.bind(this, {
+						// 				langId: userInfo.langId,
+						// 				tpId: targetObj.tpId,
+						// 				gameId: targetObj.gameId,
+						// 				isFun: freePlay,
+						// 				tpGameType:
+						// 					defSlotTpGameType.PT.tpGameType
+						// 		  })
+						// 		: null,
 						tpGameType: Object.values(defSlotTpGameType).find(
 							obj => targetObj.tpId === obj.tpId
 						).tpGameType

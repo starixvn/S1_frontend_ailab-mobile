@@ -15,7 +15,7 @@ export const defOpenType = {
 };
 
 export const defSpecialSetting = {
-	playTech: defGameInfo.Casino_PT.tpId,
+	playTech: defGameInfo.Casino_PlayTech.tpId,
 	sports_9w: defGameInfo.nineW.tpId
 };
 
