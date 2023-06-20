@@ -657,7 +657,7 @@
 	"lbl_DepositChannel_5": "ธนาคาร QR",
 	"lbl_DepositChannel": "ช่องทางการฝาก",
 	"lbl_LocalBankDepositChannelTip": "กรุณาเลือกช่องทางธนาคารที่คุณฝากจากธนาคารในประเทศ",
-	"lbl_LocalBankBankAccountTip": "Please select which bank account you deposited from the local bank.",
+	"lbl_LocalBankBankAccountTip": "โปรดเลือกบัญชีธนาคารที่คุณฝากจากธนาคารภายในประเทศ",
 	"lbl_BankDetails": "รายละเอียดธนาคาร",
 	"lbl_DepositLocalbankButton": "จำโหมดที่ใช้ล่าสุดของฉัน",
 	"lbl_DepositLocalbankButtonInfo": "จำธนาคารที่ใช้สำหรับการฝากเงินครั้งสุดท้ายของคุณ หากธนาคารที่คุณเลือกถูกปิดโปรดเลือกอีกครั้ง",
