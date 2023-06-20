@@ -31,7 +31,10 @@ export const defSlotTpGameType = {
 	PG: { tpId: 14, tpGameType: 17 },
 	CQ9: { tpId: 16, tpGameType: 29 },
 	Iconic: { tpId: 24, tpGameType: 39 },
+	// 舊的 PT 測試用，等新的測試沒問題後移除
 	PT: { tpId: 27, tpGameType: 46 },
+	// 新的 PlayTech (Seamless Wallet)
+	PlayTech: { tpId: 51, tpGameType: 100 },
 	JILI: { tpId: 32, tpGameType: 53 },
 	MG: { tpId: 34, tpGameType: 57 },
 	NetEnt: { tpId: 37, tpGameType: 64 },
@@ -276,9 +279,19 @@ export const productList = langId => {
 					icon: "icon icon-jili",
 					displayText: "JILI"
 				},
+				// 舊的 PT 測試用，等新的測試沒問題後移除
 				{
 					...defGameInfo.Casino_PT,
 					parameter: defGameInfo.Casino_PT,
+					path: path.casino.root,
+					img: `${bannerImgUrl}/h5/img/slot/pt.png`,
+					icon: "icon icon-pt",
+					displayText: "PlayTech (Old)"
+				},
+				// 新的 PlayTech (Seamless Wallet)
+				{
+					...defGameInfo.Casino_Playtech,
+					parameter: defGameInfo.Casino_Playtech,
 					path: path.casino.root,
 					img: `${bannerImgUrl}/h5/img/slot/pt.png`,
 					icon: "icon icon-pt",
@@ -412,12 +425,20 @@ export const productList = langId => {
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-evo.png`,
 					...defGameInfo.LIVEcasinoEVO
 				},
+				// 舊的 PT 測試用，等新的測試沒問題後移除
 				{
-					displayText: "Playtech",
+					displayText: "Playtech (Old)",
 					icon: "icon icon-pt",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-pt.png`,
 					...defGameInfo.LIVEcasinoPT,
 					useGotoGame: true
+				},
+				// 新的 PlayTech (Seamless Wallet)
+				{
+					displayText: "PlayTech",
+					icon: "icon icon-pt",
+					img: `${bannerImgUrl}/h5/img/liveGameNew/live-pt.png`,
+					...defGameInfo.LIVEcasinoPlaytech
 				},
 				{
 					displayText: "n2-LIVE",
