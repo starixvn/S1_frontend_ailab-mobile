@@ -1,19 +1,43 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import { i18nContext } from "../common/context";
 
-export const FooterBanner = ({ langId, openJoinPop }) => {
-	const _langId = langId.includes("_en") ? "en" : langId;
+export const FooterBanner = ({ openJoinPop }) => {
+	const { i18n } = useContext(i18nContext);
 	return (
-		<div className="vipBanner" onClick={openJoinPop}>
-			<img
-				src={`https://banner.0814media.net/h5/img/vip/${_langId}/vip_program_${_langId}.jpg`}
-				alt="VIP Programme"
-			/>
+		<div className="vip-bottom" onClick={openJoinPop}>
+			<div className="vip-bottom-item">
+				<img
+					src="https://banner.0814media.net/h5/img/benefit-1.png"
+					alt=""
+				/>
+				<span>{i18n.lbl_Vip_TopPriorityServices}</span>
+			</div>
+			<div className="vip-bottom-item">
+				<img
+					src="https://banner.0814media.net/h5/img/benefit-2.png"
+					alt=""
+				/>
+				<span>{i18n.lbl_Vip_ExclusivePromo}</span>
+			</div>
+			<div className="vip-bottom-item">
+				<img
+					src="https://banner.0814media.net/h5/img/benefit-3.png"
+					alt=""
+				/>
+				<span>{i18n.lbl_Vip_BirthdaySpecialGifts}</span>
+			</div>
+			<div className="vip-bottom-item">
+				<img
+					src="https://banner.0814media.net/h5/img/benefit-4.png"
+					alt=""
+				/>
+				<span>{i18n.lbl_Vip_LifetimeMembership}</span>
+			</div>
 		</div>
 	);
 };
 
 FooterBanner.propTypes = {
-	langId: PropTypes.string.isRequired,
 	openJoinPop: PropTypes.func.isRequired
 };
