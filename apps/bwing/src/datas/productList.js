@@ -39,7 +39,10 @@ export const defGameInfo = {
 	LIVEcasinoOne789: { tpId: 23, gameId: 2, tpGameType: 37 },
 	LIVEcasinoN2: { tpId: 28, tpGameType: 45 },
 	LIVEcasinoMGP: { tpId: 34, tpGameType: 58 },
+	// 舊的 PT 測試用，等新的測試沒問題後移除
 	LIVEcasinoPT: { tpId: 27, gameId: "0", tpGameType: 48 },
+	// 新的 PlayTech (Seamless Wallet)
+	LIVEcasinoPlaytech: { tpId: 51, gameId: "0", tpGameType: 101 },
 	LIVEcasinoEVO: { tpId: 36, gameId: 0, tpGameType: 63 },
 	LIVEcasinoMG: { tpId: 34, gameId: "0", tpGameType: 58 },
 	LIVEcasinoSkywind: { tpId: 43, gameId: "0", tpGameType: 84 },
@@ -59,7 +62,10 @@ export const defGameInfo = {
 	Casino_YGG: { tpId: 8, tpGameType: 14 },
 	Casino_GPI: { tpId: 6, tpGameType: 11 },
 	Casino_CQ9: { tpId: 16, tpGameType: 29 },
+	// 舊的 PT 測試用，等新的測試沒問題後移除
 	Casino_PT: { tpId: 27, gameId: "0", tpGameType: 46 },
+	// 新的 PlayTech (Seamless Wallet)
+	Casino_Playtech: { tpId: 51, gameId: "0", tpGameType: 100 },
 	Casino_NetEnt: { tpId: 37, tpGameType: 64 },
 	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
 	Casino_AdvantPlay: { tpId: 39, tpGameType: 67 },
@@ -233,8 +239,15 @@ export const slotPlatform = [
 		path: path.casino.root,
 		imgName: "icg"
 	},
+	// 舊的 PT 測試用，等新的測試沒問題後移除
 	{
 		...defGameInfo.Casino_PT,
+		path: path.casino.root,
+		imgName: "playtech"
+	},
+	// 新的 PlayTech (Seamless Wallet)
+	{
+		...defGameInfo.Casino_Playtech,
 		path: path.casino.root,
 		imgName: "playtech"
 	},
@@ -259,7 +272,10 @@ export const defSlotTpGameType = {
 	PG: { tpId: 14, tpGameType: 17 },
 	CQ9: { tpId: 16, tpGameType: 29 },
 	Iconic: { tpId: 24, tpGameType: 39 },
+	// 舊的 PT 測試用，等新的測試沒問題後移除
 	PT: { tpId: 27, tpGameType: 46 },
+	// 新的 PlayTech (Seamless Wallet)
+	PlayTech: { tpId: 51, tpGameType: 100 },
 	JILI: { tpId: 32, tpGameType: 53 },
 	MG: { tpId: 34, tpGameType: 57 },
 	NetEnt: { tpId: 37, tpGameType: 64 },
