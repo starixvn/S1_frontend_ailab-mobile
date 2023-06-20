@@ -1,6 +1,10 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { currCustomMapping, defCurrenyId } from "../common/common";
+import {
+	currCustomMapping,
+	defCurrenyId,
+	capitalizeFirstLetter
+} from "../common/common";
 import { i18nContext } from "../common/context";
 
 const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
@@ -17,7 +21,9 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 			}`}>
 			<div className="viptable-item">
 				<ul className="viptable-item-title">
-					<li>{i18n.lbl_Vip_Service_Support}</li>
+					<li>
+						{capitalizeFirstLetter(i18n.lbl_Vip_Service_Support)}
+					</li>
 				</ul>
 				<ul className="viptable-item-text">
 					<li>{i18n.lbl_Vip_Deposit_Priority}</li>
@@ -80,7 +86,7 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 			<div className="viptable-item">
 				<ul className="viptable-item-title">
 					<li>
-						{i18n.lbl_Vip_Exclusive_Bonus}
+						{capitalizeFirstLetter(i18n.lbl_Vip_Exclusive_Bonus)}
 						{`(${
 							currCustomMapping[
 								userInfo.currencyId ?? defCurrenyId.MYR
@@ -99,7 +105,9 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 			</div>
 			<div className="viptable-item">
 				<ul className="viptable-item-title">
-					<li>{i18n.lbl_Vip_Special_Rebate}</li>
+					<li>
+						{capitalizeFirstLetter(i18n.lbl_Vip_Special_Rebate)}
+					</li>
 				</ul>
 				<ul className="viptable-item-text">
 					<li>{i18n.lbl_Vip_Sport_Rebate}</li>
@@ -128,7 +136,11 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 			</div>
 			<div className="viptable-item">
 				<ul className="viptable-item-title">
-					<li>{i18n.lbl_Vip_Referral_bonus_Program}</li>
+					<li>
+						{capitalizeFirstLetter(
+							i18n.lbl_Vip_Referral_bonus_Program
+						)}
+					</li>
 				</ul>
 				<ul className="viptable-item-text">
 					<li>{i18n.lbl_Vip_Referral_bonus}</li>
@@ -142,7 +154,9 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 			<div className="viptable-item">
 				<ul className="viptable-item-title">
 					<li>
-						{i18n.lbl_Vip_Tire_Upgrade_Requirement}
+						{capitalizeFirstLetter(
+							i18n.lbl_Vip_Tire_Upgrade_Requirement
+						)}
 						{`(${
 							currCustomMapping[
 								userInfo.currencyId ?? defCurrenyId.MYR
@@ -162,7 +176,9 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 			<div className="viptable-item">
 				<ul className="viptable-item-title">
 					<li>
-						{i18n.lbl_Vip_Tier_Maintenance_Requirement}
+						{capitalizeFirstLetter(
+							i18n.lbl_Vip_Tier_Maintenance_Requirement
+						)}
 						{`(${
 							currCustomMapping[
 								userInfo.currencyId ?? defCurrenyId.MYR

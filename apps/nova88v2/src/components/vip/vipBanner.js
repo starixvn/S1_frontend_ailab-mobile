@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { currencyIdToCurrency } from "../common/common";
+import { currencyIdToCurrency, capitalizeFirstLetter } from "../common/common";
 import { defbanner } from "./def";
 import { Autoplay } from "../common/swipperBanner";
 
@@ -59,16 +59,24 @@ const VipBanner = ({ i18n, userInfo, vipBanner }) => {
 				<div className="viprule">
 					<div className="viprule-item">
 						<span>
-							{i18n.lbl_Vip_Ranking_Validity_Membership_renewal}
+							{capitalizeFirstLetter(
+								i18n.lbl_Vip_Ranking_Validity_Membership_renewal
+							)}
 						</span>
 						<span>{rankingValidityMembershipRenewal}</span>
 					</div>
 					<div className="viprule-item">
-						<span>{i18n.lbl_Vip_Referral_bonus_Program}</span>
+						<span>
+							{capitalizeFirstLetter(
+								i18n.lbl_Vip_Referral_bonus_Program
+							)}
+						</span>
 						<span>{referralBonus ? "Yes" : "No"}</span>
 					</div>
 					<div className="viprule-item">
-						<span>{i18n.lbl_Vip_Special_Rebate}</span>
+						<span>
+							{capitalizeFirstLetter(i18n.lbl_Vip_Special_Rebate)}
+						</span>
 						<span>
 							{rebateCategoryList &&
 								rebateCategoryList[
