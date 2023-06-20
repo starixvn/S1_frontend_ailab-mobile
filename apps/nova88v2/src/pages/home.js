@@ -41,7 +41,12 @@ const IndexPage = () => {
 		<PromotionWrapper>
 			<Layout
 				header={<Header appHint={appHint} setAppHint={setAppHint} />}>
-				{userInfo.isLogin ? <HeaderShortcut i18n={i18n} /> : null}
+				{userInfo.isLogin ? (
+					<HeaderShortcut
+						i18n={i18n}
+						currencyId={userInfo.currencyId}
+					/>
+				) : null}
 				<Slider />
 				<Marquee />
 				{userInfo.isLogin ? null : (
