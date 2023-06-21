@@ -179,9 +179,8 @@ const RecentlyViewedGameList = () => {
 													className="recently-image"
 													src={
 														gameLogo[
-															userInfo.langId ??
-																"en"
-														]
+															userInfo.langId
+														] ?? gameLogo.en
 													}
 													alt=""
 												/>
@@ -192,12 +191,9 @@ const RecentlyViewedGameList = () => {
 														alt=""
 													/>
 													<div className="recently-title">
-														{
-															gameName[
-																userInfo.langId ??
-																	"en"
-															]
-														}
+														{gameName[
+															userInfo.langId
+														] ?? gameName.en}
 													</div>
 												</div>
 											</div>
