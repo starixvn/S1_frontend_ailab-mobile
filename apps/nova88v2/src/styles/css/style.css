@@ -3844,7 +3844,7 @@ footer > a.active .circleAnimation::after {
   border-style: solid dashed dashed;
   border-color: #a5bbe0 transparent transparent;
   position: absolute;
-  bottom: -2vw;
+  bottom: -1.5vw;
   right: 3vw;
   z-index: 1;
 }
