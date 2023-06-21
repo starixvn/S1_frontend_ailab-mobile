@@ -182,11 +182,11 @@ const LicenseHelmet = ({ script, xcmScript }) => (
 	<Helmet>
 		<script
 			type="text/javascript"
-			src={`https://${script}.snippet.antillephone.com/apg-seal.js`}
+			src={`https://${script}.snippet.antillephone.com/apg-seal.js?v=${Date.now()}`}
 		/>
 		<script
 			type="text/javascript"
-			src={`https://${xcmScript}.seals-xcm.certria.com/xcm-seal.js`}
+			src={`https://${xcmScript}.seals-xcm.certria.com/xcm-seal.js?v=${Date.now()}`}
 		/>
 	</Helmet>
 );
