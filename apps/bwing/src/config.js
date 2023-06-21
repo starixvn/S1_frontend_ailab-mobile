@@ -40,6 +40,7 @@ export const sportsImgUrl = "https://sportsimgs.bw88.io";
 export const paymentImgUrl = "https://payment.bw88.io";
 export const cloudImgURL = "https://image.0814media.net";
 export const usdtImgUrl = "https://payment.bw88.io";
+export const bannerMediaUrl = "https://banner.0814media.net";
 
 export default process.env.NODE_ENV === "production"
 	? {

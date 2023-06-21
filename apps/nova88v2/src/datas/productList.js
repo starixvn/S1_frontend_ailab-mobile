@@ -73,7 +73,8 @@ export const defSlotTpGameType = {
 	Habanero: { tpId: 40, tpGameType: 68 },
 	Skywind: { tpId: 43, tpGameType: 82 },
 	SimplePlay: { tpId: 44, tpGameType: 86 },
-	Kiss918: { tpId: 21, tpGameType: 33 }
+	Kiss918: { tpId: 21, tpGameType: 33 },
+	Nextspin: { tpId: 50, tpGameType: 99 }
 };
 
 const defSortSports = {
@@ -172,6 +173,7 @@ const defSortSlot = {
 	[defCurrenyId.THB]: [
 		"slot_PP",
 		"slot_AdvantPlay",
+		"slot_Nextspin",
 		"slot_Skywind",
 		"slot_Mega888",
 		"slot_SimplePlay",
@@ -194,6 +196,7 @@ const defSortSlot = {
 	[defCurrenyId.MYR]: [
 		"slot_PP",
 		"slot_AdvantPlay",
+		"slot_Nextspin",
 		"slot_Skywind",
 		"slot_kiss918",
 		"slot_Mega888",
@@ -216,6 +219,7 @@ const defSortSlot = {
 	[defCurrenyId.IDR]: [
 		"slot_PP",
 		"slot_AdvantPlay",
+		"slot_Nextspin",
 		"slot_Skywind",
 		"slot_Mega888",
 		"slot_SimplePlay",
@@ -239,6 +243,7 @@ const defSortSlot = {
 		"slot_RedTiger",
 		"slot_AdvantPlay",
 		"slot_PP",
+		"slot_Nextspin",
 		"slot_Skywind",
 		"slot_SimplePlay",
 		"slot_Habanero",
@@ -628,6 +633,21 @@ const gameList = ({ langId, currencyId }) => {
 						}
 					],
 					sortKey: "slot_AdvantPlay"
+				},
+				{
+					...defGameInfo.Casino_Nextspin,
+					parameter: defGameInfo.Casino_Nextspin,
+					spanText: "Nextspin",
+					providerImgName: "sk",
+					img: `${cloudBannerImgURL}/h5/img/nextspin.png`,
+					path: path.casino.root,
+					sortKey: "slot_Nextspin",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.casino_Nextspin)
+						}
+					]
 				},
 				{
 					...defGameInfo.Casino_Skywind,
@@ -1212,6 +1232,7 @@ export const defGameInfo = {
 	Casino_AMB: { tpId: 30, tpGameType: 76 },
 	Casino_Skywind: { tpId: 43, tpGameType: 82 },
 	Casino_SimplePlay: { tpId: 44, tpGameType: 86 },
+	Casino_Nextspin: { tpId: 50, tpGameType: 99 },
 	Casino_918Kiss: { tpId: 21, tpGameType: 33 },
 	Fishing_AB3: { tpId: 16, gameId: "AB3", tpGameType: 44 },
 	Fishing_AT05: { tpId: 16, gameId: "AT05", tpGameType: 44 },
