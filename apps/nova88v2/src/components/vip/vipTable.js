@@ -26,7 +26,9 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 					</li>
 				</ul>
 				<ul className="viptable-item-text">
-					<li>{i18n.lbl_Vip_Deposit_Priority}</li>
+					<li>
+						{capitalizeFirstLetter(i18n.lbl_Vip_Deposit_Priority)}
+					</li>
 					<li className="">
 						<li
 							className={`${
@@ -39,7 +41,11 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 					</li>
 				</ul>
 				<ul className="viptable-item-text">
-					<li>{i18n.lbl_Vip_WithDrawal_Priority}</li>
+					<li>
+						{capitalizeFirstLetter(
+							i18n.lbl_Vip_WithDrawal_Priority
+						)}
+					</li>
 					<li className="">
 						<li
 							className={`${
@@ -52,7 +58,11 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 					</li>
 				</ul>
 				<ul className="viptable-item-text">
-					<li>{i18n.lbl_Vip_Service_Support_At_Date}</li>
+					<li>
+						{capitalizeFirstLetter(
+							i18n.lbl_Vip_Service_Support_At_Date
+						)}
+					</li>
 					<li className="">
 						<li
 							className={`${
@@ -65,7 +75,11 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 					</li>
 				</ul>
 				<ul className="viptable-item-text">
-					<li>{i18n.lbl_Vip_Designated_Account_Manager}</li>
+					<li>
+						{capitalizeFirstLetter(
+							i18n.lbl_Vip_Designated_Account_Manager
+						)}
+					</li>
 					<li
 						className={`${
 							selectedVipTableData?.designatedAccountManager
@@ -75,11 +89,17 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 					/>
 				</ul>
 				<ul className="viptable-item-text">
-					<li>{i18n.lbl_WithdrawalLimitation}</li>
-					<li>{selectedVipTableData?.withdrawalMin.split(".")[0]}</li>
+					<li>
+						{capitalizeFirstLetter(i18n.lbl_WithdrawalLimitation)}
+					</li>
+					<li>{selectedVipTableData?.withdrawalMax.split(".")[0]}</li>
 				</ul>
 				<ul className="viptable-item-text">
-					<li>{i18n.lbl_DAILY_TRANSACTIONS_COUNT}</li>
+					<li>
+						{capitalizeFirstLetter(
+							i18n.lbl_DAILY_TRANSACTIONS_COUNT
+						)}
+					</li>
 					<li>{selectedVipTableData?.times}</li>
 				</ul>
 			</div>
@@ -95,7 +115,9 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 					</li>
 				</ul>
 				<ul className="viptable-item-text">
-					<li>{i18n.lbl_Vip_Tier_UpGrade_Bonus}</li>
+					<li>
+						{capitalizeFirstLetter(i18n.lbl_Vip_Tier_UpGrade_Bonus)}
+					</li>
 					<li className="">
 						{selectedVipTableData?.upBonus
 							? selectedVipTableData?.upBonus.split(".")[0]
@@ -110,25 +132,33 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 					</li>
 				</ul>
 				<ul className="viptable-item-text">
-					<li>{i18n.lbl_Vip_Sport_Rebate}</li>
+					<li>{capitalizeFirstLetter(i18n.lbl_Vip_Sport_Rebate)}</li>
 					<li className="">
 						{selectedVipTableData?.rebateCategory[0]?.percentage}%
 					</li>
 				</ul>
 				<ul className="viptable-item-text">
-					<li>{i18n.lbl_Vip_LiveCasino_Rebate}</li>
+					<li>
+						{capitalizeFirstLetter(i18n.lbl_Vip_LiveCasino_Rebate)}
+					</li>
 					<li className="">
 						{selectedVipTableData?.rebateCategory[1]?.percentage}%
 					</li>
 				</ul>
 				<ul className="viptable-item-text">
-					<li>{i18n.lbl_Vip_SlotFishing_Rebate}</li>
+					<li>
+						{capitalizeFirstLetter(i18n.lbl_Vip_SlotFishing_Rebate)}
+					</li>
 					<li className="">
 						{selectedVipTableData?.rebateCategory[2]?.percentage}%
 					</li>
 				</ul>
 				<ul className="viptable-item-text">
-					<li>{i18n.lbl_Vip_VirtualSport_Rebate}</li>
+					<li>
+						{capitalizeFirstLetter(
+							i18n.lbl_Vip_VirtualSport_Rebate
+						)}
+					</li>
 					<li className="">
 						{selectedVipTableData?.rebateCategory[3]?.percentage}%
 					</li>
@@ -143,7 +173,9 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 					</li>
 				</ul>
 				<ul className="viptable-item-text">
-					<li>{i18n.lbl_Vip_Referral_bonus}</li>
+					<li>
+						{capitalizeFirstLetter(i18n.lbl_Vip_Referral_bonus)}
+					</li>
 					<li
 						className={`${
 							selectedVipTableData?.referralBonus ? "High" : null
@@ -165,7 +197,11 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 					</li>
 				</ul>
 				<ul className="viptable-item-text">
-					<li>{i18n.lbl_Vip_Monthly_Minimum_Deposit}</li>
+					<li>
+						{capitalizeFirstLetter(
+							i18n.lbl_Vip_Monthly_Minimum_Deposit
+						)}
+					</li>
 					<li className="">
 						{selectedVipTableData?.upDeposit
 							? selectedVipTableData?.upDeposit.split(".")[0]
@@ -188,7 +224,9 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 				</ul>
 				<ul className="viptable-item-text">
 					<li>
-						{i18n.lbl_Vip_Minimum_Deposit_Within_Validity_Period}
+						{capitalizeFirstLetter(
+							i18n.lbl_Vip_Minimum_Deposit_Within_Validity_Period
+						)}
 					</li>
 					<li className="">
 						{selectedVipTableData?.downDeposit
@@ -198,7 +236,9 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 				</ul>
 				<ul className="viptable-item-text">
 					<li>
-						{i18n.lbl_Vip_Minimum_Turnover_Within_Validity_Period}
+						{capitalizeFirstLetter(
+							i18n.lbl_Vip_Minimum_Turnover_Within_Validity_Period
+						)}
 					</li>
 					<li className="">
 						{selectedVipTableData?.downTurnover
@@ -207,7 +247,11 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 					</li>
 				</ul>
 				<ul className="viptable-item-text">
-					<li>{i18n.lbl_Vip_Ranking_Validity_Membership_renewal}</li>
+					<li>
+						{capitalizeFirstLetter(
+							i18n.lbl_Vip_Ranking_Validity_Membership_renewal
+						)}
+					</li>
 					<li className="">
 						{selectedVipTableData?.rankingValidityMembershipRenewal}
 					</li>
