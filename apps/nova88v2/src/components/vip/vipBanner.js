@@ -79,9 +79,12 @@ const VipBanner = ({ i18n, userInfo, vipBanner }) => {
 						</span>
 						<span>
 							{rebateCategoryList &&
-								rebateCategoryList[
-									rebateCategoryList.length - 1
-								]?.percentage}
+								Math.max(
+									...rebateCategoryList?.map(
+										({ percentage }) => percentage
+									)
+								)}
+							%
 						</span>
 					</div>
 				</div>

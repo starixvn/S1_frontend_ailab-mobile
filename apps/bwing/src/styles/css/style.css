@@ -1928,21 +1928,17 @@ footer > a.open {
 .sporttv > .tag {
   width: 100%;
   position: fixed;
-  left: 0;
-  top: 13vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
   border-bottom: 1px solid #1d2f62;
   overflow-x: scroll;
   overflow-y: hidden;
   background: #070e22;
+  left: 0;
   z-index: 2;
   text-transform: uppercase;
 }
@@ -5402,6 +5398,9 @@ span.important {
           align-items: center;
   margin: 8px;
 }
+.hotgame + .titleBox {
+  margin: 8px 8px 0 8px;
+}
 .hotgame .titleBox {
   width: 100%;
   display: -webkit-box;
@@ -7092,6 +7091,7 @@ span.important {
 }
 .addCrypto .addCryptoName .addCryptoInfo span {
   margin-right: 2vw;
+  word-break: break-all;
 }
 .addCrypto .addCryptoName .addCryptoInfo .cryptoName span {
   color: #070e22;
@@ -12174,12 +12174,11 @@ span.important {
   border-radius: 5px 5px 0 0;
   padding: 8px 0;
   text-align: center;
-  position: relative;
 }
 .top10Aear .title a {
   position: absolute;
   right: 10px;
-  top: 6px;
+  top: 2.5vw;
   font-weight: lighter;
 }
 .top10Aear .top10Box {
@@ -12509,7 +12508,6 @@ span.important {
   line-height: 25px;
   background: #2d77c8;
   margin-top: 2vw;
-  color: #000;
 }
 
 .favouriteModule {
@@ -14423,4 +14421,147 @@ span.important {
   100% {
     background: url(https://banner.bw88.io/h5/img/rabbitboy-a.png) no-repeat center/cover;
   }
+}
+.titleBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: -webkit-gradient(linear, left top, left bottom, from(#4dc4ff), to(#3097ff));
+  background: linear-gradient(to bottom, #4dc4ff 0%, #3097ff 100%);
+  border-radius: 5px 5px 0 0;
+  padding: 0 15px;
+}
+.titleBox .title {
+  padding: 8px 0;
+  text-align: center;
+}
+
+.recently {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 8px 8px 8px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  border: 1px solid #414F6B;
+  border-radius: 3px;
+  padding: 2vw 2vw 5vw;
+}
+.recently .swiper-button-next, .recently .swiper-button-prev {
+  background: #112240;
+  font-family: "icomoon";
+  width: 35px;
+  height: 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 50%;
+  top: calc(50% + 1vw);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+.recently .swiper-button-next::before, .recently .swiper-button-prev::before {
+  content: "\ea40";
+  color: #fff;
+}
+.recently .swiper-button-next::after, .recently .swiper-button-prev::after {
+  display: none;
+}
+.recently .swiper-button-next {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.recently .swiper-slide {
+  cursor: pointer;
+  padding-top: 10vw;
+  margin-top: -2vw;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+.recently-game {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(183, 229, 255, 0)), color-stop(56.77%, rgba(72, 188, 255, 0.2)), to(rgba(71, 187, 255, 0.78)));
+  background: linear-gradient(180deg, rgba(183, 229, 255, 0) 0%, rgba(72, 188, 255, 0.2) 56.77%, rgba(71, 187, 255, 0.78) 100%);
+  border-radius: 7px;
+  font-weight: bold;
+  color: #fff;
+  padding: 5vw;
+  position: relative;
+}
+.recently-game > div:first-child {
+  margin-top: -10vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.recently-game.active {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+}
+.recently-game.active .under {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.recently-game .under {
+  display: none;
+  position: absolute;
+  top: calc(50% + 4vw);
+  left: calc(50% - 23.5vw);
+  z-index: 1;
+  background: rgba(165, 159, 159, 0.8);
+  border-radius: 1vw;
+  color: white;
+  font-weight: normal;
+  font-size: 3vw;
+  width: 41vw;
+  height: 12vw;
+  padding: 0 3vw;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.recently-image {
+  border-radius: 15px;
+  width: 45vw;
+}
+.recently-brand {
+  height: 55px;
+  width: auto;
+  max-width: 26vw;
+  -webkit-filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
+          filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
+}
+.recently-title {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }/*# sourceMappingURL=style.css.map */
