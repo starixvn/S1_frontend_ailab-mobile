@@ -76,7 +76,7 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 				</ul>
 				<ul className="viptable-item-text">
 					<li>{i18n.lbl_WithdrawalLimitation}</li>
-					<li>{selectedVipTableData?.withdrawalMin.split(".")[0]}</li>
+					<li>{selectedVipTableData?.withdrawalMax.split(".")[0]}</li>
 				</ul>
 				<ul className="viptable-item-text">
 					<li>{i18n.lbl_DAILY_TRANSACTIONS_COUNT}</li>
