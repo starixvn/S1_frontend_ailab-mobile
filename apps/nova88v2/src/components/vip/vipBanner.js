@@ -75,7 +75,9 @@ const VipBanner = ({ i18n, userInfo, vipBanner }) => {
 					</div>
 					<div className="viprule-item">
 						<span>
-							{capitalizeFirstLetter(i18n.lbl_Vip_Special_Rebate)}
+							{capitalizeFirstLetter(
+								i18n.lbl_Vip_Special_Rebate_UP_TO
+							)}
 						</span>
 						<span>
 							{rebateCategoryList &&
