@@ -1,7 +1,6 @@
 import React from "react";
 import { Router } from "@reach/router";
 import MyWallet from "../pages/wallet";
-
 import Casino from "../pages/casino";
 
 import path, { defSpecialPath } from "../path";
@@ -75,7 +74,6 @@ const RouteComponents = () => {
 			</Home>
 			<ForgetPwd path={`/:langId/${path.forgetPassword.root}`} />
 			<ResetPwd path={`/:langId/${path.resetPassword.root}`} />
-
 			<Casino path={`/:langId/${path.casino.root}`} />
 			<Casino path={`/:langId/${path.casino.root}/:tpId`} />
 			<Setting path={`/:langId/${path.setting.root}`} />

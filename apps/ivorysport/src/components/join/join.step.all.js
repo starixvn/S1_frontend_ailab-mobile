@@ -16,7 +16,6 @@ const JoinStepAll = () => {
 	const [userValue, setUserValue] = useState(initValue);
 	const [hintStatus, setHintStatus] = useState(initStatus);
 	const [recaptchaInfo, setRecaptchaInfo] = useState({});
-
 	const lineUserId = getLocalStorage("lineUser");
 
 	useEffect(() => {

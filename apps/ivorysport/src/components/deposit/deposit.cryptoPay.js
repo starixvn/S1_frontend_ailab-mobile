@@ -30,7 +30,6 @@ const Main = props => {
 	const [selChannel, setSelChannel] = useState({});
 	const [pageVerify, setPageVerify] = useState(true);
 	const [groupList, setGroupList] = useState([]);
-
 	const isMountedRef = useRef(null);
 	const {
 		amount,

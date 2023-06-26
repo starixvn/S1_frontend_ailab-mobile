@@ -20,7 +20,6 @@ const AppDownloadHint = ({ i18n, root, appHint, setAppHint }) => {
 	return root && appHint ? (
 		<div className="appdownload active">
 			<button className="icon icon-close" onClick={handleDownloadHint} />
-
 			<div>
 				<div>{i18n.lbl_DownloadAppNow}</div>
 				<div>{i18n.lbl_DownloadAppHint}</div>

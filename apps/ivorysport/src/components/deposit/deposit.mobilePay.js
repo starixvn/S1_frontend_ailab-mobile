@@ -37,7 +37,6 @@ const Payment = props => {
 	const [selGroup, setSelGroup] = useState(null);
 	const [selChannel, setChannel] = useState({});
 	const [channelList, setChannelList] = useState([]);
-
 	const [payAccount, setPayAccount] = useState({ value: "", tip: "" });
 
 	const { showTips, showTipHandler } = useTip();

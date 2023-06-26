@@ -18,7 +18,6 @@ const HeaderTitle = ({ title = "", link = "", titleClass = "title", navBar }) =>
 
 const Header = ({
 	title,
-
 	filter,
 	children,
 	link,

@@ -11,12 +11,10 @@ const HeaderShortcut = ({ i18n }) => {
 					<i className="icon icon-deposit" />
 					<span>{i18n.lbl_Deposit}</span>
 				</Link>
-
 				<Link to={path.withdrawal.root}>
 					<i className="icon icon-withdrawal" />
 					<span>{i18n.lbl_Withdrawal}</span>
 				</Link>
-
 				<Link to={path.statement.root}>
 					<i className="icon icon-history" />
 					<span>{i18n.lbl_Statement}</span>

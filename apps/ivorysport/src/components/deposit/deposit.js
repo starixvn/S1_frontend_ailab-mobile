@@ -25,7 +25,6 @@ import {
 } from "../common/common";
 import ImportantNote from "./importantNote";
 import UserPaymentSwitch, { useGetUserPaymentData } from "./userPaymentData";
-
 import Balance from "./deposit.balance";
 import { defPayType } from "./deposit.def";
 import Options from "./deposit.options";
