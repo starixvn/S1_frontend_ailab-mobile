@@ -3,6 +3,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@300;400;600&display=swap");
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -45,7 +46,7 @@ button {
   border: none;
   padding: 0;
   outline: none;
-  font-family: "Microsoft YaHei", sans-serif;
+  font-family: "Microsoft YaHei", "Noto Sans Khmer", sans-serif;
   color: white;
 }
 
@@ -1090,7 +1091,7 @@ body, html {
   background: white;
   height: 100%;
   font-size: 3vw;
-  font-family: "Microsoft YaHei", sans-serif;
+  font-family: "Microsoft YaHei", "Noto Sans Khmer", sans-serif;
   color: white;
 }
 
@@ -1840,7 +1841,6 @@ main .gameList > div > div img, main .gameList > div > a img, main .gameList > d
 }
 main .gameList > div > div img + div, main .gameList > div > a img + div, main .gameList > div > button img + div, main .gameList > a > div img + div, main .gameList > a > a img + div, main .gameList > a > button img + div, main .gameList > button > div img + div, main .gameList > button > a img + div, main .gameList > button > button img + div {
   position: absolute;
-  bottom: 1vw;
   margin: auto;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1848,6 +1848,8 @@ main .gameList > div > div img + div, main .gameList > div > a img + div, main .
   width: 76%;
   color: #5574A7;
   padding: 0 12%;
+  bottom: 1vw;
+  max-height: 5vw;
 }
 main .gameList .icon-new {
   position: absolute;
@@ -2060,7 +2062,7 @@ footer > a .icon-envelope {
 footer > a span {
   white-space: nowrap;
   position: absolute;
-  bottom: 1vw;
+  bottom: 0.5vw;
 }
 footer > a.active {
   border-bottom: 2px solid #FF5E00;
@@ -4015,13 +4017,22 @@ footer > a.active .circleAnimation::after {
   margin-right: 2vw;
 }
 .infoModule .qrCode {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 35vw;
+  height: 35vw;
+  overflow: hidden;
   margin: 2vw auto;
   padding: 5px;
   background: rgba(198, 212, 241, 0.8);
 }
 .infoModule .qrCode svg {
-  width: 35vw;
-  height: 35vw;
+  width: auto;
+  height: 100%;
   display: block;
 }
 
@@ -8587,6 +8598,7 @@ span.important {
 }
 .license div img {
   margin-left: 1vw;
+  max-width: 24vw;
 }
 .license div:nth-child(2) {
   display: -webkit-box;
@@ -9034,6 +9046,7 @@ span.important {
   list-style: decimal;
   line-height: 6vw;
   margin-left: 3vw;
+  word-wrap: break-word;
 }
 .important li span, .important li a {
   font-weight: bold;
@@ -9286,6 +9299,28 @@ span.important {
   height: 37vw;
   background: url(https://banner.0814media.net/h5/img/homepage/jpotbg-a.png) no-repeat 100%/cover;
 }
+.jpot.active {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+  pointer-events: none;
+}
+.jpot.active .jpot-btn, .jpot.active .number {
+  -webkit-filter: brightness(0.7);
+          filter: brightness(0.7);
+}
+.jpot.active .under {
+  display: block;
+}
+.jpot .under {
+  display: none;
+  position: absolute;
+  right: 2vw;
+  bottom: 3vw;
+  font-size: 3vw;
+  color: #fff;
+  -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.9));
+          filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.9));
+}
 .jpot img {
   width: 100%;
 }
@@ -9378,7 +9413,8 @@ span.important {
   font-weight: bold;
   background: -webkit-gradient(linear, left top, right top, color-stop(30%, #ff5e00), to(#f39519));
   background: linear-gradient(90deg, #ff5e00 30%, #f39519 100%);
-  padding: 1vw 3vw 1.5vw;
+  padding: 0 3vw;
+  height: 6vw;
   border-radius: 5vw;
 }
 
@@ -10263,7 +10299,7 @@ span.important {
   border-radius: 5px;
   padding: 1vw;
   color: white;
-  font-family: "Microsoft YaHei", sans-serif;
+  font-family: "Microsoft YaHei", "Noto Sans Khmer", sans-serif;
   font-size: xx-small;
   text-align: center;
 }
@@ -10700,7 +10736,7 @@ span.important {
   margin-bottom: 2vw;
 }
 .wheelEvent .info .title div:not(.title) {
-  font-family: "Microsoft YaHei", sans-serif;
+  font-family: "Microsoft YaHei", "Noto Sans Khmer", sans-serif;
   font-weight: normal;
   font-size: 3vw;
   margin-bottom: 0;
@@ -10710,7 +10746,7 @@ span.important {
   margin: 10vw auto;
 }
 .wheelEvent .info > div li {
-  font-family: "Microsoft YaHei", sans-serif;
+  font-family: "Microsoft YaHei", "Noto Sans Khmer", sans-serif;
   font-weight: normal;
   font-size: 3vw;
   margin: 0 auto 0;
@@ -11317,6 +11353,9 @@ span.important {
 }
 .flag.bd:before {
   background: url(https://banner.0814media.net/desktop/img/flag/bd.jpg) no-repeat top left/cover;
+}
+.flag.kh:before {
+  background: url(https://banner.0814media.net/desktop/img/flag/kh.jpg) no-repeat top left/cover;
 }
 .flag.gb:before {
   background: url(https://banner.0814media.net/desktop/img/flag/gb.jpg) no-repeat top left/cover;
@@ -12269,7 +12308,7 @@ span.important {
   margin: 2vw 1vw;
 }
 .duitnowPayPop .pop > div.popTxt .sisa span {
-  font-size: 14px;
+  font-size: 3.5vw;
   color: #233d67;
   font-weight: normal;
   padding: 1vw 2vw;
@@ -12324,11 +12363,24 @@ span.important {
   border-radius: 3px;
 }
 .duitnowPayPop .pop > div.popTxt .guide .qrCode {
-  margin: 1vw 0;
-}
-.duitnowPayPop .pop > div.popTxt .guide .qrCode svg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 53vw;
   height: 53vw;
+  background: rgba(198, 212, 241, 0.8);
+  overflow: hidden;
+  margin: 1vw 0;
+}
+.duitnowPayPop .pop > div.popTxt .guide .qrCode img, .duitnowPayPop .pop > div.popTxt .guide .qrCode svg {
+  width: auto !important;
+  height: 90% !important;
 }
 .duitnowPayPop .pop > div.popTxt .guide .qrCode path:nth-child(2) {
   fill: #EE2968;
@@ -12899,122 +12951,29 @@ input:-webkit-autofill:active {
   display: none;
 }
 
-.recently {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 0 auto;
-  overflow: hidden;
-  width: calc(100% - 5vw);
-  position: relative;
-  cursor: pointer;
-}
-.recently .swiper-button-next, .recently .swiper-button-prev {
-  background: #112240;
-  font-family: "icomoon";
-  width: 35px;
-  height: 35px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  border-radius: 50%;
-  top: calc(50% + 1vw);
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-.recently .swiper-button-next::before, .recently .swiper-button-prev::before {
-  content: "\ea40";
-  color: #fff;
-}
-.recently .swiper-button-next::after, .recently .swiper-button-prev::after {
-  display: none;
-}
-.recently .swiper-button-next {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-}
-.recently .swiper-slide {
-  cursor: pointer;
-  padding-top: 10vw;
-  margin-top: -2vw;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-.recently .swiper-slide:hover .recently-game {
-  background: #5574a7;
-  color: #fff;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-.recently .swiper-slide:hover .recently-game.active {
-  background: #efefef;
-  color: #233d67;
-  cursor: default;
-}
-.recently-game {
-  background: #efefef;
-  border-radius: 7px;
-  font-weight: bold;
-  color: #233d67;
-  padding: 5vw;
-  position: relative;
-}
-.recently-game > div:first-child {
-  margin-top: -10vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.recently-game.active {
-  -webkit-filter: grayscale(1) brightness(0.9);
-          filter: grayscale(1) brightness(0.9);
-}
-.recently-game.active .under {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.recently-game .under {
-  display: none;
+.cambodia::before {
+  content: "";
+  display: block;
+  width: 15vw;
+  height: 16vw;
+  -webkit-animation: rabbitboy 1s infinite;
+          animation: rabbitboy 1s infinite;
   position: absolute;
-  top: calc(50% - 2vw);
-  left: calc(50% - 24vw);
-  z-index: 1;
-  background: #555;
-  border-radius: 1vw;
-  color: white;
-  font-weight: normal;
-  font-size: 3vw;
-  width: 42vw;
-  height: 12vw;
-  padding: 0 3vw;
-  text-align: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  bottom: -1.1vw;
+  left: 25vw;
+  z-index: 9;
 }
-.recently-image {
-  border-radius: 15px;
-  width: 45vw;
+
+@-webkit-keyframes rabbitboy {
+  0% {
+    background: url(https://banner.0814media.net/h5/img/rabbitboy-a.png) no-repeat center/cover;
+  }
+  50% {
+    background: url(https://banner.0814media.net/h5/img/rabbitboy-b.png) no-repeat center/cover;
+  }
+  100% {
+    background: url(https://banner.0814media.net/h5/img/rabbitboy-a.png) no-repeat center/cover;
+  }
 }
 
 @keyframes rabbitboy {
