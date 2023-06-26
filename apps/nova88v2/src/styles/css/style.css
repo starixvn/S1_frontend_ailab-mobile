@@ -13020,4 +13020,136 @@ input:-webkit-autofill:active {
   position: absolute;
   top: 1vw;
   left: -2.2vw;
+}
+
+.recently {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  overflow: hidden;
+  width: calc(100% - 5vw);
+  position: relative;
+  cursor: pointer;
+}
+.recently .swiper-button-next, .recently .swiper-button-prev {
+  background: #112240;
+  font-family: "icomoon";
+  width: 35px;
+  height: 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 50%;
+  top: calc(50% + 1vw);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+.recently .swiper-button-next::before, .recently .swiper-button-prev::before {
+  content: "\ea40";
+  color: #fff;
+}
+.recently .swiper-button-next::after, .recently .swiper-button-prev::after {
+  display: none;
+}
+.recently .swiper-button-next {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.recently .swiper-slide {
+  cursor: pointer;
+  padding-top: 10vw;
+  margin-top: -2vw;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+.recently .swiper-slide:hover .recently-game {
+  background: #5574a7;
+  color: #fff;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+.recently .swiper-slide:hover .recently-game.active {
+  background: #efefef;
+  color: #233d67;
+  cursor: default;
+}
+.recently-game {
+  background: #efefef;
+  border-radius: 7px;
+  font-weight: bold;
+  color: #233d67;
+  padding: 5vw;
+  position: relative;
+}
+.recently-game > div:first-child {
+  margin-top: -10vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.recently-game.active {
+  -webkit-filter: grayscale(1) brightness(0.9);
+          filter: grayscale(1) brightness(0.9);
+}
+.recently-game.active .under {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.recently-game .under {
+  display: none;
+  position: absolute;
+  top: calc(50% - 2vw);
+  left: calc(50% - 24vw);
+  z-index: 1;
+  background: #555;
+  border-radius: 1vw;
+  color: white;
+  font-weight: normal;
+  font-size: 3vw;
+  width: 42vw;
+  height: 12vw;
+  padding: 0 3vw;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.recently-image {
+  border-radius: 15px;
+  width: 45vw;
+}
+.recently-brand {
+  height: 55px;
+  width: auto;
+  max-width: 26vw;
+  -webkit-filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
+          filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
+}
+.recently-title {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }/*# sourceMappingURL=style.css.map */
