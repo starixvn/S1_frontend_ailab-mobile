@@ -142,7 +142,7 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 						{capitalizeFirstLetter(i18n.lbl_Vip_LiveCasino_Rebate)}
 					</li>
 					<li className="">
-						{selectedVipTableData?.rebateCategory[1]?.percentage}%
+						{selectedVipTableData?.rebateCategory[2]?.percentage}%
 					</li>
 				</ul>
 				<ul className="viptable-item-text">
@@ -150,7 +150,7 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 						{capitalizeFirstLetter(i18n.lbl_Vip_SlotFishing_Rebate)}
 					</li>
 					<li className="">
-						{selectedVipTableData?.rebateCategory[2]?.percentage}%
+						{selectedVipTableData?.rebateCategory[1]?.percentage}%
 					</li>
 				</ul>
 				<ul className="viptable-item-text">

@@ -213,6 +213,8 @@
 	"lbl_InaccessibleWithoutPermission": "inaccessible without permission",
 	"lbl_RemindForName": "FULL NAME must match with your valid ID name, it is forbidden to fill in special symbols",
 
+	"lbl_RemindForName": "FULL NAME must match with your valid ID name, it is forbidden to fill in special symbols",
+
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Odds",
 	"lbl_Handicap": "Hdp",
