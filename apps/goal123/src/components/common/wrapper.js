@@ -12,7 +12,7 @@ import {
 import { IS_LOGGED_IN } from "../../service/auth";
 import themeList from "../../datas/theme";
 import useInterval from "../hook/useInterval";
-import { getUrlParameter, setCookie, deleteCookie } from "./common";
+import { getUrlParameter, setCookie, deleteCookie, readCookie } from "./common";
 import i18nConfig from "../../i18n/config";
 import { defSpecialPath } from "../../path";
 import { GET_LANG_ID } from "../../service/language";
@@ -35,7 +35,7 @@ export const Wrapper = ({ children }) => {
 
 	const [userInfo, setUserInfo] = useState({
 		isLogin: null,
-		langId: "vn",
+		langId: readCookie(siteInfo()?.langCookie) || "vn",
 		userName: i18n.lbl_Guest
 	});
 	const [popBox, setPopBox] = useState({
