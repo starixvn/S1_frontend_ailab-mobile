@@ -11,7 +11,7 @@ import {
 } from "../common/context";
 import path from "../../path";
 import { api_SetLanguage } from "../../service/api/account";
-import { number_format } from "../common/common";
+import { number_format, setCookie } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
 import { defGameInfo } from "../../datas/productList";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
@@ -640,6 +640,7 @@ const LangSwitch = ({ setPopBox, userInfo, setUserInfo }) => {
 				}));
 			}
 		}
+		setCookie(siteInfo(language).langCookie, language);
 	};
 
 	return (
