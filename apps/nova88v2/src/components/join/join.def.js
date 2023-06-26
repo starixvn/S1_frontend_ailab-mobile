@@ -1,16 +1,16 @@
 export const initValue = {
 	UserName: "",
 	Password: "",
+	ConfirmPwd: "",
+	RealName: "",
 	Email: "",
 	CurrencyIdx: null,
 	AffiliateId: "",
 	Checkbox: true,
-	SpecialBonusCode: "",
-	Phone: "",
-	RealName: "",
-	Birth_d: 0,
-	Birth_m: 0,
-	Birth_y: 0
+	Phone: ""
+	// Birth_d: 0,
+	// Birth_m: 0,
+	// Birth_y: 0
 };
 
 export const initStatus = {
@@ -19,6 +19,14 @@ export const initStatus = {
 		msg: ""
 	},
 	Password: {
+		checked: null,
+		msg: ""
+	},
+	ConfirmPwd: {
+		checked: null,
+		msg: ""
+	},
+	RealName: {
 		checked: null,
 		msg: ""
 	},
@@ -41,19 +49,11 @@ export const initStatus = {
 	Checkbox: {
 		checked: null,
 		msg: ""
-	},
-	SpecialBonusCode: {
-		checked: null,
-		msg: ""
-	},
-	RealName: {
-		checked: null,
-		msg: ""
-	},
-	Birth: {
-		checked: null,
-		msg: ""
 	}
+	// Birth: {
+	// 	checked: null,
+	// 	msg: ""
+	// }
 };
 
 export const currencyToAreacode = {

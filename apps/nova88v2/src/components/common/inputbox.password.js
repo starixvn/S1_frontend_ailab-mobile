@@ -35,7 +35,6 @@ const Inputbox = props => {
 							!props.showPsw ? "icon-eye-blocked" : "icon-eye"
 						}`}
 						onClick={props.showPswHandler}
-						data-testid="Password_show"
 					/>
 					{props.showInfoIcon && (
 						<i
@@ -71,7 +70,7 @@ Inputbox.defaultProps = {
 	clickInfo: null,
 	warningMsg: "",
 	testAttr: "",
-	showInfoIcon: true
+	showInfoIcon: null
 };
 
 Inputbox.propTypes = {

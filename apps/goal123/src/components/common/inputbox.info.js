@@ -20,7 +20,8 @@ const Inputbox = ({
 	hideInfoBtn,
 	isShowPaste,
 	EditFieldPaste,
-	pasteCol
+	pasteCol,
+	areaCode
 }) => {
 	const handlePaste = () => {
 		navigator.clipboard
@@ -34,6 +35,7 @@ const Inputbox = ({
 				className={`inputBox ${btnStatus === false ? "error" : ""}`}
 				data-testid={`${testAttr}_inputBox`}>
 				{icon ? <i className={icon} /> : null}
+				{areaCode && <div className="countryCode">{areaCode}</div>}
 				<input
 					data-testid={`${testAttr}_ipt`}
 					type={inputType ?? "text"}
@@ -87,7 +89,8 @@ Inputbox.defaultProps = {
 	hideInfoBtn: false,
 	isShowPaste: false,
 	EditFieldPaste: null,
-	pasteCol: null
+	pasteCol: null,
+	areaCode: null
 };
 
 Inputbox.propTypes = {
@@ -109,7 +112,8 @@ Inputbox.propTypes = {
 	hideInfoBtn: PropTypes.bool,
 	isShowPaste: PropTypes.bool,
 	EditFieldPaste: PropTypes.func,
-	pasteCol: PropTypes.string
+	pasteCol: PropTypes.string,
+	areaCode: PropTypes.string
 };
 
 export const IptStatus = ({ btnStatus, clickInfo, hideInfoBtn }) => {
