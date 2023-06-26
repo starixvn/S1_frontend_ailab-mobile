@@ -20,6 +20,7 @@ export const errorPageUrl = langId =>
 export const siteInfo = langId => {
 	return {
 		siteName: "Goal123",
+		langCookie: "goal123LangId",
 		affiliateLink: getAffiliate(langId),
 		siteDefaultLang: "vn",
 		siteLangList: ["en", "vn"],

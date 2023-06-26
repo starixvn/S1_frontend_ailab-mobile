@@ -20,6 +20,7 @@ export const errorPageUrl = langId =>
 export const siteInfo = langId => {
 	return {
 		siteName: "Bwing",
+		langCookie: "bwingLangId",
 		affiliateLink: getAffiliate(langId),
 		siteDefaultLang: "vn",
 		siteLangList: ["en", "vn"],

@@ -20,6 +20,8 @@ import ShortcutBar from "./shortcutBar";
 import LangDropdown from "../common/dropdown.language";
 import { api_SetLanguage } from "../../service/api/account";
 import { useGetBalance } from "./hook";
+import { setCookie } from "../common/common";
+import { siteInfo } from "../../config";
 
 const Content = ({ handleSideMenuPanel, isOpenSideMenu }) => {
 	const { i18n } = useContext(i18nContext);
@@ -57,6 +59,8 @@ const Content = ({ handleSideMenuPanel, isOpenSideMenu }) => {
 
 			setUserInfo(prev => ({ ...prev, langId }));
 		}
+
+		setCookie(siteInfo(langId).langCookie, langId);
 	};
 
 	return (
