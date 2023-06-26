@@ -9,7 +9,8 @@ import {
 	api_GetSiteCurrencyList,
 	api_GetBanner,
 	api_site_GetAffiliateAgent,
-	api_site_Signup
+	api_site_Signup,
+	api_ExistsEmail
 } from "../../service/api/site";
 import { api_GetCustProfile } from "../../service/api/accountStrict";
 import { getUrlParameter, passwordCheck, getCookie } from "../common/common";
@@ -26,7 +27,7 @@ import path from "../../path";
 import config from "../../config";
 import PromoPopup from "./join.promotion";
 import Logo from "../common/logo";
-import { initValue, initStatus, reCaptchaEnum } from "./join.def";
+import { initValue, initStatus, reCaptchaEnum, VN_AREACODE } from "./join.def";
 import useShieldCheck from "../hook/useShieldCheck";
 
 const defaultLangId = GET_LANG_ID();
@@ -165,6 +166,14 @@ const Join = () => {
 			result = await userNameCheck({ val });
 		} else if (col === "Password") {
 			result = passwordCheck({ val, i18n });
+		} else if (col === "ConfirmPwd") {
+			result = confirmPwdCheck({ val });
+		} else if (col === "RealName") {
+			result = realNameCheck({ val });
+		} else if (col === "Phone") {
+			result = phoneCheck({ val });
+		} else if (col === "Email") {
+			result = await emailCheck({ val });
 		}
 
 		setInputStatus(prev => ({
@@ -206,11 +215,81 @@ const Join = () => {
 		return { checked, msg };
 	};
 
+	const confirmPwdCheck = ({ val }) => {
+		let checked = false;
+		let msg = "";
+
+		if (val === "") {
+			checked = false;
+			msg = i18n.msg_ConfirmPwdReq;
+		} else if (val !== userValue.Password) {
+			checked = false;
+			msg = i18n.msg_ConfirmPwdNotMatch;
+		} else {
+			checked = true;
+			msg = "";
+		}
+
+		return { checked, msg };
+	};
+
+	const realNameCheck = ({ val }) => {
+		const checked = val !== "";
+		const msg = val === "" ? i18n.msg_RealNameReq : "";
+		return { checked, msg };
+	};
+
+	const phoneCheck = ({ val }) => {
+		let checked = true;
+		let msg = "";
+		const regx = /^[0-9\s]*$/;
+
+		if (!val) {
+			checked = false;
+			msg = i18n.lbl_PhoneRequired;
+		} else if (val.length < 9 || !regx.test(val)) {
+			checked = false;
+			msg = i18n.lbl_PhoneTooltip;
+		}
+		return { checked, msg };
+	};
+
+	const emailCheck = async ({ val }) => {
+		let checked = true;
+		let msg = "";
+		const regx = /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+
+		if (!val) {
+			checked = false;
+			msg = i18n.msg_EmailReq;
+		} else if (!regx.test(val)) {
+			checked = false;
+			msg = i18n.msg_MailWrongFormat;
+		} else {
+			const res = await api_ExistsEmail({ Email: val });
+			if (res.data?.errorCode === 0 && res.data?.data === true) {
+				checked = false;
+				msg = i18n.msg_MailExisted;
+			} else if (res.data.errorCode !== 0) {
+				setPopBox({
+					isOpen: true,
+					content: `[${res.data.errorCode}] ${res.data.message}`
+				});
+			}
+		}
+
+		return { checked, msg };
+	};
+
 	const EditField = ({ col }, e) => {
 		let val = col === "Checkbox" ? !userValue.Checkbox : e.target.value;
 
 		if (col === "UserName") {
 			val = val.replace(/[\W_]/g, "");
+		} else if (col === "RealName") {
+			val = val.replace(/[^a-zA-Z\s]/g, "");
+		} else if (col === "Phone") {
+			val = val.replace(/[^0-9]+/g, "");
 		}
 
 		setUserValue(prev => ({
@@ -241,11 +320,19 @@ const Join = () => {
 		let checked = null;
 		const UserNameCheck = await userNameCheck({ val: userValue.UserName });
 		const PasswordCheck = passwordCheck({ val: userValue.Password, i18n });
+		const ConfirmPwdCheck = confirmPwdCheck({ val: userValue.ConfirmPwd });
+		const RealNameCheck = realNameCheck({ val: userValue.RealName });
+		const PhoneCheck = phoneCheck({ val: userValue.Phone });
+		const EmailCheck = await emailCheck({ val: userValue.Email });
 		const reCaptchaCheck = reCaptchaToken !== "";
 
 		checked =
 			UserNameCheck.checked &&
 			PasswordCheck.checked &&
+			ConfirmPwdCheck.checked &&
+			RealNameCheck.checked &&
+			PhoneCheck.checked &&
+			EmailCheck.checked &&
 			userValue.Checkbox &&
 			reCaptchaCheck;
 
@@ -253,9 +340,12 @@ const Join = () => {
 			const regData = {
 				UserName: userValue.UserName,
 				Userpwd: userValue.Password,
+				RealName: userValue.RealName,
 				CurrencyId: siteCurrencyList[userValue.Currency]?.id,
+				PhoneNo: userValue.Phone,
+				Email: userValue.Email,
+				AreaCode: VN_AREACODE,
 				UserLang: defaultLangId,
-				PromoCode: userValue.SpecialBonusCode,
 				ReferralUrl: document.referrer,
 				ReCaptchaToken: reCaptchaToken
 			};
@@ -338,6 +428,10 @@ const Join = () => {
 				...prev,
 				UserName: UserNameCheck,
 				Password: PasswordCheck,
+				ConfirmPwd: ConfirmPwdCheck,
+				RealName: RealNameCheck,
+				Phone: PhoneCheck,
+				Email: EmailCheck,
 				Checkbox: {
 					checked: userValue.Checkbox,
 					msg:
@@ -422,11 +516,60 @@ const Join = () => {
 						btnStatus={inputStatus.Password.checked}
 						tip={inputStatus.Password.msg}
 						value={userValue.Password}
-						clickInfo={clickInfo.bind(this, {
-							col: "Password",
-							info: "lbl_PasswordTooltip"
-						})}
 						testAttr="Password"
+					/>
+					<InputboxPWD
+						placeholder={i18n.lbl_ConfirmPassword}
+						onBlur={checkValue.bind(this, { col: "ConfirmPwd" })}
+						onChange={EditField.bind(this, { col: "ConfirmPwd" })}
+						btnStatus={inputStatus.ConfirmPwd.checked}
+						tip={inputStatus.ConfirmPwd.msg}
+						value={userValue.ConfirmPwd}
+						testAttr="ConfirmPwd"
+					/>
+					<Inputbox
+						icon="icon icon-member"
+						placeholder={i18n.lbl_RealName}
+						onBlur={checkValue.bind(this, { col: "RealName" })}
+						onChange={EditField.bind(this, { col: "RealName" })}
+						btnStatus={inputStatus.RealName.checked}
+						tip={inputStatus.RealName.msg}
+						value={userValue.RealName}
+						clickInfo={clickInfo.bind(this, {
+							col: "RealName",
+							info: "lbl_RemindForName"
+						})}
+						testAttr="RealName"
+					/>
+					<Inputbox
+						icon="icon icon-phone"
+						inputType="tel"
+						placeholder={i18n.lbl_Phone}
+						onBlur={checkValue.bind(this, { col: "Phone" })}
+						onChange={EditField.bind(this, { col: "Phone" })}
+						btnStatus={inputStatus.Phone.checked}
+						tip={inputStatus.Phone.msg}
+						value={userValue.Phone}
+						clickInfo={clickInfo.bind(this, {
+							col: "Phone",
+							info: "lbl_PhoneTooltip"
+						})}
+						areaCode={VN_AREACODE}
+						testAttr="Phone"
+					/>
+					<Inputbox
+						icon="icon icon-email"
+						placeholder={i18n.lbl_Email}
+						onBlur={checkValue.bind(this, { col: "Email" })}
+						onChange={EditField.bind(this, { col: "Email" })}
+						btnStatus={inputStatus.Email.checked}
+						tip={inputStatus.Email.msg}
+						value={userValue.Email}
+						clickInfo={clickInfo.bind(this, {
+							col: "Email",
+							info: "lbl_EmailToolTip"
+						})}
+						testAttr="Email"
 					/>
 					<Inputbox
 						icon="icon icon-affiliate"
