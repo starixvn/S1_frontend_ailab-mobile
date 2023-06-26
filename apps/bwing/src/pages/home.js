@@ -32,6 +32,7 @@ import NewYear, {
 	defEventPeriod as NewYearEventPeriod
 } from "../components/common/popbox.newYear";
 import useInterval from "../components/hook/useInterval";
+import RecentlyViewedGameList from "../components/home/recentlyViewedGameList";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -264,6 +265,7 @@ const IndexPage = () => {
 			<EventSwipper />
 			<GamePanel i18n={i18n} userInfo={userInfo} />
 			<HotGameSwipper i18n={i18n} userInfo={userInfo} />
+			{userInfo.isLogin && <RecentlyViewedGameList />}
 			<PlaytechJactpot />
 			<Top10Winner i18n={i18n} setPopBox={setPopBox} />
 			<Streaming />
