@@ -36,7 +36,7 @@ describe("Announcement tests", () => {
 		setPopBox: () => ({}),
 		i18n: {},
 		config: {
-			apiURL: "http://www.n88dev.com"
+			apiURL: "http://stag.ivorysport.com"
 		}
 	};
 	let tree;

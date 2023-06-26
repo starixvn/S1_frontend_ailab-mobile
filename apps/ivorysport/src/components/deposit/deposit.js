@@ -25,7 +25,6 @@ import {
 } from "../common/common";
 import ImportantNote from "./importantNote";
 import UserPaymentSwitch, { useGetUserPaymentData } from "./userPaymentData";
-import { useGetDepositPromotionList } from "./promoList";
 import Balance from "./deposit.balance";
 import { defPayType } from "./deposit.def";
 import Options from "./deposit.options";
@@ -61,11 +60,6 @@ const Panel = () => {
 	const [recentDatas, setRecentDatas] = useState([]);
 	const [pageVerify, setPageVerify] = useState(true);
 
-	const { promoList } = useGetDepositPromotionList({
-		langId: userInfo.langId,
-		i18n,
-		setPopBox
-	});
 	const depositPromoMsg = userInfo?.phoneVerified
 		? ""
 		: i18n.lbl_Nova_DepositPromoMsg1;
@@ -173,7 +167,6 @@ const Panel = () => {
 			userPaymentData={_userPaymentData}
 			handleUserPaymentData={handleUserPaymentData}
 			userPaymentSwitch={userPaymentSwitch}
-			promoList={promoList}
 			depositPromoMsg={depositPromoMsg}
 			asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
 			checkDepositSpecialCode={checkDepositSpecialCode}
@@ -188,7 +181,6 @@ const Panel = () => {
 				userPaymentData={_userPaymentData}
 				handleUserPaymentData={handleUserPaymentData}
 				userPaymentSwitch={userPaymentSwitch}
-				promoList={promoList}
 				depositPromoMsg={depositPromoMsg}
 				asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
 				checkDepositSpecialCode={checkDepositSpecialCode}
@@ -202,7 +194,6 @@ const Panel = () => {
 				userPaymentData={_userPaymentData}
 				handleUserPaymentData={handleUserPaymentData}
 				userPaymentSwitch={userPaymentSwitch}
-				promoList={promoList}
 				depositPromoMsg={depositPromoMsg}
 				asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
 				checkDepositSpecialCode={checkDepositSpecialCode}
@@ -216,7 +207,6 @@ const Panel = () => {
 				userPaymentData={_userPaymentData}
 				handleUserPaymentData={handleUserPaymentData}
 				userPaymentSwitch={userPaymentSwitch}
-				promoList={promoList}
 				asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
 				checkDepositSpecialCode={checkDepositSpecialCode}
 			/>
@@ -228,7 +218,6 @@ const Panel = () => {
 				handleUserPaymentData={handleUserPaymentData}
 				payType={defPayType.cryptoPay}
 				paymentList={paymentList[defPayType.cryptoPay] ?? []}
-				promoList={promoList}
 				asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
 				checkDepositSpecialCode={checkDepositSpecialCode}
 			/>

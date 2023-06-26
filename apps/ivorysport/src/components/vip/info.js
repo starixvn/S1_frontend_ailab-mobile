@@ -33,10 +33,10 @@ const ENInfo = () => {
 	return (
 		<div className="vipInfo">
 			<div className="vipTitle">VIP Programme</div>
-			Nova88 has launched its VIP rewards program so that members could
-			indulge in good services, more rewards, and a better experience.
-			Discover greater perks and entitlements when your tier upgraded.
-			We&apos;re waiting for you!
+			IvorySport has launched its VIP rewards program so that members
+			could indulge in good services, more rewards, and a better
+			experience. Discover greater perks and entitlements when your tier
+			upgraded. We&apos;re waiting for you!
 			<div className="vipTitle">Overview</div>
 			We have classified the membership tiers to Vintage Club, Silver
 			Club, Gold Club, Titanium Club, Diamond Club and Nova Club. Enjoy
@@ -66,7 +66,7 @@ const MYInfo = () => {
 	return (
 		<div className="vipInfo">
 			<div className="vipTitle">Program VIP</div>
-			Nova88 telah melancarkan program ganjaran VIP supaya ahli boleh
+			IvorySport telah melancarkan program ganjaran VIP supaya ahli boleh
 			menikmati perkhidmatan yang lebih baik, dapat lebih banyak ganjaran
 			dan pengalaman yang lagi unggul. Nikmati faedah dan layanan yang
 			lebih hebat apabila anda naik taraf. Kami tunggu ketibaan anda!
@@ -87,7 +87,7 @@ const THInfo = () => {
 	return (
 		<div className="vipInfo">
 			<div className="vipTitle">โปรแกรมวีไอพี</div>
-			Nova88 ได้เปิดตัวโปรแกรม VIP Rewards
+			IvorySport ได้เปิดตัวโปรแกรม VIP Rewards
 			เพื่อให้สมาชิกสามารถเพลิดเพลินกับบริการที่ดีกว่าเดิมทั้งรางวัลที่มากยิ่งขี้นและประสบการณ์ที่ดียิ่งกว่า
 			พบกับสิทธิประโยชน์สุดพิเศษที่มากยิ่งขึ้นเมื่อท่านอัปเกรดเป็นสมาชิกระดับที่สูงขึ้น
 			เรารอคุณอยู่!
@@ -106,10 +106,10 @@ const IDInfo = () => {
 	return (
 		<div className="vipInfo">
 			<div className="vipTitle">Program VIP</div>
-			Nova88 telah meluncurkan program hadiah VIP sehingga member dapat
-			menikmati layanan dan pengalaman yang lebih baik dan lebih banyak
-			hadiah. Temukan keuntungan dan hak yang lebih besar saat level Anda
-			ditingkatkan. Nova88 menghargai loyalitas Anda!
+			IvorySport telah meluncurkan program hadiah VIP sehingga member
+			dapat menikmati layanan dan pengalaman yang lebih baik dan lebih
+			banyak hadiah. Temukan keuntungan dan hak yang lebih besar saat
+			level Anda ditingkatkan. IvorySport menghargai loyalitas Anda!
 			<div className="vipTitle">Keterangan</div>
 			Kami telah mengklasifikasikan tingkatan keanggotaan ke Klub Vintage,
 			Klub Silver, Klub Gold, Klub Titanium, Klub Diamond dan Klub Nova.
@@ -126,7 +126,7 @@ const HIInfo = () => {
 	return (
 		<div className="vipInfo">
 			<div className="vipTitle">वीआईपी कार्यक्रम</div>
-			Nova88 ने अपना वीआईपी पुरस्कार कार्यक्रम शुरू किया है ताकि सदस्य
+			IvorySport ने अपना वीआईपी पुरस्कार कार्यक्रम शुरू किया है ताकि सदस्य
 			अच्छी सेवाओं, अधिक पुरस्कारों और बेहतर अनुभव प्राप्त कर सकें। जब
 			आपका टियर अपग्रेड हो जाए तो अधिक से अधिक अनुलाभों और पात्रताओं की
 			खोज करें। हम आपका इंतज़ार कर रहे हैं!
@@ -146,7 +146,7 @@ const BDInfo = () => {
 	return (
 		<div className="vipInfo">
 			<div className="vipTitle">ভিআইপি কার্যক্রম</div>
-			Nova88 ভিআইপি পুরষ্কার কার্যক্রম চালু করেছে যেন সদস্যরা ভালো
+			IvorySport ভিআইপি পুরষ্কার কার্যক্রম চালু করেছে যেন সদস্যরা ভালো
 			পরিষেবা, বেশি পুরষ্কার এবং আরও ভালো অভিজ্ঞতা লাভ করতে পারেন। আপনার
 			স্তর আপগ্রেড হলে আরও বেশি সুবিধা এবং সুজোগ খুঁজে পাবেন। আমরা আপনার
 			জন্য অপেক্ষা করছি!

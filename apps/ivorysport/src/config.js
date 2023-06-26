@@ -2,21 +2,20 @@ import axios from "axios";
 import { validImgLang, defCurrenyId } from "./components/common/common";
 
 const siteName = "Ivorysport";
-export const siteId = 1;
+export const siteId = 5;
 
 export const errorPageUrl = langId =>
 	`https://error.0814media.net/404/index_${validImgLang(langId)}.html`;
 
-export const siteInfo = langId => {
+export const siteInfo = () => {
 	return {
 		siteName,
-		siteId: 1,
+		siteId: 5,
 		langCookie: "IvorysportLangId",
 		currencyCookie: "ivorysportCurrencyId",
 		siteDefaultLang: "en",
 		siteDefaultCurrencyId: defCurrenyId.MYR,
-		siteLangList: ["en", "cs", "th", "id", "vn"],
-		logo: "https://banner.ivorysport.com/h5/img/logo_en_w.png",
+		siteLangList: ["en", "cs", "th", "id", "vn", "my"],
 		description:
 			"Ivorysport is the world leading sportsbook offering one of the kind gambling experience in live betting covering all sports, casino, slots, keno, esports, rng casino, fantasy sports, virtual sports, lottery, live casino, live dealer, bingo, and racing."
 	};
@@ -40,15 +39,10 @@ const SiteURL =
 		: {
 				siteName,
 				appURL: "http://localhost:3000",
-				// apiURL: "http://localhost:60930",
-				// imgUrl: "http://localhost:60930",
-				// t_and_cURL: "http://localhost:60930",
-				// openURL: "http://localhost:60930"
-
 				apiURL: "",
-				imgUrl: "https://www.n88dev.com",
+				imgUrl: "http://stag.ivorysport.com",
 				t_and_cURL: "https://banner.ivorysport.com",
-				openURL: "https://www.n88dev.com",
+				openURL: "http://stag.ivorysport.com",
 				cloudImgURL
 		  };
 
