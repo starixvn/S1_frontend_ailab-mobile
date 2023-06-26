@@ -1311,6 +1311,10 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   padding: 11vw 4vw 4vw;
   width: calc(100% - 8vw) !important;
 }
+#popup.promospop .table-wrapper {
+  width: 100%;
+  overflow: scroll;
+}
 #popup.cryptoAddpop .popTxt .dropdown .btn {
   font-size: 3.5vw;
 }
@@ -2727,7 +2731,7 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   -webkit-transform: translateY(60%);
           transform: translateY(60%);
   left: 2vw;
-  top: -0.5vw;
+  top: 0.5vw;
   color: #64789b;
 }
 .inputBox i.icon.icon-cake, .worldcupEvent .ticket__container .inputBox-event i.icon.icon-cake {
@@ -2788,6 +2792,17 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   color: red;
   margin-right: 1vw;
   display: block;
+}
+.inputBox .icon-phone + .countryCode, .worldcupEvent .ticket__container .inputBox-event .icon-phone + .countryCode {
+  background: transparent;
+  border: 0;
+  position: absolute;
+  left: 6vw;
+  top: 2vw;
+  padding: 1.5vw;
+}
+.inputBox .icon-phone + .countryCode + input, .worldcupEvent .ticket__container .inputBox-event .icon-phone + .countryCode + input {
+  padding-left: 18vw;
 }
 
 .LoginRule {

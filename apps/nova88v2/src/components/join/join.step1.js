@@ -24,8 +24,9 @@ const JoinStep1 = ({
 	langId,
 	setStep
 }) => {
-	const [showingPsw, setShowingPsw] = useState({
-		Password: false
+	const [showingPwd, setShowingPwd] = useState({
+		Password: false,
+		ConfirmPwd: false
 	});
 	const [affiliateidExist, setAffiliateidExist] = useState("");
 
@@ -43,10 +44,10 @@ const JoinStep1 = ({
 	}, []);
 
 	const showPswHandler = ({ col }) => {
-		const pswStatus = !showingPsw[col];
-		setShowingPsw(prev => ({
+		const pwdStatus = !showingPwd[col];
+		setShowingPwd(prev => ({
 			...prev,
-			[col]: pswStatus
+			[col]: pwdStatus
 		}));
 	};
 
@@ -60,6 +61,14 @@ const JoinStep1 = ({
 			msg = result.msg;
 		} else if (col === "Password") {
 			const result = passwordCheck({ val });
+			checked = result.checked;
+			msg = result.msg;
+		} else if (col === "ConfirmPwd") {
+			const result = checkConfirmPwd({ val });
+			checked = result.checked;
+			msg = result.msg;
+		} else if (col === "RealName") {
+			const result = checkRealName({ val });
 			checked = result.checked;
 			msg = result.msg;
 		}
@@ -101,14 +110,48 @@ const JoinStep1 = ({
 		return { checked, msg };
 	};
 
+	const checkConfirmPwd = ({ val }) => {
+		let checked = false;
+		let msg = "";
+
+		if (val === "") {
+			checked = false;
+			msg = "msg_ConfirmPwdReq";
+		} else if (val !== userValue.Password) {
+			checked = false;
+			msg = "msg_ConfirmPwdNotMatch";
+		} else {
+			checked = true;
+			msg = "";
+		}
+
+		return { checked, msg };
+	};
+
+	const checkRealName = ({ val }) => {
+		const checked = val !== "";
+		const msg = val === "" ? i18n.msg_RealNameReq : "";
+		return { checked, msg };
+	};
+
 	const checkAll = async () => {
 		try {
 			const _usernameCheck = await usernameCheck(userValue.UserName);
 			const _passwordCheck = passwordCheck({
 				val: userValue.Password
 			});
+			const _confirmPwdCheck = passwordCheck({
+				val: userValue.ConfirmPwd
+			});
+			const _realNameCheck = checkRealName({
+				val: userValue.RealName
+			});
 
-			const checked = _usernameCheck.checked && _passwordCheck.checked;
+			const checked =
+				_usernameCheck.checked &&
+				_passwordCheck.checked &&
+				_confirmPwdCheck.checked &&
+				_realNameCheck.checked;
 
 			if (!checked) {
 				setHintStatus(prev => ({
@@ -120,6 +163,14 @@ const JoinStep1 = ({
 					Password: {
 						checked: _passwordCheck.checked,
 						msg: i18n[_passwordCheck.msg]
+					},
+					ConfirmPwd: {
+						checked: _confirmPwdCheck.checked,
+						msg: i18n[_confirmPwdCheck.msg]
+					},
+					RealName: {
+						checked: _realNameCheck.checked,
+						msg: _realNameCheck.msg
 					}
 				}));
 			}
@@ -154,8 +205,8 @@ const JoinStep1 = ({
 				<InputboxPWD
 					infoModule="infoModule"
 					icon="icon-key"
-					inputType={showingPsw.Password ? "text" : "password"}
-					showPsw={showingPsw.Password}
+					inputType={showingPwd.Password ? "text" : "password"}
+					showPsw={showingPwd.Password}
 					placeholder={i18n.lbl_Password}
 					value={userValue.Password}
 					onChange={EditField.bind(null, "Password")}
@@ -164,11 +215,37 @@ const JoinStep1 = ({
 						col: "Password"
 					})}
 					checked={hintStatus.Password.checked}
-					tips={i18n.msg_PasswordVaildate}
 					warningMsg={hintStatus.Password.msg}
-					clickInfo={() => showTipHandler("Password")}
-					showTips={showTips.includes("Password")}
 					testAttr="Password"
+				/>
+				<InputboxPWD
+					infoModule="infoModule"
+					icon="icon-key"
+					inputType={showingPwd.ConfirmPwd ? "text" : "password"}
+					showPsw={showingPwd.ConfirmPwd}
+					placeholder={i18n.lbl_ConfirmPassword}
+					value={userValue.ConfirmPwd}
+					onChange={EditField.bind(null, "ConfirmPwd")}
+					onBlur={checkValue.bind(null, "ConfirmPwd")}
+					showPswHandler={showPswHandler.bind(this, {
+						col: "ConfirmPwd"
+					})}
+					checked={hintStatus.ConfirmPwd.checked}
+					warningMsg={hintStatus.ConfirmPwd.msg}
+					testAttr="ConfirmPwd"
+				/>
+				<Inputbox
+					icon="icon-member"
+					placeholder={i18n.lbl_RealName}
+					value={userValue.RealName}
+					onChange={EditField.bind(null, "RealName")}
+					onBlur={checkValue.bind(null, "RealName")}
+					btnStatus={hintStatus.RealName.checked}
+					warningMsg={hintStatus.RealName.msg}
+					infoText={i18n.lbl_RemindForName}
+					clickInfo={() => showTipHandler("RealName")}
+					showTips={showTips.includes("RealName")}
+					testAttr="RealName"
 				/>
 				<Inputbox
 					icon="icon-affiliate"
@@ -186,18 +263,6 @@ const JoinStep1 = ({
 					clickInfo={() => showTipHandler("AffiliateId")}
 					showTips={showTips.includes("AffiliateId")}
 					testAttr="AffiliateId"
-				/>
-				<Inputbox
-					icon="icon-promotion"
-					placeholder={i18n.lbl_PromoCode}
-					value={userValue.SpecialBonusCode}
-					onChange={EditField.bind(null, "SpecialBonusCode")}
-					warningMsg={hintStatus.SpecialBonusCode.msg}
-					btnStatus={hintStatus.SpecialBonusCode.checked}
-					infoText={i18n.lbl_PromoCode}
-					clickInfo={() => showTipHandler("SpecialBonusCode")}
-					showTips={showTips.includes("SpecialBonusCode")}
-					testAttr="SpecialBonusCode"
 				/>
 				<div className="Terms">
 					{i18n.lbl_Check18TC1}
