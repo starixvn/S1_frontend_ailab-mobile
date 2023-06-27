@@ -210,6 +210,7 @@
 	"lbl_MaximumNumberOfFiles": "Bilangan fail maksimum:6",
 	"lbl_AcceptedFileType": "Jenis fail yang boleh diterima: JPG, JPEG, PNG",
 	"lbl_RemindForName": "Sila masukkan nama yang sama dengan kad pengenalan anda, simbol khas dilarang",
+	"lbl_InaccessibleWithoutPermission": "dilarang masuk tanpa kebenaran",
 
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Kadar Kemenangan",

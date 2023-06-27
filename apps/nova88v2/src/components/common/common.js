@@ -311,3 +311,8 @@ export const debounce = (fn, delay) => {
 		}, delay);
 	};
 };
+
+export const memberType = {
+	generalUser: 1,
+	liveHost: 3
+};

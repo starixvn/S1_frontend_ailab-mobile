@@ -14,7 +14,10 @@ export const defProductType = {
 	CockFighting: 5,
 	Lottery: 6,
 	VirtualSports: 7,
-	Poker: 8
+	Poker: 8,
+	Crypto: 9,
+	Games: 10,
+	ESports: 11
 };
 
 const otherTpGameType = {
