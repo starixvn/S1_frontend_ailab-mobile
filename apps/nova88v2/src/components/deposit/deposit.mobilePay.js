@@ -20,6 +20,7 @@ import { useHandleAmount } from "../hook/useHandleAmount";
 import { defPopBoxType } from "../common/popbox";
 import useTip from "../hook/useTip";
 import PromoList from "./promoList";
+import EWalletQR from "../common/popbox.eWalletQR";
 
 const defInputCol = {
 	payAccount: "payAccount"
@@ -269,22 +270,43 @@ const Payment = props => {
 					});
 					const { data, errorCode } = res.data;
 					if (errorCode === 0) {
-						setPopBox({
-							isOpen: true,
-							popBoxType: defPopBoxType.BankQR,
-							handlePopBox: () => {
-								setPopBox(prevState => ({
-									...prevState,
-									isOpen: false
-								}));
-								window.location.reload();
-							},
-							className: "duitnowPayPop",
-							title: selChannel.channelName,
-							qrUrl: data.returnUrl,
-							amount: data.amount,
-							bankName: data.bankName
-						});
+						if (userInfo.currencyId === defCurrenyId.THB) {
+							setPopBox({
+								isOpen: true,
+								className: "thiaPop",
+								custContent: (
+									<EWalletQR
+										amount={data.amount}
+										qrUrl={data.returnUrl}
+										transId={data.transId}
+										onClose={() => {
+											setPopBox(prevState => ({
+												...prevState,
+												isOpen: false
+											}));
+											window.location.reload();
+										}}
+									/>
+								)
+							});
+						} else {
+							setPopBox({
+								isOpen: true,
+								popBoxType: defPopBoxType.BankQR,
+								handlePopBox: () => {
+									setPopBox(prevState => ({
+										...prevState,
+										isOpen: false
+									}));
+									window.location.reload();
+								},
+								className: "duitnowPayPop",
+								title: selChannel.channelName,
+								qrUrl: data.returnUrl,
+								amount: data.amount,
+								bankName: data.bankName
+							});
+						}
 					} else {
 						setPopBox({
 							isOpen: true,

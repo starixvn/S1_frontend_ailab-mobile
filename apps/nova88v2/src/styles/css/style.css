@@ -4374,6 +4374,23 @@ footer > a.active .circleAnimation::after {
   background: #e6e6e6;
   border-bottom: 0;
 }
+.bankAccount .account.pending {
+  position: relative;
+  width: calc(100% - 8vw);
+}
+.bankAccount .account.pending .mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: rgba(40, 73, 133, 0.6);
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  z-index: 1;
+}
 .bankAccount .account.active {
   -webkit-box-shadow: 0 0 0 2px #5574a7 inset;
           box-shadow: 0 0 0 2px #5574a7 inset;
@@ -12967,37 +12984,201 @@ input:-webkit-autofill:active {
     background: url(https://banner.0814media.net/h5/img/rabbitboy-a.png) no-repeat center/cover;
   }
 }
-.dragon {
-  position: relative;
+.thiaPop ul {
+  color: #5574A7;
 }
-.dragon > a {
-  height: 100% !important;
+.thiaPop ul li {
+  margin-left: 4vw;
+  list-style: decimal;
 }
-.dragon > a:first-child {
-  background: -webkit-gradient(linear, left bottom, left top, from(#0E4956), to(#3899A2));
-  background: linear-gradient(to top, #0E4956, #3899A2);
+.thiaPop .pop {
+  border-radius: 3px;
 }
-.dragon > a img {
-  margin: -1vw 0 0 !important;
+.thiaPop .pop > div {
+  width: 100%;
 }
-.dragon::before {
-  content: "";
+.thiaPop .pop > div span {
+  color: #1E85EC;
+}
+.thiaPop .pop > div.popTit {
+  background: #0D3E64;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: white !important;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  padding: 1vw 2vw !important;
+  width: calc(100% - 4vw) !important;
+}
+.thiaPop .pop > div.popTit img {
+  width: 40vw;
+}
+.thiaPop .pop > div.popTit .icon-close {
+  right: 2vw !important;
+  top: 1vw !important;
+  height: auto !important;
+  position: absolute;
+  color: #fff !important;
+}
+.thiaPop .pop > div.popTit .icon-close::before {
+  font-size: 3.5vw;
+}
+.thiaPop .pop > div.popTxt {
+  padding: 1vw 1vw 3vw !important;
+  margin: 0 auto;
+}
+.thiaPop .pop > div .title {
+  font-size: 4vw;
+  text-align: center;
+  margin-bottom: 2vw !important;
+}
+.thiaPop .pop > div .amount {
   display: block;
-  background: url(https://banner.0814media.net/h5/img/dragon.png) no-repeat center/100%;
-  width: 20vw;
-  height: 10vw;
-  position: absolute;
-  z-index: 1;
-  bottom: 0;
-  left: 13vw;
+  text-align: center;
+  color: #e92529;
+  border-radius: 1vw;
+  line-height: 1.6;
+  margin-bottom: 1vw;
 }
-.dragon .dragonlogo {
-  padding: 0;
-  width: 28.5vw;
+.thiaPop .pop > div .amount span {
+  color: #e92529;
+  font-weight: bold;
+  background: #fff;
+  border: 0;
+  border-radius: 3px;
+  padding: 0.5vw 2vw;
 }
-.dragon .dragon-light {
-  width: 7vw;
-  position: absolute;
-  top: 1vw;
-  left: -2.2vw;
+.thiaPop .pop > div .guide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2vw;
+  margin: 1vw 0 0;
+  background: rgba(210, 226, 249, 0.4);
+  border-radius: 1vw;
+}
+.thiaPop .pop > div .guide > button {
+  padding: 0.5vw 2vw;
+  background: #5574A7;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1vw auto;
+  border-radius: 3px;
+}
+.thiaPop .pop > div .guide .qrCode {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 53vw;
+  height: 53vw;
+  background: rgba(198, 212, 241, 0.8);
+  overflow: hidden;
+  margin: 1vw 0;
+}
+.thiaPop .pop > div .guide .qrCode img, .thiaPop .pop > div .guide .qrCode svg {
+  width: auto !important;
+  height: 90% !important;
+}
+.thiaPop .pop > div .guide .qrCode path:nth-child(2) {
+  fill: #EE2968;
+}
+.thiaPop .pop > div .guide .banklogo img {
+  width: 35vw;
+}
+.thiaPop .pop > div .description {
+  margin: 1vw auto 0.5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+.thiaPop .pop > div .description input {
+  border: 0;
+  background: rgba(117, 145, 193, 0.2);
+  padding: 1vw 2vw;
+  border-radius: 1vw;
+  margin: 0 1vw;
+  color: #112240;
+  width: 40vw;
+}
+.thiaPop .pop > div .description input:focus {
+  outline: none;
+  background: rgba(198, 212, 241, 0.8);
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+.thiaPop .pop > div .description button {
+  border-radius: 1vw;
+  background: #7591C1;
+  color: #fff;
+  height: 6vw;
+  width: 6vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 50%;
+}
+.thiaPop .pop > div .description button::before {
+  font-size: 3vw;
+}
+.thiaPop .pop > div .info {
+  text-align: center;
+  line-height: 1.2;
+}
+.thiaPop .pop > div .info span {
+  color: #e92529;
+  font-weight: normal;
+}
+.thiaPop .pop > div .info p {
+  font-weight: bold;
+  font-size: 3.25vw;
+  margin: 1vw auto;
+  padding-bottom: 1.5vw;
+  border-bottom: 1px dotted #1E85EC;
+}
+.thiaPop .pop > div .info div {
+  margin: 2.5vw auto 2vw;
+  display: block;
+}
+.thiaPop .pop > div .info .note {
+  width: 100%;
+  font-weight: bold;
+  margin: 5px auto;
+  padding-top: 10px;
+  border-top: 1px dotted #1E85EC;
 }/*# sourceMappingURL=style.css.map */
