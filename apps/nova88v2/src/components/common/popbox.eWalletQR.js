@@ -11,7 +11,10 @@ const EWalletQR = ({ amount, qrUrl, transId, onClose }) => {
 	const { userInfo } = useContext(userInfoContext);
 
 	const copy = () => {
-		navigator.clipboard.writeText(inputRef.current.value);
+		if (inputRef.current) {
+			inputRef.current.select();
+			document.execCommand("copy");
+		}
 	};
 	return (
 		<div className="pop">
