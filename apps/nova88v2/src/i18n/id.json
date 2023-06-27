@@ -210,6 +210,7 @@
 	"lbl_MaximumNumberOfFiles": "Jumlah file maksimal : 6",
 	"lbl_AcceptedFileType": "Jenis file yang dapat diterima: JPG, JPEG, PNG",
 	"lbl_RemindForName": "NAMA LENGKAP harus sesuai dengan nama KTP Anda yang masih berlaku, dilarang menggunakan simbol khusus",
+	"lbl_InaccessibleWithoutPermission": "Tidak dapat diakses tanpa izin",
 
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Odds",

@@ -104,4 +104,7 @@ export class AccountAPI extends BaseAPI {
 			AreaCode,
 			PhoneNo: Phone
 		});
+
+	GetCustTpGameTypeSetting = () =>
+		this.accountRequest.post(`/GetCustTpGameTypeSetting`);
 }
