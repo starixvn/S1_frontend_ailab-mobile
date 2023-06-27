@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
 import { Link } from "../../route/link";
@@ -17,10 +17,14 @@ import {
 	open9wSports
 } from "../hook/useGotoGame";
 import path from "../../path";
+import { productTpGameTypeSettingListContext } from "../common/context";
 
 const Menu = ({ i18n, userInfo, setPopBox }) => {
 	const [selectedCol, setSelectedCol] = useState(defCol.sports);
 	const [showingTpIds, setShowningTpIds] = useState(null);
+	const { tpGameTypeSettingList } = useContext(
+		productTpGameTypeSettingListContext
+	);
 	const { maintainList } = useGetTpMaintainList();
 	const { handleLogin } = useHandleLogin();
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
@@ -161,13 +165,40 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 			if (item.event) {
 				const clickEvent = ({ param }) => {
 					const { tpId, gameId, tpGameType } = param;
-					GET_ENTER_PAGE({
-						langId: userInfo.langId,
-						tpId,
-						gameId,
-						tpGameType,
-						loginCallback: handleLogin
-					});
+					let isEnterPage = true;
+					if (
+						tpGameTypeSettingList &&
+						tpGameTypeSettingList.length > 0
+					) {
+						tpGameTypeSettingList.forEach(settingItem => {
+							if (
+								settingItem.gameType === tpGameType &&
+								settingItem.tpId === tpId &&
+								settingItem.noPlay
+							) {
+								isEnterPage = false;
+								setPopBox({
+									isOpen: true,
+									title: i18n.lbl_Information,
+									content: (
+										<div style={{ color: "red" }}>
+											{
+												i18n.lbl_InaccessibleWithoutPermission
+											}
+										</div>
+									)
+								});
+							}
+						});
+					}
+					isEnterPage &&
+						GET_ENTER_PAGE({
+							langId: userInfo.langId,
+							tpId,
+							gameId,
+							tpGameType,
+							loginCallback: handleLogin
+						});
 				};
 
 				if (item.path) {
@@ -299,6 +330,18 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 						(m.tpGameType === subItem.tpGameType ||
 							m.tpGameType === defTpGameType.All)
 				);
+
+				if (tpGameTypeSettingList && tpGameTypeSettingList.length > 0) {
+					tpGameTypeSettingList.forEach(settingItem => {
+						if (
+							settingItem.gameType === subItem.tpGameType &&
+							settingItem.tpId === subItem.tpId
+						) {
+							Object.assign(subItem, settingItem);
+						}
+					});
+				}
+				if (subItem?.noShow) return null;
 				return (
 					<SubGame
 						key={`subMenu-${
@@ -311,10 +354,10 @@ const Menu = ({ i18n, userInfo, setPopBox }) => {
 						handleGoToGame={handleGoToGame}
 						isMaintain={isMaintain}
 						category={item.category}
+						setPopBox={setPopBox}
 					/>
 				);
 			});
-
 		return (
 			<div
 				key={`subPanel-${item.category}`}
@@ -347,7 +390,8 @@ const SubGame = ({
 	handleLogin,
 	handleGoToGame,
 	isMaintain,
-	category
+	category,
+	setPopBox
 }) => {
 	const showingEventIcon = getEventIcon({ eventIcon: game?.eventIcon });
 
@@ -358,8 +402,22 @@ const SubGame = ({
 		specialUrl,
 		tpGameType,
 		bettype,
-		appType
+		appType,
+		noPlay
 	}) => {
+		if (noPlay) {
+			setPopBox({
+				isOpen: true,
+				title: i18n.lbl_Information,
+				content: (
+					<div style={{ color: "red" }}>
+						{i18n.lbl_InaccessibleWithoutPermission}
+					</div>
+				)
+			});
+			return;
+		}
+
 		if (tpId === defSpecialSetting.sports_9w && userInfo.isLogin) {
 			const result = await handleGoToGame({
 				isLogin: userInfo.isLogin,
@@ -438,14 +496,40 @@ const SubGame = ({
 		_path = `${path.casino.root}/${game.tpId}`;
 	}
 
+	const pathGameHandler = () => {
+		if (game?.noPlay) {
+			return (
+				<div
+					className={isMaintain ? "active" : ""}
+					onClick={() => {
+						setPopBox({
+							isOpen: true,
+							title: i18n.lbl_Information,
+							content: (
+								<div style={{ color: "red" }}>
+									{i18n.lbl_InaccessibleWithoutPermission}
+								</div>
+							)
+						});
+					}}
+					style={isMaintain ? { pointerEvents: "none" } : null}>
+					{content}
+				</div>
+			);
+		}
+		return (
+			<Link
+				className={isMaintain ? "active" : ""}
+				to={_path}
+				state={game.parameter}
+				style={isMaintain ? { pointerEvents: "none" } : null}>
+				{content}
+			</Link>
+		);
+	};
+
 	return game?.path ? (
-		<Link
-			className={isMaintain ? "active" : ""}
-			to={_path}
-			state={game.parameter}
-			style={isMaintain ? { pointerEvents: "none" } : null}>
-			{content}
-		</Link>
+		pathGameHandler()
 	) : (
 		<button
 			className={isMaintain ? "active" : ""}
@@ -456,7 +540,8 @@ const SubGame = ({
 				useGotoGame: game.useGotoGame,
 				specialUrl: game?.specialUrl ?? "",
 				tpGameType: game.tpGameType,
-				bettype: game?.bettype
+				bettype: game?.bettype,
+				noPlay: game?.noPlay
 			})}>
 			{content}
 			{game?.hasDesktopLink && (
@@ -472,7 +557,8 @@ const SubGame = ({
 								specialUrl: game?.specialUrl ?? "",
 								tpGameType: game.tpGameType,
 								bettype: game?.bettype,
-								appType: defAppType.desktop
+								appType: defAppType.desktop,
+								noPlay: game?.noPlay
 							});
 						}}>
 						{i18n.lbl_Sportsbook_Desktop}
@@ -495,7 +581,8 @@ SubGame.propTypes = {
 	handleLogin: PropTypes.func.isRequired,
 	handleGoToGame: PropTypes.func.isRequired,
 	isMaintain: PropTypes.bool,
-	category: PropTypes.string.isRequired
+	category: PropTypes.string.isRequired,
+	setPopBox: PropTypes.func.isRequired
 };
 
 export default Menu;
