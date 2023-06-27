@@ -67,7 +67,7 @@ const IndexPage = () => {
 			);
 		};
 		getVipBanner();
-	}, []);
+	}, [userInfo.langId]);
 
 	useEffect(() => {
 		isMountedRef.current = true;
