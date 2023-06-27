@@ -218,6 +218,7 @@
 	"lbl_RemindForName": "请输入与您个人身份证一致的姓名，禁用填写特殊符号",
 
 	"lbl_RemindForName": "请输入与您个人身份证一致的姓名，禁用填写特殊符号",
+	"lbl_InaccessibleWithoutPermission": "未经允许不得进入",
 
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Odds",

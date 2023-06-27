@@ -210,6 +210,7 @@
 	"lbl_AcceptedFileType": "स्वीकृत फ़ाइल प्रकार: JPG, JPEG, PNG",
 	"lbl_InaccessibleWithoutPermission": "inaccessible without permission",
 	"lbl_RemindForName": "पूरा नाम आपके मान्य आईडी नाम से मेल खाना चाहिए, विशेष चिन्हों को भरना मना है",
+	"lbl_InaccessibleWithoutPermission": "inaccessible without permission",
 
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "अंतर",

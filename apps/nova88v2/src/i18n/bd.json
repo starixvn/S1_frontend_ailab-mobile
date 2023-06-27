@@ -211,6 +211,7 @@
 	"lbl_InaccessibleWithoutPermission": "inaccessible without permission",
 	"lbl_RemindForName": "আপনার বৈধ আইডি নামের সাথে সম্পূর্ণ নাম অবশ্যই মিলবে, বিশেষ চিহ্নগুলি পূরণ করা নিষিদ্ধ",
 	"lbl_RemindForName": "আপনার বৈধ আইডি নামের সাথে সম্পূর্ণ নাম অবশ্যই মিলবে, বিশেষ চিহ্নগুলি পূরণ করা নিষিদ্ধ",
+	"lbl_InaccessibleWithoutPermission": "inaccessible without permission",
 
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "মতভেদ",
