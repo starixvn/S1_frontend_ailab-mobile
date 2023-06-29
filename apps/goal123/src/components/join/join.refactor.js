@@ -286,6 +286,8 @@ const Join = () => {
 
 		if (col === "UserName") {
 			val = val.replace(/[\W_]/g, "");
+		} else if (col === "RealName") {
+			val = val.replace(/[\d\-!@#$%^&_()+";~～<>=|?\[\]\\`~{}]+/gu, "");
 		} else if (col === "Phone") {
 			val = val.replace(/[^0-9]+/g, "");
 		}
