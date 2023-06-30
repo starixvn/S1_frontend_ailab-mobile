@@ -621,7 +621,8 @@
 	"lbl_CantChangeEmail": "Email sẽ không thể thay đổi sau khi đăng ký",
 	"lbl_Saba": "Saba",
 	"lbl_TFGaming": "TFGaming",
-  "lbl_Recently_Viewed":"XEM GẦN ĐÂY",
+	"lbl_Recently_Viewed": "XEM GẦN ĐÂY",
+	"lbl_AffiliateIdWrong": "Tìm không thấy ID Đại lý",
 
 	"==============General==============": "",
 	"lbl_Jackpot": "NỔ HŨ",

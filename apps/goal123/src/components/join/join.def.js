@@ -6,9 +6,8 @@ export const initValue = {
 	Currency: 0,
 	Phone: "",
 	Email: "",
-	AffiliateId: "",
+	Affiliate: "",
 	Checkbox: false
-	// SpecialBonusCode: ""
 };
 
 export const initStatus = {
@@ -40,7 +39,7 @@ export const initStatus = {
 	// 	checked: null,
 	// 	msg: ""
 	// },
-	AffiliateId: {
+	Affiliate: {
 		checked: null,
 		msg: ""
 	},

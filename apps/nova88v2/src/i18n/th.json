@@ -210,6 +210,7 @@
 	"lbl_AcceptedFileType": "ประเภทไฟล์ที่ยอมรับ: JPG, JPEG, PNG",
 	"lbl_InaccessibleWithoutPermission": "ไม่สามารถเข้าถึงได้โดยไม่ได้รับอนุญาต",
 	"lbl_RemindForName": "ชื่อ-นามสกุล ต้องตรงกับชื่อในบัตรประจำตัวประชาชน ไม่อนุญาตให้กรอกสัญลักษณ์พิเศษ",
+	"lbl_AffiliateIdWrong": "ไม่พบรหัสพันธมิตรดังกล่าว",
 
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Odds",

@@ -5,7 +5,12 @@ import JoinStep1 from "./join.step1";
 import JoinStep2 from "./join.step2";
 import JoinStep3 from "./join.step3";
 import { initValue, initStatus } from "./join.def";
-import { defCurrenyId, getLocalStorage } from "../common/common";
+import {
+	defCurrenyId,
+	getLocalStorage,
+	getUrlParameter,
+	getCookie
+} from "../common/common";
 import useHandleLineLogin, { defType } from "../hook/useHandleLineLogin";
 import api from "../../service/api";
 
@@ -16,9 +21,14 @@ const JoinStepAll = () => {
 	const [step, setStep] = useState(1);
 	const [userValue, setUserValue] = useState(initValue);
 	const [hintStatus, setHintStatus] = useState(initStatus);
+	const [siteCurrency, setSiteCurrencyState] = useState([]);
 	const [recaptchaInfo, setRecaptchaInfo] = useState({});
 	const { lineLogin } = useHandleLineLogin();
 	const lineUserId = getLocalStorage("lineUser");
+
+	const urlAffId = getUrlParameter("AffId") || getCookie("AffId");
+	const urlAffCode = getUrlParameter("AffCode") || getCookie("AffCode");
+	const urlAffiliate = urlAffId || urlAffCode;
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
@@ -35,7 +45,59 @@ const JoinStepAll = () => {
 			} catch (error) {}
 		};
 		getRecaptchaSiteKey();
+
+		if (urlAffiliate) {
+			checkAffiliate({});
+		}
 	}, []);
+
+	const checkAffiliate = async ({ formAffCode }) => {
+		let checked = null;
+		let msg = "";
+
+		if (urlAffId) {
+			const res = await api.site.GetAffiliateAgent({ AffId: urlAffId });
+			if (res.data.errorCode === 0) {
+				const { currencyId } = res.data.data;
+				const currencyArr = [
+					{
+						id: currencyId,
+						displayKey: `Currency_${currencyId}`
+					}
+				];
+				setSiteCurrencyState(currencyArr);
+				setUserValue(prev => ({
+					...prev,
+					Affiliate: urlAffId
+				}));
+			}
+		} else if (urlAffCode) {
+			const res = await api.site.AffiliateCheck({
+				AffCode: urlAffCode,
+				langId: userInfo.langId
+			});
+			if (res.data.errorCode === 0) {
+				setUserValue(prev => ({
+					...prev,
+					Affiliate: urlAffCode
+				}));
+			}
+		} else if (formAffCode) {
+			const res = await api.site.AffiliateCheck({
+				AffCode: formAffCode,
+				langId: userInfo.langId
+			});
+			if (res.data.errorCode === 0) {
+				checked = true;
+				msg = "";
+			} else {
+				checked = false;
+				msg = "lbl_AffiliateIdWrong";
+			}
+		}
+
+		return { checked, msg };
+	};
 
 	const EditField = (col, e) => {
 		let val = e.target.value;
@@ -72,6 +134,9 @@ const JoinStepAll = () => {
 						EditField={EditField}
 						langId={userInfo.langId}
 						setStep={setStep}
+						setUserValue={setUserValue}
+						urlAffiliate={urlAffiliate}
+						checkAffiliate={checkAffiliate}
 					/>
 				);
 				break;
@@ -89,6 +154,9 @@ const JoinStepAll = () => {
 						lineUserId={lineUserId}
 						setStep={setStep}
 						recaptchaInfo={recaptchaInfo}
+						siteCurrency={siteCurrency}
+						setSiteCurrencyState={setSiteCurrencyState}
+						urlAffId={urlAffId}
 					/>
 				);
 				break;
