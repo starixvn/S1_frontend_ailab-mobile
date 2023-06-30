@@ -778,11 +778,11 @@ const gameList = [
 				spanText: "Asia Gaming",
 				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-ag.png`
 			},
-			{
-				...defGameInfo.LIVEcasinoAB,
-				spanText: "Allbet",
-				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-allbet.png`
-			},
+			// {
+			// 	...defGameInfo.LIVEcasinoAB,
+			// 	spanText: "Allbet",
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-allbet.png`
+			// },
 			{
 				...defGameInfo.LIVEcasinoSA,
 				spanText: "SA Gaming",
