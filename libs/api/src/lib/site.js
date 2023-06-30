@@ -68,6 +68,11 @@ export class SiteAPI extends BaseAPI {
 			AffId
 		});
 
+	AffiliateCheck = ({ AffCode, langId }) =>
+		this.siteRequest.post(`/AffiliateCheck/${langId}`, {
+			AffCode
+		});
+
 	GetSupportDomainList = ({ langId }) =>
 		this.siteRequest.post(`/GetSupportDomainList/${langId ?? ""}`);
 

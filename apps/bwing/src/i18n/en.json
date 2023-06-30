@@ -621,6 +621,7 @@
 	"lbl_Saba": "Saba",
 	"lbl_TFGaming": "TFGaming",
 	"lbl_CantChangeEmail": "Email can't be changed after registration.",
+	"lbl_AffiliateIdWrong": "Affiliate ID cant be found",
 
 	"==============General==============": "",
 	"lbl_Jackpot": "Jackpot",

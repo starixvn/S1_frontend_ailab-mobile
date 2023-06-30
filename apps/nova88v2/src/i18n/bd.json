@@ -210,6 +210,7 @@
 	"lbl_AcceptedFileType": "স্বীকৃত ফাইল প্রকার: JPG, JPEG, PNG",
 	"lbl_RemindForName": "আপনার বৈধ আইডি নামের সাথে সম্পূর্ণ নাম অবশ্যই মিলবে, বিশেষ চিহ্নগুলি পূরণ করা নিষিদ্ধ",
 	"lbl_InaccessibleWithoutPermission": "inaccessible without permission",
+	"lbl_AffiliateIdWrong": "এফিলিয়েট আইডি পাওয়া যাচ্ছে না",
 
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "মতভেদ",
