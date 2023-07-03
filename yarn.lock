@@ -6144,12 +6144,12 @@
     "domelementtype" "^2.0.1"
     "entities" "^2.0.0"
 
-"dom7@^2.1.5":
-  "integrity" "sha512-xnhwVgyOh3eD++/XGtH+5qBwYTgCm0aW91GFgPJ3XG+jlsRLyJivnbP0QmUBFhI+Oaz9FV0s7cxgXHezwOEBYA=="
-  "resolved" "https://registry.npmjs.org/dom7/-/dom7-2.1.5.tgz"
-  "version" "2.1.5"
+"dom7@^4.0.2":
+  "integrity" "sha512-emjdpPLhpNubapLFdjNL9tP06Sr+GZkrIHEXLWvOGsytACUrkbeIdjO5g77m00BrHTznnlcNqgmn7pCN192TBA=="
+  "resolved" "https://registry.npmjs.org/dom7/-/dom7-4.0.6.tgz"
+  "version" "4.0.6"
   dependencies:
-    "ssr-window" "^2.0.0"
+    "ssr-window" "^4.0.0"
 
 "domain-browser@^1.1.1":
   "integrity" "sha512-jnjyiM6eRyZl2H+W8Q/zLMA481hzi0eszAaBUzIVnmYVDBbnLxVNnfu1HgEBvCbL+71FrxMl3E6lpKH7Ge3OXA=="
@@ -14395,10 +14395,10 @@
     "safer-buffer" "^2.0.2"
     "tweetnacl" "~0.14.0"
 
-"ssr-window@^2.0.0":
-  "integrity" "sha512-NXzN+/HPObKAx191H3zKlYomE5WrVIkoCB5IaSdvKokxTpjBdWfr0RaP+1Z5KOfDT0ZVz+2tdtiBkhsEQ9p+0A=="
-  "resolved" "https://registry.npmjs.org/ssr-window/-/ssr-window-2.0.0.tgz"
-  "version" "2.0.0"
+"ssr-window@^4.0.0", "ssr-window@^4.0.2":
+  "integrity" "sha512-ISv/Ch+ig7SOtw7G2+qkwfVASzazUnvlDTwypdLoPoySv+6MqlOV10VwPSE6EWkGjhW50lUmghPmpYZXMu/+AQ=="
+  "resolved" "https://registry.npmjs.org/ssr-window/-/ssr-window-4.0.2.tgz"
+  "version" "4.0.2"
 
 "ssri@^6.0.1":
   "integrity" "sha512-cepbSq/neFK7xB6A50KHN0xHDotYzq58wWCa5LeWqnPrHG8GzfEjO/4O8kpmcGW+oaxkvhEJCWgbgNk4/ZV93Q=="
@@ -14833,13 +14833,13 @@
     "unquote" "~1.1.1"
     "util.promisify" "~1.0.0"
 
-"swiper@5.4.1":
-  "integrity" "sha512-l2EiWe7uOXB2EBMVLtJqn51FW22wF9e24WETT+S+tuFNvSDq1gadc/hyGGsAMqFGKJKIO6q6cqk7ToVaOI+onw=="
-  "resolved" "https://registry.npmjs.org/swiper/-/swiper-5.4.1.tgz"
-  "version" "5.4.1"
+"swiper@^7.4.1":
+  "integrity" "sha512-dhbL4tpYFvHug1J7GnKElfTi6EYhlZy/vNZRhHkWFyUsWZ1Vovipxj3la5gqllMogygXJMe3zvVv+f6eppvWiA=="
+  "resolved" "https://registry.npmjs.org/swiper/-/swiper-7.4.1.tgz"
+  "version" "7.4.1"
   dependencies:
-    "dom7" "^2.1.5"
-    "ssr-window" "^2.0.0"
+    "dom7" "^4.0.2"
+    "ssr-window" "^4.0.2"
 
 "symbol-observable@^1.1.0":
   "integrity" "sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ=="
