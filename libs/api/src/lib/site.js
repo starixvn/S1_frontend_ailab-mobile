@@ -90,4 +90,9 @@ export class SiteAPI extends BaseAPI {
 		});
 
 	GetRecaptchaInfo = () => this.siteRequest.post("/GetRecaptchaInfo");
+
+	GetVipBanner = ({ CurrencyId }) =>
+		this.siteRequest.post("GetVipBanner", {
+			CurrencyId
+		});
 }
