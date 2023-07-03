@@ -1,13 +1,10 @@
 import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
-import { userInfoContext, i18nContext, rootContext } from "Context";
+import { userInfoContext, i18nContext } from "Context";
 import { Link } from "@reach/router";
-import classNames from "classnames";
-import { cambodiaSeaGameEventPeriod, isDateRange } from "@ailab-mobile/common";
 import Logo from "../common/logo";
 import path from "../../path";
 import Balance from "./balance";
-import AppDownloadHint from "./appDownloadHint";
 
 const HeaderTitle = ({ title = "", link = "", titleClass = "title", navBar }) =>
 	title ? (
@@ -21,7 +18,6 @@ const HeaderTitle = ({ title = "", link = "", titleClass = "title", navBar }) =>
 
 const Header = ({
 	title,
-	hideLogo,
 	filter,
 	children,
 	link,
@@ -37,7 +33,6 @@ const Header = ({
 }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
-	const { root } = useContext(rootContext);
 	const headerClassName = !title ? "" : "header";
 	const [isShowSearchInput, setIsShowSearchInput] = useState(false);
 
@@ -97,14 +92,6 @@ const Header = ({
 
 	return (
 		<header className={headerClassName} id={hideId ? "" : id}>
-			{hideLogo ? null : (
-				<AppDownloadHint
-					i18n={i18n}
-					root={root}
-					appHint={appHint}
-					setAppHint={setAppHint}
-				/>
-			)}
 			{titleJudge()}
 			{filter || null}
 			{children}
@@ -114,10 +101,7 @@ const Header = ({
 
 const HeaderInfo = ({ userInfo, i18n }) => {
 	return (
-		<div
-			className={classNames("headerModule", {
-				cambodia: isDateRange(cambodiaSeaGameEventPeriod)
-			})}>
+		<div className="headerModule">
 			<a href={`/${userInfo.langId}`}>
 				<Logo />
 			</a>
@@ -144,7 +128,6 @@ HeaderInfo.propTypes = {
 Header.defaultProps = {
 	filter: null,
 	title: null,
-	hideLogo: false,
 	link: null,
 	children: null,
 	titleClass: undefined,
@@ -161,7 +144,6 @@ Header.defaultProps = {
 Header.propTypes = {
 	filter: PropTypes.node,
 	title: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-	hideLogo: PropTypes.bool,
 	link: PropTypes.node,
 	children: PropTypes.node,
 	titleClass: PropTypes.string,

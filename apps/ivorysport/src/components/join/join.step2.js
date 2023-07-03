@@ -623,10 +623,7 @@ const JoinStep2 = ({
 				<a
 					rel="noreferrer"
 					target="_blank"
-					href={`${cloudBannerImgURL}/Static/${getCombineLangId(
-						userInfo.langId,
-						userInfo.currencyId
-					)}/TermsConditions.html`}>
+					href={`${cloudBannerImgURL}/Static/en/TermsConditions.html`}>
 					{i18n.lbl_TermsConditions}
 				</a>
 				{i18n.lbl_Check18TC2}

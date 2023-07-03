@@ -1,28 +1,16 @@
 import React from "react";
-import SwipperBanner from "../common/swipperBanner";
-import api from "../../service/api";
-
-const swipperParam = {
-	spaceBetween: 30,
-	centeredSlides: true,
-	effect: "fade",
-	autoplay: {
-		delay: 5000,
-		disableOnInteraction: false
-	},
-	pagination: {
-		el: ".swiper-pagination",
-		clickable: true
-	},
-	rebuildOnUpdate: true
-};
+import ReactIdSwiper from "react-id-swiper";
 
 export default () => {
 	return (
-		<SwipperBanner
-			ImgFolder={[api.site.defBannerType.Promotions]}
-			filterHideInHome={true}
-			params={swipperParam}
-		/>
+		<ReactIdSwiper>
+			<div>
+				<img
+					src="https://banner.ivorysport.com/h5/img/slide01.jpg"
+					className="banner"
+					alt="banner"
+				/>
+			</div>
+		</ReactIdSwiper>
 	);
 };

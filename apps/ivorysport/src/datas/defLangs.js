@@ -33,16 +33,6 @@ export default {
 		countryName: "Indonesia",
 		currencyId: defCurrenyId.IDR
 	},
-	CS: {
-		country: "CS",
-		img: `${cloudBannerImgURL}/h5/img/cs.jpg`,
-		lang: [
-			{ value: "en", displayText: "English" },
-			{ value: "cs", displayText: "简体中文" }
-		],
-		countryName: "China",
-		currencyId: defCurrenyId.CNY
-	},
 	VN: {
 		country: "VN",
 		img: `${cloudBannerImgURL}/h5/img/vn.jpg`,

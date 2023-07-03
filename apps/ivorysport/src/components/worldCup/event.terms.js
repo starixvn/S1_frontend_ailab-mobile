@@ -80,7 +80,7 @@ const TermsEN = () => (
 			This <span>World Cup Prediction Campaign</span> will accumulate
 			member&apos;s deposit to redeem up to max three (<span>3</span>)
 			prediction tickets for <span>FIFA WORLD CUP Qatar 2022</span>{" "}
-			automatically given by Nova88.
+			automatically given by IvorySport.
 		</li>
 		<li>
 			Event will start by the following date above according to each
@@ -97,14 +97,14 @@ const TermsEN = () => (
 			<span>21 November 2022</span> Local Time <span>00:00:00</span> )
 		</li>
 		<li>
-			Nova88 reserves the right to amend or withdraw the Promotion at any
-			time.
+			IvorySport reserves the right to amend or withdraw the Promotion at
+			any time.
 		</li>
 		<li>
-			Nova88 is the sole arbiter of the Promotion and its decision is
+			IvorySport is the sole arbiter of the Promotion and its decision is
 			final.
 		</li>
-		<li>Nova88 Standard Terms &amp; Conditions apply.</li>
+		<li>IvorySport Standard Terms &amp; Conditions apply.</li>
 	</ol>
 );
 
@@ -112,7 +112,7 @@ const TermsCS = () => (
 	<ol>
 		<li>
 			此<span>世界杯预测活动</span>将累计会员存款金额并兑换
-			<span>最多 3张</span> 由 Nova88 自动派发
+			<span>最多 3张</span> 由 IvorySport 自动派发
 			<span>卡塔尔2022国际足协世界杯预测的兑换票</span>
 		</li>
 		<li>
@@ -127,9 +127,9 @@ const TermsCS = () => (
 			<span>11月 21日 2022年</span> ，当地时区： <span>00:00:00</span>{" "}
 			逾时失效)
 		</li>
-		<li>Nova88 有权随时中止或取消本优惠。</li>
-		<li>Nova88 保留对本优惠的最终解释权。</li>
-		<li>Nova88 标准规则和条款适用。</li>
+		<li>IvorySport 有权随时中止或取消本优惠。</li>
+		<li>IvorySport 保留对本优惠的最终解释权。</li>
+		<li>IvorySport 标准规则和条款适用。</li>
 	</ol>
 );
 
@@ -139,7 +139,7 @@ const TermsMY = () => (
 			Kempen Ramalan <span>Piala Dunia</span> ini akan mengumpul deposit
 			ahli untuk menebus sehingga <span>Maksimum Tiga(3)</span> Tiket
 			Ramalan <span>FIFA WORLD CUP QATAR 2022</span> yang diberikan secara
-			automatik oleh Nova88.
+			automatik oleh IvorySport.
 		</li>
 		<li>
 			Acara akan bermula pada tarikh di atas mengikut waktu tempatan
@@ -157,14 +157,14 @@ const TermsMY = () => (
 			<span>21 November 2022 Waktu Tempatan: </span>00:00:00).
 		</li>
 		<li>
-			Nova88 berhak untuk meminda atau menarik balik Promosi pada
+			IvorySport berhak untuk meminda atau menarik balik Promosi pada
 			bila-bila masa.
 		</li>
 		<li>
-			Nova88 ialah penimbang tara tunggal Promosi dan keputusannya adalah
-			muktamad.
+			IvorySport ialah penimbang tara tunggal Promosi dan keputusannya
+			adalah muktamad.
 		</li>
-		<li>Terma & Syarat Standard Nova88 dikenakan.</li>
+		<li>Terma & Syarat Standard IvorySport dikenakan.</li>
 	</ol>
 );
 
@@ -173,7 +173,7 @@ const TermsTH = () => (
 		<li>
 			แคมเปญทายผลฟุตบอลโลกนี้จะสะสมยอดเงินฝากของสมาชิกเพื่อแลกรับตั๋วทายผล
 			ฟุตบอลโลก กาตาร์ 2022 สามารถแลกรับได้สูงสุด <span>3</span>{" "}
-			ใบโดยอัตโนมัติจาก Nova88
+			ใบโดยอัตโนมัติจาก IvorySport
 		</li>
 		<li>
 			กิจกรรมนี้จะเริ่มในวันดังกล่าวตามโซนเวลาท้องถิ่นของแต่ล่ะประเทศ
@@ -188,15 +188,15 @@ const TermsTH = () => (
 			<span>21 พฤศจิกายน 2022</span>เขตเวลาท้องถิ่น: 00:00:00 น. )
 		</li>
 		<li>
-			Nova88
+			IvorySport
 			มีสิทธิ์ในการยกเลิกหรือเปลี่ยนแปลงเงื่อนไขของโปรโมชั่นนี้ได้ตลอดเวลา
 			โดยที่ไม่ต้องมีการแจ้งให้ทราบล่วงหน้า
 		</li>
 		<li>
-			Nova88
+			IvorySport
 			ขอสงวนสิทธิ์ในการพิจารณาการเข้าร่วมโปรโมชั่นของสมาชิกแต่เพียงผู้เดียว
 		</li>
-		<li>ข้อกำหนดและเงื่อนไขมาตรฐานของ Nova88 มีผลบังคับใช้</li>
+		<li>ข้อกำหนดและเงื่อนไขมาตรฐานของ IvorySport มีผลบังคับใช้</li>
 	</ol>
 );
 
@@ -208,7 +208,7 @@ const TermsID = () => (
 			<span>
 				Maksimal Tiga (3) Tiket Prediksi Piala Dunia FIFA QATAR 2022
 			</span>{" "}
-			yang akan diberikan secara otomatis oleh Nova88.
+			yang akan diberikan secara otomatis oleh IvorySport.
 		</li>
 		<li>
 			Acara akan dimulai pada tanggal di atas sesuai dengan waktu setempat
@@ -226,13 +226,14 @@ const TermsID = () => (
 			<span>21 November 2022 Waktu Setempat</span> 00:00:00)
 		</li>
 		<li>
-			Nova88 berhak untuk mengubah atau menarik Promosi ini kapan saja.
+			IvorySport berhak untuk mengubah atau menarik Promosi ini kapan
+			saja.
 		</li>
 		<li>
-			Nova88 adalah penyelenggara tunggal Promosi ini dan keputusannya
+			IvorySport adalah penyelenggara tunggal Promosi ini dan keputusannya
 			adalah final.
 		</li>
-		<li>Syarat dan Ketentuan Umum Nova88 berlaku.</li>
+		<li>Syarat dan Ketentuan Umum IvorySport berlaku.</li>
 	</ol>
 );
 

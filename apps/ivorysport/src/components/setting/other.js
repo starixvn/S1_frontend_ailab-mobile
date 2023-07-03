@@ -24,10 +24,7 @@ export default () => {
 						{i18n.lbl_ResposibleGaming}
 					</a>
 					<a
-						href={`${cloudBannerImgURL}/Static/${getCombineLangId(
-							userInfo.langId,
-							userInfo.currencyId
-						)}/TermsConditions.html`}
+						href={`${cloudBannerImgURL}/Static/en/TermsConditions.html`}
 						rel="noopener noreferrer"
 						target="_blank">
 						{i18n.lbl_TermsConditions}

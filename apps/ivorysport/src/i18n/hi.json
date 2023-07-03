@@ -226,7 +226,7 @@
 	"Currency_61": "INR",
 	"Currency_96": "USDT",
 	"Currency_74": "BDT",
-  "Currency_72": "USD",
+	"Currency_72": "USD",
 	"======================================Home=========================================": "",
 
 	"lbl_VirtualGames": "वर्चुअल गेम्स",
@@ -640,7 +640,7 @@
 	"lbl_streaming_please_make_deposit": "हमारी लाइव स्ट्रीमिंग का आनंद लेने के लिए कृपया एक न्यूनतम जमा करें",
 	"==============================================Join====================================": "",
 
-	"lbl_Check18TC1": "जॉइन नाउ बटन पर क्लिक करके, मैं एतिहातन स्वीकार करता हूं कि मेरी उम्र 18 वर्ष से अधिक है और मैंने इसे पढ़ लिया है और स्वीकार भी कर लिया है ",
+	"lbl_Check18TC1": "जॉइन नाउ बटन पर क्लिक करके, मैं एतिहातन स्वीकार करता हूं कि मेरी उम्र 21 वर्ष से अधिक है और मैंने इसे पढ़ लिया है और स्वीकार भी कर लिया है ",
 	"lbl_PromoCode": "प्रचार कोड",
 	"lbl_Check18TC2": "",
 	"lbl_PreferredCurrencyToolTip": "पंजीकरण के बाद पसंदीदा मुद्रा को बदला नहीं जा सकता है।",
@@ -719,7 +719,7 @@
 	"lbl_DepositType2": "मोबाइल भुगतान",
 	"lbl_DepositType3": "स्थानीय बैंक",
 	"lbl_DepositType4": "क्रिप्टो भुगतान",
-  "lbl_DepositType8": "Crypto Wallet",
+	"lbl_DepositType8": "Crypto Wallet",
 	"lbl_Deposit_DragonPayPop_BankName": "बैंक का नाम",
 	"lbl_Deposit_DragonPayPop_OrderNumber": "क्रम संख्या",
 	"lbl_Deposit_DragonPayPop_AccountName": "खाते का नाम",
@@ -758,7 +758,7 @@
 	"lbl_BonusWallet_1": "कैसीनो वॉलेट",
 	"lbl_BonusWallet_2": "लाइव कैसीनो वॉलेट",
 	"lbl_BonusWallet_3": "मछली का वॉलेट",
-  "lbl_BonusWallet_6": "स्पोर्ट्स वॉलेट",
+	"lbl_BonusWallet_6": "स्पोर्ट्स वॉलेट",
 	"lbl_BonusWallet_9": "SBSW वॉलेट",
 	"lbl_BonusWallet_11": "ई-स्पोर्ट्स वॉलेट",
 

@@ -34,7 +34,7 @@ describe("Join tests", () => {
 		i18n: {},
 		testApiData: {},
 		config: {
-			apiURL: "http://www.n88dev.com"
+			apiURL: "http://stag.ivorysport.com"
 		}
 	};
 

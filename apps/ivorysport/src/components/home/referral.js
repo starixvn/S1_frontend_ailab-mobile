@@ -89,12 +89,6 @@ const ReferralPanel = ({ i18n, userInfo, setPopBox }) => {
 						{referralBonus}
 					</div>
 					<div>{i18n.lbl_Referral_intro}</div>
-					{/* <a
-						href={TandC(userInfo.langId).Referral}
-						target="_blank"
-						rel="noreferrer">
-						{i18n.lbl_TermsConditions}
-					</a> */}
 					<br />
 					<Link to={path.referral.root}>{i18n.lbl_To_Referral}</Link>
 				</div>
