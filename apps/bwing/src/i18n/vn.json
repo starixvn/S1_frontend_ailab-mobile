@@ -618,9 +618,10 @@
 	"lbl_MaximumNumberOfFiles": "Số tập tin đối đa:6",
 	"lbl_AcceptedFileType": "Các kiểu được hỗ trợ: JPG, JPEG, PNG",
 	"lbl_DepositOptions": "Phương thức nạp tiền",
+	"lbl_CantChangeEmail": "Email sẽ không thể thay đổi sau khi đăng ký",
 	"lbl_Saba": "Saba",
 	"lbl_TFGaming": "TFGaming",
-	"lbl_CantChangeEmail": "Email sẽ không thể thay đổi sau khi đăng ký",
+	"lbl_Recently_Viewed":"XEM GẦN ĐÂY",
 
 	"==============General==============": "",
 	"lbl_Jackpot": "NỔ HŨ",
