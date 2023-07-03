@@ -153,7 +153,10 @@ const IndexPage = () => {
 					<ul>
 						<li>
 							<a href={path.home.root} className="logo">
-								<img src={siteInfo("en").logo} alt="logo" />
+								<img
+									src="https://banner.ivorysport.com/h5/img/logo.png"
+									alt="logo"
+								/>
 							</a>
 						</li>
 						<li>

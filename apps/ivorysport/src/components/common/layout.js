@@ -53,14 +53,8 @@ const Layout = ({ children, header, mainClass, goTopBtn }) => {
 	return (
 		<>
 			<RotationHint i18n={i18n} />
-			{header ?? <Header title="" hideLogo={true} />}
-			<main
-				style={position}
-				className={`${_mainClass} ${
-					readCookie("AppDownloadHint") !== "1" && root
-						? "active"
-						: ""
-				}`}>
+			{header ?? <Header title="" />}
+			<main style={position} className={_mainClass}>
 				{children}
 				{loading ? <Loading /> : null}
 			</main>

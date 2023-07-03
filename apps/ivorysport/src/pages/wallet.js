@@ -108,11 +108,6 @@ const Wallet = () => {
 					className="icon icon-deposit white">
 					{i18n.lbl_Deposit}
 				</Link>
-				<Link
-					to={`${path.transfer.root}`}
-					className="icon icon-transfer white">
-					{i18n.lbl_Transfer}
-				</Link>
 			</div>
 		</>
 	);

@@ -67,7 +67,7 @@ export default ({ currencyName }) => {
 					tpGameType: defSlotTpGameType.CQ9.tpGameType
 				},
 				{
-					displayKey: "lbl_HotGames_Nova88_Olympus",
+					displayKey: "lbl_HotGames_IvorySport_Olympus",
 					name: "Ivorysport Olympus",
 					provider: "PP",
 					gameTypeKey: gameType.slots,
@@ -76,7 +76,7 @@ export default ({ currencyName }) => {
 						cs: "88_of_olympus_cs"
 					},
 					tpId: 5,
-					gameId: "vs20olympnova88",
+					gameId: "vs20olympIvorySport",
 					productType: defProductType.slots,
 					tpGameType: defSlotTpGameType.PP.tpGameType
 				},
@@ -184,8 +184,8 @@ export default ({ currencyName }) => {
 					tpGameType: defSlotTpGameType.CQ9.tpGameType
 				},
 				{
-					displayKey: "lbl_HotGames_Nova88_Olympus",
-					name: "Nova88 Olympus",
+					displayKey: "lbl_HotGames_IvorySport_Olympus",
+					name: "IvorySport Olympus",
 					provider: "PP",
 					gameTypeKey: gameType.slots,
 					imgUrl: {
@@ -193,7 +193,7 @@ export default ({ currencyName }) => {
 						cs: "88_of_olympus_cs"
 					},
 					tpId: 5,
-					gameId: "vs20olympnova88",
+					gameId: "vs20olympIvorySport",
 					productType: defProductType.slots,
 					tpGameType: defSlotTpGameType.PP.tpGameType
 				},
@@ -307,8 +307,8 @@ export default ({ currencyName }) => {
 					tpGameType: defSlotTpGameType.YGG.tpGameType
 				},
 				{
-					displayKey: "lbl_HotGames_Nova88_Olympus",
-					name: "Nova88 Olympus",
+					displayKey: "lbl_HotGames_IvorySport_Olympus",
+					name: "IvorySport Olympus",
 					provider: "PP",
 					gameTypeKey: gameType.slots,
 					imgUrl: {
@@ -316,7 +316,7 @@ export default ({ currencyName }) => {
 						cs: "88_of_olympus_cs"
 					},
 					tpId: 5,
-					gameId: "vs20olympnova88",
+					gameId: "vs20olympIvorySport",
 					productType: defProductType.slots,
 					tpGameType: defSlotTpGameType.PP.tpGameType
 				},
@@ -404,8 +404,8 @@ export default ({ currencyName }) => {
 					tpGameType: defSlotTpGameType.CQ9.tpGameType
 				},
 				{
-					displayKey: "lbl_HotGames_Nova88_Olympus",
-					name: "Nova88 Olympus",
+					displayKey: "lbl_HotGames_IvorySport_Olympus",
+					name: "IvorySport Olympus",
 					provider: "PP",
 					gameTypeKey: gameType.slots,
 					imgUrl: {
@@ -413,7 +413,7 @@ export default ({ currencyName }) => {
 						cs: "88_of_olympus_cs"
 					},
 					tpId: 5,
-					gameId: "vs20olympnova88",
+					gameId: "vs20olympIvorySport",
 					productType: defProductType.slots,
 					tpGameType: defSlotTpGameType.PP.tpGameType
 				},

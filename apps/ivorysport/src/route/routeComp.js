@@ -1,7 +1,6 @@
 import React from "react";
 import { Router } from "@reach/router";
 import MyWallet from "../pages/wallet";
-import Promotion from "../pages/promotion";
 import Casino from "../pages/casino";
 
 import path, { defSpecialPath } from "../path";
@@ -14,7 +13,6 @@ import Setting from "../pages/setting";
 import ContactUs from "../components/setting/contactUs";
 import GameProvider from "../components/setting/gameProvider";
 import Whoami from "../pages/whoami";
-import PromotionInfo from "../pages/promotionInfo";
 
 import Ranking from "../pages/ranking";
 import Angpao from "../pages/angpao";
@@ -31,7 +29,6 @@ import Withdrawal from "../pages/withdrawal";
 import EWallet from "../pages/eWallet";
 import WithdrawalHistory from "../pages/withdrawalHistory";
 
-import Transfer from "../pages/transfer";
 // import TransferHome from "../components/transfer/transfer";
 import TransferHistory from "../pages/transferHistory";
 
@@ -77,9 +74,6 @@ const RouteComponents = () => {
 			</Home>
 			<ForgetPwd path={`/:langId/${path.forgetPassword.root}`} />
 			<ResetPwd path={`/:langId/${path.resetPassword.root}`} />
-			<Promotion path={`/:langId/${path.promotion.root}`} />
-
-			<PromotionInfo path={`/:langId/${path.promotionInfo.root}`} />
 			<Casino path={`/:langId/${path.casino.root}`} />
 			<Casino path={`/:langId/${path.casino.root}/:tpId`} />
 			<Setting path={`/:langId/${path.setting.root}`} />
@@ -121,7 +115,6 @@ const RouteComponents = () => {
 			<Kyc path={`/:langId/${path.kyc.root}`} />
 			<KycWaiting path={`/:langId/${path.kycWaiting.root}`} />
 
-			<Transfer path={`/:langId/${path.transfer.root}`} />
 			<TransferHistory path={`/:langId/${path.transferHistory.root}`} />
 
 			<Statement path={`/:langId/${path.statement.root}`} />

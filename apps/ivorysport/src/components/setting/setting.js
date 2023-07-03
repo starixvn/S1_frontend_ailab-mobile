@@ -191,7 +191,7 @@ export default () => {
 				</Card>
 				<Card
 					btnTitle={siteInfo(userInfo.langId).siteName}
-					btnClass="icon-nova88">
+					btnClass="title icon icon-information active">
 					<a
 						href={`${cloudBannerImgURL}/Static/en/AboutUs.html`}
 						target="_blank"

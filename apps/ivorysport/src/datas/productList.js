@@ -1,12 +1,6 @@
 import { isDateRange } from "@ailab-mobile/common";
-import path from "../path";
-import SiteURL, { cloudBannerImgURL } from "../config";
-// import { defPopBoxType } from "../components/common/popbox";
-import { isEventPeriod, defCurrenyId } from "../components/common/common";
-import { eventTime } from "../components/common/eventTime";
-import { getLeaderBoardSupportCurrencyId } from "../components/ranking/def";
-import allowedCurrencyList from "./allowedCurrencyList";
-import { angPaoEventPeriod } from "../pages/angpao";
+import { cloudBannerImgURL } from "../config";
+import { defCurrenyId } from "../components/common/common";
 
 export const productList = {
 	kiss918: {
@@ -32,16 +26,6 @@ export const getPPAllowCurrencies = () => {
 		  )
 		: Object.values(defCurrenyId);
 };
-
-// export const getCurrencyLink = (targetCurrencyId, langId) => {
-// 	if (targetCurrencyId === defCurrenyId.MYR) {
-// 		return ` https://aff.nova88mas102.com/?lang=${langId}`;
-// 	}
-// 	if (targetCurrencyId === defCurrenyId.INR) {
-// 		return `https://aff.nova88india.com/?lang=${langId}`;
-// 	}
-// 	return `https://aff.nova88bkk.com/?lang=${langId}`;
-// };
 
 export const defIconType = {
 	new: " icon-new",
@@ -353,25 +337,9 @@ const gameList = ({ langId, currencyId }) => {
 					spanTextKey: "lbl_Cricket",
 					sortKey: "cricket",
 					hasDesktopLink: true
-				},
-				{
-					...defGameInfo.VirtualSports,
-					img: `${cloudBannerImgURL}/h5/img/betradarsoccer.png`,
-					spanTextKey: "lbl_VirtualSports",
-					sortKey: "virtualSports"
 				}
-				// {
-				// 	...defGameInfo.Wap,
-				// 	img: `${cloudBannerImgURL}/h5/img/wap.png`,
-				// 	spanText: "WAP",
-				// 	specialUrl: "&device=wap",
-				// 	hideBeforeLogin: true,
-				// 	allowCurrency: allowedCurrencyList.wap,
-				// 	sortKey: "wap"
-				// }
 			]
 		},
-
 		{
 			category: "virtualsports",
 			categoryIcon: "e-sports",
@@ -424,11 +392,25 @@ export const defGameInfo = {
 		// tpGameType: 1,
 		tpGameType: 69 // seamless wallet
 	},
-	Basketball: {
+	hockey: {
+		gameId: 4,
+		// tpId: 1,
+		tpId: 41, // seamless wallet
+		// tpGameType: 1
+		tpGameType: 69 // seamless wallet
+	},
+	basketball: {
 		// tpId: 1,
 		tpId: 41, // seamless wallet
 		gameId: 2,
 		// tpGameType: 1,
+		tpGameType: 69 // seamless wallet
+	},
+	baseball: {
+		gameId: 8,
+		// tpId: 1,
+		tpId: 41, // seamless wallet
+		// tpGameType: 1
 		tpGameType: 69 // seamless wallet
 	},
 	Tennis: {
