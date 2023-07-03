@@ -1,0 +1,226 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Announcement tests Announcement renders correctly 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="functionList"
+      />
+      <div
+        class="account"
+      >
+        <div
+          class="info"
+        >
+          <div
+            class="introduction"
+          >
+            <span
+              class="title"
+            >
+              IMPORTANT!!! Local Transfer Bank Account Replacement Reminder
+            </span>
+            <span>
+              03/04/2021
+            </span>
+          </div>
+          <button
+            class="icon icon-keyboard_arrow_down"
+            data-testid="displayBtn"
+          />
+        </div>
+        <div
+          class="content"
+        >
+          <pre>
+            Dear Valued Customer,
+
+Kindly be informed the Local Transfer option will be replaced to a NEW account intermittently. Therefore, we would like to bring it to all player's attention on any transaction to our OLD account will NOT be accepted. Player who prefer to transfer through Local Bank option, kindly login to our Member Site check out the NEW account before proceed to any transaction! Should you have any inquiries, please do not hesitate to contact our Online Customer Service. Thank you!
+          </pre>
+        </div>
+      </div>
+      <div
+        class="account"
+      >
+        <div
+          class="info"
+        >
+          <div
+            class="introduction"
+          >
+            <span
+              class="title"
+            >
+              We are pleased to announce that our Company have Official Facebook, Instagram and Twitter account - nova88official!
+            </span>
+            <span>
+              04/15/2020
+            </span>
+          </div>
+          <button
+            class="icon icon-keyboard_arrow_down"
+            data-testid="displayBtn"
+          />
+        </div>
+        <div
+          class="content"
+        >
+          <pre>
+            To our valued Members: 
+
+We are pleased to announce that our Company have Official Facebook, Instagram and Twitter account - nova88official! 
+Kindly be reminded that our Company only have three official social accounts, while other accounts appeared in any social platform IS NOT our company's official accounts. 
+Therefore, we would like to bring it to your attention on any fraudulent social account. 
+Should you have any inquiries, please do not hesitate to contact Nova88’s Customer Service.
+
+Nova88’s Customer Service
+          </pre>
+        </div>
+      </div>
+      <button
+        id="goTop"
+      >
+        <i
+          class="icon icon-arrow-up2"
+        />
+      </button>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="functionList"
+    />
+    <div
+      class="account"
+    >
+      <div
+        class="info"
+      >
+        <div
+          class="introduction"
+        >
+          <span
+            class="title"
+          >
+            IMPORTANT!!! Local Transfer Bank Account Replacement Reminder
+          </span>
+          <span>
+            03/04/2021
+          </span>
+        </div>
+        <button
+          class="icon icon-keyboard_arrow_down"
+          data-testid="displayBtn"
+        />
+      </div>
+      <div
+        class="content"
+      >
+        <pre>
+          Dear Valued Customer,
+
+Kindly be informed the Local Transfer option will be replaced to a NEW account intermittently. Therefore, we would like to bring it to all player's attention on any transaction to our OLD account will NOT be accepted. Player who prefer to transfer through Local Bank option, kindly login to our Member Site check out the NEW account before proceed to any transaction! Should you have any inquiries, please do not hesitate to contact our Online Customer Service. Thank you!
+        </pre>
+      </div>
+    </div>
+    <div
+      class="account"
+    >
+      <div
+        class="info"
+      >
+        <div
+          class="introduction"
+        >
+          <span
+            class="title"
+          >
+            We are pleased to announce that our Company have Official Facebook, Instagram and Twitter account - nova88official!
+          </span>
+          <span>
+            04/15/2020
+          </span>
+        </div>
+        <button
+          class="icon icon-keyboard_arrow_down"
+          data-testid="displayBtn"
+        />
+      </div>
+      <div
+        class="content"
+      >
+        <pre>
+          To our valued Members: 
+
+We are pleased to announce that our Company have Official Facebook, Instagram and Twitter account - nova88official! 
+Kindly be reminded that our Company only have three official social accounts, while other accounts appeared in any social platform IS NOT our company's official accounts. 
+Therefore, we would like to bring it to your attention on any fraudulent social account. 
+Should you have any inquiries, please do not hesitate to contact Nova88’s Customer Service.
+
+Nova88’s Customer Service
+        </pre>
+      </div>
+    </div>
+    <button
+      id="goTop"
+    >
+      <i
+        class="icon icon-arrow-up2"
+      />
+    </button>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
