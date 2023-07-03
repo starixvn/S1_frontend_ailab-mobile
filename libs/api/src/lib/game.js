@@ -6,4 +6,10 @@ export class GameAPI extends BaseAPI {
 			DeviceType: defDeviceType.Mobile,
 			currencyId
 		});
+
+	GetRecentlyViewed = ({ currencyId }) =>
+		this.gameRequest.post(`/GetRecentlyViewed`, {
+			DeviceType: defDeviceType.Mobile,
+			currencyId
+		});
 }
