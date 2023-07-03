@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>NOVA88</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wallpaper">
+  <img src="https://image.0814media.net/SiteSkin/img/logo.png"/>
+  <div class="title">PENINGKATAN SERVER</div>
+  <!-- <div class="stitle">Performing maintenance</br>we are upgrading our webpage</div> -->
+  <div class="stitle">Sedang dalam Pemeliharaan</div>
+  <div class="time"></div>
+
+  <div class="txt">
+    <ul>
+      <li>Pelanggan yang terhormat,</li>
+      <li>Untuk menghadirkan pengalaman yang lebih baik bagi pemain setia,</li>
+      <li>kami sedang melakukan peningkatan sistem.
+        Oleh karena itu, tidak dapat diakses untuk saat ini.
+      </li>
+      <li>Harap menunggu, kami akan kembali segera setelah pemeliharaan selesai.</li>
+      <li>Kami sangat menghargai kesabaran dan pengertian Anda.</li>
+    </ul>
+    <script>
+      let url = ""
+      if (window.location.href.indexOf("dev") !== -1 || window.location.href.indexOf("stag") !== -1 || window.location.href.indexOf("localhost") !== -1) {
+        url = "https://error.0814media.net/maintain_test.json"
+      } else {
+        url = "https://error.0814media.net/maintain.json"
+      }
+      fetch(url)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (myJson) {
+          const {UTCTimeStart, UTCTimeEnd} = myJson
+          let startTime = new Date(0)
+          let endTime = new Date(0)
+          startTime.setUTCSeconds(UTCTimeStart)
+          let startTime_UTC = new Date(Date.UTC(startTime.getUTCFullYear(), startTime.getUTCMonth(),
+            startTime.getUTCDate(), startTime.getUTCHours(),
+            startTime.getUTCMinutes(), startTime.getUTCSeconds()));
+          let GMT = "（" + startTime_UTC.toString().slice(25, 29) + startTime_UTC.toString().slice(30, 31) + "）"
+          endTime.setUTCSeconds(UTCTimeEnd)
+          let endTime_UTC = new Date(Date.UTC(endTime.getUTCFullYear(), endTime.getUTCMonth(),
+            endTime.getUTCDate(), endTime.getUTCHours(),
+            endTime.getUTCMinutes(), endTime.getUTCSeconds()));
+          let time = document.getElementsByClassName("time")[0]
+          time.innerText = startTime_UTC.toLocaleTimeString("default", {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+          }) + "～" + endTime_UTC.toLocaleTimeString("default", {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+          }) + GMT
+        }).catch((err) => {
+        console.log(err)
+      });
+      window.__lc = window.__lc || {};
+      window.__lc.license = 11638088;
+      ;(function (n, t, c) {
+        function i(n) {
+          return e._h ? e._h.apply(null, n) : e._q.push(n)
+        }
+
+        var e = {
+          _q: [], _h: null, _v: "2.0", on: function () {
+            i(["on", c.call(arguments)])
+          }, once: function () {
+            i(["once", c.call(arguments)])
+          }, off: function () {
+            i(["off", c.call(arguments)])
+          }, get: function () {
+            if (!e._h) throw new Error("[LiveChatWidget] You can't use getters before load.");
+            return i(["get", c.call(arguments)])
+          }, call: function () {
+            i(["call", c.call(arguments)])
+          }, init: function () {
+            var n = t.createElement("script");
+            n.async = !0, n.type = "text/javascript", n.src = "https://cdn.livechatinc.com/tracking.js", t.head.appendChild(n)
+          }
+        };
+        !n.__lc.asyncInit && e.init(), n.LiveChatWidget = n.LiveChatWidget || e
+      }(window, document, [].slice))
+    </script>
+    <a href="https://direct.lc.chat/11638088/" rel="nofollow" target="_blank">Layanan Pelanggan 24/7</a>
+  </div>
+</div>
+</body>
+</html>

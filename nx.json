@@ -69,7 +69,14 @@
 		},
 		"ivorysport-e2e": {
 			"tags": [],
-			"implicitDependencies": ["ivorysport"]
+			"implicitDependencies": ["leobet"]
+		},
+		"leobet": {
+			"tags": []
+		},
+		"leobet-e2e": {
+			"tags": [],
+			"implicitDependencies": ["leobet"]
 		},
 		"format-pattern": {
 			"tags": []
