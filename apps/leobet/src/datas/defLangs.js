@@ -2,14 +2,14 @@ import { defCurrenyId } from "../components/common/common";
 import { cloudBannerImgURL } from "../config";
 
 export default {
-	ID: {
-		country: "ID",
-		img: `${cloudBannerImgURL}/h5/img/id.jpg`,
+	HI: {
+		country: "HI",
+		img: `${cloudBannerImgURL}/h5/img/in.jpg`,
 		lang: [
 			{ value: "en", displayText: "English" },
-			{ value: "id", displayText: "Indonesian" }
+			{ value: "hi", displayText: "Hindi" }
 		],
-		countryName: "Indonesia",
-		currencyId: defCurrenyId.IDR
+		countryName: "India",
+		currencyId: defCurrenyId.INR
 	}
 };

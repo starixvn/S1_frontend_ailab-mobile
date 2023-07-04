@@ -16,7 +16,7 @@ export const siteInfo = langId => {
 		currencyCookie: "nova88CurrencyId",
 		siteDefaultLang: "en",
 		siteDefaultCurrencyId: defCurrenyId.MYR,
-		siteLangList: ["en", "id"],
+		siteLangList: ["en", "hi"],
 		logo: "https://banner.0814media.net/h5/img/logo_en_w.png",
 		description:
 			"Nova88 is the world leading sportsbook offering one of the kind gambling experience in live betting covering all sports, casino, slots, keno, esports, rng casino, fantasy sports, virtual sports, lottery, live casino, live dealer, bingo, and racing.",
