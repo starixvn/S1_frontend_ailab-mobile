@@ -564,6 +564,7 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.LIVEcasinoAB,
 					spanText: "Allbet",
 					img: `${cloudBannerImgURL}/h5/img/ab.png`,
+					allowCurrency: allowedCurrencyList.allbet,
 					sortKey: "casino_ALBET"
 				},
 				{
