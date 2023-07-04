@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import moment from "moment";
+import moment, { HTML5_FMT } from "moment";
 import { useGetPrizeList } from "../hook/useGetPrizeList";
 import { eventIds } from "../../datas/eventId";
 
